@@ -9,18 +9,18 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: f447c6028b1750aa96e531a97e7b0861f66a5749
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 30852b6b3f9a4b490c4b58fe07f34ee49c60fa9f
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761676"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955254"
 ---
 # <a name="create-a-postgresql-hyperscale-server-group-using-kubernetes-tools"></a>Skapa en PostgreSQL-Server grupp med Kubernetes-verktyg
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Du bör redan ha skapat en [data styrenhet för Azure-bågen](./create-data-controller.md).
 
@@ -34,7 +34,7 @@ Om du vill skapa en PostgreSQL-Server grupp måste du skapa en Kubernetes-hemlig
 
 ## <a name="create-a-yaml-file"></a>Skapa en yaml-fil
 
-Du kan använda [mallens yaml](https://raw.githubusercontent.com/microsoft/azure_arc/master/arc_data_services/deploy/yaml/postsgresql.yaml) -fil som start punkt för att skapa en egen anpassad postgresql yaml-fil för Server gruppen.  Ladda ned den här filen till den lokala datorn och öppna den i en text redigerare.  Det är praktiskt att använda en text redigerare, t. ex. [vs-kod](https://code.visualstudio.com/download) som stöder markering av syntax och luddfri för yaml-filer.
+Du kan använda [mallens yaml](https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/postgresql.yaml) -fil som start punkt för att skapa en egen anpassad postgresql yaml-fil för Server gruppen.  Ladda ned den här filen till den lokala datorn och öppna den i en text redigerare.  Det är praktiskt att använda en text redigerare, t. ex. [vs-kod](https://code.visualstudio.com/download) som stöder markering av syntax och luddfri för yaml-filer.
 
 Detta är ett exempel på en yaml-fil:
 

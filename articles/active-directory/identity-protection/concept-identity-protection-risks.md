@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 11/09/2020
+ms.date: 01/05/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f10d8a94be53780f732112c012600a7fb840642b
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 18e504579c750caf452ef74844c4a388ec96448a
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96180650"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97954493"
 ---
 # <a name="what-is-risk"></a>Vad är risker?
 
@@ -63,6 +63,9 @@ Dessa risker kan beräknas i real tid eller beräknas offline med hjälp av Micr
 | Ändrings regler för misstänkt inkorg | Offline | Den här identifieringen upptäcks av [Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#suspicious-inbox-manipulation-rules). Identifierings profilerna i din miljö och utlöser aviseringar när misstänkta regler som tar bort eller flyttar meddelanden eller mappar anges i en användares inkorg. Den här identifieringen kan tyda på att användarens konto har komprometterats, att meddelanden avsiktligt döljs och att post lådan används för att distribuera skräp post eller skadlig kod i din organisation. |
 | Lösen ords sprayning | Offline | En attack för lösen ords spridning är att flera användar namn angrips med vanliga lösen ord i ett enhetligt brutet sätt för att få obehörig åtkomst. Den här identifieringen av risker utlöses när en attack för lösen ords spridning har utförts. |
 | Omöjlig resa | Offline | Den här identifieringen upptäcks av [Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#impossible-travel). Den här identifieringen identifierar två användar aktiviteter (är en eller flera sessioner) som härstammar från geografiskt avlägsna platser inom en tids period som är kortare än den tid då den skulle ha tagit användaren att resa från den första platsen till den andra, vilket indikerar att en annan användare använder samma autentiseringsuppgifter. |
+| Nytt land | Offline | Den här identifieringen upptäcks av [Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#activity-from-infrequent-country). Den här identifieringen tar hänsyn till tidigare aktivitets platser för att fastställa nya och ovanliga platser. Motorn för avvikelse identifiering lagrar information om tidigare platser som används av användare i organisationen. |
+| Aktivitet från anonym IP-adress | Offline | Den här identifieringen upptäcks av [Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#activity-from-anonymous-ip-addresses). Den här identifieringen identifierar att användare var aktiva från en IP-adress som har identifierats som en anonym proxy-IP-adress. |
+| Vidarebefordran av misstänkt inkorg | Offline | Den här identifieringen upptäcks av [Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#suspicious-inbox-forwarding). Den här identifieringen söker efter misstänkta regler för vidarebefordran av e-post, till exempel om en användare skapar en regel för Inkorgen som vidarebefordrar en kopia av alla e-postmeddelanden till en extern adress. |
 
 ### <a name="other-risk-detections"></a>Andra risk identifieringar
 

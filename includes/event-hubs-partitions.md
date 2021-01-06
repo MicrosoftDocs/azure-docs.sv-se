@@ -5,15 +5,15 @@ services: event-hubs
 author: spelluru
 ms.service: event-hubs
 ms.topic: include
-ms.date: 11/24/2020
+ms.date: 01/05/2021
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: ce906ad62b51956cb85f854846740fa09e06895d
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 780da47e6f071d854a16ca1d1c5cd02dbdd6bef0
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97665047"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955660"
 ---
 Händelsehubben ordnar sekvenser av händelser till en eller flera partitioner. När nya händelser anländer läggs de till i slutet av den här sekvensen. En partition kan betraktas som en ”genomförandelogg”.
 
@@ -21,11 +21,11 @@ Partitioner innehåller händelse data som innehåller bröd texten i händelsen
 
 ![Diagram som visar den äldre till en nyare sekvens med händelser.](./media/event-hubs-partitions/partition.png)
 
-Event Hubs är utformad för att hjälpa till med bearbetning av mycket stora mängder händelser och partitionering hjälper till på två sätt:
+Event Hubs är utformad för att hjälpa till med bearbetning av stora mängder händelser och partitionering hjälper till på två sätt:
 
 Först, även om Event Hubs är en PaaS-tjänst, finns det en fysisk verklighet under och underhåll av en logg som bevarar händelse ordningen kräver att dessa händelser hålls samman i den underliggande lagringen och dess repliker, och att de resulterar i ett data flödes tak för en sådan logg. Med partitionering kan du använda flera parallella loggar för samma Händelsehubben och därmed multiplicera den tillgängliga kapaciteten för rå IO-dataflöde.
 
-För det andra måste dina egna program kunna fortsätta att bearbeta mängden händelser som skickas till en Event Hub. Det kan vara ganska komplicerat och kräver avsevärd, skalbar, parallell bearbetnings kapacitet. Rationellt för partitioner är detsamma som ovan: kapaciteten för en enskild process för att hantera händelser är begränsad, och därför behöver du flera processer, och partitioner är hur din lösning delar dessa processer och säkerställer att varje händelse har en klar bearbetnings ägare. 
+För det andra måste dina egna program kunna fortsätta att bearbeta mängden händelser som skickas till en Event Hub. Det kan vara komplicerat och kräver avsevärd, utskalad, parallell bearbetnings kapacitet. Rationellt för partitioner är detsamma som ovan: kapaciteten för en enskild process för att hantera händelser är begränsad, och därför behöver du flera processer, och partitioner är hur din lösning delar dessa processer och säkerställer att varje händelse har en klar bearbetnings ägare. 
 
 Event Hubs behåller händelser för en konfigurerad kvarhållningsperiod som gäller för alla partitioner. Händelser tas bort automatiskt när kvarhållningsperioden har nåtts. Om du anger en kvarhållningsperiod på en dag blir händelsen otillgänglig exakt 24 timmar efter att den har accepterats. Du kan inte uttryckligen ta bort händelser. 
 
@@ -51,7 +51,7 @@ Genom att ange en partitionsnyckel kan du hålla samman relaterade händelser i 
 
 En sekvens med händelser som identifieras av en partitionsnyckel är en *data ström*. En partition är en multiplexad logg lagring för många sådana strömmar. 
 
-Det går att öka antalet partitioner för en Event Hub när Händelsehubben har skapats, men distributionen av strömmar mellan partitioner kommer att ändras när den görs som mappning av partitionsnyckel till partitioner ändringar, så du bör försöka hårt för att undvika sådana ändringar om den relativa ordningen på händelse frågor i ditt program.
+Antalet partitioner för en Event Hub i ett [dedikerat Event Hubs kluster](../articles/event-hubs/event-hubs-dedicated-overview.md) kan [ökas](../articles/event-hubs/dynamically-add-partitions.md) efter att händelsehubben har skapats, men distributionen av strömmar mellan partitioner kommer att ändras när den görs som mappning av partitionsnyckel till partitioner ändringar, så du bör försöka undvika sådana ändringar om den relativa ordningen på händelse frågor i ditt program.
 
 Att ställa in antalet partitioner på det högsta tillåtna värdet är frestande, men Tänk alltid på att dina händelse strömmar måste struktureras så att du själva kan dra nytta av flera partitioner. Om du behöver absolut bevarat bevarat bevarande av alla händelser eller bara en fåtal av under strömmar, kanske du inte kan dra nytta av många partitioner. Dessutom gör många partitioner bearbetnings sidan mer komplex. 
 

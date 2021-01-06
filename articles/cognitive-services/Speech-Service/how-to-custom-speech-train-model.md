@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/11/2020
 ms.author: trbye
-ms.openlocfilehash: 5a912790b4a7a86c44576b98ce7e95f44b810c9e
-ms.sourcegitcommit: 697638c20ceaf51ec4ebd8f929c719c1e630f06f
+ms.openlocfilehash: a7227195c767d90141a9b6cd95f784c239a31fd5
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857383"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955203"
 ---
 # <a name="train-and-deploy-a-custom-speech-model"></a>Träna och distribuera en Custom Speech-modell
 
@@ -48,6 +48,11 @@ I **tränings** tabellen visas en ny post som motsvarar den nya modellen. Tabell
 
 Se [hur du kan](how-to-custom-speech-evaluate-data.md) utvärdera och förbättra Custom Speech modellens precision. Om du väljer att testa noggrannhet är det viktigt att välja en akustisk data uppsättning som skiljer sig från den som du använde med din modell för att få en realistisk känsla för modellens prestanda.
 
+> [!NOTE]
+> Både bas modeller och anpassade modeller kan bara användas upp till ett visst datum (se [modellens livs cykel](custom-speech-overview.md#model-lifecycle)). Tal Studio visar det här datumet i kolumnen **förfallo** datum för varje modell och slut punkt. Efter denna datum förfrågan till en slut punkt eller till en batch-avskrift kan det gå sönder eller återgå till bas modellen.
+>
+> Träna modellen med hjälp av den senaste bas modellen för att dra nytta av precisions förbättringar och undvika att din modell upphör att gälla.
+
 ## <a name="deploy-a-custom-model"></a>Distribuera en anpassad modell
 
 När du har laddat upp och inspekterat data, utvärderar precision och tränar en anpassad modell, kan du distribuera en anpassad slut punkt för användning med dina appar, verktyg och produkter. 
@@ -63,7 +68,7 @@ Välj sedan **Lägg till slut punkt** och ange ett **namn** och en **Beskrivning
 
 Välj sedan **skapa**. Den här åtgärden återgår till **distributions** sidan. Tabellen innehåller nu en post som motsvarar din anpassade slut punkt. Slut punktens status visar dess aktuella tillstånd. Det kan ta upp till 30 minuter att instansiera en ny slut punkt med hjälp av dina anpassade modeller. När distributions statusen ändras till **slutförd**, är slut punkten redo att användas.
 
-När slut punkten har distribuerats visas slut punktens namn som en länk. Välj länken om du vill se information som är speciell för din slut punkt, till exempel slut punkts nyckel, slut punkts-URL och exempel kod.
+När slut punkten har distribuerats visas slut punktens namn som en länk. Välj länken om du vill se information som är speciell för din slut punkt, till exempel slut punkts nyckel, slut punkts-URL och exempel kod. Anteckna förfallo datumet och uppdatera slut punktens modell före det datumet för att säkerställa en oavbruten tjänst.
 
 ## <a name="view-logging-data"></a>Visa loggnings data
 

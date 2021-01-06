@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/29/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperf-fy21q1, automl
-ms.openlocfilehash: 60aab2c77a5ccf59e129b21deab34daf756b2e23
-ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
+ms.openlocfilehash: 054d18337e50a367cf1f6f004f4e1d1652c7751e
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97827435"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97954420"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Konfigurera automatiserade ML-experiment i Python
 
@@ -37,7 +37,7 @@ Konfigurations alternativ som är tillgängliga i Automatisk maskin inlärning:
 
 Om du föredrar en ingen kod upplevelse kan du också [skapa dina automatiserade maskin inlärnings experiment i Azure Machine Learning Studio](how-to-use-automated-ml-for-ml-models.md).
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 För den här artikeln behöver du 
 * En Azure Machine Learning-arbetsyta. Information om hur du skapar arbets ytan finns i [skapa en Azure Machine Learning arbets yta](how-to-manage-workspace.md).
@@ -463,20 +463,22 @@ Allmän information om hur modell förklaringar och funktions prioritet kan akti
 
 * **`import numpy` Miss lyckas i Windows**: vissa Windows-miljöer ser ett fel vid inläsning av numpy med den senaste python-versionen 3.6.8. Om du ser det här problemet kan du prova med python version 3.6.7.
 
-* **`import numpy` Miss lyckas**: kontrol lera TensorFlow-versionen i den automatiserade ml Conda-miljön. Versioner som stöds är < 1,13. Avinstallera TensorFlow från miljön om versionen är >= 1,13. Du kan kontrol lera versionen av TensorFlow och avinstallera enligt följande:
+* **`import numpy` Miss lyckas**: kontrol lera TensorFlow-versionen i den automatiserade ml Conda-miljön. Versioner som stöds är < 1,13. Avinstallera TensorFlow från miljön om versionen är >= 1,13. Du kan kontrol lera versionen av TensorFlow och avinstallera på följande sätt:
   1. Starta ett kommando gränssnitt, aktivera Conda-miljön där automatiserade ml-paket är installerade.
   2. Ange `pip freeze` och leta efter `tensorflow` , om den hittas, ska den version som visas vara < 1,13
   3. Om den listade versionen inte är en version som stöds går du till `pip uninstall tensorflow` kommando gränssnittet och anger y för bekräftelse.
   
- * **Körningen Miss `jwt.exceptions.DecodeError` lyckas med**: exakt fel meddelande: `jwt.exceptions.DecodeError: It is required that you pass in a value for the "algorithms" argument when calling decode()` . 
- 
-    Överväg att uppgradera till den senaste versionen av AutoML SDK: `pip install -U azureml-sdk[automl]` . 
-    
-    Om detta inte är giltigt kontrollerar du versionen av PyJWT. Versioner som stöds är < 2.0.0. Avinstallera PyJWT från miljön om versionen är >= 2.0.0. Du kan kontrol lera versionen av PyJWT, avinstallera och installera rätt version på följande sätt:
+ * **Körningen Miss `jwt.exceptions.DecodeError` lyckas med**: exakt fel meddelande: `jwt.exceptions.DecodeError: It is required that you pass in a value for the "algorithms" argument when calling decode()` .
+
+    För versioner <= 1.17.0 av SDK kan installationen resultera i en version av PyJWT som inte stöds. Kontrol lera PyJWT-versionen i den automatiserade ml Conda-miljön. Versioner som stöds är < 2.0.0. Du kan kontrol lera versionen av PyJWT på följande sätt:
     1. Starta ett kommando gränssnitt, aktivera Conda-miljön där automatiserade ml-paket är installerade.
     2. Ange `pip freeze` och leta efter `PyJWT` , om den hittas, ska den version som visas < 2.0.0
-    3. Om den listade versionen inte är en version som stöds går du till `pip uninstall PyJWT` kommando gränssnittet och anger y för bekräftelse.
-    4. Installera med `pip install 'PyJWT<2.0.0'` .
+
+    Om den listade versionen inte är en version som stöds:
+    1. Överväg att uppgradera till den senaste versionen av AutoML SDK: `pip install -U azureml-sdk[automl]` .
+    2. Om detta inte är livskraftigt, avinstallera PyJWT från miljön och installera rätt version på följande sätt:
+        - `pip uninstall PyJWT` i kommando tolken och ange `y` bekräftelse.
+        - Installera med `pip install 'PyJWT<2.0.0'` .
 
 ## <a name="next-steps"></a>Nästa steg
 

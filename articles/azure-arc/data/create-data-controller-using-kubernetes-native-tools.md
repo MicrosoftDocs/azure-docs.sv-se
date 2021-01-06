@@ -9,18 +9,18 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 051a7f506d351a17764e38c760ffba06d224cc38
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: e8d00055d9a4d7355ccd8a33c8a9b811b852f5c8
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422577"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955288"
 ---
 # <a name="create-azure-arc-data-controller-using-kubernetes-tools"></a>Skapa en Azure båg-datakontrollant med Kubernetes-verktyg
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Läs avsnittet [skapa data styrenheten för Azure båg](create-data-controller.md) för översikts information.
 
@@ -38,11 +38,9 @@ Om du har installerat Azure Arc data Controller tidigare, i samma kluster och to
 ```console
 # Cleanup azure arc data service artifacts
 kubectl delete crd datacontrollers.arcdata.microsoft.com 
-kubectl delete sqlmanagedinstances.sql.arcdata.microsoft.com 
-kubectl delete postgresql-11s.arcdata.microsoft.com 
-kubectl delete postgresql-12s.arcdata.microsoft.com
-kubectl delete clusterroles azure-arc-data:cr-arc-metricsdc-reader
-kubectl delete clusterrolebindings azure-arc-data:crb-arc-metricsdc-reader
+kubectl delete crd sqlmanagedinstances.sql.arcdata.microsoft.com 
+kubectl delete crd postgresql-11s.arcdata.microsoft.com 
+kubectl delete crd postgresql-12s.arcdata.microsoft.com
 ```
 
 ## <a name="overview"></a>Översikt
@@ -59,7 +57,7 @@ Att skapa data styrenheten för Azure-bågen har följande steg på hög nivå:
 Kör följande kommando för att skapa anpassade resurs definitioner.  **[Kräver Kubernetes-kluster administratörs behörighet]**
 
 ```console
-kubectl create -f https://raw.githubusercontent.com/microsoft/azure_arc/master/arc_data_services/deploy/yaml/custom-resource-definitions.yaml
+kubectl create -f https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/custom-resource-definitions.yaml
 ```
 
 ## <a name="create-a-namespace-in-which-the-data-controller-will-be-created"></a>Skapa ett namn område där data styrenheten ska skapas
@@ -79,7 +77,7 @@ Start program-tjänsten hanterar inkommande begär Anden för att skapa, rediger
 Kör följande kommando för att skapa en start program-tjänst, ett tjänst konto för start program-tjänsten och en roll-och roll bindning för start program Service-kontot.
 
 ```console
-kubectl create --namespace arc -f https://raw.githubusercontent.com/microsoft/azure_arc/master/arc_data_services/deploy/yaml/bootstrapper.yaml
+kubectl create --namespace arc -f https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/bootstrapper.yaml
 ```
 
 Kontrol lera att start program-Pod körs med hjälp av följande kommando.  Du kan behöva köra det ett par gånger tills statusen ändras till `Running` .
@@ -102,7 +100,7 @@ containers:
       - env:
         - name: ACCEPT_EULA
           value: "Y"
-        #image: mcr.microsoft.com/arcdata/arc-bootstrapper:public-preview-oct-2020  <-- template value to change
+        #image: mcr.microsoft.com/arcdata/arc-bootstrapper:public-preview-dec-2020  <-- template value to change
         image: <your registry DNS name or IP address>/<your repo>/arc-bootstrapper:<your tag>
         imagePullPolicy: IfNotPresent
         name: bootstrapper
@@ -150,7 +148,7 @@ echo '<your string to encode here>' | base64
 # echo 'example' | base64
 ```
 
-När du har kodat användar namn och lösen ord kan du skapa en fil baserat på [mallfilen](https://raw.githubusercontent.com/microsoft/azure_arc/master/arc_data_services/deploy/yaml/controller-login-secret.yaml) och ersätta värdena för användar namn och lösen ord med dina egna.
+När du har kodat användar namn och lösen ord kan du skapa en fil baserat på [mallfilen](https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/controller-login-secret.yaml) och ersätta värdena för användar namn och lösen ord med dina egna.
 
 Kör sedan följande kommando för att skapa hemligheten.
 
@@ -165,26 +163,26 @@ kubectl create --namespace arc -f C:\arc-data-services\controller-login-secret.y
 
 Nu är du redo att skapa själva datakontrollanten.
 
-Börja med att skapa en kopia av [mallfilen](https://raw.githubusercontent.com/microsoft/azure_arc/master/arc_data_services/deploy/yaml/data-controller.yaml) lokalt på datorn så att du kan ändra några av inställningarna.
+Börja med att skapa en kopia av [mallfilen](https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/data-controller.yaml) lokalt på datorn så att du kan ändra några av inställningarna.
 
 Redigera följande efter behov:
 
 **KUNNA**
-- **plats** : ändra till den Azure-plats där _metadata_ om data styrenheten ska lagras.  Du kan se en lista över tillgängliga Azure-platser i artikeln [skapa datacontroller-översikt](create-data-controller.md) .
-- **resourceGroup** : Azure-resurs gruppen där du vill skapa Azure-resursen data controller i Azure Resource Manager.  Normalt bör den här resurs gruppen redan finnas, men den är inte obligatorisk förrän den tid som du överför data till Azure.
-- **prenumeration** : GUID för Azure-prenumerationen för den prenumeration som du vill skapa Azure-resurserna i.
+- **plats**: ändra till den Azure-plats där _metadata_ om data styrenheten ska lagras.  Du kan se en lista över tillgängliga Azure-platser i artikeln [skapa datacontroller-översikt](create-data-controller.md) .
+- **resourceGroup**: Azure-resurs gruppen där du vill skapa Azure-resursen data controller i Azure Resource Manager.  Normalt bör den här resurs gruppen redan finnas, men den är inte obligatorisk förrän den tid som du överför data till Azure.
+- **prenumeration**: GUID för Azure-prenumerationen för den prenumeration som du vill skapa Azure-resurserna i.
 
 **REKOMMENDERAS FÖR ATT GRANSKA OCH EVENTUELLT ÄNDRA STANDARDVÄRDEN**
-- **lagring.. className** : den lagrings klass som ska användas för datakontrollantens data och loggfiler.  Om du är osäker på tillgängliga lagrings klasser i Kubernetes-klustret kan du köra följande kommando: `kubectl get storageclass` .  Standardvärdet är att `default` det finns en lagrings klass som finns och som har ett namn som `default` inte är en lagrings klass som _är_ standard.  Obs! det finns två className-inställningar som ska anges till önskad lagrings klass – en för data och en för loggar.
-- **ServiceType** : ändra tjänst typen till `NodePort` om du inte använder en Loadbalancer.  Obs: det finns två serviceType-inställningar som måste ändras.
+- **lagring.. className**: den lagrings klass som ska användas för datakontrollantens data och loggfiler.  Om du är osäker på tillgängliga lagrings klasser i Kubernetes-klustret kan du köra följande kommando: `kubectl get storageclass` .  Standardvärdet är att `default` det finns en lagrings klass som finns och som har ett namn som `default` inte är en lagrings klass som _är_ standard.  Obs! det finns två className-inställningar som ska anges till önskad lagrings klass – en för data och en för loggar.
+- **ServiceType**: ändra tjänst typen till `NodePort` om du inte använder en Loadbalancer.  Obs: det finns två serviceType-inställningar som måste ändras.
 
 **VALFRITT**
-- **namn** : standard namnet för datakontrollanten är `arc` , men du kan ändra den om du vill.
-- **DisplayName** : Ange värdet till samma värde som attributet name överst i filen.
-- **register** : Microsoft container Registry är standard.  Om du hämtar bilderna från Microsoft Container Registry och skickar [dem till ett privat behållar register](offline-deployment.md), anger du IP-adressen eller DNS-namnet för ditt register här.
-- **dockerRegistry** : den image-pull-hemlighet som ska användas för att hämta avbildningar från ett privat behållar register om det behövs.
-- **databas** : standard lagrings platsen på Microsoft container Registry är `arcdata` .  Om du använder ett privat behållar register anger du sökvägen till den mapp/lagrings plats som innehåller de avbildningar av Azure arr-aktiverade data Services-behållare.
-- **imageTag** : den aktuella senaste version-taggen är standard i mallen, men du kan ändra den om du vill använda en äldre version.
+- **namn**: standard namnet för datakontrollanten är `arc` , men du kan ändra den om du vill.
+- **DisplayName**: Ange värdet till samma värde som attributet name överst i filen.
+- **register**: Microsoft container Registry är standard.  Om du hämtar bilderna från Microsoft Container Registry och skickar [dem till ett privat behållar register](offline-deployment.md), anger du IP-adressen eller DNS-namnet för ditt register här.
+- **dockerRegistry**: den image-pull-hemlighet som ska användas för att hämta avbildningar från ett privat behållar register om det behövs.
+- **databas**: standard lagrings platsen på Microsoft container Registry är `arcdata` .  Om du använder ett privat behållar register anger du sökvägen till den mapp/lagrings plats som innehåller de avbildningar av Azure arr-aktiverade data Services-behållare.
+- **imageTag**: den aktuella senaste version-taggen är standard i mallen, men du kan ändra den om du vill använda en äldre version.
 
 Exempel på en slutförd datacontroller yaml-fil:
 ```yaml
@@ -200,7 +198,7 @@ spec:
     serviceAccount: sa-mssql-controller
   docker:
     imagePullPolicy: Always
-    imageTag: public-preview-oct-2020 
+    imageTag: public-preview-dec-2020 
     registry: mcr.microsoft.com
     repository: arcdata
   security:

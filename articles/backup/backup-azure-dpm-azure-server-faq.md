@@ -4,12 +4,12 @@ description: I den här artikeln hittar du svar på vanliga frågor om Microsoft
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 07/05/2019
-ms.openlocfilehash: cd974181c78586f915dad6cc6ed39d9255a1456b
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 1663a842b7e00c611543451d4caef96b5b5a913f
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92172585"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97954999"
 ---
 # <a name="azure-backup-server-and-dpm---faq"></a>Azure Backup Server och DPM – vanliga frågor och svar
 
@@ -56,6 +56,10 @@ Du behöver inte separat licensiering för VMware/Hyper-V-skydd.
 
 - Om du är System Center-kund använder du System Center Data Protection Manager (DPM) för att skydda virtuella VMware-datorer.
 - Om du inte är System Center-kund kan du använda Azure Backup Server (betala per användning) för att skydda virtuella VMware-datorer.
+
+### <a name="can-i-restore-a-backup-of-a-hyper-v-or-vmware-vm-stored-in-azure-to-azure-as-an-azure-vm"></a>Kan jag återställa en säkerhets kopia av en Hyper-V-eller VMware-baserad virtuell dator, som lagras i Azure, till Azure som en virtuell Azure-dator?
+
+Nej, det är för närvarande inte möjligt. Du kan bara återställa till en lokal värd.
 
 ## <a name="sharepoint"></a>SharePoint
 

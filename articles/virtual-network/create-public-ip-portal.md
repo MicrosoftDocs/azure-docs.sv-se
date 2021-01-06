@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2020
 ms.author: blehr
-ms.openlocfilehash: add763b713b93604e089d7aec586876fecd2887c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: bd35d3288591a01c14e306960601eef6dea7e761
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95895646"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97954149"
 ---
 # <a name="quickstart-create-a-public-ip-address-using-the-azure-portal"></a>Snabb start: skapa en offentlig IP-adress med hjälp av Azure Portal
 
@@ -36,7 +36,8 @@ Använd följande steg för att skapa en standard zon med redundant offentlig IP
     | ---                     | ---                         |
     | IP-version              | Välj IPv4                 |    
     | SKU                     | Välj **standard**         |
-    | Name                    | Ange *myStandardZRPublicIP*          |
+    | Nivå (om den visas *)                  | Välj **region**         |
+    | Namn                    | Ange *myStandardZRPublicIP*          |
     | Tilldelning av IP-adress   | OBS! detta kommer att låsas som "statisk"                                        |
     | Tids gräns för inaktivitet (minuter)  | Lämna värdet vid 4        |
     | DNS-namnetikett          | Lämna värdet tomt    |
@@ -46,6 +47,8 @@ Använd följande steg för att skapa en standard zon med redundant offentlig IP
     | Tillgänglighetszon       | Välj **zon – redundant** eller plocka en speciell zon (se anmärkning nedan) |
 
 Observera att dessa endast är giltiga val i regioner med [Tillgänglighetszoner](https://docs.microsoft.com/azure/availability-zones/az-overview?toc=/azure/virtual-network/toc.json#availability-zones).  (Du kan också välja en speciell zon i dessa regioner, men den kommer inte att vara elastisk till zonindelade-problem.)
+
+\* =-Nivån relaterar till Load Balancer funktionerna i [flera regioner](https://docs.microsoft.com/azure/load-balancer/cross-region-overview) , för närvarande i för hands version.
 
 # <a name="basic-sku"></a>[**Grundläggande SKU**](#tab/option-create-public-ip-basic)
 
@@ -61,7 +64,7 @@ Använd följande steg för att skapa en grundläggande statisk offentlig IP-adr
     | ---                     | ---                         |
     | IP-version              | Välj IPv4                 |    
     | SKU                     | Välj **standard**         |
-    | Name                    | Ange *myBasicPublicIP*          |
+    | Namn                    | Ange *myBasicPublicIP*          |
     | Tilldelning av IP-adress   | Välj **statisk** (se anmärkning nedan)                                     |
     | Tids gräns för inaktivitet (minuter)  | Lämna värdet vid 4        |
     | DNS-namnetikett          | Lämna värdet tomt    |

@@ -3,12 +3,12 @@ title: Vad är Azure Relay? | Microsoft Docs
 description: Den här artikeln innehåller en översikt över Azure Relay-tjänsten, där du kan utveckla molnprogram som använder lokala tjänster som körs i företagets nätverk utan att öppna en brandväggsanslutning eller göra störande ändringar i din nätverksinfrastruktur.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 0c9a67bcad47ad2e7284bcf6e70914d2ffb06a8c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fbf1b2134a4c2dce7a3e6a62668d0852dc08c18a
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85322649"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955390"
 ---
 # <a name="what-is-azure-relay"></a>Vad är Azure Relay?
 Med Azure Relay-tjänsten kan du på ett säkert sätt visa tjänster som körs i företagets nätverk för det offentliga molnet. Du kan göra det utan att behöva öppna en port i brandväggen eller göra störande ändringar i företagets nätverksinfrastruktur. 
@@ -17,7 +17,7 @@ Relay-tjänsten har stöd för följande scenarier mellan lokala tjänster och p
 
 - Traditionell enkelriktad trafik för begäranden/svar och peer-to-peer-kommunikation 
 - Händelsedistribution på Internet-skala för att möjliggöra scenarier för publicering/prenumeration 
-- Dubbelriktad och obuffrad socketkommunikation över nätverksgränser.
+- Dubbelriktad och unbuffed socket-kommunikation över nätverks gränser
 
 Azure Relay skiljer sig från integreringstekniker på nätverksnivå såsom VPN. Ett Azure Relay kan få omfång till en enskild programslutpunkt på en enda dator. VPN-teknik är mycket mer inkräktande eftersom den förlitar sig på att ändra nätverksmiljön. 
 
@@ -56,7 +56,7 @@ Både Hybridanslutningar och WCF Relay tillhandahåller säker anslutning till r
 | **WCF** |x | |
 | **.NET Core** | |x |
 | **.NET Framework** |x |x |
-| **Java script/Node.JS** | |x |
+| **Java Script/Node.js** | |x |
 | **Standardbaserat öppet protokoll** | |x |
 | **RPC-programmeringsmodeller** | |x |
 

@@ -1,20 +1,20 @@
 ---
-title: Felsöka sensorn och den lokala hanterings konsolen
+title: Felsöka sensorn och den lokala hanteringskonsolen
 description: Felsök sensorn och den lokala hanterings konsolen för att eliminera eventuella problem som du kan ha.
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 12/12/2020
+ms.date: 1/3/2021
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: a57db4f88de4a3b32b4fb315fb331500f955d501
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: b91827fc0a6fb8380c9f8aa87a3def3bc1819523
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97843003"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955441"
 ---
-# <a name="troubleshoot-the-sensor-and-on-premises-management-console"></a>Felsöka sensorn och den lokala hanterings konsolen
+# <a name="troubleshoot-the-sensor-and-on-premises-management-console"></a>Felsöka sensorn och den lokala hanteringskonsolen
 
 Den här artikeln beskriver grundläggande fel söknings verktyg för sensorn och den lokala hanterings konsolen. Utöver de objekt som beskrivs här kan du kontrol lera systemets hälso tillstånd på följande sätt:
 
@@ -28,22 +28,33 @@ Den här artikeln beskriver grundläggande fel söknings verktyg för sensorn oc
 
 ### <a name="investigate-password-failure-at-initial-sign-in"></a>Undersök lösen ords haveri vid inledande inloggning
 
-När du loggar in på en förkonfigurerad pil sensor för första gången måste du utföra följande lösen ords återställning:
+När du loggar in på en förkonfigurerad pil sensor för första gången måste du återställa lösen ordet.
 
-1. På inloggnings skärmen för Defender för IoT väljer du alternativet **lösen ords återställning** . 
+Så här återställer du ditt lösen ord:
 
-   Skärmen för **lösen ords återställning** öppnas. Där uppmanas du att välja användare och prenumeration och du får en unik identifierare.
+1. På inloggnings skärmen för Defender för IoT väljer du  **återställning av lösen ord**. Skärmen för **lösen ords återställning** öppnas.
 
-1. Gå till sidan Defender för IoT- **platser och sensorer** och välj fliken **Återställ mitt lösen ord** .
+1. Välj antingen **CyberX** eller **support** och kopiera den unika identifieraren.
+
+1. Navigera till Azure Portal och välj **platser och sensorer**.  
+
+1. Välj fliken **Återställ lösen ord för den lokala hanterings konsolen** .
+
+   :::image type="content" source="media/password-recovery-images/recover-button.png" alt-text="Välj knappen Återställ lokal hantering för att ladda ned återställnings filen.":::
 
 1. Ange den unika identifierare som du fick på skärmen för **lösen ords återställning** och välj **Återställ**. `password_recovery.zip`Filen har hämtats.
 
-   > [!NOTE]
-   > Ändra inte aktiverings filen. Det är en signerad fil och fungerar inte om du manipulerar den.
+    > [!NOTE]
+    > Ändra inte lösen ords återställnings filen. Det är en signerad fil och fungerar inte om du manipulerar den.
 
-1. På skärmen för **lösen ords återställning** laddar du upp `password_recovery.zip` filen och väljer **Nästa**.
+1. På skärmen för **lösen ords återställning** väljer du **överför**. Fönstret **överför lösen ords återställnings fil** öppnas.
 
-Du får sedan ett systemgenererat lösen ord för hanterings konsolen. 
+1. Välj **Bläddra** för att hitta `password_recovery.zip` filen eller dra `password_recovery.zip` till fönstret.
+
+1. Välj **Nästa** och ditt användar-och systemgenererade lösen ord för hanterings konsolen visas sedan.
+
+    > [!NOTE]
+    > När du loggar in på en sensor eller lokal hanterings konsol för första gången kommer den att länkas till den prenumeration du anslöt till. Om du behöver återställa lösen ordet för CyberX-eller support användaren måste du välja den prenumerationen. Mer information om hur du återställer en CyberX eller stöder användar lösen ord finns i [återställa en användares lösen ord för sensorn eller den lokala hanterings konsolen](how-to-create-and-manage-users.md#resetting-a-users-password-for-the-sensor-or-on-premises-management-console)
 
 ### <a name="investigate-a-lack-of-traffic"></a>Undersök bristande trafik
 
@@ -65,35 +76,35 @@ Kontrol lera system prestandan:
 
    :::image type="content" source="media/how-to-troubleshoot-the-sensor-and-on-premises-management-console/dashboard-view-v2.png" alt-text="Skärm bild av ett exempel på en instrument panel."::: 
 
-2. Välj **enheter** på menyn sida.
+1. Välj **enheter** på menyn sida.
 
-3. I fönstret **enheter** kontrollerar du att enheterna identifieras.
+1. I fönstret **enheter** kontrollerar du att enheterna identifieras.
 
     :::image type="content" source="media/how-to-troubleshoot-the-sensor-and-on-premises-management-console/discovered-devices.png" alt-text="Se till att enheterna identifieras.":::
 
-4. På sido menyn väljer du **Data utvinning**.
+1. På sido menyn väljer du **Data utvinning**.
 
-5. I fönstret **Data utvinning** väljer du **alla** och genererar en rapport.
+1. I fönstret **Data utvinning** väljer du **alla** och genererar en rapport.
 
     :::image type="content" source="media/how-to-troubleshoot-the-sensor-and-on-premises-management-console/new-report-generated.png" alt-text="Generera en ny rapport med hjälp av data utvinning.":::
 
-6. Se till att rapporten innehåller data.
+1. Se till att rapporten innehåller data.
 
     :::image type="content" source="media/how-to-troubleshoot-the-sensor-and-on-premises-management-console/new-report-generated.png" alt-text="Se till att rapporten innehåller data.":::
 
-7. På sido menyn väljer du **trender & statistik**.
+1. På sido menyn väljer du **trender & statistik**.
 
-8. I fönstret **trender & statistik** väljer du **Lägg till widget**.
+1. I fönstret **trender & statistik** väljer du **Lägg till widget**.
 
     :::image type="content" source="media/how-to-troubleshoot-the-sensor-and-on-premises-management-console/add-widget.png" alt-text="Lägg till en widget genom att markera den.":::
 
-9. Lägg till en widget och se till att den visar data.
+1. Lägg till en widget och se till att den visar data.
 
     :::image type="content" source="media/how-to-troubleshoot-the-sensor-and-on-premises-management-console/widget-data.png" alt-text="Kontrol lera att widgeten visar data.":::
 
-10. På menyn på sidan väljer du **aviseringar**. Fönstret **aviseringar** visas.
+1. På menyn på sidan väljer du **aviseringar**. Fönstret **aviseringar** visas.
 
-11. Kontrol lera att aviseringarna har skapats.
+1. Kontrol lera att aviseringarna har skapats.
 
     :::image type="content" source="media/how-to-troubleshoot-the-sensor-and-on-premises-management-console/alerts-created.png" alt-text="Se till att aviseringar har skapats.":::
 
@@ -154,9 +165,9 @@ Så här löser du konfigurationen:
 
 1. Högerklicka på moln ikonen på enhets kartan och välj **Exportera IP-adresser**. Kopiera de offentliga intervallet som är privata och Lägg till dem i under näts listan. Mer information finns i [Konfigurera undernät](how-to-control-what-traffic-is-monitored.md#configure-subnets).
 
-2. Generera en ny data utvinnings rapport för Internet anslutningar.
+1. Generera en ny data utvinnings rapport för Internet anslutningar.
 
-3. I rapporten Data utvinning väljer :::image type="icon" source="media/how-to-troubleshoot-the-sensor-and-on-premises-management-console/administrator-mode.png" border="false"::: du att ange administratörs läget och tar bort IP-adresserna för dina ICS-enheter.
+1. I rapporten Data utvinning väljer :::image type="icon" source="media/how-to-troubleshoot-the-sensor-and-on-premises-management-console/administrator-mode.png" border="false"::: du att ange administratörs läget och tar bort IP-adresserna för dina ICS-enheter.
 
 ### <a name="tweak-the-sensors-quality-of-service"></a>Justera sensorns Quality of service
 
@@ -179,7 +190,7 @@ Så här anpassar du tjänstens kvalitet:
    > [!NOTE]
    > För en fysisk installation använder du EM1-gränssnittet.
 
-2. Om du vill ta bort gränssnitts begränsningen anger du `sudo cyberx-xsense-limit-interface -i eth0 -l 1mbps -c` .
+1. Om du vill ta bort gränssnitts begränsningen anger du `sudo cyberx-xsense-limit-interface -i eth0 -l 1mbps -c` .
 
 ## <a name="on-premises-management-console-troubleshooting-tools"></a>Fel söknings verktyg för lokal hanterings konsol
 
@@ -203,7 +214,7 @@ Så här anpassar du tjänstens kvalitet:
 
 1. Logga in som en Defender för IoT-användare. 
 
-2. Verifiera standardvärdena:
+1. Verifiera standardvärdena:
 
    ```bash
    grep \"notifications\" /var/cyberx/properties/management.properties
@@ -216,20 +227,20 @@ Så här anpassar du tjänstens kvalitet:
    notifications.max_time_to_report=10 (seconds)
    ```
 
-3. Redigera standardinställningarna:
+1. Redigera standardinställningarna:
 
    ```bash
    sudo nano /var/cyberx/properties/management.properties
    ```
 
-4. Redigera inställningarna för följande rader:
+1. Redigera inställningarna för följande rader:
 
    ```bash
    notifications.max_number_to_report=50
    notifications.max_time_to_report=10 (seconds)
    ```
 
-5. Spara ändringarna. Ingen omstart krävs.
+1. Spara ändringarna. Ingen omstart krävs.
 
 ## <a name="export-information-for-troubleshooting"></a>Exportera information för fel sökning
 
@@ -239,13 +250,13 @@ Så här exporterar du loggar:
 
 1. I den vänstra rutan väljer du **Systeminställningar**.
 
-2. Välj **Exportera loggar**.
+1. Välj **Exportera loggar**.
 
     :::image type="content" source="media/how-to-export-information-for-troubleshooting/export-a-log.png" alt-text="Exportera en logg till system stöd.":::
 
-3. I rutan **fil namn** anger du det fil namn som du vill använda för logg exporten. Standardvärdet är det aktuella datumet.
+1. I rutan **fil namn** anger du det fil namn som du vill använda för logg exporten. Standardvärdet är det aktuella datumet.
 
-4. För att definiera vilka data du vill exportera väljer du data kategorier:  
+1. För att definiera vilka data du vill exportera väljer du data kategorier:  
 
     | Exportera kategori | Beskrivning |
     |--|--|
@@ -261,12 +272,12 @@ Så här exporterar du loggar:
     | **Webb program loggar** | Välj det här alternativet om du vill få information om alla begär Anden som skickats från programmets webb gränssnitt. |
     | **System säkerhets kopiering** | Välj det här alternativet om du vill exportera en säkerhets kopia av alla system data för att undersöka systemets exakta tillstånd. |
     | **Avsnitts statistik** | Välj det här alternativet om du vill tillåta avancerad inspektion av protokoll statistik. |
-    | **Databas loggar** | Välj det här alternativet om du vill exportera loggar från system databasen. Att undersöka system loggar hjälper till att identifiera system problem. |
+    | **Databas loggar** | Välj det här alternativet om du vill exportera loggar från system databasen. Genom att undersöka system loggar kan du identifiera system problem. |
     | **Konfiguration** | Välj det här alternativet om du vill exportera information om alla parametrar som kan konfigureras för att kontrol lera att allt har kon figurer ATS korrekt. |
 
-5. Om du vill välja alla alternativ väljer du **Välj alla** nästa för att **välja kategorier**.
+1. Om du vill välja alla alternativ väljer du **Välj alla** nästa för att **välja kategorier**.
 
-6. Välj **Exportera loggar**.
+1. Välj **Exportera loggar**.
 
 De exporterade loggarna läggs till i listan **arkiverade loggar** . Skicka eng ång slö sen ord till support teamet i ett separat meddelande och medium från de exporterade loggarna. Support teamet kommer bara att kunna extrahera exporterade loggar genom att använda det unika eng ång slö sen ord som används för att kryptera loggarna.
 

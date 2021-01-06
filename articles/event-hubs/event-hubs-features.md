@@ -3,12 +3,12 @@ title: Översikt över funktioner – Azure Event Hubs | Microsoft Docs
 description: Den här artikeln innehåller information om funktioner och terminologi i Azure Event Hubs.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: a38cf4ba6a06dc6e977f9ea168fcf67ce83ff5de
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 0730a5fa3abbc6b27cb96431125564a2475a90d1
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96339990"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955661"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Funktioner och terminologi i Azure Event Hubs
 
@@ -16,32 +16,48 @@ Azure Event Hubs är en skalbar tjänst för händelse bearbetning som matar in 
 
 Den här artikeln bygger på informationen i [översikts artikeln](./event-hubs-about.md)och ger teknisk och implementerings information om Event Hubs-komponenter och-funktioner.
 
+> [!TIP]
+> [Protokoll stödet för **Apache Kafka** -klienter](event-hubs-for-kafka-ecosystem-overview.md)  (versioner >= 1,0) tillhandahåller nätverks slut punkter som gör det möjligt för program som skapats att använda Apache Kafka med vilken klient som helst som använder Event Hubs. De flesta befintliga Kafka-program kan enkelt konfigureras om så att de pekar på ett Event Hub-namnområde i stället för en Kafka-kluster Start Server. 
+>
+>Azure Event Hubs är ett bra alternativ till att distribuera och driva dina egna Kafka-och Zookeeper-kluster och till Kafka-as-a-service-erbjudanden som inte är inbyggda i Azure. 
+>
+> Förutom att hämta samma grund funktioner som Apache Kafka Broker får du också till gång till Azure Event Hub-funktioner som automatisk batchbearbetning och arkivering via [Event Hubs avbildning](event-hubs-capture-overview.md), automatisk skalning och balansering, haveri beredskap, kostnads neutral tillgänglighets zons support, flexibel och säker nätverks integrering och stöd för flera protokoll, inklusive det brand Väggs vänliga AMQP-över-WebSockets-protokollet.
+
+
 ## <a name="namespace"></a>Namnområde
-Ett Event Hubs-namnområde innehåller en unik omfattnings behållare som refereras till av det [fullständigt kvalificerade domän namnet](https://en.wikipedia.org/wiki/Fully_qualified_domain_name), där du kan skapa ett eller flera Event Hub-eller Kafka-ämnen. 
-
-## <a name="event-hubs-for-apache-kafka"></a>Event Hubs för Apache Kafka
-
-[Den här funktionen](event-hubs-for-kafka-ecosystem-overview.md) ger en slut punkt som gör det möjligt för kunder att kommunicera med Event Hubs med Kafka-protokollet. Den här integrationen ger kunderna en Kafka-slutpunkt. Detta gör det möjligt för kunderna att konfigurera befintliga Kafka-program för att prata med Event Hubs, vilket ger ett alternativ till att köra egna Kafka-kluster. Event Hubs för Apache Kafka stöder Kafka-protokoll 1,0 och senare. 
-
-Med den här integrationen behöver du inte köra Kafka-kluster eller hantera dem med Zookeeper. Detta gör det också möjligt att arbeta med några av de mest krävande funktionerna i Event Hubs som hämtning, automatisk ökning och geo-katastrof återställning.
-
-Den här integrationen gör det också möjligt att använda program som speglings tillverkare eller ramverk som Kafka Anslut till arbets kluster med bara konfigurations ändringar. 
+Ett Event Hubs-namnområde ger DNS-integrerade nätverks slut punkter och en uppsättning åtkomst kontroll-och hanterings funktioner för nätverks integrering, till exempel [IP-filtrering](event-hubs-ip-filtering.md), [tjänst slut punkt för virtuellt nätverk](event-hubs-service-endpoints.md)och [privat länk](private-link-service.md) och är hanterings behållaren för en av flera Event Hub-instanser (eller ämnen, i Kafka parlance).
 
 ## <a name="event-publishers"></a>Händelseutfärdare
 
-En entitet som skickar data till en Event Hub är en händelse producent eller *händelse utgivare*. Händelse utgivare kan publicera händelser med hjälp av HTTPS eller AMQP 1,0 eller Kafka 1,0 och senare. Händelseutfärdare använder en SAS-token (signatur för delad åtkomst) för att identifiera sig mot en händelsehubb och kan ha en unik identitet eller använda en gemensam SAS-token.
+En entitet som skickar data till en Event Hub är en *händelse utgivare* (som används synonymt i *händelse producenten*). Händelse utgivare kan publicera händelser med hjälp av HTTPS eller AMQP 1,0 eller Kafka-protokollet. Händelse utgivare använder Azure Active Directory baserad auktorisering med OAuth2 JWT-token eller en Event Hub-speciell signatur för delad åtkomst-token (SAS) med publicerings åtkomst.
 
 ### <a name="publishing-an-event"></a>Publicera en händelse
 
-Du kan publicera en händelse via AMQP 1,0, Kafka 1,0 (och senare) eller HTTPS. Event Hubs tjänsten tillhandahåller klient biblioteken [REST API](/rest/api/eventhub/) och [.net](event-hubs-dotnet-standard-getstarted-send.md), [Java](event-hubs-java-get-started-send.md), [python](event-hubs-python-get-started-send.md), [Java Script](event-hubs-node-get-started-send.md)och [Go](event-hubs-go-get-started-send.md) för att publicera händelser till en Event Hub. För andra körningar och plattformar kan du använda alla AMQP 1.0-klienter, t.ex. [Apache Qpid](https://qpid.apache.org/). 
+Du kan publicera en händelse via AMQP 1,0, Kafka-protokollet eller HTTPS. Event Hubs tjänsten tillhandahåller klient biblioteken [REST API](/rest/api/eventhub/) och [.net](event-hubs-dotnet-standard-getstarted-send.md), [Java](event-hubs-java-get-started-send.md), [python](event-hubs-python-get-started-send.md), [Java Script](event-hubs-node-get-started-send.md)och [Go](event-hubs-go-get-started-send.md) för att publicera händelser till en Event Hub. För andra körningar och plattformar kan du använda alla AMQP 1.0-klienter, t.ex. [Apache Qpid](https://qpid.apache.org/). 
 
-Du kan publicera händelser individuellt eller i batchar. En enskild publikation (händelse data instans) har en gräns på 1 MB, oavsett om det är en enskild händelse eller en batch. Om du publicerar händelser som är större än det här tröskelvärdet uppstår ett fel. Det är en bra idé för utgivare att vara medveten om partitioner i händelsehubben och bara ange en *partitionsnyckel* (som introduceras i nästa avsnitt) eller deras identitet via sin SAS-token.
+Valet att använda AMQP eller HTTPS är specifikt för användningsscenariot. AMQP kräver en beständig dubbelriktad socket och dessutom säkerhet på transportnivå (TLS) eller SSL/TLS. AMQP har högre nätverks kostnader när sessionen initieras, men HTTPS kräver ytterligare TLS-kostnader för varje begäran. AMQP har betydligt högre prestanda för frekventa utgivare och kan uppnå mycket lägre fördröjning när den används med asynkron publicerings kod.
 
-Valet att använda AMQP eller HTTPS är specifikt för användningsscenariot. AMQP kräver en beständig dubbelriktad socket och dessutom säkerhet på transportnivå (TLS) eller SSL/TLS. AMQP har högre nätverks kostnader när sessionen initieras, men HTTPS kräver ytterligare TLS-kostnader för varje begäran. AMQP har högre prestanda för frekventa utfärdare.
+Du kan publicera händelser individuellt eller i batch. En enda publikation har en gräns på 1 MB, oavsett om det är en enskild händelse eller en batch. Publicerings händelser som är större än det här tröskelvärdet avvisas. 
+
+Event Hubs data flöde skalas med hjälp av partitioner och allokeringar av enhets enheter (se nedan). Det är en bra idé för utgivare att vara medveten om den speciella partitionering modell som valts för en Event Hub och bara ange en *partitionsnyckel* som används för att konsekvent tilldela relaterade händelser till samma partition.
 
 ![Partitionsnyckel](./media/event-hubs-features/partition_keys.png)
 
-Event Hubs garanterar att alla händelser som delar samma partitionsnyckelvärde levereras i rätt ordning och till samma partition. Om partitionsnycklar används med utfärdarprinciper måste utfärdarens identitet och partitionsnyckelns värde matcha varandra. Annars uppstår ett fel.
+Event Hubs garanterar att alla händelser som delar ett nyckel värde lagras tillsammans och levereras i den ordning de anländer. Om partitionsnycklar används med utfärdarprinciper måste utfärdarens identitet och partitionsnyckelns värde matcha varandra. Annars uppstår ett fel.
+
+### <a name="event-retention"></a>Kvarhållning av händelser
+
+Publicerade händelser tas bort från en Händelsehubben baserat på en konfigurerbar, tidsbaserad bevarande princip. Standardvärdet och kortast möjliga kvarhållningsperiod är 1 dag (24 timmar). För Event Hubs standard är den maximala kvarhållningsperioden 7 dagar. För Event Hubs Dedicated är den högsta kvarhållningsperioden 90 dagar.
+
+> [!NOTE]
+> Event Hubs är en händelse Ströms motor i real tid och är inte avsedd att användas i stället för en databas och/eller som ett permanent Arkiv för händelse strömmar med oändligt kvarhållna händelser. 
+> 
+> Den djupare historiken för en händelse ström hämtar, desto mer behöver du hjälp index för att hitta en viss historisk sektor i en given data ström. Granskning av händelse nytto laster och indexering ingår inte i funktions omfånget för Event Hubs (eller Apache Kafka). Databaser och specialiserade analys lager och motorer som [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md), [Azure Data Lake Analytics](../data-lake-analytics/data-lake-analytics-overview.md) och [Azure Synapse](../synapse-analytics/overview-what-is.md) är därför mycket bättre lämpade för att lagra historiska händelser.
+>
+> [Event Hubs avbildningen](event-hubs-capture-overview.md) integreras direkt med Azure Blob Storage och Azure Data Lake Storage och, med denna integrering, aktiverar även [flödes händelser direkt till Azure-Synapse](store-captured-data-data-warehouse.md).
+>
+> Om du vill använda mönstret för [händelse källor](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing) för ditt program bör du justera din ögonblicks bilds strategi med lagrings gränserna för Event Hubs. Du behöver inte skapa om materialiserade vyer från obehandlade händelser som börjar vid början av tiden. Surely kommer att behöva ångra en sådan strategi när ditt program är i produktion för ett tag och är väl använt och din projektion Builder måste omsättningen genom flera ändrings händelser samtidigt som du försöker fånga upp till de senaste och pågående ändringarna. 
+
 
 ### <a name="publisher-policy"></a>Utgivarprincip
 

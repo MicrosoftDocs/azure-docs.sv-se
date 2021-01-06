@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: overview
-ms.date: 08/24/2020
+ms.date: 01/05/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.custom: contperf-fy21q1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 242e0e4614994c30d0a14b8fe3d7a5c2b217bb5a
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 6e274d35fde6a3d55c05bcb5a9f22e75a37aa3c6
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033348"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955407"
 ---
 # <a name="what-is-identity-protection"></a>Vad är Identity Protection?
 
@@ -47,15 +47,18 @@ I sitt [blogg inlägg i oktober 2018](https://techcommunity.microsoft.com/t5/Azu
 
 Identitets skyddet identifierar risker i följande klassificeringar:
 
-| Typ av risk identifiering | Description |
+| Typ av risk identifiering | Beskrivning |
 | --- | --- |
-| Ovanlig resa | Logga in från en ovanlig-plats baserat på användarens senaste inloggningar. |
 | Anonym IP-adress | Logga in från en anonym IP-adress (t. ex. Tor webbläsare, Anonymizer VPN). |
-| Obekanta inloggningsegenskaper | Logga in med egenskaper som vi inte har sett nyligen för den angivna användaren. |
+| Ovanlig resa | Logga in från en ovanlig-plats baserat på användarens senaste inloggningar. |
 | Länkad IP-adress för skadlig kod | Logga in från en länkad IP-adress med skadlig kod. |
+| Obekanta inloggningsegenskaper | Logga in med egenskaper som vi inte har sett nyligen för den angivna användaren. |
 | Läckta autentiseringsuppgifter | Anger att användarens giltiga autentiseringsuppgifter har läckts. |
 | Lösen ords sprayning | Anger att flera användar namn angrips med vanliga lösen ord på ett enhetligt, brutet sätt. |
 | Azure AD Threat Intelligence | Microsofts interna och externa hot informations källor har identifierat ett känt angrepps mönster. |
+| Nytt land | Den här identifieringen upptäcks av [Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#activity-from-infrequent-country). |
+| Aktivitet från anonym IP-adress | Den här identifieringen upptäcks av [Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#activity-from-anonymous-ip-addresses). |
+| Vidarebefordran av misstänkt inkorg | Den här identifieringen upptäcks av [Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#suspicious-inbox-forwarding). |
 
 Mer information om dessa risker och hur/när de beräknas finns i artikeln, [Vad är risk](concept-identity-protection-risks.md).
 
@@ -102,17 +105,17 @@ Administratörer för villkorlig åtkomst kan också skapa principer som faktorn
 
 [!INCLUDE [Active Directory P2 license](../../../includes/active-directory-p2-license.md)]
 
-| Kapacitet | Information  | Azure AD Free/Microsoft 365 appar | Azure AD Premium P1|Azure AD Premium P2 |
+| Funktion | Information  | Azure AD Free/Microsoft 365 appar | Azure AD Premium P1|Azure AD Premium P2 |
 | --- | --- | --- | --- | --- |
-| Risk principer | Användar risk princip (via identitets skydd)  | Inga | Inga |Ja | 
-| Risk principer | Inloggnings risk princip (via identitets skydd eller villkorlig åtkomst)  | Inga |  Inga |Ja |
-| Säkerhetsrapporter | Översikt |  Inga | Inga |Ja |
+| Risk principer | Användar risk princip (via identitets skydd)  | Nej | Nej |Ja | 
+| Risk principer | Inloggnings risk princip (via identitets skydd eller villkorlig åtkomst)  | Nej |  Nej |Ja |
+| Säkerhetsrapporter | Översikt |  Nej | Nej |Ja |
 | Säkerhetsrapporter | Riskfyllda användare  | Begränsad information. Endast användare med medelhög och hög risk visas. Ingen informations låda eller risk historik. | Begränsad information. Endast användare med medelhög och hög risk visas. Ingen informations låda eller risk historik. | Fullständig åtkomst|
 | Säkerhetsrapporter | Riskfyllda inloggningar  | Begränsad information. Ingen risk information eller risk nivå visas. | Begränsad information. Ingen risk information eller risk nivå visas. | Fullständig åtkomst|
 | Säkerhetsrapporter | Riskidentifieringar   | No | Begränsad information. Ingen informations låda.| Fullständig åtkomst|
-| Meddelanden | Varningar för användare med risk identifiering  | Inga | Inga |Ja |
-| Meddelanden | Vecko sammandrag| Inga | Inga | Ja | 
-| | Registreringsprincip för multifaktorautentisering | Inga | Inga | Ja |
+| Meddelanden | Varningar för användare med risk identifiering  | Nej | Nej |Ja |
+| Meddelanden | Vecko sammandrag| Nej | Nej | Ja | 
+| | Registreringsprincip för multifaktorautentisering | Nej | Nej | Ja |
 
 Mer information om de här omfattande rapporterna finns i artikeln [så här gör du: Undersök risker](howto-identity-protection-investigate-risk.md#navigating-the-reports).
 

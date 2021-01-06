@@ -11,16 +11,28 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2020
 ms.author: errobin
-ms.openlocfilehash: dcfce06bb158888b56483a73ededd354c229a99b
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 3acaaba86c9a546a0bd45b5386287908168d50d0
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94696327"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955628"
 ---
-# <a name="troubleshoot-resource-health-frontend-and-backend-availability-issues"></a>Felsöka problem med resurs hälsa, frontend och backend-tillgänglighet 
+# <a name="troubleshoot-resource-health-and-inbound-availability-issues"></a>Felsök problem med resurs hälsa och inkommande tillgänglighet 
 
 Den här artikeln är en guide för att undersöka problem som påverkar tillgänglighet för klient delens IP-och Server dels resurser. 
+
+Resource Health kontrollen (RHC) för Load Balancer används för att fastställa belastnings utjämningens hälso tillstånd. Den analyserar tillgänglighets måttet för data Sök vägen under ett intervall på **2 minuter** för att avgöra om belastnings Utjämnings slut punkter, kombinationerna av klient delens IP-adress och klient dels port med belastnings Utjämnings regler är tillgängliga.
+
+I tabellen nedan beskrivs RHC-logiken som används för att fastställa hälso tillståndet för belastningsutjämnaren.
+
+| Resurs hälso status | Beskrivning |
+| --- | --- |
+| Tillgänglig | Standard belastnings Utjämnings resursen är felfri och tillgänglig. |
+| Degraderad | Din standard belastningsutjämnare har plattforms-eller användar initierade händelser som påverkar prestanda. Datasökvägens tillgänglighet har visat mindre än 90 % men högre än 25 % hälsa i minst två minuter. Du får medelhög prestanda påverkan. 
+| Inte tillgänglig | Standard belastnings Utjämnings resursen är inte felfri. Datapath tillgänglighets mått har rapporterat färre 25% hälso tillstånd i minst två minuter. Du får betydande prestanda påverkan eller brist på tillgänglighet för inkommande anslutningar. Det kan finnas användare eller plattforms händelser som orsakar otillgänglighet. |
+| Okänt | Resurs hälso status för din standard belastnings Utjämnings resurs har inte uppdaterats eller har inte tagit emot information om tillgänglighet för data Sök vägar under de senaste 10 minuterna. Det här tillståndet bör vara tillfälligt och återspegla rätt status så snart data tas emot. |
+
 
 ## <a name="about-the-metrics-well-use"></a>Om de mått vi använder
 De två mått som ska användas är *tillgänglighet för data Sök väg* och *status för hälso avsökning* och det är viktigt att förstå deras innebörd för att härleda korrekta insikter. 

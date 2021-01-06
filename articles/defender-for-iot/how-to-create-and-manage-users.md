@@ -4,15 +4,15 @@ description: Skapa och hantera användare av sensorer och den lokala hanterings 
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 12/21/2020
+ms.date: 1/3/2021
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: c3a9e1c7e96d0392e1f94b71549f612738622dea
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 22d0c59110ba033232fbdf41062b49e9a146ca6f
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97843340"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955104"
 ---
 # <a name="about-defender-for-iot-console-users"></a>Om Defender för IoT Console-användare
 
@@ -20,7 +20,7 @@ Den här artikeln beskriver hur du skapar och hanterar användare av sensorer oc
 
 Funktioner är också tillgängliga för att spåra användar aktivitet och aktivera Active Directory inloggning.
 
-Som standard installeras varje sensor och lokal hanterings konsol med en *Cyberx och en support* användare. Dessa användare har till gång till avancerade verktyg för fel sökning och installation. Administratörs användare ska logga in med dessa användarautentiseringsuppgifter, skapa en administratörs användare och sedan skapa ytterligare användare för säkerhetsanalytiker och skrivskyddade användare.
+Som standard installeras varje sensor och lokal hanterings konsol med en *Cyberx och en support* användare. Dessa användare har till gång till avancerade verktyg för fel sökning och installation. Administratörs användare ska logga in med dessa användarautentiseringsuppgifter, skapa en administratörs användare och sedan skapa extra användare för säkerhetsanalytiker och skrivskyddade användare.
 
 ## <a name="role-based-permissions"></a>Rollbaserade behörigheter
 Följande användar roller är tillgängliga:
@@ -89,8 +89,8 @@ I det här avsnittet beskrivs hur du definierar användare. Cyberx-, support-och
 Så här definierar du en användare:
 
 1. I det vänstra fönstret för sensorn eller den lokala hanterings konsolen väljer **du användare**.
-2. I fönstret **användare** väljer du **skapa användare**.
-3. I fönstret **skapa användare** definierar du följande parametrar:
+1. I fönstret **användare** väljer du **skapa användare**.
+1. I fönstret **skapa användare** definierar du följande parametrar:
 
    - **Användar namn**: Ange ett användar namn.
    - **E-post**: Ange användarens e-postadress.
@@ -122,7 +122,7 @@ För att få åtkomst till kommandot:
 
 1. Logga in på CLI för sensorn eller den lokala hanterings konsolen genom att använda Defender för IoT-administratörsautentiseringsuppgifter.
 
-2. Ange `sudo nano /var/cyberx/properties/authentication`.
+1. Ange `sudo nano /var/cyberx/properties/authentication`.
 
 ```azurecli-interactive
     infinity_session_expiration = true
@@ -138,7 +138,6 @@ För att få åtkomst till kommandot:
 Ändra till om du vill inaktivera `infinity_session_expiration = true` funktionen `infinity_session_expiration = false` .
 
 Om du vill uppdatera antalet utloggade perioder justerar du `= <number>` värdet till den begärda tiden.
-
 
 ## <a name="track-user-activity"></a>Spåra användar aktivitet 
 
@@ -171,11 +170,11 @@ Så här konfigurerar du Active Directory:
 
     :::image type="content" source="media/how-to-setup-active-directory/ad-system-settings-v2.png" alt-text="Visa Active Directory Systeminställningar.":::
 
-2. I fönstret **system inställningar** väljer du **Active Directory**.
+1. I fönstret **system inställningar** väljer du **Active Directory**.
 
     :::image type="content" source="media/how-to-setup-active-directory/ad-configurations-v2.png" alt-text="Redigera dina Active Directory-konfigurationer.":::
 
-3. Välj **Active Directory integration Enabled** Save i dialog rutan **Redigera Active Directory konfiguration**  >  . Dialog rutan **redigera Active Directory konfiguration** expanderas och du kan nu ange de parametrar som ska konfigureras Active Directory.
+1. Välj **Active Directory integration Enabled** Save i dialog rutan **Redigera Active Directory konfiguration**  >  . Dialog rutan **redigera Active Directory konfiguration** expanderas och du kan nu ange de parametrar som ska konfigureras Active Directory.
 
     :::image type="content" source="media/how-to-setup-active-directory/ad-integration-enabled-v2.png" alt-text="Ange de parametrar som ska konfigureras Active Directory.":::
 
@@ -184,7 +183,7 @@ Så här konfigurerar du Active Directory:
     > - Använd endast gemener för alla Active Directory parametrar. Använd gemener även när konfigurationerna i Active Directory använda versaler.
     > - Du kan inte konfigurera både LDAP och LDAP för samma domän. Du kan dock använda båda för olika domäner samtidigt.
 
-4. Ange parametrarna för Active Directory servern enligt följande:
+1. Ange parametrarna för Active Directory servern enligt följande:
 
    | Server parameter | Beskrivning |
    |--|--|
@@ -194,9 +193,79 @@ Så här konfigurerar du Active Directory:
    | Active Directory grupper | Ange de grupp namn som definieras i Active Directory-konfigurationen på LDAP-servern. |
    | Betrodda domäner | Lägg till en betrodd domän genom att lägga till domän namnet och anslutnings typen för en betrodd domän. <br />Du kan bara konfigurera betrodda domäner för användare som har definierats under användare. |
 
-5. Välj **Spara**.
+1. Välj **Spara**.
 
-6. Om du vill lägga till en betrodd server väljer du **Lägg till Server** och konfigurerar en annan server.
+1. Om du vill lägga till en betrodd server väljer du **Lägg till Server** och konfigurerar en annan server.
+
+## <a name="resetting-a-users-password-for-the-sensor-or-on-premises-management-console"></a>Återställa en användares lösen ord för sensorn eller den lokala hanterings konsolen
+
+### <a name="cyberx-or-support-user"></a>CyberX eller support användare
+
+Endast **CyberX** -och **support** användaren har åtkomst till funktionen för **återställning av lösen ord** . Om **CyberX** eller **support** användaren har glömt sitt lösen ord kan de återställa lösen ordet via alternativet för **lösen ords återställning** på inloggnings sidan för Defender för IoT.
+
+Så här återställer du lösen ordet för en CyberX-eller support användare:
+
+1. På inloggnings skärmen för Defender för IoT väljer du  **återställning av lösen ord**. Skärmen för **lösen ords återställning** öppnas.
+
+1. Välj antingen **CyberX** eller **support** och kopiera den unika identifieraren.
+
+1. Navigera till Azure Portal och välj **platser och sensorer**.  
+
+1. Välj **prenumerations filter** ikonen :::image type="icon" source="media/password-recovery-images/subscription-icon.png" border="false":::  i det översta verktygsfältet och välj den prenumeration som sensorn är ansluten till.
+
+1. Välj fliken **Återställ lösen ord för den lokala hanterings konsolen** .
+
+   :::image type="content" source="media/password-recovery-images/recover-button.png" alt-text="Välj knappen Återställ lokal hantering för att ladda ned återställnings filen.":::
+
+1. Ange den unika identifierare som du fick på skärmen för **lösen ords återställning** och välj **Återställ**. `password_recovery.zip`Filen har hämtats.
+
+    > [!NOTE]
+    > Ändra inte lösen ords återställnings filen. Det är en signerad fil och fungerar inte om du manipulerar den.
+
+1. På skärmen för **lösen ords återställning** väljer du **överför**. Fönstret **överför lösen ords återställnings fil** öppnas.
+
+   :::image type="content" source="media/password-recovery-images/upload.png" alt-text="Ladda upp din återställnings fil för att få ett nytt lösen ord.":::
+
+1. Välj **Bläddra** för att hitta `password_recovery.zip` filen eller dra `password_recovery.zip` till fönstret.
+
+    > [!NOTE]
+    > Ett fel meddelande kan visas som anger att filen är ogiltig. Du kan åtgärda det här fel meddelandet genom att se till att du har valt rätt prenumeration innan du laddar ned `password_recovery.zip` och laddar ned den igen.  
+
+1. Välj **Nästa** och ditt användar-och systemgenererade lösen ord för hanterings konsolen visas sedan.
+
+### <a name="administrator-security-analyst-and-read-only-user"></a>Administratör, säkerhets analys och skrivskyddad användare
+
+Skrivskyddade och säkerhetsanalytiker kan inte återställa sina egna lösen ord och behöver kontakta en användare med antingen administratörs-, support-eller CyberX-rollerna för att kunna återställa sina lösen ord. En administratörs användare måste kontakta **CyberX** eller **support** användaren för att återställa lösen ordet.
+
+Återställa en användares lösen ord på sensorn:
+
+1. En administratör, support eller CyberX roll användare ska logga in på sensorn.
+
+1. Välj **användare** i den vänstra panelen.
+
+   :::image type="content" source="media/password-recovery-images/sensor-page.png" alt-text="Välj alternativet användare i det vänstra fönstret.":::
+
+1. Leta upp användaren och välj **Redigera** från List Rute menyn **åtgärder** .
+
+   :::image type="content" source="media/password-recovery-images/edit.png" alt-text="Välj Redigera i list rutan Åtgärder-menyn.":::
+
+1. Ange det nya lösen ordet i fälten **nytt lösen** ord och **Bekräfta nytt lösen ord** .
+
+1. Välj **Uppdatera**.
+
+Återställa en användares lösen ord i den lokala hanterings konsolen:
+
+1. En administratör, support eller CyberX roll användare ska logga in på sensorn.
+
+1. Välj **användare** i den vänstra panelen.
+
+   :::image type="content" source="media/password-recovery-images/console-page.png" alt-text="Välj användarens alternativ i den vänstra panelen.":::
+
+1. Leta upp din användare och välj redigerings ikonen :::image type="icon" source="media/password-recovery-images/edit-icon.png" border="false"::: .
+
+1. Ange det nya lösen ordet i fälten **nytt lösen** ord och **Bekräfta nytt lösen ord** .
+
+1. Välj **Uppdatera**.
 
 ## <a name="see-also"></a>Se även
 

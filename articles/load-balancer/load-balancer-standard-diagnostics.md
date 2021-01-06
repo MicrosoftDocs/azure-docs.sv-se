@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2019
 ms.author: allensu
-ms.openlocfilehash: 9c322620e1d66182937be41bb02d48fd1469f459
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: da4c5f7891b518f4e6393f3fb4e153d464f4f2a2
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94697568"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955543"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>Standard Load Balancer-diagnostik med mått, aviseringar och resurshälsa
 
@@ -231,7 +231,14 @@ Med hjälp av diagrammet kan kunderna felsöka distributionen på egen hand utan
 
 ## <a name="resource-health-status"></a><a name = "ResourceHealth"></a>Resurs hälso status
 
-Hälso status för de Standard Load Balancer resurserna exponeras via den befintliga **resurs hälsan** under **övervaka > service Health**.
+Hälso status för de Standard Load Balancer resurserna exponeras via den befintliga **resurs hälsan** under **övervaka > service Health**. Den utvärderas varannan **minut** genom att mäta data Sök vägs tillgänglighet som avgör om slut punkterna för belastnings utjämning för klient delen är tillgängliga.
+
+| Resurs hälso status | Beskrivning |
+| --- | --- |
+| Tillgänglig | Standard belastnings Utjämnings resursen är felfri och tillgänglig. |
+| Degraderad | Din standard belastningsutjämnare har plattforms-eller användar initierade händelser som påverkar prestanda. Datasökvägens tillgänglighet har visat mindre än 90 % men högre än 25 % hälsa i minst två minuter. Du får medelhög prestanda påverkan. [Följ fel söknings guiden för RHC](https://docs.microsoft.com/azure/load-balancer/troubleshoot-rhc) för att avgöra om det finns händelser som initieras av användaren.
+| Inte tillgänglig | Standard belastnings Utjämnings resursen är inte felfri. Datapath tillgänglighets mått har rapporterat färre 25% hälso tillstånd i minst två minuter. Du får betydande prestanda påverkan eller brist på tillgänglighet för inkommande anslutningar. Det kan finnas användare eller plattforms händelser som orsakar otillgänglighet. [Följ fel söknings guiden för RHC](https://docs.microsoft.com/azure/load-balancer/troubleshoot-rhc) för att avgöra om det finns inloggade händelser som påverkar din tillgänglighet. |
+| Okänt | Resurs hälso status för din standard belastnings Utjämnings resurs har inte uppdaterats eller har inte tagit emot information om tillgänglighet för data Sök vägar under de senaste 10 minuterna. Det här tillståndet bör vara tillfälligt och återspegla rätt status så snart data tas emot. |
 
 Så här visar du hälso tillståndet för dina offentliga Standard Load Balancer-resurser:
 1. Välj **övervaka**  >  **service Health**.
@@ -254,12 +261,6 @@ Så här visar du hälso tillståndet för dina offentliga Standard Load Balance
  
 Beskrivning av allmän resurs hälso status finns i [RHC-dokumentationen](../service-health/resource-health-overview.md). För vissa status värden för Azure Load Balancer anges i tabellen nedan: 
 
-| Resurs hälso status | Beskrivning |
-| --- | --- |
-| Tillgänglig | Standard belastnings Utjämnings resursen är felfri och tillgänglig. |
-| Degraderad | Din standard belastningsutjämnare har plattforms-eller användar initierade händelser som påverkar prestanda. Datapath tillgänglighets mått har rapporterat mindre än 90% men större än 25% hälsa i minst två minuter. Du får medelhög prestanda påverkan. [Följ fel söknings tillgänglighets guide för data Sök väg] för att avgöra om det finns händelser som initieras av användaren.
-| Ej tillgänglig | Standard belastnings Utjämnings resursen är inte felfri. Datapath tillgänglighets mått har rapporterat färre 25% hälso tillstånd i minst två minuter. Du får betydande prestanda påverkan eller brist på tillgänglighet för inkommande anslutningar. Det kan finnas användare eller plattforms händelser som orsakar otillgänglighet. [Följ fel söknings tillgänglighets guide för data Sök väg] för att avgöra om det finns händelser som påverkar din tillgänglighet. |
-| Okänt | Resurs hälso status för din standard belastnings Utjämnings resurs har inte uppdaterats eller har inte tagit emot information om tillgänglighet för data Sök vägar under de senaste 10 minuterna. Det här tillståndet bör vara tillfälligt och återspeglar rätt status så snart data tas emot. |
 
 ## <a name="next-steps"></a>Nästa steg
 

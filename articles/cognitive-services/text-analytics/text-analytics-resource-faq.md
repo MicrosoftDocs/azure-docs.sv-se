@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 02/13/2019
+ms.date: 01/05/2021
 ms.author: aahi
-ms.openlocfilehash: ffa70afa0edf29181bc622cbef6ff8716134b1f7
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 9a4e179767cc38169cd794f4cd629604bdcdaab0
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94364946"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955050"
 ---
-# <a name="frequently-asked-questions-faq-about-the-text-analytics-cognitive-service"></a>Vanliga frågor och svar om Textanalys kognitiva tjänster
+# <a name="frequently-asked-questions-faq-about-the-text-analytics-api"></a>Vanliga frågor och svar om API för textanalys
 
- Få svar på vanliga frågor om begrepp, kod och scenarier som är relaterade till API för textanalys för Microsoft Cognitive Services på Azure.
+ Få svar på vanliga frågor om begrepp, kod och scenarier som är relaterade till API för textanalys i Azure Cognitive Services.
 
 ## <a name="can-text-analytics-identify-sarcasm"></a>Kan Textanalys identifiera sarkasm?
 
@@ -47,11 +47,21 @@ I allmänhet består utdata av Substantiv och objekt i meningen. Utdata visas i 
 
 Förbättringar av modeller och algoritmer meddelas om ändringen är större eller i tyst fart på tjänsten om uppdateringen är mindre. Med tiden kan du se att samma text inmatnings resultat har en annan sentiment poäng eller en viktig fras. Detta är en normal och avsiktlig konsekvens av användningen av hanterade maskin inlärnings resurser i molnet.
 
+## <a name="service-availability-and-redundancy"></a>Tjänst tillgänglighet och redundans
+
+### <a name="is-text-analytics-service-zone-resilient"></a>Är Textanalys tjänst zon elastisk?
+
+Ja. Tjänsten Textanalys är zon-flexibel som standard.
+
+### <a name="how-do-i-configure-the-text-analytics-service-to-be-zone-resilient"></a>Hur gör jag för att konfigurerar du att Textanalyss tjänsten ska vara zoner-elastisk?
+
+Ingen kund konfiguration krävs för att aktivera zon återhämtning. Zon-återhämtning för Textanalys resurser är tillgängligt som standard och hanteras av själva tjänsten.
+
 ## <a name="next-steps"></a>Nästa steg
 
 Är din fråga om en funktion eller funktionalitet som saknas? Överväg att begära eller rösta på den på vår [UserVoice-webbplats](https://cognitive.uservoice.com/forums/555922-text-analytics).
 
 ## <a name="see-also"></a>Se även
 
- [StackOverflow: API för textanalys](https://stackoverflow.com/questions/tagged/text-analytics-api)   
- [StackOverflow: Cognitive Services](https://stackoverflow.com/questions/tagged/microsoft-cognitive)
+ * [StackOverflow: API för textanalys](https://stackoverflow.com/questions/tagged/text-analytics-api)   
+ * [StackOverflow: Cognitive Services](https://stackoverflow.com/questions/tagged/microsoft-cognitive)

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 12/21/2020
+ms.date: 01/05/2021
 ms.author: alkohli
-ms.openlocfilehash: f622d6e752b658172bce115cde4f30d555e2ed3a
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: d601c6191da9d555e54c1d58c122420510d288fc
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763859"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955560"
 ---
 # <a name="deploy-custom-script-extension-on-vms-running-on-your-azure-stack-edge-pro-device"></a>Distribuera anpassat skript tillägg på virtuella datorer som körs på din Azure Stack Edge Pro-enhet
 
@@ -45,7 +45,7 @@ Det anpassade skript tillägget för Linux kommer att köras på följande OSs. 
 | Distribution | Version |
 |---|---|
 | Linux: Ubuntu | 18,04 LTS |
-| Linux: Red Hat Enterprise Linux | 7,4 |
+| Linux: Red Hat Enterprise Linux | 7,4, 7,5, 7,7 |
 
 <!--### Script location
 
@@ -60,7 +60,7 @@ If your script is on a local server, then you may still need additional firewall
 > [!NOTE]
 > Before you install the Custom Script extension, make sure that the port enabled for compute network on your device is connected to Internet and has access. -->
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 1. [Ladda ned filerna för VM-mallarna och-parametrarna](https://aka.ms/ase-vm-templates) till klient datorn. Zippa upp den till en katalog som du ska använda som arbets katalog.
 

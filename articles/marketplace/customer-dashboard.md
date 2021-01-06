@@ -7,18 +7,18 @@ ms.topic: article
 ms.date: 11/09/2020
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: 878fa181ff09d547ef6594a238e9c1d883cc89b7
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: c98b47507a7543002f00aae82370f5ea0043510d
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460491"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97954285"
 ---
 # <a name="customers-dashboard-in-commercial-marketplace-analytics"></a>Kund instrument panel på kommersiell Marketplace-analys
 
 Den här artikeln innehåller information om instrument panelen för kunder i Partner Center. Den här instrument panelen visar information om dina kunder, inklusive tillväxt trender, som presenteras i ett grafiskt och nedladdnings Bart format.
 
-För att komma åt instrument panelen kunder i Partner Center väljer du **[analysera](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** kunder under **kommersiell marknads** plats  >  **Customers**.
+För att komma åt instrument panelen kunder i Partner Center väljer du **[analysera](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** kunder under **kommersiell marknads** plats  >  .
 
 >[!NOTE]
 > Detaljerade definitioner av analys terminologi finns i terminologi för [kommersiella Marketplace-analyser och vanliga frågor](./analytics-faq.md).
@@ -144,7 +144,7 @@ _**Tabell 1: ord lista med data termer**_
 
 | Kolumnnamn | Attributnamn | Definition |
 | ------------ | ------------- | ------------- |
-| Prenumerations-ID för Marketplace | Prenumerations-ID för Marketplace | Den unika identifierare som är kopplad till Azure-prenumerationen som kunden använde för att köpa ditt kommersiella Marketplace-erbjudande. ID var tidigare GUID för Azure-prenumerationen. |
+| Prenumerations-ID för Marketplace | Prenumerations-ID för Marketplace | Den unika identifierare som är kopplad till Azure-prenumerationen som kunden använde för att köpa ditt kommersiella Marketplace-erbjudande. För infrastruktur erbjudanden är det här kundens GUID för Azure-prenumerationen. För SaaS-erbjudanden visas detta som nollor eftersom SaaS-inköp inte kräver en Azure-prenumeration. |
 | DateAcquired | Inköps datum | Det första datumet då kunden köpte ett erbjudande som du har publicerat. |
 | DateLost | Datum förlorat | Det senaste datumet då kunden avbröt den sista av alla tidigare inköpta erbjudanden. |
 | Providernamn | Providernamn | Namnet på leverantören som är involverad i relationen mellan Microsoft och kunden. Om kunden är ett företag genom åter försäljaren blir detta åter försäljaren. Om en moln lösnings leverantör (CSP) är involverad är detta CSP. |
@@ -157,7 +157,7 @@ _**Tabell 1: ord lista med data termer**_
 | Kund post nummer | Kund post nummer | Post numret från kunden. Koden får inte vara samma som post numret i en kunds Azure-prenumeration. |
 | CustomerCommunicationCulture | Kundens kommunikations språk | Det språk som kunden föredrar för kommunikation. |
 | CustomerCountryRegion | Kund land/-region | Landets/regionens namn som tillhandahålls av kunden. Land/region kan vara annorlunda än landet/regionen i en kunds Azure-prenumeration. |
-| AzureLicenseType | Typ av Azure-licens | Den typ av licens avtal som kunder använder för att köpa Azure. Kallas även för _kanalen_. Möjliga värden är:<ul><li>Cloud Solution Provider</li><li>Enterprise</li><li>Företag via åter försäljare</li><li>Betala per användning</li></ul> |
+| AzureLicenseType | Typ av Azure-licens | Den typ av licens avtal som kunder använder för att köpa Azure. Kallas även för _kanalen_. Möjliga värden är:<ul><li>Cloud Solution Provider</li><li>Stora företag</li><li>Företag via åter försäljare</li><li>Betala per användning</li></ul> |
 | PromotionalCustomers | Är kampanj kontakt deltagande | Värdet gör att du vet om kunden proaktivt har valt reklam kontakt från utgivare. För tillfället visar vi inte alternativet för kunder, så vi har angett "nej" på tavlan. När den här funktionen har distribuerats kommer vi att börja uppdatera enligt detta. |
 | CustomerState | Kund tillstånd | Det hemland som tillhandahålls av kunden. Tillstånd kan skilja sig från det tillstånd som tillhandahölls i en kunds Azure-prenumeration. |
 | CommerceRootCustomer | Commerces rot kund | Ett fakturerings konto-ID kan associeras med flera kund-ID: n.<br>En kombination av ett fakturerings konto-ID och ett kund-ID kan associeras med flera prenumerationer på kommersiella marknads platser.<br>Commerces rot kund anger namnet på prenumerationens kund. |

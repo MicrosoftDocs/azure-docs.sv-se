@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Använda GitOps för att konfigurera ett Azure Arc-aktiverat Kubernetes-kluster (för hands version)
 keywords: GitOps, Kubernetes, K8s, Azure, Arc, Azure Kubernetes service, AKS, containers
-ms.openlocfilehash: 85771824a6cecd10346937220e400028a4570377
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 906021377cbfd6960769f98f9dbd15a5c430c71f
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653460"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955339"
 ---
 # <a name="deploy-configurations-using-gitops-on-arc-enabled-kubernetes-cluster-preview"></a>Distribuera konfigurationer med hjälp av GitOps på Arc-aktiverade Kubernetes-kluster (förhandsversion)
 
@@ -97,7 +97,7 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 
 #### <a name="use-a-private-git-repo-with-ssh-and-flux-created-keys"></a>Använd en privat git-lagrings platsen med SSH-och flöden skapade nycklar
 
-| Parameter | Format | Obs!
+| Parameter | Format | Kommentarer
 | ------------- | ------------- | ------------- |
 | --databas-URL | ssh://user@server/repo[. git] eller user@server:repo [. git] | `git@` kan ersätta `user@`
 
@@ -106,7 +106,7 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 
 #### <a name="use-a-private-git-repo-with-ssh-and-user-provided-keys"></a>Använd en privat git-lagrings platsen med SSH-och användarspecifika nycklar
 
-| Parameter | Format | Obs! |
+| Parameter | Format | Kommentarer |
 | ------------- | ------------- | ------------- |
 | --databas-URL  | ssh://user@server/repo[. git] eller user@server:repo [. git] | `git@` kan ersätta `user@` |
 | --SSH-Private-Key | Base64-kodad nyckel i [PEM-format](https://aka.ms/PEMformat) | Ange nyckel direkt |
@@ -117,7 +117,7 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 
 #### <a name="use-a-private-git-host-with-ssh-and-user-provided-known-hosts"></a>Använd en privat git-värd med SSH-och användarspecifika kända värdar
 
-| Parameter | Format | Obs! |
+| Parameter | Format | Kommentarer |
 | ------------- | ------------- | ------------- |
 | --databas-URL  | ssh://user@server/repo[. git] eller user@server:repo [. git] | `git@` kan ersätta `user@` |
 | --SSH-kända-värdar | Base64-kodad | kända värdar innehåll tillhandahålls direkt |
@@ -129,7 +129,7 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 
 #### <a name="use-a-private-git-repo-with-https"></a>Använda en privat git-lagrings platsen med HTTPS
 
-| Parameter | Format | Obs! |
+| Parameter | Format | Kommentarer |
 | ------------- | ------------- | ------------- |
 | --databas-URL | https://server/repo[. git] | HTTPS med Basic auth |
 | --https-användare | RAW eller Base64-kodad | HTTPS-användarnamn |
@@ -150,7 +150,7 @@ Om du vill anpassa konfigurationen kan du använda följande parametrar:
 
 `--helm-operator-chart-version` : *Valfri* diagram version för Helm-operatorn (om aktive rad). Standard: ' 1.2.0 '.
 
-`--operator-namespace` : Det *valfria* namnet för operatorns namn område. Standard: standard
+`--operator-namespace` : Det *valfria* namnet för operatorns namn område. Standard: standard. Högst 23 tecken.
 
 `--operator-params` : *Valfria* parametrar för operatorn. Måste anges inom enkla citat tecken. Till exempel ```--operator-params='--git-readonly --git-path=releases --sync-garbage-collection' ```
 
@@ -169,12 +169,6 @@ Alternativ som stöds i--Operator-params
 | --git-e-post  | E-postmeddelande som ska användas för git-incheckning. |
 
 * Om "--git-User" eller "-git-e-post" inte har angetts (vilket innebär att du inte vill att flödet ska skriva till lagrings platsen), så anges--git-ReadOnly automatiskt (om du inte redan har gjort det).
-
-* Om enableHelmOperator är true kan operatorInstanceName + operatorNamespace-strängar inte överstiga 47 tecken.  Om du inte följer den här gränsen får du följande fel meddelande:
-
-   ```console
-   {"OperatorMessage":"Error: {failed to install chart from path [helm-operator] for release [<operatorInstanceName>-helm-<operatorNamespace>]: err [release name \"<operatorInstanceName>-helm-<operatorNamespace>\" exceeds max length of 53]} occurred while doing the operation : {Installing the operator} on the config","ClusterState":"Installing the operator"}
-   ```
 
 Mer information finns i [flödes dokumentation](https://aka.ms/FluxcdReadme).
 
@@ -251,7 +245,7 @@ När etablerings processen utförs går det `sourceControlConfiguration` igenom 
 
 ## <a name="apply-configuration-from-a-private-git-repository"></a>Tillämpa konfigurationen från en privat git-lagringsplats
 
-Om du använder en privat git-lagrings platsen måste du konfigurera den offentliga SSH-nyckeln i din lagrings platsen. Du kan konfigurera den offentliga nyckeln antingen på git-lagrings platsen eller git-användaren som har åtkomst till lagrings platsen. Den offentliga SSH-nyckeln är antingen den som du anger eller den som flödet genererar.
+Om du använder en privat git-lagrings platsen måste du konfigurera den offentliga SSH-nyckeln i din lagrings platsen. Du kan konfigurera den offentliga nyckeln antingen på den angivna git-lagrings platsen eller på git-användaren som har åtkomst till lagrings platsen. Den offentliga SSH-nyckeln är antingen den som du anger eller den som flödet genererar.
 
 **Hämta din egen offentliga nyckel**
 
@@ -260,7 +254,7 @@ Om du skapade dina egna SSH-nycklar har du redan privata och offentliga nycklar.
 **Hämta den offentliga nyckeln med Azure CLI (användbart om flöden genererar nycklarna)**
 
 ```console
-$ az k8sconfiguration show --resource-group <resource group name> --cluster-name <connected cluster name> --name <configuration name> --query 'repositoryPublicKey'
+$ az k8sconfiguration show --resource-group <resource group name> --cluster-name <connected cluster name> --name <configuration name> --cluster-type connectedClusters --query 'repositoryPublicKey' 
 Command group 'k8sconfiguration' is in preview. It may be changed/removed in a future release.
 "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAREDACTED"
 ```

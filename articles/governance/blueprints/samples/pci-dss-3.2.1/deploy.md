@@ -3,12 +3,12 @@ title: Distribuera PCI-DSS v 3.2.1-skiss exempel
 description: Distribuera steg för betalnings kortet bransch Data Security Standard v 3.2.1-exempel, inklusive information om skiss artefakt parameter.
 ms.date: 08/19/2020
 ms.topic: sample
-ms.openlocfilehash: a7917f09e5e5ff898bd155f0961e5c9765b8d791
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a0b1d635a073dc19e41a7ba73e130d6028daca99
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88649218"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955679"
 ---
 # <a name="deploy-the-pci-dss-v321-blueprint-sample"></a>Distribuera skiss exemplet PCI-DSS v 3.2.1
 
@@ -52,7 +52,7 @@ Din kopia av skissexemplet har nu skapats i din miljö. Den skapas i läget **Ut
 
 ## <a name="assign-the-sample-copy"></a>Tilldela exempelkopian
 
-När kopieringen av skiss exemplet har **publicerats**kan den tilldelas en prenumeration i hanterings gruppen som den sparades till. I det här steget anges parametrar för att göra varje distribution av skissexemplets kopia unik.
+När kopieringen av skiss exemplet har **publicerats** kan den tilldelas en prenumeration i hanterings gruppen som den sparades till. I det här steget anges parametrar för att göra varje distribution av skissexemplets kopia unik.
 
 1. Välj **Alla tjänster** i den vänstra rutan. Sök efter och välj **Skisser**.
 
@@ -93,7 +93,7 @@ I följande tabell visas en lista med skissartefaktens parametrar:
 
 |Artefaktnamn|Artefakttyp|Parameternamn|Beskrivning|
 |-|-|-|-|
-|\[För hands versions \] granskning PCI v 3.2.1:2018 kontrollerar och distribuerar särskilda VM-tillägg för att stödja gransknings krav|Principtilldelning|Lista över resurs typer | Granska diagnostikinställningar för valda resurs typer. Standardvärdet är alla resurser markerade| 
+|PCI v 3.2.1:2018|Principtilldelning|Lista över resurs typer | Granska diagnostikinställningar för valda resurs typer. Standardvärdet är alla resurser markerade| 
 |Tillåtna platser|Principtilldelning|Lista över tillåtna platser|Lista över data Center platser som tillåts för alla resurser som ska distribueras till. Den här listan kan anpassas till önskade Azure-platser globalt. Välj de platser som du vill tillåta.| 
 |Tillåtna platser för resurs grupper|Principtilldelning |Tillåten plats |Med den här principen kan du begränsa vilka platser som organisationen kan skapa resurs grupper i. Den används för att genomdriva kraven på geo-efterlevnad.| 
 |Distribuera granskning på SQL-servrar|Principtilldelning|Kvarhållning dagar|Data kvarhållning i antal dagar. Standardvärdet är 180 men PCI kräver 365.| 

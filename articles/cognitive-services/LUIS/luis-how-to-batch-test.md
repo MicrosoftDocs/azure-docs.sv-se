@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 12/29/2020
-ms.openlocfilehash: a6f4b0a503e942b79dff28212863831055892246
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 0834b8f00e4c414b3a36314b80f6c99fb8f2aea2
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 01/06/2021
-ms.locfileid: "97916566"
+ms.locfileid: "97955220"
 ---
 # <a name="batch-testing-with-a-set-of-example-utterances"></a>Batch-testning med en uppsättning exempel yttranden
 
@@ -168,7 +168,7 @@ De två avsnitten i diagrammet i grönt matchade förväntade förutsägelse.
 
 Med LUIS kan du köra batch-test med LUIS-portalen och REST API. Slut punkterna för REST API visas nedan. Information om batch-testning med LUIS-portalen finns i [Självstudier: batch-testdata uppsättningar](luis-tutorial-batch-testing.md). Använd de fullständiga URL: erna nedan och ersätt plats hållarnas värden med din egen LUIS-förutsägelse nyckel och slut punkt. 
 
-Kom ihåg att lägga till din LUIS `Apim-Subscription-Id` -nyckel i rubriken och ange `Content-Type` till `application/json` .
+Kom ihåg att lägga till din LUIS `Ocp-Apim-Subscription-Key` -nyckel i rubriken och ange `Content-Type` till `application/json` .
 
 ### <a name="start-a-batch-test"></a>Starta ett batch-test
 

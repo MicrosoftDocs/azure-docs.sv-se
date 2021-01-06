@@ -7,18 +7,18 @@ ms.topic: article
 ms.date: 11/09/2020
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: 943f1361a2a9d6bf8d891f8b4f2137b8738f0836
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 31216db98cc02724ac3625eb1a8fa18b0f75c6ee
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96450763"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955033"
 ---
 # <a name="orders-dashboard-in-commercial-marketplace-analytics"></a>Analys av orderinstrumentpanelen på kommersiell marknadsplats
 
 Den här artikeln innehåller information om instrument panelen för order i Partner Center. Den här instrument panelen visar information om dina beställningar, inklusive tillväxt trender, som presenteras i ett grafiskt och nedladdnings Bart format.
 
-För att komma åt instrument panelen för order i Partner Center väljer du **[analysera](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** beställningar under **kommersiell marknads** plats  >  **Orders**.
+För att komma åt instrument panelen för order i Partner Center väljer du **[analysera](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** beställningar under **kommersiell marknads** plats  >  .
 
 >[!NOTE]
 > Detaljerade definitioner av analys terminologi finns i terminologi för [kommersiella Marketplace-analyser och vanliga frågor](./analytics-faq.md).
@@ -109,17 +109,16 @@ Tabellen Order information visar en numrerad lista över de 1 000 främsta order
 - Data kan extraheras till en. CSV eller. TSV-fil om antalet poster är mindre än 1 000.
 - Om poster nummer över 1 000 placeras exporterade data asynkront på sidan nedladdningar under de närmaste 30 dagarna.
 - Använd filter i tabellen **Orderspecifikationer** om du bara vill visa de data du är intresse rad av. Filtrera efter land/region, typ av Azure-licens, licens typ för kommersiell Marketplace, erbjudande typ, order status, kostnads fria historik, prenumerations-ID för handels-Marketplace, kund-ID och företags namn.
-- Eftersom SaaS-erbjudanden som köpts via Azure Marketplace eller Microsoft AppSource, inte kräver en Azure-prenumeration, så visas prenumerations-ID: t för Marketplace i formatet 00000000-0000-0000-0000-000000000000 i avsnittet **detaljerade order data** .
 - När en order har köpts av en skyddad kund, maskeras information i **detaljerade data om ordern** (* * * * * * * * * * * *).
 
 **_Tabell 1: ord lista med data termer_* _
 
 | Kolumnnamn | Attributnamn | Definition |
 | ------------ | ------------- | ------------- |
-| Prenumerations-ID för Marketplace | Prenumerations-ID för Marketplace | Den unika identifierare som är kopplad till Azure-prenumerationen som kunden använde för att köpa ditt kommersiella Marketplace-erbjudande. ID var tidigare GUID för Azure-prenumerationen. |
+| Prenumerations-ID för Marketplace | Prenumerations-ID för Marketplace | Den unika identifierare som är kopplad till Azure-prenumerationen som kunden använde för att köpa ditt kommersiella Marketplace-erbjudande. För infrastruktur erbjudanden är det här kundens GUID för Azure-prenumerationen. För SaaS-erbjudanden visas detta som nollor eftersom SaaS-inköp inte kräver en Azure-prenumeration. |
 | MonthStartDate | Månadens start datum | Månadens start datum representerar inköps månad. |
 | Erbjudandetyp | Erbjudandetyp | Typ av erbjudande för kommersiella marknads platser. |
-| Typ av Azure-licens | Typ av Azure-licens | Den typ av licens avtal som kunder använder för att köpa Azure. Kallas även för kanal. Möjliga värden är:<ul><li>Cloud Solution Provider</li><li>Enterprise</li><li>Företag via åter försäljare</li><li>Betala per användning</li></ul> |
+| Typ av Azure-licens | Typ av Azure-licens | Den typ av licens avtal som kunder använder för att köpa Azure. Kallas även för kanal. Möjliga värden är:<ul><li>Cloud Solution Provider</li><li>Stora företag</li><li>Företag via åter försäljare</li><li>Betala per användning</li></ul> |
 | Marketplace-licens typ | Marketplace-licens typ | Fakturerings metoden för det kommersiella Marketplace-erbjudandet. De olika värdena är:<ul><li>Debiteras via Azure</li><li>Ta med din egen licens</li><li>Kostnadsfri</li><li>Microsoft as åter försäljare</li></ul> |
 | SKU | SKU | Planen som är associerad med erbjudandet |
 | Kund land | Kund land/-region | Landets/regionens namn som tillhandahålls av kunden. Land/region kan vara annorlunda än landet/regionen i en kunds Azure-prenumeration. |

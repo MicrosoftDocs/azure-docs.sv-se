@@ -3,17 +3,17 @@ title: Vad är nytt i det virtuella Windows-skrivbordet? – Azure
 description: Nya funktioner och produkt uppdateringar för virtuella Windows-datorer.
 author: Heidilohr
 ms.topic: overview
-ms.date: 12/02/2020
+ms.date: 01/06/2021
 ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: lizross
 ms.custom: references_regions
-ms.openlocfilehash: e42e49f69a159bf3bfdc732d41dc66a9a707f42f
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: df3dd8b5b18ec2997ee20ad4955ffd7bc1dc573d
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97617365"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955016"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>Vad är nytt i det virtuella Windows-skrivbordet?
 
@@ -25,6 +25,44 @@ Uppdateringar av virtuella Windows-datorer regelbundet. I den här artikeln får
 - Felkorrigeringar
 
 Den här artikeln uppdateras varje månad. Se till att kontrol lera igen ofta för att hålla dig uppdaterad med nya uppdateringar.
+
+## <a name="december-2020"></a>December 2020
+
+Följande har ändrats i december 2020: 
+
+### <a name="azure-monitor-for-windows-virtual-desktop"></a>Azure Monitor för virtuellt Windows-skrivbord
+
+Den allmänt tillgängliga för hands versionen för Azure Monitor för virtuella Windows-datorer är nu tillgänglig. Den här nya funktionen innehåller en robust instrument Panel byggd ovanpå Azure Monitor arbets böcker som hjälper IT-proffs att förstå sina Windows-miljöer för virtuella datorer. Kolla [in meddelandet på vår blogg](https://techcommunity.microsoft.com/t5/windows-virtual-desktop/azure-monitor-for-windows-virtual-desktop-public-preview/m-p/1946587) för mer information. 
+
+### <a name="azure-resource-manager-template-change"></a>Ändra Azure Resource Manager mal len 
+
+I den senaste uppdateringen har vi tagit bort alla offentliga IP-adressprefix från Azure Resource Manager-mallen för att skapa och tillhandahålla värdar för pooler. Vi rekommenderar starkt att du undviker att använda offentliga IP-adresser för virtuella Windows-datorer för att skydda din distribution. Om distributionen förlitar sig på offentliga IP-adresser måste du konfigurera om den så att den använder privata IP-adresser i stället, annars fungerar inte distributionen som den ska.
+
+### <a name="msix-app-attach-public-preview"></a>MSIX-app bifoga offentlig för hands version 
+
+MSIX app Attach är en annan tjänst som började sin offentliga för hands version den här månaden. MSIX app Attach är en tjänst som dynamiskt presenterar MSIX-program på virtuella Windows-datorer för fjärrskrivbordssession. Kolla [in meddelandet på vår blogg](https://techcommunity.microsoft.com/t5/windows-virtual-desktop/msix-app-attach-azure-portal-integration-public-preview/m-p/1986231) för mer information. 
+
+### <a name="screen-capture-protection"></a>Skärm bilds skydd 
+
+Den här månaden markerade även början av den offentliga för hands versionen för skärm dum skydd. Du kan använda den här funktionen för att förhindra att känslig information samlas in på klientens slut punkter. Ge skärm bilds skydd ett försök genom att gå till [den här sidan](https://aka.ms/WVDScreenCaptureProtection).  
+
+### <a name="built-in-roles"></a>Inbyggda roller
+
+Vi har lagt till nya inbyggda roller för Windows Virtual Desktop för administratörs behörighet. Mer information finns i [inbyggda roller för virtuella Windows-datorer](rbac.md). 
+
+### <a name="application-group-limit-increase"></a>Ökning av program grupps gräns
+
+Vi har ökat standard antalet program grupper per Azure Active Directory klient till 200 grupper.
+
+### <a name="client-updates-for-december-2020"></a>Klient uppdateringar för december 2020
+
+Vi har släppt nya versioner av följande klienter: 
+
+- Android
+- macOS
+- Windows
+
+Mer information om klient uppdateringar finns i [klient uppdateringar](whats-new.md#client-updates).
 
 ## <a name="november-2020"></a>November 2020
 

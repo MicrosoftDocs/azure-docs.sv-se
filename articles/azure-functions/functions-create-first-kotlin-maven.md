@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 03/25/2020
 ms.author: dglover
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 167e7c447fe43851255677a44043c508cbdc4239
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 8b597f54f22aaf6d904ba276ebdfa3a051b93b2d
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 01/06/2021
-ms.locfileid: "97934840"
+ms.locfileid: "97954302"
 ---
 # <a name="quickstart-create-your-first-function-with-kotlin-and-maven"></a>Snabb start: skapa din första funktion med Kotlin och maven
 
@@ -32,9 +32,9 @@ Om du vill utveckla funktioner med Kotlin måste du ha följande installerat:
 > [!IMPORTANT]
 > Miljövariabeln JAVA_HOME måste vara inställd på JDK-installationsplatsen för att snabbstarten ska gå att genomföra.
 
-## <a name="generate-a-new-functions-project"></a>Generera ett nytt funktionsprojekt
+## <a name="generate-a-new-azure-functions-project"></a>Generera ett nytt Azure Functions-projekt
 
-Kör följande kommando i en tom mapp för att skapa ett funktionsprojekt utifrån en [Maven-arketyp](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html).
+I en tom mapp kör du följande kommando för att generera Azure Functions-projektet från en [maven-archetype](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html).
 
 # <a name="bash"></a>[bash](#tab/bash)
 ```bash
@@ -164,7 +164,7 @@ Under distribueringen till Azure Functions används autentiseringsuppgifter frå
 az login
 ```
 
-Distribuera koden till en ny funktionsapp med hjälp av Maven-målet `azure-functions:deploy`.
+Distribuera din kod till en ny function-app med `azure-functions:deploy` maven-målet.
 
 > [!NOTE]
 > När du använder Visual Studio Code för att distribuera din Function-app måste du komma ihåg att välja en icke-kostnads fri prenumeration eller så får du ett fel meddelande. Du kan titta på din prenumeration på vänster sida av IDE-nätverket.
@@ -173,7 +173,7 @@ Distribuera koden till en ny funktionsapp med hjälp av Maven-målet `azure-func
 mvn azure-functions:deploy
 ```
 
-När distributionen är klar kan du se den webbadress som används för att få åtkomst till din funktionsapp i Azure:
+När distributionen är klar visas den URL som du kan använda för att få åtkomst till din Function-app:
 
 <pre>
 [INFO] Successfully deployed Function App with package.
@@ -198,7 +198,7 @@ Hello AzureFunctions!
 
 ## <a name="make-changes-and-redeploy"></a>Göra ändringar och omdistribuera
 
-Redigera källfilen `src/main.../Function.java` i det genererade projektet för att ändra texten som returneras av funktionsappen. Ändra den här raden:
+Redigera `src/main.../Function.java` käll filen i det genererade projektet för att ändra den text som returneras av din Function-app. Ändra den här raden:
 
 ```kotlin
 return request
@@ -231,7 +231,7 @@ Hi, AzureFunctionsTest
 
 ## <a name="reference-bindings"></a>Referens bindningar
 
-Om du vill arbeta med [funktions utlösare och andra bindningar](functions-triggers-bindings.md) än http-utlösare och timer-utlösare måste du installera bindnings tillägg. Även om detta inte krävs i den här artikeln, måste du veta hur du gör detta för att aktivera tillägg när du arbetar med andra typer av bindningar.
+Om du vill arbeta med [Azure Functions utlösare och andra bindningar](functions-triggers-bindings.md) än http-utlösare och timer-utlösare måste du installera bindnings tillägg. Även om detta inte krävs i den här artikeln, måste du veta hur du gör detta för att aktivera tillägg när du arbetar med andra typer av bindningar.
 
 [!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
 
@@ -239,7 +239,7 @@ Om du vill arbeta med [funktions utlösare och andra bindningar](functions-trigg
 
 Du har skapat en Kotlin Function-app med en enkel HTTP-utlösare och distribuerat den till Azure Functions.
 
-- Mer information om hur du utvecklar Java-och Kotlin-funktioner finns i  [utvecklings guiden för Java Functions](functions-reference-java.md) .
+- Läs [Azure Functions Java Developer Guide](functions-reference-java.md) för mer information om hur du utvecklar Java-och Kotlin-funktioner.
 - Lägg till fler funktioner med olika utlösare i projektet med Maven-målet `azure-functions:add`.
 - Skriv och felsök funktioner lokalt med [Visual Studio Code](https://code.visualstudio.com/docs/java/java-azurefunctions), [IntelliJ](functions-create-maven-intellij.md) och [Eclipse](functions-create-maven-eclipse.md). 
 - Felsök funktioner distribuerade i Azure med Visual Studio Code. Instruktioner finns i dokumentationen för [serverlösa Java-program](https://code.visualstudio.com/docs/java/java-serverless#_remote-debug-functions-running-in-the-cloud) för Visual Studio Code.

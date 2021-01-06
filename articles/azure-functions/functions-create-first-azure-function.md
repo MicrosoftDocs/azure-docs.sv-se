@@ -5,12 +5,12 @@ ms.assetid: 96cf87b9-8db6-41a8-863a-abb828e3d06d
 ms.topic: how-to
 ms.date: 03/26/2020
 ms.custom: devx-track-csharp, mvc, devcenter, cc996988-fb4f-47
-ms.openlocfilehash: 746ec7aa3ee41204e051e843ff94ed0771a9d244
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: e37a14b2634395d7f31565d6d5a6f6ec96a4a2f1
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96326190"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97954539"
 ---
 # <a name="create-your-first-function-in-the-azure-portal"></a>Skapa din första funktion i Azure Portal
 
@@ -19,7 +19,7 @@ Med Azure Functions kan du köra din kod i en miljö utan server utan att först
 Vi rekommenderar att du [utvecklar dina funktioner lokalt](functions-develop-local.md) och publicerar dem i en Function-app i Azure.  
 Använd någon av följande länkar för att komma igång med din valda lokala utvecklings miljö och ditt språk:
 
-| Visuell Studio-kod | Terminal/kommando-prompt | Visual Studio |
+| Visual Studio-koden | Terminal/kommando-prompt | Visual Studio |
 | --- | --- | --- |
 |  &bull;&nbsp;[Kom igång med C #](./create-first-function-vs-code-csharp.md)<br/>&bull;&nbsp;[Kom igång med Java](./create-first-function-vs-code-java.md)<br/>&bull;&nbsp;[Kom igång med Java Script](./create-first-function-vs-code-node.md)<br/>&bull;&nbsp;[Kom igång med PowerShell](./create-first-function-vs-code-powershell.md)<br/>&bull;&nbsp;[Kom igång med python](./create-first-function-vs-code-python.md) |&bull;&nbsp;[Kom igång med C #](./create-first-function-cli-csharp.md)<br/>&bull;&nbsp;[Kom igång med Java](./create-first-function-cli-java.md)<br/>&bull;&nbsp;[Kom igång med Java Script](./create-first-function-cli-node.md)<br/>&bull;&nbsp;[Kom igång med PowerShell](./create-first-function-cli-powershell.md)<br/>&bull;&nbsp;[Kom igång med python](./create-first-function-cli-python.md) | [Kom igång med C #](functions-create-your-first-function-visual-studio.md) |
 
@@ -61,7 +61,7 @@ Skapa sedan en funktion i appen ny funktion.
 
     ![Kopiera funktionswebbadressen från Azure Portal](./media/functions-create-first-azure-function/function-app-develop-tab-testing.png)
 
-1. Klistra in funktionens URL i adressfältet för din webbläsare. Lägg till frågesträngen `?name=<your_name>` i slutet av den här URL: en och tryck på RETUR för att köra begäran. 
+1. Klistra in funktionens URL i adressfältet för din webbläsare. Lägg till frågesträngen `&name=<your_name>` i slutet av den här URL: en och tryck på RETUR för att köra begäran. 
 
     I följande exempel visas svaret i webbläsaren:
 

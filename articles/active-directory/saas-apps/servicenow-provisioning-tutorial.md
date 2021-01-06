@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/10/2019
 ms.author: jeedes
-ms.openlocfilehash: 5c21efc9cb082d915fd87e9ae01606fce18016bc
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 71f4cfa9e7b69e51bafa5364f857f8ab689f2ad0
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97897317"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955475"
 ---
 # <a name="tutorial-configure-servicenow-for-automatic-user-provisioning"></a>Självstudie: Konfigurera ServiceNow för automatisk användar etablering
 
@@ -31,7 +31,7 @@ I den här självstudien beskrivs de steg du behöver utföra i både ServiceNow
 > * Etablera grupper och grupp medlemskap i ServiceNow
 > * [Enkel inloggning](servicenow-tutorial.md) till ServiceNow (rekommenderas)
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Det scenario som beskrivs i den här självstudien förutsätter att du redan har följande krav:
 
@@ -152,6 +152,11 @@ När du har konfigurerat etableringen använder du följande resurser till att �
    ![Auktoriserar SOAP-begäran](media/servicenow-provisioning-tutorial/servicenow-webservice.png)
 
    Om det löser problemen kontaktar du ServiceNow-supporten och ber dem att aktivera SOAP-felsökning för att felsöka. 
+
+* **IP-intervall** 
+
+   Azure AD Provisioning-tjänsten fungerar för närvarande under ett visst IP-intervall. Så om det behövs kan du begränsa andra IP-adressintervall och lägga till dessa specifika IP-intervall i tillåten för ditt program för att tillåta trafikflöde från Azure AD Provisioning-tjänsten till ditt program. Läs dokumentationen vid [IP-intervall](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#ip-ranges).
+
 ## <a name="additional-resources"></a>Ytterligare resurser
 
 * [Hantera användarkontoetablering för Enterprise-appar](../app-provisioning/configure-automatic-user-provisioning-portal.md)

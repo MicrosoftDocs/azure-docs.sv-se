@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 575903654a165bef0d09ac6abf0793af3f6784e8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5fa0b6ca41349d20614a64006536e78d8ee71844
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90942085"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955373"
 ---
 # <a name="offline-deployment-overview"></a>Översikt över offline-distribution
 
@@ -22,14 +22,14 @@ Vanligt vis hämtas behållar avbildningarna som används för att skapa Azure A
 
 Eftersom månads uppdateringar tillhandahålls för Azure Arc-aktiverade data tjänster och det finns ett stort antal behållar avbildningar, är det bäst att utföra den här processen för att hämta, tagga och skicka behållar avbildningar till ett privat behållar register med hjälp av ett skript.  Skriptet kan antingen automatiseras eller köras manuellt.
 
-Du hittar ett [exempel skript](https://raw.githubusercontent.com/microsoft/azure_arc/master/arc_data_services/deploy/scripts/pull-and-push-arc-data-services-images-to-private-registry.py) i Azure Arc GitHub-lagringsplatsen.
+Du hittar ett [exempel skript](https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/scripts/pull-and-push-arc-data-services-images-to-private-registry.py) i Azure Arc GitHub-lagringsplatsen.
 
 > [!NOTE]
 > Det här skriptet kräver installation av python och [Docker CLI](https://docs.docker.com/install/).
 
 Skriptet uppmanas interaktivt att ange följande information.  Alternativt, om du vill att skriptet ska köras utan interaktiva prompter, kan du ange motsvarande miljövariabler innan du kör skriptet.
 
-|Prompt|Miljö variabel|Obs!|
+|Prompt|Miljö variabel|Kommentarer|
 |---|---|---|
 |Ange käll behållar register – tryck på RETUR för att använda `mcr.microsoft.com`|SOURCE_DOCKER_REGISTRY|Normalt skulle du hämta avbildningarna från Microsoft Container Registry, men om du deltar i en privat för hands version med ett annat register kan du använda den information som du fick som en del av för hands versions programmet.|
 |Ange käll container register lagring – tryck på RETUR för att använda `arcdata` :|SOURCE_DOCKER_REPOSITORY|Om du hämtar från Microsoft Container Registry är lagrings platsen `arcdata` .|
