@@ -4,12 +4,12 @@ description: Skapa en server lös python Function-app och montera en befintlig f
 ms.topic: sample
 ms.date: 03/01/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: bdcaeaca7c063f0532167077bba63f7e52a3d491
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 89cf1422c70a49497a1bc43e42248612e0c8dd83
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94565066"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97930913"
 ---
 # <a name="mount-a-file-share-to-a-python-function-app-using-azure-cli"></a>Montera en fil resurs i en python Function-app med hjälp av Azure CLI
 
@@ -26,7 +26,7 @@ Den här Azure Functions exempel skriptet skapar en Function-app och skapar en r
 
 ## <a name="sample-script"></a>Exempelskript
 
-Det här skriptet skapar en Azure Function-app med hjälp av [förbruknings planen](../functions-scale.md#consumption-plan).
+Det här skriptet skapar en Azure Function-app med hjälp av [förbruknings planen](../consumption-plan.md).
 
 [!code-azurecli-interactive[main](../../../cli_scripts/azure-functions/functions-cli-mount-files-storage-linux/functions-cli-mount-files-storage-linux.sh "Create an Azure Function on a Consumption plan")]
 

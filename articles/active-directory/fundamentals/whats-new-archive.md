@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e90adcb5312df6e1dfe6d4b58407edeb924a8809
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: 6e561a0e05cf1a0870d85369867caba6c4d6bf12
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97862452"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97932426"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Vill du arkivera vad som är nytt i Azure Active Directory?
 
@@ -3733,7 +3733,7 @@ Mer information om hur du visar ditt program i Azure AD App-galleriet finns i [l
 
 **Typ:** Ny funktions **tjänst kategori:** annan **produkt kapacitet:** katalog
 
-Nya steg för steg-anvisningar om hur du distribuerar Azure Active Directory (Azure AD), inklusive självbetjäning för återställning av lösen ord (SSPR), enkel inloggning (SSO), villkorlig åtkomst (CA), App proxy, användar etablering, Active Directory Federation Services (AD FS) (ADFS) till vidarekoppling (PTA) och ADFS till hash-synkronisering för lösen ord (PHS).
+Nya steg-för-steg-anvisningar om hur du distribuerar Azure Active Directory (Azure AD), inklusive självbetjäning för återställning av lösen ord (SSPR), enkel inloggning (SSO), villkorlig åtkomst, App proxy, användar etablering, Active Directory Federation Services (AD FS) (ADFS) för direktautentisering (PTA) och ADFS till hash-synkronisering för lösen ord (PHS).
 
 Om du vill visa distributions guiderna går du till lagrings platsen för [identitets distribution](./active-directory-deployment-plans.md) på GitHub. Om du vill ge feedback om distributions guiderna använder du [feedback-formuläret för distributions planen](https://aka.ms/deploymentplanfeedback). Om du har frågor om distributions guiderna kan du kontakta oss på [IDGitDeploy](mailto:idgitdeploy@microsoft.com).
 

@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 12/23/2020
 ms.author: cgillum
 ms.reviewer: azfuncdf
-ms.openlocfilehash: 3725970c982c2d060685bf0b99d12a8fc998f20a
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: 2079a3a7c9ce6817186e743bb09d31facdecf0e7
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763582"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97931729"
 ---
 # <a name="what-are-durable-functions"></a>Vad är Durable Functions?
 
@@ -697,7 +697,7 @@ För att tillhandahålla pålitliga och långvariga körnings garantier har Orch
 
 ## <a name="billing"></a>Fakturering
 
-Durable Functions debiteras samma som Azure Functions. Mer information finns i [prissättning för Azure Functions](https://azure.microsoft.com/pricing/details/functions/). När du kör Orchestrator Functions i Azure Functions [förbruknings planen](../functions-scale.md#consumption-plan)finns det några fakturerings beteenden som du bör känna till. Mer information om dessa funktioner finns i artikeln [Durable Functions fakturering](durable-functions-billing.md) .
+Durable Functions debiteras samma som Azure Functions. Mer information finns i [prissättning för Azure Functions](https://azure.microsoft.com/pricing/details/functions/). När du kör Orchestrator Functions i Azure Functions [förbruknings planen](../consumption-plan.md)finns det några fakturerings beteenden som du bör känna till. Mer information om dessa funktioner finns i artikeln [Durable Functions fakturering](durable-functions-billing.md) .
 
 ## <a name="jump-right-in"></a>Kom igång snabbt
 
@@ -710,7 +710,7 @@ Du kan komma igång med Durable Functions på mindre än 10 minuter genom att sl
 
 I de här snabb starterna skapar och testar du en "Hello World"-beständig funktion. Du publicerar sedan funktionskoden till Azure. Den funktion som du skapar orkestrerar och kedjar samman anrop till andra funktioner.
 
-## <a name="learn-more"></a>Läs mer
+## <a name="learn-more"></a>Mer information
 
 Följande video visar fördelarna med Durable Functions:
 

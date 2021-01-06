@@ -8,12 +8,12 @@ ms.author: mbaldwin
 author: msmbaldwin
 manager: rkarlin
 ms.date: 09/30/2020
-ms.openlocfilehash: 258d100276b20ea2437ebffb1473492a247657e8
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: a9a783333d8edd40556b7744eb7cf7dfb52953a7
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97704222"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97933990"
 ---
 # <a name="azure-key-vault-recovery-management-with-soft-delete-and-purge-protection"></a>Azure Key Vault återställnings hantering med mjuk borttagning och rensnings skydd
 
@@ -23,7 +23,7 @@ Mer information om Key Vault finns i
 - [Översikt över Key Vault](overview.md)
 - [Översikt över Azure Key Vault nycklar, hemligheter och certifikat](about-keys-secrets-certificates.md)
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 * En Azure-prenumeration – [skapa en kostnads fritt](https://azure.microsoft.com/free/dotnet)
 * [PowerShell-modul](https://docs.microsoft.com/powershell/azure/install-az-ps).
@@ -394,4 +394,4 @@ Mer information om mjuk borttagning finns i [Azure Key Vault översikt över mju
 - [Så här aktiverar du Key Vault loggning](howto-logging.md)
 - [Säker åtkomst till ett nyckel valv](secure-your-key-vault.md)
 - [Guide för Azure Key Vault utvecklare](developers-guide.md)
-- [Metod tips för att använda ett nyckel valv](best-practices.md)
+- [Metod tips för att använda ett nyckel valv](security-overview.md)

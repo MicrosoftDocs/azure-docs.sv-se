@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f34ca47d5ff6c809eef40f89ee0049285cfd7d42
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: aa6726bb5c60dceab0a58632da99c04361183246
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97355401"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97932698"
 ---
 # <a name="add-an-api-connector-to-a-user-flow"></a>Lägga till en API-anslutning till ett användar flöde
 
@@ -249,10 +249,10 @@ Content-type: application/json
 
 | Parameter                                          | Typ              | Obligatorisk | Beskrivning                                                                                                                                                                                                                                                                            |
 | -------------------------------------------------- | ----------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| version                                            | Sträng            | Ja      | API-versionen.                                                                                                                                                                                                                                                                |
-| åtgärd                                             | Sträng            | Ja      | Värdet måste vara `Continue` .                                                                                                                                                                                                                                                              |
-| \<builtInUserAttribute>                            | \<attribute-type> | Nej       | Värden kan lagras i katalogen om de har valts som ett _-*anspråk för att ta emot** i konfigurationen för API- **anslutningen och användarattribut** för ett användar flöde. Värdena kan returneras i token om de väljs som ett **program anspråk**.                                              |
-| \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | Nej       | Det returnerade anspråket behöver inte innehålla `_<extensions-app-id>_` . Värdena lagras i katalogen om de valts som ett **anspråk att ta emot** i API-kopplingens konfiguration och **användarattribut** för ett användar flöde. Det går inte att skicka anpassade attribut tillbaka i token. |
+| version                                            | Sträng            | Yes      | API-versionen.                                                                                                                                                                                                                                                                |
+| åtgärd                                             | Sträng            | Yes      | Värdet måste vara `Continue` .                                                                                                                                                                                                                                                              |
+| \<builtInUserAttribute>                            | \<attribute-type> | No       | Värden kan lagras i katalogen om de har valts som ett _-*anspråk för att ta emot** i konfigurationen för API- **anslutningen och användarattribut** för ett användar flöde. Värdena kan returneras i token om de väljs som ett **program anspråk**.                                              |
+| \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | No       | Det returnerade anspråket behöver inte innehålla `_<extensions-app-id>_` . Värdena lagras i katalogen om de valts som ett **anspråk att ta emot** i API-kopplingens konfiguration och **användarattribut** för ett användar flöde. Det går inte att skicka anpassade attribut tillbaka i token. |
 
 ### <a name="example-of-a-blocking-response"></a>Exempel på ett blockerande svar
 
@@ -271,10 +271,10 @@ Content-type: application/json
 
 | Parameter   | Typ   | Obligatorisk | Beskrivning                                                                |
 | ----------- | ------ | -------- | -------------------------------------------------------------------------- |
-| version     | Sträng | Ja      | API-versionen.                                                    |
-| åtgärd      | Sträng | Ja      | Värdet måste vara `ShowBlockPage`                                              |
-| userMessage | Sträng | Ja      | Meddelande som ska visas för användaren.                                            |
-| kod        | Sträng | Nej       | Felkod. Kan användas för fel söknings syfte. Visas inte för användaren. |
+| version     | Sträng | Yes      | API-versionen.                                                    |
+| åtgärd      | Sträng | Yes      | Värdet måste vara `ShowBlockPage`                                              |
+| userMessage | Sträng | Yes      | Meddelande som ska visas för användaren.                                            |
+| kod        | Sträng | No       | Felkod. Kan användas för fel söknings syfte. Visas inte för användaren. |
 
 **Slut användar upplevelse med ett blockerande svar**
 
@@ -297,11 +297,11 @@ Content-type: application/json
 
 | Parameter   | Typ    | Obligatorisk | Beskrivning                                                                |
 | ----------- | ------- | -------- | -------------------------------------------------------------------------- |
-| version     | Sträng  | Ja      | API-versionen.                                                    |
-| åtgärd      | Sträng  | Ja      | Värdet måste vara `ValidationError` .                                           |
-| status      | Integer | Ja      | Måste vara `400` ett värde för ett ValidationError-svar.                        |
-| userMessage | Sträng  | Ja      | Meddelande som ska visas för användaren.                                            |
-| kod        | Sträng  | Nej       | Felkod. Kan användas för fel söknings syfte. Visas inte för användaren. |
+| version     | Sträng  | Yes      | API-versionen.                                                    |
+| åtgärd      | Sträng  | Yes      | Värdet måste vara `ValidationError` .                                           |
+| status      | Integer | Yes      | Måste vara `400` ett värde för ett ValidationError-svar.                        |
+| userMessage | Sträng  | Yes      | Meddelande som ska visas för användaren.                                            |
+| kod        | Sträng  | No       | Felkod. Kan användas för fel söknings syfte. Visas inte för användaren. |
 
 **Slut användar upplevelse med ett verifierings fel svar**
 
@@ -319,7 +319,7 @@ Se till att:
 * **Slut punkts-URL: en** för API-anslutningen pekar på rätt API-slutpunkt.
 * Ditt API söker uttryckligen efter null-värden för mottagna anspråk.
 * Ditt API svarar så snabbt som möjligt för att säkerställa en flytande användar upplevelse.
-    * Om du använder en server lös funktion eller en skalbar webb tjänst använder du en värd plan som behåller API: t "vakna" eller "varm". För Azure Functions rekommenderar vi att du använder [Premium planen](../../azure-functions/functions-scale.md#premium-plan). 
+    * Om du använder en server lös funktion eller en skalbar webb tjänst använder du en värd plan som behåller API: t "vakna" eller "varm". För Azure Functions rekommenderar vi att du använder [Premium planen](../../azure-functions/functions-premium-plan.md). 
 
 
 ### <a name="use-logging"></a>Använd loggning

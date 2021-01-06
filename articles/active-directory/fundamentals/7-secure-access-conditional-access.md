@@ -13,22 +13,22 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27c34135a59521eca361c59a1c82854469626616
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 8dd570a31813ef12ee8a007c84facb8aa5e7aca4
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97744096"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97933140"
 ---
 # <a name="manage-external-access-with-conditional-access-policies"></a>Hantera extern åtkomst med principer för villkorlig åtkomst 
 
-[Villkorlig åtkomst](../conditional-access/overview.md) är verktyget som Azure AD använder för att samla signaler, tillämpa principer och avgöra om en användare ska få åtkomst till resurser. Detaljerad information om hur du skapar och använder principer för villkorlig åtkomst (CA-principer) finns i [Planera en distribution av villkorlig åtkomst](../conditional-access/plan-conditional-access.md). 
+[Villkorlig åtkomst](../conditional-access/overview.md) är verktyget som Azure AD använder för att samla signaler, tillämpa principer och avgöra om en användare ska få åtkomst till resurser. Detaljerad information om hur du skapar och använder principer för villkorlig åtkomst (principer för villkorlig åtkomst) finns i [Planera en distribution av villkorlig åtkomst](../conditional-access/plan-conditional-access.md). 
 
 ![Diagram över signaler och beslut om villkorlig åtkomst](media/secure-external-access//7-conditional-access-signals.png)
 
 
 
-Den här artikeln beskriver hur du använder CA-principer för externa användare och förutsätter att du inte har åtkomst till funktionerna för [rättighets hantering](../governance/entitlement-management-overview.md) . CA-principer kan användas tillsammans med hantering av rättigheter.
+I den här artikeln beskrivs hur du använder principer för villkorlig åtkomst för externa användare och förutsätter att du inte har åtkomst till funktioner för [rättighets hantering](../governance/entitlement-management-overview.md) . Principer för villkorlig åtkomst kan användas tillsammans med hantering av rättigheter.
 
 Tidigare i den här dokument uppsättningen [skapade du ett säkerhets plan](3-secure-access-plan.md) som beskrivs:
 
@@ -36,27 +36,27 @@ Tidigare i den här dokument uppsättningen [skapade du ett säkerhets plan](3-s
 
 * Inloggnings krav för externa användare.
 
-Du kommer att använda den planen för att skapa dina CA-principer för extern åtkomst. 
+Du kommer att använda den planen för att skapa principer för villkorlig åtkomst för extern åtkomst. 
 
 > [!IMPORTANT]
 > Skapa ett par externa användar test konton så att du kan testa de principer som du skapar innan du tillämpar dem på alla externa användare.
 
 ## <a name="conditional-access-policies-for-external-access"></a>Principer för villkorlig åtkomst för extern åtkomst
 
-Följande är metod tips för att styra extern åtkomst med CA-principer.
+Följande är metod tips som rör hantering av extern åtkomst med principer för villkorlig åtkomst.
 
-* Om du inte kan använda anslutna organisationer i rättighets hantering skapar du en Azure AD-säkerhetsgrupp eller Microsoft 365 grupp för varje partner organisation som du arbetar med. Tilldela alla användare från den partnern till gruppen. Du kan sedan använda dessa grupper i CA-principer.
+* Om du inte kan använda anslutna organisationer i rättighets hantering skapar du en Azure AD-säkerhetsgrupp eller Microsoft 365 grupp för varje partner organisation som du arbetar med. Tilldela alla användare från den partnern till gruppen. Du kan sedan använda dessa grupper i principer för villkorlig åtkomst.
 
-* Skapa så få CA-principer som möjligt. För program som har samma åtkomst måste du lägga till dem i samma princip.  
+* Skapa så få villkorliga åtkomst principer som möjligt. För program som har samma åtkomst måste du lägga till dem i samma princip.  
 ‎ 
    > [!NOTE]
-   > CA-principer kan gälla högst 250 program. Om fler än 250 appar har samma åtkomst behov skapar du duplicerade principer. Principen A gäller för apparna 1-250, princip B gäller för apparna 251-500 osv.
+   > Principer för villkorlig åtkomst kan tillämpas på högst 250 program. Om fler än 250 appar har samma åtkomst behov skapar du duplicerade principer. Principen A gäller för apparna 1-250, princip B gäller för apparna 251-500 osv.
 
 * Tydliga namn på principer som är speciella för extern åtkomst med en namngivnings konvention. En namngivnings konvention är *ExternalAccess_actiontaken_AppGroup*. Till exempel ExternalAccess_Block_FinanceApps.
 
 ## <a name="block-all-external-users-from-resources"></a>Blockera alla externa användare från resurser
 
-Du kan blockera externa användare från att komma åt vissa resurs uppsättningar med CA-principer. När du har bestämt vilken uppsättning av resurser som du vill blockera åtkomst till skapar du en princip.
+Du kan blockera externa användare från att komma åt vissa resurs uppsättningar med principer för villkorlig åtkomst. När du har bestämt vilken uppsättning av resurser som du vill blockera åtkomst till skapar du en princip.
 
 Så här skapar du en princip som blockerar åtkomst för externa användare till en uppsättning program:
 

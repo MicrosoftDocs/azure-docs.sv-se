@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/12/2020
 ms.author: yelevin
-ms.openlocfilehash: bd85936c86656a8ae59a04ccdf53a62bd852368f
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: b346a23ccde6abd0f76982a4d19e00e28e8511a7
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94655280"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97930879"
 ---
 # <a name="set-up-azure-sentinel-customer-managed-key"></a>Konfigurera Azure Sentinel – kundhanterad nyckel
 
@@ -63,7 +63,7 @@ Följ dessa steg om du vill etablera CMK:
     > [!NOTE]
     >  Azure Key Vault måste konfigureras som återställnings Bart för att skydda nyckeln och åtkomsten.
 
-1.  [Aktivera återställnings alternativ:](../key-vault/general/best-practices.md#turn-on-recovery-options)
+1.  [Aktivera återställnings alternativ:](../key-vault/general/key-vault-recovery.md)
 
     -   Se till att [mjuk borttagning](../key-vault/general/soft-delete-overview.md) är aktiverat.
 

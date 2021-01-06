@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/5/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 1ab382ec10d932b94961c73b7d7ac9082125a88c
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: e19277aa3639031371e0e8dd28f4dd849efd4597
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97704528"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97933939"
 ---
 # <a name="how-to-create-an-azure-key-vault-and-vault-access-policy-by-using-a-resource-manager-template"></a>Så här skapar du en Azure Key Vault-och en valv åtkomst princip med hjälp av en Resource Manager-mall
 
@@ -23,7 +23,7 @@ ms.locfileid: "97704528"
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 För att slutföra stegen i den här artikeln:
 
@@ -213,7 +213,7 @@ Write-Host "Press [ENTER] to continue..."
 
 - Läs en [Översikt över Azure Key Vault](../general/overview.md).
 - Läs mer om [Azure Resource Manager](../../azure-resource-manager/management/overview.md).
-- Granska [Azure Key Vault bästa praxis](../general/best-practices.md).
+- Granska [Azure Key Vault säkerhets översikt](security-overview.md)
 
 ## <a name="next-steps"></a>Nästa steg
 

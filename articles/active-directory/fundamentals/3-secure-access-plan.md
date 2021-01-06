@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a08a4f4a31893fc93789d019ea87dff390552f6a
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: fd04d24e0e46b053381858be037a009b1987f8e9
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97744201"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97932528"
 ---
 # <a name="3-create-a-security-plan-for-external-access"></a>3. skapa ett säkerhets plan för extern åtkomst 
 
@@ -134,7 +134,7 @@ Tänk på följande när dina principer kommer att anpassas efter dina behov:
 
 * **Microsoft 365 grupper**. Ange en [förfallo princip för grupp](https://docs.microsoft.com/microsoft-365/solutions/microsoft-365-groups-expiration-policy?view=o365-worldwide) för Microsoft 365 grupper som externa användare ska bjudas in till. 
 
-* **Andra alternativ**. Om externa användare har åtkomst utanför behörighets hanterings paket eller Microsoft 365 grupper, ställer du in affärs processen för att granska när konton ska göras inaktiva eller borttagna. Exempel:
+* **Andra alternativ**. Om externa användare har åtkomst utanför behörighets hanterings paket eller Microsoft 365 grupper, ställer du in affärs processen för att granska när konton ska göras inaktiva eller borttagna. Ett exempel:
 
    * Ta bort inloggnings möjligheten för alla konton som inte är inloggade på i för 90 dagar.
 
@@ -175,7 +175,7 @@ Azure AD P2 och Microsoft 365 E5 har en komplett uppsättning verktyg för säke
 | Hantering av rättigheter| **Lägga till användare via tilldelning eller självbetjänings åtkomst**| **Åtkomstpaket**| **Åtkomstpaket**|  |
 | Office 365-grupp| | Åtkomst till-platser (och tillhör ande innehåll) som ingår i gruppen| Åtkomst till team (och tillhör ande innehåll) som ingår i gruppen|  |
 | Känslighetsetiketter| | **Manuellt och klassificera och begränsa åtkomst automatiskt**| **Manuellt och klassificera och begränsa åtkomst automatiskt**| **Manuellt och klassificera och begränsa åtkomst automatiskt** |
-| Azure AD-säkerhetsgrupper| **CA-principer för åtkomst som inte ingår i åtkomst paket**| | |  |
+| Azure AD-säkerhetsgrupper| **Principer för villkorlig åtkomst för åtkomst som inte ingår i åtkomst paket**| | |  |
 
 
 ### <a name="entitlement-management"></a>Hantering av rättigheter 
@@ -195,7 +195,7 @@ Du kan få robusta styrningar med Azure AD P1 och Microsoft 365 E3
 | Azure AD B2B-samarbete| **Bjud in via e-post, eng ång slö sen ord, självbetjäning**| Direct B2B-Federation| **Regelbunden granskning per partner**| Ta bort konto<br>Begränsa inloggning |
 | Microsoft-eller Office 365-grupper| | | | Förfallo datum eller borttagning av grupp.<br>Borttagning från grupp. |
 | Säkerhetsgrupper| | **Lägg till externa användare i säkerhets grupper (org, team, projekt osv.)**| |  |
-| Principer för villkorlig åtkomst| | **Inloggnings-och CA-principer för externa användare**| |  |
+| Principer för villkorlig åtkomst| | **Logga in principer för villkorlig åtkomst för externa användare**| |  |
 
 
  ### <a name="access-to-resources"></a>Åtkomst till resurser.
@@ -204,7 +204,7 @@ Du kan få robusta styrningar med Azure AD P1 och Microsoft 365 E3
 | - |-|-|-|-|
 | Microsoft-eller Office 365-grupper| | **Åtkomst till de-platser som ingår i gruppen (och tillhör ande innehåll)**|**Åtkomst till team som ingår i Microsoft 365s grupp (och tillhör ande innehåll)**|  |
 | Känslighetsetiketter| | Klassificera och begränsa åtkomst manuellt| Klassificera och begränsa åtkomst manuellt.| Klassificera manuellt för att begränsa och kryptera |
-| Villkorliga åtkomstprinciper| CA-principer för åtkomst kontroll| | |  |
+| Villkorliga åtkomstprinciper| Principer för villkorlig åtkomst för åtkomst kontroll| | |  |
 | Ytterligare metoder| | Begränsa åtkomsten till SharePoint-webbplatser i detalj med säkerhets grupper.<br>Tillåt inte direkt delning.| **Begränsa externa inbjudningar inifrån team**|  |
 
 

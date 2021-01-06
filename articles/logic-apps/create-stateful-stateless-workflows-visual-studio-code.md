@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
 ms.date: 12/07/2020
-ms.openlocfilehash: a74244cc45e1a3d2116f98ac73290d184f4affc0
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: be8d00d795c19399d494db21578e9a7ba8dd9711
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97632068"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934024"
 ---
 # <a name="create-stateful-and-stateless-workflows-in-visual-studio-code-with-the-azure-logic-apps-preview-extension"></a>Skapa tillstånds känsliga och tillstånds lösa arbets flöden i Visual Studio Code med tillägget Azure Logic Apps (förhands granskning)
 
@@ -47,7 +47,7 @@ Den här artikeln visar hur du skapar din Logi Kap par och ett arbets flöde i V
 > [!NOTE]
 > Om du vill ha mer information om aktuella kända problem granskar du [sidan Logic Apps offentliga kända problem i GitHub](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md).
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 ### <a name="access-and-connectivity"></a>Åtkomst och anslutning
 
@@ -421,7 +421,7 @@ Arbets flödet i det här exemplet använder utlösaren och följande åtgärder
 
    | Egenskap | Krävs | Värde | Beskrivning |
    |----------|----------|-------|-------------|
-   | **Att** | Yes | <*din-e-postadress*> | E-postmottagaren, som kan vara din e-postadress i test syfte. I det här exemplet används det fiktiva e-postmeddelandet `sophiaowen@fabrikam.com` . |
+   | **Om du vill** | Yes | <*din-e-postadress*> | E-postmottagaren, som kan vara din e-postadress i test syfte. I det här exemplet används det fiktiva e-postmeddelandet `sophiaowen@fabrikam.com` . |
    | **Ämne** | Yes | `An email from your example workflow` | E-postmeddelandets ämne |
    | **Brödtext** | Yes | `Hello from your example workflow!` | Innehållet i e-postmeddelandet |
    ||||
@@ -604,7 +604,7 @@ Testa din Logi Kap par genom att följa de här stegen för att starta en felsö
    | **Avbröts** | Körningen utlöstes och startades men tog emot en begäran om annullering. |
    | **Misslyckades** | Minst en åtgärd i körningen misslyckades. Inga efterföljande åtgärder i arbets flödet har ställts in för att hantera det här problemet. |
    | **Körs** | Körningen utlöstes och pågår, men den här statusen kan också visas för en körning som är begränsad på grund av [Åtgärds gränser](logic-apps-limits-and-config.md) eller den [aktuella pris Planen](https://azure.microsoft.com/pricing/details/logic-apps/). <p><p>**Tips**: om du konfigurerar [diagnostikloggning](monitor-logic-apps-log-analytics.md)kan du få information om eventuella begränsnings händelser som inträffar. |
-   | **Lyckades** | Körningen lyckades. Om en åtgärd Miss lyckas, hanterar en efterföljande åtgärd i arbets flödet detta fel. |
+   | **Brutit** | Körningen lyckades. Om en åtgärd Miss lyckas, hanterar en efterföljande åtgärd i arbets flödet detta fel. |
    | **Tids gränsen uppnåddes** | Tids gränsen för körningen uppnåddes eftersom den aktuella varaktigheten överskred tids gränsen för körning, vilket styrs av inställningen för [ **kvarhållning av körnings historik i dagar**](logic-apps-limits-and-config.md#run-duration-retention-limits). Körningens varaktighet beräknas med hjälp av körningens start tid och tids gräns för körning vid den Start tiden. <p><p>**Obs!** om Körningens varaktighet också överskrider den aktuella *gränsen för körnings historik*, som också styrs av inställningen för [ **kvarhållning av körnings historik i dagar**](logic-apps-limits-and-config.md#run-duration-retention-limits), rensas körningen från körnings historiken med ett dagligt rensnings jobb. Oavsett om tids gränsen för körningen är slut eller slutförd beräknas alltid kvarhållningsperioden med hjälp av start tiden och den *aktuella* kvarhållningsperioden. Så om du minskar tids gränsen för en pågående körnings tid för en flygning. Körningen är dock antingen kvar eller så tas den bort från körnings historiken, baserat på om Körningens varaktighet överskred gränsen för kvarhållning. |
    | **Väntar** | Körningen har inte startat eller pausats, till exempel på grund av en tidigare arbets flödes instans som fortfarande körs. |
    |||
@@ -742,7 +742,7 @@ Du kan publicera din Logi Kap par som en ny resurs, vilket automatiskt skapar ev
 
       ![Skärm bild som visar fönstret "Azure: Logic Apps (för hands version)" och en uppvarning för att ange ett namn för den nya Logic-appen att skapa.](./media/create-stateful-stateless-workflows-visual-studio-code/enter-logic-app-name.png)
 
-   1. Välj en värd plan för den nya Logic-appen, antingen [**App Service plan**](../azure-functions/functions-scale.md#app-service-plan) eller [**Premium**](../azure-functions/functions-scale.md#premium-plan). I det här exemplet väljer du **App Service plan**.
+   1. Välj en värd plan för den nya Logic-appen, antingen [**App Service plan**](../azure-functions/dedicated-plan.md) eller [**Premium**](../azure-functions/functions-premium-plan.md). I det här exemplet väljer du **App Service plan**.
 
       ![Skärm bild som visar fönstret "Azure: Logic Apps (för hands version)" och en prompt för att välja "App Service plan" eller "Premium".](./media/create-stateful-stateless-workflows-visual-studio-code/select-hosting-plan.png)
 

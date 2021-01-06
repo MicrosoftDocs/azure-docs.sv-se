@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 2157a1cb96475209762e829c549d628f2c35fd91
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 49a350b77958901aae5e54e82d856e4f3772702e
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97425973"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97930794"
 ---
 # <a name="set-up-a-file-share-for-msix-app-attach-preview"></a>Konfigurera en fil resurs för MSIX app attach (för hands version)
 
@@ -64,6 +64,12 @@ Här följer några andra saker som vi rekommenderar att du optimerar MSIX-appen
 Installations processen för MSIX-appen bifoga fil resurs är i stort sett densamma som [installations processen för FSLogix profil fil resurser](create-host-pools-user-profile.md). Du måste dock tilldela användare olika behörigheter. MSIX app Attach kräver skrivskyddade behörigheter för åtkomst till fil resursen.
 
 Om du lagrar dina MSIX-program i Azure Files måste du, för värdarna för-sessionen, tilldela alla VM-VM: ar för rollbaserad åtkomst kontroll (RBAC) och fil resursens nya teknik fil system (NTFS) för resursen.
+
+| Azure-objekt                      | Nödvändig roll                                     | Roll funktion                                  |
+|-----------------------------------|--------------------------------------------------|-----------------------------------------------|
+| Sessions värd (VM-datornamn)| Storage-fildata för SMB-resursdeltagare          | Läsa och köra, läsa, Visa mappinnehåll  |
+| Administratörer på fil resurs              | Storage-fildata för upphöjd SMB-resursdeltagare | Fullständig behörighet                                  |
+| Användare på fil resurs               | Storage-fildata för SMB-resursdeltagare          | Läsa och köra, läsa, Visa mappinnehåll  |
 
 Så här tilldelar du VM-behörigheter för VM för lagrings kontot och fil resursen:
 

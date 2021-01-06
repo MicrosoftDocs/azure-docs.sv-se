@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: certificates
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 700efe8e251af3f124e087e2a2d170db262aec08
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: 4dd216f4018feca8c3461104a5beb220d90fd743
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97826119"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97932851"
 ---
 # <a name="quickstart-azure-key-vault-certificate-client-library-for-net-sdk-v4"></a>Snabb start: Azure Key Vault klient bibliotek för certifikat för .NET (SDK v4)
 
@@ -27,7 +27,7 @@ Mer information om Key Vault och certifikat finns i:
 - [Översikt över Key Vault](../general/overview.md)
 - [Certifikat översikt](about-certificates.md).
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 * En Azure-prenumeration – [skapa en kostnads fritt](https://azure.microsoft.com/free/dotnet)
 * [.NET Core 3,1 SDK eller senare](https://dotnet.microsoft.com/download/dotnet-core)
@@ -108,7 +108,7 @@ set KEY_VAULT_NAME=<your-key-vault-name>
 ````
 Windows PowerShell
 ```powershell
-$Env:KEY_VAULT_NAME=<your-key-vault-name>
+$Env:KEY_VAULT_NAME="<your-key-vault-name>"
 ```
 
 macOS eller Linux
@@ -254,4 +254,4 @@ Mer information om Key Vault och hur du integrerar det med dina appar finns i f�
 - Se en [åtkomst Key Vault från självstudien för App Service program](../general/tutorial-net-create-vault-azure-web-app.md)
 - Se en [åtkomst Key Vault från den virtuella datorns självstudie](../general/tutorial-net-virtual-machine.md)
 - Se [Azure Key Vault Developer ' s guide](../general/developers-guide.md)
-- Granska [Azure Key Vault bästa praxis](../general/best-practices.md)
+- Granska [Key Vault säkerhets översikt](../general/security-overview.md)

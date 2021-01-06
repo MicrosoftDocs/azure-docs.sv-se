@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: 73a3be62e57991b63525372f008e15d8e4f36a74
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 1217ecba7a5fcb3c0fc95f505e7ca07fc76129b2
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97401737"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97930828"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>Distribuera ett Azure Service Fabric-kluster över Tillgänglighetszoner
 Tillgänglighetszoner i Azure är ett erbjudande med hög tillgänglighet som skyddar dina program och data från data Center problem. En tillgänglighets zon är en unik fysisk plats utrustad med oberoende strömförsörjning, kylning och nätverk inom en Azure-region.
@@ -35,7 +35,7 @@ Den rekommenderade topologin för den primära nodtypen kräver de resurser som 
 >[!NOTE]
 > Den virtuella datorns skal uppsättnings grupp egenskap för enskild placering måste anges till true, eftersom Service Fabric inte stöder en enskild skalnings uppsättning för virtuella datorer som omfattar zoner.
 
- ![Arkitektur för Azure Service Fabric tillgänglighets zon][sf-architecture]
+ ![Diagram som visar arkitekturen för Azure Service Fabric tillgänglighets zoner.][sf-architecture]
 
 ## <a name="networking-requirements"></a>Nätverkskrav
 ### <a name="public-ip-and-load-balancer-resource"></a>Offentlig IP-adress och Load Balancer resurs

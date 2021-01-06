@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 161348f7566ff64858d563f34ad8f3f4c7511adf
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 16fff00f04c4cd57ad46759cceb50134e58d5e01
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96009168"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97933123"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>Självstudie: Azure Active Directory enkel inloggning (SSO) med F5
 
@@ -28,7 +28,7 @@ I den här självstudien får du lära dig hur du integrerar F5 med Azure Active
 
 Mer information om SaaS app integration med Azure AD finns i [Vad är program åtkomst och enkel inloggning med Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 För att komma igång behöver du följande objekt:
 
@@ -172,7 +172,7 @@ I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I **Namn**-fältet skriver du `B.Simon`.  
-   1. I fältet **användar namn** anger du username@companydomain.extension . Exempelvis `B.Simon@contoso.com`.
+   1. I fältet **användar namn** anger du username@companydomain.extension . Ett exempel är `B.Simon@contoso.com`.
    1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
    1. Klicka på **Skapa**.
 
@@ -195,7 +195,7 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 1. Klicka på knappen **tilldela** i dialog rutan **Lägg till tilldelning** .
 1. Klicka på **villkorlig åtkomst** .
 1. Klicka på **ny princip**.
-1. Nu kan du se din F5-app som en resurs för CA-principen och tillämpa villkorlig åtkomst inklusive multifaktorautentisering, enhet baserad åtkomst kontroll eller identitets skydds princip.
+1. Nu kan du se din F5-app som en resurs för principen för villkorlig åtkomst och tillämpa villkorlig åtkomst inklusive multifaktorautentisering, enhet baserad åtkomst kontroll eller identitets skydds princip.
 
 ## <a name="configure-f5-sso"></a>Konfigurera F5 SSO
 

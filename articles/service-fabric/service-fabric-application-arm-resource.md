@@ -3,12 +3,12 @@ title: Distribuera och uppgradera med Azure Resource Manager
 description: Lär dig hur du distribuerar program och tjänster till ett Service Fabric kluster med en Azure Resource Manager-mall.
 ms.topic: conceptual
 ms.date: 12/06/2017
-ms.openlocfilehash: bb866eb24fb1b286f496bad9845d1ee557baa221
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: ed6bc7d96cb3ea0934929e6543c5e637a9f42c1f
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94681677"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97930845"
 ---
 # <a name="manage-applications-and-services-as-azure-resource-manager-resources"></a>Hantera program och tjänster som Azure Resource Manager resurser
 
@@ -50,13 +50,12 @@ I följande kodfragment visas olika typer av resurser som kan hanteras via en ma
 }
 ```
 
-
 ## <a name="add-a-new-application-to-your-resource-manager-template"></a>Lägg till ett nytt program i Resource Manager-mallen
 
 1. Förbered klustrets Resource Manager-mall för distribution. Mer information finns i [skapa ett Service Fabric-kluster med hjälp av Azure Resource Manager](service-fabric-cluster-creation-via-arm.md) .
 2. Tänk på några av de program som du planerar att distribuera i klustret. Finns det några som alltid kommer att köra andra program som kan ta beroenden? Planerar du att distribuera kluster styrning eller installations program? Dessa sorters program hanteras bäst via en Resource Manager-mall, enligt beskrivningen ovan. 
-3. När du har avvisat vilka program du vill distribuera på det här sättet måste programmen paketeras, zippas och placeras på en fil resurs. Resursen måste vara tillgänglig via en REST-slutpunkt för Azure Resource Manager att använda under distributionen.
-4. Beskriv varje programs egenskaper i din Resource Manager-mall under kluster deklarationen. Dessa egenskaper inkluderar replik-eller instans antal och eventuella beroende kedjor mellan resurser (andra program eller tjänster). En lista över omfattande egenskaper finns i [REST API Swagger-specifikationen](https://aka.ms/sfrpswaggerspec). Observera att detta inte ersätter program-eller tjänst manifesten, utan beskriver i stället några av vad som ingår i klustrets Resource Manager-mall. Här är en exempel-mall som inkluderar distribution av en tillstånds lös tjänst *Service1* och en tillstånds känslig tjänst *service2* som en del av *application1*:
+3. När du har avvisat vilka program du vill distribuera på det här sättet måste programmen paketeras, zippas och placeras på en lagrings resurs. Resursen måste vara tillgänglig via en REST-slutpunkt för Azure Resource Manager att använda under distributionen. Mer information finns i [skapa ett lagrings konto](service-fabric-concept-resource-model.md#create-a-storage-account) .
+4. Beskriv varje programs egenskaper i din Resource Manager-mall under kluster deklarationen. Dessa egenskaper inkluderar replik-eller instans antal och eventuella beroende kedjor mellan resurser (andra program eller tjänster). Observera att detta inte ersätter program-eller tjänst manifesten, utan beskriver i stället några av vad som ingår i klustrets Resource Manager-mall. Här är en exempel-mall som inkluderar distribution av en tillstånds lös tjänst *Service1* och en tillstånds känslig tjänst *service2* som en del av *application1*:
 
    ```json
    {
@@ -244,7 +243,7 @@ I följande kodfragment visas olika typer av resurser som kan hanteras via en ma
    ```
 
    > [!NOTE] 
-   > *API version* måste vara inställt på `"2019-03-01"` . Den här mallen kan också distribueras oberoende av klustret, så länge klustret redan har distribuerats.
+   > Se Service Fabric [Azure Resource Managers referens](/azure/templates/microsoft.servicefabric/clusters/applicationtypes) för att hitta användning och information om enskilda mallegenskaper.
 
 5. Distribuera! 
 

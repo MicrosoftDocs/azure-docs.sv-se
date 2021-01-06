@@ -5,18 +5,18 @@ author: cgillum
 ms.topic: overview
 ms.date: 08/31/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 504ef93a0002895bc5662d95ad269c8593170ee2
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 2ec1b080c195a47caafd0120240b5fb61ede062b
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "74233016"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97932290"
 ---
 # <a name="durable-functions-billing"></a>Durable Functions fakturering
 
 [Durable Functions](durable-functions-overview.md) faktureras på samma sätt som Azure Functions. Mer information finns i [prissättning för Azure Functions](https://azure.microsoft.com/pricing/details/functions/).
 
-När du kör Orchestrator Functions i Azure Functions [förbruknings plan](../functions-scale.md#consumption-plan)måste du vara medveten om vissa fakturerings beteenden. I följande avsnitt beskrivs dessa beteenden och deras inverkan i detalj.
+När du kör Orchestrator Functions i Azure Functions [förbruknings plan](../consumption-plan.md)måste du vara medveten om vissa fakturerings beteenden. I följande avsnitt beskrivs dessa beteenden och deras inverkan i detalj.
 
 ## <a name="orchestrator-function-replay-billing"></a>Återuppspelning av Orchestrator-funktion
 
@@ -45,7 +45,7 @@ Flera faktorer bidrar till de faktiska Azure Storage kostnader som uppstår i Du
 
 * En enda Function-app är associerad med en enda aktivitets hubb som delar en uppsättning Azure Storage-resurser. Dessa resurser används av alla varaktiga funktioner i en Function-app. Det faktiska antalet funktioner i Function-appen har ingen inverkan på Azure Storage transaktionskostnader.
 * Varje Function App-instans avsöker internt flera köer i lagrings kontot med hjälp av en backoff avsöknings algoritm. En inaktiv App-instans avsöker köerna mindre ofta än en aktiv app, vilket resulterar i färre transaktionskostnader. Mer information om hur du Durable Functions funktionen för att söka efter köer finns i [avsnittet om kö-avsökning i artikeln om prestanda och skalning](durable-functions-perf-and-scale.md#queue-polling).
-* När du kör i Azure Functions förbruknings-eller Premium-prenumerationer, avsöker [Azure Functionss kontroll enheten](../functions-scale.md#how-the-consumption-and-premium-plans-work) regelbundet alla aktivitets nav köer i bakgrunden. Om en Function-app är under ljus till måttlig skala, kommer bara en enskild skalnings kontroll instans att avsöka dessa köer. Om Function-appen skalar ut till ett stort antal instanser kan fler instanser av skalnings kontroll läggas till. Dessa ytterligare instanser av skalnings styrenheten kan öka de totala kostnaderna för Queue-transaktioner.
+* När du kör i Azure Functions förbruknings-eller Premium-prenumerationer, avsöker [Azure Functionss kontroll enheten](../event-driven-scaling.md) regelbundet alla aktivitets nav köer i bakgrunden. Om en Function-app är under ljus till måttlig skala, kommer bara en enskild skalnings kontroll instans att avsöka dessa köer. Om Function-appen skalar ut till ett stort antal instanser kan fler instanser av skalnings kontroll läggas till. Dessa ytterligare instanser av skalnings styrenheten kan öka de totala kostnaderna för Queue-transaktioner.
 * Varje Function App-instans konkurrerar om en uppsättning BLOB-lån. De här instanserna kommer regelbundet att ringa till Azure-Blob Service antingen förnyade lån eller försöka skaffa nya lån. Aktivitets hubbens konfigurerade antal partitioner avgör antalet BLOB-lån. Om du skalar ut till ett större antal funktions program instanser ökar förmodligen Azure Storage transaktionskostnader som är kopplade till dessa leasing åtgärder.
 
 Du hittar mer information om Azure Storage prissättning i [Azure Storage prissättnings](https://azure.microsoft.com/pricing/details/storage/) dokumentation. 

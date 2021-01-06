@@ -16,12 +16,12 @@ ms.date: 12/23/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a2e670525840b801df874e3f8dcbdbadc0955a12
-ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
+ms.openlocfilehash: 4122e645b76751e8944704a6405cf5dee09129f1
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97746311"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97932443"
 ---
 # <a name="planning-azure-active-directory-access-reviews-deployment"></a>Planera distribution av Azure Active Directory åtkomst granskningar
 
@@ -333,9 +333,9 @@ Grupper som synkroniseras från lokala Active Directory kan inte ha en ägare i 
 > [!NOTE]
 > Vi rekommenderar att du definierar affärs principer som definierar hur grupper skapas för att se till att grupp ägande och ansvar är klart för regelbunden granskning av medlemskap. 
 
-### <a name="review-membership-of-exclusion-groups-in-ca-policies"></a>Granska medlemskap i undantags grupper i CA-principer 
+### <a name="review-membership-of-exclusion-groups-in-conditional-access-policies"></a>Granska medlemskap i undantags grupper i principer för villkorlig åtkomst 
 
-Det finns tillfällen när principer för villkorlig åtkomst (CA) har utformats för att skydda nätverket bör inte gälla för alla användare. Till exempel kan en CA-princip som bara tillåter användare att logga in på företags nätverket inte gälla för försäljnings teamet, som skickas i stor utsträckning. I så fall skulle sälj grupps medlemmar placeras i en grupp och gruppen skulle uteslutas från CA-principen. 
+Det finns tillfällen när principer för villkorlig åtkomst har utformats för att skydda nätverket bör inte gälla för alla användare. Till exempel en princip för villkorlig åtkomst som bara tillåter att användare loggar in på företags nätverket kanske inte gäller för försäljnings teamet. I så fall skulle sälj grupps medlemmar placeras i en grupp och gruppen skulle uteslutas från principen för villkorlig åtkomst. 
 
 Granska ett sådant grupp medlemskap regelbundet som undantaget utgör en potentiell risk om fel medlemmar undantas från kravet.
 

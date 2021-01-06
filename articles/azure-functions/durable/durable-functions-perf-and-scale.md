@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: b9fc465b5e5f132264fd36e004fa3ee7623b87a5
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: c94218248f1122cdb60ab8124bc9d9365fe8947b
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96854996"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97931746"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Prestanda och skalning i Durable Functions (Azure Functions)
 
@@ -51,7 +51,7 @@ Det varaktiga aktivitets tillägget implementerar en slumpmässig, exponentiell 
 Den maximala avsöknings fördröjningen kan konfigureras via `maxQueuePollingInterval` egenskapen i [host.jsi filen](../functions-host-json.md#durabletask). Om den här egenskapen ställs in på ett högre värde kan det resultera i högre meddelande fördröjning. Högre fördröjningar förväntas bara efter perioder av inaktivitet. Om du ställer in den här egenskapen till ett lägre värde kan högre lagrings kostnader uppstå på grund av ökade lagrings transaktioner.
 
 > [!NOTE]
-> När du kör i Azure Functions förbruknings-och Premium-planerna, avsöker [Azure Functions skalnings styrenheten](../functions-scale.md#how-the-consumption-and-premium-plans-work) varje kontroll och arbets objekts kön var tionde sekund. Denna ytterligare avsökning är nödvändig för att avgöra när du ska aktivera Function App-instanser och fatta skalnings beslut. Vid tidpunkten för skrivning är det här 10 sekunder konstant och kan inte konfigureras.
+> När du kör i Azure Functions förbruknings-och Premium-planerna, avsöker [Azure Functions skalnings styrenheten](../event-driven-scaling.md) varje kontroll och arbets objekts kön var tionde sekund. Denna ytterligare avsökning är nödvändig för att avgöra när du ska aktivera Function App-instanser och fatta skalnings beslut. Vid tidpunkten för skrivning är det här 10 sekunder konstant och kan inte konfigureras.
 
 ### <a name="orchestration-start-delays"></a>Start fördröjningar för dirigering
 Dirigerings instanser startas genom att placera ett `ExecutionStarted` meddelande i en av aktivitets hubbens kontroll köer. Under vissa omständigheter kan du se flera sekunders fördröjningar mellan när ett dirigering är schemalagt att köras och när det faktiskt börjar köras. Under det här tidsintervallet behålls Orchestration-instansen i `Pending` status. Det finns två möjliga orsaker till den här fördröjningen:
@@ -138,7 +138,7 @@ I allmänhet är Orchestrator-funktioner avsedda att vara lätta att vara lätta
 
 ## <a name="auto-scale"></a>Automatisk skalning
 
-Precis som med alla Azure Functions som körs i förbruknings-och elastiska Premium-planerna stöder Durable Functions automatisk skalning via [Azure Functions skalnings styrenheten](../functions-scale.md#runtime-scaling). Skalnings kontrollen övervakar svars tiden för alla köer genom att regelbundet skicka _gransknings_ kommandon. Baserat på fördröjningen hos de granskade meddelandena bestämmer skalnings styrenheten om du vill lägga till eller ta bort virtuella datorer.
+Precis som med alla Azure Functions som körs i förbruknings-och elastiska Premium-planerna stöder Durable Functions automatisk skalning via [Azure Functions skalnings styrenheten](../event-driven-scaling.md#runtime-scaling). Skalnings kontrollen övervakar svars tiden för alla köer genom att regelbundet skicka _gransknings_ kommandon. Baserat på fördröjningen hos de granskade meddelandena bestämmer skalnings styrenheten om du vill lägga till eller ta bort virtuella datorer.
 
 Om skalnings styrenheten bestämmer att meddelande fördröjningarna för kontroll kön är för höga, lägger den till virtuella dator instanser tills svars tiden minskas till en acceptabel nivå eller når gränsen för kontroll köns partition. På samma sätt kommer skalnings styrenheten att kontinuerligt lägga till virtuella dator instanser om svars tiden för arbets objekt i kö är hög, oavsett antalet partitioner.
 
