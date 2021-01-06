@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 08/28/2020
+ms.date: 01/05/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: 75428b28095b0e425a1670caffcf960aa6ae58f6
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 28b5c107fb35c7bda9b1680050b92004436b98ff
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185512"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935507"
 ---
 # <a name="tutorial-transform-data-with-azure-stack-edge-pro"></a>Självstudie: transformera data med Azure Stack Edge Pro
 
@@ -25,7 +25,7 @@ I den här självstudien beskrivs hur du konfigurerar en beräknings roll på di
 Den här proceduren kan ta cirka 10 till 15 minuter att slutföra.
 
 
-I de här självstudierna får du lära dig att
+I den här guiden får du lära dig att:
 
 > [!div class="checklist"]
 > * Konfigurera beräkning
@@ -34,10 +34,9 @@ I de här självstudierna får du lära dig att
 > * Verifiera datatransformering och överföring
 
  
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Innan du ställer in en beräknings roll på din Azure Stack Edge Pro-enhet ser du till att:
-
 - Du har aktiverat din Azure Stack Edge Pro-enhet enligt beskrivningen i [aktivera din Azure Stack Edge Pro](azure-stack-edge-gpu-deploy-activate.md).
 
 
@@ -45,36 +44,36 @@ Innan du ställer in en beräknings roll på din Azure Stack Edge Pro-enhet ser 
 
 Om du vill konfigurera Compute på Azure Stack Edge Pro skapar du en IoT Hub resurs.
 
-1. I Azure Portal av Azure Stack Edge-resursen går du till **Översikt**. Välj **Kom igång** i den högra rutan på **beräknings** panelen.
+1. I Azure Portal i Azure Stack Edge-resurs går du till **Översikt** och väljer **IoT Edge**.
 
-    ![Kom igång med Compute](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-1.png)
+   ![Kom igång med Compute](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-1.png)
 
-2. På panelen **Konfigurera Edge Compute** väljer du **Konfigurera beräkning**.
+2. I **aktivera IoT Edge tjänst** väljer du **Lägg till**.
 
-    ![Konfigurera beräkning](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-2.png)
+   ![Konfigurera beräkning](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-2.png)
 
-3. Ange följande på bladet **Konfigurera Edge Compute** :
+3. I **skapa IoT Edge tjänst** anger du inställningarna för din IoT Hub-resurs:
 
-   
-    |Field  |Värde  |
-    |---------|---------|
-    |IoT Hub     | Välj från **ny** eller **befintlig**. <br> Som standard används nivån Standard (S1) till att skapa en IoT-resurs. Om du vill använda en IoT-resurs på kostnadsfri nivå skapar du en sådan och väljer sedan den befintliga resursen. <br> I varje fall använder IoT Hub resursen samma prenumeration och resurs grupp som används av Azure Stack Edge-resursen.     |
-    |Namn     |Ange ett namn för din IoT Hub-resurs.         |
+   |Fält   |Värde    |
+   |--------|---------|
+   |Prenumeration      | Prenumeration som används av Azure Stack Edge-resursen. |
+   |Resursgrupp    | Resurs grupp som används av Azure Stack Edge-resursen. |
+   |IoT Hub           | Välj från **Skapa ny** eller **Använd befintlig**. <br> Som standard används nivån Standard (S1) till att skapa en IoT-resurs. Om du vill använda en IoT-resurs på kostnadsfri nivå skapar du en sådan och väljer sedan den befintliga resursen. <br> I varje fall använder IoT Hub resursen samma prenumeration och resurs grupp som används av Azure Stack Edge-resursen.     |
+   |Namn              | Om du inte vill använda det standard namn som angetts för en ny IoT Hub resurs anger du ett annat namn. |
 
     ![Kom igång med Compute 2](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-3.png)
 
-4. Välj **Skapa**. Det tar flera minuter att skapa en IoT Hub-resurs. När IoT Hub resursen har skapats kan du **Konfigurera** Compute-panelen för att Visa beräknings konfigurationen. 
+4. När du är klar med inställningarna väljer du **Granska + skapa**. Granska inställningarna för din IoT Hub resurs och välj **skapa**.
+
+   Det tar flera minuter att skapa en resurs för en IoT Hub resurs. När resursen har skapats visar **översikten** IoT Edges tjänsten körs nu.
 
     ![Kom igång med Compute 3](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-4.png)
 
-5. Bekräfta att Edge Compute-rollen har kon figurer ATS genom att välja **Visa beräkning** på panelen **Konfigurera beräkning** .
-    
-    ![Kom igång med Compute 4](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-5.png)
+5. För att bekräfta att Edge Compute-rollen har kon figurer ATS, väljer du **Egenskaper**.
 
-    > [!NOTE]
-    > Om dialog rutan **Konfigurera beräkning** stängs innan IoT Hub är kopplad till Azure Stack Edge Pro-enheten, skapas IoT Hub men visas inte i beräknings konfigurationen. 
-    
-    När Edge-beräkningsrollen har konfigurerats på Edge-enheten så skapas två enheter: en IoT-enhet och en IoT Edge-enhet. Bägge enheter kan visas i IoT Hub-resursen. En IoT Edge runtime körs också på den här IoT Edge enheten. För tillfället är det bara Linux-plattformen tillgänglig för din IoT Edge-enhet.
+   ![Kom igång med Compute 4](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-5.png)
+
+   När Edge-beräkningsrollen har konfigurerats på Edge-enheten så skapas två enheter: en IoT-enhet och en IoT Edge-enhet. Bägge enheter kan visas i IoT Hub-resursen. En IoT Edge runtime körs också på den här IoT Edge enheten. För tillfället är det bara Linux-plattformen tillgänglig för din IoT Edge-enhet.
 
 
 ## <a name="add-shares"></a>Lägg till resurser
@@ -94,11 +93,11 @@ För den enkla distributionen i den här självstudien behöver du två resurser
 
         ![Lägg till en Edge-resurs](./media/azure-stack-edge-j-series-deploy-configure-compute/add-edge-share-1.png) 
 
-    Om du skapade en lokal NFS-resurs så använder du följande kommandoalternativ för fjärrsynkronisering (rsync) för att kopiera filer till resursen:
+    Om du har skapat en lokal NFS-resurs använder du följande `rsync` kommando alternativ för fjärrsynkronisering () för att kopiera filer till resursen:
 
     `rsync <source file path> < destination file path>`
 
-    Mer information om `rsync` kommandot finns i [rsync-dokumentationen](https://www.computerhope.com/unix/rsync.htm).
+    Mer information om `rsync` kommandot finns i [ `Rsync` dokumentationen](https://www.computerhope.com/unix/rsync.htm).
 
     > [!NOTE]
     > För att montera NFS-resurs till Compute måste Compute-nätverket konfigureras på samma undernät som virtuell NFS-IP-adress. Mer information om hur du konfigurerar Compute Network finns i [Aktivera Compute Network på Azure Stack Edge Pro](azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy.md).
@@ -125,7 +124,7 @@ I det här avsnittet lägger du till en anpassad modul till den IoT Edge enhet s
 2. Ange följande värden i bladet **Konfigurera och Lägg till modul** :
 
     
-    |Field  |Värde  |
+    |Fält  |Värde  |
     |---------|---------|
     |Namn     | Ett unikt namn för modulen. Den här modulen är en Docker-behållare som du kan distribuera till den IoT Edge enhet som är kopplad till din Azure Stack Edge Pro.        |
     |Bild-URI     | Avbildnings-URI för motsvarande behållar avbildning för modulen.        |
@@ -154,15 +153,15 @@ Verifiera att modulen körs genom att göra följande:
  
 1. I Utforskaren ansluter du till både de lokala resurserna och kant resurserna som du skapade tidigare.
 
-    ![Verifiera datatransformering](./media/azure-stack-edge-j-series-deploy-configure-compute/verify-data-2.png) 
+    ![Verifiera datatransformering-1](./media/azure-stack-edge-j-series-deploy-configure-compute/verify-data-2.png) 
  
 1. Lägg till data i den lokala resursen.
 
-    ![Verifiera datatransformering](./media/azure-stack-edge-j-series-deploy-configure-compute/verify-data-3.png) 
+    ![Verifiera datatransformering-2](./media/azure-stack-edge-j-series-deploy-configure-compute/verify-data-3.png) 
  
    Data flyttas till molnresursen.
 
-    ![Verifiera datatransformering](./media/azure-stack-edge-j-series-deploy-configure-compute/verify-data-4.png)  
+    ![Verifiera datatransformering-3](./media/azure-stack-edge-j-series-deploy-configure-compute/verify-data-4.png)  
 
    Data pushas sedan från molnresursen till lagringskontot. Om du vill visa data kan du använda Storage Explorer.
 

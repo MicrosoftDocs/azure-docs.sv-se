@@ -10,18 +10,18 @@ ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 14ae8b8670db53761d085bc019711e829633601b
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 93602e522338166abac98c3e4a198e1aff392d21
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96451814"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934976"
 ---
 # <a name="azure-synapse-analytics-shared-database"></a>Delad Azure Synapse Analytics-databas
 
-Med Azure Synapse Analytics kan olika data behandlings arbets Ytors motorer dela databaser och tabeller mellan server lös Apache Spark pooler och SQL-pool utan server.
+Med Azure Synapse Analytics kan de olika data behandlings arbets ytans motorer dela databaser och tabeller. För närvarande delas databaserna och Parquet-tabellerna som skapas på Apache Spark pooler automatiskt med den serverbaserade SQL-adresspoolen.
 
-En databas som skapats med ett Spark-jobb visas med samma namn för alla aktuella och framtida Spark-pooler i arbets ytan, inklusive SQL-poolen utan server.
+En databas som skapats med ett Spark-jobb visas med samma namn för alla aktuella och framtida Spark-pooler i arbets ytan, inklusive SQL-poolen utan server. Du kan inte lägga till anpassade objekt (externa tabeller, vyer, procedurer) direkt i den här replikerade databasen med hjälp av SQL-poolen utan server.
 
 Spark-standarddatabasen, `default` som anropas, visas också i den serverbaserade SQL-poolen kontext som en databas som kallas `default` .
 

@@ -3,12 +3,12 @@ title: Parametrar i mallar
 description: Beskriver hur du definierar parametrar i en Azure Resource Manager-mall (ARM-mall).
 ms.topic: conceptual
 ms.date: 11/24/2020
-ms.openlocfilehash: 4ac1aeb579040b35b2a9b4cb90fb5687f91ebd3b
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 929d871bc0087d4fda585773b349dee4e0945c7c
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353518"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934721"
 ---
 # <a name="parameters-in-arm-templates"></a>Parametrar i ARM-mallar
 
@@ -20,7 +20,7 @@ Varje parameter måste anges till en av [data typerna](template-syntax.md#data-t
 
 ## <a name="define-parameter"></a>Definiera parameter
 
-I följande exempel visas en enkel parameter definition. Den definierar en parameter med namnet **storageSKU**. Parametern är ett sträng värde och accepterar bara värden som är giltiga för den avsedda användningen. Parametern använder ett standardvärde när inget värde anges under distributionen.
+I följande exempel visas en enkel parameter definition. Den definierar en parameter med namnet `storageSKU` . Parametern är ett sträng värde och accepterar bara värden som är giltiga för den avsedda användningen. Parametern använder ett standardvärde när inget värde anges under distributionen.
 
 ```json
 "parameters": {

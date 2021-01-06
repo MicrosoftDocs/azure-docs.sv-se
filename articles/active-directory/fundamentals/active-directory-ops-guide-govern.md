@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: d4df373f78a9c74584d0e4046f7532a2190f3a3f
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: ba3ca140abe36a31ffa03422420ea537bbe4f39a
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370975"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935758"
 ---
 # <a name="azure-active-directory-governance-operations-reference-guide"></a>Referens guide för Azure Active Directory styrnings åtgärder
 
@@ -31,7 +31,7 @@ Det här avsnittet i [hand boken för Azure AD-åtgärder](active-directory-ops-
 
 Hantering av Azure Active Directory kräver kontinuerlig körning av viktiga operativa uppgifter och processer, som kanske inte ingår i ett lanserings projekt. Det är fortfarande viktigt att du konfigurerar dessa uppgifter för att optimera din miljö. De viktigaste uppgifterna och deras rekommenderade ägare är:
 
-| Uppgift | Ägare |
+| Aktivitet | Ägare |
 | :- | :- |
 | Arkivera Azure AD audit-loggar i SIEM system | Åtgärds team för informations säkerhet |
 | Identifiera program som hanteras av efterlevnad | IAM-åtgärds team |
@@ -59,7 +59,7 @@ Det finns ändringar som kräver särskilda överväganden vid testning, från e
 | Scenario| Rekommendation |
 |-|-|
 |Ändra autentiseringstypen från federerad till PHS/PTA eller vice versa| Använd [stegvis](../hybrid/how-to-connect-staged-rollout.md) distribution för att testa effekten av att ändra autentiseringstypen.|
-|Distribuera en ny princip för villkorlig åtkomst (CA) eller identitets skydds princip|Skapa en ny CA-princip och tilldela till test användare.|
+|Distribuera en ny princip för villkorlig åtkomst (CA) eller identitets skydds princip|Skapa en ny princip för villkorlig åtkomst och tilldela till test användare.|
 |Registrera en test miljö för ett program|Lägg till programmet i en produktions miljö, Dölj det från panelen för appar och tilldela det för att testa användare under fasen kvalitets säkring (frågor och svar).|
 |Ändra regler för synkronisering|Genomför ändringarna i ett test Azure AD Connect med samma konfiguration som för närvarande i produktion, även kallat mellanlagrings läge och analysera CSExport resultat. Om det är uppfyllt byter du till produktion när du är klar.|
 |Ändring av anpassning|Testa i en separat test klient.|

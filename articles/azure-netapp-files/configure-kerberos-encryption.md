@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 11/09/2020
 ms.author: b-juche
-ms.openlocfilehash: 1ffbcc24a2ee386be1a8ce50b55375d5bd458df1
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 69168060cbce4a904c53d7f79895e909c8c42e01
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410104"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935231"
 ---
 # <a name="configure-nfsv41-kerberos-encryption-for-azure-netapp-files"></a>Konfigurera NFSv 4.1 Kerberos-kryptering för Azure NetApp Files
 
@@ -89,7 +89,7 @@ Följ anvisningarna i [Konfigurera en NFS-klient för att Azure NetApp Files](co
 
 2. Välj **monterings instruktioner** från volymen för att Visa anvisningarna.
 
-    Till exempel: 
+    Ett exempel: 
 
     ![Monterings instruktioner för Kerberos-volymer](../media/azure-netapp-files/mount-instructions-kerberos-volume.png)  
 
@@ -172,6 +172,7 @@ Prestanda påverkan för krb5p:
 
 ## <a name="next-steps"></a>Nästa steg  
 
+* [Felsök problem med NFSv 4.1 Kerberos-volymer](troubleshoot-nfsv41-kerberos-volumes.md)
 * [Vanliga frågor och svar om Azure NetApp Files](azure-netapp-files-faqs.md)
 * [Skapa en NFS-volym för Azure NetApp Files](azure-netapp-files-create-volumes.md)
 * [Skapa en Active Directory anslutning](azure-netapp-files-create-volumes-smb.md#create-an-active-directory-connection)

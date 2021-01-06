@@ -1,6 +1,6 @@
 ---
-title: Snabb start – Azure Key Vault klient bibliotek för certifikat för Java
-description: Innehåller en snabb start för klient biblioteket för Azure Key Vault certifikat för Java.
+title: Snabb start för Azure Key Vault certifikat klient bibliotek – Java
+description: Lär dig mer om klient biblioteket för Azure Key Vault-certifikat för Java med stegen i den här snabb starten.
 author: msmbaldwin
 ms.custom: devx-track-java, devx-track-azurecli
 ms.author: mbaldwin
@@ -8,14 +8,14 @@ ms.date: 12/18/2020
 ms.service: key-vault
 ms.subservice: certificates
 ms.topic: quickstart
-ms.openlocfilehash: 1890c2a3d4043d43dd890f06942dbe704e3f7689
-ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
+ms.openlocfilehash: 99b8c63060cebeffea0f3473e03b5f49a415230b
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97733520"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936047"
 ---
-# <a name="quickstart-azure-key-vault-certificate-client-library-for-java"></a>Snabb start: Azure Key Vault klient bibliotek för certifikat för Java
+# <a name="quickstart-azure-key-vault-certificate-client-library-for-java-certificates"></a>Snabb start: Azure Key Vault klient bibliotek för certifikat för Java (certifikat)
 Kom igång med klient biblioteket för Azure Key Vault-certifikat för Java. Följ stegen nedan för att installera paketet och prova exempel koden för grundläggande uppgifter.
 
 Ytterligare resurser:
@@ -25,7 +25,7 @@ Ytterligare resurser:
 * [Produktdokumentation](index.yml)
 * [Exempel](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/keyvault/azure-security-keyvault-certificates/src/samples/java/com/azure/security/keyvault/certificates)
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 - En Azure-prenumeration – [skapa en kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Java Development Kit (JDK)](/java/azure/jdk/) version 8 eller senare
 - [Apache maven](https://maven.apache.org)
@@ -126,7 +126,7 @@ set KEY_VAULT_NAME=<your-key-vault-name>
 ````
 Windows PowerShell
 ```powershell
-$Env:KEY_VAULT_NAME=<your-key-vault-name>
+$Env:KEY_VAULT_NAME="<your-key-vault-name>"
 ```
 
 macOS eller Linux

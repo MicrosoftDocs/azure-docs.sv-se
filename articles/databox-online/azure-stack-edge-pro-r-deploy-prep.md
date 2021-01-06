@@ -6,19 +6,19 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 12/16/2020
+ms.date: 01/04/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Pro R so I can use it to transfer data to Azure.
-ms.openlocfilehash: 7ca9b21838d35b54b4ed84d5aaf3aa797b02d9e0
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: dd0b6833c4c51c218497cea4fec04390200edff4
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97630776"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935364"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro-r"></a>Självstudie: Förbered för att distribuera Azure Stack Edge Pro R
 
-Det här är den första självstudien i serien med distributions kurser som krävs för att distribuera Azure Stack Edge Pro R fullständigt. I den här självstudien beskrivs hur du förbereder Azure Portal för att distribuera en Azure Stack Edge-resurs. I självstudien används en 1-nods Azure Stack Edge Pro R-enhet som levereras med en avbrotts fri elkälla (UPS).
+Den här själv studie kursen är den första i serien med distributions kurser som krävs för att distribuera Azure Stack Edge Pro R fullständigt. I den här självstudien beskrivs hur du förbereder Azure Portal för att distribuera en Azure Stack Edge-resurs. I självstudien används en 1-nods Azure Stack Edge Pro R-enhet som levereras med en avbrotts fri elkälla (UPS).
 
 Du måste ha administratörsbehörighet för att utföra installationen och konfigurationen. Portalförberedelserna tar mindre än tio minuter.
 
@@ -37,7 +37,7 @@ Om du vill distribuera Azure Stack Edge Pro R, se följande självstudier i den 
 | --- | --- |
 | **Tgärder** |De här stegen måste utföras i förberedelser inför den kommande distributionen. |
 | **[Check lista för distributions konfiguration](#deployment-configuration-checklist)** |Använd den här checklistan för att samla in och registrera information före och under distributionen. |
-| **[Distributions krav](#prerequisites)** |När de här kraven är uppfyllda är miljön klar för distribution. |
+| **[Distributions krav](#prerequisites)** |Dessa krav verifierar att miljön är klar för distribution. |
 |  | |
 |**Distributions självstudier** |De här självstudierna krävs för att distribuera din Azure Stack Edge Pro R-enhet i produktion. |
 |**[1. Förbered Azure Portal för enhet](azure-stack-edge-pro-r-deploy-prep.md)** |Skapa och konfigurera din Azure Stack Edge-resurs innan du installerar en fysisk enhet i Azure Stack Box Edge. |
@@ -47,7 +47,7 @@ Om du vill distribuera Azure Stack Edge Pro R, se följande självstudier i den 
 |**[5. Konfigurera enhets inställningar](azure-stack-edge-pro-r-deploy-set-up-device-update-time.md)** |Tilldela ett enhets namn och en DNS-domän, konfigurera uppdaterings Server och enhets tid. |
 |**[6. Konfigurera säkerhets inställningar](azure-stack-edge-pro-r-deploy-configure-certificates-vpn-encryption.md)** |Konfigurera certifikat, VPN, kryptering – rest för din enhet. Använd enhets genererade certifikat eller ta med dina egna certifikat.   |
 |**[7. Aktivera enheten](azure-stack-edge-pro-r-deploy-activate.md)** |Använd aktiverings nyckeln från tjänsten för att aktivera enheten. Enheten är redo att konfigurera SMB-eller NFS-resurser eller ansluta via REST. |
-|**[8. Konfigurera Compute](azure-stack-edge-gpu-deploy-configure-compute.md)** |Konfigurera beräknings rollen på enheten. Detta kommer också att skapa ett Kubernetes-kluster. |
+|**[8. Konfigurera Compute](azure-stack-edge-gpu-deploy-configure-compute.md)** |Konfigurera beräknings rollen på enheten. Ett Kubernetes-kluster skapas också. |
 
 Nu kan du börja konfigurera Azure-portalen.
 
@@ -55,7 +55,7 @@ Nu kan du börja konfigurera Azure-portalen.
 
 Innan du distribuerar enheten måste du samla in information för att konfigurera program varan på din Azure Stack Edge Pro-enhet. Att förbereda en del av den här informationen i förväg bidrar till att effektivisera processen att distribuera enheten i din miljö. Använd den [Azure Stack Edge Pro R Deployment Configuration check lista](azure-stack-edge-pro-r-deploy-checklist.md) för att anteckna konfigurations informationen när du distribuerar enheten.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Följande är konfigurations kraven för din Azure Stack Edge-resurs, din Azure Stack Edge-enhet och data Center nätverket.
 
@@ -109,7 +109,7 @@ För att skapa en Azure Stack Edge-resurs, utför följande steg i Azure Portal.
     
     |Inställning  |Värde  |
     |---------|---------|
-    |Prenumeration    |Detta fylls i automatiskt baserat på den tidigare markeringen. Prenumerationen är kopplad till ditt faktureringskonto. |
+    |Prenumeration    |Prenumerationen fylls i automatiskt baserat på den tidigare markeringen. Prenumerationen är kopplad till ditt faktureringskonto. |
     |Resursgrupp  |Välj en befintlig grupp eller skapa en ny grupp.<br>Lär dig mer om [Azures resurs grupper](../azure-resource-manager/management/overview.md).     |
 
 7. Ange eller Välj följande **instans information**.
@@ -150,7 +150,7 @@ När resursen har skapats och distribuerats får du ett meddelande. Välj **Gå 
 
 När ordern har placerats, granskar Microsoft ordern och når dig (via e-post) med leverans information.
 
-<!--![Notification for review of the Azure Stack Edge Pro order](media/azure-stack-edge-gpu-deploy-prep/azure-stack-edge-resource-2.png)-->
+<!--![Notification for review of the Azure Stack Edge Pro order](media/azure-stack-edge-gpu-deploy-prep/azure-stack-edge-resource-2.png) - If this is restored, it must go above "After the resource is successfully created." The azure-stack-edge-resource-1.png would seem superfluous in that case.--> 
 
 Om du stöter på problem under beställnings processen går du till [Felsöka beställnings problem](azure-stack-edge-troubleshoot-ordering.md).
 
@@ -158,20 +158,17 @@ Om du stöter på problem under beställnings processen går du till [Felsöka b
 
 När Azure Stack Edge-resursen är igång måste du hämta aktiverings nyckeln. Den här nyckeln används för att aktivera och ansluta din Azure Stack Edge Pro-enhet med resursen. Du kan hämta den här nyckeln nu när du befinner dig på Azure-portalen.
 
-1. Välj den resurs som du har skapat. Välj **Översikt** och välj sedan **enhets konfiguration**.
+1. Välj den resurs som du har skapat och välj **Översikt**.
 
-    ![Välj enhets konfiguration](media/azure-stack-edge-pro-r-deploy-prep/azure-stack-edge-resource-2.png)
+2. I den högra rutan anger du ett namn för Azure Key Vault eller accepterar standard namnet. Namnet på nyckel valvet kan vara mellan 3 och 24 tecken.
 
-2. Ange ett namn för Azure Key Vault på panelen **Aktivera** eller godkänn standard namnet. Namnet på nyckel valvet kan vara mellan 3 och 24 tecken. 
+   Ett nyckel valv skapas för varje Azure Stack Edge-resurs som aktive ras med din enhet. Med nyckel valvet kan du lagra och få åtkomst till hemligheter, till exempel att kanal integritets nyckeln (CIK) för tjänsten lagras i nyckel valvet.
 
-    Ett nyckel valv skapas för varje Azure Stack Edge-resurs som aktive ras med din enhet. Med nyckel valvet kan du lagra och få åtkomst till hemligheter, till exempel att kanal integritets nyckeln (CIK) för tjänsten lagras i nyckel valvet. 
+   När du har angett ett nyckel valvs namn väljer du **generera aktiverings nyckel** för att skapa en aktiverings nyckel.
 
-    När du har angett ett nyckel valvs namn väljer du **generera nyckel** för att skapa en aktiverings nyckel. 
+   ![Hämta aktiveringsnyckeln](media/azure-stack-edge-pro-r-deploy-prep/azure-stack-edge-resource-3.png)
 
-    ![Hämta aktiveringsnyckeln](media/azure-stack-edge-pro-r-deploy-prep/azure-stack-edge-resource-3.png)
-
-    Vänta några minuter eftersom nyckel valvet och aktiverings nyckeln skapas. Välj kopieringsikonen för att kopiera nyckeln och spara den för senare användning.
-
+   Vänta några minuter medan nyckel valvet och aktiverings nyckeln skapas. Välj kopieringsikonen för att kopiera nyckeln och spara den för senare användning.<!--Verify that the new screen has a copy icon.-->
 
 > [!IMPORTANT]
 > - Aktiveringsnyckeln upphör att gälla tre dagar efter att den skapats.

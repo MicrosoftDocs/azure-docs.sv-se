@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
 ms.date: 12/07/2020
-ms.openlocfilehash: d10689937a037469399863395e0190e399334bd3
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: a7e19894a4688fe270422e93f7081f98e0b699a3
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96924520"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936540"
 ---
 # <a name="create-stateful-and-stateless-workflows-in-the-azure-portal-with-azure-logic-apps-preview"></a>Skapa tillstånds lösa och tillstånds lösa arbets flöden i Azure Portal med Azure Logic Apps för hands version
 
@@ -74,11 +74,11 @@ Den här artikeln visar hur du skapar din Logi Kap par och ditt arbets flöde i 
 
    | Egenskap | Krävs | Värde | Beskrivning |
    |----------|----------|-------|-------------|
-   | **Prenumeration** | Ja | <*Azure-prenumeration-namn*> | Den Azure-prenumeration som ska användas för din Logic app. |
-   | **Resursgrupp** | Ja | <*Azure-resurs-grupp-namn*> | Den Azure-resurs grupp där du skapar din Logic app och relaterade resurser. Resurs namnet måste vara unikt i flera regioner och får bara innehålla bokstäver, siffror, bindestreck ( **-** ), under streck (**_**), parenteser (**()**) och punkter (**.**). <p><p>I det här exemplet skapas en resurs grupp med namnet `Fabrikam-Workflows-RG` . |
-   | **Namn på Logic app** | Ja | <*Logic – App-Name*> | Namnet som ska användas för din Logic app. Resurs namnet måste vara unikt i flera regioner och får bara innehålla bokstäver, siffror, bindestreck ( **-** ), under streck (**_**), parenteser (**()**) och punkter (**.**). <p><p>I det här exemplet skapas en Logic-app med namnet `Fabrikam-Workflows` . <p><p>**Obs!** din Logic Apps namn hämtar automatiskt suffixet, `.azurewebsites.net` eftersom den **logiska appen (förhands granskning)** -resursen drivs av Azure Functions, som använder samma namngivnings konvention för appar. |
-   | **Publicera** | Ja | <*distribution – miljö*> | Distributions målet för din Logic app. Du kan distribuera till Azure genom att välja **arbets flöde** eller till en Docker-behållare. <p><p>I det här exemplet används **arbets flöde**, som är resurs för **Logic app (för hands version)** i Azure. <p><p>Om du väljer **Docker**-behållare [anger du den behållare som ska användas i din Logic Apps-inställningar](#set-docker-container). |
-   | **Region** | Ja | <*Azure-region*> | Den Azure-region som ska användas när du skapar resurs gruppen och resurserna. <p><p>I det här exemplet används **västra USA**. |
+   | **Prenumeration** | Yes | <*Azure-prenumeration-namn*> | Den Azure-prenumeration som ska användas för din Logic app. |
+   | **Resursgrupp** | Yes | <*Azure-resurs-grupp-namn*> | Den Azure-resurs grupp där du skapar din Logic app och relaterade resurser. Resurs namnet måste vara unikt i flera regioner och får bara innehålla bokstäver, siffror, bindestreck ( **-** ), under streck (**_**), parenteser (**()**) och punkter (**.**). <p><p>I det här exemplet skapas en resurs grupp med namnet `Fabrikam-Workflows-RG` . |
+   | **Namn på Logic app** | Yes | <*Logic – App-Name*> | Namnet som ska användas för din Logic app. Resurs namnet måste vara unikt i flera regioner och får bara innehålla bokstäver, siffror, bindestreck ( **-** ), under streck (**_**), parenteser (**()**) och punkter (**.**). <p><p>I det här exemplet skapas en Logic-app med namnet `Fabrikam-Workflows` . <p><p>**Obs!** din Logic Apps namn hämtar automatiskt suffixet, `.azurewebsites.net` eftersom den **logiska appen (förhands granskning)** -resursen drivs av Azure Functions, som använder samma namngivnings konvention för appar. |
+   | **Publicera** | Yes | <*distribution – miljö*> | Distributions målet för din Logic app. Du kan distribuera till Azure genom att välja **arbets flöde** eller till en Docker-behållare. <p><p>I det här exemplet används **arbets flöde**, som är resurs för **Logic app (för hands version)** i Azure. <p><p>Om du väljer **Docker**-behållare [anger du den behållare som ska användas i din Logic Apps-inställningar](#set-docker-container). |
+   | **Region** | Yes | <*Azure-region*> | Den Azure-region som ska användas när du skapar resurs gruppen och resurserna. <p><p>I det här exemplet används **västra USA**. |
    |||||
 
    Här är ett exempel:
@@ -89,10 +89,10 @@ Den här artikeln visar hur du skapar din Logi Kap par och ditt arbets flöde i 
 
    | Egenskap | Krävs | Värde | Beskrivning |
    |----------|----------|-------|-------------|
-   | **Lagringskonto** | Ja | <*Azure-Storage – konto-namn*> | Det [Azure Storage konto](../storage/common/storage-account-overview.md) som ska användas för lagrings transaktioner. Resurs namnet måste vara unikt i flera regioner och får innehålla 3-24 tecken med endast siffror och gemena bokstäver. Välj antingen ett befintligt konto eller skapa ett nytt konto. <p><p>I det här exemplet skapas ett lagrings konto med namnet `fabrikamstorageacct` . |
-   | **Plantyp** | Ja | <*Azure-värd – plan*> | [Värd planen](../app-service/overview-hosting-plans.md) som används för att distribuera din Logic app, som är antingen [**Premium**](../azure-functions/functions-scale.md#premium-plan) -eller [**App Service-plan**](../azure-functions/functions-scale.md#app-service-plan). Ditt val påverkar de pris nivåer som du kan välja senare. <p><p>I det här exemplet används **App Service-planen**. <p><p>**Obs!** på liknande sätt som Azure Functions kräver resurs typen **Logic app (för hands version)** en värd plan och pris nivå. Förbruknings värd planer stöds inte eller är inte tillgängliga för den här resurs typen. Mer information finns i följande avsnitt: <p><p>- [Azure Functions skala och vara värd](../azure-functions/functions-scale.md) <br>- [App Service pris information](https://azure.microsoft.com/pricing/details/app-service/) <p><p> |
-   | **Windows-plan** | Ja | <*plan-namn*> | Det plan namn som ska användas. Välj antingen en befintlig plan eller ange namnet på en ny plan. <p><p>I det här exemplet används namnet `Fabrikam-Service-Plan` . |
-   | **SKU och storlek** | Ja | <*pris nivå*> | Den [pris nivå](../app-service/overview-hosting-plans.md) som ska användas för att vara värd för din Logic app. Dina val påverkas av den plan typ som du valde tidigare. Om du vill ändra standard nivån väljer du **ändra storlek**. Du kan sedan välja andra pris nivåer baserat på den arbets belastning du behöver. <p><p>I det här exemplet används den kostnads fria **F1-pris nivån** för arbets belastningar för **utveckling/testning** . Mer information hittar du i [App Service pris information](https://azure.microsoft.com/pricing/details/app-service/). |
+   | **Lagringskonto** | Yes | <*Azure-Storage – konto-namn*> | Det [Azure Storage konto](../storage/common/storage-account-overview.md) som ska användas för lagrings transaktioner. Resurs namnet måste vara unikt i flera regioner och får innehålla 3-24 tecken med endast siffror och gemena bokstäver. Välj antingen ett befintligt konto eller skapa ett nytt konto. <p><p>I det här exemplet skapas ett lagrings konto med namnet `fabrikamstorageacct` . |
+   | **Plantyp** | Yes | <*Azure-värd – plan*> | [Värd planen](../app-service/overview-hosting-plans.md) som används för att distribuera din Logic app, som är antingen [**Premium**](../azure-functions/functions-premium-plan.md) -eller [**App Service-plan**](../azure-functions/dedicated-plan.md). Ditt val påverkar de pris nivåer som du kan välja senare. <p><p>I det här exemplet används **App Service-planen**. <p><p>**Obs!** på liknande sätt som Azure Functions kräver resurs typen **Logic app (för hands version)** en värd plan och pris nivå. Förbruknings värd planer stöds inte eller är inte tillgängliga för den här resurs typen. Mer information finns i följande avsnitt: <p><p>- [Azure Functions skala och vara värd](../azure-functions/functions-scale.md) <br>- [App Service pris information](https://azure.microsoft.com/pricing/details/app-service/) <p><p> |
+   | **Windows-plan** | Yes | <*plan-namn*> | Det plan namn som ska användas. Välj antingen en befintlig plan eller ange namnet på en ny plan. <p><p>I det här exemplet används namnet `Fabrikam-Service-Plan` . |
+   | **SKU och storlek** | Yes | <*pris nivå*> | Den [pris nivå](../app-service/overview-hosting-plans.md) som ska användas för att vara värd för din Logic app. Dina val påverkas av den plan typ som du valde tidigare. Om du vill ändra standard nivån väljer du **ändra storlek**. Du kan sedan välja andra pris nivåer baserat på den arbets belastning du behöver. <p><p>I det här exemplet används den kostnads fria **F1-pris nivån** för arbets belastningar för **utveckling/testning** . Mer information hittar du i [App Service pris information](https://azure.microsoft.com/pricing/details/app-service/). |
    |||||
 
 1. Sedan kan du, om du skapar och distribuerar inställningarna med hjälp av [Application Insights](../azure-monitor/app/app-insights-overview.md), aktivera diagnostikloggning och spårning för din Logic app.
@@ -103,7 +103,7 @@ Den här artikeln visar hur du skapar din Logi Kap par och ditt arbets flöde i 
 
 1. När Azure har verifierat dina Logic Apps-inställningar går du till fliken **Granska + skapa** och väljer **skapa**.
 
-   Exempel:
+   Ett exempel:
 
    ![Skärm bild som visar Azure Portal och nya resurs inställningar för Logic app.](./media/create-stateful-stateless-workflows-azure-portal/check-logic-app-resource-settings.png)
 
@@ -223,9 +223,9 @@ Innan du kan lägga till en utlösare i ett tomt arbets flöde ser du till att a
 
    | Egenskap | Krävs | Värde | Beskrivning |
    |----------|----------|-------|-------------|
-   | **Att** | Ja | <*din-e-postadress*> | E-postmottagaren, som kan vara din e-postadress i test syfte. I det här exemplet används det fiktiva e-postmeddelandet `sophiaowen@fabrikam.com` . |
-   | **Ämne** | Ja | `An email from your example workflow` | E-postmeddelandets ämne |
-   | **Brödtext** | Ja | `Hello from your example workflow!` | Innehållet i e-postmeddelandet |
+   | **Om du vill** | Yes | <*din-e-postadress*> | E-postmottagaren, som kan vara din e-postadress i test syfte. I det här exemplet används det fiktiva e-postmeddelandet `sophiaowen@fabrikam.com` . |
+   | **Ämne** | Yes | `An email from your example workflow` | E-postmeddelandets ämne |
+   | **Brödtext** | Yes | `Hello from your example workflow!` | Innehållet i e-postmeddelandet |
    ||||
 
    > [!NOTE]
@@ -305,7 +305,7 @@ När varje arbets flöde har körts för ett tillstånds känsligt arbets flöde
    | **Avbröts** | Körningen utlöstes och startades men tog emot en begäran om annullering. |
    | **Misslyckades** | Minst en åtgärd i körningen misslyckades. Inga efterföljande åtgärder i arbets flödet har ställts in för att hantera det här problemet. |
    | **Körs** | Körningen utlöstes och pågår, men den här statusen kan också visas för en körning som är begränsad på grund av [Åtgärds gränser](logic-apps-limits-and-config.md) eller den [aktuella pris Planen](https://azure.microsoft.com/pricing/details/logic-apps/). <p><p>**Tips**: om du konfigurerar [diagnostikloggning](monitor-logic-apps-log-analytics.md)kan du få information om eventuella begränsnings händelser som inträffar. |
-   | **Lyckades** | Körningen lyckades. Om en åtgärd Miss lyckas, hanterar en efterföljande åtgärd i arbets flödet detta fel. |
+   | **Brutit** | Körningen lyckades. Om en åtgärd Miss lyckas, hanterar en efterföljande åtgärd i arbets flödet detta fel. |
    | **Tids gränsen uppnåddes** | Tids gränsen för körningen uppnåddes eftersom den aktuella varaktigheten överskred tids gränsen för körning, vilket styrs av inställningen för [ **kvarhållning av körnings historik i dagar**](logic-apps-limits-and-config.md#run-duration-retention-limits). Körningens varaktighet beräknas med hjälp av körningens start tid och tids gräns för körning vid den Start tiden. <p><p>**Obs!** om Körningens varaktighet också överskrider den aktuella *gränsen för körnings historik*, som också styrs av inställningen för [ **kvarhållning av körnings historik i dagar**](logic-apps-limits-and-config.md#run-duration-retention-limits), rensas körningen från körnings historiken med ett dagligt rensnings jobb. Oavsett om tids gränsen för körningen är slut eller slutförd beräknas alltid kvarhållningsperioden med hjälp av start tiden och den *aktuella* kvarhållningsperioden. Så om du minskar tids gränsen för en pågående körnings tid för en flygning. Körningen är dock antingen kvar eller så tas den bort från körnings historiken, baserat på om Körningens varaktighet överskred gränsen för kvarhållning. |
    | **Väntar** | Körningen har inte startat eller pausats, till exempel på grund av en tidigare arbets flödes instans som fortfarande körs. |
    |||
@@ -385,7 +385,7 @@ Om du vill felsöka ett tillstånds lösa arbets flöde enklare kan du aktivera 
 
 1. I rutan **värde** anger du följande värde: `WithStatelessRunHistory`
 
-   Exempel:
+   Ett exempel:
 
    ![Skärm bild som visar resursen Azure Portal och Logic app (för hands version) med inställningen "konfiguration" > nya program inställningar "<" Lägg till/redigera program inställning "och" arbets flöden. {yourWorkflowName}. Alternativet OperationOptions "är inställt på" WithStatelessRunHistory ".](./media/create-stateful-stateless-workflows-azure-portal/stateless-operation-options-run-history.png)
 

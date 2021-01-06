@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.custom: mvc,subject-armqs
 ms.date: 02/27/2020
 ms.author: jgao
-ms.openlocfilehash: 68c10ba5581ffe404e8e3c1ac8ce92832cfcd6c4
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 1cbe5f986ca36ecc3b45cf4bb7ecffa7067a27bd
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896437"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936625"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-an-arm-template"></a>Snabb start: Ange och hämta en hemlighet från Azure Key Vault med en ARM-mall
 
@@ -24,7 +24,7 @@ ms.locfileid: "92896437"
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
-Om din miljö uppfyller förhandskraven och du är van att använda ARM-mallar väljer du knappen **Distribuera till Azure** . Mallen öppnas på Azure-portalen.
+Om din miljö uppfyller förhandskraven och du är van att använda ARM-mallar väljer du knappen **Distribuera till Azure**. Mallen öppnas på Azure-portalen.
 
 [![Distribuera till Azure](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-key-vault-create%2Fazuredeploy.json)
 
@@ -32,11 +32,11 @@ Om din miljö uppfyller förhandskraven och du är van att använda ARM-mallar v
 
 För att slutföra den här artikeln:
 
-* Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
+* Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
 * Mallen behöver ditt användarobjekts-ID för Azure AD för att konfigurera behörigheter. Följande procedur hämtar objekt-ID:t (GUID).
 
-    1. Kör följande Azure PowerShell-eller Azure CLI-kommando genom att välja **testa** och klistra in skriptet i rutan Shell. Om du vill klistra in skriptet högerklickar du på gränssnittet och väljer **Klistra in** .
+    1. Kör följande Azure PowerShell-eller Azure CLI-kommando genom att välja **testa** och klistra in skriptet i rutan Shell. Om du vill klistra in skriptet högerklickar du på gränssnittet och väljer **Klistra in**.
 
         # <a name="cli"></a>[CLI](#tab/CLI)
         ```azurecli-interactive
@@ -82,16 +82,16 @@ Fler Azure Key Vault mal sampel finns i [Azure snabb starts mallar](https://azur
 
     Om den inte anges använder du standardvärdet för att skapa nyckel valvet och en hemlighet.
 
-    * **Prenumeration** : välj en Azure-prenumeration.
-    * **Resurs grupp** : Välj **Skapa ny** , ange ett unikt namn för resurs gruppen och klicka sedan på **OK** .
-    * **Plats** : välj en plats. Välj till exempel **USA, centrala** .
-    * **Key Vault namn** : Ange ett namn för nyckel valvet som måste vara globalt unikt inom namn området. Vault.Azure.net. Du behöver namnet i nästa avsnitt när du validerar distributionen.
-    * **Klient-ID** : funktionen mall hämtar automatiskt ditt klient-ID. Ändra inte standardvärdet.
-    * **AD-användar-ID** : Ange ditt användar objekt-ID för Azure AD som du hämtade från [krav](#prerequisites).
-    * **Hemligt namn** : Ange ett namn för hemligheten som du lagrar i nyckel valvet. Till exempel **AdminPassword** .
-    * **Hemligt värde** : Ange det hemliga värdet. Om du lagrar ett lösen ord rekommenderar vi att du använder det genererade lösen ordet som du skapade i krav.
-    * **Jag godkänner villkoren ovan** : Välj.
-3. Välj **Köp** . När nyckel valvet har distribuerats får du ett meddelande:
+    * **Prenumeration**: välj en Azure-prenumeration.
+    * **Resurs grupp**: Välj **Skapa ny**, ange ett unikt namn för resurs gruppen och klicka sedan på **OK**.
+    * **Plats**: välj en plats. Välj till exempel **USA, centrala**.
+    * **Key Vault namn**: Ange ett namn för nyckel valvet som måste vara globalt unikt inom namn området. Vault.Azure.net. Du behöver namnet i nästa avsnitt när du validerar distributionen.
+    * **Klient-ID**: funktionen mall hämtar automatiskt ditt klient-ID. Ändra inte standardvärdet.
+    * **AD-användar-ID**: Ange ditt användar objekt-ID för Azure AD som du hämtade från [krav](#prerequisites).
+    * **Hemligt namn**: Ange ett namn för hemligheten som du lagrar i nyckel valvet. Till exempel **AdminPassword**.
+    * **Hemligt värde**: Ange det hemliga värdet. Om du lagrar ett lösen ord rekommenderar vi att du använder det genererade lösen ordet som du skapade i krav.
+    * **Jag godkänner villkoren ovan**: Välj.
+3. Välj **Köp**. När nyckel valvet har distribuerats får du ett meddelande:
 
     ![ARM-mall, Key Vault integrering, distribuera Portal meddelande](../media/quick-create-template/resource-manager-template-portal-deployment-notification.png)
 
@@ -162,4 +162,4 @@ I den här snabb starten skapade du ett nyckel valv och en hemlighet med en ARM-
 
 - Läs en [Översikt över Azure Key Vault](../general/overview.md)
 - Läs mer om [Azure Resource Manager](../../azure-resource-manager/management/overview.md)
-- Granska [Azure Key Vault bästa praxis](../general/best-practices.md)
+- Granska [Key Vault säkerhets översikt](../general/security-overview.md)

@@ -3,12 +3,12 @@ title: Variabler i mallar
 description: Beskriver hur du definierar variabler i en Azure Resource Manager-mall (ARM-mall).
 ms.topic: conceptual
 ms.date: 11/24/2020
-ms.openlocfilehash: 5d9b58d63e96656c45d3494d24099bbeadc46b11
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 7f782f9c7d3107472a74fcab73290c4cebf73693
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353467"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934670"
 ---
 # <a name="variables-in-arm-template"></a>Variabler i ARM-mallen
 
@@ -28,7 +28,7 @@ I följande exempel visas en variabel definition. Det skapar ett sträng värde 
 },
 ```
 
-Du kan inte använda funktionen [Reference](template-functions-resource.md#reference) eller någon av [list](template-functions-resource.md#list) funktionerna i avsnittet Variables. Dessa funktioner hämtar körnings status för en resurs och kan inte utföras före distributionen när variablerna är lösta.
+Du kan inte använda [referens](template-functions-resource.md#reference) funktionen eller någon av [list](template-functions-resource.md#list) funktionerna i `variables` avsnittet. Dessa funktioner hämtar körnings status för en resurs och kan inte utföras före distributionen när variablerna är lösta.
 
 ## <a name="use-variable"></a>Använd variabel
 
@@ -63,7 +63,7 @@ Du kan definiera variabler som innehåller relaterade värden för att konfigure
 },
 ```
 
-I parametrar skapar du ett värde som anger vilka konfigurations värden som ska användas.
+I `parameters` skapar du ett värde som anger vilka konfigurations värden som ska användas.
 
 ```json
 "parameters": {

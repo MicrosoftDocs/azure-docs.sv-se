@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 4579fa3c6dd1e34072a31747fda5113a5ac1be2a
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: fa90cbf1e467416010ae0ba83e9344a84ce52e21
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92517437"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936506"
 ---
 # <a name="tutorial-configure-zscaler-zscloud-for-automatic-user-provisioning"></a>Självstudie: Konfigurera Zscaler ZSCloud för automatisk användar etablering
 
@@ -26,7 +26,7 @@ I den här självstudien får du lära dig hur du konfigurerar Azure Active Dire
 > I den här självstudien beskrivs en koppling som bygger på Azure AD-tjänsten för användar etablering. Viktig information om vad den här tjänsten gör och hur den fungerar och svar på vanliga frågor finns i [Automatisera användar etablering och avetablering för SaaS-program med Azure Active Directory](../app-provisioning/user-provisioning.md).
 
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 För att slutföra stegen som beskrivs i den här självstudien behöver du följande:
 
@@ -41,7 +41,7 @@ För att slutföra stegen som beskrivs i den här självstudien behöver du föl
 
 Innan du konfigurerar Zscaler-ZSCloud för automatisk användar etablering med Azure AD måste du lägga till Zscaler-ZSCloud från Azure AD-programgalleriet i listan över hanterade SaaS-program.
 
-I [Azure Portal](https://portal.azure.com)väljer du **Azure Active Directory**i den vänstra rutan:
+I [Azure Portal](https://portal.azure.com)väljer du **Azure Active Directory** i den vänstra rutan:
 
 ![Välj Azure Active Directory](common/select-azuread.png)
 
@@ -76,6 +76,9 @@ Det här avsnittet vägleder dig genom stegen för att konfigurera Azure AD Prov
 > [!TIP]
 > Du kanske också vill aktivera SAML-baserad enkel inloggning för Zscaler ZSCloud. Om du gör det följer du anvisningarna i [självstudien om Zscaler ZSCloud enkel inloggning](zscaler-zsCloud-tutorial.md). Enkel inloggning kan konfigureras oberoende av automatisk användar etablering, men de två funktionerna kompletterar varandra.
 
+> [!NOTE]
+> När användare och grupper etableras eller avetableras, rekommenderar vi att du regelbundet startar om etableringen för att säkerställa att grupp medlemskapen uppdateras korrekt. Om du gör en omstart tvingas tjänsten att utvärdera alla grupper och uppdatera medlemskapet. 
+
 1. Logga in på [Azure Portal](https://portal.azure.com) och välj **företags program**  >  **alla program**  >  **Zscaler ZSCloud**:
 
     ![Företagsprogram](common/enterprise-applications.png)
@@ -94,7 +97,7 @@ Det här avsnittet vägleder dig genom stegen för att konfigurera Azure AD Prov
 
 5. I avsnittet **admin credentials** anger du **klient-URL** och **hemlig token** för ditt Zscaler ZSCloud-konto, enligt beskrivningen i nästa steg.
 
-6. Om du vill hämta **klient-URL** och **hemlig token**går du till **Administration**  >  **autentiseringsinställningar** i Zscaler ZSCloud-portalen och väljer **SAML** under **Autentiseringstyp**:
+6. Om du vill hämta **klient-URL** och **hemlig token** går du till **Administration**  >  **autentiseringsinställningar** i Zscaler ZSCloud-portalen och väljer **SAML** under **Autentiseringstyp**:
 
     ![Autentiseringsinställningar för Zscaler-ZSCloud](./media/zscaler-zscloud-provisioning-tutorial/secrettoken1.png)
 
@@ -102,7 +105,7 @@ Det här avsnittet vägleder dig genom stegen för att konfigurera Azure AD Prov
 
     ![Konfigurera SAML-fönster](./media/zscaler-zscloud-provisioning-tutorial/secrettoken2.png)
 
-    Välj **aktivera SCIM-Based etablering** och kopiera **bas-URL: en** och **Bearer-token**och spara sedan inställningarna. I Azure Portal klistrar du in **bas-URL:** en i rutan **klient-URL** och **Bearer-token** i rutan **hemlig token** .
+    Välj **aktivera SCIM-Based etablering** och kopiera **bas-URL: en** och **Bearer-token** och spara sedan inställningarna. I Azure Portal klistrar du in **bas-URL:** en i rutan **klient-URL** och **Bearer-token** i rutan **hemlig token** .
 
 7. När du har angett värdena i rutorna **klient-URL** och **hemlig token** väljer du **Testa anslutning** för att kontrol lera att Azure AD kan ansluta till Zscaler ZSCloud. Om anslutningen Miss lyckas kontrollerar du att Zscaler ZSCloud-kontot har administratörs behörighet och försöker igen.
 

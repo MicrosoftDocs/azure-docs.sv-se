@@ -4,12 +4,12 @@ description: Lär dig hur du ansluter din Function-app för att Application Insi
 ms.date: 8/31/2020
 ms.topic: how-to
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 77cc87e44990f471ef38871c0225835660779a3c
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: 24350eb07481db66907d199cd96f84a02cc98c9e
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97825749"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937288"
 ---
 # <a name="how-to-configure-monitoring-for-azure-functions"></a>Så här konfigurerar du övervakning för Azure Functions
 
@@ -197,7 +197,7 @@ Mer information finns [i sampling i Application Insights](../azure-monitor/app/s
 
 _Den här funktionen är i förhandsversion._ 
 
-Du kan låta [Azure Functions Scale Controller](./functions-scale.md#runtime-scaling) generera loggar till antingen Application Insights eller till Blob Storage för att bättre förstå de beslut som skalnings styrenheten gör för din Function-app.
+Du kan låta [Azure Functions Scale Controller](./event-driven-scaling.md#runtime-scaling) generera loggar till antingen Application Insights eller till Blob Storage för att bättre förstå de beslut som skalnings styrenheten gör för din Function-app.
 
 Om du vill aktivera den här funktionen kan du lägga till en program inställning med namnet `SCALE_CONTROLLER_LOGGING_ENABLED` på dina funktioner i appens inställningar. Värdet för den här inställningen måste ha formatet `<DESTINATION>:<VERBOSITY>` , baserat på följande:
 

@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 08/28/2020
+ms.date: 01/05/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: 711da24b3edf08f4867109d0d70165955236c39a
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: c884ad6850b8f94baa7c658d685651c3241be33f
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96184662"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935694"
 ---
 # <a name="tutorial-configure-compute-on-azure-stack-edge-pro-gpu-device"></a>Självstudie: Konfigurera Compute på Azure Stack Edge Pro GPU-enhet
 
@@ -25,14 +25,14 @@ I den här självstudien beskrivs hur du konfigurerar en beräknings roll och sk
 Den här proceduren kan ta cirka 20 till 30 minuter att slutföra.
 
 
-I de här självstudierna får du lära dig att
+I den här guiden får du lära dig att:
 
 > [!div class="checklist"]
 > * Konfigurera beräkning
 > * Hämta Kubernetes-slutpunkter
 
  
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Innan du ställer in en beräknings roll på din Azure Stack Edge Pro-enhet ser du till att:
 
@@ -45,40 +45,38 @@ Innan du ställer in en beräknings roll på din Azure Stack Edge Pro-enhet ser 
 
 Om du vill konfigurera Compute på Azure Stack Edge Pro skapar du en IoT Hub resurs via Azure Portal.
 
-1. I Azure Portal av Azure Stack Edge-resursen går du till **Översikt**. Välj **Kom igång** i den högra rutan på **beräknings** panelen.
+1. I Azure Portal i Azure Stack Edge-resurs går du till **Översikt** och väljer **IoT Edge**.
 
-    ![Kom igång med Compute](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-1.png)
+   ![Kom igång med Compute](./media/azure-stack-edge-gpu-deploy-configure-compute/configure-compute-1.png)
 
-2. På panelen **Konfigurera Edge Compute** väljer du **Konfigurera beräkning**.
+2. I **aktivera IoT Edge tjänst** väljer du **Lägg till**.
 
-    ![Konfigurera beräkning](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-2.png)
+   ![Konfigurera beräkning](./media/azure-stack-edge-gpu-deploy-configure-compute/configure-compute-2.png)
 
-3. Ange följande på bladet **Konfigurera Edge Compute** :
-
+3. Ange följande information på bladet **Konfigurera Edge Compute** :
    
-    |Field  |Värde  |
-    |---------|---------|
-    |IoT Hub     | Välj från **ny** eller **befintlig**. <br> Som standard används nivån Standard (S1) till att skapa en IoT-resurs. Om du vill använda en IoT-resurs på kostnadsfri nivå skapar du en sådan och väljer sedan den befintliga resursen. <br> I varje fall använder IoT Hub resursen samma prenumeration och resurs grupp som används av Azure Stack Edge-resursen.     |
-    |Namn     |Ange ett namn för din IoT Hub-resurs.         |
+   |Fält  |Värde  |
+   |---------|---------|
+   |IoT Hub     | Välj från **ny** eller **befintlig**. <br> Som standard används nivån Standard (S1) till att skapa en IoT-resurs. Om du vill använda en IoT-resurs på kostnadsfri nivå skapar du en sådan och väljer sedan den befintliga resursen. <br> I varje fall använder IoT Hub resursen samma prenumeration och resurs grupp som används av Azure Stack Edge-resursen.     |
+   |Namn     |Ange ett namn för din IoT Hub-resurs.         |
 
-    ![Kom igång med Compute 2](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-3.png)
+   ![Kom igång med Compute 2](./media/azure-stack-edge-gpu-deploy-configure-compute/configure-compute-3.png)
 
-4. Välj **Skapa**. Det tar flera minuter att skapa en IoT Hub-resurs. När IoT Hub resursen har skapats kan du **Konfigurera** Compute-panelen för att Visa beräknings konfigurationen. 
+4. När du är klar med inställningarna väljer du **Granska + skapa**. Granska inställningarna för din IoT Hub resurs och välj **skapa**.
 
-    ![Kom igång med Compute 3](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-4.png)
+   Det tar flera minuter att skapa en resurs för en IoT Hub resurs. När resursen har skapats visar **översikten** IoT Edges tjänsten körs nu.
 
-5. Bekräfta att Edge Compute-rollen har kon figurer ATS genom att välja **Visa beräkning** på panelen **Konfigurera beräkning** .
-    
-    ![Kom igång med Compute 4](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-5.png)
+   ![Kom igång med Compute 3](./media/azure-stack-edge-gpu-deploy-configure-compute/configure-compute-4.png)
 
-    > [!NOTE]
-    > Om dialog rutan **Konfigurera beräkning** stängs innan IoT Hub är kopplad till Azure Stack Edge Pro-enheten, skapas IoT Hub men visas inte i beräknings konfigurationen. 
-    
-När Edge-beräkningsrollen har konfigurerats på Edge-enheten så skapas två enheter: en IoT-enhet och en IoT Edge-enhet. Bägge enheter kan visas i IoT Hub-resursen. En IoT Edge runtime körs också på den här IoT Edge enheten. För tillfället är det bara Linux-plattformen tillgänglig för din IoT Edge-enhet.
+5. För att bekräfta att Edge Compute-rollen har kon figurer ATS, väljer du **Egenskaper**.
 
-Det kan ta 20-30 minuter för dig att konfigurera Compute sedan bakgrunden, de virtuella datorerna och Kubernetes-klustret skapas. 
+   ![Kom igång med Compute 4](./media/azure-stack-edge-gpu-deploy-configure-compute/configure-compute-5.png)
 
-När du har konfigurerat beräkningen i Azure Portal finns ett Kubernetes-kluster och en standard användare som är associerad med IoT-namnrymden (ett system namn område som styrs av Azure Stack Edge Pro). 
+   När Edge-beräkningsrollen har konfigurerats på Edge-enheten så skapas två enheter: en IoT-enhet och en IoT Edge-enhet. Bägge enheter kan visas i IoT Hub-resursen. En IoT Edge runtime körs också på den här IoT Edge enheten. För tillfället är det bara Linux-plattformen tillgänglig för din IoT Edge-enhet.
+
+Det kan ta 20-30 minuter att konfigurera beräkning, eftersom de virtuella datorerna och ett Kubernetes-kluster skapas bakom.
+
+När du har konfigurerat Compute i Azure Portal finns ett Kubernetes-kluster och en standard användare som är associerad med IoT-namnrymden (ett system namn område som styrs av Azure Stack Edge Pro).
 
 ## <a name="get-kubernetes-endpoints"></a>Hämta Kubernetes-slutpunkter
 
@@ -89,7 +87,7 @@ Om du vill konfigurera en klient för åtkomst till Kubernetes-kluster behöver 
 
     ![Enhets sida i lokalt användar gränssnitt](./media/azure-stack-edge-j-series-create-kubernetes-cluster/device-kubernetes-endpoint-1.png)
 
-3. Spara slut punkts strängen. Du kommer att använda detta senare när du konfigurerar en-klient för åtkomst till Kubernetes-klustret via kubectl.
+3. Spara slut punkts strängen. Du kommer att använda slut punkt strängen senare när du konfigurerar en klient för åtkomst till Kubernetes-klustret via kubectl.
 
 4. När du är i det lokala webb gränssnittet kan du:
 
@@ -97,7 +95,7 @@ Om du vill konfigurera en klient för åtkomst till Kubernetes-kluster behöver 
 
         ![Enhets sida i lokalt användar gränssnitt 1](./media/azure-stack-edge-gpu-deploy-configure-compute/download-advanced-config-1.png)
 
-        Om du har fått en nyckel från Microsoft (Välj användare kan ha detta) kan du använda den här konfigurations filen.
+        Om du har fått en nyckel från Microsoft (Välj användare kan ha en nyckel) kan du använda den här konfigurations filen.
 
         ![Enhets sida i lokalt användar gränssnitt 2](./media/azure-stack-edge-gpu-deploy-configure-compute/download-advanced-config-2.png)
 

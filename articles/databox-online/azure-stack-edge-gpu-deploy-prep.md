@@ -6,19 +6,19 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 10/21/2020
+ms.date: 01/05/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: cdfd012d5015e156439a1afa89e818bf82b64dc6
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: e8b58069dc41d5272c67edcb1f05ebd9f1bc5ad4
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96449327"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935616"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro-with-gpu"></a>Självstudie: förbereda för att distribuera Azure Stack Edge Pro med GPU 
 
-Det här är den första självstudien i serien med distributions kurser som krävs för att helt Distribuera Azure Stack Edge Pro med GPU. I den här självstudien beskrivs hur du förbereder Azure Portal för att distribuera en Azure Stack Edge-resurs.
+Den här själv studie kursen är den första i serien med distributions kurser som krävs för att helt Distribuera Azure Stack Edge Pro med GPU. I den här självstudien beskrivs hur du förbereder Azure Portal för att distribuera en Azure Stack Edge-resurs.
 
 Du måste ha administratörsbehörighet för att utföra installationen och konfigurationen. Portalförberedelserna tar mindre än tio minuter.
 
@@ -32,11 +32,11 @@ I den här guiden får du lära dig att:
 
 För Azure Stack Edge Pro-distribution måste du först förbereda din miljö. När miljön är klar följer du de steg som krävs och om det behövs, valfria steg och procedurer för att distribuera enheten fullständigt. Anvisningarna för steg-för-steg-distribution anger när du bör utföra var och en av dessa obligatoriska och valfria steg.
 
-| Steg | Description |
+| Steg | Beskrivning |
 | --- | --- |
-| **Förberedelse** |De här stegen måste utföras i förberedelser inför den kommande distributionen. |
+| **Tgärder** |De här stegen måste utföras i förberedelser inför den kommande distributionen. |
 | **[Check lista för distributions konfiguration](#deployment-configuration-checklist)** |Använd den här checklistan för att samla in och registrera information före och under distributionen. |
-| **[Distributions krav](#prerequisites)** |När de här kraven är uppfyllda är miljön klar för distribution. |
+| **[Distributions krav](#prerequisites)** |Dessa krav verifierar att miljön är klar för distribution. |
 |  | |
 |**Distributions självstudier** |De här självstudierna krävs för att distribuera din Azure Stack Edge Pro-enhet i produktion. |
 |**[1. Förbered Azure Portal för Azure Stack Edge Pro](azure-stack-edge-gpu-deploy-prep.md)** |Skapa och konfigurera din Azure Stack Edge-resurs innan du installerar en fysisk enhet i Azure Stack Box Edge. |
@@ -46,7 +46,7 @@ För Azure Stack Edge Pro-distribution måste du först förbereda din miljö. N
 |**[5. Konfigurera enhets inställningar för Azure Stack Edge Pro](azure-stack-edge-gpu-deploy-set-up-device-update-time.md)** |Tilldela ett enhets namn och en DNS-domän, konfigurera uppdaterings Server och enhets tid. |
 |**[6. Konfigurera säkerhets inställningar för Azure Stack Edge Pro](azure-stack-edge-gpu-deploy-configure-certificates.md)** |Konfigurera certifikat för din enhet. Använd enhets genererade certifikat eller ta med dina egna certifikat.   |
 |**[7. Aktivera Azure Stack Edge Pro](azure-stack-edge-gpu-deploy-activate.md)** |Använd aktiverings nyckeln från tjänsten för att aktivera enheten. Enheten är redo att konfigurera SMB-eller NFS-resurser eller ansluta via REST. |
-|**[8. Konfigurera Compute](azure-stack-edge-gpu-deploy-configure-compute.md)** |Konfigurera beräknings rollen på enheten. Detta kommer också att skapa ett Kubernetes-kluster. |
+|**[8. Konfigurera Compute](azure-stack-edge-gpu-deploy-configure-compute.md)** |Konfigurera beräknings rollen på enheten. Ett Kubernetes-kluster skapas också. |
 |**[9a. Överföra data med gräns resurser](azure-stack-edge-j-series-deploy-add-shares.md)** |Lägg till resurser och anslut till resurser via SMB eller NFS. |
 |**[9b. Överföra data med gräns lagrings konton](azure-stack-edge-j-series-deploy-add-storage-accounts.md)** |Lägg till lagrings konton och Anslut till Blob Storage via REST-API: er. |
 
@@ -58,7 +58,7 @@ Nu kan du börja samla in information om program varu konfigurationen för din A
 Innan du distribuerar enheten måste du samla in information för att konfigurera program varan på din Azure Stack Edge Pro-enhet. Att förbereda en del av den här informationen i förväg bidrar till att effektivisera processen att distribuera enheten i din miljö. Använd [Check listan Azure Stack Edge Pro Deployment Configuration](azure-stack-edge-gpu-deploy-checklist.md) för att anteckna konfigurations informationen när du distribuerar enheten.
 
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Följande är konfigurations kraven för din Azure Stack Edge-resurs, din Azure Stack Edge-enhet och data Center nätverket.
 
@@ -66,7 +66,7 @@ Följande är konfigurations kraven för din Azure Stack Edge-resurs, din Azure 
 
 Innan du börjar ska du kontrollera att:
 
-- Din Microsoft Azure prenumeration är aktive rad för en Azure Stack Edge-resurs. Se till att du har använt en prenumeration som stöds, till exempel [Microsoft Enterprise-avtal (EA)](https://azure.microsoft.com/overview/sales-number/), [Cloud Solution Provider (CSP)](/partner-center/azure-plan-lp)eller [Microsoft Azure-sponsring](https://azure.microsoft.com/offers/ms-azr-0036p/). Prenumerationer med principen betala per användning stöds inte. För att identifiera vilken typ av Azure-prenumeration du har, se [Vad är ett Azure-erbjudande?](../cost-management-billing/manage/switch-azure-offer.md#what-is-an-azure-offer).
+- Din Microsoft Azure-prenumeration är aktiverad för en Azure Stack Edge-resurs. Se till att du har använt en prenumeration som stöds, till exempel [Microsoft Enterprise-avtal (EA)](https://azure.microsoft.com/overview/sales-number/), [Cloud Solution Provider (CSP)](/partner-center/azure-plan-lp)eller [Microsoft Azure-sponsring](https://azure.microsoft.com/offers/ms-azr-0036p/). Prenumerationer med principen betala per användning stöds inte. För att identifiera vilken typ av Azure-prenumeration du har, se [Vad är ett Azure-erbjudande?](../cost-management-billing/manage/switch-azure-offer.md#what-is-an-azure-offer).
 - Du har ägar-eller deltagar åtkomst på resurs grupps nivå för Azure Stack Edge Pro/Data Box Gateway, IoT Hub och Azure Storage resurser.
 
     - Om du vill skapa en Azure Stack gräns-/Data Box Gateway-resurs, bör du ha behörighet som deltagare (eller högre) som är begränsade till resurs grupps nivå. 
@@ -125,21 +125,21 @@ För att skapa en Azure Stack Edge-resurs, utför följande steg i Azure Portal.
     
     |Inställning  |Värde  |
     |---------|---------|
-    |Prenumeration    |Detta fylls i automatiskt baserat på den tidigare markeringen. Prenumerationen är kopplad till ditt faktureringskonto. |
+    |Prenumeration    |Prenumerationen fylls i automatiskt baserat på den tidigare markeringen. Prenumerationen är kopplad till ditt faktureringskonto. |
     |Resursgrupp  |Välj en befintlig grupp eller skapa en ny grupp.<br>Lär dig mer om [Azures resurs grupper](../azure-resource-manager/management/overview.md).     |
 
 7. Ange eller Välj följande **instans information**.
 
     |Inställning  |Värde  |
     |---------|---------|
-    |Namn   | Ett eget namn som identifierar resursen.<br>Namnet innehåller mellan 2 och 50 tecken som består av bokstäver, siffror och bindestreck.<br> Namnet börjar och slutar med en bokstav eller en siffra.        |
+    |Namn   | Ett eget namn som identifierar resursen.<br>Namnet innehåller mellan 2 och 50 tecken som innehåller bokstäver, siffror och bindestreck.<br> Namnet börjar och slutar med en bokstav eller en siffra.        |
     |Region     |För en lista över alla regioner där Azure Stack Edge-resursen är tillgänglig, se [Azure-produkter tillgängliga per region](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Om du använder Azure Government är alla myndigheter tillgängliga som de visas i Azure- [regionerna](https://azure.microsoft.com/global-infrastructure/regions/).<br> Välj den plats som är närmast den geografiska region där du vill distribuera enheten.|
 
     ![Skapa en resurs 5](media/azure-stack-edge-gpu-deploy-prep/create-resource-5.png)
 
 8. Välj **Nästa: leverans adress**.
 
-    - Om du redan har en enhet väljer du kombinations rutan för **Jag har en Azure Stack Edge Pro-enhet**.
+    - Om du redan har en enhet väljer du kombinations rutan där **jag redan har en enhet**.
 
         ![Skapa en resurs 6](media/azure-stack-edge-gpu-deploy-prep/create-resource-6.png)
 
@@ -176,19 +176,17 @@ Om du stöter på problem under beställnings processen går du till [Felsöka b
 
 När Azure Stack Edge-resursen är igång måste du hämta aktiverings nyckeln. Den här nyckeln används för att aktivera och ansluta din Azure Stack Edge Pro-enhet med resursen. Du kan hämta den här nyckeln nu när du befinner dig på Azure-portalen.
 
-1. Välj den resurs som du har skapat. Välj **Översikt** och välj sedan **enhets konfiguration**.
+1. Välj den resurs du skapade och välj **Översikt**.
 
-    ![Välj enhets konfiguration](media/azure-stack-edge-gpu-deploy-prep/azure-stack-edge-resource-2.png)
+2. I den högra rutan anger du ett namn för Azure Key Vault eller accepterar standard namnet. Namnet på nyckel valvet kan vara mellan 3 och 24 tecken.
 
-2. Ange ett namn för Azure Key Vault på panelen **Aktivera** eller godkänn standard namnet. Namnet på nyckel valvet kan vara mellan 3 och 24 tecken. 
+   Ett nyckel valv skapas för varje Azure Stack Edge-resurs som aktive ras med din enhet. Med nyckel valvet kan du lagra och få åtkomst till hemligheter, till exempel att kanal integritets nyckeln (CIK) för tjänsten lagras i nyckel valvet. 
 
-    Ett nyckel valv skapas för varje Azure Stack Edge-resurs som aktive ras med din enhet. Med nyckel valvet kan du lagra och få åtkomst till hemligheter, till exempel att kanal integritets nyckeln (CIK) för tjänsten lagras i nyckel valvet. 
+   När du har angett ett nyckel valvs namn väljer du **generera nyckel** för att skapa en aktiverings nyckel. 
 
-    När du har angett ett nyckel valvs namn väljer du **generera nyckel** för att skapa en aktiverings nyckel. 
+   ![Hämta aktiveringsnyckeln](media/azure-stack-edge-gpu-deploy-prep/azure-stack-edge-resource-3.png)
 
-    ![Hämta aktiveringsnyckeln](media/azure-stack-edge-gpu-deploy-prep/azure-stack-edge-resource-3.png)
-
-    Vänta några minuter eftersom nyckel valvet och aktiverings nyckeln skapas. Välj kopieringsikonen för att kopiera nyckeln och spara den för senare användning.
+   Vänta några minuter medan nyckel valvet och aktiverings nyckeln skapas. Välj kopieringsikonen för att kopiera nyckeln och spara den för senare användning.<!--Verify that the new screen has a copy icon.-->
 
 
 > [!IMPORTANT]

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: df25278d37e518e99bc315a315e017b98c7f4e58
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: deced953089fcbb2640cbf3e402db24cb511e769
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89049391"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935894"
 ---
 # <a name="what-is-conditional-access-report-only-mode"></a>Vad är läget endast i rapporten för villkorlig åtkomst?
 
@@ -30,7 +30,7 @@ Endast rapport läge är ett nytt tillstånd för villkorlig åtkomst som gör a
 - Kunder med en Azure Monitor prenumeration kan övervaka påverkan av sina principer för villkorlig åtkomst med hjälp av arbets boken för villkorlig åtkomst.
 
 > [!WARNING]
-> Principer i läge för endast rapporter som kräver kompatibla enheter kan begära att användare på Mac, iOS och Android väljer ett enhets certifikat under princip utvärderingen, även om enhetens efterlevnad inte tillämpas. Dessa prompter kan upprepas tills enheten blir kompatibel. För att förhindra att slutanvändare får meddelanden under inloggningen utesluter du Mac-, iOS-och Android-enheter från enbart rapport principer som utför kontroll av enhetskompatibilitet. Observera att endast rapport läge är tillämpligt för CA-principer med "användar åtgärder"-omfattningen.
+> Principer i läge för endast rapporter som kräver kompatibla enheter kan begära att användare på Mac, iOS och Android väljer ett enhets certifikat under princip utvärderingen, även om enhetens efterlevnad inte tillämpas. Dessa prompter kan upprepas tills enheten blir kompatibel. För att förhindra att slutanvändare får meddelanden under inloggningen utesluter du Mac-, iOS-och Android-enheter från enbart rapport principer som utför kontroll av enhetskompatibilitet. Observera att endast rapport läge är tillämpligt för principer för villkorlig åtkomst med "användar åtgärder"-omfattningen.
 
 ![Fliken endast rapporter i inloggnings loggen för Azure AD](./media/concept-conditional-access-report-only/report-only-detail-in-sign-in-log.png)
 

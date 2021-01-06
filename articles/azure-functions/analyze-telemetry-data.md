@@ -4,12 +4,12 @@ description: Lär dig att visa och fråga efter Azure Functions telemetridata so
 ms.topic: how-to
 ms.date: 10/14/2020
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 1d8d9cc9a7a4111e98b1d9141957769d6f157d45
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 14b6ed3964900e3395ca335c301dfd0285da46e7
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97027738"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937305"
 ---
 # <a name="analyze-azure-functions-telemetry-in-application-insights"></a>Analysera Azure Functions telemetri i Application Insights 
 
@@ -61,7 +61,7 @@ Information om hur du använder Application Insights finns i Application Insight
 Följande områden i Application Insights kan vara användbara när du ska utvärdera beteende, prestanda och fel i dina funktioner:
 
 | Undersök
- | Description |
+ | Beskrivning |
 | ---- | ----------- |
 | **[Fel](../azure-monitor/app/asp-net-exceptions.md)** |  Skapa diagram och aviseringar baserat på funktions fel och Server undantag. **Åtgärds namnet** är funktions namnet. Felen i beroenden visas inte om du inte implementerar anpassad telemetri för beroenden. |
 | **[Prestanda](../azure-monitor/app/performance-counters.md)** | Analysera prestanda problem genom att Visa resursutnyttjande och data flöde per **moln roll instanser**. Dessa prestanda data kan vara användbara för fel sökning av scenarier där funktioner bogging de underliggande resurserna. |
@@ -109,7 +109,7 @@ Körningen innehåller `customDimensions.LogLevel` fälten och `customDimensions
 
 ## <a name="consumption-plan-specific-metrics"></a>Förbruknings plan – vissa mått
 
-Vid körning i en [förbruknings plan](functions-scale.md#consumption-plan)mäts körnings *kostnaden* för en enskild funktions funktion i *GB-sekunder*. Körnings kostnaden beräknas genom att kombinera minnes användningen med dess körnings tid. Mer information finns i [uppskatta förbruknings plan kostnader](functions-consumption-costs.md).
+Vid körning i en [förbruknings plan](consumption-plan.md)mäts körnings *kostnaden* för en enskild funktions funktion i *GB-sekunder*. Körnings kostnaden beräknas genom att kombinera minnes användningen med dess körnings tid. Mer information finns i [uppskatta förbruknings plan kostnader](functions-consumption-costs.md).
 
 Följande telemetridata är speciella för mått som påverkar kostnaden för att köra funktioner i förbruknings planen.
 

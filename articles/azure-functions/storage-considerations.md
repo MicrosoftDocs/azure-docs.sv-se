@@ -3,12 +3,12 @@ title: Lagrings överväganden för Azure Functions
 description: Läs mer om lagrings kraven för Azure Functions och om kryptering av lagrade data.
 ms.topic: conceptual
 ms.date: 07/27/2020
-ms.openlocfilehash: 67ff822208f065041e479fc484173d9f06a773ba
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 66bfded384be47224e86ee8e0a2999fe3d4ed5d9
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97107251"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936166"
 ---
 # <a name="storage-considerations-for-azure-functions"></a>Lagrings överväganden för Azure Functions
 
@@ -18,7 +18,7 @@ Azure Functions kräver ett Azure Storage-konto när du skapar en Function App-i
 |Lagrings tjänst  | Funktions användning  |
 |---------|---------|
 | [Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md)     | Bevara bindnings tillstånd och funktions nycklar.  <br/>Används också av [aktivitets nav i Durable Functions](durable/durable-functions-task-hubs.md). |
-| [Azure Files](../storage/files/storage-files-introduction.md)  | Fil resurs som används för att lagra och köra din Function app-kod i en [förbruknings plan](functions-scale.md#consumption-plan) och [Premium-plan](functions-scale.md#premium-plan). |
+| [Azure Files](../storage/files/storage-files-introduction.md)  | Fil resurs som används för att lagra och köra din Function app-kod i en [förbruknings plan](consumption-plan.md) och [Premium-plan](functions-premium-plan.md). |
 | [Azure Queue Storage](../storage/queues/storage-queues-introduction.md)     | Används av [aktivitets nav i Durable Functions](durable/durable-functions-task-hubs.md).   |
 | [Azure Table Storage](../storage/tables/table-storage-overview.md)  |  Används av [aktivitets nav i Durable Functions](durable/durable-functions-task-hubs.md).       |
 
@@ -32,6 +32,8 @@ När du skapar en Function-app måste du skapa eller länka till ett allmänt Az
 Mer information om lagringskontotyper finns i [introduktionen till Azure Storage Services](../storage/common/storage-introduction.md#core-storage-services). 
 
 Även om du kan använda ett befintligt lagrings konto med din Function-app måste du kontrol lera att det uppfyller dessa krav. Lagrings konton som skapats som en del av Function-appen Create Flow i Azure Portal garanterar att de uppfyller dessa krav för lagrings kontot. Konton som inte stöds filtreras ut när du väljer ett befintligt lagrings konto när du skapar en Function-app i portalen. I det här flödet får du bara välja befintliga lagrings konton i samma region som den Function-app som du skapar. Mer information finns i [lagrings kontots plats](#storage-account-location).
+
+<!-- JH: Does using a Premium Storage account improve perf? -->
 
 ## <a name="storage-account-guidance"></a>Vägledning för lagrings konto
 
@@ -59,7 +61,15 @@ Det är möjligt att flera Function-appar delar samma lagrings konto utan proble
 
 [!INCLUDE [functions-storage-encryption](../../includes/functions-storage-encryption.md)]
 
-## <a name="mount-file-shares-linux"></a>Montera fil resurser (Linux)
+### <a name="in-region-data-residency"></a>Placering för region data
+
+När alla kunddata måste finnas kvar inom en enda region måste det lagrings konto som är kopplat till Function-appen vara ett med [redundans på region](../storage/common/storage-redundancy.md). Ett redundant lagrings konto i regionen måste också användas med [Azure Durable Functions](./durable/durable-functions-perf-and-scale.md#storage-account-selection).
+
+Andra plattforms hanterade kunddata lagras bara inom regionen när de är värdar för ett internt belastningsutjämnad App Service-miljön (ASE). Läs mer i [ASE Zone-redundans](../app-service/environment/zone-redundancy.md#in-region-data-residency).
+
+## <a name="mount-file-shares"></a>Montera fil resurser
+
+_Den här funktionen är endast tillgänglig när den körs på Linux._ 
 
 Du kan montera befintliga Azure Files resurser i dina Linux Function-appar. Genom att montera en resurs till din Linux Function-app kan du utnyttja befintliga maskin inlärnings modeller eller andra data i dina funktioner. Du kan använda [`az webapp config storage-account add`](/cli/azure/webapp/config/storage-account#az-webapp-config-storage-account-add) kommandot för att montera en befintlig resurs till din Linux Function-app. 
 

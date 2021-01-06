@@ -5,12 +5,12 @@ ms.assetid: 81eb04f8-9a27-45bb-bf24-9ab6c30d205c
 ms.topic: conceptual
 ms.date: 04/13/2020
 ms.custom: cc996988-fb4f-47, devx-track-azurecli
-ms.openlocfilehash: f597e58c70d6ac9daff753f5c0a54199c2383c42
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 746a97ecd9b0bdd676e70cca38edc75905e3e4bd
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96019521"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936948"
 ---
 # <a name="manage-your-function-app"></a>Hantera din Function-app 
 
@@ -35,7 +35,7 @@ Den här artikeln beskriver hur du konfigurerar och hanterar dina Function-appar
 
 Du kan navigera till allt du behöver för att hantera din Function-app från översikts sidan, i synnerhet **[program inställningar](#settings)** och **[plattforms funktioner](#platform-features)**.
 
-## <a name="application-settings"></a><a name="settings"></a>Programinställningar
+## <a name="work-with-application-settings"></a><a name="settings"></a>Arbeta med program inställningar
 
 Fliken **program inställningar** innehåller inställningar som används av din Function-app. De här inställningarna lagras krypterade och du måste välja **Visa värden** för att se värdena i portalen. Du kan också komma åt program inställningar med hjälp av Azure CLI.
 
@@ -68,6 +68,56 @@ az functionapp config appsettings set --name <FUNCTION_APP_NAME> \
 [!INCLUDE [functions-environment-variables](../../includes/functions-environment-variables.md)]
 
 När du utvecklar en Function-app lokalt måste du upprätthålla lokala kopior av dessa värden i local.settings.jsi projekt filen. Mer information finns i [filen med lokala inställningar](functions-run-local.md#local-settings-file).
+
+## <a name="hosting-plan-type"></a>Typ av värd plan
+
+När du skapar en Function-app skapar du också en App Service värd plan där appen körs. En plan kan ha en eller flera Function-appar. Funktioner, skalning och prissättning för dina funktioner beror på vilken typ av plan du har. Mer information finns på sidan med [Azure Functions priser](https://azure.microsoft.com/pricing/details/functions/).
+
+Du kan bestämma vilken typ av plan som används av din Function-app från Azure Portal eller genom att använda Azure CLI-eller Azure PowerShell-API: er. 
+
+Följande värden anger plan typen:
+
+| Plantyp | Portalen | Azure CLI/PowerShell |
+| --- | --- | --- |
+| [Förbrukning](consumption-plan.md) | **Förbrukning** | `Dynamic` |
+| [Premium](functions-premium-plan.md) | **ElasticPremium** | `ElasticPremium` |
+| [Dedikerad (App Service)](dedicated-plan.md) | Önskade | Önskade |
+
+# <a name="portal"></a>[Portal](#tab/portal)
+
+För att avgöra vilken typ av plan som används av din Function-app, se **App Service plan** på fliken **Översikt** för function-appen i [Azure Portal](https://portal.azure.com). Om du vill se pris nivån väljer du namnet på **app Services planen** och väljer sedan **Egenskaper** i det vänstra fönstret.
+
+![Visa skalnings plan i portalen](./media/functions-scale/function-app-overview-portal.png)
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
+
+Kör följande Azure CLI-kommando för att få din värd Plans typ:
+
+```azurecli-interactive
+functionApp=<FUNCTION_APP_NAME>
+resourceGroup=FunctionMonitoringExamples
+appServicePlanId=$(az functionapp show --name $functionApp --resource-group $resourceGroup --query appServicePlanId --output tsv)
+az appservice plan list --query "[?id=='$appServicePlanId'].sku.tier" --output tsv
+
+```  
+
+I föregående exempel ersätter `<RESOURCE_GROUP>` och `<FUNCTION_APP_NAME>` med namn på resurs grupp och funktion, respektive. 
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/powershell)
+
+Kör följande Azure PowerShell-kommando för att få din värd Plans typ:
+
+```azurepowershell-interactive
+$FunctionApp = '<FUNCTION_APP_NAME>'
+$ResourceGroup = '<RESOURCE_GROUP>'
+
+$PlanID = (Get-AzFunctionApp -ResourceGroupName $ResourceGroup -Name $FunctionApp).AppServicePlan
+(Get-AzFunctionAppPlan -Name $PlanID -ResourceGroupName $ResourceGroup).SkuTier
+```
+I föregående exempel ersätter `<RESOURCE_GROUP>` och `<FUNCTION_APP_NAME>` med namn på resurs grupp och funktion, respektive. 
+
+---
+
 
 ## <a name="platform-features"></a>Plattforms funktioner
 

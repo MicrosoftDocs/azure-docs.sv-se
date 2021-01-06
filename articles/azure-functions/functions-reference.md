@@ -4,12 +4,12 @@ description: Lär dig Azure Functions koncept och tekniker som du behöver för 
 ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
 ms.topic: conceptual
 ms.date: 10/12/2017
-ms.openlocfilehash: 54bfd770fba9a1766396d66c0c263111c233c9c2
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: dd9a517749030f9f99731d36947c4d4ff2f13b01
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96167887"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936744"
 ---
 # <a name="azure-functions-developer-guide"></a>Utvecklarguide för Azure Functions
 I Azure Functions delar specifika funktioner några viktiga tekniska koncept och komponenter, oavsett vilket språk eller vilken bindning du använder. Innan du hoppar till inlärnings information som är specifik för ett specifikt språk eller en bindning bör du läsa igenom den här översikten som gäller för alla.
@@ -42,7 +42,7 @@ Mer information finns i [Azure Functions utlösare och bindningar begrepp](funct
 
 | Egenskap | Värden/typer | Kommentarer |
 | --- | --- | --- |
-| `type` |sträng |Bindnings typ. Exempelvis `queueTrigger`. |
+| `type` |sträng |Bindnings typ. Ett exempel är `queueTrigger`. |
 | `direction` |in, out |Anger om bindningen avser att ta emot data i funktionen eller skicka data från funktionen. |
 | `name` |sträng |Namnet som används för de data som är kopplade till funktionen. För C# är detta ett argument namn. för Java Script är det nyckeln i en nyckel/värde-lista. |
 
@@ -69,7 +69,7 @@ Function-appar kan skapas och publiceras med en rad olika verktyg, inklusive [Vi
 Funktions redigeraren som är inbyggd i Azure Portal låter dig uppdatera koden och *function.jspå* filen direkt. Detta rekommenderas endast för små ändringar eller koncept bevis – bästa praxis är att använda ett lokalt utvecklingsverktyg som VS Code.
 
 ## <a name="parallel-execution"></a>Parallell körning
-När flera Utlös ande händelser inträffar snabbare än en process med en enkel tråds funktion kan körningen köra funktionen flera gånger parallellt.  Om en Function-app använder [förbruknings värd planen](functions-scale.md#how-the-consumption-and-premium-plans-work)kan Function-appen skala ut automatiskt.  Varje instans av Function-appen, oavsett om appen körs på förbruknings värd planen eller en vanlig [App Service värd plan](../app-service/overview-hosting-plans.md), kan bearbeta samtidiga funktions anrop parallellt med flera trådar.  Det maximala antalet samtidiga funktions anrop i varje Function-serverinstans varierar beroende på vilken typ av utlösare som används och vilka resurser som används av andra funktioner i Function-appen.
+När flera Utlös ande händelser inträffar snabbare än en process med en enkel tråds funktion kan körningen köra funktionen flera gånger parallellt.  Om en Function-app använder [förbruknings värd planen](event-driven-scaling.md)kan Function-appen skala ut automatiskt.  Varje instans av Function-appen, oavsett om appen körs på förbruknings värd planen eller en vanlig [App Service värd plan](../app-service/overview-hosting-plans.md), kan bearbeta samtidiga funktions anrop parallellt med flera trådar.  Det maximala antalet samtidiga funktions anrop i varje Function-serverinstans varierar beroende på vilken typ av utlösare som används och vilka resurser som används av andra funktioner i Function-appen.
 
 ## <a name="functions-runtime-versioning"></a>Functions runtime-versioner
 

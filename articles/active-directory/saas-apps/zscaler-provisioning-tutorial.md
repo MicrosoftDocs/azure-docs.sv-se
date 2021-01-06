@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 2c7f4aebc70ff831459fe111bcc30f5385088028
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 9f368a4aebc4d5de38ebbab800241366650633e6
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357699"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936591"
 ---
 # <a name="tutorial-configure-zscaler-for-automatic-user-provisioning"></a>Självstudie: Konfigurera Zscaler för automatisk användar etablering
 
@@ -26,7 +26,7 @@ Syftet med den här självstudien är att demonstrera de steg som ska utföras i
 > I den här självstudien beskrivs en koppling som skapats ovanpå Azure AD-tjänsten för användar etablering. Viktig information om vad den här tjänsten gör, hur den fungerar och vanliga frågor finns i [Automatisera användaretablering och avetablering för SaaS-program med Azure Active Directory](../app-provisioning/user-provisioning.md).
 >
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Det scenario som beskrivs i den här självstudien förutsätter att du redan har följande:
 
@@ -43,7 +43,7 @@ Innan du konfigurerar Zscaler för automatisk användar etablering med Azure AD 
 
 **Utför följande steg för att lägga till Zscaler från Azure AD-programgalleriet:**
 
-1. I **[Azure-portalen](https://portal.azure.com)** går du till den vänstra navigeringspanelen och klickar på **Azure Active Directory** -ikonen.
+1. I **[Azure-portalen](https://portal.azure.com)** går du till den vänstra navigeringspanelen och klickar på **Azure Active Directory**-ikonen.
 
     ![Azure Active Directory-knappen](common/select-azuread.png)
 
@@ -55,7 +55,7 @@ Innan du konfigurerar Zscaler för automatisk användar etablering med Azure AD 
 
     ![Knappen Nytt program](common/add-new-app.png)
 
-4. I rutan Sök skriver du **Zscaler** , väljer **Zscaler** från resultat panelen och klickar sedan på **Lägg till** för att lägga till programmet.
+4. I rutan Sök skriver du **Zscaler**, väljer **Zscaler** från resultat panelen och klickar sedan på **Lägg till** för att lägga till programmet.
 
     ![Zscaler i resultat listan](common/search-new-app.png)
 
@@ -80,9 +80,12 @@ Det här avsnittet vägleder dig genom stegen för att konfigurera Azure AD Prov
 > [!TIP]
 > Du kan också välja att aktivera SAML-baserad enkel inloggning för Zscaler genom att följa anvisningarna i [självstudien om enkel inloggning med Zscaler](zscaler-tutorial.md). Enkel inloggning kan konfigureras oberoende av automatisk användar etablering, även om dessa två funktioner är gemensamt.
 
+> [!NOTE]
+> När användare och grupper etableras eller avetableras, rekommenderar vi att du regelbundet startar om etableringen för att säkerställa att grupp medlemskapen uppdateras korrekt. Om du gör en omstart tvingas tjänsten att utvärdera alla grupper och uppdatera medlemskapet. 
+
 ### <a name="to-configure-automatic-user-provisioning-for-zscaler-in-azure-ad"></a>Konfigurera automatisk användar etablering för Zscaler i Azure AD:
 
-1. Logga in på [Azure Portal](https://portal.azure.com) och välj **företags program** , Välj **alla program** och välj sedan **Zscaler**.
+1. Logga in på [Azure Portal](https://portal.azure.com) och välj **företags program**, Välj **alla program** och välj sedan **Zscaler**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 

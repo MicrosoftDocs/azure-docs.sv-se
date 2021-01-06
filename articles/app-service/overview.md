@@ -5,12 +5,12 @@ ms.assetid: 94af2caf-a2ec-4415-a097-f60694b860b3
 ms.topic: overview
 ms.date: 07/06/2020
 ms.custom: devx-track-dotnet, mvc, seodec18
-ms.openlocfilehash: e9c49d472f6cf0b9f0e5b3e2f7728417034059b1
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: d59dfe5b0fe3268dcda20fbc83aa31bba8a8713b
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97007101"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936217"
 ---
 # <a name="app-service-overview"></a>Översikt över App Service
 
@@ -45,6 +45,12 @@ App Service kan också vara värd för webbappar internt i Linux för program st
 ### <a name="built-in-languages-and-frameworks"></a>Inbyggda språk och ramverk
 
 App Service på Linux stöder ett antal språkspecifika inbyggda avbildningar. Distribuera bara din kod. Språk som stöds är: Node.js, Java (JRE 8 & JRE 11), PHP, python, .NET Core och Ruby. Kör [`az webapp list-runtimes --linux`](/cli/azure/webapp#az-webapp-list-runtimes) för att visa de senaste språken och de versioner som stöds. Om körningen av programmet kräver att programmet inte stöds i de inbyggda avbildningarna kan du distribuera det med en anpassad behållare.
+
+Föråldrade körningar tas regelbundet bort från Web Apps skapa och konfigurera-blad i portalen. Dessa körningar är dolda från portalen när de är föråldrade av den underhålla organisationen eller har fått betydande sårbarheter. De här alternativen är dolda för att hjälpa kunder till de senaste körningarna där de är mest framgångs rika. 
+
+När en föråldrad körning är dold från portalen kommer alla befintliga webbplatser som använder den versionen att fortsätta att köras. Om en runtime tas bort helt från App Services plattformen får dina Azure-Prenumerationens ägare ett e-postmeddelande innan borttagningen.
+
+Om du behöver skapa en annan webbapp med en inaktuell runtime-version som inte längre visas på portalen, se språk konfigurations guiderna för instruktioner om hur du hämtar körnings versionen för din webbplats. Du kan använda Azure CLI för att skapa en annan plats med samma körnings tid. Du kan också använda knappen **Exportera mall** på bladet webbapp på portalen för att exportera en arm-mall på platsen. Du kan använda den här mallen igen för att distribuera en ny plats med samma körning och konfiguration.
 
 ### <a name="limitations"></a>Begränsningar
 

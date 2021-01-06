@@ -3,12 +3,12 @@ title: Beräkna kostnader för förbruknings plan i Azure Functions
 description: Lär dig hur du bättre uppskattar kostnaderna som du kan stöta på när du kör din Function-app i en förbruknings plan i Azure.
 ms.date: 9/20/2019
 ms.topic: conceptual
-ms.openlocfilehash: 58082e03c1416848e9aa1e97308bed1ceaa67295
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 430804d478df718f51ae1da9adb6693f597157a9
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168127"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934891"
 ---
 # <a name="estimating-consumption-plan-costs"></a>Uppskatta förbruknings Plans kostnader
 
@@ -16,9 +16,9 @@ Det finns för närvarande tre typer av värd planer för en app som körs i Azu
 
 | Planera | Beskrivning |
 | ---- | ----------- |
-| [**Bruk**](functions-scale.md#consumption-plan) | Du debiteras bara för den tid som din Function-App körs. Den här planen innehåller en[pris sida] för [gratis beviljande av bidrag]per prenumeration.|
-| [**Premium**](functions-scale.md#premium-plan) | Ger dig samma funktioner och skalnings funktion som förbruknings planen, men med förbättrad prestanda och VNET-åtkomst. Kostnaden baseras på din valda pris nivå. Läs mer i [Azure Functions Premium-plan](functions-premium-plan.md). |
-| [**Dedikerad (App Service)**](functions-scale.md#app-service-plan) <br/>(Basic-nivån eller högre) | När du behöver köra i dedikerade virtuella datorer eller isolera, använder du anpassade avbildningar eller vill använda den överskjutande App Service plan kapaciteten. Använder [regelbunden App Service plan fakturering](https://azure.microsoft.com/pricing/details/app-service/). Kostnaden baseras på din valda pris nivå.|
+| [**Förbrukning**](consumption-plan.md) | Du debiteras bara för den tid som din Function-App körs. Den här planen innehåller en[pris sida] för [gratis beviljande av bidrag]per prenumeration.|
+| [**Premium**](functions-premium-plan.md) | Ger dig samma funktioner och skalnings funktion som förbruknings planen, men med förbättrad prestanda och VNET-åtkomst. Kostnaden baseras på din valda pris nivå. Läs mer i [Azure Functions Premium-plan](functions-premium-plan.md). |
+| [**Dedikerad (App Service)**](dedicated-plan.md) <br/>(Basic-nivån eller högre) | När du behöver köra i dedikerade virtuella datorer eller isolera, använder du anpassade avbildningar eller vill använda den överskjutande App Service plan kapaciteten. Använder [regelbunden App Service plan fakturering](https://azure.microsoft.com/pricing/details/app-service/). Kostnaden baseras på din valda pris nivå.|
 
 Du väljer den plan som bäst stöder dina prestanda-och kostnads krav. Läs mer i [Azure Functions skala och vara värd](functions-scale.md).
 
@@ -75,7 +75,7 @@ Använd [Azure Monitor Metrics Explorer](../azure-monitor/platform/metrics-getti
 
 1. Överst i [Azure Portal] i **Sök tjänster, resurser och dokument söker du**  efter `monitor` och väljer **övervaka** under **tjänster**.
 
-1. Till vänster väljer du **mått**  >  **Välj en resurs**och använder sedan inställningarna under bilden för att välja din Function-app.
+1. Till vänster väljer du **mått**  >  **Välj en resurs** och använder sedan inställningarna under bilden för att välja din Function-app.
 
     ![Välj din Function-app-resurs](media/functions-consumption-costing/select-a-resource.png)
 
@@ -89,7 +89,7 @@ Använd [Azure Monitor Metrics Explorer](../azure-monitor/platform/metrics-getti
 
 1. Välj **tillämpa** för att välja din funktions-app som den resurs som ska övervakas.
 
-1. Från **mått**väljer du **funktions körnings antal** och **Summa** för **agg regering**. Detta lägger till summan av antalet körningar under vald period i diagrammet.
+1. Från **mått** väljer du **funktions körnings antal** och **Summa** för **agg regering**. Detta lägger till summan av antalet körningar under vald period i diagrammet.
 
     ![Definiera ett mått för functions-appen som ska läggas till i diagrammet](media/functions-consumption-costing/monitor-metrics-add-metric.png)
 

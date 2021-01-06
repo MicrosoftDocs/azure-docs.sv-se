@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 11/12/2020
 ms.author: gasinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e011417b936ed83b4658e6dad25bf8e8ee88aed
-ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
+ms.openlocfilehash: b5c960c7fbcc29d0aaea7511ba2187c916e84ab3
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96318282"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935248"
 ---
 # <a name="f5-big-ip-access-policy-manager-and-azure-active-directory-integration-for-secure-hybrid-access"></a>F5 BIG-IP åtkomst Policy Manager och Azure Active Directory-integrering för säker hybrid åtkomst
 
@@ -37,7 +37,7 @@ Att ha Azure AD förautentiserad åtkomst till stora IP-publicerade tjänster ge
 
 - [Identifiera läckta autentiseringsuppgifter](https://docs.microsoft.com/azure/active-directory/identity-protection/concept-identity-protection-risks)
 
-- [Lösenordsåterställning via självbetjäning (SSPR)](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-enable-sspr)
+- [Lösen ords återställning via självbetjäning (SSPR)](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-enable-sspr)
 
 - Samarbets [partner](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-external-users) – rättighets hantering för styrd gäst åtkomst
 
@@ -71,7 +71,7 @@ Steg 1-4 i diagrammet illustrerar förautentisering av Exchange på klient sidan
 |:------|:-----------|
 | 1. | Användaren väljer en program ikon i portalen och matchar URL: en till SAML SP (BIG-IP) |
 | 2. | BIG-IP omdirigerar användaren till SAML IDP (Azure AD) för förautentisering|
-| 3. | Azure AD bearbetar CA-principer och [sessionsnycklar](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-session) för auktorisering|
+| 3. | Azure AD bearbetar principer för villkorlig åtkomst och [kontroll av sessioner](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-session) för auktorisering|
 | 4. | Användaren omdirigeras tillbaka till BIG-IP som visar SAML-anspråk som utfärdats av Azure AD |
 | 5. | BIG-IP begär ytterligare sessionsinformation som ska inkluderas i [SSO](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso) och [rollbaserad åtkomst kontroll (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) till den publicerade tjänsten |
 | 6. | BIG-IP vidarebefordrar klient förfrågan till backend-tjänsten
@@ -100,7 +100,7 @@ Det finns flera alternativ för loggning av händelser antingen lokalt eller via
 
 ![Bilden visar övervaknings flödet](media/f5-aad-integration/azure-sentinel.png)
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Att integrera F5 BIG-IP med Azure AD för SHA har följande krav:
 

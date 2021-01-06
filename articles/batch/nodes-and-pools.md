@@ -3,12 +3,12 @@ title: Noder och pooler i Azure Batch
 description: Lär dig mer om Compute-noder och pooler och hur de används i ett Azure Batch arbets flöde från en utvecklings synpunkt.
 ms.topic: conceptual
 ms.date: 11/20/2020
-ms.openlocfilehash: 880a956a2d839483c59578afad1b62146799578a
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: c229381ba1019a5a40a4ca6b7db88f534f57de29
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95243077"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934653"
 ---
 # <a name="nodes-and-pools-in-azure-batch"></a>Noder och pooler i Azure Batch
 
@@ -64,6 +64,9 @@ När du skapar en batch-pool anger du konfigurationen för den virtuella Azure-d
 
 Det finns två typer av pool-konfigurationer som är tillgängliga i batch.
 
+> [!IMPORTANT]
+> Pooler ska konfigureras med hjälp av konfiguration av virtuell dator och inte Cloud Services konfiguration. Alla batch-funktioner stöds av konfigurations pooler för virtuella datorer och nya funktioner läggs till. Poolerna för Cloud Services konfiguration stöder inte alla funktioner och inga nya funktioner planeras.
+
 ### <a name="virtual-machine-configuration"></a>Konfiguration av virtuell dator
 
 Konfigurationen av den **virtuella datorn** anger att poolen består av virtuella Azure-datorer. Dessa virtuella datorer kan skapas från Linux- eller Windows-avbildningar.
@@ -101,7 +104,7 @@ När du skapar en pool kan du ange vilka typer av noder som du vill ha och mål 
 - **Dedikerade noder.** Dedikerade beräkningsnoder är reserverade för dina arbetsbelastningar. De kostar mer än noder med låg prioritet, men de avbryts aldrig.
 - **Noder med låg prioritet.** Noder med låg prioritet utnyttjar överkapacitet i Azure för att köra Batch-arbetsbelastningar. Noder med låg prioritet är billigare per timme än dedikerade noder och aktiverar arbets belastningar som kräver betydande beräknings kraft. Mer information finns i [Use low-priority VMs with Batch](batch-low-pri-vms.md) (Använda virtuella datorer med låg prioritet med Batch).
 
-Noder med låg prioritet kan avbrytas om det inte finns tillräckligt med överskott i Azure. Om en nod avbryts när aktiviteter körs placeras aktiviteterna i kö igen och körs när en beräkningsnod blir tillgänglig igen. Noder med låg prioritet är ett bra alternativ för arbetsbelastningar om tiden för slutförande av jobbet är flexibelt och om arbetet är fördelat på flera noder. Innan du bestämmer dig för att använda låg prioritets noder för ditt scenario, se till att alla arbeten som förloras på grund av för-Rekvirering är minimala och enkla att återskapa.
+Noder med låg prioritet kan avbrytas om det inte finns tillräckligt med överskott i Azure. Om en nod avbryts när aktiviteter körs placeras aktiviteterna i kö igen och körs när en beräkningsnod blir tillgänglig igen. Noder med låg prioritet är ett bra alternativ för arbetsbelastningar om tiden för slutförande av jobbet är flexibelt och om arbetet är fördelat på flera noder. Innan du bestämmer dig för att använda noder med låg prioritet för ditt scenario måste du se till att arbetet som går förlorat på grund av avbrott är minimalt och enkelt att återskapa.
 
 Du kan ha både noder med låg prioritet och dedikerade beräkningsnoder i samma pool. Varje typ av nod har en egen mål inställning där du kan ange önskat antal noder.
 

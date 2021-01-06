@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.custom: mvc, devx-track-azurecli
 ms.date: 04/16/2020
 ms.author: sebansal
-ms.openlocfilehash: 8689b6851ae219ee6f41ebf58736692e557b2344
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 626d7f161d23e6105eea0ca160cd2c9be0ed0ea0
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289735"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935945"
 ---
 # <a name="tutorial-import-a-certificate-in-azure-key-vault"></a>Självstudie: importera ett certifikat i Azure Key Vault
 
@@ -33,7 +33,7 @@ Självstudien visar hur du:
 
 Läs [Key Vault grundläggande koncept](../general/basic-concepts.md)innan du börjar. 
 
-Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
+Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
 ## <a name="sign-in-to-azure"></a>Logga in på Azure
 
@@ -42,12 +42,12 @@ Logga in på Azure Portal på https://portal.azure.com.
 ## <a name="create-a-vault"></a>Skapa ett valv
 
 1. På Azure Portal-menyn eller på **Start** sidan väljer du **skapa en resurs**.
-2. Skriv **Key Vault** i sökrutan.
+2. I rutan Sök anger du **Key Vault**.
 3. Välj **Key Vault** i listan med resultat.
 4. Välj **Skapa** i avsnittet Key Vault.
 5. Ange följande information i avsnittet **Skapa nyckelvalv** avsnittet Ange följande information:
-    - **Namn** : Ett unikt namn krävs. I den här snabb starten använder vi **exempel-valv**. 
-    - **Prenumeration** : Välj en prenumeration.
+    - **Namn**: Ett unikt namn krävs. I den här snabb starten använder vi **exempel-valv**. 
+    - **Prenumeration**: Välj en prenumeration.
     - Under **resurs grupp** väljer du **Skapa ny** och anger ett resurs grupp namn.
     - Välj en plats i listrutan **Plats**.
     - Lämna standardvärdena för de andra alternativen.
@@ -55,8 +55,8 @@ Logga in på Azure Portal på https://portal.azure.com.
 
 Anteckna de två egenskaperna som visas nedan:
 
-* **Valv namn** : i exemplet är detta **exempel-valv**. Du kommer att använda det här namnet i senare steg.
-* **Valvets URI** : I det här exemplet är det https://example-vault.vault.azure.net/. Program som använder ditt valv via dess REST-API måste använda denna URI.
+* **Valv namn**: i exemplet är detta **exempel-valv**. Du kommer att använda det här namnet i senare steg.
+* **Valvets URI**: I det här exemplet är det https://example-vault.vault.azure.net/. Program som använder ditt valv via dess REST-API måste använda denna URI.
 
 Nu är ditt Azure-konto det enda kontot med behörighet att utföra åtgärder i det nya valvet.
 
@@ -74,9 +74,9 @@ Om du vill importera ett certifikat till valvet måste du ha en PEM-eller PFX-ce
 1. Välj **certifikat** på sidan Key Vault egenskaper.
 2. Klicka på **Generera/importera**.
 3. På skärmen **skapa ett certifikat** väljer du följande värden:
-    - **Metod för att skapa certifikat** : importera.
-    - **Certifikat namn** : ExampleCertificate.
-    - **Ladda upp certifikat fil** : Välj certifikat filen från disk
+    - **Metod för att skapa certifikat**: importera.
+    - **Certifikat namn**: ExampleCertificate.
+    - **Ladda upp certifikat fil**: Välj certifikat filen från disk
     - **Lösen ord** : om du överför en lösenordsskyddad certifikat fil anger du detta lösen ord här. Annars lämnar du det tomt. När certifikat filen har importer ATS tar Key Vault bort lösen ordet.
 4. Klicka på **Skapa**.
 
@@ -154,4 +154,4 @@ I den här självstudien har du skapat en Key Vault och importerat ett certifika
 
 - Läs mer om att [Hantera certifikat skapande i Azure Key Vault](./create-certificate-scenarios.md)
 - Se exempel på hur du [importerar certifikat med hjälp av REST API: er](/rest/api/keyvault/importcertificate/importcertificate)
-- Granska [Azure Key Vault bästa praxis](../general/best-practices.md)
+- Granska [Key Vault säkerhets översikt](../general/security-overview.md)

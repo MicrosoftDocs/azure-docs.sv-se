@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81f4407ee7721332a4143952d1720151bb70d8c9
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 61f655d459592022a2e34b87adc50e3d49b03dc9
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94837546"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935775"
 ---
 # <a name="conditional-access-securing-security-info-registration"></a>Villkorsstyrd åtkomst: Säkra registrering av säkerhetsinformation
 
@@ -61,7 +61,7 @@ Vissa kan välja att använda enhets tillstånd i stället för plats i steg 6 o
 
 > [!WARNING]
 > Om du använder enhets tillstånd som ett villkor i principen kan det påverka gäst användare i katalogen. [Endast rapport läge](concept-conditional-access-report-only.md) kan hjälpa dig att fastställa konsekvenserna av princip beslut.
-> Observera att endast rapport läge är tillämpligt för CA-principer med "användar åtgärder"-omfattningen.
+> Observera att endast rapport läge är tillämpligt för principer för villkorlig åtkomst med "användar åtgärder"-omfattningen.
 
 ## <a name="next-steps"></a>Nästa steg
 

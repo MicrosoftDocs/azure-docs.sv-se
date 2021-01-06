@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 10/27/2020
 ms.author: jehollan
-ms.openlocfilehash: bed76a6f3a17332f9a1e411ff1d4efb52703f3e1
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: f4d7611f285535680469f3a334ab889b0b644bfe
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96021016"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936877"
 ---
 # <a name="azure-functions-networking-options"></a>Nätverksalternativ för Azure Functions
 
@@ -21,9 +21,9 @@ Värd modellerna har olika nivåer av nätverks isolering tillgänglig. Genom at
 Du kan vara värd för funktions appar på ett par olika sätt:
 
 * Du kan välja bland plan alternativ som körs i en infrastruktur för flera innehavare, med olika nivåer av anslutningar för virtuella nätverk och skalnings alternativ:
-    * [Förbruknings planen](functions-scale.md#consumption-plan) skalas dynamiskt som svar på belastning och erbjuder minimala alternativ för nätverks isolering.
-    * [Premium-planen](functions-scale.md#premium-plan) kan också skalas dynamiskt och erbjuder mer omfattande nätverks isolering.
-    * Azure [App Service plan](functions-scale.md#app-service-plan) fungerar med en fast skala och erbjuder nätverks isolering som liknar Premium planen.
+    * [Förbruknings planen](consumption-plan.md) skalas dynamiskt som svar på belastning och erbjuder minimala alternativ för nätverks isolering.
+    * [Premium-planen](functions-premium-plan.md) kan också skalas dynamiskt och erbjuder mer omfattande nätverks isolering.
+    * Azure [App Service plan](dedicated-plan.md) fungerar med en fast skala och erbjuder nätverks isolering som liknar Premium planen.
 * Du kan köra funktioner i en [App Service-miljön](../app-service/environment/intro.md). Den här metoden distribuerar din funktion till det virtuella nätverket och ger fullständig nätverks kontroll och isolering.
 
 ## <a name="matrix-of-networking-features"></a>Matris med nätverksfunktioner
@@ -34,7 +34,7 @@ Du kan vara värd för funktions appar på ett par olika sätt:
 
 Du kan använda åtkomst begränsningar för att definiera en prioriterad lista över IP-adresser som tillåts eller nekas åtkomst till din app. Listan kan innehålla IPv4-och IPv6-adresser eller vissa virtuella nätverks under nät som använder [tjänst slut punkter](#use-service-endpoints). När det finns en eller flera poster finns implicit "Neka alla" i slutet av listan. IP-begränsningar fungerar med alla funktions värd alternativ.
 
-Åtkomst begränsningar är tillgängliga i [Premium](functions-premium-plan.md)-, [konsumtions](functions-scale.md#consumption-plan)-och [App Service](functions-scale.md#app-service-plan).
+Åtkomst begränsningar är tillgängliga i [Premium](functions-premium-plan.md)-, [konsumtions](consumption-plan.md)-och [App Service](dedicated-plan.md).
 
 > [!NOTE]
 > Med nätverks begränsningar på plats kan du distribuera enbart från det virtuella nätverket eller när du har placerat IP-adressen för den dator som du använder för att komma åt Azure Portal på listan Betrodda mottagare. Du kan dock fortfarande hantera funktionen med hjälp av portalen.
@@ -143,7 +143,7 @@ az resource update -g <resource_group> -n <function_app_name>/config/web --set p
 
 Virtuella nätverks utlösare stöds i version 2. x och senare av Functions-körningen. Följande typer av icke-HTTP-utlösare stöds.
 
-| Filnamnstillägg | Lägsta version |
+| Anknytning | Lägsta version |
 |-----------|---------| 
 |[Microsoft. Azure. WebJobs. Extensions. Storage](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage/) | 3.0.10 eller senare |
 |[Microsoft. Azure. WebJobs. Extensions. EventHubs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventHubs)| 4.1.0 eller senare|

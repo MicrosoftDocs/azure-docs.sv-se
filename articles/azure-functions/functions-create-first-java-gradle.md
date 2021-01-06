@@ -6,21 +6,21 @@ ms.custom: devx-track-java
 ms.author: karler
 ms.topic: how-to
 ms.date: 04/08/2020
-ms.openlocfilehash: 48a732e3935d78bdbf8b81fe989b59be1fbe2203
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c9ecb670cea022988efda8ec690c0724310cdb4b
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96020440"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934857"
 ---
 # <a name="use-java-and-gradle-to-create-and-publish-a-function-to-azure"></a>Använd Java och Gradle för att skapa och publicera en funktion i Azure
 
-Den här artikeln visar hur du skapar och publicerar ett Java-Function-projekt för att Azure Functions med kommando rads verktyget Gradle. När du är klar körs funktions koden i Azure i en [värd plan utan server](functions-scale.md#consumption-plan) och utlöses av en http-begäran. 
+Den här artikeln visar hur du skapar och publicerar ett Java-Function-projekt för att Azure Functions med kommando rads verktyget Gradle. När du är klar körs funktions koden i Azure i en [värd plan utan server](consumption-plan.md) och utlöses av en http-begäran. 
 
 > [!NOTE]
 > Om Gradle inte är ditt fördelaktiga utvecklingsverktyg kan du ta en titt på våra liknande själv studie kurser för Java-utvecklare med [maven](./create-first-function-cli-java.md), [IntelliJ-idé](/azure/developer/java/toolkit-for-intellij/quickstart-functions) och vs- [kod](./create-first-function-vs-code-java.md).
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 För att kunna utveckla funktioner med hjälp av Java måste du ha följande installerat:
 

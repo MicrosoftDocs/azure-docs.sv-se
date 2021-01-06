@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: c13b6ed991403e65c4c4d71c964f1f7f4d1ffe7b
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 9416005c708cafe5adbad2b09ce70c41fae66fd7
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443321"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936030"
 ---
 # <a name="daemon-app-that-calls-web-apis---acquire-a-token"></a>Daemon-app som anropar webb-API: er – hämta en token
 
@@ -57,7 +57,7 @@ Det omfång som används för klientautentiseringsuppgifter bör alltid vara res
 
 > [!IMPORTANT]
 > När MSAL begär en åtkomsttoken för en resurs som accepterar en version 1,0-åtkomsttoken, parsar Azure AD den önskade mål gruppen från det begärda omfånget genom att ta allt före det sista snedstrecket och använda det som resurs-ID.
-> Så om till exempel Azure SQL Database ( **https: \/ /Database.Windows.net** ) förväntar sig en mål grupp som slutar med ett snedstreck (för Azure SQL Database `https://database.windows.net/` ), måste du begära en omfattning `https://database.windows.net//.default` . (Observera det dubbla snedstrecket.) Se även MSAL.NET problem [#747: resurs-URL: en avslutande snedstreck utelämnas, vilket orsakade SQL-auth-fel](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747).
+> Så om till exempel Azure SQL Database (**https: \/ /Database.Windows.net**) förväntar sig en mål grupp som slutar med ett snedstreck (för Azure SQL Database `https://database.windows.net/` ), måste du begära en omfattning `https://database.windows.net//.default` . (Observera det dubbla snedstrecket.) Se även MSAL.NET problem [#747: resurs-URL: en avslutande snedstreck utelämnas, vilket orsakade SQL-auth-fel](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747).
 
 ## <a name="acquiretokenforclient-api"></a>AcquireTokenForClient-API
 
@@ -91,6 +91,10 @@ catch (MsalServiceException ex) when (ex.Message.Contains("AADSTS70011"))
     // Mitigation: Change the scope to be as expected.
 }
 ```
+
+### <a name="acquiretokenforclient-uses-the-application-token-cache"></a>AcquireTokenForClient använder Application token cache
+
+I MSAL.NET `AcquireTokenForClient` använder Application token cache. (Alla andra AcquireToken *XX* -metoder använder user token cache.) Anropa inte `AcquireTokenSilent` innan du anropar `AcquireTokenForClient` , eftersom `AcquireTokenSilent` använder cacheminnet för *användarens* token. `AcquireTokenForClient` kontrollerar cacheminnet för *program* -token och uppdaterar det.
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -200,10 +204,6 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 
 Mer information finns i protokoll dokumentationen: [Microsoft Identity Platform och OAuth 2,0-klientens autentiseringsuppgifter Flow](v2-oauth2-client-creds-grant-flow.md).
 
-## <a name="application-token-cache"></a>Cache för program-token
-
-I MSAL.NET `AcquireTokenForClient` använder Application token cache. (Alla andra AcquireToken *XX* -metoder använder user token cache.) Anropa inte `AcquireTokenSilent` innan du anropar `AcquireTokenForClient` , eftersom `AcquireTokenSilent` använder cacheminnet för *användarens* token. `AcquireTokenForClient` kontrollerar cacheminnet för *program* -token och uppdaterar det.
-
 ## <a name="troubleshooting"></a>Felsökning
 
 ### <a name="did-you-use-the-resourcedefault-scope"></a>Har du använt Resource/. default-omfånget?
@@ -228,6 +228,12 @@ Content: {
   }
 }
 ```
+
+### <a name="are-you-calling-your-own-api"></a>Anropar du ditt eget API?
+
+Om du anropar ditt eget webb-API och inte kunde lägga till en app-behörighet till appens registrering för daemon-appen, exponerade du en app-roll i ditt webb-API?
+
+Mer information finns i [exponera program behörigheter (app-roller)](scenario-protected-web-api-app-registration.md#exposing-application-permissions-app-roles) och särskilt [Se till att Azure AD utfärdar token för ditt webb-API till endast tillåtna klienter](scenario-protected-web-api-app-registration.md#ensuring-that-azure-ad-issues-tokens-for-your-web-api-to-only-allowed-clients).
 
 ## <a name="next-steps"></a>Nästa steg
 

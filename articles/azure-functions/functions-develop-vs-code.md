@@ -4,12 +4,12 @@ description: Lär dig hur du utvecklar och testar Azure Functions med hjälp av 
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 08/21/2019
-ms.openlocfilehash: 573177615ff898326eb29649a7f766b5df34b587
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 33adcb853099778c4b06a9cd428f480f6138ee8b
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96168466"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936982"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Utveckla Azure Functions med hjälp av Visual Studio Code
 
@@ -39,7 +39,7 @@ Den här artikeln innehåller information om hur du använder Azure Functions-ti
 > [!IMPORTANT]
 > Blanda inte lokal utveckling och Portal utveckling för en enda Function-app. När du publicerar från ett lokalt projekt till en Function-app skriver distributions processen över alla funktioner som du har utvecklat i portalen.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Innan du installerar och kör tillägget [Azure Functions extension][Azure Functions för Visual Studio Code]måste du uppfylla följande krav:
 
@@ -255,7 +255,7 @@ Följande steg publicerar projektet till en ny function-app som skapats med avan
     | ------ | ----- | ----------- |
     | Välj Function-app i Azure | Skapa nya Funktionsapp i Azure | I nästa prompt, ange ett globalt unikt namn som identifierar din nya Function-app och välj sedan Retur. Giltiga tecken i ett namn på en funktionsapp är `a-z`, `0-9` och `-`. |
     | Välj ett operativ system | Windows | Function-appen körs i Windows. |
-    | Välj en värd plan | Förbrukningsplan | En server lös [förbruknings Plans värd](functions-scale.md#consumption-plan) används. |
+    | Välj en värd plan | Förbrukningsplan | En server lös [förbruknings Plans värd](consumption-plan.md) används. |
     | Välj en körnings miljö för den nya appen | Ditt projekt språk | Körningen måste matcha projektet som du publicerar. |
     | Välj en resurs grupp för nya resurser | Skapa ny resurs grupp | Vid nästa prompt skriver du ett resurs grupp namn, till exempel `myResourceGroup` och väljer sedan Retur. Du kan också välja en befintlig resurs grupp. |
     | Välj ett lagrings konto | Skapa ett nytt lagringskonto | Vid nästa prompt skriver du ett globalt unikt namn för det nya lagrings kontot som används av din Function-app och väljer sedan Retur. Lagrings konto namn måste innehålla mellan 3 och 24 tecken och får bara innehålla siffror och gemena bokstäver. Du kan också välja ett befintligt konto. |
@@ -396,9 +396,9 @@ Mer information om övervakning med hjälp av Application Insights finns i [öve
 
 Som standard skapas alla C#-projekt som [c#-kompilerade klass biblioteks projekt](functions-dotnet-class-library.md). Om du föredrar att arbeta med C#-skript projekt i stället måste du välja C#-skript som standard språk i inställningarna för Azure Functions-tillägg:
 
-1. Välj inställningar för **fil**  >  **Inställningar**  >  **Settings**.
+1. Välj inställningar för **fil**  >  **Inställningar**  >  .
 
-1. Gå till tillägg för **användar inställningar**  >  **Extensions**  >  **Azure Functions**.
+1. Gå till tillägg för **användar inställningar**  >    >  **Azure Functions**.
 
 1. Välj **C #-skript** från **Azure Function: projekt språk**.
 

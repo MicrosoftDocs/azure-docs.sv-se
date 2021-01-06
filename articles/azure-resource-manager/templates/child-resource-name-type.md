@@ -1,20 +1,20 @@
 ---
 title: Underordnade resurser i mallar
-description: Beskriver hur du anger namn och typ för underordnade resurser i en Azure Resource Manager mall.
+description: Beskriver hur du anger namn och typ för underordnade resurser i en Azure Resource Manager-mall (ARM-mall).
 ms.topic: conceptual
 ms.date: 12/21/2020
-ms.openlocfilehash: c594096fd95f663db2120b29c575b341924dcc36
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 408914fd309676da36904a364f905a8ee809d648
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97721951"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934313"
 ---
 # <a name="set-name-and-type-for-child-resources"></a>Ange namn och typ för underordnade resurser
 
 Underordnade resurser är resurser som bara finns inom kontexten för en annan resurs. Det kan till exempel finnas ett [tillägg för virtuell dator](/azure/templates/microsoft.compute/virtualmachines/extensions) utan en [virtuell dator](/azure/templates/microsoft.compute/virtualmachines). Tilläggs resursen är en underordnad till den virtuella datorn.
 
-Varje överordnad resurs accepterar bara vissa resurs typer som underordnade resurser. Resurs typen för den underordnade resursen innehåller resurs typen för den överordnade resursen. Till exempel är **Microsoft. Web/Sites/config** och **Microsoft. Web/Sites/Extensions** båda underordnade resurser för **Microsoft. Web/Sites**. Godkända resurs typer anges i det [mall schema](https://github.com/Azure/azure-resource-manager-schemas) som tillhör den överordnade resursen.
+Varje överordnad resurs accepterar bara vissa resurs typer som underordnade resurser. Resurs typen för den underordnade resursen innehåller resurs typen för den överordnade resursen. Till exempel `Microsoft.Web/sites/config` och `Microsoft.Web/sites/extensions` båda är underordnade resurser för `Microsoft.Web/sites` . Godkända resurs typer anges i det [mall schema](https://github.com/Azure/azure-resource-manager-schemas) som tillhör den överordnade resursen.
 
 I en Azure Resource Manager-mall (ARM-mall) kan du ange den underordnade resursen antingen i den överordnade resursen eller utanför den överordnade resursen. I följande exempel visas den underordnade resurs som ingår i egenskapen Resources för den överordnade resursen.
 
@@ -89,7 +89,7 @@ I följande exempel visas ett virtuellt nätverk och ett undernät. Observera at
 ]
 ```
 
-Den fullständiga resurs typen är fortfarande **Microsoft. Network/virtualNetworks/subnets**. Du tillhandahåller inte **Microsoft. Network/virtualNetworks/** eftersom det antas från den överordnade resurs typen.
+Den fullständiga resurs typen är fortfarande `Microsoft.Network/virtualNetworks/subnets` . Du kan inte ange `Microsoft.Network/virtualNetworks/` eftersom den antas från den överordnade resurs typen.
 
 Det underordnade resurs namnet är inställt på **Subnet1** men det fullständiga namnet innehåller det överordnade namnet. Du kan inte ange **VNet1** eftersom den antas från den överordnade resursen.
 
@@ -102,7 +102,7 @@ När du definierar utanför den överordnade resursen formaterar du typ och med 
 "name": "{parent-resource-name}/{child-resource-name}",
 ```
 
-I följande exempel visas ett virtuellt nätverk och undernät som båda definieras på rotnivå. Observera att under nätet inte ingår i Resources-matrisen för det virtuella nätverket. Namnet är inställt på **VNet1/Subnet1** och typen anges till **Microsoft. Network/virtualNetworks/subnets**. Den underordnade resursen är markerad som beroende av den överordnade resursen eftersom den överordnade resursen måste finnas innan den underordnade resursen kan distribueras.
+I följande exempel visas ett virtuellt nätverk och undernät som båda definieras på rotnivå. Observera att under nätet inte ingår i Resources-matrisen för det virtuella nätverket. Namnet är inställt på **VNet1/Subnet1** och typen är inställt på `Microsoft.Network/virtualNetworks/subnets` . Den underordnade resursen är markerad som beroende av den överordnade resursen eftersom den överordnade resursen måste finnas innan den underordnade resursen kan distribueras.
 
 ```json
 "resources": [
@@ -136,6 +136,6 @@ I följande exempel visas ett virtuellt nätverk och undernät som båda definie
 
 ## <a name="next-steps"></a>Nästa steg
 
-* Mer information om hur du skapar ARM-mallar finns i [Redigera mallar](template-syntax.md).
+* Information om hur du skapar ARM-mallar finns i [förstå strukturen och syntaxen för ARM-mallar](template-syntax.md).
 
 * Mer information om formatet på resurs namnet när du refererar till resursen finns i [referens funktionen](template-functions-resource.md#reference).

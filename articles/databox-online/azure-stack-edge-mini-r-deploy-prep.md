@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 01/04/2021
+ms.date: 01/05/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Mini R device so I can use it to transfer data to Azure.
-ms.openlocfilehash: 03b4ed41b3110825d4e4797f2c5f733152504919
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 4535368b7d8d044469a4b0effee914176aca78e4
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 01/06/2021
-ms.locfileid: "97913795"
+ms.locfileid: "97935415"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-mini-r"></a>Självstudie: Förbered för att distribuera Azure Stack Edge Mini R
 
@@ -89,7 +89,7 @@ För att skapa en Azure Stack Edge-resurs, utför följande steg i Azure Portal.
 1. Använd dina Microsoft Azure autentiseringsuppgifter för att logga in på Azure Portal på denna URL: [https://portal.azure.com](https://portal.azure.com) .
 
 
-2. I den vänstra rutan väljer du **+ skapa en resurs**. Sök efter och välj **Azure Stack gräns/data Box Gateway**. Välj **Skapa**. 
+2. Välj **+ Skapa en resurs** i fönstret till vänster. Sök efter och välj **Azure Stack gräns/data Box Gateway**. Välj **Skapa**. 
 
 3. Välj den prenumeration som du vill använda för Azure Stack Edge Pro-enheten. Välj det land där du vill skicka den här fysiska enheten. Välj **Visa enheter**.
 
@@ -101,7 +101,7 @@ För att skapa en Azure Stack Edge-resurs, utför följande steg i Azure Portal.
     [![Skapa en resurs 2](media/azure-stack-edge-mini-r-deploy-prep/create-resource-2.png)](media/azure-stack-edge-mini-r-deploy-prep/create-resource-2.png#lightbox)
 
 
-6. På fliken **grundläggande** anger eller väljer du följande **projekt information**.
+5. På fliken **grundläggande** anger eller väljer du följande **projekt information**.
     
     |Inställning  |Värde  |
     |---------|---------|
@@ -109,7 +109,7 @@ För att skapa en Azure Stack Edge-resurs, utför följande steg i Azure Portal.
     |Resursgrupp  |Välj en befintlig grupp eller skapa en ny grupp.<br>Lär dig mer om [Azures resurs grupper](../azure-resource-manager/management/overview.md).     |
 
 
-7. Ange eller Välj följande **instans information**.
+6. Ange eller Välj följande **instans information**.
 
     |Inställning  |Värde  |
     |---------|---------|
@@ -119,25 +119,25 @@ För att skapa en Azure Stack Edge-resurs, utför följande steg i Azure Portal.
     ![Skapa en resurs 4](media/azure-stack-edge-mini-r-deploy-prep/create-resource-4.png)
 
 
-8. Välj **Nästa: leverans adress**.
+7. Välj **Nästa: leverans adress**.
 
     - Om du redan har en enhet väljer du kombinations rutan där **jag redan har en enhet**.
 
-        ![Skapa en resurs 5](media/azure-stack-edge-mini-r-deploy-prep/create-resource-5.png)
+     ![Skapa en resurs 5](media/azure-stack-edge-mini-r-deploy-prep/create-resource-5.png)
 
     - Om det här är den nya enhet som du beställer anger du kontakt namn, företag, adress att leverera enheten till och kontakt information.
 
-        ![Skapa en resurs 6](media/azure-stack-edge-mini-r-deploy-prep/create-resource-6.png)
+     ![Skapa en resurs 6](media/azure-stack-edge-mini-r-deploy-prep/create-resource-6.png)
 
-9. Välj **Nästa: Taggar**. Du kan också ange taggar för att kategorisera resurser och konsolidera fakturering. Välj **Nästa: Granska + skapa**.
+8. Välj **Nästa: Taggar**. Du kan också ange taggar för att kategorisera resurser och konsolidera fakturering. Välj **Nästa: Granska + skapa**.
 
-10. På fliken **Granska + skapa** granskar du **pris informationen**, **användningsvillkor** och informationen för resursen. Välj kombinations rutan för **Jag har granskat sekretess villkoren**.
+9. På fliken **Granska + skapa** granskar du **pris informationen**, **användningsvillkor** och informationen för resursen. Välj kombinations rutan för **Jag har granskat sekretess villkoren**.
 
     ![Skapa en resurs 7](media/azure-stack-edge-mini-r-deploy-prep/create-resource-7.png)
 
     Du får även ett meddelande om att en Hanterad tjänstidentitet (MSI) är aktive rad för att kunna autentisera till moln tjänster när du skapar en resurs. Den här identiteten finns så länge resursen finns.
 
-8. Välj **Skapa**.
+10. Välj **Skapa**.
 
     Det tar några minuter att skapa resursen. En MSI skapas också som låter Azure Stack Edge-enheten kommunicera med resurs leverantören i Azure.
     
@@ -153,19 +153,19 @@ För att skapa en Azure Stack Edge-resurs, utför följande steg i Azure Portal.
 
 När Azure Stack Edge-resursen är igång måste du hämta aktiverings nyckeln. Den här nyckeln används för att aktivera och ansluta din Azure Stack Edge Mini R-enhet med resursen. Du kan hämta den här nyckeln nu när du befinner dig på Azure-portalen.
 
-1. Välj den resurs som du har skapat. Välj **Översikt** och välj sedan **enhets konfiguration**.
+1. Välj den resurs du skapade och välj **Översikt**.
 
-    ![Välj enhets konfiguration](media/azure-stack-edge-mini-r-deploy-prep/azure-stack-edge-resource-2.png)
+   ![Välj enhets konfiguration](media/azure-stack-edge-mini-r-deploy-prep/azure-stack-edge-resource-2.png)
 
 2. Ange ett namn för Azure Key Vault på panelen **Aktivera** eller godkänn standard namnet. Namnet på nyckel valvet kan vara mellan 3 och 24 tecken. 
 
     Ett nyckel valv skapas för varje Azure Stack Edge-resurs som aktive ras med din enhet. Med nyckel valvet kan du lagra och komma åt hemligheter. Till exempel lagras kanal integritets nyckeln (CIK) för tjänsten i nyckel valvet.
 
-    När du har angett ett nyckel valvs namn väljer du **generera nyckel** för att skapa en aktiverings nyckel. 
+    När du har angett ett nyckel valvs namn väljer du **generera aktiverings nyckel** för att skapa en aktiverings nyckel.
 
     [![Hämta aktiveringsnyckeln](media/azure-stack-edge-mini-r-deploy-prep/azure-stack-edge-resource-3.png)](media/azure-stack-edge-mini-r-deploy-prep/azure-stack-edge-resource-3.png#lightbox)
 
-    Vänta några minuter eftersom nyckel valvet och aktiverings nyckeln skapas. Välj kopieringsikonen för att kopiera nyckeln och spara den för senare användning.
+    Vänta några minuter medan nyckel valvet och aktiverings nyckeln skapas. Välj kopieringsikonen för att kopiera nyckeln och spara den för senare användning.
 
 > [!IMPORTANT]
 > - Aktiveringsnyckeln upphör att gälla tre dagar efter att den skapats.

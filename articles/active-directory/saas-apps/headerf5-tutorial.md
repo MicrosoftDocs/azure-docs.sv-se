@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 8706ac588f2cc868805de7126140a1edd4b8c735
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 6bf21205c028eaff08eef91757424f8b52764ada
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92445553"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936149"
 ---
 # <a name="tutorial-configure-single-sign-on-sso-between-azure-active-directory-and-f5"></a>Självstudie: Konfigurera enkel inloggning (SSO) mellan Azure Active Directory och F5
 
@@ -116,7 +116,7 @@ Om du vill konfigurera integrering av F5 i Azure AD måste du lägga till F5 fr�
 1. Logga in på [Azure Portal](https://portal.azure.com) med antingen ett arbets-eller skol konto eller en personlig Microsoft-konto.
 1. I det vänstra navigerings fönstret väljer du tjänsten **Azure Active Directory** .
 1. Navigera till **företags program** och välj sedan **alla program**.
-1. Välj **nytt program**om du vill lägga till ett nytt program.
+1. Välj **nytt program** om du vill lägga till ett nytt program.
 1. I avsnittet **Lägg till från galleriet** skriver du **F5** i sökrutan.
 1. Välj **F5** från resultat panelen och Lägg sedan till appen. Vänta några sekunder medan appen läggs till i din klient organisation.
 
@@ -168,11 +168,11 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B. Simon.
 
-1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory**, väljer **användare**och väljer sedan **alla användare**.
+1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory**, väljer **användare** och väljer sedan **alla användare**.
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I **Namn**-fältet skriver du `B.Simon`.  
-   1. I fältet **användar namn** anger du username@companydomain.extension . Till exempel `B.Simon@contoso.com`.
+   1. I fältet **användar namn** anger du username@companydomain.extension . Ett exempel är `B.Simon@contoso.com`.
    1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
    1. Klicka på **Skapa**.
 
@@ -180,13 +180,13 @@ I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B
 
 I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till F5.
 
-1. I Azure Portal väljer du **företags program**och väljer sedan **alla program**.
+1. I Azure Portal väljer du **företags program** och väljer sedan **alla program**.
 1. I listan program väljer du **F5**.
 1. På sidan Översikt för appen letar du reda på avsnittet **Hantera** och väljer **användare och grupper**.
 
    ![Länken ”Användare och grupper”](common/users-groups-blade.png)
 
-1. Välj **Lägg till användare**och välj sedan **användare och grupper** i dialog rutan **Lägg till tilldelning** .
+1. Välj **Lägg till användare** och välj sedan **användare och grupper** i dialog rutan **Lägg till tilldelning** .
 
     ![Länken Lägg till användare](common/add-assign-user.png)
 
@@ -195,7 +195,7 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 1. Klicka på knappen **tilldela** i dialog rutan **Lägg till tilldelning** .
 1. Klicka på **villkorlig åtkomst** .
 1. Klicka på **ny princip**.
-1. Nu kan du se din F5-app som en resurs för CA-principen och tillämpa villkorlig åtkomst inklusive multifaktorautentisering, enhet baserad åtkomst kontroll eller identitets skydds princip.
+1. Nu kan du se din F5-app som en resurs för principen för villkorlig åtkomst och tillämpa villkorlig åtkomst inklusive multifaktorautentisering, enhet baserad åtkomst kontroll eller identitets skydds princip.
 
 ## <a name="configure-f5-sso"></a>Konfigurera F5 SSO
 
@@ -209,7 +209,7 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 
 1. Öppna ett nytt webbläsarfönster och logga in på din "F5"-företags webbplats som administratör och utför följande steg:
 
-1. Gå till **System > certifikat hantering > hantering av trafik certifikat > SSL-certifikat lista**. Välj **Importera** från det högra hörnet. Ange ett **certifikat namn** (kommer att refereras till senare i konfigurationen). I **certifikat källan**väljer du överför fil ange det certifikat som hämtats från Azure när du konfigurerar SAML enkel inloggning. Klicka på **Importera**.
+1. Gå till **System > certifikat hantering > hantering av trafik certifikat > SSL-certifikat lista**. Välj **Importera** från det högra hörnet. Ange ett **certifikat namn** (kommer att refereras till senare i konfigurationen). I **certifikat källan** väljer du överför fil ange det certifikat som hämtats från Azure när du konfigurerar SAML enkel inloggning. Klicka på **Importera**.
 
     ![Skärm bild som visar en lista med ett s L-certifikat där du väljer certifikatets namn och certifikat källa.](./media/headerf5-tutorial/configure12.png)
  
@@ -237,15 +237,15 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 
     ![Skärm bild som visar sidan Egenskaper för virtuell server.](./media/headerf5-tutorial/configure04.png) 
 
-1. Under **Välj metod för att konfigurera din IDP-anslutning**anger du metadata, klickar på Välj fil och överför metadata-XML-filen som hämtades tidigare från Azure AD. Ange ett unikt **namn** för SAML IDP Connector. Välj det **signerings certifikat för metadata** som överfördes tidigare. Klicka på **spara & nästa**.
+1. Under **Välj metod för att konfigurera din IDP-anslutning** anger du metadata, klickar på Välj fil och överför metadata-XML-filen som hämtades tidigare från Azure AD. Ange ett unikt **namn** för SAML IDP Connector. Välj det **signerings certifikat för metadata** som överfördes tidigare. Klicka på **spara & nästa**.
 
     ![Skärm bild som visar sidan anslutnings inställningar för extern identitetsprovider.](./media/headerf5-tutorial/configure05.png)
  
-1. Under **Välj en pool**anger du **Skapa ny** (du kan också välja en pool som den redan finns). Låt andra värde vara standard. Under pooler anger du IP-adressen under **IP-adress/nodnamn**. Ange **porten**. Klicka på **spara & nästa**.
+1. Under **Välj en pool** anger du **Skapa ny** (du kan också välja en pool som den redan finns). Låt andra värde vara standard. Under pooler anger du IP-adressen under **IP-adress/nodnamn**. Ange **porten**. Klicka på **spara & nästa**.
 
     ![Skärm bild som visar sidan Egenskaper för poolen.](./media/headerf5-tutorial/configure06.png)
 
-1. På skärmen Inställningar för enkel Sign-On väljer du **aktivera enkel inloggning**. Välj **http-huvudbaserad**under markerad enkel Sign-On typ. Ersätt **session. SAML. senaste. identitet** med **session. SAML. Last. attr. Name. identitet** under användar namn källa (den här variabeln anges med anspråks mappning i Azure AD). Under SSO-rubriker.
+1. På skärmen Inställningar för enkel Sign-On väljer du **aktivera enkel inloggning**. Välj **http-huvudbaserad** under markerad enkel Sign-On typ. Ersätt **session. SAML. senaste. identitet** med **session. SAML. Last. attr. Name. identitet** under användar namn källa (den här variabeln anges med anspråks mappning i Azure AD). Under SSO-rubriker.
 
     * **Huvud: behörighet för autentisering**
 
@@ -355,9 +355,9 @@ Det här avsnittet är avsett att användas om du inte kan använda den guidade 
 
     f. **Matchande källa =% {session. Server. landinguri}** 
 
-    ex. **Matchande värde =/**_
+    ex. **Matchande värde =/** _
 
-    h. Klicka på _*Uppdatera**
+    h. Klicka på _ *Uppdatera**
 
     i. Klicka på **OK**
 
@@ -413,7 +413,7 @@ Det här avsnittet är avsett att användas om du inte kan använda den guidade 
 
 1. Tilldela åtkomst profilen till den virtuella servern för att använda F5 BIG-IP APM för att tillämpa profil inställningarna på inkommande trafik och köra den tidigare definierade åtkomst principen.
 
-    a. Klicka på **huvud**  >  servrar för**lokal trafik**  >  **Virtual Servers**.
+    a. Klicka på **huvud**  >  servrar för **lokal trafik**  >  .
 
     ![Skärm bild som visar sidan Virtual servers List.](./media/headerf5-tutorial/configure40.png)
  

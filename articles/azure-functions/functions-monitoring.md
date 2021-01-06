@@ -5,12 +5,12 @@ ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.topic: conceptual
 ms.date: 10/14/2020
 ms.custom: devx-track-csharp, fasttrack-edit, contperf-fy21q2, devx-track-js
-ms.openlocfilehash: 7dbaa8712e09de9084e2bcb66d43f2181af292a0
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 6dc3c582466fe0646b0350213947ff2173368bde
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033042"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936846"
 ---
 # <a name="monitor-azure-functions"></a>Övervaka Azure Functions
 
@@ -113,7 +113,7 @@ Eftersom Functions även integreras med Azure Monitor, kan du också använda di
 
 _Den här funktionen är i förhandsversion._ 
 
-Den [Azure Functions skalnings styrenheten](./functions-scale.md#runtime-scaling) övervakar instanser av Azure Functions värden som appen körs på. Den här kontrollanten fattar beslut om när du ska lägga till eller ta bort instanser utifrån aktuella prestanda. Du kan låta skalnings styrenheten generera loggar till Application Insights för att bättre förstå de beslut som skalnings styrenheten gör för din Function-app. Du kan också lagra de genererade loggarna i Blob Storage för analys av en annan tjänst. 
+Den [Azure Functions skalnings styrenheten](./event-driven-scaling.md#runtime-scaling) övervakar instanser av Azure Functions värden som appen körs på. Den här kontrollanten fattar beslut om när du ska lägga till eller ta bort instanser utifrån aktuella prestanda. Du kan låta skalnings styrenheten generera loggar till Application Insights för att bättre förstå de beslut som skalnings styrenheten gör för din Function-app. Du kan också lagra de genererade loggarna i Blob Storage för analys av en annan tjänst. 
 
 Om du vill aktivera den här funktionen kan du lägga till en program inställning med namnet `SCALE_CONTROLLER_LOGGING_ENABLED` på dina funktioner i appens inställningar. Mer information finns i [Konfigurera loggar för skalnings styrenhet](configure-monitoring.md#configure-scale-controller-logs).
 

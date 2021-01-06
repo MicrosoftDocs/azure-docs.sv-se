@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/05/2020
-ms.openlocfilehash: ca5f237585f74225a04091b5694dbfad12864332
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 555709776c88dd3003e400bbcefe2ec1cfa0f4af
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97656044"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934177"
 ---
 # <a name="add-language-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>Lägga till språk analys verktyg i sträng fält i ett Azure Kognitiv sökning-index
 
@@ -68,9 +68,9 @@ Mer information om index egenskaper finns i [skapa index &#40;Azure Kognitiv sö
 ## <a name="language-analyzer-list"></a>Språk analys lista 
  Nedan visas en lista över språk som stöds tillsammans med Lucene och Microsoft Analyzer-namn.  
 
-| Språk | Microsoft Analyzer-namn | Namn på Lucene Analyzer |  |
-|--|--|--|--|
-| Arabiska | ar. Microsoft | ar. Lucene |  |
+| Språk | Microsoft Analyzer-namn | Namn på Lucene Analyzer |
+|--|--|--|
+| Arabiska | ar. Microsoft | ar. Lucene |
 | Armeniska |  | hy. Lucene |  |
 | Bangla | BN. Microsoft |  |  |
 | Baskiska |  | EU. Lucene |  |

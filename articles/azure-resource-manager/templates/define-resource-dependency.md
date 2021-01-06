@@ -1,24 +1,24 @@
 ---
 title: Ange distributions ordning för resurser
-description: Beskriver hur du anger en resurs som beroende av en annan resurs under distributionen. Beroenden säkerställer att resurser distribueras i rätt ordning.
+description: Beskriver hur du anger en Azure-resurs som beroende av en annan resurs under distributionen. Beroenden säkerställer att resurser distribueras i rätt ordning.
 ms.topic: conceptual
 ms.date: 12/21/2020
-ms.openlocfilehash: a96dca0ab30d0baee2688427d78867ea128e673a
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: f6b63b066da06a17c3a2e51ab0f3ab9bf521a144
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97722019"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934755"
 ---
 # <a name="define-the-order-for-deploying-resources-in-arm-templates"></a>Definiera ordningen för att distribuera resurser i ARM-mallar
 
-När du distribuerar resurser kan du behöva kontrol lera att vissa resurser finns före andra resurser. Du behöver till exempel en logisk SQL-Server innan du distribuerar en databas. Du upprättar den här relationen genom att markera en resurs som beroende av den andra resursen. Använd **dependsOn** -elementet för att definiera ett explicit beroende. Använd **referens** -eller **list** funktionerna för att definiera ett implicit beroende.
+När du distribuerar resurser kan du behöva kontrol lera att vissa resurser finns före andra resurser. Du behöver till exempel en logisk SQL-Server innan du distribuerar en databas. Du upprättar den här relationen genom att markera en resurs som beroende av den andra resursen. Använd `dependsOn` elementet för att definiera ett explicit beroende. Använd **referens** -eller **list** funktionerna för att definiera ett implicit beroende.
 
-Resource Manager utvärderar beroenden mellan resurser och distribuerar dem i beroendeordning. När resurserna inte är beroende av varandra distribuerar Resource Manager dem parallellt. Du behöver bara definiera beroenden för resurser som har distribuerats i samma mall.
+Azure Resource Manager utvärderar beroenden mellan resurser och distribuerar dem i deras beroende ordning. När resurserna inte är beroende av varandra distribuerar Resource Manager dem parallellt. Du behöver bara definiera beroenden för resurser som har distribuerats i samma mall.
 
 ## <a name="dependson"></a>dependsOn
 
-I din mall kan du med dependsOn-elementet definiera en resurs som beroende av en eller flera resurser. Värdet är en JSON-matris med strängar, som var och en är ett resurs namn eller ID. Matrisen kan innehålla resurser som är [villkorligt distribuerade](conditional-resource-deployment.md). När en villkorlig resurs inte distribueras tar Azure Resource Manager automatiskt bort den från de nödvändiga beroendena.
+I din Azure Resource Manager-mall (ARM-mall) kan `dependsOn` du med hjälp av elementet definiera en resurs som beroende av en eller flera resurser. Dess värde är en JavaScript Object Notation-matris (JSON) av strängar, som var och en är ett resurs namn eller ID. Matrisen kan innehålla resurser som är [villkorligt distribuerade](conditional-resource-deployment.md). När en villkorlig resurs inte distribueras tar Azure Resource Manager automatiskt bort den från de nödvändiga beroendena.
 
 I följande exempel visas ett nätverks gränssnitt som är beroende av ett virtuellt nätverk, en nätverks säkerhets grupp och en offentlig IP-adress. Den fullständiga mallen finns i [snabb starts mal len för en virtuell Linux-dator](https://github.com/Azure/azure-quickstart-templates/blob/master/101-vm-simple-linux/azuredeploy.json).
 
@@ -37,11 +37,11 @@ I följande exempel visas ett nätverks gränssnitt som är beroende av ett virt
 }
 ```
 
-Även om du kan luta dig att använda dependsOn för att mappa relationer mellan dina resurser är det viktigt att du förstår varför du gör det. Om du till exempel vill dokumentera hur resurser är anslutna till varandra är dependsOn inte rätt metod. Du kan inte fråga vilka resurser som definierats i dependsOn-elementet efter distributionen. Att ange onödiga beroenden saktar ned distributions tiden eftersom Resource Manager inte kan distribuera resurserna parallellt.
+Även om du kan luta dig att använda `dependsOn` för att mappa relationer mellan dina resurser är det viktigt att du förstår varför du gör det. Om du till exempel vill dokumentera hur resurserna är anslutna, `dependsOn` är inte rätt metod. Du kan inte fråga vilka resurser som definierats i `dependsOn` elementet efter distributionen. Att ange onödiga beroenden saktar ned distributions tiden eftersom Resource Manager inte kan distribuera resurserna parallellt.
 
 ## <a name="child-resources"></a>Underordnade resurser
 
-Ett implicit distributions beroende skapas inte automatiskt mellan en [underordnad resurs](child-resource-name-type.md) och den överordnade resursen. Om du behöver distribuera den underordnade resursen efter den överordnade resursen anger du egenskapen dependsOn.
+Ett implicit distributions beroende skapas inte automatiskt mellan en [underordnad resurs](child-resource-name-type.md) och den överordnade resursen. Om du behöver distribuera den underordnade resursen efter den överordnade resursen anger du `dependsOn` egenskapen.
 
 I följande exempel visas en logisk SQL-Server och-databas. Observera att ett explicit beroende har definierats mellan databasen och servern, även om databasen är underordnad servern.
 
@@ -85,13 +85,13 @@ Referens-och list uttryck deklarerar implicit om att en resurs är beroende av e
 
 Om du vill framtvinga ett implicit beroende, referera till resursen efter namn, inte resurs-ID. Om du skickar resurs-ID: t till referens-eller List funktionerna skapas inte en implicit referens.
 
-Det allmänna formatet för referens funktionen är:
+Det allmänna formatet för `reference` funktionen är:
 
 ```json
 reference('resourceName').propertyPath
 ```
 
-Det allmänna formatet för Listnycklar-funktionen är:
+Det allmänna formatet för `listKeys` funktionen är:
 
 ```json
 listKeys('resourceName', 'yyyy-mm-dd')
@@ -165,7 +165,7 @@ I följande exempel visas hur du distribuerar flera virtuella datorer. Mallen sk
 }
 ```
 
-I följande exempel visas hur du distribuerar tre lagrings konton innan du distribuerar den virtuella datorn. Observera att kopierings elementet har namn inställt på `storagecopy` och dependsOn-elementet för den virtuella datorn också är inställt på `storagecopy` .
+I följande exempel visas hur du distribuerar tre lagrings konton innan du distribuerar den virtuella datorn. Observera att `copy` elementet har `name` angetts till `storagecopy` och att `dependsOn` elementet för den virtuella datorn också är inställt på `storagecopy` .
 
 ```json
 {
@@ -213,10 +213,9 @@ Information om hur du bedömer distributions ordningen och löser beroende fel f
 
 ## <a name="next-steps"></a>Nästa steg
 
-* Information om hur du går igenom självstudierna finns i [Självstudier: skapa Azure Resource Manager mallar med beroende resurser](template-tutorial-create-templates-with-dependent-resources.md).
+* Information om hur du går igenom självstudierna finns i [Självstudier: skapa arm-mallar med beroende resurser](template-tutorial-create-templates-with-dependent-resources.md).
 * En Microsoft Learn-modul som täcker resurs beroenden finns i [hantera komplexa moln distributioner med hjälp av avancerade funktioner för ARM-mallar](/learn/modules/manage-deployments-advanced-arm-template-features/).
-* Rekommendationer vid inställning av beroenden finns i [metod tips för Azure Resource Manager mall](template-best-practices.md).
+* Rekommendationer för hur du ställer in beroenden finns i [metod tips för ARM-mallar](template-best-practices.md).
 * Information om hur du felsöker beroenden under distributionen finns i [Felsöka vanliga problem med Azure-distribution med Azure Resource Manager](common-deployment-errors.md).
-* Mer information om hur du skapar Azure Resource Manager-mallar finns i [Redigera mallar](template-syntax.md).
-* En lista över tillgängliga funktioner i en mall finns i [Template Functions](template-functions.md).
-
+* Information om hur du skapar Azure Resource Manager-mallar finns i [förstå strukturen och syntaxen för ARM-mallar](template-syntax.md).
+* En lista över tillgängliga funktioner i en mall finns i funktioner i [arm-mallar](template-functions.md).

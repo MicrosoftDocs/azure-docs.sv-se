@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: quickstart
 ms.date: 07/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: d84f500560031322cff32005b537037dc897919e
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: e29a692e3fdad1bea7132b3bed50444c7398ba46
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94516772"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936319"
 ---
 # <a name="quickstart-create-a-key-vault-using-the-azure-cli"></a>Snabb start: skapa ett nyckel valv med Azure CLI
 
@@ -52,8 +52,8 @@ az keyvault create --name "<your-unique-keyvault-name>" --resource-group "myReso
 
 Utdata från denna cmdlet visar egenskaper för nyckelvalvet du precis skapade. Anteckna de två egenskaperna som visas nedan:
 
-- **Valv namn** : det namn du angav för parametern--name ovan.
-- **Valv-URI** : i exemplet är detta https:// &lt; ditt-Unique-Vault.Azure.net/-valv &gt; .. Program som använder ditt valv via dess REST-API måste använda denna URI.
+- **Valv namn**: det namn du angav för parametern--name ovan.
+- **Valv-URI**: i exemplet är detta https:// &lt; ditt-Unique-Vault.Azure.net/-valv &gt; .. Program som använder ditt valv via dess REST-API måste använda denna URI.
 
 Nu är ditt Azure-konto det enda kontot med behörighet att utföra åtgärder i det nya valvet.
 
@@ -72,5 +72,6 @@ az group delete --name myResourceGroup
 I den här snabb starten skapade du en Key Vault och tog bort den. Om du vill veta mer om Key Vault och hur du integrerar den med dina program, Fortsätt till artiklarna nedan.
 
 - Läs en [Översikt över Azure Key Vault](overview.md)
-- Se referensen för [kommandon för Azure CLI-AZ](/cli/azure/keyvault?view=azure-cli-latest)
-- Granska [Azure Key Vault bästa praxis](best-practices.md)
+- Granska [Azure Key Vault säkerhets översikt](security-overview.md)
+- Se referensen för [kommandon för Azure CLI-AZ](/cli/azure/keyvault)
+

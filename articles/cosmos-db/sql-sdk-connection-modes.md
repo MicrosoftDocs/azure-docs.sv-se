@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/14/2020
 ms.author: maquaran
 ms.custom: devx-track-dotnet, contperf-fy21q2
-ms.openlocfilehash: c30e97a4bff8fa845f6eb3c3092a00ee541e59f4
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: cf985999bac0cf45eec5d8f0f5f9e921b6f4591c
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032804"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934959"
 ---
 # <a name="azure-cosmos-db-sql-sdk-connectivity-modes"></a>Azure Cosmos DB SQL SDK-anslutnings lägen
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -28,9 +28,9 @@ De två tillgängliga anslutnings lägena är:
       
     Gateway-läge stöds på alla SDK-plattformar. Om ditt program körs i ett företags nätverk med strikta brand Väggs begränsningar är Gateway-läget det bästa valet eftersom det använder standard-HTTPS-porten och en enda DNS-slutpunkt. Prestanda kompromissen är dock att Gateway-läget omfattar ytterligare ett nätverks hopp varje gång data läses från eller skrivs till Azure Cosmos DB. Vi rekommenderar också Gateway-anslutnings läge när du kör program i miljöer som har ett begränsat antal socketanslutningar.
 
-    När du använder SDK i Azure Functions, i synnerhet i [förbruknings planen](../azure-functions/functions-scale.md#consumption-plan), var medveten om de aktuella [gränserna för anslutningar](../azure-functions/manage-connections.md).
+    När du använder SDK i Azure Functions, i synnerhet i [förbruknings planen](../azure-functions/consumption-plan.md), var medveten om de aktuella [gränserna för anslutningar](../azure-functions/manage-connections.md).
 
-  * Direkt läge
+  * Direktläge
 
     Direct-läget stöder anslutningar via TCP-protokollet och ger bättre prestanda eftersom det finns färre nätverks hopp. Programmet ansluter direkt till backend-replikerna. Direkt läge stöds för närvarande bara på .NET-och Java SDK-plattformar.
      

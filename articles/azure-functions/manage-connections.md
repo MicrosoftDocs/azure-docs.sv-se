@@ -4,12 +4,12 @@ description: Lär dig att undvika prestanda problem i Azure Functions genom att 
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 02/25/2018
-ms.openlocfilehash: 53848e6273cf59439d44b431652981b18bdd5ba6
-ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
+ms.openlocfilehash: ec16ce3e7f9793be2a012a029bcca31c9a7ea4cf
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97755964"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936710"
 ---
 # <a name="manage-connections-in-azure-functions"></a>Hantera anslutningar i Azure Functions
 
@@ -19,7 +19,7 @@ Funktioner i en Function-app delar resurser. Bland de delade resurserna är ansl
 
 Antalet tillgängliga anslutningar är begränsat delvis eftersom en Function-App körs i en [sandbox-miljö](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox). En av de begränsningar som används i den begränsade koden är en gräns för antalet utgående anslutningar, som för närvarande är 600 aktiva (totalt 1 200) anslutningar per instans. När du når den här gränsen skriver funktions körningen följande meddelande till loggarna: `Host thresholds exceeded: Connections` . Mer information finns i [funktions tjänst begränsningarna](functions-scale.md#service-limits).
 
-Den här gränsen är per instans. När [skalnings styrenheten lägger till Function App-instanser](functions-scale.md#how-the-consumption-and-premium-plans-work) för att hantera fler begär Anden, har varje instans en oberoende anslutnings gräns. Det innebär att det inte finns någon global anslutnings gräns och du kan ha mycket fler än 600 aktiva anslutningar över alla aktiva instanser.
+Den här gränsen är per instans. När [skalnings styrenheten lägger till Function App-instanser](event-driven-scaling.md) för att hantera fler begär Anden, har varje instans en oberoende anslutnings gräns. Det innebär att det inte finns någon global anslutnings gräns och du kan ha mycket fler än 600 aktiva anslutningar över alla aktiva instanser.
 
 Kontrol lera att du har aktiverat Application Insights för din Function-app vid fel sökning. Med Application Insights kan du visa mått för dina funktions program som körningar. Mer information finns i [Visa telemetri i Application Insights](analyze-telemetry-data.md#view-telemetry-in-application-insights).  
 

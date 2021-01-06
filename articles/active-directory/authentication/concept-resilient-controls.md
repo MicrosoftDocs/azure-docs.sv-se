@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 06/08/2020
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95f70005f2c7f53833163dcd5f0d2ee89b3db37c
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: d7e4d0c41990fcc23dd19b5682997f6381bfdb20
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96861297"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937101"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Skapa en elastisk strategi för hantering av åtkomst kontroll med Azure Active Directory
 
@@ -38,8 +38,8 @@ Det här dokumentet ger vägledning om strategier som en organisation bör vidta
 Det finns fyra viktiga takeaways i det här dokumentet:
 
 * Undvik administratörs utelåsning med hjälp av konton för nöd åtkomst.
-* Implementera MFA med villkorlig åtkomst (CA) i stället för MFA per användare.
-* Minska användar utelåsning genom att använda flera kontroller för villkorlig åtkomst (CA).
+* Implementera MFA med villkorlig åtkomst snarare än MFA per användare.
+* Minska användar utelåsning genom att använda flera kontroller för villkorlig åtkomst.
 * Minska användar utelåsning genom att tillhandahålla flera autentiseringsmetoder eller motsvarande för varje användare.
 
 ## <a name="before-a-disruption"></a>Före ett avbrott
@@ -120,7 +120,7 @@ En princip för en beredskaps villkorlig åtkomst är en **säkerhets kopierings
 * Konfigurera en uppsättning återställnings principer om ett avbrott i en typ av autentiseringsuppgift eller en mekanism för åtkomst kontroll påverkar åtkomsten till dina appar. Konfigurera en princip i endast rapport tillstånd som kräver domän anslutning som en kontroll, som en säkerhets kopia för en aktiv princip som kräver en MFA-provider från tredje part.
 * Minska risken för dåliga aktörer som gissar lösen ord, om MFA inte krävs, genom att följa anvisningarna i guiden för [lösen Ords vägledning](https://aka.ms/passwordguidance) White Paper.
 * Distribuera [Azure ad Self-Service lösen ords återställning (SSPR)](./tutorial-enable-sspr.md) och [Azure AD Password Protection](./howto-password-ban-bad-on-premises-deploy.md) för att se till att användarna inte använder vanliga lösen ord och villkor som du väljer att förbjuda.
-* Använd principer som begränsar åtkomsten i apparna om en viss autentiseringsnivå inte uppnås i stället för att bara komma tillbaka till fullständig åtkomst. Exempel:
+* Använd principer som begränsar åtkomsten i apparna om en viss autentiseringsnivå inte uppnås i stället för att bara komma tillbaka till fullständig åtkomst. Ett exempel:
   * Konfigurera en säkerhets kopierings princip som skickar anspråk för begränsad session till Exchange och SharePoint.
   * Om din organisation använder Microsoft Cloud App Security bör du överväga att återgå till en princip som samverkar med MCAS och sedan MCAS tillåter skrivskyddad åtkomst men inte uppladdning.
 * Namnge dina principer för att se till att det är enkelt att hitta dem under ett avbrott. Inkludera följande element i princip namnet:
@@ -138,9 +138,9 @@ Den här namngivnings standarden för katastrof principer är följande:
 EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions]
 ```
 
-Följande exempel: **exempel på en-katastrof princip för att återställa åtkomsten till verksamhets kritiska samarbets program**, är en typisk företags katastrof. I det här scenariot kräver organisationen vanligt vis MFA för all åtkomst till Exchange Online och SharePoint Online, och störningar i det här fallet är att MFA-providern för kunden har ett avbrott (om Azure AD MFA, lokala MFA-provider eller tredjeparts MFA). Den här principen minimerar detta avbrott genom att tillåta specifika mål användare åtkomst till dessa appar från betrodda Windows-enheter endast när de ansluter till appen från ett betrott företags nätverk. Det kommer också att utesluta nöd konton och kärn administratörer från dessa begränsningar. Mål användarna får sedan åtkomst till Exchange Online och SharePoint Online medan andra användare fortfarande inte har åtkomst till apparna på grund av avbrottet. I det här exemplet krävs en namngiven nätverks plats **CorpNetwork** och en säkerhets grupp **ContingencyAccess** med mål användarna, en grupp med namnet **CoreAdmins** med kärn administratörer och en grupp med namnet **EmergencyAccess** med kontona för nöd åtkomst. Katastrofen kräver fyra principer för att ge önskad åtkomst. 
+Följande exempel: **exempel på en-beredskaps princip för villkorlig åtkomst för att återställa åtkomsten till verksamhets kritiska samarbets program**, är en typisk företags katastrof. I det här scenariot kräver organisationen vanligt vis MFA för all åtkomst till Exchange Online och SharePoint Online, och störningar i det här fallet är att MFA-providern för kunden har ett avbrott (om Azure AD MFA, lokala MFA-provider eller tredjeparts MFA). Den här principen minimerar detta avbrott genom att tillåta specifika mål användare åtkomst till dessa appar från betrodda Windows-enheter endast när de ansluter till appen från ett betrott företags nätverk. Det kommer också att utesluta nöd konton och kärn administratörer från dessa begränsningar. Mål användarna får sedan åtkomst till Exchange Online och SharePoint Online medan andra användare fortfarande inte har åtkomst till apparna på grund av avbrottet. I det här exemplet krävs en namngiven nätverks plats **CorpNetwork** och en säkerhets grupp **ContingencyAccess** med mål användarna, en grupp med namnet **CoreAdmins** med kärn administratörer och en grupp med namnet **EmergencyAccess** med kontona för nöd åtkomst. Katastrofen kräver fyra principer för att ge önskad åtkomst. 
 
-**Exempel på en-katastrof princip för certifikat utfärdare för att återställa åtkomsten till verksamhets kritiska samarbets program:**
+**Exempel på en beredskaps princip för villkorlig åtkomst för att återställa åtkomsten till verksamhets kritiska samarbets program:**
 
 * Princip 1: Kräv domänanslutna enheter för Exchange och SharePoint
   * Namn: EM001 – aktivera i nödfall: MFA-avbrott [1/4]-Exchange SharePoint – Kräv hybrid Azure AD-anslutning
@@ -180,9 +180,9 @@ Aktiverings ordning:
 5. Aktivera princip 4: kontrol lera att alla användare inte kan hämta Exchange Online från de interna e-postapparna på mobila enheter.
 6. Inaktivera den befintliga MFA-principen för SharePoint Online och Exchange Online.
 
-I det här exemplet i det här exemplet, till **exempel B-katastrof policys för att tillåta mobil åtkomst till Salesforce**, återställs åtkomsten till affärsappar. I det här scenariot kräver kunden vanligt vis att deras Sälj personal har åtkomst till Salesforce (konfigurerad för enkel inloggning med Azure AD) från mobila enheter för att endast tillåtas från kompatibla enheter. Störningar i det här fallet är att det är problem med att utvärdera enhetens efterlevnad och avbrottet sker vid en känslig tid där Sälj teamet behöver åtkomst till Salesforce för att avsluta avtal. Dessa policyer för katastrofer ger viktiga användare åtkomst till Salesforce från en mobil enhet så att de kan fortsätta att avsluta avtal och inte störa verksamheten. I det här exemplet innehåller **SalesforceContingency** alla Sälj medarbetare som behöver behålla åtkomst och **SalesAdmins** innehåller nödvändiga administratörer för Salesforce.
+I det här exemplet i det här exemplet, **exempel på principer för villkorlig åtkomst för att ge mobil åtkomst till Salesforce**, återställs åtkomsten till affärsappar. I det här scenariot kräver kunden vanligt vis att deras Sälj personal har åtkomst till Salesforce (konfigurerad för enkel inloggning med Azure AD) från mobila enheter för att endast tillåtas från kompatibla enheter. Störningar i det här fallet är att det är problem med att utvärdera enhetens efterlevnad och avbrottet sker vid en känslig tid där Sälj teamet behöver åtkomst till Salesforce för att avsluta avtal. Dessa policyer för katastrofer ger viktiga användare åtkomst till Salesforce från en mobil enhet så att de kan fortsätta att avsluta avtal och inte störa verksamheten. I det här exemplet innehåller **SalesforceContingency** alla Sälj medarbetare som behöver behålla åtkomst och **SalesAdmins** innehåller nödvändiga administratörer för Salesforce.
 
-**Exempel på principer för oförutsedda certifikat utfärdare:**
+**Exempel på principer för villkorlig åtkomst för katastrofer:**
 
 * Princip 1: blockera alla som inte är med i SalesContingency-teamet
   * Namn: EM001 – aktivera i nödfall: störning av enhetskompatibilitet [1/2]-Salesforce-blockera alla användare utom SalesforceContingency

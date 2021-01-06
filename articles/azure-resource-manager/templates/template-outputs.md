@@ -3,12 +3,12 @@ title: Utdata i mallar
 description: Beskriver hur du definierar utdataparametrar i en Azure Resource Manager-mall (ARM-mall).
 ms.topic: conceptual
 ms.date: 11/24/2020
-ms.openlocfilehash: 6a375dfbc767bcbbfd8ec6b7f8cb9e942e275582
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 9e4ac134e9c1864bca8dd56c3a6e2311d0328d7d
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353535"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934738"
 ---
 # <a name="outputs-in-arm-templates"></a>Utdata i ARM-mallar
 
@@ -47,7 +47,7 @@ Ett enkelt exempel på villkorliga utdata finns i [mallen för villkorsstyrda ut
 
 ## <a name="dynamic-number-of-outputs"></a>Dynamiskt antal utdata
 
-I vissa fall vet du inte hur många instanser av ett värde du behöver returnera när du skapar mallen. Du kan returnera ett variabelt antal värden med hjälp av **kopierings** elementet.
+I vissa fall vet du inte hur många instanser av ett värde du behöver returnera när du skapar mallen. Du kan returnera ett variabelt antal värden med hjälp av- `copy` elementet.
 
 ```json
 "outputs": {
@@ -61,7 +61,7 @@ I vissa fall vet du inte hur många instanser av ett värde du behöver returner
 }
 ```
 
-Mer information finns i [utdata iteration i Azure Resource Manager mallar](copy-outputs.md).
+Mer information finns i [utdata iteration i arm-mallar](copy-outputs.md).
 
 ## <a name="linked-templates"></a>Länkade mallar
 

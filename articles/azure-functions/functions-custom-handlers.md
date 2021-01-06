@@ -5,12 +5,12 @@ author: anthonychu
 ms.author: antchu
 ms.date: 12/1/2020
 ms.topic: article
-ms.openlocfilehash: 099f90ba8c5d9dabb6c4c505e50d8c077e3eaf0f
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: f527b387afc01eb60bd582adc13a4ad3d516055b
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746037"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936999"
 ---
 # <a name="azure-functions-custom-handlers"></a>Azure Functions anpassade hanterare
 
@@ -407,7 +407,7 @@ Genom att ange `message` utdata som motsvarar de order data som kom från begär
 För HTTP-utlösta funktioner utan ytterligare bindningar eller utdata kanske du vill att din hanterare ska arbeta direkt med HTTP-begäran och-svar i stället för [begäran](#request-payload) och [svars](#response-payload) nytto laster för anpassad hanterare. Det här beteendet kan konfigureras i *host.jspå* med `enableForwardingHttpRequest` inställningen.
 
 > [!IMPORTANT]
-> Det primära syftet med funktionen anpassad hanterare är att aktivera språk och körningar som för närvarande inte har stöd för första klassen på Azure Functions. Det kan vara möjligt att köra webb program med anpassade hanterare, Azure Functions inte är en omvänd standardproxy. Vissa funktioner som svars strömning, HTTP/2 och WebSockets är inte tillgängliga. Vissa komponenter i HTTP-begäran, till exempel vissa huvuden och vägar kan vara begränsade. Ditt program kan också få överdriven [kall start](functions-scale.md#cold-start).
+> Det primära syftet med funktionen anpassad hanterare är att aktivera språk och körningar som för närvarande inte har stöd för första klassen på Azure Functions. Det kan vara möjligt att köra webb program med anpassade hanterare, Azure Functions inte är en omvänd standardproxy. Vissa funktioner som svars strömning, HTTP/2 och WebSockets är inte tillgängliga. Vissa komponenter i HTTP-begäran, till exempel vissa huvuden och vägar kan vara begränsade. Ditt program kan också få överdriven [kall start](event-driven-scaling.md#cold-start).
 >
 > Överväg att köra dina webbappar på [Azure App Service](../app-service/overview.md)för att åtgärda dessa omständigheter.
 

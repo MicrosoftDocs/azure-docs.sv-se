@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 08/27/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 9277d100eb6744adfc20fbba9f96b822654e64a3
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 910b8dae10036cc2e396be13495fd28363dc971d
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93287704"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934568"
 ---
 # <a name="assign-a-key-vault-access-policy-using-the-azure-portal"></a>Tilldela en Key Vault åtkomst princip med hjälp av Azure Portal
 
@@ -29,11 +29,11 @@ Mer information om hur du skapar grupper i Azure Active Directory via Azure Port
 
 1.  I [Azure Portal](https://portal.azure.com)navigerar du till Key Vault resursen. 
 
-1.  Välj **åtkomst principer** under **Inställningar** och välj sedan **Lägg till åtkomst princip** :
+1.  Välj **åtkomst principer** under **Inställningar** och välj sedan **Lägg till åtkomst princip**:
 
     ![Välj åtkomst principer, Välj Lägg till roll tilldelning](../media/authentication/assign-policy-portal-01.png)
 
-1.  Välj de behörigheter som du vill använda under **certifikat behörigheter** , **nyckel behörigheter** och **hemliga behörigheter**. Du kan också välja en mall som innehåller gemensamma behörighets kombinationer:
+1.  Välj de behörigheter som du vill använda under **certifikat behörigheter**, **nyckel behörigheter** och **hemliga behörigheter**. Du kan också välja en mall som innehåller gemensamma behörighets kombinationer:
 
     ![Ange åtkomst princip behörigheter](../media/authentication/assign-policy-portal-02.png)
 
@@ -54,7 +54,6 @@ Mer information om hur du skapar grupper i Azure Active Directory via Azure Port
 
 ## <a name="next-steps"></a>Nästa steg
 
-- [Azure Key Vault säkerhet: identitets-och åtkomst hantering](overview-security.md#identity-and-access-management)
+- [Azure Key Vault säkerhet: identitets-och åtkomst hantering](security-overview.md#identity-management)
 - [Skydda nyckel valvet](secure-your-key-vault.md).
 - [Guide för Azure Key Vault utvecklare](developers-guide.md)
-- [Metod tips för Azure Key Vault](best-practices.md)

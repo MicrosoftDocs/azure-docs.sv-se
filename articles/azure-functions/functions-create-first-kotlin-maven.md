@@ -7,16 +7,16 @@ ms.topic: quickstart
 ms.date: 03/25/2020
 ms.author: dglover
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: acb4290a90532b38f44a957e33c69f7d2b3f11f8
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 167e7c447fe43851255677a44043c508cbdc4239
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92104826"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934840"
 ---
 # <a name="quickstart-create-your-first-function-with-kotlin-and-maven"></a>Snabb start: skapa din första funktion med Kotlin och maven
 
-Den här artikeln vägleder dig genom att använda kommando rads verktyget Maven för att bygga och publicera ett Kotlin-funktions projekt för att Azure Functions. När du är klar körs funktionskoden på [förbrukningsplanen](functions-scale.md#consumption-plan) i Azure och kan utlösas med hjälp av en HTTP-begäran.
+Den här artikeln vägleder dig genom att använda kommando rads verktyget Maven för att bygga och publicera ett Kotlin-funktions projekt för att Azure Functions. När du är klar körs funktionskoden på [förbrukningsplanen](consumption-plan.md) i Azure och kan utlösas med hjälp av en HTTP-begäran.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 

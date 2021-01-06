@@ -4,19 +4,19 @@ description: Lär dig hur du utvecklar Azure Functions appar med python som är 
 ms.topic: article
 ms.date: 10/13/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 3383ec322903d15c6090630890d14ce6d90bc96f
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: baa362f029678f266f154df912a9178a6626667d
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97899407"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935877"
 ---
 # <a name="improve-throughput-performance-of-python-apps-in-azure-functions"></a>Förbättra data flödes prestanda för python-appar i Azure Functions
 
 När du utvecklar för Azure Functions att använda python måste du förstå hur dina funktioner fungerar och hur den påverkar prestandan som påverkar hur din funktions app skalas. Behovet är viktigare när du utformar hög presterande appar. De huvudsakliga faktorer som du bör tänka på när du utformar, skriver och konfigurerar dina Functions-appar är vågrät skalning och prestanda konfigurationer för data flöde.
 
 ## <a name="horizontal-scaling"></a>Horisontell skalning
-Som standard övervakar Azure Functions automatiskt belastningen på ditt program och skapar ytterligare värd instanser för python vid behov. Azure Functions använder inbyggda tröskelvärden för olika utlösare för att bestämma när du ska lägga till instanser, till exempel ålder på meddelanden och kös Tor lek för QueueTrigger. Dessa tröskelvärden kan inte konfigureras av användaren. Mer information finns i [så här fungerar förbruknings-och Premium planerna](functions-scale.md#how-the-consumption-and-premium-plans-work).
+Som standard övervakar Azure Functions automatiskt belastningen på ditt program och skapar ytterligare värd instanser för python vid behov. Azure Functions använder inbyggda tröskelvärden för olika utlösare för att bestämma när du ska lägga till instanser, till exempel ålder på meddelanden och kös Tor lek för QueueTrigger. Dessa tröskelvärden kan inte konfigureras av användaren. Mer information finns i [händelse driven skalning i Azure Functions](event-driven-scaling.md).
 
 ## <a name="improving-throughput-performance"></a>Förbättra data flödes prestanda
 

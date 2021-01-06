@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/15/2020
 ms.author: trbye
-ms.openlocfilehash: b3e9c1e8ad23ea0ebf540eddbd6d4a03b8a72fe2
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 1a002b6efbe2603ae254c19f9e3cc7377198cea2
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97835082"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935826"
 ---
 # <a name="develop-custom-commands-applications"></a>Utveckla anpassade kommandon program
 
@@ -96,7 +96,7 @@ Mer information om regler och regler för slut för ande finns i [anpassade komm
     | Inställning    | Föreslaget värde                          | Beskrivning                                        |
     | ---------- | ---------------------------------------- | -------------------------------------------------- |
     | **Namn**       | `ConfirmationResponse`                  | Ett namn som beskriver syftet med regeln          |
-    | **Villkor** | Ingen                                     | Villkor som avgör när regeln kan köras    |
+    | **Villkor** | Inget                                     | Villkor som avgör när regeln kan köras    |
     | **Åtgärder**    | **Skicka tal svar**  >  **Enkelt redigerings program**  >  **Första variationen** > `Ok, turning the tv on` | Den åtgärd som ska vidtas när regel villkoret är sant |
 
    > [!div class="mx-imgBorder"]
@@ -119,7 +119,7 @@ Redigera sedan **de befintliga reglerna för färdig komplettering** enligt föl
 | Inställning    | Föreslaget värde                          |
 | ---------- | ---------------------------------------- |
 | **Namn**  | `ConfirmationResponse`                  |
-| **Villkor** | Ingen                                     |
+| **Villkor** | Inget                                     |
 | **Åtgärder**    | **Skicka tal svar**  >  **Enkelt redigerings program**  >  **Första variationen** > `Ok, setting temperature to 40 degrees` |
 
 Välj **Spara** för att spara alla ändringar i kommandot.
@@ -131,7 +131,7 @@ Skapa ett nytt `SetAlarm` kommando. Använd exempel meningen `Set an alarm for 9
 | Inställning    | Föreslaget värde                          |
 | ---------- | ---------------------------------------- |
 | **Namn**  | `ConfirmationResponse`                  |
-| **Villkor** | Ingen                                     |
+| **Villkor** | Inget                                     |
 | **Åtgärder**    | **Skicka tal svar**  >  **Enkelt redigerings program**  >  **Första variationen** > `Ok, setting an alarm for 9 am tomorrow` |
 
 Välj **Spara** för att spara alla ändringar i kommandot.
@@ -178,7 +178,7 @@ Börja med att redigera det befintliga `TurnOn` kommandot för att aktivera och 
    1. Välj **Uppdatera**.
 
        > [!div class="mx-imgBorder"]
-       > ![Skärm bild som visar var du kan skapa ett nödvändigt parameter svar.](media/custom-commands/add-required-on-off-parameter-response.png)
+       > ![Skärm bild som visar avsnittet "lägga till svar för en obligatorisk parameter" med fliken "enkel redigerare" vald.](media/custom-commands/add-required-on-off-parameter-response.png)
    
    1. Konfigurera parameterns egenskaper med hjälp av följande tabell. Information om alla konfigurations egenskaper för ett kommando finns i [begrepp och definitioner för anpassade kommandon](./custom-commands-references.md).
       
@@ -221,7 +221,7 @@ Börja med att redigera det befintliga `TurnOn` kommandot för att aktivera och 
 
 #### <a name="modify-example-sentences"></a>Ändra exempel meningar
 
-För kommandon som använder parametrar är det bra att lägga till exempel meningar som beskriver alla möjliga kombinationer. Exempel:
+För kommandon som använder parametrar är det bra att lägga till exempel meningar som beskriver alla möjliga kombinationer. Ett exempel:
 
 * Fullständig parameter information: `turn {OnOff} the {SubjectDevice}`
 * Ofullständig parameter information: `turn it {OnOff}`

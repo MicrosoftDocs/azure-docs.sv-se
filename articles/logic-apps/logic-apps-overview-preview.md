@@ -1,17 +1,17 @@
 ---
-title: Översikt för Azure Logic Apps för hands version
+title: Översikt över förhandsversion av Azure Logic Apps
 description: Azure Logic Apps Preview är en moln lösning för att skapa automatiserade tillstånds lösa och tillstånds lösa arbets flöden som integrerar appar, data, tjänster och system med minimal kod för scenarier på företags nivå.
 services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
 ms.date: 12/07/2020
-ms.openlocfilehash: 0c4d0416c107c9ceb4cd0dbdf80761ab9b52d56c
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 7c15b3a854b533d93bc05f7e5302671711da75c2
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96924423"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936132"
 ---
 # <a name="overview-azure-logic-apps-preview"></a>Översikt: Azure Logic Apps för hands version
 
@@ -148,7 +148,7 @@ Azure Logic Apps för hands versionen innehåller många aktuella och ytterligar
 
 När du skapar den nya typen av Logic-app i Azure Portal eller distribuerar från Visual Studio Code, måste du välja en värd plan, antingen [App Service eller Premium](../azure-functions/functions-scale.md), för att din Logi Kap par ska använda. Den här planen avgör vilken pris modell som används för att köra din Logic app. Om du väljer App Service plan måste du också välja en [pris nivå](../app-service/overview-hosting-plans.md).
 
-*Tillstånds känsliga* arbets flöden använder [extern lagring](../azure-functions/functions-scale.md#storage-account-requirements), så [Azure Storage prissättningen](https://azure.microsoft.com/pricing/details/storage/) gäller för lagrings transaktioner som Azure Logic Apps för hands versions körning utför. Köer används till exempel för schemaläggning, medan tabeller och blobbar används för att lagra arbets flödes tillstånd.
+*Tillstånds känsliga* arbets flöden använder [extern lagring](../azure-functions/storage-considerations.md#storage-account-requirements), så [Azure Storage prissättningen](https://azure.microsoft.com/pricing/details/storage/) gäller för lagrings transaktioner som Azure Logic Apps för hands versions körning utför. Köer används till exempel för schemaläggning, medan tabeller och blobbar används för att lagra arbets flödes tillstånd.
 
 > [!NOTE]
 > Under den allmänt tillgängliga för hands versionen debiteras inte *ytterligare avgifter utöver* den valda planen när du kör Logic apps på App Service.

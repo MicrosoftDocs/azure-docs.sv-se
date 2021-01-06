@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: e7f861d7fb10ed5dd13b5883ba70b553daa67892
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: afb0e04d6f8a34d844df382081d53a32899e9a5c
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97825164"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934772"
 ---
 # <a name="quickstart-azure-key-vault-secret-client-library-for-javascript-version-4"></a>Snabb start: Azure Key Vault hemligt klient bibliotek för Java Script (version 4)
 
@@ -27,7 +27,7 @@ Mer information om Key Vault och hemligheter finns i:
 - [Översikt över Key Vault](../general/overview.md)
 - [Översikt över hemligheter](about-secrets.md).
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 - En Azure-prenumeration – [skapa en kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Nuvarande [Node.js](https://nodejs.org) för ditt operativ system.
@@ -91,7 +91,7 @@ set KEY_VAULT_NAME=<your-key-vault-name>
 ````
 Windows PowerShell
 ```powershell
-$Env:KEY_VAULT_NAME=<your-key-vault-name>
+$Env:KEY_VAULT_NAME="<your-key-vault-name>"
 ```
 
 macOS eller Linux
@@ -287,4 +287,4 @@ I den här snabb starten skapade du ett nyckel valv, lagrat en hemlighet och hä
 - Läs en [Översikt över Azure Key Vault hemligheter](about-secrets.md)
 - Så här [säkrar du åtkomst till ett nyckel valv](../general/secure-your-key-vault.md)
 - Se [Azure Key Vault Developer ' s guide](../general/developers-guide.md)
-- Granska [Azure Key Vault bästa praxis](../general/best-practices.md)
+- Granska [Key Vault säkerhets översikt](../general/security-overview.md)

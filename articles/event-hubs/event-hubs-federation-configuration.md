@@ -3,18 +3,18 @@ title: Konfigurerade aktiviteter för replikering – Azure Event Hubs | Microso
 description: Den här artikeln innehåller en översikt över hur du replikerar händelser mellan Event Hubs
 ms.topic: article
 ms.date: 12/12/2020
-ms.openlocfilehash: 7e2807d0b245ceb92bf33f6fd66710ced5a330e2
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 0cc083a1368e05f039b674d255c3e3a8d8da0b7e
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97663724"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935211"
 ---
-# <a name="configured-replication-tasks"></a>Konfigurerade aktiviteter för replikering 
+# <a name="configured-replication-tasks---azure-event-hubs"></a>Konfigurerade aktiviteter för replikering – Azure Event Hubs
 
 [!INCLUDE [messaging-configured-functions](../../includes/messaging-configured-functions.md)]
 
-## <a name="next-steps"></a>Nästa steg
+## <a name="next-steps"></a>Efterföljande moment
 
 * [Replikerar händelse data mellan Event Hubs](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/EventHubCopy)
 * [Replikerar händelse data till Service Bus](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/EventHubCopyToServiceBus)

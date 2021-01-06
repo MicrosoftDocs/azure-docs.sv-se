@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 1/04/2021
+ms.date: 1/05/2021
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: 6f95b4eca8dbaf6cfaa7546fddada7577a1541b3
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 4674fe41a0e3d63ef0cadc6ad55eca02fc69618e
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 01/06/2021
-ms.locfileid: "97916260"
+ms.locfileid: "97935911"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>Gör så här: Ange valfria anspråk för din app
 
@@ -94,7 +94,7 @@ Några av förbättringarna av v2-token-formatet är tillgängliga för appar so
 
 | JWT-anspråk     | Namn                            | Beskrivning | Kommentarer |
 |---------------|---------------------------------|-------------|-------|
-|`aud`          | Målgrupp | Finns alltid i JWTs, men i v1-åtkomsttoken kan den genereras på flera olika sätt, vilket kan vara svårt att koda mot när du utför verifiering av token.  Använd [Ytterligare egenskaper för det här anspråket](#additional-properties-of-optional-claims) för att säkerställa att det alltid är inställt på ett GUID i v1-åtkomsttoken. | endast v1 JWT-åtkomsttoken|
+|`aud`          | Målgrupp | Finns alltid i JWTs, men i v1-åtkomsttoken kan den genereras på flera olika sätt: alla appID-URI: er, med eller utan avslutande snedstreck, samt klient-ID för resursen. Den här slumpmässigheten kan vara svår att koda mot när du utför verifiering av token.  Använd [Ytterligare egenskaper för det här anspråket](#additional-properties-of-optional-claims) för att säkerställa att det alltid är inställt på resurs-ID: t för resursen i v1-åtkomsttoken. | endast v1 JWT-åtkomsttoken|
 |`preferred_username` | Önskat användar namn        | Tillhandahåller önskat användar namns anspråk inom v1-token. Detta gör det enklare för appar att tillhandahålla användar tips och Visa visnings namn som kan läsas av människa, oavsett tokentyp.  Vi rekommenderar att du använder det här valfria kravet i stället för att använda t. ex. `upn` eller `unique_name` . | v1 ID-token och åtkomsttoken |
 
 ### <a name="additional-properties-of-optional-claims"></a>Ytterligare egenskaper för valfria anspråk
@@ -108,8 +108,8 @@ Vissa valfria anspråk kan konfigureras för att ändra hur anspråket returnera
 | `upn`          |                          | Kan användas för både SAML-och JWT-svar och för v 1.0-och v 2.0-token. |
 |                | `include_externally_authenticated_upn`  | Inkluderar gäst-UPN som lagrats i resurs klienten. Till exempel `foo_hometenant.com#EXT#@resourcetenant.com` |
 |                | `include_externally_authenticated_upn_without_hash` | Samma som ovan, förutom att hash-tecknen ( `#` ) ersätts med under streck ( `_` ), till exempel `foo_hometenant.com_EXT_@resourcetenant.com`|
-| `aud`          |                          | I v1-åtkomsttoken används detta för att ändra `aud` anspråkets format.  Detta har ingen inverkan i v2-token eller ID-tokens, där `aud` anspråket alltid är klient-ID. Använd detta för att se till att ditt API kan göra det enklare att utföra mål validering. Precis som alla valfria anspråk som påverkar åtkomsttoken, måste resursen i begäran ange det valfria kravet, eftersom resurser äger åtkomsttoken.|
-|                | `use_guid`               | Genererar klient-ID: t för resursen (API) i GUID-format som `aud` anspråk i stället för en AppID-URI eller GUID. Så om klient-ID: t för en resurs är `bb0a297b-6a42-4a55-ac40-09a501456577` , kommer alla appar som begär en åtkomsttoken för resursen att få en åtkomsttoken med `aud` : `bb0a297b-6a42-4a55-ac40-09a501456577` .|
+| `aud`          |                          | I v1-åtkomsttoken används detta för att ändra `aud` anspråkets format.  Detta har ingen inverkan i v2-token eller någon versions-ID-token, där `aud` anspråket alltid är klient-ID. Använd den här konfigurationen för att se till att ditt API lättare kan utföra mål validering. Precis som alla valfria anspråk som påverkar åtkomsttoken, måste resursen i begäran ange det valfria kravet, eftersom resurser äger åtkomsttoken.|
+|                | `use_guid`               | Genererar klient-ID för resursen (API) i GUID-format som `aud` anspråk alltid i stället för att vara runtime-beroende. Om till exempel en resurs anger den här flaggan och dess klient-ID är `bb0a297b-6a42-4a55-ac40-09a501456577` , så får alla appar som begär en åtkomsttoken för resursen en åtkomsttoken med `aud` : `bb0a297b-6a42-4a55-ac40-09a501456577` . </br></br> Utan det här anspråket kan ett API Hämta token med ett `aud` anspråk `api://MyApi.com` av `api://MyApi.com/` , `api://myapi.com/AdditionalRegisteredField` eller något annat värde som angetts som app-ID-URI för detta API, samt klient-ID för resursen. |
 
 #### <a name="additional-properties-example"></a>Exempel på ytterligare egenskaper
 
@@ -272,7 +272,7 @@ Det här avsnittet beskriver konfigurations alternativen under valfria anspråk 
    - "DirectoryRole"
    - "Variabeln applicationgroup" (det här alternativet inkluderar endast grupper som är kopplade till programmet)
 
-   Till exempel:
+   Ett exempel:
 
     ```json
     "groupMembershipClaims": "SecurityGroup"

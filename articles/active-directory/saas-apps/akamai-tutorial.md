@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/03/2020
 ms.author: jeedes
-ms.openlocfilehash: bbea6a0aa31034cd1c04145fb50b72432c9f8520
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 9e5d12bcea1bd7a587568c30b49c8c4ee95f8362
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319019"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937390"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-akamai"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med Akamai
 
@@ -36,7 +36,7 @@ I bilden nedan beskrivs var Akamai EAA passar i det bredare hybrid scenariot fö
 
 ### <a name="key-authentication-scenarios"></a>Scenarier för nyckel autentisering
 
-Förutom Azure Active Directory inbyggt integrerings stöd för moderna autentiseringsprotokoll som öppen ID Connect, SAML och WS-utfodras, utökar Akamai i EAA säker åtkomst för äldre-baserade autentiseringscertifikat för både intern och extern åtkomst med Azure AD, vilket möjliggör moderna scenarier (t. ex. lösen ords lös åtkomst) till dessa program. Det här omfattar:
+Förutom Azure Active Directory inbyggt integrerings stöd för moderna autentiseringsprotokoll som öppen ID Connect, SAML och WS-utfodras, utökar Akamai i EAA säker åtkomst för äldre-baserade autentiseringscertifikat för både intern och extern åtkomst med Azure AD, vilket möjliggör moderna scenarier (t. ex. lösen ords lös åtkomst) till dessa program. Du måste bland annat:
 
 * Huvudbaserade autentiseringsmekanismer
 * Fjärrskrivbord
@@ -53,7 +53,7 @@ Microsoft och Akamai EAA-partnerskap ger flexibiliteten att uppfylla dina affär
 
 #### <a name="integration-scenario-1"></a>Integrations scenario 1
 
-Akamai EAA konfigureras som ett enda program i Azure AD. Administratören kan konfigurera CA-principen för programmet och när villkoren är uppfyllda kan användarna få åtkomst till Akamai EAA-portalen.
+Akamai EAA konfigureras som ett enda program i Azure AD. Administratören kan konfigurera principen för villkorlig åtkomst i programmet och när villkoren är uppfyllda kan användarna få åtkomst till Akamai EAA-portalen.
 
 - **Proffs**:
 
@@ -63,13 +63,13 @@ Akamai EAA konfigureras som ett enda program i Azure AD. Administratören kan ko
 
 * Användare har slut på två program portaler
 
-* Enskild gemensam princip för certifikat utfärdare för alla program.
+* Enskild gemensam princip täckning för villkorlig åtkomst för alla program.
 
 ![Integrations scenario 1](./media/header-akamai-tutorial/scenario1.png)
 
 #### <a name="integration-scenario-2"></a>Integrations scenario 2
 
-Akamai EAA-programmet konfigureras separat på Azure AD-portalen. Administratören kan konfigurera en enskild princip för certifikat utfärdaren i programmen och när villkoren är uppfyllda kan användare omdirigeras direkt till det specifika programmet.
+Akamai EAA-programmet konfigureras separat på Azure AD-portalen. Admin kan konfigurera enskilda principer för villkorlig åtkomst för program och när villkoren är uppfyllda kan användare omdirigeras direkt till det specifika programmet.
 
 - **Proffs**:
 
@@ -84,7 +84,7 @@ Akamai EAA-programmet konfigureras separat på Azure AD-portalen. Administratör
 
 ![Integrations scenario 2](./media/header-akamai-tutorial/scenario2.png)
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 För att komma igång behöver du följande objekt:
 
@@ -110,7 +110,7 @@ Om du vill konfigurera integreringen av Akamai i Azure AD måste du lägga till 
 1. Logga in på [Azure Portal](https://portal.azure.com) med antingen ett arbets-eller skol konto eller en personlig Microsoft-konto.
 1. I det vänstra navigerings fönstret väljer du tjänsten **Azure Active Directory** .
 1. Navigera till **företags program** och välj sedan **alla program**.
-1. Välj **nytt program**om du vill lägga till ett nytt program.
+1. Välj **nytt program** om du vill lägga till ett nytt program.
 1. I avsnittet **Lägg till från galleriet** , skriver du **Akamai** i sökrutan.
 1. Välj **Akamai** från resultat panelen och Lägg sedan till appen. Vänta några sekunder medan appen läggs till i din klient organisation.
 
@@ -163,11 +163,11 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B. Simon.
 
-1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory**, väljer **användare**och väljer sedan **alla användare**.
+1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory**, väljer **användare** och väljer sedan **alla användare**.
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I **Namn**-fältet skriver du `B.Simon`.  
-   1. I fältet **användar namn** anger du username@companydomain.extension . Exempelvis `B.Simon@contoso.com`.
+   1. I fältet **användar namn** anger du username@companydomain.extension . Ett exempel är `B.Simon@contoso.com`.
    1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
    1. Klicka på **Skapa**.
 
@@ -175,13 +175,13 @@ I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B
 
 I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till Akamai.
 
-1. I Azure Portal väljer du **företags program**och väljer sedan **alla program**.
+1. I Azure Portal väljer du **företags program** och väljer sedan **alla program**.
 1. I listan program väljer du **Akamai**.
 1. På sidan Översikt för appen letar du reda på avsnittet **Hantera** och väljer **användare och grupper**.
 
    ![Länken ”Användare och grupper”](common/users-groups-blade.png)
 
-1. Välj **Lägg till användare**och välj sedan **användare och grupper** i dialog rutan **Lägg till tilldelning** .
+1. Välj **Lägg till användare** och välj sedan **användare och grupper** i dialog rutan **Lägg till tilldelning** .
 
     ![Länken Lägg till användare](common/add-assign-user.png)
 
@@ -196,7 +196,7 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 **Konfiguration av AKAMAI EAA-IDP**
 
 1. Logga in på **Akamai Enterprise Application Access** Console.
-1. I **Akamais EAA-konsolen**väljer du **identitets**  >  **identitets leverantörer** och klickar på **Lägg till identitetsprovider**.
+1. I **Akamais EAA-konsolen** väljer du **identitets**  >  **identitets leverantörer** och klickar på **Lägg till identitetsprovider**.
 
     ![Skärm bild av fönstret Akamai i EAA-konsolens identitets leverantörer. Välj identitets leverantörer på menyn identitet och välj Lägg till identitets leverantör.](./media/header-akamai-tutorial/configure01.png)
 
@@ -295,7 +295,7 @@ Klicka på Spara och gå till autentisering.
 
 #### <a name="advanced-settings"></a>Avancerade inställningar
 
-1. Under **kundens HTTP-rubriker**anger du attributet **CustomerHeader** och **SAML**.
+1. Under **kundens HTTP-rubriker** anger du attributet **CustomerHeader** och **SAML**.
 
     ![Skärm bild av fliken Avancerade inställningar för Akamai i EAA-konsolen som visar fältet SSO protokollförd URL markerat under autentisering.](./media/header-akamai-tutorial/configure12.png)
 

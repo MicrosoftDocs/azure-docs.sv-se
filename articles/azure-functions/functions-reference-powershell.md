@@ -5,12 +5,12 @@ author: eamonoreilly
 ms.topic: conceptual
 ms.custom: devx-track-dotnet, devx-track-azurepowershell
 ms.date: 04/22/2019
-ms.openlocfilehash: af9490433c344c712da55e9b29bf9df364380736
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 61ed3ed274505101c65e251260bd759fe78f7b31
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422543"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936795"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Functions PowerShell-guide för utvecklare
 
@@ -53,7 +53,7 @@ I projekt roten finns det en delad [`host.json`](functions-host-json.md) fil som
 
 Vissa bindningar kräver en `extensions.csproj` fils förekomst. Bindnings tillägg som krävs i [version 2. x och senare versioner](functions-versions.md) av Functions-körningen definieras i `extensions.csproj` filen med de faktiska biblioteksfilerna i `bin` mappen. När du utvecklar lokalt måste du [Registrera bindnings tillägg](functions-bindings-register.md#extension-bundles). När du utvecklar funktioner i Azure Portal görs registreringen åt dig.
 
-I PowerShell Function-appar kan du välja att ha en `profile.ps1` som körs när en Function-app börjar köras (på annat sätt vet som en *[kall start](#cold-start)* ). Mer information finns i [PowerShell-profil](#powershell-profile).
+I PowerShell Function-appar kan du välja att ha en `profile.ps1` som körs när en Function-app börjar köras (på annat sätt vet som en *[kall start](#cold-start)*). Mer information finns i [PowerShell-profil](#powershell-profile).
 
 ## <a name="defining-a-powershell-script-as-a-function"></a>Definiera ett PowerShell-skript som en funktion
 
@@ -126,7 +126,7 @@ Produce-MyOutputValue | Push-OutputBinding -Name myQueue
 
 Följande är giltiga parametrar för att anropa `Push-OutputBinding` :
 
-| Namn | Typ | Position | Description |
+| Namn | Typ | Position | Beskrivning |
 | ---- | ---- |  -------- | ----------- |
 | **`-Name`** | Sträng | 1 | Namnet på den utgående bindning som du vill ange. |
 | **`-Value`** | Objekt | 2 | Värdet för den utgående bindning som du vill ange, som accepteras från pipelinen ByValue. |
@@ -525,7 +525,7 @@ Flera moduler används ofta av PowerShell-språket. Dessa moduler definieras i d
 Den aktuella listan över moduler är följande:
 
 * [Microsoft. PowerShell. Archive](https://www.powershellgallery.com/packages/Microsoft.PowerShell.Archive): modulen används för att arbeta med Arkiv, `.zip` t `.nupkg` . ex., och andra.
-* **ThreadJob** : en tråd baserad implementering av PowerShell-jobbets API: er.
+* **ThreadJob**: en tråd baserad implementering av PowerShell-jobbets API: er.
 
 Som standard använder funktionen den senaste versionen av dessa moduler. Om du vill använda en speciell version av en modul, ska du ange den här versionen i `Modules` mappen i din Function-app.
 
@@ -649,11 +649,11 @@ När du arbetar med PowerShell-funktioner bör du vara medveten om övervägande
 
 ### <a name="cold-start"></a>Kall start
 
-När du utvecklar Azure Functions i den [serverbaserade värd modellen](functions-scale.md#consumption-plan)är kall start en verklighet. *Kall start* avser den tid det tar för din Function-app att börja köra för att bearbeta en begäran. Kall start sker oftare i förbruknings planen eftersom din funktions app stängs av under perioder av inaktivitet.
+När du utvecklar Azure Functions i den [serverbaserade värd modellen](consumption-plan.md)är kall start en verklighet. *Kall start* avser den tid det tar för din Function-app att börja köra för att bearbeta en begäran. Kall start sker oftare i förbruknings planen eftersom din funktions app stängs av under perioder av inaktivitet.
 
 ### <a name="bundle-modules-instead-of-using-install-module"></a>Paketera moduler i stället för att använda `Install-Module`
 
-Skriptet körs vid varje anrop. Undvik att använda `Install-Module` i skriptet. Använd i stället `Save-Module` före publicering så att din funktion inte behöver slösa tid på att ladda ned modulen. Om kall startar påverkar dina funktioner, bör du överväga att distribuera din Function-app till en [App Service plan](functions-scale.md#app-service-plan) inställd på *Always on* eller till en [Premium-plan](functions-scale.md#premium-plan).
+Skriptet körs vid varje anrop. Undvik att använda `Install-Module` i skriptet. Använd i stället `Save-Module` före publicering så att din funktion inte behöver slösa tid på att ladda ned modulen. Om kall startar påverkar dina funktioner, bör du överväga att distribuera din Function-app till en [App Service plan](dedicated-plan.md) inställd på *Always on* eller till en [Premium-plan](functions-premium-plan.md).
 
 ## <a name="next-steps"></a>Nästa steg
 

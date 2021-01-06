@@ -6,16 +6,16 @@ ms.topic: sample
 ms.date: 07/03/2018
 ms.author: glenga
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: e5fa6b5a25b07585e3c0ea07fb4a361ab82a9815
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 3a52d7ea8c940a33f4fbd2b9ad69f4f889615e7f
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94565111"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934347"
 ---
 # <a name="create-a-function-app-for-serverless-code-execution"></a>Skapa en funktionsapp för serverlös kodkörning 
 
-Det här exempelskriptet för Azure Functions skapar en funktionsapp som blir container åt dina funktioner. Function-appen skapas med hjälp av [förbruknings planen](../functions-scale.md#consumption-plan), som är idealisk för händelse drivna Server arbets belastningar.
+Det här exempelskriptet för Azure Functions skapar en funktionsapp som blir container åt dina funktioner. Function-appen skapas med hjälp av [förbruknings planen](../consumption-plan.md), som är idealisk för händelse drivna Server arbets belastningar.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -25,7 +25,7 @@ Det här exempelskriptet för Azure Functions skapar en funktionsapp som blir co
 
 ## <a name="sample-script"></a>Exempelskript
 
-Det här skriptet skapar en Azure Function-app med hjälp av [förbruknings planen](../functions-scale.md#consumption-plan).
+Det här skriptet skapar en Azure Function-app med hjälp av [förbruknings planen](../consumption-plan.md).
 
 [!code-azurecli-interactive[main](../../../cli_scripts/azure-functions/create-function-app-consumption/create-function-app-consumption.sh "Create an Azure Function on a Consumption plan")]
 

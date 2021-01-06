@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/10/2020
+ms.date: 12/11/2020
 ms.author: jeedes
-ms.openlocfilehash: 688c496239becad7d1462f41afee9c6f88af9f95
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: a282e1be019c697ad15d86df56ad191043ab4ae9
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676693"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935854"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-netweaver"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med SAP NetWeaver
 
@@ -26,7 +26,7 @@ I den här självstudien får du lära dig hur du integrerar SAP NetWeaver med A
 * Gör det möjligt för användarna att logga in automatiskt till SAP NetWeaver med sina Azure AD-konton.
 * Hantera dina konton på en central plats – Azure Portal.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 För att komma igång behöver du följande objekt:
 
@@ -36,7 +36,7 @@ För att komma igång behöver du följande objekt:
 
 ## <a name="scenario-description"></a>Scenariobeskrivning
 
-* SAP NetWeaver stöder både **SAML** ( **SP initierad SSO** ) och **OAuth** . I den här självstudien konfigurerar och testar du Azure AD SSO i en test miljö. 
+* SAP NetWeaver stöder både **SAML** (**SP initierad SSO**) och **OAuth**. I den här självstudien konfigurerar och testar du Azure AD SSO i en test miljö. 
 
 > [!NOTE]
 > ID för det här programmet är ett fast sträng värde så att endast en instans kan konfigureras i en klient.
@@ -50,14 +50,14 @@ Om du vill konfigurera integreringen av SAP NetWeaver i Azure Active Directory m
 
 1. Logga in på Azure Portal med antingen ett arbets-eller skol konto eller en personlig Microsoft-konto.
 1. I det vänstra navigerings fönstret väljer du tjänsten **Azure Active Directory** .
-1. Navigera till **företags program** och välj sedan **alla program** .
+1. Navigera till **företags program** och välj sedan **alla program**.
 1. Välj **nytt program** om du vill lägga till ett nytt program.
 1. I avsnittet **Lägg till från galleriet** , Skriv **SAP NetWeaver** i sökrutan.
 1. Välj **SAP-NetWeaver** från panelen resultat och Lägg sedan till appen. Vänta några sekunder medan appen läggs till i din klient organisation.
 
 ## <a name="configure-and-test-azure-ad-sso-for-sap-netweaver"></a>Konfigurera och testa Azure AD SSO för SAP NetWeaver
 
-Konfigurera och testa Azure AD SSO med SAP NetWeaver med en test användare som heter **B. Simon** . För att SSO ska fungera måste du upprätta en länk relation mellan en Azure AD-användare och den relaterade användaren i SAP NetWeaver.
+Konfigurera och testa Azure AD SSO med SAP NetWeaver med en test användare som heter **B. Simon**. För att SSO ska fungera måste du upprätta en länk relation mellan en Azure AD-användare och den relaterade användaren i SAP NetWeaver.
 
 Utför följande steg för att konfigurera och testa Azure AD SSO med SAP NetWeaver:
 
@@ -77,11 +77,11 @@ Konfigurera enkel inloggning i Azure Active Directory med SAP NetWeaver genom at
 
 1. Öppna ett nytt webbläsarfönster och logga in på din SAP NetWeaver-företags webbplats som administratör
 
-1. Se till att tjänsterna **http** och **https** är aktiva och att lämpliga portar tilldelas i transaktionskoden **SMICM** .
+1. Se till att tjänsterna **http** och **https** är aktiva och att lämpliga portar tilldelas i transaktionskoden **SMICM**.
 
 1. Logga in på Business-klienten för SAP system (T01), där SSO krävs och aktivera hantering av HTTP-säkerhetssessioner.
 
-    a. Gå till transaktionskod **SICF_SESSIONS** . Den visar alla relevanta profilparametrar med aktuella värden. De ser ut så här:-
+    a. Gå till transaktionskod **SICF_SESSIONS**. Den visar alla relevanta profilparametrar med aktuella värden. De ser ut så här:-
     ```
     login/create_sso2_ticket = 2
     login/accept_sso2_ticket = 1
@@ -113,31 +113,31 @@ Konfigurera enkel inloggning i Azure Active Directory med SAP NetWeaver genom at
 
     ![Transaktions kod](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_sapbusinessclient.png)
 
-1. Ange ditt användarnamn och lösenord som ska anges i användargränssnittet och klicka på **Redigera** .
+1. Ange ditt användarnamn och lösenord som ska anges i användargränssnittet och klicka på **Redigera**.
 
     ![användar namn och lösen ord](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_userpwd.png)
 
-1. Ersätt **providernamn** från T01122 till `http://T01122` och klicka på **Spara** .
+1. Ersätt **providernamn** från T01122 till `http://T01122` och klicka på **Spara**.
 
     > [!NOTE]
     > Som standard visas namnet för providern `<sid><client>` , men Azure AD förväntar sig namn i formatet `<protocol>://<name>` , och rekommenderar att du behåller namnet på providern så `https://<sid><client>` att flera SAP NetWeaver ABAP-motorer kan konfigureras i Azure AD.
 
     ![Flera SAP NetWeaver ABAP-motorer](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_providername.png)
 
-1. **Generera metadata för tjänstleverantör** : – När vi är klara med att konfigurera inställningarna för den **lokala leverantören** och **betrodda leverantörer** i användargränssnittet för SAML 2.0 är nästa steg att generera tjänstleverantörens metadatafil (som innehåller alla inställningar, när det gäller autentisering och andra konfigurationer i SAP). När den här filen har genererats måste vi ladda upp den i Azure AD.
+1. **Generera metadata för tjänstleverantör**: – När vi är klara med att konfigurera inställningarna för den **lokala leverantören** och **betrodda leverantörer** i användargränssnittet för SAML 2.0 är nästa steg att generera tjänstleverantörens metadatafil (som innehåller alla inställningar, när det gäller autentisering och andra konfigurationer i SAP). När den här filen har genererats måste vi ladda upp den i Azure AD.
 
     ![Genererar metadata för tjänste leverantör](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_generatesp.png)
 
     a. Gå till **fliken Local Provider** (Lokal provider).
 
-    b. Klicka på **Metadata** .
+    b. Klicka på **Metadata**.
 
     c. Spara den genererade **XML-filen för metadata** på datorn och ladda upp den i **grundläggande SAML-konfiguration** för att automatiskt fylla i **ID** -och **svars-URL** -värden i Azure Portal.
 
 Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
-1. I Azure Portal går du till sidan för program integration i **SAP NetWeaver** och letar upp avsnittet **Hantera** och väljer **enkel inloggning** .
-1. På sidan **Välj metod för enkel inloggning** väljer du **SAML** .
+1. I Azure Portal går du till sidan för program integration i **SAP NetWeaver** och letar upp avsnittet **Hantera** och väljer **enkel inloggning**.
+1. På sidan **Välj metod för enkel inloggning** väljer du **SAML**.
 1. På sidan **Konfigurera en enskild Sign-On med SAML** klickar du på ikonen Redigera/penna för **grundläggande SAML-konfiguration** för att redigera inställningarna.
 
    ![Redigera grundläggande SAML-konfiguration](common/edit-urls.png)
@@ -146,7 +146,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
     a. Klicka på **Ladda upp metadatafil** för att ladda upp **metadata-filen för tjänst leverantören** som du har hämtat tidigare.
 
-    b. Klicka på **mappikonen** för att välja metadatafilen och klicka på **Ladda upp** .
+    b. Klicka på **mappikonen** för att välja metadatafilen och klicka på **Ladda upp**.
 
     c. När metadatafilen har laddats upp fylls värdena för **Identifierare** och **Svars-URL** i automatiskt i textrutan i avsnittet **Grundläggande SAML-konfiguration** enligt följande:
 
@@ -165,17 +165,17 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 1. I avsnittet **Användaranspråk** i dialogrutan **Användarattribut** konfigurerar du SAML-tokenattributet på det sätt som visas i bilden ovan och utför följande steg:
 
-    a. Öppna dialogrutan **Hantera användaranspråk** genom att klicka på **redigeringsikonen** .
+    a. Öppna dialogrutan **Hantera användaranspråk** genom att klicka på **redigeringsikonen**.
 
     ![redigera ikon](./media/sapnetweaver-tutorial/nameidattribute.png)
 
     ![image](./media/sapnetweaver-tutorial/nameidattribute1.png)
 
-    b. Välj **ExtractMailPrefix()** i listan **Transformering** .
+    b. Välj **ExtractMailPrefix()** i listan **Transformering**.
 
-    c. I listan **parameter 1** väljer du **User. UserPrincipalName** .
+    c. I listan **parameter 1** väljer du **User. UserPrincipalName**.
 
-    d. Klicka på **Spara** .
+    d. Klicka på **Spara**.
 
 1. På sidan **Konfigurera en enskild Sign-On med SAML** , i avsnittet **SAML-signeringscertifikat** , letar du upp **XML för federationsmetadata** och väljer **Hämta** för att ladda ned certifikatet och spara det på din dator.
 
@@ -189,21 +189,21 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B. Simon.
 
-1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory** , väljer **användare** och väljer sedan **alla användare** .
+1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory**, väljer **användare** och väljer sedan **alla användare**.
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
-    1. I **Namn** -fältet skriver du `B.Simon`.  
-    1. I fältet **användar namn** anger du username@companydomain.extension . Till exempel `B.Simon@contoso.com`.
-    1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord** .
-    1. Klicka på **Skapa** .
+    1. I **Namn**-fältet skriver du `B.Simon`.  
+    1. I fältet **användar namn** anger du username@companydomain.extension . Ett exempel är `B.Simon@contoso.com`.
+    1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
+    1. Klicka på **Skapa**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Tilldela Azure AD-testanvändaren
 
 I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till SAP NetWeaver.
 
-1. I Azure Portal väljer du **företags program** och väljer sedan **alla program** .
-1. I listan över program väljer du **SAP NetWeaver** .
-1. På sidan Översikt för appen letar du reda på avsnittet **Hantera** och väljer **användare och grupper** .
+1. I Azure Portal väljer du **företags program** och väljer sedan **alla program**.
+1. I listan över program väljer du **SAP NetWeaver**.
+1. På sidan Översikt för appen letar du reda på avsnittet **Hantera** och väljer **användare och grupper**.
 1. Välj **Lägg till användare** och välj sedan **användare och grupper** i dialog rutan **Lägg till tilldelning** .
 1. I dialog rutan **användare och grupper** väljer du **B. Simon** från listan användare och klickar sedan på knappen **Välj** längst ned på skärmen.
 1. Om du förväntar dig ett roll värde i SAML Assertion, i dialog rutan **Välj roll** , väljer du lämplig roll för användaren i listan och klickar sedan på knappen **Välj** längst ned på skärmen.
@@ -229,7 +229,7 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 
     ![Konfigurera Single Sign-On 4](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_aliasname.png)
 
-6. Se till att din **sammandragsalgoritm** ska vara **SHA-256** och att den inte kräver några ändringar och tryck på **Nästa** .
+6. Se till att din **sammandragsalgoritm** ska vara **SHA-256** och att den inte kräver några ändringar och tryck på **Nästa**.
 
     ![Konfigurera Single Sign-On 5](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_identityprovider.png)
 
@@ -245,11 +245,11 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 
     ![Konfigurera Single Sign-On 8](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_artifactendpoint.png)
 
-10. Vid **Autentiseringskrav** klickar du på **Slutför** .
+10. Vid **Autentiseringskrav** klickar du på **Slutför**.
 
     ![Konfigurera Single Sign-On 9](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_authentication.png)
 
-11. Gå till fliken **Trusted Provider**  >  **Identity Federation** (längst ned på skärmen). Klicka på **Redigera** .
+11. Gå till fliken **Trusted Provider**  >  **Identity Federation** (längst ned på skärmen). Klicka på **Redigera**.
 
     ![Konfigurera Single Sign-On 10](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_trustedprovider.png)
 
@@ -261,7 +261,11 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 
     ![Konfigurera Single Sign-On 12](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_nameid.png)
 
-14. Observera att värdena för **användar-ID-källa** och **användar-ID-mappning** anger länken mellan SAP-användare och Azure AD-anspråk.  
+1. Ge **attribut** för **användar-ID-källa** som Assertion, värde för **MAPPNINGS läge för användar-ID** som ett **e-postmeddelande** och **attribut för försäkrat attribut** som `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name` .
+
+    ![Konfigurera enkel inloggning ](./media/sapnetweaver-tutorial/nameid-format.png)
+
+14. Observera att värdena för **användar-ID-källa** och **användar-ID-mappning** anger länken mellan SAP-användare och Azure AD-anspråk.
 
     #### <a name="scenario-sap-user-to-azure-ad-user-mapping"></a>Scenario: SAP-användare till användar mappning i Azure AD.
 
@@ -320,7 +324,7 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 
 1. SAP-dokumenterad process finns på platsen: [NetWeaver Gateway Service som aktiverar och OAuth 2,0-omfånget skapas](https://wiki.scn.sap.com/wiki/display/Security/NetWeaver+Gateway+Service+Enabling+and+OAuth+2.0+Scope+Creation)
 
-2. Gå till SPRO och hitta **Aktivera och underhålla tjänster** .
+2. Gå till SPRO och hitta **Aktivera och underhålla tjänster**.
 
     ![Aktivera och underhålla tjänster](./media/sapnetweaver-tutorial/oauth01.png)
 
@@ -350,9 +354,9 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 
 ### <a name="register-the-new-oauth-20-client-id-with-the-creation-wizard"></a>Registrera det nya OAuth 2,0-klient-ID: t med guiden skapa
 
-1. Registrera en ny **OAuth 2,0-klients** start transaktion **SOAUTH2** . Transaktionen visar en översikt över de OAuth 2,0-klienter som redan har registrerats. Välj **skapa** för att starta guiden för den nya OAuth-klienten med namnet KLIENT1 i det här exemplet.
+1. Registrera en ny **OAuth 2,0-klients** start transaktion **SOAUTH2**. Transaktionen visar en översikt över de OAuth 2,0-klienter som redan har registrerats. Välj **skapa** för att starta guiden för den nya OAuth-klienten med namnet KLIENT1 i det här exemplet.
 
-2. Gå till T-Code: **SOAUTH2** och ange beskrivningen och klicka sedan på **Nästa** .
+2. Gå till T-Code: **SOAUTH2** och ange beskrivningen och klicka sedan på **Nästa**.
 
     ![SOAUTH2](./media/sapnetweaver-tutorial/oauth04.png)
 
@@ -372,7 +376,7 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 
     ![tilldelning av omfång](./media/sapnetweaver-tutorial/oauth10.png)
 
-5. Klicka på **Slutför** .
+5. Klicka på **Slutför**.
 
 ## <a name="next-steps"></a>Efterföljande moment
 

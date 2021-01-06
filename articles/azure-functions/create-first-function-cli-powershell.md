@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.custom:
 - devx-track-powershell
 - devx-track-azurecli
-ms.openlocfilehash: 45745419932a40a34abe65f54c61c87ab245f487
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: abbe3b9ed4d9a8c9bf30c6be3e6980228d319090
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93425186"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937237"
 ---
 # <a name="quickstart-create-a-powershell-function-in-azure-from-the-command-line"></a>Snabb start: skapa en PowerShell-funktion i Azure från kommando raden
 
@@ -97,7 +97,7 @@ Om du vill kan du hoppa över att [köra funktionen lokalt](#run-the-function-lo
 
 :::code language="powershell" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-PowerShell/run.ps1":::
 
-För en HTTP-utlösare tar funktionen emot begär ande data som skickas till den `$Request` param som definierats i *function.js*. Returvärdet, som definieras som `Response` i *function.jspå* , skickas till `Push-OutputBinding` cmdleten som svar. 
+För en HTTP-utlösare tar funktionen emot begär ande data som skickas till den `$Request` param som definierats i *function.js*. Returvärdet, som definieras som `Response` i *function.jspå*, skickas till `Push-OutputBinding` cmdleten som svar. 
 
 #### <a name="functionjson"></a>function.json
 
@@ -133,7 +133,7 @@ Varje bindning kräver en riktning, en typ och ett unikt namn. HTTP-utlösaren h
     
     I föregående exempel ersätter `<STORAGE_NAME>` du med namnet på det konto som du använde i föregående steg och ersätter `<APP_NAME>` med ett globalt unikt namn som passar dig. `<APP_NAME>` är även DNS-standarddomänen för funktionsappen. 
     
-    Det här kommandot skapar en Function-app som körs på den angivna språk körningen under [Azure Functions förbruknings plan](functions-scale.md#consumption-plan), vilket är kostnads fritt för den användnings mängd som du ådrar dig här. Kommandot etablerar även en associerad Azure Application insikts-instans i samma resurs grupp, som du kan använda för att övervaka din Function-app och Visa loggar. Mer information finns i [övervaka Azure Functions](functions-monitoring.md). Instansen debiteras inga kostnader förrän du aktiverar den.
+    Det här kommandot skapar en Function-app som körs på den angivna språk körningen under [Azure Functions förbruknings plan](consumption-plan.md), vilket är kostnads fritt för den användnings mängd som du ådrar dig här. Kommandot etablerar även en associerad Azure Application insikts-instans i samma resurs grupp, som du kan använda för att övervaka din Function-app och Visa loggar. Mer information finns i [övervaka Azure Functions](functions-monitoring.md). Instansen debiteras inga kostnader förrän du aktiverar den.
 
 [!INCLUDE [functions-publish-project-cli](../../includes/functions-publish-project-cli.md)]
 

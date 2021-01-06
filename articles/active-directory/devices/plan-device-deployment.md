@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf30570f10f176c47aed0f99127e03a027eff775
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: fc631e4329c1df2cdcbfe57c2b43ccccf14afa85
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093097"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936455"
 ---
 # <a name="plan-your-azure-active-directory-device-deployment"></a>Planera distribution av Azure Active Directory enhet
 
@@ -44,7 +44,7 @@ Viktiga fördelar med att ge dina enheter en Azure AD-identitet:
 
 * Öka produktiviteten – med Azure AD kan användarna göra [sömlös inloggning (SSO)](./azuread-join-sso.md) till dina lokala och molnbaserade resurser, vilket gör att de kan vara produktiva var de än är.
 
-* Öka säkerheten – med Azure AD-enheter kan du tillämpa [principer för villkorlig åtkomst (ca)](../conditional-access/require-managed-devices.md) på resurser baserat på enhetens eller användarens identitet. CA-principer kan ge extra skydd med hjälp av [Azure AD Identity Protection](../identity-protection/overview-identity-protection.md). Att ansluta en enhet till Azure AD är ett krav för att öka säkerheten med en strategi för [lösen ords lös autentisering](../authentication/concept-authentication-passwordless.md) .
+* Öka säkerheten – med Azure AD-enheter kan du tillämpa [principer för villkorlig åtkomst](../conditional-access/require-managed-devices.md) till resurser baserat på enhetens eller användarens identitet. Principer för villkorlig åtkomst kan ge extra skydd med hjälp av [Azure AD Identity Protection](../identity-protection/overview-identity-protection.md). Att ansluta en enhet till Azure AD är ett krav för att öka säkerheten med en strategi för [lösen ords lös autentisering](../authentication/concept-authentication-passwordless.md) .
 
 * Förbättra användar upplevelsen – med enhets identiteter i Azure AD kan du ge dina användare enkel åtkomst till din organisations molnbaserade resurser från både personliga och företagets enheter. Administratörer kan aktivera [Enterprise State roaming](enterprise-state-roaming-overview.md) för en enhetlig upplevelse på alla Windows-enheter.
 
@@ -129,7 +129,7 @@ Villkorlig åtkomst <br>(Kräv hybrid Azure AD-anslutna enheter)| | | ![Markerin
 
 Registrerade enheter hanteras ofta med [Microsoft Intune](/mem/intune/enrollment/device-enrollment). Enheter registreras i Intune på flera olika sätt beroende på operativ systemet. 
 
-Registrerade Azure AD-enheter har stöd för att ta dina egna enheter (BYOD) och företagsägda enheter till enkel inloggning till moln resurser. Åtkomst till resurser baseras på de Azure AD [ca-principer](../conditional-access/require-managed-devices.md) som tillämpas på enheten och användaren.
+Registrerade Azure AD-enheter har stöd för att ta dina egna enheter (BYOD) och företagsägda enheter till enkel inloggning till moln resurser. Åtkomst till resurser baseras på de [principer för villkorlig åtkomst](../conditional-access/require-managed-devices.md) för Azure AD som tillämpas på enheten och användaren.
 
 ### <a name="registering-devices"></a>Registrera enheter
 
@@ -241,7 +241,7 @@ Granska stödda plattformar och plattformar som inte stöds för integrerade enh
 | - | - | - | - |
 | [Hantering av mobila enheter (MDM) ](/windows/client-management/mdm/azure-active-directory-integration-with-mdm) <br>Exempel: Microsoft Intune| ![Markering för dessa värden.](./media/plan-device-deployment/check.png)| ![Markering för dessa värden.](./media/plan-device-deployment/check.png)| ![Markering för dessa värden.](./media/plan-device-deployment/check.png)|  |
 | [Samhantering med Microsoft Intune och Microsoft Endpoint Configuration Manager](/mem/configmgr/comanage/overview) <br>(Windows 10 och senare)| | ![Markering för dessa värden.](./media/plan-device-deployment/check.png)| ![Markering för dessa värden.](./media/plan-device-deployment/check.png)|  |
-| [Grup princip](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831791(v=ws.11))<br>(Endast Windows)| | | ![Markering för dessa värden.](./media/plan-device-deployment/check.png)|  |
+| [Grupprincip](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831791(v=ws.11))<br>(Endast Windows)| | | ![Markering för dessa värden.](./media/plan-device-deployment/check.png)|  |
 
 
 

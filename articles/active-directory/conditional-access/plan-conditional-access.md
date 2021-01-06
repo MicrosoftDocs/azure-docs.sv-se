@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 20b51cc747d3a24b1437eda988397a2e999f6ab3
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: a43200985820779c56983f09b81a86989261c36f
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94837489"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935010"
 ---
 # <a name="plan-a-conditional-access-deployment"></a>Planera en distribution av villkorsstyrd åtkomst
 
@@ -24,7 +24,7 @@ Det är viktigt att planera distributionen av den villkorliga åtkomsten för at
 
 I en mobil-och mellanliggande värld, kan dina användare komma åt din organisations resurser från var som helst med olika enheter och appar. Därför räcker det inte längre att fokusera på vem som har åtkomst till resursen. Du måste också fundera över var användaren är, vilken enhet som används, vilken resurs som används och mer. 
 
-Azure Active Directory (Azure AD) analys av villkorlig åtkomst (CA) analyserar signaler som användare, enhet och plats för att automatisera beslut och tvinga organisations åtkomst principer för resursen. Du kan använda CA-principer för att tillämpa åtkomst kontroller som Multi-Factor Authentication (MFA). Med CA-principer kan du uppmana användarna att använda MFA när de behöver säkerhet, och samtidigt ta bort användarnas användning när de inte behövs.
+Azure Active Directory (Azure AD) analys av villkorlig åtkomst signalerar som användare, enhet och plats för att automatisera beslut och tvinga organisations åtkomst principer för resursen. Du kan använda principer för villkorlig åtkomst för att tillämpa åtkomst kontroller som Multi-Factor Authentication (MFA). Med principer för villkorlig åtkomst kan du uppmana användarna att använda MFA när de behöver säkerhet, och samtidigt ta bort användarnas användning när de inte behövs.
 
 ![Översikt över villkorsstyrd åtkomst](./media/plan-conditional-access/conditional-access-overview-how-it-works.png)
 
@@ -38,7 +38,7 @@ Innan du börjar ska du kontrol lera att du förstår hur [villkorlig åtkomst](
 
 Fördelarna med att distribuera villkorlig åtkomst är:
 
-* Öka produktiviteten. Du behöver bara avbryta användare med ett inloggnings villkor som MFA när en eller flera signaler garanterar det. Med CA-principer kan du styra när användare uppmanas att använda MFA, när åtkomst är blockerad och när de måste använda en betrodd enhet.
+* Öka produktiviteten. Du behöver bara avbryta användare med ett inloggnings villkor som MFA när en eller flera signaler garanterar det. Med principer för villkorlig åtkomst kan du styra när användare tillfrågas om MFA, när åtkomst är blockerad och när de måste använda en betrodd enhet.
 
 * Hantera risker. Att automatisera riskbedömning med princip villkor innebär att riskfyllda inloggningar identifieras och åtgärdas eller blockeras. Koppling villkorlig åtkomst med [identitets skydd](../identity-protection/overview-identity-protection.md), som identifierar avvikelser och misstänkta händelser, gör att du kan rikta in dig på åtkomst till resurser som blockeras eller gated. 
 
@@ -52,7 +52,7 @@ Se [licens krav för villkorlig åtkomst](overview.md).
 
 Om ytterligare funktioner krävs kan du också behöva relaterade licenser. Mer information finns i [Azure Active Directory prissättning](https://azure.microsoft.com/pricing/details/active-directory/).
 
-### <a name="prerequisites"></a>Förutsättningar
+### <a name="prerequisites"></a>Krav
 
 * En fungerande Azure AD-klient med Azure AD Premium-eller utvärderings licens aktive rad. Om det behövs kan du [skapa ett kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -67,11 +67,11 @@ Om ytterligare funktioner krävs kan du också behöva relaterade licenser. Mer 
 Följande resurser kan vara användbara när du lär dig mer om villkorlig åtkomst:
 
 
-#### <a name="videos"></a>Video
+#### <a name="videos"></a>Videoklipp
 
 * [Vad är villkorsstyrd åtkomst?](https://youtu.be/ffMAw2IVO7A)
 * [Hur distribuerar jag villkorlig åtkomst?](https://youtu.be/c_izIRNJNuk)
-* [Hur gör jag för att distribuera CA-principer till slutanvändarna?](https://youtu.be/0_Fze7Zpyvc)
+* [Hur gör jag för att distribuera principer för villkorlig åtkomst till slutanvändarna?](https://youtu.be/0_Fze7Zpyvc)
 * [Villkorsstyrd åtkomst med enhetskontroller](https://youtu.be/NcONUf-jeS4)
 * [Villkorlig åtkomst med Azure AD MFA](https://youtu.be/Tbc-SU97G-w)
 * [Villkorlig åtkomst i Enterprise Mobility + Security](https://youtu.be/A7IrxAH87wc)
@@ -102,13 +102,13 @@ När nya principer är klara för din miljö kan du distribuera dem i faser i pr
 > [!NOTE]
 > Undanta alla administratörer för att distribuera nya principer som inte är speciella för administratörer. Detta säkerställer att administratörer fortfarande kan komma åt principen och göra ändringar eller återkalla den om det uppstår en betydande inverkan. Verifiera alltid principen med mindre användar grupper innan du gäller alla användare.
 
-## <a name="understand-ca-policy-components"></a>Förstå komponenter för CA-principer
-CA-principer är if-then-satser: om en tilldelning är uppfyllt ska du tillämpa dessa åtkomst kontroller.
+## <a name="understand-conditional-access-policy-components"></a>Förstå komponenter för villkorlig åtkomst princip
+Principer för villkorlig åtkomst är if-then-satser: om en tilldelning är uppfyllt ska du tillämpa dessa åtkomst kontroller.
 
-När du konfigurerar CA-principer kallas villkor för *tilldelningar*. Med CA-principer kan du tillämpa åtkomst kontroller i din organisations appar baserat på vissa tilldelningar.
+När du konfigurerar principer för villkorlig åtkomst kallas de för *tilldelningar*. Med principer för villkorlig åtkomst kan du tillämpa åtkomst kontroller i din organisations appar baserat på vissa tilldelningar.
 
 
-Mer information finns i [skapa en ca-princip](concept-conditional-access-policies.md).
+Mer information finns i [skapa en princip för villkorlig åtkomst](concept-conditional-access-policies.md).
 
 ![skärmen skapa princip](media/plan-conditional-access/create-policy.png)
 
@@ -195,7 +195,7 @@ Det är viktigt att förstå hur åtkomst-token utfärdas.
 ![Diagram över utfärdande av åtkomsttoken](media/plan-conditional-access/CA-policy-token-issuance.png)
 
 > [!NOTE]
-> Om ingen tilldelning krävs, och ingen CA-princip är aktive rad, är standard beteendet att utfärda en åtkomsttoken. 
+> Om ingen tilldelning krävs och ingen princip för villkorlig åtkomst är aktive rad, är standard beteendet att utfärda en åtkomsttoken. 
 
 Anta till exempel en princip där:
 
@@ -207,14 +207,14 @@ Om en användare som inte finns i grupp 1 försöker komma åt appen "If" är up
 
 Med ramverket för villkorlig åtkomst får du en bra flexibel konfiguration. Men stor flexibilitet innebär också att du noga bör granska varje konfigurations princip innan du släpper den för att undvika oönskade resultat.
 
-### <a name="apply-ca-policies-to-every-app"></a>Tillämpa CA-principer på alla appar
+### <a name="apply-conditional-access-policies-to-every-app"></a>Tillämpa principer för villkorlig åtkomst för alla appar
 
-Åtkomsttoken utfärdas som standard om ett princip villkor för certifikat utfärdare inte utlöser en åtkomst kontroll. Se till att alla appar har minst en tillämpad princip för villkorlig åtkomst
+Åtkomsttoken utfärdas som standard om ett villkor för villkorlig åtkomst inte utlöser en åtkomst kontroll. Se till att alla appar har minst en tillämpad princip för villkorlig åtkomst
 
 > [!IMPORTANT]
 > Var försiktig med att använda block och alla appar i en enda princip. Detta kan låsa administratörer från Azure-administrationskonsolen, och undantag kan inte konfigureras för viktiga slut punkter som Microsoft Graph.
 
-### <a name="minimize-the-number-of-ca-policies"></a>Minimera antalet CA-principer
+### <a name="minimize-the-number-of-conditional-access-policies"></a>Minimera antalet principer för villkorlig åtkomst
 
 Att skapa en princip för varje app är inte effektivt och leder till svårt administration. Villkorlig åtkomst tillämpar bara de första 195 principerna per användare. Vi rekommenderar att du analyserar dina appar och grupperar dem till program som har samma resurs krav för samma användare. Om till exempel alla Microsoft 365 appar eller alla HR-appar har samma krav för samma användare, skapar du en enskild princip och inkluderar alla appar som den gäller för. 
 
@@ -228,9 +228,9 @@ Om du konfigurerar en princip felaktigt kan den låsa organisationerna från Azu
 
   * Skapa en lokal säkerhets grupp och synkronisera den med Azure AD. Säkerhets gruppen ska innehålla ditt dedikerade princip administrations konto. 
 
-   * UNDANTA den här säkerhets gruppen från alla CA-principer.
+   * UNDANTA den här säkerhets gruppen från alla principer för villkorlig åtkomst.
 
-   * När ett tjänst avbrott uppstår lägger du till dina andra administratörer i den lokala gruppen efter behov och tvingar fram en synkronisering. Detta animerar sitt undantag till CA-principer.
+   * När ett tjänst avbrott uppstår lägger du till dina andra administratörer i den lokala gruppen efter behov och tvingar fram en synkronisering. Detta animerar undantag för principer för villkorlig åtkomst.
 
 ### <a name="set-up-report-only-mode"></a>Konfigurera endast rapport läge
 
@@ -240,9 +240,9 @@ Det kan vara svårt att förutsäga antalet och namnen på de användare som på
 * kräver MFA
 * implementera inloggnings risk principer
 
-Med [endast rapport läge](concept-conditional-access-report-only.md) kan administratörer utvärdera påverkan av ca-principer innan de aktive ras i deras miljö.
+Med [endast rapport läge](concept-conditional-access-report-only.md) kan administratörer utvärdera effekten av principer för villkorlig åtkomst innan de aktive ras i deras miljö.
 
-Lär dig hur du [konfigurerar läge för endast rapporter i en ca-princip](howto-conditional-access-insights-reporting.md).
+Lär dig hur du [konfigurerar läge för endast rapporter i en princip för villkorlig åtkomst](howto-conditional-access-insights-reporting.md).
 
 ### <a name="plan-for-disruption"></a>Planera för avbrott
 
@@ -295,7 +295,7 @@ När nya principer är klara för din miljö, se till att du granskar varje prin
 
 ## <a name="common-policies"></a>Vanliga principer
 
-När du planerar din lösning för certifikat utfärdare ska du utvärdera om du behöver skapa principer för att uppnå följande resultat.
+När du planerar din lösning för princip för villkorlig åtkomst ska du utvärdera om du behöver skapa principer för att uppnå följande resultat.
 
 * [Krav på MFA](#require-mfa)
 * [Svara på potentiellt komprometterade konton](#respond-to-potentially-compromised-accounts)
@@ -319,7 +319,7 @@ Vanliga användnings fall för att kräva MFA-åtkomst:
 
 ### <a name="respond-to-potentially-compromised-accounts"></a>Svara på potentiellt komprometterade konton
 
-Med CA-principer kan du implementera automatiserade svar på inloggningar av potentiellt komprometterade identiteter. Sannolikheten för att ett konto har komprometterats uttrycks i form av risk nivåer. Det finns två risk nivåer som beräknas med identitets skydd: inloggnings risker och användar risker. Följande tre standard principer som kan aktive ras.
+Med principer för villkorlig åtkomst kan du implementera automatiserade svar på inloggningar av potentiellt komprometterade identiteter. Sannolikheten för att ett konto har komprometterats uttrycks i form av risk nivåer. Det finns två risk nivåer som beräknas med identitets skydd: inloggnings risker och användar risker. Följande tre standard principer som kan aktive ras.
 
 * [Kräv att alla användare registrerar sig för MFA](howto-conditional-access-policy-risk.md)
 
@@ -374,9 +374,9 @@ Vissa organisationer har test klienter för detta ändamål. Det kan dock vara s
 
 ### <a name="create-a-test-plan"></a>Skapa en test plan
 
-Test planen är viktig för att få en jämförelse mellan de förväntade resultaten och de faktiska resultaten. Du bör alltid ha en förväntad händelse innan du testar något. I följande tabell visas exempel test fall. Justera scenarier och förväntade resultat baserat på hur dina CA-principer är konfigurerade.
+Test planen är viktig för att få en jämförelse mellan de förväntade resultaten och de faktiska resultaten. Du bör alltid ha en förväntad händelse innan du testar något. I följande tabell visas exempel test fall. Justera scenarier och förväntade resultat baserat på hur dina principer för villkorlig åtkomst konfigureras.
 
-| Policy| Scenario| Förväntat resultat |
+| Princip| Scenario| Förväntat resultat |
 | - | - | - |
 | [Kräv MFA när det inte är på arbetet](untrusted-networks.md)| Auktoriserad användare loggar in på appen på en betrodd plats/ett arbete| Användaren uppmanas inte att MFA |
 | [Kräv MFA när det inte är på arbetet](untrusted-networks.md)| Auktoriserad användare loggar in på appen men inte på en betrodd plats/arbete| Användaren uppmanas att MFA och kan logga in |
@@ -389,9 +389,9 @@ Test planen är viktig för att få en jämförelse mellan de förväntade resul
 
 ### <a name="configure-the-test-policy"></a>Konfigurera test principen
 
-I [Azure Portal](https://portal.azure.com/)konfigurerar du ca-principer under Azure Active Directory > säkerhet > villkorlig åtkomst.
+I [Azure Portal](https://portal.azure.com/)konfigurerar du principer för villkorlig åtkomst under Azure Active Directory > säkerhet > villkorlig åtkomst.
 
-Om du vill veta mer om hur du skapar CA-principer, se det här exemplet: [ca-princip för att begära MFA när en användare loggar in till Azure Portal](../authentication/tutorial-enable-azure-mfa.md?bc=%2fazure%2factive-directory%2fconditional-access%2fbreadcrumb%2ftoc.json&toc=%2fazure%2factive-directory%2fconditional-access%2ftoc.json). Den här snabb starten hjälper dig att:
+Om du vill veta mer om hur du skapar principer för villkorlig åtkomst kan du se det här exemplet: [princip för villkorlig åtkomst för att begära MFA när en användare loggar in till Azure Portal](../authentication/tutorial-enable-azure-mfa.md?bc=%2fazure%2factive-directory%2fconditional-access%2fbreadcrumb%2ftoc.json&toc=%2fazure%2factive-directory%2fconditional-access%2ftoc.json). Den här snabb starten hjälper dig att:
 
 * Bekanta dig med användar gränssnittet
 
@@ -415,7 +415,7 @@ Du kan visa den sammanlagda effekten av dina principer för villkorlig åtkomst 
 Ett annat sätt att verifiera din princip för villkorlig åtkomst är att använda [verktyget verktyg](troubleshoot-conditional-access-what-if.md), som simulerar vilka principer som gäller för en användare som loggar in under hypotetiska omständigheter. Välj de inloggnings attribut som du vill testa (till exempel användare, program, enhets plattform och plats) och se vilka principer som gäller.
 
 > [!NOTE] 
-> Medan en simulerad körning ger dig en bra uppfattning om vilken inverkan en CA-princip har, ersätter den inte en faktisk test körning.
+> Medan en simulerad körning ger dig en bra uppfattning om hur en princip för villkorlig åtkomst har, ersätter den inte en faktisk test körning.
 
 ### <a name="test-your-policy"></a>Testa principen
 
@@ -442,14 +442,14 @@ Om du behöver återställa dina nyligen implementerade principer kan du använd
 
 ## <a name="manage-access-to-cloud-apps"></a>Hantera åtkomst till molnappar
 
-Använd följande hanterings alternativ för att kontrol lera och hantera dina CA-principer:
+Använd följande hanterings alternativ för att kontrol lera och hantera principer för villkorlig åtkomst:
 
 ![Skärm bild som visar HANTERINGs alternativen för C A-principer, inklusive namngivna platser, anpassade kontroller, Användningsvillkor, V P N-anslutning och de valda klassiska principerna.](media/plan-conditional-access/manage-access.png)
 
 
 ### <a name="named-locations"></a>Namngivna platser
 
-Plats villkoret för en CA-princip gör att du kan använda inställningar för åtkomst kontroll till nätverks platserna för dina användare. Med [namngivna platser](location-condition.md)kan du skapa logiska grupperingar av IP-adressintervall eller länder och regioner.
+Plats villkoret för en princip för villkorlig åtkomst gör att du kan använda inställningar för åtkomst kontroll till användarnas nätverks platser. Med [namngivna platser](location-condition.md)kan du skapa logiska grupperingar av IP-adressintervall eller länder och regioner.
 
 ### <a name="custom-controls"></a>Anpassade kontroller
 
@@ -461,7 +461,7 @@ Innan du får åtkomst till vissa molnappar i din miljö kan du få tillåtelse 
 
 ## <a name="troubleshoot-conditional-access"></a>Felsöka villkorlig åtkomst
 
-När en användare har problem med en CA-princip samlar du in följande information för att under lätta fel sökningen.
+När en användare har problem med en princip för villkorlig åtkomst samlar du in följande information för att under lätta fel sökningen.
 
 * Användar princip namn
 
@@ -487,10 +487,10 @@ När du har samlat in informationen, se följande resurser:
 
 * [Använd What-If-verktyget för att](troubleshoot-conditional-access-what-if.md) förstå varför en princip har eller inte tillämpats på en användare under en viss omständighet eller om en princip skulle gälla i ett känt tillstånd.
 
-## <a name="next-steps"></a>Nästa steg
+## <a name="next-steps"></a>Efterföljande moment
 
 [Läs mer om Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md)
 
 [Lär dig mer om identitets skydd](../identity-protection/overview-identity-protection.md)
 
-[Hantera CA-principer med Microsoft Graph-API](/graph/api/resources/conditionalaccesspolicy?view=graph-rest-beta.md)
+[Hantera principer för villkorlig åtkomst med Microsoft Graph-API](/graph/api/resources/conditionalaccesspolicy?view=graph-rest-beta.md)

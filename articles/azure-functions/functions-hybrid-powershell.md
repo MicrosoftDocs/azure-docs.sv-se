@@ -5,12 +5,12 @@ author: eamono
 ms.topic: conceptual
 ms.date: 04/26/2020
 ms.author: eamono
-ms.openlocfilehash: 6034d1327d263eda49881af5eedf94ae06495128
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e01ffd8e17fda9113c7ec0fdb2c7f436b39c810
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83122280"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936914"
 ---
 # <a name="managing-hybrid-environments-with-powershell-in-azure-functions-and-app-service-hybrid-connections"></a>Hantera hybrid miljöer med PowerShell i Azure Functions och App Service Hybridanslutningar
 
@@ -68,23 +68,23 @@ App Service Hybridanslutningar-funktionen är bara tillgänglig i de grundlägga
 
     :::image type="content" source="./media/functions-hybrid-powershell/function-app-create-basics.png" alt-text="Skapa en Function-app – grundläggande information." border="true":::
 
-1. Välj **Nästa: värd**. Ange följande inställningar på sidan **värd** .
+1. Välj **Nästa: Värd**. Ange följande inställningar på sidan **värd** .
 
     | Inställning      | Föreslaget värde  | Beskrivning |
     | ------------ | ---------------- | ----------- |
-    | **[Lagringskonto](../storage/common/storage-account-create.md)** |  Globalt unikt namn |  Skapa ett lagringskonto som används av din funktionsapp. Lagrings konto namn måste innehålla mellan 3 och 24 tecken och får bara innehålla siffror och gemena bokstäver. Du kan också använda ett befintligt konto som måste uppfylla kraven för [lagrings kontot](../azure-functions/functions-scale.md#storage-account-requirements). |
+    | **[Lagringskonto](../storage/common/storage-account-create.md)** |  Globalt unikt namn |  Skapa ett lagringskonto som används av din funktionsapp. Lagrings konto namn måste innehålla mellan 3 och 24 tecken och får bara innehålla siffror och gemena bokstäver. Du kan också använda ett befintligt konto som måste uppfylla kraven för [lagrings kontot](../azure-functions/storage-considerations.md#storage-account-requirements). |
     |**Operativsystem**| Önskat operativ system | Ett operativ system är i förväg valt för dig baserat på ditt val av körnings stack, men du kan ändra inställningen om det behövs. |
     | **[Plantyp](../azure-functions/functions-scale.md)** | **App Service-plan** | Välj **App Service-plan**. När du använder en App Service-plan måste du hantera [funktionsappens skalning](../azure-functions/functions-scale.md).  |
 
-    :::image type="content" source="./media/functions-hybrid-powershell/function-app-create-hosting.png" alt-text="Skapa en Function-app – grundläggande information." border="true":::
+    :::image type="content" source="./media/functions-hybrid-powershell/function-app-create-hosting.png" alt-text="Skapa en funktion app-hosting." border="true":::
 
 1. Välj **Nästa: övervakning**. Ange följande inställningar på sidan **övervakning** .
 
     | Inställning      | Föreslaget värde  | Beskrivning |
     | ------------ | ---------------- | ----------- |
-    | **[Application Insights](../azure-functions/functions-monitoring.md)** | Default | Skapar en Application Insights resurs av samma *app-namn* i den närmaste region som stöds. Genom att utöka den här inställningen eller välja **Skapa ny**kan du ändra Application Insights namn eller välja en annan region i ett [Azure-geografiskt](https://azure.microsoft.com/global-infrastructure/geographies/) område där du vill lagra dina data. |
+    | **[Application Insights](../azure-functions/functions-monitoring.md)** | Standard | Skapar en Application Insights resurs av samma *app-namn* i den närmaste region som stöds. Genom att utöka den här inställningen eller välja **Skapa ny** kan du ändra Application Insights namn eller välja en annan region i ett [Azure-geografiskt](https://azure.microsoft.com/global-infrastructure/geographies/) område där du vill lagra dina data. |
 
-    :::image type="content" source="./media/functions-hybrid-powershell/function-app-create-monitoring.png" alt-text="Skapa en Function-app – grundläggande information." border="true":::
+    :::image type="content" source="./media/functions-hybrid-powershell/function-app-create-monitoring.png" alt-text="Skapa en funktion app-Monitoring." border="true":::
 
 1. Välj **Granska + skapa** för att granska konfigurations valen för appen.
 
@@ -101,15 +101,15 @@ Hybrid anslutningar konfigureras från avsnittet nätverk i Function-appen:
 1. Under **Inställningar** i Function-appen som du nyss skapade väljer du **nätverk**. 
 1. Välj **Konfigurera dina hybrid anslutningar slut punkter**.
    
-    :::image type="content" source="./media/functions-hybrid-powershell/configure-hybrid-connection-endpoint.png" alt-text="Skapa en Function-app – grundläggande information." border="true":::
+    :::image type="content" source="./media/functions-hybrid-powershell/configure-hybrid-connection-endpoint.png" alt-text="Konfigurera hybrid anslutnings slut punkter." border="true":::
 
 1. Välj **Lägg till hybrid anslutning**.
    
-    :::image type="content" source="./media/functions-hybrid-powershell/hybrid-connection-overview.png" alt-text="Skapa en Function-app – grundläggande information." border="true":::
+    :::image type="content" source="./media/functions-hybrid-powershell/hybrid-connection-overview.png" alt-text="Lägg till en hybrid anslutning." border="true":::
 
 1. Ange information om hybrid anslutningen som visas direkt efter följande skärm bild. Du kan välja att göra **slut punkts värd** inställningen matcha värd namnet för den lokala servern för att göra det lättare att komma ihåg servern senare när du kör fjärrkommandon. Porten matchar standard porten för Windows Remote Management-tjänsten som definierades på servern tidigare.
   
-      :::image type="content" source="./media/functions-hybrid-powershell/add-hybrid-connection.png" alt-text="Skapa en Function-app – grundläggande information." border="true":::
+      :::image type="content" source="./media/functions-hybrid-powershell/add-hybrid-connection.png" alt-text="Lägg till hybrid anslutning." border="true":::
 
     | Inställning      | Föreslaget värde  |
     | ------------ | ---------------- |
@@ -126,24 +126,24 @@ Hybrid anslutningar konfigureras från avsnittet nätverk i Function-appen:
 
 1. Välj **Hämta anslutnings hanteraren** för att spara *. msi* -filen lokalt på datorn.
 
-    :::image type="content" source="./media/functions-hybrid-powershell/download-hybrid-connection-installer.png" alt-text="Skapa en Function-app – grundläggande information." border="true":::
+    :::image type="content" source="./media/functions-hybrid-powershell/download-hybrid-connection-installer.png" alt-text="Hämta installations programmet." border="true":::
 
 1. Kopiera *MSI* -filen från den lokala datorn till den lokala servern.
 1. Kör installations programmet för Hybridanslutningshanteraren för att installera tjänsten på den lokala servern.
 
-    :::image type="content" source="./media/functions-hybrid-powershell/hybrid-installation.png" alt-text="Skapa en Function-app – grundläggande information." border="true":::
+    :::image type="content" source="./media/functions-hybrid-powershell/hybrid-installation.png" alt-text="Installera hybrid anslutningen." border="true":::
 
 1. Öppna hybrid anslutningen från portalen och kopiera sedan Gateway-anslutningssträngen till Urklipp.
 
-    :::image type="content" source="./media/functions-hybrid-powershell/copy-hybrid-connection.png" alt-text="Skapa en Function-app – grundläggande information." border="true":::
+    :::image type="content" source="./media/functions-hybrid-powershell/copy-hybrid-connection.png" alt-text="Kopiera hybrid anslutnings strängen." border="true":::
 
 1. Öppna Hybridanslutningshanteraren gränssnittet på den lokala servern.
 
-    :::image type="content" source="./media/functions-hybrid-powershell/hybrid-connection-ui.png" alt-text="Skapa en Function-app – grundläggande information." border="true":::
+    :::image type="content" source="./media/functions-hybrid-powershell/hybrid-connection-ui.png" alt-text="Öppna användar gränssnittet hybrid anslutning." border="true":::
 
 1. Välj **ange manuellt** och klistra in anslutnings strängen från Urklipp.
 
-    :::image type="content" source="./media/functions-hybrid-powershell/enter-manual-connection.png" alt-text="Skapa en Function-app – grundläggande information." border="true":::
+    :::image type="content" source="./media/functions-hybrid-powershell/enter-manual-connection.png" alt-text="Klistra in hybrid anslutningen." border="true":::
 
 1. Starta om Hybridanslutningshanteraren från PowerShell om den inte visas som ansluten.
     ```powershell
@@ -155,26 +155,26 @@ Hybrid anslutningar konfigureras från avsnittet nätverk i Function-appen:
 1. Under **Inställningar** för din Function-app väljer du **konfiguration**. 
 1. Välj **+ ny program inställning**.
 
-    :::image type="content" source="./media/functions-hybrid-powershell/select-configuration.png" alt-text="Skapa en Function-app – grundläggande information." border="true":::
+    :::image type="content" source="./media/functions-hybrid-powershell/select-configuration.png" alt-text="Konfigurera ett lösen ord för administratörs kontot." border="true":::
 
-1. Ge inställningen namnet **ContosoUserPassword**och ange lösen ordet. Välj **OK**.
+1. Ge inställningen namnet **ContosoUserPassword** och ange lösen ordet. Välj **OK**.
 1. Välj **Spara** för att lagra lösen ordet i Function-programmet.
 
-    :::image type="content" source="./media/functions-hybrid-powershell/save-administrator-password.png" alt-text="Skapa en Function-app – grundläggande information." border="true":::
+    :::image type="content" source="./media/functions-hybrid-powershell/save-administrator-password.png" alt-text="Spara lösen ordet för administratörs kontot." border="true":::
 
 ## <a name="create-a-function-http-trigger"></a>Skapa en funktion HTTP-utlösare
 
-1. I din Function-app väljer du **Functions**och väljer sedan **+ Lägg till**.
+1. I din Function-app väljer du **Functions** och väljer sedan **+ Lägg till**.
 
-    :::image type="content" source="./media/functions-hybrid-powershell/create-http-trigger-function.png" alt-text="Skapa en Function-app – grundläggande information." border="true":::
+    :::image type="content" source="./media/functions-hybrid-powershell/create-http-trigger-function.png" alt-text="Skapa en ny HTTP-utlösare." border="true":::
 
 1. Välj mallen för **http-utlösare** .
 
-    :::image type="content" source="./media/functions-hybrid-powershell/select-http-trigger-template.png" alt-text="Skapa en Function-app – grundläggande information." border="true":::
+    :::image type="content" source="./media/functions-hybrid-powershell/select-http-trigger-template.png" alt-text="Välj mallen för HTTP-utlösare." border="true":::
 
 1. Ge den nya funktionen ett namn och välj **skapa funktion**.
 
-    :::image type="content" source="./media/functions-hybrid-powershell/create-new-http-function.png" alt-text="Skapa en Function-app – grundläggande information." border="true":::
+    :::image type="content" source="./media/functions-hybrid-powershell/create-new-http-function.png" alt-text="Namnge och skapa den nya funktionen HTTP-utlösare." border="true":::
 
 ## <a name="test-the-function"></a>Testa funktionen
 
@@ -215,11 +215,11 @@ Hybrid anslutningar konfigureras från avsnittet nätverk i Function-appen:
 
 1. Välj **Spara**.
 
-    :::image type="content" source="./media/functions-hybrid-powershell/save-http-function.png" alt-text="Skapa en Function-app – grundläggande information." border="true":::
+    :::image type="content" source="./media/functions-hybrid-powershell/save-http-function.png" alt-text="Ändra PowerShell-koden och spara funktionen HTTP-utlösare." border="true":::
 
- 1. Välj **test**och välj sedan **Kör** för att testa funktionen. Granska loggarna för att kontrol lera att testet lyckades.
+ 1. Välj **test** och välj sedan **Kör** för att testa funktionen. Granska loggarna för att kontrol lera att testet lyckades.
 
-     :::image type="content" source="./media/functions-hybrid-powershell/test-function-hybrid.png" alt-text="Skapa en Function-app – grundläggande information." border="true":::
+     :::image type="content" source="./media/functions-hybrid-powershell/test-function-hybrid.png" alt-text="Testa HTTP trigger funktion." border="true":::
 
 ## <a name="managing-other-systems-on-premises"></a>Hantera andra system lokalt
 

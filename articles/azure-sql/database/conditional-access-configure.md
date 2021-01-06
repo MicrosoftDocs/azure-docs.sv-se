@@ -12,12 +12,12 @@ ms.reviewer: vanto
 ms.custom: sqldbrb=1
 ms.date: 04/28/2020
 tag: azure-synpase
-ms.openlocfilehash: eae7d0a34d6bd76dae5998f05f9d64e0d40f7d9b
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: c18d235977f1256a10e813fa8e02aa3590366fe1
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321614"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936421"
 ---
 # <a name="conditional-access-with-azure-sql-database-and-azure-synapse-analytics"></a>Villkorlig åtkomst med Azure SQL Database-och Azure Synapse-analys
 
@@ -25,9 +25,9 @@ ms.locfileid: "93321614"
 
 [Azure SQL Database](sql-database-paas-overview.md), [Azure SQL-hanterad instans](../managed-instance/sql-managed-instance-paas-overview.md)och [Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) stöder villkorlig åtkomst från Microsoft.
 
-Följande steg visar hur du konfigurerar Azure SQL Database, SQL-hanterad instans eller Azure-Synapse för att genomdriva en princip för villkorlig åtkomst (CA).  
+Följande steg visar hur du konfigurerar Azure SQL Database, SQL-hanterad instans eller Azure-Synapse för att genomdriva en princip för villkorlig åtkomst.  
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 - Du måste konfigurera Azure SQL Database, Azure SQL-hanterad instans eller dedikerad SQL-pool i Azure Synapse för att stödja Azure Active Directory (Azure AD)-autentisering. Detaljerade anvisningar finns i [Konfigurera och hantera Azure Active Directory autentisering med SQL Database eller Azure Synapse](authentication-aad-configure.md).  
 - När Multi-Factor Authentication är aktiverat måste du ansluta till ett verktyg som stöds, till exempel den senaste SQL Server Management Studio (SSMS). Mer information finns i [konfigurera Azure SQL Database Multi-Factor Authentication för SQL Server Management Studio](authentication-mfa-ssms-configure.md).  
@@ -40,18 +40,18 @@ Följande steg visar hur du konfigurerar Azure SQL Database, SQL-hanterad instan
 1. Logga in på Azure Portal, Välj **Azure Active Directory** och välj sedan **villkorlig åtkomst**. Mer information finns i [teknisk referens för Azure Active Directory villkorlig åtkomst](../../active-directory/conditional-access/concept-conditional-access-conditions.md).  
    ![Bladet för villkorlig åtkomst](./media/conditional-access-configure/conditional-access-blade.png)
 
-2. I bladet **villkorlig åtkomst – principer** , klickar du på **ny princip** , anger ett namn och klickar sedan på **Konfigurera regler**.  
-3. Under **tilldelningar** väljer **du användare och grupper** , markerar **Välj användare och grupper** och väljer sedan användaren eller gruppen för villkorlig åtkomst. Klicka på **Välj** och sedan på **Slutför** för att godkänna ditt val.  
+2. I bladet **villkorlig åtkomst – principer** , klickar du på **ny princip**, anger ett namn och klickar sedan på **Konfigurera regler**.  
+3. Under **tilldelningar** väljer **du användare och grupper**, markerar **Välj användare och grupper** och väljer sedan användaren eller gruppen för villkorlig åtkomst. Klicka på **Välj** och sedan på **Slutför** för att godkänna ditt val.  
    ![Välj användare och grupper](./media/conditional-access-configure/select-users-and-groups.png)  
 
-4. Välj **molnappar** och klicka på **Välj appar**. Du ser alla appar som är tillgängliga för villkorlig åtkomst. Välj **Azure SQL Database** , klicka på **Välj** längst ned på sidan och klicka sedan på **färdig**.  
+4. Välj **molnappar** och klicka på **Välj appar**. Du ser alla appar som är tillgängliga för villkorlig åtkomst. Välj **Azure SQL Database**, klicka på **Välj** längst ned på sidan och klicka sedan på **färdig**.  
    ![Välj SQL Database](./media/conditional-access-configure/select-sql-database.png)  
    Om du inte hittar **Azure SQL Database** som anges i följande tredje skärm bild, utför du följande steg:
    - Anslut till databasen i Azure SQL Database genom att använda SSMS med ett administratörs konto för Azure AD.  
    - Kör `CREATE USER [user@yourtenant.com] FROM EXTERNAL PROVIDER` .  
    - Logga in på Azure AD och kontrol lera att Azure SQL Database, SQL-hanterad instans eller Azure-Synapse visas i programmen i Azure AD-instansen.  
 
-5. Välj **åtkomst kontroller** , Välj **bevilja** och kontrol lera den princip som du vill använda. I det här exemplet väljer vi **Kräv Multi-Factor Authentication**.  
+5. Välj **åtkomst kontroller**, Välj **bevilja** och kontrol lera den princip som du vill använda. I det här exemplet väljer vi **Kräv Multi-Factor Authentication**.  
    ![Välj bevilja åtkomst](./media/conditional-access-configure/grant-access.png)  
 
 ## <a name="summary"></a>Sammanfattning

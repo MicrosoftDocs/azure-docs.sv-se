@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 06/09/2020
 ms.author: surmb
-ms.openlocfilehash: b8acf1b025a5943773821c8ab78de6288eb6bec2
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 05df2144b892aed764f9606fb19bd6a3242b97f3
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93397906"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934908"
 ---
 <a name="troubleshoot-backend-health-issues-in-application-gateway"></a>Felsök problem med Server delens hälsa i Application Gateway
 ==================================================
@@ -21,6 +21,9 @@ ms.locfileid: "93397906"
 --------
 
 Azure Application Gateway avsöker som standard server dels servrar för att kontrol lera sin hälso status och kontrol lera om de är redo att betjäna begär Anden. Användare kan också skapa anpassade avsökningar för att nämna värd namnet, sökvägen som ska avsökas och status koderna ska godkännas som felfria. I varje fall, om backend-servern inte svarar korrekt, Application Gateway markerar servern som ohälsosam och slutar vidarebefordra begär anden till servern. När servern har börjat svara korrekt fortsätter Application Gateway att vidarebefordra förfrågningarna.
+
+> [!NOTE]
+> Den här artikeln innehåller referenser till termen *vitlista*, en term som Microsoft inte längre använder. När termen tas bort från program varan tar vi bort det från den här artikeln.
 
 ### <a name="how-to-check-backend-health"></a>Så här kontrollerar du Server dels hälsa
 
@@ -157,7 +160,7 @@ Kontrol lera också om någon NSG/UDR/brand vägg blockerar åtkomsten till IP-a
 
     a.  Öppna en kommando tolk (Win + R- \> cmd), ange `netstat` och välj RETUR.
 
-    b.  Kontrol lera om servern lyssnar på den port som har kon figurer ATS. Exempel:
+    b.  Kontrol lera om servern lyssnar på den port som har kon figurer ATS. Ett exempel:
     ```
             Proto Local Address Foreign Address State PID
             TCP 0.0.0.0:80 0.0.0.0:0 LISTENING 4
@@ -191,7 +194,7 @@ Följ [dessa steg](./application-gateway-create-probe-portal.md)om du vill skapa
 
 **Meddelande:** Innehållet i Server delens \' HTTP-svar matchade inte avsöknings inställningen. Mottagen svars texten innehåller inte {String}.
 
-**Orsak:** När du skapar en anpassad avsökning har du ett alternativ för att markera en backend-server som felfri genom att matcha en sträng från svars texten. Du kan till exempel konfigurera Application Gateway att godkänna "obehörig" som en sträng som ska matchas. Om Server delens svar för avsöknings förfrågan innehåller strängen **obehörig** , så markeras den som felfri. Annars kommer den att markeras som ohälsosam med det här meddelandet.
+**Orsak:** När du skapar en anpassad avsökning har du ett alternativ för att markera en backend-server som felfri genom att matcha en sträng från svars texten. Du kan till exempel konfigurera Application Gateway att godkänna "obehörig" som en sträng som ska matchas. Om Server delens svar för avsöknings förfrågan innehåller strängen **obehörig**, så markeras den som felfri. Annars kommer den att markeras som ohälsosam med det här meddelandet.
 
 **Lösning:** Följ dessa steg för att lösa problemet:
 
@@ -257,7 +260,7 @@ Mer information om hur du extraherar och laddar upp betrodda rot certifikat i Ap
 > [!NOTE]
 > Det här felet kan också inträffa om backend-servern inte utbyter hela kedjan av certifikatet, inklusive roten > mellanliggande (om tillämpligt) > löv under TLS-handskakningen. För att verifiera kan du använda OpenSSL-kommandon från vilken klient som helst och ansluta till backend-servern med hjälp av de konfigurerade inställningarna i Application Gateway avsökningen.
 
-Exempel:
+Ett exempel:
 ```
 OpenSSL> s_client -connect 10.0.0.4:443 -servername www.example.com -showcerts
 ```
@@ -359,7 +362,7 @@ Detta kan bero på en eller flera av följande orsaker:
 
 **Lösning:**
 
-1.  Kontrol lera om din NSG blockerar åtkomsten till portarna 65503-65534 (v1 SKU) eller 65200-65535 (v2 SKU) från **Internet** :
+1.  Kontrol lera om din NSG blockerar åtkomsten till portarna 65503-65534 (v1 SKU) eller 65200-65535 (v2 SKU) från **Internet**:
 
     a.  På fliken Application Gateway **Översikt** väljer du länken **Virtual Network/undernät** .
 
@@ -373,15 +376,15 @@ Detta kan bero på en eller flera av följande orsaker:
 
     f.  Välj **Spara** och verifiera att du kan visa Server delen som felfri. Alternativt kan du göra det via [PowerShell/CLI](../virtual-network/manage-network-security-group.md).
 
-1.  Kontrol lera om din UDR har en standard väg (0.0.0.0/0) med nästa hopp som inte angetts som **Internet** :
+1.  Kontrol lera om din UDR har en standard väg (0.0.0.0/0) med nästa hopp som inte angetts som **Internet**:
     
     a.  Följ steg 1a och 1b för att fastställa ditt undernät.
 
     b.  Kontrol lera om några UDR har kon figurer ATS. I så fall kan du söka efter resursen i Sök fältet eller under **alla resurser**.
 
-    c.  Kontrol lera om det finns några standard vägar (0.0.0.0/0) med nästa hopp som inte angetts som **Internet**. Om inställningen är **virtuell** installation eller **Virtual Network Gateway** , måste du se till att den virtuella enheten eller den lokala enheten kan dirigera paketet tillbaka till Internet-målet utan att ändra paketet.
+    c.  Kontrol lera om det finns några standard vägar (0.0.0.0/0) med nästa hopp som inte angetts som **Internet**. Om inställningen är **virtuell** installation eller **Virtual Network Gateway**, måste du se till att den virtuella enheten eller den lokala enheten kan dirigera paketet tillbaka till Internet-målet utan att ändra paketet.
 
-    d.  Annars ändrar du nästa hopp till **Internet** , väljer **Spara** och kontrollerar Server dels hälsan.
+    d.  Annars ändrar du nästa hopp till **Internet**, väljer **Spara** och kontrollerar Server dels hälsan.
 
 1.  Standard väg annonseras av ExpressRoute/VPN-anslutningen till det virtuella nätverket via BGP:
 

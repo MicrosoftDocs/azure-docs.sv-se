@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/24/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 0a2c1b39f5688b4fc544e5456666ccb8b4801517
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e55c0832638105ad681f74cbeb6429a6704b7fb2
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91281058"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935146"
 ---
 # <a name="quickstart-set-and-retrieve-a-certificate-from-azure-key-vault-using-the-azure-portal"></a>Snabb start: Ange och hämta ett certifikat från Azure Key Vault med hjälp av Azure Portal
 
@@ -31,13 +31,13 @@ Logga in på Azure Portal på https://portal.azure.com.
 ## <a name="create-a-vault"></a>Skapa ett valv
 
 1. På Azure Portal-menyn eller på **Start** sidan väljer du **skapa en resurs**.
-2. Skriv **Key Vault** i sökrutan.
+2. I rutan Sök anger du **Key Vault**.
 3. Välj **Key Vault** i listan med resultat.
 4. Välj **Skapa** i avsnittet Key Vault.
 5. Ange följande information i avsnittet **Skapa nyckelvalv** avsnittet Ange följande information:
     - **Namn**: Ett unikt namn krävs. I den här snabb starten använder vi **exempel-valv**. 
     - **Prenumeration**: Välj en prenumeration.
-    - Under **resurs grupp**väljer du **Skapa ny** och anger ett resurs grupp namn.
+    - Under **resurs grupp** väljer du **Skapa ny** och anger ett resurs grupp namn.
     - Välj en plats i listrutan **Plats**.
     - Lämna standardvärdena för de andra alternativen.
 6. När du har angett den här informationen väljer du **Skapa**.
@@ -55,7 +55,7 @@ Nu är ditt Azure-konto det enda kontot med behörighet att utföra åtgärder i
 
 Om du vill lägga till ett certifikat i valvet behöver du bara göra några ytterligare steg. I det här fallet lägger vi till ett självsignerat certifikat som kan användas av ett program. Certifikatet kallas **ExampleCertificate**.
 
-1. Välj **certifikat**på sidan Key Vault egenskaper.
+1. Välj **certifikat** på sidan Key Vault egenskaper.
 2. Klicka på **Generera/importera**.
 3. På skärmen **skapa ett certifikat** väljer du följande värden:
     - **Metod för att skapa certifikat**: skapa.
@@ -88,4 +88,4 @@ I den här snabb starten har du skapat en Key Vault och lagrat ett certifikat i 
 
 - Läs en [Översikt över Azure Key Vault](../general/overview.md)
 - Se [Azure Key Vault Developer ' s guide](../general/developers-guide.md)
-- Granska [Azure Key Vault bästa praxis](../general/best-practices.md)
+- Granska [Key Vault säkerhets översikt](../general/security-overview.md)

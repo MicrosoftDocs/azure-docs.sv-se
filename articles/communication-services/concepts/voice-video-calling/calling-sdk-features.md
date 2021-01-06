@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: c801a276f3a116f00b34d750ca8bfec7e56d377b
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: e0fff67d6998e55854d4dc3c8db261bc4499f0be
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97680734"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936064"
 ---
 # <a name="calling-client-library-overview"></a>Översikt över klientbiblioteket för samtal
 
@@ -96,8 +96,8 @@ Kommunikations tjänsterna som anropar klient biblioteket stöder följande str�
 
 |           |Webb | Android/iOS|
 |-----------|----|------------|
-|Antal utgående strömmar som kan skickas samtidigt |1 video och en skärm delning | 1 video och en skärm delning|
-|Antal inkommande strömmar som kan renderas samtidigt |1 video och en skärm delning| 6 video-och 1-bildskärms delning |
+|**Antal utgående strömmar som kan skickas samtidigt** |1 video och en skärm delning | 1 video och en skärm delning|
+|**Antal inkommande strömmar som kan renderas samtidigt** |1 video och en skärm delning| 6 video-och 1-bildskärms delning |
 
 
 ## <a name="next-steps"></a>Nästa steg

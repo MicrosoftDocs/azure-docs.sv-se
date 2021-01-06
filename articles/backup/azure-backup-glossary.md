@@ -3,12 +3,12 @@ title: Azure Backup ord lista
 description: Den här artikeln definierar termer som är användbara för användning med Azure Backup.
 ms.topic: conceptual
 ms.date: 12/21/2020
-ms.openlocfilehash: 8baa47667e86b99ebbbf273610809814e768c077
-ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
+ms.openlocfilehash: 1e28f0c2ad5d14ea2a8dc6ce8d5fa2b21c7e65ac
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97733448"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935078"
 ---
 # <a name="azure-backup-glossary"></a>Azure Backup ord lista
 
@@ -172,7 +172,7 @@ Stegvisa säkerhets kopior lagrar bara de block som har ändrats sedan den tidig
 
 ## <a name="instant-restore"></a>Omedelbar återställning
 
-Omedelbar återställning innebär att återställa en dator direkt från säkerhets kopian i stället för från kopian av ögonblicks bilden i valvet. Direkt återställning är snabbare än att återställas från ett valv. Antalet tillgängliga återställnings punkter beror på Retentions tiden som kon figurer ATS för ögonblicks bilder.
+(Villkor för arbets belastning) Omedelbar återställning innebär att återställa en dator direkt från säkerhets kopian i stället för från kopian av ögonblicks bilden i valvet. Direkt återställning är snabbare än att återställas från ett valv. Antalet tillgängliga återställnings punkter beror på Retentions tiden som kon figurer ATS för ögonblicks bilder. Gäller för närvarande endast för virtuell Azure-säkerhetskopiering.
 
 ## <a name="iops"></a>IOPS
 
@@ -226,23 +226,19 @@ En återställning görs från återställnings punkten till käll platsen varif
 
 En lösen fras används för att kryptera och dekryptera data vid säkerhets kopiering eller återställning av den lokala eller lokala datorn med hjälp av MARS-agenten till eller från Azure.
 
-## <a name="point-in-time-restore"></a>Återställning till tidpunkt
-
-Återställa ett objekt till dess tillstånd vid en viss tidpunkt (depå).
-
 ## <a name="private-endpoint"></a>Privat slutpunkt
 
 Läs dokumentationen om den [privata slut punkten](https://docs.microsoft.com/azure/private-link/private-endpoint-overview).
 
 ## <a name="protected-instance"></a>Skyddad instans
 
-En skyddad instans avser den dator, fysiska eller virtuella server som du använder för att konfigurera säkerhets kopieringen till Azure.  Från en **fakturerings synpunkt** är antalet skyddade instanser för en dator en funktion i dess klient del storlek. [Läs mer](https://azure.microsoft.com/pricing/details/backup/).
+En skyddad instans avser den dator, fysiska eller virtuella server som du använder för att konfigurera säkerhets kopieringen till Azure.  Från en **fakturerings synpunkt** är antalet skyddade instanser för en dator en funktion i dess klient del storlek. Därför kan en enda säkerhets kopierings instans (till exempel en virtuell dator som säkerhets kopie ras till Azure) motsvara flera skyddade instanser, beroende på dess klient storlek. [Läs mer](https://azure.microsoft.com/pricing/details/backup/).
 
 ## <a name="rbac-role-based-access-control"></a>RBAC (rollbaserad åtkomst kontroll)
 
 Se RBAC- [dokumentationen](https://docs.microsoft.com/azure/role-based-access-control/overview).
 
-## <a name="recovery-point-restore-point-retention-point"></a>Återställnings punkt/återställnings punkt/kvarhållning
+## <a name="recovery-point-restore-point-retention-point--point-in-time-pit"></a>Återställnings punkt/återställnings punkt/kvarhållning/punkt-i-tid (PIT)
 
 En kopia av de ursprungliga data som säkerhets kopie ras. En kvarhållningsperiod är associerad med en tidsstämpel så att du kan använda den för att återställa ett objekt till en viss tidpunkt.
 
@@ -264,11 +260,11 @@ En användardefinierad regel som anger hur länge säkerhets kopior ska behålla
 
 ## <a name="rpo-recovery-point-objective"></a>Återställnings punkt mål
 
-Återställningen anger den maximala data förlust som är acceptabel i ett data förlust scenario. Detta avgörs av säkerhets kopierings frekvensen.
+Återställa anger den maximala data förlust som är möjlig i ett data förlust scenario. Detta avgörs av säkerhets kopierings frekvensen.
 
 ## <a name="rto-recovery-time-objective"></a>RTO (mål för återställnings tid)
 
-RTO anger den maximala acceptabla tiden som data kan återställas till den senaste tillgängliga tidpunkten efter ett data förlust scenario.
+RTO anger den maximala tid i vilken data kan återställas till den senaste tillgängliga tidpunkten efter ett data förlust scenario.
 
 ## <a name="scheduled-backup"></a>Schemalagd säkerhets kopiering
 
@@ -284,7 +280,7 @@ Mjuk borttagning är en funktion som hjälper till att skydda mot oavsiktlig bor
 
 ## <a name="snapshot"></a>Ögonblicksbild
 
-En ögonblicks bild är en fullständig skrivskyddad kopia av en virtuell hård disk (VHD). [Läs mer](https://docs.microsoft.com/azure/virtual-machines/windows/snapshot-copy-managed-disk).
+En ögonblicks bild är en fullständig skrivskyddad kopia av en virtuell hård disk (VHD) eller en Azure-filresurs. Läs mer om [ögonblicks bilder av diskar](https://docs.microsoft.com/azure/virtual-machines/windows/snapshot-copy-managed-disk) och [ögonblicks bilder av filer](https://docs.microsoft.com/azure/storage/files/storage-snapshots-files).
 
 ## <a name="storage-account"></a>Lagringskonto
 
@@ -314,7 +310,7 @@ En lagrings enhet i Azure som lagrar säkerhetskopierade data. Det är också en
 
 ## <a name="vault-credentials"></a>Autentiseringsuppgifter för valv
 
-Valv filen med autentiseringsuppgifter är ett certifikat som genereras av portalen för varje valv. Detta används när du registrerar en server i valvet. [Läs mer](backup-azure-dpm-introduction.md).
+Valv filen med autentiseringsuppgifter är ett certifikat som genereras av portalen för varje valv. Detta används när du registrerar en lokal server på valvet. [Läs mer](backup-azure-dpm-introduction.md).
 
 ## <a name="vnet-virtual-network"></a>VNET (Virtual Network)
 

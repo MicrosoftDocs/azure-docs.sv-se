@@ -4,16 +4,16 @@ description: Skapa en funktionsapp och distribuera funktionskoden från en GitHu
 ms.date: 07/03/2018
 ms.topic: sample
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 752d8a729c56fc2e0e110fcedc263eab4ba7a96b
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 219e993ad7132c90de6db680facc9b8f815947cc
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94565321"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934398"
 ---
 # <a name="create-a-function-app-in-azure-that-is-deployed-from-github"></a>Skapa en funktionsapp i Azure som distribueras från GitHub
 
-Den här Azure Functions exempel skriptet skapar en Function-app med hjälp av [förbruknings planen](../functions-scale.md#consumption-plan), tillsammans med dess relaterade resurser. Skriptet konfigurerar också funktionskoden för kontinuerlig distribution från en GitHub-lagringsplats. 
+Den här Azure Functions exempel skriptet skapar en Function-app med hjälp av [förbruknings planen](../consumption-plan.md), tillsammans med dess relaterade resurser. Skriptet konfigurerar också funktionskoden för kontinuerlig distribution från en GitHub-lagringsplats. 
 
 För det här exemplet behöver du följande:
 
@@ -42,7 +42,7 @@ Varje kommando i tabellen länkar till kommandospecifik dokumentation. I det hä
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Skapar en resursgrupp där alla resurser lagras. |
 | [az storage account create](/cli/azure/storage/account#az-storage-account-create) | Skapar lagringskontot för funktionsappen. |
-| [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | Skapar en Function-app i den serverbaserade [förbruknings planen](../functions-scale.md#consumption-plan) och kopplar den till en git-eller Mercurial-lagringsplats. |
+| [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | Skapar en Function-app i den serverbaserade [förbruknings planen](../consumption-plan.md) och kopplar den till en git-eller Mercurial-lagringsplats. |
 
 ## <a name="next-steps"></a>Nästa steg
 

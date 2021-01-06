@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
 ms.date: 09/03/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 7ff618024c269a010eddf08128e827ade7921c94
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: ae53ebac1c2a943a2b1ca98b222a8dbab210bdb5
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91940607"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935129"
 ---
 # <a name="quickstart-set-and-retrieve-a-certificate-from-azure-key-vault-using-azure-powershell"></a>Snabb start: Ange och hämta ett certifikat från Azure Key Vault med Azure PowerShell
 
@@ -73,7 +73,7 @@ $Policy = New-AzKeyVaultCertificatePolicy -SecretContentType "application/x-pkcs
 Add-AzKeyVaultCertificate -VaultName "Contoso-Vault2" -Name "ExampleCertificate" -CertificatePolicy $Policy
 ```
 
-Nu kan du referera till det här certifikatet som du lade till Azure Key Vault med hjälp av dess URI. Använd **för https://Contoso-Vault2.vault.azure.net/certificates/ExampleCertificate ** att hämta den aktuella versionen. 
+Nu kan du referera till det här certifikatet som du lade till Azure Key Vault med hjälp av dess URI. Använd **för https://Contoso-Vault2.vault.azure.net/certificates/ExampleCertificate** att hämta den aktuella versionen. 
 
 Visa tidigare lagrat certifikat:
 
@@ -98,4 +98,4 @@ I den här snabb starten skapade du ett Key Vault och lagrat ett certifikat i de
 
 - Läs en [Översikt över Azure Key Vault](../general/overview.md)
 - Se referensen för [Azure PowerShell Key Vault-cmdletar](/powershell/module/az.keyvault/)
-- Granska [Azure Key Vault bästa praxis](../general/best-practices.md)
+- Granska [Key Vault säkerhets översikt](../general/security-overview.md)

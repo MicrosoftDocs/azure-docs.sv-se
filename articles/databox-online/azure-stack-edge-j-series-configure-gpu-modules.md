@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/25/2020
+ms.date: 01/04/2021
 ms.author: alkohli
-ms.openlocfilehash: 8b9f1180639f638e72fdea2f87958628a2e9e86b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d172ce98ba93360c621a91fb0e2a55d022470943
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90891471"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935568"
 ---
 # <a name="configure-and-run-a-module-on-gpu-on-azure-stack-edge-pro-device"></a>Konfigurera och köra en modul på GPU på Azure Stack Edge Pro-enhet
 
@@ -26,49 +26,62 @@ Den här artikeln beskriver hur du konfigurerar och kör en modul på GPU: n på
 
 Innan du börjar ska du kontrollera att:
 
-1. Du har åtkomst till en GPU-aktiverad 1-Node Azure Stack Edge Pro-enhet. Enheten aktive ras med en resurs i Azure.  
+1. Du har åtkomst till en GPU-aktiverad 1-Node Azure Stack Edge Pro-enhet. Enheten aktiveras med en resurs i Azure.  
 
-## <a name="configure-module-to-use-gpu"></a>Konfigurera modulen för att använda GPU
+## <a name="configure-module-to-use-gpu"></a>Konfigurera en modul för att använda GPU
 
-Följ dessa steg om du vill konfigurera en modul att använda GPU: n på din Azure Stack Edge Pro-enhet för att köra en modul.
+Konfigurera en modul så att den använder GPU: n på din Azure Stack Edge Pro-enhet för att köra en modul<!--Can it be simplified? "To configure a module to be run by the GPU on your Azure Stack Edge Pro device,"?--> Följ de här stegen.
 
-1. I Azure Portal går du till den resurs som är kopplad till din enhet. 
+1. I Azure Portal går du till den resurs som är kopplad till din enhet.
 
-2. Gå till **Edge compute > kom igång**. I panelen **Konfigurera Edge Compute** väljer du konfigurera.
+2. I **Översikt** väljer du **IoT Edge**.
 
     ![Konfigurera modulen för att använda GPU 1](media/azure-stack-edge-j-series-configure-gpu-modules/configure-compute-1.png)
 
-3. I bladet **Konfigurera Edge Compute** :
+3. I **aktivera IoT Edge tjänst** väljer du **Lägg till**.
 
-    1. För **IoT Hub**väljer du **Skapa ny**.
-    2. Ange ett namn för den IoT Hub resurs som du vill skapa för din enhet. Om du vill använda en kostnads fri nivå väljer du en befintlig resurs. 
-    3. Anteckna IoT Edges enheten och IoT gateway-enheten som skapas med IoT Hub resursen. Du kommer att använda den här informationen i senare steg.
+   ![Konfigurera modulen för att använda GPU 2](media/azure-stack-edge-j-series-configure-gpu-modules/configure-compute-2.png)
 
-    ![Konfigurera modulen för att använda GPU 2](media/azure-stack-edge-j-series-configure-gpu-modules/configure-compute-2.png)
+4. I **skapa IoT Edge tjänst** anger du inställningarna för din IoT Hub-resurs:
 
-4. Det tar flera minuter att skapa IoT Hub resursen. När resursen har skapats väljer du **Visa konfiguration** i panelen **Konfigurera Edge-beräkning** för att visa information om den IoT Hub resursen.
+   |Fält   |Värde    |
+   |--------|---------|
+   |Prenumeration      | Prenumeration som används av Azure Stack Edge-resursen. |
+   |Resursgrupp    | Resurs grupp som används av Azure Stack Edge-resursen. |
+   |IoT Hub           | Välj från **Skapa ny** eller **Använd befintlig**. <br> Som standard används nivån Standard (S1) till att skapa en IoT-resurs. Om du vill använda en IoT-resurs på kostnadsfri nivå skapar du en sådan och väljer sedan den befintliga resursen. <br> I varje fall använder IoT Hub resursen samma prenumeration och resurs grupp som används av Azure Stack Edge-resursen.     |
+   |Namn              | Om du inte vill använda det standard namn som angetts för en ny IoT Hub resurs anger du ett annat namn. |
 
-    ![Konfigurera modulen för att använda GPU 4](media/azure-stack-edge-j-series-configure-gpu-modules/configure-compute-4.png)
+   När du är klar med inställningarna väljer du **Granska + skapa**. Granska inställningarna för din IoT Hub resurs och välj **skapa**.
 
-5. Gå till **Automatisk enhets hantering > IoT Edge**.
+   ![Kom igång med Compute 2](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-3.png)
 
-    ![Konfigurera modulen för att använda GPU 6](media/azure-stack-edge-j-series-configure-gpu-modules/configure-gpu-2.png)
+   Det tar flera minuter att skapa en resurs för en IoT Hub resurs. När resursen har skapats visar **översikten** IoT Edges tjänsten körs nu.
 
-    I den högra rutan ser du den IoT Edge enhet som är kopplad till din Azure Stack Edge Pro-enhet. Detta motsvarar IoT Edge enhet som du skapade i föregående steg när du skapade IoT Hub resursen. 
-    
-6. Välj den här IoT Edge enheten.
+   ![Kom igång med Compute 3](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-4.png)
+
+5. För att bekräfta att Edge Compute-rollen har kon figurer ATS, väljer du **Egenskaper**.
+
+   ![Kom igång med Compute 4](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-5.png)
+
+6. I **Egenskaper** väljer du länken för **IoT Edge enhet**.
+
+   ![Konfigurera modulen för att använda GPU 6](media/azure-stack-edge-j-series-configure-gpu-modules/configure-gpu-2.png)
+
+   I den högra rutan ser du den IoT Edge enhet som är kopplad till din Azure Stack Edge Pro-enhet. Enheten motsvarar IoT Edge enhet som du skapade när du skapade IoT Hub resursen.
+ 
+7. Välj den här IoT Edge enheten.
 
    ![Konfigurera modulen för att använda GPU 7](media/azure-stack-edge-j-series-configure-gpu-modules/configure-gpu-3.png)
 
-7.  Välj **Ange moduler**.
+8. Välj **Ange moduler**.
 
-    ![Konfigurera modulen för att använda GPU 8](media/azure-stack-edge-j-series-configure-gpu-modules/configure-gpu-4.png)
+   ![Konfigurera modulen för att använda GPU 8](media/azure-stack-edge-j-series-configure-gpu-modules/configure-gpu-4.png)
 
-8. Välj **+ Lägg till** och välj sedan **+ IoT Edge modul**. 
+9. Välj **+ Lägg till** och välj sedan **+ IoT Edge modul**. 
 
     ![Konfigurera modulen för att använda GPU 9](media/azure-stack-edge-j-series-configure-gpu-modules/configure-gpu-5.png)
 
-9. På fliken **Lägg till IoT Edge modul** :
+10. På fliken **Lägg till IoT Edge modul** :
 
     1. Ange **avbildnings-URI: n**. Du kommer att använda de allmänt tillgängliga NVIDIA-modulernas **siffror** här. 
     
@@ -78,32 +91,32 @@ Följ dessa steg om du vill konfigurera en modul att använda GPU: n på din Azu
     
     ![Konfigurera modulen för att använda GPU 10](media/azure-stack-edge-j-series-configure-gpu-modules/configure-gpu-6.png)
 
-10. På fliken **miljövariabler** anger du namnet på variabeln och motsvarande värde. 
+11. På fliken **miljövariabler** anger du namnet på variabeln och motsvarande värde. 
 
     1. Använd NVIDIA_VISIBLE_DEVICES om du vill att den aktuella modulen ska använda en GPU på den här enheten. 
 
-    2. Ange värdet till 0 eller 1. Detta säkerställer att minst en GPU används av enheten för den här modulen. När du ställer in värdet på 0, 1, betyder det att både GPU på enheten används av den här modulen.
+    2. Ange värdet till 0 eller 1. Värdet 0 eller 1 garanterar att minst en GPU används av enheten för den här modulen. När du ställer in värdet på 0, 1, betyder det att både GPU på enheten används av den här modulen.
 
-        ![Konfigurera modulen för att använda GPU 11](media/azure-stack-edge-j-series-configure-gpu-modules/configure-gpu-7.png)
+       ![Konfigurera modulen för att använda GPU 11](media/azure-stack-edge-j-series-configure-gpu-modules/configure-gpu-7.png)
 
-        Mer information om miljövariabler som du kan använda med nVidia-GPU: n finns i [NVIDIA container runtime](https://github.com/NVIDIA/nvidia-container-runtime#environment-variables-oci-spec).
+       Mer information om miljövariabler som du kan använda med nVidia-GPU: n finns i [NVIDIA container runtime](https://github.com/NVIDIA/nvidia-container-runtime#environment-variables-oci-spec).
 
     > [!NOTE]
-    > En GPU kan bara mappas till en modul. En modul kan dock använda en, båda eller inga GPU: er. 
+    > En GPU kan bara mappas till en modul. En modul kan dock använda en, båda eller inga GPU: er.
 
-11. Ange ett namn för modulen. Nu kan du välja att tillhandahålla alternativet för att skapa behållare och ändra modulens dubbla inställningar eller om det är färdigt väljer du **Lägg till**. 
+12. Ange ett namn för modulen. Nu kan du välja att tillhandahålla alternativet för att skapa behållare och ändra modulens dubbla inställningar eller om det är färdigt väljer du **Lägg till**. 
 
     ![Konfigurera modulen för att använda GPU 12](media/azure-stack-edge-j-series-configure-gpu-modules/configure-gpu-8.png)
 
-12. Kontrol lera att modulen körs och välj **Granska + skapa**.    
+13. Kontrol lera att modulen körs och välj **Granska + skapa**.
 
     ![Konfigurera modulen för att använda GPU 13](media/azure-stack-edge-j-series-configure-gpu-modules/configure-gpu-9.png)
 
-13. På fliken **Granska + skapa** visas de distributions alternativ som du har valt. Granska alternativen och välj **skapa**.
+14. På fliken **Granska + skapa** visas de distributions alternativ som du har valt. Granska alternativen och välj **skapa**.
     
     ![Konfigurera modulen för att använda GPU 14](media/azure-stack-edge-j-series-configure-gpu-modules/configure-gpu-10.png)
 
-14. Anteckna **körnings status** för modulen. 
+15. Anteckna **körnings status** för modulen.
     
     ![Konfigurera modulen för att använda GPU 15](media/azure-stack-edge-j-series-configure-gpu-modules/configure-gpu-11.png)
 

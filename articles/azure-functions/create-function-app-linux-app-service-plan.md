@@ -3,16 +3,16 @@ title: Skapa en Function-app på Linux från Azure Portal
 description: Lär dig hur du skapar din första Azure-funktion på Linux med hjälp av Azure Portal.
 ms.topic: how-to
 ms.date: 04/29/2020
-ms.openlocfilehash: 20390239ed58e42749e9a3bae472a2f3f6324bb2
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 34a93795b5e041ccef8e9576f97092e16c429444
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96181262"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937186"
 ---
 # <a name="create-a-function-app-on-linux-in-an-azure-app-service-plan"></a>Skapa en Function-app i Linux i ett Azure App Service plan
 
-Med hjälp av Azure Functions kan Linux användas som värd för funktionerna i en Azure App Service-standardcontainer. Den här artikeln beskriver hur du använder [Azure Portal](https://portal.azure.com) för att skapa en Linux-värdbaserad Function-app som körs i en [App Service plan](functions-scale.md#app-service-plan). Du kan även [använda en egen anpassad container](functions-create-function-linux-custom-image.md).
+Med hjälp av Azure Functions kan Linux användas som värd för funktionerna i en Azure App Service-standardcontainer. Den här artikeln beskriver hur du använder [Azure Portal](https://portal.azure.com) för att skapa en Linux-värdbaserad Function-app som körs i en [App Service plan](dedicated-plan.md). Du kan även [använda en egen anpassad container](functions-create-function-linux-custom-image.md).
 
 ![Skapa en funktionsapp i Azure Portal](./media/create-function-app-linux-app-service-plan/function-app-in-portal-editor.png)
 
@@ -46,11 +46,11 @@ Du måste ha en funktionsapp som värd för körning av dina funktioner i Linux.
 
     :::image type="content" source="./media/create-function-app-linux-app-service-plan/function-app-create-basics-linux.png" alt-text="Sidan Grundinställningar":::
 
-1. Välj **Nästa: värd**. Ange följande inställningar på sidan **värd** .
+1. Välj **Nästa: Värd**. Ange följande inställningar på sidan **värd** .
 
     | Inställning      | Föreslaget värde  | Beskrivning |
     | ------------ | ---------------- | ----------- |
-    | **[Lagringskonto](../storage/common/storage-account-create.md)** |  Globalt unikt namn |  Skapa ett lagringskonto som används av din funktionsapp. Lagrings konto namn måste innehålla mellan 3 och 24 tecken och får bara innehålla siffror och gemena bokstäver. Du kan också använda ett befintligt konto som måste uppfylla kraven för [lagrings kontot](../azure-functions/functions-scale.md#storage-account-requirements). |
+    | **[Lagringskonto](../storage/common/storage-account-create.md)** |  Globalt unikt namn |  Skapa ett lagringskonto som används av din funktionsapp. Lagrings konto namn måste innehålla mellan 3 och 24 tecken och får bara innehålla siffror och gemena bokstäver. Du kan också använda ett befintligt konto som måste uppfylla kraven för [lagrings kontot](../azure-functions/storage-considerations.md#storage-account-requirements). |
     |**Operativsystem**| **Linux** | Ett operativ system är i förväg valt för dig baserat på ditt val av körnings stack, men du kan ändra inställningen om det behövs. |
     | **[Planera](../azure-functions/functions-scale.md)** | **Förbrukning (serverlös)** | Värdplan som definierar hur resurser allokeras till din funktionsapp. I standardplanen för **Förbrukning** läggs resurser till dynamiskt när de krävs av funktionerna. I den här värdbaserade [servern](https://azure.microsoft.com/overview/serverless-computing/) betalar du bara för den tid som dina funktioner körs. När du använder en App Service-plan måste du hantera [funktionsappens skalning](../azure-functions/functions-scale.md).  |
 

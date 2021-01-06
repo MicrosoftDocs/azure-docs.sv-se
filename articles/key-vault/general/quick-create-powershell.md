@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: quickstart
 ms.date: 12/08/2020
 ms.author: mbaldwin
-ms.openlocfilehash: c3407b9539047b5c683f304549977eace7b57341
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 73d247464f167040c6f7129bdf7014b877317fc5
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96779013"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936273"
 ---
 # <a name="quickstart-create-a-key-vault-using-powershell"></a>Snabb start: skapa ett nyckel valv med PowerShell
 
@@ -78,4 +78,5 @@ I den här snabb starten skapade du en Key Vault med hjälp av Azure PowerShell.
 
 - Läs en [Översikt över Azure Key Vault](overview.md)
 - Se referensen för [Azure PowerShell Key Vault-cmdletar](/powershell/module/az.keyvault/)
-- Granska [Azure Key Vault bästa praxis](best-practices.md)
+- Granska [Azure Key Vault säkerhets översikt](security-overview.md)
+

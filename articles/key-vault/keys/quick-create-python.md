@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: keys
 ms.topic: quickstart
 ms.custom: devx-track-python, devx-track-azurecli
-ms.openlocfilehash: d3d5fd34ee6c1d73429af63693094acdaed6c9d2
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 7d1e4018382d26e4df289838ffbb03f1c87505e6
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92784617"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935027"
 ---
 # <a name="quickstart-azure-key-vault-keys-client-library-for-python"></a>Snabb start: klient biblioteket för Azure Key Vaults nycklar för python
 
@@ -21,7 +21,7 @@ Kom igång med Azure Key Vault klient biblioteket för python. Följ stegen neda
 
 [API-referens dokumentation](/python/api/overview/azure/keyvault-keys-readme)  |  [Biblioteks käll kod](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/keyvault/azure-keyvault-keys)  |  [Paket (python-paket index)](https://pypi.org/project/azure-keyvault-keys/)
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 - En Azure-prenumeration – [skapa en kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Python 2.7 + eller 3.5.3 +](/azure/developer/python/configure-local-development-environment)
@@ -86,7 +86,7 @@ set KEY_VAULT_NAME=<your-key-vault-name>
 ````
 Windows PowerShell
 ```powershell
-$Env:KEY_VAULT_NAME=<your-key-vault-name>
+$Env:KEY_VAULT_NAME="<your-key-vault-name>"
 ```
 
 macOS eller Linux
@@ -134,7 +134,7 @@ print(" done.")
 
 ## <a name="run-the-code"></a>Kör koden
 
-Kontrol lera att koden i föregående avsnitt finns i en fil med namnet *kv_keys. py* . Kör sedan koden med följande kommando:
+Kontrol lera att koden i föregående avsnitt finns i en fil med namnet *kv_keys. py*. Kör sedan koden med följande kommando:
 
 ```terminal
 python kv_keys.py
@@ -211,5 +211,5 @@ az group delete --resource-group KeyVault-PythonQS-rg
 - [Översikt över Azure Key Vault](../general/overview.md)
 - [Säker åtkomst till ett nyckel valv](../general/secure-your-key-vault.md)
 - [Guide för Azure Key Vault utvecklare](../general/developers-guide.md)
-- [Metod tips för Azure Key Vault](../general/best-practices.md)
+- [Översikt över Key Vault säkerhet](../general/security-overview.md)
 - [Autentisera med Key Vault](../general/authentication.md)

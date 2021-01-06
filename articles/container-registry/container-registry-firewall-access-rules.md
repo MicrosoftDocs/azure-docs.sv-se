@@ -1,14 +1,14 @@
 ---
 title: Åtkomst regler för brand vägg
-description: Konfigurera regler för åtkomst till ett Azure Container Registry från bakom en brand vägg genom att tillåta åtkomst till ("vit listning") REST API-och data slut punkts domän namn eller tjänstspecifika IP-adressintervall.
+description: Konfigurera regler för åtkomst till ett Azure Container Registry från bakom en brand vägg genom att tillåta åtkomst till REST API-och data slut punkts domän namn eller tjänstspecifika IP-adressintervall.
 ms.topic: article
 ms.date: 05/18/2020
-ms.openlocfilehash: b9ecd5f802176cdc6881294f5dedefd3dd467244
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 548d64632c1d726111770dfb49f705d31f5ca714
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148513"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935996"
 ---
 # <a name="configure-rules-to-access-an-azure-container-registry-behind-a-firewall"></a>Konfigurera regler för åtkomst till ett Azure Container Registry bakom en brand vägg
 
@@ -131,7 +131,7 @@ Du kan aktivera dedikerade data slut punkter med hjälp av Azure Portal eller Az
 Så här aktiverar du data slut punkter med hjälp av portalen:
 
 1. Navigera till behållar registret.
-1. Välj **Networking**  >  **offentlig nätverks åtkomst**.
+1. Välj   >  **offentlig nätverks åtkomst**.
 1. Markera kryss rutan **Aktivera dedikerad data slut punkt** .
 1. Välj **Spara**.
 

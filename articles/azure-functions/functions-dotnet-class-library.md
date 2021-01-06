@@ -4,12 +4,12 @@ description: Lär dig hur du utvecklar Azure Functions med C#.
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 07/24/2020
-ms.openlocfilehash: 9e11d013b6e7473f290ba1ccb54857034491d116
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 77ae736c787666df5e78358bc78e06eee9b7d4f9
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97672673"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936931"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Referens för Azure Functions C#-utvecklare
 
@@ -138,7 +138,7 @@ public static class BindingExpressionsExample
 
 Build-processen skapar en *function.jspå* en fil i en Function-mapp i build-mappen. Som tidigare nämnts är den här filen inte avsedd att redige ras direkt. Du kan inte ändra bindnings konfigurationen eller inaktivera funktionen genom att redigera den här filen. 
 
-Syftet med den här filen är att tillhandahålla information till den skalnings styrenhet som ska användas för att [skala beslut i förbruknings planen](functions-scale.md#how-the-consumption-and-premium-plans-work). Därför har filen bara utlösarens information, inte indata eller utdata-bindningar.
+Syftet med den här filen är att tillhandahålla information till den skalnings styrenhet som ska användas för att [skala beslut i förbruknings planen](event-driven-scaling.md). Därför har filen bara utlösarens information, inte indata eller utdata-bindningar.
 
 Den genererade *function.jsi* filen innehåller en `configurationSource` egenskap som instruerar körningen att använda .net-attribut för bindningar i stället för att *function.jsi* konfigurationen. Här är ett exempel:
 
@@ -208,7 +208,7 @@ Om du installerar kärn verktygen med NPM, som inte påverkar den version av kä
 
 ## <a name="readytorun"></a>ReadyToRun
 
-Du kan kompilera din Function-app som [ReadyToRun-binärfiler](/dotnet/core/whats-new/dotnet-core-3-0#readytorun-images). ReadyToRun är en form av för hands kompilering som kan förbättra start prestandan för att minska effekten av [kall start](functions-scale.md#cold-start) när den körs i en [förbruknings plan](functions-scale.md#consumption-plan).
+Du kan kompilera din Function-app som [ReadyToRun-binärfiler](/dotnet/core/whats-new/dotnet-core-3-0#readytorun-images). ReadyToRun är en form av för hands kompilering som kan förbättra start prestandan för att minska effekten av [kall start](event-driven-scaling.md#cold-start) när den körs i en [förbruknings plan](consumption-plan.md).
 
 ReadyToRun är tillgängligt i .NET 3,0 och kräver [version 3,0 av Azure Functions runtime](functions-versions.md).
 
@@ -618,7 +618,7 @@ public static class IBinderExample
 
 ### <a name="multiple-attribute-example"></a>Exempel på flera attribut
 
-I föregående exempel hämtas app-inställningen för funktions programmets huvud anslutnings sträng för lagrings konto (som är `AzureWebJobsStorage` ). Du kan ange en anpassad app-inställning som ska användas för lagrings kontot genom att lägga till [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) och skicka attributhierarkin till `BindAsync<T>()` . Använd en `Binder` parameter, inte `IBinder` .  Exempel:
+I föregående exempel hämtas app-inställningen för funktions programmets huvud anslutnings sträng för lagrings konto (som är `AzureWebJobsStorage` ). Du kan ange en anpassad app-inställning som ska användas för lagrings kontot genom att lägga till [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) och skicka attributhierarkin till `BindAsync<T>()` . Använd en `Binder` parameter, inte `IBinder` .  Ett exempel:
 
 ```cs
 public static class IBinderExampleMultipleAttributes

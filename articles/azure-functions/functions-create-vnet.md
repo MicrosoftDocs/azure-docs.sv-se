@@ -3,12 +3,12 @@ title: Integrera Azure Functions med ett virtuellt Azure-nätverk
 description: En steg-för-steg-självstudie som visar hur du ansluter en funktion till ett virtuellt Azure-nätverk
 ms.topic: article
 ms.date: 4/23/2020
-ms.openlocfilehash: f50c923104fdfcf26f400f20f0de66a82eb3d245
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: efc936111d162d73b1cc5465ae6b677c9006ab32
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87387531"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937030"
 ---
 # <a name="tutorial-integrate-functions-with-an-azure-virtual-network"></a>Självstudie: integrera Functions med ett virtuellt Azure-nätverk
 
@@ -29,7 +29,7 @@ Följande diagram visar arkitekturen för den lösning som du skapar:
 
 Funktioner som körs i Premium-planen har samma värd funktioner som webbappar i Azure App Service, vilket omfattar funktionen VNet-integrering. Mer information om VNet-integrering, inklusive fel sökning och Avancerad konfiguration finns i [integrera din app med ett virtuellt Azure-nätverk](../app-service/web-sites-integrate-with-vnet.md).
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 I den här självstudien är det viktigt att du förstår IP-adressering och undernät. Du kan börja med [den här artikeln som beskriver grunderna för adressering och undernät](https://support.microsoft.com/help/164015/understanding-tcp-ip-addressing-and-subnetting-basics). Många fler artiklar och videor är tillgängliga online.
 
@@ -62,11 +62,11 @@ Skapa sedan en förkonfigurerad virtuell dator som kör WordPress i ett virtuell
     | **Namn på virtuell dator** | VNET-Wordpress | Det virtuella dator namnet måste vara unikt i resurs gruppen |
     | **[Region](https://azure.microsoft.com/regions/)** | Östeuropa Västeuropa | Välj en region nära dig eller nära de funktioner som har åtkomst till den virtuella datorn. |
     | **Storlek** | B1S | Välj **ändra storlek** och välj sedan B1S Standard avbildning, som har 1 vCPU och 1 GB minne. |
-    | **Autentiseringstyp** | lösenordsinställning | Om du vill använda lösenordsautentisering måste du också ange ett **användar namn**, ett säkert **lösen ord**och sedan **Bekräfta lösen ordet**. I den här självstudien behöver du inte logga in på den virtuella datorn om du inte behöver felsöka. |
+    | **Autentiseringstyp** | Lösenord | Om du vill använda lösenordsautentisering måste du också ange ett **användar namn**, ett säkert **lösen ord** och sedan **Bekräfta lösen ordet**. I den här självstudien behöver du inte logga in på den virtuella datorn om du inte behöver felsöka. |
 
 1. Välj fliken **nätverk** och under Konfigurera virtuella nätverk väljer du **Skapa ny**.
 
-1. I **Skapa virtuellt nätverk**använder du inställningarna i tabellen under bilden:
+1. I **Skapa virtuellt nätverk** använder du inställningarna i tabellen under bilden:
 
     ![Fliken nätverk i Create VM](./media/functions-create-vnet/create-vm-2.png)
 
@@ -81,13 +81,13 @@ Skapa sedan en förkonfigurerad virtuell dator som kör WordPress i ett virtuell
 
 1. Gå tillbaka till fliken **nätverk** och välj **ingen** för **offentlig IP**.
 
-1. Välj fliken **hantering** , sedan i **lagrings konto för diagnostik**väljer du det lagrings konto som du skapade med din Function-app.
+1. Välj fliken **hantering** , sedan i **lagrings konto för diagnostik** väljer du det lagrings konto som du skapade med din Function-app.
 
 1. Välj **Granska + skapa**. När verifieringen är klar väljer du **skapa**. Processen för att skapa virtuella datorer tar några minuter. Den skapade virtuella datorn har bara åtkomst till det virtuella nätverket.
 
 1. När den virtuella datorn har skapats väljer du **gå till resurs** för att visa sidan för din nya virtuella dator och väljer sedan **nätverk** under **Inställningar**.
 
-1. Kontrol lera att det inte finns någon **offentlig IP-adress**. Anteckna den **privata IP-adressen**som du använder för att ansluta till den virtuella datorn från din Function-app.
+1. Kontrol lera att det inte finns någon **offentlig IP-adress**. Anteckna den **privata IP-adressen** som du använder för att ansluta till den virtuella datorn från din Function-app.
 
     ![Nätverks inställningar på den virtuella datorn](./media/functions-create-vnet/vm-networking.png)
 
@@ -99,15 +99,15 @@ Med en WordPress-webbplats som körs i en virtuell dator i ett virtuellt nätver
 
 1. I din nya Function-app väljer du **nätverk** på den vänstra menyn.
 
-1. Under **VNet-integrering**väljer **du klicka här för att konfigurera**.
+1. Under **VNet-integrering** väljer **du klicka här för att konfigurera**.
 
     :::image type="content" source="./media/functions-create-vnet/networking-0.png" alt-text="Välj nätverk i Function-appen":::
 
 1. På sidan **VNet-integration** väljer du **Lägg till VNet**.
 
-    :::image type="content" source="./media/functions-create-vnet/networking-2.png" alt-text="Välj nätverk i Function-appen":::
+    :::image type="content" source="./media/functions-create-vnet/networking-2.png" alt-text="Lägg till för hands versionen av VNet-integrering":::
 
-1. I **nätverks funktions status**använder du inställningarna i tabellen under bilden:
+1. I **nätverks funktions status** använder du inställningarna i tabellen under bilden:
 
     ![Definiera funktions programmet virtuellt nätverk](./media/functions-create-vnet/networking-3.png)
 
@@ -129,7 +129,7 @@ Med VNet-integrering aktiverat kan du skapa en proxy i din Function-app för att
 
 1. I din Function-app väljer du  **proxyservrar** på den vänstra menyn och väljer sedan **Lägg till**. Använd proxyinställningarna i tabellen under bilden:
 
-    :::image type="content" source="./media/functions-create-vnet/create-proxy.png" alt-text="Välj nätverk i Function-appen":::
+    :::image type="content" source="./media/functions-create-vnet/create-proxy.png" alt-text="Definiera proxyinställningarna":::
 
     | Inställning  | Föreslaget värde  | Beskrivning      |
     | -------- | ---------------- | ---------------- |
@@ -139,9 +139,9 @@ Med VNet-integrering aktiverat kan du skapa en proxy i din Function-app för att
 
 1. Välj **skapa** för att lägga till proxy i din Function-app.
 
-## <a name="try-it-out"></a>Prova nu
+## <a name="try-it-out"></a>Prova
 
-1. Försök att komma åt den URL som du använde som **Server dels-URL**i webbläsaren. Som förväntat, tids gränsen för begäran. En timeout inträffar eftersom WordPress-platsen bara är ansluten till ditt virtuella nätverk och inte Internet.
+1. Försök att komma åt den URL som du använde som **Server dels-URL** i webbläsaren. Som förväntat, tids gränsen för begäran. En timeout inträffar eftersom WordPress-platsen bara är ansluten till ditt virtuella nätverk och inte Internet.
 
 1. Kopiera URL-värdet för **proxyn** från din nya proxy och klistra in det i adress fältet i webbläsaren. Den returnerade avbildningen är från WordPress-webbplatsen som körs i det virtuella nätverket.
 
@@ -160,4 +160,4 @@ Funktioner som körs i en Premium-plan delar samma underliggande App Service-inf
 > [!div class="nextstepaction"]
 > [Lär dig mer om nätverks alternativen i functions](./functions-networking-options.md)
 
-[Premiumplan]: functions-scale.md#premium-plan
+[Premiumplan]: functions-premium-plan.md

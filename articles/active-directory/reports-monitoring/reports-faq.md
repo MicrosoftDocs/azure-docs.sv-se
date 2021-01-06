@@ -16,12 +16,12 @@ ms.date: 05/12/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c274424641ee0173d68f0de9061415815b0df588
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 45b6b182d030c267dcec7ed57c0c0dd1901b0cb1
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97107438"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935095"
 ---
 # <a name="frequently-asked-questions-around-azure-active-directory-reports"></a>Vanliga frågor och svar kring Azure Active Directory rapporter
 
@@ -143,8 +143,8 @@ Den här artikeln innehåller svar på vanliga frågor om Azure Active Directory
 
 **A:** Status för villkorlig åtkomst kan ha följande värden:
 
-* **Används inte**: det innebär att det inte fanns någon ca-princip med användaren och appen i omfånget. 
-* **Lyckades**: det innebär att en ca-princip med användaren och appen i omfattning och ca-principer uppfylldes. 
+* **Används inte**: det innebär att det inte fanns någon princip för villkorlig åtkomst med användaren och appen i omfånget. 
+* **Lyckades**: det innebär att en princip för villkorlig åtkomst med användaren och appen i omfattning och principer för villkorlig åtkomst har uppfyllts. 
 * **Fel**: inloggningen uppfyllde användar-och program villkoret för minst en princip för villkorlig åtkomst och beviljade kontroller är antingen inte uppfyllda eller har angetts till blockera åtkomst.
     
 **F: Vad är alla möjliga värden för resultatet av principen för villkorlig åtkomst?**
@@ -158,7 +158,7 @@ Den här artikeln innehåller svar på vanliga frågor om Azure Active Directory
     
 **F: princip namnet i all inloggnings rapport stämmer inte överens med princip namnet i CA. Varför?**
 
-**A:** Princip namnet i alla inloggnings rapporter baseras på certifikat utfärdarens princip namn vid tidpunkten för inloggningen. Detta kan vara inkonsekvent med princip namnet i CA om du uppdaterade princip namnet senare, det vill säga efter inloggningen.
+**A:** Princip namnet i rapporten alla inloggningar baseras på namnet på principen för villkorlig åtkomst vid tidpunkten för inloggningen. Detta kan vara inkonsekvent med princip namnet i CA om du uppdaterade princip namnet senare, det vill säga efter inloggningen.
 
 **F: min inloggning blockerades på grund av en princip för villkorlig åtkomst, men rapporten inloggnings aktivitet visar att inloggningen lyckades. Varför?**
 

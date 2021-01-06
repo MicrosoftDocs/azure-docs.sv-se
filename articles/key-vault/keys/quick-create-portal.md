@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/24/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 41f3d60d91b7418d6e9733b8351d4830b31dbace
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 419fe72d400177ce9fa3d9811d7dfa06e74c0810
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "81424197"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935061"
 ---
 # <a name="quickstart-set-and-retrieve-a-key-from-azure-key-vault-using-the-azure-portal"></a>Snabb start: Ange och hämta en nyckel från Azure Key Vault med hjälp av Azure Portal
 
@@ -31,13 +31,13 @@ Logga in på Azure Portal på https://portal.azure.com.
 ## <a name="create-a-vault"></a>Skapa ett valv
 
 1. På Azure Portal-menyn eller på **Start** sidan väljer du **skapa en resurs**.
-2. Skriv **Key Vault** i sökrutan.
+2. I rutan Sök anger du **Key Vault**.
 3. Välj **Key Vault** i listan med resultat.
 4. Välj **Skapa** i avsnittet Key Vault.
 5. Ange följande information i avsnittet **Skapa nyckelvalv** avsnittet Ange följande information:
     - **Namn**: Ett unikt namn krävs. I den här snabb starten använder vi **exempel-valv**. 
     - **Prenumeration**: Välj en prenumeration.
-    - Under **resurs grupp**väljer du **Skapa ny** och anger ett resurs grupp namn.
+    - Under **resurs grupp** väljer du **Skapa ny** och anger ett resurs grupp namn.
     - Välj en plats i listrutan **Plats**.
     - Lämna standardvärdena för de andra alternativen.
 6. När du har angett den här informationen väljer du **Skapa**.
@@ -83,4 +83,4 @@ I den här snabb starten skapade du en Key Vault och sparade en nyckel i den. Om
 
 - Läs en [Översikt över Azure Key Vault](../general/overview.md)
 - Se [Azure Key Vault Developer ' s guide](../general/developers-guide.md)
-- Granska [Azure Key Vault bästa praxis](../general/best-practices.md)
+- Granska [Key Vault säkerhets översikt](../general/security-overview.md)

@@ -1,26 +1,26 @@
 ---
 title: Konfigurera utvecklings miljön för distributions skript i mallar | Microsoft Docs
-description: Konfigurera utvecklings miljön för distributions skript i Azure Resource Manager mallar.
+description: Konfigurera utvecklings miljön för distributions skript i Azure Resource Manager mallar (ARM-mallar).
 services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 12/14/2020
 ms.author: jgao
-ms.openlocfilehash: d12ec5e3fef45429741fff1665f435d68e6c83f6
-ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
+ms.openlocfilehash: 13dc072e31f0d27768de8d9a62ea942d55460713
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97734189"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936404"
 ---
-# <a name="configure-development-environment-for-deployment-scripts-in-templates"></a>Konfigurera utvecklings miljön för distributions skript i mallar
+# <a name="configure-development-environment-for-deployment-scripts-in-arm-templates"></a>Konfigurera utvecklings miljön för distributions skript i ARM-mallar
 
 Lär dig hur du skapar en utvecklings miljö för att utveckla och testa distributions skript med en distributions skript avbildning. Du kan antingen skapa en [Azure Container instance](../../container-instances/container-instances-overview.md) eller använda [Docker](https://docs.docker.com/get-docker/). Båda beskrivs i den här artikeln.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
-Om du inte har ett distributions skript kan du skapa en **hello.ps1** -fil med följande innehåll:
+Om du inte har ett distributions skript kan du skapa en _hello.ps1_ -fil med följande innehåll:
 
 ```powershell
 param([string] $name)
@@ -39,11 +39,11 @@ Om du vill redigera dina skript på datorn måste du skapa ett lagrings konto oc
 
 ### <a name="create-an-azure-container-instance"></a>Skapa en Azure Container instance
 
-Följande ARM-mall skapar en behållar instans och en fil resurs och monterar sedan fil resursen till behållar avbildningen.
+Följande Azure Resource Manager mall (ARM-mall) skapar en behållar instans och en fil resurs och monterar sedan fil resursen till behållar avbildningen.
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "projectName": {
@@ -153,12 +153,13 @@ Följande ARM-mall skapar en behållar instans och en fil resurs och monterar se
   ]
 }
 ```
-Standardvärdet för monterings Sök vägen är **deploymentScript**.  Detta är sökvägen i behållar instansen där den monteras på fil resursen.
 
-Standard behållar avbildningen som anges i mallen är **MCR.Microsoft.com/azuredeploymentscripts-PowerShell:AZ4.3**.   Se en lista över [Azure PowerShell-versioner som stöds](https://mcr.microsoft.com/v2/azuredeploymentscripts-powershell/tags/list). Se en lista över [Azure CLI-versioner som stöds](https://mcr.microsoft.com/v2/azure-cli/tags/list).
+Standardvärdet för monterings Sök vägen är `deploymentScript` . Detta är sökvägen i behållar instansen där den monteras på fil resursen.
+
+Standard behållar avbildningen som anges i mallen är `mcr.microsoft.com/azuredeploymentscripts-powershell:az4.3` . Se en lista över [Azure PowerShell-versioner som stöds](https://mcr.microsoft.com/v2/azuredeploymentscripts-powershell/tags/list). Se en lista över [Azure CLI-versioner som stöds](https://mcr.microsoft.com/v2/azure-cli/tags/list).
 
   >[!IMPORTANT]
-  > Distributions skriptet använder de tillgängliga CLI-avbildningarna från Microsoft Container Registry (MCR). Det tar ungefär en månad att certifiera en CLI-avbildning för distributions skript. Använd inte de CLI-versioner som släpptes inom 30 dagar. För att hitta versions datumen för avbildningarna, se [versions information för Azure CLI](/cli/azure/release-notes-azure-cli?view=azure-cli-latest&preserve-view=true). Om en version som inte stöds används listas de versioner som stöds i fel meddelandet.
+  > Distributions skriptet använder de tillgängliga CLI-avbildningarna från Microsoft Container Registry (MCR). Det tar ungefär en månad att certifiera en CLI-avbildning för distributions skript. Använd inte de CLI-versioner som släpptes inom 30 dagar. För att hitta versions datumen för avbildningarna, se [versions information för Azure CLI](/cli/azure/release-notes-azure-cli?view=azure-cli-latest&preserve-view=true). Om en version som inte stöds används visas de versioner som stöds i fel meddelandet.
 
 Mallen pausar behållar instansen 1800 sekunder. Du har 30 minuter innan behållar instansen hamnar i Terminal-tillstånd och sessionen avslutas.
 
@@ -196,7 +197,7 @@ Du kan också ladda upp filen med hjälp av Azure Portal och Azure CLI.
 
 1. Från Azure Portal öppnar du resurs gruppen där du har distribuerat behållar instansen och lagrings kontot.
 1. Öppna behållar gruppen. Standard behållar grupps namnet är projekt namnet med **CG** tillagt. Du ser att behållar instansen är i **Kör** tillstånd.
-1. Välj **behållare** på den vänstra menyn. Du ska se en behållar instans.  Namnet på behållar instansen är projekt namnet med **containern** .
+1. Välj **behållare** på den vänstra menyn. Du ska se en behållar instans. Namnet på behållar instansen är projekt namnet med **containern** .
 
     ![instans av distributions skriptets Connect-behållare](./media/deployment-script-template-configure-dev/deployment-script-container-instance-connect.png)
 
@@ -248,7 +249,7 @@ Du måste också konfigurera fildelning för att montera katalogen som innehåll
     docker run -v <host drive letter>:/<host directory name>:/data -it mcr.microsoft.com/azuredeploymentscripts-powershell:az4.3
     ```
 
-    Ersätt **&lt; värd driv rutins beteckningen>** och **&lt; värd katalog namnet>** med en befintlig mapp på den delade enheten.  Mappen mappas till mappen **/data** i behållaren. Till exempel för att mappa D:\docker:
+    Ersätt **&lt; värd driv rutins beteckningen>** och **&lt; värd katalog namnet>** med en befintlig mapp på den delade enheten. Mappen mappas till mappen _/data_ i behållaren. Till exempel för att mappa _D:\docker_:
 
     ```command
     docker run -v d:/docker:/data -it mcr.microsoft.com/azuredeploymentscripts-powershell:az4.3
@@ -262,7 +263,7 @@ Du måste också konfigurera fildelning för att montera katalogen som innehåll
     docker run -v d:/docker:/data -it mcr.microsoft.com/azure-cli:2.0.80
     ```
 
-1. Följande skärm bild visar hur du kör ett PowerShell-skript, eftersom du har en helloworld.ps1-fil på den delade enheten.
+1. Följande skärm bild visar hur du kör ett PowerShell-skript, eftersom du har en _helloworld.ps1_ -fil på den delade enheten.
 
     ![Resource Manager-mall distribution skript Docker cmd](./media/deployment-script-template/resource-manager-deployment-script-docker-cmd.png)
 
@@ -273,4 +274,4 @@ När skriptet har testats kan du använda det som ett distributions skript i mal
 I den här artikeln har du lärt dig hur du använder distributions skript. För att gå igenom en själv studie kurs om distributions skript:
 
 > [!div class="nextstepaction"]
-> [Självstudie: använda distributions skript i Azure Resource Manager mallar](./template-tutorial-deployment-script.md)
+> [Självstudie: använda distributions skript i ARM-mallar](./template-tutorial-deployment-script.md)

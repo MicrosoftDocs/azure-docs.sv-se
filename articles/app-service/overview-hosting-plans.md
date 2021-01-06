@@ -6,16 +6,16 @@ ms.assetid: dea3f41e-cf35-481b-a6bc-33d7fc9d01b1
 ms.topic: article
 ms.date: 10/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: 8033235cde5b7ebe298bb1fa8d4222e208df998b
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: a29d81be9b750d89230a180b8a7c786466d99bb8
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183013"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936438"
 ---
 # <a name="azure-app-service-plan-overview"></a>Översikt över Azure App Service-plan
 
-I App Service (Web Apps, API Apps eller Mobile Apps) körs en app alltid i en _App Service plan_. Dessutom har [Azure Functions](../azure-functions/functions-scale.md#app-service-plan) också möjlighet att köra i en _App Service plan_. En App Service-plan definierar en uppsättning beräkningsresurser som en webbapp ska köra. Dessa beräknings resurser är likvärdiga med [_Server gruppen_](https://wikipedia.org/wiki/Server_farm) i konventionella webb värdar. En eller flera appar kan konfigureras för att köras på samma dator resurser (eller i samma App Service plan).
+I App Service (Web Apps, API Apps eller Mobile Apps) körs en app alltid i en _App Service plan_. Dessutom har [Azure Functions](../azure-functions/dedicated-plan.md) också möjlighet att köra i en _App Service plan_. En App Service-plan definierar en uppsättning beräkningsresurser som en webbapp ska köra. Dessa beräknings resurser är likvärdiga med [_Server gruppen_](https://wikipedia.org/wiki/Server_farm) i konventionella webb värdar. En eller flera appar kan konfigureras för att köras på samma dator resurser (eller i samma App Service plan).
 
 När du skapar en App Service plan i en viss region (till exempel Västeuropa) skapas en uppsättning beräknings resurser för den planen i den regionen. De appar du infogar i den här App Service plan köra på de här beräknings resurserna som definieras av din App Service plan. Varje App Service-plan definierar:
 

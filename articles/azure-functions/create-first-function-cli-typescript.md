@@ -4,12 +4,12 @@ description: Lär dig hur du skapar en TypeScript-funktion från kommando raden 
 ms.date: 11/03/2020
 ms.topic: quickstart
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 981c96bb8775a3fdd3f951d079cd7ad285d09680
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 488ef9fa3fd5b6c09ed435483dbf8f6fa3eb5bef
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94637038"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937203"
 ---
 # <a name="quickstart-create-a-typescript-function-in-azure-from-the-command-line"></a>Snabb start: skapa en TypeScript-funktion i Azure från kommando raden
 
@@ -95,7 +95,7 @@ Om du vill kan du hoppa över att [köra funktionen lokalt](#run-the-function-lo
 
 :::code language="typescript" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-TypeScript/index.ts":::
 
-För en HTTP-utlösare tar funktionen emot begär ande data i variabeln `req` av typen **HttpRequest** som definieras i *function.jspå*. Returvärdet, som definieras som `$return` i *function.jspå* , är svaret. 
+För en HTTP-utlösare tar funktionen emot begär ande data i variabeln `req` av typen **HttpRequest** som definieras i *function.jspå*. Returvärdet, som definieras som `$return` i *function.jspå*, är svaret. 
 
 #### <a name="functionjson"></a>function.json
 
@@ -164,7 +164,7 @@ Varje bindning kräver en riktning, en typ och ett unikt namn. HTTP-utlösaren h
         
     I föregående exempel ersätter `<STORAGE_NAME>` du med namnet på det konto som du använde i föregående steg och ersätter `<APP_NAME>` med ett globalt unikt namn som passar dig. `<APP_NAME>` är även DNS-standarddomänen för funktionsappen. 
     
-    Det här kommandot skapar en Function-app som körs på den angivna språk körningen under [Azure Functions förbruknings plan](functions-scale.md#consumption-plan), vilket är kostnads fritt för den användnings mängd som du ådrar dig här. Kommandot etablerar även en associerad Azure Application insikts-instans i samma resurs grupp, som du kan använda för att övervaka din Function-app och Visa loggar. Mer information finns i [övervaka Azure Functions](functions-monitoring.md). Instansen debiteras inga kostnader förrän du aktiverar den.
+    Det här kommandot skapar en Function-app som körs på den angivna språk körningen under [Azure Functions förbruknings plan](consumption-plan.md), vilket är kostnads fritt för den användnings mängd som du ådrar dig här. Kommandot etablerar även en associerad Azure Application insikts-instans i samma resurs grupp, som du kan använda för att övervaka din Function-app och Visa loggar. Mer information finns i [övervaka Azure Functions](functions-monitoring.md). Instansen debiteras inga kostnader förrän du aktiverar den.
 
 ## <a name="deploy-the-function-project-to-azure"></a>Distribuera funktions projektet till Azure
 

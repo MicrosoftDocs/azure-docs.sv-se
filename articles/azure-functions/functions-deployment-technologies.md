@@ -4,12 +4,12 @@ description: Lär dig hur du kan distribuera kod till Azure Functions på olika 
 ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.openlocfilehash: 7a75408008a90a2c40553b1f6c5c196775a48e61
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 04d96a09d41ace64bed5667bb9f0fa6e4beed244
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96168108"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936965"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Distributions tekniker i Azure Functions
 
@@ -25,7 +25,7 @@ I följande tabell beskrivs tillgängliga distributions metoder för ditt funkti
 | -- | -- | -- |
 | Verktyg-baserade | &bull;&nbsp;[Visual &nbsp; Studio &nbsp; Code &nbsp; Publishing](functions-develop-vs-code.md#publish-to-azure)<br/>&bull;&nbsp;[Visual Studio-publicering](functions-develop-vs.md#publish-to-azure)<br/>&bull;&nbsp;[Kärn verktyg publicera](functions-run-local.md#publish) | Distributioner under utveckling och andra AD-Hock distributioner. Distributioner hanteras lokalt av verktyget. | 
 | App Service-hanterad| &bull;&nbsp;[Distributions &nbsp; Center &nbsp; (CI/CD)](functions-continuous-deployment.md)<br/>&bull;&nbsp;[Container &nbsp; distributioner](functions-create-function-linux-custom-image.md#enable-continuous-deployment-to-azure) |  Kontinuerlig distribution (CI/CD) från käll kontroll eller ett behållar register. Distributioner hanteras av App Service Platform (kudu).|
-| Externa pipelines|&bull;&nbsp;[DevOps-pipeline](functions-how-to-azure-devops.md)<br/>&bull;&nbsp;[GitHub-åtgärder](functions-how-to-github-actions.md) | Produktions-och DevOps-pipeliner som innehåller ytterligare verifiering, testning och andra åtgärder körs som en del av en automatiserad distribution. Distributioner hanteras av pipelinen. |
+| Externa pipelines|&bull;&nbsp;[Azure-pipeline](functions-how-to-azure-devops.md)<br/>&bull;&nbsp;[GitHub-åtgärder](functions-how-to-github-actions.md) | Produktions-och DevOps-pipeliner som innehåller ytterligare verifiering, testning och andra åtgärder körs som en del av en automatiserad distribution. Distributioner hanteras av pipelinen. |
 
 Även om vissa funktions distributioner använder den bästa tekniken baserat på deras kontext, baseras de flesta distributions metoderna på [zip-distribution](#zip-deploy).
 
@@ -33,9 +33,9 @@ I följande tabell beskrivs tillgängliga distributions metoder för ditt funkti
 
 Azure Functions stöder lokal utveckling på över plattformar och är värd för Windows och Linux. För närvarande är tre värd planer tillgängliga:
 
-+ [Bruk](functions-scale.md#consumption-plan)
-+ [Denaturering](functions-scale.md#premium-plan)
-+ [Dedikerad (App Service)](functions-scale.md#app-service-plan)
++ [Förbrukning](consumption-plan.md)
++ [Premium](functions-premium-plan.md)
++ [Dedikerad (App Service)](dedicated-plan.md)
 
 Varje plan har olika beteenden. Alla distributions tekniker är inte tillgängliga för varje smak av Azure Functions. Följande diagram visar vilka distributions tekniker som stöds för varje kombination av operativ system och värd plan:
 
@@ -96,7 +96,7 @@ Linux Function-appar som körs i förbruknings planen har ingen SCM/kudu-plats, 
 
 ##### <a name="dedicated-and-premium-plans"></a>Dedikerade och Premium planer
 
-Function-appar som körs på Linux i [dedikerade (App Service) plan](functions-scale.md#app-service-plan) och [Premium-planen](functions-scale.md#premium-plan) har också en begränsad SCM/kudu-plats.
+Function-appar som körs på Linux i [dedikerade (App Service) plan](dedicated-plan.md) och [Premium-planen](functions-premium-plan.md) har också en begränsad SCM/kudu-plats.
 
 ## <a name="deployment-technology-details"></a>Information om distributions teknik
 

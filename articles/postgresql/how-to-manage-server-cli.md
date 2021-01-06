@@ -3,21 +3,21 @@ title: Hantera Server – Azure CLI – Azure Database for PostgreSQL
 description: Lär dig hur du hanterar en Azure Database for PostgreSQL-Server från Azure CLI.
 author: ajlam
 ms.author: andrela
-ms.service: mysql
+ms.service: postgresql
 ms.topic: how-to
 ms.date: 9/22/2020
-ms.openlocfilehash: d99634388b9c4db99c996cfccb9bb5f12682f217
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 2ea07e2bc12e6fc0d62abd462b8537c6a93689f9
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490126"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935809"
 ---
 # <a name="manage-an-azure-database-for-postgresql-single-server-using-the-azure-cli"></a>Hantera en Azure Database for PostgreSQL enskild server med Azure CLI
 
 Den här artikeln visar hur du hanterar dina enda servrar som distribueras i Azure. Hanterings uppgifter omfattar skalning av beräknings-och lagrings utrymme, återställning av administratörs lösen ord och visning av Server information.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Om du inte har en Azure-prenumeration kan du skapa ett [kostnadsfritt](https://azure.microsoft.com/free/) konto innan du börjar. Den här artikeln kräver att du kör Azure CLI version 2,0 eller senare lokalt. Kör kommandot `az --version` om du vill se vilken version som är installerad. Om du behöver installera eller uppgradera kan du läsa [Installera Azure CLI](/cli/azure/install-azure-cli).
 
@@ -33,7 +33,7 @@ Välj den aktuella prenumerationen under ditt konto med kommandot [AZ Account se
 az account set --subscription <subscription id>
 ```
 
-Om du inte redan har skapat en server kan du läsa den här [snabb](quickstart-create-server-database-azure-cli.md) starten för att skapa en.
+Om du inte redan har skapat en server, se den här [snabb](quickstart-create-server-database-azure-cli.md) starten för att skapa en.
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 

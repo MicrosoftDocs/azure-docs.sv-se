@@ -5,12 +5,12 @@ ms.date: 12/2/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp, mvc, devx-track-python, devx-track-azurepowershell, devx-track-azurecli
 zone_pivot_groups: programming-languages-set-functions-full
-ms.openlocfilehash: f270f74f97a9b9306d7b23dacec12c38f418dbd1
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: fb85920b04e3cd457dc36d1ba1fd0f18dcd7abb6
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96921816"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937067"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>Skapa en funktion i Linux med en anpassad container
 
@@ -20,7 +20,7 @@ I den här självstudien skapar du och distribuerar din kod till Azure Functions
 Azure Functions stöder alla språk och körnings miljöer med [anpassade hanterare](functions-custom-handlers.md). För vissa språk, till exempel det R-programmeringsspråk som används i den här självstudien, måste du installera körningen eller ytterligare bibliotek som beroenden som kräver att en anpassad behållare används.
 ::: zone-end
 
-Distribution av funktions koden i en anpassad Linux-behållare kräver [Premium-plan](functions-premium-plan.md#features) eller [dedikerad (App Service) plan-](functions-scale.md#app-service-plan) värd. Genom att slutföra den här självstudien debiteras du kostnader för några amerikanska dollar i ditt Azure-konto, som du kan minimera genom att [Rensa resurser](#clean-up-resources) när du är klar.
+Distribution av funktions koden i en anpassad Linux-behållare kräver [Premium-plan](functions-premium-plan.md) eller [dedikerad (App Service) plan-](dedicated-plan.md) värd. Genom att slutföra den här självstudien debiteras du kostnader för några amerikanska dollar i ditt Azure-konto, som du kan minimera genom att [Rensa resurser](#clean-up-resources) när du är klar.
 
 Du kan också använda en standard-Azure App Service-behållare enligt beskrivningen i [skapa din första funktion på Linux](./create-first-function-cli-csharp.md?pivots=programming-language-python). Bas avbildningar som stöds för Azure Functions finns i [Azure Functions Base images-lagrings platsen](https://hub.docker.com/_/microsoft-azure-functions-base).
 

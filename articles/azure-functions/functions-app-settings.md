@@ -3,12 +3,12 @@ title: Referens för appinställningar för Azure Functions
 description: Referens dokumentation för Azure Functions app-inställningar eller miljövariabler.
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 3d7292999fc4b53fed06822461857185127dc793
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 72b42e392f350a8693ca8a052bdec1d5fd337234
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97898733"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937118"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Referens för appinställningar för Azure Functions
 
@@ -131,7 +131,7 @@ Anger lagrings platsen eller providern som ska användas för nyckel lagring. F�
 
 |Nyckel|Exempelvärde|
 |---|------------|
-|AzureWebJobsSecretStorageType|Files|
+|AzureWebJobsSecretStorageType|Filer|
 
 ## <a name="azurewebjobsstorage"></a>AzureWebJobsStorage
 
@@ -256,7 +256,7 @@ Endast för förbruknings & Premium-planer. Fil Sök vägen till programmets kod
 Det maximala antalet instanser som Function-appen kan skala ut till. Standardvärdet är ingen gräns.
 
 > [!IMPORTANT]
-> Den här inställningen är i för hands version.  En [app-egenskap för funktionen högsta skalbarhet](./functions-scale.md#limit-scale-out) har lagts till och är det rekommenderade sättet att begränsa skalan.
+> Den här inställningen är i för hands version.  En [app-egenskap för funktionen högsta skalbarhet](./event-driven-scaling.md#limit-scale-out) har lagts till och är det rekommenderade sättet att begränsa skalan.
 
 |Nyckel|Exempelvärde|
 |---|------------|
