@@ -3,15 +3,15 @@ title: Hantera resurs grupper – Azure CLI
 description: Använd Azure CLI för att hantera dina resurs grupper via Azure Resource Manager. Visar hur du skapar, listar och tar bort resurs grupper.
 author: mumian
 ms.topic: conceptual
-ms.date: 09/01/2020
+ms.date: 01/05/2021
 ms.author: jgao
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4a9a4ed4ebba7f6f2470bb9e7000a899ebc26323
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: db4a938d2f773ed24d4c7a48d747dd5cc22c0bd2
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185818"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900288"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-azure-cli"></a>Hantera Azure Resource Manager resurs grupper med hjälp av Azure CLI
 
@@ -84,14 +84,14 @@ Du kan flytta resurserna i gruppen till en annan resurs grupp. Mer information f
 
 ## <a name="lock-resource-groups"></a>Lås resurs grupper
 
-Låsning förhindrar att andra användare i organisationen oavsiktligt tar bort eller ändrar kritiska resurser, t. ex. Azure-prenumeration, resurs grupp eller resurs. 
+Låsning förhindrar att andra användare i organisationen oavsiktligt tar bort eller ändrar kritiska resurser, t. ex. Azure-prenumeration, resurs grupp eller resurs.
 
 Följande skript låser en resurs grupp så att det inte går att ta bort resurs gruppen.
 
 ```azurecli-interactive
 echo "Enter the Resource Group name:" &&
 read resourceGroupName &&
-az lock create --name LockGroup --lock-type CanNotDelete --resource-group $resourceGroupName  
+az lock create --name LockGroup --lock-type CanNotDelete --resource-group $resourceGroupName
 ```
 
 Följande skript hämtar alla Lås för en resurs grupp:
@@ -99,7 +99,7 @@ Följande skript hämtar alla Lås för en resurs grupp:
 ```azurecli-interactive
 echo "Enter the Resource Group name:" &&
 read resourceGroupName &&
-az lock list --resource-group $resourceGroupName  
+az lock list --resource-group $resourceGroupName
 ```
 
 Följande skript tar bort ett lås:
@@ -125,13 +125,88 @@ När du har konfigurerat resurs gruppen kanske du vill visa Resource Manager-mal
 - Automatisera framtida distributioner av lösningen eftersom mallen innehåller all fullständig infrastruktur.
 - Lär dig mer om mallens syntax genom att titta på den JavaScript Object Notation (JSON) som representerar din lösning.
 
+Om du vill exportera alla resurser i en resurs grupp använder du [AZ Group export](/cli/azure/group?view=azure-cli-latest#az_group_export&preserve-view=true) och anger resurs gruppens namn.
+
 ```azurecli-interactive
 echo "Enter the Resource Group name:" &&
 read resourceGroupName &&
-az group export --name $resourceGroupName  
+az group export --name $resourceGroupName
 ```
 
-Skriptet visar mallen i-konsolen.  Kopiera JSON och Spara som en fil.
+Skriptet visar mallen i-konsolen. Kopiera JSON och Spara som en fil.
+
+I stället för att exportera alla resurser i resurs gruppen kan du välja vilka resurser som ska exporteras.
+
+Överför resurs-ID för att exportera en resurs.
+
+```azurecli-interactive
+echo "Enter the Resource Group name:" &&
+read resourceGroupName &&
+echo "Enter the storage account name:" &&
+read storageAccountName &&
+storageAccount=$(az resource show --resource-group $resourceGroupName --name $storageAccountName --resource-type Microsoft.Storage/storageAccounts --query id --output tsv) &&
+az group export --resource-group $resourceGroupName --resource-ids $storageAccount
+```
+
+Om du vill exportera fler än en resurs skickar du de blankstegsavgränsad resurs-ID: na. Om du vill exportera alla resurser ska du inte ange det här argumentet eller ange "*".
+
+```azurecli-interactive
+az group export --resource-group <resource-group-name> --resource-ids $storageAccount1 $storageAccount2
+```
+
+När du exporterar mallen kan du ange om parametrar ska användas i mallen. Som standard ingår parametrar för resurs namn, men de har inget standardvärde. Du måste skicka parameter värde under distributionen.
+
+```json
+"parameters": {
+  "serverfarms_demoHostPlan_name": {
+    "type": "String"
+  },
+  "sites_webSite3bwt23ktvdo36_name": {
+    "type": "String"
+  }
+}
+```
+
+I resursen används parametern för namnet.
+
+```json
+"resources": [
+  {
+    "type": "Microsoft.Web/serverfarms",
+    "apiVersion": "2016-09-01",
+    "name": "[parameters('serverfarms_demoHostPlan_name')]",
+    ...
+  }
+]
+```
+
+Om du använder `--include-parameter-default-value` -parametern när du exporterar mallen, innehåller parametern Template ett standardvärde som är inställt på det aktuella värdet. Du kan antingen använda standardvärdet eller skriva över standardvärdet genom att skicka ett annat värde.
+
+```json
+"parameters": {
+  "serverfarms_demoHostPlan_name": {
+    "defaultValue": "demoHostPlan",
+    "type": "String"
+  },
+  "sites_webSite3bwt23ktvdo36_name": {
+    "defaultValue": "webSite3bwt23ktvdo36",
+    "type": "String"
+  }
+}
+```
+
+Om du använder `--skip-resource-name-params` -parametern när du exporterar mallen ingår inte parametrar för resurs namn i mallen. I stället anges resurs namnet direkt på resursen till det aktuella värdet. Du kan inte anpassa namnet under distributionen.
+
+```json
+"resources": [
+  {
+    "type": "Microsoft.Web/serverfarms",
+    "apiVersion": "2016-09-01",
+    "name": "demoHostPlan",
+    ...
+  }
+]
+```
 
 Funktionen Exportera mall stöder inte export av Azure Data Factory-resurser. Information om hur du kan exportera Data Factory-resurser finns i [Kopiera eller klona en data fabrik i Azure Data Factory](../../data-factory/copy-clone-data-factory.md).
 

@@ -3,12 +3,12 @@ title: Uppdatera ett kluster så att det använder certifikatets nätverks namn
 description: Lär dig hur du konverterar ett Azure Service Fabric Cluster-certifikat från tumavtryck-baserade deklarationer till vanliga namn.
 ms.topic: conceptual
 ms.date: 09/06/2019
-ms.openlocfilehash: 013b8190390a4b05791b0a56072487f249956ec5
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: f719b1eb39da776827c6babec61e9e6701bb4602
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495213"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900804"
 ---
 # <a name="convert-cluster-certificates-from-thumbprint-based-declarations-to-common-names"></a>Konvertera kluster certifikat från tumavtryck-baserade deklarationer till vanliga namn
 
@@ -63,8 +63,11 @@ Det finns flera giltiga start tillstånd för en omvandling. Invarianten är att
 #### <a name="valid-starting-states"></a>Giltiga start tillstånd
 
 - `Thumbprint: GoalCert, ThumbprintSecondary: None`
-- `Thumbprint: GoalCert, ThumbprintSecondary: OldCert1`, där `GoalCert` har ett senare `NotAfter` datum än det för `OldCert1`
-- `Thumbprint: OldCert1, ThumbprintSecondary: GoalCert`, där `GoalCert` har ett senare `NotAfter` datum än det för `OldCert1`
+- `Thumbprint: GoalCert, ThumbprintSecondary: OldCert1`, där `GoalCert` har ett senare `NotBefore` datum än det för `OldCert1`
+- `Thumbprint: OldCert1, ThumbprintSecondary: GoalCert`, där `GoalCert` har ett senare `NotBefore` datum än det för `OldCert1`
+
+> [!NOTE]
+> Före version 7.2.445 (7,2 CU4) har Service Fabric valt det certifikat som är längst ut (certifikatet med den längst bort egenskapen NotAfter), så att de tidigare start tillstånden före 7,2 CU4 kräver GoalCert måste ha ett senare `NotAfter` datum än `OldCert1`
 
 Om klustret inte är i ett av de giltiga tillstånd som beskrivs ovan, se information om att uppnå tillståndet i avsnittet i slutet av den här artikeln.
 
@@ -217,11 +220,14 @@ New-AzResourceGroupDeployment -ResourceGroupName $groupname -Verbose `
 
 | Start tillstånd | Uppgradering 1 | Uppgradering 2 |
 | :--- | :--- | :--- |
-| `Thumbprint: OldCert1, ThumbprintSecondary: None` och `GoalCert` har ett senare `NotAfter` datum än `OldCert1` | `Thumbprint: OldCert1, ThumbprintSecondary: GoalCert` | - |
-| `Thumbprint: OldCert1, ThumbprintSecondary: None` och `OldCert1` har ett senare `NotAfter` datum än `GoalCert` | `Thumbprint: GoalCert, ThumbprintSecondary: OldCert1` | `Thumbprint: GoalCert, ThumbprintSecondary: None` |
-| `Thumbprint: OldCert1, ThumbprintSecondary: GoalCert`, där `OldCert1` har ett senare `NotAfter` datum än `GoalCert` | Uppgradera till `Thumbprint: GoalCert, ThumbprintSecondary: None` | - |
-| `Thumbprint: GoalCert, ThumbprintSecondary: OldCert1`, där `OldCert1` har ett senare `NotAfter` datum än `GoalCert` | Uppgradera till `Thumbprint: GoalCert, ThumbprintSecondary: None` | - |
+| `Thumbprint: OldCert1, ThumbprintSecondary: None` och `GoalCert` har ett senare `NotBefore` datum än `OldCert1` | `Thumbprint: OldCert1, ThumbprintSecondary: GoalCert` | - |
+| `Thumbprint: OldCert1, ThumbprintSecondary: None` och `OldCert1` har ett senare `NotBefore` datum än `GoalCert` | `Thumbprint: GoalCert, ThumbprintSecondary: OldCert1` | `Thumbprint: GoalCert, ThumbprintSecondary: None` |
+| `Thumbprint: OldCert1, ThumbprintSecondary: GoalCert`, där `OldCert1` har ett senare `NotBefore` datum än `GoalCert` | Uppgradera till `Thumbprint: GoalCert, ThumbprintSecondary: None` | - |
+| `Thumbprint: GoalCert, ThumbprintSecondary: OldCert1`, där `OldCert1` har ett senare `NotBefore` datum än `GoalCert` | Uppgradera till `Thumbprint: GoalCert, ThumbprintSecondary: None` | - |
 | `Thumbprint: OldCert1, ThumbprintSecondary: OldCert2` | Ta bort en av `OldCert1` eller `OldCert2` för att komma till tillstånd `Thumbprint: OldCertx, ThumbprintSecondary: None` | Fortsätt från det nya start läget |
+
+> [!NOTE]
+> För ett kluster i en version före version 7.2.445 (7,2 CU4) ersätter `NotBefore` `NotAfter` du med i ovanstående tillstånd.
 
 Instruktioner för hur du utför dessa uppgraderingar finns i [Hantera certifikat i ett Azure Service Fabric-kluster](service-fabric-cluster-security-update-certs-azure.md).
 

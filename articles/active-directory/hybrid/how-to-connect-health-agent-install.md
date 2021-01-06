@@ -17,12 +17,12 @@ ms.topic: how-to
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b680c275b92340cc7efba187769cb17602b08b45
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 365c9a990f16e9077450ae15f6677ab716fc45ba
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95973294"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900458"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Azure AD Connect Health Agent installation
 
@@ -283,6 +283,17 @@ När du har installerat rätt agent *setup.exe* -fil kan du registrera agenten m
     Register-AzureADConnectHealthSyncAgent
 
 ```
+
+> [!NOTE]
+> Om du vill registrera dig för suveräna moln använder du följande kommando rader:
+>
+> ```powershell
+> Register-AzureADConnectHealthADFSAgent -UserPrincipalName upn-of-the-user
+> Register-AzureADConnectHealthADDSAgent -UserPrincipalName upn-of-the-user
+> Register-AzureADConnectHealthSyncAgent -UserPrincipalName upn-of-the-user
+> ```
+>
+
 
 De här kommandona godkänns `Credential` som en parameter för att slutföra registreringen på ett inaktivt sätt eller för att slutföra registreringen på en dator som kör Server Core. Tänk på följande:
 * Du kan avbilda `Credential` i en PowerShell-variabel som skickas som en parameter.

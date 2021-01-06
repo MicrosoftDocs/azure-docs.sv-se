@@ -2,19 +2,19 @@
 title: Skapa en mall-specifikation med länkade mallar
 description: Lär dig hur du skapar en mall-specifikation med länkade mallar.
 ms.topic: conceptual
-ms.date: 11/17/2020
-ms.openlocfilehash: 038fb3e6bbb6086535b83a69de7a3fe49a8e60bb
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.date: 01/05/2021
+ms.openlocfilehash: e5725ece165f5716480afbcb4ef9098274c09993
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96518897"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900645"
 ---
 # <a name="tutorial-create-a-template-spec-with-linked-templates-preview"></a>Självstudie: skapa en mall-specifikation med länkade mallar (förhands granskning)
 
 Lär dig hur du skapar en [mall-specifikation](template-specs.md) med en huvud-mall och en [länkad mall](linked-templates.md#linked-template). Du använder mall-specifikationer för att dela ARM-mallar med andra användare i din organisation. Den här artikeln visar hur du skapar en mall-specifikation för att paketera en huvud-mall och dess länkade mallar med hjälp av `relativePath` egenskapen för [distributions resursen](/azure/templates/microsoft.resources/deployments).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -191,7 +191,7 @@ az ts create \
   --version "1.0.0.0" \
   --resource-group templateSpecRG \
   --location "westus2" \
-  --template-file "c:\Templates\linkedTS\azuredeploy.json"
+  --template-file "<path-to-main-template>"
 ```
 
 ---
@@ -237,7 +237,7 @@ az group create \
   --name webRG \
   --location westus2
 
-id = $(az template-specs show --name webSpec --resource-group templateSpecRG --version "1.0.0.0" --query "id")
+id = $(az ts show --name webSpec --resource-group templateSpecRG --version "1.0.0.0" --query "id")
 
 az deployment group create \
   --resource-group webRG \

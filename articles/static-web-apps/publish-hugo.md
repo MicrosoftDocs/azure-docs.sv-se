@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
-ms.openlocfilehash: 5f511a898b3b2964f954ba150b05f02486456dcf
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: e49a84f5ac507ac80481313c103701a88934083a
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92171485"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900784"
 ---
 # <a name="tutorial-publish-a-hugo-site-to-azure-static-web-apps-preview"></a>Självstudie: publicera en Hugo-webbplats till Azures statiska Web Apps för hands version
 
@@ -107,15 +107,15 @@ Följande steg visar hur du skapar en ny statisk plats-app och distribuerar den 
 
 1. Acceptera prenumerationen som visas i listan eller Välj en ny i list rutan för **prenumeration**.
 
-1. I _resurs grupp_väljer du **ny**. I _nytt resurs grupp namn_anger du **Hugo-static-app** och väljer **OK**.
+1. I _resurs grupp_ väljer du **ny**. I _nytt resurs grupp namn_ anger du **Hugo-static-app** och väljer **OK**.
 
 1. Sedan ett namn för din app i rutan **namn** . Giltiga tecken är `a-z` , `A-Z` `0-9` och `-` .
 
-1. För _region_väljer du en tillgänglig region nära dig.
+1. För _region_ väljer du en tillgänglig region nära dig.
 
-1. För _SKU_väljer du **kostnads fri**.
+1. För _SKU_ väljer du **kostnads fri**.
 
-   :::image type="content" source="./media/publish-hugo/basic-app-details.png" alt-text="Skapa en statisk Azure Web Apps-resurs i portalen":::
+   :::image type="content" source="./media/publish-hugo/basic-app-details.png" alt-text="Information ifylld":::
 
 1. Klicka på knappen **Logga in med GitHub** .
 
@@ -125,7 +125,7 @@ Följande steg visar hur du skapar en ny statisk plats-app och distribuerar den 
 
 1. För _grenen_ Välj **huvud**.
 
-   :::image type="content" source="./media/publish-hugo/completed-github-info.png" alt-text="Skapa en statisk Azure Web Apps-resurs i portalen":::
+   :::image type="content" source="./media/publish-hugo/completed-github-info.png" alt-text="Slutförd GitHub-information":::
 
 ### <a name="build"></a>Skapa
 
@@ -149,7 +149,7 @@ Sedan lägger du till de konfigurations inställningar som bygg processen använ
 
 1. I fönstret Azure Portals _Översikt_ över nyligen skapade Azure static Web Apps-resurser klickar du på _URL_ -länken för att öppna det distribuerade programmet.
 
-   :::image type="content" source="./media/publish-hugo/deployed-app.png" alt-text="Skapa en statisk Azure Web Apps-resurs i portalen":::
+   :::image type="content" source="./media/publish-hugo/deployed-app.png" alt-text="Distribuerat program":::
 
 #### <a name="custom-hugo-version"></a>Anpassad Hugo-version
 
@@ -176,7 +176,7 @@ jobs:
           # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
           app_location: "/" # App source code path
           api_location: "api" # Api source code path - optional
-          app_artifact_location: "public" # Built app content directory - optional
+          output_location: "public" # Built app content directory - optional
           ###### End of Repository/Build Configurations ######
         env:
           HUGO_VERSION: 0.58.0

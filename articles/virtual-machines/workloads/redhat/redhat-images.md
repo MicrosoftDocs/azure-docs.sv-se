@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 02/10/2020
 ms.author: alsin
 ms.reviewer: cynthn
-ms.openlocfilehash: 5cac21046b6b4afdefc4213f6a1fab438d62cca3
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: dbff136ac5787ef9549cca9dc8f946c56a138986
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94957545"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900509"
 ---
 # <a name="overview-of-red-hat-enterprise-linux-images"></a>Översikt över Red Hat Enterprise Linux avbildningar
 
@@ -22,7 +22,7 @@ I den här artikeln beskrivs tillgängliga Red Hat Enterprise Linux-avbildningar
 Information om Red Hat support-principer för alla versioner av RHEL finns i [Red Hat Enterprise Linux livs cykel](https://access.redhat.com/support/policy/updates/errata). Pris information finns i [pris Kalkylatorn för Azure](https://azure.microsoft.com/pricing/details/virtual-machines/linux/).
 
 >[!IMPORTANT]
-> RHEL-avbildningar som för närvarande är tillgängliga i Azure Marketplace stöder antingen en egen prenumeration (BYOS) eller licensierings modeller enligt principen betala per användning. [Azure Hybrid Use-förmånen](../../windows/hybrid-use-benefit-licensing.md) och dynamisk växling mellan BYOS och "betala per användning"-licensen stöds inte. Om du vill växla licensierings läget måste du distribuera om den virtuella datorn från motsvarande avbildning.
+> RHEL-avbildningar som för närvarande är tillgängliga i Azure Marketplace stöder antingen en egen prenumeration (BYOS) eller licensierings modeller enligt principen betala per användning. Dynamisk växling mellan BYOS och licens enligt principen betala per användning kan göras via [Azure Hybrid Use Benefit](../../linux/azure-hybrid-benefit-linux.md).
 
 >[!NOTE]
 > Om du har problem som rör RHEL-avbildningar på Azure Marketplace kan du ge ett support ärende till Microsoft.
@@ -146,7 +146,7 @@ Delversion |Exempel på EUS-avbildning              |Status för EUS            
 RHEL 7,4      |RedHat: RHEL: 7.4:7.4.2019041718 | Avbildningar som publicerats april 2019 och senare är EUS som standard.|
 RHEL 7.5      |RedHat: RHEL: 7.5:7.5.2019060305 | Avbildningar som publicerats i juni 2019 och senare är EUS som standard. |
 RHEL 7,6      |RedHat: RHEL: 7.6:7.6.2019052206 | Publicerade avbildningar maj 2019 och senare är EUS som standard. |
-RHEL 8,0      |E.t.                            | Ingen EUS är tillgänglig från Red Hat.                               |
+RHEL 8,0      |Saknas                            | Ingen EUS är tillgänglig från Red Hat.                               |
 
 ### <a name="update-services-for-sap"></a>Uppdatera tjänster för SAP
 

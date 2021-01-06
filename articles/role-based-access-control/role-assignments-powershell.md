@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 11/25/2020
 ms.author: rolyon
-ms.openlocfilehash: c4082f7fc535807ec996034ba695549a51969a99
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 6eadba7d778a632896529f3c7c53886619d96444
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182418"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901478"
 ---
 # <a name="add-or-remove-azure-role-assignments-using-azure-powershell"></a>Lägga till eller ta bort Azure-rolltilldelningar med hjälp av Azure PowerShell
 
@@ -28,6 +28,7 @@ Om du vill lägga till eller ta bort roll tilldelningar måste du ha:
 
 - `Microsoft.Authorization/roleAssignments/write` och `Microsoft.Authorization/roleAssignments/delete` behörigheter, till exempel [administratör för användar åtkomst](built-in-roles.md#user-access-administrator) eller [ägare](built-in-roles.md#owner)
 - [PowerShell i Azure Cloud Shell](../cloud-shell/overview.md) eller [Azure PowerShell](/powershell/azure/install-az-ps)
+- Det konto som du använder för att köra PowerShell-kommandot måste ha Microsoft Graph- `Directory.Read.All` behörighet.
 
 ## <a name="steps-to-add-a-role-assignment"></a>Steg för tillägg av en rolltilldelning
 

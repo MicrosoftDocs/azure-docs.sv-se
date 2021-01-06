@@ -3,14 +3,14 @@ title: Skicka ett e-postmeddelande från en Azure Automation Runbook
 description: Den här artikeln beskriver hur du skickar ett e-postmeddelande inifrån en Runbook.
 services: automation
 ms.subservice: process-automation
-ms.date: 07/15/2019
+ms.date: 01/05/2021
 ms.topic: conceptual
-ms.openlocfilehash: a81ae680a5f04eca0a6cc01ee24b474cc5daabea
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 65fa226b368baa3b1d4f376600e610a518c48c02
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97005213"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900329"
 ---
 # <a name="send-an-email-from-a-runbook"></a>Skicka ett e-postmeddelande från en runbook
 
@@ -67,7 +67,7 @@ För andra sätt att skapa en Azure Key Vault och lagra en hemlighet, se [Key Va
 
 Om du vill använda Azure Key Vault i en Runbook måste du importera följande moduler till ditt Automation-konto:
 
-* [Az.Profile](https://www.powershellgallery.com/packages/Az.Profile)
+* [Az.Accounts](https://www.powershellgallery.com/packages/Az.Accounts)
 * [Az.KeyVault](https://www.powershellgallery.com/packages/Az.KeyVault)
 
 Instruktioner finns i [Importera AZ-moduler](shared-resources/modules.md#import-az-modules).
@@ -142,7 +142,7 @@ Om du inte först ser ditt test-e-postmeddelande kontrollerar du mapparna för *
 
 1. När runbooken inte längre behövs väljer du den i Runbook-listan och klickar på **ta bort**.
 
-2. Ta bort Key Vault med hjälp av cmdleten [Remove-AzKeyVault](/powershell/module/az.keyvault/remove-azkeyvault?view=azps-3.7.0) .
+2. Ta bort Key Vault med hjälp av cmdleten [Remove-AzKeyVault](/powershell/module/az.keyvault/remove-azkeyvault) .
 
 ```azurepowershell-interactive
 $VaultName = "<your KeyVault name>"

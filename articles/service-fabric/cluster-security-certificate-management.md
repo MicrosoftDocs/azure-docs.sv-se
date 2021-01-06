@@ -4,12 +4,12 @@ description: Lär dig mer om att hantera certifikat i ett Service Fabric kluster
 ms.topic: conceptual
 ms.date: 04/10/2020
 ms.custom: sfrev
-ms.openlocfilehash: aba681157d71f94914462b8d9fc13b90d4d6b153
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 722c84c25cb5188e45dd96363bab9af6ff93f6dc
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88653672"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901274"
 ---
 # <a name="certificate-management-in-service-fabric-clusters"></a>Certifikat hantering i Service Fabric kluster
 
@@ -109,9 +109,12 @@ Som sido anteckning: IETF [RFC 3647](https://tools.ietf.org/html/rfc3647) formel
 
 Vi har sett tidigare att Azure Key Vault stöder automatisk certifikat rotation: den associerade certifikat principen definierar tidpunkten, om dagar före förfallo datum eller procent andel av den totala livs längden, när certifikatet roteras i valvet. Etablerings agenten måste anropas efter den här tidpunkten och innan det nu föregående certifikatet upphör att gälla, så att det nya certifikatet distribueras till alla noder i klustret. Service Fabric hjälper till att öka hälso varningar när ett certifikats förfallo datum (och som för närvarande används i klustret) inträffar tidigare än ett förinställt intervall. En automatisk etablerings agent (dvs. det virtuella nyckel valvets tillägg), som kon figurer ATS för att kontrol lera valv certifikatet, avsöker valvet med jämna mellanrum, identifierar rotationen och hämtar och installerar det nya certifikatet. Etableringen som görs via funktionen "hemligheter" i VM/VMSS kräver en auktoriserad operatör för att uppdatera VM/VMSS med den version av nyckel valvets URI som motsvarar det nya certifikatet.
 
-I båda fallen allokeras det roterade certifikatet till alla noder och vi har benämnt mekanismen Service Fabric använder för att identifiera rotationer. Låt oss ta en titt på vad som händer härnäst – under förutsättning att den rotation som används för kluster certifikatet som deklarerats av subjektets eget namn (gäller från och med tiden för denna skrivning, och Service Fabric runtime-version 7.1.409):
-  - för nya anslutningar inom, och i klustret, kommer Service Fabric runtime att hitta och välja det matchande certifikatet med det längst sista giltighets datumet (egenskapen "NotAfter" för certifikatet, ofta förkortat som "na")
+I båda fallen allokeras det roterade certifikatet till alla noder och vi har benämnt mekanismen Service Fabric använder för att identifiera rotationer. Låt oss undersöka vad som händer härnäst – under förutsättning att den rotation som används för kluster certifikatet som deklarerats av subjektets eget namn
+  - för nya anslutningar inom, och i klustret, kommer Service Fabric runtime att hitta och välja det senast utfärdade matchnings certifikatet (det största värdet för egenskapen ' NotBefore '). Observera att detta är en förändring från tidigare versioner av Service Fabric Runtime.
   - befintliga anslutningar hålls levande/tillåtna till naturlig upphör ande eller avbryts på annat sätt. en intern hanterare får ett meddelande om att det finns en ny matchning
+
+> [!NOTE] 
+> Före version 7.2.445 (7,2 CU4) har Service Fabric valt det certifikat som är längst ut (certifikatet med den längst bort egenskapen NotAfter)
 
 Detta översätter till följande viktiga observationer:
   - Förnyelse certifikatet kan ignoreras om dess förfallo datum är tidigare än det för det certifikat som används för närvarande.
@@ -134,8 +137,11 @@ Vi har beskrivit mekanismer, begränsningar, fördelade invecklade regler och de
 
 Sekvensen är fullständigt skriptad/automatiserad och gör det möjligt att göra en första distribution av ett kluster som har kon figurer ATS för automatisk förnyelse av certifikat. Detaljerade anvisningar finns nedan. Vi använder en blandning av PowerShell-cmdletar och fragment med JSON-mallar. Samma funktioner kan bara användas med alla metoder som stöds för att interagera med Azure.
 
-[!NOTE] Det här exemplet förutsätter att det redan finns ett certifikat i valvet. att registrera och förnya ett certifikat som hanteras med ett valv kräver nödvändiga manuella steg enligt beskrivningen ovan i den här artikeln. För produktions miljöer, Använd Key Vault-hanterade certifikat – ett exempel skript som är speciellt för en Microsoft-intern PKI ingår nedan.
-Förnyelse av certifikat är bara begripligt för CA-utfärdade certifikat. Om du använder självsignerade certifikat, inklusive de som genererades när du distribuerar ett Service Fabric kluster i Azure Portal, är nonsensical, men fortfarande möjligt för lokala/utvecklare som är värdbaserade distributioner, genom att deklarera utfärdarens tumavtryck som är samma som för löv certifikatet.
+> [!NOTE]
+> Det här exemplet förutsätter att det redan finns ett certifikat i valvet. att registrera och förnya ett certifikat som hanteras med ett valv kräver nödvändiga manuella steg enligt beskrivningen ovan i den här artikeln. För produktions miljöer, Använd Key Vault-hanterade certifikat – ett exempel skript som är speciellt för en Microsoft-intern PKI ingår nedan.
+
+> [!NOTE]
+> Förnyelse av certifikat är bara begripligt för CA-utfärdade certifikat. Om du använder självsignerade certifikat, inklusive de som genererades när du distribuerar ett Service Fabric kluster i Azure Portal, är nonsensical, men fortfarande möjligt för lokala/utvecklare som är värdbaserade distributioner, genom att deklarera utfärdarens tumavtryck som är samma som för löv certifikatet.
 
 ### <a name="starting-point"></a>Start punkt
 För det kortfattat kommer vi att anta följande start tillstånd:
@@ -488,7 +494,7 @@ För Microsoft-interna PKI: er, se den interna dokumentationen om slut punkter/S
 *A*: Ja; du får inte deklarera flera CN-poster i kluster manifestet med samma värde, men kan visa en lista över utfärdare från flera PKI: er som motsvarar samma CN. Det är inte en rekommenderad metod och certifikatets genomskinlighets metoder kan förhindra att sådana certifikat utfärdas. Men som ett sätt att migrera från en PKI till en annan, är detta en acceptabel mekanism.
 
 *F*: Vad händer om det aktuella kluster certifikatet inte är ca-utfärdat eller saknar avsett ämne? 
-S *: skaffa*ett certifikat med det avsedda ämnet och Lägg till det i klustrets definition som en sekundär, efter tumavtryck. När uppgraderingen har slutförts initierar du en annan kluster konfigurations uppgradering för att konvertera certifikats deklarationen till ett eget namn. 
+S *: skaffa* ett certifikat med det avsedda ämnet och Lägg till det i klustrets definition som en sekundär, efter tumavtryck. När uppgraderingen har slutförts initierar du en annan kluster konfigurations uppgradering för att konvertera certifikats deklarationen till ett eget namn. 
 
 [Image1]:./media/security-cluster-certificate-mgmt/certificate-journey-thumbprint.png
 [Image2]:./media/security-cluster-certificate-mgmt/certificate-journey-common-name.png

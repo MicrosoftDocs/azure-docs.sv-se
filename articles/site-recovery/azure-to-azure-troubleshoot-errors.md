@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/07/2020
 ms.author: rochakm
-ms.openlocfilehash: b71c6b834a6217007134b3be961a0ffa103e2706
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 6d61a44e671c43754fa7cccbe8ea8fe54eeba387
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368051"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900424"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-errors"></a>Felsöka problem med replikering av virtuella datorer i Azure till Azure-scenarier
 
@@ -186,10 +186,13 @@ Kontrol lera om den virtuella datorn använder en anpassad DNS-inställning:
 
 1. Öppna **virtuella datorer** och välj den virtuella datorn.
 1. Navigera till **inställningarna** för virtuella datorer och välj **nätverk**.
-1. I **virtuellt nätverk/undernät**väljer du länken för att öppna det virtuella nätverkets resurs sida.
+1. I **virtuellt nätverk/undernät** väljer du länken för att öppna det virtuella nätverkets resurs sida.
 1. Gå till **Inställningar** och välj **DNS-servrar**.
 
 Försök att komma åt DNS-servern från den virtuella datorn. Om DNS-servern inte är tillgänglig kan du göra den tillgänglig genom att antingen redundansväxla DNS-servern eller skapa en plats mellan DR-nätverket och DNS.
+
+> [!NOTE]
+> Om du använder privata slut punkter måste du se till att de virtuella datorerna kan matcha de privata DNS-posterna.
 
 :::image type="content" source="./media/azure-to-azure-troubleshoot-errors/custom_dns.png" alt-text="com-fel.":::
 
@@ -278,17 +281,17 @@ Om du vill göra replikeringsstatus för den virtuella datorn felfritt igen kan 
 
 #### <a name="to-protect-the-disks"></a>Skydda diskarna
 
-1. Gå till **replikerade objekt**  >  _namn diskar för virtuella datorer_  >  **Disks**.
+1. Gå till **replikerade objekt**  >  _namn diskar för virtuella datorer_  >  .
 1. Välj den oskyddade disken och välj sedan **Aktivera replikering**:
 
-   :::image type="content" source="./media/azure-to-azure-troubleshoot-errors/add-disk.png" alt-text="com-fel.":::
+   :::image type="content" source="./media/azure-to-azure-troubleshoot-errors/add-disk.png" alt-text="Aktivera replikering på VM-diskar.":::
 
 #### <a name="to-dismiss-the-warning"></a>Ignorera varningen
 
 1. Gå till **replikerade objekt**  >  _namn på virtuell dator_.
 1. Välj varningen i avsnittet **Översikt** och välj sedan **OK**.
 
-   :::image type="content" source="./media/azure-to-azure-troubleshoot-errors/dismiss-warning.png" alt-text="com-fel.":::
+   :::image type="content" source="./media/azure-to-azure-troubleshoot-errors/dismiss-warning.png" alt-text="Ignorera varning om ny disk.":::
 
 ## <a name="vm-removed-from-vault-completed-with-information-error-code-150225"></a>Den virtuella datorn har tagits bort från valvet med information (felkod 150225)
 
@@ -300,7 +303,7 @@ Du kan ignorera den här varningen om du aldrig planerar att skydda den här vir
 > Om du inte gör rensningen:
 >
 > - När du aktiverar replikering med hjälp av Recovery Services valvet visas inte den virtuella datorn.
-> - Om du försöker skydda den virtuella datorn med hjälp av haveri beredskap för en **virtuell dator**kan  >  **Settings**  >  **Disaster Recovery**åtgärden **inte utföras eftersom det inte går att aktivera meddelande replikeringen på grund av befintliga inaktuella resurs länkar på den virtuella datorn**.
+> - Om du försöker skydda den virtuella datorn med hjälp av haveri beredskap för en **virtuell dator** kan  >    >  åtgärden **inte utföras eftersom det inte går att aktivera meddelande replikeringen på grund av befintliga inaktuella resurs länkar på den virtuella datorn**.
 
 ### <a name="fix-the-problem"></a>Åtgärda problemet
 
@@ -309,10 +312,10 @@ Du kan ignorera den här varningen om du aldrig planerar att skydda den här vir
 
 1. Ta bort låset från den virtuella datorn eller resurs gruppen för den virtuella datorn. I följande bild måste resurs låset på den virtuella datorn med namnet `MoveDemo` tas bort:
 
-   :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png" alt-text="com-fel.":::
+   :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png" alt-text="Ta bort låset från den virtuella datorn.":::
 
 1. Hämta skriptet för att [ta bort en föråldrad Site Recovery-konfiguration](https://github.com/AsrOneSdk/published-scripts/blob/master/Cleanup-Stale-ASR-Config-Azure-VM.ps1).
-1. Kör skriptet _Cleanup-stale-asr-config-Azure-VM.ps1_. Ange **prenumerations-ID**, **resurs grupp för virtuell dator**och **VM-namn** som parametrar.
+1. Kör skriptet _Cleanup-stale-asr-config-Azure-VM.ps1_. Ange **prenumerations-ID**, **resurs grupp för virtuell dator** och **VM-namn** som parametrar.
 1. Om du uppmanas att ange Azure-autentiseringsuppgifter anger du dem. Kontrol lera sedan att skriptet körs utan problem.
 
 ## <a name="replication-not-enabled-on-vm-with-stale-resources-error-code-150226"></a>Replikering har inte Aktiver ATS på den virtuella datorn med inaktuella resurser (felkod 150226)
@@ -334,10 +337,10 @@ En föråldrad konfiguration kan ske på en virtuell Azure-dator om du har aktiv
 
 1. Ta bort låset från den virtuella datorn eller resurs gruppen för den virtuella datorn. I följande bild måste resurs låset på den virtuella datorn med namnet `MoveDemo` tas bort:
 
-   :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png" alt-text="com-fel.":::
+   :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png" alt-text="Ta bort låset från den virtuella datorn.":::
 
 1. Hämta skriptet för att [ta bort en föråldrad Site Recovery-konfiguration](https://github.com/AsrOneSdk/published-scripts/blob/master/Cleanup-Stale-ASR-Config-Azure-VM.ps1).
-1. Kör skriptet _Cleanup-stale-asr-config-Azure-VM.ps1_. Ange **prenumerations-ID**, **resurs grupp för virtuell dator**och **VM-namn** som parametrar.
+1. Kör skriptet _Cleanup-stale-asr-config-Azure-VM.ps1_. Ange **prenumerations-ID**, **resurs grupp för virtuell dator** och **VM-namn** som parametrar.
 1. Om du uppmanas att ange Azure-autentiseringsuppgifter anger du dem. Kontrol lera sedan att skriptet körs utan problem.
 
 ## <a name="cant-select-vm-or-resource-group-in-enable-replication-job"></a>Det går inte att välja VM eller resurs grupp i Aktivera migreringsjobb
@@ -367,10 +370,10 @@ Du kanske inte ser den virtuella datorn som du vill aktivera för replikering om
 
 1. Ta bort låset, om det finns, från den virtuella datorn eller resurs gruppen för den virtuella datorn. I följande bild måste resurs låset på den virtuella datorn med namnet `MoveDemo` tas bort:
 
-   :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png" alt-text="com-fel.":::
+   :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png" alt-text="Ta bort låset från den virtuella datorn.":::
 
 1. Hämta skriptet för att [ta bort en föråldrad Site Recovery-konfiguration](https://github.com/AsrOneSdk/published-scripts/blob/master/Cleanup-Stale-ASR-Config-Azure-VM.ps1).
-1. Kör skriptet _Cleanup-stale-asr-config-Azure-VM.ps1_. Ange **prenumerations-ID**, **resurs grupp för virtuell dator**och **VM-namn** som parametrar.
+1. Kör skriptet _Cleanup-stale-asr-config-Azure-VM.ps1_. Ange **prenumerations-ID**, **resurs grupp för virtuell dator** och **VM-namn** som parametrar.
 1. Om du uppmanas att ange Azure-autentiseringsuppgifter anger du dem. Kontrol lera sedan att skriptet körs utan problem.
 
 ## <a name="unable-to-select-a-vm-for-protection"></a>Det går inte att välja en virtuell dator för skydd
@@ -381,7 +384,7 @@ Ett tillägg har installerats på den virtuella datorn i ett tillstånd där det
 
 ### <a name="fix-the-problem"></a>Åtgärda problemet
 
-Gå till inställningar för **Virtual Machines**-  >  **Settings**  >  **tillägg** och Sök efter eventuella tillägg i felaktigt tillstånd. Avinstallera eventuella misslyckade tillägg och försök sedan igen för att skydda den virtuella datorn.
+Gå till inställningar för **Virtual Machines**-  >    >  **tillägg** och Sök efter eventuella tillägg i felaktigt tillstånd. Avinstallera eventuella misslyckade tillägg och försök sedan igen för att skydda den virtuella datorn.
 
 ## <a name="vm-provisioning-state-isnt-valid-error-code-150019"></a>Etablerings statusen för den virtuella datorn är inte giltig (felkod 150019)
 
@@ -395,8 +398,8 @@ Om du vill aktivera replikering på den virtuella datorn måste etablerings stat
 
 ### <a name="fix-the-problem"></a>Åtgärda problemet
 
-- Om **ProvisioningState** **Miss lyckas**kan du kontakta supporten med information om fel sökning.
-- Om **ProvisioningState** **uppdateras**kan ett annat tillägg distribueras. Kontrol lera om det finns pågående åtgärder på den virtuella datorn, vänta tills de har slutförts och Site Recovery försök sedan att aktivera replikeringen igen.
+- Om **ProvisioningState** **Miss lyckas** kan du kontakta supporten med information om fel sökning.
+- Om **ProvisioningState** **uppdateras** kan ett annat tillägg distribueras. Kontrol lera om det finns pågående åtgärder på den virtuella datorn, vänta tills de har slutförts och Site Recovery försök sedan att aktivera replikeringen igen.
 
 ## <a name="unable-to-select-target-vm"></a>Det går inte att välja virtuell måldator
 
@@ -404,17 +407,17 @@ Om du vill aktivera replikering på den virtuella datorn måste etablerings stat
 
 Om den virtuella käll datorn är en del av ett virtuellt nätverk och en annan virtuell dator i samma virtuella nätverk redan har mappats till ett nätverk i mål resurs gruppen, är List rutan nätverks val inte tillgänglig (visas nedtonad) som standard under konfigurationen för haveri beredskap.
 
-:::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/unabletoselectnw.png" alt-text="com-fel.":::
+:::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/unabletoselectnw.png" alt-text="Listan över nätverks val är inte tillgänglig.":::
 
 ### <a name="issue-2-you-previously-protected-the-vm-and-then-you-disabled-the-replication"></a>Problem 2: du har tidigare skyddat den virtuella datorn och sedan inaktiverade replikeringen
 
-Om du inaktiverar replikering av en virtuell dator tas inte nätverks mappningen bort. Mappningen måste tas bort från det Recovery Services valv där den virtuella datorn skyddades. Välj **Recovery Services valvet** och gå till **Hantera**  >  **Site Recovery-infrastruktur**  >  **för nätverks mappning av virtuella Azure-datorer**  >  **Network Mapping**.
+Om du inaktiverar replikering av en virtuell dator tas inte nätverks mappningen bort. Mappningen måste tas bort från det Recovery Services valv där den virtuella datorn skyddades. Välj **Recovery Services valvet** och gå till **Hantera**  >  **Site Recovery-infrastruktur**  >  **för nätverks mappning av virtuella Azure-datorer**  >  .
 
-:::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/delete_nw_mapping.png" alt-text="com-fel.":::
+:::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/delete_nw_mapping.png" alt-text="Ta bort nätverks mappning.":::
 
 Mål nätverket som konfigurerades under installationen av haveri beredskap kan ändras efter den inledande installationen och när den virtuella datorn är skyddad. **Ändra nätverks mappningen** genom att välja nätverks namn:
 
-:::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/modify_nw_mapping.png" alt-text="com-fel.":::
+:::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/modify_nw_mapping.png" alt-text="Ändra nätverks mappning.":::
 
 
 ## <a name="com-or-vss-error-code-151025"></a>COM+ eller VSS (felkod 151025)
@@ -437,7 +440,7 @@ Ange COM+-systemprogram och tjänsten Volume Shadow Copy till automatiskt eller 
 1. Öppna konsolen tjänster i Windows.
 1. Kontrol lera att COM+-systemprogrammet och tjänsten Volume Shadow Copy inte är inställt på **inaktive rad** som **Start metod**.
 
-   :::image type="content" source="./media/azure-to-azure-troubleshoot-errors/com-error.png" alt-text="com-fel.":::
+   :::image type="content" source="./media/azure-to-azure-troubleshoot-errors/com-error.png" alt-text="Kontrol lera starttyp för COM plus system program och tjänsten Volume Shadow Copy.":::
 
 ## <a name="unsupported-managed-disk-size-error-code-150172"></a>Hanterad disk storlek stöds inte (felkod 150172)
 
@@ -459,7 +462,7 @@ Kontrol lera att disk storleken ligger inom det storleks intervall som stöds oc
 
 ### <a name="possible-causes"></a>Möjliga orsaker
 
-Konfigurationsfilerna för Linux Grand Unified startGRUB (_/boot/grub/menu.lst_, _/boot/grub/grub.cfg_, _/Boot/grub2/grub.cfg_eller _/etc/default/grub_) kan ange de faktiska enhets namnen i stället för UUID-värden (Universal Unique Identifier) för `root` `resume` parametrarna och. Site Recovery kräver UUID: er eftersom enhets namn kan ändras. Vid omstart kanske det inte finns någon virtuell dator med samma namn vid redundansväxling, vilket leder till problem.
+Konfigurationsfilerna för Linux Grand Unified startGRUB (_/boot/grub/menu.lst_, _/boot/grub/grub.cfg_, _/Boot/grub2/grub.cfg_ eller _/etc/default/grub_) kan ange de faktiska enhets namnen i stället för UUID-värden (Universal Unique Identifier) för `root` `resume` parametrarna och. Site Recovery kräver UUID: er eftersom enhets namn kan ändras. Vid omstart kanske det inte finns någon virtuell dator med samma namn vid redundansväxling, vilket leder till problem.
 
 Följande exempel är rader från GRUB-filer där enhets namn visas i stället för nödvändiga UUID: er:
 
@@ -475,7 +478,7 @@ Följande exempel är rader från GRUB-filer där enhets namn visas i stället f
 
 Ersätt varje enhets namn med motsvarande UUID:
 
-1. Hitta enhetens UUID genom att köra kommandot `blkid <device name>` . Exempel:
+1. Hitta enhetens UUID genom att köra kommandot `blkid <device name>` . Till exempel:
 
    ```shell
    blkid /dev/sda1
@@ -494,7 +497,7 @@ Ersätt varje enhets namn med motsvarande UUID:
 
 ### <a name="possible-cause"></a>Möjlig orsak
 
-Konfigurationsfilerna för GRUB (_/boot/grub/menu.lst_, _/boot/grub/grub.cfg_, _/Boot/grub2/grub.cfg_eller _/etc/default/grub_) kan innehålla parametrarna `rd.lvm.lv` eller `rd_LVM_LV` . Dessa parametrar identifierar de LVM-enheter (Logical Volume Manager) som ska identifieras vid start. Om dessa LVM-enheter inte finns startar inte det skyddade systemet och kommer att fastna i Start processen. Samma problem visas också med den virtuella redundansväxlingen. Här följer några exempel:
+Konfigurationsfilerna för GRUB (_/boot/grub/menu.lst_, _/boot/grub/grub.cfg_, _/Boot/grub2/grub.cfg_ eller _/etc/default/grub_) kan innehålla parametrarna `rd.lvm.lv` eller `rd_LVM_LV` . Dessa parametrar identifierar de LVM-enheter (Logical Volume Manager) som ska identifieras vid start. Om dessa LVM-enheter inte finns startar inte det skyddade systemet och kommer att fastna i Start processen. Samma problem visas också med den virtuella redundansväxlingen. Här följer några exempel:
 
 - Fil: _/Boot/grub2/grub.cfg_ på RHEL7:
 

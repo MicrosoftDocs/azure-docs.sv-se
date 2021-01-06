@@ -11,12 +11,12 @@ ms.reviewer: luquinta
 ms.date: 11/16/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 17b0564b4b73f5a5032343dcb78669cbf4cabd5a
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: 057f965c67c25d486771a4c037e13153a7f2cf66
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516155"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901155"
 ---
 # <a name="use-azure-machine-learning-with-the-fairlearn-open-source-package-to-assess-the-fairness-of-ml-models-preview"></a>Använd Azure Machine Learning med Fairlearn-paketet med öppen källkod för att utvärdera skälighet för ML-modeller (för hands version)
 
@@ -46,7 +46,7 @@ Senare versioner av Fairlearn bör också fungera i följande exempel kod.
 
 I följande exempel visas hur du använder skälighet-paketet. Vi kommer att överföra modell skälighet Insights till Azure Machine Learning och se instrument panelen för skälighet-utvärdering i Azure Machine Learning Studio.
 
-1. Träna en exempel modell i en Jupyter Notebook. 
+1. Träna en exempel modell i Jupyter Notebook. 
 
     För data uppsättningen använder vi den välkända data uppsättningen från den välkända uppsättningen, som vi hämtar från OpenML. Vi Föreställ dig att vi har ett problem med besluts fattandet med etiketten som visar om en person har återbetalat ett tidigare lån. Vi kommer att träna en modell att förutse om tidigare osett-individer kommer att återbetala ett lån. Sådan modell kan användas för att fatta beslut om lån.
 

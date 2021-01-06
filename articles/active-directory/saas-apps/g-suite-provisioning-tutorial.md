@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/06/2020
 ms.author: Zhchia
-ms.openlocfilehash: 552322b9452d380dd5507fb579d7cc44e1a456fe
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: c3f61c3fe688a0b7533902fb0caa19b67f883482
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 01/05/2021
-ms.locfileid: "97898907"
+ms.locfileid: "97901597"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>Självstudie: Konfigurera G Suite för automatisk användar etablering
 
@@ -24,13 +24,6 @@ I den här självstudien beskrivs de steg du behöver utföra i både G-serien o
 
 > [!NOTE]
 > I den här självstudien beskrivs en koppling som skapats ovanpå Azure AD-tjänsten för användar etablering. Viktig information om vad den här tjänsten gör, hur den fungerar och vanliga frågor finns i [Automatisera användaretablering och avetablering för SaaS-program med Azure Active Directory](../app-provisioning/user-provisioning.md).
-
-> [!NOTE]
-> G Suite Connector uppdaterades nyligen den 2019 oktober. Ändringar som görs i G Suite Connector inkluderar:
->
-> * Stöd har lagts till för ytterligare användar-och Gruppattribut i G Suite.
-> * Uppdaterade G Suite-målattribut för att matcha vad som definieras [här](https://developers.google.com/admin-sdk/directory).
-> * Uppdaterade mappningar av standardattribut.
 
 > [!NOTE]
 > Den här artikeln innehåller referenser till termen *vitlista*, en term som Microsoft inte längre använder. När termen tas bort från program varan tar vi bort det från den här artikeln.
@@ -276,7 +269,13 @@ När du har konfigurerat etableringen använder du följande resurser till att �
 
 1. Använd [etableringsloggarna](../reports-monitoring/concept-provisioning-logs.md) för att se vilka användare som har etablerats och vilka som har misslyckats
 2. Kontrollera [förloppsindikatorn](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md) för att se status för etableringscykeln och hur nära den är att slutföras
-3. Om etableringskonfigurationen verkar innehålla fel, kommer programmet att placeras i karantän. Läs mer om karantänstatus [här](../app-provisioning/application-provisioning-quarantine-status.md).
+3. Om etableringskonfigurationen verkar innehålla fel, kommer programmet att placeras i karantän. Läs mer om karantänstatus [här](../app-provisioning/application-provisioning-quarantine-status.md).  
+
+## <a name="change-log"></a>Ändringslogg
+
+* 10/17/2020 – stöd har lagts till för ytterligare användare i G Suite-användare och-grupp.
+* 10/17/2020 – de G Suite-attributens målnamn har uppdaterats för att matcha vad som definieras [här](https://developers.google.com/admin-sdk/directory).
+* 10/17/2020 – uppdaterade standardattribut-mappningar.
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 

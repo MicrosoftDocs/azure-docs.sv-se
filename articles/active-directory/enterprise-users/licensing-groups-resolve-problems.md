@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc3dce8bb51299eb78bd2958eebf7a69594318a4
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 3bba64f8c07545107d57f79ae94dab96e517815f
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96546479"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900713"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>Identifiera och lösa licens tilldelnings problem för en grupp i Azure Active Directory
 
@@ -68,7 +68,6 @@ Om du vill se vilka användare och grupper som använder licenser väljer du en 
 
 Betänk följande exempel. En användare har en licens för Office 365 Enterprise *E1* som tilldelas direkt, med alla aktiverade planer. Användaren har lagts till i en grupp som har tilldelats Office 365 Enterprise *E3* -produkten. E3-produkten innehåller tjänst planer som inte överlappar de planer som ingår i E1, så grupp licens tilldelningen Miss lyckas med fel meddelandet "tjänst planer som står i konflikt". I det här exemplet är de motstridiga service planerna:
 
-- SharePoint Online (plan 2) står i konflikt med SharePoint Online (plan 1).
 - Exchange Online (plan 2) står i konflikt med Exchange Online (plan 1).
 
 För att lösa den här konflikten måste du inaktivera två av planerna. Du kan inaktivera E1-licensen som är direkt tilldelad användaren. Eller så måste du ändra hela grupp licens tilldelningen och inaktivera planerna i E3-licensen. Alternativt kan du välja att ta bort E1-licensen från användaren om den är redundant i samband med E3-licensen.
@@ -87,7 +86,7 @@ För att lösa det här problemet måste du kontrol lera att den nödvändiga pl
 
 ## <a name="usage-location-isnt-allowed"></a>Användnings platsen är inte tillåten
 
-**Problem:** Vissa Microsoft-tjänster är inte tillgängliga på alla platser på grund av lokala lagar och föreskrifter. Innan du kan tilldela en licens till en användare måste du ange egenskapen **användnings plats** för användaren. Du kan ange platsen under redigera **användar**  >  **profil**  >  **Edit** avsnittet i Azure Portal.
+**Problem:** Vissa Microsoft-tjänster är inte tillgängliga på alla platser på grund av lokala lagar och föreskrifter. Innan du kan tilldela en licens till en användare måste du ange egenskapen **användnings plats** för användaren. Du kan ange platsen under redigera **användar**  >  **profil**  >   avsnittet i Azure Portal.
 
 När Azure AD försöker tilldela en grupp licens till en användare vars användnings plats inte stöds, Miss lyckas den och registrerar ett fel för användaren.
 

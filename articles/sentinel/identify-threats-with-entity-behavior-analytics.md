@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/19/2020
 ms.author: yelevin
-ms.openlocfilehash: a0a677342534cd92d5530199076e3d2e7084134d
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 2326746d274c68225cd4c8569df6a20d6050ec1a
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95494785"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900900"
 ---
 # <a name="identify-advanced-threats-with-user-and-entity-behavior-analytics-ueba-in-azure-sentinel"></a>Identifiera avancerade hot med användar-och enhets beteende analys (UEBA) i Azure Sentinel
 
@@ -177,6 +177,8 @@ Entitetsformulär är utformade för att ingå i flera användnings scenarier oc
 | **ActivityInsights**      | kontext analys av aktivitet baserat på vår profilering              |
 | **InvestigationPriority** | avvikelse poäng, mellan 0-10 (0 = oskadlighet, 10 = mycket avvikande)         |
 |
+
+Du kan se den fullständiga uppsättningen sammanhangsbaserade berikade referenser i **UsersInsights**, **DevicesInsights** och **ActivityInsights** i [referens dokumentet för UEBA-berikade referenser](ueba-enrichments.md).
 
 ### <a name="querying-behavior-analytics-data"></a>Fråga om beteende analys data
 

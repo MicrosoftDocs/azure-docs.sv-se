@@ -3,12 +3,12 @@ title: 509-baserad autentisering med X. i ett Service Fabric kluster
 description: Lär dig mer om certifikatbaserad autentisering i Service Fabric kluster och hur du identifierar, minimerar och åtgärdar problem med certifikat.
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.openlocfilehash: 4d81cb9d224bdc2e3002c621c86729df235e0d81
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 8af0246e0e576f9877c4c5e3b1f1a4314ae29827
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96574776"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901257"
 ---
 # <a name="x509-certificate-based-authentication-in-service-fabric-clusters"></a>509-baserad autentisering med X. i Service Fabric kluster
 
@@ -170,7 +170,10 @@ Nodtypen certifikat kan också deklareras efter eget ämnes namn som WINS nedan:
   </NodeTypes>
 ```
 
-För båda typerna av deklaration kommer en Service Fabric-nod att läsa konfigurationen vid start, hitta och läsa in de angivna certifikaten och sortera dem i fallande ordning efter sina NotAfter-attribut; certifikat som har upphört att gälla ignoreras och det första elementet i listan är markerat som klientens autentiseringsuppgifter för alla Service Fabric-anslutningar som görs av den här noden. (Detta innebär att Service Fabric prioriterar det certifikat som är längst ut.)
+För båda typerna av deklaration kommer en Service Fabric-nod att läsa konfigurationen vid start, hitta och läsa in de angivna certifikaten och sortera dem i fallande ordning efter sina NotBefore-attribut; certifikat som har upphört att gälla ignoreras och det första elementet i listan är markerat som klientens autentiseringsuppgifter för alla Service Fabric-anslutningar som görs av den här noden. (I praktiken prioriteras Service Fabric det senast utfärdade certifikatet.)
+
+> [!NOTE]
+> Före version 7.2.445 (7,2 CU4) har Service Fabric valt det certifikat som är längst ut (certifikatet med den längst bort egenskapen NotAfter)
 
 Observera att för vanliga namnbaserade presentations deklarationer anses ett certifikat vara en matchning om dess eget ämnes namn är lika med X509FindValue (eller X509FindValueSecondary) i deklarationen som en Skift läges känslig, exakt sträng jämförelse. Detta är i motsats med validerings reglerna, som stöder matchning av jokertecken, samt Skift läges känsliga sträng jämförelser.  
 

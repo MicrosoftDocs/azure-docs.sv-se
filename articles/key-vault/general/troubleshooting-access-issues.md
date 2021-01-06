@@ -7,12 +7,12 @@ ms.date: 08/10/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 78b42a8ad3685d07b61c4faca384c7ee8f5a5f94
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 8e4e64cd872794354479c29d4aaa000cee45c5a3
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97616396"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901223"
 ---
 # <a name="troubleshooting-azure-key-vault-access-policy-issues"></a>Felsöka problem med åtkomst principer för Azure Key Vault
 
@@ -32,10 +32,10 @@ När du börjar skala tjänsten kommer antalet förfrågningar som skickats till
 ### <a name="i-am-not-able-to-modify-access-policy-how-can-it-be-enabled"></a>Jag kan inte ändra åtkomst principen, hur kan den aktive ras?
 Användaren måste ha tillräcklig AAD-behörighet för att ändra åtkomst principen. I det här fallet måste användaren ha högre deltagar roll.
 
-### <a name="i-am-seeing-unkwown-policy-error-what-does-that-mean"></a>Jag ser fel meddelandet "Unkwown policy". Vad innebär det?
+### <a name="i-am-seeing-unknown-policy-error-what-does-that-mean"></a>Jag ser "okänd princip"-fel. Vad innebär det?
 Det finns två olika möjligheter att se åtkomst principen i okänt avsnitt:
 * Det kan finnas en tidigare användare som hade åtkomst och av någon anledning att användaren inte finns.
-* Om åtkomst principen läggs till via PowerShell och åtkomst principen läggs till för programmet ObjectID i stället för tjänsten priciple
+* Om åtkomst principen läggs till via PowerShell och åtkomst principen läggs till för programmet ObjectID i stället för tjänstens huvud namn.
 
 ### <a name="how-can-i-assign-access-control-per-key-vault-object"></a>Hur tilldelar jag åtkomst kontroll per Key Vault-objekt? 
 
@@ -69,6 +69,6 @@ Ett annat alternativ som kan hjälpa till med det här scenariot är att använd
 ### <a name="what-are-the-best-practices-i-should-implement-when-key-vault-is-getting-throttled"></a>Vilka är de bästa metoderna jag bör implementera när Key Vault får en begränsning?
 Följ de bästa metoderna, dokumenterade [här](overview-throttling.md#how-to-throttle-your-app-in-response-to-service-limits)
 
-## <a name="next-steps"></a>Nästa steg
+## <a name="next-steps"></a>Efterföljande moment
 
 Lär dig hur du felsöker Key Vault-autentiseringsfel: [Key Vault fel söknings guide](rest-error-codes.md).

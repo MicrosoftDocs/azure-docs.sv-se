@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 12/21/2020
 ms.author: alkohli
-ms.openlocfilehash: 6fa8705221e1f1f9a9143f274a53db21b657988f
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: 0a7f54d991d31594a6ab522dbf9e73958cde3023
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763922"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900152"
 ---
 # <a name="gpu-vms-for-your-azure-stack-edge-pro-device"></a>GPU-virtuella datorer för din Azure Stack Edge Pro-enhet
 
@@ -338,7 +338,7 @@ Mer information finns i [tillägg för NVIDIA GPU-drivrutiner för Windows](../v
 
 ### <a name="gpu-extension-for-linux"></a>GPU-tillägg för Linux
 
-Om du vill distribuera nVidia GPU-drivrutiner för en befintlig virtuell dator redigerar du `addGPUExtLinuxVM.parameters.json` parameter filen och distribuerar sedan mallen `addGPUextensiontoVM.json` .
+Om du vill distribuera nVidia GPU-drivrutiner för en befintlig virtuell dator redigerar du parameter filen och distribuerar sedan mallen `addGPUextensiontoVM.json` . Det finns vissa parametrar-filer för Ubuntu och Red Hat Enterprise Linux (RHEL) som beskrivs i följande avsnitt.
 
 #### <a name="edit-parameters-file"></a>Redigera parameter fil
 
@@ -371,8 +371,7 @@ Om du använder Ubuntu, `addGPUExtLinuxVM.parameters.json` tar filen med följan
     }
     }
 ```
-Om du använder Red Hat Enterprise Linux (RHEL) använder filen följande parametrar:
-
+Om du använder Red Hat Enterprise Linux (RHEL) `addGPUExtensionRHELVM.parameters.json` tar filen med följande parametrar:
 
 ```powershell
 {

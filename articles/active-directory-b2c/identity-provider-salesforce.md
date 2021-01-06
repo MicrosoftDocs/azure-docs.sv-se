@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/07/2020
+ms.date: 01/05/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 69c2bd96c7aa3bb3328784bb3b5027ade4902c43
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 129809a83bcebdcf80b05a7300dd9acf862e5886
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97669235"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900407"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-salesforce-account-using-azure-active-directory-b2c"></a>Konfigurera registrering och inloggning med ett Salesforce-konto med hjälp av Azure Active Directory B2C
 
@@ -30,7 +30,7 @@ ms.locfileid: "97669235"
 
 ::: zone-end
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
@@ -48,10 +48,12 @@ Om du vill använda ett Salesforce-konto i Azure Active Directory B2C (Azure AD 
     1. **API-namn** 
     1. **Kontakta e** -postadress – e-postkontakten för Salesforce
 1. Under **API (Aktivera OAuth-inställningar)** väljer du **Aktivera OAuth-inställningar**
-1. I **återanrops-URL** anger du `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` . Ersätt `your-tenant-name` med namnet på din klient. Du måste använda små bokstäver när du anger ditt klient namn även om klienten har definierats med versaler i Azure AD B2C.
-1. I de **valda OAuth-omfattningarna** väljer **du åtkomst till grundläggande information (ID, profil, e-post, adress, telefon)** och **tillåter åtkomst till din unika identifierare (OpenID)**.
-1. Välj **Kräv hemlighet för webb server flöde**.
-1. Välj **Konfigurera ID-token** och välj sedan **inkludera standard anspråk**.
+    1. I **återanrops-URL** anger du `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` . Ersätt `your-tenant-name` med namnet på din klient. Du måste använda små bokstäver när du anger ditt klient namn även om klienten har definierats med versaler i Azure AD B2C.
+    1. I de **valda OAuth-omfattningarna** väljer **du åtkomst till grundläggande information (ID, profil, e-post, adress, telefon)** och **tillåter åtkomst till din unika identifierare (OpenID)**.
+    1. Välj **Kräv hemlighet för webb server flöde**.
+1. Välj **Konfigurera ID-token** 
+    1. Ange **token som är giltig i** 5 minuter.
+    1. Välj **inkludera standard anspråk**.
 1. Klicka på **Spara**.
 1. Kopiera värdena för **konsument nyckel** och **konsument hemlighet**. Du behöver båda dessa för att konfigurera Salesforce som en identitets leverantör i din klient. **Klient hemlighet** är en viktig säkerhets autentiseringsuppgift.
 
@@ -63,10 +65,10 @@ Om du vill använda ett Salesforce-konto i Azure Active Directory B2C (Azure AD 
 1. Välj **Alla tjänster** på menyn högst upp till vänster i Azure-portalen och sök efter och välj **Azure AD B2C**.
 1. Välj **identitets leverantörer** och välj sedan **ny OpenID Connect-Provider**.
 1. Ange ett **namn**. Ange till exempel *Salesforce*.
-1. För **metadata-URL** anger du följande URL-adress som ersätts `{org}` med din Salesforce-organisation:
+1. För **metadata-URL** anger du URL: en för [Salesforce-OpenID Connect-konfigurationsfilen](https://help.salesforce.com/articleView?id=remoteaccess_using_openid_discovery_endpoint.htm). För en sandbox ersätts login.salesforce.com med test.salesforce.com. För en community ersätts login.salesforce.com med grupp-URL: en, till exempel username.force.com/.well-known/openid-configuration. URL: en måste vara HTTPS.
 
     ```
-    https://{org}.my.salesforce.com/.well-known/openid-configuration
+    https://login.salesforce.com/.well-known/openid-configuration
     ```
 
 1. För **klient-ID** anger du det program-ID som du tidigare har registrerat.
@@ -80,7 +82,7 @@ Om du vill använda ett Salesforce-konto i Azure Active Directory B2C (Azure AD 
     - **Visnings namn**: *namn*
     - **Tilldelat namn**: *given_name*
     - Efter **namn**: *family_name*
-    - **E-post**: *preferred_username*
+    - **E-post**: *e-post*
 
 1. Välj **Spara**.
 ::: zone-end
@@ -121,8 +123,7 @@ Du kan definiera ett Salesforce-konto som en anspråks leverantör genom att lä
           <DisplayName>Salesforce</DisplayName>
           <Protocol Name="OpenIdConnect" />
           <Metadata>
-            <!-- Update the {org} below to your Salesforce organization -->
-            <Item Key="METADATA">https://{org}.my.salesforce.com/.well-known/openid-configuration</Item>
+            <Item Key="METADATA">https://login.salesforce.com/.well-known/openid-configuration</Item>
             <Item Key="response_types">code</Item>
             <Item Key="response_mode">form_post</Item>
             <Item Key="scope">openid id profile email</Item>
@@ -154,7 +155,7 @@ Du kan definiera ett Salesforce-konto som en anspråks leverantör genom att lä
     </ClaimsProvider>
     ```
 
-4. Ange **metadata** -URI `{org}` med din Salesforce-organisation.
+4. **Metadata** anges till URL: en för Salesforce- [OpenID Connect-konfigurationsfilen](https://help.salesforce.com/articleView?id=remoteaccess_using_openid_discovery_endpoint.htm). För en sandbox ersätts login.salesforce.com med test.salesforce.com. För en community ersätts login.salesforce.com med grupp-URL: en, till exempel username.force.com/.well-known/openid-configuration. URL: en måste vara HTTPS.
 5. Ange **client_id** till program-ID: t från program registreringen.
 6. Spara filen.
 
@@ -226,7 +227,7 @@ Uppdatera den förlitande parten (RP) som initierar användar resan som du har s
 
 1. Gör en kopia av *SignUpOrSignIn.xml* i din arbets katalog och Byt namn på den. Du kan till exempel byta namn på den till *SignUpSignInSalesforce.xml*.
 1. Öppna den nya filen och uppdatera värdet för attributet **PolicyId** för **TrustFrameworkPolicy** med ett unikt värde. Ett exempel är `SignUpSignInSalesforce`.
-1. Uppdatera värdet för **PublicPolicyUri** med URI: n för principen. Exempel:`http://contoso.com/B2C_1A_signup_signin_Salesforce`
+1. Uppdatera värdet för **PublicPolicyUri** med URI: n för principen. Till exempel`http://contoso.com/B2C_1A_signup_signin_Salesforce`
 1. Uppdatera värdet för attributet **ReferenceId** i **DefaultUserJourney** för att matcha ID för den nya användar resan som du skapade (SignUpSignSalesforce).
 1. Spara ändringarna, ladda upp filen.
 1. Under **anpassade principer** väljer du **B2C_1A_signup_signin**.

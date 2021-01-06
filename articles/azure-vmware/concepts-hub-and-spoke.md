@@ -3,12 +3,12 @@ title: Koncept – integrera en Azure VMware-lösning distribution i en hubb och
 description: Lär dig mer om att integrera en Azure VMware-distribution i en hubb och eker-arkitektur på Azure.
 ms.topic: conceptual
 ms.date: 10/26/2020
-ms.openlocfilehash: 788ef9886e0d102a549e84cd01c658e9e4131c63
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 0d511c8d6a96ffb6fa666bcb7c989764f398bdc9
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967456"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901393"
 ---
 # <a name="integrate-azure-vmware-solution-in-a-hub-and-spoke-architecture"></a>Integrera Azure VMware-lösningen i en hubb och eker-arkitektur
 
@@ -128,7 +128,7 @@ Av säkerhets skäl bör du distribuera [Microsoft Azure skydds](../bastion/inde
 
 För Azure DNS upplösning finns det två tillgängliga alternativ:
 
--   Använd de Azure Active Directory-domänkontrollanter (Azure AD) som distribueras på hubben (beskrivs i [identitets överväganden](#identity-considerations)) som namnservrar.
+-   Använd domän kontrol Lanterna som distribueras på hubben (beskrivs i [identitets överväganden](#identity-considerations)) som namnservrar.
 
 -   Distribuera och konfigurera en Azure DNS privat zon.
 
@@ -136,7 +136,7 @@ Det bästa sättet är att kombinera båda för att tillhandahålla tillförlitl
 
 Som en allmän rekommendation använder du den befintliga Azure DNS-infrastrukturen (i det här fallet Active Directory-integrerad DNS) som distribueras till minst två virtuella Azure-datorer som distribuerats i det virtuella Hubbs nätverket och konfigureras i de virtuella eker-nätverken för att använda dessa Azure DNS-servrar i DNS-inställningarna.
 
-Du kan använda Azure Privat DNS, där Azure Privat DNS Zone länkar till det virtuella nätverket.  DNS-servrarna används som hybrid lösningar med villkorlig vidarebefordran till lokal eller Azure VMware-lösning som kör DNS och utnyttjar kund Azure Privat DNS-infrastrukturen. 
+Du kan använda Azure Privat DNS, där Azure Privat DNS Zone länkar till det virtuella nätverket.  DNS-servrarna används som hybrid lösningar med villkorlig vidarebefordran till lokala eller Azure VMware-lösningar som kör DNS med hjälp av kund Azure Privat DNS-infrastruktur. 
 
 Aktivera automatisk registrering för att automatiskt hantera DNS-posternas livs cykel för de virtuella datorer som distribueras i de virtuella nätverken i ekrar. När det är aktiverat är det maximala antalet privata DNS-zoner bara en. Om den är inaktive rad är det maximala antalet 1000.
 
@@ -144,7 +144,7 @@ Lokala och Azure VMware Solution-servrar kan konfigureras med villkorliga vidare
 
 ## <a name="identity-considerations"></a>Identitets överväganden
 
-För identitets syfte är det bästa sättet att distribuera minst en AD-domänkontrollant på hubben. Använd två undernät för delade tjänster i zon-distribuerad mode eller en tillgänglighets uppsättning för virtuella datorer. Se [Azure Architecture Center](/azure/architecture/reference-architectures/identity/adds-extend-domain) för att utöka din lokala AD-domän till Azure.
+För identitets syfte är det bästa sättet att distribuera minst en domänkontrollant på hubben. Använd två undernät för delade tjänster i zon-distribuerad mode eller en tillgänglighets uppsättning för virtuella datorer. Mer information om hur du utökar din lokala Active Directory-domän (AD) till Azure finns i [Azure Architecture Center](/azure/architecture/reference-architectures/identity/adds-extend-domain).
 
 Dessutom kan du distribuera en annan domänkontrollant på Azure VMware-lösningen för att agera som identitet och DNS-källa i vSphere-miljön.
 

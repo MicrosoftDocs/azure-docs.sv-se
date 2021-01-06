@@ -5,12 +5,12 @@ author: naiteeks
 ms.topic: how-to
 ms.author: naiteeks
 ms.date: 12/14/2020
-ms.openlocfilehash: 7904269a8ca87d3d801c7ff78def1b60f242b9ab
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 9621f0a933c6102309286505f2c551c5256c5506
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97425995"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901563"
 ---
 # <a name="upgrading-live-video-analytics-on-iot-edge-from-10-to-20"></a>Uppgradera video analys i real tid på IoT Edge från 1,0 till 2,0
 
@@ -19,7 +19,7 @@ Den här artikeln beskriver skillnaderna och de olika saker som du bör tänka p
 ## <a name="change-list"></a>Ändra lista
 
 > [!div class="mx-tdCol4BreakAll"]
-> |Rubrik|Live video analys 1,0|Live video analys 2,0|Beskrivning|
+> |Title|Live video analys 1,0|Live video analys 2,0|Beskrivning|
 > |-------------|----------|---------|---------|
 > |Behållar avbildning|mcr.microsoft.com/media/live-video-analytics:1.0.0|mcr.microsoft.com/media/live-video-analytics:2.0.0|Microsoft-publicerade Docker-avbildningar för real tids video analys på Azure IoT Edge|
 > |**MediaGraph-noder** |    |   |   |
@@ -169,7 +169,7 @@ I den här versionen kan du använda netympkvistar för att skicka mått till Az
 > [!div class="mx-imgBorder"]
 > :::image type="content" source="./media/telemetry-schema/telegraf.png" alt-text="Händelsetaxonomi":::
 
-Du kan skapa en teleympkvistar-avbildning med en anpassad konfiguration som enkelt använder Docker. Läs mer om det här på sidan [övervakning och loggning](monitoring-logging.md#azure-monitor-collection-using-telegraf) .
+Du kan skapa en teleympkvistar-avbildning med en anpassad konfiguration som enkelt använder Docker. Läs mer om det här på sidan [övervakning och loggning](monitoring-logging.md#azure-monitor-collection-via-telegraf) .
 
 ## <a name="next-steps"></a>Nästa steg
 

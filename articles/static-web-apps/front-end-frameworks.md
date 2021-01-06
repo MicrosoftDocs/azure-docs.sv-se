@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 07/18/2020
 ms.author: cshoe
-ms.openlocfilehash: 4b1bc58b6b4a87cd6e5e09e83020a38261b8746f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 14564b0591ef0146131b3f9324556b613e25daac
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90905376"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901240"
 ---
 # <a name="configure-front-end-frameworks-and-libraries-with-azure-static-web-apps-preview"></a>Konfigurera klient dels ramverk och bibliotek med Azures statiska Web Apps för hands version
 
@@ -24,7 +24,7 @@ I följande tabell visas inställningarna för en serie ramverk och bibliotek<su
 
 Avsikten med tabell kolumnerna förklaras av följande objekt:
 
-- **Plats för app-artefakt**: visar värdet för `app_artifact_location` , som är [mappen för inbyggda versioner av programfiler](github-actions-workflow.md#build-and-deploy).
+- **Utmatnings plats**: visar värdet för `output_location` , som är [mappen för inbyggda versioner av programfiler](github-actions-workflow.md#build-and-deploy).
 
 - **Anpassat build-kommando**: när ramverket kräver ett annat kommando än `npm run build` eller `npm run azure:build` , kan du definiera ett [anpassat build-kommando](github-actions-workflow.md#custom-build-commands).
 
@@ -33,30 +33,30 @@ Avsikten med tabell kolumnerna förklaras av följande objekt:
 | [Alpine.js](https://github.com/alpinejs/alpine/) | `/` | ej tillämpligt <sup>2</sup> |
 | [Angular](https://angular.io/) | `dist/<APP_NAME>` | `npm run build -- --prod` |
 | [Vinkel universell](https://angular.io/guide/universal) | `dist/<APP_NAME>/browser` | `npm run prerender` |
-| [Aurelia](https://aurelia.io/) | `dist` | Saknas |
-| [Backbone.js](https://backbonejs.org/) | `/` | Saknas |
-| [Blazor](https://dotnet.microsoft.com/apps/aspnet/web-apps/blazor) | `wwwroot` | Saknas |
-| [Ember](https://emberjs.com/) | `dist` | Saknas |
+| [Aurelia](https://aurelia.io/) | `dist` | saknas |
+| [Backbone.js](https://backbonejs.org/) | `/` | saknas |
+| [Blazor](https://dotnet.microsoft.com/apps/aspnet/web-apps/blazor) | `wwwroot` | saknas |
+| [Ember](https://emberjs.com/) | `dist` | saknas |
 | [Flutter](https://flutter.dev/) | `build/web` | `flutter build web` |
 | [Framework7](https://framework7.io/) | `www` | `npm run build-prod` |
-| [Glimmer](https://glimmerjs.com/) | `dist` | Saknas |
-| [HTML](https://developer.mozilla.org/docs/Web/HTML) | `/` | Saknas |
-| [Hyperapp](https://hyperapp.dev/) | `/` | Saknas |
-| [JavaScript](https://developer.mozilla.org/docs/Web/javascript) | `/` | Saknas |
-| [jQuery](https://jquery.com/) | `/` | Saknas |
-| [KnockoutJS](https://knockoutjs.com/) | `dist` | Saknas |
-| [LitElement](https://lit-element.polymer-project.org/) | `dist` | Saknas |
-| [Marko](https://markojs.com/) | `public` | Saknas |
-| [Meteor](https://www.meteor.com/) | `bundle` | Saknas |
-| [Mithril](https://mithril.js.org/) | `dist` | Saknas |
-| [Mera](https://www.polymer-project.org/) | `build/default` | Saknas |
-| [Preact](https://preactjs.com/) | `build` | Saknas |
-| [React](https://reactjs.org/) | `build` | Saknas |
-| [>](https://stenciljs.com/) | `www` | Saknas |
-| [Svelte](https://svelte.dev/) | `public` | Saknas |
-| [Three.js](https://threejs.org/) | `/` | Saknas |
-| [TypeScript](https://www.typescriptlang.org/) | `dist` | Saknas |
-| [Vue.js](https://vuejs.org/) | `dist` | Saknas |
+| [Glimmer](https://glimmerjs.com/) | `dist` | saknas |
+| [HTML](https://developer.mozilla.org/docs/Web/HTML) | `/` | saknas |
+| [Hyperapp](https://hyperapp.dev/) | `/` | saknas |
+| [JavaScript](https://developer.mozilla.org/docs/Web/javascript) | `/` | saknas |
+| [jQuery](https://jquery.com/) | `/` | saknas |
+| [KnockoutJS](https://knockoutjs.com/) | `dist` | saknas |
+| [LitElement](https://lit-element.polymer-project.org/) | `dist` | saknas |
+| [Marko](https://markojs.com/) | `public` | saknas |
+| [Meteor](https://www.meteor.com/) | `bundle` | saknas |
+| [Mithril](https://mithril.js.org/) | `dist` | saknas |
+| [Mera](https://www.polymer-project.org/) | `build/default` | saknas |
+| [Preact](https://preactjs.com/) | `build` | saknas |
+| [React](https://reactjs.org/) | `build` | saknas |
+| [>](https://stenciljs.com/) | `www` | saknas |
+| [Svelte](https://svelte.dev/) | `public` | saknas |
+| [Three.js](https://threejs.org/) | `/` | saknas |
+| [TypeScript](https://www.typescriptlang.org/) | `dist` | saknas |
+| [Vue.js](https://vuejs.org/) | `dist` | saknas |
 
 <sup>1</sup> tabellen ovan är inte avsedd att vara en fullständig lista över ramverk och bibliotek som fungerar med Azures statiska Web Apps.
 

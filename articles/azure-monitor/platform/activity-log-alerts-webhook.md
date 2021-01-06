@@ -4,12 +4,12 @@ description: Lär dig mer om schemat för JSON som publiceras i en webhook-URL n
 ms.topic: conceptual
 ms.date: 03/31/2017
 ms.subservice: alerts
-ms.openlocfilehash: 026613c3f5710137fb110153b34f9ed74bbf8a7b
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: a73ab12d1729acba132aeffd4104ca7846ecb9e8
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95522795"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901444"
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Webhookar för Azure aktivitets logg aviseringar
 Som en del av definitionen av en åtgärds grupp kan du konfigurera webhook-slutpunkter för att ta emot aviseringar om aktivitets logg aviseringar. Med Webhooks kan du dirigera dessa meddelanden till andra system för efter bearbetning eller anpassade åtgärder. Den här artikeln visar vad nytto lasten för HTTP-inlägget till en webhook ser ut.
@@ -27,6 +27,19 @@ Webhooken kan också använda token-baserad auktorisering för autentisering. We
 
 ## <a name="payload-schema"></a>Nytto Last schema
 JSON-nyttolasten som ingår i POST-åtgärden skiljer sig från den nytto lastens data. context. activityLog. eventSource-fält.
+
+> [!NOTE]
+> För närvarande kopieras beskrivningen som är en del av aktivitets logg händelsen till den utlöst **varnings beskrivningen** .
+>
+> För att kunna justera nytto lasten för aktivitets loggen med andra aviserings typer, från och med den 1 april 2021, innehåller aviserings **regel beskrivningen i** stället.
+>
+> Vid förberedelse för den här ändringen skapade vi en ny egenskap **"aktivitets logg händelse Beskrivning"** i aviseringen om aktivitets loggen. Den här nya egenskapen fylls med egenskapen **"Description"** som redan är tillgänglig för användning. Det innebär att det nya fältet **"aktivitets logg händelse Beskrivning"** kommer att innehålla den beskrivning som ingår i aktivitets logg händelsen.
+>
+> Granska aviserings reglerna, åtgärds regler, webhookar, Logic app eller andra konfigurationer där du kan använda egenskapen **Beskrivning** från den aktiverade aviseringen och ersätt den med egenskapen **händelse Beskrivning för aktivitets logg** .
+>
+> Om ditt villkor (i åtgärds regler, Webhooks, Logic app eller andra konfigurationer) för närvarande baseras på egenskapen **"Beskrivning"** för aktivitets logg aviseringar, kan du behöva ändra den så att den baseras på egenskapen **"händelse Beskrivning för aktivitets loggen"** i stället.
+>
+> Du kan lägga till en beskrivning i varnings regel definitionen för att fylla i den nya egenskapen **Description** .
 
 ### <a name="common"></a>Common
 
@@ -262,7 +275,7 @@ Information om en detaljerad schema information om logg aviseringar för tjänst
 | conditionType |Always "event." |
 | name |Aviserings regelns namn. |
 | id |Resurs-ID för aviseringen. |
-| beskrivning |Aviserings beskrivning som anges när aviseringen skapas. |
+| description |Aviserings beskrivning som anges när aviseringen skapas. |
 | subscriptionId |ID för Azure-prenumeration. |
 | timestamp |Tiden då händelsen genererades av den Azure-tjänst som bearbetade begäran. |
 | resourceId |Resurs-ID för den påverkade resursen. |

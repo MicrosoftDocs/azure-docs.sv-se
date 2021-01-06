@@ -4,16 +4,16 @@ description: Lär dig hur du ändrar prestanda nivåer för nya och befintliga h
 author: roygara
 ms.service: virtual-machines
 ms.topic: how-to
-ms.date: 11/19/2020
+ms.date: 01/05/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: a868d5d236cf4c5a8d29f15490909c2f1a53546f
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: 625fb1e3dd0b433da6b60f995aa6b380c23ec9ce
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "96016615"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901042"
 ---
 # <a name="change-your-performance-tier-using-the-azure-portal"></a>Ändra prestanda nivån med hjälp av Azure Portal
 
@@ -47,7 +47,7 @@ Följande steg beskriver hur du ändrar prestanda nivån för en befintlig disk:
 1. Frigör den virtuella datorn eller koppla från disken.
 1. Välj din disk
 1. Välj **storlek + prestanda**.
-1. I list rutan **prestanda nivå** väljer du en annan nivå än diskens aktuella bas linje.
+1. I list rutan **prestanda nivå** väljer du en annan nivå än diskens aktuella prestanda nivå.
 1. Välj **Ändra storlek**.
 
 :::image type="content" source="media/disks-performance-tiers-portal/change-tier-existing-disk.png" alt-text="Skärm bild av bladet storlek och prestanda är prestanda nivån markerad." lightbox="media/disks-performance-tiers-portal/performance-tier-settings.png":::
