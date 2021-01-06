@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: troubleshooting
 ms.date: 10/16/2019
 ms.author: charwen
-ms.openlocfilehash: f3c142491363f30513877ae4368f291430aa3675
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d4f5d4b7fed8f14f048794616ee272342d1e8343
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85831938"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97915563"
 ---
 # <a name="troubleshoot-azure-bastion"></a>Felsöka Azure Bastion
 
@@ -22,7 +22,7 @@ Den här artikeln visar hur du felsöker Azure-skydds.
 
 **F:** När jag försöker skapa en NSG i Azure skydds-undernätet visas följande fel meddelande: *"nätverks säkerhets gruppen <NSG name> har inte de regler som krävs för Azure skydds Subnet AzureBastionSubnet"*.
 
-**A:** Om du skapar och använder en NSG för *AzureBastionSubnet*kontrollerar du att du har lagt till följande regler i din NSG. Om du inte lägger till de här reglerna går det inte att skapa eller uppdatera NSG.
+**A:** Om du skapar och använder en NSG för *AzureBastionSubnet* kontrollerar du att du har lagt till följande regler i din NSG. Om du inte lägger till de här reglerna går det inte att skapa eller uppdatera NSG.
 
 1. Kontroll Plans anslutning – inkommande den 443 från GatewayManager
 2. Diagnostikloggning och andra – utgående på 443 till AzureCloud (regionala Taggar i denna service tag stöds inte ännu.)
@@ -81,7 +81,7 @@ The key's randomart image is:
 
 ## <a name="black-screen-in-the-azure-portal"></a><a name="blackscreen"></a>Svart skärm i Azure Portal
 
-**F:** När jag försöker ansluta med Azure skydds får jag en svart skärm i Azure Portal.
+**F:** När jag försöker ansluta med Azure-skydds kan jag inte Connnect till den virtuella mål datorn och jag får en svart skärm i Azure Portal.
 
 **A:** Detta inträffar när det finns ett problem med nätverks anslutningen mellan webbläsaren och Azure-skydds (din klients Internet brand vägg kan blockera WebSockets-trafik eller liknande), eller mellan Azure-skydds och den virtuella mål datorn. De flesta fall innehåller en NSG som tillämpas antingen på AzureBastionSubnet eller på ditt virtuella mål-undernät som blockerar RDP/SSH-trafiken i det virtuella nätverket. Tillåt WebSocket-trafik på klientens Internet brand vägg och kontrol lera NSG: er på ditt mål-VM-undernät.
 

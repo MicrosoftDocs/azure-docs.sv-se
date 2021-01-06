@@ -4,12 +4,12 @@ description: Översikt över Reliable Services kommunikations modellen, inklusiv
 ms.topic: conceptual
 ms.date: 11/01/2017
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e7dc10055633c8e6dd2c645f28b774d5d5f3ac3f
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 3436d29446e963faea9bda47f5a5247b7de7d859
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96574334"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97912622"
 ---
 # <a name="how-to-use-the-reliable-services-communication-apis"></a>Använda API: erna för Reliable Services kommunikation
 Azure Service Fabric som en plattform är helt oberoende om kommunikation mellan tjänster. Alla protokoll och stackar är acceptabla, från UDP till HTTP. Det är upp till tjänste utvecklaren att välja hur tjänsterna ska kommunicera. Reliable Services Application Framework innehåller inbyggda kommunikations stackar och API: er som du kan använda för att skapa anpassade kommunikations komponenter.
@@ -206,7 +206,7 @@ ServicePartitionResolver resolver = ServicePartitionResolver.GetDefault();
 FabricServicePartitionResolver resolver = FabricServicePartitionResolver.getDefault();
 ```
 
-Om du vill ansluta till tjänster i ett annat kluster kan du skapa en ServicePartitionResolver med en uppsättning av kluster-Gateway-slutpunkter. Observera att Gateway-slutpunkter bara är olika slut punkter för att ansluta till samma kluster. Exempel:
+Om du vill ansluta till tjänster i ett annat kluster kan du skapa en ServicePartitionResolver med en uppsättning av kluster-Gateway-slutpunkter. Observera att Gateway-slutpunkter bara är olika slut punkter för att ansluta till samma kluster. Till exempel:
 
 ```csharp
 ServicePartitionResolver resolver = new  ServicePartitionResolver("mycluster.cloudapp.azure.com:19000", "mycluster.cloudapp.azure.com:19001");
@@ -288,7 +288,7 @@ public class MyCommunicationClient implements CommunicationClient {
 }
 ```
 
-Klient fabriken ansvarar främst för att skapa kommunikations klienter. För klienter som inte upprätthåller en permanent anslutning, till exempel en HTTP-klient, behöver fabriken bara skapa och returnera klienten. Andra protokoll som upprätthåller en permanent anslutning, till exempel vissa binära protokoll, bör också verifieras av fabriken för att avgöra om anslutningen måste skapas på nytt.  
+Klient fabriken ansvarar främst för att skapa kommunikations klienter. För klienter som inte upprätthåller en permanent anslutning, till exempel en HTTP-klient, behöver fabriken bara skapa och returnera klienten. Andra protokoll som upprätthåller en permanent anslutning, till exempel vissa binära protokoll, bör också verifieras ( `ValidateClient(string endpoint, MyCommunicationClient client)` ) av fabriken för att avgöra om anslutningen måste skapas på nytt.  
 
 ```csharp
 public class MyCommunicationClientFactory : CommunicationClientFactoryBase<MyCommunicationClient>

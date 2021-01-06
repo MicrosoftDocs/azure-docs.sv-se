@@ -3,24 +3,24 @@ title: Självstudie – Skapa och hantera Azure-budgetar
 description: Den här självstudien hjälper dig att planera och ta hänsyn till kostnaderna för de Azure-tjänster som du använder.
 author: bandersmsft
 ms.author: banders
-ms.date: 08/20/2020
+ms.date: 12/16/2020
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 48cf5aea60f66fa8b24fd09e7304be0077f2fdcf
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: c8b0265a72911688f08e0f8c4a39fa657f034472
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132813"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97630147"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Självstudier: Skapa och hantera Azure-budgetar
 
 Budgetar i Cost Management hjälper dig att planera och öka organisationsansvar. Med budgetar kan du ta hänsyn till de Azure-tjänster du förbrukar eller prenumererar på under en viss period. De hjälper dig att informera andra om sina utgifter för att proaktivt hantera kostnader och för att övervaka hur utgifter fortskrider över tid. När de budgettrösklar som du har skapat har överskridits utlöses bara meddelanden. Ingen av dina resurser påverkas och förbrukningen stoppas inte. Du kan använda budgetar för att jämföra och spåra utgifter när du analyserar kostnader.
 
-Information om kostnader och användning är normalt tillgänglig inom 8 till 24 timmar, och budgetar utvärderas mot dessa kostnader var 12:e till 14:e timme. Se till att du läser och förstår informationen i [Uppdateringar av kostnader och användningsdata](./understand-cost-mgt-data.md#cost-and-usage-data-updates-and-retention). När en budgettröskel nås skickas normalt e-postaviseringar inom en timme från utvärderingen.
+Information om kostnader och användning är normalt tillgänglig inom 8 till 24 timmar, och budgetar utvärderas mot dessa kostnader var 24:e timme. Se till att du läser och förstår informationen i [Uppdateringar av kostnader och användningsdata](./understand-cost-mgt-data.md#cost-and-usage-data-updates-and-retention). När en budgettröskel nås skickas normalt e-postaviseringar inom en timme från utvärderingen.
 
 Budgetar återställs automatiskt i slutet av en period (månadsvis, kvartalsvis eller årsvis) för samma budgetbelopp när du väljer ett förfallodatum i framtiden. Eftersom de återställs med samma budgetbelopp måste du skapa separata budgetar när budgeterade valutabelopp skiljer sig åt för framtida perioder.
 
@@ -94,7 +94,7 @@ Kontrollera att det angivna definitionsområdet är korrekt i fönstret **Skapa 
 
 När du har identifierat ditt omfång och dina filter anger du ett budgetnamn. Välj sedan en återställningsperiod för budgeten – varje månad, kvartal eller år. Den här återställningsperioden bestämmer tidsperioden som analyseras av budgeten. Kostnaden som utvärderas av budgeten börjar vid noll i början av varje ny period. När du skapar en kvartalsbudget fungerar den på samma sätt som en månatlig budget. Skillnaden är att budgetbeloppet för kvartalet delas jämnt mellan de tre månaderna i kvartalet. Ett årligt budgetbelopp delas jämnt mellan alla 12 månader på kalenderåret.
 
-Om du har en prenumeration enligt principen betala per användning, MSDN eller Visual Studio kan faktureringsperioden inte justeras till den kalendermånaden. För dessa prenumerationstyper och resursgrupper kan du skapa en budget som är justerad till din fakturaperiod eller till kalendermånader. Om du vill skapa en budget som är anpassad till din fakturaperiod väljer du en återställningsperiod, antingen **faktureringsmånad**, **faktureringskvartal**eller **faktureringsår**. Om du vill skapa en budget som är anpassad efter kalendermånaden väljer du återställningsperioden **Månadsvis**, **Varje kvartal**eller **Varje år**.
+Om du har en prenumeration enligt principen betala per användning, MSDN eller Visual Studio kan faktureringsperioden inte justeras till den kalendermånaden. För dessa prenumerationstyper och resursgrupper kan du skapa en budget som är justerad till din fakturaperiod eller till kalendermånader. Om du vill skapa en budget som är anpassad till din fakturaperiod väljer du en återställningsperiod, antingen **faktureringsmånad**, **faktureringskvartal** eller **faktureringsår**. Om du vill skapa en budget som är anpassad efter kalendermånaden väljer du återställningsperioden **Månadsvis**, **Varje kvartal** eller **Varje år**.
 
 Sedan identifierar du förfallodatumet då budgeten blir ogiltig och slutar utvärdera dina kostnader.
 

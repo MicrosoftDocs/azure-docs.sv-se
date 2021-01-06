@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 06/30/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 33f7f407c1df45131b0ebb5b14e8fcad2626bffd
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 8243619bc7a32c5fa86b6e108d954674b54394e5
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87077554"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97913742"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-in-the-azure-portal"></a>Snabbstart: Skapa en VM-skalningsuppsättning med Azure Portal
 
@@ -32,7 +32,7 @@ Azure [Load Balancer](../load-balancer/load-balancer-overview.md) distribuerar i
 
 Börja med att skapa en offentlig Standard Load Balancer med hjälp av portalen. Det namn och den offentliga IP-adress som du skapar konfigureras automatiskt som lastbalanserarens klientdel.
 
-1. I rutan Sök skriver du **Load Balancer**. Välj **belastnings utjämning**under **Marketplace** i Sök resultaten.
+1. I rutan Sök skriver du **Load Balancer**. Välj **belastnings utjämning** under **Marketplace** i Sök resultaten.
 1. På fliken **grundläggande** på sidan **skapa belastnings utjämning** anger eller väljer du följande information:
 
     | Inställning                 | Värde   |
@@ -59,21 +59,20 @@ Du kan distribuera en skalningsuppsättning som anges med en Windows Server-avbi
 1. Skriv **skalnings uppsättning** i sökrutan. I resultaten, under **Marketplace**, väljer du **skalnings uppsättningar för virtuella datorer**. Välj **skapa** på sidan **skalnings uppsättningar för virtuell dator** , som öppnar sidan **skapa en skalnings uppsättning för virtuell dator** . 
 1. På fliken **Grundläggande inställningar** går du till **Projektinformation**, kontrollerar att korrekt prenumeration har valts och väljer sedan **Skapa ny** för resursgruppen. Skriv *myVMSSResourceGroup* som namn och välj sedan **OK** . 
 1. Skriv *myScaleSet* som namn på din skalnings uppsättning.
-1. I **region**väljer du en region som ligger nära ditt område.
-1. Lämna standardvärdet för **virtuella ScaleSet-datorer** för **Orchestration-läge**.
+1. I **region** väljer du en region som ligger nära ditt område.
 1. Välj en Marketplace-avbildning för **avbildningen**. I det här exemplet har vi valt *Ubuntu Server 18,04 LTS*.
 1. Ange önskat användarnamn och välj den autentiseringstyp du föredrar.
    - Ett **lösenord** måste innehålla minst 12 tecken och måste uppfylla tre av följande fyra komplexitetskrav: en gemen, en versal, en siffra och ett specialtecken. Mer information finns i [kraven om användarnamn och lösenord](../virtual-machines/windows/faq.md#what-are-the-username-requirements-when-creating-a-vm).
    - Om du väljer en Linux OS-diskavbildning kan du istället välja **offentlig SSH-nyckel**. Du behöver bara ange din offentliga nyckel, t.ex. *~/.ssh/id_rsa.pub*. Du kan använda Azure Cloud Shell från portalen för att [skapa och använda SSH-nycklar](../virtual-machines/linux/mac-create-ssh-keys.md).
    
-    ![Skapa en VM-skalningsuppsättning](./media/virtual-machine-scale-sets-create-portal/quick-create-scaleset.png)
+    :::image type="content" source="./media/virtual-machine-scale-sets-create-portal/quick-create-scale-set.png" alt-text="Bild visar skapande alternativ för skalnings uppsättningar i Azure Portal.":::
 
 1. Välj **Nästa** för att flytta de andra sidorna. 
 1. Lämna standardvärdena för **instans** -och **disk** sidorna.
-1. På sidan **nätverk** under **belastnings utjämning**väljer du **Ja** för att ställa in skalnings uppsättnings instanserna bakom en belastningsutjämnare. 
-1. I **alternativ för belastnings utjämning**väljer du **Azure Load Balancer**.
-1. I **Välj en belastningsutjämnare**väljer du *myLoadBalancer* som du skapade tidigare.
-1. För **Välj en backend-pool**väljer du **Skapa ny**, Skriv *myBackendPool*och välj sedan **skapa**.
+1. På sidan **nätverk** under **belastnings utjämning** väljer du **Ja** för att ställa in skalnings uppsättnings instanserna bakom en belastningsutjämnare. 
+1. I **alternativ för belastnings utjämning** väljer du **Azure Load Balancer**.
+1. I **Välj en belastningsutjämnare** väljer du *myLoadBalancer* som du skapade tidigare.
+1. För **Välj en backend-pool** väljer du **Skapa ny**, Skriv *myBackendPool* och välj sedan **skapa**.
 1. När du är färdig väljer du **Granska + skapa**. 
 1. När verifieringen har godkänts väljer du **skapa** för att distribuera skalnings uppsättningen.
 

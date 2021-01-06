@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 08/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 06d20dd47ceb71b51e226d662892eab06b072685
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 601f268f81c222ada5a4f99b05ae8ffcdfc13a23
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500945"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916294"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>SAP-arbetsbelastningar på Azure: planering och distribution check lista
 
@@ -66,7 +66,7 @@ Under den här fasen planerar du migreringen av din SAP-arbetsbelastning till Az
     - Hög tillgänglighet och katastrof återställnings arkitektur.
         - Utifrån RTO och återställnings punkt definierar du vad arkitekturen för hög tillgänglighet och haveri beredskap måste se ut.
         - För hög tillgänglighet i en zon, kontrol lera vad det önskade DBMS: t har att erbjuda i Azure. De flesta DBMS-paket erbjuder synkrona metoder för synkron snabb växling, som vi rekommenderar för produktions system. Kontrol lera också den SAP-relaterade dokumentationen för olika databaser och börja med [att tänka på för Azure Virtual Machines DBMS-distribution för SAP-arbetsbelastningar](./dbms_guide_general.md) och relaterade dokument.
-           Använd Windows Server-redundanskluster med en delad disk konfiguration för DBMS-skiktet som, till exempel, som [beskrivs för SQL Server](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server?view=sql-server-2017), inte stöds. Använd i stället lösningar som:
+           Använd Windows Server-redundanskluster med en delad disk konfiguration för DBMS-skiktet som, till exempel, som [beskrivs för SQL Server](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server?view=sql-server-2017&preserve-view=true), inte stöds. Använd i stället lösningar som:
            - [Ständig aktivering av SQL Server](/previous-versions/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-alwayson-availability-groups)
            - [Oracle Data Guard](../oracle/configure-oracle-dataguard.md)
            - [HANA-systemreplikering](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/b74e16a9e09541749a745f41246a065e.html)
@@ -278,7 +278,7 @@ Under fasen Go-Live måste du följa spel böcker som du utvecklade under tidiga
         - Disk skrivning i kbit/s per enskild disk
         - Disk skrivning/sekund, per enskild disk
         - Disk skrivning i mikrosekunder/läsning, per enskild disk
-    - Nätverks.
+    - Nätverk.
         - Nätverks paket i/sekund
         - Nätverks paket ut/sekund
         - Nätverks-KB i/sekund

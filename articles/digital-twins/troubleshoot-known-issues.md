@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.service: digital-twins
 ms.date: 07/14/2020
 ms.custom: contperf-fy21q3
-ms.openlocfilehash: d0c26255e6d9d35d51390ed2b432b9c5dc9ab2be
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: db29fbda404900c29f85fa876e9427994ee9a093
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97862465"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97915920"
 ---
 # <a name="known-issues-in-azure-digital-twins"></a>Kända problem i Azure Digitals, dubbla
 
@@ -47,11 +47,11 @@ Problembeskrivning **:** När du skriver authentication code i dina Azure Digita
 
 ## <a name="issue-with-default-azure-credential-authentication-on-azureidentity-130"></a>Problem med Azure Credential Authentication-autentisering på Azure. Identity 1.3.0
 
-Problembeskrivning **:** När du skriver authentication code i dina Azure Digital-program med version **1.3.0** av **[Azure. Identity](/dotnet/api/azure.identity?view=azure-dotnet&preserve-view=true) -biblioteket** kan det uppstå problem med [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet?view=azure-dotnet&preserve-view=true) -metoden som används i många exempel i de här dokumenten. Detta visas som ett felsvar på "Azure. Identity. AuthenticationFailedException: SharedTokenCacheCredential-Autentiseringen misslyckades" när koden försöker autentisera sig.
+Problembeskrivning **:** När du skriver en autentiseringsmetod med **1.3.0** av **[Azure. Identity](/dotnet/api/azure.identity?view=azure-dotnet&preserve-view=true) -biblioteket**, har vissa användare drabbats av problem med [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet?view=azure-dotnet&preserve-view=true) -metoden som används i många exempel i de här Azure Digitals-dokumenten. Detta visas som ett felsvar på "Azure. Identity. AuthenticationFailedException: SharedTokenCacheCredential-Autentiseringen misslyckades" när koden försöker autentisera sig.
 
 | Påverkar detta mig mig? | Orsak | Lösning |
 | --- | --- | --- |
-| DefaultAzureCredential används i de flesta av dokumentations exemplen som innehåller autentisering. Om du skriver autentiserings kod med DefaultAzureCredential och använder versions 1.3.0 av `Azure.Identity` biblioteket, kommer detta förmodligen att påverka dig. | Det här problemet presenteras när du använder DefaultAzureCredential med version **1.3.0** av `Azure.Identity` biblioteket. | Om du vill lösa problemet växlar du till att använda [version 1.2.2](https://www.nuget.org/packages/Azure.Identity/1.2.2) av `Azure.Identity` . När du har ändrat biblioteks versionen ska autentiseringen fungera som förväntat. |
+| `DefaultAzureCredential` används i de flesta dokumentations exemplen för den här tjänsten som inkluderar autentisering. Om du skriver autentiserings kod med `DefaultAzureCredential` version 1.3.0 av `Azure.Identity` biblioteket och ser det här fel meddelandet, påverkar detta detta. | Detta beror troligen på vissa konfigurations problem med `Azure.Identity` . | En strategi för att lösa detta är att undanta `SharedTokenCacheCredential` från dina autentiseringsuppgifter, enligt beskrivningen i det här [DefaultAzureCredential-problemet](https://github.com/Azure/azure-sdk/issues/1970) som för närvarande är öppet för tillfället `Azure.Identity` .<br>Ett annat alternativ är att ändra ditt program till att använda en tidigare version av `Azure.Identity` , till exempel [version 1.2.3](https://www.nuget.org/packages/Azure.Identity/1.2.3). Detta har ingen funktionell påverkan på Azures digitala delar och är därför också en godkänd lösning. |
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 09/22/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 776db820ffb1a216c3f6f7e9c6d6b8d90913a063
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 9e0102cdb7e8494a8540b1970932f0d9f7f39fde
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97881471"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97912925"
 ---
 # <a name="track-azure-databricks-ml-experiments-with-mlflow-and-azure-machine-learning-preview"></a>Spåra Azure Databricks ML experiment med MLflow och Azure Machine Learning (förhands granskning)
 
@@ -24,7 +24,7 @@ I den här artikeln lär du dig hur du aktiverar MLflow för spårnings-och logg
 
 [MLflow](https://www.mlflow.org) är ett bibliotek med öppen källkod för hantering av livs cykeln för maskin inlärnings experiment. MLFlow-spårning är en komponent i MLflow som loggar och spårar utbildningens körnings mått och modell artefakter. Läs mer om [Azure Databricks och MLflow](/azure/databricks/applications/mlflow/). 
 
-Se [spåra experiment körningar och skapa slut punkter med MLflow och Azure Machine Learning](how-to-use-mlflow.md) för ytterligare MLflow-och Azure Machine Learning funktions integreringar.
+Se [spåra experiment körningar med MLflow och Azure Machine Learning](how-to-use-mlflow.md) för ytterligare MLflow och integrering av Azure Machine learnings funktioner.
 
 >[!NOTE]
 > Som ett bibliotek med öppen källkod ändras MLflow ofta. De funktioner som gjorts tillgängliga via Azure Machine Learning-och MLflow-integreringen bör därför betraktas som en för hands version och stöds inte fullt ut av Microsoft.
@@ -32,7 +32,7 @@ Se [spåra experiment körningar och skapa slut punkter med MLflow och Azure Mac
 > [!TIP]
 > Informationen i det här dokumentet är främst avsedd för data experter och utvecklare som vill övervaka processen för modell inlärning. Om du är en administratör som vill övervaka resursanvändningen och händelser från Azure Machine Learning, till exempel kvoter, slutförda utbildningar eller slutförda modell distributioner, se [övervakning Azure Machine Learning](monitor-azure-machine-learning.md).
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 * Installera paketet `azureml-mlflow`. 
     * Det här paketet kommer automatiskt in i `azureml-core` [Azure Machine Learning python SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py), som ger anslutningen för MLflow åtkomst till din arbets yta.
@@ -181,8 +181,8 @@ När du är redo att skapa en slut punkt för dina ML-modeller. Du kan distribue
 Du kan använda API: et [mlflow. azureml. Deploy](https://www.mlflow.org/docs/latest/python_api/mlflow.azureml.html#mlflow.azureml.deploy) för att distribuera en modell till din Azure Machine Learning-arbetsyta. Om du bara har registrerat modellen på Azure Databricks-arbetsytan, enligt beskrivningen i avsnittet [Registrera modeller med MLflow](#register-models-with-mlflow) , anger du `model_name` parametern för att registrera modellen i Azure Machine Learning arbets yta. 
 
 Azure Databricks körningar kan distribueras till följande slut punkter, 
-* [Azure Container instance](how-to-deploy-models-with-mlflow.md#deploy-to-aci)
-* [Azure Kubernetes Service](how-to-deploy-models-with-mlflow.md#deploy-to-aks)
+* [Azure Container instance](how-to-deploy-mlflow-models.md#deploy-to-azure-container-instance-aci)
+* [Azure Kubernetes Service](how-to-deploy-mlflow-models.md#deploy-to-azure-kubernetes-service-aks)
 
 ### <a name="deploy-models-to-adb-endpoints-for-batch-scoring"></a>Distribuera modeller till ADB-slutpunkter för batch-Poäng 
 
@@ -232,7 +232,7 @@ Om du inte planerar att använda de loggade måtten och artefakterna i din arbet
 [MLflow med Azure Machine Learning antecknings böcker](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/track-and-monitor-experiments/using-mlflow) visar och utökar begrepp som presenteras i den här artikeln.
 
 ## <a name="next-steps"></a>Nästa steg
-
+* [Distribuera MLflow-modeller som en Azure-webbtjänst](how-to-deploy-mlflow-models.md). 
 * [Hantera dina modeller](concept-model-management-and-deployment.md).
-* [Spåra experiment körningar och skapa slut punkter med MLflow och Azure Machine Learning](how-to-use-mlflow.md). 
+* [Spåra experiment körningar med MLflow och Azure Machine Learning](how-to-use-mlflow.md). 
 * Läs mer om [Azure Databricks och MLflow](/azure/databricks/applications/mlflow/).

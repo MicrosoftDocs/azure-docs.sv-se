@@ -10,12 +10,12 @@ ms.workload: infrastructure
 ms.date: 09/27/2018
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 154e4c9421d1c0a54b3d9b5f53424e7640fe62d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8a71599ba095924c01b0cd29cedbee273012979f
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87323578"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97912839"
 ---
 # <a name="tutorial-monitor-a-windows-virtual-machine-in-azure"></a>Självstudie: övervaka en virtuell Windows-dator i Azure
 
@@ -39,7 +39,7 @@ Om du vill öppna Cloud Shell väljer du bara **Prova** från det övre högra h
 
 ## <a name="create-virtual-machine"></a>Skapa en virtuell dator
 
-För att konfigurera övervaknings- och uppdateringshantering i Azure i den här självstudiekursen behöver du en virtuell Windows-dator i Azure. Ange först ett administratörsanvändarnamn och lösenord för den virtuella datorn med [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1):
+För att konfigurera övervaknings- och uppdateringshantering i Azure i den här självstudiekursen behöver du en virtuell Windows-dator i Azure. Ange först ett administratörsanvändarnamn och lösenord för den virtuella datorn med [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1&preserve-view=true):
 
 ```azurepowershell-interactive
 $cred = Get-Credential
@@ -84,7 +84,7 @@ Så här aktiverar du övervakning av den virtuella Azure-datorn med Azure Monit
 
 2. På sidan virtuell dator i avsnittet **övervakning** väljer du **insikter (för hands version)**.
 
-3. Välj **Testa nu**på sidan **Insights (för hands version)** .
+3. Välj **Testa nu** på sidan **Insights (för hands version)** .
 
     ![Aktivera Azure Monitor for VMs för en virtuell dator](../../azure-monitor/insights/media/vminsights-enable-single-vm/enable-vminsights-vm-portal.png)
 
@@ -107,7 +107,7 @@ Azure Monitor for VMs innehåller en uppsättning prestanda diagram som riktar s
 
 2. På sidan virtuell dator i avsnittet **övervakning** väljer du **insikter (för hands version)**.
 
-3. Välj fliken **prestanda** .
+3. Välj fliken **Prestanda**.
 
 På den här sidan ingår inte bara prestanda användnings diagram, utan även en tabell som visar för varje logisk disk som identifieras, dess kapacitet, användning och total genomsnitt per mått.
 

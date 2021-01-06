@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 11/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 7fe1c01542df2fcc38982fe2a30f9e94c712eacb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2617308d342be19f74e1f3145a1137fadb04d073
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87065253"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97914696"
 ---
 # <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-azure-powershell"></a>Självstudier: Skapa och distribuera virtuella datorer med hög tillgänglighet med Azure PowerShell
 
@@ -75,7 +75,7 @@ De virtuella datorerna måste skapas i tillgänglighetsuppsättningen för att s
 
 När du skapar en virtuell dator med hjälp av [New-AzVM](/powershell/module/az.compute/new-azvm) använder du parametern `-AvailabilitySetName` för att ange namnet på tillgänglighetsuppsättningen.
 
-Ange först ett administratörsanvändarnamn och lösenord för den virtuella datorn med [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1):
+Ange först ett administratörsanvändarnamn och lösenord för den virtuella datorn med [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1&preserve-view=true):
 
 ```azurepowershell-interactive
 $cred = Get-Credential
@@ -101,7 +101,7 @@ for ($i=1; $i -le 2; $i++)
 
 Det tar några minuter att skapa och konfigurera de virtuella datorerna. När du är klar har du två virtuella datorer distribuerade över den underliggande maskinvaran. 
 
-Om du tittar på tillgänglighets uppsättningen i portalen genom att gå till **resurs grupper**  >  **myResourceGroupAvailability**  >  **myAvailabilitySet**bör du se hur de virtuella datorerna distribueras mellan de två fel-och uppdaterings domänerna.
+Om du tittar på tillgänglighets uppsättningen i portalen genom att gå till **resurs grupper**  >  **myResourceGroupAvailability**  >  **myAvailabilitySet** bör du se hur de virtuella datorerna distribueras mellan de två fel-och uppdaterings domänerna.
 
 ![Tillgänglighetsuppsättning i portalen](./media/tutorial-availability-sets/fd-ud.png)
 

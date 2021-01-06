@@ -2,13 +2,13 @@
 title: Övervaka container instances
 description: Hur du övervakar förbrukningen av beräknings resurser som CPU och minne av dina behållare i Azure Container Instances.
 ms.topic: article
-ms.date: 04/24/2019
-ms.openlocfilehash: b10c370b599233d00b2b4a65268f6c61a11cbd5c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.date: 12/17/2020
+ms.openlocfilehash: 83a8a5ab2c8c49f4044564c2d899685914103b0b
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96007264"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916104"
 ---
 # <a name="monitor-container-resources-in-azure-container-instances"></a>Övervaka behållarresurser i Azure Container Instances
 
@@ -27,11 +27,11 @@ Azure Monitor mått är för närvarande endast tillgängliga för Linux-behåll
 
 Azure Monitor tillhandahåller följande [mått för Azure Container instances][supported-metrics]. Dessa mått är tillgängliga för en behållar grupp och enskilda behållare. Som standard sammanställs måtten som medelvärden.
 
-* **CPU-användning** – mäts i **millicores**. En Millicore är 1/1000th för en processor kärna, så 500 millicores representerar användningen av 0,5 CPU Core.
-
-* **Minnes användning** -i byte.
-
-* **Mottagna nätverks byte per sekund** och **överförda nätverks byte per sekund**. 
+- **CPU-användning** mäts i **millicores**. 
+  - En Millicore är 1/1000th för en processor kärna, så 500 millicores representerar användningen av 0,5 CPU Core.
+- **Minnes användning** i byte
+- **Mottagna nätverks byte** per sekund
+- **Överförda nätverks byte** per sekund 
 
 ## <a name="get-metrics---azure-portal"></a>Hämta mått – Azure Portal
 
@@ -39,7 +39,7 @@ När en containergrupp skapas är Azure Monitor-data tillgängliga i Azure Porta
 
 ![dubbelt diagram][dual-chart]
 
-Använd en [dimension][monitor-dimension] för att presentera mått per behållare i en behållar grupp som innehåller flera behållare. Utför följande steg för att skapa ett diagram med enskilda containrar:
+Använd en [dimension][monitor-dimension] för att visa mått per behållare i en behållar grupp som innehåller flera behållare. Utför följande steg för att skapa ett diagram med enskilda containrar:
 
 1. På sidan **Översikt** väljer du ett av mått diagram, t. ex. **CPU**. 
 1. Välj knappen **Använd delning** och välj **container namn**.
@@ -64,18 +64,11 @@ az monitor metrics list --resource $CONTAINER_GROUP --metric CPUUsage --output t
 ```output
 Timestamp            Name       Average
 -------------------  ---------  ---------
-2019-04-23 22:59:00  CPU Usage
-2019-04-23 23:00:00  CPU Usage
-2019-04-23 23:01:00  CPU Usage  0.0
-2019-04-23 23:02:00  CPU Usage  0.0
-2019-04-23 23:03:00  CPU Usage  0.5
-2019-04-23 23:04:00  CPU Usage  0.5
-2019-04-23 23:05:00  CPU Usage  0.5
-2019-04-23 23:06:00  CPU Usage  1.0
-2019-04-23 23:07:00  CPU Usage  0.5
-2019-04-23 23:08:00  CPU Usage  0.5
-2019-04-23 23:09:00  CPU Usage  1.0
-2019-04-23 23:10:00  CPU Usage  0.5
+2020-12-17 23:34:00  CPU Usage
+. . .
+2020-12-18 00:25:00  CPU Usage
+2020-12-18 00:26:00  CPU Usage  0.4
+2020-12-18 00:27:00  CPU Usage  0.0
 ```
 
 Ändra värdet för `--metric` parametern i kommandot för att hämta andra mått som [stöds][supported-metrics]. Använd till exempel följande kommando för att hämta **minnes** användnings mått. 

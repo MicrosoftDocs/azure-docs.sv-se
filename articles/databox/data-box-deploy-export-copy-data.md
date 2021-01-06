@@ -6,17 +6,17 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 07/10/2020
+ms.date: 12/18/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: ecc6e1e1a543f3190e9f73512ca0b9ae45cc3fe9
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 495b4427fb7e456c60a489b9ce3d19c2a44bd918
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94335221"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680886"
 ---
-# <a name="tutorial-copy-data-from-azure-data-box-via-smb-preview"></a>Självstudier: Kopiera data från Azure Data Box via SMB (förhandsversion)
+# <a name="tutorial-copy-data-from-azure-data-box-via-smb"></a>Självstudier: Kopiera data från Azure Data Box via SMB
 
 Den här självstudien beskriver hur du ansluter till och kopierar data från din Data Box-enhet till en lokal server med hjälp av det lokala webbgränssnittet. Data Box-enheten innehåller de data som exporterades från ditt Azure Storage-konto.
 
@@ -27,8 +27,6 @@ I den här guiden får du lära dig att:
 > * Krav
 > * Ansluta till Data Box
 > * Kopiera data från Data Box-enhet
-
-[!INCLUDE [Data Box feature is in preview](../../includes/data-box-feature-is-preview-info.md)]
 
 ## <a name="prerequisites"></a>Krav
 
@@ -56,7 +54,7 @@ Om du använder en Windows Server-värddator följer du stegen nedan för att an
     
     ![Hämta autentiseringsuppgifter för en resurs, få åtkomst till resursen och kopiera data](media/data-box-deploy-export-copy-data/get-share-credentials-2.png)
 
-3. För att komma åt resurser som är associerade med ditt lagringskonto ( *exportbvtdataset2* i följande exempel) från värddatorn öppnar du ett kommandofönster. Skriv följande i kommandotolken:
+3. För att komma åt resurser som är associerade med ditt lagringskonto (*exportbvtdataset2* i följande exempel) från värddatorn öppnar du ett kommandofönster. Skriv följande i kommandotolken:
 
     `net use \\<IP address of the device>\<share name>  /u:<user name for the share>`
 

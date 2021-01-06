@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: how-to
 ms.date: 11/17/2020
 ms.author: drewbat
-ms.openlocfilehash: 1c28b4e9821f31f927ef4f640aa664d330cf8792
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: fbe517c766b3835bf4265a1309b8737a25925b7c
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96571002"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97914968"
 ---
 # <a name="pull-settings-to-app-configuration-with-azure-pipelines"></a>Hämta inställningar till app-konfiguration med Azure-pipeline
 
@@ -60,7 +60,7 @@ Tilldela den korrekta program konfigurations rollen till den tjänst anslutning 
 
 Det här avsnittet beskriver hur du använder Azure App konfigurations aktivitet i en pipeline för Azure DevOpss build.
 
-1. Gå till sidan för att bygga pipeline genom att klicka på pipelines **pipelines**  >  **Pipelines**. Om du vill bygga pipeline-dokumentation, se  [skapa din första pipeline](/azure/devops/pipelines/create-first-pipeline?view=azure-devops&tabs=net%2Ctfs-2018-2%2Cbrowser).
+1. Gå till sidan för att bygga pipeline genom att klicka på pipelines **pipelines**  >  . Om du vill bygga pipeline-dokumentation, se  [skapa din första pipeline](/azure/devops/pipelines/create-first-pipeline?view=azure-devops&tabs=net%2Ctfs-2018-2%2Cbrowser).
       - Om du skapar en ny pipeline för bygge, klickar du på **ny pipeline** och väljer lagrings platsen för din pipeline. Välj **Visa assistenten** på höger sida av pipelinen och sök efter **Azure App konfigurations** uppgiften.
       - Om du använder en befintlig versions pipeline väljer du **Redigera** för att redigera pipelinen. På fliken **aktiviteter** söker du efter aktiviteten **Azure App konfiguration** .
 1. Konfigurera de nödvändiga parametrarna för uppgiften för att hämta nyckel värden från App Configuration Store. Beskrivningar av parametrarna finns i avsnittet **parametrar** nedan och i knapp beskrivningar bredvid varje parameter.
@@ -103,6 +103,9 @@ Om till exempel en efterföljande aktivitet kör ett PowerShell-skript, kan det 
 echo "$env:myBuildSetting"
 ```
 Värdet skrivs då till-konsolen.
+
+> [!NOTE]
+> Azure Key Vault referenser i appens konfiguration kommer att matchas och anges som [hemliga variabler](/azure/devops/pipelines/process/variables#secret-variables). I Azure-pipeliner maskeras de hemliga variablerna från loggen. De skickas inte till uppgifter som miljövariabler och måste i stället skickas som indata. 
 
 ## <a name="troubleshooting"></a>Felsökning
 

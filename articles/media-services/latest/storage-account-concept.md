@@ -10,14 +10,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: conceptual
-ms.date: 08/31/2020
+ms.date: 01/05/2021
 ms.author: inhenkel
-ms.openlocfilehash: f37b453a294a0d0a7b9a99bfebe8f3eff09e8956
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36593efd4f2583f28dffbb4f5b491fbeec7ba21d
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89291202"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916328"
 ---
 # <a name="azure-storage-accounts"></a>Azure Storage-konton
 
@@ -54,6 +54,9 @@ För att skydda dina till gångar i vila bör till gångarna krypteras med krypt
 |[Kryptering av lagring på klient Sidan](../../storage/common/storage-client-side-encryption.md)|Kryptering på klient sidan som erbjuds av Azure Storage, nyckel som hanteras av kunden i Key Vault.|Stöds inte.|
 
 <sup>1</sup> i Media Services v3 stöds inte lagrings kryptering (AES-256-kryptering) för bakåtkompatibilitet när dina till gångar skapades med Media Services v2, vilket innebär att v3 fungerar med befintliga lagrings krypterade till gångar men inte tillåter att nya skapas.
+
+## <a name="double-encryption"></a>Dubbel kryptering
+Media Services stöder Double Encryption.  Mer information om Double Encryption finns i [Azure Double Encryption](https://docs.microsoft.com/azure/security/fundamentals/double-encryption).
 
 ## <a name="storage-account-errors"></a>Fel vid lagrings konto
 

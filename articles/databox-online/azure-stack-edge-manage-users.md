@@ -1,23 +1,23 @@
 ---
-title: Azure Stack Edge Pro hantera användare | Microsoft Docs
+title: Azure Stack Edge Pro-FPGA hantera användare | Microsoft Docs
 description: Beskriver hur du använder Azure Portal för att hantera användare på din Azure Stack Edge Pro.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 03/11/2019
+ms.date: 01/05/2021
 ms.author: alkohli
-ms.openlocfilehash: 3fb82e95d9d7dcfdf59bd05f91beff8e1184955e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 27ca190f3bad7f75175e5206d48e13dae1f5687e
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90904380"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97913352"
 ---
-# <a name="use-the-azure-portal-to-manage-users-on-your-azure-azure-stack-edge-pro"></a>Använd Azure Portal för att hantera användare på Azure Azure Stack Edge Pro
+# <a name="use-the-azure-portal-to-manage-users-on-your-azure-stack-edge-pro-fpga"></a>Använd Azure Portal för att hantera användare på din Azure Stack Edge Pro-FPGA
 
-Den här artikeln beskriver hur du hanterar användare i Azure Stack Edge Pro. Du kan hantera Azure Stack Edge Pro via Azure Portal eller via det lokala webb gränssnittet. Använd Azure-portalen om du vill lägga till, ändra eller ta bort användare.
+Den här artikeln beskriver hur du hanterar användare på din Azure Stack Edge Pro FPGA-enhet. Du kan hantera Azure Stack Edge Pro via Azure Portal eller via det lokala webb gränssnittet. Använd Azure-portalen om du vill lägga till, ändra eller ta bort användare.
 
 I den här artikeln kan du se hur du:
 
@@ -39,7 +39,7 @@ Användarbehörigheterna definieras när användaren skapas i samband med att re
 
 Lägg till en användare genom att följa de här instruktionerna på Azure-portalen.
 
-1. I Azure Portal går du till din Azure Stack Edge-resurs och går sedan till **översikt > användare**. Välj **+ Lägg till användare** i kommando fältet.
+1. I Azure Portal går du till Azure Stack Edge-resursen och går sedan till **användare**. Välj **+ Lägg till användare** i kommando fältet.
 
     ![Välj Lägg till användare](media/azure-stack-edge-manage-users/add-user-1.png)
 
@@ -65,7 +65,7 @@ Du kan ändra lösenordet som associeras med en användare när användaren har 
 Utför följande steg på Azure-portalen om du vill ta bort en användare.
 
 
-1. I Azure Portal går du till din Azure Stack Edge-resurs och går sedan till **översikt > användare**.
+1. I Azure Portal går du till Azure Stack Edge-resursen och går sedan till **användare**.
 
     ![Välj användare som ska tas bort](media/azure-stack-edge-manage-users/delete-user-1.png)
 

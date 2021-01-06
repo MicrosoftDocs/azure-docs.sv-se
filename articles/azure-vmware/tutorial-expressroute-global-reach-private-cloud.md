@@ -2,13 +2,13 @@
 title: Självstudie – lokala peer-miljöer i ett privat moln
 description: Lär dig hur du skapar ExpressRoute Global Reach peering till ett privat moln i en Azure VMware-lösning.
 ms.topic: tutorial
-ms.date: 09/21/2020
-ms.openlocfilehash: cf209071074fd4546ce64336b2b3b91fbcd4cb3b
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.date: 1/5/2021
+ms.openlocfilehash: 613aece6ed548f70840349e017de4416883d6cf3
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97901461"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97913166"
 ---
 # <a name="tutorial-peer-on-premises-environments-to-a-private-cloud"></a>Självstudie: peer-lokala miljöer till ett privat moln
 
@@ -16,7 +16,7 @@ ExpressRoute Global Reach ansluter din lokala miljö till ditt privata moln i Az
 
 ExpressRoute-kretsen som du använder när du [konfigurerar Azure-till-privata moln nätverk](tutorial-configure-networking.md) kräver att du skapar och använder auktoriseringsregler.  Du har redan använt en auktoriseringspost från ExpressRoute-kretsen och i den här självstudien skapar du en andra med en-peer-dator med din lokala ExpressRoute-krets.
 
-I de här självstudierna får du lära dig att
+I den här guiden får du lära dig att:
 
 > [!div class="checklist"]
 > * Skapa en andra auktoriseringsregel för _krets 2_, den privata molnets ExpressRoute-krets
@@ -28,7 +28,7 @@ I de här självstudierna får du lära dig att
 Innan du aktiverar anslutning mellan två ExpressRoute-kretsar med ExpressRoute Global Reach bör du läsa dokumentationen om hur du [aktiverar anslutningar i olika Azure-prenumerationer](../expressroute/expressroute-howto-set-global-reach-cli.md#enable-connectivity-between-expressroute-circuits-in-different-azure-subscriptions).  
 
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 - Upprättad anslutning till och från ett privat moln i Azure VMware-lösningen med sin ExpressRoute-krets med en ExpressRoute-gateway i ett virtuellt Azure-nätverk (VNet), som är _krets 2_ från peering-procedurer.  
 - En separat, fungerande ExpressRoute-krets som används för att ansluta lokala miljöer till Azure, som är _krets 1_ från peering-procedurens perspektiv.

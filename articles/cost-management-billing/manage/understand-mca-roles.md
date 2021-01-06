@@ -5,14 +5,14 @@ author: amberbhargava
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 08/20/2020
+ms.date: 12/17/2020
 ms.author: banders
-ms.openlocfilehash: f0ace05d6a4df65282bd56cca8e7895b0dc24edf
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 511c0ecdef45a882bcc3a427d5ec602b3ebabc66
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686555"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673839"
 ---
 # <a name="understand-microsoft-customer-agreement-administrative-roles-in-azure"></a>Förstå administrativa roller för Microsoft-kundavtal i Azure
 
@@ -32,7 +32,7 @@ I följande tabell beskrivs de faktureringsroller som du använder för att hant
 |Faktureringsprofilsägare|Hantera allt för faktureringsprofilen|
 |Faktureringsprofilsdeltagare|Hantera allt förutom behörigheter i faktureringsprofilen|
 |Faktureringsprofilsläsare|Skrivskyddad vy över allt i faktureringsprofilen|
-|Fakturaansvarig|Visa och betala fakturor för faktureringsprofilen|
+|Fakturaansvarig|Visa fakturor för faktureringsprofilen|
 |Fakturaavsnittsägare|Hantera allt i fakturaavsnittet|
 |Fakturaavsnittsdeltagare|Hantera allt förutom behörigheter i fakturaavsnittet|
 |Fakturaavsnittsläsare|Skrivskyddad vy över allt i fakturaavsnittet|

@@ -10,15 +10,15 @@ ms.devlang: ''
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/13/2019
+ms.date: 01/05/2020
 ms.author: kumud
 ms.reviewer: ypitsch
-ms.openlocfilehash: 05e966d3f4631e3c344bd97c0faec99cc3c6dd66
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a33c7e7d637b519b249c250481a73d04c661d4d5
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91819897"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97915852"
 ---
 # <a name="microsoft-global-network"></a>Microsofts globala nätverk
 
@@ -71,4 +71,5 @@ Dessa principer gäller för alla skikt i nätverket: från värd nätverks grä
 Den exponentiella tillväxten i Azure och dess nätverk har nått en punkt där vi slutligen skulle ha uppnått att mänsklig intuition inte längre kan förlita sig på att hantera globala nätverks åtgärder. För att uppfylla behovet av att verifiera långsiktiga ändringar i nätverket har vi utvecklat en plattform för spegling och emulering av vårt produktions nätverk syntetiskt. Möjligheten att skapa speglade miljöer och köra miljon tals simuleringar, gör att vi kan testa program-och maskin varu ändringar och deras påverkan innan de allokeras till vår produktions plattform och nätverk. 
 
 ## <a name="next-steps"></a>Nästa steg
+- [Lär dig mer om hur Microsoft driver global nätverks tillförlitlighet via intelligent program vara](https://azure.microsoft.com/blog/advancing-global-network-reliability-through-intelligent-software-part-1-of-2/)
 - [Läs mer om de nätverks tjänster som tillhandahålls i Azure](https://azure.microsoft.com/product-categories/networking/)

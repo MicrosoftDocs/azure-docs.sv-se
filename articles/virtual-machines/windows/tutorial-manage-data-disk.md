@@ -10,12 +10,12 @@ ms.workload: infrastructure
 ms.date: 11/29/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 528fe5dea533faf9447e03dd901568d783891ce9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e3d81bfaba572361304224932fadb7da5b1cc3f8
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88718942"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97912895"
 ---
 # <a name="tutorial---manage-azure-disks-with-azure-powershell"></a>Självstudier – Hantera Azure-diskar med Azure PowerShell
 
@@ -64,7 +64,7 @@ I tabellen ovan visas högsta IOPS per disk, men högre prestanda kan uppnås ge
 
 Du måste ha en befintlig virtuell dator för att kunna utföra exemplet i den här självstudiekursen. Skapa en virtuell dator med följande kommandon, om det behövs.
 
-Ange användarnamnet och lösenordet för administratörskontot på den virtuella datorn med [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1):
+Ange användarnamnet och lösenordet för administratörskontot på den virtuella datorn med [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1&preserve-view=true):
 
 
 Skapa den virtuella datorn med [New-AzVM](/powershell/module/az.compute/new-azvm). Du uppmanas att ange ett användarnamn och lösenord för den virtuella datorns administratörkonto.

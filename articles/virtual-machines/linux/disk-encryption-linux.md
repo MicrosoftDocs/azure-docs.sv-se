@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 70ebe8ede75935bcc8d8db8729fef165a5616fe7
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: efe24b3d1f6e22cc7f054691cb75a4ccede7aa4b
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96779812"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97912452"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Azure Disk Encryption-scenarier på virtuella Linux-datorer
 
@@ -283,7 +283,7 @@ Vi rekommenderar en LVM-in-Encrypt-installation. I följande exempel ersätter d
     echo "/dev/disk/azure/scsi1/lun0-part1 /mnt/mountpoint ext4 defaults,nofail 0 2" >> /etc/fstab
     ```
     
-1. Kör Azure PowerShell [set-AzVMDiskEncryptionExtension-](/powershell/module/az.compute/set-azvmdiskencryptionextension?view=azps-3.8.0) cmdlet med-EncryptFormatAll för att kryptera diskarna.
+1. Kör Azure PowerShell [set-AzVMDiskEncryptionExtension-](/powershell/module/az.compute/set-azvmdiskencryptionextension?view=azps-3.8.0&preserve-view=true) cmdlet med-EncryptFormatAll för att kryptera diskarna.
 
     ```azurepowershell-interactive
     $KeyVault = Get-AzKeyVault -VaultName "MySecureVault" -ResourceGroupName "MySecureGroup"

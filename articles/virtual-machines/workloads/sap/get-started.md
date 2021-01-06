@@ -14,15 +14,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 01/04/2021
+ms.date: 01/05/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d56ed0cdae9046cb7d76f7d74545309ee6292ecd
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: f74e6435af9084b0c8f222c33dc922fe678bc4c7
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97883103"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97914527"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Använd Azure för att vara värd för och köra SAP-arbetsbelastnings scenarier
 
@@ -83,6 +83,7 @@ I det här avsnittet hittar du dokument om Microsoft Power BI integration i SAP-
 
 ## <a name="change-log"></a>Ändrings logg
 
+- 01/05/2021: ändringar i [SAP HANA skalas ut med noden vänte läge på virtuella Azure-datorer med ANF på SLES](./sap-hana-scale-out-standby-netapp-files-suse.md) och [SAP HANA skala ut med noden vänte läge på virtuella Azure-datorer med ANF på RHEL](./sap-hana-scale-out-standby-netapp-files-rhel.md), med en ändring av den rekommenderade konfigurationen så att SAP Host-agenten kan hantera det lokala port intervallet  
 - 01/04/2021: Lägg till nya Azure-regioner som stöds av HLI i [vad som är SAP HANA på Azure (stora instanser)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)
 - 12/29/2020: Lägg till arkitektur rekommendationer för vissa Azure-regioner i [SAP-arbets belastnings konfiguration med Azure-tillgänglighetszoner](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ha-availability-zones)
 - 12/21/2020: Lägg till nya certifieringar i SKU: er av HANA-stora instanser i [tillgängliga SKU: er för HLI](./hana-available-skus.md)

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 12/14/2020
+ms.date: 01/05/2021
 ms.reviewer: arvinh
-ms.openlocfilehash: 78e9d7355b8c96295456f8aa9cb80b1d3bdd2fab
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: bde5cecc4052724f795cac03f6efceb3451ea2ee
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509554"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97914356"
 ---
 # <a name="known-issues-application-provisioning"></a>Kända problem: program etablering
 Kända problem som kan vara medvetna om när du arbetar med app-etablering. Du kan ge feedback om program etablerings tjänsten på UserVoice, se [Azure AD Application-etablering UserVoice](https://aka.ms/appprovisioningfeaturerequest). Vi tittar på UserVoice så att vi kan förbättra tjänsten. 
@@ -82,6 +82,10 @@ Om du skapar en app-registrering, aktive ras inte motsvarande tjänst huvud namn
 **Ändringar som inte flyttas från mål programmet till Azure AD**
 
 App Provisioning-tjänsten är inte medveten om ändringar som gjorts i externa appar. Därför vidtas ingen åtgärd för att återställa igen. App Provisioning-tjänsten förlitar sig på ändringar som gjorts i Azure AD. 
+
+**Växlar från synkronisering all till synkronisering som är tilldelad fungerar inte**
+
+När du har ändrat omfånget från synkronisera alla till synkronisera tilldelad, se till att även utföra en omstart för att säkerställa att ändringen börjar gälla. Du kan starta om från användar gränssnittet.
 
 **Etablerings cykeln fortsätter tills den har slutförts**
 

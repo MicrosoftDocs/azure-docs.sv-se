@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: fac26c616c977eedc466f004a9455297ec995fb8
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 9fe1b7a077142b00aaf2a8502faa0e166c4311c4
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96352549"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97915631"
 ---
 # <a name="secure-and-isolate-azure-hdinsight-clusters-with-private-link-preview"></a>Skydda och isolera Azure HDInsight-kluster med privat länk (förhands granskning)
 
@@ -29,7 +29,7 @@ Som standard använder HDInsight RP en *inkommande* anslutning till klustret med
 
 De grundläggande belastningsutjämnare som används i standard arkitekturen för virtuella nätverk tillhandahåller automatiskt offentliga NAT (Network Address Translation) för att få åtkomst till nödvändiga utgående beroenden, till exempel HDInsight RP. Om du vill begränsa utgående anslutning till det offentliga Internet kan du [Konfigurera en brand vägg](./hdinsight-restrict-outbound-traffic.md), men det är inget krav.
 
-Genom `resourceProviderConnection` att konfigurera till utgående kan du också komma åt klusterbaserade resurser, till exempel Azure Data Lake Storage Gen2 eller externa metastores, med hjälp av privata slut punkter. Användning av privata slut punkter för de här resurserna är inte mandetory, men om du planerar att ha privata slut punkter för dessa resurser måste du konfigurera de privata slut punkterna och DNS-posterna `before` som du skapar HDInsight-klustret. Vi rekommenderar att du skapar och tillhandahåller alla externa SQL-databaser som du behöver, till exempel Apache Ranger, Ambari, Oozie och Hive metastores, när klustret skapas. Kravet är att alla dessa resurser måste vara tillgängliga inifrån kluster under nätet, antingen via sin egen privata slut punkt eller på annat sätt.
+Genom `resourceProviderConnection` att konfigurera till utgående kan du också komma åt klusterbaserade resurser, till exempel Azure Data Lake Storage Gen2 eller externa metastores, med hjälp av privata slut punkter. Användning av privata slut punkter för dessa resurser är inte obligatoriskt, men om du planerar att ha privata slut punkter för dessa resurser måste du konfigurera de privata slut punkterna och DNS-posterna `before` som du skapar HDInsight-klustret. Vi rekommenderar att du skapar och tillhandahåller alla externa SQL-databaser som du behöver, till exempel Apache Ranger, Ambari, Oozie och Hive metastores, när klustret skapas. Kravet är att alla dessa resurser måste vara tillgängliga inifrån kluster under nätet, antingen via sin egen privata slut punkt eller på annat sätt.
 
 Det finns inte stöd för att använda privata slut punkter för Azure Key Vault. Om du använder Azure Key Vault för CMK-kryptering i vila måste Azure Key Vault-slutpunkten vara tillgänglig från HDInsight-undernätet utan privat slut punkt.
 

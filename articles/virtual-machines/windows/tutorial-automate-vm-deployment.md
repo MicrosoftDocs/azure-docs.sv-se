@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 11/29/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 14d0190a97c22a805065ceaf41dcd655b9e8182b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e9a5cb463646762c262cc3c8e27123a768ef11d8
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87065290"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97914747"
 ---
 # <a name="tutorial---deploy-applications-to-a-windows-virtual-machine-in-azure-with-the-custom-script-extension"></a>Självstudiekurs – Distribuera appar till en Windows-dator i Azure med tillägget för anpassat skript
 
@@ -39,7 +39,7 @@ Du kan använda det anpassade skripttillägget med både Windows och Linux virtu
 
 
 ## <a name="create-virtual-machine"></a>Skapa en virtuell dator
-Ange ett administratörsanvändarnamn och -lösenord för den virtuella datorn med hjälp av [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1):
+Ange ett administratörsanvändarnamn och -lösenord för den virtuella datorn med hjälp av [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1&preserve-view=true):
 
 ```azurepowershell-interactive
 $cred = Get-Credential

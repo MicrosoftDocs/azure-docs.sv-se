@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/02/2020
 ms.author: mnayak
-ms.openlocfilehash: c1c2c5f27143be7fc10269c948bee9d5465d565a
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 656f8a0e0530a20807fc8fddd4cd96d1d955c8ac
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96530450"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97912707"
 ---
 # <a name="what-is-routing-preference-preview"></a>Vad är cirkulations inställningar (för hands version)?
 
@@ -72,11 +72,6 @@ För lagring använder primära slut punkter alltid **Microsofts globala nätver
 ## <a name="pricing"></a>Prissättning
 Pris skillnaden mellan båda alternativen återspeglas i priset för utgående data överföring i Internet. Routning via **Microsofts globala nätverks** data överförings pris är detsamma som aktuellt pris för utgående Internet. Besök [pris sidan för Azure bandbredd](https://azure.microsoft.com/pricing/details/bandwidth/) för den senaste pris informationen. 
 
-## <a name="availability"></a>Tillgänglighet
-
-Stöd för routnings inställningar är tillgängligt i följande regioner för tjänster som virtuell dator och Internetbaserad belastningsutjämnare som använder en offentlig IP-adress för Internet utgående Europa, Västeuropa, Västeuropa, södra, Storbritannien, södra, östra USA, norra centrala USA, södra centrala USA, västra USA, västra centrala USA, Sydostasien, Tyskland, västra centrala, Schweiz, västra, Japan, östra och Japan, västra.
-
-Stöd för routning av inställningar för lagrings konto är tillgängligt i följande Azure-regioner – norra centrala USA, västra centrala USA, södra centrala USA, östra USA, västra USA, norra Europa, Frankrike, södra, Tyskland, västra centrala, Schweiz, västra, Asien, sydöstra, Japan, östra och Japan, västra.
 ## <a name="limitations"></a>Begränsningar
 
 * Dirigerings inställningen är endast kompatibel med standard-SKU: n för offentlig IP-adress. Grundläggande SKU för offentlig IP-adress stöds inte.

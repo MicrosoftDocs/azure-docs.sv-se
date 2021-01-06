@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to,automl,contperf-fy21q2
 ms.date: 12/18/2020
-ms.openlocfilehash: 526afe758063ce6c5f6bd86f8192f56d5f844a85
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: b26b0d9086f464556cbca2c70773374c3cccbd52
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97694006"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97915869"
 ---
 # <a name="data-featurization-in-automated-machine-learning"></a>Data funktionalisering i Automatisk maskin inlärning
 
@@ -28,7 +28,7 @@ Lär dig mer om inställningarna för data funktionalisering i Azure Machine Lea
 
 *Funktions teknik* är en process där du använder domän information om data för att skapa funktioner som hjälper Machine Learning-algoritmer (ml) att lära sig bättre. I Azure Machine Learning tillämpas teknikerna för data skalning och normalisering för att göra det enklare att använda funktionen. Tillsammans kallas dessa tekniker och den här typen av teknik för *funktionalisering* i automatiserad maskin inlärning eller *autoML*, experiment.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Den här artikeln förutsätter att du redan vet hur du konfigurerar ett AutoML experiment. Information om konfiguration finns i följande artiklar:
 
@@ -68,9 +68,6 @@ I följande tabell sammanfattas de tekniker som automatiskt tillämpas på dina 
 |_*Generera fler funktioner**_ |För DateTime-funktioner: år, månad, dag, veckodag, dag på år, kvartal, vecka på år, timme, minut och sekund.<br><br> _For prognostisering av aktiviteter, * dessa ytterligare DateTime-funktioner skapas: ISO Year, halvårs vis, kalender månad som sträng, vecka, veckodag som sträng, dag i kvartal, dag på år, fm/em (0 om timme är före 12.00 (12 PM), 1), fm/em som sträng, timme på dagen (12-HR-bas)<br/><br/>För text funktioner: term frekvens baserat på unigrams, bigram och trigrams. Läs mer om [hur detta görs med Bert.](#bert-integration)|
 |**Transformera och koda** _|Transformera numeriska funktioner med några få unika värden i kategoriska-funktioner.<br/><br/>En-frekvent kodning används för kategoriska-funktioner med låg kardinalitet. En-frekvent-hash-kodning används för kategoriska-funktioner med hög kardinalitet.|
 |_ *Word-inbäddningar**|En text upplärda konverterar vektorer med text-token till menings vektorer med hjälp av en förtränad modell. Varje ords inbäddnings vektor i ett dokument sammanställs med resten för att skapa en dokument funktions vektor.|
-|**Mål kodningar**|För kategoriska-funktioner mappar det här steget varje kategori med ett genomsnittligt målvärde för Regressions problem, och till sannolikheten för varje klass för klassificerings problem. Frekvens-baserad viktning och n:te kors validering används för att minska överanpassningen av mappningen och bruset som orsakas av glesa data kategorier.|
-|**Kodning av text mål**|För text inmatare används en staplad linjär modell med ord uppsättnings ord för att generera sannolikheten för varje klass.|
-|**Vikt på bevis (WoE)**|Beräknar WoE som ett mått på korrelation av kategoriska-kolumner till mål kolumnen. WoE beräknas som loggen för förhållandet mellan sannolikheten för inaktuella klasser och sannolikheter. Det här steget skapar en numerisk funktions kolumn per klass och tar bort behovet av att uttryckligen kräva in saknade värden och avvikare-behandling.|
 |**Kluster avstånd**|Tågen a k: kluster modell på alla numeriska kolumner. Ger nya *k* nya funktioner (en ny numerisk funktion per kluster) som innehåller avståndet för varje exempel till centroid för varje kluster.|
 
 ## <a name="data-guardrails"></a>Data guardrails
@@ -123,7 +120,7 @@ Anpassningar som stöds är:
 |--|--|
 |**Uppdatering av kolumn syfte**|Åsidosätt den automatiskt identifierade funktions typen för den angivna kolumnen.|
 |**Transformering av parameter uppdatering** |Uppdatera parametrarna för den angivna transformeraren. Stöder för närvarande *imputerade* (medel, mest frekventa och median) och *HashOneHotEncoder*.|
-|**Släpp kolumner** |Anger kolumner som ska släppas från att bearbetas.|
+|**Ta bort kolumner** |Anger kolumner som ska släppas från att bearbetas.|
 |**Block transformatorer**| Anger block-transformatorer som ska användas i funktionalisering-processen.|
 
 Skapa `FeaturizationConfig` objektet med hjälp av API-anrop:
@@ -181,7 +178,7 @@ Den här listan innehåller alla bevarade funktions namn.
   fitted_model.named_steps['timeseriestransformer'].get_featurization_summary()
   ```
 
-Utdata
+Resultat
 
   ```
   [{'RawFeatureName': 'A',
@@ -206,7 +203,7 @@ Utdata
     'Tranformations': ['DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime']}]
   ```
 
-   |Utdata|Definition|
+   |Resultat|Definition|
    |----|--------|
    |RawFeatureName|Inmatad funktion/kolumn namn från den angivna data uppsättningen.|
    |TypeDetected|Identifierad datatyp för indata-funktionen.|

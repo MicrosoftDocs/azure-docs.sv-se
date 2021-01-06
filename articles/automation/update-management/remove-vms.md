@@ -3,14 +3,14 @@ title: Ta bort virtuella datorer från Azure Automation Uppdateringshantering
 description: Den här artikeln beskriver hur du tar bort datorer som hanteras med Uppdateringshantering.
 services: automation
 ms.topic: conceptual
-ms.date: 09/09/2020
+ms.date: 01/05/2021
 ms.custom: mvc
-ms.openlocfilehash: 774dbe29cbb6b4d063d3619d0c710efb1949b99a
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: d0399aed9be8d81abb2aa55190225570ddcc1a4e
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92222569"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97913200"
 ---
 # <a name="remove-vms-from-update-management"></a>Ta bort virtuella datorer från Uppdateringshantering
 
@@ -32,13 +32,20 @@ Logga in på [Azure-portalen](https://portal.azure.com).
 
 3. I Azure Portal navigerar du till **Log Analytics arbets ytor**. Välj din arbets yta i listan.
 
-4. I arbets ytan Log Analytics väljer du **loggar** och väljer sedan **query Explorer** på menyn med de vanligaste åtgärderna.
+4. I arbets ytan Log Analytics väljer du **Avancerade inställningar** och väljer sedan **dator grupper** på den vänstra menyn.
 
-5. I **query Explorer** i rutan till höger expanderar du **sparade Queries\Updates** och väljer den sparade Sök frågan `MicrosoftDefaultComputerGroup` för att redigera den.
+5. Välj **sparade grupper** i **dator grupper** i den högra rutan.
 
-6. Granska frågan i Frågeredigeraren och hitta UUID för den virtuella datorn. Ta bort UUID för den virtuella datorn och upprepa stegen för alla andra virtuella datorer som du vill ta bort.
+6. I tabellen, för den sparade Sök frågan **uppdateringar: MicrosoftDefaultComputerGroup**, klickar du på ikonen **Visa medlemmar** för att köra och visa dess medlemmar.
 
-7. Spara den sparade sökningen när du är klar med att redigera den genom att välja **Spara** från översta raden.
+7. Granska frågan i Frågeredigeraren och hitta UUID för den virtuella datorn. Ta bort UUID för den virtuella datorn och upprepa stegen för alla andra virtuella datorer som du vill ta bort.
+
+8. Spara den sparade sökningen när du är klar med att redigera den genom att välja **Spara** från översta raden. När du uppmanas anger du följande:
+
+    * **Namn**: MicrosoftDefaultComputerGroup
+    * **Spara som**: funktion
+    * **Alias**: Updates__MicrosoftDefaultComputerGroup
+    * **Kategori**: uppdateringar
 
 >[!NOTE]
 >Datorer visas fortfarande när du har avregistrerat dem eftersom vi rapporterar om alla datorer som utvärderats under de senaste 24 timmarna. När du har tagit bort datorn måste du vänta 24 timmar innan de visas längre.

@@ -1,18 +1,21 @@
 ---
 title: Partitionera Service Fabric tjänster
-description: Beskriver hur du partitionerar Service Fabric tillstånds känsliga tjänster. Partitioner möjliggör data lagring på de lokala datorerna så att data och data bearbetning kan skalas tillsammans.
+description: Lär dig att partitionera Service Fabric tillstånds lösa och tillstånds känsliga tjänster
 ms.topic: conceptual
 ms.date: 06/30/2017
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d33e7b5ee293cf9dfb49e509bec2e1950033a956
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 199ae9d9844149c1931da638633110f717fe0517
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89005436"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97915903"
 ---
 # <a name="partition-service-fabric-reliable-services"></a>Partitionera tillförlitliga Service Fabric-tjänster
-Den här artikeln innehåller en introduktion till de grundläggande begreppen för partitionering av Azure Service Fabric Reliable Services. Käll koden som används i artikeln är också tillgänglig på [GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions).
+Den här artikeln innehåller en introduktion till de grundläggande begreppen för partitionering av Azure Service Fabric Reliable Services. Partitionering möjliggör data lagring på de lokala datorerna så att data och data bearbetning kan skalas tillsammans.
+
+> [!TIP]
+> Ett [fullständigt exempel](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions) på koden i den här artikeln finns på GitHub.
 
 ## <a name="partitioning"></a>Partitionering
 Partitionering är inte unikt för Service Fabric. I själva verket är det ett kärn mönster för att skapa skalbara tjänster. I en större mening kan vi tänka på partitionering som ett koncept för att dela upp tillstånd (data) och beräkna i mindre tillgängliga enheter för att förbättra skalbarhet och prestanda. En välkänd form av partitionering är [data partitionering][wikipartition], även kallat horisontell partitionering.
@@ -348,14 +351,14 @@ Eftersom vi verkligen vill ha en partition per bokstav kan vi använda 0 som lå
     
     ![Webbläsarens skärm bild](./media/service-fabric-concepts-partitioning/samplerunning.png)
 
-Hela käll koden för exemplet finns på [GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions).
+Den fullständiga lösningen av koden som används i den här artikeln finns här: https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions .
 
 ## <a name="next-steps"></a>Nästa steg
-Information om Service Fabric-begrepp finns i följande avsnitt:
+Läs mer om Service Fabric Services:
 
+* [Anslut och kommunicera med tjänster i Service Fabric](service-fabric-connect-and-communicate-with-services.md)
 * [Tillgänglighet för Service Fabric tjänster](service-fabric-availability-services.md)
 * [Skalbarhet för Service Fabric tjänster](service-fabric-concepts-scalability.md)
-* [Kapacitets planering för Service Fabric program](service-fabric-capacity-planning.md)
 
 [wikipartition]: https://en.wikipedia.org/wiki/Partition_(database)
 

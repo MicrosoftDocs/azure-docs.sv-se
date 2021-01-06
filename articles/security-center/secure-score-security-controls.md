@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/10/2020
+ms.date: 01/05/2021
 ms.author: memildin
-ms.openlocfilehash: 283dbf152778b5ef58e298444058f619356ef241
-ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
+ms.openlocfilehash: 1e6b66fce6b22dfd12c162d469ce44137c94ab87
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97756117"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916379"
 ---
 # <a name="secure-score-in-azure-security-center"></a>Säkerhetspoäng i Azure Security Center
 
@@ -72,7 +72,7 @@ I Sammanfattning visas dina säkra poäng på följande platser i Security Cente
 
 ### <a name="get-your-secure-score-from-the-rest-api"></a>Få dina säkra Poäng från REST API
 
-Du kan komma åt dina poäng via Secure score-API: t (för närvarande i för hands version). API-metoderna ger flexibiliteten att fråga data och skapa en egen rapporterings mekanism för dina säkra poäng över tid. Du kan till exempel använda [Secure Scores-API: et](/rest/api/securitycenter/securescores) för att hämta poängen för en speciell prenumeration. Dessutom kan du använda [API: et för säker Poäng](/rest/api/securitycenter/securescorecontrols) för att visa en lista över säkerhets kontrollerna och de aktuella poängen för dina prenumerationer.
+Du kan komma åt dina poäng via Secure score-API: et. API-metoderna ger flexibiliteten att fråga data och skapa en egen rapporterings mekanism för dina säkra poäng över tid. Du kan till exempel använda [Secure Scores-API: et](/rest/api/securitycenter/securescores) för att hämta poängen för en speciell prenumeration. Dessutom kan du använda [API: et för säker Poäng](/rest/api/securitycenter/securescorecontrols) för att visa en lista över säkerhets kontrollerna och de aktuella poängen för dina prenumerationer.
 
 ![Hämta en enskild säker Poäng via API: et](media/secure-score-security-controls/single-secure-score-via-api.png)
 
@@ -152,7 +152,7 @@ Den maximala poängen för den här kontrollen, tillämpa system uppdateringar, 
 
 ### <a name="calculations---understanding-your-score"></a>Beräkningar – förstå dina Poäng
 
-|Metric|Formel och exempel|
+|Mått|Formel och exempel|
 |-|-|
 |**Säkerhets kontrollens aktuella Poäng**|<br>![Ekvation för att beräkna en säkerhets kontrolls Poäng](media/secure-score-security-controls/secure-score-equation-single-control.png)<br><br>Varje enskild säkerhets kontroll bidrar till säkerhets poängen. Varje resurs som påverkas av en rekommendation inom kontrollen bidrar till kontrollens aktuella resultat. Den aktuella poängen för varje kontroll är ett mått på statusen för resurserna *i* kontrollen.<br>![Knapp beskrivningar som visar de värden som används när du beräknar säkerhets kontrollens aktuella Poäng](media/secure-score-security-controls/security-control-scoring-tooltips.png)<br>I det här exemplet skulle max poängen på 6 divideras med 78 eftersom det är summan av de felfria och felaktiga resurserna.<br>6/78 = 0,0769<br>Om du multiplicerar det med antalet felfria resurser (4) resulterar det i den aktuella poängen:<br>0,0769 * 4 = **0,31**<br><br>|
 |**Säkerhetspoäng**<br>Enstaka prenumeration|<br>![Ekvation för att beräkna en prenumerations säkra Poäng](media/secure-score-security-controls/secure-score-equation-single-sub.png)<br><br>![Säker Poäng för enskild prenumeration med alla kontroller aktiverade](media/secure-score-security-controls/secure-score-example-single-sub.png)<br>I det här exemplet finns det en enda prenumeration med alla säkerhets kontroller som är tillgängliga (en potentiell högsta poäng på 60 punkter). Poängen visar 28 punkter av en möjlig 60 och de återstående 32 punkterna visas i siffrorna "potentiella Poäng ökning" i säkerhets kontrollerna.<br>![Lista över kontroller och potentiella Poäng ökningar](media/secure-score-security-controls/secure-score-example-single-sub-recs.png)|

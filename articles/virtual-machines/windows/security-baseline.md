@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: af7cc9d83b87c8a772a190c431d6946eec4dda86
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 9e5f7d4e3c358c05713301ac1b1b896062f12bee
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96483138"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97914764"
 ---
 # <a name="azure-security-baseline-for-windows-virtual-machines"></a>Azures säkerhets bas linje för Virtuella Windows-datorer
 
@@ -893,7 +893,7 @@ I de flesta fall kan de virtuella bas-VM-mallarna tillsammans med Azure Automati
 
 * [Information om hur du skapar ARM-mallar](./ps-template.md)
 
-* [Ladda upp en anpassad virtuell hård disk till Azure](/azure-stack/operator/azure-stack-add-vm-image?view=azs-1910)
+* [Ladda upp en anpassad virtuell hård disk till Azure](/azure-stack/operator/azure-stack-add-vm-image?view=azs-1910&preserve-view=true)
 
 **Azure Security Center-övervakning**: Ja
 

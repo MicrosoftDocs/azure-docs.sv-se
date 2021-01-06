@@ -8,18 +8,18 @@ ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 8d6e10b025b9e9524982b1558beacfab1970eb59
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: f9f37bc27c54971c15db457abf157e04cc5d60e8
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92216444"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97914679"
 ---
 # <a name="tutorial-monitor-changes-and-update-a-windows-virtual-machine-in-azure"></a>Självstudie: övervaka ändringar och uppdatera en virtuell Windows-dator i Azure
 
 Med Azure [ändringsspårning](../../automation/change-tracking/overview.md) och [uppdateringshantering](../../automation/update-management/overview.md)kan du enkelt identifiera ändringar i dina virtuella Windows-datorer i Azure och hantera uppdateringar av operativ system för de virtuella datorerna.
 
-I de här självstudierna får du lära dig att
+I den här guiden får du lära dig att:
 
 > [!div class="checklist"]
 > * Hantera Windows-uppdateringar.
@@ -37,7 +37,7 @@ Du kan också öppna Cloud Shell på en separat webbläsare-flik genom att gå t
 
 För att konfigurera övervaknings- och uppdateringshantering i Azure i den här självstudiekursen behöver du en virtuell Windows-dator i Azure.
 
-Ange först ett administratörsanvändarnamn och lösenord för den virtuella datorn med [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1):
+Ange först ett administratörsanvändarnamn och lösenord för den virtuella datorn med [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1&preserve-view=true):
 
 ```azurepowershell-interactive
 $cred = Get-Credential
@@ -69,7 +69,7 @@ Pris information finns i avsnittet [om automatiserings priser för uppdaterings 
 
 Så här aktiverar du Uppdateringshantering för din virtuella dator:
 
-1. Välj **virtuella datorer**på sidan längst till vänster i fönstret.
+1. Välj **virtuella datorer** på sidan längst till vänster i fönstret.
 1. Välj en virtuell dator i listan.
 1. I fönstret **drift** i fönstret VM väljer du **uppdaterings hantering**.
 1. Fönstret **aktivera uppdateringshantering** öppnas.
@@ -113,13 +113,13 @@ Om du vill schemalägga en ny uppdaterings distribution för den virtuella dator
 | **Namn** |Ange ett unikt namn som identifierar uppdaterings distributionen. |
 |**Operativsystem**| Välj antingen **Linux** eller **Windows**.|
 | **Grupper att uppdatera** |Definiera en fråga baserat på en kombination av prenumeration, resurs grupper, platser och taggar för virtuella datorer som finns på Azure. Den här frågan skapar en dynamisk grupp med virtuella datorer i Azure som ska ingå i distributionen. </br></br>Välj en befintlig sparad sökning för virtuella datorer som inte finns på Azure. Med den här sökningen kan du välja en grupp med de virtuella datorerna som ska ingå i distributionen. </br></br> Mer information finns i [dynamiska grupper](../../automation/update-management/configure-groups.md).|
-| **Datorer som ska uppdateras** |Välj **Sparad sökning**, **importerad grupp**eller **datorer**.<br/><br/>Om du väljer **datorer**kan du välja enskilda datorer i den nedrullningsbara listan. Beredskapen för varje dator visas i kolumnen **Uppdatera agent beredskap** i tabellen.</br></br> Information om de olika metoderna för att skapa datorgrupper i Azure Monitor-loggar finns i [datorgrupper i Azure Monitor-loggar](../../azure-monitor/platform/computer-groups.md) |
-|**Uppdaterings klassificeringar**|Välj alla nödvändiga uppdaterings klassificeringar.|
+| **Datorer som ska uppdateras** |Välj **Sparad sökning**, **importerad grupp** eller **datorer**.<br/><br/>Om du väljer **datorer** kan du välja enskilda datorer i den nedrullningsbara listan. Beredskapen för varje dator visas i kolumnen **Uppdatera agent beredskap** i tabellen.</br></br> Information om de olika metoderna för att skapa datorgrupper i Azure Monitor-loggar finns i [datorgrupper i Azure Monitor-loggar](../../azure-monitor/platform/computer-groups.md) |
+|**Klassificering av uppdateringar**|Välj alla nödvändiga uppdaterings klassificeringar.|
 |**Inkludera/exkludera uppdateringar**|Välj det här alternativet för att öppna fönstret **Inkludera/exkludera** . Uppdateringar som ska tas med och de som ska undantas finns på separata flikar. Mer information om hur inkludering hanteras finns i [Schemalägga en uppdaterings distribution](../../automation/update-management/deploy-updates.md#schedule-an-update-deployment). |
-|**Schema inställningar**|Välj tid för start och välj antingen **en gång** eller **återkommande**.|
+|**Schemainställningar**|Välj tid för start och välj antingen **en gång** eller **återkommande**.|
 | **Före skript + efter skript**|Välj de skript som ska köras före och efter distributionen.|
 | **Underhålls period** | Ange antalet minuter som ska uppdateras. Giltiga värden är mellan 30 och 360 minuter. |
-| **Starta om kontroll**| Välj hur omstarter hanteras. Tillgängliga alternativ är:<ul><li>**Starta om vid behov**</li><li>**Starta alltid om**</li><li>**Starta aldrig om**</li><li>**Starta bara om**</li></ul>**Starta om om det krävs** standard valet. Om du väljer **endast omstart**installeras inte uppdateringar.|
+| **Starta om kontroll**| Välj hur omstarter hanteras. Tillgängliga alternativ är:<ul><li>**Starta om vid behov**</li><li>**Starta alltid om**</li><li>**Starta aldrig om**</li><li>**Starta bara om**</li></ul>**Starta om om det krävs** standard valet. Om du väljer **endast omstart** installeras inte uppdateringar.|
 
 När du har konfigurerat schemat klickar du på **skapa** för att återgå till status instrument panelen. Den **schemalagda** tabellen visar det distributions schema som du har skapat.
 
@@ -155,7 +155,7 @@ Du kan samla in och visa en inventering av program varan, filer, Linux-daemonar,
 
 Så här aktiverar du ändrings-och inventerings hantering för din virtuella dator:
 
-1. Välj **virtuella datorer**på sidan längst till vänster i fönstret.
+1. Välj **virtuella datorer** på sidan längst till vänster i fönstret.
 1. Välj en virtuell dator i listan.
 1. Under **åtgärder** i fönstret VM väljer du antingen **inventering** eller **ändrings spårning**.
 1. Fönstret **aktivera ändringsspårning och inventering** öppnas.
@@ -170,7 +170,7 @@ När lösningen har Aktiver ATS kan det ta lite tid för inventering att samlas 
 
 ### <a name="track-changes"></a>Spåra ändringar
 
-Välj **ändringsspårning** på den virtuella datorn under **åtgärder**och välj sedan **Redigera inställningar**. Fönstret **ändringsspårning** öppnas. Välj typ av inställning som du vill spåra och klicka sedan på **+ Lägg till** för att konfigurera inställningarna.
+Välj **ändringsspårning** på den virtuella datorn under **åtgärder** och välj sedan **Redigera inställningar**. Fönstret **ändringsspårning** öppnas. Välj typ av inställning som du vill spåra och klicka sedan på **+ Lägg till** för att konfigurera inställningarna.
 
 Alternativen för tillgängliga inställningar för Windows är:
 
@@ -181,7 +181,7 @@ Detaljerad information om Ändringsspårning finns i [Felsöka ändringar på en
 
 ### <a name="view-inventory"></a>Visa inventering
 
-Välj **inventering** under **åtgärder**på den virtuella datorn. På fliken **program vara** finns det en tabell som visar den program vara som har hittats. Information på hög nivå för varje program varu post visas i tabellen. Informationen omfattar program varans namn, version, utgivare och senaste uppdaterings tid.
+Välj **inventering** under **åtgärder** på den virtuella datorn. På fliken **program vara** finns det en tabell som visar den program vara som har hittats. Information på hög nivå för varje program varu post visas i tabellen. Informationen omfattar program varans namn, version, utgivare och senaste uppdaterings tid.
 
 ![Visa inventering](./media/tutorial-monitoring/inventory-view-results.png)
 

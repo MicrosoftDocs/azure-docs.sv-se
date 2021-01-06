@@ -14,14 +14,14 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 06/15/2020
+ms.date: 01/05/2021
 ms.author: radeltch
-ms.openlocfilehash: d2cc8487f9864a27c1a2b02ef6e846bc43727e27
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: 8dfbdb338416511de403733ce61b7b2472190963
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96608545"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916277"
 ---
 # <a name="deploy-a-sap-hana-scale-out-system-with-standby-node-on-azure-vms-by-using-azure-netapp-files-on-red-hat-enterprise-linux"></a>Distribuera ett SAP HANA skalbart system med noden vänte läge på virtuella Azure-datorer med Azure NetApp Files på Red Hat Enterprise Linux 
 
@@ -370,11 +370,13 @@ Konfigurera och Förbered ditt operativ system genom att utföra följande steg:
     # Add the following entries in the configuration file
     net.ipv6.conf.all.disable_ipv6 = 1
     net.ipv4.tcp_max_syn_backlog = 16348
-    net.ipv4.ip_local_port_range = 40000 65300
     net.ipv4.conf.all.rp_filter = 0
     sunrpc.tcp_slot_table_entries = 128
     vm.swappiness=10
     </code></pre>
+
+> [!TIP]
+> Undvik att ange net.ipv4.ip_local_port_range och net.ipv4.ip_local_reserved_ports uttryckligen i sysctl-konfigurationsfilerna så att SAP-värdservern kan hantera port intervallen. Mer information finns i SAP NOTE [2382421](https://launchpad.support.sap.com/#/notes/2382421).  
 
 5. **[A]** justera inställningarna för sunrpc, som rekommenderas i [NetApp SAP-program på Microsoft Azure med Azure NetApp Files][anf-sap-applications-azure].  
 

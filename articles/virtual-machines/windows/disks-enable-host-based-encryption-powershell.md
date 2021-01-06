@@ -8,12 +8,12 @@ ms.date: 08/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 87b032b3a8382f632c1db56d2724b267c2db6727
-ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
+ms.openlocfilehash: 4dd6736afe835eefe02b8095ec08cd65ac0d63b4
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97734427"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97915835"
 ---
 # <a name="use-the-azure-powershell-module-to-enable-end-to-end-encryption-using-encryption-at-host"></a>Använd Azure PowerShell-modulen för att aktivera kryptering från slut punkt till slut punkt med kryptering på värden
 
@@ -33,7 +33,7 @@ När du aktiverar kryptering på värden krypteras data som lagras på den virtu
 
 Du kan också hitta VM-storlekar program mässigt. Information om hur du hämtar dem program mässigt finns i avsnittet [hitta stödda VM-storlekar](#finding-supported-vm-sizes) .
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 För att kunna använda kryptering på värden för dina virtuella datorer eller skalnings uppsättningar för virtuella datorer måste du få funktionen aktive rad i din prenumeration. Skicka ett e-postmeddelande till encryptionAtHost@microsoft.com med dina prenumerations-ID för att få funktionen aktive rad för dina prenumerationer.
 
@@ -293,7 +293,7 @@ Anropar [resurs-SKU API](/rest/api/compute/resourceskus/list) och kontrollerar a
     }
 ```
 
-Eller, anropar PowerShell-cmdleten [Get-AzComputeResourceSku](/powershell/module/az.compute/get-azcomputeresourcesku?view=azps-3.8.0) .
+Eller, anropar PowerShell-cmdleten [Get-AzComputeResourceSku](/powershell/module/az.compute/get-azcomputeresourcesku?view=azps-3.8.0&preserve-view=true) .
 
 ```powershell
 $vmSizes=Get-AzComputeResourceSku | where{$_.ResourceType -eq 'virtualMachines' -and $_.Locations.Contains('CentralUSEUAP')} 

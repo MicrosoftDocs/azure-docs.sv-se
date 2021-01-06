@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/28/2020
+ms.date: 01/05/2021
 ms.author: alkohli
-ms.openlocfilehash: a0d596c7c1046ea26ac389a48c17fa5abccbfd12
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 3182258245701903e7b3d6d6163cf3e2bd55c1fc
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951612"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97915478"
 ---
 # <a name="use-the-azure-portal-to-manage-bandwidth-schedules-on-your-azure-stack-edge-pro-gpu"></a>Använd Azure Portal för att hantera bandbredds scheman på Azure Stack Edge Pro GPU 
 
@@ -40,12 +40,12 @@ Lägg till ett schema genom att utföra följande steg i Azure Portal.
 
     ![Välj bandbredd](media/azure-stack-edge-j-series-manage-bandwidth-schedules/add-schedule-1.png)
 
-3. I **Lägg till schema**: 
+3. I **Lägg till schema**:
 
-   1. Ange **Start dag**, **slut dag**, **Start tid**och **slut tid** för schemat.
+   1. Ange **Start dag**, **slut dag**, **Start tid** och **slut tid** för schemat.
    2. Markera alternativet **alla dagar** om schemat ska köras hela dagen.
    3. **Bandbredds hastighet** är den bandbredd i megabit per sekund (Mbit/s) som används av enheten i åtgärder som involverar molnet (både uppladdning och nedladdning). Ange ett tal mellan 20 och 2 147 483 647 för det här fältet.
-   4. Markera **Obegränsad** bandbredd om du inte vill begränsa upp- och nedladdningen.
+   4. Välj **obegränsad bandbredd** om du inte vill begränsa överföringen och hämtningen av datum.
    5. Välj **Lägg till**.
 
       ![Lägg till schema](media/azure-stack-edge-j-series-manage-bandwidth-schedules/add-schedule-2.png)
@@ -58,9 +58,10 @@ Lägg till ett schema genom att utföra följande steg i Azure Portal.
 
 Gör följande om du vill redigera ett bandbreddsschema.
 
-1. Gå till Azure Stack Edge-resursen i Azure Portal och gå sedan till **bandbredd**. 
+1. Gå till Azure Stack Edge-resursen i Azure Portal och gå sedan till **bandbredd**.
 2. I listan över bandbredds scheman väljer du ett schema som du vill ändra.
-    ![Välj schema för bandbredd](media/azure-stack-edge-j-series-manage-bandwidth-schedules/modify-schedule-1.png)
+
+   ![Välj schema för bandbredd](media/azure-stack-edge-j-series-manage-bandwidth-schedules/modify-schedule-1.png)
 
 3. Gör önskade ändringar och spara ändringarna.
 
@@ -77,7 +78,7 @@ Utför följande steg för att ta bort ett schema för bandbredd som är kopplat
 
 1. Gå till Azure Stack Edge-resursen i Azure Portal och gå sedan till **bandbredd**.  
 
-2. I listan över bandbreddsscheman väljer du det schema som du vill ta bort. I **Redigera schema**väljer du **ta bort**. Välj **Ja**när du uppmanas att bekräfta.
+2. I listan över bandbreddsscheman väljer du det schema som du vill ta bort. I **Redigera schema** väljer du **ta bort**. Välj **Ja** när du uppmanas att bekräfta.
 
    ![Ta bort en användare](media/azure-stack-edge-j-series-manage-bandwidth-schedules/delete-schedule-2.png)
 

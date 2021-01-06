@@ -6,12 +6,12 @@ ms.author: sread
 ms.date: 03/30/2020
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: 7fb72b9a7d0d655f99d1e5cf194f7c6f26976a37
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b2cac7a8310482305467a1cb3ed3127eb18ae416
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95976201"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97915784"
 ---
 # <a name="set-up-micro-focus-cics-bankdemo-for-micro-focus-enterprise-developer-40-on-azure"></a>Konfigurera Micro Focus CICS BankDemo för Micro Focus Enterprise Developer 4,0 på Azure
 
@@ -22,13 +22,13 @@ CICs står för system för kontroll av kund information, den transaktions platt
 > [!NOTE]
 > Kommer snart: anvisningar för att konfigurera [Micro Focus Enterprise Server 5,0](https://techcommunity.microsoft.com/t5/azurecat/micro-focus-enterprise-server-5-0-quick-start-template-on-azure/ba-p/1160110) på virtuella Azure-datorer.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 - En virtuell dator med [företags utvecklare](set-up-micro-focus-azure.md). Tänk på att företags utvecklaren har en fullständig instans av Enterprise Server i syfte att utveckla och testa. Den här instansen är den instans av företags servern som används för demonstrationen.
 
 - [SQL Server 2017 Express Edition](https://www.microsoft.com/sql-server/sql-server-editions-express). Ladda ned och installera det på den virtuella datorn för Enterprise Developer. Enterprise Server kräver en databas för hantering av CICS-regioner och BankDemo-programmet använder också en SQL Server databas som kallas BANKDEMO. Den här demon förutsätter att du använder SQL Server Express för båda databaserna. När du installerar väljer du den grundläggande installationen.
 
-- [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017) (SSMS). SSMS används för att hantera databaser och köra ett T-SQL-skript. Ladda ned och installera det på den virtuella datorn för Enterprise Developer.
+- [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017&preserve-view=true) (SSMS). SSMS används för att hantera databaser och köra ett T-SQL-skript. Ladda ned och installera det på den virtuella datorn för Enterprise Developer.
 
 - [Visual studio 2019](https://azure.microsoft.com/downloads/) med den senaste Service Pack-eller [Visual Studio-communityn](https://visualstudio.microsoft.com/vs/community/), som du kan ladda ned kostnads fritt.
 

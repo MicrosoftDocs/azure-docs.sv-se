@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: d8918181024715a57c6029d3ad0a36ea75140fcb
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: a3427be85314f06b5408c4450e0415768122879f
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97739951"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97913013"
 ---
 # <a name="configure-and-submit-training-runs"></a>Konfigurera och skicka träningskörningar
 
@@ -26,7 +26,7 @@ När det gäller utbildning är det vanligt att starta på den lokala datorn och
 
 Allt du behöver göra är att definiera miljön för varje beräknings mål i en **skript körnings konfiguration**.  När du sedan vill köra ditt utbildnings experiment på ett annat beräknings mål anger du körnings konfigurationen för den beräkningen.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 * Om du inte har en Azure-prenumeration kan du skapa ett kostnadsfritt konto innan du börjar. Prova den [kostnads fria eller betalda versionen av Azure Machine Learning](https://aka.ms/AMLFree) idag
 * [Azure Machine Learning SDK för python](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py) (>= 1.13.0)
@@ -204,6 +204,18 @@ I de här antecknings böckerna finns exempel på hur du konfigurerar körningar
     ```
 
     Internt sammanfogar Azure ML blocken med samma måttnamn i en sammanhängande lista.
+
+* **Körningen Miss `jwt.exceptions.DecodeError` lyckas med**: exakt fel meddelande: `jwt.exceptions.DecodeError: It is required that you pass in a value for the "algorithms" argument when calling decode()` . 
+    
+    Överväg att uppgradera till den senaste versionen av azureml-Core: `pip install -U azureml-core` .
+    
+    Om du kör det här problemet för lokala körningar kontrollerar du vilken version av PyJWT som är installerad i din miljö där du startar körningarna. De versioner av PyJWT som stöds är < 2.0.0. Avinstallera PyJWT från miljön om versionen är >= 2.0.0. Du kan kontrol lera versionen av PyJWT, avinstallera och installera rätt version på följande sätt:
+    1. Starta ett kommando gränssnitt, aktivera Conda-miljö där azureml-Core är installerat.
+    2. Ange `pip freeze` och leta efter `PyJWT` , om den hittas, ska den version som visas < 2.0.0
+    3. Om den listade versionen inte är en version som stöds går du till `pip uninstall PyJWT` kommando gränssnittet och anger y för bekräftelse.
+    4. Installera med `pip install 'PyJWT<2.0.0'`
+    
+    Överväg att använda den senaste versionen av azureml-core i den aktuella miljön om du skickar en miljö som skapats av användare med din körning. Versioner >= 1.18.0 azureml-Core redan PyJWT < 2.0.0. Om du behöver använda en version av azureml-Core < 1.18.0 i den miljö som du skickar, måste du ange PyJWT < 2.0.0 i dina pip-beroenden.
 
 ## <a name="next-steps"></a>Nästa steg
 

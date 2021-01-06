@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 12/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 085ba4d9d4e78acec4505ddb0e9e89d4e0b5c4a3
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: ed9d41a84e455241ed3cfc41b905a671f2a2d499
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97881488"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97912962"
 ---
 # <a name="train-and-track-ml-models-with-mlflow-and-azure-machine-learning-preview"></a>Träna och spåra ML-modeller med MLflow och Azure Machine Learning (för hands version)
 
@@ -60,7 +60,7 @@ Följande diagram illustrerar att med MLflow spårning spårar du ett Experiment
 |Övervaka modell prestanda||✓|  |   |
 | Identifiera dataavvikelser |   | ✓ |   | ✓ |
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 * Installera paketet `azureml-mlflow`. 
     * Det här paketet kommer automatiskt in i `azureml-core` [Azure Machine Learning python SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py), som ger anslutningen för MLflow åtkomst till din arbets yta.
@@ -211,7 +211,7 @@ run.get_metrics()
 
 Registrera och spåra dina modeller med [Azure Machine Learning Model-registret](concept-model-management-and-deployment.md#register-package-and-deploy-models-from-anywhere) som stöder MLflow Model-registret. Azure Machine Learning modeller justeras med MLflow modell schema och gör det enkelt att exportera och importera dessa modeller över olika arbets flöden. MLflow relaterade metadata som, till exempel körnings-ID taggas också med den registrerade modellen för spårning. Användarna kan skicka in utbildnings körningar, registrera och distribuera modeller som skapats från MLflow-körningar. 
 
-Om du vill distribuera och registrera din produktions färdiga modell i ett enda steg, se [distribuera och registrera MLflow-modeller](how-to-deploy-models-with-mlflow.md).
+Om du vill distribuera och registrera din produktions färdiga modell i ett enda steg, se [distribuera och registrera MLflow-modeller](how-to-deploy-mlflow-models.md).
 
 Använd följande steg för att registrera och visa en modell från en körning:
 
@@ -260,7 +260,7 @@ Om du inte planerar att använda de loggade måtten och artefakterna i din arbet
 
 ## <a name="next-steps"></a>Nästa steg
 
-* [Distribuera modeller med MLflow](how-to-deploy-models-with-mlflow.md).
+* [Distribuera modeller med MLflow](how-to-deploy-mlflow-models.md).
 * Övervaka dina produktions modeller för [data avvikelser](./how-to-enable-data-collection.md).
 * [Spåra Azure Databricks körs med MLflow](how-to-use-mlflow-azure-databricks.md).
 * [Hantera dina modeller](concept-model-management-and-deployment.md).

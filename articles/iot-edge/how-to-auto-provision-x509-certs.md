@@ -9,12 +9,13 @@ ms.date: 04/09/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 761b031916dd9ead71f5be6a6887208a1f200f58
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: 385a67e117bf0cf9508b81d014e3accac4725744
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91966142"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97914917"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-x509-certificates"></a>Skapa och etablera en IoT Edge-enhet med X. 509-certifikat
 
@@ -28,7 +29,7 @@ Den här artikeln visar hur du skapar en registrering av enhets etablerings tjä
 
 Att använda X. 509-certifikat som en mekanism för attestering är ett utmärkt sätt att skala produktion och förenkla enhets etablering. Normalt är X. 509-certifikat ordnade i en certifikat kedja med förtroende. Från och med ett självsignerat eller betrott rot certifikat signerar varje certifikat i kedjan nästa lägre certifikat. Det här mönstret skapar en delegerad kedja av förtroende från rot certifikatet nedåt genom varje mellanliggande certifikat till det slutliga "löv"-certifikatet som är installerat på en enhet.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 * En aktiv IoT Hub.
 * En fysisk eller virtuell enhet som IoT Edge enheten.
@@ -87,7 +88,7 @@ Mer information om registreringar i Device Provisioning-tjänsten finns i [Hante
 
 1. I [Azure Portal](https://portal.azure.com)navigerar du till din instans av IoT Hub Device Provisioning service.
 
-1. Under **Inställningar**väljer du **Hantera registreringar**.
+1. Under **Inställningar** väljer du **Hantera registreringar**.
 
 1. Välj **Lägg till enskild registrering** och slutför sedan följande steg för att konfigurera registreringen:  
 
@@ -172,7 +173,7 @@ Mer information om registreringar i Device Provisioning-tjänsten finns i [Hante
 
 1. I [Azure Portal](https://portal.azure.com)navigerar du till din instans av IoT Hub Device Provisioning service.
 
-1. Under **Inställningar**väljer du **Hantera registreringar**.
+1. Under **Inställningar** väljer du **Hantera registreringar**.
 
 1. Välj **Lägg till registrerings grupp** och slutför sedan följande steg för att konfigurera registreringen:
 
@@ -205,7 +206,7 @@ Mer information om registreringar i Device Provisioning-tjänsten finns i [Hante
 
 Nu när en registrering finns för den här enheten kan IoT Edge runtime automatiskt etablera enheten under installationen. Fortsätt till nästa avsnitt för att konfigurera din IoT Edge-enhet.
 
-## <a name="install-the-iot-edge-runtime"></a>Installera IoT Edge runtime
+## <a name="install-the-iot-edge-runtime"></a>Installera IoT Edge-körningen
 
 IoT Edge-körningen distribueras på alla IoT Edge-enheter. Komponenterna körs i behållare och gör att du kan distribuera ytterligare behållare till enheten så att du kan köra kod i kanten.
 

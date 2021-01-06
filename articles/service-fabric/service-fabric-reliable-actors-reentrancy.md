@@ -4,12 +4,12 @@ description: Introduktion till återinträde för Service Fabric Reliable Actors
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c2356db0eee82a133afad6aa95299ced0595db32
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 9578b676e46d21fe5d30de92ad59c852a8b05f70
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576068"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97915886"
 ---
 # <a name="reliable-actors-reentrancy"></a>Reliable Actors återinträde
 Reliable Actors runtime, som standard, tillåter Sammanhangs beroende återinträde för logiska anrop. Detta gör det möjligt för aktörer att bli omstrukturade om de befinner sig i samma anrops kontext kedja. Aktör A skickar exempelvis ett meddelande till skådespelare B, som skickar ett meddelande till skådespelaren C. Som en del av meddelande bearbetningen, om aktör C anropar aktör A, så är meddelandet omdeltagare, så det kommer att tillåtas. Alla andra meddelanden som ingår i en annan anrops kontext kommer att blockeras på aktör A tills bearbetningen är klar.
@@ -101,4 +101,4 @@ static class Program
 
 
 ## <a name="next-steps"></a>Nästa steg
-* Läs mer om återinträde i [referens dokumentationen för aktörs-API](/previous-versions/azure/dn971626(v=azure.100))
+* Läs mer om återinträde i [referens dokumentationen för aktörs-API: et](/dotnet/api/microsoft.servicefabric.actors?view=azure-dotnet)

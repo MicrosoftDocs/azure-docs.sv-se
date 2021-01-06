@@ -12,12 +12,12 @@ ms.date: 09/30/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: bild igenkänning, app för bild igenkänning, anpassad vision
-ms.openlocfilehash: ab747ad5e7b9362e9c587741198a0191c032b124
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 8274ddd0e492d1a27ebc1579fc6efdcc8cc84955
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96018400"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97912992"
 ---
 # <a name="quickstart-build-an-object-detector-with-the-custom-vision-website"></a>Snabb start: bygga en objekt detektor med Custom Vision webbplats
 
@@ -100,6 +100,7 @@ När utbildningen har slutförts beräknas och visas modellens prestanda. I Cust
 
 - **Precision** anger fraktionen av identifierade klassificeringar som var korrekta. Om modellen till exempel har identifierat 100-bilder som hundar och 99 av dem var av hundar, skulle precisionen vara 99%.
 - **Återkalla** anger den andel av faktiska klassificeringar som identifierades korrekt. Om det exempelvis fanns 100 avbildningar av äpplen och modellen identifierade 80 som äpplen, skulle återställningen bli 80%.
+- **Genomsnittlig precision** är genomsnitts värdet för den genomsnittliga precisionen (AP). AP är området under precisions-/återställnings kurvan (precision ritas mot återkallande för varje förutsägelse som gjorts).
 
 ![Utbildnings resultatet visar den övergripande precisionen och återställningen och genomsnitts precisionen.](./media/get-started-build-detector/trained-performance.png)
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/28/2020
 ms.author: yitoh
-ms.openlocfilehash: a54404dafaf1093a2e2acbde88187739bd6c9f06
-ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
+ms.openlocfilehash: 86e4a111be7585373ecf4c2fe9508f2bfca7de16
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97827418"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97915087"
 ---
 # <a name="view-and-configure-ddos-protection-telemetry"></a>Visa och konfigurera telemetri för DDoS-skydd
 
@@ -37,7 +37,7 @@ I den här självstudien får du lära dig att:
 Följande [mått](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftnetworkpublicipaddresses) är tillgängliga för Azure DDoS Protection standard. Dessa mått kan också exporteras via diagnostikinställningar (se [Visa och konfigurera DDoS diagnostisk loggning](diagnostic-logging.md)).
 
 
-| Metric | Mått visnings namn | Enhet | Sammansättningstyp | Beskrivning |
+| Mått | Mått visnings namn | Enhet | Sammansättningstyp | Beskrivning |
 | --- | --- | --- | --- | --- |
 | ByteCount | Antal byte | Antal | Totalt | Totalt antal byte som skickats inom tids perioden |
 | BytesDroppedDDoS | Ignorerade inkommande byte DDoS | BytesPerSecond | Maximal | Ignorerade inkommande byte DDoS| 
@@ -70,7 +70,7 @@ Följande [mått](https://docs.microsoft.com/azure/azure-monitor/platform/metric
 
 - Om du inte har en Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 - Innan du kan slutföra stegen i den här självstudien måste du först skapa en [Azure DDoS standard-skydds plan](manage-ddos-protection.md) och DDoS Protection standard måste aktive ras på ett virtuellt nätverk.
-- DDoS övervakar offentliga IP-adresser tilldelade till resurser i ett virtuellt nätverk. Om du inte har några resurser med offentliga IP-adresser i det virtuella nätverket måste du först skapa en resurs med en offentlig IP-adress. Du kan övervaka den offentliga IP-adressen för alla resurser som distribueras via Resource Manager (inte klassisk) som listas i [virtuellt nätverk för Azure-tjänster](../virtual-network/virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network) (inklusive Azure Load Balancer där de virtuella datorerna finns i det virtuella nätverket), förutom för Azure App Service miljöer och Azure VPN gateway. Om du vill fortsätta med den här självstudien kan du snabbt skapa en virtuell [Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) -eller [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) -dator.  
+- DDoS övervakar offentliga IP-adresser tilldelade till resurser i ett virtuellt nätverk. Om du inte har några resurser med offentliga IP-adresser i det virtuella nätverket måste du först skapa en resurs med en offentlig IP-adress. Du kan övervaka den offentliga IP-adressen för alla resurser som distribueras via Resource Manager (inte klassisk) som listas i [virtuellt nätverk för Azure-tjänster](../virtual-network/virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network) (inklusive Azure Load Balancer där de virtuella datorerna finns i det virtuella nätverket), förutom för Azure App Service miljöer. Om du vill fortsätta med den här självstudien kan du snabbt skapa en virtuell [Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) -eller [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) -dator.  
 
 ## <a name="view-ddos-protection-telemetry"></a>Visa DDoS Protection-telemetri
 
@@ -111,4 +111,4 @@ I den här självstudiekursen lärde du dig att:
 Fortsätt till nästa självstudie om du vill lära dig hur du konfigurerar rapporter om attack minskning och flödes loggar.
 
 > [!div class="nextstepaction"]
-> [Visa och konfigurera DDoS-diagnostisk loggning](diagnostic-logging.md)
+> [Visa och konfigurera diagnostisk loggning för DDoS-skydd](diagnostic-logging.md)

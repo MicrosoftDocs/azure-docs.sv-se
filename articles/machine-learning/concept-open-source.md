@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: luisquintanilla
 ms.author: luquinta
 ms.date: 12/16/2020
-ms.openlocfilehash: b3fa9767310bfc300087c9dc7384f33993aca70d
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: d987d21700e5f19ad8228b08508e8da842cc39eb
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97675949"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97914118"
 ---
 # <a name="open-source-integration-with-azure-machine-learning-projects"></a>Integrering med öppen källkod med Azure Machine Learning projekt
 
@@ -52,7 +52,7 @@ Utbildning en djup inlärnings modell från grunden kräver ofta stora mängder 
 
 Förstärknings inlärning är en artificiell informations teknik som tränar modeller med hjälp av åtgärder, tillstånd och förmåner: förstärka inlärnings agenter lär sig att ta en uppsättning fördefinierade åtgärder som maximerar de angivna förmånerna baserat på miljöns aktuella tillstånd. 
 
-[Ray RLLib](https://github.com/ray-project/ray) -projektet har en uppsättning funktioner som ger hög skalbarhet under inlärnings processen. Den iterativa processen är både tids-och resurs intensiv som förstärknings bara utbildnings agenter försöker lära sig det bästa sättet att få en uppgift.  Ray RLLib stöder också djup inlärnings ramverk som TensorFlow och PyTorch.  
+[Ray RLLib](https://github.com/ray-project/ray) -projektet innehåller en uppsättning funktioner som ger hög skalbarhet under hela inlärnings processen. Den iterativa processen är både tids-och resurs intensiv som förstärknings bara utbildnings agenter försöker lära sig det bästa sättet att få en uppgift.  Ray RLLib stöder också djup inlärnings ramverk som TensorFlow och PyTorch.  
 
 Information om hur du använder Ray RLLib med Azure Machine Learning finns i [så här tränar du en förstärknings inlärnings modell](how-to-use-reinforcement-learning.md).
 
@@ -101,4 +101,4 @@ Machine Learning åtgärder (MLOps), som ofta betraktas som DevOps för maskin i
 
 Med DevOps-metoder som kontinuerlig integrering (CI) och kontinuerlig distribution (CD) kan du automatisera livs cykeln för maskin inlärning och samla in styrnings data runt dem. Du kan definiera din [Machine Learning CI/CD-pipeline i GitHub-åtgärder](./how-to-github-actions-machine-learning.md) för att köra Azure Machine Learning utbildning och distributions uppgifter. 
 
-Att samla in program varu beroenden, Mät värden, metadata, data och modell version är en viktig del av MLOps-processen för att skapa genomskinliga, återställnings bara och gransknings bara pipeliner. För den här uppgiften kan du [använda MLFlow i Azure Machine Learning](how-to-use-mlflow.md) samt när du [tränar maskin inlärnings modeller i Azure Databricks](./how-to-use-mlflow-azure-databricks.md).
+Att samla in program varu beroenden, Mät värden, metadata, data och modell version är en viktig del av MLOps-processen för att skapa genomskinliga, återställnings bara och gransknings bara pipeliner. För den här uppgiften kan du [använda MLFlow i Azure Machine Learning](how-to-use-mlflow.md) samt när du [tränar maskin inlärnings modeller i Azure Databricks](./how-to-use-mlflow-azure-databricks.md). Du kan också [distribuera MLflow-modeller som en Azure-webbtjänst](how-to-deploy-mlflow-models.md). 

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 01/04/2020
+ms.date: 01/05/2020
 ms.author: b-juche
-ms.openlocfilehash: e74b729f837c8e6ebe86514a01b6c8bdddc616e4
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: d296f80d85bb5081c466b27e6a8624e8b3f2c924
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97881097"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97915015"
 ---
 # <a name="create-a-dual-protocol-nfsv3-and-smb-volume-for-azure-netapp-files"></a>Skapa en NFSv3-och SMB-volym (Dual-Protocol) för Azure NetApp Files
 
@@ -133,7 +133,10 @@ Azure NetApp Files stöder skapande av volymer med NFS (NFSv3 och NFSv 4.1), SMB
     * En annan dator i domänen som innehåller rot certifikatet  
 
 3. Exportera rot certifikat utfärdarens certifikat.  
-    Certifikat från rot certifikat utfärdare kan exporteras från personliga eller betrodda rot certifikat utfärdare.   
+    Certifikat från rot certifikat utfärdare kan exporteras från katalogen personal eller betrodda rot certifikat utfärdare, som visas i följande exempel:   
+    ![skärm bild som visar personliga certifikat](../media/azure-netapp-files/personal-certificates.png)   
+    ![skärm bild som visar betrodda rot certifikat utfärdare](../media/azure-netapp-files/trusted-root-certification-authorities.png)    
+
     Se till att certifikatet exporteras i Base-64-kodad X. 509 (. CER-format: 
 
     ![Guiden Exportera certifikat](../media/azure-netapp-files/certificate-export-wizard.png)

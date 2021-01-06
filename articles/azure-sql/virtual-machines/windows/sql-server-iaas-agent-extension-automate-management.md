@@ -17,12 +17,12 @@ ms.date: 11/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: e8268630b2c108dc95ded059ce41866a14fadd0e
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 3fe87f94ce05efa4a784ba7e3f65e53abb00fd05
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359259"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97914254"
 ---
 # <a name="automate-management-with-the-sql-server-iaas-agent-extension"></a>Automatisera hanteringen med SQL Server IaaS agent-tillägg
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -42,20 +42,21 @@ Tillägget SQL Server IaaS-agent ger ett antal fördelar för SQL Server på vir
 
 - **Kostnads fri**: tillägget i alla tre hanterbarhets lägen är helt kostnads fritt. Det finns ingen ytterligare kostnad som är kopplad till tillägget eller med ändring av hanterings lägen. 
 
-- **Förenklad licens hantering**: tillägget fören klar SQL Server licens hantering, och gör att du snabbt kan identifiera SQL Server virtuella datorer med Azure Hybrid-förmån aktiverat med hjälp av [Azure Portal](manage-sql-vm-portal.md), Azure CLI eller PowerShell: 
-
-   # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-   ```azurecli-interactive
-   $vms = az sql vm list | ConvertFrom-Json
-   $vms | Where-Object {$_.sqlServerLicenseType -eq "AHUB"}
-   ```
+- **Förenklad licens hantering**: tillägget fören klar SQL Server licens hantering, och gör att du snabbt kan identifiera SQL Server virtuella datorer med Azure Hybrid-förmån aktiverat med hjälp av [Azure Portal](manage-sql-vm-portal.md), PowerShell eller Azure CLI: 
 
    # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
    ```powershell-interactive
    Get-AzSqlVM | Where-Object {$_.LicenseType -eq 'AHUB'}
    ```
+
+   # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+   ```azurecli-interactive
+   $ az sql vm list --query "[?sqlServerLicenseType=='AHUB']"
+   ```
+
+
 
    ---
 
