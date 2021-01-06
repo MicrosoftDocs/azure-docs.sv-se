@@ -75,7 +75,7 @@
         - name: Vanliga frågor och svar – Recovery Services-valv
           href: backup-azure-backup-faq.md
         - name: Vanliga frågor och svar – Backup Center
-          href: backup-center-faq.md
+          href: backup-center-faq.yml
         - name: Vanliga frågor och svar – Säkerhetskopiering av virtuella Azure-datorer
           href: backup-azure-vm-backup-faq.md
         - name: Vanliga frågor och svar – MARS-agenten

@@ -139,7 +139,7 @@
         - name: Utforska en bildbearbetningsapp
           href: Tutorials/CSharpTutorial.md
         - name: Andra Visuellt innehåll-exempel
-          href: 'https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision'
+          href: 'https://docs.microsoft.com/samples/browse/?products=azure&terms=computer-vision'
     - name: VANLIGA FRÅGOR OCH SVAR
       href: FAQ.md
     - name: Kategoritaxonomi
