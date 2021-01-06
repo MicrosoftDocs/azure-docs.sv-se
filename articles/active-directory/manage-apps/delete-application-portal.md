@@ -8,20 +8,22 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 12/28/2020
+ms.date: 1/5/2021
 ms.author: kenwith
-ms.openlocfilehash: e2b8bd47f7d124562a38413d36b849d1f7efacee
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: a3468b6f74519018f73f6bf32df74bd6cbb458f6
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97802770"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916702"
 ---
 # <a name="quickstart-delete-an-application-from-your-azure-active-directory-azure-ad-tenant"></a>Snabb start: ta bort ett program från din Azure Active Directory (Azure AD)-klient
 
 Den här snabb starten använder Azure Portal för att ta bort ett program som har lagts till i din Azure Active Directory (Azure AD)-klient.
 
-## <a name="prerequisites"></a>Förutsättningar
+Läs mer om SSO och Azure, se [Vad är en Sign-On (SSO)](what-is-single-sign-on.md).
+
+## <a name="prerequisites"></a>Krav
 
 Om du vill ta bort ett program från din Azure AD-klient behöver du:
 

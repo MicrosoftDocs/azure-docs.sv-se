@@ -1,17 +1,17 @@
 ---
 title: Skapa och ladda upp en CentOS Linux-baserad virtuell dator
 description: Lär dig att skapa och överföra en virtuell Azure-hårddisk (VHD) som innehåller ett CentOS-baserat Linux-operativsystem.
-author: gbowerman
+author: danielsollondon
 ms.service: virtual-machines-linux
 ms.topic: how-to
-ms.date: 11/25/2019
-ms.author: guybo
-ms.openlocfilehash: aefad880d788502ece0e3ba246a06a7529a3cab9
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 12/01/2020
+ms.author: danis
+ms.openlocfilehash: 74883e04170165c66fa389051a94cf349c3395cf
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499704"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916413"
 ---
 # <a name="prepare-a-centos-based-virtual-machine-for-azure"></a>Förbereda en CentOS-baserad virtuell dator för Azure
 
@@ -21,7 +21,7 @@ Lär dig att skapa och överföra en virtuell Azure-hårddisk (VHD) som innehål
 * [Förbered en CentOS 7.0 + virtuell dator för Azure](#centos-70)
 
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Den här artikeln förutsätter att du redan har installerat ett Linux-operativsystem med CentOS (eller liknande derivat) till en virtuell hård disk. Det finns flera verktyg för att skapa. VHD-filer, till exempel en virtualiseringslösning som Hyper-V. Anvisningar finns i [Installera Hyper-V-rollen och konfigurera en virtuell dator](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh846766(v=ws.11)).
 
@@ -29,10 +29,10 @@ Den här artikeln förutsätter att du redan har installerat ett Linux-operativs
 
 * Se även [allmänna Linux-Installationsinstruktioner](create-upload-generic.md#general-linux-installation-notes) för mer information om hur du förbereder Linux för Azure.
 * VHDX-formatet stöds inte i Azure, endast **fast virtuell hård disk**.  Du kan konvertera disken till VHD-format med hjälp av Hyper-V Manager eller cmdleten Convert-VHD. Om du använder VirtualBox innebär det att du väljer **fast storlek** i stället för standardvärdet som tilldelas dynamiskt när disken skapas.
-* När du installerar Linux-systemet *rekommenderar* vi att du använder standardpartitioner snarare än LVM (vanligt vis som standard för många installationer). På så sätt undviker du LVM namn konflikter med klonade virtuella datorer, särskilt om en OS-disk någonsin måste kopplas till en annan identisk virtuell dator för fel sökning. [LVM](/previous-versions/azure/virtual-machines/linux/configure-lvm?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) eller [RAID](/previous-versions/azure/virtual-machines/linux/configure-raid?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) kan användas på data diskar.
-* Kernel-stöd för att montera UDF-filsystem krävs. Vid första starten av Azure skickas etablerings konfigurationen till den virtuella Linux-datorn via UDF-formaterade medier som är kopplade till gästen. Azure Linux-agenten måste kunna montera UDF-filsystemet för att läsa konfigurationen och etablera den virtuella datorn.
+* När du installerar Linux-systemet *rekommenderar* vi att du använder standardpartitioner snarare än LVM (vanligt vis som standard för många installationer). På så sätt undviker du LVM namn konflikter med klonade virtuella datorer, särskilt om en OS-disk någonsin måste kopplas till en annan identisk virtuell dator för fel sökning. [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) eller [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) kan användas på data diskar.
+* **Kernel-stöd för att montera UDF-filsystem krävs.** Vid första starten av Azure skickas etablerings konfigurationen till den virtuella Linux-datorn via UDF-formaterade medier som är kopplade till gästen. Azure Linux-agenten måste kunna montera UDF-filsystemet för att läsa konfigurationen och etablera den virtuella datorn.
 * Linux kernel-versioner nedan 2.6.37 stöder inte NUMA på Hyper-V med större VM-storlekar. Det här problemet påverkar främst äldre distributioner med den överordnade Red Hat 2.6.32-kärnan och har åtgärd ATS i RHEL 6,6 (kernel-2.6.32-504). System som kör anpassade kernels som är äldre än 2.6.37, eller RHEL-baserade kernels som är äldre än 2.6.32-504, måste ange start parametern `numa=off` på kernel-kommandoraden i grub. conf. Mer information finns i Red Hat [KB 436883](https://access.redhat.com/solutions/436883).
-* Konfigurera inte en swap-partition på OS-disken. Linux-agenten kan konfigureras för att skapa en växlings fil på den tillfälliga resurs disken.  Mer information om detta finns i stegen nedan.
+* Konfigurera inte en swap-partition på OS-disken. Mer information om detta finns i stegen nedan.
 * Alla virtuella hård diskar på Azure måste ha en virtuell storlek som är justerad till 1 MB. När du konverterar från en RAW-disk till VHD måste du se till att den råa disk storleken är en multipel av 1 MB före konverteringen. Mer information finns i [installations information för Linux](create-upload-generic.md#general-linux-installation-notes) .
 
 ## <a name="centos-6x"></a>CentOS 6. x
@@ -212,7 +212,7 @@ Den här artikeln förutsätter att du redan har installerat ett Linux-operativs
 16. Kör följande kommandon för att avetablera den virtuella datorn och förbereda den för etablering på Azure:
 
     ```bash
-    sudo waagent -force -deprovision
+    sudo waagent -force -deprovision+user
     export HISTSIZE=0
     logout
     ```
@@ -356,34 +356,106 @@ Att förbereda en virtuell CentOS 7-dator för Azure liknar CentOS 6, men det fi
     sudo dracut -f -v
     ```
 
-11. Installera Azure Linux-agenten och beroenden:
+11. Installera Azure Linux-agenten och beroenden för Azure VM-tillägg:
 
     ```bash
     sudo yum install python-pyasn1 WALinuxAgent
     sudo systemctl enable waagent
     ```
 
-12. Skapa inte växlings utrymme på OS-disken.
-
-    Azure Linux-agenten kan automatiskt konfigurera växlings utrymme med hjälp av den lokala resurs disk som är kopplad till den virtuella datorn efter etableringen på Azure. Observera att den lokala resurs disken är en *temporär* disk och kan tömmas när den virtuella datorn avetableras. När du har installerat Azure Linux-agenten (se föregående steg) ändrar du följande parametrar på `/etc/waagent.conf` lämpligt sätt:
+12. Installera Cloud-Init för att hantera etableringen
 
     ```console
-    ResourceDisk.Format=y
-    ResourceDisk.Filesystem=ext4
-    ResourceDisk.MountPoint=/mnt/resource
-    ResourceDisk.EnableSwap=y
-    ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
+    yum install -y cloud-init cloud-utils-growpart gdisk hyperv-daemons
+
+    # Configure waagent for cloud-init
+    sed -i 's/Provisioning.UseCloudInit=n/Provisioning.UseCloudInit=y/g' /etc/waagent.conf
+    sed -i 's/Provisioning.Enabled=y/Provisioning.Enabled=n/g' /etc/waagent.conf
+
+
+    echo "Adding mounts and disk_setup to init stage"
+    sed -i '/ - mounts/d' /etc/cloud/cloud.cfg
+    sed -i '/ - disk_setup/d' /etc/cloud/cloud.cfg
+    sed -i '/cloud_init_modules/a\\ - mounts' /etc/cloud/cloud.cfg
+    sed -i '/cloud_init_modules/a\\ - disk_setup' /etc/cloud/cloud.cfg
+
+    echo "Allow only Azure datasource, disable fetching network setting via IMDS"
+    cat > /etc/cloud/cloud.cfg.d/91-azure_datasource.cfg <<EOF
+    datasource_list: [ Azure ]
+    datasource:
+    Azure:
+        apply_network_config: False
+    EOF
+
+    if [[ -f /mnt/resource/swapfile ]]; then
+    echo Removing swapfile - RHEL uses a swapfile by default
+    swapoff /mnt/resource/swapfile
+    rm /mnt/resource/swapfile -f
+    fi
+
+    echo "Add console log file"
+    cat >> /etc/cloud/cloud.cfg.d/05_logging.cfg <<EOF
+
+    # This tells cloud-init to redirect its stdout and stderr to
+    # 'tee -a /var/log/cloud-init-output.log' so the user can see output
+    # there without needing to look on the console.
+    output: {all: '| tee -a /var/log/cloud-init-output.log'}
+    EOF
+
     ```
 
-13. Kör följande kommandon för att avetablera den virtuella datorn och förbereda den för etablering på Azure:
 
-    ```bash
-    sudo waagent -force -deprovision
-    export HISTSIZE=0
-    logout
+13. Växlings konfiguration skapar inte växlings utrymme på operativ system disken.
+
+    Tidigare användes Azure Linux-agenten automatiskt för att konfigurera växlings utrymmet genom att använda den lokala resurs disk som är kopplad till den virtuella datorn efter att den virtuella datorn har distribuerats på Azure. Detta hanteras dock inte av Cloud-init. du **får inte** använda Linux-agenten för att formatera resurs disken skapa växlings filen, ändra följande parametrar på `/etc/waagent.conf` lämpligt sätt:
+
+    ```console
+    sed -i 's/ResourceDisk.Format=y/ResourceDisk.Format=n/g' /etc/waagent.conf
+    sed -i 's/ResourceDisk.EnableSwap=y/ResourceDisk.EnableSwap=n/g' /etc/waagent.conf
     ```
 
-14. Klicka på **åtgärd-> stänga av** i Hyper-V Manager. Din Linux-VHD är nu redo att laddas upp till Azure.
+    Om du vill montera, formatera och skapa växling kan du antingen:
+    * Skicka detta i som en Cloud-Init-konfiguration varje gång du skapar en virtuell dator
+    * Använd ett bakade-direktiv för Cloud-Init i avbildningen som ska göras varje gång den virtuella datorn skapas:
+
+        ```console
+        cat > /etc/cloud/cloud.cfg.d/00-azure-swap.cfg << EOF
+        #cloud-config
+        # Generated by Azure cloud image build
+        disk_setup:
+          ephemeral0:
+            table_type: mbr
+            layout: [66, [33, 82]]
+            overwrite: True
+        fs_setup:
+          - device: ephemeral0.1
+            filesystem: ext4
+          - device: ephemeral0.2
+            filesystem: swap
+        mounts:
+          - ["ephemeral0.1", "/mnt"]
+          - ["ephemeral0.2", "none", "swap", "sw", "0", "0"]
+        EOF
+        ```
+
+14. Kör följande kommandon för att avetablera den virtuella datorn och förbereda den för etablering på Azure:
+
+    ```console
+    # Note: if you are migrating a specific virtual machine and do not wish to create a generalized image,
+    # skip the deprovision step
+    # sudo rm -rf /var/lib/waagent/
+    # sudo rm -f /var/log/waagent.log
+
+    # waagent -force -deprovision+user
+    # rm -f ~/.bash_history
+
+
+    # export HISTSIZE=0
+
+    # logout
+    ```
+
+15. Klicka på **åtgärd-> stänga av** i Hyper-V Manager. Din Linux-VHD är nu redo att laddas upp till Azure.
 
 ## <a name="next-steps"></a>Nästa steg
 

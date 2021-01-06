@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 12/19/2020
 ms.author: allensu
 ms.custom: mvc, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: fd85021da36d0e5ef32ce3f42c72b83016d38749
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: 15060a367bba2d50d7054730321f7f20d4c25e46
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97901359"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916685"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-using-azure-cli"></a>Snabb start: skapa en intern belastningsutjämnare för att belastningsutjämna virtuella datorer med Azure CLI
 
@@ -54,6 +54,8 @@ Skapa en resurs grupp med [AZ Group Create](/cli/azure/group#az_group_create):
 >[!NOTE]
 >Standard-SKU-belastningsutjämnare rekommenderas för produktions arbets belastningar. Mer information om SKU: er finns i **[Azure Load Balancer SKU: er](skus.md)**.
 
+:::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/resources-diagram-internal.png" alt-text="Standard belastnings Utjämnings resurser har skapats för snabb start." border="false":::
+
 ## <a name="configure-virtual-network---standard"></a>Konfigurera virtuellt nätverk – standard
 
 Innan du distribuerar virtuella datorer och distribuerar belastningsutjämnaren skapar du de stödda virtuella nätverks resurserna.
@@ -84,7 +86,7 @@ Skapa ett virtuellt nätverk med [AZ Network VNet Create](/cli/azure/network/vne
 Använd [AZ Network Public-IP Create](/cli/azure/network/public-ip#az-network-public-ip-create) för att skapa en offentlig IP-adress för skydds-värden:
 
 * Skapa en standard zon för redundant offentlig IP-adress med namnet **myBastionIP**.
-* I * * CCreateIntLBQS-rg * *.
+* I **CreateIntLBQS-RG**.
 
 ```azurecli-interactive
 az network public-ip create \
@@ -99,7 +101,7 @@ Använd [AZ Network VNet Subnet Create](/cli/azure/network/vnet/subnet#az-networ
 * Med namnet **AzureBastionSubnet**.
 * Adressprefix för **10.1.1.0/24**.
 * I virtuellt nätverk **myVNet**.
-* I resurs grupp * * CreateIntLBQS-rg * *.
+* I resurs gruppen **CreateIntLBQS-RG**.
 
 ```azurecli-interactive
 az network vnet subnet create \
@@ -114,7 +116,7 @@ az network vnet subnet create \
 Använd [AZ Network skydds Create](/cli/azure/network/bastion#az-network-bastion-create) för att skapa en skydds-värd:
 
 * Med namnet **myBastionHost**.
-* I * * CreateIntLBQS-rg * *.
+* I **CreateIntLBQS-RG**.
 * Associerat med offentliga IP- **myBastionIP**.
 * Associerad med **myVNet** för virtuellt nätverk.
 * På **östra** platsen.
@@ -348,6 +350,8 @@ Lägg till de virtuella datorerna i backend-poolen med [AZ Network NIC IP-config
 
 >[!NOTE]
 >Standard-SKU-belastningsutjämnare rekommenderas för produktions arbets belastningar. Mer information om SKU: er finns i **[Azure Load Balancer SKU: er](skus.md)**.
+
+:::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/resources-diagram-internal-basic.png" alt-text="Grundläggande belastnings Utjämnings resurser skapade i snabb starten." border="false":::
 
 ## <a name="configure-virtual-network---basic"></a>Konfigurera virtuellt nätverk – grundläggande
 

@@ -1,5 +1,5 @@
 ---
-title: Vad är Azure Machine Learning?
+title: Vad är Azure Machine Learning
 description: Azure Machine Learning är en integrerad data vetenskaps lösning för data forskare och MLops för att modellera och distribuera ML-program i moln skala.
 services: machine-learning
 ms.service: machine-learning
@@ -9,12 +9,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 85080c018749f9aab716eff0a4527363da987007
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 53e6d6e67a90cd1f39aed7f9cd7c2368282b2d1f
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96620485"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916600"
 ---
 # <a name="what-is-azure-machine-learning"></a>Vad är Azure Machine Learning?
 
@@ -84,7 +84,7 @@ Du kan också [Automatisera modell träning och-justering](tutorial-auto-train-m
     ![Kör information i Azure Machine Learning Studio](media/how-to-track-experiments/experimentation-tab.gif)
 
 
-+ **Och mycket mer...**
++ **Och mycket annat...**
 
   Besök Azure Machine Learning Studio på [ml.Azure.com](https://studio.azureml.net). 
 
@@ -118,7 +118,7 @@ Azure Machine Learning fungerar med andra tjänster på Azure-plattformen och in
 + __Virtuella Azure-nätverk__. Mer information finns i [Översikt över virtuell nätverks isolering och sekretess](how-to-network-security-overview.md).
 + __Azure-pipeliner__. Mer information finns i [träna och distribuera Machine Learning-modeller](/azure/devops/pipelines/targets/azure-machine-learning).
 + __Git-lagringsplatsens loggar__. Mer information finns i [git-integrering](concept-train-model-git-integration.md).
-+ __MLFlow__. Mer information finns i [MLflow för att spåra mått och distribuera modeller](how-to-use-mlflow.md) 
++ __MLFlow__. Mer information finns i [MLflow för att spåra mått](how-to-use-mlflow.md)  och [distribuera MLflow-modeller som en webb tjänst](how-to-deploy-mlflow-models.md) 
 + __Kubeflow__. Mer information finns i [bygga arbets flöden från slut punkt till slut punkt](https://www.kubeflow.org/docs/azure/).
 
 ### <a name="secure-communications"></a>Säker kommunikation

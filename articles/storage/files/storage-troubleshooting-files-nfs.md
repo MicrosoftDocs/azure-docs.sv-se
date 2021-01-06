@@ -8,16 +8,32 @@ ms.date: 09/15/2020
 ms.author: jeffpatt
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 661cfd5bb410a714bc42e0cd9676ac2ec08f8a45
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2a37c86268d2424971058021044c60185a25348f
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90709100"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916464"
 ---
 # <a name="troubleshoot-azure-nfs-file-shares"></a>Felsöka fil resurser i Azure NFS
 
 Den här artikeln innehåller några vanliga problem som rör Azure NFS-filresurser. Den ger potentiella orsaker och lösningar när dessa problem uppstår.
+
+## <a name="chgrp-filename-failed-invalid-argument-22"></a>chgrp "filename" misslyckades: Ogiltigt argument (22)
+
+### <a name="cause-1-idmapping-is-not-disabled"></a>Orsak 1: idmapping har inte inaktiverats
+Azure Files tillåter inte alfanumeriskt UID/GID. Så idmapping måste vara inaktiverat. 
+
+### <a name="cause-2-idmapping-was-disabled-but-got-re-enabled-after-encountering-bad-filedir-name"></a>Orsak 2: idmapping har inaktiverats, men aktive ras igen efter att felaktigt fil-/katalog namn har påträffats
+Även om idmapping har inaktiverats korrekt, åsidosätts inställningarna för att inaktivera idmapping i vissa fall. När Azure Files till exempel påträffar ett felaktigt fil namn skickar den tillbaka ett fel. När du ser den här felkoden väljer NFS v 4,1 Linux-klienten att återaktivera idmapping och framtida begär Anden skickas igen med alfanumeriskt UID/GID. En lista med tecken som inte stöds på Azure Files finns i den här [artikeln](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#:~:text=The%20Azure%20File%20service%20naming%20rules%20for%20directory,be%20no%20more%20than%20255%20characters%20in%20length). Kolon är ett tecken som inte stöds. 
+
+### <a name="workaround"></a>Lösning
+Kontrol lera att idmapping har inaktiverats och att inget återaktiverar det och gör sedan följande:
+
+- Demontera resursen
+- Inaktivera ID-mappning med # ECHO Y >/sys/module/NFS/Parameters/nfs4_disable_idmapping
+- Montera delningen
+- Om du kör rsync kör du rsync med argumentet "– numeric-ID" från katalogen som inte har något felaktigt katalog-/fil namn.
 
 ## <a name="unable-to-create-an-nfs-share"></a>Det gick inte att skapa en NFS-resurs
 
@@ -52,7 +68,7 @@ NFS är endast tillgängligt på lagrings konton med följande konfiguration:
 - Nivå – Premium
 - Konto Natura-FileStorage
 - Redundans – LRS
-- Regionerna – östra USA, östra USA 2, Storbritannien, södra, sydöstra Asien
+- Regioner – [lista över regioner som stöds](https://docs.microsoft.com/azure/storage/files/storage-files-how-to-create-nfs-shares?tabs=azure-portal#regional-availability)
 
 #### <a name="solution"></a>Lösning
 
@@ -84,13 +100,13 @@ Följande diagram visar anslutningar med hjälp av offentliga slut punkter.
 
 :::image type="content" source="media/storage-troubleshooting-files-nfs/connectivity-using-public-endpoints.jpg" alt-text="Diagram över anslutning till offentliga slut punkter." lightbox="media/storage-troubleshooting-files-nfs/connectivity-using-public-endpoints.jpg":::
 
-- [Privat slut punkt](storage-files-networking-endpoints.md#create-a-private-endpoint)
+- [Privat slutpunkt](storage-files-networking-endpoints.md#create-a-private-endpoint)
     - Åtkomst är säkrare än tjänstens slut punkt.
     - Åtkomst till NFS-resurs via privat länk är tillgänglig i och utanför lagrings kontots Azure-region (över flera regioner lokalt)
     - Virtuell nätverks-peering med virtuella nätverk som finns i den privata slut punkten ger NFS-resurs åtkomst till klienter i peer-kopplade virtuella nätverk.
     - Privata slut punkter kan användas med ExpressRoute-, punkt-till-plats-och plats-till-plats-VPN.
 
-:::image type="content" source="media/storage-troubleshooting-files-nfs/connectivity-using-private-endpoints.jpg" alt-text="Diagram över anslutning till offentliga slut punkter." lightbox="media/storage-troubleshooting-files-nfs/connectivity-using-private-endpoints.jpg":::
+:::image type="content" source="media/storage-troubleshooting-files-nfs/connectivity-using-private-endpoints.jpg" alt-text="Diagram över anslutning till privat slut punkt." lightbox="media/storage-troubleshooting-files-nfs/connectivity-using-private-endpoints.jpg":::
 
 ### <a name="cause-2-secure-transfer-required-is-enabled"></a>Orsak 2: säker överföring krävs har Aktiver ATS
 
@@ -100,7 +116,7 @@ Double Encryption stöds inte för NFS-resurser än. Azure tillhandahåller ett 
 
 Inaktivera säker överföring som krävs i ditt lagrings kontos konfigurations blad.
 
-:::image type="content" source="media/storage-files-how-to-mount-nfs-shares/storage-account-disable-secure-transfer.png" alt-text="Diagram över anslutning till offentliga slut punkter.":::
+:::image type="content" source="media/storage-files-how-to-mount-nfs-shares/storage-account-disable-secure-transfer.png" alt-text="Skärm bild som visar bladet lagrings konto konfiguration och inaktiverar säker överföring krävs.":::
 
 ### <a name="cause-3-nfs-common-package-is-not-installed"></a>Orsak 3: NFS-vanligt paket har inte installerats
 Innan du kör monterings kommandot installerar du paketet genom att köra det distribution kommandot nedan.

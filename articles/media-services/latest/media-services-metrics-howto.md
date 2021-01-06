@@ -14,22 +14,22 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 09c306b85c910e8ec2021abf15013935c44b0df3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 91e74668224d1cdbbc462bf6c2c0a22c4f0a9837
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91707718"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916583"
 ---
 # <a name="monitor-media-services-metrics"></a>Övervaka Media Services-mått
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-Med [Azure Monitor](../../azure-monitor/overview.md) kan du övervaka mått och diagnostikloggar som hjälper dig att förstå hur dina program presterar. Detaljerad beskrivning av den här funktionen och se varför du vill använda Azure Media Services mått och diagnostikloggar finns i [övervaka Media Services statistik och diagnostikloggar](media-services-metrics-diagnostic-logs.md).
+Med [Azure Monitor](../../azure-monitor/overview.md) kan du övervaka mått och diagnostikloggar som hjälper dig att förstå hur dina program presterar. En detaljerad beskrivning av den här funktionen och för att förstå varför du bör använda Azure Media Services mått och diagnostikloggar finns i [övervaka Media Services mått och diagnostikloggar](media-services-metrics-diagnostic-logs.md).
 
 Azure Monitor tillhandahåller flera olika sätt att interagera med mått, inklusive att lägga till dem i portalen, komma åt dem via REST API eller genom att fråga dem med hjälp av Azure CLI. Den här artikeln visar hur du övervakar mått med Azure Portal-diagram och Azure CLI.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 - [Skapa ett Media Services-konto](./create-account-howto.md)
 - Granska  [övervaknings Media Services mått och diagnostikloggar](media-services-metrics-diagnostic-logs.md)
@@ -38,24 +38,21 @@ Azure Monitor tillhandahåller flera olika sätt att interagera med mått, inklu
 
 1. Logga in på Azure Portal på https://portal.azure.com.
 1. Navigera till ditt Azure Media Services konto och välj **mått**.
-1. Klicka på rutan **resurs** och välj den resurs som du vill övervaka mått för.
+1. Klicka i rutan **omfattning** och välj den resurs som du vill övervaka.
 
-    Fönstret **Välj en resurs** visas till höger med listan över resurser som är tillgängliga för dig. I det här fallet visas:
+    Fönstret **Välj ett omfång** visas till höger med listan över tillgängliga resurser. I det här fallet visas:
 
     * &lt;Media Services konto namn&gt;
     * &lt;Media Services konto namn &gt; / &lt; strömmande slut punkts namn&gt;
     * &lt;lagrings konto namn&gt;
 
-    Markera resursen och tryck på **Använd**. Mer information om resurser och mått som stöds finns i [övervaka Media Services mått](media-services-metrics-diagnostic-logs.md).
-
-    ![Skärm bild som visar den valda resursen och markerar knappen tillämpa.](media/media-services-metrics/metrics02.png)
+    Filtrera sedan och Välj resursen och tryck på **Använd**. Mer information om resurser och mått som stöds finns i [övervaka Media Services mått](media-services-metrics-diagnostic-logs.md).
 
     > [!NOTE]
-    > Om du vill växla mellan resurser som du vill övervaka måtten för, klickar du på **resurs** rutan igen och upprepar det här steget.
-1. (Valfritt) ge diagrammet ett namn (redigera namnet genom att trycka på Penn fönstret överst).
-1. Lägg till mått som du vill visa.
+    > Om du vill växla mellan resurser som du vill övervaka klickar du på rutan **källa** igen och upprepar det här steget.
 
-    ![Mått](media/media-services-metrics/metrics03.png)
+1. Valfritt: ge ditt diagram ett namn (redigera namnet genom att trycka på penna överst).
+1. Lägg till de mått som du vill visa.
 1. Du kan fästa diagrammet på instrument panelen.
 
 ## <a name="view-metrics-with-azure-cli"></a>Visa mått med Azure CLI
@@ -72,8 +69,8 @@ Om du vill ha andra mått ersätter du "utgående" för det mått namn som du ä
 
 ## <a name="see-also"></a>Se även
 
-* [Azure Monitor mått](../../azure-monitor/platform/data-platform.md)
-* [Skapa, Visa och hantera mått aviseringar med hjälp av Azure Monitor](../../azure-monitor/platform/alerts-metric.md).
+- [Azure Monitor-statistik](../../azure-monitor/platform/data-platform.md)
+- [Skapa, Visa och hantera mått aviseringar med hjälp av Azure Monitor](../../azure-monitor/platform/alerts-metric.md).
 
 ## <a name="next-steps"></a>Nästa steg
 
