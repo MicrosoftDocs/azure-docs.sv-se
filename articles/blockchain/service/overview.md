@@ -1,15 +1,15 @@
 ---
 title: Översikt över Azure blockchain service
 description: Översikt över Azure blockchain-tjänsten
-ms.date: 05/22/2020
+ms.date: 01/04/2021
 ms.topic: overview
 ms.reviewer: ravastra
-ms.openlocfilehash: dc716b475fe85170d595463e0785743591e398c1
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: 15d1126a98a4d3194a256ed07de3918cb066a4e2
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94874567"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963886"
 ---
 # <a name="what-is-azure-blockchain-service"></a>Vad är Azure Blockchain Service?
 
@@ -83,6 +83,8 @@ Engagera med Microsoft-tekniker och Azure blockchain community-experter.
 
 Kom igång genom att testa en snabb start eller få mer information från de här resurserna.
 * [Skapa en blockchain-medlem med hjälp av Azure Portal](create-member.md) eller [skapa en blockchain-medlem med Azure CLI](create-member-cli.md)
-* Kostnads jämförelser och kalkylatorer finns på sidan med [priser](https://azure.microsoft.com/pricing/details/blockchain-service).
+* Följ Microsoft Learn Sök väg [Kom igång med blockchain-utveckling](/learn/paths/ethereum-blockchain-development)
+* Titta på [nybörjar serien till blockchain](https://channel9.msdn.com/Series/Beginners-Series-to-Blockchain)
+* För kostnads jämförelser och räknare, se sidan med [priser](https://azure.microsoft.com/pricing/details/blockchain-service)
 * Bygg din första app med [Azure blockchain Development Kit](https://github.com/Azure-Samples/blockchain-devkit)
 * [Användar handbok](https://github.com/Microsoft/vscode-azure-blockchain-ethereum/wiki) för Azure blockchain VSCode-tillägg

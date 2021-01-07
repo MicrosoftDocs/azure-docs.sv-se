@@ -1,90 +1,90 @@
 ---
 title: Felsöka Azure Data Share
-description: Lär dig hur du felsöker problem med inbjudningar och fel när du skapar eller tar emot data resurser med Azure Data Share.
+description: Lär dig hur du felsöker problem med inbjudningar och fel när du skapar eller tar emot data resurser i Azure Data Share.
 services: data-share
 author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: troubleshooting
 ms.date: 12/16/2020
-ms.openlocfilehash: c93ce9c81ada3c30128846b43041603e132abd88
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 3aa1c0b8579bd37d2bb51cbde70997131c696813
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97617246"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964515"
 ---
-# <a name="troubleshoot-common-issues-in-azure-data-share"></a>Felsöka vanliga problem i Azure Data Share 
+# <a name="troubleshoot-common-problems-in-azure-data-share"></a>Felsök vanliga problem i Azure Data Share 
 
-Den här artikeln visar hur du felsöker vanliga problem med Azure Data Share. 
+Den här artikeln förklarar hur du felsöker vanliga problem i Azure Data Share. 
 
 ## <a name="azure-data-share-invitations"></a>Azure Data Share-inbjudningar 
 
-I vissa fall, när en ny användare klickar på **acceptera inbjudan** från e-postinbjudan som skickades, kan de visas med en tom lista med inbjudningar. 
+I vissa fall när nya användare väljer **acceptera inbjudan** i en e-postinbjudan kan de se en tom lista med inbjudningar. 
 
-![Inga inbjudningar](media/no-invites.png)
+:::image type="content" source="media/no-invites.png" alt-text="Skärm bild som visar en tom lista med inbjudningar.":::
 
-Det här kan bero på något av följande:
+Det här problemet kan bero på någon av följande orsaker:
 
-* **Azure Data Share-tjänsten är inte registrerad som en resursprovider för någon Azure-prenumeration i klientorganisationen.** Du ser det här felet om det inte finns någon Data Share-resurs i Azure-klienten. När du skapar en Azure Data Share-resurs registrerar den automatiskt resursprovidern i din Azure-prenumeration. Du kan också registrera Data Share-tjänsten manuellt med följande steg. Du måste ha en deltagarroll i Azure för att utföra de här stegen.
+* **Azure Data Share-tjänsten är inte registrerad som en resurs leverantör för någon Azure-prenumeration i Azure-klienten.** Det här problemet uppstår när din Azure-klient saknar data resurs resurs. 
 
-    1. Gå till **Prenumerationer** i Azure-portalen
-    1. Välj den prenumeration du vill använda till att skapa Azure Data Share-resursen
-    1. Klicka på **Resursprovidrar**
-    1. Sök efter **Microsoft.DataShare**
-    1. Klicka på **Registrera** 
+    När du skapar en Azure Data Share-resurs registrerar den automatiskt resursprovidern i din Azure-prenumeration. Du kan registrera data delnings tjänsten manuellt med hjälp av följande steg. För att slutföra de här stegen behöver du [deltagar rollen](../role-based-access-control/built-in-roles.md#contributor) för Azure-prenumerationen. 
 
-    Du måste ha [Azure Contributor-rollen](../role-based-access-control/built-in-roles.md#contributor) till Azure-prenumerationen för att slutföra de här stegen. 
+    1. I Azure-portalen går du till **Prenumerationer**.
+    1. Välj den prenumeration som du vill använda för att skapa Azure Data Share-resursen.
+    1. Välj **resurs leverantörer**.
+    1. Sök efter **Microsoft. DataShare**.
+    1. Välj **Register** (Registrera).
 
-* **Inbjudan skickas till ditt e-postalias snarare än din e-postadress för Azure-inloggning.** Om du har registrerat Azure Data Share-tjänsten eller redan har skapat en Data Share-resurs i Azure-klienten, men ändå inte kan se inbjudan, kan det bero på att providern har angett ditt e-postalias som mottagare snarare än din e-postadress för Azure-inloggning. Kontakta din dataprovider och kontrollera att de har skickat inbjudan till din e-postadress för Azure-inloggning och inte ditt e-postalias.
+* **Inbjudan skickas till ditt e-postalias i stället för din e-postadress för Azure-inloggning.** Om du redan har registrerat Azure Data Share-tjänsten eller skapat en data resurs resurs i Azure-klienten, men du fortfarande inte kan se inbjudan, kan ditt e-postalias visas som mottagare. Kontakta din data leverantör och se till att inbjudan skickas till din e-postadress för Azure-inloggning och inte ditt e-postalias.
 
-* **Inbjudan har redan accepterats.** Länken i e-postmeddelandet tar dig till sidan för Data Share-inbjudningar i Azure-portalen, och där visas bara väntande inbjudningar. Om du redan har accepterat inbjudan visas den inte längre på sidan för Data Share-inbjudningar. Gå vidare till din Data Share-resurs som du använde till att ta emot inbjudan för att visa mottagna resurser och konfigurera ditt Azure Data Explorer-klustermål.
+* **Inbjudan har redan accepterats.** Länken i e-postmeddelandet tar dig till sidan med **inbjudningar till data resursen** i Azure Portal. Den här sidan listar bara väntande inbjudningar. Accepterade inbjudningar visas inte på sidan. Om du vill visa mottagna resurser och konfigurera Azure Datautforskaren Cluster-inställningen går du till den data resurs resurs som du använde för att acceptera inbjudan.
 
-## <a name="error-when-creating-or-receiving-a-new-share"></a>Fel vid skapande eller mottagning av en ny resurs
+## <a name="creating-and-receiving-shares"></a>Skapa och ta emot resurser
 
-"Det gick inte att lägga till data uppsättningar"
+Följande fel kan uppstå när du skapar en ny resurs, lägger till data uppsättningar eller mappar data uppsättningar:
 
-"Det gick inte att mappa data uppsättningar"
+* Det gick inte att lägga till data uppsättningar.
+* Det gick inte att mappa data uppsättningar.
+* Det gick inte att bevilja data dela resurs-x-åtkomst till y.
+* Du har inte rätt behörighet till x.
+* Det gick inte att lägga till Skriv behörigheter för Azure Data Share-kontot till en eller flera av de valda resurserna.
 
-"Det gick inte att bevilja data resursen Resource x åtkomst till y"
+Du kan se något av dessa fel om du har otillräckliga behörigheter för Azure Data Store. Mer information finns i [roller och krav](concepts-roles-permissions.md). 
 
-"Du har inte rätt behörighet till x"
+Du behöver Skriv behörighet för att dela eller ta emot data från ett Azure-datalager. Den här behörigheten är vanligt vis en del av deltagar rollen. 
 
-"Det gick inte att lägga till Skriv behörigheter för Azure Data Share-konto till en eller flera av de valda resurserna"
+Om du delar data eller tar emot data från Azure Data Store för första gången behöver du även *Microsoft. Authorization/roll-tilldelningar/Skriv* behörighet. Den här behörigheten är vanligt vis en del av ägar rollen. Även om du har skapat Azure Data Store-resursen är du inte nödvändigt vis ägare till resursen. 
 
-Om du får ovanstående fel när du skapar en ny resurs, lägger till data uppsättningar eller mappar data uppsättningar, kan det bero på otillräcklig behörighet för Azure Data Store. Se [roller och krav](concepts-roles-permissions.md) för nödvändiga behörigheter. 
+När du har rätt behörigheter tillåter Azure Data Share-tjänsten automatiskt data resurs resursens hanterade identitet för åtkomst till data lagret. Den här processen kan ta några minuter. Om du får problem på grund av den här fördröjningen, försök igen om några minuter.
 
-Du måste ha Skriv behörighet för att dela eller ta emot data från ett Azure-datalager, som vanligt vis finns i **deltagar** rollen. 
+SQL-baserad delning kräver extra behörigheter. Information om krav finns i [Dela från SQL-källor](how-to-share-from-sql.md).
 
-Om det här är första gången du delar eller tar emot data från Azure Data Store, behöver du även *Microsoft. auktorisering/roll tilldelningar/Skriv* behörighet, som vanligt vis finns i **ägar** rollen. Även om du har skapat Azure Data Store-resursen så blir det inte automatiskt ägaren till resursen. Med rätt behörighet ger Azure Data Share service automatiskt den hanterade identitets åtkomsten för data resursen till data lagret. Den här processen kan ta några minuter att börja gälla. Om det uppstår ett problem på grund av den här fördröjningen, försök igen om några minuter.
+## <a name="snapshots"></a>Ögonblicksbilder
+En ögonblicks bild kan inte utföras av olika orsaker. Öppna ett detaljerat fel meddelande genom att välja Start tid för ögonblicks bilden och sedan status för varje data uppsättning. 
 
-SQL-baserad delning kräver ytterligare behörigheter. Se [Dela från SQL-källor](how-to-share-from-sql.md) för detaljerad lista över krav.
+Ögonblicks bilder fungerar ofta inte av följande anledningar:
 
-## <a name="snapshot-failed"></a>Ögonblicks bild misslyckades
-Det gick inte att ta ögonblicks bilder på grund av olika orsaker. Du hittar ett detaljerat fel meddelande genom att klicka på Start tiden för ögonblicks bilden och sedan på status för varje data uppsättning. Följande är vanliga orsaker till att ögonblicks bilder Miss lyckas:
+* Data dela saknar behörighet att läsa från käll data lagret eller skriva till mål data lagret. Mer information finns i [roller och krav](concepts-roles-permissions.md). Om du tar en ögonblicks bild för första gången kan data resurs resursen behöva några minuter för att få åtkomst till Azure Data Store. Försök igen om några minuter.
+* Data delnings anslutningen till käll data lagret eller mål data lagret blockeras av en brand vägg.
+* En delad data mängd, käll data lager eller mål data lager har tagits bort.
 
-* Data resursen har inte behörighet att läsa från käll data lagret eller skriva till mål data lagret. Se [roller och krav](concepts-roles-permissions.md) för detaljerade behörighets krav. Om det här är första gången du tar en ögonblicks bild kan det ta några minuter för data resurs resursen att beviljas åtkomst till Azure Data Store. Vänta några minuter och försök igen.
-* Data delnings anslutningen till käll-eller mål data lagret blockeras av brand väggen.
-* Den delade data mängden eller käll-eller mål data lagret har tagits bort.
+För lagrings konton kan en ögonblicks bild inte utföras eftersom en fil uppdateras vid källan medan ögonblicks bilden sker. Därför kan en 0-byte-fil visas på målet. Efter uppdateringen vid källan bör ögonblicks bilderna lyckas.
 
-För lagrings kontot är följande ytterligare orsaker till fel i ögonblicks bilder.
+För SQL-källor kan en ögonblicks bild inte utföras av följande orsaker:
 
-* Filen uppdateras vid källan medan ögonblicks bilden sker. Detta kan resultera i 0 byte-fil på målet. Efterföljande ögonblicks bilder efter uppdateringen har slutförts på källan.
+* Det SQL-skript eller SQL-mål för SQL-skript som beviljar data resurs behörigheten har inte körts. Eller för Azure SQL Database eller Azure Synapse Analytics (tidigare Azure SQL Data Warehouse) körs skriptet med hjälp av SQL-autentisering i stället för Azure Active Directory autentisering.  
+* Käll data lagret eller mål-SQL data lagret har pausats.
+* Ögonblicks bilds processen eller mål data lagret stöder inte SQL-datatyper. Mer information finns i [Dela från SQL-källor](how-to-share-from-sql.md#supported-data-types).
+* Käll data lagret eller mål-SQL data lagret är låst av andra processer. Azure Data Share låser inte dessa data lager. Men befintliga lås i dessa data lager kan göra att en ögonblicks bild inte fungerar.
+* Mål-SQL-tabellen refereras till av en sekundär nyckel begränsning. Om en mål tabell har samma namn som en tabell i källdata under en ögonblicks bild, släpps tabellen i Azure Data Share och en ny tabell skapas. Om en sekundär nyckel begränsning refereras till mål-SQL-tabellen går det inte att släppa tabellen.
+* En CSV-målfil skapas, men det går inte att läsa data i Excel. Du kanske ser det här problemet när SQL-tabellen Source innehåller data som innehåller tecken som inte är engelska. I Excel väljer du fliken **Hämta data** och väljer CSV-filen. Välj filens ursprung **65001: Unicode (UTF-8)** och Läs sedan in data.
 
-För SQL-källor är följande ytterligare orsaker till fel i ögonblicks bilder. 
-
-* Käll-eller mål-SQL-skriptet för att bevilja behörighet för data resurs körs inte. Eller för Azure SQL Database eller Azure Synapse Analytics (tidigare Azure SQL DW) körs den med SQL-autentisering i stället för Azure Active Directory autentisering.  
-* Käll-eller mål-SQL data lagret har pausats.
-* SQL-datatyper stöds inte av ögonblicks bild processen eller mål data lagret. Mer information finns i [Dela från SQL-källor](how-to-share-from-sql.md#supported-data-types) .
-* Käll-eller mål-SQL data lagret har låsts av andra processer. Azure Data Share tillämpar inte lås på käll-och mål-SQL data lager. Befintliga lås på käll-och mål-SQL data lagret leder dock till att ögonblicks bilder Miss lyckas.
-* Mål-SQL-tabellen refereras till av en sekundär nyckel begränsning. Om det finns en mål tabell med samma namn i ögonblicks bilden, tas tabellen bort och en ny tabell skapas i Azure Data Share. Om en sekundär nyckel begränsning refereras till mål-SQL-tabellen går det inte att släppa tabellen.
-* Mål-CSV-filen genereras, men det går inte att läsa data i Excel. Detta kan inträffa när käll-SQL-tabellen innehåller data med tecken som inte är engelska. I Excel, Välj fliken Hämta data och välj CSV-filen, Välj fil ursprung som 65001: Unicode (UTF-8) och Läs in data.
-
-## <a name="snapshot-issue-after-updating-snapshot-schedule"></a>Problem med ögonblicks bild efter uppdatering av ögonblicks bild schema
-När dataprovidern har uppdaterat ögonblicks bilds schema för den skickade resursen måste data konsumenten inaktivera schemat för tidigare ögonblicks bilder och återaktivera det uppdaterade ögonblicks bilds schemat för den mottagna resursen. 
+## <a name="updated-snapshot-schedules"></a>Uppdaterade ögonblicks bild scheman
+När dataprovidern uppdaterar ögonblicks bildens schema för den skickade resursen måste data konsumenten inaktivera schemat för tidigare ögonblicks bilder. Aktivera sedan det uppdaterade ögonblicks bilds schemat för den mottagna resursen. 
 
 ## <a name="next-steps"></a>Nästa steg
 
-Om du vill lära dig hur du börjar dela data fortsätter du till kursen [dela data](share-your-data.md) . 
+Om du vill lära dig hur du börjar dela data fortsätter du till självstudien [dela data](share-your-data.md) . 
 
 Om du vill lära dig hur du tar emot data fortsätter du till kursen för att [godkänna och ta emot data](subscribe-to-data-share.md) .

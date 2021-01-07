@@ -10,16 +10,16 @@ ms.workload: identity
 ms.date: 09/30/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 1aebb80fcba6c21ccce63772195af80b94092bde
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 7c58641f0039982f05be14d0f24ba89c62273d4b
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368327"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964311"
 ---
 # <a name="add-or-remove-azure-role-assignments-using-the-azure-portal"></a>Lägga till eller ta bort rolltilldelningar för Azure med hjälp av Azure-portalen
 
-[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)] I den här artikeln beskrivs hur du tilldelar roller med hjälp av Azure Portal.
+[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control/definition-grant.md)] I den här artikeln beskrivs hur du tilldelar roller med hjälp av Azure Portal.
 
 Om du behöver tilldela administratörs roller i Azure Active Directory, se [Visa och tilldela administratörs roller i Azure Active Directory](../active-directory/roles/manage-roles-portal.md).
 
@@ -49,11 +49,11 @@ För att det ska vara mest effektivt med sidan åtkomst kontroll (IAM), kan du f
 
 Du lägger till en roll tilldelning i Azure RBAC för att bevilja åtkomst till en Azure-resurs. Följ dessa steg om du vill tilldela en roll.
 
-1. I Azure Portal klickar du på **alla tjänster** och väljer sedan den omfattning som du vill bevilja åtkomst till. Du kan till exempel välja **hanterings grupper**, **prenumerationer**, **resurs grupper**eller en resurs.
+1. I Azure Portal klickar du på **alla tjänster** och väljer sedan den omfattning som du vill bevilja åtkomst till. Du kan till exempel välja **hanterings grupper**, **prenumerationer**, **resurs grupper** eller en resurs.
 
 1. Klicka på resursen för det aktuella omfånget.
 
-1. Klicka på **Åtkomstkontroll (IAM)** .
+1. Klicka på **Åtkomstkontroll (IAM)**.
 
 1. Klicka på fliken **roll tilldelningar** för att Visa roll tilldelningarna i det här området.
 
@@ -71,7 +71,7 @@ Du lägger till en roll tilldelning i Azure RBAC för att bevilja åtkomst till 
 
 1. I listrutan **Roll** väljer du en roll, till exempel **Virtuell datordeltagare**.
 
-1. Välj en användare, grupp, tjänstens huvud namn eller hanterad identitet i listan **Välj** . Om du inte ser säkerhetsobjekt i listan kan du ange visningsnamn, e-postadresser och objektidentifierare i rutan**Välj** om du vill söka i katalogen.
+1. Välj en användare, grupp, tjänstens huvud namn eller hanterad identitet i listan **Välj** . Om du inte ser säkerhetsobjekt i listan kan du ange visningsnamn, e-postadresser och objektidentifierare i rutan **Välj** om du vill söka i katalogen.
 
 1. Klicka på **Spara** för att tilldela rollen.
 
@@ -126,11 +126,11 @@ Följ dessa steg om du vill tilldela en roll till en systemtilldelad hanterad id
 
 1. I Azure Portal öppnar du en systemtilldelad hanterad identitet.
 
-1. Klicka på **identitet**i den vänstra menyn.
+1. Klicka på **identitet** i den vänstra menyn.
 
     ![Systemtilldelad hanterad identitet](./media/shared/identity-system-assigned.png)
 
-1. Under **behörigheter**klickar du på **roll tilldelningar för Azure**.
+1. Under **behörigheter** klickar du på **roll tilldelningar för Azure**.
 
     Om roller redan har tilldelats den valda systemtilldelade hanterade identiteten visas en lista över roll tilldelningar. Den här listan innehåller alla roll tilldelningar som du har behörighet att läsa.
 
@@ -140,7 +140,7 @@ Följ dessa steg om du vill tilldela en roll till en systemtilldelad hanterad id
 
 1. Klicka på **Lägg till roll tilldelning (för hands version)**.
 
-1. Använd List rutorna för att välja den uppsättning resurser som roll tilldelningen avser, till exempel **prenumeration**, **resurs grupp**eller resurs.
+1. Använd List rutorna för att välja den uppsättning resurser som roll tilldelningen avser, till exempel **prenumeration**, **resurs grupp** eller resurs.
 
     Om du inte har Skriv behörighet för roll tilldelning för det valda omfånget visas ett infogat meddelande. 
 
@@ -158,7 +158,7 @@ Följ dessa steg om du vill tilldela en roll till en användardefinierad hantera
 
 1. Öppna en användardefinierad hanterad identitet i Azure Portal.
 
-1. Klicka på **roll tilldelningar för Azure**i den vänstra menyn.
+1. Klicka på **roll tilldelningar för Azure** i den vänstra menyn.
 
     Om roller redan har tilldelats den valda användarspecifika hanterade identiteten visas listan över roll tilldelningar. Den här listan innehåller alla roll tilldelningar som du har behörighet att läsa.
 
@@ -168,7 +168,7 @@ Följ dessa steg om du vill tilldela en roll till en användardefinierad hantera
 
 1. Klicka på **Lägg till roll tilldelning (för hands version)**.
 
-1. Använd List rutorna för att välja den uppsättning resurser som roll tilldelningen avser, till exempel **prenumeration**, **resurs grupp**eller resurs.
+1. Använd List rutorna för att välja den uppsättning resurser som roll tilldelningen avser, till exempel **prenumeration**, **resurs grupp** eller resurs.
 
     Om du inte har Skriv behörighet för roll tilldelning för det valda omfånget visas ett infogat meddelande. 
 

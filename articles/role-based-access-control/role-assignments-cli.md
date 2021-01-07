@@ -10,18 +10,18 @@ ms.workload: identity
 ms.date: 09/28/2020
 ms.author: rolyon
 ms.custom: contperf-fy21q1, devx-track-azurecli
-ms.openlocfilehash: 10060e0dc6595a4d59f3968fa324ca40c91a7a39
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: e1aa4945391e159f99c82fecff99c238ae0e7e93
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033807"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964413"
 ---
 # <a name="add-or-remove-azure-role-assignments-using-azure-cli"></a>Lägga till eller ta bort Azure-rolltilldelningar med hjälp av Azure CLI
 
-[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)] Den här artikeln beskriver hur du tilldelar roller med hjälp av Azure CLI.
+[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control/definition-grant.md)] Den här artikeln beskriver hur du tilldelar roller med hjälp av Azure CLI.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Om du vill lägga till eller ta bort roll tilldelningar måste du ha:
 

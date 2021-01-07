@@ -3,12 +3,12 @@ title: Underordnade resurser i mallar
 description: Beskriver hur du anger namn och typ för underordnade resurser i en Azure Resource Manager-mall (ARM-mall).
 ms.topic: conceptual
 ms.date: 12/21/2020
-ms.openlocfilehash: 408914fd309676da36904a364f905a8ee809d648
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: a950d72751b829c0a2aa3ba5ca27316a0544d9cc
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97934313"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963920"
 ---
 # <a name="set-name-and-type-for-child-resources"></a>Ange namn och typ för underordnade resurser
 
@@ -137,5 +137,4 @@ I följande exempel visas ett virtuellt nätverk och undernät som båda definie
 ## <a name="next-steps"></a>Nästa steg
 
 * Information om hur du skapar ARM-mallar finns i [förstå strukturen och syntaxen för ARM-mallar](template-syntax.md).
-
 * Mer information om formatet på resurs namnet när du refererar till resursen finns i [referens funktionen](template-functions-resource.md#reference).

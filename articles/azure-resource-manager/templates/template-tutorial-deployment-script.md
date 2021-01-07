@@ -11,12 +11,12 @@ ms.devlang: na
 ms.date: 12/16/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 7eda805a5fdf24a7a55b9296a0f0a1c9a5bfc576
-ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
+ms.openlocfilehash: 36fb54b4b6521d87c7461936c84a644bf22f7e31
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97683504"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963971"
 ---
 # <a name="tutorial-use-deployment-scripts-to-create-a-self-signed-certificate"></a>Självstudie: använda distributions skript för att skapa ett självsignerat certifikat
 
@@ -36,7 +36,7 @@ Den här självstudien omfattar följande uppgifter:
 
 En Microsoft Learn-modul som täcker distributions skript finns i [utöka arm-mallar med hjälp av distributions skript](/learn/modules/extend-resource-manager-template-deployment-scripts/).
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 För att kunna följa stegen i den här artikeln behöver du:
 
@@ -329,13 +329,13 @@ Distributions skriptet lägger till ett certifikat i nyckel valvet. Konfigurera 
 
     ![Distributions skript resurser för Resource Manager-mall](./media/template-tutorial-deployment-script/resource-manager-template-deployment-script-resources.png)
 
-    Båda filerna har **azscripts** -suffixet. Ett är ett lagrings konto och det andra är en behållar instans.
+    Båda filerna har _azscripts_ -suffixet. Ett är ett lagrings konto och det andra är en behållar instans.
 
     Välj **Visa dolda typer** för att visa `deploymentScripts` resursen.
 
-1. Välj lagrings kontot med **azscripts** -suffixet.
-1. Välj panelen **fil resurser** . Du kommer att se en **azscripts** -mapp. Mappen innehåller distributions skriptets körnings filer.
-1. Välj **azscripts**. Du kommer att se två mappar **azscriptinput** och **azscriptoutput**. Mappen indata innehåller en system PowerShell-skriptfil och skript filen för användar distribution. Mappen utdata innehåller en _executionresult.jspå_ och skript utdatafilen. Du kan se fel meddelandet i _executionresult.jspå_. Utdatafilen saknas eftersom körningen misslyckades.
+1. Välj lagrings kontot med _azscripts_ -suffixet.
+1. Välj panelen **fil resurser** . Du kommer att se en _azscripts_ -mapp som innehåller distributions skriptets körnings filer.
+1. Välj _azscripts_. Du kommer att se två mappar _azscriptinput_ och _azscriptoutput_. Mappen indata innehåller en system PowerShell-skriptfil och skript filen för användar distribution. Mappen utdata innehåller en _executionresult.jspå_ och skript utdatafilen. Du kan se fel meddelandet i _executionresult.jspå_. Utdatafilen saknas eftersom körningen misslyckades.
 
 Ta bort `Write-Output1` raden och distribuera om mallen.
 

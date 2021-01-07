@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/03/2021
-ms.openlocfilehash: 36d40215f759190cc9e6c6e3f4918dcbc384f94f
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 73af7e2a1920e6cfdad9245d965908255ef95a1f
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97893295"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964600"
 ---
 # <a name="apache-hbase-advisories-in-azure-hdinsight"></a>Apache HBase-rådgivare i Azure HDInsight
 
@@ -21,9 +21,9 @@ I den här artikeln beskrivs flera rekommendationer som hjälper dig att optimer
 
 ## <a name="optimize-hbase-to-read-most-recently-written-data"></a>Optimera HBase för att läsa de senast skrivna data
 
-När du använder Apache HBase i Azure HDInsight kan du optimera konfigurationen av HBase för scenariot där programmet läser de senast skrivna data. För hög prestanda är det optimalt att HBase läsningar ska hanteras från memstores, i stället för Fjärrlagring.
+Om din UseCase inbegriper läsning av de senaste skrivna data från HBase, kan den här rekommendationen hjälpa dig. För hög prestanda är det optimalt att HBase läsningar ska hanteras från memstores, i stället för Fjärrlagring.
 
-Frågans råd anger att för en given kolumn serie i en tabell har > 75% läsningar som hanteras från memstores. Den här indikatorn innebär att även om en tömning sker på memstores, måste den senaste filen vara tillgänglig och att den måste finnas i cache. Data skrivs först för att memstores systemet kommer åt de senaste data där. Det finns en risk att de interna HBase-tömnings trådarna identifierar att en specifik region har nått 128M (standard) och kan utlösa en tömning. Det här scenariot inträffar till och med de senaste data som skrevs när memstores var runt 128M i storlek. En senare läsning av de senaste posterna kan därför kräva en fil läsning i stället för från memstores. Därför är det bäst att optimera att även de senaste data som nyligen har rensats kan finnas i cacheminnet.
+Frågans råd anger att för en given kolumn serie i en tabell > 75% läsningar som hanteras från memstores. Den här indikatorn innebär att även om en tömning sker på memstores, måste den senaste filen vara tillgänglig och att den måste finnas i cache. Data skrivs först för att memstores systemet kommer åt de senaste data där. Det finns en risk att de interna HBase-tömnings trådarna identifierar att en specifik region har nått 128M (standard) och kan utlösa en tömning. Det här scenariot inträffar till och med de senaste data som skrevs när memstores var runt 128M i storlek. En senare läsning av de senaste posterna kan därför kräva en fil läsning i stället för från memstores. Därför är det bäst att optimera att även de senaste data som nyligen har rensats kan finnas i cacheminnet.
 
 Överväg följande konfigurations inställningar för att optimera de senaste data i cachen:
 
@@ -35,7 +35,7 @@ Frågans råd anger att för en given kolumn serie i en tabell har > 75% läsnin
 
 4. Om du är säker på att du behöver läsa den senaste informationen, ställer du in `hbase.rs.cachecompactedblocksonwrite` konfigurationen på **på**. Den här konfigurationen talar om för systemet att även om komprimeringen sker förblir datan i cache. Konfigurationerna kan ställas in på familje nivå också. 
 
-   Kör följande kommando i HBase-gränssnittet:
+   I HBase-gränssnittet kör du följande kommando för att konfigurera `hbase.rs.cachecompactedblocksonwrite` konfigurationen:
    
    ```
    alter '<TableName>', {NAME => '<FamilyName>', CONFIGURATION => {'hbase.hstore.blockingStoreFiles' => '300'}}
@@ -43,15 +43,15 @@ Frågans råd anger att för en given kolumn serie i en tabell har > 75% läsnin
 
 5. Block-cache kan inaktive ras för en specifik familj i en tabell. Se till att **den är aktive rad för** familjer som har senaste data läsningar. Som standard är block-cache aktiverat för alla familjer i en tabell. Om du har inaktiverat block-cache för en familj och behöver aktivera det använder du kommandot Alter från HBase-gränssnittet.
 
-   De här konfigurationerna hjälper till att se till att data cachelagras och att de senaste data inte genomgår komprimering. Om ett TTL-värde är möjligt i ditt scenario kan du överväga att använda datum nivå komprimering. Mer information finns i [referens hand boken för Apache HBase: datum nivå komprimering](https://hbase.apache.org/book.html#ops.date.tiered)  
+   Dessa konfigurationer hjälper till att säkerställa att data är tillgängliga i cache och att de senaste data inte genomgår komprimering. Om ett TTL-värde är möjligt i ditt scenario kan du överväga att använda datum nivå komprimering. Mer information finns i [referens hand boken för Apache HBase: datum nivå komprimering](https://hbase.apache.org/book.html#ops.date.tiered)  
 
 ## <a name="optimize-the-flush-queue"></a>Optimera tömnings kön
 
-Det optimerar rekommendationen för att tömma kön anger att HBase tömningar kan behöva justeras. Tömnings hanterarna kanske inte är tillräckligt höga som de har kon figurer ATS.
+Detta meddelande anger att HBase-tömningar kan behöva justeras. Den aktuella konfigurationen för tömnings hanterare kanske inte är tillräckligt hög för att hantera med Skriv trafik som kan leda till långsam tömning av tömningar.
 
 I användar gränssnittet för regions servern ser du om rensnings kön växer över 100. Det här tröskelvärdet anger att tömningarna är långsamma och du kan behöva justera   `hbase.hstore.flusher.count` konfigurationen. Som standard är värdet 2. Se till att de maximala tömnings trådarna inte ökar med 6.
 
-Se även om du har en rekommendation för justering av regioner. Om så är fallet ska du först prova regions justeringen för att se om det bidrar till snabbare tömningar. Att justera rensnings trådarna kan hjälpa dig på flera sätt som 
+Se även om du har en rekommendation för justering av regioner. Om vi ja rekommenderar vi att du provar regions justeringen för att se om det bidrar till snabbare tömningar. Annars kan du med hjälp av justera rensnings trådarna.
 
 ## <a name="region-count-tuning"></a>Justering av region antal
 
@@ -65,7 +65,7 @@ Som exempel scenario:
 
 - När de här inställningarna är på plats är antalet regioner 100. Den globala memstores i 4 GB delas nu över 100 regioner. I praktiken får varje region bara 40 MB för memstores. När skrivningarna är enhetliga, rensas frekvent och mindre storlek i ordningen < 40 MB. Att ha många rensnings trådar kan öka tömnings hastigheten `hbase.hstore.flusher.count` .
 
-Råd givandet innebär att det skulle vara bra att överväga antalet regioner per server, heap-storleken och den globala memstores storleks konfigurationen tillsammans med justeringen rensa trådar så att sådana uppdateringar blockeras kan undvikas.
+Råd givandet innebär att det skulle vara bra att överväga antalet regioner per server, Heap-storlek och global konfiguration av memstores storlek tillsammans med justeringen av tömnings trådar för att undvika att uppdateringar blockeras.
 
 ## <a name="compaction-queue-tuning"></a>Justering av kompakta köer
 

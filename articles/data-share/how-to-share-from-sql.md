@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: how-to
 ms.date: 11/12/2020
-ms.openlocfilehash: 87d6ca8ee69ca49cf52b61e6beddb56721658afa
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: bdbbf3e808e1dda0970aaf87d154ee79bea4dcb1
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94593747"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964175"
 ---
 # <a name="share-and-receive-data-from-azure-sql-database-and-azure-synapse-analytics"></a>Dela och ta emot data från Azure SQL Database och Azure Synapse Analytics
 
@@ -101,7 +101,7 @@ Skapa en Azure Data Share-resurs i en Azure-resurs grupp.
     | Prenumeration | Din prenumeration | Välj den Azure-prenumeration som du vill använda för ditt data resurs konto.|
     | Resursgrupp | *test-resurs-grupp* | Använd en befintlig resursgrupp eller skapa en ny resursgrupp. |
     | Plats | *USA, östra 2* | Välj en region för ditt data resurs konto.
-    | Name | *datashareaccount* | Ange ett namn för ditt data resurs konto. |
+    | Namn | *datashareaccount* | Ange ett namn för ditt data resurs konto. |
     | | |
 
 1. Välj **Granska + skapa** och sedan **skapa** för att etablera ditt data resurs konto. Det tar vanligt vis ungefär 2 minuter att tillhandahålla ett nytt data resurs konto. 
@@ -295,7 +295,7 @@ När du delar data från SQL-källa används följande mappning från SQL Server
 | binary |Byte [] |
 | bit |Boolesk |
 | char |Sträng, char [] |
-| datum |DateTime |
+| date |DateTime |
 | Datumtid |DateTime |
 | datetime2 |DateTime |
 | DateTimeOffset |DateTimeOffset |
@@ -309,7 +309,7 @@ När du delar data från SQL-källa används följande mappning från SQL Server
 | ntext |Sträng, char [] |
 | numeric |Decimal |
 | nvarchar |Sträng, char [] |
-| real |Enkel |
+| real |Enskilt |
 | rowversion |Byte [] |
 | smalldatetime |DateTime |
 | smallint |Int16 |
@@ -341,7 +341,7 @@ SQL-ögonblicksbildens prestanda påverkas av ett antal faktorer. Vi rekommender
 * Plats för käll-och mål data lager. 
 
 ## <a name="troubleshoot-sql-snapshot-failure"></a>Felsöka fel vid SQL-ögonblicksbild
-Den vanligaste orsaken till ögonblicks bild felet är att data resursen inte har behörighet till käll-eller mål data lagret. För att bevilja data resurs behörighet till käll-eller mål Azure SQL Database eller Azure Synapse Analytics (tidigare Azure SQL DW) måste du köra det angivna SQL-skriptet när du ansluter till SQL-databasen med Azure Active Directory autentisering. Fel sökning av ytterligare fel vid SQL-ögonblicksbild finns i [Felsöka ögonblicks bilds fel](data-share-troubleshoot.md#snapshot-failed).
+Den vanligaste orsaken till ögonblicks bild felet är att data resursen inte har behörighet till käll-eller mål data lagret. För att bevilja data resurs behörighet till käll-eller mål Azure SQL Database eller Azure Synapse Analytics (tidigare Azure SQL DW) måste du köra det angivna SQL-skriptet när du ansluter till SQL-databasen med Azure Active Directory autentisering. Fel sökning av ytterligare fel vid SQL-ögonblicksbild finns i [Felsöka ögonblicks bilds fel](data-share-troubleshoot.md#snapshots).
 
 ## <a name="next-steps"></a>Nästa steg
 Du har lärt dig hur du delar och tar emot data från SQL-källor med Azure Data Share-tjänsten. Om du vill veta mer om delning från andra data källor fortsätter du till [data lager som stöds](supported-data-stores.md).

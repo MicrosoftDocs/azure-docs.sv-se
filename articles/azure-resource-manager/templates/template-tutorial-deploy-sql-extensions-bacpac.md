@@ -5,12 +5,12 @@ author: mumian
 ms.date: 12/09/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 2d50903f464c03157ee393787af6ddfdad975aed
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 1bd9f7408baf40791c31626ea9e87a73c65b999c
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97588054"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964005"
 ---
 # <a name="tutorial-import-sql-bacpac-files-with-arm-templates"></a>Självstudie: importera SQL BACPAC-filer med ARM-mallar
 
@@ -55,7 +55,7 @@ BACPAC-filen måste lagras i ett Azure Storage-konto innan den kan importeras me
 * Ladda upp BACPAC-filen till containern.
 * Visa lagrings konto nyckeln och blob-URL: en.
 
-1. Välj **försök** att öppna gränssnittet. Klistra sedan in följande PowerShell-skript i Shell-fönstret.
+1. Välj **försök** att öppna Azure Cloud Shell. Klistra sedan in följande PowerShell-skript i Shell-fönstret.
 
     ```azurepowershell-interactive
     $projectName = Read-Host -Prompt "Enter a project name that is used to generate Azure resource names"

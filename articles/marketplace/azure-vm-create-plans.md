@@ -7,12 +7,12 @@ ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 10/19/2020
-ms.openlocfilehash: 023dc877158c7074f46945893d40291e94ab2f09
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: e5fb425afdd4b212a0b28ce91418eb0ee9e3632f
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629584"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964441"
 ---
 # <a name="how-to-create-plans-for-a-virtual-machine-offer"></a>Skapa planer för ett erbjudande för virtuell dator
 
@@ -42,7 +42,7 @@ I dialog rutan **nytt plan** anger du ett unikt **plan-ID** för varje plan i de
 > [!NOTE]
 > Det går inte att ändra plan-ID när du har valt **skapa**.
 
-Ange ett **namn på prenumerationen**. Kunderna ser det här namnet när de bestämmer vilken plan som ska väljas i erbjudandet. Skapa ett unikt namn som tydligt pekar på skillnaderna mellan planerna. Du kan till exempel ange **Windows Server** med " *betala per* användning"-, *BYOL* -, *Advanced* -och *Enterprise* -planer.
+Ange ett **namn på prenumerationen**. Kunderna ser det här namnet när de bestämmer vilken plan som ska väljas i erbjudandet. Skapa ett unikt namn som tydligt pekar på skillnaderna mellan planerna. Du kan till exempel ange **Windows Server** med " *betala per* användning"-, *BYOL*-, *Advanced*-och *Enterprise* -planer.
 
 Välj **Skapa**. Då öppnas sidan **Planera installationen** .
 
@@ -139,9 +139,9 @@ Du kan erbjuda en en-, tre-eller sex månaders **kostnads fri utvärderings vers
 
 Du kan utforma varje plan som ska vara synlig för alla eller endast till en förvaltad mål grupp. Tilldela medlemskap i den här begränsade mål gruppen med hjälp av ID för Azure-prenumeration.
 
-**Offentlig** : din prenumeration kan ses av alla.
+**Offentlig**: din prenumeration kan ses av alla.
 
-**Privat** : se till att ditt plan endast visas i förvalt mål grupp. När den har publicerats som en privat plan kan du uppdatera mål gruppen eller ändra den till offentlig. När du har gjort en plan offentlig måste den vara offentlig. Det går inte att ändra tillbaka till en privat plan.
+**Privat**: se till att ditt plan endast visas i förvalt mål grupp. När den har publicerats som en privat plan kan du uppdatera mål gruppen eller ändra den till offentlig. När du har gjort en plan offentlig måste den vara offentlig. Det går inte att ändra tillbaka till en privat plan.
 
 Tilldela den mål grupp som ska ha åtkomst till den här privata planen med **prenumerations-ID: t för Azure**. Du kan också ta med en **Beskrivning** av varje Azure-prenumerations-ID som du tilldelar. Lägg till upp till 10 prenumerations-ID: n manuellt eller upp till 20 000 om du importerar ett CSV-kalkylblad. ID: n för Azure-prenumerationen visas som GUID och alla bokstäver måste vara gemena.
 
@@ -191,7 +191,7 @@ När en virtuell dator skapas definieras den virtuella maskin varan som används
 
 1. När du skapar ett nytt erbjudande väljer du en **typ av generation** och anger den information som krävs:
 
-    :::image type="content" source="./media/create-vm/azure-vm-generations-image-details-1.png" alt-text="En vy av list rutan generation.":::
+    :::image type="content" source="./media/create-vm/azure-vm-generations-image-details-1.png" alt-text="En vy av avsnittet om generations information i Partner Center.":::
 
 2. Om du vill lägga till en annan generation i en plan väljer du **Lägg till generation**...
 
@@ -203,9 +203,7 @@ När en virtuell dator skapas definieras den virtuella maskin varan som används
 
 <!--    The **Generation ID** you choose will be visible to customers in places such as product URLs and ARM templates (if applicable). Use only lowercase, alphanumeric characters, dashes, or underscores; it cannot be modified once published.
 -->
-3. Om du vill uppdatera en befintlig virtuell dator som har en generation 1 redan publicerad, redigerar du information på den här sidan för **teknisk konfiguration** :
-
-    :::image type="content" source="./media/create-vm/azure-vm-generations-updating.png" alt-text="En vy av sidan planera teknisk konfiguration.":::
+3. Om du vill uppdatera en befintlig virtuell dator som har en generation 1 redan publicerad, redigerar du information på sidan **teknisk konfiguration** .
 
 Mer information om skillnaderna mellan funktioner i generation 1 och generation 2 finns i [stöd för virtuella datorer i generation 2 på Azure](../virtual-machines/generation-2.md).
 
@@ -215,10 +213,10 @@ Ange en disk version och URL: en för signaturen för delad åtkomst (SAS) för 
 
 Dessa två obligatoriska fält visas i föregående bild ovan:
 
-- **Disk version** : den version av avbildningen som du tillhandahåller.
-- **OS-VHD-länk** : platsen i ditt Azure Storage-konto för operativ systemets virtuella hård disk. Information om hur du hämtar en SAS-URI finns i [Hämta signatur-URI för delad åtkomst för din virtuella dator avbildning](azure-vm-get-sas-uri.md).
+- **Disk version**: den version av avbildningen som du tillhandahåller.
+- **OS-VHD-länk**: platsen i ditt Azure Storage-konto för operativ systemets virtuella hård disk. Information om hur du hämtar en SAS-URI finns i [Hämta signatur-URI för delad åtkomst för din virtuella dator avbildning](azure-vm-get-sas-uri.md).
 
-Data diskar (Välj **Lägg till data disk (max 16)** ) är också URI: er för delad åtkomst för virtuella hård diskar som lagras i deras Azure Storage-konton. Lägg endast till en bild per överföring i en plan.
+Data diskar (Välj **Lägg till data disk (max 16)**) är också URI: er för delad åtkomst för virtuella hård diskar som lagras i deras Azure Storage-konton. Lägg endast till en bild per överföring i en plan.
 
 Oavsett vilket operativ system du använder lägger du endast till det minsta antalet data diskar som krävs för lösningen. Under distributionen kan kunderna inte ta bort diskar som ingår i en avbildning, men de kan alltid lägga till diskar under eller efter distributionen.
 
@@ -226,4 +224,4 @@ Välj **Spara utkast** och välj sedan **← plan Overview** överst till vänst
 
 ## <a name="next-steps"></a>Nästa steg
 
-- [Att sälja via CSP](azure-vm-create-resell-csp.md)
+- [Sälja via CSP-partner](azure-vm-create-resell-csp.md)

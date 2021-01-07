@@ -8,12 +8,12 @@ ms.service: azure-app-configuration
 ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 2/25/2020
-ms.openlocfilehash: 8ef3ff20c67eefa2091ffb1732ced813b169e596
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: d6b3d60a44725869d68dd9f1158d2279f3cf3e86
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96929760"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963988"
 ---
 # <a name="use-managed-identities-to-access-app-configuration"></a>Använda hanterade identiteter för att få åtkomst till App Configuration
 
@@ -102,7 +102,7 @@ Om du vill konfigurera en hanterad identitet i portalen skapar du först ett pro
     using Azure.Identity;
     ```
 
-1. Om du bara vill komma åt värden som lagras direkt i appens konfiguration uppdaterar du `CreateWebHostBuilder` metoden genom att ersätta- `config.AddAzureAppConfiguration()` metoden.
+1. Om du bara vill komma åt värden som lagras direkt i appens konfiguration uppdaterar du `CreateWebHostBuilder` metoden genom att ersätta `config.AddAzureAppConfiguration()` -metoden (detta finns i `Microsoft.Azure.AppConfiguration.AspNetCore` paketet).
 
     > [!IMPORTANT]
     > `CreateHostBuilder` ersätter `CreateWebHostBuilder` i .net Core 3,0.  Välj rätt syntax baserat på din miljö.

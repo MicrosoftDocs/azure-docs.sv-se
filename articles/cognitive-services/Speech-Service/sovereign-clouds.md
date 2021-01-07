@@ -3,77 +3,168 @@ title: Suveräna moln – tal service
 titleSuffix: Azure Cognitive Services
 description: Lär dig hur du använder suveräna moln
 services: cognitive-services
-author: cbasoglu
-manager: xdh
+author: alexeyo26
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 1/14/2020
-ms.author: cbasoglu
-ms.openlocfilehash: b41967033b00144ca5bd52ce23cf8aabcea6749e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: references_regions
+ms.date: 12/26/2020
+ms.author: alexeyo
+ms.openlocfilehash: a1c3fcf868af76865eec9fa2be4f0fdb58074867
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78228083"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964464"
 ---
-# <a name="speech-services-with-sovereign-clouds"></a>Tal tjänster med suveräna moln
+# <a name="speech-services-in-sovereign-clouds"></a>Tal tjänster i suveräna moln
 
 ## <a name="azure-government-united-states"></a>Azure Government (USA)
 
-Endast amerikanska federala, statliga, lokala och stambaserad myndigheter och deras partner har till gång till den här dedikerade instansen med åtgärder som styrs av en kontrollerad USA-medborgare.
-- Regioner: US Gov, Virginia
-- SR i SpeechSDK:*config. FromHost ("WSS://Virginia.stt.Speech.Azure.us", " \<your-key\> ");*
-- TTS i SpeechSDK: *config. FromHost ("https []() ://Virginia.TTS.Speech.Azure.us", " \<your-key\> ");*
-- Autentiseringstoken: https []() ://Virginia.API.Cognitive.Microsoft.us/STS/v1.0/issueToken
-- Azure Portal: https://portal.azure.us  
-- Custom Speech Portal: https://virginia.cris.azure.us/Home/CustomSpeech
-- Tillgängliga SKU: er: S0
-- Funktioner som stöds:
+Endast tillgängligt för amerikanska myndigheter och deras partner. Se mer information om Azure Government [här](../../azure-government/documentation-government-welcome.md) [.](../../azure-government/compare-azure-government-global-azure.md)
+
+- **Azure Portal:**
+  - [https://portal.azure.us/](https://portal.azure.us/)
+- **Områdena**
+  - US Gov, Arizona
+  - US Gov, Virginia
+- **Tillgängliga pris nivåer:**
+  - Kostnads fri (F0) och standard (S0). Se mer information [här](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)
+- **Funktioner som stöds:**
   - Tal till text
-  - Custom Speech (akustisk/språk anpassning)
+    - Anpassad tal (för ljud modell (AM) och språk modell (LM) anpassning)
+      - [Speech Studio](https://speech.azure.us/)
   - Text till tal
   - Tal översättare
-- Funktioner som inte stöds
+- **Funktioner som inte stöds:**
+  - Neurala röst
   - Anpassad röst
-  - Neurala röster för text till tal
-- Språk som stöds: språk för följande språk stöds.
+- **Språk som stöds:**
   - Arabiska (ar-*)
   - Kinesiska (zh-*)
   - Engelska (en-*)
   - Franska (FR-*)
   - Tyska (de-*)
-  - Hindi
-  - Koreanska
-  - Ryska
+  - Hindi (Hi-IN)
+  - Koreanska (ko-KR)
+  - Ryska (ru-RU)
   - Spanska (ES-*)
 
-## <a name="microsoft-azure-china"></a>Microsoft Azure Kina
+### <a name="endpoint-information"></a>Slut punkts information
 
-I Kina är ett Azure-datacenter med direkt åtkomst till Kina, mobil, telekom, Kina, Unicom och andra större stamnät nätverk, för att kinesiska användare ska kunna tillhandahålla snabb och stabil lokal nätverks åtkomst.
-- Regioner: Kina, östra 2 (Shanghai)
-- SR i SpeechSDK: *config. FromHost ("WSS://chinaeast2.stt.Speech.Azure.cn", " \<your-key\> ");*
-- TTS i SpeechSDK:  *config. FromHost ("https []() ://chinaeast2.TTS.Speech.Azure.cn", " \<your-key\> ");*
-- Autentiseringstoken: https []() ://chinaeast2.API.Cognitive.Azure.cn/STS/v1.0/issueToken
-- Azure Portal: https://portal.azure.cn
-- Custom Speech Portal: https://speech.azure.cn/CustomSpeech
-- Tillgängliga SKU: er: S0
-- Funktioner som stöds:
+Det här avsnittet innehåller information om slut punkts information för tal tjänster för användning med [tal-SDK](speech-sdk.md), [tal-till-text-REST API](rest-speech-to-text.md)och [text till tal-REST API](rest-text-to-speech.md).
+
+#### <a name="speech-services-rest-api"></a>Tal tjänster REST API
+
+Tal tjänster REST API slut punkter i Azure Government har följande format:
+
+|  REST API typ/åtgärd | Slut punkts format |
+|--|--|
+| Åtkomsttoken | `https://<REGION_IDENTIFIER>.api.cognitive.microsoft.us/sts/v1.0/issueToken`
+| [Tal till text REST API v 3.0](rest-speech-to-text.md#speech-to-text-rest-api-v30) | `https://<REGION_IDENTIFIER>.api.cognitive.microsoft.us/<URL_PATH>` |
+| [Tal till text REST API för kort ljud](rest-speech-to-text.md#speech-to-text-rest-api-for-short-audio) | `https://<REGION_IDENTIFIER>.stt.speech.azure.us/<URL_PATH>` |
+| [Text-till-tal (REST API)](rest-text-to-speech.md) | `https://<REGION_IDENTIFIER>.tts.speech.azure.us/<URL_PATH>` |
+
+Ersätt `<REGION_IDENTIFIER>` med den identifierare som matchar regionen för din prenumeration från den här tabellen:
+
+|                     | Regions-ID |
+|--|--|
+| **US Gov, Arizona**  | `usgovarizona` |
+| **US Gov, Virginia** | `usgovvirginia` |
+
+#### <a name="speech-sdk"></a>Speech SDK
+
+För tal-SDK i suveräna moln måste du använda en instansiering av `SpeechConfig` klassen eller `--host` alternativet för [tal CLI](spx-overview.md). (Du kan också använda instansiering av "från slut punkt" och `--endpoint` Alternativ för tal CLI).
+
+`SpeechConfig` klassen ska instansieras så här:
+```csharp
+var config = SpeechConfig.FromHost(usGovHost, subscriptionKey);
+```
+Tal-CLI ska användas som detta (Observera `--host` alternativet):
+```dos
+spx recognize --host "usGovHost" --file myaudio.wav
+```
+Ersätt `subscriptionKey` med din tal resurs nyckel. Ersätt `usGovHost` med uttrycket som matchar det obligatoriska tjänst erbjudandet och region för din prenumeration från den här tabellen:
+
+|  Region/tjänst erbjudande | Värd uttryck |
+|--|--|
+| **US Gov, Arizona** | |
+| Tal till text | `wss://usgovarizona.stt.speech.azure.us` |
+| Text till tal | `https://usgovarizona.tts.speech.azure.us` |
+| **US Gov, Virginia** | |
+| Tal till text | `wss://usgovvirginia.stt.speech.azure.us` |
+| Text till tal | `https://usgovvirginia.tts.speech.azure.us` |
+
+
+## <a name="azure-china"></a>Azure Kina
+
+Tillgängligt för organisationer med en affärs närvaro i Kina. Se mer information om Azure Kina [här.](/azure/china/overview-operations) 
+
+
+- **Azure Portal:**
+  - [https://portal.azure.cn/](https://portal.azure.cn/)
+- **Områdena**
+  - Kina, östra 2
+- **Tillgängliga pris nivåer:**
+  - Kostnads fri (F0) och standard (S0). Se mer information [här](https://www.azure.cn/pricing/details/cognitive-services/index.html)
+- **Funktioner som stöds:**
   - Tal till text
-  - Custom Speech (akustisk/språk anpassning)
+    - Anpassad tal (för ljud modell (AM) och språk modell (LM) anpassning)
+      - [Speech Studio](https://speech.azure.cn/)
   - Text till tal
   - Tal översättare
-- Funktioner som inte stöds
+- **Funktioner som inte stöds:**
+  - Neurala röst
   - Anpassad röst
-  - Neurala röster för text till tal
-- Språk som stöds: språk för följande språk stöds.
+- **Språk som stöds:**
   - Arabiska (ar-*)
   - Kinesiska (zh-*)
   - Engelska (en-*)
   - Franska (FR-*)
   - Tyska (de-*)
-  - Hindi
-  - Koreanska
-  - Ryska
+  - Hindi (Hi-IN)
+  - Koreanska (ko-KR)
+  - Ryska (ru-RU)
   - Spanska (ES-*)
 
+### <a name="endpoint-information"></a>Slut punkts information
+
+Det här avsnittet innehåller information om slut punkts information för tal tjänster för användning med [tal-SDK](speech-sdk.md), [tal-till-text-REST API](rest-speech-to-text.md)och [text till tal-REST API](rest-text-to-speech.md).
+
+#### <a name="speech-services-rest-api"></a>Tal tjänster REST API
+
+Tal tjänster REST API slut punkter i Azure Kina har följande format:
+
+|  REST API typ/åtgärd | Slut punkts format |
+|--|--|
+| Åtkomsttoken | `https://<REGION_IDENTIFIER>.api.cognitive.azure.cn/sts/v1.0/issueToken`
+| [Tal till text REST API v 3.0](rest-speech-to-text.md#speech-to-text-rest-api-v30) | `https://<REGION_IDENTIFIER>.api.cognitive.azure.cn/<URL_PATH>` |
+| [Tal till text REST API för kort ljud](rest-speech-to-text.md#speech-to-text-rest-api-for-short-audio) | `https://<REGION_IDENTIFIER>.stt.speech.azure.cn/<URL_PATH>` |
+| [Text-till-tal (REST API)](rest-text-to-speech.md) | `https://<REGION_IDENTIFIER>.tts.speech.azure.cn/<URL_PATH>` |
+
+Ersätt `<REGION_IDENTIFIER>` med den identifierare som matchar regionen för din prenumeration från den här tabellen:
+
+|                     | Regions-ID |
+|--|--|
+| **Kina, östra 2**  | `chinaeast2` |
+
+#### <a name="speech-sdk"></a>Speech SDK
+
+För tal-SDK i suveräna moln måste du använda en instansiering av `SpeechConfig` klassen eller `--host` alternativet för [tal CLI](spx-overview.md). (Du kan också använda instansiering av "från slut punkt" och `--endpoint` Alternativ för tal CLI).
+
+`SpeechConfig` klassen ska instansieras så här:
+```csharp
+var config = SpeechConfig.FromHost(azCnHost, subscriptionKey);
+```
+Tal-CLI ska användas som detta (Observera `--host` alternativet):
+```dos
+spx recognize --host "azCnHost" --file myaudio.wav
+```
+Ersätt `subscriptionKey` med din tal resurs nyckel. Ersätt `azCnHost` med uttrycket som matchar det obligatoriska tjänst erbjudandet och region för din prenumeration från den här tabellen:
+
+|  Region/tjänst erbjudande | Värd uttryck |
+|--|--|
+| **Kina, östra 2** | |
+| Tal till text | `wss://chinaeast2.stt.speech.azure.cn` |
+| Text till tal | `https://chinaeast2.tts.speech.azure.cn` |

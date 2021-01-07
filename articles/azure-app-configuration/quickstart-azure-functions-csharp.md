@@ -8,12 +8,12 @@ ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 09/28/2020
 ms.author: alkemper
-ms.openlocfilehash: 4197891949062123042736e578cfbcc5def4e1f9
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: b5c659a673ece8fd7fbb9566d8bb84201a668a7f
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96930814"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964090"
 ---
 # <a name="quickstart-create-an-azure-functions-app-with-azure-app-configuration"></a>Snabb start: skapa en Azure Functions-app med Azure App konfiguration
 
@@ -44,45 +44,75 @@ I den här snabb starten införlivar du Azure App konfigurations tjänsten i en 
 [!INCLUDE [Create a project using the Azure Functions template](../../includes/functions-vstools-create.md)]
 
 ## <a name="connect-to-an-app-configuration-store"></a>Anslut till ett konfigurations Arkiv för appen
+Det här projektet kommer att använda [beroende inmatning i .net Azure Functions](/azure/azure-functions/functions-dotnet-dependency-injection) och lägga till Azure App konfiguration som en extra konfigurations källa.
 
-1. Högerklicka på projektet och välj **Hantera NuGet-paket**. På fliken **Bläddra** söker du efter och lägger till `Microsoft.Extensions.Configuration.AzureAppConfiguration` NuGet-paketet i projektet. Om du inte hittar det markerar du kryss rutan **Inkludera för hands version** .
+1. Högerklicka på projektet och välj **Hantera NuGet-paket**. På fliken **Bläddra** söker du efter och lägger till följande NuGet-paket i projektet.
+   - [Microsoft.Extensions.Configuration. AzureAppConfiguration](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.AzureAppConfiguration/) version 4.1.0 eller senare
+   - [Microsoft. Azure. functions. Extensions](https://www.nuget.org/packages/Microsoft.Azure.Functions.Extensions/) version 1.1.0 eller senare 
 
-2. Öppna *Function1.cs* och Lägg till namn områdena för .net Core-konfigurationen och konfigurations leverantören för app Configuration.
+2. Lägg till en ny fil, *startup.cs*, med följande kod. Den definierar en klass med namnet `Startup` som implementerar den `FunctionsStartup` abstrakta klassen. Ett Assembly-attribut används för att ange det typ namn som används vid Azure Functions start.
+
+    `ConfigureAppConfiguration`Metoden åsidosätts och Azure App Konfigurationsprovider läggs till som en extra konfigurations källa genom att anropa `AddAzureAppConfiguration()` . `Configure`Metoden lämnas tom eftersom du inte behöver registrera några tjänster i det här läget.
+    
+    ```csharp
+    using System;
+    using Microsoft.Azure.Functions.Extensions.DependencyInjection;
+    using Microsoft.Extensions.Configuration;
+
+    [assembly: FunctionsStartup(typeof(FunctionApp.Startup))]
+
+    namespace FunctionApp
+    {
+        class Startup : FunctionsStartup
+        {
+            public override void ConfigureAppConfiguration(IFunctionsConfigurationBuilder builder)
+            {
+                string cs = Environment.GetEnvironmentVariable("ConnectionString");
+                builder.ConfigurationBuilder.AddAzureAppConfiguration(cs);
+            }
+
+            public override void Configure(IFunctionsHostBuilder builder)
+            {
+            }
+        }
+    }
+    ```
+
+3. Öppna *Function1.cs* och Lägg till följande namnrymd.
 
     ```csharp
     using Microsoft.Extensions.Configuration;
-    using Microsoft.Extensions.Configuration.AzureAppConfiguration;
     ```
 
-3. Lägg till en `static` egenskap med namnet `Configuration` för att skapa en singleton-instans av `IConfiguration` . Lägg sedan till en `static` konstruktor för att ansluta till app-konfigurationen genom att anropa `AddAzureAppConfiguration()` . Konfigurationen läses in en gång när programmet startas. Samma konfigurations instans kommer att användas för alla funktions anrop senare.
+   Lägg till en konstruktor som används för att hämta en instans av `IConfiguration` genom beroende inmatning.
 
     ```csharp
-    private static IConfiguration Configuration { set; get; }
+    private readonly IConfiguration _configuration;
 
-    static Function1()
+    public Function1(IConfiguration configuration)
     {
-        var builder = new ConfigurationBuilder();
-        builder.AddAzureAppConfiguration(Environment.GetEnvironmentVariable("ConnectionString"));
-        Configuration = builder.Build();
+        _configuration = configuration;
     }
     ```
 
 4. Uppdatera `Run` metoden för att läsa värden från konfigurationen.
 
     ```csharp
-    public static async Task<IActionResult> Run(
+    public async Task<IActionResult> Run(
         [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req, ILogger log)
     {
         log.LogInformation("C# HTTP trigger function processed a request.");
 
         string keyName = "TestApp:Settings:Message";
-        string message = Configuration[keyName];
+        string message = _configuration[keyName];
 
         return message != null
             ? (ActionResult)new OkObjectResult(message)
             : new BadRequestObjectResult($"Please create a key-value with the key '{keyName}' in App Configuration.");
     }
     ```
+
+   `Function1`Klassen och `Run` metoden får inte vara statiska. Ta bort `static` modifieraren om den skapades automatiskt.
 
 ## <a name="test-the-function-locally"></a>Testa funktionen lokalt
 
@@ -120,7 +150,7 @@ I den här snabb starten införlivar du Azure App konfigurations tjänsten i en 
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här snabb starten skapade du ett nytt konfigurations Arkiv för appar och använde det med en Azure Functions app via [appens Konfigurationsprovider](/dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration). Fortsätt till nästa självstudie om du vill veta hur du konfigurerar din Azure Functions-app för att dynamiskt uppdatera konfigurations inställningar.
+I den här snabb starten skapade du ett nytt konfigurations Arkiv för appar och använde det med en Azure Functions app via [appens Konfigurationsprovider](/dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration). Fortsätt till nästa självstudie om du vill veta hur du uppdaterar din Azure Functions-app för att dynamiskt uppdatera konfigurationen.
 
 > [!div class="nextstepaction"]
-> [Aktivera dynamisk konfiguration](./enable-dynamic-configuration-azure-functions-csharp.md)
+> [Aktivera dynamisk konfiguration i Azure Functions](./enable-dynamic-configuration-azure-functions-csharp.md)

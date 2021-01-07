@@ -3,16 +3,16 @@ title: Utdata i mallar
 description: Beskriver hur du definierar utdataparametrar i en Azure Resource Manager-mall (ARM-mall).
 ms.topic: conceptual
 ms.date: 11/24/2020
-ms.openlocfilehash: 9e4ac134e9c1864bca8dd56c3a6e2311d0328d7d
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: f8f13b6caf063cea79dc71775fb936f406a3ee6c
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97934738"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964022"
 ---
 # <a name="outputs-in-arm-templates"></a>Utdata i ARM-mallar
 
-I den här artikeln beskrivs hur du definierar utdataparametrar i Azure Resource Manager mall (ARM-mall). Du använder utdata när du behöver returnera värden från de distribuerade resurserna.
+I den här artikeln beskrivs hur du definierar utdataparametrar i Azure Resource Manager mall (ARM-mall). Du använder `outputs` när du behöver returnera värden från de distribuerade resurserna.
 
 Formatet för varje utmatnings värde måste matcha en av [data typerna](template-syntax.md#data-types).
 
@@ -31,7 +31,7 @@ I följande exempel visas hur du returnerar resurs-ID för en offentlig IP-adres
 
 ## <a name="conditional-output"></a>Villkorliga utdata
 
-I avsnittet utdata kan du villkorligt returnera ett värde. Normalt använder du villkor i utdata när du har [villkorligt distribuerat](conditional-resource-deployment.md) en resurs. I följande exempel visas hur du villkorligt returnerar resurs-ID: t för en offentlig IP-adress baserat på om en ny har distribuerats:
+I `outputs` avsnittet kan du villkorligt returnera ett värde. Normalt använder du `condition` i `outputs` när du har [villkorligt distribuerat](conditional-resource-deployment.md) en resurs. I följande exempel visas hur du villkorligt returnerar resurs-ID: t för en offentlig IP-adress baserat på om en ny har distribuerats:
 
 ```json
 "outputs": {

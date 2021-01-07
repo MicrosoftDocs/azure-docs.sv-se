@@ -15,12 +15,12 @@ ms.date: 11/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: devx-track-azurecli, devx-track-azurepowershell, contperf-fy21q2
-ms.openlocfilehash: e7a8f54abbadb63c870c4d92843699c67f59752c
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 393d0c69201f87ad7c96bd2f9a1f9f57df512e31
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505638"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964532"
 ---
 # <a name="register-sql-server-vm-with-sql-iaas-agent-extension"></a>Registrera SQL Server VM med SQL IaaS agent-tillägg
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -189,6 +189,9 @@ $sqlvm.SqlManagementType
 
 SQL Server virtuella datorer som har registrerat tillägget i *lättviktigt* läge kan uppgradera till _full_ användning med Azure Portal, Azure CLI eller Azure PowerShell. SQL Server virtuella datorer i _Noagent_ -läge kan uppgraderas till _full_ efter att operativ systemet har uppgraderats till Windows 2008 R2 och senare. Det går inte att nedgradera – om du vill göra det måste du [avregistrera](#unregister-from-extension) SQL Server VM från SQL IaaS agent-tillägget. Om du gör det tas den **virtuella SQL-datorns** _resurs_ bort, men den faktiska virtuella datorn tas inte bort. 
 
+> [!NOTE]
+> När du uppgraderar hanterings läget för SQL IaaS-tillägget till full startar det om SQL Server tjänsten. I vissa fall kan omstarten orsaka att tjänstens huvud namn (SPN) som är associerade med SQL Server-tjänsten ändras till fel användar konto. Om du har problem med anslutningen när du har uppgraderat hanterings läget till fullständig [avregistrerar du och omregistrerar dina SPN](/sql/database-engine/configure-windows/register-a-service-principal-name-for-kerberos-connections).
+
 
 ### <a name="azure-portal"></a>Azure Portal
 
@@ -279,7 +282,7 @@ Att avregistrera den virtuella SQL-datorn med agent tillägget för SQL IaaS kr�
 
 Följ dessa steg om du vill avregistrera SQL Server VM från tillägget med hjälp av Azure Portal:
 
-1. Logga in på [Azure Portal](https://portal.azure.com).
+1. Logga in på [Azure-portalen](https://portal.azure.com).
 1. Navigera till den virtuella SQL-resursen. 
   
    ![Resurs för virtuella SQL-datorer](./media/sql-agent-extension-manually-register-single-vm/sql-vm-manage.png)

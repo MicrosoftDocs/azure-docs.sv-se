@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to create a Network Virtual Appliance (NVA) in my Virtual WAN hub.
-ms.openlocfilehash: 0e174f9b78606e0bea5cded3a176f4207745bb5c
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 7a52d3971e4ec0cb8ec104a57ba7fb4057c23b72
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92077311"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964651"
 ---
 # <a name="how-to-create-a-network-virtual-appliance-in-an-azure-virtual-wan-hub-preview"></a>Så här skapar du en virtuell nätverks installation i Azure Virtual WAN Hub (för hands version)
 
@@ -21,10 +21,10 @@ Den här artikeln visar hur du använder Virtual WAN för att ansluta till dina 
 
 Stegen i den här artikeln hjälper dig att skapa en virtuell **Barracuda CLOUDGEN WAN** -nätverk i den virtuella WAN-hubben. För att slutföra den här övningen måste du ha en Barracuda-lokal enhet (CPE) och en licens för Barracuda CloudGen WAN-installationen som du distribuerar till hubben innan du börjar.
 
-För distributions dokumentation för **Cisco SD-WAN** i Azure Virtual WAN, skickar du ett e-postmeddelande till Cisco vid följande e-post adress: vwan_public_preview@external.cisco.com
+Distributions dokumentation för **Cisco SD-WAN** i Azure Virtual WAN finns i [Cisco Cloud bearbetar för flera moln](https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/cloudonramp/ios-xe-17/cloud-onramp-book-xe/cloud-onramp-multi-cloud.html#Cisco_Concept.dita_c61e0e7a-fff8-4080-afee-47b81e8df701). Om du vill registrera ditt konto och få de Cisco-SD-WAN-licenser som krävs skickar du e-post till Cisco på följande e-post adress: vwan_public_preview@external.cisco.com
 
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Kontrollera att du har uppfyllt följande villkor innan du påbörjar konfigurationen:
 
@@ -49,13 +49,13 @@ En hubb är ett virtuellt nätverk som kan innehålla gatewayer för plats-till-
 1. Leta upp det virtuella WAN-nätverket som du har skapat. På sidan **virtuellt WAN** , under avsnittet **anslutning** , väljer du **hubbar**.
 1. På sidan **hubbar** väljer du + ny hubb för att öppna sidan **Skapa virtuell hubb** .
 
-   :::image type="content" source="./media/how-to-nva-hub/vwan-hub.png" alt-text="Grundläggande inställningar":::
+   :::image type="content" source="./media/how-to-nva-hub/vwan-hub.png" alt-text="Grunder":::
 1. Fyll i följande fält på fliken **grundläggande grunder** på sidan **Skapa virtuell hubb** :
 
    **Projektinformation**
 
    * Region (tidigare kallad plats)
-   * Name
+   * Namn
    * NAV, privat adress utrymme. Det minsta adress utrymmet är/24 för att skapa en hubb, vilket innebär att allt mellan/25 och/32 genererar ett fel när det skapas. Azure Virtual WAN, som en hanterad tjänst av Microsoft, skapar lämpliga undernät i den virtuella hubben för de olika gatewayerna/tjänsterna. (Till exempel: virtuella nätverks enheter, VPN-gatewayer, ExpressRoute-gatewayer, användares VPN-och punkt-till-plats-gatewayer, brand vägg, routning osv.). Användaren behöver inte uttryckligen planera för under nätets adress utrymme för tjänsterna i det virtuella navet eftersom Microsoft gör detta som en del av tjänsten.
 1. Välj **Granska + skapa** för att validera.
 1. Välj **skapa** för att skapa hubben.
@@ -66,14 +66,14 @@ I det här steget ska du skapa en virtuell nätverks installation i hubben. Proc
 
 1. Leta upp den virtuella WAN-hubb som du skapade i föregående steg och öppna det.
 
-   :::image type="content" source="./media/how-to-nva-hub/nva-hub.png" alt-text="Grundläggande inställningar":::
+   :::image type="content" source="./media/how-to-nva-hub/nva-hub.png" alt-text="Virtuell hubb":::
 1. Leta upp panelen nätverks virtuella enheter och välj länken **skapa** .
-1. På bladet **virtuell nätverks** installation väljer du **Barracuda CloudGen WAN**och väljer sedan knappen **skapa** .
+1. På bladet **virtuell nätverks** installation väljer du **Barracuda CloudGen WAN** och väljer sedan knappen **skapa** .
 
-   :::image type="content" source="./media/how-to-nva-hub/select-nva.png" alt-text="Grundläggande inställningar":::
+   :::image type="content" source="./media/how-to-nva-hub/select-nva.png" alt-text="Välj NVA":::
 1. Detta tar dig till Azure Marketplace-erbjudandet för Barracuda CloudGen WAN Gateway. Läs villkoren och välj sedan knappen **skapa** när du är klar.
 
-   :::image type="content" source="./media/how-to-nva-hub/barracuda-create-basics.png" alt-text="Grundläggande inställningar":::
+   :::image type="content" source="./media/how-to-nva-hub/barracuda-create-basics.png" alt-text="Barracuda NVA-grunder":::
 1. På sidan **grundläggande** måste du ange följande information:
 
    * **Prenumeration** – Välj den prenumeration som du använde för att distribuera det virtuella WAN-nätverket och hubben.
@@ -83,7 +83,7 @@ I det här steget ska du skapa en virtuell nätverks installation i hubben. Proc
    * **Hanterad resurs grupp** – det här är namnet på den hanterade resurs grupp där Barracuda ska distribuera resurser som hanteras av dem. Namnet måste vara ifyllt för detta.
 1. Välj **Nästa: CLOUDGEN WAN Gateway** -knapp.
 
-   :::image type="content" source="./media/how-to-nva-hub/barracuda-cloudgen-wan.png" alt-text="Grundläggande inställningar":::
+   :::image type="content" source="./media/how-to-nva-hub/barracuda-cloudgen-wan.png" alt-text="CloudGen WAN-Gateway":::
 1. Ange följande information:
 
    * **Virtuell WAN-hubb** – den virtuella WAN-hubb som du vill distribuera NVA till.
