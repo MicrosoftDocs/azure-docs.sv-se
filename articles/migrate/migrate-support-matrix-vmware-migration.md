@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 6e80b1446142786cbd77245a2b6696cac1bb9272
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: b263d3e62ae97914fc8e06580486bddd0cb9b3b7
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97897101"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968457"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>Stödmatris för VMware-migrering
 
@@ -44,7 +44,7 @@ I tabellen sammanfattas VMware hypervisor-krav.
 --- | ---
 **VMware vCenter Server** | Version 5,5, 6,0, 6,5, 6,7, 7,0.
 **VMware vSphere ESXI-värd** | Version 5,5, 6,0, 6,5, 6,7, 7,0.
-**vCenter Server behörigheter** | [Vid utan agent används migreringen](migrate-appliance.md). Installationen behöver följande behörigheter i vCenter Server:<br/><br/> - **Data lager. browse** (data lager > bläddra i data lager): Tillåt bläddring av VM-loggfiler för att felsöka skapande och borttagning av ögonblicks bilder.<br/><br/> - **Data lager. FileManagement** (data lager > lågnivå fil åtgärder): Tillåt Läs-/skriv-/ta bort/ta bort/Byt namn på åtgärder i data lagret för att felsöka skapande och borttagning av ögonblicks bilder.<br/><br/> - **VirtualMachine.Config. ChangeTracking** (virtuell dator – > disk ändrings spårning): Tillåt aktivering eller inaktive ring av ändrings spårning av virtuella dator diskar för att hämta ändrade block med data mellan ögonblicks bilder.<br/><br/> - **VirtualMachine.Config. DiskLease** (virtuell dator-> disk Lease): Tillåt disk låne åtgärder för en virtuell dator för att läsa disken med hjälp av VMware vSphere Virtual Disk Development Kit (vddk).<br/><br/> - **VirtualMachine. Provisioning. DiskAccess**: (specifikt för vSphere 6,0 och senare) gör att du kan öppna en disk på en virtuell dator för slumpmässig Läs åtkomst på disken med hjälp av vddk.<br/><br/> - **VirtualMachine. etablering. DiskRandomRead** (virtuell dator-> etablering-> Tillåt skrivskyddad disk åtkomst): Tillåt att en disk öppnas på en virtuell dator för att läsa disken med hjälp av vddk.<br/><br/> - **VirtualMachine. etablering. DiskRandomAccess** (virtuell dator-> etablering-> Tillåt disk åtkomst): Tillåt att en disk öppnas på en virtuell dator för att läsa disken med hjälp av vddk.<br/><br/> - **VirtualMachine. Provisioning. GetVmFiles** (virtuell dator-> etablering-> Tillåt hämtning av virtuell dator): tillåter Läs åtgärder på filer som är associerade med en virtuell dator, för att ladda ned loggarna och felsöka om det uppstår fel.<br/><br/> - **VirtualMachine. State. \* *_ (Virtuell dator-> ögonblicks bilds hantering): Tillåt skapande och hantering av VM-ögonblicksbilder för replikering. <br/> <br/> -_* VirtualMachine. interagera. avstängnings läge** (virtuell dator-> interaktion-> avstängning): Tillåt att den virtuella datorn stängs av under migreringen till Azure.
+**vCenter Server behörigheter** | [Vid utan agent används migreringen](migrate-appliance.md). Installationen behöver följande behörigheter i vCenter Server:<br/><br/> - **Data lager. browse** (data lager > bläddra i data lager): Tillåt bläddring av VM-loggfiler för att felsöka skapande och borttagning av ögonblicks bilder.<br/><br/> - **Data lager. FileManagement** (data lager > lågnivå fil åtgärder): Tillåt Läs-/skriv-/ta bort/ta bort/Byt namn på åtgärder i data lagret för att felsöka skapande och borttagning av ögonblicks bilder.<br/><br/> - **VirtualMachine.Config. ChangeTracking** (virtuell dator – > disk ändrings spårning): Tillåt aktivering eller inaktive ring av ändrings spårning av virtuella dator diskar för att hämta ändrade block med data mellan ögonblicks bilder.<br/><br/> - **VirtualMachine.Config. DiskLease** (virtuell dator-> disk Lease): Tillåt disk låne åtgärder för en virtuell dator för att läsa disken med hjälp av VMware vSphere Virtual Disk Development Kit (vddk).<br/><br/> - **VirtualMachine. etablering. DiskRandomRead** (virtuell dator-> etablering-> Tillåt skrivskyddad disk åtkomst): Tillåt att en disk öppnas på en virtuell dator för att läsa disken med hjälp av vddk.<br/><br/> - **VirtualMachine. etablering. DiskRandomAccess** (virtuell dator-> etablering-> Tillåt disk åtkomst): Tillåt att en disk öppnas på en virtuell dator för att läsa disken med hjälp av vddk.<br/><br/> - **VirtualMachine. Provisioning. GetVmFiles** (virtuell dator-> etablering-> Tillåt hämtning av virtuell dator): tillåter Läs åtgärder på filer som är associerade med en virtuell dator, för att ladda ned loggarna och felsöka om det uppstår fel.<br/><br/> - **VirtualMachine. State. \* *_ (Virtuell dator-> ögonblicks bilds hantering): Tillåt skapande och hantering av VM-ögonblicksbilder för replikering. <br/> <br/> -_* VirtualMachine. interagera. avstängnings läge** (virtuell dator-> interaktion-> avstängning): Tillåt att den virtuella datorn stängs av under migreringen till Azure.
 
 
 

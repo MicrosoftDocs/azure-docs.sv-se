@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 12/09/2020
-ms.openlocfilehash: d22d040b0001ee30e29c551e686a7cb6bc47c2af
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.date: 01/07/2021
+ms.openlocfilehash: ee6105376f5e8dc884f13e04db51126c039328e9
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96921922"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968899"
 ---
 # <a name="troubleshoot-copy-activity-performance"></a>Felsöka prestanda för kopierings aktivitet
 
@@ -142,7 +142,7 @@ Om kopierings prestandan inte motsvarar förväntad fel sökning av en enskild k
 
   - Kontrol lera den självbetjänings-och minnes användnings trenden i Azure Portal > din Data Factory-> översikts sida. Överväg att [skala upp/ut IR](create-self-hosted-integration-runtime.md#high-availability-and-scalability) om processor användningen är hög eller tillgängligt minne är lågt.
 
-  - Använd bästa praxis för anslutnings data inläsning om detta gäller. Exempel:
+  - Använd bästa praxis för anslutnings data inläsning om detta gäller. Ett exempel:
 
     - När du kopierar data från [Oracle](connector-oracle.md#oracle-as-source), [Netezza](connector-netezza.md#netezza-as-source), [Teradata](connector-teradata.md#teradata-as-source), [SAP HANA](connector-sap-hana.md#sap-hana-as-source), [SAP Table](connector-sap-table.md#sap-table-as-source)och [SAP Open Hub](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source)) aktiverar du alternativ för datapartitioner för att kopiera data parallellt.
 
@@ -172,6 +172,60 @@ Om kopierings prestandan inte motsvarar förväntad fel sökning av en enskild k
 
   - Överväg att gradvis justera de [parallella kopiorna](copy-activity-performance-features.md), Observera att för många parallella kopior kan till och med försämra prestandan.
 
+
+## <a name="connector-and-ir-performance"></a>Anslutnings-och IR-prestanda
+
+I det här avsnittet beskrivs vissa prestanda fel söknings guider för specifika anslutnings typer eller integrerings körningar.
+
+### <a name="activity-execution-time-varies-using-azure-ir-vs-azure-vnet-ir"></a>Aktivitets körnings tiden varierar beroende på Azure IR vs Azure VNet IR
+
+Aktivitetens körnings tid varierar när data uppsättningen baseras på olika Integration Runtime.
+
+- **Symptom**: du behöver bara växla den länkade tjänstens listruta i data uppsättningen utför samma pipeline-aktiviteter, men har drastiskt olika körnings tider. När data uppsättningen baseras på den hanterade Virtual Network Integration Runtime, tar det mer än två minuter att slutföra körningen, men det tar cirka 20 sekunder att slutföra när den baseras på standard Integration Runtime.
+
+- **Orsak**: om du kontrollerar information om pipeline-körningar kan du se att den långsamma pipelinen körs på Managed VNet (Virtual Network) IR medan den normala körningen körs på Azure IR. Enligt design tar hanterade VNet-IR längre tid än Azure IR eftersom vi inte reserverar en Compute-nod per data fabrik, så att det finns en varm fördröjning på 2 minuter för varje kopierings aktivitet som ska starta, och det inträffar främst i VNet-anslutning i stället för Azure IR.
+
+    
+### <a name="low-performance-when-loading-data-into-azure-sql-database"></a>Låg prestanda vid inläsning av data i Azure SQL Database
+
+- **Symptom**: kopiering av data i till Azure SQL Database blir långsam.
+
+- **Orsak**: den grundläggande orsaken till problemet utlöses oftast av flask halsen för Azure SQL Database sida. Här följer några möjliga orsaker:
+
+    - Azure SQL Database nivån är inte tillräckligt hög.
+
+    - Azure SQL Database DTU-användningen är nära 100%. Du kan [övervaka prestanda](https://docs.microsoft.com/azure/azure-sql/database/monitor-tune-overview) och överväga att uppgradera Azure SQL Database nivån.
+
+    - Indexen har inte angetts korrekt. Ta bort alla index innan data inläsningen och återskapa dem när belastningen är klar.
+
+    - WriteBatchSize är inte tillräckligt stor för att rymma schema rad storleken. Försök att förstora egenskapen för problemet.
+
+    - I stället för Mass indrag används den lagrade proceduren, vilket förväntas ha sämre prestanda. 
+
+- **Lösning**: se [fel sökning av prestanda för kopierings aktivitet](https://docs.microsoft.com/azure/data-factory/copy-activity-performance-troubleshooting).
+
+### <a name="timeout-or-slow-performance-when-parsing-large-excel-file"></a>Tids gräns eller dåliga prestanda vid parsning av stor Excel-fil
+
+- **Symptom**:
+
+    - När du skapar Excel-datauppsättningen och importera schema från anslutning/butik, förhandsgranska data, lista eller uppdatera kalkyl blad, kan du trycka på timeout-fel om Excel-filen är stor i storlek.
+
+    - När du använder kopierings aktivitet för att kopiera data från en stor Excel-fil (>= 100 MB) till ett annat data lager kan det uppstå problem med långsam prestanda eller OOM.
+
+- **Orsak**: 
+
+    - För åtgärder som att importera schema, för hands Visa data och lista kalkyl blad på Excel-datauppsättning, är timeout-värdet 100 s och static. För stor Excel-fil kan de här åtgärderna inte slutföras inom timeout-värdet.
+
+    - ADF Copy-aktiviteten läser hela Excel-filen i minnet och letar sedan upp det angivna kalkyl bladet och cellerna för att läsa data. Detta beror på att de underliggande SDK: er för SDK används.
+
+- **Lösning**: 
+
+    - När du importerar schema kan du generera en mindre exempel fil, som är en del av original filen och välja importera schema från exempel fil i stället för "Importera schema från anslutning/butik".
+
+    - För List kalkyl bladet, i list rutan kalkyl blad, kan du klicka på "redigera" och ange bladets namn/index i stället.
+
+    - Om du vill kopiera en stor Excel-fil (>100 MB) till en annan lagrings plats kan du använda Excel-källan Data Flow som sport-direktuppspelning och fungerar bättre.
+    
 ## <a name="other-references"></a>Andra referenser
 
 Här är prestanda övervakning och justering av referenser för några av de data lager som stöds:

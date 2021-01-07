@@ -4,12 +4,12 @@ description: Lär dig hur du skapar en python-funktion och sedan publicerar det 
 ms.topic: quickstart
 ms.date: 11/04/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 4d37acfddeb5f5b6220e7082e729a7d6e6dfe66b
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 9e4ddc479b0adcb88e846b92e6603dfdf3c99baa
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542430"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97967998"
 ---
 # <a name="quickstart-create-a-function-in-azure-with-python-using-visual-studio-code"></a>Snabb start: skapa en funktion i Azure med python med hjälp av Visual Studio Code
 
@@ -27,8 +27,7 @@ Innan du börjar bör du kontrol lera att du har följande krav på plats:
 
 + Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-+ [Node.js](https://nodejs.org/)som krävs av Windows för NPM. Endast [aktiva LTS-och underhålls LTS-versioner](https://nodejs.org/about/releases/). Använd `node --version` kommandot för att kontrol lera din version.
-    Krävs inte för lokal utveckling på macOS och Linux.
++ [Azure Functions Core tools](functions-run-local.md#install-the-azure-functions-core-tools) version 3. x.
 
 + [Python 3,8](https://www.python.org/downloads/release/python-381/), [python 3,7](https://www.python.org/downloads/release/python-375/), [python 3,6](https://www.python.org/downloads/release/python-368/) stöds av Azure Functions (x64).
 
@@ -53,17 +52,17 @@ I det här avsnittet använder du Visual Studio Code för att skapa ett lokalt A
 
 1. Ange följande information i prompten:
 
-    + **Välj ett språk för ditt funktions projekt** : Välj `Python` .
+    + **Välj ett språk för ditt funktions projekt**: Välj `Python` .
 
-    + **Välj ett python-alias för att skapa en virtuell miljö** : Välj platsen för din python-tolk. Om platsen inte visas anger du den fullständiga sökvägen till din python-binärfil.  
+    + **Välj ett python-alias för att skapa en virtuell miljö**: Välj platsen för din python-tolk. Om platsen inte visas anger du den fullständiga sökvägen till din python-binärfil.  
 
-    + **Välj en mall för projektets första funktion** : Välj `HTTP trigger` .
+    + **Välj en mall för projektets första funktion**: Välj `HTTP trigger` .
 
-    + **Ange ett funktions namn** : typ `HttpExample` .
+    + **Ange ett funktions namn**: typ `HttpExample` .
 
-    + **Autentiseringsnivå** : Välj `Anonymous` , vilket gör att vem som helst kan anropa funktions slut punkten. Mer information om autentiseringsnivå finns i [Authorization Keys](functions-bindings-http-webhook-trigger.md#authorization-keys).
+    + **Autentiseringsnivå**: Välj `Anonymous` , vilket gör att vem som helst kan anropa funktions slut punkten. Mer information om autentiseringsnivå finns i [Authorization Keys](functions-bindings-http-webhook-trigger.md#authorization-keys).
 
-    + **Välj hur du vill öppna projektet** : Välj `Add to workspace` .
+    + **Välj hur du vill öppna projektet**: Välj `Add to workspace` .
 
 1. Med hjälp av den här informationen genererar Visual Studio Code ett Azure Functions-projekt med en HTTP-utlösare. Du kan visa de lokala projektfilerna i Utforskaren. Mer information om filer som skapas finns i [genererade projektfiler](functions-develop-vs-code.md#generated-project-files).
 
@@ -82,21 +81,21 @@ I det här avsnittet ska du skapa en Function-app och relaterade resurser i din 
 
 1. Välj Azure-ikonen i aktivitets fältet och välj sedan knappen **distribuera till Function-appen** i avsnittet **Azure:** functions.
 
-    ![Publicera ditt projekt till Azure](./media/functions-create-first-function-vs-code/function-app-publish-project.png)
+    ![Publicera projektet till Azure](./media/functions-create-first-function-vs-code/function-app-publish-project.png)
 
 1. Ange följande information i prompten:
 
-    + **Välj mapp** : Välj en mapp från din arbets yta eller bläddra till en mapp som innehåller din Function-app. Du ser inte det här om du redan har en giltig Function-app öppen.
+    + **Välj mapp**: Välj en mapp från din arbets yta eller bläddra till en mapp som innehåller din Function-app. Du ser inte det här om du redan har en giltig Function-app öppen.
 
-    + **Välj prenumeration** : Välj den prenumeration som ska användas. Du ser inte det här om du bara har en prenumeration.
+    + **Välj prenumeration**: Välj den prenumeration som ska användas. Du ser inte det här om du bara har en prenumeration.
 
-    + **Välj Funktionsapp i Azure** : Välj `+ Create new Function App` . (Välj inte `Advanced` alternativet, som inte beskrivs i den här artikeln.)
+    + **Välj Funktionsapp i Azure**: Välj `+ Create new Function App` . (Välj inte `Advanced` alternativet, som inte beskrivs i den här artikeln.)
 
-    + **Ange ett globalt unikt namn för Function-appen** : Ange ett namn som är giltigt i en URL-sökväg. Namnet du skriver verifieras för att säkerställa att det är unikt i Azure Functions. 
+    + **Ange ett globalt unikt namn för Function-appen**: Ange ett namn som är giltigt i en URL-sökväg. Namnet du skriver verifieras för att säkerställa att det är unikt i Azure Functions. 
 
-    + **Välj en körning** : Välj den version av python som du har kört lokalt. Du kan `python --version` kontrol lera din version med hjälp av kommandot.
+    + **Välj en körning**: Välj den version av python som du har kört lokalt. Du kan `python --version` kontrol lera din version med hjälp av kommandot.
 
-    + **Välj en plats för nya resurser** : om du vill ha bättre prestanda väljer du en [region](https://azure.microsoft.com/regions/) nära dig.
+    + **Välj en plats för nya resurser**: om du vill ha bättre prestanda väljer du en [region](https://azure.microsoft.com/regions/) nära dig.
 
 1. När det är slutfört skapas följande Azure-resurser i din prenumeration med hjälp av namn baserat på ditt funktions program namn:
 

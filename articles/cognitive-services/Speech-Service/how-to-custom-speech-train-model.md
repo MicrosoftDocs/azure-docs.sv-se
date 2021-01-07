@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/11/2020
 ms.author: trbye
-ms.openlocfilehash: a7227195c767d90141a9b6cd95f784c239a31fd5
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: 41fdb3d2e69ae39dbe80f21a953fd9fdaa6d1127
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955203"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968474"
 ---
 # <a name="train-and-deploy-a-custom-speech-model"></a>Träna och distribuera en Custom Speech-modell
 
@@ -35,12 +35,12 @@ Om du stöter på igenkännings problem med en bas modell kan du använda medmä
 
 Det första steget för att träna en modell är att överföra tränings data. Se [förbereda och testa dina data](./how-to-custom-speech-test-and-train.md) för steg-för-steg-instruktioner för att förbereda medmärkta avskrifter och relaterad text (yttranden och uttal). När du har överfört tränings data följer du de här anvisningarna för att börja träna din modell:
 
-1. Logga in på [Custom Speech Portal](https://speech.microsoft.com/customspeech).
+1. Logga in på [Custom Speech Portal](https://speech.microsoft.com/customspeech). Om du planerar att träna en modell med ljud och data uppsättningar med Human-märkta avskrifter väljer du en tal prenumeration i en [region med dedikerad maskin vara](custom-speech-overview.md#set-up-your-azure-account) för utbildning.
 2. Gå till **tal-till-text**  >  **Custom Speech**  >  **[Name of Project]**  >  **Training**.
 3. Välj **träna modell**.
 4. Ge din utbildning ett **namn** och en **Beskrivning**.
 5. I listan **scenario och bas linje modell** väljer du det scenario som passar din domän bäst. Om du inte är säker på vilket scenario du väljer väljer du **Allmänt**. Bas linje modellen är start punkten för utbildning. Den senaste modellen är vanligt vis det bästa valet.
-6. På sidan **Välj tränings data** väljer du en eller flera ljud-och data uppsättningar med mänsklig etikett som du vill använda för utbildning.
+6. På sidan **Välj tränings data** väljer du en eller flera relaterade text data uppsättningar eller ljud och data uppsättningar med mänskligt avskrifter som du vill använda för utbildning. När du tränar en ny modell börjar du med relaterad text. utbildning med ljud och mänsklig avskrift kan ta mycket längre tid (upp till [flera dagar](how-to-custom-speech-evaluate-data.md#improve-model-recognition)).
 7. När träningen är klar kan du göra en precisions testning för den nytränade modellen. Det här är valfritt.
 8. Välj **skapa** för att skapa din anpassade modell.
 

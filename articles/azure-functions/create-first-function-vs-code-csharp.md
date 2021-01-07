@@ -4,12 +4,12 @@ description: Lär dig hur du skapar en C#-funktion och sedan publicerar det loka
 ms.topic: quickstart
 ms.date: 11/03/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 444dff214a70a47ced127a3ca2533c20ea2a779a
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 791416a54fa75091facf1f7bc2aadf6fccf54b05
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93425138"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968627"
 ---
 # <a name="quickstart-create-a-c-function-in-azure-using-visual-studio-code"></a>Snabb start: skapa en C#-funktion i Azure med Visual Studio Code
 
@@ -27,8 +27,7 @@ Innan du börjar bör du kontrol lera att du har följande krav på plats:
 
 + Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-+ [Node.js](https://nodejs.org/)som krävs av Windows för NPM. Endast [aktiva LTS-och underhålls LTS-versioner](https://nodejs.org/about/releases/). Använd `node --version` kommandot för att kontrol lera din version.
-    Krävs inte för lokal utveckling på macOS och Linux.
++ [Azure Functions Core tools](functions-run-local.md#install-the-azure-functions-core-tools) version 3. x.
 
 + [Visual Studio Code](https://code.visualstudio.com/) på en av de [plattformar som stöds](https://code.visualstudio.com/docs/supporting/requirements#_platforms).
 
@@ -51,17 +50,17 @@ I det här avsnittet använder du Visual Studio Code för att skapa ett lokalt A
 
 1. Ange följande information i prompten:
 
-    + **Välj ett språk för ditt funktions projekt** : Välj `C#` .
+    + **Välj ett språk för ditt funktions projekt**: Välj `C#` .
 
-    + **Välj en mall för projektets första funktion** : Välj `HTTP trigger` .
+    + **Välj en mall för projektets första funktion**: Välj `HTTP trigger` .
 
-    + **Ange ett funktions namn** : typ `HttpExample` .
+    + **Ange ett funktions namn**: typ `HttpExample` .
 
-    + **Ange ett namn område** : typ `My.Functions` .
+    + **Ange ett namn område**: typ `My.Functions` .
 
-    + **Autentiseringsnivå** : Välj `Anonymous` , vilket gör att vem som helst kan anropa funktions slut punkten. Mer information om autentiseringsnivå finns i [Authorization Keys](functions-bindings-http-webhook-trigger.md#authorization-keys).
+    + **Autentiseringsnivå**: Välj `Anonymous` , vilket gör att vem som helst kan anropa funktions slut punkten. Mer information om autentiseringsnivå finns i [Authorization Keys](functions-bindings-http-webhook-trigger.md#authorization-keys).
 
-    + **Välj hur du vill öppna projektet** : Välj `Add to workspace` .
+    + **Välj hur du vill öppna projektet**: Välj `Add to workspace` .
 
 1. Med hjälp av den här informationen genererar Visual Studio Code ett Azure Functions-projekt med en HTTP-utlösare. Du kan visa de lokala projektfilerna i Utforskaren. Mer information om filer som skapas finns i [genererade projektfiler](functions-develop-vs-code.md#generated-project-files).
 

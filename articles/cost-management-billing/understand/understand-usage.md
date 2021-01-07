@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 01/04/2021
 ms.author: banders
-ms.openlocfilehash: 559fe43bbd9b8951a97733ae1250046f65f10404
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 07e3cfdce238d5fc4e2737a49dde6fd624de8506
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92149353"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882508"
 ---
 # <a name="understand-the-terms-in-your-azure-usage-and-charges-file"></a>Förstå villkoren i filen för din Azure-användning och dina avgifter
 
@@ -126,10 +126,24 @@ UsageDate | Datum
 UsageEnd | Datum
 UsageStart | Datum
 
-
 ## <a name="ensure-charges-are-correct"></a>Se till att avgifterna är korrekta
 
 Om du vill veta mer om detaljerad användning och avgifter kan du läsa om hur du förstår din faktura för [Betala per användning](review-individual-bill.md) eller [Microsoft-kundavtal](review-customer-agreement-bill.md).
+
+## <a name="unexpected-usage-or-charges"></a>Oväntad användning eller oväntade avgifter
+
+Om du har användning eller avgifter som du inte känner igen finns det flera saker du kan göra för att förstå varför:
+
+- Granska fakturan som har avgifter för resursen
+- Granska dina fakturerade avgifter i Kostnadsanalys
+- Hitta de personer som ansvarar för resursen och samarbeta med dem
+- Analysera spårningsloggarna
+- Analysera användarbehörigheter till resursens överordnade omfång
+- Skapa en [Azure-supportbegäran](https://go.microsoft.com/fwlink/?linkid=2083458) för att hjälpa till att identifiera avgifterna
+
+Mer information finns i [Analysera oväntade avgifter](analyze-unexpected-charges.md).
+
+Observera att Azure inte loggar de flesta användaråtgärder. Microsoft loggar i stället resursanvändning för fakturering. Om du märker en tidigare användningsökning och inte hade loggning aktiverad kan Microsoft inte hitta orsaken. Aktivera loggning för den tjänst som du vill visa den ökade användningen för så att rätt tekniska team kan hjälpa dig med problemet.
 
 ## <a name="need-help-contact-us"></a>Behöver du hjälp? Kontakta oss.
 

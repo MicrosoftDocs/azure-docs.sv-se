@@ -5,16 +5,16 @@ services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 12/30/2020
+ms.date: 01/07/2021
 ms.author: jingwang
 ms.reviewer: craigg
 ms.custom: has-adal-ref
-ms.openlocfilehash: e6591762ed6a7e2b462a209730276f3198d86ae8
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: 68547b8fb673cd54b7c21963ede122553bbbc390
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97821476"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97967131"
 ---
 # <a name="troubleshoot-azure-data-factory-connectors"></a>Felsöka Azure Data Factory-anslutningsprogram
 
@@ -458,34 +458,15 @@ Den här artikeln visar vanliga fel söknings metoder för anslutningar i Azure 
 - **Orsak**: problem med Azure Synapse Analytics-träffen som frågar den externa tabellen i Azure Storage.
 
 - **Lösning**: kör samma fråga i SSMS och kontrol lera om samma resultat visas. Om ja, öppna ett support ärende till Azure Synapse Analytics och ange din Azure Synapse Analytics-Server och databas namn för ytterligare fel sökning.
-            
-
-### <a name="low-performance-when-load-data-into-azure-sql"></a>Låg prestanda vid inläsning av data i Azure SQL
-
-- **Symptom**: kopiering av data i Azure SQL blir långsam.
-
-- **Orsak**: den grundläggande orsaken till problemet utlöses oftast av flask halsen för Azure SQL-sidan. Här följer några möjliga orsaker:
-
-    - Azure DB-nivån är inte tillräckligt hög.
-
-    - Användning av Azure DB DTU är nära 100%. Du kan [övervaka prestanda](https://docs.microsoft.com/azure/azure-sql/database/monitor-tune-overview) och överväga att uppgradera DB-nivån.
-
-    - Indexen har inte angetts korrekt. Ta bort alla index innan data inläsningen och återskapa dem när belastningen är klar.
-
-    - WriteBatchSize är inte tillräckligt stor för att rymma schema rad storleken. Försök att förstora egenskapen för problemet.
-
-    - I stället för Mass indrag används den lagrade proceduren, vilket förväntas ha sämre prestanda. 
-
-- **Lösning**: se TSG för [kopierings aktivitetens prestanda](https://docs.microsoft.com/azure/data-factory/copy-activity-performance-troubleshooting)
 
 
 ### <a name="performance-tier-is-low-and-leads-to-copy-failure"></a>Prestanda nivån är låg och leads kan inte kopieras
 
-- **Symptom**: nedan visas ett fel meddelande när data kopierades till Azure SQL: `Database operation failed. Error message from database execution : ExecuteNonQuery requires an open and available Connection. The connection's current state is closed.`
+- **Symptom**: nedan visas ett fel meddelande när data kopierades till Azure SQL Database: `Database operation failed. Error message from database execution : ExecuteNonQuery requires an open and available Connection. The connection's current state is closed.`
 
-- **Orsak**: Azure SQL S1 används, vilket träffar i/o-gränser i detta fall.
+- **Orsak**: Azure SQL Database S1 används, vilket träffar i/o-gränser i detta fall.
 
-- **Lösning**: uppgradera prestanda nivån för Azure SQL för att åtgärda problemet. 
+- **Lösning**: uppgradera Azure SQL Database prestanda nivå för att åtgärda problemet. 
 
 
 ### <a name="sql-table-cannot-be-found"></a>Det går inte att hitta SQL-tabellen 
@@ -619,31 +600,6 @@ Den här artikeln visar vanliga fel söknings metoder för anslutningar i Azure 
 - **Orsak**: Dynamics-servern är instabil eller otillgänglig eller också har nätverket problem.
 
 - **Rekommendation**: kontrol lera nätverks anslutningen eller kontrol lera i Dynamics Server-loggen om du vill ha mer information. Kontakta Dynamics support om du vill ha mer hjälp.
-
-
-## <a name="excel-format"></a>Excel-format
-
-### <a name="timeout-or-slow-performance-when-parsing-large-excel-file"></a>Tids gräns eller dåliga prestanda vid parsning av stor Excel-fil
-
-- **Symptom**:
-
-    - När du skapar Excel-datauppsättningen och importera schema från anslutning/butik, förhandsgranska data, lista eller uppdatera kalkyl blad, kan du trycka på timeout-fel om Excel-filen är stor i storlek.
-
-    - När du använder kopierings aktivitet för att kopiera data från en stor Excel-fil (>= 100 MB) till ett annat data lager kan det uppstå problem med långsam prestanda eller OOM.
-
-- **Orsak**: 
-
-    - För åtgärder som att importera schema, för hands Visa data och lista kalkyl blad på Excel-datauppsättning, är timeout-värdet 100 s och static. För stor Excel-fil kan de här åtgärderna inte slutföras inom timeout-värdet.
-
-    - ADF Copy-aktiviteten läser hela Excel-filen i minnet och letar sedan upp det angivna kalkyl bladet och cellerna för att läsa data. Detta beror på att de underliggande SDK: er för SDK används.
-
-- **Lösning**: 
-
-    - När du importerar schema kan du generera en mindre exempel fil, som är en del av original filen och välja importera schema från exempel fil i stället för "Importera schema från anslutning/butik".
-
-    - För List kalkyl bladet, i list rutan kalkyl blad, kan du klicka på "redigera" och ange bladets namn/index i stället.
-
-    - Om du vill kopiera en stor Excel-fil (>100 MB) till en annan lagrings plats kan du använda Excel-källan Data Flow som sport-direktuppspelning och fungerar bättre.
     
 
 ## <a name="ftp"></a>FTP

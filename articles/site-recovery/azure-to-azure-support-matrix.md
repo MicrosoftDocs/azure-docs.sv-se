@@ -4,12 +4,12 @@ description: Sammanfattar stöd för haveri beredskap för virtuella Azure-dator
 ms.topic: article
 ms.date: 11/29/2020
 ms.author: raynew
-ms.openlocfilehash: a6a5d78385cc61838a606a3f3d2a7277f6b66a4d
-ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
+ms.openlocfilehash: 9670178a9c9d772d8966413371f998aa1f0cf5f3
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97858543"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968318"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Supportmatris för haveriberedskap för virtuella Azure-datorer mellan Azure-regioner
 
@@ -198,6 +198,7 @@ Virtuella datorer som migrerats med Site Recovery | Stöds | Om en virtuell VMwa
 Azure RBAC-principer | Stöds inte | Azure-rollbaserad åtkomst kontroll (Azure RBAC) principer för virtuella datorer replikeras inte till den virtuella redundansväxlingen i mål regionen.
 Tillägg | Stöds inte | Tillägg replikeras inte till den virtuella redundansväxlingen i mål regionen. Den måste installeras manuellt efter redundansväxlingen.
 Placerings grupper för närhet | Stöds | Virtuella datorer som finns inuti en närhets placerings grupp kan skyddas med hjälp av Site Recovery.
+Taggar  | Stöds | Användardefinierade taggar som används på virtuella käll datorer överförs till virtuella mål datorer efter redundanstest eller redundans.
 
 
 ## <a name="replicated-machines---disk-actions"></a>Replikerade datorer – disk åtgärder
@@ -256,6 +257,7 @@ NVMe-diskar | Stöds inte
 Delade diskar i Azure | Stöds inte
 Alternativ för säker överföring | Stöds
 Skriv Accelerator aktiverade diskar | Stöds inte
+Taggar  | Användardefinierade Taggar replikeras var 24: e timme.
 
 >[!IMPORTANT]
 > Undvik prestanda problem genom att följa skalbarhet för virtuella dator diskar och prestanda mål för virtuella [Linux](../virtual-machines/linux/disk-scalability-targets.md) -eller [Windows](../virtual-machines/windows/disk-scalability-targets.md) -datorer. Om du använder standardinställningarna skapar Site Recovery de nödvändiga diskarna och lagrings kontona baserat på käll konfigurationen. Om du anpassar och väljer dina egna inställningar följer du diskens skalbarhet och prestanda mål för dina virtuella käll datorer.
@@ -302,6 +304,7 @@ Snabbare nätverk | Stöds | Accelererat nätverk måste vara aktiverat på den 
 Palo-nätverks installation | Stöds inte | Med tredje parts apparater finns det ofta begränsningar som providern har infört i den virtuella datorn. Azure Site Recovery behöver agent, tillägg och utgående anslutning för att vara tillgängliga. Men installationen tillåter inte att någon utgående aktivitet konfigureras i den virtuella datorn.
 IPv6  | Stöds inte | Blandade konfigurationer som inkluderar både IPv4 och IPv6 stöds inte heller. Frigör under nätet för IPv6-intervallet innan Site Recovery åtgärd.
 Åtkomst till Site Recovery-tjänst via privat länk | Stöds | [Läs mer](azure-to-azure-how-to-enable-replication-private-endpoints.md)
+Taggar  | Stöds | Användardefinierade taggar på nätverkskort replikeras var 24: e timme.
 
 
 

@@ -2,19 +2,21 @@
 title: Migrera konfigurationen av batch-poolen från Cloud Services till Virtual Machines
 description: Lär dig hur du uppdaterar din konfiguration för poolen till den senaste och rekommenderade konfigurationen
 ms.topic: how-to
-ms.date: 1/4/2021
-ms.openlocfilehash: 52e1762dc8e81b3eb7e1bce388d91dfd2c76191a
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.date: 1/6/2021
+ms.openlocfilehash: b6f4184f7c4f133f74cb3157638b1621dad25fda
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97937711"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97969035"
 ---
 # <a name="migrate-batch-pool-configuration-from-cloud-services-to-virtual-machines"></a>Migrera konfigurationen av batch-poolen från Cloud Services till Virtual Machines
 
 Batch-pooler kan skapas med antingen [cloudServiceConfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#cloudserviceconfiguration) eller [virtualMachineConfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#virtualmachineconfiguration). ' virtualMachineConfiguration ' är den rekommenderade konfigurationen eftersom den stöder alla batch-funktioner. cloudServiceConfiguration-pooler stöder inte alla funktioner och inga nya funktioner planeras.
 
-Om du använder cloudServiceConfiguration-pooler rekommenderar vi starkt att du flyttar till Använd virtualMachineConfiguration-pooler. I den här artikeln beskrivs hur du migrerar till den rekommenderade "virtualMachineConfiguration"-konfigurationen.
+Om du använder cloudServiceConfiguration-pooler rekommenderar vi starkt att du flyttar till Använd virtualMachineConfiguration-pooler. Detta gör att du kan dra nytta av alla batch-funktioner, till exempel ett expanderat [urval av VM-serien](batch-pool-vm-sizes.md), virtuella Linux-datorer, [behållare](batch-docker-container-workloads.md), [Azure Resource Manager virtuella nätverk](batch-virtual-network.md)och [disk kryptering för noder](disk-encryption.md).
+
+I den här artikeln beskrivs hur du migrerar till ' virtualMachineConfiguration '.
 
 ## <a name="new-pools-are-required"></a>Nya pooler krävs
 

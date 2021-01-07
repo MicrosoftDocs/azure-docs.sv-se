@@ -9,12 +9,12 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: sstein
 ms.date: 06/04/2020
-ms.openlocfilehash: cfcdd143a26d36ed3c4646122fce7c19c41976d0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 44a37a912c5c7a882d21631b8ce2da2c7ba9c05e
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448843"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97967709"
 ---
 # <a name="request-quota-increases-for-azure-sql-database-and-sql-managed-instance"></a>Begärans kvot ökar för Azure SQL Database-och SQL-hanterad instans
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -29,19 +29,19 @@ Använd följande steg för att skapa en ny supportbegäran från Azure Portal f
 
    ![Länken Hjälp + Support](./media/quota-increase-request/help-plus-support.png)
 
-1. I **Hjälp + Support**väljer du **ny supportbegäran**.
+1. I **Hjälp + Support** väljer du **ny supportbegäran**.
 
     ![Skapa en ny supportbegäran](./media/quota-increase-request/new-support-request.png)
 
-1. För **typ av problem**väljer du **begränsningar för tjänsten och prenumerationen (kvoter)**.
+1. För **typ av problem** väljer du **begränsningar för tjänsten och prenumerationen (kvoter)**.
 
    ![Välj en typ av problem](./media/quota-increase-request/select-quota-issue-type.png)
 
-1. För **prenumeration**väljer du den prenumeration vars kvot du vill öka.
+1. För **prenumeration** väljer du den prenumeration vars kvot du vill öka.
 
    ![Välj en prenumeration för ökad kvot](./media/quota-increase-request/select-subscription-support-request.png)
 
-1. För **typ av kvot**väljer du någon av följande kvot typer:
+1. För **typ av kvot** väljer du någon av följande kvot typer:
 
    - **SQL Database** för kvoter för enkel databas och elastisk pool.
    - **SQL Database Hanterad instans** för hanterade instanser.
@@ -105,20 +105,22 @@ Om din prenumeration behöver åtkomst i en viss region väljer du alternativet 
 
 1. I listan **Välj en plats** väljer du den Azure-region som du vill använda. Kvoten är per prenumeration i varje region.
 
-1. Ange **inköps modellen**och **förväntad förbruknings** information.
+1. Ange **inköps modellen** och **förväntad förbruknings** information.
 
    ![Åtkomst till region för begäran](./media/quota-increase-request/quota-request.png)
 
-### <a name="enable-m-series-access-to-a-region"></a><a id="mseries"></a> Aktivera åtkomst till M-serien till en region
+<!--
+### <a id="mseries"></a> Enable M-series access to a region
 
-Om du vill aktivera maskin vara i M-serien för en prenumeration och region måste du öppna en supportbegäran.
+To enable M-series hardware for a subscription and region, a support request must be opened.
 
-1. Välj åtkomst kvot typen för **området M-serien** .
+1. Select the **M-series region access** quota type.
 
-1. I listan **Välj en plats** väljer du den Azure-region som du vill använda. Kvoten är per prenumeration i varje region.
+1. In the **Select a location** list, select the Azure region to use. The quota is per subscription in each region.
 
 
-   ![Begär åtkomst till M-seriens region](./media/quota-increase-request/quota-m-series.png)
+   ![Request M-series region access](./media/quota-increase-request/quota-m-series.png)
+-->
 
 ## <a name="sql-managed-instance-quota-type"></a><a id="sqlmiquota"></a> Kvot typ för SQL-hanterad instans
 

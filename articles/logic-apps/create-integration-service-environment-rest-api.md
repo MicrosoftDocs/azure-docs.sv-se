@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
-ms.date: 12/29/2020
-ms.openlocfilehash: 34a5dfb44ee78245b56c1774701f48b3b8a494df
-ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
+ms.date: 12/30/2020
+ms.openlocfilehash: ee6c116d02a7be1682d9e8379037ef1b8c92bce8
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97827486"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97967046"
 ---
 # <a name="create-an-integration-service-environment-ise-by-using-the-logic-apps-rest-api"></a>Skapa en Integration Service Environment (ISE) med hjälp av Logic Apps REST-API
 
@@ -25,7 +25,7 @@ Mer information om andra sätt att skapa en ISE finns i följande artiklar:
 * [Skapa en ISE med hjälp av exempel mal len Azure Resource Manager snabb start](https://github.com/Azure/azure-quickstart-templates/tree/master/201-integration-service-environment)
 * [Skapa en ISE som stöder användning av Kundhanterade nycklar för kryptering av data i vila](customer-managed-keys-integration-service-environment.md)
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 * Samma krav [](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#prerequisites) och [åtkomst krav](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access) som när du skapar en ISE i Azure Portal
 
@@ -121,7 +121,7 @@ Här är syntaxen för begär ande texten, som beskriver de egenskaper som ska a
             }
          ]
       },
-      // Include `certificates` object to enable self-signed certiificate and certificate issued by Enterprise Certificate Authority
+      // Include `certificates` object to enable self-signed certificate and the certificate issued by Enterprise Certificate Authority
       "certificates": {
          "testCertificate": {
             "publicCertificate": "{base64-encoded-certificate}",
@@ -185,6 +185,7 @@ Den här exempel texten visar exempel värden:
    }
 }
 ```
+
 ## <a name="add-custom-root-certificates"></a>Lägg till anpassade rot certifikat
 
 Du använder ofta en ISE för att ansluta till anpassade tjänster i ditt virtuella nätverk eller lokalt. Dessa anpassade tjänster skyddas ofta av ett certifikat som har utfärdats av en anpassad rot certifikat utfärdare, till exempel en företags certifikat utfärdare eller ett självsignerat certifikat. Mer information om hur du använder självsignerade certifikat finns i [säker åtkomst och data åtkomst för utgående anrop till andra tjänster och system](../logic-apps/logic-apps-securing-a-logic-app.md#secure-outbound-requests). För att din ISE ska kunna ansluta till dessa tjänster via Transport Layer Security (TLS) behöver din ISE åtkomst till dessa rot certifikat. Om du vill uppdatera ISE med ett anpassat betrott rot certifikat, gör du följande HTTPS- `PATCH` begäran:

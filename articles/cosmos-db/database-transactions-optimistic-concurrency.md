@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 12/04/2019
 ms.reviewer: sngun
-ms.openlocfilehash: bdfbe5106f220a9fe4a3568709187b9071bc7917
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 96652b2a1eb35668bd8a810b309ab31cec5afdb7
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93334284"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97967267"
 ---
 # <a name="transactions-and-optimistic-concurrency-control"></a>Kontroll över transaktioner och optimistisk samtidighet
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -53,7 +53,9 @@ Möjligheten att köra Java Script direkt i databas motorn ger prestanda och tra
 
 Med optimistisk concurrency-kontroll kan du förhindra förlorade uppdateringar och borttagningar. Samtidiga är att motstridiga åtgärder har den vanliga pessimistiska låsningen av databas motorn som är värd för den logiska partition som äger objektet. När två samtidiga åtgärder försöker uppdatera den senaste versionen av ett objekt i en logisk partition, kommer en av dem att vinna och det andra Miss lyckas. Men om en eller två åtgärder som försöker uppdatera samma objekt tidigare hade läst ett äldre värde av objektet, vet inte databasen om det tidigare läsning svärdet av antingen eller båda de motstridiga åtgärderna faktiskt var det senaste värdet för objektet. I tur och miljö kan den här situationen identifieras med **optimistisk Samtidighets kontroll (OCC)** innan de två åtgärderna anges i databas motorn. OCC skyddar dina data från att oavsiktligt skriva över ändringar som har gjorts av andra. Det förhindrar också andra från att av misstag skriva över dina egna ändringar.
 
-Samtidiga uppdateringar av ett objekt underkastas OCC av protokoll skiktet för Azure Cosmos DB. Azure Cosmos Database säkerställer att versions versionen av det objekt som du uppdaterar (eller tar bort) är samma som versionen av objektet i Azure Cosmos-behållaren. Detta säkerställer att dina skrivningar är skyddade från att skrivas över av misstag av andras skrivningar och tvärtom. I en miljö med flera användare skyddar den optimistisk samtidighets kontrollen dig från att oavsiktligt ta bort eller uppdatera fel version av ett objekt. Därför skyddas objekt mot Infamous "förlorad uppdatering" eller "förlorad borttagning".
+Samtidiga uppdateringar av ett objekt underkastas OCC av protokoll skiktet för Azure Cosmos DB. För Azure Cosmos-konton som kon figurer ATS för **skrivningar i en region** säkerställer Azure Cosmos DB att versions versionen av det objekt som du uppdaterar (eller tar bort) är samma som för objektet i Azure Cosmos-behållaren. Detta säkerställer att dina skrivningar är skyddade från att skrivas över av misstag av andras skrivningar och tvärtom. I en miljö med flera användare skyddar den optimistisk samtidighets kontrollen dig från att oavsiktligt ta bort eller uppdatera fel version av ett objekt. Därför skyddas objekt mot Infamous "förlorad uppdatering" eller "förlorad borttagning".
+
+I ett Azure Cosmos-konto som kon figurer ATS med **skrivningar i flera regioner** kan data genomföras oberoende i sekundära regioner om dess `_etag` matchar data i den lokala regionen. När nya data har allokerats lokalt i en sekundär region slås de samman i hubben eller den primära regionen. Om principen för konflikt lösning sammanfogar nya data till Hub-regionen replikeras dessa data globalt med den nya `_etag` . Om principen för konflikt lösning avvisar nya data, kommer den sekundära regionen att återställas till ursprungliga data och `_etag` .
 
 Alla objekt som lagras i en Azure Cosmos-behållare har en systemdefinierad `_etag` egenskap. Värdet för `_etag` genereras automatiskt och uppdateras av servern varje gång objektet uppdateras. `_etag` kan användas med klientens `if-match` begär ande huvud för att tillåta att servern bestämmer om ett objekt kan uppdateras villkorligt. Värdet för `if-match` rubriken matchar värdet på `_etag` på servern, objektet uppdateras sedan. Om värdet för `if-match` begär ande rubriken inte längre är aktuellt, avvisar servern åtgärden med svarsmeddelandet "HTTP 412-förhands fel". Klienten kan sedan återskapa objektet för att hämta den aktuella versionen av objektet på servern eller åsidosätta versionen av objektet på servern med ett eget `_etag` värde för objektet. `_etag`Kan dessutom användas med `if-none-match` rubriken för att avgöra om en återhämtning av en resurs behövs.
 

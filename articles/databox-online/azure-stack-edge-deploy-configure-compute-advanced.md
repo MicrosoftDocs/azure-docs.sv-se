@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 05/20/2019
+ms.date: 01/06/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro for advanced deployment flow so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: bcad165f5d0ba2cf652cff35091e05b4414193c8
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 8946dfca9a416009effb45cad1e81348dd900f98
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951799"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968298"
 ---
 # <a name="tutorial-transform-data-with-azure-stack-edge-pro-for-advanced-deployment-flow"></a>Självstudie: transformera data med Azure Stack Edge Pro för avancerat distributions flöde
 
@@ -26,12 +26,12 @@ Compute kan konfigureras för enkla eller avancerade distributions flöden på e
 |------------------|--------------------------------------------------|---------------------------------------|
 | Avsett för     | IT-administratörer                                | Utvecklare                            |
 | Typ             | Använd Azure Stack Edge-tjänst för att distribuera moduler      | Använda IoT Hub tjänst för att distribuera moduler |
-| Distribuerade moduler | Enkel                                           | Länkade eller flera moduler           |
+| Distribuerade moduler | Enskilt                                           | Länkade eller flera moduler           |
 
 
 Den här proceduren kan ta cirka 20 till 30 minuter att slutföra.
 
-I de här självstudierna får du lära dig att
+I den här guiden får du lära dig att:
 
 > [!div class="checklist"]
 > * Konfigurera beräkning
@@ -41,7 +41,7 @@ I de här självstudierna får du lära dig att
 > * Verifiera datatransformering och överföring
 
  
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Innan du ställer in en beräknings roll på din Azure Stack Edge Pro-enhet ser du till att:
 
@@ -52,32 +52,34 @@ Innan du ställer in en beräknings roll på din Azure Stack Edge Pro-enhet ser 
 
 Om du vill konfigurera Compute på Azure Stack Edge Pro skapar du en IoT Hub resurs.
 
-1. I Azure Portal av Azure Stack Edge-resursen går du till **Översikt**. Välj **Kom igång**i den högra rutan på **beräknings** panelen.
+1. I Azure Portal av Azure Stack Edge-resursen går du till **Översikt**. Välj panelen **IoT Edge** i den högra rutan.
 
     ![Kom igång med Compute](./media/azure-stack-edge-deploy-configure-compute-advanced/configure-compute-1.png)
 
-2. På panelen **Konfigurera Edge Compute** väljer du **Konfigurera beräkning**.
+2. På panelen **aktivera IoT Edge tjänst** väljer du **Lägg till**. Den här åtgärden aktiverar IoT Edge tjänst som låter dig distribuera IoT Edge moduler lokalt på enheten.
 
     ![Kom igång med Compute 2](./media/azure-stack-edge-deploy-configure-compute-advanced/configure-compute-2.png)
 
-3. Ange följande på bladet **Konfigurera Edge Compute** :
+3. Ange följande i **tjänsten skapa IoT Edge**:
 
    
-    |Field  |Värde  |
+    |Fält  |Värde  |
     |---------|---------|
-    |IoT Hub     | Välj från **ny** eller **befintlig**. <br> Som standard används nivån Standard (S1) till att skapa en IoT-resurs. Om du vill använda en IoT-resurs på kostnadsfri nivå skapar du en sådan och väljer sedan den befintliga resursen. <br> I varje fall använder IoT Hub resursen samma prenumeration och resurs grupp som används av Azure Stack Edge-resursen.     |
-    |Namn     |Ange ett namn för din IoT Hub-resurs.         |
+    |Prenumeration     |Välj en prenumeration för din IoT Hub-resurs. Du kan välja samma prenumeration som används av Azure Stack Edge-resursen.        |
+    |Resursgrupp     |Ange ett namn för resurs gruppen för din IoT Hub-resurs. Du kan välja samma resurs grupp som används av Azure Stack Edge-resursen.         |
+    |IoT Hub     | Välj från **ny** eller **befintlig**. <br> Som standard används nivån Standard (S1) till att skapa en IoT-resurs. Om du vill använda en IoT-resurs på kostnadsfri nivå skapar du en sådan och väljer sedan den befintliga resursen.      |
+    |Namn     |Acceptera standardvärdet eller ange ett namn för din IoT Hub-resurs.         |
 
     ![Kom igång med Compute 3](./media/azure-stack-edge-deploy-configure-compute-advanced/configure-compute-3.png)
 
-4. Välj **Skapa**. Det tar några minuter att skapa en IoT Hub-resurs. När IoT Hub resurs har skapats, uppdaterar konfigurations panelen för **Edge** för att Visa beräknings konfigurationen. Bekräfta att Edge Compute-rollen har kon figurer ATS genom att välja **Visa konfiguration** på panelen **Konfigurera beräkning** .
-    
+4. Välj **Granska + skapa**. Det tar några minuter att skapa en IoT Hub-resurs. När IoT Hub resursen har skapats, uppdateras **översikten** för att indikera att IoT Edges tjänsten körs. 
+
+    När IoT Edges tjänsten har kon figurer ATS på gräns enheten skapas två enheter: en IoT-enhet och en IoT Edge-enhet. Bägge enheter kan visas i IoT Hub-resursen. En IoT Edge runtime körs också på den här IoT Edge enheten. För tillfället är det bara Linux-plattformen tillgänglig för din IoT Edge-enhet.
+
+    Bekräfta att Edge Compute-rollen har kon figurer ATS genom att välja **IoT Edge tjänst > egenskaper** och Visa IoT-enheten och den IoT Edge enheten. 
+
     ![Kom igång med Compute 4](./media/azure-stack-edge-deploy-configure-compute-advanced/configure-compute-4.png)
-
-    När Edge-beräkningsrollen har konfigurerats på Edge-enheten så skapas två enheter: en IoT-enhet och en IoT Edge-enhet. Bägge enheter kan visas i IoT Hub-resursen. En IoT Edge runtime körs också på den här IoT Edge enheten.
-
-    För tillfället är det bara Linux-plattformen tillgänglig för din IoT Edge-enhet.
-
+    
 
 ## <a name="add-shares"></a>Lägg till resurser
 
@@ -85,19 +87,13 @@ För den avancerade distributionen i den här självstudien behöver du två res
 
 1. Lägg till en Edge-resurs på enheten genom att utföra följande steg:
 
-    1. I din Azure Stack Edge-resurs går du till **Edge compute > kom igång**.
-    2. Välj **Lägg till**på panelen **Lägg till resurs (er)** .
+    1. I Azure Stack Edge-resurs går du till **IoT Edge > resurser**.
+    2. På sidan **resurser** går du till kommando fältet och väljer **+ Lägg till resurs**.
     3. På bladet **Lägg till resurs** anger du resurs namnet och väljer resurs typ.
     4. Om du vill montera Edge-resursen markerar du kryss rutan för att **använda resurs med Edge Compute**.
     5. Välj **lagrings kontot**, **lagrings tjänsten**, en befintlig användare och välj sedan **skapa**.
 
         ![Lägg till en Edge-resurs](./media/azure-stack-edge-deploy-configure-compute-advanced/add-edge-share-1.png)
-
-    <!--If you created a local NFS share, use the following remote sync (rsync) command option to copy files onto the share:
-
-    `rsync <source file path> < destination file path>`
-
-    For more information about the rsync command, go to [Rsync documentation](https://www.computerhope.com/unix/rsync.htm).-->
 
     När Edge-resursen har skapats får du ett meddelande om att det har skapats. Delnings listan uppdateras för att avspegla den nya resursen.
 
@@ -124,13 +120,13 @@ För den avancerade distributionen i den här självstudien behöver du två res
 
 ## <a name="add-a-trigger"></a>Lägga till en utlösare
 
-1. Gå till **Edge compute >-utlösare**. Välj **+ Lägg till utlösare**.
+1. Gå till Azure Stack Edge-resursen och gå sedan till **IoT Edge > utlösare**. Välj **+ Lägg till utlösare**.
 
     ![Lägg till utlösare](./media/azure-stack-edge-deploy-configure-compute-advanced/add-trigger-1.png)
 
 2. Ange följande värden i bladet **Lägg till utlösare** .
 
-    |Field  |Värde  |
+    |Fält  |Värde  |
     |---------|---------|
     |Utlösarens namn     | Ett unikt namn för utlösaren.         |
     |Utlösartyp     | Välj **fil** utlösare. En filutlösare utlöses när en filhändelse inträffar, till exempel att en fil skrivs till den angivna resursen. En schemalagd utlösare å andra sidan, utlöses utifrån ett schema som definierats av dig. I det här exemplet behöver vi en fil utlösare.    |
@@ -154,7 +150,7 @@ Det finns inga anpassade moduler på den här Edge-enheten. Du kan lägga till e
 
 I det här avsnittet lägger du till en anpassad modul till den IoT Edge enhet som du skapade i [utveckla en C#-modul för din Azure Stack Edge Pro](azure-stack-edge-create-iot-edge-module.md). Den här anpassade modulen tar filer från en lokal Edge-resurs på gräns enheten och flyttar dem till en gräns (moln) resurs på enheten. Molnresursen pushar sedan filerna till det Azure-lagringskonto som är associerat med molnresursen.
 
-1. Gå till **Edge compute > kom igång**. Välj scenario typen som **Avancerat**på panelen **Lägg till moduler** . Välj **gå till IoT Hub**.
+1. Gå till din Azure Stack Edge-resurs och gå sedan till **IoT Edge > översikt**. På panelen **moduler** väljer du **gå till Azure IoT Hub**.
 
     ![Välj avancerad distribution](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-1.png)
 
@@ -168,7 +164,7 @@ I det här avsnittet lägger du till en anpassad modul till den IoT Edge enhet s
 
     ![Gå till IoT Edge enhet i IoT Hub](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-2.png)
 
-3. Välj **Ange moduler**på **enhets information**.
+3. Välj **Ange moduler** på **enhets information**.
 
     ![Länken Ange moduler](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-3.png)
 
@@ -181,7 +177,7 @@ I det här avsnittet lägger du till en anpassad modul till den IoT Edge enhet s
  
     2. Ange inställningarna för den anpassade IoT Edge-modulen. Mata in följande värden.
      
-        |Field  |Värde  |
+        |Fält  |Värde  |
         |---------|---------|
         |Namn     | Ett unikt namn för modulen. Den här modulen är en Docker-behållare som du kan distribuera till den IoT Edge enhet som är kopplad till din Azure Stack Edge Pro.        |
         |Bild-URI     | Avbildnings-URI för motsvarande behållar avbildning för modulen.        |
@@ -231,7 +227,7 @@ I det här avsnittet lägger du till en anpassad modul till den IoT Edge enhet s
 
    ![Sidan Ange moduler 2](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-9.png)
  
-    Den här åtgärden startar modulen distribution. När distributionen är klar **körs**modulens **körnings status** .
+    Den här åtgärden startar modulen distribution. När distributionen är klar **körs** modulens **körnings status** .
 
     ![Lägg till anpassad modul 3](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-10.png)
 

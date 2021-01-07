@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 10/20/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 1bbc3b3cd755aabd348a238ad65cda132b9a7547
-ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
+ms.openlocfilehash: c32f90221a73d04fd6c54c8332826232d0e6a6f3
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97746617"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968542"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>Använda Spark & Hive-verktyg för Visual Studio Code
 
@@ -21,7 +21,7 @@ Lär dig hur du använder Apache Spark & Hive-verktyg för Visual Studio Code. A
 
 Spark & Hive-verktyg kan installeras på plattformar som stöds av Visual Studio Code. Observera följande krav för olika plattformar.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Följande objekt krävs för att slutföra stegen i den här artikeln:
 
@@ -269,7 +269,7 @@ Verktyget stöder även **Spark SQL** -fr åga:
 
 > [!NOTE]
 >
-> ["MS-python >= 2020.5.78807-versionen stöds inte för den här omfattningen](#issues-changed) har lösts. Den senaste MS-python-versionen kan användas för tillfället.
+> ["MS-python >= 2020.5.78807-versionen stöds inte för det här tillägget"](#issues-changed) har lösts. Uppdatera **MS-python** till den **senaste versionen** nu.
 
 ## <a name="submit-pyspark-batch-job"></a>Skicka PySpark batch job
 
@@ -491,7 +491,7 @@ I meny raden går du till **Visa**  >  **kommando-palett** och anger sedan **Azu
 
 ## <a name="issues-changed"></a>Problem har ändrats
 
-För det här problemet är "MS-python >= 2020.5.78807-versionen inte stöd för den här omfattningen" löst. den **senaste MS-python-versionen** kan nu användas för tillfället.
+För det här problemet "MS-python >= 2020.5.78807-versionen stöds inte av det här tillägget" har lösts. uppdatera **MS-python** till den **senaste versionen** nu.
 
 
 ## <a name="next-steps"></a>Nästa steg

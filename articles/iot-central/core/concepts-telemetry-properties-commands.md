@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: c29af68433f29d7bdd363bedfa6d36316b952f4c
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: 87fb7f0eb4017a39aca081f73de543a67400d4b5
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97795351"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97969069"
 ---
 # <a name="telemetry-property-and-command-payloads"></a>Telemetri, egenskaper och kommandonyttolaster
 
@@ -719,7 +719,7 @@ IoT Central förväntar sig ett svar från enheten till skrivbara egenskaps uppd
 
 | Värde | Etikett | Beskrivning |
 | ----- | ----- | ----------- |
-| `'ac': 200` | Slutfört | Egenskaps ändrings åtgärden har slutförts. |
+| `'ac': 200` | Slutförd | Egenskaps ändrings åtgärden har slutförts. |
 | `'ac': 202`  eller `'ac': 201` | Väntar | Egenskaps ändrings åtgärden väntar eller pågår |
 | `'ac': 4xx` | Fel | Den begärda egenskaps ändringen var inte giltig eller innehöll ett fel |
 | `'ac': 5xx` | Fel | Ett oväntat fel uppstod i enheten vid bearbetning av den begärda ändringen. |
@@ -828,9 +828,6 @@ Enheten ska skicka följande JSON-nyttolast till IoT Central när uppdateringen 
 ```
 
 ## <a name="commands"></a>Kommandon
-
-> [!NOTE]
-> I IoT Central-webbgränssnittet kan du välja **kön om alternativet offline** ska användas för ett kommando. Den här inställningen tas inte med om du exporterar en modell eller ett gränssnitt från enhets mal len.
 
 Följande kodfragment från en enhets modell visar definitionen av ett kommando som inte har några parametrar och som inte förväntar sig att enheten ska returnera något:
 
@@ -1000,6 +997,91 @@ När enheten har bearbetat bearbetningen av begäran ska den skicka en egenskap 
 }
 ```
 
+### <a name="offline-commands"></a>Offline-kommandon
+
+I IoT Central-webbgränssnittet kan du välja **kön om alternativet offline** ska användas för ett kommando. Offline-kommandon är enkelriktade meddelanden till enheten från din lösning som levereras så snart en enhet ansluter. Offline-kommandon kan ha parametrar för begäran men returnerar inte något svar.
+
+Inställningen för **kö om offline** tas inte med om du exporterar en modell eller ett gränssnitt från enhets mal len. Du kan inte se en exporterad modell eller gränssnitts-JSON som ett kommando är ett offline-kommando.
+
+Offline-kommandon använder [IoT Hub meddelanden från molnet till enheten](../../iot-hub/iot-hub-devguide-messages-c2d.md) för att skicka kommandot och nytto lasten till enheten.
+
+Följande kodfragment från en enhets modell visar definitionen av ett kommando. Kommandot har en objekt parameter med ett datetime-fält och en uppräkning:
+
+```json
+{
+  "@type": "Command",
+  "displayName": {
+    "en": "Generate Diagnostics"
+  },
+  "name": "GenerateDiagnostics",
+  "request": {
+    "@type": "CommandPayload",
+    "displayName": {
+      "en": "Payload"
+    },
+    "name": "Payload",
+    "schema": {
+      "@type": "Object",
+      "displayName": {
+        "en": "Object"
+      },
+      "fields": [
+        {
+          "displayName": {
+            "en": "StartTime"
+          },
+          "name": "StartTime",
+          "schema": "dateTime"
+        },
+        {
+          "displayName": {
+            "en": "Bank"
+          },
+          "name": "Bank",
+          "schema": {
+            "@type": "Enum",
+            "displayName": {
+              "en": "Enum"
+            },
+            "enumValues": [
+              {
+                "displayName": {
+                  "en": "Bank 1"
+                },
+                "enumValue": 1,
+                "name": "Bank1"
+              },
+              {
+                "displayName": {
+                  "en": "Bank2"
+                },
+                "enumValue": 2,
+                "name": "Bank2"
+              },
+              {
+                "displayName": {
+                  "en": "Bank3"
+                },
+                "enumValue": 2,
+                "name": "Bank3"
+              }
+            ],
+            "valueSchema": "integer"
+          }
+        }
+      ]
+    }
+  }
+}
+```
+
+Om du aktiverar alternativet **kö om offline** i användar gränssnittet för enhets mal len för kommandot i föregående kodfragment, innehåller meddelandet som enheten tar emot följande egenskaper:
+
+| Egenskapsnamn | Exempelvärde |
+| ---------- | ----- |
+| `custom_properties` | `{'method-name': 'GenerateDiagnostics'}` |
+| `data` | `{"StartTime":"2021-01-05T08:00:00.000Z","Bank":2}` |
+
 ## <a name="next-steps"></a>Nästa steg
 
-Som enhets utvecklare, nu när du har lärt dig mer om enhets mallar, kan du [IoT Central](./concepts-get-connected.md) läsa mer om hur du registrerar enheter med IoT Central och hur IoT Central skyddar enhets anslutningar.
+Som enhets utvecklare är det nu viktigt att du har lärt dig mer om enhets mallar genom att [IoT Central](./concepts-get-connected.md) läsa mer om hur du registrerar enheter med IoT Central och hur IoT Central skyddar enhets anslutningar.

@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 11/11/2020
+ms.date: 01/06/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: 3943caba5249432b3a0a4b7c2e63b2b818e2b7a1
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: aabc141666fe5c9fb52a3eac5ee1866f390e4551
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96575711"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968506"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro"></a>Självstudie: Förbered för att distribuera Azure Stack Edge Pro  
 
@@ -57,7 +57,7 @@ Innan du börjar ska du kontrollera att:
 
 * Du har ägar-eller deltagar åtkomst på resurs grupps nivå för Azure Stack Edge/Data Box Gateway, IoT Hub och Azure Storage resurser.
 
-  * Du bör vara **ägare** på prenumerations nivå för att bevilja deltagar åtkomst. Om du vill ge deltagare åtkomst till någon annan går du till **alla tjänster** för  >  **prenumerations**  >  **åtkomst kontroll (IAM)** i Azure Portal och lägger till  >  **+Add**  >  **roll tilldelning**. Mer information finns i [Självstudier: ge en användare åtkomst till Azure-resurser med hjälp av Azure Portal](../role-based-access-control/quickstart-assign-role-user-portal.md).
+  * Du bör vara **ägare** på prenumerations nivå för att bevilja deltagar åtkomst. Om du vill ge deltagare åtkomst till någon annan går du till **alla tjänster** för  >  **prenumerations**  >  **åtkomst kontroll (IAM)** i Azure Portal och lägger till  >    >  **roll tilldelning**. Mer information finns i [Självstudier: ge en användare åtkomst till Azure-resurser med hjälp av Azure Portal](../role-based-access-control/quickstart-assign-role-user-portal.md).
 
   * Om du vill skapa en Azure Stack gräns-/Data Box Gateway-resurs, bör du ha behörighet som deltagare (eller högre) som är begränsade till resurs grupps nivå. Du måste också kontrol lera att `Microsoft.DataBoxEdge` resurs leverantören är registrerad. Information om hur du registrerar en resurs leverantör finns i [Registrera resurs leverantör](azure-stack-edge-manage-access-power-connectivity-mode.md#register-resource-providers).
   * Om du vill skapa en IoT Hub resurs måste du kontrol lera att Microsoft. providers-providern är registrerad. Information om hur du registrerar den finns i [Registrera resursprovider](azure-stack-edge-manage-access-power-connectivity-mode.md#register-resource-providers).
@@ -150,11 +150,11 @@ När ordern har placerats, granskar Microsoft ordern och når dig (via e-post) m
 
 När Azure Stack Edge-resursen är igång måste du hämta aktiverings nyckeln. Den här nyckeln används för att aktivera och ansluta din Azure Stack Edge Pro-enhet med resursen. Du kan hämta den här nyckeln nu när du befinner dig på Azure-portalen.
 
-1. Välj den resurs som du har skapat. Välj **Översikt** och välj sedan **enhets konfiguration**.
+1. Gå till den resurs som du har skapat och välj **Översikt**. Du får ett meddelande om vilken inverkan din beställning bearbetas.
 
-    ![Välj enhets konfiguration](media/azure-stack-edge-deploy-prep/data-box-edge-select-devicesetup.png)
+    ![Välj översikt](media/azure-stack-edge-deploy-prep/data-box-edge-select-devicesetup.png)
 
-2. På panelen **Aktivera** väljer du **generera nyckel** för att skapa en aktiverings nyckel. Välj kopieringsikonen för att kopiera nyckeln och spara den för senare användning.
+2. När beställningen har bearbetats och enheten är på väg, uppdateras **översikten** . Godkänn standardvärdet för Azure Key Vault eller ange ett nytt **namn** . Välj **generera aktiverings nyckel**. Välj kopieringsikonen för att kopiera nyckeln och spara den för senare användning.
 
     ![Hämta aktiveringsnyckeln](media/azure-stack-edge-deploy-prep/get-activation-key.png)
 

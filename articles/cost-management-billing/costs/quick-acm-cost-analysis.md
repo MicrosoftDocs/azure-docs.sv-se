@@ -3,18 +3,18 @@ title: Snabbstart – Utforska Azure-kostnader med kostnadsanalys
 description: Den här snabbstarten hjälper dig att använda kostnadsanalys för att utforska och analysera dina Azure-organisationskostnader.
 author: bandersmsft
 ms.author: banders
-ms.date: 11/20/2020
+ms.date: 01/04/2021
 ms.topic: quickstart
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 1926a5a2ee81b6be4abee5e4064a4a23354da1a1
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 83f2d87e3f4a03ff17526ea5706e4f87b8f39487
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033586"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882457"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Snabbstart: Utforska och analysera kostnader med kostnadsanalys
 
@@ -72,6 +72,8 @@ En kostnadsprognos visar en uppskattning av kostnaderna för den valda tidsperio
 
 Modellen använder maximalt sex månaders träningsdata för att uppskatta kostnaderna för ett år. Den behöver minst sju dagars träningsdata för att ändra förutsägelsen. Förutsägelsen baseras på stora förändringar, till exempel topp- och bottenvärden, i kostnads- och användningsmönster. Prognosen skapar inte enskilda uppskattningar för varje objekt i **Gruppera efter**-egenskaper. Den ger bara en prognos för ackumulerade kostnader totalt. Om du använder flera valutor anger modellen en prognos för kostnaderna endast i USD.
 
+På grund av modellens beroende på dataminskningar och -ökningar kommer stora inköp som reserverade instanser göra att prognosen blir artificiellt förstorad. Prognostidsperioden och storleken på inköpen påverkar hur länge prognosen påverkas. Prognosen återgår till normalt när utgifter stabiliseras.
+
 ## <a name="customize-cost-views"></a>Anpassa kostnadsvyer
 
 Kostnadsanalys har fyra inbyggda vyer som är optimerade för de vanligaste målen:
@@ -123,7 +125,7 @@ Som standard visar kostnadsanalys alla användnings- och inköpskostnader när d
 
 ![Ändra mellan faktisk och amorterad kostnad för att se hur reservationsköp sprids ut över villkoret och allokeras till de resurser som använde reservationen](./media/quick-acm-cost-analysis/metric-picker.png)
 
-Amorterad kostnad avbryter reservationsköp till dagliga segment och sprider dem över tid för reservationsperioden. I stället för att se ett inköp på 365 USD den 1 januari ser du ett inköp på 1,00 USD varje dag från 1 januari till 31 december. Utöver den grundläggande amorteringen omallokeras dessutom kostnaderna och associeras med hjälp av de speciella resurser som använde reservationen. Om till exempel den dagliga kostnaden 1,00 USD delades mellan två virtuella datorer skulle du se två debiteringar på 0,50 USD för dagen. Om en del av reservationen inte används för dagen ser du en kostnad på USD 0,50 som är kopplad till den aktuella virtuella datorn och en annan avgift på USD 0,50 med kostnadstypen `UnusedReservation`. Lägg märke till att oanvända reservationskostnader endast kan visas när du visar amorterade kostnader.
+Amorterad kostnad avbryter reservationsköp till dagliga segment och sprider dem över tid för reservationsperioden. I stället för att se ett inköp på 365 USD den 1 januari ser du ett inköp på 1,00 USD varje dag från 1 januari till 31 december. Utöver den grundläggande amorteringen omallokeras dessutom kostnaderna och associeras med hjälp av de speciella resurser som använde reservationen. Om till exempel den dagliga kostnaden 1,00 USD delades mellan två virtuella datorer skulle du se två debiteringar på 0,50 USD för dagen. Om en del av reservationen inte används för dagen ser du en kostnad på USD 0,50 som är kopplad till den aktuella virtuella datorn och en annan avgift på USD 0,50 med kostnadstypen `UnusedReservation`. Oanvända reservationskostnader kan bara ses när du visar en amorterad kostnad.
 
 På grund av ändringen av hur kostnader visas är det viktigt att observera att vyerna för faktisk kostnad och amorterad kostnad visar olika totala siffror. I allmänhet minskar den totala kostnaden för månader med ett reservationsköp när du visar amorterade kostnader och månader efter att ett reservationsköp ökar. Amortering är bara tillgängligt för reservationsköp och gäller inte för Azure Marketplace-köp för tillfället.
 
@@ -151,17 +153,17 @@ Titta på videon om att [dela och spara vyer i Azure Cost Management](https://ww
 
 >[!VIDEO https://www.youtube.com/embed/kQkXXj-SmvQ]
 
-För att fästa kostnadsanalys väljer du Fäst-ikonen i det övre högra hörnet eller precis efter ”<Subscription Name> | Kostnadsanalys”. När du fäster kostnadsanalys sparas endast huvuddiagram- eller tabellvyn. Dela instrumentpanelen för att ge andra åtkomst till panelen. Observera att detta endast delar konfigurationen på instrumentpanelen och ger inte andra åtkomst till underliggande data. Om du inte har tillgång till kostnader men har åtkomst till en delad instrumentpanel visas ett meddelande om ”nekad åtkomst”.
+För att fästa kostnadsanalys väljer du Fäst-ikonen i det övre högra hörnet eller precis efter ”<Subscription Name> | Kostnadsanalys”. När du fäster kostnadsanalys sparas endast huvuddiagram- eller tabellvyn. Dela instrumentpanelen för att ge andra åtkomst till panelen. Vid delning delas endast konfigurationen på instrumentpanelen och ger inte andra åtkomst till underliggande data. Om du inte har tillgång till kostnader men har åtkomst till en delad instrumentpanel visas ett meddelande om ”nekad åtkomst”.
 
-Om du vill dela en länk till kostnadsanalys väljer du **Dela** överst på bladet. En anpassad URL visas, som öppnar den specifika vyn för just det här omfånget. Om du inte har kostnadsåtkomst och ser den här URL:en visas meddelandet ”åtkomst nekad”.
+Om du vill dela en länk till kostnadsanalys väljer du **Dela** överst i fönstret. En anpassad URL visas, som öppnar den specifika vyn för just det här omfånget. Om du inte har kostnadsåtkomst och ser den här URL:en visas meddelandet ”åtkomst nekad”.
 
 ## <a name="download-usage-data"></a>Ladda ned användningsdata
 
 ### <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Det finns tillfällen när du behöver hämta data för ytterligare analys, sammanfoga dem med dina egna data eller integrera dem i dina egna system. Cost Management erbjuder några olika alternativ. Som startpunkt, om du behöver en ad hoc-sammanfattning på hög nivå, t. ex. vad du får inom kostnadsanalys, skapar du den vy du behöver. Sedan kan du ladda ned den genom att välja **Exportera** och välja **Ladda ned rapport till CSV** eller **Ladda ned data till Excel**. Excel-nedladdningen ger ytterligare kontext för vyn du använde för att generera nedladdningen, som omfång, frågekonfiguration, summa och datum för generering.
+Det finns tillfällen när du behöver hämta data för ytterligare analys, sammanfoga dem med dina egna data eller integrera dem i dina egna system. Cost Management erbjuder några olika alternativ. Som startpunkt, om du behöver en snabb sammanfattning på hög nivå, t.ex. vad du får inom kostnadsanalys, skapar du den vy du behöver. Sedan kan du ladda ned den genom att välja **Exportera** och välja **Ladda ned rapport till CSV** eller **Ladda ned data till Excel**. Excel-nedladdningen ger mer kontext för vyn du använde för att generera nedladdningen, som omfång, frågekonfiguration, summa och datum för generering.
 
-Om du behöver den fullständiga, icke-aggregerade datauppsättningen kan du ladda ned den från faktureringskontot. I listan över tjänster i portalens vänstra navigeringsfönster går du till **Kostnadshantering och fakturering**. Välj ditt faktureringskonto, om det är tillämpligt. Gå till **Användning och avgifter** och välj sedan **nedladdningsikonen** för önskad faktureringsperiod.
+Om du behöver den fullständiga, icke-aggregerade datauppsättningen kan du ladda ned den från faktureringskontot. I listan över tjänster i portalens vänstra navigeringsfönster går du till **Kostnadshantering och fakturering**. Välj ditt faktureringskonto, om det är tillämpligt. Gå till **Användning och avgifter** och välj sedan **nedladdningsikonen** för en faktureringsperiod.
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 

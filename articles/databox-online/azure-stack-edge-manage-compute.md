@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 05/20/2019
+ms.date: 01/06/2021
 ms.author: alkohli
-ms.openlocfilehash: 0d93edbefb61cb8ded09f6402ca1e1661429efe1
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: ebf967fe02ab6424b9952bb0315b70fadb547fe3
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91952156"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97967919"
 ---
 # <a name="manage-compute-on-your-azure-stack-edge-pro"></a>Hantera beräkning av Azure Stack Edge Pro
 
@@ -38,7 +38,7 @@ Händelser är saker som sker i din molnmiljö eller på din enhet som du kanske
 
 Utför följande steg i Azure Portal för att skapa en utlösare.
 
-1. Gå till Azure Stack Edge-resursen i Azure Portal och gå sedan till **Edge compute > trigger**. Välj **+ Lägg till utlösare** i kommando fältet.
+1. I Azure Portal går du till Azure Stack Edge-resursen och går sedan till **IoT Edge > utlösare**. Välj **+ Lägg till utlösare** i kommando fältet.
 
     ![Välj Lägg till utlösare](media/azure-stack-edge-manage-compute/add-trigger-1.png)
 
@@ -68,15 +68,15 @@ Utför följande steg i Azure Portal för att ta bort en utlösare.
 
 1. Välj den utlösare som du vill ta bort i listan över utlösare.
 
-    ![Välj utlösare](media/azure-stack-edge-manage-compute/add-trigger-1.png)
+    ![Välj utlösare](media/azure-stack-edge-manage-compute/delete-trigger-1.png)
 
 2. Högerklicka på och välj sedan **ta bort**.
 
-    ![Välj Ta bort](media/azure-stack-edge-manage-compute/add-trigger-1.png)
+    ![Välj Ta bort](media/azure-stack-edge-manage-compute/delete-trigger-2.png)
 
 3. Klicka på **Ja** när du uppmanas att bekräfta åtgärden.
 
-    ![Bekräfta borttagning](media/azure-stack-edge-manage-compute/add-trigger-1.png)
+    ![Bekräfta borttagning](media/azure-stack-edge-manage-compute/delete-trigger-3.png)
 
 Listan över utlösare uppdateras för att återspegla borttagningen.
 
@@ -88,11 +88,11 @@ Använd Azure Portal för att Visa beräknings konfigurationen, ta bort en befin
 
 Utför följande steg i Azure Portal för att Visa beräknings konfigurationen för enheten.
 
-1. I Azure Portal går du till din Azure Stack Edge-resurs och går sedan till **Edge compute >-moduler**. Välj **Visa beräkning** i kommando fältet.
+1. I Azure Portal går du till din Azure Stack Edge-resurs och går sedan till **IoT Edge > översikt**. 
 
     ![Välj Visa beräkning](media/azure-stack-edge-manage-compute/view-compute-1.png)
 
-2. Anteckna beräknings konfigurationen på enheten. När du har konfigurerat Compute skapade du en IoT Hub-resurs. Under den IoT Hub resursen konfigureras en IoT-enhet och en IoT Edge enhet. Endast Linux-moduler stöds för att köras på den IoT Edge enheten.
+2. Gå till sidan **Egenskaper** . Anteckna beräknings konfigurationen på enheten. När du har konfigurerat Compute skapade du en IoT Hub-resurs. Under den IoT Hub resursen konfigureras en IoT-enhet och en IoT Edge enhet. Endast Linux-moduler stöds för att köras på den IoT Edge enheten.
 
     ![Visa konfiguration](media/azure-stack-edge-manage-compute/view-compute-2.png)
 
@@ -101,11 +101,11 @@ Utför följande steg i Azure Portal för att Visa beräknings konfigurationen f
 
 Utför följande steg i Azure Portal för att ta bort den befintliga Edge Compute-konfigurationen för enheten.
 
-1. I Azure Portal går du till din Azure Stack Edge-resurs och går sedan till **Edge compute > kom igång**. Välj **ta bort beräkning** i kommando fältet.
+1. I Azure Portal går du till din Azure Stack Edge-resurs och går sedan till **IoT Edge > översikt**. Välj **ta bort** i kommando fältet.
 
     ![Välj Ta bort beräkning](media/azure-stack-edge-manage-compute/remove-compute-1.png)
 
-2. Om du tar bort beräknings konfigurationen måste du konfigurera om enheten om du behöver använda Compute igen. Välj **Ja**när du uppmanas att bekräfta.
+2. Om du tar bort beräknings konfigurationen måste du konfigurera om enheten om du behöver använda Compute igen. Välj **Ja** när du uppmanas att bekräfta.
 
     ![Välj Ta bort beräkning 2](media/azure-stack-edge-manage-compute/remove-compute-2.png)
 
@@ -119,7 +119,7 @@ Om din IoT-enhet och IoT Edge enhets nycklar har roterats måste du uppdatera ko
 
 Utför följande steg i Azure Portal för att synkronisera åtkomst nycklarna för enheten.
 
-1. I Azure Portal går du till din Azure Stack Edge-resurs och går sedan till **Edge compute > kom igång**. Välj **Uppdatera konfiguration** i kommando fältet.
+1. I Azure Portal går du till din Azure Stack Edge-resurs och går sedan till **IoT Edge > översikt**. Välj **Uppdatera konfiguration** i kommando fältet.
 
     ![Välj Uppdatera konfiguration](media/azure-stack-edge-manage-compute/refresh-configuration-1.png)
 

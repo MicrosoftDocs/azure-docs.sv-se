@@ -3,12 +3,12 @@ title: Om Säkerhetskopiering av virtuella Azure-datorer
 description: I den här artikeln lär du dig hur tjänsten Azure Backup säkerhetskopierar virtuella Azure-datorer och hur du följer bästa praxis.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 7fa47b83eb8fa06c028079cf47ea0cb46df31860
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 291c50d4ac52d34a218b1b7cc76d625da3119d25
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96325238"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97969001"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>En översikt över säkerhets kopiering av virtuella Azure-datorer
 
@@ -76,7 +76,7 @@ Azure Backup tar ögonblicks bilder enligt schema för säkerhets kopiering.
 
 I följande tabell förklaras de olika typerna av ögonblicks bilds konsekvens:
 
-**Ögonblicks bild** | **Information** | **Återställande** | **Övervägande**
+**Ögonblicks bild** | **Information** | **Återställande** | **Att tänka på**
 --- | --- | --- | ---
 **Programkonsekvent** | Programkonsekventa säkerhets kopieringar fångar upp minnes innehåll och väntande I/O-åtgärder. I programkonsekventa ögonblicks bilder används en VSS-skrivare (eller pre/post-skript för Linux) för att säkerställa konsekvensen av AppData innan en säkerhets kopiering sker. | När du återställer en virtuell dator med en programkonsekvent ögonblicks bild startas den virtuella datorn. Det finns inga skadade data eller går förlorade. Apparna startar i ett konsekvent tillstånd. | Windows: alla VSS-skrivare har slutförts<br/><br/> Linux: pre/post-skript har kon figurer ATS och genomförts
 **Konsekvent fil system** | Konsekventa säkerhets kopieringar i fil systemet ger konsekvens genom att ta en ögonblicks bild av alla filer på samma gång.<br/><br/> | När du återställer en virtuell dator med en konsekvent fil system ögonblicks bild startas den virtuella datorn. Det finns inga skadade data eller går förlorade. Appar behöver implementera sin egen "Fix"-mekanism för att se till att återställda data är konsekventa. | Windows: vissa VSS-skrivare misslyckades <br/><br/> Linux: standard (om pre/post-skript inte har kon figurer ATS eller misslyckats)
@@ -87,7 +87,7 @@ I följande tabell förklaras de olika typerna av ögonblicks bilds konsekvens:
 
 ## <a name="backup-and-restore-considerations"></a>Överväganden för säkerhetskopiering och återställning
 
-**Övervägande** | **Information**
+**Att tänka på** | **Information**
 --- | ---
 **Diskdefragmenter** | Säkerhets kopiering av virtuella dator diskar är parallell. Om till exempel en virtuell dator har fyra diskar, försöker säkerhets kopierings tjänsten säkerhetskopiera alla fyra diskarna parallellt. Backup är stegvis (endast ändrade data).
 **Schemaläggning** |  Du kan minska säkerhets kopierings trafiken genom att säkerhetskopiera olika virtuella datorer vid olika tidpunkter på dagen och se till att tiderna inte överlappar varandra. Säkerhetskopiering av virtuella datorer samtidigt orsakar trafikstockningar.
@@ -121,6 +121,7 @@ När du konfigurerar säkerhetskopieringar av virtuella datorer föreslår vi at
 - Om du återställer virtuella datorer från ett enda valv rekommenderar vi starkt att du använder olika [generella v2-lagrings konton](../storage/common/storage-account-upgrade.md) för att säkerställa att mål lagrings kontot inte får någon begränsning. Till exempel måste varje virtuell dator ha ett annat lagrings konto. Om till exempel 10 virtuella datorer återställs använder du 10 olika lagrings konton.
 - För säkerhets kopiering av virtuella datorer som använder Premium Storage med omedelbar återställning rekommenderar vi att du allokerar *50%* ledigt utrymme för det totala allokerade lagrings utrymmet, vilket **endast** krävs för den första säkerhets kopieringen. Det lediga utrymmet på 50% är inte ett krav på säkerhets kopieringar när den första säkerhets kopieringen har slutförts
 - Gränsen för antalet diskar per lagringskonto är i förhållande till hur mycket diskarna används av programmen som körs på en virtuell dator med infrastruktur som en tjänst (IaaS). Som allmän praxis, om 5 till 10 diskar eller mer finns på ett enda lagringskonto balanserar du belastningen genom att flytta några diskar till separata lagringskonton.
+- Om du vill återställa virtuella datorer med hanterade diskar med hjälp av PowerShell anger du den ytterligare parametern **_TargetResourceGroupName_* _ för att ange resurs gruppen som de hanterade diskarna ska återställas till. [Läs mer här](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#restore-managed-disks).
 
 ## <a name="backup-costs"></a>Kostnader för säkerhets kopiering
 
@@ -130,7 +131,7 @@ Faktureringen startar inte förrän den första slutförda säkerhets kopieringe
 
 Faktureringen för en angiven virtuell dator stoppar endast om skyddet har stoppats och alla säkerhetskopierade data har tagits bort. När skyddet stoppas och det inte finns några aktiva säkerhets kopierings jobb blir storleken på den senaste virtuella säkerhets kopian den skyddade instans storleken som används för den månatliga fakturan.
 
-Storleken på den skyddade instans storleken baseras på den *faktiska* storleken på den virtuella datorn. Storleken på den virtuella datorn är summan av alla data på den virtuella datorn, förutom den tillfälliga lagringen. Prissättningen baseras på faktiska data som lagras på data diskarna, inte på den högsta storlek som stöds för varje datadisk som är ansluten till den virtuella datorn.
+Storleken på den skyddade instans storleken baseras på _actual * storleken på den virtuella datorn. Storleken på den virtuella datorn är summan av alla data på den virtuella datorn, förutom den tillfälliga lagringen. Prissättningen baseras på faktiska data som lagras på data diskarna, inte på den högsta storlek som stöds för varje datadisk som är ansluten till den virtuella datorn.
 
 På samma sätt baseras reserv lagrings fakturan på den mängd data som lagras i Azure Backup, vilket är summan av faktiska data i varje återställnings punkt.
 

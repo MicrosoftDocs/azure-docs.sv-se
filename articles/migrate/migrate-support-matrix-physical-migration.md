@@ -6,12 +6,12 @@ ms.author: rahugup
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 06/14/2020
-ms.openlocfilehash: c549cae0b7bdc5e237ec3cf704a1ead53db91449
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: a1203133d8749b43a92d89e7251539a1e002bfd8
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96754036"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968576"
 ---
 # <a name="support-matrix-for-physical-server-migration"></a>Support mat ris för fysisk server-migrering
 
@@ -48,7 +48,7 @@ Tabellen sammanfattar stödet för fysiska servrar som du vill migrera med hjäl
 **UEFI-start** | Stöds. UEFI-baserade datorer kommer att migreras till virtuella datorer i Azure generation 2.  <br/><br/> OS-disken bör ha upp till fyra partitioner och volymer ska formateras med NTFS.
 **UEFI – säker start**         | Stöds inte för migrering.
 **Mål disk** | Datorer kan bara migreras till Managed disks (standard-HDD, standard SSD, Premium SSD) i Azure.
-**Disk storlek** | 2 TB OS-disk (BIOS-start); 4 TB OS-disk (UEFI-start); 8 TB för data diskar.
+**Disk storlek** | 2 TB OS-disk; 32 TB för data diskar.
 **Disk gränser** |  Upp till 63 diskar per dator.
 **Krypterade diskar/volymer** |  Datorer med krypterade diskar/volymer stöds inte för migrering.
 **Delat disk kluster** | Stöds inte.

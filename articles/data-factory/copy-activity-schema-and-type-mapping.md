@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: jingwang
-ms.openlocfilehash: 2b54ee29b1b03bab5af8410a3fae06438180299d
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: ce7c0cba4a231fbdb33679f8cdac7d57c79845f5
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97507531"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968882"
 ---
 # <a name="schema-and-data-type-mapping-in-copy-activity"></a>Schema-och data typs mappning i kopierings aktiviteten
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -66,7 +66,7 @@ Följande egenskaper stöds under `translator` förutom `mappings` :
 
 Om du till exempel vill kopiera data från Salesforce till Azure SQL Database och explicit mappa tre kolumner:
 
-1. På fliken Kopiera aktivitet – > mappning klickar du på knappen **Importera schema** för att importera både käll-och mottagar scheman.
+1. På fliken Kopiera aktivitet – > mappning klickar du på knappen **Importera scheman** för att importera både käll-och mottagar scheman.
 
 2. Mappa nödvändiga fält och Uteslut/ta bort resten.
 
@@ -180,7 +180,7 @@ Och du vill kopiera den till en textfil i följande format med rubrik rad genom 
 
 Du kan definiera en sådan mappning på Data Factory redigerings gränssnitt:
 
-1. På fliken Kopiera aktivitet – > mappning klickar du på knappen **Importera schema** för att importera både käll-och mottagar scheman. Som Data Factory exempel på de mest populära objekten när du importerar schemat, om något fält inte visas, kan du lägga till det i rätt lager i hierarkin-hovring på ett befintligt fält namn och välja att lägga till en nod, ett objekt eller en matris.
+1. På fliken Kopiera aktivitet – > mappning klickar du på knappen **Importera scheman** för att importera både käll-och mottagar scheman. Som Data Factory exempel på de mest populära objekten när du importerar schemat, om något fält inte visas, kan du lägga till det i rätt lager i hierarkin-hovring på ett befintligt fält namn och välja att lägga till en nod, ett objekt eller en matris.
 
 2. Välj den matris som du vill iterera och extrahera data från. Den fylls i automatiskt som **samlings referens**. Observera att endast en enskild matris stöds för den här åtgärden.
 
