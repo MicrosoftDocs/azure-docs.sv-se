@@ -7,18 +7,18 @@ ms.topic: include
 ms.author: trbye
 ms.custom: devx-track-csharp
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: c242bbb803e359664eb2fb63262f0c540723f9c6
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: b039ec76d1010d2bbb552b5c0e6437d9dfd17b6a
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94424784"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97966575"
 ---
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Innan du börjar:
 
-* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md?tabs=dotnet&pivots=programming-language-csharp" target="_blank">Installera tal-SDK för din utvecklings miljö och skapa ett tomt exempel projekt <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
+* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md?tabs=dotnet&pivots=programming-language-csharp" target="_blank">Installera tal-SDK för utvecklings miljön och skapa ett tomt exempel projekt <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
 
 ## <a name="create-a-luis-app-for-intent-recognition"></a>Skapa en LUIS-app för avsikts igenkänning
 

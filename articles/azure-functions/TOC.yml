@@ -141,8 +141,16 @@
     - name: Jämföra CLR-versioner
       href: functions-versions.md
       displayName: 'migrate, migration, v3'
-    - name: Premiumplan
-      href: functions-premium-plan.md
+    - name: Värd och skalning
+      items:
+        - name: Förbrukningsplan
+          href: consumption-plan.md
+        - name: Premiumplan
+          href: functions-premium-plan.md
+        - name: Dedikerad plan
+          href: dedicated-plan.md
+        - name: Händelsedriven skalning
+          href: event-driven-scaling.md
     - name: Distributioner
       href: functions-deployment-technologies.md
     - name: Händelser och meddelanden
@@ -261,6 +269,8 @@
                   href: create-function-app-linux-app-service-plan.md
                 - name: Linux-förbrukningsplan
                   href: create-first-function-cli-python.md
+                - name: Premiumplan
+                  href: create-premium-plan-function-app-portal.md
                 - name: Microsoft Azure for Students Starter
                   href: functions-create-student-starter.md
             - name: Azure Cosmos DB-utlösare

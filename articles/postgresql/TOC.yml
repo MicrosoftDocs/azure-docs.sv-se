@@ -640,6 +640,8 @@
           href: howto-hyperscale-create-users.md
         - name: Distribuerad data
           items:
+            - name: Ange tabellstorlek
+              href: howto-hyperscale-table-size.md
             - name: Distribuera och ändra tabeller
               href: howto-hyperscale-modify-distributed-tables.md
         - name: Hög tillgänglighet
@@ -657,6 +659,8 @@
             - name: Felsöka anslutningsfel
               href: howto-hyperscale-troubleshoot-common-connection-issues.md
               displayName: 'connection errors, hyperscale'
+            - name: Användbara diagnostikfrågor
+              href: howto-hyperscale-useful-diagnostic-queries.md
 - name: Referens
   items:
     - name: Azure CLI

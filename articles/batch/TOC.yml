@@ -137,6 +137,8 @@
           href: batch-automatic-scaling.md
         - name: Välja en VM-storlek för beräkningsnoder
           href: batch-pool-vm-sizes.md
+        - name: Flytta från molntjänst till pooler för virtuella datorer
+          href: batch-pool-cloud-service-to-virtual-machine-configuration.md
         - name: Konfigurera åtkomst till beräkningsnoder
           href: pool-endpoint-configuration.md
         - name: Skapa en pool med Shared Image Gallery

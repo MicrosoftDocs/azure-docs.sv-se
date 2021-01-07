@@ -123,6 +123,8 @@
           href: troubleshoot-cross-region-replication.md
         - name: Felsöka volymer med dubbla protokoll
           href: troubleshoot-dual-protocol-volumes.md
+        - name: Felsöka NFSv4.1 Kerberos-volymer
+          href: troubleshoot-nfsv41-kerberos-volumes.md
         - name: Felsöka policyer för ögonblicksbilder
           href: troubleshoot-snapshot-policies.md
         - name: Felsöka fel i resursprovidern
