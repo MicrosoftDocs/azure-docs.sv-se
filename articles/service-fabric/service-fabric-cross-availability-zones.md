@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: 1217ecba7a5fcb3c0fc95f505e7ca07fc76129b2
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: f729c00d3b78631a32013ec9453302584cecbd16
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97930828"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97962439"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>Distribuera ett Azure Service Fabric-kluster över Tillgänglighetszoner
 Tillgänglighetszoner i Azure är ett erbjudande med hög tillgänglighet som skyddar dina program och data från data Center problem. En tillgänglighets zon är en unik fysisk plats utrustad med oberoende strömförsörjning, kylning och nätverk inom en Azure-region.
@@ -344,7 +344,7 @@ Fullständig exempel mal len finns [här](https://github.com/Azure-Samples/servi
 Om du vill aktivera zoner i en skalnings uppsättning för virtuella datorer måste du inkludera följande tre värden i den virtuella datorns skalnings uppsättnings resurs.
 
 * Det första värdet är egenskapen **zoner** , som anger Tillgänglighetszoner som finns i skalnings uppsättningen för den virtuella datorn.
-* Det andra värdet är egenskapen "singlePlacementGroup", som måste vara inställd på True.
+* Det andra värdet är egenskapen "singlePlacementGroup", som måste vara inställd på True. **Skalnings uppsättningen som sträcker sig över 3 AZ kan skala upp till 300 virtuella datorer även med "singlePlacementGroup = true".**
 * Det tredje värdet är "zoneBalance" och är valfritt, vilket garanterar strikt zon utjämning om värdet är true. Läs om [zoneBalancing](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones#zone-balancing).
 * Åsidosättningar av Faulydomain och UpgradeDomain måste inte konfigureras.
 

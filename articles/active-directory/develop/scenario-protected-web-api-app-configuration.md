@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: bfbfb1ff5b6cb9c711d987608226c51822dfc935
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 12eba5a0de85f97dba9c220ed71679bdd35d7482
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94442964"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963340"
 ---
 # <a name="protected-web-api-code-configuration"></a>Skyddat webb-API: kod konfiguration
 
@@ -140,7 +140,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
- För närvarande skapar ASP.NET Core mallar Azure Active Directory (Azure AD) webb-API: er som loggar in användare i din organisation eller i en organisation. De loggar inte in användare med personliga konton. Du kan dock ändra mallarna till att använda Microsoft Identity Platform-slutpunkten genom att använda [Microsoft. Identity. Web](https://www.nuget.org/packages/Microsoft.Identity.Web) och ersätta koden i *startup.cs* :
+ För närvarande skapar ASP.NET Core mallar Azure Active Directory (Azure AD) webb-API: er som loggar in användare i din organisation eller i en organisation. De loggar inte in användare med personliga konton. Du kan dock ändra mallarna till att använda Microsoft Identity Platform-slutpunkten genom att använda [Microsoft. Identity. Web](https://www.nuget.org/packages/Microsoft.Identity.Web) och ersätta koden i *startup.cs*:
 
 ```csharp
 using Microsoft.Identity.Web;
@@ -170,12 +170,12 @@ services.AddControllers();
 ```
 
 > [!NOTE]
-> Om du använder Microsoft. identitet. Web och inte anger `Audience` i *appsettings.jspå* , används följande:
+> Om du använder Microsoft. identitet. Web och inte anger `Audience` i *appsettings.jspå*, används följande:
 > -  `$"{ClientId}"` Om du har angett [åtkomst-token godkänd version](scenario-protected-web-api-app-registration.md#accepted-token-version) till `2` , eller för Azure AD B2C webb-API: er.
 > - `$"api://{ClientId}` i alla andra fall (för v 1.0- [åtkomsttoken](access-tokens.md)).
 > Mer information finns i Microsoft. Identity. Web [Source Code](https://github.com/AzureAD/microsoft-identity-web/blob/d2ad0f5f830391a34175d48621a2c56011a45082/src/Microsoft.Identity.Web/Resource/RegisterValidAudience.cs#L70-L83).
 
-Föregående kodfragment extraheras från den [ASP.net Core stegvisa självstudien för webb-API](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/63087e83326e6a332d05fee6e1586b66d840b08f/1.%20Desktop%20app%20calls%20Web%20API/TodoListService/Startup.cs#L23-L28). Informationen om **AddMicrosoftIdentityWebApiAuthentication** finns i [Microsoft. Identity. Web](https://github.com/AzureAD/microsoft-identity-web/blob/d2ad0f5f830391a34175d48621a2c56011a45082/src/Microsoft.Identity.Web/WebApiExtensions/WebApiServiceCollectionExtensions.cs#L27). Den här metoden anropar [AddMicrosoftWebAPI](https://github.com/AzureAD/microsoft-identity-web/blob/d2ad0f5f830391a34175d48621a2c56011a45082/src/Microsoft.Identity.Web/WebApiExtensions/WebApiAuthenticationBuilderExtensions.cs#L58), som i sin tur instruerar mellanprogram för att validera token. Mer information finns i [käll koden](https://github.com/AzureAD/microsoft-identity-web/blob/d2ad0f5f830391a34175d48621a2c56011a45082/src/Microsoft.Identity.Web/WebApiExtensions/WebApiAuthenticationBuilderExtensions.cs#L104-L122).
+Föregående kodfragment extraheras från den [ASP.net Core stegvisa självstudien för webb-API](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/63087e83326e6a332d05fee6e1586b66d840b08f/1.%20Desktop%20app%20calls%20Web%20API/TodoListService/Startup.cs#L23-L28). Informationen om **AddMicrosoftIdentityWebApiAuthentication** finns i [Microsoft. Identity. Web](microsoft-identity-web.md). Den här metoden anropar [AddMicrosoftIdentityWebAPI](https://docs.microsoft.com/dotnet/api/microsoft.identity.web.microsoftidentitywebapiauthenticationbuilderextensions.addmicrosoftidentitywebapi?view=azure-dotnet-preview&preserve-view=true), som i sin tur instruerar mellanprogram för att validera token.
 
 ## <a name="token-validation"></a>Verifiering av token
 
@@ -210,7 +210,7 @@ Verifierarna är kopplade till egenskaperna för klassen **TokenValidationParame
 
 I de flesta fall behöver du inte ändra parametrarna. Appar som inte är enskilda klienter är undantag. Dessa webbappar godkänner användare från vilken organisation som helst eller från personliga Microsoft-konton. Utfärdare i det här fallet måste val IDE ras. Microsoft. Identity. Web tar hand om verifiering av utfärdaren. Mer information finns i Microsoft. Identity. Web [AadIssuerValidator](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web/Resource/AadIssuerValidator.cs).
 
-I ASP.NET Core, om du vill anpassa parametrarna för token-validering, använder du följande kod avsnitt i din *startup.cs* :
+I ASP.NET Core, om du vill anpassa parametrarna för token-validering, använder du följande kod avsnitt i din *startup.cs*:
 
 ```c#
 services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)

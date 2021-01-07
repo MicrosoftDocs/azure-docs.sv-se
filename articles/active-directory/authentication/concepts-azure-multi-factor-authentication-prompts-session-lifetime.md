@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8789015c239aae58ec25f0f644d4c497da477c2b
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 0033b6985313de351ffdaf7028d2c1e9bd76ba72
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97881250"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963527"
 ---
 # <a name="optimize-reauthentication-prompts-and-understand-session-lifetime-for-azure-ad-multi-factor-authentication"></a>Optimera omautentiserings-prompter och förstå sessionens livs längd för Azure AD Multi-Factor Authentication
 
@@ -121,7 +121,7 @@ Utför följande steg för att konfigurera principer för villkorlig åtkomst f�
 1. Välj **säkerhet** och sedan **villkorlig åtkomst**.
 1. Konfigurera en princip med hjälp av rekommenderade alternativ för hantering av sessioner som beskrivs i den här artikeln.
 
-Om du vill granska livs längd för token [använder du Azure AD PowerShell för att skicka frågor till alla Azure AD-principer](../develop/configure-token-lifetimes.md#prerequisites). Inaktivera eventuella principer som du har på plats.
+Om du vill granska livs längd för token [använder du Azure AD PowerShell för att skicka frågor till alla Azure AD-principer](../develop/configure-token-lifetimes.md#get-started). Inaktivera eventuella principer som du har på plats.
 
 Om mer än en inställning har Aktiver ATS i din klient organisation rekommenderar vi att du uppdaterar dina inställningar baserat på vilken licensiering som är tillgänglig för dig. Om du till exempel har Azure AD Premium-licenser bör du bara använda principen för villkorlig åtkomst för *inloggnings frekvens* och *beständig webbläsarsession*. Om du har Microsoft 365 appar eller Azure AD-kostnads fria licenser bör du använda konfigurationen *är fortfarande inloggad?*
 

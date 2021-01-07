@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/05/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: cbae833c1b207669e35b467707f946e9bafe31d2
-ms.sourcegitcommit: c538b6e4cf27b992500c079ad9c914c05d55eb7f
+ms.openlocfilehash: 077d200dcaf957f636acecebb441ff99a68eb96f
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/03/2021
-ms.locfileid: "97854952"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963595"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Integrera en app med ett virtuellt Azure-nätverk
 
@@ -130,6 +130,12 @@ GRÄNSSNITTET App Service plan VNet-integration visar alla VNet-integreringar so
 
 * **Sync-nätverk**: åtgärden synkronisera nätverk används endast för funktionen Gateway-beroende VNet-integrering. Att utföra en synkroniserad nätverks åtgärd garanterar att dina certifikat och nätverksinformation är synkroniserade. Om du lägger till eller ändrar DNS för ditt VNet, utför du en synkronisera nätverks åtgärd. Den här åtgärden startar om alla appar som använder det här virtuella nätverket. Den här åtgärden fungerar inte om du använder en app och ett virtuellt nätverk som tillhör olika prenumerationer.
 * **Lägg till vägar: Lägg** till vägar enheter utgående trafik till ditt VNet.
+
+Den privata IP-adress som tilldelas till instansen exponeras via miljövariabeln **WEBSITE_PRIVATE_IP**. Kudu-konsolens gränssnitt visar också en lista över de miljövariabler som är tillgängliga för webbappen. Den här IP-adressen tilldelas från adress intervallet för det integrerade under nätet. För regional VNet-integrering är värdet för WEBSITE_PRIVATE_IP en IP-adress från adress intervallet för det delegerade under nätet och för gateway-nödvändig VNet-integrering är värdet en IP från adress intervallet för den punkt-till-plats-adresspool som kon figurer ATS på Virtual Network Gateway. Detta är den IP-adress som ska användas av webbappen för att ansluta till resurserna via Virtual Network. 
+
+> [!NOTE]
+> Värdet för WEBSITE_PRIVATE_IP har bundits för att ändras. Det kommer dock att vara en IP-adress inom adress intervallet för integrations under nätet eller adress intervallet för punkt-till-plats, så du måste tillåta åtkomst från hela adress intervallet.
+>
 
 ### <a name="gateway-required-vnet-integration-routing"></a>Gateway-nödvändig VNet-integrering routning
 Vägarna som definieras i ditt VNet används för att dirigera trafik till ditt VNet från din app. Om du vill skicka ytterligare utgående trafik till VNet lägger du till dessa adress block här. Den här funktionen fungerar bara med Gateway-nödvändig VNet-integrering. Routningstabeller påverkar inte din app-trafik när du använder Gateway-nödvändig VNet-integrering på det sätt som de gör med regional VNet-integration.

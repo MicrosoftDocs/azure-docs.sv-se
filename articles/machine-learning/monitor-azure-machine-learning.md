@@ -9,19 +9,19 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 10/01/2020
-ms.openlocfilehash: a77f9c8f7e37d2c5a040a48b6bd96bef11d51f14
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 183d8b415ccb35d22dcc23ccf11d0707ad0778dd
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94533488"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963663"
 ---
 # <a name="monitor-azure-machine-learning"></a>Övervaka Azure Machine Learning
 
 När du har viktiga program och affärs processer som förlitar sig på Azure-resurser, vill du övervaka resurserna för deras tillgänglighet, prestanda och drift. I den här artikeln beskrivs övervaknings data som genereras av Azure Machine Learning och hur du analyserar och varnar dessa data med Azure Monitor.
 
 > [!TIP]
-> Informationen i det här dokumentet är främst avsedd för __Administratörer__ , som beskriver övervakningen av Azure Machine Learning tjänsten och tillhör ande Azure-tjänster. Om du är __data expert__ eller __utvecklare__ och vill övervaka information som är unik för din *modell utbildning* , se följande dokument:
+> Informationen i det här dokumentet är främst avsedd för __Administratörer__, som beskriver övervakningen av Azure Machine Learning tjänsten och tillhör ande Azure-tjänster. Om du är __data expert__ eller __utvecklare__ och vill övervaka information som är unik för din *modell utbildning*, se följande dokument:
 >
 > * [Starta, övervaka och avbryta inlärnings körningar](how-to-manage-runs.md)
 > * [Loggmått för träningskörningar](how-to-track-experiments.md)
@@ -91,6 +91,8 @@ Alla mått för Azure Machine Learning finns i namn området **Machine Learning 
 
 För referens kan du se en lista över [alla resurs mått som stöds i Azure Monitor](../azure-monitor/platform/metrics-supported.md).
 
+> [!TIP]
+> Azure Monitor Mät data är tillgängliga i 90 dagar. Men när du skapar diagram kan endast 30 dagar visualiseras. Om du till exempel vill visualisera en 90-dagars period måste du dela upp den i tre diagram om 30 dagar inom 90-dagars period.
 ### <a name="filtering-and-splitting"></a>Filtrering och delning
 
 För mått som stöder dimensioner kan du använda filter med hjälp av ett dimensions värde. Filtrera exempelvis **aktiva kärnor** för ett **kluster namn** `cpu-cluster` . 
@@ -162,7 +164,7 @@ Du kan få åtkomst till aviseringar för Azure Machine Learning genom att öppn
 
 I följande tabell visas vanliga och rekommenderade mått för varnings regler för Azure Machine Learning:
 
-| Aviseringstyp | Condition (Väderförhållanden) | Beskrivning |
+| Aviseringstyp | Villkor | Beskrivning |
 |:---|:---|:---|
 | Modelldistribution misslyckades | Sammansättnings typ: Total, operator: större än, tröskelvärde: 0 | När en eller flera modell distributioner har misslyckats |
 | Kvot användning i procent | Sammansättnings typ: genomsnitt, operator: större än, tröskelvärde: 90| När kvot användnings procenten är större än 90% |

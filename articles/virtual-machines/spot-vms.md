@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: cynthn
 ms.reviewer: jagaveer
-ms.openlocfilehash: b8e5c6b6b755134772cc8eaea3dab3af7f5346c9
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: e1666b7e74ceefd7e7e4fe6e499667b09efa0ac7
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963371"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963801"
 ---
 # <a name="use-spot-vms-in-azure"></a>Använda virtuella datorer i Azure
 
@@ -81,7 +81,7 @@ Du kan se historiska priser och avlägsna priser per storlek i en region i porta
 
 **Tabell**:
 
-:::image type="content" source="./media/spot-table.png" alt-text="Skärm bild av alternativen för region med skillnaden i pris-och borttagnings taxa som ett diagram.":::
+:::image type="content" source="./media/spot-table.png" alt-text="Skärm bild av alternativen för region med skillnaden i pris-och borttagnings satser som en tabell.":::
 
 
 
@@ -110,6 +110,11 @@ Du kan se historiska priser och avlägsna priser per storlek i en region i porta
 **F:** Var kan jag skicka frågor?
 
 **A:** Du kan skicka och tagga din fråga med `azure-spot` på [Q&A](/answers/topics/azure-spot.html). 
+
+
+**F:** Hur kan jag ändra det högsta priset för en virtuell dator?
+
+**A:** Innan du kan ändra det högsta priset måste du frigöra den virtuella datorn. Sedan kan du ändra det högsta priset i portalen, från **konfigurations** avsnittet för den virtuella datorn. 
 
 ## <a name="next-steps"></a>Nästa steg
 Använd [CLI](./linux/spot-cli.md), [Portal](spot-portal.md), [arm-mallen](./linux/spot-template.md)eller [PowerShell](./windows/spot-powershell.md) för att distribuera virtuella datorer.

@@ -1,7 +1,7 @@
 ---
 title: Konfigurerbara livstider för token
 titleSuffix: Microsoft identity platform
-description: Lär dig hur du ställer in livs längder för token som utfärdats av Microsoft Identity Platform.
+description: Lär dig hur du ställer in livs längder för åtkomst, SAML och ID-token som utfärdats av Microsoft Identity Platform.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -9,65 +9,20 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/14/2020
+ms.date: 01/04/2021
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40, content-perf, FY21Q1, contperf-fy21q1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: f73186612fe79af88e84956bb4d0f0b374f4c986
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: ecd7c3b034a65fa239248bf0e286181475376da2
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97507803"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963487"
 ---
 # <a name="configurable-token-lifetimes-in-microsoft-identity-platform-preview"></a>Konfigurerbara livstider för token i Microsoft Identity Platform (för hands version)
 
-> [!IMPORTANT]
-> Efter den 2020 kommer klient organisationer inte längre att kunna konfigurera livstid för uppdatering och sessionstoken.  Azure Active Directory slutar att svara på befintlig konfiguration och sessionstoken i principer efter 30 januari 2021. Du kan fortfarande konfigurera livstid för åtkomsttoken efter utfasningen.
->
-> Om du behöver fortsätta att definiera tids perioden innan en användare uppmanas att logga in igen, konfigurerar du inloggnings frekvensen i villkorlig åtkomst. Om du vill veta mer om villkorlig åtkomst kan du gå till [Konfigurera hantering av autentisering med villkorlig åtkomst](/azure/active-directory/conditional-access/howto-conditional-access-session-lifetime).
->
-> För klienter som inte vill använda villkorlig åtkomst efter indragnings datumet kan de förväntas vara att Azure AD följer standard konfigurationen som beskrivs i nästa avsnitt.
-
-## <a name="configurable-token-lifetime-properties-after-the-retirement"></a>Konfigurerbara egenskaper för token-livstid efter pensionering
-Konfiguration av och sessionstoken påverkas av följande egenskaper och deras värden. Efter indragningen av konfigurationen och konfigurationen av sessionstoken kommer Azure AD endast att följa standardvärdet som beskrivs nedan, oavsett om principer har anpassade värden konfigurerade konfigurerade anpassade värden. Du kan fortfarande konfigurera livstid för åtkomsttoken efter indragningen. 
-
-|Egenskap   |Princip egenskaps sträng    |Nätverk |Standardvärde |
-|----------|-----------|------------|------------|
-|Maximal inaktiv tid för uppdateringstoken |MaxInactiveTime  |Uppdatera token |90 dagar  |
-|Högsta ålder för Single-Factor uppdaterad token  |MaxAgeSingleFactor  |Uppdatera tokens (för alla användare)  |Tills den har återkallats  |
-|Högsta ålder för Multi-Factor Refresh-token  |MaxAgeMultiFactor  |Uppdatera tokens (för alla användare) |180 dagar  |
-|Högsta ålder för Single-Factor sessionstoken  |MaxAgeSessionSingleFactor |Token för sessioner (beständiga och inte permanenta)  |Tills den har återkallats |
-|Högsta ålder för Multi-Factor session  |MaxAgeSessionMultiFactor  |Token för sessioner (beständiga och inte permanenta)  |180 dagar |
-
-## <a name="identify-configuration-in-scope-of-retirement"></a>Identifiera konfiguration i omfånget för pensionering
-
-Gör så här för att komma igång:
-
-1. Ladda ned den senaste [Azure AD PowerShell-modulens offentliga för hands version](https://www.powershellgallery.com/packages/AzureADPreview).
-1. Kör `Connect` kommandot för att logga in på ditt Azure AD-administratörskonto. Kör det här kommandot varje gången du startar en ny session.
-
-    ```powershell
-    Connect-AzureAD -Confirm
-    ```
-
-1. Om du vill se alla principer som har skapats i din organisation kör du cmdleten [Get-AzureADPolicy](/powershell/module/azuread/get-azureadpolicy?view=azureadps-2.0-preview&preserve-view=true) .  Eventuella resultat med definierade egenskaps värden som skiljer sig från de standardvärden som anges ovan är i omfånget för indragningen.
-
-    ```powershell
-    Get-AzureADPolicy -All
-    ```
-
-1. Om du vill se vilka appar och tjänst huvud namn som är länkade till en speciell princip som du har identifierat kör du följande [Get-AzureADPolicyAppliedObject](/powershell/module/azuread/get-azureadpolicyappliedobject?view=azureadps-2.0-preview&preserve-view=true) -cmdlet genom att ersätta **1a37dad8-5da7-4cc8-87c7-efbc0326cf20** med något av dina princip-ID: n. Sedan kan du bestämma om du vill konfigurera inloggnings frekvensen för villkorlig åtkomst eller behålla standardinställningarna för Azure AD.
-
-    ```powershell
-    Get-AzureADPolicyAppliedObject -id 1a37dad8-5da7-4cc8-87c7-efbc0326cf20
-    ```
-
-Om din klient har principer som definierar anpassade värden för konfigurations egenskaperna för uppdatering och sessionstoken, rekommenderar Microsoft att du uppdaterar principerna till värden som motsvarar de standardinställningar som beskrivs ovan. Om inga ändringar görs kommer Azure AD automatiskt att respektera standardvärdena.  
-
-## <a name="overview"></a>Översikt
-
-Du kan ange livs längden för en token som utfärdats av Microsoft Identity Platform. Du kan ange token-livslängd för alla program i din organisation, för ett program med flera klientorganisationer eller för en specifik huvudtjänst i organisationen. Men vi stöder för närvarande inte konfigurering av livs längderna för de [hanterade identitets tjänstens huvud namn](../managed-identities-azure-resources/overview.md).
+Du kan ange livs längd för åtkomst, ID eller SAML-token som utfärdats av Microsoft Identity Platform. Du kan ange token-livslängd för alla program i din organisation, för ett program med flera klientorganisationer eller för en specifik huvudtjänst i organisationen. Men vi stöder för närvarande inte konfigurering av livs längderna för de [hanterade identitets tjänstens huvud namn](../managed-identities-azure-resources/overview.md).
 
 I Azure AD representerar ett princip objekt en uppsättning regler som tillämpas på enskilda program eller på alla program i en organisation. Varje princip typ har en unik struktur med en uppsättning egenskaper som tillämpas på objekt som de är tilldelade till.
 
@@ -79,13 +34,19 @@ Exempel [på hur du konfigurerar livs längd för token](configure-token-lifetim
 > Konfigurations bara livs längds princip för token gäller endast för mobila och Station ära klienter som har åtkomst till SharePoint Online-och OneDrive för företag-resurser och gäller inte för webbläsarfönster.
 > Om du vill hantera livs längden för webb läsar sessioner för SharePoint Online och OneDrive för företag, använder du funktionen [livs längd för session för villkorlig åtkomst](../conditional-access/howto-conditional-access-session-lifetime.md) . Se [SharePoint Online-bloggen](https://techcommunity.microsoft.com/t5/SharePoint-Blog/Introducing-Idle-Session-Timeout-in-SharePoint-and-OneDrive/ba-p/119208) om du vill veta mer om hur du konfigurerar tids gränser för inaktiv session.
 
-## <a name="token-types"></a>Token-typer
+## <a name="license-requirements"></a>Licenskrav
 
-Du kan ange livs längds principer för token för uppdateringstoken, åtkomsttoken, SAML-token, tokens och ID-token.
+Om du använder den här funktionen krävs en licens för Azure AD Premium P1. Information om rätt licens för dina krav finns i [jämföra allmänt tillgängliga funktioner i de kostnads fria versionerna och Premium-versionerna](https://azure.microsoft.com/pricing/details/active-directory/).
+
+Kunder med [Microsoft 365 Business licenser](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description) har också till gång till funktioner för villkorlig åtkomst.
+
+## <a name="token-lifetime-policies-for-access-saml-and-id-tokens"></a>Livs längds principer för token för åtkomst, SAML och ID-token
+
+Du kan ange livs längds principer för token, SAML-tokens och ID-token. 
 
 ### <a name="access-tokens"></a>Åtkomsttokens
 
-Klienter använder åtkomsttoken för att få åtkomst till en skyddad resurs. En åtkomsttoken kan bara användas för en speciell kombination av användare, klient och resurs. Åtkomsttoken kan inte återkallas och är giltiga tills deras förfallo datum har passerats. En skadlig aktör som har fått en åtkomsttoken kan använda den för sin livs längd. Att justera livs längden för en åtkomsttoken är en kompromiss mellan att förbättra systemets prestanda och att öka den tid som klienten behåller åtkomsten efter att användarens konto har inaktiverats. Förbättrad system prestanda uppnås genom att minska antalet gånger som en klient behöver skaffa en ny åtkomsttoken.  Standardvärdet är 1 timme – efter 1 timme, klienten måste använda uppdateringstoken till (normalt tyst) Hämta en ny uppdateringstoken och åtkomsttoken. 
+Klienter använder åtkomsttoken för att få åtkomst till en skyddad resurs. En åtkomsttoken kan bara användas för en speciell kombination av användare, klient och resurs. Åtkomsttoken kan inte återkallas och är giltiga tills deras förfallo datum har passerats. En skadlig aktör som har fått en åtkomsttoken kan använda den för sin livs längd. Att justera livs längden för en åtkomsttoken är en kompromiss mellan att förbättra systemets prestanda och att öka den tid som klienten behåller åtkomsten efter att användarens konto har inaktiverats. Förbättrad system prestanda uppnås genom att minska antalet gånger som en klient behöver skaffa en ny åtkomsttoken.  Standardvärdet är 1 timme – efter 1 timme, klienten måste använda uppdateringstoken till (normalt tyst) Hämta en ny uppdateringstoken och åtkomsttoken.
 
 ### <a name="saml-tokens"></a>SAML-token
 
@@ -94,6 +55,38 @@ SAML-token används av många webbaserade SAAS-program och hämtas med hjälp av
 Värdet för NotOnOrAfter kan ändras med hjälp av `AccessTokenLifetime` parametern i en `TokenLifetimePolicy` . Den ställs in på den livstid som kon figurer ATS i principen om det finns någon, plus en klock skev på fem minuter.
 
 Den angivna NotOnOrAfter i `<SubjectConfirmationData>` elementet påverkas inte av konfigurationen för token livs längd. 
+
+### <a name="id-tokens"></a>ID-tokens
+
+ID-token skickas till webbplatser och interna klienter. ID-tokens innehåller profil information om en användare. En ID-token är kopplad till en speciell kombination av användare och klient. ID-token anses giltiga tills de upphör att gälla. Vanligt vis matchar ett webb program en användares sessions livs längd i programmet till livs längden för den ID-token som utfärdats för användaren. Du kan justera livs längden för en ID-token för att styra hur ofta webb programmet ska upphöra med programsessionen och hur ofta det krävs att användaren autentiseras på nytt med Microsoft Identity Platform (antingen tyst eller interaktivt).
+
+### <a name="token-lifetime-policy-properties"></a>Princip egenskaper för token livstid
+
+En livs längds princip för token är en typ av princip objekt som innehåller livs längds regler för token. Den här principen styr hur länge åtkomst, SAML och ID-token för den här resursen betraktas som giltiga. Om ingen princip har angetts tillämpar systemet standard livstid svärdet. 
+
+Att minska livs längden för åtkomsttoken minskar risken för att en åtkomsttoken eller ID-token används av en skadlig aktör under en längre tid. (De här token kan inte återkallas.) Kompromissen är att prestanda påverkas negativt, eftersom token måste ersättas oftare.
+
+Ett exempel finns i [skapa en princip för webb inloggning](configure-token-lifetimes.md#create-a-policy-for-web-sign-in).
+
+| Egenskap | Princip egenskaps sträng | Nätverk | Standard | Minimum | Maximal |
+| --- | --- | --- | --- | --- | --- |
+| Livstid för åtkomsttoken |AccessTokenLifetime |Åtkomsttoken, ID-token, SAML2-token |1 timme |10 minuter |1 dag |
+
+> [!NOTE]
+> För att säkerställa att Microsoft Teams webb klienten fungerar rekommenderar vi att du håller AccessTokenLifetime till mer än 15 minuter för Microsoft Teams.
+
+## <a name="token-lifetime-policies-for-refresh-tokens-and-session-tokens"></a>Livs längds principer för token för uppdateringstoken och sessionstoken
+
+Du kan ange livs längds principer för token för uppdateringstoken och sessionstoken.
+
+> [!IMPORTANT]
+> Från maj till 2020 kan nya klienter inte konfigurera livstid för uppdatering och sessionstoken.  Innehavare med befintlig konfiguration kan ändra uppdaterings-och token-principer fram till den 30 januari 2021.   Azure Active Directory slutar att svara på befintlig konfiguration och sessionstoken i principer efter 30 januari 2021. Du kan fortfarande konfigurera åtkomst-, SAML-och ID-livstid för token efter indragningen.
+>
+> Om du behöver fortsätta att definiera tids perioden innan en användare uppmanas att logga in igen, konfigurerar du inloggnings frekvensen i villkorlig åtkomst. Läs mer om villkorlig åtkomst i [Konfigurera hantering av autentisering med villkorlig åtkomst](/azure/active-directory/conditional-access/howto-conditional-access-session-lifetime).
+>
+> Om du inte vill använda villkorlig åtkomst efter indragnings datumet kommer dina uppdaterings-och sessionstoken att ställas in på [standard konfigurationen](#configurable-token-lifetime-properties-after-the-retirement) på det datumet och du kommer inte längre att kunna ändra deras livstid.
+
+:::image type="content" source="./media/active-directory-configurable-token-lifetimes/roadmap.svg" alt-text="Information om pension":::
 
 ### <a name="refresh-tokens"></a>Uppdatera token
 
@@ -111,9 +104,6 @@ Offentliga klienter kan inte lagra ett klient lösen ord på ett säkert sätt (
 > [!NOTE]
 > Egenskapen max ålder är den tid som en enskild token kan användas. 
 
-### <a name="id-tokens"></a>ID-tokens
-ID-token skickas till webbplatser och interna klienter. ID-tokens innehåller profil information om en användare. En ID-token är kopplad till en speciell kombination av användare och klient. ID-token anses giltiga tills de upphör att gälla. Vanligt vis matchar ett webb program en användares sessions livs längd i programmet till livs längden för den ID-token som utfärdats för användaren. Du kan justera livs längden för en ID-token för att kontrol lera hur ofta webb programmet upphör att gälla, och hur ofta den kräver att användaren autentiseras med Microsoft Identity Platform (antingen tyst eller interaktivt).
-
 ### <a name="single-sign-on-session-tokens"></a>Token för enkel inloggning
 När en användare autentiserar med Microsoft Identity Platform upprättas en enkel inloggnings session (SSO) med användarens webbläsare och Microsoft Identity Platform. SSO-token i form av en cookie representerar den här sessionen. SSO-sessionstoken är inte kopplat till ett specifik resurs-/klient program. SSO-sessionstoken kan återkallas och deras giltighet kontrol leras varje gång de används.
 
@@ -123,13 +113,12 @@ Token för inte beständig session har en livs längd på 24 timmar. Permanenta 
 
 Du kan använda en princip för att ställa in tiden efter att den första sessionstoken har utfärdats utanför vilken sessionstoken inte längre accepteras. (Om du vill göra det använder du egenskapen token för sessionstoken max ålder.) Du kan justera livs längden för en sessions-token för att styra när och hur ofta en användare krävs för att ange autentiseringsuppgifter igen, i stället för att bli tyst autentiserad, när du använder ett webb program.
 
-### <a name="token-lifetime-policy-properties"></a>Princip egenskaper för token livstid
+### <a name="refresh-and-session-token-lifetime-policy-properties"></a>Egenskaper för varaktighet för att uppdatera och sessionstoken
 En livs längds princip för token är en typ av princip objekt som innehåller livs längds regler för token. Använd egenskaperna för principen för att kontrol lera angivna livstider för token. Om ingen princip har angetts tillämpar systemet standard livstid svärdet.
 
-### <a name="configurable-token-lifetime-properties"></a>Egenskaper för konfigurerbar token-livstid
-| Egenskap | Princip egenskaps sträng | Nätverk | Standardvärde | Minimum | Maximal |
+#### <a name="configurable-token-lifetime-properties"></a>Egenskaper för konfigurerbar token-livstid
+| Egenskap | Princip egenskaps sträng | Nätverk | Standard | Minimum | Maximal |
 | --- | --- | --- | --- | --- | --- |
-| Livstid för åtkomsttoken |AccessTokenLifetime<sup>2</sup> |Åtkomsttoken, ID-token, SAML2-token |1 timme |10 minuter |1 dag |
 | Maximal inaktiv tid för uppdateringstoken |MaxInactiveTime |Uppdatera token |90 dagar |10 minuter |90 dagar |
 | Högsta ålder för Single-Factor uppdaterad token |MaxAgeSingleFactor |Uppdatera tokens (för alla användare) |Tills den har återkallats |10 minuter |Till och med återkalla<sup>1</sup> |
 | Högsta ålder för Multi-Factor Refresh-token |MaxAgeMultiFactor |Uppdatera tokens (för alla användare) | 180 dagar |10 minuter |180 dagar<sup>1</sup> |
@@ -137,10 +126,9 @@ En livs längds princip för token är en typ av princip objekt som innehåller 
 | Högsta ålder för Multi-Factor session |MaxAgeSessionMultiFactor |Token för sessioner (beständiga och inte permanenta) | 180 dagar |10 minuter | 180 dagar<sup>1</sup> |
 
 * <sup>1</sup>365 dagar är den maximala explicita längden som kan anges för dessa attribut.
-* <sup>2</sup> För att säkerställa att Microsoft Teams webb klienten fungerar rekommenderar vi att du håller AccessTokenLifetime till mer än 15 minuter för Microsoft Teams.
 
-### <a name="exceptions"></a>Undantag
-| Egenskap | Nätverk | Standardvärde |
+#### <a name="exceptions"></a>Undantag
+| Egenskap | Nätverk | Standard |
 | --- | --- | --- |
 | Uppdatera token max ålder (utfärdat för federerade användare som har otillräcklig åter kallelse information<sup>1</sup>) |Uppdatera tokens (utfärdat för federerade användare som har otillräcklig återkallnings information<sup>1</sup>) |12 timmar |
 | Maximal inaktiv tid för uppdateringstoken (utfärdat för konfidentiella klienter) |Uppdatera tokens (utfärdat för konfidentiella klienter) |90 dagar |
@@ -148,52 +136,9 @@ En livs längds princip för token är en typ av princip objekt som innehåller 
 
 * <sup>1</sup> federerade användare som har otillräcklig information om återkallade certifikat inkluderar alla användare som inte har attributet "LastPasswordChangeTimestamp" synkroniserat. Dessa användare ges denna kortaste ålder eftersom Azure Active Directory inte kan verifiera när token som är knutna till en gammal autentiseringsuppgift (till exempel ett lösen ord som har ändrats) kan återkallas, och de måste komma tillbaka oftare för att säkerställa att användaren och tillhör ande tokens fortfarande är i ett lyckat position. För att förbättra den här upplevelsen måste klient administratörerna se till att de synkroniserar attributet "LastPasswordChangeTimestamp" (detta kan anges för användarobjektet med PowerShell eller via AADSync).
 
-### <a name="policy-evaluation-and-prioritization"></a>Princip utvärdering och prioritering
-Du kan skapa och tilldela en livs längd princip för token till ett särskilt program, till din organisation och till tjänstens huvud namn. Flera principer kan gälla för ett enskilt program. Den token-princip för token som börjar gälla följer dessa regler:
+### <a name="configurable-policy-property-details"></a>Konfigurerbar princip egenskaps information
 
-* Om en princip uttryckligen tilldelas till tjänstens huvud namn, tillämpas den.
-* Om ingen princip tilldelas explicit till tjänstens huvud namn tillämpas en princip som uttryckligen tilldelas till den överordnade organisationen för tjänstens huvud namn.
-* Om ingen princip har tilldelats till tjänstens huvud namn eller till organisationen tillämpas principen som tilldelats programmet.
-* Om ingen princip har tilldelats till tjänstens huvud namn, organisation eller program objekt, tillämpas standardvärdena. (Mer information finns i tabellen i [konfigurations bara livs längds egenskaper för token](#configurable-token-lifetime-properties).)
-
-Mer information om relationen mellan program objekt och tjänst huvud objekt finns i [program-och tjänst huvud objekt i Azure Active Directory](app-objects-and-service-principals.md).
-
-Giltighet för token utvärderas vid den tidpunkt då token används. Principen med den högsta prioriteten för det program som används börjar gälla.
-
-Alla tidsintervallen som används här är formaterade enligt C# [TimeSpan](/dotnet/api/system.timespan) -objekt-D. hh: mm: SS.  Så 80 dagar och 30 minuter skulle vara det `80.00:30:00` .  Den inledande D-funktionen kan tas bort om den är noll, så 90 minuter `00:90:00` .  
-
-> [!NOTE]
-> Här är ett exempel scenario.
->
-> En användare vill ha åtkomst till två webb program: webb program A och webb program B.
-> 
-> Förhållanden
-> * Båda webb programmen finns i samma överordnade organisation.
-> * Token för token 1 med en sessionstoken max ålder på åtta timmar har angetts som överordnad organisations standard.
-> * Webb program A är ett webb program som används ofta och inte är länkat till några principer.
-> * Webb program B används för mycket känsliga processer. Tjänstens huvud namn är länkat till livs längd policy 2, som har en högsta ålder på en token på 30 minuter.
->
-> Vid 12:00 PM startar användaren en ny webbläsarsession och försöker komma åt webb program A. Användaren omdirigeras till Microsoft Identity Platform och uppmanas att logga in. Detta skapar en cookie som har en sessionstoken i webbläsaren. Användaren omdirigeras tillbaka till webb program A med en ID-token som ger användaren åtkomst till programmet.
->
-> Vid 12:15 PM försöker användaren komma åt webb program B. Webbläsaren omdirigeras till Microsoft Identity Platform, som identifierar sessionens cookie. Webb program B:s tjänstens huvud namn är länkat till livs längd policy 2, men är också en del av den överordnade organisationen, med standard livstid för token 1. Livs längd för token-princip 2 börjar gälla eftersom principer som är kopplade till tjänstens huvud namn har högre prioritet än organisationens standard principer. Sessionstoken utfärdades ursprungligen under de senaste 30 minuterna, så det anses vara giltigt. Användaren omdirigeras tillbaka till webb program B med en ID-token som ger åtkomst till dem.
->
-> Vid 1:00 PM försöker användaren komma åt webb program A. Användaren omdirigeras till Microsoft Identity Platform. Webb program A är inte länkad till några principer, men eftersom den finns i en organisation med token för standard-token 1 börjar den tillämpas. Sessions-cookien som ursprungligen utfärdades under de senaste åtta timmarna har upptäckts. Användaren omdirigeras tyst tillbaka till webb program A med en ny ID-token. Användaren behöver inte autentiseras.
->
-> Omedelbart efteråt försöker användaren komma åt webb program B. Användaren omdirigeras till Microsoft Identity Platform. Som tidigare börjar token för token-princip 2 gälla. Eftersom token utfärdades mer än 30 minuter sedan uppmanas användaren att ange sina inloggnings uppgifter igen. En ny session-token och ID-token utfärdas. Användaren kan sedan komma åt webb program B.
->
->
-
-## <a name="configurable-policy-property-details"></a>Konfigurerbar princip egenskaps information
-### <a name="access-token-lifetime"></a>Livstid för åtkomsttoken
-**Sträng:** AccessTokenLifetime
-
-**Påverkar:** Åtkomsttoken, ID-token, SAML-token
-
-**Sammanfattning:** Den här principen styr hur länge åtkomst-och ID-token för den här resursen betraktas som giltiga. Att minska livs längden för åtkomsttoken minskar risken för att en åtkomsttoken eller ID-token används av en skadlig aktör under en längre tid. (De här token kan inte återkallas.) Kompromissen är att prestanda påverkas negativt, eftersom token måste ersättas oftare.
-
-Ett exempel finns i [skapa en princip för webb inloggning](configure-token-lifetimes.md#create-a-policy-for-web-sign-in).
-
-### <a name="refresh-token-max-inactive-time"></a>Maximal inaktiv tid för uppdateringstoken
+#### <a name="refresh-token-max-inactive-time"></a>Maximal inaktiv tid för uppdateringstoken
 **Sträng:** MaxInactiveTime
 
 **Påverkar:** Uppdatera token
@@ -206,7 +151,7 @@ Egenskapen för maximal inaktiv tid för uppdateringstoken måste anges till ett
 
 Ett exempel finns i [skapa en princip för en intern app som anropar ett webb-API](configure-token-lifetimes.md#create-a-policy-for-a-native-app-that-calls-a-web-api).
 
-### <a name="single-factor-refresh-token-max-age"></a>Högsta ålder för Single-Factor uppdaterad token
+#### <a name="single-factor-refresh-token-max-age"></a>Högsta ålder för Single-Factor uppdaterad token
 **Sträng:** MaxAgeSingleFactor
 
 **Påverkar:** Uppdatera token
@@ -217,7 +162,7 @@ Att minska den högsta åldern tvingar användare att autentisera sig oftare. Ef
 
 Ett exempel finns i [skapa en princip för en intern app som anropar ett webb-API](configure-token-lifetimes.md#create-a-policy-for-a-native-app-that-calls-a-web-api).
 
-### <a name="multi-factor-refresh-token-max-age"></a>Högsta ålder för Multi-Factor Refresh-token
+#### <a name="multi-factor-refresh-token-max-age"></a>Högsta ålder för Multi-Factor Refresh-token
 **Sträng:** MaxAgeMultiFactor
 
 **Påverkar:** Uppdatera token
@@ -228,7 +173,7 @@ Att minska den högsta åldern tvingar användare att autentisera sig oftare. Ef
 
 Ett exempel finns i [skapa en princip för en intern app som anropar ett webb-API](configure-token-lifetimes.md#create-a-policy-for-a-native-app-that-calls-a-web-api).
 
-### <a name="single-factor-session-token-max-age"></a>Högsta ålder för Single-Factor sessionstoken
+#### <a name="single-factor-session-token-max-age"></a>Högsta ålder för Single-Factor sessionstoken
 **Sträng:** MaxAgeSessionSingleFactor
 
 **Påverkar:** Token för sessioner (beständiga och inte permanenta)
@@ -239,7 +184,7 @@ Att minska den högsta åldern tvingar användare att autentisera sig oftare. Ef
 
 Ett exempel finns i [skapa en princip för webb inloggning](configure-token-lifetimes.md#create-a-policy-for-web-sign-in).
 
-### <a name="multi-factor-session-token-max-age"></a>Högsta ålder för Multi-Factor session
+#### <a name="multi-factor-session-token-max-age"></a>Högsta ålder för Multi-Factor session
 **Sträng:** MaxAgeSessionMultiFactor
 
 **Påverkar:** Token för sessioner (beständiga och inte permanenta)
@@ -247,6 +192,52 @@ Ett exempel finns i [skapa en princip för webb inloggning](configure-token-life
 **Sammanfattning:** Den här principen styr hur länge en användare kan använda en sessionstoken för att hämta ett nytt ID och sessionstoken efter den senaste gången de autentiserades genom att använda flera faktorer. När en användare autentiserar och tar emot en ny sessionstoken, kan användaren använda sessionens token-flöde under den angivna tids perioden. (Detta är sant så länge den aktuella sessionstoken inte har återkallats och har inte gått ut.) Efter den angivna tids perioden tvingas användaren att autentisera igen för att ta emot en ny sessionstoken.
 
 Att minska den högsta åldern tvingar användare att autentisera sig oftare. Eftersom autentisering med en faktor anses vara mindre säker än Multi-Factor Authentication, rekommenderar vi att du ställer in den här egenskapen till ett värde som är lika med eller större Single-Factor än max ålders egenskapen för sessionstoken.
+
+## <a name="configurable-token-lifetime-properties-after-the-retirement"></a>Konfigurerbara egenskaper för token-livstid efter pensionering
+Konfiguration av och sessionstoken påverkas av följande egenskaper och deras värden. Efter indragningen av uppdateringen och konfigurationen av sessionstoken den 30 januari 2021 kommer Azure AD endast att följa standardvärdena som beskrivs nedan. Om du väljer att inte använda villkorlig åtkomst för att hantera inloggnings frekvensen, ställs dina uppdaterings-och sessionstoken in på standard konfigurationen på det datumet och du kommer inte längre att kunna ändra deras livs längd.  
+
+|Egenskap   |Princip egenskaps sträng    |Nätverk |Standard |
+|----------|-----------|------------|------------|
+|Livstid för åtkomsttoken |AccessTokenLifetime |Åtkomsttoken, ID-token, SAML2-token |1 timme |
+|Maximal inaktiv tid för uppdateringstoken |MaxInactiveTime  |Uppdatera token |90 dagar  |
+|Högsta ålder för Single-Factor uppdaterad token  |MaxAgeSingleFactor  |Uppdatera tokens (för alla användare)  |Tills den har återkallats  |
+|Högsta ålder för Multi-Factor Refresh-token  |MaxAgeMultiFactor  |Uppdatera tokens (för alla användare) |Tills den har återkallats  |
+|Högsta ålder för Single-Factor sessionstoken  |MaxAgeSessionSingleFactor |Token för sessioner (beständiga och inte permanenta)  |Tills den har återkallats |
+|Högsta ålder för Multi-Factor session  |MaxAgeSessionMultiFactor  |Token för sessioner (beständiga och inte permanenta)  |Tills den har återkallats |
+
+Du kan använda PowerShell för att hitta de principer som kommer att påverkas av indragningen.  Använd [PowerShell-cmdletarna](configure-token-lifetimes.md#get-started) för att se alla principer som skapats i din organisation, eller för att hitta vilka appar och tjänst huvud namn som är länkade till en speciell princip.
+
+## <a name="policy-evaluation-and-prioritization"></a>Princip utvärdering och prioritering
+Du kan skapa och tilldela en livs längd princip för token till ett särskilt program, till din organisation och till tjänstens huvud namn. Flera principer kan gälla för ett enskilt program. Den token-princip för token som börjar gälla följer dessa regler:
+
+* Om en princip uttryckligen tilldelas till tjänstens huvud namn, tillämpas den.
+* Om ingen princip tilldelas explicit till tjänstens huvud namn tillämpas en princip som uttryckligen tilldelas till den överordnade organisationen för tjänstens huvud namn.
+* Om ingen princip har tilldelats till tjänstens huvud namn eller till organisationen tillämpas principen som tilldelats programmet.
+* Om ingen princip har tilldelats till tjänstens huvud namn, organisation eller program objekt, tillämpas standardvärdena. (Mer information finns i tabellen i [konfigurations bara livs längds egenskaper för token](#configurable-token-lifetime-properties-after-the-retirement).)
+
+Mer information om relationen mellan program objekt och tjänst huvud objekt finns i [program-och tjänst huvud objekt i Azure Active Directory](app-objects-and-service-principals.md).
+
+Giltighet för token utvärderas vid den tidpunkt då token används. Principen med den högsta prioriteten för det program som används börjar gälla.
+
+Alla tidsintervallen som används här är formaterade enligt C# [TimeSpan](/dotnet/api/system.timespan) -objekt-D. hh: mm: SS.  Så 80 dagar och 30 minuter skulle vara det `80.00:30:00` .  Den inledande D-funktionen kan tas bort om den är noll, så 90 minuter `00:90:00` .  
+
+### <a name="example-scenario"></a>Exempelscenario
+
+En användare vill ha åtkomst till två webb program: webb program A och webb program B.
+
+Förhållanden
+* Båda webb programmen finns i samma överordnade organisation.
+* Token för token 1 med en sessionstoken max ålder på åtta timmar har angetts som överordnad organisations standard.
+* Webb program A är ett webb program som används ofta och inte är länkat till några principer.
+* Webb program B används för mycket känsliga processer. Tjänstens huvud namn är länkat till livs längd policy 2, som har en högsta ålder på en token på 30 minuter.
+
+Vid 12:00 PM startar användaren en ny webbläsarsession och försöker komma åt webb program A. Användaren omdirigeras till Microsoft Identity Platform och uppmanas att logga in. Detta skapar en cookie som har en sessionstoken i webbläsaren. Användaren omdirigeras tillbaka till webb program A med en ID-token som ger användaren åtkomst till programmet.
+
+Vid 12:15 PM försöker användaren komma åt webb program B. Webbläsaren omdirigeras till Microsoft Identity Platform, som identifierar sessionens cookie. Webb program B:s tjänstens huvud namn är länkat till livs längd policy 2, men är också en del av den överordnade organisationen, med standard livstid för token 1. Livs längd för token-princip 2 börjar gälla eftersom principer som är kopplade till tjänstens huvud namn har högre prioritet än organisationens standard principer. Sessionstoken utfärdades ursprungligen under de senaste 30 minuterna, så det anses vara giltigt. Användaren omdirigeras tillbaka till webb program B med en ID-token som ger åtkomst till dem.
+
+Vid 1:00 PM försöker användaren komma åt webb program A. Användaren omdirigeras till Microsoft Identity Platform. Webb program A är inte länkad till några principer, men eftersom den finns i en organisation med token för standard-token 1 börjar den tillämpas. Sessions-cookien som ursprungligen utfärdades under de senaste åtta timmarna har upptäckts. Användaren omdirigeras tyst tillbaka till webb program A med en ny ID-token. Användaren behöver inte autentiseras.
+
+Omedelbart efteråt försöker användaren komma åt webb program B. Användaren omdirigeras till Microsoft Identity Platform. Som tidigare börjar token för token-princip 2 gälla. Eftersom token utfärdades mer än 30 minuter sedan uppmanas användaren att ange sina inloggnings uppgifter igen. En ny session-token och ID-token utfärdas. Användaren kan sedan komma åt webb program B.
 
 ## <a name="cmdlet-reference"></a>Cmdlet-referens
 
@@ -281,12 +272,6 @@ Du kan använda följande cmdletar för principer för tjänstens huvud namn.
 | [Add-AzureADServicePrincipalPolicy](/powershell/module/azuread/add-azureadserviceprincipalpolicy?view=azureadps-2.0-preview&preserve-view=true) | Länkar den angivna principen till ett huvud namn för tjänsten. |
 | [Get-AzureADServicePrincipalPolicy](/powershell/module/azuread/get-azureadserviceprincipalpolicy?view=azureadps-2.0-preview&preserve-view=true) | Hämtar en princip som är länkad till det angivna huvud namnet för tjänsten.|
 | [Remove-AzureADServicePrincipalPolicy](/powershell/module/azuread/remove-azureadserviceprincipalpolicy?view=azureadps-2.0-preview&preserve-view=true) | Tar bort principen från det angivna huvud namnet för tjänsten.|
-
-## <a name="license-requirements"></a>Licenskrav
-
-Om du använder den här funktionen krävs en licens för Azure AD Premium P1. Information om rätt licens för dina krav finns i [jämföra allmänt tillgängliga funktioner i de kostnads fria versionerna och Premium-versionerna](https://azure.microsoft.com/pricing/details/active-directory/).
-
-Kunder med [Microsoft 365 Business licenser](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description) har också till gång till funktioner för villkorlig åtkomst.
 
 ## <a name="next-steps"></a>Nästa steg
 

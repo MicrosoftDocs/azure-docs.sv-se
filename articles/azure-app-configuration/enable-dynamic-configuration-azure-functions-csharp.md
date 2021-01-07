@@ -15,16 +15,16 @@ ms.date: 11/17/2019
 ms.author: zhenlwa
 ms.custom: devx-track-csharp, azure-functions
 ms.tgt_pltfrm: Azure Functions
-ms.openlocfilehash: e603aa8ba85fdd214c04de515f405bcf9028791e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: add4b54adb02db09536f4e56a7f039c46245c182
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88207108"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963572"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-azure-functions-app"></a>Självstudie: Använd dynamisk konfiguration i en Azure Functions app
 
-Appens konfiguration .NET-standardprovidern för konfiguration stöder cachelagring och uppdatering av konfigurationen dynamiskt genom program aktivitet. Den här självstudien visar hur du kan implementera dynamiska konfigurationsuppdateringar i koden. Den bygger på den Azure Functions app som introducerades i snabb starterna. Innan du fortsätter måste du [skapa en Azure Functions-app med Azure App-konfigurationen](./quickstart-azure-functions-csharp.md) först.
+Konfigurations leverantören för app Configuration .NET har stöd för cachelagring och uppdatering av konfigurationen dynamiskt av program aktiviteten. Den här självstudien visar hur du kan implementera dynamiska konfigurationsuppdateringar i koden. Den bygger på den Azure Functions app som introducerades i snabb starterna. Innan du fortsätter måste du [skapa en Azure Functions-app med Azure App-konfigurationen](./quickstart-azure-functions-csharp.md) först.
 
 I den här guiden får du lära dig att:
 
@@ -41,44 +41,71 @@ I den här guiden får du lära dig att:
 
 ## <a name="reload-data-from-app-configuration"></a>Läsa in data på nytt från App Configuration
 
-1. Öppna *Function1.cs*. Förutom `static` egenskapen `Configuration` lägger du till en ny `static` egenskap `ConfigurationRefresher` för att hålla en singleton-instans av `IConfigurationRefresher` som ska användas för att signalera konfigurations uppdateringar under funktions anrop senare.
+1. Öppna *startup.cs* och uppdatera `ConfigureAppConfiguration` metoden. 
+
+   `ConfigureRefresh`Metoden registrerar en inställning för att kontrol lera ändringar varje gång en uppdatering utlöses i programmet, vilket du gör i det senare steget när du lägger till `_configurationRefresher.TryRefreshAsync()` . `refreshAll`Parametern instruerar appens konfigurations leverantör att läsa in hela konfigurationen igen varje gång en ändring identifieras i den registrerade inställningen.
+
+    Alla inställningar som har registrerats för uppdatering har ett förfallo datum för cachen på 30 sekunder. Den kan uppdateras genom att anropa- `AzureAppConfigurationRefreshOptions.SetCacheExpiration` metoden.
 
     ```csharp
-    private static IConfiguration Configuration { set; get; }
-    private static IConfigurationRefresher ConfigurationRefresher { set; get; }
-    ```
-
-2. Uppdatera konstruktorn och Använd `ConfigureRefresh` metoden för att ange inställningen som ska uppdateras från appens konfigurations arkiv. En instans av `IConfigurationRefresher` hämtas med hjälp av `GetRefresher` metoden. Om du vill kan vi också ändra tids perioden för konfigurations-cachens förfallo tid till 1 minut från standard 30 sekunder.
-
-    ```csharp
-    static Function1()
+    public override void ConfigureAppConfiguration(IFunctionsConfigurationBuilder builder)
     {
-        var builder = new ConfigurationBuilder();
-        builder.AddAzureAppConfiguration(options =>
+        builder.ConfigurationBuilder.AddAzureAppConfiguration(options =>
         {
             options.Connect(Environment.GetEnvironmentVariable("ConnectionString"))
+                   // Load all keys that start with `TestApp:`
+                   .Select("TestApp:*")
+                   // Configure to reload configuration if the registered 'Sentinel' key is modified
                    .ConfigureRefresh(refreshOptions =>
-                        refreshOptions.Register("TestApp:Settings:Message")
-                                      .SetCacheExpiration(TimeSpan.FromSeconds(60))
-            );
-            ConfigurationRefresher = options.GetRefresher();
+                      refreshOptions.Register("TestApp:Settings:Sentinel", refreshAll: true));
         });
-        Configuration = builder.Build();
     }
     ```
 
-3. Uppdatera `Run` metoden och signalen för att uppdatera konfigurationen med `TryRefreshAsync` metoden i början av funktions anropet. Detta är ingen-op om perioden för förfallo tid för cache inte har uppnåtts. Ta bort `await` operatorn om du vill att konfigurationen ska uppdateras utan att blockeras.
+   > [!TIP]
+   > När du uppdaterar flera nyckel värden i app-konfigurationen vill du normalt inte att ditt program ska läsa in konfigurationen igen innan alla ändringar görs. Du kan registrera en **kontroll** nyckel och bara uppdatera den när alla andra konfigurations ändringar har slutförts. Detta hjälper till att säkerställa att konfigurationen är konsekvent i ditt program.
+
+2. Uppdatera `Configure` metoden för att göra Azure App konfigurations tjänster tillgängliga via beroende inmatning.
 
     ```csharp
-    public static async Task<IActionResult> Run(
+    public override void Configure(IFunctionsHostBuilder builder)
+    {
+        builder.Services.AddAzureAppConfiguration();
+    }
+    ```
+
+3. Öppna *Function1.cs* och Lägg till följande namn rymder.
+
+    ```csharp
+    using System.Linq;
+    using Microsoft.Extensions.Configuration.AzureAppConfiguration;
+    ```
+
+   Uppdatera konstruktorn för att hämta instansen för `IConfigurationRefresherProvider` genom beroende insprutning, från vilken du kan hämta instansen av `IConfigurationRefresher` .
+
+    ```csharp
+    private readonly IConfiguration _configuration;
+    private readonly IConfigurationRefresher _configurationRefresher;
+
+    public Function1(IConfiguration configuration, IConfigurationRefresherProvider refresherProvider)
+    {
+        _configuration = configuration;
+        _configurationRefresher = refresherProvider.Refreshers.First();
+    }
+    ```
+
+4. Uppdatera `Run` metoden och signalen för att uppdatera konfigurationen med `TryRefreshAsync` metoden i början av funktions anropet. Det kommer inte att vara något-op om perioden för förfallo tid för cache inte har uppnåtts. Ta bort `await` operatorn om du vill att konfigurationen ska uppdateras utan att blockera det aktuella funktions anropet. I så fall kommer senare Functions-anrop att få ett uppdaterat värde.
+
+    ```csharp
+    public async Task<IActionResult> Run(
         [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req, ILogger log)
     {
         log.LogInformation("C# HTTP trigger function processed a request.");
 
-        await ConfigurationRefresher.TryRefreshAsync(); 
+        await _configurationRefresher.TryRefreshAsync(); 
 
         string keyName = "TestApp:Settings:Message";
-        string message = Configuration[keyName];
+        string message = _configuration[keyName];
             
         return message != null
             ? (ActionResult)new OkObjectResult(message)
@@ -88,7 +115,7 @@ I den här guiden får du lära dig att:
 
 ## <a name="test-the-function-locally"></a>Testa funktionen lokalt
 
-1. Ange en miljö variabel med namnet **ConnectionString**och ange den till åtkomst nyckeln till appens konfigurations arkiv. Om du använder kommando tolken i Windows kör du följande kommando och startar om kommando tolken för att ändringarna ska börja gälla:
+1. Ange en miljö variabel med namnet **ConnectionString** och ange den till åtkomst nyckeln till appens konfigurations arkiv. Om du använder kommando tolken i Windows kör du följande kommando och startar om kommando tolken för att ändringarna ska börja gälla:
 
     ```console
     setx ConnectionString "connection-string-of-your-app-configuration-store"
@@ -116,19 +143,27 @@ I den här guiden får du lära dig att:
 
     ![Snabbstart för lokal funktionsstart](./media/quickstarts/dotnet-core-function-launch-local.png)
 
-5. Logga in på [Azure-portalen](https://portal.azure.com). Välj **alla resurser**och välj den instans av app Configuration Store som du skapade i snabb starten.
+5. Logga in på [Azure-portalen](https://portal.azure.com). Välj **alla resurser** och välj det app konfigurations lager som du skapade i snabb starten.
 
-6. Välj **Configuration Explorer**och uppdatera värdena för följande nyckel:
+6. Välj **Configuration Explorer** och uppdatera värdet för följande nyckel:
 
     | Tangent | Värde |
     |---|---|
     | TestApp:Settings:Message | Data från Azure App konfiguration – uppdaterad |
 
-7. Uppdatera webbläsaren några gånger. När den cachelagrade inställningen upphör att gälla efter en minut, visar sidan svaret på funktions anropet med det uppdaterade värdet.
+   Skapa sedan kontroll nyckeln eller ändra dess värde om det redan finns, till exempel
+
+    | Tangent | Värde |
+    |---|---|
+    | TestApp: inställningar: Sentinel | v1 |
+
+
+7. Uppdatera webbläsaren några gånger. När den cachelagrade inställningen upphör att gälla efter 30 sekunder, visar sidan svaret på funktions anropet med det uppdaterade värdet.
 
     ![Snabb starts funktion uppdatera lokal](./media/quickstarts/dotnet-core-function-refresh-local.png)
 
-Exempel koden som används i den här självstudien kan hämtas från [app Configuration GitHub lagrings platsen](https://github.com/Azure/AppConfiguration/tree/master/examples/DotNetCore/AzureFunction)
+> [!NOTE]
+> Exempel koden som används i den här självstudien kan hämtas från [app Configuration GitHub lagrings platsen](https://github.com/Azure/AppConfiguration/tree/master/examples/DotNetCore/AzureFunction).
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
