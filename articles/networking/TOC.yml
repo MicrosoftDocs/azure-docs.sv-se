@@ -51,6 +51,11 @@
               href: azure-network-latency.md
             - name: Inställningar för Internetroutning i Azure
               href: ../virtual-network/routing-preference-overview.md
+        - name: Säkerhet
+          items:
+            - name: Säkerhetskontroller av Azure Policy
+              displayName: 'regulatory, compliance, standards, domains'
+              href: ./security-controls-policy.md
         - name: Virtuella nätverk
           href: ../virtual-network/virtual-networks-overview.md?toc=%2fazure%2fnetworking%2ftoc.json
         - name: Utjämning av nätverksbelastning
@@ -135,6 +140,9 @@
       href: 'https://azure.microsoft.com/develop/nodejs/#azure-sdk'
     - name: REST
       href: 'https://msdn.microsoft.com/library/mt163658.aspx'
+    - name: Inbyggda Azure Policy-program
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: Resurser
   items:
     - name: Skapa mallar

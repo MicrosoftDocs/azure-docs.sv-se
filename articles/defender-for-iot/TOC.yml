@@ -3,6 +3,8 @@
 - name: Översikt
   href: overview.md
   items:
+    - name: Nyheter
+      href: release-notes.md
     - name: Lösningsarkitektur
       href: architecture.md
 - name: Snabbstarter

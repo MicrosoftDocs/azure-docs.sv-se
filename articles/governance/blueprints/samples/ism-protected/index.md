@@ -3,16 +3,16 @@ title: Översikt över skissexempel på den australiska regeringens ISM PROTECTE
 description: En översikt över skissexemplet på den australiska regeringens ISM PROTECTED-kontroller. Det här skissexemplet hjälper kunderna att utvärdera specifika ISM PROTECTED-kontroller.
 ms.date: 09/11/2020
 ms.topic: sample
-ms.openlocfilehash: 4e6b1db0d2f4ecff13068c8e673f2237740ffec2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 69f18c7a34bdf39ebbc2031b187d033c999165a9
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90038710"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955577"
 ---
 # <a name="overview-of-the-australian-government-ism-protected-blueprint-sample"></a>En översikt över skissexemplet på den australiska regeringens ISM PROTECTED-kontroller
 
-ISM Governance-skissexemplen tillhandahåller en uppsättning styrningsriktlinjer som använder [Azure Policy](../../../policy/overview.md) och som hjälper dig med attesteringen för ISM PROTECTED (versionen från Feb 2020). Den här skissen hjälper kunder att distribuera en grundläggande uppsättning principer för Azure-distribuerade arkitekturer som kräver ackreditering eller efterlevnad med ISM-ramverket. Avsnittet om kontrollmappning innehåller information om de principer som ingår i det här initiativet och hur dessa principer hjälper till att uppfylla olika kontroller som definieras i ISM-ramverket. Resurser som tilldelats till en arkitektur utvärderas för icke-kompabilitet med tilldelade principer av Azure Policy.
+ISM Governance-skissexemplen tillhandahåller en uppsättning styrningsriktlinjer som använder [Azure Policy](../../../policy/overview.md) och som hjälper dig med attesteringen för ISM PROTECTED (versionen från Feb 2020). Den här skissen hjälper kunder att distribuera en grundläggande uppsättning principer för Azure-distribuerade arkitekturer som kräver ackreditering eller efterlevnad med ISM-ramverket. 
 
 ## <a name="control-mapping"></a>Kontrollmappning
 
