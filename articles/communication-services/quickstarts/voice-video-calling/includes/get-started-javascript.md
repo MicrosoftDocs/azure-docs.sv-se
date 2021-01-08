@@ -6,66 +6,24 @@ ms.author: nimag
 ms.date: 08/11/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: d35e51d097c2d5e0b66c23efa27ae70c065d547c
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: f3d6023ffd3043bc57727fc39f077dd0ce7eccb8
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96584464"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98024382"
 ---
 I den här snabb starten får du lära dig hur du startar ett samtal med Azure Communication Services som anropar klient bibliotek för Java Script.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Node.js](https://nodejs.org/) Aktiva LTS-och underhålls LTS-versioner (8.11.1 och 10.14.1 rekommenderas).
 - En Active Communication Services-resurs. [Skapa en kommunikations tjänst resurs](../../create-communication-resource.md).
 - En token för användar åtkomst för att instansiera anrops klienten. Lär dig hur du [skapar och hanterar användar åtkomst-token](../../access-tokens.md).
 
-## <a name="setting-up"></a>Konfigurera
 
-### <a name="create-a-new-nodejs-application"></a>Skapa ett nytt Node.js-program
-
-Öppna terminalen eller kommando fönstret Skapa en ny katalog för din app och navigera till den.
-
-```console
-mkdir calling-quickstart && cd calling-quickstart
-```
-
-Kör `npm init -y` för att skapa en **package.jspå** en fil med standardinställningar.
-
-```console
-npm init -y
-```
-
-### <a name="install-the-package"></a>Installera paketet
-
-Använd `npm install` kommandot för att installera Azure Communication Services som anropar klient bibliotek för Java Script.
-
-```console
-npm install @azure/communication-common --save
-npm install @azure/communication-calling --save
-```
-
-Följande versioner av WebPack rekommenderas för den här snabb starten:
-
-```console
-"webpack": "^4.42.0",
-"webpack-cli": "^3.3.11",
-"webpack-dev-server": "^3.10.3"
-```
-
-I det här `--save` alternativet visas biblioteket som ett beroende i **package.jsi** filen.
-
-### <a name="set-up-the-app-framework"></a>Konfigurera app Framework
-
-I den här snabb starten används WebPack för att paketera program till gångarna. Kör följande kommando för att installera WebPack-, WebPack-CLI-och WebPack-dev-Server NPM-paket och lista dem som utvecklings beroenden i din **package.jspå**:
-
-```console
-npm install webpack@4.42.0 webpack-cli@3.3.11 webpack-dev-server@3.10.3 --save-dev
-```
-
-Skapa en **index.html** -fil i projektets rot Katalog. Vi använder den här filen för att konfigurera en grundläggande layout som gör det möjligt för användaren att placera ett anrop till en Azure Communications-robot.
+[!INCLUDE [Calling with JavaScript](./get-started-javascript-setup.md)]
 
 Här är koden:
 

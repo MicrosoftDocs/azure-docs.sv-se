@@ -8,12 +8,12 @@ ms.author: dademath
 ms.date: 07/28/2020
 ms.topic: include
 ms.service: azure-communication-services
-ms.openlocfilehash: daf2d675bbbee324769b6e1e8d8d34587d37c72f
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 9755cebf66a8c468b29737262bc3c32ae9f5422f
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94886631"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98024268"
 ---
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -112,14 +112,8 @@ module.exports = async function (context, req) {
 
     const userToken = await tokenClient.issueToken(user, ["voip"]);
 
-    const response = {
-        "User" : userToken.user,
-        "Token": userToken.token,
-        "ExpiresOn": userToken.expiresOn
-    }
-
     context.res = {
-        body: response
+        body: userToken
     };
 }
 ```
