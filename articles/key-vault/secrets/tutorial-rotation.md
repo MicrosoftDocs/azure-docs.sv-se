@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 01/26/2020
 ms.author: mbaldwin
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5e61510965693e123c724d7b40d2fa6071fdd94c
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: 61e1e729ab0aeac1f7b8e5ee6787da38c5fef108
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97824805"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020153"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-that-use-one-set-of-authentication-credentials"></a>Automatisera rotationen av en hemlighet för resurser som använder en uppsättning autentiseringsuppgifter för autentisering
 
@@ -244,11 +244,11 @@ Webb programmet kräver följande komponenter:
 
 Gå till den distribuerade program-URL: en:
  
-https://akvrotation-app.azurewebsites.net/
+'https://akvrotation-app.azurewebsites.net/'
 
 När programmet öppnas i webbläsaren visas det **genererade hemliga värdet** och värdet *Sant* för **databas anslutet** .
 
-## <a name="learn-more"></a>Läs mer
+## <a name="learn-more"></a>Mer information
 
 - Självstudie: [rotation för resurser med två uppsättningar autentiseringsuppgifter](tutorial-rotation-dual.md)
 - Översikt: [övervaka Key Vault med Azure Event Grid](../general/event-grid-overview.md)

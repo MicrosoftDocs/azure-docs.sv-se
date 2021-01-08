@@ -1,19 +1,18 @@
 ---
 title: Testa ett Azure Stream Analytics jobb med exempel data
 description: I den här artikeln beskrivs hur du använder Azure Portal för att testa ett Azure Stream Analytics jobb, exempel på indata och ladda upp exempel data.
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: ajetasin
+ms.author: ajetasi
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 3/6/2020
 ms.custom: seodec18
-ms.openlocfilehash: 8e08c4c34495b58c105560dba9d818be9ebf5e34
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: eff9103f476e6074ab46198ff8cc78588675569f
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94490975"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020051"
 ---
 # <a name="test-an-azure-stream-analytics-job-in-the-portal"></a>Testa ett Azure Stream Analytics jobb i portalen
 
@@ -37,11 +36,11 @@ Azure Stream Analytics hämtar automatiskt händelser från dina strömmande ind
     
    c. Om data som visas inte är aktuella väljer du **Uppdatera** för att se de senaste händelserna.
 
-   Följande tabell är ett exempel på data i **tabell format** :
+   Följande tabell är ett exempel på data i **tabell format**:
 
    ![Azure Stream Analytics exempel på indatatyp i tabell format](./media/stream-analytics-test-query/asa-sample-table.png)
 
-   Följande tabell är ett exempel på data i RAW- **format** :
+   Följande tabell är ett exempel på data i RAW- **format**:
 
    ![Azure Stream Analytics exempel på indata i RAW-format](./media/stream-analytics-test-query/asa-sample-raw.png)
 

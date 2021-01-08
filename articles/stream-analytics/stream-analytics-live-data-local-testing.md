@@ -1,19 +1,18 @@
 ---
 title: Testa Live-data med Azure Stream Analytics för Visual Studio
 description: Lär dig hur du testar ditt Azure Stream Analytics jobb lokalt med Live streaming-data.
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: ajetasin
+ms.author: ajetasi
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 0788d8b4f659364fcedc690185c9159a24434125
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 99e9ce85bb1e59b5016e836ff16d03cb3326ec8c
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93123922"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020374"
 ---
 # <a name="test-live-data-locally-using-azure-stream-analytics-tools-for-visual-studio-preview"></a>Testa Live data lokalt med Azure Stream Analytics verktyg för Visual Studio (för hands version)
 
@@ -31,7 +30,7 @@ Följande lokala test alternativ stöds:
 
 ## <a name="local-testing-with-live-data"></a>Lokal testning med real tids data
 
-1. När du har skapat ett [Azure Stream Analytics Cloud-projekt i Visual Studio](stream-analytics-quick-create-vs.md)öppnar du **script. asaql** . Den lokala testningen använder som standard lokala indata och lokala utdata.
+1. När du har skapat ett [Azure Stream Analytics Cloud-projekt i Visual Studio](stream-analytics-quick-create-vs.md)öppnar du **script. asaql**. Den lokala testningen använder som standard lokala indata och lokala utdata.
 
    ![Azure Stream Analytics Visual Studio lokal indata och lokal utdata](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-local-input-output.png)
 
@@ -43,7 +42,7 @@ Följande lokala test alternativ stöds:
 
    ![Start tid för Azure Stream Analytics Visual Studio Live data](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-cloud-input-start-time.png)
 
-4. Klicka på **Kör lokalt** . Ett konsol fönster visas med pågående förlopp och jobb mått. Om du vill stoppa processen kan du göra det manuellt. 
+4. Klicka på **Kör lokalt**. Ett konsol fönster visas med pågående förlopp och jobb mått. Om du vill stoppa processen kan du göra det manuellt. 
 
    ![Azure Stream Analytics Visual Studio Live data process-fönstret](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-cloud-input-process-window.png)
 

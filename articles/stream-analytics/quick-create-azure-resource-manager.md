@@ -3,19 +3,18 @@ title: Snabb start – skapa ett Azure Stream Analytics jobb genom Azure Resourc
 description: Den här snabb starten visar hur du använder Azure Resource Manager-mallen för att skapa ett Azure Stream Analytics jobb.
 services: stream-analytics
 ms.service: stream-analytics
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: jasonh
+author: sidramadoss
+ms.author: sidram
 ms.workload: big-data
 ms.topic: quickstart
 ms.custom: mvc, subject-armqs
 ms.date: 05/28/2020
-ms.openlocfilehash: 26ae0f5add40125b5e9c1ce9451583040322314b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 2e8e7890adcb6b91d79bbf4e119488e365410d3c
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88641901"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020085"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-by-using-an-arm-template"></a>Snabb start: skapa ett Azure Stream Analytics jobb med en ARM-mall
 

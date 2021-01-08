@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/10/2019
+ms.date: 01/07/2021
 ms.author: damendo
-ms.openlocfilehash: 959062d493d9eb47204be2488f216b70804b3605
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: e7585880b98f62f819ff344c82846c2cfb1fd620
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965773"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019830"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-network-watcher"></a>Vanliga frågor och svar om Azure Network Watcher
 [Azure Network Watcher](./network-watcher-monitoring-overview.md) -tjänsten innehåller en uppsättning verktyg för att övervaka, diagnostisera, Visa mått och aktivera eller inaktivera loggar för resurser i ett virtuellt Azure-nätverk. I den här artikeln besvaras vanliga frågor om tjänsten.
@@ -114,5 +114,5 @@ NSG flödes loggar är kompatibla med tjänst slut punkter utan att kräva någo
 ### <a name="what-is-the-difference-between-flow-logs-versions-1--2"></a>Vad är skillnaden mellan flödes loggar version 1 & 2?
 Flödes loggar version 2 introducerar konceptet *flödes tillstånd* & lagrar information om byte och paket som överförs. [Läs mer](./network-watcher-nsg-flow-logging-overview.md#log-format).
 
-## <a name="next-steps"></a>Nästa steg
+## <a name="next-steps"></a>Efterföljande moment
  - Gå till vår [översikts sida för dokumentation](./index.yml) för några självstudier för att komma igång med Network Watcher.

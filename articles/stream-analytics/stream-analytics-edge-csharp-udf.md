@@ -1,25 +1,24 @@
 ---
 title: Självstudie – Skriv C# användardefinierade funktioner för Azure Stream Analytics jobb i Visual Studio (för hands version)
 description: Den här självstudien visar hur du skriver c#-användardefinierade funktioner för Stream Analytics jobb i Visual Studio.
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: sidramadoss
+ms.author: sidram
 ms.service: stream-analytics
 ms.topic: tutorial
 ms.date: 12/06/2018
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: d53f13cb740b3feb39dc64ce012ff320afbb1db5
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 851229e441aa2fbdf7b6eec05390c0ce2b149da2
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130501"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020476"
 ---
 # <a name="tutorial-write-a-c-user-defined-function-for-azure-stream-analytics-job-preview"></a>Självstudie: skriva en C#-användardefinierad funktion för Azure Stream Analytics jobb (förhands granskning)
 
 Med användardefinierade funktioner med C# (UDF skapas i Visual Studio) kan du utöka Azure Stream Analytics-frågespråket med dina egna funktioner. Du kan återanvända befintlig kod (inklusive DLL-filer) och använda matematiska eller komplex logik med C#. Det finns tre sätt att implementera UDF:er: CodeBehind-filer i ett Stream Analytics-projekt, UDF:er från ett lokalt C#-projekt eller UDF:er från ett befintligt paket från ett lagringskonto. Den här självstudien använder metoden CodeBehind för att implementera en grundläggande C#-funktion. UDF-funktionen för Stream Analytics jobb är för närvarande en för hands version och bör inte användas i produktions arbets belastningar.
 
-I de här självstudierna får du lära dig att
+I den här guiden får du lära dig att:
 
 > [!div class="checklist"]
 > * Skapa en användardefinierad funktion i C# med CodeBehind.
@@ -42,17 +41,17 @@ Den behållare som du skapar kommer att användas för att lagra det kompilerade
 
 1. Starta Visual Studio.
 
-2. Välj **Arkiv > Nytt > Projekt** .
+2. Välj **Arkiv > Nytt > Projekt**.
 
-3. Välj **Stream Analytics** i listan mallar till vänster och välj sedan **Azure Stream Analytics Edge-program** eller **Azure Stream Analytics program** .
+3. Välj **Stream Analytics** i listan mallar till vänster och välj sedan **Azure Stream Analytics Edge-program** eller **Azure Stream Analytics program**.
 
-4.  Ange projektets **namn** , **plats** och **lösningsnamn** . Välj sedan **OK** .
+4.  Ange projektets **namn**, **plats** och **lösningsnamn**. Välj sedan **OK**.
 
     ![Skapa ett Azure Stream Analytics Edge-projekt i Visual Studio](./media/stream-analytics-edge-csharp-udf/stream-analytics-create-edge-app.png)
 
 ## <a name="configure-assembly-package-path"></a>Konfigurera sökvägen för sammansättningspaketet
 
-1. Öppna Visual Studio och navigera till **Solution Explorer** .
+1. Öppna Visual Studio och navigera till **Solution Explorer**.
 
 2. Dubbelklicka på jobbets konfigurationsfil, `EdgeJobConfig.json`.
 
@@ -69,9 +68,9 @@ Den behållare som du skapar kommer att användas för att lagra det kompilerade
 
 
 ## <a name="write-a-c-udf-with-codebehind"></a>Skriv en C#-UDF med CodeBehind
-En CodeBehind-fil är en C#-fil som associeras med ett enda ASA-frågeuttryck. Visual Studio-verktyg kommer automatiskt komprimera CodeBehind-filen och överföra den till Azure storage-kontot när den skickas. Alla klasser måste definieras som *offentliga* och alla objekt måste definieras som *statiska offentliga* .
+En CodeBehind-fil är en C#-fil som associeras med ett enda ASA-frågeuttryck. Visual Studio-verktyg kommer automatiskt komprimera CodeBehind-filen och överföra den till Azure storage-kontot när den skickas. Alla klasser måste definieras som *offentliga* och alla objekt måste definieras som *statiska offentliga*.
 
-1. I **Solution Explorer** , expandera **Script.asql** för att hitta CodeBehind-filen **Script.asaql.cs** .
+1. I **Solution Explorer**, expandera **Script.asql** för att hitta CodeBehind-filen **Script.asaql.cs**.
 
 2. Ersätt koden med följande exempel:
 
@@ -97,7 +96,7 @@ En CodeBehind-fil är en C#-fil som associeras med ett enda ASA-frågeuttryck. V
 
 ## <a name="implement-the-udf"></a>Implementera en användardefinerad funktion
 
-1. I **Solution Explorer** öppnar du filen **Script.asaql** .
+1. I **Solution Explorer** öppnar du filen **Script.asaql**.
 
 2. Ersätt den befintliga frågan med följande:
 
@@ -111,11 +110,11 @@ En CodeBehind-fil är en C#-fil som associeras med ett enda ASA-frågeuttryck. V
 
 1. Hämta [exempel data filen för temperatur simulatorn](https://raw.githubusercontent.com/Azure/azure-stream-analytics/master/Sample%20Data/TemperatureSampleData.json).
 
-2. I **Solution Explorer** , expandera **Indata** , högerklicka på **Input.json** och välj **Lägg till lokala indata** .
+2. I **Solution Explorer**, expandera **Indata**, högerklicka på **Input.json** och välj **Lägg till lokala indata**.
 
    ![Lägg till lokala indata till Stream Analytics-jobbet i Visual Studio](./media/stream-analytics-edge-csharp-udf/stream-analytics-add-local-input.png)
 
-3. Ange den lokala indatafilens sökväg för de exempeldata som du hämtade och **spara** .
+3. Ange den lokala indatafilens sökväg för de exempeldata som du hämtade och **spara**.
 
     ![Konfiguration för lokala indata till Stream Analytics-jobbet i Visual Studio](./media/stream-analytics-edge-csharp-udf/stream-analytics-local-input-config.png)
 
@@ -134,7 +133,7 @@ Du kan felsöka dina C#-UDF:er lokalt på samma sätt som du skulle felsöka sta
 
     ![Lägga till brytpunkter i en användardefinierad funktion för Stream Analytics i Visual Studio](./media/stream-analytics-edge-csharp-udf/stream-analytics-udf-breakpoints.png)
 
-2. Starta felsökningen genom att trycka på **F5** . Programmet kommer att avbrytas vid dina brytpunkter som förväntat.
+2. Starta felsökningen genom att trycka på **F5**. Programmet kommer att avbrytas vid dina brytpunkter som förväntat.
 
     ![Visa felsökningsresultat för användardefinierad funktion för Stream Analytics](./media/stream-analytics-edge-csharp-udf/stream-analytics-udf-debug.png)
 

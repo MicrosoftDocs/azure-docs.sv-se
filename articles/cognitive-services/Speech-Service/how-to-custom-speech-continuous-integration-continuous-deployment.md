@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/09/2020
 ms.author: kaprochi
-ms.openlocfilehash: 7e27c3dd6e70d9a532c326d8187d82e14bf7ddda
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: d37fca06a3d2eafa0af9e31c3a30ac66be5404f0
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97591624"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020612"
 ---
 # <a name="cicd-for-custom-speech"></a>CI/CD för Custom Speech
 
@@ -83,7 +83,7 @@ För en redan implementerad DevOps-lösning för Custom Speech går du till [Dev
 [DevOps-mallen för tal i lagrings platsen](https://github.com/Azure-Samples/Speech-Service-DevOps-Template) innehåller infrastrukturen och detaljerad vägledning för att:
 
 - Kopiera mallens lagrings plats till ditt GitHub-konto och skapa sedan Azure-resurser och ett [tjänst huvud namn](../../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) för GitHub-åtgärdens CI/CD-arbetsflöden.
-- Gå igenom "dev-den[inre slingan](https://mitchdenny.com/the-inner-loop/)". Uppdatera utbildning och testning av data från en funktions gren, testa ändringarna med en tillfällig utvecklings modell och generera en pull-begäran om att föreslå och granska ändringarna.
+- Gå igenom "dev-den[inre slingan](/dotnet/architecture/containerized-lifecycle/design-develop-containerized-apps/docker-apps-inner-loop-workflow)". Uppdatera utbildning och testning av data från en funktions gren, testa ändringarna med en tillfällig utvecklings modell och generera en pull-begäran om att föreslå och granska ändringarna.
 - När tränings data uppdateras i en pull-begäran till *huvud*, träna modeller med GitHub Actions CI-arbetsflöde.
 - Utför automatiserad precisions testning för att upprätta en modells [ord fel frekvens](how-to-custom-speech-evaluate-data.md#evaluate-custom-speech-accuracy) (WER). Lagra test resultatet i Azure blob.
 - Kör ett CD-arbetsflöde för att skapa en slut punkt när WER förbättras.

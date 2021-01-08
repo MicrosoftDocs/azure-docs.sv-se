@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
-ms.date: 07/11/2017
+ms.topic: reference
+ms.date: 01/07/2021
 ms.author: kenwith
-ms.openlocfilehash: 49dd8b65db771a182138f13218adda2f0e7f7396
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 18e29ce8bf744cabb31c5634c9b0ca547bca5acc
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96858237"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020680"
 ---
 # <a name="viewing-apps-using-your-azure-ad-tenant-for-identity-management"></a>Visa appar med hjälp av din Azure AD-klient för identitets hantering
 [Snabb starts serien i program hantering](view-applications-portal.md) guidar dig grunderna. I det här avsnittet får du lära dig hur du visar alla appar som använder Azure AD-klienten för identitets hantering. Den här artikeln dykningar en bit djupare i de typer av appar som du hittar.

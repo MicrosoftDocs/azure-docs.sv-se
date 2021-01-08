@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/16/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 12c9fd43933f9f54e013752c5fe482ce31650536
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 52a43874060748479beebc994bf0a9b663cde9dc
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95238402"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020187"
 ---
 # <a name="create-an-app-service-environment"></a>Skapa en App Service-miljön
 
@@ -20,10 +20,9 @@ ms.locfileid: "95238402"
 > Den här artikeln gäller App Service-miljön v3 (för hands version)
 > 
 
-[App Service-miljön (ASE)][Intro] är en enda klient distribution av app service som matas in i Azure-Virtual Network (VNet).  ASEv3 stöder endast exponerade appar på en privat adress i ditt VNet. När en ASEv3 skapas under för hands versionen läggs tre resurser till i din prenumeration.
+[App Service-miljön (ASE)][Intro] är en enda klient distribution av app service som matas in i Azure-Virtual Network (VNet).  ASEv3 stöder endast exponerade appar på en privat adress i ditt VNet. När en ASEv3 skapas under för hands versionen läggs resurserna till i din prenumeration.
 
 - App Service Environment
-- Azure DNS privat zon
 - Privat slutpunkt
 
 En distribution av en ASE kräver att två undernät används.  Ett undernät kommer att innehålla den privata slut punkten.  Det här under nätet kan användas för andra saker, till exempel virtuella datorer.  Det andra under nätet används för utgående anrop som görs från ASE.  Det går inte att använda det här under nätet för något annat än ASE. 

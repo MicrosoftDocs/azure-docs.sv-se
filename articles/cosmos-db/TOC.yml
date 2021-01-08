@@ -1270,7 +1270,7 @@
       items:
         - name: VANLIGA FRÅGOR OCH SVAR
           href: table-api-faq.md
-    - name: Instruktionsguider
+    - name: Anvisningar
       items:
         - name: Skapa appar med tabell-API
           href: table-support.md

@@ -1,19 +1,18 @@
 ---
 title: Felsöka indata för Azure Stream Analytics
 description: I den här artikeln beskrivs tekniker för att felsöka dina inaktuella anslutningar i Azure Stream Analytics-jobb.
-author: sidram
+author: sidramadoss
 ms.author: sidram
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.date: 05/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: 760c98ce9464e4d40f01256a973e07d9084c6dfe
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 2d7171c9ec1e60447fb3342caa72098fb2eb9337
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93123293"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019915"
 ---
 # <a name="troubleshoot-input-connections"></a>Felsöka indataanslutningar
 
@@ -79,7 +78,7 @@ Följ dessa steg om du vill lägga till en ny konsument grupp i Event Hubs-insta
 
 4. Välj Event Hub efter namn.
 
-5. På sidan **Event Hubs instans** , under rubriken **entiteter** , väljer du **konsument grupper** . En konsument grupp med namnet **$default** visas.
+5. På sidan **Event Hubs instans** , under rubriken **entiteter** , väljer du **konsument grupper**. En konsument grupp med namnet **$default** visas.
 
 6. Välj **+ konsument grupp** för att lägga till en ny konsument grupp. 
 

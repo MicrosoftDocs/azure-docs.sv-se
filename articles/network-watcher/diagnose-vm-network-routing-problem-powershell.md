@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: network-watcher
 ms.workload: infrastructure
-ms.date: 04/20/2018
+ms.date: 01/07/2021
 ms.author: damendo
 ms.custom: ''
-ms.openlocfilehash: 362157f023f7ed4d2da81962acd32e2da968193e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6569a99ec851da478151665921e7689e1c3488f1
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84738795"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020221"
 ---
 # <a name="diagnose-a-virtual-machine-network-routing-problem---azure-powershell"></a>Diagnostisera ett problem med nätverks dirigering för virtuella datorer – Azure PowerShell
 
@@ -94,7 +94,7 @@ Get-AzNetworkWatcherNextHop `
   -DestinationIPAddress 13.107.21.200
 ```
 
-Efter några sekunder informerar utdata om att **NextHopType** är **Internet**och att **RouteTableId** är **system väg**. Det innebär att du vet att det finns en giltig väg till målet.
+Efter några sekunder informerar utdata om att **NextHopType** är **Internet** och att **RouteTableId** är **system väg**. Det innebär att du vet att det finns en giltig väg till målet.
 
 Testa utgående kommunikation från den virtuella datorn till 172.31.0.100:
 
@@ -106,7 +106,7 @@ Get-AzNetworkWatcherNextHop `
   -DestinationIPAddress 172.31.0.100
 ```
 
-Utdata som returneras informerar dig om att **ingen** är **NextHopType**och att **RouteTableId** också är **system väg**. Resultatet visar att det visserligen finns en giltig systemväg till målet, men att det inte finns något nästa hopp för att dirigera trafiken till målet.
+Utdata som returneras informerar dig om att **ingen** är **NextHopType** och att **RouteTableId** också är **system väg**. Resultatet visar att det visserligen finns en giltig systemväg till målet, men att det inte finns något nästa hopp för att dirigera trafiken till målet.
 
 ## <a name="view-details-of-a-route"></a>Visa information om en väg
 

@@ -1,18 +1,17 @@
 ---
 title: Azure Stream Analytics-lösningsmönster
 description: Lär dig mer om vanliga lösnings mönster för Azure Stream Analytics, till exempel instrument paneler, händelse meddelanden, data lager, referens data och övervakning.
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: sidramadoss
+ms.author: sidram
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: 02276ebf8e8a2289db2a1f6eac506443cea61c31
-ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
+ms.openlocfilehash: 1bd3c1099344bd266d7e3bc153613daaecfb412a
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97682722"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020323"
 ---
 # <a name="azure-stream-analytics-solution-patterns"></a>Azure Stream Analytics-lösningsmönster
 

@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 11/17/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1a7bd36a6e3f3cc5b785745fc51f0aede3b47b74
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: 2029ec2d0b0f27d7078f381880cf7ca177d24ca0
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97803314"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020214"
 ---
 # <a name="redact-faces-with-azure-media-analytics"></a>Bortredigering-ansikten med Azure-medieanalys
 
@@ -37,11 +37,14 @@ Ansikts bortredigering fungerar genom att identifiera ansikten i varje bild ruta
 
 Förutom ett helt automatiskt läge, finns det ett två-pass-arbetsflöde, som gör att valet/de-valet av hittade ansikten via en lista med ID: n. Om du vill göra godtyckliga justeringar av varje ram-nivå används en metadatafil i JSON-format. Det här arbets flödet är uppdelat i **analys** -och **bortredigering** -läge. Du kan kombinera de två lägena i ett enda pass som kör båda uppgifterna i ett jobb. Det här läget kallas **kombinerat**.
 
+   > [!NOTE]
+   > Medie processorn för ansikts detektor har föråldrats från och med juni 2020, [Azure Media Services äldre komponenter](./legacy-components.md). Överväg att använda Azure Media Services v3-API.
+
 ### <a name="combined-mode"></a>Kombinerat läge
 
 Detta skapar en förredigerad MP4 automatiskt utan manuella indatatyper.
 
-| Fas | Filnamn | Obs! |
+| Fas | Filnamn | Kommentarer |
 | --- | --- | --- |
 | Inmatad till gång |foo. bar |Video i WMV-, MOV-eller MP4-format |
 | Konfiguration av indatamängd |Inställning av jobb konfiguration |{' version ': ' 1.0 ', ' alternativ ': {' läge ': ' kombinerat '}} |
@@ -51,7 +54,7 @@ Detta skapar en förredigerad MP4 automatiskt utan manuella indatatyper.
 
 Det **analyserande** passet i det två-pass-arbets flödet tar en video indata och skapar en JSON-fil med ansikts platser och jpg-bilder av varje identifierad yta.
 
-| Fas | Filnamn | Obs! |
+| Fas | Filnamn | Kommentarer |
 | --- | --- | --- |
 | Inmatad till gång |foo. bar |Video i WMV-, MPV-eller MP4-format |
 | Konfiguration av indatamängd |Inställning av jobb konfiguration |{' version ': ' 1.0 ', ' alternativ ': {' läge ': ' analysera '}} |
@@ -117,7 +120,7 @@ Detta inkluderar en lista med ID: n som är suddig, den ursprungliga videon och 
 
 Den ursprungliga videon ingår inte i resultatet från analys steget. Videon måste överföras till indata till gången för uppgiften bortredigering och väljs som primär fil.
 
-| Fas | Filnamn | Obs! |
+| Fas | Filnamn | Kommentarer |
 | --- | --- | --- |
 | Inmatad till gång |foo. bar |Video i WMV-, MPV-eller MP4-format. Samma video som i steg 1. |
 | Inmatad till gång |foo_annotations.jspå |anteckningarnas metadatafil från fas ett, med valfria ändringar. |

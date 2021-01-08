@@ -1,17 +1,17 @@
 ---
 title: Konfigurerbara regler som är baserade på Azure Stream Analytics
 description: I den här artikeln beskrivs hur du använder referens data för att få en aviserings lösning som har konfigurerbara regler som är baserade på Azure Stream Analytics.
-author: mamccrea
-ms.author: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 04/30/2018
-ms.openlocfilehash: 215835bf7f1e6676adba6541da70dcb86fc3500c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2f9d132084f0254486be533daea6b54239f4e450
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86039049"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019983"
 ---
 # <a name="process-configurable-threshold-based-rules-in-azure-stream-analytics"></a>Processer som kan konfigureras med konfigurerbara regler i Azure Stream Analytics
 I den här artikeln beskrivs hur du använder referens data för att få en varnings lösning som använder konfigurerbara regler för tröskel i Azure Stream Analytics.
@@ -34,7 +34,7 @@ I exemplet genereras aviseringar när en mängd data som strömmas från enheter
 
 I frågan, för varje deviceId och varje metricName under deviceId, kan du konfigurera mellan 0 och 5 dimensioner att gruppera efter. Endast de händelser som har motsvarande filter värden grupperade. När de grupper ATS, beräknas summan av min, Max, AVG, med ett rullande-fönster på 60 sekunder. Filter för de sammanställda värdena beräknas sedan enligt det konfigurerade tröskelvärdet i referensen för att generera händelsen aviserings utdata.
 
-Anta till exempel att det finns ett Stream Analytics jobb som har ett referens data indata med namnet **regler**och strömma data inmatning med namnet **mått**. 
+Anta till exempel att det finns ett Stream Analytics jobb som har ett referens data indata med namnet **regler** och strömma data inmatning med namnet **mått**. 
 
 ## <a name="reference-data"></a>Referens data
 Det här exemplet på referens data visar hur en tröskel-baserad regel kan representeras. En JSON-fil innehåller referens data och sparas i Azure Blob Storage och den Blob storage-behållaren används som referens data indata med hjälp av **regler**. Du kan skriva över den här JSON-filen och ersätta regel konfigurationen när tiden går ut, utan att stoppa eller starta direkt uppspelnings jobbet.

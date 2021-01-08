@@ -1,19 +1,18 @@
 ---
 title: Handel med hög frekvens med hjälp av Azure Stream Analytics
 description: Så utför du modellträning och bedömning av linjär regression i ett Azure Stream Analytics-jobb.
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/07/2018
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: e5d346a6f412b5764400a42e2bebbafec610009b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3f8f7744e07abb56d825ce44d5bb30190e7e87c4
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89015432"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020425"
 ---
 # <a name="high-frequency-trading-simulation-with-stream-analytics"></a>Handelssimulering med hög frekvens med Stream Analytics
 Kombinationen av SQL-språket och JavaScript-användardefinierade funktion (UDF) och användardefinierade aggregeringar (UDA) i Azure Stream Analytics gör det möjligt för användare att utföra avancerade analyser. Avancerade analyser kan innehålla onlineutbildning för maskininlärning och bedömningar samt tillståndskänslig processimulering. I den här artikeln finns en beskrivning av hur du utför linjär regression i ett Azure Stream Analytics-jobb som kör kontinuerlig träning och bedömning i ett scenario med högfrekvent handel.

@@ -1,16 +1,16 @@
 ---
 title: Hantering av VM-tillägg med Azure Arc-aktiverade servrar
 description: Azure Arc-aktiverade servrar kan hantera distribution av virtuella dator tillägg som tillhandahåller konfiguration och automatiserings uppgifter efter distributionen med icke-virtuella datorer i Azure.
-ms.date: 12/14/2020
+ms.date: 01/07/2021
 ms.topic: conceptual
-ms.openlocfilehash: 55e21f9c6bcd2dfe5f995093034773f2a87d9b03
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 5430b1c1318747cccfb95f031700fddaad716284
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97504516"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020629"
 ---
-# <a name="virtual-machine-extension-management-with-azure-arc-enabled-servers"></a>Hantering av virtuella dator tillägg med Azure Arc-aktiverade servrar
+# <a name="virtual-machine-extension-management-with-azure-arc-enabled-servers"></a>Hantera VM-tillägg med Azure Arc-aktiverade servrar
 
 Tillägg för virtuella datorer (VM) är små program som ger konfigurations-och automatiserings åtgärder efter distributionen på virtuella Azure-datorer. Om en virtuell dator till exempel kräver program varu installation, antivirus skydd eller för att köra ett skript i den, kan ett VM-tillägg användas.
 
@@ -43,22 +43,33 @@ Funktioner för virtuella dator tillägg är bara tillgängliga i listan över [
 
 I den här versionen har vi stöd för följande VM-tillägg på Windows-och Linux-datorer.
 
-|Filnamnstillägg |Operativsystem |Publisher |Ytterligare information |
-|----------|---|----------|-----------------------|
-|CustomScriptExtension |Windows |Microsoft.Compute |[Anpassat skript tillägg för Windows](../../virtual-machines/extensions/custom-script-windows.md)|
-|DSC |Windows |Microsoft. PowerShell|[Windows PowerShell DSC-tillägg](../../virtual-machines/extensions/dsc-windows.md)|
-|Log Analytics-agent |Windows |Microsoft. EnterpriseCloud. Monitoring |[Log Analytics VM-tillägg för Windows](../../virtual-machines/extensions/oms-windows.md)|
-|Microsoft-beroende agent | Windows |Microsoft.Compute | [Tillägg för virtuell dator för beroende agent för Windows](../../virtual-machines/extensions/agent-dependency-windows.md)|
-|Key Vault | Windows | Microsoft.Compute | [Key Vault tillägg för virtuell dator för Windows](../../virtual-machines/extensions/key-vault-windows.md) |
-|CustomScript|Linux |Microsoft. Azure. extension |[Anpassat skript tillägg för Linux version 2](../../virtual-machines/extensions/custom-script-linux.md) |
-|DSC |Linux |Microsoft. OSTCExtensions |[PowerShell DSC-tillägg för Linux](../../virtual-machines/extensions/dsc-linux.md) |
-|Log Analytics-agent |Linux |Microsoft. EnterpriseCloud. Monitoring |[Log Analytics VM-tillägg för Linux](../../virtual-machines/extensions/oms-linux.md) |
-|Microsoft-beroende agent | Linux |Microsoft.Compute | [Tillägg för virtuell dator för beroende agent för Linux](../../virtual-machines/extensions/agent-dependency-linux.md) |
-|Key Vault | Linux | Microsoft.Compute | [Key Vault tillägg för virtuell dator för Linux](../../virtual-machines/extensions/key-vault-linux.md) |
-
 Mer information om paketet för Azure Connected Machine agent och information om tilläggs Agent komponenten finns i [agent översikt](agent-overview.md#agent-component-details).
 
-## <a name="prerequisites"></a>Krav
+### <a name="windows-extensions"></a>Windows-tillägg
+
+|Anknytning |Publisher |Typ |Ytterligare information |
+|----------|----------|-----|-----------------------|
+|Azure Defender integrerad sårbarhets-skanner |Qualys |WindowsAgent.AzureSecurityCenter |[Azure Defenders integrerade lösning för sårbarhets bedömning för Azure och hybrid datorer](../../security-center/deploy-vulnerability-assessment-vm.md)|
+|Anpassat skripttillägg |Microsoft.Compute | CustomScriptExtension |[Anpassat skript tillägg för Windows](../../virtual-machines/extensions/custom-script-windows.md)|
+|PowerShell DSC |Microsoft. PowerShell |DSC |[Windows PowerShell DSC-tillägg](../../virtual-machines/extensions/dsc-windows.md)|
+|Log Analytics-agent |Microsoft. EnterpriseCloud. Monitoring |MicrosoftMonitoringAgent |[Log Analytics VM-tillägg för Windows](../../virtual-machines/extensions/oms-windows.md)|
+|Azure Monitor for VMs (insikter) |Microsoft. Azure. Monitoring. DependencyAgent |DependencyAgentWindows | [Tillägg för virtuell dator för beroende agent för Windows](../../virtual-machines/extensions/agent-dependency-windows.md)|
+|Azure Key Vault synkronisering av certifikat | Microsoft. Azure. Key. Vault |KeyVaultForWindows | [Key Vault tillägg för virtuell dator för Windows](../../virtual-machines/extensions/key-vault-windows.md) |
+|Azure Monitor-agent |Microsoft. Azure. Monitor |AzureMonitorWindowsAgent |[Installera Azure Monitor Agent (förhands granskning)](../../azure-monitor/platform/azure-monitor-agent-install.md) |
+
+### <a name="linux-extensions"></a>Linux-tillägg
+
+|Anknytning |Publisher |Typ |Ytterligare information |
+|----------|----------|-----|-----------------------|
+|Azure Defender integrerad sårbarhets-skanner |Qualys |LinuxAgent.AzureSecurityCenter |[Azure Defenders integrerade lösning för sårbarhets bedömning för Azure och hybrid datorer](../../security-center/deploy-vulnerability-assessment-vm.md)|
+|Anpassat skripttillägg |Microsoft. Azure. Extensions |CustomScript |[Anpassat skript tillägg för Linux version 2](../../virtual-machines/extensions/custom-script-linux.md) |
+|PowerShell DSC |Microsoft. OSTCExtensions |DSCForLinux |[PowerShell DSC-tillägg för Linux](../../virtual-machines/extensions/dsc-linux.md) |
+|Log Analytics-agent |Microsoft. EnterpriseCloud. Monitoring |OmsAgentForLinux |[Log Analytics VM-tillägg för Linux](../../virtual-machines/extensions/oms-linux.md) |
+|Azure Monitor for VMs (insikter) |Microsoft. Azure. Monitoring. DependencyAgent |DependencyAgentLinux |[Tillägg för virtuell dator för beroende agent för Linux](../../virtual-machines/extensions/agent-dependency-linux.md) |
+|Azure Key Vault synkronisering av certifikat | Microsoft. Azure. Key. Vault |KeyVaultForLinux | [Key Vault tillägg för virtuell dator för Linux](../../virtual-machines/extensions/key-vault-linux.md) |
+|Azure Monitor-agent |Microsoft. Azure. Monitor |AzureMonitorLinuxAgent |[Installera Azure Monitor Agent (förhands granskning)](../../azure-monitor/platform/azure-monitor-agent-install.md) |
+
+## <a name="prerequisites"></a>Förutsättningar
 
 Den här funktionen är beroende av följande Azure-resurs leverantörer i din prenumeration:
 

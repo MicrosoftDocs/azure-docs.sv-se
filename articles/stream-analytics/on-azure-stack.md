@@ -2,18 +2,17 @@
 title: Kör Azure Stream Analytics på Azure Stack (förhands granskning)
 description: Skapa ett Azure Stream Analytics Edge-jobb och distribuera det till Azure Stack Hub via IoT Edge Runtime.
 ms.service: stream-analytics
-author: raan
+author: an-emma
 ms.author: raan
-ms.reviewer: mamccrea
 ms.topic: how-to
 ms.date: 08/21/2020
 ms.custom: seodec18
-ms.openlocfilehash: 21cf432576829b575d70a94227f28df373a4d899
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 3463b3eae96c0a65206023ed0f21efe44294d4eb
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93126166"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020136"
 ---
 # <a name="run-azure-stream-analytics-on-azure-stack-preview"></a>Kör Azure Stream Analytics på Azure Stack (förhands granskning)
 
@@ -56,10 +55,10 @@ ASA Edge-jobb körs i behållare som distribuerats till Azure IoT Edge enheter. 
 * En moln del som är ansvarig för jobb definition: användare definierar indata, utdata, fråga och andra inställningar (i händelse av ordnings händelser osv.) i molnet.
 * En modul som körs på dina IoT-enheter. Den innehåller ASA-motorn och tar emot jobb definitionen från molnet.
 
-### <a name="create-a-storage-account"></a>skapar ett lagringskonto
+### <a name="create-a-storage-account"></a>Skapa ett lagringskonto
 
 När du skapar ett Azure Stream Analytics-jobb som ska köras på en IoT Edge-enhet måste det lagras på ett sätt som kan anropas från enheten. Du kan använda ett befintligt Azure Storage-konto eller skapa ett nytt.
-1. I Azure Portal går du till **skapa en resurs > lagring > lagrings konto – BLOB, fil, tabell, kö** .
+1. I Azure Portal går du till **skapa en resurs > lagring > lagrings konto – BLOB, fil, tabell, kö**.
 2. Skapa lagringskontot genom att ange följande värden:
 
    | Fält | Värde |
@@ -67,25 +66,25 @@ När du skapar ett Azure Stream Analytics-jobb som ska köras på en IoT Edge-en
    | Namn | Ange ett unikt namn för lagringskontot. |
    | Plats | Välj en plats i närheten av dig.|
    | Prenumeration | Välj samma prenumeration som din IoT-hubb.|
-   | Resursgrupp | Vi rekommenderar att du använder samma resurs grupp för alla test resurser som du skapar under [IoT Edge snabb starter](../iot-edge/quickstart.md) och självstudier. Till exempel **IoTEdgeResources** . |
+   | Resursgrupp | Vi rekommenderar att du använder samma resurs grupp för alla test resurser som du skapar under [IoT Edge snabb starter](../iot-edge/quickstart.md) och självstudier. Till exempel **IoTEdgeResources**. |
 
-3. Behåll standardvärdena för de andra fälten och välj **Skapa** .
+3. Behåll standardvärdena för de andra fälten och välj **Skapa**.
 
 
 ### <a name="create-a-new-job"></a>Skapa ett nytt jobb
 
-1. I Azure Portal går du till **skapa en resurs > Sakernas Internet > Stream Analytics jobb** .
+1. I Azure Portal går du till **skapa en resurs > Sakernas Internet > Stream Analytics jobb**.
 2. Skapa lagringskontot genom att ange följande värden:
 
    | Fält | Värde |
    | --- | --- |
    | Jobbnamn | Ange ett namn för ditt jobb. Till exempel **IoTEdgeJob** |
    | Prenumeration | Välj samma prenumeration som din IoT-hubb.|
-   | Resursgrupp | Vi rekommenderar att du använder samma resurs grupp för alla test resurser som du skapar under [IoT Edge snabb starter](../iot-edge/quickstart.md) och självstudier. Till exempel **IoTEdgeResources** . |
+   | Resursgrupp | Vi rekommenderar att du använder samma resurs grupp för alla test resurser som du skapar under [IoT Edge snabb starter](../iot-edge/quickstart.md) och självstudier. Till exempel **IoTEdgeResources**. |
    | Plats | Välj en plats i närheten av dig. |
-   | Värd miljö | Välj **Gräns** . |
+   | Värd miljö | Välj **Gräns**. |
 
-3. Välj **Skapa** .
+3. Välj **Skapa**.
 
 ### <a name="configure-your-job"></a>Konfigurera jobbet
 
@@ -96,7 +95,7 @@ När Stream Analytics-jobbet har skapats på Azure Portal kan du konfigurera det
    > [!div class="mx-imgBorder"]
    > [![Inställning ](media/on-azure-stack/storage-account-settings.png) för jobb lagrings konto](media/on-azure-stack/storage-account-settings.png#lightbox)
 3. Under **jobb sto pol Ogin** **väljer du indata och** lägger sedan **till Stream-indata.**
-4. Välj **IoT Hub** , **Event Hub** eller **Edge Hub (hubb** ) i list rutan. 
+4. Välj **IoT Hub**, **Event Hub** eller **Edge Hub (hubb** ) i list rutan. 
 5. Om indata är en händelsehubben eller IoT Hub i en Azure Stack Hub-prenumeration anger du informationen manuellt enligt nedan.
 
    #### <a name="event-hub"></a>Händelsehubb
@@ -104,7 +103,7 @@ När Stream Analytics-jobbet har skapats på Azure Portal kan du konfigurera det
    | Fält | Värde |
    | --- | --- |
    | Inmatat alias | Ett eget namn som du använder i jobbets fråga för att referera till den här indatamängden. |
-   | Service Bus namnrymd | Namn området är en behållare för en uppsättning meddelande enheter. När du skapar en ny händelsehubben skapar du även namn området. (Exempel: *SB:// <Event Hub Name> . eventhub.Shanghai.azurestack.Corp.Microsoft.com* ) |
+   | Service Bus namnrymd | Namn området är en behållare för en uppsättning meddelande enheter. När du skapar en ny händelsehubben skapar du även namn området. (Exempel: *SB:// <Event Hub Name> . eventhub.Shanghai.azurestack.Corp.Microsoft.com*) |
    | Namn på händelsehubb | Namnet på händelsehubben som ska användas som indatamängd. |
    | Principnamn för Event Hub | Principen för delad åtkomst som ger åtkomst till Händelsehubben. Varje princip för delad åtkomst har ett namn, behörigheter som du anger och åtkomst nycklar. Det här alternativet fylls i automatiskt, om du inte väljer alternativet att ange inställningar för Händelsehubben manuellt. |
    | Princip nyckel för Event Hub | Den delade åtkomst nyckeln som används för att ge åtkomst till Händelsehubben. Det här alternativet fylls i automatiskt om du inte väljer alternativet för att ange inställningar för Händelsehubben manuellt. Du hittar den i Event Hub-inställningarna. |
@@ -119,7 +118,7 @@ När Stream Analytics-jobbet har skapats på Azure Portal kan du konfigurera det
    | Fält | Värde |
    | --- | --- |
    | Inmatat alias | Ett eget namn som du använder i jobbets fråga för att referera till den här indatamängden. |
-   | IoT Hub | Namnet på IoT Hub som ska användas som indatatyp. (Exempel: *<IoT Hub Name> . Shanghai.azurestack.Corp.Microsoft.com* ) |
+   | IoT Hub | Namnet på IoT Hub som ska användas som indatatyp. (Exempel:*<IoT Hub Name> . Shanghai.azurestack.Corp.Microsoft.com*) |
    | Namn på princip för delad åtkomst | Principen för delad åtkomst som ger åtkomst till IoT Hub. Varje princip för delad åtkomst har ett namn, behörigheter som du anger och åtkomst nycklar. |
    | Nyckel för delad åtkomst princip | Den delade åtkomst nyckeln som används för att ge åtkomst till IoT Hub. Det här alternativet fylls i automatiskt om du inte väljer alternativet att tillhandahålla IoT Hub-inställningarna manuellt. |
    | Konsument grupp (valfritt) | Vi rekommenderar starkt att du använder en annan konsument grupp för varje Stream Analytics jobb. Konsument gruppen används för att mata in data från IoT Hub. Stream Analytics använder $Default konsument gruppen om du inte anger något annat. |
@@ -138,7 +137,7 @@ När Stream Analytics-jobbet har skapats på Azure Portal kan du konfigurera det
    | Fält | Värde |
    | --- | --- |
    | Utdataalias | Ett eget namn som används i frågor för att dirigera frågeresultatet till den här händelsehubben. |
-   | Service Bus namnrymd | En behållare för en uppsättning meddelande enheter. När du skapade en ny händelsehubben, skapade du även ett Service Bus-namnområde. (Exempel: *SB:// <Event Hub Name> . eventhub.Shanghai.azurestack.Corp.Microsoft.com* ) |
+   | Service Bus namnrymd | En behållare för en uppsättning meddelande enheter. När du skapade en ny händelsehubben, skapade du även ett Service Bus-namnområde. (Exempel: *SB:// <Event Hub Name> . eventhub.Shanghai.azurestack.Corp.Microsoft.com*) |
    | Namn på händelsehubb | Namnet på din Event Hub-utdata. |
    | Principnamn för Event Hub | Principen för delad åtkomst, som du kan skapa på fliken Konfigurera på händelsehubben. Varje princip för delad åtkomst har ett namn, behörigheter som du anger och åtkomst nycklar. |
    | Princip nyckel för Event Hub | Den delade åtkomst nyckeln som används för att autentisera åtkomsten till Event Hub-namnområdet. |
@@ -151,7 +150,7 @@ När Stream Analytics-jobbet har skapats på Azure Portal kan du konfigurera det
    | Fält | Värde |
    | --- | --- |
    | Utdataalias | Ett eget namn som används i frågor för att dirigera frågeresultatet till blob-lagringen. |
-   | Lagringskonto | Namnet på det lagrings konto där du ska skicka dina utdata. (Exempel: *<Storage Account Name> . blob.Shanghai.azurestack.Corp.Microsoft.com* ) |
+   | Lagringskonto | Namnet på det lagrings konto där du ska skicka dina utdata. (Exempel: *<Storage Account Name> . blob.Shanghai.azurestack.Corp.Microsoft.com*) |
    | Lagrings konto nyckel | Den hemliga nyckeln som är kopplad till lagrings kontot. Det här alternativet fylls i automatiskt om du inte väljer alternativet för att tillhandahålla Blob Storage-inställningar manuellt. |
 
 > [!NOTE]
@@ -161,14 +160,14 @@ När Stream Analytics-jobbet har skapats på Azure Portal kan du konfigurera det
 ## <a name="deploy-stream-analytics-on-a-vm-or-device-connected-to-azure-stack"></a>Distribuera Stream Analytics på en virtuell dator eller enhet som är ansluten till Azure Stack
 
 1. Öppna IoT Hub i Azure Portal. Navigera till **IoT Edge** och klicka på enheten (VM) som du vill använda som mål för den här distributionen.
-2. Välj **Ange moduler** . Välj sedan **+ Lägg till** och välj **Azure Stream Analytics modul** . 
-3. Välj den prenumeration och det jobb för ång Analytics-Edge som du skapade. Klicka på **Spara** och välj **Nästa: vägar** .
+2. Välj **Ange moduler**. Välj sedan **+ Lägg till** och välj **Azure Stream Analytics modul**. 
+3. Välj den prenumeration och det jobb för ång Analytics-Edge som du skapade. Klicka på **Spara** och välj **Nästa: vägar**.
 
    > [!div class="mx-imgBorder"]
    > [![Lägg till moduler ](media/on-azure-stack/edge-modules.png)](media/on-azure-stack/edge-modules.png#lightbox)
 
-4. Klicka på **Granska + skapa >** .
-5. I steget **Granska + skapa** väljer du **skapa** . 
+4. Klicka på **Granska + skapa >**.
+5. I steget **Granska + skapa** väljer du **skapa**. 
    > [!div class="mx-imgBorder"]
    > [![Manifest ](media/on-azure-stack/module-content.png)](media/on-azure-stack/module-content.png#lightbox)
 6. Bekräfta att modulen har lagts till i listan.

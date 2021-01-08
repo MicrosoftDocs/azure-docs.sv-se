@@ -1,18 +1,17 @@
 ---
 title: Power BI utdata från Azure Stream Analytics
 description: I den här artikeln beskrivs hur du matar ut data från Azure Stream Analytics till Power BI.
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: cc48d26c217f52dfa52ac6cd3d7f18a806c93927
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: a94389a075fd62d80345a21e32f1bc977dfdee87
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97740988"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020068"
 ---
 # <a name="power-bi-output-from-azure-stream-analytics"></a>Power BI utdata från Azure Stream Analytics
 

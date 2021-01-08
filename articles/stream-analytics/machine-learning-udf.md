@@ -1,19 +1,18 @@
 ---
 title: Integrera Azure Stream Analytics med Azure Machine Learning
 description: I den här artikeln beskrivs hur du integrerar ett Azure Stream Analytics-jobb med Azure Machine Learning-modeller.
-author: sidram
+author: sidramadoss
 ms.author: sidram
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/21/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 01c85311c9ea49be3543edee405cdd66a0659797
-ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
+ms.openlocfilehash: c35d5d2f63f4a7abe80a0ff19e5994013355c386
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97733013"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020527"
 ---
 # <a name="integrate-azure-stream-analytics-with-azure-machine-learning-preview"></a>Integrera Azure Stream Analytics med Azure Machine Learning (förhands granskning)
 

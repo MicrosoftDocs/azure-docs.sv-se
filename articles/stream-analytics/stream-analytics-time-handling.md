@@ -1,18 +1,17 @@
 ---
 title: Förstå tids hantering i Azure Stream Analytics
 description: Lär dig hur du väljer den bästa start tiden, hanterar sena och tidiga händelser och om tids hanterings mått i Azure Stream Analytics.
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: sidramadoss
+ms.author: sidram
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: c8f40808834c64ad74673f1c5f0c19892607fdcc
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: f9dbdb3907b376df8de988730c6c48ed01bfccd0
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93127481"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019949"
 ---
 # <a name="understand-time-handling-in-azure-stream-analytics"></a>Förstå tids hantering i Azure Stream Analytics
 
@@ -22,11 +21,11 @@ I den här artikeln får du lära dig hur du kan göra design val för att lösa
 
 För att skapa en bättre bild av diskussionen, ska vi definiera vissa bakgrunds begrepp:
 
-- **Händelse tid** : den tidpunkt då den ursprungliga händelsen inträffade. Till exempel när en rörlig bil på motorväg närmar sig en väg på väg.
+- **Händelse tid**: den tidpunkt då den ursprungliga händelsen inträffade. Till exempel när en rörlig bil på motorväg närmar sig en väg på väg.
 
-- **Bearbetnings tid** : den tidpunkt då händelsen når bearbetnings systemet och observeras. Till exempel när en väg givare ser bilen och dator systemet tar en stund att bearbeta data.
+- **Bearbetnings tid**: den tidpunkt då händelsen når bearbetnings systemet och observeras. Till exempel när en väg givare ser bilen och dator systemet tar en stund att bearbeta data.
 
-- **Vattenstämpel** : en händelse tids markör som visar upp till vilka punkt händelser som har inträffat för strömnings processorn. Vattenstämplar gör att systemet visar klart förloppet för att mata in händelser. När data strömmar är av typen stoppa stoppas inkommande händelse data aldrig, så vattenstämplar anger förloppet till en viss punkt i data strömmen.
+- **Vattenstämpel**: en händelse tids markör som visar upp till vilka punkt händelser som har inträffat för strömnings processorn. Vattenstämplar gör att systemet visar klart förloppet för att mata in händelser. När data strömmar är av typen stoppa stoppas inkommande händelse data aldrig, så vattenstämplar anger förloppet till en viss punkt i data strömmen.
 
    Begreppet vattenstämpel är viktigt. Med vattenstämplar kan Stream Analytics fastställa när systemet kan producera fullständiga, korrekta och upprepnings bara resultat som inte behöver dras tillbaka. Bearbetningen kan göras på ett förutsägbart och repeterbart sätt. Om till exempel en omräkning måste göras för vissa fel hanterings villkor är vattenstämplar säkra start-och slut punkter.
 
@@ -76,7 +75,7 @@ När du väljer att använda **tid för införsel** som tidpunkt för händelsen
 
 ## <a name="late-arriving-events"></a>Sena inkommande händelser
 
-Efter definition av fönstret sent införsel tolerans, för varje inkommande händelse, Azure Stream Analytics jämför **händelse tiden** med **införsel tiden** . Om händelse tiden ligger utanför tolerans fönstret kan du konfigurera systemet för att släppa händelsen eller justera händelsens tid så att den ligger inom toleransen.
+Efter definition av fönstret sent införsel tolerans, för varje inkommande händelse, Azure Stream Analytics jämför **händelse tiden** med **införsel tiden**. Om händelse tiden ligger utanför tolerans fönstret kan du konfigurera systemet för att släppa händelsen eller justera händelsens tid så att den ligger inom toleransen.
 
 När vattenstämplarna har genererats kan tjänsten potentiellt ta emot händelser med en händelse tid som är lägre än vattenstämpeln. Du kan konfigurera tjänsten att antingen **släppa** dessa händelser eller **Justera** händelsens tid till värdet för vatten märket.
 
@@ -86,7 +85,7 @@ Som en del av justeringen anges händelsens **system. timestamp** till det nya v
 
 Den mekanism för generering av heuristisk vattenstämpel som beskrivs fungerar bra i de flesta fall där tiden oftast är synkroniserad mellan olika händelse avsändare. I real tid, särskilt i många IoT-scenarier, har systemet emellertid lite kontroll över klockan på händelse avsändarna. Händelse avsändare kan vara alla typer av enheter i fältet, t. ex. olika versioner av maskin vara och program vara.
 
-I stället för att använda en vattenstämpel som är global till alla händelser i en indataparameter, Stream Analytics har en annan mekanism som kallas under **strömmar** . Du kan använda under strömmar i jobbet genom att skriva en jobb fråga som använder [**timestamp by**](/stream-analytics-query/timestamp-by-azure-stream-analytics) -satsen och nyckelordet **över** . Om du vill ange under data strömmen anger du ett nyckel kolumn namn efter **över** -nyckelordet, t. ex. ett `deviceid` , så att systemet använder tids principer för den kolumnen. Varje under data ström får sin egen oberoende vattenstämpel. Den här mekanismen är användbar för att tillåta generering av utdata i rätt tid vid hantering av stora klockor eller nätverks fördröjningar mellan händelse avsändare.
+I stället för att använda en vattenstämpel som är global till alla händelser i en indataparameter, Stream Analytics har en annan mekanism som kallas under **strömmar**. Du kan använda under strömmar i jobbet genom att skriva en jobb fråga som använder [**timestamp by**](/stream-analytics-query/timestamp-by-azure-stream-analytics) -satsen och nyckelordet **över**. Om du vill ange under data strömmen anger du ett nyckel kolumn namn efter **över** -nyckelordet, t. ex. ett `deviceid` , så att systemet använder tids principer för den kolumnen. Varje under data ström får sin egen oberoende vattenstämpel. Den här mekanismen är användbar för att tillåta generering av utdata i rätt tid vid hantering av stora klockor eller nätverks fördröjningar mellan händelse avsändare.
 
 Under strömmar är en unik lösning som tillhandahålls av Azure Stream Analytics och som inte erbjuds av andra data behandlings system för strömning.
 

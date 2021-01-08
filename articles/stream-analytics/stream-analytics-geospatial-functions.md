@@ -1,18 +1,17 @@
 ---
 title: Introduktion till Azure Stream Analytics geospatiala funktioner
 description: I den här artikeln beskrivs geospatiala funktioner som används i Azure Stream Analytics-jobb.
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: krishna0815
+ms.author: krishmam
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: 44e445f6d1dce8193109d6b5ad1742210458e74c
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 8d01f43dd6e404bb8f8ae0898625ae1ea9d09fd6
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130416"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020442"
 ---
 # <a name="introduction-to-stream-analytics-geospatial-functions"></a>Introduktion till Stream Analytics geospatiala funktioner
 
@@ -26,7 +25,7 @@ Exempel på scenarier som kan dra nytta av geospatiala funktioner är:
 * Geo-staket
 * Telefon spårning över cell platser
 
-Stream Analytics frågespråk har sju inbyggda geospatiala funktioner: **CreateLineString** , **CreatePoint** , **CreatePolygon** , **ST_DISTANCE** , **ST_OVERLAPS** , **ST_INTERSECTS** och **ST_WITHIN** .
+Stream Analytics frågespråk har sju inbyggda geospatiala funktioner: **CreateLineString**, **CreatePoint**, **CreatePolygon**, **ST_DISTANCE**, **ST_OVERLAPS**, **ST_INTERSECTS** och **ST_WITHIN**.
 
 ## <a name="createlinestring"></a>CreateLineString
 

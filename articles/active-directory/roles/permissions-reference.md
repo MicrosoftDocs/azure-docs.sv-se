@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d04f2d1717e1d95f8bcafb8f72f2b0a2f83a248
-ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
+ms.openlocfilehash: 6da053bb04e5ee3f2b2b307c382f2695663669e5
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97976834"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020663"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Behörigheter för administratörsrollen i Azure Active Directory
 
@@ -87,6 +87,14 @@ Rollen [Privileged Authentication Administrator](#privileged-authentication-admi
 >* Säkerhets grupp och Microsoft 365 grupp ägare, som kan hantera grupp medlemskap. Dessa grupper kan ge åtkomst till känslig eller privat information eller kritisk konfiguration i Azure AD och någon annan stans.
 >* Administratörer i andra tjänster utanför Azure AD, till exempel Exchange Online, Office Security och Compliance Center och personal system.
 >* Icke-administratörer som chefer, juridiska konsulter och personal anställda som kan ha till gång till känslig eller privat information.
+
+### <a name="attack-payload-author"></a>[Författare för angrepps nytto Last](#attack-payload-author-permissions)
+
+Användare med den här rollen kan skapa nytto laster, men inte starta eller schemalägga angrepp. Angrepps nytto lasterna är sedan tillgängliga för alla administratörer i klienten som kan använda dem för att skapa en simulering.
+
+### <a name="attack-simulation-administrator"></a>[Administratör för attack simulering](#attack-simulation-administrator-permissions)
+
+Användare med den här rollen kan skapa och hantera alla aspekter av genereringen av attack simulering, start/schemaläggning av en simulering och granskning av simulerings resultat. Medlemmar i den här rollen har den här åtkomsten för alla simuleringar i klienten.
 
 ### <a name="azure-devops-administrator"></a>[Azure DevOps-administratör](#azure-devops-administrator-permissions)
 
@@ -489,6 +497,10 @@ Användare med den här rollen kan hantera [team-certifierade enheter](https://w
 
 Användare med den här rollen kan hantera alla aspekter av arbets belastningen Microsoft Teams via Microsoft Teams & Skype för Business administrations Center och respektive PowerShell-moduler. Detta omfattar bland annat alla hanterings verktyg som rör telefoni, meddelanden, möten och själva teamet. Den här rollen ger dessutom möjlighet att skapa och hantera alla Microsoft 365 grupper, hantera support biljetter och övervaka tjänstens hälsa.
 
+### <a name="usage-summary-reports-reader"></a>[Rapport läsare för användnings Sammanfattning](#usage-summary-reports-reader-permissions)
+
+Användare med den här rollen har åtkomst till sammanställda data för klient nivå och associerade insikter i Microsoft 365 administrations Center för användning och produktivitets poäng, men kan inte komma åt information om användar nivå eller insikter. I Microsoft 365 administrations Center för de två rapporterna skiljer vi mellan information om sammanställda data på klient nivå och information på användar nivå. Den här rollen ger ett extra skydds lager för enskilda användares identifierbara data som har begärts av både kunder och juridiska team. 
+
 ### <a name="user-administrator"></a>[Användar administratör](#user-administrator-permissions)
 
 Användare med den här rollen kan skapa användare och hantera alla aspekter av användare med vissa begränsningar (se tabellen) och kan uppdatera principer för lösen ordets giltighets tid. Dessutom kan användare med den här rollen skapa och hantera alla grupper. Den här rollen omfattar även möjligheten att skapa och hantera användar visningar, hantera support biljetter och övervaka tjänstens hälsa. Användar administratörer har inte behörighet att hantera vissa användar egenskaper för användare i de flesta administratörs roller. Användare med den här rollen har inte behörighet att hantera MFA. Rollerna som är undantag till den här begränsningen visas i följande tabell.
@@ -591,6 +603,25 @@ Tillåts Visa, ange och återställa information om autentiseringsinformation f�
 | Microsoft. Office365. serviceHealth/uplånar/allTasks | Läsa och konfigurera Microsoft 365 Service Health. |
 | Microsoft. Office365. supportTickets/uplånar/allTasks | Skapa och hantera Office 365-support biljetter. |
 | Microsoft. Directory/Users/Password/Update | Uppdatera lösen ord för alla användare i Microsoft 365 organisation. Mer information finns i onlinedokumentationen. |
+
+### <a name="attack-payload-author-permissions"></a>Författar behörighet för angrepps nytto Last
+
+Kan skapa nytto laster som kan distribueras av en administratör senare.
+
+| **Åtgärder** | **Beskrivning** |
+| --- | --- |
+| Microsoft. Office365. protectionCenter/attackSimulator/nytto Last/allProperties/allTasks | Skapa och hantera angrepps nytto laster i angrepps Simulator. |
+| Microsoft. Office365. protectionCenter/attackSimulator/Reports/allProperties/Read | Läs rapporter om attack simulering, svar och tillhör ande utbildning. |
+
+### <a name="attack-simulation-administrator-permissions"></a>Administratörs behörigheter för attack simulering
+
+Kan skapa och hantera alla aspekter av kampanjer för attack simulering.
+
+| **Åtgärder** | **Beskrivning** |
+| --- | --- |
+| Microsoft. Office365. protectionCenter/attackSimulator/nytto Last/allProperties/allTasks | Skapa och hantera angrepps nytto laster i angrepps Simulator. |
+| Microsoft. Office365. protectionCenter/attackSimulator/Reports/allProperties/Read | Läs rapporter om attack simulering, svar och tillhör ande utbildning. |
+| Microsoft. Office365. protectionCenter/attackSimulator/simulering/allProperties/allTasks | Skapa och hantera mallar för attack simulering i angrepps Simulator. |
 
 ### <a name="azure-devops-administrator-permissions"></a>Administratörs behörighet för Azure-DevOps
 
@@ -1876,6 +1907,14 @@ Kan hantera Microsoft Teams-tjänsten.
 | Microsoft. Office365. webports/-upplånare/grundläggande/lästa | Läsa grundläggande egenskaper för alla resurser i Microsoft. Office365. Web-Portal. |
 | Microsoft. Teams/utlånare/allProperties/allTasks | Hantera alla resurser i team. |
 
+### <a name="usage-summary-reports-reader-permissions"></a>Användning Sammanfattning rapporter läsa behörigheter
+Kan bara se sammanslagningar på klient nivå i M365 användnings analys och produktivitets poäng.
+
+| **Åtgärder** | **Beskrivning** |
+| --- | --- |
+| Microsoft. Office365. usageReports/upplånare/standard/Read | Läs användnings rapporter för den samlade klient nivån i Office 365. |
+| Microsoft. Office365. webports/-upplånare/standard/Read | Läsa grundläggande egenskaper för alla resurser i Microsoft. Office365. Web-Portal.|
+
 ### <a name="user-administrator-permissions"></a>Behörigheter för användar administratör
 Kan hantera alla aspekter av användare och grupper, inklusive att återställa lösen ord för begränsade administratörer.
 
@@ -1922,6 +1961,8 @@ Graph-displayName | Visnings namn för Azure Portal | directoryRoleTemplateId
 Programadministratör | Program administratör | 9B895D92-2CD3-44C7-9D02-A6AC2D5EA5C3
 Programutvecklare | Programutvecklare | CF1C38E5-3621-4004-A7CB-879624DCED7C
 Administratör för autentisering | Administratör för autentisering | c4e39bd9-1100-46d3-8c65-fb160da0071f
+Författare för angrepps nytto Last | Författare för angrepps nytto Last | 9c6df0f2-1e7c-4dc3-b195-66dfbd24aa8f
+Administratör för attack simulering | Administratör för attack simulering | c430b396-e693-46cc-96f3-db01bf8bb62a
 Azure DevOps-administratör | Azure DevOps-administratör | e3973bdf-4987-49ae-837a-ba8e231c7286
 Azure Information Protection administratör | Azure Information Protection administratör | 7495fdc4-34c4-4d15-a289-98788ce399fd
 B2C IEF Keys-administratör | B2C IEF Keys-administratör | aaf43236-0c0d-4d5f-883a-6955382ac081
@@ -1985,6 +2026,7 @@ Support tekniker för Teams kommunikation | Support tekniker för Teams kommunik
 Support specialist för Teams kommunikation | Support specialist för Teams kommunikation | fcf91098-03e3-41a9-b5ba-6f0ec8188a12
 Team enhets administratör | Team enhets administratör | 3d762c5a-1b6c-493f-843e-55a3b42923d4
 Team tjänst administratör | Team tjänst administratör | 69091246-20e8-4a56-aa4d-066075b2a7a8
+Rapport läsare för användnings Sammanfattning | Rapport läsare för användnings Sammanfattning | 75934031-6c7e-415a-99d7-48dbd49e875e
 Användare | Visas inte eftersom det inte kan användas | a0b1b346-4d3e-4e8b-98f8-753987be4970
 Administratör för användar konton | Användaradministratör | fe930be7-5e62-47db-91af-98c3a49a38b1
 Anslutning till arbets plats enhet | Inaktuell | c34f683f-4d5a-4403-affd-6615e00e3a7f
