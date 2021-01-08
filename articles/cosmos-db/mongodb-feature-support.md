@@ -7,17 +7,17 @@ ms.topic: overview
 ms.date: 10/16/2019
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 60e806be85a36c2e8a64d731c8794d806a4fcae4
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: d9e01ee8b1f6c1cd04e665ad9f7bc57155abfaab
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096537"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028989"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-32-version-supported-features-and-syntax"></a>Azure Cosmos DB:s API för MongoDB (version 3.2): Funktioner och syntax som stöds
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
-Azure Cosmos DB är Microsofts globalt distribuerade databastjänst för flera datamodeller. Du kan kommunicera med Azure Cosmos DB:s API för MongoDB med någon av MongoDB-klient[drivrutinerna](https://docs.mongodb.org/ecosystem/drivers) med öppen källkod. Azure Cosmos DB:s API för MongoDB tillåter gör det möjligt att använda befintliga klientdrivrutiner genom att följa MongoDB-[trådprotokollet](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol).
+Azure Cosmos DB är Microsofts globalt distribuerade databastjänst för flera datamodeller. Du kan kommunicera med Azure Cosmos DBens API för MongoDB med någon av MongoDB-klient [driv rutinerna](https://docs.mongodb.org/ecosystem/drivers)med öppen källkod. Azure Cosmos DB:s API för MongoDB tillåter gör det möjligt att använda befintliga klientdrivrutiner genom att följa MongoDB-[trådprotokollet](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol).
 
 Med hjälp av Azure Cosmos DB:s API för MongoDB kan du dra nytta av fördelarna med den MongoDB som du är van vid och alla de företagsfunktioner som Azure Cosmos DB erbjuder: [global distribution](distribute-data-globally.md), [automatisk horisontell positionering](partitioning-overview.md), garantier avseende tillgänglighet och svarstid, automatisk indexering av varje fält, kryptering i vila, säkerhetskopior och mycket mer.
 
@@ -26,21 +26,24 @@ Med hjälp av Azure Cosmos DB:s API för MongoDB kan du dra nytta av fördelarna
 
 ## <a name="protocol-support"></a>Protokollstöd
 
-Alla nya konton för Azure Cosmos DBs API för MongoDB är kompatibla med MongoDB Server version **3,6** . Den här artikeln beskriver MongoDB version 3.2. De operatorer som stöds och eventuella begränsningar eller undantag anges nedan. Klientdrivrutiner som förstår dessa protokoll bör kunna ansluta till Cosmos DB:s API för MongoDB. 
+Alla nya konton för Azure Cosmos DBs API för MongoDB är kompatibla med MongoDB Server version **3,6**. Den här artikeln beskriver MongoDB version 3.2. De operatorer som stöds och eventuella begränsningar eller undantag anges nedan. Klientdrivrutiner som förstår dessa protokoll bör kunna ansluta till Cosmos DB:s API för MongoDB. 
 
 Azure Cosmos DBs API för MongoDB erbjuder också en sömlös uppgraderings upplevelse för kvalificerings konton. Läs mer i [uppgraderings hand boken för MongoDB-versionen](mongodb-version-upgrade.md).
 
 ## <a name="query-language-support"></a>Stöd för frågespråk
 
-Azure Cosmos DB:s API för MongoDB erbjuder omfattande stöd för MongoDB-frågespråkskonstruktioner. Nedan hittar du en detaljerad lista över de åtgärder som för närvarande stöds, operatorer, steg, kommandon och alternativ.
+Azure Cosmos DB:s API för MongoDB erbjuder omfattande stöd för MongoDB-frågespråkskonstruktioner. Nedan hittar du en detaljerad lista över de åtgärder, operatorer, stadier, kommandon och alternativ som stöds för närvarande.
 
 ## <a name="database-commands"></a>Databaskommandon
 
 Azure Cosmos DB:s API för MongoDB stöder följande databaskommandon:
 
+> [!NOTE]
+> Den här artikeln listar de Server kommandon som stöds och omfattar inte funktioner på klient sidan. Klient sidans wrapper-funktioner som `deleteMany()` och `updateMany()` internt använder-och-Server- `delete()` `update()` kommandon. Funktioner som använder Server kommandon som stöds är kompatibla med Azure Cosmos DB s API för MongoDB.
+
 ### <a name="query-and-write-operation-commands"></a>Fråga och skriv-åtgärdskommandon
 
-- delete
+- ta bort
 - find
 - findAndModify
 - getLastError
@@ -250,7 +253,7 @@ $type | `{ "Status": { $type: "string" } }`|  | -
 $mod | `{ "Elevation": { $mod: [ 4, 0 ] } }` |  | -
 $regex | `{ "Volcano Name": { $regex: "^Rain"} }`|  | -
 
-### <a name="notes"></a>Kommentarer
+### <a name="notes"></a>Anteckningar
 
 I $regex-frågor, tillåter vänsterförankrade uttryck indexsökning. Om du använder modifierarna i (skiftlägesokänsligt) och m (flera rader) så får du dock samlingsskanningen i alla uttryck.
 När det finns ett behov att inkludera $ eller | så är det bäst att skapa två (eller flera) regex-frågor.
@@ -293,23 +296,23 @@ Fält-operatorn | fungerar som en or-funktion – frågan ```find({x:{$regex: /^
 
 Operator | Exempel | Stöds |
 --- | --- | --- |
-$geoWithin | ```{ "Location.coordinates": { $geoWithin: { $centerSphere: [ [ -121, 46 ], 5 ] } } }``` | Yes |
-$geoIntersects |  ```{ "Location.coordinates": { $geoIntersects: { $geometry: { type: "Polygon", coordinates: [ [ [ -121.9, 46.7 ], [ -121.5, 46.7 ], [ -121.5, 46.9 ], [ -121.9, 46.9 ], [ -121.9, 46.7 ] ] ] } } } }``` | Yes |
-$near | ```{ "Location.coordinates": { $near: { $geometry: { type: "Polygon", coordinates: [ [ [ -121.9, 46.7 ], [ -121.5, 46.7 ], [ -121.5, 46.9 ], [ -121.9, 46.9 ], [ -121.9, 46.7 ] ] ] } } } }``` | Yes |
-$nearSphere | ```{ "Location.coordinates": { $nearSphere : [ -121, 46  ], $maxDistance: 0.50 } }``` | Yes |
-$geometry | ```{ "Location.coordinates": { $geoWithin: { $geometry: { type: "Polygon", coordinates: [ [ [ -121.9, 46.7 ], [ -121.5, 46.7 ], [ -121.5, 46.9 ], [ -121.9, 46.9 ], [ -121.9, 46.7 ] ] ] } } } }``` | Yes |
-$minDistance | ```{ "Location.coordinates": { $nearSphere : { $geometry: {type: "Point", coordinates: [ -121, 46 ]}, $minDistance: 1000, $maxDistance: 1000000 } } }``` | Yes |
-$maxDistance | ```{ "Location.coordinates": { $nearSphere : [ -121, 46  ], $maxDistance: 0.50 } }``` | Yes |
-$center | ```{ "Location.coordinates": { $geoWithin: { $center: [ [-121, 46], 1 ] } } }``` | Yes |
-$centerSphere | ```{ "Location.coordinates": { $geoWithin: { $centerSphere: [ [ -121, 46 ], 5 ] } } }``` | Yes |
-$box | ```{ "Location.coordinates": { $geoWithin: { $box:  [ [ 0, 0 ], [ -122, 47 ] ] } } }``` | Yes |
-$polygon | ```{ "Location.coordinates": { $near: { $geometry: { type: "Polygon", coordinates: [ [ [ -121.9, 46.7 ], [ -121.5, 46.7 ], [ -121.5, 46.9 ], [ -121.9, 46.9 ], [ -121.9, 46.7 ] ] ] } } } }``` | Yes |
+$geoWithin | ```{ "Location.coordinates": { $geoWithin: { $centerSphere: [ [ -121, 46 ], 5 ] } } }``` | Ja |
+$geoIntersects |  ```{ "Location.coordinates": { $geoIntersects: { $geometry: { type: "Polygon", coordinates: [ [ [ -121.9, 46.7 ], [ -121.5, 46.7 ], [ -121.5, 46.9 ], [ -121.9, 46.9 ], [ -121.9, 46.7 ] ] ] } } } }``` | Ja |
+$near | ```{ "Location.coordinates": { $near: { $geometry: { type: "Polygon", coordinates: [ [ [ -121.9, 46.7 ], [ -121.5, 46.7 ], [ -121.5, 46.9 ], [ -121.9, 46.9 ], [ -121.9, 46.7 ] ] ] } } } }``` | Ja |
+$nearSphere | ```{ "Location.coordinates": { $nearSphere : [ -121, 46  ], $maxDistance: 0.50 } }``` | Ja |
+$geometry | ```{ "Location.coordinates": { $geoWithin: { $geometry: { type: "Polygon", coordinates: [ [ [ -121.9, 46.7 ], [ -121.5, 46.7 ], [ -121.5, 46.9 ], [ -121.9, 46.9 ], [ -121.9, 46.7 ] ] ] } } } }``` | Ja |
+$minDistance | ```{ "Location.coordinates": { $nearSphere : { $geometry: {type: "Point", coordinates: [ -121, 46 ]}, $minDistance: 1000, $maxDistance: 1000000 } } }``` | Ja |
+$maxDistance | ```{ "Location.coordinates": { $nearSphere : [ -121, 46  ], $maxDistance: 0.50 } }``` | Ja |
+$center | ```{ "Location.coordinates": { $geoWithin: { $center: [ [-121, 46], 1 ] } } }``` | Ja |
+$centerSphere | ```{ "Location.coordinates": { $geoWithin: { $centerSphere: [ [ -121, 46 ], 5 ] } } }``` | Ja |
+$box | ```{ "Location.coordinates": { $geoWithin: { $box:  [ [ 0, 0 ], [ -122, 47 ] ] } } }``` | Ja |
+$polygon | ```{ "Location.coordinates": { $near: { $geometry: { type: "Polygon", coordinates: [ [ [ -121.9, 46.7 ], [ -121.5, 46.7 ], [ -121.5, 46.9 ], [ -121.9, 46.9 ], [ -121.9, 46.7 ] ] ] } } } }``` | Ja |
 
 ## <a name="sort-operations"></a>Sortera åtgärder
 
 Med åtgärden `findOneAndUpdate` kan du använda sorteringsåtgärder på ett enda fält, men inte på flera fält.
 
-## <a name="additional-operators"></a>Ytterligare operatorer
+## <a name="other-operators"></a>Andra operatörer
 
 Operator | Exempel | Anteckningar
 --- | --- | --- |
@@ -353,7 +356,7 @@ Cosmos DB stöder automatisk, inbyggd replikering på de understa lagren. Denna 
 
 ## <a name="write-concern"></a>Skrivanmärkningar
 
-Vissa program förlitar sig på en [Write Concern](https://docs.mongodb.com/manual/reference/write-concern/) (skrivanmärkning) som anger det antal svar som krävs under en skrivåtgärd. På grund av hur Cosmos DB hanterar replikering i bakgrunden är alla skrivningar automatiskt kvorumskrivningar som standard. Skrivanmärkningar som anges av klientkoden ignoreras. Läs mer om hur du [maximerar tillgänglighet och prestanda med hjälp av konsekvensnivåer](consistency-levels.md).
+Vissa program är beroende av en [Skriv](https://docs.mongodb.com/manual/reference/write-concern/) åtgärd som anger antalet svar som krävs under en Skriv åtgärd. På grund av hur Cosmos DB hanterar replikering i bakgrunden är alla skrivningar automatiskt kvorumskrivningar som standard. Skrivanmärkningar som anges av klientkoden ignoreras. Läs mer om hur du [maximerar tillgänglighet och prestanda med hjälp av konsekvensnivåer](consistency-levels.md).
 
 ## <a name="sharding"></a>Horisontell partitionering
 

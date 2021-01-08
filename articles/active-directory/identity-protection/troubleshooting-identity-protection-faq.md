@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: troubleshooting
-ms.date: 10/07/2020
+ms.date: 01/07/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6eb63a4a0b7b7fdefd636d3460b182f8d907dd36
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: 0d80b8f41e11f2fffa86dc7597fdf44dd27825fc
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96558937"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028904"
 ---
 # <a name="frequently-asked-questions-identity-protection-in-azure-active-directory"></a>Vanliga frågor om identitets skydd i Azure Active Directory
 
@@ -35,7 +35,7 @@ Det finns ett aktuellt känt problem som orsakar svars tider i det avstängda an
 
 Om du är Azure AD Identity Protection kund går du till vyn [riskfyllda användare](howto-identity-protection-investigate-risk.md#risky-users) och klickar på en användare som är utsatt för risk. I kassan längst ned visas alla händelser som ledde till en ändring av användar risken i fliken risk historik. Om du vill se alla riskfyllda inloggningar för användaren klickar du på användarens riskfyllda inloggningar. Om du vill se alla risk identifieringar för den här användaren klickar du på användarens risk identifieringar.
 
-## <a name="why-was-my-sign-in-blocked-but-identity-protection-didnt-generate-a-risk-detection"></a>Varför har min inloggning blockerats men identitets skydd genererade inte någon risk identifiering?
+### <a name="why-was-my-sign-in-blocked-but-identity-protection-didnt-generate-a-risk-detection"></a>Varför har min inloggning blockerats men identitets skydd genererade inte någon risk identifiering?
 Inloggningar kan blockeras av flera orsaker. Det är viktigt att Observera att identitets skydd endast genererar risk identifiering när rätt autentiseringsuppgifter används i autentiseringsbegäran. Om en användare använder felaktiga autentiseringsuppgifter, kommer den inte att flaggas av identitets skydd eftersom det inte finns risk för komprometterande autentiseringsuppgifter om inte en felaktig aktör använder rätt autentiseringsuppgifter. Vissa orsaker till att en användare kan blockeras från signering som inte genererar en identifiering av identitets skydd är:
 * **IP-adressen kan ha blockerats** på grund av skadlig aktivitet från IP-adressen. Det blockerade IP-meddelandet särskiljer inte om autentiseringsuppgifterna var korrekta eller inte. Om IP-adressen är blockerad och rätt autentiseringsuppgifter inte används genererar den ingen identifiering av identitets skydd
 * **[Smart utelåsning](../authentication/howto-password-smart-lockout.md)** kan blockera kontot från att logga in efter flera misslyckade försök
@@ -96,3 +96,7 @@ Med tanke på att användar risken är kumulativ och inte upphör att gälla, ka
 ### <a name="why-does-a-sign-in-have-a-sign-in-risk-aggregate-score-of-high-when-the-detections-associated-with-it-are-of-low-or-medium-risk"></a>Varför har en inloggning en "inloggnings risk (agg regering)" på hög nivå när de identifieringar som är associerade med den är av låg eller medelhög risk?
 
 Hög mängd risk poängen kan baseras på andra funktioner i inloggningen eller det faktum att fler än en identifiering har Aktiver ATS för den inloggningen. En inloggning kan dessutom ha en inloggnings risk (agg regering) av medel, även om identifieringarna som är associerade med inloggningen är av hög risk.
+
+### <a name="what-is-the-difference-between-the-activity-from-anonymous-ip-address-and-anonymous-ip-address-detections"></a>Vad är skillnaden mellan identifieringar av "aktivitet från anonym IP-adress" och "Anonym IP-adress"?
+
+Identifierings källan för den anonyma IP-adressen är Azure AD Identity Protection, medan identifieringen "aktivitet från anonym IP-adress" är integrerad från MCAS (Microsoft Cloud App Security). Även om de har liknande namn och det är möjligt att du ser överlappningar i dessa signaler, har de distinkta identifieringar på Server sidan.

@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 895b8441f340d085932cade513c9f8929491b374
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: b7980bfc58ed696a74d3da259e23fb7e428621a9
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96904269"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028921"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Utvecklarguide för Azure Key Vault
 
@@ -41,7 +41,7 @@ Key Vault hantering, som liknar andra Azure-tjänster, görs via Azure Resource 
 
 | Azure CLI | PowerShell | REST-API | Resource Manager | .NET | Python | Java | JavaScript |  
 |--|--|--|--|--|--|--|--|
-|[Referens](/cli/azure/keyvault)<br>[Snabbstart](quick-create-cli.md)|[Referens](/powershell/module/az.keyvault)<br>[Snabbstart](quick-create-powershell.md)|[Referens](/rest/api/keyvault/)|[Referens](/azure/templates/microsoft.keyvault/vaults)|[Referens](/dotnet/api/microsoft.azure.management.keyvault)|[Referens](/python/api/azure-mgmt-keyvault/azure.mgmt.keyvault)|[Referens](/java/api/com.microsoft.azure.management.keyvault)|[Referens](/javascript/api/@azure/arm-keyvault)|
+|[Referens](/cli/azure/keyvault)<br>[Snabbstart](quick-create-cli.md)|[Referens](/powershell/module/az.keyvault)<br>[Snabbstart](quick-create-powershell.md)|[Referens](/rest/api/keyvault/)|[Referens](/azure/templates/microsoft.keyvault/vaults)|[Referens](/dotnet/api/microsoft.azure.management.keyvault)<br>[Snabbstart](https://docs.microsoft.com/azure/key-vault/general/vault-create-template)|[Referens](/python/api/azure-mgmt-keyvault/azure.mgmt.keyvault)|[Referens](/java/api/com.microsoft.azure.management.keyvault)|[Referens](/javascript/api/@azure/arm-keyvault)|
 
 Se [klient bibliotek](client-libraries.md) för installations paket och käll kod.
 
@@ -68,9 +68,13 @@ Scenarier med ovan autentisering stöds av **klient biblioteket för Azure Ident
 Mer information om Azure Identity client-Libarary finns i:
 
 ### <a name="azure-identity-client-libraries"></a>Klient bibliotek för Azure Identity
+
 | .NET | Python | Java | JavaScript |
 |--|--|--|--|
 |[Azure Identity SDK .NET](/dotnet/api/overview/azure/identity-readme)|[Azure Identity SDK python](/python/api/overview/azure/identity-readme)|[Azure Identity SDK Java](/java/api/overview/azure/identity-readme)|[JavaScript-skript för Azure Identity SDK](/javascript/api/overview/azure/identity-readme)|     
+
+>[!Note]
+> [Bibliotek för app-autentisering](https://docs.microsoft.com/dotnet/api/overview/azure/service-to-service-authentication) som rekommenderas för Key Vault .NET SDK version 3, som för närvarande är depracated. Följ [AppAuthentication till Azure. vägledning för identitets migrering](https://docs.microsoft.com/dotnet/api/overview/azure/app-auth-migration) för att migrera till Key Vault .NET SDK version 4.
 
 Självstudier om hur du autentiserar till Key Vault i program finns i:
 - [Autentisera till Key Vault i program som finns i en virtuell dator i .NET](./tutorial-net-virtual-machine.md)
@@ -86,14 +90,14 @@ Självstudier om hur du autentiserar till Key Vault i program finns i:
 
 | Azure CLI | PowerShell | REST-API | Resource Manager | .NET | Python | Java | JavaScript |  
 |--|--|--|--|--|--|--|--|
-|[Referens](/cli/azure/keyvault/key)<br>[Snabbstart](../keys/quick-create-cli.md)|[Referens](/powershell/module/az.keyvault/)<br>[Snabbstart](../keys/quick-create-powershell.md)|[Referens](/rest/api/keyvault/#key-operations)|Saknas|[Referens](/dotnet/api/azure.security.keyvault.keys)|[Referens](/python/api/azure-mgmt-keyvault/azure.mgmt.keyvault)<br>[Snabbstart](../keys/quick-create-python.md)|[Referens](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-security-keyvault-keys/4.2.0/index.html)|[Referens](/javascript/api/@azure/keyvault-keys/)|
+|[Referens](/cli/azure/keyvault/key)<br>[Snabbstart](../keys/quick-create-cli.md)|[Referens](/powershell/module/az.keyvault/)<br>[Snabbstart](../keys/quick-create-powershell.md)|[Referens](/rest/api/keyvault/#key-operations)|[Referens](https://docs.microsoft.com/azure/templates/microsoft.keyvault/vaults/keys)<br>[Snabbstart](../keys/quick-create-template.md)|[Referens](/dotnet/api/azure.security.keyvault.keys)<br>[Snabbstart](../keys/quick-create-net.md)|[Referens](/python/api/azure-mgmt-keyvault/azure.mgmt.keyvault)<br>[Snabbstart](../keys/quick-create-python.md)|[Referens](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-security-keyvault-keys/4.2.0/index.html)<br>[Snabbstart](../keys/quick-create-java.md)|[Referens](/javascript/api/@azure/keyvault-keys/)<br>[Snabbstart](../keys/quick-create-node.md)|
 
 **API: er och SDK: er för certifikat**
 
 
 | Azure CLI | PowerShell | REST-API | Resource Manager | .NET | Python | Java | JavaScript |  
 |--|--|--|--|--|--|--|--|
-|[Referens](/cli/azure/keyvault/certificate)<br>[Snabbstart](../certificates/quick-create-cli.md)|[Referens](/powershell/module/az.keyvault)<br>[Snabbstart](../certificates/quick-create-powershell.md)|[Referens](/rest/api/keyvault/#certificate-operations)|Saknas|[Referens](/dotnet/api/azure.security.keyvault.certificates)|[Referens](/python/api/overview/azure/keyvault-certificates-readme)<br>[Snabbstart](../certificates/quick-create-python.md)|[Referens](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-security-keyvault-certificates/4.1.0/index.html)|[Referens](/javascript/api/@azure/keyvault-certificates/)|
+|[Referens](/cli/azure/keyvault/certificate)<br>[Snabbstart](../certificates/quick-create-cli.md)|[Referens](/powershell/module/az.keyvault)<br>[Snabbstart](../certificates/quick-create-powershell.md)|[Referens](/rest/api/keyvault/#certificate-operations)|Ej tillämpligt|[Referens](/dotnet/api/azure.security.keyvault.certificates)<br>[Snabbstart](../certificates/quick-create-net.md)|[Referens](/python/api/overview/azure/keyvault-certificates-readme)<br>[Snabbstart](../certificates/quick-create-python.md)|[Referens](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-security-keyvault-certificates/4.1.0/index.html)<br>[Snabbstart](../certificates/quick-create-java.md)|[Referens](/javascript/api/@azure/keyvault-certificates/)<br>[Snabbstart](../certificates/quick-create-node.md)|
 
 **Hemligheter och SDK: er för hemligheter**
 

@@ -3,12 +3,12 @@ title: Distribuera resurser med REST API och mall
 description: Använd Azure Resource Manager-och Resource Manager-REST API för att distribuera resurser till Azure. Resurserna definieras i en Resource Manager-mall.
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: d1c8a365153007d3337d922bc163ba3767eeddc9
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 77192aff9ed4fe33269b5e11891c30e15bc312dd
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675411"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028972"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-resource-manager-rest-api"></a>Distribuera resurser med ARM-mallar och Azure Resource Manager REST API
 
@@ -20,13 +20,13 @@ Du kan antingen inkludera din mall i begär ande texten eller länka till en fil
 
 Du kan rikta din distribution till en resurs grupp, Azure-prenumeration, hanterings grupp eller klient organisation. Beroende på distributionens omfattning använder du olika kommandon.
 
-* Använd [distributioner – skapa](/rest/api/resources/deployments/createorupdate)för att distribuera till en **resurs grupp** . Begäran skickas till:
+- Använd [distributioner – skapa](/rest/api/resources/deployments/createorupdate)för att distribuera till en **resurs grupp**. Begäran skickas till:
 
   ```HTTP
   PUT https://management.azure.com/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2020-06-01
   ```
 
-* Om du vill distribuera till en **prenumeration** använder du [distributioner – skapa vid prenumerations omfång](/rest/api/resources/deployments/createorupdateatsubscriptionscope). Begäran skickas till:
+- Om du vill distribuera till en **prenumeration** använder du [distributioner – skapa vid prenumerations omfång](/rest/api/resources/deployments/createorupdateatsubscriptionscope). Begäran skickas till:
 
   ```HTTP
   PUT https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2020-06-01
@@ -34,7 +34,7 @@ Du kan rikta din distribution till en resurs grupp, Azure-prenumeration, hanteri
 
   Mer information om distributioner på prenumerations nivå finns i [skapa resurs grupper och resurser på prenumerations nivå](deploy-to-subscription.md).
 
-* Om du vill distribuera till en **hanterings grupp** använder du [distributioner – skapa i hanterings gruppens omfång](/rest/api/resources/deployments/createorupdateatmanagementgroupscope). Begäran skickas till:
+- Om du vill distribuera till en **hanterings grupp** använder du [distributioner – skapa i hanterings gruppens omfång](/rest/api/resources/deployments/createorupdateatmanagementgroupscope). Begäran skickas till:
 
   ```HTTP
   PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{groupId}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2020-06-01
@@ -42,7 +42,7 @@ Du kan rikta din distribution till en resurs grupp, Azure-prenumeration, hanteri
 
   Mer information om distributioner på hanterings grupp nivå finns i [Skapa resurser på hanterings grupps nivå](deploy-to-management-group.md).
 
-* Om du vill distribuera till en **klient** använder du [distributioner – skapa eller uppdatera på klientens omfång](/rest/api/resources/deployments/createorupdateattenantscope). Begäran skickas till:
+- Om du vill distribuera till en **klient** använder du [distributioner – skapa eller uppdatera på klientens omfång](/rest/api/resources/deployments/createorupdateattenantscope). Begäran skickas till:
 
   ```HTTP
   PUT https://management.azure.com/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2020-06-01
@@ -83,7 +83,7 @@ I exemplen i den här artikeln används resurs grupps distributioner.
 
    I begär ande texten anger du en länk till mallen och parameter filen. Mer information om parameterfilen finns i [Skapa en parameterfil för Resource Manager](parameter-files.md).
 
-   Observera att **läget** är inställt på **stegvis** . Om du vill köra en fullständig distribution anger du att **läget** ska **slutföras** . Var försiktig när du använder det fullständiga läget eftersom du oavsiktligt kan ta bort resurser som inte finns i din mall.
+   Observera `mode` att är inställt på **stegvis**. Om du vill köra en fullständig distribution väljer `mode` du **Slutför**. Var försiktig när du använder det fullständiga läget eftersom du oavsiktligt kan ta bort resurser som inte finns i din mall.
 
    ```json
    {
@@ -122,9 +122,9 @@ I exemplen i den här artikeln används resurs grupps distributioner.
    }
    ```
 
-    Du kan konfigurera ditt lagrings konto så att det använder en SAS-token (signatur för delad åtkomst). Mer information finns i [Delegera åtkomst med en signatur för delad åtkomst](/rest/api/storageservices/delegating-access-with-a-shared-access-signature).
+    Du kan konfigurera ditt lagrings konto så att det använder en SAS-token (signatur för delad åtkomst). Mer information finns i [Delegera åtkomst med en signatur för delad åtkomst](/rest/api/storageservices/delegate-access-with-shared-access-signature).
 
-    Om du behöver ange ett känsligt värde för en parameter (till exempel ett lösen ord) lägger du till värdet i ett nyckel valv. Hämta nyckel valvet under distributionen som visas i föregående exempel. Mer information finns i [Skicka säkra värden under distributionen](key-vault-parameter.md).
+    Om du behöver ange ett känsligt värde för en parameter (till exempel ett lösen ord) lägger du till värdet i ett nyckel valv. Hämta nyckel valvet under distributionen som visas i föregående exempel. Mer information finns i [använda Azure Key Vault för att skicka ett säkert parameter värde under distributionen](key-vault-parameter.md).
 
 1. I stället för att länka till filer för mallen och parametrarna kan du ta med dem i begär ande texten. I följande exempel visas begär ande texten med mallen och den infogade parametern:
 
@@ -217,4 +217,3 @@ För att undvika konflikter med samtidiga distributioner och för att säkerstä
 - Information om hur du hanterar resurser som finns i resurs gruppen men som inte har definierats i mallen finns i [Azure Resource Manager distributions lägen](deployment-modes.md).
 - Läs mer om hur du hanterar asynkrona REST-åtgärder i [spåra asynkrona Azure-åtgärder](../management/async-operations.md).
 - Mer information om mallar finns i [förstå strukturen och syntaxen för ARM-mallar](template-syntax.md).
-
