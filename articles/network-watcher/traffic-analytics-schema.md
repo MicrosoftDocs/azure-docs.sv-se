@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/26/2019
+ms.date: 01/07/2021
 ms.author: vinigam
-ms.openlocfilehash: 015b8e400e9d386fff8f35756a77139e61bbaff1
-ms.sourcegitcommit: 31d242b611a2887e0af1fc501a7d808c933a6bf6
+ms.openlocfilehash: 765a2728c5de49787a64fff723625e53e100e450
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97809300"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98017790"
 ---
 # <a name="schema-and-data-aggregation-in-traffic-analytics"></a>Schema-och data agg regering i Trafikanalys
 
@@ -161,7 +161,7 @@ Nedan visas fälten i schemat och vad de betecknar
 | SrcPublicIPs_s | <SOURCE_PUBLIC_IP>\|\<FLOW_STARTED_COUNT>\|\<FLOW_ENDED_COUNT>\|\<OUTBOUND_PACKETS>\|\<INBOUND_PACKETS>\|\<OUTBOUND_BYTES>\|\<INBOUND_BYTES> | Poster avgränsade med staplar |
 | DestPublicIPs_s | <DESTINATION_PUBLIC_IP>\|\<FLOW_STARTED_COUNT>\|\<FLOW_ENDED_COUNT>\|\<OUTBOUND_PACKETS>\|\<INBOUND_PACKETS>\|\<OUTBOUND_BYTES>\|\<INBOUND_BYTES> | Poster avgränsade med staplar |
 
-### <a name="notes"></a>Obs!
+### <a name="notes"></a>Kommentarer
 
 1. I händelse av AzurePublic-och ExternalPublic-flöden fylls den kund som äger den virtuella Azure-datorns IP-adress i VMIP_s-fältet, medan de offentliga IP-adresserna fylls i fältet PublicIPs_s. För dessa två flödes typer bör vi använda VMIP_s och PublicIPs_s i stället för SrcIP_s och DestIP_s fält. För AzurePublic-och ExternalPublicIP-adresser aggregerar vi ytterligare, så att antalet poster som matas in till kund Log Analytics-arbetsytan är minimalt. (Det här fältet kommer att inaktive ras snart och vi bör använda SrcIP_ och DestIP_s beroende på om den virtuella Azure-datorn är källan eller målet i flödet)
 1. Information om flödes typer: baserat på de IP-adresser som ingår i flödet, kategoriseras flödena i till följande flödes typer:
@@ -176,5 +176,5 @@ Nedan visas fälten i schemat och vad de betecknar
 1. Okänd – det går inte att mappa någon av IP-adresserna i flödena med kundens topologi i Azure och lokalt (plats).
 1. Vissa fält namn läggs till i \_ s eller \_ d. Dessa säger inte källa och mål, men anger sträng och decimaler för data typerna.
 
-### <a name="next-steps"></a>Nästa steg
+### <a name="next-steps"></a>Efterföljande moment
 För att få svar på vanliga frågor, se [vanliga frågor och svar om trafik analys](traffic-analytics-faq.md) för att se information om funktioner, se [Traffic Analytics-dokumentation](traffic-analytics.md)

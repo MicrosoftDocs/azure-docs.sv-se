@@ -4,28 +4,20 @@ description: Automatisera aktiviteter som övervakar, skapar, hanterar, skickar 
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
-ms.reviewer: estfan, logicappspm
+ms.reviewer: estfan, logicappspm, azla
 ms.topic: article
-ms.date: 11/03/2020
+ms.date: 01/07/2021
 tags: connectors
-ms.openlocfilehash: 31714eee2e79481bbc8afb47718ed38e178d5b82
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 388d747da692160ab6d0a89c0c35de348d921486
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324243"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98016770"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>Övervaka, skapa och hantera SFTP-filer med hjälp av SSH och Azure Logic Apps
 
 Om du vill automatisera aktiviteter som övervakar, skapar, skickar och tar emot filer på en [säker File Transfer Protocol-server (SFTP)](https://www.ssh.com/ssh/sftp/) med hjälp av SSH-protokollet [(Secure Shell)](https://www.ssh.com/ssh/protocol/) kan du skapa och automatisera integrerings arbets flöden med hjälp av Azure Logic Apps och SFTP-SSH-anslutaren. SFTP är ett nätverksprotokoll som ger filåtkomst, filöverföring och filhantering via valfri betrodd dataström.
-
-> [!NOTE]
-> SFTP-SSH-anslutningen har för närvarande inte stöd för dessa SFTP-servrar:
-> 
-> * IBM-DataPower
-> * MessageWay
-> * Säker MFT för OpenText
-> * GXS för OpenText
 
 Här följer några exempel på uppgifter som du kan automatisera:
 
@@ -41,9 +33,16 @@ Mer skillnader mellan SFTP-SSH-anslutningsprogrammet och SFTP-anslutningen finns
 
 ## <a name="limits"></a>Gränser
 
+* SFTP-SSH-anslutningen har för närvarande inte stöd för dessa SFTP-servrar:
+
+  * IBM-DataPower
+  * MessageWay
+  * Säker MFT för OpenText
+  * GXS för OpenText
+
 * SFTP-SSH-anslutaren stöder antingen autentisering med privat nyckel eller lösenordsautentisering, inte båda.
 
-* SFTP – SSH-åtgärder som stöder [segment](../logic-apps/logic-apps-handle-large-messages.md) hantering kan hantera filer på upp till 1 GB, medan SFTP-SSH-åtgärder som inte stöder segment hantering kan hantera filer upp till 50 MB. Även om standard segment storleken är 15 MB, kan den här storleken dynamiskt ändra, med start från 5 MB och gradvis öka till 50 MB, baserat på faktorer som nätverks fördröjning, Server svars tid och så vidare.
+* SFTP – SSH-åtgärder som stöder [segment](../logic-apps/logic-apps-handle-large-messages.md) hantering kan hantera filer på upp till 1 GB, medan SFTP-SSH-åtgärder som inte stöder segment hantering kan hantera filer upp till 50 MB. Standard segment storleken är 15 MB, men den här storleken kan ändras dynamiskt, från och med 5 MB och ökade gradvis till 50 MB, baserat på faktorer som nätverks svars tid, Server svars tid och så vidare.
 
   > [!NOTE]
   > För logi Kap par i en [integrerings tjänst miljö (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)kräver den här anslutningens ISE-märkta version segment för att använda [meddelande gränserna för ISE](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) i stället.
@@ -52,9 +51,9 @@ Mer skillnader mellan SFTP-SSH-anslutningsprogrammet och SFTP-anslutningen finns
 
   Segment storleken är associerad med en anslutning, vilket innebär att du kan använda samma anslutning för åtgärder som stöder segment och sedan för åtgärder som inte stöder segment koppling. I det här fallet är segment storleken för åtgärder som inte stöder segment intervall mellan 5 MB och 50 MB. Den här tabellen visar vilka SFTP-SSH-åtgärder som stöder segment:
 
-  | Action | Segment stöd | Åsidosätt stöd för segment storlek |
+  | Åtgärd | Segment stöd | Åsidosätt stöd för segment storlek |
   |--------|------------------|-----------------------------|
-  | **Kopiera fil** | Nej | Inte tillämpligt |
+  | **Kopiera fil** | Inga | Inte tillämpligt |
   | **Skapa fil** | Ja | Ja |
   | **Skapa mapp** | Inte tillämpligt | Inte tillämpligt |
   | **Ta bort panel** | Inte tillämpligt | Inte tillämpligt |
@@ -65,7 +64,7 @@ Mer skillnader mellan SFTP-SSH-anslutningsprogrammet och SFTP-anslutningen finns
   | **Hämta metadata för fil med hjälp av sökväg** | Inte tillämpligt | Inte tillämpligt |
   | **Lista filer i mappen** | Inte tillämpligt | Inte tillämpligt |
   | **Byt namn på fil** | Inte tillämpligt | Inte tillämpligt |
-  | **Uppdatera fil** | Nej | Inte tillämpligt |
+  | **Uppdatera fil** | Inga | Inte tillämpligt |
   ||||
 
 * SFTP – SSH-utlösare stöder inte meddelande segment. När du begär fil innehåll väljer utlösare endast filer som är 15 MB eller mindre. Om du vill hämta filer som är större än 15 MB följer du detta mönster i stället:
@@ -86,7 +85,7 @@ Här följer några andra viktiga skillnader mellan SFTP-SSH-anslutningen och SF
 
 * Innehåller åtgärden **Byt namn på fil** , som byter namn på en fil på SFTP-servern.
 
-* Cachelagrar anslutningen till SFTP-servern *i upp till 1 timme* , vilket förbättrar prestandan och minskar antalet försök att ansluta till servern. Om du vill ställa in varaktigheten för den här funktionen för cachelagring redigerar du egenskapen [**ClientAliveInterval**](https://man.openbsd.org/sshd_config#ClientAliveInterval) i SSH-konfigurationen på din SFTP-server.
+* Cachelagrar anslutningen till SFTP-servern *i upp till 1 timme*, vilket förbättrar prestandan och minskar antalet försök att ansluta till servern. Om du vill ställa in varaktigheten för den här funktionen för cachelagring redigerar du egenskapen [**ClientAliveInterval**](https://man.openbsd.org/sshd_config#ClientAliveInterval) i SSH-konfigurationen på din SFTP-server.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -98,13 +97,13 @@ Här följer några andra viktiga skillnader mellan SFTP-SSH-anslutningen och SF
   >
   > SFTP-SSH-anslutaren stöder *endast* dessa format för privata nycklar, algoritmer och finger avtryck:
   >
-  > * **Privata nyckel format** : RSA (Rivest Shamir Adleman) och DSA-nycklar (Digital Signature Algorithm) i både OpenSSH-och SSH.com-format. Om din privata nyckel är i fil formatet SparaTillFil (. PPK), måste [du först konvertera nyckeln till fil formatet openssh (. pem)](#convert-to-openssh).
+  > * **Privata nyckel format**: RSA (Rivest Shamir Adleman) och DSA-nycklar (Digital Signature Algorithm) i både OpenSSH-och SSH.com-format. Om din privata nyckel är i fil formatet SparaTillFil (. PPK), måste [du först konvertera nyckeln till fil formatet openssh (. pem)](#convert-to-openssh).
   >
-  > * **Krypteringsalgoritmer** : des-EDE3-CBC, des-EDE3-CFB, des-CBC, AES-128-CBC, AES-192-CBC och aes-256-CBC
+  > * **Krypteringsalgoritmer**: des-EDE3-CBC, des-EDE3-CFB, des-CBC, AES-128-CBC, AES-192-CBC och aes-256-CBC
   >
-  > * **Finger avtryck** : MD5
+  > * **Finger avtryck**: MD5
   >
-  > När du har lagt till den SFTP-SSH-utlösare eller åtgärd som du vill använda i din Logic-app måste du ange anslutnings information för din SFTP-server. När du anger din privata SSH-nyckel för den här anslutningen kan du *_inte ange eller redigera nyckeln _ manuellt_* , vilket kan leda till att anslutningen Miss fungerar. Kontrol lera i stället att du _*_kopierar nyckeln_*_ från filen med din privata SSH-nyckel och _*_klistrar in_*_ nyckeln i anslutnings informationen. 
+  > När du har lagt till den SFTP-SSH-utlösare eller åtgärd som du vill använda i din Logic-app måste du ange anslutnings information för din SFTP-server. När du anger din privata SSH-nyckel för den här anslutningen kan du *_inte ange eller redigera nyckeln _ manuellt_*, vilket kan leda till att anslutningen Miss fungerar. Kontrol lera i stället att du _*_kopierar nyckeln_*_ från filen med din privata SSH-nyckel och _*_klistrar in_*_ nyckeln i anslutnings informationen. 
   > Mer information finns i avsnittet [ansluta till SFTP med SSH](#connect) senare i den här artikeln.
 
 _ Grundläggande information om [hur du skapar Logic Apps](../logic-apps/quickstart-create-first-logic-app-workflow.md)
@@ -113,15 +112,25 @@ _ Grundläggande information om [hur du skapar Logic Apps](../logic-apps/quickst
 
 ## <a name="how-sftp-ssh-triggers-work"></a>Så här fungerar SFTP-SSH-utlösare
 
-SFTP – SSH-utlösare fungerar genom att avsöka SFTP-filsystemet och leta efter en fil som har ändrats sedan den senaste avsökningen. Med vissa verktyg kan du bevara tidsstämpeln när filerna ändras. I dessa fall måste du inaktivera den här funktionen så att utlösaren kan fungera. Här följer några vanliga inställningar:
+<a name="polling-behavior"></a>
 
-| SFTP-klient | Action |
+### <a name="polling-behavior"></a>Avsöknings beteende
+
+SFTP – SSH-utlösare avsöker SFTP-filsystemet och letar efter alla filer som har ändrats sedan den senaste avsökningen. Med vissa verktyg kan du bevara tidsstämpeln när filerna ändras. I dessa fall måste du inaktivera den här funktionen så att utlösaren kan fungera. Här följer några vanliga inställningar:
+
+| SFTP-klient | Åtgärd |
 |-------------|--------|
 | WinSCP | Gå till **alternativ**  >  **Inställningar**  >  **överför**  >  **Redigera**  >  **bevara tidsstämpel**  >  **inaktivera** |
 | FileZilla | Gå till **överför**  >  **bevara tidsstämplar för överförda filer**  >  **inaktivera** |
 |||
 
 När en utlösare hittar en ny fil, kontrollerar utlösaren att den nya filen är fullständig och inte delvis skriven. En fil kan till exempel ha ändringar som pågår när utlösaren kontrollerar fil servern. För att undvika att returnera en delvis skriven fil, noterar utlösaren tidsstämpeln för filen som har nyligen gjorda ändringar, men returnerar inte omedelbart den filen. Utlösaren returnerar filen endast när servern avsöks igen. Ibland kan det här problemet orsaka en fördröjning som är upp till två gånger utlösaren för avsöknings intervall.
+
+<a name="trigger-recurrence-shift-drift"></a>
+
+### <a name="trigger-recurrence-shift-and-drift"></a>Utlös upprepnings Skift och avvikelse
+
+Anslutningsbaserade utlösare där du måste skapa en anslutning först, till exempel SFTP-SSH-utlösaren, skiljer sig från inbyggda utlösare som körs internt i Azure Logic Apps, till exempel [upprepnings utlösaren](../connectors/connectors-native-recurrence.md). I återkommande anslutningsbaserade utlösare är det återkommande schemat inte den enda driv rutin som styr körningen och tids zonen bestämmer den första start tiden. Efterföljande körningar är beroende av upprepnings schema, den senaste utlösnings körningen *och* andra faktorer som kan orsaka körnings tider eller orsaka oväntade beteende, till exempel att inte behålla det angivna schemat när sommar tid börjar och slutar. För att se till att upprepnings tiden inte skiftar när sommar tiden börjar gälla kan du justera upprepningen manuellt så att din Logic app fortsätter att köras vid den förväntade tiden. Annars flyttas start tiden en timme framåt när sommar tiden startar och en timme bakåt när sommar tiden slutar. Mer information finns i [upprepning för anslutningsbaserade utlösare](../connectors/apis-list.md#recurrence-connection-based).
 
 <a name="convert-to-openssh"></a>
 
@@ -131,7 +140,7 @@ Om den privata nyckeln är i formatet SparaTillFil, som använder fil namns till
 
 ### <a name="unix-based-os"></a>UNIX-baserat OS
 
-1. Om SparaTillFil-verktygen inte redan är installerade på systemet, gör du det nu, till exempel:
+1. Om du inte har de SparaTillFil-verktyg som är installerade på systemet, gör du det nu, till exempel:
 
    `sudo apt-get install -y putty`
 
@@ -139,7 +148,7 @@ Om den privata nyckeln är i formatet SparaTillFil, som använder fil namns till
 
    `puttygen <path-to-private-key-file-in-PuTTY-format> -O private-openssh -o <path-to-private-key-file-in-OpenSSH-format>`
 
-   Exempel:
+   Ett exempel:
 
    `puttygen /tmp/sftp/my-private-key-putty.ppk -O private-openssh -o /tmp/sftp/my-private-key-openssh.pem`
 
@@ -201,7 +210,7 @@ Om du vill skapa en fil på din SFTP-server kan du använda åtgärden SFTP-SSH 
 
    1. I SFTP-SSH-utlösare eller åtgärd som du har lagt till klistrar du in den *fullständiga* nyckeln som du kopierade i egenskapen **SSH Private Key** , som stöder flera rader.  **_Se till att klistra in_* _ Key. _*_Ange eller redigera inte nyckeln manuellt_*_.
 
-1. När du är klar med att ange anslutnings informationen väljer du _ * skapa * *.
+1. När du har angett anslutnings informationen väljer du _ * skapa * *.
 
 1. Ange den information som krävs för den valda utlösaren eller åtgärden och fortsätt att skapa din Logic app-arbetsflöde.
 
@@ -211,15 +220,15 @@ Om du vill skapa en fil på din SFTP-server kan du använda åtgärden SFTP-SSH 
 
 Om du vill åsidosätta standard beteendet som segmenterar använder kan du ange en konstant segment storlek mellan 5 och 50 MB.
 
-1. I åtgärdens övre högra hörn väljer du knappen ovaler ( **...** ) och väljer sedan **Inställningar**.
+1. I åtgärdens övre högra hörn väljer du knappen ovaler (**...**) och väljer sedan **Inställningar**.
 
    ![Öppna SFTP – SSH-inställningar](./media/connectors-sftp-ssh/sftp-ssh-connector-setttings.png)
 
-1. Under **innehålls överföring** , i egenskapen **segment storlek** , anger du ett heltals värde från `5` till `50` , till exempel: 
+1. Under **innehålls överföring**, i egenskapen **segment storlek** , anger du ett heltals värde från `5` till `50` , till exempel: 
 
    ![Ange den segment storlek som ska användas i stället](./media/connectors-sftp-ssh/specify-chunk-size-override-default.png)
 
-1. När du är klar väljer du **Klar**.
+1. När du är klar väljer du **klar**.
 
 ## <a name="examples"></a>Exempel
 
@@ -229,7 +238,7 @@ Om du vill åsidosätta standard beteendet som segmenterar använder kan du ange
 
 Den här utlösaren startar ett Logic app-arbetsflöde när en fil läggs till eller ändras på en SFTP-server. Du kan till exempel lägga till ett villkor som kontrollerar filens innehåll och hämtar innehållet baserat på om innehållet uppfyller ett angivet villkor. Du kan sedan lägga till en åtgärd som hämtar filens innehåll och placerar innehållet i en mapp på SFTP-servern.
 
-**Enterprise-exempel** : du kan använda den här utlösaren för att övervaka en SFTP-mapp för nya filer som representerar kund order. Du kan sedan använda en SFTP-åtgärd, till exempel **Hämta fil innehåll** , så att du kan hämta Beställningens innehåll för ytterligare bearbetning och lagra den i en order databas.
+**Enterprise-exempel**: du kan använda den här utlösaren för att övervaka en SFTP-mapp för nya filer som representerar kund order. Du kan sedan använda en SFTP-åtgärd, till exempel **Hämta fil innehåll** , så att du kan hämta Beställningens innehåll för ytterligare bearbetning och lagra den i en order databas.
 
 <a name="get-content"></a>
 
@@ -239,21 +248,9 @@ Den här åtgärden hämtar innehållet från en fil på en SFTP-server genom at
 
 <a name="troubleshooting-errors"></a>
 
-## <a name="troubleshoot-errors"></a>Felsöka fel
+## <a name="troubleshoot-problems"></a>Felsöka problem
 
 I det här avsnittet beskrivs möjliga lösningar på vanliga fel eller problem.
-
-<a name="file-does-not-exist"></a>
-
-### <a name="404-error-a-reference-was-made-to-a-file-or-folder-which-does-not-exist"></a>404 fel: "en referens gjordes till en fil eller mapp som inte finns"
-
-Det här felet kan inträffa när din Logic-app skapar en ny fil på din SFTP-server genom åtgärden SFTP-SSH **create File** , men den nya filen flyttas omedelbart innan Logic Apps tjänsten kan hämta filens metadata. När din Logi Kap par kör åtgärden för att **Skapa fil** anropar Logic Apps-tjänsten också din SFTP-server automatiskt för att hämta filens metadata. Men om filen flyttas kan Logic Apps-tjänsten inte längre hitta filen så att du får `404` fel meddelandet.
-
-Om du inte kan undvika eller försena flyttningen av filen kan du hoppa över att läsa filens metadata när du har skapat filen i stället för att följa dessa steg:
-
-1. I åtgärden **Skapa fil** öppnar du listan **Lägg till ny parameter** , väljer egenskapen **Hämta alla fil-metadata** och anger värdet till **Nej**.
-
-1. Om du behöver dessa fil-metadata senare kan du använda åtgärden **Hämta filens metadata** .
 
 <a name="connection-attempt-failed"></a>
 
@@ -272,6 +269,18 @@ Det här felet kan inträffa när din Logic app inte kan upprätta en anslutning
 * För att minska kostnaderna för anslutnings etablering, i SSH-konfigurationen för din SFTP-server, ökar du egenskapen [**ClientAliveInterval**](https://man.openbsd.org/sshd_config#ClientAliveInterval) till cirka en timme.
 
 * Granska SFTP-serverloggen för att kontrol lera om begäran från Logic app nådde SFTP-servern. Om du vill ha mer information om anslutnings problemet kan du också köra ett nätverks spår på din brand vägg och din SFTP-server.
+
+<a name="file-does-not-exist"></a>
+
+### <a name="404-error-a-reference-was-made-to-a-file-or-folder-which-does-not-exist"></a>404 fel: "en referens gjordes till en fil eller mapp som inte finns"
+
+Det här felet kan inträffa när din Logi Kap par skapar en ny fil på din SFTP-server genom åtgärden SFTP-SSH **create File** , men den nyligen skapade filen flyttas direkt innan Logic Apps tjänsten kan hämta filens metadata. När din Logi Kap par kör åtgärden för att **Skapa fil** anropar Logic Apps-tjänsten också din SFTP-server automatiskt för att hämta filens metadata. Men om din Logic-app flyttar filen kan Logic Apps-tjänsten inte längre hitta filen så att du får `404` fel meddelandet.
+
+Om du inte kan undvika eller försena flyttningen av filen kan du hoppa över att läsa filens metadata när du har skapat filen i stället för att följa dessa steg:
+
+1. I åtgärden **Skapa fil** öppnar du listan **Lägg till ny parameter** , väljer egenskapen **Hämta alla fil-metadata** och anger värdet till **Nej**.
+
+1. Om du behöver dessa fil-metadata senare kan du använda åtgärden **Hämta filens metadata** .
 
 ## <a name="connector-reference"></a>Referens för anslutningsapp
 

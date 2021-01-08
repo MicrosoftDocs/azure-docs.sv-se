@@ -5,14 +5,14 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 09/29/2020
+ms.date: 12/14/2020
 ms.author: duau
-ms.openlocfilehash: 56638f14565f76b0a2fc252b81dba3dae9e53dd8
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: acbd5c3aa88c2c8c14407ebda0c42d228aa6c9e3
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289441"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98018946"
 ---
 # <a name="create-expressroute-direct-using-the-azure-portal"></a>Skapa ExpressRoute Direct med hjälp av Azure Portal
 
@@ -21,7 +21,14 @@ Med ExpressRoute Direct kan du ansluta direkt till Microsofts globala nätverk v
 
 ## <a name="before-you-begin"></a><a name="before"></a>Innan du börjar
 
-Kontrol lera att **Microsoft. Network** Resource-providern är registrerad i din prenumeration. När du registrerar en resurs leverantör konfigureras din prenumeration så att den fungerar med resurs leverantören.
+Innan du använder ExpressRoute Direct måste du först registrera din prenumeration. Registrera dig genom att skicka ett e-postmeddelande till <ExpressRouteDirect@microsoft.com> med ditt prenumerations-ID, inklusive följande information:
+
+* Scenarier som du behöver utföra med **ExpressRoute Direct**
+* Plats inställningar – Se [partner och peering-platser](expressroute-locations-providers.md) för en fullständig lista över alla platser
+* Tidslinje för implementering
+* Andra frågor
+
+När du har registrerat dig kontrollerar du att **Microsoft. Network** Resource-providern är registrerad i din prenumeration. När du registrerar en resurs leverantör konfigureras din prenumeration så att den fungerar med resurs leverantören.
 
 1. Få åtkomst till dina prenumerations inställningar enligt beskrivningen i [Azure Resource providers och-typer](../azure-resource-manager/management/resource-providers-and-types.md).
 1. I prenumerationen för **Resource providers** kontrollerar du att **Microsoft. Network** -providern visar en **registrerad** status. Om Microsoft. Network Resource-providern inte finns i listan över registrerade providers, lägger du till den.
@@ -40,18 +47,18 @@ Kontrol lera att **Microsoft. Network** Resource-providern är registrerad i din
 
     :::image type="content" source="./media/how-to-expressroute-direct-portal/basics.png" alt-text="Sidan Grundinställningar":::
 
-    * **Prenumeration** : den Azure-prenumeration som du vill använda för att skapa en ny ExpressRoute Direct. ExpressRoute Direct Resource och ExpressRoute-kretsar måste vara i samma prenumeration.
-    * **Resurs grupp** : Azure-resurs gruppen där den nya ExpressRoute Direct-resursen ska skapas i. Om du inte har en befintlig resurs grupp kan du skapa en ny.
-    * **Region** : den offentliga Azure-region som resursen ska skapas i.
-    * **Namn** : namnet på den nya ExpressRoute Direct-resursen.
+    * **Prenumeration**: den Azure-prenumeration som du vill använda för att skapa en ny ExpressRoute Direct. ExpressRoute Direct Resource och ExpressRoute-kretsar måste vara i samma prenumeration.
+    * **Resurs grupp**: Azure-resurs gruppen där den nya ExpressRoute Direct-resursen ska skapas i. Om du inte har en befintlig resurs grupp kan du skapa en ny.
+    * **Region**: den offentliga Azure-region som resursen ska skapas i.
+    * **Namn**: namnet på den nya ExpressRoute Direct-resursen.
 
 1. Fyll sedan i fälten på sidan **konfiguration** .
 
     :::image type="content" source="./media/how-to-expressroute-direct-portal/configuration.png" alt-text="Skärm bild som visar sidan &quot;skapa ExpressRoute Direct&quot; med fliken &quot;konfiguration&quot; vald.":::
 
-    * **Peering-plats** : peering-platsen där du ska ansluta till ExpressRoute Direct-resursen. Om du vill ha mer information om peering-platser granskar du [ExpressRoute-platser](expressroute-locations-providers.md).
-   * **Bandbredd** : den port par bandbredd som du vill reservera. ExpressRoute Direct stöder bandbredds alternativen 10 GB och 100 GB. Om den önskade bandbredden inte är tillgänglig på den angivna peering-platsen [öppnar du en supportbegäran i Azure Portal](https://aka.ms/azsupt).
-   * **Inkapsling** : ExpressRoute Direct stöder både QinQ-och Dot1Q-inkapsling.
+    * **Peering-plats**: peering-platsen där du ska ansluta till ExpressRoute Direct-resursen. Om du vill ha mer information om peering-platser granskar du [ExpressRoute-platser](expressroute-locations-providers.md).
+   * **Bandbredd**: den port par bandbredd som du vill reservera. ExpressRoute Direct stöder bandbredds alternativen 10 GB och 100 GB. Om den önskade bandbredden inte är tillgänglig på den angivna peering-platsen [öppnar du en supportbegäran i Azure Portal](https://aka.ms/azsupt).
+   * **Inkapsling**: ExpressRoute Direct stöder både QinQ-och Dot1Q-inkapsling.
      * Om QinQ har valts tilldelas varje ExpressRoute-krets dynamiskt en S-tagg och kommer att vara unik i hela ExpressRoute Direct-resursen.
      *  Varje C-tagg på kretsen måste vara unik på kretsen, men inte över ExpressRoute Direct.
      * Om du väljer Dot1Q-inkapsling måste du hantera unikt C-tag (VLAN) över hela ExpressRoute Direct-resursen.

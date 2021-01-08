@@ -4,16 +4,16 @@ description: Lär dig mer om Azure Analysis Services, en fullständigt hanterad 
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 12/01/2020
+ms.date: 01/07/2021
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: 4be8c8a6163fe0400b37a3f2e1884ff389c00518
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: c4a14ab1e5b52eb36a532c6d69713d588864d288
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97963714"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019082"
 ---
 # <a name="what-is-azure-analysis-services"></a>Vad är Azure Analysis Services?
 
@@ -91,6 +91,7 @@ Azure Analysis Services stöds i regioner över hela världen. Planer som stöds
 |Central US     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 |Central US     |    S8v2, S9v2     |    1     |
 |USA, södra centrala     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
+|USA, södra centrala     |    S8v2, S9v2     |    1     |
 |USA, västra centrala   |     B1, B2, S0, S1, S2, S4, D1    |    3     |
 |USA, västra     |    B1, B2, S0, S1, S2, S4, D1    |    7   |
 |USA, västra     |    S8v2, S9v2   |    2  |
@@ -115,6 +116,7 @@ Azure Analysis Services stöds i regioner över hela världen. Planer som stöds
 |Australien, östra     |    S8v2, S9v2    |    1     |
 |Australien, sydöstra     | B1, B2, S0, S1, S2, S4, D1       |    1     |
 |Japan, östra     |   B1, B2, S0, S1, S2, S4, D1       |    1     |
+|Japan, östra     |    S8v2, S9v2    |    1     |
 |Sydostasien     |     B1, B2, S0, S1, S2, S4, D1     |   1      |
 |Sydostasien     |     S8v2, S9v2     |   1      |
 |Indien, västra     |    B1, B2, S0, S1, S2, S4, D1     |    1     |

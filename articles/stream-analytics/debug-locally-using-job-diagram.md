@@ -3,16 +3,15 @@ title: Felsöka Azure Stream Analytics frågor lokalt med hjälp av jobb diagram
 description: I den här artikeln beskrivs fel sökning av frågor lokalt med hjälp av jobb diagram i Azure Stream Analytics verktyg för Visual Studio.
 author: su-jie
 ms.author: sujie
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 01/23/2020
-ms.openlocfilehash: c32ba468979e4566d8e349d481eddca7d407b659
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: d0e94fda1fb21be1a01516f4cecf657426ae867e
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130994"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019456"
 ---
 # <a name="debug-azure-stream-analytics-queries-locally-using-job-diagram-in-visual-studio"></a>Felsöka Azure Stream Analytics frågor lokalt med hjälp av jobb diagram i Visual Studio
 
@@ -32,7 +31,7 @@ Använd den här [snabb](stream-analytics-quick-create-vs.md) starten för att l
 > [!NOTE]
 > Om du exporterar ett jobb till ett lokalt projekt och vill testa mot en Live-indataströmmen måste du ange autentiseringsuppgifterna för alla indata igen.  
 
-Välj indata och utdata från skript redigeraren och välj **Kör lokalt** . Jobb diagrammet visas på den högra sidan.
+Välj indata och utdata från skript redigeraren och välj **Kör lokalt**. Jobb diagrammet visas på den högra sidan.
 
 ### <a name="view-the-intermediate-result-set"></a>Visa den mellanliggande resultat uppsättningen  
 
@@ -72,7 +71,7 @@ I det här avsnittet ska du utforska de mått som är tillgängliga för varje d
 |-|-|
 |**TaxiRide**| Namnet på indatamängden.|
 |**Radantal**| Antalet rader som genereras från steget.|
-|**Data storlek**| Storleken på data som genereras från det här steget.|
+|**Datavolym**| Storleken på data som genereras från det här steget.|
 |**Lokal indatamängd**| Använd lokala data som indata.|
 
 #### <a name="query-steps"></a>Frågesteg
@@ -83,7 +82,7 @@ I det här avsnittet ska du utforska de mått som är tillgängliga för varje d
 |-|-|
 |**TripData**|Namnet på den tillfälliga resultat uppsättningen.|
 |**Radantal**| Antalet rader som genereras från steget.|
-|**Data storlek**| Storleken på data som genereras från det här steget.|
+|**Datavolym**| Storleken på data som genereras från det här steget.|
   
 #### <a name="output-sinks-live-output"></a>Utgående handfat (direktsända utdata)
 
@@ -103,7 +102,7 @@ I det här avsnittet ska du utforska de mått som är tillgängliga för varje d
 |**regionaggEH**|Namnet på utdata.|
 |**Lokal utdata**| Resultat av utdata till en lokal fil.|
 |**Radantal**| Antalet utgående rader i den lokala filen.|
-|**Data storlek**| Storleken på datautdata till den lokala filen.|
+|**Datavolym**| Storleken på datautdata till den lokala filen.|
 
 ### <a name="close-job-diagram"></a>Stäng jobb diagram
 

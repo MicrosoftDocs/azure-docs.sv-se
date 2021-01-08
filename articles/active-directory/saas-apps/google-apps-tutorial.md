@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/06/2020
+ms.date: 12/27/2020
 ms.author: jeedes
-ms.openlocfilehash: 0dd66e246e5e172ad359f5e6e953b360e6e74ebd
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: eeb5f3e2a87dcc56b8e2ef0bf17309e184c3d65b
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97796983"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019405"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-google-cloud-g-suite-connector"></a>Självstudie: Azure Active Directory enkel inloggning (SSO) med Google Cloud (G Suite)-anslutning
 
@@ -25,8 +25,6 @@ I den här självstudien får du lära dig hur du integrerar Google Cloud (G Sui
 * Kontroll i Azure AD som har åtkomst till Google Cloud (G Suite)-anslutning.
 * Gör det möjligt för användarna att logga in automatiskt till Google Cloud (G Suite)-anslutning med sina Azure AD-konton.
 * Hantera dina konton på en central plats – Azure Portal.
-
-Mer information om SaaS app integration med Azure AD finns i [Vad är program åtkomst och enkel inloggning med Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -82,14 +80,13 @@ I den här självstudien konfigurerar och testar du Azure AD SSO i en test milj�
 
 * Google Cloud (G Suite) Connector stöder **SP** -INITIERAd SSO
 
-* Google Cloud (G Suite) Connector stöder [ **Automatisk** användar etablering](g-suite-provisioning-tutorial.md)
-* När du har konfigurerat en anslutning för Google Cloud (G Suite) kan du genomdriva session Control, som skyddar exfiltrering och intrånget för organisationens känsliga data i real tid. Kontroll av sessionen utökas från villkorlig åtkomst. [Lär dig hur du tvingar fram sessions kontroll med Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad)
+* Google Cloud (G Suite) Connector stöder [ **Automatisk** användar etablering](./g-suite-provisioning-tutorial.md)
 
 ## <a name="adding-google-cloud-g-suite-connector-from-the-gallery"></a>Lägga till Google Cloud (G Suite)-koppling från galleriet
 
 Om du vill konfigurera integreringen av Google Cloud (G Suite) Connector i Azure AD måste du lägga till Google Cloud (G Suite)-koppling från galleriet till listan över hanterade SaaS-appar.
 
-1. Logga in på [Azure Portal](https://portal.azure.com) med antingen ett arbets-eller skol konto eller en personlig Microsoft-konto.
+1. Logga in på Azure Portal med antingen ett arbets-eller skol konto eller en personlig Microsoft-konto.
 1. I det vänstra navigerings fönstret väljer du tjänsten **Azure Active Directory** .
 1. Navigera till **företags program** och välj sedan **alla program**.
 1. Välj **nytt program** om du vill lägga till ett nytt program.
@@ -100,7 +97,7 @@ Om du vill konfigurera integreringen av Google Cloud (G Suite) Connector i Azure
 
 Konfigurera och testa Azure AD SSO med Google Cloud (G Suite) Connector med en test användare som heter **B. Simon**. För att SSO ska fungera måste du upprätta en länk relation mellan en Azure AD-användare och den relaterade användaren i Google Cloud-anslutningen (G Suite).
 
-Om du vill konfigurera och testa Azure AD SSO med Google Cloud (G Suite) Connector slutför du följande Bygg stenar:
+Utför följande steg för att konfigurera och testa Azure AD SSO med Google Cloud (G Suite) Connector:
 
 1. **[Konfigurera Azure AD SSO](#configure-azure-ad-sso)** – så att användarna kan använda den här funktionen.
     1. **[Skapa en Azure AD-test](#create-an-azure-ad-test-user)** för att testa enkel inloggning med Azure AD med B. Simon.
@@ -113,9 +110,9 @@ Om du vill konfigurera och testa Azure AD SSO med Google Cloud (G Suite) Connect
 
 Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
-1. I [Azure Portal](https://portal.azure.com/), på sidan för **kopplings program integration i Google Cloud (G Suite)** , letar du upp avsnittet **Hantera** och väljer **enkel inloggning**.
+1. I Azure Portal, på sidan för **kopplings program integration i Google Cloud (G Suite)** , letar du upp avsnittet **Hantera** och väljer **enkel inloggning**.
 1. På sidan **Välj metod för enkel inloggning** väljer du **SAML**.
-1. På sidan **Konfigurera enkel inloggning med SAML** klickar du på ikonen Redigera/penna för **grundläggande SAML-konfiguration** för att redigera inställningarna.
+1. På sidan **Konfigurera enkel inloggning med SAML** klickar du på Penn ikonen för **grundläggande SAML-konfiguration** för att redigera inställningarna.
 
    ![Redigera grundläggande SAML-konfiguration](common/edit-urls.png)
 
@@ -194,15 +191,9 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 1. I Azure Portal väljer du **företags program** och väljer sedan **alla program**.
 1. I listan program väljer du **Google Cloud (G Suite) Connector**.
 1. På sidan Översikt för appen letar du reda på avsnittet **Hantera** och väljer **användare och grupper**.
-
-   ![Länken ”Användare och grupper”](common/users-groups-blade.png)
-
 1. Välj **Lägg till användare** och välj sedan **användare och grupper** i dialog rutan **Lägg till tilldelning** .
-
-    ![Länken Lägg till användare](common/add-assign-user.png)
-
 1. I dialog rutan **användare och grupper** väljer du **B. Simon** från listan användare och klickar sedan på knappen **Välj** längst ned på skärmen.
-1. Om du förväntar dig ett roll värde i SAML Assertion, i dialog rutan **Välj roll** , väljer du lämplig roll för användaren i listan och klickar sedan på knappen **Välj** längst ned på skärmen.
+1. Om du förväntar dig att en roll ska tilldelas användarna kan du välja den från List rutan **Välj en roll** . Om ingen roll har kon figurer ATS för den här appen ser du rollen "standard åtkomst" vald.
 1. Klicka på knappen **tilldela** i dialog rutan **Lägg till tilldelning** .
 
 ## <a name="configure-google-cloud-g-suite-connector-sso"></a>Konfigurera Google Cloud (G Suite) Connector SSO
@@ -242,7 +233,7 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 
 Syftet med det här avsnittet är att [skapa en användare i Google Cloud (G Suite)-anslutning](https://support.google.com/a/answer/33310?hl=en) som kallas B. Simon. När användaren har skapats manuellt i Google Cloud (G Suite) Connector kommer användaren nu att kunna logga in med sina Microsoft 365 inloggnings uppgifter.
 
-Google Cloud-anslutningen (G Suite) stöder även automatisk användar etablering. Om du vill konfigurera automatisk användar etablering måste du först [Konfigurera Google Cloud (G Suite) Connector för automatisk användar etablering](g-suite-provisioning-tutorial.md).
+Google Cloud-anslutningen (G Suite) stöder även automatisk användar etablering. Om du vill konfigurera automatisk användar etablering måste du först [Konfigurera Google Cloud (G Suite) Connector för automatisk användar etablering](./g-suite-provisioning-tutorial.md).
 
 > [!NOTE]
 > Se till att användaren redan finns i Google Cloud (G Suite) Connector om etableringen i Azure AD inte har Aktiver ATS innan du testar enkel inloggning.
@@ -252,25 +243,18 @@ Google Cloud-anslutningen (G Suite) stöder även automatisk användar etablerin
 
 ## <a name="test-sso"></a>Testa SSO 
 
-I det här avsnittet testar du konfigurationen för enkel inloggning Azure AD med hjälp av åtkomstpanelen.
+I det här avsnittet ska du testa Azure AD-konfigurationen för enkel inloggning med följande alternativ. 
 
-När du klickar på kopplings panelen för Google Cloud (G Suite) på åtkomst panelen, bör du loggas in automatiskt på Google Cloud (G Suite) Connector som du ställer in SSO för. Mer information om åtkomstpanelen finns i [introduktionen till åtkomstpanelen](../user-help/my-apps-portal-end-user-access.md).
+* Klicka på **testa det här programmet** i Azure Portal. Detta omdirigerar till inloggnings-URL: en för Google Cloud (G Suite)-anslutnings tjänsten där du kan starta inloggnings flödet. 
 
-## <a name="additional-resources"></a>Ytterligare resurser
+* Gå till Google Cloud (G Suite) anslutnings inloggnings-URL: en direkt och starta inloggnings flödet därifrån.
 
-- [ Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory ](./tutorial-list.md)
+* Du kan använda Microsoft Mina appar. När du klickar på anslutnings panelen för Google Cloud (G Suite) i Mina appar omdirigeras den till inloggnings-URL: en för Google Cloud (G Suite) Connector. Mer information om Mina appar finns i [Introduktion till Mina appar](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-- [Vad är program åtkomst och enkel inloggning med Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
-- [Vad är villkorlig åtkomst i Azure Active Directory?](../conditional-access/overview.md)
+## <a name="next-steps"></a>Nästa steg
 
-- [Konfigurera användar etablering](g-suite-provisioning-tutorial.md)
-
-- [Testa Google Cloud-anslutningen (G Suite) med Azure AD](https://aad.portal.azure.com/)
-
-- [Vad är session Control i Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)
-
-- [Skydda Google Cloud-anslutningen (G Suite) med avancerad synlighet och kontroller](/cloud-app-security/protect-gsuite)
+När du har konfigurerat Google Cloud (G Suite)-anslutningen kan du genomdriva session Control, som skyddar exfiltrering och intrånget för organisationens känsliga data i real tid. Kontroll av sessionen sträcker sig från villkorlig åtkomst. [Lär dig hur du tvingar fram en session med Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad).
 
 <!--Image references-->
 

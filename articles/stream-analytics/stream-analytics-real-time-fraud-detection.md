@@ -1,24 +1,24 @@
 ---
 title: Självstudie – analysera falska anrops data med Azure Stream Analytics och visualisera resultat i Power BI instrument panel
 description: I den här självstudien finns en omfattande beskrivning av hur du använder Azure Stream Analytics för att analysera bedrägliga samtal i en telefonsamtalsström.
-author: mamccrea
-ms.author: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: tutorial
 ms.custom: contperf-fy21q2
 ms.date: 12/17/2020
-ms.openlocfilehash: b8744d86300287403ca390d93c70b25215bcac4f
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: 1e26159c07ca551a78ee2f83a0ca64779c60f7b4
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97822139"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98018878"
 ---
 # <a name="tutorial-analyze-fraudulent-call-data-with-stream-analytics-and-visualize-results-in-power-bi-dashboard"></a>Självstudie: analysera bedrägliga anrops data med Stream Analytics och visualisera resultat i Power BI instrument panel
 
 Den här självstudien visar hur du analyserar Telefonsamtals data med hjälp av Azure Stream Analytics. Telefonsamtals data som genereras av ett klient program innehåller bedrägliga anrop, som filtreras efter Stream Analytics jobb. Du kan använda metoderna från den här självstudien för andra typer av bedrägeri identifiering, till exempel kredit korts bedrägerier eller identitets stöld.
 
-I de här självstudierna får du lära dig att
+I den här guiden får du lära dig att:
 
 > [!div class="checklist"]
 > * Generera exempel på Telefonsamtals data och skicka dem till Azure Event Hubs.

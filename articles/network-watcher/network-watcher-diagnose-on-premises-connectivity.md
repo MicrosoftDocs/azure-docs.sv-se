@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/22/2017
+ms.date: 01/07/2021
 ms.author: damendo
-ms.openlocfilehash: 9014f24918013872ce102d094f62fd5703594ddc
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: a5db1ac9c70429d4b6a0b690de1b29c3656b3cc8
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94961884"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98016719"
 ---
 # <a name="diagnose-on-premises-connectivity-via-vpn-gateways"></a>Diagnostisera lokal anslutning via VPN-gatewayer
 
@@ -87,9 +87,9 @@ Med Azure Network Watcher fel söknings funktionen kan du diagnostisera och fels
 | PlannedMaintenance |  Underhåll utförs på Gateway-instansen.  |Nej|
 | UserDrivenUpdate | När en användar uppdatering pågår. Detta kan vara en åtgärd för storleks ändring. | Nej |
 | VipUnResponsive | Det går inte att komma åt den primära instansen av gatewayen. Detta inträffar när hälso avsökningen Miss lyckas. | Nej |
-| PlatformInActive | Det är något problem med plattformen. | Nej|
-| ServiceNotRunning | Den underliggande tjänsten körs inte. | Nej|
-| NoConnectionsFoundForGateway | Det finns inga anslutningar på gatewayen. Detta är endast en varning.| Nej|
+| PlatformInActive | Det är något problem med plattformen. | Inga|
+| ServiceNotRunning | Den underliggande tjänsten körs inte. | Inga|
+| NoConnectionsFoundForGateway | Det finns inga anslutningar på gatewayen. Detta är endast en varning.| Inga|
 | ConnectionsNotConnected | Ingen anslutning är ansluten. Detta är endast en varning.| Ja|
 | GatewayCPUUsageExceeded | CPU-användningen för aktuell gateway-användning är > 95%. | Ja |
 
@@ -101,9 +101,9 @@ Med Azure Network Watcher fel söknings funktionen kan du diagnostisera och fels
 | GatewayNotFound | Det går inte att hitta någon gateway eller gateway. |Nej|
 | PlannedMaintenance | Underhåll utförs på Gateway-instansen.  |Nej|
 | UserDrivenUpdate | När en användar uppdatering pågår. Detta kan vara en åtgärd för storleks ändring.  | Nej |
-| VipUnResponsive | Det går inte att komma åt den primära instansen av gatewayen. Det inträffar när hälso avsökningen Miss lyckas. | Nej |
-| ConnectionEntityNotFound | Anslutnings konfigurationen saknas. | Nej |
-| ConnectionIsMarkedDisconnected | Anslutningen är markerad som frånkopplad. |Nej|
+| VipUnResponsive | Det går inte att komma åt den primära instansen av gatewayen. Det inträffar när hälso avsökningen Miss lyckas. | Inga |
+| ConnectionEntityNotFound | Anslutnings konfigurationen saknas. | Inga |
+| ConnectionIsMarkedDisconnected | Anslutningen är markerad som frånkopplad. |Inga|
 | ConnectionNotConfiguredOnGateway | Ingen anslutning har kon figurer ATS för den underliggande tjänsten. | Ja |
 | ConnectionMarkedStandby | Den underliggande tjänsten är markerad som standby.| Ja|
 | Autentisering | Matchnings fel för i förväg delad nyckel. | Ja|

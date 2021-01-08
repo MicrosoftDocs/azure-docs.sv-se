@@ -11,20 +11,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/06/2020
+ms.date: 01/07/2021
 ms.author: vinigam
-ms.openlocfilehash: be69e7fc0c836257b92aa8573826fe1e8a36d770
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: d7c4f1853ff8dcb9249ab6ec4f536e1f8cfa10e5
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94948450"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98018232"
 ---
 # <a name="sample-queries-with-new-fields-in-the-traffic-analytics-schema-august-2019-schema-update"></a>Exempel frågor med nya fält i Trafikanalys schema (schema uppdatering augusti 2019)
 
 [Trafikanalyss logg schema](./traffic-analytics-schema.md) innehåller följande nya fält: **SrcPublicIPs_s**, **DestPublicIPs_s**, **NSGRule_s**. De nya fälten innehåller information om käll-och mål-IP-adresser, och de fören klar frågor.
 
-Under de kommande månaderna kommer följande äldre fält att bli föråldrade: **VMIP_s**, **Subscription_g**, **Region_s**, **NSGRules_s**, **Subnet_s**, **VM_s**, **NIC_s**, PublicIPs_s **, FlowCount_d**. **FlowCount_d**
+Under de kommande månaderna kommer följande äldre fält att bli föråldrade: **VMIP_s**, **Subscription_g**, **Region_s**, **NSGRules_s**, **Subnet_s**, **VM_s**, **NIC_s**, PublicIPs_s **, FlowCount_d**. 
 
 I följande tre exempel visas hur du ersätter de gamla fälten med de nya.
 

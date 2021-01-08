@@ -3,7 +3,7 @@ title: Azure AD Connect Health-diagnostisera synkroniseringsfel | Microsoft Docs
 description: Det här dokumentet beskriver diagnos processen för dubblerade synkroniseringsfel och en eventuell korrigering av de överblivna objekt scenarierna direkt från Azure Portal.
 services: active-directory
 documentationcenter: ''
-author: zhiweiwangmsft
+author: billmath
 manager: maheshu
 editor: billmath
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 05/11/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c2bd2e72b05cc01b1a351880d565323662635364
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 20f1e152d67e653b10b8378b7d667106c48dc116
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89278691"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98016940"
 ---
 # <a name="diagnose-and-remediate-duplicated-attribute-sync-errors"></a>Diagnostisera och åtgärda synkroniseringsfel med duplicerade attribut
 
@@ -97,11 +97,11 @@ Den här frågan försöker identifiera källobjektet för den befintliga använ
    - Om objektet inte hittas svarar du **Ja**.
 
 I de här exemplen försöker frågan identifiera om **Joe Jackson** fortfarande finns i lokala Active Directory.
-För det **vanliga scenariot**finns både användarna **Joe Johnson** och **Joe Jackson** i lokala Active Directory. Objekt i karantän är två olika användare.
+För det **vanliga scenariot** finns både användarna **Joe Johnson** och **Joe Jackson** i lokala Active Directory. Objekt i karantän är två olika användare.
 
 ![Felsöka vanliga scenarion vid synkroniseringsfel](./media/how-to-connect-health-diagnose-sync-errors/IIdFixCommonCase.png)
 
-För det **överblivna objekt scenariot**finns det bara en användare med **Joe-Johnson** i lokala Active Directory:
+För det **överblivna objekt scenariot** finns det bara en användare med **Joe-Johnson** i lokala Active Directory:
 
 ![Diagnostisera synkroniseringsfel överblivna objekt * finns användaren * scenariot](./media/how-to-connect-health-diagnose-sync-errors/IIdFixOrphanedCase.png)
 
@@ -144,11 +144,11 @@ Molnbaserad användare i Azure AD ska inte ha käll ankare. Uppdatering av käll
 
 
 **C.** Vad händer om det **befintliga objektet** ska vara det objekt som ska tas bort?  
-**En.** Om det **befintliga objektet** ska tas bort, innebär det inte att **käll ankaret**ändras. Vanligt vis kan du åtgärda det från lokala Active Directory. 
+**En.** Om det **befintliga objektet** ska tas bort, innebär det inte att **käll ankaret** ändras. Vanligt vis kan du åtgärda det från lokala Active Directory. 
 
 
 **C.** Vilken behörighet behöver användaren för att kunna tillämpa korrigeringen?  
-**En.** **Global administratör**eller **deltagare** från Azure RBAC har behörighet att komma åt diagnostik-och fel söknings processen.
+**En.** **Global administratör** eller **deltagare** från Azure RBAC har behörighet att komma åt diagnostik-och fel söknings processen.
 
 
 **C.** Måste jag konfigurera Azure AD Connect eller uppdatera Azure AD Connect Health Agent för den här funktionen?  

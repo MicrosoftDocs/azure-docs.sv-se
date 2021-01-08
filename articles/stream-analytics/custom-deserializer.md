@@ -1,18 +1,17 @@
 ---
 title: Självstudie – anpassade .NET-deserialiserare för Azure Stream Analytics moln jobb
 description: Den här självstudien visar hur du skapar en anpassad .NET-deserialiserare för ett Azure Stream Analytics moln jobb med Visual Studio.
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: sidramadoss
+ms.author: sidram
 ms.service: stream-analytics
 ms.topic: tutorial
 ms.date: 12/17/2020
-ms.openlocfilehash: 2353d15707fe215bfcab7912f2a9c598c4af7e49
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: 6db65d85b5d5d72e7b4764949abcffed004cae85
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97822020"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98018215"
 ---
 # <a name="tutorial-custom-net-deserializers-for-azure-stream-analytics"></a>Självstudie: anpassade .NET-deserialiserare för Azure Stream Analytics
 
@@ -20,7 +19,7 @@ Azure Stream Analytics har [inbyggt stöd för tre data format](stream-analytics
 
 Den här självstudien visar hur du skapar en anpassad .NET-deserialiserare för ett Azure Stream Analytics moln jobb med Visual Studio. Information om hur du skapar .NET-deserialiserare i Visual Studio Code finns i [skapa .net-deserialiserare för Azure Stream Analytics jobb i Visual Studio Code](visual-studio-code-custom-deserializer.md).
 
-I de här självstudierna får du lära dig att
+I den här guiden får du lära dig att:
 
 > [!div class="checklist"]
 > * Skapa en anpassad deserialiserare för en Protocol-buffert.

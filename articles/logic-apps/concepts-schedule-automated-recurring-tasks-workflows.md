@@ -3,15 +3,15 @@ title: Schemalägga återkommande aktiviteter och arbets flöden i Azure Logic A
 description: En översikt över schemaläggning av återkommande automatiserade uppgifter, processer och arbets flöden med Azure Logic Apps
 services: logic-apps
 ms.suite: integration
-ms.reviewer: deli, jonfan, logicappspm
+ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
-ms.date: 03/25/2020
-ms.openlocfilehash: 27763536b859b7bc3e9aa0a7c490cb510c0fda41
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.date: 01/07/2021
+ms.openlocfilehash: fd0a779ec5ac5537dd3e3ed6a82cf818b42cff15
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97588462"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98018800"
 ---
 # <a name="schedule-and-run-recurring-automated-tasks-processes-and-workflows-with-azure-logic-apps"></a>Schemalägg och kör återkommande automatiserade uppgifter, processer och arbetsflöden med Azure Logic Apps
 
@@ -48,13 +48,28 @@ I den här artikeln beskrivs funktionerna i de inbyggda schema utlösarna och å
 
 ## <a name="schedule-triggers"></a>Schemalägg utlösare
 
-Du kan starta ditt Logic app-arbetsflöde med utlösaren upprepnings utlösare eller glidande fönster, som inte är associerad med någon speciell tjänst eller något annat system. Dessa utlösare startar och kör ditt arbets flöde baserat på din angivna upprepning där du väljer intervall och frekvens, till exempel antalet sekunder, minuter, timmar, dagar, veckor eller månader. Du kan också ange start datum och-tid samt tidszon. Varje gång en utlösare utlöses skapar Logic Apps och kör en ny arbets flödes instans för din Logic app.
+Du kan starta ditt Logic app-arbetsflöde med utlösaren upprepnings utlösare eller glidande fönster, som inte är associerad med någon speciell tjänst eller något annat system. Dessa utlösare startar och kör ditt arbets flöde baserat på din angivna upprepning där du väljer intervall och frekvens, till exempel antalet sekunder, minuter, timmar, dagar, veckor eller månader. Du kan också ange start datum och-tid tillsammans med tids zonen. Varje gång en utlösare utlöses skapar Logic Apps och kör en ny arbets flödes instans för din Logic app.
 
 Här följer skillnaderna mellan dessa utlösare:
 
-* **Upprepning**: kör arbets flödet med jämna tidsintervall baserat på det angivna schemat. Om upprepningar saknas, till exempel på grund av avbrott eller inaktiverade arbets flöden, bearbetar upprepnings utlösaren inte de missade upprepningarna, men startar om upprepningar med nästa schemalagda intervall. Du kan ange start datum och-tid samt tidszon. Om du väljer dag kan du ange timmar på dagen och minuterna i timmen, till exempel varje dag vid 2:30. Om du väljer "vecka" kan du också välja vecko dagar, till exempel onsdag och lördag. Mer information finns i [skapa, schemalägga och köra återkommande uppgifter och arbets flöden med upprepnings utlösaren](../connectors/connectors-native-recurrence.md).
+* **Upprepning**: kör arbets flödet med jämna tidsintervall baserat på det angivna schemat. Om utlösaren missar upprepningar, till exempel på grund av avbrott eller inaktiverade arbets flöden, bearbetar upprepnings utlösaren inte de missade upprepningarna, men startar om upprepningar med nästa schemalagda intervall.
 
-* **Glidande fönster**: kör arbets flödet med regelbundna tidsintervall som hanterar data i kontinuerliga segment. Om upprepningar saknas, till exempel på grund av avbrott eller inaktiverade arbets flöden, utlöses den glidande fönster utlösaren tillbaka och bearbetar de missade upprepningarna. Du kan ange start datum och tid, tidszon och varaktighet för att försena varje upprepning i arbets flödet. Den här utlösaren stöder inte avancerade scheman, till exempel vissa timmar på dagen, minuter i timmen och dagar i veckan. Mer information finns i [skapa, schemalägga och köra återkommande uppgifter och arbets flöden med den glidande fönster utlösaren](../connectors/connectors-native-sliding-window.md).
+  Om du väljer **dag** som frekvens kan du ange antalet timmar och minuter i timmen, till exempel varje dag vid 2:30. Om du väljer **vecka** som frekvens, kan du också välja vecko dagar, till exempel onsdag och lördag. Du kan också ange start datum och-tid tillsammans med en tidszon för ditt upprepnings schema.
+
+  > [!TIP]
+  > Om en upprepning inte anger ett visst [start datum och](#start-time)en angiven tid körs den första upprepningen omedelbart när du sparar eller distribuerar den logiska appen, trots din utlösare för upprepnings konfiguration. Undvik det här problemet genom att ange start datum och-tid för när du vill att den första upprepningen ska köras.
+  >
+  > Om en upprepning inte anger några andra avancerade schemaläggnings alternativ, till exempel vissa tider för att köra framtida upprepningar, baseras dessa upprepningar på den senaste körnings tiden. Därför kan start tiderna för dessa upprepningar uppstå på grund av faktorer som svars tid under lagrings anrop. För att se till att din Logi Kap par inte saknar upprepning, särskilt när frekvensen är i dagar eller längre, kan du prova följande alternativ:
+  >
+  > * Ange start datum och-tid för upprepningen plus de angivna tiderna när du vill köra efterföljande upprepningar med hjälp av egenskaperna som heter **vid dessa timmar** och **på dessa minuter**, som endast är tillgängliga **för vecko** frekvensen. 
+  >
+  > * Använd den [glidande fönster utlösaren](../connectors/connectors-native-sliding-window.md)i stället för upprepnings utlösaren.
+
+  Mer information finns i [skapa, schemalägga och köra återkommande uppgifter och arbets flöden med upprepnings utlösaren](../connectors/connectors-native-recurrence.md).
+
+* **Glidande fönster**: kör arbets flödet med regelbundna tidsintervall som hanterar data i kontinuerliga segment. Om utlösaren missar upprepningar, till exempel på grund av avbrott eller inaktiverade arbets flöden, utlöses den glidande fönster utlösaren tillbaka och bearbetar de missade upprepningarna.
+
+  Du kan ange start datum och tid, tidszon och varaktighet för att försena varje upprepning i arbets flödet. Den här utlösaren stöder inte avancerade scheman, till exempel vissa timmar på dagen, minuter i timmen och dagar i veckan. Mer information finns i [skapa, schemalägga och köra återkommande uppgifter och arbets flöden med den glidande fönster utlösaren](../connectors/connectors-native-sliding-window.md).
 
 <a name="schedule-actions"></a>
 
@@ -66,28 +81,18 @@ Efter en åtgärd i ditt Logic app-arbetsflöde kan du använda fördröjningen 
 
 * **Fördröjning till**: vänta på att köra nästa åtgärd tills angivet datum och tid. Mer information finns i [försena nästa åtgärd i arbets flöden](../connectors/connectors-native-delay.md).
 
-## <a name="patterns-for-start-date-and-time"></a>Mönster för start datum och-tid
-
 <a name="start-time"></a>
+
+## <a name="patterns-for-start-date-and-time"></a>Mönster för start datum och-tid
 
 Här följer några mönster som visar hur du kan styra upprepningen av start datum och start tid och hur Logic Apps tjänsten kör dessa upprepningar:
 
 | Starttid | Upprepning utan schema | Upprepning med schema (endast upprepnings utlösare) |
 |------------|-----------------------------|----------------------------------------------------|
 | alternativet | Kör den första arbets belastningen direkt. <p>Kör framtida arbets belastningar baserat på den senaste körnings tiden. | Kör den första arbets belastningen direkt. <p>Kör framtida arbets belastningar baserat på det angivna schemat. |
-| Start tid tidigare | **Upprepnings** utlösare: beräknar körnings tider baserat på den angivna start tiden och tar bort de senaste körnings tiderna. Kör den första arbets belastningen vid nästa framtida körnings tillfälle. <p>Kör framtida arbets belastningar baserat på beräkningar från den senaste körnings tiden. <p><p>Utlösare för **glidning** : beräknar körnings tider baserat på den angivna start tiden och följer de senaste körnings tiderna. <p>Kör framtida arbets belastningar baserat på beräkningar från den angivna start tiden. <p><p>Mer förklaringar finns i exemplet som följer efter den här tabellen. | Kör den första arbets belastningen *tidigare* än start tiden, baserat på schemat som beräknas från start tiden. <p>Kör framtida arbets belastningar baserat på det angivna schemat. <p>**Obs:** Om du anger en upprepning med ett schema, men inte anger timmar eller minuter för schemat, beräknas framtida körnings tider med timmarna eller minuterna från den första körnings tiden. |
-| Start tid för närvarande eller i framtiden | Kör den första arbets belastningen vid den angivna start tiden. <p>Kör framtida arbets belastningar baserat på beräkningar från den senaste körnings tiden. | Kör den första arbets belastningen *tidigare* än start tiden, baserat på schemat som beräknas från start tiden. <p>Kör framtida arbets belastningar baserat på det angivna schemat. <p>**Obs:** Om du anger en upprepning med ett schema, men inte anger timmar eller minuter för schemat, beräknas framtida körnings tider med timmarna eller minuterna från den första körnings tiden. |
+| Start tid tidigare | **Upprepnings** utlösare: beräknar körnings tider baserat på den angivna start tiden och tar bort de senaste körnings tiderna. Kör den första arbets belastningen vid nästa framtida körnings tillfälle. <p>Kör framtida arbets belastningar baserat på beräkningar från den senaste körnings tiden. <p><p>Utlösare för **glidning** : beräknar körnings tider baserat på den angivna start tiden och följer de senaste körnings tiderna. <p>Kör framtida arbets belastningar baserat på beräkningar från den angivna start tiden. <p><p>Mer förklaringar finns i exemplet som följer efter den här tabellen. | Kör den första arbets belastningen *tidigare* än start tiden, baserat på schemat som beräknas från start tiden. <p>Kör framtida arbets belastningar baserat på det angivna schemat. <p>**Obs:** Om du anger en upprepning med ett schema, men inte anger timmar eller minuter för schemat, Logic Apps beräknar framtida körnings tider med hjälp av timmarna eller minuterna från den första körnings tiden. |
+| Start tid nu eller i framtiden | Kör den första arbets belastningen vid den angivna start tiden. <p>Kör framtida arbets belastningar baserat på beräkningar från den senaste körnings tiden. | Kör den första arbets belastningen *tidigare* än start tiden, baserat på schemat som beräknas från start tiden. <p>Kör framtida arbets belastningar baserat på det angivna schemat. <p>**Obs:** Om du anger en upprepning med ett schema, men inte anger timmar eller minuter för schemat, Logic Apps beräknar framtida körnings tider med hjälp av timmarna eller minuterna från den första körnings tiden. |
 ||||
-
-> [!IMPORTANT]
-> När upprepningar inte anger avancerade alternativ för schemaläggning baseras framtida upprepningar på den senaste körnings tiden.
-> Start tiderna för dessa upprepningar kan uppstå på grund av faktorer som svars tid under lagrings anrop. För att se till att din Logi Kap par inte saknar upprepning, särskilt när frekvensen är i dagar eller längre, använder du ett av följande alternativ:
-> 
-> * Ange en start tid för upprepningen.
-> 
-> * Ange i hur många timmar och minuter som upprepningen ska köras med hjälp av alternativen **vid följande tidpunkter** och **i minuter** .
-> 
-> * Använd den [glidande fönster utlösaren](../connectors/connectors-native-sliding-window.md)i stället för upprepnings utlösaren.
 
 *Exempel på tidigare start tid och upprepning, men inget schema*
 
@@ -120,20 +125,95 @@ Så här ser den här upprepningen ut:
 
 Så, oavsett hur långt tidigare du angav start tiden, till exempel 2017-09 –**05** på 2:00 PM eller 2017-09-**01** vid 2:00 PM, använder din första körning alltid den angivna start tiden.
 
+<a name="daylight-saving-standard-time"></a>
+
+## <a name="recurrence-for-daylight-saving-time-and-standard-time"></a>Upprepning för sommar tid och normal tid
+
+Återkommande inbyggda utlösare följer det schema som du anger, inklusive alla tids zoner som du anger. Om du inte väljer en tidszon kan sommar tid (sommar tid) påverka när Utlösare körs, till exempel att byta start tid en timme framåt när sommar tid startar och en timme bakåt när sommar tiden slutar. När du schemalägger jobb, Logic Apps placera meddelandet för bearbetning i kön och anger när meddelandet blir tillgängligt, baserat på UTC-tiden då det senaste jobbet kördes och den UTC-tid då nästa jobb är schemalagt att köras.
+
+För att undvika det här skiftet så att din Logi Kap par körs vid den angivna start tiden, se till att du väljer en tidszon. På så sätt byter UTC-tiden för din Logic app också till att räkna med säsongs tiden.
+
+<a name="dst-window"></a>
+
+> [!NOTE]
+> Utlösare som börjar mellan 2:00 AM-3:00 kan ha problem eftersom sommar tids ändringar sker vid 2:00, vilket kan leda till att start tiden blir ogiltig eller tvetydig. Om du har flera Logic Apps inom samma tvetydiga intervall kan de överlappa varandra. Därför kanske du vill undvika start tider mellan 2:00 AM-3:00.
+
+Anta till exempel att du har två Logic Apps som körs dagligen. En Logic App körs vid 1:30 lokal tid, medan den andra kör en timme senare vid 2:30. Vad händer med start tiderna för de här apparna när sommar tiden startar och slutar?
+
+* Körs utlösarna var som helst när tiden flyttas en timme framåt?
+
+* Körs utlösarna två gånger när tiden flyttas bakåt en timme?
+
+Om dessa Logic Apps använder zonen UTC-6:00 Central Time (US & Canada), visar den här simuleringen hur UTC-tiden flyttas i 2019 för att räkna sommar tids ändringar, flytta en timme bakåt eller vidarebefordra vid behov, så att apparna fortsätter att köras vid de förväntade lokala tiderna utan att de ignoreras eller dupliceras.
+
+* **03/10/2019: sommar tiden börjar kl. 2:00, växlings tid en timme framåt**
+
+  För att kompensera efter att sommar tiden startar, flyttas UTC-tiden en timme bakåt så att din Logi Kap par fortsätter att köras vid samma lokala tid:
+
+  * Logic app-#1
+
+    | Datum | Tid (lokal) | Tid (UTC) | Kommentarer |
+    |------|--------------|------------|-------|
+    | 03/09/2019 | 1:30:00 AM | 7:30:00 AM | UTC före den dag då sommar tiden börjar gälla. |
+    | 03/10/2019 | 1:30:00 AM | 7:30:00 AM | UTC är detsamma eftersom DST inte har börjat att fungera. |
+    | 03/11/2019 | 1:30:00 AM | 6:30:00 AM | UTC-växlar en timme bakåt efter att sommar tiden gällde. |
+    |||||
+
+  * Logic app-#2
+
+    | Datum | Tid (lokal) | Tid (UTC) | Kommentarer |
+    |------|--------------|------------|-------|
+    | 03/09/2019 | 2:30:00 AM | 8:30:00 AM | UTC före den dag då sommar tiden börjar gälla. |
+    | 03/10/2019 | 3:30:00 AM * | 8:30:00 AM | DST är redan aktive rad, så lokal tid har flyttats en timme, eftersom UTC-6:00 tids zonen ändras till UTC-5:00. Mer information finns i [utlösare som börjar mellan 2:00 am-3:00](#dst-window). |
+    | 03/11/2019 | 2:30:00 AM | 7:30:00 AM | UTC-växlar en timme bakåt efter att sommar tiden gällde. |
+    |||||
+
+* **11/03/2019: sommar tid slutar klockan 2:00 AM och skiftar tiden en timme bakåt**
+
+  För att kompensera, flyttas UTC-tiden en timme framåt, så att din Logic app fortsätter att köras vid samma lokala tid:
+
+  * Logic app-#1
+
+    | Datum | Tid (lokal) | Tid (UTC) | Kommentarer |
+    |------|--------------|------------|-------|
+    | 11/02/2019 | 1:30:00 AM | 6:30:00 AM ||
+    | 11/03/2019 | 1:30:00 AM | 6:30:00 AM ||
+    | 11/04/2019 | 1:30:00 AM | 7:30:00 AM ||
+    |||||
+
+  * Logic app-#2
+
+    | Datum | Tid (lokal) | Tid (UTC) | Kommentarer |
+    |------|--------------|------------|-------|
+    | 11/02/2019 | 2:30:00 AM | 7:30:00 AM ||
+    | 11/03/2019 | 2:30:00 AM | 8:30:00 AM ||
+    | 11/04/2019 | 2:30:00 AM | 8:30:00 AM ||
+    |||||
+
+<a name="run-once"></a>
+
+## <a name="run-one-time-only"></a>Kör endast en tid
+
+Om du bara vill köra din Logi Kap par på en gång i framtiden kan du använda mallen **Scheduler: kör en gång jobb** . När du har skapat en ny Logic-app men innan du öppnar Logic Apps designer går du till avsnittet **mallar** , i listan **kategori** , väljer **schema** och väljer sedan den här mallen:
+
+![Välj mallen Schemaläggaren: kör när jobb](./media/concepts-schedule-automated-recurring-tasks-workflows/choose-run-once-template.png)
+
+Eller, om du kan starta din Logi Kap par med **när en http-begäran tas emot – begär** utlösare och skicka start tiden som en parameter för utlösaren. För den första åtgärden använder du åtgärden **fördröj tills-Schedule** och anger hur lång tid det tar innan nästa åtgärd börjar köras.
+
 <a name="example-recurrences"></a>
 
 ## <a name="example-recurrences"></a>Exempel upprepningar
 
 Här är olika exempel upprepningar som du kan ställa in för utlösare som stöder alternativen:
 
-| Utlösare | Upprepning | Intervall | Frekvens | Starttid | Dessa dagar | Vid dessa timmar | Vid dessa minuter | Anteckning |
+| Utlösare | Upprepning | Intervall | Frequency | Starttid | Dessa dagar | Vid dessa timmar | Vid dessa minuter | Anteckning |
 |---------|------------|----------|-----------|------------|---------------|----------------|------------------|------|
 | Mönster <br>Skjutfönster | Kör var 15: e minut (inget start datum och-tid) | 15 | Minut | alternativet | otillgänglig | alternativet | alternativet | Schemat startar omedelbart och beräknar sedan framtida upprepningar baserat på den senaste körnings tiden. |
 | Mönster <br>Skjutfönster | Kör var 15: e minut (med start datum och-tid) | 15 | Minut | *StartDate* T *StartTime* Z | otillgänglig | alternativet | alternativet | Det här schemat startar inte *tidigare* än angivet start datum och-tid och beräknar sedan framtida upprepningar baserat på den senaste körnings tiden. |
-| Mönster <br>Skjutfönster | Kör varje timme, på timmen (med start datum och-tid) | 1 | Tid | *StartDate* THH: 00:00Z | otillgänglig | alternativet | alternativet | Det här schemat startar inte *tidigare* än angivet start datum och-tid. Framtida upprepningar körs varje timme vid "00" minut angivelse, vilket beräknas från start tiden. <p>Om frekvensen är "vecka" eller "månad", kör det här schemat bara en dag per vecka eller en dag per månad. |
+| Mönster <br>Skjutfönster | Kör varje timme, på timmen (med start datum och-tid) | 1 | Tid | *StartDate* THH: 00:00Z | otillgänglig | alternativet | alternativet | Det här schemat startar inte *tidigare* än angivet start datum och-tid. Framtida upprepningar körs varje timme vid "00" Minute-tecknet, som Logic Apps beräknar från start tiden. <p>Om frekvensen är "vecka" eller "månad", kör det här schemat bara en dag per vecka eller en dag per månad. |
 | Mönster <br>Skjutfönster | Kör varje timme, varje dag (inget start datum och-tid) | 1 | Tid | alternativet | otillgänglig | alternativet | alternativet | Schemat startar omedelbart och beräknar framtida upprepningar baserat på den senaste körnings tiden. <p>Om frekvensen är "vecka" eller "månad", kör det här schemat bara en dag per vecka eller en dag per månad. |
 | Mönster <br>Skjutfönster | Kör varje timme, varje dag (med start datum och-tid) | 1 | Tid | *StartDate* T *StartTime* Z | otillgänglig | alternativet | alternativet | Det här schemat startar inte *tidigare* än angivet start datum och-tid och beräknar sedan framtida upprepningar baserat på den senaste körnings tiden. <p>Om frekvensen är "vecka" eller "månad", kör det här schemat bara en dag per vecka eller en dag per månad. |
-| Mönster <br>Skjutfönster | Körs var 15: e minut efter timmen, varje timme (med start datum och-tid) | 1 | Tid | *StartDate* T00:15:00Z | otillgänglig | alternativet | alternativet | Det här schemat startar inte *tidigare* än angivet start datum och-tid. Framtida upprepningar körs vid "15"-minuten, som beräknas från start tiden, så kl. 00:15, 1:15, 2:15 AM, och så vidare. |
+| Mönster <br>Skjutfönster | Körs var 15: e minut efter timmen, varje timme (med start datum och-tid) | 1 | Tid | *StartDate* T00:15:00Z | otillgänglig | alternativet | alternativet | Det här schemat startar inte *tidigare* än angivet start datum och-tid. Framtida upprepningar körs vid "15" minut markering, som Logic Apps beräknar från start tiden, så kl. 00:15, 1:15 AM, 2:15 och så vidare. |
 | Upprepning | Körs var 15: e minut efter timmen, varje timme (inget start datum och-tid) | 1 | Dag | alternativet | otillgänglig | 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 15, 16, 17, 19 | 15 | Det här schemat körs kl. 00:15, 1:15, 2:15 AM, och så vidare. Detta schema motsvarar också en frekvens på "timme" och en start tid med "15" minuter. |
 | Upprepning | Kör var 15: e minut vid de angivna minut tecknen (inget start datum och tid). | 1 | Dag | alternativet | otillgänglig | 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 15, 16, 17, 19 | 0, 15, 30, 45 | Det här schemat startar inte förrän nästa angivna 15-minuters tecken. |
 | Upprepning | Kör varje dag kl. 8, *plus* minuten – Markera när du sparar din Logic app | 1 | Dag | alternativet | otillgänglig | 8 | alternativet | Utan start datum och start tid körs det här schemat utifrån den tidpunkt då du sparar Logi Kap par (PLACERINGs åtgärd). |
@@ -150,16 +230,6 @@ Här är olika exempel upprepningar som du kan ställa in för utlösare som st�
 | Upprepning | Kör varje månad | 1 | Månad | *StartDate* T *StartTime* Z | otillgänglig | otillgänglig | otillgänglig | Det här schemat startar inte *tidigare* än angivet start datum och-tid och beräknar framtida upprepningar på start datum och start tid. Om du inte anger start datum och start tid använder det här schemat skapande datum och-tid. |
 | Upprepning | Kör varje timme för en dag per månad | 1 | Månad | {Se Obs!} | otillgänglig | 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 15, 16, 17, 19 | {Se Obs!} | Om du inte anger start datum och start tid använder det här schemat skapande datum och-tid. Om du vill kontrol lera minuterna för upprepnings schemat anger du antalet minuter i timmen, en start tid eller när du använder skapande tiden. Om start tiden eller skapande tiden är 8:25 AM, körs det här schemat vid 8:25 AM, 9:25 AM, 10:25 och så vidare. |
 |||||||||
-
-<a name="run-once"></a>
-
-## <a name="run-one-time-only"></a>Kör endast en tid
-
-Om du bara vill köra din Logi Kap par på en gång i framtiden kan du använda mallen **Scheduler: kör en gång jobb** . När du har skapat en ny Logic-app men innan du öppnar Logic Apps designer går du till avsnittet **mallar** , i listan **kategori** , väljer **schema** och väljer sedan den här mallen:
-
-![Välj mallen Schemaläggaren: kör när jobb](./media/concepts-schedule-automated-recurring-tasks-workflows/choose-run-once-template.png)
-
-Eller, om du kan starta din Logi Kap par med **när en http-begäran tas emot – begär** utlösare och skicka start tiden som en parameter för utlösaren. För den första åtgärden använder du åtgärden **fördröj tills-Schedule** och anger hur lång tid det tar innan nästa åtgärd börjar köras.
 
 ## <a name="next-steps"></a>Nästa steg
 

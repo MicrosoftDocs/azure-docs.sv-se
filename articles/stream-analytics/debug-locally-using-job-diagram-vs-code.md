@@ -3,16 +3,15 @@ title: Felsöka Azure Stream Analytics frågor lokalt med hjälp av jobb diagram
 description: Den här artikeln beskriver hur du felsöker frågor lokalt med hjälp av jobb diagram i Azure Stream Analytics-tillägget för Visual Studio Code.
 author: su-jie
 ms.author: sujie
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: 766d3f8d4d4c03fb4fe173dbb12eb85bb09cd71a
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 25ad696ad345fbf672f6bf26eb3f35a13fb03ea5
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93124178"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019507"
 ---
 # <a name="debug-azure-stream-analytics-queries-locally-using-job-diagram-in-visual-studio-code"></a>Felsöka Azure Stream Analytics frågor lokalt med hjälp av jobb diagram i Visual Studio Code
 
@@ -31,7 +30,7 @@ Använd den här [snabb](quick-create-visual-studio-code.md) starten för att l�
 
 Följ dessa [instruktioner](visual-studio-code-local-run.md)om du vill testa frågan med lokala indata. Om du vill testa med Live-indatamängden [konfigurerar](stream-analytics-add-inputs.md) du inflyttningen till nästa steg. 
 
-Öppna skript filen *\. asaql* och välj **Kör lokalt** . Välj sedan **Använd lokal Indatatyp** eller **Använd Live-ininformation** . Jobb diagrammet visas till höger i fönstret.
+Öppna skript filen *\. asaql* och välj **Kör lokalt**. Välj sedan **Använd lokal Indatatyp** eller **Använd Live-ininformation**. Jobb diagrammet visas till höger i fönstret.
 
 ### <a name="view-the-output-and-intermediate-result-set"></a>Visa utdata och mellanliggande resultat uppsättning  
 
@@ -56,7 +55,7 @@ I det här avsnittet ska du utforska de mått som är tillgängliga för varje d
    > [!div class="mx-imgBorder"]
    > ![Mät värden för jobb diagram](./media/debug-locally-using-job-diagram-vs-code/job-metrics.png)
 
-3. Välj indata-källans namn i list rutan för att se indata-mått. Indatakällan i skärm bilden nedan kallas *citat tecken* . Mer information om ingående mått finns i [förstå Stream Analytics jobb övervakning och övervaka frågor](stream-analytics-monitoring.md).
+3. Välj indata-källans namn i list rutan för att se indata-mått. Indatakällan i skärm bilden nedan kallas *citat tecken*. Mer information om ingående mått finns i [förstå Stream Analytics jobb övervakning och övervaka frågor](stream-analytics-monitoring.md).
 
    > [!div class="mx-imgBorder"]
    > ![Mät värden för jobb diagram](./media/debug-locally-using-job-diagram-vs-code/input-metrics.png)

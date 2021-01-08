@@ -4,16 +4,15 @@ description: Den här artikeln beskriver hur du använder Azure Stream Analytics
 services: stream-analytics
 author: su-jie
 ms.author: sujie
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 09/10/2020
-ms.openlocfilehash: aa75a553ffc131f4827aa045849f1317d894ddc5
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 9e79e0a2c030e2ebfcd5ddfd49e7c05afdb0dc3c
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93123158"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019558"
 ---
 # <a name="automate-builds-tests-and-deployments-of-an-azure-stream-analytics-job-using-cicd-tools"></a>Automatisera byggen, tester och distributioner av ett Azure Stream Analytics jobb med CI/CD-verktyg
 
@@ -21,7 +20,7 @@ Du kan använda Azure Stream Analytics CI/CD NPM-paketet för att automatiskt by
 
 ## <a name="installation"></a>Installation
 
-Du kan [Ladda ned paketet](https://www.npmjs.com/package/azure-streamanalytics-cicd) direkt eller installera det [globalt](https://docs.npmjs.com/downloading-and-installing-packages-globally) med `npm install -g azure-streamanalytics-cicd` kommandot. Vi rekommenderar att du använder kommandot, som också kan användas i en PowerShell-eller Azure CLI-skript-uppgift för en build-pipeline i **Azure-pipelines** .
+Du kan [Ladda ned paketet](https://www.npmjs.com/package/azure-streamanalytics-cicd) direkt eller installera det [globalt](https://docs.npmjs.com/downloading-and-installing-packages-globally) med `npm install -g azure-streamanalytics-cicd` kommandot. Vi rekommenderar att du använder kommandot, som också kan användas i en PowerShell-eller Azure CLI-skript-uppgift för en build-pipeline i **Azure-pipelines**.
 
 ## <a name="build-the-project"></a>Bygga projektet
 
@@ -66,7 +65,7 @@ När ett Stream Analytics projekt skapas, genererar följande två filer under m
 
 Standard parametrarna i parameters.jsi filen är från inställningarna i Visual Studio Code-eller Visual Studio-projektet. Om du vill distribuera till en annan miljö ersätter du parametrarna på motsvarande sätt.
 
-Standardvärdena för alla autentiseringsuppgifter är **Null** . Du måste ange värdena innan du distribuerar till Azure.
+Standardvärdena för alla autentiseringsuppgifter är **Null**. Du måste ange värdena innan du distribuerar till Azure.
 
 ```json
 "Input_EntryStream_sharedAccessPolicyKey": {
@@ -122,7 +121,7 @@ azure-streamanalytics-cicd addtestcase -project <projectFullPath> [-testConfigPa
 | Parameter | Beskrivning |
 |---|---|
 | `-project` | Sökvägen till **asaproj.jspå** filen för ditt Visual Studio Code-projekt eller **[ditt projekt namn]. Asaproj** för Visual Studio-projekt. |
-| `-testConfigPath` | Sökvägen till test konfigurations filen. Om den inte anges kommer filen att sökas i **\test** under den aktuella katalogen i **asaproj.js** filen, med standard fil namnet **testConfig.jspå** . En ny fil kommer att skapas om den inte existerade. |
+| `-testConfigPath` | Sökvägen till test konfigurations filen. Om den inte anges kommer filen att sökas i **\test** under den aktuella katalogen i **asaproj.js** filen, med standard fil namnet **testConfig.jspå**. En ny fil kommer att skapas om den inte existerade. |
 
 #### <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
@@ -137,9 +136,9 @@ azure-streamanalytics-cicd addtestcase -project "/Users/roger/projects/samplejob
 ```
 ---
 
-Om test konfigurations filen är tom skrivs följande innehåll till filen. Annars läggs ett testfall till i matrisen med **TestCases** . Nödvändiga konfigurationer fylls i automatiskt enligt konfigurationsfilerna för indatafilerna, om de finns. Annars konfigureras standardvärdena. **Sökvägen** till varje indata och förväntade utdata måste anges innan testet körs. Du kan ändra konfigurationen manuellt.
+Om test konfigurations filen är tom skrivs följande innehåll till filen. Annars läggs ett testfall till i matrisen med **TestCases**. Nödvändiga konfigurationer fylls i automatiskt enligt konfigurationsfilerna för indatafilerna, om de finns. Annars konfigureras standardvärdena. **Sökvägen** till varje indata och förväntade utdata måste anges innan testet körs. Du kan ändra konfigurationen manuellt.
 
-Om du vill att test valideringen ska ignorera en viss utmatning anger du det **obligatoriska** fältet för den förväntade utmatningen till **falskt** .
+Om du vill att test valideringen ska ignorera en viss utmatning anger du det **obligatoriska** fältet för den förväntade utmatningen till **falskt**.
 
 ```json
 {
@@ -179,11 +178,11 @@ azure-streamanalytics-cicd test -project <projectFullPath> [-testConfigPath <tes
 | Parameter | Beskrivning |
 |---|---|
 | `-project` | Sökvägen till **asaproj.jspå** filen för ditt Visual Studio Code-projekt eller **[ditt projekt namn]. Asaproj** för Visual Studio-projekt. |
-| `-testConfigPath` | Sökvägen till test konfigurations filen. Om den inte anges kommer filen att sökas i **\test** under den aktuella katalogen i **asaproj.js** filen, med standard fil namnet **testConfig.jspå** .
+| `-testConfigPath` | Sökvägen till test konfigurations filen. Om den inte anges kommer filen att sökas i **\test** under den aktuella katalogen i **asaproj.js** filen, med standard fil namnet **testConfig.jspå**.
 | `-outputPath` | Sökvägen till mappen test resultat utdata. Om den inte anges placeras resultatet av utdata i den aktuella katalogen. |
 | `-customCodeZipFilePath` | Sökvägen till zip-filen för anpassad kod, till exempel UDF eller deserialiserare, om de används. |
 
-När alla tester är klara genereras en sammanfattning av test resultaten i JSON-format i mappen utdata. Sammanfattnings filen heter **testResultSummary.jspå** .
+När alla tester är klara genereras en sammanfattning av test resultaten i JSON-format i mappen utdata. Sammanfattnings filen heter **testResultSummary.jspå**.
 
 ```json
 {

@@ -1,19 +1,18 @@
 ---
 title: Utdata från Azure Stream Analytics
 description: I den här artikeln beskrivs alternativ för datautdata som är tillgängliga för Azure Stream Analytics.
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.custom: contperf-fy21q1
 ms.date: 12/9/2020
-ms.openlocfilehash: c11e0702a7825b719417288c5ebbf93defde186c
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 3ce4f673657561e196520466b569d0cf83d75a8a
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97029252"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019354"
 ---
 # <a name="outputs-from-azure-stream-analytics"></a>Utdata från Azure Stream Analytics
 
@@ -25,17 +24,17 @@ Vissa utmatnings typer stöder [partitionering](#partitioning)och [utgående bat
 
 | Utdatatyp | Partitionering | Säkerhet | 
 |-------------|--------------|----------|
-|[Azure Data Lake Storage Gen 1](azure-data-lake-storage-gen1-output.md)|Yes|Azure Active Directory användare </br> , Hanterad identitet|
+|[Azure Data Lake Storage Gen 1](azure-data-lake-storage-gen1-output.md)|Ja|Azure Active Directory användare </br> , Hanterad identitet|
 |[Azure SQL Database](sql-database-output.md)|Ja, valfritt.|SQL User auth, </br> Hanterad identitet (förhandsversion)|
-|[Azure Synapse Analytics](azure-synapse-analytics-output.md)|Yes|SQL User auth, </br> Hanterad identitet (förhandsversion)|
-|[Blob Storage och Azure Data Lake gen 2](blob-storage-azure-data-lake-gen2-output.md)|Yes|Åtkomst nyckel, </br> Hanterad identitet (förhandsversion)|
+|[Azure Synapse Analytics](azure-synapse-analytics-output.md)|Ja|SQL User auth, </br> Hanterad identitet (förhandsversion)|
+|[Blob Storage och Azure Data Lake gen 2](blob-storage-azure-data-lake-gen2-output.md)|Ja|Åtkomst nyckel, </br> Hanterad identitet (förhandsversion)|
 |[Azure Event Hubs](event-hubs-output.md)|Ja, du måste ange en kolumn för partitionsnyckel i konfigurationen av utdata.|Åtkomst nyckel, </br> Hanterad identitet (förhandsversion)|
-|[Power BI](power-bi-output.md)|No|Azure Active Directory användare, </br> Hanterad identitet|
-|[Azure Table Storage](table-storage-output.md)|Yes|Kontonyckel|
-|[Azure Service Bus köer](service-bus-queues-output.md)|Yes|Åtkomstnyckel|
-|[Azure Service Bus ämnen](service-bus-topics-output.md)|Yes|Åtkomstnyckel|
-|[Azure Cosmos DB](azure-cosmos-db-output.md)|Yes|Åtkomstnyckel|
-|[Azure Functions](azure-functions-output.md)|Yes|Åtkomstnyckel|
+|[Power BI](power-bi-output.md)|Inga|Azure Active Directory användare, </br> Hanterad identitet|
+|[Azure Table Storage](table-storage-output.md)|Ja|Kontonyckel|
+|[Azure Service Bus köer](service-bus-queues-output.md)|Ja|Åtkomstnyckel|
+|[Azure Service Bus ämnen](service-bus-topics-output.md)|Ja|Åtkomstnyckel|
+|[Azure Cosmos DB](azure-cosmos-db-output.md)|Ja|Åtkomstnyckel|
+|[Azure Functions](azure-functions-output.md)|Ja|Åtkomstnyckel|
 
 ## <a name="partitioning"></a>Partitionering
 

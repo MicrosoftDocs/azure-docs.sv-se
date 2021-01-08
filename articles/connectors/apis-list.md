@@ -3,15 +3,15 @@ title: Anslutningsprogram för Azure Logic Apps
 description: Automatisera arbets flöden med kopplingar för Azure Logic Apps, till exempel inbyggt, hanterat, lokalt, integrations konto, ISE och företags anslutningar
 services: logic-apps
 ms.suite: integration
-ms.reviewer: jonfan, logicappspm
+ms.reviewer: estfan, logicappspm, azla
 ms.topic: article
-ms.date: 06/11/2020
-ms.openlocfilehash: 8bf91a3b7843d3212b62ced5b6a7c6fa54892ec9
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.date: 01/07/2021
+ms.openlocfilehash: c2b89450c0e474f5030f8812e888890f1fedde7e
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93359756"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019643"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>Anslutningsprogram för Azure Logic Apps
 
@@ -28,7 +28,7 @@ Kopplingar är tillgängliga som inbyggda utlösare och åtgärder eller som han
 
 <a name="built-in"></a>
 
-* [**Inbyggt**](#built-ins): inbyggda utlösare och åtgärder är "interna" för att Azure Logic Apps och hjälpa dig att utföra de här uppgifterna för dina Logic Apps:
+* [**Inbyggt**](#built-ins): inbyggda utlösare och åtgärder körs internt i Azure Logic Apps så att de inte behöver skapa en anslutning innan du använder dem och hjälpa dig att utföra de här uppgifterna för dina Logic Apps:
 
   * Kör med anpassade och avancerade scheman.
 
@@ -79,7 +79,7 @@ För logi Kap par som behöver direkt åtkomst till resurser i ett virtuellt Azu
 
 Logic Apps innehåller inbyggda utlösare och åtgärder så att du kan skapa schemabaserade arbets flöden, hjälpa dina Logi Kap par att kommunicera med andra appar och tjänster, styra arbets flödet via dina Logi Kap par och hantera eller manipulera data.
 
-| Name | Beskrivning |
+| Namn | Beskrivning |
 |------|-------------|
 | [![Schemalägg det inbyggda kopplings ][schedule-icon]<br> **schemat**][schedule-doc] | – Kör en Logi Kap par på en angiven upprepning, från grundläggande till avancerade scheman med [ **upprepnings** utlösaren][schedule-recurrence-doc]. <br>– Kör en Logi Kap par som måste hantera data i kontinuerliga segment med en [utlösare för **glidnings fönster**][schedule-sliding-window-doc]. <br>– Pausa din Logic app under en angiven varaktighet med [ **fördröjnings** åtgärden][schedule-delay-doc]. <br>– Pausa din Logi Kap par fram till angivet datum och tid med [ **fördröjningen innan** åtgärden][schedule-delay-until-doc]. |
 | [![Batch-inbyggd kopplings ][batch-icon]<br> **grupp**][batch-doc] | – Bearbeta meddelanden i batchar med utlösaren **batch-meddelanden** . <br>– Anropa Logi Kap par som har befintliga batch-utlösare med åtgärden **skicka meddelanden till batch** . |
@@ -94,7 +94,7 @@ Logic Apps innehåller inbyggda utlösare och åtgärder så att du kan skapa sc
 
 Logic Apps innehåller inbyggda åtgärder för att köra din egen kod i din Logic Apps-arbets flöde:
 
-| Name | Beskrivning |
+| Namn | Beskrivning |
 |------|-------------|
 | [![Azure Functions inbyggd koppling ][azure-functions-icon]<br> **Azure Functions**][azure-functions-doc] | Anropa Azure Functions som kör anpassade kod avsnitt (C# eller Node.js) från dina Logic Apps. |
 | [![Infogad kod inbyggd kopplings ][inline-code-icon]<br> **kod**][inline-code-doc] | Lägg till och kör kods tycken för JavaScript-kod från dina Logic Apps. |
@@ -104,12 +104,12 @@ Logic Apps innehåller inbyggda åtgärder för att köra din egen kod i din Log
 
 Logic Apps innehåller inbyggda åtgärder för att strukturera och kontrol lera åtgärder i din Logic Apps-arbets flöde:
 
-| Name | Beskrivning |
+| Namn | Beskrivning |
 |------|-------------|
 | [![Villkor för inbyggt åtgärds ][condition-icon]<br> **villkor**][condition-doc] | Utvärdera ett villkor och kör olika åtgärder baserat på om villkoret är sant eller falskt. |
 | [![För varje inbyggd åtgärd ][for-each-icon]<br> **för varje**][for-each-doc] | Utför samma åtgärder på varje objekt i en matris. |
-| [![Omfattning för ][scope-icon]<br> **Scope** inbyggt åtgärds omfång][scope-doc] | Gruppera åtgärder i *omfattningar* , som får sin egen status efter att åtgärderna i omfånget har körts. |
-| [![Växla inbyggd åtgärds ][switch-icon]<br> **växel**][switch-doc] | Gruppera åtgärder i *fall* , som tilldelas unika värden förutom standard fallet. Kör bara det fall vars tilldelade värde matchar resultatet från ett uttryck, ett objekt eller en token. Kör standard fallet om inga matchningar finns. |
+| [![Omfattning för ][scope-icon]<br>  inbyggt åtgärds omfång][scope-doc] | Gruppera åtgärder i *omfattningar*, som får sin egen status efter att åtgärderna i omfånget har körts. |
+| [![Växla inbyggd åtgärds ][switch-icon]<br> **växel**][switch-doc] | Gruppera åtgärder i *fall*, som tilldelas unika värden förutom standard fallet. Kör bara det fall vars tilldelade värde matchar resultatet från ett uttryck, ett objekt eller en token. Kör standard fallet om inga matchningar finns. |
 | [![Avsluta inbyggd åtgärd ][terminate-icon]<br> **Avsluta**][terminate-doc] | Stoppa ett aktivt Logic app-arbetsflöde som körs. |
 | [![Till dess inbyggda åtgärd ][until-icon]<br> **tills**][until-doc] | Upprepa åtgärder tills det angivna villkoret är sant eller så har status ändrats. |
 |||
@@ -118,11 +118,11 @@ Logic Apps innehåller inbyggda åtgärder för att strukturera och kontrol lera
 
 Logic Apps innehåller inbyggda åtgärder för att arbeta med data utdata och deras format:
 
-| Name | Beskrivning |
+| Namn | Beskrivning |
 |------|-------------|
-| [![Data åtgärder för inbyggda åtgärder för data åtgärder ][data-operations-icon]<br> **Data Operations**][data-operations-doc] | Utför åtgärder med data: <p>- **Skriv** : skapa en enstaka utdata från flera indata med olika typer. <br>- **Skapa CSV-tabell** : skapa en kommaavgränsad tabell (CSV) från en matris med JSON-objekt. <br>- **Skapa HTML-tabell** : skapa en HTML-tabell från en matris med JSON-objekt. <br>- **Filtrera matris** : skapa en matris från objekt i en annan matris som uppfyller dina kriterier. <br>- **Anslut** : skapa en sträng från alla objekt i en matris och avgränsa dessa objekt med angiven avgränsare. <br>- **Parsa JSON** : skapa användarvänliga token från egenskaper och deras värden i JSON-innehåll så att du kan använda dessa egenskaper i ditt arbets flöde. <br>- **Välj** : skapa en matris med JSON-objekt genom att transformera objekt eller värden i en annan matris och mappa dessa objekt till angivna egenskaper. |
-| ![Inbyggd åtgärd för datum/tid][date-time-icon]<br>**Datum tid** | Utföra åtgärder med tidsstämplar: <p>- **Lägg till i tid** : Lägg till det angivna antalet enheter i en tidstämpel. <br>- **Konvertera tidszon** : konvertera en tidsstämpel från käll tids zonen till mål tids zonen. <br>- **Aktuell tid** : returnera den aktuella tidsstämpeln som en sträng. <br>- **Hämta framtida tid** : returnera den aktuella tidsstämpeln och de angivna tidsenheterna. <br>- **Hämta föregående tid** : returnera den aktuella tidsstämpeln minus de angivna tidsenheterna. <br>- **Subtrahera från tid** : subtrahera ett antal tidsenheter från en tidsstämpel. |
-| [![Variabler för inbyggda variabler för ][variables-icon]<br> **Variables** variabler][variables-doc] | Utföra åtgärder med variabler: <p>- **Lägg till matris variabel** : infoga ett värde som det sista objektet i en matris som lagras av en variabel. <br>- **Lägg till i sträng variabel** : infoga ett värde som sista tecken i en sträng som lagras av en variabel. <br>- **Minska variabeln** : minska en variabel med ett konstantvärde. <br>- **Increment-variabel** : öka en variabel med ett konstant värde. <br>- **Initiera variabel** : skapa en variabel och deklarera dess datatyp och initialt värde. <br>- **Ange variabel** : tilldela ett annat värde till en befintlig variabel. |
+| [![Data åtgärder för inbyggda åtgärder för data åtgärder ][data-operations-icon]<br> ][data-operations-doc] | Utför åtgärder med data: <p>- **Skriv**: skapa en enstaka utdata från flera indata med olika typer. <br>- **Skapa CSV-tabell**: skapa en kommaavgränsad tabell (CSV) från en matris med JSON-objekt. <br>- **Skapa HTML-tabell**: skapa en HTML-tabell från en matris med JSON-objekt. <br>- **Filtrera matris**: skapa en matris från objekt i en annan matris som uppfyller dina kriterier. <br>- **Anslut**: skapa en sträng från alla objekt i en matris och avgränsa dessa objekt med angiven avgränsare. <br>- **Parsa JSON**: skapa användarvänliga token från egenskaper och deras värden i JSON-innehåll så att du kan använda dessa egenskaper i ditt arbets flöde. <br>- **Välj**: skapa en matris med JSON-objekt genom att transformera objekt eller värden i en annan matris och mappa dessa objekt till angivna egenskaper. |
+| ![Inbyggd åtgärd för datum/tid][date-time-icon]<br>**Datum tid** | Utföra åtgärder med tidsstämplar: <p>- **Lägg till i tid**: Lägg till det angivna antalet enheter i en tidstämpel. <br>- **Konvertera tidszon**: konvertera en tidsstämpel från käll tids zonen till mål tids zonen. <br>- **Aktuell tid**: returnera den aktuella tidsstämpeln som en sträng. <br>- **Hämta framtida tid**: returnera den aktuella tidsstämpeln och de angivna tidsenheterna. <br>- **Hämta föregående tid**: returnera den aktuella tidsstämpeln minus de angivna tidsenheterna. <br>- **Subtrahera från tid**: subtrahera ett antal tidsenheter från en tidsstämpel. |
+| [![Variabler för inbyggda variabler för ][variables-icon]<br>  variabler][variables-doc] | Utföra åtgärder med variabler: <p>- **Lägg till matris variabel**: infoga ett värde som det sista objektet i en matris som lagras av en variabel. <br>- **Lägg till i sträng variabel**: infoga ett värde som sista tecken i en sträng som lagras av en variabel. <br>- **Minska variabeln**: minska en variabel med ett konstantvärde. <br>- **Increment-variabel**: öka en variabel med ett konstant värde. <br>- **Initiera variabel**: skapa en variabel och deklarera dess datatyp och initialt värde. <br>- **Ange variabel**: tilldela ett annat värde till en befintlig variabel. |
 |||
 
 <a name="managed-api-connectors"></a>
@@ -131,11 +131,11 @@ Logic Apps innehåller inbyggda åtgärder för att arbeta med data utdata och d
 
 Logic Apps tillhandahåller de här populära standard anslutningarna för automatisering av uppgifter, processer och arbets flöden med dessa tjänster eller system:
 
-| Name | Beskrivning |
+| Namn | Beskrivning |
 |------|-------------|
 | [![Azure Service Bus hanterad koppling ][azure-service-bus-icon]<br> **Azure Service Bus**][azure-service-bus-doc] | Hantera asynkrona meddelanden, sessioner och ämnesprenumerationer med det anslutningsprogram som oftast används i Logic Apps. |
 | [![SQL Server hanterad koppling ][sql-server-icon]<br> **SQL Server**][sql-server-doc] | Anslut till din SQL Server lokalt eller en Azure SQL Database i molnet så att du kan hantera poster, köra lagrade procedurer eller köra frågor. |
-| [![Azure Blob Storage hanterad koppling ][azure-blob-storage-icon]<br> **Azure Blob <br> Storage**][azure-blob-storage-doc] | Anslut till ditt lagrings konto så att du kan skapa och hantera BLOB-innehåll. |
+| [![Azure Blob Storage hanterad koppling ][azure-blob-storage-icon]<br> **Azure Blob <br> Storage**][azure-blob-storage-doc] | Ansluta till ditt Azure Storage-konto så att du kan skapa och hantera blobinnehåll. |
 | [![Office 365 Outlook Managed Connector ][office-365-outlook-icon]<br> **Office 365 <br> Outlook**][office-365-outlook-doc] | Anslut till ditt e-postkonto på ditt arbets-eller skol konto så att du kan skapa och hantera e-post, uppgifter, Kalender händelser och möten, kontakter, förfrågningar och mycket annat. |
 | [![SFTP – SSH Managed Connector ][sftp-ssh-icon]<br> **SFTP-SSH**][sftp-ssh-doc] | Anslut till SFTP-servrar som du kan komma åt från Internet med SSH så att du kan arbeta med dina filer och mappar. |
 | [![SharePoint Online Managed Connector ][sharepoint-online-icon]<br> **SharePoint <br> online**][sharepoint-online-doc] | Anslut till SharePoint Online så att du kan hantera filer, bilagor, mappar med mera. |
@@ -369,17 +369,17 @@ Mer information finns i de här ämnena:
 
 ## <a name="triggers-and-action-types"></a>Utlösare och åtgärds typer
 
-Kopplingar kan tillhandahålla *utlösare* , *åtgärder* eller både och. En *utlösare* är det första steget i alla logiska appar, vanligt vis genom att ange den händelse som utlöser utlösaren och börjar köra din Logic app. FTP-anslutningen har till exempel en utlösare som startar din Logic app "när en fil läggs till eller ändras". Vissa utlösare söker regelbundet efter den angivna händelsen eller data och utlöses sedan när de identifierar den angivna händelsen eller informationen. Andra utlösare väntar men utlöses direkt när en enskild händelse inträffar eller när nya data är tillgängliga. Utlösare skickas också tillsammans med alla data som krävs till din Logic app. Din Logic app kan läsa och använda dessa data i hela arbets flödet. Office 365 Outlook Connector har till exempel en utlösare, "när ett nytt e-postmeddelande kommer", som kan skicka innehållet från e-postmeddelandet till din Logic app-arbetsflöde.
+Kopplingar kan tillhandahålla *utlösare*, *åtgärder* eller både och. En *utlösare* är det första steget i alla logiska appar, vanligt vis genom att ange den händelse som utlöser utlösaren och börjar köra din Logic app. FTP-anslutningen har till exempel en utlösare som startar din Logic app "när en fil läggs till eller ändras". Vissa utlösare söker regelbundet efter den angivna händelsen eller data och utlöses sedan när de identifierar den angivna händelsen eller informationen. Andra utlösare väntar men utlöses direkt när en enskild händelse inträffar eller när nya data är tillgängliga. Utlösare skickas också tillsammans med alla data som krävs till din Logic app. Din Logic app kan läsa och använda dessa data i hela arbets flödet. Office 365 Outlook Connector har till exempel en utlösare, "när ett nytt e-postmeddelande kommer", som kan skicka innehållet från e-postmeddelandet till din Logic app-arbetsflöde.
 
 När en utlösare aktive ras skapar Azure Logic Apps en instans av din Logic app och börjar köra *åtgärderna* i din Logic app-arbetsflöde. Åtgärder är de steg som följer utlösaren och utför uppgifter i din Logic app-arbetsflöde. Du kan till exempel skapa en Logic-app som hämtar kund information från en SQL-databas och bearbetar dessa data i senare åtgärder.
 
 Här är de allmänna typerna av utlösare som Azure Logic Apps tillhandahåller:
 
-* *Upprepnings utlösare* : den här utlösaren körs enligt ett angivet schema och är inte nära kopplad till en viss tjänst eller ett visst system.
+* *Upprepnings utlösare*: den här utlösaren körs enligt ett angivet schema och är inte nära kopplad till en viss tjänst eller ett visst system.
 
-* *Avsöknings utlösare* : den här utlösaren avsöker regelbundet en specifik tjänst eller ett system baserat på det angivna schemat, söker efter nya data eller om en specifik händelse har inträffat. Om nya data är tillgängliga eller om den här händelsen har inträffat skapar utlösaren och kör en ny instans av din Logic app, som nu kan använda de data som skickas som indata.
+* *Avsöknings utlösare*: den här utlösaren avsöker regelbundet en specifik tjänst eller ett system baserat på det angivna schemat, söker efter nya data eller om en specifik händelse har inträffat. Om nya data är tillgängliga eller om den här händelsen har inträffat skapar utlösaren och kör en ny instans av din Logic app, som nu kan använda de data som skickas som indata.
 
-* *Push-utlösare* : den här utlösaren väntar och lyssnar efter nya data eller för att en händelse ska inträffa. När nya data är tillgängliga eller när händelsen inträffar skapar utlösaren och kör en ny instans av din Logic app, som nu kan använda de data som skickas som indata.
+* *Push-utlösare*: den här utlösaren väntar och lyssnar efter nya data eller för att en händelse ska inträffa. När nya data är tillgängliga eller när händelsen inträffar skapar utlösaren och kör en ny instans av din Logic app, som nu kan använda de data som skickas som indata.
 
 <a name="connections"></a>
 
@@ -390,6 +390,54 @@ Varje kopplings utlösare och åtgärder tillhandahåller egna egenskaper som du
 För kopplingar som använder Azure Active Directory (Azure AD) OAuth, skapar en anslutning en inloggning till tjänsten, till exempel Office 365, Salesforce eller GitHub, där din åtkomsttoken är [krypterad](../security/fundamentals/encryption-overview.md) och lagras säkert i ett Azure Secret Store. Andra anslutningar, till exempel FTP och SQL, kräver en anslutning som har konfigurations information, till exempel Server adressen, användar namnet och lösen ordet. Dessa anslutnings konfigurations uppgifter krypteras och lagras på ett säkert sätt. Läs mer om [kryptering i Azure](../security/fundamentals/encryption-overview.md).
 
 Anslutningarna kan komma åt mål tjänsten eller systemet så länge tjänsten eller systemet tillåter det. För tjänster som använder Azure AD OAuth-anslutningar, till exempel Office 365 och Dynamics, Azure Logic Apps uppdaterar åtkomsttoken på obestämd tid. Andra tjänster kan ha gränser för hur länge Azure Logic Apps kan använda en token utan att uppdatera. I allmänhet är vissa åtgärder ogiltiga för alla åtkomsttoken, till exempel att ändra ditt lösen ord.
+
+<a name="recurrence-behavior"></a>
+
+## <a name="recurrence-behavior"></a>Upprepnings beteende
+
+Beteendet för återkommande inbyggda utlösare som körs internt i Azure Logic Apps, till exempel [upprepnings utlösaren](../connectors/connectors-native-recurrence.md), skiljer sig från beteendet för återkommande anslutningsbaserade utlösare där du måste skapa en anslutning först, t. ex. SQL Connector-utlösaren.
+
+Men för båda typerna av utlösare, om en upprepning inte anger ett visst start datum och en tid, körs den första upprepningen omedelbart när du sparar eller distribuerar Logic-appen, trots din utlösare för upprepning. Undvik det här problemet genom att ange start datum och-tid för när du vill att den första upprepningen ska köras.
+
+<a name="recurrence-built-in"></a>
+
+### <a name="recurrence-for-built-in-triggers"></a>Upprepning för inbyggda utlösare
+
+Återkommande inbyggda utlösare följer det schema som du anger, inklusive alla tids zoner som du anger. Men om en upprepning inte anger några andra avancerade schemaläggnings alternativ, till exempel vissa tider för att köra framtida upprepningar, baseras dessa upprepningar på den senaste utlösnings körningen. Därför kan start tiderna för dessa upprepningar uppstå på grund av faktorer som svars tid under lagrings anrop. Även om du inte väljer en tidszon kan sommar tid (sommar tid) påverka när Utlösare körs, till exempel att byta start tid en timme framåt när sommar tid startar och en timme bakåt när sommar tiden slutar.
+
+För att se till att din Logic App körs vid den angivna start tiden och inte saknar upprepning, särskilt när frekvensen är i dagar eller längre, kan du prova följande lösningar:
+
+* Se till att du väljer en tidszon så att din Logi Kap par körs på den angivna start tiden. I annat fall kan sommar tid påverka när Utlösare körs, till exempel att byta start tid en timme framåt när sommar tid startar och en timme bakåt när sommar tiden slutar.
+
+  När du schemalägger jobb, Logic Apps placera meddelandet för bearbetning i kön och anger när meddelandet blir tillgängligt, baserat på UTC-tiden då det senaste jobbet kördes och den UTC-tid då nästa jobb är schemalagt att köras. Genom att ange en tidszon växlar UTC-tiden för din Logic app också till att räkna ut säsongs tiden. Vissa tider kan dock orsaka problem när tiden flyttas. Mer information och exempel finns i [upprepning för sommar tid och normal tid](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#daylight-saving-standard-time).
+
+* Använd upprepnings utlösaren och ange start datum och-tid för upprepningen plus de angivna tiderna för när du ska köra efterföljande upprepningar med hjälp av egenskaperna som heter **vid dessa timmar** och **på dessa minuter**, som endast är tillgängliga  **för vecko** frekvensen.
+
+* Använd den [glidande fönster utlösaren](../connectors/connectors-native-sliding-window.md)i stället för upprepnings utlösaren.
+
+<a name="recurrence-connection-based"></a>
+
+### <a name="recurrence-for-connection-based-triggers"></a>Upprepning för anslutningsbaserade utlösare
+
+I återkommande anslutningsbaserade utlösare, till exempel SQL eller SFTP-SSH, är schemat inte den enda driv rutin som styr körningen och tids zonen bestämmer den första start tiden. Efterföljande körningar är beroende av upprepnings schema, den senaste utlösnings körningen *och* andra faktorer som kan orsaka körnings tider eller orsaka oväntade beteenden, till exempel:
+
+* Anger om utlösaren får åtkomst till en server som har mer data, vilket utlösaren omedelbart försöker hämta.
+
+* Eventuella problem eller försök som utlöses av utlösaren.
+
+* Svars tid under lagrings anrop.
+
+* Behåller inte det angivna schemat när sommar tid (DST) börjar och slutar.
+
+* Andra faktorer som kan påverka när nästa körnings tillfälle sker.
+
+Prova följande lösningar för att lösa eller kringgå problemen:
+
+* För att se till att upprepnings tiden inte skiftar när sommar tiden börjar gälla kan du justera upprepningen manuellt så att din Logic app fortsätter att köras vid den förväntade tiden. Annars flyttas start tiden en timme framåt när sommar tiden startar och en timme bakåt när sommar tiden slutar.
+
+* Använd upprepnings utlösaren så att du kan ange en tidszon, start datum och tid, *plus* de exakta tiderna när du ska köra efterföljande upprepningar med hjälp av egenskaperna som heter **vid dessa timmar** och **på dessa minuter**, som endast är tillgängliga **för vecko** frekvensen.  Vissa tider kan dock fortfarande orsaka problem när tiden flyttas. Mer information och exempel finns i [upprepning för sommar tid och normal tid](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#daylight-saving-standard-time).
+
+* Om du vill undvika uteblivna upprepningar använder du den [glidande fönster utlösaren](../connectors/connectors-native-sliding-window.md)i stället för upprepnings utlösaren.
 
 <a name="custom"></a>
 

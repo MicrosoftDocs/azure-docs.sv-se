@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: tisande
 ms.custom: devx-track-js
-ms.openlocfilehash: 18cedad34a6ca7d9a0ba18cd01c082f2878380a8
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 7938920459654bd59620ad0992f3a13db85ff4fb
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93339826"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019031"
 ---
 # <a name="how-to-write-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Skriva lagrade procedurer, utlösare och användardefinierade funktioner i Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-Azure Cosmos DB tillhandahåller språkintegrerad, transaktionell körning av JavaScript som gör att du kan skriva **lagrade procedurer** , **utlösare** och **användardefinierade funktioner**. När du använder SQL-API:et i Azure Cosmos DB kan du definiera de lagrade procedurerna, utlösarna och de användardefinierade funktionerna i JavaScript. Du kan skriva logiken i JavaScript och köra den i databasmotorn. Du kan skapa och köra utlösare, lagrade procedurer och användardefinierade funktioner med hjälp av [Azure Portal](https://portal.azure.com/), [det språkintegrerade fråge-API:et för JavaScript i Azure Cosmos DB](javascript-query-api.md) och [SQL-API:et för klient-SDK i Azure Cosmos DB](sql-api-dotnet-samples.md). 
+Azure Cosmos DB tillhandahåller språkintegrerad, transaktionell körning av JavaScript som gör att du kan skriva **lagrade procedurer**, **utlösare** och **användardefinierade funktioner**. När du använder SQL-API:et i Azure Cosmos DB kan du definiera de lagrade procedurerna, utlösarna och de användardefinierade funktionerna i JavaScript. Du kan skriva logiken i JavaScript och köra den i databasmotorn. Du kan skapa och köra utlösare, lagrade procedurer och användardefinierade funktioner med hjälp av [Azure Portal](https://portal.azure.com/), [det språkintegrerade fråge-API:et för JavaScript i Azure Cosmos DB](javascript-query-api.md) och [SQL-API:et för klient-SDK i Azure Cosmos DB](sql-api-dotnet-samples.md). 
 
 Innan du kan anropa en lagrad procedur, utlösare eller användardefinierad funktion måste du registrera den. Mer information finns i [How to work with stored procedures, triggers, user-defined functions in Azure Cosmos DB](how-to-use-stored-procedures-triggers-udfs.md) (Arbeta med lagrade procedurer, utlösare och användardefinierade funktioner i Azure Cosmos DB).
 
@@ -284,7 +284,7 @@ function async_sample() {
 
 ## <a name="how-to-write-triggers"></a><a id="triggers"></a>Skriva utlösare
 
-Azure Cosmos DB stöder för- och efterutlösare. Förutlösare körs innan ett databasobjekt ändras och efterutlösare körs när ett databasobjekt har ändrats.
+Azure Cosmos DB stöder för- och efterutlösare. För utlösare körs innan ändring av ett databas objekt och post-utlösare utförs efter ändring av ett databas objekt. Utlösare är inte automatiska. De måste anges för varje databas åtgärd där du vill att de ska köras.
 
 ### <a name="pre-triggers"></a><a id="pre-triggers"></a>För utlösare
 

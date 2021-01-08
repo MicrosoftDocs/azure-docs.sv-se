@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/23/2019
-ms.openlocfilehash: c45445415f3eaa7cb0f9069dd5f64b57c19e5836
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: b24ea79737c9e1f64abb7f62807352dbd9573695
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96437158"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98018079"
 ---
 # <a name="migrate-hundreds-of-terabytes-of-data-into-azure-cosmos-db"></a>Migrera hundratals terabyte data till Azure Cosmos DB 
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -43,7 +43,7 @@ Utmaningarna som beskrivs i ovanstående avsnitt kan lösas med hjälp av ett an
 
 Det anpassade verktyget använder bulk utförar-biblioteket och har stöd för skalning på flera klienter och för att spåra fel under inmatnings processen. För att kunna använda det här verktyget bör källdata partitioneras i distinkta filer i Azure Data Lake Storage (ADLS) så att olika migreringar kan hämta varje fil och mata in dem i Azure Cosmos DB. Det anpassade verktyget använder en separat samling, som lagrar metadata om migreringens förlopp för varje enskild källfil i ADLS och spårar eventuella fel som är kopplade till dem.  
 
-Följande bild beskriver migreringsprocessen med det här anpassade verktyget. Verktyget körs på en uppsättning virtuella datorer och varje virtuell dator frågar spårnings samlingen i Azure Cosmos DB för att erhålla ett lån på en av datapartitionerna. När detta görs läses käll data partitionen av verktyget och matas in i Azure Cosmos DB med hjälp av utförar-biblioteket. Sedan uppdateras spårnings samlingen för att registrera förloppet för data inhämtningen och eventuella fel som påträffas. När en datapartition har bearbetats försöker verktyget fråga efter nästa tillgängliga källmapp. Den fortsätter att bearbeta nästa käll partition tills alla data har migrerats. Käll koden för verktyget finns [här](https://github.com/Azure-Samples/azure-cosmosdb-bulkingestion).  
+Följande bild beskriver migreringsprocessen med det här anpassade verktyget. Verktyget körs på en uppsättning virtuella datorer och varje virtuell dator frågar spårnings samlingen i Azure Cosmos DB för att erhålla ett lån på en av datapartitionerna. När detta görs läses käll data partitionen av verktyget och matas in i Azure Cosmos DB med hjälp av utförar-biblioteket. Sedan uppdateras spårnings samlingen för att registrera förloppet för data inhämtningen och eventuella fel som påträffas. När en datapartition har bearbetats försöker verktyget fråga efter nästa tillgängliga källmapp. Den fortsätter att bearbeta nästa käll partition tills alla data har migrerats. Käll koden för verktyget finns på Azure Cosmos DB lagrings platsen för [Mass](https://github.com/Azure-Samples/azure-cosmosdb-bulkingestion) inmatning.  
 
  
 :::image type="content" source="./media/migrate-cosmosdb-data/migrationsetup.png" alt-text="Installation av Migreringsverktyg" border="false":::

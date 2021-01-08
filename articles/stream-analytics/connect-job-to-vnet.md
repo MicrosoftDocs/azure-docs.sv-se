@@ -1,19 +1,18 @@
 ---
 title: Ansluta Stream Analytics jobb till resurser i ett Azure-Virtual Network (VNET)
 description: I den här artikeln beskrivs hur du ansluter ett Azure Stream Analytics jobb med resurser som finns i ett VNET.
-author: sidram
+author: sidramadoss
 ms.author: sidram
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/04/2021
 ms.custom: devx-track-js
-ms.openlocfilehash: f140384ee2c78b38982c99dab5912bc451584a42
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 99563760bf37c4046e7dd81e779fedbe415380bc
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97898155"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019490"
 ---
 # <a name="connect-stream-analytics-jobs-to-resources-in-an-azure-virtual-network-vnet"></a>Ansluta Stream Analytics jobb till resurser i ett Azure-Virtual Network (VNet)
 

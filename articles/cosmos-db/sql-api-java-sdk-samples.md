@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 09/23/2020
 ms.custom: devx-track-java
 ms.author: anfeldma
-ms.openlocfilehash: 6b732c2af204cba6e93f9207648a5123b75660b1
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 0b0bdd204b2aa322adeb7373911b90e742c71999
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96545544"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019015"
 ---
 # <a name="azure-cosmos-db-sql-api-java-sdk-v4-examples"></a>Azure Cosmos DB SQL API: Java SDK v4-exempel
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -105,7 +105,7 @@ där *Sample. Synchronicity. MainClass* kan vara
 ## <a name="database-examples"></a>Databasexempel
 [Databasen CRUD exempel](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/main/src/main/java/com/azure/cosmos/examples/databasecrud/sync/DatabaseCRUDQuickstart.java) filen visar hur du utför följande uppgifter. Information om Azure Cosmos-databaser innan du kör följande exempel finns i avsnittet [arbeta med databaser, behållare och objekt](account-databases-containers-items.md) konceptuell artikel. 
 
-| Uppgift | API-referens |
+| Aktivitet | API-referens |
 | --- | --- |
 | [Skapa en databas](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/main/src/main/java/com/azure/cosmos/examples/databasecrud/sync/DatabaseCRUDQuickstart.java#L77-L85) | CosmosClient. createDatabaseIfNotExists |
 | [Läsa en databas via ID](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/main/src/main/java/com/azure/cosmos/examples/databasecrud/sync/DatabaseCRUDQuickstart.java#L88-L95) | CosmosClient. getDatabase |
@@ -115,7 +115,7 @@ där *Sample. Synchronicity. MainClass* kan vara
 ## <a name="collection-examples"></a>Samlingsexempel
 [Exempel filen Collection CRUD-exempel](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/CollectionCrudSamples.java) visar hur du utför följande uppgifter. Mer information om Azure Cosmos-samlingarna innan du kör följande exempel finns i avsnittet [arbeta med databaser, behållare och objekt](account-databases-containers-items.md) konceptuell artikel.
 
-| Uppgift | API-referens |
+| Aktivitet | API-referens |
 | --- | --- |
 | [Skapa en samling](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/main/src/main/java/com/azure/cosmos/examples/containercrud/sync/ContainerCRUDQuickstart.java#L97-L112) | CosmosDatabase. createContainerIfNotExists |
 | [Ändra konfigurerade prestanda i en samling](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/main/src/main/java/com/azure/cosmos/examples/containercrud/sync/ContainerCRUDQuickstart.java#L115-L123) | CosmosContainer.replaceProvisionedThroughput |
@@ -129,13 +129,13 @@ Om du vill veta mer om autoskalning innan du kör dessa exempel kan du ta en tit
 
 [CRUD exempel filen för autoskalning av databasen](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/main/src/main/java/com/azure/cosmos/examples/autoscaledatabasecrud/sync/AutoscaleDatabaseCRUDQuickstart.java) visar hur du utför följande uppgifter.
 
-| Uppgift | API-referens |
+| Aktivitet | API-referens |
 | --- | --- |
 | [Skapa en databas med angivet Max data flöde för autoskalning](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/main/src/main/java/com/azure/cosmos/examples/autoscaledatabasecrud/sync/AutoscaleDatabaseCRUDQuickstart.java#L78-L89) | CosmosClient. createDatabase<br>ThroughputProperties.createAutoscaledThroughput |
 
 [CRUD exempel filen för autoskalning i samling](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/main/src/main/java/com/azure/cosmos/examples/autoscalecontainercrud/sync/AutoscaleContainerCRUDQuickstart.java) visar hur du utför följande uppgifter. 
 
-| Uppgift | API-referens |
+| Aktivitet | API-referens |
 | --- | --- |
 | [Skapa en samling med angivet autoskalning Max-genomflöde](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/main/src/main/java/com/azure/cosmos/examples/autoscalecontainercrud/sync/AutoscaleContainerCRUDQuickstart.java#L97-L110) | CosmosDatabase. createContainerIfNotExists |
 | [Ändra konfigurerat högsta data flöde för autoskalning av en samling](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/main/src/main/java/com/azure/cosmos/examples/autoscalecontainercrud/sync/AutoscaleContainerCRUDQuickstart.java#L113-L120) | CosmosContainer.replaceThroughput |
@@ -145,14 +145,14 @@ Om du vill veta mer om autoskalning innan du kör dessa exempel kan du ta en tit
 
 I [CRUD exempel filen för analys lagrings samling](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/main/src/main/java/com/azure/cosmos/examples/analyticalcontainercrud/sync/AnalyticalContainerCRUDQuickstart.java) visas hur du utför följande uppgifter. Om du vill veta mer om Azure Cosmos-samlingarna innan du kör följande exempel kan du läsa om Azure Cosmos DB Synapse och analys lager.
 
-| Uppgift | API-referens |
+| Aktivitet | API-referens |
 | --- | --- |
 | [Skapa en samling](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/main/src/main/java/com/azure/cosmos/examples/analyticalcontainercrud/sync/AnalyticalContainerCRUDQuickstart.java#L93-L108) | CosmosDatabase. createContainerIfNotExists |
 
 ## <a name="document-examples"></a>Exempel på dokument
 Filen [CRUD exempel för dokument](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/DocumentCrudSamples.java) visar hur du utför följande uppgifter. Information om Azure Cosmos-dokumenten innan du kör följande exempel finns i avsnittet [arbeta med databaser, behållare och objekt](account-databases-containers-items.md) konceptuell artikel.
 
-| Uppgift | API-referens |
+| Aktivitet | API-referens |
 | --- | --- |
 | [Skapa ett dokument](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/main/src/main/java/com/azure/cosmos/examples/documentcrud/sync/DocumentCRUDQuickstart.java#L133-L147) | CosmosContainer.createItem |
 | [Läsa ett dokument efter ID](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/main/src/main/java/com/azure/cosmos/examples/documentcrud/sync/DocumentCRUDQuickstart.java#L179-L193) | CosmosContainer.readItem |
@@ -164,9 +164,9 @@ Filen [CRUD exempel för dokument](https://github.com/Azure/azure-documentdb-jav
 | [Läs dokument endast om dokumentet har ändrats](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/main/src/main/java/com/azure/cosmos/examples/documentcrud/sync/DocumentCRUDQuickstart.java#L266-L300) | AccessCondition.setType<br>AccessCondition.setCondition |
 
 ## <a name="indexing-examples"></a>Indexeringsexempel
-[Exempel filen Collection CRUD-exempel](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/CollectionCrudSamples.java) visar hur du utför följande uppgifter. Om du vill veta mer om indexering i Azure Cosmos DB innan du kör följande exempel, se [indexerings principer](index-policy.md), [indexerings typer](index-overview.md#index-kinds)och [indexerings Sök vägar](index-policy.md#include-exclude-paths) konceptuella artiklar. 
+[Exempel filen Collection CRUD-exempel](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/CollectionCrudSamples.java) visar hur du utför följande uppgifter. Om du vill veta mer om indexering i Azure Cosmos DB innan du kör följande exempel, se [indexerings principer](index-policy.md), [indexerings typer](index-overview.md#index-types)och [indexerings Sök vägar](index-policy.md#include-exclude-paths) konceptuella artiklar. 
 
-| Uppgift | API-referens |
+| Aktivitet | API-referens |
 | --- | --- |
 | Undanta ett dokument från indexet | ExcludedIndex<br>IndexingPolicy |
 | Använd Lazy-indexering | IndexingPolicy.IndexingMode |
@@ -183,7 +183,7 @@ Mer information om indexering finns i [Azure Cosmos DB indexeringsprinciper](ind
 ## <a name="query-examples"></a>Exempelfrågor
 I [fråge exempel](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/main/src/main/java/com/azure/cosmos/examples/queries/sync/QueriesQuickstart.java) filen visas hur du utför följande uppgifter med hjälp av SQL-frågespråket. Om du vill veta mer om SQL-frågan i Azure Cosmos DB innan du kör följande exempel kan du läsa [mer i SQL-fr åga for Azure Cosmos DB](./sql-query-getting-started.md). 
 
-| Uppgift | API-referens |
+| Aktivitet | API-referens |
 | --- | --- |
 | [Fråga för alla dokument](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/main/src/main/java/com/azure/cosmos/examples/queries/sync/QueriesQuickstart.java#L210-L214) | CosmosContainer.queryItems |
 | [Fråga för likhet med ==](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/main/src/main/java/com/azure/cosmos/examples/queries/sync/QueriesQuickstart.java#L291-L295) | CosmosContainer.queryItems |
@@ -204,7 +204,7 @@ I [fråge exempel](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-sa
 ## <a name="change-feed-examples"></a>Exempel på ändringsflöde 
 Exempel filen för [change feed processor](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/main/src/main/java/com/azure/cosmos/examples/changefeed/SampleChangeFeedProcessor.java) visar hur du utför följande uppgifter. Information om hur du ändrar feed i Azure Cosmos DB innan du kör följande exempel finns i [läsa Azure Cosmos DB ändra feed](read-change-feed.md) och [ändra feed-processor](change-feed-processor.md).
 
-| Uppgift | API-referens |
+| Aktivitet | API-referens |
 | --- | --- |
 | [Grundläggande funktioner för att ändra feed](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/main/src/main/java/com/azure/cosmos/examples/changefeed/SampleChangeFeedProcessor.java#L124-L154) |ChangeFeedProcessor.changeFeedProcessorBuilder |
 | Läs ändrings flöde från en angiven tid | ChangeFeedProcessor.changeFeedProcessorBuilder |
@@ -214,7 +214,7 @@ Exempel filen för [change feed processor](https://github.com/Azure-Samples/azur
 
 Exempel filen för [lagrade procedurer](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/main/src/main/java/com/azure/cosmos/examples/storedprocedure/sync/SampleStoredProcedure.java) visar hur du utför följande uppgifter. Om du vill lära dig mer om Server sidans programmering i Azure Cosmos DB innan du kör följande exempel, se [lagrade procedurer, utlösare och användardefinierade funktioner](stored-procedures-triggers-udfs.md).
 
-| Uppgift | API-referens |
+| Aktivitet | API-referens |
 | --- | --- |
 | [Skapa en lagrad procedur](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/main/src/main/java/com/azure/cosmos/examples/storedprocedure/sync/SampleStoredProcedure.java#L132-L151) | CosmosScripts.createStoredProcedure |
 | [Köra en lagrad procedur](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/main/src/main/java/com/azure/cosmos/examples/storedprocedure/sync/SampleStoredProcedure.java#L167-L181) | CosmosStoredProcedure.exesöta |
@@ -223,7 +223,7 @@ Exempel filen för [lagrade procedurer](https://github.com/Azure-Samples/azure-c
 ## <a name="user-management-examples"></a>Exempel för användarhantering
 Exempel filen för användar hantering visar hur du utför följande uppgifter:
 
-| Uppgift | API-referens |
+| Aktivitet | API-referens |
 | --- | --- |
 | Skapa en användare | - |
 | Ange behörigheter för en samling eller dokument | - |

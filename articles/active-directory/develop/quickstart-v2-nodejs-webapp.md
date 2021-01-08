@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, devx-track-js
-ms.openlocfilehash: 643305057490cc550a5a8e39a892297b000cbc8e
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: c9aa73767fcb9d57ada11f5830fec00b10eee812
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96169417"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98017348"
 ---
 # <a name="quickstart-add-sign-in-using-openid-connect-to-a-nodejs-web-app"></a>Snabb start: lägga till inloggning med OpenID Anslut till en Node.js webbapp
 
@@ -29,38 +29,29 @@ I den här snabb starten hämtar och kör du ett kod exempel som visar hur du ko
 - [Node.js](https://nodejs.org/en/download/).
 
 ## <a name="register-your-application"></a>Registrera ditt program
-1. Logga in på [Azure Portal](https://portal.azure.com/) med antingen ett arbets-eller skol konto eller en personlig Microsoft-konto.
-1. Om ditt konto finns i fler än en Azure AD-klient:
-    - Välj din profil på menyn i det övre högra hörnet på sidan och **Växla sedan katalog**.
-    - Ändra sessionen till Azure AD-klienten där du vill skapa ditt program.
 
-1. Gå till [Azure Active Directory > Appregistreringar](https://go.microsoft.com/fwlink/?linkid=2083908) för att registrera din app.
-
-1. Välj **ny registrering.**
-
-1. När sidan **Registrera ett program** visas anger du appens registrerings information:
-    - I avsnittet **namn** anger du ett meningsfullt namn som ska visas för användare av appen. Till exempel: ' to WebApp
-    - I avsnittet **konto typer som stöds** väljer du **konton i valfri organisations katalog och personliga Microsoft-konton (t. ex. Skype, Xbox, Outlook.com)**.
+1. Logga in på <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
+1. Om du har åtkomst till flera klienter använder du filtret för **katalog + prenumeration** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: i den översta menyn för att välja den klient som du vill registrera ett program i.
+1. Sök efter och välj **Azure Active Directory**.
+1. Under **Hantera** väljer du **Appregistreringar**  >  **ny registrering**.
+1. Ange ett **namn** för programmet, till exempel `MyWebApp` . Användare av appen kan se det här namnet och du kan ändra det senare.
+1. I avsnittet **konto typer som stöds** väljer du **konton i valfri organisations katalog och personliga Microsoft-konton (t. ex. Skype, Xbox, Outlook.com)**.
 
     Om det finns fler än en omdirigerings-URI måste du lägga till dem från fliken **autentisering** senare när appen har skapats.
 
 1. Välj **Registrera** för att skapa appen.
-
 1. På sidan **Översikt** för appen letar du reda på **programmets (klient) ID-** värde och registrerar det för senare. Du behöver det här värdet för att konfigurera programmet senare i det här projektet.
+1. Under **Hantera** väljer du **autentisering**.
+1. Välj **Lägg till en plattforms**  >  **webb** 
+1. I avsnittet **omdirigerings-URI** anger du `http://localhost:3000/auth/openid/return` .
+1. Ange en **utloggnings-URL** `https://localhost:3000` .
+1. I avsnittet implicit bidrag kontrollerar du **ID-tokens** som det här exemplet kräver att det [implicita tilldelnings flödet](./v2-oauth2-implicit-grant-flow.md) aktive ras för att logga in användaren.
+1. Välj **Konfigurera**.
+1. Under **Hantera** väljer du **certifikat & hemligheter**  >  **ny klient hemlighet**.
+1. Ange en nyckel Beskrivning (för instansens program hemlighet).
+1. Välj en nyckel varaktighet på **minst ett år, i två år** eller **upphör aldrig att gälla**.
+1. Välj **Lägg till**. Nyckelvärdet kommer att visas. Kopiera nyckelvärdet och spara det på en säker plats för senare användning.
 
-1. I listan över sidor för appen väljer du **Autentisering**.
-    - I avsnittet **omdirigerings-URI: er** väljer du **webb** i kombinations rutan och anger följande omdirigerings-URI: `http://localhost:3000/auth/openid/return`
-    - I avsnittet **Avancerade inställningar** ställer du in **Utloggnings-URL** på `https://localhost:3000`.
-    - I avsnittet **Avancerade inställningar > implicita bidrag** kontrollerar du **ID-token** som det här exemplet kräver att det [implicita tilldelnings flödet](./v2-oauth2-implicit-grant-flow.md) är aktiverat för att logga in användaren.
-
-1. Välj **Spara**.
-
-1. På sidan **certifikat & hemligheter** väljer du **ny klient hemlighet** i avsnittet **klient hemligheter** .
-    - Ange en nyckel Beskrivning (för instansens program hemlighet).
-    - Välj en nyckel varaktighet på **minst ett år, i två år** eller **upphör aldrig att gälla**.
-    - När du klickar på knappen **Lägg till** visas nyckelvärdet. Kopiera nyckelvärdet och spara det på en säker plats.
-
-    Du behöver den här nyckeln senare för att konfigurera programmet. Det här nyckelvärdet visas inte igen eller kan inte hämtas på något annat sätt, så du kan registrera det så snart det visas från Azure Portal.
 
 ## <a name="download-the-sample-application-and-modules"></a>Ladda ned exempel programmet och moduler
 

@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: tisande
-ms.openlocfilehash: 4211f13324b9fda0b0823b2d035eb03863cb686d
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: b7349a08b93810dcc3befd6058302d6c4573ab8d
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93339766"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019337"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>Indexering i Azure Cosmos DB – Översikt
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -64,9 +64,9 @@ Här är Sök vägarna för varje egenskap från det exempel objekt som beskrivs
 
 När ett objekt skrivs, indexerar Azure Cosmos DB effektivt varje egenskaps bana och dess motsvarande värde.
 
-## <a name="index-kinds"></a>Index typer
+## <a name="types-of-indexes"></a><a id="index-types"></a>Typer av index
 
-Azure Cosmos DB stöder för närvarande tre typer av index.
+Azure Cosmos DB stöder för närvarande tre typer av index. Du kan konfigurera dessa index typer när du definierar indexerings principen.
 
 ### <a name="range-index"></a>Intervall index
 
@@ -122,11 +122,11 @@ Azure Cosmos DB stöder för närvarande tre typer av index.
    SELECT child FROM container c JOIN child IN c.properties WHERE child = 'value'
    ```
 
-Intervall index kan användas för skalära värden (sträng eller tal).
+Intervall index kan användas för skalära värden (sträng eller tal). Standardprincipen för indexering för nyligen skapade containrar framtvingar intervallindex för strängar eller nummer. Information om hur du konfigurerar intervall index finns i [exempel på intervall indexerings princip](how-to-manage-indexing-policy.md#range-index)
 
 ### <a name="spatial-index"></a>Rums index
 
-Med **rums** index kan du skapa effektiva frågor om geospatiala objekt som-punkter, linjer, polygoner och multipolygoner. Dessa frågor använder ST_DISTANCE ST_WITHIN ST_INTERSECTS nyckelord. Följande är några exempel som använder spatial index typ:
+Med **rums** index kan du skapa effektiva frågor om geospatiala objekt som-punkter, linjer, polygoner och multipolygoner. Dessa frågor använder ST_DISTANCE ST_WITHIN ST_INTERSECTS nyckelord. Följande är några exempel som använder rums index typen:
 
 - Geospatiala avstånds frågor:
 
@@ -146,11 +146,11 @@ Med **rums** index kan du skapa effektiva frågor om geospatiala objekt som-punk
    SELECT * FROM c WHERE ST_INTERSECTS(c.property, { 'type':'Polygon', 'coordinates': [[ [31.8, -5], [32, -5], [31.8, -5] ]]  })  
    ```
 
-Rums index kan användas på korrekt formaterade geospatiala [JSON](./sql-query-geospatial-intro.md) -objekt. Punkter, lin Est rings, polygoner och multipolygoner stöds för närvarande.
+Rums index kan användas på korrekt formaterade geospatiala [JSON](./sql-query-geospatial-intro.md) -objekt. Punkter, lin Est rings, polygoner och multipolygoner stöds för närvarande. Om du vill använda den här index typen ställer du in med hjälp av `"kind": "Range"` egenskapen när du konfigurerar indexerings principen. Information om hur du konfigurerar rums index finns i [exempel på spatial indexerings princip](how-to-manage-indexing-policy.md#spatial-index)
 
 ### <a name="composite-indexes"></a>Sammansatta index
 
-**Sammansatta** index ökar effektiviteten när du utför åtgärder på flera fält. Den sammansatta index typen används för:
+**Sammansatta** index ökar effektiviteten när du utför åtgärder på flera fält. Sammansatt index typ används för:
 
 - `ORDER BY` frågor om flera egenskaper:
 
@@ -170,11 +170,13 @@ Rums index kan användas på korrekt formaterade geospatiala [JSON](./sql-query-
  SELECT * FROM container c WHERE c.property1 = 'value' AND c.property2 > 'value'
 ```
 
-Så länge ett filter predikat använder en av index typerna, kommer frågesyntaxen att utvärderas först innan resten görs. Om du till exempel har en SQL-fråga som `SELECT * FROM c WHERE c.firstName = "Andrew" and CONTAINS(c.lastName, "Liu")`
+Så länge ett filter predikat använder en av index typen, kommer frågesyntaxen att utvärderas först innan resten görs. Om du till exempel har en SQL-fråga som `SELECT * FROM c WHERE c.firstName = "Andrew" and CONTAINS(c.lastName, "Liu")`
 
 * Ovanstående fråga filtreras först efter poster där firstName = "Anders" med hjälp av indexet. Sedan skickar du alla poster för firstName = "Anders" genom en efterföljande pipeline för att utvärdera innehåller filtervärdet.
 
 * Du kan påskynda frågor och undvika fullständig genomsökning av behållare när du använder funktioner som inte använder indexet (t. ex. innehåller) genom att lägga till ytterligare filter-predikat som använder indexet. Ordningen på filter satserna är inte viktig. Frågemotor är ett sätt att ta reda på vilka predikat som är selektivt selektivt och köra frågan på motsvarande sätt.
+
+Information om hur du konfigurerar sammansatta index finns i [exempel på sammansatta indexerings principer](how-to-manage-indexing-policy.md#composite-index)
 
 ## <a name="querying-with-indexes"></a>Fråga med index
 

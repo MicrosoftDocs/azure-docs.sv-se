@@ -8,18 +8,18 @@ ms.custom: mvc
 ms.devlang: php
 ms.topic: quickstart
 ms.date: 2/28/2018
-ms.openlocfilehash: 4e82c8402584f694cb32bb37ae3e6eae9366eaf7
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 200fdd126e2ed95804f81c1dd36804ecc6c61d85
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93341441"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019694"
 ---
 # <a name="quickstart-use-php-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Snabb start: använda PHP för att ansluta och fråga efter data i Azure Database for PostgreSQL-enskild server
 
 Den här snabbstarten visar hur du ansluter till en Azure Database för PostgreSQL med hjälp av ett [PHP](https://secure.php.net/manual/intro-whatis.php)-program. Den visar hur du använder SQL-instruktioner för att fråga, infoga, uppdatera och ta bort data i databasen. I den här artikeln förutsätter vi att du har kunskaper om PHP och att du inte har arbetat med Azure Database for PostgreSQL tidigare.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 I den här snabbstarten används de resurser som skapades i någon av följande guider som utgångspunkt:
 - [Skapa DB – Portal](quickstart-create-server-database-portal.md)
 - [Skapa DB – Azure CLI](quickstart-create-server-database-azure-cli.md)
@@ -46,14 +46,14 @@ Installera PHP på din server, eller skapa en Azure-[webbapp](../app-service/ove
 ## <a name="get-connection-information"></a>Hämta anslutningsinformation
 Hämta den information som du behöver för att ansluta till Azure Database för PostgreSQL. Du behöver det fullständiga servernamnet och inloggningsuppgifter.
 
-1. Logga in på [Azure-portalen](https://portal.azure.com/).
-2. På den vänstra menyn i Azure Portal klickar du på **Alla resurser**. Sök sedan efter den server som du skapade (till exempel **mydemoserver** ).
+1. Logga in på [Azure Portal](https://portal.azure.com/).
+2. På den vänstra menyn i Azure Portal klickar du på **Alla resurser**. Sök sedan efter den server som du skapade (till exempel **mydemoserver**).
 3. Klicka på servernamnet.
 4. På serverpanelen **Översikt** antecknar du **Servernamn** och **Inloggningsnamn för serveradministratören**. Om du glömmer lösenordet kan du även återställa det på den här panelen.
  :::image type="content" source="./media/connect-php/1-connection-string.png" alt-text="Azure Database for PostgreSQL-servernamn":::
 
 ## <a name="connect-and-create-a-table"></a>Ansluta och skapa en tabell
-Använd följande kod för att ansluta och skapa en tabell med hjälp av **CREATE TABLE** -SQL-instruktionen följt av **INSERT INTO** -SQL-instruktioner för att lägga till rader i tabellen.
+Använd följande kod för att ansluta och skapa en tabell med hjälp av **CREATE TABLE**-SQL-instruktionen följt av **INSERT INTO**-SQL-instruktioner för att lägga till rader i tabellen.
 
 Kod anrops metoden [pg_connect ()](https://secure.php.net/manual/en/function.pg-connect.php) för att ansluta till Azure Database for PostgreSQL. Sedan anropas metoden [pg_query()](https://secure.php.net/manual/en/function.pg-query.php) flera gånger för att köra flera kommandon. Varje gång körs metoden [pg_last_error()](https://secure.php.net/manual/en/function.pg-last-error.php) för att kontrollera om ett fel uppstått. Sedan anropas metoden [pg_close()](https://secure.php.net/manual/en/function.pg-close.php) för att stänga anslutningen.
 
@@ -87,7 +87,7 @@ Ersätt parametrarna `$host`, `$database`, `$user` och `$password` med egna vär
     // Insert some data into table.
     $name = '\'banana\'';
     $quantity = 150;
-    $query = "INSERT INTO inventory (name, quantity) VALUES ($1, $2);";
+    $query = "INSERT INTO inventory (name, quantity) VALUES ($name, $quantity);";
     pg_query($connection, $query) 
         or die("Encountered an error when executing given sql statement: ". pg_last_error(). "<br/>");
 
@@ -111,7 +111,7 @@ Ersätt parametrarna `$host`, `$database`, `$user` och `$password` med egna vär
 ```
 
 ## <a name="read-data"></a>Läsa data
-Använd följande kod för att ansluta och läsa data med en **SELECT** -SQL-instruktion. 
+Använd följande kod för att ansluta och läsa data med en **SELECT**-SQL-instruktion. 
 
  Kod anrops metoden [pg_connect ()](https://secure.php.net/manual/en/function.pg-connect.php) för att ansluta till Azure Database for PostgreSQL. Sedan anropas metoden [pg_query()](https://secure.php.net/manual/en/function.pg-query.php) för att köra SELECT-kommandot, för att förvara resultatet i en resultatuppsättning, och metoden [pg_last_error()](https://secure.php.net/manual/en/function.pg-last-error.php) anropas för att kontrollera om ett fel har uppstått.  För att läsa resultatuppsättningen anropas metoden [pg_fetch_row()](https://secure.php.net/manual/en/function.pg-fetch-row.php) i en loop, en gång per rad, och raddata hämtas i en `$row`-matris med ett datavärde per kolumn i varje matrisposition.  Metoden [pg_free_result()](https://secure.php.net/manual/en/function.pg-free-result.php) anropas för att frigöra resultatuppsättningen. Sedan anropas metoden [pg_close()](https://secure.php.net/manual/en/function.pg-close.php) för att stänga anslutningen.
 
@@ -149,7 +149,7 @@ Ersätt parametrarna `$host`, `$database`, `$user` och `$password` med egna vär
 ```
 
 ## <a name="update-data"></a>Uppdatera data
-Använd följande kod för att ansluta och uppdatera data med en **UPDATE** -SQL-instruktion.
+Använd följande kod för att ansluta och uppdatera data med en **UPDATE**-SQL-instruktion.
 
 Kod anrops metoden [pg_connect ()](https://secure.php.net/manual/en/function.pg-connect.php) för att ansluta till Azure Database for PostgreSQL. Sedan anropas metoden [pg_query()](https://secure.php.net/manual/en/function.pg-query.php) flera gånger för att köra ett kommando, och [pg_last_error()](https://secure.php.net/manual/en/function.pg-last-error.php) anropas för att kontrollera om ett fel uppstått. Sedan anropas metoden [pg_close()](https://secure.php.net/manual/en/function.pg-close.php) för att stänga anslutningen.
 
@@ -184,7 +184,7 @@ Ersätt parametrarna `$host`, `$database`, `$user` och `$password` med egna vär
 
 
 ## <a name="delete-data"></a>Ta bort data
-Använd följande kod för att ansluta och läsa data med en **DELETE** -SQL-instruktion. 
+Använd följande kod för att ansluta och läsa data med en **DELETE**-SQL-instruktion. 
 
  Metoden [pg_connect()](https://secure.php.net/manual/en/function.pg-connect.php) anropas för att ansluta till Azure Database för PostgreSQL. Sedan anropas metoden [pg_query()](https://secure.php.net/manual/en/function.pg-query.php) flera gånger för att köra ett kommando, och [pg_last_error()](https://secure.php.net/manual/en/function.pg-last-error.php) anropas för att kontrollera om ett fel uppstått. Sedan anropas metoden [pg_close()](https://secure.php.net/manual/en/function.pg-close.php) för att stänga anslutningen.
 
