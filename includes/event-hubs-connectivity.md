@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/19/2020
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: dac82692c76d9d36b1f25d7b93b5c3a2e2400672
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7ebb9dbce020086a716872c86221b97b4b7a6653
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96002807"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97978897"
 ---
 ### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>Vilka portar måste jag öppna i brand väggen? 
 Du kan använda följande protokoll med Azure Event Hubs för att skicka och ta emot händelser:
@@ -38,7 +38,7 @@ De officiella Azure-SDK: erna använder vanligt vis AMQP-protokollet för att sk
 | -------- | ----- |
 | .NET     | [EventHubConnectionOptions. TransportType](/dotnet/api/azure.messaging.eventhubs.eventhubconnectionoptions.transporttype?view=azure-dotnet&preserve-view=true) -egenskapen med [EventHubsTransportType. AmqpTcp](/dotnet/api/azure.messaging.eventhubs.eventhubstransporttype?view=azure-dotnet&preserve-view=true) eller [EventHubsTransportType. AmqpWebSockets](/dotnet/api/azure.messaging.eventhubs.eventhubstransporttype?view=azure-dotnet&preserve-view=true) |
 | Java     | [com. Microsoft. Azure. eventhubs. EventProcessorClientBuilder. transporttype](/java/api/com.azure.messaging.eventhubs.eventprocessorclientbuilder.transporttype?view=azure-java-stable&preserve-view=true) med [AmqpTransportType. AMQP](/java/api/com.azure.core.amqp.amqptransporttype?view=azure-java-stable&preserve-view=true) eller [AmqpTransportType.AMQP_WEB_SOCKETS](/java/api/com.azure.core.amqp.amqptransporttype?view=azure-java-stable&preserve-view=true) |
-| Node  | [EventHubConsumerClientOptions](/javascript/api/@azure/event-hubs/eventhubconsumerclientoptions?view=azure-node-latest&preserve-view=true) har en- `webSocketOptions` egenskap. |
+| Nod  | [EventHubConsumerClientOptions](/javascript/api/@azure/event-hubs/eventhubconsumerclientoptions?view=azure-node-latest&preserve-view=true) har en- `webSocketOptions` egenskap. |
 | Python | [EventHubConsumerClient.transport_type](/python/api/azure-eventhub/azure.eventhub.eventhubconsumerclient?view=azure-python&preserve-view=true) med [TransportType. AMQP](/python/api/azure-eventhub/azure.eventhub.transporttype?view=azure-python) eller [TransportType. AmqpOverWebSocket](/python/api/azure-eventhub/azure.eventhub.transporttype?view=azure-python&preserve-view=true) |
 
 ### <a name="what-ip-addresses-do-i-need-to-allow"></a>Vilka IP-adresser måste jag tillåta?
@@ -53,7 +53,7 @@ Kontrol lera också att IP-adressen för ditt namn område är tillåten. Följ 
     ```
 2. Anteckna IP-adressen som returnerades i `Non-authoritative answer` . 
 
-Om du använder **zon redundans** för ditt namn område måste du utföra några ytterligare steg: 
+Om du använder **zon redundans** för ditt namn område måste du utföra några extra steg: 
 
 1. Först kör du nslookup i namn området.
 
@@ -72,7 +72,7 @@ Om du använder **zon redundans** för ditt namn område måste du utföra någr
     > [!NOTE]
     > Den IP-adress som returnerades av `nslookup` kommandot är inte en statisk IP-adress. Det förblir dock konstant tills den underliggande distributionen tas bort eller flyttas till ett annat kluster.
 
-### <a name="where-can-i-find-client-ip-sending-or-receiving-messages-to-my-namespace"></a>Var hittar jag klient-IP skickar eller tar emot meddelanden till mitt namn område?
+### <a name="what-client-ips-are-sending-events-to-or-receiving-events-from-my-namespace"></a>Vilka klient-IP-adresser skickar händelser till eller tar emot händelser från min namnrymd?
 Börja med att aktivera [IP-filtrering](../articles/event-hubs/event-hubs-ip-filtering.md) i namn området. 
 
 Aktivera sedan diagnostikloggar för [Event Hubs händelser för virtuella nätverks anslutningar](../articles/event-hubs/event-hubs-diagnostic-logs.md#event-hubs-virtual-network-connection-event-schema) genom att följa anvisningarna i [Aktivera diagnostikloggar](../articles/event-hubs/event-hubs-diagnostic-logs.md#enable-diagnostic-logs). Du ser IP-adressen för vilken anslutningen nekas.
@@ -92,3 +92,6 @@ Aktivera sedan diagnostikloggar för [Event Hubs händelser för virtuella nätv
 
 > [!IMPORTANT]
 > Virtuella nätverks loggar skapas endast om namn området tillåter åtkomst från **vissa IP-adresser** (IP filter regler). Om du inte vill begränsa åtkomsten till ditt namn område med dessa funktioner och fortfarande vill hämta virtuella nätverks loggar för att spåra IP-adresser för klienter som ansluter till Event Hubs-namnrymden, kan du använda följande lösning: aktivera IP-filtrering och Lägg till det totala adresser bara IPv4-intervallet (1.0.0.0/1-255.0.0.0/1). Event Hubs stöder inte IPv6-adress intervall. 
+
+> [!NOTE]
+> För närvarande går det inte att fastställa käll-IP för ett enskilt meddelande eller en händelse. 

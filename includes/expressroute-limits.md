@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/25/2019
 ms.author: duau
 ms.custom: include file
-ms.openlocfilehash: 12c0acd5211a6fbcfd1e2861a3109b57fc67dbcf
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 54306b8bd8718a0a69f5b04ceaab15dff46d21a8
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97930549"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97978767"
 ---
 | Resurs | Gräns |
 | --- | --- |
@@ -21,7 +21,7 @@ ms.locfileid: "97930549"
 | ExpressRoute-kretsar per region per prenumeration, med Azure Resource Manager |10 |
 | Maximalt antal vägar som annonseras till Azures privata peering med ExpressRoute standard |4 000 |
 | Maximalt antal vägar som annonseras till Azures privata peering med ExpressRoute Premium-tillägg |10 000 |
-| Maximalt antal vägar som annonseras från Azures privata peering från VNet-adressutrymmet för en ExpressRoute-anslutning |200 |
+| Maximalt antal vägar som annonseras från Azures privata peering från VNet-adressutrymmet för en ExpressRoute-anslutning |1000 |
 | Maximalt antal vägar som annonseras till Microsoft-peering med ExpressRoute standard |200 |
 | Maximalt antal vägar som annonseras till Microsoft-peering med ExpressRoute Premium-tillägg |200 |
 | Maximalt antal ExpressRoute-kretsar länkade till samma virtuella nätverk på samma peering-plats |4 |

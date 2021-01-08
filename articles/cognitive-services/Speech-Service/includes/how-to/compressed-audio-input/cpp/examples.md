@@ -4,14 +4,14 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/09/2020
 ms.author: trbye
-ms.openlocfilehash: b565bf3bae61cf92133b957bb75fdae9545c030e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ad32204739d728006362ef55657a2f433be7aefc
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81421857"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97978762"
 ---
-Om du vill strömma i ett komprimerat ljud format till tal-tjänsten skapar `PullAudioInputStream` eller `PushAudioInputStream` . Skapa sedan en `AudioConfig` från en instans av data ström klassen och ange komprimerings formatet för data strömmen.
+Om du vill konfigurera tal-SDK för att acceptera komprimerade ljud måste du skapa `PullAudioInputStream` eller `PushAudioInputStream` . Skapa sedan en `AudioConfig` från en instans av data ström klassen och ange komprimerings formatet för data strömmen.
 
 Vi antar att du har en data Ströms klass som heter `pushStream` och använder Opus/OGG. Din kod kan se ut så här:
 
