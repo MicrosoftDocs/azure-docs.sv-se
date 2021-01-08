@@ -1,17 +1,17 @@
 ---
 title: Snabb start – skapa ett Azure Stream Analytics jobb med Visual Studio
 description: Den här snabbstarten visar hur du kommer igång genom att skapa ett Stream Analytics-jobb, konfigurerar indata och utdata samt definierar en fråga med Visual Studio.
-author: mamccrea
-ms.author: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.date: 06/11/2019
 ms.topic: quickstart
 ms.service: stream-analytics
-ms.openlocfilehash: 034f1497cb6262ca86cd440b914f3ae67356eef9
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 7a02d0914ae111d6e2e00493fe27613e27d836b1
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93124619"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98012367"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-by-using-visual-studio"></a>Snabb start: skapa ett Azure Stream Analytics jobb med hjälp av Visual Studio
 
@@ -36,7 +36,7 @@ Innan du definierar Stream Analytics-jobbet bör du förbereda de data som senar
 
 1. Logga in på [Azure-portalen](https://portal.azure.com/).
 
-2. Välj **skapa en resurs**  >  **Sakernas Internet**  >  **IoT Hub** .
+2. Välj **skapa en resurs**  >  **Sakernas Internet**  >  **IoT Hub**.
 
 3. I rutan **IoT-hubb** anger du följande information:
    
@@ -49,35 +49,35 @@ Innan du definierar Stream Analytics-jobbet bör du förbereda de data som senar
 
    ![Skapa en IoT Hub](./media/stream-analytics-quick-create-vs/create-iot-hub.png)
 
-4. Välj **Nästa: Ange storlek och skala** .
+4. Välj **Nästa: Ange storlek och skala**.
 
-5. Välj **pris- och skalningsnivå** . För den här snabbstarten väljer du nivån **F1 – kostnadsfri** om den fortfarande är tillgänglig för din prenumeration. Om den kostnadsfria nivån inte är tillgänglig väljer du den lägsta tillgängliga nivån. Mer information finns i [Prissättning för IoT-hubb](https://azure.microsoft.com/pricing/details/iot-hub/).
+5. Välj **pris- och skalningsnivå**. För den här snabbstarten väljer du nivån **F1 – kostnadsfri** om den fortfarande är tillgänglig för din prenumeration. Om den kostnadsfria nivån inte är tillgänglig väljer du den lägsta tillgängliga nivån. Mer information finns i [Prissättning för IoT-hubb](https://azure.microsoft.com/pricing/details/iot-hub/).
 
    ![Bestäm storlek och skala för din IoT-hubb](./media/stream-analytics-quick-create-vs/iot-hub-size-and-scale.png)
 
-6. Välj **Granska + skapa** . Gå igenom informationen om IoT-hubben och klicka på **Skapa** . Det kan ta några minuter innan IoT-hubben skapas. Du kan övervaka förloppet i **meddelandefönstret** .
+6. Välj **Granska + skapa**. Gå igenom informationen om IoT-hubben och klicka på **Skapa**. Det kan ta några minuter innan IoT-hubben skapas. Du kan övervaka förloppet i **meddelandefönstret**.
 
-7. I navigeringsmenyn för din IoT-hubb klickar du på **Lägg till** under **IoT-enheter** . Lägg till ett **Enhets-ID** och klicka på **Spara** .
+7. I navigeringsmenyn för din IoT-hubb klickar du på **Lägg till** under **IoT-enheter**. Lägg till ett **Enhets-ID** och klicka på **Spara**.
 
    ![Lägg till en enhet i din IoT-hubb](./media/stream-analytics-quick-create-vs/add-device-iot-hub.png)
 
-8. När enheten har skapats öppnar du enheten från listan över **IoT-enheter** . Kopiera **Anslutningssträng – primärnyckel** och spara den i en anteckningsfil för senare användning.
+8. När enheten har skapats öppnar du enheten från listan över **IoT-enheter**. Kopiera **Anslutningssträng – primärnyckel** och spara den i en anteckningsfil för senare användning.
 
    ![Kopiera anslutningssträngen för IoT-hubbenhet](./media/stream-analytics-quick-create-vs/save-iot-device-connection-string.png)
 
 ## <a name="create-blob-storage"></a>Skala bloblagring
 
-1. I det övre vänstra hörnet av Azure Portal väljer du **skapa ett resurs**  >  **lagrings**  >  **lagrings konto** .
+1. I det övre vänstra hörnet av Azure Portal väljer du **skapa ett resurs**  >  **lagrings**  >  **lagrings konto**.
 
 2. I fönsterrutan **Skapa lagringskonto** anger du namn, plats och resursgrupp för lagringskonto. Välj samma plats och resursgrupp som den IoT-hubb som du skapade. Klicka sedan på **Granska + skapa** för att skapa kontot.
 
    ![Skapa lagringskonto](./media/stream-analytics-quick-create-portal/create-storage-account.png)
 
-3. När ditt lagringskonto har skapats väljer du panelen **Blobar** på panelen **Översikt** .
+3. När ditt lagringskonto har skapats väljer du panelen **Blobar** på panelen **Översikt**.
 
    ![Översikt över lagringskonto](./media/stream-analytics-quick-create-portal/blob-storage.png)
 
-4. Från sidan **Blob Service** väljer du **Container** och anger ett namn för containern, till exempel *container1* . Låt **Offentlig åtkomstnivå** vara **Privat (ingen anonym åtkomst)** och välj **OK** .
+4. Från sidan **Blob Service** väljer du **Container** och anger ett namn för containern, till exempel *container1*. Låt **Offentlig åtkomstnivå** vara **Privat (ingen anonym åtkomst)** och välj **OK**.
 
    ![Skapa blobcontainer](./media/stream-analytics-quick-create-portal/create-blob-container.png)
 
@@ -85,11 +85,11 @@ Innan du definierar Stream Analytics-jobbet bör du förbereda de data som senar
 
 1. Starta Visual Studio.
 
-2. Välj **Arkiv > Nytt projekt** .  
+2. Välj **Arkiv > Nytt projekt**.  
 
-3. I listan över mallar till vänster väljer du **Stream Analytics** och sedan **Azure Stream Analytics-programmet** .  
+3. I listan över mallar till vänster väljer du **Stream Analytics** och sedan **Azure Stream Analytics-programmet**.  
 
-4. Ange projektets **namn** , **plats** och **lösningsnamn** . Välj sedan **OK** .
+4. Ange projektets **namn**, **plats** och **lösningsnamn**. Välj sedan **OK**.
 
    ![Skapa ett Stream Analytics-projekt](./media/stream-analytics-quick-create-vs/create-stream-analytics-project.png)
 
@@ -102,11 +102,11 @@ Lägg märke till de element som ingår i ett Azure Stream Analytics-projekt.
 
 1. Gå till menyn **Visa** och välj **Server Explorer** i Visual Studio.
 
-2. Högerklicka på **Azure** , välj **Anslut till Microsoft Azure-prenumeration** och logga in med ditt Azure-konto.
+2. Högerklicka på **Azure**, välj **Anslut till Microsoft Azure-prenumeration** och logga in med ditt Azure-konto.
 
 ## <a name="define-input"></a>Definiera indata
 
-1. I **Solution Explorer** expanderar du noden för **indata** och dubbelklickar på **Input.json** .
+1. I **Solution Explorer** expanderar du noden för **indata** och dubbelklickar på **Input.json**.
 
 2. Fyll i informationen för **indatakonfiguration av Stream Analytics** med följande värden:
 
@@ -125,13 +125,13 @@ Lägg märke till de element som ingår i ett Azure Stream Analytics-projekt.
 
 ## <a name="define-output"></a>Definiera utdata
 
-1. I **Solution Explorer** expanderar du noden för **utdata** och dubbelklickar på **Output.json** .
+1. I **Solution Explorer** expanderar du noden för **utdata** och dubbelklickar på **Output.json**.
 
 2. Fyll i informationen för **utdatakonfiguration av Stream Analytics** med följande värden:
 
    |**Inställning**  |**Föreslaget värde**  |**Beskrivning**   |
    |---------|---------|---------|
-   |Utdataalias  |  Utdata   |  Ange ett namn som identifierar jobbets utdata.   |
+   |Utdataalias  |  Resultat   |  Ange ett namn som identifierar jobbets utdata.   |
    |Kanalmottagare   |  Blob Storage |  Välj lämplig kanalmottagare.    |
    |Resurs  |  Ange inställningar för datakälla manuellt |  Välj att ange data manuellt eller välj ett befintligt konto.   |
    |Prenumeration  |  \<Your subscription\>   | Välj den Azure-prenumeration där det lagringskonto som du skapade finns. Lagringskontot kan vara i samma eller en annan prenumeration. I det här exemplet förutsätts att du har skapat lagringskontot i samma prenumeration.   |
@@ -160,7 +160,7 @@ Lägg märke till de element som ingår i ett Azure Stream Analytics-projekt.
 
 1. I **frågeredigeraren** väljer du **Submit to Azure** (Skicka till Azure) i skriptredigeraren.
 
-2. Välj **Create a New Azure Stream Analytics job** (Skapa ett nytt Azure Stream Analytics-jobb) och ange ett **jobbnamn** . Välj den **prenumeration** , **resursgrupp** och **plats** som du använde i början av snabbstarten.
+2. Välj **Create a New Azure Stream Analytics job** (Skapa ett nytt Azure Stream Analytics-jobb) och ange ett **jobbnamn**. Välj den **prenumeration**, **resursgrupp** och **plats** som du använde i början av snabbstarten.
 
    ![Skicka jobbet till Azure](./media/stream-analytics-quick-create-vs/stream-analytics-job-to-azure.png)
 
@@ -170,7 +170,7 @@ Lägg märke till de element som ingår i ett Azure Stream Analytics-projekt.
 
 2. Ersätt platshållaren på rad 15 med Azure IoT Hub-enhetens anslutningssträng, som du sparade i föregående avsnitt.
 
-3. Klicka på **Kör** . Utdata bör visas de sensordata och meddelanden som skickas till din IoT-hubb.
+3. Klicka på **Kör**. Utdata bör visas de sensordata och meddelanden som skickas till din IoT-hubb.
 
    ![Raspberry Pi Azure IoT-onlinesimulator](./media/stream-analytics-quick-create-portal/ras-pi-connection-string.png)
 
@@ -180,7 +180,7 @@ Lägg märke till de element som ingår i ett Azure Stream Analytics-projekt.
 
    ![Starta Stream Analytics-jobb](./media/stream-analytics-quick-create-vs/start-stream-analytics-job-vs.png)
 
-2. Ändra **Job output start mode** (Startläge för jobbutdata) till **JobStartTime** och välj **Starta** .
+2. Ändra **Job output start mode** (Startläge för jobbutdata) till **JobStartTime** och välj **Starta**.
 
    ![Starta jobbkonfiguration](./media/stream-analytics-quick-create-vs/stream-analytics-start-configuration.png)
 
@@ -188,7 +188,7 @@ Lägg märke till de element som ingår i ett Azure Stream Analytics-projekt.
 
    ![Köra Stream Analytics-jobb](./media/stream-analytics-quick-create-vs/stream-analytics-job-running.png)
 
-4. För att visa resultatet, gå till menyn **Visa** och välj **Cloud Explorer** . Navigera till lagringskontot i resursgruppen. Under **Blob-behållare** dubbelklickar du på **container1** och sedan på filsökvägen för **utdata** .
+4. För att visa resultatet, gå till menyn **Visa** och välj **Cloud Explorer**. Navigera till lagringskontot i resursgruppen. Under **Blob-behållare** dubbelklickar du på **container1** och sedan på filsökvägen för **utdata**.
 
    ![Visa resultat](./media/stream-analytics-quick-create-vs/stream-analytics-vs-results.png)
 
@@ -198,7 +198,7 @@ Ta bort resursgruppen, strömningsjobbet och alla relaterade resurser när de in
 
 1. Klicka på **Resursgrupper** på den vänstra menyn i Azure-portalen och välj sedan namnet på den resurs du skapade.  
 
-2. På sidan med resursgrupper klickar du på **Ta bort** , skriver in namnet på resursen som ska tas bort i textrutan och väljer sedan **Ta bort** .
+2. På sidan med resursgrupper klickar du på **Ta bort**, skriver in namnet på resursen som ska tas bort i textrutan och väljer sedan **Ta bort**.
 
 ## <a name="next-steps"></a>Nästa steg
 

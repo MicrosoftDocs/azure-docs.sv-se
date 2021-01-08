@@ -3,17 +3,16 @@ title: Användardefinierade JavaScript-mängder i Azure Stream Analytics
 description: Den här artikeln beskriver hur du utför avancerade Mechanics med JavaScript-användardefinierade agg regeringar i Azure Stream Analytics.
 author: rodrigoaatmicrosoft
 ms.author: rodrigoa
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2017
 ms.custom: devx-track-js
-ms.openlocfilehash: 8891bb5cd3b8bd8ae9e02c871d6d0ffe42078c0b
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: e9695a268d1c6ec43a737afd36536e4ec2a41a41
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93124772"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98012486"
 ---
 # <a name="azure-stream-analytics-javascript-user-defined-aggregates"></a>Azure Stream Analytics användardefinierade JavaScript-mängder
  
@@ -83,7 +82,7 @@ Funktions Ali Aset är UDA-identifieraren. När det anropas i Stream Analytics f
 
 ### <a name="function-type"></a>Funktions typ
 
-För UDA ska funktions typen vara JavaScript- **Uda** .
+För UDA ska funktions typen vara JavaScript- **Uda**.
 
 ### <a name="output-type"></a>Utdatatyp
 
@@ -123,7 +122,7 @@ Nedan går vi igenom processen med att skapa en UDA från portalen. Exemplet som
 Nu ska vi skapa en JavaScript-UDA under ett befintligt ASA-jobb genom att följa stegen nedan.
 
 1. Logga in på Azure Portal och leta upp ditt befintliga Stream Analytics-jobb.
-1. Klicka sedan på Functions-länken under **jobb sto pol Ogin** .
+1. Klicka sedan på Functions-länken under **jobb sto pol Ogin**.
 1. Klicka på ikonen **Lägg** till för att lägga till en ny funktion.
 1. I den nya Function-vyn väljer du **Java Script Uda** som funktions typ. därefter visas en standard-Uda-mall i redigeraren.
 1. Fyll i "TWA" som UDA-alias och ändra funktions implementeringen enligt följande:
@@ -174,7 +173,7 @@ Nu ska vi skapa en JavaScript-UDA under ett befintligt ASA-jobb genom att följa
 
 ## <a name="calling-javascript-uda-in-asa-query"></a>Anropar JavaScript-UDA i ASA-fråga
 
-I Azure Portal och öppnar jobbet, redigera frågan och anropa TWA ()-funktionen med ett uppdrag-prefix "Uda". Exempel:
+I Azure Portal och öppnar jobbet, redigera frågan och anropa TWA ()-funktionen med ett uppdrag-prefix "Uda". Ett exempel:
 
 ```SQL
 WITH value AS

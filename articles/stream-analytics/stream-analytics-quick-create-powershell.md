@@ -1,18 +1,18 @@
 ---
 title: Snabb start – skapa ett Stream Analytics jobb med Azure PowerShell
 description: Den här snabbstarten demonstrerar hur du använder Azure PowerShell-modulen för att distribuera och köra ett Azure Stream Analytics-jobb.
-author: mamccrea
-ms.author: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.date: 12/20/2018
 ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc, devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 2ea92ad2e9c81b568e11ff97d7b6a88eeb4f188e
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 377abef31dbc4364f37161194923bbf74d272d80
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93346612"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98012299"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-using-azure-powershell"></a>Snabb start: skapa ett Stream Analytics jobb med Azure PowerShell
 

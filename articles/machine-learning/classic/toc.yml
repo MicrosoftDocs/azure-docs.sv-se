@@ -161,6 +161,6 @@
     - name: Regional tillgänglighet
       href: 'https://azure.microsoft.com/regions/services/'
     - name: Prissättning
-      href: 'https://azure.microsoft.com/pricing/details/machine-learning/'
+      href: 'https://azure.microsoft.com/pricing/details/machine-learning-studio/'
     - name: Anpassade neurala nätverk (Net#)
       href: azure-ml-netsharp-reference-guide.md

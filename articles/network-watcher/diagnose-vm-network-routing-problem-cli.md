@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: network-watcher
 ms.workload: infrastructure
-ms.date: 04/20/2018
+ms.date: 01/07/2021
 ms.author: damendo
 ms.custom: ''
-ms.openlocfilehash: 2d5f6f9cfaff722245f6105b5e86390b8aeb769f
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 42174ce094242a6e7412deea0bf1f0eed0f3b6ea
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94539727"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98013183"
 ---
 # <a name="diagnose-a-virtual-machine-network-routing-problem---azure-cli"></a>Diagnostisera ett problem med nätverks routning för virtuella datorer – Azure CLI
 
@@ -44,7 +44,7 @@ Innan du kan skapa en virtuell dator måste du skapa en resursgrupp som innehål
 az group create --name myResourceGroup --location eastus
 ```
 
-Skapa en virtuell dator med [az vm create](/cli/azure/vm#az-vm-create). Om det inte redan finns SSH-nycklar på en standardnyckelplats skapar kommandot dem. Om du vill använda en specifik uppsättning nycklar använder du alternativet `--ssh-key-value`. I följande exempel skapas en virtuell dator med namnet *myVm* :
+Skapa en virtuell dator med [az vm create](/cli/azure/vm#az-vm-create). Om det inte redan finns SSH-nycklar på en standardnyckelplats skapar kommandot dem. Om du vill använda en specifik uppsättning nycklar använder du alternativet `--ssh-key-value`. I följande exempel skapas en virtuell dator med namnet *myVm*:
 
 ```azurecli-interactive
 az vm create \

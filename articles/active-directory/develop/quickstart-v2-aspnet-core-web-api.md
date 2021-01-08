@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/22/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: e85e433e1b1b31470fc8d7dee24353fd719b64e2
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: ca22d4f1ff48222b33030eb44d7feb62b1d154cd
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97031189"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98011892"
 ---
 # <a name="quickstart-protect-an-aspnet-core-web-api-with-microsoft-identity-platform"></a>Snabb start: skydda ett ASP.NET Core webb-API med Microsoft Identity Platform
 
@@ -35,7 +35,7 @@ I den här snabb starten laddar du ned ett ASP.NET Core webb-API kod exempel och
 >
 > Registrera först webb-API: et i Azure AD-klienten och Lägg till ett omfång genom att följa dessa steg:
 >
-> 1. Logga in på [Azure-portalen](https://portal.azure.com).
+> 1. Logga in på <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
 > 1. Om du har åtkomst till flera klienter använder du filtret för **katalog + prenumeration** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: i den översta menyn för att välja den klient som du vill registrera ett program i.
 > 1. Sök efter och välj **Azure Active Directory**.
 > 1. Under **Hantera** väljer du **Appregistreringar**  >  **ny registrering**.
@@ -98,7 +98,7 @@ Mellanprogram *Microsoft. AspNetCore. Authentication* använder en `Startup` kla
 
 Raden som innehåller `.AddMicrosoftIdentityWebApi` lägger till Microsoft Identity Platform-auktorisering i ditt webb-API. Den konfigureras sedan för att verifiera åtkomsttoken som utfärdats av Microsoft Identity Platform-slutpunkten baserat på informationen i `AzureAD` avsnittet i *appsettings.jsi* konfigurations filen:
 
-| *appsettings.jspå* nyckel | Description                                                                                                                                                          |
+| *appsettings.jspå* nyckel | Beskrivning                                                                                                                                                          |
 |------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `ClientId`             | **Program-ID** för programmet som är registrerat i Azure Portal.                                                                                       |
 | `Instance`             | STS-slutpunkt (Security Token Service) för användaren att autentisera. Det här värdet är vanligt vis `https://login.microsoftonline.com/` som anger det offentliga Azure-molnet. |

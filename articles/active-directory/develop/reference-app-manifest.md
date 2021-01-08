@@ -13,12 +13,12 @@ ms.date: 04/15/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: 1f4e1def81fc79ec159ce6be825793a9bd8d0ce7
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: b29d8007ba7c6fb41209ad4f792069667416616b
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93286954"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98011551"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory-appmanifest
 
@@ -33,7 +33,7 @@ Du kan konfigurera en Apps attribut via Azure Portal eller program mässigt med 
 
 Så här konfigurerar du applikations manifestet:
 
-1. Gå till [Azure-portalen](https://portal.azure.com). Sök efter och välj tjänsten **Azure Active Directory** .
+1. Gå till <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>. Sök efter och välj tjänsten **Azure Active Directory** .
 1. Välj **Appregistreringar**.
 1. Välj den app som du vill konfigurera.
 1. På appens **översiktssida** väljer du avsnittet **Manifest**. En webbaserad manifest redigerare öppnas, så att du kan redigera manifestet i portalen. Alternativt kan du välja **Ladda ned** för att redigera manifestet lokalt och sedan använda **upload** för att tillämpa det igen på ditt program.
@@ -44,7 +44,7 @@ I det här avsnittet beskrivs de attribut som finns i applikations manifestet.
 
 ### <a name="id-attribute"></a>ID-attribut
 
-| Tangent | Värdetyp |
+| Nyckel | Värdetyp |
 | :--- | :--- |
 | id | Sträng |
 
@@ -58,7 +58,7 @@ Exempel:
 
 ### <a name="accesstokenacceptedversion-attribute"></a>accessTokenAcceptedVersion-attribut
 
-| Tangent | Värdetyp |
+| Nyckel | Värdetyp |
 | :--- | :--- |
 | accessTokenAcceptedVersion | Nullable Int32 |
 
@@ -78,7 +78,7 @@ Exempel:
 
 ### <a name="addins-attribute"></a>Addins-attribut
 
-| Tangent | Värdetyp |
+| Nyckel | Värdetyp |
 | :--- | :--- |
 | Tillägg | Samling |
 
@@ -103,7 +103,7 @@ Exempel:
 
 ### <a name="allowpublicclient-attribute"></a>allowPublicClient-attribut
 
-| Tangent | Värdetyp |
+| Nyckel | Värdetyp |
 | :--- | :--- |
 | allowPublicClient | Boolesk |
 
@@ -117,7 +117,7 @@ Exempel:
 
 ### <a name="availabletoothertenants-attribute"></a>availableToOtherTenants-attribut
 
-| Tangent | Värdetyp |
+| Nyckel | Värdetyp |
 | :--- | :--- |
 | availableToOtherTenants | Boolesk |
 
@@ -128,7 +128,7 @@ Ange som sant om programmet delas med andra klienter. annars FALSE.
 
 ### <a name="appid-attribute"></a>appId-attribut
 
-| Tangent | Värdetyp |
+| Nyckel | Värdetyp |
 | :--- | :--- |
 | appId | Sträng |
 
@@ -142,7 +142,7 @@ Exempel:
 
 ### <a name="approles-attribute"></a>appRoles-attribut
 
-| Tangent | Värdetyp |
+| Nyckel | Värdetyp |
 | :--- | :--- |
 | appRoles | Samling |
 
@@ -167,7 +167,7 @@ Exempel:
 
 ### <a name="displayname-attribute"></a>displayName-attribut
 
-| Tangent | Värdetyp |
+| Nyckel | Värdetyp |
 | :--- | :--- |
 | displayName | Sträng |
 
@@ -178,7 +178,7 @@ Appens visnings namn.
 
 ### <a name="errorurl-attribute"></a>errorUrl-attribut
 
-| Tangent | Värdetyp |
+| Nyckel | Värdetyp |
 | :--- | :--- |
 | errorUrl | Sträng |
 
@@ -186,7 +186,7 @@ Som inte stöds.
 
 ### <a name="groupmembershipclaims-attribute"></a>groupMembershipClaims-attribut
 
-| Tangent | Värdetyp |
+| Nyckel | Värdetyp |
 | :--- | :--- |
 |groupMembershipClaims | Sträng |
 
@@ -205,7 +205,7 @@ Exempel:
 
 ### <a name="homepage-attribute"></a>Start sidans attribut
 
-| Tangent | Värdetyp |
+| Nyckel | Värdetyp |
 | :--- | :--- |
 | Start |Sträng |
 
@@ -216,7 +216,7 @@ URL: en till programmets start sida.
 
 ### <a name="objectid-attribute"></a>objectId-attribut
 
-| Tangent | Värdetyp |
+| Nyckel | Värdetyp |
 | :--- | :--- |
 |objectId | Sträng |
 
@@ -232,7 +232,7 @@ Exempel:
 
 ### <a name="optionalclaims-attribute"></a>optionalClaims-attribut
 
-| Tangent | Värdetyp |
+| Nyckel | Värdetyp |
 | :--- | :--- |
 | optionalClaims | Sträng |
 
@@ -250,7 +250,7 @@ Exempel:
 
 ### <a name="identifieruris-attribute"></a>identifierUris-attribut
 
-| Tangent | Värdetyp |
+| Nyckel | Värdetyp |
 | :--- | :--- |
 | identifierUris | Sträng mat ris |
 
@@ -264,7 +264,7 @@ Exempel:
 
 ### <a name="informationalurls-attribute"></a>informationalUrls-attribut
 
-| Tangent | Värdetyp |
+| Nyckel | Värdetyp |
 | :--- | :--- |
 | informationalUrls | Sträng |
 
@@ -283,7 +283,7 @@ Exempel:
 
 ### <a name="keycredentials-attribute"></a>attribut för autentiseringsuppgifter
 
-| Tangent | Värdetyp |
+| Nyckel | Värdetyp |
 | :--- | :--- |
 | keyCredentials | Samling |
 
@@ -307,7 +307,7 @@ Exempel:
 
 ### <a name="knownclientapplications-attribute"></a>knownClientApplications-attribut
 
-| Tangent | Värdetyp |
+| Nyckel | Värdetyp |
 | :--- | :--- |
 | knownClientApplications | Sträng mat ris |
 
@@ -321,7 +321,7 @@ Exempel:
 
 ### <a name="logourl-attribute"></a>logoUrl-attribut
 
-| Tangent | Värdetyp |
+| Nyckel | Värdetyp |
 | :--- | :--- |
 | logoUrl | Sträng |
 
@@ -335,7 +335,7 @@ Exempel:
 
 ### <a name="logouturl-attribute"></a>logoutUrl-attribut
 
-| Tangent | Värdetyp |
+| Nyckel | Värdetyp |
 | :--- | :--- |
 | logoutUrl | Sträng |
 
@@ -349,7 +349,7 @@ Exempel:
 
 ### <a name="name-attribute"></a>namnattribut
 
-| Tangent | Värdetyp |
+| Nyckel | Värdetyp |
 | :--- | :--- |
 | name | Sträng |
 
@@ -363,7 +363,7 @@ Exempel:
 
 ### <a name="oauth2allowimplicitflow-attribute"></a>oauth2AllowImplicitFlow-attribut
 
-| Tangent | Värdetyp |
+| Nyckel | Värdetyp |
 | :--- | :--- |
 | oauth2AllowImplicitFlow | Boolesk |
 
@@ -377,7 +377,7 @@ Exempel:
 
 ### <a name="oauth2allowidtokenimplicitflow-attribute"></a>oauth2AllowIdTokenImplicitFlow-attribut
 
-| Tangent | Värdetyp |
+| Nyckel | Värdetyp |
 | :--- | :--- |
 | oauth2AllowIdTokenImplicitFlow | Boolesk |
 
@@ -391,7 +391,7 @@ Exempel:
 
 ### <a name="oauth2permissions-attribute"></a>oauth2Permissions-attribut
 
-| Tangent | Värdetyp |
+| Nyckel | Värdetyp |
 | :--- | :--- |
 | oauth2Permissions | Samling |
 
@@ -416,7 +416,7 @@ Exempel:
 
 ### <a name="oauth2requiredpostresponse-attribute"></a>oauth2RequiredPostResponse-attribut
 
-| Tangent | Värdetyp |
+| Nyckel | Värdetyp |
 | :--- | :--- |
 | oauth2RequiredPostResponse | Boolesk |
 
@@ -430,7 +430,7 @@ Exempel:
 
 ### <a name="parentalcontrolsettings-attribute"></a>parentalControlSettings-attribut
 
-| Tangent | Värdetyp |
+| Nyckel | Värdetyp |
 | :--- | :--- |
 | parentalControlSettings | Sträng |
 
@@ -448,7 +448,7 @@ Exempel:
 
 ### <a name="passwordcredentials-attribute"></a>passwordCredentials-attribut
 
-| Tangent | Värdetyp |
+| Nyckel | Värdetyp |
 | :--- | :--- |
 | passwordCredentials | Samling |
 
@@ -470,7 +470,7 @@ Exempel:
 
 ### <a name="preauthorizedapplications-attribute"></a>preAuthorizedApplications-attribut
 
-| Tangent | Värdetyp |
+| Nyckel | Värdetyp |
 | :--- | :--- |
 | preAuthorizedApplications | Samling |
 
@@ -491,7 +491,7 @@ Exempel:
 
 ### <a name="publicclient-attribute"></a>publicClient-attribut
 
-| Tangent | Värdetyp |
+| Nyckel | Värdetyp |
 | :--- | :--- |
 | publicClient | Boolesk|
 
@@ -501,7 +501,7 @@ Den här egenskapen är endast tillgänglig i den **Appregistreringar (äldre)**
 
 ### <a name="publisherdomain-attribute"></a>publisherDomain-attribut
 
-| Tangent | Värdetyp |
+| Nyckel | Värdetyp |
 | :--- | :--- |
 | publisherDomain | Sträng |
 
@@ -515,7 +515,7 @@ Exempel:
 
 ### <a name="replyurls-attribute"></a>replyUrls-attribut
 
-| Tangent | Värdetyp |
+| Nyckel | Värdetyp |
 | :--- | :--- |
 | replyUrls | Strängmatris |
 
@@ -525,7 +525,7 @@ Den här egenskapen är endast tillgänglig i den **Appregistreringar (äldre)**
 
 ### <a name="replyurlswithtype-attribute"></a>replyUrlsWithType-attribut
 
-| Tangent | Värdetyp |
+| Nyckel | Värdetyp |
 | :--- | :--- |
 | replyUrlsWithType | Samling |
 
@@ -550,7 +550,7 @@ Exempel:
 
 ### <a name="requiredresourceaccess-attribute"></a>requiredResourceAccess-attribut
 
-| Tangent | Värdetyp |
+| Nyckel | Värdetyp |
 | :--- | :--- |
 | requiredResourceAccess | Samling |
 
@@ -577,7 +577,7 @@ Exempel:
 
 ### <a name="samlmetadataurl-attribute"></a>samlMetadataUrl-attribut
 
-| Tangent | Värdetyp |
+| Nyckel | Värdetyp |
 | :--- | :--- |
 | samlMetadataUrl | Sträng |
 
@@ -591,7 +591,7 @@ Exempel:
 
 ### <a name="signinurl-attribute"></a>signInUrl-attribut
 
-| Tangent | Värdetyp |
+| Nyckel | Värdetyp |
 | :--- | :--- |
 | signInUrl | Sträng |
 
@@ -605,7 +605,7 @@ Exempel:
 
 ### <a name="signinaudience-attribute"></a>signInAudience-attribut
 
-| Tangent | Värdetyp |
+| Nyckel | Värdetyp |
 | :--- | :--- |
 | signInAudience | Sträng |
 
@@ -623,7 +623,7 @@ Exempel:
 
 ### <a name="tags-attribute"></a>Tags-attribut
 
-| Tangent | Värdetyp |
+| Nyckel | Värdetyp |
 | :--- | :--- |
 | tags | Sträng mat ris  |
 

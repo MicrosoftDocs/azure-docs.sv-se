@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: 4dca1fa0e823b482044d35f98412187af2fa72ed
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: f0620c4d373ee96c87b575ae7eb173b2f16eecb2
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97507769"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98013659"
 ---
 # <a name="tutorial-add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>Självstudie: lägga till inloggning till Microsoft i en ASP.NET-webbapp
 
@@ -34,7 +34,7 @@ I de här självstudierna har du
 > * Registrera appen i Azure Portal
 > * Testa appen
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) med arbets belastningen **ASP.net och webb utveckling** installerad
 
@@ -374,7 +374,8 @@ Du registrerar programmet och lägger till appens registreringsinformationen i l
    1. Ändra SSL till `True` .
    1. Högerklicka på projektet i Visual Studio, Välj **Egenskaper** och välj sedan fliken **webb** . I avsnittet **servrar** ändrar du projekt- **URL** -inställningen till **SSL-URL: en**.
    1. Kopiera SSL-URL: en. Du kommer att lägga till denna URL i listan över omdirigerings-URI: er i registrerings portalens lista över omdirigerings-URI: er i nästa steg.<br/><br/>![Projektegenskaper](media/active-directory-develop-guidedsetup-aspnetwebapp-configure/vsprojectproperties.png)<br />
-1. Logga in på [Azure-portalen](https://portal.azure.com).
+   
+1. Logga in på <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
 1. Om du har åtkomst till flera klienter använder du filtret för **katalog + prenumeration** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: i den översta menyn för att välja den klient som du vill registrera ett program i.
 1. Sök efter och välj **Azure Active Directory**.
 1. Under **Hantera** väljer du **Appregistreringar**  >  **ny registrering**.

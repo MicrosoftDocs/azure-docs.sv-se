@@ -3,27 +3,26 @@ title: Använda Azure Machine Learning Studio (klassisk) slut punkter i Azure St
 description: I den här artikeln beskrivs hur du använder användardefinierade dator språk funktioner i Azure Stream Analytics.
 author: jseb225
 ms.author: jeanb
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/11/2019
-ms.openlocfilehash: 236191710dac19a08db0e8ce94dc695d393009a7
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: a36162d24e18371fdf6b19835e4748e3043d1f24
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93127135"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98012533"
 ---
 # <a name="azure-machine-learning-studio-classic-integration-in-stream-analytics-preview"></a>Azure Machine Learning Studio (klassisk) integrering i Stream Analytics (förhands granskning)
 Stream Analytics stöder användardefinierade funktioner som anropar till Azure Machine Learning Studio (klassiska) slut punkter. REST API stöd för den här funktionen beskrivs i [Stream Analytics rest Apis biblioteket](/rest/api/streamanalytics/). Den här artikeln innehåller kompletterande information som krävs för lyckad implementering av den här funktionen i Stream Analytics. En själv studie kurs har också publicerats och är tillgänglig [här](stream-analytics-machine-learning-integration-tutorial.md).
 
 ## <a name="overview-azure-machine-learning-studio-classic-terminology"></a>Översikt: Azure Machine Learning Studio (klassisk) terminologi
-Microsoft Azure Machine Learning Studio (klassisk) tillhandahåller ett samarbete, dra och släpp-verktyg som du kan använda för att bygga, testa och distribuera förutsägelse analys lösningar på dina data. Det här verktyget kallas *Azure Machine Learning Studio (klassisk)* . Studio (klassisk) används för att interagera med Machine Learning-resurser och enkelt bygga, testa och iterera på din design. Dessa resurser och deras definitioner visas nedan.
+Microsoft Azure Machine Learning Studio (klassisk) tillhandahåller ett samarbete, dra och släpp-verktyg som du kan använda för att bygga, testa och distribuera förutsägelse analys lösningar på dina data. Det här verktyget kallas *Azure Machine Learning Studio (klassisk)*. Studio (klassisk) används för att interagera med Machine Learning-resurser och enkelt bygga, testa och iterera på din design. Dessa resurser och deras definitioner visas nedan.
 
-* **Arbets yta** : *arbets ytan* är en behållare som innehåller alla andra maskin inlärnings resurser tillsammans i en behållare för hantering och kontroll.
-* **Experiment** : *experiment* skapas av data forskare för att använda data uppsättningar och träna en maskin inlärnings modell.
-* **Slut punkt** : *slut punkter* är det Studio-objekt (klassisk) som används för att ta med funktioner som indata, tillämpa en angiven Machine Learning-modell och returnera Poäng resultat.
-* **Bedömnings WebService** : en *bedömnings WebService* är en samling slut punkter som nämnts ovan.
+* **Arbets yta**: *arbets ytan* är en behållare som innehåller alla andra maskin inlärnings resurser tillsammans i en behållare för hantering och kontroll.
+* **Experiment**: *experiment* skapas av data forskare för att använda data uppsättningar och träna en maskin inlärnings modell.
+* **Slut punkt**: *slut punkter* är det Studio-objekt (klassisk) som används för att ta med funktioner som indata, tillämpa en angiven Machine Learning-modell och returnera Poäng resultat.
+* **Bedömnings WebService**: en *bedömnings WebService* är en samling slut punkter som nämnts ovan.
 
 Varje slut punkt har API: er för batch-körning och synkron körning. Stream Analytics använder synkron körning. Den aktuella tjänsten kallas för en [begäran/svar-tjänst](../machine-learning/classic/consume-web-services.md) i Azure Machine Learning Studio (klassisk).
 

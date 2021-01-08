@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 5fb7c0df653048adcffceda4d8a384be823b5c3a
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 0caac72125b28a9c6b17eb68413a7242df5cd06c
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97507701"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98011653"
 ---
 # <a name="tutorial-call-the-microsoft-graph-api-from-a-windows-desktop-app"></a>Självstudie: anropa Microsoft Graph-API: et från en Windows Desktop-app
 
@@ -104,7 +104,7 @@ Du kan snabbt registrera ditt program genom att göra följande:
 ### <a name="option-2-advanced-mode"></a>Alternativ 2: Avancerat läge
 
 Du registrerar programmet och lägger till programregistreringsinformationen i din lösning genom att göra följande:
-1. Logga in på [Azure-portalen](https://portal.azure.com).
+1. Logga in på <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
 1. Om du har åtkomst till flera klienter använder du filtret för **katalog + prenumeration** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: i den översta menyn för att välja den klient som du vill registrera ett program i.
 1. Sök efter och välj **Azure Active Directory**.
 1. Under **Hantera** väljer du **Appregistreringar**  >  **ny registrering**.

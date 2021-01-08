@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/07/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:UWP
-ms.openlocfilehash: 0398056c3182ec50a1ec170f64ff079633f70c68
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 0257f4d97e0f6f7cef4907276423d9513568e027
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97030560"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98011718"
 ---
 # <a name="quickstart-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Snabbstart: Anropa Microsoft Graph API från en UWP-app (Universell Windows-plattform)
 
@@ -47,7 +47,7 @@ Se [hur exemplet fungerar](#how-the-sample-works) för en illustration.
 > [!div renderon="docs"]
 > #### <a name="step-1-register-your-application"></a>Steg 1: Registrera ditt program
 > Du registrerar programmet och lägger till appens registreringsinformationen i lösningen med hjälp av följande steg:
-> 1. Logga in på [Azure-portalen](https://portal.azure.com).
+> 1. Logga in på <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
 > 1. Om du har åtkomst till flera klienter använder du filtret för **katalog + prenumeration** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: i den översta menyn för att välja den klient som du vill registrera ett program i.
 > 1. Sök efter och välj **Azure Active Directory**.
 > 1. Under **Hantera** väljer du **Appregistreringar**  >  **ny registrering**.

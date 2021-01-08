@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/22/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, devx-track-python, scenarios:getting-started, languages:Python
-ms.openlocfilehash: 3d4d671fed675de4cb2684d205f8e8b62d3b95cd
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: fb26acedc4a043ab84d02c142ecaa1dcfa94fd07
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97107930"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98011755"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-python-console-app-using-apps-identity"></a>Snabb start: Hämta en token och anropa Microsoft Graph API från en python-konsol app med appens identitet
 
@@ -52,13 +52,13 @@ Om du vill köra det här exemplet behöver du:
 > #### <a name="step-1-register-your-application"></a>Steg 1: Registrera ditt program
 > Du registrerar programmet och lägger till appens registreringsinformationen i lösningen manuellt med hjälp av följande steg:
 >
-> 1. Logga in på [Azure-portalen](https://portal.azure.com).
+> 1. Logga in på <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
 > 1. Om du har åtkomst till flera klienter använder du filtret för **katalog + prenumeration** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: i den översta menyn för att välja den klient som du vill registrera ett program i.
 > 1. Sök efter och välj **Azure Active Directory**.
 > 1. Under **Hantera** väljer du **Appregistreringar**  >  **ny registrering**.
 > 1. Ange ett **namn** för programmet, till exempel `Daemon-console` . Användare av appen kan se det här namnet och du kan ändra det senare.
 > 1. Välj **Register** (Registrera).
-> 1. Under **Hantera** väljer du **certifikat & hemligheter**.
+> 1. Välj **Certifikat och hemligheter** under **Hantera**.
 > 1. Under **klient hemligheter** väljer du **ny klient hemlighet**, anger ett namn och väljer sedan **Lägg till**. Registrera det hemliga värdet på en säker plats för användning i ett senare steg.
 > 1. Under **Hantera** väljer du **API-behörigheter**  >  **Lägg till en behörighet**. Välj **Microsoft Graph**.
 > 1. Välj **Programbehörigheter**.

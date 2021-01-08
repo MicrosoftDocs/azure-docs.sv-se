@@ -5,19 +5,28 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 09/28/2020
+ms.date: 12/14/2020
 ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 7931ad9e55d62d5fa2b1828d276e56f7c8cd02e1
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: aea51e56f2d96fa634b1ece2029c9ea5bf3f60fc
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93286481"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98011313"
 ---
 # <a name="configure-expressroute-direct-by-using-the-azure-cli"></a>Konfigurera ExpressRoute Direct med hjälp av Azure CLI
 
 ExpressRoute Direct ger dig möjlighet att ansluta direkt till Microsofts globala nätverk via peering-platser som distribueras strategiskt över hela världen. Mer information finns i [om ExpressRoute Direct Connect](expressroute-erdirect-about.md).
+
+## <a name="before-you-begin"></a>Innan du börjar
+
+Innan du använder ExpressRoute Direct måste du först registrera din prenumeration. Registrera dig genom att skicka ett e-postmeddelande till <ExpressRouteDirect@microsoft.com> med ditt prenumerations-ID, inklusive följande information:
+
+* Scenarier som du behöver utföra med **ExpressRoute Direct**
+* Plats inställningar – Se [partner och peering-platser](expressroute-locations-providers.md) för en fullständig lista över alla platser
+* Tidslinje för implementering
+* Andra frågor
 
 ## <a name="create-the-resource"></a><a name="resources"></a>Skapa resursen
 

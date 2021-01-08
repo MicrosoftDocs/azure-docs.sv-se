@@ -10,12 +10,12 @@ ms.author: justinha
 author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c9d3a00491bc0628244a5a7907f0dee03a5f8d3c
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: fdff7e62753e75a14d6711b77dd451603353dae5
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96744201"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98012843"
 ---
 # <a name="authentication-methods-in-azure-active-directory---phone-options"></a>Autentiseringsmetoder i Azure Active Directory telefon alternativ
 
@@ -58,6 +58,8 @@ Om du har problem med autentiseringen av telefonen för Azure AD kan du läsa f�
 
 * "Du har nått vår gräns för verifierings anrop" eller "du har nått vår gräns för text verifierings koder" fel meddelanden under inloggningen
    * Microsoft kan begränsa upprepade autentiseringsförsök som utförs av samma användare under en kort tids period. Den här begränsningen gäller inte för Microsoft Authenticator eller verifierings koden. Om du har nått dessa gränser kan du använda Authenticator-appen, verifierings koden eller försöka logga in igen om några minuter.
+* "Fel meddelandet" det går inte att verifiera ditt konto "visas under inloggning
+   * Microsoft kan begränsa eller blockera röst-eller SMS-autentiseringsförsök som utförs av samma användare, telefonnummer eller organisation på grund av ett stort antal misslyckade röst-eller SMS-autentiseringsförsök. Om du får det här felet kan du prova en annan metod, till exempel autentiserare eller verifierings kod, eller kontakta administratören för support.
 * Blockerat anropar-ID på en enskild enhet.
    * Granska eventuella blockerade tal som kon figurer ATS på enheten.
 * Fel telefonnummer eller felaktig landskod, eller förvirring mellan personligt telefonnummer och arbets telefonnummer.

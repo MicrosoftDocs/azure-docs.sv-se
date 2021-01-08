@@ -10,19 +10,19 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/22/2017
+ms.date: 01/07/2021
 ms.author: damendo
-ms.openlocfilehash: 40f970478b0dd12f6e53c632713051496d412338
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 771b4ce2999357d729c3ffe557b778cf62a5c0f6
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84736755"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98010990"
 ---
 # <a name="configuring-network-security-group-flow-logs-with-powershell"></a>Konfigurera flödes loggar för nätverks säkerhets grupper med PowerShell
 
 > [!div class="op_single_selector"]
-> - [Azure Portal](network-watcher-nsg-flow-logging-portal.md)
+> - [Azure-portalen](network-watcher-nsg-flow-logging-portal.md)
 > - [PowerShell](network-watcher-nsg-flow-logging-powershell.md)
 > - [Azure CLI](network-watcher-nsg-flow-logging-cli.md)
 > - [REST-API](network-watcher-nsg-flow-logging-rest.md)
@@ -91,7 +91,7 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 
 Mer information om strukturen för logg besöks [logg översikt över nätverks säkerhets grupp](network-watcher-nsg-flow-logging-overview.md)
 
-## <a name="next-steps"></a>Nästa steg
+## <a name="next-steps"></a>Efterföljande moment
 
 Lär dig hur du [visualiserar dina NSG Flow-loggar med PowerBI](network-watcher-visualize-nsg-flow-logs-power-bi.md)
 

@@ -13,12 +13,12 @@ ms.date: 09/03/2020
 ms.author: marsma
 ms.custom: aaddev, contperf-fy21q1
 ms.reviewer: lenalepa, aragra, sureshja
-ms.openlocfilehash: 2630984d54134ca8fca94fdc1960265ba71935a6
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: fdaaf935dc458a6a5b2a87a81bb98a1392f1034a
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97031308"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98012129"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-a-web-api"></a>Snabb start: Konfigurera ett klient program för att få åtkomst till ett webb-API
 
@@ -42,7 +42,7 @@ Det här diagrammet visar hur de två app-registreringarna relaterar till varand
 
 När du har registrerat både din klient app och ditt webb-API och har exponerat API genom att skapa omfång, kan du konfigurera klientens behörigheter till API: et genom att följa dessa steg:
 
-1. Logga in på [Azure-portalen](https://portal.azure.com).
+1. Logga in på <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
 1. Om du har åtkomst till flera klienter använder du filtret för **katalog + prenumeration** :::image type="icon" source="./media/quickstart-configure-app-access-web-apis/portal-01-directory-subscription-filter.png" border="false"::: på den översta menyn och väljer den klient som innehåller klient appens registrering.
 1. Välj **Azure Active Directory**  >  **Appregistreringar** och välj sedan ditt klient program (*inte* ditt webb-API).
 1. Välj **API-behörigheter**  >  **Lägg till en behörighet**  >  **Mina API: er**.
@@ -71,14 +71,14 @@ Förutom att få åtkomst till ditt eget webb-API å den inloggade användarens 
 
 Konfigurera delegerad behörighet till Microsoft Graph så att ditt klient program kan utföra åtgärder för den inloggade användarens räkning, t. ex. läsa e-postmeddelandet eller ändra deras profil. Som standard uppmanas användare av klient programmet när de loggar in att godkänna de delegerade behörigheter som du har konfigurerat för den.
 
-1. Logga in på [Azure-portalen](https://portal.azure.com).
+1. Logga in på <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
 1. Om du har åtkomst till flera klienter använder du filtret för **katalog + prenumeration** :::image type="icon" source="./media/quickstart-configure-app-access-web-apis/portal-01-directory-subscription-filter.png" border="false"::: på den översta menyn och väljer den klient som innehåller klient appens registrering.
 1. Välj **Azure Active Directory**  >  **Appregistreringar** och välj sedan ditt klient program.
 1. Välj **API-behörigheter**  >  **Lägg till en behörighets**  >  **Microsoft Graph**
 1. Välj **delegerade behörigheter**. Microsoft Graph visar många behörigheter, med de vanligaste som visas överst i listan.
 1. Under **Välj behörigheter** väljer du följande behörigheter:
 
-    | Behörighet       | Description                                         |
+    | Behörighet       | Beskrivning                                         |
     |------------------|-----------------------------------------------------|
     | `email`          | Visa användarnas e-postadress                           |
     | `offline_access` | Behåll åtkomst till data som du har gett dem åtkomst till |
@@ -96,7 +96,7 @@ Konfigurera program behörigheter för ett program som behöver autentisera sig 
 
 I följande steg beviljar du behörighet till Microsoft Graph *filer. Read. all* behörighet som exempel.
 
-1. Logga in på [Azure-portalen](https://portal.azure.com).
+1. Logga in på <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
 1. Om du har åtkomst till flera klienter använder du filtret för **katalog + prenumeration** :::image type="icon" source="./media/quickstart-configure-app-access-web-apis/portal-01-directory-subscription-filter.png" border="false"::: på den översta menyn och väljer den klient som innehåller klient appens registrering.
 1. Välj **Azure Active Directory**  >  **Appregistreringar** och välj sedan ditt klient program.
 1. Välj **API-behörigheter**  >  **Lägg till en behörighet**  >  **Microsoft Graph**  >  **program behörigheter**.

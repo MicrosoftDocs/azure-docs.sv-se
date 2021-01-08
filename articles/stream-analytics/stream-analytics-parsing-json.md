@@ -2,17 +2,17 @@
 title: Parsar JSON och AVRO i Azure Stream Analytics
 description: Den här artikeln beskriver hur du arbetar med komplexa data typer som matriser, JSON, CSV-formaterade data.
 ms.service: stream-analytics
-author: mamccrea
-ms.author: mamccrea
+author: sidramadoss
+ms.author: sidram
 ms.topic: conceptual
 ms.date: 01/29/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 6c2eb4225cb014b3251d12470e4e9827150a5cf2
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: f6cb131fb3ff3cab4122aac5e1c6960dee4f8421
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93123361"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98012248"
 ---
 # <a name="parse-json-and-avro-data-in-azure-stream-analytics"></a>Parsa JSON-och Avro-data i Azure Stream Analytics
 
@@ -121,7 +121,7 @@ WHERE
     GetRecordPropertyValue(input.SensorReadings, thresholds.SensorName) > thresholds.Value
 ```
 
-**GetRecordPropertyValue** väljer egenskapen i *SensorReadings* , vars namn matchar det egenskaps namn som kommer från referens data. Sedan extraheras det associerade värdet från *SensorReadings* .
+**GetRecordPropertyValue** väljer egenskapen i *SensorReadings*, vars namn matchar det egenskaps namn som kommer från referens data. Sedan extraheras det associerade värdet från *SensorReadings* .
 
 Resultatet är:
 
@@ -207,7 +207,7 @@ Du kan sedan skapa ett steg i din Stream Analytics-fråga så som visas nedan f�
 
 Mat ris data typer är en ordnad samling av värden. Några vanliga åtgärder för mat ris värden beskrivs nedan. I de här exemplen används Functions- [GetArrayElement](/stream-analytics-query/getarrayelement-azure-stream-analytics), [GetArrayElements](/stream-analytics-query/getarrayelements-azure-stream-analytics), [GetArrayLength](/stream-analytics-query/getarraylength-azure-stream-analytics)och operatorn [Apply](/stream-analytics-query/apply-azure-stream-analytics) .
 
-Här är ett exempel på en enskild händelse. Både `CustomSensor03` och `SensorMetadata` är av typen **matris** :
+Här är ett exempel på en enskild händelse. Både `CustomSensor03` och `SensorMetadata` är av typen **matris**:
 
 ```json
 {

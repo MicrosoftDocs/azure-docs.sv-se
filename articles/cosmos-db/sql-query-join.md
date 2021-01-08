@@ -1,25 +1,25 @@
 ---
 title: SQL JOIN-frågor för Azure Cosmos DB
 description: Lär dig hur du kopplar ihop flera tabeller i Azure Cosmos DB för att fråga data
-author: markjbrown
+author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 05/17/2019
-ms.author: mjbrown
-ms.openlocfilehash: c3fad0c7eed2b42a9ac340a091f17b90e22b000a
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.date: 01/07/2021
+ms.author: tisande
+ms.openlocfilehash: cb7b2e62a9fabeeca675edb8e6aa356213e0999e
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93333859"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98011415"
 ---
 # <a name="joins-in-azure-cosmos-db"></a>Kopplingar i Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 I en Relations databas är sammanfogningar över tabeller den logiska överrullningen för att utforma normaliserade scheman. SQL-API: t använder däremot den avnormaliserade data modellen för schema fria objekt, vilket är den logiska motsvarigheten till en *själv koppling*.
 
-Inre kopplingar resulterar i en fullständig kors produkt av uppsättningarna som ingår i kopplingen. Resultatet av en N-Way-koppling är en uppsättning av N-element-tupler, där varje värde i tuppeln är associerat med den aliasad uppsättning som ingår i kopplingen och kan nås genom att referera till aliaset i andra satser.
+Kopplingar resulterar i en fullständig kors produkt av uppsättningarna som ingår i kopplingen. Resultatet av en N-Way-koppling är en uppsättning av N-element-tupler, där varje värde i tuppeln är associerat med den aliasad uppsättning som ingår i kopplingen och kan nås genom att referera till aliaset i andra satser.
 
 ## <a name="syntax"></a>Syntax
 
@@ -253,6 +253,8 @@ Resultatet är:
       }
     ]
 ```
+
+Om frågan har en koppling och filter kan du skriva om en del av frågan som en under [fråga](sql-query-subquery.md#optimize-join-expressions) för att förbättra prestandan.
 
 ## <a name="next-steps"></a>Nästa steg
 

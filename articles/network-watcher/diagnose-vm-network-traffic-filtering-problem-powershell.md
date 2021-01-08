@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: network-watcher
 ms.workload: infrastructure
-ms.date: 04/20/2018
+ms.date: 01/07/2021
 ms.author: damendo
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 8483c0d3b112408091e10bd9b57451cf2378c859
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: de46d71127f992ea573d1f2d778afcb7f46ed3e6
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96494502"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98013319"
 ---
 # <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem---azure-powershell"></a>Snabbstart: Diagnostisera problem med filtreringen av nätverkstrafik på virtuella datorer – Azure PowerShell
 
 I den här snabbstarten ska du distribuera en virtuell dator (VM) och kontrollera kommunikationen till en IP-adress och URL och från en IP-adress. Du lär dig också hur du fastställer orsaken till ett kommunikationsfel och hur du löser problemet.
 
-Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
+Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

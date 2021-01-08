@@ -2,18 +2,17 @@
 title: Azure Stream Analytics på IoT Edge
 description: Skapa Edge-jobb i Azure Stream Analytics och distribuera dem till enheter som kör Azure IoT Edge.
 ms.service: stream-analytics
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: an-emma
+ms.author: raan
 ms.topic: conceptual
 ms.date: 12/18/2020
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 65f1ad93bf711f7f7efe95c38619390dde527dd0
-ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
+ms.openlocfilehash: c2a062b75caa84a0e3c342ca1ce45ccce12f2bb7
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97827248"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98012622"
 ---
 # <a name="azure-stream-analytics-on-iot-edge"></a>Azure Stream Analytics på IoT Edge
  

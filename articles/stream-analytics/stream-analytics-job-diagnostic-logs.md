@@ -3,17 +3,16 @@ title: Felsöka Azure Stream Analytics att använda resurs loggar
 description: Den här artikeln beskriver hur du analyserar resurs loggar i Azure Stream Analytics.
 author: jseb225
 ms.author: jeanb
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.custom: contperf-fy21q1
 ms.date: 06/18/2020
-ms.openlocfilehash: b29e0f99cb4549370be49dc5a1b11d367e30d8c0
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 56c7ad49fc9af3ca4f30aa5309623c31e9db7385
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97029149"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98011126"
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-resource-logs"></a>Felsöka Azure Stream Analytics med hjälp av resurs loggar
 
@@ -95,7 +94,7 @@ Azure Stream Analytics fångar två kategorier av resurs loggar:
 
 Alla loggar lagras i JSON-format. Varje post har följande gemensamma sträng fält:
 
-Name | Beskrivning
+Namn | Beskrivning
 ------- | -------
 time | Tidsstämpel (i UTC) för loggen.
 resourceId | ID för den resurs som åtgärden ägde rum i, i versaler. Den innehåller prenumerations-ID, resurs grupp och jobb namn. Till exempel **/Subscriptions/6503D296-DAC1-4449-9B03-609A1F4A1C87/RESOURCEGROUPS/My-Resource-Group/providers/Microsoft. STREAMANALYTICS/STREAMINGJOBS/MYSTREAMINGJOB**.
@@ -113,7 +112,7 @@ Körnings loggarna innehåller information om händelser som har inträffat unde
 
 Eventuella fel som inträffar när jobbet bearbetar data finns i den här kategorin av loggar. Loggarna skapas oftast när data läses, serialiseras och skrivs. Dessa loggar innehåller inte anslutnings fel. Anslutnings fel behandlas som allmänna händelser. Du kan lära dig mer om orsaken till olika [fel i indata och utdata](./data-errors.md).
 
-Name | Beskrivning
+Namn | Beskrivning
 ------- | -------
 Källa | Namnet på det indata eller utdata där felet uppstod.
 Meddelande | Meddelande som är kopplat till felet.
@@ -134,7 +133,7 @@ I väntan på värdet **operationName** har data fel följande schema:
 
 Allmänna händelser behandlar allt annat.
 
-Name | Beskrivning
+Namn | Beskrivning
 -------- | --------
 Fel | valfritt Fel information. Detta är vanligt vis undantags information om det är tillgängligt.
 Meddelande| Logg meddelande.

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/11/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: 085ebcc147082ac78de9f8b97c810dee5bb1e96a
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: 34af3a7b6c3dd9420c07b6b29ff114b8139fea39
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96762813"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98011976"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Snabb start: lägga till inloggning med Microsoft i ett ASP.NET Core-webbprogram
 
@@ -47,7 +47,7 @@ Se [hur exemplet fungerar](#how-the-sample-works) för en illustration.
 > #### <a name="step-1-register-your-application"></a>Steg 1: Registrera ditt program
 > Du registrerar programmet och lägger till appens registreringsinformationen i lösningen manuellt med hjälp av följande steg:
 >
-> 1. Logga in på [Azure-portalen](https://portal.azure.com).
+> 1. Logga in på <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
 > 1. Om du har åtkomst till flera klienter använder du filtret för **katalog + prenumeration** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: i den översta menyn för att välja den klient som du vill registrera ett program i.
 > 1. Sök efter och välj **Azure Active Directory**.
 > 1. Under **Hantera** väljer du **Appregistreringar**  >  **ny registrering**.

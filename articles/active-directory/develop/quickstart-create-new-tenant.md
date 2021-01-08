@@ -13,12 +13,12 @@ ms.date: 03/12/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: f43cb80a148f5dadb409f506f237cb1210a2000a
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 869b37aea823cf91dc59211b23fcaccd7646afb9
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97934007"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98012027"
 ---
 # <a name="quickstart-set-up-a-tenant"></a>Snabbstart: Konfigurera en klientorganisation
 
@@ -28,7 +28,7 @@ En klientorganisation är en representation av en organisation. Det är en dedik
 
 Varje Azure AD-klientorganisation skiljer sig från andra Azure AD-klientorganisationer och har en egen representation av arbets- och skolidentiteter (om det är en Azure AD B2C-klientorganisation) och appregistreringar. En appregistrering i din klientorganisation kan bara tillåta autentiseringar från konton i din klientorganisation eller alla klientorganisationer.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -47,7 +47,7 @@ Snabbstarten är indelad i två scenarier beroende på vilken app du vill skapa.
 
 Många utvecklare har redan klienter via tjänster eller prenumerationer som är knutna till Azure AD-klienter (till exempel: Microsoft 365- eller Azure-prenumerationer).
 
-1. Om du vill kontrollera klientorganisationen loggar du in på [Azure-portalen](https://portal.azure.com) med det konto du vill använda för att hantera din app.
+1. Om du vill kontrol lera klient organisationen loggar du in på <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a> med det konto som du vill använda för att hantera ditt program.
 1. Se det övre högra hörnet. Om du har en klient kommer du automatiskt att loggas in och kan se klientorganisationens namn direkt under namnet på ditt konto.
    * Hovra över ditt kontonamn längst upp till höger i Azure-portalen så visas namn, e-post, katalog/klient-ID (ett GUID) och domän.
    * Om ditt konto är kopplat till flera klienter måste du välja namnet på ditt konto för att öppna en meny där du kan växla mellan klienter. Varje klient har sitt eget klient-ID.

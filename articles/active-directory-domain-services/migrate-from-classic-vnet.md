@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 09/24/2020
 ms.author: justinha
-ms.openlocfilehash: 1fcd46870a4f85d1b88d22d77de5c201404c3a09
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 694ed5304e838057141b7df043565d58188fc870
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96619376"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98013047"
 ---
 # <a name="migrate-azure-active-directory-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>Migrera Azure Active Directory Domain Services från den klassiska virtuella nätverks modellen till Resource Manager
 
@@ -153,11 +153,11 @@ Migreringen till distributions modellen för Resource Manager och det virtuella 
 
 | Steg    | Utförd genom  | Beräknad tid  | Driftstopp  | Återställa/återställa? |
 |---------|--------------------|-----------------|-----------|-------------------|
-| [Steg 1 – uppdatera och leta upp det nya virtuella nätverket](#update-and-verify-virtual-network-settings) | Azure Portal | 15 minuter | Ingen stillestånds tid krävs | Saknas |
+| [Steg 1 – uppdatera och leta upp det nya virtuella nätverket](#update-and-verify-virtual-network-settings) | Azure Portal | 15 minuter | Ingen stillestånds tid krävs | Ej tillämpligt |
 | [Steg 2 – förbereda den hanterade domänen för migrering](#prepare-the-managed-domain-for-migration) | PowerShell | 15 – 30 minuter i genomsnitt | Stillestånds tiden för Azure AD DS startar när kommandot har slutförts. | Återställa och återställa tillgängligt. |
-| [Steg 3 – flytta den hanterade domänen till ett befintligt virtuellt nätverk](#migrate-the-managed-domain) | PowerShell | 1 – 3 timmar i genomsnitt | En domänkontrollant är tillgänglig när kommandot har slutförts. avbrotts tiden är slut. | Vid ett haveri är både återställning (självbetjäning) och återställning tillgängligt. |
-| [Steg 4 – testa och vänta på replik domänkontrollanten](#test-and-verify-connectivity-after-the-migration)| PowerShell och Azure Portal | 1 timme eller mer, beroende på antalet tester | Båda domän kontrol Lanterna är tillgängliga och bör fungera normalt. | Ej tillämpligt. När den första virtuella datorn har migrerats finns det inget alternativ för att återställa eller återställa. |
-| [Steg 5 – valfria konfigurations steg](#optional-post-migration-configuration-steps) | Azure Portal och virtuella datorer | Saknas | Ingen stillestånds tid krävs | Saknas |
+| [Steg 3 – flytta den hanterade domänen till ett befintligt virtuellt nätverk](#migrate-the-managed-domain) | PowerShell | 1 – 3 timmar i genomsnitt | En domänkontrollant är tillgänglig när kommandot har slutförts. | Vid ett haveri är både återställning (självbetjäning) och återställning tillgängligt. |
+| [Steg 4 – testa och vänta på replik domänkontrollanten](#test-and-verify-connectivity-after-the-migration)| PowerShell och Azure Portal | 1 timme eller mer, beroende på antalet tester | Båda domän kontrol Lanterna är tillgängliga och bör fungera normalt, men nedtid upphör. | Ej tillämpligt. När den första virtuella datorn har migrerats finns det inget alternativ för att återställa eller återställa. |
+| [Steg 5 – valfria konfigurations steg](#optional-post-migration-configuration-steps) | Azure Portal och virtuella datorer | Ej tillämpligt | Ingen stillestånds tid krävs | Ej tillämpligt |
 
 > [!IMPORTANT]
 > Du undviker ytterligare nedtid genom att läsa igenom all den här artikel och vägledningen för migrering innan du påbörjar migreringsprocessen. Migreringsprocessen påverkar tillgängligheten för Azure AD DS-domänkontrollanter under en viss tids period. Användare, tjänster och program kan inte autentisera mot den hanterade domänen under migreringsprocessen.
@@ -262,16 +262,14 @@ I det här skedet kan du också flytta andra befintliga resurser från den klass
 
 ## <a name="test-and-verify-connectivity-after-the-migration"></a>Testa och verifiera anslutningen efter migreringen
 
-Det kan ta lite tid innan den andra domänkontrollanten har distribuerats och är tillgänglig för användning i den hanterade domänen.
+Det kan ta lite tid innan den andra domänkontrollanten har distribuerats och är tillgänglig för användning i den hanterade domänen. Den andra domänkontrollanten bör vara tillgänglig 1-2 timmar efter att migrerings-cmdleten har slutförts. Med distributions modellen Resource Manager visas nätverks resurserna för den hanterade domänen i Azure Portal eller Azure PowerShell. Kontrol lera om den andra domänkontrollanten är tillgänglig genom att titta på **egenskaps** sidan för den hanterade domänen i Azure Portal. Om två IP-adresser visas är den andra domänkontrollanten klar.
 
-Med distributions modellen Resource Manager visas nätverks resurserna för den hanterade domänen i Azure Portal eller Azure PowerShell. Mer information om vad dessa nätverks resurser är och hur du gör finns i [nätverks resurser som används av Azure AD DS][network-resources].
-
-När minst en domänkontrollant är tillgänglig slutför du följande konfigurations steg för nätverks anslutning med virtuella datorer:
+När den andra domänkontrollanten är tillgänglig slutför du följande konfigurations steg för nätverks anslutning med virtuella datorer:
 
 * **Uppdatera DNS-serverinställningar** Om du vill låta andra resurser i det virtuella Resource Manager-nätverket lösa och använda den hanterade domänen, uppdaterar du DNS-inställningarna med IP-adresserna för de nya domän kontrol Lanterna. Azure Portal kan automatiskt konfigurera inställningarna åt dig.
 
     Mer information om hur du konfigurerar det virtuella Resource Manager-nätverket finns i [Uppdatera DNS-inställningar för det virtuella Azure-nätverket][update-dns].
-* **Starta om domänanslutna virtuella datorer** – som DNS-SERVERns IP-adresser för Azure AD DS-domänkontrollanter ändra, starta om alla domänanslutna virtuella datorer så att de använder de nya DNS-serverinställningarna. Om program eller virtuella datorer har konfigurerat DNS-inställningar manuellt, uppdaterar du dem manuellt med de nya IP-adresserna för DNS-servern för domän kontrol Lanterna som visas i Azure Portal.
+* **Starta om domänanslutna virtuella datorer (valfritt)** Som DNS-serverns IP-adresser för Azure AD DS-domänkontrollanter ändras kan du starta om alla domänanslutna virtuella datorer så att de använder de nya DNS-serverinställningarna. Om program eller virtuella datorer har konfigurerat DNS-inställningar manuellt, uppdaterar du dem manuellt med de nya IP-adresserna för DNS-servern för domän kontrol Lanterna som visas i Azure Portal. Genom att starta om domänanslutna virtuella datorer förhindrar du problem med anslutningen som orsakas av IP-adresser som inte uppdateras.
 
 Testa nu den virtuella nätverks anslutningen och namn matchningen. På en virtuell dator som är ansluten till det virtuella Resource Manager-nätverket eller som peer-kopplas till den, kan du prova följande nätverks kommunikations test:
 
@@ -280,7 +278,7 @@ Testa nu den virtuella nätverks anslutningen och namn matchningen. På en virtu
 1. Verifiera namn matchning för den hanterade domänen, till exempel `nslookup aaddscontoso.com`
     * Ange DNS-namnet för din egen hanterade domän för att kontrol lera att DNS-inställningarna är korrekta och att de löses.
 
-Den andra domänkontrollanten bör vara tillgänglig 1-2 timmar efter att migrerings-cmdleten har slutförts. Kontrol lera om den andra domänkontrollanten är tillgänglig genom att titta på **egenskaps** sidan för den hanterade domänen i Azure Portal. Om två IP-adresser visas är den andra domänkontrollanten klar.
+Mer information om andra nätverks resurser finns i [nätverks resurser som används av Azure AD DS][network-resources].
 
 ## <a name="optional-post-migration-configuration-steps"></a>Valfria konfigurations steg efter migreringen
 

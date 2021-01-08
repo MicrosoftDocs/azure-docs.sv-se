@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/22/2017
+ms.date: 01/07/2021
 ms.author: damendo
-ms.openlocfilehash: 6e5f2a519564716d426c50bb9cc8dd245774321e
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 838a5255c013b530aa3bfdb857a2ba34b7dbeeed
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94966504"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98010973"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-the-azure-cli"></a>Hantera paket fångster med Azure Network Watcher med Azure CLI
 
@@ -25,7 +25,7 @@ ms.locfileid: "94966504"
 > - [Azure-portalen](network-watcher-packet-capture-manage-portal.md)
 > - [PowerShell](network-watcher-packet-capture-manage-powershell.md)
 > - [Azure CLI](network-watcher-packet-capture-manage-cli.md)
-> - [REST-API för Azure](network-watcher-packet-capture-manage-rest.md)
+> - [Azure REST API](network-watcher-packet-capture-manage-rest.md)
 
 Med Network Watcher paket insamling kan du skapa avbildnings sessioner för att spåra trafik till och från en virtuell dator. Filter tillhandahålls för insamlingsbufferten för att se till att du bara fångar den trafik som du vill använda. Med paket fångst kan du diagnostisera nätverks avvikelser både återaktivt och proaktivt. Andra användnings områden innefattar insamling av nätverks statistik, få information om nätverks intrång, för att felsöka klient-server-kommunikation och mycket mer. Genom att kunna fjärrutlös paket fångster kan den här funktionen under lätta belastningen på att köra en paket registrering manuellt och på önskad dator, vilket sparar värdefull tid.
 

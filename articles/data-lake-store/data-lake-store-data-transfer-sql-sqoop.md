@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 07/30/2019
 ms.author: twooley
 ms.openlocfilehash: 9bb787138267fd8a9fab4dea233c1c828b457d67
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 01/08/2021
 ms.locfileid: "92109195"
 ---
 # <a name="copy-data-between-data-lake-storage-gen1-and-azure-sql-database-using-sqoop"></a>Kopiera data mellan Data Lake Storage Gen1 och Azure SQL Database med Sqoop
@@ -24,7 +24,7 @@ Big data program är ett naturligt val för bearbetning av ostrukturerade och de
 
 [Apache Sqoop](https://sqoop.apache.org/docs/1.4.4/SqoopUserGuide.html) är ett verktyg som utformats för att överföra data mellan Relations databaser och en stor data lagrings plats, till exempel data Lake Storage gen1. Du kan använda den för att importera data från ett relationellt databas hanterings system (RDBMS) som Azure SQL Database till Data Lake Storage Gen1. Du kan sedan omvandla och analysera data med hjälp av Big data-arbetsbelastningar och sedan exportera data tillbaka till en RDBMS. I den här artikeln använder du en databas i Azure SQL Database som Relations databas för att importera/exportera från.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Innan du börjar måste du ha följande:
 
@@ -121,7 +121,7 @@ Det finns redan Sqoop-paket tillgängliga för det An-HDInsight klustret. Om du 
     -rwxrwxrwx   0 sshuser hdfs         18 2016-02-26 21:09 adl://hdiadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1/part-m-00003
     ```
 
-   Varje **del-m-*-** fil motsvarar en rad i käll tabellen, **Table1**. Du kan visa innehållet i den del-m-* filer som ska verifieras.
+   Varje **del-m-_-** fil motsvarar en rad i käll tabellen, _ *Table1 * *. Du kan visa innehållet i de del-m-* filer som ska verifieras.
 
 ### <a name="export-data-from-data-lake-storage-gen1-into-azure-sql-database"></a>Exportera data från Data Lake Storage Gen1 till Azure SQL Database
 

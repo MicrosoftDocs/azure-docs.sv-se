@@ -9,12 +9,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
 ms.custom: data4ml
-ms.openlocfilehash: cd35cea28e23e88ba97bb7a27dc252d6bebd65e4
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 087a7ead1ef5f9f46f5b81f8d42fcc0ea0209e61
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97739662"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98013285"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>Skapa ett projekt med data etiketter och exportera etiketter 
 
@@ -54,7 +54,7 @@ Att märka projekt administreras från Azure Machine Learning. Du kan använda s
 
 Om dina data redan finns i Azure Blob Storage bör du göra det tillgängligt som ett data lager innan du skapar ett etikettande projekt. Ett exempel på hur du använder ett data lager finns i [Självstudier: skapa ditt första bild klassificerings projekt](tutorial-labeling.md).
 
-Välj **Lägg till projekt** om du vill skapa ett projekt. Ge projektet ett lämpligt namn och välj **uppgifts typ för etiketter**.
+Välj **Lägg till projekt** om du vill skapa ett projekt. Ge projektet ett lämpligt namn och välj **uppgifts typ för etiketter**. Projekt namnet kan inte återanvändas även om projektet tas bort i framtiden.
 
 :::image type="content" source="media/how-to-create-labeling-projects/labeling-creation-wizard.png" alt-text="Guiden skapa etikett för projekt":::
 

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/16/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 3679bf9d55ddccefddb4bf3b2a96ec1b427315af
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: c0ceae8727681c045c3bbf3e6626937633b38997
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94663664"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98013540"
 ---
 # <a name="using-an-app-service-environment"></a>Använda en App Service-miljön
 
@@ -78,13 +78,20 @@ SCM-URL: en används för att få åtkomst till kudu-konsolen eller för att pub
 
 ### <a name="dns-configuration"></a>DNS-konfiguration 
 
-ASE använder privata slut punkter för inkommande trafik och konfigureras automatiskt med Azure DNS privata zoner. Om du vill använda en egen DNS-server måste du lägga till följande poster:
+ASE använder privata slut punkter för inkommande trafik. Den konfigureras inte automatiskt med Azure DNS privata zoner. Om du vill använda en egen DNS-server måste du lägga till följande poster:
 
 1. skapa en zon för &lt; ASE name &gt; . appserviceenvironment.net
 1. skapa en A-post i den zonen som pekar * till den inkommande IP-adressen som används av din privata ASE-slutpunkt
 1. skapa en A-post i den zonen som pekar på den inkommande IP-adressen som används av din privata ASE-slutpunkt
 1. skapa en zon i &lt; ASE name &gt; . appserviceenvironment.net med namnet SCM
 1. skapa en A-post i SCM-zonen som pekar * till den IP-adress som används av din privata ASE-slutpunkt
+
+Så här konfigurerar du DNS i Azure DNS privata zoner:
+
+1. skapa en Azure DNS privat zon med namnet <ASE name> . appserviceenvironment.net
+1. skapa en A-post i den zonen som pekar på ILB IP-adress
+1. skapa en A-post i den zonen som pekar @ på ILB IP-adress
+1. skapa en A-post i den zonen som pekar *. scm till ILB-IP-adressen
 
 DNS-inställningarna för ditt ASE-standarddomänsuffix begränsar inte dina appar till att endast vara tillgängliga för dessa namn. Du kan ange ett anpassat domän namn utan att verifiera dina appar i en ASE. Om du sedan vill skapa en zon med namnet *contoso.net* kan du göra det och peka den mot den inkommande IP-adressen. Det anpassade domän namnet fungerar för app-begäranden, men inte för SCM-platsen. SCM-webbplatsen är bara tillgänglig på *&lt; APPNAME &gt; . scm. &lt; asename &gt; . appserviceenvironment.net*. 
 
@@ -125,7 +132,7 @@ Du kan integrera din ASE med Azure Monitor för att skicka loggar om ASE till Az
 Så här aktiverar du loggning på din ASE:
 
 1. I portalen går du till **diagnostikinställningar**.
-1. Välj **Lägg till diagnostisk inställning**.
+1. Välj **Lägg till diagnostikinställning**.
 1. Ange ett namn för logg integreringen.
 1. Välj och konfigurera de logg destinationer som du vill använda.
 1. Välj **AppServiceEnvironmentPlatformLogs**.

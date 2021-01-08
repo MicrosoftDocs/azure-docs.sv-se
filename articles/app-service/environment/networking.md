@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/16/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 61059c3e0f9737df6ace338f4252a338ea1f200c
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 680b1f3b6af186eba27a4dd926016a04cd863760
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94663946"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98013500"
 ---
 # <a name="app-service-environment-networking"></a>App Service-miljön nätverk
 
@@ -27,14 +27,18 @@ I ASEv3 används två undernät.  Ett undernät används för den privata slut p
 ## <a name="addresses"></a>Adresser 
 ASE har följande adresser när de skapas:
 
-| Adress typ | beskrivning |
+| Adress typ | description |
 |--------------|-------------|
 | Inkommande adress | Den inkommande adressen är den privata slut punkts adress som används av din ASE. |
 | Utgående undernät | Det utgående under nätet är också ASE-undernätet. Under för hands versionen används bara det här under nätet för utgående trafik. |
 | Utgående Windows-adress | Windows-apparna i den här ASE använder den här adressen som standard när utgående samtal till Internet görs. |
 | Linux utgående adress | Linux-apparna i den här ASE använder den här adressen som standard när utgående samtal till Internet görs. |
 
-Om du tar bort den privata slut punkten som används av ASE kan du inte komma åt apparna i din ASE. Ta inte bort den Azure DNS privata zon som är kopplad till din ASE.  
+ASEv3 innehåller information om de adresser som används av ASE i **IP-adress** delen av ASE-portalen.
+
+![Användar gränssnitt för ASE-adress](./media/networking/networking-ip-addresses.png)
+
+Om du tar bort den privata slut punkten som används av ASE kan du inte komma åt apparna i din ASE.  
 
 ASE använder adresser i det utgående under nätet för att stödja den infrastruktur som används av ASE. När du skalar dina App Service planer i din ASE använder du fler adresser. Appar i ASE har inga dedikerade adresser i det utgående under nätet. De adresser som används av en app i det utgående under nätet av en app ändras med tiden.
 
@@ -48,7 +52,7 @@ Till skillnad från ASEv2 kan du med ASEv3 ange nätverks säkerhets grupper (NS
 
 ## <a name="dns"></a>DNS
 
-Apparna i din ASE använder DNS-nätverket som ditt VNet har kon figurer ATS med. Om du vill att vissa appar ska använda en annan DNS-server kan du manuellt ange den för varje app med hjälp av appens inställningar WEBSITE_DNS_SERVER och WEBSITE_DNS_ALT_SERVER. Appens inställning WEBSITE_DNS_ALT_SERVER konfigurerar den sekundära DNS-servern. Den sekundära DNS-servern används bara när det inte finns något svar från den primära DNS-servern. 
+Apparna i din ASE använder DNS-nätverket som ditt VNet har kon figurer ATS med. Följ instruktionerna i [använda en app service-miljön](https://docs.microsoft.com/azure/app-service/environment/using#dns-configuration) för att konfigurera DNS-servern så att den pekar på din ASE. Om du vill att vissa appar ska använda en annan DNS-server än vad ditt VNet har kon figurer ATS med, kan du manuellt ange det för varje app med hjälp av appens inställningar WEBSITE_DNS_SERVER och WEBSITE_DNS_ALT_SERVER. Appens inställning WEBSITE_DNS_ALT_SERVER konfigurerar den sekundära DNS-servern. Den sekundära DNS-servern används bara när det inte finns något svar från den primära DNS-servern. 
 
 ## <a name="preview-limitation"></a>Begränsning av för hands version
 

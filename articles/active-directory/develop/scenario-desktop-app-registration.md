@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 09/09/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 7c0623d58bf88b8bcc5f19665a081ce012b560b6
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 08e07ac3a8079d725611f9b072e8d21dabb32867
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97614887"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98011568"
 ---
 # <a name="desktop-app-that-calls-web-apis-app-registration"></a>Skriv bords app som anropar webb-API: registrera appar
 
@@ -48,7 +48,7 @@ De omdirigerings-URI: er som ska användas i ett Skriv bords program beror på d
 - Om din app endast använder integrerad Windows-autentisering eller ett användar namn och ett lösen ord, behöver du inte registrera en omdirigerings-URI för programmet. Dessa flöden gör en tur och retur till Microsoft Identity Platform v 2.0-slutpunkten. Programmet kommer inte att anropas igen på någon specifik URI.
 - För att särskilja [enhets kod flödet](scenario-desktop-acquire-token.md#device-code-flow), [integrerad Windows-autentisering](scenario-desktop-acquire-token.md#integrated-windows-authentication)och ett [användar namn och ett lösen ord](scenario-desktop-acquire-token.md#username-and-password) från ett konfidentiellt klient program med hjälp av ett flöde för autentiseringsuppgifter för klient som används i [daemon-program](scenario-daemon-overview.md), ingen som kräver en omdirigerings-URI, måste du konfigurera den som ett offentligt klient program. För att uppnå den här konfigurationen:
 
-    1. I [Azure Portal](https://portal.azure.com)väljer du din app i **Appregistreringar** och väljer sedan **autentisering**.
+    1. I <a href="https://portal.azure.com/" target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> Azure Portal</a>väljer du din app i **Appregistreringar** och väljer sedan **autentisering**.
     1. I **Avancerade inställningar**  >  **kan offentliga klient flöden**  >  **Aktivera följande mobila och skriv bords flöden:** Välj **Ja**.
 
         :::image type="content" source="media/scenarios/default-client-type.png" alt-text="Aktivera offentlig klient inställning i fönstret autentisering i Azure Portal":::

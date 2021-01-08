@@ -3,16 +3,16 @@ title: Ansluta till SQL Server, Azure SQL Database eller Azure SQL-hanterad inst
 description: Automatisera aktiviteter för SQL-databaser lokalt eller i molnet med hjälp av Azure Logic Apps
 services: logic-apps
 ms.suite: integration
-ms.reviewer: estfan, jonfan, logicappspm
+ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
-ms.date: 10/22/2020
+ms.date: 01/07/2021
 tags: connectors
-ms.openlocfilehash: ce7679fff86d2c96588cf2b704d44238535963b3
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 75c657236b6e06a7e0f6c717d746bcc8c034d423
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130943"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98013455"
 ---
 # <a name="automate-workflows-for-a-sql-database-by-using-azure-logic-apps"></a>Automatisera arbets flöden för en SQL-databas med hjälp av Azure Logic Apps
 
@@ -38,7 +38,7 @@ Om du inte har arbetat med Logic Apps läser du [Vad är Azure Logic Apps](../lo
 
   * För Azure SQL Database kan du hitta informationen i anslutnings strängen.
   
-    Om du till exempel vill hitta den här strängen i Azure Portal öppnar du databasen. På menyn databas väljer du antingen **anslutnings strängar** eller **Egenskaper** :
+    Om du till exempel vill hitta den här strängen i Azure Portal öppnar du databasen. På menyn databas väljer du antingen **anslutnings strängar** eller **Egenskaper**:
 
     `Server=tcp:{your-server-name}.database.windows.net,1433;Initial Catalog={your-database-name};Persist Security Info=False;User ID={your-user-name};Password={your-password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;`
 
@@ -80,7 +80,7 @@ Första gången du lägger till en SQL- [utlösare](#add-sql-trigger) eller [SQL
    | [**SQL Server-autentisering**](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication) | – Stöder både non-ISE-och ISE SQL Server-anslutningen. <p><p>-Kräver ett giltigt användar namn och ett starkt lösen ord som skapas och lagras i databasen. <p>Mer information finns i de här ämnena: <p>- [Översikt över Azure SQL-säkerhet – autentisering](../azure-sql/database/security-overview.md#authentication) <br>- [Auktorisera databas åtkomst till Azure SQL – autentisering och auktorisering](../azure-sql/database/logins-create-manage.md#authentication-and-authorization) |
    |||
 
-   Det här exemplet fortsätter med **Azure AD Integrated** :
+   Det här exemplet fortsätter med **Azure AD Integrated**:
 
    ![Skärm bild som visar anslutnings fönstret "SQL Server" med den öppnade "autentiseringstypen"-listan och "Azure AD Integrated" vald.](./media/connectors-create-api-sqlazure/select-azure-ad-authentication.png)
 
@@ -91,14 +91,14 @@ Första gången du lägger till en SQL- [utlösare](#add-sql-trigger) eller [SQL
    | Egenskap | Krävs | Beskrivning |
    |----------|----------|-------------|
    | **Servernamn** | Yes | Adressen till din SQL-Server, till exempel `Fabrikam-Azure-SQL.database.windows.net` |
-   | **Databasnamn** | Yes | Namnet på din SQL-databas, till exempel `Fabrikam-Azure-SQL-DB` |
-   | **Tabellnamn** | Yes | Den tabell som du vill använda, till exempel `SalesLT.Customer` |
+   | **Databasnamn** | Ja | Namnet på din SQL-databas, till exempel `Fabrikam-Azure-SQL-DB` |
+   | **Tabellnamn** | Ja | Den tabell som du vill använda, till exempel `SalesLT.Customer` |
    ||||
 
    > [!TIP]
    > För att tillhandahålla din databas-och tabell information har du följande alternativ:
    > 
-   > * Hitta den här informationen i databasens anslutnings sträng. I Azure Portal kan du till exempel söka efter och öppna databasen. På menyn databas väljer du antingen **anslutnings strängar** eller **Egenskaper** , där du hittar den här strängen:
+   > * Hitta den här informationen i databasens anslutnings sträng. I Azure Portal kan du till exempel söka efter och öppna databasen. På menyn databas väljer du antingen **anslutnings strängar** eller **Egenskaper**, där du hittar den här strängen:
    >
    >   `Server=tcp:{your-server-address}.database.windows.net,1433;Initial Catalog={your-database-name};Persist Security Info=False;User ID={your-user-name};Password={your-password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;`
    >
@@ -129,7 +129,7 @@ Första gången du lägger till en SQL- [utlösare](#add-sql-trigger) eller [SQL
    | [**SQL Server-autentisering**](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication) | – Stöder både non-ISE-och ISE SQL Server-anslutningen. <p><p>-Kräver ett giltigt användar namn och ett starkt lösen ord som skapas och lagras i SQL Server. <p>Mer information finns i [SQL Server autentisering](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication). |
    |||
 
-   Det här exemplet fortsätter med **Windows-autentisering** :
+   Det här exemplet fortsätter med **Windows-autentisering**:
 
    ![Välj autentiseringstyp som ska användas](./media/connectors-create-api-sqlazure/select-windows-authentication.png)
 
@@ -137,12 +137,12 @@ Första gången du lägger till en SQL- [utlösare](#add-sql-trigger) eller [SQL
 
    | Egenskap | Krävs | Beskrivning |
    |----------|----------|-------------|
-   | **SQL Server-namn** | Yes | Adressen till din SQL-Server, till exempel `Fabrikam-Azure-SQL.database.windows.net` |
-   | **SQL-databasens namn** | Yes | Namnet på SQL Server databasen, till exempel `Fabrikam-Azure-SQL-DB` |
-   | **Användarnamn** | Yes | Ditt användar namn för SQL Server och databasen |
-   | **Lösenord** | Yes | Ditt lösen ord för SQL Server och databasen |
+   | **SQL Server-namn** | Ja | Adressen till din SQL-Server, till exempel `Fabrikam-Azure-SQL.database.windows.net` |
+   | **SQL-databasens namn** | Ja | Namnet på SQL Server databasen, till exempel `Fabrikam-Azure-SQL-DB` |
+   | **Användarnamn** | Ja | Ditt användar namn för SQL Server och databasen |
+   | **Lösenord** | Ja | Ditt lösen ord för SQL Server och databasen |
    | **Prenumeration** |  Ja, för Windows-autentisering | Azure-prenumerationen för den data gateway-resurs som du tidigare skapade i Azure |
-   | **Gateway för anslutning** | Ja, för Windows-autentisering | Namnet på den data gateway-resurs som du tidigare skapade i Azure <p><p>**Tips** : om din Gateway inte visas i listan kontrollerar du att du har konfigurerat [din gateway](../logic-apps/logic-apps-gateway-connection.md)korrekt. |
+   | **Gateway för anslutning** | Ja, för Windows-autentisering | Namnet på den data gateway-resurs som du tidigare skapade i Azure <p><p>**Tips**: om din Gateway inte visas i listan kontrollerar du att du har konfigurerat [din gateway](../logic-apps/logic-apps-gateway-connection.md)korrekt. |
    |||
 
    > [!TIP]
@@ -157,7 +157,7 @@ Första gången du lägger till en SQL- [utlösare](#add-sql-trigger) eller [SQL
 
    ![Skapande av SQL Server anslutning slutförd](./media/connectors-create-api-sqlazure/sql-server-create-connection-complete.png)
 
-1. När du är klar väljer du **skapa** .
+1. När du är klar väljer du **skapa**.
 
 1. Fortsätt nu med de steg som du inte har slutfört än i antingen [Lägg till en SQL-utlösare](#add-sql-trigger) eller [Lägg till en SQL-åtgärd](#add-sql-action).
 
@@ -178,12 +178,18 @@ Första gången du lägger till en SQL- [utlösare](#add-sql-trigger) eller [SQL
 1. Om du vill lägga till andra tillgängliga egenskaper för den här utlösaren öppnar du listan **Lägg till ny parameter** .
 
    Den här utlösaren returnerar bara en rad från den valda tabellen och inget annat. Om du vill utföra andra uppgifter kan du fortsätta genom att lägga till en [SQL-kopplings åtgärd](#add-sql-action) eller [en annan åtgärd](../connectors/apis-list.md) som utför nästa uppgift som du vill ha i ditt Logic app-arbetsflöde.
-   
+
    Om du till exempel vill visa data på den här raden kan du lägga till andra åtgärder som skapar en fil som innehåller fälten från den returnerade raden och sedan skicka e-postaviseringar. Information om andra tillgängliga åtgärder för den här anslutningen finns på [kopplingens referens sida](/connectors/sql/).
 
-1. I verktygsfältet designer väljer du **Spara** .
+1. I verktygsfältet designer väljer du **Spara**.
 
    Även om det här steget automatiskt aktiverar och publicerar din Logic app Live i Azure, är den enda åtgärden som din Logic app tar för närvarande att kontrol lera din databas baserat på angivet intervall och frekvens.
+
+<a name="trigger-recurrence-shift-drift"></a>
+
+### <a name="trigger-recurrence-shift-and-drift"></a>Utlös upprepnings Skift och avvikelse
+
+Anslutningsbaserade utlösare där du måste skapa en anslutning först, till exempel SQL-utlösaren, skiljer sig från inbyggda utlösare som körs internt i Azure Logic Apps, till exempel [upprepnings utlösaren](../connectors/connectors-native-recurrence.md). I återkommande anslutningsbaserade utlösare är det återkommande schemat inte den enda driv rutin som styr körningen och tids zonen bestämmer den första start tiden. Efterföljande körningar är beroende av upprepnings schema, den senaste utlösnings körningen *och* andra faktorer som kan orsaka körnings tider eller orsaka oväntade beteende, till exempel att inte behålla det angivna schemat när sommar tid börjar och slutar. För att se till att upprepnings tiden inte skiftar när sommar tiden börjar gälla kan du justera upprepningen manuellt så att din Logic app fortsätter att köras vid den förväntade tiden. Annars flyttas start tiden en timme framåt när sommar tiden startar och en timme bakåt när sommar tiden slutar. Mer information finns i [upprepning för anslutningsbaserade utlösare](../connectors/apis-list.md#recurrence-connection-based).
 
 <a name="add-sql-action"></a>
 
@@ -193,11 +199,11 @@ I det här exemplet börjar Logic-appen med [upprepnings utlösaren](../connecto
 
 1. Öppna din Logic app i Logic App Designer i [Azure Portal](https://portal.azure.com) eller i Visual Studio. I det här exemplet fortsätter Azure Portal.
 
-1. Under utlösaren eller åtgärden där du vill lägga till SQL-åtgärden väljer du **nytt steg** .
+1. Under utlösaren eller åtgärden där du vill lägga till SQL-åtgärden väljer du **nytt steg**.
 
    ![Lägg till en åtgärd i din Logic app](./media/connectors-create-api-sqlazure/select-new-step-logic-app.png)
 
-   Eller om du vill lägga till en åtgärd mellan befintliga steg flyttar du musen över den anslutande pilen. Välj plus tecknet ( **+** ) som visas och välj sedan **Lägg till en åtgärd** .
+   Eller om du vill lägga till en åtgärd mellan befintliga steg flyttar du musen över den anslutande pilen. Välj plus tecknet ( **+** ) som visas och välj sedan **Lägg till en åtgärd**.
 
 1. Under **Välj en åtgärd** i rutan Sök anger du `sql server` . I listan åtgärder väljer du den SQL-åtgärd som du vill använda. I det här exemplet används åtgärden **Hämta rad** som hämtar en enda post.
 
@@ -205,7 +211,7 @@ I det här exemplet börjar Logic-appen med [upprepnings utlösaren](../connecto
 
 1. Om du ansluter till SQL-databasen för första gången uppmanas du att [skapa din SQL Database-anslutning nu](#create-connection). När du har skapat den här anslutningen kan du fortsätta med nästa steg.
 
-1. Välj **tabell namnet** , som är `SalesLT.Customer` i det här exemplet. Ange **rad-ID: t** för den post som du vill använda.
+1. Välj **tabell namnet**, som är `SalesLT.Customer` i det här exemplet. Ange **rad-ID: t** för den post som du vill använda.
 
    ![Välj Tabell namn och ange rad-ID](./media/connectors-create-api-sqlazure/specify-table-row-id.png)
 
@@ -221,7 +227,7 @@ I det här exemplet börjar Logic-appen med [upprepnings utlösaren](../connecto
 
 Ibland måste du arbeta med resultat uppsättningar så att kopplingen inte returnerar alla resultat samtidigt, eller om du vill ha bättre kontroll över storleken och strukturen för dina resultat uppsättningar. Här är några exempel på hur du kan hantera sådana stora resultat uppsättningar:
 
-* För att hjälpa dig att hantera resultat som mindre mängder, aktiverar du *sid brytning* . Mer information finns i [Hämta Mass data, poster och objekt med hjälp av sid brytning](../logic-apps/logic-apps-exceed-default-page-size-with-pagination.md). Mer information finns i [SQL-sid brytning för Mass data överföring med Logic Apps](https://social.technet.microsoft.com/wiki/contents/articles/40060.sql-pagination-for-bulk-data-transfer-with-logic-apps.aspx).
+* För att hjälpa dig att hantera resultat som mindre mängder, aktiverar du *sid brytning*. Mer information finns i [Hämta Mass data, poster och objekt med hjälp av sid brytning](../logic-apps/logic-apps-exceed-default-page-size-with-pagination.md). Mer information finns i [SQL-sid brytning för Mass data överföring med Logic Apps](https://social.technet.microsoft.com/wiki/contents/articles/40060.sql-pagination-for-bulk-data-transfer-with-logic-apps.aspx).
 
 * Skapa en [*lagrad procedur*](/sql/relational-databases/stored-procedures/stored-procedures-database-engine) som ordnar resultatet på det sätt som du vill. SQL-anslutningen innehåller många backend-funktioner som du kan komma åt genom att använda Azure Logic Apps så att du enkelt kan automatisera affärs uppgifter som fungerar med SQL Database-tabeller.
 
@@ -242,30 +248,34 @@ När du anropar en lagrad procedur med hjälp av SQL Server Connector är den re
 
 1. Visa utdataformatet genom att utföra en testkörning. Kopiera och spara exempel på utdata.
 
-1. I designern, under den åtgärd där du anropar den lagrade proceduren, väljer du **nytt steg** .
+1. I designern, under den åtgärd där du anropar den lagrade proceduren, väljer du **nytt steg**.
 
 1. Under **Välj en åtgärd** söker du efter och väljer åtgärden [**parsa JSON**](../logic-apps/logic-apps-perform-data-operations.md#parse-json-action) .
 
-1. I åtgärden **parsa JSON** väljer **du Använd exempel nytto last för att generera schemat** .
+1. I åtgärden **parsa JSON** väljer **du Använd exempel nytto last för att generera schemat**.
 
-1. I rutan **Ange eller klistra in ett exempel på JSON-nyttolast** klistrar du in exempel på utdata och väljer sedan **Slutför** .
+1. I rutan **Ange eller klistra in ett exempel på JSON-nyttolast** klistrar du in exempel på utdata och väljer sedan **Slutför**.
 
    > [!NOTE]
    > Om du får ett fel meddelande som Logic Apps inte kan generera ett schema, kontrollerar du att syntaxen för exempel på utdata är korrekt formaterad. Om du fortfarande inte kan skapa schemat går du till rutan **schema** och anger schemat manuellt.
 
-1. I verktygsfältet designer väljer du **Spara** .
+1. I verktygsfältet designer väljer du **Spara**.
 
 1. Om du vill referera till egenskaperna för JSON-innehåll klickar du i redigerings rutorna där du vill referera till egenskaperna så att listan med dynamiskt innehåll visas. I listan, under rubriken [**parsa JSON**](../logic-apps/logic-apps-perform-data-operations.md#parse-json-action) , väljer du de datatoken som du vill använda för de egenskaper för JSON-innehåll som du vill ha.
 
 ## <a name="troubleshoot-problems"></a>Felsöka problem
 
-* Problem med anslutningen kan vanligt vis inträffa, så för att felsöka och lösa dessa typer av problem kan du gå igenom [lösa anslutnings fel till SQL Server](https://support.microsoft.com/help/4009936/solving-connectivity-errors-to-sql-server). Här följer några exempel:
+<a name="connection-problems"></a>
 
-  * `A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections.`
+### <a name="connection-problems"></a>Anslutningsproblem
 
-  * `(provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) (Microsoft SQL Server, Error: 53)`
+Problem med anslutningen kan vanligt vis inträffa, så för att felsöka och lösa dessa typer av problem kan du gå igenom [lösa anslutnings fel till SQL Server](https://support.microsoft.com/help/4009936/solving-connectivity-errors-to-sql-server). Här är några exempel:
 
-  * `(provider: TCP Provider, error: 0 - No such host is known.) (Microsoft SQL Server, Error: 11001)`
+* `A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections.`
+
+* `(provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) (Microsoft SQL Server, Error: 53)`
+
+* `(provider: TCP Provider, error: 0 - No such host is known.) (Microsoft SQL Server, Error: 11001)`
 
 ## <a name="connector-specific-details"></a>Anslutningsspecifika Detaljer
 

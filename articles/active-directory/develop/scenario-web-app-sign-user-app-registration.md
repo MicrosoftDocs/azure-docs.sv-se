@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 30d646ff7d4f97289ff238211418ac57cd8167a4
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 7ca294d3d7764737d4e2be55aae25bc8ff08a8d1
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97107693"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98011534"
 ---
 # <a name="web-app-that-signs-in-users-app-registration"></a>Webbapp som loggar in användare: app-registrering
 
@@ -41,7 +41,7 @@ Du kan använda dessa länkar för att starta skapandet av ditt webb program:
 > Vilken portal som ska användas är olika beroende på om ditt program körs i Microsoft Azure offentliga molnet eller i ett nationellt eller suveränt moln. Mer information finns i [nationella moln](./authentication-national-cloud.md#app-registration-endpoints).
 
 
-1. Logga in på [Azure-portalen](https://portal.azure.com). 
+1. Logga in på <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>. 
 1. Om du har åtkomst till flera klienter använder du filtret för **katalog + prenumeration** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: i den översta menyn för att välja den klient som du vill registrera ett program i.
 1. Sök efter och välj **Azure Active Directory**.
 1. Under **Hantera** väljer du **Appregistreringar**  >  **ny registrering**.
@@ -86,7 +86,7 @@ Som standard använder exemplet:
    - **http://localhost:8080/msal4jsample/graph/me**
 
 1. Välj **Spara**.
-1. Under **Hantera** väljer du **certifikat & hemligheter**.
+1. Välj **Certifikat och hemligheter** under **Hantera**.
 1. I avsnittet **klient hemligheter** väljer du **ny klient hemlighet** och sedan:
 
    1. Ange en nyckel beskrivning.
@@ -102,7 +102,7 @@ Som standard använder exemplet:
    1. I avsnittet **omdirigerings-URI (valfritt)** väljer du **webb** i kombinations rutan och anger följande omdirigerings-URI: **http://localhost:5000/getAToken** .
    1. Välj **Registrera** för att skapa programmet.
 1. På sidan **Översikt** för appen letar du reda på **programmets (klient) ID-** värde och registrerar det för senare. Du behöver den för att konfigurera Visual Studio-konfigurationsfilen för projektet.
-1. Under **Hantera** väljer du **certifikat & hemligheter**.
+1. Välj **Certifikat och hemligheter** under **Hantera**.
 1. I avsnittet **klient hemligheter** väljer du **ny klient hemlighet** och sedan:
    1. Ange en nyckel beskrivning.
    1. Välj en nyckel varaktighet på om **1 år**.

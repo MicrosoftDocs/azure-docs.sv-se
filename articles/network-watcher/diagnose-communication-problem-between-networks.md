@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/27/2018
+ms.date: 01/07/2021
 ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: 25c58f99f56a4328527d1dd970e3ade21eb51819
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a556ea66bb54f994349ce9ba4d12fb486827edf
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90987170"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98013306"
 ---
 # <a name="tutorial-diagnose-a-communication-problem-between-networks-using-the-azure-portal"></a>Självstudier: Diagnostisera kommunikationsproblem mellan nätverk med hjälp av Azure Portal
 
@@ -30,12 +30,12 @@ En virtuell nätverksgateway ansluter ett virtuellt Azure-nätverk till ett loka
 > * Diagnostisera ett problem med en gatewayanslutning
 > * Lösa ett problem med en gateway
 
-Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
+Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Du måste ha en befintlig, aktiv VPN-gateway för att kunna använda VPN-diagnostik. Om du inte har en befintlig VPN-gateway att diagnostisera kan du distribuera en med hjälp av ett [PowerShell-skript](../vpn-gateway/scripts/vpn-gateway-sample-site-to-site-powershell.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). Du kan köra PowerShell-skriptet från:
 - **En lokal PowerShell-installation**: skriptet kräver Azure PowerShell- `Az` modulen. Kör `Get-Module -ListAvailable Az` för att hitta den installerade versionen. Om du behöver uppgradera modulen läser du avsnittet [Installera Azure PowerShell](/powershell/azure/install-Az-ps). Om du kör PowerShell lokalt måste du också köra `Connect-AzAccount` för att skapa en anslutning till Azure.

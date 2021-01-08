@@ -3,17 +3,16 @@ title: Hantering av .NET SDK för Azure Stream Analytics
 description: Kom igång med Stream Analytics Management .NET SDK. Lär dig hur du konfigurerar och kör analys jobb. Skapa ett projekt, indata, utdata och transformeringar.
 author: jseb225
 ms.author: jeanb
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/06/2018
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 93e10baa5281481b57e945f93b7375060b574de5
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 633885bb1062edac8226c073768ffdeba84fcb55
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93126863"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98012639"
 ---
 # <a name="management-net-sdk-set-up-and-run-analytics-jobs-using-the-azure-stream-analytics-api-for-net"></a>Hantering av .NET SDK: Konfigurera och kör analys jobb med hjälp av Azure Stream Analytics API för .NET
 Lär dig hur du konfigurerar och kör analys jobb med hjälp av Stream Analytics API för .NET med hjälp av Management .NET SDK. Konfigurera ett projekt, skapa indata och utdata, transformeringar och start-och stopp jobb. För dina analys jobb kan du strömma data från Blob Storage eller från en Event Hub.
@@ -167,7 +166,7 @@ Följande kod skapar ett Stream Analytics jobb under den resurs grupp som du har
    ```
 
 ## <a name="create-a-stream-analytics-input-source"></a>Skapa en indatakälla för Stream Analytics
-I följande kod skapas en Stream Analytics indatakälla med typ av BLOB-datakälla och CSV-serialisering. Om du vill skapa en indatakälla för Event Hub använder du **EventHubStreamInputDataSource** i stället för **BlobStreamInputDataSource** . På samma sätt kan du anpassa serialiserings typen för Indatakällan.
+I följande kod skapas en Stream Analytics indatakälla med typ av BLOB-datakälla och CSV-serialisering. Om du vill skapa en indatakälla för Event Hub använder du **EventHubStreamInputDataSource** i stället för **BlobStreamInputDataSource**. På samma sätt kan du anpassa serialiserings typen för Indatakällan.
 
    ```csharp
    // Create an input

@@ -3,16 +3,15 @@ title: Power BI instrument panels integrering med Azure Stream Analytics
 description: Den här artikeln beskriver hur du använder en Power BI instrument panel i real tid för att visualisera data från ett Azure Stream Analytics jobb.
 author: jseb225
 ms.author: jeanb
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 11/16/2020
-ms.openlocfilehash: 4e3f31442c5fa645e27a640d8facf86aed20aa75
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 3bd35df91e836245de52d8959dff0671582ebc3f
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96006703"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98012452"
 ---
 # <a name="stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>Stream Analytics och Power BI: en real tids analys instrument panel för strömmande data
 
@@ -194,7 +193,7 @@ Du kan använda följande ekvation för att beräkna värdet för att ge ditt f�
 
 ![Ekvation till beräknings värde för att ge fönster på några sekunder](./media/stream-analytics-power-bi-dashboard/compute-window-seconds-equation.png)  
 
-Exempel:
+Ett exempel:
 
 * Du har 1 000 enheter som skickar data med en sekunds intervall.
 * Du använder den Power BI Pro SKU som stöder 1 000 000 rader per timme.

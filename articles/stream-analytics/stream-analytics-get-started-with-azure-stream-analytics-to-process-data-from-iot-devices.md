@@ -1,18 +1,17 @@
 ---
 title: Bearbeta IoT-dataströmmar i real tid med Azure Stream Analytics
 description: IoT-sensortaggar och dataströmmar med dataströmsanalys och realtidsbearbetning av data
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 11/26/2019
-ms.openlocfilehash: 311aca139220622a0436d490e73a536c3fc898c9
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: a438401ff93c20d8759e6128936c3626bd3de484
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129023"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98012690"
 ---
 # <a name="process-real-time-iot-data-streams-with-azure-stream-analytics"></a>Bearbeta IoT-dataströmmar i real tid med Azure Stream Analytics
 
@@ -44,13 +43,13 @@ För att förenkla användningen av den här komma igång-guiden ingår en exemp
 
 ## <a name="create-a-stream-analytics-job"></a>Skapa ett Stream Analytics-jobb
 
-1. I [Azure Portal](https://portal.azure.com)väljer du **+ skapa en resurs** i den vänstra navigerings menyn. Välj sedan **Stream Analytics jobb** från **Analytics** .
+1. I [Azure Portal](https://portal.azure.com)väljer du **+ skapa en resurs** i den vänstra navigerings menyn. Välj sedan **Stream Analytics jobb** från **Analytics**.
    
     ![Skapa ett nytt Stream Analytics-jobb](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-02.png)
 
 1. Ange ett unikt jobbnamn och kontrollera att prenumerationen är korrekt för jobbet. Skapa en ny resurs grupp eller Välj en befintlig från din prenumeration.
 
-1. Välj en plats för jobbet. Använd samma plats för resurs gruppen och alla resurser för att öka bearbetnings hastigheten och minska kostnaderna. När du har gjort konfigurationerna väljer du **skapa** .
+1. Välj en plats för jobbet. Använd samma plats för resurs gruppen och alla resurser för att öka bearbetnings hastigheten och minska kostnaderna. När du har gjort konfigurationerna väljer du **skapa**.
    
     ![Information om att skapa ett nytt Stream Analytics-jobb](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-03.png)
 
@@ -60,7 +59,7 @@ Nästa steg när jobbet har skapats är att skriva en fråga. Du kan testa fråg
 Ladda ned [HelloWorldASA-InputStream.js](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/GettingStarted/HelloWorldASA-InputStream.json
 ) från GitHub. Navigera sedan till ditt Azure Stream Analytics jobb i Azure Portal.
 
-Välj **fråga** under **jobb sto pol Ogin** på den vänstra menyn. Välj sedan **överför inmatade exempel** . Ladda upp `HelloWorldASA-InputStream.json` filen och välj **OK** .
+Välj **fråga** under **jobb sto pol Ogin** på den vänstra menyn. Välj sedan **överför inmatade exempel**. Ladda upp `HelloWorldASA-InputStream.json` filen och välj **OK**.
 
 ![Panels fråga för Stream Analytics](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-05.png)
 
@@ -125,7 +124,7 @@ HAVING Avg(temp)>100
 
 ![30 sekunders-filterfråga](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-10.png)
 
-Du bör se resultat som bara innehåller 245 rader och namn på sensorer där genomsnitts temperaturen är större än 100. Den här frågan grupperar händelseströmmen efter **dspl** , vilket är sensornamnet, under ett **Rullande fönster** på 30 sekunder. Temporala frågor måste ange hur lång tid som ska förloppet. Med hjälp av **timestamp by** -satsen har du angett kolumnen **OUTPUTTIME** för att associera tider med alla temporala beräkningar. Detaljerad information finns i [tids hantering](/stream-analytics-query/time-management-azure-stream-analytics) och [fönster funktioner](/stream-analytics-query/windowing-azure-stream-analytics).
+Du bör se resultat som bara innehåller 245 rader och namn på sensorer där genomsnitts temperaturen är större än 100. Den här frågan grupperar händelseströmmen efter **dspl**, vilket är sensornamnet, under ett **Rullande fönster** på 30 sekunder. Temporala frågor måste ange hur lång tid som ska förloppet. Med hjälp av **timestamp by** -satsen har du angett kolumnen **OUTPUTTIME** för att associera tider med alla temporala beräkningar. Detaljerad information finns i [tids hantering](/stream-analytics-query/time-management-azure-stream-analytics) och [fönster funktioner](/stream-analytics-query/windowing-azure-stream-analytics).
 
 ### <a name="query-detect-absence-of-events"></a>Fråga: Identifiera avsaknad av händelser
 

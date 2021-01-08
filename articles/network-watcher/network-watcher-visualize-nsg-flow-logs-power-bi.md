@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/22/2017
+ms.date: 01/07/2021
 ms.author: damendo
-ms.openlocfilehash: a4c97b8baaf5265f984622e2dc47e6c8c714172a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 50f08ffc304962cc66f6eed07adcb5b7e4aa6692
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95995734"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98011160"
 ---
 # <a name="visualizing-network-security-group-flow-logs-with-power-bi"></a>Visualisering av flödes loggar för nätverks säkerhets grupper med Power BI
 
@@ -119,7 +119,7 @@ Du kan anpassa den här mallen efter dina behov. Det finns många olika sätt so
 
 * Om du har en stor mängd loggar rekommenderar vi att du undersöker en lösning med hjälp av ett annat data lager som Data Lake eller SQL Server.
 
-## <a name="next-steps"></a>Nästa steg
+## <a name="next-steps"></a>Efterföljande moment
 
 Lär dig hur du visualiserar dina NSG Flow-loggar med den elastiska stacken genom att besöka [visualisera Azure Network WATCHER NSG flödes loggar med verktyg för öppen källkod](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)
 

@@ -12,12 +12,12 @@ ms.date: 09/03/2020
 ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, contperf-fy21q1, contperf-fy21q2
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: 4e9e6c9179c7fbf405cf8fc661a209da3c9d3b61
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: cc0d908f479fe5bdf14abb2ace0e6c046fd6d7d5
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97031274"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98011957"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>Snabb start: registrera ett program med Microsoft Identity Platform
 
@@ -36,14 +36,14 @@ När du registrerar programmet upprättas en förtroende relation mellan appen o
 
 Följ de här stegen för att skapa appens registrering:
 
-1. Logga in på [Azure-portalen](https://portal.azure.com).
+1. Logga in på <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
 1. Om du har åtkomst till flera klienter använder du filtret för **katalog + prenumeration** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: i den översta menyn för att välja den klient som du vill registrera ett program i.
 1. Sök efter och välj **Azure Active Directory**.
 1. Under **Hantera** väljer du **Appregistreringar**  >  **ny registrering**.
 1. Ange ett **namn** för ditt program. Användare av appen kan se det här namnet och du kan ändra det senare.
 1. Ange vem som kan använda programmet, ibland kallat *inloggnings mål gruppen*.
 
-    | Kontotyper som stöds | Description |
+    | Kontotyper som stöds | Beskrivning |
     |-------------------------|-------------|
     | **Endast konton i den här organisationskatalogen** | Välj det här alternativet om du vill skapa ett program för användning endast av användare (eller gäster) i *din* klient organisation.<br><br>Detta är ett program med en **enda klient organisation** i Microsoft Identity Platform, som ofta kallas LOB-program ( *line-of-Business* ). |
     | **Konton i valfri organisationskatalog** | Välj det här alternativet om du vill att användare i *en* Azure AD-klient ska kunna använda ditt program. Det här alternativet är lämpligt om du till exempel skapar ett SaaS-program (program vara som en tjänst) som du vill ge till flera organisationer.<br><br>Detta kallas för ett program **med flera klienter** i Microsoft Identity Platform. |

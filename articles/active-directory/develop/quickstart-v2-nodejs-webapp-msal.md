@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/22/2020
 ms.author: amikuma
 ms.custom: aaddev, scenarios:getting-started, languages:js, devx-track-js
-ms.openlocfilehash: e860a33ba44743dcc5a96d7656f22fd952a1d0b8
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: 09ffe9948d14d0529756abd44c989dd83602b270
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96762575"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98011772"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-node-web-app-using-the-auth-code-flow"></a>Snabb start: Logga in användare och hämta en åtkomsttoken i en Node-webbapp med hjälp av kod flödet för autentisering
 
@@ -41,7 +41,7 @@ I den här snabb starten används Microsoft Authentication Library för Node.js 
 >
 > #### <a name="step-1-register-your-application"></a>Steg 1: Registrera ditt program
 >
-> 1. Logga in på [Azure-portalen](https://portal.azure.com).
+> 1. Logga in på <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
 > 1. Om du har åtkomst till flera klienter använder du filtret för **katalog + prenumeration** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: i den översta menyn för att välja den klient som du vill registrera ett program i.
 > 1. Under **Hantera** väljer du **Appregistreringar**  >  **ny registrering**.
 > 1. Ange ett **namn** för ditt program. Användare av appen kan se det här namnet och du kan ändra det senare.

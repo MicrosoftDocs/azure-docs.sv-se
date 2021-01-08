@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: 1d6f04b0d6dec06954c594434ac7a9db62f0c89e
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: a084fd4c06dec61ee62df4f950cc6317f717d591
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96762796"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98011823"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>Snabb start: Logga in användare och hämta en åtkomsttoken i ett Java Script SPA
 
@@ -37,7 +37,7 @@ Se [hur exemplet fungerar](#how-the-sample-works) för en illustration.
 >
 > ### <a name="option-1-express-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Alternativ 1 (Express): registrera och konfigurera appen automatiskt och ladda ned kod exemplet
 >
-> 1. Logga in på [Azure Portal](https://portal.azure.com) med ett arbets-eller skol konto eller en personlig Microsoft-konto.
+> 1. Logga in på <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a> med ett arbets-eller skol konto eller en personlig Microsoft-konto.
 > 1. Om ditt konto ger dig åtkomst till fler än en klient väljer du kontot längst upp till höger och anger sedan din portal-session till den Azure Active Directory (Azure AD) som du vill använda.
 > 1. Gå till fönstret ny [Azure Portal-Appregistreringar](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs) .
 > 1. Ange ett namn för ditt program.
@@ -49,7 +49,7 @@ Se [hur exemplet fungerar](#how-the-sample-works) för en illustration.
 >
 > #### <a name="step-1-register-your-application"></a>Steg 1: Registrera ditt program
 >
-> 1. Logga in på [Azure-portalen](https://portal.azure.com).
+> 1. Logga in på <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
 > 1. Om du har åtkomst till flera klienter använder du filtret för **katalog + prenumeration** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: i den översta menyn för att välja den klient som du vill registrera ett program i.
 > 1. Sök efter och välj **Azure Active Directory**.
 > 1. Under **Hantera** väljer du **Appregistreringar**  >  **ny registrering**.
@@ -268,7 +268,7 @@ myMSALObj.acquireTokenSilent(tokenRequest)
 
 #### <a name="get-a-user-token-interactively"></a>Hämta en användartoken interaktivt
 
-Det finns situationer där du måste tvinga användare att interagera med Microsoft Identity Platform-slutpunkten. Exempel:
+Det finns situationer där du måste tvinga användare att interagera med Microsoft Identity Platform-slutpunkten. Ett exempel:
 * Användare kan behöva ange sina autentiseringsuppgifter på grund av att deras lösen ord har upphört att gälla.
 * Ditt program begär åtkomst till ytterligare resurs omfattningar som användaren behöver godkänna.
 * Tvåfaktorautentisering krävs.
