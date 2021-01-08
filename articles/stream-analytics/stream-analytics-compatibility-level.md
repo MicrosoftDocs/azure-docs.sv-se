@@ -1,17 +1,17 @@
 ---
 title: Azure Stream Analytics kompatibilitetsnivå
 description: Lär dig hur du ställer in en kompatibilitetsnivå för ett Azure Stream Analytics jobb och större ändringar på den senaste kompatibilitetsnivån
-author: mamccrea
-ms.author: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 11014c5a5c5cd0cabae1b62083bd5e662be2c6b7
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 8105988cd2036f44d214befad3365cf9ee96ee0d
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348941"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015988"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Kompatibilitetsnivå för Azure Stream Analytics jobb
 
@@ -53,7 +53,7 @@ Följande större ändringar introduceras i kompatibilitetsnivån 1,2:
 
 ###  <a name="amqp-messaging-protocol"></a>AMQP meddelande protokoll
 
-**1,2 nivå** : Azure Stream Analytics använder meddelande protokollet [Advanced Message Queueing Protocol (AMQP)](../service-bus-messaging/service-bus-amqp-overview.md) för att skriva till Service Bus köer och ämnen. Med AMQP kan du skapa hybrid program mellan plattformar med ett öppet standard protokoll.
+**1,2 nivå**: Azure Stream Analytics använder meddelande protokollet [Advanced Message Queueing Protocol (AMQP)](../service-bus-messaging/service-bus-amqp-overview.md) för att skriva till Service Bus köer och ämnen. Med AMQP kan du skapa hybrid program mellan plattformar med ett öppet standard protokoll.
 
 ### <a name="geospatial-functions"></a>Geospatiala funktioner
 
@@ -121,7 +121,7 @@ Följande större ändringar introduceras i kompatibilitetsnivån 1,1:
 
 ### <a name="service-bus-xml-format"></a>Service Bus XML-format
 
-**1,0-nivå:** Azure Stream Analytics använda DataContractSerializer, så att meddelande innehållet innehöll XML-taggar. Exempel:
+**1,0-nivå:** Azure Stream Analytics använda DataContractSerializer, så att meddelande innehållet innehöll XML-taggar. Ett exempel:
 
 `@\u0006string\b3http://schemas.microsoft.com/2003/10/Serialization/\u0001{ "SensorId":"1", "Temperature":64\}\u0001`
 

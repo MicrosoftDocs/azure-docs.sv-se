@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 75839893d0048841440f2c790df7d23ad825d962
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 8acc547552cecaebb60888bb7b9777f6279b9b7c
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97093476"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015767"
 ---
 # <a name="invite-internal-users-to-b2b-collaboration"></a>Bjud in interna användare till B2B-samarbete
 
@@ -44,8 +44,7 @@ I dessa fall bör du ta bort det interna kontot och skicka användaren en inbjud
 
 Du kan använda PowerShell eller Inbjudnings-API: et för att skicka en B2B-inbjudan till den interna användaren. Kontrol lera att e-postadressen som du vill använda för inbjudan har angetts som extern e-postadress för det interna användarobjektet.
 
-- För en moln användare använder du e-postadressen i egenskapen User. OtherMails för inbjudan.
-- För en lokal synkroniserad användare måste du använda värdet i egenskapen User. mail för inbjudan.
+- Du måste använda e-postadressen i egenskapen User. mail för inbjudan.
 - Domänen i användarens e-postegenskap måste matcha det konto som de använder för att logga in. Annars kan vissa tjänster, t. ex. team, inte autentisera användaren.
 
 Som standard skickar inbjudan användaren ett e-postmeddelande om att de vet att de har bjudits in, men du kan ignorera det här e-postmeddelandet och skicka egna i stället.

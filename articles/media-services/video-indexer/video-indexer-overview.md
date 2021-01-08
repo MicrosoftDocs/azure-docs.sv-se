@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 09/11/2020
 ms.author: juliako
-ms.openlocfilehash: b327facc2ac9ad64cf5237ecddc3e4024f75daa6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6b5a228c12cfc874673dda854de6d4dcc25f28c1
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90052145"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98014543"
 ---
 # <a name="what-is-azure-media-services-video-indexer"></a>Vad är Azure Media Services Video Indexer?
 
@@ -76,7 +76,7 @@ I följande lista visas de insikter som du kan hämta från dina videor med Vide
 
 * **Ljud avskrift**: konverterar tal till text på 12 språk och tillåter tillägg. Språken som stöds är engelska, spanska, franska, tyska, italienska, mandarin, japanska, arabiska, ryska och portugisiska, hindi och koreanska.
 * **Automatisk språkidentifiering**: Identifierar automatiskt dominant talat språk. Språk som stöds är engelska, spanska, franska, tyska, italienska, mandarin, japanska, ryska och portugisiska. Om språket inte säkert kan identifieras förutsätter Video Indexer att det talade språket är engelska. Mer information finns i [Modell för språkidentifiering](language-identification-model.md).
-* **Tal identifiering och avskrifter för flera språk** (för hands version): identifierar automatiskt det talade språket i olika segment från ljud. Tjänsten skickar varje segment av mediefilen som ska transkriberas, och sedan kombineras transkriptionerna till en enda transkription. Mer information finns i [Identifiera och transkribera innehåll på olika språk automatiskt](multi-language-identification-transcription.md).
+* **Tal identifiering och avskriftering i flera språk**: identifierar automatiskt det talade språket i olika segment från ljud. Tjänsten skickar varje segment av mediefilen som ska transkriberas, och sedan kombineras transkriptionerna till en enda transkription. Mer information finns i [Identifiera och transkribera innehåll på olika språk automatiskt](multi-language-identification-transcription.md).
 * **Textning**: Skapar textning i tre format: VTT, TTML och SRT.
 * **Två kanal bearbetning**: identifierar automatiskt separata avskrifter och sammanfogningar på en enda tids linje.
 * **Brus minskning**: tar bort ljud-eller brus inspelnings telefoner (baserat på Skype-filter).

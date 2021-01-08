@@ -3,16 +3,15 @@ title: Skapa anpassade .NET-deserialiserare för Azure Stream Analytics moln job
 description: Den här självstudien visar hur du skapar en anpassad .NET-deserialiserare för ett Azure Stream Analytics moln jobb med Visual Studio Code.
 author: su-jie
 ms.author: sujie
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/22/2020
-ms.openlocfilehash: 0f041910d1b02cc6d1fd48bfd773711c3361c0f5
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: 1813fb222bca74f355fec52252ce3d77fef06e5d
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97822510"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98013931"
 ---
 # <a name="create-custom-net-deserializers-for-azure-stream-analytics-in-visual-studio-code"></a>Skapa anpassade .NET-deserialiserare för Azure Stream Analytics i Visual Studio Code
 

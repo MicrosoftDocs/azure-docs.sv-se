@@ -3,16 +3,15 @@ title: Förstå indata för Azure Stream Analytics
 description: Den här artikeln beskriver begreppet indata i ett Azure Stream Analytics jobb, och jämför strömmande indata till referens data inmatning.
 author: jseb225
 ms.author: krishmam
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/29/2020
-ms.openlocfilehash: b344e9e24d15189b805f586227c7253395e8448e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 8c62bb2aad266d577a5f4c6f6343d6ed3f4f1979
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96022072"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98016209"
 ---
 # <a name="understand-inputs-for-azure-stream-analytics"></a>Förstå indata för Azure Stream Analytics
 

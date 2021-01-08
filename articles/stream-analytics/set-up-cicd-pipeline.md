@@ -4,16 +4,15 @@ description: Den här artikeln beskriver hur du konfigurerar en pipeline för ko
 services: stream-analytics
 author: su-jie
 ms.author: sujie
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 09/10/2020
-ms.openlocfilehash: d9b6dfc977aab7d8907b5d3c3851a22f96227d78
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b601a3586cfa971b2e8337a914f4e10bb0178ba0
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91757766"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98014254"
 ---
 # <a name="use-azure-devops-to-create-a-cicd-pipeline-for-a-stream-analytics-job"></a>Använd Azure-DevOps för att skapa en CI/CD-pipeline för ett Stream Analytics jobb
 
@@ -39,7 +38,7 @@ I det här avsnittet får du lära dig hur du skapar en pipeline för bygge. Du 
 
 1. Välj käll typ, team projekt och lagrings plats. Välj sedan **Fortsätt**.
 
-   :::image type="content" source="media/set-up-cicd-pipeline/select-repo.png" alt-text="Skapa ny Azure-pipeline":::
+   :::image type="content" source="media/set-up-cicd-pipeline/select-repo.png" alt-text="Välj Azure Stream Analytics projekt":::
 
 1. På sidan **Välj en mall** väljer du **tomt jobb**.
 
@@ -47,7 +46,7 @@ I det här avsnittet får du lära dig hur du skapar en pipeline för bygge. Du 
 
 1. På sidan **aktiviteter** väljer du plus tecknet bredvid **Agent jobb 1**. Ange *NPM* i uppgifts sökningen och välj **NPM**.
 
-   :::image type="content" source="media/set-up-cicd-pipeline/search-npm.png" alt-text="Skapa ny Azure-pipeline":::
+   :::image type="content" source="media/set-up-cicd-pipeline/search-npm.png" alt-text="Välj NPM-aktivitet":::
 
 2. Ge uppgiften ett **visnings namn**. Ändra **kommando** alternativet till *Custom* och ange följande kommando i **kommando och argument**. Lämna kvar de återstående standard alternativen.
 
@@ -55,7 +54,7 @@ I det här avsnittet får du lära dig hur du skapar en pipeline för bygge. Du 
    install -g azure-streamanalytics-cicd
    ```
 
-   :::image type="content" source="media/set-up-cicd-pipeline/npm-config.png" alt-text="Skapa ny Azure-pipeline":::
+   :::image type="content" source="media/set-up-cicd-pipeline/npm-config.png" alt-text="Ange konfigurationer för NPM-aktivitet":::
 
 ## <a name="add-a-build-task"></a>Lägg till en build-uppgift
 
@@ -64,7 +63,7 @@ I det här avsnittet får du lära dig hur du skapar en pipeline för bygge. Du 
    |Variabelnamn|Värde|
    |-|-|
    |projectRootPath|YourProjectName|
-   |outputPath|Utdata|
+   |outputPath|Resultat|
    |deployPath|Distribuera|
 
 2. På sidan **aktiviteter** väljer du plus tecknet bredvid **Agent jobb 1**. Sök efter **kommando rad**.
@@ -77,7 +76,7 @@ I det här avsnittet får du lära dig hur du skapar en pipeline för bygge. Du 
 
    I bilden nedan används ett Stream Analytics Visual Studio Code-projekt som exempel.
 
-   :::image type="content" source="media/set-up-cicd-pipeline/command-line-config-build.png" alt-text="Skapa ny Azure-pipeline":::
+   :::image type="content" source="media/set-up-cicd-pipeline/command-line-config-build.png" alt-text="Ange konfigurationer för kommando rads aktivitet Visual Studio Code":::
 
 ## <a name="add-a-test-task"></a>Lägg till en test aktivitet
 
@@ -87,7 +86,7 @@ I det här avsnittet får du lära dig hur du skapar en pipeline för bygge. Du 
    |-|-|
    |testPath|Testa|
 
-   :::image type="content" source="media/set-up-cicd-pipeline/pipeline-variables-test.png" alt-text="Skapa ny Azure-pipeline":::
+   :::image type="content" source="media/set-up-cicd-pipeline/pipeline-variables-test.png" alt-text="Lägg till pipeline-variabler":::
 
 2. På sidan **aktiviteter** väljer du plus tecknet bredvid **Agent jobb 1**. Sök efter **kommando rad**.
 
@@ -99,13 +98,13 @@ I det här avsnittet får du lära dig hur du skapar en pipeline för bygge. Du 
    azure-streamanalytics-cicd test -project $(projectRootPath)/asaproj.json -outputpath $(projectRootPath)/$(outputPath)/$(testPath) -testConfigPath $(projectRootPath)/test/testConfig.json 
    ```
 
-   :::image type="content" source="media/set-up-cicd-pipeline/command-line-config-test.png" alt-text="Skapa ny Azure-pipeline":::
+   :::image type="content" source="media/set-up-cicd-pipeline/command-line-config-test.png" alt-text="Ange konfigurationer för kommando rads aktivitet":::
 
 ## <a name="add-a-copy-files-task"></a>Lägg till en kopiera filer-aktivitet
 
 Du måste lägga till en kopiera fil-aktivitet för att kopiera test sammanfattnings filen och Azure Resource Manager mallfiler till mappen artefakt. 
 
-1. På sidan **aktiviteter** väljer du **+** bredvid **Agent jobb 1**. Sök efter **Kopiera filer**. Ange sedan följande konfigurationer. Genom `**` att tilldela till **innehåll**kopieras alla filer med test resultaten.
+1. På sidan **aktiviteter** väljer du **+** bredvid **Agent jobb 1**. Sök efter **Kopiera filer**. Ange sedan följande konfigurationer. Genom `**` att tilldela till **innehåll** kopieras alla filer med test resultaten.
 
    |Parameter|Indata|
    |-|-|
@@ -116,7 +115,7 @@ Du måste lägga till en kopiera fil-aktivitet för att kopiera test sammanfattn
 
 2. Expandera **kontroll alternativ**. Välj **även om en föregående aktivitet har misslyckats, såvida inte versionen har avbrutits** i **kör den här uppgiften**.
 
-   :::image type="content" source="media/set-up-cicd-pipeline/copy-config.png" alt-text="Skapa ny Azure-pipeline":::
+   :::image type="content" source="media/set-up-cicd-pipeline/copy-config.png" alt-text="Ange konfigurationer för kopierings uppgift":::
 
 ## <a name="add-a-publish-build-artifacts-task"></a>Lägg till aktiviteten publicera Bygg artefakter
 
@@ -124,7 +123,7 @@ Du måste lägga till en kopiera fil-aktivitet för att kopiera test sammanfattn
 
 2. Expandera **kontroll alternativ**. Välj **även om en föregående aktivitet har misslyckats, såvida inte versionen har avbrutits** i **kör den här uppgiften**.
 
-   :::image type="content" source="media/set-up-cicd-pipeline/publish-config.png" alt-text="Skapa ny Azure-pipeline":::
+   :::image type="content" source="media/set-up-cicd-pipeline/publish-config.png" alt-text="Ange konfigurationer för publicerings uppgift":::
 
 ## <a name="save-and-run"></a>Spara och kör
 
@@ -134,9 +133,9 @@ När du är färdig med att lägga till NPM-paketet, kommando raden, kopiera fil
 
 Du hittar test sammanfattnings filen och Azure Resource Manager mallfiler i den **publicerade** mappen.
 
-   :::image type="content" source="media/set-up-cicd-pipeline/check-build-test-result.png" alt-text="Skapa ny Azure-pipeline":::
+   :::image type="content" source="media/set-up-cicd-pipeline/check-build-test-result.png" alt-text="Kontrol lera build-och test resultat":::
 
-   :::image type="content" source="media/set-up-cicd-pipeline/check-drop-folder.png" alt-text="Skapa ny Azure-pipeline":::
+   :::image type="content" source="media/set-up-cicd-pipeline/check-drop-folder.png" alt-text="Kontrol lera artefakter":::
 
 ## <a name="release-with-azure-pipelines"></a>Version med Azure-pipeline
 
@@ -148,9 +147,9 @@ I det här avsnittet får du lära dig hur du skapar en versions pipeline. Du ka
 
 2. Välj **starta med ett tomt jobb**.
 
-3. I rutan **artefakter** väljer du **+ Lägg till en artefakt**. Under **källa**väljer du den versions pipeline som du skapade och väljer **Lägg till**.
+3. I rutan **artefakter** väljer du **+ Lägg till en artefakt**. Under **källa** väljer du den versions pipeline som du skapade och väljer **Lägg till**.
 
-   :::image type="content" source="media/set-up-cicd-pipeline/build-artifact.png" alt-text="Skapa ny Azure-pipeline":::
+   :::image type="content" source="media/set-up-cicd-pipeline/build-artifact.png" alt-text="Ange artefakt för bygg pipeline":::
 
 4. Ändra namnet på **steg 1** för att **distribuera jobb till test miljön**.
 
@@ -166,7 +165,7 @@ I det här avsnittet får du lära dig hur du skapar en versions pipeline. Du ka
    |-|-|
    |Visningsnamn| *Distribuera myASAProject*|
    |Azure-prenumeration| Välj din prenumeration.|
-   |Action| *Skapa eller uppdatera resursgrupp*|
+   |Åtgärd| *Skapa eller uppdatera resursgrupp*|
    |Resursgrupp| Välj ett namn för den test resurs grupp som ska innehålla ditt Stream Analytics jobb.|
    |Plats|Välj platsen för test resurs gruppen.|
    |Mallens plats| Länkad artefakt|
@@ -183,7 +182,7 @@ I det här avsnittet får du lära dig hur du skapar en versions pipeline. Du ka
    |-|-|
    |Visningsnamn| *Distribuera myASAProject*|
    |Azure-prenumeration| Välj din prenumeration.|
-   |Action| *Skapa eller uppdatera resursgrupp*|
+   |Åtgärd| *Skapa eller uppdatera resursgrupp*|
    |Resursgrupp| Välj ett namn för den produktions resurs grupp som ska innehålla ditt Stream Analytics jobb.|
    |Plats|Välj platsen för produktions resurs gruppen.|
    |Mallens plats| *Länkad artefakt*|
@@ -196,7 +195,7 @@ I det här avsnittet får du lära dig hur du skapar en versions pipeline. Du ka
 
 Om du vill skapa en version väljer du **Skapa version** i det övre högra hörnet.
 
-:::image type="content" source="media/set-up-cicd-pipeline/create-release.png" alt-text="Skapa ny Azure-pipeline":::
+:::image type="content" source="media/set-up-cicd-pipeline/create-release.png" alt-text="Skapa en version med hjälp av Azure-pipeliner":::
 
 ## <a name="next-steps"></a>Nästa steg
 

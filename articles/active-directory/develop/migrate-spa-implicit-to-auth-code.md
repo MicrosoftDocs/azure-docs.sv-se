@@ -12,16 +12,16 @@ ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev, devx-track-js
-ms.openlocfilehash: 05258e201c65138e53e861f0631eb33e08c9c199
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 391febcf8852147aedf5ef61d2442b2f50b4c9ae
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92673593"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98014747"
 ---
 # <a name="migrate-a-javascript-single-page-app-from-implicit-grant-to-auth-code-flow"></a>Migrera en JavaScript-app med en sida från implicit beviljande till auth Code Flow
 
-Microsoft Authentication Library för Java Script (MSAL.js) v 2.0 ger stöd för kod flödet för auktorisering med PKCE och CORS till en Enkels Ides program på Microsoft Identity Platform. Följ stegen i avsnitten nedan för att migrera ditt MSAL.js 1. x-program med hjälp av implicit beviljande till MSAL.js 2.0 + (hädanefter *2. x* ) och flödet för auth-koden.
+Microsoft Authentication Library för Java Script (MSAL.js) v 2.0 ger stöd för kod flödet för auktorisering med PKCE och CORS till en Enkels Ides program på Microsoft Identity Platform. Följ stegen i avsnitten nedan för att migrera ditt MSAL.js 1. x-program med hjälp av implicit beviljande till MSAL.js 2.0 + (hädanefter *2. x*) och flödet för auth-koden.
 
 MSAL.js 2. x ökar med MSAL.js 1. x genom att stödja auktoriseringskod i webbläsaren i stället för det implicita tilldelnings flödet. MSAL.js 2. x stöder **inte** det implicita flödet.
 
@@ -30,7 +30,7 @@ MSAL.js 2. x ökar med MSAL.js 1. x genom att stödja auktoriseringskod i webbl�
 Om du vill uppdatera ditt program till MSAL.js 2. x och auth Code Flow finns det tre primära steg:
 
 1. Ändra dina omdirigerings-URI: er för [program registrering](#switch-redirect-uris-to-spa-platform) från **webb** plattformen till **en program plattform med enkel sida** .
-1. Uppdatera [koden](#switch-redirect-uris-to-spa-platform) från MSAL.js 1. x till **2. x** .
+1. Uppdatera [koden](#switch-redirect-uris-to-spa-platform) från MSAL.js 1. x till **2. x**.
 1. Inaktivera det [implicita bidraget](#disable-implicit-grant-settings) i din app-registrering när alla program som delar registreringen har uppdaterats till MSAL.js 2. x och kod flödet för autentisering.
 
 I följande avsnitt beskrivs varje steg i ytterligare information.
@@ -41,18 +41,18 @@ Om du vill fortsätta att använda din befintliga App-registrering för dina pro
 
 Följ de här stegen för app-registreringar som är konfigurerade med omdirigerings-URI: er för **webb** plattform:
 
-1. Logga in på [Azure Portal](https://portal.azure.com) och välj **Azure Active Directory** klient.
-1. I **Appregistreringar** väljer du ditt program och sedan **autentisering** .
+1. Logga in på <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span></a> och välj **Azure Active Directory** klient.
+1. I **Appregistreringar** väljer du ditt program och sedan **autentisering**.
 1. I panelen **webb** plattform under **omdirigerings-URI** väljer du varnings banderollen som anger att du bör migrera dina URI: er.
 
     :::image type="content" source="media/migrate-spa-implicit-to-auth-code/portal-01-implicit-warning-banner.png" alt-text="Varnings banderoll för implicit flöde på webbappens panel i Azure Portal":::
-1. Välj *bara* de omdirigerings-URI: er vars program kommer att använda MSAL.js 2. x och välj sedan **Konfigurera** .
+1. Välj *bara* de omdirigerings-URI: er vars program kommer att använda MSAL.js 2. x och välj sedan **Konfigurera**.
 
-    :::image type="content" source="media/migrate-spa-implicit-to-auth-code/portal-02-select-redirect-uri.png" alt-text="Varnings banderoll för implicit flöde på webbappens panel i Azure Portal":::
+    :::image type="content" source="media/migrate-spa-implicit-to-auth-code/portal-02-select-redirect-uri.png" alt-text="Välj rutan omdirigerings-URI i fönstret SPA i Azure Portal":::
 
 De här omdirigerings-URI: erna bör nu visas på en plattforms panel med **en enda sida** , som visar att CORS-stödet med Flow-flödet och PKCE är aktiverat för dessa URI: er.
 
-:::image type="content" source="media/migrate-spa-implicit-to-auth-code/portal-03-spa-redirect-uri-tile.png" alt-text="Varnings banderoll för implicit flöde på webbappens panel i Azure Portal":::
+:::image type="content" source="media/migrate-spa-implicit-to-auth-code/portal-03-spa-redirect-uri-tile.png" alt-text="En program panel med en sida i app-registrering i Azure Portal":::
 
 Du kan också [skapa en ny app-registrering](scenario-spa-app-registration.md) i stället för att uppdatera omdirigerings-URI: erna i den befintliga registreringen.
 

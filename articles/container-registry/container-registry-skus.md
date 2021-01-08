@@ -1,14 +1,14 @@
 ---
 title: Register tjänst nivåer och funktioner
-description: 'Lär dig mer om funktionerna och begränsningarna i Azure Container Registry för Basic-, standard-och Premium-tjänster (SKU: er).'
+description: Lär dig mer om funktionerna och begränsningarna (kvoterna) i Azure Container Registry i tjänst nivåerna Basic, standard och Premium (SKU).
 ms.topic: article
 ms.date: 05/18/2020
-ms.openlocfilehash: e2a5ad52775e9000aa0beb0a926d809da1c5a0e0
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: b55fc16dcd6dcb544ed4597ce4bdc6ba17b52646
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048482"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015676"
 ---
 # <a name="azure-container-registry-service-tiers"></a>Azure Container Registry tjänst nivåer
 
@@ -30,7 +30,9 @@ I följande tabell beskrivs funktionerna och register gränserna för tjänst ni
 
 ## <a name="changing-tiers"></a>Ändra nivåer
 
-Du kan ändra ett registers tjänst nivå med Azure CLI eller i Azure Portal. Du kan flytta fritt mellan nivån så länge nivån som du växlar till har den maximala lagrings kapaciteten som krävs. 
+Du kan ändra ett registers tjänst nivå med Azure CLI eller i Azure Portal. Du kan flytta fritt mellan nivåerna så länge nivån som du växlar till har den maximala lagrings kapaciteten som krävs. 
+
+Det finns inget avbrott i registret eller påverkar register åtgärder när du flyttar mellan tjänst nivåer.
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -42,7 +44,7 @@ az acr update --name myregistry --sku Premium
 
 ### <a name="azure-portal"></a>Azure Portal
 
-I behållarens register **Översikt** i Azure Portal väljer du **Uppdatera**och väljer sedan en ny **SKU** från List rutan SKU.
+I behållarens register **Översikt** i Azure Portal väljer du **Uppdatera** och väljer sedan en ny **SKU** från List rutan SKU.
 
 ![Uppdatera container Registry-SKU: n i Azure Portal][update-registry-sku]
 

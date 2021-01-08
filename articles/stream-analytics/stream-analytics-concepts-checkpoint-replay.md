@@ -1,25 +1,24 @@
 ---
 title: Koncept för kontroll punkter och omuppspelning av återställnings begrepp i Azure Stream Analytics
 description: Den här artikeln beskriver hur du återställnings koncepten för punkt och repetition i Azure Stream Analytics.
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: sidramadoss
+ms.author: sidram
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 10d9053e082a995085fa255cc0d9f63a2b4e2b17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: df31f8538bb9eabeca37fe4c52c4443fd447e415
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84020616"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015326"
 ---
 # <a name="checkpoint-and-replay-concepts-in-azure-stream-analytics-jobs"></a>Kontroll punkts-och repetitions begrepp i Azure Stream Analytics jobb
 I den här artikeln beskrivs den interna kontroll punkten och omuppspelnings koncepten i Azure Stream Analytics och hur de påverkar jobb återställningen. Varje gången ett Stream Analytics jobb körs bevaras tillståndsinformation internt. Statusinformation sparas i en kontroll punkt med jämna mellanrum. I vissa fall används kontroll punkts informationen för jobb återställning om ett jobb fel eller en uppgradering sker. I andra fall kan kontroll punkten inte användas för återställning och det krävs en omuppspelning.
 
-## <a name="stateful-query-logicin-temporal-elements"></a>Tillstånds känslig fråge logik i temporala element
-En av de unika funktionerna för Azure Stream Analytics jobb är att utföra tillstånds känslig bearbetning, till exempel fönster mängd, temporala kopplingar och temporala analys funktioner. Var och en av dessa operatörer behåller statusinformation när jobbet körs.Maximal fönster storlek för de här fråge elementen är sju dagar. 
+## <a name="stateful-query-logic-in-temporal-elements"></a>Tillstånds känslig fråge logik i temporala element
+En av de unika funktionerna för Azure Stream Analytics jobb är att utföra tillstånds känslig bearbetning, till exempel fönster mängd, temporala kopplingar och temporala analys funktioner. Var och en av dessa operatörer behåller statusinformation när jobbet körs. Maximal fönster storlek för de här fråge elementen är sju dagar. 
 
 Det temporala fönstrets koncept visas i flera Stream Analytics frågedata:
 1. Fönster mängder (Gruppera efter rullande, hoppande och glidande fönster)

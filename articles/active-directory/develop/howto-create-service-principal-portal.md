@@ -12,12 +12,12 @@ ms.date: 06/26/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
-ms.openlocfilehash: 46781edad6ad9290932216b9e9f23a359d25497a
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 284ab3a2aabb2395636982237159117a10151019
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92366164"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98014951"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Anvisningar: Använd portalen för att skapa ett Azure AD-program och huvudnamn för tjänsten som kan komma åt resurser
 
@@ -42,10 +42,10 @@ Du måste ha behörighet att registrera ett program med din Azure AD-klient och 
 
    ![Hitta din roll. Om du är en användare ser du till att icke-administratörer kan registrera appar](./media/howto-create-service-principal-portal/view-user-info.png)
 
-1. Välj **användar inställningar**i det vänstra fönstret.
-1. Kontrol lera inställningen för **Appregistreringar** . Det här värdet kan bara anges av en administratör. Om det är inställt på **Ja**kan alla användare i Azure AD-klienten registrera en app.
+1. Välj **användar inställningar** i det vänstra fönstret.
+1. Kontrol lera inställningen för **Appregistreringar** . Det här värdet kan bara anges av en administratör. Om det är inställt på **Ja** kan alla användare i Azure AD-klienten registrera en app.
 
-Om inställningen för appens registrering är inställd på **Nej**kan endast användare med en administratörs roll registrera dessa typer av program. Se [tillgängliga roller](../roles/permissions-reference.md#available-roles) och [roll behörigheter](../roles/permissions-reference.md#role-permissions) för att lära dig om tillgängliga administratörs roller och de särskilda behörigheter i Azure AD som ges till varje roll. Om ditt konto har tilldelats användar rollen, men appens registrerings inställning är begränsad till administratörs användare, be administratören att antingen tilldela dig en av administratörs rollerna som kan skapa och hantera alla aspekter av registrerade appar, eller för att låta användare registrera appar.
+Om inställningen för appens registrering är inställd på **Nej** kan endast användare med en administratörs roll registrera dessa typer av program. Se [tillgängliga roller](../roles/permissions-reference.md#available-roles) och [roll behörigheter](../roles/permissions-reference.md#role-permissions) för att lära dig om tillgängliga administratörs roller och de särskilda behörigheter i Azure AD som ges till varje roll. Om ditt konto har tilldelats användar rollen, men appens registrerings inställning är begränsad till administratörs användare, be administratören att antingen tilldela dig en av administratörs rollerna som kan skapa och hantera alla aspekter av registrerade appar, eller för att låta användare registrera appar.
 
 ### <a name="check-azure-subscription-permissions"></a>Kontrol lera behörigheter för Azure-prenumeration
 
@@ -53,7 +53,7 @@ I din Azure-prenumeration måste ditt konto ha `Microsoft.Authorization/*/Write`
 
 Så här kontrollerar du dina prenumerations behörigheter:
 
-1. Sök efter och välj **prenumerationer**eller Välj **prenumerationer** på **Start** sidan.
+1. Sök efter och välj **prenumerationer** eller Välj **prenumerationer** på **Start** sidan.
 
    ![Search](./media/howto-create-service-principal-portal/select-subscription.png)
 
@@ -75,11 +75,11 @@ Så här kontrollerar du dina prenumerations behörigheter:
 
 Nu ska vi gå direkt till att skapa identiteten. Om du stöter på ett problem kontrollerar du de [behörigheter som krävs](#permissions-required-for-registering-an-app) för att se till att ditt konto kan skapa identiteten.
 
-1. Logga in på ditt Azure-konto via [Azure Portal](https://portal.azure.com).
+1. Logga in på ditt Azure-konto via <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
 1. Välj **Azure Active Directory**.
 1. Välj **Appregistreringar**.
 1. Välj **ny registrering**.
-1. Ge programmet ett namn. Välj en kontotyp som stöds, vilket avgör vem som kan använda programmet. Under **omdirigerings-URI**väljer du **webb** för den typ av program som du vill skapa. Ange URI: n där åtkomsttoken skickas till. Du kan inte skapa autentiseringsuppgifter för ett [internt program](../manage-apps/application-proxy-configure-native-client-application.md). Du kan inte använda den typen för ett automatiskt program. När du har angett värdena väljer du **Registrera**.
+1. Ge programmet ett namn. Välj en kontotyp som stöds, vilket avgör vem som kan använda programmet. Under **omdirigerings-URI** väljer du **webb** för den typ av program som du vill skapa. Ange URI: n där åtkomsttoken skickas till. Du kan inte skapa autentiseringsuppgifter för ett [internt program](../manage-apps/application-proxy-configure-native-client-application.md). Du kan inte använda den typen för ett automatiskt program. När du har angett värdena väljer du **Registrera**.
 
    ![Ange ett namn för ditt program](./media/howto-create-service-principal-portal/create-app.png)
 
@@ -91,7 +91,7 @@ Du måste tilldela en roll till programmet för att få åtkomst till resurser i
 
 Du kan ange omfång på nivån för prenumerationen, resurs gruppen eller resursen. Behörigheter ärvs till lägre omfattnings nivåer. Om du till exempel lägger till ett program till rollen *läsare* för en resurs grupp innebär det att den kan läsa resurs gruppen och alla resurser som den innehåller.
 
-1. I Azure Portal väljer du den omfattnings nivå som du vill tilldela programmet till. Om du till exempel vill tilldela en roll i prenumerations omfånget söker du efter och väljer **prenumerationer**eller väljer **prenumerationer** på **Start** sidan.
+1. I Azure Portal väljer du den omfattnings nivå som du vill tilldela programmet till. Om du till exempel vill tilldela en roll i prenumerations omfånget söker du efter och väljer **prenumerationer** eller väljer **prenumerationer** på **Start** sidan.
 
    ![Tilldela till exempel en roll i prenumerations omfånget](./media/howto-create-service-principal-portal/select-subscription.png)
 
@@ -181,8 +181,8 @@ Om du väljer att inte använda ett certifikat kan du skapa en ny program hemlig
 ## <a name="configure-access-policies-on-resources"></a>Konfigurera åtkomst principer för resurser
 Kom ihåg att du kan behöva konfigurera ytterligare behörigheter för resurser som ditt program behöver ha åtkomst till. Till exempel måste du också [Uppdatera ett nyckel valvs åtkomst principer](../../key-vault/general/secure-your-key-vault.md#data-plane-and-access-policies) för att ge programmet åtkomst till nycklar, hemligheter eller certifikat.
 
-1. I [Azure Portal](https://portal.azure.com)navigerar du till ditt nyckel valv och väljer **åtkomst principer**.
-1. Välj **Lägg till åtkomst princip**och välj sedan de nyckel-, hemlighet-och certifikat behörigheter som du vill ge ditt program.  Välj tjänstens huvud namn som du skapade tidigare.
+1. I <a href="https://portal.azure.com/" target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> Azure Portal</a>navigerar du till ditt nyckel valv och väljer **åtkomst principer**.
+1. Välj **Lägg till åtkomst princip** och välj sedan de nyckel-, hemlighet-och certifikat behörigheter som du vill ge ditt program.  Välj tjänstens huvud namn som du skapade tidigare.
 1. Välj **Lägg** till för att lägga till åtkomst principen och spara för att **Spara** ändringarna.
     ![Lägg till åtkomst princip](./media/howto-create-service-principal-portal/add-access-policy.png)
 
@@ -190,4 +190,4 @@ Kom ihåg att du kan behöva konfigurera ytterligare behörigheter för resurser
 * Lär dig hur du [använder Azure PowerShell för att skapa ett huvud namn för tjänsten](howto-authenticate-service-principal-powershell.md).
 * Information om hur du anger säkerhets principer finns i [rollbaserad åtkomst kontroll i Azure (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md).
 * En lista över tillgängliga åtgärder som kan beviljas eller nekas till användare finns i [Azure Resource Manager Resource Provider-åtgärder](../../role-based-access-control/resource-provider-operations.md).
-* Information om hur du arbetar med app-registreringar med hjälp av **Microsoft Graph**finns i API-referens för [program](/graph/api/resources/application) .
+* Information om hur du arbetar med app-registreringar med hjälp av **Microsoft Graph** finns i API-referens för [program](/graph/api/resources/application) .

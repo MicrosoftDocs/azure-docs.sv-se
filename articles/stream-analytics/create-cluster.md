@@ -3,17 +3,16 @@ title: Skapa en Azure Stream Analytics kluster snabb start
 description: Lär dig hur du skapar ett Azure Stream Analytics-kluster.
 author: sidramadoss
 ms.author: sidram
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: overview
 ms.custom: mvc
 ms.date: 09/22/2020
-ms.openlocfilehash: a7be204c30d242be991fb9a57d239b69342ace97
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: eb36af5b3f1e142405b24ade16516d0268b4ab2f
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90947986"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98016566"
 ---
 # <a name="quickstart-create-a-dedicated-azure-stream-analytics-cluster-using-azure-portal"></a>Snabb start: skapa ett dedikerat Azure Stream Analytics-kluster med Azure Portal
 
@@ -28,9 +27,9 @@ Använd Azure Portal för att skapa ett Azure Stream Analytics-kluster. Ett [Str
 
 I det här avsnittet skapar du en Stream Analytics kluster resurs.
 
-1. Logga in på [Azure Portal](https://portal.azure.com).
+1. Logga in på [Azure-portalen](https://portal.azure.com).
 
-1. Välj **Skapa en resurs**. Skriv och välj **Stream Analytics kluster**i sökrutan *Sök i Marketplace* . Välj **Lägg till**.
+1. Välj **Skapa en resurs**. Skriv och välj **Stream Analytics kluster** i sökrutan *Sök i Marketplace* . Välj **Lägg till**.
 
    :::image type="content" source="./media/create-cluster/search-result.png" alt-text="Stream Analytics kluster Sök resultat.":::
 

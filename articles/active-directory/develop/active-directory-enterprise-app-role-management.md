@@ -12,18 +12,18 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 12/07/2020
 ms.author: jeedes
-ms.openlocfilehash: e88a721d500ea1c17c768e9f28835248711bd361
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 10b61dd4b6cc3a99b8eecf86cb5ba7e718d64743
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97584450"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015121"
 ---
 # <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>Gör så här: konfigurera det roll anspråk som utfärdats i SAML-token för företags program
 
 Genom att använda Azure Active Directory (Azure AD) kan du anpassa anspråks typen för roll anspråk i svars-token som du får när du har auktoriserat en app.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - En Azure AD-prenumeration med katalog konfiguration.
 - En prenumeration som har enkel inloggning aktive rad (SSO). Du måste konfigurera SSO med ditt program.
@@ -34,7 +34,7 @@ Om programmet förväntar sig att anpassade roller ska skickas i ett SAML-svar, 
 
 ## <a name="create-roles-for-an-application"></a>Skapa roller för ett program
 
-1. I [Azure Portal](https://portal.azure.com)i det vänstra fönstret väljer du ikonen **Azure Active Directory** .
+1. I <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span></a>i det vänstra fönstret väljer du ikonen **Azure Active Directory** .
 
     ![Azure Active Directory ikon][1]
 

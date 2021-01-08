@@ -1,19 +1,18 @@
 ---
 title: Introduktion till Azure Stream Analytics
 description: Lär dig mer om Azure Stream Analytics, en hanterad tjänst som hjälper dig att analysera strömmande data från Sakernas Internet (IoT) i real tid.
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: overview
 ms.custom: mvc, contperf-fy21q2
 ms.date: 11/12/2020
-ms.openlocfilehash: 1871fdda7fe37e938f52c68e97bd9f40dbd9791d
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 5aea6460f3a876d63544ce8422f9f205c22f2a0f
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97029285"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015257"
 ---
 # <a name="welcome-to-azure-stream-analytics"></a>Välkommen till Azure Stream Analytics
 

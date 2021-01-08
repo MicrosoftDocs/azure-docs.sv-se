@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/02/2020
 ms.author: tisande
 ms.custom: devx-track-python, devx-track-js, devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: cd51210a64223fab5d2d48a91bd3d0a6521a9627
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 8d52f8c59e83a4aae8724100770965f756a439fb
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93341322"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015699"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>Hantera indexeringsprinciper i Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -27,7 +27,7 @@ I Azure Cosmos DB indexeras data efter [indexerings principer](index-policy.md) 
 
 Här följer några exempel på indexerings principer som visas i [deras JSON-format](index-policy.md#include-exclude-paths), vilket är hur de exponeras på Azure Portal. Samma parametrar kan ställas in via Azure CLI eller SDK.
 
-### <a name="opt-out-policy-to-selectively-exclude-some-property-paths"></a>Opt-out-princip för att selektivt utesluta vissa egenskaps Sök vägar
+### <a name="opt-out-policy-to-selectively-exclude-some-property-paths"></a><a id="range-index"></a>Opt-out-princip för att selektivt utesluta vissa egenskaps Sök vägar
 
 ```json
     {
@@ -146,7 +146,7 @@ Den här indexerings principen motsvarar den som anges nedan och som manuellt st
 > [!NOTE]
 > Det rekommenderas vanligt vis att **använda en** indexerings princip för att Azure Cosmos DB proaktivt indexera alla nya egenskaper som kan läggas till i din data modell.
 
-### <a name="using-a-spatial-index-on-a-specific-property-path-only"></a>Använda ett rums index för en speciell egenskaps Sök väg
+### <a name="using-a-spatial-index-on-a-specific-property-path-only"></a><a id="spatial-index"></a>Använda ett rums index för en speciell egenskaps Sök väg
 
 ```json
 {
@@ -176,7 +176,7 @@ Den här indexerings principen motsvarar den som anges nedan och som manuellt st
 }
 ```
 
-## <a name="composite-indexing-policy-examples"></a>Exempel på sammansatta indexerings principer
+## <a name="composite-indexing-policy-examples"></a><a id="composite-index"></a>Exempel på sammansatta indexerings principer
 
 Förutom att inkludera eller exkludera sökvägar för enskilda egenskaper kan du också ange ett sammansatt index. Om du vill utföra en fråga som har en `ORDER BY` sats för flera egenskaper, krävs ett [sammansatt index](index-policy.md#composite-indexes) för dessa egenskaper. Dessutom får sammansatta index en prestanda förmån för frågor som har flera filter eller både ett filter och en ORDER BY-sats.
 
@@ -355,7 +355,7 @@ En [indexerings princip uppdatering](index-policy.md#modifying-the-indexing-poli
 
 Azure Cosmos-behållare lagrar sin indexerings princip som ett JSON-dokument som Azure Portal gör att du kan redigera den direkt.
 
-1. Logga in i [Azure-portalen](https://portal.azure.com/).
+1. Logga in på [Azure-portalen](https://portal.azure.com/).
 
 1. Skapa ett nytt Azure Cosmos DB-konto eller välj ett befintligt konto.
 

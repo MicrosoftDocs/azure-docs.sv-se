@@ -12,12 +12,12 @@ ms.date: 1/05/2021
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: 4674fe41a0e3d63ef0cadc6ad55eca02fc69618e
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: fd3e4a4442f7da89ffee1557e7d908db805931ed
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97935911"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98014882"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>Gör så här: Ange valfria anspråk för din app
 
@@ -37,7 +37,7 @@ Listor över standard anspråk finns i [åtkomsttoken](access-tokens.md) och [id
 
 | Kontotyp               | v 1.0-token | v 2.0-token |
 |----------------------------|-------------|-------------|
-| Personlig Microsoft-konto | Saknas         | Stöds   |
+| Personlig Microsoft-konto | Ej tillämpligt         | Stöds   |
 | Azure AD-konto           | Stöds   | Stöds   |
 
 ## <a name="v10-and-v20-optional-claims-set"></a>v 1.0 och v 2.0 valfria anspråks uppsättningar
@@ -136,7 +136,7 @@ Detta OptionalClaims-objekt gör att ID-token returneras till klienten för att 
 
 Du kan konfigurera valfria anspråk för ditt program via användar gränssnittet eller applikations manifestet.
 
-1. Gå till [Azure-portalen](https://portal.azure.com). 
+1. Gå till <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>. 
 1. Sök efter och välj **Azure Active Directory**.
 1. Välj **Appregistreringar** under **Hantera**.
 1. Välj det program som du vill konfigurera valfria anspråk för i listan.
@@ -245,7 +245,7 @@ Det här avsnittet beskriver konfigurations alternativen under valfria anspråk 
 
 **Konfigurera grupper valfria anspråk genom användar gränssnittet:**
 
-1. Logga in på [Azure-portalen](https://portal.azure.com).
+1. Logga in på <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
 1. När du har autentiserat väljer du din Azure AD-klient genom att välja den från det övre högra hörnet på sidan.
 1. Sök efter och välj **Azure Active Directory**.
 1. Välj **Appregistreringar** under **Hantera**.
@@ -258,7 +258,7 @@ Det här avsnittet beskriver konfigurations alternativen under valfria anspråk 
 
 **Konfigurera grupper valfria anspråk via applikations manifestet:**
 
-1. Logga in på [Azure-portalen](https://portal.azure.com).
+1. Logga in på <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
 1. När du har autentiserat väljer du din Azure AD-klient genom att välja den från det övre högra hörnet på sidan.
 1. Sök efter och välj **Azure Active Directory**.
 1. Välj det program som du vill konfigurera valfria anspråk för i listan.
@@ -389,7 +389,7 @@ I exemplet nedan använder du användar gränssnittet för **token-konfiguration
 
 **GRÄNSSNITTs konfiguration:**
 
-1. Logga in på [Azure-portalen](https://portal.azure.com).
+1. Logga in på <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
 1. När du har autentiserat väljer du din Azure AD-klient genom att välja den från det övre högra hörnet på sidan.
 
 1. Sök efter och välj **Azure Active Directory**.
@@ -412,7 +412,7 @@ I exemplet nedan använder du användar gränssnittet för **token-konfiguration
 
 **Manifest konfiguration:**
 
-1. Logga in på [Azure-portalen](https://portal.azure.com).
+1. Logga in på <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
 1. När du har autentiserat väljer du din Azure AD-klient genom att välja den från det övre högra hörnet på sidan.
 1. Sök efter och välj **Azure Active Directory**.
 1. Hitta det program som du vill konfigurera valfria anspråk för i listan och markera det.

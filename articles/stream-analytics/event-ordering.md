@@ -1,18 +1,17 @@
 ---
 title: Konfigurera principer för händelse ordning för Azure Stream Analytics
 description: Den här artikeln beskriver hur du konfigurerar inställningar för till och med att beställa i Stream Analytics
-author: sidram
+author: sidramadoss
 ms.author: sidram
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 08/06/2020
-ms.openlocfilehash: 80567a211f08d6322c80b6645f8b70ec7df64b59
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: f7ec6f32b48a93a29210311c7ba6747eb2e2d066
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130671"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98014303"
 ---
 # <a name="configuring-event-ordering-policies-for-azure-stream-analytics"></a>Konfigurera principer för händelse ordning för Azure Stream Analytics
 
@@ -20,9 +19,9 @@ I den här artikeln beskrivs hur du konfigurerar och använder sent mottagna och
 
 ## <a name="event-time-and-arrival-time"></a>Tid och tid för händelsen
 
-Ditt Stream Analytics-jobb kan bearbeta händelser baserat på *händelse tid* eller *tid för införsel* . **Händelse/tillämpnings tid** är tidsstämpeln som finns i händelse nytto lasten (när händelsen genererades). **Införsel tiden** är tidsstämpeln när händelsen togs emot i Indatakällan (Event Hubs/IoT Hub/blob-lagring). 
+Ditt Stream Analytics-jobb kan bearbeta händelser baserat på *händelse tid* eller *tid för införsel*. **Händelse/tillämpnings tid** är tidsstämpeln som finns i händelse nytto lasten (när händelsen genererades). **Införsel tiden** är tidsstämpeln när händelsen togs emot i Indatakällan (Event Hubs/IoT Hub/blob-lagring). 
 
-Som standard bearbetar Stream Analytics händelser efter *ankomst tid* , men du kan välja att bearbeta händelser efter *tidpunkt* genom att använda [timestamp by](/stream-analytics-query/timestamp-by-azure-stream-analytics) -satsen i frågan. Sena ingångs-och utgångs principer gäller endast om du bearbetar händelser efter händelse tid. Överväg krav på svarstid och korrekthet för ditt scenario när du konfigurerar de här inställningarna. 
+Som standard bearbetar Stream Analytics händelser efter *ankomst tid*, men du kan välja att bearbeta händelser efter *tidpunkt* genom att använda [timestamp by](/stream-analytics-query/timestamp-by-azure-stream-analytics) -satsen i frågan. Sena ingångs-och utgångs principer gäller endast om du bearbetar händelser efter händelse tid. Överväg krav på svarstid och korrekthet för ditt scenario när du konfigurerar de här inställningarna. 
 
 ## <a name="what-is-late-arrival-policy"></a>Vad är principen för händelser som kommer sent?
 
@@ -79,7 +78,7 @@ Det här meddelandet för att meddela att minst en partition i dina indata är t
 ## <a name="why-do-i-see-a-delay-of-5-seconds-even-when-my-late-arrival-policy-is-set-to-0"></a>Varför ser jag en fördröjning på 5 sekunder även om min sent införsel princip är inställd på 0?
 Detta inträffar när det finns en inpartition som aldrig har tagit emot några inaktuella ingångar. Du kan verifiera ingångs måtten efter partition för att validera det här beteendet. 
 
-När en partition inte har några data för mer än det konfigurerade tröskelvärdet för sent införsel, förflyttar sig Stream Analytics-programmet för program tids stämpling enligt beskrivningen i avsnittet om sortering av evenemang. Detta kräver uppskattad införsel tid. Om partitionen aldrig hade några data beräknar Stream Analytics ankomst tiden som *lokal tid – 5 sekunder* . På grund av dessa partitioner som aldrig hade några data kan det Visa en fördröjning på vattenstämpeln på 5 sekunder.  
+När en partition inte har några data för mer än det konfigurerade tröskelvärdet för sent införsel, förflyttar sig Stream Analytics-programmet för program tids stämpling enligt beskrivningen i avsnittet om sortering av evenemang. Detta kräver uppskattad införsel tid. Om partitionen aldrig hade några data beräknar Stream Analytics ankomst tiden som *lokal tid – 5 sekunder*. På grund av dessa partitioner som aldrig hade några data kan det Visa en fördröjning på vattenstämpeln på 5 sekunder.  
 
 ## <a name="next-steps"></a>Nästa steg
 * [Överväganden för tidshantering](stream-analytics-time-handling.md)

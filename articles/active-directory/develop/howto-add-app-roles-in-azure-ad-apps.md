@@ -13,12 +13,12 @@ ms.date: 11/13/2020
 ms.author: kkrishna
 ms.reviewer: marsma, kkrishna, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: bae8f0955ef45e21d38797789bdea4f62bf5ea28
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: b2ac90334ade52d68c775d9db5a84545774f3844
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97614939"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98013710"
 ---
 # <a name="how-to-add-app-roles-to-your-application-and-receive-them-in-the-token"></a>Gör så här: Lägg till app-roller i programmet och ta emot dem i token
 
@@ -49,7 +49,7 @@ Antalet roller som du lägger till räknas mot program manifest gränser som til
 
 Så här skapar du en app-roll med hjälp av Azure Portal användar gränssnittet:
 
-1. Logga in på [Azure-portalen](https://portal.azure.com).
+1. Logga in på <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
 1. Välj filtret **katalog + prenumeration** i den översta menyn och välj sedan den Azure Active Directory klient som innehåller den app-registrering som du vill lägga till en app-roll för.
 1. Sök efter och välj **Azure Active Directory**.
 1. Under **Hantera** väljer du **Appregistreringar** och väljer sedan det program som du vill definiera app-roller i.
@@ -74,7 +74,7 @@ Så här skapar du en app-roll med hjälp av Azure Portal användar gränssnitte
 
 För att lägga till roller genom att redigera manifestet direkt:
 
-1. Logga in på [Azure-portalen](https://portal.azure.com).
+1. Logga in på <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
 1. Välj filtret **katalog + prenumeration** i den översta menyn och välj sedan den Azure Active Directory klient som innehåller den app-registrering som du vill lägga till en app-roll för.
 1. Sök efter och välj **Azure Active Directory**.
 1. Under **Hantera** väljer du **Appregistreringar** och väljer sedan det program som du vill definiera app-roller i.
@@ -136,7 +136,7 @@ När du har lagt till app-roller i ditt program kan du tilldela roller till anv�
 
 Så här tilldelar du användare och grupper till roller med hjälp av Azure Portal:
 
-1. Logga in på [Azure-portalen](https://portal.azure.com).
+1. Logga in på <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
 1. I **Azure Active Directory** väljer du **företags program** i den vänstra navigerings menyn.
 1. Välj **alla program** om du vill visa en lista över alla dina program. Om ditt program inte visas i listan använder du filtren högst upp i listan **alla program** för att begränsa listan eller bläddra nedåt i listan för att hitta programmet.
 1. Välj det program som du vill tilldela användare eller säkerhets grupp till roller.
@@ -158,7 +158,7 @@ När du tilldelar app-roller till ett program skapar du *program behörigheter*.
 
 Så här tilldelar du app-roller till ett program med hjälp av Azure Portal:
 
-1. Logga in på [Azure-portalen](https://portal.azure.com).
+1. Logga in på <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
 1. I **Azure Active Directory** väljer du **Appregistreringar** i den vänstra navigerings menyn.
 1. Välj **alla program** om du vill visa en lista över alla dina program. Om ditt program inte visas i listan använder du filtren högst upp i listan **alla program** för att begränsa listan eller bläddra nedåt i listan för att hitta programmet.
 1. Välj det program som du vill tilldela en app-roll till.

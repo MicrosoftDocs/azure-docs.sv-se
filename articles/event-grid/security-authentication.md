@@ -2,13 +2,13 @@
 title: Autentisera händelse leverans till händelse hanterare (Azure Event Grid)
 description: I den här artikeln beskrivs olika sätt att autentisera leverans till händelse hanterare i Azure Event Grid.
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: abe16c9598c8c10caa832150aafac997dd7f1624
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 01/07/2021
+ms.openlocfilehash: 8360aa49e3d83879499af79448ff9f85082f47ac
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87460651"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015546"
 ---
 # <a name="authenticate-event-delivery-to-event-handlers-azure-event-grid"></a>Autentisera händelse leverans till händelse hanterare (Azure Event Grid)
 Den här artikeln innehåller information om hur du autentiserar händelse leverans till händelse hanterare. Den visar också hur du skyddar webhook-slutpunkter som används för att ta emot händelser från Event Grid med Azure Active Directory (Azure AD) eller en delad hemlighet.
@@ -16,7 +16,7 @@ Den här artikeln innehåller information om hur du autentiserar händelse lever
 ## <a name="use-system-assigned-identities-for-event-delivery"></a>Använd systemtilldelade identiteter för händelse leverans
 Du kan aktivera en systemtilldelad hanterad identitet för ett ämne eller en domän och använda identiteten för att vidarebefordra händelser till destinationer som stöds, till exempel Service Bus köer och ämnen, Event Hub och lagrings konton.
 
-Här är stegen: 
+Gör så här: 
 
 1. Skapa ett ämne eller en domän med en tilldelad identitet eller uppdatera ett befintligt ämne eller en befintlig domän för att aktivera identitet. 
 1. Lägg till identiteten i en lämplig roll (till exempel Service Bus data avsändare) på målet (till exempel en Service Bus kö).
@@ -41,6 +41,9 @@ Mer information om att leverera händelser till Webhooks finns i avsnittet om [l
 
 > [!IMPORTANT]
 Azure Event Grid stöder endast **https** webhook-slutpunkter. 
+
+## <a name="endpoint-validation-with-cloudevents-v10"></a>Slut punkts validering med CloudEvents v 1.0
+Om du redan är bekant med Event Grid kan du vara medveten om slut punkts valideringens hand skakning för att förhindra missbruk. CloudEvents v 1.0 implementerar egna [skydds](webhook-event-delivery.md) objekt för missbruk med hjälp av **http-alternativ-** metoden. Läs mer om det i [HTTP 1,1-webbhookar för Event Delivery-Version 1,0](https://github.com/cloudevents/spec/blob/v1.0/http-webhook.md#4-abuse-protection). När du använder CloudEvents-schemat för utdata använder Event Grid CloudEvents v 1.0-skyddet mot missbruk i stället för mekanismen för Event Grid validerings händelser. Mer information finns i [use CloudEvents v 1.0 schema med event Grid](cloudevents-schema.md). 
 
 
 ## <a name="next-steps"></a>Nästa steg

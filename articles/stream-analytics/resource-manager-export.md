@@ -2,17 +2,17 @@
 title: Exportera en Azure Stream Analytics jobb Azure Resource Manager mall
 description: I den här artikeln beskrivs hur du exporterar en Azure Resource Manager-mall för ditt Azure Stream Analytics-jobb.
 services: stream-analytics
-author: mamccrea
-ms.author: mamccrea
+author: sidramadoss
+ms.author: sidram
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: 2afebe61c4b2998692c823e66d8fc73584ec1dc2
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: aa17d83dcc14675db5ff6aa4597314baffbffdbb
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93125656"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015427"
 ---
 # <a name="export-an-azure-stream-analytics-job-azure-resource-manager-template"></a>Exportera en Azure Stream Analytics jobb Azure Resource Manager mall
 
@@ -24,7 +24,7 @@ Du kan distribuera om ett Azure Stream Analytics jobb genom att exportera Azure 
 
 Innan du kan exportera en mall måste du först öppna ett befintligt Stream Analytics-jobb i Visual Studio Code. 
 
-Om du vill exportera ett jobb till ett lokalt projekt letar du reda på det jobb som du vill exportera i **Stream Analytics Explorer** i Azure Portal. Från sidan **fråga** väljer du **Öppna i Visual Studio** . Välj sedan **Visual Studio Code** .
+Om du vill exportera ett jobb till ett lokalt projekt letar du reda på det jobb som du vill exportera i **Stream Analytics Explorer** i Azure Portal. Från sidan **fråga** väljer du **Öppna i Visual Studio**. Välj sedan **Visual Studio Code**.
 
 ![Öppna Stream Analytics jobb i Visual Studio Code](./media/resource-manager-export/open-job-vs-code.png)
 
@@ -58,7 +58,7 @@ Sedan slutför du filen med parametrar för Azure Resource Management-mallen.
 
 Du är redo att distribuera ditt Azure Stream Analytics-jobb med hjälp av Azure Resource Manager mallar som du skapade i föregående avsnitt.
 
-Kör följande kommando i ett PowerShell-fönster. Se till att reaplce *ResourceGroupName* , *TemplateFile* och *TemplateParameterFile* med det faktiska resurs grupps namnet och de fullständiga sök vägarna till *JobTemplate.jspå* och *JobTemplate.parameters.jspå* filer i **mappen distribuera** i arbets ytan jobb.
+Kör följande kommando i ett PowerShell-fönster. Se till att reaplce *ResourceGroupName*, *TemplateFile* och *TemplateParameterFile* med det faktiska resurs grupps namnet och de fullständiga sök vägarna till *JobTemplate.jspå* och *JobTemplate.parameters.jspå* filer i **mappen distribuera** i arbets ytan jobb.
 
 Om du inte har Azure PowerShell konfigurerat följer du stegen i [installera Azure PowerShell-modulen](/powershell/azure/install-Az-ps).
 
