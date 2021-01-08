@@ -14,6 +14,8 @@
   items:
     - name: Skapa en Azure Dedicated HSM med Azure PowerShell
       href: quickstart-create-hsm-powershell.md
+    - name: Skapa en Azure Dedicated HSM med Azure CLI
+      href: quickstart-hsm-azure-cli.md
 - name: Begrepp
   items:
     - name: Hög tillgänglighet

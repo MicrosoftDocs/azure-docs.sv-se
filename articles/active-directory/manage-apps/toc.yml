@@ -37,16 +37,12 @@
     - name: Azure PowerShell-exempel för Application Proxy
       href: application-proxy-powershell-samples.md
 - name: Begrepp
-  expanded: false
+  expanded: true
   items:
     - name: Metodtips för apphantering
       href: application-management-fundamentals.md
     - name: Vanliga scenarier för apphantering
       href: common-scenarios.md
-    - name: Visa appar i din klientorganisation
-      href: application-types.md
-    - name: Tilldela användare till appar
-      href: ways-users-get-assigned-to-applications.md
     - name: Planera integration av en molnapp
       items:
         - name: Komma igång med appintegrering
@@ -286,6 +282,10 @@
       href: application-proxy-faq.md
     - name: Versionshistorik för programproxy
       href: application-proxy-release-version-history.md
+    - name: Anledningar till att appar visas i Företagsprogram
+      href: application-types.md
+    - name: Anledningar till att användare tilldelas till en app
+      href: ways-users-get-assigned-to-applications.md
 - name: Resurser
   items:
     - name: Support- och hjälpalternativ för utvecklare
