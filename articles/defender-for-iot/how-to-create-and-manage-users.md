@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 1/3/2021
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: 22d0c59110ba033232fbdf41062b49e9a146ca6f
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: c33b3e5fee19edc5d4ac85284e507b53e96234a0
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955104"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97977021"
 ---
 # <a name="about-defender-for-iot-console-users"></a>Om Defender för IoT Console-användare
 
@@ -223,8 +223,6 @@ Så här återställer du lösen ordet för en CyberX-eller support användare:
     > Ändra inte lösen ords återställnings filen. Det är en signerad fil och fungerar inte om du manipulerar den.
 
 1. På skärmen för **lösen ords återställning** väljer du **överför**. Fönstret **överför lösen ords återställnings fil** öppnas.
-
-   :::image type="content" source="media/password-recovery-images/upload.png" alt-text="Ladda upp din återställnings fil för att få ett nytt lösen ord.":::
 
 1. Välj **Bläddra** för att hitta `password_recovery.zip` filen eller dra `password_recovery.zip` till fönstret.
 

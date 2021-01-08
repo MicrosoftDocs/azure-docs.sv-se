@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d634978333e2b833324228fb0908cfba61a786d
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 0d04f2d1717e1d95f8bcafb8f72f2b0a2f83a248
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96919748"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97976834"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Behörigheter för administratörsrollen i Azure Active Directory
 
@@ -80,7 +80,7 @@ Användare med den här rollen kan ange eller återställa autentiseringsuppgift
 Rollen [Privileged Authentication Administrator](#privileged-authentication-administrator) har behörighet kan framtvinga omregistrering och Multi-Factor Authentication för alla användare.
 
 > [!IMPORTANT]
-> Användare med den här rollen kan ändra autentiseringsuppgifter för personer som kan ha åtkomst till känslig eller privat information eller kritisk konfiguration i och utanför Azure Active Directory. Att ändra autentiseringsuppgifterna för en användare kan innebära att du förutsätter att användarens identitet och behörigheter. Exempel:
+> Användare med den här rollen kan ändra autentiseringsuppgifter för personer som kan ha åtkomst till känslig eller privat information eller kritisk konfiguration i och utanför Azure Active Directory. Att ändra autentiseringsuppgifterna för en användare kan innebära att du förutsätter att användarens identitet och behörigheter. Ett exempel:
 >
 >* Program registrering och företags program ägare, som kan hantera autentiseringsuppgifter för appar som de äger. De här apparna kan ha privilegierade behörigheter i Azure AD och inte beviljas till autentiserings administratörer. Genom den här sökvägen kan en administratörs administratör kunna ta hänsyn till identiteten för en program ägare och sedan ytterligare anta identiteten för ett privilegierat program genom att uppdatera autentiseringsuppgifterna för programmet.
 >* Azure-Prenumerationens ägare, som kan ha åtkomst till känslig eller privat information eller kritisk konfiguration i Azure.
@@ -260,7 +260,7 @@ Användare med den här rollen kan ändra lösen ord, ogiltig uppdatera tokens, 
 * Rapportläsare
 
 > [!IMPORTANT]
-> Användare med den här rollen kan ändra lösen ord för personer som kan ha åtkomst till känslig eller privat information eller kritisk konfiguration i och utanför Azure Active Directory. Att ändra lösen ordet för en användare kan innebära att du antar användarens identitet och behörigheter. Exempel:
+> Användare med den här rollen kan ändra lösen ord för personer som kan ha åtkomst till känslig eller privat information eller kritisk konfiguration i och utanför Azure Active Directory. Att ändra lösen ordet för en användare kan innebära att du antar användarens identitet och behörigheter. Ett exempel:
 >
 >- Program registrering och företags program ägare, som kan hantera autentiseringsuppgifter för appar som de äger. De här apparna kan ha privilegierade behörigheter i Azure AD och beviljas ingen annan support administratör. Med hjälp av den här sökvägen kan IT-administratören kunna ta hänsyn till identiteten för en program ägare och sedan ytterligare utgå från identiteten för ett privilegierat program genom att uppdatera autentiseringsuppgifterna för programmet.
 >- Azure-Prenumerationens ägare, som kan ha åtkomst till känslig eller privat information eller kritisk konfiguration i Azure.
@@ -500,7 +500,7 @@ Användare med den här rollen kan skapa användare och hantera alla aspekter av
 | Endast på användare som inte är administratörer eller någon av följande begränsade administratörs roller:<ul><li>Katalog läsare<li>Grupp administratör<li>Gäst deltagare<li>Support administratör<li>Meddelande Center läsare<li>Lösen ords administratör<li>Rapportläsare<li>Användaradministratör|<p>Ta bort och Återställ</p><p>Inaktivera och aktivera</p><p>Invalidera uppdateringstoken</p><p>Hantera alla användar egenskaper inklusive användarens huvud namn</p><p>Återställa lösenord</p><p>Uppdatera (FIDO) enhets nycklar</p>|
 
 > [!IMPORTANT]
-> Användare med den här rollen kan ändra lösen ord för personer som kan ha åtkomst till känslig eller privat information eller kritisk konfiguration i och utanför Azure Active Directory. Att ändra lösen ordet för en användare kan innebära att du antar användarens identitet och behörigheter. Exempel:
+> Användare med den här rollen kan ändra lösen ord för personer som kan ha åtkomst till känslig eller privat information eller kritisk konfiguration i och utanför Azure Active Directory. Att ändra lösen ordet för en användare kan innebära att du antar användarens identitet och behörigheter. Ett exempel:
 >
 >- Program registrering och företags program ägare, som kan hantera autentiseringsuppgifter för appar som de äger. Dessa appar kan ha privilegierade behörigheter i Azure AD och inte beviljas till användar administratörer. Genom den här sökvägen kan en användar administratör kunna ta hänsyn till identiteten för en program ägare och sedan ytterligare anta identiteten för ett privilegierat program genom att uppdatera autentiseringsuppgifterna för programmet.
 >- Azure-Prenumerationens ägare, som kan ha åtkomst till känslig eller privat information eller kritisk konfiguration i Azure.
@@ -1434,6 +1434,14 @@ Använd inte – inte avsedd för allmän användning.
 
 | **Åtgärder** | **Beskrivning** |
 | --- | --- |
+| Microsoft. Directory/Applications/appRoles/Update | Hantera app-roller och begär delegerade behörigheter för program. |
+| Microsoft. Directory/program/mål grupp/uppdatering | Uppdatera mål gruppen för alla typer av program. |
+| Microsoft. Directory/program/autentisering/uppdatering | Uppdatera autentiseringen för alla typer av program. |
+| Microsoft. Directory/Applications/Basic/Update | Uppdatera grundläggande egenskaper för alla typer av program. |
+| Microsoft. Directory/program/autentiseringsuppgifter/uppdatera | Uppdatera autentiseringsuppgifter för alla typer av program. |
+| Microsoft. Directory/program/ägare/uppdatering | Uppdatera ägare för alla typer av program. |
+| Microsoft. Directory/program/behörigheter/uppdatera | Uppdatera exponerade behörigheter och nödvändiga behörigheter för alla typer av program. |
+| Microsoft. Directory/Applications/policies/Update | Uppdatera Applications. policys-egenskapen i Azure Active Directory. |
 | Microsoft. Directory/Contacts/Basic/Update | Uppdatera grundläggande egenskaper för kontakter i Azure Active Directory. |
 | Microsoft. Directory/kontakter/skapa | Skapa kontakter i Azure Active Directory. |
 | Microsoft. Directory/Contacts/Delete | Ta bort kontakter i Azure Active Directory. |
@@ -1467,6 +1475,14 @@ Använd inte – inte avsedd för allmän användning.
 
 | **Åtgärder** | **Beskrivning** |
 | --- | --- |
+| Microsoft. Directory/Applications/appRoles/Update | Hantera app-roller och begär delegerade behörigheter för program. |
+| Microsoft. Directory/program/mål grupp/uppdatering | Uppdatera mål gruppen för alla typer av program. |
+| Microsoft. Directory/program/autentisering/uppdatering | Uppdatera autentiseringen för alla typer av program. |
+| Microsoft. Directory/Applications/Basic/Update | Uppdatera grundläggande egenskaper för alla typer av program. |
+| Microsoft. Directory/program/autentiseringsuppgifter/uppdatera | Uppdatera autentiseringsuppgifter för alla typer av program. |
+| Microsoft. Directory/program/ägare/uppdatering | Uppdatera ägare för alla typer av program. |
+| Microsoft. Directory/program/behörigheter/uppdatera | Uppdatera exponerade behörigheter och nödvändiga behörigheter för alla typer av program. |
+| Microsoft. Directory/Applications/policies/Update | Uppdatera Applications. policys-egenskapen i Azure Active Directory. |
 | Microsoft. Directory/Contacts/Basic/Update | Uppdatera grundläggande egenskaper för kontakter i Azure Active Directory. |
 | Microsoft. Directory/kontakter/skapa | Skapa kontakter i Azure Active Directory. |
 | Microsoft. Directory/Contacts/Delete | Ta bort kontakter i Azure Active Directory. |

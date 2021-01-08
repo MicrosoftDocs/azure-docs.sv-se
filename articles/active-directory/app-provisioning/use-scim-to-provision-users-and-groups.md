@@ -12,12 +12,12 @@ ms.date: 09/15/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: a0abbacc55cff2f561323a22dd83311c87b1511d
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 90debef39b3e657bf96221dfaf5fa762d332a364
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97584501"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97976528"
 ---
 # <a name="tutorial---build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>Självstudie – Bygg en SCIM-slutpunkt och konfigurera användar etablering med Azure AD
 
@@ -330,7 +330,7 @@ Det här avsnittet innehåller exempel på SCIM-begäranden som har genererats a
 
 *Hämta/Users? filter = userName EQ "Test_User_dfeef4c5-5681 -4387-b016-bdf221e82081"*
 
-##### <a name="response"></a><a name="response-2"></a>Svarade
+##### <a name="response"></a><a name="response-2"></a>Svarsåtgärder
 
 *HTTP/1.1 200 OK*
 ```json
@@ -371,7 +371,7 @@ Det här avsnittet innehåller exempel på SCIM-begäranden som har genererats a
 
 *Hämta/Users? filter = userName EQ "obefintlig användare"*
 
-##### <a name="response"></a><a name="response-3"></a>Svarade
+##### <a name="response"></a><a name="response-3"></a>Svarsåtgärder
 
 *HTTP/1.1 200 OK*
 ```json
@@ -408,7 +408,7 @@ Det här avsnittet innehåller exempel på SCIM-begäranden som har genererats a
 }
 ```
 
-##### <a name="response"></a><a name="response-4"></a>Svarade
+##### <a name="response"></a><a name="response-4"></a>Svarsåtgärder
 
 *HTTP/1.1 200 OK*
 ```json
@@ -452,7 +452,7 @@ Det här avsnittet innehåller exempel på SCIM-begäranden som har genererats a
 }
 ```
 
-##### <a name="response"></a><a name="response-5"></a>Svarade
+##### <a name="response"></a><a name="response-5"></a>Svarsåtgärder
 
 *HTTP/1.1 200 OK*
 ```json
@@ -501,7 +501,7 @@ Det här avsnittet innehåller exempel på SCIM-begäranden som har genererats a
 }
 ```
 
-##### <a name="response"></a><a name="response-14"></a>Svarade
+##### <a name="response"></a><a name="response-14"></a>Svarsåtgärder
 
 ```json
 {
@@ -541,7 +541,7 @@ Det här avsnittet innehåller exempel på SCIM-begäranden som har genererats a
 
 *TA bort/users/5171a35d82074e068ce2 HTTP/1.1*
 
-##### <a name="response"></a><a name="response-6"></a>Svarade
+##### <a name="response"></a><a name="response-6"></a>Svarsåtgärder
 
 *HTTP/1.1 204 inget innehåll*
 
@@ -568,7 +568,7 @@ Det här avsnittet innehåller exempel på SCIM-begäranden som har genererats a
 }
 ```
 
-##### <a name="response"></a><a name="response-7"></a>Svarade
+##### <a name="response"></a><a name="response-7"></a>Svarsåtgärder
 
 *HTTP/1.1 201 har skapats*
 ```json
@@ -593,7 +593,7 @@ Det här avsnittet innehåller exempel på SCIM-begäranden som har genererats a
 
 *Hämta/Groups/40734ae655284ad3abcc? excludedAttributes = medlemmar HTTP/1.1*
 
-##### <a name="response"></a><a name="response-8"></a>Svarade
+##### <a name="response"></a><a name="response-8"></a>Svarsåtgärder
 *HTTP/1.1 200 OK*
 ```json
 {
@@ -614,7 +614,7 @@ Det här avsnittet innehåller exempel på SCIM-begäranden som har genererats a
 ##### <a name="request"></a><a name="request-9"></a>Förfrågan
 *Hämta/Groups? excludedAttributes = members&filter = displayName EQ "HTTP/1.1*
 
-##### <a name="response"></a><a name="response-9"></a>Svarade
+##### <a name="response"></a><a name="response-9"></a>Svarsåtgärder
 
 *HTTP/1.1 200 OK*
 ```json
@@ -654,7 +654,7 @@ Det här avsnittet innehåller exempel på SCIM-begäranden som har genererats a
 }
 ```
 
-##### <a name="response"></a><a name="response-10"></a>Svarade
+##### <a name="response"></a><a name="response-10"></a>Svarsåtgärder
 
 *HTTP/1.1 204 inget innehåll*
 
@@ -677,7 +677,7 @@ Det här avsnittet innehåller exempel på SCIM-begäranden som har genererats a
 }
 ```
 
-##### <a name="response"></a><a name="response-11"></a>Svarade
+##### <a name="response"></a><a name="response-11"></a>Svarsåtgärder
 
 *HTTP/1.1 204 inget innehåll*
 
@@ -700,7 +700,7 @@ Det här avsnittet innehåller exempel på SCIM-begäranden som har genererats a
 }
 ```
 
-##### <a name="response"></a><a name="response-12"></a>Svarade
+##### <a name="response"></a><a name="response-12"></a>Svarsåtgärder
 
 *HTTP/1.1 204 inget innehåll*
 
@@ -710,7 +710,7 @@ Det här avsnittet innehåller exempel på SCIM-begäranden som har genererats a
 
 *TA bort/Groups/cdb1ce18f65944079d37 HTTP/1.1*
 
-##### <a name="response"></a><a name="response-13"></a>Svarade
+##### <a name="response"></a><a name="response-13"></a>Svarsåtgärder
 
 *HTTP/1.1 204 inget innehåll*
 
@@ -1118,7 +1118,7 @@ Kontakta din programprovider eller dokumentationen för program leverantören om
 > [!IMPORTANT]
 > Azure AD SCIM-implementeringen bygger på Azure AD-tjänsten för användar etablering, som är utformad för att ständigt hålla användarna synkroniserade mellan Azure AD och mål programmet och implementerar en mycket specifik uppsättning standard åtgärder. Det är viktigt att förstå dessa beteenden för att förstå beteendet för Azure AD SCIM-klienten. Mer information finns i avsnittet [etablerings cykler: initial och stegvisa](how-provisioning-works.md#provisioning-cycles-initial-and-incremental) [anvisningar för hur etablering fungerar](how-provisioning-works.md).
 
-### <a name="getting-started"></a>Komma igång
+### <a name="getting-started"></a>Kom igång
 
 Program som stöder SCIM-profilen som beskrivs i den här artikeln kan anslutas till Azure Active Directory med hjälp av funktionen "icke-galleriprogram" i program galleriet för Azure AD. När du är ansluten kör Azure AD en synkroniseringsprocess var 40 minut där den frågar programmets SCIM-slutpunkt för tilldelade användare och grupper och skapar eller ändrar dem enligt tilldelnings informationen.
 
@@ -1217,7 +1217,7 @@ Steg i OAuth Code Granting-flödet:
 > [!NOTE]
 > Det går inte att konfigurera OAuth i det program som inte är galleriet i dag, men du kan skapa en åtkomsttoken manuellt från din Authorization Server och inmatade värden i fältet hemligt token i program som inte är Galleri. På så sätt kan du kontrol lera kompatibiliteten för SCIM-servern med Azure AD SCIM-klienten innan du registrerar i app-galleriet, som har stöd för OAuth-kod beviljande.  
 
-**OAuth-token för lång livs längd:** Om ditt program inte stöder OAuth-auktoriseringsvärdet för OAuth-auktoriseringskod kan du också generera en lång livs längd för OAuth Bearer-token som en administratör kan använda för att konfigurera etablerings integrationen. Token ska vara beständig, annars placeras etablerings jobbet i [karantän](application-provisioning-quarantine-status.md) när token upphör att gälla. Denna token måste vara lägre 1 KB i storlek.  
+**OAuth-token för lång livs längd:** Om ditt program inte stöder OAuth-auktoriseringsvärdet för OAuth-auktoriseringskod kan du också generera en lång livs längd för OAuth Bearer-token som en administratör kan använda för att konfigurera etablerings integrationen. Token ska vara beständig, annars placeras etablerings jobbet i [karantän](application-provisioning-quarantine-status.md) när token upphör att gälla.
 
 Om du vill ha ytterligare metoder för autentisering och auktorisering kan du berätta för oss på [UserVoice](https://aka.ms/appprovisioningfeaturerequest).
 

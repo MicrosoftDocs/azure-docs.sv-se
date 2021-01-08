@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/31/2020
 ms.author: robreed
-ms.openlocfilehash: aa95d6792f2f5754a237c7bf5e90a11e2e011ede
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: b0502fb05043a54d81d768a7809d19b108cc6248
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97861783"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97976851"
 ---
 # <a name="custom-script-extension-for-windows"></a>Anpassat skripttillägg för Windows
 
@@ -50,6 +50,8 @@ Du kan konfigurera tillägget så att det använder Azure Blob Storage-autentise
 ### <a name="internet-connectivity"></a>Internet anslutning
 
 Om du behöver hämta ett skript externt, till exempel från GitHub eller Azure Storage, måste du öppna ytterligare brand Väggs-och nätverks säkerhets grupps portar. Om ditt skript till exempel finns i Azure Storage kan du tillåta åtkomst med hjälp av Azure NSG service-taggar för [lagring](../../virtual-network/network-security-groups-overview.md#service-tags).
+
+Observera att CustomScript-tillägget inte har något sätt att kringgå certifikat verifieringen. Så om du laddar ned från en säker plats med t. ex. ett självsignerat certifikat kan du sluta med fel som *"Fjärrcertifikatet är ogiltigt enligt validerings proceduren"*. Kontrol lera att certifikatet är korrekt installerat i arkivet *"betrodda rot certifikat utfärdare"* på den virtuella datorn.
 
 Om ditt skript finns på en lokal server kanske du fortfarande behöver fler brand väggar och nätverks säkerhets grupps portar måste öppnas.
 
@@ -345,7 +347,7 @@ där `<n>` är ett decimal tal som kan ändras mellan körningar av tillägget. 
 
 När `commandToExecute` kommandot körs anger tillägget den här katalogen (till exempel `...\Downloads\2` ) som den aktuella arbets katalogen. Den här processen gör det möjligt att använda relativa sökvägar för att hitta filerna som hämtats via `fileURIs` egenskapen. Se tabellen nedan för exempel.
 
-Eftersom den absoluta nedladdnings Sök vägen kan variera med tiden är det bättre att välja relativa skript-och fil Sök vägar i `commandToExecute` strängen, närhelst det är möjligt. Exempel:
+Eftersom den absoluta nedladdnings Sök vägen kan variera med tiden är det bättre att välja relativa skript-och fil Sök vägar i `commandToExecute` strängen, närhelst det är möjligt. Ett exempel:
 
 ```json
 "commandToExecute": "powershell.exe . . . -File \"./scripts/myscript.ps1\""

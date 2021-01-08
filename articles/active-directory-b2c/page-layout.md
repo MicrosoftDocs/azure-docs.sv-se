@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 08/24/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: beb38be985457ea36b2cea9a6dc337ba305d503f
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 4237aba81a01423a3356a30879fbd27450c876bd
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97108509"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97976511"
 ---
 # <a name="page-layout-versions"></a>Sidlayoutversioner
 
@@ -51,7 +51,7 @@ Sid inlayout-paket uppdateras regelbundet för att inkludera korrigeringar och f
 - Fokus placeras nu i fältet lösen ord när e-postmeddelandet har verifierats.
 - Har tagits bort `autofocus` från kryss Rute kontrollen. 
 - Stöd har lagts till för en visnings kontroll för verifiering av telefonnummer.
-- Nu kan du lägga till `data-preload="true"` attributet [i dina HTML-taggar] (anpassa-UI-with-html. MD # rikt linjer – för
+- Nu kan du lägga till `data-preload="true"` attributet [i HTML-taggarna](customize-ui-with-html.md#guidelines-for-using-custom-page-content)
   - Läs in länkade CSS-filer samtidigt som din HTML-mall så att den inte flimrar mellan att läsa in filerna.
   - Styra i vilken ordning `script` taggarna ska hämtas och köras före sid inläsningen.
 - E-postfältet är nu `type=email` och mobila tangent bord kommer att ange rätt förslag.

@@ -1,18 +1,18 @@
 ---
-title: Arbeta med sensor enhets kartan
+title: Arbeta med kartan över sensorenheter
 description: Enhets kartan ger en grafisk representation av nätverks enheter som har identifierats. Använd kartan för att analysera och hantera enhets information, nätverks segment och generera rapporter.
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 12/07/2020
+ms.date: 1/7/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: dd0f28411dccab1a1dd36fbd01d2d1acbcc689e0
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: fd1721060bdc4b18f324a94f7c367bacde6ed4e8
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97843859"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97976766"
 ---
 # <a name="investigate-sensor-detections-in-the-device-map"></a>Undersök sensor identifieringar i enhets kartan
 
@@ -59,7 +59,7 @@ Varje undernät presenteras som en enskild enhet på enhets kartan, inklusive en
 
 Figuren nedan visar ett minimerat IT-undernät med 27-nätverks element.
 
-:::image type="content" source="media/how-to-work-with-maps/shrunk-it-subnet.png" alt-text="minimerat IT-undernät med 27 IT-nätverks element":::
+:::image type="content" source="media/how-to-work-with-maps/shrunk-it-subnet-v2.png" alt-text="minimerat IT-undernät med 27 IT-nätverks element":::
 
 Så här aktiverar du funktionen för att dölja IT-nätverk:
 
@@ -120,7 +120,7 @@ Följande fördefinierade grupper är tillgängliga:
 
 | Gruppnamn | Beskrivning |
 |--|--|
-| **Kända program eller icke-standrad portar (standard)** | Enheter som använder reserverade portar, till exempel TCP. Enheter som använder andra portar än standard portar eller portar som inte har tilldelats ett alias. |
+| **Kända program eller portar som inte är standard (standard)** | Enheter som använder reserverade portar, till exempel TCP. Enheter som använder andra portar än standard portar eller portar som inte har tilldelats ett alias. |
 | **Överliggande protokoll (standard)** | Enheter som hanterar den andra trafiken. |
 | **Auktorisering (standard)** | Enheter som identifierades i nätverket under inlärnings processen eller som officiellt har lagts till i nätverket |
 | **Enhets inventerings filter** | Enheter grupperade enligt de filter som sparas i enhets inventerings tabellen. |
@@ -226,7 +226,7 @@ Ikonen enhets typ visas med anslutna enheter.
 
 I den detaljerade vyn presenteras enheter och enhets etiketter och indikatorer med följande information:
 
-:::image type="content" source="media/how-to-work-with-maps/device-map.png" alt-text="Detaljerad vy":::
+:::image type="content" source="media/how-to-work-with-maps/device-map-v2.png" alt-text="Detaljerad vy":::
 
 ### <a name="control-the-zoom-view"></a>Styr vyn zooma
 
@@ -236,7 +236,7 @@ Den kartdata som visas beror på kart zoomnings nivån. Att växla mellan kartda
 
 ### <a name="enable-simplified-zoom-views"></a>Aktivera förenklade zoom-vyer
 
-Administratörer som vill ha säkerhetsanalytiker och RO-användare som har åtkomst till Brid-ögon-och enhets-och typ anslutnings vyer bör aktivera alternativet förenklad vy.
+Administratörer som vill ha säkerhetsanalytiker och RO-användare som har åtkomst till fågels ögon-och enhets-och typ anslutnings vyer bör aktivera alternativet förenklad vy.
 
 Så här aktiverar du förenklade kart lägen:
 
@@ -359,7 +359,7 @@ Följande tabell visar alla typer i systemet:
 | Kategori | Enhetstyp |
 |--|--|
 | DENNA | Teknik Station <br /> FOTOGRAF <br />Historian <br />HMI <br />IED <br />DCS-kontrollant <br />RTU <br />System för industriella förpackningar <br />Industriell skala <br />Industriell robot <br />Plats <br />Mätare <br />Variabel frekvens enhet  <br />Robot kontroll enhet <br />Servisk enhet <br />Pneumatisk enhet <br />Ramen |
-| IT | Domänkontrollant <br />DB-server <br />Arbetsstation <br />Server <br />Terminal Station <br />Lagring <br />Mobil telefon <br />Surfplatta <br />Säkerhets kopierings Server |
+| IT | Domänkontrollant <br />DB-server <br />Arbetsstation <br />Server <br />Terminal Station <br />Storage <br />Mobil telefon <br />Surfplatta <br />Säkerhets kopierings Server |
 | IoT | IP-kamera <br />Skrivare  <br />Håls lags klocka <br />ATM <br />Smart TV <br />Spel konsol <br />DVR <br />Dörr kontroll panel <br />HVAC <br />Termostat <br />Brand larm <br />Smart ljus <br />Smart växel <br />Brand detektor <br />IP-telefon <br />Larm system <br />Alarm siren <br />Rörelsedetektor <br />Hissen <br />Fuktighets sensor <br />Streckkodsläsare <br />Avbrotts fri ström källa <br />Person räknar system <br />Intercom <br />Turnstile |
 | Nätverk | Trådlös åtkomst punkt <br />Router <br />Switch <br />Brandvägg <br />VPN Gateway <br />NTP-server <br />WiFi ananas <br />Fysisk plats <br />I/O-kort <br /> Protokoll konverterare |
 
@@ -482,7 +482,7 @@ Aviseringar utlöses när obehöriga programmerings enheter utför programmering
 
 I det här avsnittet beskrivs hur du visar programfiler och jämför versioner. Sök efter vissa filer som har skickats till en programmerad enhet. Sök efter filer baserat på:
 
-  - Date
+  - Datum
 
   - Filtyp
 
@@ -492,7 +492,7 @@ I det här avsnittet beskrivs hur du visar programfiler och jämför versioner. 
 |--|--|
 | Programmerad enhet | Innehåller information om den enhet som har programmerats, inklusive värdnamn och fil. |
 | Senaste händelser | Visar de 50 senaste händelserna som identifierats av sensorn. <br />För att markera en händelse, Hovra över den och klicka på stjärnan. :::image type="icon" source="media/how-to-work-with-maps/star.png" border="false"::: <br /> De senaste 50 händelserna kan visas. |
-| Files | Visar de filer som identifierats för det valda datumet och fil storleken på den programmerade enheten. <br /> Som standard är det maximala antalet filer som är tillgängliga för visning per enhet 300. <br /> Som standard är den maximala fil storleken för varje fil 15 MB. |
+| Filer | Visar de filer som identifierats för det valda datumet och fil storleken på den programmerade enheten. <br /> Som standard är det maximala antalet filer som är tillgängliga för visning per enhet 300. <br /> Som standard är den maximala fil storleken för varje fil 15 MB. |
 | Fil status :::image type="icon" source="media/how-to-work-with-maps/status-v2.png" border="false"::: | Fil etiketter anger status för filen på enheten, inklusive: <br /> **Tillagt**: filen lades till i slut punkten vid vald datum eller tid. <br /> **Uppdaterad**: filen uppdaterades vid det datum eller den tid som valts. <br /> **Borttagen**: den här filen har tagits bort. <br /> **Ingen etikett**: filen ändrades inte.   |
 | Programmerings enhet | Enheten som gjorde programmerings ändringen. Flera enheter kan ha utfört programmerings ändringar på en program enhet. Värdnamn, datum eller tid för ändring och inloggad användare visas. |
 | :::image type="icon" source="media/how-to-work-with-maps/current.png" border="false"::: | Visar den aktuella filen som är installerad på den programmerade enheten. |

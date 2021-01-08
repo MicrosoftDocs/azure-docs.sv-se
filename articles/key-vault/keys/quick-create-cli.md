@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 03/30/2020
 ms.author: mbaldwin
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 3906de9cd94b4db3e675c2b822df2f061040c586
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 8da5e86362f41322102c3b5316df5743e0c2458f
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97935299"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97977002"
 ---
 # <a name="quickstart-set-and-retrieve-a-key-from-azure-key-vault-using-azure-cli"></a>Snabb start: Ange och hämta en nyckel från Azure Key Vault med Azure CLI
 
@@ -59,7 +59,7 @@ Nu är ditt Azure-konto det enda kontot med behörighet att utföra åtgärder i
 
 Om du vill lägga till en nyckel i valvet behöver du bara göra några ytterligare steg. Den här nyckeln kan användas av ett program. 
 
-Skriv följande kommandon för att skapa en anropad **ExampleKey** :
+Skriv följande kommandon för att skapa en nyckel med namnet **ExampleKey** :
 
 ```azurecli
 az keyvault key create --vault-name "Contoso-Vault2" -n ExampleKey --protection software

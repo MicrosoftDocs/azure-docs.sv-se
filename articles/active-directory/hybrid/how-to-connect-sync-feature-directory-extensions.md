@@ -16,12 +16,12 @@ ms.date: 11/12/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74bc659c11c4f43ab3cf85cdc53f704cd07a1cde
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 25d4152783129fa1c5950d6cf6287332bf90d32a
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96172375"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97976885"
 ---
 # <a name="azure-ad-connect-sync-directory-extensions"></a>Azure AD Connect synkronisering: Katalog tillägg
 Du kan använda katalog tillägg för att utöka schemat i Azure Active Directory (Azure AD) med dina egna attribut från lokala Active Directory. Med den här funktionen kan du bygga LOB-appar genom att förbruka attribut som du fortsätter att hantera lokalt. Dessa attribut kan användas via [tillägg](/graph/extensibility-overview
@@ -46,7 +46,7 @@ I installationen visas följande attribut, som är giltiga kandidater:
 
 
 >[!NOTE]
-> Även om Azure AD Connect stöder synkronisering av multi-Value Active Directory-attribut till Azure AD som flera katalog tillägg för flera värden, finns det för närvarande inget sätt att hämta/använda data som laddas upp i attribut för flera värdefulla katalog tillägg.
+> När Azure AD Connect synkroniserat multi-Value Active Directory-attribut till Azure AD som ett tillägg med flera värden, är det möjligt att inkludera attribut för SAML-anspråket. Men det går inte att använda dessa data via API-anrop.
 
 Listan med attribut läses från det schema-cacheminne som skapas under installationen av Azure AD Connect. Om du har utökat Active Directory schema med ytterligare attribut måste du [uppdatera schemat](how-to-connect-installation-wizard.md#refresh-directory-schema) innan dessa nya attribut visas.
 

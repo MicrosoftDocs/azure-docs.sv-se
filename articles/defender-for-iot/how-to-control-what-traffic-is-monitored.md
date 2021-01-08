@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/07/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 08afba8ade30775a49492f337bb5337320b9e282
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: b2f95ddb13896ed461a20f1948fef34569586d1f
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97843430"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97977087"
 ---
 # <a name="control-what-traffic-is-monitored"></a>Styr vilken trafik som övervakas
 
@@ -157,7 +157,7 @@ Om du arbetar med dynamiska nätverk hanterar du ändringar av IP-adress som int
 
 Genom att definiera dynamiska IP-adresser på varje sensor kan du använda omfattande, transparent stöd i instanser av IP-adress ändringar. Detta säkerställer omfattande rapportering för varje unik enhet.
 
-Sensor konsolen visar den mest aktuella IP-adressen som är kopplad till enheten och indikerar vilka enheter som är dynamiska. Exempel:
+Sensor konsolen visar den mest aktuella IP-adressen som är kopplad till enheten och indikerar vilka enheter som är dynamiska. Ett exempel:
 
 - Rapporten data utvinnings rapport och enhets inventering sammanför all aktivitet som har lärts från enheten som en enhet, oavsett IP-adressen. De här rapporterna visar vilka adresser som har definierats som DHCP-adresser.
 
@@ -228,7 +228,7 @@ Kontrol lera att de inställningar som du definierade fungerar korrekt genom att
 
 3. Ange en adress i **uppslags adress** för **DNS-testet för omvänd DNS-sökning för Server** dialog rutan.
 
-    :::image type="content" source="media/how-to-enrich-asset-information/dns-reverse-looup-test-screen.png" alt-text="Skärm bild som visar Sök adress fältet.":::
+    :::image type="content" source="media/how-to-enrich-asset-information/dns-reverse-lookup-test-screen.png" alt-text="Skärm bild som visar Sök adress fältet.":::
 
 4. Välj **Testa regel**.
 

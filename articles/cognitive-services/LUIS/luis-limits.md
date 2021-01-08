@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 06/04/2020
-ms.openlocfilehash: c855be6d31a1ee46434ecadbeae7a36dd6a3ff95
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 41423ce34a62dfdbd5b9a60f683a2366a94d1bfd
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95018811"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97976800"
 ---
 # <a name="limits-for-your-luis-model-and-keys"></a>Begränsningar för din LUIS-modell och nycklar
 LUIS har flera gräns områden. Den första är [modell gränsen](#model-limits), som styr avsikter, entiteter och funktioner i Luis. Det andra avsnittet är [kvot gränser](#key-limits) baserat på nyckel typ. Ett tredje begränsat utrymme är [tangentkombinationen](#keyboard-controls) för att kontrol lera Luis-webbplatsen. Ett fjärde område är [Mappning av världs regionen](luis-reference-regions.md) mellan Luis Authoring-webbplatsen och API: erna för Luis- [slutpunkt](luis-glossary.md#endpoint) .
@@ -30,7 +30,7 @@ Om din app överskrider LUIS-modellens gränser bör du överväga att använda 
 | Externa entiteter | inga gränser |
 | [Avsikter][intents]|500 per program: 499 anpassade avsikter och det krävs _ingen_ avsikt.<br>[Skickat](https://aka.ms/dispatch-tool) program har motsvarande 500-sändnings källor.|
 | [Lista entiteter](./luis-concept-entity-types.md) | Överordnad: 50, underordnad: 20 000 objekt. Kanoniskt namn är * standard tecknen max. Synonym värden har ingen längd begränsning. |
-| [enheter för maskin inlärning + roller](./luis-concept-entity-types.md):<br> sammansättning<br>gång<br>enhets roll|En gräns på antingen 100 överordnade entiteter eller 330 entiteter, beroende på vilken gräns användaren träffar först. En roll räknas som en entitet för den här begränsningen. Ett exempel är ett sammansatt objekt med en enkel entitet, som har två roller: 1 sammansatt + 1 enkla + 2 roller = 4 av 330-enheterna.<br>Underentiteter kan vara kapslade upp till 5 nivåer.|
+| [enheter för maskin inlärning + roller](./luis-concept-entity-types.md):<br> sammansättning<br>gång<br>enhets roll|En gräns på antingen 100 överordnade entiteter eller 330 entiteter, beroende på vilken gräns användaren träffar först. En roll räknas som en entitet för den här begränsningen. Ett exempel är ett sammansatt objekt med en enkel entitet, som har två roller: 1 sammansatt + 1 enkla + 2 roller = 4 av 330-enheterna.<br>Underentiteter kan kapslas upp till 5 nivåer, med högst 10 underordnade per nivå.|
 |Modell som en funktion| Det maximala antalet modeller som kan användas som en funktion för en speciell modell som är 10 modeller. Det maximala antalet fras listor som används som en funktion för en speciell modell som är 10 fras listor.|
 | [Förhands granskning-dynamiska List enheter](./luis-migration-api-v3.md)|2 listor med ~ 1 kB per förfrågan för förutsägelse slut punkt|
 | [Mönster](luis-concept-patterns.md)|500 mönster per program.<br>Den maximala längden för mönstret är 400 tecken.<br>3 mönster. alla entiteter per mönster<br>Högst 2 kapslade valfria texter i mönstret|
@@ -108,7 +108,7 @@ Använd _typen_, `LUIS` när du filtrerar resurser i Azure Portal. Slut punkts r
 
 ## <a name="keyboard-controls"></a>Tangent bords kontroller
 
-|Tangent bords inmatare | Description |
+|Tangent bords inmatare | Beskrivning |
 |--|--|
 |Kontroll + E|växlar mellan token och entiteter i yttranden-listan|
 

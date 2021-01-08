@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/26/2020
+ms.date: 01/07/2021
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: d0cb9dc3c54f409c3bdd71fbb57c823e15abc22d
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: 68a384197409115343a81aea23b0f7d42166d716
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97762970"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97976817"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Språk-och röst stöd för tal tjänsten
 
@@ -53,9 +53,9 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | Arabiska (Förenade Arabemiraten)      | `ar-AE` | Språkmodell                                   |
 | Bulgariska (Bulgarien)               | `bg-BG` | Språkmodell                                   |
 | Katalanska (Spanien)                    | `ca-ES` | Språkmodell                                   |
-| Kinesiska (kantonesiska, traditionell)   | `zh-HK` | Språkmodell                                   |
+| Kinesiska (kantonesiska, traditionell)   | `zh-HK` | Akustisk modell<br>Språkmodell                 |
 | Kinesiska (mandariner, förenklad)     | `zh-CN` | Akustisk modell<br>Språkmodell                 |
-| Kinesiska (Taiwan-mandariner)       | `zh-TW` | Språkmodell                                   |
+| Kinesiska (Taiwan-mandariner)       | `zh-TW` | Akustisk modell<br>Språkmodell                 |
 | Kroatiska (Kroatien)                 | `hr-HR` | Språkmodell                                   |
 | Tjeckiska (Tjeckien)             | `cs-CZ` | Språk modell                                   |
 | Danska (Danmark)                   | `da-DK` | Språkmodell                                   |
@@ -83,8 +83,8 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | Ungerska (Ungern)                | `hu-HU` | Språk modell                                   |
 | Irländskt (Irland)                     | `ga-IE` | Språkmodell                                   |
 | Italienska (Italien)                    | `it-IT` | Akustisk modell<br>Språkmodell<br>Uttal|
-| Japanska (Japan)                   | `ja-JP` | Språkmodell                                   |
-| Koreanska (Korea)                     | `ko-KR` | Språkmodell                                   |
+| Japanska (Japan)                   | `ja-JP` | Akustisk modell<br>Språkmodell                 |
+| Koreanska (Korea)                     | `ko-KR` | Akustisk modell<br>Språkmodell                 |
 | Lettiska (Lettland)                   | `lv-LV` | Språkmodell                                   |
 | Litauiska (Litauen)             | `lt-LT` | Språkmodell                                   |
 | Maltesiska (Malta)                     | `mt-MT` | Språkmodell                                   |

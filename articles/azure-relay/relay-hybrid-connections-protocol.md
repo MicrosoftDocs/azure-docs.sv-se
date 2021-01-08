@@ -3,18 +3,18 @@ title: Azure Relay Hybridanslutningar protokoll guide | Microsoft Docs
 description: I den här artikeln beskrivs interaktionen på klient sidan med Hybridanslutningar relä för att ansluta klienterna i lyssnings-och avsändarens roller.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 8a812aa401077b81934d89ada99cf1dc312d8dbc
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 36321f88de173a37c9aa6615c4c0f2b29aec9f20
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96862334"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97976970"
 ---
 # <a name="azure-relay-hybrid-connections-protocol"></a>Azure Relay Hybridanslutningar protokoll
 
 Azure Relay är en av de viktigaste kapacitets pelarna i Azure Service Buss plattformen. Den nya _hybridanslutningar_ kapaciteten för relä är en säker utveckling med öppen protokoll som baseras på http och WebSockets. Den ersätter den tidigare, samma namngivna _BizTalk Services_ -funktion som bygger på en patentskyddad protokoll bas. Integreringen av Hybridanslutningar i Azure App Services kommer att fortsätta att fungera i befintligt skick.
 
-Hybridanslutningar möjliggör dubbelriktad, binär data Ströms kommunikation och enkelt datagram flöde mellan två nätverksanslutna program. En eller båda parter kan finnas bakom NAT eller brand väggar.
+Hybridanslutningar möjliggör dubbelriktad, begär ande och binär data Ströms kommunikation och enkelt datagram flöde mellan två nätverksanslutna program. En eller båda parter kan vara bakom NAT eller brand väggar.
 
 I den här artikeln beskrivs interaktionen på klient sidan med Hybridanslutningar relä för att ansluta klienterna i lyssnings-och avsändarens roller. Det beskriver också hur lyssnare accepterar nya anslutningar och begär Anden.
 
@@ -49,7 +49,7 @@ För Hybridanslutningar, om det finns två eller flera aktiva lyssnare, fördela
 När en avsändare öppnar en ny anslutning i tjänsten, väljer tjänsten och meddelar en av de aktiva lyssnarna på Hybrid anslutningen. Det här meddelandet skickas till lyssnaren över öppna kontroll kanalen som ett JSON-meddelande. Meddelandet innehåller webb adressen till WebSocket-slutpunkten som lyssnaren måste ansluta till för att godkänna anslutningen.
 
 URL: en kan och måste användas direkt av lyssnaren utan extra arbete.
-Kodad information är bara giltig under en kort tids period, i stort sett så länge som avsändaren är villig att vänta tills anslutningen upprättas från slut punkt till slut punkt. Det högsta värdet för att anta är 30 sekunder. URL: en kan bara användas för ett lyckat anslutnings försök. Så snart WebSocket-anslutningen med URL: en för Rendezvous har upprättats, vidarebefordras all ytterligare aktivitet på websocketen från och till avsändaren. Detta sker utan någon åtgärd eller tolkning av tjänsten.
+Kodad information är bara giltig under en kort tids period, i stort sett så länge som avsändaren är villig att vänta tills anslutningen upprättas från slut punkt till slut punkt. Det högsta värdet för att anta är 30 sekunder. URL: en kan bara användas för ett lyckat anslutnings försök. Så snart WebSocket-anslutningen med URL: en för Rendezvous har upprättats, vidarebefordras all ytterligare aktivitet på websocketen från och till avsändaren. Det här beteendet inträffar utan någon åtgärd eller tolkning av tjänsten.
 
 ### <a name="request-message"></a>Begär ande meddelande
 
@@ -138,7 +138,7 @@ Parameter alternativen för frågesträng är följande.
 | `sb-hc-action`   | Ja      | Parametern måste vara **SB-HC-Action = avlyssna** för Listener-rollen
 | `{path}`         | Ja      | Den URL-kodade namn områdets sökväg för den förkonfigurerade hybrid anslutningen för att registrera lyssnaren på. Det här uttrycket läggs till i den fasta `$hc/` Sök vägs delen.
 | `sb-hc-token`    | Ja\*    | Lyssnaren måste ange en giltig URL-kodad Service Bus-token för delad åtkomst för namn området eller hybrid anslutningen som ger **lyssnings** rättigheten.
-| `sb-hc-id`       | Nej       | Det här tillhandahållna valfria ID: t för klienten möjliggör diagnostisk spårning från slut punkt till slut punkt.
+| `sb-hc-id`       | Inga       | Det här tillhandahållna valfria ID: t för klienten möjliggör diagnostisk spårning från slut punkt till slut punkt.
 
 Om WebSocket-anslutningen Miss lyckas på grund av att hybrid anslutnings Sök vägen inte är registrerad, eller om en token är ogiltig eller saknas, eller om något annat fel inträffar, så anges fel återkopplings modellen med vanlig HTTP 1,1-status feedback. Status beskrivningen innehåller ett fel spårnings-ID som kan förmedlas till support personal för Azure:
 
@@ -164,7 +164,7 @@ Meddelandet "accepterar" skickas av tjänsten till lyssnaren över den tidigare 
 Meddelandet innehåller ett JSON-objekt med namnet "Accept" som definierar följande egenskaper för tillfället:
 
 * **address** – den URL-sträng som ska användas för att upprätta websocketen till tjänsten för att acceptera en inkommande anslutning.
-* **ID** – den unika identifieraren för den här anslutningen. Om ID: t angavs av avsändar klienten är det värdet för avsändaren, annars är det ett systemgenererat värde.
+* **ID** – den unika identifieraren för den här anslutningen. Om ID: t angavs av avsändar klienten, är det det angivna värdet för avsändaren, annars är det ett systemgenererat värde.
 * **connectHeaders** – alla HTTP-huvuden som har levererats till relä slut punkten av avsändaren, som även innehåller rubrikerna SEC-WebSocket-Protocol och SEC-WebSocket-Extensions.
 
 ```json
@@ -197,12 +197,12 @@ URL: en måste användas för att upprätta en socket för godkännande, men inn
 | -------------- | -------- | -------------------------------------------------------------------
 | `sb-hc-action` | Ja      | För att acceptera en socket måste parametern vara `sb-hc-action=accept`
 | `{path}`       | Ja      | (se följande stycke)
-| `sb-hc-id`     | Nej       | Se tidigare beskrivning av **ID**.
+| `sb-hc-id`     | Inga       | Se tidigare beskrivning av **ID**.
 
 `{path}` är sökvägen till URL-kodad namnrymd för den förkonfigurerade hybrid anslutning som den här lyssnaren ska registreras på. Det här uttrycket läggs till i den fasta `$hc/` Sök vägs delen.
 
 `path`Uttrycket kan utökas med ett suffix och ett frågesträngs uttryck som följer det registrerade namnet efter ett snedstreck.
-Detta gör att avsändar klienten kan skicka sändnings argument till den godkända lyssnaren när det inte går att inkludera HTTP-huvuden. Förväntat är att lyssnar ramverket tolkar den fasta Sök vägs delen och det registrerade namnet från sökvägen och gör resten, eventuellt utan några frågesträngs argument som har fastställts av, som är `sb-` tillgängliga för programmet för att avgöra om anslutningen ska godkännas eller inte.
+Med den här parametern kan avsändar klienten skicka sändnings argument till den godkända lyssnaren när det inte går att inkludera HTTP-huvuden. Förväntat är att lyssnar ramverket tolkar den fasta Sök vägs delen och det registrerade namnet från sökvägen och gör resten, eventuellt utan några frågesträngs argument som har fastställts av, som är `sb-` tillgängliga för programmet för att avgöra om anslutningen ska godkännas eller inte.
 
 Mer information finns i avsnittet "avsändar protokoll".
 
@@ -210,7 +210,7 @@ Om det uppstår ett fel kan tjänsten svara på följande sätt:
 
 | Kod | Fel          | Beskrivning
 | ---- | -------------- | -----------------------------------
-| 403  | Förbjudet      | Webbadressen är inte giltig.
+| 403  | Förbjudet      | URL: en är inte giltig.
 | 500  | Internt fel | Något gick fel i tjänsten
 
  När anslutningen har upprättats stänger servern websocketen när avsändarens WebSocket stängs av eller med följande status:
@@ -241,7 +241,7 @@ När den här hand skakningen är korrekt, Miss lyckas den avsiktligt med en HTT
 
 | Kod | Fel          | Beskrivning                          |
 | ---- | -------------- | ------------------------------------ |
-| 403  | Förbjudet      | Webbadressen är inte giltig.                |
+| 403  | Förbjudet      | URL: en är inte giltig.                |
 | 500  | Internt fel | Något gick fel i tjänsten. |
 
 #### <a name="request-message"></a>Begär ande meddelande
@@ -249,7 +249,7 @@ När den här hand skakningen är korrekt, Miss lyckas den avsiktligt med en HTT
 `request`Meddelandet skickas av tjänsten till lyssnaren över kontroll kanalen. Samma meddelande skickas också via webbsocketen Rendezvous när det har upprättats.
 
 `request`Består av två delar: en rubrik och en binär text ram.
-Om det inte finns någon brödtext utelämnas bröd text ramarna. Indikatorn för om en brödtext är närvarande är den booleska `body` egenskapen i begär ande meddelandet.
+Om det inte finns någon brödtext utelämnas bröd text ramarna. Egenskapen Boolean `body` anger om en brödtext finns i begär ande meddelandet.
 
 För en begäran med en begär ande text kan strukturen se ut så här:
 
@@ -290,7 +290,7 @@ För en begäran utan brödtext finns det bara en textram.
 
 JSON-innehållet för `request` ser ut så här:
 
-* **adress** -URI-sträng. Detta är den Rendezvous-adress som ska användas för den här begäran. Om den inkommande begäran är större än 64 kB lämnas resten av det här meddelandet tomt och klienten måste initiera en Rendezvous-handskakning som motsvarar den `accept` åtgärd som beskrivs nedan. Tjänsten kommer sedan att placeras hela den `request` etablerade webbsocketen. Om svaret kan förväntas överstiga 64 kB måste lyssnaren även initiera en Rendezvous-handskakning och sedan överföra svaret över den etablerade webbsocketen.
+* **adress** -URI-sträng. Det är den Rendezvous-adress som ska användas för den här begäran. Om den inkommande begäran är större än 64 kB lämnas resten av det här meddelandet tomt och klienten måste initiera en Rendezvous-handskakning som motsvarar den `accept` åtgärd som beskrivs nedan. Tjänsten kommer sedan att placeras hela den `request` etablerade webbsocketen. Om svaret kan förväntas överstiga 64 kB måste lyssnaren även initiera en Rendezvous-handskakning och sedan överföra svaret över den etablerade webbsocketen.
 * **ID** – sträng. Den unika identifieraren för den här begäran.
 * **requestHeaders** – det här objektet innehåller alla HTTP-huvuden som har angetts till slut punkten av avsändaren, med undantag för auktoriseringsinformation enligt beskrivningen [ovan](#request-operation), och huvuden som är strikt kopplade till anslutningen med gatewayen. Mer specifikt, alla huvuden som definieras eller reserveras i [RFC7230](https://tools.ietf.org/html/rfc7230), förutom `Via` , tas bort och vidarebefordras inte:
 
@@ -303,9 +303,9 @@ JSON-innehållet för `request` ser ut så här:
   * `Upgrade` (RFC7230, avsnitt 6,7)
   * `Close`  (RFC7230, avsnitt 8,1)
 
-* **requestTarget** – sträng. Den här egenskapen innehåller  ["mål för begäran" (RFC7230, Section 5,3)](https://tools.ietf.org/html/rfc7230#section-5.3) i begäran. Detta inkluderar frågesträngen, som inte är lika med alla prefix som har `sb-hc-` fastställts för fasta parametrar.
+* **requestTarget** – sträng. Den här egenskapen innehåller  ["mål för begäran" (RFC7230, Section 5,3)](https://tools.ietf.org/html/rfc7230#section-5.3) i begäran. Den innehåller frågesträngen, som inte är lika med alla prefix som har `sb-hc-` fastställts för fasta parametrar.
 * **metod** -sträng. Detta är metoden för begäran, per [RFC7231, avsnitt 4](https://tools.ietf.org/html/rfc7231#section-4). `CONNECT`Metoden får inte användas.
-* **Body** – boolesk. Anger om en eller flera förekomster av en binär textram följer.
+* **Body** – boolesk. Anger om ett eller flera av de binära bröd text ramarna följer.
 
 ``` JSON
 {
@@ -428,7 +428,7 @@ Parameter alternativen för frågesträngen är följande:
 | `sb-hc-action` | Ja       | Parametern måste vara för avsändarens roll `sb-hc-action=connect` .
 | `{path}`       | Ja       | (se följande stycke)
 | `sb-hc-token`  | Ja\*     | Lyssnaren måste ange en giltig URL-kodad Service Bus delad åtkomsttoken för namn området eller hybrid anslutningen som ger **send** -rättigheten.
-| `sb-hc-id`     | Nej        | Ett valfritt ID som möjliggör diagnostisk spårning från slut punkt till slut punkt och görs tillgängligt för lyssnaren under godkännande hand skakningen.
+| `sb-hc-id`     | Inga        | Ett valfritt ID som möjliggör diagnostisk spårning från slut punkt till slut punkt och görs tillgängligt för lyssnaren under godkännande hand skakningen.
 
  `{path}`Är sökvägen till URL-kodad namnrymd för den förkonfigurerade hybrid anslutning som den här lyssnaren ska registreras på. `path`Uttrycket kan utökas med ett suffix och ett frågeuttryck för att kommunicera vidare. Om hybrid anslutningen är registrerad under sökvägen `hyco` `path` kan uttrycket `hyco/suffix?param=value&...` följas av de parametrar för frågesträng som definierats här. Ett fullständigt uttryck kan sedan vara följande:
 
@@ -453,7 +453,7 @@ Om WebSocket-anslutningen avsiktligt stängs av tjänsten efter det att den har 
 | --------- | ------------------------------------------------------------------------------- 
 | 1000      | Lyssnaren stänger av socketen.
 | 1001      | Sökvägen till hybrid anslutningen har tagits bort eller inaktiverats.
-| 1008      | Säkerhetstoken har upphört att gälla, vilket innebär att auktoriseringsprincipen överskrids.
+| 1008      | Säkerhetstoken har upphört att gälla, så att auktoriseringsprincipen överskrids.
 | 1011      | Något gick fel i tjänsten.
 
 ### <a name="http-request-protocol"></a>Protokoll för HTTP-begäran
@@ -467,7 +467,7 @@ https://{namespace-address}/{path}?sb-hc-token=...
 
 _Namn områdets adress_ är det fullständigt kvalificerade domän namnet för Azure Relay namn området som är värd för Hybrid anslutningen, vanligt vis av formuläret `{myname}.servicebus.windows.net` .
 
-Begäran kan innehålla godtyckligt extra HTTP-huvuden, inklusive programdefinierade. Alla angivna huvuden, förutom de som är direkt definierade i RFC7230 (se [begär ande meddelande](#request-message)) flödar till lyssnaren och finns på `requestHeader` objektet i **begär ande** meddelandet.
+Begäran kan innehålla godtyckligt extra HTTP-huvuden, inklusive programdefinierade. Alla angivna huvuden, förutom de som har definierats direkt i RFC7230 (se [begär ande meddelande](#request-message)) flödar till lyssnaren och finns på `requestHeader` objektet i **begär ande** meddelandet.
 
 Parameter alternativen för frågesträngen är följande:
 
@@ -485,7 +485,7 @@ Tjänsten lägger till relä namn områdets värdnamn i `Via` .
 | 200  | OK       | Begäran har hanterats av minst en lyssnare.  |
 | 202  | Har godkänts | Begäran har accepterats av minst en lyssnare. |
 
-Om det uppstår ett fel kan tjänsten svara på följande sätt. Huruvida svaret kommer från tjänsten eller från lyssnaren kan identifieras genom närvaron av `Via` huvudet. Om rubriken finns är svaret från lyssnaren.
+Om ett fel uppstår kan tjänsten svara på följande sätt. Huruvida svaret kommer från tjänsten eller från lyssnaren kan identifieras genom närvaron av `Via` huvudet. Om rubriken finns är svaret från lyssnaren.
 
 | Kod | Fel           | Beskrivning
 | ---- | --------------- |--------- |
