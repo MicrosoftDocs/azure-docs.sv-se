@@ -4,12 +4,12 @@ description: Lär dig hur du hanterar mänsklig interaktion och tids gränser i 
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 4e0f71369bc02fdce5625d9c74e1d52264ed86be
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cba3cd0fd5d8727c4ffa4d1b42d7cd9250f21032
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80335745"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028311"
 ---
 # <a name="human-interaction-in-durable-functions---phone-verification-sample"></a>Mänsklig interaktion i Durable Functions-telefon verifierings exempel
 
@@ -25,7 +25,7 @@ Telefon verifiering används för att kontrol lera att slutanvändare av ditt pr
 
 Vanliga Azure Functions är tillstånds lösa (som är många andra moln slut punkter på andra plattformar), så dessa typer av interaktioner innebär uttryckligen hantering av tillstånd externt i en databas eller något annat beständigt arkiv. Dessutom måste interaktionen delas upp i flera funktioner som kan samordnas tillsammans. Du behöver till exempel minst en funktion för att bestämma en kod, spara den någonstans och skicka den till användarens telefon. Dessutom behöver du minst en annan funktion för att få svar från användaren och på annat sätt mappa den tillbaka till det ursprungliga funktions anropet för att göra kod verifieringen. En timeout är också en viktig aspekt för att garantera säkerheten. Det kan snabbt bli ganska komplicerat.
 
-Komplexiteten i det här scenariot minskar avsevärt när du använder Durable Functions. Som du ser i det här exemplet kan en Orchestrator-funktion hantera tillstånds känsliga interaktioner enkelt och utan att involvera externa data lager. Eftersom Orchestrator-funktioner är *varaktiga*är dessa interaktiva flöden också mycket pålitliga.
+Komplexiteten i det här scenariot minskar avsevärt när du använder Durable Functions. Som du ser i det här exemplet kan en Orchestrator-funktion hantera tillstånds känsliga interaktioner enkelt och utan att involvera externa data lager. Eftersom Orchestrator-funktioner är *varaktiga* är dessa interaktiva flöden också mycket pålitliga.
 
 ## <a name="configuring-twilio-integration"></a>Konfigurera Twilio-integrering
 
@@ -45,7 +45,7 @@ Den här artikeln vägleder dig genom följande funktioner i exempel appen:
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/PhoneVerification.cs?range=17-70)]
 
 > [!NOTE]
-> Det kanske inte är uppenbart först, men den här Orchestrator-funktionen är helt deterministisk. Det är deterministiskt eftersom `CurrentUtcDateTime` egenskapen används för att beräkna timerns förfallo tid och returnerar samma värde vid varje uppspelning vid den här punkten i Orchestrator-koden. Detta är viktigt för att se till att samma `winner` resultat från varje upprepat anrop till `Task.WhenAny` .
+> Det kanske inte är uppenbart först, men den här Orchestrator bryter inte mot [begränsningen för deterministisk dirigering](durable-functions-code-constraints.md). Det är deterministiskt eftersom `CurrentUtcDateTime` egenskapen används för att beräkna timerns förfallo tid och returnerar samma värde vid varje uppspelning vid den här punkten i Orchestrator-koden. Detta är viktigt för att se till att samma `winner` resultat från varje upprepat anrop till `Task.WhenAny` .
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -58,7 +58,20 @@ Här är den kod som implementerar funktionen:
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E4_SmsPhoneVerification/index.js)]
 
 > [!NOTE]
-> Det kanske inte är uppenbart först, men den här Orchestrator-funktionen är helt deterministisk. Det är deterministiskt eftersom `currentUtcDateTime` egenskapen används för att beräkna timerns förfallo tid och returnerar samma värde vid varje uppspelning vid den här punkten i Orchestrator-koden. Detta är viktigt för att se till att samma `winner` resultat från varje upprepat anrop till `context.df.Task.any` .
+> Det kanske inte är uppenbart först, men den här Orchestrator bryter inte mot [begränsningen för deterministisk dirigering](durable-functions-code-constraints.md). Det är deterministiskt eftersom `currentUtcDateTime` egenskapen används för att beräkna timerns förfallo tid och returnerar samma värde vid varje uppspelning vid den här punkten i Orchestrator-koden. Detta är viktigt för att se till att samma `winner` resultat från varje upprepat anrop till `context.df.Task.any` .
+
+# <a name="python"></a>[Python](#tab/python)
+
+Funktionen **E4_SmsPhoneVerification** använder standard *function.jspå* för Orchestrator-funktioner.
+
+[!code-json[Main](~/samples-durable-functions-python/samples/human_interaction/E4_SmsPhoneVerification/function.json)]
+
+Här är den kod som implementerar funktionen:
+
+[!code-python[Main](~/samples-durable-functions-python/samples/human_interaction/E4_SmsPhoneVerification/\_\_init\_\_.py)]
+
+> [!NOTE]
+> Det kanske inte är uppenbart först, men den här Orchestrator bryter inte mot [begränsningen för deterministisk dirigering](durable-functions-code-constraints.md). Det är deterministiskt eftersom `currentUtcDateTime` egenskapen används för att beräkna timerns förfallo tid och returnerar samma värde vid varje uppspelning vid den här punkten i Orchestrator-koden. Detta är viktigt för att se till att samma `winner` resultat från varje upprepat anrop till `context.df.Task.any` .
 
 ---
 
@@ -94,6 +107,16 @@ Funktionen **E4_SendSmsChallenge** använder Twilio-bindningen för att skicka S
 Här är koden som genererar den fyrsiffriga utmanings koden och skickar SMS-meddelandet:
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E4_SendSmsChallenge/index.js)]
+
+# <a name="python"></a>[Python](#tab/python)
+
+*function.jspå* definieras enligt följande:
+
+[!code-json[Main](~/samples-durable-functions-python/samples/human_interaction/SendSMSChallenge/function.json)]
+
+Här är koden som genererar den fyrsiffriga utmanings koden och skickar SMS-meddelandet:
+
+[!code-python[Main](~/samples-durable-functions-python/samples/human_interaction/SendSMSChallenge/\_\_init\_\_.py)]
 
 ---
 

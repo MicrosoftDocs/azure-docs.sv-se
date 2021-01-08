@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 02/06/2020
 ms.author: tagore
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 07b511182950095c356887d72ffde75ac098674d
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 82eaa597796bf3772faa90a9dbc4151da935c46a
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94904803"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98027731"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-powershell"></a>Migrera IaaS-resurser från klassisk till Azure Resource Manager med hjälp av PowerShell
 
@@ -265,7 +265,7 @@ Om den för beredda konfigurationen ser bra ut kan du flytta framåt och bekräf
 När du har migrerat de virtuella datorerna utför du följande nödvändiga kontroller innan du migrerar lagrings kontona.
 
 > [!NOTE]
-> Om ditt lagrings konto inte har några associerade diskar eller VM-data kan du gå direkt till avsnittet Verifiera lagrings konton och starta migrering.
+> Om ditt lagrings konto inte har några associerade diskar eller VM-data kan du gå direkt till avsnittet Verifiera lagrings konton och starta migrering. Observera också att om du tar bort de klassiska diskarna tas inte VHD-källfilerna bort från lagrings kontot. Dock bryts lånet av dessa VHD-filer så att de kan återanvändas för att skapa ARM-diskar eller avbildningar efter migreringen.
 
 * Krav kontroller om du har migrerat några virtuella datorer eller om ditt lagrings konto har disk resurser:
     * Migrera virtuella datorer vars diskar lagras i lagrings kontot.

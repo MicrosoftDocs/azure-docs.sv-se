@@ -1,18 +1,18 @@
 ---
 title: Distribuera mallar med Cloud Shell
-description: Använd Azure Resource Manager och Cloud Shell för att distribuera resurser till Azure. Resurserna definieras i en Azure Resource Manager-mall.
+description: Använd Azure Resource Manager och Azure Cloud Shell för att distribuera resurser till Azure. Resurserna definieras i en Azure Resource Manager-mall (ARM-mall).
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: d0b519955cb877f5fb9640cc0cf95a898e1743ef
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: c67251a33b6197603be27086bcc6cd047e0c414b
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92681634"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028615"
 ---
-# <a name="deploy-arm-templates-from-cloud-shell"></a>Distribuera ARM-mallar från Cloud Shell
+# <a name="deploy-arm-templates-from-azure-cloud-shell"></a>Distribuera ARM-mallar från Azure Cloud Shell
 
-Du kan använda [Cloud Shell](../../cloud-shell/overview.md) för att distribuera en Azure Resource Manager-mall (arm-mall). Du kan distribuera antingen en ARM-mall som lagras på distans eller en ARM-mall som lagras på det lokala lagrings kontot för Cloud Shell.
+Du kan använda [Azure Cloud Shell](../../cloud-shell/overview.md) för att distribuera en Azure Resource Manager-mall (arm-mall). Du kan distribuera antingen en ARM-mall som lagras på distans eller en ARM-mall som lagras på det lokala lagrings kontot för Cloud Shell.
 
 Du kan distribuera till valfri omfattning. Den här artikeln visar hur du distribuerar till en resurs grupp.
 
@@ -62,27 +62,27 @@ Om du vill distribuera en lokal mall måste du först överföra mallen till det
 
 1. Välj lagringskontot för Cloud Shell.
 
-   :::image type="content" source="./media/deploy-cloud-shell/cloud-shell-storage.png" alt-text="Öppna Cloud Shell":::
+   :::image type="content" source="./media/deploy-cloud-shell/cloud-shell-storage.png" alt-text="Välj lagrings konto":::
 
-1. Välj **fil resurser** .
+1. Välj **fil resurser**.
 
-   :::image type="content" source="./media/deploy-cloud-shell/files-shares.png" alt-text="Öppna Cloud Shell":::
+   :::image type="content" source="./media/deploy-cloud-shell/files-shares.png" alt-text="Välj fil resurser":::
 
 1. Välj standard fil resurs för Cloud Shell. Fil resursen har namn formatet `cs-<user>-<domain>-com-<uniqueGuid>` .
 
-   :::image type="content" source="./media/deploy-cloud-shell/select-file-share.png" alt-text="Öppna Cloud Shell":::
+   :::image type="content" source="./media/deploy-cloud-shell/select-file-share.png" alt-text="Standard fil resurs":::
 
 1. Lägg till en ny katalog som ska innehålla mallarna. Välj den katalogen.
 
-   :::image type="content" source="./media/deploy-cloud-shell/add-directory.png" alt-text="Öppna Cloud Shell":::
+   :::image type="content" source="./media/deploy-cloud-shell/add-directory.png" alt-text="Lägg till katalog":::
 
-1. Välj **Överför** .
+1. Välj **Överför**.
 
-   :::image type="content" source="./media/deploy-cloud-shell/upload-template.png" alt-text="Öppna Cloud Shell":::
+   :::image type="content" source="./media/deploy-cloud-shell/upload-template.png" alt-text="Ladda upp mall":::
 
 1. Leta upp och överför mallen.
 
-   :::image type="content" source="./media/deploy-cloud-shell/select-template.png" alt-text="Öppna Cloud Shell":::
+   :::image type="content" source="./media/deploy-cloud-shell/select-template.png" alt-text="Välj mall":::
 
 1. Öppna Cloud Shell prompten.
 

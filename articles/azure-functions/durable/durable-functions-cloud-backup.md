@@ -4,12 +4,12 @@ description: Lär dig hur du implementerar ett antidrivet fläkt scenario i Dura
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: d61600801286126ea6ffb9a97bc5655b6f233816
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 91128033696af6a56488db7991987f1e384b719e
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77562198"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98027661"
 ---
 # <a name="fan-outfan-in-scenario-in-durable-functions---cloud-backup-example"></a>Exempel på anti-out/fläkt i scenario i Durable Functions-Cloud backup
 
@@ -72,6 +72,23 @@ Lägg märke till `yield context.df.Task.all(tasks);` raden. Alla enskilda anrop
 
 Efter `context.df.Task.all` att ha fått från, vet vi att alla funktions anrop har slutförts och att de returnerade värdena tillbaka till oss. Varje anrop för att `E2_CopyFileToBlob` returnera antalet byte som har överförts, så att summan av total antalet byte är en del av att lägga till alla dessa retur värden tillsammans.
 
+# <a name="python"></a>[Python](#tab/python)
+
+Funktionen använder standard *function.jspå* för Orchestrator-funktioner.
+
+[!code-json[Main](~/samples-durable-functions-python/samples/fan_in_fan_out/E2_BackupSiteContent/function.json)]
+
+Här är den kod som implementerar Orchestrator-funktionen:
+
+[!code-python[Main](~/samples-durable-functions-python/samples/fan_in_fan_out/E2_BackupSiteContent/\_\_init\_\_.py)]
+
+Lägg märke till `yield context.task_all(tasks);` raden. Alla enskilda anrop till `E2_CopyFileToBlob` funktionen gavs *inte* ut, vilket gör att de kan köras parallellt. När vi skickar den här uppgifts uppsättningen till `context.task_all` , får vi tillbaka en aktivitet som inte slutförs *förrän alla kopierings åtgärder har slutförts*. Om du är bekant med [`asyncio.gather`](https://docs.python.org/3/library/asyncio-task.html#asyncio.gather) i python är detta inte nytt för dig. Skillnaden är att dessa aktiviteter kan köras på flera virtuella datorer samtidigt, och Durable Functions-tillägget säkerställer att körningen från slut punkt till slut punkt är elastisk för att bearbeta återvinning.
+
+> [!NOTE]
+> Även om uppgifter är konceptuellt likartade med python-awaitables, bör Orchestrator-funktioner använda `yield` såväl som `context.task_all` och för `context.task_any` API: erna för att hantera parallellisering för aktiviteter.
+
+Efter `context.task_all` att ha fått från, vet vi att alla funktions anrop har slutförts och att de returnerade värdena tillbaka till oss. Varje anrop för att `E2_CopyFileToBlob` returnera antalet överförda byte, så vi kan beräkna summan av totala antalet byte genom att lägga till alla retur värden tillsammans.
+
 ---
 
 ### <a name="helper-activity-functions"></a>Hjälp aktivitetens funktioner
@@ -95,6 +112,16 @@ Här är implementeringen:
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E2_GetFileList/index.js)]
 
 Funktionen använder `readdirp` modulen (version 2. x) för att rekursivt läsa katalog strukturen.
+
+# <a name="python"></a>[Python](#tab/python)
+
+*function.js* filen för att `E2_GetFileList` se ut så här:
+
+[!code-json[Main](~/samples-durable-functions-python/samples/fan_in_fan_out/E2_GetFileList/function.json)]
+
+Här är implementeringen:
+
+[!code-python[Main](~/samples-durable-functions-python/samples/fan_in_fan_out/E2_GetFileList/\_\_init\_\_.py)]
 
 ---
 
@@ -122,6 +149,16 @@ JavaScript-implementeringen använder [Azure Storage SDK för-noden](https://git
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E2_CopyFileToBlob/index.js)]
 
+# <a name="python"></a>[Python](#tab/python)
+
+*function.jspå* fil för `E2_CopyFileToBlob` är på samma sätt enkla:
+
+[!code-json[Main](~/samples-durable-functions-python/samples/fan_in_fan_out/E2_CopyFileToBlob/function.json)]
+
+Python-implementeringen använder [Azure Storage SDK för python](https://github.com/Azure/azure-storage-python) för att överföra filerna till Azure Blob Storage.
+
+[!code-python[Main](~/samples-durable-functions-python/samples/fan_in_fan_out/E2_CopyFileToBlob/\_\_init\_\_.py)]
+
 ---
 
 Implementeringen läser in filen från disken och strömmar innehållet till en blob med samma namn i behållaren "säkerhets kopiering". Returvärdet är antalet byte som kopieras till Storage, som sedan används av Orchestrator-funktionen för att beräkna mängd summan.
@@ -131,7 +168,7 @@ Implementeringen läser in filen från disken och strömmar innehållet till en 
 
 ## <a name="run-the-sample"></a>Kör exemplet
 
-Du kan starta dirigeringen genom att skicka följande HTTP POST-begäran.
+Du kan starta dirigeringen, i Windows, genom att skicka följande HTTP POST-begäran.
 
 ```
 POST http://{host}/orchestrators/E2_BackupSiteContent
@@ -139,6 +176,16 @@ Content-Type: application/json
 Content-Length: 20
 
 "D:\\home\\LogFiles"
+```
+
+Alternativt, på en Linux-Funktionsapp (python körs för närvarande bara på Linux för App Service), kan du starta dirigeringen så här:
+
+```
+POST http://{host}/orchestrators/E2_BackupSiteContent
+Content-Type: application/json
+Content-Length: 20
+
+"/home/site/wwwroot"
 ```
 
 > [!NOTE]

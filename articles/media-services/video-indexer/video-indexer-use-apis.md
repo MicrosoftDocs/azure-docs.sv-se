@@ -8,15 +8,15 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 11/10/2020
+ms.date: 01/07/2021
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: cdba4ce36322f9c3fb0f898cb7eb1d1185ed1dc6
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: fcd194e2503610db314f6a975a4afb1d27962f8c
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94636953"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028216"
 ---
 # <a name="tutorial-use-the-video-indexer-api"></a>Självstudie: Använda Video Indexer-API:t
 
@@ -29,8 +29,10 @@ Den här artikeln visar hur utvecklarna kan dra nytta av [Video Indexer-API:t](h
 ## <a name="subscribe-to-the-api"></a>Prenumerera på API:t
 
 1. Logga in på [Video Indexer-utvecklarportalen](https://api-portal.videoindexer.ai/).
+
+    Granska en versions kommentar om [inloggnings information](release-notes.md#october-2020).
     
-    ![Logga in på Video Indexer Developer-portalen](./media/video-indexer-use-apis/video-indexer-api01.png)
+     ![Logga in på Video Indexer Developer-portalen](./media/video-indexer-use-apis/sign-in.png)
 
    > [!Important]
    > * Du måste använda samma provider som du använde när du registrerade dig för Video Indexer.
@@ -40,14 +42,14 @@ Den här artikeln visar hur utvecklarna kan dra nytta av [Video Indexer-API:t](h
 
     Välj fliken [produkter](https://api-portal.videoindexer.ai/products) . Välj sedan auktorisering och prenumerera.
     
-    ![Fliken produkter i Video Indexer Developer-portalen](./media/video-indexer-use-apis/video-indexer-api02.png)
+    ![Fliken produkter i Video Indexer Developer-portalen](./media/video-indexer-use-apis/authorization.png)
 
     > [!NOTE]
     > Nya användare prenumererar automatiskt på Auktorisering.
     
     När du prenumererar kan du hitta prenumerationen under **produkter** som du har  ->  **tillstånd** för. På sidan prenumeration hittar du de primära och sekundära nycklarna. Nycklarna ska vara skyddade. Nycklarna ska bara användas av din serverkod. De bör inte vara tillgängliga på klient sidan (. js,. html och så vidare).
 
-    ![Prenumeration och nycklar i Video Indexer Developer-portalen](./media/video-indexer-use-apis/video-indexer-api03.png)
+    ![Prenumeration och nycklar i Video Indexer Developer-portalen](./media/video-indexer-use-apis/subscriptions.png)
 
 > [!TIP]
 > Video Indexer-användare kan använda en enstaka prenumerationsnyckel för att ansluta till flera Video Indexer-konton. Sedan kan du länka dessa Video Indexer-konton till olika Media Services-konton.
@@ -64,9 +66,9 @@ Varje anrop till åtgärds-API:t ska associeras med en åtkomsttoken, som matcha
 
 Du kan kontrol lera om dessa tokens är skrivskyddade eller om de tillåter redigering genom att ange **AllowEdit = TRUE/FALSE**.
 
-För de flesta server-till-Server-scenarier använder du förmodligen samma **konto** -token eftersom det täcker både **konto** åtgärder och **video** åtgärder. Men om du planerar att göra klient sidans anrop till Video Indexer (till exempel från Java Script) vill du **använda en videoåtkomsttoken för** att förhindra att klienter får åtkomst till hela kontot. Det beror också på att när du bäddar in Video Indexer klient kod i klienten (till exempel med hjälp av **Hämta insikts-widget** eller **Hämta Player-widget** ) måste du ange en **video** åtkomst-token.
+För de flesta server-till-Server-scenarier använder du förmodligen samma **konto** -token eftersom det täcker både **konto** åtgärder och **video** åtgärder. Men om du planerar att göra klient sidans anrop till Video Indexer (till exempel från Java Script) vill du **använda en videoåtkomsttoken för** att förhindra att klienter får åtkomst till hela kontot. Det beror också på att när du bäddar in Video Indexer klient kod i klienten (till exempel med hjälp av **Hämta insikts-widget** eller **Hämta Player-widget**) måste du ange en **video** åtkomst-token.
 
-Du kan göra det lättare genom att använda **Auktoriserings** -API:t > **GetAccounts** för att hämta dina konton utan att erhålla en användartoken först. Du kan också begära att få kontona med giltiga token, så att du kan hoppa över ett ytterligare anrop för att få en kontotoken.
+Du kan göra det lättare genom att använda **Auktoriserings**-API:t > **GetAccounts** för att hämta dina konton utan att erhålla en användartoken först. Du kan också begära att få kontona med giltiga token, så att du kan hoppa över ett ytterligare anrop för att få en kontotoken.
 
 Åtkomsttoken upphör att gälla efter 1 timme. Kontrollera att din åtkomsttoken är giltig innan du använder åtgärds-API:t. Om den går ut anropar du API: et för auktorisering igen för att få en ny åtkomsttoken.
 

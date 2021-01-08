@@ -10,19 +10,17 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: f22213bf192b12e046bab12346e5d5d83fb36b96
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: baaf907d2fafe23805e6b49582ecc7592ee05e0b
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94364283"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028241"
 ---
 # <a name="translator-v2-to-v3-migration"></a>Translator v2 till v3-migrering
 
 > [!NOTE]
-> V2 föråldrades den 30 april 2018. Migrera dina program till v3 för att kunna dra nytta av nya funktioner som är tillgängliga exklusivt i v3.
-> 
-> Microsoft Translator-hubben kommer att dras tillbaka den 17 maj 2019. [Visa viktig information och datum för migreringen](https://www.microsoft.com/translator/business/hub/).  
+> V2 föråldrades den 30 april 2018. Migrera dina program till v3 för att kunna dra nytta av nya funktioner som är tillgängliga exklusivt i v3. V2 kommer att dras tillbaka den 24 maj 2021. 
 
 Microsoft Translator-teamet har publicerat version 3 (v3) av Translator. Den här versionen innehåller nya funktioner, föråldrade metoder och ett nytt format för att skicka till och ta emot data från tjänsten Microsoft Translator. Det här dokumentet innehåller information om hur du ändrar program till att använda v3. 
 
@@ -118,8 +116,8 @@ Neurala-översättning med v3-text-API: t stöder inte användning av standard k
 
 | Version | Slutpunkt | Kompatibilitet för GDPR-processor | Använd Translator Hub | Använd anpassad översättare (förhands granskning) |
 | :------ | :------- | :------------------------ | :----------------- | :------------------------------ |
-|Översättare, version 2|    api.microsofttranslator.com|    Inga    |Ja    |Inga|
-|Översättare, version 3|    api.cognitive.microsofttranslator.com|    Ja|    Inga|    Ja|
+|Översättare, version 2|    api.microsofttranslator.com|    Nej    |Ja    |Nej|
+|Översättare, version 3|    api.cognitive.microsofttranslator.com|    Ja|    Nej|    Ja|
 
 **Översättare, version 3**
 * Är allmänt tillgänglig och stöds fullt ut.

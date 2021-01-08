@@ -7,16 +7,16 @@ manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 07/17/2019
+ms.date: 11/23/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, synapse-analytics
-ms.openlocfilehash: 6f089a67262c78f31092780bb8b4d7d803d47e0d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1d8c67fa5373afc8ea8bae5a49b87309f3893a12
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91369101"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028734"
 ---
 # <a name="tutorial-load-data-to--azure-synapse-analytics-sql-pool"></a>Självstudie: läsa in data till Azure Synapse Analytics SQL-pool
 
@@ -24,9 +24,6 @@ I den här självstudien används PolyBase för att läsa in informations lagret
 
 > [!div class="checklist"]
 >
-> * Skapa ett informations lager med SQL-pool i Azure Portal
-> * Skapade en brandväggsregel på servernivå på Azure-portalen
-> * Ansluta till SQL-poolen med SSMS
 > * Skapa en användare som utsetts för att läsa in data
 > * Skapa externa tabeller som använder Azure-blobb som datakälla
 > * Använda CTAS T-SQL-instruktionen för att läsa in data till informationslagret
@@ -40,110 +37,7 @@ Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](ht
 
 Innan du börjar med de här självstudierna ska du ladda ned och installera den senaste versionen av [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS).
 
-## <a name="sign-in-to-the-azure-portal"></a>Logga in på Azure Portal
-
-Logga in på [Azure-portalen](https://portal.azure.com/).
-
-## <a name="create-a-blank-data-warehouse-in-sql-pool"></a>Skapa ett tomt informations lager i SQL-poolen
-
-En SQL-pool skapas med en definierad uppsättning [beräknings resurser](memory-concurrency-limits.md). SQL-poolen skapas i en [Azure-resurs grupp](../../azure-resource-manager/management/overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) och i en [logisk SQL-Server](../../azure-sql/database/logical-servers.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
-
-Följ de här stegen för att skapa en tom SQL-pool.
-
-1. Välj **skapa en resurs** i Azure Portal.
-
-1. Välj **databaser** på sidan **nytt** och välj **Azure Synapse Analytics** under **aktuella** på den **nya** sidan.
-
-    ![skapa SQL-pool](./media/load-data-wideworldimportersdw/create-empty-data-warehouse.png)
-
-1. Fyll i avsnittet **projekt information** med följande information:
-
-   | Inställning | Exempel | Beskrivning |
-   | ------- | --------------- | ----------- |
-   | **Prenumeration** | Din prenumeration  | Mer information om dina prenumerationer finns i [Prenumerationer](https://account.windowsazure.com/Subscriptions). |
-   | **Resursgrupp** | myResourceGroup | Giltiga resursgruppnamn finns i [Namngivningsregler och begränsningar](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). |
-
-1. Ange ett namn för SQL-poolen under **information om SQL-pooler**. Välj sedan antingen en befintlig server i list rutan eller Välj **Skapa ny** under **Server** inställningar för att skapa en ny server. Fyll i formuläret med följande information:
-
-    | Inställning | Föreslaget värde | Beskrivning |
-    | ------- | --------------- | ----------- |
-    |**SQL-poolnamn**|SampleDW| För giltiga databas namn, se [databas identifierare](/sql/relational-databases/databases/database-identifiers?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest). |
-    | **Servernamn** | Valfritt globalt unikt namn | Giltiga servernamn finns i [Namngivningsregler och begränsningar](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). |
-    | **Inloggning för serveradministratör** | Valfritt giltigt namn | För giltiga inloggnings namn, se [databas identifierare](/sql/relational-databases/databases/database-identifiers?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).|
-    | **Lösenord** | Valfritt giltigt lösenord | Lösenordet måste innehålla minst åtta tecken och måste innehålla tecken från tre av följande kategorier: versaler, gemener, siffror och icke-alfanumeriska tecken. |
-    | **Plats** | Valfri giltig plats | För information om regioner, se [Azure-regioner](https://azure.microsoft.com/regions/). |
-
-    ![skapa server](./media/load-data-wideworldimportersdw/create-database-server.png)
-
-1. **Välj prestanda nivå**. Skjutreglaget som standard är inställt på **DW1000c**. Flytta skjutreglaget uppåt och nedåt för att välja önskad prestanda skala.
-
-    ![skapa server 2](./media/load-data-wideworldimportersdw/create-data-warehouse.png)
-
-1. På sidan **ytterligare inställningar** ställer du in **Använd befintliga data** till ingen och låter **sorteringen** vara standard *SQL_Latin1_General_CP1_CI_AS*.
-
-1. Välj **Granska + skapa** för att granska inställningarna och välj sedan **skapa** för att skapa ditt informations lager. Du kan övervaka förloppet genom att öppna sidan **distribution** pågår från menyn **meddelanden** .
-
-     ![Skärm bild som visar meddelanden med pågående distribution.](./media/load-data-wideworldimportersdw/notification.png)
-
-## <a name="create-a-server-level-firewall-rule"></a>Skapa en brandväggsregel på servernivå
-
-Azure Synapse Analytics-tjänsten skapar en brand vägg på server nivå som förhindrar att externa program och verktyg ansluter till servern eller några databaser på servern. Om du vill kan du lägga till brandväggsregler som tillåter anslutningar för specifika IP-adresser.  Följ dessa steg för att skapa en [brandväggsregel på servernivå](../../azure-sql/database/firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) för klientens IP-adress.
-
-> [!NOTE]
-> Azure Synapse Analytics SQL-poolen kommunicerar via port 1433. Om du försöker ansluta inifrån ett företagsnätverk kanske utgående trafik via port 1433 inte tillåts av nätverkets brandvägg. I så fall kan du inte ansluta till servern om inte din IT-avdelning öppnar port 1433.
->
-
-1. När distributionen är klar söker du efter namnet på din pool i sökrutan i navigerings menyn och väljer resursen SQL-pool. Välj servernamnet.
-
-    ![Gå till din resurs](./media/load-data-wideworldimportersdw/search-for-sql-pool.png)
-
-1. Välj servernamnet.
-    ![servernamn](././media/load-data-wideworldimportersdw/find-server-name.png)
-
-1. Välj **Visa brandväggsinställningar**. Sidan **brand Väggs inställningar** för servern öppnas.
-
-    ![serverinställningar](./media/load-data-wideworldimportersdw/server-settings.png)
-
-1. På sidan **brand väggar och virtuella nätverk** väljer du **Lägg till klient-IP** för att lägga till din aktuella IP-adress i en ny brand Väggs regel. Med en brandväggsregel kan du öppna port 1433 för en enskild IP-adress eller för IP-adressintervall.
-
-    ![brandväggsregler för server](./media/load-data-wideworldimportersdw/server-firewall-rule.png)
-
-1. Välj **Spara**. En brand Väggs regel på server nivå skapas för din aktuella IP-adress som öppnar port 1433 på servern.
-
-Nu kan du ansluta till servern med din klient-IP-adress. Anslutningen fungerar från SQL Server Management Studio eller något annat verktyg du väljer. När du ansluter använder du serveradmin-kontot som du skapade tidigare.  
-
-> [!IMPORTANT]
-> Som standard är åtkomst genom SQL Database-brandväggen aktiverad för alla Azure-tjänster. Klicka på **AV** på den här sidan och klicka sedan på **Spara** för att inaktivera brandväggen för alla Azure-tjänster.
-
-## <a name="get-the-fully-qualified-server-name"></a>Hämta det fullständigt kvalificerade servernamnet
-
-Det fullständigt kvalificerade Server namnet är det som används för att ansluta till servern. Gå till din SQL-pool i Azure Portal och visa det fullständigt kvalificerade namnet under **Server namn**.
-
-![servernamn](././media/load-data-wideworldimportersdw/find-server-name.png)
-
-## <a name="connect-to-the-server-as-server-admin"></a>Ansluta till servern som serveradministratör
-
-I det här avsnittet används [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS) för att upprätta en anslutning till servern.
-
-1. Öppna SQL Server Management Studio.
-
-2. I dialogrutan **Anslut till server** anger du följande information:
-
-    | Inställning      | Föreslaget värde | Beskrivning |
-    | ------------ | --------------- | ----------- |
-    | Servertyp | Databasmotor | Det här värdet är obligatoriskt |
-    | Servernamn | Fullständigt kvalificerat servernamn | Till exempel är **sqlpoolservername.Database.Windows.net** ett fullständigt kvalificerat Server namn. |
-    | Autentisering | SQL Server-autentisering | SQL-autentisering är den enda autentiseringstypen som vi konfigurerar i den här självstudiekursen. |
-    | Inloggning | Serveradministratörskontot | Detta är det konto som du angav när du skapade servern. |
-    | lösenordsinställning | Lösenordet för serveradministratörskontot | Detta är det lösenord som du angav när du skapade servern. |
-
-    ![Anslut till server](./media/load-data-wideworldimportersdw/connect-to-server.png)
-
-3. Klicka på **Anslut**. Fönstret Object Explorer öppnas i SSMS.
-
-4. Expandera **Databaser** i Object Explorer. Expandera sedan **Systemdatabaser** och **Huvuddatabas** för att visa objekt i huvuddatabasen.  Expandera **SampleDW** om du vill visa objekten i den nya databasen.
-
-    ![databasobjekt](./media/load-data-wideworldimportersdw/connected.png)
+Den här självstudien förutsätter att du redan har skapat en dedikerad SQL-pool från följande [självstudie](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/create-data-warehouse-portal#connect-to-the-server-as-server-admin).
 
 ## <a name="create-a-user-for-loading-data"></a>Skapa en användare för att läsa in data
 

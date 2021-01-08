@@ -5,16 +5,16 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/29/2019
 ms.author: azfuncdf
-ms.openlocfilehash: b117fca23b26919f3c404dd32ba64c0c89d66ae7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f8223b1273c2a487e15e3c10d7c6852a119e4cdc
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87033572"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028258"
 ---
 # <a name="function-chaining-in-durable-functions---hello-sequence-sample"></a>Funktions länkning i Durable Functions-Hello Sequence-exempel
 
-Funktions länkning syftar på mönstret för att köra en sekvens med funktioner i en viss ordning. Ofta måste utdata från en funktion tillämpas på indata för en annan funktion. I den här artikeln beskrivs den länknings ordning som du skapar när du slutför Durable Functions snabb start ([C#](durable-functions-create-first-csharp.md) eller [Java Script](quickstart-js-vscode.md)). Mer information om Durable Functions finns i [Durable Functions översikt](durable-functions-overview.md).
+Funktions länkning syftar på mönstret för att köra en sekvens med funktioner i en viss ordning. Ofta måste utdata från en funktion tillämpas på indata för en annan funktion. I den här artikeln beskrivs den länknings ordning som du skapar när du slutför Durable Functions snabb start ([C#](durable-functions-create-first-csharp.md),  [Java Script](quickstart-js-vscode.md)eller [python](quickstart-python-vscode.md)). Mer information om Durable Functions finns i [Durable Functions översikt](durable-functions-overview.md).
 
 [!INCLUDE [durable-functions-prerequisites](../../../includes/durable-functions-prerequisites.md)]
 
@@ -24,7 +24,7 @@ I den här artikeln beskrivs följande funktioner i exempel appen:
 
 * `E1_HelloSequence`: En [Orchestrator-funktion](durable-functions-bindings.md#orchestration-trigger) som anropar `E1_SayHello` flera gånger i följd. Den lagrar utdata från `E1_SayHello` anropen och registrerar resultatet.
 * `E1_SayHello`: En [aktivitets funktion](durable-functions-bindings.md#activity-trigger) som prepends en sträng med "Hello".
-* `HttpStart`: En HTTP-utlöst funktion som startar en instans av Orchestrator.
+* `HttpStart`: En HTTP-utlöst [beständig klient](durable-functions-bindings.md#orchestration-client) funktion som startar en instans av Orchestrator.
 
 ### <a name="e1_hellosequence-orchestrator-function"></a>E1_HelloSequence Orchestrator-funktion
 
@@ -39,7 +39,7 @@ Koden anropar `E1_SayHello` tre gånger i följd med olika parameter värden. Re
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 > [!NOTE]
-> JavaScript-Durable Functions är endast tillgängliga för funktionerna 2,0-körning.
+> JavaScript-Durable Functions är endast tillgängliga för funktionerna 3,0-körning.
 
 #### <a name="functionjson"></a>function.json
 
@@ -54,17 +54,47 @@ Det viktiga är `orchestrationTrigger` bindnings typen. Alla Orchestrator-funkti
 
 #### <a name="indexjs"></a>index.js
 
-Här är funktionen:
+Följande är Orchestrator-funktionen:
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E1_HelloSequence/index.js)]
 
-Alla JavaScript-Orchestration-funktioner måste innehålla [ `durable-functions` modulen](https://www.npmjs.com/package/durable-functions). Det är ett bibliotek som du kan använda för att skriva Durable Functions i Java Script. Det finns tre viktiga skillnader mellan en Orchestration-funktion och andra JavaScript-funktioner:
+Alla JavaScript-Orchestration-funktioner måste innehålla [ `durable-functions` modulen](https://www.npmjs.com/package/durable-functions). Det är ett bibliotek som du kan använda för att skriva Durable Functions i Java Script. Det finns tre betydande skillnader mellan en Orchestrator-funktion och andra JavaScript-funktioner:
 
-1. Funktionen är en [Generator-funktion.](/scripting/javascript/advanced/iterators-and-generators-javascript).
+1. Orchestrator-funktionen är en [Generator-funktion](/scripting/javascript/advanced/iterators-and-generators-javascript).
 2. Funktionen omges av ett anrop till `durable-functions` modulens `orchestrator` metod (här `df` ).
 3. Funktionen måste vara synkron. Eftersom Orchestrator-metoden hanterar anrop av Context. klar, ska funktionen bara returnera.
 
 `context`Objektet innehåller ett beständigt `df` Orchestration-kontext objekt som gör att du kan anropa andra *aktivitets* funktioner och skicka indataparametrar med hjälp av `callActivity` metoden. Koden anropar `E1_SayHello` tre gånger i följd med olika parameter värden, med hjälp av `yield` för att indikera att körningen ska vänta på att de asynkrona aktivitets funktions anropen ska returneras. Returvärdet för varje anrop läggs till i `outputs` matrisen, som returneras i slutet av funktionen.
+
+# <a name="python"></a>[Python](#tab/python)
+
+> [!NOTE]
+> Python-Durable Functions är bara tillgängliga för funktionerna 3,0-körning.
+
+
+#### <a name="functionjson"></a>function.json
+
+Om du använder Visual Studio Code eller Azure Portal för utveckling, är det här innehållet i *function.js* filen för Orchestrator-funktionen. De flesta Orchestrator- *function.jspå* filer ser ut ungefär så här.
+
+[!code-json[Main](~/samples-durable-functions-python/samples/function_chaining/E1_HelloSequence/function.json)]
+
+Det viktiga är `orchestrationTrigger` bindnings typen. Alla Orchestrator-funktioner måste använda den här typen av utlösare.
+
+> [!WARNING]
+> Om du vill följa regeln "ingen I/O" för Orchestrator-funktioner ska du inte använda några indata-eller utdata-bindningar när du använder `orchestrationTrigger` trigger-bindningen.  Om andra indata-eller utdata-bindningar behövs bör de i stället användas i kontexten för `activityTrigger` Functions som anropas av Orchestrator. Mer information finns i artikeln om [begränsningar för Orchestrator-funktions kod](durable-functions-code-constraints.md) .
+
+#### <a name="__init__py"></a>\_\_init \_ \_ . py
+
+Följande är Orchestrator-funktionen:
+
+[!code-python[Main](~/samples-durable-functions-python/samples/function_chaining/E1_HelloSequence/\_\_init\_\_.py)]
+
+Alla python-Orchestration-funktioner måste innehålla [ `durable-functions` paketet](https://pypi.org/project/azure-functions-durable). Det är ett bibliotek som du kan använda för att skriva Durable Functions i python. Det finns två betydande skillnader mellan en Orchestrator-funktion och andra python-funktioner:
+
+1. Orchestrator-funktionen är en [Generator-funktion](https://wiki.python.org/moin/Generators).
+2. _Filen_ bör registrera Orchestrator-funktionen som en Orchestrator genom att uppge `main = df.Orchestrator.create(<orchestrator function name>)` i slutet av filen. Detta hjälper till att skilja den från andra, hjälper och funktioner som har deklarerats i filen.
+
+`context`Med objektet kan du anropa andra *aktivitets* funktioner och skicka indataparametrar med `call_activity` metoden. Koden anropar `E1_SayHello` tre gånger i följd med olika parameter värden, med hjälp av `yield` för att indikera att körningen ska vänta på att de asynkrona aktivitets funktions anropen ska returneras. Returvärdet för varje anrop returneras i slutet av funktionen.
 
 ---
 
@@ -91,7 +121,7 @@ I stället för att binda till en `IDurableActivityContext` kan du binda direkt 
 [!code-json[Main](~/samples-durable-functions/samples/javascript/E1_SayHello/function.json)]
 
 > [!NOTE]
-> Alla funktioner som anropas av en Orchestration-funktion måste använda `activityTrigger` bindningen.
+> Alla aktivitets funktioner som anropas av en Orchestration-funktion måste använda `activityTrigger` bindningen.
 
 Implementeringen av `E1_SayHello` är en relativt trivial sträng formaterings åtgärd.
 
@@ -99,7 +129,26 @@ Implementeringen av `E1_SayHello` är en relativt trivial sträng formaterings �
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E1_SayHello/index.js)]
 
-Till skillnad från en JavaScript-Orchestration-funktion behöver en aktivitets funktion inga särskilda inställningar. Indatamängden som skickas till den av Orchestrator-funktionen finns på `context.bindings` objektet under namnet på `activityTrigger` bindningen – i det här fallet `context.bindings.name` . Bindnings namnet kan anges som en parameter för den exporterade funktionen och nås direkt, vilket är vad exempel koden gör.
+Till skillnad från Orchestration-funktionen behöver en aktivitets funktion inga särskilda inställningar. Indatamängden som skickas till den av Orchestrator-funktionen finns på `context.bindings` objektet under namnet på `activityTrigger` bindningen – i det här fallet `context.bindings.name` . Bindnings namnet kan anges som en parameter för den exporterade funktionen och nås direkt, vilket är vad exempel koden gör.
+
+# <a name="python"></a>[Python](#tab/python)
+
+#### <a name="e1_sayhellofunctionjson"></a>E1_SayHello/function.jspå
+
+*function.jspå* fil för funktionen aktivitet `E1_SayHello` liknar detta `E1_HelloSequence` , förutom att den använder en `activityTrigger` bindnings typ i stället för en `orchestrationTrigger` bindnings typ.
+
+[!code-json[Main](~/samples-durable-functions-python/samples/function_chaining/E1_SayHello/function.json)]
+
+> [!NOTE]
+> Alla aktivitets funktioner som anropas av en Orchestration-funktion måste använda `activityTrigger` bindningen.
+
+Implementeringen av `E1_SayHello` är en relativt trivial sträng formaterings åtgärd.
+
+#### <a name="e1_sayhello__init__py"></a>E1_SayHello/ \_ \_ init \_ \_ . py
+
+[!code-python[Main](~/samples-durable-functions-python/samples/function_chaining/E1_SayHello/\_\_init\_\_.py)]
+
+Till skillnad från Orchestrator-funktionen behöver en aktivitets funktion inga särskilda inställningar. Indatamängden som skickas till den av Orchestrator-funktionen är direkt tillgänglig som parameter till funktionen.
 
 ---
 
@@ -126,6 +175,20 @@ För att interagera med Dirigerare måste funktionen innehålla en `durableClien
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/HttpStart/index.js)]
 
 Används `df.getClient` för att hämta ett `DurableOrchestrationClient` objekt. Du kan använda klienten för att starta en dirigering. Det kan också hjälpa dig att returnera ett HTTP-svar som innehåller URL: er för att kontrol lera status för den nya dirigeringen.
+
+# <a name="python"></a>[Python](#tab/python)
+
+#### <a name="httpstartfunctionjson"></a>HttpStart/function.jspå
+
+[!code-json[Main](~/samples-durable-functions-python/samples/function_chaining/HttpStart/function.json)]
+
+För att interagera med Dirigerare måste funktionen innehålla en `durableClient` Indatamask.
+
+#### <a name="httpstart__init__py"></a>HttpStart/ \_ \_ init \_ \_ . py
+
+[!code-python[Main](~/samples-durable-functions-python/samples/function_chaining/HttpStart/\_\_init\_\_.py)]
+
+Använd `DurableOrchestrationClient` konstruktorn för att hämta en Durable Functions-klient. Du kan använda klienten för att starta en dirigering. Det kan också hjälpa dig att returnera ett HTTP-svar som innehåller URL: er för att kontrol lera status för den nya dirigeringen.
 
 ---
 

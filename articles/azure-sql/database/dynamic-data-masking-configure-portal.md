@@ -11,12 +11,12 @@ author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 04/28/2020
-ms.openlocfilehash: 3f8c296860fc36772a85039e27c86a72614c2a50
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: e551925bbd1426256a81ac2ca3f245af7697245b
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791060"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028020"
 ---
 # <a name="get-started-with-sql-database-dynamic-data-masking-with-the-azure-portal"></a>Kom igång med SQL Database dynamisk data maskning med Azure Portal
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -24,7 +24,7 @@ ms.locfileid: "92791060"
 Den här artikeln visar hur du implementerar [dynamisk data maskning](dynamic-data-masking-overview.md) med Azure Portal. Du kan också implementera dynamisk data maskning med hjälp av [Azure SQL Database-cmdletar](/powershell/module/az.sql/) eller [REST API](/rest/api/sql/).
 
 > [!NOTE]
-> Den här funktionen kan inte ställas in med Portal för Azure-Synapse (Använd PowerShell eller REST API) eller SQL-hanterad instans. Mer information finns i [dynamisk data maskning](/sql/relational-databases/security/dynamic-data-masking).
+> Den här funktionen kan inte ställas in med Portal för SQL-hanterad instans (Använd PowerShell eller REST API). Mer information finns i [dynamisk data maskning](/sql/relational-databases/security/dynamic-data-masking).
 
 ## <a name="set-up-dynamic-data-masking-for-your-database-using-the-azure-portal"></a>Konfigurera dynamisk data maskning för databasen med hjälp av Azure Portal
 
@@ -42,7 +42,7 @@ Den här artikeln visar hur du implementerar [dynamisk data maskning](dynamic-da
 
     ![Skärm bild som visar sidan Lägg till masknings regel konfiguration.](./media/dynamic-data-masking-configure-portal/6_ddm_add_mask.png)
 
-6. Välj **schemat** , **tabellen** och **kolumnen** för att definiera det angivna fältet för maskering.
+6. Välj **schemat**, **tabellen** och **kolumnen** för att definiera det angivna fältet för maskering.
 7. **Välj hur du vill maskera** från listan över känsliga data masknings kategorier.
 
     ![Skärm bild som visar kategorierna känsliga data maskning under avsnittet Välj hur den ska maskeras.](./media/dynamic-data-masking-configure-portal/7_ddm_mask_field_format.png)

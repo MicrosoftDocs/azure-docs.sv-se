@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: scottnap
 Customer intent: As someone with a networking background, I want to learn about Network Virtual Appliances in the Virtual WAN hub.
-ms.openlocfilehash: 1e4b8a2d801d7d7eccfaf558c3926ead1ab0a953
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 365ed60e73be9bb2098022fa767f4ae54b93c37c
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91313781"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028088"
 ---
 # <a name="about-network-virtual-appliance-in-an-azure-virtual-wan-hub-preview"></a>Om virtuell nätverks installation i en Azure Virtual WAN Hub (för hands version)
 
 Azure Virtual WAN har arbetat med nätverks partners för att bygga automatisering som gör det enkelt att ansluta sin kund lokala utrustning (CPE) till en Azure VPN-gateway i den virtuella hubben. Azure arbetar med utvalda nätverks partners så att kunder kan distribuera en virtuell nätverks installation (NVA) från tredje part direkt i den virtuella hubben. Detta gör att kunder som vill ansluta sina grenar CPE till samma varumärke NVA i det virtuella navet, så att de kan dra nytta av patentskyddade funktioner från slut punkt till slut punkt för SD-WAN.
 
-Barracuda Networks är den första partnern att tillhandahålla ett NVA-erbjudande som kan distribueras direkt till den virtuella WAN-hubben med sin [Barracuda CLOUDGEN WAN](https://www.barracuda.com/products/cloudgenwan) -produkt. Azure arbetar med mer partner så att du kan se andra erbjudanden efter.
+Barracuda Networks och Cisco Systems är de första partner som tillhandahåller NVA som kan distribueras direkt till den virtuella WAN-hubben.  Se [Barracuda CLOUDGEN WAN](https://www.barracuda.com/products/cloudgenwan) och [Cisco Cloud bearbetar för flera moln](https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/cloudonramp/ios-xe-17/cloud-onramp-book-xe/cloud-onramp-multi-cloud.html#Cisco_Concept.dita_c61e0e7a-fff8-4080-afee-47b81e8df701) för respektive produkt dokumentation. Azure arbetar med fler partners för att se att andra erbjudanden följer.
 
 > [!NOTE]
 > Endast NVA-erbjudanden som är tillgängliga för distribution i den virtuella WAN-hubben kan distribueras till den virtuella WAN-hubben. De kan inte distribueras till ett godtyckligt virtuellt nätverk i Azure.
@@ -50,7 +50,7 @@ NVA-partner kan skapa olika resurser beroende på deras installation, konfigurat
 * **Kund resurs grupp** – detta kommer att innehålla en program plats hållare för det hanterade programmet. Partner kan använda detta för att visa vilka kund egenskaper de väljer här.
 * **Hanterad resurs grupp** – kunder kan inte konfigurera eller ändra resurser i den här resurs gruppen direkt, eftersom detta styrs av utgivaren av det hanterade programmet. Den här resurs gruppen kommer att innehålla **NetworkVirtualAppliances** -resursen.
 
-:::image type="content" source="./media/about-nva-hub/managed-app.png" alt-text="Process översikt":::
+:::image type="content" source="./media/about-nva-hub/managed-app.png" alt-text="Resurs grupper för hanterade program":::
 
 ### <a name="nva-infrastructure-units"></a><a name="units"></a>NVA infrastruktur enheter
 
@@ -93,11 +93,11 @@ Tyvärr har vi inte kapacitet för att skapa nya partner erbjudanden på kort si
 
 ### <a name="can-i-deploy-any-nva-from-azure-marketplace-into-the-virtual-wan-hub"></a>Kan jag distribuera alla NVA från Azure Marketplace till den virtuella WAN-hubben?
 
-Nej. Just nu är det bara [Barracuda CLOUDGEN WAN](https://aka.ms/BarracudaMarketPlaceOffer) som kan distribueras till den virtuella WAN-hubben.
+För närvarande finns endast [Barracuda CLOUDGEN WAN](https://aka.ms/BarracudaMarketPlaceOffer) -och [Cisco Cloud vWAN-program](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/cisco.cisco_cloud_vwan_app?tab=Overview) tillgängliga för distribution i den virtuella WAN-hubben.
 
 ### <a name="what-is-the-cost-of-the-nva"></a>Vad kostar NVA?
 
-Du måste köpa en licens för din Barracuda CloudGen WAN-NVA från Barracuda. Mer information om licensiering finns i [Barracuda CLOUDGEN WAN-sida](https://www.barracuda.com/products/cloudgenwan). Dessutom kommer du också att debiteras från Microsoft för de NVA-infrastruktur enheter du använder, och andra resurser som du använder. Mer information finns i [prissättnings begrepp](pricing-concepts.md).
+Du måste köpa en licens för NVA från NVA-leverantören.  För din Barracuda CloudGen WAN-NVA från Barracuda-licensen, se [Barracuda s CLOUDGEN WAN-sida](https://www.barracuda.com/products/cloudgenwan). Cisco erbjuder för närvarande endast BYOL (ta med din egen licens) som måste införskaffas direkt från Cisco. Dessutom kommer du också att debiteras från Microsoft för de NVA-infrastruktur enheter du använder, och andra resurser som du använder. Mer information finns i [prissättnings begrepp](pricing-concepts.md).
 
 ### <a name="can-i-deploy-an-nva-to-a-basic-hub"></a>Kan jag distribuera en NVA till en grundläggande hubb?
 
@@ -109,7 +109,7 @@ Ja. Barracuda CloudGen WAN kan distribueras till ett nav med Azure-brandväggen.
 
 ### <a name="can-i-connect-any-cpe-device-in-my-branch-office-to-barracuda-cloudgen-wan-nva-in-the-hub"></a>Kan jag ansluta en CPE-enhet på mitt avdelnings kontor till Barracuda CloudGen WAN-NVA i hubben?
 
-Nej. Barracuda CloudGen WAN är bara kompatibelt med Barracuda CPE-enheter. Mer information om CloudGen WAN-krav finns i [Barracuda s CLOUDGEN WAN-sida](https://www.barracuda.com/products/cloudgenwan).
+Nej. Barracuda CloudGen WAN är bara kompatibelt med Barracuda CPE-enheter. Mer information om CloudGen WAN-krav finns i [Barracuda s CLOUDGEN WAN-sida](https://www.barracuda.com/products/cloudgenwan). För Cisco finns det ett flertal SD-WAN CPE-enheter som är kompatibla. Se [Cisco Cloud bearbetar för enhetsplattformar för flera moln](https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/cloudonramp/ios-xe-17/cloud-onramp-book-xe/cloud-onramp-multi-cloud.html#Cisco_Concept.dita_c61e0e7a-fff8-4080-afee-47b81e8df701) för att kunna använda CPEs.
 
 ### <a name="what-routing-scenarios-are-supported-with-nva-in-the-hub"></a>Vilka routningsgränssnitt stöds med NVA i hubben?
 

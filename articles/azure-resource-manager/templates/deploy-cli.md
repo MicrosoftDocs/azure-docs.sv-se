@@ -3,12 +3,12 @@ title: Distribuera resurser med Azure CLI och mall
 description: Använd Azure Resource Manager och Azure CLI för att distribuera resurser till Azure. Resurserna definieras i en Resource Manager-mall.
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: 7b1639f31b696f300177d05107a98effc3f3ae23
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: a2caea70a51a737bfa433a089c03b43f252b5d6e
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676196"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028156"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-cli"></a>Distribuera resurser med ARM-mallar och Azure CLI
 
@@ -18,7 +18,7 @@ Distributions kommandona ändrades i Azure CLI-version 2.2.0. Exemplen i den hä
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
-Om du inte har Azure CLI installerat kan du använda Cloud Shell. Mer information finns i [distribuera arm-mallar från Cloud Shell](deploy-cloud-shell.md).
+Om du inte har Azure CLI installerat kan du använda Azure Cloud Shell. Mer information finns i [distribuera arm-mallar från Azure Cloud Shell](deploy-cloud-shell.md).
 
 ## <a name="deployment-scope"></a>Distributions omfång
 
@@ -46,7 +46,7 @@ Du kan rikta distributionen till en resurs grupp, prenumeration, hanterings grup
 
   Mer information om distributioner på hanterings grupp nivå finns i [Skapa resurser på hanterings grupps nivå](deploy-to-management-group.md).
 
-* Använd [AZ Deployment Tenant Create](/cli/azure/deployment/tenant#az-deployment-tenant-create)för att distribuera till en **klient organisation** :
+* Använd [AZ Deployment Tenant Create](/cli/azure/deployment/tenant#az-deployment-tenant-create)för att distribuera till en **klient organisation**:
 
   ```azurecli-interactive
   az deployment tenant create --location <location> --template-file <path-to-template>
@@ -169,7 +169,7 @@ Om du vill skicka parameter värden kan du använda antingen infogade parametrar
 
 ### <a name="inline-parameters"></a>Infogade parametrar
 
-Ange värdena i om du vill skicka in infogade parametrar `parameters` . Om du till exempel vill skicka en sträng och matris till en mall är ett bash-gränssnitt använder du:
+Ange värdena i om du vill skicka in infogade parametrar `parameters` . Om du till exempel vill skicka en sträng och matris till en mall i ett bash-gränssnitt använder du:
 
 ```azurecli-interactive
 az deployment group create \
@@ -191,7 +191,7 @@ az deployment group create \
 
 Att hämta ett parameter värde från en fil är användbart när du behöver ange konfigurations värden. Du kan till exempel ange [värden för Cloud-Init för en virtuell Linux-dator](../../virtual-machines/linux/using-cloud-init.md).
 
-arrayContent.jsi formatet är:
+_arrayContent.jsi_ formatet är:
 
 ```json
 [
@@ -228,7 +228,7 @@ I stället för att skicka parametrar som infogade värden i skriptet, kan det v
 
 Mer information om parameterfilen finns i [Skapa en parameterfil för Resource Manager](parameter-files.md).
 
-Om du vill skicka en lokal parameter fil använder `@` du för att ange en lokal fil med namnet storage.parameters.jspå.
+Om du vill skicka en lokal parameter fil använder `@` du för att ange en lokal fil med namnet _storage.parameters.jspå_.
 
 ```azurecli-interactive
 az deployment group create \

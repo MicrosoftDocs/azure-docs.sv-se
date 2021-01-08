@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: tisande
 ms.custom: devx-track-js
-ms.openlocfilehash: 7938920459654bd59620ad0992f3a13db85ff4fb
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 7600d8aa2f78e06ea4046273635fdbba18042010
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 01/08/2021
-ms.locfileid: "98019031"
+ms.locfileid: "98028870"
 ---
 # <a name="how-to-write-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Skriva lagrade procedurer, utlösare och användardefinierade funktioner i Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -284,7 +284,7 @@ function async_sample() {
 
 ## <a name="how-to-write-triggers"></a><a id="triggers"></a>Skriva utlösare
 
-Azure Cosmos DB stöder för- och efterutlösare. För utlösare körs innan ändring av ett databas objekt och post-utlösare utförs efter ändring av ett databas objekt. Utlösare är inte automatiska. De måste anges för varje databas åtgärd där du vill att de ska köras.
+Azure Cosmos DB stöder för- och efterutlösare. Förutlösare körs innan ett databasobjekt ändras och efterutlösare körs när ett databasobjekt har ändrats. Utlösare körs inte automatiskt, de måste anges för varje databas åtgärd där de ska köras. När du har definierat en utlösare bör du [Registrera dig och anropa en för utlösare](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers) med hjälp av Azure Cosmos DB SDK: er.
 
 ### <a name="pre-triggers"></a><a id="pre-triggers"></a>För utlösare
 

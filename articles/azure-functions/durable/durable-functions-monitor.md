@@ -4,12 +4,12 @@ description: Lär dig hur du implementerar en status övervakare med Durable Fun
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: ed92156df9d8e1e07b56cea4b1e64edee11d68d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e70c50098ece516312e1e92984185624c276301b
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77562130"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028428"
 ---
 # <a name="monitor-scenario-in-durable-functions---weather-watcher-sample"></a>Övervaka scenario i Durable Functions – väder vakts exempel
 
@@ -72,6 +72,9 @@ Här är den kod som implementerar funktionen:
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_Monitor/index.js)]
 
+# <a name="python"></a>[Python](#tab/python)
+Vi har en annan självstudie för övervaknings mönstret på python, se den [här](durable-functions-monitor-python.md).
+
 ---
 
 Den här Orchestrator-funktionen utför följande åtgärder:
@@ -83,8 +86,7 @@ Den här Orchestrator-funktionen utför följande åtgärder:
 5. Skapar en varaktig timer för att återuppta dirigeringen vid nästa avsöknings intervall. Exemplet använder ett hårdkodat värde för det kortfattat.
 6. Fortsätter att köras tills den aktuella UTC-tiden passerar övervakarens förfallo tid, eller så skickas en SMS-avisering.
 
-Flera Orchestrator-instanser kan köras samtidigt genom att anropa Orchestrator-funktionen flera gånger. Den plats som ska övervakas och telefonnumret som en SMS-avisering ska skickas till kan anges.
-
+Flera Orchestrator-instanser kan köras samtidigt genom att anropa Orchestrator-funktionen flera gånger. Den plats som ska övervakas och telefonnumret som en SMS-avisering ska skickas till kan anges. Tänk på att Orchestrator-funktionen *inte* körs medan du väntar på timern, så att du inte debiteras för den.
 ### <a name="e3_getisclear-activity-function"></a>Funktionen E3_GetIsClear aktivitet
 
 Som med andra exempel är hjälp aktivitetens funktioner vanliga funktioner som använder sig av `activityTrigger` trigger-bindningen. Funktionen **E3_GetIsClear** hämtar aktuella väder förhållanden med hjälp av väder-API: et och avgör om himmelen är klar.
@@ -102,6 +104,9 @@ Som med andra exempel är hjälp aktivitetens funktioner vanliga funktioner som 
 Här är implementeringen.
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_GetIsClear/index.js)]
+
+# <a name="python"></a>[Python](#tab/python)
+Vi har en annan självstudie för övervaknings mönstret på python, se den [här](durable-functions-monitor-python.md).
 
 ---
 
@@ -125,6 +130,9 @@ Dess *function.jspå* är enkelt:
 Här är koden som skickar SMS-meddelandet:
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_SendGoodWeatherAlert/index.js)]
+
+# <a name="python"></a>[Python](#tab/python)
+Vi har en annan självstudie för övervaknings mönstret på python, se den [här](durable-functions-monitor-python.md).
 
 ---
 
@@ -169,7 +177,7 @@ Du kan se dirigeringens aktivitet genom att titta på funktions loggarna i Azure
 2018-03-01T01:14:54.030 Function completed (Success, Id=561d0c78-ee6e-46cb-b6db-39ef639c9a2c, Duration=62ms)
 ```
 
-Dirigeringen [avslutas](durable-functions-instance-management.md) när tids gränsen nås eller Clear-Skies har identifierats. Du kan också använda `TerminateAsync` (.net) eller `terminate` (Java Script) i en annan funktion eller anropa **terminatePostUri** http post webhook som refereras i 202-svaret ovan, `{text}` vilket ersätter med orsaken till uppsägningen:
+Dirigeringen slutförs när tids gränsen har nåtts eller också är Clear Skies identifierade. Du kan också använda `terminate` API i en annan funktion eller anropa **TERMINATEPOSTURI** http post webhook som refereras i 202-svaret ovan. Om du vill använda webhooken ersätter du `{text}` med orsaken till den tidigaste avslutningen. HTTP POST-URL: en kommer att se ut ungefär så här:
 
 ```
 POST https://{host}/runtime/webhooks/durabletask/instances/f6893f25acf64df2ab53a35c09d52635/terminate?reason=Because&taskHub=SampleHubVS&connection=Storage&code={systemKey}

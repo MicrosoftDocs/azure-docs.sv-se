@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/12/2020
 ms.author: juliako
-ms.openlocfilehash: 721af069a76497576b92c4203a93656d19c283aa
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 0fc28a1f808eeb2977b1dcca5046ed29933b8aa8
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92217736"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028802"
 ---
 # <a name="video-indexer-frequently-asked-questions"></a>Vanliga frågor och svar om Video Indexer
 
@@ -183,7 +183,7 @@ För närvarande finns det några överlappande i funktioner som erbjuds av Vide
 
 Video Indexer-API: et innehåller ett API för auktorisering och ett API för åtgärder. API: erna för auktorisering innehåller anrop som ger dig åtkomst till token. Varje anrop till åtgärds-API:t ska associeras med en åtkomsttoken, som matchar auktoriseringsområdet för anropet.
 
-Åtkomsttoken krävs för att använda Video Indexer-API: er i säkerhets syfte. Detta säkerställer att alla samtal kommer från dig eller de som har åtkomst behörighet till ditt konto. 
+Åtkomsttoken krävs för att använda Video Indexer-API: er i säkerhets syfte. Detta säkerställer att alla samtal kommer från dig eller de som har åtkomst behörighet till ditt konto. 
 
 ### <a name="what-is-the-difference-between-account-access-token-user-access-token-and-video-access-token"></a>Vad är skillnaden mellan kontots åtkomst-token, token för användar åtkomst och token för video åtkomst?
 
@@ -197,7 +197,7 @@ Video Indexer-API: et innehåller ett API för auktorisering och ett API för å
 
 ### <a name="what-are-the-login-options-to-video-indexer-developer-portal"></a>Vad är inloggnings alternativen för att Video Indexer Developer-portalen?
 
-Du kan logga in med Azure AD, Microsoft-konto, Google-konto eller Facebook-konto. 
+Se en versions kommentar om [inloggnings information](release-notes.md#october-2020).
 
 När du har registrerat ditt e-postkonto med en identitets leverantör kan du inte använda det här e-postkontot med en annan identitets leverantör.
 

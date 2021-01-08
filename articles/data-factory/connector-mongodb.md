@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 09/28/2020
-ms.openlocfilehash: bb9768c2a4d3be9ac0e06844c5ac0835707cf455
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.date: 01/08/2021
+ms.openlocfilehash: 71096334f46531bba26f0ead66169340107627cf
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945880"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028700"
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory"></a>Kopiera data från MongoDB med hjälp av Azure Data Factory
 
@@ -28,21 +28,25 @@ Den här artikeln beskriver hur du använder kopierings aktiviteten i Azure Data
 >[!IMPORTANT]
 >ADF släpper den nya versionen av MongoDB Connector som ger bättre inbyggt stöd för MongoDB. Om du använder den tidigare MongoDB-anslutningen i din lösning som stöds för bakåtkompatibilitet, se [MongoDB Connector-artikeln (bakåtkompatibelt)](connector-mongodb-legacy.md) .
 
+
 ## <a name="supported-capabilities"></a>Funktioner som stöds
 
 Du kan kopiera data från MongoDB-databasen till alla mottagar data lager som stöds. En lista över data lager som stöds som källor/mottagare av kopierings aktiviteten finns i tabellen över [data lager som stöds](copy-activity-overview.md#supported-data-stores-and-formats) .
 
-Mer specifikt stöder denna MongoDB-anslutning **versioner upp till 3,4**.
+Mer specifikt stöder denna MongoDB-anslutning **versioner upp till 4,2**.
+
 
 ## <a name="prerequisites"></a>Förutsättningar
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
+
 
 ## <a name="getting-started"></a>Komma igång
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 I följande avsnitt finns information om egenskaper som används för att definiera Data Factory entiteter som är speciella för MongoDB-anslutaren.
+
 
 ## <a name="linked-service-properties"></a>Egenskaper för länkad tjänst
 
@@ -102,6 +106,7 @@ En fullständig lista över avsnitt och egenskaper som är tillgängliga för at
 }
 ```
 
+
 ## <a name="copy-activity-properties"></a>Kopiera egenskaper för aktivitet
 
 En fullständig lista över avsnitt och egenskaper som är tillgängliga för att definiera aktiviteter finns i artikeln om [pipeliner](concepts-pipelines-activities.md) . Det här avsnittet innehåller en lista över egenskaper som stöds av MongoDB-källan.
@@ -118,7 +123,7 @@ Följande egenskaper stöds i avsnittet Kopiera aktivitets **källa** :
 | cursorMethods. sort | Anger i vilken ordning som frågan returnerar matchande dokument. Se [cursor. sort ()](https://docs.mongodb.com/manual/reference/method/cursor.sort/#cursor.sort). | Nej |
 | cursorMethods. Limit | Anger det maximala antalet dokument som servern returnerar. Referera till [cursor. Limit ()](https://docs.mongodb.com/manual/reference/method/cursor.limit/#cursor.limit).  | Nej |
 | cursorMethods. Skip | Anger antalet dokument som ska hoppas över och från där MongoDB börjar returnera resultat. Se [cursor. SKIP ()](https://docs.mongodb.com/manual/reference/method/cursor.skip/#cursor.skip). | Nej |
-| batchSize | Anger antalet dokument som ska returneras i varje batch av svaret från MongoDB-instansen. I de flesta fall kommer ändringar av batchstorleken inte att påverka användaren eller programmet. Cosmos DB gränser för varje batch får inte överstiga 40MB i storlek, vilket är summan av batchSize-antalet dokument storlek, så minska det här värdet om dokument storleken är stor. | Nej<br/>(Standardvärdet är **100**) |
+| batchSize | Anger antalet dokument som ska returneras i varje batch av svaret från MongoDB-instansen. I de flesta fall kommer ändringar av batchstorleken inte att påverka användaren eller programmet. Cosmos DB gränser för varje batch får inte överstiga 40 MB i storlek, vilket är summan av batchSize storlek, så minska det här värdet om dokument storleken är stor. | Nej<br/>(Standardvärdet är **100**) |
 
 >[!TIP]
 >ADF-support använder BSON-dokument i **strikt läge**. Kontrol lera att filter frågan är i strikt läge i stället för Shell-läge. Du hittar mer information på [MongoDB manual](https://docs.mongodb.com/manual/reference/mongodb-extended-json/index.html).
@@ -161,13 +166,16 @@ Följande egenskaper stöds i avsnittet Kopiera aktivitets **källa** :
 ]
 ```
 
+
 ## <a name="export-json-documents-as-is"></a>Exportera JSON-dokument som-är
 
 Du kan använda den här MongoDB-anslutningen för att exportera JSON-dokument från en MongoDB-samling till olika filbaserade butiker eller för att Azure Cosmos DB. För att få en sådan oberoende kopia kan du hoppa över avsnittet "struktur" (kallas även *schema*) i data uppsättning och schema mappning i kopierings aktiviteten.
 
+
 ## <a name="schema-mapping"></a>Schemamappning
 
 Information om hur du kopierar data från MongoDB till tabell mottagare finns i [schema mappning](copy-activity-schema-and-type-mapping.md#schema-mapping).
+
 
 ## <a name="next-steps"></a>Nästa steg
 En lista över data lager som stöds som källor och mottagare av kopierings aktiviteten i Azure Data Factory finns i [data lager som stöds](copy-activity-overview.md#supported-data-stores-and-formats).

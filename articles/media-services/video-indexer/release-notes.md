@@ -10,14 +10,14 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.workload: na
 ms.topic: article
-ms.date: 10/30/2020
+ms.date: 01/06/2021
 ms.author: juliako
-ms.openlocfilehash: 81e52d4a6827492931179055d040b541d51228eb
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 3552d55d995608dd0d471c84cd5e9f9988ebe2c0
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97916668"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028649"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Viktig information om Azure Media Services Video Indexer
 
@@ -44,12 +44,15 @@ Video Indexer stöder identifiering, gruppering och igenkänning av tecken i ani
 
 ### <a name="planned-video-indexer-website-authenticatication-changes"></a>Planerad Video Indexer webbplats authenticatication ändringar
 
-Från och med 1 januari 2021 kommer du inte längre att kunna registrera dig och logga in på den [video Indexer](https://www.videoindexer.ai/) webbplatsen (utvärderings erbjudande) med Facebook eller LinkedIn.
+Från och med 1 mars 2021 kommer du inte längre att kunna registrera dig och logga in på [video Indexer](https://www.videoindexer.ai/) webbplats med Facebook eller LinkedIn.
 
 Du kommer att kunna registrera dig och logga in med någon av följande providers: Azure AD, Microsoft och Google.
 
 > [!NOTE]
-> Du uppmanas att exportera ditt innehåll före den 1 januari 2021, eftersom konton som är anslutna till LinkedIn och Facebook tas bort och innehållet inte längre kan nås.
+> De Video Indexer konton som är anslutna till LinkedIn och Facebook kommer inte att vara tillgängliga efter den 1 mars 2021. 
+> 
+> Du bör [bjuda in](invite-users.md) ett Azure AD-, Microsoft-eller Google-e-postmeddelande som du äger till video Indexer kontot så att du fortfarande har åtkomst.<br/>
+> Du kan också skapa ett betalt konto och migrera data.
 
 ## <a name="august-2020"></a>Augusti 2020
 

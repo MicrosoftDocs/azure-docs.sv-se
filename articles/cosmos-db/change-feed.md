@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 04/08/2020
 ms.reviewer: sngun
 ms.custom: seodec18, "seo-nov-2020"
-ms.openlocfilehash: c8c479050b434904de57397e5e7d73594090e031
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: c6856a0cb70123f1a3570b611c81660a592fdc1b
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94336139"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98027808"
 ---
 # <a name="change-feed-in-azure-cosmos-db"></a>Ändringsflöde i Azure Cosmos DB
-[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
+[!INCLUDE[appliesto-all-apis-except-table](includes/appliesto-all-apis-except-table.md)]
 
 Ändra feed i Azure Cosmos DB är en permanent post med ändringar i en behållare i den ordning som de förekommer. Stödet för ändringsflöde i Azure Cosmos DB fungerar genom att lyssna efter ändringar på en Azure Cosmos-container. Funktionen returnerar sedan den sorterade listan över dokument som ändrats i den ordning de ändrades. De bestående ändringarna kan bearbetas asynkront och stegvis, och utdata kan distribueras över en eller flera konsumenter för parallell bearbetning.
 
@@ -28,10 +28,10 @@ Den här funktionen stöds för närvarande av följande Azure Cosmos DB-API: er
 
 | **Klient driv rutiner** | **SQL-API** | **Azure Cosmos DB s API för Cassandra** | **API för Azure Cosmos DB för MongoDB** | **Gremlin-API**|**Tabell-API** |
 | --- | --- | --- | --- | --- | --- | --- |
-| .NET | Ja | Ja | Ja | Ja | Inga |
-|Java|Ja|Ja|Ja|Ja|Inga|
-|Python|Ja|Ja|Ja|Ja|Inga|
-|Node/JS|Ja|Ja|Ja|Ja|Inga|
+| .NET | Ja | Ja | Ja | Ja | Nej |
+|Java|Ja|Ja|Ja|Ja|Nej|
+|Python|Ja|Ja|Ja|Ja|Nej|
+|Node/JS|Ja|Ja|Ja|Ja|Nej|
 
 ## <a name="change-feed-and-different-operations"></a>Ändra feed och olika åtgärder
 

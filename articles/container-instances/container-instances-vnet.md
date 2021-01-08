@@ -4,12 +4,12 @@ description: Lär dig hur du distribuerar en behållar grupp till ett nytt eller
 ms.topic: article
 ms.date: 07/02/2020
 ms.custom: devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 02cf514e6c19387e3a9e2f1c78b65f346fff764e
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: b791d3f37809c2eca53f5a3cd34f7c44dd11ce40
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746903"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028887"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>Distribuera containerinstanser i ett virtuellt Azure-nätverk
 
@@ -20,7 +20,7 @@ Den här artikeln visar hur du använder kommandot [AZ container Create][az-cont
 För nätverks scenarier och begränsningar, se [scenarier och resurser för virtuella nätverk för Azure Container instances](container-instances-virtual-network-concepts.md).
 
 > [!IMPORTANT]
-> Distribution av container grupper till ett virtuellt nätverk är allmänt tillgängligt för Linux-behållare i de flesta regioner där Azure Container Instances är tillgängligt. Mer information finns i [regioner och resurs tillgänglighet](container-instances-virtual-network-concepts.md#where-to-deploy). 
+> Distribution av container grupper till ett virtuellt nätverk är allmänt tillgängligt för Linux-behållare i de flesta regioner där Azure Container Instances är tillgängligt. Mer information finns i [regioner och resurs tillgänglighet][container-regions]. 
 
 Exemplen i den här artikeln är formaterade för bash-gränssnittet. Om du föredrar ett annat gränssnitt, till exempel PowerShell eller kommando tolken, justerar du rad fortsättnings tecknen efter behov.
 
@@ -69,7 +69,7 @@ Så här distribuerar du en behållar grupp till ett befintligt virtuellt nätve
 
 I följande exempel distribueras en andra behållar grupp till samma undernät som skapats tidigare och verifierar kommunikationen mellan de två behållar instanserna.
 
-Börja med att hämta IP-adressen för den första behållar gruppen som du har distribuerat, *AppContainer* :
+Börja med att hämta IP-adressen för den första behållar gruppen som du har distribuerat, *AppContainer*:
 
 ```azurecli
 az container show --resource-group myResourceGroup \
@@ -83,7 +83,7 @@ Utdata visar behållar gruppens IP-adress i det privata under nätet. Exempel:
 10.0.0.4
 ```
 
-Ange nu `CONTAINER_GROUP_IP` till den IP-adress som du hämtade med `az container show` kommandot och kör följande `az container create` kommando. Den här andra behållaren, *commchecker* , kör en Alpine Linux-baserad avbildning och körs `wget` mot den första behållar gruppens privata undernät-IP-adress.
+Ange nu `CONTAINER_GROUP_IP` till den IP-adress som du hämtade med `az container show` kommandot och kör följande `az container create` kommando. Den här andra behållaren, *commchecker*, kör en Alpine Linux-baserad avbildning och körs `wget` mot den första behållar gruppens privata undernät-IP-adress.
 
 ```azurecli
 CONTAINER_GROUP_IP=<container-group-IP-address>
@@ -139,7 +139,7 @@ Exempel på utdata:
 /subscriptions/<Subscription ID>/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkProfiles/aci-network-profile-aci-vnet-aci-subnet
 ```
 
-När du har nätverks profil-ID: t kopierar du följande YAML till en ny fil med namnet *VNet-Deploy-ACI. yaml* . `networkProfile`Ersätt `id` värdet med det ID som du precis hämtade under och spara sedan filen. Den här YAML skapar en behållar grupp med namnet *appcontaineryaml* i ditt virtuella nätverk.
+När du har nätverks profil-ID: t kopierar du följande YAML till en ny fil med namnet *VNet-Deploy-ACI. yaml*. `networkProfile`Ersätt `id` värdet med det ID som du precis hämtade under och spara sedan filen. Den här YAML skapar en behållar grupp med namnet *appcontaineryaml* i ditt virtuella nätverk.
 
 ```YAML
 apiVersion: '2019-12-01'
@@ -238,3 +238,4 @@ Om du vill distribuera ett nytt virtuellt nätverk, undernät, nätverks profil 
 [az-container-show]: /cli/azure/container#az-container-show
 [az-network-vnet-create]: /cli/azure/network/vnet#az-network-vnet-create
 [az-network-profile-list]: /cli/azure/network/profile#az-network-profile-list
+[container-regions]: container-instances-region-availability.md

@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 1/05/2021
+ms.date: 1/06/2021
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: fd3e4a4442f7da89ffee1557e7d908db805931ed
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 1debeab6e420d9021ebba1cecb2d551cf21c9fe2
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 01/08/2021
-ms.locfileid: "98014882"
+ms.locfileid: "98028479"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>Gör så här: Ange valfria anspråk för din app
 
@@ -49,7 +49,7 @@ Den uppsättning valfria anspråk som är tillgängliga som standard för progra
 
 **Tabell 2: v 1.0 och v 2.0 valfri anspråks uppsättning**
 
-| Namn                       |  Beskrivning   | Tokentyp | Användar typ | Kommentarer  |
+| Namn                       |  Beskrivning   | Tokentyp | Användar typ | Anteckningar  |
 |----------------------------|----------------|------------|-----------|--------|
 | `auth_time`                | Tid när användaren senast autentiserades. Se OpenID Connect spec.| JWT        |           |  |
 | `tenant_region_scope`      | Resurs innehavarens region | JWT        |           | |
@@ -87,10 +87,12 @@ De här anspråken ingår alltid i v 1.0 Azure AD-tokens, men ingår inte i v 2.
 | `given_name`  | Förnamn                      | Anger det första eller "tilldelade" namnet på användaren, enligt vad som anges på användarobjektet.<br>"given_name": "Frank"                   | Stöds i MSA och Azure AD.  Kräver `profile` omfånget. |
 | `upn`         | UPN (User Principal Name) | En identifierare för den användare som kan användas med parametern username_hint.  Inte en varaktig identifierare för användaren och bör inte användas för att unikt identifiera användar information (till exempel som en databas nyckel). Använd i stället användar objekt-ID ( `oid` ) som en databas nyckel. Användare som loggar in med ett [alternativt inloggnings-ID](../authentication/howto-authentication-use-email-signin.md) ska inte visas som användarens huvud namn (UPN). Använd i stället följande `preferred_username` anspråk för att Visa inloggnings status för användaren. | Se [Ytterligare egenskaper](#additional-properties-of-optional-claims) nedan för konfiguration av anspråket. Kräver `profile` omfånget.|
 
+## <a name="v10-specific-optional-claims-set"></a>v 1.0 – vissa valfria anspråks uppsättningar
+
+Några av förbättringarna av v2-token-formatet är tillgängliga för appar som använder formatet v1-token, vilket ökar säkerheten och tillförlitligheten. Dessa börjar inte gälla för de ID-token som begärs från v2-slutpunkten eller åtkomsttoken för API: er som använder formatet v2-token. Dessa gäller endast för JWTs, inte SAML-token. 
 
 **Tabell 4: v 1.0 – endast valfria anspråk**
 
-Några av förbättringarna av v2-token-formatet är tillgängliga för appar som använder formatet v1-token, vilket ökar säkerheten och tillförlitligheten. Dessa börjar inte gälla för de ID-token som begärs från v2-slutpunkten eller åtkomsttoken för API: er som använder formatet v2-token. 
 
 | JWT-anspråk     | Namn                            | Beskrivning | Kommentarer |
 |---------------|---------------------------------|-------------|-------|
@@ -272,7 +274,7 @@ Det här avsnittet beskriver konfigurations alternativen under valfria anspråk 
    - "DirectoryRole"
    - "Variabeln applicationgroup" (det här alternativet inkluderar endast grupper som är kopplade till programmet)
 
-   Ett exempel:
+   Exempel:
 
     ```json
     "groupMembershipClaims": "SecurityGroup"

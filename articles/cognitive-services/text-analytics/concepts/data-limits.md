@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 11/19/2020
 ms.author: aahi
 ms.reviewer: chtufts
-ms.openlocfilehash: c60adb09da05ba945bcf6ccb55e71c395f064211
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 2adca03a820d02731bca252dee99c76debc85e2e
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965110"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028139"
 ---
 # <a name="data-and-rate-limits-for-the-text-analytics-api"></a>Data-och hastighets begränsningar för API för textanalys
 <a name="data-limits"></a>
@@ -35,7 +35,15 @@ Använd den här artikeln för att hitta gränserna för storlek och frekvenser 
 | Maximal storlek för ett enskilt dokument ( `/analyze` slut punkt)  | 125K tecken som mäts av [StringInfo. LengthInTextElements](/dotnet/api/system.globalization.stringinfo.lengthintextelements). Gäller inte Textanalys för hälso tillstånd. |
 | Maximal storlek på hela begäran | 1 MB. Gäller även Textanalys för hälso tillstånd. |
 
-Det maximala antalet dokument som du kan skicka i en enskild begäran beror på vilken API-version och funktion du använder. `/analyze`Slut punkten avvisar hela begäran om något dokument överskrider max storleken (125K tecken)
+
+Om ett dokument överskrider tecken gränsen kommer API: et att beter sig på olika sätt beroende på vilken slut punkt du använder:
+
+* `/analyze` Endpoint
+  * API: et avvisar hela begäran och returnerar ett `400 bad request` fel om något dokument i det överskrider den maximala storleken.
+* Alla andra slut punkter:  
+  * API: et bearbetar inte ett dokument som överskrider den maximala storleken och returnerar ett ogiltigt dokument fel för det. Om en API-begäran har flera dokument fortsätter API: et att bearbeta dem om de ligger inom gränsen för tecken.
+
+Det maximala antalet dokument som du kan skicka i en enskild begäran beror på API-versionen och funktionen som du använder, vilket beskrivs i tabellen nedan.
 
 #### <a name="version-3"></a>[Version 3](#tab/version-3)
 

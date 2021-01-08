@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 11c20f3f79a4fceafaca9b1a948f1b4a425dad87
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 00aa24f0ff8c918c645239ca36888c6a214062c8
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96572719"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028768"
 ---
 # <a name="voice-and-video-concepts"></a>Begrepp inom röst- och videosamtal
 
@@ -49,8 +49,8 @@ Vi stöder H. 264 (MPEG-4)
 Vi har stöd för upp till full HD 1080p på interna (iOS, Android) SDK: er. För Web (JS) SDK stöder vi standard HD 720p. Kvaliteten beror på den tillgängliga bandbredden.  
 
 ### <a name="rooms-concept"></a>Konceptet rum
-Rum är en uppsättning API: er och SDK: er som gör att du enkelt kan lägga till ljud-, video-, skärm delnings-, PSTN-och SMS-interaktioner till din webbplats eller det interna programmet
-Under förhands granskningen kan du använda grupp-ID: t för att ansluta till samma konversation. Du kan skapa så många grupp-ID som du behöver och avgränsa användarna med "rum". Om du flyttar framåt introduceras fler kontroller runt "rum" 
+Rum är en uppsättning API: er och SDK: er som gör att du enkelt kan lägga till ljud-, video-, skärm delnings-, PSTN-och SMS-interaktioner till din webbplats eller det interna
+Under förhands granskningen kan du använda grupp-ID: t för att ansluta till samma konversation. Du kan skapa så många grupp-ID: n som du behöver och avgränsa användarna med "rum". Om du flyttar framåt introduceras fler kontroller runt "rum" 
 
 ## <a name="next-steps"></a>Nästa steg
 

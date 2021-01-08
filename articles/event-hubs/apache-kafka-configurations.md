@@ -2,13 +2,13 @@
 title: Rekommenderade konfigurationer för Apache Kafka klienter – Azure Event Hubs
 description: Den här artikeln innehåller rekommenderade Apache Kafka konfigurationer för klienter som interagerar med Azure Event Hubs för Apache Kafka.
 ms.topic: reference
-ms.date: 07/20/2020
-ms.openlocfilehash: f9a03d1d3433461a575b32cd69893408a8b0ef97
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 01/07/2021
+ms.openlocfilehash: 713900a3cc7e2b9f6f176edb21455faa577098d6
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87099716"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028836"
 ---
 # <a name="recommended-configurations-for-apache-kafka-clients"></a>Rekommenderade konfigurationer för Apache Kafka klienter
 Här är de rekommenderade konfigurationerna för att använda Azure Event Hubs från Apache Kafka klient program. 
@@ -17,7 +17,7 @@ Här är de rekommenderade konfigurationerna för att använda Azure Event Hubs 
 
 ### <a name="producer-and-consumer-configurations"></a>Tillverkare och konsument konfiguration
 
-Egenskap | Rekommenderade värden | Tillåtet intervall | Obs!
+Egenskap | Rekommenderade värden | Tillåtet intervall | Anteckningar
 ---|---:|-----:|---
 `metadata.max.age.ms` | 180000 (ungefärligt) | < 240000 | Kan sänkas för att hämta metadata ändringar snart.
 `connections.max.idle.ms`   | 180000 | < 240000 | Azure stänger inkommande TCP-inaktiv > 240 000 MS, vilket kan leda till att de skickas vid död anslutningar (visas som utgångna batchar på grund av sändnings tids gräns).
@@ -25,7 +25,7 @@ Egenskap | Rekommenderade värden | Tillåtet intervall | Obs!
 ### <a name="producer-configurations-only"></a>Endast producerande konfigurationer
 Du hittar Producer-konfiguration [här](https://kafka.apache.org/documentation/#producerconfigs).
 
-Egenskap | Rekommenderade värden | Tillåtet intervall | Obs!
+Egenskap | Rekommenderade värden | Tillåtet intervall | Anteckningar
 ---|---:|---:|---
 `max.request.size` | 1000000 | < 1046528 | Tjänsten stänger anslutningar om förfrågningar som är större än 1 046 528 byte skickas.  *Det här värdet **måste** ändras och orsakar problem i scenarier med stora data flöden.*
 `retries` | > 0 | | Kan kräva ökande delivery.timeout.ms-värde, se dokumentationen.
@@ -39,7 +39,7 @@ Egenskap | Rekommenderade värden | Tillåtet intervall | Obs!
 ### <a name="consumer-configurations-only"></a>Endast konsument konfiguration
 Konsument konfiguration hittar du [här](https://kafka.apache.org/documentation/#consumerconfigs).
 
-Egenskap | Rekommenderade värden | Tillåtet intervall | Obs!
+Egenskap | Rekommenderade värden | Tillåtet intervall | Anteckningar
 ---|---:|-----:|---
 `heartbeat.interval.ms` | 3000 | | 3000 är standardvärdet och bör inte ändras.
 `session.timeout.ms` | 30000 |6000.. 300000| Börja med 30000, öka om du ser frekvent ombalansering på grund av missade pulsslag.
@@ -50,14 +50,14 @@ Huvud `librdkafka` konfigurations filen ([länk](https://github.com/edenhill/lib
 
 ### <a name="producer-and-consumer-configurations"></a>Tillverkare och konsument konfiguration
 
-Egenskap | Rekommenderade värden | Tillåtet intervall | Obs!
+Egenskap | Rekommenderade värden | Tillåtet intervall | Anteckningar
 ---|---:|-----:|---
 `socket.keepalive.enable` | true | | Krävs om anslutningen förväntas vara inaktiv.  Azure kommer att stänga inkommande TCP-inaktiv > 240 000 MS.
 `metadata.max.age.ms` | ~ 180000| < 240000 | Kan sänkas för att hämta metadata ändringar snart.
 
 ### <a name="producer-configurations-only"></a>Endast producerande konfigurationer
 
-Egenskap | Rekommenderade värden | Tillåtet intervall | Obs!
+Egenskap | Rekommenderade värden | Tillåtet intervall | Anteckningar
 ---|---:|-----:|---
 `retries` | > 0 | | Standardvärdet är 2. Vi rekommenderar att du behåller det här värdet. 
 `request.timeout.ms` | 30000.. 60000 | > 20000| HÄNDELSEHUBBNAMNOMRÅDE kommer internt att vara standard till minst 20 000 MS.  `librdkafka` Standardvärdet är 5000, vilket kan vara problematiskt. *När begär Anden med lägre timeout-värden godkänns, är klient beteendet inte garanterat.*
@@ -67,7 +67,7 @@ Egenskap | Rekommenderade värden | Tillåtet intervall | Obs!
 
 ### <a name="consumer-configurations-only"></a>Endast konsument konfiguration
 
-Egenskap | Rekommenderade värden | Tillåtet intervall | Obs!
+Egenskap | Rekommenderade värden | Tillåtet intervall | Anteckningar
 ---|---:|-----:|---
 `heartbeat.interval.ms` | 3000 || 3000 är standardvärdet och bör inte ändras.
 `session.timeout.ms` | 30000 |6000.. 300000| Börja med 30000, öka om du ser frekvent ombalansering på grund av missade pulsslag.
@@ -79,7 +79,7 @@ Se följande tabell med vanliga konfigurations fel scenarier.
 
 Symtom | Problem | Lösning
 ----|---|-----
-Misslyckade förskjutnings skrivningar på grund av ombalansering | Konsumenten väntar för lång tid på mellan anrop till pollning () och tjänsten håller konsumenten ur gruppen. | I det syftet har du flera alternativ: <ul><li>öka tids gränsen för sessioner</li><li>minska storleken på meddelandets batch för att påskynda bearbetningen</li><li>förbättra bearbetningen av parallellisering för att undvika att blockera Consumer. pollning ()</li></ul> Det är förmodligen bara att använda en kombination av de tre.
+Misslyckade förskjutnings skrivningar på grund av ombalansering | Konsumenten väntar för lång tid på mellan anrop till pollning () och tjänsten håller konsumenten ur gruppen. | I det syftet har du flera alternativ: <ul><li>Öka tids gränsen för avsöknings bearbetning ( `max.poll.interval.ms` )</li><li>Minska storleken på meddelandets batch för att påskynda bearbetningen</li><li>Förbättra bearbetningen av parallellisering för att undvika att blockera Consumer. pollning ()</li></ul> Det är förmodligen bara att använda en kombination av de tre.
 Nätverks undantag vid högt genererat data flöde | Använder du Java client + standard max. Request. size?  Dina begär Anden kan vara för stora. | Se Java configs ovan.
 
 ## <a name="next-steps"></a>Nästa steg

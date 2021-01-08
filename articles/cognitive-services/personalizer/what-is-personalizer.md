@@ -7,16 +7,16 @@ ms.topic: overview
 ms.date: 08/27/2020
 ms.custom: cog-serv-seo-aug-2020
 keywords: personanpassare, Azure-personanpassare, maskin inlärning
-ms.openlocfilehash: 28aae130d062eaf57a66a9b90a6602c3874f1494
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 33c1770c5c8722a55d8f1df4aff9b1637d903977
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97094156"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028785"
 ---
 # <a name="what-is-personalizer"></a>Vad är Personanpassning?
 
-Azure-personanpassa är en molnbaserad tjänst som hjälper dina program att välja det bästa innehålls objektet för att visa dina användare. Du kan använda tjänsten personanpassa för att avgöra vilken produkt som ska föreslås till shoppare eller för att ta reda på den optimala positionen för en annons. När innehållet har visats för användaren övervakar systemet användarens användar beteende i real tid och rapporterar en belönings Poäng tillbaka till tjänsten för anpassning. Detta säkerställer kontinuerlig förbättring av Machine Learning-modellen och personanpassa möjlighet att välja det bästa innehålls objektet baserat på den sammanhangsbaserade information som den tar emot.
+Azure-personanpassa är en molnbaserad tjänst som hjälper dina program att välja det bästa innehålls objektet för att visa dina användare. Du kan använda tjänsten personanpassa för att avgöra vilken produkt som ska föreslås till shoppare eller för att ta reda på den optimala positionen för en annons. När innehållet har visats för användaren övervakar programmet användarens reaktion och rapporterar en belönings Poäng tillbaka till tjänsten för anpassning. Detta säkerställer kontinuerlig förbättring av Machine Learning-modellen och personanpassa möjlighet att välja det bästa innehålls objektet baserat på den sammanhangsbaserade information som den tar emot.
 
 > [!TIP]
 > Innehåll är en informations enhet, till exempel text, bilder, URL, e-postmeddelanden eller något annat som du vill välja från och Visa för dina användare.
@@ -65,7 +65,7 @@ Personens **belönings** - [API](https://westus2.dev.cognitive.microsoft.com/doc
 
 Använd Personanpassare när ditt innehåll:
 
-* Har en begränsad uppsättning objekt (max ~ 50) att välja från. Om du har en större lista kan du [använda en rekommendations motor](where-can-you-use-personalizer.md#how-to-use-personalizer-with-a-recommendation-solution) för att minska listan till 50 objekt.
+* Har en begränsad uppsättning åtgärder eller objekt (max ~ 50) för att välja från i varje anpassnings händelse. Om du har en större lista kan du [använda en rekommendations motor](where-can-you-use-personalizer.md#how-to-use-personalizer-with-a-recommendation-solution) för att minska listan till 50 objekt varje gången du anropar rang för tjänsten för anpassning.
 * Innehåller information som beskriver det innehåll som du vill rangordna: _åtgärder med funktioner_ och _kontext funktioner_.
 * Har minst ~ 1 – a innehålls relaterade händelser som är relaterade till att personanpassa ska vara effektiva. Om Personanpassaren inte får den lägsta trafik som krävs tar det längre tid för tjänsten att fastställa det enkla innehålls objektet.
 

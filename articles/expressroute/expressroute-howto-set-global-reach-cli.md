@@ -5,15 +5,15 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 12/12/2018
+ms.date: 01/07/2021
 ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 16a86982813b667ed5c761da27c8e9e5a43ab6cc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 27f16ac7d7d799c5467b11fd93352dc5fdef666c
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91322503"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028071"
 ---
 # <a name="configure-expressroute-global-reach-by-using-the-azure-cli"></a>Konfigurera ExpressRoute Global Reach med hjälp av Azure CLI
 
@@ -48,7 +48,7 @@ az account set --subscription <your subscription ID>
 
 ### <a name="identify-your-expressroute-circuits-for-configuration"></a>Identifiera dina ExpressRoute-kretsar för konfiguration
 
-Du kan aktivera ExpressRoute Global Reach mellan två ExpressRoute-kretsar, förutsatt att de finns i länder/regioner som stöds och har skapats på olika peering-platser. Om din prenumeration äger båda kretsarna kan du välja någon av kretsarna för att köra konfigurationen på det sätt som beskrivs längre fram i den här artikeln. Om de två kretsarna finns i olika Azure-prenumerationer, måste du ha behörighet från en Azure-prenumeration och måste skicka in dess verifierings nyckel när du kör konfigurations kommandot i den andra Azure-prenumerationen.
+Du kan aktivera ExpressRoute Global Reach mellan två ExpressRoute-kretsar. Kretsarna måste finnas i länder/regioner som stöds och har skapats på olika peering-platser. Om din prenumeration äger båda kretsarna kan du välja antingen kretsen för att köra konfigurationen. Men om de två kretsarna finns i olika Azure-prenumerationer måste du skapa en nyckel för autentisering från en av kretsarna. Med hjälp av den autentiseringsregel som genererades från den första kretsen kan du aktivera Global Reach på den andra kretsen.
 
 ## <a name="enable-connectivity-between-your-on-premises-networks"></a>Aktivera anslutningar mellan dina lokala nätverk
 
@@ -58,7 +58,7 @@ Observera följande krav för parameter värden när du kör kommandot för att 
 
   > /Subscriptions/{your_subscription_id}/resourceGroups/{your_resource_group}/providers/Microsoft.Network/expressRouteCircuits/{your_circuit_name}
 
-* *address-prefixet* måste vara ett "/29"-IPv4-undernät (till exempel "10.0.0.0/29"). Vi använder IP-adresser i det här under nätet för att upprätta anslutningar mellan de två ExpressRoute-kretsarna. Du får inte använda adresser i det här under nätet i dina virtuella Azure-nätverk eller i dina lokala nätverk.
+* *address-prefixet* måste vara ett "/29"-IPv4-undernät (till exempel "10.0.0.0/29"). Vi använder IP-adresser i det här under nätet för att upprätta anslutningar mellan de två ExpressRoute-kretsarna. Du kan inte använda adresser i det här under nätet i dina virtuella Azure-nätverk eller i dina lokala nätverk.
 
 Kör följande CLI-kommando för att ansluta två ExpressRoute-kretsar:
 
@@ -94,7 +94,7 @@ När den här åtgärden har slutförts har du anslutning mellan dina lokala nä
 
 ## <a name="enable-connectivity-between-expressroute-circuits-in-different-azure-subscriptions"></a>Aktivera anslutningar mellan ExpressRoute-kretsar i olika Azure-prenumerationer
 
-Om de två kretsarna inte finns i samma Azure-prenumeration behöver du behörighet. I följande konfiguration genererar du auktorisering i krets 2-prenumerationen och överför auktoriseringsregeln till kretsen 1.
+Om de två kretsarna inte finns i samma Azure-prenumeration behöver du behörighet. I följande konfiguration genererar du auktorisering i krets 2-prenumerationen. Sedan skickar du auktoriseringsregeln till kretsen 1.
 
 1. Generera en nyckel för autentisering:
 

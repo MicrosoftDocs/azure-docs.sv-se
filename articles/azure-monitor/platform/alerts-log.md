@@ -6,12 +6,12 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.subservice: alerts
-ms.openlocfilehash: a8dbadd3af9dc21ced54af151e4de705f854e011
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: 950482a96604165a8f1ff20cab9e3eafe1224c90
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97696067"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98029006"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Skapa, Visa och hantera logg aviseringar med Azure Monitor
 
@@ -33,7 +33,7 @@ Du kan också skapa logg aviserings regler med Azure Resource Manager mallar, so
 
 Här är stegen för att komma igång med att skriva frågor för aviseringar:
 
-1. Gå till den resurs som du vill Avisera om.
+1. Gå till den resurs som du vill Avisera om. Överväg att ställa in aviserings regler på flera resurser genom att välja en prenumeration eller en resurs grupp omfattning när det är möjligt. Aviseringar på flera resurser minskar kostnaderna och behovet av att hantera flera aviserings regler.
 1. Under **övervaka** väljer du **loggar**.
 1. Efterfråga de loggdata som kan indikera problemet. Du kan använda [aviserings frågans exempel ämne](../log-query/example-queries.md) för att förstå vad du kan identifiera eller [komma igång med att skriva en egen fråga](../log-query/log-analytics-tutorial.md). Du kan också [lära dig hur du skapar optimerade aviseringsfrågor](alerts-log-query.md).
 1. Tryck på knappen + Ny varnings regel för att starta flödet för att skapa aviseringar.
@@ -155,7 +155,7 @@ Här är stegen för att komma igång med att skriva frågor för aviseringar:
     1. Välj [aviserings delning efter dimensioner](alerts-unified-log.md#split-by-alert-dimensions)om så behövs: 
        - **Kolumnen resurs-ID** väljs automatiskt, om den upptäcks och ändras kontexten för den utlöst aviseringen till postens resurs. 
        - **Kolumnen resurs-ID** kan vara avmarkerad för att utlösa aviseringar för prenumerationer eller resurs grupper. De som väljer är användbara när frågeresultaten baseras på mellan resurser. Till exempel är en fråga som kontrollerar om 80% av resurs gruppens virtuella datorer har hög CPU-användning.
-       - Upp till sex ytterligare delningar kan också väljas för alla typer av siffror och text kolumner med dimensions tabellen.
+       - Upp till sex fler delningar kan också väljas för alla typer av siffror och text kolumner med dimensions tabellen.
        - Aviseringar utlöses separat enligt delning baserat på unika kombinationer och aviserings nytto lasten innehåller denna information.
     
         ![Välj agg regerings parametrar och delning](media/alerts-log/select-aggregation-parameters-and-splitting.png)

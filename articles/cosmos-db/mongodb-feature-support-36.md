@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 08/07/2020
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: bb9efa3fde0ed840589b66db7b28392de67ee8dd
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 0ca1f1222881a2b4ca640fa31192bd1c151ebd9f
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94635627"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028853"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-36-version-supported-features-and-syntax"></a>Azure Cosmos DB:s API för MongoDB (version 3.6): Funktioner och syntax som stöds
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -23,11 +23,14 @@ Genom att använda Azure Cosmos DBs API för MongoDB kan du dra nytta av fördel
 
 ## <a name="protocol-support"></a>Protokollstöd
 
-Azure Cosmos DB:s API för MongoDB är kompatibelt med MongoDB-serverversion **3.6** som standard för nya konton. De operatorer som stöds och eventuella begränsningar eller undantag anges nedan. Klientdrivrutiner som förstår dessa protokoll bör kunna ansluta till Cosmos DB:s API för MongoDB. När du använder Azure Cosmos DB:s API för MongoDB-konton är slutpunktens format för version 3.6 `*.mongo.cosmos.azure.com` medan formatet för slutpunkten i version 3.2 är `*.documents.azure.com`.
+Azure Cosmos DB:s API för MongoDB är kompatibelt med MongoDB-serverversion **3.6** som standard för nya konton. De operatorer som stöds och eventuella begränsningar eller undantag anges nedan. Klientdrivrutiner som förstår dessa protokoll bör kunna ansluta till Cosmos DB:s API för MongoDB. Observera att när du använder Azure Cosmos DB s API för MongoDB-konton har 3,6-versionen av kontot slut punkten i formatet, `*.mongo.cosmos.azure.com` medan kontots 3,2-version har slut punkten i formatet `*.documents.azure.com` .
 
 ## <a name="query-language-support"></a>Stöd för frågespråk
 
-Azure Cosmos DB:s API för MongoDB erbjuder omfattande stöd för MongoDB-frågespråkskonstruktioner. Nedan hittar du en detaljerad lista över de åtgärder, operatorer, stadier, kommandon och alternativ som stöds för närvarande.
+Azure Cosmos DB:s API för MongoDB erbjuder omfattande stöd för MongoDB-frågespråkskonstruktioner. I följande avsnitt visas en detaljerad lista över Server åtgärder, operatörer, stadier, kommandon och alternativ som för närvarande stöds av Azure Cosmos DB.
+
+> [!NOTE]
+> Den här artikeln listar de Server kommandon som stöds och omfattar inte funktioner på klient sidan. Klient sidans wrapper-funktioner som `deleteMany()` och `updateMany()` internt använder-och-Server- `delete()` `update()` kommandon. Funktioner som använder Server kommandon som stöds är kompatibla med Azure Cosmos DB s API för MongoDB.
 
 ## <a name="database-commands"></a>Databaskommandon
 
@@ -37,7 +40,7 @@ Azure Cosmos DB:s API för MongoDB stöder följande databaskommandon:
 
 |Kommando  |Stöds |
 |---------|---------|
-|delete | Ja |
+|ta bort | Ja |
 |find | Ja     |
 |findAndModify | Ja  |
 |getLastError|   Ja |
@@ -369,7 +372,7 @@ Azure Cosmos DB:s API för MongoDB stöder följande databaskommandon:
 
 |Kommando  |Stöds |
 |---------|---------|
-|TTL|    Ja    |
+|TTL-värde|    Ja    |
 |Unik    |Ja|
 |Delvis|    Nej|
 |Skift läges okänslig    |Nej|
