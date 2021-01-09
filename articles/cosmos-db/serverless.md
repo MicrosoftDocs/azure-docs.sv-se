@@ -5,13 +5,13 @@ author: ThomasWeiss
 ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/23/2020
-ms.openlocfilehash: c5086eee805ffbcdf0741eae4db405b1bcbe8692
-ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
+ms.date: 01/08/2021
+ms.openlocfilehash: d39bc35d1edcbcfef4c7774259112ec5144efa15
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97760385"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98044364"
 ---
 # <a name="azure-cosmos-db-serverless-preview"></a>Azure Cosmos DB utan server (för hands version)
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -31,16 +31,13 @@ När du använder Azure Cosmos DB har varje databas åtgärd en kostnad uttryckt
 
 ## <a name="use-cases"></a>Användnings fall
 
-Azure Cosmos DB server lös bästa passar scenarier där du förväntar dig:
-
-- **Låg, intermittent och oförutsägbar trafik**: eftersom etablerings kapaciteten i sådana situationer inte krävs och kan vara kostnads förhindrande
-- **Måttlig prestanda**: eftersom Server lös behållare har [särskilda prestanda egenskaper](#performance)
-
-Därför bör Azure Cosmos DB server utan server beaktas i följande situationer:
+Azure Cosmos DB server lös bästa passar scenarier där du förväntar dig **återkommande och oförutsägbar trafik** med långa inaktiva tider. Eftersom etablerings kapaciteten i sådana situationer inte är obligatorisk och kan vara kostnads förhindrad, bör Azure Cosmos DB utan server beaktas i följande användnings fall:
 
 - Komma igång med Azure Cosmos DB
-- Utveckling, testning och prototypering av nya program
-- Köra små till medel stora program med tillfällig trafik som är svår att förutsäga
+- Köra program med
+    - burst, tillfällig trafik som är svår att prognostisera, eller
+    - låg (<10%) genomsnittlig trafik grad i genomsnitt till högsta
+- Utveckla, testa, prototypa och köra nya produktions program där trafik mönstret är okänt
 - Integrera med Server lös beräknings tjänster som [Azure Functions](../azure-functions/functions-overview.md)
 
 Mer information om hur du väljer det erbjudande som bäst passar din användnings fråga finns i artikeln om att välja mellan ett insamlat [data flöde och en server](throughput-serverless.md) lös artikel.
@@ -74,14 +71,7 @@ Du kan hitta samma diagram när du använder Azure Monitor, enligt beskrivningen
 
 ## <a name="performance"></a><a id="performance"></a>Prestanda
 
-Utan server resurser ger särskilda prestanda egenskaper som skiljer sig från vad etablerade data flödes resurser levererar:
-
-- **Tillgänglighet**: när det serverbaserade erbjudandet blir allmänt tillgängligt kommer tillgängligheten för Server lös behållare att omfattas av en serviceavtal (SLA) på 99,9% när Tillgänglighetszoner (zon redundans) inte används. Service avtalet är 99,99% när Tillgänglighetszoner används.
-- **Latens**: när det Server lösa erbjudandet blir allmänt tillgängligt, kommer svars tiden för Server lösa behållare att omfattas av ett service nivå mål (service nivå mål) på 10 millisekunder eller mindre för punkt-och 30 millisekunder eller mindre för skrivningar. En punkt-Läs åtgärd består i att hämta ett enskilt objekt med dess ID-och partitionsnyckel-värde.
-- **Burst**-tillgänglighet: när det serverbaserade erbjudandet blir allmänt tillgängligt kommer burst-funktionen för Server lös behållare att omfattas av ett service nivå mål (service nivå mål) på 95%. Det innebär att den maximala Burst-hastigheten kan uppnås minst 95% av tiden.
-
-> [!NOTE]
-> Som valfri Azure-förhandsgranskning undantas Azure Cosmos DB server lös från service nivå avtal (SLA). De prestanda egenskaper som nämns ovan tillhandahålls som en förhands granskning av vad det här erbjudandet kommer att leverera när det är allmänt tillgängligt.
+Utan server resurser ger särskilda prestanda egenskaper som skiljer sig från vad etablerade data flödes resurser levererar. När det Server lösa erbjudandet blir allmänt tillgängligt, kommer svars tiden för Server lösa behållare att omfattas av ett service nivå mål på 10 millisekunder eller mindre för punkt-och 30 millisekunder eller mindre för skrivningar. En punkt-Läs åtgärd består i att hämta ett enskilt objekt med dess ID-och partitionsnyckel-värde.
 
 ## <a name="next-steps"></a>Nästa steg
 

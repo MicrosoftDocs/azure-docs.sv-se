@@ -3,17 +3,17 @@ title: Krav för ritnings paket i Microsoft Azure Maps Creator (för hands versi
 description: Lär dig mer om kraven för ritnings paket för att konvertera design filer för anläggningar för att mappa data
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 12/07/2020
+ms.date: 1/08/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philMea
-ms.openlocfilehash: 26b6273b4dd2371790025515e35b71d1fc863ebe
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: bed5373cbb9967bd1d86bb80bb3a449430c3b6ae
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96903470"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98044789"
 ---
 # <a name="drawing-package-requirements"></a>Krav för ritningspaket
 
@@ -24,7 +24,7 @@ ms.locfileid: "96903470"
 
 Du kan konvertera överförda ritnings paket till kart data med hjälp av [Azure Maps Conversion service](/rest/api/maps/conversion). I den här artikeln beskrivs kraven för ritnings paket för konverterings-API: et. Om du vill visa ett exempel paket kan du hämta exempel [ritnings paketet](https://github.com/Azure-Samples/am-creator-indoor-data-examples).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Ritnings paketet innehåller ritningar som sparats i DWG-format, vilket är det interna fil formatet för Autodesks AutoCAD®-programvara.
 
@@ -41,7 +41,7 @@ Här är några termer och definitioner som är viktiga när du läser den här 
 | Skikt | Ett AutoCAD DWG-lager.|
 | Nivå | Ett del i en byggnad med en angiven höjning. Till exempel en byggnads golv. |
 | XREF  |En fil i AutoCAD DWG-filformat (. dwg) som är kopplad till den primära ritningen som en extern referens.  |
-| Funktion | Ett objekt som kombinerar en geometri med ytterligare metadatainformation. |
+| Funktion | Ett objekt som kombinerar en geometri med mer information om metadata. |
 | Funktions klasser | En gemensam skiss för funktioner. Till exempel är en *enhet* en funktions klass och ett *kontor* är en funktion. |
 
 ## <a name="drawing-package-structure"></a>Ritnings paketets struktur
@@ -49,9 +49,9 @@ Här är några termer och definitioner som är viktiga när du läser den här 
 Ett Drawing-paket är ett zip-arkiv som innehåller följande filer:
 
 * DWG-filer i AutoCAD DWG-filformat.
-* En _manifest.jspå_ fil för en enda funktion.
+* En _manifest.jspå_ en fil som beskriver DWG-filerna i ritnings paketet.
 
-Du kan organisera DWG-filerna på valfritt sätt i mappen, men manifest filen måste vara Live i mappens rot Katalog. Du måste zippa mappen i en enda arkivfil med fil namns tillägget. zip. Nästa avsnitt innehåller information om kraven för DWG-filerna, manifest filen och innehållet i dessa filer.  
+Ritnings paketet måste vara zippat till en enda arkivfil med fil namns tillägget. zip. DWG-filerna kan ordnas på valfritt sätt i paketet, men manifest filen måste vara Live i rot katalogen för det zippade paketet. Nästa avsnitt innehåller information om kraven för DWG-filerna, manifest filen och innehållet i dessa filer.
 
 ## <a name="dwg-files-requirements"></a>Krav för DWG-filer
 
@@ -60,6 +60,7 @@ En enskild DWG-fil krävs för varje nivå i anläggningen. Nivåns data måste 
 * Måste definiera de _yttre_ och _enhets_ lagren. Du kan också definiera följande valfria lager: _vägg_, _dörr_, _UnitLabel_, _zon_ och _ZoneLabel_.
 * Får inte innehålla funktioner från flera nivåer.
 * Får inte innehålla funktioner från flera anläggningar.
+* Måste referera till samma Mät system och mått enhet som andra DWG-filer i ritnings paketet.
 
 [Tjänsten Azure Maps Conversion](/rest/api/maps/conversion) kan extrahera följande funktions klasser från en DWG-fil:
 
@@ -78,19 +79,19 @@ DWG-lager måste också följa följande kriterier:
 
 * Ritningarnas ursprung för alla DWG-filer måste anpassas till samma latitud och longitud.
 * Varje nivå måste ha samma orientering som de andra nivåerna.
-* Automatisk överlappande polygoner repare ras automatiskt och [tjänsten Azure Maps Conversion](/rest/api/maps/conversion) genererar en varning. Du bör kontrol lera de reparerade resultaten manuellt, eftersom de kanske inte matchar de förväntade resultaten.
+* Automatisk överlappande polygoner repare ras automatiskt och [tjänsten Azure Maps Conversion](/rest/api/maps/conversion) genererar en varning. Vi rekommenderar att du inspekterar de reparerade resultaten manuellt, eftersom de kanske inte överensstämmer med de förväntade resultaten.
 
-Alla lager enheter måste vara en av följande typer: linje, polylinje, polygon, cirkelformad båge, cirkel eller text (enskild linje). Andra typer av enheter ignoreras.
+Alla lager enheter måste vara av någon av följande typer: linje, polylinje, polygon, cirkelformad båge, cirkel, ellips (stängd) eller text (enskild linje). Andra typer av enheter ignoreras.
 
-I följande tabell beskrivs de entitetstyper som stöds och funktioner som stöds för varje skikt. Om ett lager innehåller enhets typer som inte stöds, ignorerar [Azure Maps Conversion service](/rest/api/maps/conversion) dessa entiteter.  
+I tabellen nedan beskrivs de entitetstyper som stöds och konverterade kart funktioner för varje lager. Om ett lager innehåller enhets typer som inte stöds, ignorerar [Azure Maps Conversion service](/rest/api/maps/conversion) dessa entiteter.  
 
-| Skikt | Entitetstyper | Funktioner |
+| Skikt | Entitetstyper | Konverterade funktioner |
 | :----- | :-------------------| :-------
-| [Yttre](#exterior-layer) | Polygon, PolyLine (stängd), cirkel | Nivåer
-| [Enhet](#unit-layer) |  Polygon, PolyLine (stängd), cirkel | Lodräta inträngare, enheter
-| [Byggnad](#wall-layer)  | Polygon, PolyLine (stängd), cirkel | Inte tillämpligt. Mer information finns i [vägg lagret](#wall-layer).
+| [Yttre](#exterior-layer) | Polygon, PolyLine (stängd), cirkel, ellips (stängd) | Nivåer
+| [Enhet](#unit-layer) |  Polygon, PolyLine (stängd), cirkel, ellips (stängd) | Lodräta inträngare, enhet
+| [Byggnad](#wall-layer)  | Polygon, PolyLine (stängd), cirkel, ellips (stängd) | Inte tillämpligt. Mer information finns i [vägg lagret](#wall-layer).
 | [Door](#door-layer) | Polygon, PolyLine, linje, CircularArc, cirkel | Öppningar
-| [Zon](#zone-layer) | Polygon, PolyLine (stängd), cirkel | Zon
+| [Zon](#zone-layer) | Polygon, PolyLine (stängd), cirkel, ellips (stängd) | Zon
 | [UnitLabel](#unitlabel-layer) | Text (enskild linje) | Inte tillämpligt. Det här lagret kan bara lägga till egenskaper till enhets funktionerna från enhets skiktet. Mer information finns i UnitLabel- [skiktet](#unitlabel-layer).
 | [ZoneLabel](#zonelabel-layer) | Text (enskild linje) | Inte tillämpligt. Det här lagret kan bara lägga till egenskaper till zon funktioner från ZonesLayer. Mer information finns i ZoneLabel- [skiktet](#zonelabel-layer).
 
@@ -102,8 +103,10 @@ DWG-filen för varje nivå måste innehålla ett lager för att definiera nivån
 
 Oavsett hur många enhets ritningar finns i det yttre lagret innehåller den [resulterande data uppsättningen](tutorial-creator-indoor-maps.md#create-a-feature-stateset) bara en nivå funktion för varje DWG-fil. Dessutom:
 
-* Yttre måste ritas som polygon, PolyLine (stängd) eller cirkel.
+* Yttre måste ritas som polygon, PolyLine (stängd), cirkel eller ellips (stängd).
 * Yttre kan överlappa varandra, men löses upp i en geometri.
+* Den resulterande nivå funktionen måste vara minst 4 kvadratmeter.
+* Den resulterande nivå funktionen får inte vara större än 400 kvadratmeter.
 
 Om lagret innehåller flera överlappande polystreck, löses polystrecken in i en enda nivå funktion. Alternativt, om lagret innehåller flera icke-överlappande polylinjes, har funktionen för den resulterande nivån en flera polygoner-representation.
 
@@ -111,9 +114,11 @@ Du kan se ett exempel på det yttre lagret som dispositions skiktet i [exempel r
 
 ### <a name="unit-layer"></a>Enhets skikt
 
-DWG-filen för varje nivå definierar ett lager som innehåller enheter. Enheter är portalerna utrymmen i byggnaden, till exempel kontor, korridoren, trappor och hissar. Enhets lagret måste uppfylla följande krav:
+DWG-filen för varje nivå definierar ett lager som innehåller enheter. Enheter är portalerna utrymmen i byggnaden, till exempel kontor, korridoren, trappor och hissar. Om `VerticalPenetrationCategory` egenskapen definieras, konverteras portalerna-enheter som sträcker sig över flera nivåer, till exempel hissar och trappor, till lodräta inträngande funktioner. Lodräta inträngande funktioner som överlappar varandra tilldelas en `setid` .
 
-* Enheter måste ritas som polygon, PolyLine (stängda) eller cirkel.
+Enhets lagret måste uppfylla följande krav:
+
+* Enheter måste ritas som polygon, PolyLine (stängda), cirkel eller ellips (stängd).
 * Enheter måste ligga innanför gränserna för funktionen yttre perimeter.
 * Enheter får inte delvis överlappa varandra.
 * Enheter får inte innehålla en egen överlappande geometri.
@@ -126,7 +131,7 @@ Du kan se ett exempel på enhets lagret i [exempel ritnings paketet](https://git
 
 DWG-filen för varje nivå kan innehålla ett lager som definierar de fysiska omfattningarna för väggar, kolumner och annan byggnads struktur.
 
-* Väggarna måste ritas som polygon, PolyLine (stängda) eller cirkel.
+* Väggarna måste ritas som polygon, PolyLine (stängd), cirkel eller ellips (stängd).
 * Väggens lager eller lager får bara innehålla geometri som tolkas som en byggnads struktur.
 
 Du kan se ett exempel på väggarna-lagret i [exempel ritnings paketet](https://github.com/Azure-Samples/am-creator-indoor-data-examples).
@@ -141,9 +146,9 @@ Dörr öppningar i en Azure Maps data uppsättning representeras som ett enda li
 
 ### <a name="zone-layer"></a>Zon skikt
 
-DWG-filen för varje nivå kan innehålla ett zon lager som definierar de fysiska omfattningarna för zoner. En zon kan vara ett tomt utrymme i inomhus eller en ryggs varv.
+DWG-filen för varje nivå kan innehålla ett zon lager som definierar de fysiska omfattningarna för zoner. En zon är ett icke-portalerna utrymme som kan namnges och återges. Zoner kan sträcka sig över flera nivåer och grupperas tillsammans med egenskapen zoneSetId.
 
-* Zoner måste ritas som polygon, PolyLine (stängda) eller cirkel.
+* Zoner måste ritas som polygoner, PolyLine (stängda) eller ellips (stängda).
 * Zoner kan överlappa varandra.
 * Zoner kan ligga innanför eller utanför anläggningens yttre perimeter.
 
@@ -153,7 +158,7 @@ Du kan se ett exempel på zon lagret i [exempel ritnings paketet](https://github
 
 ### <a name="unitlabel-layer"></a>UnitLabel-skikt
 
-DWG-filen för varje nivå kan innehålla ett UnitLabel-lager. UnitLabel-lagret lägger till en namn egenskap i enheter som extraheras från enhets lagret. Enheter med en namn-egenskap kan ha ytterligare information som anges i manifest filen.
+DWG-filen för varje nivå kan innehålla ett UnitLabel-lager. UnitLabel-lagret lägger till en namn egenskap i enheter som extraheras från enhets lagret. Enheter med en namn egenskap kan ha mer information angiven i manifest filen.
 
 * Enhets etiketter måste vara text enheter med en rad.
 * Enhets etiketter måste ligga innanför gränserna för deras enhet.
@@ -163,7 +168,7 @@ Du kan se ett exempel på UnitLabel-lagret i [exempel ritnings paketet](https://
 
 ### <a name="zonelabel-layer"></a>ZoneLabel-skikt
 
-DWG-filen för varje nivå kan innehålla ett ZoneLabel-lager. Det här lagret lägger till en namn egenskap till zoner som har extraherats från zon skiktet. Zoner med en namn egenskap kan ha ytterligare information som anges i manifest filen.
+DWG-filen för varje nivå kan innehålla ett ZoneLabel-lager. Det här lagret lägger till en namn egenskap till zoner som har extraherats från zon skiktet. Zoner med en namn egenskap kan ha mer information angiven i manifest filen.
 
 * Zon etiketter måste vara text enheter med en rad.
 * Zon etiketter måste ligga innanför gränserna för zonen.
@@ -186,14 +191,14 @@ Fil Sök vägarna i `buildingLevels` objekt i manifest filen måste vara relativ
 | `buildingLevels` | true | Anger nivåerna för byggnader och de filer som innehåller nivåernas design. |
 | `georeference` | true | Innehåller numerisk geografisk information för ritningen. |
 | `dwgLayers` | true | Visar en lista med namnen på lagren och varje lager visar namnen på dess egna funktioner. |
-| `unitProperties` | falskt | Kan användas för att infoga ytterligare metadata för enhets funktionerna. |
-| `zoneProperties` | falskt | Kan användas för att infoga ytterligare metadata för zon funktionerna. |
+| `unitProperties` | falskt | Kan användas för att infoga fler metadata för enhets funktionerna. |
+| `zoneProperties` | falskt | Kan användas för att infoga fler metadata för zon funktionerna. |
 
 Nästa avsnitt innehåller information om kraven för varje objekt.
 
 ### `directoryInfo`
 
-| Egenskap  | Typ | Obligatorisk | Beskrivning |
+| Egenskap  | Typ | Krävs | Beskrivning |
 |-----------|------|----------|-------------|
 | `name`      | sträng | true   |  Namn på byggnaden. |
 | `streetAddress`|    sträng |    falskt    | Byggnadens adress. |
@@ -214,7 +219,7 @@ Nästa avsnitt innehåller information om kraven för varje objekt.
 
 `buildingLevels`Objektet innehåller en JSON-matris med byggnader-nivåer.
 
-| Egenskap  | Typ | Obligatorisk | Beskrivning |
+| Egenskap  | Typ | Krävs | Beskrivning |
 |-----------|------|----------|-------------|
 |`levelName`    |sträng    |true |    Namn på beskrivande nivå. Till exempel: våning 1, lobbyn, blå parkering eller Basement.|
 |`ordinal` | heltal |    true | Anger den lodräta ordningen för nivåer. Varje funktion måste ha en nivå med ordnings tal 0. |
@@ -224,7 +229,7 @@ Nästa avsnitt innehåller information om kraven för varje objekt.
 
 ### `georeference`
 
-| Egenskap  | Typ | Obligatorisk | Beskrivning |
+| Egenskap  | Typ | Krävs | Beskrivning |
 |-----------|------|----------|-------------|
 |`lat`    | numeric |    true |    Decimal representation av grader latitud vid ritningens ursprung. Ursprungets koordinater måste vara i WGS84 Web Mercator ( `EPSG:3857` ).|
 |`lon`    |numeric|    true|    Decimal representation av grader longitud vid ritningens ursprung. Ursprungets koordinater måste vara i WGS84 Web Mercator ( `EPSG:3857` ). |
@@ -232,7 +237,7 @@ Nästa avsnitt innehåller information om kraven för varje objekt.
 
 ### `dwgLayers`
 
-| Egenskap  | Typ | Obligatorisk | Beskrivning |
+| Egenskap  | Typ | Krävs | Beskrivning |
 |-----------|------|----------|-------------|
 |`exterior`    |matris med strängar|    true|    Namnen på de lager som definierar den yttre skapande profilen.|
 |`unit`|    matris med strängar|    true|    Namnen på de lager som definierar enheter.|
@@ -246,7 +251,7 @@ Nästa avsnitt innehåller information om kraven för varje objekt.
 
 `unitProperties`Objektet innehåller en JSON-matris med enhets egenskaper.
 
-| Egenskap  | Typ | Obligatorisk | Beskrivning |
+| Egenskap  | Typ | Krävs | Beskrivning |
 |-----------|------|----------|-------------|
 |`unitName`    |sträng    |true    |Namnet på den enhet som ska associeras med den här `unitProperty` posten. Posten är endast giltig när en etikett matchning finns `unitName` i `unitLabel` skikten. |
 |`categoryName`|    sträng|    falskt    |Kategori namn. En fullständig lista över kategorier finns i [Kategorier](https://aka.ms/pa-indoor-spacecategories). |
@@ -260,13 +265,13 @@ Nästa avsnitt innehåller information om kraven för varje objekt.
 |`verticalPenetrationDirection`|    sträng|    falskt    |Om `verticalPenetrationCategory` har definierats kan du ange en giltig riktning för resan. De tillåtna värdena är: `lowToHigh` , `highToLow` , `both` , och `closed` . Standardvärdet är `both`.|
 | `nonPublic` | boolesk | falskt | Anger om enheten är öppen för offentlig. |
 | `isRoutable` | boolesk | falskt | När den här egenskapen har angetts till `false` kan du inte gå till eller genom enheten. Standardvärdet är `true`. |
-| `isOpenArea` | boolesk | falskt | Tillåter att navigerings agenten anger enheten utan att behöva öppna den i enheten. Som standard är det här värdet inställt på `true` för enheter utan öppningar och `false` för enheter med öppningar. Om du manuellt ställer in `isOpenArea` `false` på en enhet utan öppningar resulterar det i en varning. Detta beror på att den resulterande enheten inte kan kontaktas av en navigerings agent.|
+| `isOpenArea` | boolesk | falskt | Tillåter att navigerings agenten anger enheten utan att behöva öppna den i enheten. Som standard är det här värdet inställt på `true` för enheter utan öppningar och `false` för enheter med öppningar. Om du manuellt ställer in `isOpenArea` `false` på en enhet utan öppningar resulterar det i en varning eftersom den resulterande enheten inte kan kontaktas av en navigerings agent.|
 
 ### `zoneProperties`
 
 `zoneProperties`Objektet innehåller en JSON-matris med zon egenskaper.
 
-| Egenskap  | Typ | Obligatorisk | Beskrivning |
+| Egenskap  | Typ | Krävs | Beskrivning |
 |-----------|------|----------|-------------|
 |Zonnamn        |sträng    |true    |Namnet på zonen som ska associeras med `zoneProperty` posten. Posten är endast giltig när en etikett matchning `zoneName` hittas i `zoneLabel` zonens skikt.  |
 |categoryName|    sträng|    falskt    |Kategori namn. En fullständig lista över kategorier finns i [Kategorier](https://aka.ms/pa-indoor-spacecategories). |
@@ -276,7 +281,7 @@ Nästa avsnitt innehåller information om kraven för varje objekt.
 
 ### <a name="sample-drawing-package-manifest"></a>Exempel på paket manifest för ritning
 
-Följande är en exempel manifest fil för exempel ritnings paketet. Om du vill ladda ned hela paketet, se [exempel ritnings paket](https://github.com/Azure-Samples/am-creator-indoor-data-examples).
+Nedan visas manifest filen för exempel ritnings paketet. Om du vill ladda ned hela paketet, se [exempel ritnings paket](https://github.com/Azure-Samples/am-creator-indoor-data-examples).
 
 #### <a name="manifest-file"></a>Manifest fil
 

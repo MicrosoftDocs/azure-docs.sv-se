@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 5806ea094abd3431cd7e22064c6acd8ad150726a
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 1667c21b9a35b8e93feffb8cf1b37d4409da73c3
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495016"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98044316"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-scripted"></a>Konfigurera en digital Azure-instans och autentisering (skript)
 
@@ -20,7 +20,7 @@ ms.locfileid: "92495016"
 
 Den här artikeln beskriver steg för steg hur du **konfigurerar en ny Azure Digital-instansen**, inklusive hur du skapar instansen och konfigurerar autentisering. När du har slutfört den här artikeln har du en Azure Digital-instansen som är redo att starta programmering mot.
 
-Den här versionen av den här artikeln slutför de här stegen genom att köra ett [ **skript exempel för automatiserad distribution** ](/samples/azure-samples/digital-twins-samples/digital-twins-samples/) som effektiviserar processen. 
+Den här versionen av den här artikeln slutför de här stegen genom att köra ett [ **skript exempel för automatiserad distribution**](/samples/azure-samples/digital-twins-samples/digital-twins-samples/) som effektiviserar processen. 
 * Om du vill visa de manuella CLI-stegen som skriptet körs genom i bakgrunden, se CLI-versionen av den här artikeln: [*anvisningar: Konfigurera en instans och autentisering (CLI)*](how-to-set-up-instance-cli.md).
 * Om du vill visa de manuella stegen enligt Azure Portal, se Portal versionen av den här artikeln: [*anvisningar: Konfigurera en instans och autentisering (portal)*](how-to-set-up-instance-portal.md).
 
@@ -33,7 +33,7 @@ Exempel skriptet skrivs i PowerShell. Den är en del av de [**digitala Azure-sam
 
 Detta kommer att ladda ned exempelprojektet till datorn som _**Azure_Digital_Twins_end_to_end_samples.zip**_. Navigera till mappen på din dator och packa upp den för att extrahera filerna.
 
-I den zippade mappen finns distributions skriptet på _Azure_Digital_Twins_end_to_end_samples > skript > **deploy.ps1** _.
+I den zippade mappen finns distributions skriptet på _Azure_Digital_Twins_end_to_end_samples > skript > **deploy.ps1**_.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -50,15 +50,13 @@ Här följer stegen för att köra distributions skriptet i Cloud Shell.
  
 2. Kontrol lera att Cloud Shell har angetts för att köra PowerShell-versionen i Cloud Shell ikon fältet.
 
-    :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-powershell.png" alt-text="Cloud Shell fönster som visar valet av PowerShell-version&quot;:::
+    :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-powershell.png" alt-text="Cloud Shell fönster som visar valet av PowerShell-version":::
 
-1. Välj ikonen &quot;Ladda upp/ladda ned filer" och välj "Ladda upp".
+1. Välj ikonen "Ladda upp/ladda ned filer" och välj "Ladda upp".
 
-    :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-upload.png" alt-text="Cloud Shell fönster som visar valet av PowerShell-version&quot;:::
+    :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-upload.png" alt-text="Cloud Shell fönster som visar uppladdnings ikonen":::
 
-1. Välj ikonen &quot;Ladda upp/ladda ned filer":::
-
-    Navigera till _**deploy.ps1**_ -filen på din dator (i _Azure_Digital_Twins_end_to_end_samples > skript > **deploy.ps1** _) och tryck på "öppna". Detta kommer att överföra filen till Cloud Shell så att du kan köra den i fönstret Cloud Shell.
+    Navigera till _**deploy.ps1**_ -filen på din dator (i _Azure_Digital_Twins_end_to_end_samples > skript > **deploy.ps1**_) och tryck på "öppna". Detta kommer att överföra filen till Cloud Shell så att du kan köra den i fönstret Cloud Shell.
 
 4. Kör skriptet genom `./deploy.ps1` att skicka kommandot i Cloud Shells fönstret. Du kan kopiera kommandot nedan (kom ihåg att klistra in i Cloud Shell, du kan använda **CTRL + SHIFT + v** på Windows och Linux eller **cmd + Shift + v** på MacOS. Du kan också använda snabb menyn.
 
@@ -72,13 +70,11 @@ Här följer stegen för att köra distributions skriptet i Cloud Shell.
     * För instansen: *prenumerations-ID* för din Azure-prenumeration som ska användas
     * För-instansen: en *plats* där du vill distribuera instansen. Om du vill se vilka regioner som stöder Azure Digitals, kan du gå till [*Azure-produkter som är tillgängliga efter region*](https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins).
     * För instansen: ett *resurs grupp* namn. Du kan använda en befintlig resurs grupp eller ange ett nytt namn på en som ska skapas.
-    * För-instansen: ett *namn* för din Azure Digital-instansen. Namnet på den nya instansen måste vara unikt inom regionen för din prenumeration (vilket innebär att om din prenumeration har en annan Azure Digital-instans i den region som redan använder det namn du väljer, blir du ombedd att välja ett annat namn).
+    * För-instansen: ett *namn* för din Azure Digital-instansen. Om din prenumeration har en annan Azure Digital-instans i den region som redan använder det angivna namnet uppmanas du att välja ett annat namn.
 
 Här är ett utdrag från utmatnings loggen från skriptet:
 
-:::image type="content" source="media/how-to-set-up-instance/cloud-shell/deployment-script-output.png" alt-text="Cloud Shell fönster som visar valet av PowerShell-version&quot;:::
-
-1. Välj ikonen &quot;Ladda upp/ladda ned filer" lightbox="media/how-to-set-up-instance/cloud-shell/deployment-script-output.png":::
+:::image type="content" source="media/how-to-set-up-instance/cloud-shell/deployment-script-output.png" alt-text="Cloud Shell fönstret visar logg över indata och utdata genom körningen av distributions skriptet" lightbox="media/how-to-set-up-instance/cloud-shell/deployment-script-output.png":::
 
 Om skriptet har slutförts kommer den slutliga utskriften att stå `Deployment completed successfully` . Annars kan du åtgärda fel meddelandet och köra skriptet igen. De steg som du redan har slutfört kommer att kringgås och börja begära inmatningar vid den punkt där du slutade.
 
@@ -108,11 +104,9 @@ Om verifieringen misslyckades kan du försöka skapa en instans med hjälp av [p
 
 ### <a name="collect-instance-values"></a>Samla in instans värden
 
-Öppna instansens *översikts* sida genom att välja namnet på din instans från [sidan Azure Digitals dubbla](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.DigitalTwins%2FdigitalTwinsInstances) . Anteckna *namn*, *resurs grupp*och *värdnamn*. Du kan behöva dessa senare för att identifiera och ansluta till din instans.
+Öppna instansens *översikts* sida genom att välja namnet på din instans från [sidan Azure Digitals dubbla](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.DigitalTwins%2FdigitalTwinsInstances) . Anteckna *namn*, *resurs grupp* och *värdnamn*. Du kan behöva dessa senare för att identifiera och ansluta till din instans.
 
-:::image type="content" source="media/how-to-set-up-instance/portal/instance-important-values.png" alt-text="Cloud Shell fönster som visar valet av PowerShell-version&quot;:::
-
-1. Välj ikonen &quot;Ladda upp/ladda ned filer":::
+:::image type="content" source="media/how-to-set-up-instance/portal/instance-important-values.png" alt-text="Markera viktiga värden från instansens översikts sida":::
 
 ### <a name="verify-user-role-assignment"></a>Verifiera tilldelning av användar roll
 

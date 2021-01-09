@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: a1fc5be93e2b9729838aa9fb3a777936003c5f45
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: d9a6eb572b1ab870fdb848f8b0989f88e6dbc3c0
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93356401"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98045962"
 ---
 # <a name="understand-digital-twins-and-their-twin-graph"></a>Förstå digitala sammanflätade och deras dubbla diagram
 
-I en Azure digital-lösning för dubbla lösningar representeras entiteterna i din miljö av Azures **digitala dubbla**. En digital, dubbel är en instans av en av dina anpassade [modeller](concepts-models.md). Det kan anslutas till andra digitala dubbla nätverk via **relationer** för att bilda ett sammanslaget **diagram** : det här dubbla diagrammet är en representation av hela miljön.
+I en Azure digital-lösning för dubbla lösningar representeras entiteterna i din miljö av Azures **digitala dubbla**. En digital, dubbel är en instans av en av dina anpassade [modeller](concepts-models.md). Det kan anslutas till andra digitala dubbla nätverk via **relationer** för att bilda ett sammanslaget **diagram**: det här dubbla diagrammet är en representation av hela miljön.
 
 > [!TIP]
 > "Azure Digital-dubbla" syftar på den här Azure-tjänsten som helhet. "Digitals dubbla (s)" eller "dubbla (s)" syftar på enskilda dubbla noder i din instans av tjänsten.
@@ -25,7 +25,7 @@ I en Azure digital-lösning för dubbla lösningar representeras entiteterna i d
 
 Innan du kan skapa en digital i din Azure Digitals-instans måste du ha en *modell* som överförs till tjänsten. En modell beskriver uppsättningen egenskaper, telemetri-meddelanden och relationer som en viss, t. ex. kan ha, bland annat. Information om vilka typer av information som definieras i en modell finns i [*begrepp: anpassade modeller*](concepts-models.md).
 
-När du har skapat och laddat upp en modell kan ditt klient program skapa en instans av typen. Detta är en digital, dubbel. När du har skapat en *vånings* modell kan du till exempel skapa en eller flera digitala garn som använder den här typen (t. ex. en typ av *golv* som kallas *GroundFloor* , en annan som kallas *Floor2* osv.). 
+När du har skapat och laddat upp en modell kan ditt klient program skapa en instans av typen. Detta är en digital, dubbel. När du har skapat en *vånings* modell kan du till exempel skapa en eller flera digitala garn som använder den här typen (t. ex. en typ av *golv* som kallas *GroundFloor*, en annan som kallas *Floor2* osv.). 
 
 ## <a name="relationships-a-graph-of-digital-twins"></a>Relationer: ett diagram över digitala dubbla
 
@@ -47,7 +47,7 @@ Nedan visas ett fragment med klient koden som använder [DigitalTwins-API: er](/
 
 Du kan initiera egenskaperna för en dubbel när den har skapats, eller ange dem senare. Om du vill skapa en dubbla med initierade egenskaper skapar du ett JSON-dokument som innehåller de nödvändiga initierings värdena.
 
-[!INCLUDE [Azure Digital Twins code: create twin](../../includes/digital-twins-code-create-twin.md)]
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_other.cs" id="CreateTwin_noHelper":::
 
 Du kan också använda en hjälp klass som kallas `BasicDigitalTwin` för att lagra egenskaps fält i ett "" dubbla "objekt mer direkt, som ett alternativ till att använda en ord lista. Mer information om hjälp klassen och exempel på hur det används finns i avsnittet [*skapa en digital*](how-to-manage-twin.md#create-a-digital-twin) enhet med *anvisningar: hantera digitala dubbla*.
 
@@ -58,25 +58,7 @@ Du kan också använda en hjälp klass som kallas `BasicDigitalTwin` för att la
 
 Här är ett exempel på en klient kod som använder [DigitalTwins-API: er](/rest/api/digital-twins/dataplane/twins) för att bygga en relation mellan en *vånings* typ, Digital, som kallas *GroundFloor* och en av *rums* typen digital, som kallas *Cafe*.
 
-```csharp
-// Create Twins, using functions similar to the previous sample
-await CreateRoom("Cafe", 70, 66);
-await CreateFloor("GroundFloor", averageTemperature=70);
-// Create relationships
-var relationship = new BasicRelationship
-{
-    TargetId = "Cafe",
-    Name = "contains"
-};
-try
-{
-    string relId = $"GroundFloor-contains-Cafe";
-    await client.CreateOrReplaceRelationshipAsync<BasicRelationship>("GroundFloor", relId, relationship);
-} catch(ErrorResponseException e)
-{
-    Console.WriteLine($"*** Error creating relationship: {e.Response.StatusCode}");
-}
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_other.cs" id="CreateRelationship_3":::
 
 ## <a name="json-representations-of-graph-elements"></a>JSON-representationer av diagram element
 
@@ -90,7 +72,7 @@ När ett digitalt objekt visas som ett JSON-objekt visas följande fält:
 | --- | --- |
 | `$dtId` | En användardefinierad sträng som representerar ID: t för den digitala dubbla |
 | `$etag` | Standard-HTTP-fält som tilldelas av webb servern |
-| `$conformance` | En uppräkning som innehåller proformat-tillståndet för denna digitala garn ( *överensstämmande* , *icke-överensstämmande* , *okänd* ) |
+| `$conformance` | En uppräkning som innehåller proformat-tillståndet för denna digitala garn (*överensstämmande*, *icke-överensstämmande*, *okänd*) |
 | `{propertyName}` | Värdet för en egenskap i JSON ( `string` , tal typ eller objekt) |
 | `$relationships` | URL till sökvägen till Relations samlingen. Det här fältet saknas om det digitala området inte har några utgående Relations kanter. |
 | `$metadata.$model` | Valfritt ID: t för det modell gränssnitt som kännetecknar detta digitala dubbla |

@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 1a9a2f9d999a51f2b4600e8379d4a8913675b338
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 33233e8a6aa54e65094e0cc6130e804241d7201c
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97360024"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98044296"
 ---
 # <a name="tutorial-prerequisites-for-creating-availability-groups-on-sql-server-on-azure-virtual-machines"></a>Självstudie: förutsättningar för att skapa tillgänglighets grupper på SQL Server på Azure Virtual Machines
 
@@ -235,7 +235,7 @@ I följande steg konfigurerar du den **AD-primära DC-** datorn som en domänkon
     ![Dialog rutan Lägg till roller](./media/availability-group-manually-configure-prerequisites-tutorial-/23-addroles.png)
 
 7. Välj **Nästa** tills du kommer till **bekräftelse** avsnittet. Markera kryss rutan **starta om mål servern automatiskt vid behov** .
-8. Välj **Installera**.
+8. Välj **installera**.
 9. När funktionerna har installerats går du tillbaka till instrument panelen för **Serverhanteraren** .
 10. Välj alternativet ny **AD DS** i rutan till vänster.
 11. Välj länken **mer** i det gula varnings fältet.
@@ -251,7 +251,7 @@ I följande steg konfigurerar du den **AD-primära DC-** datorn som en domänkon
     | **Alternativ för domänkontrollant** |**DSRM-lösenord** = contoso! 0000<br/>**Bekräfta lösen ord** = contoso! 0000 |
 
 14. Välj **Nästa** för att gå igenom de andra sidorna i guiden. På sidan **krav kontroll** kontrollerar du att följande meddelande visas: **alla nödvändiga kontroller lyckades**. Du kan granska tillämpliga varnings meddelanden, men det är möjligt att fortsätta med installationen.
-15. Välj **Installera**. Den virtuella datorn för **AD-primär domänkontrollant** startas om automatiskt.
+15. Välj **installera**. Den virtuella datorn för **AD-primär domänkontrollant** startas om automatiskt.
 
 ### <a name="note-the-ip-address-of-the-primary-domain-controller"></a>Anteckna IP-adressen för den primära domänkontrollanten
 
@@ -539,7 +539,7 @@ Upprepa stegen på den andra SQL Server VM.
 
 ### <a name="tuning-failover-cluster-network-thresholds"></a>Justera nätverks trösklar för redundanskluster
 
-När du kör Windows-redundanskluster i virtuella Azure-datorer med SQL Server AlwaysOn, rekommenderas att ändra kluster inställningen till ett mer avslappnad övervaknings tillstånd.  Detta gör klustret mycket mer stabilt och tillförlitligt.  Mer information om detta finns i [IaaS med SQL AlwaysOn-finjustera tröskelvärden för redundanskluster](/windows-server/troubleshoot/iaas-sql-failover-cluster).
+När du kör Windows-redundanskluster i virtuella Azure-datorer med SQL Server tillgänglighets grupper, ändra kluster inställningen till ett mer avslappnad övervaknings tillstånd.  Detta gör klustret mycket mer stabilt och tillförlitligt.  Mer information om detta finns i [IaaS med SQL Server-finjustera tröskelvärden för redundanskluster](/windows-server/troubleshoot/iaas-sql-failover-cluster).
 
 
 ## <a name="configure-the-firewall-on-each-sql-server-vm"></a><a name="endpoint-firewall"></a> Konfigurera brand väggen på varje SQL Server VM

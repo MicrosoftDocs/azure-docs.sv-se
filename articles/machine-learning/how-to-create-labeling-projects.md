@@ -9,12 +9,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
 ms.custom: data4ml
-ms.openlocfilehash: 087a7ead1ef5f9f46f5b81f8d42fcc0ea0209e61
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 2fe217d08203aec2d25a5d1219a2556bd0dcbcd7
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 01/08/2021
-ms.locfileid: "98013285"
+ms.locfileid: "98046115"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>Skapa ett projekt med data etiketter och exportera etiketter 
 
@@ -267,6 +267,7 @@ Använd de här tipsen om du ser något av de här problemen.
 |När projektet har skapats visar projektet "initiera" under en längre tid.     | Uppdatera sidan manuellt. Initieringen bör fortsätta ungefär 20 Datapoints per sekund. Bristen på Autouppdatering är ett känt problem.         |
 |När du ska granska bilder visas inte nyligen märkta bilder.     |   Om du vill läsa in alla märkta bilder väljer du den **första** knappen. Den **första** knappen tar dig tillbaka till början av listan, men läser in alla etiketterade data.      |
 |Tryck på ESC-tangenten när etiketter för objekt identifiering skapar en etikett för noll storlek i det övre vänstra hörnet. Det går inte att skicka etiketter i det här läget.     |   Ta bort etiketten genom att klicka på kryss rutan bredvid det.  |
+|Det går inte att tilldela en uppsättning uppgifter till en angiven Labeler.     |   Detta är en känd begränsning i den aktuella versionen.  |
 
 ## <a name="next-steps"></a>Nästa steg
 

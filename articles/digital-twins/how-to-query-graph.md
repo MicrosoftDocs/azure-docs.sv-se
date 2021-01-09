@@ -8,12 +8,12 @@ ms.date: 11/19/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: df7462cf047dd113c34669d9a5f68f2589cc50f4
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 47883c742d77a88adb662e8dded0723f0e105385
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97673001"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98044194"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Skicka frågor till Azure Digitals dubbla grafer
 
@@ -28,43 +28,28 @@ Den här artikeln börjar med exempel frågor som illustrerar frågans språk st
 
 Här är den grundläggande fråga som returnerar en lista över alla digitala enheter i instansen:
 
-```sql
-SELECT *
-FROM DIGITALTWINS
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="GetAllTwins":::
 
 ## <a name="query-by-property"></a>Fråga efter egenskap
 
 Hämta digitala dubbla med **Egenskaper** (inklusive ID och metadata):
 
-```sql
-SELECT  *
-FROM DigitalTwins T  
-WHERE T.firmwareVersion = '1.1'
-AND T.$dtId in ['123', '456']
-AND T.Temperature = 70
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryByProperty1":::
 
 > [!TIP]
 > ID: t för en digital delad frågas med hjälp av fältet metadata `$dtId` .
 
 Du kan också skapa dubbla baserat på **om en viss egenskap har definierats**. Här är en fråga som hämtar dubbla med en definierad *plats* egenskap:
 
-```sql
-SELECT * FROM DIGITALTWINS WHERE IS_DEFINED(Location)
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryByProperty2":::
 
 Detta kan hjälpa dig att få en upplösning med hjälp av taggarnas *egenskaper,* enligt beskrivningen i [lägga till taggar till digitala dubbla](how-to-use-tags.md). Här är en fråga som hämtar alla dubbla Taggar med *rött*:
 
-```sql
-SELECT * FROM DIGITALTWINS WHERE IS_DEFINED(tags.red)
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryMarkerTags1":::
 
 Du kan också få dubbla baserat på **typen av egenskap**. Här är en fråga som sammanfaller vars *temperatur* egenskap är ett tal:
 
-```sql
-SELECT * FROM DIGITALTWINS T WHERE IS_NUMBER(T.Temperature)
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryByProperty3":::
 
 ## <a name="query-by-model"></a>Fråga efter modell
 
@@ -82,30 +67,22 @@ Om du t. ex. frågar efter dubbla modeller `dtmi:example:widget;4` , returnerar 
 Den enklaste användningen av `IS_OF_MODEL` tar bara en `twinTypeName` parameter: `IS_OF_MODEL(twinTypeName)` .
 Här är ett exempel på en fråga som skickar ett värde i den här parametern:
 
-```sql
-SELECT * FROM DIGITALTWINS WHERE IS_OF_MODEL('dtmi:example:thing;1')
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryByModel1":::
 
 Om du vill ange en dubbel samling att söka i när det finns mer än en (t. ex. När en `JOIN` används) lägger du till `twinCollection` parametern: `IS_OF_MODEL(twinCollection, twinTypeName)` .
 Här är ett exempel på en fråga som lägger till ett värde för den här parametern:
 
-```sql
-SELECT * FROM DIGITALTWINS DT WHERE IS_OF_MODEL(DT, 'dtmi:example:thing;1')
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryByModel2":::
 
 Om du vill göra en exakt matchning lägger du till `exact` parametern: `IS_OF_MODEL(twinTypeName, exact)` .
 Här är ett exempel på en fråga som lägger till ett värde för den här parametern:
 
-```sql
-SELECT * FROM DIGITALTWINS WHERE IS_OF_MODEL('dtmi:example:thing;1', exact)
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryByModel3":::
 
 Du kan också skicka alla tre argumenten tillsammans: `IS_OF_MODEL(twinCollection, twinTypeName, exact)` .
 Här är ett exempel på en fråga som anger ett värde för alla tre parametrar:
 
-```sql
-SELECT ROOM FROM DIGITALTWINS DT WHERE IS_OF_MODEL(DT, 'dtmi:example:thing;1', exact)
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryByModel4":::
 
 ## <a name="query-by-relationship"></a>Fråga efter relation
 
@@ -127,12 +104,7 @@ Om du vill hämta en data uppsättning som inkluderar relationer använder `FROM
 
 Här är en exempel Relations hip-baserad fråga. Det här kodfragmentet väljer alla digitala, dubbla med *ID-* egenskapen för "ABC", och alla digitala garn som är relaterade till dessa Digitala flätar via en *contains* -relation.
 
-```sql
-SELECT T, CT
-FROM DIGITALTWINS T
-JOIN CT RELATED T.contains
-WHERE T.$dtId = 'ABC'
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryByRelationship1":::
 
 > [!NOTE]
 > Utvecklaren behöver inte korrelera detta `JOIN` med ett nyckel värde i `WHERE` -satsen (eller ange ett nyckel värde infogat med `JOIN` definitionen). Den här korrelationen beräknas automatiskt av systemet, eftersom Relations egenskaperna identifierar målentiteten.
@@ -144,13 +116,7 @@ Med Azures digitala Flätaa frågespråk kan du filtrera och projicera relatione
 
 Anta till exempel en *servicedBy* -relation som har en *reportedCondition* -egenskap. I nedanstående fråga får den här relationen ett alias för R för att referera till egenskapen.
 
-```sql
-SELECT T, SBT, R
-FROM DIGITALTWINS T
-JOIN SBT RELATED T.servicedBy R
-WHERE T.$dtId = 'ABC'
-AND R.reportedCondition = 'clean'
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryByRelationship2":::
 
 I exemplet ovan noterar du hur *reportedCondition* är en egenskap hos *servicedBy* -relationen (inte av någon digital, som har en *servicedBy* -relation).
 
@@ -160,58 +126,27 @@ Upp till fem `JOIN` s stöds i en enda fråga. På så sätt kan du förflytta f
 
 Här är ett exempel på en fråga med flera kopplingar, som hämtar alla lampor som finns på ljus panelerna i rum 1 och 2.
 
-```sql
-SELECT LightBulb
-FROM DIGITALTWINS Room
-JOIN LightPanel RELATED Room.contains
-JOIN LightBulb RELATED LightPanel.contains
-WHERE IS_OF_MODEL(LightPanel, 'dtmi:contoso:com:lightpanel;1')
-AND IS_OF_MODEL(LightBulb, 'dtmi:contoso:com:lightbulb ;1')
-AND Room.$dtId IN ['room1', 'room2']
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryByRelationship3":::
 
 ## <a name="count-items"></a>Antal objekt
 
 Du kan räkna antalet objekt i en resultat uppsättning med hjälp av- `Select COUNT` satsen:
 
-```sql
-SELECT COUNT()
-FROM DIGITALTWINS
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="SelectCount1":::
 
 Lägg till en `WHERE` sats för att räkna antalet objekt som uppfyller ett visst kriterium. Här följer några exempel på hur du kan räkna med ett applicerat filter baserat på typen av dubbel modell (mer information om den här syntaxen finns i [*fråga efter modell*](#query-by-model) nedan):
 
-```sql
-SELECT COUNT()
-FROM DIGITALTWINS
-WHERE IS_OF_MODEL('dtmi:sample:Room;1')
-
-SELECT COUNT()
-FROM DIGITALTWINS c
-WHERE IS_OF_MODEL('dtmi:sample:Room;1') AND c.Capacity > 20
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="SelectCount2":::
 
 Du kan också använda `COUNT` tillsammans med- `JOIN` satsen. Här är en fråga som räknar alla lampor som finns på de ljusa panelerna i rum 1 och 2:
 
-```sql
-SELECT COUNT()  
-FROM DIGITALTWINS Room  
-JOIN LightPanel RELATED Room.contains  
-JOIN LightBulb RELATED LightPanel.contains  
-WHERE IS_OF_MODEL(LightPanel, 'dtmi:contoso:com:lightpanel;1')  
-AND IS_OF_MODEL(LightBulb, 'dtmi:contoso:com:lightbulb ;1')  
-AND Room.$dtId IN ['room1', 'room2']
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="SelectCount3":::
 
 ## <a name="filter-results-select-top-items"></a>Filter resultat: Markera de översta objekten
 
 Du kan välja flera "Top"-objekt i en fråga med hjälp av- `Select TOP` satsen.
 
-```sql
-SELECT TOP (5)
-FROM DIGITALTWINS
-WHERE ...
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="SelectTop":::
 
 ## <a name="filter-results-specify-return-set-with-projections"></a>Filter resultat: Ange en retur uppsättning med projektioner
 
@@ -222,54 +157,25 @@ Genom att använda projektioner i `SELECT` instruktionen kan du välja vilka kol
 
 Här är ett exempel på en fråga som använder projektion för att returnera dubbla och relationer. Följande fråga projekterar *konsumenten*, *fabriken* och *Edge* från ett scenario där en *fabrik* med ID: t *ABC* är relaterad till *konsumenten* via en relation av *fabriken. kunden* och relationen presenteras som en *gräns*.
 
-```sql
-SELECT Consumer, Factory, Edge
-FROM DIGITALTWINS Factory
-JOIN Consumer RELATED Factory.customer Edge
-WHERE Factory.$dtId = 'ABC'
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="Projections1":::
 
 Du kan också använda projektion för att returnera en dubbels egenskap. I följande fråga visas *namn* egenskapen för de *konsumenter* som är relaterade till *fabriken* med ID: t *ABC* via en relation av *Factory. Custom*.
 
-```sql
-SELECT Consumer.name
-FROM DIGITALTWINS Factory
-JOIN Consumer RELATED Factory.customer Edge
-WHERE Factory.$dtId = 'ABC'
-AND IS_PRIMITIVE(Consumer.name)
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="Projections2":::
 
 Du kan också använda projektion för att returnera en egenskap för en relation. Som i föregående exempel projekt i följande fråga projektets *namn* egenskap för de *konsumenter* som är relaterade till *fabriken* med ID: t *ABC* genom en relation mellan *fabrik. kund*; men nu returnerar den även två egenskaper för relationen, *prop1* och *prop2*. Det gör detta genom att namnge Relations *kanten* och samla in dess egenskaper.  
 
-```sql
-SELECT Consumer.name, Edge.prop1, Edge.prop2, Factory.area
-FROM DIGITALTWINS Factory
-JOIN Consumer RELATED Factory.customer Edge
-WHERE Factory.$dtId = 'ABC'
-AND IS_PRIMITIVE(Factory.area) AND IS_PRIMITIVE(Consumer.name) AND IS_PRIMITIVE(Edge.prop1) AND IS_PRIMITIVE(Edge.prop2)
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="Projections3":::
 
 Du kan också använda alias för att förenkla frågor med projektion.
 
 Följande fråga utför samma åtgärder som i föregående exempel, men ger alias för egenskaps namnen till,, `consumerName` `first` `second` och `factoryArea` .
 
-```sql
-SELECT Consumer.name AS consumerName, Edge.prop1 AS first, Edge.prop2 AS second, Factory.area AS factoryArea
-FROM DIGITALTWINS Factory
-JOIN Consumer RELATED Factory.customer Edge
-WHERE Factory.$dtId = 'ABC'
-AND IS_PRIMITIVE(Factory.area) AND IS_PRIMITIVE(Consumer.name) AND IS_PRIMITIVE(Edge.prop1) AND IS_PRIMITIVE(Edge.prop2)
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="Projections4":::
 
 Här är en liknande fråga som frågar samma uppsättning som ovan, men projekterar endast egenskapen *Consumer.name* som `consumerName` , och projekterar hela *fabriken* som en dubbel.
 
-```sql
-SELECT Consumer.name AS consumerName, Factory
-FROM DIGITALTWINS Factory
-JOIN Consumer RELATED Factory.customer Edge
-WHERE Factory.$dtId = 'ABC'
-AND IS_PRIMITIVE(Factory.area) AND IS_PRIMITIVE(Consumer.name)
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="Projections5":::
 
 ## <a name="build-efficient-queries-with-the-in-operator"></a>Bygg effektiva frågor med operatorn IN
 
@@ -279,12 +185,7 @@ Anta till exempel ett scenario där *byggnader* som innehåller *golv* och *golv
 
 1. Hitta golv i byggnaden baserat på `contains` relationen.
 
-    ```sql
-    SELECT Floor
-    FROM DIGITALTWINS Building
-    JOIN Floor RELATED Building.contains
-    WHERE Building.$dtId = @buildingId
-    ```
+    :::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="INOperatorWithout":::
 
 2. Om du vill hitta rum, i stället för att ta med golv en-i-ett och köra en `JOIN` fråga för att hitta rummen för var och en, kan du fråga med en samling våningar i byggnaden (med namnet *våning* i frågan nedan).
 
@@ -296,26 +197,18 @@ Anta till exempel ett scenario där *byggnader* som innehåller *golv* och *golv
     
     I fråga:
     
-    ```sql
-    
-    SELECT Room
-    FROM DIGITALTWINS Floor
-    JOIN Room RELATED Floor.contains
-    WHERE Floor.$dtId IN ['floor1','floor2', ..'floorn']
-    AND Room. Temperature > 72
-    AND IS_OF_MODEL(Room, 'dtmi:com:contoso:Room;1')
-    
-    ```
+    :::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="INOperatorWith":::
 
 ## <a name="other-compound-query-examples"></a>Exempel på andra sammansatta frågor
 
 Du kan **kombinera** någon av ovanstående typer av fråga med hjälp av kombinations operatorer för att inkludera mer information i en enskild fråga. Här följer några ytterligare exempel på sammansatta frågor som frågar efter fler än en typ av dubbel beskrivare på en gång.
 
-| Beskrivning | Söka i data |
-| --- | --- |
-| Från de enheter som *Room 123* har kan du returnera de MxChip-enheter som hanterar rollen operatör | `SELECT device`<br>`FROM DigitalTwins space`<br>`JOIN device RELATED space.has`<br>`WHERE space.$dtid = 'Room 123'`<br>`AND device.$metadata.model = 'dtmi:contoso:com:DigitalTwins:MxChip:3'`<br>`AND has.role = 'Operator'` |
-| Hämta dubbla som har en relation som heter *innehåller* med en annan som har ID: t *id1* | `SELECT Room`<br>`FROM DIGITALTWINS Room`<br>`JOIN Thermostat RELATED Room.Contains`<br>`WHERE Thermostat.$dtId = 'id1'` |
-| Hämta alla rum för den här rums modellen som finns i *floor11* | `SELECT Room`<br>`FROM DIGITALTWINS Floor`<br>`JOIN Room RELATED Floor.Contains`<br>`WHERE Floor.$dtId = 'floor11'`<br>`AND IS_OF_MODEL(Room, 'dtmi:contoso:com:DigitalTwins:Room;1')` |
+* Från de enheter som *Room 123* har kan du returnera de MxChip-enheter som hanterar rollen operatör
+    :::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="OtherExamples1":::
+* Hämta dubbla som har en relation som heter *innehåller* med en annan som har ID: t *id1*
+    :::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="OtherExamples2":::
+* Hämta alla rum för den här rums modellen som finns i *floor11*
+    :::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="OtherExamples3":::
 
 ## <a name="run-queries-with-the-api"></a>Köra frågor med API: et
 
@@ -325,42 +218,13 @@ Du kan anropa API: et direkt eller använda någon av [SDK: erna](how-to-use-api
 
 Följande kodfragment illustrerar [.net (C#) SDK-](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) anropet från en klient app:
 
-```csharp
-    string adtInstanceEndpoint = "https://<your-instance-hostname>";
-
-    var credential = new DefaultAzureCredential();
-    DigitalTwinsClient client = new DigitalTwinsClient(new Uri(adtInstanceEndpoint), credential);
-
-    // Run a query for all twins   
-    string query = "SELECT * FROM DIGITALTWINS";
-    AsyncPageable<BasicDigitalTwin> result = client.QueryAsync<BasicDigitalTwin>(query);
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/queries.cs" id="RunQuery":::
 
 Anropet returnerar frågeresultat i form av ett [BasicDigitalTwin](/dotnet/api/azure.digitaltwins.core.basicdigitaltwin?view=azure-dotnet&preserve-view=true) -objekt.
 
 Fråge anrop stöder sid indelning. Här är ett fullständigt exempel som använder sig av `BasicDigitalTwin` typen frågeresultat med fel hantering och växling:
 
-```csharp
-try
-{
-    await foreach(BasicDigitalTwin twin in result)
-        {
-            // You can include your own logic to print the result
-            // The logic below prints the twin's ID and contents
-            Console.WriteLine($"Twin ID: {twin.Id} \nTwin data");
-            IDictionary<string, object> contents = twin.Contents;
-            foreach (KeyValuePair<string, object> kvp in contents)
-            {
-                Console.WriteLine($"{kvp.Key}  {kvp.Value}");
-            }
-        }
-}
-catch (RequestFailedException e)
-{
-    Console.WriteLine($"Error {e.Status}: {e.Message}");
-    throw;
-}
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/queries.cs" id="FullQuerySample":::
 
 ## <a name="next-steps"></a>Nästa steg
 

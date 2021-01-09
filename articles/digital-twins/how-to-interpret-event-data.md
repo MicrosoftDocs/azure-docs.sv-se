@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 6/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 22bedcf7921e3c8d4f2566a70515eef3e3b136b6
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: a0f2b971eae5d37e8fb0771e213075289af6c519
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461030"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98045265"
 ---
 # <a name="understand-event-data"></a>Förstå händelse data
 
@@ -103,7 +103,7 @@ Meddelanden om livs cykel utlöses när:
 
 Här är fälten i bröd texten i ett meddelande om livs cykel.
 
-| Name | Värde |
+| Namn | Värde |
 | --- | --- |
 | `id` | Identifierare för meddelandet, till exempel ett UUID eller en räknare som underhålls av tjänsten. `source` + `id` är unikt för varje distinkt händelse. |
 | `source` | Namnet på IoT Hub-eller Azure Digital-instansen, t. ex. *myhub.Azure-Devices.net* eller *mydigitaltwins.westus2.azuredigitaltwins.net* |
@@ -189,7 +189,7 @@ Här är ett annat exempel på en digital, dubbel. Den här baseras på en [mode
 
 Här är fälten i bröd texten för en Edge Change-avisering.
 
-| Name    | Värde |
+| Namn    | Värde |
 | --- | --- |
 | `id` | Identifierare för meddelandet, till exempel ett UUID eller en räknare som underhålls av tjänsten. `source` + `id` är unikt för varje distinkt händelse |
 | `source` | Namnet på den digitala Azure-instansen, till exempel *mydigitaltwins.westus2.azuredigitaltwins.net* |
@@ -245,7 +245,7 @@ Här är ett exempel på ett meddelande om att skapa eller ta bort relationer:
 
 Här är fälten i bröd texten i ett digitalt meddelande om ändring av dubbla meddelanden.
 
-| Name    | Värde |
+| Namn    | Värde |
 | --- | --- |
 | `id` | Identifierare för meddelandet, till exempel ett UUID eller en räknare som underhålls av tjänsten. `source` + `id` är unikt för varje distinkt händelse |
 | `source` | Namnet på IoT Hub-eller Azure Digital-instansen, t. ex. *myhub.Azure-Devices.net* eller *mydigitaltwins.westus2.azuredigitaltwins.net*
@@ -262,20 +262,7 @@ Bröd texten för `Twin.Update` meddelandet är ett JSON-dokument som innehålle
 
 Anta till exempel att en digital, dubbel har uppdaterats med följande korrigering.
 
-```json
-[
-    {
-        "op": "replace",
-        "value": 40,
-        "path": "/Temperature"
-    },
-    {
-        "op": "add",
-        "value": 30,
-        "path": "/comp1/prop1"
-    }
-]
-```
+:::code language="json" source="~/digital-twins-docs-samples/models/patch-component-2.json":::
 
 Motsvarande meddelande (om synkront utförd av tjänsten, t. ex. Azure Digitals, som uppdaterar en digital enhet), har en brödtext som:
 

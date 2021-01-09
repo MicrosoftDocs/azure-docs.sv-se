@@ -11,12 +11,12 @@ ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: automatisk data bearbetning, dokument bearbetning, automatisk data inmatning, formulär bearbetning
-ms.openlocfilehash: ed940622f72271ef3e606c5068babcb6366c31b6
-ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
+ms.openlocfilehash: e1e5a4abf8eab96af62b160e28f98d95cf527eaf
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/01/2021
-ms.locfileid: "97845532"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98044772"
 ---
 # <a name="what-is-form-recognizer"></a>Vad är formigenkänning?
 
@@ -42,11 +42,11 @@ Om du vill prova formulär igenkännings tjänsten går du till verktyget online
 
 # <a name="v20"></a>[v2.0](#tab/v2-0)
 > [!div class="nextstepaction"]
-> [Prova färdiga modeller](https://fott.azurewebsites.net/)
+> [Testa formulär tolken](https://fott.azurewebsites.net/)
 
 # <a name="v21-preview"></a>[v 2.1 Preview](#tab/v2-1)
 > [!div class="nextstepaction"]
-> [Prova färdiga modeller](https://fott-preview.azurewebsites.net/)
+> [Testa formulär tolken](https://fott-preview.azurewebsites.net/)
 
 ---
 
@@ -152,7 +152,18 @@ Mer information får du genom att utforska [REST API referens dokumentationen](h
 
 ## <a name="deploy-on-premises-using-docker-containers"></a>Distribuera lokalt med Docker-behållare
 
-[Använd formulär igenkännings behållare (för hands version)](form-recognizer-container-howto.md) för att distribuera API-funktioner lokalt. Med den här Docker-behållaren kan du ta tjänsten närmare dina data för efterlevnad, säkerhet eller andra drift orsaker.
+[Använd formulär igenkännings behållare (för hands version)](form-recognizer-container-howto.md) för att distribuera API-funktioner lokalt. Med den här Docker-behållaren kan du ta tjänsten närmare dina data för efterlevnad, säkerhet eller andra drift orsaker. 
+
+## <a name="service-availability-and-redundancy"></a>Tjänst tillgänglighet och redundans
+
+### <a name="is-form-recognizer-service-zone-resilient"></a>Är formulär tolkens service zon – elastisk?
+
+Ja. Formulär igenkännings tjänsten är zon-flexibel som standard.
+
+### <a name="how-do-i-configure-the-form-recognizer-service-to-be-zone-resilient"></a>Hur gör jag för att konfigurerar du att formulär tolks tjänsten ska vara zoner-elastisk?
+
+Ingen kund konfiguration krävs för att aktivera zon återhämtning. Zon-återhämtning för formulär igenkännings resurser är tillgängligt som standard och hanteras av själva tjänsten.
+
 
 ## <a name="data-privacy-and-security"></a>Datasekretess och säkerhet
 

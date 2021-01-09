@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: c2620b52c426871b0ec85e3db237be2d373d42f1
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 9a1a55bdf21b74116450ca32f66d891f1aa206d3
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96458703"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98045418"
 ---
 # <a name="add-tags-to-digital-twins"></a>Lägg till taggar till digitala dubbla 
 
@@ -32,23 +32,7 @@ Markör taggar är modellerade som en [DTDL](https://github.com/Azure/opendigita
 
 Här är ett utdrag från en dubbel modell som implementerar en märkpenn-tagg som en egenskap:
 
-```json
-{
-  "@type": "Property",
-  "name": "tags",
-  "schema": {
-    "@type": "Map",
-    "mapKey": {
-      "name": "tagName",
-      "schema": "string"
-    },
-    "mapValue": {
-      "name": "tagValue",
-      "schema": "boolean"
-    }
-  }
-}
-```
+:::code language="json" source="~/digital-twins-docs-samples/models/tags.json" range="2-16":::
 
 ### <a name="add-marker-tags-to-digital-twins"></a>Lägg till markör Taggar i digitala dubbla
 
@@ -56,11 +40,7 @@ När `tags` egenskapen är en del av en digital-enhets modell kan du ställa in 
 
 Här är ett exempel som fyller markören `tags` för tre dubbla:
 
-```csharp
-entity-01: "tags": { "red": true, "round": true } 
-entity-02: "tags": { "blue": true, "round": true } 
-entity-03: "tags": { "red": true, "large": true } 
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_other.cs" id="TagPropertiesMarker":::
 
 ### <a name="query-with-marker-tags"></a>Fråga med markör Taggar
 
@@ -68,15 +48,11 @@ När Taggar har lagts till i digitala dubbla, kan taggarna användas för att fi
 
 Här är en fråga för att hämta alla dubbla som har taggats som "Red": 
 
-```sql
-SELECT * FROM digitaltwins WHERE is_defined(tags.red) 
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryMarkerTags1":::
 
 Du kan också kombinera taggar för mer komplexa frågor. Här är en fråga för att hämta alla dubbla som är rundade och inte röda: 
 
-```sql
-SELECT * FROM digitaltwins WHERE NOT is_defined(tags.red) AND is_defined(tags.round) 
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryMarkerTags2":::
 
 ## <a name="value-tags"></a>Värde koder 
 
@@ -88,23 +64,7 @@ Värde koderna modelleras som en [DTDL](https://github.com/Azure/opendigitaltwin
 
 Här är ett utdrag från en dubbel modell som implementerar en Value-tagg som en egenskap:
 
-```json
-{
-  "@type": "Property",
-  "name": "tags",
-  "schema": {
-    "@type": "Map",
-    "mapKey": {
-      "name": "tagName",
-      "schema": "string"
-    },
-    "mapValue": {
-      "name": "tagValue",
-      "schema": "string"
-    }
-  }
-} 
-```
+:::code language="json" source="~/digital-twins-docs-samples/models/tags.json" range="17-31":::
 
 ### <a name="add-value-tags-to-digital-twins"></a>Lägg till värde Taggar i digitala dubbla
 
@@ -112,11 +72,7 @@ Precis som med markör taggar kan du ange värde tag gen i ett digitalt värde g
 
 Här är ett exempel som fyller i värdet `tags` för tre dubbla:
 
-```csharp
-entity-01: "tags": { "red": "", "size": "large" } 
-entity-02: "tags": { "purple": "", "size": "small" } 
-entity-03: "tags": { "red": "", "size": "small" } 
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_other.cs" id="TagPropertiesValue":::
 
 Observera att `red` och `purple` används som markör Taggar i det här exemplet.
 
@@ -124,17 +80,13 @@ Observera att `red` och `purple` används som markör Taggar i det här exemplet
 
 Precis som med markör taggar kan du använda värde taggar för att filtrera de dubbla i frågorna. Du kan också använda värde Taggar och markör Taggar tillsammans.
 
-I exemplet ovan `red` används som en märkpenn-tagg. Här är en fråga för att hämta alla dubbla som har taggats som "Red": 
+I exemplet ovan `red` används som en märkpenn-tagg. Kom ihåg att det här är en fråga för att hämta alla dubbla som har taggats som "Red": 
 
-```sql
-SELECT * FROM digitaltwins WHERE is_defined(tags.red) 
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryMarkerTags1":::
 
 Här är en fråga för att hämta alla entiteter som är små (värde tag gen) och inte rött: 
 
-```sql
-SELECT * FROM digitaltwins WHERE NOT is_defined(tags.red) AND tags.size = 'small' 
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryMarkerValueTags":::
 
 ## <a name="next-steps"></a>Nästa steg
 

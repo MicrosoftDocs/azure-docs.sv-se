@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/1/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 0a18e6cef568afa8a0092fc06d8f6bb526739b2a
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: e783e5dd3b0f1952928d1c36c682c5be1cba2599
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93145811"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98044398"
 ---
 # <a name="auto-manage-devices-in-azure-digital-twins-using-device-provisioning-service-dps"></a>Hantera enheter automatiskt i Azure Digitals med hjälp av enhets etablerings tjänsten (DPS)
 
@@ -29,14 +29,14 @@ Innan du kan konfigurera etableringen måste du ha en **digital Azure-instans** 
 Om du inte redan har konfigurerat den här inställningen kan du skapa den genom att följa självstudien om Azure Digitals dubblare [*: Anslut en lösning från slut punkt till slut punkt*](tutorial-end-to-end.md). Självstudien vägleder dig genom att konfigurera en digital Azure-instans med modeller och dubbla, en ansluten Azure- [IoT Hub](../iot-hub/about-iot-hub.md)och flera [Azure Functions](../azure-functions/functions-overview.md) för att sprida data flödet.
 
 Du behöver följande värden senare i den här artikeln när du konfigurerar din instans. Om du behöver samla in värdena igen kan du använda länkarna nedan för instruktioner.
-* Azure Digitals dubbla instans **_värd namn_** ( [Sök i portalen](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values))
-* **_Anslutnings sträng_** för Azure Event Hubs-anslutningssträng ( [Sök i portalen](../event-hubs/event-hubs-get-connection-string.md#get-connection-string-from-the-portal))
+* Azure Digitals dubbla instans **_värd namn_** ([Sök i portalen](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values))
+* **_Anslutnings sträng_** för Azure Event Hubs-anslutningssträng ([Sök i portalen](../event-hubs/event-hubs-get-connection-string.md#get-connection-string-from-the-portal))
 
 I det här exemplet används även en **enhets Simulator** som inkluderar etablering med Device Provisioning-tjänsten. Enhets simulatorn finns här: [Azure Digitals, dubbla och IoT Hub integrations exempel](/samples/azure-samples/digital-twins-iothub-integration/adt-iothub-provision-sample/). Hämta exempelprojektet på datorn genom att gå till exempel länken och välja *Hämta zip* -knappen under rubriken. Zippa upp den hämtade mappen.
 
-Enhets simulatorn baseras på **Node.js** , version 10.0. x eller senare. [*Förbereda utvecklings miljön*](https://github.com/Azure/azure-iot-sdk-node/blob/master/doc/node-devbox-setup.md) beskriver hur du installerar Node.js för den här själv studie kursen på antingen Windows eller Linux.
+Enhets simulatorn baseras på **Node.js**, version 10.0. x eller senare. [*Förbereda utvecklings miljön*](https://github.com/Azure/azure-iot-sdk-node/blob/master/doc/node-devbox-setup.md) beskriver hur du installerar Node.js för den här själv studie kursen på antingen Windows eller Linux.
 
-## <a name="solution-architecture"></a>Lösningsarkitekturen
+## <a name="solution-architecture"></a>Lösningsarkitektur
 
 Bilden nedan visar arkitekturen för den här lösningen med hjälp av Azure Digitals dubbla med Device Provisioning-tjänsten. Det visar både enhets etableringen och indragnings flödet.
 
@@ -77,7 +77,7 @@ az iot dps create --name <Device Provisioning Service name> --resource-group <re
 
 ### <a name="create-an-azure-function"></a>Skapa en Azure-funktion
 
-Därefter skapar du en HTTP-begäran-utlöst funktion i en Function-app. Du kan använda Function-appen som skapats i kursen från slut punkt till slut punkt ( [*Självstudier: Anslut en lösning från slut punkt till slut punkt*](tutorial-end-to-end.md)) eller din egen.
+Därefter skapar du en HTTP-begäran-utlöst funktion i en Function-app. Du kan använda Function-appen som skapats i kursen från slut punkt till slut punkt ([*Självstudier: Anslut en lösning från slut punkt till slut punkt*](tutorial-end-to-end.md)) eller din egen.
 
 Den här funktionen kommer att användas av enhets etablerings tjänsten i en [anpassad resursallokeringsprincip](../iot-dps/how-to-use-custom-allocation-policies.md) för att etablera en ny enhet. Mer information om hur du använder HTTP-förfrågningar med Azure Functions finns i [*Azure http-begäran utlösare för Azure Functions*](../azure-functions/functions-bindings-http-webhook-trigger.md).
 
@@ -85,156 +85,13 @@ Lägg till en ny funktion i projektet för Function-appen. Lägg också till ett
 
 I den nyligen skapade funktions kod filen klistrar du in följande kod.
 
-```C#
-using System;
-using System.IO;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Azure.WebJobs;
-using Microsoft.Azure.WebJobs.Extensions.Http;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Logging;
-using Microsoft.Azure.Devices.Shared;
-using Microsoft.Azure.Devices.Provisioning.Service;
-using System.Net.Http;
-using Azure.Identity;
-using Azure.DigitalTwins.Core;
-using Azure.Core.Pipeline;
-using Azure;
-using System.Collections.Generic;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-
-namespace Samples.AdtIothub
-{
-    public static class DpsAdtAllocationFunc
-    {
-        const string adtAppId = "https://digitaltwins.azure.net";
-        private static string adtInstanceUrl = Environment.GetEnvironmentVariable("ADT_SERVICE_URL");
-        private static readonly HttpClient httpClient = new HttpClient();
-
-        [FunctionName("DpsAdtAllocationFunc")]
-        public static async Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req, ILogger log)
-        {
-            // Get request body
-            string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
-            log.LogDebug($"Request.Body: {requestBody}");
-            dynamic data = JsonConvert.DeserializeObject(requestBody);
-
-            // Get registration ID of the device
-            string regId = data?.deviceRuntimeContext?.registrationId;
-
-            bool fail = false;
-            string message = "Uncaught error";
-            ResponseObj obj = new ResponseObj();
-
-            // Must have unique registration ID on DPS request 
-            if (regId == null)
-            {
-                message = "Registration ID not provided for the device.";
-                log.LogInformation("Registration ID: NULL");
-                fail = true;
-            }
-            else
-            {
-                string[] hubs = data?.linkedHubs.ToObject<string[]>();
-
-                // Must have hubs selected on the enrollment
-                if (hubs == null)
-                {
-                    message = "No hub group defined for the enrollment.";
-                    log.LogInformation("linkedHubs: NULL");
-                    fail = true;
-                }
-                else
-                {
-                    // Find or create twin based on the provided registration ID and model ID
-                    dynamic payloadContext = data?.deviceRuntimeContext?.payload;
-                    string dtmi = payloadContext.modelId;
-                    log.LogDebug($"payload.modelId: {dtmi}");
-                    string dtId = await FindOrCreateTwin(dtmi, regId, log);
-
-                    // Get first linked hub (TODO: select one of the linked hubs based on policy)
-                    obj.iotHubHostName = hubs[0];
-
-                    // Specify the initial tags for the device.
-                    TwinCollection tags = new TwinCollection();
-                    tags["dtmi"] = dtmi;
-                    tags["dtId"] = dtId;
-
-                    // Specify the initial desired properties for the device.
-                    TwinCollection properties = new TwinCollection();
-
-                    // Add the initial twin state to the response.
-                    TwinState twinState = new TwinState(tags, properties);
-                    obj.initialTwin = twinState;
-                }
-            }
-
-            log.LogDebug("Response: " + ((obj.iotHubHostName != null) ? JsonConvert.SerializeObject(obj) : message));
-
-            return (fail)
-                ? new BadRequestObjectResult(message)
-                : (ActionResult)new OkObjectResult(obj);
-        }
-
-        public static async Task<string> FindOrCreateTwin(string dtmi, string regId, ILogger log)
-        {
-            // Create Digital Twins client
-            var cred = new ManagedIdentityCredential(adtAppId);
-            var client = new DigitalTwinsClient(new Uri(adtInstanceUrl), cred, new DigitalTwinsClientOptions { Transport = new HttpClientTransport(httpClient) });
-
-            // Find existing twin with registration ID
-            string dtId;
-            string query = $"SELECT * FROM DigitalTwins T WHERE $dtId = '{regId}' AND IS_OF_MODEL('{dtmi}')";
-            AsyncPageable<string> twins = client.QueryAsync(query);
-
-            await foreach (string twinJson in twins)
-            {
-                // Get DT ID from the Twin
-                JObject twin = (JObject)JsonConvert.DeserializeObject(twinJson);
-                dtId = (string)twin["$dtId"];
-                log.LogInformation($"Twin '{dtId}' with Registration ID '{regId}' found in DT");
-                return dtId;
-            }
-
-            // Not found, so create new twin
-            log.LogInformation($"Twin ID not found, setting DT ID to regID");
-            dtId = regId; // use the Registration ID as the DT ID
-
-            // Define the model type for the twin to be created
-            Dictionary<string, object> meta = new Dictionary<string, object>()
-            {
-                { "$model", dtmi }
-            };
-            // Initialize the twin properties
-            Dictionary<string, object> twinProps = new Dictionary<string, object>()
-            {
-                { "$metadata", meta }
-            };
-            twinProps.Add("Temperature", 0.0);
-
-            await client.CreateOrReplaceDigitalTwinAsync<BasicDigitalTwin>(dtId, twinProps);
-            log.LogInformation($"Twin '{dtId}' created in DT");
-
-            return dtId;
-        }
-    }
-
-    public class ResponseObj
-    {
-        public string iotHubHostName { get; set; }
-        public TwinState initialTwin { get; set; }
-    }
-}
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/adtIotHub_allocate.cs":::
 
 Spara filen och publicera om din Function-app. Anvisningar om hur du publicerar Function-appen finns i avsnittet [*Publicera appen*](tutorial-end-to-end.md#publish-the-app) i slut punkt till slut punkt.
 
 ### <a name="configure-your-function"></a>Konfigurera din funktion
 
-Därefter måste du ställa in miljövariabler i din Function-app från tidigare, som innehåller referensen till den Azure Digital-instans som du har skapat. Om du använde självstudierna från slut punkt till slut punkt ( [*Självstudier: ansluta en slut punkt till slut punkt*](tutorial-end-to-end.md)) är inställningen redan konfigurerad.
+Därefter måste du ställa in miljövariabler i din Function-app från tidigare, som innehåller referensen till den Azure Digital-instans som du har skapat. Om du använde självstudierna från slut punkt till slut punkt ([*Självstudier: ansluta en slut punkt till slut punkt*](tutorial-end-to-end.md)) är inställningen redan konfigurerad.
 
 Lägg till inställningen med följande Azure CLI-kommando:
 
@@ -312,12 +169,12 @@ I följande avsnitt går vi igenom stegen för att ställa in det här flödet f
 Nu måste du skapa en Azure [Event Hub](../event-hubs/event-hubs-about.md)som ska användas för att ta emot IoT Hub livs cykel händelser. 
 
 Gå igenom stegen som beskrivs i snabb starten för att [*skapa en Event Hub*](../event-hubs/event-hubs-create.md) med följande information:
-* Om du använder självstudierna från slut punkt till slut punkt ( [*självstudie: Anslut en lösning från slut punkt till slut punkt*](tutorial-end-to-end.md)) kan du återanvända den resurs grupp som du skapade för självstudierna från slut punkt till slut punkt.
+* Om du använder självstudierna från slut punkt till slut punkt ([*självstudie: Anslut en lösning från slut punkt till slut punkt*](tutorial-end-to-end.md)) kan du återanvända den resurs grupp som du skapade för självstudierna från slut punkt till slut punkt.
 * Namnge din Event Hub- *lifecycleevents* eller något annat alternativ och kom ihåg namn området du skapade. Du kommer att använda dessa när du ställer in livs cykel funktionen och IoT Hub vägen i nästa avsnitt.
 
 ### <a name="create-an-azure-function"></a>Skapa en Azure-funktion
 
-Därefter skapar du en Event Hubs utlöst funktion i en Function-app. Du kan använda Function-appen som skapats i kursen från slut punkt till slut punkt ( [*Självstudier: Anslut en lösning från slut punkt till slut punkt*](tutorial-end-to-end.md)) eller din egen. 
+Därefter skapar du en Event Hubs utlöst funktion i en Function-app. Du kan använda Function-appen som skapats i kursen från slut punkt till slut punkt ([*Självstudier: Anslut en lösning från slut punkt till slut punkt*](tutorial-end-to-end.md)) eller din egen. 
 
 Namnge Event Hub-utlösaren *lifecycleevents* och Anslut Event Hub-utlösaren till händelsehubben som du skapade i föregående steg. Om du har använt ett annat händelsehubben, ändrar du det så att det matchar i Utlösarens namn nedan.
 
@@ -325,121 +182,13 @@ Den här funktionen använder IoT Hub enhetens livs cykel händelse för att dra
 
 I din publicerade Function-app lägger du till en ny funktions klass av typen *Event Hub-utlösare* och klistrar in koden nedan.
 
-```C#
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Threading.Tasks;
-using Azure;
-using Azure.Core.Pipeline;
-using Azure.DigitalTwins.Core;
-using Azure.DigitalTwins.Core.Serialization;
-using Azure.Identity;
-using Microsoft.Azure.EventHubs;
-using Microsoft.Azure.WebJobs;
-using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-
-namespace Samples.AdtIothub
-{
-    public static class DeleteDeviceInTwinFunc
-    {
-        private static string adtAppId = "https://digitaltwins.azure.net";
-        private static readonly string adtInstanceUrl = System.Environment.GetEnvironmentVariable("ADT_SERVICE_URL", EnvironmentVariableTarget.Process);
-        private static readonly HttpClient httpClient = new HttpClient();
-
-        [FunctionName("DeleteDeviceInTwinFunc")]
-        public static async Task Run(
-            [EventHubTrigger("lifecycleevents", Connection = "EVENTHUB_CONNECTIONSTRING")] EventData[] events, ILogger log)
-        {
-            var exceptions = new List<Exception>();
-
-            foreach (EventData eventData in events)
-            {
-                try
-                {
-                    //log.LogDebug($"EventData: {System.Text.Json.JsonSerializer.Serialize(eventData)}");
-
-                    string opType = eventData.Properties["opType"] as string;
-                    if (opType == "deleteDeviceIdentity")
-                    {
-                        string deviceId = eventData.Properties["deviceId"] as string;
-                        
-                        // Create Digital Twin client
-                        var cred = new ManagedIdentityCredential(adtAppId);
-                        var client = new DigitalTwinsClient(new Uri(adtInstanceUrl), cred, new DigitalTwinsClientOptions { Transport = new HttpClientTransport(httpClient) });
-
-                        // Find twin based on the original Registration ID
-                        string regID = deviceId; // simple mapping
-                        string dtId = await GetTwinId(client, regID, log);
-                        if (dtId != null)
-                        {
-                            await DeleteRelationships(client, dtId, log);
-
-                            // Delete twin
-                            await client.DeleteDigitalTwinAsync(dtId);
-                            log.LogInformation($"Twin '{dtId}' deleted in DT");
-                        }
-                    }
-                }
-                catch (Exception e)
-                {
-                    // We need to keep processing the rest of the batch - capture this exception and continue.
-                    exceptions.Add(e);
-                }
-            }
-
-            if (exceptions.Count > 1)
-                throw new AggregateException(exceptions);
-
-            if (exceptions.Count == 1)
-                throw exceptions.Single();
-        }
-
-
-        public static async Task<string> GetTwinId(DigitalTwinsClient client, string regId, ILogger log)
-        {
-            string query = $"SELECT * FROM DigitalTwins T WHERE T.$dtId = '{regId}'";
-            AsyncPageable<string> twins = client.QueryAsync(query);
-            await foreach (string twinJson in twins)
-            {
-                JObject twin = (JObject)JsonConvert.DeserializeObject(twinJson);
-                string dtId = (string)twin["$dtId"];
-                log.LogInformation($"Twin '{dtId}' found in DT");
-                return dtId;
-            }
-
-            return null;
-        }
-
-        public static async Task DeleteRelationships(DigitalTwinsClient client, string dtId, ILogger log)
-        {
-            var relationshipIds = new List<string>();
-
-            AsyncPageable<string> relationships = client.GetRelationshipsAsync(dtId);
-            await foreach (var relationshipJson in relationships)
-            {
-                BasicRelationship relationship = System.Text.Json.JsonSerializer.Deserialize<BasicRelationship>(relationshipJson);
-                relationshipIds.Add(relationship.Id);
-            }
-
-            foreach (var relationshipId in relationshipIds)
-            {
-                client.DeleteRelationship(dtId, relationshipId);
-                log.LogInformation($"Twin '{dtId}' relationship '{relationshipId}' deleted in DT");
-            }
-        }
-    }
-}
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/adtIotHub_delete.cs":::
 
 Spara projektet och publicera sedan Function-appen igen. Anvisningar om hur du publicerar Function-appen finns i avsnittet [*Publicera appen*](tutorial-end-to-end.md#publish-the-app) i slut punkt till slut punkt.
 
 ### <a name="configure-your-function"></a>Konfigurera din funktion
 
-Därefter måste du ställa in miljövariabler i din Function-app från tidigare, som innehåller referensen till den Azure Digital-instans som du har skapat och Event Hub. Om du använde självstudien från slut punkt till slut punkt ( [*Självstudier: ansluta en slut punkt till slut punkt*](./tutorial-end-to-end.md)) är den första inställningen redan konfigurerad.
+Därefter måste du ställa in miljövariabler i din Function-app från tidigare, som innehåller referensen till den Azure Digital-instans som du har skapat och Event Hub. Om du använde självstudien från slut punkt till slut punkt ([*Självstudier: ansluta en slut punkt till slut punkt*](./tutorial-end-to-end.md)) är den första inställningen redan konfigurerad.
 
 Lägg till inställningen med detta Azure CLI-kommando. Kommandot kan köras i [Cloud Shell](https://shell.azure.com)eller lokalt om du har Azure CLI [installerat på datorn](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true).
 
