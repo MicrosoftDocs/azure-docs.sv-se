@@ -7,12 +7,12 @@ ms.service: firewall
 ms.date: 08/29/2019
 ms.author: victorh
 ms.topic: how-to
-ms.openlocfilehash: 6993bd10caf2f7e489de8074e311f75710b83d82
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 4d611a6d575fbc94a555006882f77e5a31753164
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94659445"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98051470"
 ---
 # <a name="deploy-and-configure-azure-firewall-using-azure-cli"></a>Distribuera och konfigurera Azure-brandväggen med Azure CLI
 
@@ -67,7 +67,7 @@ az group create --name Test-FW-RG --location eastus
 Det här virtuella nätverket har tre undernät.
 
 > [!NOTE]
-> Storleken på AzureFirewallSubnet-undernätet är/26. Mer information om under näts storleken finns i [vanliga frågor och svar om Azure Firewall](firewall-faq.md#why-does-azure-firewall-need-a-26-subnet-size).
+> Storleken på AzureFirewallSubnet-undernätet är/26. Mer information om under näts storleken finns i [vanliga frågor och svar om Azure Firewall](firewall-faq.yml#why-does-azure-firewall-need-a--26-subnet-size).
 
 ```azurecli-interactive
 az network vnet create \

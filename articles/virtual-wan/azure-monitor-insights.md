@@ -7,21 +7,21 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: 052fd0ea7619d566e78806580ee7b39e49cc85d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d14ae86d41caec3c1bd897c2c81bee748dcc312c
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448610"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98050892"
 ---
-# <a name="azure-monitor-insights-for-virtual-wan-preview"></a>Azure Monitor insikter för virtuellt WAN (för hands version)
+# <a name="azure-monitor-insights-for-virtual-wan"></a>Azure Monitor insikter för virtuellt WAN
 
 [Azure Monitor insikter](../azure-monitor/insights/network-insights-overview.md) för Azure Virtual WAN ger användare och operatörer möjlighet att visa status och status för ett virtuellt WAN-nätverk som presenteras via en automatiskt identifierad Top ologiska karta. Resurs tillstånd och status överlägg på kartan ger dig en Snapshot-vy över det övergripande hälso tillståndet för det virtuella WAN-nätverket. Du kan navigera i resurser på kartan via ett klick till resurs konfigurations sidorna i den virtuella WAN-portalen.
 
 Virtuella WAN-mått på resurs nivå samlas in och presenteras via en förpackad virtuell WAN Metrics-arbetsbok. Arbets boken visar måtten på virtuella WAN-, nav-, gateway-och anslutnings nivåer. Den här artikeln vägleder dig genom stegen för att använda Azure Monitor insikter för virtuellt WAN för att visa din virtuella WAN-topologi och alla mått på en enda plats.
 
 > [!NOTE]
-> Meny alternativet **insikter** på den virtuella WAN-portalen håller på att distribueras. Även om den här menyn har distribuerats ut kan du komma åt arbets boken för virtuella WAN-topologier och mått med hjälp av Azure Monitor för nätverk. Mer information finns i [Azure Monitor för nätverk](../azure-monitor/insights/network-insights-overview.md). 
+> Meny alternativet **insikter** finns i den virtuella WAN-portalen under **övervakning**. Du kan också få åtkomst till den virtuella WAN-topologin och mått arbets boken med Azure Monitor för nätverk. Mer information finns i [Azure Monitor för nätverk](../azure-monitor/insights/network-insights-overview.md). 
 >
 
 ## <a name="before-you-begin"></a>Innan du börjar
@@ -45,7 +45,7 @@ Resursens tillstånd och status är färgkodade och finns på resurs ikonerna i 
 
 **Bild 2: vyn insikter**
 
-:::image type="content" source="./media/azure-monitor-insights/insights-view.png" alt-text="Skärm bild som visar vyn insikter (för hands version)." lightbox="./media/azure-monitor-insights/insights-view.png":::
+:::image type="content" source="./media/azure-monitor-insights/insights-view.png" alt-text="Skärm bild som visar vyn insikter." lightbox="./media/azure-monitor-insights/insights-view.png":::
 
 ## <a name="dependency-view"></a><a name="dependency"></a>Beroende vy
 
@@ -53,7 +53,7 @@ Resursens tillstånd och status är färgkodade och finns på resurs ikonerna i 
 
 **Bild 3: VWAN beroende vy**
 
-:::image type="content" source="./media/azure-monitor-insights/dependency-map.png" alt-text="Skärm bild som visar vyn insikter (för hands version)." lightbox="./media/azure-monitor-insights/dependency-map.png":::
+:::image type="content" source="./media/azure-monitor-insights/dependency-map.png" alt-text="Skärm bild som visar beroende vyn." lightbox="./media/azure-monitor-insights/dependency-map.png":::
 
 I den **beroende** visnings kartan visas följande resurser som ett anslutet diagram:
 
@@ -69,13 +69,13 @@ Beroende kartan möjliggör enkel navigering till konfigurations inställningarn
 
 **Bild 4: navigera till resursinformation**
 
-:::image type="content" source="./media/azure-monitor-insights/resource-information.png" alt-text="Skärm bild som visar vyn insikter (för hands version).":::
+:::image type="content" source="./media/azure-monitor-insights/resource-information.png" alt-text="Skärm bild som visar hur du navigerar till resursinformation.":::
 
 Sök-och filter fältet i **beroende** vyn är ett enkelt sätt att söka igenom grafen. Olika filter ger hjälp att begränsa sökningen till en specifik sökväg och tillstånd.
 
 **Bild 5: sökning och filtrering**
 
-:::image type="content" source="./media/azure-monitor-insights/search-filter.png" alt-text="Skärm bild som visar vyn insikter (för hands version)." lightbox="./media/azure-monitor-insights/search-filter.png":::
+:::image type="content" source="./media/azure-monitor-insights/search-filter.png" alt-text="Skärm bild som visar Sök-och filter fältet." lightbox="./media/azure-monitor-insights/search-filter.png":::
 
 ## <a name="detailed-metrics"></a><a name="detailed"></a>Detaljerade mått
 
@@ -83,7 +83,7 @@ Du kan välja **Visa detaljerade mått** för att få åtkomst till sidan detalj
 
 **Bild 6: instrument panel för detaljerade mått**
 
-:::image type="content" source="./media/azure-monitor-insights/detailed-metrics.png" alt-text="Skärm bild som visar vyn insikter (för hands version)." lightbox="./media/azure-monitor-insights/detailed-metrics.png":::
+:::image type="content" source="./media/azure-monitor-insights/detailed-metrics.png" alt-text="Skärm bild som visar instrument panelen för detaljerade mått." lightbox="./media/azure-monitor-insights/detailed-metrics.png":::
 
 ## <a name="next-steps"></a>Nästa steg
 

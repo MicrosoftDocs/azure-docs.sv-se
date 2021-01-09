@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/27/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 7f491bbe61e8574a7275d9ef5c87d05fa61dc7c4
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: 6c4f23406c97d647002fbb3ab4a3544866303cf4
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 01/08/2021
-ms.locfileid: "98035316"
+ms.locfileid: "98051351"
 ---
 # <a name="connect-function-apps-in-azure-for-processing-data"></a>Anslut funktions appar i Azure för att bearbeta data
 
@@ -72,90 +72,43 @@ För att konfigurationen av Azure SDK-pipeline ska kunna konfigureras korrekt f�
 
 **Alternativ 2. Lägg till paket med `dotnet` kommando rads verktyget:**
 
+Du kan också använda följande `dotnet add` kommandon i ett kommando rads verktyg:
 ```cmd/sh
-dotnet add package Azure.DigitalTwins.Core --version 1.0.0-preview.3
-dotnet add package Azure.identity --version 1.2.2
 dotnet add package System.Net.Http
 dotnet add package Azure.Core.Pipeline
 ```
+
+Lägg sedan till ytterligare två beroenden i projektet som behövs för att arbeta med Azure Digital-dubbla. Du kan använda länkarna nedan för att navigera till paketen på NuGet, där du kan hitta konsol kommandona (inklusive för .NET CLI) för att lägga till den senaste versionen av varje till projektet.
+ * [**Azure. DigitalTwins. Core**](https://www.nuget.org/packages/Azure.DigitalTwins.Core). Det här är paketet för [Azure Digitals dubbla SDK för .net](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true).
+ * [**Azure. Identity**](https://www.nuget.org/packages/Azure.Identity). Det här biblioteket innehåller verktyg som hjälper dig med autentisering mot Azure.
+
 Öppna sedan _Function.cs_ -filen i Visual Studio-Solution Explorer där du har exempel kod och Lägg till följande _using_ -instruktioner till din funktion. 
 
-```csharp
-using Azure.DigitalTwins.Core;
-using Azure.Identity;
-using System.Net.Http;
-using Azure.Core.Pipeline;
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/adtIngestFunctionSample.cs" id="Function_dependencies":::
+
 ## <a name="add-authentication-code-to-the-function"></a>Lägg till autentiserings kod till funktionen
 
 Du kommer nu att deklarera variabler på klass nivå och lägga till en kod som gör det möjligt att komma åt Azure Digitals dubbla. Du kommer att lägga till följande i din funktion i filen {your Function Name}. cs.
 
 * Läs ADT-tjänstens URL som en miljö variabel. Det är en bra idé att läsa tjänste-URL: en från en miljö variabel, i stället för att hårdkoda den i-funktionen.
-```csharp     
-private static readonly string adtInstanceUrl = Environment.GetEnvironmentVariable("ADT_SERVICE_URL");
-```
+
+    :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/adtIngestFunctionSample.cs" id="ADT_service_URL":::
+
 * En statisk variabel som innehåller en HttpClient-instans. HttpClient är relativt dyrt att skapa och vi vill undvika att behöva göra detta för varje funktions anrop.
-```csharp
-private static readonly HttpClient httpClient = new HttpClient();
-```
+
+    :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/adtIngestFunctionSample.cs" id="HTTP_client":::
+
 * Du kan använda autentiseringsuppgifterna för hanterad identitet i Azure Functions.
-```csharp
-ManagedIdentityCredential cred = new ManagedIdentityCredential("https://digitaltwins.azure.net");
-```
+    :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/adtIngestFunctionSample.cs" id="ManagedIdentityCredential":::
+
 * Lägg till en lokal variabel som _DigitalTwinsClient_ i din funktion för att hålla din Azure Digital-klient instans till Function-projektet. Gör *inte* den här variabeln statisk i klassen.
-```csharp
-DigitalTwinsClient client = new DigitalTwinsClient(new Uri(adtInstanceUrl), cred, new DigitalTwinsClientOptions { Transport = new HttpClientTransport(httpClient) });
-```
+    :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/adtIngestFunctionSample.cs" id="DigitalTwinsClient":::
+
 * Lägg till en null-kontroll för _adtInstanceUrl_ och packa upp funktions logiken i ett try catch-block för att fånga eventuella undantag.
 
 Efter dessa ändringar ser funktions koden ut ungefär så här:
 
-```csharp
-// Default URL for triggering event grid function in the local environment.
-// http://localhost:7071/runtime/webhooks/EventGrid?functionName={functionname}
-using System;
-using Microsoft.Azure.WebJobs;
-using Microsoft.Azure.WebJobs.Host;
-using Microsoft.Azure.EventGrid.Models;
-using Microsoft.Azure.WebJobs.Extensions.EventGrid;
-using Microsoft.Extensions.Logging;
-using Azure.DigitalTwins.Core;
-using Azure.Identity;
-using System.Net.Http;
-using Azure.Core.Pipeline;
-
-namespace adtIngestFunctionSample
-{
-    public class Function1
-    {
-        //Your Digital Twin URL is stored in an application setting in Azure Functions
-        private static readonly string adtInstanceUrl = Environment.GetEnvironmentVariable("ADT_SERVICE_URL");
-        private static readonly HttpClient httpClient = new HttpClient();
-
-        [FunctionName("TwinsFunction")]
-        public void Run([EventGridTrigger] EventGridEvent eventGridEvent, ILogger log)
-        {
-            log.LogInformation(eventGridEvent.Data.ToString());
-            if (adtInstanceUrl == null) log.LogError("Application setting \"ADT_SERVICE_URL\" not set");
-            try
-            {
-                //Authenticate with Digital Twins
-                ManagedIdentityCredential cred = new ManagedIdentityCredential("https://digitaltwins.azure.net");
-                DigitalTwinsClient client = new DigitalTwinsClient(new Uri(adtInstanceUrl), cred, new DigitalTwinsClientOptions { Transport = new HttpClientTransport(httpClient) });
-                log.LogInformation($"ADT service client connection created.");
-                /*
-                * Add your business logic here
-                */
-            }
-            catch (Exception e)
-            {
-                log.LogError(e.Message);
-            }
-
-        }
-    }
-}
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/adtIngestFunctionSample.cs":::
 
 ## <a name="publish-the-function-app-to-azure"></a>Publicera Function-appen till Azure
 

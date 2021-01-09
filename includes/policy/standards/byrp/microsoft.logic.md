@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 11/20/2020
+ms.date: 01/08/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 21d125d9ed1b8f1a7afd5e887dedbf4b143a6872
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 41a3c90fda201c7ccb7ed26c390c3d7b8f662117
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94985231"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98051328"
 ---
 ## <a name="azure-security-benchmark"></a>Benchmark för Azure-säkerhet
 
@@ -18,7 +18,7 @@ ms.locfileid: "94985231"
 
 Om du vill se hur tillgängliga Azure Policy inbyggda program för alla Azure-tjänster mappar till den här standarden för efterlevnad, se [Azure policy regelefterlevnad – säkerhet i Azure](../../../../articles/governance/policy/samples/azure-security-benchmark.md).
 
-|Domain |Kontroll-ID |Kontroll rubrik |Policy<br /><sub>(Azure Portal)</sub> |Princip version<br /><sub>GitHub</sub>  |
+|Domain |Kontroll-ID |Kontroll rubrik |Princip<br /><sub>(Azure Portal)</sub> |Princip version<br /><sub>GitHub</sub>  |
 |---|---|---|---|---|
 |Loggning och övervakning |2.3 |Aktivera gransknings loggning för Azure-resurser |[Diagnostikloggar i Logic Apps ska vara aktive rad](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F34f95f76-5386-4de7-b824-0d8478470c9d) |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Logic%20Apps/LogicApps_AuditDiagnosticLog_Audit.json) |
 
@@ -27,7 +27,7 @@ Om du vill se hur tillgängliga Azure Policy inbyggda program för alla Azure-tj
 Om du vill se hur tillgängliga Azure Policy inbyggda program för alla Azure-tjänster mappar till den här standarden för efterlevnad, se [Azure policy regler för regelefterlevnad-HIPAA HITRUST 9,2](../../../../articles/governance/policy/samples/hipaa-hitrust-9-2.md).
 Mer information om den här standarden för efterlevnad finns i [HIPAA HITRUST 9,2](https://www.hhs.gov/hipaa/for-professionals/security/laws-regulations/index.html).
 
-|Domain |Kontroll-ID |Kontroll rubrik |Policy<br /><sub>(Azure Portal)</sub> |Princip version<br /><sub>GitHub</sub>  |
+|Domain |Kontroll-ID |Kontroll rubrik |Princip<br /><sub>(Azure Portal)</sub> |Princip version<br /><sub>GitHub</sub>  |
 |---|---|---|---|---|
 |Gransknings loggning |1203.09 aa1System. 2-09. AA |Gransknings poster inkluderar unikt användar-ID, unikt ID för data ämne, funktion som utförs och datum/tid då händelsen utfördes. |[Diagnostikloggar i Logic Apps ska vara aktive rad](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F34f95f76-5386-4de7-b824-0d8478470c9d) |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Logic%20Apps/LogicApps_AuditDiagnosticLog_Audit.json) |
 

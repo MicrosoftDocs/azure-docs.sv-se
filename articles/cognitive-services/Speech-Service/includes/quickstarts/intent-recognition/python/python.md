@@ -6,12 +6,12 @@ ms.date: 04/04/2020
 ms.topic: include
 ms.author: trbye
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 44c4427540e1b94ebcaf00e6875723e0a654e9ef
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 8eada631b7e1f632148993e586c70b6811cf9ac9
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94425324"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98052732"
 ---
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -70,6 +70,12 @@ Infoga den här koden under din `IntentRecognizer` . Se till att du ersätter `"
 [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=19-27)]
 
 I det här exemplet används `add_intents()` funktionen för att lägga till en lista med uttryckligen definierade syften. Använd och skicka modellen om du vill lägga till alla avsikter från en modell `add_all_intents(model)` .
+
+> [!NOTE]
+> Du kan skapa en LanguageUnderstandingModel genom att skicka en slut punkts-URL till FromEndpoint-metoden.
+> Tal-SDK stöder endast LUIS v 2.0-slut punkter och LUIS v 2.0-slutpunkter följer alltid ett av följande två mönster:
+> * `https://{AzureResourceName}.cognitiveservices.azure.com/luis/v2.0/apps/{app-id}?subscription-key={subkey}&verbose=true&q=`
+> * `https://{Region}.api.cognitive.microsoft.com/luis/v2.0/apps/{app-id}?subscription-key={subkey}&verbose=true&q=`
 
 ## <a name="recognize-an-intent"></a>Identifiera en avsikt
 

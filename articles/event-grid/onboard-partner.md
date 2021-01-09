@@ -3,12 +3,12 @@ title: Publicera som en Azure Event Grid-partner med Azure Portal
 description: Använd Azure Portal för att publicera en Azure Event Grid-partner.
 ms.topic: conceptual
 ms.date: 10/29/2020
-ms.openlocfilehash: 8344fcd822bfcdc67e2c27b200d97fa70dfefdf2
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 44dece4d46a6d702d48fa49983818986fcd59f7b
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96349394"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98050960"
 ---
 # <a name="onboard-as-an-azure-event-grid-partner-using-the-azure-portal"></a>Publicera som en Azure Event Grid-partner med hjälp av Azure Portal
 Den här artikeln beskriver hur SaaS-Providers från tredje part, även kallade händelse utgivare eller partner, registreras på Event Grid att kunna publicera händelser från sina tjänster och hur dessa händelser används av slutanvändarna.
@@ -112,7 +112,6 @@ Följ de återstående stegen genom att kontrol lera att du har:
     1. Gör följande i avsnittet **kanal information** :
         1. För **händelse kanal namn** anger du ett namn för händelse kanalen. 
         1. Ange **källan**. Se [Cloud events 1,0-specifikationer](https://github.com/cloudevents/spec/blob/v1.0/spec.md#source-1) för att få en uppfattning om ett lämpligt värde för källan. Se även [det här exempel på Cloud Events-schemat](cloud-event-schema.md#sample-event-using-cloudevents-schema).
-        1. Ange källan (vad är det?).
     1. I avsnittet **mål information** anger du information om mål partner ämnet som ska skapas för den här händelse kanalen. 
         1. Ange **ID: t för den prenumeration** där partner ämnet ska skapas. 
         1. Ange **namnet på resurs gruppen** där partner ämnes resursen kommer att skapas. 

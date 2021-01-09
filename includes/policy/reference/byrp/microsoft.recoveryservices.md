@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 11/20/2020
+ms.date: 01/08/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: e491c3a1f0364626a1efb5b81d4680e83c027a4a
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 9e6d9cee5cd9e302f30681772bf1e06243efd72a
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94992265"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98051413"
 ---
-|Name<br /><sub>(Azure Portal)</sub> |Description |Påverkan (ar) |Version<br /><sub>GitHub</sub> |
+|Namn<br /><sub>(Azure Portal)</sub> |Beskrivning |Påverkan (ar) |Version<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Azure Backup ska vara aktiverat för Virtual Machines](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F013e242c-8828-4970-87b3-ab247555486d) |Säkerställ att Azure-Virtual Machines skyddas genom att aktivera Azure Backup. Azure Backup är en säker och kostnads effektiv data skydds lösning för Azure. |AuditIfNotExists, inaktiverat |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Backup/VirtualMachines_EnableAzureBackup_Audit.json) |
 |[Konfigurera säkerhets kopiering på virtuella datorer med en specifik tagg till ett nytt Recovery Services-valv med en standard princip](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F83644c87-93dd-49fe-bf9f-6aff8fd0834e) |Framtvinga säkerhets kopiering för alla virtuella datorer genom att distribuera ett Recovery Services-valv på samma plats och resurs grupp som den virtuella datorn. Detta är användbart när olika program team i din organisation har tilldelats separata resurs grupper och behöver hantera sina egna säkerhets kopieringar och återställningar. Du kan också ta med virtuella datorer som innehåller en angiven tagg för att styra tilldelningens omfång. Kontakta [https://aka.ms/AzureVMAppCentricBackupIncludeTag](https://aka.ms/AzureVMAppCentricBackupIncludeTag) |deployIfNotExists |[1.0.0 – för hands version](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Backup/VirtualMachineApplicationCentricBackup_Backup_Deploy_WithTag.json) |
