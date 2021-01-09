@@ -2,14 +2,14 @@
 title: Konfigurera Azure Monitor för behållare Live-data (för hands version) | Microsoft Docs
 description: Den här artikeln beskriver hur du konfigurerar real tids visningen av behållar loggar (STDOUT/STDERR) och händelser utan att använda kubectl med Azure Monitor för behållare.
 ms.topic: conceptual
-ms.date: 02/14/2019
+ms.date: 01/08/2020
 ms.custom: references_regions
-ms.openlocfilehash: 62bc7613995296504dfba551cdb631ac3386aa75
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.openlocfilehash: d5b978e7138e10ed88f5748b84ff62ddd22bebec
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97830793"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98050790"
 ---
 # <a name="how-to-set-up-the-live-data-preview-feature"></a>Så här ställer du in funktionen Live data (för hands version)
 
@@ -29,8 +29,6 @@ Den här artikeln förklarar hur du konfigurerar autentisering för att kontrol 
 - Kubernetes-rollbaserad åtkomst kontroll (Kubernetes RBAC) aktiverat AKS-kluster
 - Azure Active Directory integrerat AKS-kluster.
 
->[!NOTE]
->AKS-kluster som är aktiverade som [privata kluster](https://azure.microsoft.com/updates/aks-private-cluster/) stöds inte med den här funktionen. Den här funktionen använder direkt åtkomst till Kubernetes-API: et via en proxyserver från din webbläsare. Om du aktiverar nätverks säkerhet för att blockera Kubernetes-API: et från den här proxyn blockeras trafiken.
 
 ## <a name="authentication-model"></a>Autentiseringsmodell
 

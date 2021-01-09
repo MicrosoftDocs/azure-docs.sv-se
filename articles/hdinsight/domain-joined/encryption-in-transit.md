@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/24/2020
-ms.openlocfilehash: ba1542d1bb10933edb34b697f1c81cc5e3e7f1c9
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 88a7a0240a4711bebad0ea9007caf6590436e371
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97705378"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98049787"
 ---
 # <a name="ipsec-encryption-in-transit-for-azure-hdinsight"></a>IPSec-kryptering i överföring för Azure HDInsight
 
@@ -24,7 +24,7 @@ Azure HDInsight erbjuder en mängd olika säkerhetsfunktioner för att skydda di
 
 Kryptering i vila omfattas av kryptering på Server sidan på Azure Storage-konton, samt disk kryptering på de virtuella Azure-datorerna som ingår i ditt HDInsight-kluster.
 
-Kryptering av data i överföring i HDInsight uppnås med [Transport Layer Security (TLS)](../transport-layer-security.md) för åtkomst till kluster-gatewayer och [Internet Protocol säkerhet (IPSec)](https://wikipedia.org/wiki/IPsec) mellan klusternoder. IPSec kan aktive ras mellan alla Head-noder, arbetsnoder, Edge-noder och Zookeeper-noder. Den är inte aktive rad för trafik mellan gateway [-eller ID Broker-](./identity-broker.md) noder som är Windows-baserade virtuella datorer och andra Linux-baserade noder i klustret.
+Kryptering av data i överföring i HDInsight uppnås med [Transport Layer Security (TLS)](../transport-layer-security.md) för åtkomst till kluster-gatewayer och [Internet Protocol säkerhet (IPSec)](https://wikipedia.org/wiki/IPsec) mellan klusternoder. IPSec kan aktive ras mellan alla Head-noder, arbetsnoder, Edge-noder, Zookeeper-noder samt Gateway [-och ID Broker-](./identity-broker.md) noder.
 
 ## <a name="enable-encryption-in-transit"></a>Aktivera kryptering under överföring
 

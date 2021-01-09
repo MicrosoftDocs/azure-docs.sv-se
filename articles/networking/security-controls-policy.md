@@ -1,18 +1,18 @@
 ---
 title: Azure Policy regler för regelefterlevnad för Azure nätverks tjänster
 description: Visar Azure Policy regler för regelefterlevnad som är tillgängliga för Azure nätverks tjänster. Dessa inbyggda princip definitioner tillhandahåller vanliga metoder för att hantera kompatibiliteten för dina Azure-resurser.
-ms.date: 11/19/2020
+ms.date: 01/08/2021
 ms.topic: sample
 author: KumudD
 ms.author: kumud
 ms.service: virtual-network
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 2187bb5b5f9b6edda88d901b5dbe14390344a71d
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 8b51e0fce003116711ca0b8de6d896a9d4377d72
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97965914"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98050586"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-networking-services"></a>Azure Policy regler för regelefterlevnad för Azure nätverks tjänster
 

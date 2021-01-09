@@ -1,20 +1,20 @@
 ---
 title: Översikt över lagringskonto
 titleSuffix: Azure Storage
-description: Läs en översikt över lagrings konton i Azure Storage. Granska konto namn, prestanda nivåer, åtkomst nivåer, redundans, kryptering, slut punkter och mycket annat.
+description: Lär dig mer om de olika typerna av lagrings konton i Azure Storage. Granska konto namn, prestanda nivåer, åtkomst nivåer, redundans, kryptering, slut punkter och mycket annat.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/11/2020
+ms.date: 01/08/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 2c9c4cd643e2e4b89f9a7d8f44a6569d0dde2b37
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 5cf43310c68c8446b9465a39d85f84c8273a68d8
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97357389"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98051232"
 ---
 # <a name="storage-account-overview"></a>Översikt över lagringskonto
 
@@ -24,7 +24,40 @@ Information om hur du skapar ett Azure-lagringskonto finns i [Skapa ett lagrings
 
 ## <a name="types-of-storage-accounts"></a>Typer av lagringskonton
 
-[!INCLUDE [storage-account-types-include](../../../includes/storage-account-types-include.md)]
+Azure Storage erbjuder flera typer av lagrings konton. Varje typ stöder olika funktioner och har en egen pris modell. Tänk på dessa skillnader innan du skapar ett lagrings konto för att fastställa vilken typ av konto som passar bäst för dina program. Typerna av lagrings konton är:
+
+- **Allmänna-Purpose v2-konton**: grundläggande lagrings konto typ för blobbar, filer, köer och tabeller. Rekommenderas för de flesta scenarier som använder Azure Storage.
+- **Generella v1-konton**: typ av äldre konto för blobbar, filer, köer och tabeller. Använd allmänna-Purpose v2-konton i stället när det är möjligt.
+- **BlockBlobStorage-konton**: lagrings konton med förstklassiga prestanda egenskaper för block-blobbar och bifogade blobbar. Rekommenderas för scenarier med höga transaktioner, eller scenarier som använder mindre objekt eller kräver konsekvent låg lagrings fördröjning.
+- **FileStorage-konton**: endast filer lagrings konton med förstklassiga prestanda egenskaper. Rekommenderas för program med företags-eller hög prestanda skalning.
+- **BlobStorage-konton**: äldre BLOB-endast lagrings konton. Använd allmänna-Purpose v2-konton i stället när det är möjligt.
+
+I följande tabell beskrivs de olika typerna av lagrings konton, de tjänster som stöds och de distributions modeller som stöds för varje konto typ:
+
+| Typ av lagringskonto | Tjänster som stöds | Alternativ för redundans | Distributions modell<sup>1</sup> |
+|--|--|--|--|
+| Allmänt-syfte v2 | BLOB, fil, kö, tabell, disk och Data Lake Gen2<sup>2</sup> | LRS, GRS, RA-GRS, ZRS, GZRS, RA-GZRS<sup>3</sup> | Resource Manager |
+| Generell användning v1 | BLOB, fil, kö, tabell och disk | LRS, GRS, RA-GRS | Resource Manager, klassisk |
+| BlockBlobStorage | BLOB (endast block-blobar och bifogade blobbar) | LRS, ZRS<sup>3</sup> | Resource Manager |
+| FileStorage | Endast fil | LRS, ZRS<sup>3</sup> | Resource Manager |
+| BlobStorage | BLOB (endast block-blobar och bifogade blobbar) | LRS, GRS, RA-GRS | Resource Manager |
+
+<sup>1</sup> Vi rekommenderar att du använder Azure Resource Manager distributions modell. Lagrings konton som använder den klassiska distributions modellen kan fortfarande skapas på vissa platser och befintliga klassiska konton fortsätter att stödjas. Mer information finns i [Azure Resource Manager vs. klassisk distribution: förstå distributions modeller och status för dina resurser](../../azure-resource-manager/management/deployment-models.md).
+
+<sup>2</sup> Azure Data Lake Storage Gen2 är en uppsättning funktioner som är avsedda för stor data analys och bygger på Azure Blob Storage. Data Lake Storage Gen2 stöds endast för allmänna-syfte v2-lagrings konton med hierarkiskt namn område aktiverat. Mer information om Data Lake Storage Gen2 finns i [Introduktion till Azure Data Lake Storage Gen2](../blobs/data-lake-storage-introduction.md).
+
+<sup>3</sup> Zone-redundant lagring (ZRS) och geo-Zone-redundant lagring (GZRS/RA-GZRS) är endast tillgängliga för allmänna generella v2-, BlockBlobStorage-och FileStorage-konton i vissa regioner. Mer information om alternativ för Azure Storage redundans finns i [Azure Storage redundans](storage-redundancy.md).
+
+### <a name="storage-account-redundancy"></a>Redundans för lagrings konto
+
+Alternativ för redundans för ett lagrings konto är:
+
+- **Lokalt Redundant lagring (LRS)**: en enkel, låg kostnads redundans strategi. Data kopieras synkront tre gånger inom en enda fysisk plats i den primära regionen.
+- **Zone-redundant lagring (ZRS)**: redundans för scenarier som kräver hög tillgänglighet. Data kopieras synkront över tre tillgänglighets zoner i Azure i den primära regionen.
+- **Geo-redundant lagring (GRS)**: Cross-regional redundans för att skydda mot regionala avbrott. Data kopieras synkront tre gånger i den primära regionen och kopieras sedan asynkront till den sekundära regionen. För Läs åtkomst till data i den sekundära regionen aktiverar du Geo-redundant lagring med Läs behörighet (RA-GRS).
+- **Geo-Zone-redundant lagring (GZRS)**: redundans för scenarier som kräver både hög tillgänglighet och maximal hållbarhet. Data kopieras synkront över tre tillgänglighets zoner i Azure i den primära regionen och kopieras sedan asynkront till den sekundära regionen. För Läs åtkomst till data i den sekundära regionen aktiverar du Läs åtkomst geo-Zone-redundant lagring (RA-GZRS).
+
+Mer information om alternativ för redundans i Azure Storage finns [Azure Storage redundans](storage-redundancy.md).
 
 ### <a name="general-purpose-v2-accounts"></a>General-purpose v2-konton (GPv2)
 
@@ -32,7 +65,7 @@ Allmänna-Purpose v2-lagrings konton har stöd för de senaste Azure Storage fun
 
 - Blobbar (alla typer: blockera, Lägg till, sida)
 - Data Lake Gen2
-- Files
+- Filer
 - Diskar
 - Köer
 - Tabeller
@@ -49,7 +82,7 @@ Allmänna-syfte v2-lagrings konton ger flera åtkomst nivåer för lagring av da
 Generella v1-lagrings konton ger till gång till alla Azure Storage-tjänster, men de har inte de senaste funktionerna eller de lägsta priset per Gigabyte. Generella v1-lagrings konton har stöd för dessa Azure Storage tjänster:
 
 - Blobbar (alla typer)
-- Files
+- Filer
 - Diskar
 - Köer
 - Tabeller
@@ -83,7 +116,17 @@ Tänk på dessa regler när du namnger lagringskontot:
 
 ## <a name="performance-tiers"></a>Prestandanivåer
 
-Beroende på vilken typ av lagrings konto du skapar kan du välja mellan standard-och Premium prestanda nivåer.
+Beroende på vilken typ av lagrings konto du skapar kan du välja mellan standard-och Premium prestanda nivåer. I följande tabell sammanfattas vilka prestanda nivåer som är tillgängliga för vilken typ av lagrings konto.
+
+| Typ av lagringskonto | Prestanda nivåer som stöds |
+|--|--|
+| Allmänt-syfte v2 | Standard, Premium<sup>1</sup> |
+| Generell användning v1 | Standard, Premium<sup>1</sup> |
+| BlockBlobStorage | Premium |
+| FileStorage | Premium |
+| BlobStorage | Standard |
+
+<sup>1</sup> Premium-prestanda för General-Purpose v2-och General-Purpose v1-konton är endast tillgängligt för disk-och sid-blob. Premium-prestanda för block-eller append-blobar är bara tillgängliga på BlockBlobStorage-konton. Premium-prestanda för filer är bara tillgängliga på FileStorage-konton.
 
 ### <a name="general-purpose-storage-accounts"></a>Allmänna lagringskonton
 
@@ -112,12 +155,20 @@ Tillgängliga åtkomst nivåer är:
 
 Om det finns en ändring i användnings mönstret för dina data kan du när som helst växla mellan dessa åtkomst nivåer. Mer information om åtkomst nivåer finns i [Azure Blob Storage: frekvent åtkomst, låg frekvent åtkomst och Arkiv](../blobs/storage-blob-storage-tiers.md)lag rings nivåer.
 
+I följande tabell visas vilka åtkomst nivåer som är tillgängliga för blobbar i varje typ av lagrings konto.
+
+| Typ av lagringskonto | Åtkomst nivåer som stöds |
+|--|--|
+| Allmänt-syfte v2 | Frekvent, låg frekvent, arkiv<sup>1</sup> |
+| Generell användning v1 | Ej tillämpligt |
+| BlockBlobStorage | Ej tillämpligt |
+| FileStorage | Ej tillämpligt |
+| BlobStorage | Frekvent, låg frekvent, arkiv<sup>1</sup> |
+
+<sup>1</sup> Arkiv lag ring och skiktning på BLOB-nivå stöder bara block-blobar. Arkiv nivån är bara tillgänglig på nivån för en enskild BLOB, inte på lagrings konto nivå. Mer information finns i [åtkomst nivåer för Azure Blob Storage – frekvent,](../blobs/storage-blob-storage-tiers.md)låg frekvent och Arkiv lag ring.
+
 > [!IMPORTANT]
-> Om du ändrar åtkomst nivån för ett befintligt lagrings konto eller BLOB kan ytterligare kostnader uppstå. Mer information finns i [avsnittet fakturering av lagrings konto](#storage-account-billing).
-
-## <a name="redundancy"></a>Redundans
-
-[!INCLUDE [storage-common-redundancy-options](../../../includes/storage-common-redundancy-options.md)]
+> Om du ändrar åtkomst nivån för ett befintligt lagrings konto eller BLOB kan ytterligare kostnader uppstå. Mer information finns i [debitering av lagrings konto](#storage-account-billing).
 
 ## <a name="encryption"></a>Kryptering
 
@@ -127,13 +178,15 @@ Alla data i ditt lagrings konto krypteras på tjänst sidan. Mer information om 
 
 På ett lagringskonto finns ett unikt namnområde i Azure för dina data. Alla objekt som du lagrar i Azure Storage har en adress som innehåller ditt unika kontonamn. Kombinationen av kontonamnet och Azure Storage-tjänstens slutpunkt bildar slutpunkterna för ditt lagringskonto.
 
-Om ditt allmänna lagrings konto till exempel heter *mystorageaccount*, är standard slut punkterna för det kontot:
+I följande tabell visas slut punkterna för var och en av de Azure Storage tjänsterna.
 
-- Blob-lagring: `https://*mystorageaccount*.blob.core.windows.net`
-- Tabell lagring: `https://*mystorageaccount*.table.core.windows.net`
-- Queue Storage: `https://*mystorageaccount*.queue.core.windows.net`
-- Azure Files: `https://*mystorageaccount*.file.core.windows.net`
-- Azure Data Lake Storage Gen2: `https://*mystorageaccount*.dfs.core.windows.net` (använder ABFS-drivrutinen som är [optimerad för Big data](../blobs/data-lake-storage-introduction.md#key-features-of-data-lake-storage-gen2).)
+| Lagrings tjänst | Slutpunkt |
+|--|--|
+| Blob Storage | `https://<storage-account>.blob.core.windows.net` |
+| Azure Data Lake Storage Gen2 | `https://<storage-account>.dfs.core.windows.net` |
+| Azure Files | `https://<storage-account>.file.core.windows.net` |
+| Queue Storage | `https://<storage-account>.queue.core.windows.net` |
+| Table Storage | `https://<storage-account>.table.core.windows.net` |
 
 > [!NOTE]
 > Block-Blob-och Blob Storage-konton exponerar endast Blob Service-slutpunkten.
@@ -184,7 +237,17 @@ Mer information om Azure Storage REST API finns i [Azure Storage Services REST A
 
 ## <a name="storage-account-billing"></a>Fakturering för lagringskonto
 
-[!INCLUDE [storage-account-billing-include](../../../includes/storage-account-billing-include.md)]
+Azure Storage räkningar baserat på lagrings kontots användning. Alla objekt i ett lagringskonto faktureras tillsammans som en grupp. Lagrings kostnaderna beräknas enligt följande faktorer:
+
+- **Region** syftar på den geografiska region där ditt konto är baserat.
+- **Konto typ** avser den typ av lagrings konto som du använder.
+- **Åtkomst nivån** syftar på det data användnings mönster som du har angett för ditt General-Purpose v2-eller Blob Storage-konto.
+- **Kapaciteten** avser hur mycket av din tilldelning av lagrings konto som du använder för att lagra data.
+- **Replikeringen** avgör hur många kopior av dina data som bevaras samtidigt och på vilka platser.
+- **Transaktioner** avser alla Läs-och skriv åtgärder till Azure Storage.
+- **Utgående data** syftar på data som överförs från en Azure-region. När data i ditt lagrings konto används av ett program som inte körs i samma region debiteras du för utgående data. Information om hur du använder resurs grupper för att gruppera dina data och tjänster i samma region för att begränsa utgående kostnader finns i [Vad är en Azure-resurs grupp?](/azure/cloud-adoption-framework/govern/resource-consistency/resource-access-management#what-is-an-azure-resource-group).
+
+Sidan [Pris för Azure Storage](https://azure.microsoft.com/pricing/details/storage/) innehåller detaljerad prisinformation baserat på kontotyp, lagringskapacitet, replikering och transaktioner. Sidan [Prisinformation för dataöverföringar](https://azure.microsoft.com/pricing/details/data-transfers/) innehåller detaljerad prisinformation för utgående datatrafik. Du kan använda [priskalkylatorn för Azure Storage](https://azure.microsoft.com/pricing/calculator/?scenario=data-management) för att hjälpa att uppskatta dina kostnader.
 
 [!INCLUDE [cost-management-horizontal](../../../includes/cost-management-horizontal.md)]
 

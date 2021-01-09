@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 05/06/2020
-ms.openlocfilehash: 9ee804f7bed01ca0c7f365a04e6108afd9598157
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 40f4845ecc21d05ca5e8394dccba080f8a1f8936
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87066397"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98049719"
 ---
 # <a name="set-up-a-single-ip-address-for-one-or-more-integration-service-environments-in-azure-logic-apps"></a>Konfigurera en enskild IP-adress för en eller flera integrerings tjänst miljöer i Azure Logic Apps
 
@@ -41,7 +41,7 @@ Det här avsnittet visar hur du dirigerar utgående trafik via en Azure-brandvä
 
    * Går till den privata IP-adressen för brand Väggs instansen som nästa hopp adress.
 
-     Du hittar den här IP-adressen genom att välja **Översikt**på brand Väggs menyn, hitta adressen under **privat IP-adress**, till exempel:
+     Du hittar den här IP-adressen genom att välja **Översikt** på brand Väggs menyn, hitta adressen under **privat IP-adress**, till exempel:
 
      ![Hitta privat IP-adress för brand vägg](./media/connect-virtual-network-vnet-set-up-single-ip-address/find-firewall-private-ip-address.png)
 
@@ -61,7 +61,7 @@ Det här avsnittet visar hur du dirigerar utgående trafik via en Azure-brandvä
 
 ## <a name="set-up-network-rule"></a>Konfigurera nätverks regel
 
-1. I Azure Portal söker du efter och väljer brand väggen. I menyn brand vägg under **Inställningar**väljer du **regler**. I fönstret regler väljer du **regel insamling**  >  **Lägg till nätverks regel samling**.
+1. I Azure Portal söker du efter och väljer brand väggen. I menyn brand vägg under **Inställningar** väljer du **regler**. I fönstret regler väljer du **regel insamling**  >  **Lägg till nätverks regel samling**.
 
    ![Lägg till nätverks regel samling i brand väggen](./media/connect-virtual-network-vnet-set-up-single-ip-address/add-network-rule-collection.png)
 
@@ -76,7 +76,7 @@ Det här avsnittet visar hur du dirigerar utgående trafik via en Azure-brandvä
    | Egenskap | Värde | Beskrivning |
    |----------|-------|-------------|
    | **Namn** | <*nätverks regel-samlings namn*> | Namnet på din nätverks regel samling |
-   | **Priority** | <*prioritets nivå*> | Prioritetsordningen som används för att köra regel samlingen. Mer information finns i [Vad är några Azure Firewall-koncept](../firewall/firewall-faq.md#what-are-some-azure-firewall-concepts)? |
+   | **Priority** | <*prioritets nivå*> | Prioritetsordningen som används för att köra regel samlingen. Mer information finns i [Vad är några Azure Firewall-koncept](../firewall/firewall-faq.yml#what-are-some-azure-firewall-concepts)? |
    | **Åtgärd** | **Tillåt** | Den åtgärds typ som ska utföras för den här regeln |
    |||
 
@@ -95,7 +95,7 @@ Det här avsnittet visar hur du dirigerar utgående trafik via en Azure-brandvä
 
    * [Konfigurera en nätverksregel](../firewall/tutorial-firewall-deploy-portal.md#configure-a-network-rule)
    * [Regelbearbetningslogik för Azure Firewall](../firewall/rule-processing.md#network-rules-and-applications-rules)
-   * [Vanliga frågor och svar om Azure Firewall](../firewall/firewall-faq.md)
+   * [Vanliga frågor och svar om Azure Firewall](../firewall/firewall-faq.yml)
    * [Azure PowerShell: New-AzFirewallNetworkRule](/powershell/module/az.network/new-azfirewallnetworkrule)
    * [Azure CLI: AZ Network Firewall Network-Rule](/cli/azure/ext/azure-firewall/network/firewall/network-rule?view=azure-cli-latest#ext-azure-firewall-az-network-firewall-network-rule-create)
 

@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 12/11/2020
 ms.author: cherylmc
-ms.openlocfilehash: b0937bbd72460b1d46ce0394af1933e858424966
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: c2efd9ac137c226c1d3a77e2cb6ebe17d75cb496
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97360330"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98051538"
 ---
 # <a name="manage-secure-access-to-resources-in-spoke-vnets-for-user-vpn-clients"></a>Hantera säker åtkomst till resurser i eker-virtuella nätverk för användares VPN-klienter
 
@@ -147,4 +147,4 @@ Verifiera konfigurationen av den skyddade hubben.
 ## <a name="next-steps"></a>Nästa steg
 
 * Mer information om virtuellt WAN finns i [vanliga frågor och svar om virtuella](virtual-wan-faq.md)WAN.
-* Mer information om Azure-brandväggen finns i [vanliga frågor och svar om Azure-brandväggen](../firewall/firewall-faq.md).
+* Mer information om Azure-brandväggen finns i [vanliga frågor och svar om Azure-brandväggen](../firewall/firewall-faq.yml).

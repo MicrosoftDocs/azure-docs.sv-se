@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/15/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: e73f11ec178c067941ee33e02f37c96605460ee0
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 40e4a3d3a819280255ee931e5e12206f99ef28fe
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658595"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98051521"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Självstudie: Distribuera och konfigurera Azure Firewall via Azure Portal
 
@@ -72,7 +72,7 @@ Resursgruppen innehåller alla resurser för den här självstudien.
 Det här virtuella nätverket innehåller tre undernät.
 
 > [!NOTE]
-> Storleken på AzureFirewallSubnet-undernätet är/26. Mer information om under näts storleken finns i [vanliga frågor och svar om Azure Firewall](firewall-faq.md#why-does-azure-firewall-need-a-26-subnet-size).
+> Storleken på AzureFirewallSubnet-undernätet är/26. Mer information om under näts storleken finns i [vanliga frågor och svar om Azure Firewall](firewall-faq.yml#why-does-azure-firewall-need-a--26-subnet-size).
 
 1. I menyn i Azure-portalen eller på sidan **Start** väljer du **Skapa en resurs**.
 1. Välj **nätverk**  >  **virtuellt nätverk**.
@@ -136,7 +136,7 @@ Distribuera brandväggen till det virtuella nätverket.
    |---------|---------|
    |Prenumeration     |\<your subscription\>|
    |Resursgrupp     |**Test-VB-RG** |
-   |Name     |**Test-FW01**|
+   |Namn     |**Test-FW01**|
    |Plats     |Välj samma plats som tidigare|
    |Välj ett virtuellt nätverk     |**Använd befintlig**: **test-VB-VN**|
    |Offentlig IP-adress     |**Lägg till ny**<br>**Namn**:  **VB-pip**|

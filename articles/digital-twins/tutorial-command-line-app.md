@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 5/8/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: a9d8c42432d619ab120afd0bd5734f6fa269b514
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: db85bf19c1b040fea1ed2f5d6dcf904288366c7f
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96458093"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98050246"
 ---
 # <a name="tutorial-explore-azure-digital-twins-with-a-sample-client-app"></a>Självstudie: utforska digitala Azure-enheter med ett exempel på en klient
 
@@ -51,27 +51,15 @@ Välj *Room.jspå* för att öppna den i redigerings fönstret och ändra den p�
 1. **Redigera en egenskap**. Ändra namnet på `Humidity` egenskapen till *HumidityLevel* (eller något annat om du vill. Om du använder något annat än *HumidityLevel*, kom ihåg vad du använde och fortsätta att använda det i stället för *HumidityLevel* i hela kursen.
 1. **Lägg till en egenskap**. Under den `HumidityLevel` egenskap som slutar på rad 15 klistrar du in följande kod för att lägga till en `RoomName` egenskap till rummet:
 
-    ```json
-    ,
-    {
-      "@type": "Property",
-      "name": "RoomName",
-      "schema": "string"
-    }
-    ```
+    :::code language="json" source="~/digital-twins-docs-samples/models/Room.json" range="16-20":::
+
 1. **Lägg till en relation**. Under den `RoomName` egenskap som du just har lagt till klistrar du in följande kod för att lägga till möjligheten för den här typen av dubbla till formulär som *innehåller* relationer med andra dubbla:
 
-    ```json
-    ,
-    {
-      "@type": "Relationship",
-      "name": "contains"
-    }
-    ```
+    :::code language="json" source="~/digital-twins-docs-samples/models/Room.json" range="21-24":::
 
-När du är färdig bör den uppdaterade modellen se ut så här:
+När du är färdig ska den uppdaterade modellen matcha detta:
 
-:::image type="content" source="media/tutorial-command-line-app/room-model.png" alt-text="Redige rad Room.jsmed uppdaterade versions nummer, HumidityLevel och RoomName egenskaper och innehåller relation" border="false":::
+:::code language="json" source="~/digital-twins-docs-samples/models/Room.json":::
 
 Se till att spara filen innan du fortsätter.
 

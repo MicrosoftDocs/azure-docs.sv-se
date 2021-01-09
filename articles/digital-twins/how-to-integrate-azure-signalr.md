@@ -7,12 +7,12 @@ ms.author: aymarqui
 ms.date: 09/02/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 3a11cd9f3208c97748ab16c636aedd9a443c5b9f
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: d84acc5501b3d40f6db85d0ee6ee369aec5a6aa4
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93093171"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98051113"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-signalr-service"></a>Integrera Azure Digitals dubbla med Azure SignalR-tjänsten
 
@@ -30,7 +30,7 @@ Här är de krav du måste utföra innan du fortsätter:
 
 Du kan också gå vidare och logga in på [Azure Portal](https://portal.azure.com/) med ditt Azure-konto.
 
-## <a name="solution-architecture"></a>Lösningsarkitekturen
+## <a name="solution-architecture"></a>Lösningsarkitektur
 
 Du kommer att ansluta Azure SignalR-tjänsten till Azure Digitals dubbla steg genom sökvägen nedan. Avsnitten A, B och C i diagrammet hämtas från arkitektur diagrammet för det krav som gäller från [slut punkt till slut punkt](tutorial-end-to-end.md). i den här instruktionen kommer du att bygga på detta genom att lägga till avsnitt D.
 
@@ -68,66 +68,8 @@ Starta sedan Visual Studio (eller en annan valfri kod redigerare) och öppna kod
 1. Skapa en ny C# Sharp-klass med namnet **SignalRFunctions.cs** i *SampleFunctionsApp* -projektet.
 
 1. Ersätt innehållet i klass filen med följande kod:
-
-    ```C#
-    using System;
-    using System.Threading.Tasks;
-    using Microsoft.AspNetCore.Http;
-    using Microsoft.Azure.EventGrid.Models;
-    using Microsoft.Azure.WebJobs;
-    using Microsoft.Azure.WebJobs.Extensions.Http;
-    using Microsoft.Azure.WebJobs.Extensions.EventGrid;
-    using Microsoft.Azure.WebJobs.Extensions.SignalRService;
-    using Microsoft.Extensions.Logging;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Linq;
-    using System.Collections.Generic;
     
-    namespace SampleFunctionsApp
-    {
-        public static class SignalRFunctions
-        {
-            public static double temperature;
-    
-            [FunctionName("negotiate")]
-            public static SignalRConnectionInfo GetSignalRInfo(
-                [HttpTrigger(AuthorizationLevel.Anonymous, "post")] HttpRequest req,
-                [SignalRConnectionInfo(HubName = "dttelemetry")] SignalRConnectionInfo connectionInfo)
-            {
-                return connectionInfo;
-            }
-    
-            [FunctionName("broadcast")]
-            public static Task SendMessage(
-                [EventGridTrigger] EventGridEvent eventGridEvent,
-                [SignalR(HubName = "dttelemetry")] IAsyncCollector<SignalRMessage> signalRMessages,
-                ILogger log)
-            {
-                JObject eventGridData = (JObject)JsonConvert.DeserializeObject(eventGridEvent.Data.ToString());
-    
-                log.LogInformation($"Event grid message: {eventGridData}");
-    
-                var patch = (JObject)eventGridData["data"]["patch"][0];
-                if (patch["path"].ToString().Contains("/Temperature"))
-                {
-                    temperature = Math.Round(patch["value"].ToObject<double>(), 2);
-                }
-    
-                var message = new Dictionary<object, object>
-                {
-                    { "temperatureInFahrenheit", temperature},
-                };
-        
-                return signalRMessages.AddAsync(
-                    new SignalRMessage
-                    {
-                        Target = "newMessage",
-                        Arguments = new[] { message }
-                    });
-            }
-        }
-    }
-    ```
+    :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/signalRFunction.cs":::
 
 1. I Visual Studios fönstret *Package Manager-konsol* eller något kommando fönster på datorn i mappen *Azure_Digital_Twins_end_to_end_samples \adtsampleapp\samplefunctionsapp* kör du följande kommando för att installera NuGet- `SignalRService` paketet till projektet:
     ```cmd
@@ -141,7 +83,7 @@ Publicera sedan din funktion till Azure med hjälp av stegen som beskrivs i arti
 
     :::image type="content" source="media/how-to-integrate-azure-signalr/functions-negotiate.png" alt-text="Azure Portal visning av Function-appen med &quot;Functions&quot; markerat i menyn. Listan över funktioner visas på sidan och funktionen Negotiate är också markerad.":::
 
-    Tryck på *Hämta funktions webb adress* och kopiera värdet **uppåt till _/API_ (ta inte med den senaste _/Negotiate?_ )**. Du kommer att använda detta senare.
+    Tryck på *Hämta funktions webb adress* och kopiera värdet **uppåt till _/API_ (ta inte med den senaste _/Negotiate?_)**. Du kommer att använda detta senare.
 
     :::image type="content" source="media/how-to-integrate-azure-signalr/get-function-url.png" alt-text="Azure Portal visning av funktionen Negotiate. Knappen &quot;Hämta funktions webb adress&quot; är markerad och del av URL: en från början till &quot;/API&quot;":::
 
@@ -166,10 +108,10 @@ I [Azure Portal](https://portal.azure.com/)navigerar du till ditt event Grid-äm
 :::image type="content" source="media/how-to-integrate-azure-signalr/event-subscription-1b.png" alt-text="Azure Portal: Event Grid händelse prenumeration":::
 
 På sidan *Skapa händelse prenumeration* fyller du i fälten enligt följande (fält som är fyllda som standard nämns inte):
-* *information om*  >  händelse prenumeration **Namn** : ge din händelse prenumeration ett namn.
-* *slut punkts information*  >  **Slut punkts typ** : Välj *Azure Function* från meny alternativen.
-* *slut punkts information*  >  **Slut punkt** : Tryck på länken *Välj en slut punkt* . Då öppnas ett *Välj Azure Function* -fönster:
-    - Fyll i din **prenumeration** , **resurs grupp** , **Function-app** och **Function** ( *sändning* ). Vissa av dessa kan fyllas i automatiskt när du har valt prenumerationen.
+* *information om*  >  händelse prenumeration **Namn**: ge din händelse prenumeration ett namn.
+* *slut punkts information*  >  **Slut punkts typ**: Välj *Azure Function* från meny alternativen.
+* *slut punkts information*  >  **Slut punkt**: Tryck på länken *Välj en slut punkt* . Då öppnas ett *Välj Azure Function* -fönster:
+    - Fyll i din **prenumeration**, **resurs grupp**, **Function-app** och **Function** (*sändning*). Vissa av dessa kan fyllas i automatiskt när du har valt prenumerationen.
     - **Bekräfta val** av träff.
 
 :::image type="content" source="media/how-to-integrate-azure-signalr/create-event-subscription.png" alt-text="Azure Portal vy för att skapa en händelse prenumeration. Fälten ovan fylls i och knapparna bekräfta markering och skapa är markerade.":::
@@ -246,7 +188,7 @@ Med hjälp av Azure Cloud Shell eller lokalt Azure CLI kan du ta bort alla Azure
 az group delete --name <your-resource-group>
 ```
 
-Slutligen tar du bort de exempel mappar för Project som du laddade ned till din lokala dator ( *Azure_Digital_Twins_end_to_end_samples.zip* och *Azure_Digital_Twins_SignalR_integration_web_app_sample.zip* ).
+Slutligen tar du bort de exempel mappar för Project som du laddade ned till din lokala dator (*Azure_Digital_Twins_end_to_end_samples.zip* och *Azure_Digital_Twins_SignalR_integration_web_app_sample.zip*).
 
 ## <a name="next-steps"></a>Nästa steg
 

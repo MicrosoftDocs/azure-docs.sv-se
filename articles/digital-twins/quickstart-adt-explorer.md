@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/24/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: d42a32e236eb73f2aa9f2f61d9708314783564dd
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: f6bd6b13ab4a2e654bdabc86355f2c3388abed31
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187315"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98050535"
 ---
 # <a name="quickstart---explore-a-sample-azure-digital-twins-scenario-using-adt-explorer"></a>Snabb start – utforska ett exempel på Azure Digitals dubbla scenarier med ADT Explorer
 
@@ -251,9 +251,7 @@ I det här avsnittet ska du köra en fråga för att besvara frågan om hur mån
 
 Om du vill se svaret kör du följande fråga i rutan **fråga i Utforskaren** .
 
-```SQL
-SELECT * FROM DigitalTwins T WHERE T.Temperature > 75
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="TemperatureQuery":::
 
 Kom ihåg att visa de dubbla egenskaperna tidigare att Room0 har en temperatur på 70 och Room1 har en temperatur på 80. Därför visas endast Room1 i resultatet här.
     
@@ -284,9 +282,7 @@ Nu visas ett fönster för **korrigerings information** där korrigerings koden 
 
 För att kontrol lera att grafen har registrerat din uppdatering på temperaturen för Room0 kör du frågan från tidigare för att hämta alla dubbla i miljön med en temperatur över 75.
 
-```SQL
-SELECT * FROM DigitalTwins T WHERE T.Temperature > 75
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="TemperatureQuery":::
 
 Nu när temperaturen för Room0 har ändrats från 70 till 76, ska båda delarna visas i resultatet.
 

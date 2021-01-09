@@ -8,27 +8,25 @@ ms.topic: include
 ms.date: 09/16/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 6fc70d92d08432de2fed99783d774d73463408ce
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: ba62bf6b926ded5f3d976f096cee44c7341b4e50
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97531976"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98053004"
 ---
 SMB Multichannel för Azure-filresurser är för närvarande bara tillgänglig i följande regioner:
 
-- Australien, östra
-- Brasilien, södra
-- Kanada, centrala
-- Kanada, östra
-- Indien, centrala
-- Frankrike, centrala
-- Tyskland, västra centrala
-- Japan, östra
-- USA, norra centrala
-- USA, södra centrala
-- Förenade Arabemiraten, norra
-- Storbritannien, södra
-- Storbritannien, västra
-- USA, västra centrala
-- Indien, västra
+| Geografisk region | Azure-region |
+|-------------|-------------------|
+| Australien | Australien, östra |
+| Brasilien | Brasilien, södra |
+| Kanada | Kanada, centrala, Östra Kanada |
+| Frankrike | Frankrike, centrala |
+| Tyskland | Tyskland, västra centrala |
+| Indien | Centrala Indien, västra Indien |
+| Japan | Östra Japan, västra Japan |
+| Korea | Korea, centrala, västra Korea |
+| Förenade Arabemiraten | Förenade Arabemiraten, norra |
+| Storbritannien | Storbritannien, södra Storbritannien, västra |
+| USA | Norra centrala USA, södra centrala USA, västra centrala USA |

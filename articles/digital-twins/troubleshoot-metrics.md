@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/4/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 4b72bb8bac8f9949c83d0bbc85a0995f790c437d
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 9b092c3c7382c984e8555125820c7c34d91f5e87
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347905"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98048937"
 ---
 # <a name="troubleshooting-azure-digital-twins-metrics"></a>Felsöka Azure Digitals dubbla: mått
 
@@ -55,16 +55,16 @@ Du kan konfigurera dessa mått för att spåra när du närmar dig en [publicera
 
 Använd [aviserings](troubleshoot-alerts.md) funktionen i Azure Monitor om du vill konfigurera detta. Du kan definiera tröskelvärden för dessa mått så att du får en avisering när ett mått når en viss procent andel av den publicerade gränsen.
 
-| Mått | Mått visnings namn | Enhet | Sammansättningstyp| Beskrivning | Dimensioner |
+| Metric | Mått visnings namn | Enhet | Sammansättningstyp| Beskrivning | Dimensioner |
 | --- | --- | --- | --- | --- | --- |
-| TwinCount | Antal dubbla (för hands version) | Antal | Totalt | Totalt antal dubbla i Azure Digitals-instansen. Använd det här måttet för att avgöra om du närmar dig [tjänst gränsen](reference-service-limits.md#functional-limits) för högsta antal tillåtna gränser per instans. |  Inga |
-| ModelCount | Modell antal (för hands version) | Antal | Totalt | Totalt antal modeller i Azure Digitals dubbla instansen. Använd det här måttet för att avgöra om du närmar dig [tjänst gränsen](reference-service-limits.md#functional-limits) för högsta antal modeller som tillåts per instans. | Inga |
+| TwinCount | Antal dubbla (för hands version) | Antal | Totalt | Totalt antal dubbla i Azure Digitals-instansen. Använd det här måttet för att avgöra om du närmar dig [tjänst gränsen](reference-service-limits.md#functional-limits) för högsta antal tillåtna gränser per instans. |  Ingen |
+| ModelCount | Modell antal (för hands version) | Antal | Totalt | Totalt antal modeller i Azure Digitals dubbla instansen. Använd det här måttet för att avgöra om du närmar dig [tjänst gränsen](reference-service-limits.md#functional-limits) för högsta antal modeller som tillåts per instans. | Ingen |
 
 #### <a name="api-request-metrics"></a>API-begärans mått
 
 Mät värden med API-begär Anden:
 
-| Mått | Mått visnings namn | Enhet | Sammansättningstyp| Beskrivning | Dimensioner |
+| Metric | Mått visnings namn | Enhet | Sammansättningstyp| Beskrivning | Dimensioner |
 | --- | --- | --- | --- | --- | --- |
 | ApiRequests | API-begäranden | Antal | Totalt | Antalet API-begäranden som gjorts för digitala dubbla, Läs-, Skriv-, borttagnings-och fråge åtgärder. |  Anspråksautentisering <br>Reparation <br>Protokollhanterare <br>Status kod, <br>Status kod klass, <br>Status text |
 | ApiRequestsFailureRate | Frekvens för misslyckade API-begäranden | Procent | Genomsnitt | Procent andelen API-begäranden som tjänsten tar emot för din instans och som ger ett internt fel (500) svars kod för digitala dubbla Läs-, Skriv-, borttagnings-och fråge åtgärder. | Anspråksautentisering <br>Reparation <br>Protokollhanterare <br>Status kod, <br>Status kod klass, <br>Status text
@@ -74,11 +74,11 @@ Mät värden med API-begär Anden:
 
 Mått som måste utföras med fakturering:
 
-| Mått | Mått visnings namn | Enhet | Sammansättningstyp| Beskrivning | Dimensioner |
+| Metric | Mått visnings namn | Enhet | Sammansättningstyp| Beskrivning | Dimensioner |
 | --- | --- | --- | --- | --- | --- |
-| BillingApiOperations | Fakturerings-API-åtgärder | Antal | Totalt | Fakturerings mått för antalet API-begäranden som gjorts mot tjänsten Azure Digitals dubbla. | Mätar-ID |
-| BillingMessagesProcessed | Behandlade fakturerings meddelanden | Antal | Totalt | Fakturerings mått för antalet meddelanden som skickas ut från Azure Digitals dubbla till externa slut punkter.<br><br>För att kunna betraktas som ett enda meddelande i fakturerings syfte får en nytto last inte vara större än 1 KB. Nytto laster som är större än detta räknas som ytterligare meddelanden i steg om 1 KB (så att ett meddelande mellan 1 och 2 KB räknas som två meddelanden, mellan 2 och 3 KB är 3 meddelanden och så vidare).<br>Den här begränsningen gäller även för svar, så ett anrop som returnerar 1,5 KB i svars texten faktureras till exempel som två åtgärder. | Mätar-ID |
-| BillingQueryUnits | Fakturerings frågans enheter | Antal | Totalt | Antalet fråge enheter, internt beräknade mått på användning av tjänst resurser som används för att köra frågor. Det finns också ett hjälp-API som är tillgängligt för att mäta fråge enheter: [QueryChargeHelper-klass](/dotnet/api/azure.digitaltwins.core.querychargehelper?preserve-view=true&view=azure-dotnet-preview) | Mätar-ID |
+| BillingApiOperations | Fakturerings-API-åtgärder | Antal | Totalt | Fakturerings mått för antalet API-begäranden som gjorts mot tjänsten Azure Digitals dubbla. | Meter ID |
+| BillingMessagesProcessed | Behandlade fakturerings meddelanden | Antal | Totalt | Fakturerings mått för antalet meddelanden som skickas ut från Azure Digitals dubbla till externa slut punkter.<br><br>För att kunna betraktas som ett enda meddelande i fakturerings syfte får en nytto last inte vara större än 1 KB. Nytto laster som är större än detta räknas som ytterligare meddelanden i steg om 1 KB (så att ett meddelande mellan 1 och 2 KB räknas som två meddelanden, mellan 2 och 3 KB är 3 meddelanden och så vidare).<br>Den här begränsningen gäller även för svar, så ett anrop som returnerar 1,5 KB i svars texten faktureras till exempel som två åtgärder. | Meter ID |
+| BillingQueryUnits | Fakturerings frågans enheter | Antal | Totalt | Antalet fråge enheter, internt beräknade mått på användning av tjänst resurser som används för att köra frågor. Det finns också ett hjälp-API som är tillgängligt för att mäta fråge enheter: [QueryChargeHelper-klass](/dotnet/api/azure.digitaltwins.core.querychargehelper?preserve-view=true&view=azure-dotnet) | Meter ID |
 
 Mer information om hur Azure Digital-erbjudanden faktureras finns i [*priser för Azure Digitals dubbla priser*](https://azure.microsoft.com/pricing/details/digital-twins/).
 
@@ -86,7 +86,7 @@ Mer information om hur Azure Digital-erbjudanden faktureras finns i [*priser fö
 
 Mått som måste utföras med data ingress:
 
-| Mått | Mått visnings namn | Enhet | Sammansättningstyp| Beskrivning | Dimensioner |
+| Metric | Mått visnings namn | Enhet | Sammansättningstyp| Beskrivning | Dimensioner |
 | --- | --- | --- | --- | --- | --- |
 | IngressEvents | Ingress-händelser | Antal | Totalt | Antalet inkommande telemetri-händelser till Azure Digitals dubbla. | Resultat |
 | IngressEventsFailureRate | Händelse frekvens vid inkommande händelser | Procent | Genomsnitt | Procent andelen inkommande telemetri för vilka tjänsten returnerar ett internt fel (500) svars kod. | Resultat |
@@ -96,7 +96,7 @@ Mått som måste utföras med data ingress:
 
 Mått som måste utföras med Routning:
 
-| Mått | Mått visnings namn | Enhet | Sammansättningstyp| Beskrivning | Dimensioner |
+| Metric | Mått visnings namn | Enhet | Sammansättningstyp| Beskrivning | Dimensioner |
 | --- | --- | --- | --- | --- | --- |
 | MessagesRouted | Vidarebefordrade meddelanden | Antal | Totalt | Antalet meddelanden som dirigerats till en slut punkt i Azure-tjänsten som Händelsehubben, Service Bus eller Event Grid. | Slut punkts typ, <br>Resultat |
 | RoutingFailureRate | Antal misslyckade vägar | Procent | Genomsnitt | Procent andelen händelser som resulterar i ett fel när de dirigeras från Azure Digitals dubbla till en slut punkt för Azure-tjänster som Händelsehubben, Service Bus eller Event Grid. | Slut punkts typ, <br>Resultat |

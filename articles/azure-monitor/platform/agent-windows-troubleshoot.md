@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: 3d99293ea83c883f8d0870d78dfbec58f74c9bd1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4e2531d511193586ef4605cc3732968b6db28d9f
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87927325"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98050569"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-windows"></a>Felsöka problem med Log Analytics-agenten för Windows 
 
@@ -21,6 +21,40 @@ Om inget av dessa steg fungerar för dig, är följande Support kanaler också t
 * Kunder med Premier Support-förmåner kan öppna en support förfrågan med [Premier](https://premier.microsoft.com/).
 * Kunder med support avtal för Azure kan öppna en support förfrågan [i Azure Portal](https://manage.windowsazure.com/?getsupport=true).
 * Besök sidan Log Analytics feedback och granska skickade idéer och buggar [https://aka.ms/opinsightsfeedback](https://aka.ms/opinsightsfeedback) eller skicka en ny fil. 
+
+## <a name="log-analytics-troubleshooting-tool"></a>Log Analytics fel söknings verktyg
+
+Verktyget Log Analytics-agent för Windows-Felsökning är en samling PowerShell-skript som har utformats för att hjälpa till att hitta och diagnostisera problem med Log Analytics-agenten. Den medföljer automatiskt med agenten vid installationen. Att köra verktyget bör vara det första steget när du diagnostiserar ett problem.
+
+### <a name="how-to-use"></a>Använd så här
+1. Öppna PowerShell-prompt som administratör på datorn där Log Analytics-agenten är installerad.
+1. Navigera till den katalog där verktyget finns.
+   * `cd "C:\Program Files\Microsoft Monitoring Agent\Agent\Troubleshooter"`
+1. Kör huvud skriptet med följande kommando:
+   * `.\GetAgentInfo.ps1`
+1. Välj ett fel söknings scenario.
+1. Följ anvisningarna i-konsolen. (Obs! spårnings loggar steg kräver manuella åtgärder för att stoppa logg insamling. Baserat på problemets reproducerbarhet väntar du tills varaktigheten och trycker på ' för att stoppa logg insamling och fortsätter till nästa steg).
+
+   Platsen för resultat filen loggas när den slutförs och ett nytt fönster för Explorer-fönster markeras.
+
+### <a name="installation"></a>Installation
+Fel söknings verktyget inkluderas automatiskt vid installation av Log Analytics-agentens build-10.20.18053.0 och senare.
+
+### <a name="scenarios-covered"></a>Scenarier som omfattas
+Nedan visas en lista över scenarier som kontrol leras av fel söknings verktyget:
+
+- Agenten rapporterar inte data eller pulsslags data saknas
+- Distributionen av agent tillägget kunde inte utföras
+- Agent krasch
+- Agent som förbrukar hög processor/minne
+- Installations-/avinstallations problem
+- Problem med anpassade loggar
+- Problem med OMS-Gateway
+- Problem med prestanda räknare
+- Samla in alla loggar
+
+>[!NOTE]
+>Kör fel söknings verktyget när det uppstår problem. När du öppnar ett ärende kan du med loggarna ursprungligen hjälpa Support teamet att felsöka problemet snabbare.
 
 ## <a name="important-troubleshooting-sources"></a>Viktiga fel söknings källor
 
@@ -34,10 +68,10 @@ Kontrol lera att brand väggen eller proxyservern har kon figurer ATS för att t
 
 |Agentresurs|Portar |Riktning |Kringgå HTTPS-kontroll|
 |------|---------|--------|--------|   
-|*.ods.opinsights.azure.com |Port 443 |Outbound (Utgående)|Ja |  
-|*.oms.opinsights.azure.com |Port 443 |Outbound (Utgående)|Ja |  
-|*.blob.core.windows.net |Port 443 |Outbound (Utgående)|Ja |  
-|*. agentsvc.azure-automation.net |Port 443 |Outbound (Utgående)|Ja |  
+|*.ods.opinsights.azure.com |Port 443 |Utgående|Ja |  
+|*.oms.opinsights.azure.com |Port 443 |Utgående|Ja |  
+|*.blob.core.windows.net |Port 443 |Utgående|Ja |  
+|*. agentsvc.azure-automation.net |Port 443 |Utgående|Ja |  
 
 För brand Väggs information som krävs för Azure Government, se [Azure Government hantering](../../azure-government/compare-azure-government-global-azure.md#azure-monitor). Om du planerar att använda Azure Automation Hybrid Runbook Worker för att ansluta till och registrera med Automation-tjänsten för att använda Runbooks eller hanterings lösningar i din miljö, måste den ha åtkomst till port numret och de URL: er som beskrivs i [Konfigurera ditt nätverk för Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md#network-planning). 
 
@@ -59,7 +93,7 @@ Det finns flera sätt som du kan kontrol lera om agenten lyckas kommunicera med 
 
     ![TestCloudConnection verktygs körnings resultat](./media/agent-windows-troubleshoot/output-testcloudconnection-tool-01.png)
 
-- Filtrera *Operations Manager* händelse loggen efter **händelse källor**  -  *Hälsotjänst moduler*, *HealthService*och *service Connector* och filtrera efter **händelse nivå** *Varning* och *fel* för att bekräfta om den har skrivna händelser från följande tabell. Om de är det, granskar du lösnings stegen som ingår för varje möjlig händelse.
+- Filtrera *Operations Manager* händelse loggen efter **händelse källor**  -  *Hälsotjänst moduler*, *HealthService* och *service Connector* och filtrera efter **händelse nivå** *Varning* och *fel* för att bekräfta om den har skrivna händelser från följande tabell. Om de är det, granskar du lösnings stegen som ingår för varje möjlig händelse.
 
     |Händelse-ID |Källa |Beskrivning |Lösning |
     |---------|-------|------------|-----------|

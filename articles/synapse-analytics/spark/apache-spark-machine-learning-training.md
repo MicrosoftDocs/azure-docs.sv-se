@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: machine-learning
 ms.date: 09/13/2020
-ms.openlocfilehash: 805bc2aecda37599234c81dd928868d8c14aea4e
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 242ff1d7c16ca952b19f44fb139f8fae7562524a
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97091997"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98048325"
 ---
 # <a name="train-machine-learning-models"></a>Träna Machine Learning-modeller
 Apache Spark i Azure Synapse Analytics möjliggör maskin inlärning med Big data, vilket ger möjlighet att få värdefulla insikter från stora mängder strukturerade, ostrukturerade och snabbt flyttade data. Det finns flera alternativ när du tränar maskin inlärnings modeller med Azure spark i Azure Synapse Analytics: Apache Spark MLlib, Azure Machine Learning och olika bibliotek med öppen källkod. 
@@ -58,6 +58,6 @@ När du använder automatisk ML i Azure Synapse Analytics kan du utnyttja den dj
 ## <a name="next-steps"></a>Nästa steg
 Den här artikeln innehåller en översikt över de olika alternativen för att träna maskin inlärnings modeller i Apache Spark pooler i Azure Synapse Analytics. Du kan lära dig mer om modell utbildning genom att följa själv studie kursen nedan:
 
-- Köra automatiserade ML-experiment med Azure Machine Learning och Azure Synapse Analytics: [Automatisk ml-självstudie](./spark/../apache-spark-autoscale.md) 
-- Köra SparkML experiment: [Apache SparkML-självstudie](../spark/apache-spark-azure-machine-learning-tutorial.md)
+- Köra automatiserade ML-experiment med Azure Machine Learning och Azure Synapse Analytics: [Automatisk ml-självstudie](../spark/apache-spark-azure-machine-learning-tutorial.md) 
+- Köra SparkML experiment: [Apache SparkML-självstudie](../spark/apache-spark-machine-learning-mllib-notebook.md)
 - Visa standard biblioteken: [Azure Synapse Analytics runtime](../spark/apache-spark-version-support.md)
