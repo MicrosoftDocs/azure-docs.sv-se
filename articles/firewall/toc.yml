@@ -110,7 +110,7 @@
 - name: Resurser
   items:
     - name: VANLIGA FRÅGOR OCH SVAR
-      href: firewall-faq.md
+      href: firewall-faq.yml
     - name: Skapa mallar
       href: ../azure-resource-manager/templates/template-syntax.md
     - name: Azure-översikt

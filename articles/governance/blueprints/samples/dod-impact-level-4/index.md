@@ -1,14 +1,14 @@
 ---
 title: Skissexempel på DoD:s effektnivå 4 – översikt
 description: Översikt över exemplet på DoD:s effektnivå 4. Det här skissexemplet hjälper kunderna att utvärdera specifika kontroller för DoD:s effektnivå 4.
-ms.date: 10/26/2020
+ms.date: 01/08/2021
 ms.topic: sample
-ms.openlocfilehash: faea02bc63b1c05526652b7a27b2339f00106ad7
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 3fdb14d1abdac182dceed844fe8b9ab65bed3210
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92669408"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98035095"
 ---
 # <a name="overview-of-the-dod-impact-level-4-blueprint-sample"></a>Översikt över skissexemplet på DoD:s effektnivå 4
 
