@@ -8,16 +8,16 @@ ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 8/26/2020
 ms.author: alkemper
-ms.openlocfilehash: d1dc843ff676429f202c0b9077057d067294f738
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 6996fdd9dce4314e9365177815d7d310ac80c7cb
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92076172"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98046081"
 ---
 # <a name="quickstart-add-feature-flags-to-an-azure-functions-app"></a>Snabb start: Lägg till funktions flaggor i en Azure Functions app
 
-I den här snabb starten skapar du en implementering av funktions hantering i en Azure Functions-app med hjälp av Azure App konfiguration. Du kommer att använda app Configuration service för att centralt lagra alla dina funktions flaggor och kontrol lera deras tillstånd. 
+I den här snabb starten skapar du en Azure Functions app och använder funktions flaggor i den. Du kan använda funktions hantering från Azure App konfiguration för att centralt lagra alla dina funktions flaggor och kontrol lera deras tillstånd.
 
 Biblioteken för .NET-funktions hantering utökar ramverket med stöd för funktions flagga. Dessa bibliotek skapas ovanpå .NET-konfigurations systemet. De integreras med app-konfiguration via dess .NET-Konfigurationsprovider.
 
@@ -46,66 +46,113 @@ Biblioteken för .NET-funktions hantering utökar ramverket med stöd för funkt
 
 ## <a name="connect-to-an-app-configuration-store"></a>Anslut till ett konfigurations Arkiv för appen
 
-1. Högerklicka på projektet och välj **Hantera NuGet-paket**. På fliken **Bläddra** söker du och lägger till följande NuGet-paket i projektet. Kontrol lera `Microsoft.Extensions.DependencyInjection` att du har den senaste säkra versionen. 
+Det här projektet kommer att använda [beroende inmatning i .net Azure Functions](/azure/azure-functions/functions-dotnet-dependency-injection). Den lägger till Azure App konfiguration som en extra konfigurations källa där dina funktions flaggor lagras.
 
-    ```
-    Microsoft.Extensions.DependencyInjection
-    Microsoft.Extensions.Configuration
-    Microsoft.FeatureManagement
-    ```
+1. Högerklicka på projektet och välj **Hantera NuGet-paket**. På fliken **Bläddra** söker du efter och lägger till följande NuGet-paket i projektet.
+   - [Microsoft.Extensions.Configuration. AzureAppConfiguration](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.AzureAppConfiguration/) version 4.1.0 eller senare
+   - [Microsoft. FeatureManagement](https://www.nuget.org/packages/Microsoft.FeatureManagement/) version 2.2.0 eller senare
+   - [Microsoft. Azure. functions. Extensions](https://www.nuget.org/packages/Microsoft.Azure.Functions.Extensions/) version 1.1.0 eller senare 
 
-
-1. Öppna *Function1.cs*och Lägg till namn rymderna för dessa paket.
+2. Lägg till en ny fil, *startup.cs*, med följande kod. Den definierar en klass med namnet `Startup` som implementerar den `FunctionsStartup` abstrakta klassen. Ett Assembly-attribut används för att ange det typ namn som används vid Azure Functions start.
 
     ```csharp
+    using System;
+    using Microsoft.Azure.Functions.Extensions.DependencyInjection;
     using Microsoft.Extensions.Configuration;
     using Microsoft.FeatureManagement;
-    using Microsoft.Extensions.DependencyInjection;
-    ```
 
-1. Lägg till den `Function1` statiska konstruktorn nedan för att starta Azure App konfigurationsprovidern. Lägg sedan till två `static` medlemmar, ett fält med namnet `ServiceProvider` för att skapa en singleton-instans av `ServiceProvider` och en egenskap under `Function1` namn `FeatureManager` för att skapa en singleton-instans av `IFeatureManager` . Anslut sedan till appens konfiguration i `Function1` genom att anropa `AddAzureAppConfiguration()` . Den här processen läser in konfigurationen när programmet startas. Samma konfigurations instans kommer att användas för alla funktions anrop senare. 
+    [assembly: FunctionsStartup(typeof(FunctionApp.Startup))]
 
-    ```csharp
-        // Implements IDisposable, cached for life time of function
-        private static ServiceProvider ServiceProvider; 
-
-        static Function1()
+    namespace FunctionApp
+    {
+        class Startup : FunctionsStartup
         {
-            IConfigurationRoot configuration = new ConfigurationBuilder()
-                .AddAzureAppConfiguration(options =>
-                {
-                    options.Connect(Environment.GetEnvironmentVariable("ConnectionString"))
-                           .UseFeatureFlags();
-                }).Build();
+            public override void ConfigureAppConfiguration(IFunctionsConfigurationBuilder builder)
+            {
+            }
 
-            var services = new ServiceCollection();                                                                             
-            services.AddSingleton<IConfiguration>(configuration).AddFeatureManagement();
-
-            ServiceProvider = services.BuildServiceProvider(); 
+            public override void Configure(IFunctionsHostBuilder builder)
+            {
+            }
         }
-
-        private static IFeatureManager FeatureManager => ServiceProvider.GetRequiredService<IFeatureManager>();
+    }
     ```
 
-1. Uppdatera `Run` metoden för att ändra värdet för det visade meddelandet beroende på funktions flaggans tillstånd.
+
+3. Uppdatera `ConfigureAppConfiguration` metoden och Lägg till Azure App Konfigurationsprovider som en extra konfigurations källa genom att anropa `AddAzureAppConfiguration()` . 
+
+   `UseFeatureFlags()`Metoden instruerar providern att läsa in funktions flaggor. Alla funktions flaggor har en förfallo tid på 30 sekunder för cachen innan ändringar görs om efter ändringar. Du kan uppdatera förfallo intervallet genom att ange `FeatureFlagsOptions.CacheExpirationInterval` egenskapen som skickas till `UseFeatureFlags` metoden. 
 
     ```csharp
-        [FunctionName("Function1")]
-        public static async Task<IActionResult> Run(
-                [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req,
-                ILogger log)
-            {
-                string message = await FeatureManager.IsEnabledAsync("Beta")
-                     ? "The Feature Flag 'Beta' is turned ON"
-                     : "The Feature Flag 'Beta' is turned OFF";
-                
-                return (ActionResult)new OkObjectResult(message); 
-            }
+    public override void ConfigureAppConfiguration(IFunctionsConfigurationBuilder builder)
+    {
+        builder.ConfigurationBuilder.AddAzureAppConfiguration(options =>
+        {
+            options.Connect(Environment.GetEnvironmentVariable("ConnectionString"))
+                   .Select("_")
+                   .UseFeatureFlags();
+        });
+    }
+    ```
+   > [!TIP]
+   > Om du inte vill att någon annan konfiguration än funktions flaggor ska läsas in i programmet kan du anropa `Select("_")` att bara läsa in en befintlig dummy-nyckel "_". Som standard kommer alla konfigurations nyckel värden i appens konfigurations Arkiv att läsas in om ingen `Select` metod anropas.
+
+4. Uppdatera `Configure` metoden för att göra Azure App konfigurations tjänster och funktions hanteraren tillgängliga via beroende inmatning.
+
+    ```csharp
+    public override void Configure(IFunctionsHostBuilder builder)
+    {
+        builder.Services.AddAzureAppConfiguration();
+        builder.Services.AddFeatureManagement();
+    }
+    ```
+
+5. Öppna *Function1.cs* och Lägg till följande namn rymder.
+
+    ```csharp
+    using System.Linq;
+    using Microsoft.FeatureManagement;
+    using Microsoft.Extensions.Configuration.AzureAppConfiguration;
+    ```
+
+   Lägg till en konstruktor som används för att hämta instanser av `_featureManagerSnapshot` och `IConfigurationRefresherProvider` genom beroende inmatning. Från kan `IConfigurationRefresherProvider` du hämta instansen av `IConfigurationRefresher` .
+
+    ```csharp
+    private readonly IFeatureManagerSnapshot _featureManagerSnapshot;
+    private readonly IConfigurationRefresher _configurationRefresher;
+
+    public Function1(IFeatureManagerSnapshot featureManagerSnapshot, IConfigurationRefresherProvider refresherProvider)
+    {
+        _featureManagerSnapshot = featureManagerSnapshot;
+        _configurationRefresher = refresherProvider.Refreshers.First();
+    }
+    ```
+
+6. Uppdatera `Run` metoden för att ändra värdet för det visade meddelandet beroende på funktions flaggans tillstånd.
+
+   `TryRefreshAsync`Metoden anropas i början av funktions anropet för att uppdatera funktions flaggor. Det kommer inte att vara något-op om perioden för förfallo tid för cache inte har uppnåtts. Ta bort `await` operatorn om du vill att funktions flaggorna ska uppdateras utan att blockera aktuella funktions anrop. I så fall kommer senare Functions-anrop att få ett uppdaterat värde.
+
+    ```csharp
+    [FunctionName("Function1")]
+    public async Task<IActionResult> Run(
+        [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req,
+        ILogger log)
+    {
+        log.LogInformation("C# HTTP trigger function processed a request.");
+
+        await _configurationRefresher.TryRefreshAsync();
+
+        string message = await _featureManagerSnapshot.IsEnabledAsync("Beta")
+                ? "The Feature Flag 'Beta' is turned ON"
+                : "The Feature Flag 'Beta' is turned OFF";
+
+        return (ActionResult)new OkObjectResult(message);
+    }
     ```
 
 ## <a name="test-the-function-locally"></a>Testa funktionen lokalt
 
-1. Ange en miljö variabel med namnet **ConnectionString**, där värdet är den åtkomst nyckel som du hämtade tidigare i konfigurations arkivet för appen under **åtkomst nycklar**. Om du använder kommando tolken i Windows kör du följande kommando och startar om kommando tolken för att ändringarna ska börja gälla:
+1. Ange en miljö variabel med namnet **ConnectionString**, där värdet är den anslutnings sträng som du hämtade tidigare i konfigurations arkivet för appen under **åtkomst nycklar**. Om du använder kommando tolken i Windows kör du följande kommando och startar om kommando tolken för att ändringarna ska börja gälla:
 
     ```cmd
         setx ConnectionString "connection-string-of-your-app-configuration-store"
@@ -133,15 +180,16 @@ Biblioteken för .NET-funktions hantering utökar ramverket med stöd för funkt
 
     ![Funktions flagga för snabb starts funktion inaktiverat](./media/quickstarts/functions-launch-ff-disabled.png)
 
-1. Logga in på [Azure-portalen](https://portal.azure.com). Välj **alla resurser**och välj den instans av konfigurations Arkiv för app som du skapade.
+1. Logga in på [Azure-portalen](https://portal.azure.com). Välj **alla resurser** och välj det app konfigurations lager som du har skapat.
 
-1. Välj **funktions hanteraren**och ändra statusen för **beta** nyckeln till **på**.
+1. Välj **funktions hanteraren** och ändra statusen för **beta** nyckeln till **på**.
 
-1. Återgå till kommando tolken och Avbryt processen som körs genom att trycka på `Ctrl-C` .  Starta om programmet genom att trycka på F5. 
-
-1. Kopiera URL: en för din funktion från Azure Functions runtime-utdata med samma process som i steg 3. Klistra in webbadressen för HTTP-begäran i webbläsarens adressfält. Webbläsarens svar bör ha ändrats för att visa att funktions flaggan `Beta` är aktive rad, som visas på bilden nedan.
+1. Uppdatera webbläsaren några gånger. När den cachelagrade funktions flaggan upphör att gälla efter 30 sekunder, bör sidan ha ändrats för att visa att funktions flaggan `Beta` är aktive rad, som du ser i bilden nedan.
  
     ![Funktions flagga för snabb starts funktion aktive rad](./media/quickstarts/functions-launch-ff-enabled.png)
+
+> [!NOTE]
+> Exempel koden som används i den här självstudien kan hämtas från [Azure App Configuration GitHub lagrings platsen](https://github.com/Azure/AppConfiguration/tree/master/examples/DotNetCore/AzureFunction).
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
@@ -149,8 +197,10 @@ Biblioteken för .NET-funktions hantering utökar ramverket med stöd för funkt
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här snabb starten skapade du en funktions flagga och använde den med en Azure Functions app via [appens Konfigurationsprovider](/dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration).
+I den här snabb starten skapade du en funktions flagga och använde den med en Azure Functions-app via [Microsoft. FeatureManagement](/dotnet/api/microsoft.featuremanagement) -biblioteket.
 
-- Läs mer om [funktions hantering](./concept-feature-management.md).
-- [Hantera funktions flaggor](./manage-feature-flags.md).
+- Läs mer om [funktions hantering](./concept-feature-management.md)
+- [Hantera funktionsflaggor](./manage-feature-flags.md)
+- [Använda villkorsstyrda funktions flaggor](./howto-feature-filters-aspnet-core.md)
+- [Aktivera stegvis distribution av funktioner för mål grupper](./howto-targetingfilter-aspnet-core.md)
 - [Använd dynamisk konfiguration i en Azure Functions app](./enable-dynamic-configuration-azure-functions-csharp.md)

@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: a236cf99d3131e83619cfab06e8ec028938a87ba
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: a75e1fb5b250be1004195d3a77301c73eac94b02
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96454619"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98043565"
 ---
 # <a name="cheat-sheet-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytic"></a>Lathund-blad för dedikerad SQL-pool (tidigare SQL DW) i Azure Synapse-analys
 
@@ -37,13 +37,13 @@ När du vet åtgärdstyperna i förväg kan du optimera tabellernas design.
 
 ## <a name="data-migration"></a>Datamigrering
 
-Börja med att läsa in data i [Azure Data Lake Storage](../../data-factory/connector-azure-data-lake-store.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) eller Azure Blob Storage. Använd sedan [kopierings instruktionen](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (för hands versionen) för att läsa in dina data i mellanlagrings tabeller. Använd följande konfiguration:
+Börja med att läsa in data i [Azure Data Lake Storage](../../data-factory/connector-azure-data-lake-store.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) eller Azure Blob Storage. Använd sedan [kopierings instruktionen](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) för att läsa in dina data i mellanlagrings tabeller. Använd följande konfiguration:
 
 | Design | Rekommendation |
 |:--- |:--- |
 | Distribution | Resursallokering (round robin) |
 | Indexering | Heap |
-| Partitionering | Inget |
+| Partitionering | Ingen |
 | Resursklass | largerc eller xlargerc |
 
 Läs mer om [datamigrering](https://blogs.msdn.microsoft.com/sqlcat/20../../migrating-data-to-azure-sql-data-warehouse-in-practice/), [datainläsning](design-elt-data-loading.md) och [ELT-processen (Extract, Load, and Transform)](design-elt-data-loading.md).

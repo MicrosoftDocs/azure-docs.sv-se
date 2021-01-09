@@ -1,18 +1,18 @@
 ---
-title: Skapa din första funktion i Azure med Kotlin och maven
-description: Skapa och publicera en HTTP-utlöst funktion i Azure med Kotlin och Maven.
+title: Skapa en Kotlin-funktion i Azure Functions med maven
+description: Skapa och publicera en HTTP-utlöst funktions app för att Azure Functions med Kotlin och Maven.
 author: dglover
 ms.service: azure-functions
 ms.topic: quickstart
 ms.date: 03/25/2020
 ms.author: dglover
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 8b597f54f22aaf6d904ba276ebdfa3a051b93b2d
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: 6f7b79b6e3e72b34a27e5b4f0e1fb5426c539699
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97954302"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98035248"
 ---
 # <a name="quickstart-create-your-first-function-with-kotlin-and-maven"></a>Snabb start: skapa din första funktion med Kotlin och maven
 
@@ -20,7 +20,7 @@ Den här artikeln vägleder dig genom att använda kommando rads verktyget Maven
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill utveckla funktioner med Kotlin måste du ha följande installerat:
 

@@ -6,18 +6,18 @@ ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python, github-actions-azure
-ms.openlocfilehash: 0018b7bafa8ff2ecd328a150df752082c85484e2
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: bc80a4f5c6c2919f0cb3faa15958fb75eed70270
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97608518"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98035231"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>Kontinuerlig leverans med hjälp av GitHub-åtgärd
 
-Använd [GitHub-åtgärder](https://github.com/features/actions) för att definiera ett arbets flöde som automatiskt skapar och distribuerar kod till din Azure Function-app. 
+Använd [GitHub-åtgärder](https://github.com/features/actions) för att definiera ett arbets flöde som automatiskt skapar och distribuerar kod till din Function-app i Azure Functions. 
 
-I GitHub-åtgärder är ett [arbets flöde](https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/introduction-to-github-actions#the-components-of-github-actions) en automatiserad process som du definierar i din GitHub-lagringsplats. Den här processen visar GitHub hur du skapar och distribuerar dina Functions-AppData på GitHub. 
+I GitHub-åtgärder är ett [arbets flöde](https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/introduction-to-github-actions#the-components-of-github-actions) en automatiserad process som du definierar i din GitHub-lagringsplats. Den här processen visar GitHub hur du skapar och distribuerar ditt Function app-projekt på GitHub. 
 
 Ett arbets flöde definieras av en YAML-fil (. yml) i `/.github/workflows/` sökvägen i lagrings platsen. Den här definitionen innehåller de olika stegen och parametrarna som utgör arbets flödet. 
 
@@ -29,7 +29,7 @@ För ett Azure Functions-arbetsflöde har filen tre delar:
 | **Skapa** | Konfigurera miljön.<br/>Bygg in Function-appen.|
 | **Distribuera** | Distribuera Function-appen.|
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Ett GitHub-konto. Om du inte har någon kan du registrera dig [kostnads fritt](https://github.com/join).  
@@ -187,6 +187,7 @@ I följande exempel visas den del av arbets flödet som skapar Function-appen, s
 ---
 
 ## <a name="deploy-the-function-app"></a>Distribuera funktionsappen
+
 Använd `Azure/functions-action` åtgärden för att distribuera din kod till en Function-app. Den här åtgärden har tre parametrar:
 
 |Parameter |Förklaring  |
@@ -202,7 +203,7 @@ I följande exempel används version 1 av `functions-action` and- `publish profi
 Konfigurera ett .NET Linux-arbetsflöde som använder en publicerings profil.
 
 ```yaml
-name: Deploy DotNet project to Azure function app with a Linux environment
+name: Deploy DotNet project to function app with a Linux environment
 
 on:
   [push]
@@ -241,7 +242,7 @@ jobs:
 Konfigurera ett .NET Windows-arbetsflöde som använder en publicerings profil.
 
 ```yaml
-name: Deploy DotNet project to Azure function app with a Windows environment
+name: Deploy DotNet project to function app with a Windows environment
 
 on:
   [push]
@@ -283,7 +284,7 @@ jobs:
 Konfigurera ett Java Linux-arbetsflöde som använder en publicerings profil.
 
 ```yaml
-name: Deploy Java project to Azure Function App
+name: Deploy Java project to function app
 
 on:
   [push]
@@ -325,7 +326,7 @@ jobs:
 Konfigurera ett Java Windows-arbetsflöde som använder en publicerings profil.
 
 ```yaml
-name: Deploy Java project to Azure Function App
+name: Deploy Java project to function app
 
 on:
   [push]
@@ -369,7 +370,7 @@ jobs:
 Konfigurera ett Node.JS Linux-arbetsflöde som använder en publicerings profil.
 
 ```yaml
-name: Deploy Node.js project to Azure Function App
+name: Deploy Node.js project to function app
 
 on:
   [push]
@@ -411,7 +412,7 @@ jobs:
 Konfigurera ett Node.JS Windows-arbetsflöde som använder en publicerings profil.
 
 ```yaml
-name: Deploy Node.js project to Azure Function App
+name: Deploy Node.js project to function app
 
 on:
   [push]
@@ -455,7 +456,7 @@ jobs:
 Konfigurera ett python Linux-arbetsflöde som använder en publicerings profil.
 
 ```yaml
-name: Deploy Python project to Azure Function App
+name: Deploy Python project to function app
 
 on:
   [push]

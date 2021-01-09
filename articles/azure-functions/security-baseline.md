@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 707c69efddeda364f0c62e9719ae1a6073dfe9ad
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 993cd614f150866817e8d71dbd9dca9be606465f
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97935741"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98035163"
 ---
 # <a name="azure-security-baseline-for-azure-functions"></a>Azures säkerhets bas linje för Azure Functions
 
@@ -56,16 +56,16 @@ Om du använder nätverks säkerhets grupper (NSG: er) med Azure Functions imple
 
 ### <a name="13-protect-critical-web-applications"></a>1,3: skydda viktiga webb program
 
-**Vägledning**: om du vill skydda dina Azure Function-slutpunkter i produktion bör du överväga att implementera en av följande funktioner på App-nivå:
+**Vägledning**: om du vill skydda dina Azure Functions-slutpunkter i produktion bör du överväga att implementera en av följande funktioner på App-nivå:
 - Aktivera App Service autentisering/auktorisering för din Function-app
 - Använd Azure API Management (APIM) för att autentisera begär Anden eller
 - Distribuera din Function-app till en Azure App Service-miljön.
 
-Se också till att fjärrfelsökning har inaktiverats för produktions Azure Functions. Dessutom bör resurs delning mellan ursprung (CORS) inte tillåta alla domäner att komma åt din Azure Function-app. Tillåt endast domäner som krävs för att interagera med din Azure Function-app.
+Se också till att fjärrfelsökning har inaktiverats för produktions Azure Functions. Dessutom bör resurs delning mellan ursprung (CORS) inte tillåta alla domäner att komma åt din Function-app i Azure. Tillåt endast domäner som krävs för att interagera med din Function-app.
 
 Överväg att distribuera Azure Web Application Firewall (WAF) som en del av nätverks konfigurationen för ytterligare inspektion av inkommande trafik. Aktivera diagnostikinställningar för WAF och mata in loggar till ett lagrings konto, en Event Hub-eller Log Analytics-arbetsyta. 
 
-- [Skydda Azure Function-slutpunkter i produktion](./functions-bindings-http-webhook-trigger.md?tabs=csharp#secure-an-http-endpoint-in-production)
+- [Så här säkrar du Azure Functions-slutpunkter i produktion](./functions-bindings-http-webhook-trigger.md?tabs=csharp#secure-an-http-endpoint-in-production)
 
 - [Så här distribuerar du Azure-WAF](../web-application-firewall/ag/create-waf-policy-ag.md)
 
@@ -76,7 +76,7 @@ Se också till att fjärrfelsökning har inaktiverats för produktions Azure Fun
 ### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1,4: neka kommunikation med kända skadliga IP-adresser
 
 **Vägledning**: Aktivera DDoS Protection standard på de virtuella nätverk som är kopplade till dina Functions-appar för att skydda dig mot DDoS-attacker. Använd Azure Security Center integrerad Hot information för att neka kommunikation med kända skadliga eller oanvända offentliga IP-adresser.
-Dessutom kan du konfigurera en frontend-Gateway, till exempel Azure Web Application-brandvägg, för att autentisera alla inkommande begär Anden och filtrera bort skadlig trafik. Azure Web Application-brandväggen kan hjälpa dig att skydda dina Azure Function-appar genom att inspektera inkommande webb trafik för att blockera SQL-injektering, skript körning över flera webbplatser, överföringar av skadlig kod och DDoS-attacker. Introduktionen av en WAF kräver antingen en App Service-miljön eller användning av privata slut punkter (för hands version). Se till att privata slut punkter inte längre är i (för hands version) innan du använder dem med produktions arbets belastningar.
+Dessutom kan du konfigurera en frontend-Gateway, till exempel Azure Web Application-brandvägg, för att autentisera alla inkommande begär Anden och filtrera bort skadlig trafik. Azure Web Application-brandväggen kan hjälpa dig att skydda din Function-app genom att inspektera inkommande webb trafik för att blockera SQL-injektering, skript körning över flera webbplatser, överföringar av skadlig kod och DDoS-attacker. Introduktionen av en WAF kräver antingen en App Service-miljön eller användning av privata slut punkter (för hands version). Se till att privata slut punkter inte längre är i (för hands version) innan du använder dem med produktions arbets belastningar.
 
 - [Nätverksalternativ för Azure Functions](./functions-networking-options.md)
 
@@ -176,8 +176,8 @@ Alternativt finns det flera Marketplace-alternativ som Barracuda-WAF för Azure 
 
 **Vägledning**: definiera och implementera standardinställda säkerhetskonfigurationer för nätverks inställningar som är relaterade till din Azure Functions. Använd Azure Policy alias i namn områdena "Microsoft. Web" och "Microsoft. Network" om du vill skapa anpassade principer för granskning eller tillämpa nätverks konfigurationen för din Azure Functions. Du kan också använda inbyggda princip definitioner för Azure Functions, till exempel:
 - CORS bör inte tillåta alla resurser att komma åt dina funktions program
-- Funktionsapp bör endast vara tillgängligt via HTTPS
-- Den senaste TLS-versionen ska användas i Funktionsapp
+- Function-appen bör endast vara tillgänglig via HTTPS
+- Den senaste TLS-versionen ska användas i din Function-app
 
 Du kan också använda Azure-ritningar för att förenkla storskaliga Azure-distributioner genom att paketera viktiga miljö artefakter, till exempel Azure Resource Manager mallar, rollbaserad åtkomst kontroll i Azure (Azure RBAC) och principer i en enda skiss definition. Du kan enkelt använda skissen för nya prenumerationer, miljöer och finjustera kontroll och hantering genom versions hantering.
 
@@ -233,7 +233,7 @@ Du kan använda Azure PowerShell eller Azure CLI för att söka efter eller utf�
 
 Azure Functions erbjuder även inbyggd integrering med Azure Application insikter för att övervaka funktioner. Application Insights samlar in logg-, prestanda-och fel data. Den identifierar automatiskt prestanda avvikelser och innehåller kraftfulla analys verktyg som hjälper dig att diagnostisera problem och förstå hur dina funktioner används.
 
-Om du har inbyggd anpassad säkerhets-/gransknings loggning i Azure Function-appen aktiverar du diagnostikinställningar "FunctionAppLogs" och skickar loggarna till en Log Analytics arbets yta, Azure Event Hub eller Azure Storage-konto för arkivering. 
+Om du har inbyggd anpassad säkerhets-/gransknings loggning i din Function-app aktiverar du diagnostikinställningar "FunctionAppLogs" och skickar loggarna till en Log Analytics arbets yta, Azure Event Hub eller Azure Storage-konto för arkivering. 
 
 Alternativt kan du aktivera och fordonsbaserad information till Azure Sentinel eller en SIEM från tredje part. 
 
@@ -253,7 +253,7 @@ Alternativt kan du aktivera och fordonsbaserad information till Azure Sentinel e
 
 **Vägledning**: för gransknings loggning i kontroll plan aktiverar du Azure aktivitets logg diagnostikinställningar och skickar loggarna till en Log Analytics arbets yta, Azure Event Hub eller Azure Storage-konto för arkivering. Med hjälp av Azures aktivitets logg data kan du avgöra vad, vem och när som helst för Skriv åtgärder (skicka, skicka och ta bort) på kontroll Plans nivån för dina Azure-resurser.
 
-Om du har inbyggd anpassad säkerhets-/gransknings loggning i Azure Function-appen aktiverar du diagnostikinställningar "FunctionAppLogs" och skickar loggarna till en Log Analytics arbets yta, Azure Event Hub eller Azure Storage-konto för arkivering. 
+Om du har inbyggd anpassad säkerhets-/gransknings loggning i din Function-app aktiverar du diagnostikinställningar "FunctionAppLogs" och skickar loggarna till en Log Analytics arbets yta, Azure Event Hub eller Azure Storage-konto för arkivering. 
 
 - [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](../azure-monitor/platform/activity-log.md)
 
@@ -273,7 +273,7 @@ Om du har inbyggd anpassad säkerhets-/gransknings loggning i Azure Function-app
 
 ### <a name="25-configure-security-log-storage-retention"></a>2,5: Konfigurera säkerhets logg lagrings kvarhållning
 
-**Vägledning**: i Azure Monitor anger du logg kvarhållningsperiod för Log Analytics arbets ytor som är kopplade till dina Azure Functions-appar enligt organisationens regler för efterlevnad.
+**Vägledning**: i Azure Monitor anger du logg kvarhållningsperiod för Log Analytics arbets ytor som är associerade med dina funktions program enligt organisationens regler för efterlevnad.
 
 - [Ange parametrar för logg bevarande](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
 
@@ -283,11 +283,11 @@ Om du har inbyggd anpassad säkerhets-/gransknings loggning i Azure Function-app
 
 ### <a name="26-monitor-and-review-logs"></a>2,6: övervaka och granska loggar
 
-**Vägledning**: Aktivera Azure aktivitets logg diagnostikinställningar och diagnostikinställningar för din Azure Functions-app och skicka loggarna till en Log Analytics arbets yta. Utför frågor i Log Analytics för att söka efter termer, identifiera trender, analysera mönster och tillhandahålla många andra insikter baserat på insamlade data.
+**Vägledning**: Aktivera Azure Activity Log-diagnostikinställningar samt diagnostikinställningar för din Function-app och skicka loggarna till en Log Analytics-arbetsyta. Utför frågor i Log Analytics för att söka efter termer, identifiera trender, analysera mönster och tillhandahålla många andra insikter baserat på insamlade data.
 
-Aktivera Application Insights för dina Azure Functions appar för att samla in logg-, prestanda-och fel data. Du kan visa telemetri-data som samlas in av Application Insights i Azure Portal.
+Aktivera Application Insights för dina funktions program för att samla in logg-, prestanda-och fel data. Du kan visa telemetri-data som samlas in av Application Insights i Azure Portal.
 
-Om du har inbyggd anpassad säkerhets-/gransknings loggning i Azure Function-appen aktiverar du diagnostikinställningar "FunctionAppLogs" och skickar loggarna till en Log Analytics arbets yta, Azure Event Hub eller Azure Storage-konto för arkivering. 
+Om du har inbyggd anpassad säkerhets-/gransknings loggning i din Function-app aktiverar du diagnostikinställningar "FunctionAppLogs" och skickar loggarna till en Log Analytics arbets yta, Azure Event Hub eller Azure Storage-konto för arkivering. 
 
 Alternativt kan du aktivera och fordonsbaserad information till Azure Sentinel eller en SIEM från tredje part. 
 
@@ -305,9 +305,9 @@ Alternativt kan du aktivera och fordonsbaserad information till Azure Sentinel e
 
 ### <a name="27-enable-alerts-for-anomalous-activity"></a>2,7: aktivera aviseringar för avvikande aktivitet
 
-**Vägledning**: Aktivera Azure aktivitets logg diagnostikinställningar och diagnostikinställningar för din Azure Functions-app och skicka loggarna till en Log Analytics arbets yta. Utför frågor i Log Analytics för att söka efter termer, identifiera trender, analysera mönster och tillhandahålla många andra insikter baserat på insamlade data. Du kan skapa aviseringar baserat på Log Analytics arbets ytans frågor.
+**Vägledning**: Aktivera Azure Activity Log-diagnostikinställningar samt diagnostikinställningar för din Function-app och skicka loggarna till en Log Analytics-arbetsyta. Utför frågor i Log Analytics för att söka efter termer, identifiera trender, analysera mönster och tillhandahålla många andra insikter baserat på insamlade data. Du kan skapa aviseringar baserat på Log Analytics arbets ytans frågor.
 
-Aktivera Application Insights för dina Azure Functions appar för att samla in logg-, prestanda-och fel data. Du kan visa telemetri-data som samlas in av Application Insights och skapa aviseringar inom Azure Portal.
+Aktivera Application Insights för dina funktions program för att samla in logg-, prestanda-och fel data. Du kan visa telemetri-data som samlas in av Application Insights och skapa aviseringar inom Azure Portal.
 
 Alternativt kan du aktivera och fordonsbaserad information till Azure Sentinel eller en SIEM från tredje part. 
 
@@ -327,7 +327,7 @@ Alternativt kan du aktivera och fordonsbaserad information till Azure Sentinel e
 
 ### <a name="28-centralize-anti-malware-logging"></a>2,8: centralisera loggning mot skadlig kod
 
-**Vägledning**: ej tillämpligt; Azure Functions appar bearbetar eller skapar inte relaterade loggar mot skadlig kod.
+**Vägledning**: ej tillämpligt; Functions-appar bearbetar eller skapar inte relaterade loggar mot skadlig kod.
 
 **Övervakning i Azure Security Center**: Ej tillämpligt
 
@@ -335,7 +335,7 @@ Alternativt kan du aktivera och fordonsbaserad information till Azure Sentinel e
 
 ### <a name="29-enable-dns-query-logging"></a>2,9: Aktivera loggning av DNS-frågor
 
-**Vägledning**: ej tillämpligt; Azure Functions appar bearbetar eller skapar inte tillgängliga DNS-relaterade loggar för användare.
+**Vägledning**: ej tillämpligt; Functions-appar bearbetar eller skapar inte tillgängliga DNS-relaterade loggar för användare.
 
 **Övervakning i Azure Security Center**: Ej tillämpligt
 
@@ -399,7 +399,7 @@ För att hjälpa dig att hålla koll på dedikerade administrativa konton kan du
 
 ### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3,4: Använd enkel inloggning (SSO) med Azure Active Directory
 
-**Vägledning**: var som helst, Använd Azure Active Directory SSO i stället för att konfigurera enskilda fristående autentiseringsuppgifter för data åtkomst till din Function-app. Använd rekommendationer för Azure Security Center identitets-och åtkomst hantering. Implementera enkel inloggning för dina Azure Functions-appar med hjälp av funktionen för autentisering/auktorisering i App Service.
+**Vägledning**: var som helst, Använd Azure Active Directory SSO i stället för att konfigurera enskilda fristående autentiseringsuppgifter för data åtkomst till din Function-app. Använd rekommendationer för Azure Security Center identitets-och åtkomst hantering. Implementera enkel inloggning för dina funktions appar med hjälp av funktionen App Service autentisering/auktorisering.
 
 - [Förstå autentisering och auktorisering i Azure Functions](../app-service/overview-authentication-authorization.md#identity-providers)
 
@@ -459,9 +459,9 @@ Dessutom kan du använda Azure AD-farlighets identifiering för att visa aviseri
 
 ### <a name="39-use-azure-active-directory"></a>3,9: Använd Azure Active Directory
 
-**Vägledning**: Använd Azure Active Directory (AD) som central-autentiserings-och auktoriserings system för dina Azure Functions appar. Azure AD skyddar data med stark kryptering för data i vila och under överföring. Azure AD innehåller även salter, hash-värden och lagrar användarautentiseringsuppgifter på ett säkert sätt.
+**Vägledning**: Använd Azure Active Directory (AD) som central-autentiserings-och auktoriserings system för dina funktions appar. Azure AD skyddar data med stark kryptering för data i vila och under överföring. Azure AD innehåller även salter, hash-värden och lagrar användarautentiseringsuppgifter på ett säkert sätt.
 
-- [Så här konfigurerar du din Azure Functions-app att använda Azure AD-inloggning](../app-service/configure-authentication-provider-aad.md)
+- [Så här konfigurerar du att din Function-app använder Azure AD-inloggning](../app-service/configure-authentication-provider-aad.md)
 
 - [Skapa och konfigurera en Azure AD-instans](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
@@ -483,13 +483,13 @@ Dessutom kan du använda Azure AD-farlighets identifiering för att visa aviseri
 
 ### <a name="311-monitor-attempts-to-access-deactivated-accounts"></a>3,11: övervaka försök att komma åt inaktiverade konton
 
-**Vägledning**: Använd Azure Active Directory (AD) som central-autentiserings-och auktoriserings system för dina Azure Function-appar. Azure AD skyddar data med stark kryptering för data i vila och under överföring. Azure AD innehåller även salter, hash-värden och lagrar användarautentiseringsuppgifter på ett säkert sätt.
+**Vägledning**: Använd Azure Active Directory (AD) som central-autentiserings-och auktoriserings system för dina funktions appar. Azure AD skyddar data med stark kryptering för data i vila och under överföring. Azure AD innehåller även salter, hash-värden och lagrar användarautentiseringsuppgifter på ett säkert sätt.
 
 Du har åtkomst till Azure AD-inloggning, gransknings-och risk händelse logg källor, som gör att du kan integrera med Azure Sentinel eller en SIEM från tredje part.
 
 Du kan effektivisera den här processen genom att skapa diagnostikinställningar för Azure AD-användarkonton och skicka gransknings loggar och inloggnings loggar till en Log Analytics-arbetsyta. Du kan konfigurera önskade logg aviseringar i Log Analytics.
 
-- [Så här konfigurerar du din Azure Functions-app att använda Azure AD-inloggning](../app-service/configure-authentication-provider-aad.md)
+- [Så här konfigurerar du att din Function-app använder Azure AD-inloggning](../app-service/configure-authentication-provider-aad.md)
 
 - [Så här integrerar du Azures aktivitetsloggar i Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
@@ -501,7 +501,7 @@ Du kan effektivisera den här processen genom att skapa diagnostikinställningar
 
 ### <a name="312-alert-on-account-login-behavior-deviation"></a>3,12: avisering om beteende för beteende för konto inloggning
 
-**Vägledning**: Använd Azure Active Directory (AD) som central-autentiserings-och auktoriserings system för dina Azure Functions appar. Använd Azure Active Directory (AD) identitets skydd och identifierings funktioner för att konfigurera automatiserade svar på identifierade misstänkta åtgärder relaterade till användar identiteter för konto inloggnings beteende avvikelse i kontroll planet (Azure Portal). Du kan också mata in data i Azure Sentinel för ytterligare undersökning.
+**Vägledning**: Använd Azure Active Directory (AD) som central-autentiserings-och auktoriserings system för dina funktions appar. Använd Azure Active Directory (AD) identitets skydd och identifierings funktioner för att konfigurera automatiserade svar på identifierade misstänkta åtgärder relaterade till användar identiteter för konto inloggnings beteende avvikelse i kontroll planet (Azure Portal). Du kan också mata in data i Azure Sentinel för ytterligare undersökning.
 
 - [Så visar du riskfyllda inloggningar för Azure AD](../active-directory/identity-protection/overview-identity-protection.md)
 
@@ -539,9 +539,9 @@ Du kan effektivisera den här processen genom att skapa diagnostikinställningar
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4,2: isolera system som lagrar eller bearbetar känslig information
 
-**Vägledning**: implementera separata prenumerationer och/eller hanterings grupper för utveckling, testning och produktion. Azure Function-appar ska avgränsas av Virtual Network (VNet)/Subnet och taggas på lämpligt sätt.
+**Vägledning**: implementera separata prenumerationer och/eller hanterings grupper för utveckling, testning och produktion. function-appar ska åtskiljas av Virtual Network (VNet)/Subnet och taggas på lämpligt sätt.
 
-Du kan också använda privata slut punkter för att utföra nätverks isolering. En privat Azure-slutpunkt är ett nätverks gränssnitt som ansluter privat och säkert till en tjänst (till exempel: HTTPs-slutpunkt för Azure Functions app) som drivs av en privat Azure-länk. Den privata slutpunkten använder en privat IP-adress från ditt VNet, vilket effektivt tar tjänsten till ditt VNet. Privata slut punkter är i (för hands version) för Function-appar som körs i Premium-planen. Se till att privata slut punkter inte längre är i (för hands version) innan du använder dem med produktions arbets belastningar.
+Du kan också använda privata slut punkter för att utföra nätverks isolering. En privat Azure-slutpunkt är ett nätverks gränssnitt som ansluter privat och säkert till en tjänst (t. ex. en funktion app HTTPs-slutpunkt) som drivs av en privat Azure-länk. Den privata slutpunkten använder en privat IP-adress från ditt VNet, vilket effektivt tar tjänsten till ditt VNet. Privata slut punkter är i (för hands version) för Function-appar som körs i Premium-planen. Se till att privata slut punkter inte längre är i (för hands version) innan du använder dem med produktions arbets belastningar.
 
 - [Så här skapar du ytterligare Azure-prenumerationer](../cost-management-billing/manage/create-subscription.md)
 
@@ -575,7 +575,7 @@ Microsoft hanterar den underliggande infrastrukturen för Azure Functions och ha
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4,4: kryptera all känslig information under överföring
 
-**Vägledning**: i Azure Portal för dina Azure Function-appar, under "plattforms funktioner: nätverk: SSL", aktiverar du inställningen "endast https" och ställer in den lägsta TLS-versionen på 1,2.
+**Vägledning**: i Azure Portal för dina funktions program, under "plattforms funktioner: nätverk: SSL", aktiverar du inställningen "endast https" och ställer in den lägsta TLS-versionen på 1,2.
 
 **Azure Security Center-övervakning**: Ja
 
@@ -595,7 +595,7 @@ För den underliggande plattform som hanteras av Microsoft behandlar Microsoft a
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: Använd Azure RBAC för att kontrol lera åtkomsten till resurser
 
-**Vägledning**: Använd rollbaserad åtkomst kontroll i Azure (Azure RBAC) för att styra åtkomsten till Azure Function Control-planet (Azure Portal). 
+**Vägledning**: Använd rollbaserad åtkomst kontroll i Azure (Azure RBAC) för att styra åtkomsten till funktionen app Control plan (Azure Portal). 
 
 - [Så här konfigurerar du Azure RBAC](../role-based-access-control/role-assignments-portal.md)
 
@@ -629,7 +629,7 @@ Microsoft hanterar den underliggande infrastrukturen för Azure Functions och ha
 
 ### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4,9: logg och varning vid ändringar av kritiska Azure-resurser
 
-**Vägledning**: Använd Azure monitor med Azure aktivitets logg för att skapa aviseringar för när ändringar sker i Azure Function-appar och andra kritiska eller relaterade resurser.
+**Vägledning**: Använd Azure monitor med Azure aktivitets loggen för att skapa aviseringar för när ändringar sker i appar för produktions funktioner samt andra kritiska eller relaterade resurser.
 
 - [Så här skapar du aviseringar för Azure aktivitets logg händelser](../azure-monitor/platform/alerts-activity-log.md)
 
@@ -643,9 +643,9 @@ Microsoft hanterar den underliggande infrastrukturen för Azure Functions och ha
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5,1: köra automatiserade sårbarhets skannings verktyg
 
-**Vägledning**: anta en DevSecOps-metod för att se till att dina Azure Functions program är säkra och förblir så säkra som möjligt under hela livs cykeln. DevSecOps införlivar din organisations säkerhets team och deras funktioner i din DevOps-praxis, vilket ger säkerhets ansvars områden för alla i teamet.
+**Vägledning**: anta en DevSecOps-metod för att se till att dina funktions program är säkra och förblir så säkra som möjligt under hela livs cykeln. DevSecOps införlivar din organisations säkerhets team och deras funktioner i din DevOps-praxis, vilket ger säkerhets ansvars områden för alla i teamet.
 
-Följ dessutom rekommendationer från Azure Security Center för att skydda dina Azure Function-appar.
+Följ dessutom rekommendationer från Azure Security Center för att skydda dina funktions program.
 
 - [Så här lägger du till kontinuerlig säkerhets validering till din CI/CD-pipeline](/azure/devops/migrate/security-validation-cicd-pipeline?view=azure-devops)
 
@@ -821,9 +821,9 @@ Använd Azure Resource Graph för att fråga/identifiera resurser i sina prenume
 
 ### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6,13: fysiskt eller logiskt särskiljande program med hög risk
 
-**Vägledning**: för känsliga eller hög risk Azure Function-appar, implementera separata prenumerationer och/eller hanterings grupper för att tillhandahålla isolering.
+**Vägledning**: för känsliga eller hög risk funktioner kan du implementera separata prenumerationer och/eller hanterings grupper för att tillhandahålla isolering.
 
-Distribuera Azure Function-appar med hög risk till sina egna Virtual Network (VNet). Perimeter-säkerhet i Azure Functions uppnås via virtuella nätverk. Funktioner som körs i Premium-planen eller App Service-miljön (ASE) kan integreras med virtuella nätverk. Välj den bästa arkitekturen för ditt användnings fall.
+Distribuera program med hög risk funktion till sina egna Virtual Network (VNet). Perimeter-säkerhet för Function-appar uppnås via virtuella nätverk. Funktioner som körs i Premium-planen eller App Service-miljön (ASE) kan integreras med virtuella nätverk. Välj den bästa arkitekturen för ditt användnings fall.
 
 - [Nätverksalternativ för Azure Functions](./functions-networking-options.md)
 
@@ -849,10 +849,10 @@ Så här skapar du en intern ASE:
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7,1: upprätta säkra konfigurationer för alla Azure-resurser
 
-**Vägledning**: definiera och implementera standardkonfigurationer för Azure Function-appen med Azure policy. Använd Azure Policy alias i namn området "Microsoft. Web" för att skapa anpassade principer för att granska eller tillämpa konfigurationen för dina Azure Functions-appar. Du kan också använda inbyggda princip definitioner som:
-- Hanterad identitet ska användas i Funktionsapp
+**Vägledning**: definiera och implementera standardkonfigurationer för din Function-app med Azure policy. Använd Azure Policy alias i namn området "Microsoft. Web" för att skapa anpassade principer för att granska eller tillämpa konfigurationen för dina funktions program. Du kan också använda inbyggda princip definitioner som:
+- Hanterad identitet ska användas i din Function-app
 - Fjärrfelsökning bör inaktive ras för Function-appar
-- Funktionsapp bör endast vara tillgängligt via HTTPS
+- Function-appen bör endast vara tillgänglig via HTTPS
 
 - [Visa tillgängliga Azure Policy alias](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
@@ -972,7 +972,7 @@ Så här skapar du en intern ASE:
 
 ### <a name="712-manage-identities-securely-and-automatically"></a>7,12: hantera identiteter säkert och automatiskt
 
-**Vägledning**: Använd hanterade identiteter för att tillhandahålla en Azure Function-app med en automatiskt hanterad identitet i Azure AD. Med hanterade identiteter kan du autentisera till vilken tjänst som helst som stöder Azure AD-autentisering, inklusive Key Vault utan autentiseringsuppgifter i din kod.
+**Vägledning**: Använd hanterade identiteter för att tillhandahålla din Function-app med en automatiskt hanterad identitet i Azure AD. Med hanterade identiteter kan du autentisera till vilken tjänst som helst som stöder Azure AD-autentisering, inklusive Key Vault utan autentiseringsuppgifter i din kod.
 
 - [Använda hanterade identiteter för App Service och Azure Functions](../app-service/overview-managed-identity.md)
 

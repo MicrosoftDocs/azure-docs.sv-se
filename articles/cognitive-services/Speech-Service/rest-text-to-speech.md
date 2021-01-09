@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/23/2020
+ms.date: 01/08/2021
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: bfdea5f2e2bd20a35ee948e99b3be9bf55038b13
-ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
+ms.openlocfilehash: 9bee5fa6b76aad9305947ebe460f37c399340038
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97760664"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98033475"
 ---
 # <a name="text-to-speech-rest-api"></a>Text-till-tal (REST API)
 
@@ -35,7 +35,7 @@ Innan du använder det här API: et, förstå:
 * Text till tal-REST API kräver ett Authorization-huvud. Det innebär att du måste slutföra ett token Exchange för att få åtkomst till tjänsten. Mer information finns i [Autentisering](#authentication).
 
 > [!TIP]
-> Se [Azures myndighets dokumentation](/azure/azure-government/compare-azure-government-global-azure) för FairFax-slutpunkter (myndigheter).
+> I [den här artikeln](sovereign-clouds.md) finns Azure Government-och Azure Kina-slutpunkter.
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-rest-auth.md)]
 
@@ -59,7 +59,7 @@ Med `voices/list` slut punkten kan du få en fullständig lista över röster f�
 | Japan, östra | `https://japaneast.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Sydkorea, centrala | `https://koreacentral.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | USA, norra centrala | `https://northcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
-| Norra Europa | `https://northeurope.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| Europa, norra | `https://northeurope.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | USA, södra centrala | `https://southcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Sydostasien | `https://southeastasia.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Storbritannien, södra | `https://uksouth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
@@ -76,7 +76,10 @@ I den här tabellen listas obligatoriska och valfria rubriker för text till tal
 
 | Huvud | Beskrivning | Obligatorisk/valfri |
 |--------|-------------|---------------------|
-| `Authorization` | En autentiseringstoken föregås av ordet `Bearer` . Mer information finns i [Autentisering](#authentication). | Obligatoriskt |
+| `Ocp-Apim-Subscription-Key` | Din prenumerations nyckel för röst tjänst. | Antingen den här rubriken eller `Authorization` krävs. |
+| `Authorization` | En autentiseringstoken föregås av ordet `Bearer` . Mer information finns i [Autentisering](#authentication). | Antingen den här rubriken eller `Ocp-Apim-Subscription-Key` krävs. |
+
+
 
 ### <a name="request-body"></a>Begärandetext
 
@@ -90,7 +93,7 @@ Den här begäran kräver bara ett Authorization-huvud.
 GET /cognitiveservices/voices/list HTTP/1.1
 
 Host: westus.tts.speech.microsoft.com
-Authorization: Bearer [Base64 access_token]
+Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY
 ```
 
 ### <a name="sample-response"></a>Exempelsvar
@@ -208,10 +211,10 @@ I den här tabellen listas obligatoriska och valfria rubriker för text till tal
 
 | Huvud | Beskrivning | Obligatorisk/valfri |
 |--------|-------------|---------------------|
-| `Authorization` | En autentiseringstoken föregås av ordet `Bearer` . Mer information finns i [Autentisering](#authentication). | Obligatoriskt |
-| `Content-Type` | Anger innehålls typen för den angivna texten. Accepterat värde: `application/ssml+xml` . | Obligatoriskt |
-| `X-Microsoft-OutputFormat` | Anger formatet för ljud uppspelning. En fullständig lista över godkända värden finns i [ljud utmatningar](#audio-outputs). | Obligatoriskt |
-| `User-Agent` | Programnamnet. Det tillhandahållna värdet måste vara mindre än 255 tecken. | Obligatoriskt |
+| `Authorization` | En autentiseringstoken föregås av ordet `Bearer` . Mer information finns i [Autentisering](#authentication). | Krävs |
+| `Content-Type` | Anger innehålls typen för den angivna texten. Accepterat värde: `application/ssml+xml` . | Krävs |
+| `X-Microsoft-OutputFormat` | Anger formatet för ljud uppspelning. En fullständig lista över godkända värden finns i [ljud utmatningar](#audio-outputs). | Krävs |
+| `User-Agent` | Programnamnet. Det tillhandahållna värdet måste vara mindre än 255 tecken. | Krävs |
 
 ### <a name="audio-outputs"></a>Ljud utmatningar
 

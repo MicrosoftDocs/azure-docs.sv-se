@@ -5,12 +5,12 @@ ms.assetid: bc497d71-75e7-47b1-babd-a060a664adca
 ms.topic: how-to
 ms.date: 04/28/2020
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 907836b0e45ccc9e9481e605b1ebf4180f7650d6
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 621773a84db99dbacfaa163f77189974ba102163
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182588"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98034823"
 ---
 # <a name="create-a-function-triggered-by-azure-cosmos-db"></a>Skapa en funktion som utlöses av Azure Cosmos DB
 
@@ -22,12 +22,13 @@ Lär dig hur du skapar en funktion som utlöses när data läggs till eller änd
 
 För att slutföra den här kursen behöver du:
 
-+ Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
++ Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
 > [!NOTE]
 > [!INCLUDE [SQL API support only](../../includes/functions-cosmosdb-sqlapi-note.md)]
 
 ## <a name="sign-in-to-azure"></a>Logga in på Azure
+
 Logga in på [Azure-portalen](https://portal.azure.com/) med ditt Azure-konto.
 
 ## <a name="create-an-azure-cosmos-db-account"></a>Skapa ett Azure Cosmos DB-konto
@@ -36,7 +37,7 @@ Du måste ha ett Azure Cosmos DB-konto som använder SQL API innan du skapar utl
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
-## <a name="create-an-azure-function-app"></a>Skapa en Azure Functions-app
+## <a name="create-a-function-app-in-azure"></a>Skapa en funktionsapp i Azure
 
 [!INCLUDE [Create function app Azure portal](../../includes/functions-create-function-app-portal.md)]
 
@@ -57,10 +58,10 @@ Därefter skapar du en funktion i den nya funktionsappen.
 
     | Inställning      | Föreslaget värde  | Beskrivning                                |
     | ------------ | ---------------- | ------------------------------------------ |
-    | **Ny funktion** | Acceptera standard namnet | Namnet på funktionen. |
+    | **Ny funktion** | Acceptera standardnamnet | Namnet på funktionen. |
     | **Cosmos DB kontoanslutning** | Acceptera det nya standard namnet | Välj **nytt**, **databas kontot** som du skapade tidigare och klicka sedan på **OK**. Den här åtgärden skapar en program inställning för din konto anslutning. Den här inställningen används av bindningen för anslutningen till databasen. |
-    | **Databasnamn** | Uppgifter | Namnet på databasen som innehåller den samling som ska övervakas. |
-    | **Samlingsnamn** | Poster | Namnet på den samling som ska övervakas. |
+    | **Databasnamn** | Aktiviteter | Namnet på databasen som innehåller den samling som ska övervakas. |
+    | **Samlings namn** | Poster | Namnet på den samling som ska övervakas. |
     | **Samlingsnamn för lån** | leases | Namn på den samling där lånet ska lagras. |
     | **Skapa en låne samling om den inte finns** | Ja | Kontrollerar om det finns någon låne samling och skapar den automatiskt. |
 
@@ -98,7 +99,7 @@ Sedan ansluter du till ditt Azure Cosmos DB-konto och skapar `Items` behållaren
 
     | Inställning|Föreslaget värde|Beskrivning |
     | ---|---|--- |
-    | **Databas-ID** | Uppgifter |Namnet på din nya databas. Måste matcha namnet som definierats i funktionsbindningen. |
+    | **Databas-ID** | Aktiviteter |Namnet på din nya databas. Måste matcha namnet som definierats i funktionsbindningen. |
     | **Container-ID** | Poster | Namnet på den nya behållaren. Måste matcha namnet som definierats i funktionsbindningen.  |
     | **[Partitionsnyckel](../cosmos-db/partitioning-overview.md)** | /category|En partitionsnyckel som distribuerar data jämnt till varje partition. Det är viktigt att välja rätt partitionsnyckel när du skapar en utförande behållare. | 
     | **Dataflöde** |400 RU| Använd standardvärdet. Du kan skala upp dataflödet senare om du vill minska svarstiden. |    

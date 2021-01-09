@@ -5,14 +5,14 @@ author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: overview
-ms.date: 11/25/2020
+ms.date: 01/08/2021
 ms.author: sngun
-ms.openlocfilehash: 98b1db18b72aad0c68f2faee031cc040a2a1f369
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 1cf3bf30b37a09b5dfe94bf1e754a7f8e9dcd82c
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96181245"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98045673"
 ---
 # <a name="introduction-to-azure-cosmos-db-table-api"></a>Introduktion till Azure Cosmos DB | Tabell-API
 [!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
@@ -20,7 +20,7 @@ ms.locfileid: "96181245"
 [Microsoft Azure Cosmos-DB](introduction.md) tillhandahåller tabell-API:t för program som är skrivna för Azure-tabellagring och som behöver premiumfunktioner som:
 
 * [Nyckel färdig global distribution](distribute-data-globally.md).
-* [Dedikerat dataflöde](partitioning-overview.md) över hela världen.
+* [Dedikerat data flöde](partitioning-overview.md) över hela världen (när du använder ett allokerat data flöde).
 * Latensvärden på enstaka millisekunder vid 99:e percentilen.
 * Garanterat hög tillgänglighet.
 * Automatisk sekundär indexering.
@@ -42,9 +42,9 @@ Om du använder Azure Table Storage får du följande fördelar genom att byta t
 | Dataflöde | Modell med variabelt dataflöde. Tabeller har en gräns för skalbarhet på 20 000 åtgärder/s. | Mycket skalbara med [dedikerat reserverat dataflöde per tabell](request-units.md) som understöds av serviceavtal. Konton har ingen maxgräns för dataflöde och kan hantera >10 miljoner åtgärder/s per tabell. |
 | Global distribution | En enda region med en valfri läsbar sekundär läsregion för hög tillgänglighet. | [Nyckel färdig global distribution](distribute-data-globally.md) från en till ett valfritt antal regioner. Stöd för [automatisk och manuell redundans](high-availability.md) när som helst och var som helst i världen. Flera Skriv regioner för att låta en region godkänna Skriv åtgärder. |
 | Indexering | Ett primärt index för PartitionKey och RowKey. Inga sekundära index. | Automatisk och fullständig indexering för alla egenskaper som standard, utan index hantering. |
-| Fråga | Frågekörningen använder index för primär nyckel och genomsöker annars. | Frågor kan dra nytta av automatisk indexering av egenskaper för snabba frågetider. |
+| Söka i data | Frågekörningen använder index för primär nyckel och genomsöker annars. | Frågor kan dra nytta av automatisk indexering av egenskaper för snabba frågetider. |
 | Konsekvens | Stark inom primär region. Eventuell inom sekundär region. | [Fem väldefinierade konsekvens nivåer](consistency-levels.md) för att handla om tillgänglighet, svars tid, data flöde och konsekvens baserat på dina program behov. |
-| Prissättning | Optimerad för lagring. | Optimerad för dataflöde. |
+| Prissättning | Förbruknings-baserade. | Tillgängligt i både [konsumtions-](serverless.md) och [etablerade kapacitets](set-throughput.md) lägen. |
 | Serviceavtal | 99,9% till 99,99% tillgänglighet, beroende på strategi för replikering. | 99,999% Läs tillgänglighet, 99,99% Skriv tillgänglighet för ett konto med en region och 99,999% Skriv tillgänglighet på flera region konton. [Omfattande service avtal](https://azure.microsoft.com/support/legal/sla/cosmos-db/) som täcker tillgänglighet, svars tid, data flöde och konsekvens. |
 
 ## <a name="get-started"></a>Kom igång

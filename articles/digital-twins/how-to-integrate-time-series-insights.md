@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 7/14/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 58d101bb93b4635e362c5ec78a03a659b71b63da
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 22ee57592af838a236d75fa7f56a0c8e1ed89403
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495272"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98046541"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-time-series-insights"></a>Integrera Azure Digitals dubbla med Azure Time Series Insights
 
@@ -26,7 +26,7 @@ Innan du kan skapa en relation med Time Series Insights måste du ha en **digita
 
 Om du inte redan har konfigurerat den här inställningen kan du skapa den genom att följa självstudien om Azure Digitals dubblare [*: Anslut en lösning från slut punkt till slut punkt*](./tutorial-end-to-end.md). Självstudien vägleder dig genom att konfigurera en digital Azure-instans som fungerar med en virtuell IoT-enhet för att utlösa digitala dubbla uppdateringar.
 
-## <a name="solution-architecture"></a>Lösningsarkitekturen
+## <a name="solution-architecture"></a>Lösningsarkitektur
 
 Du kommer att bifoga Time Series Insights till Azure Digitals dubbla steg genom sökvägen nedan.
 
@@ -94,51 +94,7 @@ Mer information om hur du använder Event Hubs med Azure Functions finns i [*Azu
 
 I din publicerade Function-app ersätter du funktions koden med följande kod.
 
-```C#
-using Microsoft.Azure.EventHubs;
-using Microsoft.Azure.WebJobs;
-using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System.Threading.Tasks;
-using System.Text;
-using System.Collections.Generic;
-
-namespace SampleFunctionsApp
-{
-    public static class ProcessDTUpdatetoTSI
-    { 
-        [FunctionName("ProcessDTUpdatetoTSI")]
-        public static async Task Run(
-            [EventHubTrigger("twins-event-hub", Connection = "EventHubAppSetting-Twins")]EventData myEventHubMessage, 
-            [EventHub("tsi-event-hub", Connection = "EventHubAppSetting-TSI")]IAsyncCollector<string> outputEvents, 
-            ILogger log)
-        {
-            JObject message = (JObject)JsonConvert.DeserializeObject(Encoding.UTF8.GetString(myEventHubMessage.Body));
-            log.LogInformation("Reading event:" + message.ToString());
-
-            // Read values that are replaced or added
-            Dictionary<string, object> tsiUpdate = new Dictionary<string, object>();
-            foreach (var operation in message["patch"]) {
-                if (operation["op"].ToString() == "replace" || operation["op"].ToString() == "add")
-                {
-                    //Convert from JSON patch path to a flattened property for TSI
-                    //Example input: /Front/Temperature
-                    //        output: Front.Temperature
-                    string path = operation["path"].ToString().Substring(1);                    
-                    path = path.Replace("/", ".");                    
-                    tsiUpdate.Add(path, operation["value"]);
-                }
-            }
-            //Send an update if updates exist
-            if (tsiUpdate.Count>0){
-                tsiUpdate.Add("$dtId", myEventHubMessage.Properties["cloudEvents:subject"]);
-                await outputEvents.AddAsync(JsonConvert.SerializeObject(tsiUpdate));
-            }
-        }
-    }
-}
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/updateTSI.cs":::
 
 Härifrån skickar funktionen de JSON-objekt som skapas till en andra händelsehubben, som du kommer att ansluta till Time Series Insights.
 
@@ -202,14 +158,14 @@ Därefter måste du ställa in miljövariabler i din Function-app från tidigare
 Därefter ställer du in en Time Series Insights-instans för att ta emot data från den andra händelsehubben. Följ stegen nedan och mer information om den här processen finns i [*Självstudier: Konfigurera en Azure Time Series Insights Gen2 PAYG-miljö*](../time-series-insights/tutorials-set-up-tsi-environment.md).
 
 1. I Azure Portal börjar du skapa en Time Series Insights resurs. 
-    1. Välj pris nivå för **PAYG (för hands version)** .
+    1. Välj pris nivå för **Gen2 (L1)** .
     2. Du måste välja ett **Time Series-ID** för den här miljön. Tids serie-ID: t kan innehålla upp till tre värden som du kan använda för att söka efter data i Time Series Insights. I den här självstudien kan du använda **$dtId**. Läs mer om att välja ett ID-värde i [*metod tips för att välja ett Time Series-ID*](../time-series-insights/how-to-select-tsid.md).
     
-        :::image type="content" source="media/how-to-integrate-time-series-insights/create-twin-id.png" alt-text="En vy över Azure-tjänster i ett scenario från slut punkt till slut punkt, som markerar Time Series Insights":::
+        :::image type="content" source="media/how-to-integrate-time-series-insights/create-twin-id.png" alt-text="Skapa Portal-UX för en Time Series Insights miljö. Pris nivån för Gen2 (L1) väljs och egenskaps namnet för Time Series-ID: t är $dtId" lightbox="media/how-to-integrate-time-series-insights/create-twin-id.png":::
 
 2. Välj **Nästa: händelse källa** och välj din Event Hubs information från ovan. Du måste också skapa en ny Event Hubs konsument grupp.
     
-    :::image type="content" source="media/how-to-integrate-time-series-insights/event-source-twins.png" alt-text="En vy över Azure-tjänster i ett scenario från slut punkt till slut punkt, som markerar Time Series Insights":::
+    :::image type="content" source="media/how-to-integrate-time-series-insights/event-source-twins.png" alt-text="Skapa Portal-UX för en Time Series Insights miljö händelse källa. Du skapar en händelse källa med information om händelsehubben från ovan. Du skapar också en ny konsument grupp." lightbox="media/how-to-integrate-time-series-insights/event-source-twins.png":::
 
 ## <a name="begin-sending-iot-data-to-azure-digital-twins"></a>Börja skicka IoT-data till Azure Digitals, dubbla
 
@@ -223,19 +179,19 @@ Nu bör data flöda till Time Series Insights-instansen som är redo att analyse
 
 1. Öppna Time Series Insights-instansen i [Azure Portal](https://portal.azure.com) (du kan söka efter namnet på din instans i portalens Sök fält). Besök den *Time Series Insights Explorer-URL* som visas i instans översikten.
     
-    :::image type="content" source="media/how-to-integrate-time-series-insights/view-environment.png" alt-text="En vy över Azure-tjänster i ett scenario från slut punkt till slut punkt, som markerar Time Series Insights":::
+    :::image type="content" source="media/how-to-integrate-time-series-insights/view-environment.png" alt-text="Välj URL: en för Time Series Insights Explorer på fliken Översikt i din Time Series Insights-miljö":::
 
-2. I Utforskaren ser du de tre dubblarna från Azures digitala dubbla, som visas till vänster. Välj _**thermostat67**_, Välj **temperatur**och tryck på **Lägg till**.
+2. I Utforskaren ser du de tre dubblarna från Azures digitala dubbla, som visas till vänster. Välj _**thermostat67**_, Välj **temperatur** och tryck på **Lägg till**.
 
-    :::image type="content" source="media/how-to-integrate-time-series-insights/add-data.png" alt-text="En vy över Azure-tjänster i ett scenario från slut punkt till slut punkt, som markerar Time Series Insights":::
+    :::image type="content" source="media/how-to-integrate-time-series-insights/add-data.png" alt-text="Välj * * thermostat67 * *, Välj * * temperatur * * och tryck på * * Lägg till * *":::
 
 3. Du bör nu se de första temperatur avläsningarna från din termostat, som du ser nedan. Samma temperatur läsning uppdateras för *Room21* och *floor1*, och du kan visualisera dessa data strömmar i tandem.
     
-    :::image type="content" source="media/how-to-integrate-time-series-insights/initial-data.png" alt-text="En vy över Azure-tjänster i ett scenario från slut punkt till slut punkt, som markerar Time Series Insights":::
+    :::image type="content" source="media/how-to-integrate-time-series-insights/initial-data.png" alt-text="Inledande temperatur data visas i TSD-Utforskaren. Det är en rad med slumpmässiga värden mellan 68 och 85":::
 
 4. Om du tillåter att simuleringen körs mycket längre, ser visualiseringen ut ungefär så här:
     
-    :::image type="content" source="media/how-to-integrate-time-series-insights/day-data.png" alt-text="En vy över Azure-tjänster i ett scenario från slut punkt till slut punkt, som markerar Time Series Insights":::
+    :::image type="content" source="media/how-to-integrate-time-series-insights/day-data.png" alt-text="Temperatur data för varje snöre visas i tre parallella rader med olika färger.":::
 
 ## <a name="next-steps"></a>Nästa steg
 

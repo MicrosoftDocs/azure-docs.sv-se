@@ -3,43 +3,35 @@ author: baanders
 description: inkludera fil för Azure Digitals dubbla väg filter alternativ
 ms.service: digital-twins
 ms.topic: include
-ms.date: 11/18/2020
+ms.date: 12/04/2020
 ms.author: baanders
-ms.openlocfilehash: 261c5fa47cddcc527e7c0a18fbd18aad9320ed4b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: e06e660a43aaa0ff5eb79bc00bd8a5d2c61c6580
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96018977"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98045327"
 ---
-| Filternamn | Description | Filtrera text schema | Värden som stöds | 
+| Filternamn | Beskrivning | Filtrera text schema | Värden som stöds | 
 | --- | --- | --- | --- |
 | True/false | Tillåter att du skapar en väg utan filtrering eller inaktiverar en väg så att inga händelser skickas | `<true/false>` | `true` = Route är aktiverat utan filtrering <br> `false` = vägen är inaktive rad |
 | Typ | Den [typ av händelse](../articles/digital-twins/concepts-route-events.md#types-of-event-messages) som flödar genom den digitala dubbla instansen | `type = '<eventType>'` | Här följer möjliga värden för händelse typ: <br>`Microsoft.DigitalTwins.Twin.Create` <br> `Microsoft.DigitalTwins.Twin.Delete` <br> `Microsoft.DigitalTwins.Twin.Update`<br>`Microsoft.DigitalTwins.Relationship.Create`<br>`Microsoft.DigitalTwins.Relationship.Update`<br> `Microsoft.DigitalTwins.Relationship.Delete` <br> `microsoft.iot.telemetry`  |
 | Källa | Namn på Azure Digitals dubbla instanser | `source = '<hostname>'`| Här följer möjliga värden för värdnamn: <br> **För meddelanden**: `<yourDigitalTwinInstance>.api.<yourRegion>.digitaltwins.azure.net` <br> **För telemetri**: `<yourDigitalTwinInstance>.api.<yourRegion>.digitaltwins.azure.net/<twinId>`|
 | Ämne | En beskrivning av händelsen i kontexten för händelse källan ovan | `subject = '<subject>'` | Här följer möjliga ämnes värden: <br>**För meddelanden**: ämnet är `<twinid>` <br> eller ett URI-format för ämnen som identifieras unikt av flera delar eller ID:<br>`<twinid>/relationships/<relationshipid>`<br> **För telemetri**: ämnet är komponent Sök vägen (om telemetri skickas från en dubbel komponent), till exempel `comp1.comp2` . Om telemetri inte genereras från en komponent är dess ämnes fält tomt. |
-| Data schema | DTDL modell-ID | `dataschema = '<model-dtmi-ID>'` | **För telemetri**: dataschemat är modell-ID: t för den dubbla eller komponenten som utvärderar Telemetrin. Till exempel `dtmi:example:com:floor4;2` <br>**För meddelanden**: data schema kan nås i meddelande texten på `$body.$metadata.$model`|
+| Data schema | DTDL modell-ID | `dataschema = '<model-dtmi-ID>'` | **För telemetri**: dataschemat är modell-ID: t för den dubbla eller komponenten som utvärderar Telemetrin. Till exempel `dtmi:example:com:floor4;2` <br>**För meddelanden (skapa/ta bort)**: data schema kan nås i meddelande texten på `$body.$metadata.$model` . <br>**För meddelanden (uppdatering)**: data schema kan nås i meddelande texten på `$body.modelId`|
 | Innehållstyp | Innehålls typ för data värde | `datacontenttype = '<contentType>'` | Innehålls typen är `application/json` |
 | Specifikations version | Den version av händelse schemat som du använder | `specversion = '<version>'` | Versionen måste vara `1.0` . Detta anger CloudEvents-schema version 1,0 |
 | Meddelande text | Referera till en egenskap i `data` fältet för ett meddelande | `$body.<property>` | Se [*anvisningar: förstå händelse data*](../articles/digital-twins/how-to-interpret-event-data.md) för exempel på meddelanden. `data`Du kan referera till en egenskap i fältet med hjälp av`$body`
 
 Observera att du kan lägga till flera filter till en förfrågan så här: 
 
-```json  
-{
-    "endpointName": "dt-endpoint", 
-    "filter": "true", 
-    "filter": "source = 'ADT-resource.api.wus2.digitaltwins.azure.net/myFloorID'", 
-    "filter": "type = 'Microsoft.DigitalTwins.Twin.Delete'", 
-    "filter": "specversion = '1.0'"
-}
-```
+:::code language="json" source="~/digital-twins-docs-samples/api-requests/filter-multiple.json":::
 
 Följande data typer stöds som värden som returneras av referenser till data ovan:
 
 | Datatyp | Exempel |
 |-|-|-|
-|**Sträng**| `STARTS_WITH($body.$metadate.$model, 'dtmi:example:com:floor')` <br> `CONTAINS(subject, '<twinID>')`|
+|**Sträng**| `STARTS_WITH($body.$metadata.$model, 'dtmi:example:com:floor')` <br> `CONTAINS(subject, '<twinID>')`|
 |**Integer**|`$body.errorCode > 200`|
 |**Dubbelklicka**|`$body.temperature <= 5.5`|
 |**Booleska**|`$body.poweredOn = true`|
@@ -49,7 +41,7 @@ Följande operatorer stöds när du definierar väg filter:
 
 |Familj|Operatorer|Exempel|
 |-|-|-|
-|Logisk|AND, OR, ()|`(type != 'microsoft.iot.telemetry' OR datacontenttype = 'application/json') OR (specversion != '1.0')`|
+|Logiskt|AND, OR, ()|`(type != 'microsoft.iot.telemetry' OR datacontenttype = 'application/json') OR (specversion != '1.0')`|
 |Jämförelse|<, <=, >, >=, =,! =|`$body.temperature <= 5.5`
 
 Följande funktioner stöds när du definierar flödes filter:

@@ -3,16 +3,16 @@ title: Självstudie – Skapa och hantera regler i ditt Azure IoT Central-progra
 description: I den här självstudien får du IoT Central lära dig hur du kan övervaka dina enheter i nära real tid och automatiskt anropa åtgärder, som att skicka ett e-postmeddelande när regeln utlöses.
 author: dominicbetts
 ms.author: dobett
-ms.date: 11/16/2020
+ms.date: 01/08/2021
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 6d49e3585460c95ca931f497a63cbc281aed1db1
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: a1991860e1599020c5a91c09dfb30a96ed442ff7
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94991047"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98033854"
 ---
 # <a name="tutorial-create-a-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Självstudier: Skapa en regel och konfigurera aviseringar i ditt Azure IoT Central-program
 
@@ -38,6 +38,9 @@ Innan du börjar fyller du i [skapa ett Azure IoT Central-program](./quick-deplo
 ## <a name="create-a-rule"></a>Skapa en regel
 
 För att skapa en telemetri-regel måste enhets mal len innehålla minst ett telemetri-värde. I den här självstudien används en simulerad **sensor för sensor styrenhet** som skickar telemetri för temperatur och fuktighet. Du har lagt till den här enhets mal len och skapat en simulerad enhet i guiden [Lägg till en simulerad enhet i snabb starten för IoT Central programmet](./quick-create-simulated-device.md) . Regeln övervakar temperaturen som rapporteras av enheten och skickar ett e-postmeddelande när det hamnar ovanför 70 grader.
+
+> [!NOTE]
+> Det finns en gräns på 50 regler per program.
 
 1. I det vänstra fönstret väljer du **regler**.
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 26302fa67394e6c3122b159866c3814fb5677ba6
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 8e82f8974b53224b3e471d1628a1ca5819ce2955
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92494986"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98044500"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-cli"></a>Konfigurera en digital Azure-instans och autentisering (CLI)
 
@@ -35,12 +35,12 @@ Den här versionen av den här artikeln går igenom dessa steg manuellt, en i ta
 ## <a name="create-the-azure-digital-twins-instance"></a>Skapa Azure Digitals-instansen
 
 I det här avsnittet ska du **skapa en ny instans av Azure Digitals dubbla** med kommandot Cloud Shell. Du måste ange:
-* En resurs grupp att distribuera den i. Om du inte redan har en befintlig resurs grupp i åtanke kan du skapa en nu med det här kommandot:
+* En resurs grupp där instansen ska distribueras. Om du inte redan har en befintlig resurs grupp i åtanke kan du skapa en nu med det här kommandot:
     ```azurecli-interactive
     az group create --location <region> --name <name-for-your-resource-group>
     ```
 * En region för distributionen. Om du vill se vilka regioner som stöder Azure Digitals, kan du gå till [*Azure-produkter som är tillgängliga efter region*](https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins).
-* Ett namn för instansen. Namnet på den nya instansen måste vara unikt inom regionen för din prenumeration (vilket innebär att om din prenumeration har en annan Azure Digital-instans i den region som redan använder det namn du väljer, blir du ombedd att välja ett annat namn).
+* Ett namn för instansen. Om din prenumeration har en annan Azure Digital-instans i den region som redan använder det angivna namnet uppmanas du att välja ett annat namn.
 
 Använd de här värdena i följande kommando för att skapa instansen:
 
@@ -54,7 +54,7 @@ Om instansen har skapats ser resultatet i Cloud Shell ut ungefär så här, vilk
 
 :::image type="content" source="media/how-to-set-up-instance/cloud-shell/create-instance.png" alt-text="Fönstret Kommando med att skapa en resurs grupp och en Azure Digital-instans":::
 
-Observera att Azure Digitals dubbla instansen *värdnamn*, *namn*och *resourceGroup* från utdata. Detta är alla viktiga värden som du kan behöva när du fortsätter att arbeta med din Azure Digital-instansen för att konfigurera autentisering och relaterade Azure-resurser. Om andra användare kommer att program mera mot instansen bör du dela dessa värden med dem.
+Observera att Azure Digitals dubbla instansen **värdnamn**, **namn** och **resourceGroup** från utdata. Detta är alla viktiga värden som du kan behöva när du fortsätter att arbeta med din Azure Digital-instansen för att konfigurera autentisering och relaterade Azure-resurser. Om andra användare kommer att program mera mot instansen bör du dela dessa värden med dem.
 
 > [!TIP]
 > Du kan se dessa egenskaper, tillsammans med alla egenskaper för din instans, när som helst genom att köra `az dt show --dt-name <your-Azure-Digital-Twins-instance>` .
@@ -80,7 +80,7 @@ Resultatet av det här kommandot är information om den roll tilldelning som har
 >
 > Använd [Azure Portal sidan för Azure Active Directory användare](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers) för att välja användar kontot och öppna dess information. Kopiera användarens *ObjectID*:
 >
-> :::image type="content" source="media/includes/user-id.png" alt-text="Fönstret Kommando med att skapa en resurs grupp och en Azure Digital-instans" lightbox="media/includes/user-id.png":::
+> :::image type="content" source="media/includes/user-id.png" alt-text="Visning av användar sida i Azure Portal som markerar GUID i fältet objekt-ID" lightbox="media/includes/user-id.png":::
 >
 > Upprepa sedan kommandot roll tilldelnings lista med användarens *objekt-ID* för `assignee` parametern ovan.
 

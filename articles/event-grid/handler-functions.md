@@ -1,31 +1,31 @@
 ---
-title: Azure Function som händelse hanterare för Azure Event Grid händelser
-description: Beskriver hur du kan använda Azure Functions som händelse hanterare för Event Grid händelser.
+title: Använd en funktion i Azure som händelse hanterare för Azure Event Grid händelser
+description: Beskriver hur du kan använda funktioner som skapats i och finns i Azure Functions som händelse hanterare för Event Grid händelser.
 ms.topic: conceptual
 ms.date: 09/18/2020
-ms.openlocfilehash: 9e04fd3e04dab7a50940c2a4a799a56d447fbb6e
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 5a1ec575b58829a422e4d263ae0324e0343d5ad3
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92145756"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98034976"
 ---
-# <a name="azure-function-as-an-event-handler-for-event-grid-events"></a>Azure Function som händelse hanterare för Event Grid händelser
+# <a name="use-a-function-as-an-event-handler-for-event-grid-events"></a>Använd en funktion som händelse hanterare för Event Grid händelser
 
 En händelse hanterare är den plats där händelsen skickas. Hanteraren vidtar en åtgärd för att bearbeta händelsen. Flera Azure-tjänster konfigureras automatiskt för att hantera händelser och **Azure Functions** är en av dem. 
 
 
-Följ någon av dessa metoder om du vill använda en Azure-funktion som hanterare för händelser: 
+Om du vill använda en funktion i Azure som en hanterare för händelser, följer du någon av följande metoder: 
 
--   Använd [Event Grid-utlösare](../azure-functions/functions-bindings-event-grid-trigger.md).  Ange **Azure Function** som **typ av slut punkt**. Ange sedan Azure Function-appen och funktionen som ska hantera händelser. 
--   Använd [http-utlösare](../azure-functions/functions-bindings-http-webhook.md).  Ange **Web Hook** som **typ av slut punkt**. Ange sedan URL: en för den Azure-funktion som ska hantera händelser. 
+-   Använd [Event Grid-utlösare](../azure-functions/functions-bindings-event-grid-trigger.md).  Ange **Azure Function** som **typ av slut punkt**. Ange sedan Function-appen och funktionen som ska hantera händelser. 
+-   Använd [http-utlösare](../azure-functions/functions-bindings-http-webhook.md).  Ange **Web Hook** som **typ av slut punkt**. Ange sedan URL: en för den funktion som ska hantera händelser. 
 
 Vi rekommenderar att du använder den första metoden (Event Grid utlösare) eftersom den har följande fördelar jämfört med den andra metoden:
 -   Event Grid validerar automatiskt Event Grid-utlösare. Med allmänna HTTP-utlösare måste du implementera [verifierings svaret](webhook-event-delivery.md) själv.
 -   Event Grid justerar automatiskt den hastighet med vilken händelser levereras till en funktion som utlöses av en Event Grid händelse baserat på den uppskattade frekvens som funktionen kan bearbeta händelser för. Den här frekvensen matchar AVERTs leverans fel som härrör från oförmåga att en funktion bearbetar händelser som funktionens händelse bearbetnings takt kan variera över tid. Du kan förbättra effektiviteten vid hög genom strömning genom att aktivera batching av händelse prenumerationen. Mer information finns i [Aktivera batching](#enable-batching).
 
     > [!NOTE]
-    > För närvarande kan du inte använda en Event Grid-utlösare för en Azure Functions-app när händelsen levereras i **CloudEvents** -schemat. Använd i stället en HTTP-utlösare.
+    > För närvarande kan du inte använda en Event Grid utlösare för en Function-app när händelsen levereras i **CloudEvents** -schemat. Använd i stället en HTTP-utlösare.
 
 ## <a name="tutorials"></a>Självstudier
 
@@ -69,7 +69,7 @@ När du skapar en prenumeration i användar gränssnittet går du till sidan **S
 
 Du kan uppdatera de här värdena för en befintlig prenumeration på fliken **funktioner** på ämnes sidan för **Event Grid** . 
 
-:::image type="content" source="./media/custom-event-to-function/features-batch-settings.png" alt-text="Aktivera batchbearbetning vid tidpunkten för att skapa en prenumeration":::
+:::image type="content" source="./media/custom-event-to-function/features-batch-settings.png" alt-text="Aktivera batchbearbetning efter skapande":::
 
 ### <a name="azure-resource-manager-template"></a>Azure Resource Manager-mall
 Du kan ange **maxEventsPerBatch** och **preferredBatchSizeInKilobytes** i en Azure Resource Manager-mall. Mer information finns i [referens för Microsoft. EventGrid eventSubscriptions Template](/azure/templates/microsoft.eventgrid/eventsubscriptions).

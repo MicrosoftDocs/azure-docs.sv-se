@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 12/17/2020
+ms.date: 01/07/2021
 ms.author: alkohli
-ms.openlocfilehash: a457c2816d4075190a2174339f7e52a2ea41730a
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: 5bbd02f9e15a4ee29e244b2a0307accd151ba487
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97696033"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98033956"
 ---
 # <a name="open-a-support-ticket-for-azure-stack-edge-pro-and-azure-data-box-gateway"></a>Öppna ett support ärende för Azure Stack Edge Pro och Azure Data Box Gateway
 
@@ -78,7 +78,7 @@ Den här informationen gäller endast för Azure Stack enhet. Processen för att
     * En fält ersättnings enhet (FRU) för den felande maskin varu delen skickas. För närvarande är strömförsörjnings enheter och solid state-enheter de enda FRUs som stöds.
     * Endast FRUs ersätts inom nästa arbets dag, allt annat kräver att en fullständig system ersättning (FSR) skickas.
 
-3. Om ett support ärende höjs före 4:30 lokal tid (måndag till fredag) skickas en tekniker på plats nästa arbets dag till din plats för att utföra en överlappande FRU-ersättning. En fullständig system ersättning tar vanligt vis mycket längre tid på grund av att delarna levereras från vår fabrik och kan omfattas av transport-och tull fördröjningar.
+3. Om det fastställs att en FRU-byte krävs vid en lokal tid (måndag till fredag) skickas en tekniker på plats nästa arbets dag till din plats för att utföra en överlappande FRU-ersättning. En fullständig system ersättning tar vanligt vis mycket längre tid på grund av att delarna levereras från vår fabrik och kan omfattas av transport-och tull fördröjningar.
 
 ## <a name="manage-a-support-request"></a>Hantera en support förfrågan
 

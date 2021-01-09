@@ -4,19 +4,22 @@ description: Lär dig hur du integrerar Azure Kubernetes service (AKS) med Azure
 services: container-service
 manager: gwallace
 ms.topic: article
-ms.date: 02/25/2020
-ms.openlocfilehash: 4338f4ce1fe60a3a9002be93feab134dd2601720
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 01/08/2021
+ms.openlocfilehash: 4157195260e5c685faaddeaca87db81d199ffb23
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87406511"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98043854"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Autentisera med Azure Container Registry från Azure Kubernetes Service
 
 När du använder Azure Container Registry (ACR) med Azure Kubernetes service (AKS) måste du upprätta en autentiseringsmekanism. Den här åtgärden implementeras som en del av CLI-och Portal upplevelsen genom att ge de nödvändiga behörigheterna till din ACR. Den här artikeln innehåller exempel på hur du konfigurerar autentisering mellan dessa två Azure-tjänster. 
 
 Du kan ställa in AKS till ACR-integrering i några enkla kommandon med Azure CLI. Den här integrationen tilldelar AcrPull-rollen till det tjänst huvud namn som är associerat med AKS-klustret.
+
+> [!NOTE]
+> Den här artikeln beskriver automatisk autentisering mellan AKS och ACR. Om du behöver hämta en avbildning från ett privat externt register använder du en [bild-pull-hemlighet][Image Pull Secret].
 
 ## <a name="before-you-begin"></a>Innan du börjar
 
@@ -152,3 +155,4 @@ nginx0-deployment-669dfc4d4b-xdpd6   1/1     Running   0          20s
 
 <!-- LINKS - external -->
 [AKS AKS CLI]: /cli/azure/aks?view=azure-cli-latest#az-aks-create
+[Image Pull secret]: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/

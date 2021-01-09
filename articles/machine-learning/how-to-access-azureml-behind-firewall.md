@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 11/18/2020
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 0fa3492555b2870ae7b95abec08bbd3280cdc985
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 8ffbe5debaa980385a2c6dc0078de5f1cc2e9bde
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97705072"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98045520"
 ---
 # <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>Använd arbets ytan bakom en brand vägg för Azure Machine Learning
 
@@ -27,7 +27,7 @@ I den här artikeln lär du dig hur du konfigurerar Azure-brandväggen för att 
 
 ## <a name="azure-firewall"></a>Azure Firewall
 
-När du använder Azure Firewall använder du __mål Network Address Translation (DNAT)__ för att skapa NAT-regler för inkommande trafik. Skapa __nätverks__ -och/eller __program__ regler för utgående trafik. De här regel samlingarna beskrivs mer detaljerat i [Vad är vissa Azure Firewall-begrepp](../firewall/firewall-faq.md#what-are-some-azure-firewall-concepts).
+När du använder Azure Firewall använder du __mål Network Address Translation (DNAT)__ för att skapa NAT-regler för inkommande trafik. Skapa __nätverks__ -och/eller __program__ regler för utgående trafik. De här regel samlingarna beskrivs mer detaljerat i [Vad är vissa Azure Firewall-begrepp](../firewall/firewall-faq.yml#what-are-some-azure-firewall-concepts).
 
 ### <a name="inbound-configuration"></a>Inkommande konfiguration
 

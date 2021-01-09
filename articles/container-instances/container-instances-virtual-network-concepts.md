@@ -3,12 +3,12 @@ title: Scenarier för att använda ett virtuellt nätverk
 description: Scenarier, resurser och begränsningar för att distribuera behållar grupper till ett virtuellt Azure-nätverk.
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: 2fb468a6a860bcc076043c30606922f43fbdb1ad
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 65d7fa46ebbb9b072b50731bff68b9b88809075d
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882440"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98033837"
 ---
 # <a name="virtual-network-scenarios-and-resources"></a>Scenarier och resurser för virtuella nätverk
 
@@ -33,6 +33,7 @@ Behållar grupper som distribueras till ett virtuellt Azure-nätverk möjliggör
 * **Azure Load Balancer** -att placera ett Azure Load Balancer framför container instances i en nätverksansluten behållar grupp stöds inte
 * Global peering för **virtuella nätverk** – global peering (anslutning av virtuella nätverk i Azure-regioner) stöds inte
 * **Offentliga IP-eller DNS-etiketter** – behållar grupper som distribueras till ett virtuellt nätverk har för närvarande inte stöd för att exponera behållare direkt till Internet med en offentlig IP-adress eller ett fullständigt kvalificerat domän namn
+* **Virtual Network NAT** -container grupper som har distribuerats till ett virtuellt nätverk stöder för närvarande inte en NAT-gateway-resurs för utgående Internet anslutning.
 
 ## <a name="other-limitations"></a>Andra begränsningar
 

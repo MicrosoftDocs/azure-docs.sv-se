@@ -3,14 +3,14 @@ title: Azure Automation data säkerhet
 description: Den här artikeln hjälper dig att lära dig hur Azure Automation skyddar din integritet och skyddar dina data.
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 07/20/2020
+ms.date: 01/08/2021
 ms.topic: conceptual
-ms.openlocfilehash: 610c2050150a533e246bc74ed7750ce87f7cf617
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 40405607e7f7198f190f621121022537ac3b3171
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87004655"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98046047"
 ---
 # <a name="management-of-azure-automation-data"></a>Hantera Azure Automation-data
 
@@ -26,11 +26,9 @@ För att säkerställa säkerheten för data som överförs till Azure Automatio
 
 * DSC-noder
 
-Äldre versioner av TLS/Secure Sockets Layer (SSL) har befunnits vara sårbara och även om de fortfarande arbetar för att tillåta bakåtkompatibilitet, rekommenderas de **inte**. Från och med september 2020 börjar vi verkställa TLS 1,2 och senare versioner av krypterings protokollet.
+Äldre versioner av TLS/Secure Sockets Layer (SSL) har befunnits vara sårbara och även om de fortfarande arbetar för att tillåta bakåtkompatibilitet, rekommenderas de **inte**. Vi rekommenderar att du inte uttryckligen anger att agenten ska använda TLS 1,2 om det inte är absolut nödvändigt, eftersom det kan bryta säkerhets funktioner på plattforms nivå som gör att du automatiskt kan identifiera och dra nytta av nyare säkra protokoll när de blir tillgängliga, t. ex. TLS 1,3.
 
-Vi rekommenderar att du inte uttryckligen anger att agenten ska använda TLS 1,2 om det inte är absolut nödvändigt, eftersom det kan bryta säkerhets funktioner på plattforms nivå som gör att du automatiskt kan identifiera och dra nytta av nyare säkra protokoll när de blir tillgängliga, t. ex. TLS 1,3.
-
-Information om stöd för TLS 1,2 med Log Analytics-agenten för Windows och Linux, vilket är ett beroende för Hybrid Runbook Worker-rollen finns i [Log Analytics agent översikt – TLS 1,2](..//azure-monitor/platform/log-analytics-agent.md#tls-12-protocol). 
+Information om stöd för TLS 1,2 med Log Analytics-agenten för Windows och Linux, vilket är ett beroende för Hybrid Runbook Worker-rollen finns i [Log Analytics agent översikt – TLS 1,2](..//azure-monitor/platform/log-analytics-agent.md#tls-12-protocol).
 
 ### <a name="platform-specific-guidance"></a>Plattformsspecifik vägledning
 
@@ -51,7 +49,7 @@ I följande tabell sammanfattas bevarande principen för olika resurser.
 |:--- |:--- |
 | Konton |Ett konto tas bort permanent 30 dagar efter att användaren tagit bort det. |
 | Tillgångar |En till gång tas bort permanent 30 dagar efter att användaren tagit bort den, eller 30 dagar efter att en användare har tagit bort ett konto som innehåller till gången. Till gångar innehåller variabler, scheman, autentiseringsuppgifter, certifikat, python 2-paket och anslutningar. |
-| DSC-noder |En DSC-nod tas bort permanent 30 dagar efter att ha avregistrerats från ett Automation-konto med hjälp av Azure Portal eller [unregister-AzAutomationDscNode-](/powershell/module/az.automation/unregister-azautomationdscnode?view=azps-3.7.0) cmdleten i Windows PowerShell. En nod tas också bort permanent 30 dagar efter att användaren tagit bort det konto som innehåller noden. |
+| DSC-noder |En DSC-nod tas bort permanent 30 dagar efter att ha avregistrerats från ett Automation-konto med hjälp av Azure Portal eller [unregister-AzAutomationDscNode-](/powershell/module/az.automation/unregister-azautomationdscnode) cmdleten i Windows PowerShell. En nod tas också bort permanent 30 dagar efter att användaren tagit bort det konto som innehåller noden. |
 | Jobb |Ett jobb tas bort och tas bort permanent 30 dagar efter ändringar, till exempel när jobbet har slutförts, stoppats eller har pausats. |
 | Moduler |En modul tas bort permanent 30 dagar efter att användaren tagit bort den eller 30 dagar efter att användaren tagit bort det konto som innehåller modulen. |
 | Nodkonfigurationer/MOF-filer |En gammal Node-konfiguration tas bort permanent 30 dagar efter att en ny nod har skapats. |
@@ -80,7 +78,7 @@ Du kan inte hämta värdena för krypterade variabler eller lösen ords fält f�
 
 ### <a name="dsc-configurations"></a>DSC-konfigurationer
 
-Du kan exportera DSC-konfigurationerna till skriptfiler med antingen Azure Portal eller cmdleten [export-AzAutomationDscConfiguration](/powershell/module/az.automation/export-azautomationdscconfiguration?view=azps-3.7.0) i Windows PowerShell. Du kan importera och använda dessa konfigurationer i ett annat Automation-konto.
+Du kan exportera DSC-konfigurationerna till skriptfiler med antingen Azure Portal eller cmdleten [export-AzAutomationDscConfiguration](/powershell/module/az.automation/export-azautomationdscconfiguration) i Windows PowerShell. Du kan importera och använda dessa konfigurationer i ett annat Automation-konto.
 
 ## <a name="geo-replication-in-azure-automation"></a>Geo-replikering i Azure Automation
 

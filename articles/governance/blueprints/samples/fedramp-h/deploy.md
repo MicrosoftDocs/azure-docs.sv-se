@@ -1,14 +1,14 @@
 ---
 title: Distribuera FedRAMP High skiss-exempel
 description: Distribuera steg för FedRAMP-exemplet med hög skiss, inklusive information om skiss artefakts parametrar.
-ms.date: 10/26/2020
+ms.date: 01/08/2021
 ms.topic: sample
-ms.openlocfilehash: 5d08eb932748ca01fd5780266248bde4025a3d2b
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 065f1343066f5d0ac9b0846de790124e907a5e24
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92669312"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98034874"
 ---
 # <a name="deploy-the-fedramp-high-blueprint-sample"></a>Distribuera FedRAMP-exemplet för hög skiss
 
@@ -25,16 +25,16 @@ Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto]
 
 Börja först med att implementera skissexemplet genom att skapa en ny skiss i din miljö, med exemplet som utgångspunkt.
 
-1. Välj **Alla tjänster** i den vänstra rutan. Sök efter och välj **Skisser** .
+1. Välj **Alla tjänster** i den vänstra rutan. Sök efter och välj **Skisser**.
 
-1. På sidan **Komma igång** till vänster väljer du knappen **Skapa** under _Skapa en skiss_ .
+1. På sidan **Komma igång** till vänster väljer du knappen **Skapa** under _Skapa en skiss_.
 
-1. Leta upp exemplet på **FedRAMP med hög** skiss under _andra exempel_ och välj **Använd det här exemplet** .
+1. Leta upp exemplet på **FedRAMP med hög** skiss under _andra exempel_ och välj **Använd det här exemplet**.
 
 1. Ange _Grundinställningar_ för skissexemplet:
 
-   - **Skiss namn** : Ange ett namn för din kopia av exemplet på FedRAMP hög skiss.
-   - **Definitions plats** : Använd ellipsen och välj den hanterings grupp där du vill spara din kopia av exemplet.
+   - **Skiss namn**: Ange ett namn för din kopia av exemplet på FedRAMP hög skiss.
+   - **Definitions plats**: Använd ellipsen och välj den hanterings grupp där du vill spara din kopia av exemplet.
 
 1. Välj fliken _Artefakter_ överst på sidan eller **Nästa: Artefakter** längst ned på sidan.
 
@@ -44,7 +44,7 @@ Börja först med att implementera skissexemplet genom att skapa en ny skiss i d
 
 Din kopia av skissexemplet har nu skapats i din miljö. Den skapas i läget **Utkast** och måste vara **Publicerad** innan den kan tilldelas och distribueras. Kopian av skiss exemplet kan anpassas efter din miljö och dina behov, men den ändringen kan flytta den bort från justeringen med FedRAMP hög kontroller.
 
-1. Välj **Alla tjänster** i den vänstra rutan. Sök efter och välj **Skisser** .
+1. Välj **Alla tjänster** i den vänstra rutan. Sök efter och välj **Skisser**.
 
 1. Välj sidan **Skissdefinitioner** till vänster. Använd filtren för att hitta din kopia av skissexemplet och markera det sedan.
 
@@ -54,7 +54,7 @@ Din kopia av skissexemplet har nu skapats i din miljö. Den skapas i läget **Ut
 
 När kopieringen av skiss exemplet har **publicerats** kan den tilldelas en prenumeration i hanterings gruppen som den sparades till. I det här steget anges parametrar för att göra varje distribution av skissexemplets kopia unik.
 
-1. Välj **Alla tjänster** i den vänstra rutan. Sök efter och välj **Skisser** .
+1. Välj **Alla tjänster** i den vänstra rutan. Sök efter och välj **Skisser**.
 
 1. Välj sidan **Skissdefinitioner** till vänster. Använd filtren för att hitta din kopia av skissexemplet och markera det sedan.
 
@@ -64,11 +64,11 @@ När kopieringen av skiss exemplet har **publicerats** kan den tilldelas en pren
 
    - Grundläggande inställningar
 
-     - **Prenumerationer** : Välj en eller flera av de prenumerationer som finns i hanterings gruppen som du sparade din kopia av skiss exemplet till. Om du väljer mer än en prenumeration, skapas en tilldelning för var och en med de angivna parametrarna.
-     - **Tilldelnings namn** : namnet fylls i automatiskt för dig baserat på namnet på skissen.
+     - **Prenumerationer**: Välj en eller flera av de prenumerationer som finns i hanterings gruppen som du sparade din kopia av skiss exemplet till. Om du väljer mer än en prenumeration, skapas en tilldelning för var och en med de angivna parametrarna.
+     - **Tilldelnings namn**: namnet fylls i automatiskt för dig baserat på namnet på skissen.
        Ändra vid behov eller lämna det som det är.
-     - **Plats** : Välj en region som den hanterade identiteten ska skapas i. Azure Blueprint använder den här hanterade identiteten för att distribuera alla artefakter i den tilldelade skissen. Mer information finns i [hanterade identiteter för Azure-resurser](../../../../active-directory/managed-identities-azure-resources/overview.md).
-     - **Ritnings definitions version** : Välj en **publicerad** version av din kopia av skiss exemplet.
+     - **Plats**: Välj en region som den hanterade identiteten ska skapas i. Azure Blueprint använder den här hanterade identiteten för att distribuera alla artefakter i den tilldelade skissen. Mer information finns i [hanterade identiteter för Azure-resurser](../../../../active-directory/managed-identities-azure-resources/overview.md).
+     - **Ritnings definitions version**: Välj en **publicerad** version av din kopia av skiss exemplet.
 
    - Lås tilldelning
 
@@ -85,7 +85,7 @@ När kopieringen av skiss exemplet har **publicerats** kan den tilldelas en pren
 1. När alla parametrar har angetts väljer du **Tilldela** längst ned på sidan. Skisstilldelningen skapas och artefaktdistributionen påbörjas. Distributionen tar ungefär en timme. Du kan kontrollera statusen för distributionen genom att öppna skisstilldelningen.
 
 > [!WARNING]
-> Tjänsten Azure Blueprints och de inbyggda skissexemplen är **kostnadsfria** . Azures resurser [prissätts per produkt](https://azure.microsoft.com/pricing/). Använd [priskalkylatorn](https://azure.microsoft.com/pricing/calculator/) till att beräkna kostnaden för att köra de resurser som distribueras i skissexemplet.
+> Tjänsten Azure Blueprints och de inbyggda skissexemplen är **kostnadsfria**. Azures resurser [prissätts per produkt](https://azure.microsoft.com/pricing/). Använd [priskalkylatorn](https://azure.microsoft.com/pricing/calculator/) till att beräkna kostnaden för att köra de resurser som distribueras i skissexemplet.
 
 ## <a name="artifact-parameters-table"></a>Tabell med artefaktparametrar
 
