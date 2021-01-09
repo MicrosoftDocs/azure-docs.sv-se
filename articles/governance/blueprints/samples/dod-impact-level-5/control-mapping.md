@@ -1,21 +1,21 @@
 ---
 title: DoD-effekter nivå 5 skiss exempel kontroller
 description: Kontroll mappning av DoD effekt nivå 5. Varje kontroll mappas till en eller flera Azure Policy definitioner som hjälper till med utvärderingen.
-ms.date: 09/17/2020
+ms.date: 01/08/2021
 ms.topic: sample
-ms.openlocfilehash: fc187480f5342f076a7f07f058e8e570a0e7f146
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 01f786684e5f8d73f57eb9f4741593c01fe1c8d4
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91929497"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98034789"
 ---
 # <a name="control-mapping-of-the-dod-impact-level-5-blueprint-sample"></a>Kontroll mappning av DoD effekt nivå 5 skiss exempel
 
 I följande artikel finns information om hur Azure Skisss-avdelningen på nivå 5 (DoD IL5) skiss-exempel mappar till DoD-effekter på nivå 5. Mer information om kontrollerna finns i [DoD Cloud Computing Security Requirements guide (SRG)](https://dl.dod.cyber.mil/wp-content/uploads/cloud/pdf/Cloud_Computing_SRG_v1r3.pdf).
 Försvars information system Agency (DISA) är ett organ i USA: s departement (DoD) som ansvarar för att utveckla och underhålla DoD Cloud Computing Security Requirements guide (SRG). SRG definierar grundläggande säkerhets krav för moln tjänst leverantörer (CSP: er) som är värdar för DoD information, system och program och för DoD användning av moln tjänster.  
 
-Följande mappningar är till **DoD påverkan på nivå 5** . Använd navigeringen till höger om du vill gå direkt till en bestämd kontroll mappning. Många av de mappade kontrollerna implementeras med ett [Azure policy](../../../policy/overview.md) initiativ. Om du vill granska hela initiativet öppnar du **princip** i Azure Portal och väljer sidan **definitioner** . Leta sedan reda på och välj ** \[ förhands granskningen \] : DoD verkningar nivå 5** inbyggt princip initiativ.
+Följande mappningar är till **DoD påverkan på nivå 5** . Använd navigeringen till höger om du vill gå direkt till en bestämd kontroll mappning. Många av de mappade kontrollerna implementeras med ett [Azure policy](../../../policy/overview.md) initiativ. Om du vill granska hela initiativet öppnar du **princip** i Azure Portal och väljer sidan **definitioner** . Leta sedan reda på och välj **\[ förhands granskningen \] : DoD verkningar nivå 5** inbyggt princip initiativ.
 
 > [!IMPORTANT]
 > Varje kontroll nedan är kopplad till en eller flera [Azure policy](../../../policy/overview.md) -definitioner. Dessa principer kan hjälpa dig att [utvärdera efterlevnaden](../../../policy/how-to/get-compliance-data.md) av kontrollen. Det finns dock ofta ingen en-till-en-eller fullständig matchning mellan en kontroll och en eller flera principer. Som sådan är **kompatibel** i Azure policy endast som avser själva principerna. Detta garanterar inte att du är helt kompatibel med alla krav för en kontroll. Standarden för efterlevnad innehåller dessutom kontroller som inte åtgärdas av några Azure Policy definitioner för tillfället. Därför är regelefterlevnad i Azure Policy bara en partiell vy av din övergripande kompatibilitetsstatus. Kopplingarna mellan kontroller och Azure Policy definitioner för det här skiss exemplet för efterlevnad kan ändras med tiden. Om du vill visa ändrings historiken läser du [inchecknings historiken för GitHub](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/dod-impact-level-5/control-mapping.md).
@@ -48,7 +48,7 @@ Just-in-Time (JIT)-åtkomst till virtuella datorer låser inkommande trafik till
 
 Med resurs delning mellan ursprung (CORS) kan App Services resurser begäras från en extern domän. Microsoft rekommenderar att du endast tillåter att domäner interagerar med API-, funktions-och webb program. Den här skissen tilldelar en [Azure policy](../../../policy/overview.md) -definition som hjälper dig att övervaka åtkomst begränsningar för CORS-resurser i Azure Security Center. Att förstå CORS-implementeringar kan hjälpa dig att kontrol lera att informations flödes kontrollerna implementeras.
 
-- CORS (Cross Origin Resource Sharing) bör inte tillåta att alla resurser har åtkomst till dina webbappar
+- CORS bör inte tillåta alla resurser åtkomst till dina webb program
 
 ## <a name="ac-5-separation-of-duties"></a>AC-5-separering av uppgifter
 

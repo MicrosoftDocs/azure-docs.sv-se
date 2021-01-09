@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/08/2020
-ms.openlocfilehash: 327ab63a048e08328cd5b1334b0a697a61ced6c8
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 85600bbee15dadcce7315300ffde481cbfc2e255
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97346341"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98034721"
 ---
 # <a name="copy-and-transform-data-in-azure-blob-storage-by-using-azure-data-factory"></a>Kopiera och transformera data i Azure Blob Storage med hjälp av Azure Data Factory
 
@@ -433,6 +433,9 @@ Följande egenskaper stöds för Azure Blob Storage under `storeSettings` Instä
     }
 ]
 ```
+
+> [!NOTE]
+> `$logs`Behållaren, som skapas automatiskt när Lagringsanalys har Aktiver ATS för ett lagrings konto, visas inte när en åtgärd för container lista utförs via Data Factory användar gränssnittet. Fil Sök vägen måste anges direkt för att Data Factory ska kunna använda filer från `$logs` behållaren.
 
 ### <a name="blob-storage-as-a-sink-type"></a>Blob-lagring som mottagar typ
 

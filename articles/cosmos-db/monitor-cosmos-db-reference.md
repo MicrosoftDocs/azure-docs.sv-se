@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 12/07/2020
 ms.author: sngun
 ms.custom: subject-monitoring
-ms.openlocfilehash: 75df985377e6ed1764985f8d0b6b44323f249b8a
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 04103de47e82764f7ec4effa84a9b2b7b90b9363
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97632017"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98034643"
 ---
 # <a name="monitoring-azure-cosmos-db-data-reference"></a>Övervaknings Azure Cosmos DB data referens
 
@@ -81,7 +81,7 @@ I följande tabell visas egenskaperna för resurs loggar i Azure Cosmos DB. Resu
 | --- | --- | --- |
 | **tid** | **TimeGenerated** | Datum och tid (UTC) när åtgärden utfördes. |
 | **resourceId** | **Resurs** | Azure Cosmos DB konto för vilka loggar är aktiverade.|
-| **kategori** | **Kategori** | För Azure Cosmos DB, **DataPlaneRequests**, **MongoRequests**, **QueryRuntimeStatistics**, **PartitionKeyStatistics**, **PartitionKeyRUConsumption**, **ControlPlaneRequests** är de tillgängliga logg typerna. |
+| **kategori** | **Kategori** | För Azure Cosmos DB, **DataPlaneRequests**, **MongoRequests**, **QueryRuntimeStatistics**, **PartitionKeyStatistics**, **PartitionKeyRUConsumption**, **ControlPlaneRequests**, **CassandraRequests**, **GremlinRequests** är de tillgängliga logg typerna. |
 | **operationName** | **OperationName** | Åtgärdens namn. Åtgärds namnet kan vara,,,,,,,,,  `Create` `Update` `Read` `ReadFeed` `Delete` `Replace` `Execute` `SqlQuery` `Query` `JSQuery` `Head` `HeadFeed` , eller `Upsert` .   |
 | **egenskaperna** | saknas | Innehållet i det här fältet beskrivs i raderna som följer. |
 | **activityId** | **activityId_g** | Unikt GUID för den loggade åtgärden. |

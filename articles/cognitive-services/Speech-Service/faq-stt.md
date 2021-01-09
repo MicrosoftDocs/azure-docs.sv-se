@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: panosper
-ms.openlocfilehash: a78e18de1f495feb6234fa5bfd97162d8b80de4c
-ms.sourcegitcommit: 697638c20ceaf51ec4ebd8f929c719c1e630f06f
+ms.openlocfilehash: 25848d313fc01fc41ef8874707bd10b2fa9912d3
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857332"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98033520"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Vanliga frågor och svar om tal till text
 
@@ -134,11 +134,11 @@ S **: samla** in data som är så nära program scenariot och användnings falle
 
 **A**: Ja. Du kan skriva av den själv eller använda en professionell avskrifts tjänst. Vissa användare föredrar professionella scheman och andra använder gemensamt skapade eller utför avskrifterna själva.
 
-**F: hur lång tid tar det att träna en anpassad modell ljud data?**
+**F: hur lång tid tar det att träna en anpassad modell med ljud data?**
 
 **A**: träna en modell med ljuddata är en långvarig process. Beroende på mängden data kan det ta flera dagar att skapa en anpassad modell. Om den inte kan slutföras inom en vecka kan tjänsten avbryta inlärnings åtgärden och rapportera modellen som misslyckad. Använd en av [regionerna](custom-speech-overview.md#set-up-your-azure-account) där dedikerad maskin vara är tillgänglig för utbildning för snabbare resultat. Du kan kopiera den helt utbildade modellen till en annan region med hjälp av [REST API](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CopyModelToSubscription). Utbildning med enbart text är mycket snabbare och slutförs vanligt vis inom några minuter.
 
-Vissa bas modeller kan inte anpassas med ljud data. För dem använder tjänsten bara texten i avskriften för träning och tar bort ljuddata. Träningen kommer att bli mycket snabbare och resultatet är detsamma som utbildning med enbart text.
+Vissa bas modeller kan inte anpassas med ljud data. För dem använder tjänsten bara texten i avskriften för utbildning och ignorerar ljuddata. Träningen kommer att bli mycket snabbare och resultatet är detsamma som utbildning med enbart text.
 
 ## <a name="accuracy-testing"></a>Precisions testning
 

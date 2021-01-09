@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: ec857db64529a27db7412c61f8f09c66f8a76363
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 4af29df27a109a9e1e26a720c190ab9d119fc4d1
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92098242"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98033803"
 ---
 # <a name="azure-table-storage-output-bindings-for-azure-functions"></a>Data bindningar för Azure Table Storage för Azure Functions
 
@@ -101,112 +101,6 @@ public class Person
 
 ```
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
-
-I följande exempel visas en bindning av tabellens utdata i en *function.jsi* filen och en [JavaScript-funktion](functions-reference-node.md) som använder bindningen. Funktionen skriver flera tabell enheter.
-
-Här är *function.jspå* filen:
-
-```json
-{
-  "bindings": [
-    {
-      "name": "input",
-      "type": "manualTrigger",
-      "direction": "in"
-    },
-    {
-      "tableName": "Person",
-      "connection": "MyStorageConnectionAppSetting",
-      "name": "tableBinding",
-      "type": "table",
-      "direction": "out"
-    }
-  ],
-  "disabled": false
-}
-```
-
-I [konfigurations](#configuration) avsnittet förklaras dessa egenskaper.
-
-Här är JavaScript-koden:
-
-```javascript
-module.exports = function (context) {
-
-    context.bindings.tableBinding = [];
-
-    for (var i = 1; i < 10; i++) {
-        context.bindings.tableBinding.push({
-            PartitionKey: "Test",
-            RowKey: i.toString(),
-            Name: "Name " + i
-        });
-    }
-
-    context.done();
-};
-```
-
-# <a name="python"></a>[Python](#tab/python)
-
-Följande exempel visar hur du använder bindningen för tabell lagrings utdata. `table`Bindningen konfigureras i *function.jspå* genom att tilldela värden till `name` , `tableName` ,, `partitionKey` och `connection` :
-
-```json
-{
-  "scriptFile": "__init__.py",
-  "bindings": [
-    {
-      "name": "message",
-      "type": "table",
-      "tableName": "messages",
-      "partitionKey": "message",
-      "connection": "AzureWebJobsStorage",
-      "direction": "out"
-    },
-    {
-      "authLevel": "function",
-      "type": "httpTrigger",
-      "direction": "in",
-      "name": "req",
-      "methods": [
-        "get",
-        "post"
-      ]
-    },
-    {
-      "type": "http",
-      "direction": "out",
-      "name": "$return"
-    }
-  ]
-}
-```
-
-Följande funktion genererar en unik UUI för `rowKey` värdet och sparar meddelandet i Table Storage.
-
-```python
-import logging
-import uuid
-import json
-
-import azure.functions as func
-
-def main(req: func.HttpRequest, message: func.Out[str]) -> func.HttpResponse:
-
-    rowKey = str(uuid.uuid4())
-
-    data = {
-        "Name": "Output binding message",
-        "PartitionKey": "message",
-        "RowKey": rowKey
-    }
-
-    message.set(json.dumps(data))
-
-    return func.HttpResponse(f"Message created with the rowKey: {rowKey}")
-```
-
 # <a name="java"></a>[Java](#tab/java)
 
 I följande exempel visas en Java-funktion som använder en HTTP-utlösare för att skriva en enskild tabell rad.
@@ -284,6 +178,152 @@ public class AddPersons {
 }
 ```
 
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+I följande exempel visas en bindning av tabellens utdata i en *function.jsi* filen och en [JavaScript-funktion](functions-reference-node.md) som använder bindningen. Funktionen skriver flera tabell enheter.
+
+Här är *function.jspå* filen:
+
+```json
+{
+  "bindings": [
+    {
+      "name": "input",
+      "type": "manualTrigger",
+      "direction": "in"
+    },
+    {
+      "tableName": "Person",
+      "connection": "MyStorageConnectionAppSetting",
+      "name": "tableBinding",
+      "type": "table",
+      "direction": "out"
+    }
+  ],
+  "disabled": false
+}
+```
+
+I [konfigurations](#configuration) avsnittet förklaras dessa egenskaper.
+
+Här är JavaScript-koden:
+
+```javascript
+module.exports = function (context) {
+
+    context.bindings.tableBinding = [];
+
+    for (var i = 1; i < 10; i++) {
+        context.bindings.tableBinding.push({
+            PartitionKey: "Test",
+            RowKey: i.toString(),
+            Name: "Name " + i
+        });
+    }
+
+    context.done();
+};
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Följande exempel visar hur du skriver flera entiteter till en tabell från en funktion.
+
+Bindnings konfiguration i _function.jspå_:
+
+```json
+{
+  "bindings": [
+    {
+      "name": "InputData",
+      "type": "manualTrigger",
+      "direction": "in"
+    },
+    {
+      "tableName": "Person",
+      "connection": "MyStorageConnectionAppSetting",
+      "name": "TableBinding",
+      "type": "table",
+      "direction": "out"
+    }
+  ],
+  "disabled": false
+}
+```
+
+PowerShell-kod i _run.ps1_:
+
+```powershell
+param($InputData, $TriggerMetadata)
+  
+foreach ($i in 1..10) {
+    Push-OutputBinding -Name TableBinding -Value @{
+        PartitionKey = 'Test'
+        RowKey = "$i"
+        Name = "Name $i"
+    }
+}
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+Följande exempel visar hur du använder bindningen för tabell lagrings utdata. `table`Bindningen konfigureras i *function.jspå* genom att tilldela värden till `name` , `tableName` ,, `partitionKey` och `connection` :
+
+```json
+{
+  "scriptFile": "__init__.py",
+  "bindings": [
+    {
+      "name": "message",
+      "type": "table",
+      "tableName": "messages",
+      "partitionKey": "message",
+      "connection": "AzureWebJobsStorage",
+      "direction": "out"
+    },
+    {
+      "authLevel": "function",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "methods": [
+        "get",
+        "post"
+      ]
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "$return"
+    }
+  ]
+}
+```
+
+Följande funktion genererar en unik UUI för `rowKey` värdet och sparar meddelandet i Table Storage.
+
+```python
+import logging
+import uuid
+import json
+
+import azure.functions as func
+
+def main(req: func.HttpRequest, message: func.Out[str]) -> func.HttpResponse:
+
+    rowKey = str(uuid.uuid4())
+
+    data = {
+        "Name": "Output binding message",
+        "PartitionKey": "message",
+        "RowKey": rowKey
+    }
+
+    message.set(json.dumps(data))
+
+    return func.HttpResponse(f"Message created with the rowKey: {rowKey}")
+```
+
 ---
 
 ## <a name="attributes-and-annotations"></a>Attribut och anteckningar
@@ -326,19 +366,23 @@ Du kan använda `StorageAccount` attributet för att ange lagrings kontot på kl
 
 Attribut stöds inte av C#-skript.
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
-
-Attribut stöds inte av Java Script.
-
-# <a name="python"></a>[Python](#tab/python)
-
-Attribut stöds inte av python.
-
 # <a name="java"></a>[Java](#tab/java)
 
 I [Java Functions runtime-biblioteket](/java/api/overview/azure/functions/runtime)använder du [TableOutput](https://github.com/Azure/azure-functions-java-library/blob/master/src/main/java/com/microsoft/azure/functions/annotation/TableOutput.java/) -anteckningen för parametrar för att skriva värden i Table Storage.
 
 Se [exemplet för mer information](#example).
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+Attribut stöds inte av Java Script.
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Attribut stöds inte av PowerShell.
+
+# <a name="python"></a>[Python](#tab/python)
+
+Attribut stöds inte av python.
 
 ---
 
@@ -348,9 +392,9 @@ I följande tabell förklaras de egenskaper för bindnings konfiguration som du 
 
 |function.jspå egenskap | Attributets egenskap |Beskrivning|
 |---------|---------|----------------------|
-|**bastyp** | Saknas | Måste anges till `table` . Den här egenskapen anges automatiskt när du skapar bindningen i Azure Portal.|
-|**position** | Saknas | Måste anges till `out` . Den här egenskapen anges automatiskt när du skapar bindningen i Azure Portal. |
-|**Namn** | Saknas | Variabel namnet som används i funktions koden som representerar tabellen eller entiteten. Ange till `$return` att referera till funktionens retur värde.| 
+|**bastyp** | saknas | Måste anges till `table` . Den här egenskapen anges automatiskt när du skapar bindningen i Azure Portal.|
+|**position** | saknas | Måste anges till `out` . Den här egenskapen anges automatiskt när du skapar bindningen i Azure Portal. |
+|**Namn** | saknas | Variabel namnet som används i funktions koden som representerar tabellen eller entiteten. Ange till `$return` att referera till funktionens retur värde.| 
 |**tableName** |**TableName** | Namnet på tabellen.| 
 |**partitionKey** |**PartitionKey** | Partitionsnyckel för den tabell entitet som ska skrivas. I [avsnittet användning](#usage) finns information om hur du använder den här egenskapen.| 
 |**rowKey** |**RowKey** | Rad nyckeln för den tabell entitet som ska skrivas. I [avsnittet användning](#usage) finns information om hur du använder den här egenskapen.| 
@@ -372,9 +416,21 @@ Du kan också använda en `CloudTable` metod parameter för att skriva till tabe
 
 Du kan också använda en `CloudTable` metod parameter för att skriva till tabellen med hjälp av Azure Storage SDK. Om du försöker binda till `CloudTable` och få ett fel meddelande, se till att du har en referens till [rätt Storage SDK-version](./functions-bindings-storage-table.md#azure-storage-sdk-version-in-functions-1x).
 
+# <a name="java"></a>[Java](#tab/java)
+
+Det finns två alternativ för att lägga till en tabell lagrings rad från en funktion med hjälp av [TableStorageOutput](/java/api/com.microsoft.azure.functions.annotation.tableoutput?view=azure-java-stablet&preserve-view=true) -anteckningen:
+
+- **RETUR värde**: genom att använda anteckningen i själva funktionen sparas returvärdet för funktionen som en tabell lagrings rad.
+
+- **Tvingande**: om du uttryckligen vill ange ett värde för meddelandet använder du anteckningen på en specifik parameter av typen [`OutputBinding<T>`](/java/api/com.microsoft.azure.functions.outputbinding) , där `T` innehåller `PartitionKey` `RowKey` egenskaperna och. Dessa egenskaper åtföljs ofta av implementering `ITableEntity` eller arv `TableEntity` .
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Få åtkomst till utdata-händelsen `context.bindings.<name>` genom `<name>` att använda WHERE är värdet som anges i `name` egenskapen för *function.jspå*.
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Om du vill skriva till tabell data använder du `Push-OutputBinding` cmdleten, ställer in `-Name TableBinding` parametern och `-Value` parametern som motsvarar radens data. Mer information finns i [PowerShell-exemplet](#example) .
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -384,21 +440,13 @@ Det finns två alternativ för att placera ett rad meddelande för tabell lagrin
 
 - **Tvingande**: Skicka ett värde till [set](/python/api/azure-functions/azure.functions.out?view=azure-python&preserve-view=true#set-val--t-----none) -metoden för den parameter som deklarerats som [Utdatatyp.](/python/api/azure-functions/azure.functions.out?view=azure-python&preserve-view=true) Värdet som skickas till `set` behålls som ett Event Hub-meddelande.
 
-# <a name="java"></a>[Java](#tab/java)
-
-Det finns två alternativ för att lägga till en tabell lagrings rad från en funktion med hjälp av [TableStorageOutput](/java/api/com.microsoft.azure.functions.annotation.tableoutput?view=azure-java-stablet&preserve-view=true) -anteckningen:
-
-- **RETUR värde**: genom att använda anteckningen i själva funktionen sparas returvärdet för funktionen som en tabell lagrings rad.
-
-- **Tvingande**: om du uttryckligen vill ange ett värde för meddelandet använder du anteckningen på en specifik parameter av typen [`OutputBinding<T>`](/java/api/com.microsoft.azure.functions.outputbinding) , där `T` innehåller `PartitionKey` `RowKey` egenskaperna och. Dessa egenskaper åtföljs ofta av implementering `ITableEntity` eller arv `TableEntity` .
-
 ---
 
 ## <a name="exceptions-and-return-codes"></a>Undantag och retur koder
 
 | Bindning | Referens |
 |---|---|
-| Tabell | [Tabell fel koder](/rest/api/storageservices/fileservices/table-service-error-codes) |
+| Tabeller | [Tabell fel koder](/rest/api/storageservices/fileservices/table-service-error-codes) |
 | BLOB, tabell, kö | [Lagrings fel koder](/rest/api/storageservices/fileservices/common-rest-api-error-codes) |
 | BLOB, tabell, kö | [Felsökning](/rest/api/storageservices/fileservices/troubleshooting-api-operations) |
 

@@ -3,12 +3,12 @@ title: Skapa principer programmässigt
 description: Den här artikeln vägleder dig genom program mässigt skapa och hantera principer för Azure Policy med Azure CLI, Azure PowerShell och REST API.
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 86c1b60608780cba4d8ae27e3c82ace458f09a26
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: 4c3a503e8d48573441093879511490608437b1e1
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94920023"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98033871"
 ---
 # <a name="programmatically-create-policies"></a>Skapa principer programmässigt
 
@@ -16,7 +16,7 @@ Den här artikeln vägleder dig genom program mässigt skapa och hantera princip
 
 Information om kompatibilitet finns i [Hämta efterlevnadsprinciper](get-compliance-data.md).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Kontrol lera att följande krav är uppfyllda innan du börjar:
 
@@ -95,7 +95,7 @@ Det första steget mot bättre insyn i resurserna är att skapa och tilldela pri
    - Prenumerera `/subscriptions/{subId}`
    - Hanterings grupp – `/providers/Microsoft.Management/managementGroups/{mgName}`
 
-Mer information om hur du hanterar resurs principer med hjälp av Resource Manager PowerShell-modulen finns i [AZ. Resources](/powershell/module/az.resources/#policies).
+Mer information om hur du hanterar resurs principer med hjälp av Resource Manager PowerShell-modulen finns i [AZ. Resources](/powershell/module/az.resources/#policy).
 
 ### <a name="create-and-assign-a-policy-definition-using-armclient"></a>Skapa och tilldela en princip definition med ARMClient
 
@@ -242,7 +242,7 @@ Mer information om hur du kan hantera resurs principer med Azure CLI finns i [re
 Läs följande artiklar om du vill ha mer information om kommandon och frågor i den här artikeln.
 
 - [Azure REST API-resurser](/rest/api/resources/)
-- [Azure PowerShell moduler](/powershell/module/az.resources/#policies)
+- [Azure PowerShell moduler](/powershell/module/az.resources/#policy)
 - [Azure CLI-princip kommandon](/cli/azure/policy)
 - [Azure Policy insikter Resource Provider REST API referens](/rest/api/policy-insights)
 - [Organisera dina resurser i Azure-hanteringsgrupper](../../management-groups/overview.md).

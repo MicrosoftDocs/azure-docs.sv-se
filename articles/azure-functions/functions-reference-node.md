@@ -5,12 +5,12 @@ ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: conceptual
 ms.date: 11/17/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: bf6ebd01a18a0ebf0ab5dd7d7ac3aa34256b4696
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 0b32efe3738dedbe8178889b3e9008964d485b00
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936812"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98034925"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions JavaScript-guide för utvecklare
 
@@ -20,7 +20,7 @@ Som Express.js, Node.js eller JavaScript-utvecklare, om du är nybörjare på Az
 
 | Komma igång | Begrepp| Interaktiv utbildning |
 | -- | -- | -- | 
-| <ul><li>[Node.js funktionen med Visual Studio Code](./create-first-function-vs-code-node.md)</li><li>[Node.js funktion med Terminal/kommando-prompt](./create-first-function-cli-java.md)</li></ul> | <ul><li>[Utvecklarguide](functions-reference.md)</li><li>[Värdalternativ](functions-scale.md)</li><li>[TypeScript-funktioner](#typescript)</li><li>[Prestanda &nbsp; överväganden](functions-best-practices.md)</li></ul> | <ul><li>[Skapa serverlösa program](/learn/paths/create-serverless-applications/)</li><li>[Node.js-och Express-API: er till Server lös API: er](/learn/modules/shift-nodejs-express-apis-serverless/)</li></ul> |
+| <ul><li>[Node.js funktionen med Visual Studio Code](./create-first-function-vs-code-node.md)</li><li>[Node.js funktion med Terminal/kommando-prompt](./create-first-function-cli-node.md)</li></ul> | <ul><li>[Utvecklarguide](functions-reference.md)</li><li>[Värdalternativ](functions-scale.md)</li><li>[TypeScript-funktioner](#typescript)</li><li>[Prestanda &nbsp; överväganden](functions-best-practices.md)</li></ul> | <ul><li>[Skapa serverlösa program](/learn/paths/create-serverless-applications/)</li><li>[Node.js-och Express-API: er till Server lös API: er](/learn/modules/shift-nodejs-express-apis-serverless/)</li></ul> |
 
 ## <a name="javascript-function-basics"></a>Grundläggande om JavaScript-funktioner
 

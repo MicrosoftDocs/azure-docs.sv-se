@@ -3,12 +3,12 @@ title: Statisk IP-adress för container grupp
 description: Skapa en behållar grupp i ett virtuellt nätverk och Använd en Azure Application Gateway för att exponera en statisk IP-adress för klient delen i en behållares webbapp
 ms.topic: article
 ms.date: 03/16/2020
-ms.openlocfilehash: bc128da0f4c2e92af98781cef45f48f9e8aeab31
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0131780fdb04a71837d5ae9bf5498bf2bd499f8a
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86260778"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98035061"
 ---
 # <a name="expose-a-static-ip-address-for-a-container-group"></a>Exponera en statisk IP-adress för en behållar grupp
 
@@ -100,6 +100,9 @@ ACI_IP=$(az container show \
   --resource-group myResourceGroup \
   --query ipAddress.ip --output tsv)
 ```
+
+> [!IMPORTANT]
+> Om behållar gruppen har stoppats, startats eller startats om, kan behållar gruppens privata IP-adress komma att ändras. Om detta händer måste du uppdatera konfigurationen för programgatewayen.
 
 ## <a name="create-application-gateway"></a>Skapa Application Gateway
 

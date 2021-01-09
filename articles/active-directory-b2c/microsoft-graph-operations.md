@@ -11,12 +11,13 @@ ms.topic: reference
 ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e4463b932c95e224981b74093effbb355de24f6b
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.custom: fasttrack-edit
+ms.openlocfilehash: fed1e31380381b864530b3fa0b9e8c0886737d04
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509826"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98033616"
 ---
 # <a name="microsoft-graph-operations-available-for-azure-ad-b2c"></a>Microsoft Graph åtgärder som är tillgängliga för Azure AD B2C
 
@@ -57,10 +58,10 @@ Hantera de identitets leverantörer som är tillgängliga för dina användar fl
 
 Konfigurera fördefinierade principer för registrering, inloggning, kombinerad registrering och inloggning, återställning av lösen ord och profil uppdatering.
 
-- [Visa lista över användar flöden](/graph/api/identityuserflow-list)
-- [Skapa ett användarflöde](/graph/api/identityuserflow-post-userflows)
-- [Hämta ett användar flöde](/graph/api/identityuserflow-get)
-- [Ta bort ett användar flöde](/graph/api/identityuserflow-delete)
+- [Visa lista över användar flöden](/graph/api/identitycontainer-list-b2cuserflows)
+- [Skapa ett användarflöde](/graph/api/identitycontainer-post-b2cuserflows)
+- [Hämta ett användar flöde](/graph/api/b2cidentityuserflow-get)
+- [Ta bort ett användar flöde](/graph/api/b2cidentityuserflow-delete)
 
 ## <a name="custom-policies"></a>Anpassade principer
 

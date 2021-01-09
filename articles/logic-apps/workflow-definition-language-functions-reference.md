@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
 ms.date: 09/04/2020
-ms.openlocfilehash: b15849fb8fbfed5d55b9c224f51634047b7c75b2
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 222f6ebacb6139ca26a6f1cdd0f896270c9b2fc2
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97914492"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98034303"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>Referens guide för att använda funktioner i uttryck för Azure Logic Apps och energi automatisering
 
@@ -22,7 +22,7 @@ För arbets flödes definitioner i [Azure Logic Apps](../logic-apps/logic-apps-o
 
 Du kan till exempel beräkna värden med hjälp av matematiska funktioner, till exempel funktionen [Lägg till ()](../logic-apps/workflow-definition-language-functions-reference.md#add) , när du vill beräkna summan från heltal eller flyttal. Här följer några exempel på uppgifter som du kan utföra med Functions:
 
-| Aktivitet | Syntax för funktion | Resultat |
+| Uppgift | Syntax för funktion | Resultat |
 | ---- | --------------- | ------ |
 | Returnera en sträng med gemener. | toLower (<*text*>) <p>Till exempel: toLower (' hello ') | Hello |
 | Returnera en globalt unik identifierare (GUID). | GUID () |"c2ecc88d-88c8-4096-912c-d6f2e2b138ce" |
@@ -40,7 +40,7 @@ För att visa hur du använder en funktion i ett uttryck visar det här exemplet
 
 Här följer några andra allmänna sätt som du kan använda funktioner i uttryck:
 
-| Aktivitet | Function-syntax i ett uttryck |
+| Uppgift | Function-syntax i ett uttryck |
 | ---- | -------------------------------- |
 | Utför arbetet med ett objekt genom att skicka det här objektet till en funktion. | " \@ < *functionname*> (<*objekt*>)" |
 | 1. Hämta *parameterName* värde genom att använda den kapslade `parameters()` funktionen. </br>2. utför arbetet med resultatet genom att skicka det värdet till *functionname*. | " \@ < *functionname*> (parametrar (' <*parameterName*> '))" |
@@ -77,7 +77,7 @@ I följande avsnitt organiseras funktioner baserat på deras generella syfte, el
 
 Om du vill arbeta med strängar kan du använda dessa sträng funktioner och även vissa [samlings funktioner](#collection-functions). Sträng funktioner fungerar bara för strängar.
 
-| Funktionen String | Aktivitet |
+| Funktionen String | Uppgift |
 | --------------- | ---- |
 | [concat](../logic-apps/workflow-definition-language-functions-reference.md#concat) | Kombinera två eller fler strängar och returnera den kombinerade strängen. |
 | [endsWith](../logic-apps/workflow-definition-language-functions-reference.md#endswith) | Kontrol lera om en sträng slutar med den angivna under strängen. |
@@ -101,7 +101,7 @@ Om du vill arbeta med strängar kan du använda dessa sträng funktioner och äv
 
 Om du vill arbeta med samlingar, vanligt vis matriser, strängar och ibland kan du använda de här samlings funktionerna.
 
-| Samlings funktion | Aktivitet |
+| Samlings funktion | Uppgift |
 | ------------------- | ---- |
 | [ingår](../logic-apps/workflow-definition-language-functions-reference.md#contains) | Kontrol lera om en samling har ett angivet objekt. |
 | [tomt](../logic-apps/workflow-definition-language-functions-reference.md#empty) | Kontrol lera om en samling är tom. |
@@ -112,7 +112,7 @@ Om du vill arbeta med samlingar, vanligt vis matriser, strängar och ibland kan 
 | [pågå](../logic-apps/workflow-definition-language-functions-reference.md#last) | Returnera det sista objektet från en samling. |
 | [length](../logic-apps/workflow-definition-language-functions-reference.md#length) | Returnera antalet objekt i en sträng eller matris. |
 | [Ignorera](../logic-apps/workflow-definition-language-functions-reference.md#skip) | Ta bort objekt från början av en samling och returnera *alla andra* objekt. |
-| [take](../logic-apps/workflow-definition-language-functions-reference.md#take) | Returnera objekt från början av en samling. |
+| [gå](../logic-apps/workflow-definition-language-functions-reference.md#take) | Returnera objekt från början av en samling. |
 | [Union](../logic-apps/workflow-definition-language-functions-reference.md#union) | Returnera en samling som innehåller *alla* objekt från de angivna samlingarna. |
 |||
 
@@ -125,7 +125,7 @@ Om du vill arbeta med villkor, jämföra värden och resultat eller utvärdera o
 > [!NOTE]
 > Om du använder logiska funktioner eller villkor för att jämföra värden, konverteras NULL-värden till tomma sträng `""` värden (). Beteendet för villkor skiljer sig när du jämför med en tom sträng i stället för ett null-värde. Mer information finns i [funktionen String ()](#string). 
 
-| Funktion för logisk jämförelse | Aktivitet |
+| Funktion för logisk jämförelse | Uppgift |
 | --------------------------- | ---- |
 | [and](../logic-apps/workflow-definition-language-functions-reference.md#and) | Kontrol lera om alla uttryck är sanna. |
 | [är lika med](../logic-apps/workflow-definition-language-functions-reference.md#equals) | Kontrol lera om båda värdena är likvärdiga. |
@@ -147,7 +147,7 @@ Om du vill ändra ett värdes typ eller format kan du använda dessa konverterin
 > [!NOTE]
 > Azure Logic Apps konverterar automatiskt värden mellan vissa data typer, vilket innebär att du inte behöver utföra dessa konverteringar manuellt. Men om du gör det kan det uppstå oväntade visnings beteenden som inte påverkar de faktiska konverteringarna, bara hur de visas. Mer information finns i [implicita data typs konverteringar](#implicit-data-conversions).
 
-| Konverterings funktion | Aktivitet |
+| Konverterings funktion | Uppgift |
 | ------------------- | ---- |
 | [matris](../logic-apps/workflow-definition-language-functions-reference.md#array) | Returnera en matris från en angiven Indatatyp. För flera indata, se [createArray](../logic-apps/workflow-definition-language-functions-reference.md#createArray). |
 | [base64](../logic-apps/workflow-definition-language-functions-reference.md#base64) | Returnera Base64-kodad version för en sträng. |
@@ -209,7 +209,7 @@ Logic Apps automatiskt eller implicit utföra base64-kodning eller avkodning, s�
 Du kan använda dessa matematiska funktioner för att arbeta med heltal och flyttal.
 Fullständig referens för varje funktion finns i [alfabetisk lista](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list).
 
-| Matematik funktion | Aktivitet |
+| Matematik funktion | Uppgift |
 | ------------- | ---- |
 | [skapa](../logic-apps/workflow-definition-language-functions-reference.md#add) | Returnera resultatet från att lägga till två tal. |
 | [div](../logic-apps/workflow-definition-language-functions-reference.md#div) | Returnera resultatet från att dividera två tal. |
@@ -229,7 +229,7 @@ Fullständig referens för varje funktion finns i [alfabetisk lista](../logic-ap
 Du kan använda dessa datum-och tids funktioner för att arbeta med datum och tider.
 Fullständig referens för varje funktion finns i [alfabetisk lista](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list).
 
-| Funktionen datum/tid | Aktivitet |
+| Funktionen datum/tid | Uppgift |
 | --------------------- | ---- |
 | [addDays](../logic-apps/workflow-definition-language-functions-reference.md#addDays) | Lägg till ett antal dagar i en tidstämpel. |
 | [addHours](../logic-apps/workflow-definition-language-functions-reference.md#addHours) | Lägg till ett antal timmar i en tidsstämpel. |
@@ -266,7 +266,7 @@ Dessa arbets flödes funktioner kan hjälpa dig att:
 Du kan till exempel referera till utdata från en åtgärd och använda dessa data i en senare åtgärd.
 Fullständig referens för varje funktion finns i [alfabetisk lista](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list).
 
-| Arbetsflödesfunktion | Aktivitet |
+| Arbetsflödesfunktion | Uppgift |
 | ----------------- | ---- |
 | [tgärd](../logic-apps/workflow-definition-language-functions-reference.md#action) | Returnera den aktuella åtgärdens utdata vid körning eller värden från andra JSON-namn-och värdepar. Se även [åtgärder](../logic-apps/workflow-definition-language-functions-reference.md#actions). |
 | [actionBody](../logic-apps/workflow-definition-language-functions-reference.md#actionBody) | Returnera en åtgärds `body` utdata vid körning. Se även [brödtext](../logic-apps/workflow-definition-language-functions-reference.md#body). |
@@ -282,7 +282,7 @@ Fullständig referens för varje funktion finns i [alfabetisk lista](../logic-ap
 | [multipartBody](../logic-apps/workflow-definition-language-functions-reference.md#multipartBody) | Returnera bröd texten för en viss del i en åtgärds utdata som har flera delar. |
 | [utdata](../logic-apps/workflow-definition-language-functions-reference.md#outputs) | Returnera en åtgärds utdata vid körning. |
 | [komponentparametrar](../logic-apps/workflow-definition-language-functions-reference.md#parameters) | Returnera värdet för en parameter som beskrivs i arbets flödes definitionen. |
-| [resultat](../logic-apps/workflow-definition-language-functions-reference.md#result) | Returnera indata och utdata från alla åtgärder i den angivna omfattningen, till exempel, `For_each` `Until` och `Scope` . |
+| [medför](../logic-apps/workflow-definition-language-functions-reference.md#result) | Returnera indata och utdata från alla åtgärder i den angivna omfattningen, till exempel, `For_each` `Until` och `Scope` . |
 | [utlösare](../logic-apps/workflow-definition-language-functions-reference.md#trigger) | Returnera en utlösare utdata vid körning eller från andra JSON-namn-och-värde-par. Se även [triggerOutputs](#triggerOutputs) och [triggerBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody). |
 | [triggerBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody) | Returnera en utlösare `body` utdata vid körning. Se [utlösare](../logic-apps/workflow-definition-language-functions-reference.md#trigger). |
 | [triggerFormDataValue](../logic-apps/workflow-definition-language-functions-reference.md#triggerFormDataValue) | Returnera ett enskilt värde som matchar ett nyckel namn i utlösare för *formulär data* eller *formulär-kodade* utlösare. |
@@ -300,7 +300,7 @@ Fullständig referens för varje funktion finns i [alfabetisk lista](../logic-ap
 Om du vill arbeta med URI: er (Uniform Resource Identifier) och hämta olika egenskaps värden för dessa URI: er kan du använda dessa URI-parsningsfel.
 Fullständig referens för varje funktion finns i [alfabetisk lista](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list).
 
-| URI-parsnings funktion | Aktivitet |
+| URI-parsnings funktion | Uppgift |
 | -------------------- | ---- |
 | [uriHost](../logic-apps/workflow-definition-language-functions-reference.md#uriHost) | Returnera `host` värdet för en URI (Uniform Resource Identifier). |
 | [uriPath](../logic-apps/workflow-definition-language-functions-reference.md#uriPath) | Returnera `path` värdet för en URI (Uniform Resource Identifier). |
@@ -317,7 +317,7 @@ Fullständig referens för varje funktion finns i [alfabetisk lista](../logic-ap
 Du kan använda dessa modifierings funktioner för att arbeta med JSON-objekt och XML-noder.
 Fullständig referens för varje funktion finns i [alfabetisk lista](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list).
 
-| Manipulations funktion | Aktivitet |
+| Manipulations funktion | Uppgift |
 | --------------------- | ---- |
 | [addProperty](../logic-apps/workflow-definition-language-functions-reference.md#addProperty) | Lägg till en egenskap och dess värde, eller namn-värde-par, till ett JSON-objekt och returnera det uppdaterade objektet. |
 | [coalesce](../logic-apps/workflow-definition-language-functions-reference.md#coalesce) | Returnera det första värdet som inte är null från en eller flera parametrar. |
@@ -524,7 +524,7 @@ add(<summand_1>, <summand_2>)
 
 | Parameter | Krävs | Typ | Beskrivning |
 | --------- | -------- | ---- | ----------- |
-| <*summand_1*> <*summand_2*> | Yes | Heltal, float eller Mixed | De siffror som ska läggas till |
+| <*summand_1*> <*summand_2*> | Ja | Heltal, float eller Mixed | De siffror som ska läggas till |
 |||||
 
 | Returvärde | Typ | Beskrivning |
@@ -555,7 +555,7 @@ addDays('<timestamp>', <days>, '<format>'?)
 | Parameter | Krävs | Typ | Beskrivning |
 | --------- | -------- | ---- | ----------- |
 | <*tidsstämpel*> | Ja | Sträng | Den sträng som innehåller tidsstämpeln |
-| <*antalet*> | Yes | Integer | Det positiva eller negativa antalet dagar som ska läggas till |
+| <*antalet*> | Ja | Integer | Det positiva eller negativa antalet dagar som ska läggas till |
 | <*formatering*> | Nej | Sträng | Antingen en [enskild format identifierare](/dotnet/standard/base-types/standard-date-and-time-format-strings) eller ett [anpassat format mönster](/dotnet/standard/base-types/custom-date-and-time-format-strings). Standardformat för tidsstämpeln är ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (ÅÅÅÅ-MM-ddTHH: mm: SS. fffffffK), som följer [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) och bevarar tids zons information. |
 |||||
 
@@ -597,7 +597,7 @@ addHours('<timestamp>', <hours>, '<format>'?)
 | Parameter | Krävs | Typ | Beskrivning |
 | --------- | -------- | ---- | ----------- |
 | <*tidsstämpel*> | Ja | Sträng | Den sträng som innehåller tidsstämpeln |
-| <*timmarna*> | Yes | Integer | Det positiva eller negativa antalet timmar som ska läggas till |
+| <*timmarna*> | Ja | Integer | Det positiva eller negativa antalet timmar som ska läggas till |
 | <*formatering*> | Nej | Sträng | Antingen en [enskild format identifierare](/dotnet/standard/base-types/standard-date-and-time-format-strings) eller ett [anpassat format mönster](/dotnet/standard/base-types/custom-date-and-time-format-strings). Standardformat för tidsstämpeln är ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (ÅÅÅÅ-MM-ddTHH: mm: SS. fffffffK), som följer [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) och bevarar tids zons information. |
 |||||
 
@@ -639,7 +639,7 @@ addMinutes('<timestamp>', <minutes>, '<format>'?)
 | Parameter | Krävs | Typ | Beskrivning |
 | --------- | -------- | ---- | ----------- |
 | <*tidsstämpel*> | Ja | Sträng | Den sträng som innehåller tidsstämpeln |
-| <*fördröjning*> | Yes | Integer | Det positiva eller negativa antalet minuter att lägga till |
+| <*fördröjning*> | Ja | Integer | Det positiva eller negativa antalet minuter att lägga till |
 | <*formatering*> | Nej | Sträng | Antingen en [enskild format identifierare](/dotnet/standard/base-types/standard-date-and-time-format-strings) eller ett [anpassat format mönster](/dotnet/standard/base-types/custom-date-and-time-format-strings). Standardformat för tidsstämpeln är ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (ÅÅÅÅ-MM-ddTHH: mm: SS. fffffffK), som följer [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) och bevarar tids zons information. |
 |||||
 
@@ -680,9 +680,9 @@ addProperty(<object>, '<property>', <value>)
 
 | Parameter | Krävs | Typ | Beskrivning |
 | --------- | -------- | ---- | ----------- |
-| <*jobbobjektet*> | Yes | Objekt | JSON-objektet där du vill lägga till en egenskap |
+| <*jobbobjektet*> | Ja | Objekt | JSON-objektet där du vill lägga till en egenskap |
 | <*immaterialrätt*> | Ja | Sträng | Namnet på egenskapen som ska läggas till |
-| <*värde*> | Yes | Valfri | Egenskapens värde |
+| <*värde*> | Ja | Valfri | Egenskapens värde |
 |||||
 
 | Returvärde | Typ | Beskrivning |
@@ -698,10 +698,10 @@ addProperty(<object>['<parent-property>'], '<child-property>', <value>)
 
 | Parameter | Krävs | Typ | Beskrivning |
 | --------- | -------- | ---- | ----------- |
-| <*jobbobjektet*> | Yes | Objekt | JSON-objektet där du vill lägga till en egenskap |
+| <*jobbobjektet*> | Ja | Objekt | JSON-objektet där du vill lägga till en egenskap |
 | <*överordnad-egenskap*> | Ja | Sträng | Namnet på den överordnade egenskapen där du vill lägga till den underordnade egenskapen |
 | <*underordnad egenskap*> | Ja | Sträng | Namnet på den underordnade egenskapen som ska läggas till |
-| <*värde*> | Yes | Valfri | Värdet som ska anges för den angivna egenskapen |
+| <*värde*> | Ja | Valfri | Värdet som ska anges för den angivna egenskapen |
 |||||
 
 | Returvärde | Typ | Beskrivning |
@@ -780,7 +780,7 @@ addSeconds('<timestamp>', <seconds>, '<format>'?)
 | Parameter | Krävs | Typ | Beskrivning |
 | --------- | -------- | ---- | ----------- |
 | <*tidsstämpel*> | Ja | Sträng | Den sträng som innehåller tidsstämpeln |
-| <*sekunder*> | Yes | Integer | Det positiva eller negativa antalet sekunder som ska läggas till |
+| <*sekunder*> | Ja | Integer | Det positiva eller negativa antalet sekunder som ska läggas till |
 | <*formatering*> | Nej | Sträng | Antingen en [enskild format identifierare](/dotnet/standard/base-types/standard-date-and-time-format-strings) eller ett [anpassat format mönster](/dotnet/standard/base-types/custom-date-and-time-format-strings). Standardformat för tidsstämpeln är ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (ÅÅÅÅ-MM-ddTHH: mm: SS. fffffffK), som följer [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) och bevarar tids zons information. |
 |||||
 
@@ -823,7 +823,7 @@ addToTime('<timestamp>', <interval>, '<timeUnit>', '<format>'?)
 | Parameter | Krävs | Typ | Beskrivning |
 | --------- | -------- | ---- | ----------- |
 | <*tidsstämpel*> | Ja | Sträng | Den sträng som innehåller tidsstämpeln |
-| <*intervall*> | Yes | Integer | Antalet angivna tidsenheter som ska läggas till |
+| <*intervall*> | Ja | Integer | Antalet angivna tidsenheter som ska läggas till |
 | <*timeUnit*> | Ja | Sträng | Den tidsenhet som ska användas med *Interval*: "sekund", "minut", "timme", "dag", "vecka", "månad", "år" |
 | <*formatering*> | Nej | Sträng | Antingen en [enskild format identifierare](/dotnet/standard/base-types/standard-date-and-time-format-strings) eller ett [anpassat format mönster](/dotnet/standard/base-types/custom-date-and-time-format-strings). Standardformat för tidsstämpeln är ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (ÅÅÅÅ-MM-ddTHH: mm: SS. fffffffK), som följer [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) och bevarar tids zons information. |
 |||||
@@ -866,7 +866,7 @@ and(<expression1>, <expression2>, ...)
 
 | Parameter | Krävs | Typ | Beskrivning |
 | --------- | -------- | ---- | ----------- |
-| <*uttryck1*>, <*Uttryck2*>,... | Yes | Boolesk | De uttryck som ska kontrol leras |
+| <*uttryck1*>, <*Uttryck2*>,... | Ja | Boolesk | De uttryck som ska kontrol leras |
 |||||
 
 | Returvärde | Typ | Beskrivning |
@@ -1129,7 +1129,7 @@ bool(<value>)
 
 | Parameter | Krävs | Typ | Beskrivning |
 | --------- | -------- | ---- | ----------- |
-| <*värde*> | Yes | Valfri | Värdet som ska konverteras till Boolean. |
+| <*värde*> | Ja | Valfri | Värdet som ska konverteras till Boolean. |
 |||||
 
 Om du använder `bool()` med ett objekt måste värdet för objektet vara en sträng eller ett heltal som kan konverteras till Boolean.
@@ -1164,7 +1164,7 @@ coalesce(<object_1>, <object_2>, ...)
 
 | Parameter | Krävs | Typ | Beskrivning |
 | --------- | -------- | ---- | ----------- |
-| <*object_1*> <*object_2*>,... | Yes | Alla, kan blanda typer | Ett eller flera objekt att söka efter null |
+| <*object_1*> <*object_2*>,... | Ja | Alla, kan blanda typer | Ett eller flera objekt att söka efter null |
 |||||
 
 | Returvärde | Typ | Beskrivning |
@@ -1239,8 +1239,8 @@ Mer specifikt fungerar den här funktionen på dessa samlings typer:
 
 | Parameter | Krävs | Typ | Beskrivning |
 | --------- | -------- | ---- | ----------- |
-| <*samlingen*> | Yes | Sträng, matris eller ord lista | Den samling som ska kontrol leras |
-| <*värde*> | Yes | Sträng, matris eller ord lista | Objektet att söka efter |
+| <*samlingen*> | Ja | Sträng, matris eller ord lista | Den samling som ska kontrol leras |
+| <*värde*> | Ja | Sträng, matris eller ord lista | Objektet att söka efter |
 |||||
 
 | Returvärde | Typ | Beskrivning |
@@ -1404,7 +1404,7 @@ createArray('<object1>', '<object2>', ...)
 
 | Parameter | Krävs | Typ | Beskrivning |
 | --------- | -------- | ---- | ----------- |
-| <*object1*> <*object2*>... | Yes | Alla, men inte blandade | Minst två objekt för att skapa matrisen |
+| <*object1*> <*object2*>... | Ja | Alla, men inte blandade | Minst två objekt för att skapa matrisen |
 |||||
 
 | Returvärde | Typ | Beskrivning |
@@ -1695,13 +1695,13 @@ div(<dividend>, <divisor>)
 
 | Parameter | Krävs | Typ | Beskrivning |
 | --------- | -------- | ---- | ----------- |
-| <*preferens*> | Yes | Heltal eller flyttal | Talet som ska divideras med *divisorn* |
-| <*divisor*> | Yes | Heltal eller flyttal | Talet som delar upp *utdelningen*, men kan inte vara 0 |
+| <*preferens*> | Ja | Heltal eller flyttal | Talet som ska divideras med *divisorn* |
+| <*divisor*> | Ja | Heltal eller flyttal | Talet som delar upp *utdelningen*, men kan inte vara 0 |
 |||||
 
 | Returvärde | Typ | Beskrivning |
 | ------------ | ---- | ----------- |
-| <*kvot-resultat*> | Heltal eller flyttal | Resultatet från att dividera det första talet med det andra talet. Om utdelningen eller divisorn har flytt ALS typ, har resultatet flyttal. <p><p>**Obs!** om du vill konvertera flytt ALS resultatet till ett heltal kan du försöka [skapa och anropa en Azure-funktion](../logic-apps/logic-apps-azure-functions.md) från din Logic app. |
+| <*kvot-resultat*> | Heltal eller flyttal | Resultatet från att dividera det första talet med det andra talet. Om utdelningen eller divisorn har flytt ALS typ, har resultatet flyttal. <p><p>**Obs!** om du vill konvertera flytt ALS resultatet till ett heltal kan du försöka [skapa och anropa en funktion i Azure](../logic-apps/logic-apps-azure-functions.md) från din Logic app. |
 ||||
 
 *Exempel 1*
@@ -1769,7 +1769,7 @@ empty([<collection>])
 
 | Parameter | Krävs | Typ | Beskrivning |
 | --------- | -------- | ---- | ----------- |
-| <*samlingen*> | Yes | Sträng, matris eller objekt | Den samling som ska kontrol leras |
+| <*samlingen*> | Ja | Sträng, matris eller objekt | Den samling som ska kontrol leras |
 |||||
 
 | Returvärde | Typ | Beskrivning |
@@ -1847,7 +1847,7 @@ equals('<object1>', '<object2>')
 
 | Parameter | Krävs | Typ | Beskrivning |
 | --------- | -------- | ---- | ----------- |
-| <*object1*> <*object2*> | Yes | Önskade | Värden, uttryck eller objekt som ska jämföras |
+| <*object1*> <*object2*> | Ja | Önskade | Värden, uttryck eller objekt som ska jämföras |
 |||||
 
 | Returvärde | Typ | Beskrivning |
@@ -1882,7 +1882,7 @@ first([<collection>])
 
 | Parameter | Krävs | Typ | Beskrivning |
 | --------- | -------- | ---- | ----------- |
-| <*samlingen*> | Yes | Sträng eller matris | Samlingen där det första objektet ska hittas |
+| <*samlingen*> | Ja | Sträng eller matris | Samlingen där det första objektet ska hittas |
 |||||
 
 | Returvärde | Typ | Beskrivning |
@@ -2041,7 +2041,7 @@ formatNumber(<number>, <format>, <locale>?)
 
 | Parameter | Krävs | Typ | Beskrivning |
 | --------- | -------- | ---- | ----------- |
-| <*många*> | Yes | Heltal eller dubbel | Det värde som du vill formatera. |
+| <*många*> | Ja | Heltal eller dubbel | Det värde som du vill formatera. |
 | <*formatering*> | Ja | Sträng | En sammansatt format sträng som anger det format som du vill använda. För de numeriska format strängar som stöds, se [standard numeriska format strängar](/dotnet/standard/base-types/standard-numeric-format-strings)som stöds av `number.ToString(<format>, <locale>)` . |
 | <*språk*> | Nej | Sträng | Det språk som ska användas som stöds av `number.ToString(<format>, <locale>)` . Om inget värde anges är standardvärdet `en-us` . |
 |||||
@@ -2095,7 +2095,7 @@ getFutureTime(<interval>, <timeUnit>, <format>?)
 
 | Parameter | Krävs | Typ | Beskrivning |
 | --------- | -------- | ---- | ----------- |
-| <*intervall*> | Yes | Integer | Antalet angivna tidsenheter som ska läggas till |
+| <*intervall*> | Ja | Integer | Antalet angivna tidsenheter som ska läggas till |
 | <*timeUnit*> | Ja | Sträng | Den tidsenhet som ska användas med *Interval*: "sekund", "minut", "timme", "dag", "vecka", "månad", "år" |
 | <*formatering*> | Nej | Sträng | Antingen en [enskild format identifierare](/dotnet/standard/base-types/standard-date-and-time-format-strings) eller ett [anpassat format mönster](/dotnet/standard/base-types/custom-date-and-time-format-strings). Standardformat för tidsstämpeln är ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (ÅÅÅÅ-MM-ddTHH: mm: SS. fffffffK), som följer [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) och bevarar tids zons information. |
 |||||
@@ -2139,7 +2139,7 @@ getPastTime(<interval>, <timeUnit>, <format>?)
 
 | Parameter | Krävs | Typ | Beskrivning |
 | --------- | -------- | ---- | ----------- |
-| <*intervall*> | Yes | Integer | Antalet angivna tidsenheter som ska subtraheras |
+| <*intervall*> | Ja | Integer | Antalet angivna tidsenheter som ska subtraheras |
 | <*timeUnit*> | Ja | Sträng | Den tidsenhet som ska användas med *Interval*: "sekund", "minut", "timme", "dag", "vecka", "månad", "år" |
 | <*formatering*> | Nej | Sträng | Antingen en [enskild format identifierare](/dotnet/standard/base-types/standard-date-and-time-format-strings) eller ett [anpassat format mönster](/dotnet/standard/base-types/custom-date-and-time-format-strings). Standardformat för tidsstämpeln är ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (ÅÅÅÅ-MM-ddTHH: mm: SS. fffffffK), som följer [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) och bevarar tids zons information. |
 |||||
@@ -2185,8 +2185,8 @@ greater('<value>', '<compareTo>')
 
 | Parameter | Krävs | Typ | Beskrivning |
 | --------- | -------- | ---- | ----------- |
-| <*värde*> | Yes | Heltal, float eller string | Det första värdet för att kontrol lera om det är större än det andra värdet |
-| <*compareTo*> | Yes | Heltal, float eller String respektive sträng | Jämförelse värde |
+| <*värde*> | Ja | Heltal, float eller string | Det första värdet för att kontrol lera om det är större än det andra värdet |
+| <*compareTo*> | Ja | Heltal, float eller String respektive sträng | Jämförelse värde |
 |||||
 
 | Returvärde | Typ | Beskrivning |
@@ -2222,8 +2222,8 @@ greaterOrEquals('<value>', '<compareTo>')
 
 | Parameter | Krävs | Typ | Beskrivning |
 | --------- | -------- | ---- | ----------- |
-| <*värde*> | Yes | Heltal, float eller string | Det första värdet för att kontrol lera om det är större än eller lika med det andra värdet |
-| <*compareTo*> | Yes | Heltal, float eller String respektive sträng | Jämförelse värde |
+| <*värde*> | Ja | Heltal, float eller string | Det första värdet för att kontrol lera om det är större än eller lika med det andra värdet |
+| <*compareTo*> | Ja | Heltal, float eller String respektive sträng | Jämförelse värde |
 |||||
 
 | Returvärde | Typ | Beskrivning |
@@ -2293,9 +2293,9 @@ if(<expression>, <valueIfTrue>, <valueIfFalse>)
 
 | Parameter | Krävs | Typ | Beskrivning |
 | --------- | -------- | ---- | ----------- |
-| <*uttryck*> | Yes | Boolesk | Det uttryck som ska kontrol leras |
-| <*valueIfTrue*> | Yes | Valfri | Det värde som ska returneras när uttrycket är sant |
-| <*valueIfFalse*> | Yes | Valfri | Värdet som ska returneras när uttrycket är falskt |
+| <*uttryck*> | Ja | Boolesk | Det uttryck som ska kontrol leras |
+| <*valueIfTrue*> | Ja | Valfri | Det värde som ska returneras när uttrycket är sant |
+| <*valueIfFalse*> | Ja | Valfri | Värdet som ska returneras när uttrycket är falskt |
 |||||
 
 | Returvärde | Typ | Beskrivning |
@@ -2540,7 +2540,7 @@ json('<value>')
 
 | Parameter | Krävs | Typ | Beskrivning |
 | --------- | -------- | ---- | ----------- |
-| <*värde*> | Yes | Sträng eller XML | Strängen eller XML som ska konverteras |
+| <*värde*> | Ja | Sträng eller XML | Strängen eller XML som ska konverteras |
 |||||
 
 | Returvärde | Typ | Beskrivning |
@@ -2612,7 +2612,7 @@ intersection('<collection1>', '<collection2>', ...)
 
 | Parameter | Krävs | Typ | Beskrivning |
 | --------- | -------- | ---- | ----------- |
-| <*collection1*> <*collection2*>... | Yes | Matris eller objekt, men inte båda | Samlingarna där du *bara* vill ha de gemensamma objekten |
+| <*collection1*> <*collection2*>... | Ja | Matris eller objekt, men inte båda | Samlingarna där du *bara* vill ha de gemensamma objekten |
 |||||
 
 | Returvärde | Typ | Beskrivning |
@@ -2642,7 +2642,7 @@ join([<collection>], '<delimiter>')
 
 | Parameter | Krävs | Typ | Beskrivning |
 | --------- | -------- | ---- | ----------- |
-| <*samlingen*> | Yes | Matris | Matrisen som innehåller objekten som ska sammanfogas |
+| <*samlingen*> | Ja | Matris | Matrisen som innehåller objekten som ska sammanfogas |
 | <*avgränsare*> | Ja | Sträng | Avgränsaren som visas mellan varje tecken i den resulterande strängen |
 |||||
 
@@ -2674,7 +2674,7 @@ last([<collection>])
 
 | Parameter | Krävs | Typ | Beskrivning |
 | --------- | -------- | ---- | ----------- |
-| <*samlingen*> | Yes | Sträng eller matris | Den samling där du hittar det sista objektet |
+| <*samlingen*> | Ja | Sträng eller matris | Den samling där du hittar det sista objektet |
 |||||
 
 | Returvärde | Typ | Beskrivning |
@@ -2752,7 +2752,7 @@ length([<collection>])
 
 | Parameter | Krävs | Typ | Beskrivning |
 | --------- | -------- | ---- | ----------- |
-| <*samlingen*> | Yes | Sträng eller matris | Samlingen med objekten som ska räknas |
+| <*samlingen*> | Ja | Sträng eller matris | Samlingen med objekten som ska räknas |
 |||||
 
 | Returvärde | Typ | Beskrivning |
@@ -2785,8 +2785,8 @@ less('<value>', '<compareTo>')
 
 | Parameter | Krävs | Typ | Beskrivning |
 | --------- | -------- | ---- | ----------- |
-| <*värde*> | Yes | Heltal, float eller string | Det första värdet för att kontrol lera om färre än det andra värdet |
-| <*compareTo*> | Yes | Heltal, float eller String respektive sträng | Jämförelse objektet |
+| <*värde*> | Ja | Heltal, float eller string | Det första värdet för att kontrol lera om färre än det andra värdet |
+| <*compareTo*> | Ja | Heltal, float eller String respektive sträng | Jämförelse objektet |
 |||||
 
 | Returvärde | Typ | Beskrivning |
@@ -2822,8 +2822,8 @@ lessOrEquals('<value>', '<compareTo>')
 
 | Parameter | Krävs | Typ | Beskrivning |
 | --------- | -------- | ---- | ----------- |
-| <*värde*> | Yes | Heltal, float eller string | Det första värdet för att kontrol lera om det är mindre än eller lika med det andra värdet |
-| <*compareTo*> | Yes | Heltal, float eller String respektive sträng | Jämförelse objektet |
+| <*värde*> | Ja | Heltal, float eller string | Det första värdet för att kontrol lera om det är mindre än eller lika med det andra värdet |
+| <*compareTo*> | Ja | Heltal, float eller String respektive sträng | Jämförelse objektet |
 |||||
 
 | Returvärde | Typ | Beskrivning |
@@ -2880,8 +2880,8 @@ max([<number1>, <number2>, ...])
 
 | Parameter | Krävs | Typ | Beskrivning |
 | --------- | -------- | ---- | ----------- |
-| <*tal1*>, <*tal2*>,... | Yes | Integer, float eller Both | Den uppsättning tal som du vill ha det högsta värdet från |
-| [<*tal1*>, <*tal2*>,...] | Yes | Matris-Integer, float eller Both | Matrisen med tal som du vill ha det högsta värdet från |
+| <*tal1*>, <*tal2*>,... | Ja | Integer, float eller Both | Den uppsättning tal som du vill ha det högsta värdet från |
+| [<*tal1*>, <*tal2*>,...] | Ja | Matris-Integer, float eller Both | Matrisen med tal som du vill ha det högsta värdet från |
 |||||
 
 | Returvärde | Typ | Beskrivning |
@@ -2913,8 +2913,8 @@ min([<number1>, <number2>, ...])
 
 | Parameter | Krävs | Typ | Beskrivning |
 | --------- | -------- | ---- | ----------- |
-| <*tal1*>, <*tal2*>,... | Yes | Integer, float eller Both | Den uppsättning tal som du vill ha det lägsta värdet från |
-| [<*tal1*>, <*tal2*>,...] | Yes | Matris-Integer, float eller Both | Matrisen med tal som du vill ha det lägsta värdet från |
+| <*tal1*>, <*tal2*>,... | Ja | Integer, float eller Both | Den uppsättning tal som du vill ha det lägsta värdet från |
+| [<*tal1*>, <*tal2*>,...] | Ja | Matris-Integer, float eller Both | Matrisen med tal som du vill ha det lägsta värdet från |
 |||||
 
 | Returvärde | Typ | Beskrivning |
@@ -2946,8 +2946,8 @@ mod(<dividend>, <divisor>)
 
 | Parameter | Krävs | Typ | Beskrivning |
 | --------- | -------- | ---- | ----------- |
-| <*preferens*> | Yes | Heltal eller flyttal | Talet som ska divideras med *divisorn* |
-| <*divisor*> | Yes | Heltal eller flyttal | Talet som delar upp *utdelningen*, men kan inte vara 0. |
+| <*preferens*> | Ja | Heltal eller flyttal | Talet som ska divideras med *divisorn* |
+| <*divisor*> | Ja | Heltal eller flyttal | Talet som delar upp *utdelningen*, men kan inte vara 0. |
 |||||
 
 | Returvärde | Typ | Beskrivning |
@@ -2977,8 +2977,8 @@ mul(<multiplicand1>, <multiplicand2>)
 
 | Parameter | Krävs | Typ | Beskrivning |
 | --------- | -------- | ---- | ----------- |
-| <*multiplicand1*> | Yes | Heltal eller flyttal | Talet som ska multipliceras med *multiplicand2* |
-| <*multiplicand2*> | Yes | Heltal eller flyttal | Talet som multipler *multiplicand1* |
+| <*multiplicand1*> | Ja | Heltal eller flyttal | Talet som ska multipliceras med *multiplicand2* |
+| <*multiplicand2*> | Ja | Heltal eller flyttal | Talet som multipler *multiplicand1* |
 |||||
 
 | Returvärde | Typ | Beskrivning |
@@ -3013,7 +3013,7 @@ multipartBody('<actionName>', <index>)
 | Parameter | Krävs | Typ | Beskrivning |
 | --------- | -------- | ---- | ----------- |
 | <*actionName*> | Ja | Sträng | Namnet på åtgärden som har utdata med flera delar |
-| <*Tabbindex*> | Yes | Integer | Indexets värde för den del som du vill använda |
+| <*Tabbindex*> | Ja | Integer | Indexets värde för den del som du vill använda |
 |||||
 
 | Returvärde | Typ | Beskrivning |
@@ -3034,7 +3034,7 @@ not(<expression>)
 
 | Parameter | Krävs | Typ | Beskrivning |
 | --------- | -------- | ---- | ----------- |
-| <*uttryck*> | Yes | Boolesk | Det uttryck som ska kontrol leras |
+| <*uttryck*> | Ja | Boolesk | Det uttryck som ska kontrol leras |
 |||||
 
 | Returvärde | Typ | Beskrivning |
@@ -3083,7 +3083,7 @@ or(<expression1>, <expression2>, ...)
 
 | Parameter | Krävs | Typ | Beskrivning |
 | --------- | -------- | ---- | ----------- |
-| <*uttryck1*>, <*Uttryck2*>,... | Yes | Boolesk | De uttryck som ska kontrol leras |
+| <*uttryck1*>, <*Uttryck2*>,... | Ja | Boolesk | De uttryck som ska kontrol leras |
 |||||
 
 | Returvärde | Typ | Beskrivning |
@@ -3232,8 +3232,8 @@ rand(<minValue>, <maxValue>)
 
 | Parameter | Krävs | Typ | Beskrivning |
 | --------- | -------- | ---- | ----------- |
-| <*minValue*> | Yes | Integer | Det lägsta heltalet i intervallet |
-| <*maxValue*> | Yes | Integer | Det heltal som följer det högsta heltalet i intervallet som funktionen kan returnera |
+| <*minValue*> | Ja | Integer | Det lägsta heltalet i intervallet |
+| <*maxValue*> | Ja | Integer | Det heltal som följer det högsta heltalet i intervallet som funktionen kan returnera |
 |||||
 
 | Returvärde | Typ | Beskrivning |
@@ -3263,8 +3263,8 @@ range(<startIndex>, <count>)
 
 | Parameter | Krävs | Typ | Beskrivning |
 | --------- | -------- | ---- | ----------- |
-| <*Start*> | Yes | Integer | Ett heltals värde som startar matrisen som det första objektet |
-| <*reparationer*> | Yes | Integer | Antalet heltal i matrisen |
+| <*Start*> | Ja | Integer | Ett heltals värde som startar matrisen som det första objektet |
+| <*reparationer*> | Ja | Integer | Antalet heltal i matrisen |
 |||||
 
 | Returvärde | Typ | Beskrivning |
@@ -3326,7 +3326,7 @@ removeProperty(<object>, '<property>')
 
 | Parameter | Krävs | Typ | Beskrivning |
 | --------- | -------- | ---- | ----------- |
-| <*jobbobjektet*> | Yes | Objekt | JSON-objektet som du vill ta bort en egenskap från |
+| <*jobbobjektet*> | Ja | Objekt | JSON-objektet som du vill ta bort en egenskap från |
 | <*immaterialrätt*> | Ja | Sträng | Namnet på egenskapen som ska tas bort |
 |||||
 
@@ -3343,7 +3343,7 @@ removeProperty(<object>['<parent-property>'], '<child-property>')
 
 | Parameter | Krävs | Typ | Beskrivning |
 | --------- | -------- | ---- | ----------- |
-| <*jobbobjektet*> | Yes | Objekt | JSON-objektet vars egenskap du vill ta bort |
+| <*jobbobjektet*> | Ja | Objekt | JSON-objektet vars egenskap du vill ta bort |
 | <*överordnad-egenskap*> | Ja | Sträng | Namnet på överordnad egenskap med den underordnade egenskapen som du vill ta bort |
 | <*underordnad egenskap*> | Ja | Sträng | Namnet på den underordnade egenskapen som ska tas bort |
 |||||
@@ -3544,9 +3544,9 @@ setProperty(<object>, '<property>', <value>)
 
 | Parameter | Krävs | Typ | Beskrivning |
 | --------- | -------- | ---- | ----------- |
-| <*jobbobjektet*> | Yes | Objekt | JSON-objektet vars egenskap du vill ange |
+| <*jobbobjektet*> | Ja | Objekt | JSON-objektet vars egenskap du vill ange |
 | <*immaterialrätt*> | Ja | Sträng | Namnet på den befintliga eller nya egenskapen som ska anges |
-| <*värde*> | Yes | Valfri | Värdet som ska anges för den angivna egenskapen |
+| <*värde*> | Ja | Valfri | Värdet som ska anges för den angivna egenskapen |
 |||||
 
 Använd ett kapslat anrop i stället för att ställa in den underordnade egenskapen i ett underordnat objekt `setProperty()` . Annars returnerar funktionen bara det underordnade objektet som utdata.
@@ -3557,10 +3557,10 @@ setProperty(<object>['<parent-property>'], '<parent-property>', setProperty(<obj
 
 | Parameter | Krävs | Typ | Beskrivning |
 | --------- | -------- | ---- | ----------- |
-| <*jobbobjektet*> | Yes | Objekt | JSON-objektet vars egenskap du vill ange |
+| <*jobbobjektet*> | Ja | Objekt | JSON-objektet vars egenskap du vill ange |
 | <*överordnad-egenskap*> | Ja | Sträng | Namnet på överordnad egenskap med den underordnade egenskapen som du vill ange |
 | <*underordnad egenskap*> | Ja | Sträng | Namnet på den underordnade egenskapen som ska anges |
-| <*värde*> | Yes | Valfri | Värdet som ska anges för den angivna egenskapen |
+| <*värde*> | Ja | Valfri | Värdet som ska anges för den angivna egenskapen |
 |||||
 
 | Returvärde | Typ | Beskrivning |
@@ -3636,8 +3636,8 @@ skip([<collection>], <count>)
 
 | Parameter | Krävs | Typ | Beskrivning |
 | --------- | -------- | ---- | ----------- |
-| <*samlingen*> | Yes | Matris | Den samling vars objekt du vill ta bort |
-| <*reparationer*> | Yes | Integer | Ett positivt heltal för antalet objekt som ska tas bort längst fram |
+| <*samlingen*> | Ja | Matris | Den samling vars objekt du vill ta bort |
+| <*reparationer*> | Ja | Integer | Ett positivt heltal för antalet objekt som ska tas bort längst fram |
 |||||
 
 | Returvärde | Typ | Beskrivning |
@@ -3844,7 +3844,7 @@ string(<value>)
 
 | Parameter | Krävs | Typ | Beskrivning |
 | --------- | -------- | ---- | ----------- |
-| <*värde*> | Yes | Valfri | Det värde som ska konverteras. Om det här värdet är null eller utvärderas till null, konverteras värdet till ett tomt sträng `""` värde (). <p><p>Om du till exempel tilldelar en sträng variabel till en icke-befintlig egenskap, som du kan komma åt med `?` operatorn, konverteras värdet null till en tom sträng. Att jämföra ett null-värde är dock inte detsamma som att jämföra en tom sträng. |
+| <*värde*> | Ja | Valfri | Det värde som ska konverteras. Om det här värdet är null eller utvärderas till null, konverteras värdet till ett tomt sträng `""` värde (). <p><p>Om du till exempel tilldelar en sträng variabel till en icke-befintlig egenskap, som du kan komma åt med `?` operatorn, konverteras värdet null till en tom sträng. Att jämföra ett null-värde är dock inte detsamma som att jämföra en tom sträng. |
 |||||
 
 | Returvärde | Typ | Beskrivning |
@@ -3888,8 +3888,8 @@ sub(<minuend>, <subtrahend>)
 
 | Parameter | Krävs | Typ | Beskrivning |
 | --------- | -------- | ---- | ----------- |
-| <*MINUEND*> | Yes | Heltal eller flyttal | Talet som *SUBTRAHEND* ska subtraheras från |
-| <*SUBTRAHEND*> | Yes | Heltal eller flyttal | Det tal som ska subtraheras från *MINUEND* |
+| <*MINUEND*> | Ja | Heltal eller flyttal | Talet som *SUBTRAHEND* ska subtraheras från |
+| <*SUBTRAHEND*> | Ja | Heltal eller flyttal | Det tal som ska subtraheras från *MINUEND* |
 |||||
 
 | Returvärde | Typ | Beskrivning |
@@ -3920,8 +3920,8 @@ substring('<text>', <startIndex>, <length>)
 | Parameter | Krävs | Typ | Beskrivning |
 | --------- | -------- | ---- | ----------- |
 | <*information*> | Ja | Sträng | Strängen vars tecken du vill ha |
-| <*Start*> | Yes | Integer | Ett positivt tal som är lika med eller större än 0 som du vill använda som start position eller index värde |
-| <*krävande*> | No | Integer | Ett positivt antal tecken som du vill ha i under strängen |
+| <*Start*> | Ja | Integer | Ett positivt tal som är lika med eller större än 0 som du vill använda som start position eller index värde |
+| <*krävande*> | Nej | Integer | Ett positivt antal tecken som du vill ha i under strängen |
 |||||
 
 > [!NOTE]
@@ -3957,7 +3957,7 @@ subtractFromTime('<timestamp>', <interval>, '<timeUnit>', '<format>'?)
 | Parameter | Krävs | Typ | Beskrivning |
 | --------- | -------- | ---- | ----------- |
 | <*tidsstämpel*> | Ja | Sträng | Den sträng som innehåller tidsstämpeln |
-| <*intervall*> | Yes | Integer | Antalet angivna tidsenheter som ska subtraheras |
+| <*intervall*> | Ja | Integer | Antalet angivna tidsenheter som ska subtraheras |
 | <*timeUnit*> | Ja | Sträng | Den tidsenhet som ska användas med *Interval*: "sekund", "minut", "timme", "dag", "vecka", "månad", "år" |
 | <*formatering*> | Nej | Sträng | Antingen en [enskild format identifierare](/dotnet/standard/base-types/standard-date-and-time-format-strings) eller ett [anpassat format mönster](/dotnet/standard/base-types/custom-date-and-time-format-strings). Standardformat för tidsstämpeln är ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (ÅÅÅÅ-MM-ddTHH: mm: SS. fffffffK), som följer [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) och bevarar tids zons information. |
 |||||
@@ -4000,8 +4000,8 @@ take([<collection>], <count>)
 
 | Parameter | Krävs | Typ | Beskrivning |
 | --------- | -------- | ---- | ----------- |
-| <*samlingen*> | Yes | Sträng eller matris | Den samling vars objekt du vill ha |
-| <*reparationer*> | Yes | Integer | Ett positivt heltal för antalet objekt som du vill ha från fram sidan |
+| <*samlingen*> | Ja | Sträng eller matris | Den samling vars objekt du vill ha |
+| <*reparationer*> | Ja | Integer | Ett positivt heltal för antalet objekt som du vill ha från fram sidan |
 |||||
 
 | Returvärde | Typ | Beskrivning |
@@ -4215,7 +4215,7 @@ triggerMultipartBody(<index>)
 
 | Parameter | Krävs | Typ | Beskrivning |
 | --------- | -------- | ---- | ----------- |
-| <*Tabbindex*> | Yes | Integer | Indexets värde för den del som du vill använda |
+| <*Tabbindex*> | Ja | Integer | Indexets värde för den del som du vill använda |
 |||||
 
 | Returvärde | Typ | Beskrivning |
@@ -4284,7 +4284,7 @@ union([<collection1>], [<collection2>], ...)
 
 | Parameter | Krävs | Typ | Beskrivning |
 | --------- | -------- | ---- | ----------- |
-| <*collection1*> <*collection2*>...  | Yes | Matris eller objekt, men inte båda | Samlingarna där du vill ha *alla* objekt |
+| <*collection1*> <*collection2*>...  | Ja | Matris eller objekt, men inte båda | Samlingarna där du vill ha *alla* objekt |
 |||||
 
 | Returvärde | Typ | Beskrivning |
@@ -4748,8 +4748,8 @@ xpath('<xml>', '<xpath>')
 
 | Parameter | Krävs | Typ | Beskrivning |
 | --------- | -------- | ---- | ----------- |
-| <*fil*> | Yes | Valfri | XML-sträng för att söka efter noder eller värden som matchar ett XPath-uttrycks värde |
-| <*XPath*> | Yes | Valfri | XPath-uttryck som används för att hitta matchande XML-noder eller värden |
+| <*fil*> | Ja | Valfri | XML-sträng för att söka efter noder eller värden som matchar ett XPath-uttrycks värde |
+| <*XPath*> | Ja | Valfri | XPath-uttryck som används för att hitta matchande XML-noder eller värden |
 |||||
 
 | Returvärde | Typ | Beskrivning |

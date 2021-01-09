@@ -13,12 +13,12 @@ ms.date: 09/01/2020
 ms.author: curtand
 ms.reviewer: kexia
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: caa2c66d66cce09f5b5b0fe0948ab924389d756e
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 0cb5e3463eda5d77bbbdefe223954105fd125c71
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033790"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98033990"
 ---
 # <a name="common-problems-with-two-factor-verification-and-your-work-or-school-account"></a>Vanliga problem med tvåstegsverifiering och ditt arbets- eller skolkonto
 
@@ -74,7 +74,7 @@ Att inte ta emot verifierings koden är ett vanligt problem. Problemet är vanli
 
 Prova detta | Information om vägledning
 --------- | ------------
-Använd Microsoft Authenticator-appen eller verifierings koderna | Du får "du har nått vår gräns för verifierings anrop" eller "du har nått vår gräns för text verifierings koder" fel meddelanden under inloggningen. <br/><br/>Microsoft kan begränsa upprepade autentiseringsförsök som utförs av samma användare under en kort tids period. Den här begränsningen gäller inte för Microsoft Authenticator eller verifierings koden. Om du har nått dessa gränser kan du använda Authenticator-appen, verifierings koden eller försöka logga in igen om några minuter.
+Använd Microsoft Authenticator-appen eller verifierings koderna | Du får "du har nått vår gräns för verifierings anrop" eller "du har nått vår gräns för text verifierings koder" fel meddelanden under inloggningen. <br/><br/>Microsoft kan begränsa upprepade autentiseringsförsök som utförs av samma användare under en kort tids period. Den här begränsningen gäller inte för Microsoft Authenticator eller verifierings koden. Om du har nått dessa gränser kan du använda Authenticator-appen, verifierings koden eller försöka logga in igen om några minuter. <br/><br/> Vi har tyvärr problem med att verifiera ditt konto. fel meddelande visas under inloggningen. <br/><br/> Microsoft kan begränsa eller blockera röst-eller SMS-autentiseringsförsök som utförs av samma användare, telefonnummer eller organisation på grund av ett stort antal misslyckade röst-eller SMS-autentiseringsförsök. Om du får det här felet kan du prova en annan metod, till exempel autentiserare eller verifierings kod, eller kontakta administratören för support.
 Starta om din mobila enhet | Ibland behöver enheten bara en uppdatering. När du startar om enheten avslutas alla bakgrunds processer och-tjänster. Omstarten stänger också av enhetens kärn komponenter. Alla tjänster och komponenter uppdateras när du startar om enheten.
 Kontrol lera att din säkerhets information är korrekt | Kontrol lera att informationen om säkerhets verifierings metoden är korrekt, särskilt dina telefonnummer. Om du anger fel telefonnummer hamnar alla aviseringar till det felaktiga numret. Den användaren är lyckligt vis inte att kunna göra något med aviseringarna, men du kan inte heller logga in på ditt konto. Om du vill kontrol lera att informationen är korrekt läser du anvisningarna i artikeln [Hantera inställningar för metod för att hantera dina inställningar](multi-factor-authentication-end-user-manage-settings.md) .
 Kontrol lera att dina meddelanden är aktiverade | Se till att dina meddelanden är aktiverade på den mobila enheten. Se till att följande meddelande lägen är tillåtna: <br/><br/> &bull; Telefonsamtal <br/> &bull; Din app för autentisering <br/> &bull; Din app för SMS-meddelanden <br/><br/> Se till att dessa lägen skapar en avisering som är _synlig_ på enheten.

@@ -3,14 +3,14 @@ title: Azure Kubernetes service (AKS) med SLA för drift tid
 description: Lär dig mer om SLA-erbjudandet (tillval) för API-servern för Azure Kubernetes service (AKS).
 services: container-service
 ms.topic: conceptual
-ms.date: 06/24/2020
+ms.date: 01/08/2021
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: d9d22b54ef2534cf0adb205175fdc3f1c57205fb
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 95728ca14b96adf7396ca13888107477d953b2a9
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97607347"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98033344"
 ---
 # <a name="azure-kubernetes-service-aks-uptime-sla"></a>SLA för Azure Kubernetes service (AKS) drift tid
 
@@ -26,7 +26,7 @@ Kunder kan ändå skapa obegränsat antal kostnads fria kluster med ett service 
 ## <a name="region-availability"></a>Regional tillgänglighet
 
 * SLA för drift tid är tillgängligt i offentliga regioner och Azure Government regioner där [AKS stöds](https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service).
-* SLA för drift tid är tillgängligt för [privata AKS-kluster][private-clusters] i alla regioner där AKS stöds.
+* SLA för drift tid är tillgängligt för [privata AKS-kluster][private-clusters] i alla offentliga regioner där AKS stöds.
 
 ## <a name="sla-terms-and-conditions"></a>Villkor för SLA
 

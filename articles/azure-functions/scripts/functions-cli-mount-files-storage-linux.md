@@ -4,12 +4,12 @@ description: Skapa en server lös python Function-app och montera en befintlig f
 ms.topic: sample
 ms.date: 03/01/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 89cf1422c70a49497a1bc43e42248612e0c8dd83
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 00bf0ecc9db3cf369fd75b427dcfba686aed0ed5
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97930913"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98035129"
 ---
 # <a name="mount-a-file-share-to-a-python-function-app-using-azure-cli"></a>Montera en fil resurs i en python Function-app med hjälp av Azure CLI
 
@@ -26,9 +26,9 @@ Den här Azure Functions exempel skriptet skapar en Function-app och skapar en r
 
 ## <a name="sample-script"></a>Exempelskript
 
-Det här skriptet skapar en Azure Function-app med hjälp av [förbruknings planen](../consumption-plan.md).
+Det här skriptet skapar en Function-app i Azure Functions med hjälp av [förbruknings planen](../consumption-plan.md).
 
-[!code-azurecli-interactive[main](../../../cli_scripts/azure-functions/functions-cli-mount-files-storage-linux/functions-cli-mount-files-storage-linux.sh "Create an Azure Function on a Consumption plan")]
+[!code-azurecli-interactive[main](../../../cli_scripts/azure-functions/functions-cli-mount-files-storage-linux/functions-cli-mount-files-storage-linux.sh "Create a function app on a Consumption plan")]
 
 [!INCLUDE [cli-script-clean-up](../../../includes/cli-script-clean-up.md)]
 
@@ -36,7 +36,7 @@ Det här skriptet skapar en Azure Function-app med hjälp av [förbruknings plan
 
 Varje kommando i tabellen länkar till kommandospecifik dokumentation. I det här skriptet används följande kommandon:
 
-| Kommando | Kommentarer |
+| Kommando | Anteckningar |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Skapar en resursgrupp där alla resurser lagras. |
 | [az storage account create](/cli/azure/storage/account#az-storage-account-create) | Konfigurerar ett Azure Storage-konto. |

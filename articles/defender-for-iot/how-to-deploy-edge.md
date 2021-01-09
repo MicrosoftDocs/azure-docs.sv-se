@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/30/2020
 ms.author: mlottner
-ms.openlocfilehash: c2b440413599ce07112231af17daa0bc14817b76
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 9ac283721526488f587fcabc68348dafac1835db
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97832785"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98033361"
 ---
 # <a name="deploy-a-security-module-on-your-iot-edge-device"></a>Distribuera en säkerhetsmodul på din IoT Edge-enhet
 
@@ -51,13 +51,13 @@ Använd följande steg för att distribuera en Defender for IoT-säkerhetsmodul 
 
 1. Öppna **Marketplace** från Azure Portal.
 
-1. Välj **Sakernas Internet** och Sök sedan efter **Defender för IoT** och välj den.
+1. Välj **Sakernas Internet** och sök efter **Azure Security Center för IoT** och välj den.
 
    :::image type="content" source="media/howto/edge-onboarding-8.png" alt-text="Välj Defender för IoT":::
 
-1. Konfigurera distributionen genom att klicka på **skapa** .
+1. Välj **skapa** för att konfigurera distributionen.
 
-1. Välj Azure- **prenumerationen** för din IoT Hub och välj sedan **IoT Hub**.<br>Välj **distribuera till en enhet** för att rikta in dig på en enskild enhet eller Välj **distribuera i skala** för att rikta flera enheter och klicka på **skapa**. Mer information om [hur du](../iot-edge/how-to-deploy-at-scale.md)distribuerar i skala finns i distribuera.
+1. Välj Azure- **prenumerationen** för din IoT Hub och välj sedan **IoT Hub**.<br>Välj **distribuera till en enhet** för att rikta in dig på en enskild enhet eller Välj **distribuera i skala** för att rikta flera enheter och välj **skapa**. Mer information om [hur du](../iot-edge/how-to-deploy-at-scale.md)distribuerar i skala finns i distribuera.
 
     >[!Note]
     >Om du har valt **distribuera i skala** lägger du till enhets namnet och informationen innan du fortsätter till fliken **Lägg till moduler** i följande instruktioner.
@@ -68,7 +68,7 @@ Slutför varje steg för att slutföra din IoT Edge-distribution för Defender f
 
 1. Välj modulen **AzureSecurityCenterforIoT** .
 1. På fliken **Modulnamn** ändrar du **namnet** till **azureiotsecurity**.
-1. På fliken **miljön variabler** lägger du till en variabel vid behov (till exempel fel söknings nivå).
+1. På fliken **miljövariabler** lägger du till en variabel vid behov (till exempel kan du lägga till *fel söknings nivå* och ange den till något av följande värden: "oåterkallelig", "fel", "varning" eller "information").
 1. På fliken **behållare skapa alternativ** lägger du till följande konfiguration:
 
     ``` json
@@ -112,8 +112,12 @@ Slutför varje steg för att slutföra din IoT Edge-distribution för Defender f
 #### <a name="step-2-runtime-settings"></a>Steg 2: körnings inställningar
 
 1. Välj **körnings inställningar**.
-1. Ändra **bilden** till **MCR.Microsoft.com/azureiotedge-Hub:1.0.8.3** under **Edge Hub**.
-1. Kontrol lera att **skapa-alternativ** har angetts till följande konfiguration:
+2. Ändra **bilden** till **MCR.Microsoft.com/azureiotedge-Hub:1.0.8.3** under **Edge Hub**.
+
+    >[!Note]
+    > För närvarande stöds version 1.0.8.3 eller äldre.
+
+3. Kontrol lera att **skapa-alternativ** har angetts till följande konfiguration:
 
     ``` json
     {
@@ -139,9 +143,9 @@ Slutför varje steg för att slutföra din IoT Edge-distribution för Defender f
     }
     ```
 
-1. Välj **Spara**.
+4. Välj **Spara**.
 
-1. Välj **Nästa**.
+5. Välj **Nästa**.
 
 #### <a name="step-3-specify-routes"></a>Steg 3: Ange vägar
 
