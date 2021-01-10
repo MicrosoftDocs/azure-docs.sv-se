@@ -3,12 +3,12 @@ title: Händelsebaserade videoinspelningar till molnet och uppspelningen från m
 description: I den här självstudien får du lära dig hur du använder Azure Live Video Analytics på Azure IoT Edge för att registrera en Event-baserad videoinspelning i molnet och spela upp den från molnet igen.
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: 8f3ecdf7e4260d700f31663852abbb39474cd474
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: cfb4648d991565470133d603194c07b797f89311
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97401684"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060443"
 ---
 # <a name="tutorial-event-based-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>Självstudie: Event-baserad videoinspelning till molnet och uppspelningen från molnet
 
@@ -36,7 +36,7 @@ Läs de här artiklarna innan du börjar:
 * [Så här redigerar du Deployment. * .template.jspå](https://github.com/microsoft/vscode-azure-iot-edge/wiki/How-to-edit-deployment.*.template.json)
 * Avsnitt om [hur du deklarerar vägar i IoT Edge distributions manifest](../../iot-edge/module-composition.md#declare-routes)
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Krav för den här självstudien är:
 
@@ -53,6 +53,9 @@ I slutet av de här stegen har du relevanta Azure-resurser distribuerade i din A
 * Azure-lagringskonto
 * Azure Media Services konto
 * Virtuella Linux-datorer i Azure med [IoT Edge runtime](../../iot-edge/how-to-install-iot-edge.md) installerat
+
+> [!TIP]
+> Om du stöter på problem med Azure-resurser som skapas, kan du läsa vår **[fel söknings guide](troubleshoot-how-to.md#common-error-resolutions)** för att lösa vanliga problem som uppstår.
 
 ## <a name="concepts"></a>Begrepp
 
@@ -230,7 +233,7 @@ Följ dessa steg om du vill visa händelserna från modulen objectCounter och fr
      
         ```
         {
-          "@apiVersion": "1.0",
+          "@apiVersion": "2.0",
           "name": "Sample-Graph-1",
           "properties": {
             "topologyName": "EVRtoAssetsOnObjDetect",
@@ -277,7 +280,7 @@ I följande meddelanden definieras program egenskaperna och innehållet i bröd 
 
 ### <a name="mediasessionestablished-event"></a>MediaSessionEstablished-händelse 
 
-När ett medie diagram instansieras försöker RTSP-Källnoden att ansluta till RTSP-servern som körs på RTSP Simulator-behållaren. Om det lyckas skrivs den här händelsen ut. Händelse typen är Microsoft. Media. MediaGraph. Diagnostics. MediaSessionEstablished.
+När ett medie diagram instansieras försöker RTSP-Källnoden att ansluta till RTSP-servern som körs på RTSP Simulator-behållaren. Om det lyckas skrivs den här händelsen ut. Händelse typen är **Microsoft. Media. MediaGraph. Diagnostics. MediaSessionEstablished**.
 
 ```
 [IoTHubMonitor] [5:53:17 PM] Message received from [lva-sample-device/lvaEdge]:
@@ -325,7 +328,7 @@ Du kan se att fler av de här händelserna visas som andra Last bilar identifier
 
 ### <a name="recordingstarted-event"></a>RecordingStarted-händelse
 
-Nästan omedelbart efter att objekt räknaren har skickat händelsen visas en händelse av typen Microsoft. Media. Graph. Operational. RecordingStarted:
+Nästan omedelbart efter att objekt räknaren har skickat händelsen visas en händelse av typen **Microsoft. Media. Graph. Operational. RecordingStarted**:
 
 ```
 [IoTHubMonitor] [5:53:46 PM] Message received from [lva-sample-device/lvaEdge]:
@@ -348,7 +351,7 @@ Nästan omedelbart efter att objekt räknaren har skickat händelsen visas en h�
 
 ### <a name="recordingavailable-event"></a>RecordingAvailable-händelse
 
-När noden till gångs mottagare har laddat upp video till till gången, genererar den här händelsen av typen Microsoft. Media. Graph. Operational. RecordingAvailable:
+När noden till gångs mottagare har laddat upp video till till gången, genererar den här händelsen av typen **Microsoft. Media. Graph. Operational. RecordingAvailable**:
 
 ```
 [IoTHubMonitor] [5:54:15 PM] Message received from [lva-sample-device/lvaEdge]:
@@ -371,7 +374,7 @@ Den här händelsen anger att tillräckligt med data skrevs till till gången f�
 
 ### <a name="recordingstopped-event"></a>RecordingStopped-händelse
 
-Om du granskar aktiverings inställningarna (maximumActivationTime) för noden signal grind processor i [topologin](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/evr-hubMessage-assets/topology.json)ser du att porten är inställd på att stänga efter att 30 sekunders video har skickats. Ungefär 30 sekunder efter RecordingStarted-händelsen bör du se en händelse av typen Microsoft. Media. Graph. Operational. RecordingStopped. Den här händelsen anger att noden till gångs mottagare har stoppat inspelningen av videon till till gången.
+Om du granskar aktiverings inställningarna (maximumActivationTime) för noden signal grind processor i [topologin](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/evr-hubMessage-assets/topology.json)ser du att porten är inställd på att stänga efter att 30 sekunders video har skickats. Ungefär 30 sekunder efter RecordingStarted-händelsen bör du se en händelse av typen **Microsoft. Media. Graph. Operational. RecordingStopped**. Den här händelsen anger att noden till gångs mottagare har stoppat inspelningen av videon till till gången.
 
 ```
 [IoTHubMonitor] [5:54:15 PM] Message received from [lva-sample-device/lvaEdge]:

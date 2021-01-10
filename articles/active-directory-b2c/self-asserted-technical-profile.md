@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 10/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 14195ad4638c724cf0c8dd46945a0da79ec0e4ec
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 08b08e3e799ff7b579889a62ecec70677a3cbce9
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509708"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98059066"
 ---
 # <a name="define-a-self-asserted-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definiera en egen kontrollerad teknisk profil i en Azure Active Directory B2C anpassad princip
 
@@ -208,7 +208,7 @@ Du kan också anropa en REST API teknisk profil med din affärs logik, skriva ö
 | anger. showCancelButton | Nej | Visar knappen Avbryt. Möjliga värden: `true` (standard) eller `false` |
 | anger. showContinueButton | Nej | Visar knappen Fortsätt. Möjliga värden: `true` (standard) eller `false` |
 | Setting. showSignupLink <sup>2</sup>| Nej | Visar registrerings knappen. Möjliga värden: `true` (standard) eller `false` |
-| Setting. forgotPasswordLinkLocation <sup>2</sup>| Nej| Visar länken Glömt lösen ord. Möjliga värden: `AfterInput` (standard) länken visas längst ned på sidan eller `None` tar bort länken Glömt lösen ord.|
+| Setting. forgotPasswordLinkLocation <sup>2</sup>| Nej| Visar länken Glömt lösen ord. Möjliga värden: `AfterLabel` (standard) visar länken direkt efter etiketten eller efter fältet för lösen ords Indatatyp när det inte finns någon etikett,  `AfterInput` visar länken efter fältet lösen ords Indatatyp, `AfterButtons` visar länken längst ned i formuläret efter knapparna eller `None` tar bort länken Glömt lösen ordet.|
 | Setting. enableRememberMe <sup>2</sup>| Nej| Visar kryss rutan [Håll mig inloggad](session-behavior.md?pivots=b2c-custom-policy#enable-keep-me-signed-in-kmsi) . Möjliga värden: `true` , eller `false` (standard). |
 | Setting. inputVerificationDelayTimeInMilliseconds <sup>3</sup>| Nej| Förbättrar användar upplevelsen genom att vänta på att användaren slutar att skriva och sedan validera värdet. Standardvärde 2000 millisekunder. |
 | IncludeClaimResolvingInClaimsHandling  | Nej | För indata-och utgående anspråk anges om [anspråks matchning](claim-resolver-overview.md) ingår i den tekniska profilen. Möjliga värden: `true` , eller `false` (standard). Om du vill använda en anspråks lösare i den tekniska profilen ställer du in den på `true` . |

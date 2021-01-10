@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 5fa8377b3cdddb2818c04c5a75e347ff73dc07d8
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 40d2f957ce115b43a1dcc138b86e05ec9cc47384
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96509357"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060629"
 ---
 I den här självstudien krävs följande Azure-resurser:
 
@@ -26,12 +26,15 @@ I den här snabb starten rekommenderar vi att du använder [installations skript
     bash -c "$(curl -sL https://aka.ms/lva-edge/setup-resources-for-samples)"
     ```
     
-    Om skriptet har slutförts bör du se alla nödvändiga resurser i din prenumeration.
+    När skriptet har slutförts bör du se alla nödvändiga resurser i din prenumeration.
 1. När skriptet har körts väljer du klammerparenteserna för att exponera mappstrukturen. Du ser några filer i katalogen *~/clouddrive/lva-Sample* . Intressanthet i den här snabb starten är:
 
      * ***~/clouddrive/lva-Sample/Edge-Deployment/.env** _ – den här filen innehåller egenskaper som Visual Studio Code använder för att distribuera moduler till en Edge-enhet.
-     _ ***~/clouddrive/lva-sample/appsetting.jspå*** -Visual Studio Code använder den här filen för att köra exempel koden.
+     _ ***~/clouddrive/lva-sample/appsetting.jspå** _-Visual Studio Code använder den här filen för att köra exempel koden.
      
     Du behöver dessa filer när du konfigurerar din utvecklings miljö i Visual Studio Code i nästa avsnitt. Du kanske vill kopiera dem till en lokal fil för tillfället.
     
     ![Appinställningar](../../../media/quickstarts/clouddrive.png)
+
+> [!TIP]
+> Om du stöter på problem med Azure-resurser som skapas, kan du läsa vår _ *[fel söknings guide](../../../troubleshoot-how-to.md#common-error-resolutions)** för att lösa vanliga problem som uppstår.

@@ -3,12 +3,12 @@ title: Video analys i real tid för IoT Edge viktig information – Azure
 description: Det här avsnittet innehåller viktig information om real tids analys av IoT Edge-versioner, förbättringar, fel korrigeringar och kända problem.
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: 2800d41340e45867ea4126733cdb5968cf8b91c5
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 7761fee8f23b5be259f9a5c278f761fa4ce92fbf
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400853"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98059984"
 ---
 # <a name="live-video-analytics-on-iot-edge-release-notes"></a>Viktig information om live video analys i IoT Edge
 
@@ -33,7 +33,7 @@ Den här versionen är den offentliga för hands versionen av video analys på I
 * Stöd har lagts till för användning av fler än en HTTP-tilläggs processor och gRPC förlängnings processor per diagram-topologi.
 * Stöd har lagts till för disk utrymmes hantering för Sink-noder.
 * `MediaGraphGrpcExtension` Node stöder nu [extensionConfiguration](grpc-extension-protocol.md) -egenskapen för att använda flera AI-modeller på en enda gRPC-Server.
-* Stöd för insamling av mått för Live Video Analytics-modul i [Prometheus-format](https://prometheus.io/docs/practices/naming/) har lagts till 
+* Stöd för insamling av mått för Live Video Analytics-modul i [Prometheus-format](https://prometheus.io/docs/practices/naming/)har lagts till. Läs mer om hur du [samlar in mått och vyer i Azure Monitor.](monitoring-logging.md#azure-monitor-collection-via-telegraf) 
 * Filter processor för RAM hastighet är **inaktuell**.  
     * Ram frekvens hantering är nu tillgängligt i själva diagram tillägget processor.
 

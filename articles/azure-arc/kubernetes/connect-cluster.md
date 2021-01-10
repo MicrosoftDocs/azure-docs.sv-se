@@ -1,5 +1,5 @@
 ---
-title: Ansluta ett Azure Arc-aktiverat Kubernetes-kluster (för hands version)
+title: Ansluta ett Azure Arc-aktiverat Kubernetes-kluster (förhandsversion)
 services: azure-arc
 ms.service: azure-arc
 ms.date: 05/19/2020
@@ -9,14 +9,14 @@ ms.author: mlearned
 description: Anslut ett Azure Arc-aktiverat Kubernetes-kluster med Azure Arc
 keywords: Kubernetes, båge, Azure, K8s, behållare
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 7f402d86ac1287753bc2deab53b24bb796644992
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 8155ed709045626dee44fb499304ff5244a61b54
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97583940"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060256"
 ---
-# <a name="connect-an-azure-arc-enabled-kubernetes-cluster-preview"></a>Ansluta ett Azure Arc-aktiverat Kubernetes-kluster (för hands version)
+# <a name="connect-an-azure-arc-enabled-kubernetes-cluster-preview"></a>Ansluta ett Azure Arc-aktiverat Kubernetes-kluster (förhandsversion)
 
 Det här dokumentet beskriver processen för att ansluta ett CNCF-certifierat Kubernetes-kluster (Cloud Native Computing Foundation) som AKS-motor på Azure, AKS-Engine på Azure Stack Hub, GKE, EKS och VMware vSphere Cluster till Azure Arc.
 
@@ -30,7 +30,7 @@ Kontrol lera att du har följande krav:
 * Du behöver en kubeconfig-fil för att få åtkomst till klustret och kluster administratörs rollen i klustret för distribution av Arc-aktiverade Kubernetes-agenter.
 * Användaren eller tjänstens huvud namn som används med `az login` och- `az connectedk8s connect` kommandon måste ha behörigheterna Läs och skriv för resurs typen Microsoft. Kubernetes/connectedclusters. Rollen "Kubernetes kluster – Azure Arc onboarding" har dessa behörigheter och kan användas för roll tilldelningar för användarens eller tjänstens huvud namn.
 * Helm 3 krävs för onboarding av klustret med connectedk8s-tillägget. [Installera den senaste versionen av Helm 3](https://helm.sh/docs/intro/install) för att uppfylla det här kravet.
-* Azure CLI version 2.3 + krävs för att installera Azure Arc-aktiverade Kubernetes CLI-tillägg. [Installera Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) eller uppdatera till den senaste versionen för att säkerställa att du har Azure CLI version 2.3 +.
+* Azure CLI version 2.15 + krävs för att installera Azure Arc-aktiverade Kubernetes CLI-tillägg. [Installera Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) eller uppdatera till den senaste versionen för att säkerställa att du har Azure CLI-version 2.15 +.
 * Installera Arc-aktiverade Kubernetes CLI-tillägg:
   
   Installera `connectedk8s` tillägget, som hjälper dig att ansluta Kubernetes-kluster till Azure:

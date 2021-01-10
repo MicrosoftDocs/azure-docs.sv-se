@@ -1,15 +1,15 @@
 ---
 title: Distribuera en huvud boks infrastrukturs konsortium i Azure Kubernetes-tjänsten
 description: Så här distribuerar och konfigurerar du ett huvud nätverk för ett huvud nätverk i Azure Kubernetes service
-ms.date: 08/06/2020
+ms.date: 01/08/2021
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: 081c7a10ee091f573e8f999c94588ef85c784f74
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1ab5b9fadfbb0f1c9c1cdf25ee319c7775a593ed
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89651569"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060324"
 ---
 # <a name="deploy-hyperledger-fabric-consortium-on-azure-kubernetes-service"></a>Distribuera en huvud boks infrastrukturs konsortium i Azure Kubernetes-tjänsten
 
@@ -66,13 +66,13 @@ För att börja måste du ha en Azure-prenumeration som har stöd för distribut
 
 Gå till [Azure Portal](https://portal.azure.com)om du vill komma igång med distributionen av nätverks komponenter för huvud nätverk.
 
-1. Välj **skapa en resurs**  >  **blockchain**och Sök sedan efter **Ledger Fabric på Azure Kubernetes service (för hands version)**.
+1. Välj **skapa en resurs**  >  **blockchain** och Sök sedan efter **Ledger Fabric på Azure Kubernetes service (för hands version)**.
 
 2. Ange projekt informationen på fliken **grundläggande** .
 
     ![Skärm bild som visar fliken grundläggande.](./media/hyperledger-fabric-consortium-azure-kubernetes-service/create-for-hyperledger-fabric-basics.png)
 
-3. Ange följande uppgifter:
+3. Ange följande information:
     - **Prenumeration**: Välj namnet på den prenumeration där du vill distribuera nätverks komponenterna för huvud nätverket.
     - **Resurs grupp**: skapa en ny resurs grupp eller Välj en befintlig tom resurs grupp. Resurs gruppen innehåller alla resurser som distribueras som en del av mallen.
     - **Region**: Välj den Azure-region där du vill distribuera Azure Kubernetes service-klustret för de båda komponenterna i huvud strukturen. Mallen är tillgänglig i alla regioner där AKS är tillgänglig. Välj en region där din prenumeration inte når kvot gränsen för den virtuella datorn (VM).
@@ -81,9 +81,9 @@ Gå till [Azure Portal](https://portal.azure.com)om du vill komma igång med dis
 
     ![Skärm bild som visar fliken infrastruktur inställningar.](./media/hyperledger-fabric-consortium-azure-kubernetes-service/create-for-hyperledger-fabric-settings.png)
 
-5. Ange följande uppgifter:
+5. Ange följande information:
     - **Organisations namn**: Ange namnet på den huvud organisations organisation som krävs för olika data Plans åtgärder. Organisations namnet måste vara unikt för varje distribution.
-    - **Nätverks komponent för infrastruktur resurser**: Välj antingen **beställnings tjänst** eller **peer-noder**baserat på den blockchain nätverks komponent som du vill konfigurera.
+    - **Nätverks komponent för infrastruktur resurser**: Välj antingen **beställnings tjänst** eller **peer-noder** baserat på den blockchain nätverks komponent som du vill konfigurera.
     - **Antal noder**: följande två typer av noder:
         - **Beställnings tjänst**: Välj antalet noder för att ge fel tolerans till nätverket. Antalet noder som stöds är 3, 5 och 7.
         - **Peer-noder**: du kan välja 1 till 10 noder baserat på ditt krav.
@@ -100,13 +100,13 @@ Gå till [Azure Portal](https://portal.azure.com)om du vill komma igång med dis
 
     ![Skärm bild som visar fliken A K S kluster inställningar.](./media/hyperledger-fabric-consortium-azure-kubernetes-service/create-for-hyperledger-fabric-aks-cluster-settings-1.png)
 
-7. Ange följande uppgifter:
+7. Ange följande information:
     - **Kubernetes-kluster namn**: ändra namnet på AKS-klustret, om det behövs. Det här fältet fylls i automatiskt baserat på det resurs prefix som anges.
     - **Kubernetes-version**: Välj den version av Kubernetes som ska distribueras i klustret. Utifrån den region som du valde på fliken **grundläggande** kan de tillgängliga versionerna ändras.
     - **DNS-prefix**: Ange ett namn för Domain Name System (DNS) för AKS-klustret. Du använder DNS för att ansluta till Kubernetes-API: et när du hanterar behållare när du har skapat klustret.
     - **Node-storlek**: för Kubernetes-nodens storlek kan du välja från listan över virtuella dator enheter (SKU: er) som är tillgängliga i Azure. För bästa prestanda rekommenderar vi standard DS3 v2.
     - **Antal noder**: Ange antalet Kubernetes-noder som ska distribueras i klustret. Vi rekommenderar att du behåller antalet noder som är lika med eller större än antalet noder i den infrastruktur resurs som anges på fliken **infrastruktur inställningar** .
-    - **Klient-ID för tjänstens huvud namn**: Ange klient-ID för ett befintligt huvud namn för tjänsten eller skapa ett nytt. Ett huvud namn för tjänsten krävs för AKS-autentisering. Se [stegen för att skapa ett huvud namn för tjänsten](/powershell/azure/create-azure-service-principal-azureps?view=azps-3.2.0#create-a-service-principal).
+    - **Klient-ID för tjänstens huvud namn**: Ange klient-ID för ett befintligt huvud namn för tjänsten eller skapa ett nytt. Ett huvud namn för tjänsten krävs för AKS-autentisering. Se [stegen för att skapa ett huvud namn för tjänsten](/powershell/azure/create-azure-service-principal-azureps#create-a-service-principal).
     - **Tjänstens huvud namn**: Ange klient hemligheten för tjänstens huvud namn som anges i klient-ID: t för tjänstens huvud namn.
     - **Bekräfta klient hemlighet**: bekräfta klient hemligheten för tjänstens huvud namn.
     - **Aktivera övervakning av behållare**: Välj att aktivera AKS-övervakning, vilket gör att AKS-loggarna kan push-överföras till den angivna Log Analytics-arbetsytan.
@@ -334,7 +334,7 @@ Kör följande kommando för att installera chaincode på peer-organisationen.
 ```
 Kommandot installerar chaincode på alla peer-noder i peer-organisationen som anges i `ORGNAME` miljö variabeln. Om två eller flera peer-organisationer finns i din kanal och du vill installera chaincode på alla, kör du kommandot separat för varje peer-organisation.  
 
-Följ de här stegen:  
+Gör så här:  
 
 1.  Ange `ORGNAME` och `USER_IDENTITY` enligt `peerOrg1` och kör `./azhlf chaincode install` kommandot.  
 2.  Ange `ORGNAME` och `USER_IDENTITY` enligt `peerOrg2` och kör `./azhlf chaincode install` kommandot.  
@@ -393,23 +393,35 @@ Om du använder *azhlfTool* för att installera chaincode skickar du alla peer-n
 
 ## <a name="troubleshoot"></a>Felsöka
 
-Kör följande kommandon för att hitta versionen av mall distributionen.
+### <a name="find-deployed-version"></a>Hitta distribuerad version
 
-Ange miljövariabler enligt resurs gruppen där mallen har distribuerats.
-
-```bash
-
-SWITCH_TO_AKS_CLUSTER() { az aks get-credentials --resource-group $1 --name $2 --subscription $3; }
-AKS_CLUSTER_SUBSCRIPTION=<AKSClusterSubscriptionID>
-AKS_CLUSTER_RESOURCE_GROUP=<AKSClusterResourceGroup>
-AKS_CLUSTER_NAME=<AKSClusterName>
-```
-Kör följande kommando för att skriva ut versionen av mallen.
+Kör följande kommandon för att hitta versionen av mall distributionen. Ange miljövariabler enligt resurs gruppen där mallen har distribuerats.
 
 ```bash
 SWITCH_TO_AKS_CLUSTER $AKS_CLUSTER_RESOURCE_GROUP $AKS_CLUSTER_NAME $AKS_CLUSTER_SUBSCRIPTION
 kubectl describe pod fabric-tools -n tools | grep "Image:" | cut -d ":" -f 3
+```
 
+### <a name="patch-previous-version"></a>Uppdatera tidigare version
+
+Om du har problem med att köra chaincode på alla distributioner av Template-versionen under v 3.0.0 följer du stegen nedan för att korrigera dina peer-noder med en korrigering.
+
+Hämta skriptet för peer-distribution.
+
+```bash
+curl https://raw.githubusercontent.com/Azure/Hyperledger-Fabric-on-Azure-Kubernetes-Service/master/scripts/patchPeerDeployment.sh -o patchPeerDeployment.sh; chmod 777 patchPeerDeployment.sh
+```
+
+Kör skriptet med följande kommando och ersätt parametrarna för din peer.
+
+```bash
+source patchPeerDeployment.sh <peerOrgSubscription> <peerOrgResourceGroup> <peerOrgAKSClusterName>
+```
+
+Vänta tills alla peer-noder kommer att installeras. Du kan alltid kontrol lera status för dina peer-noder i olika instanser av gränssnittet med hjälp av följande kommando.
+
+```bash
+kubectl get pods -n hlf
 ```
 
 ## <a name="support-and-feedback"></a>Support och feedback

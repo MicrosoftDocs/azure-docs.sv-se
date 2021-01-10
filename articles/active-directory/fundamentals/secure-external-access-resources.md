@@ -1,5 +1,5 @@
 ---
-title: Skydda extern åtkomst till resurser i Azure Active Directory
+title: Skydda externt samarbete i Azure Active Directory
 description: En guide för arkitekter och IT-administratörer om att skydda extern åtkomst till interna resurser
 services: active-directory
 author: BarbaraSelden
@@ -13,14 +13,14 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39300c887245a99dce2913661f6492c85a1e6722
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 7f09d2050617cbda539eee9fcda1ecfb204a015a
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97744093"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98059287"
 ---
-# <a name="securing-external-access-to-resources"></a>Skydda extern åtkomst till resurser
+# <a name="securing-external-collaboration-in-azure-active-directory-and-microsoft-365"></a>Skydda externt samarbete i Azure Active Directory och Microsoft 365
 
 Ett säkert samarbete med externa partners säkerställer att de rätt externa partnerna har lämplig åtkomst till interna resurser under rätt tid. Genom en holistisk styrnings metod kan du minska säkerhets riskerna, uppfylla efterlevnads målen och se till att du vet vem som har åtkomst.
 
@@ -43,7 +43,7 @@ Den här dokument uppsättningen är utformad för att du ska kunna flytta från
 Se följande artiklar om hur du skyddar extern åtkomst till resurser. Vi rekommenderar att du vidtar åtgärder i den angivna ordningen.
 
 
-1. [Fastställ önskad säkerhets position för extern åtkomst](1-secure-access-posture.md)
+1. [Bestäm din säkerhets position för extern åtkomst](1-secure-access-posture.md)
 
 2. [Identifiera ditt nuvarande tillstånd](2-secure-access-current-state.md)
 

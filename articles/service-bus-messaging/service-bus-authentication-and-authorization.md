@@ -3,12 +3,12 @@ title: Azure Service Bus autentisering och auktorisering | Microsoft Docs
 description: Autentisera appar för att Service Bus med autentisering med signatur för delad åtkomst (SAS).
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: a71cef6aad973f3c39ef61a8dbab313ebfca44ef
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 7b287b209fbcd5bc2782505095aeae4390107803
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92517288"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060222"
 ---
 # <a name="service-bus-authentication-and-authorization"></a>Service Bus, autentisering och auktorisering
 Det finns två sätt att autentisera och auktorisera åtkomst till Azure Service Bus resurser: Azure Activity Directory (Azure AD) och signaturer för delad åtkomst (SAS). Den här artikeln innehåller information om hur du använder dessa två typer av säkerhetsmekanismer. 
@@ -25,7 +25,7 @@ Mer information om hur du autentiserar med Azure AD finns i följande artiklar:
 > [Service Bus REST API](/rest/api/servicebus/) stöder OAuth-autentisering med Azure AD.
 
 > [!IMPORTANT]
-> Auktorisering av användare eller program med OAuth 2,0-token som returnerades av Azure AD ger överlägsen säkerhet och enkel användning över signaturer för delad åtkomst (SAS). Med Azure AD behöver du inte lagra tokens i din kod och potentiella säkerhets risker. Vi rekommenderar att du använder Azure AD med dina Azure Service Bus-program när det är möjligt. 
+> Auktorisering av användare eller program med OAuth 2,0-token som returnerades av Azure AD ger överlägsen säkerhet och enkel användning över signaturer för delad åtkomst (SAS). Med Azure AD behöver du inte lagra tokens i din kod och potentiella säkerhets risker. Vi rekommenderar att du använder Azure AD med Azure Service Bus program när det är möjligt. 
 
 ## <a name="shared-access-signature"></a>Signatur för delad åtkomst
 [SAS-autentisering](service-bus-sas.md) gör att du kan ge en användare åtkomst till Service Bus resurser med vissa rättigheter. SAS-autentisering i Service Bus inbegriper konfigurationen av en krypterings nyckel med tillhör ande rättigheter på en Service Bus resurs. Klienter kan sedan få åtkomst till den resursen genom att presentera en SAS-token som består av resurs-URI: n som används och förfallo datum signerad med den konfigurerade nyckeln.
@@ -37,7 +37,7 @@ Om du vill använda SAS kan du konfigurera ett [SharedAccessAuthorizationRule](/
 * *Namn*: identifierar regeln.
 * *PrimaryKey*: en kryptografisk nyckel som används för att signera/validera SAS-token.
 * *SecondaryKey*: en kryptografisk nyckel som används för att signera/validera SAS-token.
-* *Rättigheter*: representerar samlingen av beviljade behörigheterna **Lyssna**, **Skicka**eller **Hantera** .
+* *Rättigheter*: representerar samlingen av beviljade behörigheterna **Lyssna**, **Skicka** eller **Hantera** .
 
 Auktoriseringsregler som kon figurer ATS på namn områdes nivån kan ge åtkomst till alla entiteter i ett namn område för klienter med token som signerats med motsvarande nyckel. Du kan konfigurera upp till 12 sådana auktoriseringsregler på en Service Bus namnrymd, kö eller ämne. Som standard konfigureras en [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) med alla rättigheter för varje namnrymd när den först har tillhandahållits.
 

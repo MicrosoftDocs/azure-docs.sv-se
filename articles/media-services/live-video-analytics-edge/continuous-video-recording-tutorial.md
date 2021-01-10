@@ -3,12 +3,12 @@ title: Kontinuerlig video inspelning till molnet och uppspelningen från Cloud-s
 description: I den här självstudien får du lära dig hur du använder Azure Live Video Analytics på Azure IoT Edge för att kontinuerligt spela in video i molnet och strömma någon del av videon med hjälp av Azure Media Services.
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: c38ab1f32d1ef4e54cd8568ff17d325fabdefc31
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 8fa2b65416499e58235fa312ffdcd2d71c3cfb39
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498378"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060171"
 ---
 # <a name="tutorial-continuous-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>Självstudie: kontinuerlig video inspelning till molnet och uppspelningen från molnet
 
@@ -51,6 +51,9 @@ I slutet av de här stegen har du relevanta Azure-resurser distribuerade i din A
 * Azure Media Services konto
 * Virtuella Linux-datorer i Azure med [IoT Edge runtime](../../iot-edge/how-to-install-iot-edge.md) installerat
 
+> [!TIP]
+> Om du stöter på problem med Azure-resurser som skapas, kan du läsa vår **[fel söknings guide](troubleshoot-how-to.md#common-error-resolutions)** för att lösa vanliga problem som uppstår.
+
 ## <a name="concepts"></a>Begrepp
 
 Som det beskrivs i artikeln om [begrepp för medie diagram](media-graph-concept.md) kan du med ett medie diagram definiera:
@@ -64,7 +67,9 @@ Som det beskrivs i artikeln om [begrepp för medie diagram](media-graph-concept.
 > [!div class="mx-imgBorder"]
 > :::image type="content" source="./media/continuous-video-recording-tutorial/continuous-video-recording-overview.svg" alt-text="Mediegraf":::
 
-I den här självstudien använder du en Edge-modul som skapats med hjälp av [Live555 Media Server](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) för att simulera en RTSP-kamera. I medie grafen använder du en RTSP- [källnod](media-graph-concept.md#rtsp-source) för att hämta Live-flödet och skicka videon till [till gångs mottagarens nod](media-graph-concept.md#asset-sink), som registrerar videon till en till gång.
+I den här självstudien använder du en Edge-modul som skapats med hjälp av [Live555 Media Server](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) för att simulera en RTSP-kamera. I medie grafen använder du en RTSP- [källnod](media-graph-concept.md#rtsp-source) för att hämta Live-flödet och skicka videon till [till gångs mottagarens nod](media-graph-concept.md#asset-sink), som registrerar videon till en till gång. Videon som används i den här självstudien är [ett exempel på en motorväg](https://lvamedia.blob.core.windows.net/public/camera-300s.mkv).
+<iframe src="https://www.microsoft.com/en-us/videoplayer/embed/RE4LTY4" width="640" height="320" allowFullScreen="true" frameBorder="0"></iframe>
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4LTY4]
 
 ## <a name="set-up-your-development-environment"></a>Ställt in din utvecklingsmiljö
 
@@ -169,14 +174,14 @@ När du använder live video analys i IoT Edge-modulen för att spela in direktu
 
     > [!div class="mx-imgBorder"]
     > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Visa utförligt meddelande":::
-1. <!--In Visual Studio Code, go-->Gå till src/Cloud-to-Device-console-app/operations.jspå.
+1. Gå till src/Cloud-to-Device-console-app/operations.jspå.
 1. Under noden **GraphTopologySet** redigerar du följande:
 
     `"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/cvr-asset/topology.json" `
 1. Se sedan till att värdet för **topologyName** matchar värdet för egenskapen **Name** i föregående graf-topologi under **GraphInstanceSet** -och **GraphTopologyDelete** -noderna:
 
     `"topologyName" : "CVRToAMSAsset"`  
-1. Öppna [topologin](https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/cvr-asset/topology.json) i en webbläsare och titta på assetNamePattern. För att se till att du har en till gång med ett unikt namn kanske du vill ändra graf-instansnamnet i operations.jspå filen (från standardvärdet för Sample-Graph-1).
+1. Öppna [topologin](https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/cvr-asset/2.0/topology.json) i en webbläsare och titta på assetNamePattern. För att se till att du har en till gång med ett unikt namn kanske du vill ändra graf-instansnamnet i operations.jspå filen (från standardvärdet för Sample-Graph-1).
 
     `"assetNamePattern": "sampleAsset-${System.GraphTopologyName}-${System.GraphInstanceName}"`    
 1. Starta en felsökningssession genom att välja F5. Du ser vissa meddelanden som skrivs ut i **terminalfönstret** .
@@ -187,7 +192,7 @@ När du använder live video analys i IoT Edge-modulen för att spela in direktu
     Executing operation GraphTopologyList
     -----------------------  Request: GraphTopologyList  --------------------------------------------------
     {
-      "@apiVersion": "1.0"
+      "@apiVersion": "2.0"
     }
     ---------------  Response: GraphTopologyList - Status: 200  ---------------
     {
@@ -204,7 +209,7 @@ När du använder live video analys i IoT Edge-modulen för att spela in direktu
      
      ```
      {
-       "@apiVersion": "1.0",
+       "@apiVersion": "2.0",
        "name": "Sample-Graph-1",
        "properties": {
          "topologyName": "CVRToAMSAsset",
@@ -277,7 +282,7 @@ När graf-instansen aktive ras försöker RTSP-Källnoden att ansluta till RTSP-
 
 ### <a name="recordingstarted-event"></a>RecordingStarted-händelse
 
-När noden till gångs mottagare börjar spela in video, avger den här händelsen av typen Microsoft. Media. Graph. Operational. RecordingStarted:
+När noden till gångs mottagare börjar spela in video, avger den här händelsen av typen **Microsoft. Media. Graph. Operational. RecordingStarted**:
 
 ```
 [IoTHubMonitor] [9:42:38 AM] Message received from [lva-sample-device/lvaEdge]:
@@ -302,7 +307,7 @@ Avsnittet brödtext innehåller information om platsen för utdata. I det här f
 
 ### <a name="recordingavailable-event"></a>RecordingAvailable-händelse
 
-Som namnet antyder skickas händelsen RecordingStarted när inspelningen har startat, men video data kanske inte har laddats upp till till gången ännu. När noden till gångs mottagare har överfört video data till till gången, genererar den här händelsen av typen Microsoft. Media. Graph. Operational. RecordingAvailable:
+Som namnet antyder skickas händelsen RecordingStarted när inspelningen har startat, men video data kanske inte har laddats upp till till gången ännu. När noden till gångs mottagare har överfört video data till till gången, genererar den här händelsen av typen **Microsoft. Media. Graph. Operational. RecordingAvailable**:
 
 ```
 [IoTHubMonitor] [[9:43:38 AM] Message received from [lva-sample-device/lvaEdge]:
@@ -329,7 +334,7 @@ Avsnittet brödtext innehåller information om platsen för utdata. I det här f
 
 ### <a name="recordingstopped-event"></a>RecordingStopped-händelse
 
-När du inaktiverar graf-instansen slutar noden till gångs mottagare att spela in video till till gången. Den genererar den här händelsen av typen Microsoft. Media. Graph. Operational. RecordingStopped:
+När du inaktiverar graf-instansen slutar noden till gångs mottagare att spela in video till till gången. Den genererar den här händelsen av typen **Microsoft. Media. Graph. Operational. RecordingStopped**:
 
 ```
 [IoTHubMonitor] [11:33:31 PM] Message received from [lva-sample-device/lvaEdge]:

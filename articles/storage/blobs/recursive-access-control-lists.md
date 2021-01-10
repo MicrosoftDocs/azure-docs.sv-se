@@ -9,12 +9,12 @@ ms.date: 11/17/2020
 ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 6b48b156ca8d4c64d26d96d7bed525f251832554
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: fcee4fd12b63a0f558927269d926bac9af864488
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98046064"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98059763"
 ---
 # <a name="set-access-control-lists-acls-recursively-for-azure-data-lake-storage-gen2"></a>Ange åtkomst kontrol listor (ACL) rekursivt för Azure Data Lake Storage Gen2
 
@@ -184,7 +184,7 @@ Följande tabell visar var och en av de roller som stöds och deras inställning
 Med den här metoden kontrollerar systemet inte Azure RBAC-eller ACL-behörigheter. Hämta lagrings kontots kontext med hjälp av en konto nyckel.
 
 ```powershell
-$ctx = New-AzStorageContext -StorageAccountName '<storage-account-name>' -StorageAccountKey '<storage-account-key>'
+$ctx = New-AzStorageContext -StorageAccountName "<storage-account-name>" -StorageAccountKey "<storage-account-key>"
 ```
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)

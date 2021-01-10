@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 370b84f451e22c20c798018951a7a801e0bba826
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: 9763835142e66bbbce51cd5c863dff87f261c270
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96763952"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060168"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Metod tips och fel söknings guide för Node-program i Azure App Service Windows
 
@@ -245,9 +245,8 @@ Ditt program utlöser undantag med undantags fel – kontrol lera om `d:\\home\\
 Den vanligaste orsaken till att start tiderna för långa program är ett stort antal filer i Node- \_ modulerna. Programmet försöker läsa in de flesta av de här filerna när du startar. Som standard, eftersom filerna lagras på nätverks resursen på Azure App Service, kan det ta tid att läsa in många filer.
 Vissa lösningar för att göra den här processen snabbare är:
 
-1. Se till att du har en plan beroende struktur och inga dubbla beroenden genom att använda npm3 för att installera dina moduler.
-2. Försök att använda Lazy för att läsa in Node- \_ modulerna och inte läsa in alla moduler vid program start. Om du vill använda Lazy load måste anropet till Kräv (' module ') göras när du faktiskt behöver modulen i funktionen innan du börjar köra en kod i en modul.
-3. Azure App Service erbjuder en funktion som kallas lokal cache. Med den här funktionen kopieras innehållet från nätverks resursen till den lokala disken på den virtuella datorn. Eftersom filerna är lokala är inläsnings tiden för Node- \_ moduler mycket snabbare.
+1. Försök att använda Lazy för att läsa in Node- \_ modulerna och inte läsa in alla moduler vid program start. Om du vill använda Lazy load måste anropet till Kräv (' module ') göras när du faktiskt behöver modulen i funktionen innan du börjar köra en kod i en modul.
+2. Azure App Service erbjuder en funktion som kallas lokal cache. Med den här funktionen kopieras innehållet från nätverks resursen till den lokala disken på den virtuella datorn. Eftersom filerna är lokala är inläsnings tiden för Node- \_ moduler mycket snabbare.
 
 ## <a name="iisnode-http-status-and-substatus"></a>IISNODE http-status och under status
 

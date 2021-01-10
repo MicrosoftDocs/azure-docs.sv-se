@@ -13,12 +13,12 @@ ms.date: 01/04/2021
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40, content-perf, FY21Q1, contperf-fy21q1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: ecd7c3b034a65fa239248bf0e286181475376da2
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 0b3c2f74edff661326e97da7b06860914468c43b
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97963487"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98059355"
 ---
 # <a name="configurable-token-lifetimes-in-microsoft-identity-platform-preview"></a>Konfigurerbara livstider för token i Microsoft Identity Platform (för hands version)
 
@@ -121,9 +121,9 @@ En livs längds princip för token är en typ av princip objekt som innehåller 
 | --- | --- | --- | --- | --- | --- |
 | Maximal inaktiv tid för uppdateringstoken |MaxInactiveTime |Uppdatera token |90 dagar |10 minuter |90 dagar |
 | Högsta ålder för Single-Factor uppdaterad token |MaxAgeSingleFactor |Uppdatera tokens (för alla användare) |Tills den har återkallats |10 minuter |Till och med återkalla<sup>1</sup> |
-| Högsta ålder för Multi-Factor Refresh-token |MaxAgeMultiFactor |Uppdatera tokens (för alla användare) | 180 dagar |10 minuter |180 dagar<sup>1</sup> |
+| Högsta ålder för Multi-Factor Refresh-token |MaxAgeMultiFactor |Uppdatera tokens (för alla användare) | Tills den har återkallats |10 minuter |180 dagar<sup>1</sup> |
 | Högsta ålder för Single-Factor sessionstoken |MaxAgeSessionSingleFactor |Token för sessioner (beständiga och inte permanenta) |Tills den har återkallats |10 minuter |Till och med återkalla<sup>1</sup> |
-| Högsta ålder för Multi-Factor session |MaxAgeSessionMultiFactor |Token för sessioner (beständiga och inte permanenta) | 180 dagar |10 minuter | 180 dagar<sup>1</sup> |
+| Högsta ålder för Multi-Factor session |MaxAgeSessionMultiFactor |Token för sessioner (beständiga och inte permanenta) | Tills den har återkallats |10 minuter | 180 dagar<sup>1</sup> |
 
 * <sup>1</sup>365 dagar är den maximala explicita längden som kan anges för dessa attribut.
 

@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 01/08/2020
-ms.openlocfilehash: 41c0bd23bbd2d69506a979c5a36ac40f73258f2c
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: ab03e0bdf7761e45a134ec90685955403fbc433b
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97605521"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060392"
 ---
 # <a name="tutorial-migrate-mysql-to-azure-database-for-mysql-online-using-dms"></a>Självstudie: Migrera MySQL till Azure Database for MySQL online med DMS
 
@@ -45,7 +45,7 @@ I den här guiden får du lära dig att:
 >
 
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att slutföra den här kursen behöver du:
 
@@ -237,7 +237,7 @@ När tjänsten har skapats letar du reda på den i Azure Portal, öppnar den och
 
     ![Mappa till måldatabaser](media/tutorial-mysql-to-azure-mysql-online/dms-map-target-details.png)
    > [!NOTE] 
-   > Du kan välja flera databaser i det här steget, men varje instans av Azure Database Migration Service stöder upp till fyra databaser för samtidig migrering. Det finns också en gräns på två instanser av Azure Database Migration Service per region i en prenumeration. Om du till exempel har 40 databaser att migrera kan du bara migrera åtta av dem samtidigt, och endast om du har skapat två instanser av Azure Database Migration Service.
+   > Du kan välja flera databaser i det här steget, men varje instans av Azure Database Migration Service har stöd för upp till 4 databaser för samtidig migrering. Det finns också en gräns på 10 instanser av Azure Database Migration Service per prenumeration per region. Om du till exempel har 80 databaser att migrera kan du migrera 40 till samma region samtidigt, men endast om du har skapat 10 instanser av Azure Database Migration Service.
 
 3. Välj **Spara**. I rutan **Aktivitetsnamn** på skärmen **Migreringssammanfattning** anger du ett namn för migreringsaktiviteten och granskar sedan sammanfattningen för att se till att informationen för källa och mål matchar det du angav tidigare.
 

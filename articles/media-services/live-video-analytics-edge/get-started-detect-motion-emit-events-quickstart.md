@@ -3,12 +3,12 @@ title: Kom igång med live video analys på IoT Edge – Azure
 description: Den här snabb starten visar hur du kommer igång med live video analys på IoT Edge. Lär dig hur du identifierar rörelser i en video ström i real tid.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 8ccf2665f19b66959ce259088d0b322aec7b59f4
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.openlocfilehash: 276c2ceaa9e0bef254c70f91541a3a3db7c02d47
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98028717"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060409"
 ---
 # <a name="quickstart-get-started---live-video-analytics-on-iot-edge"></a>Snabb start: kom igång – direktsända video analyser på IoT Edge
 
@@ -21,7 +21,7 @@ När du har slutfört installations stegen kan du köra en simulerad real tids v
 
 Du kan visa följande video med detaljerade anvisningar om hur du kommer igång med real tids video analys på IoT Edge:
 
-<iframe src="https://www.microsoft.com/en-us/videoplayer/embed/RE4Hcax" width="640" height="320" allowFullScreen="true" frameBorder="0"></iframe>
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4Hcax]
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -55,9 +55,13 @@ I den här snabb starten rekommenderar vi att du använder [installations skript
     bash -c "$(curl -sL https://aka.ms/lva-edge/setup-resources-for-samples)"
     ```
     
-Om skriptet har slutförts bör du se alla nödvändiga resurser i din prenumeration. I skriptets utdata visar en resurs tabell namnet på IoT Hub. Sök efter resurs typen `Microsoft.Devices/IotHubs` och Anteckna namnet. Du behöver det här namnet i nästa steg. 
+När skriptet har slutförts bör du se alla nödvändiga resurser i din prenumeration. I skriptets utdata visar en resurs tabell namnet på IoT Hub. Sök efter resurs typen **`Microsoft.Devices/IotHubs`** och Anteckna namnet. Du behöver det här namnet i nästa steg.  
 
-Skriptet genererar också några konfigurationsfiler i katalogen *~/clouddrive/lva-Sample/* . Du behöver dessa filer senare i snabb starten.
+> [!NOTE]
+> Skriptet genererar också några konfigurationsfiler i katalogen **_~/clouddrive/lva-Sample/_* _. Du behöver dessa filer senare i snabb starten.
+
+> [!TIP]
+> Om du stöter på problem med Azure-resurser som skapas, kan du läsa vår _ *[fel söknings guide](troubleshoot-how-to.md#common-error-resolutions)** för att lösa vanliga problem som uppstår.
 
 ## <a name="deploy-modules-on-your-edge-device"></a>Distribuera moduler på din Edge-enhet
 
@@ -417,8 +421,8 @@ Anropa metoden Direct `GraphInstanceSet` med hjälp av följande nytto Last.
 Observera att denna nytto last:
 
 * Anger det Topology-namn ( `MotionDetection` ) som instansen måste skapas för.
-* Innehåller ett parameter värde för `rtspUrl` , som inte har något standardvärde i nytto lasten i graf-topologin.
-
+* Innehåller ett parameter värde för `rtspUrl` , som inte har något standardvärde i nytto lasten i graf-topologin. Det här värdet är en länk till exempel videon nedan:
+    > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4LTY4]
 Inom några sekunder visas följande svar i fönstret **utdata** :
 
 ```

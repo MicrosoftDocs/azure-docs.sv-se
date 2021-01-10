@@ -1,22 +1,22 @@
 ---
-title: Hantera indexering i Azure Cosmos DBs API för MongoDB
+title: Hantera indexering i Azure Cosmos DB-API för MongoDB
 description: Den här artikeln innehåller en översikt över Azure Cosmos DB indexerings funktioner med Azure Cosmos DB s API för MongoDB
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: how-to
-ms.date: 11/06/2020
+ms.date: 01/08/2020
 author: timsander1
 ms.author: tisande
 ms.custom: devx-track-js
-ms.openlocfilehash: e920af85c511387e66bcafcb6a140844d25f204c
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 34caca47746814046a894494ec43d9b5c977389a
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94369298"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060096"
 ---
-# <a name="manage-indexing-in-azure-cosmos-dbs-api-for-mongodb"></a>Hantera indexering i Azure Cosmos DBs API för MongoDB
+# <a name="manage-indexing-in-azure-cosmos-dbs-api-for-mongodb"></a>Hantera indexering i Azure Cosmos DB-API för MongoDB
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 Azure Cosmos DBs API för MongoDB drar nytta av kärn funktionerna för hantering av Azure Cosmos DB. Den här artikeln fokuserar på hur du lägger till index med Azure Cosmos DB s API för MongoDB. Du kan också läsa en [Översikt över indexering i Azure Cosmos DB](index-overview.md) som är relevant för alla API: er.
@@ -29,6 +29,16 @@ Om du vill indexera fler fält kan du använda MongoDB-kommandona för indexhant
 
 Om du vill tillämpa en sortering på en fråga måste du skapa ett index för fälten som används i sorterings åtgärden.
 
+### <a name="editing-indexing-policy"></a>Redigera indexerings princip
+
+Vi rekommenderar att du redigerar din indexerings princip i Datautforskaren i Azure Portal.
+. Du kan lägga till enstaka fält och jokertecken i index princip redigeraren i Datautforskaren:
+
+:::image type="content" source="./media/mongodb-indexing/indexing-policy-editor.png" alt-text="Indexerings princip redigeraren":::
+
+> [!NOTE]
+> Du kan inte skapa sammansatta index med hjälp av index princip redigeraren i Datautforskaren.
+
 ## <a name="index-types"></a>Indextyper
 
 ### <a name="single-field"></a>Enskilt fält
@@ -36,6 +46,10 @@ Om du vill tillämpa en sortering på en fråga måste du skapa ett index för f
 Du kan skapa index för ett enskilt fält. Sorterings ordningen för det enskilda fält indexet spelar ingen roll. Följande kommando skapar ett index i fältet `name` :
 
 `db.coll.createIndex({name:1})`
+
+Du kan skapa samma fält index `name` i Azure Portal:
+
+:::image type="content" source="./media/mongodb-indexing/add-index.png" alt-text="Lägg till namn index i indexerings princip redigeraren":::
 
 En fråga använder flera enstaka fält index där det är tillgängligt. Du kan skapa upp till 500 enstaka fält index per behållare.
 
@@ -135,6 +149,10 @@ Så här kan du skapa ett Wildcard-index i alla fält:
 
 `db.coll.createIndex( { "$**" : 1 } )`
 
+Du kan också skapa wildcard-index med hjälp av Datautforskaren i Azure Portal:
+
+:::image type="content" source="./media/mongodb-indexing/add-wildcard-index.png" alt-text="Lägg till index för jokertecken i index princip redigeraren":::
+
 > [!NOTE]
 > Om du bara börjar utveckla **rekommenderar vi att du startar** med ett Wildcard-index i alla fält. Detta kan förenkla utvecklingen och göra det enklare att optimera frågor.
 
@@ -144,13 +162,13 @@ Dokument med många fält kan ha en RU-avgift (High Request Unit) för skrivning
 
 Jokertecken index stöder inte någon av följande index typer eller egenskaper:
 
-- Beräkning
+- Sammansättning
 - TTL
 - Unik
 
-Till **skillnad från i MongoDB** , i Azure Cosmos DB s API för MongoDB, **kan du inte** använda jokertecken index för:
+Till **skillnad från i MongoDB**, i Azure Cosmos DB s API för MongoDB, **kan du inte** använda jokertecken index för:
 
-- Skapa ett Wildcard-index som innehåller flera olika fält
+- Skapa ett jokerteckenindex som inkluderar flera specifika fält
 
 `db.coll.createIndex(
     { "$**" : 1 },
@@ -162,7 +180,7 @@ Till **skillnad från i MongoDB** , i Azure Cosmos DB s API för MongoDB, **kan 
     }
 )`
 
-- Skapa ett Wildcard-index som undantar flera angivna fält
+- Skapa ett jokerteckenindex som exkluderar flera specifika fält
 
 `db.coll.createIndex(
     { "$**" : 1 },
@@ -174,7 +192,7 @@ Till **skillnad från i MongoDB** , i Azure Cosmos DB s API för MongoDB, **kan 
     }
 )`
 
-Alternativt kan du skapa flera index för jokertecken.
+Alternativt kan du skapa flera jokerteckenindex.
 
 ## <a name="index-properties"></a>Index egenskaper
 

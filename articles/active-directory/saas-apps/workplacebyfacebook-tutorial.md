@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/28/2020
 ms.author: jeedes
-ms.openlocfilehash: 28a1e5e7361f1f5333d9679262abfa1fd31bd32f
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 3ac81e89aaea5bc37297d2f83dce9e2158ae28d8
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97967522"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060664"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workplace-by-facebook"></a>Självstudie: Azure Active Directory enkel inloggning (SSO) med arbets ytan efter Facebook
 
@@ -27,7 +27,7 @@ I den här självstudien får du lära dig hur du integrerar arbets ytan i Faceb
 * Hantera dina konton på en central plats – Azure Portal.
 
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att komma igång behöver du följande objekt:
 
@@ -83,11 +83,11 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 1. I avsnittet **grundläggande SAML-konfiguration** anger du värden för följande fält:
 
-    a. I textrutan **Inloggnings-URL** anger du en URL enligt följande mönster: `https://<instancename>.facebook.com`
+    a. Skriv en URL med följande mönster i text rutan **inloggnings-URL** (som finns i arbets platsen som mottagarens URL): `https://.workplace.com/work/saml.php`
 
-    b. I textrutan **Identifierare (entitets-ID)** anger du en URL enligt följande mönster: `https://www.facebook.com/company/<instanceID>`
+    b. Skriv en URL med följande mönster i text rutan **identifierare (enhets-ID)** (finns i arbets ytan som mål webb adress): `https://www.workplace.com/company/`
 
-    c. Skriv en URL i text rutan **svars-URL** med följande mönster: `https://www.facebook.com/company/<instanceID>`
+    c. Skriv en URL med följande mönster i text rutan **svars-URL** (hittades i arbets plats som intygs mottagar tjänst): `https://.workplace.com/work/saml.php`
 
     > [!NOTE]
     > De här värdena är inte verkliga. Uppdatera de här värdena med den faktiska inloggnings-URL:en, identifieraren och svars-URL:en. På sidan autentisering på instrument panelen för företagets företags instrument panel finns de korrekta värdena för din arbets plats community, detta beskrivs senare i självstudien.

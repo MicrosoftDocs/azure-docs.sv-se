@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 10/12/2020
 ms.author: inhenkel
-ms.openlocfilehash: 023c4d685804b2c6c201f44ab672139d56338cdb
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: c1798ca74493ba22d29cd9ce819d469c29cd5ec3
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91979117"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98059593"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---rest"></a>Självstudier: Koda en fjärrfil baserat på URL och strömma videon – REST
 
@@ -170,10 +170,17 @@ Utmatnings [till gången](/rest/api/media/assets) lagrar resultatet av ditt kodn
         {
         "properties": {
             "description": "My Asset",
-            "alternateId" : "some GUID"
+            "alternateId" : "some GUID",
+            "storageAccountName": "<replace from environment file>",
+            "container": "<supply any valid container name of your choosing>"
          }
         }
         ```
+
+> [!NOTE]
+> Se till att ersätta lagrings kontots och behållarens namn antingen med de från miljö filen eller ange egna.
+>
+> När du slutför stegen som beskrivs i resten av den här artikeln ser du till att du anger giltiga parametrar i begär ande organ.
 
 ### <a name="create-a-transform"></a>Skapa en transformering
 
@@ -355,8 +362,9 @@ I det här avsnittet ska vi skapa en HLS-strömnings-URL. URL:er består av föl
     Du kan använda följande hämtningsåtgärd för att hämta värdnamnet:
     
     ```
-    https://management.azure.com/subscriptions/00000000-0000-0000-0000-0000000000000/resourceGroups/amsResourceGroup/providers/Microsoft.Media/mediaservices/amsaccount/streamingEndpoints/default?api-version={{api-version}}
+    https://management.azure.com/subscriptions/00000000-0000-0000-0000-0000000000000/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaservices/:accountName/streamingEndpoints/default?api-version={{api-version}}
     ```
+    och se till att du anger `resourceGroupName` parametrarna och `accountName` för att matcha miljö filen. 
     
 3. En sökväg som du fick i föregående avsnitt (listsökvägar).  
 

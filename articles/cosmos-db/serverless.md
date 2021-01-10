@@ -6,18 +6,15 @@ ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/08/2021
-ms.openlocfilehash: d39bc35d1edcbcfef4c7774259112ec5144efa15
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 0c75f9938b3bc4fa8a2e650f77a3708e91180fea
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98044364"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98059229"
 ---
 # <a name="azure-cosmos-db-serverless-preview"></a>Azure Cosmos DB utan server (för hands version)
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
-
-> [!IMPORTANT]
-> Azure Cosmos DB server lös är för närvarande en för hands version. Den här för hands versionen tillhandahålls utan en Serviceavtal och rekommenderas inte för produktions arbets belastningar. Mer information finns i kompletterande användnings [villkor för Microsoft Azure för hands](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)versionerna.
 
 Med Azure Cosmos DB server utan server kan du använda ditt Azure Cosmos-konto i en förbruknings punkt där du bara debiteras för de enheter för programbegäran som används av databas åtgärderna och det lagrings utrymme som förbrukas av dina data. Server fria behållare kan hantera tusentals begär Anden per sekund utan minsta avgift och ingen kapacitets planering krävs.
 

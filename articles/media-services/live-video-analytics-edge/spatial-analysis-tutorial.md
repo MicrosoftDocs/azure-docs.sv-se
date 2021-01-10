@@ -3,12 +3,12 @@ title: Analysera direktsänd video med Visuellt innehåll för rums analys – A
 description: Den här självstudien visar hur du använder real tids analys tillsammans med Visuellt innehåll AI-funktionen för spatial analys från Azure Cognitive Services för att analysera en Live-videofeed från en (simulerad) IP-kamera.
 ms.topic: tutorial
 ms.date: 09/08/2020
-ms.openlocfilehash: 5cebedec11b91f5b0b94df25a860da3d517bb997
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 5b979bfeb6961b285cfeb2287888d8f157608d96
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400542"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060188"
 ---
 # <a name="analyze-live-video-with-computer-vision-for-spatial-analysis-preview"></a>Analysera direktsänd video med Visuellt innehåll för rums analys (för hands version)
 
@@ -35,7 +35,7 @@ Läs de här artiklarna innan du börjar:
 * [Självstudie: utveckla en IoT Edge-modul](../../iot-edge/tutorial-develop-for-linux.md)
 * [Distribuera video analys i real tid på Azure Stack Edge](deploy-azure-stack-edge-how-to.md) 
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Följande är förutsättningar för att ansluta modulen för spatial analys till modulen för video analys i real tid.
 
@@ -166,7 +166,7 @@ Distributions manifestet definierar vilka moduler som distribueras till en Edge-
 Följ de här stegen för att generera manifestet från mallfilen och distribuera den sedan till gräns enheten.
 
 1. Öppna Visual Studio Code.
-1. Bredvid fönstret AZURE IOT HUB väljer du ikonen fler åtgärder för att ange IoT Hub anslutnings sträng. Du kan kopiera strängen från filen src/Cloud-to-Device-console-app/appsettings.jsi filen.
+1. Bredvid fönstret AZURE IOT HUB väljer du ikonen fler åtgärder för att ange IoT Hub anslutnings sträng. Du kan kopiera strängen från `src/cloud-to-device-console-app/appsettings.json` filen.
 
     > [!div class="mx-imgBorder"]
     > :::image type="content" source="./media/spatial-analysis-tutorial/connection-string.png" alt-text="Rums analys: anslutnings sträng":::
@@ -222,13 +222,13 @@ Det finns en program.cs som kommer att anropa direkta metoder i src/Cloud-to-Dev
 
 I operations.jspå:
 
-* Ange topologin som detta (topologyFile för lokal topologi, topologyUrl för online-topologi):
+* Ange topologin så här:
 
 ```json
 {
     "opName": "GraphTopologySet",
     "opParams": {
-        "topologyFile": "../edge/spatialAnalysisTopology.json"
+        "topologyUrl": "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/lva-spatial-analysis/2.0/topology.json"
     }
 },
 ```
@@ -261,17 +261,6 @@ I operations.jspå:
     }
 },
 ```
-* Ändra länken till graf-topologin:
-
-`topologyUrl` : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/lva-spatial-analysis/topology.json"
-
-Under **GraphInstanceSet** redigerar du namnet på diagram sto pol Ogin så att den matchar värdet i föregående länk:
-
-`topologyName` : InferencingWithCVExtension
-
-Under **GraphTopologyDelete** redigerar du namnet:
-
-`name`: InferencingWithCVExtension
 
 >[!Note]
 Ta en titt på användningen av MediaGraphRealTimeComputerVisionExtension för att ansluta till modulen för spatial analys. Ange $ {grpcUrl} som **TCP://spatialAnalysis: <PORT_NUMBER>**, t. ex. TCP://spatialAnalysis:50051
@@ -281,40 +270,51 @@ Ta en titt på användningen av MediaGraphRealTimeComputerVisionExtension för a
     "@type": "#Microsoft.Media.MediaGraphCognitiveServicesVisionExtension",
     "name": "computerVisionExtension",
     "endpoint": {
-    "@type": "#Microsoft.Media.MediaGraphUnsecuredEndpoint",
-    "url": "${grpcUrl}",
-    "credentials": {
-        "@type": "#Microsoft.Media.MediaGraphUsernamePasswordCredentials",
-        "username": "${spatialanalysisusername}",
-        "password": "${spatialanalysispassword}"
-    }
+        "@type": "#Microsoft.Media.MediaGraphUnsecuredEndpoint",
+        "url": "${grpcUrl}",
+        "credentials": {
+            "@type": "#Microsoft.Media.MediaGraphUsernamePasswordCredentials",
+            "username": "${spatialanalysisusername}",
+            "password": "${spatialanalysispassword}"
+        }
     },
     "image": {
-    "scale": {
-        "mode": "pad",
-        "width": "1408",
-        "height": "786"
+        "scale": {
+            "mode": "pad",
+            "width": "1408",
+            "height": "786"
+        },
+        "format": {
+            "@type": "#Microsoft.Media.MediaGraphImageFormatRaw",
+            "pixelFormat": "bgr24"
+        }
     },
-    "format": {
-        "@type": "#Microsoft.Media.MediaGraphImageFormatRaw",
-        "pixelFormat": "bgr24"
-    }
+    "samplingOptions": {
+        "skipSamplesWithoutAnnotation": "false",
+        "maximumSamplesPerSecond": "20"
     },
     "inputs": [
-    {
-        "nodeName": "frameRateFilter"
-    }
+        {
+            "nodeName": "rtspSource",
+            "outputSelectors": [
+                {
+                    "property": "mediaType",
+                    "operator": "is",
+                    "value": "video"
+                }
+            ]
+        }
     ]
 }
 ```
 
-Kör en felsökningssession och följ installationsinstruktionerna, den ställer in topologi, ställer in diagram instansen, aktiverar diagram instansen och slutligen tar bort resurserna.
+Kör en felsökningssession **och följ installationsinstruktionerna** , den ställer in topologi, ställer in diagram instansen, aktiverar diagram instansen och slutligen tar bort resurserna.
 
 ## <a name="interpret-results"></a>Tolka resultaten
 
 När ett medie diagram instansieras bör du se "MediaSessionEstablished"-händelsen, här är ett [exempel](detect-motion-emit-events-quickstart.md#mediasessionestablished-event)på en MediaSessionEstablished-händelse.
 
-Modulen för spatial analys skickar också ut AI Insight-händelser till live video analys och sedan till IoTHub, visas även i utdata. ENTITETen är identifierings objekt och händelsen är spaceanalytics-händelser. De här utdata skickas till video analys i real tid.
+Modulen för spatial analys skickar också ut AI Insight-händelser till live video analys och sedan till IoTHub, visas även i **utdata**. ENTITETen är identifierings objekt och händelsen är spaceanalytics-händelser. De här utdata skickas till video analys i real tid.
 
 Exempel på utdata för personZoneEvent (från cognitiveservices. vision. spatialanalysis-personcrossingpolygon. livevideoanalytics-åtgärd):
 

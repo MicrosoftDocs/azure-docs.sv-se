@@ -11,12 +11,12 @@ author: peterclu
 ms.date: 10/06/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, references_regions, contperf-fy21q1
-ms.openlocfilehash: dd24c4f20fa3a56d25ef142947268b2d2b75474a
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 664264f2cd810f232b967f5af78ba3d522f0a41f
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97029608"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060018"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>Översikt över virtuella nätverks isolering och sekretess
 
@@ -152,7 +152,8 @@ Om ditt lagrings utrymme finns i ett VNet måste du först utföra ytterligare k
 Om du vill aktivera fullständig Studio-funktionalitet inuti ett VNet, se [använd Azure Machine Learning Studio i ett virtuellt nätverk](how-to-enable-studio-virtual-network.md#configure-data-access-in-the-studio). Studio stöder lagrings konton med hjälp av antingen tjänst slut punkter eller privata slut punkter.
 
 ### <a name="limitations"></a>Begränsningar
-- [Ml stöd för data märkning](how-to-create-labeling-projects.md#use-ml-assisted-labeling) stöder inte standard lagrings konton som skyddas bakom ett virtuellt nätverk. Du måste använda ett lagrings konto som inte är standard för ML assisterad data etiketter. Observera att lagrings kontot som inte är standard kan skyddas bakom det virtuella nätverket. 
+
+[Ml-stöd för data etiketter](how-to-create-labeling-projects.md#use-ml-assisted-data-labeling) har inte stöd för standard lagrings konton som skyddas bakom ett virtuellt nätverk. Du måste använda ett lagrings konto som inte är standard för ML assisterad data etiketter. Observera att lagrings kontot som inte är standard kan skyddas bakom det virtuella nätverket. 
 
 ## <a name="configure-firewall-settings"></a>Konfigurera brandväggsinställningar
 

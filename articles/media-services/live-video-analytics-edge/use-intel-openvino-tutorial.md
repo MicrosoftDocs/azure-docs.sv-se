@@ -4,12 +4,12 @@ description: I den här självstudien använder du en AI-modell server som tillh
 ms.topic: tutorial
 ms.date: 09/08/2020
 titleSuffix: Azure
-ms.openlocfilehash: 82906111e64bd278d4371d1c3497fefc4510bbbd
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 9fb2f533d433c89d13ee0c29058f87aab3521a78
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97401222"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060205"
 ---
 # <a name="tutorial-analyze-live-video-by-using-openvino-model-server--ai-extension-from-intel"></a>Självstudie: analysera direktsänd video med hjälp av poly™ Model Server – AI-tillägg från Intel 
 
@@ -20,7 +20,7 @@ Den här självstudien använder en virtuell Azure-dator som en IoT Edge enhet o
 > [!NOTE]
 > Den här självstudien kräver att en x86-64-dator används som din gräns enhet.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * Ett Azure-konto som innehåller en aktiv prenumeration. [Skapa ett konto utan kostnad](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) om du inte redan har ett.
 * [Visual Studio Code](https://code.visualstudio.com/)med följande tillägg:
@@ -37,6 +37,8 @@ Den här självstudien använder en virtuell Azure-dator som en IoT Edge enhet o
 När du konfigurerar Azure-resurserna kopieras en kort video från ett parkerings parti till den virtuella Linux-datorn i Azure som du använder som IoT Edge enhet. I den här snabb starten används video filen för att simulera en Live-dataström.
 
 Öppna ett program som [VLC Media Player](https://www.videolan.org/vlc/). Välj CTRL + N och klistra sedan in en länk till [videon](https://lvamedia.blob.core.windows.net/public/lots_015.mkv) för att starta uppspelningen. Du ser tagningarna av fordon i ett parkerings parti, de flesta av dem parkerade och ett flyttal.
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4LUbN]
 
 I den här snabb starten ska du använda video analys i real tid för IoT Edge tillsammans med Open-Poly-™ modell Server – AI-tillägget från Intel för att identifiera objekt som fordon, eller för att klassificera dem. Du publicerar de resulterande härlednings händelserna till IoT Edge Hub.
 
@@ -97,7 +99,7 @@ Som en del av förutsättningarna hämtade du exempel koden till en mapp. Följ 
 1. Redigera *operations.jspå* filen:
     * Ändra länken till graf-topologin:
 
-        `"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/httpExtensionOpenVINO/topology.json"`
+        `"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/httpExtensionOpenVINO/2.0/topology.json"`
 
     * Under `GraphInstanceSet` redigerar du namnet på diagram sto pol Ogin så att det matchar värdet i föregående länk:
 
@@ -160,7 +162,7 @@ Om du öppnar [diagram sto pol Ogin](https://raw.githubusercontent.com/Azure/liv
 
          ```
          {
-           "@apiVersion": "1.0",
+           "@apiVersion": "2.0",
            "name": "Sample-Graph-1",
            "properties": {
              "topologyName": "InferencingWithOpenVINO",
@@ -203,7 +205,7 @@ I följande meddelanden definierar modulen live video analys program egenskapern
 
 ### <a name="mediasessionestablished-event"></a>MediaSessionEstablished-händelse
 
-När ett medie diagram instansieras försöker RTSP-Källnoden ansluta till RTSP-servern som körs i behållaren rtspsim-live555. Om anslutningen lyckas skrivs följande händelse ut. Händelse typen är `Microsoft.Media.MediaGraph.Diagnostics.MediaSessionEstablished` .
+När ett medie diagram instansieras försöker RTSP-Källnoden ansluta till RTSP-servern som körs i behållaren rtspsim-live555. Om anslutningen lyckas skrivs följande händelse ut. Händelse typen är **Microsoft. Media. MediaGraph. Diagnostics. MediaSessionEstablished**.
 
 ```
 [IoTHubMonitor] [9:42:18 AM] Message received from [lvaedgesample/lvaEdge]:

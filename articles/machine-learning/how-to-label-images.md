@@ -9,16 +9,16 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
 ms.custom: data4ml
-ms.openlocfilehash: f14e120fb7373cc80b9d6e23f155dd964b37a551
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: eb8c69a6bf009543e104a472469c243638726f60
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347973"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060375"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>Tagga bilder i ett etikett projekt 
 
-När projekt administratören har [skapat ett etikett projekt](./how-to-create-labeling-projects.md#create-a-labeling-project) i Azure Machine Learning kan du använda etikett verktyget för att snabbt förbereda data för ett Machine Learning-projekt. I den här artikeln beskrivs:
+När projekt administratören har [skapat ett data etiketts projekt](./how-to-create-labeling-projects.md#create-a-data-labeling-project) i Azure Machine Learning kan du använda etikett verktyget för att snabbt förbereda data för ett Machine Learning-projekt. I den här artikeln beskrivs:
 
 > [!div class="checklist"]
 > * Få åtkomst till dina etikett projekt

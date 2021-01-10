@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 520b2eff91faf2e333ab0a5df7bcc85e6a47c80a
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 4a789574b736eb22bd8d13fcf1a9facec5e241c9
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97585198"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98058675"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>Anpassa användar gränssnittet i Azure Active Directory B2C
 
@@ -74,7 +74,7 @@ När du använder egna HTML-och CSS-filer för att anpassa användar gränssnitt
 ## <a name="guidelines-for-using-custom-page-content"></a>Rikt linjer för att använda anpassat sid innehåll
 
 - Använd en absolut URL när du inkluderar externa resurser som media, CSS och JavaScript-filer i HTML-filen.
-- Med hjälp av 1.2.0 [och senare kan](page-layout.md) du lägga till `data-preload="true"` attributet i dina HTML-taggar för att kontrol lera inläsnings ordningen för CSS och Java Script. Med `data-preload=true` konstrueras sidan innan den visas för användaren. Det här attributet förhindrar sidan från att flimra genom att i förväg läsa in CSS-filen utan att den icke-formaterade HTML-koden visas för användaren. Följande HTML-kodfragment visar hur `data-preload` taggen används.
+- Med hjälp av 1.2.0 [och senare kan](page-layout.md) du lägga till `data-preload="true"` attributet i dina HTML-taggar för att kontrol lera inläsnings ordningen för CSS och Java Script. Med `data-preload="true"` konstrueras sidan innan den visas för användaren. Det här attributet förhindrar sidan från att flimra genom att i förväg läsa in CSS-filen utan att den icke-formaterade HTML-koden visas för användaren. Följande HTML-kodfragment visar hur `data-preload` taggen används.
   ```HTML
   <link href="https://path-to-your-file/sample.css" rel="stylesheet" type="text/css" data-preload="true"/>
   ```
@@ -116,7 +116,7 @@ Här är en översikt över processen:
 1. Ange resurs delning mellan ursprung (CORS) för din webbapp.
 1. Peka din princip till din anpassade princip innehålls-URI.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 

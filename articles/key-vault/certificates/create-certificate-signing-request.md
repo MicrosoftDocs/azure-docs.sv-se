@@ -1,6 +1,6 @@
 ---
-title: Skapa och sammanfoga CSR i Azure Key Vault
-description: Skapa och sammanfoga CSR i Azure Key Vault
+title: Skapa och sammanfoga en CSR i Azure Key Vault
+description: Lär dig hur du skapar och sammanfogar en CSR i Azure Key Vault.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -10,131 +10,143 @@ ms.subservice: certificates
 ms.topic: tutorial
 ms.date: 06/17/2020
 ms.author: sebansal
-ms.openlocfilehash: 42f649f9dd206b34f0fac8513ba742febed2dbcb
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: bbc232ed0bc9e9715f481fef8b7b3a1f8eeebe78
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97724637"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98059661"
 ---
-# <a name="creating-and-merging-csr-in-key-vault"></a>Skapa och sammanfoga CSR i Key Vault
+# <a name="create-and-merge-a-csr-in-key-vault"></a>Skapa och slå samman en CSR i Key Vault
 
-Azure Key Vault stöder lagring av digitala certifikat som utfärdats av valfri certifikat utfärdare i ditt nyckel valv. Det har stöd för att skapa en begäran om certifikat signering med ett privat offentligt nyckel par som kan signeras av en vald certifikat utfärdare. Det kan vara interna företags certifikat utfärdare eller extern offentlig CA. En begäran om certifikat signering (även CSR eller certifierings förfrågan) är ett meddelande som skickas av användaren till en certifikat utfärdare (CA) för att begära utfärdande av ett digitalt certifikat.
+Azure Key Vault stöder lagring av digitala certifikat som utfärdats av en certifikat utfärdare (CA). Den har stöd för att skapa en certifikat signerings förfrågan (CSR) med ett privat/offentligt nyckel par. CSR kan signeras av en certifikat utfärdare (en intern företags certifikat utfärdare eller en extern offentlig certifikat utfärdare). En CSR är ett meddelande som du skickar till en certifikat utfärdare för att begära ett digitalt certifikat.
 
 Mer allmän information om certifikat finns i [Azure Key Vault certifikat](./about-certificates.md).
 
 Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
-## <a name="adding-certificate-in-key-vault-issued-by-partnered-ca"></a>Lägga till certifikat i Key Vault utfärdat av en partner certifikat utfärdare
-Key Vault partner med följande två certifikat utfärdare för att förenkla skapandet av certifikat. 
+## <a name="add-certificates-in-key-vault-issued-by-partnered-cas"></a>Lägg till certifikat i Key Vault utfärdade av partner certifikat utfärdare
+
+Key Vault partner med följande certifikat utfärdare för att förenkla skapande av certifikat.
 
 |Leverantör|Certifikattyp|Konfigurations konfiguration  
 |--------------|----------------------|------------------|  
 |DigiCert|Key Vault erbjuder OV eller EV SSL-certifikat med DigiCert| [Integrations guide](./how-to-integrate-certificate-authority.md)
 |GlobalSign|Key Vault erbjuder OV eller EV SSL-certifikat med GlobalSign| [Integrations guide](https://support.globalsign.com/digital-certificates/digital-certificate-installation/generating-and-importing-certificate-microsoft-azure-key-vault)
 
-## <a name="adding-certificate-in-key-vault-issued-by-non-partnered-ca"></a>Lägga till certifikat i Key Vault som utfärdats av en icke-partner CA
+## <a name="add-certificates-in-key-vault-issued-by-non-partnered-cas"></a>Lägg till certifikat i Key Vault utfärdade av certifikat utfärdare som inte är partner
 
-Följande steg hjälper dig att skapa ett certifikat från certifikat utfärdare som inte är partner med Key Vault (till exempel är GoDaddy inte en betrodd Key Vault-certifikatutfärdare) 
-
-
+Följ dessa steg om du vill lägga till ett certifikat från certifikat utfärdare som inte är partner med Key Vault. (Till exempel är GoDaddy inte en betrodd Key Vault CA.)
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1.  Om du vill skapa en kund service representant för den certifikat utfärdare som du väljer navigerar du till det nyckel valv som du vill lägga till certifikatet i.
-2.  Välj **certifikat** på sidan Key Vault egenskaper.
-3.  Välj fliken **generera/importera** .
-4.  På skärmen **skapa ett certifikat** väljer du följande värden:
-    - **Metod för att skapa certifikat:** Skapas.
-    - **Certifikat namn:** ContosoManualCSRCertificate.
-    - **Typ av certifikat utfärdare (ca):** Certifikat utfärdat av en icke-integrerad certifikat utfärdare
-    - **Ämne:**`"CN=www.contosoHRApp.com"`
-    - Välj de andra värdena som du vill. Klicka på **Skapa**.
+1. Gå till det nyckel valv som du vill lägga till certifikatet i.
+1. På sidan Egenskaper väljer du **certifikat**.
+1. Välj fliken **generera/importera** .
+1. På skärmen **skapa ett certifikat** väljer du följande värden:
+    - **Metod för att skapa certifikat**: skapa.
+    - **Certifikat namn**: ContosoManualCSRCertificate.
+    - **Typ av certifikat utfärdare (ca)**: certifikat utfärdat av en icke-integrerad certifikat utfärdare.
+    - **Ämne**: `"CN=www.contosoHRApp.com"` .
+     > [!NOTE]
+     > Om du använder ett relativt unikt namn (RDN) som har ett kommatecken (,) i värdet omsluter du värdet som innehåller specialtecknet i dubbla citat tecken. 
+     >
+     > Exempel post till **ämne**: `DC=Contoso,OU="Docs,Contoso",CN=www.contosoHRApp.com`
+     >
+     > I det här exemplet innehåller RDN `OU` ett värde med ett kommatecken i namnet. Resultatet för `OU` är **dokument, contoso**.
+1. Välj de andra värdena som du vill och välj sedan **skapa** för att lägga till certifikatet i listan **certifikat** .
 
-    ![Certifikategenskaper](../media/certificates/create-csr-merge-csr/create-certificate.png)  
+    ![Skärm bild av certifikat egenskaperna](../media/certificates/create-csr-merge-csr/create-certificate.png)  
 
-
-6.  Du kommer att se att certifikatet nu har lagts till i listan certifikat. Välj det här nya certifikatet som du nyss skapade. Certifikatets aktuella tillstånd är inaktive rad eftersom det inte har utfärdats av certifikat utfärdaren än.
-7. Klicka på fliken **certifikat åtgärd** och välj **Hämta CSR**.
+1. Välj det nya certifikatet i listan **certifikat** . Certifikatets aktuella tillstånd är **inaktiverat** eftersom det ännu inte har utfärdats av ca: n.
+1. På fliken **certifikat åtgärd** väljer du **Hämta CSR**.
 
    ![Skärm bild som visar knappen Hämta CSR.](../media/certificates/create-csr-merge-csr/download-csr.png)
- 
-8.  Ta. CSR-filen till CA: n för begäran om att bli signerad.
-9.  När begäran har signerats av certifikat utfärdaren ska du ta tillbaka certifikat filen för att **slå samman den signerade begäran** på skärmen för samma certifikat åtgärd.
+
+1. Be CA: en att signera CSR (. CSR).
+1. När begäran har signerats väljer du **koppla signerad begäran** på fliken **certifikat åtgärd** för att lägga till det signerade certifikatet i Key Vault.
 
 Certifikatbegäran har nu slagits samman.
 
-
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
+1. Skapa en certifikat princip. Eftersom den certifikat utfärdare som valts i det här scenariot inte är en partner, är **IssuerName** inställd på **okänd** och Key Vault inte registrera eller förnya certifikatet.
 
-
-1. Skapa först **certifikat principen**. Key Vault kan inte registrera eller förnya certifikatet från utfärdaren åt användaren eftersom CA: n som valts i det här scenariot inte stöds, och därför har IssuerName angetts till okänd.
-
-   ```azurepowershell
+   ```azure-powershell
    $policy = New-AzKeyVaultCertificatePolicy -SubjectName "CN=www.contosoHRApp.com" -ValidityInMonths 1  -IssuerName Unknown
    ```
-    
-   > [!NOTE]
-   > Om du använder ett relativt unikt namn (RDN) som har ett kommatecken (,) i värdet använder du enkla citat tecken och omsluter värdet som innehåller det specialtecken som innehåller specialtecknet med dubbla citat tecken. Exempel: `$policy = New-AzKeyVaultCertificatePolicy -SubjectName 'OU="Docs,Contoso",DC=Contoso,CN=www.contosoHRApp.com' -ValidityInMonths 1  -IssuerName Unknown`. I det här exemplet `OU` läses värdet som **dokument, contoso**. Det här formatet fungerar för alla värden som innehåller kommatecken.
+     > [!NOTE]
+     > Om du använder ett relativt unikt namn (RDN) som har ett kommatecken (,) i värdet använder du enkla citat tecken för det fullständiga värdet eller värde uppsättningen, och omsluter värdet som innehåller det specialtecken som innehåller det särskilda värdet med dubbla citat tecken. 
+     >
+     >Exempel post till **SubjectName**: `$policy = New-AzKeyVaultCertificatePolicy -SubjectName 'OU="Docs,Contoso",DC=Contoso,CN=www.contosoHRApp.com' -ValidityInMonths 1  -IssuerName Unknown` . I det här exemplet `OU` läses värdet som **dokument, contoso**. Det här formatet fungerar för alla värden som innehåller kommatecken.
+     > 
+     > I det här exemplet innehåller RDN `OU` ett värde med ett kommatecken i namnet. Resultatet för `OU` är **dokument, contoso**.
 
-2. Skapa en **begäran om certifikat signering**
+1. Skapa CSR.
 
-   ```azurepowershell
+   ```azure-powershell
    $csr = Add-AzKeyVaultCertificate -VaultName ContosoKV -Name ContosoManualCSRCertificate -CertificatePolicy $policy
    $csr.CertificateSigningRequest
    ```
 
-3. Att hämta CSR- **förfrågan signerad av ca** `$csr.CertificateSigningRequest` : n är den base4-kodade certifikat signerings förfrågan för certifikatet. Du kan ta denna blob och dumpa till utfärdarens webbplats för certifikat förfrågningar. Det här steget varierar från CA till CA, det bästa sättet är att leta upp din CAs rikt linjer om hur du utför det här steget. Du kan också använda verktyg som CertReq eller openssl för att få en certifikatbegäran signerad och slutföra processen med att skapa ett certifikat.
+1. Be CA: en att registrera CSR. `$csr.CertificateSigningRequest`Är den grundläggande kodade CSR-koden för certifikatet. Du kan dumpa denna blob till utfärdarens webbplats för certifikat förfrågningar. Det här steget varierar från CA till CA. Leta upp din CAs rikt linjer för hur du utför det här steget. Du kan också använda verktyg som CertReq eller openssl för att få CSR-signerad och slutför processen för att skapa ett certifikat.
 
+1. Sammanfoga den signerade begäran i Key Vault. När certifikatbegäran har signerats kan du sammanfoga den med det första privata/offentliga nyckel paret som skapats i Azure Key Vault.
 
-4. **Sammanslagning av den signerade begäran** i Key Vault efter att certifikatbegäran har signerats av utfärdaren, du kan återställa det signerade certifikatet och slå samman det med det första privata offentliga nyckel paret som skapats i Azure Key Vault
-
-    ```azurepowershell-interactive
+    ```azure-powershell-interactive
     Import-AzKeyVaultCertificate -VaultName ContosoKV -Name ContosoManualCSRCertificate -FilePath C:\test\OutputCertificateFile.cer
     ```
 
-    Certifikatbegäran har nu slagits samman.
+Certifikatbegäran har nu slagits samman.
+
 ---
 
-> [!NOTE]
-> Om dina RDN-värden innehåller kommatecken kan du också lägga till dem i fältet **ämne** genom att omge värdet med dubbla citat tecken enligt beskrivningen i steg 4.
-> Exempel post till "subject": `DC=Contoso,OU="Docs,Contoso",CN=www.contosoHRApp.com` i det här exemplet innehåller RDN `OU` ett värde med ett kommatecken i namnet. Resultatet för `OU` är **dokument, contoso**.
+## <a name="add-more-information-to-the-csr"></a>Lägg till mer information i CSR
 
-## <a name="adding-more-information-to-csr"></a>Lägga till mer information i CSR
-
-Om du vill lägga till mer information när du skapar CSR, t. ex. 
-    - Land:
-    - Stad/plats:
-    - Region:
-    - Organisation
-    - Organisationsenhet: du kan lägga till all den informationen när du skapar en kund service representant genom att definiera den i subjectName.
+Om du vill lägga till mer information när du skapar CSR, definierar du den i **SubjectName**. Du kanske vill lägga till information som:
+- Land
+- Stad/plats
+- Region/provins
+- Organisation
+- Organisationsenhet
 
 Exempel
-    ```SubjectName="CN = docs.microsoft.com, OU = Microsoft Corporation, O = Microsoft Corporation, L = Redmond, S = WA, C = US"
-    ```
+
+   ```azure-powershell
+   SubjectName="CN = docs.microsoft.com, OU = Microsoft Corporation, O = Microsoft Corporation, L = Redmond, S = WA, C = US"
+   ```
 
 > [!NOTE]
-> Om du begär ett DV-certifikat med alla dessa uppgifter i CSR kan certifikat utfärdaren avvisa begäran eftersom den kanske inte kan verifiera all information i begäran. Om du begär ett OV-certifikat, är det mer lämpligt att lägga till all information i CSR.
+> Om du begär ett certifikat för domän validering (DV) med ytterligare information kan certifikat utfärdaren avvisa begäran om den inte kan verifiera all information i begäran. Ytterligare information kan vara lämpligare om du begär ett OV-certifikat (Organization Validation).
 
+## <a name="faqs"></a>Vanliga frågor och svar
 
-## <a name="troubleshoot"></a>Felsöka
+- Hur gör jag för att övervaka eller hantera min CSR?
 
-- Läs mer [här](https://docs.microsoft.com/azure/key-vault/certificates/create-certificate-scenarios) om du vill övervaka eller hantera svar på certifikat förfrågningar
+     Se [övervaka och hantera certifikat skapande](https://docs.microsoft.com/azure/key-vault/certificates/create-certificate-scenarios).
 
-- **Fel typ: den offentliga nyckeln för certifikatet för slutentiteten i det angivna X. 509-certifikatets innehåll matchar inte den offentliga delen av den angivna privata nyckeln. Kontrol lera att certifikatet är giltigt** . det här felet kan inträffa om du inte slår samman kund service representanten med samma CSR-begäran som initieras. Varje gång en CSR skapas, skapas en privat nyckel som måste matchas vid sammanslagning av den signerade begäran.
-    
-- När kund service representanten slås samman sammanfogas hela kedjan?
-    Ja, den sammanfogar hela kedjan, förutsatt att användaren har återställt P7B-filen att sammanfoga.
+- Vad händer om jag ser **fel typ "den offentliga nyckeln för certifikatet för slutanvändare i det angivna X. 509-certifikatets innehåll stämmer inte överens med den offentliga delen av den angivna privata nyckeln. Kontrol lera om certifikatet är giltigt**?
 
-- Om certifikatet som har utfärdats är inaktiverat i Azure Portal kan du gå vidare och visa **certifikat åtgärden** för att granska fel meddelandet för det certifikatet.
+     Det här felet uppstår om du inte sammanfogar den signerade kund service representanten med samma CSR-begäran som du har initierat. Varje ny CSR som du skapar har en privat nyckel som måste matcha när du kopplar den signerade begäran.
 
-Mer information finns i [certifikat åtgärderna i Key Vault REST API referens](/rest/api/keyvault). Information om hur du etablerar behörigheter finns i [valv – skapa eller uppdatera](/rest/api/keyvault/vaults/createorupdate) och [valv – uppdatera åtkomst princip](/rest/api/keyvault/vaults/updateaccesspolicy).
+- När en kund service representant slås samman sammanställs hela kedjan?
 
-- **Feltypen "ämnes namnet som angavs är inte ett giltigt X500-namn"** Det här felet kan inträffa om du har inkluderat specialtecken i värdena för SubjectName. Se anteckningar i Azure Portal respektive PowerShell-instruktioner. 
+     Ja, den sammanfogar hela kedjan, förutsatt att användaren har återställt en. P7B-fil som ska sammanfogas.
+
+- Vad händer om certifikatet som utfärdas har statusen inaktiverat i Azure Portal?
+
+     Visa fliken **certifikat åtgärd** för att granska fel meddelandet för det certifikatet.
+
+- Vad händer om jag ser **fel typen "ämnes namnet som angavs är inte ett giltigt X500-namn"**?
+
+     Det här felet kan inträffa om **SubjectName** innehåller specialtecken. Se kommentarer i Azure Portal-och PowerShell-instruktioner.
 
 ---
+
 ## <a name="next-steps"></a>Nästa steg
 
 - [Autentisering, begär Anden och svar](../general/authentication-requests-and-responses.md)
 - [Utvecklarguide för Key Vault](../general/developers-guide.md)
+- [Azure Key Vault REST API referens](/rest/api/keyvault)
+- [Valv – skapa eller uppdatera](/rest/api/keyvault/vaults/createorupdate)
+- [Valv – uppdatera åtkomst princip](/rest/api/keyvault/vaults/updateaccesspolicy)

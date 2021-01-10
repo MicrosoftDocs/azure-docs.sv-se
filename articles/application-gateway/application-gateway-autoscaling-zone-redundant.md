@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/06/2020
 ms.author: victorh
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 8c989e426faa77025a84515fe0a19424cb6bfa89
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fad6e27c4ee7e8c10237cb3face5cfab9329b2ed
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91826626"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98059729"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>Automatisk skalning och zonredundant Application Gateway v2 
 
@@ -96,12 +96,12 @@ I följande tabell jämförs de funktioner som är tillgängliga med varje SKU.
 
 I det här avsnittet beskrivs funktioner och begränsningar för v2-SKU: n som skiljer sig från v1 SKU.
 
-|Differens|Information|
+|Skillnad|Information|
 |--|--|
 |Certifikat för autentisering|Stöds inte.<br>Mer information finns i [Översikt över TLS to end-TLS med Application Gateway](ssl-overview.md#end-to-end-tls-with-the-v2-sku).|
 |Mixa Standard_v2 och standard Application Gateway i samma undernät|Stöds inte|
 |User-Defined väg (UDR) på Application Gateway undernät|Stöds (vissa scenarier). I för hands version.<br> Mer information om vilka scenarier som stöds finns i [Application Gateway konfigurations översikt](configuration-infrastructure.md#supported-user-defined-routes).|
-|NSG för inkommande port intervall| – 65200 till 65535 för Standard_v2 SKU<br>– 65503 till 65534 för standard-SKU.<br>Mer information finns i [vanliga frågor och svar](application-gateway-faq.md#are-network-security-groups-supported-on-the-application-gateway-subnet).|
+|NSG för inkommande port intervall| – 65200 till 65535 för Standard_v2 SKU<br>– 65503 till 65534 för standard-SKU.<br>Mer information finns i [vanliga frågor och svar](application-gateway-faq.yml#are-network-security-groups-supported-on-the-application-gateway-subnet).|
 |Prestanda loggar i Azure Diagnostics|Stöds inte.<br>Azure-mått ska användas.|
 |Fakturering|Faktureringen är schemalagd för att starta den 1 juli 2019.|
 |FIPS-läge|Dessa stöds inte för närvarande.|

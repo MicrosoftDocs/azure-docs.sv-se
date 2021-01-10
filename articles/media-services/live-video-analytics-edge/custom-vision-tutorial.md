@@ -4,12 +4,12 @@ description: Lär dig hur du använder Azure Custom Vision för att bygga en beh
 ms.topic: tutorial
 ms.date: 09/08/2020
 zone_pivot_groups: ams-lva-edge-programming-languages
-ms.openlocfilehash: 614c4e401579eda68d8030dc2d2a42b2c4736031
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: de788c337ce8030b73538565e4f374ffc7db55b8
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97401703"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060527"
 ---
 # <a name="tutorial-analyze-live-video-with-live-video-analytics-on-iot-edge-and-azure-custom-vision"></a>Självstudie: analysera direktsänd video med real tids video analys på IoT Edge och Azure Custom Vision
 
@@ -49,7 +49,7 @@ Läs igenom följande artiklar innan du börjar:
 * [Självstudie: utveckla en IoT Edge-modul](../../iot-edge/tutorial-develop-for-linux.md)
 * [Så här redigerar du Deployment. * .template.jspå](https://github.com/microsoft/vscode-azure-iot-edge/wiki/How-to-edit-deployment.*.template.json)
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 
 ::: zone pivot="programming-language-csharp"
@@ -61,8 +61,11 @@ Läs igenom följande artiklar innan du börjar:
 ::: zone-end
 ## <a name="review-the-sample-video"></a>Granska exempel videon
 
+I den här självstudien används en video fil för [leksaks bilar](https://lvamedia.blob.core.windows.net/public/t2.mkv) för att simulera en Live-dataström. Du kan granska videon via ett program, till exempel [VLC Media Player](https://www.videolan.org/vlc/). Välj **CTRL + N** och klistra sedan in en länk till [videon för leksaks bilen](https://lvamedia.blob.core.windows.net/public/t2.mkv) för att starta uppspelningen. Observera att när du tittar på videon visas en leksaks Truck i videon vid den 36-andra markören. Den anpassade modellen har tränats för att identifiera denna speciella leksaks Truck. 
 
-I den här självstudien används en video fil för [leksaks bilar](https://lvamedia.blob.core.windows.net/public/t2.mkv) för att simulera en Live-dataström. Du kan granska videon via ett program, till exempel [VLC Media Player](https://www.videolan.org/vlc/). Välj **CTRL + N** och klistra sedan in en länk till [videon för leksaks bilen](https://lvamedia.blob.core.windows.net/public/t2.mkv) för att starta uppspelningen. Observera att när du tittar på videon visas en leksaks Truck i videon vid den 36-andra markören. Den anpassade modellen har tränats för att identifiera denna speciella leksaks Truck. I den här självstudien använder du video analys i real tid för IoT Edge för att identifiera sådana leksaks truckar och publicera associerade härlednings händelser till IoT Edge Hub.
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4LPwK]
+
+I den här självstudien använder du video analys i real tid för IoT Edge för att identifiera sådana leksaks truckar och publicera associerade härlednings händelser till IoT Edge Hub.
 
 ## <a name="overview"></a>Översikt
 
@@ -127,7 +130,6 @@ När du är klar kan du exportera modellen till en Docker-behållare med hjälp 
 
 ## <a name="examine-the-sample-files"></a>Granska exempelfilerna
 
-
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [examine-sample-files](includes/custom-vision-tutorial/csharp/examine-sample-files.md)]
 ::: zone-end
@@ -140,7 +142,7 @@ När du är klar kan du exportera modellen till en Docker-behållare med hjälp 
 
 1. I Visual Studio Code går du till src/Cloud-to-Device-console-app/operations.jspå.
 
-1. Under `GraphTopologySet` kontrollerar du att följande stämmer:<br/>`"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/httpExtension/topology.json"`
+1. Under `GraphTopologySet` kontrollerar du att följande stämmer:<br/>`"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/httpExtension/2.0/topology.json"`
 1. Under `GraphInstanceSet` , se till att:
     1. `"topologyName" : "InferencingWithHttpExtension"`
     1. Lägg till följande överst i parameter mat ris: `{"name": "inferencingUrl","value": "http://cv:80/image"},`
@@ -261,7 +263,7 @@ I följande meddelanden definierar modulen live video analys program egenskapern
 
 ### <a name="mediasessionestablished-event"></a>MediaSessionEstablished-händelse
 
-När ett medie diagram instansieras försöker RTSP-Källnoden ansluta till RTSP-servern som körs i behållaren rtspsim-live555. Om anslutningen lyckas skrivs följande händelse ut. Händelse typen är `Microsoft.Media.MediaGraph.Diagnostics.MediaSessionEstablished` .
+När ett medie diagram instansieras försöker RTSP-Källnoden ansluta till RTSP-servern som körs i behållaren rtspsim-live555. Om anslutningen lyckas skrivs följande händelse ut. Händelse typen är **Microsoft. Media. MediaGraph. Diagnostics. MediaSessionEstablished**.
 
 ```
 {

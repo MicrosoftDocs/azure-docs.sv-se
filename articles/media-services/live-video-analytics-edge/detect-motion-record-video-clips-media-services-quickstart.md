@@ -3,12 +3,12 @@ title: Identifiera rörelse, spela in video till Azure Media Services
 description: Den här snabb starten visar hur du använder real tids analys på IoT Edge för att identifiera rörelse i en video ström i real tid och spela in videoklipp i Azure Media Services.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 8872c9aefa0ed748cbed93d0f7376586859be9df
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 33deabf27fe9b74fd01dba5d6fbe3883b54dda63
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97511900"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060426"
 ---
 # <a name="quickstart-detect-motion-record-video-to-media-services"></a>Snabb start: identifiera rörelse, spela in video till Media Services
 
@@ -16,7 +16,7 @@ Den här artikeln beskriver steg för steg hur du använder video analys i real 
 
 Den här artikeln bygger ovanpå [komma igång snabb start](get-started-detect-motion-emit-events-quickstart.md).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * [Visual Studio Code](https://code.visualstudio.com/) på din dator med [Azure IoT tools-tillägget](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
@@ -24,12 +24,14 @@ Den här artikeln bygger ovanpå [komma igång snabb start](get-started-detect-m
     * [Ställa in Azure-resurser](get-started-detect-motion-emit-events-quickstart.md#set-up-azure-resources)
     * [Distribuera moduler](get-started-detect-motion-emit-events-quickstart.md#deploy-modules-on-your-edge-device)
     * [Konfigurera Visual Studio Code](get-started-detect-motion-emit-events-quickstart.md#configure-the-azure-iot-tools-extension)
-
+    > [!TIP]
+    > Om du stöter på problem med Azure-resurser som skapas, kan du läsa vår **[fel söknings guide](troubleshoot-how-to.md#common-error-resolutions)** för att lösa vanliga problem som uppstår.
 ## <a name="review-the-sample-video"></a>Granska exempel videon
 
 Som en del av stegen ovan för att konfigurera Azure-resurserna kopieras en (kort) video från ett parkerings parti till den virtuella Linux-datorn i Azure som används som IoT Edge enhet. Den här video filen används för att simulera en Live-ström för den här självstudien.
 
 Du kan använda ett program som [VLC Player](https://www.videolan.org/vlc/), starta det `Ctrl+N` och klistra in [en video exempel länk för parkerings parti](https://lvamedia.blob.core.windows.net/public/lots_015.mkv) för att starta uppspelningen. Vid ungefär 5 sekunders märket flyttas en vit bil genom parkerings partiet.
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4LUbN]
 
 När du har slutfört stegen nedan har du använt video analys i real tid för IoT Edge för att identifiera rörelsen i bilen och spela in ett videoklipp från och med det 5-andra märket. Diagrammet nedan är den visuella representationen av det övergripande flödet.
 
@@ -194,7 +196,7 @@ Med samma steg som de som beskrivs för att anropa GraphTopologyList, kan du anr
 
 Ovanstående JSON-nyttolast resulterar i att en graf-topologi skapas som definierar fem parametrar (fyra av som har standardvärden). Topologin har en källnod ([RTSP-källa](media-graph-concept.md#rtsp-source)), två processorer ([motion-identifiering processor](media-graph-concept.md#motion-detection-processor) och [signal-grind](media-graph-concept.md#signal-gate-processor)och två Sink-noder (IoT Hub mottagare och [till gångs mottagare](media-graph-concept.md#asset-sink)). Den visuella representationen av topologin visas ovan.
 
-Inom några sekunder visas följande svar i fönstret utdata.
+Inom några sekunder visas följande svar i fönstret **utdata** .
 
 ```
 [DirectMethod] Invoking Direct Method [GraphTopologySet] to [lva-sample-device/lvaEdge] ...

@@ -5,12 +5,12 @@ author: IngridAtMicrosoft
 ms.topic: how-to
 ms.author: inhenkel
 ms.date: 12/04/2020
-ms.openlocfilehash: 31cf89cb66dfbc404d65f8fc09b96c03e1be2f8f
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: d49f048df7a624dc490acf7cb4c8e5f33aa5f1c6
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97401316"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060239"
 ---
 # <a name="troubleshoot-live-video-analytics-on-iot-edge"></a>Felsöka live video analys på IoT Edge
 
@@ -65,6 +65,8 @@ Du kan använda Azure Portal för att köra en diagnos av medie grafen med hjäl
     * 406 – den IoT Edge enheten är offline eller skickar inte status rapporter.
     * 500 – ett fel uppstod i IoT Edge Runtime.
 
+    > [!TIP]
+    > Om du får problem med att köra Azure IoT Edge moduler i din miljö använder du **[Azure IoT Edge standard diagnostiska steg](https://docs.microsoft.com/azure/iot-edge/troubleshoot?view=iotedge-2018-06&preserve-view=true)** som en guide för fel sökning och diagnostik.
 ### <a name="post-deployment-direct-method-error-code"></a>Efter distribution: direkt metod felkod
 1. Om du får en status `501 code` kontrollerar du att namnet på den direkta metoden är korrekt. Om metod namnet och nytto lasten för begäran är korrekta bör du få resultat tillsammans med lyckad kod = 200. 
 1. Om nytto lasten för begäran är felaktig får du en status `400 code` och en nytto last som visar felkoden och meddelandet som ska hjälpa till att diagnostisera problemet med ditt direkta metod anrop.
@@ -93,6 +95,8 @@ Live Video Analytics distribueras som en IoT Edge modul på IoT Edge enheten och
 * [Live Video Analytics eller någon annan anpassad IoT Edge modul kan inte skicka ett meddelande till Edge Hub med 404-fel](../../iot-edge/troubleshoot-common-errors.md#iot-edge-module-fails-to-send-a-message-to-edgehub-with-404-error).
 * [IoT Edge modulen har distribuerats och försvinner sedan från enheten](../../iot-edge/troubleshoot-common-errors.md#iot-edge-module-deploys-successfully-then-disappears-from-device).
 
+    > [!TIP]
+    > Om du får problem med att köra Azure IoT Edge moduler i din miljö använder du **[Azure IoT Edge standard diagnostiska steg](https://docs.microsoft.com/azure/iot-edge/troubleshoot?view=iotedge-2018-06&preserve-view=true)** som en guide för fel sökning och diagnostik.
 ### <a name="live-video-analytics-working-with-external-modules"></a>Live video analys fungerar med externa moduler
 
 Live video analys via medie graphs tilläggs processorer kan utöka medie grafen för att skicka och ta emot data från andra IoT Edge moduler genom att använda HTTP-eller gRPC-protokoll. Som ett [särskilt exempel](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/httpExtension)kan det här medie diagrammet skicka video bild rutor som bilder till en extern härlednings modul som Yolo v3 och ta emot JSON-baserade analys resultat med http-protokollet. I en sådan topologi är målet för händelserna främst IoT-hubben. I situationer där du inte ser uthärlednings händelser i hubben, kontrol lera följande:

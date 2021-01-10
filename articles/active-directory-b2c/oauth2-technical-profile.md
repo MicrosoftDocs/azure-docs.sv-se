@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 78ce6466521c7903187798d902056948c659653c
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 624cf4012316b832e507518aa7e0f0874f517971
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509860"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98059141"
 ---
 # <a name="define-an-oauth2-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definiera en OAuth2 teknisk profil i en Azure Active Directory B2C anpassad princip
 
@@ -87,7 +87,7 @@ Den tekniska profilen returnerar även anspråk som inte returneras av identitet
 | end_session_endpoint | Ja | URL: en för slut sessionens slut punkt enligt RFC 6749. |
 | AccessTokenResponseFormat | Nej | Formatet på slut punkts anropet för åtkomsttoken. Facebook kräver till exempel en HTTP GET-metod, men svaret om åtkomsttoken är i JSON-format. |
 | AdditionalRequestQueryParameters | Nej | Parametrar för ytterligare begär ande fråga. Du kanske till exempel vill skicka ytterligare parametrar till din identitets leverantör. Du kan inkludera flera parametrar med hjälp av komma-avgränsare. |
-| ClaimsEndpointAccessTokenName | Nej | Namnet på frågesträngparametern för åtkomsttoken. Vissa identitets-providers anspråks slut punkter stöder HTTP-begäran. I det här fallet skickas Bearer-token med hjälp av en frågesträngparametern i stället för Authorization-huvudet. |
+| ClaimsEndpointAccessTokenName | Nej | Namnet på frågesträngparametern för åtkomsttoken. Vissa identitets-providers anspråks slut punkter stöder HTTP-begäran. I det här fallet skickas Bearer-token med hjälp av en frågesträngparametern i stället för Authorization-huvudet. Standardvärde: `access_token` . |
 | ClaimsEndpointFormatName | Nej | Namnet på parametern format Query String. Du kan till exempel ange namnet som `format` i den här LinkedIn-anspråks slut punkten `https://api.linkedin.com/v1/people/~?format=json` . |
 | ClaimsEndpointFormat | Nej | Värdet för parametern format Query String. Du kan till exempel ange värdet som `json` i den här LinkedIn-anspråks slut punkten `https://api.linkedin.com/v1/people/~?format=json` . |
 | ProviderName | Nej | Namnet på identitets leverantören. |
@@ -100,7 +100,8 @@ Den tekniska profilen returnerar även anspråk som inte returneras av identitet
 | IncludeClaimResolvingInClaimsHandling  | Nej | För indata-och utgående anspråk anges om [anspråks matchning](claim-resolver-overview.md) ingår i den tekniska profilen. Möjliga värden: `true` , eller `false` (standard). Om du vill använda en anspråks lösare i den tekniska profilen ställer du in den på `true` . |
 | ResolveJsonPathsInJsonTokens  | Nej | Anger om den tekniska profilen matchar JSON-sökvägar. Möjliga värden: `true` , eller `false` (standard). Använd dessa metadata för att läsa data från ett kapslat JSON-element. I en [OutputClaim](technicalprofiles.md#output-claims)anger du det `PartnerClaimType` JSON-sökvägar som du vill mata ut. Till exempel: `firstName.localized` , eller `data.0.to.0.email` .|
 |token_endpoint_auth_method| Nej| Anger hur Azure AD B2C skickar Authentication-huvudet till token-slutpunkten. Möjliga värden: `client_secret_post` (standard) och `client_secret_basic` (offentlig för hands version). Mer information finns i [avsnittet OpenID Connect client Authentication](https://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication). |
-|SingleLogoutEnabled| Nej| Anger om den tekniska profilen under inloggningen försöker logga ut från federerade identitets leverantörer. Mer information finns i [Azure AD B2C-sessionen logga ut](session-behavior.md#sign-out).  Möjliga värden: `true` (standard) eller `false` .|
+|SingleLogoutEnabled| Nej| Anger om den tekniska profilen under inloggningen försöker logga ut från federerade identitets leverantörer. Mer information finns i [Azure AD B2C-sessionen logga ut](session-behavior.md#sign-out). Möjliga värden: `true` (standard) eller `false` .|
+| UsePolicyInRedirectUri | Nej | Anger om en princip ska användas vid konstruktion av omdirigerings-URI. När du konfigurerar ditt program i identitets leverantören måste du ange omdirigerings-URI: n. Omdirigerings-URI: n pekar på Azure AD B2C, `https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/oauth2/authresp` . Om du anger `true` måste du lägga till en omdirigerings-URI för varje princip som du använder. Exempel: `https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/{policy-name}/oauth2/authresp`. |
 
 ## <a name="cryptographic-keys"></a>Kryptografiska nycklar
 

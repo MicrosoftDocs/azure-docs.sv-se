@@ -1,18 +1,18 @@
 ---
 title: Fråga Azure-Datautforskaren mellan resurser med Azure Monitor
 description: Använd Azure Monitor för att utföra kors produkt frågor mellan Azure Datautforskaren, Log Analytics arbets ytor och klassiska Application Insights program i Azure Monitor.
-author: orens
+author: osalzberg
 ms.author: bwren
 ms.reviewer: bwren
 ms.subservice: logs
 ms.topic: conceptual
 ms.date: 12/02/2020
-ms.openlocfilehash: cb586d15e762f88620fe0c91152af41b3f607d74
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 1a35b80ceec12b378a01555f42b7a0500b8f6229
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97674437"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060460"
 ---
 # <a name="cross-resource-query-azure-data-explorer-by-using-azure-monitor"></a>Fråga Azure-Datautforskaren mellan resurser med Azure Monitor
 Azure Monitor stöder frågor över olika tjänster mellan Azure Datautforskaren, [Application Insights](/azure/azure-monitor/app/app-insights-overview)och [Log Analytics](/azure/azure-monitor/platform/data-platform-logs). Du kan sedan fråga ditt Azure Datautforskaren-kluster med Log Analytics/Application Insights-verktyg och se det i en kors tjänst fråga. Artikeln visar hur du skapar en kors tjänst fråga.
@@ -22,7 +22,7 @@ Följande diagram visar Azure Monitor över tjänst flödet:
 :::image type="content" source="media\azure-data-explorer-monitor-proxy\azure-monitor-data-explorer-flow.png" alt-text="Diagram som visar flödet av frågor mellan en användare, Azure Monitor, en proxy och Azure Datautforskaren.":::
 
 >[!NOTE]
-> Azure Monitor Cross-service-fråga finns i privat förhands granskning. Allowlisting krävs. Kontakta [tjänst teamet](mailto:ADXProxy@microsoft.com) om du har frågor.
+> Azure Monitor Cross-service-fråga finns i en offentlig för hands version. Kontakta [tjänst teamet](mailto:ADXProxy@microsoft.com) om du har frågor.
 
 ## <a name="cross-query-your-log-analytics-or-application-insights-resources-and-azure-data-explorer"></a>Kors fråga din Log Analytics eller Application Insights resurser och Azure Datautforskaren
 
