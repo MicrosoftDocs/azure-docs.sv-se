@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: overview
 ms.date: 07/16/2020
-ms.openlocfilehash: 2c159e25195c5f144187268b4355c1078695e809
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: c3dc2f91fcd09807a7eaaaaa638e78ba3717faec
+ms.sourcegitcommit: 63caac7871df9d999ca5a5f1b8c036ae7014231c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96345533"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98061777"
 ---
 # <a name="whats-new-in-qna-maker"></a>Vad är nytt i QnA Maker
 
@@ -26,6 +26,8 @@ Lär dig vad som är nytt med QnA Maker.
 ### <a name="november-2020"></a>November 2020
 
 * En ny version av QnA Maker lanseras i en kostnads fri för hands version. Läs mer [här](https://techcommunity.microsoft.com/t5/azure-ai/introducing-qna-maker-managed-now-in-public-preview/ba-p/1845575).
+
+> [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Introducing-QnA-managed-Now-in-Public-Preview/player]
 * Förenklad resurs skapande
 * Regions stöd från slut punkt till slut punkt
 * Ranknings modell för djupgående information
@@ -43,7 +45,7 @@ Lär dig vad som är nytt med QnA Maker.
 
 ### <a name="may-2020"></a>Maj 2020
 
-* [Azure RBAC (rollbaserad åtkomstkontroll)](concepts/role-based-access-control.md)
+* [Rollbaserad åtkomst kontroll i Azure (Azure RBAC)](concepts/role-based-access-control.md)
 * [Omfattande text redigering](how-to/edit-knowledge-base.md#rich-text-editing-for-answer) för svar
 
 ### <a name="march-2020"></a>Mars 2020

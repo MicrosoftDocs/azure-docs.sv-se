@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.custom: references_regions
 ms.date: 01/07/2021
 ms.author: alexeyo
-ms.openlocfilehash: 539ea6f80604eabdbbe56a3280cf5ddb367c0439
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: f30b1f0f14bba54b8b4fcd7c5190f3c533f199a6
+ms.sourcegitcommit: 63caac7871df9d999ca5a5f1b8c036ae7014231c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97966791"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98061760"
 ---
 # <a name="speech-services-in-sovereign-clouds"></a>Tal tjänster i suveräna moln
 
@@ -36,9 +36,10 @@ Endast tillgängligt för amerikanska myndigheter och deras partner. Se mer info
     - Anpassad tal (för ljud modell (AM) och språk modell (LM) anpassning)
       - [Speech Studio](https://speech.azure.us/)
   - Text till tal
+    - Standard röst
+    - Neurala röst
   - Tal översättare
 - **Funktioner som inte stöds:**
-  - Neurala röst
   - Anpassad röst
 - **Språk som stöds:**
   - Se listan över språk som stöds [här](language-support.md)
@@ -105,20 +106,13 @@ Tillgängligt för organisationer med en affärs närvaro i Kina. Se mer informa
     - Anpassad tal (för ljud modell (AM) och språk modell (LM) anpassning)
       - [Speech Studio](https://speech.azure.cn/)
   - Text till tal
+    - Standard röst
+    - Neurala röst
   - Tal översättare
 - **Funktioner som inte stöds:**
-  - Neurala röst
   - Anpassad röst
 - **Språk som stöds:**
-  - Arabiska (ar-*)
-  - Kinesiska (zh-*)
-  - Engelska (en-*)
-  - Franska (FR-*)
-  - Tyska (de-*)
-  - Hindi (Hi-IN)
-  - Koreanska (ko-KR)
-  - Ryska (ru-RU)
-  - Spanska (ES-*)
+  - Se listan över språk som stöds [här](language-support.md)
 
 ### <a name="endpoint-information"></a>Slut punkts information
 
