@@ -109,7 +109,7 @@
     - name: Förstå prissättningen
       href: understanding-pricing.md
     - name: VANLIGA FRÅGOR OCH SVAR
-      href: application-gateway-faq.md
+      href: application-gateway-faq.yml
 - name: Anvisningar
   items:
     - name: Agera värd åt en enskild webbplats
@@ -120,7 +120,7 @@
           href: tutorial-manage-web-traffic-cli.md
     - name: Konfigurera intern lastbalanserare
       items:
-        - name: Azure-portalen
+        - name: Azure Portal
           href: configure-application-gateway-with-private-frontend-ip.md
         - name: Azure PowerShell
           href: application-gateway-ilb-arm.md
