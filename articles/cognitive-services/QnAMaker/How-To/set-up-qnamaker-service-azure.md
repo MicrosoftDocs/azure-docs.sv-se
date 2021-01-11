@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 83917214705546b21553e997ccab11a7511f77fd
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 5af4eb931015e386e35470f2b36341e15f76150f
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353314"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98065413"
 ---
 # <a name="manage-qna-maker-resources"></a>Hantera QnA Maker resurser
 
@@ -128,12 +128,18 @@ För att hålla appen för förutsägelse slut punkt inläst även när det inte
 Läs mer om hur du konfigurerar App Service [allmänna inställningar](../../../app-service/configure-common.md#configure-general-settings).
 
 ### <a name="configure-app-service-environment-to-host-qna-maker-app-service"></a>Konfigurera App Service-miljön som värd QnA Maker App Service
-App Service-miljön kan användas som värd för QnA Maker app service. Om App Service-miljön är internt måste du följa dessa steg:
-1. Skapa en app service och en Azure Search-tjänst.
-2. Exponera app service och Tillåt QnA Maker tillgänglighet som:
-    * Offentligt tillgänglig – standard
-    * DNS-service tag: `CognitiveServicesManagement`
-3. Skapa en QnA Maker kognitiv tjänst instans (Microsoft. CognitiveServices/Accounts) med Azure Resource Manager där QnA Maker-slutpunkten ska vara inställd på App Service-miljön.
+App Service-miljön (ASE) kan användas för att vara värd för QnA Maker app service. Följ stegen nedan:
+
+1. Skapa en App Service-miljön och markera den som "extern". Följ [själv studie kursen](https://docs.microsoft.com/azure/app-service/environment/create-external-ase) om du vill ha mer information.
+2.  Skapa en app service i App Service-miljön.
+    * Kontrol lera konfigurationen för app service och Lägg till "PrimaryEndpointKey" som en program inställning. Värdet för ' PrimaryEndpointKey ' ska vara inställt på " \<app-name\> -PrimaryEndpointKey". Appens namn definieras i App Service-URL: en. Om App Service-URL: en till exempel är "mywebsite.myase.p.azurewebsite.net" är App-Name "min webbplats". I det här fallet ska värdet för ' PrimaryEndpointKey ' anges till "Website-PrimaryEndpointKey".
+    * Skapa en Azure Search-tjänst.
+    * Se till att Azure Search-och appinställningar har kon figurer ATS korrekt. 
+      Följ den här [självstudien](https://docs.microsoft.com/azure/cognitiveservices/qnamaker/reference-app-service#app-service).
+3.  Uppdatera nätverks säkerhets gruppen som är kopplad till App Service-miljön
+    * Uppdatera i förväg skapade inkommande säkerhets regler enligt dina krav.
+    * Lägg till en ny inkommande säkerhets regel med källan som service tag och käll tjänst tag gen som ' CognitiveServicesManagement '.
+4.  Skapa en QnA Maker kognitiv tjänst instans (Microsoft. CognitiveServices/Accounts) med Azure Resource Manager där QnA Maker-slutpunkten ska ställas in på App Service slut punkten som skapades ovan (https://mywebsite.myase.p.azurewebsite.net).
 
 ### <a name="network-isolation-for-app-service"></a>Nätverks isolering för App Service
 
@@ -254,7 +260,7 @@ Lär dig hur du uppgraderar de resurser som används av din kunskaps bas. QnA Ma
 
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabil utgåva)](#tab/v1)
 
-Om du planerar att ha många kunskaps baser uppgraderar du pris nivån för Azure Kognitiv sökning-tjänsten.
+Om du planerar att ha många kunskapsbaser uppgraderar du prisnivån för Azure Cognitive Search-tjänsten.
 
 För närvarande kan du inte utföra en uppgradering på plats av Azure Search-SKU: n. Du kan dock skapa en ny Azure Search-resurs med önskad SKU, återställa data till den nya resursen och sedan länka den till QnA Maker stacken. Det gör du genom att följa dessa steg:
 
@@ -262,7 +268,7 @@ För närvarande kan du inte utföra en uppgradering på plats av Azure Search-S
 
     ![QnA Maker Azure Search-resurs](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-azuresearch-new.png)
 
-1. Återställ indexen från din ursprungliga Azure Search-resurs till den nya. Se [exempel koden för säkerhets kopierings återställning](https://github.com/pchoudhari/QnAMakerBackupRestore).
+1. Återställ indexen från din ursprungliga Azure Search-resurs till den nya. Se [exempelkoden för återställning av säkerhetskopior](https://github.com/pchoudhari/QnAMakerBackupRestore).
 
 1. När data har återställts går du till din nya Azure Search-resurs, väljer **nycklar** och skriver ned **namnet** och **Administratörs nyckeln**:
 
@@ -272,7 +278,7 @@ För närvarande kan du inte utföra en uppgradering på plats av Azure Search-S
 
     ![QnA Maker App Service instans](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-resource-list-appservice.png)
 
-1. Välj **program inställningar** och ändra inställningarna i fälten **AzureSearchName** och **AzureSearchAdminKey** från steg 3.
+1. Välj **Programinställningar** och ändra inställningarna i fälten **AzureSearchName** och **AzureSearchAdminKey** från steg 3.
 
     ![QnA Maker App Service inställning](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-appservice-settings.png)
 
@@ -343,7 +349,7 @@ Kostnads fria Sök resurser tas bort efter 90 dagar utan att ha fått ett API-an
 
 # <a name="qna-maker-managed-preview-release"></a>[QnA Maker hanterad (för hands version)](#tab/v2)
 
-Om du planerar att ha många kunskaps baser uppgraderar du pris nivån för Azure Kognitiv sökning-tjänsten.
+Om du planerar att ha många kunskapsbaser uppgraderar du prisnivån för Azure Cognitive Search-tjänsten.
 
 För närvarande kan du inte utföra en uppgradering på plats av Azure Search-SKU: n. Du kan dock skapa en ny Azure Search-resurs med önskad SKU, återställa data till den nya resursen och sedan länka den till QnA Maker stacken. Det gör du genom att följa dessa steg:
 
@@ -351,7 +357,7 @@ För närvarande kan du inte utföra en uppgradering på plats av Azure Search-S
 
     ![QnA Maker Azure Search-resurs](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-azuresearch-new.png)
 
-1. Återställ indexen från din ursprungliga Azure Search-resurs till den nya. Se [exempel koden för säkerhets kopierings återställning](https://github.com/pchoudhari/QnAMakerBackupRestore).
+1. Återställ indexen från din ursprungliga Azure Search-resurs till den nya. Se [exempelkoden för återställning av säkerhetskopior](https://github.com/pchoudhari/QnAMakerBackupRestore).
 
 1. Information om hur du länkar den nya Azure Search-resursen till tjänsten QnA Maker Managed (för hands version) finns i avsnittet nedan.
 

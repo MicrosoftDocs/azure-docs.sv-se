@@ -13,15 +13,15 @@ ms.date: 09/18/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 5ec419be5c7549553788d009f09fa3e0fb8655e4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fd836afd6b8574be71ad22d26d67f49971834a88
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91258293"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98064733"
 ---
 # <a name="initialize-client-applications-using-msalnet"></a>Initiera klient program med MSAL.NET
-I den här artikeln beskrivs hur du initierar offentlig klient och konfidentiella klient program med hjälp av Microsoft Authentication Library för .NET (MSAL.NET).  Läs [översikten](msal-client-applications.md)om du vill veta mer om klient program typer och program konfigurations alternativ.
+I den här artikeln beskrivs hur du initierar offentliga klient program och konfidentiella klient program med hjälp av Microsoft Authentication Library för .NET (MSAL.NET).  Läs [översikten](msal-client-applications.md)om du vill veta mer om klient program typer och program konfigurations alternativ.
 
 Med MSAL.NET 3. x är det rekommenderade sättet att instansiera ett program med hjälp av program byggare: `PublicClientApplicationBuilder` och `ConfidentialClientApplicationBuilder` . De erbjuder en kraftfull mekanism för att konfigurera programmet antingen från koden eller från en konfigurations fil, eller till och med genom att kombinera båda metoderna.
 

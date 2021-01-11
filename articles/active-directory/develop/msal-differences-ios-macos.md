@@ -1,7 +1,7 @@
 ---
 title: MSAL för iOS & macOS-skillnader | Azure
 titleSuffix: Microsoft identity platform
-description: Beskriver användnings skillnader i Microsoft Authentication Library (MSAL) mellan iOS och macOS.
+description: Beskriver användnings skillnaderna i Microsoft Authentication Library (MSAL) mellan iOS och macOS.
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -13,12 +13,12 @@ ms.date: 08/28/2019
 ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
-ms.openlocfilehash: 41389bc5ed8580cd80dbc40e771c7f15241f5ae7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 59e4111b6dda386777e820c9be16ace9ff01135c
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85479410"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98064923"
 ---
 # <a name="microsoft-authentication-library-for-ios-and-macos-differences"></a>Skillnader mellan Microsoft Authentication Library för iOS och macOS
 

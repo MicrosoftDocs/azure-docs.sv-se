@@ -7,19 +7,19 @@ ms.author: viviali
 ms.date: 06/25/2020
 ms.topic: how-to
 ms.service: iot-central
-ms.openlocfilehash: 9e5f4fd14f56f0a2dff45dd2650ea552b07fecd7
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: d4c099d29a843b4c354ffb218887dc7ffab51771
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94987362"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98065447"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export-legacy"></a>Exportera IoT-data till moln mål med hjälp av data export (bakåtkompatibelt)
 
 > [!Note]
 > I den här artikeln beskrivs äldre data export funktioner i IoT Central.
 >
-> - Information om de nya funktionerna för för hands versions data export finns i [Exportera IoT-data till moln mål med hjälp av data export](./howto-export-data.md).
+> - Information om de senaste data export funktionerna finns i [Exportera IoT-data till moln mål med hjälp av data export](./howto-export-data.md).
 > - Mer information om skillnaderna mellan funktionerna för för hands versions export och äldre data export finns i [jämförelse tabellen](./howto-export-data.md#comparison-of-legacy-data-export-and-data-export).
 
 Den här artikeln beskriver hur du använder funktionen för data export i Azure IoT Central. Med den här funktionen kan du exportera dina data kontinuerligt till **azure Event Hubs**, **Azure Service Bus** eller **Azure Blob Storage** -instanser. Data export använder JSON-formatet och kan omfatta telemetri, enhets information och information om enhets mal len. Använd exporterade data för:

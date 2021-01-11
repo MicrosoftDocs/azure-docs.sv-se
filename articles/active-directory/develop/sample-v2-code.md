@@ -12,12 +12,12 @@ ms.date: 11/04/2020
 ms.author: marsma
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 169a8dba979571a5f4b8c8056737fce72db1d058
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 3baeb87bf3fe1cdcd5e9f27aed2587eed060c5a8
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97629875"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98064529"
 ---
 # <a name="microsoft-identity-platform-code-samples-v20-endpoint"></a>Kod exempel för Microsoft Identity Platform (v 2.0-slut punkt)
 
@@ -140,7 +140,7 @@ Följande exempel visar hur du skyddar en Azure-funktion med HttpTrigger och exp
 | ![Den här bilden visar ASP.NET Core logo typ](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Core | ASP.NET Core Web API (Service) Azure Function i [dotNet-Native-aspnetcore-v2](https://github.com/Azure-Samples/ms-identity-dotnet-webapi-azurefunctions)  |
 | ![Den här bilden visar python-logotypen](media/sample-v2-code/logo_python.png)</p>Python | Webb-API (Service) för [python](https://github.com/Azure-Samples/ms-identity-python-webapi-azurefunctions) |
 | ![Den här bilden visar Node.js logo typ](media/sample-v2-code/logo_nodejs.png)</p>Node.js | Webb-API (tjänst) för [Node.js och Passport – Azure-AD](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-azurefunctions) |
-| ![Den här bilden visar Node.js logo typ](media/sample-v2-code/logo_nodejs.png)</p>NodeJS | Webb-API (Service) för [NodeJS och Passport-Azure-AD som använder på uppdrag av](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-onbehalfof-azurefunctions) |
+| ![Den här bilden visar Node.js logo typ](media/sample-v2-code/logo_nodejs.png)</p>Node.js | Webb-API (Service) för [Node.js och Passport-Azure-AD som använder på uppdrag av](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-onbehalfof-azurefunctions) |
 
 ## <a name="other-microsoft-graph-samples"></a>Andra Microsoft Graph exempel
 

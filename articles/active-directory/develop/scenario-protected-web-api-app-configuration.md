@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 12eba5a0de85f97dba9c220ed71679bdd35d7482
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: f1277972480f504d9d2df67930d9385cbe8c06b4
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97963340"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98063203"
 ---
 # <a name="protected-web-api-code-configuration"></a>Skyddat webb-API: kod konfiguration
 

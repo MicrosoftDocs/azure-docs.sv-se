@@ -7,12 +7,12 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
 ms.custom: references_regions
-ms.openlocfilehash: 2d7c732771749c0c0372c5433b76c3e30469e2b0
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: eacdf0cf80414c44aaccf6925e466b914c66da03
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968423"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98065311"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-it-service-management-connector"></a>Anslut Azure till ITSM-verktyg med hjälp av Anslutningsprogram för hantering av IT-tjänster (ITSM)
 
@@ -64,7 +64,7 @@ När du har beredd dina ITSM-verktyg utför du följande steg för att skapa en 
 
 1. I **alla resurser** letar du efter **Servicedesk (*namnet på din arbets yta*)**:
 
-   ![Skärm bild som visar de senaste resurserna i Azure Portal.](media/itsmc-overview/itsm-connections.png)
+   ![Skärm bild som visar de senaste resurserna i Azure Portal.](media/itsmc-definition/create-new-connection-from-resource.png)
 
 1. Under **arbets ytans data källor** i det vänstra fönstret väljer du **ITSM-anslutningar**:
 
@@ -137,7 +137,7 @@ Använd följande procedur för att skapa åtgärds grupper:
     * I ett fall som du väljer i list rutan "incident" eller "varning" i arbets objekt:
         * Om du markerar kryss rutan **skapa enskilda arbets objekt för varje konfigurations objekt** skapas ett nytt arbets objekt i varje konfigurations objekt i varje avisering. Det kan finnas mer än ett arbets objekt per konfigurations objekt i ITSM-systemet.
 
-             Ett exempel:
+             Till exempel:
              1) Avisering 1 med 3 konfigurations objekt: A, B, C – kommer att skapa 3 arbets uppgifter.
              2) Avisering 2 med 1 konfigurations objekt: ett-kommer att skapa 1 arbets objekt.
 
@@ -146,7 +146,7 @@ Använd följande procedur för att skapa åtgärds grupper:
         >[!NOTE]
         > I det här fallet genererar en del av den utlöst aviseringen inga nya arbets objekt i ITSM-verktyget.
 
-        Ett exempel:
+        Till exempel:
          1) Avisering 1 med 3 konfigurations objekt: A, B, C-kommer att skapa 1 arbets objekt.
          2) Avisering 2 för samma aviserings regel som fas 1 med 1 konfigurations objekt: D-kommer att slås samman till arbets objekt i fas 1.
          3) Avisering 3 för en annan varnings regel med 1 konfigurations objekt: E-kommer att skapa 1 arbets objekt.

@@ -13,12 +13,12 @@ ms.date: 11/26/2019
 ms.author: hahamil
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 746d4ac2d346d67b5ca796c19c799f654715acc4
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 1282c27378e6a088a600a3ab3105f3f548984d03
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98013591"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98063152"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-application"></a>Självstudie: Logga in användare och anropa Microsoft Graph API från ett Android-program
 
@@ -71,7 +71,7 @@ Om du inte redan har ett Android-program följer du dessa steg för att skapa et
 6. Ange **lägsta API-nivå** till **API 19** eller högre och klicka på **Slutför**.
 7. I projektvyn väljer du **projekt** i list rutan för att Visa käll-och icke-källfiler, öppna **app/build. gradle** och Ställ in `targetSdkVersion` på `28` .
 
-## <a name="integrate-with-microsoft-authentication-library"></a>Integrera med Microsoft Authentication Library
+## <a name="integrate-with-the-microsoft-authentication-library"></a>Integrera med Microsoft Authentication Library
 
 ### <a name="register-your-application"></a>Registrera ditt program
 

@@ -12,12 +12,12 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, jesakowi
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 47c3c091e767cac63bb814469397ef1a0aeca3a4
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: 011acdf98c8430bfb7ba1b02ec24a170f829e48f
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516497"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98063798"
 ---
 # <a name="microsoft-identity-platform-best-practices-and-recommendations"></a>Metod tips och rekommendationer för Microsoft Identity Platform
 
@@ -38,7 +38,7 @@ Använd följande check lista för att se till att programmet är effektivt inte
 
 ![kryssruta](./media/active-directory-integration-checklist/checkbox-two.svg) Se till att informationen som är kopplad till det konto som du använde för att registrera och hantera appar är uppdaterad.
 
-## <a name="branding"></a>Varumärke
+## <a name="branding"></a>Anpassning
 
 ![kryss rutan ](./media/active-directory-integration-checklist/checkbox-two.svg) följer [rikt linjerna för anpassning av program](howto-add-branding-in-azure-ad-apps.md).
 

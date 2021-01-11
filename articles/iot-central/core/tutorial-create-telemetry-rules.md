@@ -7,12 +7,12 @@ ms.date: 01/08/2021
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: a1991860e1599020c5a91c09dfb30a96ed442ff7
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: 6be49ec3777b4bcaa033a60546e95711090662a4
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98033854"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98065294"
 ---
 # <a name="tutorial-create-a-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Självstudier: Skapa en regel och konfigurera aviseringar i ditt Azure IoT Central-program
 
@@ -24,7 +24,7 @@ Enheter använder telemetri för att skicka numeriska data från enheten. En reg
 
 I den här självstudien skapar du en regel för att skicka ett e-postmeddelande när temperaturen i en simulerad sensor enhet överskrider 70 &deg; F.
 
-I den här guiden får du lära dig att:
+I de här självstudierna får du lära dig att
 
 > [!div class="checklist"]
 >
@@ -118,4 +118,4 @@ I den här självstudiekursen lärde du dig att:
 Nu när du har definierat en tröskel-baserad regel är det föreslagna nästa steg att lära dig att:
 
 > [!div class="nextstepaction"]
-> [Konfigurera kontinuerlig data export](./howto-export-data.md).
+> [Skapa Webhooks på regler](./howto-create-webhooks.md).

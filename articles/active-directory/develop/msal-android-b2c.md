@@ -13,12 +13,12 @@ ms.date: 9/18/2019
 ms.author: brianmel
 ms.reviewer: rapong
 ms.custom: aaddev
-ms.openlocfilehash: 1c4f47fd771cfb92b3896963c96b39d9eb7d97b8
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: ad43d380bde1bae0e389fa58e3d916c2c3250be7
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96344886"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98064940"
 ---
 # <a name="use-msal-for-android-with-b2c"></a>Använda MSAL för Android med B2C
 
@@ -139,7 +139,7 @@ pca.acquireTokenSilentAsync(parameters);
 
 ## <a name="specify-a-policy"></a>Ange en princip
 
-Eftersom principerna i B2C representeras som separata myndigheter, så kan du anropa en annan princip än standardvärdet genom att ange en `fromAuthority` sats vid konstruktion `acquireToken` eller `acquireTokenSilent` parametrar.  Exempel:
+Eftersom principerna i B2C representeras som separata myndigheter, så kan du anropa en annan princip än standardvärdet genom att ange en `fromAuthority` sats vid konstruktion `acquireToken` eller `acquireTokenSilent` parametrar.  Till exempel:
 
 ```java
 AcquireTokenParameters parameters = new AcquireTokenParameters.Builder()

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/14/2020
 ms.author: nichola
-ms.openlocfilehash: 59924c1f876d08aa504f19c5d6c86dca32fbd1e2
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 9c53ea5bad88eb79940274c409218045c06d7981
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96173472"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98064976"
 ---
 # <a name="support-single-sign-on-and-app-protection-policies-in-mobile-apps-you-develop"></a>Stöd för enkel inloggning och skydds principer för appar i mobilappar som du utvecklar
 
@@ -36,7 +36,7 @@ Dessutom är det möjligt att aktivera enkel inloggning i din app för att låsa
 
 Vi rekommenderar följande för att göra det möjligt för din app att dra nytta av enkel inloggning.
 
-### <a name="use-microsoft-authentication-library-msal"></a>Använd Microsoft Authentication Library (MSAL)
+### <a name="use-the-microsoft-authentication-library-msal"></a>Använda Microsoft Authentication Library (MSAL)
 
 Det bästa valet för att implementera enkel inloggning i ditt program är att använda [Microsoft Authentication Library (MSAL)](msal-overview.md). Genom att använda MSAL kan du lägga till autentisering i din app med minimala kod-och API-anrop, få alla funktioner i [Microsofts identitets plattform](./index.yml)och låta Microsoft hantera underhållet av en säker autentiserings lösning. Som standard lägger MSAL till SSO-stöd för ditt program. Dessutom är användningen av MSAL ett krav om du också planerar att implementera skydds principer för appar.
 

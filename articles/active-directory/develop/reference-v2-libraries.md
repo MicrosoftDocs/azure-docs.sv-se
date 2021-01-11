@@ -12,12 +12,12 @@ ms.date: 07/25/2019
 ms.author: negoe
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
-ms.openlocfilehash: ebe36c6f4b8b010d2b53bf4153f1476183eb8a4a
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: a7792e989444c87ba80088f8a850cacb4aa0dc3c
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94651268"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98064580"
 ---
 # <a name="microsoft-identity-platform-authentication-libraries"></a>Bibliotek för Microsoft Identity Platform-autentisering
 
@@ -48,7 +48,7 @@ En lista över bibliotek som fungerar med Microsoft Identity Platform-slutpunkte
 
 Använd bibliotek för klientautentisering för att hämta en token för att anropa ett skyddat webb-API.
 
-| Plattform | Bibliotek | Ladda ned | Källkod | Exempel | Referens | Konceptuellt dokument | Översikt |
+| Plattform | Bibliotek | Hämta | Källkod | Exempel | Referens | Konceptuellt dokument | Översikt |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | ![JavaScript](media/sample-v2-code/logo_js.png) | MSAL.js  | [NPM](https://www.npmjs.com/package/msal) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/README.md) |  [Ensidesapp](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2) | [Referens](https://azuread.github.io/microsoft-authentication-library-for-js/ref/msal-core/) | [Konceptuella dokument](msal-overview.md)| [Översikt](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki#roadmap)
 ![Angular](media/sample-v2-code/logo_angular.png) | MSAL-vinkel | [NPM](https://www.npmjs.com/package/@azure/msal-angular) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular/README.md) | [Vinkel SPA](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-angular) | [Referens](https://azuread.github.io/microsoft-authentication-library-for-js/ref/msal-angular/) | [Konceptuella dokument](msal-overview.md) | [Översikt](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki#roadmap)
@@ -63,7 +63,7 @@ Använd bibliotek för klientautentisering för att hämta en token för att anr
 
 Använd mellanprogram bibliotek för att skydda webb program och webb-API: er. Webbappar eller webb-API: er skrivna med ASP.NET eller ASP.NET Core använda mellanprogram biblioteken.
 
-| Plattform | Bibliotek | Ladda ned | Källkod | Exempel | Referens
+| Plattform | Bibliotek | Hämta | Källkod | Exempel | Referens
 | --- | --- | --- | --- | --- | --- |
 | ![.NET](media/sample-v2-code/logo_NET.png) ![.NET Core](media/sample-v2-code/logo_NETcore.png) | ASP.NET-säkerhet |[NuGet](https://www.nuget.org/packages/Microsoft.AspNet.Mvc/) |[GitHub](https://github.com/aspnet/AspNetCore) |[MVC-app](quickstart-v2-aspnet-webapp.md) |[ASP.NET API-referens](/dotnet/api/?view=aspnetcore-2.0&preserve-view=true) |
 | ![.NET](media/sample-v2-code/logo_NET.png)| IdentityModel-tillägg för .NET| |[GitHub](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet) | [MVC-app](quickstart-v2-aspnet-webapp.md) |[Referens](/dotnet/api/overview/azure/activedirectory/client?view=azure-dotnet&preserve-view=true) |
@@ -80,7 +80,7 @@ Vid stöd för operativ system vs-språk, är mappningen följande:
 | Swift <br> Objective-C |            |            | [MSAL för iOS och macOS](msal-overview.md) | [MSAL för iOS och macOS](msal-overview.md) |            |
 | ![Java](media/sample-v2-code/logo_java.png) Java | msal4j | msal4j | msal4j | | MSAL Android |
 | ![Python](media/sample-v2-code/logo_python.png) Python | MSAL python | MSAL python | MSAL python |
-| ![Node.Js](media/sample-v2-code/logo_nodejs.png) Node.JS | Passport. Node | Passport. Node | Passport. Node |
+| ![Node.js](media/sample-v2-code/logo_nodejs.png) Node.js | Passport. Node | Passport. Node | Passport. Node |
 
 Se även [scenarier av plattformar och språk som stöds](authentication-flows-app-scenarios.md#scenarios-and-supported-platforms-and-languages)
 

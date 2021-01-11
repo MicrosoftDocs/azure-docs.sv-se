@@ -9,13 +9,13 @@ ms.topic: reference
 ms.custom: devx-track-python
 author: likebupt
 ms.author: keli19
-ms.date: 12/02/2020
-ms.openlocfilehash: d1e4ffa525c5628d0b6c9a3ca67f3e069c44e823
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.date: 01/02/2021
+ms.openlocfilehash: 7b5bc77375d684340116a21b7f95cf576d99dad2
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97679191"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98065362"
 ---
 # <a name="execute-python-script-module"></a>Köra Python-skript modul
 
@@ -60,7 +60,7 @@ if spec is None:
 > [!WARNING]
 > Excute Python-skript module stöder inte installation av paket som är beroende av extra interna bibliotek med kommando som "apt-get", till exempel Java, PyODBC och så vidare. Detta beror på att den här modulen körs i en enkel miljö med python förinstallerat endast och med icke-administratörs behörighet.  
 
-## <a name="access-to-registered-datasets"></a>Åtkomst till registrerade data uppsättningar
+## <a name="access-to-current-workspace-and-registered-datasets"></a>Åtkomst till den aktuella arbets ytan och registrerade data uppsättningar
 
 Du kan referera till följande exempel kod för att få åtkomst till [registrerade data uppsättningar](../how-to-create-register-datasets.md) på din arbets yta:
 
@@ -71,8 +71,10 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
     print(f'Input pandas.DataFrame #1: {dataframe1}')
     from azureml.core import Run
     run = Run.get_context(allow_offline=True)
+    #access to current workspace
     ws = run.experiment.workspace
 
+    #access to registered dataset of current workspace
     from azureml.core import Dataset
     dataset = Dataset.get_by_name(ws, name='test-register-tabular-in-designer')
     dataframe1 = dataset.to_pandas_dataframe()
@@ -219,7 +221,9 @@ EXECUTE Python-skript module innehåller exempel på python-kod som du kan anvä
 
 6. Skicka pipelinen.
 
-    Alla data och all kod läses in i en virtuell dator och körs med den angivna python-miljön.
+    Om modulen är slutförd kontrollerar du utdata om det är förväntat.
+
+    Om modulen Miss lyckas måste du göra en del fel sökning. Välj modulen och öppna **utdata + loggar** i den högra rutan. Öppna **70_driver_log.txt** och sök **i azureml_main** så kan du se vilken rad som orsakade felet. Till exempel "File"/tmp/tmp01_ID/user_script. py ", rad 17 i azureml_main" anger att felet inträffade på 17-linjen i python-skriptet.
 
 ## <a name="results"></a>Resultat
 

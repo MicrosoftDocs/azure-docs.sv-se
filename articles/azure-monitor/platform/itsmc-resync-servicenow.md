@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 04/12/2020
-ms.openlocfilehash: 01e492072bd75af9f80656b71d2cc1c473d64263
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: cea4503c4e3b9dd58cc475aaec355a2bb2e0bd29
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97803807"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98065230"
 ---
 # <a name="troubleshooting-problems-in-itsm-connector"></a>Felsöka problem med anslutningsprogram för hantering av IT-tjänster (ITSM)
 
@@ -23,13 +23,38 @@ ITSM ger dig möjlighet att skicka aviseringar till externt biljett system, till
 
 ## <a name="visualize-and-analyze-the-incident-and-change-request-data"></a>Visualisera och analysera incidenter och data för ändringsbegäran
 
-Beroende på din konfiguration när du konfigurerar en anslutning kan ITSMC synkronisera upp till 120 dagar av incidenten och data för ändringsbegäran. Schemat för logg poster för dessa data finns i [avsnittet Ytterligare information](./itsmc-overview.md) i den här artikeln.
+Beroende på din konfiguration när du konfigurerar en anslutning kan ITSMC synkronisera upp till 120 dagar av incidenten och data för ändringsbegäran. Schemat för logg poster för dessa data finns i [avsnittet Ytterligare information](./itsmc-synced-data.md) i den här artikeln.
 
 Du kan visualisera incident-och ändrings begär ande data med hjälp av ITSMC-instrument panelen:
 
 ![Skärm bild som visar ITSMC-instrumentpanelen.](media/itsmc-overview/itsmc-overview-sample-log-analytics.png)
 
 Instrument panelen innehåller också information om anslutnings status, som du kan använda som utgångs punkt för att analysera problem med anslutningarna.
+
+### <a name="error-investigation-using-the-dashboard"></a>Fel undersökning med instrument panelen
+
+Om du vill visa felen på instrument panelen ska du följa anvisningarna nedan:
+
+1. I **alla resurser** letar du efter **Servicedesk (*namnet på din arbets yta*)**:
+
+   ![Skärm bild som visar de senaste resurserna i Azure Portal.](media/itsmc-definition/create-new-connection-from-resource.png)
+
+2. Under **arbets ytans data källor** i det vänstra fönstret väljer du **ITSM-anslutningar**:
+
+   ![Skärm bild som visar meny alternativet ITSM-anslutningar.](media/itsmc-overview/add-new-itsm-connection.png)
+
+3. Under **Sammanfattning** i den vänstra rutan **anslutningsprogram för hantering av IT-tjänster (ITSM)** väljer du **Visa sammanfattning**:
+
+    ![Skärm bild som visar Visa sammanfattning.](media/itsmc-resync-servicenow/dashboard-view-summary.png)
+
+4. Klicka på diagrammet under **Sammanfattning** i den vänstra rutan **anslutningsprogram för hantering av IT-tjänster (ITSM)**:
+
+    ![Skärm bild som visar graf-klickning.](media/itsmc-resync-servicenow/dashboard-graph-click.png)
+
+5. Med den här instrument panelen kan du granska status och fel i din anslutning.
+    ![Skärm bild som visar kopplings status.](media/itsmc-resync-servicenow/connector-dashboard.png)
+
+### <a name="service-map"></a>Tjänst karta
 
 Du kan också visualisera de incidenter som synkroniseras mot de berörda datorerna i Tjänstkarta.
 

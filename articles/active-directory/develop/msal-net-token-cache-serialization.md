@@ -1,7 +1,7 @@
 ---
 title: MSAL.NET (token cache serializing) | Azure
 titleSuffix: Microsoft identity platform
-description: Lär dig mer om serialisering och kundens serialisering av token-cachen med Microsoft Authentication Library för .NET (MSAL.NET).
+description: Läs om serialisering och kundserialisering av token-cachen med Microsoft Authentication Library för .NET (MSAL.NET).
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -13,12 +13,12 @@ ms.date: 09/16/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 4a0d5af8faafac8b733bd2daa9655e663da6fe71
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 7e80123f21efded92ab6d59d550965ca72427b1c
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91873531"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98064665"
 ---
 # <a name="token-cache-serialization-in-msalnet"></a>Cachelagring av token i MSAL.NET
 När en [token har hämtats](msal-acquire-cache-tokens.md)cachelagras den av Microsoft Authentication Library (MSAL).  Program koden bör försöka hämta en token från cachen innan du hämtar en token med en annan metod.  I den här artikeln beskrivs standard och anpassad serialisering för token cache i MSAL.NET.

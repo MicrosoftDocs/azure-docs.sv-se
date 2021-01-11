@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/22/2019
 ms.author: victorh
-ms.openlocfilehash: 9d2fba48762e11a92f6f3925c969b01aebbe3630
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: e18267d5a810826e41e05eb3dde3cd82a8eb9197
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347599"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98065328"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>Server dels hälsa och diagnostikloggar för Application Gateway
 
@@ -222,7 +222,7 @@ Azure genererar aktivitets loggen som standard. Loggarna bevaras för 90 dagar i
 |serverRouted| Backend-servern som Application Gateway dirigerar begäran till.|
 |serverStatus| HTTP-statuskod för backend-servern.|
 |serverResponseLatency| Svars tid för svaret från backend-servern.|
-|värd| Adress som anges i värd rubriken för begäran. Om det här fältet har skrivits om innehåller det uppdaterade värd namnet|
+|värd| Adress som anges i värd rubriken för begäran. Om det här fältet har skrivits om med hjälp av omskrivning av huvuden, innehåller det uppdaterade värd namnet|
 |originalRequestUriWithArgs| Det här fältet innehåller den ursprungliga URL: en för begäran |
 |requestUri| Det här fältet innehåller URL: en efter Skriv åtgärden på Application Gateway |
 |originalHost| Det här fältet innehåller det ursprungliga värd namnet för begäran

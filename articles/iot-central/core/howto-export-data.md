@@ -7,21 +7,18 @@ ms.author: viviali
 ms.date: 11/05/2020
 ms.topic: how-to
 ms.service: iot-central
-ms.custom: contperf-fy21q1
-ms.openlocfilehash: b84f1efd77ca757fd2ceaa8bb5605e3fc78297d0
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.custom: contperf-fy21q1, contperf-fy21q3
+ms.openlocfilehash: 3079b8384a24642322d6f6eb86e2ca7f0927db15
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032379"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98065396"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export"></a>Exportera IoT-data till moln mål med hjälp av data export
 
 > [!Note]
-> I den här artikeln beskrivs data export funktionerna i IoT Central.
->
-> - Information om äldre funktioner för data export finns i [Exportera IoT-data till moln mål med hjälp av data export (bakåtkompatibelt)](./howto-export-data-legacy.md).
-> - Mer information om skillnaderna mellan funktionerna för data export och äldre data export finns i [jämförelse tabellen](#comparison-of-legacy-data-export-and-data-export) nedan.
+> I den här artikeln beskrivs data export funktionerna i IoT Central. Information om äldre funktioner för data export finns i [Exportera IoT-data till moln mål med hjälp av data export (bakåtkompatibelt)](./howto-export-data-legacy.md).
 
 Den här artikeln beskriver hur du använder den nya data export funktionen i Azure IoT Central. Använd den här funktionen för att kontinuerligt exportera filtrerade och berikade IoT-data från ditt IoT Central-program. Data exporten skickar ändringar i nära real tid till andra delar av moln lösningen för att kunna använda insikter, analyser och lagring med varma sökvägar.
 

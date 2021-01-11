@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: 1e8c7805cf9804e8380f8638781f9634d2d3d081
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 63d56d8afc584a760f4b31c6021d4c764afd52b3
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98011517"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98064427"
 ---
 # <a name="tutorial-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Självstudie: anropa Microsoft Graph API från ett Universell Windows-plattform-program (UWP)
 
@@ -50,7 +50,7 @@ I den här guiden används följande NuGet-paket:
 
 |Bibliotek|Beskrivning|
 |---|---|
-|[Microsoft. Identity. client](https://www.nuget.org/packages/Microsoft.Identity.Client)|Microsofts autentiseringsbibliotek|
+|[Microsoft. Identity. client](https://www.nuget.org/packages/Microsoft.Identity.Client)| Microsofts autentiseringsbibliotek|
 |[Microsoft. Graph](https://www.nuget.org/packages/Microsoft.Graph)|Microsoft Graph klient bibliotek|
 
 ## <a name="set-up-your-project"></a>Konfigurera projektet
@@ -71,7 +71,7 @@ Den här guiden skapar ett program som visar en knapp som frågar Microsoft Grap
 
    ![Minimi-och mål versioner](./media/tutorial-v2-windows-uwp/select-uwp-target-minimum.png)
 
-### <a name="add-microsoft-authentication-library-to-your-project"></a>Lägg till Microsoft Authentication Library i projektet
+### <a name="add-the-microsoft-authentication-library-to-your-project"></a>Lägg till Microsoft Authentication Library i projektet
 
 1. I Visual Studio väljer du **verktyg**  >  **NuGet Package Manager**  >  **Package Manager-konsolen**.
 1. Kopiera och klistra in följande kommandon i fönstret **Package Manager-konsol** :
@@ -103,7 +103,7 @@ Visual Studio skapar *mainpage. XAML* som en del av projekt mal len. Öppna den 
 </Grid>
 ```
 
-### <a name="use-microsoft-authentication-library-to-get-a-token-for-the-microsoft-graph-api"></a>Använd Microsoft Authentication Library för att hämta en token för Microsoft Graph-API: et
+### <a name="use-the-microsoft-authentication-library-to-get-a-token-for-the-microsoft-graph-api"></a>Använd Microsoft Authentication Library för att hämta en token för Microsoft Graph-API: et
 
 Det här avsnittet visar hur du använder Microsoft Authentication Library för att hämta en token för Microsoft Graph-API: et. Gör ändringar i *mainpage.XAML.cs* -filen.
 
@@ -322,7 +322,7 @@ private void DisplayBasicTokenInfo(AuthenticationResult authResult)
 
 #### <a name="more-information"></a>Mer information<a name="more-information-1"></a>
 
-ID-token som förvärv ATS med hjälp av **OpenID Connect** innehåller också en liten delmängd av information som är relevant för användaren. `DisplayBasicTokenInfo` visar grundläggande information som finns i token. Den här informationen omfattar användarens visnings namn och ID. Den innehåller också utgångs datumet för token och strängen som representerar själva åtkomsttoken. Om du väljer API-knappen **anropa Microsoft Graph** flera gånger ser du att samma token återanvändes för senare förfrågningar. Du kan också se utgångs datum för utökad när Microsoft Authentication Library bestämmer sig för att förnya token.
+ID-token som förvärv ATS med hjälp av **OpenID Connect** innehåller också en liten delmängd av information som är relevant för användaren. `DisplayBasicTokenInfo` visar grundläggande information som finns i token. Den här informationen omfattar användarens visnings namn och ID. Den innehåller också utgångs datumet för token och strängen som representerar själva åtkomsttoken. Om du väljer API-knappen **anropa Microsoft Graph** flera gånger ser du att samma token återanvändes för senare förfrågningar. Du kan också se förfallo datumet när Microsoft Authentication Library bestämmer sig för att förnya token.
 
 ### <a name="display-message"></a>Visa meddelande
 

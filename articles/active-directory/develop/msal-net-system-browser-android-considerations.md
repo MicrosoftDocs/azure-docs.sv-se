@@ -13,12 +13,12 @@ ms.date: 10/30/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 8f755b42249a88a2d37117003d561f79aea6b170
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4230a194fb18587a209c100a39b0924e6170502d
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88165999"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98063475"
 ---
 #  <a name="xamarin-android-system-browser-considerations-for-using-msalnet"></a>Xamarin för Android-systemet för att använda MSAL.NET
 
@@ -44,16 +44,16 @@ I följande tabell visas de enheter och webbläsare som har testats för autenti
 
 | Enhet | Webbläsare     |  Resultat  | 
 | ------------- |:-------------:|:-----:|
-| Huawei/ett + | Chrome\* | Pass|
-| Huawei/ett + | Edge\* | Pass|
-| Huawei/ett + | Firefox\* | Pass|
-| Huawei/ett + | Brave\* | Pass|
-| En och | Ecosia\* | Pass|
-| En och | Kiwiodlare\* | Pass|
-| Huawei/ett + | Opera | Pass|
-| Huawei | OperaMini | Pass|
-| Huawei/ett + | Inwebbläsare | Pass|
-| En och | Maxthon | Pass|
+| Huawei/ett + | Chrome\* | Godkänd|
+| Huawei/ett + | Edge\* | Godkänd|
+| Huawei/ett + | Firefox\* | Godkänd|
+| Huawei/ett + | Brave\* | Godkänd|
+| En och | Ecosia\* | Godkänd|
+| En och | Kiwiodlare\* | Godkänd|
+| Huawei/ett + | Opera | Godkänd|
+| Huawei | OperaMini | Godkänd|
+| Huawei/ett + | Inwebbläsare | Godkänd|
+| En och | Maxthon | Godkänd|
 | Huawei/ett + | DuckDuckGo | Användaren avbröt autentiseringen|
 | Huawei/ett + | UC-webbläsare | Användaren avbröt autentiseringen|
 | En och | Hos | Användaren avbröt autentiseringen|

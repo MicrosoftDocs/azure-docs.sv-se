@@ -13,16 +13,16 @@ ms.date: 01/16/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 840c371e63aacf8ef410cbf84cc9f68137dd77df
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5c1fad96ea6e3b75b3afdfd4a4d3baac43308541
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85477591"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98063679"
 ---
 # <a name="pass-custom-state-in-authentication-requests-using-msaljs"></a>Skicka anpassat tillstånd i autentiseringsbegäranden med hjälp av MSAL.js
 
-Parametern *State* , som definieras av OAuth 2,0, ingår i en autentiseringsbegäran och returneras också i svaret från token för att förhindra förfalskning av begäran mellan webbplatser. Som standard skickar Microsoft Authentication Library för Java Script (MSAL.js) ett slumpmässigt genererat *unikt värde* parameter värde i autentiseringsbegäranden.
+Parametern *State* , som definieras av OAuth 2,0, ingår i en autentiseringsbegäran och returneras också i svaret från token för att förhindra förfalskning av begäran mellan webbplatser. Microsoft Authentication Library för Java Script (MSAL.js) skickar som standard ett slumpmässigt genererat unikt *tillstånds* parameter värde i autentiseringsbegäranden.
 
 Tillstånds parametern kan också användas för att koda information om appens tillstånd före omdirigeringen. Du kan skicka användarens tillstånd i appen, t. ex. sidan eller vyn som de var på, som indata för den här parametern. Med MSAL.jss biblioteket kan du skicka ditt anpassade tillstånd som status parameter i `Request` objektet:
 
@@ -51,7 +51,7 @@ export type AuthenticationParameters = {
 > Att hoppa över cachen bör endast användas i scenarier där du vet att cachelagrade data inte innehåller uppdaterad information.
 > Till exempel ett administrations verktyg som lägger till roller till en användare som behöver hämta en ny token med uppdaterade roller.
 
-Exempel:
+Till exempel:
 
 ```javascript
 let loginRequest = {

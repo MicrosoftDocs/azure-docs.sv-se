@@ -13,18 +13,18 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 853ab82ab40cc7ebee1c74feaf6aad87adf39ece
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: f60e21f98092df65ef01e68fe9c2e64833a24855
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443117"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98063220"
 ---
 # <a name="scenario-mobile-application-that-calls-web-apis"></a>Scenario: mobil program som anropar webb-API: er
 
 Lär dig hur du skapar en mobilapp som anropar webb-API: er.
 
-## <a name="getting-started"></a>Komma igång
+## <a name="getting-started"></a>Kom igång
 
 Om du inte redan har gjort det kan du skapa ditt första program genom att slutföra en snabb start:
 
@@ -40,10 +40,10 @@ En anpassad och smidig användar upplevelse är nödvändig för mobila appar.  
 
 Överväganden för Mobile Apps:
 
-- **Användar upplevelsen är nyckel** : Tillåt användare att se appens värde innan du ber om inloggning. Begär endast de behörigheter som krävs.
-- **Stöd för alla användarkonfigurationer** : många användare av mobila företag måste följa principer för villkorlig åtkomst och principer för enhets efterlevnad. Se till att du har stöd för dessa nyckel scenarier.
-- **Implementera enkel inloggning (SSO)** : med hjälp av MSAL och Microsoft Identity Platform kan du aktivera enkel inloggning via enhetens webbläsare eller Microsoft Authenticator (och Intune-företagsportal på Android).
-- **Implementera delad enhets läge** : gör att ditt program kan användas i scenarier med delad enhet, till exempel sjukhus, tillverkning, detalj handel och ekonomi. [Läs mer om stöd för delad enhets läge](msal-shared-devices.md).
+- **Användar upplevelsen är nyckel**: Tillåt användare att se appens värde innan du ber om inloggning. Begär endast de behörigheter som krävs.
+- **Stöd för alla användarkonfigurationer**: många användare av mobila företag måste följa principer för villkorlig åtkomst och principer för enhets efterlevnad. Se till att du har stöd för dessa nyckel scenarier.
+- **Implementera enkel inloggning (SSO)**: med hjälp av MSAL och Microsoft Identity Platform kan du aktivera enkel inloggning via enhetens webbläsare eller Microsoft Authenticator (och Intune-företagsportal på Android).
+- **Implementera delad enhets läge**: gör att ditt program kan användas i scenarier med delad enhet, till exempel sjukhus, tillverkning, detalj handel och ekonomi. [Läs mer om stöd för delad enhets läge](msal-shared-devices.md).
 
 ## <a name="specifics"></a>Information
 

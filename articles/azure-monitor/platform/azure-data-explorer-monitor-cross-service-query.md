@@ -1,18 +1,18 @@
 ---
 title: Kors tjänst fråga mellan Azure Monitor och Azure Datautforskaren (för hands version)
 description: Fråga Azure Datautforskaren data via Azure Log Analytics-verktyg vice versa för att ansluta och analysera alla dina data på en och samma plats.
-author: orens
+author: osalzberg
 ms.author: bwren
 ms.reviewer: bwren
 ms.subservice: logs
 ms.topic: conceptual
 ms.date: 06/12/2020
-ms.openlocfilehash: 0af9111223bb16f1c5843223e7fe1661ce99c623
-ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
+ms.openlocfilehash: 5aadd9d96f538f92e1b9e0100b2c1055ee0b0633
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96749253"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98065277"
 ---
 # <a name="cross-service-query---azure-monitor-and-azure-data-explorer-preview"></a>Kors tjänst fråga – Azure Monitor och Azure Datautforskaren (för hands version)
 Skapa kors tjänst frågor mellan [Azure datautforskaren](https://docs.microsoft.com/azure/data-explorer/), [Application Insights](/azure/azure-monitor/app/app-insights-overview)och [Log Analytics](/azure/azure-monitor/platform/data-platform-logs).

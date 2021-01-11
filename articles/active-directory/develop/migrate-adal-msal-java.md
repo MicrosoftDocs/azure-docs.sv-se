@@ -14,12 +14,12 @@ ms.date: 11/04/2019
 ms.author: sagonzal
 ms.reviewer: nacanuma, twhitney
 ms.custom: aaddev, devx-track-java
-ms.openlocfilehash: 1cc94519525d5f87a14769b0109e425171265c6b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0183471db274bb7fca59ed8f24aa87b2bf997fb6
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91258327"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98063747"
 ---
 # <a name="adal-to-msal-migration-guide-for-java"></a>ADAL till MSAL migration-guide för Java
 

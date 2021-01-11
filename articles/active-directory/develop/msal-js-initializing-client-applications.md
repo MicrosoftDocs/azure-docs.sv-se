@@ -13,12 +13,12 @@ ms.date: 07/17/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev, devx-track-js
-ms.openlocfilehash: 6b5093c5a1a45aed3493fabd7a362b0579998171
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: e12beafc81cbc41ea070fbdda1d68990f6f3fcda
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96343594"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98063696"
 ---
 # <a name="initialize-client-applications-using-msaljs"></a>Initiera klient program med hjälp av MSAL.js
 
@@ -36,7 +36,7 @@ När du har registrerat din app behöver du några eller alla följande värden 
 
 | Värde | Krävs | Beskrivning |
 |:----- | :------: | :---------- |
-| Program-ID (klient) | Obligatorisk | Ett GUID som unikt identifierar ditt program i Microsoft Identity Platform. |
+| Program-ID (klient) | Krävs | Ett GUID som unikt identifierar ditt program i Microsoft Identity Platform. |
 | Myndighet | Valfritt | Identitets leverantörens URL ( *instansen*) och *inloggnings mål gruppen* för ditt program. Instansen och inloggnings mål gruppen, när de sammanfogas, utgör *utfärdaren*. |
 | Katalog-ID (klient) | Valfritt | Ange detta om du skapar ett branschspecifika program enbart för din organisation, vilket ofta kallas ett program för en *klient*. |
 | Omdirigerings-URI | Valfritt | Om du skapar en webbapp anger i vilken `redirectUri` identitet leverantören (Microsoft Identity Platform) ska returnera de säkerhetstoken som den har utfärdat. |

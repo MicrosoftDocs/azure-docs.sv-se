@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 9b6ea9491575236a3ef84d660ead8022d13e01ef
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 80cacdcda39d3a7c443c1c94a797e69ba9a52bfd
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97964136"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98065464"
 ---
 # <a name="eav4-and-easv4-series"></a>Eav4- och Easv4-serien
 
@@ -32,15 +32,15 @@ Eav4-seriens storlekar baseras på 2.35 GHz AMD EPYC<sup>TM</sup> 7452-processor
 
 | Storlek | Virtuell processor | Minne: GiB | Temporär lagring (SSD) GiB | Maximalt antal datadiskar | Maximalt genomflöde för temporär lagring: IOPS / Mbit/s för läsning / M/bit/s för skrivning | Maximalt antal nätverkskort | Förväntad nätverks bandbredd (Mbit/s) |
 | -----|-----|-----|-----|-----|-----|-----|-----|
-| Standard \_ E2a \_ v4|2|16|50|4|3 000 / 46 / 23|2 | 1000 |
-| Standard \_ e4a \_ v4|4|32|100|8|6 000 / 93 / 46|2 | 2000 |
-| Standard \_ E8a \_ v4|8|64|200|16|12 000 / 187 / 93|4 | 4000 |
-| Standard \_ E16a \_ v4|16|128|400|32|24 000 / 375 / 187|8 | 8000 |
-| Standard \_ E20a \_ v4|20|160|500|32|30000/468/234|8 | 10000 |
-| Standard \_ E32a \_ v4|32|256|800|32|48 000 / 750 / 375|8 | 16000 |
-| Standard \_ E48a \_ v4|48|384|1200|32|96000/1000 (500)|8 | 24000 |
-| Standard \_ E64a \_ v4|64|512|1600|32|96000/1000 (500)|8 | 30000 |
-| Standard \_ E96a \_ v4|96|672|2400|32|96000/1000 (500)|8 | 30000 |
+| Standard \_ E2a \_ v4|2|16|50|4|3 000 / 46 / 23|2 | 800 |
+| Standard \_ e4a \_ v4|4|32|100|8|6 000 / 93 / 46|2 | 1600 |
+| Standard \_ E8a \_ v4|8|64|200|16|12 000 / 187 / 93|4 | 3200 |
+| Standard \_ E16a \_ v4|16|128|400|32|24 000 / 375 / 187|8 | 6400 |
+| Standard \_ E20a \_ v4|20|160|500|32|30000/468/234|8 | 8000 |
+| Standard \_ E32a \_ v4|32|256|800|32|48 000 / 750 / 375|8 | 12800 |
+| Standard \_ E48a \_ v4|48|384|1200|32|96000/1000 (500)|8 | 19200 |
+| Standard \_ E64a \_ v4|64|512|1600|32|96000/1000 (500)|8 | 25600 |
+| Standard \_ E96a \_ v4|96|672|2400|32|96000/1000 (500)|8 | 32000 |
 
 ## <a name="easv4-series"></a>Easv4-serien
 
@@ -56,15 +56,15 @@ Easv4-seriens storlekar baseras på 2.35 GHz AMD EPYC<sup>TM</sup> 7452-processo
 
 | Storlek | Virtuell processor | Minne: GiB | Temporär lagring (SSD) GiB | Maximalt antal datadiskar | Maximalt genomflöde för cachelagring och temporär lagring: IOPS / Mbit/s (cachestorlek i GiB) | Maximalt icke cachelagrat diskgenomflöde: IOPS / Mbit/s | Maximalt antal nätverkskort | Förväntad nätverks bandbredd (Mbit/s) |
 |-----|-----|-----|-----|-----|-----|-----|-----|-----|
-| Standard_E2as_v4|2|16|32|4|4000/32 (50)|3200/48|2 | 1000 |
-| Standard_E4as_v4|4|32|64|8|8000/64 (100)|6400/96|2 | 2000 |
-| Standard_E8as_v4|8|64|128|16|16000/128 (200)|12800/192|4 | 4000 |
-| Standard_E16as_v4|16|128|256|32|32000/255 (400)|25600/384|8 | 8000 |
-| Standard_E20as_v4|20|160|320|32|40000/320 (500)|32000/480|8 | 10000 |
-| Standard_E32as_v4|32|256|512|32|64000/510 (800)|51200/768|8 | 16000 |
-| Standard_E48as_v4|48|384|768|32|96000/1020 (1200)|76800/1148|8 | 24000 |
-| Standard_E64as_v4|64|512|1024|32|128000/1020 (1600)|80000/1200|8 | 30000 |
-| Standard_E96as_v4 <sup>1</sup>|96|672|1344|32|192000/1020 (2400)|80000/1200|8 | 30000 |
+| Standard_E2as_v4|2|16|32|4|4000/32 (50)|3200/48|2 | 800 |
+| Standard_E4as_v4|4|32|64|8|8000/64 (100)|6400/96|2 | 1600 |
+| Standard_E8as_v4|8|64|128|16|16000/128 (200)|12800/192|4 | 3200 |
+| Standard_E16as_v4|16|128|256|32|32000/255 (400)|25600/384|8 | 6400 |
+| Standard_E20as_v4|20|160|320|32|40000/320 (500)|32000/480|8 | 8000 |
+| Standard_E32as_v4|32|256|512|32|64000/510 (800)|51200/768|8 | 12800 |
+| Standard_E48as_v4|48|384|768|32|96000/1020 (1200)|76800/1148|8 | 19200 |
+| Standard_E64as_v4|64|512|1024|32|128000/1020 (1600)|80000/1200|8 | 25600 |
+| Standard_E96as_v4 <sup>1</sup>|96|672|1344|32|192000/1020 (2400)|80000/1200|8 | 32000 |
 
 <sup>1</sup> [begränsad kärn storlek är tillgänglig](./constrained-vcpu.md).
 

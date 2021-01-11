@@ -13,12 +13,12 @@ ms.date: 05/16/2019
 ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 633166f3bb46212991920d6720737f8268b3f401
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 428405fc200751d2581ad9ca6e8ec97382594c09
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87026862"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98064852"
 ---
 # <a name="known-issues-on-internet-explorer-browsers-msaljs"></a>Kända problem i Internet Explorer-webbläsare (MSAL.js)
 
