@@ -1,14 +1,16 @@
 ---
-ms.openlocfilehash: 84a456b1efeb73459a8bae33222f0716175fb956
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4b6e89d6a4a89927e6e9942f0b4aaa842bab3b0a
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88682221"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98061047"
 ---
 * Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto utan kostnad](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) om du inte redan har ett.
 * [Visual Studio Code](https://code.visualstudio.com/)med följande tillägg:
     * [Azure IoT-verktyg](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
+        > [!TIP]
+        > När du installerar Azure IoT-verktyg kan du uppmanas att installera Docker. Du kan ignorera prompten.
     * [C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
 * [.Net Core 3,1 SDK](https://dotnet.microsoft.com/download/dotnet-core/3.1).
 * Om du inte har slutfört snabb starten [identifiera rörelse-och genererar händelser](../../../detect-motion-emit-events-quickstart.md) följer du dessa steg:
@@ -18,4 +20,4 @@ ms.locfileid: "88682221"
      1. [Förbereda övervakning av händelser](../../../detect-motion-emit-events-quickstart.md#prepare-to-monitor-events)
 
 > [!TIP]
-> När du installerar Azure IoT-verktyg kan du uppmanas att installera Docker. Du kan ignorera prompten.
+> Om du stöter på problem med Azure-resurser som skapas, kan du läsa vår **[fel söknings guide](../../../troubleshoot-how-to.md#common-error-resolutions)** för att lösa vanliga problem som uppstår.

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/27/2020
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: 1a51cd242eb26709464aa502938cd04807aea721
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: 28c92004fe67de35e5776cd7dc24cf534ec6f8f3
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97805629"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98061103"
 ---
 ## <a name="common-scenarios"></a>Vanliga scenarier
 Följande scenarier kan dra nytta av burst-överföring:
@@ -28,7 +28,7 @@ Följande scenarier kan dra nytta av burst-överföring:
 
 ![Burst-Bucket-diagram](media/managed-disks-bursting/bucket-diagram.jpg)
 
-Det är upp till att göra upp till och med hur du vill använda de 30 minuters burst-överföringarna. Du kan använda den i 30 minuter i följd eller sporadiskt under dagen. När produkten har distribuerats kommer den att bli klar med fullständiga krediter och när den tar slut i krediten tar det mindre än en dag för att helt få ut hela krediten igen. Du kan ackumulera och spendera sina mellanliggande krediter och den 30-minuters Bucket behöver inte vara full till burst. En sak att notera om burst-ackumulering är att den skiljer sig åt för varje resurs eftersom den baseras på oanvända IOPS och MB/s under deras prestanda belopp. Det innebär att högre bas linje prestanda produkter kan periodisera sina burst-mängder snabbare än att sänka bas linje produkter. Till exempel kommer en tom disk tom gång utan aktivitet att Periodisera 120 IOPS per sekund, medan en P20 disk påbörjar 2 300 IOPS per sekund medan Tom gång utan aktivitet.
+Det är helt upp till dig hur du vill använda de 30 minuters burst-överföringarna. Du kan använda den i 30 minuter i följd eller sporadiskt under dagen. När produkten har distribuerats kommer den att bli klar med fullständiga krediter och när den tar slut i krediten tar det mindre än en dag för att helt få ut hela krediten igen. Du kan ackumulera och spendera sina mellanliggande krediter och den 30-minuters Bucket behöver inte vara full till burst. En sak att notera om burst-ackumulering är att den skiljer sig åt för varje resurs eftersom den baseras på oanvända IOPS och MB/s under deras prestanda belopp. Det innebär att högre bas linje prestanda produkter kan periodisera sina burst-mängder snabbare än att sänka bas linje produkter. Till exempel kommer en tom disk tom gång utan aktivitet att Periodisera 120 IOPS per sekund, medan en P20 disk påbörjar 2 300 IOPS per sekund medan Tom gång utan aktivitet.
 
 ## <a name="bursting-states"></a>Burst-tillstånd
 Det finns tre tillstånd som din resurs kan vara aktive rad med burst-aktivering:
