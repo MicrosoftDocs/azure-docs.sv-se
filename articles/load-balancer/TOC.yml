@@ -146,11 +146,15 @@
       items:
         - name: Felsök Azure Load Balancer
           href: load-balancer-troubleshoot.md
-        - name: Felsök vanliga distributionsfel
+        - name: Status för hälsoavsökning
+          href: load-balancer-troubleshoot-health-probe-status.md
+        - name: Trafik för serverdelspool (virtuell dator)
+          href: load-balancer-troubleshoot-backend-traffic.md
+        - name: Vanliga distributionsfel
           href: load-balancer-common-deployment-errors.md
-        - name: Felsöka vanliga problem med utgående anslutningar
+        - name: Vanliga problem med utgående anslutningar
           href: troubleshoot-outbound-connection.md
-        - name: Felsöka problem med resurshälsa och inkommande tillgänglighet
+        - name: Problem med resurshälsa och inkommande tillgänglighet
           href: troubleshoot-rhc.md
 - name: Referens
   items:

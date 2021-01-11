@@ -25,7 +25,7 @@
   items:
     - name: Säkerhet
       items:
-        - name: Säker extern åtkomst till resurser
+        - name: Säkert externt samarbete
           items:
             - name: Översikt över säker extern åtkomst
               href: secure-external-access-resources.md
@@ -47,6 +47,8 @@
               href: 8-secure-access-sensitivity-labels.md
             - name: '9 Säker åtkomst till Teams, SharePoint och OneDrive'
               href: 9-secure-access-teams-sharepoint.md
+        - name: Skydda Microsoft 365 från lokala attacker
+          href: protect-m365-from-on-premises-attacks.md
         - name: Aktivera MFA
           href: concept-fundamentals-mfa-get-started.md
         - name: Standardinställningar för säkerhet

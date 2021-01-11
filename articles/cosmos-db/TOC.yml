@@ -966,6 +966,10 @@
               href: cassandra-migrate-cosmos-db-blitzz.md
             - name: Migrera – Apache Cassandra till Cassandra API med Databricks
               href: cassandra-migrate-cosmos-db-databricks.md
+            - name: Migrera – Apache Cassandra till Cassandra API med Databricks
+              href: cassandra-migrate-cosmos-db-databricks.md
+            - name: Migrera – PostgreSQL till Cassandra API med Apache Kafka
+              href: postgres-migrate-cosmos-db-kafka.md
         - name: Ändringsfeed
           href: cassandra-change-feed.md
         - name: Skapa en container – API för Cassandra

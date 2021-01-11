@@ -49,6 +49,8 @@
               href: how-to-set-up-instance-portal.md
             - name: CLI-version
               href: how-to-set-up-instance-cli.md
+            - name: PowerShell-version
+              href: how-to-set-up-instance-powershell.md
             - name: Skriptad version
               href: how-to-set-up-instance-scripted.md
         - name: Skriva appautentiseringskod
