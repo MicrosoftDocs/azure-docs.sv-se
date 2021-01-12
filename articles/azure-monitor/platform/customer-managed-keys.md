@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 01/10/2021
-ms.openlocfilehash: 07562167131d1839bc0827c74fae09c683302c08
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 6c1f323828eb48b61b38370bc2fe56d4c93bf036
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 01/12/2021
-ms.locfileid: "98118616"
+ms.locfileid: "98127217"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Kundhanterad nyckel i Azure Monitor 
 
@@ -126,10 +126,10 @@ De här inställningarna kan uppdateras i Key Vault via CLI och PowerShell:
 ## <a name="create-cluster"></a>Skapa kluster
 
 > [!NOTE]
-> Kluster stöder två [hanterade identitets typer](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types), tilldelade system och tilldelade användare som kan användas baserat på ditt scenario. Systemtilldelad hanterad identitet är enklare och skapas automatiskt med kluster skapande när du ställer in identiteten `type` som `SystemAssigned` – den här identiteten kan användas senare för att ge åtkomst till din Key Vault. Om du behöver skapa ett kluster med kundhanterad nyckel konfiguration när det skapas, bör du ha en definierad nyckel och tilldelad identitet som beviljats i Key Vault i förväg och sedan skapa klustret med identitet `type` som `UserAssigned` , `UserAssignedIdentities` med resurs-ID för identitets-och nyckel informationen i `keyVaultProperties` .
+> Kluster har stöd för två [hanterade identitets typer](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types): systemtilldelade och tilldelade användare, och var och en kan baseras beroende på ditt scenario. Systemtilldelad hanterad identitet är enklare och skapas automatiskt med klustret när identiteten `type` anges som "*SystemAssigned*". den här identiteten kan användas senare för att ge klustret åtkomst till din Key Vault. Om du vill skapa ett kluster medan en kundhanterad nyckel definieras vid skapande av klustret, bör du ha en definierad nyckel och tilldelad identitet som beviljats i Key Vault i förväg och sedan skapa klustret med följande inställningar: identitet `type` som "*UserAssigned*", `UserAssignedIdentities` med identitetens resurs-ID och `keyVaultProperties` med viktig information.
 
 > [!IMPORTANT]
-> För närvarande kan du inte definiera kundhanterad nyckel med användardefinierad hanterad identitet om Key Vault finns i Private-Link (vNet). Den här begränsningen gäller inte för systemtilldelad hanterad identitet.
+> För närvarande kan du inte definiera kundhanterad nyckel med användardefinierad hanterad identitet om Key Vault finns i Private-Link (vNet) och du kan använda systemtilldelad hanterad identitet i det här fallet.
 
 Följ proceduren som illustreras i [artikeln om dedikerade kluster](../log-query/logs-dedicated-clusters.md#creating-a-cluster). 
 
@@ -416,7 +416,7 @@ Customer-Managed nyckel anges i ett dedikerat kluster och dessa åtgärder hänv
 
   - Om klustret har angetts med användardefinierad hanterad identitet ställer `UserAssignedIdentities` du in med `None` pausa klustret och förhindrar åtkomst till dina data, men du kan inte återställa åter kallelsen och aktivera klustret utan att öppna support förfrågan. Den här begränsningen inte är ' tillämpas på systemtilldelad hanterad identitet.
 
-  - För närvarande kan du inte definiera kundhanterad nyckel med användardefinierad hanterad identitet om Key Vault finns i Private-Link (vNet). Den här begränsningen gäller inte för systemtilldelad hanterad identitet.
+  - För närvarande kan du inte definiera kundhanterad nyckel med användardefinierad hanterad identitet om Key Vault finns i Private-Link (vNet) och du kan använda systemtilldelad hanterad identitet i det här fallet.
 
 ## <a name="troubleshooting"></a>Felsökning
 

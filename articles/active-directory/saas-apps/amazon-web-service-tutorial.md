@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/08/2020
 ms.author: jeedes
-ms.openlocfilehash: 237ed71f058ae099f19924481eb4dbeb2e2aba05
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 3db6fd2e6df96590d7d405157cbb33900c7d8531
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97589448"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127812"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-amazon-web-services-aws"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med Amazon Web Services (AWS)
 
@@ -50,7 +50,7 @@ Vi rekommenderar den här metoden av följande orsaker:
 > [!Note]
 > Se till att du endast använder ett galleri program.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att komma igång behöver du följande objekt:
 
@@ -388,7 +388,11 @@ Du kan också använda Microsoft Access-panelen för att testa programmet i vilk
 * Roller måste uppfylla följande krav för att kunna importeras från AWS till Azure AD:
 
   * Roller måste ha exakt en SAML-Provider definierad i AWS
-  * Den kombinerade längden på ARN (Amazon Resource Name) för rollen och ARN för den associerade SAML-providern måste vara kortare än 120 tecken
+  * Den kombinerade längden på ARN (Amazon Resource Name) för rollen och ARN för den associerade SAML-providern måste vara kortare än 240 tecken.
+
+## <a name="change-log"></a>Ändringslogg
+
+* 01/12/2020 – ökad roll längds gräns från 119 tecken till 239 tecken. 
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 7/14/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 22ee57592af838a236d75fa7f56a0c8e1ed89403
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: f776482c684004c8d661f69d8158ba9597c923b2
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98046541"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127047"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-time-series-insights"></a>Integrera Azure Digitals dubbla med Azure Time Series Insights
 
@@ -84,9 +84,9 @@ Självstudien om Azure Digitals sammanhållen [*: Anslut en lösning från slut 
 
 Innan du fortsätter bör du anteckna *Event Hubs namnrymd* och *resurs grupp*, eftersom du kommer att använda dem igen för att skapa ytterligare en händelsehubben senare i den här artikeln.
 
-## <a name="create-an-azure-function"></a>Skapa en Azure-funktion 
+## <a name="create-a-function-in-azure"></a>skapar en funktion i Azure
 
-Därefter skapar du en Event Hubs utlöst funktion i en Function-app. Du kan använda Function-appen som skapats i kursen från slut punkt till slut punkt ([*Självstudier: Anslut en lösning från slut punkt till slut punkt*](./tutorial-end-to-end.md)) eller din egen. 
+Härnäst ska du använda Azure Functions för att skapa en Event Hubs utlöst funktion i en Function-app. Du kan använda Function-appen som skapats i kursen från slut punkt till slut punkt ([*Självstudier: Anslut en lösning från slut punkt till slut punkt*](./tutorial-end-to-end.md)) eller din egen. 
 
 Med den här funktionen konverteras de dubbla uppdaterings händelserna från sina ursprungliga formulär som JSON-korrigeringsfiler till JSON-objekt, som endast innehåller uppdaterade och tillagda värden från dina dubbla.
 

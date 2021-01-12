@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: 87fb7f0eb4017a39aca081f73de543a67400d4b5
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 5a9f6fa79da59425e4972dddd21ffdea15af73e7
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97969069"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127914"
 ---
 # <a name="telemetry-property-and-command-payloads"></a>Telemetri, egenskaper och kommandonyttolaster
 
@@ -187,6 +187,9 @@ Följande kodfragment från en enhets modell visar definitionen av en `geopoint`
   "schema": "geopoint"
 }
 ```
+
+> [!NOTE]
+> Schema **typen för den här** typen är inte en del av den digitala delen med [definitions språk specifikation](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md). IoT Central stöder för närvarande **schema typen för** geolokalisering och den semantiska **plats** typen för bakåtkompatibilitet.
 
 En enhets klient ska skicka Telemetrin som JSON som ser ut som i följande exempel. IoT Central visar värdet som en PIN-kod på en karta:
 
@@ -576,6 +579,9 @@ Följande kodfragment från en enhets modell visar definitionen av en `geopoint`
 }
 ```
 
+> [!NOTE]
+> Schema **typen för den här** typen är inte en del av den digitala delen med [definitions språk specifikation](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md). IoT Central stöder för närvarande **schema typen för** geolokalisering och den semantiska **plats** typen för bakåtkompatibilitet.
+
 En enhets klient ska skicka en JSON-nyttolast som ser ut som i följande exempel som en rapporterad egenskap i enheten:
 
 ```json
@@ -717,7 +723,7 @@ IoT Central förväntar sig ett svar från enheten till skrivbara egenskaps uppd
 
 `ac` är ett numeriskt fält som använder värdena i följande tabell:
 
-| Värde | Etikett | Beskrivning |
+| Värde | Etikett | Description |
 | ----- | ----- | ----------- |
 | `'ac': 200` | Slutförd | Egenskaps ändrings åtgärden har slutförts. |
 | `'ac': 202`  eller `'ac': 201` | Väntar | Egenskaps ändrings åtgärden väntar eller pågår |

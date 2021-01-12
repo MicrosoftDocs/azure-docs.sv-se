@@ -10,18 +10,21 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 4516bbddd3fda593021288a440e1b354d4d7f1e3
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: cc373a67ee0f4ed2e900e7b41cbcb96d31d67b34
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96340245"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98126894"
 ---
 # <a name="how-to-create-human-labeled-transcriptions"></a>Så här skapar du medmärkade avskrifter
 
 Om du vill förbättra igenkännings precisionen, särskilt problem som orsakas när ord tas bort eller på ett felaktigt sätt, bör du använda välmärkta avskrifter tillsammans med dina ljuddata. Vad är medmärkta avskrifter? Det är enkelt, de är ord för ord, orda Grant avskrifter av en ljudfil.
 
-Ett stort exempel på avskrifts data krävs för att förbättra igenkänningen. vi föreslår att du tillhandahåller mellan 10 och 1 000 timmar med avskrifts data. På den här sidan kommer vi att gå igenom rikt linjerna som är utformade för att hjälpa dig att skapa hög kvalitets avskrifter. Den här guiden är uppdelad efter nationella inställningar, med avsnitt för amerikansk engelska, mandariner kinesiska och tyska.
+Ett stort exempel på avskrifts data krävs för att förbättra igenkänningen. vi föreslår att du tillhandahåller mellan 10 och 20 timmar avskrifts data. På den här sidan kommer vi att gå igenom rikt linjerna som är utformade för att hjälpa dig att skapa hög kvalitets avskrifter. Den här guiden är uppdelad efter nationella inställningar, med avsnitt för amerikansk engelska, mandariner kinesiska och tyska.
+
+> [!NOTE]
+> Alla bas modeller stöder inte anpassning med ljudfiler. Om en bas modell inte stöder den, kommer träningen bara att använda texten i avskrifterna på samma sätt som relaterad text används.
 
 ## <a name="us-english-en-us"></a>AMERIKANSK engelska (en-US)
 

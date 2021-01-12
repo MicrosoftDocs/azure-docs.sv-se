@@ -8,18 +8,24 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: cherylmc
-ms.openlocfilehash: 53b8d74d6eb35347d6ac5b27d12fa5b5eaed2582
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 62979a2cbe2a5912476ca65327a06eef9c36c1cb
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566375"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127897"
 ---
 # <a name="azure-virtual-wan-logs-and-metrics"></a>Azure Virtual WAN-loggar och-mått
 
-Du kan övervaka Azure Virtual WAN med Azure Monitor. Det virtuella WAN-nätverket är en nätverks tjänst som kombinerar många funktioner för nätverk, säkerhet och routning för att tillhandahålla ett enda drift gränssnitt. Virtuella WAN-gatewayer, ExpressRoute-gatewayer och Azure-brandväggen har loggning och mått som är tillgängliga via Azure Monitor. Information om Azure-brandväggen finns i [Azure Firewall-loggar och-mått](../firewall/logs-and-metrics.md).
+Du kan övervaka Azure Virtual WAN med Azure Monitor. Det virtuella WAN-nätverket är en nätverks tjänst som kombinerar många funktioner för nätverk, säkerhet och routning för att tillhandahålla ett enda drift gränssnitt. Virtuella WAN-gatewayer, ExpressRoute-gatewayer och Azure-brandväggen har loggning och mått som är tillgängliga via Azure Monitor.
 
 Den här artikeln beskriver mått och diagnostik som är tillgängliga via portalen. Måtten är lätta att använda för att ge stöd för scenarier i nästan real tid, vilket gör dem användbara för avisering och snabb problem identifiering.
+
+## <a name="monitoring-secured-hub-azure-firewall"></a>Övervaka säker hubb (Azure-brandvägg) 
+
+Du kan övervaka den skyddade hubben med hjälp av Azure Firewall-loggar. Du kan också använda aktivitetsloggar till att granska åtgärder som utförs på Azure Firewall-resurser.
+
+Om du har valt att skydda din virtuella hubb med Azure-brandväggen finns relevanta loggar och mått här: [Azure Firewall-loggar och-mått](../firewall/logs-and-metrics.md).
 
 ## <a name="metrics"></a>Mått
 
@@ -109,7 +115,7 @@ Loggarna finns i **Azure Log Analytics-arbetsytan**. Du kan ställa in en fråga
 
 ```AzureDiagnostics | where Category == "RouteDiagnosticLog"```
 
-Ersätt värdena nedan efter **= =** , efter behov.
+Ersätt värdena nedan efter **= =**, efter behov.
 
 * "GatewayDiagnosticLog"
 * "IKEDiagnosticLog"
@@ -119,7 +125,7 @@ Ersätt värdena nedan efter **= =** , efter behov.
 
 ## <a name="activity-logs"></a><a name="activity-logs"></a>Aktivitets loggar
 
-**Aktivitets logg** poster samlas in som standard och kan visas i Azure Portal. Du kan använda Azure aktivitets loggar (tidigare kallade *drift loggar* och *gransknings loggar* ) för att visa alla åtgärder som skickats till din Azure-prenumeration.
+**Aktivitets logg** poster samlas in som standard och kan visas i Azure Portal. Du kan använda Azure aktivitets loggar (tidigare kallade *drift loggar* och *gransknings loggar*) för att visa alla åtgärder som skickats till din Azure-prenumeration.
 
 ## <a name="next-steps"></a>Nästa steg
 

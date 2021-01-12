@@ -4,12 +4,12 @@ description: I den här artikeln lär du dig mer om säkerhets kopiering och åt
 ms.topic: conceptual
 ms.date: 07/17/2020
 ms.custom: references_regions , devx-track-azurecli
-ms.openlocfilehash: 95104f231e7b4d4d2135ac3c5dde27512d465775
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 1f4d27563cf292632c6b14c82e36542b86c5d356
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746986"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127727"
 ---
 # <a name="selective-disk-backup-and-restore-for-azure-virtual-machines"></a>Selektiv säkerhets kopiering och återställning av diskar för virtuella Azure-datorer
 
@@ -46,7 +46,7 @@ az account set -s {subscriptionID}
 
 ### <a name="configure-backup-with-azure-cli"></a>Konfigurera säkerhets kopiering med Azure CLI
 
-Under åtgärden konfigurera skydd måste du ange disk List inställningen med en **inclusion**  /  parameter för inkludering av **undantag** , vilket ger LUN-numren för diskarna som ska tas med eller undantas i säkerhets kopieringen.
+Under åtgärden konfigurera skydd måste du ange disk List inställningen med en   /  parameter för inkludering av **undantag** , vilket ger LUN-numren för diskarna som ska tas med eller undantas i säkerhets kopieringen.
 
 ```azurecli
 az backup protection enable-for-vm --resource-group {resourcegroup} --vault-name {vaultname} --vm {vmname} --policy-name {policyname} --disk-list-setting include --diskslist {LUN number(s) separated by space}
@@ -189,14 +189,25 @@ När du kör de här kommandona visas `"diskExclusionProperties": null` .
 
 Se till att du använder Azure PowerShell version 3.7.0 eller senare.
 
+Under den Konfigurera skydds åtgärden måste du ange disk List inställningen med en parameter för inkludering/uteslutning, vilket ger LUN-numren för diskarna som ska tas med eller undantas i säkerhets kopian.
+
 ### <a name="enable-backup-with-powershell"></a>Aktivera säkerhets kopiering med PowerShell
 
+Exempel:
+
 ```azurepowershell
-Enable-AzRecoveryServicesBackupProtection -Policy $pol -Name "V2VM" -ResourceGroupName "RGName1"  -InclusionDisksList[Strings] -VaultId $targetVault.ID
+$disks = ("0","1")
+$targetVault = Get-AzRecoveryServicesVault -ResourceGroupName "rg-p-recovery_vaults" -Name "rsv-p-servers"
+Get-AzRecoveryServicesBackupProtectionPolicy
+$pol = Get-AzRecoveryServicesBackupProtectionPolicy -Name "P-Servers"
 ```
 
 ```azurepowershell
-Enable-AzRecoveryServicesBackupProtection -Policy $pol -Name "V2VM" -ResourceGroupName "RGName1"  -ExclusionDisksList[Strings] -VaultId $targetVault.ID
+Enable-AzRecoveryServicesBackupProtection -Policy $pol -Name "V2VM" -ResourceGroupName "RGName1"  -InclusionDisksList $disks -VaultId $targetVault.ID
+```
+
+```azurepowershell
+Enable-AzRecoveryServicesBackupProtection -Policy $pol -Name "V2VM" -ResourceGroupName "RGName1"  -ExclusionDisksList $disks -VaultId $targetVault.ID
 ```
 
 ### <a name="backup-only-os-disk-during-configure-backup-with-powershell"></a>Säkerhetskopiera endast OS-disk under Konfigurera säkerhets kopiering med PowerShell

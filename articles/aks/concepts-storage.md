@@ -4,12 +4,12 @@ description: Lär dig mer om lagring i Azure Kubernetes service (AKS), inklusive
 services: container-service
 ms.topic: conceptual
 ms.date: 08/17/2020
-ms.openlocfilehash: 0ed38625703397c9ba5021e84cd3118f30fa83c7
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: bf910c66694a62505f259c0a95a88f7dfed05d19
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900934"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127965"
 ---
 # <a name="storage-options-for-applications-in-azure-kubernetes-service-aks"></a>Lagrings alternativ för program i Azure Kubernetes service (AKS)
 
@@ -19,7 +19,7 @@ Program som körs i Azure Kubernetes service (AKS) kan behöva lagra och hämta 
 
 Den här artikeln beskriver de viktigaste begreppen som tillhandahåller lagring för dina program i AKS:
 
-- [Enheter](#volumes)
+- [Volymer](#volumes)
 - [Beständiga volymer](#persistent-volumes)
 - [Lagrings klasser](#storage-classes)
 - [Beständiga volymanspråk](#persistent-volume-claims)
@@ -30,13 +30,13 @@ Program behöver ofta kunna lagra och hämta data. Eftersom Kubernetes vanligt v
 
 Traditionella volymer för lagring och hämtning av data skapas som Kubernetes-resurser som backas upp av Azure Storage. Du kan manuellt skapa dessa data volymer som ska tilldelas poddar direkt eller låta Kubernetes skapa dem automatiskt. Dessa data volymer kan använda Azure-diskar eller Azure Files:
 
-- *Azure-diskar* kan användas för att skapa en Kubernetes *DataDisk* -resurs. Diskar kan använda Azure Premium Storage, som backas upp av högpresterande SSD eller Azure standard Storage, som backas upp av vanliga hård diskar. Använd Premium Storage för de flesta arbets belastningar för produktion och utveckling. Azure-diskar monteras som *ReadWriteOnce* , så de är bara tillgängliga för en enda pod. För lagrings volymer som kan nås av flera poddar samtidigt använder du Azure Files.
+- *Azure-diskar* kan användas för att skapa en Kubernetes *DataDisk* -resurs. Diskar kan använda Azure Premium Storage, som backas upp av högpresterande SSD eller Azure standard Storage, som backas upp av vanliga hård diskar. Använd Premium Storage för de flesta arbets belastningar för produktion och utveckling. Azure-diskar monteras som *ReadWriteOnce*, så de är bara tillgängliga för en enda pod. För lagrings volymer som kan nås av flera poddar samtidigt använder du Azure Files.
 - *Azure Files* kan användas för att montera en SMB 3,0-resurs som backas upp av ett Azure Storage konto till poddar. Med filer kan du dela data över flera noder och poddar. Filer kan använda Azure standard Storage som backas upp av vanliga hård diskar, eller Azure Premium-lagring, som backas upp av SSD med höga prestanda.
 
 I Kubernetes kan volymer representera mer än bara en traditionell disk där information kan lagras och hämtas. Kubernetes-volymer kan också användas som ett sätt att mata in data i en POD för användning av behållarna. Vanliga ytterligare volym typer i Kubernetes är:
 
 - *emptyDir* – den här volymen används ofta som tillfälligt utrymme för en pod. Alla behållare i en POD kan komma åt data på volymen. Data som skrivs till den här volym typen behålls bara för livs längd för Pod – när Pod tas bort tas volymen bort. Den här volymen använder vanligt vis den underliggande disk lagringen för den lokala noden, men den kan också bara finnas i nodens minne.
-- *Secret* – den här volymen används för att mata in känsliga data i poddar, till exempel lösen ord. Du skapar först en hemlighet med Kubernetes-API: et. När du definierar din POD eller distribution kan du begära en speciell hemlighet. Hemligheter anges bara för noder som har en schemalagd Pod som kräver det, och hemligheten lagras i *tmpfs* , som inte skrivs till disk. När den sista Pod på en nod som kräver en hemlighet tas bort, tas hemligheten bort från nodens tmpfs. Hemligheter lagras inom ett angivet namn område och kan endast nås av poddar inom samma namnrymd.
+- *Secret* – den här volymen används för att mata in känsliga data i poddar, till exempel lösen ord. Du skapar först en hemlighet med Kubernetes-API: et. När du definierar din POD eller distribution kan du begära en speciell hemlighet. Hemligheter anges bara för noder som har en schemalagd Pod som kräver det, och hemligheten lagras i *tmpfs*, som inte skrivs till disk. När den sista Pod på en nod som kräver en hemlighet tas bort, tas hemligheten bort från nodens tmpfs. Hemligheter lagras inom ett angivet namn område och kan endast nås av poddar inom samma namnrymd.
 - *configMap* – den här volym typen används för att mata in egenskaper för nyckel värdes par i poddar, till exempel program konfigurations information. I stället för att definiera program konfigurations information i en behållar avbildning kan du definiera den som en Kubernetes-resurs som enkelt kan uppdateras och tillämpas på nya instanser av poddar när de distribueras. Precis som med en hemlighet skapar du först en ConfigMap med hjälp av Kubernetes-API: et. Den här ConfigMap kan sedan begäras när du definierar en POD eller distribution. ConfigMaps lagras inom ett angivet namn område och kan bara användas av poddar inom samma namnrymd.
 
 ## <a name="persistent-volumes"></a>Beständiga volymer
@@ -51,7 +51,7 @@ En PersistentVolume kan skapas *statiskt* av en kluster administratör eller *dy
 
 ## <a name="storage-classes"></a>Lagrings klasser
 
-Om du vill definiera olika lagrings nivåer, till exempel Premium och standard, kan du skapa en *StorageClass* . StorageClass definierar också *reclaimPolicy* . Den här reclaimPolicy styr beteendet för den underliggande Azure Storage-resursen när Pod tas bort och den permanenta volymen kanske inte längre krävs. Den underliggande lagrings resursen kan tas bort eller sparas för användning med en framtida pod.
+Om du vill definiera olika lagrings nivåer, till exempel Premium och standard, kan du skapa en *StorageClass*. StorageClass definierar också *reclaimPolicy*. Den här reclaimPolicy styr beteendet för den underliggande Azure Storage-resursen när Pod tas bort och den permanenta volymen kanske inte längre krävs. Den underliggande lagrings resursen kan tas bort eller sparas för användning med en framtida pod.
 
 I AKS skapas fyra initialer `StorageClasses` för klustret med hjälp av plugin-program för in-Tree-lagring:
 
@@ -107,7 +107,7 @@ spec:
       storage: 5Gi
 ```
 
-När du skapar en POD-definition anges beständigt volym anspråk för att begära önskad lagring. Du anger också *volumeMount* för dina program för att läsa och skriva data. Följande exempel på YAML-manifest visar hur det tidigare beständiga volym anspråket kan användas för att montera en volym på */mnt/Azure* :
+När du skapar en POD-definition anges beständigt volym anspråk för att begära önskad lagring. Du anger också *volumeMount* för dina program för att läsa och skriva data. Följande exempel på YAML-manifest visar hur det tidigare beständiga volym anspråket kan användas för att montera en volym på */mnt/Azure*:
 
 ```yaml
 kind: Pod
@@ -125,6 +125,18 @@ spec:
     - name: volume
       persistentVolumeClaim:
         claimName: azure-managed-disk
+```
+
+För att montera en volym i en Windows-behållare anger du enhets beteckning och sökväg. Exempel:
+
+```yaml
+...      
+       volumeMounts:
+        - mountPath: "d:"
+          name: volume
+        - mountPath: "c:\k"
+          name: k-dir
+...
 ```
 
 ## <a name="next-steps"></a>Nästa steg

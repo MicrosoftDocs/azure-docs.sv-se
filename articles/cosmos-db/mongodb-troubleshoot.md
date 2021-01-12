@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: troubleshooting
 ms.date: 07/15/2020
 ms.author: chrande
-ms.openlocfilehash: faf50899e5897a8f06cf0e24166abd303d24b491
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 06a06d275ba6f5ded475ffd693ee61e7a72b9516
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98011411"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127710"
 ---
 # <a name="troubleshoot-common-issues-in-azure-cosmos-dbs-api-for-mongodb"></a>Felsök vanliga problem i Azure Cosmos DBs API för MongoDB
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -30,7 +30,7 @@ I följande artikel beskrivs vanliga fel och lösningar för distributioner med 
 | 13 | Behörighet saknas | Begäran saknar behörighet att slutföra. | Se till att du anger rätt behörigheter för din databas och samling.  |
 | 16 | InvalidLength | Den angivna begäran har en ogiltig längd. | Om du använder funktionen förklaring () måste du se till att du bara anger en åtgärd. |
 | 26 | NamespaceNotFound | Det går inte att hitta databasen eller samlingen som refereras i frågan. | Kontrol lera att namnet på din databas/samling matchar namnet i frågan.|
-| 50 | ExceededTimeLimit | Förfrågan har överskridit tidsgränsen på 60 sekunder. |  Det kan finnas många orsaker till det här felet. En av orsakerna är att kapaciteten för för närvarande allokerade begär ande enheter inte räcker för att slutföra begäran. Det här kan du lösa genom att öka antalet förfrågningsenheter för samlingen eller databasen. I andra fall kan det här felet hanteras – genom att dela upp en stor begäran i mindre.|
+| 50 | ExceededTimeLimit | Förfrågan har överskridit tidsgränsen på 60 sekunder. |  Det kan finnas många orsaker till det här felet. En av orsakerna är att kapaciteten för för närvarande allokerade begär ande enheter inte räcker för att slutföra begäran. Det här kan du lösa genom att öka antalet förfrågningsenheter för samlingen eller databasen. I andra fall kan det här felet hanteras – genom att dela upp en stor begäran i mindre. Om du försöker utföra en Skriv åtgärd som har tagit emot det här felet kan det leda till dubbla Skriv åtgärder.|
 | 61 | ShardKeyNotFound | Dokumentet i din begäran innehöll inte samlingens Shard-nyckel (Azure Cosmos DB partitionsnyckel). | Se till att samlingens Shard-nyckel används i begäran.|
 | 66 | ImmutableField | Begäran försöker ändra fältet oföränderligt | "ID"-fält är oföränderliga. Se till att din begäran inte försöker uppdatera fältet. |
 | 67 | CannotCreateIndex | Det går inte att slutföra begäran om att skapa ett index. | Upp till 500 enstaka fält index kan skapas i en behållare. Upp till åtta fält kan ingå i ett sammansatt index (sammansatta index stöds i version 3.6 +). |
@@ -40,6 +40,7 @@ I följande artikel beskrivs vanliga fel och lösningar för distributioner med 
 | 16501 | ExceededMemoryLimit | Som en tjänst för flera innehavare har åtgärden gått över klientens minnes tilldelning. | Minska åtgärds området genom mer restriktiva frågevillkor eller kontakta supporten från [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). Exempel: `db.getCollection('users').aggregate([{$match: {name: "Andy"}}, {$sort: {age: -1}}]))` |
 | 40324 | Okänt namn på pipeline-fas. | Det gick inte att identifiera fas namnet i din begäran om agg regerings pipeline. | Se till att alla sammansättnings pipelinens namn är giltiga i din begäran. |
 | - | Problem med MongoDB-trådversion | De äldre versionerna av MongoDB-drivrutinerna kan inte identifiera Azure Cosmos-kontots namn i anslutnings strängarna. | Lägg till *APPNAME = @**accountName** @* i slutet av din Cosmos DBS API för MongoDB-anslutningssträng, där ***accountName*** är ditt Cosmos DB konto namn. |
+| - | Nätverks problem i MongoDB-klienten (t. ex. socket eller endOfStream-undantag)| Nätverks förfrågan misslyckades. Detta orsakas ofta av en inaktiv TCP-anslutning som MongoDB-klienten försöker använda. MongoDB-drivrutiner använder ofta anslutningspoolen, vilket resulterar i en slumpmässig anslutning som väljs från poolen som används för en begäran. Inaktiva anslutningar är vanligt vis timeout på Azure Cosmos DB slutar efter fyra minuter. | Du kan antingen göra om dessa misslyckade förfrågningar i program koden, ändra inställningarna för MongoDB-klienten (driv rutin) till Teardown inaktiva TCP-anslutningar innan tids gränsen på fyra minuter eller konfigurera dina OS keepalive-inställningar så att TCP-anslutningarna upprätthålls i ett aktivt tillstånd. |
 
 ## <a name="next-steps"></a>Nästa steg
 

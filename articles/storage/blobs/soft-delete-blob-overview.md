@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/15/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: bb90c5776e67c1ba8fecdbf394a8098e96ca0652
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: a2c26c3e41f64a1593a2d3386c76427c0b9682e9
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96022385"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127489"
 ---
 # <a name="soft-delete-for-blobs"></a>Mjuk borttagning för blobar
 
@@ -79,23 +79,23 @@ När **Delete BLOB** anropas på en bas-BLOB (en blob som inte är en ögonblick
 > [!NOTE]  
 > När en mjuk borttagen BLOB skrivs över skapas en mjuk raderad ögonblicks bild av blobens tillstånd innan Skriv åtgärden genereras automatiskt. Den nya blobben ärver den överskrivna blobens nivå.
 
-Mjuk borttagning sparar inte dina data i fall av container eller konto borttagningar, eller när BLOB-metadata och blob-egenskaper skrivs över. Om du vill skydda ett lagrings konto från felaktig borttagning kan du konfigurera ett lås med hjälp av Azure Resource Manager. Mer information finns i Azure Resource Manager artikel [Lås resurser för att förhindra oväntade ändringar](../../azure-resource-manager/management/lock-resources.md).
+Med mjuk borttagning sparas inte dina data i fall då behållaren eller kontot tas bort, eller när BLOB-metadata och blob-egenskaper skrivs över. Om du vill skydda ett lagrings konto från borttagning kan du konfigurera ett lås med hjälp av Azure Resource Manager. Mer information finns i Azure Resource Manager artikel [Lås resurser för att förhindra oväntade ändringar](../../azure-resource-manager/management/lock-resources.md).
 
 Följande tabell information förväntas när mjuk borttagning är aktiverat:
 
 | REST API åtgärd | Resurstyp | Description | Funktions förändring |
 |--------------------|---------------|-------------|--------------------|
-| [Ta bort](/rest/api/storagerp/StorageAccounts/Delete) | Konto | Tar bort lagrings kontot, inklusive alla behållare och blobbar som det innehåller.                           | Ingen ändring. Behållare och blobbar i det borttagna kontot går inte att återskapa. |
-| [Ta bort container](/rest/api/storageservices/delete-container) | Container | Tar bort behållaren, inklusive alla blobbar som den innehåller. | Ingen ändring. Blobbar i den borttagna behållaren går inte att återskapa. |
+| [Ta bort](/rest/api/storagerp/StorageAccounts/Delete) | Konto | Tar bort lagrings kontot, inklusive alla behållare och blobbar som det innehåller.                           | Ingen förändring. Behållare och blobbar i det borttagna kontot går inte att återskapa. |
+| [Ta bort container](/rest/api/storageservices/delete-container) | Container | Tar bort behållaren, inklusive alla blobbar som den innehåller. | Ingen förändring. Blobbar i den borttagna behållaren går inte att återskapa. |
 | [Placera blob](/rest/api/storageservices/put-blob) | Blockera, lägga till och Page blobbar | Skapar en ny BLOB eller ersätter en befintlig BLOB i en behållare | Om den används för att ersätta en befintlig BLOB genereras en ögonblicks bild av blobens tillstånd före anropet automatiskt. Detta gäller även för en tidigare mjuk borttagen BLOB om den ersätts av en blob av samma typ (block, tillägg eller sida). Om den ersätts av en blob av en annan typ, kommer alla befintliga data för mjuk borttagning att upphöra att gälla permanent. |
 | [Ta bort blob](/rest/api/storageservices/delete-blob) | Blockera, lägga till och Page blobbar | Markerar en BLOB-eller BLOB-ögonblicksbild för borttagning. Blobben eller ögonblicks bilden raderas senare under skräp insamlingen | Om den används för att ta bort en BLOB-ögonblicksbild, markeras den ögonblicks bilden som mjuk borttagen. Om den används för att ta bort en BLOB markeras denna blob som mjuk borttagning. |
 | [Kopiera blob](/rest/api/storageservices/copy-blob) | Blockera, lägga till och Page blobbar | Kopierar en käll-blob till en mål-BLOB i samma lagrings konto eller i ett annat lagrings konto. | Om den används för att ersätta en befintlig BLOB genereras en ögonblicks bild av blobens tillstånd före anropet automatiskt. Detta gäller även för en tidigare mjuk borttagen BLOB om den ersätts av en blob av samma typ (block, tillägg eller sida). Om den ersätts av en blob av en annan typ, kommer alla befintliga data för mjuk borttagning att upphöra att gälla permanent. |
 | [Spärra block](/rest/api/storageservices/put-block) | Blockblobar | Skapar ett nytt block som ska allokeras som en del av en Block-Blob. | Om det används för att genomföra ett block till en blob som är aktiv, sker ingen ändring. Om den används för att genomföra ett block till en blob som är mjuk borttagning, skapas en ny blob och en ögonblicks bild skapas automatiskt för att avbilda statusen för den mjuka borttagna blobben. |
 | [Lista över blockerade](/rest/api/storageservices/put-block-list) | Blockblobar | Genomför en BLOB genom att ange den uppsättning block-ID: n som utgör block-bloben. | Om den används för att ersätta en befintlig BLOB genereras en ögonblicks bild av blobens tillstånd före anropet automatiskt. Detta gäller även för en tidigare mjuk borttagen BLOB om det är en Block-Blob. Om den ersätts av en blob av en annan typ, kommer alla befintliga data för mjuk borttagning att upphöra att gälla permanent. |
-| [Placerings sida](/rest/api/storageservices/put-page) | Sidblobar | Skriver ett intervall med sidor till en sid-blob. | Ingen ändring. Sid-BLOB-data som skrivs över eller rensas med den här åtgärden sparas inte och går inte att återskapa. |
-| [Lägg till block](/rest/api/storageservices/append-block) | Tilläggsblobar | Skriver ett data block till slutet av en tilläggs-BLOB | Ingen ändring. |
-| [Ange BLOB-egenskaper](/rest/api/storageservices/set-blob-properties) | Blockera, lägga till och Page blobbar | Anger värden för system egenskaper som definierats för en blob. | Ingen ändring. Det går inte att återskapa de överskrivna BLOB-egenskaperna. |
-| [Ange BLOB-metadata](/rest/api/storageservices/set-blob-metadata) | Blockera, lägga till och Page blobbar | Anger användardefinierade metadata för angiven blob som ett eller flera namn/värde-par. | Ingen ändring. Överskrivna BLOB-metadata går inte att återskapa. |
+| [Placerings sida](/rest/api/storageservices/put-page) | Sidblobar | Skriver ett intervall med sidor till en sid-blob. | Ingen förändring. Sid-BLOB-data som skrivs över eller rensas med den här åtgärden sparas inte och går inte att återskapa. |
+| [Lägg till block](/rest/api/storageservices/append-block) | Tilläggsblobar | Skriver ett data block till slutet av en tilläggs-BLOB | Ingen förändring. |
+| [Ange BLOB-egenskaper](/rest/api/storageservices/set-blob-properties) | Blockera, lägga till och Page blobbar | Anger värden för system egenskaper som definierats för en blob. | Ingen förändring. Det går inte att återskapa de överskrivna BLOB-egenskaperna. |
+| [Ange BLOB-metadata](/rest/api/storageservices/set-blob-metadata) | Blockera, lägga till och Page blobbar | Anger användardefinierade metadata för angiven blob som ett eller flera namn/värde-par. | Ingen förändring. Överskrivna BLOB-metadata går inte att återskapa. |
 
 Det är viktigt att Observera att anrops **sidan** för att skriva över eller rensa intervall av en sid-BLOB inte automatiskt genererar ögonblicks bilder. Virtuella dator diskar backas upp av Page blobbar och använder **sidan sätt** för att skriva data.
 
@@ -171,7 +171,7 @@ Nej, mjuka borttagna ögonblicks bilder räknas inte mot den här gränsen.
 
 ### <a name="if-i-delete-an-entire-account-or-container-with-soft-delete-turned-on-will-all-associated-blobs-be-saved"></a>Om jag tar bort ett helt konto eller en behållare med mjuk borttagning aktiverat, kommer alla associerade blobbar att sparas?
 
-Nej, om du tar bort ett helt konto eller en behållare tas alla kopplade blobbar bort permanent. Mer information om hur du skyddar ett lagrings konto från oavsiktliga borttagningar finns i [Lås resurser för att förhindra oväntade ändringar](../../azure-resource-manager/management/lock-resources.md).
+Nej, om du tar bort ett helt konto eller en behållare tas alla kopplade blobbar bort permanent. Mer information om hur du skyddar ett lagrings konto från att tas bort av misstag, se [Lås resurser för att förhindra oväntade ändringar](../../azure-resource-manager/management/lock-resources.md).
 
 ### <a name="can-i-view-capacity-metrics-for-deleted-data"></a>Kan jag Visa kapacitets mått för borttagna data?
 

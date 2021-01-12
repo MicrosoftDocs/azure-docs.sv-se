@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/29/2016
 ms.author: kundanap
-ms.openlocfilehash: bca826cda8dfe47c341886faaf4a0d66f09d37d2
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: b8b7a03d5176f5dbd8500b5ff9044c2f22ecbfc0
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94966351"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127149"
 ---
 # <a name="troubleshooting-azure-windows-vm-extension-failures"></a>Felsöka problem med Azure Windows VM-tillägg
 [!INCLUDE [virtual-machines-common-extensions-troubleshoot](../../../includes/virtual-machines-common-extensions-troubleshoot.md)]
@@ -78,26 +78,30 @@ När tillägget har tagits bort kan mallen köras igen för att köra skripten p
 
 ### <a name="trigger-a-new-goalstate-to-the-vm"></a>Utlös en ny GoalState för den virtuella datorn
 Du kanske märker att ett tillägg inte har körts eller inte kan köras på grund av ett saknat "Windows Azure CRP Certificate Generator" (det certifikatet används för att skydda transporten av tilläggets skyddade inställningar).
-Certifikatet kommer automatiskt att återskapas genom att starta om Windows gäst agenten från den virtuella datorn:
+Certifikatet återskapas automatiskt genom att starta om Windows gäst agenten inifrån den virtuella datorn:
 - Öppna aktivitets hanteraren
 - Gå till fliken information
 - Hitta WindowsAzureGuestAgent.exes processen
 - Högerklicka på och välj "Avsluta aktivitet". Processen kommer att startas om automatiskt
 
 
-Du kan också utlösa en ny GoalState för den virtuella datorn genom att köra en "Tom uppdatering":
+Du kan också utlösa en ny GoalState för den virtuella datorn genom att köra en "VM reapply". VM-återaktivering är ett API som introducerades i 2020 för att [återanvända en](https://docs.microsoft.com/rest/api/compute/virtualmachines/reapply) VM-status. Vi rekommenderar att du gör detta vid en tidpunkt när du kan tolerera en kort VM-nedtid. När återaktivering av sig inte orsakar en VM-omstart, och de allra flesta gånger som anropar tillämpa inte, startar inte om den virtuella datorn, det finns en mycket liten risk för att vissa andra väntande uppdateringar av VM-modellen tillämpas när utlösare är ett nytt mål tillstånd och att andra ändringar kan kräva en omstart. 
 
-Azure PowerShell:
+Azure Portal:
+
+I portalen väljer du den virtuella datorn och i den vänstra rutan under **support + fel sökning** väljer du **distribuera om + Verkställ igen** och väljer sedan **tillämpa igen**.
+
+
+Azure PowerShell *(Ersätt RG namn och VM-namn med dina värden)*:
 
 ```azurepowershell
-$vm = Get-AzureRMVM -ResourceGroupName <RGName> -Name <VMName>  
-Update-AzureRmVM -ResourceGroupName <RGName> -VM $vm  
+Set-AzVM -ResourceGroupName <RG Name> -Name <VM Name> -Reapply
 ```
 
-Azure CLI:
+Azure CLI *(Ersätt RG-namn och VM-namn med dina värden)*:
 
 ```azurecli
-az vm update -g <rgname> -n <vmname>
+az vm reapply -g <RG Name> -n <VM Name>
 ```
 
-Om en "Tom uppdatering" inte fungerade kan du lägga till en ny tom datadisk till den virtuella datorn från Azure-Hanteringsportal och sedan ta bort den senare när certifikatet har lagts till igen.
+Om en "VM-återanvändning" inte fungerade kan du lägga till en ny tom datadisk till den virtuella datorn från Azure-Hanteringsportal och sedan ta bort den senare när certifikatet har lagts till igen.

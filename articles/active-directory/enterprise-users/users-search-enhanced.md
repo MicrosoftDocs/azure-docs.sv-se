@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.subservice: enterprise-users
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/03/2020
+ms.date: 01/11/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 296679135063e2c7e1b7f0e3ffd193c8f18c3acf
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 5038bde01a6b183a25a47f3b4e206c1ce80e6b6d
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576272"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127846"
 ---
 # <a name="user-management-enhancements-preview-in-azure-active-directory"></a>Förbättringar av användar hantering (för hands version) i Azure Active Directory
 
@@ -60,6 +60,9 @@ Följande är de användar egenskaper som visas på sidan **alla användare** :
 - Namn: användarens visnings namn.
 - Användarens huvud namn: användarens User Principal Name (UPN).
 - Användar typ: medlem, gäst, ingen.
+- Skapande tid: datum och tid då användaren skapades.
+- Befattning: användarens jobb titel.
+- Avdelning: den avdelning som användaren arbetar i.
 - Katalogen har synkroniserats: anger om användaren har synkroniserats från en lokal katalog.
 - Identitets utfärdare: utfärdare av den identitet som används för att logga in på ett användar konto.
 - Objekt-ID: användarens objekt-ID.
@@ -76,7 +79,8 @@ Följande är de användar egenskaper som visas på sidan **alla användare** :
 Sidan **borttagna användare** innehåller alla kolumner som är tillgängliga på sidan **alla användare** och några ytterligare kolumner, nämligen:
 
 - Borttagnings datum: datumet då användaren först togs bort från organisationen (användaren är återställas).
-- Permanent borttagnings datum: det datum då processen för att permanent ta bort användaren från organisationen börjar automatiskt att gälla. 
+- Permanent borttagnings datum: det datum då processen för att permanent ta bort användaren från organisationen börjar automatiskt att gälla.
+- Ursprunglig User Principal Name: det ursprungliga UPN för användaren innan objekt-ID: t lades till som ett prefix till deras borttagna UPN.
 
 > [!NOTE]
 > Borttagnings datum visas i UTC-tid (Coordinated Universal Time).
@@ -105,6 +109,10 @@ Följande är de filter bara egenskaperna på sidan **alla användare** :
 - Användar typ: medlem, gäst, ingen
 - Katalogens synkroniserings status: Ja, nej
 - Typ av skapande: inbjudan, e-postverifierat, lokalt konto
+- Skapelse tid: senaste 7, 14, 30, 90, 360 eller >360 dagar sedan
+- Befattning: Ange en befattning
+- Avdelning: Ange ett avdelnings namn
+- Grupp: Sök efter en grupp
 - Status för inbjudan – väntar på godkännande, accepterad
 - Domän namn: Ange ett domän namn
 - Företags namn: Ange ett företags namn
@@ -117,6 +125,9 @@ Sidan för **borttagna användare** har ytterligare filter som inte finns på si
 - Användar typ: medlem, gäst, ingen
 - Katalogens synkroniserings status: Ja, nej
 - Typ av skapande: inbjudan, e-postverifierat, lokalt konto
+- Skapelse tid: senaste 7, 14, 30, 90, 360 eller > 360 dagar sedan
+- Befattning: Ange en befattning
+- Avdelning: Ange ett avdelnings namn
 - Status för inbjudan: väntar på godkännande, accepterat
 - Borttagnings datum: senaste 7, 14 eller 30 dagar
 - Domän namn: Ange ett domän namn

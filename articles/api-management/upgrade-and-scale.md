@@ -11,12 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 04/20/2020
 ms.author: apimpm
-ms.openlocfilehash: 466af29a3f073f73d4a0fc62d74709cd59f82425
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: bd36434bbfe435a53567c46728610627f99f987f
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183795"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127795"
 ---
 # <a name="upgrade-and-scale-an-azure-api-management-instance"></a>Uppgradera och skala en Azure API Management-instans  
 
@@ -67,7 +67,7 @@ Du kan uppgradera och nedgradera till och från valfri nivå. Uppgradering eller
 2. Välj **platser** på menyn.
 3. Klicka på raden med den plats som du vill skala.
 4. Ange det nya antalet **enheter** – Använd antingen skjutreglaget eller Skriv in numret.
-5. Klicka på **Använd**.
+5. Klicka på **Godkänn**.
 
 ## <a name="change-your-api-management-service-tier"></a>Ändra API Management tjänst nivå
 
@@ -88,4 +88,5 @@ Om dina säkerhets krav innehåller [beräknings isolering](../azure-government/
 
 - [Så distribuerar du en Azure API Management-tjänstinstans till flera Azure-regioner](api-management-howto-deploy-multi-region.md)
 - [Skala en Azure API Management-tjänstinstans automatiskt](api-management-howto-autoscale.md)
-- [Optimera och Spara på dina moln utgifter](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+- [Planera och hantera kostnader för API Management](plan-manage-costs.md)
+- [API Management gränser](../azure-resource-manager/management/azure-subscription-service-limits.md#api-management-limits)

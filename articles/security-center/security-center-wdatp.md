@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/20/2020
 ms.author: memildin
-ms.openlocfilehash: 34d8881eb072c4c723bf68b7c6ccfd24ab19cd3c
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 553151aebeadf4ad4764e747b1bf6dcd8c552721
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 01/12/2021
-ms.locfileid: "98116287"
+ms.locfileid: "98126860"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>Skydda dina slut punkter med Security Center Integrated EDR-lösning: Microsoft Defender för slut punkt
 
@@ -71,7 +71,7 @@ Genom att integrera Defender för slut punkt med Security Center kan du dra nytt
 
 När du använder Azure Security Center för att övervaka dina servrar skapas automatiskt en Microsoft Defender för slut punkts klient. Data som samlas in av Defender för slut punkten lagras på den geo-platsen för klient organisationen som identifieras under etableringen. Kund information – i pseudonymized form – kan också lagras i de centrala lagrings-och bearbetnings systemen i USA. 
 
-När du har konfigurerat platsen kan du inte ändra den. Om du behöver flytta dina data till en annan plats kontaktar du Microsoft Support för att återställa klienten.
+När du har konfigurerat platsen kan du inte ändra den. Om du har en egen licens för Microsoft Defender för slut punkt och behöver flytta dina data till en annan plats kontaktar du Microsoft Support för att återställa klienten.
 
 
 ## <a name="enabling-the-microsoft-defender-for-endpoint-integration"></a>Aktivera Microsoft Defender för slut punkts integrering

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.author: ramamill
 ms.date: 04/03/2020
-ms.openlocfilehash: 8ee6449f357a578b30809bb03723ac1556e4f459
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 62c8240a4d2e50aa3b584f322baf7d2ee217c6d3
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88816206"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127880"
 ---
 # <a name="troubleshoot-mobility-service-push-installation"></a>Felsöka mobilitets tjänstens push-installation
 
@@ -51,7 +51,7 @@ För Windows (**fel 95107**) kontrollerar du att användar kontot har administra
 För Linux (**fel 95108**) måste du välja **rot** kontot för lyckad installation av mobilitets tjänst agenten. Dessutom bör SSH-File Transfer Protocol (SFTP)-tjänster köras. Så här aktiverar du under systemet SFTP och lösenordsautentisering i _sshd_config_ -filen:
 
 1. Logga in som **rot**.
-1. Gå till _/etc/ssh/sshd_config-filen_och leta upp raden som börjar med `PasswordAuthentication` .
+1. Gå till _/etc/ssh/sshd_config-filen_ och leta upp raden som börjar med `PasswordAuthentication` .
 1. Ta bort kommentaren till raden och ändra värdet till `yes` .
 1. Hitta raden som börjar med och ta bort `Subsystem` kommentaren mellan raden.
 1. Starta om `sshd` tjänsten.
@@ -106,7 +106,22 @@ Konfigurations servern/Scale-Out-processervern försöker ansluta till den virtu
 
 Så här löser du felet:
 
+* Kontrol lera att användar kontot har administrativ åtkomst på käll datorn, med antingen ett lokalt konto eller ett domän konto. Om du inte använder ett domän konto måste du inaktivera åtkomst kontroll för fjärran vändare på den lokala datorn.
+  * För att manuellt lägga till en register nyckel som inaktiverar fjärran vändare åtkomst kontroll:
+    * `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System`
+    * Lägg till en ny `DWORD` : `LocalAccountTokenFilterPolicy`
+    * Ange värdet till `1`
+  * Om du vill lägga till register nyckeln kör du följande kommando från en kommando tolk:
+
+    `REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1`
+
 * Se till att du kan pinga käll datorn från konfigurations servern. Om du har valt den skalbara processervern under aktivera replikering, se till att du kan pinga käll datorn från processervern.
+
+* Se till att fil-och skrivar delnings tjänsten är aktive rad på den virtuella datorn. Kontrol lera stegen [här](vmware-azure-troubleshoot-push-install.md#file-and-printer-sharing-services-check-errorid-95105--95106).
+
+* Se till att WMI-tjänsten är aktive rad på den virtuella datorn. Kontrol lera stegen [här](vmware-azure-troubleshoot-push-install.md#windows-management-instrumentation-wmi-configuration-check-error-code-95103).
+
+* Se till att delade nätverksmappar på den virtuella datorn är tillgängliga från processervern. Kontrol lera stegen [här](vmware-azure-troubleshoot-push-install.md#check-access-for-network-shared-folders-on-source-machine-errorid-9510595523).
 
 * Från kommando raden för käll serverns dator använder `Telnet` du för att pinga konfigurations servern eller den skalbara processervern på https-port 135, som du ser i följande kommando. Det här kommandot kontrollerar om det finns problem med nätverks anslutningen eller blockerar brand Väggs porten.
 
@@ -165,7 +180,7 @@ För **Windows 2008 R2 och tidigare versioner**:
 
 * Så här aktiverar du fildelning med grupprincip:
   1. Gå till **Start**, Skriv `gpmc.msc` och Sök.
-  1. Öppna följande mappar i navigerings fönstret: användar konfiguration för **lokal dator princip**  >  **User Configuration**  >  **administrativa mallar**  >  **Windows-komponenter**  >  **nätverks delning**.
+  1. Öppna följande mappar i navigerings fönstret: användar konfiguration för **lokal dator princip**  >    >  **administrativa mallar**  >  **Windows-komponenter**  >  **nätverks delning**.
   1. I informations fönstret dubbelklickar **du på förhindra användare från att dela filer i profilen**.
 
      Om du vill inaktivera inställningen för grupprincip och aktivera användarens möjlighet att dela filer väljer du **inaktive rad**.
@@ -224,7 +239,7 @@ Innan 9,20-versionen hade en rot partition eller volym konfiguration på flera d
 
 ### <a name="possible-cause"></a>Möjlig orsak
 
-Konfigurationsfilerna för Grand Unified startGRUB (_/boot/grub/menu.lst_, _/boot/grub/grub.cfg_, _/Boot/grub2/grub.cfg_eller _/etc/default/grub_) kan innehålla värdet för parameter **roten** och **återupptas** som faktiska enhets namn i stället för en universell unik identifierare (UUID). Site Recovery bestämmer UUID-metoden som enhets namn kan ändras för den virtuella datorn. Till exempel kanske den virtuella datorn inte är online med samma namn vid redundansväxling och som resulterar i problem.
+Konfigurationsfilerna för Grand Unified startGRUB (_/boot/grub/menu.lst_, _/boot/grub/grub.cfg_, _/Boot/grub2/grub.cfg_ eller _/etc/default/grub_) kan innehålla värdet för parameter **roten** och **återupptas** som faktiska enhets namn i stället för en universell unik identifierare (UUID). Site Recovery bestämmer UUID-metoden som enhets namn kan ändras för den virtuella datorn. Till exempel kanske den virtuella datorn inte är online med samma namn vid redundansväxling och som resulterar i problem.
 
 Exempel:
 
@@ -254,7 +269,7 @@ Enhetsnamnen bör ersättas med motsvarande UUID.
    /dev/sda2: UUID="62927e85-f7ba-40bc-9993-cc1feeb191e4" TYPE="ext3"
    ```
 
-1. Ersätt nu enhets namnet med dess UUID i formatet som `root=UUID=\<UUID>` . Om vi till exempel ersätter enhets namnen med UUID för rot-och återställnings parametern som anges i filerna _/Boot/grub2/grub.cfg_, _/Boot/grub2/grub.cfg_eller _/etc/default/grub_ , ser raderna i filerna ut som följande rad:
+1. Ersätt nu enhets namnet med dess UUID i formatet som `root=UUID=\<UUID>` . Om vi till exempel ersätter enhets namnen med UUID för rot-och återställnings parametern som anges i filerna _/Boot/grub2/grub.cfg_, _/Boot/grub2/grub.cfg_ eller _/etc/default/grub_ , ser raderna i filerna ut som följande rad:
 
    `kernel /boot/vmlinuz-3.0.101-63-default root=UUID=62927e85-f7ba-40bc-9993-cc1feeb191e4 resume=UUID=6f614b44-433b-431b-9ca1-4dd2f6f74f6b splash=silent crashkernel=256M-:128M showopts vga=0x314`
 

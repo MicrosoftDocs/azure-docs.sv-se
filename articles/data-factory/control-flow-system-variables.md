@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/12/2018
-ms.openlocfilehash: 1780b4a64de349c1e272158fe6bfde9cab6f8369
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: fc6b2e4c944394d811abc19f70aeb34a0ae3c9a4
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96486054"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127676"
 ---
 # <a name="system-variables-supported-by-azure-data-factory"></a>Systemvariabler som stöds av Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -30,27 +30,41 @@ Dessa systemvariabler kan refereras var som helst i pipeline-JSON.
 | --- | --- |
 | @pipeline(). DataFactory |Namnet på den data fabrik som pipelinen körs i |
 | @pipeline(). Pipeline |Namn på pipelinen |
-| @pipeline(). RunId | ID för den aktuella pipeline-körningen |
-| @pipeline(). TriggerType | Typ av utlösare som anropade pipelinen (manuell, Scheduler) |
-| @pipeline(). TriggerId| ID för utlösaren som anropar pipelinen |
-| @pipeline(). TriggerName| Namnet på utlösaren som anropar pipelinen |
-| @pipeline(). TriggerTime| Tid när utlösaren som anropade pipelinen. Utlösnings tiden är den faktiska utlösta tiden, inte den schemalagda tiden. Returneras till exempel `13:20:08.0149599Z` istället för `13:20:00.00Z` |
+| @pipeline(). RunId |ID för den aktuella pipeline-körningen |
+| @pipeline(). TriggerType |Typen av utlösare som anropade pipelinen (till exempel `ScheduleTrigger` , `BlobEventsTrigger` ). En lista över utlösnings typer som stöds finns [i pipeline-körning och utlösare i Azure Data Factory](concepts-pipeline-execution-triggers.md). Utlösaren `Manual` anger att pipelinen utlöstes manuellt. |
+| @pipeline(). TriggerId|ID för utlösaren som anropade pipelinen |
+| @pipeline(). TriggerName|Namnet på utlösaren som anropade pipelinen |
+| @pipeline(). TriggerTime|Tiden för den Utlös ande körning som anropade pipelinen. Detta är tiden då utlösaren **faktiskt** startade för att anropa pipelinen och kan skilja sig något från den schemalagda tiden för utlösaren.  |
+
+>[!NOTE]
+>Utlös ande datum/tid system variabler (i både pipeliner och utlösnings omfång) returnera UTC-datum i ISO 8601-format, till exempel `2017-06-01T22:20:00.4061448Z` .
 
 ## <a name="schedule-trigger-scope"></a>Intervall för schema utlösare
-Dessa systemvariabler kan refereras var som helst i utlösaren JSON om utlösaren är av typen: "ScheduleTrigger".
+Dessa systemvariabler kan refereras var som helst i Utlösar-JSON för utlösare av typen [ScheduleTrigger](concepts-pipeline-execution-triggers.md#schedule-trigger).
 
 | Variabelnamn | Description |
 | --- | --- |
-| @trigger().scheduledTime |Tid när utlösaren schemalades för att anropa pipeline-körningen. För en utlösare som utlöses var femte minut skulle den här variabeln till exempel returneras `2017-06-01T22:20:00Z` `2017-06-01T22:25:00Z` `2017-06-01T22:30:00Z` .|
-| @trigger(). StartTime |Tid när utlösaren **faktiskt** startade för att anropa pipeline-körningen. För en utlösare som utlöses var femte minut kan den här variabeln till exempel returnera något som liknar detta `2017-06-01T22:20:00.4061448Z` `2017-06-01T22:25:00.7958577Z` `2017-06-01T22:30:00.9935483Z` . (Obs: tidsstämpeln är som standard i ISO 8601-format)|
+| @trigger().scheduledTime |Tiden då utlösaren schemalades för att anropa pipeline-körningen. |
+| @trigger(). StartTime |Tiden då utlösaren **faktiskt** startade för att anropa pipeline-körningen. Detta kan skilja sig något från den schemalagda tiden för utlösaren. |
 
 ## <a name="tumbling-window-trigger-scope"></a>Utlösare för rullande fönster
-Dessa systemvariabler kan refereras var som helst i utlösaren JSON om utlösaren är av typen: "TumblingWindowTrigger".
-(Obs: tidsstämpeln är som standard i ISO 8601-format)
+Dessa systemvariabler kan refereras var som helst i Utlösar-JSON för utlösare av typen [TumblingWindowTrigger](concepts-pipeline-execution-triggers.md#tumbling-window-trigger).
 
 | Variabelnamn | Description |
 | --- | --- |
-| @trigger(). outputs. windowStartTime |Början av fönstret när utlösaren schemalades för att anropa pipeline-körningen. Om utlösaren för rullande Window har en frekvens på "varje timme" blir tiden i början av timmen.|
-| @trigger(). outputs. windowEndTime |Slutet av fönstret när utlösaren schemalades för att anropa pipeline-körningen. Om utlösaren för rullande Window har en frekvens på "varje timme" blir tiden i slutet av timmen.|
+| @trigger(). outputs. windowStartTime |Början av fönstret som är associerat med utlösarens körning. |
+| @trigger(). outputs. windowEndTime |Slutet av fönstret som är kopplat till utlösarens körning. |
+| @trigger().scheduledTime |Tiden då utlösaren schemalades för att anropa pipeline-körningen. |
+| @trigger(). StartTime |Tiden då utlösaren **faktiskt** startade för att anropa pipeline-körningen. Detta kan skilja sig något från den schemalagda tiden för utlösaren. |
+
+## <a name="event-based-trigger-scope"></a>Händelsebaserade utlösnings omfång
+Dessa systemvariabler kan refereras var som helst i Utlösar-JSON för utlösare av typen [BlobEventsTrigger](concepts-pipeline-execution-triggers.md#event-based-trigger).
+
+| Variabelnamn | Description |
+| --- | --- |
+| @triggerBody(). fileName  |Namnet på filen vars skapande eller borttagning orsakade utlösaren för brand.   |
+| @triggerBody(). mappnamn  |Sökväg till den mapp som innehåller filen som anges av `@triggerBody().fileName` . Det första segmentet i mappsökvägen är namnet på Azure Blob Storage-behållaren.  |
+| @trigger(). StartTime |Tiden då utlösaren startade för att anropa pipeline-körningen. |
+
 ## <a name="next-steps"></a>Nästa steg
 Information om hur dessa variabler används i uttryck finns i [Expression language & Functions](control-flow-expression-language-functions.md).

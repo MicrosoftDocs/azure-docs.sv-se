@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 09/10/2020
-ms.openlocfilehash: 0ecf47ecdc66c0005f0d793d91a67af102fb1c76
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.openlocfilehash: 4ba06af98714004e4429fe802a206acdfa8fb148
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 01/12/2021
-ms.locfileid: "98107913"
+ms.locfileid: "98127625"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Viktig information om Azure Machine Learning
 
@@ -27,8 +27,6 @@ I den här artikeln får du lära dig mer om Azure Machine Learning-versioner.  
 + **Fel korrigeringar och förbättringar**
   + **Azure-CLI-ml**
     + framework_version lagts till i OptimizationConfig. Den kommer att användas när modellen registreras med Framework MULTI.
-  + **azureml-automl-runtime**
-    + I den här uppdateringen har vi lagt till Holt vinter till Exponentiell utjämning till Prognosticering Toolbox i AutoML SDK. Med en viss tids serie är den bästa modellen vald av [AICc (korrigerade Akaike)](https://otexts.com/fpp3/selecting-predictors.html#selecting-predictors) och returneras.
   + **azureml – contrib-optimering**
     + framework_version lagts till i OptimizationConfig. Den kommer att användas när modellen registreras med Framework MULTI.
   + **azureml-pipeline-steps**
@@ -897,7 +895,7 @@ Nu kan du skapa, redigera och dela Machine Learning-anteckningsböcker och filer
 
 Få åtkomst till följande webbaserade redigerings verktyg från Studio:
     
-| Webbaserat verktyg  |     Beskrivning  |
+| Webbaserat verktyg  |     Description  |
 |---|---|
 | Azure ML Studio-anteckningsböcker   |     Första redigering i klass för notebook-filer och stöd för alla åtgärder som är tillgängliga i Azure ML python SDK. | 
 
@@ -1409,7 +1407,7 @@ Från Studio kan du träna, testa, distribuera och hantera Azure Machine Learnin
 
 Få åtkomst till följande webbaserade redigerings verktyg från Studio:
 
-| Webbaserat verktyg | Beskrivning | 
+| Webbaserat verktyg | Description | 
 |-|-|-|
 | Notebook VM (för hands version) | Helt hanterad molnbaserad arbets Station | 
 | [Automatisk maskin inlärning](tutorial-first-experiment-automated-ml.md) (för hands version) | Ingen kod upplevelse för automatisering av maskin inlärnings modell utveckling | 

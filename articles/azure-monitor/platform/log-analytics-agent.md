@@ -5,15 +5,16 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 08/21/2020
-ms.openlocfilehash: 8563f734db8524d6e90171bb2272723f14533055
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.date: 01/12/2021
+ms.openlocfilehash: 973f55d8453184865bcff926e1066efb688b2a64
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185937"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127931"
 ---
 # <a name="log-analytics-agent-overview"></a>Översikt över Log Analytics agent
+
 Azure Log Analytics agent samlar in telemetri från virtuella Windows-och Linux-datorer i alla moln, lokala datorer och de som övervakas av [System Center Operations Manager](/system-center/scom/) och skickar insamlade data till din Log Analytics-arbetsyta i Azure Monitor. Log Analytics agenten stöder också insikter och andra tjänster i Azure Monitor som [Azure Monitor for VMS](../insights/vminsights-enable-overview.md), [Azure Security Center](../../security-center/index.yml)och [Azure Automation](../../automation/automation-intro.md). Den här artikeln innehåller en detaljerad översikt över agent-, system-och nätverks krav och distributions metoder.
 
 > [!NOTE]
@@ -29,17 +30,18 @@ Viktiga skillnader att tänka på är:
 - Log Analytics agent krävs för [lösningar](../monitor-reference.md#insights-and-core-solutions), [Azure Monitor for VMS](../insights/vminsights-overview.md)och andra tjänster som [Azure Security Center](../../security-center/index.yml).
 
 ## <a name="costs"></a>Kostnader
+
 Det kostar inget att Log Analytics agent, men du kan debiteras avgifter för inmatade data. Se [Hantera användning och kostnader med Azure Monitor loggar](manage-cost-storage.md) för detaljerad information om priser för data som samlas in i en Log Analytics arbets yta.
 
 ## <a name="supported-operating-systems"></a>Operativsystem som stöds
 
  Se [operativ system som stöds](agents-overview.md#supported-operating-systems) för en lista över Windows-och Linux-versioner av operativ systemet som stöds av Log Analytics agenten. 
 
-
 ## <a name="data-collected"></a>Insamlade data
+
 I följande tabell visas de typer av data som du kan konfigurera en Log Analytics arbets yta att samla in från alla anslutna agenter. Se [vad som övervakas av Azure Monitor?](../monitor-reference.md) för en lista med insikter, lösningar och andra lösningar som använder Log Analytics-agenten för att samla in andra typer av data.
 
-| Datakälla | Beskrivning |
+| Datakälla | Description |
 | --- | --- |
 | [Händelse loggar i Windows](data-sources-windows-events.md) | Information som skickas till händelse loggnings systemet i Windows. |
 | [Syslog](data-sources-syslog.md)                     | Information som skickas till händelse loggnings systemet i Linux. |
@@ -48,9 +50,11 @@ I följande tabell visas de typer av data som du kan konfigurera en Log Analytic
 | [Anpassade loggar](data-sources-custom-logs.md)           | Händelser från textfiler på både Windows-och Linux-datorer. |
 
 ## <a name="data-destinations"></a>Data destinationer
+
 Log Analytics agent skickar data till en Log Analytics arbets yta i Azure Monitor. Windows-agenten kan vara multihomed för att skicka data till flera arbets ytor och System Center Operations Manager hanterings grupper. Linux-agenten kan bara skicka till ett enda mål, antingen en arbets yta eller en hanterings grupp.
 
 ## <a name="other-services"></a>Övriga tjänster
+
 Agenten för Linux och Windows är inte bara för att ansluta till Azure Monitor. Andra tjänster som Azure Security Center och Azure Sentinel är beroende av agenten och dess anslutna Log Analytics arbets yta. Agenten stöder också Azure Automation som värd för Hybrid Runbook Worker-rollen och andra tjänster som [ändringsspårning](../../automation/change-tracking/overview.md), [uppdateringshantering](../../automation/update-management/overview.md)och [Azure Security Center](../../security-center/security-center-introduction.md). Mer information om Hybrid Runbook Worker-rollen finns i [Azure Automation hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md).  
 
 ## <a name="workspace-and-management-group-limitations"></a>Begränsningar för arbets yta och hanterings grupp
@@ -60,15 +64,14 @@ Mer information om hur du ansluter en agent till en Operations Manager hantering
 * Windows-agenter kan ansluta till upp till fyra arbets ytor, även om de är anslutna till en System Center Operations Manager hanterings grupp.
 * Linux-agenten stöder inte Multi-värdar och kan bara ansluta till en enda arbets yta eller hanterings grupp.
 
-
 ## <a name="security-limitations"></a>Säkerhets begränsningar
 
 * Windows-och Linux-agenterna stöder [FIPS 140-standarden](/windows/security/threat-protection/fips-140-validation), men [andra typer av härdning kanske inte stöds](agent-linux.md#supported-linux-hardening).
 
-
 ## <a name="installation-options"></a>Installationsalternativ
 
 Det finns flera metoder för att installera Log Analytics-agenten och ansluta datorn till Azure Monitor beroende på dina behov. I följande avsnitt visas möjliga metoder för olika typer av virtuella datorer.
+
 > [!NOTE]
 > Det finns inte stöd för att klona en dator med den Log Analytics agenten redan konfigurerad. Om agenten redan har associerats med en arbets yta fungerar det inte för "gyllene bilder".
 
@@ -79,28 +82,31 @@ Det finns flera metoder för att installera Log Analytics-agenten och ansluta da
 - Log Analytics VM-tillägg för [Windows](../../virtual-machines/extensions/oms-windows.md) eller [Linux](../../virtual-machines/extensions/oms-linux.md) kan installeras med Azure Portal, Azure CLI, Azure PowerShell eller en Azure Resource Manager mall.
 - Installera för enskilda virtuella Azure-datorer [manuellt från Azure Portal](../learn/quick-collect-azurevm.md?toc=%2fazure%2fazure-monitor%2ftoc.json).
 
+### <a name="windows-virtual-machine-on-premises-or-in-another-cloud"></a>Virtuell Windows-dator eller i ett annat moln
 
-### <a name="windows-virtual-machine-on-premises-or-in-another-cloud"></a>Virtuell Windows-dator eller i ett annat moln 
-
+- Använd [Azure Arc-aktiverade servrar](../../azure-arc/servers/overview.md) för att distribuera och hantera Log Analytics VM-tillägget.
 - [Installera](agent-windows.md) agenten manuellt från kommando raden.
 - Automatisera installationen med [Azure Automation DSC](agent-windows.md#install-agent-using-dsc-in-azure-automation).
 - Använd en [Resource Manager-mall med Azure Stack](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/MicrosoftMonitoringAgent-ext-win)
 
 ### <a name="linux-virtual-machine-on-premises-or-in-another-cloud"></a>Virtuella Linux-datorer lokalt eller i ett annat moln
 
+- Använd [Azure Arc-aktiverade servrar](../../azure-arc/servers/overview.md) för att distribuera och hantera Log Analytics VM-tillägget.
 - [Installera](../learn/quick-collect-linux-computer.md) agenten manuellt genom att anropa ett omslutnings skript som finns på GitHub.
-- System Center Operations Manager | [Integrera Operations Manager med Azure Monitor](./om-agents.md) för att vidarebefordra insamlade data från Windows-datorer som rapporterar till en hanterings grupp.
+- Integrera [System Center Operations Manager](./om-agents.md) med Azure Monitor för att vidarebefordra insamlade data från Windows-datorer som rapporterar till en hanterings grupp.
 
 ## <a name="workspace-id-and-key"></a>Arbetsyte-ID och nyckel
+
 Oavsett vilken installations metod som används, behöver du arbets ytans ID och nyckel för Log Analytics arbets ytan som agenten ska ansluta till. Välj arbets ytan från menyn **Log Analytics arbets ytor** i Azure Portal. Välj sedan **agent hantering** i avsnittet **Inställningar** . 
 
-[![Information om arbets ytan](media/log-analytics-agent/workspace-details.png)](media/log-analytics-agent/workspace-details.png#lightbox)
+[![Arbetsyteinformation](media/log-analytics-agent/workspace-details.png)](media/log-analytics-agent/workspace-details.png#lightbox)
 
 ## <a name="tls-12-protocol"></a>TLS 1,2-protokoll
 
 För att säkerställa säkerheten för data som överförs till Azure Monitor loggar, rekommenderar vi starkt att du konfigurerar agenten att använda minst Transport Layer Security (TLS) 1,2. Äldre versioner av TLS/Secure Sockets Layer (SSL) har befunnits vara sårbara och även om de fortfarande arbetar för att tillåta bakåtkompatibilitet, rekommenderas de **inte**.  Mer information finns i [skicka data på ett säkert sätt med TLS 1,2](data-security.md#sending-data-securely-using-tls-12). 
 
 ## <a name="network-requirements"></a>Nätverkskrav
+
 Agenten för Linux och Windows kommunicerar utgående till Azure Monitor tjänsten via TCP-port 443. Om datorn ansluter via en brand vägg eller proxyserver för att kommunicera via Internet kan du läsa igenom kraven nedan för att förstå vilken nätverks konfiguration som krävs. Om dina IT-säkerhetsprinciper inte tillåter datorer i nätverket att ansluta till Internet, kan du konfigurera en [Log Analytics Gateway](gateway.md) och sedan Konfigurera agenten att ansluta via gatewayen för att Azure Monitor. Agenten kan sedan ta emot konfigurations information och skicka data som samlas in.
 
 ![Diagram över Log Analytics-agent kommunikation](./media/log-analytics-agent/log-analytics-agent-01.png)
@@ -110,21 +116,21 @@ I följande tabell visas den konfigurations information för proxy och brand vä
 ### <a name="firewall-requirements"></a>Brandväggsförutsättningar
 
 |Agentresurs|Portar |Riktning |Kringgå HTTPS-kontroll|
-|------|---------|--------|--------|   
-|*.ods.opinsights.azure.com |Port 443 |Utgående|Ja |  
-|*.oms.opinsights.azure.com |Port 443 |Utgående|Ja |  
-|*.blob.core.windows.net |Port 443 |Utgående|Ja |
-|*.azure-automation.net |Port 443 |Utgående|Ja |
+|------|---------|--------|--------|
+|*.ods.opinsights.azure.com |Port 443 |Utgående|Yes |  
+|*.oms.opinsights.azure.com |Port 443 |Utgående|Yes |  
+|*.blob.core.windows.net |Port 443 |Utgående|Yes |
+|*.azure-automation.net |Port 443 |Utgående|Yes |
 
 För brand Väggs information som krävs för Azure Government, se [Azure Government hantering](../../azure-government/compare-azure-government-global-azure.md#azure-monitor). 
 
-Om du planerar att använda Azure Automation Hybrid Runbook Worker för att ansluta till och registrera med Automation-tjänsten för att använda Runbooks eller hanterings lösningar i din miljö, måste den ha åtkomst till port numret och de URL: er som beskrivs i [Konfigurera ditt nätverk för Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md#network-planning). 
+Om du planerar att använda Azure Automation Hybrid Runbook Worker för att ansluta till och registrera med Automation-tjänsten för att använda Runbooks eller hanterings funktioner i din miljö, måste den ha åtkomst till port numret och de URL: er som beskrivs i [Konfigurera ditt nätverk för Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md#network-planning).
 
 ### <a name="proxy-configuration"></a>Proxykonfiguration
 
 Windows-och Linux-agenten stöder kommunikation antingen via en proxyserver eller Log Analytics Gateway för att Azure Monitor med HTTPS-protokollet.  Både anonym och grundläggande autentisering (användar namn/lösen ord) stöds.  För Windows-agenten som är ansluten direkt till tjänsten anges proxykonfigurationen under installationen eller [efter distributionen](agent-manage.md#update-proxy-settings) från kontroll panelen eller med PowerShell.  
 
-För Linux-agenten anges proxyservern under installationen eller [efter installationen](agent-manage.md#update-proxy-settings) genom att ändra konfigurations filen proxy. conf.  Konfiguration svärdet för Linux-agentens proxy har följande syntax:
+För Linux-agenten anges proxyservern under installationen eller [efter installationen](agent-manage.md#update-proxy-settings) genom att ändra konfigurations filen proxy. conf. Konfiguration svärdet för Linux-agentens proxy har följande syntax:
 
 `[protocol://][user:password@]proxyhost[:port]`
 
@@ -140,8 +146,6 @@ Exempelvis: `https://user01:password@proxy01.contoso.com:30443`
 
 > [!NOTE]
 > Om du använder specialtecken som " \@ " i ditt lösen ord får du ett anslutnings fel på grund av att värdet parsas felaktigt.  Undvik det här problemet genom att koda lösen ordet i URL: en med ett verktyg som [URLDecode](https://www.urldecoder.org/).  
-
-
 
 ## <a name="next-steps"></a>Nästa steg
 

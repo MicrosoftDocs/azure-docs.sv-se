@@ -3,12 +3,12 @@ title: Vanliga frågor och svar om Azure Kubernetes service (AKS)
 description: Hitta svar på några vanliga frågor om Azure Kubernetes service (AKS).
 ms.topic: conceptual
 ms.date: 08/06/2020
-ms.openlocfilehash: 94cbaf417413b3e11071fb8c7237cbb3ac7b9a37
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 7fc348ae7b3edb79e75aa1acd08941fec447da6f
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780356"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127642"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Vanliga frågor om Azure Kubernetes Service (AKS)
 
@@ -146,7 +146,7 @@ Det finns för närvarande inte stöd för att flytta AKS-kluster mellan klient 
 
 Det finns för närvarande inte stöd för att flytta kluster mellan prenumerationer.
 
-## <a name="can-i-move-my-aks-clusters-from-the-current-azure-subscription-to-another"></a>Kan jag flytta mina AKS-kluster från den aktuella Azure-prenumerationen till en annan? 
+## <a name="can-i-move-my-aks-clusters-from-the-current-azure-subscription-to-another"></a>Kan jag flytta mina AKS-kluster från den aktuella Azure-prenumerationen till en annan?
 
 Det finns inte stöd för att flytta AKS-klustret och dess associerade resurser mellan Azure-prenumerationer.
 
@@ -154,7 +154,7 @@ Det finns inte stöd för att flytta AKS-klustret och dess associerade resurser 
 
 Det finns inte stöd för att flytta eller byta namn på ditt AKS-kluster och dess associerade resurser.
 
-## <a name="why-is-my-cluster-delete-taking-so-long"></a>Varför tar min kluster borttagning att ta lång tid? 
+## <a name="why-is-my-cluster-delete-taking-so-long"></a>Varför tar min kluster borttagning att ta lång tid?
 
 De flesta kluster tas bort vid användar förfrågan. i vissa fall, särskilt när kunder tar emot sin egen resurs grupp, eller om du utför RG uppgifter kan borttagningen ta ytterligare tid eller misslyckande. Om du har problem med borttagningarna måste du kontrol lera att du inte har lås på RG, att alla resurser utanför RG är kopplade till RG och så vidare.
 
@@ -166,7 +166,7 @@ Du kan, men AKS rekommenderar inte detta. Uppgraderingar bör utföras när klus
 
 Nej, ta bort/ta bort alla noder i ett felaktigt tillstånd eller ta bort dem från klustret innan du uppgraderar.
 
-## <a name="i-ran-a-cluster-delete-but-see-the-error-errno-11001-getaddrinfo-failed"></a>Jag har kört ett kluster borttagnings fel men ser felet `[Errno 11001] getaddrinfo failed` 
+## <a name="i-ran-a-cluster-delete-but-see-the-error-errno-11001-getaddrinfo-failed"></a>Jag har kört ett kluster borttagnings fel men ser felet `[Errno 11001] getaddrinfo failed`
 
 Oftast orsakas detta av användare som har en eller flera nätverks säkerhets grupper (NSG: er) som fortfarande används och som är kopplade till klustret.  Ta bort dem och försök att ta bort dem igen.
 
@@ -174,7 +174,7 @@ Oftast orsakas detta av användare som har en eller flera nätverks säkerhets g
 
 Bekräfta att tjänstens huvud namn inte har upphört att gälla.  Se: [AKS-tjänstens huvud namn](./kubernetes-service-principal.md) och [AKS uppdatera autentiseringsuppgifter](./update-credentials.md).
 
-## <a name="my-cluster-was-working-but-suddenly-cant-provision-loadbalancers-mount-pvcs-etc"></a>Mitt kluster fungerade men det går inte att etablera belastningsutjämnare, montera PVC: er osv. 
+## <a name="my-cluster-was-working-but-suddenly-cant-provision-loadbalancers-mount-pvcs-etc"></a>Mitt kluster fungerade men det går inte att etablera belastningsutjämnare, montera PVC: er osv.
 
 Bekräfta att tjänstens huvud namn inte har upphört att gälla.  Se: [AKS-tjänstens huvud namn](./kubernetes-service-principal.md)  och [AKS uppdatera autentiseringsuppgifter](./update-credentials.md).
 
@@ -254,6 +254,25 @@ Nedan visas ett exempel på en IP Route-installation av transparent läge, varje
 - Ett av hörn fallen i Bridge-läge är att Azure-CNI inte kan fortsätta uppdatera den anpassade DNS-servern som visar användare som ska läggas till i VNET eller NIC. Detta resulterar i att CNI-plockningen bara är den första instansen av listan DNS-server. Löst i transparent läge eftersom CNI inte ändrar några eth0-egenskaper. Läs mer [här](https://github.com/Azure/azure-container-networking/issues/713).
 - Ger bättre hantering av UDP-trafik och minskning av UDP-dataöversvämmade Storm när ARP-timeout. I Bridge-läge, när Bridge inte känner till en MAC-adress för mål Pod i pod-till-Pod-kommunikation i flera virtuella datorer, resulterar detta i storm av paketet på alla portar. Löst i transparent läge eftersom det inte finns några L2-enheter i sökvägen. Läs mer [här](https://github.com/Azure/azure-container-networking/issues/704).
 - Transparent läge fungerar bättre i intra VM Pod-to-Pod-kommunikation med avseende på data flöde och svars tid jämfört med Bridge-läge.
+
+## <a name="how-to-avoid-permission-ownership-setting-slow-issues-when-the-volume-has-a-lot-of-files"></a>Hur undviker du behörighets ägande inställningen långsamma problem när volymen har många filer?
+
+Traditionellt om din POD körs som en icke-rotkatalog (som du bör) måste du ange en `fsGroup` i säkerhets kontexten för Pod så att volymen kan läsas och skrivas av pod. Detta krav beskrivs mer detaljerat [här](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/).
+
+Men en sida-effekt `fsGroup` är att när en volym monteras måste Kubernetes rekursivt `chown()` och `chmod()` alla filer och kataloger i volymen – med några undantag anges nedan. Detta inträffar även om grupp ägarskapet för volymen redan matchar begärd `fsGroup` , och det kan vara dyrt för större volymer med många små filer, vilket gör att Pod-starten tar lång tid. Det här scenariot har varit ett känt problem före v-1.20 och lösningen ställer in Pod kör som-roten:
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: security-context-demo
+spec:
+  securityContext:
+    runAsUser: 0
+    fsGroup: 0
+```
+
+Problemet har lösts av Kubernetes v 1.20, se [Kubernetes 1,20: detaljerad kontroll av volym behörighets ändringar](https://kubernetes.io/blog/2020/12/14/kubernetes-release-1.20-fsgroupchangepolicy-fsgrouppolicy/) för mer information.
 
 
 <!-- LINKS - internal -->
