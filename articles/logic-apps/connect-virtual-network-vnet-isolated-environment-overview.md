@@ -3,19 +3,19 @@ title: Åtkomst till virtuella Azure-nätverk
 description: Översikt över hur integrerings tjänst miljöer (ISEs) hjälper Logic Apps åtkomst till Azure Virtual Networks (virtuella nätverk)
 services: logic-apps
 ms.suite: integration
-ms.reviewer: jonfan, logicappspm
+ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
-ms.date: 11/12/2020
-ms.openlocfilehash: 19c9ec39d85bfc56b118498aba62c3752d6d771c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.date: 01/11/2021
+ms.openlocfilehash: 7bb9c8552f673587891fde12e25d4fb899726c22
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95996329"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108576"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>Åtkomst till Azure Virtual Network-resurser från Azure Logic Apps med hjälp av integrerings tjänst miljöer (ISEs)
 
-Ibland behöver dina Logi Kap par åtkomst till skyddade resurser, till exempel virtuella datorer och andra system eller tjänster, som finns i eller är anslutna till ett [virtuellt Azure-nätverk](../virtual-network/virtual-networks-overview.md). Om du vill konfigurera den här åtkomsten kan du [skapa en *integrerings tjänst miljö* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment.md). En ISE är en instans av den Logic Apps tjänst som använder dedikerade resurser och körs separat från den "globala" Multi-Tenant Logic Apps-tjänsten.
+Ibland behöver dina Logi Kap par åtkomst till skyddade resurser, till exempel virtuella datorer och andra system eller tjänster, som finns i eller är anslutna till ett [virtuellt Azure-nätverk](../virtual-network/virtual-networks-overview.md). Om du vill konfigurera den här åtkomsten kan du [skapa en *integrerings tjänst miljö* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment.md). En ISE är en instans av den Logic Apps tjänst som använder dedikerade resurser och körs separat från den "globala" Multi-Tenant Logic Apps-tjänsten. Data i en ISE förblir i [samma region där du skapar och distribuerar denna ISE](https://azure.microsoft.com/global-infrastructure/data-residency/).
 
 Till exempel använder vissa virtuella Azure-nätverk privata slut punkter, som du kan konfigurera via en [privat Azure-länk](../private-link/private-link-overview.md), för att ge åtkomst till Azure PaaS-tjänster, till exempel Azure Storage, Azure Cosmos DB eller Azure SQL Database, partner tjänster eller kund tjänster som finns i Azure. Om dina Logi Kap par behöver åtkomst till virtuella nätverk som använder privata slut punkter, måste du skapa, distribuera och köra dessa Logic Apps i en ISE.
 
@@ -99,7 +99,7 @@ När du skapar din ISE kan du välja Developer SKU eller Premium SKU. Här följ
 
   Tillhandahåller en miljö med lägre kostnad som du kan använda för experimentering, utveckling och testning, men inte för produktions-eller prestanda testning. Developer SKU: n innehåller inbyggda utlösare och åtgärder, standard anslutningar, företags anslutningar och ett enda [kostnads fritt nivå](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits) integrations konto för ett fast månads pris. Detta SKU omfattar dock inte något service avtal (SLA), alternativ för att skala upp kapacitet eller redundans vid återvinning, vilket innebär att du kan uppleva fördröjningar eller drift stopp.
 
-* **Denaturering**
+* **Premium**
 
   Tillhandahåller en ISE som du kan använda för produktion och innehåller SLA-support, inbyggda utlösare och åtgärder, standard anslutningar, företags anslutningar, ett enda integrations konto på [Standard nivå](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits) , alternativ för att skala upp kapaciteten och redundans under återvinning för ett fast månads pris.
 

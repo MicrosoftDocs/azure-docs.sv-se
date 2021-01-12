@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 09/11/2018
 ms.author: kenwith
-ms.openlocfilehash: 714cbb06506cc3e0dffe74007712d9cbad072284
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: f873608d07785e6b99bd8e0fcdadf64a8899d490
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94655076"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108423"
 ---
 # <a name="troubleshoot-common-problem-adding-or-removing-an-application-to-azure-active-directory"></a>Felsök vanliga problem med att lägga till eller ta bort ett program i Azure Active Directory
 Den här artikeln hjälper dig att förstå vanliga problem när man lägger till eller tar bort en app för att Azure Active Directory.
@@ -43,7 +43,7 @@ Knappen Ta bort kommer att inaktive ras i följande scenarier:
 
 - För Microsoft-program kan du inte ta bort dem från användar gränssnittet oavsett vilken roll du har.
 
-- För service princip ALS som motsvarar en hanterad identitet. Tjänstens huvud namn för hanterade identiteter kan inte tas bort i bladet företags appar. Du måste gå till Azure-resursen för att hantera den. Radera mer om [hanterad identitet](../managed-identities-azure-resources/overview.md)
+- För service princip ALS som motsvarar en hanterad identitet. Tjänstens huvud namn för hanterade identiteter kan inte tas bort i bladet företags appar. Du måste gå till Azure-resursen för att hantera den. Läs mer om [hanterad identitet](../managed-identities-azure-resources/overview.md)
 
 ## <a name="how-to-see-the-details-of-a-portal-notification"></a>Så här visar du information om ett Portal meddelande
 Du kan se information om alla Portal meddelanden genom att följa stegen nedan:

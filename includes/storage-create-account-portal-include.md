@@ -5,19 +5,19 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 09/25/2020
+ms.date: 01/11/2021
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: f8959904482bda8dc26e4df626377027e1ab4bd1
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 3da4fd26b3f985e034ca60039c09412e8237e965
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005560"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98109448"
 ---
 Följ de här stegen för att skapa ett GPv2-konto för generell användning i Azure Portal:
 
-1. I menyn i Azure-portalen väljer du **Alla tjänster**. Skriv **lagringskonton** i listan över resurser. När du börjar skriva filtreras listan baserat på det du skriver. Välj **lagrings konton**.
+1. Välj **Alla tjänster** på menyn i Azure-portalen. Skriv **lagringskonton** i listan över resurser. När du börjar skriva filtreras listan baserat på det du skriver. Välj **lagrings konton**.
 1. På fönstret **lagringskonton** som visas, väljer du **lägg till**.
 1. På fliken **grundläggande** väljer du den prenumeration där du vill skapa lagrings kontot.
 1. Under fältet **resurs grupp** väljer du önskad resurs grupp eller skapar en ny resurs grupp.  Mer information om Azures resurs grupper finns i [Azure Resource Manager översikt](../articles/azure-resource-manager/management/overview.md).
@@ -26,8 +26,7 @@ Följ de här stegen för att skapa ett GPv2-konto för generell användning i A
 1. Välj en prestanda nivå. Standard nivån är *standard*.
 1. Ange fältet **Kontotyp** till *Storage v2 (General-Purpose v2)*.
 1. Ange hur lagrings kontot ska replikeras. Standard alternativet för replikering är *Read-Access Geo-redundant lagring (RA-GRS)*. Mer information om tillgängliga replikeringsalternativ finns [Azure Storage redundans](../articles/storage/common/storage-redundancy.md).
-1. Ange åtkomst nivå för blobbar i lagrings kontot. Standard nivån är *varm*. Mer information om BLOB Access-nivåer finns i frekventa, låg frekventa [och arkivera åtkomst nivåer för blobbar](../articles/storage/blobs/storage-blob-storage-tiers.md).
-1. Om du vill använda Azure Data Lake Storage väljer du fliken **Avancerat** och sedan ange **hierarkiskt namn område** till **aktive rad**. Mer information finns i [Azure Data Lake Storage Gen2 introduktion](../articles/storage/blobs/data-lake-storage-introduction.md)
+1. Fler alternativ finns på flikarna **nätverk**, **data skydd**, **Avancerat** och **taggar** . Om du vill använda Azure Data Lake Storage väljer du fliken **Avancerat** och sedan ange **hierarkiskt namn område** till **aktive rad**. Mer information finns i [Azure Data Lake Storage Gen2 introduktion](../articles/storage/blobs/data-lake-storage-introduction.md)
 1. Välj **Granska + skapa** för att granska inställningarna för ditt lagringskonto och skapa kontot.
 1. Välj **Skapa**.
 

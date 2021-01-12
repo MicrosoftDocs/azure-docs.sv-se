@@ -6,12 +6,12 @@ ms.date: 04/04/2020
 ms.topic: include
 ms.author: trbye
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 8eada631b7e1f632148993e586c70b6811cf9ac9
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.openlocfilehash: 0cb27a8dc5685ce295c2ce30820734c4301e9dc6
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98052732"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98109400"
 ---
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -72,8 +72,9 @@ Infoga den här koden under din `IntentRecognizer` . Se till att du ersätter `"
 I det här exemplet används `add_intents()` funktionen för att lägga till en lista med uttryckligen definierade syften. Använd och skicka modellen om du vill lägga till alla avsikter från en modell `add_all_intents(model)` .
 
 > [!NOTE]
-> Du kan skapa en LanguageUnderstandingModel genom att skicka en slut punkts-URL till FromEndpoint-metoden.
-> Tal-SDK stöder endast LUIS v 2.0-slut punkter och LUIS v 2.0-slutpunkter följer alltid ett av följande två mönster:
+> Tal-SDK stöder endast LUIS v 2.0-slut punkter.
+> Du måste manuellt ändra slutpunkts-URL: en för v 3.0 som påträffades i exempel fråga fältet för att använda ett v 2.0 URL-mönster.
+> LUIS v 2.0-slut punkter följer alltid ett av följande två mönster:
 > * `https://{AzureResourceName}.cognitiveservices.azure.com/luis/v2.0/apps/{app-id}?subscription-key={subkey}&verbose=true&q=`
 > * `https://{Region}.api.cognitive.microsoft.com/luis/v2.0/apps/{app-id}?subscription-key={subkey}&verbose=true&q=`
 

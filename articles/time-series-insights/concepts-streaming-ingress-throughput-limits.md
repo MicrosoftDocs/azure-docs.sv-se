@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/26/2020
 ms.custom: seodec18
-ms.openlocfilehash: c8be18049e6ae74a198f5885a46b70df581e0cd7
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 7496a7a40df49fa1b9f8410526cb9ec00c10478b
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187467"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108780"
 ---
 # <a name="streaming-ingestion-throughput-limits"></a>Data flödes gränser för strömning
 
@@ -34,7 +34,7 @@ Som standard kan Azure Time Series Insights Gen2 mata in inkommande data med en 
 
 > [!TIP]
 >
-> * Miljö stöd för att mata in hastigheter på upp till 8 Mbit/s kan tillhandahållas av begäran.
+> * Miljö stöd för att mata in hastigheter på upp till 2 Mbit/s kan tillhandahållas av begäran.
 > * Kontakta oss om du behöver mer data flöde genom att skicka ett support ärende via Azure Portal.
 
 * **Exempel 1:**
@@ -47,10 +47,10 @@ Som standard kan Azure Time Series Insights Gen2 mata in inkommande data med en 
 
 * **Exempel 2:**
 
-    Contoso flotta Analytics har 40 000 enheter som genererar en händelse varje sekund. De använder en Event Hub med ett antal partitioner på 2 som Azure Time Series Insights händelse källa för Gen2. Storleken på en händelse är 200 byte.
+    Contoso flotta Analytics har 10 000 enheter som genererar en händelse varje sekund. De använder en Event Hub med ett antal partitioner på 2 som Azure Time Series Insights händelse källa för Gen2. Storleken på en händelse är 200 byte.
 
-  * Miljöns utmatnings frekvens skulle vara: **40 000 enheter * 200 byte/event * 1 händelse/SEK = 8 Mbit/s**.
-    * Om du antar balanserade partitioner, blir deras per partition 4 Mbit/s.
+  * Miljöns utmatnings frekvens skulle vara: **10 000 enheter * 200 byte/event * 1 händelse/SEK = 2 Mbit/s**.
+    * Om du antar balanserade partitioner, blir deras per partitionerings hastighet 1 Mbit/s.
     * Contoso flottans analys "inmatnings takt är över miljön och partitionens gränser. De kan skicka en begäran om att Azure Time Series Insights Gen2 genom Azure Portal för att öka inmatnings takten för deras miljö, och skapa en Händelsehubben med fler partitioner som ligger inom gränserna.
 
 ## <a name="hub-partitions-and-per-partition-limits"></a>NAV partitioner och gränser per partition

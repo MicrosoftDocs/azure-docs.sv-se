@@ -9,12 +9,12 @@ ms.subservice: computer-vision
 ms.topic: include
 ms.date: 12/15/2020
 ms.author: pafarley
-ms.openlocfilehash: ea71cd4e235923c48c7c5b5269eb8f58d4c349d1
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: fc4830e89d71c387afc1c7bc7fbc81608dfeb592
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97560805"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98109547"
 ---
 <a name="HOLTop"></a>
 
@@ -43,6 +43,12 @@ Du kan installera klient biblioteket med:
 pip install --upgrade azure-cognitiveservices-vision-computervision
 ```
 
+Installera även Pillow-biblioteket.
+
+```console
+pip install pillow
+```
+
 ### <a name="create-a-new-python-application"></a>Skapa ett nytt Python-program
 
 Skapa en ny python-fil &mdash; *QuickStart-File.py*, till exempel. Öppna den sedan i önskat redigerings program eller IDE och importera följande bibliotek.
@@ -68,7 +74,7 @@ Skapa sedan variabler för resursens Azure-slutpunkt och nyckel.
 
 Följande klasser och gränssnitt hanterar några av de viktigaste funktionerna i Visuellt innehåll python SDK.
 
-|Name|Beskrivning|
+|Namn|Beskrivning|
 |---|---|
 |[ComputerVisionClientOperationsMixin](/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.operations.computervisionclientoperationsmixin?view=azure-python)| Den här klassen hanterar alla avbildnings åtgärder direkt, till exempel bild analys, text identifiering och generering av miniatyrer.|
 | [ComputerVisionClient](/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-python) | Den här klassen krävs för alla Visuellt innehåll-funktioner. Du instansierar det med din prenumerations information och använder den för att skapa instanser av andra klasser. Den implementerar **ComputerVisionClientOperationsMixin**.|
@@ -191,7 +197,7 @@ Hämta sedan det åtgärds-ID som returnerades från **Read** -anropet och Anvä
 > [!div class="nextstepaction"]
 > [Jag](?success=read-printed-handwritten-text#run-the-application) [fick ett problem](https://www.research.net/r/7QYZKHL?issue=read-printed-handwritten-text) med att läsa texten
 
-## <a name="run-the-application"></a>Köra appen
+## <a name="run-the-application"></a>Kör programmet
 
 Kör programmet med `python` kommandot på snabb starts filen.
 

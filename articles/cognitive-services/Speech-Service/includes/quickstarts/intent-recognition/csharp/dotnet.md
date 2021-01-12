@@ -7,12 +7,12 @@ ms.topic: include
 ms.author: trbye
 ms.custom: devx-track-csharp
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 885751bf4f11312453245a02209f77b62b8344a4
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.openlocfilehash: c14dfadfb7e8724c196b125e9b93c439fac249c3
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98052818"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98109371"
 ---
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -75,8 +75,9 @@ Du måste associera en `LanguageUnderstandingModel` med avsikts igenkänningen o
 I det här exemplet används `AddIntent()` funktionen för att individuellt lägga till avsikter. Använd och skicka modellen om du vill lägga till alla avsikter från en modell `AddAllIntents(model)` . 
 
 > [!NOTE]
-> Du kan skapa en LanguageUnderstandingModel genom att skicka en slut punkts-URL till FromEndpoint-metoden.
-> Tal-SDK stöder endast LUIS v 2.0-slut punkter och LUIS v 2.0-slutpunkter följer alltid ett av följande två mönster:
+> Tal-SDK stöder endast LUIS v 2.0-slut punkter.
+> Du måste manuellt ändra slutpunkts-URL: en för v 3.0 som påträffades i exempel fråga fältet för att använda ett v 2.0 URL-mönster.
+> LUIS v 2.0-slut punkter följer alltid ett av följande två mönster:
 > * `https://{AzureResourceName}.cognitiveservices.azure.com/luis/v2.0/apps/{app-id}?subscription-key={subkey}&verbose=true&q=`
 > * `https://{Region}.api.cognitive.microsoft.com/luis/v2.0/apps/{app-id}?subscription-key={subkey}&verbose=true&q=`
 

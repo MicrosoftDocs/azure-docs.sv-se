@@ -9,16 +9,36 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 09/10/2020
-ms.openlocfilehash: 1cc6c8cd49a2388ad66a276f4a1667b4c3ee3826
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 0ecf47ecdc66c0005f0d793d91a67af102fb1c76
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98070328"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98107913"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Viktig information om Azure Machine Learning
 
 I den här artikeln får du lära dig mer om Azure Machine Learning-versioner.  Information om fullständiga SDK-referenser finns på Azure Machine Learning huvud sidan [**för SDK för python**](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) -referens.
+
+
+ ## <a name="2021-01-11"></a>2021-01-11
+
+### <a name="azure-machine-learning-sdk-for-python-v1200"></a>Azure Machine Learning SDK för python v-1.20.0
++ **Fel korrigeringar och förbättringar**
+  + **Azure-CLI-ml**
+    + framework_version lagts till i OptimizationConfig. Den kommer att användas när modellen registreras med Framework MULTI.
+  + **azureml-automl-runtime**
+    + I den här uppdateringen har vi lagt till Holt vinter till Exponentiell utjämning till Prognosticering Toolbox i AutoML SDK. Med en viss tids serie är den bästa modellen vald av [AICc (korrigerade Akaike)](https://otexts.com/fpp3/selecting-predictors.html#selecting-predictors) och returneras.
+  + **azureml – contrib-optimering**
+    + framework_version lagts till i OptimizationConfig. Den kommer att användas när modellen registreras med Framework MULTI.
+  + **azureml-pipeline-steps**
+    + Vi presenterar CommandStep som tar kommandot att bearbeta. Kommandot kan innehålla körbara filer, gränssnitts kommandon, skript osv.
+  + **azureml-core**
+    + Nu har du skapat en arbets yta som stöder användarens tilldelade identitet. Lägga till UAI-stöd från SDK/CLI
+    + Åtgärdat problem för tjänsten. load () för att hämta ändringar på score.py i lokal distribution.
+    + `run.get_details()` innehåller ett extra fält med namnet "submittedBy" som visar författarens namn för den här körningen.
+    + Redigerad modell. registrera metod dokumentation för att ange hur modellen ska registreras från att köras direkt
+   
 
 ## <a name="2020-12-31"></a>2020-12-31
 ### <a name="azure-machine-learning-studio-notebooks-experience-december-update"></a>Azure Machine Learning Studio Notebooks Experience (december-uppdatering)
@@ -31,6 +51,7 @@ I den här artikeln får du lära dig mer om Azure Machine Learning-versioner.  
   + Förbättrade sid inläsnings tider
   + Förbättrade prestanda 
   + Förbättrad hastighet och kernel-tillförlitlighet
+
   
 ## <a name="2020-12-07"></a>2020-12-07
 

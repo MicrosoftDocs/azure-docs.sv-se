@@ -12,19 +12,21 @@ ms.reviewer: nibaccam
 ms.date: 07/31/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: 8b95c5a45992c895713e0be056856172b14b830d
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 52b52c4c19b22fb1afd76d1e8dfa4163326c0244
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97740682"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108598"
 ---
 # <a name="train-with-datasets-in-azure-machine-learning"></a>Träna med data uppsättningar i Azure Machine Learning
 
 
-I den här artikeln får du lära dig hur du arbetar med [Azure Machine Learning data uppsättningar](/python/api/azureml-core/azureml.core.dataset%28class%29?preserve-view=true&view=azure-ml-py) i dina utbildnings experiment.  Du kan använda data uppsättningar i det lokala eller fjärranslutna beräknings målet utan att behöva oroa dig om anslutnings strängar eller data Sök vägar.
+I den här artikeln får du lära dig hur du arbetar med [Azure Machine Learning data uppsättningar](/python/api/azureml-core/azureml.core.dataset%28class%29?preserve-view=true&view=azure-ml-py) för att träna maskin inlärnings modeller.  Du kan använda data uppsättningar i det lokala eller fjärranslutna beräknings målet utan att behöva oroa dig om anslutnings strängar eller data Sök vägar. 
 
 Azure Machine Learning data uppsättningar ger en sömlös integrering med Azure Machine Learning inlärnings funktioner som [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py), [HyperDrive](/python/api/azureml-train-core/azureml.train.hyperdrive?preserve-view=true&view=azure-ml-py) och [Azure Machine Learning pipelines](how-to-create-your-first-pipeline.md).
+
+Om du inte är redo att göra dina data tillgängliga för modell utbildning, men vill läsa in data till din bärbara dator för data utforskning, se så här [utforskar du data i din data uppsättning](how-to-create-register-datasets.md#explore-data). 
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -34,7 +36,7 @@ För att skapa och träna med data uppsättningar behöver du:
 
 * En [Azure Machine Learning-arbetsyta](how-to-manage-workspace.md).
 
-* [Azure Machine Learning SDK för python installerat](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py) (>= 1.13.0), som innehåller paketet azureml-data uppsättningar.
+* [Azure Machine Learning SDK för python installerat](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py) (>= 1.13.0), som innehåller `azureml-datasets` paketet.
 
 > [!Note]
 > Vissa data uppsättnings klasser är beroende av [azureml-nu-](/python/api/azureml-dataprep/?preserve-view=true&view=azure-ml-py) paketet. För Linux-användare stöds dessa klasser endast för följande distributioner: Red Hat Enterprise Linux, Ubuntu, Fedora och CentOS.
@@ -65,7 +67,7 @@ Följande kod konfigurerar ett skript argument `--input-data` som du anger när 
 > [!Note]
 > Om den ursprungliga data källan innehåller NaN, tomma strängar eller tomma värden, `to_pandas_dataframe()` ersätts dessa värden som ett *Null* -värde.
 
-Om du behöver läsa in de data som för bereddes i en ny data uppsättning från en minnes intern Pandas-dataframe skriver du data till en lokal fil, t. ex. en Parquet och skapar en ny data uppsättning från den filen. Du kan också skapa data uppsättningar från lokala filer eller sökvägar i data lager. Läs mer om [hur du skapar data uppsättningar](how-to-create-register-datasets.md).
+Om du behöver läsa in de data som för bereddes i en ny data uppsättning från en minnes intern Pandas-dataframe skriver du data till en lokal fil, t. ex. en Parquet och skapar en ny data uppsättning från den filen. Läs mer om [hur du skapar data uppsättningar](how-to-create-register-datasets.md).
 
 ```Python
 %%writefile $script_folder/train_titanic.py

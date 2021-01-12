@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/14/2020
+ms.date: 01/11/2021
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 6648cfb717ade4b842e8ff470a46bf744b630363
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 580ec0761c997a0ee7611f7104aa48650c8573e7
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88612324"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98107420"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Microsoft Identity Platform och OAuth 2,0 Authorization Code Flow
 
@@ -58,7 +58,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &response_type=code
 &redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 &response_mode=query
-&scope=openid%20offline_access%20https%3A%2F%2Fgraph.microsoft.com%2Fmail.read
+&scope=https%3A%2F%2Fgraph.microsoft.com%2Fmail.read%20api%3A%2F%2F
 &state=12345
 &code_challenge=YTFjNjI1OWYzMzA3MTI4ZDY2Njg5M2RkNmVjNDE5YmEyZGRhOGYyM2IzNjdmZWFhMTQ1ODg3NDcxY2Nl
 &code_challenge_method=S256
@@ -72,10 +72,10 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 |--------------|-------------|--------------|
 | `tenant`    | krävs    | `{tenant}`Värdet i sökvägen till begäran kan användas för att styra vem som kan logga in på programmet. De tillåtna värdena är `common` , `organizations` , `consumers` och klient-ID: n. Mer information finns i [grunderna om protokoll](active-directory-v2-protocols.md#endpoints).  |
 | `client_id`   | krävs    | **Program-ID: t (klienten)** som [Azure Portal – Appregistreringar](https://go.microsoft.com/fwlink/?linkid=2083908) -upplevelsen som har tilldelats din app.  |
-| `response_type` | krävs    | Måste innehålla `code` för flödet av auktoriseringskod.       |
+| `response_type` | krävs    | Måste innehålla `code` för flödet av auktoriseringskod. Kan även innehålla `id_token` eller `token` om du använder [hybrid flödet](#request-an-id-token-as-well-hybrid-flow). |
 | `redirect_uri`  | krävs | Appens redirect_uri, där autentiserings svar kan skickas och tas emot av din app. Det måste exakt matcha ett av de redirect_uris som du registrerade i portalen, förutom att det måste vara URL-kodat. Använd standardvärdet för interna & mobila appar `https://login.microsoftonline.com/common/oauth2/nativeclient` .   |
 | `scope`  | krävs    | En blankstegsavgränsad lista med [omfattningar](v2-permissions-and-consent.md) som du vill att användaren ska godkänna.  För en del `/authorize` av begäran kan detta avse flera resurser, så att din app får tillåtelse för flera webb-API: er som du vill anropa. |
-| `response_mode`   | rekommenderas | Anger den metod som ska användas för att skicka den resulterande token tillbaka till din app. Kan vara något av följande:<br/><br/>- `query`<br/>- `fragment`<br/>- `form_post`<br/><br/>`query` innehåller koden som en frågesträngparametern i omdirigerings-URI: n. Om du begär en ID-token med det implicita flödet kan du inte använda `query` enligt vad som anges i [OpenID-specifikationen](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations). Om du bara begär koden kan du använda `query` , `fragment` , eller `form_post` . `form_post` kör ett inlägg som innehåller koden för omdirigerings-URI: n. Mer information finns i [OpenID Connect-protokollet](../azuread-dev/v1-protocols-openid-connect-code.md).  |
+| `response_mode`   | rekommenderas | Anger den metod som ska användas för att skicka den resulterande token tillbaka till din app. Kan vara något av följande:<br/><br/>- `query`<br/>- `fragment`<br/>- `form_post`<br/><br/>`query` innehåller koden som en frågesträngparametern i omdirigerings-URI: n. Om du begär en ID-token med det implicita flödet kan du inte använda `query` enligt vad som anges i [OpenID-specifikationen](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations). Om du bara begär koden kan du använda `query` , `fragment` , eller `form_post` . `form_post` kör ett inlägg som innehåller koden för omdirigerings-URI: n. |
 | `state`                 | rekommenderas | Ett värde som ingår i begäran som också kommer att returneras i svaret från token. Det kan vara en sträng med innehåll som du vill. Ett slumpmässigt genererat unikt värde används vanligt vis för [att förhindra förfalsknings attacker på begäran](https://tools.ietf.org/html/rfc6749#section-10.12)från en annan plats. Värdet kan också koda information om användarens tillstånd i appen innan autentiseringsbegäran inträffade, t. ex. sidan eller vyn de var på. |
 | `prompt`  | valfri    | Anger vilken typ av användar interaktion som krävs. De enda giltiga värdena för tillfället är `login` , `none` och `consent` .<br/><br/>- `prompt=login` tvingar användaren att ange sina autentiseringsuppgifter för den begäran och negera enkel inloggning.<br/>- `prompt=none` är motsatt – det ser till att användaren inte visas med interaktiva prompter. Om begäran inte kan slutföras i bakgrunden via enkel inloggning, returnerar slut punkten för Microsoft Identity Platform ett `interaction_required` fel.<br/>- `prompt=consent` utlöser dialog rutan OAuth-medgivande när användaren loggar in och ber användaren att bevilja behörighet till appen.<br/>- `prompt=select_account` avbryter enkel inloggning med konto val som visar alla konton antingen i en session eller ett Sparad konto eller ett alternativ för att välja att använda ett annat konto helt och hållet.<br/> |
 | `login_hint`  | valfri    | Kan användas för att fylla i fältet användar namn/e-postadress på inloggnings sidan för användaren, om du känner till användar namnet i förväg. Appar kommer ofta att använda den här parametern under omautentiseringen och har redan extraherat användar namnet från en tidigare inloggning med hjälp av `preferred_username` anspråket.   |
@@ -103,7 +103,7 @@ code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...
 | `code` | Den authorization_code som appen begärde. Appen kan använda auktoriseringskod för att begära en åtkomsttoken för mål resursen. Authorization_codes är korta livs längd, vanligt vis upphör de efter cirka 10 minuter. |
 | `state` | Om en tillstånds parameter ingår i begäran ska samma värde visas i svaret. Appen bör kontrol lera att tillstånds värden i begäran och svaret är identiska. |
 
-Du kan också få en åtkomsttoken och ID-token om du begär ett och har den implicita tilldelningen aktive rad i din program registrering.  Detta kallas ibland för "hybrid Flow" och används av ramverk som ASP.NET.
+Du kan också få en ID-token om du begär en och har den implicita tilldelningen aktive rad i din program registrering.  Detta kallas ibland för ["hybrid Flow"](#request-an-id-token-as-well-hybrid-flow)och används av ramverk som ASP.net.
 
 #### <a name="error-response"></a>Fel svar
 
@@ -129,12 +129,59 @@ I följande tabell beskrivs de olika fel koderna som kan returneras i `error` pa
 | `invalid_request` | Protokoll fel, till exempel en obligatorisk parameter som saknas. | Åtgärda och skicka begäran på nytt. Detta är ett utvecklings fel som vanligt vis fångas under den första testningen. |
 | `unauthorized_client` | Klient programmet får inte begära en auktoriseringskod. | Det här felet uppstår vanligt vis när klient programmet inte är registrerat i Azure AD eller inte har lagts till i användarens Azure AD-klient. Programmet kan uppmana användaren att ange instruktioner för att installera programmet och lägga till det i Azure AD. |
 | `access_denied`  | Resurs ägare nekade medgivande  | Klient programmet kan meddela användaren att den inte kan fortsätta om inte användaren samtycks. |
-| `unsupported_response_type` | Auktoriseringsservern stöder inte svars typen i begäran. | Åtgärda och skicka begäran på nytt. Detta är ett utvecklings fel som vanligt vis fångas under den första testningen.  |
+| `unsupported_response_type` | Auktoriseringsservern stöder inte svars typen i begäran. | Åtgärda och skicka begäran på nytt. Detta är ett utvecklings fel som vanligt vis fångas under den första testningen. När du ser i [hybrid flödet](#request-an-id-token-as-well-hybrid-flow)signalerar du att du måste aktivera inställningen för implicit beviljande av ID-token i klient appens registrering. |
 | `server_error`  | Ett oväntat fel uppstod i servern.| Gör om begäran. Dessa fel kan orsakas av tillfälliga förhållanden. Klient programmet kan förklara för användaren att svaret är försenat med ett tillfälligt fel. |
 | `temporarily_unavailable`   | Servern är tillfälligt upptagen och kan inte hantera begäran. | Gör om begäran. Klient programmet kan förklara för användaren att dess svar är fördröjt på grund av ett tillfälligt tillstånd. |
 | `invalid_resource`  | Mål resursen är ogiltig eftersom den inte finns, det går inte att hitta den i Azure AD, eller så är den inte korrekt konfigurerad. | Det här felet anger att resursen, om den finns, inte har kon figurer ATS i klient organisationen. Programmet kan uppmana användaren att ange instruktioner för att installera programmet och lägga till det i Azure AD. |
 | `login_required` | För många eller inga användare hittades | Klienten begärde tyst autentisering ( `prompt=none` ), men en enskild användare kunde inte hittas. Detta kan betyda att flera användare är aktiva i sessionen eller inga användare. Detta tar hänsyn till den klient som valts (till exempel om det finns två Azure AD-konton aktiva och en Microsoft-konto, och `consumers` väljs, så fungerar tyst autentisering). |
 | `interaction_required` | Begäran kräver användar interaktion. | Ytterligare ett steg eller ett tillstånd för autentisering krävs. Gör om begäran utan `prompt=none` . |
+
+### <a name="request-an-id-token-as-well-hybrid-flow"></a>Begär en ID-token även (hybrid flöde)
+
+För att ta reda på vem användaren är innan du löser in en auktoriseringskod är det vanligt att program också begär en ID-token när de begär auktoriseringskod. Detta kallas för *hybrid flödet* eftersom det blandar den implicita tilldelningen med auktoriseringskod-flödet. Hybrid flödet används ofta i webbappar som vill återge en sida för en användare utan att blockera kod inlösen, särskilt [ASP.net](quickstart-v2-aspnet-core-webapp.md). Både appar med en enda sida och traditionella webbappar drar nytta av minskad svars tid i den här modellen.
+
+Hybrid flödet är detsamma som det kod flöde som beskrivits tidigare men med tre tillägg, vilket krävs för att begära en ID-token: nya omfattningar, en ny response_type och en ny `nonce` frågeparameter.
+
+```
+// Line breaks for legibility only
+
+https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize?
+client_id=6731de76-14a6-49ae-97bc-6eba6914391e
+&response_type=code%20id_token
+&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
+&response_mode=fragment
+&scope=openid%20offline_access%20https%3A%2F%2Fgraph.microsoft.com%2Fuser.read
+&state=12345
+&nonce=abcde
+&code_challenge=YTFjNjI1OWYzMzA3MTI4ZDY2Njg5M2RkNmVjNDE5YmEyZGRhOGYyM2IzNjdmZWFhMTQ1ODg3NDcxY2Nl
+&code_challenge_method=S256
+```
+
+| Uppdaterad parameter | Obligatorisk/valfri | Beskrivning |
+|---------------|-------------|--------------|
+|`response_type`| Krävs | Tillägget av `id_token` indikerar till den server som programmet vill ha en ID-token i svaret från `/authorize` slut punkten.  |
+|`scope`| Krävs | För ID-token måste uppdateras för att inkludera token för ID-token – och `openid` eventuellt `profile` och `email` . |
+|`nonce`| Krävs|     Ett värde som ingår i begäran, som genereras av appen, som kommer att ingå i den resulterande id_token som ett anspråk. Appen kan sedan verifiera det här värdet för att minimera omuppspelning av token. Värdet är vanligt vis en slumpmässig, unik sträng som kan användas för att identifiera ursprunget för begäran. |
+|`response_mode`| Rekommenderas | Anger den metod som ska användas för att skicka den resulterande token tillbaka till din app. Som standard `query` bara för en auktoriseringskod, men `fragment` om begäran innehåller en id_token `response_type` .|
+
+Användning av `fragment` som ett svars läge kan orsaka problem för webbappar som läser koden från omdirigeringen, eftersom webbläsare inte skickar fragmentet till webb servern.  I sådana fall rekommenderas appar att använda `form_post` svars läget för att säkerställa att alla data skickas till servern. 
+
+#### <a name="successful-response"></a>Lyckat svar
+
+Ett lyckat svar med `response_mode=fragment` ser ut så här:
+
+```HTTP
+GET https://login.microsoftonline.com/common/oauth2/nativeclient#
+code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...
+&id_token=eYj...
+&state=12345
+```
+
+| Parameter | Beskrivning  |
+|-----------|--------------|
+| `code` | Den auktoriseringskod som appen begärde. Appen kan använda auktoriseringskod för att begära en åtkomsttoken för mål resursen. Auktoriseringskod är kort livs längd, vanligt vis upphör att gälla efter cirka 10 minuter. |
+| `id_token` | En ID-token för användaren som utfärdats via *implicit beviljande*. Innehåller ett särskilt `c_hash` anspråk som är hash för `code` i samma begäran. |
+| `state` | Om en tillstånds parameter ingår i begäran ska samma värde visas i svaret. Appen bör kontrol lera att tillstånds värden i begäran och svaret är identiska. |
 
 ## <a name="request-an-access-token"></a>Begära åtkomsttoken
 
@@ -167,7 +214,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `scope`      | valfri   | En blankstegsavgränsad lista över omfång. Omfattningarna måste allt från en enda resurs, tillsammans med OIDC-scope ( `profile` , `openid` , `email` ). En mer detaljerad förklaring av omfattningar finns i [behörigheter, medgivande och omfattningar](v2-permissions-and-consent.md). Detta är ett Microsoft-tillägg till Authorization Code Flow, som är avsett att tillåta appar att deklarera den resurs som de vill ha token för under token inlösen.|
 | `code`          | krävs  | Authorization_code som du har köpt i den första delen av flödet. |
 | `redirect_uri`  | krävs  | Samma redirect_uri värde som användes för att hämta authorization_code. |
-| `client_secret` | krävs för konfidentiella webbappar | Den program hemlighet som du skapade i appens registrerings Portal för din app. Du bör inte använda program hemligheten i en inbyggd app eller en app på en enskild sida eftersom client_secrets inte kan lagras på ett tillförlitligt sätt på enheter eller på webb sidor. Det krävs för webbappar och webb-API: er, som kan lagra client_secret säkert på Server sidan.  Klient hemligheten måste vara URL-kodad innan den kan skickas. Mer information om URI-kodning finns i [specifikation för URI-generisk syntax](https://tools.ietf.org/html/rfc3986#page-12). |
+| `client_secret` | krävs för konfidentiella webbappar | Den program hemlighet som du skapade i appens registrerings Portal för din app. Du bör inte använda program hemligheten i en inbyggd app eller en app på en enskild sida eftersom client_secrets inte kan lagras på ett tillförlitligt sätt på enheter eller på webb sidor. Det krävs för webbappar och webb-API: er, som kan lagra client_secret säkert på Server sidan.  Precis som för alla parametrar som beskrivs här måste klient hemligheten vara URL-kodad innan de skickas, ett steg som vanligt vis utförs av SDK. Mer information om URI-kodning finns i [specifikation för URI-generisk syntax](https://tools.ietf.org/html/rfc3986#page-12). |
 | `code_verifier` | rekommenderas  | Samma code_verifier som användes för att hämta authorization_code. Krävs om PKCE användes i begäran om beviljande av auktoriseringskod. Mer information finns i [PKCE RFC](https://tools.ietf.org/html/rfc7636). |
 
 ### <a name="successful-response"></a>Lyckat svar

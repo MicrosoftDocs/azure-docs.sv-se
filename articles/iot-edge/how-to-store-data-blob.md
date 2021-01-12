@@ -8,12 +8,12 @@ ms.date: 12/13/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: e1031df9f305015048de7f708123a51875776e1b
-ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
+ms.openlocfilehash: 2ee4e313366bafdd2f6e3bd0e104abd9f11b7776
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97760596"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108678"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge"></a>Lagra data på gränsen med Azure Blob Storage på IoT Edge
 
@@ -110,7 +110,7 @@ $creds = Get-Credential
 New-SmbGlobalMapping -RemotePath <remote SMB path> -Credential $creds -LocalPath <Any available drive letter>
 ```
 
-Exempel:
+Till exempel:
 
 ```powershell
 $creds = Get-Credential
@@ -136,7 +136,7 @@ sudo chown -R 11000:11000 <blob-dir>
 sudo chmod -R 700 <blob-dir>
 ```
 
-Exempel:
+Till exempel:
 
 ```terminal
 sudo chown -R 11000:11000 /srv/containerdata
@@ -195,7 +195,7 @@ Följande snabb starts exempel använder språk som också stöds av IoT Edge, s
 
 ## <a name="connect-to-your-local-storage-with-azure-storage-explorer"></a>Ansluta till din lokala lagrings plats med Azure Storage Explorer
 
-Du kan använda [Azure Storage Explorer](https://github.com/microsoft/AzureStorageExplorer/releases/tag/v1.14.2) för att ansluta till ditt lokala lagrings konto.
+Du kan använda [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) för att ansluta till ditt lokala lagrings konto.
 
 1. Ladda ned och installera Azure Storage Explorer
 

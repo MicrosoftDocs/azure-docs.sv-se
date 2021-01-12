@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
-ms.date: 11/16/2020
-ms.openlocfilehash: aaf0374bcafdb91f316b7133de1c2d019b12b285
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.date: 12/18/2020
+ms.openlocfilehash: 091af70383eb3cab32a0453d7f7542d8a4395d0b
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302866"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98107403"
 ---
 # <a name="introduction-to-listing-options"></a>Introduktion till List alternativ
 
@@ -26,21 +26,23 @@ När du skapar en erbjudande typ väljer du ett eller flera List alternativ. De 
 
 Den här tabellen visar vilka List alternativ som är tillgängliga för varje erbjudande typ.
 
-| Erbjudandetyp | Kostnadsfri utvärdering | Test Drive | Kontakta mig | Hämta nu (Transactable) |
+| Erbjudandetyp | Kostnadsfri utvärdering | Test Drive | Kontakta mig | Hämta nu `*` |
 | ------------ | ------------- | ------------- | ------------- | ------------- |
 | Azure Application (hanterad app) |   | &#10004; |   | &#10004; |
-| Azure Application (lösnings mal len) |  |  |  |  |
+| Azure Application (lösnings mal len) |  |  |  | &#10004; |
 | Konsult tjänst |  |  | &#10004; |  |
-| Azure-behållare |  |  |  |  |
-| Dynamics 365 Business Central | &#10004; | &#10004; | &#10004; |  |
-| Dynamics 365 kund engagemang & PowerApps | &#10004; | &#10004; | &#10004; |  |
-| Dynamics 365 för åtgärder | &#10004; | &#10004; | &#10004; |  |
-| IoT Edge modul |  |  |  |  |
-| Hanterad tjänst |  |  |  |  |
-| Power BI-app |  |  |  |  |
+| Azure-behållare |  |  |  | &#10004; |
+| Dynamics 365 Business Central | &#10004; | &#10004; | &#10004; | &#10004; |
+| Dynamics 365 kund engagemang & PowerApps | &#10004; | &#10004; | &#10004; | &#10004; |
+| Dynamics 365 för åtgärder | &#10004; | &#10004; | &#10004; | &#10004; |
+| IoT Edge modul |  |  |  | &#10004; |
+| Hanterad tjänst |  |  |  | &#10004; |
+| Power BI-app |  |  |  | &#10004; |
 | Virtuell Azure-dator | &#10004; | &#10004; |  | &#10004; |
 | Programvara som en tjänst | &#10004; | &#10004; | &#10004; | &#10004; |
 ||||||
+
+`*` Alternativet Hämta IT-lista innehåller nu (kostnads fri), ta med din egen licens (BYOL), prenumeration och användnings baserat pris. Mer information finns i [Hämta nu](#get-it-now).
 
 ### <a name="free-trial"></a>Kostnadsfri utvärdering
 

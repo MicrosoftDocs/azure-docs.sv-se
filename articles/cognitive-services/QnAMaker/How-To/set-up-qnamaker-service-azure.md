@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 5af4eb931015e386e35470f2b36341e15f76150f
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: af9087f0dd45212ec88b620dcd965c895b86bbce
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98065413"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108200"
 ---
 # <a name="manage-qna-maker-resources"></a>Hantera QnA Maker resurser
 
@@ -135,7 +135,7 @@ App Service-miljön (ASE) kan användas för att vara värd för QnA Maker app s
     * Kontrol lera konfigurationen för app service och Lägg till "PrimaryEndpointKey" som en program inställning. Värdet för ' PrimaryEndpointKey ' ska vara inställt på " \<app-name\> -PrimaryEndpointKey". Appens namn definieras i App Service-URL: en. Om App Service-URL: en till exempel är "mywebsite.myase.p.azurewebsite.net" är App-Name "min webbplats". I det här fallet ska värdet för ' PrimaryEndpointKey ' anges till "Website-PrimaryEndpointKey".
     * Skapa en Azure Search-tjänst.
     * Se till att Azure Search-och appinställningar har kon figurer ATS korrekt. 
-      Följ den här [självstudien](https://docs.microsoft.com/azure/cognitiveservices/qnamaker/reference-app-service#app-service).
+      Följ den här [självstudien](https://docs.microsoft.com/azure/cognitive-services/qnamaker/reference-app-service?tabs=v1#app-service).
 3.  Uppdatera nätverks säkerhets gruppen som är kopplad till App Service-miljön
     * Uppdatera i förväg skapade inkommande säkerhets regler enligt dina krav.
     * Lägg till en ny inkommande säkerhets regel med källan som service tag och käll tjänst tag gen som ' CognitiveServicesManagement '.

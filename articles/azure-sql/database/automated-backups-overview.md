@@ -11,12 +11,12 @@ author: shkale-msft
 ms.author: shkale
 ms.reviewer: mathoma, stevestein, danil
 ms.date: 11/18/2020
-ms.openlocfilehash: c6754e6f0e3f0d6208bd34c96c8bc473429c943c
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: e4917d03e3c0fb8109f9ad9bdcea9e7c1cdcd5df
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94917910"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108083"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>Automatiserade säkerhets kopieringar – Azure SQL Database & SQL-hanterad instans
 
@@ -72,11 +72,11 @@ Du kan prova att säkerhetskopiera konfigurationen och återställnings åtgärd
 
 | Åtgärd | Azure Portal | Azure PowerShell |
 |---|---|---|
-| **Ändra kvarhållning av säkerhets kopior** | [SQL Database](automated-backups-overview.md?tabs=single-database#change-the-pitr-backup-retention-period-by-using-the-azure-portal) <br/> [SQL-hanterad instans](automated-backups-overview.md?tabs=managed-instance#change-the-pitr-backup-retention-period-by-using-the-azure-portal) | [SQL Database](automated-backups-overview.md#change-the-pitr-backup-retention-period-by-using-powershell) <br/>[SQL-hanterad instans](/powershell/module/az.sql/set-azsqlinstancedatabasebackupshorttermretentionpolicy) |
-| **Ändra långsiktig kvarhållning av säkerhets kopior** | [SQL Database](long-term-backup-retention-configure.md#configure-long-term-retention-policies)<br/>SQL-hanterad instans-saknas  | [SQL Database](long-term-backup-retention-configure.md)<br/>[SQL-hanterad instans](../managed-instance/long-term-backup-retention-configure.md)  |
-| **Återställa en databas från en tidpunkt** | [SQL Database](recovery-using-backups.md#point-in-time-restore)<br>[SQL-hanterad instans](../managed-instance/point-in-time-restore.md) | [SQL Database](/powershell/module/az.sql/restore-azsqldatabase) <br/> [SQL-hanterad instans](/powershell/module/az.sql/restore-azsqlinstancedatabase) |
-| **Återställa en borttagen databas** | [SQL Database](recovery-using-backups.md)<br>[SQL-hanterad instans](../managed-instance/point-in-time-restore.md#restore-a-deleted-database) | [SQL Database](/powershell/module/az.sql/get-azsqldeleteddatabasebackup) <br/> [SQL-hanterad instans](/powershell/module/az.sql/get-azsqldeletedinstancedatabasebackup)|
-| **Återställa en databas från Azure Blob Storage** | SQL Database-saknas <br/>SQL-hanterad instans-saknas  | SQL Database-saknas <br/>[SQL-hanterad instans](../managed-instance/restore-sample-database-quickstart.md) |
+| **Ändra kvarhållning av säkerhets kopior** | [SQL Database](automated-backups-overview.md?tabs=single-database#change-the-pitr-backup-retention-period-by-using-the-azure-portal) <br/> [SQL Managed Instance](automated-backups-overview.md?tabs=managed-instance#change-the-pitr-backup-retention-period-by-using-the-azure-portal) | [SQL Database](automated-backups-overview.md#change-the-pitr-backup-retention-period-by-using-powershell) <br/>[SQL Managed Instance](/powershell/module/az.sql/set-azsqlinstancedatabasebackupshorttermretentionpolicy) |
+| **Ändra långsiktig kvarhållning av säkerhets kopior** | [SQL Database](long-term-backup-retention-configure.md#configure-long-term-retention-policies)<br/>SQL-hanterad instans-saknas  | [SQL Database](long-term-backup-retention-configure.md)<br/>[SQL Managed Instance](../managed-instance/long-term-backup-retention-configure.md)  |
+| **Återställa en databas från en tidpunkt** | [SQL Database](recovery-using-backups.md#point-in-time-restore)<br>[SQL Managed Instance](../managed-instance/point-in-time-restore.md) | [SQL Database](/powershell/module/az.sql/restore-azsqldatabase) <br/> [SQL Managed Instance](/powershell/module/az.sql/restore-azsqlinstancedatabase) |
+| **Återställa en borttagen databas** | [SQL Database](recovery-using-backups.md)<br>[SQL Managed Instance](../managed-instance/point-in-time-restore.md#restore-a-deleted-database) | [SQL Database](/powershell/module/az.sql/get-azsqldeleteddatabasebackup) <br/> [SQL Managed Instance](/powershell/module/az.sql/get-azsqldeletedinstancedatabasebackup)|
+| **Återställa en databas från Azure Blob Storage** | SQL Database-saknas <br/>SQL-hanterad instans-saknas  | SQL Database-saknas <br/>[SQL Managed Instance](../managed-instance/restore-sample-database-quickstart.md) |
 
 ## <a name="backup-scheduling"></a>Schemalägg säkerhets kopiering
 
@@ -122,7 +122,7 @@ Lagrings förbrukningen för säkerhets kopiering upp till den maximala data sto
 
 ## <a name="backup-retention"></a>Kvarhållningsperiod för säkerhetskopior
 
-För alla nya, återställda och kopierade databaser behåller Azure SQL Database och Azure SQL-hanterade instanser tillräckligt med säkerhets kopior för att tillåta PITR inom de senaste 7 dagarna som standard. Med undantag för storskaliga databaser kan du [ändra kvarhållningsperioden för säkerhets kopior](#change-the-pitr-backup-retention-period) per aktiv databas inom intervallet 1-35 dag. Som det beskrivs i [säkerhets kopierings lagrings förbrukningen](#backup-storage-consumption)kan säkerhets kopior som lagras för att aktivera PITR vara äldre än kvarhållningsperioden. Endast för Azure SQL-hanterad instans är det möjligt att ange PITR säkerhets kopierings frekvens när en databas har tagits bort inom intervallet 0-35 dagar. 
+För alla nya, återställda och kopierade databaser behåller Azure SQL Database och Azure SQL-hanterade instanser tillräckligt med säkerhets kopior för att tillåta PITR inom de senaste 7 dagarna som standard. Med undantag för storskaliga och Basic-nivå databaser kan du [ändra kvarhållningsperioden för säkerhets kopior](#change-the-pitr-backup-retention-period) per aktiv databas inom intervallet 1-35 dag. Som det beskrivs i [säkerhets kopierings lagrings förbrukningen](#backup-storage-consumption)kan säkerhets kopior som lagras för att aktivera PITR vara äldre än kvarhållningsperioden. Endast för Azure SQL-hanterad instans är det möjligt att ange PITR säkerhets kopierings frekvens när en databas har tagits bort inom intervallet 0-35 dagar. 
 
 Om du tar bort en databas behåller systemet säkerhets kopior på samma sätt som en online-databas med den angivna kvarhållningsperioden. Det går inte att ändra kvarhållningsperioden för säkerhets kopior för en borttagen databas.
 
@@ -237,7 +237,7 @@ Om du vill ändra kvarhållning av PITR för aktiva databaser med hjälp av Azur
 
 ![Ändra PITR-kvarhållning, server nivå](./media/automated-backups-overview/configure-backup-retention-sqldb.png)
 
-#### <a name="sql-managed-instance"></a>[SQL-hanterad instans](#tab/managed-instance)
+#### <a name="sql-managed-instance"></a>[SQL Managed Instance](#tab/managed-instance)
 
 Ändringar av PITR för säkerhets kopiering för SQL Managed instance görs på en enskild databas nivå. Om du vill ändra PITR för säkerhets kopiering för en instans databas från Azure Portal går du till bladet individuell databas översikt. Välj sedan **Konfigurera kvarhållning av säkerhets kopior** överst på skärmen:
 
@@ -261,7 +261,7 @@ Använd följande PowerShell-exempel om du vill ändra kvarhållning av PITR fö
 Set-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName resourceGroup -ServerName testserver -DatabaseName testDatabase -RetentionDays 28
 ```
 
-#### <a name="sql-managed-instance"></a>[SQL-hanterad instans](#tab/managed-instance)
+#### <a name="sql-managed-instance"></a>[SQL Managed Instance](#tab/managed-instance)
 
 Använd följande PowerShell-exempel om du vill ändra kvarhållning av PITR för en **enskild aktiv** SQL-hanterad instans databas.
 
@@ -382,7 +382,7 @@ Det går bara att ange en redundans för säkerhets kopiering av en hanterad ins
 I Azure Portal kan du konfigurera redundansen för säkerhets kopierings lagring på bladet **skapa SQL Database** . Alternativet finns i avsnittet redundans för lagring av säkerhets kopior. 
 ![Öppna bladet skapa SQL Database](./media/automated-backups-overview/sql-database-backup-storage-redundancy.png)
 
-#### <a name="sql-managed-instance"></a>[SQL-hanterad instans](#tab/managed-instance)
+#### <a name="sql-managed-instance"></a>[SQL Managed Instance](#tab/managed-instance)
 
 I Azure Portal finns alternativet för att ändra redundans för lagring av säkerhets kopior i bladet **Compute + Storage** tillgängligt från alternativet **Konfigurera hanterad instans** på fliken **grundläggande** när du skapar en SQL-hanterad instans.
 ![Öppna beräkning + lagrings konfiguration – bladet](./media/automated-backups-overview/open-configuration-blade-managedinstance.png)
@@ -419,7 +419,7 @@ Mer information finns på [set-AzSqlDatabase](/powershell/module/az.sql/set-azsq
 > Om du vill använda-BackupStorageRedundancy-parametern med databas återställning, databas kopia eller skapa sekundära åtgärder använder du Azure PowerShell version AZ. SQL 2.11.0. 
 
 
-#### <a name="sql-managed-instance"></a>[SQL-hanterad instans](#tab/managed-instance)
+#### <a name="sql-managed-instance"></a>[SQL Managed Instance](#tab/managed-instance)
 
 För att konfigurera redundans för säkerhets kopiering när du skapar en hanterad instans kan du ange parametern-BackupStoageRedundancy. Möjliga värden är geo, Zone och Local.
 

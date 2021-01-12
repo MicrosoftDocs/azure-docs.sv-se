@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 86e84c60aec99246f58b5dc9d67584b23a3969f3
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: dddaad3e171c757b353deb81ffcb77cfbe706340
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93394940"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108270"
 ---
 # <a name="track-data-changes-in-azure-sql-edge"></a>Spåra data ändringar i Azure SQL Edge
 
@@ -36,6 +36,9 @@ Information om hur du administrerar och övervakar den här funktionen finns i [
 
 Information om hur du frågar och arbetar med ändrade data finns i [arbeta med ändrings data](/sql/relational-databases/track-changes/work-with-change-data-sql-server).
 
+> [!NOTE]
+> Funktioner för att ändra data insamling som är beroende av CLR stöds inte på Azure SQL Edge.
+
 ## <a name="change-tracking"></a>Spårning av ändringar
 
 Information om hur den här funktionen fungerar finns i [om ändrings spårning](/sql/relational-databases/track-changes/about-change-tracking-sql-server).
@@ -48,7 +51,7 @@ Information om hur du frågar och arbetar med ändrade data finns i [arbeta med 
 
 ## <a name="temporal-tables"></a>Temporala tabeller
 
-Azure SQL Edge stöder även funktionen temporala tabeller i SQL Server. Den här funktionen (kallas även för *temporala system versions tabeller* ) ger inbyggt stöd för att tillhandahålla information om data som lagras i tabellen vid en viss tidpunkt. Funktionen ger inte bara bara information om de data som är korrekta vid aktuell tidpunkt.
+Azure SQL Edge stöder även funktionen temporala tabeller i SQL Server. Den här funktionen (kallas även för *temporala system versions tabeller*) ger inbyggt stöd för att tillhandahålla information om data som lagras i tabellen vid en viss tidpunkt. Funktionen ger inte bara bara information om de data som är korrekta vid aktuell tidpunkt.
 
 En temporal system versions tabell är en typ av användar tabell som är utformad för att bevara en fullständig historik över data ändringar och för att möjliggöra enkel tidpunkts analys. Den här typen av temporal tabell kallas en temporal system versions tabell, eftersom giltighets perioden för varje rad hanteras av systemet (det vill säga databas motorn).
 

@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/27/2020
 ms.custom: devx-track-csharp, mvc, cli-validate, devx-track-azurecli
-ms.openlocfilehash: 1f6757a9f78e3c400d92fd65a0795ceae7570c99
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: f043f7ed63353dcb9cf9fd26690da97b902f32a6
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347582"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108627"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Självstudie: Säkra Azure SQL Database-anslutningar från App Service med en hanterad identitet
 
@@ -229,6 +229,9 @@ Skriv `EXIT` för att återgå till Cloud Shell-prompten.
 > [!NOTE]
 > Backend-tjänsterna för hanterade identiteter [upprätthåller också en token cache](overview-managed-identity.md#obtain-tokens-for-azure-resources) som uppdaterar token för en mål resurs endast när den upphör att gälla. Om du gör ett fel när du konfigurerar SQL Database behörigheter och försöker ändra behörigheterna *när* du har försökt hämta en token med din app, får du faktiskt inget nytt token med de uppdaterade behörigheterna förrän den cachelagrade token upphör att gälla.
 
+> [!NOTE]
+> AAD stöds inte för lokal SQL Server och detta omfattar MSIs. 
+
 ### <a name="modify-connection-string"></a>Ändra anslutningssträngen
 
 Kom ihåg att samma ändringar som du gjorde i *Web.config* eller *appsettings.jspå* Works med den hanterade identiteten, så att du bara behöver ta bort den befintliga anslutnings strängen i App Service, som Visual Studio skapade distributionen av appen första gången. Använd följande kommando, men Ersätt *\<app-name>* med namnet på din app.
@@ -251,7 +254,7 @@ Klicka på **Publicera** på publiceringssidan.
 
 ```bash
 git commit -am "configure managed identity"
-git push azure master
+git push azure main
 ```
 
 När du ser din att göra-lista på den nya webbsidan ansluter din app till databasen med hjälp av den hanterade identiteten.

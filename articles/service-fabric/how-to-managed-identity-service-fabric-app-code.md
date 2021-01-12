@@ -3,22 +3,75 @@ title: Använd hanterad identitet med ett program
 description: Använda hanterade identiteter i Azure Service Fabric program kod för att få åtkomst till Azure-tjänster.
 ms.topic: article
 ms.date: 10/09/2019
-ms.openlocfilehash: 07f960c01367ab42a434a8c2e1e276d9c5f7bd11
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c89f7bd064e643b978253f2e083c449d904d2cad
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86253651"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108525"
 ---
 # <a name="how-to-leverage-a-service-fabric-applications-managed-identity-to-access-azure-services"></a>Hur du utnyttjar ett Service Fabric programmets hanterade identitet för att få åtkomst till Azure-tjänster
 
 Service Fabric program kan dra nytta av hanterade identiteter för att få åtkomst till andra Azure-resurser som stöder Azure Active Directory-baserad autentisering. Ett program kan hämta en [åtkomsttoken som representerar](../active-directory/develop/developer-glossary.md#access-token) identiteten, som kan vara systemtilldelad eller tilldelad, och använda den som en "Bearer"-token för att autentisera sig mot en annan tjänst, även kallat en [skyddad resurs Server](../active-directory/develop/developer-glossary.md#resource-server). Token representerar den identitet som tilldelats Service Fabric programmet och kommer bara att utfärdas till Azure-resurser (inklusive SF-program) som delar identiteten. Mer detaljerad information om hanterade identiteter finns i [översikts dokumentationen för Managed Identity](../active-directory/managed-identities-azure-resources/overview.md) , samt skillnaden mellan systemtilldelade och användarspecifika identiteter. Vi kommer att referera till ett hanterat identitets aktiverat Service Fabric program som [klient program](../active-directory/develop/developer-glossary.md#client-application) i den här artikeln.
+
+Se ett exempel program som visar hur du använder systemtilldelade och användare som tilldelats [Service Fabric program hanterade identiteter](https://github.com/Azure-Samples/service-fabric-managed-identity) med Reliable Services och behållare.
 
 > [!IMPORTANT]
 > En hanterad identitet representerar associationen mellan en Azure-resurs och ett huvud namn för tjänsten i motsvarande Azure AD-klient som är associerad med den prenumeration som innehåller resursen. I samband med Service Fabric stöds hanterade identiteter endast för program som distribueras som Azure-resurser. 
 
 > [!IMPORTANT]
 > Innan du använder den hanterade identiteten för ett Service Fabric-program måste klient programmet beviljas åtkomst till den skyddade resursen. Se listan över [Azure-tjänster som stöder Azure AD-autentisering](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-managed-identities-for-azure-resources) för att kontrol lera om det finns stöd och till respektive tjänsts dokumentation för specifika steg för att ge en identitets åtkomst till resurser av intresse. 
+ 
+
+## <a name="leverage-a-managed-identity-using-azureidentity"></a>Utnyttja en hanterad identitet med Azure. Identity
+
+Azure Identity SDK stöder nu Service Fabric. Med hjälp av Azure. Identity kan du göra det enklare att skriva kod som använder Service Fabric hanterade identiteter, eftersom det hanterar hämtning av tokens, cachelagring av tokens och serverautentisering. När du använder de flesta Azure-resurser är begreppet token dolt.
+
+Service Fabric support finns i följande versioner för dessa språk: 
+- [C# i version 1.3.0](https://www.nuget.org/packages/Azure.Identity). Se ett [C#-exempel](https://github.com/Azure-Samples/service-fabric-managed-identity).
+- [Python i version 1.5.0](https://pypi.org/project/azure-identity/). Se ett [python-exempel](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/identity/azure-identity/tests/managed-identity-live/service-fabric/service_fabric.md).
+- [Java i version 1.2.0](https://docs.microsoft.com/java/api/overview/azure/identity-readme?view=azure-java-stable).
+
+C#-exempel på inledande autentiseringsuppgifter och använda autentiseringsuppgifterna för att hämta en hemlighet från Azure Key Vault:
+
+```csharp
+using Azure.Identity;
+using Azure.Security.KeyVault.Secrets;
+
+namespace MyMIService
+{
+    internal sealed class MyMIService : StatelessService
+    {
+        protected override async Task RunAsync(CancellationToken cancellationToken)
+        {
+            try
+            {
+                // Load the service fabric application managed identity assigned to the service
+                ManagedIdentityCredential creds = new ManagedIdentityCredential();
+
+                // Create a client to keyvault using that identity
+                SecretClient client = new SecretClient(new Uri("https://mykv.vault.azure.net/"), creds);
+
+                // Fetch a secret
+                KeyVaultSecret secret = (await client.GetSecretAsync("mysecret", cancellationToken: cancellationToken)).Value;
+            }
+            catch (CredentialUnavailableException e)
+            {
+                // Handle errors with loading the Managed Identity
+            }
+            catch (RequestFailedException)
+            {
+                // Handle errors with fetching the secret
+            }
+            catch (Exception e)
+            {
+                // Handle generic errors
+            }
+        }
+    }
+}
+
+```
 
 ## <a name="acquiring-an-access-token-using-rest-api"></a>Skaffa en åtkomsttoken med hjälp av REST API
 I kluster som är aktiverade för hanterad identitet exponerar Service Fabric runtime en localhost-slutpunkt som program kan använda för att hämta åtkomsttoken. Slut punkten är tillgänglig på varje nod i klustret och är tillgänglig för alla entiteter på den noden. Auktoriserade anropare kan hämta åtkomsttoken genom att anropa den här slut punkten och presentera en autentiseringsnyckel. koden genereras av Service Fabric runtime för varje distinkt service code-aktivering och är kopplad till livs längden för processen som är värd för tjänst kods paketet.
@@ -377,3 +430,4 @@ Se [Azure-tjänster som stöder Azure AD-autentisering](../active-directory/mana
 * [Distribuera ett Azure Service Fabric-program med en systemtilldelad hanterad identitet](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)
 * [Distribuera ett Azure Service Fabric-program med en användardefinierad hanterad identitet](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)
 * [Bevilja ett Azure Service Fabric program åtkomst till andra Azure-resurser](./how-to-grant-access-other-resources.md)
+* [Utforska ett exempel program med Service Fabric hanterad identitet](https://github.com/Azure-Samples/service-fabric-managed-identity)

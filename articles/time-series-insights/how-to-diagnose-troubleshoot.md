@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: eca2009ee0470dec9c9ce60d8754f8f7a71619d3
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: d9dd07e3a35d83ff6bd9c7c493768d1197667c39
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97740546"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108797"
 ---
 # <a name="diagnose-and-troubleshoot-an-azure-time-series-insights-gen2-environment"></a>Diagnostisera och felsöka en Azure Time Series Insights Gen2-miljö
 
@@ -71,7 +71,7 @@ Du kan skicka data utan tids serie-ID.
 - Det här problemet kan bero på att din miljö är begränsad.
 
     > [!NOTE]
-    > För närvarande har Time Series Insights stöd för en maximal inmatnings hastighet på 6 Mbps.
+    > För tillfället har Time Series Insights stöd för en maximal inmatnings hastighet på 1 Mbit/s.
 
 ## <a name="problem-data-was-showing-but-now-ingestion-has-stopped"></a>Problem: data visades, men nu har inmatningen stoppats
 

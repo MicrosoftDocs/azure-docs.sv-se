@@ -14,14 +14,14 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6da053bb04e5ee3f2b2b307c382f2695663669e5
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 568584b849b2c5977d4bbb6216697dce3c498cfd
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98020663"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98107930"
 ---
-# <a name="administrator-role-permissions-in-azure-active-directory"></a>Behörigheter för administratörsrollen i Azure Active Directory
+# <a name="administrator-role-permissions-in-azure-active-directory"></a>Behörigheter för administratörsroller i Azure Active Directory
 
 Med hjälp av Azure Active Directory (Azure AD) kan du ange begränsade administratörer för att hantera identitets uppgifter i mindre privilegierade roller. Administratörer kan tilldelas till sådana orsaker som att lägga till eller ändra användare, tilldela administrativa roller, återställa användar lösen ord, hantera användar licenser och hantera domän namn. [Standard användar behörigheter](../fundamentals/users-default-permissions.md) kan bara ändras i användar inställningar i Azure AD.
 
@@ -80,7 +80,7 @@ Användare med den här rollen kan ange eller återställa autentiseringsuppgift
 Rollen [Privileged Authentication Administrator](#privileged-authentication-administrator) har behörighet kan framtvinga omregistrering och Multi-Factor Authentication för alla användare.
 
 > [!IMPORTANT]
-> Användare med den här rollen kan ändra autentiseringsuppgifter för personer som kan ha åtkomst till känslig eller privat information eller kritisk konfiguration i och utanför Azure Active Directory. Att ändra autentiseringsuppgifterna för en användare kan innebära att du förutsätter att användarens identitet och behörigheter. Ett exempel:
+> Användare med den här rollen kan ändra autentiseringsuppgifter för personer som kan ha åtkomst till känslig eller privat information eller kritisk konfiguration i och utanför Azure Active Directory. Att ändra autentiseringsuppgifterna för en användare kan innebära att du förutsätter att användarens identitet och behörigheter. Till exempel:
 >
 >* Program registrering och företags program ägare, som kan hantera autentiseringsuppgifter för appar som de äger. De här apparna kan ha privilegierade behörigheter i Azure AD och inte beviljas till autentiserings administratörer. Genom den här sökvägen kan en administratörs administratör kunna ta hänsyn till identiteten för en program ägare och sedan ytterligare anta identiteten för ett privilegierat program genom att uppdatera autentiseringsuppgifterna för programmet.
 >* Azure-Prenumerationens ägare, som kan ha åtkomst till känslig eller privat information eller kritisk konfiguration i Azure.
@@ -268,7 +268,7 @@ Användare med den här rollen kan ändra lösen ord, ogiltig uppdatera tokens, 
 * Rapportläsare
 
 > [!IMPORTANT]
-> Användare med den här rollen kan ändra lösen ord för personer som kan ha åtkomst till känslig eller privat information eller kritisk konfiguration i och utanför Azure Active Directory. Att ändra lösen ordet för en användare kan innebära att du antar användarens identitet och behörigheter. Ett exempel:
+> Användare med den här rollen kan ändra lösen ord för personer som kan ha åtkomst till känslig eller privat information eller kritisk konfiguration i och utanför Azure Active Directory. Att ändra lösen ordet för en användare kan innebära att du antar användarens identitet och behörigheter. Till exempel:
 >
 >- Program registrering och företags program ägare, som kan hantera autentiseringsuppgifter för appar som de äger. De här apparna kan ha privilegierade behörigheter i Azure AD och beviljas ingen annan support administratör. Med hjälp av den här sökvägen kan IT-administratören kunna ta hänsyn till identiteten för en program ägare och sedan ytterligare utgå från identiteten för ett privilegierat program genom att uppdatera autentiseringsuppgifterna för programmet.
 >- Azure-Prenumerationens ägare, som kan ha åtkomst till känslig eller privat information eller kritisk konfiguration i Azure.
@@ -512,7 +512,7 @@ Användare med den här rollen kan skapa användare och hantera alla aspekter av
 | Endast på användare som inte är administratörer eller någon av följande begränsade administratörs roller:<ul><li>Katalog läsare<li>Grupp administratör<li>Gäst deltagare<li>Support administratör<li>Meddelande Center läsare<li>Lösen ords administratör<li>Rapportläsare<li>Användaradministratör|<p>Ta bort och Återställ</p><p>Inaktivera och aktivera</p><p>Invalidera uppdateringstoken</p><p>Hantera alla användar egenskaper inklusive användarens huvud namn</p><p>Återställa lösenord</p><p>Uppdatera (FIDO) enhets nycklar</p>|
 
 > [!IMPORTANT]
-> Användare med den här rollen kan ändra lösen ord för personer som kan ha åtkomst till känslig eller privat information eller kritisk konfiguration i och utanför Azure Active Directory. Att ändra lösen ordet för en användare kan innebära att du antar användarens identitet och behörigheter. Ett exempel:
+> Användare med den här rollen kan ändra lösen ord för personer som kan ha åtkomst till känslig eller privat information eller kritisk konfiguration i och utanför Azure Active Directory. Att ändra lösen ordet för en användare kan innebära att du antar användarens identitet och behörigheter. Till exempel:
 >
 >- Program registrering och företags program ägare, som kan hantera autentiseringsuppgifter för appar som de äger. Dessa appar kan ha privilegierade behörigheter i Azure AD och inte beviljas till användar administratörer. Genom den här sökvägen kan en användar administratör kunna ta hänsyn till identiteten för en program ägare och sedan ytterligare anta identiteten för ett privilegierat program genom att uppdatera autentiseringsuppgifterna för programmet.
 >- Azure-Prenumerationens ägare, som kan ha åtkomst till känslig eller privat information eller kritisk konfiguration i Azure.
@@ -770,6 +770,7 @@ Kan hantera alla aspekter av Azure AD och Microsoft-tjänster som använder Azur
 | Microsoft. Directory/directoryRoles/allProperties/allTasks | Skapa och ta bort directoryRoles och läsa och uppdatera alla egenskaper i Azure Active Directory. |
 | Microsoft. Directory/directoryRoleTemplates/allProperties/allTasks | Skapa och ta bort directoryRoleTemplates och läsa och uppdatera alla egenskaper i Azure Active Directory. |
 | Microsoft. Directory/Domains/allProperties/allTasks | Skapa och ta bort domäner och läsa och uppdatera alla egenskaper i Azure Active Directory. |
+| Microsoft. Directory/entitlementManagement/allProperties/allTasks | Skapa och ta bort resurser och läsa och uppdatera alla egenskaper i hantering av Azure AD-rättigheter. |
 | Microsoft. Directory/Groups/allProperties/allTasks | Skapa och ta bort grupper och läsa och uppdatera alla egenskaper i Azure Active Directory. |
 | Microsoft. Directory/groupsAssignableToRoles/allProperties/Update | Uppdatera grupper med egenskapen isAssignableToRole inställd på True i Azure Active Directory. |
 | Microsoft. Directory/groupsAssignableToRoles/Create | Skapa grupper med egenskapen isAssignableToRole inställd på True i Azure Active Directory. |
@@ -831,6 +832,7 @@ Kan läsa och hantera kompatibilitets konfiguration och rapporter i Azure AD och
 | --- | --- |
 | Microsoft. Azure. serviceHealth/upplånade/allTasks | Läsa och konfigurera Azure Service Health. |
 | Microsoft. Azure. supportTickets/upplånade/allTasks | Skapa och hantera Azure-support biljetter för katalog nivå tjänster. |
+| Microsoft. Directory/entitlementManagement/allProperties/Read | Läs alla egenskaper i hantering av Azure AD-rättigheter. |
 | Microsoft. Office365. complianceManager/uplånar/allTasks | Hantera alla aspekter av Compliance Manager för Office 365 |
 | Microsoft. Office365. serviceHealth/uplånar/allTasks | Läsa och konfigurera Microsoft 365 Service Health. |
 | Microsoft. Office365. supportTickets/uplånar/allTasks | Skapa och hantera Office 365-support biljetter. |
@@ -1133,6 +1135,7 @@ Kan läsa allt som en global administratör kan, men inte redigera något.
 | Microsoft. Directory/directoryRoles/eligibleMembers/Read    | Läsa directoryRoles. eligibleMembers-egenskapen i Azure Active Directory. |
 | Microsoft. Directory/directoryRoles/members/Read    | Läs directoryRoles. members-egenskapen i Azure Active Directory. |
 | Microsoft. Directory/Domains/Basic/Read    | Läsa grundläggande egenskaper för domäner i Azure Active Directory. |
+| Microsoft. Directory/entitlementManagement/allProperties/Read | Läs alla egenskaper i hantering av Azure AD-rättigheter. |
 | Microsoft. Directory/grupper/appRoleAssignments/Read    | Läs Groups. appRoleAssignments-egenskapen i Azure Active Directory. |
 | Microsoft. Directory/grupper/Basic/Read    | Läsa grundläggande egenskaper för grupper i Azure Active Directory. |
 | Microsoft. Directory/grupper/hiddenMembers/Read    | Läs Groups. hiddenMembers-egenskapen i Azure Active Directory. |
@@ -1231,7 +1234,7 @@ Kan återställa lösen ord för administratörer som inte har administratörer 
 
 ### <a name="hybrid-identity-administrator-permissions"></a>Behörigheter för Hybrid identitets administratör
 
-Aktivera, distribuera, konfigurera, hantera, övervaka och felsöka moln tjänster för etablering och autentisering. 
+Kan hantera AD till moln etablering och Federations inställningar i Azure AD. 
 
 | **Åtgärder** | **Beskrivning** |
 | --- | --- |
@@ -1249,8 +1252,10 @@ Aktivera, distribuera, konfigurera, hantera, övervaka och felsöka moln tjänst
 | Microsoft. Directory/applicationTemplates/instansiera | Instansiera Galleri program från programmallar. |
 | Microsoft. Directory/auditLogs/allProperties/Read | Läs alla egenskaper (inklusive privilegierade egenskaper) på auditLogs i Azure Active Directory. |
 | Microsoft. Directory/cloudProvisioning/allProperties/allTasks | Läsa och konfigurera alla egenskaper för Azure AD Cloud Provisioning-tjänsten. |
-| Microsoft. Directory/federatedAuthentication/allProperties/allTasks | Hantera alla aspekter av Active Directory federerade tjänster (ADFS) eller tredjeparts Federations leverantör i Azure AD. |
+| Microsoft. Directory/Domains/allProperties/Read | Läs alla egenskaper för domäner. |
+| Microsoft. Directory/Domains/Federation/Update | Uppdatera Federations egenskapen för domäner. |
 | Microsoft. Directory/Organization/dirSync/Update | Uppdatera organisation. dirSync-egenskapen i Azure Active Directory. |
+| Microsoft. Directory/provisioningLogs/allProperties/Read | Läs alla egenskaper för etablerings loggar. |
 | Microsoft. Directory/Service princip ALS/målgrupp/uppdatera | Uppdatera service princip ALS. Audience-egenskapen i Azure Active Directory. |
 | Microsoft. Directory/Service princip ALS/Authentication/Update | Uppdatera service princip ALS. Authentication-egenskapen i Azure Active Directory. |
 | Microsoft. Directory/Service princip ALS/Basic/Update | Uppdatera grundläggande egenskaper för service princip ALS i Azure Active Directory. |
@@ -1708,9 +1713,10 @@ Kan läsa säkerhets information och rapporter och hantera konfigurationen i Azu
 | --- | --- |
 | Microsoft. Azure. serviceHealth/upplånade/allTasks | Läsa och konfigurera Azure Service Health. |
 | Microsoft. Azure. supportTickets/upplånade/allTasks | Skapa och hantera Azure-support biljetter för katalog nivå tjänster. |
-| Microsoft. Directory/bitlockerKeys/Key/Read | Läs BitLocker-nyckel objekt och egenskaper (inklusive återställnings nyckel) i Azure Active Directory. |
 | Microsoft. Directory/Applications/policies/Update | Uppdatera Applications. policys-egenskapen i Azure Active Directory. |
 | Microsoft. Directory/auditLogs/allProperties/Read | Läs alla egenskaper (inklusive privilegierade egenskaper) på auditLogs i Azure Active Directory. |
+| Microsoft. Directory/bitlockerKeys/Key/Read | Läs BitLocker-nyckel objekt och egenskaper (inklusive återställnings nyckel) i Azure Active Directory. |
+| Microsoft. Directory/entitlementManagement/allProperties/Read | Läs alla egenskaper i hantering av Azure AD-rättigheter. |
 | Microsoft. Directory/identityProtection/allProperties/Read | Läs alla resurser i Microsoft. AAD. identityProtection. |
 | Microsoft. Directory/identityProtection/allProperties/Update | Uppdatera alla resurser i Microsoft. AAD. identityProtection. |
 | Microsoft. Directory/policies/Basic/Update | Uppdatera grundläggande egenskaper för principer i Azure Active Directory. |
@@ -1761,6 +1767,7 @@ Kan läsa säkerhets information och rapporter i Azure AD och Microsoft 365.
 | --- | --- |
 | Microsoft. Directory/auditLogs/allProperties/Read | Läs alla egenskaper (inklusive privilegierade egenskaper) på auditLogs i Azure Active Directory. |
 | Microsoft. Directory/bitlockerKeys/Key/Read | Läs BitLocker-nyckel objekt och egenskaper (inklusive återställnings nyckel) i Azure Active Directory. |
+| Microsoft. Directory/entitlementManagement/allProperties/Read | Läs alla egenskaper i hantering av Azure AD-rättigheter. |
 | Microsoft. Directory/policys/conditionalAccess/Basic/Read | Läs policies. conditionalAccess-egenskapen i Azure Active Directory. |
 | Microsoft. Directory/signInReports/allProperties/Read | Läs alla egenskaper (inklusive privilegierade egenskaper) på signInReports i Azure Active Directory. |
 | Microsoft. AAD. identityProtection/upplånare/Läs | Läs alla resurser i Microsoft. AAD. identityProtection. |
@@ -1926,6 +1933,7 @@ Kan hantera alla aspekter av användare och grupper, inklusive att återställa 
 | Microsoft. Directory/Contacts/Basic/Update | Uppdatera grundläggande egenskaper för kontakter i Azure Active Directory. |
 | Microsoft. Directory/kontakter/skapa | Skapa kontakter i Azure Active Directory. |
 | Microsoft. Directory/Contacts/Delete | Ta bort kontakter i Azure Active Directory. |
+| Microsoft. Directory/entitlementManagement/allProperties/allTasks | Skapa och ta bort resurser och läsa och uppdatera alla egenskaper i hantering av Azure AD-rättigheter. |
 | Microsoft. Directory/Groups/appRoleAssignments/Update | Uppdatera Groups. appRoleAssignments-egenskapen i Azure Active Directory. |
 | Microsoft. Directory/grupper/Basic/Update | Uppdatera grundläggande egenskaper för grupper i Azure Active Directory. |
 | Microsoft. Directory/grupper/skapa | Skapa grupper i Azure Active Directory. |
@@ -2047,7 +2055,7 @@ Följande roller ska inte användas. De är inaktuella och kommer att tas bort f
 
 Alla roller som returneras av PowerShell eller MS Graph API visas i Azure Portal. I följande tabell ordnas skillnaderna.
 
-API-namn | Azure Portal namn | Kommentarer
+API-namn | Azure Portal namn | Anteckningar
 -------- | ------------------- | -------------
 Företagsadministratör | Global administratör | [Namnet ändrades för bättre klarhet](permissions-reference.md#role-template-ids)
 Administratör för CRM-tjänsten | Dynamics 365-administratör | [Visar aktuell produkt anpassning](permissions-reference.md#role-template-ids)

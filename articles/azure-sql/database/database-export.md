@@ -9,14 +9,14 @@ author: stevestein
 ms.custom: sqldbrb=2
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 07/16/2019
+ms.date: 01/11/2021
 ms.topic: how-to
-ms.openlocfilehash: 7dc6cd580687544226b61a29ca9ccf2d1b8dff42
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: f874803e0ae361255754477ca68184255f35b91f
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92671529"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98107386"
 ---
 # <a name="export-to-a-bacpac-file---azure-sql-database-and-azure-sql-managed-instance"></a>Exportera till en BACPAC-fil – Azure SQL Database och Azure SQL-hanterad instans
 
@@ -30,6 +30,7 @@ När du behöver exportera en databas för arkivering eller för att flytta till
 - Om du exporterar till Blob Storage är den maximala storleken för en BACPAC-fil 200 GB. För att arkivera en större BACPAC-fil, exportera till lokal lagring.
 - Det finns inte stöd för att exportera en BACPAC-fil till Azure Premium Storage med de metoder som beskrivs i den här artikeln.
 - Det finns för närvarande inte stöd för lagring bakom en brand vägg.
+- Lagrings fil namnet eller indatavärdet för StorageURI måste vara mindre än 128 tecken långt och får inte sluta med "." och får inte innehålla specialtecken som blank steg eller "<, >, *,%, &,:, \, /,?". 
 - Om export åtgärden överskrider 20 timmar kan den avbrytas. Om du vill öka prestanda under exporten kan du:
 
   - Öka din beräknings storlek tillfälligt.
@@ -39,7 +40,7 @@ När du behöver exportera en databas för arkivering eller för att flytta till
 > [!NOTE]
 > BACPACs är inte avsedda att användas för säkerhets kopierings-och återställnings åtgärder. Azure skapar automatiskt säkerhets kopior för varje användar databas. Mer information finns i [Översikt över verksamhets kontinuitet](business-continuity-high-availability-disaster-recover-hadr-overview.md) och [SQL Database säkerhets kopieringar](automated-backups-overview.md).
 
-## <a name="the-azure-portal"></a>Azure-portalen
+## <a name="the-azure-portal"></a>Azure Portal
 
 Det finns för närvarande inte stöd för att exportera en BACPAC av en databas från en [Azure SQL-hanterad instans](../managed-instance/sql-managed-instance-paas-overview.md) med hjälp av Azure Portal. Använd SQL Server Management Studio eller SQLPackage i stället.
 
@@ -54,9 +55,9 @@ Det finns för närvarande inte stöd för att exportera en BACPAC av en databas
 
     ![Databas export](./media/database-export/database-export2.png)
 
-3. Klicka på **OK** .
+3. Klicka på **OK**.
 
-4. Du övervakar förloppet för export åtgärden genom att öppna sidan för servern som innehåller den databas som exporteras. Under **Inställningar** och klicka sedan på **import/export-historik** .
+4. Du övervakar förloppet för export åtgärden genom att öppna sidan för servern som innehåller den databas som exporteras. Under **Inställningar** och klicka sedan på **import/export-historik**.
 
    ![Exportera historik](./media/database-export/export-history.png)
 
@@ -89,7 +90,7 @@ $exportRequest = New-AzSqlDatabaseExport -ResourceGroupName $ResourceGroupName -
   -AdministratorLogin $creds.UserName -AdministratorLoginPassword $creds.Password
 ```
 
-Om du vill kontrol lera status för export förfrågan använder du cmdleten [Get-AzSqlDatabaseImportExportStatus](/powershell/module/az.sql/get-azsqldatabaseimportexportstatus) . Om du kör det omedelbart efter det att begäran vanligt vis returnerar **status: pågår** . När du ser **status:** exporten har slutförts.
+Om du vill kontrol lera status för export förfrågan använder du cmdleten [Get-AzSqlDatabaseImportExportStatus](/powershell/module/az.sql/get-azsqldatabaseimportexportstatus) . Om du kör det omedelbart efter det att begäran vanligt vis returnerar **status: pågår**. När du ser **status:** exporten har slutförts.
 
 ```powershell
 $exportStatus = Get-AzSqlDatabaseImportExportStatus -OperationStatusLink $exportRequest.OperationStatusLink

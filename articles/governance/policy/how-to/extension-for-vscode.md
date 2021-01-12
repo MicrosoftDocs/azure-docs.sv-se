@@ -1,28 +1,28 @@
 ---
 title: Azure Policy tillägg för Visual Studio Code
 description: Lär dig hur du använder Azure Policy-tillägget för Visual Studio Code för att leta upp Azure Resource Manager alias.
-ms.date: 10/20/2020
+ms.date: 01/11/2021
 ms.topic: how-to
-ms.openlocfilehash: 8c7357d70323fa74ec77cf43bd11f149a2f99154
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 4c4ba0eeb0506179ff92ead0ee86f048600d157e
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96906309"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98107947"
 ---
 # <a name="use-azure-policy-extension-for-visual-studio-code"></a>Använd Azure Policy-tillägg för Visual Studio Code
 
-> Gäller Azure Policy Extension version **0.1.0** och senare
+> Gäller Azure Policy Extension version **0.1.1** och senare
 
 Lär dig hur du använder Azure Policy tillägget för Visual Studio Code för att söka efter [alias](../concepts/definition-structure.md#aliases), granska resurser och principer, exportera objekt och utvärdera princip definitioner. Först beskriver vi hur du installerar tillägget Azure Policy i Visual Studio Code. Sedan kommer vi att gå igenom hur du söker efter alias.
 
-Azure Policy-tillägget för Visual Studio Code kan installeras på alla plattformar som stöds av Visual Studio Code. Det här stödet omfattar Windows, Linux och macOS.
+Azure Policy-tillägget för Visual Studio Code kan installeras i Windows.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Följande objekt krävs för att slutföra stegen i den här artikeln:
 
-- En Azure-prenumeration. Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/) innan du börjar.
+- En Azure-prenumeration. Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/free/) innan du börjar.
 - [Visual Studio Code](https://code.visualstudio.com).
 
 ## <a name="install-and-configure-the-azure-policy-extension"></a>Installera och konfigurera Azure Policy-tillägget

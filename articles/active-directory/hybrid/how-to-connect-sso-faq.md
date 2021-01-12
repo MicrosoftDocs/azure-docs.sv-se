@@ -16,12 +16,12 @@ ms.date: 10/07/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9a3e2dd1ac58c89060fc3e09e97617cb2a68d8ac
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 2dac4b461d4506015f0ef374eae37f67c445791d
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97094581"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98107879"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Azure Active Directory sömlös enkel inloggning: vanliga frågor och svar
 
@@ -85,6 +85,7 @@ Följ de här stegen på den lokala server där du kör Azure AD Connect:
 
    > [!NOTE]
    >Du behöver både domän administratör och global administratörs behörighet för stegen nedan.
+   >Om du inte är domän administratör och har tilldelats behörigheter av domän administratören, bör du anropa `Update-AzureADSSOForest -OnPremCredentials $creds -PreserveCustomPermissionsOnDesktopSsoAccount`
 
    **Steg 1. Hämta en lista över AD-skogar där sömlös enkel inloggning har Aktiver ATS**
 
@@ -105,9 +106,6 @@ Följ de här stegen på den lokala server där du kör Azure AD Connect:
    >Det domän administratörs konto som används får inte vara medlem i gruppen för skyddade användare. I så fall kommer åtgärden att Miss Miss läge.
 
    2. Anropa `Update-AzureADSSOForest -OnPremCredentials $creds` . Det här kommandot uppdaterar Kerberos-dekrypterings nyckeln för `AZUREADSSO` dator kontot i den här särskilda AD-skogen och uppdaterar det i Azure AD.
-   
-   >[!NOTE]
-   >Om du inte är domän administratör och har tilldelats behörigheter av domän administratören, bör du anropa `Update-AzureADSSOForest -OnPremCredentials $creds -PreserveCustomPermissionsOnDesktopSsoAccount`
    
    3. Upprepa föregående steg för varje AD-skog som du har konfigurerat funktionen på.
    

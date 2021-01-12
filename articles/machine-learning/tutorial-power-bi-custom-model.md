@@ -1,7 +1,7 @@
 ---
 title: 'Självstudie: skapa en förutsägelse modell med en bärbar dator (del 1 av 2)'
 titleSuffix: Azure Machine Learning
-description: Lär dig hur du skapar och distribuerar en maskin inlärnings modell genom att använda kod i en Jupyter Notebook. Du kan använda modellen för att förutsäga resultat i Microsoft Power BI.
+description: Lär dig hur du skapar och distribuerar en maskin inlärnings modell genom att använda kod i en Jupyter Notebook. Skapa också ett bedömnings skript som definierar indata och utdata för enkel integrering i Microsoft Power BI.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,16 @@ ms.author: samkemp
 author: samuel100
 ms.reviewer: sdgilley
 ms.date: 12/11/2020
-ms.openlocfilehash: 1dfee56f90011d3c532767e136b383e4eb95c234
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: 29b340448f3ce3e18a649065bdcd0b335bab8b73
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97814779"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108253"
 ---
-# <a name="tutorial-power-bi-integration---create-the-predictive-model-by-using-a-jupyter-notebook-part-1-of-2"></a>Självstudie: Power BI integration – skapa en förutsägelse modell genom att använda en Jupyter Notebook (del 1 av 2)
+# <a name="tutorial-power-bi-integration---create-the-predictive-model-with-a-jupyter-notebook-part-1-of-2"></a>Självstudie: Power BI integration – skapa en förutsägelse modell med en Jupyter Notebook (del 1 av 2)
 
-I del 1 av den här självstudien tränar du och distribuerar en förutsägelse maskin inlärnings modell genom att använda kod i en Jupyter Notebook. I del 2 använder du modellen för att förutsäga resultat i Microsoft Power BI.
+I del 1 av den här självstudien tränar du och distribuerar en förutsägelse maskin inlärnings modell genom att använda kod i en Jupyter Notebook. Du skapar också ett bedömnings skript för att definiera in-och utdata-schemat för modellen för integrering i Power BI.  I del 2 använder du modellen för att förutsäga resultat i Microsoft Power BI.
 
 I den här kursen får du:
 
@@ -27,6 +27,7 @@ I den här kursen får du:
 > * Skapa en Jupyter Notebook.
 > * Skapa en Azure Machine Learning beräknings instans.
 > * Träna en Regressions modell med hjälp av scikit-lära.
+> * Skriv ett bedömnings skript som definierar indata och utdata för enkel integrering i Microsoft Power BI.
 > * Distribuera modellen till en slut punkt för real tids resultat.
 
 Det finns tre sätt att skapa och distribuera den modell som du kommer att använda i Power BI.  Den här artikeln beskriver "alternativ A: träna och distribuera modeller med hjälp av antecknings böcker".  Det här alternativet är en kod-första redigerings upplevelse. Den använder Jupyter-anteckningsböcker som finns i Azure Machine Learning Studio. 
@@ -157,7 +158,7 @@ Du kan också visa modellen i Azure Machine Learning Studio. I menyn till vänst
 
 :::image type="content" source="media/tutorial-power-bi/model.png" alt-text="Skärm bild som visar hur du visar en modell.":::
 
-### <a name="define-the-scoring-script"></a>Definiera bedömnings skriptet
+## <a name="define-the-scoring-script"></a>Definiera bedömnings skriptet
 
 När du distribuerar en modell som ska integreras i Power BI måste du definiera ett python- *bedömnings skript* och en anpassad miljö. Bedömnings skriptet innehåller två funktioner:
 
@@ -165,7 +166,7 @@ När du distribuerar en modell som ska integreras i Power BI måste du definiera
 - `run(data)`Funktionen körs när ett anrop till tjänsten innehåller indata som måste poängas. 
 
 >[!NOTE]
-> I den här artikeln används python-dekoratörer för att definiera schemat för indata-och utdata. Den här inställningen är viktig för Power BI-integrering.
+> Python-dekoratörer i koden nedan definierar schemat för in-och utdata, vilket är viktigt för att integrera med Power BI.
 
 Kopiera följande kod och klistra in den i en ny *kod cell* i din bärbara dator. Följande kodfragment innehåller cell Magic som skriver koden till en fil med namnet *score.py*.
 

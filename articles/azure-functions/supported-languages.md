@@ -3,12 +3,12 @@ title: Språk som stöds i Azure Functions
 description: Lär dig vilka språk som stöds (GA) och som finns i förhands granskningen och hur du kan utöka funktions utvecklingen till andra språk.
 ms.topic: conceptual
 ms.date: 11/27/2019
-ms.openlocfilehash: 91a6ea886c3828678771b24d69bb7987af1fb105
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: da3100521faae61e9803aaa82dbf91045a7ecbc9
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83994909"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108559"
 ---
 # <a name="supported-languages-in-azure-functions"></a>Språk som stöds i Azure Functions
 
@@ -27,9 +27,9 @@ Det finns två support nivåer:
 
 [!INCLUDE [functions-supported-languages](../../includes/functions-supported-languages.md)]
 
-## <a name="custom-handlers-preview"></a>Anpassade hanterare (förhands granskning) 
+## <a name="custom-handlers"></a>Anpassade hanterare
 
-Anpassade hanterare är lätta webb servrar som tar emot händelser från den Azure Functions värden. Alla språk som stöder HTTP-primitiver kan implementera en anpassad hanterare. Det innebär att anpassade hanterare kan användas för att skapa funktioner i språk som inte stöds officiellt. Läs mer i [Azure Functions anpassade hanterare (för hands version)](functions-custom-handlers.md).
+Anpassade hanterare är lätta webb servrar som tar emot händelser från den Azure Functions värden. Alla språk som stöder HTTP-primitiver kan implementera en anpassad hanterare. Det innebär att anpassade hanterare kan användas för att skapa funktioner i språk som inte stöds officiellt. Läs mer i [Azure Functions anpassade hanterare](functions-custom-handlers.md).
 
 ## <a name="language-extensibility"></a>Språk utökning
 

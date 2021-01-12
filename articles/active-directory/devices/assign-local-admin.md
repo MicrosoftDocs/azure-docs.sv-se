@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cfd7b5ac981fcb87d0fc929d944205dec9432b74
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: d482f21955b76e6b90523afe3b4933378c91d36e
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96575830"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98107369"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>Hantera den lokala gruppen Administratörer på Azure AD-anslutna enheter
 
@@ -32,8 +32,7 @@ När du ansluter en Windows-enhet med Azure AD med hjälp av en Azure AD-anslutn
 - Administratörs rollen för Azure AD-enhet 
 - Användaren som utför Azure AD Join   
 
-Genom att lägga till Azure AD-roller i den lokala gruppen Administratörer kan du uppdatera användare som kan hantera en enhet när som helst i Azure AD utan att ändra något på enheten. För närvarande kan du inte tilldela grupper till en administratörs roll.
-Azure AD lägger också till rollen Azure AD-enhets administratör i den lokala gruppen Administratörer för att stödja principen om minsta behörighet (PoLP). Förutom de globala administratörerna kan du också aktivera användare som *endast* har tilldelats rollen enhets administratör för att hantera en enhet. 
+Genom att lägga till Azure AD-roller i den lokala gruppen Administratörer kan du uppdatera användare som kan hantera en enhet när som helst i Azure AD utan att ändra något på enheten. Azure AD lägger också till rollen Azure AD-enhets administratör i den lokala gruppen Administratörer för att stödja principen om minsta behörighet (PoLP). Förutom de globala administratörerna kan du också aktivera användare som *endast* har tilldelats rollen enhets administratör för att hantera en enhet. 
 
 ## <a name="manage-the-global-administrators-role"></a>Hantera rollen som global administratör
 

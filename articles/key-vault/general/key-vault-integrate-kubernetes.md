@@ -1,18 +1,18 @@
 ---
 title: Integrera Azure Key Vault med Kubernetes
 description: I den här självstudien får du åtkomst till och hämtar hemligheter från Azure Key Vault med hjälp av CSI-drivrutinen (hemligheter Store container Storage Interface) för att montera i Kubernetes poddar.
-author: ShaneBala-keyvault
-ms.author: sudbalas
+author: msmbaldwin
+ms.author: mbaldwin
 ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/25/2020
-ms.openlocfilehash: 2645842130b83fe7b4cfb33b9389b19a1306506d
-ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
+ms.openlocfilehash: 6952d239c9dc5c52c0057a6ee1a3b10b30ed9b00
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97756032"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108763"
 ---
 # <a name="tutorial-configure-and-run-the-azure-key-vault-provider-for-the-secrets-store-csi-driver-on-kubernetes"></a>Självstudie: Konfigurera och kör Azure Key Vault-providern för hemligheter Store CSI-drivrutinen på Kubernetes
 
@@ -24,12 +24,11 @@ I den här självstudien får du åtkomst till och hämtar hemligheter från Azu
 I de här självstudierna får du lära dig att
 
 > [!div class="checklist"]
-> * Skapa ett huvud namn för tjänsten eller Använd hanterade identiteter.
+> * Använd hanterade identiteter.
 > * Distribuera ett Azure Kubernetes service-kluster (AKS) med hjälp av Azure CLI.
 > * Installera Helm och hemligheter för att lagra CSI.
 > * Skapa ett Azure Key Vault och Ställ in dina hemligheter.
 > * Skapa ett eget SecretProviderClass-objekt.
-> * Tilldela tjänstens huvud namn eller Använd hanterade identiteter.
 > * Distribuera din POD med monterade hemligheter från ditt nyckel valv.
 
 ## <a name="prerequisites"></a>Krav
@@ -38,22 +37,7 @@ I de här självstudierna får du lära dig att
 
 * Innan du börjar den här självstudien installerar du [Azure CLI](/cli/azure/install-azure-cli-windows?view=azure-cli-latest).
 
-## <a name="create-a-service-principal-or-use-managed-identities"></a>Skapa ett huvud namn för tjänsten eller Använd hanterade identiteter
-
-Om du planerar att använda hanterade identiteter kan du gå vidare till nästa avsnitt.
-
-Skapa ett huvud namn för tjänsten för att kontrol lera vilka resurser som kan nås från ditt Azure Key Vault. Åtkomsten till tjänstens huvud namn begränsas av de roller som har tilldelats dem. Den här funktionen ger dig kontroll över hur tjänstens huvud namn kan hantera dina hemligheter. I följande exempel är namnet på tjänstens huvud namn *contosoServicePrincipal*.
-
-```azurecli
-az ad sp create-for-rbac --name contosoServicePrincipal --skip-assignment
-```
-Den här åtgärden returnerar en serie med nyckel/värde-par:
-
-![Skärm bild som visar appId och lösen ordet för contosoServicePrincipal](../media/kubernetes-key-vault-1.png)
-
-Kopiera autentiseringsuppgifterna för **appId** och **lösen ord** för senare användning.
-
-## <a name="flow-for-using-managed-identity"></a>Flöde för att använda hanterad identitet
+## <a name="use-managed-identities"></a>Använda hanterade identiteter
 
 Det här diagrammet illustrerar AKS-Key Vault-integrations flödet för hanterad identitet:
 
@@ -66,7 +50,7 @@ Du behöver inte använda Azure Cloud Shell. Kommando tolken (Terminal) med Azur
 Slutför avsnitten "skapa en resurs grupp," skapa AKS-kluster "och" Anslut till klustret "i [distribuera ett Azure Kubernetes service-kluster med hjälp av Azure CLI](../../aks/kubernetes-walkthrough.md). 
 
 > [!NOTE] 
-> Om du planerar att använda en POD-identitet i stället för ett huvud namn för tjänsten måste du aktivera den när du skapar Kubernetes-klustret, som du ser i följande kommando:
+> Om du planerar att använda en POD-identitet måste du aktivera den när du skapar Kubernetes-klustret, som du ser i följande kommando:
 >
 > ```azurecli
 > az aks create -n contosoAKSCluster -g contosoResourceGroup --kubernetes-version 1.16.9 --node-count 1 --enable-managed-identity
@@ -121,7 +105,7 @@ Om du vill skapa ett eget nyckel valv och ange dina hemligheter följer du anvis
 
 Fyll i de saknade parametrarna i filen sample SecretProviderClass YAML. Följande parametrar måste anges:
 
-* **userAssignedIdentityID**: # [required] om du använder ett huvud namn för tjänsten använder du klient-ID för att ange vilken användardefinierad hanterad identitet som ska användas. Om du använder en användardefinierad identitet som den virtuella datorns hanterade identitet anger du identitetens klient-ID. Om värdet är tomt används den systemtilldelade identiteten för den virtuella datorn 
+* **userAssignedIdentityID**: # [required] om värdet är tomt används den systemtilldelade identiteten på den virtuella datorn som standard 
 * **keyvaultName**: namnet på ditt nyckel valv
 * **objekt**: behållaren för allt hemligt innehåll som du vill montera
     * **objectName**: namnet på det hemliga innehållet
@@ -147,9 +131,8 @@ spec:
   parameters:
     usePodIdentity: "false"                   # [REQUIRED] Set to "true" if using managed identities
     useVMManagedIdentity: "false"             # [OPTIONAL] if not provided, will default to "false"
-    userAssignedIdentityID: "servicePrincipalClientID"       # [REQUIRED] If you're using a service principal, use the client id to specify which user-assigned managed identity to use. If you're using a user-assigned identity as the VM's managed identity, specify the identity's client id. If the value is empty, it defaults to use the system-assigned identity on the VM
-                                                             #     az ad sp show --id http://contosoServicePrincipal --query appId -o tsv
-                                                             #     the preceding command will return the client ID of your service principal
+    userAssignedIdentityID: "servicePrincipalClientID"       # [REQUIRED]  If you're using a user-assigned identity as the VM's managed identity, specify the identity's client id. If the value is empty, it defaults to use the system-assigned identity on the VM
+                                                         
     keyvaultName: "contosoKeyVault5"          # [REQUIRED] the name of the key vault
                                               #     az keyvault show --name contosoKeyVault5
                                               #     the preceding command will display the key vault metadata, which includes the subscription ID, resource group name, key vault 
@@ -174,58 +157,18 @@ Följande bild visar konsolens utdata för **AZ-contosoKeyVault5 show--name** me
 
 ![Skärm bild som visar konsolens utdata för "AZ-valv show--name contosoKeyVault5"](../media/kubernetes-key-vault-4.png)
 
-## <a name="assign-your-service-principal-or-use-managed-identities"></a>Tilldela tjänstens huvud namn eller Använd hanterade identiteter
+## <a name="assign-managed-identity"></a>Tilldela hanterad identitet
 
-### <a name="assign-a-service-principal"></a>Tilldela ett tjänstobjekt
-
-Om du använder ett huvud namn för tjänsten ger du behörighet för det för att få åtkomst till ditt nyckel valv och hämta hemligheter. Tilldela rollen *läsare* och ge tjänstens huvud namn behörighet att *Hämta* hemligheter från nyckel valvet genom att göra följande kommando:
-
-1. Tilldela tjänstens huvud namn till ditt befintliga nyckel valv. Parametern **$AZURE _CLIENT_ID** är det **appId** som du kopierade efter att du har skapat ditt tjänst huvud namn.
-    ```azurecli
-    az role assignment create --role Reader --assignee $AZURE_CLIENT_ID --scope /subscriptions/$SUBID/resourcegroups/$KEYVAULT_RESOURCE_GROUP/providers/Microsoft.KeyVault/vaults/$KEYVAULT_NAME
-    ```
-
-    Kommandots utdata visas i följande bild: 
-
-    ![Skärm bild som visar principalId-värdet](../media/kubernetes-key-vault-5.png)
-
-1. Ge behörighet till tjänstens huvud namn för att få hemligheter:
-    ```azurecli
-    az keyvault set-policy -n $KEYVAULT_NAME --secret-permissions get --spn $AZURE_CLIENT_ID
-    az keyvault set-policy -n $KEYVAULT_NAME --key-permissions get --spn $AZURE_CLIENT_ID
-    ```
-
-1. Du har nu konfigurerat tjänstens huvud namn med behörighet att läsa hemligheter från nyckel valvet. **$AZURE _CLIENT_SECRET** är lösen ordet för tjänstens huvud namn. Lägg till dina autentiseringsuppgifter för tjänstens huvud namn som en Kubernetes-hemlighet som är tillgänglig för hemligheter Store CSI-drivrutinen:
-    ```azurecli
-    kubectl create secret generic secrets-store-creds --from-literal clientid=$AZURE_CLIENT_ID --from-literal clientsecret=$AZURE_CLIENT_SECRET
-    ```
-
-> [!NOTE] 
-> Om du distribuerar Kubernetes-Pod och du får ett fel meddelande om ett ogiltigt ID för klient hemlighet kan du ha ett äldre ID för klient hemlighet som har upphört att gälla eller återställts. Lös problemet genom att ta bort hemligheten Secret *-Store-creds* och skapa en ny med det aktuella klient hemlighets-ID: t. Om du vill ta bort dina *hemligheter – spara autentiseringsuppgifter* kör du följande kommando:
->
-> ```azurecli
-> kubectl delete secrets secrets-store-creds
-> ```
-
-Om du har glömt ditt tjänst huvuds ID för klient hemligheten kan du återställa det med hjälp av följande kommando:
-
-```azurecli
-az ad sp credential reset --name contosoServicePrincipal --credential-description "APClientSecret" --query password -o tsv
-```
-
-### <a name="use-managed-identities"></a>Använda hanterade identiteter
-
-Om du använder hanterade identiteter tilldelar du vissa roller till det AKS-kluster som du har skapat. 
+Tilldela vissa roller till det AKS-kluster som du har skapat. 
 
 1. Om du vill skapa, Visa eller läsa en användardefinierad hanterad identitet måste ditt AKS-kluster tilldelas rollen [hanterad identitets operatör](../../role-based-access-control/built-in-roles.md#managed-identity-operator) . Kontrol lera att **$clientId** är Kubernetes-klustrets clientId. För omfånget kommer den att vara under din Azure-prenumerations tjänst, särskilt den resurs grupp för noden som gjordes när AKS-klustret skapades. Det här omfånget garanterar att endast resurser inom gruppen påverkas av rollerna som tilldelas nedan. 
 
     ```azurecli
     RESOURCE_GROUP=contosoResourceGroup
-    az role assignment create --role "Managed Identity Operator" --assignee $clientId --scope /subscriptions/$SUBID/resourcegroups/$RESOURCE_GROUP
     
-    az role assignment create --role "Managed Identity Operator" --assignee $clientId --scope /subscriptions/$SUBID/resourcegroups/$NODE_RESOURCE_GROUP
+    az role assignment create --role "Managed Identity Operator" --assignee $clientId --scope /subscriptions/<SUBID>/resourcegroups/$RESOURCE_GROUP
     
-    az role assignment create --role "Virtual Machine Contributor" --assignee $clientId --scope /subscriptions/$SUBID/resourcegroups/$NODE_RESOURCE_GROUP
+    az role assignment create --role "Virtual Machine Contributor" --assignee $clientId --scope /subscriptions/<SUBID>/resourcegroups/$RESOURCE_GROUP
     ```
 
 1. Installera Azure Active Directory (Azure AD)-identiteten i AKS.
@@ -242,7 +185,7 @@ Om du använder hanterade identiteter tilldelar du vissa roller till det AKS-klu
 
 1. Tilldela rollen *läsare* till den Azure AD-identitet som du skapade i föregående steg för ditt nyckel valv och ge sedan identiteten behörighet att hämta hemligheter från nyckel valvet. Använd **clientId** och **PRINCIPALID** från Azure AD-identiteten.
     ```azurecli
-    az role assignment create --role "Reader" --assignee $principalId --scope /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/contosoResourceGroup/providers/Microsoft.KeyVault/vaults/contosoKeyVault5
+    az role assignment create --role "Reader" --assignee $principalId --scope /subscriptions/<SUBID>/resourceGroups/contosoResourceGroup/providers/Microsoft.KeyVault/vaults/contosoKeyVault5
 
     az keyvault set-policy -n contosoKeyVault5 --secret-permissions get --spn $clientId
     az keyvault set-policy -n contosoKeyVault5 --key-permissions get --spn $clientId
@@ -253,16 +196,6 @@ Om du använder hanterade identiteter tilldelar du vissa roller till det AKS-klu
 Kör följande kommando för att konfigurera SecretProviderClass-objektet:
 ```azurecli
 kubectl apply -f secretProviderClass.yaml
-```
-
-### <a name="use-a-service-principal"></a>Använd ett huvud namn för tjänsten
-
-Om du använder ett huvud namn för tjänsten kan du använda följande kommando för att distribuera din Kubernetes-poddar med SecretProviderClass och de hemligheter-lagrar-autentiseringsuppgifter som du konfigurerade tidigare. Här är mallar för distribution:
-* För [Linux](https://github.com/Azure/secrets-store-csi-driver-provider-azure/blob/master/examples/nginx-pod-inline-volume-service-principal.yaml)
-* För [Windows](https://github.com/Azure/secrets-store-csi-driver-provider-azure/blob/master/examples/windows-pod-secrets-store-inline-volume-secret-providerclass.yaml)
-
-```azurecli
-kubectl apply -f updateDeployment.yaml
 ```
 
 ### <a name="use-managed-identities"></a>Använda hanterade identiteter
@@ -318,8 +251,6 @@ spec:
         readOnly: true
         volumeAttributes:
           secretProviderClass: azure-kvname
-        nodePublishSecretRef:           # Only required when using service principal mode
-          name: secrets-store-creds     # Only required when using service principal mode
 ```
 
 Kör följande kommando för att distribuera din POD:

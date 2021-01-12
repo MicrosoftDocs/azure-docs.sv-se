@@ -3,12 +3,12 @@ title: Geo-haveri beredskap – Azure Event Hubs | Microsoft Docs
 description: Använda geografiska regioner för att redundansväxla och utföra haveri beredskap i Azure Event Hubs
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: e10ac5847a38190c8feaae5e51f9b55bee4c4fbc
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: 8824334e762237c3f18cb763d5b39fa55d6415a3
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97861482"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108496"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure Event Hubs-geo-haveri beredskap 
 
@@ -70,7 +70,29 @@ Följande avsnitt innehåller en översikt över redundansväxlingen och förkla
 
 ### <a name="setup"></a>Installation
 
-Först skapar du eller använder ett befintligt primärt namn område och ett nytt sekundärt namn område och kopplar sedan samman de två. Den här ihopparningen ger dig ett alias som du kan använda för att ansluta. Eftersom du använder ett alias behöver du inte ändra anslutnings strängarna. Det går bara att lägga till nya namn områden i ihopparningen för redundans. Slutligen bör du lägga till viss övervakning för att upptäcka om det behövs en redundansväxling. I de flesta fall är tjänsten en del av ett stort eko system, vilket innebär att det inte går att använda automatiska redundanser, eftersom ofta redundans måste utföras i synkronisering med det återstående del systemet eller infrastrukturen.
+Först skapar du eller använder ett befintligt primärt namn område och ett nytt sekundärt namn område och kopplar sedan samman de två. Den här ihopparningen ger dig ett alias som du kan använda för att ansluta. Eftersom du använder ett alias behöver du inte ändra anslutnings strängarna. Det går bara att lägga till nya namn områden i ihopparningen för redundans. 
+
+1. Skapa det primära namn området.
+1. Skapa det sekundära namn området. Det här är valfritt. Du kan skapa det sekundära namn området när du skapar kopplingen i nästa steg. 
+1. I Azure Portal navigerar du till ditt primära namn område.
+1. Välj **geo-återställning** på den vänstra menyn och välj **Starta koppling** i verktygsfältet. 
+
+    :::image type="content" source="./media/event-hubs-geo-dr/primary-namspace-initiate-pairing-button.png" alt-text="Starta koppling från det primära namn området":::    
+1. På sidan **initiera koppling** väljer du ett befintligt sekundärt namn område eller skapar ett. Välj sedan **skapa**. I följande exempel väljs ett befintligt sekundärt namn område. 
+
+    :::image type="content" source="./media/event-hubs-geo-dr/initiate-pairing-page.png" alt-text="Välj sekundär namnrymd":::        
+1. När du nu väljer **geo-återställning** för det primära namn området bör du se sidan **geo-Dr-alias** som ser ut som följande bild:
+
+    :::image type="content" source="./media/event-hubs-geo-dr/geo-dr-alias-page.png" alt-text="Sidan geo-DR-alias":::    
+1. På den här **översikts** sidan kan du utföra följande åtgärder: 
+    1. Bryt kopplingen mellan primära och sekundära namn områden. Välj **Bryt ihopparning** i verktygsfältet. 
+    1. Manuell redundans till det sekundära namn området. Välj **redundans** i verktygsfältet. 
+    
+        > [!WARNING]
+        > Vid växling aktive ras det sekundära namn området och det primära namn området tas bort från Geo-Disaster återställnings par. Skapa ett nytt namn område med ett nytt geo-haveri återställnings par. 
+1. På sidan **geo-Dr-alias** väljer du **principer för delad åtkomst** för att få åtkomst till den primära anslutnings strängen för aliaset. Använd den här anslutnings strängen i stället för att använda anslutnings strängen till det primära/sekundära namn området direkt. 
+
+Slutligen bör du lägga till viss övervakning för att upptäcka om det behövs en redundansväxling. I de flesta fall är tjänsten en del av ett stort eko system, vilket innebär att det inte går att använda automatiska redundanser, eftersom ofta redundans måste utföras i synkronisering med det återstående del systemet eller infrastrukturen.
 
 ### <a name="example"></a>Exempel
 
@@ -132,8 +154,8 @@ Du kan bara aktivera Tillgänglighetszoner på nya namn områden med hjälp av A
 
 ![3][]
 
-## <a name="private-endpoints"></a>Privata slut punkter
-Det här avsnittet innehåller ytterligare information om hur du använder geo-haveri beredskap med namn områden som använder privata slut punkter. Information om hur du använder privata slut punkter med Event Hubs i allmänhet finns i [Konfigurera privata slut punkter](private-link-service.md).
+## <a name="private-endpoints"></a>Privata slutpunkter
+Det här avsnittet innehåller mer information om hur du använder geo-katastrof återställning med namn områden som använder privata slut punkter. Information om hur du använder privata slut punkter med Event Hubs i allmänhet finns i [Konfigurera privata slut punkter](private-link-service.md).
 
 ### <a name="new-pairings"></a>Nya par
 Om du försöker skapa en koppling mellan ett primärt namn område med en privat slut punkt och ett sekundärt namn område utan en privat slut punkt, kommer ihopparningen att Miss pare ras. Länkningen fungerar bara om både primärt och sekundärt namn område har privata slut punkter. Vi rekommenderar att du använder samma konfigurationer på de primära och sekundära namn områdena och i virtuella nätverk där privata slut punkter skapas.  

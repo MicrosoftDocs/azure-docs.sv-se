@@ -3,12 +3,12 @@ title: Vanliga frågor och svar
 description: Innehåller svar på några vanliga frågor om Azure VMware-lösningen.
 ms.topic: conceptual
 ms.date: 1/4/2020
-ms.openlocfilehash: d0228739a6ee4eac20d2fa04e47cf86b6fddb84e
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 1420fba40492e1a5f45f4ad5e58da2caa29ae7e7
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97881233"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98107964"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>Vanliga frågor och svar om Azure VMware-lösningen
 
@@ -29,6 +29,10 @@ Tjänsten läggs kontinuerligt till i nya regioner, så se den [senaste tjänst 
 #### <a name="can-workloads-running-in-an-azure-vmware-solution-instance-consume-or-integrate-with-azure-services"></a>Kan arbets belastningar som körs i en Azure VMware Solution-instans förbruka eller integrera med Azure-tjänster?
 
 Alla Azure-tjänster kommer att vara tillgängliga för kunder med Azure VMware-lösningar. Begränsningar för prestanda och tillgänglighet för vissa tjänster måste åtgärdas från fall till fall.
+
+#### <a name="what-guest-operating-systems-are-compatible-with-azure-vmware-solution"></a>Vilka gäst operativ system är kompatibla med Azure VMware-lösningen?
+
+Du hittar information om gäst operativ systemets kompatibilitet med vSphere med hjälp av [VMware Compatibility guide](https://www.vmware.com/resources/compatibility/search.php?deviceCategory=software&details=1&releases=485&page=1&display_interval=10&sortColumn=Partner&sortOrder=Asc&testConfig=16).  Information om hur du identifierar den version av vSphere som körs i Azure VMware-lösningen finns i [VMware-programversioner](concepts-private-clouds-clusters.md#vmware-software-versions).
 
 #### <a name="do-i-use-the-same-tools-that-i-use-now-to-manage-private-cloud-resources"></a>Använder jag samma verktyg som jag använder nu för att hantera privata moln resurser?
 

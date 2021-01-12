@@ -5,21 +5,18 @@ services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
 manager: gwallace
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.topic: tutorial
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/12/2019
 ms.author: cynthn
 ms.custom: mvc, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 456c42dc0b25e168744ce283cddbd63b877813ab
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: ebff49db895468549a7abd420e7b74292b742eab
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92747159"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108644"
 ---
 # <a name="tutorial---how-to-use-cloud-init-to-customize-a-linux-virtual-machine-in-azure-on-first-boot"></a>Självstudiekurs – Så här använder du cloud-init för att anpassa en virtuell Linux-dator i Azure vid den första starten
 
@@ -39,17 +36,7 @@ Om du väljer att installera och använda CLI lokalt krävs Azure CLI version 2.
 
 Cloud-init fungerar med olika distributioner. Du använder till exempel inte **apt-get install** eller **yum install** när du vill installera ett paket. I stället definierar du en lista med paket att installera. Cloud-init använder automatiskt rätt pakethanteringsverktyg för den distribution du valt.
 
-Vi arbetar med våra partners och försöker göra så att cloud-init inkluderas och fungerar i de avbildningar de tillhandahåller till Azure. Den här tabellen beskriver den aktuella tillgängligheten när det gäller cloud-init på Azure plattformsavbildningar:
-
-| Publisher | Erbjudande | SKU | Version | moln-init Ready |
-|:--- |:--- |:--- |:--- |:--- |
-|Canonical |UbuntuServer |18,04 – LTS |senaste |yes | 
-|Canonical |UbuntuServer |16.04-LTS |senaste |yes | 
-|Canonical |UbuntuServer |14.04.5-LTS |senaste |yes |
-|CoreOS |CoreOS |Stable |senaste |yes |
-|OpenLogic 7,6 |CentOS |7-CI |senaste |preview |
-|RedHat 7,6 |RHEL |7-RAW-CI |7.6.2019072418 |yes |
-|RedHat 7,7 |RHEL |7-RAW-CI |7.7.2019081601 |preview |
+Vi arbetar med våra partners och försöker göra så att cloud-init inkluderas och fungerar i de avbildningar de tillhandahåller till Azure. För detaljerad information Cloud-Init-stöd för varje distribution, se [Cloud-Init-stöd för virtuella datorer i Azure](using-cloud-init.md).
 
 
 ## <a name="create-cloud-init-config-file"></a>Skapa en cloud-init-konfigurationsfil
@@ -102,13 +89,13 @@ runcmd:
 Mer information om konfigurationsalternativ för cloud-init finns i [konfigurationsexempel för cloud-init](https://cloudinit.readthedocs.io/en/latest/topics/examples.html).
 
 ## <a name="create-virtual-machine"></a>Skapa en virtuell dator
-Innan du kan skapa en virtuell dator skapar du en resursgrupp med [az group create](/cli/azure/group#az-group-create). I följande exempel skapas en resursgrupp med namnet *myResourceGroupAutomate* på platsen *eastus* :
+Innan du kan skapa en virtuell dator skapar du en resursgrupp med [az group create](/cli/azure/group#az-group-create). I följande exempel skapas en resursgrupp med namnet *myResourceGroupAutomate* på platsen *eastus*:
 
 ```azurecli-interactive
 az group create --name myResourceGroupAutomate --location eastus
 ```
 
-Skapa nu en virtuell dator med [az vm create](/cli/azure/vm#az-vm-create). Använd parametern `--custom-data` för att skicka in din cloud-init-konfigurationsfil. Ange den fullständiga sökvägen till *cloud-init.txt* om du sparat filen utanför din aktuella arbetskatalog. I följande exempel skapas en virtuell dator med namnet *myVM* :
+Skapa nu en virtuell dator med [az vm create](/cli/azure/vm#az-vm-create). Använd parametern `--custom-data` för att skicka in din cloud-init-konfigurationsfil. Ange den fullständiga sökvägen till *cloud-init.txt* om du sparat filen utanför din aktuella arbetskatalog. I följande exempel skapas en virtuell dator med namnet *myVM*:
 
 ```azurecli-interactive
 az vm create \
@@ -147,7 +134,7 @@ Följande steg visar hur du kan:
 - Skapa en virtuell dator och mata in certifikatet
 
 ### <a name="create-an-azure-key-vault"></a>Skapa ett Azure Key Vault
-Skapa först ett Key Vault med [az keyvault create](/cli/azure/keyvault#az-keyvault-create) och aktivera det för användning när du distribuerar en virtuell dator. För varje Key Vault krävs ett unikt namn som ska skrivas med gemener. Ersätt *mittkeyvault* i följande exempel med ditt eget unika Key Vault-namn:
+Skapa först ett Key Vault med [az keyvault create](/cli/azure/keyvault#az-keyvault-create) och aktivera det för användning när du distribuerar en virtuell dator. För varje Key Vault krävs ett unikt namn som ska skrivas med gemener. Ersätt `mykeyvault` i följande exempel med ditt eget unika Key Vault-namn:
 
 ```azurecli-interactive
 keyvault_name=mykeyvault
@@ -181,7 +168,7 @@ vm_secret=$(az vm secret format --secret "$secret" --output json)
 
 
 ### <a name="create-cloud-init-config-to-secure-nginx"></a>Skapa en cloud-init-konfiguration för att skydda NGINX
-När du skapar en virtuella dator lagras certifikat och nycklar i den skyddade katalogen */var/lib/waagent/* . Om du vill automatisera inmatningen av certifikatet i den virtuella datorn och konfigurera NGINX kan du använda en uppdaterad cloud-init-konfigurationsfil från föregående exempel.
+När du skapar en virtuella dator lagras certifikat och nycklar i den skyddade katalogen */var/lib/waagent/*. Om du vill automatisera inmatningen av certifikatet i den virtuella datorn och konfigurera NGINX kan du använda en uppdaterad cloud-init-konfigurationsfil från föregående exempel.
 
 Skapa en fil med namnet *cloud-init-secured.txt* och klistra in följande konfiguration. Om du använder Cloud Shell skapar du konfigurations filen för Cloud-Init där och inte på den lokala datorn. Skriv till exempel om `sensible-editor cloud-init-secured.txt` du vill skapa filen och visa en lista över tillgängliga redigerare. Se till att hela cloud-init-filen kopieras korrekt, särskilt den första raden:
 
