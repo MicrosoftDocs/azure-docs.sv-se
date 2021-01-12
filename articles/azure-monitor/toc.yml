@@ -226,6 +226,8 @@
               href: platform/service-providers.md
             - name: Dedikerade kluster
               href: log-query/logs-dedicated-clusters.md
+            - name: Felsökningsloggar
+              href: platform/azure-monitor-troubleshooting-logs.md
         - name: Log Analytics
           items:
             - name: Översikt
