@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/24/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: dec41a5e05d22891aae9d16280ebb6b0c8da3f20
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 49762b1844aec85ff55ae2a16243a231414b263f
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185121"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071586"
 ---
 # <a name="azure-cosmos-db-input-binding-for-azure-functions-2x-and-higher"></a>Azure Cosmos DB bindning för Azure Functions 2. x och högre
 
@@ -300,7 +300,7 @@ namespace CosmosDBSamplesV2
 I följande exempel visas en [C#-funktion](functions-dotnet-class-library.md) som hämtar en lista med dokument. Funktionen utlöses av en HTTP-begäran. I koden används en `DocumentClient` instans som tillhandahålls av Azure Cosmos DB bindningen för att läsa en lista över dokument. `DocumentClient`Instansen kan också användas för Skriv åtgärder.
 
 > [!NOTE]
-> Du kan också använda [IDocumentClient](/dotnet/api/microsoft.azure.documents.idocumentclient?view=azure-dotnet) -gränssnittet för att göra testningen enklare.
+> Du kan också använda [IDocumentClient](/dotnet/api/microsoft.azure.documents.idocumentclient?view=azure-dotnet&preserve-view=true) -gränssnittet för att göra testningen enklare.
 
 ```cs
 using Microsoft.AspNetCore.Http;
@@ -721,421 +721,6 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, Docume
 }
 ```
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
-
-Det här avsnittet innehåller följande exempel som läser ett enda dokument genom att ange ett ID-värde från olika källor:
-
-* [Köa utlösare, slå upp ID från JSON](#queue-trigger-look-up-id-from-json-javascript)
-* [HTTP-utlösare, leta upp ID från frågesträng](#http-trigger-look-up-id-from-query-string-javascript)
-* [HTTP-utlösare, slå upp ID från flödes data](#http-trigger-look-up-id-from-route-data-javascript)
-* [Köa utlösare, hämta flera dokument med SqlQuery](#queue-trigger-get-multiple-docs-using-sqlquery-javascript)
-
-<a id="queue-trigger-look-up-id-from-json-javascript"></a>
-
-### <a name="queue-trigger-look-up-id-from-json"></a>Köa utlösare, slå upp ID från JSON
-
-I följande exempel visas en Cosmos DB indata-bindning i en *function.jsi* filen och en [JavaScript-funktion](functions-reference-node.md) som använder bindningen. Funktionen läser ett enda dokument och uppdaterar dokumentets text värde.
-
-Här är bindnings data i *function.jspå* filen:
-
-```json
-{
-    "name": "inputDocumentIn",
-    "type": "cosmosDB",
-    "databaseName": "MyDatabase",
-    "collectionName": "MyCollection",
-    "id" : "{queueTrigger_payload_property}",
-    "partitionKey": "{queueTrigger_payload_property}",
-    "connectionStringSetting": "MyAccount_COSMOSDB",
-    "direction": "in"
-},
-{
-    "name": "inputDocumentOut",
-    "type": "cosmosDB",
-    "databaseName": "MyDatabase",
-    "collectionName": "MyCollection",
-    "createIfNotExists": false,
-    "partitionKey": "{queueTrigger_payload_property}",
-    "connectionStringSetting": "MyAccount_COSMOSDB",
-    "direction": "out"
-}
-```
-
-I [konfigurations](#configuration) avsnittet förklaras dessa egenskaper.
-
-Här är JavaScript-koden:
-
-```javascript
-    // Change input document contents using Azure Cosmos DB input binding, using context.bindings.inputDocumentOut
-    module.exports = function (context) {
-    context.bindings.inputDocumentOut = context.bindings.inputDocumentIn;
-    context.bindings.inputDocumentOut.text = "This was updated!";
-    context.done();
-    };
-```
-
-<a id="http-trigger-look-up-id-from-query-string-javascript"></a>
-
-### <a name="http-trigger-look-up-id-from-query-string"></a>HTTP-utlösare, leta upp ID från frågesträng
-
-I följande exempel visas en [JavaScript-funktion](functions-reference-node.md) som hämtar ett enskilt dokument. Funktionen utlöses av en HTTP-begäran som använder en frågesträng för att ange det ID och det partitionsnyckel som ska sökas upp. Detta ID och partitionerings nyckel värde används för att hämta ett `ToDoItem` dokument från den angivna databasen och samlingen.
-
-Här är *function.jspå* filen:
-
-```json
-{
-  "bindings": [
-    {
-      "authLevel": "anonymous",
-      "name": "req",
-      "type": "httpTrigger",
-      "direction": "in",
-      "methods": [
-        "get",
-        "post"
-      ]
-    },
-    {
-      "name": "$return",
-      "type": "http",
-      "direction": "out"
-    },
-    {
-      "type": "cosmosDB",
-      "name": "toDoItem",
-      "databaseName": "ToDoItems",
-      "collectionName": "Items",
-      "connectionStringSetting": "CosmosDBConnection",
-      "direction": "in",
-      "Id": "{Query.id}",
-      "PartitionKey": "{Query.partitionKeyValue}"
-    }
-  ],
-  "disabled": false
-}
-```
-
-Här är JavaScript-koden:
-
-```javascript
-module.exports = function (context, req, toDoItem) {
-    context.log('JavaScript queue trigger function processed work item');
-    if (!toDoItem)
-    {
-        context.log("ToDo item not found");
-    }
-    else
-    {
-        context.log("Found ToDo item, Description=" + toDoItem.Description);
-    }
-
-    context.done();
-};
-```
-
-<a id="http-trigger-look-up-id-from-route-data-javascript"></a>
-
-### <a name="http-trigger-look-up-id-from-route-data"></a>HTTP-utlösare, slå upp ID från flödes data
-
-I följande exempel visas en [JavaScript-funktion](functions-reference-node.md) som hämtar ett enskilt dokument. Funktionen utlöses av en HTTP-begäran som använder flödes data för att ange det ID och det partitionsnyckel som ska sökas upp. Detta ID och partitionerings nyckel värde används för att hämta ett `ToDoItem` dokument från den angivna databasen och samlingen.
-
-Här är *function.jspå* filen:
-
-```json
-{
-  "bindings": [
-    {
-      "authLevel": "anonymous",
-      "name": "req",
-      "type": "httpTrigger",
-      "direction": "in",
-      "methods": [
-        "get",
-        "post"
-      ],
-      "route":"todoitems/{partitionKeyValue}/{id}"
-    },
-    {
-      "name": "$return",
-      "type": "http",
-      "direction": "out"
-    },
-    {
-      "type": "cosmosDB",
-      "name": "toDoItem",
-      "databaseName": "ToDoItems",
-      "collectionName": "Items",
-      "connectionStringSetting": "CosmosDBConnection",
-      "direction": "in",
-      "Id": "{id}",
-      "PartitionKey": "{partitionKeyValue}"
-    }
-  ],
-  "disabled": false
-}
-```
-
-Här är JavaScript-koden:
-
-```javascript
-module.exports = function (context, req, toDoItem) {
-    context.log('JavaScript queue trigger function processed work item');
-    if (!toDoItem)
-    {
-        context.log("ToDo item not found");
-    }
-    else
-    {
-        context.log("Found ToDo item, Description=" + toDoItem.Description);
-    }
-
-    context.done();
-};
-```
-
-<a id="queue-trigger-get-multiple-docs-using-sqlquery-javascript"></a>
-
-### <a name="queue-trigger-get-multiple-docs-using-sqlquery"></a>Köa utlösare, hämta flera dokument med SqlQuery
-
-I följande exempel visas en Azure Cosmos DB indata-bindning i en *function.jsi* filen och en [JavaScript-funktion](functions-reference-node.md) som använder bindningen. Funktionen hämtar flera dokument som anges av en SQL-fråga med hjälp av en Queue-utlösare för att anpassa frågeparametrar.
-
-Utlösaren för kön innehåller en parameter `departmentId` . Ett Queue-meddelande i `{ "departmentId" : "Finance" }` returnerar alla poster för ekonomi avdelningen.
-
-Här är bindnings data i *function.jspå* filen:
-
-```json
-{
-    "name": "documents",
-    "type": "cosmosDB",
-    "direction": "in",
-    "databaseName": "MyDb",
-    "collectionName": "MyCollection",
-    "sqlQuery": "SELECT * from c where c.departmentId = {departmentId}",
-    "connectionStringSetting": "CosmosDBConnection"
-}
-```
-
-I [konfigurations](#configuration) avsnittet förklaras dessa egenskaper.
-
-Här är JavaScript-koden:
-
-```javascript
-    module.exports = function (context, input) {
-        var documents = context.bindings.documents;
-        for (var i = 0; i < documents.length; i++) {
-            var document = documents[i];
-            // operate on each document
-        }
-        context.done();
-    };
-```
-
-# <a name="python"></a>[Python](#tab/python)
-
-Det här avsnittet innehåller följande exempel som läser ett enda dokument genom att ange ett ID-värde från olika källor:
-
-* [Köa utlösare, slå upp ID från JSON](#queue-trigger-look-up-id-from-json-python)
-* [HTTP-utlösare, leta upp ID från frågesträng](#http-trigger-look-up-id-from-query-string-python)
-* [HTTP-utlösare, slå upp ID från flödes data](#http-trigger-look-up-id-from-route-data-python)
-* [Köa utlösare, hämta flera dokument med SqlQuery](#queue-trigger-get-multiple-docs-using-sqlquery-python)
-
-<a id="queue-trigger-look-up-id-from-json-python"></a>
-
-### <a name="queue-trigger-look-up-id-from-json"></a>Köa utlösare, slå upp ID från JSON
-
-I följande exempel visas en Cosmos DB indata-bindning i en *function.jspå* filen och en [python-funktion](functions-reference-python.md) som använder bindningen. Funktionen läser ett enda dokument och uppdaterar dokumentets text värde.
-
-Här är bindnings data i *function.jspå* filen:
-
-```json
-{
-    "name": "documents",
-    "type": "cosmosDB",
-    "databaseName": "MyDatabase",
-    "collectionName": "MyCollection",
-    "id" : "{queueTrigger_payload_property}",
-    "partitionKey": "{queueTrigger_payload_property}",
-    "connectionStringSetting": "MyAccount_COSMOSDB",
-    "direction": "in"
-},
-{
-    "name": "$return",
-    "type": "cosmosDB",
-    "databaseName": "MyDatabase",
-    "collectionName": "MyCollection",
-    "createIfNotExists": false,
-    "partitionKey": "{queueTrigger_payload_property}",
-    "connectionStringSetting": "MyAccount_COSMOSDB",
-    "direction": "out"
-}
-```
-
-I [konfigurations](#configuration) avsnittet förklaras dessa egenskaper.
-
-Här är python-koden:
-
-```python
-import azure.functions as func
-
-
-def main(queuemsg: func.QueueMessage, documents: func.DocumentList) -> func.Document:
-    if documents:
-        document = documents[0]
-        document['text'] = 'This was updated!'
-        return document
-```
-
-<a id="http-trigger-look-up-id-from-query-string-python"></a>
-
-### <a name="http-trigger-look-up-id-from-query-string"></a>HTTP-utlösare, leta upp ID från frågesträng
-
-I följande exempel visas en [python-funktion](functions-reference-python.md) som hämtar ett enskilt dokument. Funktionen utlöses av en HTTP-begäran som använder en frågesträng för att ange det ID och det partitionsnyckel som ska sökas upp. Detta ID och partitionerings nyckel värde används för att hämta ett `ToDoItem` dokument från den angivna databasen och samlingen.
-
-Här är *function.jspå* filen:
-
-```json
-{
-  "bindings": [
-    {
-      "authLevel": "anonymous",
-      "name": "req",
-      "type": "httpTrigger",
-      "direction": "in",
-      "methods": [
-        "get",
-        "post"
-      ]
-    },
-    {
-      "name": "$return",
-      "type": "http",
-      "direction": "out"
-    },
-    {
-      "type": "cosmosDB",
-      "name": "todoitems",
-      "databaseName": "ToDoItems",
-      "collectionName": "Items",
-      "connectionStringSetting": "CosmosDBConnection",
-      "direction": "in",
-      "Id": "{Query.id}",
-      "PartitionKey": "{Query.partitionKeyValue}"
-    }
-  ],
-  "scriptFile": "__init__.py"
-}
-```
-
-Här är python-koden:
-
-```python
-import logging
-import azure.functions as func
-
-
-def main(req: func.HttpRequest, todoitems: func.DocumentList) -> str:
-    if not todoitems:
-        logging.warning("ToDo item not found")
-    else:
-        logging.info("Found ToDo item, Description=%s",
-                     todoitems[0]['description'])
-
-    return 'OK'
-```
-
-<a id="http-trigger-look-up-id-from-route-data-python"></a>
-
-### <a name="http-trigger-look-up-id-from-route-data"></a>HTTP-utlösare, slå upp ID från flödes data
-
-I följande exempel visas en [python-funktion](functions-reference-python.md) som hämtar ett enskilt dokument. Funktionen utlöses av en HTTP-begäran som använder flödes data för att ange det ID och det partitionsnyckel som ska sökas upp. Detta ID och partitionerings nyckel värde används för att hämta ett `ToDoItem` dokument från den angivna databasen och samlingen.
-
-Här är *function.jspå* filen:
-
-```json
-{
-  "bindings": [
-    {
-      "authLevel": "anonymous",
-      "name": "req",
-      "type": "httpTrigger",
-      "direction": "in",
-      "methods": [
-        "get",
-        "post"
-      ],
-      "route":"todoitems/{partitionKeyValue}/{id}"
-    },
-    {
-      "name": "$return",
-      "type": "http",
-      "direction": "out"
-    },
-    {
-      "type": "cosmosDB",
-      "name": "todoitems",
-      "databaseName": "ToDoItems",
-      "collectionName": "Items",
-      "connection": "CosmosDBConnection",
-      "direction": "in",
-      "Id": "{id}",
-      "PartitionKey": "{partitionKeyValue}"
-    }
-  ],
-  "disabled": false,
-  "scriptFile": "__init__.py"
-}
-```
-
-Här är python-koden:
-
-```python
-import logging
-import azure.functions as func
-
-
-def main(req: func.HttpRequest, todoitems: func.DocumentList) -> str:
-    if not todoitems:
-        logging.warning("ToDo item not found")
-    else:
-        logging.info("Found ToDo item, Description=%s",
-                     todoitems[0]['description'])
-    return 'OK'
-```
-
-<a id="queue-trigger-get-multiple-docs-using-sqlquery-python"></a>
-
-### <a name="queue-trigger-get-multiple-docs-using-sqlquery"></a>Köa utlösare, hämta flera dokument med SqlQuery
-
-I följande exempel visas en Azure Cosmos DB indata-bindning i en *function.jspå* fil och en [python-funktion](functions-reference-python.md) som använder bindningen. Funktionen hämtar flera dokument som anges av en SQL-fråga med hjälp av en Queue-utlösare för att anpassa frågeparametrar.
-
-Utlösaren för kön innehåller en parameter `departmentId` . Ett Queue-meddelande i `{ "departmentId" : "Finance" }` returnerar alla poster för ekonomi avdelningen.
-
-Här är bindnings data i *function.jspå* filen:
-
-```json
-{
-    "name": "documents",
-    "type": "cosmosDB",
-    "direction": "in",
-    "databaseName": "MyDb",
-    "collectionName": "MyCollection",
-    "sqlQuery": "SELECT * from c where c.departmentId = {departmentId}",
-    "connectionStringSetting": "CosmosDBConnection"
-}
-```
-
-I [konfigurations](#configuration) avsnittet förklaras dessa egenskaper.
-
-Här är python-koden:
-
-```python
-import azure.functions as func
-
-def main(queuemsg: func.QueueMessage, documents: func.DocumentList):
-    for document in documents:
-        # operate on each document
-```
-
 # <a name="java"></a>[Java](#tab/java)
 
 Det här avsnittet innehåller följande exempel:
@@ -1400,6 +985,636 @@ public class DocsFromRouteSqlQuery {
 }
  ```
 
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+Det här avsnittet innehåller följande exempel som läser ett enda dokument genom att ange ett ID-värde från olika källor:
+
+* [Köa utlösare, slå upp ID från JSON](#queue-trigger-look-up-id-from-json-javascript)
+* [HTTP-utlösare, leta upp ID från frågesträng](#http-trigger-look-up-id-from-query-string-javascript)
+* [HTTP-utlösare, slå upp ID från flödes data](#http-trigger-look-up-id-from-route-data-javascript)
+* [Köa utlösare, hämta flera dokument med SqlQuery](#queue-trigger-get-multiple-docs-using-sqlquery-javascript)
+
+<a id="queue-trigger-look-up-id-from-json-javascript"></a>
+
+### <a name="queue-trigger-look-up-id-from-json"></a>Köa utlösare, slå upp ID från JSON
+
+I följande exempel visas en Cosmos DB indata-bindning i en *function.jsi* filen och en [JavaScript-funktion](functions-reference-node.md) som använder bindningen. Funktionen läser ett enda dokument och uppdaterar dokumentets text värde.
+
+Här är bindnings data i *function.jspå* filen:
+
+```json
+{
+    "name": "inputDocumentIn",
+    "type": "cosmosDB",
+    "databaseName": "MyDatabase",
+    "collectionName": "MyCollection",
+    "id" : "{queueTrigger_payload_property}",
+    "partitionKey": "{queueTrigger_payload_property}",
+    "connectionStringSetting": "MyAccount_COSMOSDB",
+    "direction": "in"
+},
+{
+    "name": "inputDocumentOut",
+    "type": "cosmosDB",
+    "databaseName": "MyDatabase",
+    "collectionName": "MyCollection",
+    "createIfNotExists": false,
+    "partitionKey": "{queueTrigger_payload_property}",
+    "connectionStringSetting": "MyAccount_COSMOSDB",
+    "direction": "out"
+}
+```
+
+I [konfigurations](#configuration) avsnittet förklaras dessa egenskaper.
+
+Här är JavaScript-koden:
+
+```javascript
+    // Change input document contents using Azure Cosmos DB input binding, using context.bindings.inputDocumentOut
+    module.exports = function (context) {
+    context.bindings.inputDocumentOut = context.bindings.inputDocumentIn;
+    context.bindings.inputDocumentOut.text = "This was updated!";
+    context.done();
+    };
+```
+
+<a id="http-trigger-look-up-id-from-query-string-javascript"></a>
+
+### <a name="http-trigger-look-up-id-from-query-string"></a>HTTP-utlösare, leta upp ID från frågesträng
+
+I följande exempel visas en [JavaScript-funktion](functions-reference-node.md) som hämtar ett enskilt dokument. Funktionen utlöses av en HTTP-begäran som använder en frågesträng för att ange det ID och det partitionsnyckel som ska sökas upp. Detta ID och partitionerings nyckel värde används för att hämta ett `ToDoItem` dokument från den angivna databasen och samlingen.
+
+Här är *function.jspå* filen:
+
+```json
+{
+  "bindings": [
+    {
+      "authLevel": "anonymous",
+      "name": "req",
+      "type": "httpTrigger",
+      "direction": "in",
+      "methods": [
+        "get",
+        "post"
+      ]
+    },
+    {
+      "name": "$return",
+      "type": "http",
+      "direction": "out"
+    },
+    {
+      "type": "cosmosDB",
+      "name": "toDoItem",
+      "databaseName": "ToDoItems",
+      "collectionName": "Items",
+      "connectionStringSetting": "CosmosDBConnection",
+      "direction": "in",
+      "Id": "{Query.id}",
+      "PartitionKey": "{Query.partitionKeyValue}"
+    }
+  ],
+  "disabled": false
+}
+```
+
+Här är JavaScript-koden:
+
+```javascript
+module.exports = function (context, req, toDoItem) {
+    context.log('JavaScript queue trigger function processed work item');
+    if (!toDoItem)
+    {
+        context.log("ToDo item not found");
+    }
+    else
+    {
+        context.log("Found ToDo item, Description=" + toDoItem.Description);
+    }
+
+    context.done();
+};
+```
+
+<a id="http-trigger-look-up-id-from-route-data-javascript"></a>
+
+### <a name="http-trigger-look-up-id-from-route-data"></a>HTTP-utlösare, slå upp ID från flödes data
+
+I följande exempel visas en [JavaScript-funktion](functions-reference-node.md) som hämtar ett enskilt dokument. Funktionen utlöses av en HTTP-begäran som använder flödes data för att ange det ID och det partitionsnyckel som ska sökas upp. Detta ID och partitionerings nyckel värde används för att hämta ett `ToDoItem` dokument från den angivna databasen och samlingen.
+
+Här är *function.jspå* filen:
+
+```json
+{
+  "bindings": [
+    {
+      "authLevel": "anonymous",
+      "name": "req",
+      "type": "httpTrigger",
+      "direction": "in",
+      "methods": [
+        "get",
+        "post"
+      ],
+      "route":"todoitems/{partitionKeyValue}/{id}"
+    },
+    {
+      "name": "$return",
+      "type": "http",
+      "direction": "out"
+    },
+    {
+      "type": "cosmosDB",
+      "name": "toDoItem",
+      "databaseName": "ToDoItems",
+      "collectionName": "Items",
+      "connectionStringSetting": "CosmosDBConnection",
+      "direction": "in",
+      "Id": "{id}",
+      "PartitionKey": "{partitionKeyValue}"
+    }
+  ],
+  "disabled": false
+}
+```
+
+Här är JavaScript-koden:
+
+```javascript
+module.exports = function (context, req, toDoItem) {
+    context.log('JavaScript queue trigger function processed work item');
+    if (!toDoItem)
+    {
+        context.log("ToDo item not found");
+    }
+    else
+    {
+        context.log("Found ToDo item, Description=" + toDoItem.Description);
+    }
+
+    context.done();
+};
+```
+
+<a id="queue-trigger-get-multiple-docs-using-sqlquery-javascript"></a>
+
+### <a name="queue-trigger-get-multiple-docs-using-sqlquery"></a>Köa utlösare, hämta flera dokument med SqlQuery
+
+I följande exempel visas en Azure Cosmos DB indata-bindning i en *function.jsi* filen och en [JavaScript-funktion](functions-reference-node.md) som använder bindningen. Funktionen hämtar flera dokument som anges av en SQL-fråga med hjälp av en Queue-utlösare för att anpassa frågeparametrar.
+
+Utlösaren för kön innehåller en parameter `departmentId` . Ett Queue-meddelande i `{ "departmentId" : "Finance" }` returnerar alla poster för ekonomi avdelningen.
+
+Här är bindnings data i *function.jspå* filen:
+
+```json
+{
+    "name": "documents",
+    "type": "cosmosDB",
+    "direction": "in",
+    "databaseName": "MyDb",
+    "collectionName": "MyCollection",
+    "sqlQuery": "SELECT * from c where c.departmentId = {departmentId}",
+    "connectionStringSetting": "CosmosDBConnection"
+}
+```
+
+I [konfigurations](#configuration) avsnittet förklaras dessa egenskaper.
+
+Här är JavaScript-koden:
+
+```javascript
+module.exports = function (context, input) {
+  var documents = context.bindings.documents;
+  for (var i = 0; i < documents.length; i++) {
+    var document = documents[i];
+    // operate on each document
+  }
+  context.done();
+};
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+* [Köa utlösare, slå upp ID från JSON](#queue-trigger-look-up-id-from-json-ps)
+* [HTTP-utlösare, leta upp ID från frågesträng](#http-trigger-id-query-string-ps)
+* [HTTP-utlösare, slå upp ID från flödes data](#http-trigger-id-route-data-ps)
+* [Köa utlösare, hämta flera dokument med SqlQuery](#queue-trigger-multiple-docs-sqlquery-ps)
+
+### <a name="queue-trigger-look-up-id-from-json"></a>Köa utlösare, slå upp ID från JSON
+
+Följande exempel visar hur du läser och uppdaterar ett enda Cosmos DB-dokument. Dokumentets unika identifierare tillhandahålls via JSON-värdet i ett Queue-meddelande.
+
+Den Cosmos DB indata-bindningen visas först i listan över bindningar som finns i funktionens konfigurations fil (_function.jspå_).
+
+<a name="queue-trigger-look-up-id-from-json-ps"></a>
+
+```json
+{
+  "name": "InputDocumentIn",
+  "type": "cosmosDB",
+  "databaseName": "MyDatabase",
+  "collectionName": "MyCollection",
+  "id" : "{queueTrigger_payload_property}",
+  "partitionKey": "{queueTrigger_payload_property}",
+  "connectionStringSetting": "CosmosDBConnection",
+  "direction": "in"
+},
+{
+  "name": "InputDocumentOut",
+  "type": "cosmosDB",
+  "databaseName": "MyDatabase",
+  "collectionName": "MyCollection",
+  "createIfNotExists": false,
+  "partitionKey": "{queueTrigger_payload_property}",
+  "connectionStringSetting": "CosmosDBConnection",
+  "direction": "out"
+}
+```
+
+_run.ps1_ -filen har PowerShell-koden som läser det inkommande dokumentet och ändringar i utdata.
+
+```powershell
+param($QueueItem, $InputDocumentIn, $TriggerMetadata) 
+
+$Document = $InputDocumentIn 
+$Document.text = 'This was updated!' 
+
+Push-OutputBinding -Name InputDocumentOut -Value $Document  
+```
+
+<a name="http-trigger-id-query-string-ps"></a>
+
+### <a name="http-trigger-look-up-id-from-query-string"></a>HTTP-utlösare, leta upp ID från frågesträng
+
+Följande exempel visar hur du läser och uppdaterar ett enda Cosmos DB-dokument från ett webb-API. Dokumentets unika identifierare anges via en QueryString-parameter från HTTP-begäran, enligt definitionen i bindningens `"Id": "{Query.Id}"` egenskap.
+
+Den Cosmos DB indata-bindningen visas först i listan över bindningar som finns i funktionens konfigurations fil (_function.jspå_).
+
+```json
+{ 
+  "bindings": [ 
+    { 
+      "type": "cosmosDB", 
+      "name": "ToDoItem", 
+      "databaseName": "ToDoItems", 
+      "collectionName": "Items", 
+      "connectionStringSetting": "CosmosDBConnection", 
+      "direction": "in", 
+      "Id": "{Query.id}", 
+      "PartitionKey": "{Query.partitionKeyValue}" 
+    },
+    { 
+      "authLevel": "anonymous", 
+      "name": "Request", 
+      "type": "httpTrigger", 
+      "direction": "in", 
+      "methods": [ 
+        "get", 
+        "post" 
+      ] 
+    }, 
+    { 
+      "name": "Response", 
+      "type": "http", 
+      "direction": "out" 
+    },
+  ], 
+  "disabled": false 
+} 
+```
+  
+_run.ps1_ -filen har PowerShell-koden som läser det inkommande dokumentet och ändringar i utdata.
+
+```powershell
+using namespace System.Net 
+
+param($Request, $ToDoItem, $TriggerMetadata) 
+
+Write-Host 'PowerShell HTTP trigger function processed a request' 
+
+if (-not $ToDoItem) { 
+    Write-Host 'ToDo item not found' 
+
+    Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{ 
+        StatusCode = [HttpStatusCode]::NotFound 
+        Body = $ToDoItem.Description 
+    }) 
+
+} else { 
+
+    Write-Host "Found ToDo item, Description=$($ToDoItem.Description)" 
+ 
+    Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{ 
+        StatusCode = [HttpStatusCode]::OK 
+        Body = $ToDoItem.Description 
+    }) 
+}
+```
+
+<a name="http-trigger-id-route-data-ps"></a>
+
+### <a name="http-trigger-look-up-id-from-route-data"></a>HTTP-utlösare, slå upp ID från flödes data
+
+Följande exempel visar hur du läser och uppdaterar ett enda Cosmos DB-dokument från ett webb-API. Dokumentets unika identifierare anges via en väg parameter. Väg parametern definieras i bindnings egenskapen för HTTP-begäran `route` och refereras till i egenskapen Cosmos DB `"Id": "{Id}"` Binding.
+
+Den Cosmos DB indata-bindningen visas först i listan över bindningar som finns i funktionens konfigurations fil (_function.jspå_).
+
+```json
+{ 
+  "bindings": [ 
+    { 
+      "type": "cosmosDB", 
+      "name": "ToDoItem", 
+      "databaseName": "ToDoItems", 
+      "collectionName": "Items", 
+      "connectionStringSetting": "CosmosDBConnection", 
+      "direction": "in", 
+      "Id": "{id}", 
+      "PartitionKey": "{partitionKeyValue}" 
+    },
+    { 
+      "authLevel": "anonymous", 
+      "name": "Request", 
+      "type": "httpTrigger", 
+      "direction": "in", 
+      "methods": [ 
+        "get", 
+        "post" 
+      ], 
+      "route": "todoitems/{partitionKeyValue}/{id}" 
+    }, 
+    { 
+      "name": "Response", 
+      "type": "http", 
+      "direction": "out" 
+    }
+  ], 
+  "disabled": false 
+} 
+```
+
+_run.ps1_ -filen har PowerShell-koden som läser det inkommande dokumentet och ändringar i utdata.
+
+```powershell
+using namespace System.Net 
+
+param($Request, $ToDoItem, $TriggerMetadata) 
+
+Write-Host 'PowerShell HTTP trigger function processed a request' 
+
+if (-not $ToDoItem) { 
+    Write-Host 'ToDo item not found' 
+
+    Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{ 
+        StatusCode = [HttpStatusCode]::NotFound 
+        Body = $ToDoItem.Description 
+    }) 
+
+} else { 
+    Write-Host "Found ToDo item, Description=$($ToDoItem.Description)" 
+  
+    Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{ 
+        StatusCode = [HttpStatusCode]::OK 
+        Body = $ToDoItem.Description 
+    }) 
+} 
+```
+
+<a name="queue-trigger-multiple-docs-sqlquery-ps"></a>
+
+### <a name="queue-trigger-get-multiple-docs-using-sqlquery"></a>Köa utlösare, hämta flera dokument med SqlQuery
+
+Följande exempel visar hur du läser flera Cosmos DB dokument. Funktionens konfigurations fil (_function.jspå_) definierar bindnings egenskaperna, som innehåller `sqlQuery` . SQL-instruktionen som angavs för `sqlQuery` egenskapen väljer den uppsättning av dokument som har angetts för funktionen.
+
+```json
+{ 
+  "name": "Documents", 
+  "type": "cosmosDB", 
+  "direction": "in", 
+  "databaseName": "MyDb", 
+  "collectionName": "MyCollection", 
+  "sqlQuery": "SELECT * from c where c.departmentId = {departmentId}", 
+  "connectionStringSetting": "CosmosDBConnection" 
+} 
+```
+
+_Run1.PS_ -filen har PowerShell-koden som läser de inkommande dokumenten.
+
+```powershell
+param($QueueItem, $Documents, $TriggerMetadata) 
+
+foreach ($Document in $Documents) { 
+    # operate on each document 
+} 
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+Det här avsnittet innehåller följande exempel som läser ett enda dokument genom att ange ett ID-värde från olika källor:
+
+* [Köa utlösare, slå upp ID från JSON](#queue-trigger-look-up-id-from-json-python)
+* [HTTP-utlösare, leta upp ID från frågesträng](#http-trigger-look-up-id-from-query-string-python)
+* [HTTP-utlösare, slå upp ID från flödes data](#http-trigger-look-up-id-from-route-data-python)
+* [Köa utlösare, hämta flera dokument med SqlQuery](#queue-trigger-get-multiple-docs-using-sqlquery-python)
+
+<a id="queue-trigger-look-up-id-from-json-python"></a>
+
+### <a name="queue-trigger-look-up-id-from-json"></a>Köa utlösare, slå upp ID från JSON
+
+I följande exempel visas en Cosmos DB indata-bindning i en *function.jspå* filen och en [python-funktion](functions-reference-python.md) som använder bindningen. Funktionen läser ett enda dokument och uppdaterar dokumentets text värde.
+
+Här är bindnings data i *function.jspå* filen:
+
+```json
+{
+    "name": "documents",
+    "type": "cosmosDB",
+    "databaseName": "MyDatabase",
+    "collectionName": "MyCollection",
+    "id" : "{queueTrigger_payload_property}",
+    "partitionKey": "{queueTrigger_payload_property}",
+    "connectionStringSetting": "MyAccount_COSMOSDB",
+    "direction": "in"
+},
+{
+    "name": "$return",
+    "type": "cosmosDB",
+    "databaseName": "MyDatabase",
+    "collectionName": "MyCollection",
+    "createIfNotExists": false,
+    "partitionKey": "{queueTrigger_payload_property}",
+    "connectionStringSetting": "MyAccount_COSMOSDB",
+    "direction": "out"
+}
+```
+
+I [konfigurations](#configuration) avsnittet förklaras dessa egenskaper.
+
+Här är python-koden:
+
+```python
+import azure.functions as func
+
+
+def main(queuemsg: func.QueueMessage, documents: func.DocumentList) -> func.Document:
+    if documents:
+        document = documents[0]
+        document['text'] = 'This was updated!'
+        return document
+```
+
+<a id="http-trigger-look-up-id-from-query-string-python"></a>
+
+### <a name="http-trigger-look-up-id-from-query-string"></a>HTTP-utlösare, leta upp ID från frågesträng
+
+I följande exempel visas en [python-funktion](functions-reference-python.md) som hämtar ett enskilt dokument. Funktionen utlöses av en HTTP-begäran som använder en frågesträng för att ange det ID och det partitionsnyckel som ska sökas upp. Detta ID och partitionerings nyckel värde används för att hämta ett `ToDoItem` dokument från den angivna databasen och samlingen.
+
+Här är *function.jspå* filen:
+
+```json
+{
+  "bindings": [
+    {
+      "authLevel": "anonymous",
+      "name": "req",
+      "type": "httpTrigger",
+      "direction": "in",
+      "methods": [
+        "get",
+        "post"
+      ]
+    },
+    {
+      "name": "$return",
+      "type": "http",
+      "direction": "out"
+    },
+    {
+      "type": "cosmosDB",
+      "name": "todoitems",
+      "databaseName": "ToDoItems",
+      "collectionName": "Items",
+      "connectionStringSetting": "CosmosDBConnection",
+      "direction": "in",
+      "Id": "{Query.id}",
+      "PartitionKey": "{Query.partitionKeyValue}"
+    }
+  ],
+  "scriptFile": "__init__.py"
+}
+```
+
+Här är python-koden:
+
+```python
+import logging
+import azure.functions as func
+
+
+def main(req: func.HttpRequest, todoitems: func.DocumentList) -> str:
+    if not todoitems:
+        logging.warning("ToDo item not found")
+    else:
+        logging.info("Found ToDo item, Description=%s",
+                     todoitems[0]['description'])
+
+    return 'OK'
+```
+
+<a id="http-trigger-look-up-id-from-route-data-python"></a>
+
+### <a name="http-trigger-look-up-id-from-route-data"></a>HTTP-utlösare, slå upp ID från flödes data
+
+I följande exempel visas en [python-funktion](functions-reference-python.md) som hämtar ett enskilt dokument. Funktionen utlöses av en HTTP-begäran som använder flödes data för att ange det ID och det partitionsnyckel som ska sökas upp. Detta ID och partitionerings nyckel värde används för att hämta ett `ToDoItem` dokument från den angivna databasen och samlingen.
+
+Här är *function.jspå* filen:
+
+```json
+{
+  "bindings": [
+    {
+      "authLevel": "anonymous",
+      "name": "req",
+      "type": "httpTrigger",
+      "direction": "in",
+      "methods": [
+        "get",
+        "post"
+      ],
+      "route":"todoitems/{partitionKeyValue}/{id}"
+    },
+    {
+      "name": "$return",
+      "type": "http",
+      "direction": "out"
+    },
+    {
+      "type": "cosmosDB",
+      "name": "todoitems",
+      "databaseName": "ToDoItems",
+      "collectionName": "Items",
+      "connection": "CosmosDBConnection",
+      "direction": "in",
+      "Id": "{id}",
+      "PartitionKey": "{partitionKeyValue}"
+    }
+  ],
+  "disabled": false,
+  "scriptFile": "__init__.py"
+}
+```
+
+Här är python-koden:
+
+```python
+import logging
+import azure.functions as func
+
+
+def main(req: func.HttpRequest, todoitems: func.DocumentList) -> str:
+    if not todoitems:
+        logging.warning("ToDo item not found")
+    else:
+        logging.info("Found ToDo item, Description=%s",
+                     todoitems[0]['description'])
+    return 'OK'
+```
+
+<a id="queue-trigger-get-multiple-docs-using-sqlquery-python"></a>
+
+### <a name="queue-trigger-get-multiple-docs-using-sqlquery"></a>Köa utlösare, hämta flera dokument med SqlQuery
+
+I följande exempel visas en Azure Cosmos DB indata-bindning i en *function.jspå* fil och en [python-funktion](functions-reference-python.md) som använder bindningen. Funktionen hämtar flera dokument som anges av en SQL-fråga med hjälp av en Queue-utlösare för att anpassa frågeparametrar.
+
+Utlösaren för kön innehåller en parameter `departmentId` . Ett Queue-meddelande i `{ "departmentId" : "Finance" }` returnerar alla poster för ekonomi avdelningen.
+
+Här är bindnings data i *function.jspå* filen:
+
+```json
+{
+    "name": "documents",
+    "type": "cosmosDB",
+    "direction": "in",
+    "databaseName": "MyDb",
+    "collectionName": "MyCollection",
+    "sqlQuery": "SELECT * from c where c.departmentId = {departmentId}",
+    "connectionStringSetting": "CosmosDBConnection"
+}
+```
+
+I [konfigurations](#configuration) avsnittet förklaras dessa egenskaper.
+
+Här är python-koden:
+
+```python
+import azure.functions as func
+
+def main(queuemsg: func.QueueMessage, documents: func.DocumentList):
+    for document in documents:
+        # operate on each document
+```
+
  ---
 
 ## <a name="attributes-and-annotations"></a>Attribut och anteckningar
@@ -1414,17 +1629,21 @@ Attributets konstruktor tar databasens namn och samlings namn. Information om de
 
 Attribut stöds inte av C#-skript.
 
+# <a name="java"></a>[Java](#tab/java)
+
+I [Java Functions runtime-biblioteket](/java/api/overview/azure/functions/runtime)använder du `@CosmosDBOutput` anteckningen för parametrar som skriver till Cosmos dB. Kommentar parameter typen bör vara `OutputBinding<T>` , där `T` är antingen en ursprunglig Java-typ eller en POJO.
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Attribut stöds inte av Java Script.
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Attribut stöds inte av PowerShell.
+
 # <a name="python"></a>[Python](#tab/python)
 
 Attribut stöds inte av python.
-
-# <a name="java"></a>[Java](#tab/java)
-
-I [Java Functions runtime-biblioteket](/java/api/overview/azure/functions/runtime)använder du `@CosmosDBOutput` anteckningen för parametrar som skriver till Cosmos dB. Kommentar parameter typen bör vara `OutputBinding<T>` , där `T` är antingen en ursprunglig Java-typ eller en POJO.
 
 ---
 
@@ -1457,17 +1676,21 @@ När funktionen avslutas sparas alla ändringar som gjorts i indatamängds dokum
 
 När funktionen avslutas sparas alla ändringar som gjorts i indatamängds dokumentet via namngivna indataparametrar automatiskt.
 
+# <a name="java"></a>[Java](#tab/java)
+
+I [Java Functions runtime-biblioteket](/java/api/overview/azure/functions/runtime) [@CosmosDBInput](/java/api/com.microsoft.azure.functions.annotation.cosmosdbinput) visar anteckningen Cosmos db data till funktionen. Den här anteckningen kan användas med inbyggda Java-typer, Pojo eller null-värden med hjälp av `Optional<T>` .
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Uppdateringar görs inte automatiskt när funktionen avslutas. Använd `context.bindings.<documentName>In` och `context.bindings.<documentName>Out` för att göra uppdateringar i stället. Se JavaScript-exemplet.
+Uppdateringar görs inte automatiskt när funktionen avslutas. Använd `context.bindings.<documentName>In` och `context.bindings.<documentName>Out` för att göra uppdateringar i stället. Se [JavaScript-exemplet](#example) för mer information.
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Uppdateringar av dokument görs inte automatiskt när funktionen avslutas. Om du vill uppdatera dokument i en funktion använder du en [utgående bindning](./functions-bindings-cosmosdb-v2-input.md). Mer information finns i [PowerShell-exemplet](#example) .
 
 # <a name="python"></a>[Python](#tab/python)
 
 Data görs tillgängliga för funktionen via en `DocumentList` parameter. Ändringar som görs i dokumentet sparas inte automatiskt.
-
-# <a name="java"></a>[Java](#tab/java)
-
-I [Java Functions runtime-biblioteket](/java/api/overview/azure/functions/runtime) [@CosmosDBInput](/java/api/com.microsoft.azure.functions.annotation.cosmosdbinput) visar anteckningen Cosmos db data till funktionen. Den här anteckningen kan användas med inbyggda Java-typer, Pojo eller null-värden med hjälp av `Optional<T>` .
 
 ---
 

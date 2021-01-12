@@ -4,14 +4,14 @@ description: Vanliga problem med Azure Monitor metriska aviseringar och möjliga
 author: harelbr
 ms.author: harelbr
 ms.topic: troubleshooting
-ms.date: 01/03/2021
+ms.date: 01/11/2021
 ms.subservice: alerts
-ms.openlocfilehash: 9a05fe509e032681a0bf5ed989595a25f66d33c6
-ms.sourcegitcommit: 697638c20ceaf51ec4ebd8f929c719c1e630f06f
+ms.openlocfilehash: e4e876b58c82605df0c005b225dcf2cdbcda1b34
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857349"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98070743"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Felsöka problem i Azure Monitor-måttaviseringar 
 
@@ -91,9 +91,9 @@ Om du vill skapa aviseringar om ett visst mått men inte kan se det när du skap
 Tänk på följande om du vill få [en avisering om ett måtts dimensions värden](./alerts-metric-overview.md#using-dimensions), men inte kan hitta dessa värden:
 
 1. Det kan ta några minuter innan dimensionsvärden visas under listan **Dimensionsvärden**
-1. Dimensionsvärden som visas baseras på måttdata som samlats in under de senaste tre dagarna
-1. Om dimension svärdet inte har spridits än, klickar du på tecknet "+" för att lägga till ett anpassat värde
-1. Om du vill få aviseringar om alla möjliga värden för en dimension (inklusive framtida värden) markerar du kryss rutan Select * (Välj *)
+1. Dimensions värden som visas baseras på mått data som samlas in den senaste dagen
+1. Om dimension svärdet inte har spridits eller inte visas kan du använda alternativet Lägg till anpassat värde för att lägga till ett anpassat dimensions värde
+1. Om du vill få aviseringar om alla möjliga värden för en dimension (inklusive framtida värden) väljer du alternativet "Välj alla aktuella och framtida värden"
 
 ## <a name="metric-alert-rules-still-defined-on-a-deleted-resource"></a>Mått varnings regler som fortfarande har definierats för en borttagen resurs 
 
@@ -252,7 +252,7 @@ Tänk på följande begränsningar när du använder dimensioner i en varnings r
 - Du kan bara välja ett värde per dimension i varje villkor.
 - Du kan inte använda alternativet "Välj alla aktuella och framtida värden" (Välj \* ).
 - När mått som har kon figurer ATS på olika villkor stöder samma dimension måste ett konfigurerat dimensions värde uttryckligen anges på samma sätt för alla dessa mått (i de relevanta villkoren).
-Exempel:
+Till exempel:
     - Överväg en regel för mått varningar som definieras på ett lagrings konto och övervakar två villkor:
         * Totalt antal **transaktioner** > 5
         * Genomsnittlig **SuccessE2ELatency** > 250 MS

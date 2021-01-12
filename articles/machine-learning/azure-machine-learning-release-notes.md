@@ -6,15 +6,15 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-ms.author: jmartens
-author: j-martens
+ms.author: larryfr
+author: BlackMist
 ms.date: 09/10/2020
-ms.openlocfilehash: 695702c04e2eeb74ee27b7d4276a3be94d9d1cf7
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 1cc6c8cd49a2388ad66a276f4a1667b4c3ee3826
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97881828"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98070328"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Viktig information om Azure Machine Learning
 
@@ -876,7 +876,7 @@ Nu kan du skapa, redigera och dela Machine Learning-anteckningsböcker och filer
 
 Få åtkomst till följande webbaserade redigerings verktyg från Studio:
     
-| Webbaserat verktyg  |     Description  |
+| Webbaserat verktyg  |     Beskrivning  |
 |---|---|
 | Azure ML Studio-anteckningsböcker   |     Första redigering i klass för notebook-filer och stöd för alla åtgärder som är tillgängliga i Azure ML python SDK. | 
 
@@ -1388,7 +1388,7 @@ Från Studio kan du träna, testa, distribuera och hantera Azure Machine Learnin
 
 Få åtkomst till följande webbaserade redigerings verktyg från Studio:
 
-| Webbaserat verktyg | Description | 
+| Webbaserat verktyg | Beskrivning | 
 |-|-|-|
 | Notebook VM (för hands version) | Helt hanterad molnbaserad arbets Station | 
 | [Automatisk maskin inlärning](tutorial-first-experiment-automated-ml.md) (för hands version) | Ingen kod upplevelse för automatisering av maskin inlärnings modell utveckling | 

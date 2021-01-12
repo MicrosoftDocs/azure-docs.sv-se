@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
-ms.date: 11/18/2020
-ms.openlocfilehash: 6037b372f73bcf3554120e305f4b3031b26e97d4
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.date: 01/10/2021
+ms.openlocfilehash: 66a3276863b05cb2fe0dd80a2195f7fd2af1443c
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97831660"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071943"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Kundhanterad nyckel i Azure Monitor 
 
@@ -36,7 +36,7 @@ Log Analytics dedikerade kluster använder en kapacitets reservation [pris model
 
 ## <a name="how-customer-managed-key-works-in-azure-monitor"></a>Så här fungerar Customer-Managed-nyckeln i Azure Monitor
 
-Azure Monitor använder systemtilldelad hanterad identitet för att ge åtkomst till din Azure Key Vault. Identiteten för Log Analytics-klustret stöds på kluster nivå och tillåter Customer-Managed nyckel på flera arbets ytor, en ny Log Analytics *kluster* resurs fungerar som en mellanliggande identitets anslutning mellan dina Key Vault och Log Analytics arbets ytor. Den Log Analytics kluster lagringen använder den hanterade identitet som \' är associerad med *kluster* resursen för att autentisera till din Azure Key Vault via Azure Active Directory. 
+Azure Monitor använder hanterad identitet för att bevilja åtkomst till din Azure Key Vault. Identiteten för Log Analytics-klustret stöds på kluster nivå. För att tillåta Customer-Managed nyckel skydd på flera arbets ytor, fungerar en ny Log Analytics *kluster* resurs som mellanliggande identitets anslutning mellan dina Key Vault och dina Log Analytics arbets ytor. Klustrets lagrings utrymme använder den hanterade identitet som \' är associerad med *kluster* resursen för att autentisera till din Azure Key Vault via Azure Active Directory. 
 
 Efter den Kundhanterade nyckel konfigurationen krypteras nya inmatade data till arbets ytor som är länkade till ditt dedikerade kluster med din nyckel. Du kan när som helst avlänka arbets ytor från klustret. Nya data hämtas sedan till Log Analytics lagring och krypteras med Microsoft-nyckel, medan du kan fråga dina nya och gamla data sömlöst.
 
@@ -83,15 +83,15 @@ Vissa konfigurations steg körs asynkront eftersom de inte kan slutföras snabbt
 
 # <a name="azure-portal"></a>[Azure-portalen](#tab/portal)
 
-Saknas
+E.t.
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Saknas
+E.t.
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Saknas
+E.t.
 
 # <a name="rest"></a>[REST](#tab/rest)
 
@@ -125,6 +125,11 @@ De här inställningarna kan uppdateras i Key Vault via CLI och PowerShell:
 
 ## <a name="create-cluster"></a>Skapa kluster
 
+> [! INFORMATION] kluster har stöd för två [hanterade identitets typer](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types). Systemtilldelad hanterad identitet skapas med klustret när du anger `SystemAssigned` identitets typ och detta kan användas senare för att bevilja åtkomst till din Key Vault. Om du vill skapa ett kluster som har kon figurer ATS för kundhanterad nyckel vid skapande skapar du klustret med användardefinierad hanterad identitet som har beviljats i din Key Vault – uppdatera klustret med `UserAssigned` identitets typ, identitetens resurs-ID i `UserAssignedIdentities` och ange din nyckel information i `keyVaultProperties` .
+
+> [!IMPORTANT]
+> För närvarande kan du inte definiera kundhanterad nyckel med användardefinierad hanterad identitet om Key Vault finns i Private-Link (vNet). Den här begränsningen gäller inte för systemtilldelad hanterad identitet.
+
 Följ proceduren som illustreras i [artikeln om dedikerade kluster](../log-query/logs-dedicated-clusters.md#creating-a-cluster). 
 
 ## <a name="grant-key-vault-permissions"></a>Bevilja Key Vault behörigheter
@@ -132,7 +137,7 @@ Följ proceduren som illustreras i [artikeln om dedikerade kluster](../log-query
 Skapa åtkomst princip i Key Vault för att bevilja behörighet till klustret. Dessa behörigheter används av Underlay-Azure Monitor-lagringen. Öppna din Key Vault i Azure Portal och klicka på *"åtkomst principer"* och sedan *"+ Lägg till åtkomst princip"* för att skapa en princip med följande inställningar:
 
 - Nyckel behörigheter: Välj *Get*-, *wrap-tangenten* och *unwrap Key*.
-- Välj huvud namn: Ange kluster namnet eller huvud-ID: t.
+- Välj huvud konto: beroende på vilken identitets typ som används i klustret (system eller användare som tilldelats en hanterad identitet) anger du antingen kluster namn eller klustrets huvud namns-ID för systemtilldelad hanterad identitet eller användaren tilldelas hanterad identitet.
 
 ![bevilja Key Vault behörigheter](media/customer-managed-keys/grant-key-vault-permissions-8bit.png)
 
@@ -154,7 +159,7 @@ Uppdatera KeyVaultProperties i kluster med information om nyckel identifierare.
 
 # <a name="azure-portal"></a>[Azure-portalen](#tab/portal)
 
-Saknas
+E.t.
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -237,11 +242,15 @@ Följ proceduren som illustreras i [artikeln om dedikerade kluster](../log-query
 
 ## <a name="key-revocation"></a>Återkallande av nyckel
 
-Du kan återkalla åtkomsten till data genom att inaktivera nyckeln eller ta bort klustrets åtkomst princip i Key Vault. Kluster lagringen för Log Analytics kommer alltid att respektera ändringar i nyckel behörigheter inom en timme eller tidigare och lagringen kommer att bli otillgänglig. Alla nya data som matas in till arbets ytor som är länkade till klustret tas bort och kan inte återställas, inga data är tillgängliga och frågor till dessa arbets ytor fungerar inte. Tidigare inmatade data finns kvar i lagrings utrymmet så länge klustret och arbets ytorna inte har tagits bort. Otillgängliga data regleras av data bevarande principen och kommer att rensas när kvarhållning har nåtts. 
+Du kan återkalla åtkomsten till data genom att inaktivera nyckeln eller ta bort klustrets åtkomst princip i Key Vault. 
 
-Inmatade data under de senaste 14 dagarna behålls också i frekvent cache (SSD-backad) för effektiv Operations Engine-åtgärd. Detta tas bort vid nyckel återkallnings åtgärden och blir oåtkomlig även.
+> [!IMPORTANT]
+> - Om klustret har angetts med användardefinierad hanterad identitet ställer `UserAssignedIdentities` du in med `None` pausa klustret och förhindrar åtkomst till dina data, men du kan inte återställa åter kallelsen och aktivera klustret utan att öppna support förfrågan. Den här begränsningen gäller inte för systemtilldelad hanterad identitet.
+> - Den rekommenderade åtgärden för nyckel återkallning är genom att inaktivera nyckeln i Key Vault.
 
-Lagringen avsöker regelbundet Key Vault för att försöka att packa upp krypterings nyckeln och en gång till, så fortsätter data inmatningen och frågan att återupptas inom 30 minuter.
+Kluster lagringen kommer alltid att respektera ändringar i nyckel behörigheter inom en timme eller snart och lagring kommer att bli otillgänglig. Alla nya data som läggs till i arbets ytorna som är länkade till klustret tas bort och kan inte återställas, data blir otillgängliga och det går inte att hitta frågor på dessa arbets ytor. Tidigare inmatade data finns kvar i lagrings utrymmet så länge klustret och arbets ytorna inte har tagits bort. Otillgängliga data regleras av data bevarande principen och kommer att rensas när kvarhållning har nåtts. Inmatade data under de senaste 14 dagarna behålls också i frekvent cache (SSD-backad) för effektiv Operations Engine-åtgärd. Detta tas bort vid nyckel återkallnings åtgärden och blir oåtkomlig även.
+
+Klustrets lagring avsöker regelbundet din Key Vault för att försöka att packa upp krypterings nyckeln och en gång, så fortsätter data inmatningen och frågan att återupptas inom 30 minuter.
 
 ## <a name="key-rotation"></a>Nyckelrotation
 
@@ -273,7 +282,7 @@ Länka ett lagrings konto för *fråga* till din arbets yta – *sparade – sö
 
 # <a name="azure-portal"></a>[Azure-portalen](#tab/portal)
 
-Saknas
+E.t.
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -317,7 +326,7 @@ Länka ett lagrings konto för *aviseringar* till arbets ytan – *logg aviserin
 
 # <a name="azure-portal"></a>[Azure-portalen](#tab/portal)
 
-Saknas
+E.t.
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -404,6 +413,37 @@ Customer-Managed nyckel anges i ett dedikerat kluster och dessa åtgärder hänv
   - Om du skapar ett kluster och får ett fel meddelande om att <region namn> inte stöder Double Encryption för kluster. "kan du fortfarande skapa klustret utan Double Encryption. Lägg till `"properties": {"isDoubleEncryptionEnabled": false}` egenskap i rest Request-texten.
   - Inställningen Double Encryption kan inte ändras efter att klustret har skapats.
 
+  - Om klustret har angetts med användardefinierad hanterad identitet ställer `UserAssignedIdentities` du in med `None` pausa klustret och förhindrar åtkomst till dina data, men du kan inte återställa åter kallelsen och aktivera klustret utan att öppna support förfrågan. Den här begränsningen inte är ' tillämpas på systemtilldelad hanterad identitet.
+
+  - För närvarande kan du inte definiera kundhanterad nyckel med användardefinierad hanterad identitet om Key Vault finns i Private-Link (vNet). Den här begränsningen gäller inte för systemtilldelad hanterad identitet.
+
+## <a name="troubleshooting"></a>Felsökning
+
+- Beteende med Key Vault tillgänglighet
+  - I normal drift – Storage cache-AEK under korta tids perioder och går tillbaka till Key Vault för att packa med jämna mellanrum.
+    
+  - Tillfälliga anslutnings fel – lagring hanterar tillfälliga fel (timeout, anslutnings fel, DNS-problem) genom att tillåta att nycklar hålls kvar i cacheminnet för kort, samtidigt som den överkommer till alla små signaler i tillgänglighet. Funktionerna för fråga och inmatning fortsätter utan avbrott.
+    
+  - Live site – otillgänglig cirka 30 minuter kommer lagrings kontot att bli otillgängligt. Fråge funktionen är inte tillgänglig och inmatade data cachelagras i flera timmar med Microsoft-nyckeln för att undvika data förlust. När åtkomsten till Key Vault återställs blir frågan tillgänglig och temporära cachelagrade data matas in i data lagringen och krypteras med Customer-Managed nyckel.
+
+  - Key Vault åtkomst frekvens – den frekvens som Azure Monitor lagrings åtkomst Key Vault för omslutning och unwrap-åtgärder är mellan 6 och 60 sekunder.
+
+- Om du skapar ett kluster och anger KeyVaultProperties omedelbart kan åtgärden Miss lyckas eftersom det inte går att definiera åtkomst principen förrän system identiteten tilldelas till klustret.
+
+- Om du uppdaterar ett befintligt kluster med KeyVaultProperties och get nyckel åtkomst principen saknas i Key Vault Miss kan åtgärden utföras.
+
+- Om du får ett konflikt fel när du skapar ett kluster, kan det bero på att du har tagit bort klustret under de senaste 14 dagarna och att det är i en mjuk borttagnings period. Kluster namnet förblir reserverat under den mjuka borttagnings perioden och du kan inte skapa ett nytt kluster med det namnet. Namnet släpps efter den mjuka borttagnings perioden när klustret tas bort permanent.
+
+- Om du uppdaterar klustret medan en åtgärd pågår, fungerar inte åtgärden.
+
+- Om du inte kan distribuera klustret kontrollerar du att arbets ytorna Azure Key Vault, Cluster och Linked Log Analytics finns i samma region. Kan finnas i olika prenumerationer.
+
+- Om du uppdaterar din nyckel version i Key Vault och inte uppdaterar informationen om den nya nyckel identifieraren i klustret, kommer Log Analytics-klustret att fortsätta använda din tidigare nyckel och dina data blir otillgängliga. Uppdatera informationen om den nya nyckel identifieraren i klustret för att återuppta data inmatning och möjlighet att fråga data.
+
+- Vissa åtgärder är långa och kan ta en stund att slutföra – dessa är kluster skapa, kluster nyckel uppdatering och kluster borttagning. Du kan kontrol lera åtgärds statusen på två sätt:
+  1. När du använder REST kopierar du Azure-AsyncOperation URL-värdet från svaret och följer [status kontrollen asynkrona åtgärder](#asynchronous-operations-and-status-check).
+  2. Skicka GET-begäran till kluster eller arbets yta och observera svaret. Till exempel kan inte en länkad arbets yta ha *clusterResourceId* under *funktioner*.
+
 - Felmeddelanden
   
   **Skapa kluster**
@@ -441,34 +481,6 @@ Customer-Managed nyckel anges i ett dedikerat kluster och dessa åtgärder hänv
   **Ta bort arbets yta**
   -  404--arbets ytan hittades inte. Den arbets yta du angav finns inte eller har tagits bort.
   -  409---arbets ytans länk eller ta bort länk i processen.
-
-## <a name="troubleshooting"></a>Felsökning
-
-- Beteende med Key Vault tillgänglighet
-  - I normal drift – Storage cache-AEK under korta tids perioder och går tillbaka till Key Vault för att packa med jämna mellanrum.
-    
-  - Tillfälliga anslutnings fel – lagring hanterar tillfälliga fel (timeout, anslutnings fel, DNS-problem) genom att tillåta att nycklar hålls kvar i cacheminnet för kort, samtidigt som den överkommer till alla små signaler i tillgänglighet. Funktionerna för fråga och inmatning fortsätter utan avbrott.
-    
-  - Live site – otillgänglig cirka 30 minuter kommer lagrings kontot att bli otillgängligt. Fråge funktionen är inte tillgänglig och inmatade data cachelagras i flera timmar med Microsoft-nyckeln för att undvika data förlust. När åtkomsten till Key Vault återställs blir frågan tillgänglig och temporära cachelagrade data matas in i data lagringen och krypteras med Customer-Managed nyckel.
-
-  - Key Vault åtkomst frekvens – den frekvens som Azure Monitor lagrings åtkomst Key Vault för omslutning och unwrap-åtgärder är mellan 6 och 60 sekunder.
-
-- Om du skapar ett kluster och anger KeyVaultProperties omedelbart kan åtgärden Miss lyckas eftersom det inte går att definiera åtkomst principen förrän system identiteten tilldelas till klustret.
-
-- Om du uppdaterar ett befintligt kluster med KeyVaultProperties och get nyckel åtkomst principen saknas i Key Vault Miss kan åtgärden utföras.
-
-- Om du får ett konflikt fel när du skapar ett kluster, kan det bero på att du har tagit bort klustret under de senaste 14 dagarna och att det är i en mjuk borttagnings period. Kluster namnet förblir reserverat under den mjuka borttagnings perioden och du kan inte skapa ett nytt kluster med det namnet. Namnet släpps efter den mjuka borttagnings perioden när klustret tas bort permanent.
-
-- Om du uppdaterar klustret medan en åtgärd pågår, fungerar inte åtgärden.
-
-- Om du inte kan distribuera klustret kontrollerar du att arbets ytorna Azure Key Vault, Cluster och Linked Log Analytics finns i samma region. Kan finnas i olika prenumerationer.
-
-- Om du uppdaterar din nyckel version i Key Vault och inte uppdaterar informationen om den nya nyckel identifieraren i klustret, kommer Log Analytics-klustret att fortsätta använda din tidigare nyckel och dina data blir otillgängliga. Uppdatera informationen om den nya nyckel identifieraren i klustret för att återuppta data inmatning och möjlighet att fråga data.
-
-- Vissa åtgärder är långa och kan ta en stund att slutföra – dessa är kluster skapa, kluster nyckel uppdatering och kluster borttagning. Du kan kontrol lera åtgärds statusen på två sätt:
-  1. När du använder REST kopierar du Azure-AsyncOperation URL-värdet från svaret och följer [status kontrollen asynkrona åtgärder](#asynchronous-operations-and-status-check).
-  2. Skicka GET-begäran till kluster eller arbets yta och observera svaret. Till exempel kan inte en länkad arbets yta ha *clusterResourceId* under *funktioner*.
-
 ## <a name="next-steps"></a>Nästa steg
 
 - Läs mer om [Log Analytics dedikerad kluster fakturering](../platform/manage-cost-storage.md#log-analytics-dedicated-clusters)

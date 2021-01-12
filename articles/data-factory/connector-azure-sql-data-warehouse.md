@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 12/18/2020
-ms.openlocfilehash: 68f536e06ec5a40083d96745f5b72e511e423f64
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.date: 01/11/2021
+ms.openlocfilehash: a411f4ce261ee6d203e274efe3cf23ca23203453
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97695176"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98070937"
 ---
 # <a name="copy-and-transform-data-in-azure-synapse-analytics-by-using-azure-data-factory"></a>Kopiera och transformera data i Azure Synapse Analytics med hjälp av Azure Data Factory
 
@@ -391,7 +391,7 @@ Om du vill kopiera data till Azure Synapse Analytics ställer du in mottagar typ
 | writeBatchTimeout | Vänte tid för att slutföra batch-infogningen innan tids gränsen uppnåddes.<br/><br/>Det tillåtna värdet är **TimeSpan**. Exempel: "00:30:00" (30 minuter). | Nej.<br/>Använd när du använder Mass infogning.        |
 | preCopyScript     | Ange en SQL-fråga för kopierings aktivitet som ska köras innan data skrivs till Azure Synapse Analytics i varje körning. Använd den här egenskapen för att rensa de förinstallerade data. | Nej                                            |
 | tableOption | Anger om [mottagar tabellen ska skapas automatiskt om den](copy-activity-overview.md#auto-create-sink-tables) inte finns, baserat på käll schemat. Tillåtna värden är: `none` (standard), `autoCreate` . |Nej |
-| disableMetricsCollection | Data Factory samlar in Mät värden, till exempel Azure Synapse Analytics-DWU: er, för kopiering av prestanda optimering och rekommendationer. Om du är orolig för det här beteendet anger `true` du för att inaktivera det. | Nej (standard är `false` ) |
+| disableMetricsCollection | Data Factory samlar in Mät värden som Azure Synapse Analytics DWU: er för kopiering av prestanda optimering och rekommendationer, vilket ger ytterligare åtkomst till Master DB. Om du är orolig för det här beteendet anger `true` du för att inaktivera det. | Nej (standard är `false` ) |
 
 #### <a name="azure-synapse-analytics-sink-example"></a>Exempel på Azure Synapse Analytics-mottagare
 
@@ -853,7 +853,7 @@ När du kopierar data från eller till Azure Synapse Analytics används följand
 | nchar                                 | Sträng, char []                 |
 | numeric                               | Decimal                        |
 | nvarchar                              | Sträng, char []                 |
-| real                                  | Enskilt                         |
+| real                                  | Enkel                         |
 | rowversion                            | Byte []                         |
 | smalldatetime                         | DateTime                       |
 | smallint                              | Int16                          |

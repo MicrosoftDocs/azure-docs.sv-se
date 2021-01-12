@@ -10,18 +10,18 @@ ms.subservice: sql-dw
 ms.date: 11/25/2020
 ms.author: anvang
 ms.reviewer: jrasnick
-ms.openlocfilehash: a1fbc6eede6c82020b765185602c672c1162fdf8
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 769ca4cf0ecbdba5fd80d977eb69c8a4f58df55f
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96548196"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071195"
 ---
 # <a name="enabling-synapse-workspace-features-for-a-dedicated-sql-pool-formerly-sql-dw"></a>Aktivera Synapse-arbetsytans funktioner för en dedikerad SQL-pool (tidigare SQL DW)
 
 Alla SQL Data Warehouse-användare kan nu komma åt och använda en befintlig dedikerad SQL-pool (tidigare SQL DW)-instans via Synapse Studio och arbets ytan. Användare kan använda Synapse Studio och arbets ytan utan att påverka automatisering, anslutningar eller verktyg. Den här artikeln förklarar hur en befintlig Azure Synapse Analytics-användare kan aktivera Synapse-arbetsytans funktioner för en befintlig dedikerad SQL-pool (tidigare SQL DW). Användaren kan utöka sin befintliga analys lösning genom att dra nytta av de nya funktionerna för funktioner som nu är tillgängliga via Synapse-arbetsytan och Studio.   
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 Innan du aktiverar Synapse-arbetsytan på ditt data lager måste du kontrol lera att du har följande
 - Behörighet att skapa och hantera de SQL-resurser som finns på den logiska SQL-servern.
 - Rättigheter för att skapa Azure Synapse-resurser.
@@ -57,6 +57,9 @@ Följande steg måste utföras för att se till att din befintliga dedikerade SQ
 4. Välj en av de dedikerade SQL-poolerna (tidigare SQL DW) som finns på den logiska servern. På sidan Översikt väljer du **Starta Synapse Studio** eller går till logga in [på Synapse Studio](https://web.azuresynapse.net) och loggar in på din arbets yta.
 
 5. Öppna **data hubben** och expandera den DEDIKERADe SQL-poolen i Object Explorer för att se till att du har åtkomst till och kan fråga ditt informations lager.
+
+    > [!NOTE] 
+    > En ansluten arbets yta kan tas bort när som helst. Om du tar bort arbets ytan tas inte den anslutna dedikerade SQL-poolen bort (tidigare SQL DW). Arbets ytans funktion kan återaktiveras på den dedikerade SQL-poolen (tidigare SQL DW) när borttagnings åtgärden har slutförts.
 
 ## <a name="next-steps"></a>Nästa steg
 Komma igång med [Synapse-arbetsyta och Studio](../get-started.md).

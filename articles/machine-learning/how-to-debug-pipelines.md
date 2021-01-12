@@ -10,12 +10,12 @@ ms.author: laobri
 ms.date: 10/22/2020
 ms.topic: troubleshooting
 ms.custom: troubleshooting, devx-track-python, contperf-fy21q2
-ms.openlocfilehash: 9baf305ab72354c150cb06e594ed8909f2fa1dda
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: d55a9ff4dc2a639fca67d19d9323b9397aa0f409
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97739322"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98070379"
 ---
 # <a name="troubleshooting-machine-learning-pipelines"></a>Felsöka maskin inlärnings pipeliner
 
@@ -33,6 +33,7 @@ Följande tabell innehåller vanliga problem under utveckling av pipeline, med m
 | Pipeline återanvändar inte steg | Steg åter användning är aktiverat som standard, men se till att du inte har inaktiverat det i ett steg i pipeline. Om åter användning är inaktive rad `allow_reuse` kommer parametern i steget att ställas in på `False` . |
 | Pipelinen körs inte nödvändigt vis | Om du vill se till att stegen bara körs igen när deras underliggande data eller skript ändras, kan du koppla från dina käll kods kataloger för varje steg. Om du använder samma käll katalog för flera steg kan du få onödig omkörning. Använd `source_directory` parametern i ett pipeline-steg-objekt för att peka på den isolerade katalogen för det steget och se till att du inte använder samma `source_directory` sökväg för flera steg. |
 | Steg sakta ner över utbildningens epoker eller andra funktioner för upprepning | Försök att byta fil skrivning, inklusive loggning, från `as_mount()` till `as_upload()` . **Monterings** läget använder ett virtualiserat virtualiserat fil system och laddar upp hela filen varje gången det läggs till. |
+| Compute Target tar lång tid att starta | Docker-avbildningar för beräknings mål läses in från Azure Container Registry (ACR). Azure Machine Learning skapar som standard en ACR som använder tjänst nivån *Basic* . Att ändra ACR för arbets ytan till standard-eller Premium-nivån kan minska den tid det tar att bygga och läsa in bilder. Mer information finns i [Azure Container Registry tjänst nivåer](../container-registry/container-registry-skus.md). |
 
 ### <a name="authentication-errors"></a>Autentiseringsfel
 

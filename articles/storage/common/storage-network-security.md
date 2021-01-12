@@ -9,12 +9,12 @@ ms.date: 12/08/2020
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: c2074402225c8134329e00003e4fbdfd95b5dba6
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 13d1ad0b1b5e32ea2ca86e7556dd910c542bcbe2
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96938417"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98070583"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurera brandväggar och virtuella nätverk i Azure Storage
 
@@ -33,13 +33,13 @@ Ett program som har åtkomst till ett lagrings konto när nätverks regler till�
 
 ## <a name="scenarios"></a>Scenarier
 
-Om du vill skydda ditt lagrings konto bör du först konfigurera en regel för att neka åtkomst till trafik från alla nätverk (inklusive Internet trafik) på den offentliga slut punkten som standard. Sedan bör du konfigurera regler som beviljar åtkomst till trafik från vissa virtuella nätverk. Du kan också konfigurera regler för att bevilja åtkomst till trafik från Välj offentliga IP-adressintervall för Internet, aktivera anslutningar från vissa Internet-eller lokala klienter. Med den här konfigurationen kan du bygga en säker nätverks gränser för dina program.
+Om du vill skydda ditt lagrings konto bör du först konfigurera en regel för att neka åtkomst till trafik från alla nätverk (inklusive Internet trafik) på den offentliga slut punkten som standard. Sedan bör du konfigurera regler som beviljar åtkomst till trafik från vissa virtuella nätverk. Du kan också konfigurera regler för att bevilja åtkomst till trafik från valda offentliga IP-adressintervall för Internet, vilket möjliggör anslutningar från vissa Internet-eller lokala klienter. Med den här konfigurationen kan du bygga en säker nätverks gränser för dina program.
 
 Du kan kombinera brand Väggs regler som tillåter åtkomst från vissa virtuella nätverk och från offentliga IP-adressintervall på samma lagrings konto. Lagrings brand Väggs regler kan tillämpas på befintliga lagrings konton eller när du skapar nya lagrings konton.
 
 Lagrings brand Väggs regler gäller för den offentliga slut punkten för ett lagrings konto. Du behöver inga brand Väggs åtkomst regler för att tillåta trafik för privata slut punkter för ett lagrings konto. Processen med att godkänna skapandet av en privat slut punkt ger implicit åtkomst till trafik från det undernät som är värd för den privata slut punkten.
 
-Nätverks regler tillämpas på alla nätverks protokoll till Azure Storage, inklusive REST och SMB. Om du vill komma åt data med hjälp av verktyg som Azure Portal, Storage Explorer och AZCopy måste explicita nätverks regler konfigureras.
+Nätverks regler tillämpas på alla nätverks protokoll för Azure Storage, inklusive REST och SMB. Om du vill komma åt data med hjälp av verktyg som Azure Portal, Storage Explorer och AZCopy måste explicita nätverks regler konfigureras.
 
 När nätverks reglerna tillämpas tillämpas de för alla begär Anden. SAS-token som beviljar åtkomst till en speciell IP-adress som gör att du kan begränsa åtkomsten till token-innehavaren, men inte bevilja ny åtkomst utöver konfigurerade nätverks regler.
 

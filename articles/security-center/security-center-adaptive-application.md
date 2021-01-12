@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/06/2020
 ms.author: memildin
-ms.openlocfilehash: 95c3ad6f689893195e0e5c17c59ab31143cf238d
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 473353c3f61d1096beb11c521c08ac723d54b780
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93346527"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071614"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>Använd anpassningsbara program kontroller för att minska dina datorers attack ytor
 
@@ -157,11 +157,6 @@ Redigera reglerna för en grupp datorer:
     I det här fönstret visas namnet på gruppen (som kan ändras), OS-typen, platsen och annan relevant information.
 
     :::image type="content" source="./media/security-center-adaptive-application/adaptive-application-group-settings.png" alt-text="Sidan grupp inställningar för anpassningsbara program kontroller" lightbox="./media/security-center-adaptive-application/adaptive-application-group-settings.png":::
-
-    > [!IMPORTANT]
-    > Alternativet **tillämpa** i inställningarna för fil typs skydds läge är grått i **alla** scenarier. Det finns inga tillgängliga tvingande alternativ för tillfället. 
-    >
-    > :::image type="content" source="./media/security-center-adaptive-application/adaptive-application-modes.png" alt-text="Tvingande läge för fil skydd är nedtonat. Det finns inga tvingande alternativ.":::
 
 1. Du kan också ändra gruppens namn eller skydds lägen för filtyper.
 

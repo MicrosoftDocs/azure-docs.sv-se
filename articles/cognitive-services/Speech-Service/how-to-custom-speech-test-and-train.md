@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/27/2020
 ms.author: trbye
-ms.openlocfilehash: af5ed0296ce99a4450fffec6b047285307ed0ff2
-ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
+ms.openlocfilehash: d24565522a75427be04cacfdc20347056a515847
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97709307"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98070770"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Förbereda data för Custom Speech
 
@@ -46,11 +46,11 @@ I den här tabellen listas godkända data typer, när varje datatyp ska använda
 
 | Datatyp | Används för testning | Rekommenderad kvantitet | Används för utbildning | Rekommenderad kvantitet |
 |-----------|-----------------|----------|-------------------|----------|
-| [Ljud](#audio-data-for-testing) | Ja<br>Används för visuell granskning | 5 + ljudfiler | Nej | Saknas |
+| [Ljud](#audio-data-for-testing) | Ja<br>Används för visuell granskning | 5 + ljudfiler | Nej | E.t. |
 | [Ljud + medmärkta avskrifter](#audio--human-labeled-transcript-data-for-testingtraining) | Ja<br>Används för att utvärdera noggrannhet | 0,5 – 5 timmars ljud | Ja | 1-20 timmars ljud |
 | [Relaterad text](#related-text-data-for-training) | Nej | Ej tillämpligt | Ja | 1-200 MB relaterad text |
 
-När du tränar en ny modell börjar du med [relaterad text](#related-text-data-for-training). Dessa data kommer redan att förbättra igenkänningen av särskilda termer och fraser.
+När du tränar en ny modell börjar du med [relaterad text](#related-text-data-for-training). Dessa data kommer redan att förbättra igenkänningen av särskilda termer och fraser. Det går mycket snabbare att träna med text än att träna med ljud (minuter jämfört med dagar).
 
 Filerna ska grupperas efter typ i en data uppsättning och laddas upp som en zip-fil. Varje data uppsättning får bara innehålla en enda datatyp.
 
@@ -121,7 +121,7 @@ Ljudfiler kan ha tystnad i början och slutet av inspelningen. Om möjligt, inkl
 
 För att lösa problem som Word-borttagning eller ersättning krävs en stor mängd data för att förbättra igenkänningen. Vanligt vis rekommenderar vi att du ger ord för ord-avskrifter i ungefär 10 till 20 timmars ljud. Transkriptioner för alla WAV-filer bör ingå i en enda fil med oformaterad text. Varje rad i transkriptionsfilen ska innehålla namnet på en av ljudfilerna följt av motsvarande transkription. Filnamnet och transkriptionen ska separeras med ett tabbtecken (\t).
 
-  Exempel:
+  Till exempel:
 ```
   speech01.wav  speech recognition is awesome
   speech02.wav  the quick brown fox jumped all over the place
@@ -138,7 +138,9 @@ När du har samlat in dina ljudfiler och motsvarande avskrifter, paketera dem so
 > [!div class="mx-imgBorder"]
 > ![Välj ljud från tal portalen](./media/custom-speech/custom-speech-audio-transcript-pairs.png)
 
-Se [Konfigurera ditt Azure-konto](custom-speech-overview.md#set-up-your-azure-account) för en lista över rekommenderade regioner för dina röst tjänst prenumerationer. Om du ställer in tal prenumerationerna i någon av dessa regioner kommer det att minska den tid det tar att träna modellen.
+Se [Konfigurera ditt Azure-konto](custom-speech-overview.md#set-up-your-azure-account) för en lista över rekommenderade regioner för dina röst tjänst prenumerationer. Om du ställer in tal prenumerationerna i någon av dessa regioner kommer det att minska den tid det tar att träna modellen. I dessa regioner kan utbildning bearbeta cirka 10 timmar ljud per dag jämfört med bara 1 timme per dag i andra regioner. Om modell träningen inte kan slutföras inom en vecka markeras modellen som misslyckad.
+
+Alla bas modeller har inte stöd för utbildning med ljuddata. Om bas modellen inte stöder den, kommer tjänsten att ignorera ljudet och bara träna med texten i avskrifterna. I det här fallet är utbildningen detsamma som utbildning med relaterad text.
 
 ## <a name="related-text-data-for-training"></a>Relaterade text data för utbildning
 
@@ -150,6 +152,8 @@ Produkt namn eller funktioner som är unika bör innehålla relaterade text data
 | Uttal | Förbättra uttal av ovanliga termer, akronymer eller andra ord med odefinierade uttal. |
 
 Meningar kan anges som en enda textfil eller flera textfiler. För att förbättra precisionen använder du text data som är närmare den förväntade talade yttranden. Uttal ska anges som en enskild textfil. Allt kan paketeras som en enda zip-fil och överföras till <a href="https://speech.microsoft.com/customspeech" target="_blank">Custom Speech <span class="docon docon-navigate-external x-hidden-focus"></span> Portal </a>.
+
+Utbildning med relaterad text slutförs vanligt vis inom några minuter.
 
 ### <a name="guidelines-to-create-a-sentences-file"></a>Rikt linjer för att skapa en menings fil
 

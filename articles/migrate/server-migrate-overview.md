@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 075f113975e5f340493fe33584d8072190be77c8
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 130fcaacedc8aaea7790f6aa9ca7463b4e378e02
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97896489"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98070719"
 ---
 # <a name="select-a-vmware-migration-option"></a>Välj ett alternativ för VMware-migrering
 
@@ -32,7 +32,7 @@ Använd de här valda jämförelserna för att bestämma vilken metod som ska an
 **Distribution av utrustning** | [Azure Migrate](migrate-appliance.md) -installationen distribueras lokalt. | [Azure Migrate Replication](migrate-replication-appliance.md) har distribuerats lokalt.
 **Site Recovery kompatibilitet** | Överensstämmelse. | Du kan inte replikera med Azure Migrate Server-migrering om du har konfigurerat replikering för en dator med Site Recovery.
 **Mål disk** | Hanterade diskar | Hanterade diskar
-**Disk gränser** | OS-disk: 2 TB<br/><br/> Datadisk: 32 TB<br/><br/> Maximalt antal diskar: 60 | OS-disk: 2 TB<br/><br/> Data disk: 8 TB<br/><br/> Maximalt antal diskar: 63
+**Disk gränser** | OS-disk: 2 TB<br/><br/> Datadisk: 32 TB<br/><br/> Maximalt antal diskar: 60 | OS-disk: 2 TB<br/><br/> Datadisk: 32 TB<br/><br/> Maximalt antal diskar: 63
 **Genom strömnings diskar** | Stöds inte | Stöds
 **UEFI-start** | Stöds. | Stöds.
 
@@ -44,13 +44,13 @@ När du har granskat begränsningarna kan du med hjälp av de steg som ingår i 
 --- | --- | --- | ---
 **Distribuera Azure Migrate-apparaten** | En förenklad apparat som körs på en virtuell VMware-dator.<br/><br/> Installations programmet används för att identifiera och utvärdera datorer och migrera datorer med hjälp av en agent lös migrering. | Krävs.<br/><br/> Om du redan har konfigurerat installationen för utvärdering kan du använda samma installation för att migrera utan agent. | Krävs inte.<br/><br/> Om du har konfigurerat en installations program för utvärdering kan du lämna den på plats eller ta bort den om du är klar med utvärderingen.
 **Använda verktyget Server bedömning** | Utvärdera datorer med verktyget Azure Migrate: Server bedömning. | Du kan utvärdera datorer innan du migrerar dem, men du behöver inte. | Utvärderingen är valfri.
-**Använda verktyget Migreringsverktyg** | Lägg till verktyget för migrering av Azure Migrate server i Azure Migrate projektet. | Obligatorisk | Obligatorisk
-**Förbereda VMware för migrering** | Konfigurera inställningar på VMware-servrar och virtuella datorer. | Obligatorisk | Obligatorisk
-**Installera mobilitets tjänsten på virtuella datorer** | Mobilitets tjänsten körs på varje virtuell dator som du vill replikera | Krävs inte | Obligatorisk
-**Distribuera replikerings enheten** | [Replikeringen](migrate-replication-appliance.md) används för agent-baserad migrering. Den ansluter mellan mobilitets tjänsten som körs på virtuella datorer och Server migrering. | Krävs inte | Obligatorisk
-**Replikera virtuella datorer**. Aktivera VM-replikering. | Konfigurera replikeringsinställningar och välj virtuella datorer som ska replikeras | Obligatorisk | Obligatorisk
-**Kör en testmigrering** | Kör en testmigrering för att se till att allt fungerar som förväntat. | Obligatorisk | Obligatorisk
-**Kör en fullständig migrering** | Migrera de virtuella datorerna. | Obligatorisk | Obligatorisk
+**Använda verktyget Migreringsverktyg** | Lägg till verktyget för migrering av Azure Migrate server i Azure Migrate projektet. | Krävs | Krävs
+**Förbereda VMware för migrering** | Konfigurera inställningar på VMware-servrar och virtuella datorer. | Krävs | Krävs
+**Installera mobilitets tjänsten på virtuella datorer** | Mobilitets tjänsten körs på varje virtuell dator som du vill replikera | Krävs inte | Krävs
+**Distribuera replikerings enheten** | [Replikeringen](migrate-replication-appliance.md) används för agent-baserad migrering. Den ansluter mellan mobilitets tjänsten som körs på virtuella datorer och Server migrering. | Krävs inte | Krävs
+**Replikera virtuella datorer**. Aktivera VM-replikering. | Konfigurera replikeringsinställningar och välj virtuella datorer som ska replikeras | Krävs | Krävs
+**Kör en testmigrering** | Kör en testmigrering för att se till att allt fungerar som förväntat. | Krävs | Krävs
+**Kör en fullständig migrering** | Migrera de virtuella datorerna. | Krävs | Krävs
 
 
 

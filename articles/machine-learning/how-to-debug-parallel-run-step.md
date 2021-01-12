@@ -1,5 +1,5 @@
 ---
-title: Felsöka ParallelRunStep
+title: Felsökning av ParallelRunStep
 titleSuffix: Azure Machine Learning
 description: Tips för att felsöka när du får fel med hjälp av ParallelRunStep i Machine Learning-pipeliner.
 services: machine-learning
@@ -7,18 +7,18 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: troubleshooting
 ms.custom: troubleshooting
-ms.reviewer: jmartens, larryfr, vaidyas, laobri, tracych
+ms.reviewer: larryfr, vaidyas, laobri, tracych
 ms.author: trmccorm
 author: tmccrmck
 ms.date: 09/23/2020
-ms.openlocfilehash: 468af45f88c097e6f792a28df61ea0f1aea0d1ef
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 6ea796fb2ec038a03595d37d903fe8ee3ce904db
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97740291"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98070277"
 ---
-# <a name="troubleshooting-the-parallelrunstep"></a>Felsöka ParallelRunStep
+# <a name="troubleshooting-the-parallelrunstep"></a>Felsökning av ParallelRunStep
 
 I den här artikeln får du lära dig hur du felsöker när du får fel med klassen [ParallelRunStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallel_run_step.parallelrunstep?preserve-view=true&view=azure-ml-py) från [Azure Machine Learning SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py).
 

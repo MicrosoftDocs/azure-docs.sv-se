@@ -7,12 +7,12 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
 ms.custom: references_regions
-ms.openlocfilehash: eacdf0cf80414c44aaccf6925e466b914c66da03
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: a7e39bb8ed742007a13a222771b430372d50e889
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 01/11/2021
-ms.locfileid: "98065311"
+ms.locfileid: "98071705"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-it-service-management-connector"></a>Anslut Azure till ITSM-verktyg med hjälp av Anslutningsprogram för hantering av IT-tjänster (ITSM)
 
@@ -132,10 +132,10 @@ Använd följande procedur för att skapa åtgärds grupper:
     >[!NOTE]
     >
     > * Det här avsnittet är endast relevant för loggs öknings aviseringar.
-    > * Mått varningar och aktivitets logg aviseringar skapar alltid ett arbets objekt per avisering.
+    > * För alla andra aviserings typer skapas ett arbets objekt per avisering.
 
-    * I ett fall som du väljer i list rutan "incident" eller "varning" i arbets objekt:
-        * Om du markerar kryss rutan **skapa enskilda arbets objekt för varje konfigurations objekt** skapas ett nytt arbets objekt i varje konfigurations objekt i varje avisering. Det kan finnas mer än ett arbets objekt per konfigurations objekt i ITSM-systemet.
+    * I ett fall väljer du i list rutan "arbets objekt", "incident" eller "varning": ![ skärm bild som visar ITSM incident-fönstret.](media/itsmc-overview/itsm-action-configuration.png)
+        * Om du markerar kryss rutan **skapa enskilda arbets objekt för varje konfigurations objekt** skapas ett nytt arbets objekt i varje konfigurations objekt i varje avisering. På grund av flera aviseringar för samma konfigurations objekt kommer det att finnas mer än ett arbets objekt för varje konfigurations objekt.
 
              Till exempel:
              1) Avisering 1 med 3 konfigurations objekt: A, B, C – kommer att skapa 3 arbets uppgifter.
@@ -148,15 +148,13 @@ Använd följande procedur för att skapa åtgärds grupper:
 
         Till exempel:
          1) Avisering 1 med 3 konfigurations objekt: A, B, C-kommer att skapa 1 arbets objekt.
-         2) Avisering 2 för samma aviserings regel som fas 1 med 1 konfigurations objekt: D-kommer att slås samman till arbets objekt i fas 1.
+         2) Avisering 2 för samma varnings regel som i steg a med 1 konfigurations objekt: D-D bifogas till listan över påverkade konfigurations objekt i arbets objekt som skapades i steg a.
          3) Avisering 3 för en annan varnings regel med 1 konfigurations objekt: E-kommer att skapa 1 arbets objekt.
 
-       ![Skärm bild som visar fönstret ITSM incident.](media/itsmc-overview/itsm-action-configuration.png)
+    * I ett fall väljer du "händelse" i list rutan "arbets objekt": ![ skärm bild som visar händelse fönstret för ITSM.](media/itsmc-overview/itsm-action-configuration-event.png)
 
-    * I ett fall väljer du "händelse" i list rutan arbets objekt:
         * Om du väljer **"skapa enskilda arbets objekt för varje loggpost" (konfigurations objekt) är inte ifyllt. Kan resultera i ett stort antal arbets objekt.) "** i valet alternativ knappar skapas ett arbets objekt per rad i Sök resultatet av varnings frågan för loggs ökning. I nytto lasten för arbets uppgiften kommer egenskapen Description att ha raden från Sök resultatet.
         * Om du väljer **"skapa enskilda arbets objekt för varje konfigurations objekt"** i alternativet alternativ knappar, kommer varje konfigurations objekt i varje avisering att skapa ett nytt arbets objekt. Det kan finnas mer än ett arbets objekt per konfigurations objekt i ITSM-systemet. Detta är samma som kryss rutan Markera kryss rutan i avsnittet om incidenter/aviseringar.
-    ![Skärm bild som visar händelse fönstret för ITSM.](media/itsmc-overview/itsm-action-configuration-event.png)
 
 10. Välj **OK**.
 

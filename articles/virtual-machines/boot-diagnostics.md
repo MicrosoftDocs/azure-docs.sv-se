@@ -7,12 +7,12 @@ author: mimckitt
 ms.author: mimckitt
 ms.topic: conceptual
 ms.date: 11/06/2020
-ms.openlocfilehash: 408ba76c44d1161a4b91ccc037721796c7b94661
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 3ae300ca2746ab9e3478d3fe14fd6fc49c95a93d
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500758"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071739"
 ---
 # <a name="azure-boot-diagnostics"></a>Azure Boot-diagnostik
 
@@ -21,10 +21,14 @@ Startdiagnostik är en fel söknings funktion för Azure Virtual Machines (VM) s
 ## <a name="boot-diagnostics-storage-account"></a>Lagrings konto för startdiagnostik
 När du skapar en virtuell dator i Azure Portal aktive ras startdiagnostik som standard. Den rekommenderade versionen av startdiagnostik är att använda ett hanterat lagrings konto, eftersom det ger avsevärda prestanda förbättringar i tiden för att skapa en virtuell Azure-dator. Detta beror på att ett Azure-hanterat lagrings konto kommer att användas och tar bort den tid det tar att skapa ett nytt användar lagrings konto för att lagra startdiagnostikens data.
 
-En alternativ starts upplevelse är att använda ett hanterat lagrings konto för användare. En användare kan antingen skapa ett nytt lagrings konto eller använda ett befintligt. 
-
 > [!IMPORTANT]
 > Data blobbar för startdiagnostik (som består av loggar och ögonblicks bilds avbildningar) lagras i ett hanterat lagrings konto. Kunderna debiteras bara på använda GiBs av Blobbarna, inte på diskens etablerade storlek. Bildernas mätare används för fakturering av det hanterade lagrings kontot. Eftersom de hanterade kontona skapas på antingen standard-LRS eller standard-ZRS debiteras kunderna med $0,05/GB per månad enbart för storleken på deras diagnostikdata. Mer information om den här prissättningen finns i [priser för Managed disks](https://azure.microsoft.com/pricing/details/managed-disks/). Kunderna ser den här avgiften som är kopplad till deras resurs-URI för virtuella datorer. 
+
+En alternativ starts upplevelse är att använda ett hanterat lagrings konto för användare. En användare kan antingen skapa ett nytt lagrings konto eller använda ett befintligt.
+> [!NOTE]
+> Användar hanterade lagrings konton som är kopplade till startdiagnostik kräver lagrings kontot och de associerade virtuella datorerna finns i samma prenumeration. 
+
+
 
 ## <a name="boot-diagnostics-view"></a>Vyn Boot Diagnostics
 Alternativet startdiagnostik finns på bladet för den virtuella datorn under avsnittet *support och fel sökning* i Azure Portal. Om du väljer Boot Diagnostics visas en skärm bild och information om serie loggen. Serie loggen innehåller kernel-meddelanden och skärm bilden är en ögonblicks bild av den virtuella datorns aktuella tillstånd. Baserat på om den virtuella datorn kör Windows eller Linux bestämmer vad den förväntade skärm bilden skulle se ut. För Windows ser användarna en Skriv bords bakgrund och för Linux visas en inloggnings tolk.

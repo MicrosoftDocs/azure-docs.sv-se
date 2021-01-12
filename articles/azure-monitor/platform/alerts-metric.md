@@ -4,14 +4,14 @@ description: Lär dig hur du använder Azure Portal eller CLI för att skapa, Vi
 author: harelbr
 ms.author: harelbr
 ms.topic: conceptual
-ms.date: 08/11/2020
+ms.date: 01/11/2021
 ms.subservice: alerts
-ms.openlocfilehash: 8b1015573e4c01f01d82c7c152b66db80bef0aee
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 0518d3a2e1b67b33b9cb6bceb9754df302710f70
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92342169"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071042"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>Skapa, visa och hantera måttaviseringar med Azure Monitor
 
@@ -23,7 +23,7 @@ Du kan lära dig mer om hur mått aviseringar fungerar från [Översikt över m�
 
 Följande procedur beskriver hur du skapar en regel för mått varningar i Azure Portal:
 
-1. Klicka på **övervaka**i [Azure Portal](https://portal.azure.com). Bladet övervakning konsoliderar alla övervaknings inställningar och data i en vy.
+1. Klicka på **övervaka** i [Azure Portal](https://portal.azure.com). Bladet övervakning konsoliderar alla övervaknings inställningar och data i en vy.
 
 2. Klicka på **aviseringar** och klicka sedan på **+ ny varnings regel**.
 
@@ -41,13 +41,13 @@ Följande procedur beskriver hur du skapar en regel för mått varningar i Azure
 7. Ett diagram visas för måttet under de senaste sex timmarna. Använd List rutan **diagram period** för att välja att Visa längre historik för måttet.
 
 8. Om måttet har dimensioner, visas en dimensions tabell som visas. Välj ett eller flera värden per dimension.
-    - Dimensions värden som visas baseras på mått data från de tre senaste dagarna.
-    - Om det dimensions värde som du söker efter inte visas klickar du på "+" för att lägga till ett anpassat värde.
-    - Du kan också **välja \* *_ för någon av dimensionerna. _*Välj \* *_ skalar markeringen dynamiskt till alla aktuella och framtida värden för en dimension.
+    - Dimensions värden som visas baseras på mått data från den senaste dagen.
+    - Om det dimensions värde som du söker efter inte visas klickar du på Lägg till anpassat värde om du vill lägga till ett anpassat dimensions värde.
+    - Du kan också **välja alla aktuella och framtida värden** för någon av dimensionerna. Detta skalar markeringen dynamiskt till alla aktuella och framtida värden för en dimension.
 
     Mått varnings regeln utvärderar villkoret för alla kombinationer av värden som har valts. [Lär dig mer om hur aviseringar om flerdimensionella mått fungerar](alerts-metric-overview.md).
 
-9. Välj typen _*Threshold** Type, **operator**och **aggregation**. Detta fastställer logiken som varnings regeln för mått kommer att utvärdera.
+9. Välj typ av **tröskel** , **operator** och **sammansättning**. Detta fastställer logiken som varnings regeln för mått kommer att utvärdera.
     - Om du använder ett **statiskt** tröskelvärde kan du fortsätta att definiera ett **tröskelvärde**. Mått diagrammet kan hjälpa dig att avgöra vad som kan vara ett rimligt tröskelvärde.
     - Om du använder ett **dynamiskt** tröskelvärde kan du fortsätta med att definiera **tröskelns känslighet**. Mått diagrammet visar de beräknade tröskelvärdena baserat på senaste data. [Läs mer om villkors typ och känslighets alternativ för dynamisk tröskel](alerts-dynamic-thresholds.md).
 
@@ -57,7 +57,7 @@ Följande procedur beskriver hur du skapar en regel för mått varningar i Azure
 
 12. Du kan också lägga till ytterligare villkor om du vill övervaka en komplex varnings regel. För närvarande kan användare ha varnings regler med villkor för dynamiska tröskelvärden som ett enda kriterium.
 
-13. Fyll i **aviserings information** som **aviserings regel namn**, **Beskrivning**och **allvarlighets grad**.
+13. Fyll i **aviserings information** som **aviserings regel namn**, **Beskrivning** och **allvarlighets grad**.
 
 14. Lägg till en åtgärds grupp i aviseringen antingen genom att välja en befintlig åtgärds grupp eller skapa en ny åtgärds grupp.
 
@@ -74,7 +74,7 @@ Du kan visa och hantera mått varnings regler med hjälp av bladet hantera regle
 
 2. Klicka på **aviseringar** och **Hantera regler**
 
-3. På bladet **Hantera regler** kan du Visa alla aviserings regler för alla prenumerationer. Du kan filtrera reglerna ytterligare med  **resurs grupp**, **resurs typ**och **resurs**. Om du bara vill se mått aviseringar väljer du **signal typ** som mått.
+3. På bladet **Hantera regler** kan du Visa alla aviserings regler för alla prenumerationer. Du kan filtrera reglerna ytterligare med  **resurs grupp**, **resurs typ** och **resurs**. Om du bara vill se mått aviseringar väljer du **signal typ** som mått.
 
     > [!TIP]
     > På bladet **Hantera regler** kan du välja flera varnings regler och aktivera/inaktivera dem. Detta kan vara användbart när vissa mål resurser måste placeras under underhåll

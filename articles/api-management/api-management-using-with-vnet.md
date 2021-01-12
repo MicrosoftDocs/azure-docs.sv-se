@@ -7,18 +7,17 @@ author: vladvino
 manager: erikre
 editor: ''
 ms.service: api-management
-ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/10/2020
 ms.author: apimpm
 ms.custom: references_regions
-ms.openlocfilehash: e36f7c6085908630d5e7aa2593fe4d57202d6ee7
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: d0d5434de747b48464df1c07f8c7b6a7e785c858
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97107659"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98070991"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Använda Azure API Management med virtuella nätverk
 Med virtuella Azure-nätverk (VNET) kan du placera valfria Azure-resurser i ett dirigerbart icke-Internetbaserat nätverk som du kontrollerar åtkomsten till. Dessa nätverk kan sedan anslutas till dina lokala nätverk med hjälp av olika VPN-tekniker. Om du vill veta mer om virtuella Azure-nätverk börjar du med informationen här: [Azure Virtual Network-översikt](../virtual-network/virtual-networks-overview.md).
@@ -113,20 +112,20 @@ Nedan följer en lista över vanliga fel konfigurations problem som kan uppstå 
 
 | Käll-/mål Port (er) | Riktning          | Transport protokoll |   [Service märken](../virtual-network/network-security-groups-overview.md#service-tags) <br> Källa/mål   | Syfte ( \* )                                                 | Virtual Network typ |
 |------------------------------|--------------------|--------------------|---------------------------------------|-------------------------------------------------------------|----------------------|
-| */[80], 443                  | Inbound (Inkommande)            | TCP                | INTERNET/VIRTUAL_NETWORK            | Klient kommunikation till API Management                      | Extern             |
-| */3443                     | Inbound (Inkommande)            | TCP                | API Management/VIRTUAL_NETWORK       | Hanterings slut punkt för Azure Portal och PowerShell         | Externt & internt  |
-| */443                  | Outbound (Utgående)           | TCP                | VIRTUAL_NETWORK/lagring             | **Beroende av Azure Storage**                             | Externt & internt  |
-| */443                  | Outbound (Utgående)           | TCP                | VIRTUAL_NETWORK/AzureActiveDirectory | Beroende av [Azure Active Directory](api-management-howto-aad.md) och Azure-valv                  | Externt & internt  |
-| */1433                     | Outbound (Utgående)           | TCP                | VIRTUAL_NETWORK/SQL                 | **Åtkomst till Azure SQL-slutpunkter**                           | Externt & internt  |
-| */433                     | Outbound (Utgående)           | TCP                | VIRTUAL_NETWORK/AzureKeyVault                 | **Åtkomst till Azure-valv**                           | Externt & internt  |
-| */5671, 5672, 443          | Outbound (Utgående)           | TCP                | VIRTUAL_NETWORK/EventHub            | Beroende för [logg till Event Hub-princip](api-management-howto-log-event-hubs.md) och övervaknings agent | Externt & internt  |
-| */445                      | Outbound (Utgående)           | TCP                | VIRTUAL_NETWORK/lagring             | Beroende av Azure-filresurs för [git](api-management-configuration-repository-git.md)                      | Externt & internt  |
-| */443, 12000                     | Outbound (Utgående)           | TCP                | VIRTUAL_NETWORK/AzureCloud            | Hälso-och övervaknings tillägg         | Externt & internt  |
-| */1886, 443                     | Outbound (Utgående)           | TCP                | VIRTUAL_NETWORK/AzureMonitor         | Publicera diagnostikloggar [och mått](api-management-howto-use-azure-monitor.md), [Resource Health](../service-health/resource-health-overview.md) och [Application Insights](api-management-howto-app-insights.md)                   | Externt & internt  |
-| */25, 587, 25028                       | Outbound (Utgående)           | TCP                | VIRTUAL_NETWORK/INTERNET            | Ansluta till SMTP-relä för att skicka e-post                    | Externt & internt  |
+| */[80], 443                  | Inkommande            | TCP                | INTERNET/VIRTUAL_NETWORK            | Klient kommunikation till API Management                      | Extern             |
+| */3443                     | Inkommande            | TCP                | API Management/VIRTUAL_NETWORK       | Hanterings slut punkt för Azure Portal och PowerShell         | Externt & internt  |
+| */443                  | Utgående           | TCP                | VIRTUAL_NETWORK/lagring             | **Beroende av Azure Storage**                             | Externt & internt  |
+| */443                  | Utgående           | TCP                | VIRTUAL_NETWORK/AzureActiveDirectory | Beroende av [Azure Active Directory](api-management-howto-aad.md) och Azure-valv                  | Externt & internt  |
+| */1433                     | Utgående           | TCP                | VIRTUAL_NETWORK/SQL                 | **Åtkomst till Azure SQL-slutpunkter**                           | Externt & internt  |
+| */433                     | Utgående           | TCP                | VIRTUAL_NETWORK/AzureKeyVault                 | **Åtkomst till Azure-valv**                           | Externt & internt  |
+| */5671, 5672, 443          | Utgående           | TCP                | VIRTUAL_NETWORK/EventHub            | Beroende för [logg till Event Hub-princip](api-management-howto-log-event-hubs.md) och övervaknings agent | Externt & internt  |
+| */445                      | Utgående           | TCP                | VIRTUAL_NETWORK/lagring             | Beroende av Azure-filresurs för [git](api-management-configuration-repository-git.md)                      | Externt & internt  |
+| */443, 12000                     | Utgående           | TCP                | VIRTUAL_NETWORK/AzureCloud            | Hälso-och övervaknings tillägg         | Externt & internt  |
+| */1886, 443                     | Utgående           | TCP                | VIRTUAL_NETWORK/AzureMonitor         | Publicera diagnostikloggar [och mått](api-management-howto-use-azure-monitor.md), [Resource Health](../service-health/resource-health-overview.md) och [Application Insights](api-management-howto-app-insights.md)                   | Externt & internt  |
+| */25, 587, 25028                       | Utgående           | TCP                | VIRTUAL_NETWORK/INTERNET            | Ansluta till SMTP-relä för att skicka e-post                    | Externt & internt  |
 | */6381-6383              | Inkommande & utgående | TCP                | VIRTUAL_NETWORK/VIRTUAL_NETWORK     | Åtkomst till Redis-tjänsten för [cache](api-management-caching-policies.md) -principer mellan datorer         | Externt & internt  |
 | */4290              | Inkommande & utgående | UDP                | VIRTUAL_NETWORK/VIRTUAL_NETWORK     | Synkronisering av räknare för principer för [hastighets begränsning](api-management-access-restriction-policies.md#LimitCallRateByKey) mellan datorer         | Externt & internt  |
-| * / *                        | Inbound (Inkommande)            | TCP                | AZURE_LOAD_BALANCER/VIRTUAL_NETWORK | Azure-infrastruktur Load Balancer                          | Externt & internt  |
+| * / *                        | Inkommande            | TCP                | AZURE_LOAD_BALANCER/VIRTUAL_NETWORK | Azure-infrastruktur Load Balancer                          | Externt & internt  |
 
 >[!IMPORTANT]
 > Portarna för vilka *syftet* är **Bold** krävs för att API Management tjänsten ska kunna distribueras korrekt. Om du blockerar de andra portarna kan du dock orsaka **försämring** i möjligheten att använda och **övervaka den aktiva tjänsten och tillhandahålla det dedikerade service avtalet**.
@@ -147,6 +146,9 @@ Nedan följer en lista över vanliga fel konfigurations problem som kan uppstå 
   > Ändringen av kluster ovan med DNS-zon **. nsatc.net** till **. microsoftmetrics.com** är oftast en DNS-ändring. Klustrets IP-adress kommer inte att ändras.
 
 + **Regionala service märken**: NSG-regler som tillåter utgående anslutning till Storage-, SQL-och Event Hubs service-taggar kan använda regionala versioner av taggarna som motsvarar den region som innehåller API Management-instansen (till exempel lagring. väst för en API Management instans i regionen USA, västra). I distributioner i flera regioner bör NSG i varje region tillåta trafik till tjänst taggarna för den regionen och den primära regionen.
+
+    > [!IMPORTANT]
+    > Om du vill aktivera publicering av [Developer-portalen](api-management-howto-developer-portal.md) för en API Management-instans i ett virtuellt nätverk, se till att du även tillåter utgående anslutning till Blob Storage i regionen Västra USA. Använd till exempel taggen **Storage. västkusten** i en NSG-regel. Anslutning till Blob Storage i regionen Västra USA krävs för närvarande för att publicera Developer-portalen för API Management instans.
 
 + **SMTP-relä**: utgående nätverks anslutning för SMTP-reläet, som löses under värden `smtpi-co1.msn.com` ,, `smtpi-ch1.msn.com` `smtpi-db3.msn.com` `smtpi-sin.msn.com` och `ies.global.microsoft.com`
 
@@ -252,7 +254,7 @@ IP-adresserna delas av **Azure-miljön**. När du tillåter inkommande begär An
 | Azure, offentlig| Centrala USA-EUAP| 52.253.159.160|
 | Azure, offentlig| USA, södra centrala| 20.188.77.119|
 | Azure, offentlig| USA, östra 2| 20.44.72.3|
-| Azure, offentlig| Norra Europa| 52.142.95.35|
+| Azure, offentlig| Europa, norra| 52.142.95.35|
 | Azure, offentlig| Asien, östra| 52.139.152.27|
 | Azure, offentlig| Frankrike, södra| 20.39.80.2|
 | Azure, offentlig| Schweiz, västra| 51.107.96.8|

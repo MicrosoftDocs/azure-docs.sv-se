@@ -2,13 +2,13 @@
 title: Flytta åtgärds stöd efter resurs typ
 description: Visar en lista över de Azure-resurs typer som kan flyttas till en ny resurs grupp eller prenumeration.
 ms.topic: conceptual
-ms.date: 12/07/2020
-ms.openlocfilehash: 72cc2bd1b391acd2065cc4b775c50af94510a840
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.date: 01/11/2021
+ms.openlocfilehash: fe8f6705fdce1a692dd8a969cfc4b3b21d2d2a11
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97795909"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98072113"
 ---
 # <a name="move-operation-support-for-resources"></a>Åtgärds stöd för flytt av resurser
 
@@ -754,7 +754,7 @@ Hoppa till ett namn område för en resurs leverantör:
 > | Resurstyp | Resursgrupp | Prenumeration |
 > | ------------- | ----------- | ---------- |
 > | availableskus | Nej | Nej |
-> | databoxedgedevices | Ja | Ja |
+> | databoxedgedevices | Nej | Nej |
 
 ## <a name="microsoftdatabricks"></a>Microsoft. Databricks
 

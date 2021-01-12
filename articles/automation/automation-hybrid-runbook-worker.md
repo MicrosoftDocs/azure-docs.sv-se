@@ -3,22 +3,20 @@ title: Översikt över Azure Automation Hybrid Runbook Worker
 description: Den här artikeln innehåller en översikt över Hybrid Runbook Worker som du kan använda för att köra Runbooks på datorer i ditt lokala data Center eller en moln leverantör.
 services: automation
 ms.subservice: process-automation
-ms.date: 11/23/2020
+ms.date: 01/11/2021
 ms.topic: conceptual
-ms.openlocfilehash: 7feac3ccb94cd8b4b0fab509477d4dbf772df2ae
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: a23d30047a13b1d176b086a9923e140e7f8d3e45
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505536"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98072147"
 ---
 # <a name="hybrid-runbook-worker-overview"></a>Översikt över Hybrid Runbook Worker
 
 Runbooks i Azure Automation kanske inte har åtkomst till resurser i andra moln eller i din lokala miljö eftersom de körs på Azures moln plattform. Du kan använda Hybrid Runbook Worker funktionen i Azure Automation för att köra Runbooks direkt på datorn som är värd för rollen och mot resurser i miljön för att hantera de lokala resurserna. Runbooks lagras och hanteras i Azure Automation och levereras sedan till en eller flera tilldelade datorer.
 
-Följande bild visar den här funktionen:
-
-![Översikt över Hybrid Runbook Worker](media/automation-hybrid-runbook-worker/automation.png)
+## <a name="runbook-worker-types"></a>Runbook Worker-typer
 
 Det finns två typer av Runbook-arbetare – system och användare. I följande tabell beskrivs skillnaden mellan dem.
 
@@ -29,18 +27,19 @@ Det finns två typer av Runbook-arbetare – system och användare. I följande 
 
 En Hybrid Runbook Worker kan köras antingen på Windows eller Linux-operativsystemet, och den här rollen förlitar sig på den [Log Analytics agent](../azure-monitor/platform/log-analytics-agent.md) som rapporterar till en Azure Monitor [Log Analytics arbets yta](../azure-monitor/platform/design-logs-deployment.md). Arbets ytan kan inte bara övervaka datorn för det operativ system som stöds, utan även för att ladda ned de komponenter som krävs för att installera Hybrid Runbook Worker.
 
-När Azure Automation [uppdateringshantering](./update-management/overview.md) är aktive rad konfigureras alla datorer som är anslutna till din Log Analytics-arbetsyta automatiskt som en system hybrid Runbook Worker.
+När Azure Automation [uppdateringshantering](./update-management/overview.md) är aktive rad konfigureras alla datorer som är anslutna till din Log Analytics-arbetsyta automatiskt som en system hybrid Runbook Worker. Om du vill konfigurera den som en användares Windows-Hybrid Runbook Worker, se [distribuera en windows hybrid Runbook Worker](automation-windows-hrw-install.md) och för Linux, se [distribuera en Linux-hybrid Runbook Worker](automation-linux-hrw-install.md).
 
-Varje användar Hybrid Runbook Worker är medlem i en Hybrid Runbook Worker grupp som du anger när du installerar arbetaren. En grupp kan innehålla en enda anställd, men du kan inkludera flera arbetare i en grupp för hög tillgänglighet. Varje dator kan vara värd för en Hybrid Runbook Worker rapportering till ett Automation-konto. Du kan inte registrera hybrid Worker över flera Automation-konton. Detta beror på att en hybrid Worker bara kan lyssna efter jobb från ett enda Automation-konto. För datorer som är värdar för system hybrid Runbook Worker som hanteras av Uppdateringshantering kan de läggas till i en Hybrid Runbook Worker grupp. Men du måste använda samma Automation-konto för både Uppdateringshantering och Hybrid Runbook Worker grupp medlemskapet.
+## <a name="how-does-it-work"></a>Hur fungerar det?
+
+![Översikt över Hybrid Runbook Worker](media/automation-hybrid-runbook-worker/automation.png)
+
+Varje användar Hybrid Runbook Worker är medlem i en Hybrid Runbook Worker grupp som du anger när du installerar arbetaren. En grupp kan innehålla en enda anställd, men du kan inkludera flera arbetare i en grupp för hög tillgänglighet. Varje dator kan vara värd för en Hybrid Runbook Worker rapportering till ett Automation-konto. Du kan inte registrera hybrid Worker över flera Automation-konton. En hybrid Worker kan bara lyssna efter jobb från ett enda Automation-konto. För datorer som är värdar för system hybrid Runbook Worker som hanteras av Uppdateringshantering kan de läggas till i en Hybrid Runbook Worker grupp. Men du måste använda samma Automation-konto för både Uppdateringshantering och Hybrid Runbook Worker grupp medlemskapet.
 
 När du startar en Runbook på en användar Hybrid Runbook Worker anger du den grupp som den körs på. Varje anställd i gruppen avsöker Azure Automation för att se om några jobb är tillgängliga. Om ett jobb är tillgängligt tar den första arbets tagaren att hämta jobbet. Bearbetnings tiden för jobb kön beror på maskin varu profilen för Hybrid Worker och belastningen. Du kan inte ange en viss arbetare. Hybrid Worker fungerar med en avsöknings funktion (var 30:30:30 sekunder) och följer den första och den första. Beroende på när ett jobb har överförts, beroende på om hybrid Worker-pingar i automatiserings tjänsten, hämtar jobbet. En enda hybrid Worker kan vanligt vis hämta fyra jobb per ping (det vill säga var 30: e sekund). Om din takt med att skicka jobb är högre än fyra per 30 sekunder, finns det en hög möjlighet till en annan hybrid Worker i Hybrid Runbook Worker gruppen som har hämtat jobbet.
 
+En Hybrid Runbook Worker har inte många av [Azures begränsade](automation-runbook-execution.md#runbook-execution-environment) resurs [gränser](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits) på disk utrymme, minne eller nätverks platser. Gränserna för en hybrid Worker är bara relaterat till arbetarnas egna resurser och de är inte begränsade till den [verkliga delnings](automation-runbook-execution.md#fair-share) tiden som Azure-sandbox har.
+
 För att kontrol lera distributionen av Runbooks i hybrid Runbook Worker och när eller hur jobben utlöses, kan du registrera hybrid Worker mot olika Hybrid Runbook Worker grupper i ditt Automation-konto. Rikta jobben mot den specifika gruppen eller grupperna för att kunna stödja din körning.
-
-Använd en Hybrid Runbook Worker i stället för ett [Azure-sandbox](automation-runbook-execution.md#runbook-execution-environment) eftersom det inte har många av de begränsade [begränsningarna](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits) för disk utrymme, minne eller nätverks platser. Gränserna för en hybrid arbetare är bara relaterade till arbetarnas egna resurser.
-
-> [!NOTE]
-> Hybrid Runbook Worker begränsas inte av den [verkliga delnings](automation-runbook-execution.md#fair-share) tiden som Azure-sandbox har.
 
 ## <a name="hybrid-runbook-worker-installation"></a>Hybrid Runbook Worker installation
 
@@ -99,7 +98,7 @@ Azure Automation Hybrid Runbook Worker kan användas i Azure Government för att
 
 ### <a name="update-management-addresses-for-hybrid-runbook-worker"></a>Uppdateringshantering adresser för Hybrid Runbook Worker
 
-Förutom de standard adresser och portar som krävs för Hybrid Runbook Worker, har Uppdateringshantering ytterligare krav för nätverks konfiguration som beskrivs i avsnittet [nätverks planering](./update-management/overview.md#ports) .
+Förutom de standard adresser och portar som krävs för Hybrid Runbook Worker, har Uppdateringshantering andra nätverks konfigurations krav som beskrivs i avsnittet [nätverks planering](./update-management/overview.md#ports) .
 
 ## <a name="azure-automation-state-configuration-on-a-hybrid-runbook-worker"></a>Azure Automation tillstånds konfiguration på en Hybrid Runbook Worker
 
@@ -107,7 +106,7 @@ Du kan köra [Azure Automation tillstånds konfiguration](automation-dsc-overvie
 
 ## <a name="runbook-worker-limits"></a>Runbook Worker-gränser
 
-Det maximala antalet Hybrid Worker grupper per Automation-konto är 4000 och kan användas för både system & användare hybrid arbetare. Om du har fler än 4 000 datorer för hantering rekommenderar vi att du skapar ytterligare Automation-konton.
+Det maximala antalet Hybrid Worker grupper per Automation-konto är 4000 och kan användas för både system & användare hybrid arbetare. Om du har fler än 4 000 datorer för att hantera rekommenderar vi att du skapar ett annat Automation-konto.
 
 ## <a name="runbooks-on-a-hybrid-runbook-worker"></a>Runbooks på en Hybrid Runbook Worker
 

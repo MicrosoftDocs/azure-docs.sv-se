@@ -3,13 +3,13 @@ title: Push-& Hämta Docker-avbildning
 description: Skicka och hämta Docker-avbildningar till ett privat containerregister i Azure med hjälp av Docker CLI
 ms.topic: article
 ms.date: 01/23/2019
-ms.custom: seodec18, H1Hack27Feb2017, devx-track-azurecli
-ms.openlocfilehash: 067b5749332c2c41b86d22e7de60083d5f61a442
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.custom: seodec18, H1Hack27Feb2017
+ms.openlocfilehash: d04a5fcbc4d6294a216ddfc9a8e6ea1ef98825a3
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96020066"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071637"
 ---
 # <a name="push-your-first-image-to-a-private-docker-container-registry-using-the-docker-cli"></a>Skicka din första avbildning till ett privat Docker-containerregister med hjälp av Docker CLI
 
@@ -37,6 +37,8 @@ docker login myregistry.azurecr.io
 ```
 
 Båda kommandona returnerades `Login Succeeded` när de har slutförts.
+> [!NOTE]
+>* Du kanske vill använda Visual Studio Code med Docker-utsträckning för en snabbare och mer bekväm inloggning.
 
 > [!TIP]
 > Ange alltid det fullständigt kvalificerade register namnet (alla gemener) när du använder `docker login` och när du taggar avbildningar för att överföra till registret. I exemplen i den här artikeln är det fullständigt kvalificerade namnet *myregistry.azurecr.io*.

@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 12/11/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy, devx-track-azurecli
-ms.openlocfilehash: dd7a336df5ff187b874876db32abb45915e00f3b
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 195f1c527185fbd55450b6151f26525074db75f7
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97739390"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98070430"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Distribuera modeller med Azure Machine Learning
 
@@ -322,6 +322,8 @@ I följande tabell beskrivs de olika tjänst tillstånden:
 | Misslyckad | Det gick inte att distribuera tjänsten på grund av ett fel eller en krasch. | Ja |
 | Felfri | Tjänsten är felfri och slut punkten är tillgänglig. | Ja |
 
+> [!TIP]
+> När du distribuerar är Docker-avbildningar för beräknings mål byggda och inlästa från Azure Container Registry (ACR). Azure Machine Learning skapar som standard en ACR som använder tjänst nivån *Basic* . Att ändra ACR för arbets ytan till standard-eller Premium-nivån kan minska den tid det tar att bygga och distribuera avbildningar till dina beräknings mål. Mer information finns i [Azure Container Registry tjänst nivåer](../container-registry/container-registry-skus.md).
 
 ### <a name="batch-inference"></a><a id="azuremlcompute"></a> Batch-härledning
 Azure Machine Learning beräknings mål skapas och hanteras av Azure Machine Learning. De kan användas för batch förutsägelse från Azure Machine Learning pipeliner.

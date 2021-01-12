@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/24/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 454ac9a377800bd11a53250569c3e7b65bac713a
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: 779b66412319ec8422977a7e56570a4d16f89aa9
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96558801"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071552"
 ---
 # <a name="azure-cosmos-db-output-binding-for-azure-functions-2x-and-higher"></a>Azure Cosmos DB utgående bindning för Azure Functions 2. x och högre
 
@@ -248,136 +248,6 @@ public static async Task Run(ToDoItem[] toDoItemsIn, IAsyncCollector<ToDoItem> t
 }
 ```
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
-
-I följande exempel visas en Azure Cosmos DB utgående bindning i en *function.jsi* filen och en [JavaScript-funktion](functions-reference-node.md) som använder bindningen. Funktionen använder en indatatyps bindning för en kö som tar emot JSON i följande format:
-
-```json
-{
-    "name": "John Henry",
-    "employeeId": "123456",
-    "address": "A town nearby"
-}
-```
-
-Funktionen skapar Azure Cosmos DB dokument i följande format för varje post:
-
-```json
-{
-    "id": "John Henry-123456",
-    "name": "John Henry",
-    "employeeId": "123456",
-    "address": "A town nearby"
-}
-```
-
-Här är bindnings data i *function.jspå* filen:
-
-```json
-{
-    "name": "employeeDocument",
-    "type": "cosmosDB",
-    "databaseName": "MyDatabase",
-    "collectionName": "MyCollection",
-    "createIfNotExists": true,
-    "connectionStringSetting": "MyAccount_COSMOSDB",
-    "direction": "out"
-}
-```
-
-I [konfigurations](#configuration) avsnittet förklaras dessa egenskaper.
-
-Här är JavaScript-koden:
-
-```javascript
-    module.exports = function (context) {
-
-      context.bindings.employeeDocument = JSON.stringify({
-        id: context.bindings.myQueueItem.name + "-" + context.bindings.myQueueItem.employeeId,
-        name: context.bindings.myQueueItem.name,
-        employeeId: context.bindings.myQueueItem.employeeId,
-        address: context.bindings.myQueueItem.address
-      });
-
-      context.done();
-    };
-```
-
-För Mass infogning utgör objekten först och kör sedan stringify-funktionen. Här är JavaScript-koden:
-
-```javascript
-    module.exports = function (context) {
-    
-        context.bindings.employeeDocument = JSON.stringify([
-        {
-            "id": "John Henry-123456",
-            "name": "John Henry",
-            "employeeId": "123456",
-            "address": "A town nearby"
-        },
-        {
-            "id": "John Doe-123457",
-            "name": "John Doe",
-            "employeeId": "123457",
-            "address": "A town far away"
-        }]);
-    
-      context.done();
-    };
-```
-
-# <a name="python"></a>[Python](#tab/python)
-
-I följande exempel visas hur du skriver ett dokument till en Azure CosmosDB-databas som utdata till en funktion.
-
-Bindnings definitionen definieras i *function.jspå* WHERE- *typ* är inställd på `cosmosDB` .
-
-```json
-{
-  "scriptFile": "__init__.py",
-  "bindings": [
-    {
-      "authLevel": "function",
-      "type": "httpTrigger",
-      "direction": "in",
-      "name": "req",
-      "methods": [
-        "get",
-        "post"
-      ]
-    },
-    {
-      "type": "cosmosDB",
-      "direction": "out",
-      "name": "doc",
-      "databaseName": "demodb",
-      "collectionName": "data",
-      "createIfNotExists": "true",
-      "connectionStringSetting": "AzureCosmosDBConnectionString"
-    },
-    {
-      "type": "http",
-      "direction": "out",
-      "name": "$return"
-    }
-  ]
-}
-```
-
-Skicka ett dokument objekt till- `set` metoden för databas parametern om du vill skriva till databasen.
-
-```python
-import azure.functions as func
-
-def main(req: func.HttpRequest, doc: func.Out[func.Document]) -> func.HttpResponse:
-
-    request_body = req.get_body()
-
-    doc.set(func.Document.from_json(request_body))
-
-    return 'OK'
-```
-
 # <a name="java"></a>[Java](#tab/java)
 
 * [Köa utlösare, Spara meddelande till databas via retur värde](#queue-trigger-save-message-to-database-via-return-value-java)
@@ -545,6 +415,165 @@ I följande exempel visas en Java-funktion som skriver flera dokument till Cosmo
 
 I [Java Functions runtime-biblioteket](/java/api/overview/azure/functions/runtime)använder du `@CosmosDBOutput` anteckningen för parametrar som ska skrivas till Cosmos dB.  Typ av antecknings parameter bör vara ```OutputBinding<T>``` , där T är antingen en ursprunglig Java-typ eller en POJO.
 
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+I följande exempel visas en Azure Cosmos DB utgående bindning i en *function.jsi* filen och en [JavaScript-funktion](functions-reference-node.md) som använder bindningen. Funktionen använder en indatatyps bindning för en kö som tar emot JSON i följande format:
+
+```json
+{
+    "name": "John Henry",
+    "employeeId": "123456",
+    "address": "A town nearby"
+}
+```
+
+Funktionen skapar Azure Cosmos DB dokument i följande format för varje post:
+
+```json
+{
+    "id": "John Henry-123456",
+    "name": "John Henry",
+    "employeeId": "123456",
+    "address": "A town nearby"
+}
+```
+
+Här är bindnings data i *function.jspå* filen:
+
+```json
+{
+    "name": "employeeDocument",
+    "type": "cosmosDB",
+    "databaseName": "MyDatabase",
+    "collectionName": "MyCollection",
+    "createIfNotExists": true,
+    "connectionStringSetting": "MyAccount_COSMOSDB",
+    "direction": "out"
+}
+```
+
+I [konfigurations](#configuration) avsnittet förklaras dessa egenskaper.
+
+Här är JavaScript-koden:
+
+```javascript
+    module.exports = function (context) {
+
+      context.bindings.employeeDocument = JSON.stringify({
+        id: context.bindings.myQueueItem.name + "-" + context.bindings.myQueueItem.employeeId,
+        name: context.bindings.myQueueItem.name,
+        employeeId: context.bindings.myQueueItem.employeeId,
+        address: context.bindings.myQueueItem.address
+      });
+
+      context.done();
+    };
+```
+
+För Mass infogning utgör objekten först och kör sedan stringify-funktionen. Här är JavaScript-koden:
+
+```javascript
+    module.exports = function (context) {
+    
+        context.bindings.employeeDocument = JSON.stringify([
+        {
+            "id": "John Henry-123456",
+            "name": "John Henry",
+            "employeeId": "123456",
+            "address": "A town nearby"
+        },
+        {
+            "id": "John Doe-123457",
+            "name": "John Doe",
+            "employeeId": "123457",
+            "address": "A town far away"
+        }]);
+    
+      context.done();
+    };
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+I följande exempel visas hur du skriver data till Cosmos DB med hjälp av en utgående bindning. Bindningen deklareras i funktionens konfigurations fil (_functions.jspå_) och tar data från ett köat meddelande och skriver ut till ett Cosmos DB dokument.
+
+```json
+{ 
+  "name": "EmployeeDocument",
+  "type": "cosmosDB",
+  "databaseName": "MyDatabase",
+  "collectionName": "MyCollection",
+  "createIfNotExists": true,
+  "connectionStringSetting": "MyStorageConnectionAppSetting",
+  "direction": "out" 
+} 
+```
+
+I _run.ps1_ -filen mappas objektet som returnerades från funktionen till ett `EmployeeDocument` -objekt, som sparas i databasen.
+
+```powershell
+param($QueueItem, $TriggerMetadata) 
+
+Push-OutputBinding -Name EmployeeDocument -Value @{ 
+    id = $QueueItem.name + '-' + $QueueItem.employeeId 
+    name = $QueueItem.name 
+    employeeId = $QueueItem.employeeId 
+    address = $QueueItem.address 
+} 
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+I följande exempel visas hur du skriver ett dokument till en Azure CosmosDB-databas som utdata till en funktion.
+
+Bindnings definitionen definieras i *function.jspå* WHERE- *typ* är inställd på `cosmosDB` .
+
+```json
+{
+  "scriptFile": "__init__.py",
+  "bindings": [
+    {
+      "authLevel": "function",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "methods": [
+        "get",
+        "post"
+      ]
+    },
+    {
+      "type": "cosmosDB",
+      "direction": "out",
+      "name": "doc",
+      "databaseName": "demodb",
+      "collectionName": "data",
+      "createIfNotExists": "true",
+      "connectionStringSetting": "AzureCosmosDBConnectionString"
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "$return"
+    }
+  ]
+}
+```
+
+Skicka ett dokument objekt till- `set` metoden för databas parametern om du vill skriva till databasen.
+
+```python
+import azure.functions as func
+
+def main(req: func.HttpRequest, doc: func.Out[func.Document]) -> func.HttpResponse:
+
+    request_body = req.get_body()
+
+    doc.set(func.Document.from_json(request_body))
+
+    return 'OK'
+```
+
 ---
 
 ## <a name="attributes-and-annotations"></a>Attribut och anteckningar
@@ -569,17 +598,21 @@ Attributets konstruktor tar databasens namn och samlings namn. Information om de
 
 Attribut stöds inte av C#-skript.
 
+# <a name="java"></a>[Java](#tab/java)
+
+`CosmosDBOutput`Anteckningen är tillgänglig för att skriva data till Cosmos dB. Du kan använda anteckningen till funktionen eller en enskild funktions parameter. När det används i funktions metoden är returvärdet för funktionen det som skrivs till Cosmos DB. Om du använder anteckningen med en parameter måste parameterns typ deklareras som en `OutputBinding<T>` där `T` en ursprunglig Java-typ eller en POJO.
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Attribut stöds inte av Java Script.
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Attribut stöds inte av PowerShell.
+
 # <a name="python"></a>[Python](#tab/python)
 
 Attribut stöds inte av python.
-
-# <a name="java"></a>[Java](#tab/java)
-
-`CosmosDBOutput`Anteckningen är tillgänglig för att skriva data till Cosmos dB. Du kan använda anteckningen till funktionen eller en enskild funktions parameter. När det används i funktions metoden är returvärdet för funktionen det som skrivs till Cosmos DB. Om du använder anteckningen med en parameter måste parameterns typ deklareras som en `OutputBinding<T>` där `T` en ursprunglig Java-typ eller en POJO.
 
 ---
 
@@ -637,7 +670,7 @@ I det här avsnittet beskrivs globala konfigurations inställningar som är till
 }
 ```
 
-|Egenskap  |Standard | Beskrivning |
+|Egenskap  |Standardvärde | Beskrivning |
 |---------|---------|---------|
 |GatewayMode|Gateway|Anslutnings läget som används av funktionen vid anslutning till Azure Cosmos DBs tjänsten. Alternativen är `Direct` och `Gateway`|
 |Protokoll|Https|Anslutnings protokollet som används av funktionen vid anslutning till Azure Cosmos DBs tjänsten.  Läs [här om du vill ha en förklaring av båda lägena](../cosmos-db/performance-tips.md#networking)|

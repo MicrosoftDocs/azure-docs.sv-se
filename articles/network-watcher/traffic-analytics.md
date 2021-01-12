@@ -13,12 +13,12 @@ ms.date: 01/04/2021
 ms.author: damendo
 ms.reviewer: vinigam
 ms.custom: references_regions
-ms.openlocfilehash: 8b1eedc47d2a89b9552c22b3ae770f655f926945
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 6cd1965ab51e7a7bbcc65836383000f0773b9b82
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97898784"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98070968"
 ---
 # <a name="traffic-analytics"></a>Trafikanalys
 
@@ -85,7 +85,7 @@ Du kan använda Traffic Analytics för NSG: er i någon av följande regioner:
       USA, norra centrala  
    :::column-end:::
    :::column span="":::
-      Norra Europa  
+      Europa, norra  
       Sydafrika, norra  
       USA, södra centrala  
       Indien, södra  
@@ -134,7 +134,7 @@ Arbets ytan Log Analytics måste finnas i följande regioner:
       Japan, östra  
       Sydkorea, centrala  
       USA, norra centrala  
-      Norra Europa  
+      Europa, norra  
       Sydafrika, norra  
       USA, södra centrala  
    :::column-end:::
@@ -269,7 +269,7 @@ Några av de insikter du kanske vill få när Trafikanalys har kon figurer ATS f
 - Statistik över blockerad trafik.
     - Varför blockerar en värd en betydande volym av ofarlig trafik? Detta beteende kräver ytterligare undersökning och förmodligen optimering av konfigurationen
 - Statistik över skadlig trafik som tillåts/blockeras
-  - Varför tillåts en värd att ta emot skadlig trafik och varför flöden från skadlig källa är tillåtna? Det här beteendet kräver ytterligare undersökning och förmodligen optimering av konfigurationen.
+  - Varför är en värd som tar emot skadlig trafik och varför är flöden från skadliga källor tillåtna? Det här beteendet kräver ytterligare undersökning och förmodligen optimering av konfigurationen.
 
     Välj **Visa alla**, under **värd**, som du ser i följande bild:
 

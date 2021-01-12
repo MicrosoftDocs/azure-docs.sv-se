@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: how-to
-ms.date: 11/16/2020
+ms.date: 01/11/2021
 ms.author: victorh
-ms.openlocfilehash: c5613dda7adbbc47f989bc2a772777e716620b3c
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 0df91680dadbc4ac19299a4df48a585a11f044e8
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97348041"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98072249"
 ---
 # <a name="azure-firewall-snat-private-ip-address-ranges"></a>Azure Firewall SNAT privata IP-adressintervall
 
@@ -25,6 +25,9 @@ Om din organisation använder ett offentligt IP-adressintervall för privata nä
 - Om du vill konfigurera Azure-brandväggen till att **aldrig** SNAT, oavsett mål-IP-adress, använder du **0.0.0.0/0** som ditt privata IP-adressintervall. Med den här konfigurationen kan Azure-brandväggen aldrig dirigera trafik direkt till Internet. 
 
 - Om du vill konfigurera brand väggen så att den **alltid** är SNAT oavsett mål adress använder du **255.255.255.255/32** som ditt privata IP-adressintervall.
+
+> [!IMPORTANT]
+> Det privata adress intervall som du anger gäller endast för nätverks regler. För närvarande är program reglerna alltid SNAT.
 
 > [!IMPORTANT]
 > Om du vill ange egna privata IP-adressintervall och behålla standardvärdena för IANA RFC 1918 kontrollerar du att din anpassade lista fortfarande innehåller IANA RFC 1918-intervallet. 

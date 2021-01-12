@@ -4,12 +4,12 @@ description: I den här artikeln lär du dig om de scenarier och begränsningar 
 ms.topic: conceptual
 ms.date: 11/7/2019
 ms.custom: references_regions
-ms.openlocfilehash: cb7f31986b9ebd91c631d2b896600039c93084de
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: 7f287206c40e4556db2ee4b38bb46ef8e5352102
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96607100"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98072198"
 ---
 # <a name="support-matrix-for-backup-of-sap-hana-databases-on-azure-vms"></a>Supportmatris för säkerhetskopiering av SAP HANA-databaser på virtuella Azure-datorer
 
@@ -27,7 +27,7 @@ Azure Backup stöder säkerhets kopiering av SAP HANA-databaser till Azure. Den 
 | **OS-versioner**            | SLES 12 med SP2, SP3, SP4 och SP5; SLES 15 med SP0, SP1, SP2 <br><br>  Från och med den 1 augusti 2020 är SAP HANA säkerhets kopiering för RHEL (7,4, 7,6, 7,7 & 8,1) allmänt tillgänglig.                |                                             |
 | **HANA-versioner**          | SDC på HANA 1. x, MDC på HANA 2. x <= SPS04 rev 48, SPS05 (som ännu ska verifieras för krypterings aktiverade scenarier)      |                                                            |
 | **HANA-distributioner**       | SAP HANA på en enda virtuell Azure VM-skalning. <br><br> För distributioner med hög tillgänglighet behandlas båda noderna på de två olika datorerna som enskilda noder med separata data kedjor.               | Utskalning <br><br> Vid distributioner med hög tillgänglighet redundansväxlas inte säkerhets kopieringen till den sekundära noden automatiskt. Konfiguration av säkerhets kopiering bör göras separat för varje nod.                                           |
-| **HANA-instanser**         | En enda SAP HANA instans på en enda virtuell Azure-dator – skala upp | Flera SAP HANA-instanser på en enskild virtuell dator                  |
+| **HANA-instanser**         | En enda SAP HANA instans på en enda virtuell Azure-dator – skala upp | Flera SAP HANA-instanser på en enskild virtuell dator. Du kan bara skydda en av dessa flera instanser i taget.                  |
 | **HANA-databas typer**    | Enkel databas container (SDC) på 1. x, MDC (Multi-Database container) på 2. x | MDC i HANA 1. x                                              |
 | **HANA-databasens storlek**     | HANA-databaser med storlek <= 2 TB (detta är inte minnes storleken för HANA-systemet)               |                                                              |
 | **Säkerhets kopierings typer**           | Fullständiga, differentiella, stegvisa (för hands version) och logg säkerhets kopior                          |  Ögonblicksbilder                                       |

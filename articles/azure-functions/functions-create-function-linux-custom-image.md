@@ -5,12 +5,12 @@ ms.date: 12/2/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp, mvc, devx-track-python, devx-track-azurepowershell, devx-track-azurecli
 zone_pivot_groups: programming-languages-set-functions-full
-ms.openlocfilehash: fb85920b04e3cd457dc36d1ba1fd0f18dcd7abb6
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 1c7a9fd83131ea6282d2ef4860b744fa348153ed
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97937067"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98070925"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>Skapa en funktion i Linux med en anpassad container
 
@@ -24,7 +24,7 @@ Distribution av funktions koden i en anpassad Linux-behållare kräver [Premium-
 
 Du kan också använda en standard-Azure App Service-behållare enligt beskrivningen i [skapa din första funktion på Linux](./create-first-function-cli-csharp.md?pivots=programming-language-python). Bas avbildningar som stöds för Azure Functions finns i [Azure Functions Base images-lagrings platsen](https://hub.docker.com/_/microsoft-azure-functions-base).
 
-I den här guiden får du lära dig att:
+I de här självstudierna får du lära dig att
 
 ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python,programming-language-java"
 > [!div class="checklist"]
@@ -356,7 +356,7 @@ Om du vill distribuera funktions koden till Azure måste du skapa tre resurser:
 
 - En resurs grupp, som är en logisk behållare för relaterade resurser.
 - Ett Azure Storage konto som upprätthåller tillstånd och annan information om dina projekt.
-- En Azure Functions-app som tillhandahåller miljön för att köra funktions koden. En Function-app mappar till ditt lokala Function-projekt och gör att du kan gruppera funktioner som en logisk enhet för enklare hantering, distribution och delning av resurser.
+- En Function-app som tillhandahåller miljön för att köra funktions koden. En Function-app mappar till ditt lokala Function-projekt och gör att du kan gruppera funktioner som en logisk enhet för enklare hantering, distribution och delning av resurser.
 
 Du kan använda Azure CLI-kommandon för att skapa dessa objekt. Varje kommando innehåller JSON-utdata när den har slutförts.
 

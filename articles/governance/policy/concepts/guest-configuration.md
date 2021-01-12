@@ -3,12 +3,12 @@ title: Lär dig att granska innehållet i virtuella datorer
 description: Lär dig hur Azure Policy använder klienten för gäst konfiguration för att granska inställningar i virtuella datorer.
 ms.date: 10/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 58fe1c630de4abfb2fe04ddedb45b360cfebd423
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: 5ec43516c60d2fe5d923a7b87cddbea0ad640453
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97862325"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071841"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Om Azure Policys gästkonfiguration
 
@@ -47,7 +47,7 @@ I datorn använder gäst konfigurations klienten lokala verktyg för att köra g
 
 I följande tabell visas en lista över de lokala verktyg som används på varje operativ system som stöds. För inbyggt innehåll hanterar gäst konfigurationen inläsning av dessa verktyg automatiskt.
 
-|Operativsystem|Validerings verktyg|Obs!|
+|Operativsystem|Validerings verktyg|Anteckningar|
 |-|-|-|
 |Windows|[PowerShell Desired State Configuration](/powershell/scripting/dsc/overview/overview) v2| Sidan har lästs in till en mapp som endast används av Azure Policy. Är inte i konflikt med Windows PowerShell DSC. PowerShell-kärnan har inte lagts till i System Sök vägen.|
 |Linux|[Chefs INSPEC](https://www.chef.io/inspec/)| Installerar chefs inspecens version 2.2.61 på standard platsen och läggs till i System Sök vägen. Beroenden för INSPEC-paketet inklusive ruby och python installeras också. |
@@ -153,8 +153,6 @@ Gäst konfigurations tillägget skriver loggfiler till följande platser:
 Windows: `C:\ProgramData\GuestConfig\gc_agent_logs\gc_agent.log`
 
 Linux: `/var/lib/GuestConfig/gc_agent_logs/gc_agent.log`
-
-Där `<version>` refererar till det aktuella versions numret.
 
 ### <a name="collecting-logs-remotely"></a>Samla in loggar via fjärr anslutning
 

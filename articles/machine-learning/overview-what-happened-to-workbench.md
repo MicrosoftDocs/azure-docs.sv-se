@@ -7,16 +7,15 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
-ms.reviewer: jmartens
-author: j-martens
-ms.author: jmartens
+ms.author: larryfr
+author: BlackMist
 ms.date: 03/05/2020
-ms.openlocfilehash: fb35cce46a8448b744e8f7b3d26f2ca6a166f831
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 812bbb2507310d088c42fa1cf2cad4c330755892
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541223"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98072334"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Vad hände med Azure Machine Learning Workbench?
 
@@ -68,7 +67,7 @@ Börja träna dina modeller och spåra körhistorik med hjälp av nya CLI och SD
 
 Du förlorar inte någon kod eller något arbete. I den äldre versionen är projekt molnentiteter med en lokal katalog. I den senaste versionen kopplar du lokala kataloger till Azure Machine Learning arbets ytan med hjälp av en lokal konfigurations fil. Se ett [diagram över den senaste arkitekturen](concept-azure-machine-learning-architecture.md).
 
-Mycket av projektinnehållet finns redan på den lokala datorn. Så du behöver bara skapa en konfigurationsfil i denna katalog och referera till den i koden för att ansluta till din arbetsyta. Om du vill fortsätta att använda den lokala katalogen som innehåller dina filer och skript, anger du katalogens namn i python-kommandot ["experiment. Submit"](/python/api/azureml-core/azureml.core.experiment.experiment?preserve-view=true&view=azure-ml-py) eller med `az ml project attach` kommandot cli.  Exempel:
+Mycket av projektinnehållet finns redan på den lokala datorn. Så du behöver bara skapa en konfigurationsfil i denna katalog och referera till den i koden för att ansluta till din arbetsyta. Om du vill fortsätta att använda den lokala katalogen som innehåller dina filer och skript, anger du katalogens namn i python-kommandot ["experiment. Submit"](/python/api/azureml-core/azureml.core.experiment.experiment?preserve-view=true&view=azure-ml-py) eller med `az ml project attach` kommandot cli.  Till exempel:
 ```python
 run = exp.submit(source_directory=script_folder,
                  script='train.py', run_config=run_config_system_managed)

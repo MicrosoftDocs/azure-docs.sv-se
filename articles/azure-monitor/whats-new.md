@@ -5,17 +5,75 @@ ms.subservice: ''
 ms.topic: overview
 author: bwren
 ms.author: bwren
-ms.date: 12/04/2020
-ms.openlocfilehash: 91aa76fd3d9dbb54316f32fdb319e92ca2283b1d
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.date: 01/11/2021
+ms.openlocfilehash: 6347bd3710a4727b9d3f820072ffff21cb57752d
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96745782"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071875"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Vad är nytt i Azure Monitor-dokumentationen?
 
 Den här artikeln innehåller listor Azure Monitor artiklar som antingen är nya eller som har uppdaterats markant. Den kommer att uppdateras den första veckan i varje månad för att inkludera artikel uppdateringar från föregående månad.
+
+## <a name="december-2020"></a>December 2020
+
+### <a name="general"></a>Allmänt
+- [Azure Monitor Kundhanterade nyckel](platform/customer-managed-keys.md) -tillagda fel meddelanden.
+- [Partner som integreras med avsnittet Azure Monitor](platform/partners.md) -tillägg i Event Hub-integrering.
+
+### <a name="agents"></a>Agenter
+- [Fråga Azure datautforskaren över hela resursen genom att använda Azure Monitor](platform/azure-monitor-data-explorer-proxy.md) nya artikeln.
+- [Översikt över Azure Monitoring agents](platform/agents-overview.md) – stöd för Oracle 8 har lagts till.
+
+### <a name="alerts"></a>Aviseringar
+- [Felsöka Azure Metric Alerts](platform/alerts-troubleshoot-metric.md) – fel sökning har lagts till för dynamiska tröskelvärden.
+- [Anslutningsprogram för hantering av IT-tjänster (ITSM) i Log Analytics](platform/itsmc-definition.md) – ny artikel.
+- [Anslutningsprogram för hantering av IT-tjänster (ITSM) Översikt](platform/itsmc-overview.md) – omstrukturerad felsöknings information.
+- [Anslut Cherwell med anslutningsprogram för hantering av IT-tjänster (ITSM)](platform/itsmc-connections-cherwell.md) ny artikel.
+- [Anslut förhandlingen med anslutningsprogram för hantering av IT-tjänster (ITSM)](platform/itsmc-connections-provance.md) ny artikel.
+- [Anslut SCSM med anslutningsprogram för hantering av IT-tjänster (ITSM)](platform/itsmc-connections-scsm.md) ny artikel.
+- [Anslut ServiceNow med anslutningsprogram för hantering av IT-tjänster (ITSM)](platform/itsmc-connections-servicenow.md) ny artikel.
+- [Så här åtgärdar du ServiceNow Sync-problem](platform/itsmc-resync-servicenow.md) – omstrukturerad felsöknings information.
+
+
+
+
+### <a name="application-insights"></a>Application Insights
+- [Azure Application insikter om JavaScript-webbappar](app/javascript.md) – installation av anslutnings sträng har lagts till.
+- [Azure Application Insights standard mått](app/standard-metrics.md) – ny artikel.
+- [Azure Monitor Application Insights Java](app/java-in-process-agent.md) – ytterligare information om hur du skickar anpassad telemetri från ditt program.
+- [Kontinuerlig export av telemetri från Application Insights](app/export-telemetry.md) -tillagda diagnostikinställningar baserade på export.
+- [Aktivera Snapshot debugger för .net-och .net Core-appar i Azure Functions](app/snapshot-debugger-function-app.md) nya artikeln.
+- [IP-adresser som används av Application Insights och Log Analytics](app/ip-addresses.md) -TILLAGDa IP-adresser för Azure Government.
+- [Felsök problem med Azure Application Insights](app/profiler-troubleshooting.md) -profilering – information om status sidan för diagnostiska tjänsternas webbplats tillägg har lagts till.
+- [Felsök Azure Application Insights-tillgänglighets test](app/troubleshoot-availability.md) – uppdateringar av fel sökning för ping-test.
+- [Fel sökning Azure Monitor Application Insights för Java](app/java-standalone-troubleshoot.md) -ny artikel.
+
+### <a name="containers"></a>Containrar
+- [Rapporter i Azure Monitor för behållare](insights/container-insights-reports.md) – ny artikel.
+
+### <a name="logs"></a>Loggar
+- [Azure Monitor loggar dedicerade kluster](log-query/logs-dedicated-clusters.md) – nya automatiserade kommandon, metoder för att ta bort länkar och ta bort och felsöka.
+- [Kors tjänst fråga mellan Azure Monitor och Azure datautforskaren (för hands version)](platform/azure-data-explorer-monitor-cross-service-query.md) – ny artikel.
+- [Log Analytics arbets ytans data export i Azure Monitor (för hands version)](platform/logs-data-export.md) – tillagda arm-mallar.
+
+### <a name="metrics"></a>Mått
+- [Avancerade funktioner i Azure Metrics Explorer](platform/metrics-charts.md) -tillagd information om resurs omfattnings väljaren.
+- [Visa flera resurser i Metrics Explorer](platform/metrics-dynamic-scope.md) – ny artikel.
+
+### <a name="networks"></a>Nätverk
+- [Azure Networking Analytics-lösning i Azure Monitor](insights/azure-networking-analytics.md) -tillagd information på nätverks insikts arbets bok.
+
+### <a name="virtual-machines"></a>Virtuella datorer
+- [Aktivera Azure Monitor för en hybrid miljö](insights/vminsights-enable-hybrid.md) – ny version av beroende agent.
+
+
+### <a name="visualizations"></a>Visualiseringar
+- [Azure Monitor arbets bok kart visualiseringar](platform/workbooks-map-visualizations.md) – ny artikel.
+- [Azure Monitor arbets böcker ta med din egen lagrings](platform/workbooks-bring-your-own-storage.md) nya artikel.
+
 
 ## <a name="november-2020"></a>November 2020
 

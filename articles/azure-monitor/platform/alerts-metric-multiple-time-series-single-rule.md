@@ -4,14 +4,14 @@ description: Avisering i skala med hjälp av en enda varnings regel för flera t
 author: harelbr
 ms.author: harelbr
 ms.topic: conceptual
-ms.date: 11/12/2020
+ms.date: 01/11/2021
 ms.subservice: alerts
-ms.openlocfilehash: 66987a28acc8a2c9ae71d89ff5760fa508e32963
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 47a2fb9240f6826ed862f7a857264c09b79de9bc
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566511"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071093"
 ---
 # <a name="monitor-multiple-time-series-in-a-single-metric-alert-rule"></a>Övervaka flera tids serier i en enda mått varnings regel
 
@@ -21,7 +21,7 @@ En regel för en enda mått kan användas för att övervaka en eller flera tids
 
 En Metric Time-serien är en serie mätningar (eller "mått värden") som har samlats in under en viss tids period. 
 
-Exempel:
+Till exempel:
 
 - CPU-användning för en virtuell dator
 - Inkommande byte (ingress) till ett lagrings konto
@@ -43,7 +43,7 @@ Ett exempel på en sådan aviserings regel (med endast relevanta egenskaper som 
 
 
 För den här varnings regeln övervakas en enda metrisk tids serie:
--   Procent CPU där *Resource* = ' myVM1 ' > 70%
+-   Procent CPU där *Resource*= ' myVM1 ' > 70%
 
 ![En varnings regel på en enskild tids serie](media/alerts-metric-multiple-time-series-single-rule/simple-alert-rule.png)
 
@@ -65,8 +65,8 @@ Ett exempel på en sådan aviserings regel:
 -   Tröskel: *70*
 
 För den här varnings regeln övervakas två metriska tids serier separat:
--   Procent CPU där *Resource* = ' myVM1 ' > 70%
--   Procent CPU där *Resource* = ' myVM2 ' > 70%
+-   Procent CPU där *Resource*= ' myVM1 ' > 70%
+-   Procent CPU där *Resource*= ' myVM2 ' > 70%
 
 ![En varnings regel för flera resurser](media/alerts-metric-multiple-time-series-single-rule/multi-resource-alert-rule.png)
  
@@ -76,7 +76,7 @@ Anta till exempel att vi har ställt in varnings regeln ovan för att övervaka 
 -   *Procent andelen* av *myVM1* är större än 70% 
 -   *Procent andelen* av *myVM2* är på 50%
 
-Varnings regeln utlöses på *myVM1* , men inte *myVM2*. Dessa utlösta aviseringar är oberoende av varandra. De kan också matcha vid olika tidpunkter, beroende på de enskilda virtuella datorernas beteende.
+Varnings regeln utlöses på *myVM1*, men inte *myVM2*. Dessa utlösta aviseringar är oberoende av varandra. De kan också matcha vid olika tidpunkter, beroende på de enskilda virtuella datorernas beteende.
 
 Mer information om aviserings regler för flera resurser och de resurs typer som stöds för den här funktionen finns i [övervakning i skala med hjälp av mått varningar i Azure Monitor](alerts-metric-overview.md#monitoring-at-scale-using-metric-alerts-in-azure-monitor).
 
@@ -87,7 +87,7 @@ Mer information om aviserings regler för flera resurser och de resurs typer som
 
 En regel för en enda mått kan också övervaka upp till fem villkor per aviserings regel. 
 
-Exempel:
+Till exempel:
 
 - Mål resurs: *myVM1*
 - Condition1
@@ -101,8 +101,8 @@ Exempel:
 
 För den här varnings regeln övervakas två metriska tids serier:
 
-- Procent CPU där *Resource* = ' myVM1 ' > 70%
-- Nätverk totalt där *Resource* = ' myVM1 ' > 20 MB
+- Procent CPU där *Resource*= ' myVM1 ' > 70%
+- Nätverk totalt där *Resource*= ' myVM1 ' > 20 MB
 
 ![En varnings regel för flera villkor](media/alerts-metric-multiple-time-series-single-rule/multi-condition-alert-rule.png)
  
@@ -129,9 +129,9 @@ Ett exempel på en varnings regel som övervakar flera dimensioner är:
 
 För den här varnings regeln övervakas tre metriska tids serier:
 
-- Transaktioner där *Resource* = ' myStorage1 ' och *API Name* = ' GetBlob ' > 70
-- Transaktioner där *Resource* = ' myStorage1 ' och *API Name* = ' DeleteBlob ' > 70
-- Transaktioner där *Resource* = ' myStorage1 ' och *API Name* = ' PutPage ' > 70
+- Transaktioner där *Resource*= ' myStorage1 ' och *API Name*= ' GetBlob ' > 70
+- Transaktioner där *Resource*= ' myStorage1 ' och *API Name*= ' DeleteBlob ' > 70
+- Transaktioner där *Resource*= ' myStorage1 ' och *API Name*= ' PutPage ' > 70
 
 ![En varnings regel med flera dimensioner med värden från en dimension](media/alerts-metric-multiple-time-series-single-rule/multi-dimension-1.png)
 
@@ -149,12 +149,12 @@ Ett exempel på den här typen av aviserings regel:
 
 För den här varnings regeln övervakas sex meters tids serier separat:
 
-- Transaktioner där *Resource* = ' myStorage1 ' och *API Name* = ' GetBlob ' och *Authentication* = ' SAS ' > 70
-- Transaktioner där *Resource* = ' myStorage1 ' och *API Name* = ' GetBlob ' och *Authentication* = ' AccountKey ' > 70
-- Transaktioner där *Resource* = ' myStorage1 ' och *API Name* = ' DeleteBlob ' och *Authentication* = ' SAS ' > 70
-- Transaktioner där *Resource* = ' myStorage1 ' och *API Name* = ' DeleteBlob ' och *Authentication* = ' AccountKey ' > 70
-- Transaktioner där *Resource* = ' myStorage1 ' och *API Name* = ' PutPage ' och *Authentication* = ' SAS ' > 70
-- Transaktioner där *Resource* = ' myStorage1 ' och *API Name* = ' PutPage ' och *Authentication* = ' AccountKey ' > 70
+- Transaktioner där *Resource*= ' myStorage1 ' och *API Name*= ' GetBlob ' och *Authentication*= ' SAS ' > 70
+- Transaktioner där *Resource*= ' myStorage1 ' och *API Name*= ' GetBlob ' och *Authentication*= ' AccountKey ' > 70
+- Transaktioner där *Resource*= ' myStorage1 ' och *API Name*= ' DeleteBlob ' och *Authentication*= ' SAS ' > 70
+- Transaktioner där *Resource*= ' myStorage1 ' och *API Name*= ' DeleteBlob ' och *Authentication*= ' AccountKey ' > 70
+- Transaktioner där *Resource*= ' myStorage1 ' och *API Name*= ' PutPage ' och *Authentication*= ' SAS ' > 70
+- Transaktioner där *Resource*= ' myStorage1 ' och *API Name*= ' PutPage ' och *Authentication*= ' AccountKey ' > 70
 
 ![En varnings regel med flera dimensioner och värden från flera dimensioner](media/alerts-metric-multiple-time-series-single-rule/multi-dimension-2.png)
  
@@ -162,7 +162,7 @@ För den här varnings regeln övervakas sex meters tids serier separat:
 
 1.  **Välja alla aktuella och framtida dimensioner** – du kan välja att övervaka alla möjliga värden för en dimension, inklusive framtida värden. En sådan varnings regel skalar automatiskt för att övervaka alla värden i dimensionen utan att du behöver ändra varnings regeln varje gång ett dimensions värde läggs till eller tas bort.
 2.  **Förutom dimensioner** – att välja operatorn ' ≠ ' (exkludera) för ett dimensions värde motsvarar att välja alla andra värden för dimensionen, inklusive framtida värden.
-3.  **Nya och anpassade dimensioner** – dimensions värden som visas i Azure Portal baseras på mått data som samlats in under de senaste tre dagarna. Om det dimensions värde som du söker efter inte har spridits, kan du lägga till ett anpassat dimensions värde.
+3.  **Nya och anpassade dimensioner** – dimensions värden som visas i Azure Portal baseras på mått data som samlas in den senaste dagen. Om det dimensions värde som du söker efter inte har spridits, kan du lägga till ett anpassat dimensions värde.
 4. **Matcha dimensioner med ett prefix** – du kan välja att övervaka alla dimensions värden som börjar med ett särskilt mönster genom att välja operatorn "börjar med" och ange ett anpassat prefix.
 
 ![Avancerade funktioner i flera dimensioner](media/alerts-metric-multiple-time-series-single-rule/advanced-features.png)

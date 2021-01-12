@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/13/2020
 ms.author: memildin
-ms.openlocfilehash: 0b6a9d081d2b81124b0cae15e81e4b233f7824bb
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 99f47df86d89e9daf2bc8878b868b04b7038ffd5
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97629348"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071212"
 ---
 # <a name="pricing-of-azure-security-center"></a>Prissättning för Azure Security Center
 Azure Security Center har en enhetlig säkerhetshantering och avancerat skydd mot hot för arbetsbelastningar som körs i Azure, lokalt och i andra moln. Den ger insyn och kontroll över hybrid moln arbets belastningar, aktiva försvar som minskar exponeringen för hot och intelligent identifiering som hjälper dig att hålla jämna steg med snabbt växande cyberhot-risker.
@@ -72,6 +72,7 @@ Nedan visas pris sidan för en exempel prenumeration. Du märker att varje plan 
 - [Vilka är de planer som erbjuds av Security Center?](#what-are-the-plans-offered-by-security-center)
 - [Hur aktiverar jag Azure Defender för min prenumeration?](#how-do-i-enable-azure-defender-for-my-subscription)
 - [Kan jag aktivera Azure Defender för en delmängd av servrarna i min prenumeration?](#can-i-enable-azure-defender-for-servers-on-a-subset-of-servers-in-my-subscription)
+- [Om jag redan har en licens för Microsoft Defender för slut punkten får jag en rabatt för Azure Defender?](#if-i-already-have-a-license-for-microsoft-defender-for-endpoint-can-i-get-a-discount-for-azure-defender)
 - [Min prenumeration har Azure Defender för servrar aktiverat, betalar jag för servrar som inte är igång?](#my-subscription-has-azure-defender-for-servers-enabled-do-i-pay-for-not-running-servers)
 - [Kommer jag att debiteras för datorer utan att Log Analytics-agenten är installerad?](#will-i-be-charged-for-machines-without-the-log-analytics-agent-installed)
 - [Kommer jag att debiteras två gånger om en Log Analytics agent rapporterar till flera arbets ytor?](#if-a-log-analytics-agent-reports-to-multiple-workspaces-will-i-be-charged-twice)
@@ -111,6 +112,10 @@ Nej. När du aktiverar [Azure Defender för servrar](defender-for-servers-introd
 
 Ett alternativ är att aktivera Azure Defender för servrar på Log Analytics arbets ytans nivå. Om du gör detta kommer endast servrar som rapporterar till arbets ytan att skyddas och faktureras. Flera funktioner är dock inte tillgängliga. Dessa inkluderar just-in-Time VM-åtkomst, nätverks identifiering, regelefterlevnad, anpassad nätverks härdning, anpassningsbar program kontroll och mycket annat. 
 
+### <a name="if-i-already-have-a-license-for-microsoft-defender-for-endpoint-can-i-get-a-discount-for-azure-defender"></a>Om jag redan har en licens för Microsoft Defender för slut punkten får jag en rabatt för Azure Defender?
+Om du redan har en licens för Microsoft Defender för slut punkt behöver du inte betala för den delen av din Azure Defender-licens.
+
+Om du vill bekräfta rabatten kontaktar du Security Center support teamet och anger relevant arbetsyte-ID, region och licens information.
 
 ### <a name="my-subscription-has-azure-defender-for-servers-enabled-do-i-pay-for-not-running-servers"></a>Min prenumeration har Azure Defender för servrar aktiverat, betalar jag för servrar som inte är igång? 
 Nej. När du aktiverar [Azure Defender för servrar](defender-for-servers-introduction.md) i en prenumeration faktureras du per timme för endast servrar som körs. Du debiteras inte för någon server som är inaktive rad, under den tid det tar. 
@@ -130,7 +135,7 @@ Ja. Om du har konfigurerat Log Analytics-agenten för att skicka data till två 
 ### <a name="is-the-500-mb-free-data-ingestion-calculated-for-an-entire-workspace-or-strictly-per-machine"></a>Beräknas den 500 MB lediga data inmatningen för en hel arbets yta eller exakt per dator?
 Du får 500 MB kostnads fri data inmatning per dag för varje dator som är ansluten till arbets ytan. Specifikt för säkerhets data typer som samlas in direkt av Azure Security Center.
 
-Dessa data är en daglig genomsnittlig hastighet för alla noder. Så även om vissa datorer skickar 100-MB och andra skickar 800-MB, om summan inte överstiger **[antal datorer] x 500-MB** fri gräns, debiteras du inte extra.
+Dessa data är ett dagligt genomsnitt för alla noder. Så även om vissa datorer skickar 100-MB och andra skickar 800-MB, om summan inte överstiger **[antal datorer] x 500-MB** fri gräns, debiteras du inte extra.
 
 ## <a name="next-steps"></a>Nästa steg
 I den här artikeln förklaras Security Center pris alternativ. För relaterat material, se:

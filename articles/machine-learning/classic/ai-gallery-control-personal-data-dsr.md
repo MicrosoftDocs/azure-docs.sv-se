@@ -9,13 +9,13 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 05/25/2018
-ms.reviewer: jmartens, mldocs
-ms.openlocfilehash: 6276d5c8d333f29c55720f2255f2cdf27e1e36cc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.reviewer: mldocs
+ms.openlocfilehash: 1c549cd4a4d76e96f16eb04f3cf5aa3368725b8c
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91346022"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98070549"
 ---
 # <a name="view-and-delete-in-product-user-data-from-azure-ai-gallery"></a>Visa och ta bort användar data i produkten från Azure AI Gallery
 
@@ -88,7 +88,7 @@ Om du vill visa publicerade entiteter går du till följande URL och ersätter `
 
 `https://catalog.cortanaanalytics.com/entities?$filter=author/id eq '[AuthorId]'`
 
-Exempel:
+Till exempel:
 
 `https://catalog.cortanaanalytics.com/entities?$filter=author/id eq '99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA'`
 

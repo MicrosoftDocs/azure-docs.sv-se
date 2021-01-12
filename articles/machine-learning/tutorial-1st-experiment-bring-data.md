@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: tracking-python
-ms.openlocfilehash: de89f9d87b010dc3710e7d82f4d846de12303905
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: ab497dee35afdd60247d156d0f30bbf003ea1210
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97739441"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98072164"
 ---
 # <a name="tutorial-use-your-own-data-part-4-of-4"></a>Självstudie: Använd dina egna data (del 4 av 4)
 
@@ -40,9 +40,6 @@ I den här kursen får du:
 ## <a name="prerequisites"></a>Förutsättningar
 
 * Slut för ande av [del 3](tutorial-1st-experiment-sdk-train.md) av serien.
-* Introduktions kunskap om python-språket och Machine Learning-arbetsflöden.
-* Lokal utvecklings miljö, till exempel Visual Studio Code, Jupyter eller pycharm med.
-* Python (version 3,5 till 3,7).
 
 ## <a name="adjust-the-training-script"></a>Justera övnings skriptet
 
@@ -130,7 +127,7 @@ Skapa ett nytt python-kontroll skript `05-upload-data.py` som anropas i `tutoria
 >[!TIP] 
 > När du använder Azure Machine Learning för att överföra data kan du använda [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) för att ladda upp Ad hoc-filer. Om du behöver ett ETL-verktyg kan du använda [Azure Data Factory](../data-factory/introduction.md) för att mata in dina data i Azure.
 
-Kör python-filen för att överföra data. (Uppladdningen ska vara snabb, mindre än 60 sekunder.)
+I fönstret som har den aktiverade *tutorial1* Conda-miljön kör du python-filen för att överföra data. (Uppladdningen ska vara snabb, mindre än 60 sekunder.)
 
 ```bash
 python 05-upload-data.py

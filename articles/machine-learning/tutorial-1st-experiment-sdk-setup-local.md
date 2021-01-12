@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 5df8b478c550522d4602398afd208c1e001c96a2
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: fae9a4b1b82a1fe23e8882b45880a6ba0081f580
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97883307"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071138"
 ---
 # <a name="tutorial-get-started-with-azure-machine-learning-in-your-development-environment-part-1-of-4"></a>Självstudie: kom igång med Azure Machine Learning i utvecklings miljön (del 1 av 4)
 
@@ -32,30 +32,47 @@ I del 1 av den här själv studie serien kommer du att:
 > * Konfigurera ett beräknings kluster.
 
 > [!NOTE]
-> I den här själv studie serien fokuserar vi Azure Machine Learning koncept som passar för python *-jobbbaserade* Machine Learning-uppgifter som är beräknings intensiva och/eller kräver reproducerbarhet. Om du är mer intresse rad av ett exempel arbets flöde kan du i stället använda [Jupyter eller RStudio på en Azure Machine Learning beräknings instans](tutorial-1st-experiment-sdk-setup.md).
+> Den här själv studie serien fokuserar på Azure Machine Learning begrepp som krävs för att skicka **batch-jobb** – det är här som koden skickas till molnet för att köras i bakgrunden utan någon användar interaktion. Detta är användbart för färdiga skript eller kod som du vill köra upprepade gånger, eller för beräknings intensiva Machine Learning-uppgifter. Om du är mer intresse rad av ett exempel arbets flöde kan du i stället använda [Jupyter eller RStudio på en Azure Machine Learning beräknings instans](tutorial-1st-experiment-sdk-setup.md).
 
 ## <a name="prerequisites"></a>Förutsättningar
 
 - En Azure-prenumeration. Om du inte har någon Azure-prenumeration kan du skapa ett kostnadsfritt konto innan du börjar. Försök [Azure Machine Learning](https://aka.ms/AMLFree).
-- Bekanta dig med python och [Machine Learning koncept](concept-azure-machine-learning-architecture.md). Exempel är miljöer, utbildning och poäng.
-- Lokal utvecklings miljö, till exempel Visual Studio Code, Jupyter eller pycharm med.
-- Python (version 3,5 till 3,7).
-
+- [Anaconda](https://www.anaconda.com/download/) eller [Miniconda](https://www.anaconda.com/download/) för att hantera virtuella python-miljöer och installera paket.
 
 ## <a name="install-the-azure-machine-learning-sdk"></a>Installera Azure Machine Learning SDK
 
-I den här självstudien använder vi Azure Machine Learning SDK för python.
+I den här självstudien kommer du att använda Azure Machine Learning SDK för python. För att undvika python-beroenden skapar du en isolerad miljö. I den här själv studie serien används Conda för att skapa miljön. Om du föredrar att använda andra lösningar, till exempel `venv` , `virtualenv` eller Docker, kontrollerar du att du använder en python-version >= 3,5 och < 3,9.
 
-Du kan använda de verktyg som är mest välbekanta för dig (till exempel Conda och pip) för att konfigurera en python-miljö som ska användas i den här självstudien. Installera i python-miljön Azure Machine Learning SDK för python via PIP:
+Kontrol lera om du har Conda installerat i systemet:
+    
+```bash
+conda --version
+```
+    
+Om det här kommandot returnerar ett `conda not found` fel kan du [Hämta och installera Miniconda](https://docs.conda.io/en/latest/miniconda.html). 
+
+När du har installerat Conda kan du använda ett terminalfönster-eller Anaconda-kommandotolk-fönster för att skapa en ny miljö:
 
 ```bash
+conda create -n tutorial python=3.7
+```
+
+Sedan installerar du Azure Machine Learning SDK i Conda-miljön som du skapade:
+
+```bash
+conda activate tutorial
 pip install azureml-sdk
 ```
+    
+> [!NOTE]
+> Det tar cirka 5 minuter innan den Azure Machine Learning SDK-installationen har slutförts.
+
 
 > [!div class="nextstepaction"]
 > [Jag har installerat SDK: n som](?success=install-sdk#dir) [Jag stötte på ett problem](https://www.research.net/r/7C8Z3DN?issue=install-sdk)
 
 ## <a name="create-a-directory-structure-for-code"></a><a name="dir"></a>Skapa en katalog struktur för kod
+
 Vi rekommenderar att du konfigurerar följande enkla katalog struktur för den här självstudien:
 
 ```markdown
@@ -68,8 +85,9 @@ tutorial
 
 > [!TIP]
 > Du kan skapa en dold. azureml-underkatalog i ett terminalfönster.  Eller Använd följande:
+>
 > * I ett Mac Finder-fönster använder du **Kommando + Skift +.** så här växlar du möjlighet att visa och skapa kataloger som börjar med en punkt.  
-> * I Windows 10, se [så här visar du dolda filer och mappar](https://support.microsoft.com/en-us/windows/view-hidden-files-and-folders-in-windows-10-97fbc472-c603-9d90-91d0-1166d1d9f4b5). 
+> * I en Windows 10-fil Utforskare, se [så här visar du dolda filer och mappar](https://support.microsoft.com/en-us/windows/view-hidden-files-and-folders-in-windows-10-97fbc472-c603-9d90-91d0-1166d1d9f4b5). 
 > * I det grafiska Linux-gränssnittet använder du **CTRL + h** eller **Visa** -menyn och markerar kryss rutan för att **Visa dolda filer**.
 
 > [!div class="nextstepaction"]
@@ -104,7 +122,7 @@ ws = Workspace.create(name='<my_workspace_name>', # provide a name for your work
 ws.write_config(path='.azureml')
 ```
 
-Kör den här koden från `tutorial` katalogen:
+Kör den här koden från katalogen i fönstret som har den aktiverade *tutorial1* Conda-miljön `tutorial` .
 
 ```bash
 cd <path/to/tutorial>
@@ -163,7 +181,7 @@ except ComputeTargetException:
 cpu_cluster.wait_for_completion(show_output=True)
 ```
 
-Kör python-filen:
+Kör python-filen i fönstret som har den aktiverade *tutorial1* Conda-miljön:
 
 ```bash
 python ./02-create-compute.py
@@ -185,6 +203,19 @@ tutorial
 
 > [!div class="nextstepaction"]
 > [Jag har skapat ett beräknings kluster](?success=create-compute-cluster#next-steps) som [Jag stötte på ett problem](https://www.research.net/r/7C8Z3DN?issue=create-compute-cluster)
+
+## <a name="view-in-the-studio"></a>Visa i Studio
+
+Logga in på [Azure Machine Learning Studio](https://ml.azure.com) om du vill visa arbets ytan och den beräknings instans som du har skapat.
+
+1. Välj den **prenumeration** som du använde för att skapa arbets ytan.
+1. Välj **arbets ytan Machine Learning** som du har skapat, *självstudie – WS*.
+1. När arbets ytan har lästs in väljer du **beräkning** på vänster sida.
+1. Välj fliken **Compute Clusters** överst.
+
+:::image type="content" source="media/tutorial-1st-experiment-sdk-local/compute-instance-in-studio.png" alt-text="Skärm bild: Visa beräknings instansen i din arbets yta.":::
+
+I den här vyn visas det etablerade beräknings klustret, tillsammans med antalet inaktiva noder, upptagna noder och avetablerade noder.  Eftersom du inte har använt klustret ännu, är alla noder för närvarande inte etablerade.
 
 ## <a name="next-steps"></a>Nästa steg
 

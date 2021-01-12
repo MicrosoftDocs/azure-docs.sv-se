@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: troubleshooting
 ms.date: 08/17/2020
-ms.openlocfilehash: e19c5064dd69538dfc025b0d244baf4fa74706b2
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 33e2bf641b75a5dd360498478f1ea70c7614fb38
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753543"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071382"
 ---
 # <a name="troubleshooting-replication-issues-in-agentless-vmware-vm-migration"></a>Felsöka replikeringsfel i VM-migrering utan agent
 
@@ -298,6 +298,24 @@ Detta är ett känt VMware-problem där disk storleken som anges av Snapshot bli
 
 Detta inträffar när NFC-värdstyrenheten har slut på minne. För att lösa det här problemet måste du flytta den virtuella datorn (Compute vMotion) till en annan värd, som har kostnads fria resurser.
 
-## <a name="next-steps"></a>Nästa steg
+## <a name="replication-cycle-failed"></a>Det gick inte att utföra replikering
+
+**Fel-ID:** 181008
+
+**Fel meddelande:** Virtuell dator: ' VMName '. Fel: det gick inte att hitta någon disksnapshots för ögonblicks bild replikering med ögonblicks bild-ID: SnapshotID.
+
+**Möjliga orsaker:**
+
+Möjliga orsaker är:
+1. Sökvägen till en eller flera av de inkluderade diskarna har ändrats på grund av Storage VMotion.
+2. En eller flera av de inkluderade diskarna är inte längre anslutna till den virtuella datorn.
+      
+**Rekommenderade**
+
+Följande rekommendationer ges
+1. Återställ de inkluderade diskarna till den ursprungliga sökvägen med Storage vMotion och inaktivera sedan Storage vMotion.
+2. Inaktivera Storage VMotion, om det är aktiverat, stoppa replikering på den virtuella datorn och replikera den virtuella datorn igen. Kontakta supporten om problemet kvarstår.
+
+## <a name="next-steps"></a>Efterföljande moment
 
 Fortsätt VM-replikering och utför [testmigrering](./tutorial-migrate-vmware.md#run-a-test-migration).

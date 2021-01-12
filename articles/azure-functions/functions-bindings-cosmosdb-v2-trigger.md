@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/24/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: e845efa2c1df47c80fcc10e7fb758f05af9fbecc
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a2f57fd6a369fba4a78799f768eb3fd2f3d27050
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96002144"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071484"
 ---
 # <a name="azure-cosmos-db-trigger-for-azure-functions-2x-and-higher"></a>Azure Cosmos DB utlösare för Azure Functions 2. x och högre
 
@@ -91,6 +91,27 @@ Här är C#-skript koden:
     }
 ```
 
+# <a name="java"></a>[Java](#tab/java)
+
+Den här funktionen anropas när det finns infogningar eller uppdateringar i den angivna databasen och samlingen.
+
+```java
+    @FunctionName("cosmosDBMonitor")
+    public void cosmosDbProcessor(
+        @CosmosDBTrigger(name = "items",
+            databaseName = "ToDoList",
+            collectionName = "Items",
+            leaseCollectionName = "leases",
+            createLeaseCollectionIfNotExists = true,
+            connectionStringSetting = "AzureCosmosDBConnection") String[] items,
+            final ExecutionContext context ) {
+                context.getLogger().info(items.length + "item(s) is/are changed.");
+            }
+```
+
+
+I [Java Functions runtime-biblioteket](/java/api/overview/azure/functions/runtime)använder du `@CosmosDBTrigger` anteckningen för parametrar vars värde kommer från Cosmos dB.  Den här anteckningen kan användas med inbyggda Java-typer, Pojo eller null-värden med hjälp av `Optional<T>` .
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 I följande exempel visas en Cosmos DB trigger-bindning i en *function.jsi* filen och en [JavaScript-funktion](functions-reference-node.md) som använder bindningen. Funktionen skriver logg meddelanden när Cosmos DB poster läggs till eller ändras.
@@ -118,6 +139,31 @@ Här är JavaScript-koden:
 
       context.done();
     }
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+I följande exempel visas hur du kör en funktion som data ändringar i Cosmos DB.
+
+```json
+{
+  "type": "cosmosDBTrigger",
+  "name": "Documents",
+  "direction": "in",
+  "leaseCollectionName": "leases",
+  "connectionStringSetting": "MyStorageConnectionAppSetting",
+  "databaseName": "Tasks",
+  "collectionName": "Items",
+  "createLeaseCollectionIfNotExists": true
+}
+```
+
+I _run.ps1_ -filen har du åtkomst till dokumentet som utlöser funktionen via- `$Documents` parametern.
+
+```powershell
+param($Documents, $TriggerMetadata) 
+
+Write-Host "First document Id modified : $($Documents[0].id)" 
 ```
 
 # <a name="python"></a>[Python](#tab/python)
@@ -151,27 +197,6 @@ Här är python-koden:
             logging.info('First document Id modified: %s', documents[0]['id'])
 ```
 
-# <a name="java"></a>[Java](#tab/java)
-
-Den här funktionen anropas när det finns infogningar eller uppdateringar i den angivna databasen och samlingen.
-
-```java
-    @FunctionName("cosmosDBMonitor")
-    public void cosmosDbProcessor(
-        @CosmosDBTrigger(name = "items",
-            databaseName = "ToDoList",
-            collectionName = "Items",
-            leaseCollectionName = "leases",
-            createLeaseCollectionIfNotExists = true,
-            connectionStringSetting = "AzureCosmosDBConnection") String[] items,
-            final ExecutionContext context ) {
-                context.getLogger().info(items.length + "item(s) is/are changed.");
-            }
-```
-
-
-I [Java Functions runtime-biblioteket](/java/api/overview/azure/functions/runtime)använder du `@CosmosDBTrigger` anteckningen för parametrar vars värde kommer från Cosmos dB.  Den här anteckningen kan användas med inbyggda Java-typer, Pojo eller null-värden med hjälp av `Optional<T>` .
-
 ---
 
 ## <a name="attributes-and-annotations"></a>Attribut och anteckningar
@@ -198,17 +223,21 @@ Ett fullständigt exempel finns i [utlösare](#example).
 
 Attribut stöds inte av C#-skript.
 
+# <a name="java"></a>[Java](#tab/java)
+
+I [Java Functions runtime-bibliotek](/java/api/overview/azure/functions/runtime)använder du `@CosmosDBInput` anteckningen för parametrar som läser data från Cosmos dB.
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Attribut stöds inte av Java Script.
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Attribut stöds inte av PowerShell.
+
 # <a name="python"></a>[Python](#tab/python)
 
 Attribut stöds inte av python.
-
-# <a name="java"></a>[Java](#tab/java)
-
-I [Java Functions runtime-bibliotek](/java/api/overview/azure/functions/runtime)använder du `@CosmosDBInput` anteckningen för parametrar som läser data från Cosmos dB.
 
 ---
 
@@ -216,7 +245,7 @@ I [Java Functions runtime-bibliotek](/java/api/overview/azure/functions/runtime)
 
 I följande tabell förklaras de egenskaper för bindnings konfiguration som du anger i *function.js* filen och `CosmosDBTrigger` attributet.
 
-|function.jspå egenskap | Attributets egenskap |Description|
+|function.jspå egenskap | Attributets egenskap |Beskrivning|
 |---------|---------|----------------------|
 |**bastyp** | saknas | Måste anges till `cosmosDBTrigger` . |
 |**position** | saknas | Måste anges till `in` . Den här parametern anges automatiskt när du skapar utlösaren i Azure Portal. |

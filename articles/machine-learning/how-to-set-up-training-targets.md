@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: a3427be85314f06b5408c4450e0415768122879f
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: a5764a9f230540d58edf71e8c00781e86589aa9a
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97913013"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98070175"
 ---
 # <a name="configure-and-submit-training-runs"></a>Konfigurera och skicka träningskörningar
 
@@ -26,7 +26,7 @@ När det gäller utbildning är det vanligt att starta på den lokala datorn och
 
 Allt du behöver göra är att definiera miljön för varje beräknings mål i en **skript körnings konfiguration**.  När du sedan vill köra ditt utbildnings experiment på ett annat beräknings mål anger du körnings konfigurationen för den beräkningen.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * Om du inte har en Azure-prenumeration kan du skapa ett kostnadsfritt konto innan du börjar. Prova den [kostnads fria eller betalda versionen av Azure Machine Learning](https://aka.ms/AMLFree) idag
 * [Azure Machine Learning SDK för python](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py) (>= 1.13.0)
@@ -216,6 +216,8 @@ I de här antecknings böckerna finns exempel på hur du konfigurerar körningar
     4. Installera med `pip install 'PyJWT<2.0.0'`
     
     Överväg att använda den senaste versionen av azureml-core i den aktuella miljön om du skickar en miljö som skapats av användare med din körning. Versioner >= 1.18.0 azureml-Core redan PyJWT < 2.0.0. Om du behöver använda en version av azureml-Core < 1.18.0 i den miljö som du skickar, måste du ange PyJWT < 2.0.0 i dina pip-beroenden.
+
+* **Compute Target tar lång tid att starta**: Docker-avbildningarna för beräknings mål läses in från Azure Container Registry (ACR). Azure Machine Learning skapar som standard en ACR som använder tjänst nivån *Basic* . Att ändra ACR för arbets ytan till standard-eller Premium-nivån kan minska den tid det tar att bygga och läsa in bilder. Mer information finns i [Azure Container Registry tjänst nivåer](../container-registry/container-registry-skus.md).
 
 ## <a name="next-steps"></a>Nästa steg
 

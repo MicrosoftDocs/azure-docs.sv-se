@@ -5,22 +5,19 @@ description: 'Lär dig hur du exporterar eller tar bort din arbets yta med Azure
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.reviewer: jmartens
 author: lobrien
 ms.author: laobri
 ms.date: 04/24/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 82e128ffdc215a084110a68170ac12accd8fca0e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: c4f48acc2d6e57dea0a8db2a149d7ca2871c9f39
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93308132"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98072011"
 ---
 # <a name="export-or-delete-your-machine-learning-service-workspace-data"></a>Exportera eller ta bort data för din Machine Learning service-arbetsyta
-
-
 
 I Azure Machine Learning kan du exportera eller ta bort data från din arbets yta med antingen portalens grafiska gränssnitt eller python SDK. I den här artikeln beskrivs båda alternativen.
 
@@ -82,7 +79,7 @@ model_output_port.download('.', show_progress=True)
 
 Följande Machine Learning-resurser kan tas bort med python SDK: 
 
-| Typ | Funktions anrop | Obs! | 
+| Typ | Funktions anrop | Anteckningar | 
 | --- | --- | --- |
 | `Workspace` | [`delete`](/python/api/azureml-core/azureml.core.workspace.workspace?preserve-view=true&view=azure-ml-py#&preserve-view=truedelete-delete-dependent-resources-false--no-wait-false-) | Använd `delete-dependent-resources` för att överlappa borttagningen |
 | `Model` | [`delete`](/python/api/azureml-core/azureml.core.model%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truedelete--) | | 

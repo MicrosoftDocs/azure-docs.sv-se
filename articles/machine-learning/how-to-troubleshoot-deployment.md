@@ -7,16 +7,15 @@ ms.service: machine-learning
 ms.subservice: core
 author: gvashishtha
 ms.author: gopalv
-ms.reviewer: jmartens
 ms.date: 11/25/2020
 ms.topic: troubleshooting
 ms.custom: contperf-fy20q4, devx-track-python, deploy, contperf-fy21q2
-ms.openlocfilehash: 4224e301d6410fc97da1f98cd0dd9577c6341cd3
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 2b953fd040b9ba76eacddb91a89ac65d51e340a0
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97740631"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071671"
 ---
 # <a name="troubleshooting-remote-model-deployment"></a>Felsöka distribution av fjärrmodell 
 
@@ -107,7 +106,7 @@ Om du ställer in loggnings nivån på fel sökning kan det leda till att ytterl
 
 ## <a name="function-fails-runinput_data"></a>Funktionen misslyckades: kör (input_data)
 
-Om tjänsten har distribuerats, men den kraschar när du skickar data till bedömnings slut punkten, kan du lägga till fel som fångar upp instruktionen i `run(input_data)` funktionen så att den returnerar ett detaljerat fel meddelande i stället. Exempel:
+Om tjänsten har distribuerats, men den kraschar när du skickar data till bedömnings slut punkten, kan du lägga till fel som fångar upp instruktionen i `run(input_data)` funktionen så att den returnerar ett detaljerat fel meddelande i stället. Till exempel:
 
 ```python
 def run(input_data):

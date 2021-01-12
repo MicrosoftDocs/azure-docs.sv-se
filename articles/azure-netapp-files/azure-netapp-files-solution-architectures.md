@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/04/2020
+ms.date: 01/11/2021
 ms.author: b-juche
-ms.openlocfilehash: 919a9831731a8f7c8065f2f1c496691ae33ba659
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: a66b5d59415aad7abf3e8dc95c7498b5d774d640
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97861983"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071280"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>Lösningsarkitekturer med Azure NetApp Files
 Den här artikeln innehåller referenser till bästa praxis som kan hjälpa dig att förstå lösnings arkitekturerna för att använda Azure NetApp Files.  
@@ -122,7 +122,7 @@ Det här avsnittet innehåller referenser för HPC-lösningar (data behandling m
 * [Azure CycleCloud: EDA HPC Lab med Azure NetApp Files](https://github.com/Azure/cyclecloud-hands-on-labs/blob/master/EDA/README.md)
 * [Azure för halvledar branschen](https://azurecomcdn.azureedge.net/cvt-f40f39cd9de2d875ab0c198a8d7b186350cf0bca161e80d7896941389685d012/mediahandler/files/resourcefiles/azure-for-the-semiconductor-industry/Azure_for_the_Semiconductor_Industry.pdf)
 
-### <a name="analytics"></a>Analytics
+### <a name="analytics"></a>Analys
 
 * [Azure NetApp Files: ett delat fil system som ska användas med SAS-rutnät på Microsoft Azure](https://communities.sas.com/t5/Administration-and-Deployment/Azure-NetApp-Files-A-shared-file-system-to-use-with-SAS-Grid-on/m-p/705192)
 * [Metod tips för att använda Microsoft Azure med SAS®](https://communities.sas.com/t5/Administration-and-Deployment/Best-Practices-for-Using-Microsoft-Azure-with-SAS/m-p/676833#M19680)
@@ -136,6 +136,7 @@ Det här avsnittet innehåller lösningar för Azures plattforms tjänster.
 * [Integrera Azure NetApp Files med Azure Kubernetes-tjänsten](../aks/azure-netapp-files.md)
 * [Kubernetes prestanda som inte är i kraft i Azure med Azure NetApp Files](https://cloud.netapp.com/blog/ma-anf-blg-configure-kubernetes-openshift)
 * [Trident – Storage Orchestrator för behållare](https://netapp-trident.readthedocs.io/en/stable-v20.04/kubernetes/operations/tasks/backends/anf.html)
+* [Magento för e-handel i Azure Kubernetes service (AKS)](/azure/architecture/example-scenario/magento/magento-azure)
 
 ### <a name="azure-batch"></a>Azure Batch
 

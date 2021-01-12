@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/20/2020
 ms.author: memildin
-ms.openlocfilehash: 10fa47a8f613218b1331259040be77df867ade95
-ms.sourcegitcommit: c538b6e4cf27b992500c079ad9c914c05d55eb7f
+ms.openlocfilehash: 9a8dba99435e1616b1c49d5209b30c3c523876db
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/03/2021
-ms.locfileid: "97854850"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071348"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>Skydda dina slut punkter med Security Center Integrated EDR-lösning: Microsoft Defender för slut punkt
 
@@ -121,13 +121,19 @@ Så här skapar du en ofarlig Microsoft Defender för slut punkts test avisering
 
 ## <a name="faq-for-security-centers-integrated-microsoft-defender-for-endpoint"></a>Vanliga frågor och svar om Security Centers integrerade Microsoft Defender för slut punkt
 
-### <a name="what-are-the-licensing-requirements-for-microsoft-defender-for-endpoint"></a>Vilka är licens kraven för Microsoft Defender för slut punkten?
+- [Vilka är licens kraven för Microsoft Defender för slut punkten?](#what-are-the-licensing-requirements-for-microsoft-defender-for-endpoint)
+- [Om jag redan har en licens för Microsoft Defender för slut punkten får jag en rabatt för Azure Defender?](#if-i-already-have-a-license-for-microsoft-defender-for-endpoint-can-i-get-a-discount-for-azure-defender)
+- [Hur gör jag för att växlar från ett EDR-verktyg från tredje part?](#how-do-i-switch-from-a-third-party-edr-tool)
 
+### <a name="what-are-the-licensing-requirements-for-microsoft-defender-for-endpoint"></a>Vilka är licens kraven för Microsoft Defender för slut punkten?
 Defender för slut punkt ingår utan extra kostnad med **Azure Defender för servrar**. Alternativt kan den köpas separat för 50 datorer eller mer.
 
+### <a name="if-i-already-have-a-license-for-microsoft-defender-for-endpoint-can-i-get-a-discount-for-azure-defender"></a>Om jag redan har en licens för Microsoft Defender för slut punkten får jag en rabatt för Azure Defender?
+Om du redan har en licens för Microsoft Defender för slut punkt behöver du inte betala för den delen av din Azure Defender-licens.
+
+Om du vill bekräfta rabatten kontaktar du Security Center support teamet och anger relevant arbetsyte-ID, region och licens information.
 
 ### <a name="how-do-i-switch-from-a-third-party-edr-tool"></a>Hur gör jag för att växlar från ett EDR-verktyg från tredje part?
-
 Fullständiga instruktioner för att byta från en slut punkts lösning som inte kommer från Microsoft finns i dokumentationen för Microsoft Defender för slut punkt: [Översikt över migrering](/windows/security/threat-protection/microsoft-defender-atp/switch-to-microsoft-defender-migration).
   
 

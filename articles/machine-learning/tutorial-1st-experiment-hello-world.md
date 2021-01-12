@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 971bac8a0b0951d4e07e139aea6c465a9159b8db
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 43a483f49a9e9004a4f487e82195198f2600a919
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96570968"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071161"
 ---
 # <a name="tutorial-run-a-hello-world-python-script-part-2-of-4"></a>Självstudie: kör en "Hello World!" Python-skript (del 2 av 4)
 
@@ -33,12 +33,9 @@ I de här självstudierna får du:
 > * Skicka in och kör "Hello World!" över.
 > * Visa kodens utdata i molnet.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - Slut för ande av [del 1](tutorial-1st-experiment-sdk-setup-local.md) om du inte redan har en Azure Machine Learning-arbetsyta.
-- Introduktions kunskap om python-språket och Machine Learning-arbetsflöden.
-- Lokal utvecklings miljö, till exempel Visual Studio Code, Jupyter eller pycharm med.
-- Python (version 3,5 till 3,7).
 
 ## <a name="create-and-run-a-python-script-locally"></a>Skapa och köra ett Python-skript lokalt
 
@@ -64,7 +61,7 @@ tutorial
 
 ### <a name="test-your-script-locally"></a><a name="test"></a>Testa ditt skript lokalt
 
-Du kan köra din kod lokalt genom att använda din favorit-IDE eller Terminal. Att köra kod lokalt har fördelen med interaktiv fel sökning av kod.
+Du kan köra din kod lokalt genom att använda din favorit-IDE eller Terminal. Att köra kod lokalt har fördelen med interaktiv fel sökning av kod.  Kör python-filen i fönstret som har den aktiverade *tutorial1* Conda-miljön:
 
 ```bash
 cd <path/to/tutorial>
@@ -93,8 +90,6 @@ run = experiment.submit(config)
 aml_url = run.get_portal_url()
 print(aml_url)
 ```
-
-
 
 ### <a name="understand-the-code"></a>Förstå koden
 
@@ -148,13 +143,6 @@ Här är en beskrivning av hur kontroll skriptet fungerar:
 
 Kör ditt kontroll skript, som i sin tur körs `hello.py` på det beräknings kluster som du skapade i [installations guiden](tutorial-1st-experiment-sdk-setup-local.md)för.
 
-Den allra första körningen tar 5-10 minuter att slutföra. Detta beror på att följande inträffar:
-
-* En Docker-avbildning är inbyggd i molnet
-* Beräknings klustrets storlek ändras från 0 till 1 nod
-* Docker-avbildningen har laddats ned till beräkningen. 
-
-Efterföljande körningar är mycket snabbare (~ 15 sekunder) när Docker-avbildningen cachelagras i beräkningen – du kan testa detta genom att skicka koden nedan igen när den första körningen har slutförts.
 
 ```bash
 python 03-run-hello.py
@@ -168,9 +156,17 @@ python 03-run-hello.py
 
 ## <a name="monitor-your-code-in-the-cloud-by-using-the-studio"></a><a name="monitor"></a>Övervaka din kod i molnet med hjälp av Studio
 
-Utdata kommer att innehålla en länk till Studio som ser ut ungefär så här: `https://ml.azure.com/experiments/hello-world/runs/<run-id>?wsid=/subscriptions/<subscription-id>/resourcegroups/<resource-group>/workspaces/<workspace-name>` .
+Utdata från skriptet innehåller en länk till Studio som ser ut ungefär så här: `https://ml.azure.com/experiments/hello-world/runs/<run-id>?wsid=/subscriptions/<subscription-id>/resourcegroups/<resource-group>/workspaces/<workspace-name>` .
 
-Följ länken och gå till fliken **utdata + loggar** . Där kan du se en `70_driver_log.txt` fil som ser ut så här:
+Följ länken.  Först ser du statusen **förbereds**.  Den allra första körningen tar 5-10 minuter att slutföra. Detta beror på att följande inträffar:
+
+* En Docker-avbildning är inbyggd i molnet
+* Beräknings klustrets storlek ändras från 0 till 1 nod
+* Docker-avbildningen har laddats ned till beräkningen. 
+
+Efterföljande körningar är mycket snabbare (~ 15 sekunder) när Docker-avbildningen cachelagras i beräkningen. Du kan testa detta genom att skicka koden nedan igen när den första körningen har slutförts.
+
+När jobbet har slutförts går du till fliken **utdata + loggar** . Där kan du se en `70_driver_log.txt` fil som ser ut så här:
 
 ```txt
  1: [2020-08-04T22:15:44.407305] Entering context manager injector.

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/08/2020
+ms.date: 01/11/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4592742b99d7c3e915c31ca5a202355d32e76d68
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 15b4b61fd250dfb7d68c563f9f42c7d288a0019c
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97356131"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98070872"
 ---
 # <a name="azure-active-directory-b2c-isv-partners"></a>Azure Active Directory B2C ISV-partner
 
@@ -54,7 +54,7 @@ Microsoft samarbetar med följande ISV: er för MFA-och lösenordsbaserad autent
 | ![Skärm bild av en Nevis-logotyp](./media/partner-gallery/nevis-logo.png) | [Nevis](./partner-nevis.md) möjliggör lösenordsautentisering utan lösen ord och ger en mobil-och helt anpassad slut användar upplevelse med Nevis-åtkomst-appen för stark kundautentisering och för att uppfylla PSD2 transaktions krav. |
 | ![Skärm bild av en trusona-logotyp](./media/partner-gallery/trusona-logo.png) | [Trusona](./partner-trusona.md) -integreringen hjälper dig att logga in på ett säkert sätt och möjliggör autentisering med lösen ords avsökning, MFA och digital License. |
 | ![Skärm bild av en Twilio-logotyp.](./media/partner-gallery/twilio-logo.png) | [Twilio verifiera app](./partner-twilio.md) tillhandahåller flera lösningar för att aktivera MFA via SMS eng ång slö sen ord (eng ång slö sen ord), tidsbaserat eng ång slö sen ord (TOTP mobilapp) och push-meddelanden och för att uppfylla SCA-kraven för PSD2. |
-| ![Skärm bild av en typingDNA-logotyp](./media/partner-gallery/typingdna-logo.png) | [TypingDNA](./partner-twilio.md) möjliggör stark kundautentisering genom att analysera en användares Skriv mönster. Det hjälper företag att aktivera en tyst MFA och uppfylla SCA-kraven för PSD2. |
+| ![Skärm bild av en typingDNA-logotyp](./media/partner-gallery/typingdna-logo.png) | [TypingDNA](./partner-typingdna.md) möjliggör stark kundautentisering genom att analysera en användares Skriv mönster. Det hjälper företag att aktivera en tyst MFA och uppfylla SCA-kraven för PSD2. |
 | ![Skärm bild av en whoiam-logotyp](./media/partner-gallery/whoiam-logo.png) | [WhoIAM](./partner-whoiam.md) är ett BRIMS-program som gör det möjligt för organisationer att verifiera användar basen med röst, SMS och e-post. |
 
 ## <a name="role-based-access-control"></a>Rollbaserad åtkomstkontroll 

@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: df511e79b73256833ec54c5906bb6acbc852bc46
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: d2c0003058c2271e46a352567a14e1b01dfabdbf
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97739628"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071110"
 ---
 # <a name="tutorial-train-your-first-machine-learning-model-part-3-of-4"></a>Självstudie: träna din första Machine Learning-modell (del 3 av 4)
 
@@ -41,9 +41,6 @@ I den här kursen får du:
 ## <a name="prerequisites"></a>Förutsättningar
 
 * Slut för ande av [del 2](tutorial-1st-experiment-hello-world.md) av serien.
-* Introduktions kunskap om python-språket och Machine Learning-arbetsflöden.
-* Lokal utvecklings miljö, till exempel Visual Studio Code, Jupyter eller pycharm med.
-* Python (version 3,5 till 3,7).
 
 ## <a name="create-training-scripts"></a>Skapa utbildnings skript
 
@@ -77,9 +74,7 @@ tutorial
 > [!div class="nextstepaction"]
 > [Jag har skapat de utbildnings skript](?success=create-scripts#environment) [Jag stötte på ett problem](https://www.research.net/r/7CTJQQN?issue=create-scripts)
 
-## <a name="create-a-python-environment"></a><a name="environment"></a> Skapa en python-miljö
-
-I demonstrations syfte kommer vi att använda en Conda-miljö. (Stegen för en virtuell pip-miljö är nästan identiska.)
+## <a name="create-a-new-python-environment"></a><a name="environment"></a> Skapa en ny python-miljö
 
 Skapa en fil `pytorch-env.yml` som heter i den `.azureml` dolda katalogen:
 
@@ -92,18 +87,19 @@ Den här miljön har alla beroenden som ditt modell-och utbildnings skript kräv
 
 ## <a name="test-locally"></a><a name="test-local"></a> Testa lokalt
 
-Använd följande kod för att testa att skriptet körs lokalt i den här miljön:
+Använd följande kod för att testa skriptet lokalt i den nya miljön.  
 
 ```bash
-conda env create -f .azureml/pytorch-env.yml    # create conda environment
-conda activate pytorch-env                      # activate conda environment
+conda deactivate                                # If you are still using the tutorial environment, exit it
+conda env create -f .azureml/pytorch-env.yml    # create the new Conda environment
+conda activate pytorch-env                      # activate new Conda environment
 python src/train.py                             # train model
 ```
 
 När du har kört skriptet ser du de data som hämtats till en katalog med namnet `tutorial/data` .
 
 > [!div class="nextstepaction"]
-> [Jag skapade miljö filen](?success=test-local#create-local) [Jag stötte på ett problem](https://www.research.net/r/7CTJQQN?issue=test-local)
+> [Jag körde koden lokalt](?success=test-local#create-local) [Jag stötte på ett problem](https://www.research.net/r/7CTJQQN?issue=test-local)
 
 ## <a name="create-the-control-script"></a><a name="create-local"></a> Skapa kontroll skriptet
 
@@ -163,11 +159,11 @@ if __name__ == "__main__":
 
 ## <a name="submit-the-run-to-azure-machine-learning"></a><a name="submit"></a> Skicka in körningen till Azure Machine Learning
 
-Om du har växlat lokala miljöer ska du se till att växla tillbaka till en miljö där Azure Machine Learning SDK för python har installerats.
-
-Kör sedan:
+Gå tillbaka till den *självstudie* miljö där Azure Machine Learning SDK för python är installerat. Eftersom inlärnings koden inte körs på datorn behöver du inte ha PyTorch installerat.  Men du behöver `azureml-sdk` , som finns i *själv studie* miljön.
 
 ```bash
+conda deactivate
+conda activate tutorial
 python 04-run-pytorch.py
 ```
 
