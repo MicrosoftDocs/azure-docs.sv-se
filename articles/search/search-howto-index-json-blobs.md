@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/25/2020
-ms.openlocfilehash: a3c44d667b6baaf16e109dfb88c22c16a1ea2ce1
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 1fc6c7086917f2bcd6e4991d2dac37ea24cbfa83
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94697211"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98116391"
 ---
 # <a name="how-to-index-json-blobs-using-a-blob-indexer-in-azure-cognitive-search"></a>Så här indexerar du JSON-blobbar med en BLOB-indexerare i Azure Kognitiv sökning
 
@@ -108,7 +108,7 @@ Du kan använda REST API för att indexera JSON-blobbar, efter ett arbets flöde
 
 Du kan granska [resten exempel kod](#rest-example) i slutet av det här avsnittet som visar hur du skapar alla tre objekten. Det här avsnittet innehåller också information [om JSON-parsningsfel](#parsing-modes), [enskilda blobbar](#parsing-single-blobs), JSON- [matriser](#parsing-arrays)och [kapslade matriser](#nested-json-arrays).
 
-För kodbaserade JSON-indexering använder du [Postman eller Visual Studio Code](search-get-started-rest.md) och REST API för att skapa dessa objekt:
+För kodbaserade JSON-indexering använder du [Postman](search-get-started-rest.md) eller [Visual Studio Code](search-get-started-vs-code.md) och REST API för att skapa dessa objekt:
 
 + [Tabbindex](/rest/api/searchservice/create-index)
 + [data Källa](/rest/api/searchservice/create-data-source)
@@ -118,7 +118,7 @@ Ordningen på åtgärder kräver att du skapar och anropar objekt i den här ord
 
 JSON-blobar i Azure Blob Storage är vanligt vis antingen ett enda JSON-dokument eller en JSON-matris. BLOB-indexeraren i Azure Kognitiv sökning kan tolka antingen konstruktion, beroende på hur du ställer in parametern **parsingMode** på begäran.
 
-| JSON-dokument | parsingMode | Beskrivning | Tillgänglighet |
+| JSON-dokument | parsingMode | Description | Tillgängligt |
 |--------------|-------------|--------------|--------------|
 | En per BLOB | `json` | Parsar JSON-blobbar som ett enda text segment. Varje JSON-BLOB blir ett enda Azure Kognitiv sökning-dokument. | Allmänt tillgänglig i både [rest](/rest/api/searchservice/indexer-operations) API och [.net](/dotnet/api/azure.search.documents.indexes.models.searchindexer) SDK. |
 | Flera per BLOB | `jsonArray` | Parsar en JSON-matris i blobben där varje element i matrisen blir ett separat Azure Kognitiv sökning-dokument.  | Allmänt tillgänglig i både [rest](/rest/api/searchservice/indexer-operations) API och [.net](/dotnet/api/azure.search.documents.indexes.models.searchindexer) SDK. |
@@ -291,7 +291,7 @@ Att skapa indexeraren på Azure Kognitiv sökning utlöser data import. Den kör
 
 JSON-blobbar kan anta flera formulär. Parametern **parsingMode** i JSON-indexeraren avgör hur JSON-BLOB-innehåll tolkas och struktureras i ett Azure kognitiv sökning-index:
 
-| parsingMode | Beskrivning |
+| parsingMode | Description |
 |-------------|-------------|
 | `json`  | Indexera varje blob som ett enskilt dokument. Det här är standardinställningen. |
 | `jsonArray` | Välj det här läget om Blobbarna består av JSON-matriser och du behöver varje element i matrisen för att bli ett separat dokument i Azure Kognitiv sökning. |

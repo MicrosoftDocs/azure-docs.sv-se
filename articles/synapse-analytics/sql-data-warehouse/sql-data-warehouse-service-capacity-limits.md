@@ -11,12 +11,12 @@ ms.date: 2/19/2020
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: e3daf89b80daf47049150b05ca392eede360bd3e
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: d778844fee8cad9359532ffa23e177bf7b13c4b8
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97673424"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98117698"
 ---
 # <a name="capacity-limits-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Kapacitets begränsningar för dedikerad SQL-pool i Azure Synapse Analytics
 
@@ -43,7 +43,7 @@ Högsta tillåtna värden för olika komponenter i dedikerad SQL-pool i Azure Sy
 | Tabell |Tabeller per databas | 100 000 |
 | Tabell |Kolumner per tabell |1024 kolumner |
 | Tabell |Byte per kolumn |Beroende av kolumnens [datatyp](sql-data-warehouse-tables-data-types.md). Limit är 8000 för char-datatyper, 4000 för nvarchar eller 2 GB för högsta antal data typer. |
-| Tabell |Byte per rad, definierad storlek |8060 byte<br/><br/>Antalet byte per rad beräknas på samma sätt som för SQL Server med sid komprimering. Precis som SQL Server stöds rad spill i lagring, vilket gör att **kolumner med varierande längd** kan flyttas bort från rad. När rader med varierande längd flyttas från-raden, lagras bara 24 byte-roten i huvud posten. Mer information finns i [rad spills data som överstiger 8 KB](https://msdn.microsoft.com/library/ms186981.aspx). |
+| Tabell |Byte per rad, definierad storlek |8060 byte<br/><br/>Antalet byte per rad beräknas på samma sätt som för SQL Server med sid komprimering. Precis som SQL Server stöds rad spill i lagring, vilket gör att **kolumner med varierande längd** kan flyttas bort från rad. När rader med varierande längd flyttas från-raden, lagras bara 24 byte-roten i huvud posten. Mer information finns i [rad spills data som överstiger 8 KB](/previous-versions/sql/sql-server-2008-r2/ms186981(v=sql.105)). |
 | Tabell |Partitioner per tabell |15 000<br/><br/>För hög prestanda rekommenderar vi att du minimerar antalet partitioner som du behöver samtidigt som du fortfarande har stöd för dina affärs behov. Allteftersom antalet partitioner växer växer och ger sämre prestanda när det gäller DDL (Data Definition Language) och DML-åtgärder (Data Manipulation Language). |
 | Tabell |Avgränsnings värde för tecken per partition. |4000 |
 | Index |Icke-grupperade index per tabell. |50<br/><br/>Gäller endast för rowstore-tabeller. |
@@ -54,7 +54,7 @@ Högsta tillåtna värden för olika komponenter i dedikerad SQL-pool i Azure Sy
 | Statistik |Kolumner per statistik objekt. |32 |
 | Statistik |Statistik som skapats på kolumner per tabell. |30 000 |
 | Lagrade procedurer |Maximala kapslings nivåer. |8 |
-| Vy |Kolumner per vy |1 024 |
+| Visa |Kolumner per vy |1 024 |
 ||||
 
 ## <a name="loads"></a>Övriga
@@ -74,10 +74,10 @@ Högsta tillåtna värden för olika komponenter i dedikerad SQL-pool i Azure Sy
 | Söka i data |Maximalt antal parametrar |2098 |
 | Batch |Maximal storlek |65536 * 4096 |
 | Välj resultat |Kolumner per rad |4096<br/><br/>Du kan aldrig ha fler än 4096 kolumner per rad i Välj resultat. Det finns ingen garanti för att du alltid kan ha 4096. Om din frågeplan kräver en temporär tabell, kan kolumnerna 1024 per tabell gälla. |
-| SELECT |Kapslade under frågor |32<br/><br/>Du kan aldrig ha fler än 32 kapslade under frågor i en SELECT-instruktion. Det finns ingen garanti för att du alltid kan ha 32. Till exempel kan en koppling introducera en under fråga i frågeuttrycket. Antalet under frågor kan också begränsas av tillgängligt minne. |
-| SELECT |Kolumner per koppling |1024 kolumner<br/><br/>Du kan aldrig ha fler än 1024 kolumner i kopplingen. Det finns ingen garanti för att du alltid kan ha 1024. Om JOIN-planen kräver en temporär tabell med fler kolumner än KOPPLINGs resultatet gäller gränsen 1024 för den temporära tabellen. |
-| SELECT |Byte per grupp efter kolumner. |8060<br/><br/>Kolumnerna i GROUP BY-satsen får innehålla högst 8060 byte. |
-| SELECT |Byte per sortering efter kolumner |8060 byte<br/><br/>Kolumnerna i ORDER BY-satsen får innehålla högst 8060 byte |
+| VÄLJ |Kapslade under frågor |32<br/><br/>Du kan aldrig ha fler än 32 kapslade under frågor i en SELECT-instruktion. Det finns ingen garanti för att du alltid kan ha 32. Till exempel kan en koppling introducera en under fråga i frågeuttrycket. Antalet under frågor kan också begränsas av tillgängligt minne. |
+| VÄLJ |Kolumner per koppling |1024 kolumner<br/><br/>Du kan aldrig ha fler än 1024 kolumner i kopplingen. Det finns ingen garanti för att du alltid kan ha 1024. Om JOIN-planen kräver en temporär tabell med fler kolumner än KOPPLINGs resultatet gäller gränsen 1024 för den temporära tabellen. |
+| VÄLJ |Byte per grupp efter kolumner. |8060<br/><br/>Kolumnerna i GROUP BY-satsen får innehålla högst 8060 byte. |
+| VÄLJ |Byte per sortering efter kolumner |8060 byte<br/><br/>Kolumnerna i ORDER BY-satsen får innehålla högst 8060 byte |
 | Identifierare per instruktion |Antalet refererade identifierare |65 535<br/><br/> Antalet identifierare som kan ingå i ett enda uttryck i en fråga är begränsat. Om antalet överskrids i SQL Server fel 8632. Mer information finns i [internt fel: en gräns för uttrycks tjänster har nåtts](https://support.microsoft.com/help/913050/error-message-when-you-run-a-query-in-sql-server-2005-internal-error-a). |
 | Strängliteraler | Antal sträng litteraler i en instruktion | 20 000 <br/><br/>Antalet sträng konstanter i ett enda uttryck i en fråga är begränsat. Om antalet överskrids i SQL Server fel 8632.|
 ||||

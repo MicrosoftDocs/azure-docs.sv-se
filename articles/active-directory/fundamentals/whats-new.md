@@ -16,12 +16,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71c0fa7a6e676e1b888bc13e0fa4cb42e93b2e71
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: 412a987e0a93f7b69250450b8367a37bd3682925
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97802855"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98115709"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Vad är nytt i Azure Active Directory?
 
@@ -107,8 +107,6 @@ Nu kan du automatisera att skapa, uppdatera och ta bort användar konton för de
 Mer information om hur du bättre skyddar din organisation med hjälp av automatiserad användar konto etablering finns i [Automatisera användar etablering för SaaS-program med Azure AD](../app-provisioning/user-provisioning.md).
  
 ---
- 
-[1233182](https://identitydivision.visualstudio.com/IAM/IXR/_queries?id=1233182&triage=true&fullScreen=false&_a=edit)
 
 ### <a name="new-federated-apps-available-in-azure-ad-application-gallery---december-2020"></a>Nya federerade appar som är tillgängliga i Azure AD Application Gallery – december 2020
 
@@ -123,6 +121,29 @@ I december 2020 har vi lagt till följande 18 nya program i vårt app-galleri me
 Du kan också hitta dokumentationen för alla program härifrån https://aka.ms/AppsTutorial
 
 För att lista ditt program i Azure AD App-galleriet läser du informationen här. https://aka.ms/AzureADAppRequest
+
+---
+
+### <a name="navigate-to-teams-directly-from-my-access-portal"></a>Navigera till Team direkt från min åtkomst Portal
+
+**Typ:** Ändrad funktion  
+**Tjänste kategori:** Produkt åtkomst hantering **produkt funktion:** rättighets hantering
+
+Nu kan du starta Teams direkt från min åtkomst Portal. Det gör du genom att logga in till [min åtkomst](https://myaccess.microsoft.com/), navigera till **åtkomst paket** och sedan gå till fliken **aktiv** för att se alla åtkomst paket som du redan har åtkomst till. När du expanderar Access-paketet och hovrar på ett team kan du starta det genom att klicka på knappen **Öppna** . 
+
+Om du vill veta mer om hur du använder min åtkomst portal går du till [begär åtkomst till ett Access-paket i hantering av Azure AD-rättigheter](../governance/entitlement-management-request-access.md#sign-in-to-the-my-access-portal).
+
+---
+
+### <a name="public-preview---second-level-manager-can-be-set-as-alternate-approver"></a>Offentlig för hands version – hanteraren för andra nivån kan anges som en alternativ god kännare
+
+**Typ:** Ändrad funktion  
+**Tjänste kategori:** Hantering av användar åtkomst  
+**Produkt kapacitet:** Hantering av rättigheter
+
+Ett ytterligare alternativ är nu tillgängligt i godkännande processen i hantering av rättigheter. Om du väljer chef som god kännare för den första god kännaren har du ytterligare ett alternativ, andra nivå ansvarig som alternativ god kännare, tillgängliga för att välja i fältet alternativ god kännare. Om du väljer det här alternativet måste du lägga till en reserv god kännare för att vidarebefordra begäran till om systemet inte kan hitta den andra nivå hanteraren.
+
+Mer information finns [i ändra godkännande inställningar för ett Access-paket i hantering av Azure AD-rättigheter](../governance/entitlement-management-access-package-approval-policy.md#alternate-approvers).
 
 --- 
 
@@ -502,7 +523,7 @@ De riskfyllda funktionerna för villkorlig åtkomst och riskhantering i identite
  
 I oktober 2020 har vi lagt till följande 27 nya program i vårt app-galleri med stöd för federation:
 
-[Sentry](../saas-apps/sentry-tutorial.md), [Bumblebee – produktivitets superapp](https://app.yellowmessenger.com/user/login), [ABBYY FlexiCapture Cloud](../saas-apps/abbyy-flexicapture-cloud-tutorial.md), [EAComposer](../saas-apps/eacomposer-tutorial.md), [generning cloud integration för Azure](https://apps.mypurecloud.com/msteams-integration/), [Zone Technologies Portal](https://portail.zonetechnologie.com/signin), [Beautiful.AI](../saas-apps/beautiful.ai-tutorial.md), Datawiza [åtkomst utjämning](https://console.datawiza.com/), [ZOKRI](https://app.zokri.com/), [CheckProof](../saas-apps/checkproof-tutorial.md), [ecoChallenge.org](https://events.ecochallenge.org/users/login), [atSpoke](http://atspoke.com/login), [avtalad tid för avtal](https://app.appointmentreminder.co.nz/account/login), [Cloud. marknad](https://cloud.market/), [TravelPerk](../saas-apps/travelperk-tutorial.md), [hälsnings fras](https://app.greetly.com/), [OrgVitality SSO} (.. /SaaS-Apps/orgvitality-SSO-tutorial.MD), [webb frakt Air](../saas-apps/web-cargo-air-tutorial.md), [loop Flow CRM](../saas-apps/loop-flow-crm-tutorial.md), [Starmind](../saas-apps/starmind-tutorial.md), [Workstem](https://hrm.workstem.com/login), [Retail-zipline](../saas-apps/retail-zipline-tutorial.md), [Hoxhunt](../saas-apps/hoxhunt-tutorial.md), [MEVISIO](../saas-apps/mevisio-tutorial.md), [Samsara](../saas-apps/samsara-tutorial.md), [Nimbus](../saas-apps/nimbus-tutorial.md), [Pulse Secure Virtual Traffic Manager](../saas-apps/pulse-secure-virtual-traffic-manager-tutorial.md)
+[Sentry](../saas-apps/sentry-tutorial.md), [Bumblebee – produktivitets superapp](https://app.yellowmessenger.com/user/login), [ABBYY FlexiCapture Cloud](../saas-apps/abbyy-flexicapture-cloud-tutorial.md), [EAComposer](../saas-apps/eacomposer-tutorial.md), [genera cloud integration för Azure](https://apps.mypurecloud.com/msteams-integration/), [zon teknik Portal](https://portail.zonetechnologie.com/signin), [Beautiful.AI](../saas-apps/beautiful.ai-tutorial.md), [Datawiza åtkomst utjämning](https://console.datawiza.com/), [ZOKRI](https://app.zokri.com/), [CheckProof](../saas-apps/checkproof-tutorial.md), [ECOCHALLENGE.org](https://events.ecochallenge.org/users/login), [AtSpoke](http://atspoke.com/login), [avtalad tid för avtal](https://app.appointmentreminder.co.nz/account/login), [Cloud. marknad](https://cloud.market/), [TravelPerk](../saas-apps/travelperk-tutorial.md), [hälsnings fras](https://app.greetly.com/), [OrgVitality SSO](../saas-apps/orgvitality-sso-tutorial.md), [Web Last Air](../saas-apps/web-cargo-air-tutorial.md), [loop Flow CRM](../saas-apps/loop-flow-crm-tutorial.md), [Starmind](../saas-apps/starmind-tutorial.md), [Workstem](https://hrm.workstem.com/login), [Retail zipline](../saas-apps/retail-zipline-tutorial.md) [, Hoxhunt, MEVISIO](../saas-apps/hoxhunt-tutorial.md) [, Samsara](../saas-apps/mevisio-tutorial.md) [, Nimbus](../saas-apps/samsara-tutorial.md) [,](../saas-apps/nimbus-tutorial.md) [Traffic Manager](../saas-apps/pulse-secure-virtual-traffic-manager-tutorial.md)
 
 Du kan också hitta dokumentationen för alla program härifrån https://aka.ms/AppsTutorial
 

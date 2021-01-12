@@ -11,16 +11,16 @@ ms.date: 11/20/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 4886cf6c24e7e96676b9ca5e74b431685cd5a8bb
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 4f881dcc0d26589c4029246019119fa0555dcd5d
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452866"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98117783"
 ---
 # <a name="load-data-from-azure-data-lake-storage-into-dedicated-sql-pools-in-azure-synapse-analytics"></a>Läs in data från Azure Data Lake Storage i dedikerade SQL-pooler i Azure Synapse Analytics
 
-Den här guiden beskriver hur du använder Copy- [instruktionen](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) för att läsa in data från Azure Data Lake Storage. Exempel på hur du använder COPY-instruktionen för alla autentiseringsmetoder finns i följande dokumentation: [Läs in data på ett säkert sätt med dedikerade SQL-pooler](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-bulk-load-copy-tsql-examples).
+Den här guiden beskriver hur du använder Copy- [instruktionen](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) för att läsa in data från Azure Data Lake Storage. Exempel på hur du använder COPY-instruktionen för alla autentiseringsmetoder finns i följande dokumentation: [Läs in data på ett säkert sätt med dedikerade SQL-pooler](./quickstart-bulk-load-copy-tsql-examples.md).
 
 > [!NOTE]  
 > Skicka ett e-postmeddelande till följande distributions lista för att ge feedback eller rapportera problem på KOPIERINGs instruktionen: sqldwcopypreview@service.microsoft.com .
@@ -65,7 +65,7 @@ WITH
 
 ## <a name="create-the-copy-statement"></a>Skapa KOPIERINGs instruktionen
 
-Anslut till din SQL-dedikerade pool och kör KOPIERINGs instruktionen. En fullständig lista över exempel finns i följande dokumentation: [Läs in data på ett säkert sätt med hjälp av dedikerade SQL-pooler](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-bulk-load-copy-tsql-examples).
+Anslut till din SQL-dedikerade pool och kör KOPIERINGs instruktionen. En fullständig lista över exempel finns i följande dokumentation: [Läs in data på ett säkert sätt med hjälp av dedikerade SQL-pooler](./quickstart-bulk-load-copy-tsql-examples.md).
 
 ```sql
 -- B: Create and execute the COPY statement
@@ -133,6 +133,6 @@ Inläsning av data är det första steget för att utveckla en informations lage
 > [Lär dig hur du utvecklar tabeller för data lager hantering](sql-data-warehouse-tables-overview.md)
 
 Läs följande dokumentation om du vill läsa mer om exempel och referenser:
-- [Referens dokumentation för KOPIERINGs instruktion](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest#syntax)
-- [Kopiera exempel för varje autentiseringsmetod](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-bulk-load-copy-tsql-examples)
-- [Kopiera snabb start för en enskild tabell](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-bulk-load-copy-tsql)
+- [Referens dokumentation för KOPIERINGs instruktion](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest#syntax)
+- [Kopiera exempel för varje autentiseringsmetod](./quickstart-bulk-load-copy-tsql-examples.md)
+- [Kopiera snabb start för en enskild tabell](./quickstart-bulk-load-copy-tsql.md)

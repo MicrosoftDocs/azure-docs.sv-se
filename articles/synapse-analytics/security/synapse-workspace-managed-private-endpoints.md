@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 10/16/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5258b1eab48f71d8d17f52849b5e57b467e7a2da
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 7eff63b36eb09036b188ac756ec55a5b1bf63718
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460380"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98116525"
 ---
 # <a name="synapse-managed-private-endpoints"></a>Synapse hanterade privata slut punkter
 
@@ -29,7 +29,7 @@ När du använder en privat länk passerar trafiken mellan din Virtual Network o
 
 Privat slut punkt använder en privat IP-adress från din Virtual Network för att effektivt ta tjänsten i Virtual Network. Privata slut punkter mappas till en angiven resurs i Azure och inte till hela tjänsten. Kunder kan begränsa anslutningen till en speciell resurs som godkänts av organisationen. 
 
-Lär dig mer om [privata länkar och privata slut punkter](https://docs.microsoft.com/azure/private-link/).
+Lär dig mer om [privata länkar och privata slut punkter](../../private-link/index.yml).
 
 >[!IMPORTANT]
 >Hanterade privata slut punkter stöds bara i Azure Synapse-arbetsytor med en hanterad arbets yta Virtual Network.

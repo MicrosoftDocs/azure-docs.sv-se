@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3cbd9fd697bbae8779f5b2b9fa4ab817efce30ac
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 12966503bfa17030fc4ebcb4d790a2f4655142a2
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96454629"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98116542"
 ---
 # <a name="azure-synapse-analytics-ip-firewall-rules"></a>IP-brandväggs regler för Azure Synapse Analytics
 
@@ -43,7 +43,7 @@ Kontrol lera att brand väggen i nätverket och den lokala datorn tillåter utg�
 
 Du måste också tillåta utgående kommunikation på UDP-port 53 för Synapse Studio. Om du vill ansluta med verktyg som SSMS och Power BI måste du tillåta utgående kommunikation på TCP-port 1433.
 
-Om du använder standard anslutnings princip inställningen för omdirigering kan du behöva tillåta utgående kommunikation på ytterligare portar. Du kan lära dig mer om anslutnings principer [här](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-architecture#connection-policy).
+Om du använder standard anslutnings princip inställningen för omdirigering kan du behöva tillåta utgående kommunikation på ytterligare portar. Du kan lära dig mer om anslutnings principer [här](../../azure-sql/database/connectivity-architecture.md#connection-policy).
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: anvang
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 37033e3c5f388d1a55a122899114914e661565f6
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: f3eaa6383b174e06ff6ce9b1b08c4eba9108d770
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460223"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98115522"
 ---
 # <a name="quickstart-scale-compute-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics-using-t-sql"></a>Snabb start: skala beräkning för dedikerad SQL-pool (tidigare SQL DW) i Azure Synapse Analytics med hjälp av T-SQL
 
@@ -46,7 +46,7 @@ I det här avsnittet används [SQL Server Management Studio](/sql/ssms/download-
    | Servernamn | Fullständigt kvalificerat servernamn | Här är ett exempel: **mySampleDataWarehouseservername.Database.Windows.net**. |
    | Autentisering | SQL Server-autentisering | SQL-autentisering är den enda autentiseringstypen som vi konfigurerar i den här självstudiekursen. |
    | Inloggning | Serveradministratörskontot | Kontot som du angav när du skapade servern. |
-   | Lösenord | Lösenordet för serveradministratörskontot | Det lösen ord som du angav när du skapade servern. |
+   | lösenordsinställning | Lösenordet för serveradministratörskontot | Det lösen ord som du angav när du skapade servern. |
 
     ![Anslut till servern](./media/quickstart-scale-compute-tsql/connect-to-server.png)
 
@@ -153,4 +153,4 @@ AND
 Nu har du lärt dig hur du skalar beräkningen för din dedikerade SQL-pool (tidigare SQL DW). Om du vill veta mer om Azure Synapse Analytics kan du fortsätta till självstudien för att läsa in data.
 
 > [!div class="nextstepaction"]
->[Läs in data i en dedikerad SQL-pool](load-data-from-azure-blob-storage-using-polybase.md)
+>[Läs in data i en dedikerad SQL-pool](./load-data-from-azure-blob-storage-using-copy.md)

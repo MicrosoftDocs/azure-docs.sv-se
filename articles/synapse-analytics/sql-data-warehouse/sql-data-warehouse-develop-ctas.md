@@ -11,12 +11,12 @@ ms.date: 03/26/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seoapril2019, azure-synapse
-ms.openlocfilehash: 3d9a842af5e1d3fac73515d96644bef250d7d0c4
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 95158193a978702392106c8aa3347de211fd1a3e
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93334577"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98115454"
 ---
 # <a name="create-table-as-select-ctas"></a>CREATE TABLE SOM SELECT (CTAS)
 
@@ -208,7 +208,7 @@ DROP TABLE CTAS_acs;
 
 ## <a name="ansi-join-replacement-for-merge"></a>ANSI Join-ersättning för sammanfogning 
 
-I Azure Synapse Analytics måste målet vara en HASH-distribuerad tabell för att det ska gå att [sammanfoga](https://docs.microsoft.com/sql/t-sql/statements/merge-transact-sql?view=sql-server-ver15) (för hands version) utan MATCHADE av mål.  Användare kan använda ANSI-kopplingen med [Update](https://docs.microsoft.com/sql/t-sql/queries/update-transact-sql?view=sql-server-ver15) eller [Delete](https://docs.microsoft.com/sql/t-sql/statements/delete-transact-sql?view=sql-server-ver15) som en lösning för att ändra mål tabell data baserat på resultatet från att gå med i en annan tabell.  Här är ett exempel.
+I Azure Synapse Analytics måste målet vara en HASH-distribuerad tabell för att det ska gå att [sammanfoga](/sql/t-sql/statements/merge-transact-sql?view=sql-server-ver15) (för hands version) utan MATCHADE av mål.  Användare kan använda ANSI-kopplingen med [Update](/sql/t-sql/queries/update-transact-sql?view=sql-server-ver15) eller [Delete](/sql/t-sql/statements/delete-transact-sql?view=sql-server-ver15) som en lösning för att ändra mål tabell data baserat på resultatet från att gå med i en annan tabell.  Här är ett exempel.
 
 ```sql
 CREATE TABLE dbo.Table1   

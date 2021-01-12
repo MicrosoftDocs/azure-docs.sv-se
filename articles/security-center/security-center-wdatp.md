@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/20/2020
 ms.author: memildin
-ms.openlocfilehash: 9a8dba99435e1616b1c49d5209b30c3c523876db
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 34d8881eb072c4c723bf68b7c6ccfd24ab19cd3c
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98071348"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98116287"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>Skydda dina slut punkter med Security Center Integrated EDR-lösning: Microsoft Defender för slut punkt
 
@@ -36,7 +36,7 @@ Microsoft Defender för slut punkt är en holistisk, Cloud-levererad slut punkts
 > Vid antändning 2020 lanserade vi [Microsoft Defender XDR Suite](https://www.microsoft.com/security/business/threat-protection) och den här EDR-komponenten har bytt namn till **Microsoft Defender för slut punkt**.
 
 
-## <a name="availability"></a>Tillgänglighet
+## <a name="availability"></a>Tillgängligt
 
 | Aspekt                          | Information                                                                                                                                                                                                                                                                                                       |
 |---------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -45,7 +45,7 @@ Microsoft Defender för slut punkt är en holistisk, Cloud-levererad slut punkts
 | Plattformar som stöds:            | Azure-datorer som kör Windows<br>Azure Arc-datorer som kör Windows|
 | Versioner av Windows som stöds:  |  • Security Center stöder identifiering på Windows Server 2016, 2012 R2 och 2008 R2 SP1<br> • Övervakning av Server slut punkt med denna integrering har inaktiverats för Office 365 GCC-kunder<br> • Inget stöd för Windows Server 2019, Windows 10 1703 (och nyare) eller Linux|
 | Nödvändiga roller och behörigheter: | Aktivera/inaktivera integrering: **säkerhets administratör** eller **ägare**<br>Så här visar du MDATP-aviseringar i Security Center: **säkerhets läsare**, **läsare**, **resurs grupps deltagare**, **resurs grupp ägare**, **säkerhets administratör**, **prenumerations ägare** eller **prenumerations deltagare**|
-| Moln                         | ![Ja](./media/icons/yes-icon.png) Kommersiella moln<br>![Ja](./media/icons/yes-icon.png) US Gov<br>![Nej](./media/icons/no-icon.png) Kina gov, andra gov<br>![Nej](./media/icons/no-icon.png) GCC kunder som kör arbets belastningar i globala Azure-moln                                                        |
+| Moln                         | ![Yes](./media/icons/yes-icon.png) Kommersiella moln<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) Kina gov, andra gov<br>![No](./media/icons/no-icon.png) GCC kunder som kör arbets belastningar i globala Azure-moln                                                        |
 |                                 |                                                                                                                                                                                                                                                                                                               |
 
 
@@ -131,7 +131,7 @@ Defender för slut punkt ingår utan extra kostnad med **Azure Defender för ser
 ### <a name="if-i-already-have-a-license-for-microsoft-defender-for-endpoint-can-i-get-a-discount-for-azure-defender"></a>Om jag redan har en licens för Microsoft Defender för slut punkten får jag en rabatt för Azure Defender?
 Om du redan har en licens för Microsoft Defender för slut punkt behöver du inte betala för den delen av din Azure Defender-licens.
 
-Om du vill bekräfta rabatten kontaktar du Security Center support teamet och anger relevant arbetsyte-ID, region och licens information.
+Om du vill bekräfta rabatten kontaktar du Security Center support teamet och anger relevant arbetsyte-ID, region och licens information för varje relevant licens.
 
 ### <a name="how-do-i-switch-from-a-third-party-edr-tool"></a>Hur gör jag för att växlar från ett EDR-verktyg från tredje part?
 Fullständiga instruktioner för att byta från en slut punkts lösning som inte kommer från Microsoft finns i dokumentationen för Microsoft Defender för slut punkt: [Översikt över migrering](/windows/security/threat-protection/microsoft-defender-atp/switch-to-microsoft-defender-migration).

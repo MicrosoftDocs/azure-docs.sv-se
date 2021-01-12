@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/26/2020
-ms.openlocfilehash: 5a666d265550de6e24d791db6daa954d50ddde38
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: cefbdce88d49598998e8f985821088778eee3ae8
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97094190"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98117664"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Säkerhets överväganden för data förflyttning i Azure Data Factory
 > [!div class="op_single_selector" title1="Välj den version av Data Factory-tjänsten som du använder:"]
@@ -32,9 +32,9 @@ I en Data Factory-lösning skapar du en eller flera data[pipelines](concepts-pip
 
 Även om Data Factory bara är tillgängligt i några regioner, är tjänsten för data flyttning [tillgänglig globalt](concepts-integration-runtime.md#integration-runtime-location) för att säkerställa att data efterlevs, effektivitets och minskade kostnader för utgående nätverks trafik. 
 
-Azure Data Factory inklusive Integration Runtime lagrar inga data förutom länkade autentiseringsuppgifter för moln data lager, som krypteras med hjälp av certifikat. Med Data Factory skapar du data drivna arbets flöden för att dirigera data flödet mellan [data lager som stöds](copy-activity-overview.md#supported-data-stores-and-formats)och bearbetning av data med hjälp av [beräknings tjänster](compute-linked-services.md) i andra regioner eller i en lokal miljö. Du kan också övervaka och hantera arbets flöden med hjälp av SDK: er och Azure Monitor.
+Azure Data Factory inklusive Azure Integration Runtime och lokal Integration Runtime lagrar inte temporära data, cachelagrade data eller loggar förutom länkade autentiseringsuppgifter för tjänsten för moln data lager som krypteras med hjälp av certifikat. Med Data Factory skapar du data drivna arbets flöden för att dirigera data flödet mellan [data lager som stöds](copy-activity-overview.md#supported-data-stores-and-formats)och bearbetning av data med hjälp av [beräknings tjänster](compute-linked-services.md) i andra regioner eller i en lokal miljö. Du kan också övervaka och hantera arbets flöden med hjälp av SDK: er och Azure Monitor.
 
-Data Factory har certifierats för:
+Data Factory har certifierats för: 
 
 | **[CSA STAR-certifiering](https://www.microsoft.com/trustcenter/compliance/csa-star-certification)** |
 | :----------------------------------------------------------- |

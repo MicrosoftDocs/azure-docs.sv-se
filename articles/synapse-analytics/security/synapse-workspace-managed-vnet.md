@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: b605c2c9f3c7468d0fe1f2cccd8c3602c556714b
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 949b7e55569cc6fceacc37677ed06a28bb85d7c2
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96501081"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98116372"
 ---
 # <a name="azure-synapse-analytics-managed-virtual-network"></a>Hanterad Azure Synapse Analytics-Virtual Network
 
@@ -41,7 +41,7 @@ Dedikerad SQL-pool och Server lös SQL-pool är funktioner för flera klienter o
 
 ## <a name="create-an-azure-synapse-workspace-with-a-managed-workspace-virtual-network"></a>Skapa en Azure dataSynapses-arbetsyta med en hanterad arbets yta Virtual Network
 
-Registrera nätverks resurs leverantören om du inte redan har gjort det. När du registrerar en resurs leverantör konfigureras din prenumeration så att den fungerar med resurs leverantören. Välj *Microsoft. Network* i listan över resurs leverantörer när du [registrerar](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types)dig.
+Registrera nätverks resurs leverantören om du inte redan har gjort det. När du registrerar en resurs leverantör konfigureras din prenumeration så att den fungerar med resurs leverantören. Välj *Microsoft. Network* i listan över resurs leverantörer när du [registrerar](../../azure-resource-manager/management/resource-providers-and-types.md)dig.
 
 Om du vill skapa en Azure Synapse-arbetsyta som har en hanterad arbets yta Virtual Network kopplad till den, väljer du fliken **nätverk** i Azure Portal och markerar kryss rutan **Aktivera hanterat virtuellt nätverk** .
 

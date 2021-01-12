@@ -11,12 +11,12 @@ ms.date: 04/28/2020
 ms.author: anvang
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: b8a39220bda788cf6dac0be5151c2cdf5385e342
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 26a8a865a787a9c9b17031f94456272c93380704
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91570278"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98117052"
 ---
 # <a name="quickstart-scale-compute-for-synapse-sql-pool-with-the-azure-portal"></a>Snabb start: skala beräkning för Synapse SQL-pool med Azure Portal
 
@@ -26,7 +26,7 @@ Om du inte har en Azure-prenumeration kan du skapa ett [kostnadsfritt](https://a
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logga in på Azure Portal
 
-Logga in på [Azure Portal](https://portal.azure.com/).
+Logga in på [Azure-portalen](https://portal.azure.com/).
 
 ## <a name="before-you-begin"></a>Innan du börjar
 
@@ -43,7 +43,7 @@ Så här ändrar du informationslagerenheter:
 
 1. Klicka på **Azure Synapse Analytics (tidigare SQL DW)** på den vänstra sidan i Azure Portal.
 2. Välj **mySampleDataWarehouse** på sidan **Azure Synapse Analytics (tidigare SQL DW)** . SQL-poolen öppnas.
-3. Klicka på **skala**.
+3. Klicka på **Skala**.
 
     ![Klicka på Skala](./media/quickstart-scale-compute-portal/click-scale.png)
 
@@ -52,4 +52,4 @@ Så här ändrar du informationslagerenheter:
     ![Dra skjutreglaget](./media/quickstart-scale-compute-portal/scale-dwu.png)
 
 ## <a name="next-steps"></a>Nästa steg
-Om du vill veta mer om SQL-poolen fortsätter du till självstudien [Läs in data i SQL-pool](load-data-from-azure-blob-storage-using-polybase.md) . 
+Om du vill veta mer om SQL-poolen fortsätter du till självstudien [Läs in data i SQL-pool](./load-data-from-azure-blob-storage-using-copy.md) .

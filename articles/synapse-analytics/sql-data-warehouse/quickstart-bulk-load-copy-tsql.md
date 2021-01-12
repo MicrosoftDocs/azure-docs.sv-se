@@ -11,16 +11,16 @@ ms.date: 11/20/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 83b5804888379316b855c36f803f646cec102d9e
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 939a74a2bbedf6b00159f0c33a50eeb93595cda4
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024593"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98116083"
 ---
 # <a name="quickstart-bulk-load-data-using-the-copy-statement"></a>Snabb start: Mass inläsning av data med hjälp av KOPIERINGs instruktionen
 
-I den här snabb starten ska du samla in data i den dedikerade SQL-poolen med hjälp av den enkla och flexibla [kopierings instruktionen](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) för data inmatning med stora data flöden. KOPIERINGs instruktionen är det rekommenderade inläsnings verktyget, som du kan använda för att sömlöst och flexibelt läsa in data genom att tillhandahålla funktioner för att:
+I den här snabb starten ska du samla in data i den dedikerade SQL-poolen med hjälp av den enkla och flexibla [kopierings instruktionen](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) för data inmatning med stora data flöden. KOPIERINGs instruktionen är det rekommenderade inläsnings verktyget, som du kan använda för att sömlöst och flexibelt läsa in data genom att tillhandahålla funktioner för att:
 
 - Tillåt att lägre privilegierade användare läser in utan att du behöver strikt behörighet för data lagret
 - Använd endast ett enda T-SQL-uttryck utan att behöva skapa några ytterligare databas objekt
@@ -138,5 +138,5 @@ GROUP BY r.[request_id]
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Metod tips för inläsning av data finns i [metod tips för att läsa in data](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/guidance-for-loading-data).
-- Information om hur du hanterar resurserna för dina data belastningar finns i [arbets belastnings isolering](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-configure-workload-isolation-tsql). 
+- Metod tips för inläsning av data finns i [metod tips för att läsa in data](./guidance-for-loading-data.md).
+- Information om hur du hanterar resurserna för dina data belastningar finns i [arbets belastnings isolering](./quickstart-configure-workload-isolation-tsql.md).

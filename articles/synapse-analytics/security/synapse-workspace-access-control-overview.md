@@ -9,12 +9,12 @@ ms.subservice: security
 ms.date: 12/03/2020
 ms.author: billgib
 ms.reviewer: jrasnick
-ms.openlocfilehash: 256fec97819cde0f6f62d59b34416c92e1edfd20
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 71a83a8d119e5fd8c18b7b21abe4a0a07ba9c67a
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109614"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98116559"
 ---
 # <a name="synapse-access-control"></a>Synapse åtkomst kontroll 
 
@@ -48,7 +48,7 @@ Om du vill *skapa* dessa resurser måste du vara en Azure-ägare eller deltagare
 Synapse stöder två utvecklings modeller.
 
 - **Synapse Live-utveckling**.  Du kan utveckla och felsöka kod i Synapse Studio och sedan **publicera** den för att spara och köra.  Synapse-tjänsten är källan till sanningen för kod redigering och körning.  Alla opublicerade arbeten försvinner när du stänger Synapse Studio.  
-- **Git-aktiverad utveckling**. Du utvecklar och felsöker kod i Synapse Studio och **genomför** ändringar i en fungerande gren av en git-lagrings platsen. Arbetet från en eller flera grenar integreras i en samarbets gren, från var du **publicerar** den till tjänsten.  Git-lagrings platsen är källan till sanningen för kod redigering medan tjänsten är källan till sanningen för körning. Ändringar måste göras i git-lagrings platsen eller publiceras till tjänsten innan du stänger Synapse Studio. [Lär dig mer](https://go.microsoft.com/fwlink/?linkid=2150100) om hur du använder Synapse Analytics med git.
+- **Git-aktiverad utveckling**. Du utvecklar och felsöker kod i Synapse Studio och **genomför** ändringar i en fungerande gren av en git-lagrings platsen. Arbetet från en eller flera grenar integreras i en samarbets gren, från var du **publicerar** den till tjänsten.  Git-lagrings platsen är källan till sanningen för kod redigering medan tjänsten är källan till sanningen för körning. Ändringar måste göras i git-lagrings platsen eller publiceras till tjänsten innan du stänger Synapse Studio. [Lär dig mer](../cicd/continuous-integration-deployment.md) om hur du använder Synapse Analytics med git.
 
 I båda utvecklings modellerna kan alla användare med åtkomst till Synapse Studio skapa kod artefakter.  Du behöver dock ytterligare behörigheter för att publicera artefakter till tjänsten, läsa publicerade artefakter, för att genomföra ändringar i git, för att köra kod och för att få åtkomst till länkade data som skyddas av autentiseringsuppgifter.
 

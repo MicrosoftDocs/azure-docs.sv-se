@@ -16,12 +16,12 @@ ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: 846e1a83f3cba5f87210ae4f825b5fac4f1569c6
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: a18fc3e4851c2daf03c662cf40cef58cc7d9e77a
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94648386"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98117715"
 ---
 # <a name="add-or-remove-azure-role-assignments-for-external-guest-users-using-the-azure-portal"></a>Lägg till eller ta bort Azure Role-tilldelningar för externa gäst användare med hjälp av Azure Portal
 
@@ -29,9 +29,7 @@ ms.locfileid: "94648386"
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-Om du vill lägga till eller ta bort roll tilldelningar måste du ha:
-
-- `Microsoft.Authorization/roleAssignments/write` och `Microsoft.Authorization/roleAssignments/delete` behörigheter, till exempel [administratör för användar åtkomst](built-in-roles.md#user-access-administrator) eller [ägare](built-in-roles.md#owner)
+[!INCLUDE [Azure role assignment prerequisites](../../includes/role-based-access-control/prerequisites-role-assignments.md)]
 
 ## <a name="when-would-you-invite-guest-users"></a>När bjuder du in gäst användare?
 
@@ -77,7 +75,7 @@ I Azure RBAC, för att bevilja åtkomst, tilldelar du en roll. Om du vill lägga
 
 1. Klicka på den aktuella resursen.
 
-1. Klicka på **Åtkomstkontroll (IAM)** .
+1. Klicka på **Åtkomstkontroll (IAM)**.
 
     Följande skärmbild visar ett exempel på bladet Åtkomstkontroll (IAM) för en resursgrupp. Om du gör ändringar i åtkomst kontrollen gäller de bara för resurs gruppen.
 
@@ -115,7 +113,7 @@ Om gäst användaren inte finns i din katalog än kan du bjuda in användaren di
 
 1. Klicka på den aktuella resursen.
 
-1. Klicka på **Åtkomstkontroll (IAM)** .
+1. Klicka på **Åtkomstkontroll (IAM)**.
 
 1. Klicka på fliken **roll tilldelningar** för att visa alla roll tilldelningar i det här omfånget.
 
@@ -165,7 +163,7 @@ Innan du tar bort en gäst användare från en katalog bör du först ta bort al
 
 1. I meddelandet om att ta bort rolltilldelningen klickar du på **Ja**.
 
-1. Klicka på **Azure Active Directory** användare i det vänstra navigerings fältet  >  **Users**.
+1. Klicka på **Azure Active Directory** användare i det vänstra navigerings fältet  >  .
 
 1. Klicka på den gäst användare som du vill ta bort.
 
@@ -175,7 +173,7 @@ Innan du tar bort en gäst användare från en katalog bör du först ta bort al
 
 1. Klicka på **Ja** i det borttagnings meddelande som visas.
 
-## <a name="troubleshoot"></a>Felsöka
+## <a name="troubleshoot"></a>Felsök
 
 ### <a name="guest-user-cannot-browse-the-directory"></a>Gäst användare kan inte bläddra i katalogen
 

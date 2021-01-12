@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 33eb5977ecb373a0dba87c26cacea247f541be8f
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 3778b6046c750bb131be1e51bf1afdc7b0df7184
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452726"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98116797"
 ---
 # <a name="design-tables-using-synapse-sql-in-azure-synapse-analytics"></a>Design tabeller med Synapse SQL i Azure Synapse Analytics
 
@@ -25,29 +25,29 @@ Det här dokumentet innehåller viktiga begrepp för att utforma tabeller med de
 
 I följande tabell visas de avsnitt som är relevanta för dedikerad SQL-pool jämfört med en server lös SQL-pool:
 
-| Avsnitt                                                        | dedikerad SQL-pool | serverlös SQL-pool |
+| Ämne                                                        | dedikerad SQL-pool | serverlös SQL-pool |
 | ------------------------------------------------------------ | ------------------ | ----------------------- |
-| [Bestäm tabell kategori](#determine-table-category)        | Ja                | Inga                      |
+| [Bestäm tabell kategori](#determine-table-category)        | Ja                | Nej                      |
 | [Schema namn](#schema-names)                                | Ja                | Ja                     |
-| [Tabell namn](#table-names)                                  | Ja                | Inga                      |
-| [Tabell persistence](#table-persistence)                      | Ja                | Inga                      |
-| [Vanlig tabell](#regular-table)                              | Ja                | Inga                      |
+| [Tabell namn](#table-names)                                  | Ja                | Nej                      |
+| [Tabell persistence](#table-persistence)                      | Ja                | Nej                      |
+| [Vanlig tabell](#regular-table)                              | Ja                | Nej                      |
 | [Temporär tabell](#temporary-table)                          | Ja                | Ja                     |
 | [Extern tabell](#external-table)                            | Ja                | Ja                     |
 | [Datatyper](#data-types)                                    | Ja                | Ja                     |
-| [Distribuerade tabeller](#distributed-tables)                    | Ja                | Inga                      |
-| [Hash-distribuerade tabeller](#hash-distributed-tables)          | Ja                | Inga                      |
-| [Replikerade tabeller](#replicated-tables)                      | Ja                | Inga                      |
-| [Round-Robin-tabeller](#round-robin-tables)                    | Ja                | Inga                      |
-| [Vanliga distributions metoder för tabeller](#common-distribution-methods-for-tables) | Ja                | Inga                      |
+| [Distribuerade tabeller](#distributed-tables)                    | Ja                | Nej                      |
+| [Hash-distribuerade tabeller](#hash-distributed-tables)          | Ja                | Nej                      |
+| [Replikerade tabeller](#replicated-tables)                      | Ja                | Nej                      |
+| [Round-Robin-tabeller](#round-robin-tables)                    | Ja                | Nej                      |
+| [Vanliga distributions metoder för tabeller](#common-distribution-methods-for-tables) | Ja                | Nej                      |
 | [Partitioner](#partitions)                                    | Ja                | Ja                     |
-| [Columnstore-index](#columnstore-indexes)                  | Ja                | Inga                      |
+| [Columnstore-index](#columnstore-indexes)                  | Ja                | Nej                      |
 | [Statistik](#statistics)                                    | Ja                | Ja                     |
-| [Primär nyckel och unik nyckel](#primary-key-and-unique-key)    | Ja                | Inga                      |
-| [Kommandon för att skapa tabeller](#commands-for-creating-tables) | Ja                | Inga                      |
-| [Justera källdata med data lagret](#align-source-data-with-the-data-warehouse) | Ja                | Inga                      |
-| [Tabell funktioner som inte stöds](#unsupported-table-features)    | Ja                | Inga                      |
-| [Tabell storleks frågor](#table-size-queries)                    | Ja                | Inga                      |
+| [Primär nyckel och unik nyckel](#primary-key-and-unique-key)    | Ja                | Nej                      |
+| [Kommandon för att skapa tabeller](#commands-for-creating-tables) | Ja                | Nej                      |
+| [Justera källdata med data lagret](#align-source-data-with-the-data-warehouse) | Ja                | Nej                      |
+| [Tabell funktioner som inte stöds](#unsupported-table-features)    | Ja                | Nej                      |
+| [Tabell storleks frågor](#table-size-queries)                    | Ja                | Nej                      |
 
 ## <a name="determine-table-category"></a>Bestäm tabell kategori
 
@@ -102,7 +102,7 @@ Mer information finns i  [temporära tabeller](develop-tables-temporary.md).
 
 [Externa tabeller](develop-tables-external-tables.md) pekar på data som finns i Azure Storage blob eller Azure Data Lake Storage.
 
-Importera data från externa tabeller till dedikerade SQL-pooler med hjälp av [CREATE TABLE as Select](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) -instruktionen. En inläsnings kurs finns i [använda PolyBase för att läsa in data från Azure Blob Storage](../sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+Importera data från externa tabeller till dedikerade SQL-pooler med hjälp av [CREATE TABLE as Select](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) -instruktionen. En inläsnings kurs finns i [använda PolyBase för att läsa in data från Azure Blob Storage](../sql-data-warehouse/load-data-from-azure-blob-storage-using-copy.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json).
 
 För SQL-poolen utan server kan du använda [CETAS](develop-tables-cetas.md) för att spara frågeresultatet till en extern tabell i Azure Storage.
 

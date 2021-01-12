@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 2afc274bf7c040eca6a83abbab24c41767f16482
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 3e55ef054d5c305937f88d6ec5b2b4453cac6792
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96453674"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98117766"
 ---
 # <a name="integrate-other-services-with-a-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Integrera andra tjänster med en dedikerad SQL-pool (tidigare SQL DW) i Azure Synapse Analytics.
 
@@ -36,7 +36,7 @@ Med Power BI integration kan du kombinera beräknings kraften hos ett informatio
 * **Direkt anslutning**: en mer avancerad anslutning med logisk mottagnings mot ett informations lager som tillhandahålls med dedikerad SQL-pool (tidigare SQL DW). Mottagningen ger snabbare analys i större skala.
 * **Öppna i Power BI**: med knappen "öppna i Power BI" skickas instans information till Power BI för ett förenklat sätt att ansluta.
 
-Mer information finns i [integrera med Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md)eller [Power BI-dokumentationen](https://powerbi.microsoft.com/blog/exploring-azure-sql-data-warehouse-with-power-bi/).
+Mer information finns i [integrera med Power BI](/power-bi/connect-data/service-azure-sql-data-warehouse-with-direct-connect)eller [Power BI-dokumentationen](https://powerbi.microsoft.com/blog/exploring-azure-sql-data-warehouse-with-power-bi/).
 
 ## <a name="azure-data-factory"></a>Azure Data Factory
 

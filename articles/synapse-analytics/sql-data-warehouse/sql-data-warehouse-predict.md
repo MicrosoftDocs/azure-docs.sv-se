@@ -11,16 +11,16 @@ ms.date: 07/21/2020
 ms.author: anjangsh
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: b1a2e802f66132a88060fb74831781055897b077
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 9e7d45a588e60cd082f1eef43d1d1b6681b9e912
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97093663"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98117749"
 ---
 # <a name="score-machine-learning-models-with-predict"></a>Score Machine Learning-modeller med PREDICT
 
-Dedikerad SQL-pool ger dig möjlighet att Poäng modeller för maskin inlärning med det välkända T-SQL-språket. Med T-SQL [predict](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest&preserve-view=true)kan du se till att dina befintliga Machine Learning-modeller tränas med historiska data och att de hamnar inom data lagrets säkra gränser. Funktionen PREDICT tar en [ONNX-modell (Open neurala Network Exchange)](https://onnx.ai/) och data som indata. Den här funktionen eliminerar steget för att flytta värdefull data utanför data lagret för poängsättning. Det syftar till att göra det möjligt för data experter att enkelt distribuera maskin inlärnings modeller med det välkända T-SQL-gränssnittet och samar beta smidigt med data experter som arbetar med rätt ramverk för deras uppgift.
+Dedikerad SQL-pool ger dig möjlighet att Poäng modeller för maskin inlärning med det välkända T-SQL-språket. Med T-SQL [predict](/sql/t-sql/queries/predict-transact-sql?preserve-view=true&view=azure-sqldw-latest)kan du se till att dina befintliga Machine Learning-modeller tränas med historiska data och att de hamnar inom data lagrets säkra gränser. Funktionen PREDICT tar en [ONNX-modell (Open neurala Network Exchange)](https://onnx.ai/) och data som indata. Den här funktionen eliminerar steget för att flytta värdefull data utanför data lagret för poängsättning. Det syftar till att göra det möjligt för data experter att enkelt distribuera maskin inlärnings modeller med det välkända T-SQL-gränssnittet och samar beta smidigt med data experter som arbetar med rätt ramverk för deras uppgift.
 
 > [!NOTE]
 > Den här funktionen stöds för närvarande inte i SQL-poolen utan server.
@@ -35,7 +35,7 @@ Dedikerad SQL-pool förväntar sig en förtränad modell. Tänk på följande fa
 
 - Dedikerad SQL-pool stöder endast ONNX format modeller. ONNX är ett modell format med öppen källkod som gör att du kan utbyta modeller mellan olika ramverk för att aktivera samverkan. Du kan konvertera befintliga modeller till ONNX-format med hjälp av ramverk som antingen stöder det internt eller som har konverterings paket tillgängliga. Till exempel [sklearn-Onnx](https://github.com/onnx/sklearn-onnx) -paketet convert scikit – lär dig modeller till Onnx. [ONNX GitHub-lagringsplatsen](https://github.com/onnx/tutorials#converting-to-onnx-format) innehåller en lista över ramverk som stöds och exempel.
 
-   Om du använder [Automatisk ml](https://docs.microsoft.com/azure/machine-learning/concept-automated-ml) -utbildning måste du ange *ENABLE_ONNX_COMPATIBLE_MODELS* parametern till true för att skapa en Onnx format modell. [Automatiserad Machine Learning Notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb) visar ett exempel på hur du använder automatisk ml för att skapa en Machine Learning-modell med ONNX-format.
+   Om du använder [Automatisk ml](../../machine-learning/concept-automated-ml.md) -utbildning måste du ange *ENABLE_ONNX_COMPATIBLE_MODELS* parametern till true för att skapa en Onnx format modell. [Automatiserad Machine Learning Notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb) visar ett exempel på hur du använder automatisk ml för att skapa en Machine Learning-modell med ONNX-format.
 
 - Följande data typer stöds för indata:
     - int, bigint, Real, Float
@@ -66,7 +66,7 @@ GO
 
 ```
 
-När modellen har konverterats till en hexadecimal sträng och den angivna tabell definitionen använder du [kommandot Copy](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true) eller PolyBase för att läsa in modellen i den DEDIKERADe SQL-adresspoolen. I följande kod exempel används kommandot Copy för att läsa in modellen.
+När modellen har konverterats till en hexadecimal sträng och den angivna tabell definitionen använder du [kommandot Copy](/sql/t-sql/statements/copy-into-transact-sql?preserve-view=true&view=azure-sqldw-latest) eller PolyBase för att läsa in modellen i den DEDIKERADe SQL-adresspoolen. I följande kod exempel används kommandot Copy för att läsa in modellen.
 
 ```sql
 -- Copy command to load hexadecimal string of the model from Azure Data Lake storage location
@@ -80,9 +80,9 @@ WITH (
 
 ## <a name="scoring-the-model"></a>Bedömnings modellen
 
-När modellen och data har lästs in i data lagret använder du funktionen **T-SQL predict** för att beräkna modellen. Se till att de nya indata har samma format som de utbildnings data som används för att skapa modellen. T-SQL PREDICT tar två indata: modell och nya straff indata och genererar nya kolumner för utdata. Modellen kan anges som en variabel, en literal eller en skalär sub_query. Använd [med common_table_expression](https://docs.microsoft.com/sql/t-sql/queries/with-common-table-expression-transact-sql?view=azure-sqldw-latest&preserve-view=true) för att ange en namngiven resultat uppsättning för data parametern.
+När modellen och data har lästs in i data lagret använder du funktionen **T-SQL predict** för att beräkna modellen. Se till att de nya indata har samma format som de utbildnings data som används för att skapa modellen. T-SQL PREDICT tar två indata: modell och nya straff indata och genererar nya kolumner för utdata. Modellen kan anges som en variabel, en literal eller en skalär sub_query. Använd [med common_table_expression](/sql/t-sql/queries/with-common-table-expression-transact-sql?preserve-view=true&view=azure-sqldw-latest) för att ange en namngiven resultat uppsättning för data parametern.
 
-Exemplet nedan visar en exempel fråga med hjälp av funktionen förutsägelse. En ytterligare kolumn med namn *poängen* och data typen *float* skapas som innehåller förutsägelse resultatet. Alla kolumner för indata och utdatakolumner är tillgängliga för visning med SELECT-instruktionen. Mer information finns i [predict (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest&preserve-view=true).
+Exemplet nedan visar en exempel fråga med hjälp av funktionen förutsägelse. En ytterligare kolumn med namn *poängen* och data typen *float* skapas som innehåller förutsägelse resultatet. Alla kolumner för indata och utdatakolumner är tillgängliga för visning med SELECT-instruktionen. Mer information finns i [predict (Transact-SQL)](/sql/t-sql/queries/predict-transact-sql?preserve-view=true&view=azure-sqldw-latest).
 
 ```sql
 -- Query for ML predictions
@@ -93,4 +93,4 @@ DATA = dbo.mytable AS d, RUNTIME = ONNX) WITH (Score float) AS p;
 
 ## <a name="next-steps"></a>Nästa steg
 
-Mer information om PREDICT-funktionen finns i [predict (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest&preserve-view=true).
+Mer information om PREDICT-funktionen finns i [predict (Transact-SQL)](/sql/t-sql/queries/predict-transact-sql?preserve-view=true&view=azure-sqldw-latest).

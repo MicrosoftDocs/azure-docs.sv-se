@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a43200985820779c56983f09b81a86989261c36f
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 13756be041f88883d84f9558308c7fe5c9be2d0e
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97935010"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98116015"
 ---
 # <a name="plan-a-conditional-access-deployment"></a>Planera en distribution av villkorsstyrd åtkomst
 
@@ -52,7 +52,7 @@ Se [licens krav för villkorlig åtkomst](overview.md).
 
 Om ytterligare funktioner krävs kan du också behöva relaterade licenser. Mer information finns i [Azure Active Directory prissättning](https://azure.microsoft.com/pricing/details/active-directory/).
 
-### <a name="prerequisites"></a>Krav
+### <a name="prerequisites"></a>Förutsättningar
 
 * En fungerande Azure AD-klient med Azure AD Premium-eller utvärderings licens aktive rad. Om det behövs kan du [skapa ett kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -67,7 +67,7 @@ Om ytterligare funktioner krävs kan du också behöva relaterade licenser. Mer 
 Följande resurser kan vara användbara när du lär dig mer om villkorlig åtkomst:
 
 
-#### <a name="videos"></a>Videoklipp
+#### <a name="videos"></a>Video
 
 * [Vad är villkorsstyrd åtkomst?](https://youtu.be/ffMAw2IVO7A)
 * [Hur distribuerar jag villkorlig åtkomst?](https://youtu.be/c_izIRNJNuk)
@@ -224,14 +224,6 @@ Om du konfigurerar en princip felaktigt kan den låsa organisationerna från Azu
 
 * Skapa ett användar konto dedikerat för princip administration och exkluderas från alla dina principer.
 
-* Scenario för rast glas för Hybrid miljöer:
-
-  * Skapa en lokal säkerhets grupp och synkronisera den med Azure AD. Säkerhets gruppen ska innehålla ditt dedikerade princip administrations konto. 
-
-   * UNDANTA den här säkerhets gruppen från alla principer för villkorlig åtkomst.
-
-   * När ett tjänst avbrott uppstår lägger du till dina andra administratörer i den lokala gruppen efter behov och tvingar fram en synkronisering. Detta animerar undantag för principer för villkorlig åtkomst.
-
 ### <a name="set-up-report-only-mode"></a>Konfigurera endast rapport läge
 
 Det kan vara svårt att förutsäga antalet och namnen på de användare som påverkas av vanliga distributions initiativ, till exempel:
@@ -376,7 +368,7 @@ Vissa organisationer har test klienter för detta ändamål. Det kan dock vara s
 
 Test planen är viktig för att få en jämförelse mellan de förväntade resultaten och de faktiska resultaten. Du bör alltid ha en förväntad händelse innan du testar något. I följande tabell visas exempel test fall. Justera scenarier och förväntade resultat baserat på hur dina principer för villkorlig åtkomst konfigureras.
 
-| Princip| Scenario| Förväntat resultat |
+| Policy| Scenario| Förväntat resultat |
 | - | - | - |
 | [Kräv MFA när det inte är på arbetet](untrusted-networks.md)| Auktoriserad användare loggar in på appen på en betrodd plats/ett arbete| Användaren uppmanas inte att MFA |
 | [Kräv MFA när det inte är på arbetet](untrusted-networks.md)| Auktoriserad användare loggar in på appen men inte på en betrodd plats/arbete| Användaren uppmanas att MFA och kan logga in |
@@ -487,10 +479,10 @@ När du har samlat in informationen, se följande resurser:
 
 * [Använd What-If-verktyget för att](troubleshoot-conditional-access-what-if.md) förstå varför en princip har eller inte tillämpats på en användare under en viss omständighet eller om en princip skulle gälla i ett känt tillstånd.
 
-## <a name="next-steps"></a>Efterföljande moment
+## <a name="next-steps"></a>Nästa steg
 
 [Läs mer om Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md)
 
 [Lär dig mer om identitets skydd](../identity-protection/overview-identity-protection.md)
 
-[Hantera principer för villkorlig åtkomst med Microsoft Graph-API](/graph/api/resources/conditionalaccesspolicy?view=graph-rest-beta.md)
+[Hantera principer för villkorlig åtkomst med Microsoft Graph-API](https://docs.microsoft.com/graph/api/resources/conditionalaccesspolicy)

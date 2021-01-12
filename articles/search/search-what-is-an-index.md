@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/15/2020
-ms.openlocfilehash: aa7c06c3bad59bad11fa288631042cca86109706
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 3d5663177bb087e936a49dd7289659b684d85860
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701141"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98116202"
 ---
 # <a name="create-a-basic-search-index-in-azure-cognitive-search"></a>Skapa ett Basic Search-index i Azure Kognitiv sökning
 
@@ -70,7 +70,7 @@ Den slutliga index designen är en iterativ process. Det är vanligt att börja 
 Under utvecklingen bör du planera om frekventa återuppbyggnadar. Eftersom fysiska strukturer skapas i tjänsten är det nödvändigt att [släppa och återskapa index](search-howto-reindex.md) för de flesta ändringar i en befintlig fält definition. Du kan överväga att arbeta med en delmängd av dina data för att göra återskapandet snabbare. 
 
 > [!Tip]
-> Kod i stället för en portal metod rekommenderas för att arbeta med index design och data import samtidigt. Som ett alternativ är verktyg som [Postman och Visual Studio Code](search-get-started-rest.md) användbara för koncept bevis testning när utvecklings projekt fortfarande är i tidiga faser. Du kan göra stegvisa ändringar i en index definition i en begär ande text och sedan skicka begäran till tjänsten för att återskapa ett index med ett uppdaterat schema.
+> Kod i stället för en portal metod rekommenderas för att arbeta med index design och data import samtidigt. Som ett alternativ är verktyg som [Postman](search-get-started-rest.md) eller [Visual Studio Code](search-get-started-vs-code.md) användbara för koncept bevis testning när utvecklings projekt fortfarande är i tidiga faser. Du kan göra stegvisa ändringar i en index definition i en begär ande text och sedan skicka begäran till tjänsten för att återskapa ett index med ett uppdaterat schema.
 
 ## <a name="index-schema"></a>Index schema
 
@@ -169,7 +169,7 @@ Fält har ett namn, en typ som klassificerar lagrade data och attribut som anger
 
 ### <a name="data-types"></a>Datatyper
 
-| Typ | Beskrivning |
+| Typ | Description |
 |------|-------------|
 | Edm.String |Text som kan, om du vill, använda en token för full texts ökning (ord brytning, ord och så vidare). |
 | Collection(Edm.String) |En lista med strängar som kan tokeniseras för textsökning. Det finns ingen teoretisk övre gräns för antalet objekt i en samling, men den övre gränsen på 16 MB för nyttolasten gäller för samlingar. |

@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 09/30/2020
 ms.author: rolyon
-ms.openlocfilehash: 565b84603a14452dd2ec49f8cf61da128503bc03
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: e746c7d09bb568d457ab1037b56c7c2973b29ad7
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97964260"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98117256"
 ---
 # <a name="steps-to-add-a-role-assignment"></a>Steg för tillägg av en rolltilldelning
 
@@ -31,7 +31,7 @@ Du måste först fastställa vem som behöver åtkomst. Du kan tilldela en roll 
 - Tjänstens huvudnamn – en säkerhetsidentitet som används av program eller tjänster för att få åtkomst till specifika Azure-resurser. Du kan se det som en *användaridentitet* (användarnamn och lösenord eller certifikat) för ett program.
 - Hanterad identitet – en identitet i Azure Active Directory som hanteras automatiskt av Azure. Normalt använder du [hanterade identiteter](../active-directory/managed-identities-azure-resources/overview.md) när du utvecklar molnbaserade program för att hantera uppgifterna för autentisering i Azure-tjänster.
 
-## <a name="step-2-find-the-appropriate-role"></a>Steg 2: hitta rätt roll
+## <a name="step-2-select-the-appropriate-role"></a>Steg 2: Välj lämplig roll
 
 Behörigheter grupperas tillsammans i en *roll definition*. Den brukar bara kallas en *roll*. Du kan välja från en lista över flera inbyggda roller. Om de inbyggda rollerna inte uppfyller organisationens specifika krav, kan du skapa egna anpassade roller.
 
@@ -62,7 +62,7 @@ Resten av de inbyggda rollerna tillåter hantering av specifika Azure-resurser. 
 
 ![Omfång för en rolltilldelning](./media/shared/rbac-scope.png)
 
-När du tilldelar en roll vid en överordnad omfattning, ärvs dessa behörigheter till de underordnade omfången. Ett exempel:
+När du tilldelar en roll vid en överordnad omfattning, ärvs dessa behörigheter till de underordnade omfången. Exempel:
 
 - Om du tilldelar rollen [läsare](built-in-roles.md#reader) till en användare i hanterings gruppens omfattning kan den användaren läsa allt i alla prenumerationer i hanterings gruppen.
 - Om du tilldelar rollen [fakturerings läsare](built-in-roles.md#billing-reader) till en grupp i prenumerations omfånget kan medlemmar i den gruppen läsa fakturerings data för varje resurs grupp och resurs i prenumerationen.

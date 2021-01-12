@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 08/23/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 862fa839c56746042c072ae3100832fb2b78451a
-ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
+ms.openlocfilehash: 56b417c65eae0df9b073cf72fe87ce0002fc2ba0
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96296937"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98115845"
 ---
 # <a name="source-control-integration-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Käll kontrolls integrering för dedikerad SQL-pool i Azure Synapse Analytics
 
@@ -51,7 +51,7 @@ I den här självstudien beskrivs hur du integrerar ditt SQL Server Data Tools (
 
    ![Klona lagrings platsen](./media/sql-data-warehouse-source-control-integration/4-clone-repo.png "Klona lagrings platsen")
 
-Mer information om hur du ansluter projekt med Visual Studio finns i avsnittet [ansluta till projekt i team Explorer](https://docs.microsoft.com/visualstudio/ide/connect-team-project?view=vs-2019). Information om hur du klonar en lagrings platsen med Visual Studio finns i artikeln [klona a avslutar git lagrings platsen](https://docs.microsoft.com/azure/devops/repos/git/clone?view=azure-devops&tabs=visual-studio) . 
+Mer information om hur du ansluter projekt med Visual Studio finns i avsnittet [ansluta till projekt i team Explorer](/visualstudio/ide/connect-team-project?view=vs-2019). Information om hur du klonar en lagrings platsen med Visual Studio finns i artikeln [klona a avslutar git lagrings platsen](/azure/devops/repos/git/clone?tabs=visual-studio&view=azure-devops) . 
 
 ## <a name="create-and-connect-your-project"></a>Skapa och Anslut ditt projekt
 

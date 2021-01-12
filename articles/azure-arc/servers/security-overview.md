@@ -3,12 +3,12 @@ title: Säkerhetsöversikt
 description: Säkerhets information om Azure Arc-aktiverade servrar.
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: be79be3030af76425b54fd683784d0e216ac2cf5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa8653b783e7eb3e211b7514831604dd5642cfbe
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91329048"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98117035"
 ---
 # <a name="azure-arc-for-servers-security-overview"></a>Säkerhets översikt över Azure Arc för servrar
 
@@ -16,7 +16,7 @@ I den här artikeln beskrivs den säkerhets konfiguration och de överväganden 
 
 ## <a name="identity-and-access-control"></a>Identitets- och åtkomstkontroll
 
-Varje Azure Arc-aktiverad server har en hanterad identitet som en del av en resurs grupp i en Azure-prenumeration, representerar den här identiteten servern som körs lokalt eller i en annan moln miljö. Åtkomst till den här resursen styrs av [rollbaserad åtkomst kontroll i Azure](../../role-based-access-control/overview.md). Från [**Access Control-sidan (IAM)**](../../role-based-access-control/role-assignments-portal.md#access-control-iam) i Azure Portal kan du kontrol lera vem som har åtkomst till din Azure Arc-aktiverade Server.
+Varje Azure Arc-aktiverad server har en hanterad identitet som en del av en resurs grupp i en Azure-prenumeration, representerar den här identiteten servern som körs lokalt eller i en annan moln miljö. Åtkomst till den här resursen styrs av [rollbaserad åtkomst kontroll i Azure](../../role-based-access-control/overview.md). Från [**Access Control-sidan (IAM)**](../../role-based-access-control/role-assignments-portal.md) i Azure Portal kan du kontrol lera vem som har åtkomst till din Azure Arc-aktiverade Server.
 
 :::image type="content" source="./media/security-overview/access-control-page.png" alt-text="Åtkomst kontroll för Azure Arc-aktiverad" border="false" lightbox="./media/security-overview/access-control-page.png":::
 
