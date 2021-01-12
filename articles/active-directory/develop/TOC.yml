@@ -280,7 +280,7 @@
               href: scenario-mobile-call-api.md
             - name: Flytta till produktion
               href: scenario-mobile-production.md
-    - name: Arbeta med Microsoft Authentication Library
+    - name: Arbeta med Microsofts autentiseringsbibliotek
       displayName: MSAL
       items:
         - name: Alla plattformar
@@ -644,34 +644,6 @@
       href: identity-videos.md
     - name: Utvecklarblogg om Microsofts identitetsplattform
       href: 'https://developer.microsoft.com/en-us/identity/blogs/'
-    - name: Hjälpartiklar för Azure-portalen
-      items:
-        - name: Standardvärden för tokenlivstid för ett egenutvecklat program
-          href: registration-config-change-token-lifetime-how-to.md
-        - name: Identifiera slutpunkter
-          href: registration-config-how-to.md
-        - name: Välj behörigheter för ett visst API
-          href: perms-for-given-api.md
-        - name: Autentiseringsprotokoll
-          href: active-directory-authentication-protocols.md
-        - name: Skillnader mellan delegerade behörigheter och programbehörigheter
-          href: delegated-and-app-perms.md
-        - name: Så fungerar programmedgivande
-          href: consent-framework-links.md
-        - name: Hitta ett specifikt API som behövs för ett egenutvecklat program
-          href: api-find-an-api-how-to.md
-        - name: Referens för registrering av appar
-          href: active-directory-v2-registration-portal.md
-        - name: Registreringsfält för Azure-portalen för egenutvecklade appar
-          href: registration-config-specific-application-property-how-to.md
-        - name: Konfigurera ett nytt program för flera klientorganisationer
-          href: setup-multi-tenant-app.md
-        - name: Lägga till ett program för flera klientorganisationer till Azure AD-programgalleriet
-          href: registration-config-multi-tenant-application-add-to-gallery-how-to.md
-        - name: Integrera med Azure Active Directory
-          href: active-directory-how-to-integrate.md
-        - name: Konfigurera enkel inloggning för ett program
-          href: registration-config-sso-how-to.md
     - name: Azure AD-blogg
       href: 'https://cloudblogs.microsoft.com/enterprisemobility/?product=azure-active-directory'
     - name: Azure-översikt
