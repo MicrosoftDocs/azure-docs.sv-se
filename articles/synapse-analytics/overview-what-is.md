@@ -9,18 +9,18 @@ ms.subservice: overview
 ms.date: 10/28/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: c315dae7e5f02f112dfdfbec02e1ebaaa5e48a9f
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: e5b12632a60ad5580325fbcda294e1a600bb2b6b
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96445783"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121710"
 ---
 # <a name="what-is-azure-synapse-analytics"></a>Vad är Azure Synapse Analytics?
 
 Enterprise Analytics måste arbeta i massiv skala på alla typer av data, oavsett om de är råa, raffinerade eller mycket anpassade. Detta kräver vanligt vis att företag samlar ihop Big data och data lager teknik i komplexa datapipeliner som fungerar mellan data i Relations lager och data sjöar. Dessa typer av lösningar är svåra att bygga, underhålla och säkra. Deras komplexitets fördröjningar som ger Insight-företagen behov.
 
-**Azure Synapse** är en integrerad analys tjänst som påskyndar tiden för att bli inblick i informations lager och stora data system. Azure Synapse kombinerar det bästa av **SQL** -teknikerna som används i företags data lager, **Spark** -tekniker som används för Big data och **pipelines** för data integrering och ETL/ELT. **Synapse Studio** ger en enhetlig upplevelse för hantering, övervakning, kodning och säkerhet. Synapse har djupgående integrering med andra Azure-tjänster som **Power BI**, **CosmosDB** och **azureml**.
+**Azure Synapse** är en integrerad analys tjänst som påskyndar tiden för att bli inblick i informations lager och stora data system. Azure Synapse kombinerar det bästa av **SQL** -teknikerna som används i företags data lager, **Spark** -tekniker som används för Big data, **pipelines** för data integrering och ETL/ELT och djupgående integrering med andra Azure-tjänster som **Power BI**, **CosmosDB** och **azureml**.
 
 ## <a name="key-features--benefits"></a>Viktiga funktioner & förmåner
 
@@ -28,7 +28,7 @@ Enterprise Analytics måste arbeta i massiv skala på alla typer av data, oavset
 
 * **SYNAPSE SQL** är ett distribuerat Query-system som gör det möjligt för företag att implementera data lager-och data Virtualization-scenarier med hjälp av vanliga och välkända T-SQL-upplevelser. Den utökar också funktionerna i SQL för att adressera strömnings-och maskin inlärnings scenarier.
 
-* Synapse SQL erbjuder både **Server** lös och **dedikerade** resurs modeller, och erbjuder användnings-och fakturerings alternativ som passar dina behov. För förutsägbara prestanda och kostnader skapar du dedikerade SQL-pooler för att reservera bearbetnings kraften för data som lagras i SQL-tabeller. För oplanerade eller burst-arbetsbelastningar använder du den alltid tillgängliga, Server lös SQL-slutpunkten.
+* Synapse SQL erbjuder både **Server** lös och **dedikerade** resurs modeller, och erbjuder användnings-och fakturerings alternativ som passar dina behov. För förutsägbara prestanda och kostnader skapar du dedikerade SQL-pooler för att reservera beräknings för data som lagras i SQL-tabeller. För oplanerade eller burst-arbetsbelastningar använder du den alltid tillgängliga, Server lös SQL-slutpunkten.
 * Använd inbyggda **strömnings** funktioner för att landa data från moln data källor till SQL-tabeller
 * Integrera AI med SQL genom att använda **maskin inlärnings** modeller för att räkna data med hjälp av [funktionen T-SQL predict](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest)
 
@@ -80,6 +80,6 @@ Azure Synapse erbjuder ett enda sätt för företag att hantera analys resurser,
 
 ## <a name="next-steps"></a>Nästa steg
 
-* [Kom igång med Azure Synapse Analytics](get-started.md)
+* [Komma igång med Azure Synapse Analytics](get-started.md)
 * [Skapa en arbetsyta](quickstart-create-workspace.md)
 * [Använda en serverlös SQL-pool](quickstart-sql-on-demand.md)

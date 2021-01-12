@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: spark
 ms.date: 09/13/2020
-ms.openlocfilehash: 73b18d15ad054f1c485d6f61cdefe54993148bc4
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: f11693b34048b11c02668e086561b9a6521a5213
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96450546"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121533"
 ---
 # <a name="visualize-data"></a>Visualisera data
 Azure Synapse är en integrerad analys tjänst som påskyndar tiden för insikter, över informations lager och Big data analys system. Data visualisering är en viktig komponent där du kan få inblick i dina data. Det hjälper dig att göra stora och små data enklare för människor att förstå. Det gör det också lättare att identifiera mönster, trender och avvikande värden i grupper med data. 
@@ -34,7 +34,7 @@ För att få åtkomst till diagram alternativ:
    ![inbyggda diagram](./media/apache-spark-development-using-notebooks/synapse-built-in-charts.png#lightbox)
 
 3. Nu kan du anpassa visualiseringen genom att ange följande värden:
-   | Konfiguration | Description |
+   | Konfiguration | Beskrivning |
    |--|--| 
    | Diagramtyp | ```display```Funktionen har stöd för en mängd olika diagram typer, inklusive stapeldiagram, punkt diagram, linje diagram med mera |
    | Nyckel | Ange värde intervallet för x-axeln|
@@ -227,7 +227,7 @@ Du kan gå till [dokumentationen](./spark/../apache-spark-version-support.md) f�
 ## <a name="connect-to-power-bi-using-apache-spark--sql-on-demand"></a>Ansluta till Power BI med Apache Spark & SQL på begäran
 Azure Synapse Analytics integreras djupt med Power BI som gör det möjligt för data tekniker att bygga analys lösningar.
 
-Med Azure Synapse Analytics kan olika beräknings motorer för arbets ytan dela databaser och tabeller mellan dess Spark-pooler och Server lös SQL-poolen. Med hjälp av den [delade metadata modellen](https://docs.microsoft.com/azure/synapse-analytics/metadata/overview)kan du köra frågor mot dina Apache Spark tabeller med SQL på begäran. När du är färdig kan du ansluta din SQL-slutpunkt på begäran till Power BI så att du enkelt kan fråga dina synkroniserade Spark-tabeller.
+Med Azure Synapse Analytics kan olika beräknings motorer för arbets ytan dela databaser och tabeller mellan dess Spark-pooler och Server lös SQL-poolen. Med hjälp av den [delade metadata modellen](../metadata/overview.md)kan du köra frågor mot dina Apache Spark tabeller med SQL på begäran. När du är färdig kan du ansluta din SQL-slutpunkt på begäran till Power BI så att du enkelt kan fråga dina synkroniserade Spark-tabeller.
 
 
 ## <a name="next-steps"></a>Nästa steg
