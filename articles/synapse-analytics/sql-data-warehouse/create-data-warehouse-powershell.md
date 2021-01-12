@@ -11,12 +11,12 @@ ms.date: 4/11/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse    , devx-track-azurepowershell
-ms.openlocfilehash: 0ce94b62d67048896cdf7355043ec2dde7f2df79
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 18fba46e4e8de14d9b3ec43455ba2abcc4218dc1
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96456583"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120197"
 ---
 # <a name="quickstart-create-a-dedicated-sql-pool-formerly-sql-dw-with-azure-powershell"></a>Snabb start: skapa en dedikerad SQL-pool (tidigare SQL DW) med Azure PowerShell
 
@@ -151,4 +151,4 @@ Remove-AzResourceGroup -ResourceGroupName $resourcegroupname
 
 ## <a name="next-steps"></a>Nästa steg
 
-Nu har du skapat en dedikerad SQL-pool (tidigare SQL DW), skapat en brand Väggs regel och anslutit till din dedikerade SQL-pool. Om du vill veta mer kan du fortsätta till artikeln [Läs in data i en särskild SQL-pool](load-data-from-azure-blob-storage-using-polybase.md) .
+Nu har du skapat en dedikerad SQL-pool (tidigare SQL DW), skapat en brand Väggs regel och anslutit till din dedikerade SQL-pool. Om du vill veta mer kan du fortsätta till artikeln [Läs in data i en särskild SQL-pool](./load-data-from-azure-blob-storage-using-copy.md) .

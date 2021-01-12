@@ -9,13 +9,13 @@ manager: diviso
 ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
-ms.date: 10/02/2020
-ms.openlocfilehash: 3956f8d91793367f7200d2f349a8713aff3d2f59
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.date: 01/11/2021
+ms.openlocfilehash: cb5bac06ab6eeaa00e72ba6068328a972b8ac37b
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95016232"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98119369"
 ---
 # <a name="quickstart-explore-the-azure-time-series-insights-gen2-demo-environment"></a>Snabb start: utforska Azure Time Series Insights Gen2 demo miljö
 
@@ -38,12 +38,27 @@ Azure Time Series Insights Gen2 Explorer visar historiska data och rotor Saks an
 
 ## <a name="work-with-historical-data"></a>Arbeta med historiska data
 
-1. I **contoso-anläggningar 1** tittar du på lindning turbin **W7**.  
+1. Välj **contoso WindFarm-hierarki**.
+
+   [![Contoso WindFarm-hierarki](media/quickstart-explore/quick-start-contoso-1.png)](media/quickstart-explore/quick-start-contoso-1.png#lightbox)
+
+1. I **contoso-anläggningar 1** tittar du på lindning turbin **W7**.
+
+   [![W7 i Contoso-anläggning 1](media/quickstart-explore/quick-start-contoso-2.png)](media/quickstart-explore/quick-start-contoso-2.png#lightbox)
 
    1. Ändra visnings intervallet till **1/1/17 20:00:00.00 till 3/10/17 20:00:00.00 (UTC)**.
+
+      [![Visnings område](media/quickstart-explore/range-setting-1.png)](media/quickstart-explore/range-setting-1.png#lightbox)
+
+      [![Visnings inställning för intervall](media/quickstart-explore/range-setting-2.png)](media/quickstart-explore/range-setting-2.png#lightbox)
+
+   1. Justera visnings området med hjälp av zooma in **(+)** och ut **(-)** och flytta bild fältet.
+
+      [![Justera visnings området](media/quickstart-explore/view-range-setting.png)](media/quickstart-explore/view-range-setting.png#lightbox)
+
    1. Välj en sensor genom att välja **contoso planta 1**  >  **W7**  >  **Generator system**  >  **GeneratorSpeed**. Granska sedan värdena som visas.
 
-      [![W7 i Contoso-anläggning 1](media/v2-update-quickstart/quick-start-generator-speed.png)](media/v2-update-quickstart/quick-start-generator-speed.png#lightbox)
+      [![Generator hastighet](media/quickstart-explore/quick-start-generator-speed-1.png)](media/quickstart-explore/quick-start-generator-speed-1.png#lightbox)
 
 1. Contoso upptäckte nyligen en brand i vindturbin **W7**. Åsikterna varierar om vad som orsakade branden. I Azure Time Series Insights Gen2 visas den brand varnande sensor som aktiverades under branden.
 

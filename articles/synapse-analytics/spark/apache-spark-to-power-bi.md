@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: tutorial
 ms.date: 11/16/2020
-ms.openlocfilehash: 791cab369dcbf9cab8d1256377cfee4a433c21b9
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 53fb256d3a0fba1cc10cafb239ff7f7bb21ac4eb
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96450899"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121081"
 ---
 # <a name="tutorial-create-a-power-bi-report-using-apache-spark-and-azure-synapse-analytics"></a>Självstudie: skapa en Power BI rapport med Apache Spark och Azure Synapse Analytics
 
@@ -22,7 +22,7 @@ Organisationer behöver ofta bearbeta stora mängder data innan de betjänar vik
 
 ## <a name="before-you-begin"></a>Innan du börjar
 - [Azure Synapse Analytics-arbetsyta](../quickstart-create-workspace.md) med ett ADLS Gen2 lagrings konto konfigurerat som standard lagring. 
-- Power BI arbets ytan och Power BI Desktop för att visualisera data. Mer information finns i [skapa en Power BI arbets yta](https://docs.microsoft.com/power-bi/service-create-the-new-workspaces) och [Installera Power BI Desktop](https://powerbi.microsoft.com/downloads/)
+- Power BI arbets ytan och Power BI Desktop för att visualisera data. Mer information finns i [skapa en Power BI arbets yta](/power-bi/service-create-the-new-workspaces) och [Installera Power BI Desktop](https://powerbi.microsoft.com/downloads/)
 - Länkad tjänst för att ansluta dina Azure Synapse-analyser och Power BI-arbetsytor. Mer information finns i [Länka till en Power BI arbets yta](../quickstart-power-bi.md)
 - Server lös Apache Spark pool i din Synapse Analytics-arbetsyta. Mer information finns i [skapa en server lös Apache Spark pool](../quickstart-create-apache-spark-pool-studio.md)
   
@@ -89,7 +89,7 @@ Så här frågar du Apache Spark-tabellen med hjälp av SQL-poolen utan server:
 Därefter ansluter vi vår SQL-pool utan server till vår Power BI-arbetsyta. När du har anslutit din arbets yta kommer du att kunna skapa Power BI rapporter både direkt från Azure Synapse Analytics och från Power BI Desktop.
 
 >[!Note]
-> Innan du börjar måste du konfigurera en länkad tjänst till din [Power BI arbets yta](../quickstart-power-bi.md) och hämta [Power BI Skriv bordet](https://docs.microsoft.com/power-bi/service-create-the-new-workspaces).  
+> Innan du börjar måste du konfigurera en länkad tjänst till din [Power BI arbets yta](../quickstart-power-bi.md) och hämta [Power BI Skriv bordet](/power-bi/service-create-the-new-workspaces).  
 
 Så här ansluter du en server lös SQL-pool till vår Power BI arbets yta:
 

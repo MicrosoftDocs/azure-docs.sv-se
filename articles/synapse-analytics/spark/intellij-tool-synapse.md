@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 04/15/2020
-ms.openlocfilehash: 75cc23df41741a95e87ad64d168aea4fa4f45733
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 39f39b6f53944510b5f3692bb8b3fdd472004454
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96451046"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121234"
 ---
 # <a name="tutorial-create-an-apache-spark-application-with-intellij-using-a-synapse-workspace"></a>Självstudie: skapa ett Apache Spark program med IntelliJ med hjälp av en Synapse-arbetsyta
 
@@ -36,7 +36,7 @@ I den här guiden får du lära dig att:
 - [INTELLIJ idé community-version](https://www.jetbrains.com/idea/download/download-thanks.html?platform=windows&code=IIC).
 - Azure toolkit-plugin-3.27.0 – 2019.2 – Installera från [IntelliJ plugin-lagringsplatsen](/java/azure/intellij/azure-toolkit-for-intellij-installation?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 - [JDK (Version 1,8)](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html).
-- Scala-plugin – installera från [IntelliJ-plugin-lagringsplatsen](/azure/hdinsight/spark/apache-spark-intellij-tool-plugin#install-scala-plugin-for-intellij-idea).
+- Scala-plugin – installera från [IntelliJ-plugin-lagringsplatsen](../../hdinsight/spark/apache-spark-intellij-tool-plugin.md#install-scala-plugin-for-intellij-idea).
 - Följande förutsättningar gäller endast för Windows-användare:
 
   När du kör det lokala Spark Scala-programmet på en Windows-dator kan du få ett undantag, enligt beskrivningen i [Spark-2356](https://issues.apache.org/jira/browse/SPARK-2356). Undantaget beror på att WinUtils.exe saknas i Windows.
@@ -178,7 +178,7 @@ Du kan följa anvisningarna nedan för att konfigurera din lokala körnings-och 
 
     ![IntelliJ kör felsöka konfigurationer lokal körning 2](./media/intellij-tool-synapse/local-run-synapse01.png)
 
-3. När den lokala körningen är klar kan du kontrol lera utdatafilen från **data** standard om skriptet innehåller utdata  >  **__default__**.
+3. När den lokala körningen är klar kan du kontrol lera utdatafilen från **data** standard om skriptet innehåller utdata  >  ****.
 
     ![IntelliJ-projektets lokala körnings resultat 1](./media/intellij-tool-synapse/spark-local-run-result.png)
 

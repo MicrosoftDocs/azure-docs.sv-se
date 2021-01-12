@@ -10,12 +10,12 @@ ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2ff2d9708642c347a829de290d45849d8629807f
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: f0c762d0f12f11cb4eef23b55fccb5b7c2a274d3
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462360"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98118225"
 ---
 # <a name="connect-to-synapse-sql"></a>Anslut till Synapse SQL
 Anslut till SQL-funktionen Synapse i Azure Synapse Analytics.
@@ -46,12 +46,12 @@ För att hitta det fullständigt kvalificerade servernamnet:
 
 ![Fullständigt servernamn](./media/connect-overview/server-connect-example.png)
 
-## <a name="serverless-sql-pool"></a>**SQL-pool utan Server**
+## <a name="serverless-sql-pool"></a>**serverlös SQL-pool**
 
 ![Fullständigt Server namn utan server utan SQL-pool](./media/connect-overview/server-connect-example-sqlod.png)
 
 ## <a name="supported-drivers-and-connection-strings"></a>Drivrutiner och anslutningssträngar som stöds
-Synapse SQL stöder [ADO.net](https://msdn.microsoft.com/library/e80y5yhx(v=vs.110).aspx), [ODBC](https://msdn.microsoft.com/library/jj730314.aspx), [php](https://msdn.microsoft.com/library/cc296172.aspx?f=255&MSPPError=-2147217396)och [JDBC](https://msdn.microsoft.com/library/mt484311(v=sql.110).aspx). Välj en av de föregående driv rutinerna för att hitta den senaste versionen och dokumentationen. Om du automatiskt vill generera anslutnings strängen för den driv rutin som du använder från Azure Portal väljer du **Visa databas anslutnings strängar** från föregående exempel. Nedan visas några exempel på hur en anslutningssträng kan se ut för respektive drivrutin.
+Synapse SQL stöder [ADO.net](/dotnet/framework/data/adonet/), [ODBC](/sql/connect/odbc/windows/microsoft-odbc-driver-for-sql-server-on-windows), [php](/sql/connect/php/overview-of-the-php-sql-driver?f=255&MSPPError=-2147217396)och [JDBC](/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server). Välj en av de föregående driv rutinerna för att hitta den senaste versionen och dokumentationen. Om du automatiskt vill generera anslutnings strängen för den driv rutin som du använder från Azure Portal väljer du **Visa databas anslutnings strängar** från föregående exempel. Nedan visas några exempel på hur en anslutningssträng kan se ut för respektive drivrutin.
 
 > [!NOTE]
 > Det kan vara bra att ange en tidsgräns på 300 sekunder för anslutningen så att den inte bryts vid korta perioder av inaktivitet.

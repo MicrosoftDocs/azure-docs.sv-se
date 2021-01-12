@@ -10,12 +10,12 @@ author: kevinvngo
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: de45e338b0b863dc2364af399a6991f56658b0e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6042b5be48144ce6730a9bf4f342d7735a262643
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85212283"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98118072"
 ---
 # <a name="request-quota-increases-and-get-support-for-azure-synapse-analytics"></a>Begär ande kvot ökar och får support för Azure Synapse Analytics
 
@@ -30,7 +30,7 @@ Använd följande steg för att skapa en ny supportbegäran från Azure Portal f
    ![Länken Hjälp + Support](./media/sql-data-warehouse-get-started-create-support-ticket/help-plus-support.png)
 
 
-1. I **Hjälp + Support**väljer du **ny supportbegäran**.
+1. I **Hjälp + Support** väljer du **ny supportbegäran**.
 
     ![Skapa en ny supportbegäran](./media/sql-data-warehouse-get-started-create-support-ticket/new-support-request.png)
 
@@ -42,14 +42,14 @@ Använd följande steg för att skapa en ny supportbegäran från Azure Portal f
 
    Om du har ett Premier support-avtal kan du även rapportera problem med Azure Synapse Analytics på [Microsoft Premier Online-portalen](https://premier.microsoft.com/). Se [support](https://azure.microsoft.com/support/plans/?WT.mc_id=Support_Plan_510979/) avtalen för Azure om du vill veta mer om olika support avtal, inklusive omfattning, svars tider, priser osv.  Vanliga frågor och svar om support för Azure finns i vanliga frågor och [svar om support för Azure](https://azure.microsoft.com/support/faq/).
 
-1. För **typ av problem**väljer du lämplig typ av problem. För problem med att lösa problemet väljer du **teknisk**. För förfrågningar om ökad kvot väljer du **tjänst-och prenumerations gränser (kvoter)**.
+1. För **typ av problem** väljer du lämplig typ av problem. För problem med att lösa problemet väljer du **teknisk**. För förfrågningar om ökad kvot väljer du **tjänst-och prenumerations gränser (kvoter)**.
 
    ![Välj en typ av problem](./media/sql-data-warehouse-get-started-create-support-ticket/select-quota-issue-type.png)  
 
    > [!NOTE]
-   > Den här återstoden av den här artikeln fokuserar på kvot-öka förfrågningar. Men du kan också välja **teknisk** här för förfrågningar om problemlösnings support. Om du väljer **teknisk**uppmanas du att ange en sammanfattning och sedan identifiera en problem typ genom att välja **Välj typ av problem**. Du kan se lösningar som kan hjälpa dig att lösa problemet. Om lösningarna som presenteras inte löser problemet väljer du **Nästa: information** och fyller i formuläret för att skicka in support ärendet.
+   > Den här återstoden av den här artikeln fokuserar på kvot-öka förfrågningar. Men du kan också välja **teknisk** här för förfrågningar om problemlösnings support. Om du väljer **teknisk** uppmanas du att ange en sammanfattning och sedan identifiera en problem typ genom att välja **Välj typ av problem**. Du kan se lösningar som kan hjälpa dig att lösa problemet. Om lösningarna som presenteras inte löser problemet väljer du **Nästa: information** och fyller i formuläret för att skicka in support ärendet.
 
-1. Välj **Azure Synapse Analytics** som **kvot typ**för förfrågningar om ökad kvot. Välj sedan **Nästa: lösningar >>**.
+1. Välj **Azure Synapse Analytics** som **kvot typ** för förfrågningar om ökad kvot. Välj sedan **Nästa: lösningar >>**.
 
    ![Välj en kvot typ](./media/sql-data-warehouse-get-started-create-support-ticket/select-quota-type.png)
 
@@ -137,5 +137,4 @@ När du har skickat in support förfrågan kontaktar support teamet för Azure. 
 
 ## <a name="other-resources"></a>Andra resurser
 
-Du kan också ansluta till Azure Synapse Analytics-communityn på [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-synapse+or+azure-sql-data-warehouse) eller via webbplatsen [Microsoft Q&en fråga för Azure Synapse Analytics](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html).
-
+Du kan också ansluta till Azure Synapse Analytics-communityn på [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-synapse+or+azure-sql-data-warehouse) eller via webbplatsen [Microsoft Q&en fråga för Azure Synapse Analytics](/answers/topics/azure-synapse-analytics.html).

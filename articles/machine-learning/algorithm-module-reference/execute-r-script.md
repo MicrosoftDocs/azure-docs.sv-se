@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 12/17/2020
-ms.openlocfilehash: 5d291ad745122d929c4b664e9da5e4649e463529
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: bdd7fd8e19bf2de6d0b3c6b2edd4515771fae237
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97679108"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98119037"
 ---
 # <a name="execute-r-script-module"></a>Kör R-skript-modul
 
@@ -49,10 +49,12 @@ azureml_main <- function(dataframe1, dataframe2){
 Om du vill installera ytterligare R-paket använder du- `install.packages()` metoden. Paket installeras för varje EXECUTE R-skript-modul. De delas inte över andra kör R-skript moduler.
 
 > [!NOTE]
+> Vi rekommenderar **inte** att du installerar R-paket från skript paketet. Vi rekommenderar att du installerar paket direkt i skript redigeraren.
 > Ange CRAN-lagringsplatsen när du installerar paket, till exempel `install.packages("zoo",repos = "http://cran.us.r-project.org")` .
 
 > [!WARNING]
 > Excute R script module stöder inte installation av paket som kräver intern kompilering, t `qdap` . ex. paket som kräver Java och `drc` paket som kräver C++. Detta beror på att den här modulen körs i en förinstallerad miljö med icke-administratörs behörighet.
+> Installera inte paket som är färdiga i/för Windows, eftersom designer-modulerna körs på Ubuntu. För att kontrol lera om ett paket är förbyggt i Windows kan du gå till [cran](https://cran.r-project.org/) och söka i paketet, ladda ned en binär fil enligt ditt OS och checka in **:** del i **beskrivnings** filen. Följande är ett exempel på en :::image type="content" source="media/module/r-package-description.png" alt-text="Beskrivning av R-paket" lightbox="media/module/r-package-page.png":::
 
 Det här exemplet visar hur du installerar Zoo:
 ```R

@@ -11,12 +11,12 @@ ms.date: 06/26/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 667629b7f613b11f40528b039c7525339b7a62d0
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: bd32b9690f8a9aef92eb1f2fbcc4ec926a65584e
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462866"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121200"
 ---
 # <a name="azure-advisor-recommendations-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Advisor rekommendationer för dedikerad SQL-pool i Azure Synapse Analytics
 
@@ -65,12 +65,12 @@ För närvarande kan Advisor bara visa högst fyra replikerade tabell kandidater
 
 
 ## <a name="adaptive-gen2-cache-utilization"></a>Adaptiv (Gen2) cache-användning
-När du har en stor arbets uppsättning kan du uppleva en låg cacheträffar och hög användning av cacheminnet. I det här scenariot ska du skala upp för att öka kapaciteten för cacheminnet och köra arbets belastningen igen. Mer information finns i följande [dokumentation](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-how-to-monitor-cache). 
+När du har en stor arbets uppsättning kan du uppleva en låg cacheträffar och hög användning av cacheminnet. I det här scenariot ska du skala upp för att öka kapaciteten för cacheminnet och köra arbets belastningen igen. Mer information finns i följande [dokumentation](./sql-data-warehouse-how-to-monitor-cache.md). 
 
 ## <a name="tempdb-contention"></a>TempDB-konkurrens
 
-Frågans prestanda kan försämras när det finns hög tempdb-konkurrens.  TempDB-konkurrens kan ske via användardefinierade temporära tabeller eller när det finns stora mängder data förflyttningar. I det här scenariot kan du skala för mer tempdb-allokering och [Konfigurera resurs klasser och arbets belastnings hantering](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-workload-management) för att ge mer minne till dina frågor. 
+Frågans prestanda kan försämras när det finns hög tempdb-konkurrens.  TempDB-konkurrens kan ske via användardefinierade temporära tabeller eller när det finns stora mängder data förflyttningar. I det här scenariot kan du skala för mer tempdb-allokering och [Konfigurera resurs klasser och arbets belastnings hantering](./sql-data-warehouse-workload-management.md) för att ge mer minne till dina frågor. 
 
 ## <a name="data-loading-misconfiguration"></a>Felaktig konfiguration av data inläsning
 
-Du bör alltid läsa in data från ett lagrings konto i samma region som din dedikerade SQL-pool för att minimera svars tiden. Använd [kopierings instruktionen för data inmatning med högt data flöde](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) och dela upp dina mellanlagrade filer i ditt lagrings konto för att maximera data flödet. Om du inte kan använda KOPIERINGs instruktionen kan du använda SqlBulkCopy-API: et eller BCP med en hög batchstorlek för bättre data flöde. Ytterligare vägledning för data inläsning finns i följande [dokumentation](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/guidance-for-loading-data). 
+Du bör alltid läsa in data från ett lagrings konto i samma region som din dedikerade SQL-pool för att minimera svars tiden. Använd [kopierings instruktionen för data inmatning med högt data flöde](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) och dela upp dina mellanlagrade filer i ditt lagrings konto för att maximera data flödet. Om du inte kan använda KOPIERINGs instruktionen kan du använda SqlBulkCopy-API: et eller BCP med en hög batchstorlek för bättre data flöde. Ytterligare vägledning för data inläsning finns i följande [dokumentation](./guidance-for-loading-data.md).

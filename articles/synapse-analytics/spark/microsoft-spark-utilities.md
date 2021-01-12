@@ -10,12 +10,12 @@ ms.date: 09/10/2020
 ms.author: ruxu
 ms.reviewer: ''
 zone_pivot_groups: programming-languages-spark-all-minus-sql
-ms.openlocfilehash: fee7e244e26a59a773a5d5c9c74e23acd4113ee6
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: c681195a60329320b875cc06919e9440b65eb9e5
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96446692"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120248"
 ---
 # <a name="introduction-to-microsoft-spark-utilities"></a>Introduktion till Microsoft Spark-verktyg
 
@@ -706,12 +706,12 @@ Env.Help()
 
 Få resultat:
 ```
-getUserName(): returns user name
-getUserId(): returns unique user id
-getJobId(): returns job id
-getWorkspaceName(): returns workspace name
-getPoolName(): returns Spark pool name
-getClusterId(): returns cluster id
+GetUserName(): returns user name
+GetUserId(): returns unique user id
+GetJobId(): returns job id
+GetWorkspaceName(): returns workspace name
+GetPoolName(): returns Spark pool name
+GetClusterId(): returns cluster id
 ```
 
 ### <a name="get-user-name"></a>Hämta användar namn
@@ -881,4 +881,4 @@ Env.GetClusterId()
 - [Kolla Synapse-exempel Notebooks](https://github.com/Azure-Samples/Synapse/tree/master/Notebooks)
 - [Snabb start: skapa en Apache Spark pool i Azure Synapse Analytics med hjälp av webb verktyg](../quickstart-apache-spark-notebook.md)
 - [Vad är Apache Spark i Azure Synapse Analytics](apache-spark-overview.md)
-- [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)
+- [Azure Synapse Analytics](../index.yml)

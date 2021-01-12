@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: a5e514602668c96d63562e45fb114cf9770a54a9
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 1fd7649cac6b636873ca529fe9780429d86697c6
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321491"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120911"
 ---
 # <a name="development-best-practices-for-synapse-sql"></a>Bästa metoder för utveckling för Synapse SQL
 
@@ -53,7 +53,7 @@ Det innebär att vi eliminerar åtgärder för data förflyttning.  Färre steg 
 
 Se följande länkar om du vill ha mer information om hur du väljer en distributions kolumn kan förbättra prestanda samt definiera en distribuerad tabell i WITH-satsen i instruktionen CREATE TABLEs.
 
-Se även [tabell översikt](develop-tables-overview.md), [tabell distribution](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json), [val av tabell distribution](https://blogs.msdn.microsoft.com/sqlcat/20../../choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service/), [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)och [CREATE TABLE som Välj](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
+Se även [tabell översikt](develop-tables-overview.md), [tabell distribution](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json), [val av tabell distribution](/archive/blogs/sqlcat/choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service), [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)och [CREATE TABLE som Välj](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
 
 ### <a name="do-not-over-partition"></a>Överpartitionera inte
 När du partitionerar data kan det vara effektivt att underhålla dina data genom att byta partitionering eller optimera genomsökningar med hjälp av partition Eli minering, så att för många partitioner kan sakta ned dina frågor.  Ofta är en partitionerings strategi för hög granularitet som fungerar bra på SQL Server kanske inte fungerar bra på en dedikerad SQL-pool.  
@@ -147,7 +147,7 @@ Om möjligt kan du förbereda filer för bättre prestanda:
 - Det är önskvärt att ha lika stora filer för en enskild OpenRowSet-sökväg eller en extern tabell plats.
 - Partitionera dina data genom att lagra partitioner i olika mappar eller fil namn – kontrol lera [Använd fil namn och fil Sök väg funktioner för att ange specifika partitioner](#use-fileinfo-and-filepath-functions-to-target-specific-partitions).
 
-### <a name="use-fileinfo-and-filepath-functions-to-target-specific-partitions"></a>Använda fileinfo-och fil Sök vägar för att fokusera på specifika partitioner
+### <a name="use-fileinfo-and-filepath-functions-to-target-specific-partitions"></a>Använd funktionerna fileinfo och filepath till att fokusera på specifika partitioner
 
 Data är ofta ordnade i partitioner. Du kan instruera Server lös SQL-poolen att fråga specifika mappar och filer. Detta minskar antalet filer och mängden data som frågan behöver läsa och bearbeta. 
 
@@ -167,7 +167,6 @@ När CETAS genererar Parquet-filer skapas statistik automatiskt när den första
 
 ### <a name="next-steps"></a>Nästa steg
 
-Om du behöver information som inte anges i den här artikeln använder du funktionen **Sök efter dokument** till vänster på den här sidan för att söka i alla dokument i SQL-poolen.  På [sidan Microsoft Q&en fråga för Azure Synapse Analytics](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html) kan du ställa frågor till andra användare och till produkt gruppen för Azure Synapse Analytics. Vi övervakar aktivt detta forum för att kontrollera att dina frågor besvaras antingen av en annan användare eller av någon av oss.  
+Om du behöver information som inte anges i den här artikeln använder du funktionen **Sök efter dokument** till vänster på den här sidan för att söka i alla dokument i SQL-poolen.  På [sidan Microsoft Q&en fråga för Azure Synapse Analytics](/answers/topics/azure-synapse-analytics.html) kan du ställa frågor till andra användare och till produkt gruppen för Azure Synapse Analytics. Vi övervakar aktivt detta forum för att kontrollera att dina frågor besvaras antingen av en annan användare eller av någon av oss.  
 
 Om du föredrar att ställa dina frågor på Stack Overflow har vi också ett [Azure Synapse Analytics Stack Overflow-forum](https://stackoverflow.com/questions/tagged/azure-sqldw).
- 

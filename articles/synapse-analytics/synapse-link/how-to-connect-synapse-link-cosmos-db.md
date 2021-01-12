@@ -9,14 +9,14 @@ ms.subservice: synapse-link
 ms.date: 04/21/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0e4bcc13a2eaddbf394d8468b29eeff475119e2d
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 5316f74ee38f597592ae4582aef31837f0f05fda
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96459028"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98119840"
 ---
-# <a name="connect-to-azure-synapse-link-for-azure-cosmos-db"></a>Anslut till Azure Synapse-länken för Azure Cosmos DB
+# <a name="connect-to-azure-synapse-link-for-azure-cosmos-db"></a>Ansluta till Azure Synapse Link för Azure Cosmos DB
 
 Den här artikeln beskriver hur du kommer åt en Azure Cosmos DB databas från Azure Synapse Analytics Studio med Azure Synapse-länken.
 
@@ -24,8 +24,8 @@ Den här artikeln beskriver hur du kommer åt en Azure Cosmos DB databas från A
 
 Innan du ansluter en Azure Cosmos DB databas till din arbets yta behöver du:
 
-* Befintliga Azure Cosmos DB databasen eller skapa ett nytt konto genom att följa stegen i [snabb start: hantera ett Azure Cosmos DB konto](https://docs.microsoft.com/azure/cosmos-db/how-to-manage-database-account).
-* Befintlig Azure Synapse-arbetsyta eller skapa en ny arbets yta genom att följa stegen i [snabb start: skapa en Synapse-arbetsyta](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-workspace).
+* Befintliga Azure Cosmos DB databasen eller skapa ett nytt konto genom att följa stegen i [snabb start: hantera ett Azure Cosmos DB konto](../../cosmos-db/how-to-manage-database-account.md).
+* Befintlig Azure Synapse-arbetsyta eller skapa en ny arbets yta genom att följa stegen i [snabb start: skapa en Synapse-arbetsyta](../quickstart-create-workspace.md).
 
 > [!IMPORTANT]
 > Azure Synapse-länken för Azure Cosmos DB stöds för närvarande för arbets ytor som inte har något hanterat virtuellt nätverk aktiverat.

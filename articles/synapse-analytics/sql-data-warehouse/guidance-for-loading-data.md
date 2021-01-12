@@ -11,12 +11,12 @@ ms.date: 11/20/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 60a995f78b9b696197d9bd45e04becb19e4129f0
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: c91310d9d1e67dd77098ee13a87190ee6d411607
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653069"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120112"
 ---
 # <a name="best-practices-for-loading-data-using-dedicated-sql-pools-in-azure-synapse-analytics"></a>Metod tips för att läsa in data med dedikerade SQL-pooler i Azure Synapse Analytics
 
@@ -47,7 +47,7 @@ I det här exemplet skapas en inläsnings användare som klassificeras till en s
    CREATE LOGIN loader WITH PASSWORD = 'a123STRONGpassword!';
 ```
 
-Anslut till den dedikerade SQL-poolen och skapa en användare. Följande kod förutsätter att du är ansluten till databasen som heter mySampleDataWarehouse. Det visar hur du skapar en användare som kallas Loader och ger användaren behörighet att skapa tabeller och läsa in med hjälp av [kopierings instruktionen](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest). Sedan klassificerar den användaren till arbets belastnings gruppen DataLoads med maximalt antal resurser. 
+Anslut till den dedikerade SQL-poolen och skapa en användare. Följande kod förutsätter att du är ansluten till databasen som heter mySampleDataWarehouse. Det visar hur du skapar en användare som kallas Loader och ger användaren behörighet att skapa tabeller och läsa in med hjälp av [kopierings instruktionen](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest). Sedan klassificerar den användaren till arbets belastnings gruppen DataLoads med maximalt antal resurser. 
 
 ```sql
    -- Connect to the dedicated SQL pool
@@ -179,5 +179,5 @@ Det behövs inga andra ändringar i underliggande externa datakällor.
 ## <a name="next-steps"></a>Nästa steg
 
 - Mer information om KOPIERINGs instruktionen eller polybasen när du utformar en process för att extrahera, läsa in och transformera (ELT) finns i [design ELT for Azure Synapse Analytics](design-elt-data-loading.md).
-- För en inläsnings kurs [använder du kopierings instruktionen för att läsa in data från Azure Blob Storage till SYNAPSE SQL](load-data-from-azure-blob-storage-using-polybase.md).
+- För en inläsnings kurs [använder du kopierings instruktionen för att läsa in data från Azure Blob Storage till SYNAPSE SQL](./load-data-from-azure-blob-storage-using-copy.md).
 - Om du vill övervaka datainläsningen läser du [Övervaka arbetsbelastningen med datahanteringsvyer](sql-data-warehouse-manage-monitor.md).

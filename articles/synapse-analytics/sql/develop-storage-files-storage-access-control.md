@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: edb1d419900147b586ba1ff257d4307b237be537
-ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
-ms.translationtype: HT
+ms.openlocfilehash: e693bd15e5255fda135a7a1dc416dd67f24f7f25
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97746736"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120418"
 ---
 # <a name="control-storage-account-access-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Kontrol lera åtkomsten till lagrings kontot för SQL-poolen utan server i Azure Synapse Analytics
 
@@ -24,7 +24,7 @@ En server utan SQL-pool läser filer direkt från Azure Storage. Behörigheter f
 
 Den här artikeln beskriver de typer av autentiseringsuppgifter som du kan använda och hur sökning efter autentiseringsuppgifter registreras för SQL-och Azure AD-användare.
 
-## <a name="supported-storage-authorization-types"></a>Typer av lagringspooler som stöds
+## <a name="supported-storage-authorization-types"></a>Lagringsauktoriseringstyper som stöds
 
 En användare som har loggat in på en server lös SQL-pool måste ha behörighet att komma åt och fråga filerna i Azure Storage om filerna inte är offentligt tillgängliga. Du kan använda tre typer av autentisering för att komma åt icke-offentlig lagring – [användar identitet](?tabs=user-identity), [delad åtkomst-signatur](?tabs=shared-access-signature)och [hanterad identitet](?tabs=managed-identity).
 
@@ -63,7 +63,7 @@ Innan du får åtkomst till data måste Azure Storages administratören bevilja 
 
 ### <a name="anonymous-access"></a>[Anonym åtkomst](#tab/public-access)
 
-Du kan komma åt offentligt tillgängliga filer som placerats på Azure Storage-konton som [tillåter anonym åtkomst](/azure/storage/blobs/storage-manage-access-to-resources).
+Du kan komma åt offentligt tillgängliga filer som placerats på Azure Storage-konton som [tillåter anonym åtkomst](../../storage/blobs/anonymous-read-access-configure.md).
 
 ---
 
@@ -90,7 +90,7 @@ Du kan använda följande kombinationer av auktoriserings-och Azure Storage type
 \* SAS-token och Azure AD-identitet kan användas för att få åtkomst till lagring som inte skyddas med brand väggen.
 
 
-### <a name="querying-firewall-protected-storage"></a>Fråga om skyddad lagring i brand väggen
+### <a name="querying-firewall-protected-storage"></a>Köra frågor mot en lagringsplats som skyddas av en brandvägg
 
 När du använder lagring som skyddas med brand väggen kan du använda **användar identitet** eller **hanterad identitet**.
 
@@ -101,7 +101,7 @@ För åtkomst till lagring som skyddas med brand väggen via användar identitet
 
 Följ dessa steg om du vill konfigurera din brand vägg för lagrings kontot och lägga till ett undantag för Synapse-arbetsytan.
 
-1. Öppna PowerShell eller [Installera PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-powershell-core-on-windows?view=powershell-7.1&preserve-view=true )
+1. Öppna PowerShell eller [Installera PowerShell](/powershell/scripting/install/installing-powershell-core-on-windows?preserve-view=true&view=powershell-7.1)
 2. Installera den uppdaterade AZ. Storage-modul: 
     ```powershell
     Install-Module -Name Az.Storage -RequiredVersion 3.0.1-preview -AllowPrerelease

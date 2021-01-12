@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: amqp, devx-track-azurecli
-ms.openlocfilehash: bc62590b9517b2c6d16fdf2637990b845248d2ec
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 74d77d8c81455116cec861bf6704c6cb96526561
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96932361"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121098"
 ---
 # <a name="tutorial-configure-an-iot-edge-device"></a>Självstudie: Konfigurera en IoT Edge enhet
 
@@ -30,7 +30,7 @@ I det här avsnittet av självstudien får du lära dig att:
 > * Skapa en IoT Edge enhet.
 > * Skapa en virtuell Azure-dator för att simulera din IoT Edge-enhet.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Den här artikeln ingår i en serie för självstudier om hur du använder Azure Machine Learning på IoT Edge. Varje artikel i serien bygger på arbetet i föregående artikel. Om du har kommit till den här artikeln direkt kan du gå till den [första artikeln](tutorial-machine-learning-edge-01-intro.md) i serien.
 
@@ -81,7 +81,7 @@ I det här avsnittet skapar vi de självsignerade certifikaten med hjälp av en 
 
 ## <a name="upload-certificates-to-azure-key-vault"></a>Ladda upp certifikat till Azure Key Vault
 
-För att lagra våra certifikat säkert och för att göra dem tillgängliga från flera enheter laddar vi upp certifikaten till Azure Key Vault. Som du kan se i listan ovan har vi två typer av certifikatfiler: PFX och PEM. Vi kommer att behandla PFX-filen som Key Vault certifikat som ska överföras till Key Vault. PEM-filerna är oformaterad text och vi kommer att behandla dem som Key Vault hemligheter. Vi kommer att använda den Key Vault som är kopplad till arbets ytan Azure Machine Learning som vi skapade genom att köra [Azure Notebooks](tutorial-machine-learning-edge-04-train-model.md#run-azure-notebooks).
+För att lagra våra certifikat säkert och för att göra dem tillgängliga från flera enheter laddar vi upp certifikaten till Azure Key Vault. Som du kan se i listan ovan har vi två typer av certifikatfiler: PFX och PEM. Vi kommer att behandla PFX-filen som Key Vault certifikat som ska överföras till Key Vault. PEM-filerna är oformaterad text och vi kommer att behandla dem som Key Vault hemligheter. Vi kommer att använda den Key Vault som är kopplad till arbets ytan Azure Machine Learning som vi skapade genom att köra [antecknings böckerna för Jupyter](tutorial-machine-learning-edge-04-train-model.md#run-jupyter-notebooks).
 
 1. Från [Azure Portal](https://portal.azure.com)navigerar du till arbets ytan Azure Machine Learning.
 

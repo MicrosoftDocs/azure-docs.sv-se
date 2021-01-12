@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 91f612ba7f19deb739dbb6004e275ea044a5a3d3
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 45e1ae5b8a1084334b7596f62c272e16294c4c14
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462556"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98118769"
 ---
 # <a name="query-nested-types-in-parquet-and-json-files-by-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Fråga kapslade typer i Parquet-och JSON-filer med hjälp av Server lös SQL-pool i Azure Synapse Analytics
 
@@ -24,7 +24,7 @@ Kapslade typer är komplexa strukturer som representerar objekt eller matriser. 
 - Hierarkiska [JSON-filer](query-json-files.md)där du kan läsa komplexa JSON-dokument som en enda kolumn.
 - Azure Cosmos DB samlingar (för närvarande med en överbelastad, offentlig för hands version), där varje dokument kan innehålla komplexa kapslade egenskaper.
 
-SQL-pool utan server formaterar alla kapslade typer som JSON-objekt och matriser. Så du kan [extrahera eller ändra komplexa objekt med hjälp av JSON](https://docs.microsoft.com/sql/relational-databases/json/validate-query-and-change-json-data-with-built-in-functions-sql-server) Functions eller [parsa JSON-data med hjälp av openjson-funktionen](https://docs.microsoft.com/sql/relational-databases/json/convert-json-data-to-rows-and-columns-with-openjson-sql-server). 
+SQL-pool utan server formaterar alla kapslade typer som JSON-objekt och matriser. Så du kan [extrahera eller ändra komplexa objekt med hjälp av JSON](/sql/relational-databases/json/validate-query-and-change-json-data-with-built-in-functions-sql-server) Functions eller [parsa JSON-data med hjälp av openjson-funktionen](/sql/relational-databases/json/convert-json-data-to-rows-and-columns-with-openjson-sql-server). 
 
 Här är ett exempel på en fråga som extraherar skalära värden och objekt värden från [COVID-19 Open Research data uppsättning JSON-](https://azure.microsoft.com/services/open-datasets/catalog/covid-19-open-research/) filen, som innehåller kapslade objekt: 
 
@@ -121,7 +121,7 @@ Resultatet visas i följande tabell:
 | --- | --- | --- | --- |
 | Extra information ett eko-epidemiolo... | Julien   | – Bild S1: Phylogeny av... | `{    "paper_id": "000b7d1517ceebb34e1e3e817695b6de03e2fa78",    "metadata": {        "title": "Supplementary Information An eco-epidemiological study of Morbilli-related paramyxovirus infection in Madagascar bats reveals host-switching as the dominant macro-evolutionary mechanism",        "authors": [            {                "first": "Julien"` |
 
-Till skillnad från JSON-filer, som i de flesta fall returnerar en enda kolumn som innehåller ett komplext JSON-objekt, kan Parquet-filer ha flera komplexa kolumner. Du kan läsa egenskaperna för kapslade kolumner genom att använda `JSON_VALUE` funktionen i varje kolumn. `OPENROWSET` gör att du kan ange sökvägar för de kapslade egenskaperna i en `WITH` sats direkt. Du kan ange sökvägar som namn på en kolumn, eller så kan du lägga till ett [JSON Path-uttryck](https://docs.microsoft.com/sql/relational-databases/json/json-path-expressions-sql-server) efter kolumn typen.
+Till skillnad från JSON-filer, som i de flesta fall returnerar en enda kolumn som innehåller ett komplext JSON-objekt, kan Parquet-filer ha flera komplexa kolumner. Du kan läsa egenskaperna för kapslade kolumner genom att använda `JSON_VALUE` funktionen i varje kolumn. `OPENROWSET` gör att du kan ange sökvägar för de kapslade egenskaperna i en `WITH` sats direkt. Du kan ange sökvägar som namn på en kolumn, eller så kan du lägga till ett [JSON Path-uttryck](/sql/relational-databases/json/json-path-expressions-sql-server) efter kolumn typen.
 
 Följande fråga läser filen structExample. Parquet och visar hur man Surface-element i en kapslad kolumn. Det finns två sätt att referera till ett kapslat värde:
 - Genom att ange det kapslade värdet Path-uttrycket efter typ specifikationen.

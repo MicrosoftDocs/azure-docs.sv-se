@@ -9,12 +9,12 @@ ms.subservice: sql-dw
 ms.date: 11/20/2020
 ms.author: Kevin
 ms.custom: azure-synapse
-ms.openlocfilehash: 59195bba69bb343e55cfcb7342400d93dcce60c0
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: 2920c96d6a2e505347edb51780101327cb884e08
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94920756"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120180"
 ---
 # <a name="quickstart-create-a-synapse-sql-pool-with-azure-cli"></a>Snabb start: skapa en Synapse SQL-pool med Azure CLI
 
@@ -22,7 +22,7 @@ Skapa en Synapse SQL-pool (informations lager) i Azure Synapse Analytics med hj�
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
-## <a name="getting-started"></a>Komma igång
+## <a name="getting-started"></a>Kom igång
 
 Använd de här kommandona för att logga in på Azure och konfigurera en resurs grupp.
 
@@ -134,4 +134,4 @@ az group delete --ResourceGroupName MyResourceGroup
 
 ## <a name="next-steps"></a>Nästa steg
 
-Nu har du skapat en SQL-pool, skapat en brand Väggs regel och anslutit till din SQL-pool. Om du vill veta mer kan du fortsätta till artikeln [Läs in data i SQL-poolen](load-data-from-azure-blob-storage-using-polybase.md) .
+Nu har du skapat en SQL-pool, skapat en brand Väggs regel och anslutit till din SQL-pool. Om du vill veta mer kan du fortsätta till artikeln [Läs in data i SQL-poolen](./load-data-from-azure-blob-storage-using-copy.md) .

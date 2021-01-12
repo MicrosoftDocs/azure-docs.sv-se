@@ -6,24 +6,24 @@ ms.author: rymend
 ms.topic: quickstart
 ms.service: azure-education
 ms.subservice: education-hub
-ms.date: 06/30/2020
-ms.openlocfilehash: edb0de9f235565d09c81ce4466de59698a321f56
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 01/07/2021
+ms.openlocfilehash: 4ff91949c42b9a0e33999b7d0dc21fd24da7cdd9
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87102257"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120350"
 ---
 # <a name="enroll-or-renew-an-azure-dev-tools-for-teaching-subscription"></a>Registrera eller förnya ett Azure dev tools för utbildning av prenumeration
 
 I den här artikeln beskrivs processen för att registrera i Azure dev tools för att lära sig och skapa en prenumeration.
 
-## <a name="purchase-a-new-subscription"></a>Köp en ny prenumeration
+## <a name="enroll-a-new-subscription"></a>Registrera en ny prenumeration
 
 1. Gå till [webb sidan för Azure dev tools för utbildning](https://azure.microsoft.com/education/institutions/).
 1. Välj knappen **Registrera dig** . 
 1. Välj **Registrera eller förnya** i Azure dev tools för att lära dig banderoll.
-1. Välj den typ av prenumeration som du köper:
+1. Välj den typ av prenumeration som du registrerar:
     - Ansök om en ny prenumeration
     - Fortsätt ett program som du har startat
  
@@ -31,21 +31,17 @@ I den här artikeln beskrivs processen för att registrera i Azure dev tools fö
 
 1. Välj knappen **Spara**.
 
-1. Slutför din **institutions information**om registreringen för första gången. Om du förnyar den här informationen fylls den här informationen i.
+1. Slutför din **institutions information** om registreringen för första gången. Om du förnyar den här informationen fylls den här informationen i.
 
-    :::image type="content" source="media/enroll-renew-subscription/application-institution-information.png" alt-text="Fel meddelande för inloggning." border="false":::
-    
-1. Fyll i din **fakturerings information**. Om din institution är en del av ett volym licens avtal kan du mata in ditt volym licens avtals nummer. Om du registrerar dig för en ny prenumeration och debiteras av något annat än kredit kort kan det uppstå en fördröjning i att få åtkomst till din prenumeration medan betalnings processen sker. Du får e-postmeddelanden som uppdaterar betalnings förloppet.
-
-    :::image type="content" source="media/enroll-renew-subscription/application-billing-information.png" alt-text="Fel meddelande för inloggning." border="false":::
-    
+    :::image type="content" source="media/enroll-renew-subscription/application-institution-information.png" alt-text="Ange information om institutionen." border="false":::
+        
 1. Välj **prenumerations planen** och bekräfta prenumerationens **prenumerations administratör** . E-postdomänen för prenumerations administratören gör det möjligt för studenter på samma domän att få enkel åtkomst till att hämta sina program varu förmåner.
 
-    :::image type="content" source="media/enroll-renew-subscription/application-select-subscription-plan.png" alt-text="Fel meddelande för inloggning." border="false":::
+    :::image type="content" source="media/enroll-renew-subscription/application-select-subscription-plan.png" alt-text="Välj prenumerations plan." border="false":::
     
-1. Bekräfta all inköps information och klicka på **Placera order**. Bekräftelse meddelanden skickas till din inkorg med uppdateringar av betalnings status och eventuellt nästa steg.
+1. Bekräfta all registrerings information och klicka på **Placera order**. Bekräftelse meddelanden skickas till din inkorg med uppdateringar av registrerings status och eventuella efterföljande steg.
 
-    :::image type="content" source="media/enroll-renew-subscription/application-confirm-place-order.png" alt-text="Fel meddelande för inloggning." border="false":::
+    :::image type="content" source="media/enroll-renew-subscription/application-confirm-place-order.png" alt-text="Bekräfta beställningen." border="false":::
 
 ## <a name="renew-an-existing-subscription"></a>Förnya en befintlig prenumeration
 
@@ -65,7 +61,7 @@ Du kan slutföra förnyelse processen så tidigt som 90 dagar innan förfallo da
 
 1. Välj **prenumerations planen** och bekräfta prenumerationens **prenumerations administratör** .
 
-1. Bekräfta all inköps information och klicka på **Placera order**. Bekräftelse meddelanden skickas till din inkorg med uppdateringar av betalnings status och eventuellt nästa steg.
+1. Bekräfta all registrerings information och klicka på **Placera order**. Bekräftelse meddelanden skickas till din inkorg med uppdateringar av registrerings status och eventuella efterföljande steg.
 
 
 ## <a name="next-steps"></a>Nästa steg   

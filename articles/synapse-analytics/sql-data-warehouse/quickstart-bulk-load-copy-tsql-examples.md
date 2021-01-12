@@ -9,16 +9,16 @@ ms.subservice: sql-dw
 ms.date: 07/10/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: de446209104c113b10346645f79b461239c3efab
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 25c692ea9a2dce4723472f6812ac46d82b2b318d
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96901287"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120996"
 ---
 # <a name="securely-load-data-using-synapse-sql"></a>Läs in data på ett säkert sätt med Synapse SQL
 
-Den här artikeln beskriver och innehåller exempel på mekanismer för säker autentisering för [kopierings instruktionen](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest). KOPIERINGs instruktionen är det mest flexibla och säkra sättet för Mass inläsning av data i Synapse SQL.
+Den här artikeln beskriver och innehåller exempel på mekanismer för säker autentisering för [kopierings instruktionen](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest). KOPIERINGs instruktionen är det mest flexibla och säkra sättet för Mass inläsning av data i Synapse SQL.
 ## <a name="supported-authentication-mechanisms"></a>Autentiseringsmekanismer som stöds
 
 I följande matris beskrivs de autentiseringsmetoder som stöds för varje filtyp och lagrings konto. Detta gäller för käll lagrings platsen och fel filens plats.
@@ -72,7 +72,7 @@ WITH (
 
 Hanterad identitets autentisering krävs när ditt lagrings konto är kopplat till ett VNet. 
 
-### <a name="prerequisites"></a>Krav
+### <a name="prerequisites"></a>Förutsättningar
 
 1. Installera Azure PowerShell med hjälp av den här [guiden](/powershell/azure/install-az-ps?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
 2. Om du har ett konto av typen generell användning v1 eller bloblagring måste du först uppgradera till generell användning v2 med hjälp av den här [guiden](../../storage/common/storage-account-upgrade.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
@@ -136,7 +136,7 @@ Hanterad identitets autentisering krävs när ditt lagrings konto är kopplat ti
 
     ![Bevilja Azure RBAC-behörighet att läsa in](./media/quickstart-bulk-load-copy-tsql-examples/rbac-load-permissions.png)
 
-2. Konfigurera Azure AD-autentisering genom att gå igenom följande [dokumentation](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure?tabs=azure-powershell#create-an-azure-ad-administrator-for-azure-sql-server). 
+2. Konfigurera Azure AD-autentisering genom att gå igenom följande [dokumentation](../../azure-sql/database/authentication-aad-configure.md?tabs=azure-powershell). 
 
 3. Anslut till din SQL-pool med Active Directory där du kan köra COPY-instruktionen utan att ange några autentiseringsuppgifter:
 
@@ -152,11 +152,11 @@ Hanterad identitets autentisering krävs när ditt lagrings konto är kopplat ti
 ## <a name="e-service-principal-authentication"></a>E. Autentisering av tjänstens huvudnamn
 #### <a name="steps"></a>Steg
 
-1. [Skapa ett Azure Active Directory program](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application)
-2. [Hämta program-ID](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)
-3. [Hämta autentiseringsnyckel](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#create-a-new-application-secret)
-4. [Hämta v1 OAuth 2,0-token-slutpunkt](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#step-4-get-the-oauth-20-token-endpoint-only-for-java-based-applications)
-5. [Tilldela läs-, skriv-och körnings behörighet till ditt Azure AD-program](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#step-3-assign-the-azure-ad-application-to-the-azure-data-lake-storage-gen1-account-file-or-folder) på ditt lagrings konto
+1. [Skapa ett Azure Active Directory program](../..//active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)
+2. [Hämta program-ID](../..//active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)
+3. [Hämta autentiseringsnyckel](../../active-directory/develop/howto-create-service-principal-portal.md#authentication-two-options)
+4. [Hämta v1 OAuth 2,0-token-slutpunkt](../../data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory.md?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json#step-4-get-the-oauth-20-token-endpoint-only-for-java-based-applications)
+5. [Tilldela läs-, skriv-och körnings behörighet till ditt Azure AD-program](../../data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory.md?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json#step-3-assign-the-azure-ad-application-to-the-azure-data-lake-storage-gen1-account-file-or-folder) på ditt lagrings konto
 6. Nu kan du köra COPY-instruktionen:
 
     ```sql
@@ -176,5 +176,5 @@ Hanterad identitets autentisering krävs när ditt lagrings konto är kopplat ti
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Mer information finns i artikeln om att [Kopiera instruktionen](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest#syntax)
-- Läs artikeln [Översikt över data inläsning](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/design-elt-data-loading#what-is-elt) för att läsa in metod tips
+- Mer information finns i artikeln om att [Kopiera instruktionen](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest#syntax)
+- Läs artikeln [Översikt över data inläsning](./design-elt-data-loading.md#what-is-elt) för att läsa in metod tips

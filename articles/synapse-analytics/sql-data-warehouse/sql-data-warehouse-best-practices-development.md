@@ -11,12 +11,12 @@ ms.date: 09/04/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f8db19b209ddefebd4a297f18fb9b178fcf40f21
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e8826dff6d347f78625272a5620a1f168b8804db
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89457914"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120044"
 ---
 # <a name="development-best-practices-for-synapse-sql-pool"></a>Bästa metoder för utveckling för Synapse SQL-pool
 
@@ -55,7 +55,7 @@ Om du till exempel har en ordertabell, som distribueras efter order_id, och en t
 
 När du läser in en distribuerad tabell ser du till att inkommande data inte sorteras baserat på distributionsnyckeln eftersom det gör att inläsningarna tar längre tid.  De artiklar som följer ger ytterligare information om hur du kan förbättra prestanda genom att välja en distributions kolumn och definiera en distribuerad tabell i WITH-satsen i instruktionen CREATE TABLEs.
 
-Se även [tabell översikt](sql-data-warehouse-tables-overview.md), [tabell distribution](sql-data-warehouse-tables-distribute.md), [val av tabell distribution](https://blogs.msdn.microsoft.com/sqlcat/20../../choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service/), [CREATE TABLE](sql-data-warehouse-tables-overview.md)och [CREATE TABLE som Välj](sql-data-warehouse-develop-ctas.md)
+Se även [tabell översikt](sql-data-warehouse-tables-overview.md), [tabell distribution](sql-data-warehouse-tables-distribute.md), [val av tabell distribution](/archive/blogs/sqlcat/choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service), [CREATE TABLE](sql-data-warehouse-tables-overview.md)och [CREATE TABLE som Välj](sql-data-warehouse-develop-ctas.md)
 
 ## <a name="do-not-over-partition"></a>Överpartitionera inte
 
@@ -120,7 +120,7 @@ Se även [tabell index](sql-data-warehouse-tables-index.md), [columnstore-index,
 
 Om du inte hittar det du letar efter i den här artikeln kan du prova att använda "Sök efter dokument" på vänster sida av den här sidan för att söka i alla Azure Synapse-dokument.  
 
-På [sidan Microsoft Q&en fråga för Azure Synapse](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html) kan du skicka frågor till andra användare och till produkt gruppen för Azure Synapse.  Vi övervakar aktivt detta forum för att kontrollera att dina frågor besvaras antingen av en annan användare eller av någon av oss.  
+På [sidan Microsoft Q&en fråga för Azure Synapse](/answers/topics/azure-synapse-analytics.html) kan du skicka frågor till andra användare och till produkt gruppen för Azure Synapse.  Vi övervakar aktivt detta forum för att kontrollera att dina frågor besvaras antingen av en annan användare eller av någon av oss.  
 
 Om du föredrar att ställa dina frågor på Stack Overflow har vi också ett [Azure Synapse Analytics Stack Overflow-forum](https://stackoverflow.com/questions/tagged/azure-sqldw).
 

@@ -10,12 +10,12 @@ ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
 ms.custom: has-adal-ref
-ms.openlocfilehash: fb8aad52eeaef2366afe28aa71059b7f8f780501
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 511d5841652b1f7b6487a42341ec392cb86d2b3a
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843306"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120384"
 ---
 # <a name="use-multi-factor-aad-authentication-with-synapse-sql-ssms-support-for-mfa"></a>Använd Multi-Factor AAD-autentisering med Synapse SQL (SSMS-stöd för MFA)
 
@@ -44,7 +44,7 @@ Den interaktiva metoden är att även har stöd för Azure AD Multi-Factor Authe
 
 - `Active Directory - Universal with MFA`
 
-Azure AD MFA hjälper till att skydda åtkomsten till data och program samtidigt som du kan möta användarnas behov av en enkel inloggnings process. Den ger stark autentisering med en rad enkla verifierings alternativ (telefonsamtal, textmeddelande, smartkort med PIN-kod eller meddelande för mobilapp), så att användarna kan välja den metod de föredrar. Interaktiv MFA med Azure AD kan resultera i en popup-dialogruta för verifiering.
+Azure AD MFA bidrar till att skydda åtkomsten till data och program och tillgodoser samtidigt användarens önskemål om en enkel inloggningsprocess. Den ger stark autentisering med en rad enkla verifierings alternativ (telefonsamtal, textmeddelande, smartkort med PIN-kod eller meddelande för mobilapp), så att användarna kan välja den metod de föredrar. Interaktiv MFA med Azure AD kan resultera i en popup-dialogruta för verifiering.
 
 En beskrivning av Multi-Factor Authentication finns i [Multi-Factor Authentication](../../active-directory/authentication//concept-mfa-howitworks.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
 
@@ -71,7 +71,7 @@ Om du kör SSMS 18. x eller senare behövs inte längre AD-domännamnet eller kl
    ![MFA-Tenant-SSMS](./media/mfa-authentication/mfa-no-tenant-ssms.png)
 
 ### <a name="azure-ad-business-to-business-support"></a>Support för Azure AD Business till företag   
-Azure AD-användare som stöds för Azure AD B2B-scenarier som gäst användare (se [Vad är Azure B2B-samarbete](../../active-directory/b2b/what-is-b2b.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) kan endast ansluta till SYNAPSE-SQL som en del av medlemmarna i en grupp som skapats i den aktuella Azure AD och mappas manuellt med Transact-SQL- `CREATE USER` uttrycket i en specifik databas. 
+Azure AD-användare som stöds för Azure AD B2B-scenarier som gäst användare (se [Vad är Azure B2B-samarbete](../../active-directory/external-identities/what-is-b2b.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json) kan endast ansluta till SYNAPSE-SQL som en del av medlemmarna i en grupp som skapats i den aktuella Azure AD och mappas manuellt med Transact-SQL- `CREATE USER` uttrycket i en specifik databas. 
 
 Om `steve@gmail.com` till exempel är inbjuden till Azure AD `contosotest` (med Azure AD-domänen `contosotest.onmicrosoft.com` ) måste en Azure AD-grupp, till exempel, `usergroup` skapas i Azure AD som innehåller `steve@gmail.com` medlemmen. Sedan måste den här gruppen skapas för en särskild databas (dvs. databas) av Azure AD SQL-administratören eller Azure AD DBO genom att köra ett Transact-SQL- `CREATE USER [usergroup] FROM EXTERNAL PROVIDER` uttryck. 
 
@@ -92,5 +92,4 @@ Som gäst användare `steve@gmail.com` måste markera kryss rutan och lägga til
 - Active Directory-autentiseringsbibliotek-versionen (ADAL) för Universal Authentication har uppdaterats till den senaste ADAL.dll 3.13.9 tillgänglig version. Se [Active Directory-autentiseringsbibliotek 3.14.1](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/).  
 
 ## <a name="next-steps"></a>Nästa steg
-Mer information finns i avsnittet [ansluta till SYNAPSE SQL med SQL Server Management Studio](get-started-ssms.md) artikeln. 
-
+Mer information finns i avsnittet [ansluta till SYNAPSE SQL med SQL Server Management Studio](get-started-ssms.md) artikeln.

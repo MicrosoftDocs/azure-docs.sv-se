@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/11/2020
-ms.openlocfilehash: be7c6ec9dbc577143e6c7219580f42c876f536bc
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 563edae0292062e1ed7f216c69aeeb84ef0fa7a8
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499976"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98119483"
 ---
 # <a name="how-to-index-cosmos-db-data-using-an-indexer-in-azure-cognitive-search"></a>Så här indexerar du Cosmos DB-data med hjälp av en indexerare i Azure Cognitive Search 
 
@@ -137,7 +137,7 @@ Tidigare i den här artikeln beskrivs att [Azure Cosmos DB indexering](../cosmos
 
 ### <a name="1---assemble-inputs-for-the-request"></a>1 – Sammanställ indata för begäran
 
-För varje begäran måste du ange tjänst namnet och administratörs nyckeln för Azure Kognitiv sökning (i POST huvudet) och lagrings kontots namn och nyckel för Blob Storage. Du kan använda [Postman eller Visual Studio Code](search-get-started-rest.md) för att skicka HTTP-förfrågningar till Azure kognitiv sökning.
+För varje begäran måste du ange tjänst namnet och administratörs nyckeln för Azure Kognitiv sökning (i POST huvudet) och lagrings kontots namn och nyckel för Blob Storage. Du kan använda [Postman](search-get-started-rest.md) eller [Visual Studio Code](search-get-started-vs-code.md) för att skicka HTTP-förfrågningar till Azure kognitiv sökning.
 
 Kopiera följande fyra värden till anteckningar så att du kan klistra in dem i en förfrågan:
 
@@ -186,7 +186,7 @@ Bröd texten i begäran innehåller definitionen av data källan, som ska inneh�
 | **Namn** | Krävs. Välj ett namn som ska representera ditt data käll objekt. |
 |**bastyp**| Krävs. Måste vara `cosmosdb` . |
 |**klientautentiseringsuppgifter** | Krävs. Måste antingen följa Cosmos DB anslutningens sträng format eller ett format för hanterad identitets anslutnings sträng.<br/><br/>För **SQL-samlingar** kan anslutnings strängar följa något av följande format: <li>`AccountEndpoint=https://<Cosmos DB account name>.documents.azure.com;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>`<li>En anslutnings sträng för hanterad identitet med följande format som inte innehåller någon konto nyckel: `ResourceId=/subscriptions/<your subscription ID>/resourceGroups/<your resource group name>/providers/Microsoft.DocumentDB/databaseAccounts/<your cosmos db account name>/;` . Om du vill använda det här anslutnings sträng formatet följer du anvisningarna för att konfigurera [en Indexer-anslutning till en Cosmos DB-databas med hjälp av en hanterad identitet](search-howto-managed-identities-cosmos-db.md).<br/><br/>För version 3,2 och version 3,6 **MongoDB samlingar** används något av följande format för anslutnings strängen: <li>`AccountEndpoint=https://<Cosmos DB account name>.documents.azure.com;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDb`<li>En anslutnings sträng för hanterad identitet med följande format som inte innehåller någon konto nyckel: `ResourceId=/subscriptions/<your subscription ID>/resourceGroups/<your resource group name>/providers/Microsoft.DocumentDB/databaseAccounts/<your cosmos db account name>/;ApiKind=MongoDb;` . Om du vill använda det här anslutnings sträng formatet följer du anvisningarna för att konfigurera [en Indexer-anslutning till en Cosmos DB-databas med hjälp av en hanterad identitet](search-howto-managed-identities-cosmos-db.md).<br/><br/>Registrera dig för för [hands versionen](https://aka.ms/azure-cognitive-search/indexer-preview) av **Gremlin-diagram och Cassandra-tabeller** för att få åtkomst till för hands versionen och information om hur du formaterar autentiseringsuppgifterna.<br/><br/>Undvik port nummer i slut punkts-URL: en. Om du inkluderar port numret kan Azure Kognitiv sökning inte indexera Azure Cosmos DB-databasen.|
-| **container** | Innehåller följande element: <br/>**namn**: obligatoriskt. Ange ID för den databas samling som ska indexeras.<br/>**fråga**: valfritt. Du kan ange en fråga för att förenkla ett godtyckligt JSON-dokument till ett plant schema som Azure Kognitiv sökning kan indexera.<br/>För API: et för MongoDB, Gremlin API och API för Cassandra, stöds inte frågor. |
+| **fönster** | Innehåller följande element: <br/>**namn**: obligatoriskt. Ange ID för den databas samling som ska indexeras.<br/>**fråga**: valfritt. Du kan ange en fråga för att förenkla ett godtyckligt JSON-dokument till ett plant schema som Azure Kognitiv sökning kan indexera.<br/>För API: et för MongoDB, Gremlin API och API för Cassandra, stöds inte frågor. |
 | **dataChangeDetectionPolicy** | Rekommenderas. Se avsnittet [Indexera ändrade dokument](#DataChangeDetectionPolicy) .|
 |**dataDeletionDetectionPolicy** | Valfritt. Se avsnittet [Indexera borttagna dokument](#DataDeletionDetectionPolicy) .|
 
@@ -278,7 +278,7 @@ Se till att schemat för mål indexet är kompatibelt med schemat för käll-JSO
 | Matriser med primitiva typer, till exempel ["a", "b", "c"] |Collection(Edm.String) |
 | Strängar som ser ut som datum |EDM. DateTimeOffset, EDM. String |
 | Subjson-objekt, till exempel {"typ": "Point", "koordinater": [Long, Lat]} |Edm.GeographyPoint |
-| Andra JSON-objekt |Ej tillämpligt |
+| Andra JSON-objekt |Saknas |
 
 ### <a name="4---configure-and-run-the-indexer"></a>4 – Konfigurera och kör indexeraren
 

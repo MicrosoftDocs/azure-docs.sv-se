@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/19/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 82a4ded3a64a8a8bbc62f99a8854eb6d2b5f0d0b
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: f398f80e4e283f971e0d947d0dda131e12fe88a7
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96446585"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120401"
 ---
 # <a name="access-external-storage-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Få åtkomst till extern lagring med Server lös SQL-pool i Azure Synapse Analytics
 
@@ -116,7 +116,7 @@ CREATE EXTERNAL DATA SOURCE MyAzureInvoices
 
 Användare med behörighet att läsa tabell har åtkomst till externa filer med hjälp av en extern tabell som skapats ovanpå Azure Storage mappar och filer.
 
-Användare som har [behörighet att skapa en extern tabell](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql?view=sql-server-ver15#permissions&preserve-view=true) (till exempel CREATE TABLE och ändra AUTENTISERINGSUPPGIFTER eller referenser till databasens begränsade autentiseringsuppgifter) kan använda följande skript för att skapa en tabell ovanpå Azure Storage data Källa:
+Användare som har [behörighet att skapa en extern tabell](/sql/t-sql/statements/create-external-table-transact-sql?preserve-view=true&view=sql-server-ver15#permissions) (till exempel CREATE TABLE och ändra AUTENTISERINGSUPPGIFTER eller referenser till databasens begränsade autentiseringsuppgifter) kan använda följande skript för att skapa en tabell ovanpå Azure Storage data Källa:
 
 ```sql
 CREATE EXTERNAL TABLE [dbo].[DimProductexternal]

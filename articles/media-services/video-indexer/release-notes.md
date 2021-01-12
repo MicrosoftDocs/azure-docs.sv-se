@@ -12,12 +12,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 01/06/2021
 ms.author: juliako
-ms.openlocfilehash: 3552d55d995608dd0d471c84cd5e9f9988ebe2c0
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.openlocfilehash: b6e18e077b717da65ca8d70b9bda6a133dba1f5c
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98028649"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120095"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Viktig information om Azure Media Services Video Indexer
 
@@ -44,7 +44,7 @@ Video Indexer stöder identifiering, gruppering och igenkänning av tecken i ani
 
 ### <a name="planned-video-indexer-website-authenticatication-changes"></a>Planerad Video Indexer webbplats authenticatication ändringar
 
-Från och med 1 mars 2021 kommer du inte längre att kunna registrera dig och logga in på [video Indexer](https://www.videoindexer.ai/) webbplats med Facebook eller LinkedIn.
+Från och med 1 mars 2021 kommer du inte längre att kunna registrera dig och logga in på den [video Indexer webbplatsen](https://www.videoindexer.ai/) [Developer-portalen](video-indexer-use-apis.md) med Facebook eller LinkedIn.
 
 Du kommer att kunna registrera dig och logga in med någon av följande providers: Azure AD, Microsoft och Google.
 

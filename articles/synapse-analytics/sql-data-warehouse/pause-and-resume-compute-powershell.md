@@ -11,12 +11,12 @@ ms.date: 03/20/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse, devx-track-azurepowershell
-ms.openlocfilehash: 08ddb6077887043d798af9790a7b66f1b8ebb95c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6022974b80a7f691edc9b9a11b972035b203187c
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91570707"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121047"
 ---
 # <a name="quickstart-pause-and-resume-compute-in-synapse-sql-pool-with-azure-powershell"></a>Snabb start: pausa och återuppta beräkning i Synapse SQL-poolen med Azure PowerShell
 
@@ -55,7 +55,7 @@ Leta upp databas namnet, Server namnet och resurs gruppen för SQL-poolen som du
 
 Följ de här stegen för att hitta plats information för SQL-poolen:
 
-1. Logga in på [Azure Portal](https://portal.azure.com/).
+1. Logga in på [Azure-portalen](https://portal.azure.com/).
 1. Klicka på **Azure Synapse Analytics (tidigare SQL DW)** på den vänstra sidan i Azure Portal.
 1. Välj **mySampleDataWarehouse** på sidan **Azure Synapse Analytics (tidigare SQL DW)** . SQL-poolen öppnas.
 
@@ -130,10 +130,10 @@ Följ dessa steg för att rensa resurser enligt dina önskemål.
 
 3. Om du vill ta bort SQL-poolen så att du inte debiteras för beräkning eller lagring klickar du på **ta bort**.
 
-4. Om du vill ta bort den SQL-Server som du har skapat klickar du på **sqlpoolservername.Database.Windows.net**och sedan på **ta bort**.  Var försiktig med den här borttagningen eftersom du även tar bort alla databaser som har tilldelats servern.
+4. Om du vill ta bort den SQL-Server som du har skapat klickar du på **sqlpoolservername.Database.Windows.net** och sedan på **ta bort**.  Var försiktig med den här borttagningen eftersom du även tar bort alla databaser som har tilldelats servern.
 
 5. Om du vill ta bort resursgruppen klickar du på **myResourceGroup** och sedan på **Ta bort resursgrupp**.
 
 ## <a name="next-steps"></a>Nästa steg
 
-Om du vill veta mer om SQL-poolen fortsätter du till artikeln [Läs in data i SQL-poolen](load-data-from-azure-blob-storage-using-polybase.md) . Mer information om hur du hanterar Compute-funktioner finns i artikeln [hantera beräknings översikt](sql-data-warehouse-manage-compute-overview.md) .
+Om du vill veta mer om SQL-poolen fortsätter du till artikeln [Läs in data i SQL-poolen](./load-data-from-azure-blob-storage-using-copy.md) . Mer information om hur du hanterar Compute-funktioner finns i artikeln [hantera beräknings översikt](sql-data-warehouse-manage-compute-overview.md) .

@@ -1,17 +1,17 @@
 ---
 title: Kundhanterad nyckel i Azure Monitor
-description: Information och steg för att konfigurera Customer-Managed nyckel för att kryptera data i Log Analytics arbets ytor med hjälp av en Azure Key Vault nyckel.
+description: Information och steg för att konfigurera kundhanterad nyckel för att kryptera data i dina Log Analytics arbets ytor med hjälp av en Azure Key Vault nyckel.
 ms.subservice: logs
 ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 01/10/2021
-ms.openlocfilehash: 66a3276863b05cb2fe0dd80a2195f7fd2af1443c
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 07562167131d1839bc0827c74fae09c683302c08
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98071943"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98118616"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Kundhanterad nyckel i Azure Monitor 
 
@@ -25,25 +25,25 @@ Vi rekommenderar att du granskar [begränsningar och](#limitationsandconstraints
 
 Azure Monitor säkerställer att alla data och sparade frågor krypteras i vila med hjälp av Microsoft-hanterade nycklar (MMK). Azure Monitor innehåller också ett alternativ för kryptering med hjälp av din egen nyckel som lagras i [Azure Key Vault](../../key-vault/general/overview.md), vilket ger dig kontrollen att återkalla åtkomsten till dina data när som helst. Azure Monitor krypterings användningen är identisk med hur [Azure Storage kryptering](../../storage/common/storage-service-encryption.md#about-azure-storage-encryption) fungerar.
 
-Customer-Managed nyckel levereras på [dedikerade kluster](../log-query/logs-dedicated-clusters.md) som ger högre skydds nivå och kontroll. Data som matas in på dedikerade kluster krypteras två gånger – en gång på tjänst nivå med hjälp av Microsoft-hanterade nycklar eller Kundhanterade nycklar, och en gång på infrastruktur nivån med två olika krypteringsalgoritmer och två olika nycklar. [Dubbel kryptering](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption) skyddar mot ett scenario där en av krypteringsalgoritmer eller nycklar kan komprometteras. I det här fallet fortsätter det extra krypterings lagret att skydda dina data. Med dedikerat kluster kan du också skydda dina data med [Lås](#customer-lockbox-preview) kontroll.
+Kundhanterad nyckel levereras på [dedikerade kluster](../log-query/logs-dedicated-clusters.md) som ger högre skydds nivå och kontroll. Data som matas in på dedikerade kluster krypteras två gånger – en gång på tjänst nivå med hjälp av Microsoft-hanterade nycklar eller Kundhanterade nycklar, och en gång på infrastruktur nivån med två olika krypteringsalgoritmer och två olika nycklar. [Dubbel kryptering](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption) skyddar mot ett scenario där en av krypteringsalgoritmer eller nycklar kan komprometteras. I det här fallet fortsätter det extra krypterings lagret att skydda dina data. Med dedikerat kluster kan du också skydda dina data med [Lås](#customer-lockbox-preview) kontroll.
 
-Data som matats in under de senaste 14 dagarna behålls också i frekvent cache (SSD-backad) för effektiv Operations Engine-åtgärd. Dessa data förblir krypterade med Microsoft-nycklar oavsett kundhanterad nyckel konfiguration, men kontrollen över SSD-data följer [nyckel återkallning](#key-revocation). Vi arbetar med att ha SSD-data krypterade med Customer-Managed Key i första hälften av 2021.
+Data som matats in under de senaste 14 dagarna behålls också i frekvent cache (SSD-backad) för effektiv Operations Engine-åtgärd. Dessa data förblir krypterade med Microsoft-nycklar oavsett kundhanterad nyckel konfiguration, men kontrollen över SSD-data följer [nyckel återkallning](#key-revocation). Vi arbetar med att ha SSD-data krypterade med kundhanterad nyckel under första hälften av 2021.
 
 Log Analytics dedikerade kluster använder en kapacitets reservation [pris modell](../log-query/logs-dedicated-clusters.md#cluster-pricing-model) som börjar med 1000 GB/dag.
 
 > [!IMPORTANT]
 > På grund av tillfälliga kapacitets begränsningar kräver vi att du förregistrerar dig innan du skapar ett kluster. Använd dina kontakter i Microsoft eller öppna support förfrågan för att registrera dina prenumerations-ID: n.
 
-## <a name="how-customer-managed-key-works-in-azure-monitor"></a>Så här fungerar Customer-Managed-nyckeln i Azure Monitor
+## <a name="how-customer-managed-key-works-in-azure-monitor"></a>Hur kundhanterad nyckel fungerar i Azure Monitor
 
-Azure Monitor använder hanterad identitet för att bevilja åtkomst till din Azure Key Vault. Identiteten för Log Analytics-klustret stöds på kluster nivå. För att tillåta Customer-Managed nyckel skydd på flera arbets ytor, fungerar en ny Log Analytics *kluster* resurs som mellanliggande identitets anslutning mellan dina Key Vault och dina Log Analytics arbets ytor. Klustrets lagrings utrymme använder den hanterade identitet som \' är associerad med *kluster* resursen för att autentisera till din Azure Key Vault via Azure Active Directory. 
+Azure Monitor använder hanterad identitet för att bevilja åtkomst till din Azure Key Vault. Identiteten för Log Analytics-klustret stöds på kluster nivå. För att tillåta kundhanterat nyckel skydd på flera arbets ytor, fungerar en ny Log Analytics *kluster* resurs som mellanliggande identitets anslutning mellan din Key Vault och dina Log Analytics arbets ytor. Klustrets lagrings utrymme använder den hanterade identitet som \' är associerad med *kluster* resursen för att autentisera till din Azure Key Vault via Azure Active Directory. 
 
 Efter den Kundhanterade nyckel konfigurationen krypteras nya inmatade data till arbets ytor som är länkade till ditt dedikerade kluster med din nyckel. Du kan när som helst avlänka arbets ytor från klustret. Nya data hämtas sedan till Log Analytics lagring och krypteras med Microsoft-nyckel, medan du kan fråga dina nya och gamla data sömlöst.
 
 > [!IMPORTANT]
-> Customer-Managed nyckel kapaciteten är regional. Dina Azure Key Vault-, kluster-och länkade Log Analytics-arbetsytor måste finnas i samma region, men de kan finnas i olika prenumerationer.
+> Kund-hanterad nyckel funktion är regional. Dina Azure Key Vault-, kluster-och länkade Log Analytics-arbetsytor måste finnas i samma region, men de kan finnas i olika prenumerationer.
 
-![Översikt över Customer-Managed nyckel](media/customer-managed-keys/cmk-overview.png)
+![Översikt över kundhanterad nyckel](media/customer-managed-keys/cmk-overview.png)
 
 1. Key Vault
 2. Log Analytics *kluster* resurs som har hanterad identitet med behörighet att Key Vault--identiteten sprids till Underlay dedikerade Log Analytics kluster lagring
@@ -54,7 +54,7 @@ Efter den Kundhanterade nyckel konfigurationen krypteras nya inmatade data till 
 
 Det finns tre typer av nycklar som ingår i kryptering av lagrings data:
 
-- Nyckel krypterings nyckel för **KEK** (din Customer-Managed nyckel)
+- Nyckel krypterings nyckel för **KEK** (din Kundhanterade nyckel)
 - Krypterings nyckel för **AEK** -konto
 - **DEK** – data krypterings nyckel
 
@@ -75,7 +75,7 @@ Följande regler gäller:
 1. Uppdaterar kluster med information om nyckel identifierare
 1. Länkar Log Analytics arbets ytor
 
-Customer-Managed nyckel konfigurationen stöds inte i Azure Portal för närvarande och etableringen kan utföras via [PowerShell](/powershell/module/az.operationalinsights/)-, [CLI](/cli/azure/monitor/log-analytics) -eller [rest](/rest/api/loganalytics/) -begäranden.
+Kundhanterad nyckel konfiguration stöds inte i Azure Portal för närvarande och etableringen kan utföras via [PowerShell](/powershell/module/az.operationalinsights/)-, [CLI](/cli/azure/monitor/log-analytics) -eller [rest](/rest/api/loganalytics/) -begäranden.
 
 ### <a name="asynchronous-operations-and-status-check"></a>Asynkrona åtgärder och status kontroll
 
@@ -83,15 +83,15 @@ Vissa konfigurations steg körs asynkront eftersom de inte kan slutföras snabbt
 
 # <a name="azure-portal"></a>[Azure-portalen](#tab/portal)
 
-E.t.
+Saknas
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-E.t.
+Saknas
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-E.t.
+Saknas
 
 # <a name="rest"></a>[REST](#tab/rest)
 
@@ -125,7 +125,8 @@ De här inställningarna kan uppdateras i Key Vault via CLI och PowerShell:
 
 ## <a name="create-cluster"></a>Skapa kluster
 
-> [! INFORMATION] kluster har stöd för två [hanterade identitets typer](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types). Systemtilldelad hanterad identitet skapas med klustret när du anger `SystemAssigned` identitets typ och detta kan användas senare för att bevilja åtkomst till din Key Vault. Om du vill skapa ett kluster som har kon figurer ATS för kundhanterad nyckel vid skapande skapar du klustret med användardefinierad hanterad identitet som har beviljats i din Key Vault – uppdatera klustret med `UserAssigned` identitets typ, identitetens resurs-ID i `UserAssignedIdentities` och ange din nyckel information i `keyVaultProperties` .
+> [!NOTE]
+> Kluster stöder två [hanterade identitets typer](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types), tilldelade system och tilldelade användare som kan användas baserat på ditt scenario. Systemtilldelad hanterad identitet är enklare och skapas automatiskt med kluster skapande när du ställer in identiteten `type` som `SystemAssigned` – den här identiteten kan användas senare för att ge åtkomst till din Key Vault. Om du behöver skapa ett kluster med kundhanterad nyckel konfiguration när det skapas, bör du ha en definierad nyckel och tilldelad identitet som beviljats i Key Vault i förväg och sedan skapa klustret med identitet `type` som `UserAssigned` , `UserAssignedIdentities` med resurs-ID för identitets-och nyckel informationen i `keyVaultProperties` .
 
 > [!IMPORTANT]
 > För närvarande kan du inte definiera kundhanterad nyckel med användardefinierad hanterad identitet om Key Vault finns i Private-Link (vNet). Den här begränsningen gäller inte för systemtilldelad hanterad identitet.
@@ -159,7 +160,7 @@ Uppdatera KeyVaultProperties i kluster med information om nyckel identifierare.
 
 # <a name="azure-portal"></a>[Azure-portalen](#tab/portal)
 
-E.t.
+Saknas
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -254,20 +255,20 @@ Klustrets lagring avsöker regelbundet din Key Vault för att försöka att pack
 
 ## <a name="key-rotation"></a>Nyckelrotation
 
-Customer-Managed Key rotation kräver en explicit uppdatering av klustret med den nya nyckel versionen i Azure Key Vault. [Uppdatera kluster med information om nyckel identifierare](#update-cluster-with-key-identifier-details). Om du inte uppdaterar den nya nyckel versionen i klustret, fortsätter Log Analytics kluster lagring att använda din tidigare nyckel för kryptering. Om du inaktiverar eller tar bort din gamla nyckel innan du uppdaterar den nya nyckeln i klustret kommer du att få statusen för [nyckel återkallning](#key-revocation) .
+För kundhanterad nyckel rotation krävs en explicit uppdatering av klustret med den nya nyckel versionen i Azure Key Vault. [Uppdatera kluster med information om nyckel identifierare](#update-cluster-with-key-identifier-details). Om du inte uppdaterar den nya nyckel versionen i klustret, fortsätter Log Analytics kluster lagring att använda din tidigare nyckel för kryptering. Om du inaktiverar eller tar bort din gamla nyckel innan du uppdaterar den nya nyckeln i klustret kommer du att få statusen för [nyckel återkallning](#key-revocation) .
 
 Alla dina data är tillgängliga efter nyckel rotations åtgärden, eftersom data alltid krypteras med konto krypterings nyckeln (AEK) medan AEK nu krypteras med din nya KEK-version (Key Encryption Key) i Key Vault.
 
-## <a name="customer-managed-key-for-queries"></a>Customer-Managed nyckel för frågor
+## <a name="customer-managed-key-for-queries"></a>Kundhanterad nyckel för frågor
 
-Frågespråket som används i Log Analytics är lättfattliga programspecifika och kan innehålla känslig information i kommentarer som du lägger till i frågor eller i frågesyntaxen. Vissa organisationer kräver att sådan information hålls skyddad under Customer-Managed nyckel principen och du måste spara dina frågor som är krypterade med din nyckel. Med Azure Monitor kan du lagra *sparade sökningar* och *Logga aviserings* frågor som är krypterade med din nyckel i ditt eget lagrings konto när du är ansluten till din arbets yta. 
+Frågespråket som används i Log Analytics är lättfattliga programspecifika och kan innehålla känslig information i kommentarer som du lägger till i frågor eller i frågesyntaxen. Vissa organisationer kräver att sådan information hålls skyddad under kundhanterad nyckel princip och du måste spara dina frågor krypterade med din nyckel. Med Azure Monitor kan du lagra *sparade sökningar* och *Logga aviserings* frågor som är krypterade med din nyckel i ditt eget lagrings konto när du är ansluten till din arbets yta. 
 
 > [!NOTE]
-> Log Analytics frågor kan sparas i olika butiker beroende på vilket scenario som används. Frågorna förblir krypterade med Microsoft Key (MMK) i följande scenarier, oavsett Customer-Managed nyckel konfiguration: arbets böcker i Azure Monitor, Azure-instrumentpaneler, Azure Logic app, Azure Notebooks och Automation-runbooks.
+> Log Analytics frågor kan sparas i olika butiker beroende på vilket scenario som används. Frågorna förblir krypterade med Microsoft Key (MMK) i följande scenarier, oavsett kundhanterad nyckel konfiguration: arbets böcker i Azure Monitor, Azure-instrumentpaneler, Azure Logic app, Azure Notebooks och Automation-runbooks.
 
 När du tar med din egen lagring (BYOS) och länkar den till din arbets yta överförs frågor till ditt lagrings konto via tjänsten för *sparade sökningar* och *logg aviseringar* . Det innebär att du styr lagrings kontot och [principen för kryptering vid vila](../../storage/common/customer-managed-keys-overview.md) antingen med samma nyckel som du använder för att kryptera data i Log Analytics kluster eller en annan nyckel. Du kommer dock att vara ansvarig för kostnaderna som är kopplade till det lagrings kontot. 
 
-**Att tänka på innan du ställer in Customer-Managed nyckel för frågor**
+**Att tänka på innan du ställer in kundhanterad nyckel för frågor**
 * Du måste ha Skriv behörighet till både din arbets yta och ditt lagrings konto
 * Se till att skapa ditt lagrings konto i samma region som din Log Analytics arbets yta finns
 * *Spara sökningar* i lagring anses som tjänst artefakter och deras format kan ändras
@@ -282,7 +283,7 @@ Länka ett lagrings konto för *fråga* till din arbets yta – *sparade – sö
 
 # <a name="azure-portal"></a>[Azure-portalen](#tab/portal)
 
-E.t.
+Saknas
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -326,7 +327,7 @@ Länka ett lagrings konto för *aviseringar* till arbets ytan – *logg aviserin
 
 # <a name="azure-portal"></a>[Azure-portalen](#tab/portal)
 
-E.t.
+Saknas
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -385,7 +386,7 @@ Customer-Managed nyckel anges i ett dedikerat kluster och dessa åtgärder hänv
 
 ## <a name="limitations-and-constraints"></a>Begränsningar och begränsningar
 
-- Customer-Managed nyckel stöds på dedikerade Log Analytics kluster och är lämpligt för kunder som skickar 1 TB per dag eller mer.
+- Kundhanterad nyckel stöds på dedikerade Log Analytics kluster och lämpar sig för kunder som skickar 1 TB per dag eller mer.
 
 - Det högsta antalet kluster per region och prenumeration är 2
 
@@ -395,7 +396,7 @@ Customer-Managed nyckel anges i ett dedikerat kluster och dessa åtgärder hänv
 
 - Arbets ytans länk till kluster ska endast utföras när du har kontrollerat att Log Analytics kluster etableringen har slutförts. Data som skickas till din arbets yta innan slut för Ande kommer att tas bort och går inte att återskapa.
 
-- Customer-Managed nyckel kryptering gäller för nyligen inmatade data efter konfigurations tiden. Data som matats in före konfigurationen är fortfarande krypterade med Microsoft-nyckeln. Du kan fråga efter data som matats in före och efter Customer-Managed nyckel konfigurationen sömlöst.
+- Kundhanterad nyckel kryptering gäller nyligen inmatade data efter konfigurations tiden. Data som matats in före konfigurationen är fortfarande krypterade med Microsoft-nyckeln. Du kan fråga efter data som matats in före och efter den Kundhanterade nyckel konfigurationen sömlöst.
 
 - Azure Key Vault måste konfigureras som återställnings Bart. Dessa egenskaper är inte aktiverade som standard och ska konfigureras med CLI eller PowerShell:<br>
   - [Mjuk borttagning](../../key-vault/general/soft-delete-overview.md)
@@ -424,7 +425,7 @@ Customer-Managed nyckel anges i ett dedikerat kluster och dessa åtgärder hänv
     
   - Tillfälliga anslutnings fel – lagring hanterar tillfälliga fel (timeout, anslutnings fel, DNS-problem) genom att tillåta att nycklar hålls kvar i cacheminnet för kort, samtidigt som den överkommer till alla små signaler i tillgänglighet. Funktionerna för fråga och inmatning fortsätter utan avbrott.
     
-  - Live site – otillgänglig cirka 30 minuter kommer lagrings kontot att bli otillgängligt. Fråge funktionen är inte tillgänglig och inmatade data cachelagras i flera timmar med Microsoft-nyckeln för att undvika data förlust. När åtkomsten till Key Vault återställs blir frågan tillgänglig och temporära cachelagrade data matas in i data lagringen och krypteras med Customer-Managed nyckel.
+  - Live site – otillgänglig cirka 30 minuter kommer lagrings kontot att bli otillgängligt. Fråge funktionen är inte tillgänglig och inmatade data cachelagras i flera timmar med Microsoft-nyckeln för att undvika data förlust. När åtkomsten till Key Vault återställs blir frågan tillgänglig och temporära cachelagrade data matas in i data lagringen och krypteras med kundhanterad nyckel.
 
   - Key Vault åtkomst frekvens – den frekvens som Azure Monitor lagrings åtkomst Key Vault för omslutning och unwrap-åtgärder är mellan 6 och 60 sekunder.
 

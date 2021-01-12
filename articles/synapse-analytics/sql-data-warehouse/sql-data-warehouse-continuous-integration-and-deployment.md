@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 9f2bbc39b9c9c4770775bf49a7775ab8980a1f3b
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: cb80f2d21246a75d41fc5753e72995d409d5c6b4
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97589907"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98119194"
 ---
 # <a name="continuous-integration-and-deployment-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Kontinuerlig integrering och distribution för dedikerad SQL-pool i Azure Synapse Analytics
 
@@ -62,5 +62,5 @@ Nu har du en enkel miljö där all incheckning av huvud grenen för käll kontro
 
 - Utforska en [dedikerad SQL-pool (tidigare SQL DW)-arkitektur](massively-parallel-processing-mpp-architecture.md)
 - [Skapa en dedikerad SQL-pool snabbt (tidigare SQL DW)](create-data-warehouse-portal.md)
-- [Läsa in exempeldata](load-data-from-azure-blob-storage-using-polybase.md)
+- [Läsa in exempeldata](./load-data-from-azure-blob-storage-using-copy.md)
 - Utforska [videor](sql-data-warehouse-videos.md)

@@ -3,12 +3,12 @@ title: Mått i Azure Monitor Azure-Event Hubs | Microsoft Docs
 description: Den här artikeln innehåller information om hur du använder Azure Monitor för att övervaka Azure Event Hubs
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 7ad570a41fd9dfff01e3a1da6b2d309a7a8464cc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5b055c02783c40d844d1c6306bbb71cb23d602f2
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88931156"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98118803"
 ---
 # <a name="azure-event-hubs-metrics-in-azure-monitor"></a>Azure Event Hubs-mått i Azure Monitor
 
@@ -46,58 +46,8 @@ Följande mått ger en översikt över hälso tillståndet för din tjänst.
 
 Alla mått värden skickas till Azure Monitor varje minut. Tids kornig het definierar tidsintervallet för vilka mått värden presenteras. Det tidsintervall som stöds för alla Event Hubs mått är 1 minut.
 
-## <a name="request-metrics"></a>Begär mått
-
-Räknar antalet data-och hanterings åtgärder som begärs.
-
-| Måttnamn | Beskrivning |
-| ------------------- | ----------------- |
-| Inkommande förfrågningar  | Antalet förfrågningar som gjorts till Azure Event Hubs-tjänsten under en angiven period. <br/><br/> Enhet: antal <br/> Sammansättnings typ: totalt <br/> Dimension: EntityName |
-| Slutförda förfrågningar    | Antalet lyckade förfrågningar som gjorts till Azure Event Hubs-tjänsten under en angiven period. <br/><br/> Enhet: antal <br/> Sammansättnings typ: totalt <br/> Dimension: EntityName |
-| Server fel  | Antalet begär Anden som inte behandlats på grund av ett fel i Azure Event Hubs-tjänsten under en angiven period. <br/><br/>Enhet: antal <br/> Sammansättnings typ: totalt <br/> Dimension: EntityName |
-|Användar fel |Antalet begär Anden som inte behandlats på grund av användar fel under en angiven period.<br/><br/> Enhet: antal <br/> Sammansättnings typ: totalt <br/> Dimension: EntityName|
-|Överskriden kvot fel |Antalet begär Anden överskred den tillgängliga kvoten. I [den här artikeln](event-hubs-quotas.md) finns mer information om Event Hubs kvoter.<br/><br/> Enhet: antal <br/> Sammansättnings typ: totalt <br/> Dimension: EntityName|
-
-## <a name="throughput-metrics"></a>Data flödes mått
-
-| Måttnamn | Beskrivning |
-| ------------------- | ----------------- |
-|Begränsade begär Anden |antalet begäranden som har begränsats på grund av att användningen av dataflödesenheten överskreds.<br/><br/> Enhet: antal <br/> Sammansättnings typ: totalt <br/> Dimension: EntityName|
-
-## <a name="message-metrics"></a>Meddelande mått
-
-| Måttnamn | Beskrivning |
-| ------------------- | ----------------- |
-|Inkommande meddelanden |Antalet händelser eller meddelanden som skickats till Event Hubs under en angiven period.<br/><br/> Enhet: antal <br/> Sammansättnings typ: totalt <br/> Dimension: EntityName|
-|Utgående meddelanden |Antalet händelser eller meddelanden som hämtats från Event Hubs under en angiven period.<br/><br/> Enhet: antal <br/> Sammansättnings typ: totalt <br/> Dimension: EntityName|
-|Inkommande byte |Antalet byte som skickats till Azure Event Hubs-tjänsten under en angiven period.<br/><br/> Enhet: byte <br/> Sammansättnings typ: totalt <br/> Dimension: EntityName|
-|Utgående byte |Antalet byte som hämtats från Azure Event Hubs-tjänsten under en angiven period.<br/><br/> Enhet: byte <br/> Sammansättnings typ: totalt <br/> Dimension: EntityName|
-
-## <a name="connection-metrics"></a>Anslutnings mått
-
-| Måttnamn | Beskrivning |
-| ------------------- | ----------------- |
-|ActiveConnections |Antalet aktiva anslutningar i ett namn område samt på en entitet.<br/><br/> Enhet: antal <br/> Sammansättnings typ: totalt <br/> Dimension: EntityName|
-|Öppna anslutningar |Antalet öppna anslutningar.<br/><br/> Enhet: antal <br/> Sammansättnings typ: totalt <br/> Dimension: EntityName|
-|Stängda anslutningar |Antalet stängda anslutningar.<br/><br/> Enhet: antal <br/> Sammansättnings typ: totalt <br/> Dimension: EntityName|
-
-## <a name="event-hubs-capture-metrics"></a>Event Hubs Infångnings mått
-
-Du kan övervaka Event Hubs Infångnings mått när du aktiverar insamlings funktionen för dina Event Hub. Följande mått beskriver vad du kan övervaka med Capture aktiverat.
-
-| Måttnamn | Beskrivning |
-| ------------------- | ----------------- |
-|Samla in kvarvarande uppgifter |Antalet byte som ännu inte har registrerats till det valda målet.<br/><br/> Enhet: byte <br/> Sammansättnings typ: totalt <br/> Dimension: EntityName|
-|Insamlade meddelanden |Antalet meddelanden eller händelser som har fångats till det valda målet under en angiven period.<br/><br/> Enhet: antal <br/> Sammansättnings typ: totalt <br/> Dimension: EntityName|
-|Insamlade byte |Antalet byte som har fångats till det valda målet under en angiven period.<br/><br/> Enhet: byte <br/> Sammansättnings typ: totalt <br/> Dimension: EntityName|
-
-## <a name="metrics-dimensions"></a>Mått dimensioner
-
-Azure Event Hubs stöder följande dimensioner för mått i Azure Monitor. Det är valfritt att lägga till dimensioner i måtten. Om du inte lägger till dimensioner anges måtten på namn områdes nivå. 
-
-| Måttnamn | Beskrivning |
-| ------------------- | ----------------- |
-|Entitetsnamnet| Event Hubs stöder Event Hub-entiteter under namn området.|
+## <a name="azure-event-hubs-metrics"></a>Azure Event Hubs mått
+En lista över mått som stöds av tjänsten finns i [Azure Event Hubs](../azure-monitor/platform/metrics-supported.md#microsofteventhubnamespaces)
 
 ## <a name="azure-monitor-integration-with-siem-tools"></a>Azure Monitor integrering med SIEM-verktyg
 Routning av övervaknings data (aktivitets loggar, diagnostikloggar osv.) till en Event Hub med Azure Monitor gör att du enkelt kan integrera med verktyg för säkerhets informations-och händelse hantering (SIEM). Mer information finns i följande artiklar/blogg inlägg:
@@ -108,7 +58,7 @@ Routning av övervaknings data (aktivitets loggar, diagnostikloggar osv.) till e
 
 I scenariot där ett SIEM-verktyg använder loggdata från en Event Hub, om du inte ser några inkommande meddelanden eller om du ser inkommande meddelanden, men inte har några utgående meddelanden i mått diagrammet, följer du dessa steg:
 
-- Om det inte finns **några inkommande meddelanden**innebär det att tjänsten Azure Monitor inte flyttar gransknings-/diagnostikloggar till händelsehubben. Öppna ett support ärende med Azure Monitor-teamet i det här scenariot. 
+- Om det inte finns **några inkommande meddelanden** innebär det att tjänsten Azure Monitor inte flyttar gransknings-/diagnostikloggar till händelsehubben. Öppna ett support ärende med Azure Monitor-teamet i det här scenariot. 
 - om det finns inkommande meddelanden, men **inga utgående meddelanden**, innebär det att Siem-programmet inte läser meddelandena. Kontakta SIEM-providern för att avgöra om konfigurationen av Event Hub som programmen är korrekt.
 
 

@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: b8b0ac002cb52acdc043e4e8ca4fa91daae4e665
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 962e0e734abd73f5a66f9b9ee6067155dd839e5d
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96457991"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98118293"
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-synapse-sql"></a>Använd Azure Active Directory autentisering för autentisering med Synapse SQL
 
@@ -129,8 +129,7 @@ Följande autentiseringsmetoder stöds för Azure AD server-Huvudkonton (inloggn
 
 ## <a name="next-steps"></a>Nästa steg
 
-- En översikt över åtkomst och kontroll i Synapse SQL finns i [SYNAPSE SQL Access Control](../sql/access-control.md).
+- En översikt över åtkomst och kontroll i Synapse SQL finns i [SYNAPSE SQL Access Control](../security/synapse-workspace-access-control-overview.md).
 - Mer information om huvudkonton finns i [Huvudkonton](/sql/relational-databases/security/authentication-access/principals-database-engine?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
 - Mer information om databasroller finns [Databasroller](/sql/relational-databases/security/authentication-access/database-level-roles?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
 
- 

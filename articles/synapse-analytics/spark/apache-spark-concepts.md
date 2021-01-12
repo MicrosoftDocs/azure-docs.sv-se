@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: 8df7a2ecd2a6732a011267eb0efe00e8eaf2bef4
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 51b2e8cd968c4c14777d196d90686b13158aef42
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96458747"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120316"
 ---
 # <a name="apache-spark-in-azure-synapse-analytics-core-concepts"></a>Apache Spark i Azure Synapse Analytics core-koncept
 
@@ -80,7 +80,7 @@ I följande artikel beskrivs hur du begär en ökning i vCore-kvoten för arbets
 - Välj "Azure Synapse Analytics" som tjänst typ.
 - I fönstret kvot information väljer du Apache Spark (vCore) per arbets yta
 
-[Begär en kapacitets ökning via Azure Portal](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests#request-a-standard-quota-increase-from-help--support)
+[Begär en kapacitets ökning via Azure Portal](../../azure-portal/supportability/per-vm-quota-requests.md#request-a-standard-quota-increase-from-help--support)
 
 ### <a name="spark-pool-level"></a>Nivå för Spark-pool
 
@@ -95,5 +95,5 @@ För att lösa det här problemet måste du minska användningen av poolens resu
 
 ## <a name="next-steps"></a>Nästa steg
 
-- [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)
+- [Azure Synapse Analytics](../index.yml)
 - [Apache Spark dokumentation](https://spark.apache.org/docs/2.4.5/)

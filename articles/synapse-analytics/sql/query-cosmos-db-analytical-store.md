@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 12/04/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 22103ad580fa474f44eaf42c696d19bbbd137c8e
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: a0458264b6ea0c741244531fc104a7637108b06e
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095108"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121353"
 ---
 # <a name="query-azure-cosmos-db-data-with-a-serverless-sql-pool-in-azure-synapse-link-preview"></a>Fråga Azure Cosmos DB data med en server lös SQL-pool i för hands versionen av Azure Synapse Link
 
@@ -222,7 +222,7 @@ FROM OPENROWSET(
     ) with ( date_rep varchar(20), cases bigint, geo_id varchar(6) ) as rows
 ```
 
-Använd inte `OPENROWSET` utan explicit definierat schema eftersom det kan påverka prestandan. Se till att du använder de minsta möjliga storlekarna för dina kolumner (till exempel VARCHAR (100) i stället för standard-VARCHAR (8000)). Du bör använda en UTF-8-sortering som standard sortering i databasen eller ange den som explicit kolumn sortering för att undvika [UTF-8-konverterings problem](/azure/synapse-analytics/troubleshoot/reading-utf8-text). Sortering `Latin1_General_100_BIN2_UTF8` ger bästa prestanda när Yu filtrerar data med hjälp av vissa sträng kolumner.
+Använd inte `OPENROWSET` utan explicit definierat schema eftersom det kan påverka prestandan. Se till att du använder de minsta möjliga storlekarna för dina kolumner (till exempel VARCHAR (100) i stället för standard-VARCHAR (8000)). Du bör använda en UTF-8-sortering som standard sortering i databasen eller ange den som explicit kolumn sortering för att undvika [UTF-8-konverterings problem](../troubleshoot/reading-utf8-text.md). Sortering `Latin1_General_100_BIN2_UTF8` ger bästa prestanda när Yu filtrerar data med hjälp av vissa sträng kolumner.
 
 ## <a name="query-nested-objects-and-arrays"></a>Fråga kapslade objekt och matriser
 
@@ -268,8 +268,8 @@ Resultatet av den här frågan kan se ut som i följande tabell:
 Lär dig mer om att analysera [komplexa data typer i Azure Synapse-länk](../how-to-analyze-complex-schema.md) och [kapslade strukturer i en server lös SQL-pool](query-parquet-nested-types.md).
 
 > [!IMPORTANT]
-> Om du ser oväntade tecken i din text `MÃƒÂ©lade` , t. ex. i stället för `Mélade` , är din databas sortering inte inställd på [UTF-8-](https://docs.microsoft.com/sql/relational-databases/collations/collation-and-unicode-support#utf8) sortering.
-> [Ändra sorteringen av databasen](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-database-collation#to-change-the-database-collation) till UTF-8-sortering genom att använda ett SQL-uttryck som `ALTER DATABASE MyLdw COLLATE LATIN1_GENERAL_100_CI_AS_SC_UTF8` .
+> Om du ser oväntade tecken i din text `MÃƒÂ©lade` , t. ex. i stället för `Mélade` , är din databas sortering inte inställd på [UTF-8-](/sql/relational-databases/collations/collation-and-unicode-support#utf8) sortering.
+> [Ändra sorteringen av databasen](/sql/relational-databases/collations/set-or-change-the-database-collation#to-change-the-database-collation) till UTF-8-sortering genom att använda ett SQL-uttryck som `ALTER DATABASE MyLdw COLLATE LATIN1_GENERAL_100_CI_AS_SC_UTF8` .
 
 ## <a name="flatten-nested-arrays"></a>Förenkla kapslade matriser
 
@@ -325,7 +325,7 @@ Extra information ett eko-epidemi... | `[{"first":"Nicolas","last":"4#","suffix"
 | Extra information ett eko-epidemi... |   `[{"first":"Olivier","last":"Flores","suffix":"","affiliation":{"laboratory":"UMR C53 CIRAD, …` | Olivier | Flores |`{"laboratory":"UMR C53 CIRAD, …` |     
 
 > [!IMPORTANT]
-> Om du ser oväntade tecken i din text `MÃƒÂ©lade` , t. ex. i stället för `Mélade` , är din databas sortering inte inställd på [UTF-8-](https://docs.microsoft.com/sql/relational-databases/collations/collation-and-unicode-support#utf8) sortering. [Ändra sorteringen av databasen](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-database-collation#to-change-the-database-collation) till UTF-8-sortering genom att använda ett SQL-uttryck som `ALTER DATABASE MyLdw COLLATE LATIN1_GENERAL_100_CI_AS_SC_UTF8` .
+> Om du ser oväntade tecken i din text `MÃƒÂ©lade` , t. ex. i stället för `Mélade` , är din databas sortering inte inställd på [UTF-8-](/sql/relational-databases/collations/collation-and-unicode-support#utf8) sortering. [Ändra sorteringen av databasen](/sql/relational-databases/collations/set-or-change-the-database-collation#to-change-the-database-collation) till UTF-8-sortering genom att använda ett SQL-uttryck som `ALTER DATABASE MyLdw COLLATE LATIN1_GENERAL_100_CI_AS_SC_UTF8` .
 
 ## <a name="azure-cosmos-db-to-sql-type-mappings"></a>Azure Cosmos DB mappningar av SQL-typ
 

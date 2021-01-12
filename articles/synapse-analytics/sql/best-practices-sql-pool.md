@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 03a536e16a6ba12611ed704b404c1bd411f0c4c8
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 242e5d042aa14e3b7bd92ebb37ae1be61b1b2c8f
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322707"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120979"
 ---
 # <a name="best-practices-for-dedicated-sql-pools-in-azure-synapse-analytics"></a>Metod tips för dedikerade SQL-pooler i Azure Synapse Analytics
 
@@ -61,7 +61,7 @@ För att maximera data flödet när du använder gzip-textfiler kan du dela upp 
 
 - [Läsa in data](../sql-data-warehouse/design-elt-data-loading.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 - [Guide for using PolyBase](data-loading-best-practices.md) (Guide för att använda PolyBase)
-- [Inläsnings mönster och strategier för Azure SQL-poolen](https://blogs.msdn.microsoft.com/sqlcat/20../../azure-sql-data-warehouse-loading-patterns-and-strategies/)
+- [Inläsnings mönster och strategier för Azure SQL-poolen](/archive/blogs/sqlcat/azure-sql-data-warehouse-loading-patterns-and-strategies)
 - [Läs in data med Azure Data Factory](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 - [Flytta data med Azure Data Factory](../../data-factory/transform-data-using-machine-learning.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 - [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
@@ -88,7 +88,7 @@ I artikel länkarna nedan får du ytterligare information om hur du kan förbät
 
 - [Tabell översikt](develop-tables-overview.md)
 - [Table distribution](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) (Tabelldistribution)
-- [Selecting table distribution](https://blogs.msdn.microsoft.com/sqlcat/20../../choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service/) (Välja tabelldistribution)
+- [Selecting table distribution](/archive/blogs/sqlcat/choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service) (Välja tabelldistribution)
 - [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
 - [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
 
@@ -193,7 +193,7 @@ SQL-pooler har flera DMV: er som du kan använda för att övervaka frågekörni
 
 Se även [fel söknings](../sql-data-warehouse/sql-data-warehouse-troubleshoot.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) artikeln för vanliga problem och lösningar.
 
-Om du behöver information som inte finns med i den här artikeln kan du söka på [sidan Microsoft Q&en fråga för Azure Synapse](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html) , där du kan ställa frågor till andra användare och till produkt gruppen för SQL-poolen.  
+Om du behöver information som inte finns med i den här artikeln kan du söka på [sidan Microsoft Q&en fråga för Azure Synapse](/answers/topics/azure-synapse-analytics.html) , där du kan ställa frågor till andra användare och till produkt gruppen för SQL-poolen.  
 
 Vi övervakar aktivt detta forum för att kontrollera att dina frågor besvaras antingen av en annan användare eller av någon av oss.  Om du föredrar att ställa dina frågor på Stack Overflow, har vi också en [Azure SQL-pool Stack Overflow forum](https://stackoverflow.com/questions/tagged/azure-sqldw).
 

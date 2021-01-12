@@ -9,20 +9,20 @@ ms.subservice: machine-learning
 ms.date: 06/30/2020
 ms.author: midesa
 ms.reviewer: jrasnick
-ms.openlocfilehash: e547d047e8d736acbd1cdda5ffe3a78dbe8259f7
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: 2594e25bff3ca949b329f8b66f4427eb1f6950b0
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97901070"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98118718"
 ---
 # <a name="tutorial-train-a-model-in-python-with-automated-machine-learning"></a>Självstudie: träna en modell i python med automatisk maskin inlärning
 
 Azure Machine Learning är en molnbaserad miljö som gör det möjligt att träna, distribuera, automatisera, hantera och spåra maskin inlärnings modeller. 
 
-I den här självstudien använder du [Automatisk maskin inlärning](https://docs.microsoft.com/azure/machine-learning/concept-automated-ml) i Azure Machine Learning för att skapa en Regressions modell för att förutsäga priset för taxi priset. Den här processen kommer till den bästa modellen genom att acceptera inlärnings data och konfigurations inställningar och automatiskt söka igenom kombinationer av olika metoder, modeller och inställningar för en valfri parameter.
+I den här självstudien använder du [Automatisk maskin inlärning](../../machine-learning/concept-automated-ml.md) i Azure Machine Learning för att skapa en Regressions modell för att förutsäga priset för taxi priset. Den här processen kommer till den bästa modellen genom att acceptera inlärnings data och konfigurations inställningar och automatiskt söka igenom kombinationer av olika metoder, modeller och inställningar för en valfri parameter.
 
-I de här självstudierna får du lära dig att
+I den här guiden får du lära dig att:
 - Hämta data med hjälp av Apache Spark och öppna data uppsättningar i Azure.
 - Transformera och rensa data med Apache Spark dataframes.
 - Träna en automatisk maskin inlärnings Regressions modell.
@@ -31,7 +31,7 @@ I de här självstudierna får du lära dig att
 ## <a name="before-you-begin"></a>Innan du börjar
 
 - Skapa en server lös Apache Spark pool genom att följa snabb starten för att [skapa en server lös Apache Spark pool](../quickstart-create-apache-spark-pool-studio.md).
-- Slutför [installations guiden för Azure Machine Learning arbets yta](https://docs.microsoft.com/azure/machine-learning/tutorial-1st-experiment-sdk-setup) om du inte har en befintlig Azure Machine Learning arbets yta. 
+- Slutför [installations guiden för Azure Machine Learning arbets yta](../../machine-learning/tutorial-1st-experiment-sdk-setup.md) om du inte har en befintlig Azure Machine Learning arbets yta. 
 
 ## <a name="understand-regression-models"></a>Förstå Regressions modeller
 
@@ -48,7 +48,7 @@ I det här exemplet använder du Spark för att utföra en del analys av informa
 
 Gör så här:
 
-1. Skapa en bärbar dator med hjälp av PySpark-kärnan. Instruktioner finns i [skapa en antecknings bok](https://docs.microsoft.com/azure/synapse-analytics/quickstart-apache-spark-notebook#create-a-notebook).
+1. Skapa en bärbar dator med hjälp av PySpark-kärnan. Instruktioner finns i [skapa en antecknings bok](../quickstart-apache-spark-notebook.md#create-a-notebook).
    
     > [!Note]
     > På grund av PySpark-kärnan behöver du inte skapa några kontexter explicit. Spark-kontexten skapas automatiskt åt dig när du kör den första kod cellen.
@@ -144,7 +144,7 @@ ws = Workspace(workspace_name = workspace_name,
 ```
 
 ## <a name="convert-a-dataframe-to-an-azure-machine-learning-dataset"></a>Konvertera en dataframe till en Azure Machine Learning data uppsättning
-Om du vill skicka ett fjärrexperiment konverterar du data uppsättningen till en Azure Machine Learning ```TabularDatset``` . En [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true) representerar data i tabell format genom att parsa de angivna filerna.
+Om du vill skicka ett fjärrexperiment konverterar du data uppsättningen till en Azure Machine Learning ```TabularDatset``` . En [TabularDataset](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py) representerar data i tabell format genom att parsa de angivna filerna.
 
 Följande kod hämtar den befintliga arbets ytan och förvalda Azure Machine Learning standard data lager. Den skickar sedan data lagret och fil Sök vägarna till parametern Path för att skapa en ny ```TabularDataset``` . 
 
@@ -170,7 +170,7 @@ dataset_training = Dataset.Tabular.from_delimited_files(path = [(datastore, 'tra
 I följande avsnitt får du stegvisa anvisningar genom processen för att skicka ett automatiserat maskin inlärnings experiment.
 
 ### <a name="define-training-settings"></a>Definiera utbildnings inställningar
-1. Om du vill skicka ett experiment måste du definiera experiment parametern och modell inställningarna för träning. En fullständig lista över inställningarna finns i [Konfigurera automatiska Machine Learning-experiment i python](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train).
+1. Om du vill skicka ett experiment måste du definiera experiment parametern och modell inställningarna för träning. En fullständig lista över inställningarna finns i [Konfigurera automatiska Machine Learning-experiment i python](../../machine-learning/how-to-configure-auto-train.md).
 
    ```python
    import logging
@@ -338,5 +338,5 @@ Du kan också få åtkomst till resultatet av iterationerna genom att gå till e
 ![Skärm bild av Azure Machine Learning-arbetsyta.](./media/azure-machine-learning-spark-notebook/azure-machine-learning-workspace.png)
 
 ## <a name="next-steps"></a>Nästa steg
-- [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)
+- [Azure Synapse Analytics](../index.yml)
 - [Självstudie: Bygg en Machine Learning-app med Apache Spark MLlib och Azure Synapse Analytics](./apache-spark-machine-learning-mllib-notebook.md)

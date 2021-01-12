@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6b45bad7c439fb98737f0caee08b2996323fbd3b
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 8dd3edd25d21bfcd0fde1bc8b5f103877d968c8a
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602707"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98119993"
 ---
 # <a name="tutorial-use-serverless-sql-pool-with-power-bi-desktop--create-a-report"></a>Självstudie: Använd Server lös SQL-pool med Power BI Desktop & skapa en rapport
 
@@ -32,7 +32,7 @@ I den här självstudien får du lära dig att:
 För att slutföra den här självstudien, finns följande förhandskrav:
 
 - [Power BI Desktop](https://powerbi.microsoft.com/downloads/) – behövs för att visualisera data och skapa en rapport.
-- [Azure Synapse-arbetsyta](https://docs.microsoft.com/azure/synapse-analytics/quickstart-synapse-studio) – behövs för att skapa databas, extern data källa och Visa.
+- [Azure Synapse-arbetsyta](../get-started-create-workspace.md) – behövs för att skapa databas, extern data källa och Visa.
 
 Valfritt:
 

@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: efa160eb422658aeeb2eea3ad3c1d305b4b9f8be
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 1217cf74ab36a8fe865e47009616b1ccb240df67
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462412"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98119891"
 ---
 # <a name="sql-authentication"></a>SQL-autentisering
 
@@ -51,7 +51,7 @@ Administratörs kontona för **Server administratören** och **Azure AD** har f�
 - Kan lägga till och ta bort medlemmar `dbmanager` i `loginmanager` rollerna och.
 - Kan visa `sys.sql_logins` system tabellen.
 
-## <a name="serverless-sql-pool"></a>[Serverlös SQL-pool](#tab/serverless)
+## <a name="serverless-sql-pool"></a>[SQL-pool utan Server](#tab/serverless)
 
 Om du vill hantera användare som har åtkomst till en server utan SQL-pool kan du använda instruktionerna nedan.
 
@@ -111,7 +111,7 @@ Om du vill skapa en databas måste användaren vara en användare baserad på en
    CREATE USER Mary FROM LOGIN Mary;  -- To create a SQL Server user based on a SQL Server authentication login
    ```
 
-4. Lägg till den nya användaren i **DBManager** -databas rollen i `master` med hjälp av metoden [Sp_addrolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=azure-sqldw-latest) (Observera att [Alter Role](/sql/t-sql/statements/alter-role-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) -instruktionen inte stöds i SQL-etableringen). Exempel på instruktioner:
+4. Lägg till den nya användaren i **DBManager** -databas rollen i `master` med hjälp av metoden [Sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=azure-sqldw-latest) (Observera att [Alter Role](/sql/t-sql/statements/alter-role-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) -instruktionen inte stöds i SQL-etableringen). Exempel på instruktioner:
 
    ```sql
    EXEC sp_addrolemember 'dbmanager', 'Mary'; 
@@ -133,7 +133,7 @@ Den andra administrativa rollen är inloggningshanterare-rollen. Medlemmar i den
 
 ## <a name="non-administrator-users"></a>Användare som är icke-administratörer
 
-Icke-administratörskonton behöver vanligt vis inte åtkomst till huvud databasen. Skapa oberoende databasanvändare på databasnivå med hjälp av instruktionen [SKAPA ANVÄNDARE (Transact-SQL)](https://msdn.microsoft.com/library/ms173463.aspx). 
+Icke-administratörskonton behöver vanligt vis inte åtkomst till huvud databasen. Skapa oberoende databasanvändare på databasnivå med hjälp av instruktionen [SKAPA ANVÄNDARE (Transact-SQL)](/sql/t-sql/statements/create-user-transact-sql). 
 
 Användaren kan vara en Azure Active Directory-autentiserad oberoende databasanvändare (om du har konfigurerat din miljö för Azure AD-autentisering), eller en SQL Server-autentiserad oberoende databasanvändare, eller en SQL Server-autentiserad användare baserad på en SQL Server-autentiserad inloggning (skapad i föregående steg.)  
 
@@ -191,7 +191,7 @@ Databasrollerna kan vara de inbyggda rollerna, som **db_owner**, **db_ddladmin**
 
 Till exempel ger den fasta databasrollen **db_datareader** läsbehörighet till alla tabeller i databasen, vilket vanligtvis är mer än är absolut nödvändigt. 
 
-Det är mycket bättre att använda instruktionen [create Role](https://msdn.microsoft.com/library/ms187936.aspx) för att skapa egna användardefinierade databas roller och samtidigt ge varje roll de lägsta behörigheter som krävs för affärs behovet. När en användare är medlem i flera roller sammanställs behörigheterna för alla.
+Det är mycket bättre att använda instruktionen [create Role](/sql/t-sql/statements/create-role-transact-sql) för att skapa egna användardefinierade databas roller och samtidigt ge varje roll de lägsta behörigheter som krävs för affärs behovet. När en användare är medlem i flera roller sammanställs behörigheterna för alla.
 
 ## <a name="permissions"></a>Behörigheter
 
@@ -199,7 +199,7 @@ Det finns över 100 behörigheter som individuellt kan beviljas eller nekas i SQ
 
 På grund av den kapslade karaktären och antalet behörigheter kan det krävas noggranna studier för att designa ett behörighetssystem som korrekt skyddar databasen. 
 
-Börja med listan över behörigheter på [Behörigheter (Databasmotor)](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine) och granska den [stora bilden](https://docs.microsoft.com/sql/relational-databases/security/media/database-engine-permissions.png) med behörigheter.
+Börja med listan över behörigheter på [Behörigheter (Databasmotor)](/sql/relational-databases/security/permissions-database-engine) och granska den [stora bilden](/sql/relational-databases/security/media/database-engine-permissions.png) med behörigheter.
 
 ### <a name="considerations-and-restrictions"></a>Överväganden och begränsningar
 
@@ -236,5 +236,4 @@ Tänk på följande när du hanterar inloggningar och användare i SQL Database:
 
 ## <a name="next-steps"></a>Nästa steg
 
-Mer information finns i [Användare av oberoende databas – göra databasen portabel](https://msdn.microsoft.com/library/ff929188.aspx).
- 
+Mer information finns i [Användare av oberoende databas – göra databasen portabel](/sql/relational-databases/security/contained-database-users-making-your-database-portable).

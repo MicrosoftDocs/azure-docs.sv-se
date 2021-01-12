@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/02/2020
 ms.custom: references_regions
-ms.openlocfilehash: 8295e619cfda0d4b83a7356d5fd21d4b80f83849
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 6b1079797f1a753fa8362d6e920f3394087d7e9f
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96530892"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98119296"
 ---
 # <a name="configure-customer-managed-keys-for-data-encryption-in-azure-cognitive-search"></a>Konfigurera Kundhanterade nycklar för data kryptering i Azure Kognitiv sökning
 
@@ -41,7 +41,7 @@ För tjänster som skapats efter 1 augusti 2020 och i vissa regioner innehåller
 
 Om du använder en annan region eller en tjänst som skapats före den 1 augusti, begränsas hanterad nyckel kryptering enbart till data disken, exklusive de temporära diskar som används av tjänsten.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Följande verktyg och tjänster används i det här scenariot.
 
@@ -52,7 +52,7 @@ Följande verktyg och tjänster används i det här scenariot.
 Du bör ha ett Sök program som kan skapa det krypterade objektet. I den här koden kommer du att referera till nyckel valvet och Active Directory registrerings information. Den här koden kan vara en fungerande app eller prototyp kod som C#- [kod exemplet DotNetHowToEncryptionUsingCMK](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToEncryptionUsingCMK).
 
 > [!TIP]
-> Du kan använda [Postman eller Visual Studio Code](search-get-started-rest.md), eller [Azure PowerShell](./search-get-started-powershell.md), för att anropa REST-API: er som skapar index och synonym mappningar som innehåller en krypterings nyckel parameter. Det finns inget stöd för portalen för att lägga till en nyckel i index eller synonym Maps för tillfället.
+> Du kan använda [Postman](search-get-started-rest.md), [Visual Studio Code](search-get-started-vs-code.md)eller [Azure PowerShell](./search-get-started-powershell.md)för att anropa REST-API: er som skapar index och synonym mappningar som innehåller en krypterings nyckel parameter. Det finns inget stöd för portalen för att lägga till en nyckel i index eller synonym Maps för tillfället.
 
 ## <a name="1---enable-key-recovery"></a>1 – aktivera nyckel återställning
 

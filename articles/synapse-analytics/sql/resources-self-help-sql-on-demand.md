@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 12ff369cb931eb36014b7c9598b036afdc158750
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 4c3b5095da4e55dc8f881a610f80f1150422e739
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96457189"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98119925"
 ---
 # <a name="self-help-for-serverless-sql-pool"></a>Själv hjälp för Server lös SQL-pool
 
@@ -25,7 +25,7 @@ Den här artikeln innehåller information om hur du felsöker de vanligaste prob
 Om Synapse Studio inte kan upprätta en anslutning till en server lös SQL-pool, ser du att SQL-poolen utan server är nedtonad eller visar status "offline". Det här problemet uppstår vanligt vis när något av följande inträffar:
 
 1) Nätverket förhindrar kommunikation till Azure Synapse-backend. Det vanligaste fallet är att port 1443 är blockerad. Ta bort den här porten om du vill att SQL-poolen utan server ska fungera. Andra problem kan förhindra att SQL-poolen utan server fungerar. [Mer information finns i fullständig fel söknings guide](../troubleshoot/troubleshoot-synapse-studio.md).
-2) Du har inte behörighet att logga in på en SQL-pool utan server. För att du ska få åtkomst måste en av Azure Synapse-arbetsyteadministratörerna lägga till dig i rollen som arbetsyteadministratör eller SQL-administratör. [Mer information finns i den fullständiga guiden för åtkomstkontroll](access-control.md).
+2) Du har inte behörighet att logga in på en SQL-pool utan server. För att du ska få åtkomst måste en av Azure Synapse-arbetsyteadministratörerna lägga till dig i rollen som arbetsyteadministratör eller SQL-administratör. [Mer information finns i den fullständiga guiden för åtkomstkontroll](../security/synapse-workspace-access-control-overview.md).
 
 ## <a name="query-fails-because-file-cannot-be-opened"></a>Frågan Miss lyckas eftersom det inte går att öppna filen
 

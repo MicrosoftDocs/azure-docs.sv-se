@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: a75e1fb5b250be1004195d3a77301c73eac94b02
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: cc54ae66cda6bf8ecde07d1830448ec39a15cc29
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98043565"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120231"
 ---
 # <a name="cheat-sheet-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytic"></a>Lathund-blad för dedikerad SQL-pool (tidigare SQL DW) i Azure Synapse-analys
 
@@ -46,7 +46,7 @@ Börja med att läsa in data i [Azure Data Lake Storage](../../data-factory/conn
 | Partitionering | Ingen |
 | Resursklass | largerc eller xlargerc |
 
-Läs mer om [datamigrering](https://blogs.msdn.microsoft.com/sqlcat/20../../migrating-data-to-azure-sql-data-warehouse-in-practice/), [datainläsning](design-elt-data-loading.md) och [ELT-processen (Extract, Load, and Transform)](design-elt-data-loading.md).
+Läs mer om [datamigrering](/archive/blogs/sqlcat/migrating-data-to-azure-sql-data-warehouse-in-practice), [datainläsning](design-elt-data-loading.md) och [ELT-processen (Extract, Load, and Transform)](design-elt-data-loading.md).
 
 ## <a name="distributed-or-replicated-tables"></a>Distribuerade eller replikerade tabeller
 
@@ -137,7 +137,7 @@ Autoskala nu för den tid du önskar med Azure Functions:
 
 Vi rekommenderar att du överväger SQL Database och Azure Analysis Services i en nav-och-eker-arkitektur. Den här lösningen kan isolera arbetsbelastningen mellan olika grupper av användare när du även använder avancerade funktioner från SQL Database och Azure Analysis Services. Det här är också ett sätt att tillhandahålla obegränsad samtidighet till dina användare.
 
-Lär dig mer om [typiska arkitekturer som utnyttjar dedikerad SQL-pool (tidigare SQL DW) i Azure Synapse Analytics](https://blogs.msdn.microsoft.com/sqlcat/20../../common-isv-application-patterns-using-azure-sql-data-warehouse/).
+Lär dig mer om [typiska arkitekturer som utnyttjar dedikerad SQL-pool (tidigare SQL DW) i Azure Synapse Analytics](/archive/blogs/sqlcat/common-isv-application-patterns-using-azure-sql-data-warehouse).
 
 Distribuera i ett genom att klicka på dina ekrar i SQL-databaser från dedikerad SQL-pool (tidigare SQL DW):
 

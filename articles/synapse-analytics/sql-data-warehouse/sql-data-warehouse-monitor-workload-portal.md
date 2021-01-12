@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 53c68f44273b14658bd4d95ce7cf3cf847c077d0
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: f780d5404d99435a61c4e3f9e90b1acbd9539af9
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93025960"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98118446"
 ---
 # <a name="monitor-workload---azure-portal"></a>Övervaka arbets belastning – Azure Portal
 
@@ -24,7 +24,7 @@ Den här artikeln beskriver hur du använder Azure Portal för att övervaka arb
 ## <a name="prerequisites"></a>Förutsättningar
 
 - Azure-prenumeration: om du inte har en Azure-prenumeration kan du skapa ett [kostnads fritt konto](https://azure.microsoft.com/free/) innan du börjar.
-- SQL-pool: vi kommer att samla in loggar för en SQL-pool. Om du inte har en SQL-pool etablerad kan du läsa anvisningarna i [skapa en SQL-pool](load-data-from-azure-blob-storage-using-polybase.md).
+- SQL-pool: vi kommer att samla in loggar för en SQL-pool. Om du inte har en SQL-pool etablerad kan du läsa anvisningarna i [skapa en SQL-pool](./load-data-from-azure-blob-storage-using-copy.md).
 
 ## <a name="create-a-log-analytics-workspace"></a>Skapa en Log Analytics-arbetsyta
 
@@ -63,7 +63,7 @@ Navigera till din Log Analytics arbets yta där du kan göra följande:
 - Skapa loggaviseringar
 - Fäst frågeresultat på en instrument panel
 
-Mer information om funktionerna i logg frågor finns i följande [dokumentation](../../azure-monitor/log-query/query-language.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
+Mer information om funktionerna i logg frågor finns i följande [dokumentation](/azure/data-explorer/kusto/query/?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json).
 
 ![Redigerare för Log Analytics arbets yta](./media/sql-data-warehouse-monitor-workload-portal/log_analytics_workspace_editor.png)
 

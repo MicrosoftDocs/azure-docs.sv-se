@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 12/09/2020
-ms.openlocfilehash: 16b924f486215d972477e93c4e199e7076a0a531
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.date: 01/12/2021
+ms.openlocfilehash: 2fcb8f6d22e93f3a95be26b7bc61f3b5226ba090
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97508891"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98117137"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory-in-the-azure-portal"></a>Kopiera flera tabeller i bulk genom att använda Azure Data Factory i Azure Portal
 
@@ -51,20 +51,8 @@ Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto]
 
 ## <a name="prerequisites"></a>Förutsättningar
 * **Azure Storage konto**. Azure Storage-kontot används för mellanlagring för Blob Storage i masskopieringsåtgärden. 
-* **Azure SQL Database**. Den här databasen innehåller källdata. 
-* **Azure Synapse-analys**. Det här datalagret innehåller de data som kopieras från SQL Database. 
-
-### <a name="prepare-sql-database-and-azure-synapse-analytics"></a>Förbered SQL Database-och Azure Synapse-analys 
-
-**Förbered Azure SQL Database-källan**:
-
-Skapa en databas i SQL Database med Adventure Works LT-exempel data efter [skapa en databas i Azure SQL Database](../azure-sql/database/single-database-create-quickstart.md) artikeln. Den här självstudien kopierar alla tabeller från den här exempel databasen till en Azure Synapse-analys.
-
-**Förbered intagningen av Azure Synapse Analytics**:
-
-1. Om du inte har en Azure Synapse Analytics-arbetsyta läser du artikeln [Kom igång med Azure Synapse Analytics](..\synapse-analytics\get-started.md) för att skapa en.
-
-1. Skapa motsvarande tabell scheman i Azure Synapse Analytics. Du kommer att använda Azure Data Factory till att migrera/kopiera data i ett senare steg.
+* **Azure SQL Database**. Den här databasen innehåller källdata. Skapa en databas i SQL Database med Adventure Works LT-exempel data efter [skapa en databas i Azure SQL Database](../azure-sql/database/single-database-create-quickstart.md) artikeln. Den här självstudien kopierar alla tabeller från den här exempel databasen till en Azure Synapse-analys.
+* **Azure Synapse-analys**. Det här datalagret innehåller de data som kopieras från SQL Database. Om du inte har en Azure Synapse Analytics-arbetsyta läser du artikeln [Kom igång med Azure Synapse Analytics](..\synapse-analytics\get-started.md) för att skapa en.
 
 ## <a name="azure-services-to-access-sql-server"></a>Azure-tjänster för åtkomst till SQL-servern
 
@@ -75,7 +63,7 @@ Om du vill kontrol lera och aktivera den här inställningen går du till Server
 ## <a name="create-a-data-factory"></a>Skapa en datafabrik
 
 1. Starta webbläsaren **Microsoft Edge** eller **Google Chrome**. Användargränssnittet för Data Factory stöds för närvarande bara i webbläsarna Microsoft Edge och Google Chrome.
-1. Öppna [Azure-portalen](https://portal.azure.com). 
+1. Gå till [Azure-portalen](https://portal.azure.com). 
 1. Till vänster på Azure Portal-menyn väljer du **skapa en resurs**  >  **integration**  >  **Data Factory**. 
 
    ![Valet Data Factory i fönstret Nytt](./media/doc-common-process/new-azure-data-factory-menu.png)
@@ -241,6 +229,7 @@ I den här självstudien skapar du två pipeliner: **IterateAndCopySQLTables** o
     ![Byggare för parametern Foreach](./media/tutorial-bulk-copy-portal/for-each-parameter-builder.png)
     
     d. Växla till fliken **aktiviteter** och klicka på **Penn ikonen** för att lägga till en underordnad aktivitet i den **förgrunds** aktiviteten.
+    
     ![För-aktivitets byggare](./media/tutorial-bulk-copy-portal/for-each-activity-builder.png)
 
 1. I verktygs lådan **aktiviteter** expanderar du **Flytta & överföring** och drar och släpper **Kopiera data** aktivitet i pipelinens designer-yta. Lägg märke till adressfältmenyn längst upp. **IterateAndCopySQLTable** är pipelinens namn och **IterateSQLTables** är förgrunds aktivitetens namn. Designern är i aktivitetsomfånget. Om du vill växla tillbaka till pipeline-redigeraren från förgrunds redigeraren kan du klicka på länken i menyn för dynamiska länkar. 
@@ -257,7 +246,6 @@ I den här självstudien skapar du två pipeliner: **IterateAndCopySQLTables** o
         SELECT * FROM [@{item().TABLE_SCHEMA}].[@{item().TABLE_NAME}]
         ``` 
 
-
 1. Växla till fliken **Mottagare** och gör följande: 
 
     1. Välj **AzureSqlDWDataset** för **Sink Dataset** (Datauppsättning för mottagare).
@@ -265,6 +253,7 @@ I den här självstudien skapar du två pipeliner: **IterateAndCopySQLTables** o
     1. Klicka på indatamängden för värdet för parametern DWSchema-> Markera kryss rutan **Lägg till dynamiskt innehåll** nedan, ange `@item().TABLE_SCHEMA` uttrycket som skript, > Välj **Slutför**.
     1. För kopierings metod väljer du **PolyBase**. 
     1. Avmarkera alternativet **Använd typ som standard** . 
+    1. För tabell alternativet är standardinställningen "ingen". Om du inte har skapat tabeller i tabellen Sink Azure Synapse Analytics, aktiverar du alternativet för **Automatisk skapande av tabell** . kopierings aktiviteten skapar sedan automatiskt tabeller åt dig baserat på källdata. Mer information finns i [skapa mottagar tabeller automatiskt](copy-activity-overview.md#auto-create-sink-tables). 
     1. Klicka på textrutan **Pre-copy Script** (Förkopieringsskript) -> välj **Lägg till dynamiskt innehåll** nedan -> ange följande uttryck för Fråga -> välj **Slutför**. 
 
         ```sql
@@ -272,6 +261,8 @@ I den här självstudien skapar du två pipeliner: **IterateAndCopySQLTables** o
         ```
 
         ![Inställningar för att kopiera mottagare](./media/tutorial-bulk-copy-portal/copy-sink-settings.png)
+
+
 1. Växla till fliken **Inställningar** och gör följande: 
 
     1. Markera kryss rutan för **att aktivera mellanlagring**.

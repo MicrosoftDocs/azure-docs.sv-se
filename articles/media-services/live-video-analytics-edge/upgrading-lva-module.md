@@ -5,12 +5,12 @@ author: naiteeks
 ms.topic: how-to
 ms.author: naiteeks
 ms.date: 12/14/2020
-ms.openlocfilehash: 9621f0a933c6102309286505f2c551c5256c5506
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: aa8657550c6475afd9f893acf8985c50cec0f199
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97901563"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98119466"
 ---
 # <a name="upgrading-live-video-analytics-on-iot-edge-from-10-to-20"></a>Uppgradera video analys i real tid på IoT Edge från 1,0 till 2,0
 
@@ -19,9 +19,9 @@ Den här artikeln beskriver skillnaderna och de olika saker som du bör tänka p
 ## <a name="change-list"></a>Ändra lista
 
 > [!div class="mx-tdCol4BreakAll"]
-> |Title|Live video analys 1,0|Live video analys 2,0|Beskrivning|
+> |Rubrik|Live video analys 1,0|Live video analys 2,0|Description|
 > |-------------|----------|---------|---------|
-> |Behållar avbildning|mcr.microsoft.com/media/live-video-analytics:1.0.0|mcr.microsoft.com/media/live-video-analytics:2.0.0|Microsoft-publicerade Docker-avbildningar för real tids video analys på Azure IoT Edge|
+> |Behållar avbildning|mcr.microsoft.com/media/live-video-analytics:1|mcr.microsoft.com/media/live-video-analytics:2|Microsoft-publicerade Docker-avbildningar för real tids video analys på Azure IoT Edge|
 > |**MediaGraph-noder** |    |   |   |
 > |Källor|:::image type="icon" source="./././media/upgrading-lva/check.png"::: RTSP-källa </br>:::image type="icon" source="./././media/upgrading-lva/check.png"::: IoT Hub meddelande källa |:::image type="icon" source="./././media/upgrading-lva/check.png"::: RTSP-källa </br>:::image type="icon" source="./././media/upgrading-lva/check.png"::: IoT Hub meddelande källa | MediaGraph-noder som fungerar som källor för medie inmatning och meddelanden.|
 > |Processorer|:::image type="icon" source="./././media/upgrading-lva/check.png"::: Processor för rörelse identifiering </br>:::image type="icon" source="./././media/upgrading-lva/check.png"::: Filter processor för RAM hastighet </br>:::image type="icon" source="./././media/upgrading-lva/check.png"::: Processor för http-tillägg </br>:::image type="icon" source="./././media/upgrading-lva/check.png"::: Grpc förlängnings processor </br>:::image type="icon" source="./././media/upgrading-lva/check.png"::: Signal grind processor |:::image type="icon" source="./././media/upgrading-lva/check.png"::: Processor för rörelse identifiering </br>:::image type="icon" source="./././media/upgrading-lva/remove.png":::**Filter processor för RAM hastighet**</br>:::image type="icon" source="./././media/upgrading-lva/check.png"::: Processor för http-tillägg </br>:::image type="icon" source="./././media/upgrading-lva/check.png"::: Grpc förlängnings processor </br>:::image type="icon" source="./././media/upgrading-lva/check.png"::: Signal grind processor | MediaGraph-noder som gör att du kan formatera mediet innan du skickar till AI-slutpunktsservrar.|

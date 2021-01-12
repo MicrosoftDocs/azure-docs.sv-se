@@ -11,12 +11,12 @@ ms.date: 11/23/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 7d258243dae06461d21e9b5f0346e419f034eea9
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 567d5ae8b9d480003486362a7aa0ef69f9740d52
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109715"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120299"
 ---
 # <a name="quickstart-pause-and-resume-compute-in-dedicated-sql-pool-via-the-azure-portal"></a>Snabb start: pausa och återuppta beräkning i dedikerad SQL-pool via Azure Portal
 
@@ -98,5 +98,4 @@ Följ dessa steg för att rensa resurser enligt dina önskemål.
 
 ## <a name="next-steps"></a>Nästa steg
 
-Du har nu pausat och återupptagit beräkningen för din dedikerade SQL-pool. Fortsätt till nästa artikel om du vill lära dig mer om hur du [läser in data i en dedikerad SQL-pool](load-data-from-azure-blob-storage-using-polybase.md). Mer information om hur du hanterar Compute-funktioner finns i artikeln [hantera beräknings översikt](sql-data-warehouse-manage-compute-overview.md) . 
-
+Du har nu pausat och återupptagit beräkningen för din dedikerade SQL-pool. Fortsätt till nästa artikel om du vill lära dig mer om hur du [läser in data i en dedikerad SQL-pool](./load-data-from-azure-blob-storage-using-copy.md). Mer information om hur du hanterar Compute-funktioner finns i artikeln [hantera beräknings översikt](sql-data-warehouse-manage-compute-overview.md) .

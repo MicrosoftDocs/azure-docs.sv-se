@@ -11,18 +11,31 @@ author: nabhishek
 manager: anansub
 ms.custom: seo-lt-2019
 ms.date: 06/10/2020
-ms.openlocfilehash: 8734247a913bdf6a44a9156f6f87705b618f7228
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 3f0cf3de4c2cffca6540fcd727872372103ac98f
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92632897"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98118276"
 ---
 # <a name="create-a-shared-self-hosted-integration-runtime-in-azure-data-factory"></a>Skapa en delad integration runtime med egen värd i Azure Data Factory
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Den här guiden visar hur du skapar en delad integration runtime med egen värd i Azure Data Factory. Sedan kan du använda den delade integrerings körningen med egen värd i en annan data fabrik.
+
+## <a name="create-a-shared-self-hosted-integration-runtime-in-azure-data-factory"></a>Skapa en delad integration runtime med egen värd i Azure Data Factory
+
+Du kan återanvända en befintlig egen värd för integrerings körning som du redan har konfigurerat i en data fabrik. Med den här återkopplingen kan du skapa en länkad egen värd för integrerings körning i en annan data fabrik genom att referera till en befintlig delad IR med egen värd.
+
+Om du vill se en introduktion och demonstration av den här funktionen kan du titta på följande 12-minuters video:
+
+> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Hybrid-data-movement-across-multiple-Azure-Data-Factories/player]
+
+### <a name="terminology"></a>Terminologi
+
+- **Delad IR**: en ursprunglig, egen IR-IR som körs på en fysisk infrastruktur.  
+- **Länkad IR**: en IR som refererar till en annan delad IR. Den länkade IR-filen är en logisk IR och använder infrastrukturen för en annan delad IR-anslutning med egen värd.
 
 ## <a name="create-a-shared-self-hosted-ir-using-azure-data-factory-ui"></a>Skapa en delad IR med egen värd med Azure Data Factory användar gränssnitt
 
@@ -55,9 +68,9 @@ För att skapa en delad IR med egen värd med Azure PowerShell kan du utföra f�
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-- **Azure-prenumeration** . Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar. 
+- **Azure-prenumeration**. Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar. 
 
-- **Azure PowerShell** . Följ instruktionerna i [installera Azure PowerShell på Windows med PowerShellGet](/powershell/azure/install-az-ps). Du använder PowerShell för att köra ett skript för att skapa en integration runtime med egen värd som kan delas med andra data fabriker. 
+- **Azure PowerShell**. Följ instruktionerna i [installera Azure PowerShell på Windows med PowerShellGet](/powershell/azure/install-az-ps). Du använder PowerShell för att köra ett skript för att skapa en integration runtime med egen värd som kan delas med andra data fabriker. 
 
 > [!NOTE]  
 > Om du vill ha en lista över Azure-regioner där Data Factory för närvarande är tillgängligt väljer du de regioner som intresserar dig för  [produkter som är tillgängliga efter region](https://azure.microsoft.com/global-infrastructure/services/?products=data-factory).
@@ -66,7 +79,7 @@ För att skapa en delad IR med egen värd med Azure PowerShell kan du utföra f�
 
 1. Starta Windows PowerShell ISE.
 
-1. Skapa variabler. Kopiera och klistra in följande skript. Ersätt variablerna, till exempel **SubscriptionName** och **ResourceGroupName** , med faktiska värden: 
+1. Skapa variabler. Kopiera och klistra in följande skript. Ersätt variablerna, till exempel **SubscriptionName** och **ResourceGroupName**, med faktiska värden: 
 
     ```powershell
     # If input contains a PSH special character, e.g. "$", precede it with the escape character "`" like "`$". 
@@ -213,6 +226,37 @@ Remove-AzDataFactoryV2IntegrationRuntime `
     -Links `
     -LinkedDataFactoryName $LinkedDataFactoryName
 ```
+
+### <a name="monitoring"></a>Övervakning
+
+#### <a name="shared-ir"></a>Delad IR
+
+![Alternativ för att hitta en delad integrerings körning](media/create-self-hosted-integration-runtime/Contoso-shared-IR.png)
+
+![Övervaka en delad integrerings körning](media/create-self-hosted-integration-runtime/contoso-shared-ir-monitoring.png)
+
+#### <a name="linked-ir"></a>Länkad IR
+
+![Alternativ för att hitta en länkad integrerings körning](media/create-self-hosted-integration-runtime/Contoso-linked-ir.png)
+
+![Övervaka en länkad integrerings körning](media/create-self-hosted-integration-runtime/Contoso-linked-ir-monitoring.png)
+
+
+### <a name="known-limitations-of-self-hosted-ir-sharing"></a>Kända begränsningar för IR-delning med egen värd
+
+* Data fabriken där en länkad IR skapas måste ha en [hanterad identitet](../active-directory/managed-identities-azure-resources/overview.md). Som standard har data fabriker som skapats i Azure Portal-eller PowerShell-cmdlets en implicit skapad hanterad identitet. Men när en data fabrik skapas via en Azure Resource Manager mall eller SDK, måste du ange egenskapen **Identity** explicit. Den här inställningen säkerställer att Resource Manager skapar en data fabrik som innehåller en hanterad identitet.
+
+* Den Data Factory .NET SDK som stöder den här funktionen måste vara version 1.1.0 eller senare.
+
+* Om du vill bevilja behörighet behöver du ägar rollen eller den ärvda ägar rollen i data fabriken där den delade IR-filen finns.
+
+* Delnings funktionen fungerar endast för data fabriker inom samma Azure AD-klient.
+
+* För Azure AD- [gäst användare](../active-directory/governance/manage-guest-access-with-access-reviews.md)är Sök funktionen i användar gränssnittet, som visar alla data fabriker med hjälp av nyckelordet search, inte fungerar. Men så länge gäst användaren är ägare till data fabriken kan du dela IR-filen utan Sök funktionen. För den hanterade identiteten för den data fabrik som behöver dela IR-filen anger du den hanterade identitet i rutan **tilldela behörighet** och väljer **lägg till** i Data Factory gränssnittet.
+
+  > [!NOTE]
+  > Den här funktionen är endast tillgänglig i Data Factory v2.
+
 
 ### <a name="next-steps"></a>Nästa steg
 

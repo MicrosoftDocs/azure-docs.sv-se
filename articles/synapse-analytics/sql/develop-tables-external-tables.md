@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: c2daef64b110e59da76d8342508c19c7f1b3cd08
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 02194bd6122cc97ac9dfd6887c6ae2161182c13a
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452780"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120435"
 ---
 # <a name="use-external-tables-with-synapse-sql"></a>Använda externa tabeller med Synapse SQL
 
@@ -31,9 +31,9 @@ I dedikerad SQL-pool kan du använda en extern tabell för att:
 
 När det används tillsammans med [CREATE TABLE som Select](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) -instruktion, importerar data till en tabell i SQL-poolen genom att välja från en extern tabell. Förutom [kopierings instruktionen](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)är externa tabeller användbara för att läsa in data. 
 
-En inläsnings kurs finns i [använda PolyBase för att läsa in data från Azure Blob Storage](../sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+En inläsnings kurs finns i [använda PolyBase för att läsa in data från Azure Blob Storage](../sql-data-warehouse/load-data-from-azure-blob-storage-using-copy.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json).
 
-### <a name="serverless-sql-pool"></a>[Serverlös SQL-pool](#tab/sql-on-demand)
+### <a name="serverless-sql-pool"></a>[SQL-pool utan Server](#tab/sql-on-demand)
 
 För en server utan SQL-pool använder du en extern tabell för att:
 
@@ -76,7 +76,7 @@ WITH
 [;]
 ```
 
-#### <a name="serverless-sql-pool"></a>[Serverlös SQL-pool](#tab/sql-on-demand)
+#### <a name="serverless-sql-pool"></a>[SQL-pool utan Server](#tab/sql-on-demand)
 
 ```syntaxsql
 CREATE EXTERNAL DATA SOURCE <data_source_name>
@@ -133,7 +133,7 @@ WITH
   ) ;
 ```
 
-#### <a name="serverless-sql-pool"></a>[Serverlös SQL-pool](#tab/sql-on-demand)
+#### <a name="serverless-sql-pool"></a>[SQL-pool utan Server](#tab/sql-on-demand)
 
 I följande exempel skapas en extern data källa för Azure Data Lake Gen2 som kan nås med SAS-autentiseringsuppgifter:
 
@@ -195,7 +195,7 @@ WITH (
 }
 ```
 
-#### <a name="serverless-sql-pool"></a>[Serverlös SQL-pool](#tab/sql-on-demand)
+#### <a name="serverless-sql-pool"></a>[SQL-pool utan Server](#tab/sql-on-demand)
 
 ```syntaxsql
 -- Create an external file format for PARQUET files.  

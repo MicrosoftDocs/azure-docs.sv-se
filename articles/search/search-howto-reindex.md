@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/18/2020
-ms.openlocfilehash: ae8fd7f405beb20d516835ccb80b86e769fd0393
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 47e9b80bb25b7ff14695cc67682265fe338ff76f
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94697092"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98119109"
 ---
 # <a name="how-to-rebuild-an-index-in-azure-cognitive-search"></a>Återskapa ett index i Azure Kognitiv sökning
 
@@ -37,7 +37,7 @@ Så länge du inte ändrar indexets struktur kan du uppdatera ett index med samm
 
 Släpp och återskapa ett index om något av följande villkor är uppfyllt. 
 
-| Condition (Väderförhållanden) | Beskrivning |
+| Villkor | Description |
 |-----------|-------------|
 | Ändra en fält definition | Att ändra ett fält namn, data typ eller specifika [indexattribut](/rest/api/searchservice/create-index) (sökbar, Filterable, sorterbar, aspektbar) kräver en fullständig återuppbyggnad. |
 | Tilldela ett fält till en analys | [Analys](search-analyzers.md) verktyg definieras i ett index och tilldelas sedan till fält. Du kan lägga till en ny analys definition till ett index när som helst, men du kan bara *tilldela* en analys när fältet har skapats. Detta gäller både för egenskaperna **Analyzer** och **indexAnalyzer** . Egenskapen **searchAnalyzer** är ett undantag (du kan tilldela den här egenskapen till ett befintligt fält). |
@@ -91,7 +91,7 @@ När du läser in indexet fylls varje fälts inverterade index med alla unika, t
 
 Du kan börja fråga ett index så snart det första dokumentet har lästs in. Om du känner till ett dokuments ID returnerar [Sök dokumentet REST API](/rest/api/searchservice/lookup-document) det aktuella dokumentet. För bredare testning bör du vänta tills indexet har lästs in och sedan använda frågor för att kontrol lera den kontext som du förväntar dig att se.
 
-Du kan använda [Sök Utforskaren](search-explorer.md) eller ett webbtest-verktyg som [Postman eller Visual Studio Code](search-get-started-rest.md) för att söka efter uppdaterat innehåll.
+Du kan använda [Sök Utforskaren](search-explorer.md) eller ett webbtest-verktyg som [Postman](search-get-started-rest.md) eller [Visual Studio Code](search-get-started-vs-code.md) för att söka efter uppdaterat innehåll.
 
 Om du har lagt till eller bytt namn på ett fält använder du [$Select](search-query-odata-select.md) för att returnera fältet: `search=*&$select=document-id,my-new-field,some-old-field&$count=true`
 

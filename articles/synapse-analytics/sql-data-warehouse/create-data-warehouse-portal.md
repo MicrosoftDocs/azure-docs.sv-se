@@ -11,18 +11,18 @@ ms.date: 05/28/2019
 ms.author: pimorano
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 78a0982081b8e34461fb2910cc7ce21be622cb6a
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 4da99200079557ab9d1674635c0df26c9e62d488
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922881"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120282"
 ---
 # <a name="quickstart-create-and-query-a-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics-using-the-azure-portal"></a>Snabb start: skapa och fråga en dedikerad SQL-pool (tidigare SQL DW) i Azure Synapse Analytics med hjälp av Azure Portal
 
 Skapa och fråga snabbt en dedikerad SQL-pool (tidigare SQL DW) i Azure Synapse Analytics med hjälp av Azure Portal.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 1. Om du inte har en Azure-prenumeration kan du skapa ett [kostnadsfritt](https://azure.microsoft.com/free/) konto innan du börjar.
 
@@ -140,7 +140,7 @@ I det här avsnittet används [SQL Server Management Studio](/sql/ssms/download-
    | Servernamn | Fullständigt kvalificerat servernamn | Här är ett exempel: **sqlpoolservername.Database.Windows.net**. |
    | Autentisering | SQL Server-autentisering | SQL-autentisering är den enda autentiseringstypen som vi konfigurerar i den här självstudiekursen. |
    | Inloggning | Serveradministratörskontot | Kontot som du angav när du skapade servern. |
-   | Lösenord | Lösenordet för serveradministratörskontot | Lösen ordet du angav när du skapade servern. |
+   | lösenordsinställning | Lösenordet för serveradministratörskontot | Lösen ordet du angav när du skapade servern. |
    ||||
 
    ![Anslut till server](./media/create-data-warehouse-portal/connect-to-server-ssms.png)
@@ -153,7 +153,7 @@ I det här avsnittet används [SQL Server Management Studio](/sql/ssms/download-
 
 ## <a name="run-some-queries"></a>Köra några frågor
 
-Vi rekommenderar inte att du kör stora frågor när du loggar som Server administratör, eftersom den använder en [begränsad resurs klass](resource-classes-for-workload-management.md). Konfigurera i stället [arbets belastnings isolering](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-configure-workload-isolation-tsql) som visas [i självstudierna](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/load-data-wideworldimportersdw#create-a-user-for-loading-data).
+Vi rekommenderar inte att du kör stora frågor när du loggar som Server administratör, eftersom den använder en [begränsad resurs klass](resource-classes-for-workload-management.md). Konfigurera i stället [arbets belastnings isolering](./quickstart-configure-workload-isolation-tsql.md) som visas [i självstudierna](./load-data-wideworldimportersdw.md#create-a-user-for-loading-data).
 
 Azure Synapse Analytics använder T-SQL som frågespråk. Använd följande steg om du vill öppna ett frågefönster och köra några T-SQL-frågor:
 

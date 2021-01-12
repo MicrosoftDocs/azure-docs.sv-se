@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 45c7f89f773095a102429c07f7441223de3c2dec
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: c537d3109f770c1ce77be6495bdacd24270dad5f
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96448258"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98119602"
 ---
 # <a name="dedicated-sql-pool-formerly-sql-dw-architecture-in-azure-synapse-analytics"></a>Dedikerad SQL-pool (tidigare SQL DW) arkitektur i Azure Synapse Analytics
 
@@ -47,7 +47,7 @@ När du använder en dedikerad SQL-pool (tidigare SQL DW) kan du med fristående
 
 ### <a name="azure-storage"></a>Azure Storage
 
-SQL-pool SQL (tidigare SQL DW) utnyttjar Azure Storage för att skydda dina användar data.  Eftersom dina data lagras och hanteras av Azure Storage, finns det en separat avgift för lagrings användningen. Data är shardade i **distributioner** för att optimera systemets prestanda. Du kan välja vilket horisontell partitionering-mönster som ska användas för att distribuera data när du definierar tabellen. Dessa horisontell partitionering-mönster stöds:
+SQL-pool SQL (tidigare SQL DW) utnyttjar Azure Storage för att skydda dina användar data.  Eftersom dina data lagras och hanteras av Azure Storage, finns det en separat avgift för lagrings användningen. Data är shardade i **distributioner** för att optimera systemets prestanda. Du kan välja vilket mönster för horisontell partitionering som ska användas för att distribuera data när du definierar tabellen. Dessa horisontell partitionering-mönster stöds:
 
 - Hash
 - Resursallokering (round robin)
@@ -107,13 +107,13 @@ Diagrammet nedan visar en replikerad tabell som cachelagras på den första dist
 
 ## <a name="next-steps"></a>Nästa steg
 
-Nu när du vet lite om Azure-Synapse kan du lära dig hur du snabbt [skapar en dedikerad SQL-pool (tidigare SQL DW)](create-data-warehouse-portal.md) och [läser in exempel data](load-data-from-azure-blob-storage-using-polybase.md). Om du inte har erfarenhet av Azure kan [Azure-ordlistan](../../azure-glossary-cloud-terminology.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) vara till hjälp om du stöter på ny terminologi. Eller titta på några av de andra Azure Synapse-resurserna.  
+Nu när du vet lite om Azure-Synapse kan du lära dig hur du snabbt [skapar en dedikerad SQL-pool (tidigare SQL DW)](create-data-warehouse-portal.md) och [läser in exempel data](./load-data-from-azure-blob-storage-using-copy.md). Om du inte har erfarenhet av Azure kan [Azure-ordlistan](../../azure-glossary-cloud-terminology.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) vara till hjälp om du stöter på ny terminologi. Eller titta på några av de andra Azure Synapse-resurserna.  
 
 - [Kundernas framgångsberättelser](https://azure.microsoft.com/case-studies/?service=sql-data-warehouse)
 - [Bloggar](https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/)
 - [Funktionsbegäranden](https://feedback.azure.com/forums/307516-sql-data-warehouse)
 - [Videor](https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse)
 - [Skapa ett supportärende](sql-data-warehouse-get-started-create-support-ticket.md)
-- [Sidan Microsoft Q&en fråga](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html)
+- [Sidan Microsoft Q&en fråga](/answers/topics/azure-synapse-analytics.html)
 - [Stack Overflow forum](https://stackoverflow.com/questions/tagged/azure-sqldw)
 - [Twitter](https://twitter.com/hashtag/SQLDW)

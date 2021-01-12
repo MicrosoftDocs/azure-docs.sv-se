@@ -8,80 +8,79 @@ ms.date: 3/24/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 757e34fd45b7d3d9703aa09daa7f040c5f605637
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 2cc96db88d9a2aec02de5e2fc4ed18b445972e7b
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96932395"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121162"
 ---
 # <a name="tutorial-train-and-deploy-an-azure-machine-learning-model"></a>Självstudie: träna och distribuera en Azure Machine Learning modell
 
 I den här artikeln utför vi följande uppgifter:
 
-* Använd Azure Notebooks för att träna en maskin inlärnings modell.
+* Använd Azure Machine Learning Studio för att träna en maskin inlärnings modell.
 * Paketera den tränade modellen som en behållar avbildning.
 * Distribuera behållar avbildningen som en Azure IoT Edge modul.
 
-Azure Notebooks dra nytta av en Azure Machine Learning arbets yta, ett grundläggande block som används för att experimentera, träna och distribuera maskin inlärnings modeller.
+Azure Machine Learning Studio är ett grundläggande block som används för att experimentera, träna och distribuera maskin inlärnings modeller.
 
 Stegen i den här artikeln kan vanligt vis utföras av data experter.
 
 I det här avsnittet av självstudien får du lära dig att:
 
 > [!div class="checklist"]
->
-> * Skapa ett Azure Notebooks-projekt för att träna en maskin inlärnings modell.
+> * Skapa Jupyter-anteckningsböcker i Azure Machine Learning-arbetsyta för att träna en maskin inlärnings modell.
 > * Använd den tränade Machine Learning-modellen.
 > * Skapa en Azure IoT Edge-modul från maskin inlärnings modellen för behållare.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Den här artikeln ingår i en serie för självstudier om hur du använder Azure Machine Learning på IoT Edge. Varje artikel i serien bygger på arbetet i föregående artikel. Om du har kommit till den här artikeln direkt kan du gå till den [första artikeln](tutorial-machine-learning-edge-01-intro.md) i serien.
 
-## <a name="set-up-azure-notebooks"></a>Konfigurera Azure Notebooks
+## <a name="set-up-azure-machine-learning"></a>Konfigurera Azure Machine Learning 
 
-Vi använder Azure Notebooks för att vara värd för de två Jupyter-Anteckningsbokarna och de filer som stöds. Här skapar och konfigurerar vi ett Azure Notebooks-projekt. Om du inte har använt Jupyter och/eller Azure Notebooks, är här några introduktions dokument:
+Vi använder Azure Machine Learning Studio för att vara värd för de två Jupyter-Anteckningsbokarna och de filer som stöds. Här skapar och konfigurerar vi ett Azure Machine Learning-projekt. Om du inte har använt Jupyter och/eller Azure Machine Learning Studio, är här några introduktions dokument:
 
-* **Snabb start:** [skapa och dela en bärbar dator](../notebooks/quickstart-create-share-jupyter-notebook.md)
-* **Självstudie:** [skapa och kör en Jupyter-anteckningsbok med python](../notebooks/tutorial-create-run-jupyter-notebook.md)
+* **Jupyter Notebook:** [arbeta med Jupyter-anteckningsböcker i Visual Studio Code](https://code.visualstudio.com/docs/python/jupyter-support)
+* **Azure Machine Learning:** [kom igång med Azure Machine Learning i Jupyter Notebooks](../machine-learning/tutorial-1st-experiment-sdk-setup.md)
 
-Att använda Azure Notebooks garanterar en konsekvent miljö för övningen.
 
 > [!NOTE]
-> När du har konfigurerat tjänsten kan du använda tjänsten Azure Notebooks från vilken dator som helst. Under installationen bör du använda den virtuella utvecklings datorn som innehåller alla filer som du behöver.
+> När du har konfigurerat tjänsten kan du använda tjänsten Azure Machine Learning från vilken dator som helst. Under installationen bör du använda den virtuella utvecklings datorn som innehåller alla filer som du behöver.
 
-### <a name="create-an-azure-notebooks-account"></a>Skapa ett Azure Notebooks konto
+### <a name="install-azure-machine-learning-visual-studio-code-extension"></a>Installera Azure Machine Learning Visual Studio Code-tillägg
+VS Code på den virtuella utvecklings datorn ska ha det här tillägget installerat. Om du kör på en annan instans måste du installera om tillägget enligt beskrivningen [här.](../machine-learning/tutorial-setup-vscode-extension.md)
 
-Om du vill använda Azure Notebooks måste du skapa ett konto. Azure Notebook-konton är oberoende av Azure-prenumerationer.
+### <a name="create-an-azure-machine-learning-account"></a>Skapa ett Azure Machine Learning konto  
+För att kunna etablera resurser och köra arbets belastningar på Azure måste du logga in med dina autentiseringsuppgifter för Azure-kontot.
 
-1. Navigera till [Azure Notebooks](https://notebooks.azure.com).
+1. Öppna paletten kommando i Visual Studio Code genom att välja **Visa**  >  **kommando palett** på Meny raden. 
 
-1. Klicka på **Logga** in i det övre högra hörnet på sidan.
+1. `Azure: Sign In`Starta inloggnings processen genom att ange kommandot i kommando paletten. Följ anvisningarna för att slutföra inloggningen. 
 
-1. Logga in med ett arbets-eller skol konto (Azure Active Directory) eller ditt personliga konto (Microsoft-konto).
+1. Skapa en Azure ML-beräkning-instans för att köra arbets belastningen. Med kommandots lastpall anger du kommandot `Azure ML: Create Compute` . 
+1. Välj din Azure-prenumeration
+1. Välj **+ Skapa ny Azure ml-arbetsyta** och ange namn `turbofandemo` .
+1. Välj den resurs grupp som du har använt för den här demon.
+1. Du bör kunna se förloppet för att skapa arbets ytor i det nedre högra hörnet av ditt VS Code-fönster: **skapa arbets yta: turobofandemo** (det kan ta en minut eller två). 
+1. Vänta tills arbets ytan har skapats. Det bör stå att **turbofandemo för Azure ml-arbetsytan skapas**.
 
-1. Om du inte har använt Azure Notebooks tidigare uppmanas du att bevilja åtkomst till Azure Notebooks-appen.
 
-1. Skapa ett användar-ID för Azure Notebooks.
+### <a name="upload-jupyter-notebook-files"></a>Ladda upp Jupyter Notebook-filer
 
-### <a name="upload-jupyter-notebook-files"></a>Ladda upp Jupyter notebook-filer
+Vi kommer att ladda upp exempel på notebook-filer till en ny Azure ML-arbetsyta.
 
-Vi kommer att ladda upp exempel på notebook-filer till ett nytt Azure Notebooks-projekt.
+1. Gå till ml.azure.com och logga in.
+1. Välj din Microsoft-katalog, Azure-prenumeration och den nyligen skapade Azure ML-arbetsytan.
 
-1. På sidan användare i ditt nya konto väljer du **Mina projekt** i den översta meny raden.
+    :::image type="content" source="media/tutorial-machine-learning-edge-04-train-model/select-studio-workspace.png" alt-text="Välj din Azure ML-arbetsyta." :::
 
-1. Lägg till ett nytt projekt genom att välja **+** knappen.
+1. När du har loggat in på Azure ML-arbetsytan navigerar du till avsnittet **antecknings böcker** med hjälp av den vänstra sidan.
+1. Välj fliken **Mina filer** .
 
-1. Ange ett **projekt namn** i dialog rutan **Skapa nytt projekt** . 
+1. Välj **Ladda upp** (uppåtpilen) 
 
-1. Lämna **offentligt** och **viktigt** omarkerat eftersom det inte behövs något behov av att projektet ska vara offentligt eller ha ett viktigt.
-
-1. Välj **Skapa**.
-
-1. Välj **Ladda upp** (uppåtpilen) och välj **från dator**.
-
-1. Välj **Välj filer**.
 
 1. Navigera till **C:\source\IoTEdgeAndMlSample\AzureNotebooks**. Markera alla filer i listan och klicka på **Öppna**.
 
@@ -89,9 +88,9 @@ Vi kommer att ladda upp exempel på notebook-filer till ett nytt Azure Notebooks
 
 1. Välj **Ladda upp** för att börja ladda upp och välj sedan **klart** när processen är klar.
 
-### <a name="azure-notebook-files"></a>Azure notebook-filer
+### <a name="jupyter-notebook-files"></a>Jupyter Notebook filer
 
-Vi går igenom filerna som du laddade upp i Azure Notebooks-projektet. Aktiviteterna i den här delen av själv studie kursen sträcker sig över två notebook-filer, som använder några få stödfiler.
+Vi går igenom filerna som du laddade upp i din Azure ML-arbetsyta. Aktiviteterna i den här delen av själv studie kursen sträcker sig över två notebook-filer, som använder några få stödfiler.
 
 * **01-turbofan \_ regression. ipynb:** den här antecknings boken använder arbets ytan Machine Learning tjänst för att skapa och köra ett Machine Learning-experiment. I stort sett gör antecknings boken följande steg:
 
@@ -115,13 +114,13 @@ Vi går igenom filerna som du laddade upp i Azure Notebooks-projektet. Aktivitet
 
 * **Readme.MD:** README som beskriver hur du använder antecknings böckerna.  
 
-## <a name="run-azure-notebooks"></a>Kör Azure Notebooks
+## <a name="run-jupyter-notebooks"></a>Kör Jupyter Notebooks
 
-Nu när projektet har skapats kan du köra antecknings böckerna. 
+Nu när arbets ytan har skapats kan du köra antecknings böckerna. 
 
-1. Från projekt sidan väljer du **01-turbofan \_ regression. ipynb**.
+1. Från sidan **Mina filer** väljer du **01-turbofan \_ regression. ipynb**.
 
-    ![Välj den första notebook som ska köras](media/tutorial-machine-learning-edge-04-train-model/select-turbofan-regression-notebook.png)
+    :::image type="content" source="media/tutorial-machine-learning-edge-04-train-model/select-turbofan-notebook.png" alt-text="Välj den första antecknings boken som ska köras. ":::
 
 1. Om antecknings boken **inte är betrodd** klickar du på widgeten **ej betrodd** överst till höger i antecknings boken. Välj **förtroende** när dialog rutan öppnas.
 
@@ -162,11 +161,11 @@ Nu när projektet har skapats kan du köra antecknings böckerna.
 
 Kontrol lera att antecknings böckerna har slutförts genom att kontrol lera att några objekt har skapats.
 
-1. På sidan Azure Notebooks projekt väljer du **Visa dolda objekt** så att objekt namn som börjar med en punkt visas.
+1. På fliken **Mina filer** på din Azure ml-anteckningsbok väljer du **Uppdatera**.
 
 1. Kontrol lera att följande filer har skapats:
 
-    | Fil | Beskrivning |
+    | Fil | Description |
     | --- | --- |
     | ./aml_config/.azureml/config.jspå | Konfigurations fil som används för att skapa Azure Machine Learning-arbetsyta. |
     | ./aml_config/model_config.jspå | Konfigurations fil som vi behöver för att distribuera modellen i **turbofanDemo** Machine Learning-arbetsytan i Azure. |
@@ -180,7 +179,7 @@ Kontrol lera att antecknings böckerna har slutförts genom att kontrol lera att
     | Container Registry | turbofandemoxxxxxxxx |
     | Program insikter | turbofaninsightxxxxxxxx |
     | Key Vault | turbofankeyvaultbxxxxxxxx |
-    | Lagring | turbofanstoragexxxxxxxxx |
+    | Storage | turbofanstoragexxxxxxxxx |
 
 ### <a name="debugging"></a>Felsökning
 
@@ -194,7 +193,7 @@ Den här självstudien är en del av en uppsättning där varje artikel bygger p
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här artikeln använde vi två Jupyter-anteckningsböcker som körs i Azure Notebooks för att använda data från turbofan-enheter för att träna en återstående RUL-klassificerare () för att spara klassificeraren som en modell, för att skapa en behållar avbildning och för att distribuera och testa avbildningen som en webb tjänst.
+I den här artikeln använde vi två Jupyter-anteckningsböcker som körs i Azure ML Studio för att använda data från turbofan-enheter för att träna en kvarvarande RUL-klassificerare () för att spara klassificeraren som en modell, för att skapa en behållar avbildning och för att distribuera och testa avbildningen som en webb tjänst.
 
 Fortsätt till nästa artikel om du vill skapa en IoT Edge enhet.
 

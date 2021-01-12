@@ -10,16 +10,16 @@ ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6859d0582997ee861713090ccb4c22ed58ec4ca7
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 5ce411f3a2f3be162f9af16422d20b3e8b536fee
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462330"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120928"
 ---
 # <a name="connection-strings-for-synapse-sql"></a>Anslutnings strängar för Synapse-SQL
 
-Du kan ansluta till Synapse SQL med flera olika program protokoll som, [ADO.net](https://msdn.microsoft.com/library/e80y5yhx(v=vs.110).aspx), [ODBC](https://msdn.microsoft.com/library/jj730314.aspx), [php](https://msdn.microsoft.com/library/cc296172.aspx?f=255&MSPPError=-2147217396)och [JDBC](https://msdn.microsoft.com/library/mt484311(v=sql.110).aspx). Nedan visas några exempel på anslutnings strängar för varje protokoll. 
+Du kan ansluta till Synapse SQL med flera olika program protokoll som, [ADO.net](/dotnet/framework/data/adonet/), [ODBC](/sql/connect/odbc/windows/microsoft-odbc-driver-for-sql-server-on-windows), [php](/sql/connect/php/overview-of-the-php-sql-driver?f=255&MSPPError=-2147217396)och [JDBC](/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server). Nedan visas några exempel på anslutnings strängar för varje protokoll. 
 
 Du kan också använda Azure Portal för att bygga anslutnings strängen.  Om du vill bygga anslutnings strängen med hjälp av Azure Portal navigerar du till bladet databas under *Essentials* . Välj *Visa databas anslutnings strängar*.
 

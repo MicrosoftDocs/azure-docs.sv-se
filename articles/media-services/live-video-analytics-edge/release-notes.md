@@ -3,12 +3,12 @@ title: Video analys i real tid för IoT Edge viktig information – Azure
 description: Det här avsnittet innehåller viktig information om real tids analys av IoT Edge-versioner, förbättringar, fel korrigeringar och kända problem.
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: 7761fee8f23b5be259f9a5c278f761fa4ce92fbf
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 7f8957d1ec93259cf6defe7980f19298f782ea5e
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98059984"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121251"
 ---
 # <a name="live-video-analytics-on-iot-edge-release-notes"></a>Viktig information om live video analys i IoT Edge
 
@@ -20,6 +20,23 @@ Den här artikeln innehåller information om:
 * Kända problem
 * Felkorrigeringar
 * Föråldrade funktioner
+
+<hr width=100%>
+
+## <a name="january-12-2021"></a>12 januari 2021
+
+Den här versions tag gen är för uppdateringen januari 2021 för modulen:
+
+```
+mcr.microsoft.com/media/live-video-analytics:2.0.1
+```
+
+> [!NOTE]
+> I snabb starterna och självstudierna använder distributions manifestet en tagg på 2 (Real-Video-Analytics: 2). Det innebär att bara att omdistribuera sådana manifest bör uppdatera modulen på din gräns > enheter.
+### <a name="bug-fixes"></a>Felkorrigeringar 
+
+* Fälten `ActivationSignalOffset` `MinimumActivationTime` och `MaximumActivationTime` i signal grinds processorerna angavs felaktigt som obligatoriska egenskaper. De är nu **valfria** egenskaper.
+* Åtgärdat ett användnings fel som gör att live video analys på IoT Edge modul kraschar när den distribueras i vissa regioner.
 
 <hr width=100%>
 

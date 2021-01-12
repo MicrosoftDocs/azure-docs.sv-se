@@ -11,12 +11,12 @@ ms.date: 11/20/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 64ba24eb0eab581310122908fc05d1d671ac1d40
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 1a988dba52b36b1d27407316200bfa6897de7cf5
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96531581"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120163"
 ---
 # <a name="data-loading-strategies-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Data inläsnings strategier för dedikerad SQL-pool i Azure Synapse Analytics
 
@@ -42,7 +42,7 @@ De grundläggande stegen för att implementera ELT är:
 5. Transformera data.
 6. Infoga data i produktionstabeller.
 
-En inläsnings kurs finns i [läsa in data från Azure Blob Storage](load-data-from-azure-blob-storage-using-polybase.md).
+En inläsnings kurs finns i [läsa in data från Azure Blob Storage](./load-data-from-azure-blob-storage-using-copy.md).
 
 ## <a name="1-extract-the-source-data-into-text-files"></a>1. extrahera källdata i textfiler
 
@@ -123,7 +123,7 @@ Använd följande SQL Data Type-mappning vid inläsning av Parquet-filer:
 >- Följande fel kan uppstå om typer inte stämmer överens mellan Parquet och SQL eller om du har Parquet-data typer som inte stöds: **"HdfsBridge:: recordReaderFillBuffer-oväntat fel vid fyllning av Record Reader-buffert: ClassCastException:..."**
 >- Det finns inte stöd för att läsa in ett värde utanför intervallet 0-127 i en tinyint-kolumn för fil formatet Parquet och ORC.
 
-Ett exempel på hur du skapar externa objekt finns i [skapa externa tabeller](https://docs.microsoft.com/azure/synapse-analytics/sql/develop-tables-external-tables?tabs=sql-pool).
+Ett exempel på hur du skapar externa objekt finns i [skapa externa tabeller](../sql/develop-tables-external-tables.md?tabs=sql-pool).
 
 ### <a name="format-text-files"></a>Formatera textfiler
 
@@ -142,11 +142,11 @@ Vi rekommenderar att du läser in data i en mellanlagringsplats. Med mellanlagri
 
 Om du vill läsa in data kan du använda något av följande inläsnings alternativ:
 
-- [Kopierings instruktionen](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) är det rekommenderade inläsnings verktyget, som du kan använda för att sömlöst och flexibelt läsa in data. Instruktionen har många ytterligare inläsnings funktioner som PolyBase inte tillhandahåller. 
-- [PolyBase med T-SQL](load-data-from-azure-blob-storage-using-polybase.md) kräver att du definierar externa data objekt.
+- [Kopierings instruktionen](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) är det rekommenderade inläsnings verktyget, som du kan använda för att sömlöst och flexibelt läsa in data. Instruktionen har många ytterligare inläsnings funktioner som PolyBase inte tillhandahåller. 
+- [PolyBase med T-SQL](./load-data-from-azure-blob-storage-using-copy.md) kräver att du definierar externa data objekt.
 - [PolyBase-och Copy-uttryck med Azure Data Factory (ADF)](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) är ett annat Orchestration-verktyg.  Den definierar en pipeline och schemalägger jobb.
 - [PolyBase med SSIS](/sql/integration-services/load-data-to-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) fungerar bra när dina källdata är i SQL Server. SSIS definierar källa till mål tabell mappningar och dirigerar även belastningen. Om du redan har SSIS-paket kan du ändra paketen så att de fungerar med det nya informations lager målet.
-- [PolyBase med Azure Databricks](../../azure-databricks/databricks-extract-load-sql-data-warehouse.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) överför data från en tabell till en Databricks-dataframe och/eller skriver data från en Databricks-dataframe till en tabell med PolyBase.
+- [PolyBase med Azure Databricks](/azure/databricks/scenarios/databricks-extract-load-sql-data-warehouse?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json) överför data från en tabell till en Databricks-dataframe och/eller skriver data från en Databricks-dataframe till en tabell med PolyBase.
 
 ### <a name="other-loading-options"></a>Andra inläsnings alternativ
 
