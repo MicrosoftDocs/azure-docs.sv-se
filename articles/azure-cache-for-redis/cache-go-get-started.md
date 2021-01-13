@@ -7,18 +7,18 @@ ms.service: cache
 ms.devlang: go
 ms.topic: quickstart
 ms.date: 01/08/2021
-ms.openlocfilehash: 577bcc70633fd2a9f47dd0c95d98b729a1326647
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: de7bdc22b4bfdf9ef5865b1b601b32672eb868d1
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98146511"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165135"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-go"></a>Snabb start: Använd Azure cache för Redis med go
 
 I den här artikeln får du lära dig hur du skapar en REST API i go som lagrar och hämtar användar information som backas upp av en [hash](https://redis.io/topics/data-types-intro#redis-hashes) -datastruktur i [Azure cache för Redis](./cache-overview.md). 
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 - Azure-prenumeration – [skapa en kostnads fritt](https://azure.microsoft.com/free/)
 - [Go](https://golang.org/doc/install) (helst version 1,13 eller senare)
@@ -62,7 +62,9 @@ if err != nil {
 
 Om anslutningen lyckas konfigureras [http-hanterare](https://golang.org/pkg/net/http/#HandleFunc) för hantering `POST` och `GET` åtgärder och HTTP-servern startas. 
 
+> [!NOTE] 
 > [Gorilla MUX-biblioteket](https://github.com/gorilla/mux) används för routning (även om det inte är absolut nödvändigt och vi kunde ha gjort det med standard biblioteket för det här exempel programmet).
+>
 
 ```go
 uh := userHandler{client: client}

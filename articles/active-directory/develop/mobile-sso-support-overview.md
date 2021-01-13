@@ -11,16 +11,18 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/14/2020
 ms.author: nichola
-ms.openlocfilehash: 9c53ea5bad88eb79940274c409218045c06d7981
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 4f0588667df6acb11a43e8c3469c67f65ed3cdd9
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98064976"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165186"
 ---
 # <a name="support-single-sign-on-and-app-protection-policies-in-mobile-apps-you-develop"></a>Stöd för enkel inloggning och skydds principer för appar i mobilappar som du utvecklar
 
 Enkel inloggning (SSO) är ett viktigt utbud av Microsoft Identity Platform och Azure Active Directory och ger enkel och säker inloggning för användare av din app. Dessutom möjliggör app Protection-principer (APP) stöd för de nyckel säkerhets principer som skyddar användarens data. Tillsammans möjliggör de här funktionerna säkra användar inloggningar och hantering av appens data.
+
+> [!VIDEO https://www.youtube.com/embed/JpeMeTjQJ04]
 
 I den här artikeln förklaras varför SSO och APP är viktiga och ger vägledning på hög nivå för att skapa mobila program som stöder dessa funktioner. Detta gäller för både telefon-och surfplattor. Om du är IT-administratör som vill distribuera SSO över din organisations Azure Active Directory klient kan du läsa vår [vägledning för att planera en distribution med enkel inloggning](../manage-apps/plan-sso-deployment.md)
 

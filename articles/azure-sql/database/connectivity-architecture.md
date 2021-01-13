@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database-anslutningsarkitektur
+title: Arkitektur för Azure SQL Database anslutning
 description: I det här dokumentet beskrivs Azure SQL Database anslutnings arkitektur för databas anslutningar från Azure eller utanför Azure.
 services: sql-database
 ms.service: sql-database
@@ -12,20 +12,20 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: sstein, vanto
 ms.date: 06/26/2020
-ms.openlocfilehash: d0242ceec62db6548d91e5e58c21981a4f0246a0
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 74dd3a6b19d241fdf05e6438226227147ba4afbd
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92672510"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165951"
 ---
-# <a name="azure-sql-database-and-azure-synapse-analytics-connectivity-architecture"></a>Anslutnings arkitektur för Azure SQL Database och Azure Synapse Analytics
+# <a name="azure-sql-database-and-azure-synapse-analytics-connectivity-architecture"></a>Anslutningsarkitektur för Azure SQL Database och Azure Synapse Analytics
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
 Den här artikeln förklarar arkitekturen i olika komponenter som dirigerar nätverks trafik till en server i Azure SQL Database-eller Azure Synapse-analys. Den förklarar också olika anslutnings principer och hur de påverkar klienter som ansluter från Azure och klienter som ansluter utanför Azure.
 
 > [!IMPORTANT]
-> Den här artikeln gäller *inte* för **Azure SQL-hanterade instanser** . Se [anslutnings arkitekturen för en hanterad instans](../managed-instance/connectivity-architecture-overview.md).
+> Den här artikeln gäller *inte* för **Azure SQL-hanterade instanser**. Se [anslutnings arkitekturen för en hanterad instans](../managed-instance/connectivity-architecture-overview.md).
 
 ## <a name="connectivity-architecture"></a>Anslutningsarkitektur
 
@@ -76,34 +76,35 @@ Information om hur trafiken ska migreras till nya gateways i vissa regioner finn
 
 | Region namn          | IP-adresser för gateway |
 | --- | --- |
-| Australien, centrala    | 20.36.105.0 |
-| Australien, Central2   | 20.36.113.0 |
+| Australien, centrala    | 20.36.105.0, 20.36.104.6, 20.36.104.7 |
+| Australien, centrala 2   | 20.36.113.0, 20.36.112.6 |
 | Australien, östra       | 13.75.149.87, 40.79.161.1, 13.70.112.9 |
 | Sydöstra Australien | 191.239.192.109, 13.73.109.251, 13.77.48.10 |
-| Brasilien, södra         | 104.41.11.5, 191.233.200.14 |
+| Brasilien, södra         | 104.41.11.5, 191.233.200.14, 191.234.144.16, 191.234.152.3 |
 | Kanada, centrala       | 40.85.224.249, 52.246.152.0, 20.38.144.1 |
-| Kanada, östra          | 40.86.226.166, 52.242.30.154 |
+| Kanada, östra          | 40.86.226.166, 52.242.30.154, 40.69.105.9 , 40.69.105.10 |
 | Central US           | 13.67.215.62, 52.182.137.15, 23.99.160.139, 104.208.16.96, 104.208.21.1 |
 | Kina, östra           | 139.219.130.35     |
 | Kina, östra 2         | 40.73.82.1         |
 | Kina, norra          | 139.219.15.17      |
 | Kina, norra 2        | 40.73.50.0         |
-| Asien, östra            | 191.234.2.139, 52.175.33.150, 13.75.32.4 |
+| Asien, östra            | 191.234.2.139, 52.175.33.150, 13.75.32.4, 13.75.32.14 |
 | East US              | 40.121.158.30, 40.79.153.12, 191.238.6.43, 40.78.225.32 |
 | USA, östra 2            | 40.79.84.180, 52.177.185.181, 52.167.104.0, 191.239.224.107, 104.208.150.3 |
-| Frankrike, centrala       | 40.79.137.0, 40.79.129.1 |
+| Frankrike, centrala       | 40.79.137.0, 40.79.129.1, 40.79.137.8, 40.79.145.12 |
+| Frankrike, södra         | 40.79.177.10 ,40.79.177.12 |
 | Tyskland, centrala      | 51.4.144.100       |
 | Tyskland, norra öst   | 51.5.144.179       |
 | Tyskland, västra centrala | 51.116.240.0, 51.116.248.0, 51.116.152.0 |
-| Indien, centrala        | 104.211.96.159     |
+| Indien, centrala        | 104.211.96.159, 104.211.86.30 , 104.211.86.31 |
 | Södra Indien          | 104.211.224.146    |
-| Indien, västra           | 104.211.160.80     |
+| Indien, västra           | 104.211.160.80, 104.211.144.4 |
 | Japan, östra           | 13.78.61.196, 40.79.184.8, 13.78.106.224, 191.237.240.43, 40.79.192.5 |
 | Japan, västra           | 104.214.148.156, 40.74.100.192, 191.238.68.11, 40.74.97.10 |
-| Sydkorea, centrala        | 52.231.32.42       |
+| Sydkorea, centrala        | 52.231.32.42, 52.231.17.22 ,52.231.17.23 |
 | Sydkorea, södra          | 52.231.200.86      |
 | USA, norra centrala     | 23.96.178.199, 23.98.55.75, 52.162.104.33 |
-| Norra Europa         | 40.113.93.91, 191.235.193.75, 52.138.224.1, 13.74.104.113 |
+| Europa, norra         | 40.113.93.91, 191.235.193.75, 52.138.224.1, 13.74.104.113 |
 | Östra Norge          | 51.120.96.0        |
 | Norge, väst          | 51.120.216.0       |
 | Sydafrika, norra   | 102.133.152.0, 102.133.120.2       |

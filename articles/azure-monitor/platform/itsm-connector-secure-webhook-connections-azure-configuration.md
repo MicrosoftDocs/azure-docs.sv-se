@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 01/03/2021
-ms.openlocfilehash: 5eb58c48acc7974a4379cf1993a73228c99f5e6d
-ms.sourcegitcommit: 697638c20ceaf51ec4ebd8f929c719c1e630f06f
+ms.openlocfilehash: 03a16bfbcb3a8d46a6cb4faa03aa6b6e96cf3db3
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857581"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165968"
 ---
 # <a name="configure-azure-to-connect-itsm-tools-using-secure-export"></a>Konfigurera Azure för att ansluta ITSM-verktyg med säker export
 
@@ -39,9 +39,9 @@ Följ de här stegen för att registrera programmet med Azure AD:
 
 ## <a name="define-service-principal"></a>Definiera tjänstens huvud namn
 
-Åtgärds grupp tjänsten måste ha behörighet att hämta autentiseringstoken från AAD-programmet för att kunna autentisera med tjänsten nu. Om du vill bevilja dessa behörigheter måste du skapa ett huvud namn för tjänsten åtgärds grupp i din klient organisation.
-Du kan använda [PowerShell-kommandon](./action-groups.md#secure-webhook-powershell-script) för det här ändamålet. (Kräver administratörs behörighet för innehavare).
-Som ett valfritt steg kan du definiera program rollen i den skapade appens manifest, vilket kan göra det möjligt att ytterligare begränsa åtkomsten så att endast vissa program med den specifika rollen kan skicka meddelanden. Den här rollen måste tilldelas till åtgärds gruppens tjänst huvud namn. \
+Åtgärds grupp tjänsten är en första parts applikation, och har därför behörighet att hämta autentiseringstoken från AAD-programmet för att kunna autentisera med tjänsten nu.
+Som ett valfritt steg kan du definiera program rollen i den skapade appens manifest, vilket kan göra det möjligt att ytterligare begränsa åtkomsten så att endast vissa program med den specifika rollen kan skicka meddelanden. Den här rollen måste tilldelas till åtgärds gruppens tjänst huvud namn (kräver administratörs behörighet för innehavare).
+
 Det här steget kan göras via samma [PowerShell-kommandon](./action-groups.md#secure-webhook-powershell-script).
 
 ## <a name="create-a-secure-webhook-action-group"></a>Skapa en säker webhook-åtgärds grupp

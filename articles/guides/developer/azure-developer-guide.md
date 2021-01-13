@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: 8694c403b14234a70b0a67f9f4defb7817ba3ae3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 9999b2fa116a2336f8e50fb166e5d870ae4b5a5f
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005392"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165067"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Utvecklarens startguide för Azure
 
@@ -105,6 +105,21 @@ Service Fabric stöder WebAPI med Open Web Interface för .NET (OWIN) och ASP.NE
 > **När du ska använda:** Service Fabric är ett bra val när du skapar ett program eller skriver om ett befintligt program för att använda en arkitektur för mikrotjänster. Använd Service Fabric när du behöver mer kontroll över eller direkt åtkomst till, den underliggande infrastrukturen.
 >
 > **Kom igång:** [skapa ditt första Azure Service Fabric-program](../../service-fabric/service-fabric-tutorial-create-dotnet-app.md).
+
+#### <a name="azure-spring-cloud"></a>Azure Spring Cloud
+
+Azure våren Cloud är en plattform för Server lös mikrotjänster som gör att du kan bygga, distribuera, skala och övervaka dina program i molnet. Använd våren Cloud för att ta moderna mikrotjänst mönster till våren Boot Apps, vilket eliminerar en exempel kod för att snabbt bygga robusta Java-appar.
+
+- Använd hanterade versioner av våren Cloud Service Discovery and config server, medan vi ser till att dessa kritiska komponenter körs i optimala skick.
+- Fokusera på att skapa din affärs logik och vi tar hand om din tjänst körning med säkerhets korrigeringar, efterlevnads standarder och hög tillgänglighet.
+- Hantera programmets livs cykel (t. ex.: distribuera, starta, stoppa, skala) ovanpå Azure Kubernetes-tjänsten.
+- Bind enkelt anslutningar mellan dina appar och Azure-tjänster som Azure Database for MySQL och Azure cache för Redis.
+- Övervaka och Felsök mikrotjänster och program med enhetliga övervaknings verktyg i företags klass som erbjuder djupgående insikter om program beroenden och operationell telemetri.
+
+> **När du ska använda:** Som ett fullständigt hanterat service Azure våren-moln är ett bra val när du minimerar drifts kostnaden som kör våren start/våren-baserade mikrotjänster på Azure. 
+>
+> **Kom igång:** [distribuera ditt första Azure våren Cloud-program](../../spring-cloud/spring-cloud-quickstart.md).
+
 
 ### <a name="enhance-your-applications-with-azure-services"></a>Förbättra dina program med Azure-tjänster
 

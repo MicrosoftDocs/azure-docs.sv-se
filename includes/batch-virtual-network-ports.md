@@ -10,15 +10,15 @@ ms.service: batch
 ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
-ms.date: 06/16/2020
+ms.date: 01/13/2021
 ms.author: jenhayes
 ms.custom: include file
-ms.openlocfilehash: e4f17fbfad1e7e550b3a1e95c93e4b061d0f1c3c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 08e7463f4657b2ae5d6da1017c14226e97af7605
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95993438"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165747"
 ---
 ### <a name="general-requirements"></a>Allmänna krav
 
@@ -29,6 +29,8 @@ ms.locfileid: "95993438"
 * Det undernät som anges för poolen måste ha tillräckliga otilldelade IP-adresser för det antal virtuella datorer som är mål för poolen. Summan av egenskaperna `targetDedicatedNodes` och `targetLowPriorityNodes` för poolen. Om undernätet inte har tillräckligt med lediga IP-adresser, allokerar poolen datornoderna partiellt och ett storleksändringsfel inträffar.
 
 * Azure Storage-slutpunkt behöver matchas av eventuella anpassade DNS-servrar som servar ditt virtuella nätverk. Mer specifikt, ska URL:er av formen `<account>.table.core.windows.net`, `<account>.queue.core.windows.net` och `<account>.blob.core.windows.net` vara matchningsbara.
+
+* Flera pooler kan skapas i samma VNet eller i samma undernät (så länge det finns tillräckligt med adress utrymme). En enskild pool får inte finnas i flera virtuella nätverk eller undernät.
 
 Ytterligare krav för virtuella nätverk varierar beroende på huruvida Batch-poolen finns i den virtuella datorkonfigurationen eller Cloud Services-konfigurationen. För nya pooldistributioner till ett virtuellt nätverk rekommenderas konfigurationen för virtuell dator.
 
@@ -67,17 +69,17 @@ Konfigurera inkommande trafik på port 3389 (Windows) eller 22 (Linux) endast om
 
 **Säkerhetsregler för inkommande trafik**
 
-| Käll-IP-adresser | Käll tjänst tag gen | Källportar | Mål | Målportar | Protokoll | Åtgärd |
+| Käll-IP-adresser | Käll tjänst tag gen | Källportar | Mål | Målportar | Protokoll | Action |
 | --- | --- | --- | --- | --- | --- | --- |
-| Ej tillämpligt | `BatchNodeManagement`[Service tag](../articles/virtual-network/network-security-groups-overview.md#service-tags) (om du använder regional variant, i samma region som batch-kontot) | * | Valfri | 29876–29877 | TCP | Tillåt |
-| Användar Källans IP-adresser för fjärråtkomst fjärråtkomst till Compute-noder och/eller Compute Node-undernät för Linux-aktiviteter med flera instanser, om det behövs. | Ej tillämpligt | * | Valfri | 3389 (Windows), 22 (Linux) | TCP | Tillåt |
+| Saknas | `BatchNodeManagement`[Service tag](../articles/virtual-network/network-security-groups-overview.md#service-tags) (om du använder regional variant, i samma region som batch-kontot) | * | Valfri | 29876–29877 | TCP | Tillåt |
+| Användar Källans IP-adresser för fjärråtkomst fjärråtkomst till Compute-noder och/eller Compute Node-undernät för Linux-aktiviteter med flera instanser, om det behövs. | Saknas | * | Valfri | 3389 (Windows), 22 (Linux) | TCP | Tillåt |
 
 > [!WARNING]
 > IP-adresser för batch-tjänsten kan ändras med tiden. Därför rekommenderar vi starkt att du använder `BatchNodeManagement` tjänst tag gen (eller regional variant) för NSG-regler. Undvik att fylla i NSG-regler med en speciell IP-adress för batch-tjänsten.
 
 **Säkerhetsregler för utgående trafik**
 
-| Källa | Källportar | Mål | Måltjänsttagg | Målportar | Protokoll | Åtgärd |
+| Källa | Källportar | Mål | Måltjänsttagg | Målportar | Protokoll | Action |
 | --- | --- | --- | --- | --- | --- | --- |
 | Valfri | * | [Tjänsttagg](../articles/virtual-network/network-security-groups-overview.md#service-tags) | `Storage` (om du använder regional variant, i samma region som batch-kontot) | 443 | TCP | Tillåt |
 
@@ -101,13 +103,13 @@ Konfigurera inkommande trafik på port 3389 för Windows om du behöver tillåta
 
 **Säkerhetsregler för inkommande trafik**
 
-| Käll-IP-adresser | Källportar | Mål | Målportar | Protokoll | Åtgärd |
+| Käll-IP-adresser | Källportar | Mål | Målportar | Protokoll | Action |
 | --- | --- | --- | --- | --- | --- |
 Valfri <br /><br />Även om detta i princip kräver ”tillåt alla” så tillämpar Batch-tjänsten en ACL-regel på nivån för varje nod som filtrerar ut alla IP-adresser som inte gäller för Batch-tjänsten. | * | Valfri | 10100, 20100, 30100 | TCP | Tillåt |
 | Valfritt, för att tillåta RDP-åtkomst till Compute-noder. | * | Valfri | 3389 | TCP | Tillåt |
 
 **Säkerhetsregler för utgående trafik**
 
-| Källa | Källportar | Mål | Målportar | Protokoll | Åtgärd |
+| Källa | Källportar | Mål | Målportar | Protokoll | Action |
 | --- | --- | --- | --- | --- | --- |
 | Valfri | * | Valfri | 443  | Valfri | Tillåt |

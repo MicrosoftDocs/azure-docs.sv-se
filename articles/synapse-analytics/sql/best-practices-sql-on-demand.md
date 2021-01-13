@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 05/01/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: b8b93471b6d7f2555cfd71e524718ed0ea1ee191
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 93ac8cd3e462c244840a5ed569d685a9d67fa6c2
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96457905"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165883"
 ---
 # <a name="best-practices-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Metod tips för Server lös SQL-pool i Azure Synapse Analytics
 
@@ -25,9 +25,9 @@ I den här artikeln hittar du en samling bästa metoder för att använda SQL-po
 
 Med Server lös SQL-pool kan du söka efter filer i dina Azure Storage-konton. Den har inte funktioner för lokal lagring eller inmatning. Alla filer som frågan riktar sig till är externa för SQL-poolen utan server. Allt som rör läsning av filer från lagring kan påverka frågans prestanda.
 
-## <a name="colocate-your-azure-storage-account-and-serverless-sql-pool"></a>Samplacera ditt Azure Storage-konto och SQL-poolen utan Server
+## <a name="colocate-your-storage-and-serverless-sql-pool"></a>Samplacera din lagrings-och Server lös SQL-pool
 
-Du kan minimera svars tiden genom att samplacera ditt Azure Storage-konto och slut punkten för SQL-poolen utan server. Lagrings konton och slut punkter som tillhandahålls när arbets ytan skapas befinner sig i samma region.
+Du kan minimera svars tiden genom att samplacera ditt Azure Storage-konto eller CosmosDB-analytiska lagrings utrymme och den serverbaserade SQL-adresspoolen. Lagrings konton och slut punkter som tillhandahålls när arbets ytan skapas befinner sig i samma region.
 
 För optimala prestanda bör du kontrol lera att de finns i samma region om du har åtkomst till andra lagrings konton med en server lös SQL-pool. Om de inte finns i samma region ökar svars tiden för data överföring mellan den fjärranslutna regionen och slut punktens region.
 
@@ -44,9 +44,9 @@ När begränsningen har identifierats har SQL-poolen utan server inbyggd hanteri
 
 Om möjligt kan du förbereda filer för bättre prestanda:
 
-- Konvertera CSV och JSON till Parquet. Parquet är ett kolumn format. Eftersom fil storleken är komprimerad är fil storleken mindre än CSV eller JSON-filer som innehåller samma data. SQL-poolen utan server behöver mindre tid och färre lagrings begär Anden att läsa den.
+- Konvertera stor CSV och JSON till Parquet. Parquet är ett kolumn format. Eftersom fil storleken är komprimerad är fil storleken mindre än CSV eller JSON-filer som innehåller samma data. SQL-poolen utan server kan hoppa över kolumner och rader som inte behövs i frågan om du läser Parquet-filer. SQL-poolen utan server behöver mindre tid och färre lagrings begär Anden att läsa den.
 - Om en fråga är riktad mot en enda stor fil, drar du nytta av att dela upp den i flera mindre filer.
-- Försök att behålla storleken på CSV-filen under 10 GB.
+- Försök att behålla storleken på CSV-filen mellan 100 MB och 10 GB.
 - Det är bättre att ha lika stora filer för en enskild OpenRowSet-sökväg eller en extern tabell plats.
 - Partitionera dina data genom att lagra partitioner i olika mappar eller fil namn. Se [använda fil namns-och fil Sök vägar för att fokusera på specifika partitioner](#use-filename-and-filepath-functions-to-target-specific-partitions).
 

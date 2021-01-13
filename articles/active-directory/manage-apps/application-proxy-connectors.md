@@ -12,12 +12,12 @@ ms.date: 11/15/2018
 ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8086bd2a193ac52e76bf8da245063163ab2ea2f9
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: a2d4cec57eb6ac23c191e504c305c2c6d11268ac
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97591063"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165010"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Förstå Azure AD-programproxy-kopplingar
 
@@ -25,7 +25,7 @@ Anslutningar är vad som gör Azure AD-programproxy möjligt. De är enkla, enkl
 
 ## <a name="what-is-an-application-proxy-connector"></a>Vad är en Application Proxy Connector?
 
-Anslutningar är lätta för enkla agenter som är lokala och underlättar den utgående anslutningen till Application Proxy-tjänsten. Anslutningarna måste installeras på en Windows-Server som har åtkomst till backend-programmet. Du kan organisera kopplingar i anslutnings grupper med varje grupp som hanterar trafik till vissa program.
+Anslutningar är lätta för enkla agenter som är lokala och underlättar den utgående anslutningen till Application Proxy-tjänsten. Anslutningarna måste installeras på en Windows-Server som har åtkomst till backend-programmet. Du kan organisera kopplingar i anslutnings grupper med varje grupp som hanterar trafik till vissa program. Mer information om programproxy och en diagramvy-representation av Application Proxy-arkitektur finns i [använda Azure AD-programproxy för att publicera lokala appar för fjärran vändare](what-is-application-proxy.md#application-proxy-connectors)
 
 ## <a name="requirements-and-deployment"></a>Krav och distribution
 

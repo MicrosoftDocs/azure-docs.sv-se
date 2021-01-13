@@ -3,12 +3,12 @@ title: Mått i Azure Monitor Azure-Event Hubs | Microsoft Docs
 description: Den här artikeln innehåller information om hur du använder Azure Monitor för att övervaka Azure Event Hubs
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 5b055c02783c40d844d1c6306bbb71cb23d602f2
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 74830775a4f31e6f8e486b4d6cc434335b4ee723
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98118803"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165900"
 ---
 # <a name="azure-event-hubs-metrics-in-azure-monitor"></a>Azure Event Hubs-mått i Azure Monitor
 
@@ -20,7 +20,7 @@ Azure Monitor tillhandahåller enhetliga användar gränssnitt för övervakning
 
 Azure Monitor ger till gång till mått på flera sätt. Du kan antingen komma åt mått via [Azure Portal](https://portal.azure.com)eller använda Azure Monitor-API: er (rest och .net) och analys lösningar som Log Analytics och Event Hubs. Mer information finns i [övervaka data som samlas in av Azure Monitor](../azure-monitor/platform/data-platform.md).
 
-Mått är aktiverade som standard och du kan komma åt de senaste 30 dagarna med data. Om du behöver spara data under en längre tids period kan du arkivera mått data till ett Azure Storage konto. Detta konfigureras i [diagnostikinställningar](../azure-monitor/platform/diagnostic-settings.md) i Azure Monitor.
+Mått är aktiverade som standard och du kan komma åt de senaste 30 dagarna med data. Om du behöver lagra data under en längre tids period kan du arkivera mått data till ett Azure Storage konto. Den här inställningen kan konfigureras i [diagnostikinställningar](../azure-monitor/platform/diagnostic-settings.md) i Azure Monitor.
 
 
 ## <a name="access-metrics-in-the-portal"></a>Åtkomst mått i portalen
@@ -29,7 +29,7 @@ Du kan övervaka mått över tid i [Azure Portal](https://portal.azure.com). I f
 
 ![Visa lyckade mått][1]
 
-Du kan också komma åt mått direkt via namn området. Det gör du genom att välja ditt namn område och sedan klicka på **mått**. Om du vill visa mått som filtrerats till händelse hubbens omfattning väljer du händelsehubben och klickar sedan på **mått**.
+Du kan också komma åt mått direkt via namn området. Det gör du genom att markera ditt namn område och sedan välja **mått**. Om du vill visa mått som filtrerats till händelse hubbens omfång väljer du händelsehubben och sedan **mått**.
 
 För mått som stöder dimensioner måste du filtrera med det önskade dimension svärdet som visas i följande exempel:
 
@@ -37,7 +37,7 @@ För mått som stöder dimensioner måste du filtrera med det önskade dimension
 
 ## <a name="billing"></a>Fakturering
 
-Användning av mått i Azure Monitor är för närvarande kostnads fritt. Men om du använder ytterligare lösningar som inhämtar mått data kan du debiteras av dessa lösningar. Till exempel debiteras du per Azure Storage om du arkiverar mått data till ett Azure Storage konto. Du debiteras också av Azure om du strömmar mått data till Azure Monitor loggar för avancerad analys.
+Användning av mått i Azure Monitor är för närvarande kostnads fritt. Men om du använder andra lösningar som inhämtar mått data kan du debiteras av dessa lösningar. Till exempel debiteras du per Azure Storage om du arkiverar mått data till ett Azure Storage konto. Du debiteras också av Azure om du strömmar mått data till Azure Monitor loggar för avancerad analys.
 
 Följande mått ger en översikt över hälso tillståndet för din tjänst. 
 
@@ -49,8 +49,11 @@ Alla mått värden skickas till Azure Monitor varje minut. Tids kornig het defin
 ## <a name="azure-event-hubs-metrics"></a>Azure Event Hubs mått
 En lista över mått som stöds av tjänsten finns i [Azure Event Hubs](../azure-monitor/platform/metrics-supported.md#microsofteventhubnamespaces)
 
+> [!NOTE]
+> När ett användar fel inträffar uppdaterar Azure Event Hubs måttet för **användar fel** , men loggar inte någon annan diagnostikinformation. Därför måste du samla in information om användar fel i dina program. Eller också kan du konvertera den telemetri som genereras när meddelanden skickas eller tas emot i Application Insights. Ett exempel finns i [Spåra med Application Insights](../service-bus-messaging/service-bus-end-to-end-tracing.md#tracking-with-azure-application-insights).
+
 ## <a name="azure-monitor-integration-with-siem-tools"></a>Azure Monitor integrering med SIEM-verktyg
-Routning av övervaknings data (aktivitets loggar, diagnostikloggar osv.) till en Event Hub med Azure Monitor gör att du enkelt kan integrera med verktyg för säkerhets informations-och händelse hantering (SIEM). Mer information finns i följande artiklar/blogg inlägg:
+Routning av övervaknings data (aktivitets loggar, diagnostikloggar och så vidare) till en Event Hub med Azure Monitor gör att du enkelt kan integrera med verktyg för säkerhets informations-och händelse hantering (SIEM). Mer information finns i följande artiklar/blogg inlägg:
 
 - [Strömma Azure övervaknings data till en Event Hub för användning av ett externt verktyg](../azure-monitor/platform/stream-monitoring-data-event-hubs.md)
 - [Introduktion till Azure Log Integration](/previous-versions/azure/security/fundamentals/azure-log-integration-overview)

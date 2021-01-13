@@ -4,17 +4,17 @@ description: Gör om Blobbarna från Arkiv lag ring så att du kan komma åt BLO
 services: storage
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 04/08/2020
+ms.date: 01/08/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: hux
-ms.openlocfilehash: f74d4ffdd724039354a311234317dac889cd7cfe
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 5a89e5a9eca653a2d15e5b09605b78bc18d76b8f
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95545945"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165679"
 ---
 # <a name="rehydrate-blob-data-from-the-archive-tier"></a>Dehydratisera BLOB-data från Arkiv lag rings nivå
 
@@ -29,9 +29,13 @@ När en BLOB finns i Arkiv åtkomst nivån anses den vara offline och kan inte l
 
 [!INCLUDE [storage-blob-rehydration](../../../includes/storage-blob-rehydrate-include.md)]
 
+## <a name="monitor-rehydration-progress"></a>Övervaka ÅTERUPPVÄCKNING-förlopp
+
+Under ÅTERUPPVÄCKNING använder du åtgärden Hämta BLOB-egenskaper för att kontrol lera attributet **arkivera status** och bekräfta när nivå ändringen har slutförts. Status är ”rehydrate-pending-to-hot” eller ”rehydrate-pending-to-cool” beroende på målnivån. När åtgärden har slutförts tas statusen för status för arkivet bort och egenskapen BLOB för **åtkomst nivå** visar den nya frekventa eller låg frekventa nivån.
+
 ## <a name="copy-an-archived-blob-to-an-online-tier"></a>Kopiera en arkiverad blob till onlinenivå
 
-Om du inte vill skapa en nytorkad Arkiv-BLOB kan du välja att göra en [kopierings-BLOB](/rest/api/storageservices/copy-blob) -åtgärd. Den ursprungliga blobben förblir oförändrad i arkivet medan en ny BLOB skapas på låg frekvent eller låg frekvent nivå så att du kan arbeta med. I åtgärden Kopiera BLOB kan du också ange den valfria egenskapen *x-MS-rehydratiserat-Priority* till standard eller hög för att ange den prioritet som du vill att din BLOB-kopia ska skapas i.
+Om du inte vill skapa en nytorkad Arkiv-BLOB kan du välja att göra en [kopierings-BLOB](/rest/api/storageservices/copy-blob) -åtgärd. Den ursprungliga blobben förblir oförändrad i arkivet medan en ny BLOB skapas på låg frekvent eller låg frekvent nivå så att du kan arbeta med. I åtgärden **Kopiera BLOB** kan du också ange den valfria egenskapen *x-MS-rehydratiserat-Priority* till standard eller hög för att ange den prioritet som du vill att din BLOB-kopia ska skapas i.
 
 Det kan ta flera timmar att kopiera en BLOB från arkivet, beroende på vilken rehydratiserad prioritet som har valts. I bakgrunden läser **kopierings-BLOB** -åtgärden din Arkiv käll-BLOB för att skapa en ny online-BLOB på den valda mål nivån. Den nya blobben kan vara synlig när du listar blobbar, men data är inte tillgängliga förrän läsningen från källans Arkiv-BLOB har slutförts och data skrivs till den nya online-målcachen. Den nya blobben är som en oberoende kopia och eventuella ändringar eller borttagningar av den påverkar inte källans Arkiv-blob.
 

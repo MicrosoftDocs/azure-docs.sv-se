@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: dech
-ms.openlocfilehash: 381aa88326440aba91e02393cfe2bdb1e2c38097
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: b89fcf32ed033f359b4db601e36cc69bb899944d
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340421"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165832"
 ---
 # <a name="use-built-in-notebook-commands-and-features-in-azure-cosmos-db-python-notebooks-preview"></a>Använd inbyggda antecknings boks kommandon och funktioner i Azure Cosmos DB python-anteckningsböcker (förhands granskning)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -123,6 +123,8 @@ Total time taken : 00:00:38.1228087 hours
 Total RUs consumed : 25022.58
 ```
 Med utmatnings statistik kan du beräkna de faktiska RU/s som används för att överföra objekten. Om till exempel 25 000 ru: er förbrukades över 38 sekunder, är det effektiva RU/s 25 000 ru: er/38 sekunder = 658 RU/s.
+
+Du kan spara filer (t. ex. CSV-eller JSON-filer) på den lokala Notebook-arbetsytan. Vi rekommenderar att du lägger till en cell i din bärbara dator för att spara filer. Du kan visa dessa filer från den integrerade terminalen i Notebook-miljön. Du kan använda kommandot "LS" för att visa de sparade filerna. Dessa filer tas dock bort om du återställer arbets ytan. Därför är det bäst att använda beständig lagring, till exempel GitHub eller ett lagrings konto i stället för den lokala arbets ytan.
 
 ## <a name="run-another-notebook-in-current-notebook"></a>Kör en annan antecknings bok i den aktuella bärbara datorn 
 Du kan använda ``%%run`` kommandot Magic för att köra en annan antecknings bok i din arbets yta från din aktuella antecknings bok. Använd syntaxen:

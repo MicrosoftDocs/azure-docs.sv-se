@@ -3,15 +3,15 @@ title: Lösning för övervakning av behållare i Azure Monitor | Microsoft Docs
 description: Lösningen för övervakning av behållare i Azure Monitor hjälper dig att visa och hantera dina Docker-och Windows-behållarobjekt på en enda plats.
 ms.subservice: logs
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 07/06/2020
-ms.openlocfilehash: a02ea022bedd92e9deaa0730cc1be051a9d20c88
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 483113fc508800eb126ee39f146c1fa34e5dba5e
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93145692"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165713"
 ---
 # <a name="container-monitoring-solution-in-azure-monitor"></a>Lösning för övervakning av behållare i Azure Monitor
 
@@ -45,7 +45,7 @@ Innan du börjar läser du följande information för att kontrol lera att du up
 
 I följande tabell beskrivs stödet för Docker-dirigering och operativ system övervakning av behållar inventering, prestanda och loggar med Azure Monitor.   
 
-|Docker-dirigering | ACS | Linux | Windows | Container<br>Inventering | Bild<br>Inventering | Node<br>Inventering | Container<br>Prestanda | Container<br>Händelse | Händelse<br>Logga | Container<br>Logga |
+|Docker-dirigering | ACS | Linux | Windows | Container<br>Inventering | Bild<br>Inventering | Nod<br>Inventering | Container<br>Prestanda | Container<br>Händelse | Händelse<br>Loggas | Container<br>Loggas |
 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
 | Kubernetes | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; |
 | Mesosphere<br>DC/OS | &#8226; | &#8226; | | &#8226; | &#8226; | &#8226; | &#8226;| &#8226; | &#8226; | &#8226; |
@@ -116,7 +116,7 @@ Läs avsnittet [Docker-motorn i Windows](/virtualization/windowscontainers/manag
 
 ### <a name="install-and-configure-linux-container-hosts"></a>Installera och konfigurera Linux container hosts
 
-När du har installerat docker använder du följande inställningar för din behållar värd för att konfigurera agenten för användning med Docker. Först behöver du ditt Log Analytics arbetsyte-ID och nyckel, som du hittar i Azure Portal. I arbets ytan klickar du på **Snabbstart**  >  **datorer** för att visa ditt **arbetsyte-ID** och **primär nyckel** .  Kopiera och klistra in båda två i det redigeringsprogram du föredrar.
+När du har installerat docker använder du följande inställningar för din behållar värd för att konfigurera agenten för användning med Docker. Först behöver du ditt Log Analytics arbetsyte-ID och nyckel, som du hittar i Azure Portal. I arbets ytan klickar du på **Snabbstart**  >  **datorer** för att visa ditt **arbetsyte-ID** och **primär nyckel**.  Kopiera och klistra in båda två i det redigeringsprogram du föredrar.
 
 **För alla Linux container-värdar förutom Core:**
 
@@ -513,11 +513,11 @@ Om du vill aktivera övervakning av Windows-och Hyper-V-behållare installerar d
 
 Du kan övervaka Windows-behållare som körs på Service Fabric. Det är dock bara [virtuella datorer som körs i Azure](../learn/quick-collect-azurevm.md) och [datorer som kör Windows i din lokala miljö](../platform/agent-windows.md) som stöds för Service Fabric.
 
-Du kan kontrol lera att lösningen för övervakning av behållare är korrekt inställd för Windows. Du kan kontrol lera om hanterings paketet har laddats ned korrekt genom att leta efter *ContainerManagement.xxx* . Filerna bör finnas i mappen C:\Program Files\Microsoft Monitoring Agent\Agent\Health service State\Management Packs.
+Du kan kontrol lera att lösningen för övervakning av behållare är korrekt inställd för Windows. Du kan kontrol lera om hanterings paketet har laddats ned korrekt genom att leta efter *ContainerManagement.xxx*. Filerna bör finnas i mappen C:\Program Files\Microsoft Monitoring Agent\Agent\Health service State\Management Packs.
 
 ## <a name="solution-components"></a>Lösningskomponenter
 
-Från Azure Portal navigerar du till *Lösningsgalleriet* och lägger till **lösningen för övervakning av behållare** . Om du använder Windows-agenter installeras följande hanterings paket på varje dator med en agent när du lägger till den här lösningen. Det krävs ingen konfiguration eller underhåll för hanterings paketet.
+Från Azure Portal navigerar du till *Lösningsgalleriet* och lägger till **lösningen för övervakning av behållare**. Om du använder Windows-agenter installeras följande hanterings paket på varje dator med en agent när du lägger till den här lösningen. Det krävs ingen konfiguration eller underhåll för hanterings paketet.
 
 - *ContainerManagement.xxx* installerat i C:\Program Files\Microsoft Monitoring Agent\Agent\Health service State\Management Packs
 

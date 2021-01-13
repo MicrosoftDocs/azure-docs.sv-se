@@ -6,12 +6,12 @@ ms.date: 10/29/2020
 author: kryalama
 ms.custom: devx-track-java
 ms.author: kryalama
-ms.openlocfilehash: ba4e6b8b5e9db494ab4c0c372c2086087a2d58cb
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 39897e490e4653fbaad7a64ecc0b33f161d1264b
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98133182"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165798"
 ---
 # <a name="telemetry-processors-preview---azure-monitor-application-insights-for-java"></a>Telemetri-processorer (för hands version) – Azure Monitor Application Insights för Java
 
@@ -23,58 +23,48 @@ Java 3,0-agenten för Application Insights har nu funktioner för att bearbeta t
 Följande är några användnings fall av telemetri-processorer:
  * Maskera känsliga data
  * Lägg till anpassade dimensioner villkorligt
- * Uppdatera telemetri-namnet som används för agg regering och visning
- * Släpp eller filtrera span-attribut för att kontrol lera inmatnings kostnaden
+ * Uppdatera namnet som används för agg regering och Visa i Azure Portal
+ * Släpp span-attribut för att kontrol lera inmatnings kostnaden
 
 ## <a name="terminology"></a>Terminologi
 
-Innan vi hoppar till telemetri-processorer är det viktigt att förstå vad som är spår och omfattar.
+Innan vi hoppar till telemetri-processorer är det viktigt att förstå vad termen sträcker syftar på.
 
-### <a name="traces"></a>Spårningar
+Ett intervall är en allmän term för någon av dessa tre saker:
 
-Spårar spårar förloppet för en enskild begäran, som kallas för `trace` , eftersom den hanteras av tjänster som utgör ett program. Begäran kan initieras av en användare eller ett program. Varje arbets enhet i a `trace` kallas a `span` ; a `trace` är ett träd med sträcker sig. En `trace` består av ett enda rot intervall och valfritt antal underordnade omfång.
+* En inkommande begäran
+* Ett utgående beroende (t. ex. ett fjärran rop till en annan tjänst)
+* Ett pågående beroende (t. ex. arbete som utförs av underordnade komponenter i tjänsten)
 
-### <a name="span"></a>Tidsrymd
+För telemetri-processorer är de viktiga komponenterna i ett intervall:
 
-Spänner är objekt som representerar arbetet som utförs av enskilda tjänster eller komponenter som ingår i en begäran när det flödar genom ett system. En `span` innehåller en `span context` , som är en uppsättning globalt unika identifierare som representerar den unika begäran som varje intervall är en del av. 
+* Name
+* Attribut
 
-Spänner över inkapsling:
+Intervall namnet är den primära visning som används för förfrågningar och beroenden i Azure Portal.
 
-* Intervall namnet
-* Ett oföränderligt `SpanContext` som unikt identifierar intervallet
-* Ett överordnat omfång i form av ett `Span` , `SpanContext` eller null
-* En `SpanKind`
-* En start-tidsstämpel
-* En slutdatum-tidsstämpel
-* [`Attributes`](#attributes)
-* En lista över tidsstämplade händelser
-* A `Status` .
+Span-attributen representerar både standard-och anpassade egenskaper för en specifik begäran eller ett beroende.
 
-I allmänhet liknar livs cykeln för ett intervall följande:
+## <a name="telemetry-processor-types"></a>Typer av telemetri-processorer
 
-* En begäran tas emot av en tjänst. Intervall kontexten extraheras från begärandehuvuden, om den finns.
-* Ett nytt omfång skapas som ett underordnat objekt till den extraherade span-kontexten. Om ingen finns skapas ett nytt rot intervall.
-* Tjänsten hanterar begäran. Ytterligare attribut och händelser läggs till i intervallet som är användbara för att förstå kontexten för begäran, till exempel värd namnet för datorn som hanterar begäran eller kund identifierare.
-* Nya omfång kan skapas för att representera arbete som utförs av underordnade komponenter i tjänsten.
-* När tjänsten gör ett fjärran rop till en annan tjänst serialiseras den aktuella intervall kontexten och vidarebefordras till nästa tjänst genom att mata in span-kontexten i sidhuvudena eller meddelande kuvertet.
-* Arbetet som utförs av tjänsten har slutförts, eller inte. Intervallets status anges korrekt och intervallet är markerat som färdigt.
+Det finns för närvarande två typer av telemetri-processorer.
 
-### <a name="attributes"></a>Attribut
+#### <a name="attribute-processor"></a>Attribut processor
 
-`Attributes` är en lista med noll eller flera nyckel/värde-par som är kapslade i en `span` . Ett attribut måste ha följande egenskaper:
+En attribut processor kan infoga, uppdatera, ta bort eller hash-attribut.
+Det kan också extrahera (via ett reguljärt uttryck) ett eller flera nya attribut från ett befintligt attribut.
 
-Attribute Key, som måste vara en sträng som inte är null och som inte är tom.
-Attributvärdet, som är antingen:
-* En primitiv typ: sträng, boolesk, flyttal med dubbel precision (IEEE 754-1985) eller signerat 64-bitars heltal.
-* En matris med primitiva typ värden. Matrisen måste vara homogen, d.v.s. den får inte innehålla värden av olika typer. För protokoll som inte har inbyggt stöd för mat ris värden ska sådana värden representeras som JSON-strängar.
+#### <a name="span-processor"></a>Spänn processor
 
-## <a name="supported-processors"></a>Processorer som stöds:
- * Attribut processor
- * Spänn processor
+En intervall processor kan uppdatera namnet på telemetri.
+Det kan också extrahera (via ett reguljärt uttryck) ett eller flera nya attribut från intervall namnet.
 
-## <a name="to-get-started"></a>För att komma igång
+> [!NOTE]
+> Observera att för närvarande enbart telemetri processorer bearbetar attribut av typen sträng och inte bearbetar attribut av typen Boolean eller Number.
 
-Skapa en konfigurations fil med namnet `applicationinsights.json` och placera den i samma katalog som `applicationinsights-agent-***.jar` , med följande mall.
+## <a name="getting-started"></a>Komma igång
+
+Skapa en konfigurations fil med namnet `applicationinsights.json` och placera den i samma katalog som `applicationinsights-agent-*.jar` , med följande mall.
 
 ```json
 {
@@ -98,9 +88,14 @@ Skapa en konfigurations fil med namnet `applicationinsights.json` och placera de
 }
 ```
 
-## <a name="includeexclude-spans"></a>Inkludera/exkludera spänner
+## <a name="includeexclude-criteria"></a>Inkludera/exkludera villkor
 
-Attributet processor och span-processorn exponerar alternativet att tillhandahålla en uppsättning egenskaper för ett intervall att matcha mot, för att fastställa om intervallet ska tas med eller undantas från telemetri-processorn. För att konfigurera det här alternativet under `include` och/eller `exclude` minst ett `matchType` och ett av `spanNames` eller `attributes` krävs. Konfigurationen inkludera/exkludera stöds för att ha mer än ett angivet villkor. Alla angivna villkor måste utvärderas till sant för att en matchning ska inträffa. 
+Både attribut processorer och intervall processorer stöder valfria `include` och `exclude` kriterier.
+En processor tillämpas bara på de intervall som matchar dess `include` kriterier (om de finns) _och_ inte matchar dess `exclude` kriterier (om det finns).
+
+För att konfigurera det här alternativet under `include` och/eller `exclude` minst ett `matchType` och ett av `spanNames` eller `attributes` krävs.
+Konfigurationen inkludera/exkludera stöds för att ha mer än ett angivet villkor.
+Alla angivna villkor måste utvärderas till sant för att en matchning ska inträffa. 
 
 **Obligatoriskt fält**: 
 * `matchType` styr hur objekt i `spanNames` och `attributes` matriser tolkas. Möjliga värden är `regexp` eller `strict`. 
@@ -150,7 +145,7 @@ Attributet processor och span-processorn exponerar alternativet att tillhandahå
 ```
 Mer förståelse finns i exempel dokumentationen för [telemetri-processorn](./java-standalone-telemetry-processors-examples.md) .
 
-## <a name="attribute-processor"></a>Attribut processor 
+## <a name="attribute-processor"></a>Attribut processor
 
 Attributens processor ändrar attributen för ett intervall. Det kan också användas för att inkludera/exkludera intervall. Den tar en lista med åtgärder som utförs i den ordning som anges i konfigurations filen. De åtgärder som stöds är:
 
@@ -167,7 +162,7 @@ Infogar ett nytt attribut i intervall där nyckeln inte redan finns.
         "key": "attribute1",
         "value": "value1",
         "action": "insert"
-      },
+      }
     ]
   }
 ]
@@ -190,7 +185,7 @@ Uppdaterar ett attribut i intervall där nyckeln finns
         "key": "attribute1",
         "value": "newValue",
         "action": "update"
-      },
+      }
     ]
   }
 ]
@@ -213,7 +208,7 @@ Tar bort ett attribut från ett intervall
       {
         "key": "attribute1",
         "action": "delete"
-      },
+      }
     ]
   }
 ]
@@ -234,7 +229,7 @@ Hash-värden (SHA1) ett befintligt attributvärde
       {
         "key": "attribute1",
         "action": "hash"
-      },
+      }
     ]
   }
 ]
@@ -259,7 +254,7 @@ Extraherar värden med en regel för reguljära uttryck från den inmatade nycke
         "key": "attribute1",
         "pattern": "<regular pattern with named matchers>",
         "action": "extract"
-      },
+      }
     ]
   }
 ]
@@ -271,7 +266,7 @@ För `extract` åtgärden krävs följande:
 
 Mer förståelse finns i exempel dokumentationen för [telemetri-processorn](./java-standalone-telemetry-processors-examples.md) .
 
-## <a name="span-processors"></a>Intervall processorer
+## <a name="span-processor"></a>Spänn processor
 
 Spänn processorn ändrar antingen intervall namnet eller attributen för ett intervall baserat på intervall namnet. Det kan också användas för att inkludera/exkludera intervall.
 

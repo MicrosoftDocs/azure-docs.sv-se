@@ -6,13 +6,13 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
-ms.date: 7/1/2020
-ms.openlocfilehash: 8dc70eaeb9e2c2f5d4cdfef37619e4b04217782e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 1/12/2021
+ms.openlocfilehash: 48537483501165d4a978afdbd05560613170d187
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85964523"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165619"
 ---
 # <a name="azure-database-for-postgresql--hyperscale-citus-configuration-options"></a>Konfigurations alternativ för Azure Database for PostgreSQL – citus-storlek
 
@@ -86,7 +86,7 @@ Citus-Server grupper är tillgängliga i följande Azure-regioner:
     * Sydkorea, centrala
     * Sydostasien
 * Östeuropa
-    * Norra Europa
+    * Europa, norra
     * Storbritannien, södra
     * Europa, västra
 
@@ -118,6 +118,10 @@ Lagring på koordinator-och arbetsnoder kan skalas upp (ökas), men kan inte ska
 ### <a name="storage-size"></a>Lagrings storlek
 
 Upp till 2 TiB-lagring stöds för koordinator-och arbetsnoder. Se tillgängliga lagrings alternativ och IOPS-beräkning [ovan](#compute-and-storage) för nodernas och kluster storlekarna.
+
+### <a name="database-creation"></a>Skapa databas
+
+Azure Portal innehåller autentiseringsuppgifter för att ansluta till exakt en databas per storskalig (citus) Server grupp, `citus` databasen. Det går inte att skapa en annan databas för tillfället, och kommandot Skapa databas kommer inte att fungera med ett fel.
 
 ## <a name="pricing"></a>Prissättning
 Den senaste pris informationen finns på [sidan med pris](https://azure.microsoft.com/pricing/details/postgresql/)information för tjänsten.

@@ -3,12 +3,12 @@ title: Kom igång med Azure Lab Services
 description: Den här artikeln beskriver hur du kommer igång med Azure Lab Services.
 ms.topic: article
 ms.date: 11/18/2020
-ms.openlocfilehash: 44afe13fb6f555b12dfce939ce8e88e3af8dc7ef
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: d260ace7d7819c3ca2db96d6c4984bf834e170da
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602673"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165050"
 ---
 # <a name="get-started-with-lab-services"></a>Kom igång med labb tjänster 
 
@@ -109,56 +109,7 @@ Lärare kan ansluta till en elev-VM så länge den är påslagen och studenten i
 
 ## <a name="manage-users-in-a-lab"></a>Hantera användare i ett labb
 
-Lärare kan lägga till student användare i ett labb och övervaka sina Tim kvoter. 
-
-### <a name="add-users-by-email-address"></a>Lägg till användare via e-postadress
-
-1. Från [Azure Lab Services-webbplatsen](https://labs.azure.com/) klickar du på **användare** från vänster sida av fönstret.
-1. Längst upp i fönstret klickar du på **Lägg till användare** och väljer **Lägg till per e-postadress**. 
-1. I fönstret **Lägg till användare** som visas till höger anger du elevernas e-postadresser på separata rader eller på en enskild rad, avgränsade med semikolon.
-1. Klicka på **Spara**.
-1. Din lista över användare kommer nu att uppdateras med e-post, status, inbjudan och kvot timmar.
-
-    När studenter har registrerats för ett labb, kommer deras namn att uppdateras med de första och de sista namnen från Azure Active Directory.
-
-    > [!NOTE]
-    > Behåll alternativet för att aktivera alternativet begränsa åtkomst är aktiverat för användare. Det innebär att endast användare som lista kan registreras med labbet med hjälp av den registrerings länk som du skickar.
-
-### <a name="add-users-using-a-spreadsheet"></a>Lägg till användare med ett kalkyl blad 
-
-Du kan också lägga till användare genom att ladda upp en CSV-fil som innehåller sina e-postadresser.
-
-1. I Microsoft Excel skapar du en CSV-fil med en lista över studenters e-postadresser i en kolumn.
-1. På den [Azure Lab Services webbplatsen](https://labs.azure.com/)klickar du på knappen **Lägg till användare** längst upp på sidan **användare** .
-1. Välj **Ladda upp CSV**.
-1. Välj den CSV-fil som innehåller elevernas e-postadresser och klicka på **Öppna**.
-
-    :::image type="content" source="./media/get-started-manage-labs/add-users-spreadsheet.png" alt-text="Lägg till användare med ett kalkyl blad":::
-1. E-postmeddelandena visas nu i fönstret till höger. Klicka på **Spara**.
-
-    :::image type="content" source="./media/get-started-manage-labs/register-users.png" alt-text="Registrera användare":::
-
-### <a name="register-users"></a>Registrera användare
-
-När användarna har lagts till i labbet måste de registrera sig för att få åtkomst till de virtuella datorerna. Detta kan göras genom att bjuda in användare från portalen, som skickar ett e-postmeddelande som innehåller registrerings länken för labbet. Eller genom att kopiera och klistra in registrerings länken i ett e-postmeddelande eller annan form av kommunikation med eleverna.
-
-1. Välj en student eller flera studenter i listan på sidan **användare** .
-
-    I raden för den student du har valt väljer du kuvert ikonen i listan eller klickar på **Bjud in** överst på skärmen.
-
-    :::image type="content" source="./media/get-started-manage-labs/send-invitation.png" alt-text="Skicka en inbjudan":::
-    
-    I fönstret **Skicka inbjudan** per e-post anger du ett valfritt meddelande (som ett användar namn och lösen ord) till studenter och klickar sedan på **Skicka**. 
-    
-    :::image type="content" source="./media/get-started-manage-labs/send-invitation-mail.png" alt-text="Skicka en inbjudan via e-post":::
-
-    Du kan också klicka på knappen **Registrera länk** överst på skärmen på sidan samma **användare** . 
-
-    :::image type="content" source="./media/get-started-manage-labs/registration-link.png" alt-text="Länk till användar registrering":::
-    
-    Kopiera registrerings länken från textfältet och klistra in den i e-post eller önskat verktyg för säker meddelande hantering.  
-    
-    :::image type="content" source="./media/get-started-manage-labs/user-registration.png" alt-text="Skicka användar registrering":::
+Lärare kan lägga till student användare i ett labb och övervaka sina Tim kvoter. Mer information om hur du lägger till användare via e-postadress eller genom att använda en kalkyl blads lista och registrera användare finns i [lägga till och hantera labb användare](how-to-configure-student-usage.md).
 
 När du har bjudit in användare eller delat länken kan du övervaka vilka användare som har registrerats på sidan **användare** i kolumnen **status** . 
 

@@ -9,18 +9,18 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: dd989d5925da864728e944e84962086c0cfb08ea
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 12841c747116cc9e14f348dfcf81acaa5da5e8c9
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462322"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165373"
 ---
 # <a name="store-query-results-to-storage-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Lagra frågeresultat till lagring med hjälp av Server lös SQL-pool i Azure Synapse Analytics
 
 I den här artikeln får du lära dig hur du lagrar frågeresultat till lagring med hjälp av SQL-poolen utan server.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Ditt första steg är att **skapa en databas** där du ska köra frågorna. Initiera sedan objekten genom att köra [installations skriptet](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) för den databasen. Det här installations skriptet skapar data källorna, autentiseringsuppgifterna för databasen och de externa fil formaten som används för att läsa data i dessa exempel.
 
@@ -74,6 +74,9 @@ FROM
 
 ```
 
+> [!NOTE]
+> Du måste ändra det här skriptet och ändra mål platsen för att köra det igen. Det går inte att skapa externa tabeller på den plats där du redan har data.
+
 ## <a name="use-the-external-table"></a>Använd den externa tabellen
 
 Du kan använda den externa tabellen som skapats via CETAS som en vanlig extern tabell.
@@ -93,6 +96,14 @@ WHERE
 ORDER BY
     [population] DESC;
 ```
+
+## <a name="remarks"></a>Kommentarer
+
+När du har lagrat resultaten går det inte att ändra data i den externa tabellen. Du kan inte upprepa det här skriptet eftersom CETAS inte skriver över underliggande data som skapats i föregående körning. Rösta på följande feedback-objekt om några av dessa krävs i dina scenarier, eller föreslå nya på Azure feedback-webbplatsen:
+- [Aktivera infogning av nya data i extern tabell](https://feedback.azure.com/forums/307516-azure-synapse-analytics/suggestions/32981347-polybase-allow-insert-new-data-to-existing-exteran)
+- [Aktivera borttagning av data från extern tabell](https://feedback.azure.com/forums/307516-azure-synapse-analytics/suggestions/15158034-polybase-delete-from-external-tables)
+- [Ange partitioner i CETAS](https://feedback.azure.com/forums/307516-azure-synapse-analytics/suggestions/19520860-polybase-partitioned-by-functionality-when-creati)
+- [Ange fil storlek och antal](https://feedback.azure.com/forums/307516-azure-synapse-analytics/suggestions/42263617-cetas-specify-number-of-parquet-files-file-size)
 
 ## <a name="next-steps"></a>Nästa steg
 

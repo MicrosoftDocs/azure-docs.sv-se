@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/28/2020
 ms.author: yitoh
-ms.openlocfilehash: c09f8c5ae4a742e6caa489ee29043f500617bb24
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 4196515463611f51dddb79438b1d4e827f1b32c2
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746496"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165407"
 ---
 # <a name="azure-ddos-protection-standard-frequent-asked-questions"></a>Azure DDoS Protection vanliga vanliga frågor och svar
 
@@ -27,6 +27,11 @@ Distribuerad denial of service eller DDoS är en typ av attack där en angripare
 
 ## <a name="what-is-azure-ddos-protection-standard-service"></a>Vad är Azure DDoS Protection standard tjänsten?
 Azure DDoS Protection standard, kombinerat med bästa praxis för program design, innehåller förbättrade DDoS-funktioner för att skydda mot DDoS-attacker. Den justeras automatiskt för att hjälpa till att skydda dina Azure-resurser i ett virtuellt nätverk. Det är enkelt att aktivera skydd på nya eller befintliga virtuella nätverk och det krävs inga program-eller resurs ändringar. Det har flera fördelar jämfört med den grundläggande tjänsten, inklusive loggning, avisering och telemetri. Mer information finns i [Azure DDoS Protection standard översikt](ddos-protection-overview.md) . 
+
+## <a name="how-does-pricing-work"></a>Hur fungerar prissättningen?
+DDoS skydds planer har en fast månads avgift på $2 944 per månad som omfattar upp till 100 offentliga IP-adresser. Skydd för ytterligare resurser kostar ytterligare $30 per resurs per månad. 
+
+Under en klient kan en enda DDoS skydds plan användas över flera prenumerationer, så det finns inget behov av att skapa mer än en DDoS-skydds plan.
 
 ## <a name="what-about-protection-at-the-service-layer-layer-7"></a>Vad gäller skydd på tjänst skiktet (Layer 7)?
 Kunder kan använda Azure DDoS Protection tjänst i kombination med en brand vägg för webbaserade program (WAF) för att skydda både på nätverks nivå (Layer 3 och 4, som erbjuds av Azure DDoS Protection standard) och på program nivå (Layer 7, som erbjuds av en WAF). WAF-erbjudanden omfattar Azure [Application Gateway WAF SKU](../web-application-firewall/ag/ag-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) samt WebApplication-brandväggar från tredje part som är tillgängliga på [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?page=1&search=web%20application%20firewall).

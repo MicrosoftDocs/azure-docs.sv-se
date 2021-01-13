@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dd438a09b929274808984322981f6d21da0bf68f
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 73946eea846b06b28d0a0f017ea1317c8cc7326d
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96860957"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165152"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Vanliga frågor och svar om Azure Active Directory enhets hantering
 
@@ -142,6 +142,12 @@ Se nedan om hur dessa åtgärder kan korrigeras.
 >* Om en enhet tas bort från ett Sync-omfång på Azure AD Connect och läggs tillbaka.
 >
 >I båda fallen måste du omregistrera enheten manuellt på var och en av dessa enheter. Om du vill kontrol lera om enheten har registrerats tidigare kan du [Felsöka enheter med kommandot dsregcmd](troubleshoot-device-dsregcmd.md).
+
+---
+
+### <a name="q-i-cannot-add-more-than-3-azure-ad-user-accounts-under-the-same-user-session-on-a-windows-10-device-why"></a>F: Jag kan inte lägga till fler än 3 Azure AD-användarkonton under samma användarsession på en Windows 10-enhet, varför?
+
+**A**: Azure AD har lagt till stöd för flera Azure AD-konton i Windows 10 1803-versionen. Windows 10 begränsar dock antalet Azure AD-konton på en enhet till 3 för att begränsa storleken på token-begäranden och aktivera tillförlitlig enkel inloggning (SSO). När 3 konton har lagts till ser användarna ett fel för efterföljande konton. Den ytterligare problem informationen på fel skärmen ger följande meddelande som anger orsaken till att åtgärden Lägg till konto blockeras eftersom kontot-gränsen har uppnåtts. 
 
 ---
 ## <a name="azure-ad-join-faq"></a>Vanliga frågor och svar om Azure AD Join

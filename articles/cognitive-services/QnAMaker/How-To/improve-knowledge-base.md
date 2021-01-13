@@ -6,12 +6,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: a77083c721328a8df9facd2f4b320b863aa03c68
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 6b9077fec13dd177ec4e07e7fbd7818ded2fd0a1
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96352413"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98164948"
 ---
 # <a name="accept-active-learning-suggested-questions-in-the-knowledge-base"></a>Acceptera föreslagna frågor om aktiva utbildningar i kunskaps basen
 
@@ -26,7 +26,7 @@ För att kunna se föreslagna frågor måste du [Aktivera aktiv utbildning](../c
 
 ## <a name="view-suggested-questions"></a>Visa föreslagna frågor
 
-1. Om du vill se de föreslagna frågorna går du till sidan **Redigera** kunskaps bas och väljer **visnings alternativ**. Välj sedan **Visa aktiva utbildnings förslag**.
+1. Om du vill se de föreslagna frågorna går du till sidan **Redigera** kunskaps bas och väljer **visnings alternativ**. Välj sedan **Visa aktiva utbildnings förslag**. Det här alternativet inaktive ras om det inte finns några förslag för någon av fråga-och svars paren.  
 
     [![I redigera-avsnittet i portalen väljer du Visa förslag för att se de aktiva alternativen för inlärnings nya frågor.](../media/improve-knowledge-base/show-suggestions-button.png)](../media/improve-knowledge-base/show-suggestions-button.png#lightbox)
 

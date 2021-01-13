@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake
 ms.date: 12/14/2020
-ms.openlocfilehash: 9ee7440b10bc348d3ba87a4779208791a7b0e9ac
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: b5a30846a6e2aaf85ded2e55641aa5fba9507a29
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97512036"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165781"
 ---
 # <a name="azure-sql-database-and-azure-sql-managed-instance-service-tiers"></a>Azure SQL Database-och Azure SQL-hanterade instans tjänst nivåer
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -55,7 +55,7 @@ I följande tabell beskrivs viktiga skillnader mellan tjänst nivåer för den s
 | | SQL-hanterad instans | [3 MB/s per vCore (högst 22 MB/s)](../managed-instance/resource-limits.md#service-tier-characteristics) | Saknas | [4 MB/s per vCore (max 48 MB/s)](../managed-instance/resource-limits.md#service-tier-characteristics) |
 |**Tillgänglighet**|Alla| 99,99 % |  [99,95% med en sekundär replik, 99,99% med fler repliker](service-tier-hyperscale-frequently-asked-questions-faq.md#what-slas-are-provided-for-a-hyperscale-database) | 99,99 % <br/> [99,995% med redundant zon i en enskild databas](https://azure.microsoft.com/blog/understanding-and-leveraging-azure-sql-database-sla/) |
 |**Säkerhetskopior**|Alla|RA-GRS, 7-35 dagar (7 dagar som standard). Maximal kvarhållning för Basic-nivån är 7 dagar. | RA-GRS, 7 dagar, konstant tidpunkts återställning (PITR) | RA-GRS, 7-35 dagar (7 dagar som standard) |
-|**Minnesintern OLTP** | | Saknas | Saknas | Tillgängligt |
+|**Minnesintern OLTP** | | Saknas | Saknas | Tillgänglig |
 |**Skrivskyddade repliker**| | 0 inbyggd <br> 0-4 med [geo-replikering](active-geo-replication-overview.md) | 0-4 inbyggd | 1 inbyggd, ingår i priset <br> 0-4 med [geo-replikering](active-geo-replication-overview.md) |
 |**Priser/fakturering** | SQL Database | [vCore, reserverad lagring och lagring av säkerhets kopior](https://azure.microsoft.com/pricing/details/sql-database/single/) debiteras. <br/>IOPS debiteras inte. | [vCore för varje replik och använt lagrings utrymme](https://azure.microsoft.com/pricing/details/sql-database/single/) debiteras. <br/>IOPS har ännu inte debiterats. | [vCore, reserverad lagring och lagring av säkerhets kopior](https://azure.microsoft.com/pricing/details/sql-database/single/) debiteras. <br/>IOPS debiteras inte. |
 || SQL-hanterad instans | [vCore, reserverad lagring och lagring av säkerhets kopior](https://azure.microsoft.com/pricing/details/sql-database/managed/) debiteras. <br/>IOPS debiteras inte| Saknas | [vCore, reserverad lagring och lagring av säkerhets kopior](https://azure.microsoft.com/pricing/details/sql-database/managed/) debiteras. <br/>IOPS debiteras inte.| 
@@ -78,6 +78,7 @@ Följande faktorer påverkar mängden lagrings utrymme som används för data-oc
   - Öka eller minska storleken i steg om 250 GB för lagring på tjänst nivåerna Premium eller affärs kritisk.
 - I tjänst nivån generell användning `tempdb` används en ansluten SSD och den här lagrings kostnaden ingår i vCore-priset.
 - På nivån verksamhets kritisk tjänst `tempdb` delar den anslutna SSD med MDF-och ldf-filerna och `tempdb` lagrings kostnaden ingår i vCore-priset.
+- I tjänst nivån DTU Premium, `tempdb` delar den anslutna SSD med MDF-och LDF-filer.
 - Lagrings storleken för en SQL-hanterad instans måste anges i multipler av 32 GB.
 
 

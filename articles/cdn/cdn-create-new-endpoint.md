@@ -15,21 +15,21 @@ ms.topic: quickstart
 ms.date: 04/30/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: af90166b688dee104e7bda18a88a2fe7c98f657b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 7a3c4bc2a0445a2821e212986b495993695652a6
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "82996291"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165934"
 ---
 # <a name="quickstart-create-an-azure-cdn-profile-and-endpoint"></a>Snabbstart: Skapa en Azure CDN-profil och CDN-slutpunkt
 
 I den här snabb starten aktiverar du Azure Content Delivery Network (CDN) genom att skapa en ny CDN-profil, som är en samling av en eller flera CDN-slutpunkter. När du har skapat en profil och en slutpunkt kan du börja leverera innehåll till dina kunder.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 - Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-- Ett Azure Storage-konto med namnet *cdnstorageacct123*som du använder för ursprungs värd namnet. För att slutföra det här kravet, se [integrera ett Azure Storage-konto med Azure CDN](cdn-create-a-storage-account-with-cdn.md).
+- Ett Azure Storage-konto med namnet *cdnstorageacct123* som du använder för ursprungs värd namnet. För att slutföra det här kravet, se [integrera ett Azure Storage-konto med Azure CDN](cdn-create-a-storage-account-with-cdn.md).
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logga in på Azure Portal
 
@@ -51,9 +51,9 @@ När du har skapat en CDN-profil använder du den för att skapa en slut punkt.
 
 3. Ange följande inställnings värden:
 
-    | Inställning | Värde |
+    | Inställningen | Värde |
     | ------- | ----- |
-    | **Namn** | Ange *CDN-Endpoint-123* för slut punktens värdnamn. Det här namnet måste vara globalt unikt i Azure. Ange ett annat namn om det redan används. Det här namnet används för att komma åt dina cachelagrade resurser på domänen _ &lt; slut &gt; punkt-Name_. azureedge.net.|
+    | **Namn** | Ange *CDN-Endpoint-123* för slut punktens värdnamn. Det här namnet måste vara globalt unikt i Azure. Ange ett annat namn om det redan används. Det här namnet används för att komma åt dina cachelagrade resurser på domänen _&lt; slut &gt; punkt-Name_. azureedge.net.|
     | **Ursprungstyp** | Välj **lagring**. | 
     | **Ursprungets värdnamn** | Välj värd namnet för det Azure Storage konto som du använder i list rutan, till exempel *cdnstorageacct123.blob.Core.Windows.net*. |
     | **Sökväg till ursprung** | Lämna tomt. |
@@ -68,7 +68,7 @@ När du har skapat en CDN-profil använder du den för att skapa en slut punkt.
     
    ![CDN-slutpunkt](./media/cdn-create-new-endpoint/cdn-endpoint-success.png)
     
-   Hur lång tid det tar att sprida slut punkten beror på vilken pris nivå som väljs när du skapade profilen. **Standard Akamai** slutförs vanligt vis inom en minut, **standard Microsoft** på 10 minuter och **standard** Verizon och **Premium Verizon** på upp till 90 minuter.
+   Hur lång tid det tar att sprida slut punkten beror på vilken pris nivå som väljs när du skapade profilen. **Standard Akamai** slutförs vanligt vis inom en minut, **standard Microsoft** på 10 minuter och **standard** Verizon och **Premium Verizon** på upp till 30 minuter.
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
@@ -76,7 +76,7 @@ I föregående steg skapade du en CDN-profil och en CDN-slutpunkt i en resursgru
 
 1. Välj **resurs grupper** på den vänstra menyn i Azure Portal och välj sedan **CDNQuickstart-RG**.
 
-2. Välj **ta bort resurs grupp**på sidan **resurs grupp** , ange *CDNQuickstart-RG* i text rutan och välj sedan **ta bort**. Den här åtgärden tar bort resurs gruppen, profilen och slut punkten som du skapade i den här snabb starten.
+2. Välj **ta bort resurs grupp** på sidan **resurs grupp** , ange *CDNQuickstart-RG* i text rutan och välj sedan **ta bort**. Den här åtgärden tar bort resurs gruppen, profilen och slut punkten som du skapade i den här snabb starten.
 
 ## <a name="next-steps"></a>Nästa steg
 

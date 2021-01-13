@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-mongo
 ms.devlang: go
 ms.topic: quickstart
 ms.date: 04/24/2020
-ms.openlocfilehash: 3f6ff0f81c1979297ed0144eca336cb252c2e787
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 60e7f0abbde8dbb4cb7d87e3c5aa8bbe9f8dad6a
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96574368"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165628"
 ---
 # <a name="quickstart-connect-a-go-application-to-azure-cosmos-dbs-api-for-mongodb"></a>Snabb start: ansluta ett Go-program till Azure Cosmos DB s API för MongoDB
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -278,7 +278,7 @@ Parametern `--kind MongoDB` aktiverar MongoDB-klientanslutningar.
 När Azure Cosmos DB-kontot har skapats, visar Azure CLI information liknande följande exempel. 
 
 > [!NOTE]
-> I det här exemplet används JSON som standardalternativ för Azure CLI-utdataformat. Om du vill använda andra format läser du [Utdataformat för Azure CLI-kommandon](/cli/azure/format-output-azure-cli).
+> I det här exemplet används JSON som standardalternativ för Azure CLI-utdataformat. Om du vill använda andra format läser du [Utdataformat för Azure CLI-kommandon](/cli/azure/format-output-azure-cli). 
 
 ```json
 {
@@ -332,7 +332,7 @@ Azure CLI matar ut information som liknar följande exempel.
 ### <a name="export-the-connection-string-mongodb-database-and-collection-names-as-environment-variables"></a>Exportera anslutnings strängen, MongoDB-databasen och samlings namnen som miljövariabler. 
 
 ```bash
-export MONGODB_CONNECTION_STRING="mongodb://<COSMOSDB_ACCOUNT_NAME>:<COSMOSDB_PASSWORD>@<COSMOSDB_ACCOUNT_NAME>.mongo.cosmos.azure.com:10255/?ssl=true&replicaSet=globaldb&maxIdleTimeMS=120000&appName=@<COSMOSDB_ACCOUNT_NAME>@"
+export MONGODB_CONNECTION_STRING="mongodb://<COSMOSDB_ACCOUNT_NAME>:<COSMOSDB_PASSWORD>@<COSMOSDB_ACCOUNT_NAME>.documents.azure.com:10255/?ssl=true&replicaSet=globaldb&maxIdleTimeMS=120000&appName=@<COSMOSDB_ACCOUNT_NAME>@"
 ```
 
 > [!NOTE] 
@@ -351,7 +351,7 @@ export MONGODB_COLLECTION=todos
 
 Du kan välja önskade värden för `MONGODB_DATABASE` och `MONGODB_COLLECTION` eller lämna dem som de är.
 
-## <a name="run-the-application"></a>Köra appen
+## <a name="run-the-application"></a>Kör programmet
 
 För att skapa en `todo`
 

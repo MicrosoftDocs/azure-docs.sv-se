@@ -2,14 +2,14 @@
 title: Etablera en pool i ett virtuellt nätverk
 description: Så här skapar du en batch-pool i ett virtuellt Azure-nätverk så att Compute-noder kan kommunicera säkert med andra virtuella datorer i nätverket, till exempel en fil server.
 ms.topic: how-to
-ms.date: 06/26/2020
+ms.date: 01/13/2021
 ms.custom: seodec18
-ms.openlocfilehash: cb5cda16cd9405f0cbe91a3f88be7dc3f582d21b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: bedb0cbd826e2891560320ed11c0ba28e07f8e88
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95993437"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165764"
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>Skapa en Azure Batch pool i ett virtuellt nätverk
 
@@ -21,7 +21,7 @@ Compute-noder i en pool kan kommunicera med varandra, till exempel för att kör
 
 Om du vill tillåta att Compute-noder kommunicerar säkert med andra virtuella datorer, eller med ett lokalt nätverk, kan du etablera poolen i ett undernät för ett Azure VNet.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 - **Autentisering**. Om du vill använda ett Azure VNet-nätverk måste Batch-klientens API använda Azure Active Directory-autentisering (AD). Mer dokumentation om stödet för Azure Batch i Azure Active Directory finns i [Authenticate Batch service solutions with Active Directory](batch-aad-auth.md) (Autentisera lösningar för Batch-tjänsten med Active Directory).
 

@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 11/09/2020
-ms.openlocfilehash: b3dca3617e2fb7ccdff870041374e9158498c9d1
-ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
+ms.openlocfilehash: 1e57ae537c271e61f0b2d37f5320cb177b04802b
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97708948"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98164880"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>QnA Maker grundläggande gränser och gränser för kunskap
 
@@ -99,6 +99,7 @@ Dessa motsvarar gränserna för varje åtgärd för att skapa kunskaps bas. Det 
 * Rekommenderat Max antal alternativa frågor per svar: 300
 * Maximalt antal URL: er: 10
 * Maximalt antal filer: 10
+* Maximalt antal tillåtna kring per anrop: 1000
 
 ## <a name="update-knowledge-base-call-limits"></a>Uppdatera anrops gränser för kunskaps bas
 Dessa representerar gränserna för varje uppdaterings åtgärd. Det gör du genom att klicka på *Spara och träna* eller anropa UpdateKnowledgeBase-API: et.
@@ -106,6 +107,7 @@ Dessa representerar gränserna för varje uppdaterings åtgärd. Det gör du gen
 * Rekommenderat Max antal alternativa frågor som lagts till eller tagits bort: 300
 * Maximalt antal metadata-fält har lagts till eller tagits bort: 10
 * Maximalt antal URL: er som kan uppdateras: 5
+* Maximalt antal tillåtna kring per anrop: 1000
 
 ## <a name="next-steps"></a>Nästa steg
 
