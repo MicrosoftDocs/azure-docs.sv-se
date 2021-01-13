@@ -38,6 +38,9 @@
     - name: Skapa en delad fråga – Azure CLI
       displayName: 'extension, docker, queries'
       href: ./shared-query-azure-cli.md
+    - name: Skapa en delad fråga – Azure PowerShell
+      displayName: 'powershell, queries, Az.ResourceGraph'
+      href: ./shared-query-azure-powershell.md
     - name: Distribuera en delad fråga – ARM-mall
       displayName: 'resource manager, queries'
       href: ./shared-query-template.md

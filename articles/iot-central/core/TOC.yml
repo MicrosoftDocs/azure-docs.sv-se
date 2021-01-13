@@ -85,8 +85,14 @@
       items:
         - name: Konfigurera en enhetsmall
           href: howto-set-up-template.md
+        - name: Så här flyttar du enheter till IoT
+          href: how-to-move-device-to-iot.md
         - name: Så här använder du egenskaper
           href: howto-use-properties.md
+        - name: Så här använder du kommandon
+          href: howto-use-commands.md
+        - name: Så här använder du platsdata
+          href: howto-use-location-data.md
         - name: Förbereda och ansluta ett Azure Sphere DevKit
           href: howto-connect-sphere.md
         - name: Förbereda och ansluta en RuuviTag-enhet

@@ -629,15 +629,19 @@
         - name: Azure Integration Runtime
           href: create-azure-integration-runtime.md
         - name: Integration Runtime med egen värd
-          href: create-self-hosted-integration-runtime.md
+          items:
+            - name: Skapa och konfigurera lokalt installerad integrationskörning
+              href: create-self-hosted-integration-runtime.md
+            - name: 'Lokalt installerad integrationskörning, automatisk uppdatering och avisering vid förfallodatum'
+              href: self-hosted-integration-runtime-auto-update.md
+            - name: Delad lokalt installerad integrationskörning
+              href: create-shared-self-hosted-integration-runtime-powershell.md
+            - name: Automatiserade skript för lokalt installerad integrationskörning (IR)
+              href: self-hosted-integration-runtime-automation-scripts.md
+            - name: Köra lokalt installerad integrationskörning i Windows-container
+              href: how-to-run-self-hosted-integration-runtime-in-windows-container.md
         - name: Azure SSIS Integration Runtime
           href: create-azure-ssis-integration-runtime.md
-        - name: Delad lokalt installerad integrationskörning
-          href: create-shared-self-hosted-integration-runtime-powershell.md
-        - name: Automatiserade skript för lokalt installerad integrationskörning (IR)
-          href: self-hosted-integration-runtime-automation-scripts.md
-        - name: Köra lokalt installerad integrationskörning i Windows-container
-          href: how-to-run-self-hosted-integration-runtime-in-windows-container.md
     - name: Kör SSIS-paket i Azure
       items:
         - name: Köra SSIS-paket i Azure från SSDT

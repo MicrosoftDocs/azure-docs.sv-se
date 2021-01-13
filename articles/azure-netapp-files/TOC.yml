@@ -37,6 +37,8 @@
       href: azure-netapp-files-cost-model.md
     - name: Riktlinjer för Azure NetApp Files-nätverksplanering
       href: azure-netapp-files-network-topologies.md
+    - name: Så här fungerar Azure NetApp Files-ögonblicksbilder
+      href: snapshots-introduction.md
     - name: Manuell QoS-kapacitetspool
       href: manual-qos-capacity-pool-introduction.md
     - name: Replikering mellan regioner

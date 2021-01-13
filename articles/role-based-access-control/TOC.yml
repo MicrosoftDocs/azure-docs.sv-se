@@ -60,9 +60,15 @@
         - name: Steg för tillägg av en rolltilldelning
           href: role-assignments-steps.md
         - name: Portalen
-          href: role-assignments-portal.md
-        - name: Portalen – gästanvändare
-          href: role-assignments-external-users.md
+          items:
+            - name: Lägg till eller ta bort rolltilldelningar
+              href: role-assignments-portal.md
+            - name: Prenumerationsadministratör
+              href: role-assignments-portal-subscription-admin.md
+            - name: Hanterad identitet
+              href: role-assignments-portal-managed-identity.md
+            - name: Externa gästanvändare
+              href: role-assignments-external-users.md
         - name: PowerShell
           href: role-assignments-powershell.md
         - name: Azure CLI
