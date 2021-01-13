@@ -2,13 +2,13 @@
 title: Distribuera resurser till prenumerationen
 description: Beskriver hur du skapar en resurs grupp i en Azure Resource Manager-mall. Det visar också hur du distribuerar resurser i Azures prenumerations omfång.
 ms.topic: conceptual
-ms.date: 11/24/2020
-ms.openlocfilehash: 2d4bd0db32a4bf0224b9da3af6e03ca86d7b496e
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.date: 01/13/2021
+ms.openlocfilehash: ba055970a8fac71b798fca9d3c76550cb7d482a7
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95807699"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98179001"
 ---
 # <a name="subscription-deployments-with-arm-templates"></a>Prenumerations distribution med ARM-mallar
 
@@ -142,7 +142,8 @@ När du distribuerar till en prenumeration kan du distribuera resurser för att:
 * alla prenumerationer i klient organisationen
 * resurs grupper inom prenumerationen eller andra prenumerationer
 * Prenumerationens klient organisation
-* [tilläggs resurser](scope-extension-resources.md) kan tillämpas på resurser
+
+En [tilläggs resurs](scope-extension-resources.md) kan begränsas till ett mål som skiljer sig från distributions målet.
 
 Användaren som distribuerar mallen måste ha åtkomst till det angivna omfånget.
 
@@ -453,7 +454,7 @@ New-AzSubscriptionDeployment `
   -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/policydefineandassign.json"
 ```
 
-## <a name="azure-blueprints"></a>Azure Blueprints
+## <a name="azure-blueprints"></a>Azure Blueprint
 
 ### <a name="create-blueprint-definition"></a>Skapa skiss definition
 

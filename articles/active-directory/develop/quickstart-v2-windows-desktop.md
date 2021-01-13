@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 0ffc3b40ecff1a7935eeef7fabfcb332fcd9dc71
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 1cac8ab4ccf23047bd5eb2d15c174a2009f2864a
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98017297"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98178304"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-windows-desktop-app"></a>Snabbstart: Hämta en token och anropa Microsoft Graph API från en Windows-skrivbordsapp
 
@@ -25,7 +25,7 @@ I den här snabb starten hämtar och kör du ett kod exempel som visar hur ett W
 Se [hur exemplet fungerar](#how-the-sample-works) för en illustration.
 
 > [!div renderon="docs"]
-> ## <a name="prerequisites"></a>Förutsättningar
+> ## <a name="prerequisites"></a>Krav
 >
 > * [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) med arbets belastningen [universell Windows-plattform utveckling](/windows/uwp/get-started/get-set-up) installerad
 >
@@ -36,7 +36,7 @@ Se [hur exemplet fungerar](#how-the-sample-works) för en illustration.
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Alternativ 1: Registrera och konfigurera appen automatiskt och ladda sedan ned ditt kodexempel
 >
-> 1. Gå till den nya [Azure Portal-Appregistreringar](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/WinDesktopQuickstartPage/sourceType/docs).
+> 1. Gå till snabb starts upplevelsen för <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/WinDesktopQuickstartPage/sourceType/docs" target="_blank">Azure Portal-Appregistreringar <span class="docon docon-navigate-external x-hidden-focus"></span> </a> .
 > 1. Ange ett namn för programmet och välj **Registrera**.
 > 1. Följ anvisningarna för att ladda ned och konfigurera det nya programmet automatiskt med ett enda klick.
 >
@@ -95,7 +95,7 @@ Se [hur exemplet fungerar](#how-the-sample-works) för en illustration.
 >    private static string Tenant = "Enter_the_Tenant_Info_Here";
 >    ```
 >
-> Plats:
+> Där:
 > - `Enter_the_Application_Id_here` – är **program-ID (klient)** för programmet som du har registrerat.
 > - `Enter_the_Tenant_Info_Here` – är inställt på något av följande alternativ:
 >   - Om ditt program stöder **Endast konton i den här organisationskatalogen** ska du ersätta värdet med **klient-ID** eller **klientnamn** (till exempel contoso.microsoft.com)
@@ -135,7 +135,7 @@ PublicClientApplicationBuilder.Create(ClientId)
                 .Build();
 ```
 
-> |Plats: | Beskrivning |
+> |Där: | Description |
 > |---------|---------|
 > | `ClientId` | Är **Program-ID (klient)** för det program som registrerats på Azure-portalen. Du hittar det här värdet på appens **översiktssida** på Azure-portalen. |
 
@@ -157,7 +157,7 @@ authResult = await App.PublicClientApp.AcquireTokenInteractive(_scopes)
                                       .ExecuteAsync();
 ```
 
-> |Plats:| Beskrivning |
+> |Där:| Description |
 > |---------|---------|
 > | `_scopes` | Innehåller de omfattningar som begärs, till exempel `{ "user.read" }` för Microsoft Graph eller `{ "api://<Application ID>/access_as_user" }` för anpassade webb-API: er. |
 
@@ -172,7 +172,7 @@ authResult = await App.PublicClientApp.AcquireTokenSilent(scopes, firstAccount)
                                       .ExecuteAsync();
 ```
 
-> |Plats: | Beskrivning |
+> |Där: | Description |
 > |---------|---------|
 > | `scopes` | Innehåller de omfattningar som begärs, till exempel `{ "user.read" }` för Microsoft Graph eller `{ "api://<Application ID>/access_as_user" }` för anpassade webb-API: er. |
 > | `firstAccount` | Anger den första användaren i cachen (MSAL stöder flera användare i en enda app). |

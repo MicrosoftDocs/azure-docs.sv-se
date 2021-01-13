@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: f0620c4d373ee96c87b575ae7eb173b2f16eecb2
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: dcb8675350442274418920bb9439b65643f1b046
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98013659"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98178253"
 ---
 # <a name="tutorial-add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>Självstudie: lägga till inloggning till Microsoft i en ASP.NET-webbapp
 
@@ -34,7 +34,7 @@ I de här självstudierna har du
 > * Registrera appen i Azure Portal
 > * Testa appen
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 * [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) med arbets belastningen **ASP.net och webb utveckling** installerad
 
@@ -48,7 +48,7 @@ Det exempel program som du skapar baseras på ett scenario där du kan använda 
 
 I den här guiden används följande bibliotek:
 
-|Bibliotek|Beskrivning|
+|Bibliotek|Description|
 |---|---|
 |[Microsoft.Owin.Security.OpenIdConnect](https://www.nuget.org/packages/Microsoft.Owin.Security.OpenIdConnect/)|Mellanprogram som gör att ett program kan använda OpenIdConnect för autentisering|
 |[Microsoft.Owin.Security.Cookies](https://www.nuget.org/packages/Microsoft.Owin.Security.Cookies)|Mellanprogram som gör det möjligt för ett program att underhålla en användarsession med hjälp av cookies|
@@ -361,7 +361,7 @@ Om du vill registrera ditt program och lägga till program registrerings informa
 
 Följ dessa steg för att snabbt registrera ditt program:
 
-1. Gå till fönstret ny  [Azure Portal-Appregistreringar](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AspNetWebAppQuickstartPage/sourceType/docs) .
+1. Gå till snabb starts upplevelsen för <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AspNetWebAppQuickstartPage/sourceType/docs" target="_blank">Azure Portal-Appregistreringar <span class="docon docon-navigate-external x-hidden-focus"></span> </a> .  
 1. Ange ett namn för programmet och välj **Registrera**.
 1. Följ anvisningarna för att ladda ned och automatiskt konfigurera det nya programmet i ett enda klick.
 

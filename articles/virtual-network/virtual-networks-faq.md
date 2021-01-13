@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: kumud
-ms.openlocfilehash: 3ee9e165ce9c24968b072d19367e0285f5438259
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 5ce5f5cea5d689720455dd8d60f6fff4692a9d3d
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96938808"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98179307"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Vanliga frågor och svar (FAQ) om Azure Virtual Network
 
@@ -325,7 +325,7 @@ Det virtuella nätverkets tryck är i för hands version. Det finns inget servic
 
 Du kommer att kunna lägga till en tryck konfiguration på ett nätverks gränssnitt som är kopplat till en virtuell dator som är aktiverat med accelererat nätverk. Men prestandan och svars tiden på den virtuella datorn kommer att påverkas genom att du lägger till tryck på konfiguration eftersom avlastning för spegling av trafik för närvarande inte stöds av Azure accelererat nätverk.
 
-## <a name="virtual-network-service-endpoints"></a>Tjänstslutpunkter för virtuellt nätverk
+## <a name="virtual-network-service-endpoints"></a>Tjänstslutpunkter för virtuella nätverk
 
 ### <a name="what-is-the-right-sequence-of-operations-to-set-up-service-endpoints-to-an-azure-service"></a>Vad är rätt åtgärds ordning för att konfigurera tjänst slut punkter till en Azure-tjänst?
 Det finns två steg för att skydda en Azure service-resurs via tjänst slut punkter:
@@ -392,6 +392,9 @@ När tjänst slut punkter för virtuella nätverk är aktiverade växlar käll-I
 
 ### <a name="does-the-service-endpoint-route-always-take-precedence"></a>Har tjänstens slut punkts flöde alltid företräde?
 Tjänst slut punkter lägger till en system väg som har företräde framför BGP-vägar och ger optimal routning för tjänst slut punktens trafik. Tjänst slut punkter tar alltid tjänst trafik direkt från ditt virtuella nätverk till tjänsten i Microsoft Azure stamnät nätverket. Mer information om hur Azure väljer en väg finns i [Azures routning för virtuella nätverks trafik](virtual-networks-udr-overview.md).
+
+### <a name="do-service-endpoints-work-with-icmp"></a>Fungerar tjänstens slut punkter med ICMP?
+Nej, ICMP-trafik som har ursprung ATS från ett undernät med aktiverade tjänst slut punkter kommer inte att ta tjänstens tunnel Sök väg till önskad slut punkt. Tjänst slut punkter hanterar endast TCP-trafik. Det innebär att om du vill testa svars tiden eller anslutningen till en slut punkt via tjänst slut punkter, visar verktyg som ping och tracert inte den faktiska sökvägen som resurserna i under nätet tar.
  
 ### <a name="how-does-nsg-on-a-subnet-work-with-service-endpoints"></a>Hur fungerar NSG på ett undernät med tjänst slut punkter?
 För att få åtkomst till Azure-tjänsten måste NSG: er tillåta utgående anslutning. Om dina NSG: er har öppnats för all utgående trafik i Internet bör tjänstens slut punkts trafik fungera. Du kan också begränsa utgående trafik till tjänst-IP-adresser endast med hjälp av tjänst taggarna.  

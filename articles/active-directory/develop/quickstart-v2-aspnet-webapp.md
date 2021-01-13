@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, contperf-fy21q1
-ms.openlocfilehash: 11c479c6cc8f330a2b3b1edd25bad39321d6ed1c
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: dbddf35b0aa1494ef719803fa84cafae04f3ec50
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98017552"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98178593"
 ---
 # <a name="quickstart-add-microsoft-identity-platform-sign-in-to-an-aspnet-web-app"></a>Snabb start: lägga till Microsoft Identity Platform-inloggning till en ASP.NET-webbapp
 
@@ -25,7 +25,7 @@ I den här snabb starten hämtar och kör du ett kod exempel som visar hur en AS
 
 Se [hur exemplet fungerar](#how-the-sample-works) för en illustration.
 > [!div renderon="docs"]
-> ## <a name="prerequisites"></a>Förutsättningar
+> ## <a name="prerequisites"></a>Krav
 >
 > * Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 > * [Visual Studio 2019](https://visualstudio.microsoft.com/vs/)
@@ -38,7 +38,7 @@ Se [hur exemplet fungerar](#how-the-sample-works) för en illustration.
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Alternativ 1: Registrera och konfigurera appen automatiskt och ladda sedan ned ditt kodexempel
 >
-> 1. Gå till fönstret ny  [Azure Portal-Appregistreringar](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AspNetWebAppQuickstartPage/sourceType/docs) .
+> 1. Gå till snabb starts upplevelsen för <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AspNetWebAppQuickstartPage/sourceType/docs" target="_blank">Azure Portal-Appregistreringar <span class="docon docon-navigate-external x-hidden-focus"></span> </a> .
 > 1. Ange ett namn för programmet och välj **Registrera**.
 > 1. Följ anvisningarna för att ladda ned och konfigurera det nya programmet automatiskt med ett enda klick.
 >
@@ -53,7 +53,7 @@ Se [hur exemplet fungerar](#how-the-sample-works) för en illustration.
 > 1. Under **Hantera** väljer du **Appregistreringar**  >  **ny registrering**.
 > 1. Ange ett **namn** för programmet, till exempel `ASPNET-Quickstart` . Användare av appen kan se det här namnet och du kan ändra det senare.
 > 1. Lägg till `https://localhost:44368/` i **omdirigerings-URI** och välj **Registrera**.
-> 1. I det vänstra navigerings fönstret under avsnittet hantera väljer du **autentisering**
+> 1. Under **Hantera** väljer du **autentisering**.
 > 1. Under avsnittet **implicit beviljande** underavsnitt väljer du **ID-token**.
 > 1. Välj **Spara**.
 
@@ -94,7 +94,7 @@ Se [hur exemplet fungerar](#how-the-sample-works) för en illustration.
 >    <add key="ClientId" value="Enter_the_Application_Id_here" />
 >    <add key="Tenant" value="Enter_the_Tenant_Info_Here" />
 >    ```
->    Plats:
+>    Där:
 > - `Enter_the_Application_Id_here` – är program-Id för programmet som du har registrerat.
 > - `Enter_the_Tenant_Info_Here` – är ett av alternativen nedan:
 >   - Om ditt program **endast stöder min organisation** ersätter du värdet med **klient-ID** eller **klient namn** (till exempel contoso.onmicrosoft.com)
@@ -165,7 +165,7 @@ public void Configuration(IAppBuilder app)
 }
 ```
 
-> |Var  | Beskrivning |
+> |Var  | Description |
 > |---------|---------|
 > | `ClientId`     | Program-ID från appen som registrerats i Azure-portalen |
 > | `Authority`    | STS-slutpunkten för autentisering av användaren. Vanligtvis `https://login.microsoftonline.com/{tenant}/v2.0` för offentligt moln, där {tenant} är namnet på din klientorganisation, ditt klientorganisations-ID eller *gemensam* för en referens till den gemensamma slutpunkten (används för appar för en innehavare) |

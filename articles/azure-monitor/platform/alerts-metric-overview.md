@@ -1,15 +1,15 @@
 ---
 title: Förstå hur mått varningar fungerar i Azure Monitor.
 description: Få en översikt över vad du kan göra med mått aviseringar och hur de fungerar i Azure Monitor.
-ms.date: 01/11/2021
+ms.date: 01/13/2021
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: 424cc9db01f1eb6300c2915795f3e2c37b34449f
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: d8e0621f88455a68ad0ee1b236f6b423c9d54b52
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98071059"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98179902"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Förstå hur måttaviseringar fungerar i Azure Monitor
 
@@ -64,6 +64,10 @@ Anta att användningen på "myVM" fortsätter att ligga över tröskelvärdet i 
 Efter en stund kommer användningen av "myVM" att gå tillbaka till normal (hamnar under tröskelvärdet). Varnings regeln övervakar villkoret i två gånger för att skicka ett löst meddelande. Varnings regeln skickar ut ett löst/inaktiverat meddelande när varnings villkoret inte är uppfyllt under tre efterföljande perioder för att minska bruset i händelse av växlar-villkor.
 
 När det lösta meddelandet skickas ut via Webhooks eller e-post, anges även status för varnings instansen (kallas övervaknings tillstånd) i Azure Portal till löst.
+
+> [!NOTE]
+>
+> När en varnings regel övervakar flera villkor löses en utlöst avisering om minst ett av villkoren inte längre uppfylls under tre efterföljande perioder.
 
 ### <a name="using-dimensions"></a>Använda dimensioner
 
@@ -137,7 +141,7 @@ Den här funktionen stöds för närvarande för plattforms mått (inte anpassad
 
 | Tjänst | Offentlig Azure | Myndigheter | Kina |
 |:--------|:--------|:--------|:--------|
-| Virtuella datorer<sup>1</sup>  | **Ja** | **Ja** | Nej |
+| Virtuella datorer<sup>1</sup>  | **Ja** | **Ja** | No |
 | SQL Server-databaser | **Ja** | **Ja** | **Ja** |
 | Elastiska SQL Server-pooler | **Ja** | **Ja** | **Ja** |
 | Kapacitets pooler för NetApp-filer | **Ja** | **Ja** | **Ja** |

@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 11/13/2020
+ms.date: 01/13/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 47a2aae39be93361e1e0e581efb56cc678b444cd
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: ff2408e35d76a6ea0d5221e04c7a41ed6cde7ac9
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96549097"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98178984"
 ---
 # <a name="object-replication-for-block-blobs"></a>Objekt replikering för block-blobar
 
@@ -89,6 +89,16 @@ När du skapar en replikeringsprincip, kopieras som standard bara nya block blob
 Du kan också ange ett eller flera filter som en del av en replikeringsprincip för att filtrera block blobbar efter prefix. När du anger ett prefix kopieras bara blobbar som matchar det prefixet i käll behållaren till mål behållaren.
 
 Käll-och mål behållarna måste finnas innan du kan ange dem i en regel. När du har skapat replikeringsprincipen blir målcontainern skrivskyddad. Försök att skriva till målcontainern misslyckas med felkoden 409 (konflikt). Du kan dock anropa åtgärden [Ange BLOB-nivå](/rest/api/storageservices/set-blob-tier) på en BLOB i mål behållaren för att flytta den till Arkiv nivån. Mer information om Arkiv nivån finns i [Azure Blob Storage: frekvent åtkomst, låg frekvent åtkomst och Arkiv](storage-blob-storage-tiers.md#archive-access-tier)lag rings nivåer.
+
+## <a name="replication-status"></a>Replikeringsstatus
+
+Du kan kontrol lera replikeringsstatus för en BLOB i käll kontot. Mer information finns i [kontrol lera replikeringsstatus för en BLOB](object-replication-configure.md#check-the-replication-status-of-a-blob).
+
+Om replikeringsstatus för en BLOB i käll kontot indikerar fel, kan du undersöka följande möjliga orsaker:
+
+- Se till att principen för objekt replikering är konfigurerad på mål kontot.
+- Kontrol lera att mål behållaren fortfarande finns.
+- Om käll-bloben har krypterats med en kundanged nyckel som en del av en Skriv åtgärd, kommer objekt replikeringen att Miss Miss sen. Mer information om kundspecifika nycklar finns i [Ange en krypterings nyckel på en begäran till Blob Storage](encryption-customer-provided-keys.md).
 
 ## <a name="billing"></a>Fakturering
 

@@ -7,15 +7,15 @@ author: tamram
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
-ms.date: 01/12/2021
+ms.date: 01/13/2021
 ms.author: tamram
 ms.custom: security-recommendations
-ms.openlocfilehash: 55c4fa00cfd20a83e65a3d57c6020991734f9d9f
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: e3cfede444b65ee6990afd006d3b174d65f9cfad
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98132486"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98179171"
 ---
 # <a name="security-recommendations-for-blob-storage"></a>Säkerhets rekommendationer för Blob Storage
 
@@ -35,7 +35,7 @@ Azure Security Center analyserar regelbundet säkerhets status för dina Azure-r
 | Aktivera mjuk borttagning för behållare | Med alternativet mjuk borttagning för behållare kan du återställa en behållare efter att den har tagits bort. Mer information om mjuk borttagning för behållare finns i [mjuk borttagning för behållare (för hands version)](./soft-delete-container-overview.md). | - |
 | Lås lagrings konto för att förhindra borttagning av oavsiktligt konto | Du kan låsa en Azure Resource Manager-resurs, till exempel en prenumeration, en resurs grupp eller ett lagrings konto, för att förhindra att andra användare i organisationen oavsiktligt tar bort eller ändrar det. Att låsa ett lagrings konto förhindrar inte att data i det kontot tas bort. Det förhindrar bara att själva kontot tas bort. Mer information finns i [låsa resurser för att förhindra oväntade ändringar](../../azure-resource-manager/management/lock-resources.md).
 | Lagra affärs kritiska data i oföränderliga blobbar | Konfigurera juridiska undantag och tidsbaserade bevarande principer för att lagra BLOB-data i en mask (Skriv en gång, Läs många). Blobs lagrade immutably kan läsas, men kan inte ändras eller tas bort under lagrings intervallets varaktighet. Mer information finns i [lagra affärs kritiska BLOB-data med oföränderlig lagring](storage-blob-immutable-storage.md). | - |
-| Kräv säker överföring (HTTPS) till lagrings kontot | ??? | - |
+| Kräv säker överföring (HTTPS) till lagrings kontot | När du kräver säker överföring för ett lagrings konto måste alla begär anden till lagrings kontot göras via HTTPS. Begär Anden som görs över HTTP avvisas. Microsoft rekommenderar att du alltid behöver säker överföring för alla dina lagrings konton. Mer information finns i [Kräv säker överföring för att säkerställa säkra anslutningar](../common/storage-require-secure-transfer.md). | - |
 | Begränsa endast SAS-token (signatur för delad åtkomst) till HTTPS-anslutningar | Att kräva HTTPS när en klient använder en SAS-token för att få åtkomst till BLOB-data hjälper till att minimera risken för avlyssning. Mer information finns i [bevilja begränsad åtkomst till Azure Storage-resurser med hjälp av signaturer för delad åtkomst (SAS)](../common/storage-sas-overview.md). | - |
 
 ## <a name="identity-and-access-management"></a>Identitets- och åtkomsthantering

@@ -12,18 +12,18 @@ ms.workload: identity
 ms.date: 10/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, devx-track-js
-ms.openlocfilehash: c9aa73767fcb9d57ada11f5830fec00b10eee812
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: bd750a05f34a18a1260226fb979a82cc620dfbfb
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98017348"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98178287"
 ---
 # <a name="quickstart-add-sign-in-using-openid-connect-to-a-nodejs-web-app"></a>Snabb start: lägga till inloggning med OpenID Anslut till en Node.js webbapp
 
 I den här snabb starten hämtar och kör du ett kod exempel som visar hur du konfigurerar OpenID Connect-autentisering i ett webb program som skapats med hjälp av Node.js med Express. Exemplet är utformat för att köras på vilken plattform som helst.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 - Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Node.js](https://nodejs.org/en/download/).
@@ -42,7 +42,7 @@ I den här snabb starten hämtar och kör du ett kod exempel som visar hur du ko
 1. Välj **Registrera** för att skapa appen.
 1. På sidan **Översikt** för appen letar du reda på **programmets (klient) ID-** värde och registrerar det för senare. Du behöver det här värdet för att konfigurera programmet senare i det här projektet.
 1. Under **Hantera** väljer du **autentisering**.
-1. Välj **Lägg till en plattforms**  >  **webb** 
+1. Välj **Lägg till en plattforms**  >  **webbplats**. 
 1. I avsnittet **omdirigerings-URI** anger du `http://localhost:3000/auth/openid/return` .
 1. Ange en **utloggnings-URL** `https://localhost:3000` .
 1. I avsnittet implicit bidrag kontrollerar du **ID-tokens** som det här exemplet kräver att det [implicita tilldelnings flödet](./v2-oauth2-implicit-grant-flow.md) aktive ras för att logga in användaren.

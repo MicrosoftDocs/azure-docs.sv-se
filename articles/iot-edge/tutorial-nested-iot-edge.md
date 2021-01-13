@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: c1dba383f259e35b143688b2db68f05f1a67def6
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: a9591a394d80e7b4c60f28fda6c0a425ba3d0a4f
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96938229"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98180072"
 ---
 # <a name="tutorial-create-a-hierarchy-of-iot-edge-devices-preview"></a>Självstudie: skapa en hierarki med IoT Edge enheter (förhands granskning)
 
@@ -63,6 +63,13 @@ Om du vill skapa en hierarki med IoT Edge enheter behöver du:
     --admin-username azureuser \
     --admin-password <REPLACE_WITH_PASSWORD>
    ```
+
+* Kontrol lera att följande portar är öppna inkommande: 8000, 443, 5671, 8883:
+  * 8000: används för att hämta Docker-behållar avbildningar via API-proxyn.
+  * 443: används mellan överordnade och underordnade Edge-nav för REST API-anrop.
+  * 5671, 8883: används för AMQP och MQTT.
+
+  Ner information finns i artikeln om [hur du öppnar portar för en virtuell dator med Azure Portal](../virtual-machines/windows/nsg-quickstart-portal.md).
 
 Du kan också testa det här scenariot genom att följa exemplet med skript [Azure IoT Edge för industriella IoT-exempel](https://aka.ms/iotedge-nested-sample), som distribuerar virtuella Azure-datorer som förkonfigurerade enheter för att simulera en fabriks miljö.
 
@@ -182,6 +189,39 @@ Varje enhet behöver en kopia av rot certifikat utfärdarens certifikat och en k
 
 Installera IoT Edge genom att följa dessa steg på båda enheterna.
 
+1. Installera den lagrings plats konfiguration som matchar enhetens operativ system.
+
+   * **Ubuntu Server 16,04**:
+
+     ```bash
+     curl https://packages.microsoft.com/config/ubuntu/16.04/multiarch/prod.list > ./microsoft-prod.list
+     ```
+
+   * **Ubuntu Server 18,04**:
+
+     ```bash
+     curl https://packages.microsoft.com/config/ubuntu/18.04/multiarch/prod.list > ./microsoft-prod.list
+     ```
+
+   * **Raspberry Pi OS-storlek**:
+
+     ```bash
+     curl https://packages.microsoft.com/config/debian/stretch/multiarch/prod.list > ./microsoft-prod.list
+     ```
+
+1. Kopiera den genererade listan till katalogen sources. list. d.
+
+   ```bash
+   sudo cp ./microsoft-prod.list /etc/apt/sources.list.d/
+   ```
+
+1. Installera den offentliga nyckeln för Microsoft GPG.
+
+   ```bash
+   curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+   sudo cp ./microsoft.gpg /etc/apt/trusted.gpg.d/
+   ```
+   
 1. Uppdatera paket listor på enheten.
 
    ```bash
@@ -197,7 +237,7 @@ Installera IoT Edge genom att följa dessa steg på båda enheterna.
 1. Installera hsmlib och IoT Edge daemon. [Besök GitHub-versionen](https://github.com/Azure/azure-iotedge/releases/tag/1.2.0-rc1)om du vill se till gångarna för andra Linux-distributioner. <!-- Update with proper image links on release -->
 
    ```bash
-   curl -L https://github.com/Azure/azure-iotedge/releases/download/1.2.0-rc1/libiothsm-std_1.2.0.rc1-1-1_debian9_amd64.deb -o libiothsm-std.deb
+   curl -L https://github.com/Azure/azure-iotedge/releases/download/1.2.0-rc1/libiothsm-std_1.2.0_rc1-1-1_debian9_amd64.deb -o libiothsm-std.deb
    curl -L https://github.com/Azure/azure-iotedge/releases/download/1.2.0-rc1/iotedge_1.2.0_rc1-1_debian9_amd64.deb -o iotedge.deb
    sudo dpkg -i ./libiothsm-std.deb
    sudo dpkg -i ./iotedge.deb
@@ -594,13 +634,35 @@ Notice that the image URI that we used for the simulated temperature sensor modu
 
 On the device details page for your lower layer IoT Edge device, you should now see the temperature sensor module listed along the system modules as **Specified in deployment**. It may take a few minutes for the device to receive its new deployment, request the container image, and start the module. Refresh the page until you see the temperature sensor module listed as **Reported by device**.
 
-## View generated data
+## IotEdge check
 
-The **Simulated Temperature Sensor** module that you pushed generates sample environment data. It sends messages that include ambient temperature and humidity, machine temperature and pressure, and a timestamp.
+Run the `iotedge check` command to verify the configuration and to troubleshoot errors.
 
-You can watch the messages arrive at your IoT hub by using the [Azure IoT Hub extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit).
+You can run `iotedge check` in a nested hierarchy, even if the child machines don't have direct internet access.
 
-You can also view these messages through the [Azure Cloud Shell](https://shell.azure.com/):
+When you run `iotedge check` from the lower layer, the program tries to pull the image from the parent through port 443.
+
+In this tutorial, we use port 8000, so we need to specify it:
+
+```bash
+sudo iotedge check --diagnostics-image-name <parent_device_fqdn_or_ip>:8000/azureiotedge-diagnostics:1.2.0-rc2
+```
+   
+`azureiotedge-diagnostics`Värdet hämtas från behållar registret som är länkat till register-modulen. Den här självstudien har den angetts som standard till https://mcr.microsoft.com:
+
+| Name | Värde |
+| - | - |
+| `REGISTRY_PROXY_REMOTEURL` | `https://mcr.microsoft.com` |
+
+Om du använder ett privat behållar register, se till att alla avbildningar (till exempel IoTEdgeAPIProxy, edgeAgent, edgeHub och diagnostik) finns i behållar registret.    
+    
+## <a name="view-generated-data"></a>Visa genererade data
+
+Modulen **simulerad temperatur sensor** som du har överfört genererar exempel miljö data. Den skickar meddelanden som innehåller omgivande temperatur och fukt, maskin temperatur och tryck och en tidsstämpel.
+
+Du kan titta på meddelandena i IoT Hub med hjälp av [Azure IoT Hub-tillägget för Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit).
+
+Du kan också visa dessa meddelanden via [Azure Cloud Shell](https://shell.azure.com/):
 
    ```azurecli-interactive
    az iot hub monitor-events -n <iothub_name> -d <lower-layer-device-name>

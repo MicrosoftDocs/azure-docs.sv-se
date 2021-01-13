@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 10/05/2018
 ms.author: robreed
-ms.openlocfilehash: e38fcd069fa6a3e8582dcd96b2bd0b4074986de7
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 01a41e9acccdb40bf198031d13c3ea3f13c079ce
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94955811"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98180157"
 ---
 # <a name="desired-state-configuration-extension-with-azure-resource-manager-templates"></a>Önskat tillstånds konfigurations tillägg med Azure Resource Manager mallar
 
@@ -38,7 +38,7 @@ Mer information finns i [VirtualMachineExtension-klass](/dotnet/api/microsoft.az
 {
   "type": "Microsoft.Compute/virtualMachines/extensions",
   "name": "Microsoft.Powershell.DSC",
-  "apiVersion": "2018-06-30",
+  "apiVersion": "2018-06-01",
   "location": "[parameters('location')]",
   "dependsOn": [
     "[concat('Microsoft.Compute/virtualMachines/', parameters('VMName'))]"
@@ -178,7 +178,7 @@ En lista över de argument som är tillgängliga för standard konfigurations sk
 
 ## <a name="details"></a>Information
 
-| Egenskapsnamn | Typ | Beskrivning |
+| Egenskapsnamn | Typ | Description |
 | --- | --- | --- |
 | Settings. wmfVersion |sträng |Anger den version av Windows Management Framework (WMF) som ska installeras på den virtuella datorn. Om du anger den här egenskapen till **senaste** installeras den senaste versionen av WMF. För närvarande är de enda möjliga värdena för den här egenskapen **4,0**, **5,0**, **5,1** och **senaste**. Dessa möjliga värden är beroende av uppdateringar. Standardvärdet är **senaste**. |
 | settings.configuration. URL |sträng |Anger den URL-plats från vilken du vill ladda ned din DSC-konfiguration. zip-fil. Om den angivna URL: en kräver en SAS-token för åtkomst, ställer du in egenskapen **protectedSettings.configurationUrlSasToken** på värdet för din SAS-token. Den här egenskapen krävs om **settings.configuration. script** eller **settings.configuration. Function** definieras. Om inget värde anges för dessa egenskaper anropar tillägget standard konfigurations skriptet för att ange plats Configuration Manager (LCM) metadata och argument ska anges. |
@@ -186,7 +186,7 @@ En lista över de argument som är tillgängliga för standard konfigurations sk
 | settings.configuration. Function |sträng |Anger namnet på din DSC-konfiguration. Den angivna konfigurationen måste inkluderas i skriptet som **settings.configuration. script** definierar. Den här egenskapen krävs om **settings.configuration. URL** eller **settings.configuration. Function** definieras. Om inget värde anges för dessa egenskaper anropar tillägget standard konfigurations skriptet för att ange LCM metadata och argument ska anges. |
 | settings.configurationArguments |Samling |Definierar alla parametrar som du vill skicka till din DSC-konfiguration. Den här egenskapen är inte krypterad. |
 | settings.configurationData. URL |sträng |Anger den URL från vilken du vill ladda ned konfigurations data filen (. psd1) som ska användas som indata för din DSC-konfiguration. Om den angivna URL: en kräver en SAS-token för åtkomst, ställer du in egenskapen **protectedSettings.configurationDataUrlSasToken** på värdet för din SAS-token. |
-| Settings. privacy. dataCollection |sträng |Aktiverar eller inaktiverar telemetri-samling. De enda möjliga värdena för den här egenskapen är **Aktivera**, inaktivera **, eller** **$Null**. **Disable** Om du lämnar den här egenskapen tom eller null aktive ras telemetri. Standardvärdet är **.** Mer information finns i [data insamling för Azure DSC-tillägg](https://devblogs.microsoft.com/powershell/azure-dsc-extension-data-collection-2/). |
+| Settings. privacy. dataCollection |sträng |Aktiverar eller inaktiverar telemetri-samling. De enda möjliga värdena för den här egenskapen är **Aktivera**, inaktivera **, eller** **$Null**.  Om du lämnar den här egenskapen tom eller null aktive ras telemetri. Standardvärdet är **.** Mer information finns i [data insamling för Azure DSC-tillägg](https://devblogs.microsoft.com/powershell/azure-dsc-extension-data-collection-2/). |
 | Settings. advancedOptions. downloadMappings |Samling |Definierar alternativa platser som WMF ska hämtas från. Mer information finns i [Azure DSC-tillägg 2,8 och så här mappar du hämtning av fil namns beroenden till din egen plats](https://devblogs.microsoft.com/powershell/azure-dsc-extension-2-8-how-to-map-downloads-of-the-extension-dependencies-to-your-own-location/). |
 | protectedSettings.configurationArguments |Samling |Definierar alla parametrar som du vill skicka till din DSC-konfiguration. Den här egenskapen är krypterad. |
 | protectedSettings.configurationUrlSasToken |sträng |Anger den SAS-token som ska användas för att få åtkomst till URL: en som **settings.configuration. URL** definierar. Den här egenskapen är krypterad. |
@@ -197,7 +197,7 @@ En lista över de argument som är tillgängliga för standard konfigurations sk
 Mer information om följande värden finns i [grundläggande inställningar för lokala Configuration Manager](/powershell/scripting/dsc/managing-nodes/metaConfig#basic-settings).
 Du kan använda standard konfigurations skriptet för DSC-tillägget för att konfigurera LCM-egenskaperna som visas i följande tabell.
 
-| Egenskapsnamn | Typ | Beskrivning |
+| Egenskapsnamn | Typ | Description |
 | --- | --- | --- |
 | protectedSettings.configurationArguments. RegistrationKey |PSCredential |Nödvändig egenskap. Anger den nyckel som används för en nod för att registrera med Azure Automation tjänsten som lösen ord för ett PowerShell-Credential-objekt. Det här värdet kan identifieras automatiskt med hjälp av metoden **listnycklar** mot Automation-kontot.  Se [exemplet](#example-using-referenced-azure-automation-registration-values). |
 | settings.configurationArguments. RegistrationUrl |sträng |Nödvändig egenskap. Anger URL: en för den Automation-slutpunkt där noden försöker registrera sig. Det här värdet kan identifieras automatiskt med hjälp av **referens** metoden mot Automation-kontot. |

@@ -3,18 +3,20 @@ title: Publicera app – LUIS
 titleSuffix: Azure Cognitive Services
 description: När du har skapat och testat din aktiva LUIS-app gör du den tillgänglig för klient programmet genom att publicera den till slut punkten.
 services: cognitive-services
+author: aahill
 manager: nitinme
+ms.author: aahi
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
-ms.date: 05/17/2020
-ms.openlocfilehash: b72f1fd64cca0fa77ebc486670a512c5228e1146
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 01/12/2021
+ms.openlocfilehash: 8db0f5fa39c7f489db0e30e98ee2684c74eee7e8
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541483"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98180038"
 ---
 # <a name="publish-your-active-trained-app-to-a-staging-or-production-endpoint"></a>Publicera din aktiva, utbildade app till en mellanlagrings-eller produktions slut punkt
 
@@ -55,7 +57,7 @@ Till exempel, för en app som skapas på [www.Luis.AI](https://www.luis.ai), om 
 När du har valt plats, konfigurerar du publicerings inställningarna för:
 
 * Attitydanalys
-* [Stavnings korrigering](luis-tutorial-bing-spellcheck.md) – v2 endast förutsägelse slut punkt
+* [Stavnings korrigering](luis-tutorial-bing-spellcheck.md)
 * Tal Prima
 
 När du har publicerat är de här inställningarna tillgängliga för granskning på sidan hantera **publicerings inställningar** i avsnittet **Hantera** . Du kan ändra inställningarna med varje publicering. Om du avbryter en publicering avbryts även eventuella ändringar som du har gjort under publiceringen.
@@ -80,7 +82,32 @@ Mer information om JSON-slutpunktens svar med sentiment-analys finns i [sentimen
 
 ## <a name="spelling-correction"></a>Stavnings korrigering
 
-[!INCLUDE [Not supported in V3 API prediction endpoint](./includes/v2-support-only.md)]
+V3-förutsägelse API har nu stöd för Bing API för stavnings kontroll. Du kan lägga till stavnings kontroll i programmet genom att inkludera nyckeln till din Bing search-resurs i rubriken för dina begär Anden. Du kan använda en befintlig Bing-resurs om du redan äger en, eller [skapa en ny](https://portal.azure.com/#create/Microsoft.BingSearch) för att använda den här funktionen. 
+
+|Rubrik nyckel|Huvud värde|
+|--|--|
+|`mkt-bing-spell-check-key`|Nycklar hittades i bladet **nycklar och slut punkter** i din resurs|
+
+Exempel på förutsägelse av utdata för en felstavad fråga:
+
+```json
+{
+  "query": "bouk me a fliht to kayro",
+  "prediction": {
+    "alteredQuery": "book me a flight to cairo",
+    "topIntent": "book a flight",
+    "intents": {
+      "book a flight": {
+        "score": 0.9480589
+      }
+      "None": {
+        "score": 0.0332136229
+      }
+    },
+    "entities": {}
+  }
+}
+```
 
 Korrigeringar av stavning görs före LUIS User uttryck förutsägelse. Du kan se ändringar i den ursprungliga uttryck, inklusive stavning, i svaret.
 

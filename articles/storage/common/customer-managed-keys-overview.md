@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 8eaadc031039b22e209db1023c65da39e1e096b1
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 9afce964652d2bedbe105a8a750a93d2f37eef85
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96483291"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98179039"
 ---
 # <a name="customer-managed-keys-for-azure-storage-encryption"></a>Kundhanterade nycklar för Azure Storage kryptering
 
@@ -78,7 +78,7 @@ När du konfigurerar kryptering med Kundhanterade nycklar har du två alternativ
 
     När nyckel versionen anges explicit måste du manuellt uppdatera lagrings kontot för att använda den nya nyckel versions-URI: n när en ny version skapas. Information om hur du uppdaterar lagrings kontot för att använda en ny version av nyckeln finns i [Konfigurera kryptering med Kundhanterade nycklar som lagras i Azure Key Vault](customer-managed-keys-configure-key-vault.md) eller [Konfigurera kryptering med Kundhanterade nycklar som lagras i Azure Key Vault hanterad HSM (för hands version)](customer-managed-keys-configure-key-vault-hsm.md).
 
-Uppdatering av nyckel versionen för en kundhanterad nyckel utlöser inte Omkryptering av data i lagrings kontot. Det krävs ingen ytterligare åtgärd från användaren.
+När du uppdaterar nyckel versionen ändras skyddet av rot krypterings nyckeln, men data i Azure Storage-kontot krypteras inte igen. Det krävs ingen ytterligare åtgärd från användaren.
 
 > [!NOTE]
 > Om du vill rotera en nyckel skapar du en ny version av nyckeln i Key Vault eller hanterad HSM, enligt dina efterlevnadsprinciper. Du kan rotera nyckeln manuellt eller skapa en funktion för att rotera den enligt ett schema.

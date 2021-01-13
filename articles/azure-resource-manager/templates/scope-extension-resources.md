@@ -2,21 +2,24 @@
 title: Omfattning av resurs typer för tillägg
 description: Beskriver hur du använder egenskapen omfattning när du distribuerar tillägg resurs typer.
 ms.topic: conceptual
-ms.date: 10/22/2020
-ms.openlocfilehash: bd468d31454c38bd314269243702d7df4f279a5e
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.date: 01/13/2021
+ms.openlocfilehash: 75c2c8b8409cc9f8e7a8e71965589ece6660607a
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92681703"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98179987"
 ---
 # <a name="setting-scope-for-extension-resources-in-arm-templates"></a>Ange omfång för tilläggs resurser i ARM-mallar
 
-En tilläggs resurs är en resurs som ändrar en annan resurs. Du kan till exempel tilldela en roll till en resurs för att begränsa åtkomsten. Roll tilldelningen är en tilläggs resurs typ.
+En tilläggs resurs är en resurs som ändrar en annan resurs. Du kan till exempel tilldela en roll till en resurs. Roll tilldelningen är en tilläggs resurs typ.
 
 En fullständig lista över resurs typer för tillägg finns i [resurs typer som utökar funktionerna i andra resurser](../management/extension-resource-types.md).
 
 Den här artikeln visar hur du ställer in omfånget för en tilläggs resurs typ när den distribueras med en Azure Resource Manager-mall (ARM-mall). Den beskriver omfattnings egenskapen som är tillgänglig för tilläggs resurser när den tillämpas på en resurs.
+
+> [!NOTE]
+> Egenskapen omfattning är bara tillgänglig för resurs typer av typen tillägg. Om du vill ange ett annat omfång för en resurs typ som inte är en tilläggs typ, använder du en kapslad eller länkad distribution. Mer information finns i [distributioner av resurs grupper](deploy-to-resource-group.md), [prenumerations distributioner](deploy-to-subscription.md), [distributioner av hanterings grupper](deploy-to-management-group.md)och [klient distributioner](deploy-to-tenant.md).
 
 ## <a name="apply-at-deployment-scope"></a>Tillämpa vid distributions omfång
 

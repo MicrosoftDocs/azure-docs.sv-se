@@ -2,13 +2,13 @@
 title: Distribuera resurser till hanterings grupp
 description: Beskriver hur du distribuerar resurser i hanterings gruppens omfattning i en Azure Resource Manager-mall.
 ms.topic: conceptual
-ms.date: 11/24/2020
-ms.openlocfilehash: 79cdb35de40501dfc0794155dcf807cced94bfa7
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.date: 01/13/2021
+ms.openlocfilehash: f847e481670d7f9afd4b40cfb8fcbec65d1e28c8
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95798595"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98178933"
 ---
 # <a name="management-group-deployments-with-arm-templates"></a>Distributioner av hanterings grupper med ARM-mallar
 
@@ -123,7 +123,8 @@ När du distribuerar till en hanterings grupp kan du distribuera resurser för a
 * prenumerationer i hanterings gruppen
 * resurs grupper i hanterings gruppen
 * innehavaren för resurs gruppen
-* [tilläggs resurser](scope-extension-resources.md) kan tillämpas på resurser
+
+En [tilläggs resurs](scope-extension-resources.md) kan begränsas till ett mål som skiljer sig från distributions målet.
 
 Användaren som distribuerar mallen måste ha åtkomst till det angivna omfånget.
 

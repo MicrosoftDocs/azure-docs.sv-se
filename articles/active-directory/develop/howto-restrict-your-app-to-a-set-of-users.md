@@ -13,12 +13,12 @@ ms.date: 09/24/2018
 ms.author: kkrishna
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: f5a5242cb9448b3d11e0921b2272cf00bef8f6c1
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 5f6ac11fc5c7bbe7a8f81e6ea89e2c582ebcf264
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97722274"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98178746"
 ---
 # <a name="how-to-restrict-your-azure-ad-app-to-a-set-of-users-in-an-azure-ad-tenant"></a>Så här: begränsa din Azure AD-App till en uppsättning användare i en Azure AD-klient
 
@@ -34,8 +34,8 @@ Klient organisations administratörer och utvecklare kan begränsa en app till e
 
 Alternativet att begränsa en app till en speciell uppsättning användare eller säkerhets grupper i en klient organisation fungerar med följande typer av program:
 
-- Program som kon figurer ATS för federerad enkel inloggning med SAML-baserad autentisering
-- Application Proxy-program som använder Azure AD pre-Authentication
+- Program som kon figurer ATS för federerad enkel inloggning med SAML-baserad autentisering.
+- Application Proxy-program som använder Azure AD förautentisering.
 - Program som byggts direkt på den Azure AD-programplattform som använder OAuth 2.0/OpenID Connect-autentisering när en användare eller administratör har samtyckt till det programmet.
 
      > [!NOTE]
@@ -47,50 +47,40 @@ Det finns två sätt att skapa ett program med aktive rad användar tilldelning.
 
 ### <a name="enterprise-applications-requires-the-global-administrator-role"></a>Företags program (kräver rollen som global administratör)
 
-1. Gå till [**Azure Portal**](https://portal.azure.com/) och logga in som **Global administratör**.
-1. I det översta fältet väljer du det inloggade kontot. 
-1. Under **katalog** väljer du den Azure AD-klient där appen ska registreras.
-1. I navigeringen till vänster väljer du **Azure Active Directory**. Följ dessa steg om Azure Active Directory inte är tillgänglig i navigerings fönstret:
-
-    1. Välj **alla tjänster** överst i den huvudsakliga navigerings menyn i den vänstra menyn.
-    1. Skriv **Azure Active Directory** i rutan filtrera sökning och välj sedan **Azure Active Directory** objektet från resultatet.
-
-1. I fönstret **Azure Active Directory** väljer du **företags program** från **Azure Active Directory** vänster navigerings meny.
-1. Välj **Alla program** för att visa en lista över alla dina program.
-
-     Om du inte ser det program som du vill visa här, använder du de olika filtren överst i listan **alla program** för att begränsa listan eller bläddra nedåt i listan för att hitta programmet.
-
-1. Välj det program som du vill tilldela en användare eller säkerhets grupp till i listan.
-1. På sidan **Översikt** för program väljer du **Egenskaper** från programmets vänstra navigerings meny.
+1. Logga in på <a href="https://portal.azure.com/" target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> Azure Portal</a> som **Global administratör**.
+1. Om du har åtkomst till flera klienter använder du filtret för **katalog + prenumeration** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: i den översta menyn för att välja den klient som du vill registrera ett program i.
+1. Sök efter och välj **Azure Active Directory**.
+1. Under **Hantera** väljer du **företags program**  >  **alla program**.
+1. Välj det program som du vill tilldela en användare eller en säkerhets grupp till i listan. 
+    Använd filtren längst upp i fönstret för att söka efter ett angivet program.
+1. På sidan **Översikt** för program under **Hantera** väljer du **Egenskaper**.
 1. Leta upp inställningen **användar tilldelning krävs?** och ange den till **Ja**. När det här alternativet är inställt på **Ja** måste användare i klient organisationen först tilldelas till det här programmet, annars kan de inte logga in i programmet.
-1. Välj **Spara** för att spara den här konfigurations ändringen.
+1. Välj **Spara**.
 
 ### <a name="app-registration"></a>Appregistrering
 
-1. Gå till [**Azure Portal**](https://portal.azure.com/).
-1. I det översta fältet väljer du det inloggade kontot. 
-1. Under **katalog** väljer du den Azure AD-klient där appen ska registreras.
-1. I navigeringen till vänster väljer du **Azure Active Directory**.
-1. I fönstret **Azure Active Directory** väljer du **app-registreringar** från **Azure Active Directory** vänster navigerings meny.
-1. Skapa eller Välj den app som du vill hantera. Du måste vara **ägare** till den här appens registrering.
-1. På sidan **Översikt** för program följer du länken **hanterat program i lokal katalog** under Essentials överst på sidan. Detta tar dig till det _hanterade företags programmet_ för din app-registrering.
-1. Från navigerings bladet till vänster väljer du **Egenskaper**.
+1. Logga in på <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
+1. Om du har åtkomst till flera klienter använder du filtret för **katalog + prenumeration** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: i den översta menyn för att välja den klient som du vill registrera ett program i.
+1. Sök efter och välj **Azure Active Directory**.
+1. Välj **Appregistreringar** under **Hantera**.
+1. Skapa eller Välj den app som du vill hantera. Du måste vara **ägare** till det här programmet.
+1. På sidan **Översikt** för program väljer du länken **hanterat program i lokal katalog** i avsnittet **Essentials** .
+1. Under **Hantera**, väljer du **Egenskaper**.
 1. Leta upp inställningen **användar tilldelning krävs?** och ange den till **Ja**. När det här alternativet är inställt på **Ja** måste användare i klient organisationen först tilldelas till det här programmet, annars kan de inte logga in i programmet.
-1. Välj **Spara** för att spara den här konfigurations ändringen.
+1. Välj **Spara**.
 
 ## <a name="assign-users-and-groups-to-the-app"></a>Tilldela användare och grupper till appen
 
 När du har konfigurerat din app för att aktivera användar tilldelning kan du gå vidare och tilldela användare och grupper till appen.
 
-1. Välj fönstret **användare och grupper** i den vänstra navigerings menyn i företags programmet.
-1. Klicka på knappen **Lägg till användare** längst upp i listan **användare och grupper** för att öppna fönstret **Lägg till tilldelning** .
-1. Välj **användarens** väljare i fönstret **Lägg till tilldelning** . 
+1. Under **Hantera** väljer du **användare och grupper**  >  **Lägg till användare/grupp** .
+1. Välj **användarens** väljare. 
 
      En lista över användare och säkerhets grupper visas tillsammans med en text ruta där du kan söka efter och hitta en viss användare eller grupp. På den här skärmen kan du välja flera användare och grupper i en enda go.
 
-1. När du är färdig med att välja användare och grupper trycker du på knappen **Välj** längst ned för att gå vidare till nästa del.
+1. När du är färdig med att välja användare och grupper väljer du **Välj**.
 1. Valfritt Om du har definierat app-roller i programmet kan du använda alternativet **Välj roll** för att tilldela de valda användarna och grupperna till en av programmets roller. 
-1. Tryck på knappen **tilldela** längst ned för att slutföra tilldelningen av användare och grupper till appen. 
+1. Välj **tilldela** för att slutföra tilldelningen av användare och grupper till appen. 
 1. Bekräfta att de användare och grupper som du har lagt till visas i listan uppdaterade **användare och grupper** .
 
 ## <a name="more-information"></a>Mer information

@@ -13,12 +13,12 @@ ms.date: 11/22/2019
 ms.author: negoe
 ms.reviewer: marsma, nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 22b3ea9eb0e4c3379438b6c3fb58ccfb13b4ed32
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 5a032f45027cc4bffc7f2bc46c6ea1a69a1b83e4
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98064801"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98178627"
 ---
 # <a name="use-msal-in-a-national-cloud-environment"></a>Använda MSAL i en nationell moln miljö
 
@@ -34,7 +34,7 @@ Med det globala molnet distribueras Azure Active Directory (Azure AD) i följand
 
 Den här guiden visar hur du loggar in på arbets-och skol konton, hämtar en åtkomsttoken och anropar Microsoft Graph API i [Azure Government moln](https://azure.microsoft.com/global-infrastructure/government/) miljö.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Innan du börjar ska du kontrol lera att du uppfyller dessa krav.
 
@@ -70,19 +70,21 @@ Så här aktiverar du MSAL.js program för suveräna moln:
 
 ### <a name="step-1-register-your-application"></a>Steg 1: Registrera ditt program
 
-1. Logga in på [Azure-portalen](https://portal.azure.us/).
+1. Logga in på <a href="https://portal.azure.us/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
 
    Information om hur du hittar Azure Portal slut punkter för andra nationella moln finns i [slut punkter för registrering av appar](authentication-national-cloud.md#app-registration-endpoints).
 
-1. Om ditt konto ger dig åtkomst till fler än en klient väljer du ditt konto i det övre högra hörnet och ställer in din portal-session till önskad Azure AD-klient.
-1. Gå till sidan [Appregistreringar](https://aka.ms/ra/ff) på Microsoft Identity Platform för utvecklare.
-1. När sidan **Registrera ett program** visas anger du ett namn för programmet.
+1. Om du har åtkomst till flera klienter använder du filtret för **katalog + prenumeration** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: i den översta menyn för att välja den klient som du vill registrera ett program i.
+1. Sök efter och välj **Azure Active Directory**.
+1. Under **Hantera** väljer du **Appregistreringar**  >  **ny registrering**.
+1. Ange ett **namn** för ditt program. Användare av appen kan se det här namnet och du kan ändra det senare.
 1. Under **konto typer som stöds** väljer du **konton i valfri organisations katalog**.
 1. I avsnittet **omdirigerings-URI** väljer du **webb** plattform och anger värdet till programmets URL-adress baserat på din webb server. I nästa avsnitt finns anvisningar om hur du ställer in och hämtar omdirigerings-URL: en i Visual Studio och Node.
 1. Välj **Register** (Registrera).
-1. På appens sida **Översikt** antecknar du värdet för **Application (client) ID** (Program-ID (klient)).
-1. I den här självstudien krävs att du aktiverar det [implicita tilldelnings flödet](v2-oauth2-implicit-grant-flow.md). I det vänstra fönstret i det registrerade programmet väljer du **autentisering**.
-1. I **Avancerade inställningar**, under **implicit tilldelning**, markerar du kryss rutorna **ID-token** och **åtkomst-token** . ID-token och åtkomsttoken krävs eftersom den här appen måste logga in användare och anropa ett API.
+1. På sidan **Översikt** noterar du **programmets (klient) ID-** värde för senare användning.
+    I den här självstudien krävs att du aktiverar det [implicita tilldelnings flödet](v2-oauth2-implicit-grant-flow.md). 
+1. Under **Hantera** väljer du **autentisering**.
+1. Under **implicit beviljande** väljer du **ID-token** och **åtkomsttoken**. ID-token och åtkomsttoken krävs eftersom den här appen måste logga in användare och anropa ett API.
 1. Välj **Spara**.
 
 ### <a name="step-2--set-up-your-web-server-or-project"></a>Steg 2: Konfigurera din webb server eller ditt projekt

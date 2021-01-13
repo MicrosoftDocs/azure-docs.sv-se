@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/14/2020
 ms.topic: quickstart
-ms.openlocfilehash: 3eec935d0a25f9510cd9a2f6e00b7ac22756e697
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a5a44b9d27901fcd00f8813096de6bbae5f2310d
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88796807"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98179953"
 ---
 # <a name="quickstart-deploy-unity-sample-to-hololens"></a>Snabbstart: Distribuera Unity-exempel till HoloLens
 
@@ -48,7 +48,7 @@ Se till att dina autentiseringsuppgifter sparas korrekt med scenen och att du ka
 1. För projektet ”Quickstart” (Snabbstart) går du till *Properties > Debugging* (Egenskaper > Felsökning)
     1. Kontrollera att konfigurationen *Release* (Version) är aktiv
     1. Ställ in *Debugger to Launch* (Felsökningsprogram som ska starta) till **Remote Machine** (Fjärrdator)
-    1. Ändra *Machine Name* (Datornamn) till **IP-adressen för HoleLens**
+    1. Ändra *dator namn* till **IP-adressen för din HoloLens**
 
 ## <a name="launch-the-sample-project"></a>Starta exempelprojektet
 

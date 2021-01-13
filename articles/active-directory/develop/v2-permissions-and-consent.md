@@ -12,12 +12,12 @@ ms.date: 09/23/2020
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur, marsma
 ms.custom: aaddev, fasttrack-edit, contperf-fy21q1, identityplatformtop40
-ms.openlocfilehash: 14b6d6ecc6523199102fd3ef9370fe901c4ff51d
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: d3edadd4878dbd6e06648f7fb67a0c3e111665d1
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97355706"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98178134"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Behörigheter och medgivande i slutpunkten för Microsoft Identity Platform
 
@@ -166,10 +166,11 @@ Program kan anteckna vilka behörigheter de behöver (både delegerade och progr
 
 #### <a name="to-configure-the-list-of-statically-requested-permissions-for-an-application"></a>Konfigurera listan med statiskt begärda behörigheter för ett program
 
-1. Gå till ditt program i [Azure Portal – Appregistreringar](https://go.microsoft.com/fwlink/?linkid=2083908) erfarenhet eller [skapa en app](quickstart-register-app.md) om du inte redan har gjort det.
-2. Leta upp avsnittet **API-behörigheter** och i API-behörigheterna klickar du på Lägg till en behörighet.
-3. Välj **Microsoft Graph** i listan över tillgängliga API: er och Lägg sedan till de behörigheter som din app kräver.
-3. **Spara** appens registrering.
+1. Gå till ditt program i snabb starten <a href="https://go.microsoft.com/fwlink/?linkid=2083908" target="_blank">Azure Portal- <span class="docon docon-navigate-external x-hidden-focus"></span> Appregistreringar</a> .
+1. Välj ett program eller [skapa en app](quickstart-register-app.md) om du inte redan har gjort det.
+1. På sidan **Översikt** för program under **Hantera** väljer du API- **behörigheter**  >  **Lägg till en behörighet**.
+1. Välj **Microsoft Graph** i listan över tillgängliga API: er och Lägg sedan till de behörigheter som din app kräver.
+1. Välj **Lägg till behörigheter**.
 
 ### <a name="recommended-sign-the-user-into-your-app"></a>Rekommenderat: signera användaren i din app
 

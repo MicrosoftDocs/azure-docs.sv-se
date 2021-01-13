@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/01/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9d4fa80f669493e4dc47a9ad0f9bfe9390d4ab24
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 8d41f8959d0a1ec0d6e48cf2fa4711a8ef8d8ae5
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94953584"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98178950"
 ---
 # <a name="set-up-phone-sign-up-and-sign-in-with-custom-policies-in-azure-ad-b2c"></a>Konfigurera telefonin loggning och inloggning med anpassade principer i Azure AD B2C
 
@@ -39,7 +39,7 @@ Med telefonin loggning och inloggning kan användaren registrera sig för appen 
 >
 > *&lt;Infoga: en länk till din sekretess policy&gt;*<br/>*&lt;Infoga: en länk till dina användnings villkor&gt;*
 
-För att lägga till din egen medgivande information, anpassa följande exempel och inkludera det i LocalizedResources för ContentDefinition som används av den självkontrollerade sidan med visnings kontrollen (Phone-Email-Base.xml-filen i inloggnings & inloggnings start paket):
+Om du vill lägga till din egen medgivande information, anpassa följande exempel och inkludera det i LocalizedResources för ContentDefinition som används av den självkontrollerade sidan med visnings kontrollen ( *Phone_Email_Base.xml* -filen i [telefon-och inloggnings start paketet][starter-pack-phone]):
 
 ```xml
 <LocalizedResources Id="phoneSignUp.en">        

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/02/2020
 ms.author: jeedes
-ms.openlocfilehash: 43e6495c0231d5b14d27eabc3b9b82ba791d7108
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 241e5abf8377bd2e2207d140e291b18592651ea6
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97365083"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98179596"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-kfadvance"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med KFAdvance
 
@@ -26,7 +26,7 @@ I den här självstudien får du lära dig hur du integrerar KFAdvance med Azure
 * Gör det möjligt för användarna att logga in automatiskt till KFAdvance med sina Azure AD-konton.
 * Hantera dina konton på en central plats – Azure Portal.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 För att komma igång behöver du följande objekt:
 
@@ -76,13 +76,13 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 1. I avsnittet **grundläggande SAML-konfiguration** , om du vill konfigurera programmet i **IDP** initierat läge, anger du värdena för följande fält:
 
-    a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster: `https://api.kfadvance-<ENVIRONMENT>.com/<PARTNER_ID>`
+    a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster: `https://api.kfadvance.com/<PARTNER_ID>`
 
-    b. Skriv en URL i text rutan **svars-URL** med följande mönster: `https://api.kfadvance-<ENVIRONMENT>.com/vn/account/partnerssocallback?partnerKey=<PARTNER_ID>`
+    b. Skriv en URL i text rutan **svars-URL** med följande mönster: `https://api.kfadvance-<ENVIRONMENT>.com/v1/account/partnerssocallback?partnerKey=<PARTNER_ID>`
 
 1. Klicka på **Ange ytterligare URL:er** och gör följande om du vill konfigurera appen i **SP**-initierat läge:
 
-    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:  `https://api.kfadvance-<ENVIRONMENT>.com/vn/account/partnerssologin?partnerKey=<PARTNER_ID>`
+    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:  `https://api.kfadvance.com/v1/account/partnerssologin?partnerKey=<PARTNER_ID>`
 
     > [!NOTE]
     > Dessa värden är inte verkliga. Uppdatera värdena med den faktiska identifieraren, svars-URL och inloggnings-URL. Kontakta [KFAdvance client support team](mailto:support@kornferry.com) för att hämta dessa värden. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.

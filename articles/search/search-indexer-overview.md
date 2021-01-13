@@ -7,34 +7,44 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 09/25/2020
+ms.date: 01/11/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 305682812896bb74474b5065cfd56a071a73ed15
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 0405db2b68abefbfdc424def9e35e363e45043cd
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358787"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98180140"
 ---
 # <a name="indexers-in-azure-cognitive-search"></a>Indexerare i Azure Cognitive Search
 
-En *indexerare* i Azure kognitiv sökning är en Crawler som extraherar sökbara data och metadata från en extern Azure-datakälla och fyller ett index baserat på fält-till-fält-mappningar mellan indexet och data källan. Den här metoden kallas ibland för "pull-modell" eftersom tjänsten hämtar data i utan att du behöver skriva kod som lägger till data i ett index.
+En *indexerare* i Azure kognitiv sökning är en Crawler som extraherar sökbara data och metadata från en extern Azure-datakälla och fyller ett sökindex med fält-till-fält-mappningar mellan källdata och ditt index. Den här metoden kallas ibland för "pull-modell" eftersom tjänsten hämtar data i utan att du behöver skriva kod som lägger till data i ett index.
 
-Indexerare baseras på data käll typer eller plattformar, med enskilda indexerare för SQL Server på Azure, Cosmos DB Azure Table Storage och Blob Storage. Blob Storage-indexerare har ytterligare egenskaper som är speciella för BLOB-innehållstyp.
-
-Du kan använda en indexerare som enda metod för datapåfyllning eller använda en kombination av tekniker som inbegriper en indexerare för att läsa in bara några av fälten i ditt index.
+Indexerare är enbart Azure, med enskilda indexerare för Azure SQL, Azure Cosmos DB, Azure Table Storage och Blob Storage. När du konfigurerar en indexerare anger du en data källa (ursprung), samt ett index (mål). Flera data källor, till exempel Blob Storage-indexerare, har ytterligare egenskaper som är speciella för den innehålls typen.
 
 Du kan köra indexerare på begäran eller enligt ett återkommande data uppdaterings schema som körs så ofta som var femte minut. För frekventa uppdateringar krävs en push-modell som samtidigt uppdaterar data i både Azure-Kognitiv sökning och den externa data källan.
+
+## <a name="usage-scenarios"></a>Användningsscenarier
+
+Du kan använda en indexerare som enda metod för att mata in data eller använda en kombination av tekniker som bara läser in några av fälten i ditt index, om du vill omvandla eller lägga till innehåll på vägen. I följande tabell sammanfattas huvud scenarierna.
+
+| Scenario |Strategi |
+|----------|---------|
+| Enskild källa | Det här mönstret är det enklaste: en data källa är den enda innehålls leverantören för ett sökindex. Från källan identifierar du ett fält som innehåller unika värden som ska fungera som dokument nyckel i Sök indexet. Det unika värdet kommer att användas som en identifierare. Alla andra käll fält mappas implicit eller uttryckligen till motsvarande fält i ett index. </br></br>En viktig sak är att värdet för en dokument nyckel kommer från data källan. En Sök tjänst genererar inte nyckel värden. Vid efterföljande körningar läggs inkommande dokument med nya nycklar till, medan inkommande dokument med befintliga nycklar antingen sammanfogas eller skrivs över, beroende på om index fält är null eller har fyllts i. |
+| Flera källor| Ett index kan ta emot innehåll från flera källor, där varje körning ger nytt innehåll från en annan källa. </br></br>Ett resultat kan vara ett index som får dokument när varje indexerare har körts, med hela dokument som har skapats helt från varje källa. Utmaningen för det här scenariot är att designa ett index schema som fungerar för alla inkommande data och en dokument nyckel som är enhetlig i Sök indexet. Om till exempel värdena som unikt identifierar ett dokument metadata_storage_path i en BLOB-behållare och en primär nyckel i en SQL-tabell, kan du föreställa dig att en eller båda källorna måste ändras för att ge nyckel värden i ett gemensamt format, oavsett innehållets ursprung. I det här scenariot bör du förvänta dig att utföra en viss nivå av för bearbetning för att homogenisera data så att de kan hämtas till ett enda index.</br></br>Ett alternativt resultat kan vara Sök efter dokument som delvis fyllts i den första körningen och som sedan fylls i automatiskt genom efterföljande körningar för att hämta värden från andra källor. Utmaningen med det här mönstret ser till att varje indexerings körning är riktad mot samma dokument. Sammanslagning av fält i ett befintligt dokument kräver en matchning på dokument nyckeln. En demonstration av det här scenariot finns i [Självstudier: index från flera data källor](tutorial-multiple-data-sources.md). |
+| Innehålls omvandling | Kognitiv sökning stöder valfria [AI-anriknings](cognitive-search-concept-intro.md) beteenden som lägger till bild analys och naturlig språk bearbetning för att skapa ett nytt sökbart innehåll och en ny struktur. AI-berikning definieras av en [färdigheter](cognitive-search-working-with-skillsets.md)som är kopplad till en indexerare. För att kunna utföra AI-berikning behöver indexeraren fortfarande ha ett index och en data källa, men i det här scenariot lägger till färdigheter-bearbetning till indexerare-körning. |
 
 ## <a name="approaches-for-creating-and-managing-indexers"></a>Metoder för att skapa och hantera indexerare
 
 Du kan skapa och hantera indexerare med hjälp av följande metoder:
 
-* [Portal > guiden Importera data](search-import-data-portal.md)
-* [Tjänsten REST API](/rest/api/searchservice/Indexer-operations)
-* [.NET SDK](/dotnet/api/azure.search.documents.indexes.models.searchindexer)
++ [Portal > guiden Importera data](search-import-data-portal.md)
++ [Tjänsten REST API](/rest/api/searchservice/Indexer-operations)
++ [.NET SDK](/dotnet/api/azure.search.documents.indexes.models.searchindexer)
 
-Varje ny indexerare lanseras först som en förhandsversion av funktionen. Funktionerna i förhandsversionen introduceras via API:er (REST och .NET) och integreras sedan i portalen när de blivit allmänt tillgängliga. Om du utvärderar en ny indexerare bör du även göra upp en plan för att skriva kod.
+Om du använder ett SDK skapar du en [SearchIndexerClient](/dotnet/api/azure.search.documents.indexes.searchindexerclient) för att arbeta med indexerare, data källor och färdighetsuppsättningar. Länken ovan gäller för .NET SDK, men alla SDK: er tillhandahåller en SearchIndexerClient och liknande API: er.
+
+De nya data källorna inlednings vis visas som förhands gransknings funktioner och är bara REST. Efter att ha gått över till allmän tillgänglighet är fullständig support inbyggd i portalen och i de olika SDK: erna som finns på deras egna versions scheman.
 
 ## <a name="permissions"></a>Behörigheter
 
@@ -46,15 +56,15 @@ Alla åtgärder som rör indexerare, inklusive GET-begäranden för status eller
 
 Indexerare söker efter data lager i Azure.
 
-* [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)
-* [Azure Data Lake Storage Gen2](search-howto-index-azure-data-lake-storage.md) (för hands version)
-* [Azure-Table Storage](search-howto-indexing-azure-tables.md)
-* [Azure Cosmos DB](search-howto-index-cosmosdb.md)
-* [Azure SQL Database](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
-* [SQL-hanterad instans](search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md)
-* [SQL Server på Azure Virtual Machines](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)
++ [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)
++ [Azure Data Lake Storage Gen2](search-howto-index-azure-data-lake-storage.md) (för hands version)
++ [Azure Table Storage](search-howto-indexing-azure-tables.md)
++ [Azure Cosmos DB](search-howto-index-cosmosdb.md)
++ [Azure SQL Database](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
++ [SQL-hanterad instans](search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md)
++ [SQL Server på Azure Virtual Machines](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)
 
-## <a name="indexer-stages"></a>Indexerings steg
+## <a name="stages-of-indexing"></a>Indexerings steg
 
 Vid en inledande körning kommer en indexerare att läsas i alla data som anges i tabellen eller behållaren när indexet är tomt. Vid efterföljande körningar kan indexeraren vanligt vis identifiera och hämta bara de data som har ändrats. För BLOB-data är ändrings identifieringen automatisk. För andra data källor som Azure SQL eller Cosmos DB måste ändrings identifiering vara aktiverat.
 
@@ -68,9 +78,9 @@ Dokument sprickor är processen att öppna filer och extrahera innehåll. Beroen
 
 Exempel:  
 
-* När dokumentet är en post i en [Azure SQL-datakälla](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)extraherar indexeraren varje fält för posten.
-* När dokumentet är en PDF-fil i en [Azure Blob Storage data källa](search-howto-indexing-azure-blob-storage.md)extraherar indexeraren text, bilder och metadata för filen.
-* När dokumentet är en post i en [Cosmos db data källa](search-howto-index-cosmosdb.md)extraherar indexeraren fälten och under fälten från Cosmos DB dokumentet.
++ När dokumentet är en post i en [Azure SQL-datakälla](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)extraherar indexeraren varje fält för posten.
++ När dokumentet är en PDF-fil i en [Azure Blob Storage data källa](search-howto-indexing-azure-blob-storage.md)extraherar indexeraren text, bilder och metadata.
++ När dokumentet är en post i en [Cosmos db data källa](search-howto-index-cosmosdb.md)extraherar indexeraren fälten och under fälten från Cosmos DB dokumentet.
 
 ### <a name="stage-2-field-mappings"></a>Steg 2: fält mappningar 
 
@@ -95,18 +105,21 @@ Nästa bild visar en exempel på en [fel söknings session](cognitive-search-deb
 Indexerare kan erbjuda funktioner som är unika för datakällan. I detta avseende varierar vissa aspekter av indexerarna och datakällskonfigurationen kan variera efter indexerartyp. Alla indexerare delar dock samma grundläggande sammansättning och krav. De steg som är gemensamma för alla indexerare beskrivs nedan.
 
 ### <a name="step-1-create-a-data-source"></a>Steg 1: Skapa en datakälla
+
 En indexerare hämtar data källans lutning från ett *data käll* objekt. Definitionen av data källan tillhandahåller en anslutnings sträng och eventuellt autentiseringsuppgifter. Anropa [create DataSource](/rest/api/searchservice/create-data-source) -REST API eller [SearchIndexerDataSourceConnection-klassen](/dotnet/api/azure.search.documents.indexes.models.searchindexerdatasourceconnection) för att skapa resursen.
 
 Datakällor konfigureras och hanteras oberoende av indexerarna som använder dem, vilket innebär att en datakälla kan användas av flera indexerare för att läsa in mer än ett index i taget.
 
 ### <a name="step-2-create-an-index"></a>Steg 2: Skapa ett index
+
 En indexerare automatiserar vissa uppgifter som rör datapåfyllning, men att skapa ett index är vanligtvis inte en av dem. Som krav måste du ha ett fördefinierat index med fält som matchar de i din externa datakälla. Fält måste matcha efter namn och datatyp. Mer information om hur du strukturerar ett index finns i [skapa ett index (Azure Kognitiv sökning REST API) eller en SearchIndex-](/rest/api/searchservice/Create-Index) [klass](/dotnet/api/azure.search.documents.indexes.models.searchindex). Hjälp med fält kopplingar finns i [fält mappningar i Azure kognitiv sökning indexerare](search-indexer-field-mappings.md).
 
 > [!Tip]
 > Indexerare kan inte generera ett index åt dig, men du kan få hjälp av guiden **Importera data** i portalen. I de flesta fall kan guiden härleda ett indexschema från befintliga metadata i källan, vilket skapar ett preliminärt indexschema som du kan redigera direkt när guiden är aktiv. När indexet har skapats i tjänsten är ytterligare redigeringar i portalen i huvudsak begränsade till tillägg av nya fält. Överväg att använda guiden för att skapa, men inte revidera, ett index. I [steg-för-steg-beskrivningen för portalen](search-get-started-portal.md) kan du få en praktisk genomgång.
 
 ### <a name="step-3-create-and-schedule-the-indexer"></a>Steg 3: Skapa och schemalägg indexeraren
-Indexer-definitionen är en konstruktion som sammanställer alla element som är relaterade till data inmatning. De element som krävs är en data källa och ett index. Valfria element innehåller ett schema och fält mappningar. Fält mappning är bara valfritt om käll fält och index fält tydligt motsvarar. Mer information om hur du strukturerar en indexerare finns i [skapa indexerare (Azure Kognitiv sökning REST API)](/rest/api/searchservice/Create-Indexer).
+
+Indexer-definitionen är en konstruktion som sammanställer alla element som är relaterade till data inmatning. De element som krävs är en data källa och ett index. Valfria element innehåller ett schema och fält mappningar. Fält mappningar är bara valfria om käll fält och index fält tydligt motsvarar. Mer information om hur du strukturerar en indexerare finns i [skapa indexerare (Azure Kognitiv sökning REST API)](/rest/api/searchservice/Create-Indexer).
 
 <a id="RunIndexer"></a>
 
@@ -120,9 +133,9 @@ api-key: [Search service admin key]
 ```
 
 > [!NOTE]
-> När körnings-API: t återgår har indexerings anropet schemalagts, men den faktiska bearbetningen sker asynkront. 
+> När körnings-API returnerar en lyckad kod har indexerings anropet schemalagts, men den faktiska bearbetningen sker asynkront. 
 
-Du kan övervaka indexerings status i portalen eller genom att hämta indexerings status-API. 
+Du kan övervaka indexerings status i portalen eller genom att [Hämta indexerings status-API](/rest/api/searchservice/get-indexer-status). 
 
 <a name="GetIndexerStatus"></a>
 
@@ -168,11 +181,12 @@ Svaret innehåller övergripande indexerings status, det sista (eller inaktuella
 Körnings historiken innehåller upp till 50 senaste slutförda körningar, som sorteras i omvänd kronologisk ordning (så att den senaste körningen kommer först i svaret).
 
 ## <a name="next-steps"></a>Nästa steg
+
 Nu när du har lagt grunden är nästa steg att granska krav och uppgifter som är specifika för varje typ av datakälla.
 
-* [Azure SQL Database, SQL-hanterad instans eller SQL Server på en virtuell Azure-dator](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
-* [Azure Cosmos DB](search-howto-index-cosmosdb.md)
-* [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)
-* [Azure-Table Storage](search-howto-indexing-azure-tables.md)
-* [Indexera CSV-blobar med Azure Kognitiv sökning BLOB-indexeraren](search-howto-index-csv-blobs.md)
-* [Indexera JSON-blobbar med Azure Kognitiv sökning BLOB-indexeraren](search-howto-index-json-blobs.md)
++ [Azure SQL Database, SQL-hanterad instans eller SQL Server på en virtuell Azure-dator](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
++ [Azure Cosmos DB](search-howto-index-cosmosdb.md)
++ [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)
++ [Azure Table Storage](search-howto-indexing-azure-tables.md)
++ [Indexera CSV-blobar med Azure Kognitiv sökning BLOB-indexeraren](search-howto-index-csv-blobs.md)
++ [Indexera JSON-blobbar med Azure Kognitiv sökning BLOB-indexeraren](search-howto-index-json-blobs.md)

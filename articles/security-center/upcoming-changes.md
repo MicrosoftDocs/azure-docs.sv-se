@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2021
 ms.author: memildin
-ms.openlocfilehash: 0656000a1d6449306e8afe538f846c55c79a31a2
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 071f1974e09d2754fe20f3ac2cc90929c4a2eb98
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97915294"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98180225"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>Viktiga kommande ändringar i Azure Security Center
 
@@ -31,8 +31,23 @@ Om du letar efter den senaste versions informationen hittar du dem i [vad som ä
 
 ## <a name="planned-changes"></a>Planerade ändringar
 
+- [Förbättringar av SQL data klassificerings rekommendation](#enhancements-to-sql-data-classification-recommendation)
 - ["Ej tillämpligt" resurser som ska rapporteras som "kompatibla" i Azure Policy bedömningar](#not-applicable-resources-to-be-reported-as-compliant-in-azure-policy-assessments)
 - [35 för hands versioner har lagts till för att öka täckningen av Azures säkerhets prestanda](#35-preview-recommendations-being-added-to-increase-coverage-of-azure-security-benchmark)
+
+
+
+### <a name="enhancements-to-sql-data-classification-recommendation"></a>Förbättringar av SQL data klassificerings rekommendation
+
+**Beräknat datum för ändring:** K2 2021
+
+Den aktuella versionen av rekommendations **känsliga data i dina SQL-databaser bör klassificeras** i säkerhets kontrollen **Använd data klassificering** och ersätts med en ny version som är bättre anpassad med Microsofts strategi för data klassificering. Därför:
+
+- Rekommendationen kommer inte längre att påverka dina säkra Poäng
+- Säkerhets kontrollen ("Använd data klassificering") kommer inte längre att påverka dina säkra Poäng
+- Rekommendationens ID kommer också att ändras (för närvarande b0df6f56-862d-4730-8597-38c0fd4ebd59)
+
+
 
 ### <a name="not-applicable-resources-to-be-reported-as-compliant-in-azure-policy-assessments"></a>"Ej tillämpligt" resurser som ska rapporteras som "kompatibla" i Azure Policy bedömningar
 

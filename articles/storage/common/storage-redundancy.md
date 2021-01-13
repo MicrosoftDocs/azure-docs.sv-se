@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 01/08/2021
+ms.date: 01/13/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 60ae6eb3142f8898f760027d37881ded8261f571
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.openlocfilehash: 3c0b466a7db688ed3e24441f652f6a1ef1a88ee1
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98108100"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98180089"
 ---
 # <a name="azure-storage-redundancy"></a>Redundans i Azure Storage
 
@@ -155,7 +155,7 @@ I följande tabell beskrivs viktiga parametrar för varje alternativ för redund
 | Procentuellt hållbarhet för objekt under ett angivet år | minst 99,999999999% (11 9) | minst 99,9999999999% (12 9-) | minst 99.99999999999999% (16 9) | minst 99.99999999999999% (16 9) |
 | Tillgänglighet för Läs begär Anden | Minst 99,9% (99% för låg frekvent åtkomst nivå) | Minst 99,9% (99% för låg frekvent åtkomst nivå) | Minst 99,9% (99% för låg frekvent åtkomst nivå) för GRS<br /><br />Minst 99,99% (99,9% för låg frekvent åtkomst nivå) för RA-GRS | Minst 99,9% (99% för låg frekvent åtkomst nivå) för GZRS<br /><br />Minst 99,99% (99,9% för låg frekvent åtkomst nivå) för RA-GZRS |
 | Tillgänglighet för Skriv förfrågningar | Minst 99,9% (99% för låg frekvent åtkomst nivå) | Minst 99,9% (99% för låg frekvent åtkomst nivå) | Minst 99,9% (99% för låg frekvent åtkomst nivå) | Minst 99,9% (99% för låg frekvent åtkomst nivå) |
-| Antal kopior av data som finns på olika noder.                             | 3   | 3   | 6   | 6      |
+| Antal kopior av data som underhålls på separata noder | Tre kopior inom en enda region | Tre kopior i olika tillgänglighets zoner inom en enda region | Sex kopior totalt, inklusive tre i den primära regionen och tre i den sekundära regionen | Sex kopior totalt, inklusive tre olika tillgänglighets zoner i den primära regionen och tre lokalt redundanta kopior i den sekundära regionen |
 
 ### <a name="durability-and-availability-by-outage-scenario"></a>Scenario för hållbarhet och tillgänglighet efter avbrott
 
@@ -164,7 +164,7 @@ Följande tabell visar om dina data är beständiga och tillgängliga i ett spec
 | Avbrott-scenario | LRS | ZRS | GRS/RA-GRS | GZRS/RA-GZRS |
 |:-|:-|:-|:-|:-|
 | En nod i ett Data Center blir otillgänglig | Ja | Ja | Ja | Ja |
-| Ett helt data Center (zonindelade eller icke-zonindelade) blir otillgängligt | Nej | Ja | Ja<sup>1</sup> | Ja |
+| Ett helt data Center (zonindelade eller icke-zonindelade) blir otillgängligt | Nej | Ja | Ja<sup>1</sup> | Yes |
 | Ett områdes omfattande avbrott uppstår i den primära regionen | Nej | Nej | Ja<sup>1</sup> | Ja<sup>1</sup> |
 | Läs behörighet till den sekundära regionen är tillgängligt om den primära regionen blir otillgänglig | Nej | Nej | Ja (med RA-GRS) | Ja (med RA-GZRS) |
 

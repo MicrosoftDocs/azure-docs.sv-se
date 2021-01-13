@@ -7,12 +7,12 @@ ms.reviewer: deli, logicappspm
 ms.topic: article
 ms.date: 12/07/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 1736a1d22ccfb0f00061534d1c733ab72da4c7b0
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 3f88fa38d62778bc3c4c1e29571d1d0ae4eeb5ff
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922497"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98179613"
 ---
 # <a name="add-and-run-code-snippets-by-using-inline-code-in-azure-logic-apps"></a>Lägga till och köra kodfragment med hjälp av infogad kod i Azure Logic Apps
 
@@ -31,7 +31,7 @@ När du vill köra en kod i din Logic app kan du lägga till den inbyggda infoga
   > [!NOTE]
   > `require()`Funktionen stöds inte av den infogade kod åtgärden för att köra Java Script.
 
-Den här åtgärden kör kodfragmentet och returnerar utdata från det kodfragmentet som en token som heter `Result` . Du kan använda den här token med efterföljande åtgärder i din Logic Apps-arbetsflöde. För andra scenarier där du vill skapa en funktion för din kod kan du prova att [skapa och anropa en Azure-funktion i stället](../logic-apps/logic-apps-azure-functions.md) i din Logic app.
+Den här åtgärden kör kodfragmentet och returnerar utdata från det kodfragmentet som en token som heter `Result` . Du kan använda den här token med efterföljande åtgärder i din Logic Apps-arbetsflöde. För andra scenarier där du vill skapa en funktion för din kod kan du försöka [skapa och anropa en funktion via Azure Functions i stället](../logic-apps/logic-apps-azure-functions.md) i din Logic app.
 
 I den här artikeln utlöses exempel Logic-appen när ett nytt e-postmeddelande anländer till ett arbets-eller skol konto. Kodfragmentet extraheras och returnerar alla e-postadresser som visas i e-postmeddelandets brödtext.
 
@@ -147,7 +147,7 @@ I den här artikeln utlöses exempel Logic-appen när ett nytt e-postmeddelande 
 
 Den här tabellen innehåller mer information om de här under egenskaperna:
 
-| Egenskap | Typ | Beskrivning |
+| Egenskap | Typ | Description |
 |----------|------|-------|
 | `actions` | Objekt samling | Resultat objekt från åtgärder som körs innan kodfragmentet körs. Varje-objekt har ett *nyckel/värde-* par där nyckeln är namnet på en åtgärd och värdet motsvarar att anropa [funktionen Actions ()](../logic-apps/workflow-definition-language-functions-reference.md#actions) med `@actions('<action-name>')` . Åtgärdens namn använder samma åtgärds namn som används i den underliggande arbets flödes definitionen, som ersätter blank steg ("") i åtgärds namnet med under streck (_). Det här objektet ger åtkomst till egenskaps värden för åtgärden från den aktuella arbets flödes instansen. |
 | `trigger` | Objekt | Resultat objekt från utlösaren och motsvarar anrop av [funktionen trigger ()](../logic-apps/workflow-definition-language-functions-reference.md#trigger). Det här objektet ger åtkomst till utlösarens egenskaps värden från den aktuella arbets flödes instansen. |

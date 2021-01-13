@@ -1,19 +1,19 @@
 ---
 title: Integrera med Azure Maps
 titleSuffix: Azure Digital Twins
-description: I så här skapar du en Azure-funktion som kan använda den dubbla grafen och digitala Azure-meddelanden för att uppdatera en Azure Maps inomhus karta.
+description: Se hur du använder Azure Functions för att skapa en funktion som kan använda den dubbla grafen och digitala Azure-meddelanden för att uppdatera en Azure Maps inomhus-karta.
 author: alexkarcher-msft
 ms.author: alkarche
 ms.date: 6/3/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: 7b2039f8b1aebef65112067e4fd9184777192015
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: e582415d9a83dc506b77d506f3e0803002129a07
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98051589"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98180055"
 ---
 # <a name="use-azure-digital-twins-to-update-an-azure-maps-indoor-map"></a>Använd Azure Digitals flätas för att uppdatera en Azure Maps inomhus karta
 
@@ -22,10 +22,10 @@ Den här artikeln vägleder dig genom de steg som krävs för att använda Azure
 Den här instruktionen kommer att avse:
 
 1. Konfigurera din Azure Digital-instansen för att skicka dubbla uppdaterings händelser till en funktion i [Azure Functions](../azure-functions/functions-overview.md).
-2. Skapa en Azure-funktion för att uppdatera en Azure Maps inomhus Maps-funktion stateset.
+2. Skapa en funktion för att uppdatera en Azure Maps inomhus Maps-funktion stateset.
 3. Så här lagrar du ditt Maps-ID och funktions stateset-ID i Azure Digitals grafen.
 
-### <a name="prerequisites"></a>Förutsättningar
+### <a name="prerequisites"></a>Krav
 
 * Följ självstudien om Azure Digitals dubbla [*steg: Anslut en lösning från slut punkt till slut punkt*](./tutorial-end-to-end.md).
     * Du kommer att utöka den här dubbla med en ytterligare slut punkt och väg. Du kommer även att lägga till en annan funktion i din Function-app från den självstudien. 
@@ -41,7 +41,7 @@ Bilden nedan visar var integrerings elementen i den här självstudien i den hä
 
 ## <a name="create-a-function-to-update-a-map-when-twins-update"></a>Skapa en funktion för att uppdatera en karta när den är dubbelt uppdaterad
 
-Först ska du skapa en väg i Azure Digitals flätas för att vidarebefordra alla dubbla uppdaterings händelser till ett event Grid-ämne. Sedan använder du en Azure-funktion för att läsa dessa uppdaterings meddelanden och uppdatera en funktion som stateset i Azure Maps. 
+Först ska du skapa en väg i Azure Digitals flätas för att vidarebefordra alla dubbla uppdaterings händelser till ett event Grid-ämne. Sedan använder du en funktion för att läsa dessa uppdaterings meddelanden och uppdatera en funktion som stateset i Azure Maps. 
 
 ## <a name="create-a-route-and-filter-to-twin-update-notifications"></a>Skapa en väg och filtrera till dubbla uppdaterings meddelanden
 
@@ -70,7 +70,7 @@ Det här mönstret läser från rummet direkt, i stället för IoT-enheten, vilk
     az dt route create -n <your-Azure-Digital-Twins-instance-name> --endpoint-name <Event-Grid-endpoint-name> --route-name <my_route> --filter "type = 'Microsoft.DigitalTwins.Twin.Update'"
     ```
 
-## <a name="create-an-azure-function-to-update-maps"></a>Skapa en Azure-funktion för att uppdatera Maps
+## <a name="create-a-function-to-update-maps"></a>Skapa en funktion för att uppdatera Maps
 
 Du ska skapa en Event Grid utlöst funktion i din Function-app från slut punkt till slut punkt ([*Självstudier: Anslut en lösning från slut punkt till slut punkt*](./tutorial-end-to-end.md)). Den här funktionen kommer att packa upp dessa meddelanden och skicka uppdateringar till en Azure Maps funktion stateset för att uppdatera temperaturen för ett rum. 
 

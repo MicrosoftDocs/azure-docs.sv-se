@@ -4,13 +4,13 @@ description: Den här artikeln uppdateras regelbundet med nyheter om Azure Cogni
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: overview
-ms.date: 01/05/2021
-ms.openlocfilehash: 4591bc26c848032d1c0f8b96720c4ec66b9b064d
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.date: 01/12/2021
+ms.openlocfilehash: 4bcd25e96aba1ca103737679540cb9ff67674914
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97916362"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98179137"
 ---
 # <a name="whats-new-in-language-understanding"></a>Vad är nytt i Language Understanding
 
@@ -18,10 +18,14 @@ Läs om vad som är nytt i tjänsten. Dessa objekt innehåller viktig informatio
 
 ## <a name="release-notes"></a>Viktig information
 
+### <a name="january-2021"></a>Januari 2021
+
+* V3-förutsägelse API har nu stöd för [Bing API för stavnings](luis-how-to-publish-app.md#spelling-correction)kontroll.
+
 ### <a name="december-2020"></a>December 2020
 
 * Alla LUIS-användare krävs för att [migrera till en Luis Authoring-resurs](luis-migration-authoring.md)
-* Nya [utvärderings slut punkter](luis-how-to-batch-test.md#batch-testing-using-the-rest-api) som gör att du kan skicka batch-tester usting REST API och få precisions resultat för dina avsikter och entiteter. Tillgängligt från och med v 3.0 – för hands version LUIS-slutpunkten.
+* Nya [utvärderings slut punkter](luis-how-to-batch-test.md#batch-testing-using-the-rest-api) som gör att du kan skicka batch-test med hjälp av REST API och få precisions resultat för dina avsikter och entiteter. Tillgängligt från och med v 3.0 – för hands version LUIS-slutpunkten.
 
 ### <a name="june-2020"></a>Juni 2020
 
@@ -120,7 +124,7 @@ Följande funktioner släpptes på Build 2019-konferensen:
 
 [Bot Framework](https://blog.botframework.com/)
 
-## <a name="videos"></a>Videoklipp
+## <a name="videos"></a>Video
 
 ### <a name="2019-ignite-videos"></a>2019 tänd videor
 

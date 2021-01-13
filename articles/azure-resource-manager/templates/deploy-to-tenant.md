@@ -2,13 +2,13 @@
 title: Distribuera resurser till klient organisationen
 description: Beskriver hur du distribuerar resurser i klient omfånget i en Azure Resource Manager-mall.
 ms.topic: conceptual
-ms.date: 11/24/2020
-ms.openlocfilehash: 5733c5d6eb6cbd86207589244c22badc17fe7073
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.date: 01/13/2021
+ms.openlocfilehash: a397678488921744f076d93235304c8d217d961f
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95807640"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98178967"
 ---
 # <a name="tenant-deployments-with-arm-templates"></a>Klient distributioner med ARM-mallar
 
@@ -145,7 +145,8 @@ När du distribuerar till en klient kan du distribuera resurser för att:
 * hanterings grupper inom klienten
 * prenumerationer
 * resursgrupper
-* [tilläggs resurser](scope-extension-resources.md) kan tillämpas på resurser
+
+En [tilläggs resurs](scope-extension-resources.md) kan begränsas till ett mål som skiljer sig från distributions målet.
 
 Användaren som distribuerar mallen måste ha åtkomst till det angivna omfånget.
 

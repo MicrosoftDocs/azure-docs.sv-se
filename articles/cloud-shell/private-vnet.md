@@ -14,16 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/15/2020
 ms.author: damaerte
-ms.openlocfilehash: 722d935c242a51ddfc01377676f026b71a8951b8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a820fb4ec5d6c2053b1104b68dbda0ae70f624c0
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89468546"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98179205"
 ---
 # <a name="deploy-cloud-shell-into-an-azure-virtual-network"></a>Distribuera Cloud Shell till ett virtuellt Azure-nätverk
-> [!NOTE]
-> Den här funktionen finns i offentlig för hands version.
 
 En vanlig Cloud Shell-session körs i en behållare i ett Microsoft-nätverk separat från dina resurser. Det innebär att kommandon som körs inuti behållaren inte kan komma åt resurser som endast kan nås från ett speciellt virtuellt nätverk. Du kan till exempel inte använda SSH för att ansluta från Cloud Shell till en virtuell dator som bara har en privat IP-adress eller använda kubectl för att ansluta till ett Kubernetes-kluster som har låst åtkomst. 
 
@@ -64,7 +62,7 @@ Som i standard Cloud Shell krävs ett lagrings konto när du använder Cloud She
 ## <a name="virtual-network-deployment-limitations"></a>Distributions begränsningar för virtuella nätverk
 * På grund av de ytterligare nätverks resurser som berörs är det normalt långsammare att starta Cloud Shell i ett virtuellt nätverk än en standard-Cloud Shell-session.
 
-* Under för hands versionen stöds färre regioner för Cloud Shell i ett virtuellt nätverk. Detta är för närvarande begränsat till: väst och WestCentralUS.
+* Alla Cloud Shell regioner förutom centrala Indien stöds för närvarande. 
 
 * [Azure Relay](../azure-relay/relay-what-is-it.md) inte är en kostnads fri tjänst kan du se deras [priser](https://azure.microsoft.com/pricing/details/service-bus/). I Cloud Shell scenariot används en hybrid anslutning för varje administratör medan de använder Cloud Shell. Anslutningen stängs av automatiskt när Cloud Shell-sessionen har slutförts.
 

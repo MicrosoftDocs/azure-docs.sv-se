@@ -13,21 +13,21 @@ ms.topic: end-user-help
 ms.date: 05/28/2020
 ms.author: curtand
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: c9d8bb85aac87503ca641f6633668a6dc582882f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 07303a0b0b3007ade9adb90af7397855a5014cc0
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90056089"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98179430"
 ---
 # <a name="manage-app-passwords-for-two-step-verification"></a>Hantera applösenord för tvåstegsverifiering
 
->[!Important]
+> [!Important]
 >Din administratör kanske inte tillåter att du använder applösenord. Om du inte ser **applösenord** som ett alternativ är de inte tillgängliga i din organisation.
 
 När du använder applösenord är det viktigt att komma ihåg:
 
-- Applösenord genereras automatiskt och bör skapas och anges en gång per app.
+- Applösenord genereras automatiskt och ska skapas och anges en gång per app.
 
 - Det finns en gräns på 40 lösen ord per användare. Om du försöker skapa en efter den gränsen uppmanas du att ta bort ett befintligt lösen ord innan du får skapa det nya.
 
@@ -66,7 +66,7 @@ Du kan skapa och ta bort applösenord från sidan **ytterligare säkerhets verif
 
 4. På sidan **applösenord** kontrollerar du att din app visas.
 
-     ![Sidan applösenord, med en ny app som visas i listan](media/multi-factor-authentication-end-user-app-passwords/mfa-app-passwords-page-with-new-password.png)  
+    ![Sidan applösenord, med en ny app som visas i listan](media/multi-factor-authentication-end-user-app-passwords/mfa-app-passwords-page-with-new-password.png)  
 
 5. Öppna appen som du skapade applösenord för (till exempel Outlook 2010) och klistra in appens lösen ord när du uppmanas till det. Du behöver bara göra detta en gång per app.
 
@@ -74,7 +74,7 @@ Du kan skapa och ta bort applösenord från sidan **ytterligare säkerhets verif
 
 1. På sidan **applösenord** väljer du **ta bort** bredvid det applösenord som du vill ta bort.
 
-   ![Ta bort ett applösenord](media/multi-factor-authentication-end-user-app-passwords/mfa-app-passwords-page-delete.png)
+   ![Skärm bild som visar borttagning av applösenord på sidan applösenord](media/multi-factor-authentication-end-user-app-passwords/mfa-app-passwords-page-delete.png)
 
 2. Välj **Ja** för att bekräfta att du vill ta bort lösen ordet och välj sedan **Stäng**.
 
@@ -86,35 +86,35 @@ Om du använder tvåstegsverifiering med ditt arbets-eller skol konto och dina M
 
 ### <a name="to-create-app-passwords-using-the-office-365-portal"></a>Så här skapar du applösenord med Office 365-portalen
 
-1. Logga in på ditt arbets-eller skol konto, gå till [sidan mitt konto](https://portal.office.com), välj **säkerhet & sekretess**och expandera sedan **ytterligare säkerhets verifiering**.
+1. Logga in på ditt arbets-eller skol konto, gå till [sidan mitt konto](https://myaccount.microsoft.com)och välj **säkerhets information**.
 
-    ![Office-portalen visar utökade ytterligare säkerhets verifierings områden](media/multi-factor-authentication-end-user-app-passwords/mfa-app-passwords-o365-my-account-page.png)
+    ![Office portal som visar fliken säkerhets information](media/multi-factor-authentication-end-user-app-passwords/mfa-security-info.png)
 
-2. Välj den text som säger, **skapa och hantera applösenord** för att öppna sidan **applösenord** .
+2. Välj **Lägg till metod**, Välj **applösenord** i list rutan och klicka sedan på **Lägg till**.
 
-    ![Sidan applösenord med fliken applösenord markerad](media/multi-factor-authentication-end-user-app-passwords/mfa-app-passwords-page.png)
+    ![Sidan säkerhets information med listan Lägg till en metod drowpdown](media/multi-factor-authentication-end-user-app-passwords/mfa-add-method.png)
 
-3. Välj **skapa**, ange namnet på appen som kräver appens lösen ord och välj sedan **Nästa**.
+3. Ange ett namn för appens lösen ord och välj sedan **Nästa**.
 
-    ![Sidan skapa applösenord, med namnet på appen som behöver lösen ordet](media/multi-factor-authentication-end-user-app-passwords/mfa-create-app-password-page.png)
+    ![Sidan skapa applösenord, med namnet på appens lösen ord](media/multi-factor-authentication-end-user-app-passwords/mfa-enter-app-password-name.png)
 
-4. Kopiera lösen ordet från sidan **ditt applösenord** och välj sedan **Stäng**.
+4. Kopiera lösen ordet från sidan **applösenord** och välj sedan **slutfört**.
 
-    ![Sidan med ditt applösenord med lösen ordet för din angivna app](media/multi-factor-authentication-end-user-app-passwords/mfa-your-app-password-page.png)
+    ![Sidan applösenord med det nya applösenord som du har skapat](media/multi-factor-authentication-end-user-app-passwords/mfa-copy-app-password.png)
 
-5. På sidan **applösenord** kontrollerar du att din app visas.
+5. På sidan **säkerhets information** kontrollerar du att ditt applösenord visas.
 
-     ![Sidan applösenord, med en ny app som visas i listan](media/multi-factor-authentication-end-user-app-passwords/mfa-app-passwords-page-with-new-password.png)  
+    ![Sidan säkerhets information med nytt applösenord som visas i listan](media/multi-factor-authentication-end-user-app-passwords/mfa-verify-app-password.png)  
 
-6. Öppna appen som du skapade applösenord för (till exempel Outlook 2010) och klistra in appens lösen ord när du uppmanas till det. Du behöver bara göra detta en gång per app.
+6. Öppna appen som du skapade applösenord för (till exempel Outlook 2016) och klistra in appens lösen ord när du uppmanas till det. Du behöver bara göra detta en gång per app.
 
-### <a name="to-delete-app-passwords-using-the-app-passwords-page"></a>Ta bort applösenord på sidan applösenord
+### <a name="to-delete-app-passwords-using-the-security-info-page"></a>Ta bort applösenord på sidan säkerhets information
 
-1. På sidan **applösenord** väljer du **ta bort** bredvid det applösenord som du vill ta bort.
+1. På sidan **säkerhets information** väljer du **ta bort** bredvid det applösenord som du vill ta bort.
 
-   ![Ta bort ett applösenord](media/multi-factor-authentication-end-user-app-passwords/mfa-app-passwords-page-delete.png)
+   ![Skärm bild som visar borttagning av applösenord på sidan säkerhets information](media/multi-factor-authentication-end-user-app-passwords/mfa-delete-app-password.png)
 
-2. Välj **Ja** i bekräftelse rutan och välj sedan **Stäng**.
+2. Välj **OK** i bekräftelse rutan.
 
     Lösen ordet för appen har tagits bort.
 
