@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/29/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperf-fy21q1, automl
-ms.openlocfilehash: 054d18337e50a367cf1f6f004f4e1d1652c7751e
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: f2170aad9bc0218d39244d08f5cc838235f8fee9
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97954420"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98134372"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Konfigurera automatiserade ML-experiment i Python
 
@@ -37,7 +37,7 @@ Konfigurations alternativ som är tillgängliga i Automatisk maskin inlärning:
 
 Om du föredrar en ingen kod upplevelse kan du också [skapa dina automatiserade maskin inlärnings experiment i Azure Machine Learning Studio](how-to-use-automated-ml-for-ml-models.md).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För den här artikeln behöver du 
 * En Azure Machine Learning-arbetsyta. Information om hur du skapar arbets ytan finns i [skapa en Azure Machine Learning arbets yta](how-to-manage-workspace.md).
@@ -157,7 +157,6 @@ Några exempel är:
     time_series_settings = {
         'time_column_name': time_column_name,
         'time_series_id_column_names': time_series_id_column_names,
-        'drop_column_names': ['logQuantity'],
         'forecast_horizon': n_test_periods
     }
     
@@ -220,7 +219,7 @@ I varje automatiserad maskin inlärnings experiment skalas dina data automatiskt
 
 När du konfigurerar experiment i `AutoMLConfig` objektet kan du aktivera/inaktivera inställningen `featurization` . I följande tabell visas de accepterade inställningarna för funktionalisering i [AutoMLConfig-objektet](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig). 
 
-|Funktionalisering-konfiguration | Beskrivning |
+|Funktionalisering-konfiguration | Description |
 | ------------- | ------------- |
 |`"featurization": 'auto'`| Anger att [data guardrails och funktionalisering-steg](how-to-configure-auto-features.md#featurization) utförs automatiskt när en del av förbearbetningen. **Standardinställning**.|
 |`"featurization": 'off'`| Anger att funktionalisering-steget inte ska göras automatiskt.|
@@ -305,7 +304,7 @@ automl_classifier = AutoMLConfig(
 
 Det finns några alternativ som du kan definiera i AutoMLConfig för att avsluta experimentet.
 
-|Kriterie| description
+|Kriterie| beskrivning
 |----|----
 Inga &nbsp; kriterier | Om du inte definierar några avslutnings parametrar fortsätter experimentet tills inga ytterligare framsteg görs på ditt primära mått.
 Efter &nbsp; en &nbsp; viss &nbsp; &nbsp; tid| Använd `experiment_timeout_minutes` i dina inställningar för att definiera hur lång tid, i minuter, som experimentet ska fortsätta att köras. <br><br> För att undvika tids brist på experiment, det finns minst 15 minuter eller 60 minuter om raden efter kolumn storlek överskrider 10 000 000.

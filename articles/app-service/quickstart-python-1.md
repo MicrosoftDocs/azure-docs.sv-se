@@ -6,12 +6,12 @@ ms.date: 09/22/2020
 ms.custom: seo-python-october2019, cli-validate, devx-track-python, devx-track-azurecli
 zone_pivot_groups: python-frameworks-01
 robots: noindex
-ms.openlocfilehash: 9f9805c25955384e7ca5b3f1d560581a7ca4a638
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: ed2bd3f3bab81f6be56508a203600ec479cc20b6
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97614667"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98134491"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>Snabb start: skapa en python-app i Azure App Service på Linux
 
@@ -105,13 +105,13 @@ Exemplet innehåller en Framework-speciell kod som Azure App Service känner ige
 Distribuera koden i din lokala mapp (*python-dok-Hello-World*) med hjälp av `az webapp up` kommandot:
 
 ```azurecli
-az webapp up --sku F1 --name <app-name>
+az webapp up --sku B1 --name <app-name>
 ```
 
 - Om `az` kommandot inte känns igen kontrollerar du att Azure CLI är installerat enligt beskrivningen i [Konfigurera din första miljö](#set-up-your-initial-environment).
 - Om `webapp` kommandot inte känns igen, eftersom din Azure CLI-version är 2.0.80 eller högre. Om inte, [installerar du den senaste versionen](/cli/azure/install-azure-cli).
 - Ersätt `<app_name>` med ett namn som är unikt för alla Azure (*giltiga tecken är `a-z` , `0-9` och `-`*). Ett utmärkt mönster är att använda en kombination av företagets namn och en app-ID.
-- `--sku F1`Argumentet skapar webb programmet på den kostnads fria pris nivån. Utelämna det här argumentet om du vill använda en snabbare Premium-nivå, vilket innebär en timkostnad.
+- `--sku B1`Argumentet skapar webbappen på den grundläggande pris nivån, vilket innebär en liten Tim kostnad. Utelämna det här argumentet om du vill använda en snabbare Premium-nivå.
 - Du kan också inkludera argumentet `--location <location-name>` där `<location_name>` är en tillgänglig Azure-region. Du kan hämta en lista över tillåtna regioner för ditt Azure-konto genom att köra [`az account list-locations`](/cli/azure/appservice#az-appservice-list-locations) kommandot.
 - Om du ser felet "Det gick inte att automatiskt identifiera körnings stacken för appen" måste du kontrol lera att du kör kommandot i mappen *python-dok-Hello-World* (kolv) eller *python-django-Hello-* folder (django) som innehåller *requirements.txt* -filen. (Mer information finns i [Felsöka problem med automatisk identifiering med AZ webapp up](https://github.com/Azure/app-service-linux-docs/blob/master/AzWebAppUP/runtime_detection.md) (GitHub).)
 
@@ -281,7 +281,7 @@ App Service-menyn innehåller olika sidor för att konfigurera din app.
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
-I de föregående stegen skapade du Azure-resurser i en resursgrupp. Resurs gruppen har ett namn som "appsvc_rg_Linux_CentralUS" beroende på din plats. Om du använder en annan App Service SKU än den kostnads fria F1-nivån medför dessa resurser kontinuerliga kostnader (se [App Service prissättning](https://azure.microsoft.com/pricing/details/app-service/linux/)).
+I de föregående stegen skapade du Azure-resurser i en resursgrupp. Resurs gruppen har ett namn som "appsvc_rg_Linux_CentralUS" beroende på din plats. Om du håller webbappen igång kommer du att få några pågående kostnader (se [App Service priser](https://azure.microsoft.com/pricing/details/app-service/linux/)).
 
 Om du inte tror att du behöver dessa resurser i framtiden tar du bort resurs gruppen genom att köra följande kommando:
 

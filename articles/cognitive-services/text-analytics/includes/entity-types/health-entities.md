@@ -9,12 +9,12 @@ ms.subservice: text-analytics
 ms.topic: include
 ms.date: 10/02/2020
 ms.author: aahi
-ms.openlocfilehash: 308b2a9cb00f44f0e330d4fef5592d8855ee3394
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 00c1c8ddab9214bf7698c21b05c24afa36ec20d9
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94553077"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98147381"
 ---
 ## <a name="text-analytics-for-health-categories-entities-and-attributes"></a>Textanalys för hälso kategorier, entiteter och attribut
 
@@ -23,15 +23,15 @@ ms.locfileid: "94553077"
 
 | Kategori  | Beskrivning  |
 |---------|---------|
-| UPPBYGGNAD | begrepp som samlar in information om brödtext och anatomiska system, platser, platser eller regioner. |
- | DEMOGRAFI | koncept som samlar in information om kön och ålder. |
- | UNDERSÖKNING | begrepp som samlar in information om diagnostiska procedurer och tester. |
- | GENOMICS | begrepp som samlar in information om gener och varianter. |
- | HEALTHCARE | begrepp som samlar in information om administrativa händelser, skötsel miljöer och hälso vårds yrken. |
- | MEDICINSKA VILLKOR | begrepp som samlar in information om diagnoser, symtom eller tecken. |
- | LÄKEMEDEL | begrepp som samlar in information om medicin, inklusive namn på medicin, klasser, dosering och administrerings väg. |
- | FAVORIT | begrepp som samlar in information om medicinskt relevanta sociala aspekter som familje relation. |
- | HANTERING | begrepp som samlar in information om terapeutiska procedurer. |
+| [UPPBYGGNAD](#anatomy) | begrepp som samlar in information om brödtext och anatomiska system, platser, platser eller regioner. |
+ | [DEMOGRAFI](#demographics) | koncept som samlar in information om kön och ålder. |
+ | [UNDERSÖKNING](#examinations) | begrepp som samlar in information om diagnostiska procedurer och tester. |
+ | [GENOMICS](#genomics) | begrepp som samlar in information om gener och varianter. |
+ | [HEALTHCARE](#healthcare) | begrepp som samlar in information om administrativa händelser, skötsel miljöer och hälso vårds yrken. |
+ | [MEDICINSKA VILLKOR](#medical-condition) | begrepp som samlar in information om diagnoser, symtom eller tecken. |
+ | [LÄKEMEDEL](#medication) | begrepp som samlar in information om medicin, inklusive namn på medicin, klasser, dosering och administrerings väg. |
+ | [FAVORIT](#social) | begrepp som samlar in information om medicinskt relevanta sociala aspekter som familje relation. |
+ | [HANTERING](#treatment) | begrepp som samlar in information om terapeutiska procedurer. |
   
 Varje kategori kan innehålla två begrepps grupper:
 
@@ -210,7 +210,7 @@ Dessutom identifierar tjänsten relationer mellan de olika begreppen, inklusive 
 
 :::image type="content" source="../../media/ta-for-health/medical-condition-relational-operator.png" alt-text="Skärm bild som visar ett annat exempel på ett Direction-attribut med en symptom-eller signerad entitet.":::
 
-**TIME** Tidstemporala villkor som avser start och/eller längd (varaktighet) för ett läkar villkor. Till exempel när ett problem påbörjades (start) eller när ett sjukdoms fel inträffar.
+ Tidstemporala villkor som avser start och/eller längd (varaktighet) för ett läkar villkor. Till exempel när ett problem påbörjades (start) eller när ett sjukdoms fel inträffar.
 
 :::image type="content" source="../../media/ta-for-health/medical-condition-time-attribute.png" alt-text="Skärm bild visar ytterligare ett exempel på ett Direction-attribut med ett symtom eller en signera entitet.":::
 
@@ -267,7 +267,15 @@ Dessutom identifierar tjänsten relationer mellan de olika begreppen, inklusive 
 +   **FREQUENCY_OF_MEDICATION**
 +   **ROUTE_OF_MEDICATION**
 +   **TIME_OF_MEDICATION**
-  
+
+## <a name="social"></a>Socialt
+
+### <a name="entities"></a>Entiteter
+
+**FAMILY_RELATION** – omnämnande av ämnets familje släktingar. Till exempel far, dotter, syskon, överordnade objekt.
+
+:::image type="content" source="../../media/ta-for-health/family-relation.png" alt-text="Skärm bild som visar ett annat exempel på ett attribut för behandlings tid.":::
+
 ## <a name="treatment"></a>Hantering
 
 ### <a name="entities"></a>Entiteter
@@ -290,21 +298,12 @@ Dessutom identifierar tjänsten relationer mellan de olika begreppen, inklusive 
 
 :::image type="content" source="../../media/ta-for-health/treatment-relational-operator.png" alt-text="Ett exempel på ett attribut för en behandlings Relations operator.":::
 
-**TIME** Tidstemporala villkor som gäller för behandlingens start och/eller längd (varaktighet). Till exempel datumet då behandlingen angavs.
+ Tidstemporala villkor som gäller för behandlingens start och/eller längd (varaktighet). Till exempel datumet då behandlingen angavs.
 
 :::image type="content" source="../../media/ta-for-health/treatment-time.png" alt-text="Skärm bild som visar ett exempel på ett attribut för behandlings tid.":::
-
 
 ### <a name="supported-relations"></a>Relationer som stöds
 
 + **DIRECTION_OF_TREATMENT**
 +   **TIME_OF_TREATMENT**
 +   **FREQUENCY_OF_TREATMENT**
-
-## <a name="social"></a>Socialt
-
-### <a name="entities"></a>Entiteter
-
-**FAMILY_RELATION** – omnämnande av ämnets familje släktingar. Till exempel far, dotter, syskon, överordnade objekt.
-
-:::image type="content" source="../../media/ta-for-health/family-relation.png" alt-text="Skärm bild som visar ett annat exempel på ett attribut för behandlings tid.":::

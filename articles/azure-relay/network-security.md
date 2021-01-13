@@ -3,18 +3,18 @@ title: Nätverks säkerhet för Azure Relay
 description: I den här artikeln beskrivs hur du använder IP-brandväggs regler och privata slut punkter med Azure Relay.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 3aa3ffd119f65ec5181b0c382472cc4ef3c8bac4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 608224f42fac8cd2d8ff06ab84989b1f675d418c
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91263733"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98134474"
 ---
 # <a name="network-security-for-azure-relay"></a>Nätverks säkerhet för Azure Relay 
 I den här artikeln beskrivs hur du använder följande säkerhetsfunktioner med Azure Relay: 
 
 - IP-brandväggs regler (för hands version)
-- Privata slut punkter (förhands granskning)
+- Privata slutpunkter 
 
 > [!NOTE]
 > Azure Relay stöder inte nätverks tjänstens slut punkter. 
@@ -29,14 +29,14 @@ IP-brandväggens regler tillämpas på relä namn områdes nivå. Reglerna gäll
 
 Mer information finns i [så här konfigurerar du IP-brandvägg för ett relä namn område](ip-firewall-virtual-networks.md)
 
-## <a name="private-endpoints"></a>Privata slut punkter
-
-Azure **Private Link service** ger dig åtkomst till Azure-tjänster (till exempel Azure Relay, Azure Service Bus, Azure Event Hubs, Azure Storage och Azure Cosmos dB) och Azure-värdbaserade kund-/partner tjänster via en privat slut punkt i det virtuella nätverket. Mer information finns i [Vad är Azure Private Link (för hands version)?](../private-link/private-link-overview.md)
-
-En **privat slut punkt** är ett nätverks gränssnitt som gör att dina arbets belastningar som körs i ett virtuellt nätverk kan ansluta privat och säkert till en tjänst som har en **privat länk resurs** (till exempel ett relä namn område). Den privata slut punkten använder en privat IP-adress från ditt virtuella nätverk, vilket effektivt ansluter tjänsten till ditt VNet. All trafik till tjänsten kan dirigeras via den privata slut punkten, så inga gatewayer, NAT-enheter, ExpressRoute, VPN-anslutningar eller offentliga IP-adresser krävs. Trafik mellan ditt virtuella nätverk och tjänsten passerar över Microsoft stamnätet-nätverket som eliminerar exponering från det offentliga Internet. Du kan ange en nivå av granularitet i åtkomst kontroll genom att tillåta anslutningar till vissa Azure Relay namn områden.
-
 > [!NOTE]
 > Den här funktionen är för närvarande en för **hands version**. 
+
+## <a name="private-endpoints"></a>Privata slutpunkter
+
+Azure **Private Link service** ger dig åtkomst till Azure-tjänster (till exempel Azure Relay, Azure Service Bus, Azure Event Hubs, Azure Storage och Azure Cosmos dB) och Azure-värdbaserade kund-/partner tjänster via en privat slut punkt i det virtuella nätverket. Mer information finns i [Vad är en privat Azure-länk?](../private-link/private-link-overview.md)
+
+En **privat slut punkt** är ett nätverks gränssnitt som gör att dina arbets belastningar som körs i ett virtuellt nätverk kan ansluta privat och säkert till en tjänst som har en **privat länk resurs** (till exempel ett relä namn område). Den privata slut punkten använder en privat IP-adress från ditt virtuella nätverk, vilket effektivt ansluter tjänsten till ditt VNet. All trafik till tjänsten kan dirigeras via den privata slut punkten, så inga gatewayer, NAT-enheter, ExpressRoute, VPN-anslutningar eller offentliga IP-adresser krävs. Trafik mellan ditt virtuella nätverk och tjänsten passerar över Microsoft stamnätet-nätverket som eliminerar exponering från det offentliga Internet. Du kan ange en nivå av granularitet i åtkomst kontroll genom att tillåta anslutningar till vissa Azure Relay namn områden.
 
 Mer information finns i [så här konfigurerar du privata slut punkter](private-link-service.md)
 

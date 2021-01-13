@@ -7,16 +7,16 @@ manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 11/23/2020
+ms.date: 01/12/2021
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, synapse-analytics
-ms.openlocfilehash: 7c41474143fbb7782ccf7b5c89b0b34802e5ef0a
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: c492ec930cea000e45f7b6f09cc5e9c7a6a0db22
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 01/12/2021
-ms.locfileid: "98119704"
+ms.locfileid: "98134508"
 ---
 # <a name="tutorial-load-data-to--azure-synapse-analytics-sql-pool"></a>Självstudie: läsa in data till Azure Synapse Analytics SQL-pool
 
@@ -37,7 +37,10 @@ Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](ht
 
 Innan du börjar med de här självstudierna ska du ladda ned och installera den senaste versionen av [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS).
 
-Den här självstudien förutsätter att du redan har skapat en dedikerad SQL-pool från följande [självstudie](./create-data-warehouse-portal.md#connect-to-the-server-as-server-admin).
+Den här självstudien förutsätter att du redan har skapat en dedikerad SQL-pool från följande [självstudie](./create-data-warehouse-portal.md#connect-to-the-server-as-server-admin). 
+
+> [!NOTE]
+> Vi rekommenderar att du använder minst en DW1000c för den här självstudien. 
 
 ## <a name="create-a-user-for-loading-data"></a>Skapa en användare för att läsa in data
 

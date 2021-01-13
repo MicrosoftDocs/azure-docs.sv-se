@@ -11,16 +11,14 @@ ms.author: laobri
 ms.reviewer: laobri
 ms.date: 10/13/2020
 ms.custom: contperf-fy20q4, devx-track-python
-ms.openlocfilehash: b0b415cce37e464abcba9fab5ad4c1196b1b2e1b
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 916064742e69b7d355a0c7e541d4f2270e8854f4
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033484"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98134457"
 ---
 # <a name="tutorial-build-an-azure-machine-learning-pipeline-for-batch-scoring"></a>Självstudie: Bygg en Azure Machine Learning pipeline för batch-Poäng
-
-
 
 I den här avancerade självstudien får du lära dig hur du skapar en [Azure Machine Learning pipeline](concept-ml-pipelines.md) för att köra ett batch-bedömnings jobb. Maskin inlärnings pipeliner optimerar arbets flödet med hastighet, portabilitet och åter användning, så att du kan fokusera på maskin inlärning i stället för infrastruktur och automatisering. När du har skapat och publicerat en pipeline konfigurerar du en REST-slutpunkt som du kan använda för att utlösa pipelinen från alla HTTP-bibliotek på vilken plattform som helst. 
 
@@ -79,26 +77,24 @@ def_data_store = ws.get_default_datastore()
 
 ## <a name="create-dataset-objects"></a>Skapa data mängds objekt
 
-När du skapar pipeliner `Dataset` används objekt för att läsa data från data lager för arbets ytor och `PipelineData` objekt används för att överföra mellanliggande data mellan pipeline-steg.
+När du skapar pipeliner `Dataset` används objekt för att läsa data från data lager för arbets ytor och `OutputFileDatasetConfig` objekt används för att överföra mellanliggande data mellan pipeline-steg.
 
 > [!Important]
 > I batch-bedömnings exemplet i den här självstudien används endast ett pipeline-steg. I användnings fall som har flera steg innehåller det typiska flödet följande steg:
 >
-> 1. Använd `Dataset` objekt som *indata* för att hämta rå data, utför en del omvandling och sedan *skriva ut* ett `PipelineData` objekt.
+> 1. Använd `Dataset` objekt som *indata* för att hämta rå data, utföra en del omvandling och sedan *skriva ut* med ett `OutputFileDatasetConfig` objekt.
 >
-> 2. Använd `PipelineData` *objektet utdata* i föregående steg som ett *indata-objekt*. Upprepa det för efterföljande steg.
+> 2. Använd `OutputFileDatasetConfig` *objektet utdata* i föregående steg som ett *indata-objekt*. Upprepa det för efterföljande steg.
 
-I det här scenariot skapar du `Dataset` objekt som motsvarar data lager kataloger för både indata och klassificerings etiketter (y-test-värden). Du skapar också ett `PipelineData` objekt för utdata från batch-poängen.
+I det här scenariot skapar du `Dataset` objekt som motsvarar data lager kataloger för både indata och klassificerings etiketter (y-test-värden). Du skapar också ett `OutputFileDatasetConfig` objekt för utdata från batch-poängen.
 
 ```python
 from azureml.core.dataset import Dataset
-from azureml.pipeline.core import PipelineData
+from azureml.data import OutputFileDatasetConfig
 
 input_images = Dataset.File.from_files((batchscore_blob, "batchscoring/images/"))
 label_ds = Dataset.File.from_files((batchscore_blob, "batchscoring/labels/"))
-output_dir = PipelineData(name="scores", 
-                          datastore=def_data_store, 
-                          output_path_on_compute="batchscoring/results")
+output_dir = OutputFileDatasetConfig(name="scores")
 ```
 
 Registrera data uppsättningarna på arbets ytan om du vill återanvända den senare. Det här är valfritt.

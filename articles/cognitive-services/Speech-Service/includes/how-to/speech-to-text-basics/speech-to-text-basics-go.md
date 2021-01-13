@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/15/2020
 ms.author: trbye
-ms.openlocfilehash: f87db54b43f0ece49b940521bea34737da676a31
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 7603a5aa138e719d7ffe3db7a4c4484466efc1e3
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96912264"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98147528"
 ---
 En av de viktigaste funktionerna i tal tjänsten är möjligheten att känna igen mänskligt tal (kallas ofta tal till text). I den här snabb starten får du lära dig hur du använder tal-SDK i dina appar och produkter för att utföra högkvalitativt tal-till-text-konvertering.
 
@@ -17,7 +17,7 @@ En av de viktigaste funktionerna i tal tjänsten är möjligheten att känna ige
 
 Om du vill hoppa över direkt till exempel kod, se [snabb starts exempel för go](https://github.com/microsoft/cognitive-services-speech-sdk-go/tree/master/samples/recognizer) på GitHub.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Den här artikeln förutsätter att du har ett Azure-konto och en röst tjänst prenumeration. Om du inte har ett konto och en prenumeration kan du [prova att använda tal tjänsten kostnads fritt](../../../overview.md#try-the-speech-service-for-free).
 
@@ -99,6 +99,20 @@ func main() {
 }
 ```
 
+Kör följande kommandon för att skapa en go. mod-fil som länkar till komponenter som finns på GitHub.
+
+```cmd
+go mod init quickstart
+go get github.com/Microsoft/cognitive-services-speech-sdk-go
+```
+
+Nu ska du skapa och köra koden.
+
+```cmd
+go build
+go run quickstart
+```
+
 Se referens dokumenten för detaljerad information om [`SpeechConfig`](https://pkg.go.dev/github.com/Microsoft/cognitive-services-speech-sdk-go@v1.14.0/speech#SpeechConfig) [`SpeechRecognizer`](https://pkg.go.dev/github.com/Microsoft/cognitive-services-speech-sdk-go@v1.14.0/speech#SpeechRecognizer) klasserna och.
 
 ## <a name="speech-to-text-from-audio-file"></a>Tal till text från ljud filen
@@ -163,6 +177,20 @@ func main() {
     fmt.Println("Got a recognition!")
     fmt.Println(outcome.Result.Text)
 }
+```
+
+Kör följande kommandon för att skapa en go. mod-fil som länkar till komponenter som finns på GitHub.
+
+```cmd
+go mod init quickstart
+go get github.com/Microsoft/cognitive-services-speech-sdk-go
+```
+
+Nu ska du skapa och köra koden.
+
+```cmd
+go build
+go run quickstart
 ```
 
 Se referens dokumenten för detaljerad information om [`SpeechConfig`](https://pkg.go.dev/github.com/Microsoft/cognitive-services-speech-sdk-go@v1.14.0/speech#SpeechConfig) [`SpeechRecognizer`](https://pkg.go.dev/github.com/Microsoft/cognitive-services-speech-sdk-go@v1.14.0/speech#SpeechRecognizer) klasserna och.

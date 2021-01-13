@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to,automl,contperf-fy21q2
 ms.date: 12/18/2020
-ms.openlocfilehash: b26b0d9086f464556cbca2c70773374c3cccbd52
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 5fcb57d1ef909d7c15e21b34c3f584c6615a6a44
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97915869"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98134423"
 ---
 # <a name="data-featurization-in-automated-machine-learning"></a>Data funktionalisering i Automatisk maskin inlärning
 
@@ -28,7 +28,7 @@ Lär dig mer om inställningarna för data funktionalisering i Azure Machine Lea
 
 *Funktions teknik* är en process där du använder domän information om data för att skapa funktioner som hjälper Machine Learning-algoritmer (ml) att lära sig bättre. I Azure Machine Learning tillämpas teknikerna för data skalning och normalisering för att göra det enklare att använda funktionen. Tillsammans kallas dessa tekniker och den här typen av teknik för *funktionalisering* i automatiserad maskin inlärning eller *autoML*, experiment.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Den här artikeln förutsätter att du redan vet hur du konfigurerar ett AutoML experiment. Information om konfiguration finns i följande artiklar:
 
@@ -46,7 +46,7 @@ För experiment som du konfigurerar med python SDK, kan du aktivera eller inakti
 
 I följande tabell visas de accepterade inställningarna för `featurization` i [klassen AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig):
 
-|Funktionalisering-konfiguration | Beskrivning|
+|Funktionalisering-konfiguration | Description|
 ------------- | ------------- |
 |`"featurization": 'auto'`| Anger att steg som en del av processen för att bearbeta [data guardrails](#data-guardrails) och [funktionalisering](#featurization) ska göras automatiskt. Den här inställningen är standardinställningen.|
 |`"featurization": 'off'`| Anger att funktionalisering-steg inte ska göras automatiskt.|
@@ -61,7 +61,7 @@ I följande tabell sammanfattas de tekniker som automatiskt tillämpas på dina 
 > [!NOTE]
 > Om du planerar att exportera AutoML-modeller till en ONNX- [modell](concept-onnx.md)stöds bara de funktionalisering-alternativ som anges med en asterisk ("*") i ONNX-formatet. Lär dig mer om [att konvertera modeller till ONNX](concept-automated-ml.md#use-with-onnx).
 
-|Funktionalisering- &nbsp; steg| Beskrivning |
+|Funktionalisering- &nbsp; steg| Description |
 | ------------- | ------------- |
 |**Släpp hög kardinalitet eller inga varians funktioner** _ |Släpp dessa funktioner från utbildning och validerings uppsättningar. Gäller för funktioner med alla värden som saknas, med samma värde för alla rader eller med hög kardinalitet (till exempel hash-värden, ID: n eller GUID).|
 |_*Imputerade värden som saknas**_ |För numeriska funktioner måste du räkna ut med medelvärdet av värdena i kolumnen.<br/><br/>För kategoriska-funktioner ska du räkna med det vanligaste värdet.|
@@ -123,6 +123,9 @@ Anpassningar som stöds är:
 |**Ta bort kolumner** |Anger kolumner som ska släppas från att bearbetas.|
 |**Block transformatorer**| Anger block-transformatorer som ska användas i funktionalisering-processen.|
 
+>[!NOTE]
+> Funktionen **släpp kolumner** är inaktuell från och med SDK-version 1,19. Släpp kolumner från data uppsättningen som en del av data rengöringen, innan du använder den i ditt automatiserade ML-experiment. 
+
 Skapa `FeaturizationConfig` objektet med hjälp av API-anrop:
 
 ```python
@@ -178,7 +181,7 @@ Den här listan innehåller alla bevarade funktions namn.
   fitted_model.named_steps['timeseriestransformer'].get_featurization_summary()
   ```
 
-Resultat
+Utdata
 
   ```
   [{'RawFeatureName': 'A',
@@ -203,7 +206,7 @@ Resultat
     'Tranformations': ['DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime']}]
   ```
 
-   |Resultat|Definition|
+   |Utdata|Definition|
    |----|--------|
    |RawFeatureName|Inmatad funktion/kolumn namn från den angivna data uppsättningen.|
    |TypeDetected|Identifierad datatyp för indata-funktionen.|
