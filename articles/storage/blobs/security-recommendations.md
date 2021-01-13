@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: tamram
 ms.custom: security-recommendations
-ms.openlocfilehash: 1593c47b7a6cf3b861f3e1af148b7a5fbfae9a19
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: 55c4fa00cfd20a83e65a3d57c6020991734f9d9f
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 01/12/2021
-ms.locfileid: "98127387"
+ms.locfileid: "98132486"
 ---
 # <a name="security-recommendations-for-blob-storage"></a>Säkerhets rekommendationer för Blob Storage
 
@@ -31,8 +31,8 @@ Azure Security Center analyserar regelbundet säkerhets status för dina Azure-r
 |-|----|--|
 | Använd Azure Resource Manager distributions modell | Skapa nya lagrings konton med hjälp av Azure Resource Manager distributions modell för viktiga säkerhets förbättringar, inklusive överlägsen Azure rollbaserad åtkomst kontroll (Azure RBAC) och granskning, Resource Manager-baserad distribution och styrning, åtkomst till hanterade identiteter, åtkomst till Azure Key Vault för hemligheter och Azure AD-baserad autentisering och auktorisering för att få åtkomst till Azure Storage data och resurser. Migrera om möjligt Befintliga lagrings konton som använder den klassiska distributions modellen för att använda Azure Resource Manager. Mer information om Azure Resource Manager finns i [Azure Resource Manager översikt](../../azure-resource-manager/management/overview.md). | - |
 | Aktivera Azure Defender för alla dina lagrings konton | Azure Defender för Azure Storage ger ytterligare ett lager med säkerhets information som identifierar ovanliga och potentiellt skadliga försök att komma åt eller utnyttja lagrings konton. Säkerhets aviseringar utlöses i Azure Security Center när avvikelser i aktivitet sker och också skickas via e-post till prenumerations administratörer, med information om misstänkt aktivitet och rekommendationer för att undersöka och åtgärda hot. Mer information finns i [Konfigurera Azure Defender för Azure Storage](../common/azure-defender-storage-configure.md). | [Ja](../../security-center/security-center-sql-service-recommendations.md) |
-| Aktivera mjuk borttagning för blobbar | Med mjuk borttagning kan du återställa BLOB-data när de har tagits bort. Mer information om mjuk borttagning finns i [mjuk borttagning för Azure Storage blobbar](./soft-delete-blob-overview.md). | - |
-| Aktivera mjuk borttagning för behållare | ???. | - |
+| Aktivera mjuk borttagning för blobbar | Med mjuk borttagning för blobbar kan du återställa BLOB-data när de har tagits bort. Mer information om mjuk borttagning för blobbar finns i [mjuk borttagning för Azure Storage blobbar](./soft-delete-blob-overview.md). | - |
+| Aktivera mjuk borttagning för behållare | Med alternativet mjuk borttagning för behållare kan du återställa en behållare efter att den har tagits bort. Mer information om mjuk borttagning för behållare finns i [mjuk borttagning för behållare (för hands version)](./soft-delete-container-overview.md). | - |
 | Lås lagrings konto för att förhindra borttagning av oavsiktligt konto | Du kan låsa en Azure Resource Manager-resurs, till exempel en prenumeration, en resurs grupp eller ett lagrings konto, för att förhindra att andra användare i organisationen oavsiktligt tar bort eller ändrar det. Att låsa ett lagrings konto förhindrar inte att data i det kontot tas bort. Det förhindrar bara att själva kontot tas bort. Mer information finns i [låsa resurser för att förhindra oväntade ändringar](../../azure-resource-manager/management/lock-resources.md).
 | Lagra affärs kritiska data i oföränderliga blobbar | Konfigurera juridiska undantag och tidsbaserade bevarande principer för att lagra BLOB-data i en mask (Skriv en gång, Läs många). Blobs lagrade immutably kan läsas, men kan inte ändras eller tas bort under lagrings intervallets varaktighet. Mer information finns i [lagra affärs kritiska BLOB-data med oföränderlig lagring](storage-blob-immutable-storage.md). | - |
 | Kräv säker överföring (HTTPS) till lagrings kontot | ??? | - |

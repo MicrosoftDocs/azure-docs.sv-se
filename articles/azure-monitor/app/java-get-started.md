@@ -6,12 +6,12 @@ ms.date: 11/22/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 6bdad71f0b36995abdeb3b1edb87cbef32df8b67
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 115e1ec347cdcd80904b47a0c8798206360d0dad
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96919422"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131788"
 ---
 # <a name="quickstart-get-started-with-application-insights-in-a-java-web-project"></a>Snabbstart: Kom igång med Application Insights i ett Java-webbprojekt
 
@@ -23,7 +23,7 @@ I den här snabb starten använder du Application Insights SDK för att hantera 
 
 Application Insights är en utökningsbar analystjänst för webbutvecklare som hjälper dig att förstå prestanda och användningen av ditt liveprogram. Application Insights har stöd för Java-appar som körs på Linux, Unix eller Windows.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 * Ett fungerande Java-program.
@@ -56,7 +56,7 @@ Uppdatera sedan projektberoendena för att få binärfilerna.
         <artifactId>applicationinsights-web-auto</artifactId>
         <!-- or applicationinsights-web for manual web filter registration -->
         <!-- or applicationinsights-core for bare API -->
-        <version>2.5.0</version>
+        <version>2.6.2</version>
       </dependency>
     </dependencies>
 ```
@@ -69,15 +69,11 @@ Uppdatera sedan projektberoendena för att få binärfilerna.
 
 ```gradle
     dependencies {
-      compile group: 'com.microsoft.azure', name: 'applicationinsights-web-auto', version: '2.5.0'
+      compile group: 'com.microsoft.azure', name: 'applicationinsights-web-auto', version: '2.6.2'
       // or applicationinsights-web for manual web filter registration
       // or applicationinsights-core for bare API
     }
 ```
-
-# <a name="other-types"></a>[Andra typer](#tab/other)
-
-Hämta den [senaste versionen](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest) och kopiera nödvändiga filer till projektet, så att tidigare versioner ersätts.
 
 ---
 
@@ -88,10 +84,7 @@ Hämta den [senaste versionen](https://github.com/Microsoft/ApplicationInsights-
   * `applicationinsights-core` ger dig bara det Bare-API: t, till exempel om ditt program inte är servlet-baserat.
   
 * *Hur uppdaterar jag SDK till den senaste versionen?*
-  * Om du använder Gradle eller Maven...
-    * Uppdatera build-filen för att ange den senaste versionen.
-  * Om du hanterar beroenden manuellt...
-    * Ladda ned senaste [Application Insights SDK för Java](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest) och ersätt det gamla. Ändringar beskrivs i [viktig information om SDK](https://github.com/Microsoft/ApplicationInsights-Java#release-notes).
+  * Från och med november 2020, för övervakning av Java-program, rekommenderar vi automatisk Instrumentation med hjälp av Azure Monitor Application Insights Java 3,0-agenten. Mer information om hur du kommer igång finns [Application Insights Java 3,0-agent](./java-in-process-agent.md).
 
 ## <a name="add-an-applicationinsightsxml-file"></a>Lägg till en *ApplicationInsights.xml* -fil
 Lägg till *ApplicationInsights.xml* i mappen resurser i projektet eller kontrol lera att den har lagts till i projektets distributions klass Sök väg. Kopiera följande XML-kod till den.
@@ -168,10 +161,6 @@ Data om HTTP-förfrågningar visas på översiktsbladet. (Om informationen inte 
 Klicka dig vidare i diagrammen om du vill visa mer detaljerade aggregerade mätvärden.
 
 ![Fönstret Application Insightss problem med diagram](./media/java-get-started/006-barcharts.png)
-
-<!--
-[TODO update image with 2.5.0 operation naming provided by agent]
--->
 
 ### <a name="instance-data"></a>Instansdata
 Klicka dig vidare inom en specifik begärandetyp om du vill visa enskilda instanser.

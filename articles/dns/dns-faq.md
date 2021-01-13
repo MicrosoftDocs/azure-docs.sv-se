@@ -5,14 +5,14 @@ services: dns
 author: rohinkoul
 ms.service: dns
 ms.topic: article
-ms.date: 6/15/2019
+ms.date: 01/11/2021
 ms.author: rohink
-ms.openlocfilehash: 2f7e4eadc25028db4668db8d245803c7ddba8688
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: c468b1216670ce7e6b5d252a7f7fee807199d20c
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968255"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131499"
 ---
 # <a name="azure-dns-faq"></a>Azure DNS vanliga frågor och svar
 
@@ -194,6 +194,10 @@ Ja. Azure DNS namnservrar är dubbla stackar. Dubbla stackar innebär att de har
 Internationella domän namn (IDN) koda varje DNS-namn med hjälp av [punycode](https://en.wikipedia.org/wiki/Punycode). DNS-frågor görs med hjälp av dessa punycode-kodade namn.
 
 Om du vill konfigurera IDN: er i Azure DNS konverterar du zon namnet eller post uppsättnings namnet till Punycode. Azure DNS stöder för närvarande inte inbyggd konvertering till eller från Punycode.
+
+### <a name="does-azure-dns-private-zones-store-any-customer-content"></a>Lagrar Azure DNS privata zoner alla kund innehåll?
+
+Nej, Azure DNS privata zoner inte lagrar något kund innehåll.
 
 ## <a name="next-steps"></a>Nästa steg
 

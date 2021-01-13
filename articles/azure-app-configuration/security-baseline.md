@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 79a99ad37c526103fc3068562d62ed40defc983b
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 24dc41493ff48aeba362137347c44cbf0fd20c7a
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96532388"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98134219"
 ---
 # <a name="azure-security-baseline-for-azure-app-configuration"></a>Azures säkerhets bas linje för Azure App konfiguration
 
@@ -78,7 +78,7 @@ Azure App-konfigurationen är inte avsedd att köra webb program, men den inneh�
 
 - [Hantera Azure DDoS Protection standard med hjälp av Azure Portal](../ddos-protection/manage-ddos-protection.md)
 
-- [Rekommendationer för Azure Security Center](../security-center/recommendations-reference.md#recs-network)
+- [Rekommendationer för Azure Security Center](../security-center/recommendations-reference.md#recs-networking)
 
 **Övervakning i Azure Security Center**: Ej tillämpligt
 

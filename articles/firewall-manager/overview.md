@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 11/23/2020
+ms.date: 01/12/2021
 ms.author: victorh
-ms.openlocfilehash: 84ecea7764ddf48d68c983eaa5bccbac5f332d9b
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 63e2aac4c12ecc5d832cb037fda91bd2c6ad0bf1
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95489702"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132451"
 ---
 # <a name="what-is-azure-firewall-manager"></a>Vad är Azure Firewall Manager?
 
@@ -86,7 +86,6 @@ Azure Firewall Manager har följande kända problem:
 |Gren till gren trafik med privat trafik filtrering aktive rad|Trafik mellan grenar och förgreningar stöds inte när privat trafik filtrering är aktive rad. |Undersöka.<br><br>Skydda inte privat trafik om gren-till-gren-anslutningen är kritisk.|
 |Alla skyddade virtuella hubbar som delar samma virtuella WAN-nätverk måste finnas i samma resurs grupp.|Det här beteendet är justerat med virtuella WAN-hubbar idag.|Skapa flera virtuella WAN-administratörer för att kunna skapa säkra virtuella hubbar i olika resurs grupper.|
 |Det går inte att lägga till Mass IP-adress|Brand väggen för skyddat nav hamnar i ett felaktigt tillstånd om du lägger till flera offentliga IP-adresser.|Lägg till mindre offentliga IP-prisökningar. Du kan till exempel lägga till 10 i taget.|
-|Det går inte att köra program regler i ett säkert nav med konfigurerat anpassad DNS (för hands version).|Anpassad DNS (för hands version) fungerar inte i skyddade Hubbs distributioner och hubbar för virtuella nätverk i hubben där Tvingad tunnel trafik är aktive rad.|Korrigera under undersökning.|
 |DDoS Protection standard stöds inte med skyddade virtuella hubbar|DDoS Protection standard är inte integrerat med vWANs.|Undersöker|
 |Aktivitets loggar stöds inte fullt ut|Brand Väggs principen stöder för närvarande inte aktivitets loggar.|Undersöker|
 |Konfigurera privata IP-adressintervall för SNAT|[Inställningar för privat IP-intervall](../firewall/snat-private-range.md) ignoreras om Azure Firewall-principen har kon figurer ATS. Standard beteendet för Azure-brandväggen används, där det inte är SNAT-nätverks regler när mål-IP-adressen är i ett privat IP-adressintervall per [IANA RFC 1918](https://tools.ietf.org/html/rfc1918).|Undersöker|

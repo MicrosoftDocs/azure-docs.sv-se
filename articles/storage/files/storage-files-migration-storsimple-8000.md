@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 1e45c39a8f562ca6264ab631dfadc84315b58030
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 08ed07adbfe0fc4b22d8a3d0afcfc9ab1312dba4
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97723986"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98134355"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>StorSimple 8100 och 8600-migrering till Azure File Sync
 
@@ -441,6 +441,9 @@ Nu finns det skillnader mellan den lokala Windows Server-instansen och StorSimpl
 1. Vissa filer kan ha lämnats av data omvandlings jobbet på grund av ogiltiga tecken. I så fall, kopierar du dem till den Azure File Sync-aktiverade Windows Server-instansen. Senare kan du justera dem så att de kommer att synkroniseras. Om du inte använder Azure File Sync för en viss resurs är det bättre att byta namn på filerna med ogiltiga tecken på StorSimple-volymen. Kör sedan RoboCopy direkt mot Azure-filresursen.
 
 > [!WARNING]
+> Robocopy i Windows Server 2019 har för närvarande ett problem som gör att filer som skiktas av Azure File Sync på mål servern kopieras från källan och sedan överförs till Azure igen när funktionen/MIR i Robocopy används. Det är absolut nödvändigt att använda Robocopy på en Windows-Server som inte är 2019. Ett föredraget val är Windows Server 2016. Den här kommentaren kommer att uppdateras om problemet löses via Windows Update.
+
+> [!WARNING]
 > Du *får inte* starta Robocopy innan servern har namn området för en Azure-filresurs som hämtats fullständigt. Mer information finns i [bestämma när ditt namn område har laddats ned helt till servern](#determine-when-your-namespace-has-fully-synced-to-your-server).
 
  Du vill bara kopiera filer som har ändrats efter att migreringsjobbet senast kördes och filer som inte har flyttats via dessa jobb tidigare. Du kan lösa problemet på så sätt att de inte flyttades senare på servern när migreringen är klar. Mer information finns i [Azure File Sync fel sökning](storage-sync-files-troubleshoot.md#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing).
@@ -448,7 +451,7 @@ Nu finns det skillnader mellan den lokala Windows Server-instansen och StorSimpl
 RoboCopy har flera parametrar. I följande exempel visas ett färdigt kommando och en lista över orsaker till att välja dessa parametrar.
 
 ```console
-Robocopy /MT:16 /UNILOG:<file name> /TEE /NP /B /MIR /COPYALL /DCOPY:DAT <SourcePath> <Dest.Path>
+Robocopy /MT:16 /UNILOG:<file name> /TEE /NP /B /MIR /IT /COPYALL /DCOPY:DAT <SourcePath> <Dest.Path>
 ```
 
 Lägg
@@ -499,6 +502,14 @@ Lägg
    :::column-end:::
    :::column span="1":::
       Gör det möjligt för RoboCopy att endast överväga delta mellan källan (StorSimple-enheten) och mål (Windows Server-katalog).
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      /IT
+   :::column-end:::
+   :::column span="1":::
+      Ser till att åter givningen bevaras i vissa speglings scenarier.</br>Exempel: mellan två Robocopy kör en fil som använder en ACL-ändring och en attributändringar, till exempel är den också markerad som *dold*. Utan/IT kan ACL-ändringen missas av Robocopy och överförs därför inte till mål platsen.
    :::column-end:::
 :::row-end:::
 :::row:::

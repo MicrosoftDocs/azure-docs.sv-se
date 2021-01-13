@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 7265195f9614928a2150a56a780ea7b36bc2e266
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: ea66bb5bcdd6132809804632919a120f5c93353f
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96030874"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132725"
 ---
 # <a name="container-security-in-security-center"></a>Containersäkerhet i Security Center
 
@@ -48,7 +48,7 @@ Följande skärm bild visar sidan till gångs inventering och de olika behållar
 
 Aktivera [Azure Defender för behållar register](defender-for-container-registries-introduction.md)för att övervaka avbildningar i dina Azure Resource Manager-baserade Azure Container register. Security Center genomsöker alla bilder som hämtats under de senaste 30 dagarna, skickas till registret eller importeras. Den integrerade skannern tillhandahålls av den branschledande sårbara genomsöknings leverantören, Qualys.
 
-När problem påträffas – av Qualys eller Security Center – får du ett meddelande på [Azure Defender-instrumentpanelen](azure-defender-dashboard.md). För varje sårbarhet ger Security Center rekommendationer som kan åtgärdas, tillsammans med en allvarlighets grad och vägledning för hur du kan åtgärda problemet. Mer information om Security Centers rekommendationer för behållare finns i [referens listan för rekommendationer](recommendations-reference.md#recs-containers).
+När problem påträffas – av Qualys eller Security Center – får du ett meddelande på [Azure Defender-instrumentpanelen](azure-defender-dashboard.md). För varje sårbarhet ger Security Center rekommendationer som kan åtgärdas, tillsammans med en allvarlighets grad och vägledning för hur du kan åtgärda problemet. Mer information om Security Centers rekommendationer för behållare finns i [referens listan för rekommendationer](recommendations-reference.md#recs-compute).
 
 Security Center filtrerar och klassificerar resultat från skannern. När en bild är felfri, Security Center Markera den som sådan. Security Center skapar endast säkerhets rekommendationer för avbildningar som har problem att lösa. Genom att meddela om det uppstår problem kan Security Center minska risken för oönskade informations aviseringar.
 
@@ -60,7 +60,7 @@ Azure Security Center identifierar ohanterade behållare som finns på virtuella
 
 Security Center innehåller hela ruleset av CIS Docker-benchmark och varnar dig om dina behållare inte uppfyller någon av kontrollerna. När det hittar felkonfigurationer genererar Security Center säkerhets rekommendationer. Använd Security Center **rekommendationer** för att se rekommendationer och åtgärda problem. Benchmark-kontroller för CIS körs inte på AKS-hanterade instanser eller Databricks-hanterade virtuella datorer.
 
-Mer information om relevanta Security Center rekommendationer som kan visas för den här funktionen finns i [avsnittet container](recommendations-reference.md#recs-containers) i referens tabellen för rekommendationer.
+Mer information om relevanta Security Center rekommendationer som kan visas för den här funktionen finns i [avsnittet Compute](recommendations-reference.md#recs-compute) i referens tabellen rekommendationer.
 
 När du utforskar säkerhets problemen för en virtuell dator innehåller Security Center ytterligare information om behållarna på datorn. Sådan information omfattar Docker-versionen och antalet avbildningar som körs på värden. 
 
@@ -74,7 +74,7 @@ AKS tillhandahåller säkerhets kontroller och insyn i säkerhets position i din
 * Övervaka kontinuerligt konfigurationen av dina AKS-kluster
 * Skapa säkerhets rekommendationer som är justerade med bransch standarder
 
-Mer information om relevanta Security Center rekommendationer som kan visas för den här funktionen finns i [avsnittet container](recommendations-reference.md#recs-containers) i referens tabellen för rekommendationer.
+Mer information om relevanta Security Center rekommendationer som kan visas för den här funktionen finns i [avsnittet Compute](recommendations-reference.md#recs-compute) i referens tabellen rekommendationer.
 
 ###  <a name="workload-protection-best-practices-using-kubernetes-admission-control"></a>Bästa metoder för arbets belastnings skydd med Kubernetes-åtkomstkontroll
 

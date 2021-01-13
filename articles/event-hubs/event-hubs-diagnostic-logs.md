@@ -3,21 +3,21 @@ title: Konfigurera diagnostikloggar – Azure Event Hub | Microsoft Docs
 description: Lär dig hur du konfigurerar aktivitets loggar och diagnostikloggar för Event Hub i Azure.
 ms.topic: article
 ms.date: 10/27/2020
-ms.openlocfilehash: a7230746dc4225b04b0507c872416368aa14442b
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 015814b9a56ec963f5209f971f096ac6c173d7e1
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92912607"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131992"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>Konfigurera diagnostikloggar för en Azure-händelsehubb
 
 Du kan visa två typer av loggar för Azure Event Hubs:
 
-* **[Aktivitets loggar](../azure-monitor/platform/platform-logs-overview.md)** : loggarna innehåller information om åtgärder som utförs i ett jobb. Loggarna är alltid aktiverade. Du kan se aktivitets logg poster genom att välja **aktivitets logg** i det vänstra fönstret för ditt Event Hub-namnområde i Azure Portal. Exempel: "skapa eller uppdatera namn område", "skapa eller uppdatera Event Hub".
+* **[Aktivitets loggar](../azure-monitor/platform/platform-logs-overview.md)**: loggarna innehåller information om åtgärder som utförs i ett jobb. Loggarna är alltid aktiverade. Du kan se aktivitets logg poster genom att välja **aktivitets logg** i det vänstra fönstret för ditt Event Hub-namnområde i Azure Portal. Exempel: "skapa eller uppdatera namn område", "skapa eller uppdatera Event Hub".
 
     ![Aktivitets logg för ett Event Hubs-namnområde](./media/event-hubs-diagnostic-logs/activity-log.png)
-* **[Diagnostikloggar](../azure-monitor/platform/platform-logs-overview.md)** : diagnostikloggar ger mer utförlig information om åtgärder och åtgärder som utförs mot ditt namn område med hjälp av API: et, eller via hanterings klienter på språk-SDK: n. 
+* **[Diagnostikloggar](../azure-monitor/platform/platform-logs-overview.md)**: diagnostikloggar ger mer utförlig information om åtgärder och åtgärder som utförs mot ditt namn område med hjälp av API: et, eller via hanterings klienter på språk-SDK: n. 
     
     I följande avsnitt visas hur du aktiverar diagnostikloggar för ett Event Hubs namn område.
 
@@ -25,7 +25,7 @@ Du kan visa två typer av loggar för Azure Event Hubs:
 Diagnostikloggar är inaktiverade som standard. Följ dessa steg om du vill aktivera diagnostikloggar:
 
 1.  I [Azure Portal](https://portal.azure.com)navigerar du till Event Hubs namn området. 
-2. Välj **diagnostikinställningar** under **övervakning** i den vänstra rutan och välj sedan **+ Lägg till diagnostisk inställning** . 
+2. Välj **diagnostikinställningar** under **övervakning** i den vänstra rutan och välj sedan **+ Lägg till diagnostisk inställning**. 
 
     ![Sidan diagnostikinställningar – Lägg till diagnostisk inställning](./media/event-hubs-diagnostic-logs/diagnostic-settings-page.png)
 4. I avsnittet **kategori Detaljer** väljer du de **typer av diagnostikloggar** som du vill aktivera. Du hittar mer information om dessa kategorier längre fram i den här artikeln. 
@@ -59,7 +59,7 @@ Alla loggar lagras i JavaScript Object Notation (JSON)-format. Varje post inneh�
 
 Arkiv loggens JSON-strängar innehåller element som anges i följande tabell:
 
-Namn | Beskrivning
+Name | Beskrivning
 ------- | -------
 `TaskName` | Beskrivning av uppgiften som misslyckades
 `ActivityId` | Internt ID som används för spårning
@@ -97,15 +97,15 @@ Följande kod är ett exempel på en logg-JSON-sträng för Arkiv logg:
 
 I den operativa loggens JSON-strängar ingår element som anges i följande tabell:
 
-Namn | Beskrivning
+Name | Beskrivning
 ------- | -------
 `ActivityId` | Internt ID, används i spårnings syfte |
-`EventName` | Åtgärdsnamn |
+`EventName` | Åtgärdsnamn. En lista över värden för det här elementet finns i [händelse namn](#event-names) |
 `resourceId` | Resurs-ID för Azure Resource Manager |
 `SubscriptionId` | Prenumerations-ID:t |
 `EventTimeString` | Åtgärds tid |
-`EventProperties` | Egenskaper för åtgärd |
-`Status` | Åtgärdsstatus |
+`EventProperties` |Egenskaper för åtgärden. Det här elementet innehåller mer information om händelsen som visas i följande exempel. |
+`Status` | Åtgärds status. Värdet kan vara antingen **lyckat** eller **misslyckat**.  |
 `Caller` | Uppringnings åtgärd (Azure Portal-eller hanterings klient) |
 `Category` | OperationalLogs |
 
@@ -126,10 +126,17 @@ Example:
 }
 ```
 
+### <a name="event-names"></a>Händelse namn
+Händelse namnet är ifyllt som åtgärds typ + resurs typ från följande uppräkningar. Till exempel, `Create Queue` , `Retrieve Event Hu` eller `Delete Rule` . 
+
+| Åtgärdstyp | Resurstyp | 
+| -------------- | ------------- | 
+| <ul><li>Skapa</li><li>Uppdatera</li><li>Ta bort</li><li>Hämta</li><li>Okänt</li></ul> | <ul><li>Namnområde</li><li>Kö</li><li>Ämne</li><li>Prenumeration</li><li>EventHub</li><li>EventHubSubscription</li><li>NotificationHub</li><li>NotificationHubTier</li><li>SharedAccessPolicy</li><li>UsageCredit</li><li>NamespacePnsCredentials</li>Regel</li>ConsumerGroup</li> |
+
 ## <a name="autoscale-logs-schema"></a>Schema för autoskalning av loggar
 Autoskalning log JSON innehåller element som anges i följande tabell:
 
-| Namn | Beskrivning |
+| Name | Beskrivning |
 | ---- | ----------- | 
 | `TrackingId` | Internt ID, som används för spårnings syfte |
 | `ResourceId` | Azure Resource Manager resurs-ID. |
@@ -148,7 +155,7 @@ Här är ett exempel på en autoskalning-händelse:
 ## <a name="kafka-coordinator-logs-schema"></a>Kafka-koordinator loggar schema
 Kafka Coordinator log JSON innehåller element som anges i följande tabell:
 
-| Namn | Beskrivning |
+| Name | Beskrivning |
 | ---- | ----------- | 
 | `RequestId` | ID för begäran som används för spårnings syfte |
 | `ResourceId` | Resurs-ID för Azure Resource Manager |
@@ -176,7 +183,7 @@ Kafka Coordinator log JSON innehåller element som anges i följande tabell:
 ## <a name="kafka-user-error-logs-schema"></a>Schema för Kafka-användar fel loggar
 Kafka user error log JSON innehåller element som anges i följande tabell:
 
-| Namn | Beskrivning |
+| Name | Beskrivning |
 | ---- | ----------- |
 | `TrackingId` | Spårnings-ID, som används för spårnings syfte. |
 | `NamespaceName` | Namn på namnområde |
@@ -190,17 +197,17 @@ Kafka user error log JSON innehåller element som anges i följande tabell:
 ## <a name="event-hubs-virtual-network-connection-event-schema"></a>Händelse schema för Event Hubs virtuell nätverks anslutning
 Event Hubs virtuellt nätverk (VNet) Connection Event JSON innehåller element som anges i följande tabell:
 
-| Namn | Beskrivning |
+| Name | Beskrivning |
 | ---  | ----------- | 
 | `SubscriptionId` | ID för Azure-prenumeration |
 | `NamespaceName` | Namn på namnområde |
 | `IPAddress` | IP-adress för en klient som ansluter till Event Hubs tjänsten |
-| `Action` | Åtgärd som utförs av den Event Hubs tjänsten vid utvärdering av anslutnings begär Anden. Åtgärder som stöds **accepterar anslutning** och **neka anslutning** . |
+| `Action` | Åtgärd som utförs av den Event Hubs tjänsten vid utvärdering av anslutnings begär Anden. Åtgärder som stöds **accepterar anslutning** och **neka anslutning**. |
 | `Reason` | Innehåller en orsak till varför åtgärden utfördes |
 | `Count` | Antal förekomster för den aktuella åtgärden |
 | `ResourceId` | Azure Resource Manager resurs-ID. |
 
-Virtuella nätverks loggar skapas endast om namn området tillåter åtkomst från **valda nätverk** eller från **vissa IP-adresser** (IP-filter regler). Om du inte vill begränsa åtkomsten till ditt namn område med dessa funktioner och fortfarande vill hämta virtuella nätverks loggar för att spåra IP-adresser för klienter som ansluter till Event Hubs-namnrymden kan du använda följande lösning. Aktivera IP-filtrering och Lägg till det totala adresser bara IPv4-intervallet (1.0.0.0/1-255.0.0.0/1). Event Hubs stöder inte IPv6-intervall. 
+Virtuella nätverks loggar skapas endast om namn området tillåter åtkomst från **valda nätverk** eller från **vissa IP-adresser** (IP-filter regler). Om du inte vill begränsa åtkomsten till ditt namn område med hjälp av dessa funktioner och fortfarande vill hämta virtuella nätverks loggar för att spåra IP-adresser för klienter som ansluter till Event Hubs-namnrymden, kan du använda följande lösning. Aktivera IP-filtrering och Lägg till det totala adresser bara IPv4-intervallet (1.0.0.0/1-255.0.0.0/1). Event Hubs stöder inte IPv6-intervall. 
 
 ### <a name="example"></a>Exempel
 
@@ -220,7 +227,7 @@ Virtuella nätverks loggar skapas endast om namn området tillåter åtkomst fr�
 ## <a name="customer-managed-key-user-logs"></a>Kund hanterade nyckel användar loggar
 Kund hanterad nyckel användar logg JSON innehåller element som anges i följande tabell:
 
-| Namn | Beskrivning |
+| Name | Beskrivning |
 | ---- | ----------- | 
 | `Category` | Typ av kategori för ett meddelande. Det är ett av följande värden: **fel** och **information** |
 | `ResourceId` | Internt resurs-ID, som innehåller ID för Azure-prenumeration och namn område |

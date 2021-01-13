@@ -7,12 +7,12 @@ ms.date: 01/07/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: dd05a4880bdf077f63dc58575828e6180e415260
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 52872175eb799785674c331ad4d687ff8ef427a4
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 01/12/2021
-ms.locfileid: "98122599"
+ms.locfileid: "98134287"
 ---
 # <a name="how-to-use-commands-in-an-azure-iot-central-solution"></a>Använda kommandon i en Azure IoT Central-lösning
 
@@ -219,10 +219,8 @@ Följande skärm bild visar IoT Central gränssnittet när den tar emot egenskap
 
 I det här avsnittet visas hur en enhet hanterar ett offline-kommando. Om en enhet är online kan den hantera offline-kommandot så snart det tas emot. Om en enhet är offline hanterar den offline-kommandot när nästa ansluter till IoT Central. Enheter kan inte skicka ett retur värde som svar på ett offline-kommando.
 
-Följande kodfragment visar hur en enhet kan implementera ett offline-kommando:
-
 > [!NOTE]
-> Den här artikeln använder Node.js för enkelhetens skull. Andra språk exempel finns i själv studie kursen [skapa och ansluta ett klient program till Azure IoT Central Application](tutorial-connect-device.md) .
+> Den här artikeln använder Node.js för enkelhetens skull.
 
 Följande skärm bild visar ett offline-kommando som kallas **GenerateDiagnostics**. Parametern request är ett objekt med egenskapen datetime som kallas **StartTime** och en heltals uppräknings egenskap som heter **Bank**:
 

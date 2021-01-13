@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/07/2020
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f39380e253d3fa9e86bfea3a8c436862738ff8e3
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 213b973bfc93cb2237473b6bc4c7f1e138457409
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359939"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131907"
 ---
 # <a name="always-on-availability-group-on-sql-server-on-azure-vms"></a>Always on-tillgänglighetsgrupper på SQL Server på virtuella Azure-datorer
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -62,7 +62,7 @@ Information om hur du kommer igång finns i [Konfigurera en belastningsutjämnar
 
 ### <a name="dnn-listener"></a>DNN-lyssnare
 
-SQL Server 2019 CU8 introducerar stöd för DNN-lyssnaren (Distributed Network Name). DNN-lyssnaren ersätter den traditionella tillgänglighets gruppens lyssnare, vilket avstår från behovet av att en Azure-belastningsutjämnare ska dirigera trafik i Azure-nätverket. 
+SQL Server 2019 CU8 introducerar stöd för DNN-lyssnaren (Distributed Network Name). DNN-lyssnaren ersätter den traditionella tillgänglighets gruppens lyssnare, vilket eliminerar behovet av att en Azure Load Balancer dirigerar trafik i Azure-nätverket. 
 
 DNN-lyssnaren är den rekommenderade HADR anslutnings lösningen i Azure eftersom den fören klar distributionen, minskar underhållet och kostnaden och minskar redundansväxlingen om det skulle uppstå ett fel. 
 
@@ -80,7 +80,7 @@ Följande tabell innehåller en jämförelse av tillgängliga alternativ:
 | | Azure Portal | Azure CLI/PowerShell | Snabb starts mallar | Manuell |
 |---------|---------|---------|---------|---------|
 |**SQL Server-version** |2016 + |2016 +|2016 +|2012 +|
-|**SQL Server-utgåva** |Enterprise |Enterprise |Enterprise |Enterprise, standard|
+|**SQL Server-utgåva** |Stora företag |Stora företag |Stora företag |Enterprise, standard|
 |**Windows Server-version**| 2016 + | 2016 + | 2016 + | Alla|
 |**Skapar klustret åt dig**|Ja|Ja | Ja |Nej|
 |**Skapar tillgänglighets gruppen åt dig** |Ja |Nej|Nej|Nej|

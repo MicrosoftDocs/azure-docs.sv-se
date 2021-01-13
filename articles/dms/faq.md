@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: 200753c6458698d515b02252933e4fdf6d88df55
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 460380d9435528dcd8cbb3f877c8034fdc34f50c
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98019099"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98134157"
 ---
 # <a name="faq-about-using-azure-database-migration-service"></a>Vanliga frågor om att använda Azure Database Migration Service
 
@@ -109,7 +109,7 @@ Under en vanlig, enkel databas-migrering, gör du följande:
 ## <a name="troubleshooting-and-optimization"></a>Fel sökning och optimering
 
 **C. Jag konfigurerar ett migreringsjobb i DMS och jag har problem med att ansluta till min käll databas. Vad ska jag göra?**
-Om du har problem med att ansluta till käll databas systemet medan du arbetar med migreringen skapar du en virtuell dator i det virtuella nätverk där du konfigurerar din DMS-instans. På den virtuella datorn bör du kunna köra ett anslutnings test, till exempel använda en UDL-fil för att testa en anslutning till SQL Server eller ladda ned Robo-3T för att testa MongoDB-anslutningar. Om anslutnings testet lyckas bör du inte ha problem med att ansluta till käll databasen. Kontakta nätverks administratören om anslutnings testet inte lyckas.
+Om du har problem med att ansluta till käll databas systemet medan du arbetar med migreringen, skapar du en virtuell dator i samma undernät i det virtuella nätverket där du konfigurerar din DMS-instans. På den virtuella datorn bör du kunna köra ett anslutnings test, till exempel använda en UDL-fil för att testa en anslutning till SQL Server eller ladda ned Robo-3T för att testa MongoDB-anslutningar. Om anslutnings testet lyckas bör du inte ha problem med att ansluta till käll databasen. Kontakta nätverks administratören om anslutnings testet inte lyckas.
 
 **C. Varför är mina Azure Database Migration Service otillgängliga eller stoppade?**
 Om användaren uttryckligen stoppar Azure Database Migration Service (DMS) eller om tjänsten är inaktiv under en period på 24 timmar, kommer tjänsten att vara i ett stoppat eller automatiskt pausat läge. I varje fall är tjänsten inte tillgänglig och har statusen stoppad.  Starta om tjänsten för att återuppta aktiva migreringar.

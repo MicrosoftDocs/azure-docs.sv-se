@@ -11,12 +11,12 @@ author: johnpaulkee
 ms.author: joke
 ms.reviwer: sstein
 ms.date: 10/21/2020
-ms.openlocfilehash: 27cd35eba7320022ea9b137a7b8bb079a1226751
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 1fc5653f08f8fc7916257dfdba570f451c0afa75
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427295"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131941"
 ---
 # <a name="create-an-elastic-job-agent-using-powershell-preview"></a>Skapa en elastisk jobb agent med PowerShell (för hands version)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -35,7 +35,7 @@ I den här självstudien får du lära dig de steg som krävs för att köra en 
 > * Starta körningen av ett jobb
 > * Övervaka ett jobb
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Den uppgraderade versionen av Elastic Database-jobb har en ny uppsättning PowerShell-cmdlets som kan användas under migreringen. Dessa nya cmdletar överför alla befintliga autentiseringsuppgifter för jobb, mål (inklusive databaser, servrar, anpassade samlingar), jobb utlösare, jobb scheman, jobb innehåll och jobb till en ny elastisk jobb agent.
 
@@ -123,19 +123,11 @@ $db2 = New-AzSqlDatabase -ResourceGroupName $resourceGroupName -ServerName $targ
 $db2
 ```
 
-## <a name="use-elastic-jobs"></a>Använda elastiska jobb
-
-Om du vill använda elastiska jobb registrerar du funktionen i din Azure-prenumeration genom att köra följande kommando. Kör det här kommandot en gång för den prenumeration där du vill etablera den elastiska jobb agenten. Prenumerationer som bara innehåller databaser som är jobb mål behöver inte registreras.
-
-```powershell
-Register-AzProviderFeature -FeatureName sqldb-JobAccounts -ProviderNamespace Microsoft.Sql
-```
-
 ### <a name="create-the-elastic-job-agent"></a>Skapa en elastiskt jobbagent
 
 En agent för elastiska jobb är en Azure-resurs för att skapa, köra och hantera jobb. Agenten kör jobb baserat på ett schema eller som ett engångsjobb.
 
-Cmdlet: en **New-AzSqlElasticJobAgent** kräver att det redan finns en databas i Azure SQL Database, så parametrarna *resourceGroupName*, *servername*och *databasename* måste alla peka på befintliga resurser.
+Cmdlet: en **New-AzSqlElasticJobAgent** kräver att det redan finns en databas i Azure SQL Database, så parametrarna *resourceGroupName*, *servername* och *databasename* måste alla peka på befintliga resurser.
 
 ```powershell
 Write-Output "Creating job agent..."
@@ -205,7 +197,7 @@ $jobCred = $jobAgent | New-AzSqlElasticJobCredential -Name "jobuser" -Credential
 
 En [målgrupp](job-automation-overview.md#target-group) utgörs av en eller flera databaser som ett jobbsteg ska köras mot.
 
-Följande fragment skapar två mål grupper: *serverGroup*och *serverGroupExcludingDb2*. *serverGroup* riktar alla databaser som finns på servern vid körningen och *serverGroupExcludingDb2* riktar sig mot alla databaser på servern, förutom *targetDb2*:
+Följande fragment skapar två mål grupper: *serverGroup* och *serverGroupExcludingDb2*. *serverGroup* riktar alla databaser som finns på servern vid körningen och *serverGroupExcludingDb2* riktar sig mot alla databaser på servern, förutom *targetDb2*:
 
 ```powershell
 Write-Output "Creating test target groups..."
@@ -282,7 +274,7 @@ I följande tabell visas möjliga tillstånd för jobb körning:
 |**WaitingForRetry** | Det gick inte att slutföra åtgärden för jobb körningen och väntar på att försöka igen.|
 |**Brutit** | Jobb körningen har slutförts.|
 |**SucceededWithSkipped** | Jobb körningen har slutförts men vissa av dess underordnade hoppades över.|
-|**Bröt** | Jobb körningen har misslyckats och förbrukat sina återförsök.|
+|**Misslyckades** | Jobb körningen har misslyckats och förbrukat sina återförsök.|
 |**Stängningsåtgärd** | Tids gränsen nåddes för jobb körningen.|
 |**Avbrutna** | Jobb körningen avbröts.|
 |**Överhoppad** | Jobb körningen hoppades över eftersom en annan körning av samma jobb steg redan kördes på samma mål.|

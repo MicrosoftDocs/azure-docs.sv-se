@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/11/2021
+ms.date: 01/12/2021
 ms.author: b-juche
-ms.openlocfilehash: 4d21f7c4e74a87e409a73b22fc6b316e97e24a4e
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: beadd250ec4472b894f0f474b1057ad44cf474ed
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 01/12/2021
-ms.locfileid: "98122607"
+ms.locfileid: "98133522"
 ---
 # <a name="how-azure-netapp-files-snapshots-work"></a>Så här fungerar Azure NetApp Files-ögonblicksbilder
 
@@ -37,11 +37,11 @@ Följande diagram illustrerar begreppen:
 
 ![Diagram som visar viktiga begrepp för ögonblicks bilder](../media/azure-netapp-files/snapshot-concepts.png)
 
-I diagrammen ovan tas ögonblicks bilder i bild 1a. I bild 1b skrivs ändrade data till ett *nytt block* och pekaren uppdateras. Men ögonblicks bilds pekaren pekar fortfarande på det *tidigare skrivna blocket*, vilket ger dig en Live och en historisk vy över data. En annan ögonblicks bild tas i figur 1c. Nu har du till gång till tre generationer av data (real tids data, ögonblicks bild 2 och ögonblicks bild 1, i storleksordning), utan att ta upp det volym utrymme som tre fullständiga kopior kräver. 
+I diagrammen tas en ögonblicks bild i bild 1a. I bild 1b skrivs ändrade data till ett *nytt block* och pekaren uppdateras. Men ögonblicks bilds pekaren pekar fortfarande på det *tidigare skrivna blocket*, vilket ger dig en Live och en historisk vy över data. En annan ögonblicks bild tas i figur 1c. Nu har du till gång till tre generationer av data (real tids data, ögonblicks bild 2 och ögonblicks bild 1, i storleksordning), utan att ta upp det volym utrymme som tre fullständiga kopior kräver. 
 
 En ögonblicks bild tar bara en kopia av volymens metadata (*inode-tabellen*). Det tar bara några sekunder att skapa, oavsett volymens storlek, vilken kapacitet som används eller aktivitetens nivå på volymen. Därför tar en ögonblicks bild av en 100-TiB-volym att ta samma (bredvid noll) tid som en ögonblicks bild av en 100-GiB-volym. När en ögonblicks bild har skapats avspeglas ändringar av datafiler i den aktiva versionen av filerna som vanligt.
 
-Samtidigt förblir data blocken som pekas från en ögonblicks bild till stabila och oföränderliga. På grund av typen "omdirigering av skrivning" för Azure NetApp Files ögonblicks bilder, innebär det att en ögonblicks bild inte medför några prestanda kostnader och inte använder något utrymme. Du kan lagra upp till 255 ögonblicks bilder per volym över tid, som alla är tillgängliga som skrivskyddade och online versioner av data, vilket förbrukar mindre kapacitet som antalet ändrade block mellan varje ögonblicks bild. Ändrade block lagras på den aktiva volymen. Block som pekas på i ögonblicks bilder hålls (som skrivskyddade) i volymen för att vara förbrukade, så att de bara kan användas när alla ögonblicks bilder (pekare) har rensats. Volym användningen kommer därför att öka med tiden, antingen genom nya data block eller (ändrade) data block som lagras i ögonblicks bilder.
+Samtidigt förblir data blocken som pekas från en ögonblicks bild till stabila och oföränderliga. På grund av "omdirigering av skrivning" av Azure NetApp Files volymer medför en ögonblicks bild inte några prestanda kostnader och inte heller att använda något utrymme. Du kan lagra upp till 255 ögonblicks bilder per volym över tid, som alla är tillgängliga som skrivskyddade och online versioner av data, vilket förbrukar mindre kapacitet som antalet ändrade block mellan varje ögonblicks bild. Ändrade block lagras på den aktiva volymen. Block som pekas på i ögonblicks bilder hålls (som skrivskyddade) i volymen för att vara förbrukade, så att de bara kan användas när alla pekare (i den aktiva volymen och ögonblicks bilder) har rensats. Volym användningen kommer därför att öka med tiden, antingen genom nya data block eller (ändrade) data block som lagras i ögonblicks bilder.
 
  Följande diagram visar en volyms ögonblicks bilder och använt utrymme över tid: 
 
@@ -56,7 +56,7 @@ Eftersom en ögonblicks bild av en volym endast registrerar block ändringarna s
     Det tar bara några sekunder att skapa, replikera, återställa eller klona en ögonblicks bild, oavsett volym storlek och aktivitets nivå. Du kan skapa en ögonblicks bild [av volymen på begäran](azure-netapp-files-manage-snapshots.md#create-an-on-demand-snapshot-for-a-volume). Du kan också använda [ögonblicks bilds principer](azure-netapp-files-manage-snapshots.md#manage-snapshot-policies) för att ange när Azure NetApp Files ska skapa en ögonblicks bild automatiskt och hur många ögonblicks bilder som ska behållas för en volym.  Program konsekvens kan uppnås genom att dirigera ögonblicks bilder med program lagret, till exempel med hjälp av [AzAcSnap-verktyget](azacsnap-introduction.md) för SAP HANA.
 
 _ Ögonblicks bilder har ingen påverkan på volymen ***prestanda** _.   
-    På grund av den här typen av teknik för att dirigera om den här tekniken, sparar eller behåller Azure NetApp Files ögonblicks bilder ingen prestanda påverkan, även med tung data aktivitet. Att ta bort en ögonblicks bild har också liten prestanda påverkan i många fall. 
+    På grund av den här typen av teknik för att dirigera om den här tekniken, sparar eller behåller Azure NetApp Files ögonblicks bilder ingen prestanda påverkan, även med tung data aktivitet. Att ta bort en ögonblicks bild har också liten prestanda påverkan i de flesta fall. 
 
 _ Ögonblicks bilder ger ***skalbar** _ eftersom de kan skapas ofta och många kan behållas.   
     Azure NetApp Files volymer har stöd för upp till 255 ögonblicks bilder. Möjligheten att lagra ett stort antal låg frekventa ögonblicks bilder ökar ofta sannolikheten för att den önskade versionen av data kan återställas.
@@ -66,7 +66,7 @@ Hög prestanda, skalbarhet och stabilitet för Azure NetApp Files ögonblicks bi
 
 ## <a name="ways-to-create-snapshots"></a>Sätt att skapa ögonblicks bilder   
 
-Azure NetApp Files ögonblicks bilder är flexibla att använda. Därför finns det flera metoder för att skapa och underhålla ögonblicks bilder:
+Du kan använda flera metoder för att skapa och underhålla ögonblicks bilder:
 
 _ Manuellt (på begäran), med hjälp av:   
     * Verktygen [Azure Portal](azure-netapp-files-manage-snapshots.md#create-an-on-demand-snapshot-for-a-volume), [REST API](/rest/api/netapp/snapshots), [Azure CLI](/cli/azure/netappfiles/snapshot)eller [PowerShell](/powershell/module/az.netappfiles/new-aznetappfilessnapshot)
@@ -78,7 +78,7 @@ _ Manuellt (på begäran), med hjälp av:
 
 ## <a name="how-volumes-and-snapshots-are-replicated-cross-region-for-dr"></a>Hur volymer och ögonblicks bilder replikeras mellan regioner för DR  
 
-Azure NetApp Files stöder [replikering över flera regioner](cross-region-replication-introduction.md) för katastrof återställning (Dr). Azure NetApp Files replikering mellan regioner använder SnapMirror-teknik. Endast ändrade block skickas över nätverket i ett komprimerat, effektivt format. När en replikering mellan regioner initieras mellan volymer överförs hela volym innehållet (det vill säga de faktiska lagrade data blocken) bara en gång. Den här åtgärden kallas för en *bas linje överföring*. Efter den första överföringen överförs endast ändrade block (som fångats i ögonblicks bilder). En asynkron 1:1-replik av käll volymen skapas (inklusive alla ögonblicks bilder).  Det här beteendet följer en fullständig och stegvis dubbelriktad replikering. Den här tillverkarspecifika tekniken minimerar mängden data som krävs för att replikera över regionerna, och därför sparar kostnader för data överföring. Den förkortar också replikerings tiden. Du kan få ett mindre återställnings punkt mål (återställnings punkt mål) eftersom fler ögonblicks bilder kan skapas och överföras oftare med begränsade data överföringar.
+Azure NetApp Files stöder [replikering över flera regioner](cross-region-replication-introduction.md) för katastrof återställning (Dr). Azure NetApp Files replikering mellan regioner använder SnapMirror-teknik. Endast ändrade block skickas över nätverket i ett komprimerat, effektivt format. När en replikering mellan regioner initieras mellan volymer överförs hela volym innehållet (det vill säga de faktiska lagrade data blocken) bara en gång. Den här åtgärden kallas för en *bas linje överföring*. Efter den första överföringen överförs endast ändrade block (som fångats i ögonblicks bilder). Resultatet är en asynkron 1:1-replik av käll volymen, inklusive alla ögonblicks bilder. Det här beteendet följer en fullständig och stegvis dubbelriktad replikering. Den här tekniken minimerar mängden data som krävs för att replikera över regionerna, och därför sparar kostnader för data överföring. Den förkortar också replikerings tiden. Du kan få ett mindre återställnings punkt mål (återställnings punkt mål) eftersom fler ögonblicks bilder kan skapas och överföras oftare med begränsade data överföringar. Dessutom tar det bort behovet av värdbaserade mekanismer för replikering, vilket undviker kostnader för virtuella datorer och program varu licenser.
 
 Följande diagram visar ögonblicks bilds trafik i scenarier för replikering mellan olika regioner: 
 
@@ -90,7 +90,7 @@ Azure NetApp Files ögonblicks bilds tekniken förbättrar frekvensen och tillf�
 
 ### <a name="restoring-files-or-directories-from-snapshots"></a>Återställa filer eller kataloger från ögonblicks bilder 
 
-Om [synlighet för ögonblicks bilds Sök vägen](azure-netapp-files-manage-snapshots.md#edit-the-hide-snapshot-path-option) inte är dold kan användarna direkt komma åt ögonblicks bilder för att återställa efter oavsiktlig borttagning, skada eller ändring av deras data. Säkerheten för filer och kataloger bevaras i ögonblicks bilden och ögonblicks bilder är skrivskyddade enligt design. Återställningen är därför säker och enkel. 
+Om [synlighet för ögonblicks bilds Sök vägen](azure-netapp-files-manage-snapshots.md#edit-the-hide-snapshot-path-option) inte är inställd på `hidden` , kan användarna direkt komma åt ögonblicks bilder för att återställa efter oavsiktlig borttagning, skada eller ändring av deras data. Säkerheten för filer och kataloger bevaras i ögonblicks bilden och ögonblicks bilder är skrivskyddade enligt design. Återställningen är därför säker och enkel. 
 
 Följande diagram visar fil-eller katalog åtkomst till en ögonblicks bild: 
 
@@ -108,7 +108,7 @@ Se [återställa en fil från en ögonblicks bild med en klient](azure-netapp-fi
 
 ### <a name="restoring-cloning-a-snapshot-to-a-new-volume"></a>Återställa (klona) en ögonblicks bild till en ny volym
 
-Azure NetApp Files ögonblicks bilder kan återställas till en separat, oberoende volym. Den här åtgärden är nära momentan, oavsett volymens storlek och den kapacitet som förbrukas. Den nya volymen är nästan omedelbart tillgänglig för åtkomst, medan de faktiska data blocken för volymen och ögonblicks bilden kopieras över. Beroende på volymens storlek och kapacitet kan processen ta lång tid under vilken den överordnade volymen och ögonblicks bilden inte kan tas bort. Volymen kan dock redan nås efter den första genereringen, medan kopierings processen pågår i bakgrunden. Den här funktionen möjliggör snabb volym skapande för data återställning eller volym kloning för testning och utveckling. Av data kopierings processen kommer förbrukningen av lagrings kapacitet att fördubblas när återställningen är klar och den nya volymen visar den fullständiga aktiva kapaciteten för den ursprungliga ögonblicks bilden. När den här processen har slutförts, kommer volymen att vara oberoende och avassocieras med den ursprungliga volymen, och käll volymer och ögonblicks bilder kan hanteras eller tas bort oberoende av den nya volymen.
+Du kan återställa Azure NetApp Files ögonblicks bilder till en separat, oberoende volym. Den här åtgärden är nära momentan, oavsett volymens storlek och den kapacitet som förbrukas. Den nya volymen är nästan omedelbart tillgänglig för åtkomst, medan de faktiska data blocken för volymen och ögonblicks bilden kopieras över. Beroende på volymens storlek och kapacitet kan processen ta lång tid under vilken den överordnade volymen och ögonblicks bilden inte kan tas bort. Volymen kan dock redan nås efter den första genereringen, medan kopierings processen pågår i bakgrunden. Den här funktionen möjliggör snabb volym skapande för data återställning eller volym kloning för testning och utveckling. Av data kopierings processen kommer förbrukningen av lagrings kapacitet att fördubblas när återställningen är klar och den nya volymen visar den fullständiga aktiva kapaciteten för den ursprungliga ögonblicks bilden. När den här processen har slutförts, kommer volymen att vara oberoende och avassocieras med den ursprungliga volymen, och käll volymer och ögonblicks bilder kan hanteras eller tas bort oberoende av den nya volymen.
 
 Följande diagram visar en ny volym som skapats genom återställning (kloning) en ögonblicks bild:   
 
@@ -124,7 +124,7 @@ Se [återställa en ögonblicks bild till en ny volym](azure-netapp-files-manage
 
 ### <a name="restoring-reverting-a-snapshot-in-place"></a>Återställa (återställa) en ögonblicks bild på plats
 
-I vissa fall, eftersom den nya volymen kommer att förbruka lagrings kapacitet, kanske det inte behövs eller lämpligt att skapa en ny volym från en ögonblicks bild. För att återställa data från skadade data (t. ex. databaser eller utpressnings angrepp) snabbt, kan det vara mer lämpligt att återställa en ögonblicks bild i själva volymen. Den här åtgärden kan utföras med hjälp av funktionen för återställning av Azure NetApp Files ögonblicks bilder. Med den här funktionen kan du snabbt återställa en volym till det tillstånd den var i när en viss ögonblicks bild togs. I de flesta fall går det mycket snabbare att återställa en volym än att återställa enskilda filer från en ögonblicks bild till det aktiva fil systemet, särskilt i stora volymer med flera TiB-volymer. 
+I vissa fall, eftersom den nya volymen kommer att förbruka lagrings kapacitet, kanske det inte behövs eller lämpligt att skapa en ny volym från en ögonblicks bild. För att återställa från data som skadas snabbt (t. ex. databas skada eller utpressnings angrepp), kan det vara mer lämpligt att återställa en ögonblicks bild i själva volymen. Den här åtgärden kan utföras med hjälp av funktionen för återställning av Azure NetApp Files ögonblicks bilder. Med den här funktionen kan du snabbt återställa en volym till det tillstånd den var i när en viss ögonblicks bild togs. I de flesta fall går det mycket snabbare att återställa en volym än att återställa enskilda filer från en ögonblicks bild till det aktiva fil systemet, särskilt i stora volymer med flera TiB-volymer. 
 
 Att återställa en ögonblicks bild av en ögonblicks bild är nära momentant och tar bara några sekunder att slutföra, även för de största volymerna. De aktiva volymens metadata (*inode-tabellen*) ersätts med metadata för ögonblicks bilder från tidpunkten för att skapa ögonblicks bilder, vilket återställer volymen till den aktuella tidpunkten. Inga data block behöver kopieras för att återställningen ska börja gälla. Därför är det mer utrymmes effektivt än att återställa en ögonblicks bild till en ny volym. 
 
@@ -142,11 +142,11 @@ Se [återställa en volym med hjälp av ögonblicks bild återställning](azure-
 Ögonblicks bilder använder lagrings kapacitet. De lagras vanligt vis inte på obestämd tid. För data skydd, kvarhållning och återställnings möjlighet är ett antal ögonblicks bilder (som skapats vid olika tidpunkter) vanligt vis online under en viss tids period, beroende på kraven för återställnings-, RTO-och kvarhållning i SLA. Äldre ögonblicks bilder behöver dock ofta inte lagras på lagrings tjänsten och kan behöva tas bort för att frigöra utrymme. En ögonblicks bild kan tas bort (inte nödvändigt vis i skapande ordning) av en administratör när som helst. 
 
 > [!IMPORTANT]
-> Det går inte att ta bort ögonblicks bilden. 
+> Det går inte att ta bort ögonblicks bilden. Du bör behålla offlinekopior av volymen för data skydd och kvarhållning. 
 
 När en ögonblicks bild tas bort, tas alla pekare från ögonblicks bilden till befintliga data block bort. När ett data block inte har fler pekare som pekar på den (av den aktiva volymen eller andra ögonblicks bilder i volymen), returneras data blocket till volymens lediga utrymme för framtida bruk. Det innebär att ta bort ögonblicks bilder ofta frigör mer kapacitet i en volym än att ta bort data från den aktiva volymen, eftersom data block ofta samlas in i tidigare skapade ögonblicks bilder. 
 
-Följande diagram visar effekterna av lagrings förbrukning för borttagning av ögonblicks bilder för en volym:  
+Följande diagram visar effekterna av lagrings förbrukningen för borttagning av ögonblicks bilder 3 från en volym:  
 
 ![Diagram som visar lagrings förbruknings effekter för borttagning av ögonblicks bilder](../media/azure-netapp-files/snapshot-delete-storage-consumption.png)
 

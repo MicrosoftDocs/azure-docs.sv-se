@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 09/21/2020
 ms.custom: devx-track-java
 ms.author: pafarley
-ms.openlocfilehash: 6768f46f39920c975e7eccef72563fc0bb7e5180
-ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
+ms.openlocfilehash: 93552d203508fb893bd2e85d27a3a991fc539472
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97808597"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132335"
 ---
 > [!IMPORTANT]
 > Koden i den här artikeln använder synkrona metoder och icke-säkrade inloggnings uppgifter för att förenkla orsaker.
@@ -156,8 +156,8 @@ Med formulär tolken kan du skapa två olika klient typer. Det första `FormReco
 `FormRecognizerClient` tillhandahåller åtgärder för:
 
 - Igenkänning av formulär fält och innehåll, med anpassade modeller utbildade för att identifiera dina anpassade formulär.  Dessa värden returneras i en `RecognizedForm` objekt samling. Se exempel [analysera anpassade formulär](#analyze-forms-with-a-custom-model).
-- Igenkänning av formulär innehåll, inklusive tabeller, rader och ord, utan att behöva träna en modell.  Formulär innehåll returneras i en `FormPage` objekt samling. Se exempel på att [identifiera formulär innehåll](#recognize-form-content).
-- Identifiera vanliga fält från USA-kvitton med en förtränad kvitto modell på formulär igenkännings tjänsten.  Dessa fält och meta-data returneras i en `RecognizedForm` objekt samling. Se exempel som [identifierar kvitton](#recognize-receipts).
+- Igenkänning av formulär innehåll, inklusive tabeller, rader och ord, utan att behöva träna en modell.  Formulär innehåll returneras i en `FormPage` objekt samling. Se exempel [analys av layout](#analyze-layout).
+- Identifiera vanliga fält från USA-kvitton med en förtränad kvitto modell på formulär igenkännings tjänsten.  Dessa fält och meta-data returneras i en `RecognizedForm` objekt samling. Se exempel på att [analysera inleveranser](#analyze-receipts).
 
 ### <a name="formtrainingclient"></a>FormTrainingClient
 
@@ -177,17 +177,17 @@ De här kodfragmenten visar hur du utför följande uppgifter med formulär tolk
 
 #### <a name="version-20"></a>[version 2,0](#tab/ga)
 * [Autentisera klienten](#authenticate-the-client)
-* [Identifiera formulär innehåll](#recognize-form-content)
-* [Identifiera kvitton](#recognize-receipts)
+* [Analysera layout](#analyze-layout)
+* [Analysera kvitton](#analyze-receipts)
 * [Träna en anpassad modell](#train-a-custom-model)
 * [Analysera formulär med en anpassad modell](#analyze-forms-with-a-custom-model)
 * [Hantera dina anpassade modeller](#manage-your-custom-models)
 #### <a name="version-21-preview"></a>[version 2,1 Preview](#tab/preview)
 * [Autentisera klienten](#authenticate-the-client)
-* [Identifiera formulär innehåll](#recognize-form-content)
-* [Identifiera kvitton](#recognize-receipts)
-* [Identifiera visitkort](#recognize-business-cards)
-* [Identifiera fakturor](#recognize-invoices)
+* [Analysera layout](#analyze-layout)
+* [Analysera kvitton](#analyze-receipts)
+* [Analysera visitkort](#analyze-business-cards)
+* [Analysera fakturor](#analyze-invoices)
 * [Träna en anpassad modell](#train-a-custom-model)
 * [Analysera formulär med en anpassad modell](#analyze-forms-with-a-custom-model)
 * [Hantera dina anpassade modeller](#manage-your-custom-models)
@@ -200,7 +200,7 @@ Lägg till följande kod högst upp i **huvud** metoden. Här ska du autentisera
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_auth)]
 
-## <a name="recognize-form-content"></a>Identifiera formulär innehåll
+## <a name="analyze-layout"></a>Analysera layout
 
 Du kan använda formulär igenkänning för att identifiera tabeller, rader och ord i dokument, utan att behöva träna en modell.
 
@@ -233,7 +233,7 @@ Cell has text $89,024.34.
 Cell has text ET.
 ```
 
-## <a name="recognize-receipts"></a>Identifiera kvitton
+## <a name="analyze-receipts"></a>Analysera kvitton
 
 Det här avsnittet visar hur du identifierar och extraherar vanliga fält från amerikanska kvitton med hjälp av en förtränad kvitto modell.
 
@@ -269,7 +269,7 @@ Quantity: null, confidence: 0.927s]
 Total Price: null, confidence: 0.93
 ```
 
-## <a name="recognize-business-cards"></a>Identifiera visitkort
+## <a name="analyze-business-cards"></a>Analysera visitkort
 
 #### <a name="version-20"></a>[version 2,0](#tab/ga)
 
@@ -293,7 +293,7 @@ Det returnerade värdet är en samling **RecognizedForm** -objekt: ett för varj
 
 ---
 
-## <a name="recognize-invoices"></a>Identifiera fakturor
+## <a name="analyze-invoices"></a>Analysera fakturor
 
 #### <a name="version-20"></a>[version 2,0](#tab/ga)
 

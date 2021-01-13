@@ -9,18 +9,18 @@ ms.subservice: overview
 ms.date: 11/18/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7f0ca83c194aae6f4a8d04d70c2d4f3746ad2ca5
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 828f37030ae567cacbaad25849b7ba24c561c20c
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96446712"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132774"
 ---
 # <a name="azure-synapse-analytics-terminology"></a>Azure Synapse Analytics-terminologi
 
 Det här dokumentet vägleder dig genom de grundläggande begreppen i Azure Synapse Analytics.
 
-## <a name="basics"></a>Grundläggande inställningar
+## <a name="basics"></a>Grunder
 
 En **Synapse-arbetsyta** är en skydds bara samarbets gränser för att utföra molnbaserad företags analys i Azure. En arbets yta distribueras i en angiven region och har ett associerat ADLS Gen2-konto och fil system (för lagring av temporära data). En arbets yta är under en resurs grupp.
 
@@ -38,7 +38,7 @@ I Synapse Studio kan du arbeta med SQL-pooler genom att skapa och köra **SQL-sk
 
 ## <a name="apache-spark-for-synapse"></a>Apache Spark för Synapse
 
-Om du vill använda Spark Analytics skapar du och använder **Server lös Apache Spark pooler** på din Synapse-arbetsyta. När du börjar använda en spark-pool skapar arbets ytorna en **Spark-session** för att hantera resursernas assosociated med den sessionen. 
+Om du vill använda Spark Analytics skapar du och använder **Server lös Apache Spark pooler** på din Synapse-arbetsyta. När du börjar använda en spark-pool skapar arbets ytorna en **Spark-session** för att hantera de resurser som är kopplade till sessionen. 
 
 Det finns två sätt i Synapse att använda Spark:
 * **Spark-anteckningsböcker** för data vetenskap och-teknik använder Scala, PySpark, C# och SparkSQL
@@ -56,7 +56,7 @@ Pipelines är hur Azure Synapse tillhandahåller data integrering – så att du
 
 ## <a name="next-steps"></a>Nästa steg
 
-* [Kom igång med Azure Synapse Analytics](get-started.md)
+* [Komma igång med Azure Synapse Analytics](get-started.md)
 * [Skapa en arbetsyta](quickstart-create-workspace.md)
 * [Använda en serverlös SQL-pool](quickstart-sql-on-demand.md)
 

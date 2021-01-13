@@ -6,12 +6,12 @@ ms.date: 03/14/2019
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 6b578cd03daa6e996a69c03afd327097d6123045
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 3144633f76d1c4738f2323f1e047d6f32329909f
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97607906"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98133250"
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java-sdk"></a>Fel sökning och frågor och svar för Application Insights för Java SDK
 
@@ -23,7 +23,7 @@ ms.locfileid: "97607906"
 ## <a name="build-errors"></a>Build-fel
 **I Sol förmörkelse eller IntelliJ-idén, när jag lägger till Application Insights SDK via maven eller Gradle, får jag skapa eller kontroll Summa verifierings fel.**
 
-* Om beroende `<version>` elementet använder ett mönster med jokertecken (t. ex. (maven) `<version>[2.0,)</version>` eller (Gradle) `version:'2.0.+'` ), kan du prova att ange en särskild version i stället `2.0.1` . Se [viktig information](https://github.com/Microsoft/ApplicationInsights-Java/releases) för den senaste versionen.
+* Om beroende `<version>` elementet använder ett mönster med jokertecken (t. ex. (maven) `<version>[2.0,)</version>` eller (Gradle) `version:'2.+'` ), kan du prova att ange en särskild version i stället `2.6.2` .
 
 ## <a name="no-data"></a>Inga data
 **Jag har lagt till Application Insights lyckades och körde appen, men jag har aldrig sett data i portalen.**
@@ -36,7 +36,7 @@ ms.locfileid: "97607906"
 * [Aktivera loggning](#debug-data-from-the-sdk) genom att lägga till ett `<SDKLogger />` element under rotnoden i ApplicationInsights.xml-filen (i mappen resurser i projektet) och Sök efter poster som föregås av AI: info/warn/Error för eventuella misstänkta loggar. 
 * Kontrol lera att rätt ApplicationInsights.xml fil har lästs in av Java SDK genom att titta på konsolens utgående meddelanden för en "konfigurations fil" har hittats "-instruktionen.
 * Om det inte går att hitta konfigurations filen kontrollerar du meddelandena för att se var konfigurations filen genomsöks och kontrollerar att ApplicationInsights.xml finns på någon av dessa Sök platser. Som en tumregel kan du placera konfigurations filen nära Application Insights SDK-jar v7. Exempel: i Tomcat kan detta innebära mappen WEB-INF/classes. Under utvecklingen kan du placera ApplicationInsights.xml i mappen resurser i ditt webb projekt.
-* Titta även på [sidan med GitHub-problem](https://github.com/Microsoft/ApplicationInsights-Java/issues) för kända problem med SDK: n.
+* Titta även på [sidan med GitHub-problem](https://github.com/microsoft/ApplicationInsights-Java/issues) för kända problem med SDK: n.
 * Se till att använda samma version av Application Insights Core, webb, agent och logg tillägg för att undvika eventuella problem med versions konflikter.
 
 #### <a name="i-used-to-see-data-but-it-has-stopped"></a>Jag har använt för att se data, men har stoppats
@@ -194,7 +194,7 @@ Application Insights använder `org.apache.http` . Detta finns i Application Ins
 
 ## <a name="get-help"></a>Få hjälp
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/ms-application-insights)
-* [Fil ett problem på GitHub](https://github.com/Microsoft/ApplicationInsights-Java/issues)
+* [Fil ett problem på GitHub](https://github.com/microsoft/ApplicationInsights-Java/issues)
 
 <!--Link references-->
 

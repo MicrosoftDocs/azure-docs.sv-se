@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 03/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: 8c9beaca0fb3ee7881559ffcc955f171bc2ddd7b
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 7eb8010853ba370f4502b6bc155c6a098e64965b
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94886455"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98133454"
 ---
 # <a name="version-and-track-datasets-in-experiments"></a>Version och spårning av data uppsättningar i experiment
 
@@ -166,9 +166,7 @@ Här följer några scenarier där dina data spåras som en **indata-datauppsät
 Här följer några scenarier där dina data spåras som en **data uppsättning för utdata**.  
 
 * Skicka ett `OutputFileDatasetConfig` objekt via antingen `outputs` parametern eller `arguments` när du skickar en experiment körning. `OutputFileDatasetConfig` objekt kan också användas för att bevara data mellan pipeline-steg. Se [Flytta data mellan ml steg för pipeline.](how-to-move-data-in-out-of-pipelines.md)
-    > [!TIP]
-    > [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) är en offentlig för hands versions klass som innehåller [experiment](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#&preserve-view=truestable-vs-experimental) för hands versions funktioner som kan ändras när som helst.
-
+  
 * Registrera en data uppsättning i skriptet. I det här scenariot visas namnet som tilldelats data uppsättningen när du registrerade den till arbets ytan. I följande exempel `training_ds` är det namnet som skulle visas.
 
     ```Python

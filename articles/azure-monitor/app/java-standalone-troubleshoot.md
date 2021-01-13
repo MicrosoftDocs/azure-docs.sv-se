@@ -4,12 +4,12 @@ description: Lär dig hur du felsöker Java-agenten för Azure Monitor Applicati
 ms.topic: conceptual
 ms.date: 11/30/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 14644f76b7de53b2b6ee3f04131daaf59267a5ff
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 54bf2440dff20fc757f37e3f31a53c57ebd59120
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97507650"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98133199"
 ---
 # <a name="troubleshooting-guide-azure-monitor-application-insights-for-java"></a>Fel söknings guide: Azure Monitor Application Insights för Java
 
@@ -20,6 +20,10 @@ I den här artikeln tar vi upp några vanliga problem som kan uppstå vid instru
 Som standard skapar Java 3,0-agenten för Application Insights en loggfil med namnet `applicationinsights.log` i samma katalog som innehåller `applicationinsights-agent-3.0.0.jar` filen.
 
 Den här logg filen är den första platsen där du kan söka efter tips till eventuella problem som kan uppstå.
+
+## <a name="jvm-fails-to-start"></a>JVM kan inte startas
+
+Om JVM inte kan starta med "Det gick inte att öppna ZIP-filen eller JAR-manifestet", kan du försöka hämta om agentens jar-fil på nytt, eftersom den kan ha skadats under fil överföringen.
 
 ## <a name="upgrade-from-the-application-insights-java-2x-sdk"></a>Uppgradera från Application Insights Java 2. x SDK
 

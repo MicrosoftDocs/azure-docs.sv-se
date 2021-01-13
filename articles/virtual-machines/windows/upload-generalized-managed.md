@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 12/12/2019
 ms.author: cynthn
-ms.openlocfilehash: 94db8ce46fc240a6c48c0919b6d2c2cd148522ac
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 6e3333ac780cfca02a6ce4f28d2b0e312016f713
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91976058"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131516"
 ---
 # <a name="upload-a-generalized-vhd-and-use-it-to-create-new-vms-in-azure"></a>Ladda upp en generaliserad virtuell hårddisk och använda den för att skapa nya virtuella datorer i Azure
 
@@ -38,13 +38,15 @@ Kontrol lera att de Server roller som körs på datorn stöds av Sysprep. Mer in
 > 
 
 1. Logga in på den virtuella Windows-datorn.
-2. Öppna Kommandotolken som administratör. Ändra katalogen till%WINDIR%\system32\sysprep och kör sedan `sysprep.exe` .
-3. I dialog rutan **system förberedelse verktyg** väljer du **Använd OOBE (system out-of-Box Experience)** och kontrollerar att kryss rutan **generalize** är aktive rad.
-4. För **avslutnings alternativ**väljer du **Stäng**av.
-5. Välj **OK**.
+1. Öppna Kommandotolken som administratör. 
+1. Ta bort Panther-katalogen (C:\Windows\Panther).
+1. Ändra katalogen till%WINDIR%\system32\sysprep och kör sedan `sysprep.exe` .
+1. I dialog rutan **system förberedelse verktyg** väljer du **Använd OOBE (system out-of-Box Experience)** och kontrollerar att kryss rutan **generalize** är aktive rad.
+1. För **avslutnings alternativ** väljer du **Stäng** av.
+1. Välj **OK**.
    
     ![Starta Sysprep](./media/upload-generalized-managed/sysprepgeneral.png)
-6. När Sysprep har slutförts stängs den virtuella datorn av. Starta inte om den virtuella datorn.
+1. När Sysprep har slutförts stängs den virtuella datorn av. Starta inte om den virtuella datorn.
 
 
 ## <a name="upload-the-vhd"></a>Ladda upp den virtuella hård disken 
@@ -93,7 +95,7 @@ $image = New-AzImage `
 
 ## <a name="create-the-vm"></a>Skapa den virtuella datorn
 
-Nu när du har en avbildning kan du skapa en eller flera nya virtuella datorer från avbildningen. I det här exemplet skapas en virtuell dator med namnet *myVM* från *avbildningen*i *myResourceGroup*.
+Nu när du har en avbildning kan du skapa en eller flera nya virtuella datorer från avbildningen. I det här exemplet skapas en virtuell dator med namnet *myVM* från *avbildningen* i *myResourceGroup*.
 
 
 ```powershell

@@ -1,7 +1,7 @@
 ---
-title: Justera dina modellers egenskaper
+title: Inställning av en modell
 titleSuffix: Azure Machine Learning
-description: Justera de breda parametrarna för djup inlärning och maskin inlärnings modeller med hjälp av Azure Machine Learning.
+description: Automatisera inställningen av en parameter för djup inlärning och maskin inlärnings modeller med Azure Machine Learning.
 ms.author: swatig
 author: swatig007
 ms.reviewer: sgilley
@@ -11,14 +11,14 @@ ms.subservice: core
 ms.date: 03/30/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: a1a0b89dee5a6d57e6f317c5f6c8b61ffeda3c33
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: e9f9f73a8e0dbc851efdba07bf1e103f58ae9e75
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97029081"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98133869"
 ---
-# <a name="tune-hyperparameters-for-your-model-with-azure-machine-learning"></a>Justera dina modellers egenskaper med Azure Machine Learning
+# <a name="hyperparameter-tuning-a-model-with-azure-machine-learning"></a>Inställning av en modell med Azure Machine Learning
 
 
 Automatisera effektiv inställning av HyperDrive med hjälp av Azure Machine Learning [-paket](/python/api/azureml-train-core/azureml.train.hyperdrive?preserve-view=true&view=azure-ml-py). Lär dig hur du utför de steg som krävs för att justera de båda parametrarna med [Azure Machine Learning SDK](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py):
@@ -31,11 +31,11 @@ Automatisera effektiv inställning av HyperDrive med hjälp av Azure Machine Lea
 1. Visualisera inlärnings körningar
 1. Välj den bästa konfigurationen för din modell
 
-## <a name="what-are-hyperparameters"></a>Vad är mina parametrar?
+## <a name="what-is-hyperparameter-tuning"></a>Vad är en inställning för min parameter?
 
 Det **finns justerbara parametrar som** gör det möjligt att styra modell inlärnings processen. Med neurala-nätverk bestämmer du till exempel antalet dolda lager och antalet noder i varje lager. Modell prestanda beror på mycket olika grundparametrar.
 
- **Justering** av min parameter är en process för att hitta konfigurationen av de egenskaper som ger bästa prestanda. Processen är vanligt vis kostsam och manuell.
+ Inställningen för en **parameter**, som även kallas optimering av en **parameter**, är en process för att hitta konfigurationen av de egenskaper som resulterar i bästa prestanda. Processen är vanligt vis kostsam och manuell.
 
 Med Azure Machine Learning kan du automatisera inställningen för att justera och köra experiment parallellt för att effektivt optimera de båda parametrarna.
 
@@ -46,7 +46,7 @@ Justera disponeringsparametrarna genom att utforska intervallet av de värden so
 
 Disponeringsparametrarna kan vara diskreta eller kontinuerliga och har en fördelning av värden som beskrivs av ett [parameter uttryck](/python/api/azureml-train-core/azureml.train.hyperdrive.parameter_expressions?preserve-view=true&view=azure-ml-py).
 
-### <a name="discrete-hyperparameters"></a>Diskreta egenskaper 
+### <a name="discrete-hyperparameters"></a>Diskreta egenskaper
 
 Diskreta egenskaper anges som en `choice` mellan diskreta värden. `choice` kan vara:
 
@@ -296,7 +296,7 @@ max_concurrent_runs=4
 
 Den här koden konfigurerar experimentet för inställning av parameter till att använda maximalt 20 Totalt antal körningar som kör fyra konfigurationer i taget.
 
-## <a name="configure-experiment"></a>Konfigurera experiment
+## <a name="configure-hyperparameter-tuning-experiment"></a>Konfigurera ett experiment med inställning av parameter
 
 Ange följande om du vill [Konfigurera ett experiment för inställning av en parameter](/python/api/azureml-train-core/azureml.train.hyperdrive.hyperdriverunconfig?preserve-view=true&view=azure-ml-py) :
 * Det definierade Sök utrymmet för den här ytan
@@ -323,7 +323,7 @@ hd_config = HyperDriveConfig(run_config=src,
                              max_concurrent_runs=4)
 ```
 
-## <a name="submit-experiment"></a>Skicka experiment
+## <a name="submit-hyperparameter-tuning-experiment"></a>Skicka inställnings experiment för för-parameter
 
 När du har definierat konfigurationen för konfiguration av den egna parametern, [skicka in experimentet](/python/api/azureml-core/azureml.core.experiment%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truesubmit-config--tags-none----kwargs-):
 
@@ -333,7 +333,7 @@ experiment = Experiment(workspace, experiment_name)
 hyperdrive_run = experiment.submit(hd_config)
 ```
 
-## <a name="warm-start-your-hyperparameter-tuning-experiment-optional"></a>Varm kom igång med ditt inställnings experiment för en parameter (valfritt)
+## <a name="warm-start-hyperparameter-tuning-optional"></a>Varm starts justering för den här parametern (valfritt)
 
 Att hitta bästa möjliga parameter värden för din modell kan vara en iterativ process. Du kan återanvända kunskap från de fem föregående körningarna för att påskynda justeringen av en parameter.
 
@@ -380,7 +380,7 @@ hd_config = HyperDriveConfig(run_config=src,
                              max_concurrent_runs=4)
 ```
 
-## <a name="visualize-experiment"></a>Visualisera experiment
+## <a name="visualize-hyperparameter-tuning-runs"></a>Visualisera justerings körningar för den här parametern
 
 Använd [widgeten Notebook](/python/api/azureml-widgets/azureml.widgets.rundetails?preserve-view=true&view=azure-ml-py) för att visualisera förloppet för din utbildning. Följande kodfragment visualiserar alla dina för inställnings justeringar på en plats i en Jupyter Notebook:
 
@@ -391,15 +391,15 @@ RunDetails(hyperdrive_run).show()
 
 Den här koden visar en tabell med information om inlärnings körningarna för var och en av konfigurationerna för de olika parametrarna.
 
-![justerings tabell för grundparameter](./media/how-to-tune-hyperparameters/HyperparameterTuningTable.png)
+![justerings tabell för grundparameter](./media/how-to-tune-hyperparameters/hyperparameter-tuning-table.png)
 
 Du kan också visualisera prestanda för var och en av körningarna när inlärningen fortskrider. 
 
-![ritytans justerings område](./media/how-to-tune-hyperparameters/HyperparameterTuningPlot.png)
+![ritytans justerings område](./media/how-to-tune-hyperparameters/hyperparameter-tuning-plot.png)
 
 Du kan visuellt identifiera korrelationen mellan prestanda och värden för enskilda egenskaper med hjälp av en parallell Koordinats kurva. 
 
-[![parametrar för att justera parallella koordinater](./media/how-to-tune-hyperparameters/HyperparameterTuningParallelCoordinates.png)](media/how-to-tune-hyperparameters/hyperparameter-tuning-parallel-coordinates-expanded.png)
+[![parametrar för att justera parallella koordinater](./media/how-to-tune-hyperparameters/hyperparameter-tuning-parallel-coordinates.png)](media/how-to-tune-hyperparameters/hyperparameter-tuning-parallel-coordinates-expanded.png)
 
 Du kan också visualisera alla dina inställnings justeringar för din parameter i Azure-webbportalen. Mer information om hur du visar ett experiment i portalen finns i [så här spårar du experiment](how-to-monitor-view-training-logs.md#view-the-experiment-in-the-web-portal).
 
@@ -420,6 +420,7 @@ print('\n batch size:',parameter_values[7])
 ```
 
 ## <a name="sample-notebook"></a>Exempel på Notebook
+
 Referera till träna-Real-parameter-* Notebooks i den här mappen:
 * [How-to-use-azureml/ml-Framework](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks)
 

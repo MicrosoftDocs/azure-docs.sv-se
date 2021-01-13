@@ -12,18 +12,18 @@ ms.date: 09/29/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: bild igenkänning, app för bild igenkänning, anpassad vision
-ms.openlocfilehash: b57720b9d8fb05a605b9eace279b70b060c18450
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d644c323cb60e5ef9a89670cd9b828e3e9676299
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91596875"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131703"
 ---
 # <a name="quickstart-build-a-classifier-with-the-custom-vision-website"></a>Snabb start: utveckla en klassificerare med Custom Vision webbplats
 
 I den här snabb starten får du lära dig hur du använder Custom Vision webbplats för att skapa en bild klassificerings modell. När du har skapat en modell kan du testa den med nya avbildningar och sedan integrera den i din egen bild igenkännings app.
 
-Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/cognitive-services/) innan du börjar.
+Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/free/cognitive-services/) innan du börjar.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -35,12 +35,12 @@ Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto]
 
 ## <a name="create-a-new-project"></a>Skapa ett nytt projekt
 
-Navigera till [Custom vision webb sida](https://customvision.ai) i webbläsaren och välj __Logga__in. Logga in med samma konto som du använde för att logga in på Azure Portal.
+Navigera till [Custom vision webb sida](https://customvision.ai) i webbläsaren och välj __Logga__ in. Logga in med samma konto som du använde för att logga in på Azure Portal.
 
 ![Bild av inloggnings Sidan](./media/browser-home.png)
 
 
-1. Välj **nytt projekt**för att skapa ditt första projekt. Dialog rutan **Skapa nytt projekt** visas.
+1. Välj **nytt projekt** för att skapa ditt första projekt. Dialog rutan **Skapa nytt projekt** visas.
 
     ![Dialog rutan nytt projekt innehåller fält för namn, beskrivning och domäner.](./media/getting-started-build-a-classifier/new-project.png)
 
@@ -49,11 +49,11 @@ Navigera till [Custom vision webb sida](https://customvision.ai) i webbläsaren 
    > [!NOTE]
    > Om ingen resurs grupp är tillgänglig bekräftar du att du har loggat in på [customvision.AI](https://customvision.ai) med samma konto som du använde för att logga in på [Azure Portal](https://portal.azure.com/). Bekräfta också att du har valt samma "katalog" på Custom Vision webbplats som katalog i Azure Portal där dina Custom Vision-resurser finns. På båda platserna kan du välja din katalog från menyn för List menyn i det övre högra hörnet på skärmen. 
 
-1. Välj __klassificering__ under __projekt typer__. Välj antingen **multietikett** eller **Multiklass**under __klassificerings typer__, beroende på ditt användnings fall. Klassificering med flera etiketter använder valfritt antal taggar i en bild (noll eller flera), medan klassificering av flera klasser sorterar bilder i enskilda kategorier (varje bild som du skickar kommer att sorteras i den mest sannolika taggen). Du kan ändra klassificerings typen senare om du vill.
+1. Välj __klassificering__ under __projekt typer__. Välj antingen **multietikett** eller **Multiklass** under __klassificerings typer__, beroende på ditt användnings fall. Klassificering med flera etiketter använder valfritt antal taggar i en bild (noll eller flera), medan klassificering av flera klasser sorterar bilder i enskilda kategorier (varje bild som du skickar kommer att sorteras i den mest sannolika taggen). Du kan ändra klassificerings typen senare om du vill.
 
 1. Välj sedan en av de tillgängliga domänerna. Varje domän optimerar klassificeraren för vissa typer av bilder, enligt beskrivningen i följande tabell. Du kommer att kunna ändra domänen senare om du vill.
 
-    |Domän|Syfte|
+    |Domain|Syfte|
     |---|---|
     |__Allmänna__| Optimerad för ett brett utbud av bild klassificerings aktiviteter. Om ingen av de andra domänerna är lämpliga, eller om du är osäker på vilken domän du väljer, väljer du den allmänna domänen. |
     |__Kost__|Optimerad för foton av rätter på samma sätt som du ser dem på en restaurang meny. Om du vill klassificera fotografier av enskilda frukter eller grönsaker använder du livsmedels domänen.|

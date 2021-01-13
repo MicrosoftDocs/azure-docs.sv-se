@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 02/05/2020
-ms.openlocfilehash: cfb83c4ec9972fda3813d414583bc73edeef3229
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.date: 01/12/2021
+ms.openlocfilehash: ff83e559919a836208faae4eae4a5f992534b6cb
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93285978"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98134168"
 ---
 # <a name="apache-ambari-usage-in-azure-hdinsight"></a>Apache Ambari-användning i Azure HDInsight
 
@@ -65,6 +65,15 @@ För alla kluster med antalet arbetsnoder som är större än 16 när klustret s
 Starta/stoppa aldrig Ambari-Server-eller Ambari-Agent-tjänsterna manuellt, om du inte försöker starta om tjänsten för att lösa problemet. Om du vill framtvinga en redundansväxling kan du starta om den aktiva huvudnoden.
 
 Ändra aldrig några konfigurationsfiler manuellt på alla klusternoder, låt Ambari-ANVÄNDARGRÄNSSNITTET göra jobbet åt dig.
+
+## <a name="property-values-in-esp-clusters"></a>Egenskaps värden i ESP-kluster
+
+I HDInsight 4,0 Enterprise Security Package-kluster använder du pipes i `|` stället för kommatecken som variabla avgränsare. Ett exempel på detta visas nedan:
+
+```
+Property Key: hive.security.authorization.sqlstd.confwhitelist.append
+Property Value: environment|env|dl_data_dt
+```
 
 ## <a name="next-steps"></a>Nästa steg
 

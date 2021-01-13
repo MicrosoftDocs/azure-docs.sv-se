@@ -3,12 +3,12 @@ title: Begränsningar för resurs namn
 description: Visar regler och begränsningar för namngivning av Azure-resurser.
 ms.topic: conceptual
 ms.date: 12/29/2020
-ms.openlocfilehash: edcf3f09b57ed7628611c482effddb210ef8e456
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: 59babd9298fdca96b450b2dc67832c86c043c49c
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97814388"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132757"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Namngivningsregler och begränsningar för Azure-resurser
 
@@ -83,7 +83,7 @@ I följande tabeller refererar termen alfanumeriskt till:
 > | Entitet | Omfång | Längd | Giltiga tecken |
 > | --- | --- | --- | --- |
 > | hålls | tilldelnings omfång | 1–90 | Alfanumeriska tecken, punkter, under streck, bindestreck och parenteser.<br><br>Kan inte sluta med punkt. |
-> | policyAssignments | tilldelnings omfång | 1-128 visnings namn<br><br>1-64 resurs namn | Visnings namnet får innehålla tecken.<br><br>Resurs namnet får inte innehålla `%` och får inte sluta med punkt eller blank steg. |
+> | policyAssignments | tilldelnings omfång | 1-128 visnings namn<br><br>1-64 resurs namn<br><br>1-24 resurs namn i hanterings gruppens omfång | Visnings namnet får innehålla tecken.<br><br>Resurs namnet får inte innehålla `%` och får inte sluta med punkt eller blank steg. |
 > | policyDefinitions | definitions område | 1-128 visnings namn<br><br>1-64 resurs namn | Visnings namnet får innehålla tecken.<br><br>Resurs namnet får inte innehålla `%` och får inte sluta med punkt eller blank steg. |
 > | policySetDefinitions | definitions område | 1-128 visnings namn<br><br>1-64 resurs namn<br><br>1-24 resurs namn i hanterings gruppens omfång | Visnings namnet får innehålla tecken.<br><br>Resurs namnet får inte innehålla `%` och får inte sluta med punkt eller blank steg.  |
 

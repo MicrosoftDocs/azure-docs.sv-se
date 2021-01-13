@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
-ms.date: 05/04/2020
-ms.openlocfilehash: 2d6d18cc73c02d3139074555fdd22a40c797ce40
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.date: 01/12/2021
+ms.openlocfilehash: 429f0b2ffe486279a1c429fc7a153e6528642f54
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97825147"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131669"
 ---
 # <a name="plan-a-virtual-network-for-azure-hdinsight"></a>Planera ett virtuellt nätverk för Azure HDInsight
 
@@ -51,7 +51,8 @@ Följande är de frågor som du måste besvara när du planerar att installera H
 Använd stegen i det här avsnittet för att upptäcka hur du lägger till en ny HDInsight till en befintlig Azure-Virtual Network.
 
 > [!NOTE]  
-> Det går inte att lägga till ett befintligt HDInsight-kluster i ett virtuellt nätverk.
+> - Det går inte att lägga till ett befintligt HDInsight-kluster i ett virtuellt nätverk.
+> - Det virtuella nätverket och det kluster som skapas måste vara i samma prenumeration.
 
 1. Använder du en klassisk distributions modell eller Resource Manager-distribution för det virtuella nätverket?
 

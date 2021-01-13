@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 45654d55ac07bc9056a41cacba6f8f5890c56580
-ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
+ms.openlocfilehash: 6520c1e326dc95584030d3187fdaaaa7e06c498a
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97808648"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132294"
 ---
 > [!IMPORTANT]
 > * Koden i den här artikeln använder synkrona metoder och icke-säkrade inloggnings uppgifter för att förenkla orsaker. Se referens dokumentationen nedan. 
@@ -102,8 +102,8 @@ Med formulär tolken kan du skapa två olika klient typer. Det första `FormReco
 Dessa kodfragment visar hur du utför följande uppgifter med formulär tolkens klient bibliotek för Java Script:
 
 * [Autentisera klienten](#authenticate-the-client)
-* [Identifiera formulär innehåll](#recognize-form-content)
-* [Identifiera kvitton](#recognize-receipts)
+* [Analysera layout](#analyze-layout)
+* [Analysera kvitton](#analyze-receipts)
 * [Träna en anpassad modell](#train-a-custom-model)
 * [Analysera formulär med en anpassad modell](#analyze-forms-with-a-custom-model)
 * [Hantera dina anpassade modeller](#manage-your-custom-models)
@@ -126,7 +126,7 @@ Du måste också lägga till referenser till URL: erna för din utbildning och t
 * Använd exemplet från och kvitto bilder som ingår i exemplen nedan (även tillgängligt på [GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/test-assets)) eller så kan du använda ovanstående steg för att hämta SAS-URL: en för ett enskilt dokument i Blob Storage. 
 
 
-## <a name="recognize-form-content"></a>Identifiera formulär innehåll
+## <a name="analyze-layout"></a>Analysera layout
 
 Du kan använda formulär igenkänning för att identifiera tabeller, rader och ord i dokument, utan att behöva träna en modell. Använd-metoden för att identifiera innehållet i en fil vid en specifik URI `beginRecognizeContentFromUrl` .
 
@@ -152,7 +152,7 @@ cell [1,3] has text $56,651.49
 cell [1,5] has text PT
 ```
 
-## <a name="recognize-receipts"></a>Identifiera kvitton
+## <a name="analyze-receipts"></a>Analysera kvitton
 
 Det här avsnittet visar hur du identifierar och extraherar vanliga fält från amerikanska kvitton med hjälp av en förtränad kvitto modell.
 

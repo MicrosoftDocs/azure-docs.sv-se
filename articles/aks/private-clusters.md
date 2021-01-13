@@ -4,12 +4,12 @@ description: Lär dig hur du skapar ett privat Azure Kubernetes service-kluster 
 services: container-service
 ms.topic: article
 ms.date: 7/17/2020
-ms.openlocfilehash: 696ba785abb317a29de38160440dc06487ff5bca
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 87966a9bd2f83916998a724fc6c1c26a91609665
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97673893"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98133403"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>Skapa ett privat Azure Kubernetes service-kluster
 
@@ -24,7 +24,7 @@ Privat kluster är tillgängligt i offentliga regioner, Azure Government och Azu
 > [!NOTE]
 > Azure Government-platser stöds, men US Gov, Texas stöds inte för närvarande på grund av stöd för privata länkar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * Azure CLI-version 2.2.0 eller senare
 * Tjänsten Private Link stöds endast på standard Azure Load Balancer. Basic-Azure Load Balancer stöds inte.  
@@ -68,17 +68,21 @@ Där `--enable-private-cluster` är en obligatorisk flagga för ett privat klust
 
 ### <a name="configure-private-dns-zone"></a>Konfigurera Privat DNS zon
 
-Standardvärdet är "system", om argumentet--Private-DNS-Zone utelämnas. AKS skapar en Privat DNS zon i resurs gruppen för noden. Att skicka parametern "ingen" innebär att AKS inte skapar någon Privat DNS zon.  Detta är beroende av att ta med din egen DNS-server och konfigurationen av DNS-matchningen för det privata fullständiga domän namnet.  Om du inte konfigurerar DNS-matchning kan DNS bara matchas inom agentens noder och kan orsaka kluster problem efter distributionen.
+Följande parametrar kan utnyttjas för att konfigurera Privat DNS zon.
+
+1. "System" är standardvärdet. Om argumentet--Private-DNS-Zone utelämnas, kommer AKS att skapa en Privat DNS zon i resurs gruppen för noden.
+2. "Ingen" innebär att AKS inte skapar någon Privat DNS zon.  Detta kräver att du tar med din egen DNS-server och konfigurerar DNS-matchning för det privata fullständiga domän namnet.  Om du inte konfigurerar DNS-matchning kan DNS bara matchas inom agentens noder och kan orsaka kluster problem efter distributionen.
+3. "Namn på anpassad privat DNS-zon" ska vara i det här formatet för Azures globala moln: `privatelink.<region>.azmk8s.io` . Användaren som tilldelats identiteten eller tjänstens huvud namn måste tilldelas minst `private dns zone contributor` en roll till den anpassade privata DNS-zonen.
 
 ## <a name="no-private-dns-zone-prerequisites"></a>Inga Privat DNS zon krav
-Ingen PrivateDNSZone
-* Azure CLI-version 0.4.67 eller senare
+
+* Azure CLI-version 0.4.71 eller senare
 * API-version 2020-11-01 eller senare
 
 ## <a name="create-a-private-aks-cluster-with-private-dns-zone"></a>Skapa ett privat AKS-kluster med Privat DNS zon
 
 ```azurecli-interactive
-az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster --private-dns-zone [none|system]
+az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster --private-dns-zone [none|system|custom private dns zone]
 ```
 ## <a name="options-for-connecting-to-the-private-cluster"></a>Alternativ för att ansluta till det privata klustret
 
@@ -90,7 +94,7 @@ API-serverns slut punkt har ingen offentlig IP-adress. Om du vill hantera API-se
 
 Att skapa en virtuell dator i samma VNET som AKS-klustret är det enklaste alternativet.  Express Route och VPN lägger till kostnader och kräver ytterligare nätverks komplexitet.  Peering av virtuella nätverk kräver att du planerar dina nätverks-CIDR-intervall för att se till att det inte finns några överlappande intervall.
 
-## <a name="virtual-network-peering"></a>Virtuell nätverkspeering
+## <a name="virtual-network-peering"></a>Peering för virtuella nätverk
 
 Som nämnts är virtuell nätverks-peering ett sätt att komma åt ditt privata kluster. Om du vill använda peering för virtuella nätverk måste du konfigurera en länk mellan det virtuella nätverket och den privata DNS-zonen.
     

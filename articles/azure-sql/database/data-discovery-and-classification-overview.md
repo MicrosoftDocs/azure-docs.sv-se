@@ -1,5 +1,5 @@
 ---
-title: Dataidentifiering och klassificering
+title: Data Discovery & Classification
 description: Data identifiering & klassificering för Azure SQL Database, Azure SQL-hanterad instans och Azure Synapse Analytics
 services: sql-database
 ms.service: sql-db-mi
@@ -13,14 +13,14 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 12/01/2020
 tags: azure-synapse
-ms.openlocfilehash: c3f1209c2c903399617bd60258cc152a6ce90b80
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: ece76f0017a72484f5c4e66b2ab8c7e71d32f1a7
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462078"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132094"
 ---
-# <a name="data-discovery--classification"></a>Dataidentifiering och klassificering
+# <a name="data-discovery--classification"></a>Data Discovery & Classification
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 Data identifierings & klassificeringen är inbyggd i Azure SQL Database, Azure SQL-hanterad instans och Azure Synapse Analytics. Den här funktionen ger avancerade funktioner för identifiering, klassificering, märkning och rapportering av känsliga data i databasen.
@@ -28,7 +28,7 @@ Data identifierings & klassificeringen är inbyggd i Azure SQL Database, Azure S
 Dina mest känsliga data kan omfatta affärs-, finans-, sjukvårds-eller personlig information. Identifiering och klassificering av dessa data kan spela en pivot-roll i din organisations informations skydds metod. Tjänsten kan fungera som infrastruktur inom följande områden:
 
 - Bidra till att uppfylla standarder för data sekretess och krav för regelefterlevnad.
-- Olika säkerhets scenarier, till exempel övervakning (granskning) och aviseringar om avvikande åtkomst till känsliga data.
+- Olika säkerhets scenarier, till exempel övervakning (granskning) åtkomst till känsliga data.
 - Kontrol lera åtkomst till och härdning av säkerheten för databaser som innehåller mycket känsliga data.
 
 > [!NOTE]

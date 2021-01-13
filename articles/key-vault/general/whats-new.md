@@ -7,14 +7,14 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: reference
-ms.date: 10/01/2020
+ms.date: 01/12/2020
 ms.author: mbaldwin
-ms.openlocfilehash: dbbde397ab235068ea90280da721e3e3dc38866a
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: ef2c42ae76dc5e1511494635904228a8b574d483
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92792369"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132196"
 ---
 # <a name="whats-new-for-azure-key-vault"></a>Vad är nytt för Azure Key Vault
 
@@ -37,7 +37,7 @@ För att stödja [mjuk borttagning nu på som standard](#soft-delete-on-by-defau
 
 ### <a name="soft-delete-on-by-default"></a>Mjuk borttagning är aktiverat som standard
 
-I slutet av 2020 **är den mjuka borttagningen aktive rad som standard för alla nyckel valv** , både nya och redan befintliga. Fullständig information om den här potentiellt viktiga ändringen, samt steg för att hitta berörda nyckel valv och uppdatera dem i förväg, finns i artikeln [mjuk borttagning aktive ras på alla nyckel valv](soft-delete-change.md).
+**Mjuk borttagning måste vara aktive rad för alla nyckel valv**, både nya och redan befintliga. Under de kommande månaderna kommer möjligheten att välja bort mjuk borttagning att vara föråldrad. Fullständig information om den här potentiellt viktiga ändringen, samt steg för att hitta berörda nyckel valv och uppdatera dem i förväg, finns i artikeln [mjuk borttagning aktive ras på alla nyckel valv](soft-delete-change.md).
 
 ### <a name="azure-tls-certificate-changes"></a>Ändringar i Azure TLS-certifikat
 

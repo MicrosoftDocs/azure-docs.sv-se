@@ -5,14 +5,14 @@ services: private-link
 author: mblanco77
 ms.service: private-link
 ms.topic: conceptual
-ms.date: 06/18/2020
+ms.date: 01/12/2021
 ms.author: allensu
-ms.openlocfilehash: 1c296b157fbac1e4c8d3fefb2b8cc09ff2ccc7a8
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 859768345c2b88e38e09d897391ac8a3501fd901
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96620604"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98134083"
 ---
 # <a name="azure-private-endpoint-dns-configuration"></a>DNS-konfiguration för privat slutpunkt i Azure
 
@@ -68,7 +68,7 @@ För Azure-tjänster använder du de rekommenderade zon namnen enligt beskrivnin
 | Azure Backup (Microsoft. RecoveryServices/valv)/valv | privatelink. {region}. backup. windowsazure. com | {region}. backup. windowsazure. com |
 | Azure Event Hubs (Microsoft. EventHub/Namespaces)/namnrymd | privatelink.servicebus.windows.net | servicebus.windows.net |
 | Azure Service Bus (Microsoft. Service Bus/Namespaces)/namnrymd | privatelink.servicebus.windows.net | servicebus.windows.net |
-| Azure IoT Hub (Microsoft. Devices/IotHubs)/iotHub | privatelink.azure-devices.net | azure-devices.net |
+| Azure IoT Hub (Microsoft. Devices/IotHubs)/iotHub | privatelink.azure-devices.net<br/>privatelink.servicebus.windows.net<sup>1</sup> | azure-devices.net<br/>servicebus.windows.net |
 | Azure Relay (Microsoft. Relay/Namespaces)/namnrymd | privatelink.servicebus.windows.net | servicebus.windows.net |
 | Azure Event Grid (Microsoft. EventGrid/topics)/topic | privatelink.eventgrid.azure.net | eventgrid.azure.net |
 | Azure Event Grid (Microsoft. EventGrid/Domains)/Domain | privatelink.eventgrid.azure.net | eventgrid.azure.net |
@@ -83,6 +83,7 @@ För Azure-tjänster använder du de rekommenderade zon namnen enligt beskrivnin
 | Azure Data Factory (Microsoft. DataFactory/factors)/Portal |  privatelink.azure.com  |  azure.com  |
 | Azure cache för Redis (Microsoft. cache/Redis)/redisCache | privatelink.redis.cache.windows.net | redis.cache.windows.net |
 
+<sup>1</sup> För användning med IoT Hub den inbyggda Event Hub-kompatibla slut punkten. Läs mer i [stöd för privata Länkar för IoT Hub inbyggda slut punkten](../iot-hub/virtual-network-support.md#built-in-event-hub-compatible-endpoint)
  
 ## <a name="dns-configuration-scenarios"></a>Scenarier för DNS-konfiguration
 
@@ -134,7 +135,7 @@ I det här scenariot finns en topologi för [nav och ekrar](/azure/architecture/
 
 För lokala arbets belastningar för att matcha ett fullständigt domän namn för en privat slut punkt i den privata IP-adressen, måste du använda en DNS-vidarebefordrare för att distribuera den [offentliga DNS-zonen](#azure-services-dns-zone-configuration) för Azure-tjänsten i Azure.
 
-Följande scenario är lämpligt för ett lokalt nätverk som har en DNS-vidarebefordrare i Azure, vilket i sin tur ansvarar för att matcha alla DNS-frågor via en vidarebefordrare på server nivå till Azure-168.63.129.16 DNS- [168.63.129.16](../virtual-network/what-is-ip-address-168-63-129-16.md). 
+Följande scenario är lämpligt för ett lokalt nätverk som har en DNS-vidarebefordrare i Azure, vilket i sin tur ansvarar för att matcha alla DNS-frågor via en vidarebefordrare på server nivå till Azure-168.63.129.16 DNS- [](../virtual-network/what-is-ip-address-168-63-129-16.md). 
 
 > [!NOTE]
 > I det här scenariot används den Azure SQL Database-rekommenderade privata DNS-zonen. För andra tjänster kan du justera modellen med följande referens: [konfiguration av DNS-zon för Azure-tjänster](#azure-services-dns-zone-configuration).

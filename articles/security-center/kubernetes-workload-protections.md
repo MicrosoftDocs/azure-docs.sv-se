@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 09/12/2020
 ms.author: memildin
-ms.openlocfilehash: 08bcb74fd50be0eeb7a73c0743db2c4f3a57be32
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: dfa562be4561e8aaec66d4bff51aadeba77cf35f
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96030857"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131346"
 ---
 # <a name="protect-your-kubernetes-workloads"></a>Skydda dina Kubernetes-arbetsbelastningar
 
@@ -27,11 +27,11 @@ Security Center innehåller fler säkerhets funktioner för behållare om du akt
 - Få aviseringar om hot identifiering i real tid för dina K8s-kluster [Azure Defender för Kubernetes](defender-for-kubernetes-introduction.md)
 
 > [!TIP]
-> En lista över *alla* säkerhets rekommendationer som kan visas för Kubernetes-kluster och-noder finns i [avsnittet container](recommendations-reference.md#recs-containers) i referens tabellen för rekommendationer.
+> En lista över *alla* säkerhets rekommendationer som kan visas för Kubernetes-kluster och-noder finns i [avsnittet Compute](recommendations-reference.md#recs-compute) i referens tabellen rekommendationer.
 
 
 
-## <a name="availability"></a>Tillgänglighet
+## <a name="availability"></a>Tillgängligt
 
 |Aspekt|Information|
 |----|:----|
@@ -251,6 +251,6 @@ I den här artikeln har du lärt dig hur du konfigurerar Kubernetes-arbetsbelast
 
 För annat relaterat material, se följande sidor: 
 
-- [Security Center rekommendationer för behållare](recommendations-reference.md#recs-containers)
+- [Security Center rekommendationer för beräkning](recommendations-reference.md#recs-compute)
 - [Aviseringar för AKS-kluster nivå](alerts-reference.md#alerts-akscluster)
 - [Aviseringar för värd nivå för behållare](alerts-reference.md#alerts-containerhost)

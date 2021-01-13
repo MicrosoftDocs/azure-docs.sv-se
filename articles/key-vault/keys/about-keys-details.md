@@ -9,12 +9,12 @@ ms.subservice: keys
 ms.topic: conceptual
 ms.date: 10/22/2020
 ms.author: ambapat
-ms.openlocfilehash: b483ffc480f9ad750f8d9901d6bec382db2378c2
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 675c4f04ece322000ae0ebb44d6291c455db9397
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368927"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98133284"
 ---
 # <a name="key-types-algorithms-and-operations"></a>Viktiga typer, algoritmer och åtgärder
 
@@ -26,7 +26,7 @@ Följande tabell innehåller en översikt över nyckel typer och algoritmer som 
 | --- | --- | --- |
 |EG-P256, EC-P256K, EG-P384, EC-521|NA|ES256<br>ES256K<br>ES384<br>ES512|
 |RSA 2, 3K, 4K| RSA1_5<br>RSA-OAEP<br>RSA-OAEP – 256|PS256<br>PS384<br>PS512<br>RS256<br>RS384<br>RS512<br>RSNULL| 
-|AES 128-bit, 256-bitars| AES-KW<br>AES-GCM<br>AES-CBC| NA| 
+|AES 128-bit, 256-bitars <br/>(Endast hanterad HSM)| AES-KW<br>AES-GCM<br>AES-CBC| NA| 
 |||
 
 ##  <a name="ec-algorithms"></a>EC-algoritmer
@@ -65,7 +65,7 @@ Följande tabell innehåller en översikt över nyckel typer och algoritmer som 
 -   **RS512** -RSASSA-PKCS-V1_5 använder SHA-512. Det program som angavs Digest-värde måste beräknas med SHA-512 och måste vara 64 byte långt.  
 -   **RSNULL** – se [RFC2437](https://tools.ietf.org/html/rfc2437), ett specialiserat användnings fall för att aktivera vissa TLS-scenarier.  
 
-##  <a name="symmetric-key-algorithms"></a>Algoritmer för symmetrisk nyckel
+##  <a name="symmetric-key-algorithms-managed-hsm-only"></a>Symmetriska nyckel algoritmer (endast hanterad HSM)
 - **AES-kW** – AES Key wrap ([RFC3394](https://tools.ietf.org/html/rfc3394)).
 - **AES-GCM** -AES-kryptering i Galois Counter mode ([NIST SP 800-38d](https://csrc.nist.gov/publications/sp800))
 - **AES-CBC** -AES-kryptering i läget cipher block Chaining ([NIST SP 800-38a](https://csrc.nist.gov/publications/sp800))

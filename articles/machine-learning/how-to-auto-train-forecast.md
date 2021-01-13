@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q1, automl
 ms.date: 08/20/2020
-ms.openlocfilehash: 47cc67b408ff7fa50a244fffa8d41e640df0ecf3
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: 2b24b6480e4331f3a9470dcbb49e7ad221809187
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97796439"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132090"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Automatisk träna en tids serie prognos modell
 
@@ -128,7 +128,7 @@ Automatisk maskin inlärning försöker automatiskt med olika modeller och algor
 >[!Tip]
 > Traditionella Regressions modeller testas också som en del av rekommendations systemet för att förutse experiment. Se [tabellen modell som stöds](how-to-configure-auto-train.md#supported-models) för den fullständiga listan över modeller. 
 
-Modeller| Beskrivning | Fördelar
+Modeller| Description | Fördelar
 ----|----|---
 Prophet (för hands version)|Prophet fungerar bäst med tids serier som har starka säsongs effekter och flera säsonger av historiska data. Om du vill utnyttja den här modellen installerar du den lokalt med `pip install fbprophet` . | Korrekt & snabb, robust för att kunna avvika, saknade data och dramatiska ändringar i din tids serie.
 Auto-ARIMA (för hands version)|Autoregressiva Integrated glidande medelvärde (ARIMA) fungerar bäst när data är Station ära. Det innebär att dess statistiska egenskaper, t. ex. medelvärdet och var Ian sen är konstant över hela uppsättningen. Om du till exempel vänder en mynt är sannolikheten för att du får 50%, oavsett om du vänder idag, imorgon eller nästa år.| Perfekt för univariate-serien, eftersom de tidigare värdena används för att förutsäga framtida värden.
@@ -221,9 +221,12 @@ Anpassningar som stöds för `forecasting` uppgifter är:
 |--|--|
 |**Uppdatering av kolumn syfte**|Åsidosätt den automatiska identifierade funktions typen för den angivna kolumnen.|
 |**Transformering av parameter uppdatering** |Uppdatera parametrarna för den angivna transformeraren. Stöder för närvarande *imputerade* (fill_value och median).|
-|**Släpp kolumner** |Anger kolumner som ska släppas från att bearbetas.|
+|**Ta bort kolumner** |Anger kolumner som ska släppas från att bearbetas.|
 
 Om du vill anpassa featurizations med SDK anger du `"featurization": FeaturizationConfig` i- `AutoMLConfig` objektet. Läs mer om [anpassade featurizations](how-to-configure-auto-features.md#customize-featurization).
+
+>[!NOTE]
+> Funktionen **släpp kolumner** är inaktuell från och med SDK-version 1,19. Släpp kolumner från data uppsättningen som en del av data rengöringen, innan du använder den i ditt automatiserade ML-experiment. 
 
 ```python
 featurization_config = FeaturizationConfig()

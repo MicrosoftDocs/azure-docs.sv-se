@@ -1,7 +1,7 @@
 ---
-title: 'Snabb start: formulär tolkens klient bibliotek'
+title: 'Snabb start: formulär tolkens klient bibliotek eller REST API'
 titleSuffix: Azure Cognitive Services
-description: Använd formulär identifierarens klient bibliotek för att skapa en app för bearbetning av formulär som extraherar nyckel/värde-par och tabell data från dina anpassade dokument.
+description: Använd formulär tolkens klient bibliotek eller REST API för att skapa en app för formulär bearbetning som extraherar nyckel/värde-par och tabell data från dina anpassade dokument.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -13,23 +13,23 @@ ms.author: pafarley
 zone_pivot_groups: programming-languages-set-formre
 ms.custom: devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
 keywords: formulär bearbetning, automatisk data bearbetning
-ms.openlocfilehash: d099feff76d74f358a7d7958fb10406a5b8dc188
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.openlocfilehash: c915e7753487eba284d89dbb480f9848e90c1ef1
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98029040"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132291"
 ---
-# <a name="quickstart-use-the-form-recognizer-client-library"></a>Snabb start: Använd formulär tolkens klient bibliotek
+# <a name="quickstart-use-the-form-recognizer-client-library-or-rest-api"></a>Snabb start: Använd formulär identifierarens klient bibliotek eller REST API
 
-Kom igång med formulär tolken med valfritt språk. Azure formulär igenkänning är en kognitiv tjänst som gör att du kan skapa automatiserad data bearbetnings program vara med hjälp av Machine Learning-teknik. Identifiera och extrahera text, nyckel/värde-par och tabell data från formulär dokument &mdash; tjänsten visar strukturerade data som innehåller relationerna i original filen. Följ de här stegen för att installera SDK-paketet och prova exempel koden för grundläggande uppgifter. Formulär identifierarens klient bibliotek riktar sig för närvarande mot v 2.0 av formulär tolknings tjänsten.
+Kom igång med formulär tolken med valfritt språk. Azure formulär igenkänning är en kognitiv tjänst som gör att du kan skapa automatiserad data bearbetnings program vara med hjälp av Machine Learning-teknik. Identifiera och extrahera text, nyckel/värde-par, markerings märken, tabell data och mycket mer från formuläret dokument &mdash; data som innehåller de strukturerade data som innehåller relationerna i original filen. Du kan använda formulär igenkänning via REST API eller SDK. Följ de här stegen för att installera SDK-paketet och prova exempel koden för grundläggande uppgifter. 
 
-Använd formulär identifierarens klient bibliotek för att:
+Använd formulär igenkänning för att:
 
-* [Identifiera formulär innehåll](#recognize-form-content)
-* [Identifiera kvitton](#recognize-receipts)
-* [Identifiera visitkort](#recognize-business-cards)
-* [Identifiera fakturor](#recognize-invoices)
+* [Analysera layout](#analyze-layout)
+* [Analysera kvitton](#analyze-receipts)
+* [Analysera visitkort](#analyze-business-cards)
+* [Analysera fakturor](#analyze-invoices)
 * [Träna en anpassad modell](#train-a-custom-model)
 * [Analysera formulär med en anpassad modell](#analyze-forms-with-a-custom-model)
 * [Hantera dina anpassade modeller](#manage-your-custom-models)

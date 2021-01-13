@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 12/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: d064eb0b748c361b76139b1a21d25cec8996e818
-ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
+ms.openlocfilehash: 6db0c82c034aab97deee1be4aa8bdc54368521bc
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97734784"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131533"
 ---
 # <a name="manage-variables-in-azure-automation"></a>Hantera variabler i Azure Automation
 
@@ -26,7 +26,7 @@ Automation-variabler är användbara i följande scenarier:
 
 Azure Automation behåller variablerna och gör dem tillgängliga även om en Runbook-eller DSC-konfiguration Miss lyckas. Med det här beteendet kan en Runbook-eller DSC-konfiguration ange ett värde som sedan används av en annan Runbook eller av samma Runbook-eller DSC-konfiguration nästa gången den körs.
 
-Azure Automation lagrar varje krypterad variabel på ett säkert sätt. När du skapar en variabel kan du ange dess kryptering och lagring genom att Azure Automation som en säker till gång. När du har skapat variabeln kan du inte ändra dess krypterings status utan att skapa variabeln på nytt. Om du har variabler för Automation-konto som lagrar känsliga data som inte redan är krypterade måste du ta bort dem och återskapa dem som krypterade variabler. En Azure Security Center rekommendation är att kryptera alla Azure Automation variabler enligt beskrivningen i [Automation-kontots variabler bör vara krypterade](../../security-center/recommendations-reference.md#recs-computeapp). Om du har okrypterade variabler som du inte vill ska uteslutas från den här säkerhets rekommendationen läser du [undanta en resurs från rekommendationer och säkra Poäng](../../security-center/exempt-resource.md) för att skapa en undantags regel.
+Azure Automation lagrar varje krypterad variabel på ett säkert sätt. När du skapar en variabel kan du ange dess kryptering och lagring genom att Azure Automation som en säker till gång. När du har skapat variabeln kan du inte ändra dess krypterings status utan att skapa variabeln på nytt. Om du har variabler för Automation-konto som lagrar känsliga data som inte redan är krypterade måste du ta bort dem och återskapa dem som krypterade variabler. En Azure Security Center rekommendation är att kryptera alla Azure Automation variabler enligt beskrivningen i [Automation-kontots variabler bör vara krypterade](../../security-center/recommendations-reference.md#recs-compute). Om du har okrypterade variabler som du inte vill ska uteslutas från den här säkerhets rekommendationen läser du [undanta en resurs från rekommendationer och säkra Poäng](../../security-center/exempt-resource.md) för att skapa en undantags regel.
 
 >[!NOTE]
 >Säkra till gångar i Azure Automation inkluderar autentiseringsuppgifter, certifikat, anslutningar och krypterade variabler. Dessa till gångar krypteras och lagras i Azure Automation att använda en unik nyckel som genereras för varje Automation-konto. Azure Automation lagrar nyckeln i systemhanterade Key Vault. Innan du lagrar en säker till gång läser Automation in nyckeln från Key Vault och använder den för att kryptera till gången.
@@ -65,7 +65,7 @@ Cmdletarna i följande tabell skapar och hanterar Automation-variabler med Power
 
 De interna cmdletarna i följande tabell används för att få åtkomst till variabler i dina runbooks och DSC-konfigurationer. Dessa cmdletar levereras med den globala modulen `Orchestrator.AssetManagement.Cmdlets` . Mer information finns i [interna cmdletar](modules.md#internal-cmdlets).
 
-| Intern cmdlet | Beskrivning |
+| Intern cmdlet | Description |
 |:---|:---|
 |`Get-AutomationVariable`|Hämtar värdet för en befintlig variabel.|
 |`Set-AutomationVariable`|Ställer in värdet för en befintlig variabel.|
@@ -84,7 +84,7 @@ Write-output "The encrypted value of the variable is: $mytestencryptvar"
 
 Funktionerna i följande tabell används för att få åtkomst till variabler i en python 2-eller 3-Runbook. Python 3-Runbooks är för närvarande en för hands version.
 
-|Python-funktioner|Beskrivning|
+|Python-funktioner|Description|
 |:---|:---|
 |`automationassets.get_automation_variable`|Hämtar värdet för en befintlig variabel. |
 |`automationassets.set_automation_variable`|Ställer in värdet för en befintlig variabel. |

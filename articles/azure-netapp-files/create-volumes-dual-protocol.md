@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 01/05/2020
+ms.date: 01/12/2020
 ms.author: b-juche
-ms.openlocfilehash: d296f80d85bb5081c466b27e6a8624e8b3f2c924
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: c914ab007f482e4d2b560b1cb461e27d4f4442ec
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97915015"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98133165"
 ---
 # <a name="create-a-dual-protocol-nfsv3-and-smb-volume-for-azure-netapp-files"></a>Skapa en NFSv3-och SMB-volym (Dual-Protocol) för Azure NetApp Files
 
@@ -39,7 +39,6 @@ Azure NetApp Files stöder skapande av volymer med NFS (NFSv3 och NFSv 4.1), SMB
 * Skapa en zon för omvänd sökning på DNS-servern och Lägg sedan till en pekare (PTR) av AD host-datorn i den zonen för omvänd sökning. Annars går det inte att skapa dubbla protokoll volymer.
 * Kontrollera att NFS-klienten är uppdaterad och att de senaste uppdateringarna för operativsystemet används.
 * Kontrol lera att LDAP-servern Active Directory (AD) är igång och körs på AD. Du kan göra det genom att installera och konfigurera rollen [Active Directory Lightweight Directory Services (AD LDS)](/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/hh831593(v=ws.11)) på AD-datorn.
-* Se till att en certifikat utfärdare (CA) skapas för AD med rollen [Active Directory certifikat tjänster (AD CS)](/windows-server/networking/core-network-guide/cncg/server-certs/install-the-certification-authority) för att generera och exportera det självsignerade rot certifikat utfärdarens certifikat.   
 * Dubbla protokoll volymer stöder för närvarande inte Azure Active Directory Domain Services (AADDS).  
 * NFS-versionen som används av en dual-Protocol-volym är NFSv3. På så sätt gäller följande:
     * Dubbla protokoll stöder inte Windows ACL utökade attribut `set/get` från NFS-klienter.
@@ -105,9 +104,6 @@ Azure NetApp Files stöder skapande av volymer med NFS (NFSv3 och NFSv 4.1), SMB
 3. Klicka på **protokoll** och utför följande åtgärder:  
     * Välj **Dual-Protocol (NFSv3 och SMB)** som protokoll typ för volymen.   
 
-    * Välj den **Active Directory** anslutningen i list rutan.  
-    Active Directory som du använder måste ha ett certifikat för serverns rot certifikat utfärdare. 
-
     * Ange **volym Sök vägen** för volymen.   
     Den här volym Sök vägen är namnet på den delade volymen. Namnet måste börja med ett alfabetiskt Character och det måste vara unikt inom varje prenumeration och varje region.  
 
@@ -122,32 +118,6 @@ Azure NetApp Files stöder skapande av volymer med NFS (NFSv3 och NFSv 4.1), SMB
     Volymen som du skapade visas på sidan volymer. 
  
     En volym ärver prenumeration, resursgrupp och platsattribut från kapacitetspoolen. Du kan övervaka volymdistributionsstatusen via fliken Meddelanden.
-
-## <a name="upload-active-directory-certificate-authority-public-root-certificate"></a>Ladda upp Active Directory certifikat utfärdarens offentliga rot certifikat  
-
-1.  Följ [Installera certifikat utfärdaren](/windows-server/networking/core-network-guide/cncg/server-certs/install-the-certification-authority) för att installera och konfigurera Lägg till certifikat utfärdare. 
-
-2.  Följ [Visa certifikat med MMC-snapin-](/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in) modulen för att använda MMC-snapin-modulen och verktyget Certificate Manager.  
-    Använd snapin-modulen certifikat hanterare för att hitta rot-eller utfärdande certifikatet för den lokala enheten. Du bör köra snapin-kommandona för certifikat hantering från någon av följande inställningar:  
-    * En Windows-baserad klient som har anslutit till domänen och har rot certifikatet installerat 
-    * En annan dator i domänen som innehåller rot certifikatet  
-
-3. Exportera rot certifikat utfärdarens certifikat.  
-    Certifikat från rot certifikat utfärdare kan exporteras från katalogen personal eller betrodda rot certifikat utfärdare, som visas i följande exempel:   
-    ![skärm bild som visar personliga certifikat](../media/azure-netapp-files/personal-certificates.png)   
-    ![skärm bild som visar betrodda rot certifikat utfärdare](../media/azure-netapp-files/trusted-root-certification-authorities.png)    
-
-    Se till att certifikatet exporteras i Base-64-kodad X. 509 (. CER-format: 
-
-    ![Guiden Exportera certifikat](../media/azure-netapp-files/certificate-export-wizard.png)
-
-4. Gå till NetApp-kontot för den dubbla protokoll volymen, klicka på **Active Directory anslutningar** och ladda upp rot certifikat utfärdarens certifikat med hjälp av fönstret **Anslut Active Directory** :  
-
-    ![Serverns rot certifikat för certifikat utfärdare](../media/azure-netapp-files/server-root-ca-certificate.png)
-
-    Se till att certifikat utfärdarens namn kan matchas av DNS. Det här namnet är fältet "utfärdat av" eller "Issuer" på certifikatet:  
-
-    ![Certifikat information](../media/azure-netapp-files/certificate-information.png)
 
 ## <a name="manage-ldap-posix-attributes"></a>Hantera LDAP POSIX-attribut
 

@@ -7,23 +7,23 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 09/25/2020
-ms.openlocfilehash: be45292552a7ac62c7131c637b044edc477328e2
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 01/12/2021
+ms.openlocfilehash: 8151c9ce177d0cd54826603d1a395a8d5828b623
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91396798"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98133828"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-cognitive-skillset-in-the-azure-portal"></a>Snabb start: skapa en färdigheter för Azure Kognitiv sökning kognitivt i Azure Portal
 
-En färdigheter är en AI-baserad funktion som extraherar information och struktur från stora, ej differentierade text-eller bildfiler och gör innehållet både indexerat och sökbart i Azure Kognitiv sökning. 
+En färdigheter är en AI-baserad funktion som använder djup inlärnings modeller för att extrahera information och struktur från stora, ej differentierade text-eller bildfiler, vilket gör innehållet både indexerat och sökbart i Azure Kognitiv sökning. 
 
 I den här snabb starten ska du kombinera tjänster och data i Azure-molnet för att skapa färdigheter. När allt är på plats kör du guiden **Importera data** i Azure Portal för att hämta allt tillsammans. Slut resultatet är ett sökbart index som är ifyllt med data som skapats av AI-bearbetning som du kan fråga i portalen ([Sök Utforskaren](search-explorer.md)).
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-Innan du börjar måste du ha följande:
+Skapa följande tjänster innan du börjar:
 
 + Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/).
 
@@ -60,13 +60,13 @@ Nu kan du gå vidare till guiden Importera data.
 
 1. [Leta reda på Sök tjänsten](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/) och klicka på **Importera data** i kommando fältet för att ställa in kognitiv berikning i fyra steg på sidan Översikt.
 
-   :::image type="content" source="media/cognitive-search-quickstart-blob/import-data-cmd2.png" alt-text="Källfiler i Azure Blob Storage" border="false":::
+   :::image type="content" source="media/cognitive-search-quickstart-blob/import-data-cmd2.png" alt-text="Kommandot Importera data" border="false":::
 
 ### <a name="step-1---create-a-data-source"></a>Steg 1 – Skapa en data Källa
 
-1. I **Anslut till dina data**väljer du **Azure Blob Storage**, väljer det lagrings konto och den behållare som du skapade. Namnge datakällan och lämna standardvärdena för resten av inställningarna. 
+1. I **Anslut till dina data** väljer du **Azure Blob Storage**, väljer det lagrings konto och den behållare som du skapade. Namnge datakällan och lämna standardvärdena för resten av inställningarna. 
 
-   :::image type="content" source="media/cognitive-search-quickstart-blob/blob-datasource.png" alt-text="Källfiler i Azure Blob Storage" border="false":::
+   :::image type="content" source="media/cognitive-search-quickstart-blob/blob-datasource.png" alt-text="Konfiguration av Azure-blob" border="false":::
 
     Fortsätt till nästa sida.
 
@@ -76,7 +76,7 @@ Konfigurera sedan AI-anrikning för att anropa OCR, bild analys och naturlig spr
 
 1. I den här snabb starten använder vi den **kostnads fria** Cognitive Services resursen. Exempel data består av 14 filer, så den kostnads fria tilldelningen av 20 transaktioner på Cognitive Services räcker för den här snabb starten. 
 
-   :::image type="content" source="media/cognitive-search-quickstart-blob/cog-search-attach.png" alt-text="Källfiler i Azure Blob Storage" border="false":::
+   :::image type="content" source="media/cognitive-search-quickstart-blob/cog-search-attach.png" alt-text="Koppla Cognitive Services Base service" border="false":::
 
 1. Expandera **Lägg till anrikninger** och gör fyra val. 
 
@@ -86,7 +86,7 @@ Konfigurera sedan AI-anrikning för att anropa OCR, bild analys och naturlig spr
 
    Välj enhets igenkänning (personer, organisationer, platser) och bild analys kunskaper.
 
-   :::image type="content" source="media/cognitive-search-quickstart-blob/skillset.png" alt-text="Källfiler i Azure Blob Storage" border="false":::
+   :::image type="content" source="media/cognitive-search-quickstart-blob/skillset.png" alt-text="Bifoga Cognitive Services Välj tjänster för färdigheter" border="false":::
 
    Fortsätt till nästa sida.
 
@@ -102,7 +102,7 @@ I den här snabbstarten passar guidens standardinställningar bra:
 
 + Standardattribut är **hämtnings** **bara och sökbara**. **Sökbart** tillåter fullständig texts ökning i ett fält. **Hämtnings** bar innebär att fält värden kan returneras i resultat. Guiden förutsätter att du vill att dessa fält ska vara hämtningsbara och sökbara, eftersom du har skapat dem via en kompetensuppsättning.
 
-  :::image type="content" source="media/cognitive-search-quickstart-blob/index-fields.png" alt-text="Källfiler i Azure Blob Storage" border="false":::
+  :::image type="content" source="media/cognitive-search-quickstart-blob/index-fields.png" alt-text="Indexfält" border="false":::
 
 Lägg märke till det genomstruken och frågetecknet på det **hämtnings** bara attributet med `content` fältet. I textbaserade blobbdokument innehåller fältet `content` den största delen av filen, som skulle kunna köras som tusentals rader. Ett fält som detta är svårhanterligt i Sök Resultat och du bör utesluta det för den här demon. 
 
@@ -118,7 +118,7 @@ Indexeraren är en övergripande resurs som styr indexeringen. Indexeraren defin
 
 1. På sidan **indexerare** kan du acceptera standard namnet och klicka på schema alternativet **när** du vill köra det direkt. 
 
-   :::image type="content" source="media/cognitive-search-quickstart-blob/indexer-def.png" alt-text="Källfiler i Azure Blob Storage" border="false":::
+   :::image type="content" source="media/cognitive-search-quickstart-blob/indexer-def.png" alt-text="Definition av indexerare" border="false":::
 
 1. Klicka på **Skicka** för att skapa och köra indexeraren samtidigt.
 
@@ -126,7 +126,7 @@ Indexeraren är en övergripande resurs som styr indexeringen. Indexeraren defin
 
 Indexering av kognitiva kunskaper tar längre tid än vanlig text baserad indexering, särskilt OCR och bild analys. Du övervakar förloppet genom att gå till sidan Översikt och klicka på **indexerare** mitt på sidan.
 
-  :::image type="content" source="media/cognitive-search-quickstart-blob/indexer-notification.png" alt-text="Källfiler i Azure Blob Storage" border="false":::
+  :::image type="content" source="media/cognitive-search-quickstart-blob/indexer-notification.png" alt-text="Meddelande om Azure-Kognitiv sökning" border="false":::
 
 Varningar är normala för många olika innehålls typer. Vissa innehålls typer är inte giltiga för vissa kunskaper och på lägre nivåer är det vanligt att du kan stöta på [indexerings gränser](search-limits-quotas-capacity.md#indexer-limits). Trunking Notifications för 32 000-tecken är till exempel en indexerare-gräns på den kostnads fria nivån. Om du körde den här demon på en högre nivå skulle många trunkar-varningar att gå bort.
 
@@ -134,11 +134,11 @@ Om du vill kontrol lera varningar eller fel klickar du på varnings status i lis
 
 På sidan klickar du på varnings status igen för att visa en lista över varningar som liknar den som visas nedan. 
 
-  :::image type="content" source="media/cognitive-search-quickstart-blob/indexer-warnings.png" alt-text="Källfiler i Azure Blob Storage" border="false":::
+  :::image type="content" source="media/cognitive-search-quickstart-blob/indexer-warnings.png" alt-text="Varnings lista för indexerare" border="false":::
 
 Information visas när du klickar på en enskild status rad. Den här varningen anger att sammanfogningen stoppades efter att ha nått Max gränsen (den här specifika PDF-filen är stor).
 
-  :::image type="content" source="media/cognitive-search-quickstart-blob/warning-detail.png" alt-text="Källfiler i Azure Blob Storage" border="false":::
+  :::image type="content" source="media/cognitive-search-quickstart-blob/warning-detail.png" alt-text="Varnings information" border="false":::
 
 ## <a name="query-in-search-explorer"></a>Fråga i Sökutforskaren
 
@@ -157,7 +157,7 @@ Resultaten returneras som JSON, som kan vara utförliga och svåra att läsa, s�
 
 Frågesträngar är Skift läges känsliga, så om du får ett "okänt fält"-meddelande, kontrollerar du **fält** eller **index definition (JSON)** för att verifiera namn och Skift läge. 
 
-  :::image type="content" source="media/cognitive-search-quickstart-blob/search-explorer.png" alt-text="Källfiler i Azure Blob Storage" border="false":::
+  :::image type="content" source="media/cognitive-search-quickstart-blob/search-explorer.png" alt-text="Exempel med Sökutforskaren" border="false":::
 
 ## <a name="takeaways"></a>Lärdomar
 

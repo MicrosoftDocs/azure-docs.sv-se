@@ -10,21 +10,21 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 12/18/2020
 ms.author: mbaldwin
-ms.openlocfilehash: d900659f3ca8a8688c1b1d3a66cd888f37521fc6
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 5fcb3226eebf39ab18fb3bb24f0521a0523748d4
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97883392"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98134185"
 ---
 # <a name="azure-key-vault-logging"></a>Azure Key Vault-loggning
 
 När du har skapat ett eller flera nyckel valv vill du förmodligen övervaka hur och när nyckel valven nås, och av vem. Du kan göra detta genom att aktivera loggning för Azure Key Vault, som sparar information i ett Azure Storage-konto som du anger. Steg för steg-anvisningar om hur du konfigurerar detta finns i [så här aktiverar du Key Vault loggning](howto-logging.md).
 
-Du kan komma åt loggnings informationen 10 minuter (högst) efter nyckel valvs åtgärden. Oftast är informationen dock tillgänglig snabbare än så.  Det är upp till dig att hantera loggarna i ditt lagringskonto:
+Du kan komma åt loggnings informationen 10 minuter (högst) efter nyckel valvs åtgärden. Oftast är informationen dock tillgänglig snabbare än så.  Det är upp till dig att hantera loggarna på ditt lagringskonto:
 
 * Använd Azures standard metoder för åtkomst kontroll i ditt lagrings konto för att skydda dina loggar genom att begränsa vem som har åtkomst till dem.
-* Ta bort loggar som du inte vill behålla i ditt lagringskonto.
+* Ta bort loggar som du inte längre vill behålla på ditt lagringskonto.
 
 Översiktlig information om Key Vault finns i [Vad är Azure Key Vault?](overview.md). Information om var Key Vault finns på [sidan med priser](https://azure.microsoft.com/pricing/details/key-vault/). Information om hur du använder [Azure Monitor för Key Vault](../../azure-monitor/insights/key-vault-insights-overview.md).
 
@@ -75,7 +75,7 @@ I följande tabell visas fält namn och beskrivningar:
 | **Autentiseringsidentitet** |Identitet från den token som angavs i REST API begäran. Detta är vanligt vis en "användare", "tjänstens huvud namn" eller kombinationen "användare + appId", som i fallet med en begäran som resulterar från en Azure PowerShell-cmdlet. |
 | **egenskaperna** |Information som varierar beroende på åtgärd (**operationName**). I de flesta fall innehåller det här fältet klient information (den användar agent sträng som skickas av klienten), exakt REST API begär ande-URI och HTTP-statuskod. När ett objekt returneras som ett resultat av en begäran (till exempel nyckel **skapa** eller **VaultGet**), innehåller det även nyckel-URI (as `id` ), valv-URI eller hemlig URI. |
 
-Värdena för **operationName** -fältet är i *ObjectVerb* -format. Till exempel:
+Värdena för **operationName** -fältet är i *ObjectVerb* -format. Exempel:
 
 * Alla Key Vault-åtgärder har `Vault<action>` formatet, till exempel `VaultGet` och `VaultCreate` .
 * Alla viktiga åtgärder har `Key<action>` formatet, till exempel `KeySign` och `KeyList` .
@@ -182,6 +182,7 @@ I följande tabell visas **operationName** -värdena och motsvarande REST API-ko
 | **CertificatePendingDelete** |Ta bort väntande certifikat |
 | **CertificateNearExpiryEventGridNotification** |Certifikat nära utgångs händelse publicerad |
 | **CertificateExpiredEventGridNotification** |Utgånget certifikat-händelse publicerat |
+
 ---
 
 ## <a name="use-azure-monitor-logs"></a>Använda Azure Monitor-loggar

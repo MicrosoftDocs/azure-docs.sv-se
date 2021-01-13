@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: troubleshooting
 ms.date: 10/16/2019
 ms.author: charwen
-ms.openlocfilehash: d4f5d4b7fed8f14f048794616ee272342d1e8343
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 23b7a66afcc91cf1cf4a5dd9f720aad24ad40071
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97915563"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98133998"
 ---
 # <a name="troubleshoot-azure-bastion"></a>Felsöka Azure Bastion
 
@@ -22,11 +22,7 @@ Den här artikeln visar hur du felsöker Azure-skydds.
 
 **F:** När jag försöker skapa en NSG i Azure skydds-undernätet visas följande fel meddelande: *"nätverks säkerhets gruppen <NSG name> har inte de regler som krävs för Azure skydds Subnet AzureBastionSubnet"*.
 
-**A:** Om du skapar och använder en NSG för *AzureBastionSubnet* kontrollerar du att du har lagt till följande regler i din NSG. Om du inte lägger till de här reglerna går det inte att skapa eller uppdatera NSG.
-
-1. Kontroll Plans anslutning – inkommande den 443 från GatewayManager
-2. Diagnostikloggning och andra – utgående på 443 till AzureCloud (regionala Taggar i denna service tag stöds inte ännu.)
-3. Mål-VM – utgående för 3389 och 22 till VirtualNetwork
+**A:** Om du skapar och använder en NSG för *AzureBastionSubnet* kontrollerar du att du har lagt till de nödvändiga reglerna till NSG. En lista över vilka regler som krävs finns i [arbeta med NSG Access och Azure skydds](./bastion-nsg.md). Om du inte lägger till de här reglerna går det inte att skapa eller uppdatera NSG.
 
 Det finns ett exempel på NSG-reglerna för referens i [snabb starts mal len](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azure-bastion-nsg).
 Mer information finns i [NSG-vägledning för Azure skydds](bastion-nsg.md).

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/07/2020
 ms.author: memildin
-ms.openlocfilehash: 7325ba1a8a90fec90182f9780c1fb18d29d3c0f1
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: 835950cc68ca22ea3958d614d669d7a105fefe62
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955271"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132927"
 ---
 # <a name="archive-for-whats-new-in-azure-security-center"></a>Vill du arkivera vad som är nytt i Azure Security Center?
 
@@ -110,7 +110,7 @@ Läs mer om Security Center behållar säkerhet i följande artiklar:
 - [Anvisningar – söka igenom dina register och torka Docker-värdarna](container-security.md)
 - [Säkerhets aviseringar från hot Protection-funktionerna i Azure Kubernetes service-kluster](alerts-reference.md#alerts-akscluster)
 - [Säkerhets aviseringar från hot Protection-funktionerna i Azure Kubernetes service-värdar](alerts-reference.md#alerts-containerhost)
-- [Säkerhets rekommendationer för behållare](recommendations-reference.md#recs-containers)
+- [Säkerhets rekommendationer för behållare](recommendations-reference.md#recs-compute)
 
 
 
@@ -195,7 +195,7 @@ De här nya rekommendationerna visas i samma fyra säkerhets kontroller som den 
 
 Rekommendationerna innehåller också snabb korrigerings funktionen som hjälper dig att påskynda distributions processen. 
 
-Läs mer om de här två nya rekommendationerna i tabellen med [rekommendationer för beräkning och appar](recommendations-reference.md#recs-computeapp) .
+Läs mer om de här två nya rekommendationerna i tabellen med [rekommendationer för beräkning och appar](recommendations-reference.md#recs-compute) .
 
 Läs mer om hur Azure Security Center använder agenten i [Vad är Log Analytics agenten?](faq-data-collection-agents.md#what-is-the-log-analytics-agent).
 
@@ -211,7 +211,7 @@ Om du vill distribuera dina automatiserings konfigurationer i organisationen anv
 Du hittar principerna i Azure policy:
 
 
-|Mål  |Princip  |Princip-ID  |
+|Mål  |Policy  |Princip-ID  |
 |---------|---------|---------|
 |Kontinuerlig export till händelsehubben|[Distribuera export till händelsehubben för aviseringar och rekommendationer i Azure Security Center](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fcdfcce10-4578-4ecd-9703-530938e4abcb)|cdfcce10-4578-4ecd-9703-530938e4abcb|
 |Löpande export till Log Analytics arbets yta|[Distribuera export till Log Analytics-arbetsytan för aviseringar och rekommendationer i Azure Security Center](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fffb6f416-7bd2-4488-8828-56585fef2be9)|ffb6f416-7bd2-4488-8828-56585fef2be9|
@@ -232,7 +232,7 @@ Säkerhets kontrollen "implementera rekommenderade säkerhets metoder" innehåll
 
 En befintlig rekommendation, **virtuella datorer som riktas mot Internet bör skyddas med nätverks säkerhets grupper**, skiljer sig inte mellan Internet-riktade och icke-Internetbaserade virtuella datorer. För båda, genererade en rekommendation med hög allvarlighets grad om en virtuell dator inte var tilldelad till en nätverks säkerhets grupp. Den nya rekommendationen separerar datorer som inte är på Internet för att minska antalet falska positiva identifieringar och undvika onödiga aviseringar med hög allvarlighets grad.
 
-Läs mer i tabellen med [nätverks rekommendationer](recommendations-reference.md#recs-network) .
+Läs mer i tabellen med [nätverks rekommendationer](recommendations-reference.md#recs-networking) .
 
 
 
@@ -244,7 +244,7 @@ De nya principerna nedan lades till i ASC-standardinitiativet och är utformade 
 Du hittar principerna i Azure policy:
 
 
-| Princip                                                                                                                                                                                                                                                                | Princip-ID                            |
+| Policy                                                                                                                                                                                                                                                                | Princip-ID                            |
 |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------|
 | [Avancerad data säkerhet ska vara aktiverat på Azure SQL Database servrar](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f7fe3b40f-802b-4cdd-8bd4-fd799c948cc2)     | 7fe3b40f-802b-4cdd-8bd4-fd799c948cc2 |
 | [Avancerad data säkerhet ska vara aktiverat på SQL-servrar på datorer](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f6581d072-105e-4418-827f-bd446d56421b) | 6581d072-105e-4418-827f-bd446d56421b |
@@ -432,7 +432,7 @@ Exempel på identitets-och åtkomst rekommendationer är:
 
 Om du har prenumerationer på den kostnads fria pris nivån kommer deras säkra resultat att påverkas av den här ändringen eftersom de aldrig utvärderades för identitets-och åtkomst säkerhet.
 
-Lär dig mer om [identitets-och åtkomst rekommendationer](recommendations-reference.md#recs-identity).
+Lär dig mer om [identitets-och åtkomst rekommendationer](recommendations-reference.md#recs-identityandaccess).
 
 Läs mer om [övervakning av identitet och åtkomst](security-center-identity-access.md).
 
@@ -737,7 +737,7 @@ Security Center stöder nu scenarier för hantering av flera innehavare som en d
 
 Azure Security Center (ASC) har lanserat nya nätverks rekommendationer och förbättrade några befintliga. Nu kan du med hjälp av Security Center se till att det är ännu större nätverks skyddet för dina resurser. 
 
-[Lär dig mer om nätverks rekommendationer](recommendations-reference.md#recs-network).
+[Lär dig mer om nätverks rekommendationer](recommendations-reference.md#recs-networking).
 
 
 ## <a name="june-2019"></a>Juni 2019

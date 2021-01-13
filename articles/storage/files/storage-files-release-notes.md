@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/17/2020
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 739e59ea8e5737abbc6f0f0799129be5f59fb9b0
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 3bf3ecefb17f4c9fda6405da7fb2bdc2650f5324
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97674505"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131482"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Viktig information om Azure File Sync-agenten
 Med Azure File Sync kan du centralisera din organisations filresurser i Azure Files med samma flexibilitet, prestanda och kompatibilitet som du får om du använder en lokal filserver. Dina Windows Server-installationer omvandlas till ett snabbt cacheminne för Azure-filresursen. Du kan använda alla protokoll som är tillgängliga på Windows Server för att komma åt data lokalt (inklusive SMB, NFS och FTPS). Du kan ha så många cacheminnen som du behöver över hela världen.
@@ -38,12 +38,12 @@ Följande Azure File Sync agent versioner har upphört att gälla och stöds int
 
 | Gränser | Agentversionsnummer | Utgivningsdatum | Status |
 |----|----------------------|--------------|------------------|
-| V7-version | 7.0.0.0 - 7.2.0.0 | Ej tillämpligt | Stöds inte-agent versioner har upphört att gälla den 1 september 2020 |
-| V6-version | 6.0.0.0 - 6.3.0.0 | Ej tillämpligt | Stöds inte-agent versioner upphörde att gälla den 21 april 2020 |
-| Version V5 | 5.0.2.0 - 5.2.0.0 | Ej tillämpligt | Stöds inte-agent versioner har upphört att gälla den 18 mars 2020 |
-| V4-version | 4.0.1.0 - 4.3.0.0 | Ej tillämpligt | Stöds inte-agent versioner upphörde att gälla den 6 november 2019 |
-| V3-version | 3.1.0.0 - 3.4.0.0 | Ej tillämpligt | Stöds inte-agent versioner har upphört att gälla den 19 augusti 2019 |
-| För GA-agenter | 1.1.0.0 – 3.0.13.0 | Ej tillämpligt | Stöds inte-agent versioner har upphört att gälla den 1 oktober 2018 |
+| V7-version | 7.0.0.0 - 7.2.0.0 | Saknas | Stöds inte-agent versioner har upphört att gälla den 1 september 2020 |
+| V6-version | 6.0.0.0 - 6.3.0.0 | Saknas | Stöds inte-agent versioner upphörde att gälla den 21 april 2020 |
+| Version V5 | 5.0.2.0 - 5.2.0.0 | Saknas | Stöds inte-agent versioner har upphört att gälla den 18 mars 2020 |
+| V4-version | 4.0.1.0 - 4.3.0.0 | Saknas | Stöds inte-agent versioner upphörde att gälla den 6 november 2019 |
+| V3-version | 3.1.0.0 - 3.4.0.0 | Saknas | Stöds inte-agent versioner har upphört att gälla den 19 augusti 2019 |
+| För GA-agenter | 1.1.0.0 – 3.0.13.0 | Saknas | Stöds inte-agent versioner har upphört att gälla den 1 oktober 2018 |
 
 ### <a name="azure-file-sync-agent-update-policy"></a>Uppdateringsprincip för Azure File Sync-agenten
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
@@ -236,14 +236,14 @@ Följande viktig information gäller version 9.0.0.0 av Azure File Sync agent (l
 ### <a name="improvements-and-issues-that-are-fixed"></a>Förbättringar och problem som åtgärdas
 
 - Support för självbetjänings återställning
-    - Användarna kan nu återställa sina filer med hjälp av funktionen för tidigare versioner. Innan v9-versionen stöds inte den tidigare versions funktionen på volymer där moln skiktning är aktiverat. Den här funktionen måste vara aktive rad för varje volym separat, på vilken en slut punkt med aktive rad moln nivå finns. Mer information finns i  
+    - Användare kan nu också återställa nivåbaserade filer (tillsammans med filer på disk) med hjälp av funktionen för tidigare versioner, från de VSS-ögonblicksbilder som skapas när funktionen för självbetjänings återställning har Aktiver ATS på volymen. Innan v9-versionen stöds inte den tidigare versions funktionen för nivåbaserade filer. Den här funktionen måste vara aktive rad för varje volym separat, på vilken en slut punkt med aktive rad moln nivå finns. Mer information finns i  
 [Återställning via självbetjäning genom tidigare versioner och VSS (tjänsten Volume Shadow Copy)](./storage-sync-files-deployment-guide.md#self-service-restore-through-previous-versions-and-vss-volume-shadow-copy-service). 
  
 - Stöd för större fil resurs storlekar 
     - Azure File Sync stöder nu upp till 64TiB-och 100 000 000-filer i ett enda, syncing-namnområde.  
  
 - Stöd för datadeduplicering på Server 2019 
-    - Datadeduplicering stöds nu med moln nivåer som är aktiverade på Windows Server 2019. Windows Update- [KB4520062](https://support.microsoft.com/help/4520062) måste vara installerat för att stödja datadeduplicering på volymer med moln nivåer. 
+    - Datadeduplicering stöds nu (oavsett om moln skiktning är aktiverat eller inaktiverat på en eller flera Server slut punkter på volymen) på Windows Server 2016 och Windows Server 2019. För att stödja datadeduplicering på volymer med moln skiktning på Server 2019 måste Windows Update [KB4520062](https://support.microsoft.com/help/4520062) installeras. 
  
 - Förbättrad minsta fil storlek för en fil till nivå 
     - Den minsta fil storleken för en fil till-nivån baseras nu på fil systemets kluster storlek (dubbelt fil systemets kluster storlek). Som standard är till exempel fil systemets NTFS-storlek 4KB, den resulterande minsta fil storleken för en fil till nivån är 8 KB. 

@@ -10,39 +10,43 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: ed57c496443c9d1541bfa9933e7718213da116d7
-ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
+ms.openlocfilehash: 1fd4279cd35e54e2e04f88973c4a825218a75142
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/01/2021
-ms.locfileid: "97845613"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131141"
 ---
-# <a name="business-card-concepts"></a>Koncept för visitkort
+# <a name="form-recognizer-prebuilt-business-cards-model"></a>Fördefinierad visitkorts modell för formulär igenkänning 
 
-Azure formulär tolken kan analysera och extrahera kontakt information från visitkorten med hjälp av en av dess förinställda modeller. Visitkorts-API: t kombinerar kraftfulla OCR-funktioner (optisk tecken läsning) med vårt affärskorts förståelse för modell för att extrahera viktig information från visitkort på engelska. Den extraherar personlig kontakt information, företags namn, befattning med mera. Det inbyggda API: t för visitkortet är offentligt tillgängligt i för hands versionen av formulär igenkänning v 2.1. 
+Azure formulär tolken kan analysera och extrahera kontakt information från visitkort med hjälp av en fördefinierad visitkorts modell. Den kombinerar kraftfulla OCR-funktioner (optisk tecken läsning) med vårt visitkort för att förstå modell för att extrahera viktig information från visitkort på engelska. Den extraherar personlig kontakt information, företags namn, befattning med mera. Det inbyggda API: t för visitkortet är offentligt tillgängligt i för hands versionen av formulär igenkänning v 2.1. 
 
-## <a name="what-does-the-business-card-api-do"></a>Vad gör Business Card-API: et?
+## <a name="what-does-the-business-card-service-do"></a>Vad gör Business Card-tjänsten?
 
-Visitkorts-API: n extraherar nyckel fält från visitkort och returnerar dem i ett organiserat JSON-svar.
+Det inbyggda visitkorts-API: n extraherar nyckel fält från visitkort och returnerar dem i ett organiserat JSON-svar.
 
-![Contoso-specificerad bild från FOTT + JSON-utdata](./media/business-card-english.jpg)
+![Contoso-specificerad bild från FOTT + JSON-utdata](./media/business-card-example.jpg)
+
+
 
 ### <a name="fields-extracted"></a>Extraherade fält:
 
-* Kontakt namn 
-  * Förnamn
-  * Efter namn
-* Företags namn 
-* Avdelningar 
-* Jobb titlar 
-* E-postmeddelanden 
-* Websites 
-* Adresser 
-* Telefonnummer 
-  * Mobil telefoner 
-  * Fax 
-  * Telefon, arbete 
-  * Andra telefoner 
+|Namn| Typ | Description | Text | 
+|:-----|:----|:----|:----|
+| ContactNames | objekt mat ris | Kontakt namn extraherat från visitkort | [{"FirstName": "John", "LastName": "berg"}] |
+| FirstName | sträng | Första (angivet) namn på kontakt | Anders | 
+| LastName | sträng | Kontaktens senaste (familj) namn |   Andersson | 
+| CompanyNames | matris med strängar | Företags namn extraherat från visitkort | ["Contoso"] | 
+| Avdelningar | matris med strängar | Kontakt personens avdelning eller organisation | ["R&D"] | 
+| JobTitles | matris med strängar | Listad kontakt persons titel | ["Program varu tekniker"] | 
+| E-postmeddelanden | matris med strängar | Kontakta e-post som extraherats från visitkort | ["johndoe@contoso.com"] | 
+| Websites | matris med strängar | Webbplatsen har extraherats från visitkortet | ["https://www.contoso.com"] | 
+| Adresser | matris med strängar | Adress extraherad från visitkort | ["123 huvud gatan, Redmond, WA 98052"] | 
+| MobilePhones | matris med telefonnummer | Mobiltelefon nummer extraherat från visitkort | ["+ 19876543210"] |
+| Fax | matris med telefonnummer | Fax nummer extraherat från visitkort | ["+ 19876543211"] |
+| WorkPhones | matris med telefonnummer | Telefonnummer för arbets telefonnummer som extraherats från visitkort | ["+ 19876543231"] |
+| OtherPhones    | matris med telefonnummer | Annat telefonnummer extraherat från visitkort | ["+ 19876543233"] |
+
 
 Visitkorts-API: et kan också returnera all identifierad text från visitkortet. Denna OCR-utdata ingår i JSON-svaret.  
 

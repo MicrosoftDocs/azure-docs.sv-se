@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 12/15/2020
 ms.author: pafarley
-ms.openlocfilehash: a677623c030ff26567f14a4526f6d07bc6631a37
-ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
+ms.openlocfilehash: 31e1a0d912c6623f57d4ea256968102604ce42ff
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/01/2021
-ms.locfileid: "97853718"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132338"
 ---
 > [!NOTE]
 > Den här guiden använder sväng för att köra REST API-anrop. Det finns även [exempel kod på GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/python/FormRecognizer/rest) som illustrerar hur du ANROPAr REST-API: er med python.
@@ -32,7 +32,7 @@ ms.locfileid: "97853718"
 * En URL för en bild av en faktura. Du kan använda ett [exempel dokument](https://raw.githubusercontent.com/Azure/azure-sdk-for-python/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms/forms/Invoice_1.pdf) för den här snabb starten.
 
 
-## <a name="recognize-form-content"></a>Identifiera formulär innehåll
+## <a name="analyze-layout"></a>Analysera layout
 
 Du kan använda formulär igenkänning för att identifiera och extrahera tabeller, rader och ord i dokument, utan att behöva träna en modell. Innan du kör kommandot gör du följande ändringar:
 
@@ -319,7 +319,7 @@ Se följande faktura bild och dess motsvarande JSON-utdata. Utdatan har kort ATS
 
 ---
 
-## <a name="recognize-receipts"></a>Identifiera kvitton
+## <a name="analyze-receipts"></a>Analysera kvitton
 
 Du börjar analysera ett kvitto genom att anropa API för att **[analysera kvitto](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeReceiptAsync)** med hjälp av kommandot vänd nedan. Innan du kör kommandot gör du följande ändringar:
 
@@ -699,7 +699,7 @@ Se följande kvitto avbildning och dess motsvarande JSON-utdata. Utdatan har kor
 }
 ```
 
-## <a name="recognize-business-cards"></a>Identifiera visitkort
+## <a name="analyze-business-cards"></a>Analysera visitkort
 
 # <a name="v20"></a>[v2.0](#tab/v2-0)  
 
@@ -861,7 +861,7 @@ Skriptet kommer att skriva ut svar till konsolen tills åtgärden **analysera vi
 
 ---
 
-## <a name="recognize-invoices"></a>Identifiera fakturor
+## <a name="analyze-invoices"></a>Analysera fakturor
 
 # <a name="version-20"></a>[version 2,0](#tab/v2-0)
 

@@ -10,16 +10,16 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 82f6c5989149b50a1ef5e6c6fb5350d474476436
-ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
+ms.openlocfilehash: 43eae43d11a48ee6c395e4a86b8e8c1353843991
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/01/2021
-ms.locfileid: "97845482"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131464"
 ---
-# <a name="receipt-concepts"></a>Koncept för kvitton
+# <a name="form-recognizer-prebuilt-receipt-model"></a>Inbyggd fördefinierad inleverans modell för formulär tolken
 
-Azure formulär tolken kan analysera kvitton med hjälp av en av sina förinställda modeller. Kvitto-API: et extraherar viktig information från försäljnings kvitton på engelska, till exempel handels namn, transaktions datum, transaktions summa, rad artiklar med mera. 
+Azure formulär tolken kan analysera och extrahera information från försäljnings kvitton med hjälp av en fördefinierad kvitto modell. Den kombinerar vår kraftfulla [OCR-kapacitet (optisk tecken läsning)](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text) som kan hjälpa dig att förstå djup inlärnings modeller för att extrahera viktig information från kvitton på engelska. Kvitto-API: et extraherar viktig information från försäljnings kvitton på engelska, till exempel handels namn, transaktions datum, transaktions summa, rad artiklar med mera. 
 
 ## <a name="understanding-receipts"></a>Förstå kvitton 
 
@@ -27,32 +27,39 @@ Många företag och individer är fortfarande beroende av manuell extrahering av
 
 Det kan vara komplicerat att automatiskt extrahera data från dessa kvitton. Kvitton kan vara crumpleda och svåra att läsa, tryckta eller handskrivna delar och smartphone-bilder av kvitton kan vara låg kvalitet. Dessutom kan mallar och fält för kvitton variera avsevärt mellan marknad, region och handlare. Dessa utmaningar i både data extrahering och fält identifiering gör kvittot att bearbeta ett unikt problem.  
 
-Med hjälp av optisk tecken läsning (OCR) och vår fördefinierade kvitto modell, aktiverar API för kvitto bearbetning och extraherar data från kvittona, t. ex. namn, tips, totalt, rad objekt med mera. Med det här API: et behöver du inte träna en modell som du bara skickar kvittot till API för att analysera kvitto och data extraheras.
+Med hjälp av optisk tecken läsning (OCR) och vår fördefinierade kvitto modell, aktiverar API för kvitto bearbetning och extraherar data från kvittona, t. ex. namn, tips, totalt, rad objekt med mera. Med det här API: et behöver du inte träna en modell, du behöver bara skicka kvitto avbildningen till API: et för att analysera kvitto och data extraheras.
 
-![exempel kvitto](./media/contoso-receipt-small.png)
+![exempel kvitto](./media/receipts-example.jpg)
 
-## <a name="what-does-the-receipt-api-do"></a>Vad gör kvitto-API: et? 
 
-Det förskapade kvitto-API: et extraherar innehållet i försäljnings kvitton &mdash; som den typ av kvitto som du vanligt vis kommer till en restaurang, åter försäljare eller inköps lager.
+## <a name="what-does-the-receipt-service-do"></a>Vad gör kvitto tjänsten? 
+
+Den förbyggda tjänsten för inbyggade kvitton extraherar innehållet i försäljnings kvitton &mdash; som du vanligt vis kommer till en restaurang, åter försäljare eller inköps lager.
 
 ### <a name="fields-extracted"></a>Extraherade fält
 
-* Handels namn 
-* Handels adress 
-* Mobiltelefon nummer 
-* Transaktions datum 
-* Transaktions tid 
-* Delsumma 
-* Skatt 
-* Totalt 
-* Tips 
-* Extrahering av rad objekt (till exempel artikelkvantitet, artikel pris, artikel namn)
+|Namn| Typ | Description | Text | Värde (standardiserad utdata) |
+|:-----|:----|:----|:----| :----|
+| ReceiptType | sträng | Typ av försäljnings kvitto | Uppdelat |  |
+| MerchantName | sträng | Namn på den handlare som utfärdar kvittot | Contoso |  |
+| MerchantPhoneNumber | phoneNumber | Telefonnummer till listan | 987-654-3210 | + 19876543210 |
+| MerchantAddress | sträng | Listad handels adress | 123 Main St Redmond, WA 98052 |  |
+| TransactionDate | date | Datum då inleveransen utfärdades | 06 juni 2019 | 2019-06-26  |
+| TransactionTime | time | Tid då kvittot utfärdades | 4:49 PM | 16:49:00  |
+| Totalt | antal | Full transaktions summa för inleverans | $14,34 | 14,34 |
+| Delsumma | antal | Delsumma för kvitto, ofta innan skatt tillämpas | $12,34 | 12.34 |
+| Skatt | antal | Skatt på kvitto, ofta moms eller motsvarande | $2,00 | 2,00 |
+| Tips | antal | Tips som ingår i köparen | $1,00 | 1,00 |
+| Poster | objekt mat ris | Extraherade rad artiklar, med namn, kvantitet, enhets pris och totalt pris som extraherats | |
+| Name | sträng | Objekt namn | Surface Pro 6 | |
+| Antal | antal | Kvantitet för varje objekt | 1 | |
+| Pris | antal | Individuellt pris för varje artikel enhet | $999,00 | 999,00 |
+| Total pris | antal | Total pris för rad artikel | $999,00 | 999,00 |
 
 ### <a name="additional-features"></a>Ytterligare funktioner
 
 Kvitto-API: t returnerar även följande information:
 
-* Typ av kvitto (till exempel artikel, kredit kort och så vidare)
 * Fält konfidensnivå (varje fält returnerar ett associerat konfidens värde)
 * OCR RAW-text (OCR-extraherade textutdata för hela kvittot)
 * Avgränsnings ruta för varje värde, rad och ord

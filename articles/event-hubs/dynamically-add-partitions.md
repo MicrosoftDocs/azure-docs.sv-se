@@ -3,12 +3,12 @@ title: Lägg till partitioner dynamiskt i en Event Hub i Azure Event Hubs
 description: Den här artikeln visar hur du lägger till partitioner i en Event Hub dynamiskt i Azure Event Hubs.
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: 4a729147eaa11497c66f82a9764dfee9492786b9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4ebe4491338c24a331812041f4d3e6d37b934117
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87002547"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132179"
 ---
 # <a name="dynamically-add-partitions-to-an-event-hub-apache-kafka-topic-in-azure-event-hubs"></a>Lägga till partitioner i en Event Hub dynamiskt (Apache Kafka ämne) i Azure Event Hubs
 Event Hubs tillhandahåller meddelandeströmning via ett partitionerat konsumentmönster där varje konsument endast läser en specifik delmängd, eller partition, av meddelandeströmmen. Det här mönstret gör det möjligt att skala horisontellt för händelsebearbetning och tillhandahåller andra strömfokuserade funktioner som inte är tillgängliga i köer och ämnen. En partition är en ordnad sekvens av händelser som hålls kvar i en händelsehubb. När nya händelser anländer läggs de till i slutet av den här sekvensen. Mer information om partitioner i allmänhet finns i [partitioner](event-hubs-scalability.md#partitions)
@@ -71,7 +71,7 @@ Event Hubs innehåller tre avsändares alternativ:
 
 - **Partitions sändare** – i det här scenariot skickar klienter händelser direkt till en partition. Även om partitioner är identifierbara och händelser kan skickas direkt till dem, rekommenderar vi inte det här mönstret. Att lägga till partitioner påverkar inte det här scenariot. Vi rekommenderar att du startar om program så att de kan identifiera nya partitioner som har lagts till. 
 - **Partitionsnyckel-Sender** – i det här scenariot skickar klienter händelser med en nyckel så att alla händelser som tillhör den nyckeln slutar på samma partition. I det här fallet hash-kodar tjänsten nyckeln och vägarna till motsvarande partition. Uppdatering av partitioner kan orsaka problem som inte är i följd på grund av hash-ändringar. Om du bryr dig om att beställa bör du se till att ditt program förbrukar alla händelser från befintliga partitioner innan du ökar antalet partitioner.
-- **Round-Robin-avsändare (standard)** – i det här scenariot avEvent Hubs tjänsten Robins händelserna mellan partitioner. Event Hubs tjänsten är medveten om antalet ändringar i partitionen och skickas till nya partitioner inom några sekunder efter att antalet partitioner ändrats.
+- **Round-Robin-avsändare (standard)** – i det här scenariot avEvent Hubs tjänsten Robins händelserna mellan partitioner och använder också en algoritm för belastnings utjämning. Event Hubs tjänsten är medveten om antalet ändringar i partitionen och skickas till nya partitioner inom några sekunder efter att antalet partitioner ändrats.
 
 ### <a name="receiverconsumer-clients"></a>Mottagare/konsument klienter
 Event Hubs tillhandahåller direkta mottagare och ett enkelt konsument bibliotek som kallas [händelse bearbetnings värd (gammal SDK)](event-hubs-event-processor-host.md)  eller [händelse processor (ny SDK)](event-processor-balance-partition-load.md).
@@ -99,7 +99,7 @@ När en konsument grupp medlem utför en uppdatering av metadata och hämtar de 
     > [!IMPORTANT]
     > Medan befintliga data bevarar ordning, avbryts partitionens hashing för meddelanden som hashas efter att antalet partitioner ändrats på grund av att partitioner har lagts till.
 - Att lägga till partitioner till ett befintligt ämne eller Event Hub-instans rekommenderas i följande fall:
-    - När du använder metoden för resursallokering (standard) för att skicka händelser
+    - När du använder standard metoden för att skicka händelser
      - Kafka standard partitionerings strategier, exempel – fästis för fästisar
 
 

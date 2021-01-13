@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: dfea6d531dfb87a5344c5d8e53570b6e1ae8e598
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 599bb93e747acf504a4ebf43aaea771ed5064886
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98049328"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131397"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>Förstå dubbla modeller i Azure Digitals flätas
 
@@ -140,7 +140,7 @@ När modeller konstrueras för att återspegla entiteterna i din miljö kan det 
 
 Med hjälp av modeller som baseras på bransch standarder eller använder standard Ontology-representation, t. ex. RDF eller OWL, får du en rik start punkt när du utformar dina Azures digitala dubbla modeller. Genom att använda bransch modeller kan du också hjälpa till med standardisering och informations delning.
 
-För att kunna användas med digitala Azure-datorer måste en modell representeras i DTDL (JSON-LD-based [**digital)**](concepts-models.md). I den här artikeln beskrivs därför hur du representerar bransch standard modeller i DTDL, som integrerar de befintliga bransch koncepten med DTDL-semantik så att Azures digitala dubbla kan använda dem. DTDL-modellen fungerar sedan som källan till sanningen för modellen i Azure Digitals-modeller.
+För att kunna användas med digitala Azure-datorer måste en modell representeras i DTDL (JSON-LD-based [**digital)**](concepts-models.md). För att använda en modell som är bransch standard måste du därför först konvertera den till DTDL så att Azure Digital-enheter kan använda den. DTDL-modellen fungerar sedan som källan till sanningen för modellen i Azure Digitals-modeller.
 
 Det finns två huvudsakliga sökvägar som integrerar bransch standard modeller med DTDL, beroende på din situation:
 * Om du ännu inte har skapat dina modeller kan du utforma dem runt **befintliga startDTDL-Ontologies** som innehåller språk som är specifika för din bransch.

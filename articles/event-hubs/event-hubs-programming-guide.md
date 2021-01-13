@@ -4,12 +4,12 @@ description: Den här artikeln innehåller information om hur du skriver kod fö
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4f95abe3668bb400d84e354c3bca9eac289c5795
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.openlocfilehash: 46bd0c3c1488d6dd7afbae5e88e0b83f56654bb8
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 01/12/2021
-ms.locfileid: "98108695"
+ms.locfileid: "98131244"
 ---
 # <a name="net-programming-guide-for-azure-event-hubs-legacy-microsoftazureeventhubs-package"></a>Programmerings guide för .NET för Azure Event Hubs (äldre Microsoft. Azure. EventHubs-paket)
 I den här artikeln beskrivs några vanliga scenarier när du skriver kod med hjälp av Azure Event Hubs. Den förutsätter att du har en grundläggande förståelse av händelsehubbar. En konceptuell översikt av händelsehubbar finns på [Översikt av händelsehubbar](./event-hubs-about.md).
@@ -57,7 +57,7 @@ Du skickar händelser till en Event Hub genom att skapa en [EventHubClient][] -i
 
 ## <a name="event-serialization"></a>Händelseserialisering
 
-Klassen [EventData][] har [två överbelastade konstruktorer](/dotnet/api/microsoft.azure.eventhubs.eventdata.-ctor) som tar en rad olika parametrar, byte eller en byte mat ris som representerar händelse data nytto lasten. När du använder JSON med [EventData][] kan du använda **Encoding.UTF8.GetBytes()** för att hämta bytematrisen för en JSON-kodad sträng. Till exempel:
+Klassen [EventData][] har [två överbelastade konstruktorer](/dotnet/api/microsoft.azure.eventhubs.eventdata.-ctor) som tar en rad olika parametrar, byte eller en byte mat ris som representerar händelse data nytto lasten. När du använder JSON med [EventData][] kan du använda **Encoding.UTF8.GetBytes()** för att hämta bytematrisen för en JSON-kodad sträng. Exempel:
 
 ```csharp
 for (var i = 0; i < numMessagesToSend; i++)
@@ -77,7 +77,7 @@ När du skickar händelse data kan du ange ett värde som är hashat för att sk
 
 ### <a name="availability-considerations"></a>Överväganden för tillgänglighet
 
-Det är valfritt att använda en partitionsnyckel, och du bör överväga att noga överväga om du vill använda en enda nyckel. Om du inte anger en partitionsnyckel när du publicerar en händelse, används en tilldelning enligt resursallokeringsmodellen. I många fall är det en bra idé att använda en partitionsnyckel om händelse ordningen är viktig. När du använder en partitionsnyckel kräver dessa partitioner tillgänglighet på en enda nod och avbrott kan ske över tid. till exempel när Compute-noder startas om och korrigeras. Om du anger ett partitions-ID och den partitionen blir otillgänglig av någon anledning, kommer ett försök att komma åt data i den partitionen att Miss lyckas. Om hög tillgänglighet är viktigast, ska du inte ange någon partitionsnyckel. i så fall skickas händelser till partitioner med hjälp av den resursallokering-modell som beskrivs ovan. I det här scenariot gör du ett explicit val mellan tillgänglighet (inget partitions-ID) och konsekvens (fäster händelser till ett partitions-ID).
+Det är valfritt att använda en partitionsnyckel, och du bör överväga att noga överväga om du vill använda en enda nyckel. Om du inte anger en partitionsnyckel när du publicerar en händelse, balanserar Event Hubs belastningen mellan partitioner. I många fall är det en bra idé att använda en partitionsnyckel om händelse ordningen är viktig. När du använder en partitionsnyckel kräver dessa partitioner tillgänglighet på en enda nod och avbrott kan ske över tid. till exempel när Compute-noder startas om och korrigeras. Om du anger ett partitions-ID och den partitionen blir otillgänglig av någon anledning, kommer ett försök att komma åt data i den partitionen att Miss lyckas. Om hög tillgänglighet är viktigast, ska du inte ange någon partitionsnyckel. I så fall skickas händelser till partitioner med hjälp av en intern algoritm för belastnings utjämning. I det här scenariot gör du ett explicit val mellan tillgänglighet (inget partitions-ID) och konsekvens (fäster händelser till ett partitions-ID).
 
 Ett annat övervägande är att hantera fördröjningar vid bearbetning av händelser. I vissa fall kan det vara bättre att släppa data och försöka igen än att försöka fortsätta med bearbetningen, vilket kan leda till ytterligare framtida bearbetnings fördröjningar. Till exempel är det bättre att vänta på att slutföra aktuella data, men i ett Live-chatt-eller VOIP-scenario kan du snabbt få data, även om de inte är slutförda.
 
@@ -109,7 +109,7 @@ Om du vill använda klassen [EventProcessorHost][] kan du implementera [IEventPr
 * [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync)
 * [ProcessErrorAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processerrorasync)
 
-Starta händelse bearbetningen genom att instansiera [EventProcessorHost][], med lämpliga parametrar för händelsehubben. Till exempel:
+Starta händelse bearbetningen genom att instansiera [EventProcessorHost][], med lämpliga parametrar för händelsehubben. Exempel:
 
 > [!NOTE]
 > EventProcessorHost och dess relaterade klasser finns i paketet **Microsoft. Azure. EventHubs. processor** . Lägg till paketet i Visual Studio-projektet genom att följa anvisningarna i [den här artikeln](event-hubs-dotnet-framework-getstarted-send.md#add-the-event-hubs-nuget-package) eller genom att utfärda följande kommando i fönstret [Package Manager-konsol](https://docs.nuget.org/docs/start-here/using-the-package-manager-console) : `Install-Package Microsoft.Azure.EventHubs.Processor` .

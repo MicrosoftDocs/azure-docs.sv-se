@@ -7,21 +7,21 @@ ms.topic: quickstart
 ms.author: jukullam
 ms.date: 10/12/2020
 ms.custom: github-actions-azure
-ms.openlocfilehash: 6e3dbb968d0dff8d8227518fe53d257bfc1fae4b
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: f62ca85bd4e027595103b738c23c9997a05cc85c
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97607974"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132825"
 ---
 # <a name="quickstart-use-github-actions-to-connect-to-azure-mysql"></a>Snabb start: använda GitHub-åtgärder för att ansluta till Azure MySQL
 
-**Gäller för**: :::image type="icon" source="./media/applies-to/yes.png" border="false"::: Azure Database for PostgreSQL-en server :::image type="icon" source="./media/applies-to/yes.png" border="false"::: Azure Database for PostgreSQL – flexibel Server
+**Gäller för**: :::image type="icon" source="./media/applies-to/yes.png" border="false"::: Azure Database for MySQL-en server :::image type="icon" source="./media/applies-to/yes.png" border="false"::: Azure Database for MySQL – flexibel Server
 
 Kom igång med [GitHub-åtgärder](https://docs.github.com/en/free-pro-team@latest/actions) genom att använda ett arbets flöde för att distribuera databas uppdateringar till [Azure Database for MySQL](https://azure.microsoft.com/services/mysql/).
 
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Du behöver följande: 
 - Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).

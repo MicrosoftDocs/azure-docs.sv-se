@@ -3,12 +3,12 @@ title: Azure Relay FAQ | Microsoft Docs
 description: Den här artikeln innehåller svar på några vanliga frågor om Azure Relay tjänsten.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 9d967d926c6ab59e027fe4d4cf98e8418a8ff9bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 77d3122942289654c0f651f9f648307123b23546
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89299294"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131856"
 ---
 # <a name="azure-relay-faqs"></a>Azure Relay vanliga frågor
 
@@ -50,7 +50,6 @@ Här är tre exempel på fakturerings scenarier för Hybridanslutningar:
     *   Du skickar 6 GB data över Connection B under månaden.
     *   Den totala kostnaden är $10,50. Det är $5 för anslutning A + $5 för anslutning B + $0,50 (för den sjätte gigabyte på anslutning B).
 
-Observera att priserna som används i exemplen endast gäller under Hybridanslutningar för hands versions perioden. Priserna kan komma att ändras vid allmän tillgänglighet för Hybridanslutningar.
 
 ### <a name="how-are-hours-calculated-for-relay"></a>Hur beräknas timmar för relä?
 
@@ -69,7 +68,7 @@ Att skicka ett meddelande till en Azure Relay behandlas som "fullständig via" S
 Reläer som öppnas med hjälp av **netTCPRelay** WCF-bindning behandla meddelanden som inte är enskilda meddelanden, men som data strömmar i systemet. När du använder den här bindningen får bara avsändaren och lyssnaren insyn i ram för de enskilda meddelanden som skickas och tas emot. För reläer som använder **netTCPRelay** -bindningen behandlas alla data som en ström för att beräkna fakturerbara meddelanden. I det här fallet beräknar Service Bus den totala mängden data som skickas eller tas emot via varje enskilt relä på en 5 minuters basis. Sedan delar den upp den totala mängden data med 64 KB för att fastställa antalet fakturerbara meddelanden för det reläet under den tids perioden.
 
 ## <a name="quotas"></a>Kvoter
-| Kvot namn | Omfång |  Obs! | Värde |
+| Kvot namn | Omfång |  Kommentarer | Värde |
 | --- | --- | --- | --- |
 | Samtidiga lyssnare i ett relä |Entitet |Efterföljande begär Anden om ytterligare anslutningar avvisas och ett undantag tas emot av den anropande koden. |25 |
 | Samtidiga relä anslutningar per alla relä slut punkter i ett tjänst namn område |Namnområde |- |5 000 |
