@@ -67,7 +67,7 @@
       items:
         - name: Konfigurera IP-brandvägg (förhandsversion)
           href: ip-firewall-virtual-networks.md
-        - name: Konfigurera privata slutpunkter (förhandsversion)
+        - name: Konfigurera privata slutpunkter
           href: private-link-service.md
     - name: Hantera och övervaka
       items:

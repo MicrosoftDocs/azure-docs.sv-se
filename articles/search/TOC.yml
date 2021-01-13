@@ -25,9 +25,8 @@
           href: knowledge-store-create-portal.md
         - name: Fråga med Sökutforskaren
           href: search-explorer.md
-    - name: ARM-mall
-      displayName: Resource Manager
-      href: search-get-started-arm.md
+    - name: Visuell Studio-kod
+      href: search-get-started-vs-code.md
     - name: C#
       href: search-get-started-dotnet.md
     - name: Java
@@ -40,6 +39,9 @@
       href: search-get-started-powershell.md
     - name: Python
       href: search-get-started-python.md
+    - name: ARM-mall
+      displayName: Resource Manager
+      href: search-get-started-arm.md
 - name: Självstudier
   items:
     - name: Skapa en C#-app
@@ -556,5 +558,5 @@
       href: search-faq-frequently-asked-questions.md
     - name: Prissättning
       href: 'https://azure.microsoft.com/pricing/details/search/'
-    - name: Videoklipp
+    - name: Video
       href: 'https://azure.microsoft.com/resources/videos/index/?services=search'
