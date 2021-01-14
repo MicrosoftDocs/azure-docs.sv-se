@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 5/12/2020
-ms.openlocfilehash: 70e1e5d06ef025801322e15e589d26e31f116fc3
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 82482b260233994672e603c16fe8cf919c92337f
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94535086"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201033"
 ---
 # <a name="monitor-azure-database-for-mysql-performance-with-query-store"></a>Övervaka Azure Database for MySQL prestanda med Query Store
 
@@ -69,7 +69,7 @@ SELECT * FROM mysql.query_store_wait_stats;
 ## <a name="finding-wait-queries"></a>Hitta väntande frågor
 
 > [!NOTE]
-> Väntande statistik bör inte aktive ras under arbets belastningen med hög belastning eller aktive ras på obestämd tid för känsliga arbets belastningar. <br>För arbets belastningar som körs med hög processor användning eller på servrar som kon figurer ATS med lägre virtuella kärnor bör du vara försiktig när du aktiverar väntande statistik. Den bör inte aktive ras på obestämd tid. 
+> Väntande statistik bör inte aktive ras under arbets belastningen med hög belastning eller aktive ras på obestämd tid för känsliga arbets belastningar. <br>För arbets belastningar som körs med hög processor användning eller på servrar som kon figurer ATS med lägre virtuella kärnor bör du vara försiktig när du aktiverar väntande statistik. Den bör inte aktive ras på obestämd tid.
 
 Väntande händelse typer kombinerar olika vänte händelser till buckets efter likhet. Frågearkivet innehåller vänte händelse typ, ett särskilt namn på wait-händelsen och frågan i fråga. Om du vill korrelera denna wait-information med frågans körnings statistik innebär det att du får en djupare förståelse för vad som bidrar till att fråga prestanda egenskaperna.
 
@@ -79,7 +79,7 @@ Här följer några exempel på hur du kan få mer insikter om din arbets belast
 |---|---|
 |Hög lås väntar | Kontrol lera fråge texterna för de berörda frågorna och identifiera målentiteten. Leta i Frågearkivet efter andra frågor som ändrar samma entitet, som körs ofta och/eller har hög varaktighet. När du har identifierat dessa frågor bör du överväga att ändra program logiken till att förbättra samtidigheten eller använda en mindre begränsande isolerings nivå. |
 |Hög buffert i/o väntar | Hitta frågorna med ett stort antal fysiska läsningar i Frågearkivet. Om de matchar frågorna med höga i/o-vänte tid, bör du överväga att introducera ett index på den underliggande entiteten för att göra sökningar i stället för genomsökningar. Detta skulle minimera IO-omkostnaderna för frågorna. Kontrol lera **prestanda rekommendationerna** för servern i portalen för att se om det finns några index rekommendationer för den här servern som skulle optimera frågorna. |
-|Hög minnes väntan | Hitta de mest krävande minnes frågorna i Frågearkivet. Dessa frågor fördröjer förmodligen ytterligare förloppet för de frågor som påverkas. Kontrol lera **prestanda rekommendationerna** för servern i portalen för att se om det finns några index rekommendationer som skulle optimera dessa frågor.|
+|Hög minnes väntan | Hitta de mest krävande minnes frågorna i Frågearkivet. Dessa frågor fördröjer förmodligen ytterligare förloppet för de frågor som påverkas. Kontrol lera **prestanda rekommendationerna** för servern i portalen för att se om det finns några index rekommendationer som skulle optimera dessa frågor. |
 
 ## <a name="configuration-options"></a>Konfigurationsalternativ
 
@@ -87,7 +87,7 @@ När Query Store har Aktiver ATS sparas data i 15-minuters agg regerings fönste
 
 Följande alternativ är tillgängliga för att konfigurera parametrar för Frågearkivet.
 
-| **Parameter** | **Beskrivning** | **Objekt** | **Intervall** |
+| **Parameter** | **Beskrivning** | **Standardvärde** | **Intervall** |
 |---|---|---|---|
 | query_store_capture_mode | Aktivera/inaktivera funktionen för Query Store baserat på värdet. OBS! om performance_schema är avstängd aktiverar query_store_capture_mode performance_schema och en delmängd av de prestanda schema instrument som krävs för den här funktionen. | ALL | INGEN, ALLA |
 | query_store_capture_interval | Hämtnings intervallet för frågearkivet i minuter. Tillåter att du anger det intervall som används för att aggregera frågeresultaten | 15 | 5 - 60 |
@@ -96,7 +96,7 @@ Följande alternativ är tillgängliga för att konfigurera parametrar för Frå
 
 Följande alternativ gäller specifikt för väntande statistik.
 
-| **Parameter** | **Beskrivning** | **Objekt** | **Intervall** |
+| **Parameter** | **Beskrivning** | **Standardvärde** | **Intervall** |
 |---|---|---|---|
 | query_store_wait_sampling_capture_mode | Gör det möjligt att aktivera/inaktivera väntande statistik. | ALTERNATIVET | INGEN, ALLA |
 | query_store_wait_sampling_frequency | Ändrar frekvensen för vänta-sampling i sekunder. 5 till 300 sekunder. | 30 | 5-300 |
@@ -108,7 +108,7 @@ Använd [Azure Portal](howto-server-parameters.md) eller [Azure CLI](howto-confi
 
 ## <a name="views-and-functions"></a>Vyer och funktioner
 
-Visa och hantera Frågearkivet med följande vyer och funktioner. Alla i [rollen Välj offentlig behörighet](howto-create-users.md#to-create-additional-admin-users-in-azure-database-for-mysql) kan använda dessa vyer för att se data i frågearkivet. Dessa vyer är bara tillgängliga i **MySQL** -databasen.
+Visa och hantera Frågearkivet med följande vyer och funktioner. Alla i [rollen Välj offentlig behörighet](howto-create-users.md#to-create-more-admin-users-in-azure-database-for-mysql) kan använda dessa vyer för att se data i frågearkivet. Dessa vyer är bara tillgängliga i **MySQL** -databasen.
 
 Frågorna normaliseras genom att titta på deras struktur efter att du tagit bort litteraler och konstanter. Om två frågor är identiska förutom literala värden, har de samma hash.
 

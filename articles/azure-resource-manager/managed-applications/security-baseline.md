@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 335a977924c94fba82ec6113233a4585401527f3
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: ca49e7c171d0b8903beccf0b1ca803f5b359951b
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97092779"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201713"
 ---
 # <a name="azure-security-baseline-for-azure-managed-applications"></a>Azures säkerhets bas linje för Azure Managed Applications
 
@@ -242,7 +242,7 @@ Du bör se till att autentiseringsuppgifterna (som lösenord, certifikat eller s
 
 **Vägledning**: Det är viktigt med säkra och isolerade arbetsstationer för att skydda känsliga roller som administratörer, utvecklare och operatörer av kritiska tjänster. Använd hög säkra användar arbets stationer och/eller Azure-skydds för administrativa uppgifter relaterade till dina hanterade program. Använd Azure Active Directory, Microsoft Defender Avancerat skydd (ATP) och Microsoft Intune när du ska distribuera en säker och hanterad arbetsstation för administrativa uppgifter. Skyddade arbetsstationer kan hanteras centralt för att upprätthålla en säker konfiguration med kraftfulla baslinjer för autentisering, programvara och maskinvara samt begränsad logisk och nätverksbaserad åtkomst.
 
-- [Förstå arbets stationer med privilegie rad åtkomst](../../active-directory/devices/concept-azure-managed-workstation.md)
+- [Förstå arbets stationer med privilegie rad åtkomst](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 - [Distribuera en arbetsstation med privilegierad åtkomst](../../active-directory/devices/howto-azure-managed-workstation.md)
 

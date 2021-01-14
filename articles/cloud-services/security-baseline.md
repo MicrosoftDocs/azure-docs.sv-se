@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/02/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 100871ab2188aa638c4c9f2b058021706c7741bb
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: e6a42a39e55e379865332fce8a9aed8dfe78f57b
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96531912"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201339"
 ---
 # <a name="azure-security-baseline-for-azure-cloud-services"></a>Azures säkerhets bas linje för Azure Cloud Services
 
@@ -345,7 +345,7 @@ Granska skillnaderna mellan administrativa roller i den klassiska prenumeratione
 
 **Vägledning**: Vi rekommenderar att du använder en säker, Azure-hanterad arbets Station (kallas även en privilegie rad åtkomst arbets Station) för administrativa uppgifter som kräver förhöjda privilegier.
 
-- [Förstå säkra, Azure-hanterade arbets stationer](../active-directory/devices/concept-azure-managed-workstation.md)
+- [Förstå säkra, Azure-hanterade arbets stationer](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 - [Så här aktiverar du Azure AD MFA](../active-directory/authentication/howto-mfa-getstarted.md)
 

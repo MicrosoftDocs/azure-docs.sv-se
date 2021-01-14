@@ -10,12 +10,12 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: delhan
-ms.openlocfilehash: 236390529ddaf84416448138d7b5bdf31caf681b
-ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
+ms.openlocfilehash: fa133e7c62b7970a1c48c7fd86c877bcf699e034
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97827503"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201611"
 ---
 # <a name="how-to-use-boot-diagnostics-to-troubleshoot-virtual-machines-in-azure"></a>Så här använder du startdiagnostik för att felsöka virtuella datorer i Azure
 
@@ -94,4 +94,4 @@ Följ dessa steg om du vill aktivera startdiagnostik på en befintlig virtuell d
 
 ### <a name="enable-boot-diagnostics-using-the-azure-cli"></a>Aktivera startdiagnostik med Azure CLI
 
-Du kan använda Azure CLI för att aktivera startdiagnostik på en befintlig virtuell Azure-dator. Mer information finns i [AZ VM Boot-Diagnostics](/cli/azure/vm/boot-diagnostics?view=azure-cli-latest).
+Du kan använda Azure CLI för att aktivera startdiagnostik på en befintlig virtuell Azure-dator. Mer information finns i [AZ VM Boot-Diagnostics](/cli/azure/vm/boot-diagnostics).

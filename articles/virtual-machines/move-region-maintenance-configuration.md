@@ -7,24 +7,24 @@ ms.topic: how-to
 ms.tgt_pltfrm: vm
 ms.date: 03/04/2020
 ms.author: shants
-ms.openlocfilehash: 4cff7eb4a69005f2e74747b6e58447f100c69b60
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 91a6adecc9cf0db56fa4c433f388b05aa1bdef6a
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86501610"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202920"
 ---
 # <a name="move-a-maintenance-control-configuration-to-another-region"></a>Flytta en konfiguration för underhålls kontroll till en annan region
 
 Följ den här artikeln för att flytta en konfiguration av en underhålls kontroll till en annan Azure-region. Du kanske vill flytta en konfiguration av flera skäl. Till exempel för att dra nytta av en ny region, för att distribuera funktioner eller tjänster som är tillgängliga i en bestämd region, för att uppfylla interna principer och styrnings krav, eller som svar på kapacitets planeringen.
 
-Med underhålls kontroll, med anpassade underhålls konfigurationer, kan du styra hur plattforms uppdateringar tillämpas på virtuella [Windows](./maintenance-control-cli.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json) -och [Linux](./maintenance-control-cli.md?toc=%2Fazure%2Fvirtual-machines%2Flinux%2Ftoc.json&bc=%2Fazure%2Fvirtual-machines%2Flinux%2Fbreadcrumb%2Ftoc.json&view=azure-java-stable) -datorer och till Azure-dedikerade värdar. Det finns ett par scenarier för att flytta underhålls kontroll över flera regioner:
+Med [underhålls kontroll](maintenance-control.md), med anpassade underhålls konfigurationer, kan du styra hur plattforms uppdateringar tillämpas på virtuella datorer och till Azure-dedikerade värdar. Det finns ett par scenarier för att flytta underhålls kontroll över flera regioner:
 
 - Följ anvisningarna i den här artikeln om du vill flytta din konfiguration för underhålls kontroll, men inte de resurser som är associerade med konfigurationen.
 - Om du vill flytta resurserna som är associerade med en underhålls konfiguration, men inte själva konfigurationen, följer du [dessa anvisningar](move-region-maintenance-configuration-resources.md).
 - Följ anvisningarna i den här artikeln om du vill flytta både underhålls konfigurationen och de resurser som är kopplade till den. Följ sedan [de här anvisningarna](move-region-maintenance-configuration-resources.md).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Innan du börjar flytta en konfiguration för underhålls kontroll:
 
@@ -38,7 +38,7 @@ Innan du börjar flytta en konfiguration för underhålls kontroll:
 
 ## <a name="prepare-and-move"></a>Förbered och flytta 
 
-1. Hämta alla underhålls konfigurationer i varje prenumeration. Kör kommandot CLI [AZ Maintenance Configuration List](/cli/azure/ext/maintenance/maintenance/configuration?view=azure-cli-latest#ext-maintenance-az-maintenance-configuration-list) för att göra detta och ersätt $subId med ditt PRENUMERATIONS-ID.
+1. Hämta alla underhålls konfigurationer i varje prenumeration. Kör kommandot CLI [AZ Maintenance Configuration List](/cli/azure/ext/maintenance/maintenance/configuration#ext-maintenance-az-maintenance-configuration-list) för att göra detta och ersätt $subId med ditt PRENUMERATIONS-ID.
 
     ```
     az maintenance configuration list --subscription $subId --query "[*].{Name:name, Location:location, ResGroup:resourceGroup}" --output table
@@ -49,7 +49,7 @@ Innan du börjar flytta en konfiguration för underhålls kontroll:
     --- | --- | ---
     Hoppa över underhåll | usaöstra2 | konfiguration – resurs grupp
     IgniteDemoConfig | usaöstra2 | konfiguration – resurs grupp
-    defaultMaintenanceConfiguration – öst | eastus | test konfiguration
+    defaultMaintenanceConfiguration – öst | USA, östra | test konfiguration
     
 
 3. Spara listan för referens. När du flyttar konfigurationerna hjälper det dig att kontrol lera att allt har flyttats.

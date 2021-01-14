@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: a92802f0b121a332afccf7f6c12e876b3263bd82
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 3ffd5dc1caef6bd2a77ca7902a117ad2446c0265
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96343951"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202325"
 ---
 # <a name="azure-security-baseline-for-expressroute"></a>Azures säkerhets bas linje för ExpressRoute
 
@@ -301,9 +301,9 @@ För att hjälpa dig att hålla koll på dedikerade administrativa konton kan du
 
 **Vägledning**: Använd en privilegie rad åtkomst arbets Station (Paw) med Azure AD Multi-Factor Authentication (MFA) aktiverat för att logga in på och konfigurera dina Azure Sentinel-relaterade resurser.
 
-* [Arbetsstationer för privilegierad åtkomst (PAW)](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+* [Arbetsstationer för privilegierad åtkomst (PAW)](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
-* [Planera en molnbaserad Azure AD Multi-Factor Authentication-distribution](../active-directory/authentication/howto-mfa-getstarted.md)
+* [Planera en molnbaserad distribution av Azure AD Multi-Factor Authentication](../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Övervakning i Azure Security Center**: Ej tillämpligt
 

@@ -8,12 +8,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9d9d3d8456e0623ea3f1ef17c5f9f7acb28d0ecd
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: efd44d6bf33c3efde4994f79d28b578757908fd8
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96015389"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201543"
 ---
 # <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption"></a>Skapa och konfigurera ett nyckelvalv för Azure Disk Encryption
 
@@ -49,7 +49,7 @@ Stegen i den här artikeln kan utföras med [Azure CLI](/cli/azure/), [Azure Pow
 
 ### <a name="connect-to-your-azure-account"></a>Anslut till ditt Azure-konto
 
-Innan du använder Azure CLI eller Azure PowerShell måste du först ansluta till din Azure-prenumeration. Du gör detta genom att [Logga in med Azure CLI](/cli/azure/authenticate-azure-cli?view=azure-cli-latest), [Logga in med Azure PowerShell](/powershell/azure/authenticate-azureps?view=azps-2.5.0)eller ange dina autentiseringsuppgifter till Azure Portal när du uppmanas till det.
+Innan du använder Azure CLI eller Azure PowerShell måste du först ansluta till din Azure-prenumeration. Du gör detta genom att [Logga in med Azure CLI](/cli/azure/authenticate-azure-cli), [Logga in med Azure PowerShell](/powershell/azure/authenticate-azureps?view=azps-2.5.0)eller ange dina autentiseringsuppgifter till Azure Portal när du uppmanas till det.
 
 ```azurecli-interactive
 az login

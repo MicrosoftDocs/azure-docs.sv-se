@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: how-to
 ms.date: 08/03/2020
 ms.author: cynthn
-ms.openlocfilehash: 897cae53e589f4058e5499c0e6e941d4f1d9bb2f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f0c5e51665b4b1d31e7d2b3e25e7be31b481d0d9
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87761080"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98203175"
 ---
 # <a name="download-a-linux-vhd-from-azure"></a>Ladda ned en Linux-VHD från Azure
 
@@ -42,11 +42,11 @@ Om du vill hämta VHD-filen måste du generera en URL för [signatur för delad 
 
 1.  Under den URL som genererades väljer du **Hämta VHD-filen**.
 
-    :::image type="content" source="./media/download-vhd/export-download.PNG" alt-text="Visar meny knappen för att stoppa den virtuella datorn.":::
+    :::image type="content" source="./media/download-vhd/export-download.PNG" alt-text="Visar knappen för att ladda ned den virtuella hård disken.":::
 
 2.  Du kan behöva välja **Spara** i webbläsaren för att starta nedladdningen. Standard namnet för VHD-filen är *ABCD*.
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Lär dig hur du [laddar upp och skapar en virtuell Linux-dator från en anpassad disk med Azure CLI](upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
-- [Hantera Azure-diskar i Azure CLI](tutorial-manage-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+- Lär dig hur du [laddar upp och skapar en virtuell Linux-dator från en anpassad disk med Azure CLI](upload-vhd.md). 
+- [Hantera Azure-diskar i Azure CLI](tutorial-manage-disks.md).

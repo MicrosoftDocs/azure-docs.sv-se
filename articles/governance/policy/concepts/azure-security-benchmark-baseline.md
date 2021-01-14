@@ -7,20 +7,20 @@ ms.topic: conceptual
 ms.date: 07/02/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 8b18da5e41e235b560918ad26117a0162078862c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e8915e1c15972341befd176b412925f4e87c94f6
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91540990"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201458"
 ---
 # <a name="azure-policy-security-baseline-for-azure-security-benchmark"></a>Azure Policy säkerhets bas linje för Azures säkerhets prestanda
 
-Den här säkerhets bas linjen använder vägledning från [Azures säkerhets benchmark](../../../security/benchmarks/overview.md) till Azure policy. Azures säkerhets benchmark ger rekommendationer om hur du kan skydda dina moln lösningar på Azure. Innehållet grupperas efter **domänerna för regelefterlevnad** och **säkerhets kontroller** som definieras av Azures säkerhets benchmark och relaterade rikt linjer som gäller för Azure policy. **Kontroller** som inte är tillämpliga på Azure policy har uteslutits. Om du vill se hur Azure Policy helt mappar till Azures säkerhets mätning, se den [fullständiga Azure policy mappnings filen för säkerhets bas linjen](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines).
+Den här säkerhets bas linjen använder vägledning från [Azures säkerhets benchmark](../../../security/benchmarks/overview.md) till Azure policy. Azure Security Benchmark ger rekommendationer om hur du kan skydda dina molnlösningar i Azure. Innehållet grupperas efter **domänerna för regelefterlevnad** och **säkerhets kontroller** som definieras av Azures säkerhets benchmark och relaterade rikt linjer som gäller för Azure policy. **Kontroller** som inte är tillämpliga på Azure policy har uteslutits. Om du vill se hur Azure Policy helt mappar till Azures säkerhets mätning, se den [fullständiga Azure policy mappnings filen för säkerhets bas linjen](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines).
 
 En mappning av Azures säkerhets benchmark-kontroller till inbyggda princip definitioner via det inbyggda initiativet finns i [regler för efterlevnad: Azure Security benchmark](../samples/azure-security-benchmark.md).
 
-Azure Policy använder _ägarskapet_ på ansvar i stället för _ansvar_. Mer information om _ägarskap_finns i [Azure policy princip definitioner](./definition-structure.md#type) och [delat ansvar i molnet](../../../security/fundamentals/shared-responsibility.md).
+Azure Policy använder _ägarskapet_ på ansvar i stället för _ansvar_. Mer information om _ägarskap_ finns i [Azure policy princip definitioner](./definition-structure.md#type) och [delat ansvar i molnet](../../../security/fundamentals/shared-responsibility.md).
 
 
 ## <a name="logging-and-monitoring"></a>Loggning och övervakning
@@ -36,9 +36,9 @@ Azure Policy använder _ägarskapet_ på ansvar i stället för _ansvar_. Mer in
 * [Förstå loggning och olika logg typer i Azure](../../../azure-monitor/platform/platform-logs-overview.md)
 
 
-**Azure Security Center övervakning**: för närvarande inte tillgängligt
+**Azure Security Center-övervakning**: Inte tillgänglig för tillfället
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ## <a name="identity-and-access-control"></a>Identitets- och åtkomstkontroll
 
@@ -51,22 +51,22 @@ Azure Policy använder _ägarskapet_ på ansvar i stället för _ansvar_. Mer in
 Du kan också aktivera en just-in-Time/bara-tillräcklig-åtkomst-lösning med hjälp av [Azure AD Privileged Identity Management](../../../active-directory/privileged-identity-management/pim-configure.md) privilegierade roller eller [Azure Resource Manager](../../../azure-resource-manager/management/overview.md).
 
 
-**Azure Security Center övervakning**: för närvarande inte tillgängligt
+**Azure Security Center-övervakning**: Inte tillgänglig för tillfället
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3,6: Använd dedikerade datorer (arbets stationer med privilegie rad åtkomst) för alla administrativa uppgifter
 
 **Vägledning**: Använd Paw (arbets stationer med privilegie rad åtkomst) med MFA konfigurerat för att logga in på och konfigurera Azure-resurser.
 
-* [Lär dig mer om arbets stationer med privilegie rad åtkomst](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+* [Lär dig mer om arbets stationer med privilegie rad åtkomst](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
-* [Så här aktiverar du MFA i Azure](../../../active-directory/authentication/howto-mfa-getstarted.md)
+* [Aktivera MFA i Azure](../../../active-directory/authentication/howto-mfa-getstarted.md)
 
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ## <a name="data-protection"></a>Dataskydd
 
@@ -81,9 +81,9 @@ Du kan också aktivera en just-in-Time/bara-tillräcklig-åtkomst-lösning med h
 * [Så här konfigurerar du Azure RBAC](../../../role-based-access-control/role-assignments-portal.md)
 
 
-**Azure Security Center övervakning**: för närvarande inte tillgängligt
+**Azure Security Center-övervakning**: Inte tillgänglig för tillfället
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4,9: logg och varning vid ändringar av kritiska Azure-resurser
 
@@ -92,9 +92,9 @@ Du kan också aktivera en just-in-Time/bara-tillräcklig-åtkomst-lösning med h
 * [Så här skapar du aviseringar för Azure aktivitets logg händelser](../../../azure-monitor/platform/alerts-activity-log.md)
 
 
-**Azure Security Center övervakning**: för närvarande inte tillgängligt
+**Azure Security Center-övervakning**: Inte tillgänglig för tillfället
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ## <a name="inventory-and-asset-management"></a>Inventerings- och tillgångshantering
 
@@ -109,30 +109,30 @@ Du kan också aktivera en just-in-Time/bara-tillräcklig-åtkomst-lösning med h
 * [Självstudie: hantera märkes styrning](../tutorials/govern-tags.md)
 
 
-**Azure Security Center övervakning**: för närvarande inte tillgängligt
+**Azure Security Center-övervakning**: Inte tillgänglig för tillfället
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="64-define-and-maintain-an-inventory-of-approved-azure-resources"></a>6,4: definiera och underhålla en inventering av godkända Azure-resurser
 
 **Vägledning**: skapa en inventering av godkända princip definitioner och princip tilldelningar enligt organisationens behov.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="65-monitor-for-unapproved-azure-resources"></a>6,5: övervaka för ej godkända Azure-resurser
 
 **Vägledning**: Använd Azure policy för att ange begränsningar för den typ av resurser som kan skapas i dina prenumerationer.
 
-* [Så här konfigurerar och hanterar du Azure Policy](../tutorials/create-and-manage.md)
+* [Konfigurera och hantera Azure Policy](../tutorials/create-and-manage.md)
 
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ## <a name="next-steps"></a>Nästa steg
 
 - Se [Azures säkerhets benchmark](../../../security/benchmarks/overview.md)
-- Läs mer om [Azures säkerhets bas linjer](../../../security/benchmarks/security-baselines-overview.md)
+- Läs mer om [säkerhetsbaslinjer för Azure](../../../security/benchmarks/security-baselines-overview.md)

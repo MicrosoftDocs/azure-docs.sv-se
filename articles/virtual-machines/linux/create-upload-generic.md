@@ -6,23 +6,23 @@ ms.service: virtual-machines-linux
 ms.topic: how-to
 ms.date: 10/08/2018
 ms.author: guybo
-ms.openlocfilehash: ef4175d24cfd02bb5cb6470b6334fea190b5bec2
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 9888cde8bca9fb0646dbdc8bb601b0887908ad1d
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500605"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98203243"
 ---
 # <a name="information-for-non-endorsed-distributions"></a>Information om icke-godkända distributioner
 
-Service avtalet för Azure-plattformen gäller enbart virtuella datorer som kör Linux OS när en av de godkända [distributionerna](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) används. För dessa godkända distributioner finns förkonfigurerade Linux-avbildningar på Azure Marketplace.
+Service avtalet för Azure-plattformen gäller enbart virtuella datorer som kör Linux OS när en av de godkända [distributionerna](endorsed-distros.md) används. För dessa godkända distributioner finns förkonfigurerade Linux-avbildningar på Azure Marketplace.
 
-* [Linux på Azure-godkända distributioner](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Linux på Azure-godkända distributioner](endorsed-distros.md)
 * [Stöd för Linux-avbildningar i Microsoft Azure](https://support.microsoft.com/kb/2941892)
 
 Alla distributioner som körs på Azure har ett antal krav. Den här artikeln kan inte vara omfattande eftersom varje distribution är annorlunda. Även om du uppfyller alla kriterier nedan kan du behöva justera Linux-systemet avsevärt för att det ska fungera korrekt.
 
-Vi rekommenderar att du börjar med en av [Linux på Azure-godkända distributioner](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). I följande artiklar visas hur du förbereder de olika godkända Linux-distributioner som stöds i Azure:
+Vi rekommenderar att du börjar med en av [Linux på Azure-godkända distributioner](endorsed-distros.md). I följande artiklar visas hur du förbereder de olika godkända Linux-distributioner som stöds i Azure:
 
 - [CentOS-baserade distributioner](create-upload-centos.md)
 - [Debian Linux](debian-create-upload-vhd.md)
@@ -38,7 +38,7 @@ Den här artikeln fokuserar på allmän vägledning för att köra din Linux-dis
 * Formatet för Hyper-V virtuell hård disk (VHDX) stöds inte i Azure, endast *fast virtuell* hård disk.  Du kan konvertera disken till VHD-format med hjälp av Hyper-V Manager eller cmdleten [Convert-VHD](/powershell/module/hyper-v/convert-vhd) . Om du använder VirtualBox väljer du **fast storlek** i stället för standard (dynamiskt allokerat) när du skapar disken.
 * Azure stöder gen1 (BIOS boot) & Gen2 (UEFI boot) virtuella datorer.
 * Den maximala storlek som tillåts för den virtuella hård disken är 1 023 GB.
-* När du installerar Linux-systemet rekommenderar vi att du använder standardpartitioner istället för LVM (Logical Volume Manager) som är standard för många installationer. Genom att använda standardpartitioner undviker du LVM namn konflikter med klonade virtuella datorer, särskilt om en OS-disk någonsin är ansluten till en annan identisk virtuell dator för fel sökning. [LVM](/previous-versions/azure/virtual-machines/linux/configure-lvm?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) eller [RAID](/previous-versions/azure/virtual-machines/linux/configure-raid?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) kan användas på data diskar.
+* När du installerar Linux-systemet rekommenderar vi att du använder standardpartitioner istället för LVM (Logical Volume Manager) som är standard för många installationer. Genom att använda standardpartitioner undviker du LVM namn konflikter med klonade virtuella datorer, särskilt om en OS-disk någonsin är ansluten till en annan identisk virtuell dator för fel sökning. [LVM](/previous-versions/azure/virtual-machines/linux/configure-lvm) eller [RAID](/previous-versions/azure/virtual-machines/linux/configure-raid) kan användas på data diskar.
 * Kernel-stöd för att montera UDF-filsystem är nödvändigt. Vid första starten av Azure skickas etablerings konfigurationen till den virtuella Linux-datorn med hjälp av UDF-formaterade medier som är kopplade till gästen. Azure Linux-agenten måste montera UDF-filsystemet för att läsa konfigurationen och etablera den virtuella datorn.
 * Tidigare versioner av Linux-kärnan än 2.6.37 stöder inte NUMA på Hyper-V med större VM-storlekar. Det här problemet påverkar främst äldre distributioner med den överordnade Red Hat 2.6.32-kärnan och har åtgärd ATS i Red Hat Enterprise Linux (RHEL) 6,6 (kernel-2.6.32-504). System som kör anpassade kernels som är äldre än 2.6.37, eller RHEL-baserade kernels som är äldre än 2.6.32-504, måste ange start parametern `numa=off` på kernel-kommandoraden i grub. conf. Mer information finns i [Red Hat KB 436883](https://access.redhat.com/solutions/436883).
 * Konfigurera inte en swap-partition på OS-disken. Linux-agenten kan konfigureras för att skapa en växlings fil på den tillfälliga resurs disken, enligt beskrivningen i följande steg.
@@ -67,7 +67,7 @@ VHD-avbildningar på Azure måste ha en virtuell storlek som är justerad till 1
 
 * VHD http: \/ / \<mystorageaccount> . blob.Core.Windows.net/VHDs/MyLinuxVM.VHD har en virtuell storlek på 21475270656 byte som inte stöds. Storleken måste vara ett heltal (i MB).
 
-I det här fallet ändrar du storlek på den virtuella datorn med hjälp av Hyper-V Manager-konsolen eller [ändra storlek på VHD PowerShell-](/powershell/module/hyper-v/resize-vhd?view=win10-ps) cmdleten.  Om du inte kör i en Windows-miljö rekommenderar vi att du använder `qemu-img` för att konvertera (om det behövs) och ändra storlek på den virtuella hård disken.
+I det här fallet ändrar du storlek på den virtuella datorn med hjälp av Hyper-V Manager-konsolen eller [ändra storlek på VHD PowerShell-](/powershell/module/hyper-v/resize-vhd) cmdleten.  Om du inte kör i en Windows-miljö rekommenderar vi att du använder `qemu-img` för att konvertera (om det behövs) och ändra storlek på den virtuella hård disken.
 
 > [!NOTE]
 > Det finns en [känd bugg i qemu-img-](https://bugs.launchpad.net/qemu/+bug/1490611) versionerna >= 2.2.1 som resulterar i en felaktigt formaterad virtuell hård disk. Problemet har åtgärd ATS i QEMU 2,6. Vi rekommenderar att du använder antingen `qemu-img` 2.2.0 eller lägre eller 2,6 eller högre.
@@ -114,7 +114,7 @@ I det här fallet ändrar du storlek på den virtuella datorn med hjälp av Hype
 
 ## <a name="linux-kernel-requirements"></a>Krav för linux-kernel
 
-LIS-drivrutinerna (Linux Integration Services) för Hyper-V och Azure bidrogs direkt till den överordnade Linux-kärnan. Många distributioner som innehåller en nyare Linux-kernel-version (t. ex. 3. x) har dessa driv rutiner som redan är tillgängliga, eller som på annat sätt förser de driv rutiner som har fått nya versioner med deras kärnor.  De här driv rutinerna uppdateras ständigt i den överordnade kerneln med nya korrigeringar och funktioner, så när det är möjligt rekommenderar vi att du kör en [godkänd distribution](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) som innehåller dessa korrigeringar och uppdateringar.
+LIS-drivrutinerna (Linux Integration Services) för Hyper-V och Azure bidrogs direkt till den överordnade Linux-kärnan. Många distributioner som innehåller en nyare Linux-kernel-version (t. ex. 3. x) har dessa driv rutiner som redan är tillgängliga, eller som på annat sätt förser de driv rutiner som har fått nya versioner med deras kärnor.  De här driv rutinerna uppdateras ständigt i den överordnade kerneln med nya korrigeringar och funktioner, så när det är möjligt rekommenderar vi att du kör en [godkänd distribution](endorsed-distros.md) som innehåller dessa korrigeringar och uppdateringar.
 
 Om du använder en variant av Red Hat Enterprise Linux version 6,0 till 6,3 måste du installera de [senaste Lis-drivrutinerna för Hyper-V](https://go.microsoft.com/fwlink/p/?LinkID=254263&clcid=0x409). Från och med RHEL 6.4 + (och derivat) är LIS-drivrutinerna redan inkluderade i kerneln och det behövs inga ytterligare installations paket.
 

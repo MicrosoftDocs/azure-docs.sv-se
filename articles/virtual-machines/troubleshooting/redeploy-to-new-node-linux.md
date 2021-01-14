@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 6b6abaf10f74b29685309ed5a24a5e6b9f261014
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d553fb6b2061f987e3e098ae47ebca9cd3f60984
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87074443"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98203413"
 ---
 # <a name="redeploy-linux-virtual-machine-to-new-azure-node"></a>Distribuera om en virtuell Linux-dator till en ny Azure-nod
 Om du har problem med att felsöka SSH eller program åtkomst till en virtuell Linux-dator i Azure kan det hjälpa att distribuera om den virtuella datorn. När du distribuerar om en virtuell dator flyttar den den virtuella datorn till en ny nod i Azure-infrastrukturen och ger sedan den behörighet igen. Alla konfigurations alternativ och tillhör ande resurser behålls. Den här artikeln visar hur du distribuerar om en virtuell dator med hjälp av Azure CLI eller Azure Portal.
@@ -52,4 +52,4 @@ azure vm redeploy --resource-group myResourceGroup --vm-name myVM
 [!INCLUDE [virtual-machines-common-redeploy-to-new-node](../../../includes/virtual-machines-common-redeploy-to-new-node.md)]
 
 ## <a name="next-steps"></a>Nästa steg
-Om du har problem med att ansluta till din virtuella dator kan du hitta information om hur du [felsöker SSH-anslutningar](troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) eller [detaljerade SSH-felsöknings steg](detailed-troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Om du inte kan komma åt ett program som körs på den virtuella datorn kan du också läsa [fel söknings problem i programmet](troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Om du har problem med att ansluta till din virtuella dator kan du hitta information om hur du [felsöker SSH-anslutningar](troubleshoot-ssh-connection.md) eller [detaljerade SSH-felsöknings steg](detailed-troubleshoot-ssh-connection.md). Om du inte kan komma åt ett program som körs på den virtuella datorn kan du också läsa [fel söknings problem i programmet](troubleshoot-app-connection.md).

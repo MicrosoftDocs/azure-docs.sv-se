@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 9386b154148cf5b5b6b7cd0b43f5a4b4aa741059
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 3f56fc1b321396c5cc6aa93e3f47fcaafcbe4ae4
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96339701"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202342"
 ---
 # <a name="azure-security-baseline-for-event-hubs"></a>Azures säkerhets bas linje för Event Hubs
 
@@ -361,7 +361,7 @@ Så här aktiverar du MFA i Azure: https://docs.microsoft.com/azure/active-direc
 
 **Vägledning**: Använd Paw (Privileged Access Workstation) med Multi-Factor Authentication (MFA) konfigurerat för att logga in på och konfigurera Event Hub-aktiverade resurser.
 
-Lär dig mer om arbets stationer med privilegie rad åtkomst: https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations
+Lär dig mer om arbets stationer med privilegie rad åtkomst: https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/
 
 Så här aktiverar du MFA i Azure: https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
 

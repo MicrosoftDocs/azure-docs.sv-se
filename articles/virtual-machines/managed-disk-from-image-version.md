@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 10/27/2020
 ms.author: cynthn
 ms.reviewer: olayemio
-ms.openlocfilehash: 40d3ff736194c4634b949af52ee7b09db20dd06d
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 84ec5ecbfdc2aab2445d050cc51d2b56acb7f3fd
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95026139"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202563"
 ---
 # <a name="create-a-managed-disk-from-an-image-version"></a>Skapa en hanterad disk från en avbildnings version
 
@@ -33,7 +33,7 @@ az sig image-version list \
    -o table
 ```
 
-Ange `source` variabeln till ID för avbildnings versionen och Använd sedan [AZ disk Create](/cli/azure/disk?view=azure-cli-latest#az_disk_create) för att skapa den hanterade disken. 
+Ange `source` variabeln till ID för avbildnings versionen och Använd sedan [AZ disk Create](/cli/azure/disk#az_disk_create) för att skapa den hanterade disken. 
 
 I det här exemplet exporterar vi OS-disken för avbildnings versionen för att skapa en hanterad disk med namnet *myManagedOSDisk* i regionen *östra* i en resurs grupp med namnet *myResourceGroup*. 
 

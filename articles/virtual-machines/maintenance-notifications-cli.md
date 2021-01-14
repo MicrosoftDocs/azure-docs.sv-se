@@ -7,18 +7,18 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: shants
-ms.openlocfilehash: c449bce76cc9cb7e5f8b9659c11b443e186c65ad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4bd5c8ae7b4f2ba2d057f61712ce799814e19050
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91306981"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202155"
 ---
 # <a name="handling-planned-maintenance-notifications-using-the-azure-cli"></a>Hantering av planerade underhålls aviseringar med hjälp av Azure CLI
 
 **Den här artikeln gäller för virtuella datorer som kör både Linux och Windows.**
 
-Du kan använda CLI för att se när virtuella datorer är schemalagda för [Underhåll](maintenance-notifications.md). Information om planerat underhåll är tillgänglig från [AZ VM get-instance-View](/cli/azure/vm?view=azure-cli-latest#az-vm-get-instance-view).
+Du kan använda CLI för att se när virtuella datorer är schemalagda för [Underhåll](maintenance-notifications.md). Information om planerat underhåll är tillgänglig från [AZ VM get-instance-View](/cli/azure/vm#az-vm-get-instance-view).
  
 Underhålls information returneras endast om underhållet är planerat. 
 

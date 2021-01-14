@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: b625a81ff328e6760ec0ad8d9acb5735f402df73
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: e47dfeab7466faf9a60b161b05d8b3bf39ebdb6a
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96455619"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98203311"
 ---
 # <a name="azure-security-baseline-for-logic-apps"></a>Azures säkerhets bas linje för Logic Apps
 
@@ -444,7 +444,7 @@ För kopplingar som använder Azure Active Directory (Azure AD) OAuth, skapar en
 
 **Vägledning**: Använd Paw (Privileged Access Workstation) med Multi-Factor Authentication (MFA) konfigurerat för att logga in på och konfigurera Azure-resurser.
 
-- [Lär dig mer om arbets stationer med privilegie rad åtkomst](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+- [Lär dig mer om arbets stationer med privilegie rad åtkomst](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 - [Aktivera MFA i Azure](../active-directory/authentication/howto-mfa-getstarted.md)
 

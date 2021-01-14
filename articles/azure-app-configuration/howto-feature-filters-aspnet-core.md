@@ -8,12 +8,12 @@ author: AlexandraKemperMS
 ms.author: alkemper
 ms.topic: conceptual
 ms.date: 3/9/2020
-ms.openlocfilehash: 9a6ae1581b3958495010b032980b0de2e267088b
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 13857580d434736fbf0b12f52d39537ca864a497
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96931885"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98203154"
 ---
 # <a name="use-feature-filters-to-enable-conditional-feature-flags"></a>Använd funktions filter för att aktivera villkorliga funktions flaggor
 
@@ -56,19 +56,19 @@ Du kan konfigurera de här inställningarna för funktions flaggor som definiera
     > [!div class="mx-imgBorder"]
     > ![Redigera beta funktions flagga](./media/edit-beta-feature-flag.png)
 
-1. På **redigerings** skärmen väljer du knappen **vid** alternativ om den inte redan är markerad. Klicka sedan på knappen **Lägg till filter** . ( **På** alternativ knappens etikett ändras till läsa **villkorligt**.)
+1. På sidan **Redigera** väljer du knappen **Aktivera funktions flagga** om den inte redan är markerad. Klicka sedan på knappen **Använd funktions filter** och välj **anpassad**. 
 
 1. I fältet **nyckel** anger du *Microsoft. procent*.
 
     > [!div class="mx-imgBorder"]
     > ![Lägg till funktions filter](./media/feature-flag-add-filter.png)
 
-1. Klicka på snabb menyn bredvid funktions filter nyckeln. Klicka på **Redigera parametrar**.
+1. Klicka på snabb menyn bredvid funktions filter nyckeln. Klicka på **Redigera filter parametrar**.
 
     > [!div class="mx-imgBorder"]
-    > ![Redigera funktions filter parametrar](./media/feature-flag-edit-filter-parameters.png)
+    > ![Redigera funktions filter parametrar](./media/feature-flags-edit-filter-parameters.png)
 
-1. Hovra under **namn** rubriken så att text rutor visas i rutnätet. Ange ett **namn** på ett *värde* och ett **värde** på 50. Fältet **värde** anger procent andelen begär Anden som du vill aktivera funktions filtret för.
+1. Ange ett **namn** på ett *värde* och ett **värde** på 50. Fältet **värde** anger procent andelen begär Anden som du vill aktivera funktions filtret för.
 
     > [!div class="mx-imgBorder"]
     > ![Ange funktions filter parametrar](./media/feature-flag-set-filter-parameters.png)

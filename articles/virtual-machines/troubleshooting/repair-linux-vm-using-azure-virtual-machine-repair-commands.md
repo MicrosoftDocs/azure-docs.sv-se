@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 09/10/2019
 ms.author: v-miegge
-ms.openlocfilehash: bfd3b2351a280f423ba0ef0b15318449554b5e3b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d3db1c3cdfc87cedc0ba24fadc0271a8af44a279
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91595933"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201917"
 ---
 # <a name="repair-a-linux-vm-by-using-the-azure-virtual-machine-repair-commands"></a>Reparera en virtuell Linux-dator med hjälp av reparationskommandon för virtuella Azure-datorer
 
@@ -59,7 +59,7 @@ Mer dokumentation och instruktioner finns i [AZ VM Repair](/cli/azure/ext/vm-rep
 
    Om du föredrar att installera och använda detta CLI lokalt måste du köra Azure CLI version 2.0.30 eller senare. Kör ``az --version`` för att hitta versionen. Om du behöver installera eller uppgradera Azure CLI kan du läsa [Installera Azure CLI](/cli/azure/install-azure-cli).
    
-   Om du behöver logga in på Cloud Shell med ett annat konto än vad du för närvarande är inloggad på Azure-portalen med kan du använda ``az login`` [AZ-inloggnings referens](/cli/azure/reference-index?view=azure-cli-latest#az-login&preserve-view=true).  Om du vill växla mellan prenumerationer som är kopplade till ditt konto kan du använda ``az account set --subscription`` [AZ konto uppsättnings referens](/cli/azure/account?view=azure-cli-latest#az-account-set&preserve-view=true).
+   Om du behöver logga in på Cloud Shell med ett annat konto än vad du för närvarande är inloggad på Azure-portalen med kan du använda ``az login`` [AZ-inloggnings referens](/cli/azure/reference-index#az-login&preserve-view=true).  Om du vill växla mellan prenumerationer som är kopplade till ditt konto kan du använda ``az account set --subscription`` [AZ konto uppsättnings referens](/cli/azure/account#az-account-set&preserve-view=true).
 
 2. Om detta är första gången du har använt `az vm repair` kommandona, lägger du till tillägget VM-Repair cli.
 

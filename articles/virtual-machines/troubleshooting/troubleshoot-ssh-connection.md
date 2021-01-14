@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 05/30/2017
 ms.author: genli
-ms.openlocfilehash: 43e2f1c304a2ede10445fa656dbdd16a4b60ca3c
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 63c1e388ecd53d9b827e45a1fa78bdb6feeaab21
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978959"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201951"
 ---
 # <a name="troubleshoot-ssh-connections-to-an-azure-linux-vm-that-fails-errors-out-or-is-refused"></a>Felsöka SSH-anslutningar till en virtuell Linux-dator som misslyckas, returnerar fel eller avvisas
 Den här artikeln hjälper dig att hitta och åtgärda de problem som uppstår på grund av SSH-fel (Secure Shell), SSH-anslutningsfel eller SSH nekas när du försöker ansluta till en virtuell Linux-dator (VM). Du kan använda Azure Portal, Azure CLI eller VM Access-tillägget för Linux för att felsöka och lösa anslutnings problem.
@@ -280,6 +280,6 @@ Testa de här stegen för att lösa de vanligaste SSH-anslutningsfel för virtue
      Välj din virtuella dator och rulla ned **Inställningar**  >  **kontrol lera hälsa**.
 
 ## <a name="additional-resources"></a>Ytterligare resurser
-* Om du fortfarande inte kan använda SSH till den virtuella datorn efter att ha granskat stegen efter, kan du läsa [mer i detaljerade fel söknings steg](detailed-troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) för att granska ytterligare steg för att lösa problemet.
+* Om du fortfarande inte kan använda SSH till den virtuella datorn efter att ha granskat stegen efter, kan du läsa [mer i detaljerade fel söknings steg](detailed-troubleshoot-ssh-connection.md) för att granska ytterligare steg för att lösa problemet.
 * Mer information om hur du felsöker program åtkomst finns i [Felsöka åtkomst till ett program som körs på en virtuell Azure-dator](./troubleshoot-app-connection.md?toc=/azure/virtual-machines/linux/toc.json)
 * Mer information om fel sökning av virtuella datorer som har skapats med hjälp av den klassiska distributions modellen finns i [så här återställer du ett lösen ord eller SSH för Linux-baserade virtuella datorer](/previous-versions/azure/virtual-machines/linux/classic/reset-access-classic).

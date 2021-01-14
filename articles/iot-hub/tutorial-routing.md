@@ -13,12 +13,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
 - devx-track-azurecli
-ms.openlocfilehash: 892dad3963e9da3560acc2c782c3d14db246ea78
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 13130a7ea473b260ddc4f0ebca2ef5b496b34c66
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87500597"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98203018"
 ---
 # <a name="tutorial-use-the-azure-cli-and-azure-portal-to-configure-iot-hub-message-routing"></a>Självstudie: Använd Azure CLI och Azure Portal för att konfigurera IoT Hub meddelanderoutning
 
@@ -136,17 +136,17 @@ Konfigurera nu routning för lagringskontot. Du gå till fönstret meddelanderou
 
 [!INCLUDE [iot-hub-include-blob-storage-format](../../includes/iot-hub-include-blob-storage-format.md)]
 
-1. I [Azure Portal](https://portal.azure.com)väljer du **resurs grupper**och väljer sedan din resurs grupp. I den här självstudien används **ContosoResources**.
+1. I [Azure Portal](https://portal.azure.com)väljer du **resurs grupper** och väljer sedan din resurs grupp. I den här självstudien används **ContosoResources**.
 
 2. Välj IoT-hubben under resurs listan. I självstudien används **ContosoTestHub**.
 
-3. Välj **meddelanderoutning**. I fönstret **meddelanderoutning** väljer du +**Lägg till**. I fönstret **Lägg till en väg** väljer du +**Lägg till** bredvid fältet slut punkt för att visa de slut punkter som stöds, som visas på följande bild:
+3. Välj **meddelanderoutning**. I fönstret **meddelanderoutning** väljer du +**Lägg till**. I fönstret **Lägg till en väg** väljer du +**Lägg till slut punkt** bredvid fältet slut punkt för att visa de slut punkter som stöds, som visas i följande bild:
 
-   ![Börja lägga till en slut punkt för en väg](./media/tutorial-routing/message-routing-add-a-route-w-storage-ep.png)
+   ![Börja lägga till en slut punkt för en väg](./media/tutorial-routing/message-routing-add-a-route-with-storage-endpoint-ver2.png)
 
-4. Välj **Blob-lagring**. Du ser rutan **Lägg till en lagrings slut punkt** .
+4. Välj **lagring**. Du ser rutan **Lägg till en lagrings slut punkt** .
 
-   ![Lägga till en slut punkt](./media/tutorial-routing/message-routing-add-storage-ep.png)
+   ![Lägga till en slut punkt](./media/tutorial-routing/message-routing-add-storage-endpoint-ver2.png)
 
 5. Ange ett namn på slutpunkten. I den här självstudien används **ContosoStorageEndpoint**.
 

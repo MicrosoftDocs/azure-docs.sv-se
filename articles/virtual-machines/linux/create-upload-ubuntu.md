@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: how-to
 ms.date: 06/06/2020
 ms.author: danis
-ms.openlocfilehash: d3bdc3d0705bd8edc70f55b8372818e60859eedd
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: ca1aae3e819d58ea32453f2549d162bbfc9c91ae
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500571"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98203226"
 ---
 # <a name="prepare-an-ubuntu-virtual-machine-for-azure"></a>Förbereda en virtuell Ubuntu-dator för Azure
 
@@ -28,7 +28,7 @@ Den här artikeln förutsätter att du redan har installerat ett Ubuntu Linux op
 
 * Se även [allmänna Linux-Installationsinstruktioner](create-upload-generic.md#general-linux-installation-notes) för mer information om hur du förbereder Linux för Azure.
 * VHDX-formatet stöds inte i Azure, endast **fast virtuell hård disk**.  Du kan konvertera disken till VHD-format med hjälp av Hyper-V Manager eller `Convert-VHD` cmdleten.
-* När du installerar Linux-systemet rekommenderar vi att du använder standardpartitioner snarare än LVM (vanligt vis som standard för många installationer). På så sätt undviker du LVM namn konflikter med klonade virtuella datorer, särskilt om en OS-disk någonsin måste kopplas till en annan virtuell dator för fel sökning. [LVM](/previous-versions/azure/virtual-machines/linux/configure-lvm?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) eller [RAID](/previous-versions/azure/virtual-machines/linux/configure-raid?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) kan användas på data diskar om det är lämpligt.
+* När du installerar Linux-systemet rekommenderar vi att du använder standardpartitioner snarare än LVM (vanligt vis som standard för många installationer). På så sätt undviker du LVM namn konflikter med klonade virtuella datorer, särskilt om en OS-disk någonsin måste kopplas till en annan virtuell dator för fel sökning. [LVM](/previous-versions/azure/virtual-machines/linux/configure-lvm) eller [RAID](/previous-versions/azure/virtual-machines/linux/configure-raid) kan användas på data diskar om det är lämpligt.
 * Konfigurera inte en swap-partition eller swapfile på OS-disken. Konfigurations agenten för Cloud-Init kan konfigureras för att skapa en växlings fil eller en swap-partition på den tillfälliga resurs disken. Mer information om detta finns i stegen nedan.
 * Alla virtuella hård diskar på Azure måste ha en virtuell storlek som är justerad till 1 MB. När du konverterar från en RAW-disk till VHD måste du se till att den råa disk storleken är en multipel av 1 MB före konverteringen. Mer information finns i [installations information för Linux](create-upload-generic.md#general-linux-installation-notes) .
 
@@ -176,7 +176,7 @@ Den här artikeln förutsätter att du redan har installerat ett Ubuntu Linux op
 
 13. Klicka på **åtgärd-> stänga av** i Hyper-V Manager.
 
-14. Azure accepterar bara virtuella hård diskar med fast storlek. Om den virtuella datorns OS-disk inte är en virtuell hård disk med fast storlek använder du `Convert-VHD` PowerShell-cmdleten och anger `-VHDType Fixed` alternativet. Ta en titt på dokumenten `Convert-VHD` här: [Convert-VHD](/powershell/module/hyper-v/convert-vhd?view=win10-ps).
+14. Azure accepterar bara virtuella hård diskar med fast storlek. Om den virtuella datorns OS-disk inte är en virtuell hård disk med fast storlek använder du `Convert-VHD` PowerShell-cmdleten och anger `-VHDType Fixed` alternativet. Ta en titt på dokumenten `Convert-VHD` här: [Convert-VHD](/powershell/module/hyper-v/convert-vhd).
 
 
 ## <a name="next-steps"></a>Nästa steg

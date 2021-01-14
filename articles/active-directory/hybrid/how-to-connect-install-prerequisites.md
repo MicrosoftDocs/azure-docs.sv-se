@@ -16,12 +16,12 @@ ms.date: 11/05/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: edace0298514d1fc3cfd3afcff73fa0d29e18f0c
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 73376994e01ed89891726a8f6e1b727f89dab2fb
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96858781"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201730"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Förhandskrav för Azure AD Connect
 I den här artikeln beskrivs kraven och maskin varu kraven för Azure Active Directory (Azure AD) Connect.
@@ -72,7 +72,7 @@ Mer information om hur du skyddar din Active Directory-miljö finns i [metod tip
     - Servrarna där AD FS eller Webbprogramproxy installeras måste vara Windows Server 2012 R2 eller senare. Windows Remote Management måste vara aktiverat på dessa servrar för fjärrinstallation. 
     - Du måste konfigurera TLS/SSL-certifikat. Mer information finns i [Hantera SSL/TLS-protokoll och chiffersviter för AD FS](/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs) och [Hantera SSL-certifikat i AD FS](/windows-server/identity/ad-fs/operations/manage-ssl-certificates-ad-fs-wap).
     - Du måste konfigurera namn matchning. 
-- Om dina globala administratörer har MFA aktiverat måste URL: en https://secure.aadcdn.microsoftonline-p.com *must* vara i listan över betrodda platser. Du uppmanas att lägga till den här platsen i listan över betrodda platser när du uppmanas att ange en MFA-utmaning och inte har lagts till tidigare. Du kan använda Internet Explorer för att lägga till den på dina betrodda platser.
+- Om dina globala administratörer har MFA aktiverat måste URL: en https://secure.aadcdn.microsoftonline-p.com  vara i listan över betrodda platser. Du uppmanas att lägga till den här platsen i listan över betrodda platser när du uppmanas att ange en MFA-utmaning och inte har lagts till tidigare. Du kan använda Internet Explorer för att lägga till den på dina betrodda platser.
 
 #### <a name="harden-your-azure-ad-connect-server"></a>Skärp din Azure AD Connect-Server 
 Vi rekommenderar att du skärper Azure AD Connect-servern för att minska säkerhets attack ytan för den här viktiga komponenten i din IT-miljö. Genom att följa de här rekommendationerna kan du undvika vissa säkerhets risker för din organisation.
@@ -83,7 +83,7 @@ Vi rekommenderar att du skärper Azure AD Connect-servern för att minska säker
 - Följ rikt linjerna för att [skydda privilegie rad åtkomst](/windows-server/identity/securing-privileged-access/securing-privileged-access). 
 - Neka användningen av NTLM-autentisering med AADConnect-servern. Här följer några sätt att göra detta: [Begränsa NTLM på AADConnect-servern](/windows/security/threat-protection/security-policy-settings/network-security-restrict-ntlm-outgoing-ntlm-traffic-to-remote-servers) och [Begränsa NTLM på en domän](/windows/security/threat-protection/security-policy-settings/network-security-restrict-ntlm-ntlm-authentication-in-this-domain)
 - Se till att varje dator har ett unikt lokalt administratörs lösen ord. Mer information finns i [lokal administratör lösen ords lösning (upphörde)](https://support.microsoft.com/help/3062591/microsoft-security-advisory-local-administrator-password-solution-laps) kan konfigurera unika slumpmässiga lösen ord på varje arbets Station och Server lagra dem i Active Directory som skyddas av en ACL. Endast berättigade behöriga användare kan läsa eller begära återställning av lösen ord för det lokala administratörs kontot. Du kan få en uppgång för användning på arbets stationer och servrar från [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=46899). Ytterligare vägledning för att använda en miljö med fördröjning och privilegierade åtkomst arbets stationer (Paw) finns i [operativa standarder som baseras på principen om ren källa](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#operational-standards-based-on-clean-source-principle). 
-- Implementera dedikerade [arbets stationer med privilegie rad åtkomst](/windows-server/identity/securing-privileged-access/privileged-access-workstations) för all personal med privilegie rad åtkomst till din organisations informations system. 
+- Implementera dedikerade [arbets stationer med privilegie rad åtkomst](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/) för all personal med privilegie rad åtkomst till din organisations informations system. 
 - Följ dessa [rikt linjer](/windows-server/identity/ad-ds/plan/security-best-practices/reducing-the-active-directory-attack-surface) för att minska angrepps ytan i Active Directorys miljön.
 
 
@@ -140,7 +140,7 @@ Vi rekommenderar att du skärper Azure AD Connect-servern för att minska säker
 Mer information finns i MSDN om [default proxy-elementet](/dotnet/framework/configure-apps/file-schema/network/defaultproxy-element-network-settings).
 Mer information om problem med anslutningen finns i [Felsöka anslutnings problem](tshoot-connect-connectivity.md).
 
-### <a name="other"></a>Annat
+### <a name="other"></a>Övrigt
 Valfritt: Använd ett test användar konto för att verifiera synkroniseringen.
 
 ## <a name="component-prerequisites"></a>Komponent krav

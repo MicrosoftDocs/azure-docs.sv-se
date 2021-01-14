@@ -7,12 +7,12 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 01/03/2019
 ms.author: cynthn
-ms.openlocfilehash: 228814db76ea14fa8b74c0c5d634e5afd6d54ac6
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 2726ba3b337dc785de58b06fb5e8372058f71879
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96483053"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202104"
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Virtuella datorer i en Azure Resource Manager-mall
 
@@ -282,7 +282,7 @@ Flera profil element används när du definierar en resurs för virtuella datore
 
 ## <a name="disks-and-images"></a>Diskar och avbildningar
    
-I Azure kan VHD-filer representera [diskar eller avbildningar](../managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). När operativ systemet i en VHD-fil är specialiserat för att vara en specifik virtuell dator kallas det för en disk. När operativ systemet i en VHD-fil generaliseras för att användas för att skapa många virtuella datorer kallas det för en avbildning.   
+I Azure kan VHD-filer representera [diskar eller avbildningar](../managed-disks-overview.md). När operativ systemet i en VHD-fil är specialiserat för att vara en specifik virtuell dator kallas det för en disk. När operativ systemet i en VHD-fil generaliseras för att användas för att skapa många virtuella datorer kallas det för en avbildning.   
     
 ### <a name="create-new-virtual-machines-and-new-disks-from-a-platform-image"></a>Skapa nya virtuella datorer och nya diskar från en plattforms avbildning
 
@@ -453,5 +453,5 @@ Det går inte att använda samma mall för att skapa resurser eller uppdatera be
 
 - Skapa en egen mall med hjälp av [redigera Azure Resource Manager mallar](../../azure-resource-manager/templates/template-syntax.md).
 - Distribuera mallen som du skapade med [skapa en virtuell Windows-dator med en Resource Manager-mall](ps-template.md).
-- Lär dig hur du hanterar de virtuella datorer som du skapade genom att granska [skapa och hantera virtuella Windows-datorer med Azure PowerShell-modulen](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+- Lär dig hur du hanterar de virtuella datorer som du skapade genom att granska [skapa och hantera virtuella Windows-datorer med Azure PowerShell-modulen](tutorial-manage-vm.md).
 - För JSON-syntax och egenskaper för resurs typer i mallar, se [Azure Resource Manager Template Reference](/azure/templates/).

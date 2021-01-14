@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 54982189a5da584c7daf66855ffb655e403a455a
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: a2145c217c19e80c2ca70880e0f9b01ae2ba140e
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500520"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202580"
 ---
 # <a name="linux-virtual-machines-in-azure"></a>Virtuella Linux-datorer i Azure
 
@@ -50,7 +50,7 @@ I den här tabellen finns några exempel på hur du kan hämta en lista över ti
 | Azure Portal |Välj en plats i listan när du skapar en virtuell dator. |
 | Azure PowerShell |Använd kommandot [Get-AzLocation](/powershell/module/az.resources/get-azlocation). |
 | REST-API |Använd åtgärden [List locations](/rest/api/resources/subscriptions) (Listplatser). |
-| Azure CLI |Använd åtgärden [az account list-locations](/cli/azure/account?view=azure-cli-latest). |
+| Azure CLI |Använd åtgärden [az account list-locations](/cli/azure/account). |
 
 ### <a name="singapore-data-residency"></a>Placering för Singapore-data
 
@@ -60,7 +60,7 @@ I Azure är funktionen för att aktivera lagring av kunddata i en enda region f�
 Azure har tillkännagivit ett branschledande serviceavtal på 99,9 % för virtuella datorer med en instans, förutsatt att du distribuerar den virtuella datorn med premiumlagring för alla diskar.  För att distributionen ska kunna omfattas av standardserviceavtalet på 99,95 % för virtuella datorer behöver du fortfarande distribuera två eller flera virtuella datorer som kör arbetsbelastningen i en tillgänglighetsuppsättning. En tillgänglighetsuppsättning säkerställer att dina virtuella datorer distribueras via flera feldomäner i Azure-datacentren och på värdar med olika underhållsfönster. I det fullständiga[Azure-serviceavtalet](https://azure.microsoft.com/support/legal/sla/virtual-machines/) förklaras den garanterade tillgängligheten för Azure som helhet.
 
 ## <a name="vm-size"></a>Storlek på virtuell dator
-[Storleken](../sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) på den virtuella datorn som du använder bestäms av den arbetsbelastning som du vill köra. Storleken som du väljer avgör sedan faktorer som processorkraft, minne och lagringskapacitet. Azure erbjuder en rad olika storlekar för att passa en mängd olika användningar.
+[Storleken](../sizes.md) på den virtuella datorn som du använder bestäms av den arbetsbelastning som du vill köra. Storleken som du väljer avgör sedan faktorer som processorkraft, minne och lagringskapacitet. Azure erbjuder en rad olika storlekar för att passa en mängd olika användningar.
 
 Azure debiterar ett [Tim pris](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) baserat på den virtuella datorns storlek och operativ system. För delar av timmar tar Azure bara betalt för användningen per minut. Lagringsutrymme prissätts och debiteras separat.
 

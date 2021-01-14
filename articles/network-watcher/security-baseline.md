@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 8213523e3035841f42c4a56b777444fd616b29d6
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 598f925d939694ea47605b0e8ea2e63872db7811
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94948535"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201254"
 ---
 # <a name="azure-security-baseline-for-network-watcher"></a>Azures säkerhets bas linje för Network Watcher
 
@@ -30,7 +30,7 @@ Mer information finns i [Översikt över Azure Security-bas linjer](../security/
 
 **Vägledning**: ej tillämpligt; Network Watcher kan övervaka anslutningen mellan en slut punkt och virtuell dator, men den kan inte skyddas av ett virtuellt nätverk, en nätverks säkerhets grupp eller en Azure-brandvägg.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -38,7 +38,7 @@ Mer information finns i [Översikt över Azure Security-bas linjer](../security/
 
 **Vägledning**: ej tillämpligt; Azure Network Watcher har möjlighet att analysera flödes loggar och tillhandahålla omfattande visualiseringar av data, men Network Watcher skapar dock inte flödes loggar eller capturable-paket.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -46,7 +46,7 @@ Mer information finns i [Översikt över Azure Security-bas linjer](../security/
 
 **Vägledning**: ej tillämpligt; den här rekommendationen är avsedd för webb program som körs på Azure App Service-eller beräknings resurser.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -54,7 +54,7 @@ Mer information finns i [Översikt över Azure Security-bas linjer](../security/
 
 **Vägledning**: ej tillämpligt; Azure Network Watcher är inte en resurs med potentiell exponering för offentliga nätverk som behöver skyddas från skadlig trafik.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -62,7 +62,7 @@ Mer information finns i [Översikt över Azure Security-bas linjer](../security/
 
 **Vägledning**: ej tillämpligt; Azure Network Watcher har möjlighet att analysera flödes loggar och tillhandahålla omfattande visualiseringar av data, men Network Watcher skapar dock inte flödes loggar eller capturable-paket.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -70,7 +70,7 @@ Mer information finns i [Översikt över Azure Security-bas linjer](../security/
 
 **Vägledning**: ej tillämpligt; Azure Network Watcher är inte en resurs med potentiell exponering för offentliga nätverk som behöver skyddas från skadlig trafik.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -78,7 +78,7 @@ Mer information finns i [Översikt över Azure Security-bas linjer](../security/
 
 **Vägledning**: ej tillämpligt; den här rekommendationen är avsedd för webb program som körs på Azure App Service-eller beräknings resurser.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -86,7 +86,7 @@ Mer information finns i [Översikt över Azure Security-bas linjer](../security/
 
 **Vägledning**: ej tillämpligt; Azure Network Watcher har möjlighet att analysera flödes loggar och tillhandahålla omfattande visualiseringar av data, men Network Watcher inte är en slut punkt där du kan filtrera eller tillåta trafik med tjänst taggar eller nätverks säkerhets grupper.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -98,11 +98,11 @@ Distribuera nätverks övervakare när virtuella nätverk skapas
 
 Network Watcher ska vara aktiverat
 
-* [Så här konfigurerar och hanterar du Azure Policy](../governance/policy/tutorials/create-and-manage.md)
+* [Konfigurera och hantera Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
 * [Så här skapar du en anpassad princip med princip Ali Aset](../governance/policy/tutorials/create-custom-policy-definition.md)
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -110,7 +110,7 @@ Network Watcher ska vara aktiverat
 
 **Vägledning**: ej tillämpligt; även om Azure Network Watcher stöder taggar, styr Network Watcher inte flödet av nätverks trafik.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -122,7 +122,7 @@ Network Watcher ska vara aktiverat
 
 * [Så här skapar du aviseringar i Azure Monitor](../azure-monitor/platform/alerts-activity-log.md)
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -134,7 +134,7 @@ Network Watcher ska vara aktiverat
 
 **Vägledning**: ej tillämpligt; Microsoft underhåller den tids källa som används för Azure-resurser, till exempel Azure Network Watcher, för tidsstämplar i loggarna.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -146,9 +146,9 @@ Network Watcher ska vara aktiverat
 
 * [Förstå Network Watcher](./network-watcher-monitoring-overview.md)
 
-**Azure Security Center övervakning**: Ja
+**Azure Security Center-övervakning**: Ja
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="23-enable-audit-logging-for-azure-resources"></a>2,3: Aktivera gransknings loggning för Azure-resurser
 
@@ -158,15 +158,15 @@ Network Watcher ska vara aktiverat
 
 * [Förstå Network Watcher](./network-watcher-monitoring-overview.md)
 
-**Azure Security Center övervakning**: Ja
+**Azure Security Center-övervakning**: Ja
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="24-collect-security-logs-from-operating-systems"></a>2,4: samla in säkerhets loggar från operativ system
 
 **Vägledning**: ej tillämpligt; den här rekommendationen är avsedd för beräknings resurser.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -176,9 +176,9 @@ Network Watcher ska vara aktiverat
 
 * [Ange parametrar för logg bevarande](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="26-monitor-and-review-logs"></a>2,6: övervaka och granska loggar
 
@@ -188,9 +188,9 @@ Network Watcher ska vara aktiverat
 
 * [Förstå Network Watcher](./network-watcher-monitoring-overview.md)
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="27-enable-alerts-for-anomalous-activities"></a>2,7: aktivera aviseringar för avvikande aktiviteter
 
@@ -198,15 +198,15 @@ Network Watcher ska vara aktiverat
 
 * [Hantera aviseringar i Azure Security Center](../security-center/security-center-managing-and-responding-alerts.md)
 
-**Azure Security Center övervakning**: Ja
+**Azure Security Center-övervakning**: Ja
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="28-centralize-anti-malware-logging"></a>2,8: centralisera loggning mot skadlig kod
 
 **Vägledning**: ej tillämpligt; Azure Network Watcher bearbetar eller skapar inte relaterade loggar mot skadlig kod.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -214,7 +214,7 @@ Network Watcher ska vara aktiverat
 
 **Vägledning**: ej tillämpligt; Azure Network Watcher bearbetar eller skapar inte DNS-relaterade loggar.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -222,7 +222,7 @@ Network Watcher ska vara aktiverat
 
 **Vägledning**: ej tillämpligt; den här rekommendationen är avsedd för beräknings resurser.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -240,17 +240,17 @@ Du kan använda fönstret identitets-och åtkomst kontroll (IAM) i Azure Portal 
 
 * [Rollbaserad åtkomst kontroll behörigheter som krävs för att använda Network Watcher-funktioner](./required-rbac-permissions.md)
 
-**Azure Security Center övervakning**: Ja
+**Azure Security Center-övervakning**: Ja
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="32-change-default-passwords-where-applicable"></a>3,2: ändra standard lösen ord där tillämpligt
 
 **Vägledning**: Azure AD har inte begreppet standard lösen ord. Andra Azure-resurser som kräver ett lösen ord tvingar ett lösen ord att skapas med komplexitets krav och minsta längd på lösen ord, vilket varierar beroende på tjänsten. Du ansvarar för program från tredje part och Marketplace-tjänster som kan använda standard lösen ord.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="33-use-dedicated-administrative-accounts"></a>3,3: Använd dedikerade administrativa konton
 
@@ -265,15 +265,15 @@ För att hjälpa dig att hålla koll på dedikerade administrativa konton kan du
 
 * [Använda Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-**Azure Security Center övervakning**: Ja
+**Azure Security Center-övervakning**: Ja
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3,4: Använd enkel inloggning (SSO) med Azure Active Directory
 
 **Vägledning**: ej tillämpligt; enkel inloggning (SSO) lägger till säkerhet och bekvämlighet när användare loggar in på anpassade program i Azure Active Directory (AD). Åtkomst till Azure Network Watcher är redan integrerad med Azure Active Directory och nås via Azure Portal samt Azure Resource Manager REST API.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -281,25 +281,25 @@ För att hjälpa dig att hålla koll på dedikerade administrativa konton kan du
 
 **Vägledning**: aktivera Azure Active Directory Multi-Factor Authentication och följ rekommendationer för Azure Security Center identitets-och åtkomst hantering.
 
-* [Så här aktiverar du MFA i Azure](../active-directory/authentication/howto-mfa-getstarted.md)
+* [Aktivera MFA i Azure](../active-directory/authentication/howto-mfa-getstarted.md)
 
 * [Övervaka identitet och åtkomst i Azure Security Center](../security-center/security-center-identity-access.md)
 
-**Azure Security Center övervakning**: Ja
+**Azure Security Center-övervakning**: Ja
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3,6: Använd dedikerade datorer (arbets stationer med privilegie rad åtkomst) för alla administrativa uppgifter
 
 **Vägledning**: Använd en privilegie rad åtkomst arbets Station (Paw) med Azure AD Multi-Factor Authentication (MFA) aktiverat för att logga in på och konfigurera dina Azure Sentinel-relaterade resurser.
 
-* [Arbetsstationer för privilegierad åtkomst (PAW)](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+* [Arbetsstationer för privilegierad åtkomst (PAW)](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
-* [Planera en molnbaserad Azure AD Multi-Factor Authentication-distribution](../active-directory/authentication/howto-mfa-getstarted.md)
+* [Planera en molnbaserad distribution av Azure AD Multi-Factor Authentication](../active-directory/authentication/howto-mfa-getstarted.md)
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="37-log-and-alert-on-suspicious-activities-from-administrative-accounts"></a>3,7: Logga och Avisera om misstänkta aktiviteter från administrativa konton
 
@@ -311,9 +311,9 @@ Dessutom kan du använda Azure AD-farlighets identifiering för att visa aviseri
 
 * [Förstå identifieringar av Azure AD-risker](../active-directory/identity-protection/overview-identity-protection.md)
 
-**Azure Security Center övervakning**: Ja
+**Azure Security Center-övervakning**: Ja
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="38-manage-azure-resources-from-only-approved-locations"></a>3,8: hantera endast Azure-resurser från godkända platser
 
@@ -321,19 +321,19 @@ Dessutom kan du använda Azure AD-farlighets identifiering för att visa aviseri
 
 * [Så här konfigurerar du namngivna platser i Azure](../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="39-use-azure-active-directory"></a>3,9: Använd Azure Active Directory
 
 **Vägledning**: Använd Azure Active Directory (Azure AD) som central autentiserings-och auktoriserings system för dina Azure Sentinel-instanser. Azure AD skyddar data med stark kryptering för data i vila och under överföring. Azure AD innehåller även salter, hash-värden och lagrar användarautentiseringsuppgifter på ett säkert sätt.
 
-* [Så här skapar och konfigurerar du en Azure AD-instans](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
+* [Skapa och konfigurera en Azure AD-instans](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3,10: granska och stäm regelbundet av användar åtkomst
 
@@ -343,9 +343,9 @@ Dessutom kan du använda Azure AD-farlighets identifiering för att visa aviseri
 
 * [Så här använder du granskningar av Azure Identity Access](../active-directory/governance/access-reviews-overview.md)
 
-**Azure Security Center övervakning**: Ja
+**Azure Security Center-övervakning**: Ja
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="311-monitor-attempts-to-access-deactivated-credentials"></a>3,11: övervakaren försöker komma åt inaktiverade autentiseringsuppgifter
 
@@ -355,13 +355,13 @@ Du har åtkomst till Azure AD-inloggning, gransknings-och risk händelse logg k�
 
 Du kan effektivisera den här processen genom att skapa diagnostikinställningar för Azure AD-användarkonton och skicka gransknings loggar och inloggnings loggar till en Log Analytics-arbetsyta. Du kan konfigurera önskade logg aviseringar i Log Analytics.
 
-* [Så här integrerar du Azures aktivitets loggar i Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
+* [Så här integrerar du Azures aktivitetsloggar i Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 * [Aktivera Azure-kontroll på kort](../sentinel/quickstart-onboard.md)
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="312-alert-on-account-login-behavior-deviation"></a>3,12: avisering om beteende för beteende för konto inloggning
 
@@ -373,9 +373,9 @@ Du kan effektivisera den här processen genom att skapa diagnostikinställningar
 
 * [Publicera Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-**Azure Security Center övervakning**: för närvarande inte tillgängligt
+**Azure Security Center-övervakning**: Inte tillgänglig för tillfället
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3,13: ge Microsoft åtkomst till relevant kund information under support scenarier
 
@@ -383,7 +383,7 @@ Du kan effektivisera den här processen genom att skapa diagnostikinställningar
 
 * [Lista över Customer Lockbox tjänster som stöds](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -397,7 +397,7 @@ Du kan effektivisera den här processen genom att skapa diagnostikinställningar
 
 * [Skapa och använda Taggar](../azure-resource-manager/management/tag-resources.md)
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -409,7 +409,7 @@ Du kan effektivisera den här processen genom att skapa diagnostikinställningar
 
 * [Så här skapar du Hanteringsgrupper](../governance/management-groups/create-management-group-portal.md)
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -417,9 +417,9 @@ Du kan effektivisera den här processen genom att skapa diagnostikinställningar
 
 **Vägledning**: Microsoft hanterar den underliggande infrastrukturen för Azure Network Watcher och relaterade resurser och har implementerat strikta kontroller för att förhindra förlust eller exponering av kund information.
 
-* [Förstå kundens data skydd i Azure](../security/fundamentals/protection-customer-data.md)
+* [Förstå skydd av kunddata i Azure](../security/fundamentals/protection-customer-data.md)
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Azure Security Center-övervakning**: Inte tillämpligt
 
 **Ansvar**: Microsoft
 
@@ -431,15 +431,15 @@ Du kan effektivisera den här processen genom att skapa diagnostikinställningar
 
 * [Konfigurera en plats-till-plats-anslutning i Azure Portal](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 
-**Azure Security Center övervakning**: för närvarande inte tillgängligt
+**Azure Security Center-övervakning**: Inte tillgänglig för tillfället
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4,5: Använd ett aktivt identifierings verktyg för att identifiera känsliga data
 
 **Vägledning**: ej tillämpligt; Själva Azure-Network Watcher innehåller ingen kund information.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -453,9 +453,9 @@ För att kunna använda Network Watcher-funktioner måste det konto som du logga
 
 * [Lär dig mer om Azure RBAC-behörigheter i Network Watcher](./required-rbac-permissions.md)
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4,7: Använd värdbaserade data förlust skydd för att genomdriva åtkomst kontroll
 
@@ -463,7 +463,7 @@ För att kunna använda Network Watcher-funktioner måste det konto som du logga
 
 * [Data skydd för Azure-kunder](../security/fundamentals/protection-customer-data.md)
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -471,7 +471,7 @@ För att kunna använda Network Watcher-funktioner måste det konto som du logga
 
 **Vägledning**: ej tillämpligt; Själva Azure-Network Watcher innehåller ingen kund information. Network Watcher lagrar loggar och annan information i Azure Storage där data krypteras i vila.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Microsoft
 
@@ -481,9 +481,9 @@ För att kunna använda Network Watcher-funktioner måste det konto som du logga
 
 * [Så här skapar du aviseringar för Azure aktivitets logg händelser](../azure-monitor/platform/alerts-activity-log.md)
 
-**Azure Security Center övervakning**: Ja
+**Azure Security Center-övervakning**: Ja
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ## <a name="vulnerability-management"></a>Sårbarhetshantering
 
@@ -493,7 +493,7 @@ För att kunna använda Network Watcher-funktioner måste det konto som du logga
 
 **Vägledning**: ej tillämpligt; Microsoft utför sårbarhets hantering på de underliggande system som har stöd för Azure Network Watcher.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -501,7 +501,7 @@ För att kunna använda Network Watcher-funktioner måste det konto som du logga
 
 **Vägledning**: ej tillämpligt; den här rekommendationen är avsedd för beräknings resurser.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -509,7 +509,7 @@ För att kunna använda Network Watcher-funktioner måste det konto som du logga
 
 **Vägledning**: ej tillämpligt; den här rekommendationen är avsedd för beräknings resurser.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -517,7 +517,7 @@ För att kunna använda Network Watcher-funktioner måste det konto som du logga
 
 **Vägledning**: ej tillämpligt; Microsoft utför sårbarhets hantering på de underliggande system som har stöd för Azure Network Watcher.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -525,7 +525,7 @@ För att kunna använda Network Watcher-funktioner måste det konto som du logga
 
 **Vägledning**: ej tillämpligt; Microsoft utför sårbarhets hantering på de underliggande system som har stöd för Azure Network Watcher.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -545,9 +545,9 @@ För att kunna använda Network Watcher-funktioner måste det konto som du logga
 
 * [Förstå Azure RBAC](../role-based-access-control/overview.md)
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="62-maintain-asset-metadata"></a>6,2: underhåll till gångens metadata
 
@@ -555,7 +555,7 @@ För att kunna använda Network Watcher-funktioner måste det konto som du logga
 
 * [Skapa och använda Taggar](../azure-resource-manager/management/tag-resources.md)
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -573,15 +573,15 @@ Använd dessutom Azure Policy för att ange begränsningar för den typ av resur
 
 * [Skapa och använda Taggar](../azure-resource-manager/management/tag-resources.md)
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="64-define-and-maintain-an-inventory-of-approved-azure-resources"></a>6,4: definiera och underhålla en inventering av godkända Azure-resurser
 
 **Vägledning**: ej tillämpligt; den här rekommendationen är avsedd för beräknings resurser.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -589,21 +589,21 @@ Använd dessutom Azure Policy för att ange begränsningar för den typ av resur
 
 **Vägledning**: Använd Azure policy för att ange begränsningar för den typ av resurser som kan skapas i dina prenumerationer.
 
-Använd Azure Resource Graph för att fråga efter och identifiera resurser i prenumerationerna. Se till att alla Azure-resurser som finns i miljön är godkända.
+Använd Azure Resource Graph till att fråga efter och identifiera resurser i prenumerationerna. Se till att alla Azure-resurser som finns i miljön är godkända.
 
-* [Så här konfigurerar och hanterar du Azure Policy](../governance/policy/tutorials/create-and-manage.md)
+* [Konfigurera och hantera Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
 * [Så här skapar du frågor med Azure Resource Graph](../governance/resource-graph/first-query-portal.md)
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6,6: övervaka för program som inte godkänts i beräknings resurser
 
 **Vägledning**: ej tillämpligt; den här rekommendationen är avsedd för beräknings resurser.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -611,7 +611,7 @@ Använd Azure Resource Graph för att fråga efter och identifiera resurser i pr
 
 **Vägledning**: ej tillämpligt; den här rekommendationen är avsedd för beräknings resurser.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -619,7 +619,7 @@ Använd Azure Resource Graph för att fråga efter och identifiera resurser i pr
 
 **Vägledning**: ej tillämpligt; den här rekommendationen är avsedd för beräknings resurser.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -629,19 +629,19 @@ Använd Azure Resource Graph för att fråga efter och identifiera resurser i pr
 - Otillåtna resurstyper
 - Tillåtna resurstyper
 
-* [Så här konfigurerar och hanterar du Azure Policy](../governance/policy/tutorials/create-and-manage.md)
+* [Konfigurera och hantera Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
 * [Så här nekar du en speciell resurs typ med Azure Policy](../governance/policy/samples/index.md)
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="610-maintain-an-inventory-of-approved-software-titles"></a>6,10: underhåll en inventering av godkända program varu titlar
 
 **Vägledning**: ej tillämpligt; den här rekommendationen är avsedd för beräknings resurser.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -651,15 +651,15 @@ Använd Azure Resource Graph för att fråga efter och identifiera resurser i pr
 
 * [Så här konfigurerar du villkorlig åtkomst för att blockera åtkomst till Azure Resource Manager](../role-based-access-control/conditional-access-azure-management.md)
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6,12: begränsa användarnas möjlighet att köra skript i beräknings resurser
 
 **Vägledning**: ej tillämpligt; den här rekommendationen är avsedd för beräknings resurser.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -667,7 +667,7 @@ Använd Azure Resource Graph för att fråga efter och identifiera resurser i pr
 
 **Vägledning**: ej tillämpligt; den här rekommendationen är avsedd för webb program som körs på Azure App Service-eller beräknings resurser.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -685,7 +685,7 @@ Använd Azure Resource Graph för att fråga efter och identifiera resurser i pr
 
 * [Så här skapar du en anpassad princip med princip Ali Aset](../governance/policy/tutorials/create-custom-policy-definition.md)
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -693,7 +693,7 @@ Använd Azure Resource Graph för att fråga efter och identifiera resurser i pr
 
 **Vägledning**: ej tillämpligt; den här rikt linjen är avsedd för beräknings resurser.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -701,11 +701,11 @@ Använd Azure Resource Graph för att fråga efter och identifiera resurser i pr
 
 **Vägledning**: Använd Azure policy [neka] och [distribuera om det inte finns] för att framtvinga säkra inställningar i dina Azure-resurser.
 
-* [Så här konfigurerar och hanterar du Azure Policy](../governance/policy/tutorials/create-and-manage.md)
+* [Konfigurera och hantera Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
 * [Förstå Azure Policys effekter](../governance/policy/concepts/effects.md)
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -713,7 +713,7 @@ Använd Azure Resource Graph för att fråga efter och identifiera resurser i pr
 
 **Vägledning**: ej tillämpligt; den här rikt linjen är avsedd för beräknings resurser.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -725,7 +725,7 @@ Använd Azure Resource Graph för att fråga efter och identifiera resurser i pr
 
 * [Dokumentation om Azure databaser](/azure/devops/repos/index?view=azure-devops)
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -733,7 +733,7 @@ Använd Azure Resource Graph för att fråga efter och identifiera resurser i pr
 
 **Vägledning**: ej tillämpligt; den här rikt linjen är avsedd för beräknings resurser.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -745,11 +745,11 @@ Använd Azure Resource Graph för att fråga efter och identifiera resurser i pr
 
 Se även:
 
-* [Så här konfigurerar och hanterar du Azure Policy](../governance/policy/tutorials/create-and-manage.md)
+* [Konfigurera och hantera Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
 * [Så här skapar du en anpassad princip med princip Ali Aset](../governance/policy/tutorials/create-custom-policy-definition.md)
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -757,7 +757,7 @@ Se även:
 
 **Vägledning**: ej tillämpligt; den här rikt linjen är avsedd för beräknings resurser.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -765,9 +765,9 @@ Se även:
 
 **Vägledning**: använd inbyggda Azure policy definitioner och Azure policy alias i namn området "Microsoft. Network" för att skapa anpassade Azure policy definitioner för att varna, granska och genomdriva system konfigurationer. Använd Azure Policy [audit], [neka] och [distribuera om det inte finns] för att automatiskt tillämpa konfigurationer för dina Azure-resurser.
 
-* [Så här konfigurerar och hanterar du Azure Policy](../governance/policy/tutorials/create-and-manage.md)
+* [Konfigurera och hantera Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -775,7 +775,7 @@ Se även:
 
 **Vägledning**: ej tillämpligt; den här rikt linjen är avsedd för beräknings resurser.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -783,7 +783,7 @@ Se även:
 
 **Vägledning**: ej tillämpligt; Det finns inga lösen ord, hemligheter eller nycklar som är associerade med Azure Network Watcher.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -793,19 +793,19 @@ Se även:
 
 * [Azure-tjänster som har stöd för hanterade identiteter](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
 ### <a name="713-eliminate-unintended-credential-exposure"></a>7,13: eliminera oavsiktlig exponering för autentiseringsuppgifter
 
-**Vägledning**: implementera autentiseringsuppgifterna för inloggning för att identifiera autentiseringsuppgifter inom koden. Den här skannern uppmuntrar också att flytta identifierade autentiseringsuppgifter till säkrare platser som Azure Key Vault.
+**Vägledning**: implementera autentiseringsuppgifterna för inloggning för att identifiera autentiseringsuppgifter inom koden. Credential Scanner uppmanar också till att flytta identifierade autentiseringsuppgifter till en säkrare plats som Azure Key Vault.
 
 * [Konfigurera inloggnings skannern](https://secdevtools.azurewebsites.net/helpcredscan.html)
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ## <a name="malware-defense"></a>Skydd mot skadlig kod
 
@@ -815,7 +815,7 @@ Se även:
 
 **Vägledning**: ej tillämpligt; den här rikt linjen är avsedd för beräknings resurser. Microsofts program mot skadlig kod har Aktiver ATS på den underliggande värden som har stöd för Azure-tjänster (till exempel Azure App Service), men det körs inte på kund innehållet.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -823,15 +823,15 @@ Se även:
 
 **Vägledning**: inte tillämpligt. Network Watcher fungerar inte för användare som överfört data.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="83-ensure-anti-malware-software-and-signatures-are-updated"></a>8,3: se till att program vara och signaturer för skadlig program vara uppdateras
 
 **Vägledning**: ej tillämpligt; den här rekommendationen är avsedd för beräknings resurser. Microsofts program mot skadlig kod har Aktiver ATS på den underliggande värden som stöder Azure-tjänster, men det körs inte på kund innehåll.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -843,7 +843,7 @@ Se även:
 
 **Vägledning**: ej tillämpligt; Själva Azure-Network Watcher innehåller ingen kund information.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -851,7 +851,7 @@ Se även:
 
 **Vägledning**: ej tillämpligt; Själva Azure-Network Watcher innehåller ingen kund information.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -859,7 +859,7 @@ Se även:
 
 **Vägledning**: ej tillämpligt; Själva Azure-Network Watcher innehåller ingen kund information.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -867,7 +867,7 @@ Se även:
 
 **Vägledning**: ej tillämpligt; Själva Azure-Network Watcher innehåller ingen kund information.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -877,7 +877,7 @@ Se även:
 
 ### <a name="101-create-an-incident-response-guide"></a>10,1: skapa en incident svars guide
 
-**Vägledning**: Bygg ut en incident svars guide för din organisation. Se till att det finns skriftliga svars planer för incidenter som definierar alla personal roller och faser för incident hantering/hantering från identifiering till granskning efter incidenten.
+**Vägledning**: Skapa en guide till incidentsvar för organisationen. Se till att det finns skriftliga planer för incidentsvar som definierar alla personalroller och faser i incidenthanteringen, från identifiering till granskning efter incidenten.
 
 * [Konfigurera automatisering av arbets flöden i Azure Security Center](../security-center/security-center-planning-and-operations-guide.md)
 
@@ -887,9 +887,9 @@ Se även:
 
 * [Kunden kan också utnyttja NISTs hanterings guide för dator säkerhet för att hjälpa till med att skapa egna incident svars planer](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf)
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10,2: skapa en incident bedömnings-och prioriterings procedur
 
@@ -897,19 +897,19 @@ Se även:
 
 Dessutom är det tydligt att markera prenumerationer (t. ex. produktion, icke-Prod) och skapa ett namngivnings system för att tydligt identifiera och kategorisera Azure-resurser.
 
-**Azure Security Center övervakning**: Ja
+**Azure Security Center-övervakning**: Ja
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="103-test-security-response-procedures"></a>10,3: testa säkerhets svars procedurer
 
-**Vägledning**: utföra övningar för att testa dina Systems incident svars funktioner på en vanlig takt. Identifiera svaga punkter och luckor och ändra planen efter behov.
+**Vägledning**: utföra övningar för att testa dina Systems incident svars funktioner på en vanlig takt. Identifiera svaga punkter och luckor, och ändra planen efter behov.
 
 * [Se NIST: guide för test, utbildning och övnings program för IT-planer och funktioner](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf)
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10,4: Ange kontakt information för säkerhets incidenter och konfigurera aviseringar för säkerhets incidenter
 
@@ -917,9 +917,9 @@ Dessutom är det tydligt att markera prenumerationer (t. ex. produktion, icke-Pr
 
 * [Så här ställer du in Azure Security Center säkerhets kontakt](../security-center/security-center-provide-security-contact-details.md)
 
-**Azure Security Center övervakning**: Ja
+**Azure Security Center-övervakning**: Ja
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10,5: införliva säkerhets aviseringar i ditt incident svars system
 
@@ -927,11 +927,11 @@ Dessutom är det tydligt att markera prenumerationer (t. ex. produktion, icke-Pr
 
 * [Så här konfigurerar du kontinuerlig export](../security-center/continuous-export.md)
 
-* [Strömma aviseringar till Azure Sentinel](../sentinel/connect-azure-security-center.md)
+* [Så här strömmar du aviseringar till Azure Sentinel](../sentinel/connect-azure-security-center.md)
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="106-automate-the-response-to-security-alerts"></a>10,6: automatisera svaret på säkerhets aviseringar
 
@@ -939,9 +939,9 @@ Dessutom är det tydligt att markera prenumerationer (t. ex. produktion, icke-Pr
 
 * [Konfigurera automatisering av arbets flöden och Logic Apps](../security-center/workflow-automation.md)
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>Penetrationstester och Red Team-tester
 
@@ -953,11 +953,11 @@ Dessutom är det tydligt att markera prenumerationer (t. ex. produktion, icke-Pr
 
 * [Du hittar mer information om Microsofts strategi och körning av röda team indelning och inträngande av direktsända webbplatser mot Microsoft-hanterad moln infrastruktur, tjänster och program](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
-**Ansvars område**: delat
+**Ansvar**: Delad
 
 ## <a name="next-steps"></a>Nästa steg
 
 - Se [Azures säkerhets benchmark](../security/benchmarks/overview.md)
-- Läs mer om [Azures säkerhets bas linjer](../security/benchmarks/security-baselines-overview.md)
+- Läs mer om [säkerhetsbaslinjer för Azure](../security/benchmarks/security-baselines-overview.md)

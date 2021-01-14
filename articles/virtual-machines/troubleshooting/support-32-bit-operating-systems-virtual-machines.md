@@ -13,16 +13,20 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/18/2019
 ms.author: v-miegge
-ms.openlocfilehash: 91e5ca10e97e8fc1646367ac6d575d6813f3a291
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1b801bac28b131ff43c47024649bfe0986f768c7
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87079867"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202903"
 ---
 # <a name="support-for-32-bit-operating-systems-in-azure-virtual-machines"></a>Stöd för 32-bitars operativsystem i Azure Virtual Machines
 
 Med Microsoft Azure kan du nu ta med sina 32-bitars Windows-operativsystem till Azure. Endast specialiserade virtuella hård diskar stöds och generaliserade avbildningar fungerar inte i Azure. Eftersom vissa av dessa operativ system redan har nått sitt slut för liv support avtal kan Microsoft inte erbjuda ytterligare support för dem. Support erbjuds inte heller för Linux-baserade operativ system som körs på en Microsoft Azure virtuell dator (VM).
+
+> [!NOTE]
+> Azure-plattformen har en begränsning för minnes adress utrymme på virtuella datorer som kör 32-bitars operativ system där endast 1 GB minne görs tillgängligt för den virtuella datorn och resten av minnet för den virtuella datorn visas som reserverad i den virtuella gäst datorn. Detta är ett känt problem och vi har för närvarande ingen ETA för en åtgärd. Vi rekommenderar att du flyttar till 64-bitars versioner av operativ systemet.
+> 
 
 ## <a name="more-information"></a>Mer information
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 6cf106f6d7aef4324eeeaf232a28cdd91a8a774b
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: c2595d75acfacf3d501b6efb83b383d9a56215a6
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843136"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98203294"
 ---
 # <a name="azure-security-baseline-for-customer-lockbox-for-microsoft-azure"></a>Azures säkerhets bas linje för Customer Lockbox för Microsoft Azure
 
@@ -30,7 +30,7 @@ Mer information finns i [Översikt över Azure Security-bas linjer](../benchmark
 
 **Vägledning**: ej tillämpligt; Du kan inte associera ett virtuellt nätverk, ett undernät eller en nätverks säkerhets grupp med Customer Lockbox.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -38,7 +38,7 @@ Mer information finns i [Översikt över Azure Security-bas linjer](../benchmark
 
 **Vägledning**: ej tillämpligt; Du kan inte associera ett virtuellt nätverk, ett undernät eller en nätverks säkerhets grupp med Customer Lockbox.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -46,7 +46,7 @@ Mer information finns i [Översikt över Azure Security-bas linjer](../benchmark
 
 **Vägledning**: ej tillämpligt; den här rekommendationen är avsedd för webb program som körs på Azure App Service-eller beräknings resurser.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -54,7 +54,7 @@ Mer information finns i [Översikt över Azure Security-bas linjer](../benchmark
 
 **Vägledning**: ej tillämpligt; Du kan inte associera ett virtuellt nätverk, ett undernät eller en nätverks säkerhets grupp med Customer Lockbox.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -62,7 +62,7 @@ Mer information finns i [Översikt över Azure Security-bas linjer](../benchmark
 
 **Vägledning**: ej tillämpligt; Du kan inte associera ett virtuellt nätverk, ett undernät eller en nätverks säkerhets grupp med Customer Lockbox.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -70,7 +70,7 @@ Mer information finns i [Översikt över Azure Security-bas linjer](../benchmark
 
 **Vägledning**: ej tillämpligt; Du kan inte associera ett virtuellt nätverk, ett undernät eller en nätverks säkerhets grupp med Customer Lockbox.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -78,7 +78,7 @@ Mer information finns i [Översikt över Azure Security-bas linjer](../benchmark
 
 **Vägledning**: ej tillämpligt; den här rekommendationen är avsedd för webb program som körs på Azure App Service-eller beräknings resurser.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -86,7 +86,7 @@ Mer information finns i [Översikt över Azure Security-bas linjer](../benchmark
 
 **Vägledning**: ej tillämpligt; Du kan inte associera ett virtuellt nätverk, ett undernät eller en nätverks säkerhets grupp med Customer Lockbox.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -94,7 +94,7 @@ Mer information finns i [Översikt över Azure Security-bas linjer](../benchmark
 
 **Vägledning**: ej tillämpligt; Du kan inte associera ett virtuellt nätverk, ett undernät eller en nätverks säkerhets grupp med Azure Customer Lockbox.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -102,7 +102,7 @@ Mer information finns i [Översikt över Azure Security-bas linjer](../benchmark
 
 **Vägledning**: ej tillämpligt; Du kan inte associera ett virtuellt nätverk, ett undernät eller en nätverks säkerhets grupp med Customer Lockbox.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -110,7 +110,7 @@ Mer information finns i [Översikt över Azure Security-bas linjer](../benchmark
 
 **Vägledning**: ej tillämpligt; Du kan inte associera ett virtuellt nätverk, ett undernät eller en nätverks säkerhets grupp med Customer Lockbox. Det finns inga nätverkskonfigurationer att göra eller övervaka.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -122,7 +122,7 @@ Mer information finns i [Översikt över Azure Security-bas linjer](../benchmark
 
 **Vägledning**: ej tillämpligt; Microsoft underhåller den tids källa som används för resurser som Customer Lockbox.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -136,9 +136,9 @@ Publicera aktivitets loggarna som genererats av Customer Lockbox till Azure Sent
 
 * [Publicera Azure Sentinel](../../sentinel/quickstart-onboard.md)
 
-**Azure Security Center övervakning**: Ja
+**Azure Security Center-övervakning**: Ja
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="23-enable-audit-logging-for-azure-resources"></a>2,3: Aktivera gransknings loggning för Azure-resurser
 
@@ -148,15 +148,15 @@ Publicera aktivitets loggarna som genererats av Customer Lockbox till Azure Sent
 
 * [Publicera Azure Sentinel](../../sentinel/quickstart-onboard.md)
 
-**Azure Security Center övervakning**: Ja
+**Azure Security Center-övervakning**: Ja
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="24-collect-security-logs-from-operating-systems"></a>2,4: samla in säkerhets loggar från operativ system
 
 **Vägledning**: ej tillämpligt; den här rekommendationen är avsedd för beräknings resurser.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -166,9 +166,9 @@ Publicera aktivitets loggarna som genererats av Customer Lockbox till Azure Sent
 
 * [Ange parametrar för logg bevarande](../../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="26-monitor-and-review-logs"></a>2,6: övervaka och granska loggar
 
@@ -176,9 +176,9 @@ Publicera aktivitets loggarna som genererats av Customer Lockbox till Azure Sent
 
 * [Gransknings loggar i Customer Lockbox](./customer-lockbox-overview.md#auditing-logs)
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="27-enable-alerts-for-anomalous-activity"></a>2,7: aktivera aviseringar för avvikande aktivitet
 
@@ -188,15 +188,15 @@ Publicera aktivitets loggarna som genererats av Customer Lockbox till Azure Sent
 
 * [Så här aviserar du om Log Analytics-loggdata](../../azure-monitor/learn/tutorial-response.md)
 
-**Azure Security Center övervakning**: Ja
+**Azure Security Center-övervakning**: Ja
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="28-centralize-anti-malware-logging"></a>2,8: centralisera loggning mot skadlig kod
 
 **Vägledning**: ej tillämpligt; Customer Lockbox bearbetar eller skapar inte relaterade loggar mot skadlig kod.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -204,7 +204,7 @@ Publicera aktivitets loggarna som genererats av Customer Lockbox till Azure Sent
 
 **Vägledning**: ej tillämpligt; Customer Lockbox bearbetar eller skapar inte DNS-relaterade loggar.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -212,7 +212,7 @@ Publicera aktivitets loggarna som genererats av Customer Lockbox till Azure Sent
 
 **Vägledning**: ej tillämpligt; den här rekommendationen är avsedd för beräknings resurser.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -232,17 +232,17 @@ Vid kund organisationen får användaren som har ägar rollen för Azure-prenume
 
 * [Förstå behörigheter för åtkomst begär anden i Customer Lockbox](./customer-lockbox-overview.md)
 
-**Azure Security Center övervakning**: Ja
+**Azure Security Center-övervakning**: Ja
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="32-change-default-passwords-where-applicable"></a>3,2: ändra standard lösen ord där tillämpligt
 
 **Vägledning**: Azure Active Directory saknar begreppet standard lösen ord. Andra Azure-resurser som kräver ett lösen ord tvingar ett lösen ord att skapas med komplexitets krav och minsta längd på lösen ord, vilket varierar beroende på tjänsten. Du ansvarar för program från tredje part och Marketplace-tjänster som kan använda standard lösen ord.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="33-use-dedicated-administrative-accounts"></a>3,3: Använd dedikerade administrativa konton
 
@@ -257,41 +257,41 @@ För att hjälpa dig att hålla koll på dedikerade administrativa konton kan du
 
 * [Använda Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
 
-**Azure Security Center övervakning**: Ja
+**Azure Security Center-övervakning**: Ja
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3,4: Använd enkel inloggning (SSO) med Azure Active Directory
 
 **Vägledning**: ej tillämpligt; åtkomst till Customer Lockbox sker via Azure Portal och reserveras för konton med klient rollen ägare. Enkel inloggning stöds inte.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3,5: Använd Multi-Factor Authentication för all Azure Active Directory baserad åtkomst
 
 **Vägledning**: aktivera Azure Active Directory Multi-Factor Authentication och följ rekommendationer för Azure Security Center identitets-och åtkomst hantering.
 
-* [Så här aktiverar du MFA i Azure](../../active-directory/authentication/howto-mfa-getstarted.md)
+* [Aktivera MFA i Azure](../../active-directory/authentication/howto-mfa-getstarted.md)
 
 * [Övervaka identitet och åtkomst i Azure Security Center](../../security-center/security-center-identity-access.md)
 
-**Azure Security Center övervakning**: Ja
+**Azure Security Center-övervakning**: Ja
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3,6: Använd dedikerade datorer (arbets stationer med privilegie rad åtkomst) för alla administrativa uppgifter
 
 **Vägledning**: Använd en privilegie rad åtkomst arbets Station (Paw) med Azure AD Multi-Factor Authentication (MFA) aktiverat för att logga in på och konfigurera dina Customer Lockboxs begär Anden.
 
-* [Arbetsstationer för privilegierad åtkomst (PAW)](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+* [Arbetsstationer för privilegierad åtkomst (PAW)](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
-* [Planera en molnbaserad Azure AD Multi-Factor Authentication-distribution](../../active-directory/authentication/howto-mfa-getstarted.md)
+* [Planera en molnbaserad distribution av Azure AD Multi-Factor Authentication](../../active-directory/authentication/howto-mfa-getstarted.md)
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3,7: Logga och Avisera om misstänkt aktivitet från administrativa konton
 
@@ -303,9 +303,9 @@ Använd dessutom Azure Active Directory risk identifieringar för att visa avise
 
 * [Förstå identifieringar av Azure AD-risker](../../active-directory/identity-protection/overview-identity-protection.md)
 
-**Azure Security Center övervakning**: Ja
+**Azure Security Center-övervakning**: Ja
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="38-manage-azure-resources-from-only-approved-locations"></a>3,8: hantera endast Azure-resurser från godkända platser
 
@@ -313,9 +313,9 @@ Använd dessutom Azure Active Directory risk identifieringar för att visa avise
 
 * [Så här konfigurerar du namngivna platser i Azure](../../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="39-use-azure-active-directory"></a>3,9: Använd Azure Active Directory
 
@@ -323,9 +323,9 @@ Använd dessutom Azure Active Directory risk identifieringar för att visa avise
 
 * [Så här skapar och konfigurerar du en Azure Active Directory instans](../../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3,10: granska och stäm regelbundet av användar åtkomst
 
@@ -335,9 +335,9 @@ Använd dessutom Azure Active Directory risk identifieringar för att visa avise
 
 * [Så här använder du Azure Active Directory åtkomst granskningar](../../active-directory/governance/access-reviews-overview.md)
 
-**Azure Security Center övervakning**: Ja
+**Azure Security Center-övervakning**: Ja
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="311-monitor-attempts-to-access-deactivated-accounts"></a>3,11: övervaka försök att komma åt inaktiverade konton
 
@@ -351,9 +351,9 @@ Du kan effektivisera processen genom att skapa diagnostikinställningar för Azu
 
 * [Aktivera Azure-kontroll på kort](../../sentinel/quickstart-onboard.md)
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="312-alert-on-account-login-behavior-deviation"></a>3,12: avisering om beteende för beteende för konto inloggning
 
@@ -365,15 +365,15 @@ Du kan effektivisera processen genom att skapa diagnostikinställningar för Azu
 
 * [Publicera Azure Sentinel](../../sentinel/quickstart-onboard.md)
 
-**Azure Security Center övervakning**: för närvarande inte tillgängligt
+**Azure Security Center-övervakning**: Inte tillgänglig för tillfället
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3,13: ge Microsoft åtkomst till relevant kund information under support scenarier
 
 **Vägledning**: den här rekommendationen gäller inte för Customer lockbox.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -385,7 +385,7 @@ Du kan effektivisera processen genom att skapa diagnostikinställningar för Azu
 
 **Vägledning**: den här rekommendationen är inte tillämplig. Taggar stöds inte för Customer Lockbox.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -395,7 +395,7 @@ Du kan effektivisera processen genom att skapa diagnostikinställningar för Azu
 
 * [Förstå Customer Lockbox-arbetsflöde](./customer-lockbox-overview.md)
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -403,9 +403,9 @@ Du kan effektivisera processen genom att skapa diagnostikinställningar för Azu
 
 **Vägledning**: Microsoft hanterar den underliggande infrastrukturen för Customer lockbox och har implementerat strikta kontroller för att förhindra förlust eller exponering av kund information.
 
-* [Förstå kundens data skydd i Azure](./protection-customer-data.md)
+* [Förstå skydd av kunddata i Azure](./protection-customer-data.md)
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Azure Security Center-övervakning**: Inte tillämpligt
 
 **Ansvar**: Microsoft
 
@@ -415,7 +415,7 @@ Du kan effektivisera processen genom att skapa diagnostikinställningar för Azu
 
 * [Förstå kryptering i överföring med Azure](./encryption-overview.md#encryption-of-data-in-transit)
 
-**Azure Security Center övervakning**: för närvarande inte tillgängligt
+**Azure Security Center-övervakning**: Inte tillgänglig för tillfället
 
 **Ansvar**: Microsoft
 
@@ -423,7 +423,7 @@ Du kan effektivisera processen genom att skapa diagnostikinställningar för Azu
 
 **Vägledning**: ej tillämpligt; Själva Customer Lockbox innehåller ingen kund information.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -433,9 +433,9 @@ Du kan effektivisera processen genom att skapa diagnostikinställningar för Azu
 
 * [Förstå Customer Lockbox-arbetsflöde](./customer-lockbox-overview.md)
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4,7: Använd värdbaserade data förlust skydd för att genomdriva åtkomst kontroll
 
@@ -443,7 +443,7 @@ Du kan effektivisera processen genom att skapa diagnostikinställningar för Azu
 
 * [Data skydd för Azure-kunder](./protection-customer-data.md)
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -451,7 +451,7 @@ Du kan effektivisera processen genom att skapa diagnostikinställningar för Azu
 
 **Vägledning**: ej tillämpligt; Själva Customer Lockbox innehåller inte kund information.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -465,9 +465,9 @@ Du kan effektivisera processen genom att skapa diagnostikinställningar för Azu
 
 * [Så här skapar du aviseringar i Azure Monitor](../../azure-monitor/platform/alerts-activity-log.md)
 
-**Azure Security Center övervakning**: Ja
+**Azure Security Center-övervakning**: Ja
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ## <a name="vulnerability-management"></a>Sårbarhetshantering
 
@@ -477,7 +477,7 @@ Du kan effektivisera processen genom att skapa diagnostikinställningar för Azu
 
 **Vägledning**: ej tillämpligt; Microsoft utför sårbarhets hantering på de underliggande system som har stöd för Customer Lockbox.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Microsoft
 
@@ -485,7 +485,7 @@ Du kan effektivisera processen genom att skapa diagnostikinställningar för Azu
 
 **Vägledning**: ej tillämpligt; den här rekommendationen är avsedd för beräknings resurser.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -493,7 +493,7 @@ Du kan effektivisera processen genom att skapa diagnostikinställningar för Azu
 
 **Vägledning**: ej tillämpligt; den här rekommendationen är avsedd för beräknings resurser.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -501,7 +501,7 @@ Du kan effektivisera processen genom att skapa diagnostikinställningar för Azu
 
 **Vägledning**: ej tillämpligt; Microsoft utför sårbarhets hantering på de underliggande system som har stöd för Customer Lockbox.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -509,7 +509,7 @@ Du kan effektivisera processen genom att skapa diagnostikinställningar för Azu
 
 **Vägledning**: ej tillämpligt; Microsoft utför sårbarhets hantering på de underliggande system som har stöd för Customer Lockbox.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -529,15 +529,15 @@ Du kan effektivisera processen genom att skapa diagnostikinställningar för Azu
 
 * [Förstå rollbaserad åtkomst kontroll i Azure (Azure RBAC)](../../role-based-access-control/overview.md)
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="62-maintain-asset-metadata"></a>6,2: underhåll till gångens metadata
 
 **Vägledning**: Taggar stöds inte för Customer lockbox.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -555,15 +555,15 @@ Använd dessutom Azure Policy för att ange begränsningar för den typ av resur
 
 * [Skapa och använda Taggar](../../azure-resource-manager/management/tag-resources.md)
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="64-maintain-an-inventory-of-approved-azure-resources-and-software-titles"></a>6,4: underhåll en inventering av godkända Azure-resurser och program varu titlar
 
 **Vägledning**: ej tillämpligt; den här rekommendationen är avsedd för beräknings resurser.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -573,19 +573,19 @@ Använd dessutom Azure Policy för att ange begränsningar för den typ av resur
 
 Använd Azure Resource Graph för att fråga/identifiera resurser i sina prenumerationer. Se till att alla Azure-resurser som finns i miljön är godkända.
 
-* [Så här konfigurerar och hanterar du Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
+* [Konfigurera och hantera Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
 
 * [Så här skapar du frågor med Azure Resource Graph](../../governance/resource-graph/first-query-portal.md)
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6,6: övervaka för program som inte godkänts i beräknings resurser
 
 **Vägledning**: ej tillämpligt; den här rekommendationen är avsedd för beräknings resurser.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -593,7 +593,7 @@ Använd Azure Resource Graph för att fråga/identifiera resurser i sina prenume
 
 **Vägledning**: ej tillämpligt; den här rekommendationen är avsedd för beräknings resurser.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -601,7 +601,7 @@ Använd Azure Resource Graph för att fråga/identifiera resurser i sina prenume
 
 **Vägledning**: ej tillämpligt; den här rekommendationen är avsedd för beräknings resurser.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -611,19 +611,19 @@ Använd Azure Resource Graph för att fråga/identifiera resurser i sina prenume
 - Otillåtna resurstyper
 - Tillåtna resurstyper
 
-* [Så här konfigurerar och hanterar du Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
+* [Konfigurera och hantera Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
 
 * [Så här nekar du en speciell resurs typ med Azure Policy](../../governance/policy/samples/index.md)
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="610-implement-approved-application-list"></a>6,10: implementera lista över godkända program
 
 **Vägledning**: ej tillämpligt; den här rekommendationen är avsedd för beräknings resurser.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -633,15 +633,15 @@ Använd Azure Resource Graph för att fråga/identifiera resurser i sina prenume
 
 * [Så här konfigurerar du villkorlig åtkomst för att blockera åtkomst till Azure Resource Manager](../../role-based-access-control/conditional-access-azure-management.md)
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6,12: begränsa användarnas möjlighet att köra skript i beräknings resurser
 
 **Vägledning**: ej tillämpligt; den här rekommendationen är avsedd för beräknings resurser.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -649,7 +649,7 @@ Använd Azure Resource Graph för att fråga/identifiera resurser i sina prenume
 
 **Vägledning**: ej tillämpligt; den här rekommendationen är avsedd för webb program som körs på Azure App Service-eller beräknings resurser.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -661,7 +661,7 @@ Använd Azure Resource Graph för att fråga/identifiera resurser i sina prenume
 
 **Vägledning**: inte tillämpligt, Customer lockbox har inte konfigurerbara säkerhets inställningar.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -669,7 +669,7 @@ Använd Azure Resource Graph för att fråga/identifiera resurser i sina prenume
 
 **Vägledning**: ej tillämpligt; den här rikt linjen är avsedd för beräknings resurser.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -677,7 +677,7 @@ Använd Azure Resource Graph för att fråga/identifiera resurser i sina prenume
 
 **Vägledning**: inte tillämpligt, Customer lockbox har inte konfigurerbara säkerhets inställningar.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -685,7 +685,7 @@ Använd Azure Resource Graph för att fråga/identifiera resurser i sina prenume
 
 **Vägledning**: ej tillämpligt; den här rikt linjen är avsedd för beräknings resurser.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -693,7 +693,7 @@ Använd Azure Resource Graph för att fråga/identifiera resurser i sina prenume
 
 **Vägledning**: ej tillämpligt; Customer Lockbox har inte konfigurerbara säkerhets inställningar.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -701,7 +701,7 @@ Använd Azure Resource Graph för att fråga/identifiera resurser i sina prenume
 
 **Vägledning**: ej tillämpligt; den här rikt linjen är avsedd för beräknings resurser.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -709,7 +709,7 @@ Använd Azure Resource Graph för att fråga/identifiera resurser i sina prenume
 
 **Vägledning**: ej tillämpligt; Customer Lockbox har inte konfigurerbara säkerhets inställningar.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -717,7 +717,7 @@ Använd Azure Resource Graph för att fråga/identifiera resurser i sina prenume
 
 **Vägledning**: ej tillämpligt; den här rikt linjen är avsedd för beräknings resurser.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -725,7 +725,7 @@ Använd Azure Resource Graph för att fråga/identifiera resurser i sina prenume
 
 **Vägledning**: ej tillämpligt; Customer Lockbox har inte konfigurerbara säkerhets inställningar.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -733,7 +733,7 @@ Använd Azure Resource Graph för att fråga/identifiera resurser i sina prenume
 
 **Vägledning**: ej tillämpligt; den här rikt linjen är avsedd för beräknings resurser.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -741,7 +741,7 @@ Använd Azure Resource Graph för att fråga/identifiera resurser i sina prenume
 
 **Vägledning**: ej tillämpligt; åtkomst till Customer Lockbox begär Anden är begränsad till ägaren av Azure-prenumerationen som ingår i resursen. Det finns inga lösen ord, hemligheter eller nycklar som krävs för att komma åt Customer Lockbox utanför inloggningen som klient organisationens ägare.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -751,19 +751,19 @@ Använd Azure Resource Graph för att fråga/identifiera resurser i sina prenume
 
 * [Azure-tjänster som har stöd för hanterade identiteter](../../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
 ### <a name="713-eliminate-unintended-credential-exposure"></a>7,13: eliminera oavsiktlig exponering för autentiseringsuppgifter
 
-**Vägledning**: implementera autentiseringsuppgifterna för inloggning för att identifiera autentiseringsuppgifter inom koden. Den här skannern uppmuntrar också att flytta identifierade autentiseringsuppgifter till säkrare platser som Azure Key Vault.
+**Vägledning**: implementera autentiseringsuppgifterna för inloggning för att identifiera autentiseringsuppgifter inom koden. Credential Scanner uppmanar också till att flytta identifierade autentiseringsuppgifter till en säkrare plats som Azure Key Vault.
 
 * [Konfigurera inloggnings skannern](https://secdevtools.azurewebsites.net/helpcredscan.html)
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ## <a name="malware-defense"></a>Skydd mot skadlig kod
 
@@ -773,7 +773,7 @@ Använd Azure Resource Graph för att fråga/identifiera resurser i sina prenume
 
 **Vägledning**: ej tillämpligt; den här rikt linjen är avsedd för beräknings resurser. Microsoft Antimalware är aktiverat på den underliggande värden som stöder Customer Lockbox-lösningen.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -783,15 +783,15 @@ Använd Azure Resource Graph för att fråga/identifiera resurser i sina prenume
 
 Det är ditt ansvar att i förväg genomsöka allt innehåll som laddas upp till Azure-resurser som inte är Compute. Microsoft kan inte komma åt kunddata och kan därför inte utföra genomsökningar av kund innehåll för program mot skadlig kod.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="83-ensure-anti-malware-software-and-signatures-are-updated"></a>8,3: se till att program vara och signaturer för skadlig program vara uppdateras
 
 **Vägledning**: ej tillämpligt; den här rekommendationen är avsedd för beräknings resurser. Microsoft Antimalware är aktiverat på den underliggande värden som stöder Azure-tjänster, men det körs inte på kund innehållet.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -803,7 +803,7 @@ Det är ditt ansvar att i förväg genomsöka allt innehåll som laddas upp till
 
 **Vägledning**: ej tillämpligt; Customer Lockbox lagrar inte kund information.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -811,7 +811,7 @@ Det är ditt ansvar att i förväg genomsöka allt innehåll som laddas upp till
 
 **Vägledning**: ej tillämpligt; Customer Lockbox lagrar inte kund information.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -819,7 +819,7 @@ Det är ditt ansvar att i förväg genomsöka allt innehåll som laddas upp till
 
 **Vägledning**: ej tillämpligt; Customer Lockbox lagrar inte kund information.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -827,7 +827,7 @@ Det är ditt ansvar att i förväg genomsöka allt innehåll som laddas upp till
 
 **Vägledning**: ej tillämpligt; Customer Lockbox lagrar inte kund information, utan använder inte heller nycklar eller lösen ord för åtkomst.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -837,7 +837,7 @@ Det är ditt ansvar att i förväg genomsöka allt innehåll som laddas upp till
 
 ### <a name="101-create-an-incident-response-guide"></a>10,1: skapa en incident svars guide
 
-**Vägledning**: Bygg ut en incident svars guide för din organisation. Se till att det finns skriftliga svars planer för incidenter som definierar alla personal roller och faser för incident hantering/hantering från identifiering till granskning efter incidenten.
+**Vägledning**: Skapa en guide till incidentsvar för organisationen. Se till att det finns skriftliga planer för incidentsvar som definierar alla personalroller och faser i incidenthanteringen, från identifiering till granskning efter incidenten.
 
 * [Konfigurera automatisering av arbets flöden i Azure Security Center](../../security-center/security-center-planning-and-operations-guide.md)
 
@@ -847,9 +847,9 @@ Det är ditt ansvar att i förväg genomsöka allt innehåll som laddas upp till
 
 * [Kunden kan också utnyttja NISTs hanterings guide för dator säkerhet för att hjälpa till med att skapa egna incident svars planer](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf)
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10,2: skapa en incident bedömnings-och prioriterings procedur
 
@@ -857,19 +857,19 @@ Det är ditt ansvar att i förväg genomsöka allt innehåll som laddas upp till
 
 Dessutom är det tydligt att markera prenumerationer (t. ex. produktion, icke-Prod) och skapa ett namngivnings system för att tydligt identifiera och kategorisera Azure-resurser.
 
-**Azure Security Center övervakning**: Ja
+**Azure Security Center-övervakning**: Ja
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="103-test-security-response-procedures"></a>10,3: testa säkerhets svars procedurer
 
-**Vägledning**: utföra övningar för att testa dina Systems incident svars funktioner på en vanlig takt. Identifiera svaga punkter och luckor och ändra planen efter behov.
+**Vägledning**: utföra övningar för att testa dina Systems incident svars funktioner på en vanlig takt. Identifiera svaga punkter och luckor, och ändra planen efter behov.
 
 * [Se NIST: guide för test, utbildning och övnings program för IT-planer och funktioner](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf)
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10,4: Ange kontakt information för säkerhets incidenter och konfigurera aviseringar för säkerhets incidenter
 
@@ -877,9 +877,9 @@ Dessutom är det tydligt att markera prenumerationer (t. ex. produktion, icke-Pr
 
 * [Så här ställer du in Azure Security Center säkerhets kontakt](../../security-center/security-center-provide-security-contact-details.md)
 
-**Azure Security Center övervakning**: Ja
+**Azure Security Center-övervakning**: Ja
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10,5: införliva säkerhets aviseringar i ditt incident svars system
 
@@ -887,11 +887,11 @@ Dessutom är det tydligt att markera prenumerationer (t. ex. produktion, icke-Pr
 
 * [Så här konfigurerar du kontinuerlig export](../../security-center/continuous-export.md)
 
-* [Strömma aviseringar till Azure Sentinel](../../sentinel/connect-azure-security-center.md)
+* [Så här strömmar du aviseringar till Azure Sentinel](../../sentinel/connect-azure-security-center.md)
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="106-automate-the-response-to-security-alerts"></a>10,6: automatisera svaret på säkerhets aviseringar
 
@@ -899,9 +899,9 @@ Dessutom är det tydligt att markera prenumerationer (t. ex. produktion, icke-Pr
 
 * [Konfigurera automatisering av arbets flöden och Logic Apps](../../security-center/workflow-automation.md)
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>Penetrationstester och Red Team-tester
 
@@ -915,11 +915,11 @@ Dessutom är det tydligt att markera prenumerationer (t. ex. produktion, icke-Pr
 
 * [Du hittar mer information om Microsofts strategi och körning av röda team indelning och inträngande av direktsända webbplatser mot Microsoft-hanterad moln infrastruktur, tjänster och program](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
-**Ansvars område**: delat
+**Ansvar**: Delad
 
 ## <a name="next-steps"></a>Nästa steg
 
 - Se [Azures säkerhets benchmark](../benchmarks/overview.md)
-- Läs mer om [Azures säkerhets bas linjer](../benchmarks/security-baselines-overview.md)
+- Läs mer om [säkerhetsbaslinjer för Azure](../benchmarks/security-baselines-overview.md)

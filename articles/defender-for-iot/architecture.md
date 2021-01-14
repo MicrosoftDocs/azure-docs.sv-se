@@ -11,20 +11,21 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/02/2020
+ms.date: 1/13/2021
 ms.author: shhazam
-ms.openlocfilehash: 3b5a586b5db4fb15a32090e601bac5610ece1427
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: f3239434a7ba737bc9323bc4f383afd794800db1
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97832582"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201491"
 ---
 # <a name="azure-defender-for-iot-architecture"></a>Azure Defender för IoT-arkitektur
 
-I den här artikeln beskrivs den funktionella system arkitekturen i Defender for IoT-lösningen.
+I den här artikeln beskrivs den funktionella system arkitekturen i Defender for IoT-lösningen. Azure Defender for IoT erbjuder två uppsättningar funktioner som passar din miljös behov, agent lös lösning för organisationer och en agent-baserad lösning för enhets byggare.
 
-## <a name="defender-for-iot-components"></a>Defender för IoT-komponenter
+## <a name="agentless-solution-for-organizations"></a>Lösning utan agent för organisationer
+### <a name="defender-for-iot-components"></a>Defender för IoT-komponenter
 
 Defender för IoT ansluter både till Azure-molnet och lokala komponenter. Lösningen är utformad för skalbarhet i stora och geografiskt distribuerade miljöer med flera fjärranslutna platser. Den här lösningen möjliggör en distribuerad arkitektur med flera lager efter land, region, affär senhet eller zon. 
 
@@ -79,12 +80,12 @@ Hantering av Azure Defender för IoT i hybrid miljöer sker via två hanterings 
 - Den lokala hanterings konsolen
 - Azure Portal
 
-#### <a name="sensor-console"></a>Sensor konsol
+### <a name="sensor-console"></a>Sensor konsol
 Sensor identifieringar visas i sensor konsolen där de kan visas, undersökas och analyseras i en nätverks karta, till gångs inventering och i många olika rapporter, till exempel riskhanterings rapporter, frågor om Data utvinning och angrepps vektorer. Du kan också använda-konsolen för att visa och hantera hot som upptäckts av sensor motorer, vidarebefordra information till partner system, hantera användare med mera.
 
 :::image type="content" source="./media/architecture/sensor-console-v2.png" alt-text="Defender för IoT sensor konsol":::
 
-#### <a name="on-premises-management-console"></a>Lokal hanterings konsol
+### <a name="on-premises-management-console"></a>Lokal hanterings konsol
 Den lokala hanterings konsolen gör det möjligt för SOC-operatörer att hantera och analysera aviseringar som sammanställs från flera sensorer till en enda instrument panel och ger en övergripande vy över hälsan hos de olika nätverken.
 
 Den här arkitekturen ger en heltäckande vy över nätverket på en SOC nivå, optimerad aviserings hantering och kontroll av drift nätverks säkerhet, vilket säkerställer att besluts fattande och riskhantering är felfritt.
@@ -103,20 +104,23 @@ Den är nära integrerad med dina SOC-arbetsflöden och kör böcker, vilket mö
 
    :::image type="content" source="media/updates/alerts-and-site-management-v2.png" alt-text="Hantera alla aviseringar och all information.":::
 
-#### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure Portal
 
 Defender för IoT-portalen i Azure används för att hjälpa dig att:
 
 - Köp lösnings utrustning
+
 - Installera och uppdatera program vara
 - Onboard-sensorer till Azure
 - Uppdatera hot informations paket
 
-## <a name="embedded-security-agent-built-in-mode"></a>Inbäddad säkerhets agent: inbyggt läge
+## <a name="agent-based-solution-for-device-builders"></a>Agentbaserad lösning för enhetsskapare
+
+### <a name="embedded-security-agent-built-in-mode"></a>Inbäddad säkerhets agent: inbyggt läge
 
 I det **inbyggda** läget är Defender för IoT aktiverat när du väljer att aktivera **säkerhets** alternativet i din IoT-hubb. Vi erbjuder övervakning i real tid, rekommendationer och aviseringar, det inbyggda läget erbjuder en synlighet för enskilda steg och en oöverträffad säkerhet. I det här läget krävs ingen agent installation på några enheter och avancerad analys används för loggade aktiviteter för att analysera och skydda fält enheten och IoT Hub.
 
-## <a name="embedded-security-agent-enhanced-mode"></a>Inbäddad säkerhets agent: Avancerat läge
+### <a name="embedded-security-agent-enhanced-mode"></a>Inbäddad säkerhets agent: Avancerat läge
 
 I **Avancerat** läge, efter att du har aktiverat **säkerhets** alternativet i din IoT-hubb och installerat Defender för IoT-enhets agenter på dina enheter, samlar agenterna samman, sammanställa och analyserar rå säkerhets händelser från dina enheter. Rå säkerhets händelser kan omfatta IP-anslutningar, process skapande, användar inloggningar och annan säkerhetsrelaterad information. Defender för IoT-enhets agenter hanterar också händelse agg regering för att undvika hög nätverks data flöde. Agenterna är mycket anpassningsbara, så att du kan använda dem för olika uppgifter, t. ex. genom att bara skicka viktig information till det snabbaste service avtalet, eller för att samla in omfattande säkerhets information och kontext i större segment, vilket kan undvika högre tjänste kostnader.
 
@@ -130,8 +134,10 @@ Med Analytics-pipeline kombinerar Defender för IoT alla data strömmar för att
 
 Defender för IoT-rekommendationer och-varningar (analys av pipeline-utdata) skrivs till Log Analytics arbets ytan för varje kund. Att inkludera rå händelser i arbets ytan samt aviseringar och rekommendationer möjliggör djupgående undersökning och frågor med hjälp av exakt information om de misstänkta aktiviteter som upptäckts.
 
+:::image type="content" source="media/architecture/micro-agent-architecture.png" alt-text="Mikroagentens arkitektur.":::
+
 ## <a name="see-also"></a>Se även
 
 [Vanliga frågor och svar om Defender för IoT](resources-frequently-asked-questions.md)
 
-[System krav](quickstart-system-prerequisites.md)
+[Systemkrav](quickstart-system-prerequisites.md)

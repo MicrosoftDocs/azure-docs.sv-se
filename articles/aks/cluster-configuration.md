@@ -3,15 +3,15 @@ title: Kluster konfiguration i Azure Kubernetes Services (AKS)
 description: Lär dig hur du konfigurerar ett kluster i Azure Kubernetes service (AKS)
 services: container-service
 ms.topic: article
-ms.date: 09/21/2020
+ms.date: 01/13/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: ab9e2a5483f0699ad7bfca991539025adff34b11
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: eacca50e00dfe8625d86362c444544e2fd5d5511
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97606920"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201118"
 ---
 # <a name="configure-an-aks-cluster"></a>Konfigurera ett AKS-kluster
 
@@ -21,10 +21,52 @@ Som en del av att skapa ett AKS-kluster kan du behöva anpassa kluster konfigura
 
 AKS stöder nu Ubuntu 18,04 som operativ system (OS) i allmän tillgänglighet för kluster i Kubernetes-versioner som är högre än 1.18.8. För versioner nedan 1.18. x är AKS Ubuntu 16,04 fortfarande standard avbildningen. Från Kubernetes v 1.18. x och senare är standard basen AKS Ubuntu 18,04.
 
-> [!IMPORTANT]
-> Resurspooler som skapats på Kubernetes v-1.18 eller större standardvärden till `AKS Ubuntu 18.04` Node-avbildningen. Nodkonfigurationer på en Kubernetes-version som stöds är mindre än 1,18 ta emot `AKS Ubuntu 16.04` som Node-avbildningen, men kommer att uppdateras till `AKS Ubuntu 18.04` en gång som Kubernetes-versionen för Node-poolen uppdateras till v 1.18 eller senare.
-> 
-> Vi rekommenderar starkt att du testar dina arbets belastningar på AKS Ubuntu 18,04-nodkonfigurationer innan du använder kluster på 1,18 eller senare. Läs om hur du [testar Ubuntu 18,04-nodkonfigurationer](#use-aks-ubuntu-1804-existing-clusters-preview).
+### <a name="use-aks-ubuntu-1804-generally-available-on-new-clusters"></a>Använd AKS Ubuntu 18,04 allmänt tillgängliga på nya kluster
+
+Kluster som skapats på Kubernetes v-1.18 eller större standardvärden till `AKS Ubuntu 18.04` Node-avbildningen. Nodkonfigurationer i en Kubernetes-version som stöds är mindre än 1,18 kommer fortfarande att få `AKS Ubuntu 16.04` som Node-avbildningen, men kommer att uppdateras till `AKS Ubuntu 18.04` när klustret eller nodens Kubernetes version har uppdaterats till v 1.18 eller senare.
+
+Vi rekommenderar starkt att du testar dina arbets belastningar på AKS Ubuntu 18,04-nodkonfigurationer innan du använder kluster på 1,18 eller senare. Läs om hur du [testar Ubuntu 18,04-nodkonfigurationer](#test-aks-ubuntu-1804-generally-available-on-existing-clusters).
+
+Skapa ett kluster med hjälp av `AKS Ubuntu 18.04` noden avbildning genom att skapa ett kluster som kör Kubernetes v 1.18 eller mer som visas nedan
+
+```azurecli
+az aks create --name myAKSCluster --resource-group myResourceGroup --kubernetes-version 1.18.14
+```
+
+### <a name="use-aks-ubuntu-1804-generally-available-on-existing-clusters"></a>Använd AKS Ubuntu 18,04 allmänt tillgängliga på befintliga kluster
+
+Kluster som skapats på Kubernetes v-1.18 eller större standardvärden till `AKS Ubuntu 18.04` Node-avbildningen. Nodkonfigurationer i en Kubernetes-version som stöds är mindre än 1,18 kommer fortfarande att få `AKS Ubuntu 16.04` som Node-avbildningen, men kommer att uppdateras till `AKS Ubuntu 18.04` när klustret eller nodens Kubernetes version har uppdaterats till v 1.18 eller senare.
+
+Vi rekommenderar starkt att du testar dina arbets belastningar på AKS Ubuntu 18,04-nodkonfigurationer innan du använder kluster på 1,18 eller senare. Läs om hur du [testar Ubuntu 18,04-nodkonfigurationer](#test-aks-ubuntu-1804-generally-available-on-existing-clusters).
+
+Om dina kluster eller resurspooler är klara för `AKS Ubuntu 18.04` Node-avbildningen, kan du uppgradera dem till en v-1.18 eller högre upp enligt nedan.
+
+```azurecli
+az aks upgrade --name myAKSCluster --resource-group myResourceGroup --kubernetes-version 1.18.14
+```
+
+Om du bara vill uppgradera en pool med bara en nod:
+
+```azurecli
+az aks nodepool upgrade -name ubuntu1804 --cluster-name myAKSCluster --resource-group myResourceGroup --kubernetes-version 1.18.14
+```
+
+### <a name="test-aks-ubuntu-1804-generally-available-on-existing-clusters"></a>Testa AKS Ubuntu 18,04 allmänt tillgängliga på befintliga kluster
+
+Resurspooler som skapats på Kubernetes v-1.18 eller större standardvärden till `AKS Ubuntu 18.04` Node-avbildningen. Nodkonfigurationer i en Kubernetes-version som stöds är mindre än 1,18 kommer fortfarande att tas emot `AKS Ubuntu 16.04` som Node-avbildningen, men kommer att uppdateras till `AKS Ubuntu 18.04` en gång som Kubernetes-versionen för Node-poolen uppdateras till v 1.18 eller senare.
+
+Vi rekommenderar starkt att du testar dina arbets belastningar på AKS Ubuntu 18,04 Node-pooler innan du uppgraderar dina produktionspooler.
+
+Om du vill skapa en Node-pool med hjälp av `AKS Ubuntu 18.04` Node-avbildningen skapar du bara en resurspool som kör Kubernetes v 1.18 eller senare. Ditt kluster kontroll plan måste vara minst på v-1.18 eller större, men dina andra noder kan finnas kvar på en äldre Kubernetes-version.
+Nedan ska vi först uppgradera kontroll planet och sedan skapa en ny resurspool med v-1.18 som tar emot den nya nodens avbildnings-OS-version.
+
+```azurecli
+az aks upgrade --name myAKSCluster --resource-group myResourceGroup --kubernetes-version 1.18.14 --control-plane-only
+
+az aks nodepool add --name ubuntu1804 --cluster-name myAKSCluster --resource-group myResourceGroup --kubernetes-version 1.18.14
+```
+
+### <a name="use-aks-ubuntu-1804-on-new-clusters-preview"></a>Använda AKS Ubuntu 18,04 på nya kluster (förhands granskning)
 
 I följande avsnitt förklaras hur du använder och testar AKS Ubuntu 18,04 på kluster som ännu inte använder en Kubernetes version 1.18. x eller högre, eller som skapades innan den här funktionen blev allmänt tillgänglig, med hjälp av för hands versionen av OS-konfigurationen.
 
@@ -57,8 +99,6 @@ När statusen visas som registrerad uppdaterar du registreringen av `Microsoft.C
 ```azurecli
 az provider register --namespace Microsoft.ContainerService
 ```
-
-### <a name="use-aks-ubuntu-1804-on-new-clusters-preview"></a>Använda AKS Ubuntu 18,04 på nya kluster (förhands granskning)
 
 Konfigurera klustret så att det använder Ubuntu 18,04 när klustret skapas. Använd `--aks-custom-headers` flaggan för att ställa in Ubuntu 18,04 som standard operativ system.
 

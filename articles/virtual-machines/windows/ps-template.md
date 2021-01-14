@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 03/22/2019
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ddd8166dd29d2210fecdd72d5be446df47a6c5df
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c327f5ffbf7c0fbfadf443e80cc1f7540855f59e
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89072306"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201832"
 ---
 # <a name="create-a-windows-virtual-machine-from-a-resource-manager-template"></a>Skapa en virtuell Windows-dator från en Resource Manager-mall
 
@@ -71,7 +71,7 @@ Det sista PowerShell-kommandot från det föregående skriptet visar namnet på 
 ## <a name="next-steps"></a>Nästa steg
 
 - Om det uppstod problem med distributionen kan du ta en titt på [Felsök vanliga fel i Azure-distribution med Azure Resource Manager](../../azure-resource-manager/templates/common-deployment-errors.md).
-- Lär dig hur du skapar och hanterar en virtuell dator i [skapa och hantera virtuella Windows-datorer med Azure PowerShell-modulen](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+- Lär dig hur du skapar och hanterar en virtuell dator i [skapa och hantera virtuella Windows-datorer med Azure PowerShell-modulen](tutorial-manage-vm.md).
 
 Om du vill veta mer om hur du skapar mallar kan du Visa JSON-syntaxen och egenskaperna för de resurs typer som du har distribuerat:
 

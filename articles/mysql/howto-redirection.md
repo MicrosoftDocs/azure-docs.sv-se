@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 6/8/2020
-ms.openlocfilehash: bea618b34809544308caba46a0ffbdecee91d69f
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 199810f835924ccbb51948169244622a19c5e8ed
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541818"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201441"
 ---
 # <a name="connect-to-azure-database-for-mysql-with-redirection"></a>Anslut till Azure Database for MySQL med omdirigering
 
@@ -21,6 +21,9 @@ I det här avsnittet beskrivs hur du ansluter ett program till din Azure Databas
 Logga in på [Azure-portalen](https://portal.azure.com). Skapa en Azure Database for MySQL-server med motor version 5,6, 5,7 eller 8,0. 
 
 Mer information finns i så här skapar du en Azure Database for MySQL-server med hjälp av [Azure Portal](quickstart-create-mysql-server-database-using-azure-portal.md) eller [Azure CLI](quickstart-create-mysql-server-database-using-azure-cli.md).
+
+> [!IMPORTANT]
+> Omdirigering stöds för närvarande inte med en [privat länk för Azure Database for MySQL](concepts-data-access-security-private-link.md).
 
 ## <a name="enable-redirection"></a>Aktivera omdirigering
 

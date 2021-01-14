@@ -7,18 +7,18 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/03/2020
-ms.openlocfilehash: 06f738ea88093ea8de45efebea983fd7fa13216e
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: fcc3e487d949a9450f792a6cc230b64e7dbe950a
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97387827"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202954"
 ---
 # <a name="tutorial-use-the-rest-apis"></a>Självstudie: använda REST-API: er
 
 I den här självstudien får du lära dig hur du använder REST-API: er för Azure avdelningens kontroll. Alla som vill skicka data till en Azure avdelningens kontroll-katalog, inkludera katalogen som en del av en automatiserad process eller skapa en egen användar upplevelse i katalogen kan använda REST-API: er för att göra det.
 
-I den här guiden får du lära dig att:
+I de här självstudierna får du lära dig att
 
 > [!div class="checklist"]
 >
@@ -31,7 +31,7 @@ I den här guiden får du lära dig att:
 
 Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * Du måste ha ett befintligt Azure avdelningens kontroll-konto för att komma igång. Om du inte har någon katalog kan du läsa [snabb starten för att skapa ett Azure avdelningens kontroll-konto](create-catalog-portal.md).
 
@@ -142,7 +142,7 @@ Hitta och spara följande värden:
 
 
 
-1. [Installera Node.js](https://github.com/Azure/autorest/blob/master/docs/installing-autorest.md).
+1. [Installera Node.js](https://github.com/Azure/autorest/blob/v2/docs/installing-autorest.md).
 1. Starta PowerShell och kör följande kommando:
 
    ```powershell
@@ -173,7 +173,7 @@ Hitta och spara följande värden:
 1. Kontrol lera att versionen är minst 2.3.21 och välj sedan **Installera**.
 1. Skapa och kör programmet.
 
-Exempel koden returnerar ett antal av hur många typedefs som finns i katalogen och visar hur du hanterar roll tilldelningar. Mer information finns `DoRoleAssignmentOperations()` i i exempel koden. Mer information om projektet finns i [projekt konfiguration](https://github.com/Azure/autorest/blob/master/docs/client/proj-setup.md).
+Exempel koden returnerar ett antal av hur många typedefs som finns i katalogen och visar hur du hanterar roll tilldelningar. Mer information finns `DoRoleAssignmentOperations()` i i exempel koden. Mer information om projektet finns i [projekt konfiguration](https://github.com/Azure/autorest/blob/v2/docs/client/proj-setup.md).
 
 ### <a name="sample-code-for-the-console-application"></a>Exempel kod för konsol programmet
 

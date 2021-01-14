@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: traffic-manager
 ms.date: 09/18/2019
 ms.author: duau
-ms.openlocfilehash: 984cdfb3e60717f7632ea1fdcd05a4681dd6a1fd
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: 7a448afb85a35674921ce74a25eaf2a97430dc61
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94517945"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201424"
 ---
 # <a name="traffic-manager-subnet-override-using-azure-cli"></a>Traffic Manager under näts Åsidosätt med Azure CLI
 
@@ -39,7 +39,7 @@ Om du vill skapa en åsidosättning för Traffic Manager under nätet kan du anv
 - Den här artikeln kräver version 2.0.28 eller senare av Azure CLI. Om du använder Azure Cloud Shell är den senaste versionen redan installerad.
 
 ## <a name="update-the-traffic-manager-endpoint-with-subnet-override"></a>Uppdatera Traffic Manager slut punkten med under nätets åsidosättning.
-Använd Azure CLI för att uppdatera din slut punkt med [AZ Network Traffic-Manager Endpoint Update](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-update).
+Använd Azure CLI för att uppdatera din slut punkt med [AZ Network Traffic-Manager Endpoint Update](/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-update).
 
 ```azurecli-interactive
 ### Add a range of IPs ###
@@ -59,7 +59,7 @@ az network traffic-manager endpoint update \
     --type AzureEndpoints
 ```
 
-Du kan ta bort IP-adressintervall genom att köra [slut punkten för AZ Network Traffic-Manager](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-update) med alternativet **--Remove** .
+Du kan ta bort IP-adressintervall genom att köra [slut punkten för AZ Network Traffic-Manager](/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-update) med alternativet **--Remove** .
 
 ```azurecli-interactive
 az network traffic-manager endpoint update \
@@ -74,4 +74,4 @@ az network traffic-manager endpoint update \
 
 Läs mer om hur du Traffic Manager [metoder för trafik cirkulation](traffic-manager-routing-methods.md).
 
-Lär dig mer om [routningsmetod för under näts trafik](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods#subnet-traffic-routing-method)
+Lär dig mer om [routningsmetod för under näts trafik](./traffic-manager-routing-methods.md#subnet-traffic-routing-method)

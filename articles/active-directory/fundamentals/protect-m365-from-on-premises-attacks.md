@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71d64552520db28b3fe38cc354a30ee5470ee091
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 97893dece068dfdde85159f734095401288231d2
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060761"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201356"
 ---
 # <a name="protecting-microsoft-365-from-on-premises-attacks"></a>Skydda Microsoft 365 från lokala attacker
 
@@ -131,7 +131,7 @@ Etableringen avser skapandet av användar konton och grupper i program eller ide
 
    *  Begränsa gäst åtkomsten till att bläddra bland grupper och andra egenskaper i katalogen. Använd de externa samarbets inställningarna för att begränsa gäst möjligheten att läsa grupper som de inte är medlemmar i. 
 
-    *   Blockera åtkomst till Azure Portal. Du kan göra sällsynta nödvändiga undantag.  Skapa en princip för villkorlig åtkomst som inkluderar alla gäster och externa användare och [implementera sedan en princip för att blockera åtkomst](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management.md). 
+    *   Blockera åtkomst till Azure Portal. Du kan göra sällsynta nödvändiga undantag.  Skapa en princip för villkorlig åtkomst som inkluderar alla gäster och externa användare och [implementera sedan en princip för att blockera åtkomst](/azure/role-based-access-control/conditional-access-azure-management). 
 
 * **Frånkopplade skogar:** Använd [Azure AD Cloud-etablering](../cloud-provisioning/what-is-cloud-provisioning.md). På så sätt kan du ansluta till frånkopplade skogar, vilket eliminerar behovet av att upprätta anslutningar mellan skogar eller förtroenden, vilket kan bredda påverkan av en lokal överträdelse. * 
  
@@ -269,7 +269,7 @@ Azure AD tillhandahåller [Azure Monitor integrering](../reports-monitoring/conc
 
    * NPS som har tillägget Azure MFA RADIUS 
 
-## <a name="next-steps"></a>Efterföljande moment
+## <a name="next-steps"></a>Nästa steg
 * [Bygg in återhämtning i identitets- och åtkomsthanteringen med Azure AD](resilience-overview.md)
 
 * [Säker extern åtkomst till resurser](secure-external-access-resources.md) 

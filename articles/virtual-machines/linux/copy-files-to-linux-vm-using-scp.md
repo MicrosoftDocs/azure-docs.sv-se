@@ -8,18 +8,18 @@ ms.topic: how-to
 ms.date: 07/12/2017
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: f56118750fc980c249c88b796728f4ecb2641a88
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 83c054a9e2dd829dbfb34a3873f06332e504b832
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86510964"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201203"
 ---
 # <a name="move-files-to-and-from-a-linux-vm-using-scp"></a>Flytta filer till och från en virtuell Linux-dator med SCP
 
 Den här artikeln visar hur du flyttar filer från din arbets station till en virtuell Azure Linux-dator eller från en virtuell Azure Linux-dator till din arbets station med hjälp av en säker kopia (SCP). Det är enkelt och säkert att flytta filer mellan din arbets Station och en virtuell Linux-dator, och det är viktigt att du hanterar din Azure-infrastruktur. 
 
-I den här artikeln behöver du en virtuell Linux-dator som distribuerats i Azure med [offentliga SSH-och privata nyckelfiler](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Du behöver också en SCP-klient för den lokala datorn. Den är byggd ovanpå SSH och ingår i standard bash-gränssnittet för de flesta Linux-och Mac-datorer och vissa Windows-gränssnitt.
+I den här artikeln behöver du en virtuell Linux-dator som distribuerats i Azure med [offentliga SSH-och privata nyckelfiler](mac-create-ssh-keys.md). Du behöver också en SCP-klient för den lokala datorn. Den är byggd ovanpå SSH och ingår i standard bash-gränssnittet för de flesta Linux-och Mac-datorer och vissa Windows-gränssnitt.
 
 ## <a name="quick-commands"></a>Snabbkommandon
 
@@ -43,7 +43,7 @@ Som exempel flyttar vi en Azure-konfigurationsfil upp till en virtuell Linux-dat
 
 SCP använder SSH för transport lagret. SSH hanterar autentiseringen på mål värden och flyttar filen i en krypterad tunnel som tillhandahålls som standard med SSH. För SSH-autentisering kan du använda användar namn och lösen ord. Autentisering av offentliga och privata SSH-nycklar rekommenderas dock som en säkerhets rutin. När SSH har autentiserat anslutningen börjar SCP att kopiera filen. Med en korrekt konfigurerad `~/.ssh/config` och offentliga och privata offentliga och privata nycklar kan SCP-anslutningen upprättas genom att du bara använder ett server namn (eller en IP-adress). Om du bara har en SSH-nyckel söker SCP efter den i `~/.ssh/` katalogen och använder den som standard för att logga in på den virtuella datorn.
 
-Mer information om hur du konfigurerar dina `~/.ssh/config` offentliga och privata nycklar och privata nycklar finns i [skapa SSH-nycklar](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Mer information om hur du konfigurerar dina `~/.ssh/config` offentliga och privata nycklar och privata nycklar finns i [skapa SSH-nycklar](mac-create-ssh-keys.md).
 
 ## <a name="scp-a-file-to-a-linux-vm"></a>SCP a-fil till en virtuell Linux-dator
 

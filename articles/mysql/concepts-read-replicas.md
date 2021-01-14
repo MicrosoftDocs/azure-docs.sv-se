@@ -5,13 +5,14 @@ author: savjani
 ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 10/26/2020
-ms.openlocfilehash: 730b634f23599c5eef8c4c6c988820ae5e4fa9c8
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.date: 01/13/2021
+ms.custom: references_regions
+ms.openlocfilehash: f4a97f5534e4fd3847bf1cce6874de0f006cce38
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94535120"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201016"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Skrivskyddad replik i Azure Database for MySQL
 
@@ -24,42 +25,45 @@ Mer information om funktioner och problem med MySQL-replikering finns i [dokumen
 > [!NOTE]
 > Kompensations fri kommunikation
 >
-> Microsoft stöder en mängd olika och införlivande miljöer. Den här artikeln innehåller referenser till ordet _slav_. Microsofts [stil guide för en kostnads fri kommunikation](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) känner igen detta som ett undantags ord. Ordet används i den här artikeln för konsekvens eftersom det är det ord som visas i program varan. När program varan har uppdaterats för att ta bort ordet uppdateras den här artikeln som en justering.
+> Microsoft stöder en mängd olika och införlivande miljöer. Den här artikeln innehåller referenser till orden _Master_ och _slav_. Microsofts [stil guide för kommunikation utan fördjupad kommunikation](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) känner igen dessa som undantags ord. Orden används i den här artikeln för konsekvens eftersom de är för närvarande de ord som visas i program varan. När program varan har uppdaterats för att ta bort orden uppdateras den här artikeln som en justering.
 >
 
 ## <a name="when-to-use-a-read-replica"></a>När du ska använda en Läs replik
 
-Funktionen Läs replik hjälper till att förbättra prestanda och skalning för Läs intensiva arbets belastningar. Läsarbetsbelastningar kan isoleras till replikerna, medan skrivarbetsbelastningar kan dirigeras till huvudservern.
+Funktionen Läs replik hjälper till att förbättra prestanda och skalning för Läs intensiva arbets belastningar. Läs arbets belastningar kan isoleras till replikerna, medan Skriv arbets belastningar kan dirigeras till källan.
 
 Ett vanligt scenario är att låta BI och analytiska arbets belastningar använda Läs repliken som data källa för rapportering.
 
-Eftersom repliker är skrivskyddade kan de inte direkt minska Skriv kapacitets bördan på huvud servern. Den här funktionen är inte riktad mot skrivintensiva arbetsbelastningar.
+Eftersom repliker är skrivskyddade kan de inte direkt minska Skriv kapacitets bördan på källan. Den här funktionen är inte riktad mot skrivintensiva arbetsbelastningar.
 
-Funktionen Läs replik använder MySQL-asynkron replikering. Funktionen är inte avsedd för synkrona scenarier för replikering. Det kommer att bli en mätbar fördröjning mellan källan och repliken. Data på repliken kommer slutligen att bli konsekventa med data i huvud servern. Använd den här funktionen för arbets belastningar som kan hantera denna fördröjning.
+Funktionen Läs replik använder MySQL-asynkron replikering. Funktionen är inte avsedd för synkrona scenarier för replikering. Det kommer att bli en mätbar fördröjning mellan källan och repliken. Data på repliken kommer slutligen att bli konsekventa med data på källan. Använd den här funktionen för arbets belastningar som kan hantera denna fördröjning.
 
 ## <a name="cross-region-replication"></a>Replikering mellan regioner
+
 Du kan skapa en Läs replik i en annan region än käll servern. Replikering mellan regioner kan vara användbart för scenarier som haveri beredskap planering eller för att hämta data närmare dina användare.
 
-Du kan ha en käll server i valfri [Azure Database for MySQL region](https://azure.microsoft.com/global-infrastructure/services/?products=mysql).  En käll Server kan ha en replik i dess kopplade region eller Universal Replica-regioner. I bilden nedan visas vilka replik regioner som är tillgängliga beroende på din käll region.
+Du kan ha en käll server i valfri [Azure Database for MySQL region](https://azure.microsoft.com/global-infrastructure/services/?products=mysql).  En käll Server kan ha en replik i dess kopplade region eller Universal Replica-regioner. Följande bild visar vilka replik regioner som är tillgängliga beroende på din käll region.
 
 [:::image type="content" source="media/concepts-read-replica/read-replica-regions.png" alt-text="Läs replik regioner":::](media/concepts-read-replica/read-replica-regions.png#lightbox)
 
 ### <a name="universal-replica-regions"></a>Universal Replica-regioner
+
 Du kan skapa en Läs replik i någon av följande regioner, oavsett var käll servern finns. De Universal Replica-regioner som stöds är:
 
 Östra Australien, sydöstra Australien, södra Brasilien, centrala Kanada, Östra Kanada, centrala USA, Asien, östra, östra USA, östra USA 2, Östra Japan, västra Japan, Korea, centrala, norra centrala USA, norra Europa, södra centrala USA, Sydostasien, Storbritannien, södra, Storbritannien, västra, västra Europa, västra USA, västra USA 2, västra centrala USA.
 
 ### <a name="paired-regions"></a>Länkade regioner
+
 Förutom Universal Replica-regioner kan du skapa en Läs replik i den Azure-kopplade regionen på käll servern. Om du inte känner till din regions par kan du läsa mer i [artikeln Azure-kopplade regioner](../best-practices-availability-paired-regions.md).
 
 Om du använder repliker över flera regioner för att planera haveri beredskap rekommenderar vi att du skapar repliken i den kopplade regionen i stället för någon av de andra regionerna. Kopplade regioner förhindrar samtidiga uppdateringar och prioriterar fysisk isolering och data placering.  
 
 Det finns dock begränsningar att tänka på: 
 
-* Regional tillgänglighet: Azure Database for MySQL är tillgänglig i Frankrike Central, Förenade Arabemiraten nord och Tyskland, centrala. De kopplade regionerna är dock inte tillgängliga.
-    
-* Enkelriktade par: vissa Azure-regioner är bara kopplade till en riktning. I dessa regioner ingår västra Indien, södra Brasilien och US Gov, Virginia. 
-   Det innebär att en käll server i västra Indien kan skapa en replik i södra Indien. En käll server i södra Indien kan dock inte skapa en replik i västra Indien. Detta beror på att den sekundära regionen västra Indien är södra Indien, men den sekundära regionen i södra Indien är inte västra Indien.
+* Regional tillgänglighet: Azure Database for MySQL är tillgänglig i Frankrike Central, Förenade Arabemiraten nord och Tyskland, centrala. Men deras kopplade regioner är inte tillgängliga.
+
+* Enkelriktade par: vissa Azure-regioner är bara kopplade till en riktning. I dessa regioner ingår västra Indien, södra Brasilien och US Gov, Virginia.
+   Det innebär att en käll server i västra Indien kan skapa en replik i södra Indien. En käll server i södra Indien kan dock inte skapa en replik i västra Indien. Detta beror på att den sekundära regionen för västra Indien är södra Indien, men den sekundära regionen i södra Indien är inte västra Indien.
 
 ## <a name="create-a-replica"></a>Skapa en replik
 
@@ -108,22 +112,22 @@ Lär dig hur du [stoppar replikering till en replik](howto-read-replicas-portal.
 
 ## <a name="failover"></a>Redundans
 
-Det finns ingen automatisk redundans mellan käll-och replik servrar. 
+Det finns ingen automatisk redundans mellan käll-och replik servrar.
 
-Eftersom replikeringen är asynkron finns det en fördröjning mellan källan och repliken. Mängden fördröjning kan påverkas av ett antal faktorer, t. ex. hur mycket hög belastningen som körs på käll servern och fördröjningen mellan data Center. I de flesta fall varierar replikfördröjning mellan några sekunder och några minuter. Du kan spåra den faktiska replikeringens fördröjning med hjälp av mått *replik fördröjningen* , som är tillgänglig för varje replik. Det här måttet visar tiden sedan den senaste återspelade transaktionen. Vi rekommenderar att du identifierar den genomsnittliga fördröjningen genom att iaktta din replik fördröjning under en viss tids period. Du kan ställa in en avisering på replik fördröjningen, så att om den går utanför det förväntade intervallet kan du vidta åtgärder.
+Eftersom replikeringen är asynkron finns det en fördröjning mellan källan och repliken. Mängden fördröjning kan påverkas av många faktorer, till exempel hur mycket belastningen på käll servern som körs på käll servern och fördröjningen mellan data Center. I de flesta fall varierar replikfördröjning mellan några sekunder och några minuter. Du kan spåra den faktiska replikeringens fördröjning med hjälp av mått *replik fördröjningen*, som är tillgänglig för varje replik. Det här måttet visar tiden sedan den senaste återspelade transaktionen. Vi rekommenderar att du identifierar den genomsnittliga fördröjningen genom att iaktta din replik fördröjning under en viss tids period. Du kan ställa in en avisering på replik fördröjningen, så att om den går utanför det förväntade intervallet kan du vidta åtgärder.
 
 > [!Tip]
 > Om du redundansväxlas till repliken kommer fördröjningen vid den tidpunkt då du avlänkar repliken från källan att indikera hur mycket data som förloras.
 
-När du har valt att du vill redundansväxla till en replik, 
+När du har valt att du vill redundansväxla till en replik:
 
 1. Stoppa replikering till repliken<br/>
-   Det här steget är nödvändigt för att göra replik servern tillgänglig för skrivningar. Som en del av den här processen kommer replik servern att tas bort från huvud servern. När du har initierat stoppa replikeringen tar det vanligt vis ungefär 2 minuter att slutföra backend-processen. Se avsnittet [stoppa replikering](#stop-replication) i den här artikeln för att förstå konsekvenserna av den här åtgärden.
-    
+   Det här steget är nödvändigt för att göra replik servern tillgänglig för skrivningar. Som en del av den här processen kopplas replik servern från källan. När du har initierat stoppa replikering tar det vanligt vis ungefär 2 minuter att slutföra backend-processen. Se avsnittet [stoppa replikering](#stop-replication) i den här artikeln för att förstå konsekvenserna av den här åtgärden.
+
 2. Peka ditt program till den (tidigare) repliken<br/>
-   Varje server har en unik anslutnings sträng. Uppdatera programmet så att det pekar på den (tidigare) repliken i stället för huvud servern.
-    
-När ditt program har bearbetat läsningar och skrivningar har du slutfört redundansväxlingen. Hur lång tid det tar för program upplevelser att vara beroende av när du upptäcker ett problem och Slutför steg 1 och 2 ovan.
+   Varje server har en unik anslutnings sträng. Uppdatera programmet så att det pekar på den (tidigare) repliken i stället för källan.
+
+När programmet har bearbetat läsningar och skrivningar har du slutfört redundansväxlingen. Hur lång tid det tar för dina program att uppleva beror på när du upptäcker ett problem och Slutför steg 1 och 2 i listan ovan.
 
 ## <a name="global-transaction-identifier-gtid"></a>Global transaktions identifierare (GTID)
 
@@ -143,7 +147,7 @@ Följande Server parametrar är tillgängliga för att konfigurera GTID:
 
 Om du vill aktivera GTID och konfigurera konsekvens beteendet, uppdaterar du `gtid_mode` parametrarna och för `enforce_gtid_consistency` servern med hjälp av [Azure Portal](howto-server-parameters.md), [Azure CLI](howto-configure-server-parameters-using-cli.md)eller [PowerShell](howto-configure-server-parameters-using-powershell.md).
 
-Om GTID har Aktiver ATS på en käll Server ( `gtid_mode` = på) kommer nyligen skapade repliker också ha GTID aktiverat och använda GTID-replikering. Om du vill upprätthålla konsekvent replikering kan du inte uppdatera `gtid_mode` på käll-eller replik servrar.
+Om GTID har Aktiver ATS på en käll Server ( `gtid_mode` = på) kommer nyligen skapade repliker också ha GTID aktiverat och använda GTID-replikering. Om du vill ha konsekvent replikering kan du inte uppdatera `gtid_mode` på käll-eller replik servrar.
 
 ## <a name="considerations-and-limitations"></a>Överväganden och begränsningar
 
@@ -164,10 +168,10 @@ En Läs replik skapas som en ny Azure Database for MySQL server. Det går inte a
 
 ### <a name="replica-configuration"></a>Replik konfiguration
 
-En replik skapas med samma server konfiguration som huvud servern. När en replik har skapats kan flera inställningar ändras oberoende av käll servern: beräknings generering, virtuella kärnor, lagring och kvarhållning av säkerhets kopior. Pris nivån kan också ändras oberoende, förutom till eller från Basic-nivån.
+En replik skapas med samma server konfiguration som källan. När en replik har skapats kan flera inställningar ändras oberoende av käll servern: beräknings generering, virtuella kärnor, lagring och kvarhållning av säkerhets kopior. Pris nivån kan också ändras oberoende, förutom till eller från Basic-nivån.
 
 > [!IMPORTANT]
-> Uppdatera replikkonfigurationen till samma eller högre värden innan en källserverkonfiguration uppdateras till nya värden. På så sätt säkerställer du att repliken klarar alla ändringar som görs på huvudservern.
+> Uppdatera replikkonfigurationen till samma eller högre värden innan en källserverkonfiguration uppdateras till nya värden. På så sätt säkerställer du att repliken klarar alla ändringar som görs av källan.
 
 Brand Väggs regler och parameter inställningar ärvs från käll servern till repliken när repliken skapas. Därefter är replikens regler oberoende av varandra.
 
@@ -188,31 +192,33 @@ Användare på käll servern replikeras till läsa repliker. Du kan bara ansluta
 I syfte att förhindra att data blir osynkroniserade samt att undvika potentiell dataförlust eller skadade data är vissa serverparametrar låsta från att uppdateras vid användning av skrivskyddade repliker.
 
 Följande Server parametrar är låsta på både käll-och replik servern:
-- [`innodb_file_per_table`](https://dev.mysql.com/doc/refman/8.0/en/innodb-file-per-table-tablespaces.html) 
-- [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators)
 
-[`event_scheduler`](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_event_scheduler)Parametern är låst på replik servrarna. 
+* [`innodb_file_per_table`](https://dev.mysql.com/doc/refman/8.0/en/innodb-file-per-table-tablespaces.html) 
+* [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators)
 
-Om du vill uppdatera en av parametrarna ovan på käll servern, måste du ta bort replik servrar, uppdatera parametervärdet i huvud servern och återskapa repliker.
+[`event_scheduler`](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_event_scheduler)Parametern är låst på replik servrarna.
+
+Om du vill uppdatera en av parametrarna ovan på käll servern tar du bort replik servrar, uppdaterar parametervärdet på källan och återskapar repliker.
 
 ### <a name="gtid"></a>GTID
 
 GTID stöds på:
-- MySQL-versioner 5,7 och 8,0 
-- Servrar som stöder lagring upp till 16 TB. Se artikeln om [pris nivå](concepts-pricing-tiers.md#storage) för en fullständig lista över regioner som stöder 16 TB-lagring. 
 
-GTID är inaktive rad som standard. När GTID har Aktiver ATS kan du inte inaktivera den. Om du behöver stänga av GTID kontaktar du supporten. 
+* MySQL-versionerna 5,7 och 8,0.
+* Servrar som stöder lagring upp till 16 TB. Se artikeln om [pris nivå](concepts-pricing-tiers.md#storage) för en fullständig lista över regioner som stöder 16 TB-lagring.
 
-Om GTID har Aktiver ATS på en käll server kommer nya repliker också ha GTID aktiverat och använda GTID-replikering. Om du vill upprätthålla konsekvent replikering kan du inte uppdatera `gtid_mode` på käll-eller replik servrar.
+GTID är inaktive rad som standard. När GTID har Aktiver ATS kan du inte aktivera den igen. Kontakta supporten om du behöver stänga av GTID.
+
+Om GTID har Aktiver ATS på en käll server kommer nya repliker också ha GTID aktiverat och använda GTID-replikering. Om du vill ha konsekvent replikering kan du inte uppdatera `gtid_mode` på käll-eller replik servrar.
 
 ### <a name="other"></a>Övrigt
 
-- Det finns inte stöd för att skapa en replik av en replik.
-- InMemory-tabeller kan orsaka att repliker blir osynkroniserade. Detta är en begränsning av MySQL-replikeringstrafiken. Mer information finns i [referens dokumentationen för MySQL](https://dev.mysql.com/doc/refman/5.7/en/replication-features-memory.html) .
-- Se till att käll Server tabellerna har primär nycklar. Brist på primär nycklar kan leda till replikeringsfördröjning mellan källan och replikerna.
-- Granska den fullständiga listan över begränsningar för MySQL-replikering i [MySQL-dokumentationen](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html)
+* Det finns inte stöd för att skapa en replik av en replik.
+* InMemory-tabeller kan orsaka att repliker blir osynkroniserade. Detta är en begränsning av MySQL-replikeringstrafiken. Mer information finns i [referens dokumentationen för MySQL](https://dev.mysql.com/doc/refman/5.7/en/replication-features-memory.html) .
+* Se till att käll Server tabellerna har primär nycklar. Brist på primär nycklar kan leda till replikeringsfördröjning mellan källan och replikerna.
+* Granska den fullständiga listan över begränsningar för MySQL-replikering i [MySQL-dokumentationen](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html)
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Lär dig hur du [skapar och hanterar Läs repliker med hjälp av Azure Portal](howto-read-replicas-portal.md)
-- Lär dig hur du [skapar och hanterar Läs repliker med hjälp av Azure CLI och REST API](howto-read-replicas-cli.md)
+* Lär dig hur du [skapar och hanterar Läs repliker med hjälp av Azure Portal](howto-read-replicas-portal.md)
+* Lär dig hur du [skapar och hanterar Läs repliker med hjälp av Azure CLI och REST API](howto-read-replicas-cli.md)

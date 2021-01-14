@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/30/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: d841d3b922a5edd0257934566207187ae031c1b5
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: b4f0c64abf150165e3239e78e8cf9b824b34eed6
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96532184"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202376"
 ---
 # <a name="azure-security-baseline-for-azure-resource-manager"></a>Azures säkerhets bas linje för Azure Resource Manager
 
@@ -145,7 +145,7 @@ Du kan också aktivera en just-in-Time-åtkomst genom att använda Azure AD Priv
 
 **Vägledning**: Använd en säker, Azure-hanterad arbets Station (kallas även en privilegie rad åtkomst arbets Station eller Paw) för administrativa uppgifter som kräver förhöjda privilegier.
 
-- [Förstå säkra, Azure-hanterade arbets stationer](../../active-directory/devices/concept-azure-managed-workstation.md)
+- [Förstå säkra, Azure-hanterade arbets stationer](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 - [Så här aktiverar du Azure AD MFA](../../active-directory/authentication/howto-mfa-getstarted.md)
 

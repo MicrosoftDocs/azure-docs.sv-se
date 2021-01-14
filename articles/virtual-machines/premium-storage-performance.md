@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/05/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: acdddcd95883d13393838a47281fb888ac2f9274
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 26ef07269c9451c2e9d05d42e2247fbfcdae4844
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500401"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201968"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure Premium-lagring: design för hög prestanda
 
@@ -222,7 +222,7 @@ Men om du har samma program på Premium Storage behöver du en mindre VM-storlek
 
 I tabellen nedan sammanfattas kostnads nedbrytningen för det här scenariot för standard och Premium Storage.
 
-| &nbsp; | **Standard** | **Denaturering** |
+| &nbsp; | **Standard** | **Premium** |
 | --- | --- | --- |
 | **Kostnad för virtuell dator per månad** |$1 570,58 (standard \_ D14) |$1 003,66 (standard \_ DS13) |
 | **Kostnad för diskar per månad** |$1 638,40 (32 x 1 – TB diskar) |$544,34 (4 x P30 diskar) |
@@ -230,7 +230,7 @@ I tabellen nedan sammanfattas kostnads nedbrytningen för det här scenariot fö
 
 *Linux-distributioner*  
 
-Med Azure Premium Storage får du samma prestanda nivå för virtuella datorer som kör Windows och Linux. Vi har stöd för många varianter Linux-distributioner och du kan se den fullständiga listan [här](linux/endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Det är viktigt att Observera att olika distributioner passar bättre för olika typer av arbets belastningar. Du kan se olika prestanda nivåer beroende på vilken distribution din arbets belastning körs på. Testa Linux-distributioner med ditt program och välj det som fungerar bäst.
+Med Azure Premium Storage får du samma prestanda nivå för virtuella datorer som kör Windows och Linux. Vi har stöd för många varianter Linux-distributioner och du kan se den fullständiga listan [här](linux/endorsed-distros.md). Det är viktigt att Observera att olika distributioner passar bättre för olika typer av arbets belastningar. Du kan se olika prestanda nivåer beroende på vilken distribution din arbets belastning körs på. Testa Linux-distributioner med ditt program och välj det som fungerar bäst.
 
 När du kör Linux med Premium Storage kontrollerar du de senaste uppdateringarna om nödvändiga driv rutiner för att garantera höga prestanda.
 
@@ -279,7 +279,7 @@ Följande är de rekommenderade diskens cacheinställningar för data diskar,
 
 | **Inställning av diskcachelagring** | **rekommendation när du ska använda den här inställningen** |
 | --- | --- |
-| Inget |Konfigurera värd-cachen som ingen för skrivbara och skrivbara diskar. |
+| Ingen |Konfigurera värd-cachen som ingen för skrivbara och skrivbara diskar. |
 | ReadOnly |Konfigurera Host-cache som skrivskyddat för skrivskyddade och Läs-och skriv diskar. |
 | ReadWrite |Konfigurera Host-cache enbart som ReadWrite om ditt program hanterar skrivningen av cachelagrade data korrekt till beständiga diskar vid behov. |
 
@@ -292,7 +292,7 @@ Genom att konfigurera ReadOnly-cachelagring på Premium Storage data diskar kan 
 *ReadWrite*  
 Som standard har OS-diskar ReadWrite-cachelagring aktiverat. Vi har nyligen lagt till stöd för ReadWrite-cachelagring på data diskar även. Om du använder ReadWrite-cachelagring måste du ha ett korrekt sätt att skriva data från cache till beständiga diskar. SQL Server hanterar till exempel att skriva cachelagrade data till de beständiga lagrings diskarna. Att använda ReadWrite cache med ett program som inte hanterar beständiga data kan leda till data förlust, om den virtuella datorn kraschar.
 
-*Inga*  
+*Ingen*  
 För närvarande stöds **ingen** på data diskar. Den stöds inte på OS-diskar. Om du anger **ingen** på en operativ system disk åsidosätts detta internt och anges som **skrivskyddad**.
 
 Du kan till exempel använda dessa rikt linjer för att SQL Server som körs på Premium Storage genom att göra följande:

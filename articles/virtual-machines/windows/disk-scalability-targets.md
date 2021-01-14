@@ -7,18 +7,18 @@ ms.date: 11/15/2017
 ms.topic: conceptual
 ms.service: virtual-machines-windows
 ms.subservice: disks
-ms.openlocfilehash: bf56f1fac1f12f9e4994221d672410715393ae9f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6fe5d41d0bebd222180f9bc4c9cb34450845788e
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88815146"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202869"
 ---
 # <a name="scalability-and-performance-targets-for-vm-disks-on-windows"></a>Skalbarhets-och prestanda mål för VM-diskar i Windows
 
 [!INCLUDE [azure-storage-limits-vm-disks](../../../includes/azure-storage-limits-vm-disks.md)]
 
-Mer information finns i [storlekar för virtuella Windows-datorer](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) .
+Mer information finns i [storlekar för virtuella Windows-datorer](../sizes.md) .
 
 ## <a name="managed-virtual-machine-disks"></a>Hanterade virtuella dator diskar
 

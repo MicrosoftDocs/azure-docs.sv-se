@@ -4,12 +4,12 @@ description: Hämta sid visning och antal sessioner, webb klient data, enstaka s
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 6678c662c4646a8181b1617ccddf9b8718c957bf
-ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
+ms.openlocfilehash: 31cfa2e56fa10743c9a95d4df880fb1869fd9613
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97858560"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98203447"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights för webbsidor
 
@@ -107,7 +107,7 @@ Varje konfigurations alternativ visas på en ny rad, om du inte vill åsidosätt
 
 De tillgängliga konfigurations alternativen är
 
-| Namn | Typ | Beskrivning
+| Namn | Typ | Description
 |------|------|----------------
 | src | sträng **[obligatoriskt]** | Den fullständiga URL: en för varifrån SDK: n ska läsas in. Det här värdet används för attributet src för ett dynamiskt tillagd &lt; skript/ &gt; tagg. Du kan använda den offentliga CDN-platsen eller en privat värd som är värd för en.
 | name | sträng *[valfritt]* | Det globala namnet för den initierade SDK: n som standard `appInsights` . Det ```window.appInsights``` kommer att vara en referens till den initierade instansen. Obs! Om du anger ett namn värde eller om en föregående instans ska tilldelas (via det globala namnet appInsightsSDK), kommer detta namn värde också att definieras i det globala namn området som ```window.appInsightsSDK=<name value>``` , detta krävs av SDK-initierings koden för att säkerställa att den initierar och uppdaterar rätt kodfragments Skeleton och proxyservrar.
@@ -132,7 +132,7 @@ appInsights.trackPageView();
 
 ### <a name="sending-telemetry-to-the-azure-portal"></a>Skicka telemetri till Azure Portal
 
-Som standard samlar Application Insights JavaScript SDK automatiskt in ett antal telemetridata som är användbara för att fastställa hälso tillståndet för ditt program och den underliggande användar upplevelsen. Exempel på dessa är:
+Som standard samlar Application Insights JavaScript SDK automatiskt in ett antal telemetridata som är användbara för att fastställa hälso tillståndet för ditt program och den underliggande användar upplevelsen. Dessa omfattar:
 
 - Ej **fångade undantag** i appen, inklusive information om
     - Stack spårning
@@ -170,7 +170,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 ## <a name="configuration"></a>Konfiguration
 De flesta konfigurations fälten får ett namn som är förfalskade som standard. Alla fält är valfria förutom för `instrumentationKey` .
 
-| Namn | Standard | Beskrivning |
+| Name | Standardvärde | Description |
 |------|---------|-------------|
 | instrumentationKey | null | **Obligatoriskt**<br>Instrumentation-nyckel som du fick från Azure Portal. |
 | accountId | null | Ett valfritt konto-ID, om din app grupperar användare till konton. Inga blank steg, kommatecken, semikolon, likheter eller lodräta staplar |
@@ -196,7 +196,7 @@ De flesta konfigurations fälten får ett namn som är förfalskade som standard
 | correlationHeaderDomains |  | Aktivera korrelations rubriker för vissa domäner |
 | disableFlushOnBeforeUnload | falskt | Standard falskt. Om värdet är true anropas inte Flush-metoden när onBeforeUnload event triggers |
 | enableSessionStorageBuffer | true | Default True. Om värdet är true lagras bufferten med all telemetri som inte har skickats i session Storage. Bufferten återställs vid sid inläsning |
-| isCookieUseDisabled | falskt | Standard falskt. Om värdet är true kommer SDK inte att lagra eller läsa data från cookies.|
+| isCookieUseDisabled | falskt | Standard falskt. Om värdet är true kommer SDK inte att lagra eller läsa data från cookies. Observera att detta inaktiverar cookies från användare och session och återger användnings blad och erfarenheter. |
 | cookieDomain | null | Anpassad cookie-domän. Detta är användbart om du vill dela Application Insights cookies över under domäner. |
 | isRetryDisabled | falskt | Standard falskt. Om det här värdet är falskt försöker du igen på 206 (delvis utfört), 408 (timeout), 429 (för många begär Anden), 500 (internt Server fel), 503 (tjänsten är inte tillgänglig) och 0 (offline, endast om det har identifierats) |
 | isStorageUseDisabled | falskt | Om värdet är true kommer SDK inte att lagra eller läsa data från lokal lagring och sessionstoken. Standardvärdet är false. |
@@ -288,7 +288,7 @@ Välj **webbläsare** och välj sedan **haverier** eller **prestanda**.
 
 ![Skärm bild av sidan prestanda i Application Insights visar bild visning av beroende mått för ett webb program.](./media/javascript/performance-dependencies.png)
 
-### <a name="analytics"></a>Analytics
+### <a name="analytics"></a>Analys
 
 Om du vill fråga din telemetri som samlas in av JavaScript SDK väljer du knappen **Visa i loggar (analys)** . Genom att lägga till en `where` -sats i visas `client_Type == "Browser"` endast data från Java Script SDK och all telemetri på Server sidan som samlas in av andra SDK: er.
  

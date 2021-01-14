@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: how-to
 ms.date: 12/01/2020
 ms.author: danis
-ms.openlocfilehash: 74883e04170165c66fa389051a94cf349c3395cf
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: b29b970061e94bca07b4a7b2ba6b3d3ad0a7a2e1
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97916413"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98203260"
 ---
 # <a name="prepare-a-centos-based-virtual-machine-for-azure"></a>Förbereda en CentOS-baserad virtuell dator för Azure
 
@@ -21,7 +21,7 @@ Lär dig att skapa och överföra en virtuell Azure-hårddisk (VHD) som innehål
 * [Förbered en CentOS 7.0 + virtuell dator för Azure](#centos-70)
 
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Den här artikeln förutsätter att du redan har installerat ett Linux-operativsystem med CentOS (eller liknande derivat) till en virtuell hård disk. Det finns flera verktyg för att skapa. VHD-filer, till exempel en virtualiseringslösning som Hyper-V. Anvisningar finns i [Installera Hyper-V-rollen och konfigurera en virtuell dator](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh846766(v=ws.11)).
 
@@ -29,7 +29,7 @@ Den här artikeln förutsätter att du redan har installerat ett Linux-operativs
 
 * Se även [allmänna Linux-Installationsinstruktioner](create-upload-generic.md#general-linux-installation-notes) för mer information om hur du förbereder Linux för Azure.
 * VHDX-formatet stöds inte i Azure, endast **fast virtuell hård disk**.  Du kan konvertera disken till VHD-format med hjälp av Hyper-V Manager eller cmdleten Convert-VHD. Om du använder VirtualBox innebär det att du väljer **fast storlek** i stället för standardvärdet som tilldelas dynamiskt när disken skapas.
-* När du installerar Linux-systemet *rekommenderar* vi att du använder standardpartitioner snarare än LVM (vanligt vis som standard för många installationer). På så sätt undviker du LVM namn konflikter med klonade virtuella datorer, särskilt om en OS-disk någonsin måste kopplas till en annan identisk virtuell dator för fel sökning. [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) eller [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) kan användas på data diskar.
+* När du installerar Linux-systemet *rekommenderar* vi att du använder standardpartitioner snarare än LVM (vanligt vis som standard för många installationer). På så sätt undviker du LVM namn konflikter med klonade virtuella datorer, särskilt om en OS-disk någonsin måste kopplas till en annan identisk virtuell dator för fel sökning. [LVM](configure-lvm.md) eller [RAID](configure-raid.md) kan användas på data diskar.
 * **Kernel-stöd för att montera UDF-filsystem krävs.** Vid första starten av Azure skickas etablerings konfigurationen till den virtuella Linux-datorn via UDF-formaterade medier som är kopplade till gästen. Azure Linux-agenten måste kunna montera UDF-filsystemet för att läsa konfigurationen och etablera den virtuella datorn.
 * Linux kernel-versioner nedan 2.6.37 stöder inte NUMA på Hyper-V med större VM-storlekar. Det här problemet påverkar främst äldre distributioner med den överordnade Red Hat 2.6.32-kärnan och har åtgärd ATS i RHEL 6,6 (kernel-2.6.32-504). System som kör anpassade kernels som är äldre än 2.6.37, eller RHEL-baserade kernels som är äldre än 2.6.32-504, måste ange start parametern `numa=off` på kernel-kommandoraden i grub. conf. Mer information finns i Red Hat [KB 436883](https://access.redhat.com/solutions/436883).
 * Konfigurera inte en swap-partition på OS-disken. Mer information om detta finns i stegen nedan.

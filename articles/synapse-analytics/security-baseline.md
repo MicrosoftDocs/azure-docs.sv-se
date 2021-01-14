@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 972788e04e12553e7c05f30cc246c6fb562031a4
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 65985e05be1061bb69eb160cf5be559cb271d5cd
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461374"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202937"
 ---
 # <a name="azure-security-baseline-for-azure-synapse-analytics"></a>Azures säkerhets bas linje för Azure Synapse Analytics
 
@@ -393,7 +393,7 @@ Om du vill identifiera administratörs konton för en databas öppnar du Azure P
 
 **Vägledning**: Använd en privilegie rad åtkomst arbets Station (Paw) med Multi-Factor Authentication (MFA) som kon figurer ATS för att logga in på och konfigurera Azure-resurser.
 
-* [Lär dig mer om arbets stationer med privilegie rad åtkomst](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+* [Lär dig mer om arbets stationer med privilegie rad åtkomst](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 * [Aktivera MFA i Azure](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
 

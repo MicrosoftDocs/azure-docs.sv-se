@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: b19162636707b8d2cc8b7a9ef33c03738eb8e631
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: da3386692d2d02015c0d3f59c88ae78a6c84b9ab
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96184441"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98203107"
 ---
 # <a name="azure-security-baseline-for-azure-monitor"></a>Azures säkerhets bas linje för Azure Monitor
 
-Den här säkerhets bas linjen använder vägledning från [Azures säkerhets benchmark](../security/benchmarks/overview.md) till Azure Monitor. Benchmark för Azure-säkerhet innehåller rekommendationer för hur du kan skydda dina molnlösningar på Azure. Innehållet grupperas efter de **säkerhets kontroller** som definieras av Azures säkerhets benchmark och relaterade rikt linjer som gäller för Azure Monitor. **Kontroller** som inte är tillämpliga på Azure Monitor har uteslutits. Om du vill se hur Azure Monitor helt mappar till Azures säkerhets mätning, se den [fullständiga Azure Monitor mappnings filen för säkerhets bas linjen](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines).
+Den här säkerhets bas linjen använder vägledning från [Azures säkerhets benchmark](../security/benchmarks/overview.md) till Azure Monitor. Azure Security Benchmark ger rekommendationer om hur du kan skydda dina molnlösningar i Azure. Innehållet grupperas efter de **säkerhets kontroller** som definieras av Azures säkerhets benchmark och relaterade rikt linjer som gäller för Azure Monitor. **Kontroller** som inte är tillämpliga på Azure Monitor har uteslutits. Om du vill se hur Azure Monitor helt mappar till Azures säkerhets mätning, se den [fullständiga Azure Monitor mappnings filen för säkerhets bas linjen](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines).
 
 Azure Monitor är en del av Azure Core-tjänsterna och tjänsten Azure Monitor kan inte distribueras som en tjänst separat. Azure Monitor-komponenter kan distribueras med dina resurser och det kan påverka säkerhets position för dessa resurser.
 
@@ -38,7 +38,7 @@ Använd Log Analytics Gateway för att skicka data till en Log Analytics arbets 
 
 - [Ansluta datorer utan Internet åtkomst med hjälp av Log Analytics gateway i Azure Monitor](platform/gateway.md)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Kund
 
@@ -58,7 +58,7 @@ När du använder Azure Monitor med privat länk får du åtkomst till nätverks
 
 - [Förstå nätverks säkerhet som tillhandahålls av Azure Security Center](../security-center/security-center-network-recommendations.md)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Kund
 
@@ -68,7 +68,7 @@ När du använder Azure Monitor med privat länk får du åtkomst till nätverks
 
 - [Förstå och använda service märken](../virtual-network/service-tags-overview.md) 
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Kund
 
@@ -84,7 +84,7 @@ När du använder Azure Monitor med privat länk får du åtkomst till nätverks
 
 - [Så här konfigurerar du webb test för tillgänglighet](app/monitor-web-app-availability.md)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Kund
 
@@ -96,7 +96,7 @@ När du använder Azure Monitor med privat länk får du åtkomst till nätverks
 
 - [Så här skapar du aviseringar i Azure Monitor](platform/alerts-activity-log.md)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Kund
 
@@ -118,7 +118,7 @@ Alternativt kan du aktivera och fordonsbaserad data till Azure Sentinel eller en
 
 - [Komma igång med Azure Monitor och SIEM-integrering från tredje part](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Kund
 
@@ -218,7 +218,7 @@ Du kan också aktivera en just-in-Time/bara-tillräcklig-åtkomst genom att anv�
 
 **Vägledning**: Aktivera Azure AD MFA och följ Azure Security Center identitets-och åtkomst rekommendationer.
 
-- [Så här aktiverar du MFA i Azure](../active-directory/authentication/howto-mfa-getstarted.md)
+- [Aktivera MFA i Azure](../active-directory/authentication/howto-mfa-getstarted.md)
 
 - [Övervaka identitet och åtkomst i Azure Security Center](../security-center/security-center-identity-access.md)
 
@@ -230,7 +230,7 @@ Du kan också aktivera en just-in-Time/bara-tillräcklig-åtkomst genom att anv�
 
 **Vägledning**: Använd en säker, Azure-hanterad arbets Station (kallas även en privilegie rad åtkomst arbets Station eller Paw) för administrativa uppgifter som kräver förhöjda privilegier.
 
-- [Förstå säkra, Azure-hanterade arbets stationer](../active-directory/devices/concept-azure-managed-workstation.md)
+- [Förstå säkra, Azure-hanterade arbets stationer](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 - [Så här aktiverar du Azure AD MFA](../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -264,7 +264,7 @@ Du kan också aktivera en just-in-Time/bara-tillräcklig-åtkomst genom att anv�
 
 **Vägledning**: använda Azure Active Directory (Azure AD) som central autentiserings-och auktoriserings system. Azure AD skyddar data med stark kryptering för data i vila och under överföring. Azure AD innehåller även salter, hash-värden och lagrar användarautentiseringsuppgifter på ett säkert sätt.
 
-- [Så skapar och konfigurerar du en Azure AD-instans](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
+- [Skapa och konfigurera en Azure AD-instans](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
 **Azure Security Center-övervakning**: Inte tillgänglig för tillfället
 
@@ -332,7 +332,7 @@ Du kan också aktivera en just-in-Time/bara-tillräcklig-åtkomst genom att anv�
 
 - [Skapa och använda Taggar](../azure-resource-manager/management/tag-resources.md)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Kund
 
@@ -405,7 +405,7 @@ För den underliggande plattform som hanteras av Microsoft behandlar Microsoft a
 
 **Vägledning**: Använd ett gemensamt risk bedömnings program (t. ex. vanliga sårbarhets bedömnings system) eller standard risk klassificeringarna som tillhandahålls av ditt genomsöknings verktyg från tredje part.
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Kund
 
@@ -425,7 +425,7 @@ För den underliggande plattform som hanteras av Microsoft behandlar Microsoft a
 
 - [Roller, behörigheter och säkerhet i Azure Monitor](platform/roles-permissions-security.md)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Kund
 
@@ -435,7 +435,7 @@ För den underliggande plattform som hanteras av Microsoft behandlar Microsoft a
 
 - [Skapa och använda Taggar](../azure-resource-manager/management/tag-resources.md)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Kund
 
@@ -449,7 +449,7 @@ För den underliggande plattform som hanteras av Microsoft behandlar Microsoft a
 
 - [Skapa och använda Taggar](../azure-resource-manager/management/tag-resources.md)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Kund
 
@@ -457,7 +457,7 @@ För den underliggande plattform som hanteras av Microsoft behandlar Microsoft a
 
 **Vägledning**: skapa en inventering av godkända Azure-resurser och godkänd program vara för beräknings resurser enligt organisationens behov.
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Kund
 
@@ -465,11 +465,11 @@ För den underliggande plattform som hanteras av Microsoft behandlar Microsoft a
 
 **Vägledning**: Använd Azure policy för att ange begränsningar för den typ av resurser som kan skapas i dina prenumerationer.
 
-Använd Azure Resource Graph för att fråga efter och identifiera resurser i prenumerationerna.  Se till att alla Azure-resurser som finns i miljön är godkända.
+Använd Azure Resource Graph till att fråga efter och identifiera resurser i prenumerationerna.  Se till att alla Azure-resurser som finns i miljön är godkända.
 
-- [Så här konfigurerar och hanterar du Azure Policy](../governance/policy/tutorials/create-and-manage.md)
+- [Konfigurera och hantera Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [Så här skapar du frågor med Azure Resource Graph Explorer](../governance/resource-graph/first-query-portal.md)
+- [Skapa frågor med Azure Resource Graph Explorer](../governance/resource-graph/first-query-portal.md)
 
 **Azure Security Center-övervakning**: Ja
 
@@ -489,11 +489,11 @@ Använd Azure Resource Graph för att fråga efter och identifiera resurser i pr
 
 **Vägledning**: Använd Azure policy för att begränsa vilka Azure Monitor relaterade resurser som du kan etablera i din miljö. 
 
-- [Så här konfigurerar och hanterar du Azure Policy](../governance/policy/tutorials/create-and-manage.md) 
+- [Konfigurera och hantera Azure Policy](../governance/policy/tutorials/create-and-manage.md) 
 
 - [Så här nekar du en speciell resurs typ med Azure Policy](../governance/policy/samples/index.md)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Kund
 
@@ -531,7 +531,7 @@ Om du använder Live streaming APM-funktioner gör du kanalen säker med en heml
 
 - [Säkerhetsrekommendationer – en referensguide](../security-center/recommendations-reference.md)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Kund
 
@@ -545,7 +545,7 @@ Om du använder Live streaming APM-funktioner gör du kanalen säker med en heml
 
 - [Översikt över Azure Resource Manager mallar](../azure-resource-manager/templates/overview.md)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Kund
 
@@ -557,7 +557,7 @@ Om du använder Live streaming APM-funktioner gör du kanalen säker med en heml
 
 - [Om behörigheter och grupper i Azure DevOps](/azure/devops/organizations/security/about-permissions)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Kund
 
@@ -565,11 +565,11 @@ Om du använder Live streaming APM-funktioner gör du kanalen säker med en heml
 
 **Vägledning**: definiera och implementera standardkonfigurationer för Azure Monitor relaterade resurser med Azure policy. Använd anpassade Azure Policys definitioner för att granska eller tillämpa säkerhets konfigurationen för dina Azure Monitor relaterade resurser. Du kan också använda inbyggda princip definitioner som är relaterade till dina speciella resurser.
 
-- [Så här konfigurerar och hanterar du Azure Policy](../governance/policy/tutorials/create-and-manage.md)
+- [Konfigurera och hantera Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
 - [Azure Policy alias](../governance/policy/concepts/definition-structure.md#aliases)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Kund
 
@@ -579,7 +579,7 @@ Om du använder Live streaming APM-funktioner gör du kanalen säker med en heml
 
 - [Så här åtgärdar du rekommendationer i Azure Security Center](../security-center/security-center-remediate-recommendations.md)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Kund
 
@@ -595,7 +595,7 @@ Om du använder Live streaming APM-funktioner gör du kanalen säker med en heml
 
 - [Så här ger Key Vault autentisering med en hanterad identitet](../key-vault/general/assign-access-policy-portal.md)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Kund
 
@@ -611,11 +611,11 @@ Om du använder Live streaming APM-funktioner gör du kanalen säker med en heml
 
 ### <a name="713-eliminate-unintended-credential-exposure"></a>7,13: eliminera oavsiktlig exponering för autentiseringsuppgifter
 
-**Vägledning**: implementera autentiseringsuppgifterna för inloggning för att identifiera autentiseringsuppgifter inom koden. Den här skannern uppmuntrar också att flytta identifierade autentiseringsuppgifter till säkrare platser som Azure Key Vault.
+**Vägledning**: implementera autentiseringsuppgifterna för inloggning för att identifiera autentiseringsuppgifter inom koden. Credential Scanner uppmanar också till att flytta identifierade autentiseringsuppgifter till en säkrare plats som Azure Key Vault.
 
 - [Så här konfigurerar du en inloggnings skanner](https://secdevtools.azurewebsites.net/helpcredscan.html)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Kund
 
@@ -635,7 +635,7 @@ Använd Azure Security Center s hot identifiering för data tjänster för att i
 
 - [Förstå Azure Security Centers hot identifiering för data tjänster](../security-center/azure-defender.md)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Kund
 
@@ -653,7 +653,7 @@ Använd Azure Security Center s hot identifiering för data tjänster för att i
 
 - [Om Azure Automation](../automation/automation-intro.md)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Kund
 
@@ -667,7 +667,7 @@ Använd Azure Security Center s hot identifiering för data tjänster för att i
 
 - [Så här säkerhetskopierar du nyckel valv nycklar i Azure](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Kund
 
@@ -679,7 +679,7 @@ Använd Azure Security Center s hot identifiering för data tjänster för att i
 
 - [Återställa Key Vault-nycklar i Azure](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Kund
 
@@ -697,7 +697,7 @@ Aktivera dessutom Soft-Delete och rensa skydd i Key Vault för att skydda nyckla
 
 - [Mjuk borttagning för Azure Storage-blobar](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Kund
 
@@ -707,7 +707,7 @@ Aktivera dessutom Soft-Delete och rensa skydd i Key Vault för att skydda nyckla
 
 ### <a name="101-create-an-incident-response-guide"></a>10,1: skapa en incident svars guide
 
-**Vägledning**: Bygg ut en incident svars guide för din organisation. Se till att det finns skriftliga svars planer för incidenter som definierar alla personal roller och faser för incident hantering/hantering från identifiering till granskning efter incidenten.
+**Vägledning**: Skapa en guide till incidentsvar för organisationen. Se till att det finns skriftliga planer för incidentsvar som definierar alla personalroller och faser i incidenthanteringen, från identifiering till granskning efter incidenten.
 
 - [Vägledning om hur du skapar en egen svars process för säkerhets incidenter](https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/)
 
@@ -715,7 +715,7 @@ Aktivera dessutom Soft-Delete och rensa skydd i Key Vault för att skydda nyckla
 
 - [Utnyttja NISTs hanterings guide för dator säkerhet för att hjälpa dig att skapa en egen incident svars plan](https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Kund
 
@@ -729,17 +729,17 @@ Dessutom är det tydligt att markera prenumerationer (t. ex. produktion, icke-Pr
 
 - [Använda taggar för att organisera dina Azure-resurser](../azure-resource-manager/management/tag-resources.md)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Kund
 
 ### <a name="103-test-security-response-procedures"></a>10,3: testa säkerhets svars procedurer
 
-**Vägledning**: utföra övningar för att testa dina Systems funktioner för incident svar på en vanlig takt för att hjälpa till att skydda dina Azure-resurser. Identifiera svaga punkter och luckor och ändra planen efter behov.
+**Vägledning**: utföra övningar för att testa dina Systems funktioner för incident svar på en vanlig takt för att hjälpa till att skydda dina Azure-resurser. Identifiera svaga punkter och luckor, och ändra planen efter behov.
 
 - [NIST-guide för att testa, träna och träna program för IT-planer och funktioner](https://csrc.nist.gov/publications/detail/sp/800-84/final)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Kund
 
@@ -749,7 +749,7 @@ Dessutom är det tydligt att markera prenumerationer (t. ex. produktion, icke-Pr
 
 - [Så här ställer du in Azure Security Center säkerhets kontakt](../security-center/security-center-provide-security-contact-details.md)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Kund
 
@@ -761,7 +761,7 @@ Dessutom är det tydligt att markera prenumerationer (t. ex. produktion, icke-Pr
 
 - [Så här strömmar du aviseringar till Azure Sentinel](../sentinel/connect-azure-security-center.md)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Kund
 
@@ -771,7 +771,7 @@ Dessutom är det tydligt att markera prenumerationer (t. ex. produktion, icke-Pr
 
 - [Konfigurera automatisering av arbets flöden och Logic Apps](../security-center/workflow-automation.md)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Kund
 
@@ -783,11 +783,11 @@ Dessutom är det tydligt att markera prenumerationer (t. ex. produktion, icke-Pr
 
 **Vägledning**: Följ Microsofts regler för engagemang för att se till att dina inträngande tester inte strider mot Microsofts principer. Använd Microsofts strategi och körning av röda team indelning och inträngande av direktsända webbplatser mot Microsoft-hanterad moln infrastruktur, tjänster och program.
 
-- [Deltagarregler för genomslagstestning](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
+- [Regler för intrångstester](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
 
-- [Red Team-indelning i Microsoft Cloud](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
+- [”Red team”-aktiviteter i Microsoft Cloud](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Delad
 

@@ -5,15 +5,15 @@ ms.service: virtual-machines-linux
 ms.topic: conceptual
 ms.date: 04/29/2020
 ms.reviewer: davberg
-ms.openlocfilehash: efbd90eee8d072c1979565209c8c04a4ee5c55f9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 939b5f6005dcb0b320852aece60db5bcf36dddbd
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87830537"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201186"
 ---
 # <a name="compute-benchmark-scores-for-linux-vms"></a>Beräkna benchmark-resultat för virtuella Linux-datorer
-Följande CoreMark benchmark-resultat visar beräknings prestanda för Azures höga prestanda i VM-serien som kör Ubuntu. Beräknings benchmark-resultat är också tillgängliga för [virtuella Windows-datorer](../windows/compute-benchmark-scores.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Följande CoreMark benchmark-resultat visar beräknings prestanda för Azures höga prestanda i VM-serien som kör Ubuntu. Beräknings benchmark-resultat är också tillgängliga för [virtuella Windows-datorer](../windows/compute-benchmark-scores.md).
 
 ## <a name="standard_das_v4"></a>Standard_Das_v4
 (12/11/2019 2:28:52 AM PBI 5851281)
@@ -469,5 +469,5 @@ Följande CoreMark benchmark-resultat visar beräknings prestanda för Azures h�
 Linux-numren beräknades genom att köra [CoreMark](https://www.eembc.org/coremark/faq.php) på Ubuntu. CoreMark har kon figurer ATS med antalet trådar som har ställts in på antalet virtuella processorer och samtidighet har angetts till PThreads. Antalet iterationer justerades baserat på förväntade prestanda för att tillhandahålla en körning på minst 20 sekunder (vanligt vis mycket längre). De sista poängen representerar antalet iterationer som har slutförts dividerat med antalet sekunder som det tog att köra testet. Varje test kördes minst sju gånger på varje virtuell dator. Testa körnings datum som visas ovan. Tester körs på flera virtuella datorer i offentliga Azure-regioner som den virtuella datorn stödde i vid körning av datum. Basic A och B (Burstable) serien visas inte eftersom prestanda är variabel. N-serien visas inte eftersom de är GPU-centrerade och Coremark mäter inte GPU-prestanda.
 
 ## <a name="next-steps"></a>Nästa steg
-* För lagrings kapacitet, disk information och ytterligare överväganden vid val av VM-storlekar, se [storlekar för virtuella datorer](../sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+* För lagrings kapacitet, disk information och ytterligare överväganden vid val av VM-storlekar, se [storlekar för virtuella datorer](../sizes.md).
 * Om du vill köra CoreMark-skript på virtuella Linux-datorer laddar du ned [CoreMark-skript paketet](https://download.microsoft.com/download/3/0/5/305A3707-4D3A-4599-9670-AAEB423B4663/AzureCoreMarkScriptPack.zip).

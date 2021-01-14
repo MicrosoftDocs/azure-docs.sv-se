@@ -8,12 +8,12 @@ ms.date: 04/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 31fe62aabfff77342726158c3b72b61afb518682
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: e549a79930cf599b89cd549691e23f3587e8a85c
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97031529"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202716"
 ---
 # <a name="introduction-to-azure-managed-disks"></a>Introduktion till Azure Managed Disks
 
@@ -96,7 +96,7 @@ Den här disken har en maximal kapacitet på 4 095 GiB.
 
 ### <a name="temporary-disk"></a>Tillfällig disk
 
-De flesta virtuella datorer innehåller en temporär disk, som inte är en hanterad disk. Den temporära disken ger kortsiktig lagring för program och processer och är avsedd att endast lagra data, till exempel sid-eller växlingsfiler. Data på den tillfälliga disken kan gå förlorade under en [underhålls händelse](./manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime) eller när du [distribuerar om en virtuell dator](troubleshooting/redeploy-to-new-node-windows.md?toc=/azure/virtual-machines/windows/toc.json). Vid en lyckad standard omstart av den virtuella datorn kommer data på den temporära disken att kvarstå. Mer information om virtuella datorer utan temporära diskar finns i [storlekar för virtuella Azure-datorer utan lokal temporär disk](azure-vms-no-temp-disk.md).
+De flesta virtuella datorer innehåller en temporär disk, som inte är en hanterad disk. Den temporära disken ger kortsiktig lagring för program och processer och är avsedd att endast lagra data, till exempel sid-eller växlingsfiler. Data på den tillfälliga disken kan gå förlorade under en [underhålls händelse](./manage-availability.md#understand-vm-reboots---maintenance-vs-downtime) eller när du [distribuerar om en virtuell dator](troubleshooting/redeploy-to-new-node-windows.md?toc=/azure/virtual-machines/windows/toc.json). Vid en lyckad standard omstart av den virtuella datorn kommer data på den temporära disken att kvarstå. Mer information om virtuella datorer utan temporära diskar finns i [storlekar för virtuella Azure-datorer utan lokal temporär disk](azure-vms-no-temp-disk.md).
 
 På virtuella Azure Linux-datorer är den temporära disken vanligt vis/dev/SDB och på virtuella Windows-datorer är den temporära disken D: som standard. Den tillfälliga disken krypteras inte med kryptering på Server sidan om du inte aktiverar kryptering på värden.
 

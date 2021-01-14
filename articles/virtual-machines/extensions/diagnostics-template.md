@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/31/2017
 ms.author: mimckitt
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 181f226a4d7aa37ffd8c667db4736a96450e2be5
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: a91e21994dda126e14c100bcf1d2a69c36b13e1e
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94955964"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202172"
 ---
 # <a name="use-monitoring-and-diagnostics-with-a-windows-vm-and-azure-resource-manager-templates"></a>Använd övervakning och diagnostik med en virtuell Windows-dator och Azure Resource Manager mallar
 Azure-diagnostik-tillägget innehåller funktioner för övervakning och diagnostik på en Windows-baserad virtuell Azure-dator. Du kan aktivera dessa funktioner på den virtuella datorn genom att inkludera tillägget som en del av Azure Resource Manager-mallen. Mer information om hur du inkluderar tillägg som en del av en mall för virtuella datorer finns i [redigera Azure Resource Manager mallar med VM-tillägg](../windows/template-description.md#extensions) . I den här artikeln beskrivs hur du kan lägga till Azure-diagnostik-tillägget i en mall för virtuella Windows-datorer.  
@@ -168,7 +168,7 @@ Exempel: *WADMetricsPT1HP10DV2S20151108* innehåller mått data som sammanställ
 
 Varje WADMetrics-tabell innehåller följande kolumner:
 
-* **PartitionKey**: partitionsnyckel konstrueras baserat på värdet *resourceID* för att unikt identifiera VM-resursen. Exempel: `002Fsubscriptions:<subscriptionID>:002FresourceGroups:002F<ResourceGroupName>:002Fproviders:002FMicrosoft:002ECompute:002FvirtualMachines:002F<vmName>`  
+* **PartitionKey**: partitionsnyckel konstrueras baserat på värdet *resourceID* för att unikt identifiera VM-resursen. Exempelvis: `002Fsubscriptions:<subscriptionID>:002FresourceGroups:002F<ResourceGroupName>:002Fproviders:002FMicrosoft:002ECompute:002FvirtualMachines:002F<vmName>`  
 * **RowKey**: följer formatet `<Descending time tick>:<Performance Counter Name>` . Tids Skale beräkningen för fallande timmar är Max tids skal minus tiden i början av agg regerings perioden. Exempel: om exempel perioden startades 10-nov-2015 och 00:00Hrs UTC skulle beräkningen vara: `DateTime.MaxValue.Ticks - (new DateTime(2015,11,10,0,0,0,DateTimeKind.Utc).Ticks)` . För prestanda räknaren tillgängliga minnes byte kommer rad nyckeln att se ut så här: `2519551871999999999__:005CMemory:005CAvailable:0020Bytes`
 * **CounterName**: är namnet på prestanda räknaren. Detta matchar den *counterSpecifier* som definierats i XML-konfigurationen.
 * **Maximum**: det maximala värdet för prestanda räknaren över samlings perioden.
@@ -179,5 +179,5 @@ Varje WADMetrics-tabell innehåller följande kolumner:
 
 ## <a name="next-steps"></a>Nästa steg
 * En fullständig exempel mall för en virtuell Windows-dator med diagnostik-tillägg finns i [201-VM-Monitoring-Diagnostics-Extension](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-monitoring-diagnostics-extension)   
-* Distribuera Azure Resource Manager-mallen med [Azure PowerShell](../windows/ps-template.md) eller [Azure kommando rad](../linux/create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* Distribuera Azure Resource Manager-mallen med [Azure PowerShell](../windows/ps-template.md) eller [Azure kommando rad](../linux/create-ssh-secured-vm-from-template.md)
 * Läs mer om hur du [redigerar Azure Resource Manager mallar](../../azure-resource-manager/templates/template-syntax.md)

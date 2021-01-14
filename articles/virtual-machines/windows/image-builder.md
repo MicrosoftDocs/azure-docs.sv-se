@@ -7,16 +7,16 @@ ms.date: 05/05/2020
 ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.subservice: imaging
-ms.openlocfilehash: 62d80426dec6f5d63d8fa5d67d64d6aafb881110
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ca9f9ad0fb724884e865469ba118af4c7e6cea2f
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91320021"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202852"
 ---
 # <a name="preview-create-a-windows-vm-with-azure-image-builder"></a>För hands version: skapa en virtuell Windows-dator med Azure Image Builder
 
-Den här artikeln visar hur du kan skapa en anpassad Windows-avbildning med hjälp av Image Builder för Azure VM. I exemplet i den här artikeln används [anpassningar](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#properties-customize) för att anpassa avbildningen:
+Den här artikeln visar hur du kan skapa en anpassad Windows-avbildning med hjälp av Image Builder för Azure VM. I exemplet i den här artikeln används [anpassningar](../linux/image-builder-json.md#properties-customize) för att anpassa avbildningen:
 - PowerShell (ScriptUri) – Hämta och kör ett [PowerShell-skript](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/testPsScript.ps1).
 - Windows-omstart – startar om den virtuella datorn.
 - PowerShell (infogat) – kör ett speciellt kommando. I det här exemplet skapar den en katalog på den virtuella datorn med hjälp av `mkdir c:\\buildActions` .
@@ -271,4 +271,4 @@ az group delete -n $imageResourceGroup
 
 ## <a name="next-steps"></a>Nästa steg
 
-Mer information om komponenterna i. JSON-filen som används i den här artikeln finns i [referens för Image Builder-mallar](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Mer information om komponenterna i. JSON-filen som används i den här artikeln finns i [referens för Image Builder-mallar](../linux/image-builder-json.md).

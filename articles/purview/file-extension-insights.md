@@ -1,18 +1,18 @@
 ---
-title: Fil tilläggs rapportering för dina data med hjälp av avdelningens kontroll Insights
-description: Den här instruktions guiden beskriver hur du visar och använder avdelningens kontroll Insights-rapportering av fil tillägg för dina data.
+title: Fil tilläggs rapportering för dina data i Azure avdelningens kontroll med hjälp av avdelningens kontroll Insights
+description: Den här instruktions guiden beskriver hur du visar och använder avdelningens kontroll för fil tillägg på dina data.
 author: batamig
 ms.author: bagol
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/24/2020
-ms.openlocfilehash: 222106f5838a1eb237987afaa93924f1efe4a1f4
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 246a9dcfa35498d99fd403f10e5c17d7707efe84
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746292"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202631"
 ---
 # <a name="file-extension-insights-about-your-data-from-azure-purview"></a>Fil namns insikter om dina data från Azure avdelningens kontroll 
 
@@ -33,6 +33,9 @@ Innan du börjar med avdelningens kontroll Insights bör du kontrol lera att du 
 - Konfigurera dina Azure-resurser och fyll i relevanta konton med test data
 
 - Konfigurera och slutför en genomsökning av test data i varje data Källa
+
+- Inloggad på avdelningens kontroll med konto med en [data läsare eller data curator-roll](catalog-permissions.md#azure-purviews-pre-defined-data-plane-roles).
+
 
 Mer information finns i [Hantera data källor i Azure avdelningens kontroll (för hands version)](manage-data-sources.md).
 

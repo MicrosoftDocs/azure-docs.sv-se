@@ -8,18 +8,18 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: vikancha
-ms.openlocfilehash: c3443abaa1157122f7bcd43277a0ae00a2cd4407
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 7af13147804fd1e50a033635985c08b9c62f76ba
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98059100"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98200999"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>Installera NVIDIA GPU-drivrutiner på virtuella datorer i N-serien som kör Linux
 
 Om du vill dra nytta av GPU-funktionerna i Azure N-seriens virtuella datorer som backas upp av NVIDIA GPU: er måste du installera NVIDIA GPU-drivrutiner. [NVidia GPU-drivrutinen](../extensions/hpccompute-gpu-linux.md) installerar lämpliga NVIDIA-CUDA eller rutnäts driv rutiner på en virtuell dator i N-serien. Installera eller hantera tillägget med hjälp av Azure Portal eller verktyg som Azure CLI eller Azure Resource Manager mallar. Se [dokumentationen för NVIDIA GPU-drivrutin](../extensions/hpccompute-gpu-linux.md) för distributioner som stöds och distributions steg.
 
-Om du väljer att installera NVIDIA GPU-drivrutiner manuellt innehåller den här artikeln distributioner, driv rutiner och installations-och verifierings steg som stöds. Det finns även information om manuell driv rutins installation för [virtuella Windows-datorer](../windows/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Om du väljer att installera NVIDIA GPU-drivrutiner manuellt innehåller den här artikeln distributioner, driv rutiner och installations-och verifierings steg som stöds. Det finns även information om manuell driv rutins installation för [virtuella Windows-datorer](../windows/n-series-driver-setup.md).
 
 För specifikationer för virtuella datorer i N-serien, lagrings kapacitet och disk information, se [storlekar för virtuella GPU Linux-datorer](../sizes-gpu.md?toc=/azure/virtual-machines/linux/toc.json). 
 
@@ -388,4 +388,4 @@ Skapa sedan en post för ditt uppdaterings skript i `/etc/rc.d/rc3.d` så att sk
 
 ## <a name="next-steps"></a>Nästa steg
 
-* Om du vill avbilda en virtuell Linux-avbildning med dina installerade NVIDIA-drivrutiner, se [hur man generaliserar och fångar in en virtuell Linux-dator](capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+* Om du vill avbilda en virtuell Linux-avbildning med dina installerade NVIDIA-drivrutiner, se [hur man generaliserar och fångar in en virtuell Linux-dator](capture-image.md).

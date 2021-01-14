@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: akjosh
-ms.openlocfilehash: ffbafb76fd2c6dd06a88bfd79746557889039cd6
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 2e831b3c091b18a5c739275e4c932094ce088ba4
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94956032"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202614"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Använda Linux-diagnostiktillägget för att övervaka mått och loggar
 
@@ -69,7 +69,7 @@ Distributioner och versioner som stöds:
 - Debian 9, 8, 7
 - RHEL 7, 6,7 +
 
-### <a name="prerequisites"></a>Krav
+### <a name="prerequisites"></a>Förutsättningar
 
 * **Azure Linux-agentens version 2.2.0 eller senare**. De flesta Azure VM Linux-avbildningar innehåller version 2.2.7 eller senare. Kör `/usr/sbin/waagent -version` för att bekräfta versionen som är installerad på den virtuella datorn. Om den virtuella datorn kör en äldre version av gäst agenten följer du [de här anvisningarna](./update-linux-agent.md) för att uppdatera den.
 * **Azure CLI**. [Konfigurera Azure CLI](/cli/azure/install-azure-cli) -miljön på din dator.
@@ -229,7 +229,7 @@ Den här uppsättningen konfigurations information innehåller känslig informat
 }
 ```
 
-Namn | Värde
+Name | Värde
 ---- | -----
 storageAccountName | Namnet på det lagrings konto där data skrivs av tillägget.
 storageAccountEndPoint | valfritt Slut punkten som identifierar molnet där lagrings kontot finns. Om den här inställningen saknas, LAD standardvärdet för det offentliga Azure-molnet `https://core.windows.net` . Om du vill använda ett lagrings konto i Azure Germany, Azure Government eller Azure Kina anger du detta värde i enlighet med detta.
@@ -636,7 +636,7 @@ Förutsatt att dina skyddade inställningar finns i filen ProtectedSettings.jsp�
 az vm extension set --publisher Microsoft.Azure.Diagnostics --name LinuxDiagnostic --version 3.0 --resource-group <resource_group_name> --vm-name <vm_name> --protected-settings ProtectedSettings.json --settings PublicSettings.json
 ```
 
-Kommandot förutsätter att du använder Azures resurs hanterings läge i Azure CLI. Om du vill konfigurera LAD för virtuella datorer med klassisk distributions modell (ASM) växlar du till "ASM"-läge ( `azure config mode asm` ) och utelämnar resurs gruppens namn i kommandot. Mer information finns i dokumentationen för plattforms [oberoende CLI](/cli/azure/authenticate-azure-cli?view=azure-cli-latest).
+Kommandot förutsätter att du använder Azures resurs hanterings läge i Azure CLI. Om du vill konfigurera LAD för virtuella datorer med klassisk distributions modell (ASM) växlar du till "ASM"-läge ( `azure config mode asm` ) och utelämnar resurs gruppens namn i kommandot. Mer information finns i dokumentationen för plattforms [oberoende CLI](/cli/azure/authenticate-azure-cli).
 
 ### <a name="powershell"></a>PowerShell
 
@@ -813,7 +813,7 @@ Data som skickas till JsonBlob-mottagare lagras i blobbar i lagrings kontot med 
 Dessutom kan du använda dessa UI-verktyg för att komma åt data i Azure Storage:
 
 * Visual Studio-Server Explorer.
-* [Skärm bild som visar behållare och tabeller i Azure Storage Explorer.](https://azurestorageexplorer.codeplex.com/ "Azure Storage Explorer").
+* [Skärm bild som visar behållare och tabeller i Azure Storage Explorer.](https://azurestorageexplorer.codeplex.com/ "Azure Lagringsutforskaren").
 
 Den här ögonblicks bilden av en Microsoft Azure Storage Explorer-session visar de genererade Azure Storage tabellerna och behållarna från ett korrekt konfigurerat LAD 3,0-tillägg på en virtuell test dator. Avbildningen stämmer inte exakt med [exemplet på LAD 3,0-konfigurationen](#an-example-lad-30-configuration).
 

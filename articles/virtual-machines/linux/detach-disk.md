@@ -8,12 +8,12 @@ ms.date: 07/18/2018
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 41f70a476e5cc562207614c4e04658d5f0fc6d09
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 96586be8be466acf09121518fb71ea1b8ba9d983
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87499525"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98203209"
 ---
 # <a name="how-to-detach-a-data-disk-from-a-linux-virtual-machine"></a>Så här kopplar du bort en datadisk från en virtuell Linux-dator
 
@@ -117,5 +117,5 @@ Disken finns kvar i lagrings utrymmet men är inte längre kopplad till en virtu
 
 
 ## <a name="next-steps"></a>Nästa steg
-Om du vill återanvända data disken kan du bara [ansluta den till en annan virtuell dator](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Om du vill återanvända data disken kan du bara [ansluta den till en annan virtuell dator](add-disk.md).
 

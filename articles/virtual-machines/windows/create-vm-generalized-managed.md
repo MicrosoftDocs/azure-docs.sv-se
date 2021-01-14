@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 2be48025bcf2be8cec63e2a251f034e72c803e88
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cefe427a7a6f7a46c838147f3d699423c9f19c7b
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87289657"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201900"
 ---
 # <a name="create-a-vm-from-a-managed-image"></a>Skapa en virtuell dator från en hanterad avbildning
 
@@ -41,7 +41,7 @@ Du kan använda PowerShell för att skapa en virtuell dator från en avbildning 
 
 Den förenklade parametern som angetts för [New-AzVm](/powershell/module/az.compute/new-azvm) kräver bara att du anger ett namn, en resurs grupp och ett avbildnings namn för att skapa en virtuell dator från en avbildning. New-AzVm använder värdet för parametern **-Name** som namn på alla resurser som skapas automatiskt. I det här exemplet ger vi mer detaljerade namn för var och en av resurserna, men låt cmdleten skapa dem automatiskt. Du kan också skapa resurser i förväg, till exempel det virtuella nätverket och skicka resurs namnet till cmdleten. New-AzVm använder de befintliga resurserna om de kan hitta dem med deras namn.
 
-I följande exempel skapas en virtuell dator med namnet *myVMFromImage*i resurs gruppen *myResourceGroup* från avbildningen med namnet *image*. 
+I följande exempel skapas en virtuell dator med namnet *myVMFromImage* i resurs gruppen *myResourceGroup* från avbildningen med namnet *image*. 
 
 
 ```azurepowershell-interactive
@@ -60,4 +60,4 @@ New-AzVm `
 
 
 ## <a name="next-steps"></a>Nästa steg
-[Skapa och hantera virtuella Windows-datorer med modulen Azure PowerShell](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+[Skapa och hantera virtuella Windows-datorer med modulen Azure PowerShell](tutorial-manage-vm.md)

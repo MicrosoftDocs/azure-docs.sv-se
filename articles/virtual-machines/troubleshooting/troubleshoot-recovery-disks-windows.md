@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/09/2018
 ms.author: genli
-ms.openlocfilehash: 63d5e4bcc57a734fc5ea455da7c2db940a4b8ec3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fbdccc2efb72626d1974f4cd81be9d2ef4c522d4
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88654692"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201594"
 ---
 # <a name="troubleshoot-a-windows-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-azure-powershell"></a>Felsöka en virtuell Windows-dator genom att koppla OS-disken till en virtuell återställnings dator med hjälp av Azure PowerShell
 Om din virtuella Windows-dator (VM) i Azure påträffar ett start-eller disk fel kan du behöva utföra fel söknings stegen på själva disken. Ett vanligt exempel är en misslyckad program uppdatering som förhindrar att den virtuella datorn kan starta. Den här artikeln beskriver hur du använder Azure PowerShell för att ansluta disken till en annan virtuell Windows-dator för att åtgärda eventuella fel och sedan reparera den ursprungliga virtuella datorn. 
@@ -40,7 +40,7 @@ Så här ser felsökningsprocessen ut:
 6. Demontera och koppla från disk från virtuell återställnings dator.
 7. Ändra OS-disken för den berörda virtuella datorn.
 
-Du kan automatisera steg 1, 2, 3, 4, 6 och 7 genom att använda kommandona för reparation av virtuella datorer. Mer dokumentation och instruktioner finns i [Reparera en virtuell Windows-dator med hjälp av reparations kommandona för virtuella Azure-datorer](repair-windows-vm-using-azure-virtual-machine-repair-commands.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Du kan automatisera steg 1, 2, 3, 4, 6 och 7 genom att använda kommandona för reparation av virtuella datorer. Mer dokumentation och instruktioner finns i [Reparera en virtuell Windows-dator med hjälp av reparations kommandona för virtuella Azure-datorer](repair-windows-vm-using-azure-virtual-machine-repair-commands.md).
 
 Kontrol lera att du har [den senaste Azure PowerShell](/powershell/azure/) installerat och loggat in på din prenumeration:
 
@@ -256,6 +256,6 @@ Update-AzVM -ResourceGroup "myResourceGroup" -VM $myVM
 ```
 
 ## <a name="next-steps"></a>Nästa steg
-Om du har problem med att ansluta till din virtuella dator kan du läsa [FELSÖKA RDP-anslutningar till en virtuell Azure-dator](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Problem med att komma åt program som körs på den virtuella datorn finns i [Felsöka problem med program anslutningen på en virtuell Windows-dator](troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Om du har problem med att ansluta till din virtuella dator kan du läsa [FELSÖKA RDP-anslutningar till en virtuell Azure-dator](troubleshoot-rdp-connection.md). Problem med att komma åt program som körs på den virtuella datorn finns i [Felsöka problem med program anslutningen på en virtuell Windows-dator](troubleshoot-app-connection.md).
 
 Mer information om hur du använder Resource Manager finns i [Azure Resource Manager översikt](../../azure-resource-manager/management/overview.md).

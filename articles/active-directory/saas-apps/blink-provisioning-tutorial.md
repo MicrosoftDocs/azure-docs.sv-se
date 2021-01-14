@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/19/2019
 ms.author: Zhchia
-ms.openlocfilehash: 886d6ff1d3437a9d45bdabc68b2bf3ab8cdaa3ef
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 5f49d2c918164fa529b12313e000aff5f8893a65
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96349998"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201865"
 ---
 # <a name="tutorial-configure-blink-for-automatic-user-provisioning"></a>Självstudie: Konfigurera Blink för automatisk användar etablering
 
@@ -117,7 +117,7 @@ Det här avsnittet vägleder dig genom stegen för att konfigurera Azure AD Prov
 
 9. Granska de användarattribut som synkroniseras från Azure AD och blinkar i avsnittet **Mappning av attribut** . Attributen som väljs som **matchande** egenskaper används för att matcha användar kontona i Blink för uppdaterings åtgärder. Välj knappen **Spara** för att spara ändringarna.
 
-    ![Blinkar användarattribut](media/blink-provisioning-tutorial/user-attributes.png)
+    ![Blinkar användarattribut](media/blink-provisioning-tutorial/new-user-attributes.png)
 
 10. Information om hur du konfigurerar omfångsfilter finns i följande instruktioner i [självstudien för omfångsfilter](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
@@ -136,6 +136,10 @@ Det här avsnittet vägleder dig genom stegen för att konfigurera Azure AD Prov
 Den här åtgärden startar den första synkroniseringen av alla användare som definierats i **området** **Inställningar** . Den inledande synkroniseringen tar längre tid att utföra än efterföljande synkroniseringar, vilket inträffar ungefär var 40: e minut så länge Azure AD Provisioning-tjänsten körs. Du kan använda avsnittet **synkroniseringsinformation** om du vill övervaka förloppet och följa länkar till etablerings aktivitets rapporten, som beskriver alla åtgärder som utförs av Azure AD Provisioning-tjänsten på Blink.
 
 Mer information om hur du läser etablerings loggarna i Azure AD finns i [rapportering om automatisk etablering av användar konton](../app-provisioning/check-status-user-account-provisioning.md).
+
+## <a name="change-log"></a>Ändringslogg
+
+* 01/14/2021 – anpassat tillägg-attribut **företag** , **Beskrivning** och **plats** har lagts till.
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 

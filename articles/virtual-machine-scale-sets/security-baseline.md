@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 5c00d08fcaeed8eba5b9732c9196b9abddc32b36
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 68dc7c36159523bcc46e93a4784e9d038037a919
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500724"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201220"
 ---
 # <a name="azure-security-baseline-for-virtual-machine-scale-sets"></a>Azures säkerhets bas linje för Virtual Machine Scale Sets
 
@@ -412,7 +412,7 @@ För virtuella Linux-datorer kan du manuellt konfigurera konsol loggning per nod
 
 **Vägledning**: Använd Paw (arbets stationer med privilegie rad åtkomst) med MFA konfigurerat för att logga in på och konfigurera Azure-resurser.
 
-* [Lär dig mer om arbets stationer med privilegie rad åtkomst](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+* [Lär dig mer om arbets stationer med privilegie rad åtkomst](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 * [Aktivera MFA i Azure](../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -612,7 +612,7 @@ Microsoft använder TLS-protokollet (Transport Layer Security) för att skydda d
 
 * [Så här skapar du aviseringar för Azure aktivitets logg händelser](../azure-monitor/platform/alerts-activity-log.md)
 
-* [Loggning med Azure-lagringsanalys](../storage/common/storage-analytics-logging.md)
+* [Analysloggning i Azure Storage](../storage/common/storage-analytics-logging.md)
 
 **Azure Security Center-övervakning**: Inte tillgänglig för tillfället
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/25/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 6ad91b7cf8cd8a79654774b1b5463bc661a981d5
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: bdfdba3bb9ad6d393e55e6070b2435c72254668a
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348185"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201305"
 ---
 # <a name="azure-security-baseline-for-azure-dns"></a>Azures säkerhets bas linje för Azure DNS
 
@@ -166,7 +166,7 @@ Du kan också aktivera just-in-Time-åtkomst till administrativa konton med Azur
 
 **Vägledning**: Använd en säker, Azure-hanterad arbets Station (kallas även en privilegie rad åtkomst arbets Station eller Paw) för administrativa uppgifter som kräver förhöjda privilegier.
 
-- [Förstå säkra, Azure-hanterade arbets stationer](../active-directory/devices/concept-azure-managed-workstation.md)
+- [Förstå säkra, Azure-hanterade arbets stationer](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 - [Aktivera MFA i Azure](../active-directory/authentication/howto-mfa-getstarted.md)
 

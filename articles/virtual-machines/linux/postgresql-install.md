@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: cynthn
-ms.openlocfilehash: fdde7613627c9fec0694f3985f78cf10e52f59c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4052a9c8614a17c3b5cdd871ad78be8cc3258c5a
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91397104"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202597"
 ---
 # <a name="install-and-configure-postgresql-on-azure"></a>Installera och konfigurera PostgreSQL på Azure
 PostgreSQL är en avancerad databas med öppen källkod som liknar Oracle och DB2. Den innehåller företags klara funktioner som full syra efterlevnad, tillförlitlig transaktions bearbetning och samtidighet med flera versioner. Det stöder också standarder som ANSI SQL och SQL/with (inklusive externa data omslutningar för Oracle, MySQL, MongoDB och många andra). Den är mycket utöknings bar med stöd för över 12 procedur språk, GIN-och register index, spatiala data stöd och flera NoSQL-liknande funktioner för JSON-eller nyckel värdebaserade program.
@@ -24,13 +24,13 @@ I den här artikeln får du lära dig hur du installerar och konfigurerar Postgr
 
 ## <a name="install-postgresql"></a>Installera PostgreSQL
 > [!NOTE]
-> Du måste redan ha en virtuell Azure-dator som kör Linux för att kunna slutföra den här självstudien. Information om hur du skapar och konfigurerar en virtuell Linux-dator innan du fortsätter finns i [själv studie kursen om virtuella Azure Linux-datorer](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+> Du måste redan ha en virtuell Azure-dator som kör Linux för att kunna slutföra den här självstudien. Information om hur du skapar och konfigurerar en virtuell Linux-dator innan du fortsätter finns i [själv studie kursen om virtuella Azure Linux-datorer](quick-create-cli.md).
 > 
 > 
 
 I det här fallet använder du Port 1999 som PostgreSQL-port.  
 
-Anslut till den virtuella Linux-dator som du skapade via SparaTillFil. Om det här är första gången du använder en virtuell Azure Linux-dator läser du så här [använder du SSH med Linux på Azure](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) för att lära dig hur du använder SparaTillFil för att ansluta till en virtuell Linux-dator.
+Anslut till den virtuella Linux-dator som du skapade via SparaTillFil. Om det här är första gången du använder en virtuell Azure Linux-dator läser du så här [använder du SSH med Linux på Azure](mac-create-ssh-keys.md) för att lära dig hur du använder SparaTillFil för att ansluta till en virtuell Linux-dator.
 
 1. Kör följande kommando för att växla till roten (admin):
 

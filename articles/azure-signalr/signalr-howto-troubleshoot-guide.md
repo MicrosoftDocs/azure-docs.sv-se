@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/06/2020
 ms.author: yajin1
-ms.openlocfilehash: 505176758e1dbba1d6bf262554568edd8a197a4d
-ms.sourcegitcommit: 17e9cb8d05edaac9addcd6e0f2c230f71573422c
+ms.openlocfilehash: bdda89483661eb6f6d006c3d8ea42b46d162de05
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97707681"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201662"
 ---
 # <a name="troubleshooting-guide-for-azure-signalr-service-common-issues"></a>Fel söknings guide för Azure SignalR service vanliga problem
 
@@ -26,7 +26,7 @@ Den här vägledningen är att tillhandahålla en användbar fel söknings guide
 * 413-nyttolasten är för stor
 * Åtkomsttoken får inte vara längre än 4K. 413 begär ande enheten är för stor
 
-### <a name="root-cause"></a>Rotor saken:
+### <a name="root-cause"></a>Rotorsak:
 
 För HTTP/2 är max längden **4 K**, så om du använder webbläsare för att få åtkomst till Azure-tjänsten, kommer det att finnas ett fel `ERR_CONNECTION_` för den här begränsningen.
 
@@ -73,7 +73,7 @@ services.MapAzureSignalR(GetType().FullName, options =>
 * ASP.NET "anslutningen är inte aktiv, det går inte att skicka data till tjänsten." fel [#324](https://github.com/Azure/azure-signalr/issues/324)
 * "Ett fel uppstod när HTTP-begäran skulle utföras till https:// <API endpoint> . Det här felet kan bero på att Server certifikatet inte har kon figurer ATS korrekt med HTTP.SYS i HTTPS-fallet. Det här felet kan också orsakas av en matchning av säkerhets bindningen mellan klienten och servern. "
 
-### <a name="root-cause"></a>Rotor saken:
+### <a name="root-cause"></a>Rotorsak:
 
 Azure-tjänsten stöder bara TLS 1.2 för säkerhets frågor. Med .NET Framework är det möjligt att TLS 1.2 inte är standard protokollet. Det innebär att Server anslutningarna till ASRS inte kan upprättas.
 
@@ -242,7 +242,7 @@ När klienten är ansluten till Azure-Signaleraren kan den permanenta anslutning
 * `{"type":7,"error":"Connection closed with an error."}`
 * `{"type":7,"error":"Internal server error."}`
 
-### <a name="root-cause"></a>Rotor saken:
+### <a name="root-cause"></a>Rotorsak:
 
 Klient anslutningar kan släppas under olika omständigheter:
 * Vid `Hub` Utlös ande av undantag med inkommande begäran.
@@ -268,7 +268,7 @@ Klient anslutningar stiger ständigt under lång tid i Azure signalers mått.
 
 :::image type="content" source="./media/signalr-howto-troubleshoot-guide/client-connection-increasing-constantly.jpg" alt-text="Klient anslutningen ökar ständigt":::
 
-### <a name="root-cause"></a>Rotor saken:
+### <a name="root-cause"></a>Rotorsak:
 
 SignalR klient anslutning har `DisposeAsync` aldrig anropats. anslutningen förblir öppen.
 
@@ -330,7 +330,7 @@ I det här avsnittet beskrivs flera möjligheter som leder till att Server anslu
 * `The remote party closed the WebSocket connection without completing the close handshake`
 * `Service timeout. 30.00ms elapsed without receiving a message from service.`
 
-### <a name="root-cause"></a>Rotor saken:
+### <a name="root-cause"></a>Rotorsak:
 
 Server-tjänst anslutning har stängts av **ASRS**(**en** zure **s** ignal **R** **s** servicenivåmå).
 
@@ -368,7 +368,7 @@ Ta ASP.NET Core ett till exempel (ASP.NET One liknar):
 
     * [ASP.NET Core C#-klient](https://github.com/Azure/azure-signalr/tree/dev/samples/ChatSample/ChatSample.CSharpClient/Program.cs#L64)
 
-    * [ASP.NET Core JavaScript-klient](https://github.com/Azure/azure-signalr/tree/dev/samples/ChatSample/ChatSample/wwwroot/index.html#L164)
+    * [ASP.NET Core JavaScript-klient](https://github.com/Azure/azure-signalr/blob/release/1.0.0-preview1/samples/ChatSample/wwwroot/index.html#L164)
 
     * [ASP.NET C#-klient](https://github.com/Azure/azure-signalr/tree/dev/samples/AspNet.ChatSample/AspNet.ChatSample.CSharpClient/Program.cs#L78)
 

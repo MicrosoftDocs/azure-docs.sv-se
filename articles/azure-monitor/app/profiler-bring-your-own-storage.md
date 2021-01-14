@@ -4,14 +4,14 @@ description: Konfigurera BYOS (ta med din egen lagring) för profiler & Snapshot
 ms.topic: conceptual
 author: renatosalas
 ms.author: regutier
-ms.date: 04/14/2020
+ms.date: 01/14/2021
 ms.reviewer: mbullwin
-ms.openlocfilehash: 719f0cfa0a1f80568acf3231ce3ffab441e5f6b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f82432c1dd8c66e8ce845831ff35d534a34e3e04
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87117382"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202546"
 ---
 # <a name="configure-bring-your-own-storage-byos-for-application-insights-profiler-and-snapshot-debugger"></a>Konfigurera ta med din egen lagring (BYOS) för Application Insights Profiler och Snapshot Debugger
 
@@ -53,11 +53,11 @@ Steg:
 1. Sök & Välj appen "Diagnostic Services Trusted Storage Access" 
 1. Spara ändringar
 
-_ ![ Figur 1,0](media/profiler-bring-your-own-storage/figure-10.png)_ 
+_![ Figur 1,0](media/profiler-bring-your-own-storage/figure-10.png)_ 
  _figur 1,0_ 
 
 När du har lagt till rollen visas den under avsnittet "roll tilldelningar", precis som i bild 1,1. 
-_ ![ Figur 1,1](media/profiler-bring-your-own-storage/figure-11.png)_ 
+_![ Figur 1,1](media/profiler-bring-your-own-storage/figure-11.png)_ 
  _figur 1,1_ 
 
 Om du också använder en privat länk krävs en ytterligare konfiguration för att tillåta anslutning till vår betrodda Microsoft-tjänst från din Virtual Network. Läs dokumentationen om [lagrings nätverks säkerhet](../../storage/common/storage-network-security.md#trusted-microsoft-services).
@@ -91,7 +91,7 @@ Det finns tre alternativ för att konfigurera BYOS för kod på kod nivå (profi
 
     Ofta
     ```powershell
-    $appInsights = Get-AzApplicationInsights -ResourceGroupName "{resource_group_name}" -Name "{storage_account_name}"
+    $appInsights = Get-AzApplicationInsights -ResourceGroupName "{resource_group_name}" -Name "{application_insights_name}"
     Remove-AzApplicationInsightsLinkedStorageAccount -ResourceId $appInsights.Id
     ```
 
@@ -226,7 +226,7 @@ Det finns tre alternativ för att konfigurera BYOS för kod på kod nivå (profi
     DeploymentDebugLogLevel :
     ```
 
-1. Aktivera diagnostik på kod nivå (profilerings-/fel sökning) på arbets belastningen som intresserar dig genom Azure Portal. (App Service > Application Insights) _ ![ Figur 2,0](media/profiler-bring-your-own-storage/figure-20.png)_ 
+1. Aktivera diagnostik på kod nivå (profilerings-/fel sökning) på arbets belastningen som intresserar dig genom Azure Portal. (App Service > Application Insights) _![ Figur 2,0](media/profiler-bring-your-own-storage/figure-20.png)_ 
  _figur 2,0_
 
 ## <a name="troubleshooting"></a>Felsökning

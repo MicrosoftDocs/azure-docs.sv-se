@@ -6,12 +6,12 @@ ms.author: tefa
 ms.date: 11/12/2020
 ms.service: signalr
 ms.topic: conceptual
-ms.openlocfilehash: 06aa91ff414e5575f7b1a743d2cc17765437ef72
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: d9dd7ce9cf321628598a7bb866c5d1b1a6fb0e1e
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97797573"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201679"
 ---
 # <a name="server-graceful-shutdown"></a>Servern är korrekt avstängd
 Microsoft Azure SignalR-tjänsten har två lägen för att stänga av en server på ett smidigt sätt. 
@@ -43,7 +43,7 @@ I allmänhet kommer det att finnas fyra steg i en korrekt avstängnings process:
 
     Du kan behöva utforma ett sätt, t. ex. sända ett stängnings meddelande till alla klienter, och sedan låta dina klienter bestämma när de ska stängas/återanslutas.
 
-    Läs [ChatSample](https://github.com/Azure/azure-signalr/tree/dev/samples/ChatSample/ChatSample) för exempel användning, som vi sänder meddelandet "avsluta" för att utlösa klienten nära i avstängnings Hook.
+    Läs [ChatSample](https://github.com/Azure/azure-signalr/tree/dev/samples/ChatSample) för exempel användning, som vi sänder meddelandet "avsluta" för att utlösa klienten nära i avstängnings Hook.
 
     **Läge inställt på MigrateClients**
 

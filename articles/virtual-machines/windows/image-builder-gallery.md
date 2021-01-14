@@ -7,12 +7,12 @@ ms.date: 05/05/2020
 ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.subservice: imaging
-ms.openlocfilehash: 96603d27f53161c72c9e81bb7b84fdc6ab5d1ca2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6699db280c4d82867d5559255eab08fd6b55b65a
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91320072"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201526"
 ---
 # <a name="preview-create-a-windows-image-and-distribute-it-to-a-shared-image-gallery"></a>För hands version: skapa en Windows-avbildning och distribuera den till ett delat avbildnings Galleri 
 
@@ -20,7 +20,7 @@ Den här artikeln visar hur du kan använda Azure Image Builder och Azure PowerS
 
 Vi kommer att använda en. JSON-mall för att konfigurera avbildningen. JSON-filen som vi använder är här: [armTemplateWinSIG.jspå](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/1_Creating_a_Custom_Win_Shared_Image_Gallery_Image/armTemplateWinSIG.json). Vi kommer att hämta och redigera en lokal version av mallen, så den här artikeln skrivs med hjälp av den lokala PowerShell-sessionen.
 
-För att distribuera avbildningen till ett delat bild galleri använder mallen [sharedImage](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#distribute-sharedimage) som värde för `distribute` avsnittet i mallen.
+För att distribuera avbildningen till ett delat bild galleri använder mallen [sharedImage](../linux/image-builder-json.md#distribute-sharedimage) som värde för `distribute` avsnittet i mallen.
 
 Azure Image Builder kör automatiskt Sysprep för att generalisera avbildningen, det här är ett allmänt Sysprep-kommando som du kan [åsidosätta](../linux/image-builder-troubleshoot.md#vms-created-from-aib-images-do-not-create-successfully) om det behövs. 
 

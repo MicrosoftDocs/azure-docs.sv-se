@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/02/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 477228f607f620f22ffab3a3435ebd850df0324a
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 7d01e033b6349861d5d89493aa5132368a53ca09
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492537"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201407"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-mysql"></a>Azures säkerhets bas linje för Azure Database for MySQL
 
@@ -368,7 +368,7 @@ Kontroll Plans åtkomst för MySQL är separat tillgänglig via REST API och st�
 
 **Vägledning**: Använd Paw (Privileged Access Workstation) med Multi-Factor Authentication (MFA) konfigurerat för att logga in på och konfigurera Azure-resurser.
 
-- [Lär dig mer om arbets stationer med privilegie rad åtkomst](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+- [Lär dig mer om arbets stationer med privilegie rad åtkomst](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 - [Aktivera MFA i Azure](../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -980,7 +980,7 @@ Microsofts program mot skadlig kod har Aktiver ATS på den underliggande värden
 
 ### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9,2: Utför fullständig säkerhets kopiering av systemet och säkerhetskopiera alla Kundhanterade nycklar
 
-**Vägledning**: Azure Database for MySQL skapar automatiskt Server säkerhets kopior och lagrar dem antingen lokalt redundant eller Geo-redundant lagring, enligt användarens val. Säkerhetskopieringar kan användas för att återställa servern till en vald tidpunkt. Säkerhets kopiering och återställning är en viktig del av en strategi för affärs kontinuitet eftersom de skyddar dina data från oavsiktlig skada eller borttagning. 
+**Vägledning**: Azure Database for MySQL skapar automatiskt Server säkerhets kopior och lagrar dem antingen lokalt redundant eller Geo-redundant lagring, enligt användarens val. Säkerhetskopieringar kan användas för att återställa servern till en vald tidpunkt. Säkerhetskopiering och återställning är en viktig del i strategin för affärskontinuitet, eftersom de skyddar dina data från oavsiktlig skada eller borttagning. 
 
 Om du använder Azure Key Vault för att lagra autentiseringsuppgifter för dina Azure Database for MySQL-instanser bör du se till att vanliga automatiserade säkerhets kopieringar av nycklar används. 
 

@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - contperf-fy21q1
 - device-developer
-ms.openlocfilehash: 9e5e96d97494f4ba9aa28e84b046cd057fe8eba7
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 236acc2ded3fcb651295e0342ab4e1e88174be46
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033416"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202971"
 ---
 # <a name="define-a-new-iot-device-type-in-your-azure-iot-central-application"></a>Definiera en ny IoT-enhetstyp i Azure IoT Central-programmet
 
@@ -42,8 +42,16 @@ I ett IoT Central-program använder en enhets mall en enhets modell för att bes
 
 - Utforma enhets mal len i IoT Central och [implementera sedan dess enhets modell i enhets koden](concepts-telemetry-properties-commands.md).
 - Importera en enhets mall från [Azure-certifierad för IoT-katalogen](https://aka.ms/iotdevcat). Anpassa enhets mal len efter dina krav i IoT Central.
+> [!NOTE]
+> IoT Central kräver en fullständig modell med alla refererade gränssnitt i samma fil, när du importerar en modell från modell databasen använder du nyckelordet "Expanded" för att få den fullständiga versionen.
+Till exempel. https://devicemodels.azure.com/dtmi/com/example/thermostat-1.expanded.json
+
 - Skapa en enhets modell med hjälp av [Digitals definitions språk (DTDL)-version 2](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md). Visual Studio Code har ett tillägg som stöder redigering av DTDL-modeller. Mer information finns i [Installera och använda redigerings verktygen för DTDL](../../iot-pnp/howto-use-dtdl-authoring-tools.md). Publicera sedan modellen till den offentliga modellens lagrings plats. Läs mer i [enhets modellens lagrings plats](../../iot-pnp/concepts-model-repository.md). Implementera din enhets kod från modellen och Anslut din riktiga enhet till ditt IoT Central-program. IoT Central söker efter och importerar enhets modellen från det offentliga lagrings platsen och skapar en mall för enheten. Du kan sedan lägga till alla moln egenskaper, anpassningar och instrument paneler som ditt IoT Central program behöver för enhets mal len.
 - Redigera en enhets modell med hjälp av DTDL. Implementera din enhets kod från modellen. Importera enhets modellen manuellt till IoT Central programmet och Lägg sedan till eventuella moln egenskaper, anpassningar och instrument paneler som ditt IoT Central program behöver.
+
+> [!TIP]
+> IoT Central kräver en fullständig modell med alla refererade gränssnitt i samma fil. När du importerar en modell från modell databasen använder du nyckelordet *Expanded* för att hämta den fullständiga versionen.
+> Till exempel [https://devicemodels.azure.com/dtmi/com/example/thermostat-1.expanded.json](https://devicemodels.azure.com/dtmi/com/example/thermostat-1.expanded.json).
 
 Du kan också lägga till enhets mallar i ett IoT Central program med hjälp av [REST API](/learn/modules/manage-iot-central-apps-with-rest-api/) eller [CLI](howto-manage-iot-central-from-cli.md).
 

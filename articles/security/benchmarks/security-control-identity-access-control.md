@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 8d2901e71a3c638e25899803ff9b24e20fdf1969
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 08ba75b5160acb20cb5e2d172203ae48b546f17d
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94412671"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202240"
 ---
 # <a name="security-control-identity-and-access-control"></a>Säkerhets kontroll: identitet och Access Control
 
@@ -68,7 +68,7 @@ När det är möjligt ska du använda Azure Active Directory SSO i stället för
 
 Aktivera Azure AD MFA och följ Azure Security Center rekommendationer för identitets-och åtkomst hantering.
 
-- [Så här aktiverar du MFA i Azure](../../active-directory/authentication/howto-mfa-getstarted.md)
+- [Aktivera MFA i Azure](../../active-directory/authentication/howto-mfa-getstarted.md)
 
 - [Övervaka identitet och åtkomst i Azure Security Center](../../security-center/security-center-identity-access.md)
 
@@ -80,9 +80,9 @@ Aktivera Azure AD MFA och följ Azure Security Center rekommendationer för iden
 
 Använd Paw (Privileged Access Workstation) med MFA konfigurerat för att logga in på och konfigurera Azure-resurser.
 
-- [Lär dig mer om arbets stationer med privilegie rad åtkomst](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+- [Lär dig mer om arbets stationer med privilegie rad åtkomst](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
-- [Så här aktiverar du MFA i Azure](../../active-directory/authentication/howto-mfa-getstarted.md)
+- [Aktivera MFA i Azure](../../active-directory/authentication/howto-mfa-getstarted.md)
 
 ## <a name="37-log-and-alert-on-suspicious-activities-from-administrative-accounts"></a>3,7: Logga och Avisera om misstänkta aktiviteter från administrativa konton
 
@@ -94,7 +94,7 @@ Använd Azure Active Directory säkerhets rapporter för att skapa loggar och va
 
 - [Så här identifierar du Azure AD-användare som har flaggats för riskfylld aktivitet](../../active-directory/identity-protection/overview-identity-protection.md)
 
-- [Övervaka användarnas identitets-och åtkomst aktiviteter i Azure Security Center](../../security-center/security-center-identity-access.md)
+- [Så här övervakar du användarnas identitets- och åtkomstrelaterade aktiviteter i Azure Security Center](../../security-center/security-center-identity-access.md)
 
 ## <a name="38-manage-azure-resources-from-only-approved-locations"></a>3,8: hantera endast Azure-resurser från godkända platser
 
@@ -114,7 +114,7 @@ Använd namngivna platser för villkorlig åtkomst för att tillåta åtkomst fr
 
 Använd Azure Active Directory som den centrala autentiserings-och auktoriserings systemet. Azure AD skyddar data med stark kryptering för data i vila och under överföring. Azure AD innehåller även salter, hash-värden och lagrar användarautentiseringsuppgifter på ett säkert sätt.
 
-- [Så här skapar och konfigurerar du en Azure AD-instans](../../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
+- [Skapa och konfigurera en Azure AD-instans](../../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
 ## <a name="310-regularly-review-and-reconcile-user-access"></a>3,10: granska och stäm regelbundet av användar åtkomst
 
@@ -138,7 +138,7 @@ Du har åtkomst till Azure AD-inloggning, gransknings-och risk händelse logg k�
 
 Du kan effektivisera processen genom att skapa diagnostikinställningar för Azure Active Directory användar konton och skicka gransknings loggar och inloggnings loggar till en Log Analytics arbets yta. Du kan konfigurera önskade aviseringar i Log Analytics arbets ytan.
 
-- [Så här integrerar du Azures aktivitets loggar i Azure Monitor](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
+- [Så här integrerar du Azures aktivitetsloggar i Azure Monitor](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 ## <a name="312-alert-on-account-login-behavior-deviation"></a>3,12: avisering om beteende för beteende för konto inloggning
 
@@ -148,7 +148,7 @@ Du kan effektivisera processen genom att skapa diagnostikinställningar för Azu
 
 Använd funktioner för Azure AD-risk och identitets skydd för att konfigurera automatiserade svar på identifierade misstänkta åtgärder relaterade till användar identiteter. Du kan också mata in data i Azure Sentinel för ytterligare undersökning.
 
-- [Visa Azure AD-riskfyllda inloggningar](../../active-directory/identity-protection/overview-identity-protection.md)
+- [Så visar du riskfyllda inloggningar för Azure AD](../../active-directory/identity-protection/overview-identity-protection.md)
 
 - [Så här konfigurerar och aktiverar du risk principer för identitets skydd](../../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 

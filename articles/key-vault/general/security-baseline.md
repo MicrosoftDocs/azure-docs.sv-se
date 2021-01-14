@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/10/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 7d116010d5e6fea5e1ba8a66431b874194506283
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: ad47ac7d51de6ab497d7061961c14b5324fab931
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843459"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202461"
 ---
 # <a name="azure-security-baseline-for-key-vault"></a>Azures säkerhetsbaslinje för Key Vault
 
@@ -39,9 +39,9 @@ Så här integrerar du Key Vault med en privat Azure-länk:
 https://docs.microsoft.com/azure/key-vault/private-link-service
 
 
-**Azure Security Center övervakning**: Ja
+**Azure Security Center-övervakning**: Ja
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="12-monitor-and-log-the-configuration-and-traffic-of-vnets-subnets-and-nics"></a>1,2: övervaka och logga konfigurationen och trafiken för virtuella nätverk, undernät och nätverkskort
 
@@ -51,16 +51,16 @@ För ytterligare information om nätverks säkerhet som tillhandahålls av Azure
 
 https://docs.microsoft.com/azure/security-center/security-center-network-recommendations
 
-**Azure Security Center övervakning**: Ja
+**Azure Security Center-övervakning**: Ja
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="13-protect-critical-web-applications"></a>1,3: skydda viktiga webb program
 
 **Vägledning**: ej tillämpligt; den här rekommendationen är avsedd för webb program som körs på Azure App Service-eller beräknings resurser.
 
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -74,9 +74,9 @@ Hantera Azure DDoS Protection standard med hjälp av Azure Portal: https://docs.
 Hot identifiering för Azure Service Layer i Azure Security Center: https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer
 
 
-**Azure Security Center övervakning**: Ja
+**Azure Security Center-övervakning**: Ja
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="15-record-network-packets-and-flow-logs"></a>1,5: registrera nätverks paket och flödes loggar
 
@@ -90,7 +90,7 @@ Azure Key Vault loggning: https://docs.microsoft.com/azure/key-vault/key-vault-l
 
 
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -106,16 +106,16 @@ https://docs.microsoft.com/azure/security-center/advanced-threat-protection-key-
 
 
 
-**Azure Security Center övervakning**: Ja
+**Azure Security Center-övervakning**: Ja
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="17-manage-traffic-to-web-applications"></a>1,7: hantera trafik till webb program
 
 **Vägledning**: ej tillämpligt; den här rekommendationen är avsedd för webb program som körs på Azure App Service-eller beräknings resurser.
 
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -126,9 +126,9 @@ https://docs.microsoft.com/azure/security-center/advanced-threat-protection-key-
 Översikt över Azure Service-Taggar: https://docs.microsoft.com/azure/virtual-network/service-tags-overview
 
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1,9: underhåll standardkonfigurationer för nätverks enheter
 
@@ -149,9 +149,9 @@ Snabb start: definiera och tilldela en skiss i portalen:
 https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal
 
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="110-document-traffic-configuration-rules"></a>1,10: dokumentera trafik konfigurations regler
 
@@ -166,9 +166,9 @@ Använd taggar för att organisera dina Azure-resurser:
 https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1,11: Använd automatiserade verktyg för att övervaka konfigurationer för nätverks resurser och identifiera ändringar
 
@@ -183,9 +183,9 @@ Skapa, Visa och hantera aktivitets logg aviseringar genom att använda Azure Mon
 https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ## <a name="logging-and-monitoring"></a>Loggning och övervakning
 
@@ -196,7 +196,7 @@ https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 **Vägledning**: ej tillämpligt; Microsoft underhåller den tids källa som används för Azure-resurser, till exempel Azure Key Vault, för tidsstämplar i loggarna.
 
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Microsoft
 
@@ -213,9 +213,9 @@ Snabb start: så här gör du Azure-kontroll på kort:
 https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
 
-**Azure Security Center övervakning**: Ja
+**Azure Security Center-övervakning**: Ja
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="23-enable-audit-logging-for-azure-resources"></a>2,3: Aktivera gransknings loggning för Azure-resurser
 
@@ -226,16 +226,16 @@ Azure Key Vault loggning:
 https://docs.microsoft.com/azure/key-vault/key-vault-logging
 
 
-**Azure Security Center övervakning**: Ja
+**Azure Security Center-övervakning**: Ja
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="24-collect-security-logs-from-operating-systems"></a>2,4: samla in säkerhets loggar från operativ system
 
 **Vägledning**: ej tillämpligt; den här rekommendationen är avsedd för beräknings resurser.
 
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -246,9 +246,9 @@ https://docs.microsoft.com/azure/key-vault/key-vault-logging
 Ändra data lagrings perioden: https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period
 
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="26-monitor-and-review-logs"></a>2,6: övervaka och granska loggar
 
@@ -267,9 +267,9 @@ Kom igång med logg frågor i Azure Monitor:
 https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries
 
 
-**Azure Security Center övervakning**: Ja
+**Azure Security Center-övervakning**: Ja
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="27-enable-alerts-for-anomalous-activity"></a>2,7: aktivera aviseringar för avvikande aktivitet
 
@@ -288,16 +288,16 @@ Svara på händelser med Azure Monitor aviseringar:
 https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response
 
 
-**Azure Security Center övervakning**: Ja
+**Azure Security Center-övervakning**: Ja
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="28-centralize-anti-malware-logging"></a>2,8: centralisera loggning mot skadlig kod
 
 **Vägledning**: ej tillämpligt; Azure Key Vault bearbetar eller skapar inte relaterade loggar mot skadlig kod.
 
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -306,7 +306,7 @@ https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response
 **Vägledning**: ej tillämpligt; Azure Key Vault bearbetar eller skapar inte DNS-relaterade loggar.
 
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -315,7 +315,7 @@ https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response
 **Vägledning**: ej tillämpligt; den här rekommendationen är avsedd för beräknings resurser.
 
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -338,16 +338,16 @@ Säker åtkomst till ett nyckel valv:
 https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault
 
 
-**Azure Security Center övervakning**: Ja
+**Azure Security Center-övervakning**: Ja
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="32-change-default-passwords-where-applicable"></a>3,2: ändra standard lösen ord där tillämpligt
 
 **Vägledning**: ej tillämpligt; Azure Key Vault har inte begreppet standard lösen ord som autentisering tillhandahålls av Active Directory och skyddas med rollbaserad åtkomst kontroll i Azure (Azure RBAC).
 
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -360,9 +360,9 @@ https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault
 https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
 
-**Azure Security Center övervakning**: Ja
+**Azure Security Center-övervakning**: Ja
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3,4: Använd enkel inloggning (SSO) med Azure Active Directory
 
@@ -374,9 +374,9 @@ https://docs.microsoft.com/azure/key-vault/service-to-service-authentication
 
 
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3,5: Använd Multi-Factor Authentication för all Azure Active Directory baserad åtkomst
 
@@ -391,23 +391,23 @@ https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getst
 https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
 
-**Azure Security Center övervakning**: Ja
+**Azure Security Center-övervakning**: Ja
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3,6: Använd dedikerade datorer (arbets stationer med privilegie rad åtkomst) för alla administrativa uppgifter
 
 **Vägledning**: Använd en privilegie rad åtkomst arbets Station (Paw) med Azure AD Multi-Factor Authentication (MFA) konfigurerat för att logga in på och konfigurera Key Vault-aktiverade resurser. 
 
-Arbets stationer med privilegie rad åtkomst: https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations 
+Arbets stationer med privilegie rad åtkomst: https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/ 
 
 Planera en molnbaserad Azure AD Multi-Factor Authentication-distribution: https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
 
 
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3,7: Logga och Avisera om misstänkt aktivitet från administrativa konton
 
@@ -427,9 +427,9 @@ Skapa och hantera åtgärds grupper i Azure Portal: https://docs.microsoft.com/a
 
 
 
-**Azure Security Center övervakning**: Ja
+**Azure Security Center-övervakning**: Ja
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="38-manage-azure-resources-from-only-approved-locations"></a>3,8: hantera endast Azure-resurser från godkända platser
 
@@ -439,9 +439,9 @@ Vad är plats villkoret i Azure Active Directory villkorlig åtkomst?: https://d
 
 
 
-**Azure Security Center övervakning**: för närvarande inte tillgängligt
+**Azure Security Center-övervakning**: Inte tillgänglig för tillfället
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="39-use-azure-active-directory"></a>3,9: Använd Azure Active Directory
 
@@ -454,9 +454,9 @@ Snabb start: skapa en ny klient i Azure Active Directory:
 https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant
 
 
-**Azure Security Center övervakning**: för närvarande inte tillgängligt
+**Azure Security Center-övervakning**: Inte tillgänglig för tillfället
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3,10: granska och stäm regelbundet av användar åtkomst
 
@@ -471,9 +471,9 @@ Vad är Azure AD Access-granskningar?:
 https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview
 
 
-**Azure Security Center övervakning**: Ja
+**Azure Security Center-övervakning**: Ja
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="311-monitor-attempts-to-access-deactivated-accounts"></a>3,11: övervaka försök att komma åt inaktiverade konton
 
@@ -485,9 +485,9 @@ Migrera från den gamla Key Vault-lösningen: https://docs.microsoft.com/azure/a
 
 
 
-**Azure Security Center övervakning**: Ja
+**Azure Security Center-övervakning**: Ja
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="312-alert-on-account-login-behavior-deviation"></a>3,12: avisering om beteende för beteende för konto inloggning
 
@@ -500,9 +500,9 @@ Gör så här: Konfigurera och aktivera risk principer: https://docs.microsoft.c
 Publicera Azure Sentinel:  https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
 
-**Azure Security Center övervakning**: Ja
+**Azure Security Center-övervakning**: Ja
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3,13: ge Microsoft åtkomst till relevant kund information under support scenarier
 
@@ -512,7 +512,7 @@ Tjänster och scenarier som stöds i allmän tillgänglighet: https://docs.micro
 
 
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -528,9 +528,9 @@ Använd taggar för att organisera dina Azure-resurser: https://docs.microsoft.c
 
 
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4,2: isolera system som lagrar eller bearbetar känslig information
 
@@ -544,9 +544,9 @@ Tjänst slut punkter för virtuella nätverk för Azure Key Vault: https://docs.
 
 
 
-**Azure Security Center övervakning**: för närvarande inte tillgängligt
+**Azure Security Center-övervakning**: Inte tillgänglig för tillfället
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4,3: övervaka och blockera obehörig överföring av känslig information
 
@@ -560,9 +560,9 @@ Azure Key Vault loggning: https://docs.microsoft.com/azure/key-vault/key-vault-l
 
 
 
-**Azure Security Center övervakning**: Ja
+**Azure Security Center-övervakning**: Ja
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4,4: kryptera all känslig information under överföring
 
@@ -574,7 +574,7 @@ Azure Key Vault loggning: https://docs.microsoft.com/azure/key-vault/key-vault-l
 
 
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Microsoft
 
@@ -583,7 +583,7 @@ Azure Key Vault loggning: https://docs.microsoft.com/azure/key-vault/key-vault-l
 **Vägledning**: ej tillämpligt; alla data i Azure Key Vault (hemligheter, nycklar och certifikat) anses vara känsliga.
 
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -598,7 +598,7 @@ https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault
 
 **Azure Security Center övervakning**: inte tillämpligt
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4,7: Använd värdbaserade data förlust skydd för att genomdriva åtkomst kontroll
 
@@ -613,7 +613,7 @@ Azures kund data skydd:
 https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Microsoft
 
@@ -626,7 +626,7 @@ Support dokumentation:
 - [Krypterings modell och nyckel hanterings tabell](../../security/fundamentals/encryption-atrest.md)
 
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Microsoft
 
@@ -640,9 +640,9 @@ https://docs.microsoft.com/azure/azure-monitor/insights/azure-key-vault
 
 
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ## <a name="vulnerability-management"></a>Sårbarhetshantering
 
@@ -653,7 +653,7 @@ https://docs.microsoft.com/azure/azure-monitor/insights/azure-key-vault
 **Vägledning**: Microsoft utför sårbarhets hantering på de underliggande system som har stöd för Azure Key Vault.
 
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Microsoft
 
@@ -661,7 +661,7 @@ https://docs.microsoft.com/azure/azure-monitor/insights/azure-key-vault
 
 **Vägledning**: ej tillämpligt; Microsoft utför korrigerings hantering på de underliggande system som har stöd för Key Vault.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -670,7 +670,7 @@ https://docs.microsoft.com/azure/azure-monitor/insights/azure-key-vault
 **Vägledning**: ej tillämpligt; den här rekommendationen är avsedd för beräknings resurser.
 
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -678,7 +678,7 @@ https://docs.microsoft.com/azure/azure-monitor/insights/azure-key-vault
 
 **Vägledning**: Microsoft utför sårbarhets hantering på de underliggande system som har stöd för Key Vault.
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Microsoft
 
@@ -691,9 +691,9 @@ Förbättra dina säkra poäng i Azure Security Center:
 https://docs.microsoft.com/azure/security-center/security-center-secure-score
 
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ## <a name="inventory-and-asset-management"></a>Inventerings- och tillgångshantering
 
@@ -715,9 +715,9 @@ Vad är rollbaserad åtkomstkontroll i Azure (Azure RBAC)?
 
 https://docs.microsoft.com/azure/role-based-access-control/overview
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="62-maintain-asset-metadata"></a>6,2: underhåll till gångens metadata
 
@@ -727,9 +727,9 @@ Skapa och använda Taggar:
 
 https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="63-delete-unauthorized-azure-resources"></a>6,3: ta bort obehöriga Azure-resurser
 
@@ -746,15 +746,15 @@ https://docs.microsoft.com/azure/governance/management-groups/create
 Använd taggar för att organisera dina Azure-resurser: https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="64-maintain-an-inventory-of-approved-azure-resources-and-software-titles"></a>6,4: underhåll en inventering av godkända Azure-resurser och program varu titlar
 
 **Vägledning**: definiera listan över godkända Azure-resurser och godkänd program vara för dina beräknings resurser
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -774,16 +774,16 @@ Snabb start: kör din första resurs diagram fråga med Azure Resource Graph Exp
 
 
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6,6: övervaka för program som inte godkänts i beräknings resurser
 
 **Vägledning**: ej tillämpligt; den här rekommendationen är avsedd för beräknings resurser.
 
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -792,7 +792,7 @@ Snabb start: kör din första resurs diagram fråga med Azure Resource Graph Exp
 **Vägledning**: ej tillämpligt; den här rekommendationen är avsedd för Azure som helhet samt beräknings resurser.
 
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -801,7 +801,7 @@ Snabb start: kör din första resurs diagram fråga med Azure Resource Graph Exp
 **Vägledning**: ej tillämpligt; den här rekommendationen är avsedd för beräknings resurser.
 
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -819,16 +819,16 @@ Azure Policy exempel: https://docs.microsoft.com/azure/governance/policy/samples
 
 
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="610-implement-approved-application-list"></a>6,10: implementera lista över godkända program
 
 **Vägledning**: ej tillämpligt; den här rekommendationen är avsedd för beräknings resurser.
 
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -841,16 +841,16 @@ Hantera åtkomst till Azure-hantering med villkorlig åtkomst:
 https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
 
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6,12: begränsa användarnas möjlighet att köra skript i beräknings resurser
 
 **Vägledning**: ej tillämpligt; den här rekommendationen är avsedd för beräknings resurser.
 
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -859,7 +859,7 @@ https://docs.microsoft.com/azure/role-based-access-control/conditional-access-az
 **Vägledning**: ej tillämpligt; den här rekommendationen är avsedd för webb program som körs på Azure App Service-eller beräknings resurser.
 
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -892,16 +892,16 @@ Självstudie: skapa och hantera principer för att genomdriva efterlevnad:
 https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 
-**Azure Security Center övervakning**: Ja
+**Azure Security Center-övervakning**: Ja
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="72-establish-secure-operating-system-configurations"></a>7,2: upprätta säkra konfigurationer för operativ system
 
 **Vägledning**: ej tillämpligt; den här rekommendationen är avsedd för beräknings resurser.
 
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -919,16 +919,16 @@ Förstå Azure Policys effekter:
 https://docs.microsoft.com/azure/governance/policy/concepts/effects
 
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="74-maintain-secure-operating-system-configurations"></a>7,4: underhåll säkra konfigurationer för operativ system
 
 **Vägledning**: ej tillämpligt; den här rekommendationen är avsedd för beräknings resurser.
 
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -944,16 +944,16 @@ Dokumentation om Azure databaser:
 
 https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7,6: lagra anpassade operativ Systems avbildningar på ett säkert sätt
 
 **Vägledning**: ej tillämpligt; den här rekommendationen är avsedd för beräknings resurser.
 
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -965,16 +965,16 @@ Så här konfigurerar och hanterar du Azure Policy:
 
 https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="78-deploy-system-configuration-management-tools-for-operating-systems"></a>7,8: distribuera system konfigurations hanterings verktyg för operativ system
 
 **Vägledning**: ej tillämpligt; den här rekommendationen är avsedd för beräknings resurser.
 
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -988,16 +988,16 @@ Så här åtgärdar du rekommendationer i Azure Security Center:
 
 https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations
 
-**Azure Security Center övervakning**: Ja
+**Azure Security Center-övervakning**: Ja
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7,10: implementera automatisk konfigurations övervakning för operativ system
 
 **Vägledning**: ej tillämpligt; Detta riktmärke är avsett för beräknings resurser.
 
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -1021,9 +1021,9 @@ Så här tilldelar du en Key Vault åtkomst princip:
 
 https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal
 
-**Azure Security Center övervakning**: Ja
+**Azure Security Center-övervakning**: Ja
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="712-manage-identities-securely-and-automatically"></a>7,12: hantera identiteter säkert och automatiskt
 
@@ -1039,19 +1039,19 @@ https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal
 
 * [Så här tilldelar du en Key Vault åtkomst princip](assign-access-policy-portal.md)
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="713-eliminate-unintended-credential-exposure"></a>7,13: eliminera oavsiktlig exponering för autentiseringsuppgifter
 
-**Vägledning**: implementera autentiseringsuppgifterna för inloggning för att identifiera autentiseringsuppgifter inom koden. Den här skannern uppmuntrar också att flytta identifierade autentiseringsuppgifter till säkrare platser som Azure Key Vault.  
+**Vägledning**: implementera autentiseringsuppgifterna för inloggning för att identifiera autentiseringsuppgifter inom koden. Credential Scanner uppmanar också till att flytta identifierade autentiseringsuppgifter till en säkrare plats som Azure Key Vault.  
   
  Konfigurera inloggnings skannern: https://secdevtools.azurewebsites.net/helpcredscan.html
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ## <a name="malware-defense"></a>Skydd mot skadlig kod
 
@@ -1062,7 +1062,7 @@ https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal
 **Vägledning**: ej tillämpligt; den här rekommendationen är avsedd för beräknings resurser. Microsoft hanterar skydd mot skadlig kod för den underliggande plattformen.
 
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -1074,16 +1074,16 @@ Skanna allt innehåll som laddas upp eller skickas till icke-Compute Azure-resur
 
 Förstå Microsoft Antimalware för Azure Cloud Services och Virtual Machines: https://docs.microsoft.com/azure/security/fundamentals/antimalware
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="83-ensure-anti-malware-software-and-signatures-are-updated"></a>8,3: se till att program vara och signaturer för skadlig program vara uppdateras
 
 **Vägledning**: ej tillämpligt; den här rekommendationen är avsedd för beräknings resurser. Microsoft hanterar skydd mot skadlig kod för den underliggande plattformen.
 
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -1117,9 +1117,9 @@ Så här aktiverar du Azure Backup: https://docs.microsoft.com/azure/backup
 
 
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9,2: Utför fullständig säkerhets kopiering av systemet och säkerhetskopiera alla Kundhanterade nycklar
 
@@ -1147,9 +1147,9 @@ Så här aktiverar du Azure Backup: https://docs.microsoft.com/azure/backup
 
 
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9,3: validera alla säkerhets kopior inklusive Kundhanterade nycklar
 
@@ -1172,9 +1172,9 @@ Så här återställer du Key Vault hanterade lagrings konton: https://docs.micr
 Så här återställer du Key Vault hemligheter: https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultsecret?view=azurermps-6.13.0
 
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9,4: se till att skydda säkerhets kopior och Kundhanterade nycklar
 
@@ -1184,9 +1184,9 @@ Använda Azure Key Vault ' Soft Delete ':
 
 https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-powershell
 
-**Azure Security Center övervakning**: för närvarande inte tillgängligt
+**Azure Security Center-övervakning**: Inte tillgänglig för tillfället
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ## <a name="incident-response"></a>Incidenthantering
 
@@ -1194,7 +1194,7 @@ https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-powershell
 
 ### <a name="101-create-an-incident-response-guide"></a>10,1: skapa en incident svars guide
 
-**Vägledning**: Bygg ut en incident svars guide för din organisation. Se till att det finns skriftliga svars planer för incidenter som definierar alla personal roller och faser för incident hantering/hantering från identifiering till granskning efter incidenten. Dessa processer bör ha fokus på att skydda känsliga system, till exempel de som använder Key Vault hemligheter.
+**Vägledning**: Skapa en guide till incidentsvar för organisationen. Se till att det finns skriftliga planer för incidentsvar som definierar alla personalroller och faser i incidenthanteringen, från identifiering till granskning efter incidenten. Dessa processer bör ha fokus på att skydda känsliga system, till exempel de som använder Key Vault hemligheter.
 
 Konfigurera automatisering av arbets flöden i Azure Security Center: 
 
@@ -1212,30 +1212,30 @@ Kunden kan också utnyttja NISTs hanterings guide för dator säkerhet för att 
 
 https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10,2: skapa en incident bedömnings-och prioriterings procedur
 
 **Vägledning**: Security Center tilldelar en allvarlighets grad till varje avisering för att hjälpa dig att prioritera vilka aviseringar som bör undersökas först. Allvarlighets graden baseras på hur tillförlitlig Security Center befinner sig i att söka efter eller det analytiska som används för att utfärda aviseringen samt vilken konfidensnivå som det fanns skadlig avsikt bakom den aktivitet som ledde till aviseringen. Dessutom är det tydligt att markera prenumerationer (t. ex. produktion, icke-Prod) och skapa ett namngivnings system för att tydligt identifiera och kategorisera Azure-resurser, särskilt för bearbetning av känsliga data som Azure Key Vault hemligheter.
 
 
-**Azure Security Center övervakning**: Ja
+**Azure Security Center-övervakning**: Ja
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="103-test-security-response-procedures"></a>10,3: testa säkerhets svars procedurer
 
-**Vägledning**: utföra övningar för att testa dina Systems funktioner för incident svar på en vanlig takt för att skydda dina Azure Key Vault-instanser och relaterade resurser. Identifiera svaga punkter och luckor och ändra planen efter behov.
+**Vägledning**: utföra övningar för att testa dina Systems funktioner för incident svar på en vanlig takt för att skydda dina Azure Key Vault-instanser och relaterade resurser. Identifiera svaga punkter och luckor, och ändra planen efter behov.
 
 Se NIST: guide för test, utbildning och övnings program för IT-planer och funktioner: 
 
 https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10,4: Ange kontakt information för säkerhets incidenter och konfigurera aviseringar för säkerhets incidenter
 
@@ -1245,9 +1245,9 @@ Så här ställer du in Azure Security Center säkerhets kontakt:
 
 https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details
 
-**Azure Security Center övervakning**: Ja
+**Azure Security Center-övervakning**: Ja
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10,5: införliva säkerhets aviseringar i ditt incident svars system
 
@@ -1265,9 +1265,9 @@ Strömma aviseringar till Azure Sentinel:
 
 https://docs.microsoft.com/azure/sentinel/connect-azure-security-center
 
-**Azure Security Center övervakning**: för närvarande inte tillgängligt
+**Azure Security Center-övervakning**: Inte tillgänglig för tillfället
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ### <a name="106-automate-the-response-to-security-alerts"></a>10,6: automatisera svaret på säkerhets aviseringar
 
@@ -1279,9 +1279,9 @@ Konfigurera automatisering av arbets flöde och Logic Apps:
 
 https://docs.microsoft.com/azure/security-center/workflow-automation
 
-**Azure Security Center övervakning**: för närvarande inte tillgängligt
+**Azure Security Center-övervakning**: Inte tillgänglig för tillfället
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>Intrångstester och Red Team-övningar (rött lag)
 
@@ -1299,9 +1299,9 @@ Du hittar mer information om Microsofts strategi och körning av röda team inde
 
 https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
 
-**Azure Security Center övervakning**: inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
-**Ansvars område**: delat
+**Ansvar**: Delad
 
 ## <a name="next-steps"></a>Nästa steg
 

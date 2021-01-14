@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: e48b1357b8576baca0e8defca94f4c5248c6f74e
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 4e82b4adbfde7623de9497c94e56a9ae303131ad
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461288"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202784"
 ---
 # <a name="azure-security-baseline-for-azure-data-factory"></a>Azures säkerhets bas linje för Azure Data Factory
 
@@ -408,7 +408,7 @@ Om du kör Integration Runtime på en virtuell Azure-dator kan administratörs k
 
 **Vägledning**: Använd Paw (Privileged Access Workstation) med Multi-Factor Authentication (MFA) konfigurerat för att logga in på och konfigurera Azure-resurser.
 
-* [Lär dig mer om arbets stationer med privilegie rad åtkomst](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+* [Lär dig mer om arbets stationer med privilegie rad åtkomst](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 * [Aktivera MFA i Azure](../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -656,7 +656,7 @@ Du kan lagra autentiseringsuppgifter eller hemliga värden i en Azure Key Vault 
 
 * [Så här skapar du aviseringar för Azure aktivitets logg händelser](../azure-monitor/platform/alerts-activity-log.md)
 
-* [Loggning med Azure-lagringsanalys](../storage/common/storage-analytics-logging.md)
+* [Analysloggning i Azure Storage](../storage/common/storage-analytics-logging.md)
 
 **Azure Security Center-övervakning**: Inte tillgänglig för tillfället
 
