@@ -5,12 +5,12 @@ author: macolso
 ms.author: macolso
 ms.topic: article
 ms.date: 06/02/2020
-ms.openlocfilehash: e4760463a4d71e4c097b082aa6b93d8b339f94ca
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 5de1188ee018e796f918d7559c0e2c24c77834f4
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92516978"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98186200"
 ---
 # <a name="frequently-asked-questions-about-azure-container-instances"></a>Vanliga frågor och svar om Azure Container Instances
 
@@ -54,6 +54,10 @@ Mer [detaljerad](container-instances-troubleshooting.md#container-takes-a-long-t
 ### <a name="what-net-or-net-core-image-layer-should-i-use-in-my-container"></a>Vilket .NET-eller .NET Core-avbildnings lager ska jag använda i min behållare? 
 
 Använd den minsta avbildning som uppfyller dina krav. För Linux kan du använda en *runtime-Alpine* .net Core-avbildning, som har stöd för sedan lanseringen av .net Core 2,1. Om du använder den fullständiga .NET Framework för Windows måste du använda en Windows Server Core-avbildning (endast körnings avbildning, till exempel  *4.7.2-windowsservercore-ltsc2016*). Endast körnings avbildningar är mindre, men har inte stöd för arbets belastningar som kräver .NET SDK.
+
+### <a name="what-types-of-container-registries-are-compatible-with-aci"></a>Vilka typer av behållar register är kompatibla med ACI?
+
+ACI stöder avbildnings hämtningar från ACR och andra behållar register från tredje part, till exempel DockerHub. ACI har också stöd för avbildnings hämtningar från lokala register, så länge de är OCR-kompatibla och har en slut punkt som är offentligt exponerad för Internet.
 
 ## <a name="availability-and-quotas"></a>Tillgänglighet och kvoter
 

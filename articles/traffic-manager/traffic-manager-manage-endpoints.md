@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/08/2017
 ms.author: duau
-ms.openlocfilehash: fc6e8bcda17f9d788a430ed763bd9f8702eaf250
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 3d5a888bf132725ff64c2a128b77f0257f435585
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96003556"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184262"
 ---
 # <a name="add-disable-enable-or-delete-endpoints"></a>Lägga till, inaktivera, aktivera eller ta bort slutpunkter
 
@@ -45,7 +45,7 @@ Du kan också inaktivera enskilda slutpunkter som ingår i en Traffic Manager-pr
 7.  När båda slutpunkterna har lagts till visas de på bladet **Traffic Manager-profil** tillsammans med dess övervakningsstatus som är **Online**.
 
 > [!NOTE]
-> När du lägger till eller tar bort en slutpunkt från en profil med trafikroutningsmetoden *Redundans* är det möjligt att prioritetslistan för redundans inte längre är i den ordning du önskar. Du kan justera ordningen för prioritetslistan för redundans från konfigurationssidan. Mer information finns i [Konfigurera trafikroutning för redundans](traffic-manager-configure-failover-routing-method.md).
+> När du lägger till eller tar bort en slutpunkt från en profil med trafikroutningsmetoden *Redundans* är det möjligt att prioritetslistan för redundans inte längre är i den ordning du önskar. Du kan justera ordningen för prioritetslistan för redundans från konfigurationssidan. Mer information finns i [Konfigurera trafikroutning för redundans](./traffic-manager-configure-priority-routing-method.md).
 
 ## <a name="to-disable-an-endpoint"></a>Så här inaktiverar du en slutpunkt
 
@@ -77,8 +77,7 @@ Du kan också inaktivera enskilda slutpunkter som ingår i en Traffic Manager-pr
 ## <a name="next-steps"></a>Nästa steg
 
 * [Hantera Traffic Manager-profiler](traffic-manager-manage-profiles.md)
-* [Konfigurera routningsmetoder](traffic-manager-configure-routing-method.md)
+* [Konfigurera routningsmetoder](./traffic-manager-configure-priority-routing-method.md)
 * [Felsöka degraderat Traffic Manager-tillstånd](traffic-manager-troubleshooting-degraded.md)
 * [Prestandaöverväganden för Traffic Manager](traffic-manager-performance-considerations.md)
-* [Åtgärder i Traffic Manager (REST-API-referens)](https://go.microsoft.com/fwlink/p/?LinkID=313584)
-
+* [Åtgärder i Traffic Manager (REST-API-referens)](/previous-versions/azure/reference/hh758255(v=azure.100))

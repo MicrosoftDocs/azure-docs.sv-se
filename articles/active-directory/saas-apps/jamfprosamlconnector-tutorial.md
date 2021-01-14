@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/11/2020
+ms.date: 12/24/2020
 ms.author: jeedes
-ms.openlocfilehash: 48818c300f1ac9ff41f78f39f08e41f95b379b31
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 403e42694ee7ec8993cf5dc4bf03df8ca7c20b63
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92459579"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185554"
 ---
 # <a name="tutorial-azure-active-directory-sso-integration-with-jamf-pro"></a>Självstudie: Azure Active Directory SSO-integrering med JAMF Pro
 
@@ -26,9 +26,8 @@ I den här självstudien får du lära dig att integrera JAMF Pro med Azure Acti
 * Logga in användarna automatiskt till JAMF Pro med sina Azure AD-konton.
 * Hantera dina konton på en central plats: Azure Portal.
 
-Mer information om SaaS app integration med Azure AD finns i [enkel inloggning med Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 För att komma igång behöver du följande objekt:
 
@@ -40,16 +39,15 @@ För att komma igång behöver du följande objekt:
 I den här självstudien konfigurerar och testar du Azure AD SSO i en test miljö. 
 
 * JAMF Pro stöder **SP-initierad** och **IDP-initierad** SSO.
-* När du har konfigurerat JAMF Pro kan du genomdriva session Control, som skyddar exfiltrering och intrånget för organisationens känsliga data i real tid. Kontroll av sessionen utökas från villkorlig åtkomst. [Lär dig hur du tvingar fram sessions kontroll med Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="add-jamf-pro-from-the-gallery"></a>Lägg till JAMF Pro från galleriet
 
 För att konfigurera integrering av Jamf Pro med Azure AD behöver du lägga till Jamf Pro från galleriet till din lista över hanterade SaaS-appar.
 
-1. Logga in på [Azure Portal](https://portal.azure.com) med antingen ett arbets-eller skol konto eller din personliga Microsoft-konto.
+1. Logga in på Azure Portal med antingen ett arbets-eller skol konto eller din personliga Microsoft-konto.
 1. I den vänstra rutan väljer du tjänsten **Azure Active Directory** .
 1. Gå till **Företagsprogram** och välj sedan **Alla program**.
-1. Välj **nytt program**om du vill lägga till ett nytt program.
+1. Välj **nytt program** om du vill lägga till ett nytt program.
 1. Skriv *JAMF Pro* i sökrutan i avsnittet **Lägg till från galleriet** .
 1. Välj **JAMF Pro** från resultat panelen och Lägg sedan till appen. Vänta några sekunder medan appen läggs till i din klient organisation.
 
@@ -70,7 +68,7 @@ I det här avsnittet konfigurerar och testar du Azure AD SSO med JAMF Pro.
 
 I det här avsnittet aktiverar du Azure AD SSO i Azure Portal.
 
-1. I [Azure Portal](https://portal.azure.com/)går du till sidan för integrering av **JAMF Pro** -program och letar upp avsnittet **Hantera** och väljer **enkel inloggning**.
+1. I Azure Portal går du till sidan för integrering av **JAMF Pro** -program och letar upp avsnittet **Hantera** och väljer **enkel inloggning**.
 1. På sidan **Välj en enda Sign-On metod** väljer du **SAML**.
 1. På sidan **Konfigurera en enskild Sign-On med SAML** väljer du Penn ikonen för **grundläggande SAML-konfiguration** för att redigera inställningarna.
 
@@ -87,7 +85,7 @@ I det här avsnittet aktiverar du Azure AD SSO i Azure Portal.
     > [!NOTE]
     > Dessa värden är inte verkliga. Uppdatera värdena med den faktiska identifieraren, svars-URL: en och inloggnings-URL: en. Du får det faktiska ID-värdet från avsnittet **enkel inloggning** i JAMF Pro-portalen, som beskrivs senare i självstudien. Du kan extrahera det faktiska under domän svärdet från ID-värdet och använda under domän informationen som inloggnings-URL och svars-URL. Du kan också se de formler som visas i avsnittet **grundläggande SAML-konfiguration** i Azure Portal.
 
-1. På sidan **Konfigurera en enskild Sign-On med SAML** går du till avsnittet **SAML-signeringscertifikat** , väljer **kopierings** knappen för att kopiera **URL: en för appens federationens metadata**och sparar den sedan på din dator.
+1. På sidan **Konfigurera en enskild Sign-On med SAML** går du till avsnittet **SAML-signeringscertifikat** , väljer **kopierings** knappen för att kopiera **URL: en för appens federationens metadata** och sparar den sedan på din dator.
 
     ![Länken för nedladdning av SAML-signeringscertifikat](common/copy-metadataurl.png)
 
@@ -95,11 +93,11 @@ I det här avsnittet aktiverar du Azure AD SSO i Azure Portal.
 
 I det här avsnittet skapar du en test användare i Azure Portal som kallas B. Simon.
 
-1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory**, väljer **användare**och väljer sedan **alla användare**.
+1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory**, väljer **användare** och väljer sedan **alla användare**.
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I **Namn**-fältet skriver du `B.Simon`.
-   1. I fältet **användar namn** anger du [Name] @ [companydomain]. [Extension]. Till exempel `B.Simon@contoso.com`.
+   1. I fältet **användar namn** anger du [Name] @ [companydomain]. [Extension]. Ett exempel är `B.Simon@contoso.com`.
    1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
    1. Välj **Skapa**.
 
@@ -107,18 +105,12 @@ I det här avsnittet skapar du en test användare i Azure Portal som kallas B. S
 
 I det här avsnittet beviljar du B. Simon-åtkomst till JAMF Pro.
 
-1. I Azure Portal väljer du **företags program**och väljer sedan **alla program**.
+1. I Azure Portal väljer du **företags program** och väljer sedan **alla program**.
 1. Välj **Jamf Pro** i programlistan.
 1. På sidan Översikt för appen letar du reda på avsnittet **Hantera** och väljer **användare och grupper**.
-
-   ![Välj Användare och grupper](common/users-groups-blade.png)
-
-1. Välj **Lägg till användare**och välj sedan **användare och grupper** i dialog rutan **Lägg till tilldelning** .
-
-    ![Välj knappen Lägg till användare](common/add-assign-user.png)
-
+1. Välj **Lägg till användare** och välj sedan **användare och grupper** i dialog rutan **Lägg till tilldelning** .
 1. I dialog rutan **användare och grupper** väljer du **B. Simon** från listan användare och väljer sedan knappen **Välj** längst ned på skärmen.
-1. Om du förväntar dig ett roll värde i SAML-intyget väljer du lämplig roll för användaren i dialog rutan **Välj roll** . Välj sedan knappen **Välj** längst ned på skärmen.
+1. Om du förväntar dig att en roll ska tilldelas användarna kan du välja den från List rutan **Välj en roll** . Om ingen roll har kon figurer ATS för den här appen ser du rollen "standard åtkomst" vald.
 1. I dialog rutan **Lägg till tilldelning** väljer du knappen **tilldela** .
 
 ## <a name="configure-sso-in-jamf-pro"></a>Konfigurera SSO i JAMF Pro
@@ -149,16 +141,16 @@ I det här avsnittet beviljar du B. Simon-åtkomst till JAMF Pro.
 
     b. Markera kryss rutan **aktivera enkel Sign-On autentisering** .
 
-  c. Välj **Azure** som ett alternativ på den nedrullningsbara menyn **identitets leverantör** .
+    c. Välj **Azure** som ett alternativ på den nedrullningsbara menyn **identitets leverantör** .
 
-  d. Kopiera **entitets-ID-** värdet och klistra in det i fältet **identifierare (enhets-ID)** i avsnittet **grundläggande SAML-konfiguration** i Azure Portal.
+    d. Kopiera **entitets-ID-** värdet och klistra in det i fältet **identifierare (enhets-ID)** i avsnittet **grundläggande SAML-konfiguration** i Azure Portal.
 
-> [!NOTE]
-> Använd värdet i `<SUBDOMAIN>` fältet för att slutföra inloggnings-URL: en och svars-URL: en i avsnittet **grundläggande SAML-konfiguration** i Azure Portal.
+    > [!NOTE]
+    > Använd värdet i `<SUBDOMAIN>` fältet för att slutföra inloggnings-URL: en och svars-URL: en i avsnittet **grundläggande SAML-konfiguration** i Azure Portal.
 
-  e. Välj **URL för metadata** från List menyn **metadata källa för identitetsprovider** . I fältet som visas klistrar du in URL-värdet för **appens federationens metadata** som du har kopierat från Azure Portal.
+    e. Välj **URL för metadata** från List menyn **metadata källa för identitetsprovider** . I fältet som visas klistrar du in URL-värdet för **appens federationens metadata** som du har kopierat från Azure Portal.
 
-  f. Valfritt Redigera värdet för token-förfallo tid eller välj "inaktivera SAML-token upphör att gälla".
+    f. Valfritt Redigera värdet för token-förfallo tid eller välj "inaktivera SAML-token upphör att gälla".
 
 7. Rulla ned till **användar mappnings** avsnittet på samma sida. Utför sedan följande steg.
 
@@ -204,7 +196,7 @@ Gör så här för att etablera ett användar konto:
 
     a. I fältet **username (användar namn** ) anger `Britta Simon` du det fullständiga namnet på test användaren.
 
-    b. Välj alternativ för **åtkomst nivå**, **behörighets uppsättning**och **åtkomst status** som är i enlighet med din organisation.
+    b. Välj alternativ för **åtkomst nivå**, **behörighets uppsättning** och **åtkomst status** som är i enlighet med din organisation.
 
     c. I fältet **fullständigt namn** anger du `Britta Simon` .
 
@@ -218,16 +210,21 @@ Gör så här för att etablera ett användar konto:
 
 ## <a name="test-the-sso-configuration"></a>Testa SSO-konfigurationen
 
-I det här avsnittet testar du din konfiguration av enkel inloggning för Azure AD med hjälp av Åtkomstpanelen.
+I det här avsnittet ska du testa Azure AD-konfigurationen för enkel inloggning med följande alternativ. 
 
-När du väljer JAMF Pro-panelen på åtkomst panelen, bör du loggas in automatiskt på det JAMF Pro-konto som du har konfigurerat SSO för. Mer information om åtkomstpanelen finns i [introduktionen till åtkomstpanelen](../user-help/my-apps-portal-end-user-access.md).
+#### <a name="sp-initiated"></a>SP initierad:
 
-## <a name="additional-resources"></a>Ytterligare resurser
+* Klicka på **testa det här programmet** i Azure Portal. Detta omdirigeras till JAMF Pro-inloggnings-URL där du kan starta inloggnings flödet.  
 
-- [Självstudier för att integrera SaaS-program med Azure Active Directory ](./tutorial-list.md)
+* Gå till JAMF Pro-inloggningens URL direkt och starta inloggnings flödet därifrån.
 
-- [Enkel inloggning till program i Azure Active Directory](../manage-apps/what-is-single-sign-on.md)
+#### <a name="idp-initiated"></a>IDP initierad:
 
-- [Vad är villkorlig åtkomst i Azure Active Directory?](../conditional-access/overview.md)
-- [Vad är session Control i Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)
-- [Testa JAMF Pro med Azure AD](https://aad.portal.azure.com/)
+* Klicka på **testa det här programmet** i Azure Portal så bör du loggas in automatiskt på den JAMF Pro som du konfigurerade SSO för. 
+
+Du kan också använda Microsoft Mina appar för att testa programmet i vilket läge som helst. När du klickar på JAMF Pro-panelen i Mina appar, om den har kon figurer ATS i SP-läge, omdirigeras du till programmets inloggnings sida för att initiera inloggnings flödet och om det kon figurer ATS i IDP-läge, bör du logga in automatiskt till JAMF Pro som du ställer in SSO för. Mer information om Mina appar finns i [Introduktion till Mina appar](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+
+
+## <a name="next-steps"></a>Nästa steg
+
+När du har konfigurerat JAMF Pro kan du genomdriva session Control, som skyddar exfiltrering och intrånget för organisationens känsliga data i real tid. Kontroll av sessionen sträcker sig från villkorlig åtkomst. [Lär dig hur du tvingar fram en session med Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad).

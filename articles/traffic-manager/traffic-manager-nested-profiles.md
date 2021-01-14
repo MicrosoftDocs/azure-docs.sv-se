@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/22/2018
 ms.author: duau
-ms.openlocfilehash: d96cd9b3c83357c2591edf4bbb09a82b897c6a24
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5f2aa3d05d349880b5eb2d35a2c58af0741b9855
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91826028"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185588"
 ---
 # <a name="nested-traffic-manager-profiles"></a>Kapslade Traffic Manager-profiler
 
@@ -97,23 +97,23 @@ Anta att du använder Traffic Manager för att smidigt migrera trafik från en �
 
 ## <a name="faqs"></a>Vanliga frågor och svar
 
-* [Hur gör jag för att konfigurera kapslade profiler?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#traffic-manager-nested-profiles)
+* [Hur gör jag för att konfigurera kapslade profiler?](./traffic-manager-faqs.md#traffic-manager-nested-profiles)
 
-* [Hur många kapslings nivåer stöder Traffic Manager?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-many-layers-of-nesting-does-traffic-manger-support)
+* [Hur många kapslings nivåer stöder Traffic Manager?](./traffic-manager-faqs.md#how-many-layers-of-nesting-does-traffic-manger-support)
 
-* [Kan jag blanda andra slut punkts typer med kapslade underordnade profiler i samma Traffic Manager profil?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-mix-other-endpoint-types-with-nested-child-profiles-in-the-same-traffic-manager-profile)
+* [Kan jag blanda andra slut punkts typer med kapslade underordnade profiler i samma Traffic Manager profil?](./traffic-manager-faqs.md#can-i-mix-other-endpoint-types-with-nested-child-profiles-in-the-same-traffic-manager-profile)
 
-* [Hur gäller fakturerings modellen för kapslade profiler?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-the-billing-model-apply-for-nested-profiles)
+* [Hur gäller fakturerings modellen för kapslade profiler?](./traffic-manager-faqs.md#how-does-the-billing-model-apply-for-nested-profiles)
 
-* [Påverkas prestandan för kapslade profiler?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#is-there-a-performance-impact-for-nested-profiles)
+* [Påverkas prestandan för kapslade profiler?](./traffic-manager-faqs.md#is-there-a-performance-impact-for-nested-profiles)
 
-* [Hur beräknar Traffic Manager hälsan för en kapslad slut punkt i en överordnad profil?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-traffic-manager-compute-the-health-of-a-nested-endpoint-in-a-parent-profile)
+* [Hur beräknar Traffic Manager hälsan för en kapslad slut punkt i en överordnad profil?](./traffic-manager-faqs.md#how-does-traffic-manager-compute-the-health-of-a-nested-endpoint-in-a-parent-profile)
 
 ## <a name="next-steps"></a>Nästa steg
 
 Läs mer om [Traffic Manager profiler](traffic-manager-overview.md)
 
-Lär dig hur du [skapar en Traffic Manager-profil](traffic-manager-create-profile.md)
+Lär dig hur du [skapar en Traffic Manager-profil](./quickstart-create-traffic-manager-profile.md)
 
 <!--Image references-->
 [1]: ./media/traffic-manager-nested-profiles/figure-1.png

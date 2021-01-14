@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: duau
-ms.openlocfilehash: f080f5011311101ed8f9faa2ee807c030a048409
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5a0de772598877029649f8a985c79e28f5264535
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653051"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98186183"
 ---
 # <a name="performance-considerations-for-traffic-manager"></a>Prestandaöverväganden för Traffic Manager
 
@@ -80,7 +80,6 @@ Verktygen på dessa platser mäter DNS-fördröjning och visar de matchade IP-ad
 
 [Testa dina Traffic Manager-inställningar](traffic-manager-testing-settings.md)
 
-[Åtgärder i Traffic Manager (REST-API-referens)](https://go.microsoft.com/fwlink/?LinkId=313584)
+[Åtgärder i Traffic Manager (REST-API-referens)](/previous-versions/azure/reference/hh758255(v=azure.100))
 
-[Azure Traffic Manager-cmdletar](https://docs.microsoft.com/powershell/module/az.trafficmanager)
-
+[Azure Traffic Manager-cmdletar](/powershell/module/az.trafficmanager)

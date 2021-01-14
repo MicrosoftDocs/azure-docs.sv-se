@@ -7,12 +7,12 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 12/10/2018
 ms.custom: mvc, seodec18, seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 7e63f770763d1960148dfdfa184d0b4e2b76754c
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 2c4fbefc1bb801ab4a9387054ac91e5fca14ec18
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427082"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185605"
 ---
 # <a name="tutorial-build-a-java-spring-boot-web-app-with-azure-app-service-on-linux-and-azure-cosmos-db"></a>Självstudie: bygga en Java våren Boot Web-App med Azure App Service på Linux och Azure Cosmos DB
 
@@ -55,23 +55,23 @@ yes | cp -rf .prep/* .
 
 Följ dessa steg för att skapa en Azure Cosmos DB-databas i din prenumeration. TODO-listappen ansluts till databasen och lagrar sina data under körning och sparar programtillståndet oavsett var du kör programmet.
 
-1. Logga in din Azure CLI och ange din prenumeration om du vill och har fler än en ansluten till dina inloggningsuppgifter.
+1. Logga in på Azure CLI och alternativt ange din prenumeration om du har fler än en ansluten till dina inloggnings uppgifter.
 
-    ```bash
+    ```azurecli
     az login
     az account set -s <your-subscription-id>
     ```   
 
 2. Skapa en Azure-resursgrupp och notera resursgruppens namn.
 
-    ```bash
+    ```azurecli
     az group create -n <your-azure-group-name> \
         -l <your-resource-group-region>
     ```
 
 3. Skapa Azure Cosmos DB av typen `GlobalDocumentDB`. Namnet på Cosmos DB får endast innehålla gemena bokstäver. Anteckna fältet `documentEndpoint` i svaret från kommandot.
 
-    ```bash
+    ```azurecli
     az cosmosdb create --kind GlobalDocumentDB \
         -g <your-azure-group-name> \
         -n <your-azure-COSMOS-DB-name-in-lower-case-letters>
@@ -79,7 +79,7 @@ Följ dessa steg för att skapa en Azure Cosmos DB-databas i din prenumeration. 
 
 4. Hämta din Azure Cosmos DB-nyckel för att ansluta till appen. Se till `primaryMasterKey` att `documentEndpoint` du behöver dem i närheten i nästa steg.
 
-    ```bash
+    ```azurecli
     az cosmosdb list-keys -g <your-azure-group-name> -n <your-azure-COSMOSDB-name>
     ```
 
@@ -146,7 +146,7 @@ mvn package spring-boot:run
 
 Resultatet bör likna följande.
 
-```bash
+```output
 bash-3.2$ mvn package spring-boot:run
 [INFO] Scanning for projects...
 [INFO] 
@@ -291,7 +291,7 @@ Du bör se när appen körs med fjärrwebbadressen i adressfältet:
 
 Skala ut programmet genom att lägga till en annan arbetsroll:
 
-```bash
+```azurecli
 az appservice plan update --number-of-workers 2 \
    --name ${WEBAPP_PLAN_NAME} \
    --resource-group <your-azure-group-name>
@@ -301,7 +301,7 @@ az appservice plan update --number-of-workers 2 \
 
 Om du inte behöver de här resurserna för en annan självstudie (se [Nästa steg](#next)) kan du ta bort dem genom att köra följande kommando i Cloud Shell: 
   
-```bash
+```azurecli
 az group delete --name <your-azure-group-name>
 ```
 

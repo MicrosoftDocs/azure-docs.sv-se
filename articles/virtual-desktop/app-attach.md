@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f625b7dd68d4b5a5e1af68aeb53dac453ff8cbfd
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 5e45c51735e0b7ab4b263d3f3047b5848c82439d
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400836"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185775"
 ---
 # <a name="create-powershell-scripts-for-msix-app-attach-preview"></a>Skapa PowerShell-skript för MSIX app attach (för hands version)
 
@@ -39,6 +39,17 @@ Om din app använder ett certifikat som inte är offentligt betrott eller själv
 6. Välj **Placera alla certifikat i följande Arkiv** och välj **Bläddra**.
 7. När fönstret Välj certifikat Arkiv visas väljer du **Betrodda personer** och väljer sedan **OK**.
 8. Välj **Nästa** och **Slutför**.
+
+## <a name="enable-microsoft-hyper-v"></a>Aktivera Microsoft Hyper-V
+
+Microsoft Hyper-V måste aktive ras eftersom `Mount-VHD` kommandot krävs för att mellanlagra och `Dismount-VHD` det krävs för att kunna avmellanlagra.
+
+```powershell
+Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
+```
+
+>[!NOTE]
+>Den här ändringen kräver att du startar om den virtuella datorn.
 
 ## <a name="prepare-powershell-scripts-for-msix-app-attach"></a>Förbereda PowerShell-skript för MSIX app Attach
 

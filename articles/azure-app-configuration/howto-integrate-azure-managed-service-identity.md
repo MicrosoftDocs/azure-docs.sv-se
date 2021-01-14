@@ -8,12 +8,12 @@ ms.service: azure-app-configuration
 ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 2/25/2020
-ms.openlocfilehash: d6b3d60a44725869d68dd9f1158d2279f3cf3e86
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 483af51cbaeb8f7b295adb4231e65f742e3f53a1
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97963988"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185469"
 ---
 # <a name="use-managed-identities-to-access-app-configuration"></a>Använda hanterade identiteter för att få åtkomst till App Configuration
 
@@ -82,7 +82,7 @@ Om du vill konfigurera en hanterad identitet i portalen skapar du först ett pro
 
 1. Lägg till en referens till *Azure. Identity* -paketet:
 
-    ```cli
+    ```bash
     dotnet add package Azure.Identity
     ```
 
@@ -213,7 +213,7 @@ git add .
 git commit -m "Initial version"
 ```
 
-Om du vill aktivera lokal Git-distribution för din app med kudu build-servern kör du [`az webapp deployment source config-local-git`](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-local-git) i Cloud Shell.
+Om du vill aktivera lokal Git-distribution för din app med kudu build-servern kör du [`az webapp deployment source config-local-git`](/cli/azure/webapp/deployment/#az-webapp-deployment-source-config-local-git) i Cloud Shell.
 
 ```azurecli-interactive
 az webapp deployment source config-local-git --name <app_name> --resource-group <group_name>

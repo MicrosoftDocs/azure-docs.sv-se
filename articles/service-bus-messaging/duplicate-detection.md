@@ -2,13 +2,13 @@
 title: Azure Service Bus identifiering av duplicerade meddelanden | Microsoft Docs
 description: Den här artikeln förklarar hur du kan identifiera dubbletter i Azure Service Bus meddelanden. Det duplicerade meddelandet kan ignoreras och tas bort.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: dbca1b4b4f894d35835e7d37e0b4e742a2d3b917
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 01/13/2021
+ms.openlocfilehash: 29972f756c66f524cc2e4684fcb7afd1ca628820
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87083896"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184687"
 ---
 # <a name="duplicate-detection"></a>Dubblettidentifiering
 
@@ -18,16 +18,21 @@ Det är också möjligt att ett fel på klienten eller på nätverks nivå intr�
 
 Dubblettidentifiering tar bort tvivel från dessa situationer genom att göra det möjligt för avsändaren att skicka samma meddelande igen och kön eller avsnittet tar bort dubbletter av kopior.
 
+## <a name="how-it-works"></a>Hur fungerar det? 
 Genom att aktivera dubblettidentifiering kan du hålla koll på det programstyrda *messageid* för alla meddelanden som skickas till en kö eller ett ämne under en angiven tids period. Om ett nytt meddelande skickas med *messageid* som loggades under tids perioden, rapporteras meddelandet som accepterat (sändnings åtgärden lyckas), men det nyligen skickade meddelandet ignoreras och tas bort omedelbart. Inga andra delar av meddelandet förutom *messageid* beaktas.
 
 Program kontroll av identifieraren är nödvändig, eftersom endast det gör att programmet kan koppla *messageid* till en affärs process kontext som det kan förkonstrueras på ett förutsägbart sätt när ett fel uppstår.
 
 För en affärs process där flera meddelanden skickas i samband med hantering av vissa program kontexter kan *messageid* vara en sammansatt av Sammanhangs identifieraren på program nivå, till exempel ett inköps order nummer och meddelandets ämne, till exempel **12345.2017/betalning**.
 
-*Messageid* kan alltid vara en del av GUID, men för att fästa identifieraren till affärs processen får du förutsägbar repeterbarhet, vilket är praktiskt om du vill använda funktionen för dubblettidentifiering på ett effektivt sätt.
+*Messageid* kan alltid vara en del GUID, men för att fästa identifieraren till affärs processen får du förutsägbar repeterbarhet, vilket är önskvärt för att använda funktionen för dubblettidentifiering på ett effektivt sätt.
 
-> [!NOTE]
-> Om dubblettidentifiering har Aktiver ATS och sessions-ID eller partitionsnyckel inte har angetts, används meddelande-ID: t som partitionsnyckel. Om meddelande-ID inte heller har angetts genererar .NET-och AMQP-bibliotek automatiskt ett meddelande-ID för meddelandet. Mer information finns i [använda partitionerings nycklar](service-bus-partitioning.md#use-of-partition-keys).
+> [!IMPORTANT]
+>- När **partitionering** har **Aktiver ATS** `MessageId+PartitionKey` används för att fastställa unikhet. När sessioner är aktiverade måste partitionsnyckel och sessions-ID vara identiska. 
+>- När **partitionering** är **inaktive rad** (standard) `MessageId` används endast för att fastställa unikhet.
+>- Information om SessionId, PartitionKey och MessageId finns i [använda partitionsnyckel](service-bus-partitioning.md#use-of-partition-keys).
+>- [Premier-nivån](service-bus-premium-messaging.md) har inte stöd för partitionering, så vi rekommenderar att du använder unika meddelande-ID: n i dina program och inte förlitar dig på partitionerings nycklar för dubblettidentifiering. 
+
 
 ## <a name="enable-duplicate-detection"></a>Aktivera dubblettidentifiering
 
@@ -58,7 +63,7 @@ Mer information om Service Bus meddelanden finns i följande avsnitt:
 * [Komma igång med Service Bus-köer](service-bus-dotnet-get-started-with-queues.md)
 * [Använd Service Bus ämnen och prenumerationer](service-bus-dotnet-how-to-use-topics-subscriptions.md)
 
-I scenarier där klient koden inte kan skicka ett meddelande igen med samma *messageid* som tidigare är det viktigt att utforma meddelanden som kan bearbetas på ett säkert sätt. Det här [blogg inlägget om idempotence](https://particular.net/blog/what-does-idempotent-mean) beskriver olika metoder för hur du gör det.
+I scenarier där klient kod inte kan skicka ett meddelande igen med samma *messageid* som tidigare är det viktigt att utforma meddelanden som kan ombearbetas på ett säkert sätt. Det här [blogg inlägget om idempotence](https://particular.net/blog/what-does-idempotent-mean) beskriver olika metoder för hur du gör det.
 
 [1]: ./media/duplicate-detection/create-queue.png
 [2]: ./media/duplicate-detection/queue-prop.png

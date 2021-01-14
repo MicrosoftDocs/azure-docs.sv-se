@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: traffic-manager
 ms.date: 04/26/2018
 ms.author: duau
-ms.openlocfilehash: a8547a681d3b2b1cfb01750c4898b45f10d18d57
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 114041a6ad0b311a1e01a692b9e6c36b0a8fb900
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89400227"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185384"
 ---
 # <a name="route-traffic-for-high-availability-of-applications-using-azure-powershell"></a>Dirigera trafik för hög tillgänglighet för program som använder Azure PowerShell
 
@@ -49,7 +49,7 @@ Remove-AzResourceGroup -Name myResourceGroup2
 
 I det här skriptet används följande kommandon för att skapa en resursgrupp, en webbapp, en Traffic Manager-profil och alla relaterade resurser. Varje kommando i tabellen länkar till kommandospecifik dokumentation.
 
-| Kommando | Obs! |
+| Kommando | Kommentarer |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)  | Skapar en resursgrupp där alla resurser lagras. |
 | [New-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) | Skapar en App Service-plan. Detta är som en Server grupp för din Azure-webbapp. |
@@ -60,6 +60,6 @@ I det här skriptet används följande kommandon för att skapa en resursgrupp, 
 
 ## <a name="next-steps"></a>Nästa steg
 
-Mer information om Azure PowerShell finns i [Azure PowerShell-dokumentationen](https://docs.microsoft.com/powershell/azure/).
+Mer information om Azure PowerShell finns i [Azure PowerShell-dokumentationen](/powershell/azure/).
 
 Ytterligare exempel på PowerShell-nätverksskript finns i [dokumentation för översikt över Azure-nätverk](../powershell-samples.md?toc=%2fazure%2fnetworking%2ftoc.json).

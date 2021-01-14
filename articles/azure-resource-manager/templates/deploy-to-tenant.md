@@ -3,12 +3,12 @@ title: Distribuera resurser till klient organisationen
 description: Beskriver hur du distribuerar resurser i klient omfånget i en Azure Resource Manager-mall.
 ms.topic: conceptual
 ms.date: 01/13/2021
-ms.openlocfilehash: a397678488921744f076d93235304c8d217d961f
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 0b3ddc63e49b272c93349ada91e9a1599ea4be4f
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178967"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98186217"
 ---
 # <a name="tenant-deployments-with-arm-templates"></a>Klient distributioner med ARM-mallar
 
@@ -185,6 +185,8 @@ Om du vill rikta en resurs grupp inom klienten använder du en kapslad distribut
 Följande mall skapar en hanterings grupp.
 
 :::code language="json" source="~/quickstart-templates/tenant-deployments/new-mg/azuredeploy.json":::
+
+Om ditt konto inte har behörighet att distribuera till klienten kan du fortfarande skapa hanterings grupper genom att distribuera till ett annat omfång. Mer information finns i [hanterings grupp](deploy-to-management-group.md#management-group).
 
 ## <a name="assign-role"></a>Tilldela rollen
 

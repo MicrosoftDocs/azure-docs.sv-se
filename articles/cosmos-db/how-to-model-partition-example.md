@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: thweiss
 ms.custom: devx-track-js
-ms.openlocfilehash: c3cdc0a9fb9fa236fae37a52194f446278a42f72
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.openlocfilehash: d2f35ae7a6110acb2ca89bdaeb487eddabf84923
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94616254"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185826"
 ---
 # <a name="how-to-model-and-partition-data-on-azure-cosmos-db-using-a-real-world-example"></a>Så här modellerar och partitionerar du data i Azure Cosmos DB med ett verkligt exempel
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -60,7 +60,7 @@ Här är en lista över begär Anden som vår plattform kommer att ha för att e
 
 I det här skedet har vi inte funderat på information om vad varje entitet (användare, post osv.) kommer att innehålla. Det här steget är vanligt vis bland de första som ska hanteras när du utformar mot ett Relations lager, eftersom vi måste ta reda på hur dessa entiteter kommer att översättas i tabeller, kolumner, sekundär nycklar osv. Det är mycket mindre problem med en dokument databas som inte tvingar fram schema vid skrivning.
 
-Det främsta skälet till varför det är viktigt att identifiera åtkomst mönstren från början är att den här listan över förfrågningar kommer att vara vår test-svit. Varje gång vi itererar över vår data modell kommer vi att gå igenom varje begäran och kontrol lera dess prestanda och skalbarhet.
+Det främsta skälet till varför det är viktigt att identifiera åtkomst mönstren från början är att den här listan över förfrågningar kommer att vara vår test-svit. Varje gång vi itererar över vår data modell kommer vi att gå igenom varje begäran och kontrol lera dess prestanda och skalbarhet. Vi beräknar de enheter för programbegäran som förbrukas i varje modell och optimerar dem. Alla dessa modeller använder standard indexerings principen och du kan åsidosätta den genom att indexera vissa egenskaper, vilket ytterligare kan förbättra RU-förbrukningen och svars tiden.
 
 ## <a name="v1-a-first-version"></a>V1: en första version
 
@@ -295,7 +295,7 @@ Vi ändrar även kommentaren och som objekt för att lägga till användar namne
 
 Vad vi vill uppnå är att varje gång vi lägger till en kommentar eller en liknande ökar vi också `commentCount` eller `likeCount` i motsvarande inlägg. När vår `posts` behållare är partitionerad av `postId` , det nya objektet (kommentar eller gilla) och dess motsvarande inlägg i samma logiska partition. Därför kan vi använda en [lagrad procedur](stored-procedures-triggers-udfs.md) för att utföra åtgärden.
 
-Nu när du skapar en kommentar ( **[C3]** ), i stället för att bara lägga till ett nytt objekt i `posts` behållaren, så anropar vi följande lagrade procedur i den behållaren:
+Nu när du skapar en kommentar (**[C3]**), i stället för att bara lägga till ett nytt objekt i `posts` behållaren, så anropar vi följande lagrade procedur i den behållaren:
 
 ```javascript
 function createComment(postId, comment) {

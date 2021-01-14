@@ -4,12 +4,12 @@ ms.author: memildin
 manager: rkarlin
 ms.date: 11/22/2020
 ms.topic: include
-ms.openlocfilehash: 30de9181fd23a29b28973d01899f0b23fca3ae89
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 2112cde42ee00b78a82962ee46f53110068977c0
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96014593"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98187214"
 ---
 ## <a name="availability"></a>Tillgänglighet
 
@@ -20,5 +20,5 @@ ms.locfileid: "96014593"
 |Register och avbildningar som stöds:|Linux-avbildningar i ACR-register som är tillgängliga från det offentliga Internet med shell-åtkomst|
 |Register och avbildningar som inte stöds:|Windows-avbildningar<br>Privata register<br>Register med begränsad åtkomst med en brand vägg, en tjänst slut punkt eller privata slut punkter som Azure Private-länk<br>Super-minimalist bilder, till exempel [Docker Scratch](https://hub.docker.com/_/scratch/) images, eller "Distroless"-avbildningar som bara innehåller ett program och dess körnings beroenden utan paket hanteraren, Shell eller OS|
 |Nödvändiga roller och behörigheter:|**Säkerhets läsare** och [Azure Container Registry roller och behörigheter](../articles/container-registry/container-registry-roles.md)|
-|Moln|:::image type="icon" source="../articles/security-center/media/icons/yes-icon.png" border="false"::: Kommersiella moln<br>:::image type="icon" source="../articles/security-center/media/icons/yes-icon.png" border="false"::: US Gov – det finns för närvarande endast stöd för genomsökningen av push-funktionen. Läs mer i [när skannas bilder?](../articles/security-center/defender-for-container-registries-introduction.md#when-are-images-scanned)<br>:::image type="icon" source="../articles/security-center/media/icons/no-icon.png" border="false"::: Kina gov, andra gov|
+|Moln|:::image type="icon" source="../articles/security-center/media/icons/yes-icon.png" border="false"::: Kommersiella moln<br>:::image type="icon" source="../articles/security-center/media/icons/yes-icon.png" border="false"::: US Gov-och Kina – gov stöds för närvarande inte. Läs mer i [när skannas bilder?](../articles/security-center/defender-for-container-registries-introduction.md#when-are-images-scanned)|
 |||

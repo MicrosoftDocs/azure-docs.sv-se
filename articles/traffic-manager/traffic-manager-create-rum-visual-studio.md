@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 03/16/2018
 ms.author: duau
 ms.custom: devx-track-js
-ms.openlocfilehash: c49672ad38ac8cf80214d03870b5876d741e76ec
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: f9e8cdd3eb5c9f441444683fb5efaccc880b2757
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95994884"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184619"
 ---
 # <a name="how-to-send-real-user-measurements-to-traffic-manager-with-visual-studio-mobile-center"></a>Så här skickar du Faktisk slutanvändarmätning till Traffic Manager med Visual Studio Mobile Center
 
@@ -52,7 +52,7 @@ Hämta RUM-nyckeln med Azure Portal hjälp av följande procedur:
 
 ## <a name="step-2-instrument-your-app-with-the-rum-package-of-mobile-center-sdk"></a>Steg 2: instrumenterar din app med Rom-paketet för Mobile Center SDK
 
-Om du inte har arbetat med Visual Studio Mobile Center kan du besöka [webbplatsen](https://mobile.azure.com). Detaljerade anvisningar om SDK-integrering finns [komma igång med Android SDK](https://docs.microsoft.com/mobile-center/sdk/getting-started/Android).
+Om du inte har arbetat med Visual Studio Mobile Center kan du besöka [webbplatsen](https://mobile.azure.com). Detaljerade anvisningar om SDK-integrering finns [komma igång med Android SDK](/mobile-center/sdk/getting-started/Android).
 
 Slutför följande procedur om du vill använda Faktisk slutanvändarmätning:
 
@@ -98,8 +98,7 @@ Slutför följande procedur om du vill använda Faktisk slutanvändarmätning:
 ## <a name="next-steps"></a>Nästa steg
 - Läs mer om [faktisk slutanvändarmätning](traffic-manager-rum-overview.md)
 - Lär dig [hur Traffic Manager fungerar](traffic-manager-overview.md)
-- Lär dig mer om [Mobile Center](https://docs.microsoft.com/mobile-center/)
+- Lär dig mer om [Mobile Center](/mobile-center/)
 - [Registrera dig](https://mobile.azure.com) för Mobile Center
 - Läs mer om [metoderna för trafik-routning](traffic-manager-routing-methods.md) som stöds av Traffic Manager
-- Lär dig hur du [skapar en Traffic Manager-profil](traffic-manager-create-profile.md)
-
+- Lär dig hur du [skapar en Traffic Manager-profil](./quickstart-create-traffic-manager-profile.md)

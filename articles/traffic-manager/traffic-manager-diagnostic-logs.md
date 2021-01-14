@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/25/2019
 ms.author: duau
-ms.openlocfilehash: 25c0b18da1690557f11e36dd11dda693ddddb838
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f24a4a0d982ff78ca4d6726e950825ed2c784e67
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89401324"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184568"
 ---
 # <a name="enable-resource-logging-in-azure-traffic-manager"></a>Aktivera resurs loggning i Azure Traffic Manager
 
@@ -39,14 +39,14 @@ Du kan köra kommandona som följer i [Azure Cloud Shell](https://shell.azure.co
 
 2. **Aktivera resurs loggning för Traffic Managers profilen:**
 
-    Aktivera resurs loggning för Traffic Manager profilen med det ID som hämtades i föregående steg med [set-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting?view=latest). Följande kommando lagrar utförliga loggar för Traffic Manager profilen till ett angivet Azure Storage konto. 
+    Aktivera resurs loggning för Traffic Manager profilen med det ID som hämtades i föregående steg med [set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting?view=latest). Följande kommando lagrar utförliga loggar för Traffic Manager profilen till ett angivet Azure Storage konto. 
 
       ```azurepowershell-interactive
     Set-AzDiagnosticSetting -ResourceId <TrafficManagerprofileResourceId> -StorageAccountId <storageAccountId> -Enabled $true
       ``` 
 3. **Verifiera diagnostikinställningar:**
 
-      Verifiera diagnostikinställningar för Traffic Manager profilen med [Get-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/get-azdiagnosticsetting?view=latest). Följande kommando visar de kategorier som är loggade för en resurs.
+      Verifiera diagnostikinställningar för Traffic Manager profilen med [Get-AzDiagnosticSetting](/powershell/module/az.monitor/get-azdiagnosticsetting?view=latest). Följande kommando visar de kategorier som är loggade för en resurs.
 
      ```azurepowershell-interactive
      Get-AzDiagnosticSetting -ResourceId <TrafficManagerprofileResourceId>
@@ -57,14 +57,14 @@ Du kan köra kommandona som följer i [Azure Cloud Shell](https://shell.azure.co
 1. Logga in på [Azure-portalen](https://portal.azure.com). 
 1. Navigera till ditt Azure Storage-konto i portalen.
 2. På sidan **Översikt** på ditt Azure Storage-konto, under **tjänster** väljer du **blobbar**.
-3. För **behållare**väljer du **Insights-logs-probehealthstatusevents**och går till PT1H.jspå filen och klickar på **Ladda ned** för att ladda ned och spara en kopia av logg filen.
+3. För **behållare** väljer du **Insights-logs-probehealthstatusevents** och går till PT1H.jspå filen och klickar på **Ladda ned** för att ladda ned och spara en kopia av logg filen.
 
     ![Komma åt loggfiler för din Traffic Manager profil från en blob-lagring](./media/traffic-manager-logs/traffic-manager-logs.png)
 
 
 ## <a name="traffic-manager-log-schema"></a>Traffic Manager logg schema
 
-Alla resurs loggar som är tillgängliga via Azure Monitor dela ett gemensamt schema på högsta nivå, med flexibilitet för varje tjänst för att generera unika egenskaper för sina egna händelser. Schema för resurs loggar på högsta nivån finns i [tjänster, scheman och kategorier som stöds för Azure-resurs loggar](../azure-monitor/platform/tutorial-dashboards.md).
+Alla resurs loggar som är tillgängliga via Azure Monitor dela ett gemensamt schema på högsta nivå, med flexibilitet för varje tjänst för att generera unika egenskaper för sina egna händelser. Schema för resurs loggar på högsta nivån finns i [tjänster, scheman och kategorier som stöds för Azure-resurs loggar](../azure-monitor/platform/resource-logs-schema.md).
 
 Följande tabell innehåller loggar schema som är speciellt för Azure Traffic Manager Profile-resursen.
 
@@ -77,4 +77,3 @@ Följande tabell innehåller loggar schema som är speciellt för Azure Traffic 
 ## <a name="next-steps"></a>Nästa steg
 
 * Läs mer om [Traffic Manager övervakning](traffic-manager-monitoring.md)
-

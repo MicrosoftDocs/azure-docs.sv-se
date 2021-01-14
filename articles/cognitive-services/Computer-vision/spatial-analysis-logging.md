@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 09/11/2020
+ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: dd1b6d216f6225a13d86aa2435b5b1c807547ec3
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: dda3ece27fd2c687647e0aa289bd1596a87b274f
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95014585"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98186030"
 ---
 # <a name="telemetry-and-troubleshooting"></a>Telemetri och fel sökning
 
@@ -68,7 +68,7 @@ az iot hub list
 az ad sp create-for-rbac --role="Monitoring Metrics Publisher" --name "<principal name>" --scopes="<resource ID of IoT Hub>"
 ```
 
-I distributions manifestet för din [Azure Stack Edge-enhet](https://go.microsoft.com/fwlink/?linkid=2142179) eller annan [stationär dator](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json)letar du reda på modulen *teleympkvistar* och ersätter följande värden med tjänstens huvud namns information från föregående steg och distribuerar om.
+I distributions manifestet för din [Azure Stack Edge-enhet](https://go.microsoft.com/fwlink/?linkid=2142179), [Station ära dator](https://go.microsoft.com/fwlink/?linkid=2152270)eller virtuell [Azure-dator med GPU](https://go.microsoft.com/fwlink/?linkid=2152189)söker du efter modulen *Teleympkvistar* och ersätter följande värden med tjänstens huvud namns information från föregående steg och distribuerar om.
 
 ```json
 
@@ -121,7 +121,7 @@ När modulen teleympkvistar har distribuerats kan de rapporterade måtten nås v
 
 ##  <a name="troubleshooting-an-iot-edge-device"></a>Felsöka en IoT Edge enhet
 
-Du kan använda `iotedge` kommando rads verktyget för att kontrol lera status och loggar för de moduler som körs. Ett exempel:
+Du kan använda `iotedge` kommando rads verktyget för att kontrol lera status och loggar för de moduler som körs. Exempel:
 * `iotedge list`: Rapporterar en lista över moduler som körs. 
   Du kan söka efter fel med `iotedge logs edgeAgent` . Om `iotedge` det har fastnat kan du prova att starta om den med `iotedge restart edgeAgent`
 * `iotedge logs <module-name>`
@@ -129,7 +129,7 @@ Du kan använda `iotedge` kommando rads verktyget för att kontrol lera status o
 
 ## <a name="collect-log-files-with-the-diagnostics-container"></a>Samla in loggfiler med diagnostik-behållaren
 
-Rums analys genererar Docker fel söknings loggar som du kan använda för att diagnostisera körnings problem eller ta med i support biljetter. Modulen för att analysera spatial analys är tillgänglig i Microsoft Container Registry som du kan hämta. I manifest distributions filen för din [Azure Stack Edge-enhet](https://go.microsoft.com/fwlink/?linkid=2142179) eller annan [stationär dator](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json)letar du reda på modulen *diagnostik* .
+Rums analys genererar Docker fel söknings loggar som du kan använda för att diagnostisera körnings problem eller ta med i support biljetter. Modulen för att analysera spatial analys är tillgänglig i Microsoft Container Registry som du kan hämta. I manifest distributions filen för din [Azure Stack Edge-enhet](https://go.microsoft.com/fwlink/?linkid=2142179), [stationär dator](https://go.microsoft.com/fwlink/?linkid=2152270)eller virtuell [Azure-dator med GPU](https://go.microsoft.com/fwlink/?linkid=2152189) letar du reda på modulen *diagnostik* .
 
 I avsnittet "miljö" lägger du till följande konfiguration:
 
@@ -188,13 +188,13 @@ Det kan också ställas in via IoT Edge modulens dubbla dokument antingen global
 > `diagnostics`Modulen påverkar inte loggnings innehållet, det underlättar bara för insamling, filtrering och uppladdning av befintliga loggar.
 > Du måste ha Docker-API version 1,40 eller högre för att kunna använda den här modulen.
 
-Manifest filen för exempel distributionen för din [Azure Stack Edge-enhet](https://go.microsoft.com/fwlink/?linkid=2142179) eller annan [stationär dator](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json)  innehåller en modul med namnet `diagnostics` som samlar in och laddar upp loggar. Den här modulen är inaktive rad som standard och måste aktive ras via IoT Edge module-konfigurationen när du behöver åtkomst till loggar. 
+Manifest filen för distributions exempel för [Azure Stack Edge-enhet](https://go.microsoft.com/fwlink/?linkid=2142179), [stationär dator](https://go.microsoft.com/fwlink/?linkid=2152270)eller virtuell [Azure-dator med GPU](https://go.microsoft.com/fwlink/?linkid=2152189) innehåller en modul med namnet `diagnostics` som samlar in och laddar upp loggar. Den här modulen är inaktive rad som standard och måste aktive ras via IoT Edge module-konfigurationen när du behöver åtkomst till loggar. 
 
 `diagnostics`Samlingen är på begäran och styrs via en IoT Edge Direct-metod och kan skicka loggar till en Azure-Blob Storage.
 
 ### <a name="configure-diagnostics-upload-targets"></a>Konfigurera uppladdnings mål för diagnostik
 
-Från IoT Edge-portalen väljer du enheten och sedan **Diagnostics** -modulen. I manifest filen för exempel distribution för din [Azure Stack Edge-enhet](https://go.microsoft.com/fwlink/?linkid=2142179) eller andra [Station ära datorer](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json)letar du reda på avsnittet **miljövariabler** för diagnostik, med namnet `env` och lägger till följande information:
+Från IoT Edge-portalen väljer du enheten och sedan **Diagnostics** -modulen. I manifest filen för exempel distribution för din [Azure Stack Edge-enhet](https://go.microsoft.com/fwlink/?linkid=2142179), [Station ära datorer](https://go.microsoft.com/fwlink/?linkid=2152270)eller [virtuell Azure-dator med GPU](https://go.microsoft.com/fwlink/?linkid=2152189) letar du reda på avsnittet **miljövariabler** för diagnostik, med namnet `env` och lägger till följande information:
 
 **Konfigurera uppladdning till Azure Blob Storage**
 
@@ -239,7 +239,7 @@ I tabellen nedan visas de parametrar som du kan använda när du frågar efter l
 | Hålla | Mål behållare för hämtning av loggar.| `null`, när det inte finns något container-ID. API: et returnerar all tillgänglig container information med ID: n.|
 | DoPost | Utför uppladdnings åtgärden. När detta är inställt på `false` , utför den begärda åtgärden och returnerar överförings storleken utan att göra överföringen. När det är inställt på `true` , kommer den asynkrona överföringen av de valda loggarna att initieras | `false`, Ladda inte upp.|
 | Begränsning | Ange hur många rader med loggar som ska överföras per batch | `1000`Använder du den här parametern för att justera post hastigheten. |
-| Filter | Filtrerar loggar som ska överföras | `null`kan filter anges som nyckel värdes par baserat på strukturen för rums analys loggar: `[UTC, LocalTime, LOGLEVEL,PID, CLASS, DATA]` . Exempel: `{"TimeFilter":[-1,1573255761112]}, {"TimeFilter":[-1,1573255761112]}, {"CLASS":["myNode"]`|
+| Filter | Filtrerar loggar som ska överföras | `null`kan filter anges som nyckel värdes par baserat på strukturen för rums analys loggar: `[UTC, LocalTime, LOGLEVEL,PID, CLASS, DATA]` . Exempelvis: `{"TimeFilter":[-1,1573255761112]}, {"TimeFilter":[-1,1573255761112]}, {"CLASS":["myNode"]`|
 
 I följande tabell visas attributen i svaret på frågan.
 
@@ -331,7 +331,7 @@ Anslut via fjärr anslutning från en Windows-klient. När Kubernetes-klustret h
 1. Kör en Windows PowerShell-session som administratör. 
     1. Kontrol lera att tjänsten Windows Remote Management körs på klienten. Skriv i kommando tolken `winrm quickconfig` .
 
-2. Tilldela en variabel för enhetens IP-adress. Exempelvis `$ip = "<device-ip-address>"`.
+2. Tilldela en variabel för enhetens IP-adress. Ett exempel är `$ip = "<device-ip-address>"`.
 
 3. Använd följande kommando för att lägga till IP-adressen för enheten i klientens lista över betrodda värdar. 
 

@@ -10,12 +10,12 @@ author: luisquintanilla
 ms.author: luquinta
 ms.date: 07/09/2020
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 9ad96bdb632e134cf3e3a0f82bb97f88c87e72e9
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 937b5ebb13bfbf27ff04b6944f2de7e32e7e656c
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033450"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185860"
 ---
 # <a name="train-and-deploy-an-image-classification-tensorflow-model-using-the-azure-machine-learning-visual-studio-code-extension-preview"></a>Träna och distribuera en bild klassificering TensorFlow modell med Azure Machine Learning Visual Studio Code Extension (för hands version)
 
@@ -33,7 +33,7 @@ I den här självstudien går du igenom följande aktiviteter:
 > * Registrera en modell
 > * Distribuera en modell
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 - En Azure-prenumeration. Om du inte har ett kan du registrera dig och prova den [kostnads fria eller betalda versionen av Azure Machine Learning](https://aka.ms/AMLFree).
 - Installera [Visual Studio Code](https://code.visualstudio.com/docs/setup/setup-overview), en lätt, plattforms oberoende kod redigerare.
@@ -78,7 +78,7 @@ Ett eller flera experiment kan skapas på arbets ytan för att spåra och analys
     > [!div class="mx-imgBorder"]
     > ![Skapa ett experiment](./media/tutorial-train-deploy-image-classification-model-vscode/create-experiment.png)
 
-1. Ge experimentet namnet "MNIST" och tryck på **RETUR** för att skapa det nya experimentet. 
+1. Ge experimentet "självstudie-VSCode-MNIST" och tryck på **RETUR** för att skapa det nya experimentet. 
 
 Precis som arbets ytor skickas en begäran till Azure för att skapa ett experiment med de tillhandahållna konfigurationerna. Efter några minuter visas det nya experimentet i noden *experiment* i din arbets yta. 
 

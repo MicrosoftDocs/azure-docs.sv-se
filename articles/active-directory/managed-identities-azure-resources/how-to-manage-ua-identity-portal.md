@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 08/26/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ad91c916a6134f2507e74df6e87478421a00f43
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: fd4cccdfc3a2cf8dd3827776028a7738ae769673
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96003012"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184838"
 ---
 # <a name="create-list-delete-or-assign-a-role-to-a-user-assigned-managed-identity-using-the-azure-portal"></a>Skapa, Visa, ta bort eller tilldela en roll till en användare som tilldelats en hanterad identitet med hjälp av Azure Portal
 
@@ -28,7 +28,7 @@ Hanterade identiteter för Azure-resurser ger Azure-tjänster med en hanterad id
 
 I den här artikeln får du lära dig hur du skapar, visar, tar bort eller tilldelar en roll till en användare som tilldelats en hanterad identitet med hjälp av Azure Portal.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 - Om du inte känner till hanterade identiteter för Azure-resurser kan du läsa [avsnittet Översikt](overview.md). **Se till att granska [skillnaden mellan en tilldelad och användardefinierad hanterad identitet](overview.md#managed-identity-types)**.
 - Om du inte redan har ett Azure-konto [registrerar du dig för ett kostnadsfritt konto](https://azure.microsoft.com/free/) innan du fortsätter.

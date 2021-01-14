@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 12/10/2020
 ms.author: rolyon
-ms.openlocfilehash: 92b27690ab1f2ca8d98eb2231c5a27bc508613f8
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 81224b5e16f3bca5da641bbb2e9c82dd59000e79
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095431"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185894"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory"></a>Överföra en Azure-prenumeration till en annan Azure AD-katalog
 
@@ -74,21 +74,21 @@ Flera Azure-resurser är beroende av en prenumeration eller en katalog. Beroende
 | Systemtilldelade hanterade identiteter | Ja | Ja | [Visa lista över hanterade identiteter](#list-role-assignments-for-managed-identities) | Du måste inaktivera och återaktivera hanterade identiteter. Du måste återskapa roll tilldelningarna. |
 | Användare som tilldelats hanterade identiteter | Ja | Ja | [Visa lista över hanterade identiteter](#list-role-assignments-for-managed-identities) | Du måste ta bort, återskapa och bifoga de hanterade identiteterna till lämplig resurs. Du måste återskapa roll tilldelningarna. |
 | Azure Key Vault | Ja | Ja | [Visa lista Key Vault åtkomst principer](#list-key-vaults) | Du måste uppdatera klient-ID: t som är associerat med nyckel valvena. Du måste ta bort och lägga till nya åtkomst principer. |
-| Azure SQL-databaser med integrering med Azure AD-autentisering aktive rad | Ja | Inga | [Kontrol lera Azure SQL-databaser med Azure AD-autentisering](#list-azure-sql-databases-with-azure-ad-authentication) |  |  |
+| Azure SQL-databaser med integrering med Azure AD-autentisering aktive rad | Ja | Nej | [Kontrol lera Azure SQL-databaser med Azure AD-autentisering](#list-azure-sql-databases-with-azure-ad-authentication) |  |  |
 | Azure Storage och Azure Data Lake Storage Gen2 | Ja | Ja |  | Du måste återskapa alla ACL: er. |
 | Azure Data Lake Storage Gen1 | Ja | Ja |  | Du måste återskapa alla ACL: er. |
 | Azure Files | Ja | Ja |  | Du måste återskapa alla ACL: er. |
 | Azure File Sync | Ja | Ja |  |  |
 | Azure Managed Disks | Ja | Ja |  |  Om du använder disk krypterings uppsättningar för att kryptera Managed Disks med Kundhanterade nycklar, måste du inaktivera och återaktivera systemtilldelade identiteter som är kopplade till disk krypterings uppsättningar. Och du måste skapa roll tilldelningarna igen, vilket innebär att de behörigheter som krävs för disk krypterings uppsättningar i nyckel valvet beviljas igen. |
 | Azure Kubernetes Service | Ja | Ja |  |  |
-| Azure Policy | Ja | Inga | Alla Azure Policy objekt, inklusive anpassade definitioner, tilldelningar, undantag och efterlevnadsprinciper. | Du måste [Exportera](../governance/policy/how-to/export-resources.md), importera och tilldela om definitioner. Skapa sedan nya princip tilldelningar och eventuella [princip undantag](../governance/policy/concepts/exemption-structure.md)som behövs. |
-| Azure Active Directory Domain Services | Ja | Inga |  |  |
+| Azure Policy | Ja | Nej | Alla Azure Policy objekt, inklusive anpassade definitioner, tilldelningar, undantag och efterlevnadsprinciper. | Du måste [Exportera](../governance/policy/how-to/export-resources.md), importera och tilldela om definitioner. Skapa sedan nya princip tilldelningar och eventuella [princip undantag](../governance/policy/concepts/exemption-structure.md)som behövs. |
+| Azure Active Directory Domain Services | Ja | Nej |  |  |
 | Appregistreringar | Ja | Ja |  |  |
 
 > [!WARNING]
 > Om du använder kryptering i vila för en resurs, till exempel ett lagrings konto eller en SQL-databas, som har ett beroende av ett nyckel valv som **inte** finns i samma prenumeration som överförs, kan det leda till ett oåterkalleligt scenario. Om du har den här situationen bör du vidta åtgärder för att använda ett annat nyckel valv eller tillfälligt inaktivera Kundhanterade nycklar för att undvika det här oåterkalleliga scenariot.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Du behöver följande för att slutföra de här stegen:
 

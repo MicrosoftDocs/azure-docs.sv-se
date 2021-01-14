@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 11/06/2020
+ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: f41e513ee0f2755c446a9cb95465c1f636fe5a7a
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: bb40586a93a40c2aaa3f0f884a0e747f168c324b
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97606274"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98186113"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a>Installera och kör behållaren för rums analys (förhands granskning)
 
@@ -24,7 +24,7 @@ Med behållaren för rums analys kan du analysera direktuppspelad video i real t
 ## <a name="prerequisites"></a>Krav
 
 * Azure-prenumeration – [skapa en kostnads fritt](https://azure.microsoft.com/free/cognitive-services)
-* När du har en Azure-prenumeration <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" skapar du en visuellt innehåll resurs "  target="_blank"> skapa en visuellt innehåll resurs <span class="docon docon-navigate-external x-hidden-focus"></span> </a> i Azure Portal för att hämta din nyckel och slut punkt. När den har distribuerats klickar **du på gå till resurs**.
+* När du har en Azure-prenumeration <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" skapar du en visuellt innehåll resurs "  target="_blank"> skapa en visuellt innehåll resurs <span class="docon docon-navigate-external x-hidden-focus"></span> </a> för Standard nivån S1 i Azure Portal för att hämta din nyckel och slut punkt. När den har distribuerats klickar **du på gå till resurs**.
     * Du behöver nyckeln och slut punkten från den resurs som du skapar för att köra behållaren för rums analys. Du kommer att använda din nyckel och slut punkt senare.
 
 
@@ -61,6 +61,9 @@ I den här artikeln ska du hämta och installera följande program varu paket. V
 * [Docker CE](https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-engine---community-1) och [NVIDIA-Docker2](https://github.com/NVIDIA/nvidia-docker) 
 * [Azure IoT Edge](../../iot-edge/how-to-install-iot-edge.md) Runtime.
 
+#### <a name="azure-vm-with-gpu"></a>[Virtuell Azure-dator med GPU](#tab/virtual-machine)
+I vårt exempel kommer vi att använda en [virtuell NC-serie](https://docs.microsoft.com/azure/virtual-machines/nc-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) med en K80-GPU.
+
 ---
 
 | Krav | Beskrivning |
@@ -85,7 +88,7 @@ Du kommer inte att kunna köra behållaren om din Azure-prenumeration inte har g
 
 ## <a name="set-up-the-host-computer"></a>Konfigurera värddatorn
 
-Vi rekommenderar att du använder en Azure Stack Edge-enhet för värddatorn. Klicka på **stationär dator** om du konfigurerar en annan enhet.
+Vi rekommenderar att du använder en Azure Stack Edge-enhet för värddatorn. Klicka på **stationär dator** om du konfigurerar en annan enhet eller **virtuell dator** om du använder en virtuell dator.
 
 #### <a name="azure-stack-edge-device"></a>[Azure Stack Edge-enhet](#tab/azure-stack-edge)
 
@@ -99,7 +102,7 @@ Rums analys använder Compute-funktionerna i Azure Stack Edge för att köra en 
   1. Aktivera Compute-funktionen på Azure Stack Edge-enheten. Om du vill aktivera beräkning går du till **beräknings** sidan i webb gränssnittet för din enhet. 
   2. Välj ett nätverks gränssnitt som du vill aktivera för beräkning och klicka sedan på **Aktivera**. Detta skapar en virtuell växel på enheten i nätverks gränssnittet.
   3. Lämna IP-adresserna för Kubernetes-testnoden och IP-adresserna för Kubernetes externa tjänster tomma.
-  4. Klicka på **Använd**. Den här åtgärden kan ta ungefär två minuter. 
+  4. Klicka på **Applicera**. Den här åtgärden kan ta ungefär två minuter. 
 
 ![Konfigurera beräkning](media/spatial-analysis/configure-compute.png)
 
@@ -252,13 +255,13 @@ Använd Azure CLI för att skapa en instans av Azure IoT Hub. Ersätt parametrar
 
 ```bash
 curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
-az login
-az account set --subscription <name or ID of Azure Subscription>
-az group create --name "test-resource-group" --location "WestUS"
+sudo az login
+sudo az account set --subscription <name or ID of Azure Subscription>
+sudo az group create --name "test-resource-group" --location "WestUS"
 
-az iot hub create --name "test-iot-hub-123" --sku S1 --resource-group "test-resource-group"
+sudo az iot hub create --name "test-iot-hub-123" --sku S1 --resource-group "test-resource-group"
 
-az iot hub device-identity create --hub-name "test-iot-hub-123" --device-id "my-edge-device" --edge-enabled
+sudo az iot hub device-identity create --hub-name "test-iot-hub-123" --device-id "my-edge-device" --edge-enabled
 ```
 
 Om värddatorn inte är en Azure Stack Edge-enhet måste du installera [Azure IoT Edge](../../iot-edge/how-to-install-iot-edge.md) version 1.0.9. Följ de här stegen för att ladda ned rätt version:
@@ -297,7 +300,7 @@ Registrera sedan värddatorn som en IoT Edge enhet i IoT Hub-instansen med hjäl
 Du måste ansluta IoT Edge-enheten till Azure-IoT Hub. Du måste kopiera anslutnings strängen från den IoT Edge enhet som du skapade tidigare. Du kan också köra kommandot nedan i Azure CLI.
 
 ```bash
-az iot hub device-identity show-connection-string --device-id my-edge-device --hub-name test-iot-hub-123
+sudo az iot hub device-identity show-connection-string --device-id my-edge-device --hub-name test-iot-hub-123
 ```
 
 På värddatorn är öppen  `/etc/iotedge/config.yaml` för redigering. Ersätt `ADD DEVICE CONNECTION STRING HERE` med anslutnings strängen. Spara och stäng filen. Kör det här kommandot för att starta om IoT Edge tjänsten på värddatorn.
@@ -306,15 +309,100 @@ På värddatorn är öppen  `/etc/iotedge/config.yaml` för redigering. Ersätt 
 sudo systemctl restart iotedge
 ```
 
-Distribuera behållaren för rums analys som en IoT-modul på värddatorn, antingen från [Azure Portal](../../iot-edge/how-to-deploy-modules-portal.md) eller [Azure CLI](../../iot-edge/how-to-deploy-modules-cli.md). Om du använder portalen ställer du in bild-URI: en till platsen för Azure Container Registry. 
+Distribuera behållaren för rums analys som en IoT-modul på värddatorn, antingen från [Azure Portal](../../iot-edge/how-to-deploy-modules-portal.md) eller [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli?tabs=windows). Om du använder portalen ställer du in bild-URI: en till platsen för Azure Container Registry. 
 
 Använd stegen nedan för att distribuera behållaren med hjälp av Azure CLI.
+
+#### <a name="azure-vm-with-gpu"></a>[Virtuell Azure-dator med GPU](#tab/virtual-machine)
+
+En virtuell Azure-dator med en GPU kan också användas för att köra spatial analys. Exemplet nedan använder en virtuell [NC-serie](https://docs.microsoft.com/azure/virtual-machines/nc-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) med en K80-GPU.
+
+#### <a name="create-the-vm"></a>Skapa den virtuella datorn
+
+Öppna guiden [skapa en virtuell dator](https://ms.portal.azure.com/#create/Microsoft.VirtualMachine) i Azure Portal.
+
+Ge den virtuella datorn ett namn och välj den region som ska vara (USA) västra USA 2. Se till att du anger `Availability Options` "ingen infrastruktur redundans krävs". Se bilden nedan för den fullständiga konfigurationen och nästa steg för att hitta rätt VM-storlek. 
+
+:::image type="content" source="media/spatial-analysis/virtual-machine-instance-details.png" alt-text="Konfigurations information för den virtuella datorn." lightbox="media/spatial-analysis/virtual-machine-instance-details.png":::
+
+Om du vill hitta storleken på den virtuella datorn väljer du "Se alla storlekar" och visar sedan listan för "icke-Premium Storage VM-storlekar", som visas nedan.
+
+:::image type="content" source="media/spatial-analysis/virtual-machine-sizes.png" alt-text="Storlekar på virtuella datorer." lightbox="media/spatial-analysis/virtual-machine-sizes.png":::
+
+Välj sedan antingen **för nc6** eller **NC6_Promo**.
+
+:::image type="content" source="media/spatial-analysis/promotional-selection.png" alt-text="Val av kampanj" lightbox="media/spatial-analysis/promotional-selection.png":::
+
+Skapa sedan den virtuella datorn. När du har skapat navigerar du till den virtuella dator resursen i Azure Portal och väljer `Extensions` i det vänstra fönstret. Fönstret tillägg visas med alla tillgängliga tillägg. Välj `NVIDIA GPU Driver Extension` , klicka på Skapa och Slutför guiden.
+
+När tillägget har tillämpats går du till den virtuella datorns huvud sida i Azure Portal och klickar på `Connect` . Den virtuella datorn kan nås via SSH eller RDP. RDP är användbart eftersom det kommer att aktivera visning av visualiserade fönster (förklaras senare). Konfigurera RDP-åtkomst genom att följa [dessa steg](https://docs.microsoft.com/azure/virtual-machines/linux/use-remote-desktop) och öppna en fjärr skrivbords anslutning till den virtuella datorn.
+
+### <a name="verify-graphics-drivers-are-installed"></a>Kontrol lera att grafik driv rutinerna är installerade
+
+Kör följande kommando för att kontrol lera att grafik driv rutinerna har installerats. 
+
+```bash
+nvidia-smi
+```
+
+Du bör se följande utdata.
+
+![NVIDIA driv rutins utdata](media/spatial-analysis/nvidia-driver-output.png)
+
+### <a name="install-docker-ce-and-nvidia-docker2-on-the-vm"></a>Installera Docker CE och NVIDIA-docker2 på den virtuella datorn
+
+Kör följande kommandon en i taget för att installera Docker CE och NVIDIA-docker2 på den virtuella datorn.
+
+Installera Docker CE på värddatorn.
+
+```bash
+sudo apt-get update
+```
+```bash
+sudo apt-get install -y apt-transport-https ca-certificates curl gnupg-agent software-properties-common
+```
+```bash
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+```
+```bash
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+```
+```bash
+sudo apt-get update
+```
+```bash
+sudo apt-get install -y docker-ce docker-ce-cli containerd.io
+```
+
+
+Installera *NVIDIA-Docker-2-* programpaketet.
+
+```bash
+distribution=$(. /etc/os-release;echo $ID$VERSION_ID)
+```
+```bash
+curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add -
+```
+```bash
+curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.list | sudo tee /etc/apt/sources.list.d/nvidia-docker.list
+```
+```bash
+sudo apt-get update
+```
+```bash
+sudo apt-get install -y docker-ce nvidia-docker2
+```
+```bash
+sudo systemctl restart docker
+```
+
+Nu när du har konfigurerat och konfigurerat den virtuella datorn följer du stegen nedan för att distribuera behållaren för rums analys. 
 
 ---
 
 ### <a name="iot-deployment-manifest"></a>Distributions manifest för IoT
 
-För att effektivisera behållar distributionen på flera värddatorer kan du skapa en distributions manifest fil för att ange alternativ för att skapa behållare och miljövariabler. Du kan hitta ett exempel på ett distributions manifest [för Azure Stack Edge](https://go.microsoft.com/fwlink/?linkid=2142179) och  [andra Station ära datorer](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json) på GitHub.
+För att effektivisera behållar distributionen på flera värddatorer kan du skapa en distributions manifest fil för att ange alternativ för att skapa behållare och miljövariabler. Du hittar ett exempel på ett distributions manifest [för Azure Stack Edge](https://go.microsoft.com/fwlink/?linkid=2142179), [andra Station ära datorer](https://go.microsoft.com/fwlink/?linkid=2152270)och [virtuell Azure-dator med GPU](https://go.microsoft.com/fwlink/?linkid=2152189) på GitHub.
 
 I följande tabell visas de olika miljövariabler som används av IoT Edge-modulen. Du kan också ställa in dem i distributions manifestet som länkas ovan med hjälp av `env` attributet i `spatialanalysis` :
 
@@ -326,21 +414,24 @@ I följande tabell visas de olika miljövariabler som används av IoT Edge-modul
 | ARCHON_NODES_LOG_LEVEL | Statusinformation Utförlig | Loggnings nivå, Välj ett av de två värdena|
 | OMP_WAIT_POLICY | PASSIVA | Ändra inte|
 | QT_X11_NO_MITSHM | 1 | Ändra inte|
-| API_KEY | din API-nyckel| Samla in det här värdet från Azure Portal från din Visuellt innehåll-resurs. Du hittar den i avsnittet **nyckel och slut punkt** för din resurs. |
-| BILLING_ENDPOINT | Slut punkts-URI| Samla in det här värdet från Azure Portal från din Visuellt innehåll-resurs. Du hittar den i avsnittet **nyckel och slut punkt** för din resurs.|
+| APIKEY | din API-nyckel| Samla in det här värdet från Azure Portal från din Visuellt innehåll-resurs. Du hittar den i avsnittet **nyckel och slut punkt** för din resurs. |
+| FAKTURERING | Slut punkts-URI| Samla in det här värdet från Azure Portal från din Visuellt innehåll-resurs. Du hittar den i avsnittet **nyckel och slut punkt** för din resurs.|
 | VILLKOREN | godkänt | Värdet måste anges till *acceptera* för att behållaren ska kunna köras |
 | Hur | : 1 | Värdet måste vara detsamma som utdata från `echo $DISPLAY` värddatorn. Azure Stack gräns enheter har ingen visning. Den här inställningen gäller inte|
-
+| ARCHON_GRAPH_READY_TIMEOUT | 600 | Lägg till den här miljövariabeln om din GPU **inte** är T4 eller NVIDIA 2080 ti|
+| ORT_TENSORRT_ENGINE_CACHE_ENABLE | 0 | Lägg till den här miljövariabeln om din GPU **inte** är T4 eller NVIDIA 2080 ti|
+| KEY_ENV | Krypterings nyckel för ASE | Lägg till den här miljövariabeln om Video_URL är en fördunklade-sträng |
+| IV_ENV | Initierings vektor | Lägg till den här miljövariabeln om Video_URL är en fördunklade-sträng|
 
 > [!IMPORTANT]
 > `Eula`Alternativen, `Billing` och `ApiKey` måste anges för att köra behållaren, annars startar inte behållaren.  Mer information finns i [fakturering](#billing).
 
-När du har uppdaterat distributions manifestet för [Azure Stack Edge-enheter](https://go.microsoft.com/fwlink/?linkid=2142179) eller [en stationär dator](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json) med dina egna inställningar och val av åtgärder, kan du använda följande [Azure CLI](../../iot-edge/how-to-deploy-modules-cli.md) -kommando för att distribuera behållaren på värddatorn som en IoT Edge modul.
+När du har uppdaterat distributions manifestet för [Azure Stack Edge-enheter](https://go.microsoft.com/fwlink/?linkid=2142179), [en stationär dator eller en](https://go.microsoft.com/fwlink/?linkid=2152270) [virtuell Azure-dator med en GPU](https://go.microsoft.com/fwlink/?linkid=2152189) med dina egna inställningar och val av åtgärder kan du använda följande [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli?tabs=windows) -kommando för att distribuera behållaren på värddatorn som en IoT Edge modul.
 
 ```azurecli
-az login
-az extension add --name azure-iot
-az iot edge set-modules --hub-name "<IoT Hub name>" --device-id "<IoT Edge device name>" --content DeploymentManifest.json --subscription "<subscriptionId>"
+sudo az login
+sudo az extension add --name azure-iot
+sudo az iot edge set-modules --hub-name "<IoT Hub name>" --device-id "<IoT Edge device name>" --content DeploymentManifest.json --subscription "<subscriptionId>"
 ```
 
 |Parameter  |Beskrivning  |
@@ -366,7 +457,7 @@ Du måste använda åtgärder för [spatial analys](spatial-analysis-operations.
 
 ## <a name="redeploy-or-delete-the-deployment"></a>Distribuera om eller ta bort distributionen
 
-Om du behöver uppdatera distributionen måste du kontrol lera att dina tidigare distributioner har distribuerats, eller så måste du ta bort IoT Edge enhets distributioner som inte har slutförts. Annars fortsätter de distributionerna att lämna systemet i ett felaktigt tillstånd. Du kan använda Azure Portal eller [Azure CLI](/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment).
+Om du behöver uppdatera distributionen måste du kontrol lera att dina tidigare distributioner har distribuerats, eller så måste du ta bort IoT Edge enhets distributioner som inte har slutförts. Annars fortsätter de distributionerna att lämna systemet i ett felaktigt tillstånd. Du kan använda Azure Portal eller [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli?tabs=windows).
 
 ## <a name="use-the-output-generated-by-the-container"></a>Använd de utdata som genereras av behållaren
 
@@ -385,25 +476,25 @@ Navigera till **container** -avsnittet och skapa en ny behållare eller Använd 
 
 Klicka på **skapa SAS-token och URL** och kopiera BLOB SAS-URL: en. Ersätt den `https` med `http` och testa webb adressen i en webbläsare som stöder videouppspelning.
 
-Ersätt `VIDEO_URL` i distributions manifestet för din [Azure Stack Edge-enhet](https://go.microsoft.com/fwlink/?linkid=2142179) eller en annan [stationär dator](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json) med den URL som du har skapat för alla grafer. Ange `VIDEO_IS_LIVE` till `false` och distribuera om behållaren för rums analys med det uppdaterade manifestet. Se exemplet nedan.
+Ersätt `VIDEO_URL` i distributions manifestet för din [Azure Stack Edge-enhet](https://go.microsoft.com/fwlink/?linkid=2142179), [stationär dator](https://go.microsoft.com/fwlink/?linkid=2152270)eller virtuell [Azure-dator med GPU](https://go.microsoft.com/fwlink/?linkid=2152189) med den URL som du har skapat för alla grafer. Ange `VIDEO_IS_LIVE` till `false` och distribuera om behållaren för rums analys med det uppdaterade manifestet. Se exemplet nedan.
 
 Modulen för spatial analys kommer att börja använda video filen och kommer att spelas upp kontinuerligt automatiskt.
 
 
 ```json
 "zonecrossing": {
-  "operationId" : "cognitiveservices.vision.spatialanalysis-personcrossingpolygon",
-  "version": 1,
-  "enabled": true,
-  "parameters": {
-      "VIDEO_URL": "Replace http url here",
-      "VIDEO_SOURCE_ID": "personcountgraph",
-      "VIDEO_IS_LIVE": false,
-        "VIDEO_DECODE_GPU_INDEX": 0,
-      "DETECTOR_NODE_CONFIG": "{ \"gpu_index\": 0 }",
-      "SPACEANALYTICS_CONFIG": "{\"zones\":[{\"name\":\"queue\",\"polygon\":[[0.3,0.3],[0.3,0.9],[0.6,0.9],[0.6,0.3],[0.3,0.3]], \"threshold\":35.0}]}"
+    "operationId" : "cognitiveservices.vision.spatialanalysis-personcrossingpolygon",
+    "version": 1,
+    "enabled": true,
+    "parameters": {
+        "VIDEO_URL": "Replace http url here",
+        "VIDEO_SOURCE_ID": "personcountgraph",
+        "VIDEO_IS_LIVE": false,
+      "VIDEO_DECODE_GPU_INDEX": 0,
+        "DETECTOR_NODE_CONFIG": "{ \"gpu_index\": 0, \"do_calibration\": true }",
+        "SPACEANALYTICS_CONFIG": "{\"zones\":[{\"name\":\"queue\",\"polygon\":[[0.3,0.3],[0.3,0.9],[0.6,0.9],[0.6,0.3],[0.3,0.3]], \"events\": [{\"type\": \"zonecrossing\", \"config\": {\"threshold\": 16.0, \"focus\": \"footprint\"}}]}]}"
     }
-  },
+   },
 
 ```
 

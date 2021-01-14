@@ -1,26 +1,26 @@
 ---
-title: Hur och var modeller ska distribueras
+title: Så här distribuerar du Machine Learning-modeller
 titleSuffix: Azure Machine Learning
-description: Lär dig hur och var du distribuerar Azure Machine Learning-modeller, inklusive Azure Container Instances, Azure Kubernetes service, Azure IoT Edge och FPGA.
+description: Lär dig hur och var du kan distribuera Machine Learning-modeller. Distribuera till Azure Container Instances, Azure Kubernetes service, Azure IoT Edge och FPGA.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.author: gopalv
 author: gvashishtha
 ms.reviewer: larryfr
-ms.date: 12/11/2020
+ms.date: 01/13/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy, devx-track-azurecli
-ms.openlocfilehash: 195f1c527185fbd55450b6151f26525074db75f7
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: e9c691485eb0ec1a0b3c0564f9a8f9a5d2aa255d
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98070430"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185809"
 ---
-# <a name="deploy-models-with-azure-machine-learning"></a>Distribuera modeller med Azure Machine Learning
+# <a name="deploy-machine-learning-models-to-azure"></a>Distribuera Machine Learning-modeller till Azure
 
-Lär dig hur du distribuerar din Machine Learning-modell som en webb tjänst i Azure-molnet eller Azure IoT Edge enheter.
+Lär dig hur du distribuerar din Machine Learning-eller djup inlärnings modell som en webb tjänst i Azure-molnet. Du kan också distribuera till Azure IoT Edge enheter.
 
 Arbetsflödet är ungefär likadant var du än distribuerar din modell:
 
@@ -31,7 +31,7 @@ Arbetsflödet är ungefär likadant var du än distribuerar din modell:
 1. Distribuera modellen till beräkningsmålet.
 1. Testa den resulterande webb tjänsten.
 
-Mer information om de begrepp som ingår i distributions arbets flödet finns i [Hantera, distribuera och övervaka modeller med Azure Machine Learning](concept-model-management-and-deployment.md).
+Mer information om de begrepp som ingår i arbets flödet för Machine Learning-distribution finns i [Hantera, distribuera och övervaka modeller med Azure Machine Learning](concept-model-management-and-deployment.md).
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -197,7 +197,7 @@ En minimal konfiguration av en härlednings konfiguration kan skrivas som:
 }
 ```
 
-Det anger att distributionen ska använda filen `score.py` i `./working_dir` katalogen för att bearbeta inkommande begär Anden.
+Detta anger att Machine Learning-distributionen kommer att använda filen `score.py` i `./working_dir` katalogen för att bearbeta inkommande begär Anden.
 
 [I den här artikeln finns](./reference-azure-machine-learning-cli.md#inference-configuration-schema) en mer omfattande diskussion om konfigurations härledning. 
 
@@ -269,7 +269,7 @@ from azureml.core.webservice import AciWebservice, AksWebservice, LocalWebservic
 
 ---
 
-## <a name="deploy-your-model"></a>Distribuera din modell
+## <a name="deploy-your-machine-learning-model"></a>Distribuera din Machine Learning-modell
 
 Nu är du redo att distribuera din modell. 
 
@@ -314,13 +314,13 @@ Under modell distributionen kan tjänst tillstånds ändringen visas när den di
 
 I följande tabell beskrivs de olika tjänst tillstånden:
 
-| Webservice-tillstånd | Beskrivning | Slutligt tillstånd?
+| Webservice-tillstånd | Description | Slutligt tillstånd?
 | ----- | ----- | ----- |
-| Övergår | Tjänsten håller på att distribueras. | Nej |
-| Ohälsosamt | Tjänsten har distribuerats men är för närvarande inte tillgänglig.  | Nej |
-| Unschedulable | Det går inte att distribuera tjänsten för tillfället på grund av bristande resurser. | Nej |
-| Misslyckad | Det gick inte att distribuera tjänsten på grund av ett fel eller en krasch. | Ja |
-| Felfri | Tjänsten är felfri och slut punkten är tillgänglig. | Ja |
+| Övergår | Tjänsten håller på att distribueras. | No |
+| Ohälsosamt | Tjänsten har distribuerats men är för närvarande inte tillgänglig.  | No |
+| Unschedulable | Det går inte att distribuera tjänsten för tillfället på grund av bristande resurser. | No |
+| Misslyckad | Det gick inte att distribuera tjänsten på grund av ett fel eller en krasch. | Yes |
+| Felfri | Tjänsten är felfri och slut punkten är tillgänglig. | Yes |
 
 > [!TIP]
 > När du distribuerar är Docker-avbildningar för beräknings mål byggda och inlästa från Azure Container Registry (ACR). Azure Machine Learning skapar som standard en ACR som använder tjänst nivån *Basic* . Att ändra ACR för arbets ytan till standard-eller Premium-nivån kan minska den tid det tar att bygga och distribuera avbildningar till dina beräknings mål. Mer information finns i [Azure Container Registry tjänst nivåer](../container-registry/container-registry-skus.md).

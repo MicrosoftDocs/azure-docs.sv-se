@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/9/2020
 ms.author: yitoh
-ms.openlocfilehash: 5e633b5e4b2ff2ce884bfaf99e3730968150cbed
-ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
+ms.openlocfilehash: e76086db36642664ca15acee26f4e0aca85ff272
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97746379"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184468"
 ---
 # <a name="azure-ddos-protection-standard-overview"></a>Översikt över Azure DDoS Protection Standard
 
@@ -45,6 +45,10 @@ Azure DDoS Protection lagrar inte kund information.
 - **Kostnads garanti:** Ta emot data överföring och programskalbara service krediter för resurs kostnader som uppstår till följd av dokumenterade DDoS-attacker.
 
 ## <a name="pricing"></a>Prissättning
+
+DDoS skydds planer har en fast månads avgift på $2 944 per månad som omfattar upp till 100 offentliga IP-adresser. Skydd för ytterligare resurser kostar ytterligare $30 per resurs per månad.
+
+Under en klient kan en enda DDoS skydds plan användas över flera prenumerationer, så det finns inget behov av att skapa mer än en DDoS-skydds plan.
 
 Mer information om Azure DDoS Protection standard priser finns i [Azure DDoS Protection standard prissättning](https://azure.microsoft.com/pricing/details/ddos-protection/).
 

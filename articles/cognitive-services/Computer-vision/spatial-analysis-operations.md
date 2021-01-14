@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 09/01/2020
+ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: 9d1b6e20bf2decfe051e79e073736f71181260fa
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 63184a623c6f0a8c53e09e6af92c05e45c5e0794
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95014551"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185991"
 ---
 # <a name="spatial-analysis-operations"></a>Åtgärder för rums analys
 
@@ -25,9 +25,9 @@ Behållaren för rums analys implementerar följande åtgärder:
 
 | Åtgärds identifierare| Description|
 |---------|---------|
-| cognitiveservices. vision. spatialanalysis-personcount | Räknar personer i en angiven zon i kamerans visnings fält. <br> Utvärderar en inledande _personCountEvent_ -händelse och _personCountEvent_ händelser när antalet ändras.  |
+| cognitiveservices. vision. spatialanalysis-personcount | Räknar personer i en angiven zon i kamerans visnings fält. Zonen måste vara helt täckt av en enda kamera för att PersonCount ska kunna registrera en korrekt total summa. <br> Utvärderar en inledande _personCountEvent_ -händelse och _personCountEvent_ händelser när antalet ändras.  |
 | cognitiveservices. vision. spatialanalysis-personcrossingline | Spårar när en person korsar en angiven linje i kamerans visnings fält. <br>Avger en _personLineEvent_ -händelse när personen korsar linjen och ger riktad information. 
-| cognitiveservices. vision. spatialanalysis-personcrossingpolygon | Spårar när en person korsar en angiven linje i kamerans visnings fält. <br> Genererar en _personLineEvent_ -händelse när personen korsar zonen och ger riktad information. |
+| cognitiveservices. vision. spatialanalysis-personcrossingpolygon | Genererar en _personZoneEnterExitEvent_ -händelse när en person går in i eller avslutar zonen och ger riktad information med den numrerade sidan i den zon som är överkorsad. Skapar en _personZoneDwellTimeEvent_ när personen lämnar zonen och ger vägbeskrivnings information samt antalet millisekunder som den person som har använt i zonen. |
 | cognitiveservices. vision. spatialanalysis-persondistance | Spårar när personer bryter mot en avstånds regel. <br> Avger en _personDistanceEvent_ regelbundet med platsen för varje avstånds överträdelse. |
 
 Alla ovanstående åtgärder är också tillgängliga i `.debug` versionen, som har möjlighet att visualisera video bild rutorna när de bearbetas. Du måste köra `xhost +` på värddatorn för att aktivera visualiseringen av video bild rutor och händelser.
@@ -36,7 +36,7 @@ Alla ovanstående åtgärder är också tillgängliga i `.debug` versionen, som 
 |---------|---------|
 | cognitiveservices. vision. spatialanalysis-personcount. debug | Räknar personer i en angiven zon i kamerans visnings fält. <br> Utvärderar en inledande _personCountEvent_ -händelse och _personCountEvent_ händelser när antalet ändras.  |
 | cognitiveservices. vision. spatialanalysis-personcrossingline. debug | Spårar när en person korsar en angiven linje i kamerans visnings fält. <br>Avger en _personLineEvent_ -händelse när personen korsar linjen och ger riktad information. 
-| cognitiveservices. vision. spatialanalysis-personcrossingpolygon. debug | Spårar när en person korsar en angiven linje i kamerans visnings fält. <br> Genererar en _personLineEvent_ -händelse när personen korsar zonen och ger riktad information. |
+| cognitiveservices. vision. spatialanalysis-personcrossingpolygon. debug | Genererar en _personZoneEnterExitEvent_ -händelse när en person går in i eller avslutar zonen och ger riktad information med den numrerade sidan i den zon som är överkorsad. Skapar en _personZoneDwellTimeEvent_ när personen lämnar zonen och ger vägbeskrivnings information samt antalet millisekunder som den person som har använt i zonen. |
 | cognitiveservices. vision. spatialanalysis-persondistance. debug | Spårar när personer bryter mot en avstånds regel. <br> Avger en _personDistanceEvent_ regelbundet med platsen för varje avstånds överträdelse. |
 
 Rums analys kan också köras med [Live Video Analytics](../../media-services/live-video-analytics-edge/spatial-analysis-tutorial.md) som sin video AI-modul. 
@@ -47,13 +47,13 @@ Rums analys kan också köras med [Live Video Analytics](../../media-services/li
 |---------|---------|
 | cognitiveservices. vision. spatialanalysis-personcount. livevideoanalytics | Räknar personer i en angiven zon i kamerans visnings fält. <br> Utvärderar en inledande _personCountEvent_ -händelse och _personCountEvent_ händelser när antalet ändras.  |
 | cognitiveservices. vision. spatialanalysis-personcrossingline. livevideoanalytics | Spårar när en person korsar en angiven linje i kamerans visnings fält. <br>Avger en _personLineEvent_ -händelse när personen korsar linjen och ger riktad information. 
-| cognitiveservices. vision. spatialanalysis-personcrossingpolygon. livevideoanalytics | Spårar när en person korsar en angiven linje i kamerans visnings fält. <br> Genererar en _personLineEvent_ -händelse när personen korsar zonen och ger riktad information. |
+| cognitiveservices. vision. spatialanalysis-personcrossingpolygon. livevideoanalytics | Genererar en _personZoneEnterExitEvent_ -händelse när en person går in i eller avslutar zonen och ger riktad information med den numrerade sidan i den zon som är överkorsad. Skapar en _personZoneDwellTimeEvent_ när personen lämnar zonen och ger vägbeskrivnings information samt antalet millisekunder som den person som har använt i zonen.  |
 | cognitiveservices. vision. spatialanalysis-persondistance. livevideoanalytics | Spårar när personer bryter mot en avstånds regel. <br> Avger en _personDistanceEvent_ regelbundet med platsen för varje avstånds överträdelse. |
 
 Live Video Analytics-åtgärder är också tillgängliga i `.debug` versionen (t. ex. cognitiveservices. vision. spatialanalysis-personcount. livevideoanalytics. debug) som har möjlighet att visualisera video bild rutorna som bearbetas. Du måste köra `xhost +` på värddatorn för att aktivera visualiseringen av video bild rutor och händelser
 
 > [!IMPORTANT]
-> AI-modeller för visuellt innehåll identifierar och hittar mänsklig närvaro i video filmer och utdata genom att använda en avgränsnings ruta runt ett mänskligt objekt. AI-modeller försöker inte identifiera ansikten eller identifiera identiteter eller demografiska individer.
+> AI-modeller för visuellt innehåll identifierar och hittar mänsklig närvaro i video filmer och utdata genom att använda en avgränsnings ruta runt ett mänskligt objekt. AI-modellerna försöker inte identifiera identiteter eller demografiska individer.
 
 Dessa är de parametrar som krävs för var och en av dessa åtgärder för att utföra den här typen av
 
@@ -61,12 +61,14 @@ Dessa är de parametrar som krävs för var och en av dessa åtgärder för att 
 |---------|---------|
 | Åtgärds-ID | Åtgärds identifieraren från tabellen ovan.|
 | enabled | Boolean: true eller false|
-| VIDEO_URL| RTSP-URL: en för kamera enheten (exempel: `rtsp://username:password@url` ). Rums analys stöder H. 264-kodad data ström, antingen via RTSP, http eller MP4 |
+| VIDEO_URL| RTSP-URL: en för kamera enheten (exempel: `rtsp://username:password@url` ). Rums analys stöder H. 264-kodad data ström, antingen via RTSP, http eller MP4. Video_URL kan anges som ett fördunklade base64-sträng värde med AES-kryptering och om video-URL: en är fördunklade `KEY_ENV` och `IV_ENV` måste tillhandahållas som miljövariabler. Exempel verktyg för att generera nycklar och kryptering hittar du [här](https://docs.microsoft.com/dotnet/api/system.security.cryptography.aesmanaged?view=net-5.0&preserve-view=true). |
 | VIDEO_SOURCE_ID | Ett eget namn för kamera enheten eller video strömmen. Detta kommer att returneras med händelse-JSON-utdata.|
 | VIDEO_IS_LIVE| Sant för kamera enheter; falskt för inspelade videor.|
 | VIDEO_DECODE_GPU_INDEX| Vilken GPU som ska avkoda video ramen. Som standard är det 0. Ska vara samma som `gpu_index` i andra Node config som `VICA_NODE_CONFIG` , `DETECTOR_NODE_CONFIG` .|
+| INPUT_VIDEO_WIDTH | Indata för video/Streams ram bredd (t. ex. 1920). Dess ett valfritt fält och om den angivna ramen kommer att skalas till den här dimensionen, men kommer fortfarande att bevara proportionerna.|
 | DETECTOR_NODE_CONFIG | JSON som anger vilken GPU som ska köra detektor-noden på. Ska ha följande format: `"{ \"gpu_index\": 0 }",`|
 | SPACEANALYTICS_CONFIG | JSON-konfiguration för zonen och raden enligt beskrivningen nedan.|
+| ENABLE_FACE_MASK_CLASSIFIER | `True` för att aktivera identifiering av personer som använder ansikts masker i video strömmen, `False` för att inaktivera den. Som standard är detta inaktiverat. Identifiering av ansikts mask kräver att indatamängds parametern för video bredd är 1920 `"INPUT_VIDEO_WIDTH": 1920` . Attributet ansikts mask returneras inte om identifierade personer inte är i kontakt med kameran eller är för långt ifrån det. Mer information hittar du i hand boken för [kamera placering](spatial-analysis-camera-placement.md) . |
 
 ### <a name="zone-configuration-for-cognitiveservicesvisionspatialanalysis-personcount"></a>Zon konfiguration för cognitiveservices. vision. spatialanalysis-personcount
 
@@ -75,14 +77,14 @@ Dessa är de parametrar som krävs för var och en av dessa åtgärder för att 
 ```json
 {
 "zones":[{
-    "name": "lobbycamera"
+    "name": "lobbycamera",
     "polygon": [[0.3,0.3], [0.3,0.9], [0.6,0.9], [0.6,0.3], [0.3,0.3]],
-    "threshold": 50.00,
     "events":[{
         "type": "count",
         "config":{
             "trigger": "event",
-            "output_frequency": 1
+            "threshold": 16.00,
+            "focus": "footprint"
       }
     }]
 }
@@ -97,6 +99,7 @@ Dessa är de parametrar som krävs för var och en av dessa åtgärder för att 
 | `type` | sträng| För **cognitiveservices. vision. spatialanalysis-personcount** ska detta vara `count` .|
 | `trigger` | sträng| Typ av utlösare för att skicka en händelse. Värden som stöds är `event` för att skicka händelser när antalet ändras eller `interval` för att skicka händelser med jämna mellanrum, oavsett om antalet har ändrats eller inte.
 | `interval` | sträng| En tid i sekunder som antalet personer ska aggregeras innan en händelse utlöses. Åtgärden fortsätter att analysera scenen med konstant hastighet och returnerar det vanligaste antalet under intervallet. Samlings intervallet gäller för både `event` och `interval` .|
+| `focus` | sträng| Punkt platsen inom personens markerings ruta som används för att beräkna händelser. Fokus värde kan vara `footprint` (personens personliga), (det `bottom_center` nedre mitten av personens markerings ram) `center` (centrum för personens avgränsnings ruta).|
 
 ### <a name="line-configuration-for-cognitiveservicesvisionspatialanalysis-personcrossingline"></a>Linje konfiguration för cognitiveservices. vision. spatialanalysis-personcrossingline
 
@@ -104,20 +107,31 @@ Detta är ett exempel på en JSON-ineffekt för den SPACEANALYTICS_CONFIG parame
 
 ```json
 {
-"lines":[{
-    "name": "doorcamera" 
-    "line": {
-        "start": {"x": 0, "y": 0.5},
-        "end": {"x": 1, "y": 0.5}
-            },
-    "threshold": 50.00,
-    "events":[{
-        "type": "linecrossing",
-        "config":{
-            "trigger": "event"
-            }
-        }]
-    }]
+   "lines": [
+       {
+           "name": "doorcamera",
+           "line": {
+               "start": {
+                   "x": 0,
+                   "y": 0.5
+               },
+               "end": {
+                   "x": 1,
+                   "y": 0.5
+               }
+           },
+           "events": [
+               {
+                   "type": "linecrossing",
+                   "config": {
+                       "trigger": "event",
+                       "threshold": 16.00,
+                       "focus": "footprint"
+                   }
+               }
+           ]
+       }
+   ]
 }
 ```
 
@@ -131,6 +145,7 @@ Detta är ett exempel på en JSON-ineffekt för den SPACEANALYTICS_CONFIG parame
 | `threshold` | flyt| Händelser utsätts när AI-modellernas tillförlitlighet är större eller lika med det här värdet. |
 | `type` | sträng| För **cognitiveservices. vision. spatialanalysis-personcrossingline** ska detta vara `linecrossing` .|
 |`trigger`|sträng|Typ av utlösare för att skicka en händelse.<br>Värden som stöds: "event": Utlös när någon korsar linjen.|
+| `focus` | sträng| Punkt platsen inom personens markerings ruta som används för att beräkna händelser. Fokus värde kan vara `footprint` (personens personliga), (det `bottom_center` nedre mitten av personens markerings ram) `center` (centrum för personens avgränsnings ruta).|
 
 ### <a name="zone-configuration-for-cognitiveservicesvisionspatialanalysis-personcrossingpolygon"></a>Zon konfiguration för cognitiveservices. vision. spatialanalysis-personcrossingpolygon
 
@@ -138,17 +153,31 @@ Detta är ett exempel på en JSON-ineffekt för den SPACEANALYTICS_CONFIG parame
 
  ```json
 {
-"zones":[{
-    "name": "queuecamera"
-    "polygon": [[0.3,0.3], [0.3,0.9], [0.6,0.9], [0.6,0.3], [0.3,0.3]],
-    "threshold": 50.00,
-    "events":[{
-        "type": "zone_crossing",
-        "config":{
-            "trigger": "event"
-            }
-        }]
-    }]
+"zones":[
+   {
+       "name": "queuecamera",
+       "polygon": [[0.3,0.3], [0.3,0.9], [0.6,0.9], [0.6,0.3], [0.3,0.3]],
+       "events":[{
+           "type": "zonecrossing",
+           "config":{
+               "trigger": "event",
+               "threshold": 48.00,
+               "focus": "footprint"
+               }
+           }]
+   },
+   {
+       "name": "queuecamera1",
+       "polygon": [[0.3,0.3], [0.3,0.9], [0.6,0.9], [0.6,0.3], [0.3,0.3]],
+       "events":[{
+           "type": "zonedwelltime",
+           "config":{
+               "trigger": "event",
+               "threshold": 16.00,
+               "focus": "footprint"
+               }
+           }]
+   }]
 }
 ```
 
@@ -158,8 +187,9 @@ Detta är ett exempel på en JSON-ineffekt för den SPACEANALYTICS_CONFIG parame
 | `name` | sträng| Eget namn för zonen.|
 | `polygon` | lista| Varje värde par representerar x, y för hörn i polygonen. Polygonen representerar de områden där människor spåras eller räknas. Värdena för float representerar placeringen av hörnen i förhållande till det övre, vänstra hörnet. För att beräkna de absoluta x-, y-värdena multiplicerar du värdena med ram storleken. 
 | `threshold` | flyt| Händelser utsätts när AI-modellernas tillförlitlighet är större eller lika med det här värdet. |
-| `type` | sträng| För **cognitiveservices. vision. spatialanalysis-personcrossingpolygon** ska detta vara `enter` eller `exit` .|
+| `type` | sträng| För **cognitiveservices. vision. spatialanalysis-personcrossingpolygon** ska detta vara `zonecrossing` eller `zonedwelltime` .|
 | `trigger`|sträng|Typ av utlösare för att skicka en händelse<br>Värden som stöds: "event": Utlös när någon anger eller avslutar zonen.|
+| `focus` | sträng| Punkt platsen inom personens markerings ruta som används för att beräkna händelser. Fokus värde kan vara `footprint` (personens personliga), (det `bottom_center` nedre mitten av personens markerings ram) `center` (centrum för personens avgränsnings ruta).|
 
 ### <a name="zone-configuration-for-cognitiveservicesvisionspatialanalysis-persondistance"></a>Zon konfiguration för cognitiveservices. vision. spatialanalysis-persondistance
 
@@ -168,19 +198,20 @@ Detta är ett exempel på en JSON-ineffekt för SPACEANALYTICS_CONFIG-parametern
 ```json
 {
 "zones":[{
-    "name": "lobbycamera",
-    "polygon": [[0.3,0.3], [0.3,0.9], [0.6,0.9], [0.6,0.3], [0.3,0.3]],
-    "threshold": 35.00,
-    "events":[{
-        "type": "persondistance",
-        "config":{
-            "trigger": "event",
-            "output_frequency":1,
-            "minimum_distance_threshold":6.0,
-            "maximum_distance_threshold":35.0
+   "name": "lobbycamera",
+   "polygon": [[0.3,0.3], [0.3,0.9], [0.6,0.9], [0.6,0.3], [0.3,0.3]],
+   "events":[{
+    "type": "persondistance",
+    "config":{
+        "trigger": "event",
+        "output_frequency":1,
+        "minimum_distance_threshold":6.0,
+        "maximum_distance_threshold":35.0,
+           "threshold": 16.00,
+           "focus": "footprint"
             }
-        }]
     }]
+   }]
 }
 ```
 
@@ -196,6 +227,7 @@ Detta är ett exempel på en JSON-ineffekt för SPACEANALYTICS_CONFIG-parametern
 | `output_frequency` | int | Den hastighet med vilken händelser utgående. När `output_frequency` = x tas varje x-händelse ut, t. ex. `output_frequency` = 2 innebär att alla andra händelser är utdata. Output_frequency gäller både `event` och `interval` .|
 | `minimum_distance_threshold` | flyt| Ett avstånd i fot som utlöser en "TooClose"-händelse när människor är mindre än avståndet mellan varandra.|
 | `maximum_distance_threshold` | flyt| Ett avstånd i fot som utlöser en "TooFar"-händelse när människor är större än det avståndet.|
+| `focus` | sträng| Punkt platsen inom personens markerings ruta som används för att beräkna händelser. Fokus värde kan vara `footprint` (personens personliga), (det `bottom_center` nedre mitten av personens markerings ram) `center` (centrum för personens avgränsnings ruta).|
 
 Detta är ett exempel på en JSON-ineffekt för parametern DETECTOR_NODE_CONFIG som konfigurerar en **cognitiveservices. vision. spatialanalysis-persondistance-** zon.
 
@@ -210,8 +242,17 @@ Detta är ett exempel på en JSON-ineffekt för parametern DETECTOR_NODE_CONFIG 
 |---------|---------|---------|
 | `gpu_index` | sträng| Det GPU-index som den här åtgärden ska köras på.|
 | `do_calibration` | sträng | Anger att kalibreringen är påslagen. `do_calibration` måste vara true för att **cognitiveservices. vision. spatialanalysis-persondistance** ska fungera korrekt.|
+| `enable_recalibration` | boolesk | Anger om automatisk omkalibrering är aktive rad. Standardvärdet är `true`.|
+| `calibration_quality_check_frequency_seconds` | int | Minsta antal sekunder mellan varje kvalitets kontroll för att avgöra om omkalibrering krävs eller inte. Standardvärdet är `86400` (24 timmar). Används endast när `enable_recalibration=True` .|
+| `calibration_quality_check_sampling_num` | int | Antal slumpmässigt valda lagrade data exempel för användning av fel mätning per kvalitets kontroll. Standardvärdet är `80`. Används endast när `enable_recalibration=True` .|
+| `calibration_quality_check_sampling_times` | int | Antalet gånger som fel mätningar utförs på olika uppsättningar av slumpmässigt valda data exempel per kvalitets kontroll. Standardvärdet är `5`. Används endast när `enable_recalibration=True` .|
+| `calibration_quality_check_sample_collect_frequency_seconds` | int | Minsta antal sekunder mellan insamling av nya data exempel för omkalibrering och kvalitets kontroll. Standardvärdet är `300` (5 minuter). Används endast när `enable_recalibration=True` .|
+| `calibration_quality_check_one_round_sample_collect_num` | int | Minsta antal nya data exempel som kan samlas in per avrundning av exempel samling. Standardvärdet är `10`. Används endast när `enable_recalibration=True` .|
+| `calibration_quality_check_queue_max_size` | int | Maximalt antal data exempel som ska lagras när kamera modellen kalibreras. Standardvärdet är `1000`. Används endast när `enable_recalibration=True` .|
+| `recalibration_score` | int | Högsta kvalitets tröskel för att starta omkalibreringen. Standardvärdet är `75`. Används endast när `enable_recalibration=True` . Kalibrerings kvaliteten beräknas baserat på en inverterad relation med ett omprojektering av bild mål. De identifierade målen i 2D-bildramar, målen projiceras i 3D-rymden och projiceras tillbaka till 2D-bildramen med befintliga kamera kalibrerings parametrar. Omprojektering-felet mäts i genomsnitt mellan de identifierade målen och de omprojicerade målen.|
+| `enable_breakpad`| boolesk | Anger om du vill aktivera Breakpad, som används för att generera kraschdump för att felsöka ska användas. Det är `false` som standard. Om du ställer in det på `true` måste du också lägga till `"CapAdd": ["SYS_PTRACE"]` i `HostConfig` delen av behållaren `createOptions` . Som standard laddas kraschdumpfilen upp till [RealTimePersonTracking](https://appcenter.ms/orgs/Microsoft-Organization/apps/RealTimePersonTracking/crashes/errors?version=&appBuild=&period=last90Days&status=&errorType=all&sortCol=lastError&sortDir=desc) AppCenter-appen, om du vill att krasch dum par ska överföras till din egen AppCenter-app, kan du åsidosätta miljövariabeln `RTPT_APPCENTER_APP_SECRET` med appens app Secret.
 
-Se rikt linjerna för [kamera placering](spatial-analysis-camera-placement.md)  för att lära dig mer om zon-och linje konfigurationer.
+Se rikt linjerna för [kamera placering](spatial-analysis-camera-placement.md) för att lära dig mer om zon-och linje konfigurationer.
 
 ## <a name="spatial-analysis-operation-output"></a>Utdata för spatial analys åtgärd
 
@@ -245,7 +286,7 @@ Exempel-JSON för händelse utdata i den här åtgärden.
         "height": 342,
         "frameId": "1400",
         "cameraCalibrationInfo": {
-            "status": "Complete",
+            "status": "Calibrated",
             "cameraHeight": 10.306597709655762,
             "focalLength": 385.3199462890625,
             "tiltupAngle": 1.0969393253326416
@@ -274,7 +315,11 @@ Exempel-JSON för händelse utdata i den här åtgärden.
                 "x": 0.0,
                 "y": 0.0
             },
-            "metadataType": ""
+            "metadata": {
+            "attributes": {
+                "face_Mask": 0.99
+            }
+        }
         },
         {
             "type": "person",
@@ -297,8 +342,12 @@ Exempel-JSON för händelse utdata i den här åtgärden.
                 "x": 0.0,
                 "y": 0.0
             },
-            "metadataType": ""
-        }
+            "metadata":{
+            "attributes": {
+                "face_noMask": 0.99
+            }
+            }
+    }
     ],
     "schemaVersion": "1.0"
 }
@@ -311,8 +360,6 @@ Exempel-JSON för händelse utdata i den här åtgärden.
 | `detectionsId` | matris| Matris med storlek 1 av unik identifierare för identifiering av person som utlöste händelsen|
 | `properties` | samling| Samling med värden|
 | `trackinId` | sträng| Unikt ID för den person som identifierats|
-| `status` | sträng| "Retur" eller "avsluta"|
-| `side` | int| Numret på den sida av polygonen som personen korsar|
 | `zone` | sträng | Fältet "namn" för polygonen som representerar den zon som korsades|
 | `trigger` | sträng| Utlösarens typ är event eller Interval beroende på värdet för `trigger` i SPACEANALYTICS_CONFIG|
 
@@ -324,16 +371,18 @@ Exempel-JSON för händelse utdata i den här åtgärden.
 | `type` | sträng| Typ av region|
 | `points` | samling| Övre vänstra och nedre högra punkter när region typen är REKTANGEL |
 | `confidence` | flyt| Förtroende för algoritm|
+| `face_Mask` | flyt | Värdet för attributvärde med intervall (0-1) anger att den identifierade personen har en ansikts mask |
+| `face_noMask` | flyt | Värdet för attributvärde med intervall (0-1) anger att den identifierade personen **inte** försätts i en ansikts mask |
 
 | Fält namn för SourceInfo | Typ| Description|
 |---------|---------|---------|
 | `id` | sträng| Kamera-ID|
-| `timestamp` | datum| UTC-datum när JSON-nyttolasten genererades|
+| `timestamp` | date| UTC-datum när JSON-nyttolasten genererades|
 | `width` | int | Bredd på video RAM|
 | `height` | int | Video ramens höjd|
 | `frameId` | int | Ram-ID|
 | `cameraCallibrationInfo` | samling | Samling med värden|
-| `status` | sträng | Anger om kamera kalibrering till jord planet är "fullständig"|
+| `status` | sträng | Kalibreringens status i formatet `state[;progress description]` . Status kan vara `Calibrating` `Recalibrating` (om omkalibrering är aktive rad) eller `Calibrated` . Beskrivningen av förlopps beskrivningen är endast giltig när den är i `Calibrating` och `Recalibrating` State, som används för att visa förloppet för den aktuella kalibrerings processen.|
 | `cameraHeight` | flyt | Kamerans höjd över marken i fot. Detta härleds från automatisk kalibrering. |
 | `focalLength` | flyt | Kamerans zoomnings tid i bild punkter. Detta härleds från automatisk kalibrering. |
 | `tiltUpAngle` | flyt | Kamerans lutnings vinkel från lodrätt. Detta härleds från automatisk kalibrering.|
@@ -341,7 +390,7 @@ Exempel-JSON för händelse utdata i den här åtgärden.
 | Fält namn för SourceInfo | Typ| Description|
 |---------|---------|---------|
 | `id` | sträng| Kamera-ID|
-| `timestamp` | datum| UTC-datum när JSON-nyttolasten genererades|
+| `timestamp` | date| UTC-datum när JSON-nyttolasten genererades|
 | `width` | int | Bredd på video RAM|
 | `height` | int | Video ramens höjd|
 | `frameId` | int | Ram-ID|
@@ -393,7 +442,11 @@ Exempel-JSON för identifiering av utdata för den här åtgärden.
                 ]
             },
             "confidence": 0.9005028605461121,
-            "metadataType": ""
+            "metadata": {
+            "attributes": {
+                "face_Mask": 0.99
+            }
+        }
         }
     ],
     "schemaVersion": "1.0"
@@ -417,36 +470,96 @@ Exempel-JSON för identifiering av utdata för den här åtgärden.
 | `type` | sträng| Typ av region|
 | `points` | samling| Övre vänstra och nedre högra punkter när region typen är REKTANGEL |
 | `confidence` | flyt| Förtroende för algoritm|
+| `face_Mask` | flyt | Värdet för attributvärde med intervall (0-1) anger att den identifierade personen har en ansikts mask |
+| `face_noMask` | flyt | Värdet för attributvärde med intervall (0-1) anger att den identifierade personen **inte** försätts i en ansikts mask |
 
 | Fält namn för SourceInfo | Typ| Description|
 |---------|---------|---------|
 | `id` | sträng| Kamera-ID|
-| `timestamp` | datum| UTC-datum när JSON-nyttolasten genererades|
+| `timestamp` | date| UTC-datum när JSON-nyttolasten genererades|
 | `width` | int | Bredd på video RAM|
 | `height` | int | Video ramens höjd|
 | `frameId` | int | Ram-ID|
 
 
 > [!IMPORTANT]
-> AI-modellen identifierar en person oavsett om personen är riktad mot eller bort från kameran. AI-modellen kör inte ansikts igenkänning eller igenkänning och genererar inte bio metrisk information. 
+> AI-modellen identifierar en person oavsett om personen är riktad mot eller bort från kameran. AI-modellen kör inte ansikts igenkänning och genererar inte bio metrisk information. 
 
 ### <a name="json-format-for-cognitiveservicesvisionspatialanalysis-personcrossingpolygon-ai-insights"></a>JSON-format för cognitiveservices. vision. spatialanalysis-personcrossingpolygon AI Insights
 
-Exempel-JSON för identifiering av utdata för den här åtgärden.
+Exempel-JSON för identifiering av utdata för den här åtgärden med `zonecrossing` typen SPACEANALYTICS_CONFIG.
 
 ```json
 {
     "events": [
         {
             "id": "f095d6fe8cfb4ffaa8c934882fb257a5",
-            "type": "personZoneEvent",
+            "type": "personZoneEnterExitEvent",
             "detectionIds": [
                 "afcc2e2a32a6480288e24381f9c5d00e"
             ],
             "properties": {
                 "trackingId": "afcc2e2a32a6480288e24381f9c5d00e",
                 "status": "Enter",
-                "side": ""
+                "side": "1"
+            },
+            "zone": "queuecamera"
+        }
+    ],
+    "sourceInfo": {
+        "id": "camera_id",
+        "timestamp": "2020-08-24T06:15:09.680Z",
+        "width": 608,
+        "height": 342,
+        "frameId": "428",
+        "imagePath": ""
+    },
+    "detections": [
+        {
+            "type": "person",
+            "id": "afcc2e2a32a6480288e24381f9c5d00e",
+            "region": {
+                "type": "RECTANGLE",
+                "points": [
+                    {
+                        "x": 0.8135572734631991,
+                        "y": 0.6653949670624315
+                    },
+                    {
+                        "x": 0.9937645761590255,
+                        "y": 0.9925406829655519
+                    }
+                ]
+            },
+            "confidence": 0.6267998814582825,
+        "metadata": {
+        "attributes": {
+        "face_Mask": 0.99
+        }
+        }
+           
+        }
+    ],
+    "schemaVersion": "1.0"
+}
+```
+
+Exempel-JSON för identifiering av utdata för den här åtgärden med `zonedwelltime` typen SPACEANALYTICS_CONFIG.
+
+```json
+{
+    "events": [
+        {
+            "id": "f095d6fe8cfb4ffaa8c934882fb257a5",
+            "type": "personZoneDwellTimeEvent",
+            "detectionIds": [
+                "afcc2e2a32a6480288e24381f9c5d00e"
+            ],
+            "properties": {
+                "trackingId": "afcc2e2a32a6480288e24381f9c5d00e",
+                "status": "Exit",
+                "side": "1",
+        "durationMs": 7132.0
             },
             "zone": "queuecamera"
         }
@@ -487,11 +600,13 @@ Exempel-JSON för identifiering av utdata för den här åtgärden.
 | Händelse fält namn | Typ| Description|
 |---------|---------|---------|
 | `id` | sträng| Händelse-ID|
-| `type` | sträng| Händelsetyp|
+| `type` | sträng| Händelse typ. Värdet kan vara antingen _personZoneDwellTimeEvent_ eller _personZoneEnterExitEvent_|
 | `detectionsId` | matris| Matris med storlek 1 av unik identifierare för identifiering av person som utlöste händelsen|
 | `properties` | samling| Samling med värden|
 | `trackinId` | sträng| Unikt ID för den person som identifierats|
 | `status` | sträng| Riktningen för polygon-korsningar, antingen "Enter" eller "Exit"|
+| `side` | int| Numret på den sida av polygonen som personen korsar. Varje sida är en numrerad kant mellan de två hörnen av polygonen som representerar din zon. Kanten mellan de två första hörnen i polygonen representerar första sidan|
+| `durationMs` | int | Antalet millisekunder som representerar den tid som personen har använt i zonen. Det här fältet anges när händelse typen är _personZoneDwellTimeEvent_|
 | `zone` | sträng | Fältet "namn" för polygonen som representerar den zon som korsades|
 
 | Namn på identifierings fält | Typ| Description|
@@ -502,6 +617,8 @@ Exempel-JSON för identifiering av utdata för den här åtgärden.
 | `type` | sträng| Typ av region|
 | `points` | samling| Övre vänstra och nedre högra punkter när region typen är REKTANGEL |
 | `confidence` | flyt| Förtroende för algoritm|
+| `face_Mask` | flyt | Värdet för attributvärde med intervall (0-1) anger att den identifierade personen har en ansikts mask |
+| `face_noMask` | flyt | Värdet för attributvärde med intervall (0-1) anger att den identifierade personen **inte** försätts i en ansikts mask |
 
 ### <a name="json-format-for-cognitiveservicesvisionspatialanalysis-persondistance-ai-insights"></a>JSON-format för cognitiveservices. vision. spatialanalysis-persondistance AI Insights
 
@@ -536,7 +653,7 @@ Exempel-JSON för identifiering av utdata för den här åtgärden.
         "height": 342,
         "frameId": "1199",
         "cameraCalibrationInfo": {
-            "status": "Complete",
+            "status": "Calibrated",
             "cameraHeight": 12.9940824508667,
             "focalLength": 401.2800598144531,
             "tiltupAngle": 1.057669997215271
@@ -618,17 +735,24 @@ Exempel-JSON för identifiering av utdata för den här åtgärden.
 | `type` | sträng| Typ av region|
 | `points` | samling| Övre vänstra och nedre högra punkter när region typen är REKTANGEL |
 | `confidence` | flyt| Förtroende för algoritm|
-| `centerGroundPoint` | 2 flytt ALS värden| `x`, `y` värden med koordinaterna för personens härledda plats på marken i fot. `x` avståndet från kameran vinkel rätt mot kamerans bild plan projiceras på marken i fot. `y` avståndet från kameran parallellt med bild planet projiceras på marken i fot.|
+| `centerGroundPoint` | 2 flytt ALS värden| `x`, `y` värden med koordinaterna för personens härledda plats på marken i fot. `x` och `y` är koordinater på golv planet, förutsatt att golvet är nivå. Kamerans plats är ursprunget. |
+
+När du `centerGroundPoint` beräknar `x` är avståndet från kameran till personen längs en linje vinkel rätt mot kamerans bild plan. `y` är avståndet från kameran till personen längs en linje som är parallell med kamerans bild plan. 
+
+![Exempel på mitt punkt i mitten](./media/spatial-analysis/x-y-chart.png) 
+
+I det här exemplet `centerGroundPoint` är `{x: 4, y: 5}` . Det innebär att det finns en person som är 4 meter bort från kameran och 5 meter till höger, som tittar på rummets överkant.
+
 
 | Fält namn för SourceInfo | Typ| Description|
 |---------|---------|---------|
 | `id` | sträng| Kamera-ID|
-| `timestamp` | datum| UTC-datum när JSON-nyttolasten genererades|
+| `timestamp` | date| UTC-datum när JSON-nyttolasten genererades|
 | `width` | int | Bredd på video RAM|
 | `height` | int | Video ramens höjd|
 | `frameId` | int | Ram-ID|
 | `cameraCallibrationInfo` | samling | Samling med värden|
-| `status` | sträng | Anger om kamera kalibrering till jord planet är "fullständig"|
+| `status` | sträng | Kalibreringens status i formatet `state[;progress description]` . Status kan vara `Calibrating` `Recalibrating` (om omkalibrering är aktive rad) eller `Calibrated` . Beskrivningen av förlopps beskrivningen är endast giltig när den är i `Calibrating` och `Recalibrating` State, som används för att visa förloppet för den aktuella kalibrerings processen.|
 | `cameraHeight` | flyt | Kamerans höjd över marken i fot. Detta härleds från automatisk kalibrering. |
 | `focalLength` | flyt | Kamerans zoomnings tid i bild punkter. Detta härleds från automatisk kalibrering. |
 | `tiltUpAngle` | flyt | Kamerans lutnings vinkel från lodrätt. Detta härleds från automatisk kalibrering.|
@@ -644,84 +768,190 @@ Du kanske vill integrera identifiering eller händelser för rums analys i ditt 
 
 ## <a name="deploying-spatial-analysis-operations-at-scale-multiple-cameras"></a>Distribuera åtgärder för rums analys i skala (flera kameror)
 
-För att få bästa möjliga prestanda och användning av GPU: er kan du distribuera alla avstånds analys åtgärder på flera kameror med diagram instanser. Nedan visas ett exempel på hur du kör `cognitiveservices.vision.spatialanalysis-personcount` åtgärden på fem kameror.
+För att få bästa möjliga prestanda och användning av GPU: er kan du distribuera alla avstånds analys åtgärder på flera kameror med diagram instanser. Nedan visas ett exempel på hur du kör `cognitiveservices.vision.spatialanalysis-personcrossingline` åtgärden på femton kameror.
 
 ```json
- "properties.desired": {
+  "properties.desired": {
       "globalSettings": {
           "PlatformTelemetryEnabled": false,
           "CustomerTelemetryEnabled": true
       },
       "graphs": {
-          "personcount": {
-              "operationId": "cognitiveservices.vision.spatialanalysis-personcount",
-              "version": 1,
-              "enabled": true,
-              "sharedNodes": {
-                  "shared_detector1": {
-                      "node": "PersonCountGraph.detector",
-                      "parameters": {
-                          "DETECTOR_NODE_CONFIG": "{ \"gpu_index\": 0, \"batch_size\": 5}",
-                      }
-                  }
-              },
-              "parameters": {
-                  "VIDEO_DECODE_GPU_INDEX": 0,
-                  "VIDEO_IS_LIVE": true
-              },
-              "instances": {
-                  "1": {
-                      "sharedNodeMap": {
-                          "PersonCountGraph/detector": "shared_detector1"
-                      },
-                      "parameters": {
-                          "VIDEO_URL": "<Replace RTSP URL for camera 1>",
-                          "VIDEO_SOURCE_ID": "camera 1",
-                          "SPACEANALYTICS_CONFIG": "{\"zones\":[{\"name\":\"zone5\",\"polygon\":[[0,0],[1,0],[0,1],[1,1],[0,0]],\"threshold\":50.0, \"events\":[{\"type\":\"count\", \"output_frequency\": 1}]}]}"
-                      }
-                  },
-                  "2": {
-                      "sharedNodeMap": {
-                          "PersonCountGraph/detector": "shared_detector1"
-                      },
-                      "parameters": {
-                          "VIDEO_URL": "<Replace RTSP URL for camera 2>",
-                          "VIDEO_SOURCE_ID": "camera 2",
-                          "SPACEANALYTICS_CONFIG": "<Replace the zone config value, same format as above>"
-                      }
-                  },
-                  "3": {
-                      "sharedNodeMap": {
-                          "PersonCountGraph/detector": "shared_detector1"
-                      },
-                      "parameters": {
-                          "VIDEO_URL": "<Replace RTSP URL for camera 3>",
-                          "VIDEO_SOURCE_ID": "camera 3",
-                          "SPACEANALYTICS_CONFIG": "<Replace the zone config value, same format as above>"
-                      }
-                  },
-                  "4": {
-                      "sharedNodeMap": {
-                          "PersonCountGraph/detector": "shared_detector1"
-                      },
-                      "parameters": {
-                          "VIDEO_URL": "<Replace RTSP URL for camera 4>",
-                          "VIDEO_SOURCE_ID": "camera 4",
-                          "SPACEANALYTICS_CONFIG": "<Replace the zone config value, same format as above>"
-                      }
-                  },
-                  "5": {
-                      "sharedNodeMap": {
-                          "PersonCountGraph/detector": "shared_detector1"
-                      },
-                      "parameters": {
-                          "VIDEO_URL": "<Replace RTSP URL for camera 5>",
-                          "VIDEO_SOURCE_ID": "camera 5",
-                          "SPACEANALYTICS_CONFIG": "<Replace the zone config value, same format as above>"
-                      }
-                  }
-              }
+        "personzonelinecrossing": {
+        "operationId": "cognitiveservices.vision.spatialanalysis-personcrossingline",
+        "version": 1,
+        "enabled": true,
+        "sharedNodes": {
+            "shared_detector0": {
+                "node": "PersonCrossingLineGraph.detector",
+                "parameters": {
+                    "DETECTOR_NODE_CONFIG": "{ \"gpu_index\": 0, \"batch_size\": 7, \"do_calibration\": true}",
+                }
+            },
+            "shared_detector1": {
+                "node": "PersonCrossingLineGraph.detector",
+                "parameters": {
+                    "DETECTOR_NODE_CONFIG": "{ \"gpu_index\": 0, \"batch_size\": 8, \"do_calibration\": true}",
+                }
+            }
+        },
+        "parameters": {
+            "VIDEO_DECODE_GPU_INDEX": 0,
+            "VIDEO_IS_LIVE": true
+        },
+        "instances": {
+            "1": {
+                "sharedNodeMap": {
+                    "PersonCrossingLineGraph/detector": "shared_detector0",
+                },
+                "parameters": {
+                    "VIDEO_URL": "<Replace RTSP URL for camera 1>",
+                    "VIDEO_SOURCE_ID": "camera 1",
+                    "SPACEANALYTICS_CONFIG": "{\"zones\":[{\"name\":\"queue\",\"polygon\":[[0,0],[1,0],[0,1],[1,1],[0,0]]}]}"
+                }
+            },
+            "2": {
+                "sharedNodeMap": {
+                    "PersonCrossingLineGraph/detector": "shared_detector0",
+                },
+                "parameters": {
+                    "VIDEO_URL": "<Replace RTSP URL for camera 2>",
+                    "VIDEO_SOURCE_ID": "camera 2",
+                    "SPACEANALYTICS_CONFIG": "<Replace the zone config value, same format as above>"
+                }
+            },
+            "3": {
+                "sharedNodeMap": {
+                    "PersonCrossingLineGraph/detector": "shared_detector0",
+                },
+                "parameters": {
+                    "VIDEO_URL": "<Replace RTSP URL for camera 3>",
+                    "VIDEO_SOURCE_ID": "camera 3",
+                    "SPACEANALYTICS_CONFIG": "<Replace the zone config value, same format as above>"
+                }
+            },
+            "4": {
+                "sharedNodeMap": {
+                    "PersonCrossingLineGraph/detector": "shared_detector0",
+                },
+                "parameters": {
+                    "VIDEO_URL": "<Replace RTSP URL for camera 4>",
+                    "VIDEO_SOURCE_ID": "camera 4",
+                    "SPACEANALYTICS_CONFIG": "<Replace the zone config value, same format as above>"
+                }
+            },
+            "5": {
+                "sharedNodeMap": {
+                    "PersonCrossingLineGraph/detector": "shared_detector0",
+                },
+                "parameters": {
+                    "VIDEO_URL": "<Replace RTSP URL for camera 5>",
+                    "VIDEO_SOURCE_ID": "camera 5",
+                    "SPACEANALYTICS_CONFIG": "<Replace the zone config value, same format as above>"
+                }
+            },
+            "6": {
+                "sharedNodeMap": {
+                    "PersonCrossingLineGraph/detector": "shared_detector0",
+                },
+                "parameters": {
+                    "VIDEO_URL": "<Replace RTSP URL for camera 6>",
+                    "VIDEO_SOURCE_ID": "camera 6",
+                    "SPACEANALYTICS_CONFIG": "<Replace the zone config value, same format as above>"
+                }
+            },
+            "7": {
+                "sharedNodeMap": {
+                    "PersonCrossingLineGraph/detector": "shared_detector0",
+                },
+                "parameters": {
+                    "VIDEO_URL": "<Replace RTSP URL for camera 7>",
+                    "VIDEO_SOURCE_ID": "camera 7",
+                    "SPACEANALYTICS_CONFIG": "<Replace the zone config value, same format as above>"
+                }
+            },
+            "8": {
+                "sharedNodeMap": {
+                    "PersonCrossingLineGraph/detector": "shared_detector1",
+                },
+                "parameters": {
+                    "VIDEO_URL": "<Replace RTSP URL for camera 8>",
+                    "VIDEO_SOURCE_ID": "camera 8",
+                    "SPACEANALYTICS_CONFIG": "<Replace the zone config value, same format as above>"
+                }
+            },
+            "9": {
+                "sharedNodeMap": {
+                    "PersonCrossingLineGraph/detector": "shared_detector1",
+                },
+                "parameters": {
+                    "VIDEO_URL": "<Replace RTSP URL for camera 9>",
+                    "VIDEO_SOURCE_ID": "camera 9",
+                    "SPACEANALYTICS_CONFIG": "<Replace the zone config value, same format as above>"
+                }
+            },
+            "10": {
+                "sharedNodeMap": {
+                    "PersonCrossingLineGraph/detector": "shared_detector1",
+                },
+                "parameters": {
+                    "VIDEO_URL": "<Replace RTSP URL for camera 10>",
+                    "VIDEO_SOURCE_ID": "camera 10",
+                    "SPACEANALYTICS_CONFIG": "<Replace the zone config value, same format as above>"
+                }
+            },
+            "11": {
+                "sharedNodeMap": {
+                    "PersonCrossingLineGraph/detector": "shared_detector1",
+                },
+                "parameters": {
+                    "VIDEO_URL": "<Replace RTSP URL for camera 11>",
+                    "VIDEO_SOURCE_ID": "camera 11",
+                    "SPACEANALYTICS_CONFIG": "<Replace the zone config value, same format as above>"
+                }
+            },
+            "12": {
+                "sharedNodeMap": {
+                    "PersonCrossingLineGraph/detector": "shared_detector1",
+                },
+                "parameters": {
+                    "VIDEO_URL": "<Replace RTSP URL for camera 12>",
+                    "VIDEO_SOURCE_ID": "camera 12",
+                    "SPACEANALYTICS_CONFIG": "<Replace the zone config value, same format as above>"
+                }
+            },
+            "13": {
+                "sharedNodeMap": {
+                    "PersonCrossingLineGraph/detector": "shared_detector1",
+                },
+                "parameters": {
+                    "VIDEO_URL": "<Replace RTSP URL for camera 13>",
+                    "VIDEO_SOURCE_ID": "camera 13",
+                    "SPACEANALYTICS_CONFIG": "<Replace the zone config value, same format as above>"
+                }
+            },
+            "14": {
+                "sharedNodeMap": {
+                    "PersonCrossingLineGraph/detector": "shared_detector1",
+                },
+                "parameters": {
+                    "VIDEO_URL": "<Replace RTSP URL for camera 14>",
+                    "VIDEO_SOURCE_ID": "camera 14",
+                    "SPACEANALYTICS_CONFIG": "<Replace the zone config value, same format as above>"
+                }
+            },
+            "15": {
+                "sharedNodeMap": {
+                    "PersonCrossingLineGraph/detector": "shared_detector1",
+                },
+                "parameters": {
+                    "VIDEO_URL": "<Replace RTSP URL for camera 15>",
+                    "VIDEO_SOURCE_ID": "camera 15",
+                    "SPACEANALYTICS_CONFIG": "<Replace the zone config value, same format as above>"
+                }
+            }
           }
+        },
       }
   }
   ```

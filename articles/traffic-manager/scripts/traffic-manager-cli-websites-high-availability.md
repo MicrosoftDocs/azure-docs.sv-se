@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: traffic-manager
 ms.date: 04/26/2018
 ms.author: duau
-ms.openlocfilehash: 86151efdc6d2b17c9eef722f2dc3c6306d5aa1b8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: abac2e5b1fcba65db92edd2bcc2f390ec0114f59
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89400236"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185360"
 ---
 # <a name="route-traffic-for-high-availability-of-applications-using-azure-cli"></a>Dirigera trafik för hög tillgänglighet för program med hjälp av Azure CLI
 
@@ -47,16 +47,16 @@ az group delete --name myResourceGroup2 --yes
 
 I det här skriptet används följande kommandon för att skapa en resursgrupp, en webbapp, en Traffic Manager-profil och alla relaterade resurser. Varje kommando i tabellen länkar till kommandospecifik dokumentation.
 
-| Kommando | Obs! |
+| Kommando | Kommentarer |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group) | Skapar en resursgrupp där alla resurser lagras. |
-| [az appservice plan create](https://docs.microsoft.com/cli/azure/appservice/plan) | Skapar en App Service-plan. Detta är som en Server grupp för din Azure-webbapp. |
-| [AZ webapp Web Create](https://docs.microsoft.com/cli/azure/webapp#az-webapp-create) | Skapar en Azure-webbapp i App Service plan. |
-| [AZ Network Traffic-Manager profil Create](https://docs.microsoft.com/cli/azure/network/traffic-manager/profile) | Skapar en Azure Traffic Manager-profil. |
-| [AZ Network Traffic-Manager Endpoint Create](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint) | Lägger till en slutpunkt i en Azure Traffic Manager-profil. |
+| [az group create](/cli/azure/group) | Skapar en resursgrupp där alla resurser lagras. |
+| [az appservice plan create](/cli/azure/appservice/plan) | Skapar en App Service-plan. Detta är som en Server grupp för din Azure-webbapp. |
+| [AZ webapp Web Create](/cli/azure/webapp#az-webapp-create) | Skapar en Azure-webbapp i App Service plan. |
+| [AZ Network Traffic-Manager profil Create](/cli/azure/network/traffic-manager/profile) | Skapar en Azure Traffic Manager-profil. |
+| [AZ Network Traffic-Manager Endpoint Create](/cli/azure/network/traffic-manager/endpoint) | Lägger till en slutpunkt i en Azure Traffic Manager-profil. |
 
 ## <a name="next-steps"></a>Nästa steg
 
-Mer information om Azure CLI finns i [Azure CLI-dokumentationen](https://docs.microsoft.com/cli/azure).
+Mer information om Azure CLI finns i [Azure CLI-dokumentationen](/cli/azure).
 
 Ytterligare App Service CLI-skript exempel finns i dokumentationen för [Azure-nätverk](../cli-samples.md).

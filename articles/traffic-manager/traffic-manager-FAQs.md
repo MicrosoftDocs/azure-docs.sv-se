@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: duau
-ms.openlocfilehash: 86758c355566fb67ebd8a606068e2044e0b8bd64
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 17ccfeb709c530a868a75ecd87052618aaea4846
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89400185"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184585"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Vanliga frågor och svar om Traffic Manager
 
@@ -96,7 +96,7 @@ Den största skillnaden mellan dessa två populära routningsmetoder är att i m
 
 ### <a name="what-are-the-regions-that-are-supported-by-traffic-manager-for-geographic-routing"></a>Vilka regioner stöds av Traffic Manager för geografisk routning?
 
-Hierarkin för land/region som används av Traffic Manager hittar du [här](traffic-manager-geographic-regions.md). Medan den här sidan hålls uppdaterad med eventuella ändringar kan du också hämta samma information via programmering med hjälp av [Azure Traffic Manager REST API](https://docs.microsoft.com/rest/api/trafficmanager/). 
+Hierarkin för land/region som används av Traffic Manager hittar du [här](traffic-manager-geographic-regions.md). Medan den här sidan hålls uppdaterad med eventuella ändringar kan du också hämta samma information via programmering med hjälp av [Azure Traffic Manager REST API](/rest/api/trafficmanager/). 
 
 ### <a name="how-does-traffic-manager-determine-where-a-user-is-querying-from"></a>Hur avgör Traffic Manager var en användare frågar från?
 
@@ -116,11 +116,11 @@ Nej, platsen för slut punkten tillämpar inga begränsningar för vilka regione
 
 ### <a name="can-i-assign-geographic-regions-to-endpoints-in-a-profile-that-is-not-configured-to-do-geographic-routing"></a>Kan jag tilldela geografiska regioner till slut punkter i en profil som inte har kon figurer ATS för att göra geografisk routning?
 
-Ja, om Dirigerings metoden för en profil inte är geografisk, kan du använda [Azure Traffic Manager-REST API](https://docs.microsoft.com/rest/api/trafficmanager/) för att tilldela geografiska regioner till slut punkter i profilen. Om det gäller profiler som inte är geografiska, ignoreras den här konfigurationen. Om du ändrar en sådan profil till geografisk typ av routning vid ett senare tillfälle kan Traffic Manager använda dessa mappningar.
+Ja, om Dirigerings metoden för en profil inte är geografisk, kan du använda [Azure Traffic Manager-REST API](/rest/api/trafficmanager/) för att tilldela geografiska regioner till slut punkter i profilen. Om det gäller profiler som inte är geografiska, ignoreras den här konfigurationen. Om du ändrar en sådan profil till geografisk typ av routning vid ett senare tillfälle kan Traffic Manager använda dessa mappningar.
 
 ### <a name="why-am-i-getting-an-error-when-i-try-to-change-the-routing-method-of-an-existing-profile-to-geographic"></a>Varför får jag ett fel när jag försöker ändra routningsmetod för en befintlig profil till geografisk?
 
-Alla slut punkter under en profil med geografisk routning måste ha minst en region mappad. Om du vill konvertera en befintlig profil till geografisk typ av routning måste du först associera geografiska regioner med alla dess slut punkter med [Azure Traffic Manager REST API](https://docs.microsoft.com/rest/api/trafficmanager/) innan du ändrar routningsmetod till geografisk. Om du använder portalen måste du först ta bort slut punkterna, ändra Dirigerings metoden för profilen till geografisk och sedan lägga till slut punkterna tillsammans med deras geografiska områdes mappning.
+Alla slut punkter under en profil med geografisk routning måste ha minst en region mappad. Om du vill konvertera en befintlig profil till geografisk typ av routning måste du först associera geografiska regioner med alla dess slut punkter med [Azure Traffic Manager REST API](/rest/api/trafficmanager/) innan du ändrar routningsmetod till geografisk. Om du använder portalen måste du först ta bort slut punkterna, ändra Dirigerings metoden för profilen till geografisk och sedan lägga till slut punkterna tillsammans med deras geografiska områdes mappning.
 
 ### <a name="why-is-it-strongly-recommended-that-customers-create-nested-profiles-instead-of-endpoints-under-a-profile-with-geographic-routing-enabled"></a>Varför rekommenderas det starkt att kunder skapar kapslade profiler i stället för slut punkter under en profil med geografisk routning aktive rad?
 
@@ -306,7 +306,7 @@ Trafikvy prissättning baseras på antalet data punkter som används för att sk
 
 Det går inte att använda slut punkter från flera prenumerationer med Azure Web Apps. Azure Web Apps kräver att alla anpassade domän namn som används med Web Apps bara används i en enda prenumeration. Det går inte att använda Web Apps från flera prenumerationer med samma domän namn.
 
-För andra slut punkts typer är det möjligt att använda Traffic Manager med slut punkter från fler än en prenumeration. I Resource Manager kan du lägga till slut punkter från vilken prenumeration som helst i Traffic Manager, så länge som den person som konfigurerar Traffic Managers profilen har Läs behörighet till slut punkten. Dessa behörigheter kan beviljas med hjälp av [rollbaserad åtkomst kontroll i Azure (Azure RBAC)](../role-based-access-control/role-assignments-portal.md). Slut punkter från andra prenumerationer kan läggas till med [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.trafficmanager/new-aztrafficmanagerendpoint) eller [Azure CLI](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-create).
+För andra slut punkts typer är det möjligt att använda Traffic Manager med slut punkter från fler än en prenumeration. I Resource Manager kan du lägga till slut punkter från vilken prenumeration som helst i Traffic Manager, så länge som den person som konfigurerar Traffic Managers profilen har Läs behörighet till slut punkten. Dessa behörigheter kan beviljas med hjälp av [rollbaserad åtkomst kontroll i Azure (Azure RBAC)](../role-based-access-control/role-assignments-portal.md). Slut punkter från andra prenumerationer kan läggas till med [Azure PowerShell](/powershell/module/az.trafficmanager/new-aztrafficmanagerendpoint) eller [Azure CLI](/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-create).
 
 ### <a name="can-i-use-traffic-manager-with-cloud-service-staging-slots"></a>Kan jag använda Traffic Manager med moln tjänstens mellanlagrings platser?
 
@@ -345,9 +345,9 @@ Azure Resource Manager kräver att alla resurs grupper anger en plats, vilket av
 
 ### <a name="how-do-i-determine-the-current-health-of-each-endpoint"></a>Hur gör jag för att avgöra den aktuella hälsan för varje slut punkt?
 
-Den aktuella övervaknings statusen för varje slut punkt, utöver den övergripande profilen, visas i Azure Portal. Den här informationen är också tillgänglig via trafik övervaknings [REST API](https://msdn.microsoft.com/library/azure/mt163667.aspx), [PowerShell-cmdletar](https://docs.microsoft.com/powershell/module/az.trafficmanager)och plattforms [oberoende Azure CLI](../cli-install-nodejs.md).
+Den aktuella övervaknings statusen för varje slut punkt, utöver den övergripande profilen, visas i Azure Portal. Den här informationen är också tillgänglig via trafik övervaknings [REST API](/rest/api/trafficmanager/), [PowerShell-cmdletar](/powershell/module/az.trafficmanager)och plattforms [oberoende Azure CLI](/cli/azure/install-classic-cli).
 
-Du kan också använda Azure Monitor för att spåra hälso tillståndet för dina slut punkter och se en visuell representation av dem. Mer information om hur du använder Azure Monitor finns i [dokumentationen för Azure-övervakning](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics).
+Du kan också använda Azure Monitor för att spåra hälso tillståndet för dina slut punkter och se en visuell representation av dem. Mer information om hur du använder Azure Monitor finns i [dokumentationen för Azure-övervakning](../azure-monitor/platform/data-platform.md).
 
 ### <a name="can-i-monitor-https-endpoints"></a>Kan jag övervaka HTTPS-slutpunkter?
 
@@ -458,7 +458,7 @@ Antalet Traffic Manager hälso kontroller som når slut punkten beror på följa
 
 ### <a name="how-can-i-get-notified-if-one-of-my-endpoints-goes-down"></a>Hur kan jag få ett meddelande om en av mina slut punkter upphör?
 
-Ett av måtten som tillhandahålls av Traffic Manager är hälso status för slut punkter i en profil. Du kan se detta som en mängd av alla slut punkter i en profil (till exempel 75% av dina slut punkter är felfria) eller, på en nivå per slut punkt. Traffic Manager Mät värden exponeras genom Azure Monitor och du kan använda [aviserings funktionerna](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md) för att få meddelanden när slut punktens hälso status ändras. Mer information finns i [Traffic Manager mått och aviseringar](traffic-manager-metrics-alerts.md).  
+Ett av måtten som tillhandahålls av Traffic Manager är hälso status för slut punkter i en profil. Du kan se detta som en mängd av alla slut punkter i en profil (till exempel 75% av dina slut punkter är felfria) eller, på en nivå per slut punkt. Traffic Manager Mät värden exponeras genom Azure Monitor och du kan använda [aviserings funktionerna](../azure-monitor/platform/alerts-metric.md) för att få meddelanden när slut punktens hälso status ändras. Mer information finns i [Traffic Manager mått och aviseringar](traffic-manager-metrics-alerts.md).  
 
 ## <a name="traffic-manager-nested-profiles"></a>Traffic Manager kapslade profiler
 
@@ -497,7 +497,7 @@ Den överordnade profilen utför inte hälso kontroller på den underordnade dir
 
 I följande tabell beskrivs beteendet för Traffic Manager hälso kontroller för en kapslad slut punkt.
 
-| Status för Övervakare för underordnad profil | Status för övervakaren för överordnad slut punkt | Obs! |
+| Status för Övervakare för underordnad profil | Status för övervakaren för överordnad slut punkt | Kommentarer |
 | --- | --- | --- |
 | Inaktiverat Den underordnade profilen har inaktiverats. |Stoppad |Status för överordnad slut punkt har stoppats, inte inaktiverats. Inaktiverat tillstånd är reserverat för att indikera att du har inaktiverat slut punkten i den överordnade profilen. |
 | Försämrad. Minst en underordnad profil slut punkt är i ett degraderat tillstånd. |Online: antalet Online-slutpunkter i den underordnade profilen är minst värdet för MinChildEndpoints.<BR>CheckingEndpoint: antalet online-och CheckingEndpoint-slutpunkter i den underordnade profilen är minst värdet för MinChildEndpoints.<BR>Degraderad: annars. |Trafiken dirigeras till en slut punkt med status CheckingEndpoint. Om MinChildEndpoints har angetts för hög försämras slut punkten alltid. |

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/27/2016
 ms.author: duau
-ms.openlocfilehash: 431eaff9da95063648d3e80acb54be9cc5c25bc5
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: eaf50f3bdacaf5680bc5ecb1379faff20133b5ce
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96021698"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184381"
 ---
 # <a name="using-load-balancing-services-in-azure"></a>Använda belastningsutjämningstjänster i Azure
 
@@ -92,11 +92,11 @@ Följande diagram visar arkitekturen för det här scenariot:
 4. Definiera det virtuella nätverket, under nätet, klient delens IP-adress och Listener-konfigurationer för Application Gateway. I det här scenariot är klient delens IP-adress **offentlig**, vilket gör att den kan läggas till som en slut punkt till Traffic Manager profilen senare.
 5. Konfigurera lyssnaren med något av följande alternativ:
     * Om du använder HTTP finns det inget att konfigurera. Klicka på **OK**.
-    * Om du använder HTTPS krävs ytterligare konfiguration. Se [skapa en Programgateway](../application-gateway/application-gateway-create-gateway-portal.md)från och med steg 9. När du har slutfört konfigurationen klickar du på **OK**.
+    * Om du använder HTTPS krävs ytterligare konfiguration. Se [skapa en Programgateway](../application-gateway/quick-create-portal.md)från och med steg 9. När du har slutfört konfigurationen klickar du på **OK**.
 
 #### <a name="configure-url-routing-for-application-gateways"></a>Konfigurera URL-routning för programgatewayer
 
-När du väljer en backend-pool, tar en Programgateway som kon figurer ATS med en Sök vägs-baserad regel över ett Sök vägs mönster för URL: en för begäran förutom resursallokering-distribution. I det här scenariot lägger vi till en Sök vägs baserad regel för att dirigera en URL med "/images/ \* " till avbildnings serverns pool. Mer information om hur du konfigurerar URL Path-baserad routning för en Programgateway finns i [skapa en Sök vägs baserad regel för en Programgateway](../application-gateway/application-gateway-create-url-route-portal.md).
+När du väljer en backend-pool, tar en Programgateway som kon figurer ATS med en Sök vägs-baserad regel över ett Sök vägs mönster för URL: en för begäran förutom resursallokering-distribution. I det här scenariot lägger vi till en Sök vägs baserad regel för att dirigera en URL med "/images/ \* " till avbildnings serverns pool. Mer information om hur du konfigurerar URL Path-baserad routning för en Programgateway finns i [skapa en Sök vägs baserad regel för en Programgateway](../application-gateway/create-url-route-portal.md).
 
 ![Application Gateway webb nivå diagram](./media/traffic-manager-load-balancing-azure/web-tier-diagram.png)
 
@@ -156,7 +156,7 @@ I det här scenariot distribuerar Load Balancer anslutningar från webb nivån t
 
 Om databas klustret med hög tillgänglighet använder SQL Server AlwaysOn, se [Konfigurera en eller flera Always on tillgänglighets grupps lyssnare](../azure-sql/virtual-machines/windows/availability-group-listener-powershell-configure.md) för steg-för-steg-instruktioner.
 
-Mer information om hur du konfigurerar en intern belastningsutjämnare finns [i skapa en intern belastningsutjämnare i Azure Portal](../load-balancer/load-balancer-get-started-ilb-arm-portal.md).
+Mer information om hur du konfigurerar en intern belastningsutjämnare finns [i skapa en intern belastningsutjämnare i Azure Portal](../load-balancer/quickstart-load-balancer-standard-internal-portal.md).
 
 1. I Azure Portal i det vänstra fönstret klickar du på **skapa en resurs**  >  **nätverks**  >  **belastnings utjämning**.
 2. Välj ett namn för belastningsutjämnaren.
@@ -210,5 +210,5 @@ Nu konfigurerar vi IP-adressen och belastnings Utjämnings klientens frontend-po
 ## <a name="next-steps"></a>Nästa steg
 
 * [Översikt över Traffic Manager](traffic-manager-overview.md)
-* [Översikt över Application Gateway](../application-gateway/application-gateway-introduction.md)
+* [Översikt över Application Gateway](../application-gateway/overview.md)
 * [Översikt över Azure Load Balancer](../load-balancer/load-balancer-overview.md)

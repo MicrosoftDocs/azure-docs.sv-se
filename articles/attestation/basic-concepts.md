@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 8ae5bcf103bbb2d2b952fa647ba591e49002f2ff
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 51c22346ee89150194fb1dc83752e2ba2a2e0cf0
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96921625"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185452"
 ---
 # <a name="basic-concepts"></a>Grundläggande begrepp
 
@@ -38,11 +38,16 @@ Azure-attestering tillhandahåller en standardprovider i varje region. Kunder ka
 
 | Region | Attesterings-URI | 
 |--|--|
+| East US | `https://sharedeus.eus.attest.azure.net` | 
+| USA, västra | `https://sharedwus.wus.attest.azure.net` | 
 | Storbritannien, södra | `https://shareduks.uks.attest.azure.net` | 
+| Storbritannien, västra| `https://sharedukw.ukw.attest.azure.net  ` | 
+| Kanada, östra | `https://sharedcae.cae.attest.azure.net` | 
+| Kanada, centrala | `https://sharedcac.cac.attest.azure.net` | 
+| Europa, norra | `https://sharedneu.neu.attest.azure.net` | 
+| Europa, västra| `https://sharedweu.weu.attest.azure.net` | 
 | USA, östra 2 | `https://sharedeus2.eus2.attest.azure.net` | 
 | Central US | `https://sharedcus.cus.attest.azure.net` | 
-| East US| `https://sharedeus.eus.attest.azure.net` | 
-| Kanada, centrala | `https://sharedcac.cac.attest.azure.net` | 
 
 ## <a name="attestation-request"></a>Begäran om attestering
 

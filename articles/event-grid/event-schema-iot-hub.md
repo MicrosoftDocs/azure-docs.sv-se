@@ -2,13 +2,13 @@
 title: Azure IoT Hub som Event Grid källa
 description: Den här artikeln innehåller egenskaper och schema för Azure IoT Hub-händelser. Den innehåller en lista över tillgängliga händelse typer, exempel händelser och händelse egenskaper.
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: 02ecf8d4df55aa6b4319e40892778f85f94e29a7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 01/13/2021
+ms.openlocfilehash: 7e1c480bd2a662a2ee3418b35dc9c3b50d412a60
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86113657"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185843"
 ---
 # <a name="azure-iot-hub-as-an-event-grid-source"></a>Azure IoT Hub som en Event Grid källa
 Den här artikeln innehåller egenskaper och schema för Azure IoT Hub-händelser. En introduktion till händelse scheman finns i [Azure Event Grid händelse schema](event-schema.md). 
@@ -26,8 +26,6 @@ Azure IoT Hub avger följande händelse typer:
 | Microsoft.Devices.DeviceConnected | Publicerad när en enhet är ansluten till en IoT-hubb. |
 | Microsoft.Devices.DeviceDisconnected | Publicerad när en enhet kopplas från en IoT-hubb. | 
 | Microsoft.Devices.DeviceTelemetry | Publicerad när ett telemetri skickas till en IoT-hubb. |
-
-Alla enhets händelser utom Device telemetri-händelser är allmänt tillgängliga i alla regioner som stöds av Event Grid. Händelsen enhets telemetri är i offentlig för hands version och är tillgänglig i alla regioner utom USA, västra USA, västra Europa, [Azure Government](../azure-government/documentation-government-welcome.md), [Azure Kina 21Vianet](/azure/china/china-welcome)och [Azure Germany](https://azure.microsoft.com/global-infrastructure/germany/).
 
 ### <a name="example-event"></a>Exempel händelse
 
@@ -140,7 +138,7 @@ Schemat för DeviceCreated-och DeviceDeleted-händelser har samma struktur. Den 
 
 Alla händelser innehåller samma data på översta nivån: 
 
-| Egenskap | Typ | Beskrivning |
+| Egenskap | Typ | Description |
 | -------- | ---- | ----------- |
 | id | sträng | Unikt ID för händelsen. |
 | ämne | sträng | Fullständig resurs Sök väg till händelse källan. Det går inte att skriva till det här fältet. Event Grid ger det här värdet. |
@@ -153,7 +151,7 @@ Alla händelser innehåller samma data på översta nivån:
 
 Data-objektet innehåller följande egenskaper för alla IoT Hub-händelser:
 
-| Egenskap | Typ | Beskrivning |
+| Egenskap | Typ | Description |
 | -------- | ---- | ----------- |
 | hubName | sträng | Namnet på den IoT Hub där enheten skapades eller togs bort. |
 | deviceId | sträng | Enhetens unika identifierare. Den här Skift läges känsliga strängen kan vara upp till 128 tecken lång och har stöd för ASCII 7-bitars alfanumeriska tecken plus följande specialtecken: `- : . + % _ # * ? ! ( ) , = @ ; $ '` . |
@@ -162,7 +160,7 @@ Innehållet i data-objektet skiljer sig åt för varje händelse utgivare.
 
 Om **enheten är ansluten** och **enheten frånkopplade** IoT Hub händelser, innehåller dataobjektet följande egenskaper:
 
-| Egenskap | Typ | Beskrivning |
+| Egenskap | Typ | Description |
 | -------- | ---- | ----------- |
 | moduleId | sträng | Den unika identifieraren för modulen. Det här fältet är endast utdata för modul enheter. Den här Skift läges känsliga strängen kan vara upp till 128 tecken lång och har stöd för ASCII 7-bitars alfanumeriska tecken plus följande specialtecken: `- : . + % _ # * ? ! ( ) , = @ ; $ '` . |
 | deviceConnectionStateEventInfo | objekt | Händelse information för status för enhets anslutning
@@ -170,7 +168,7 @@ Om **enheten är ansluten** och **enheten frånkopplade** IoT Hub händelser, in
 
 För **telemetri** IoT Hub händelse innehåller dataobjektet enhets-till-moln-meddelandet i [IoT Hub-meddelande formatet](../iot-hub/iot-hub-devguide-messages-construct.md) och har följande egenskaper:
 
-| Egenskap | Typ | Beskrivning |
+| Egenskap | Typ | Description |
 | -------- | ---- | ----------- |
 | body | sträng | Innehållet i meddelandet från enheten. |
 | properties | sträng | Program egenskaperna är användardefinierade strängar som kan läggas till i meddelandet. Dessa fält är valfria. |
@@ -178,7 +176,7 @@ För **telemetri** IoT Hub händelse innehåller dataobjektet enhets-till-moln-m
 
 För att enheten ska kunna **skapas** och **enheten tas bort** IoT Hub händelser, innehåller dataobjektet följande egenskaper:
 
-| Egenskap | Typ | Beskrivning |
+| Egenskap | Typ | Description |
 | -------- | ---- | ----------- |
 | Noble | objekt | Information om enheten, som är moln representation av metadata för program enheten. | 
 | deviceID | sträng | Enhetens unika identifierare. | 

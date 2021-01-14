@@ -7,12 +7,13 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: a8b2fdf99b33df3322748b7e073cc4ab18957c84
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.custom: contperf-fy21q3
+ms.openlocfilehash: 00e6802f37ec60467edbea98038dd23fcba1239a
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98045248"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185503"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Hantera Azure Digitals dubbla modeller
 
@@ -20,7 +21,7 @@ Du kan hantera de [modeller](concepts-models.md) som Azure Digitals-instansen ä
 
 Hanterings åtgärder omfattar överföring, validering, hämtning och borttagning av modeller. 
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 [!INCLUDE [digital-twins-prereq-instance.md](../../includes/digital-twins-prereq-instance.md)]
 
@@ -52,9 +53,6 @@ Efter den här metoden kan du gå vidare till för att definiera modeller för s
 ## <a name="upload-models"></a>Ladda upp modeller
 
 När modeller har skapats kan du ladda upp dem till Azure Digitals-instansen.
-
-> [!TIP]
-> Vi rekommenderar att du validerar dina modeller offline innan du laddar upp dem till din Azure Digital-instansen. Du kan använda [DTDL för klient sidans parser](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/) och [DTDL](/samples/azure-samples/dtdl-validator/dtdl-validator) som beskrivs i [*instruktionen att parsa och validera modeller*](how-to-parse-models.md) för att kontrol lera dina modeller innan du överför dem till tjänsten.
 
 När du är redo att ladda upp en modell kan du använda följande kodfragment:
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/16/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 2418a8813e7b9de603b7e7cdc11fc756d73ac2a4
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 2a1455c5956297a19d640146879f93b61d035139
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350763"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185911"
 ---
 # <a name="access-control-lists-acls-in-azure-data-lake-storage-gen2"></a>Åtkomst kontrol listor (ACL: er) i Azure Data Lake Storage Gen2
 
@@ -34,7 +34,7 @@ Om du vill ange behörigheter för fil-och katalog nivå kan du läsa följande 
 
 | Miljö | Artikel |
 |--------|-----------|
-|Azure Lagringsutforskaren |[Använda Azure Storage Explorer till att hantera kataloger, filer och åtkomstkontrollistor i Azure Data Lake Storage Gen2](data-lake-storage-explorer.md#managing-access)|
+|Azure Storage Explorer |[Använda Azure Storage Explorer till att hantera kataloger, filer och åtkomstkontrollistor i Azure Data Lake Storage Gen2](data-lake-storage-explorer.md#managing-access)|
 |.NET |[Använd .NET för att hantera kataloger, filer och ACL: er i Azure Data Lake Storage Gen2](data-lake-storage-directory-file-acl-dotnet.md#manage-access-control-lists-acls)|
 |Java|[Använd Java för att hantera kataloger, filer och ACL: er i Azure Data Lake Storage Gen2](data-lake-storage-directory-file-acl-java.md#manage-access-control-lists-acls)|
 |Python|[Använd python för att hantera kataloger, filer och ACL: er i Azure Data Lake Storage Gen2](data-lake-storage-directory-file-acl-python.md#manage-access-control-lists-acls)|
@@ -60,7 +60,7 @@ Både åtkomst-ACL: er och standard-ACL: er har samma struktur.
 
 ## <a name="levels-of-permission"></a>Behörighets nivåer
 
-Behörigheterna för ett behållar objekt är **läsa**, **skriva** och **köra** och de kan användas på filer och kataloger som visas i följande tabell:
+Behörigheterna för kataloger och filer i en behållare, är **läsa**, **skriva** och **köra**, och de kan användas på filer och kataloger som visas i följande tabell:
 
 |            |    Fil     |   Katalog |
 |------------|-------------|----------|
@@ -69,7 +69,7 @@ Behörigheterna för ett behållar objekt är **läsa**, **skriva** och **köra*
 | **Köra (X)** | Betyder inte något i samband med Data Lake Storage Gen2 | Krävs för att bläddra bland de underordnade objekten i en katalog |
 
 > [!NOTE]
-> Om du beviljar behörigheter genom att endast använda ACL: er (ingen Azure RBAC), så måste du ge säkerhets objektets **Kör** -behörigheter till behållaren och till varje mapp i hierarkin för mappar som leder till filen.
+> Om du beviljar behörigheter genom att endast använda ACL: er (ingen Azure RBAC), så måste du ge säkerhetsobjektet behörighet att **köra** behörighet till rotmappen för behållaren och till varje mapp i hierarkin för mappar som leder till filen.
 
 ### <a name="short-forms-for-permissions"></a>Kortformat för behörigheter
 
@@ -90,7 +90,7 @@ I POSIX-format modellen som används av Data Lake Storage Gen2 lagras behörighe
 
 I följande tabell visas de ACL-poster som krävs för att aktivera ett säkerhets objekt för att utföra de åtgärder som anges i kolumnen **operation** . 
 
-I den här tabellen visas en kolumn som representerar varje nivå i en fiktiv katalog-hierarki. Det finns en kolumn för behållarens rot Katalog ( `\` ), en under katalog med namnet " **Oregon** Göteborg", en under katalog till katalogen Göteborg, som heter **Göteborg** och en textfil i katalogen Göteborg med namnet **Data.txt**. 
+I den här tabellen visas en kolumn som representerar varje nivå i en fiktiv katalog-hierarki. Det finns en kolumn för behållarens rot Katalog ( `\` ), en under katalog med namnet " Göteborg", en under katalog till katalogen Göteborg, som heter **Göteborg** och en textfil i katalogen Göteborg med namnet **Data.txt**. 
 
 > [!IMPORTANT]
 > Den här tabellen förutsätter att du **bara** använder ACL: er utan några Azure Role-tilldelningar. Om du vill se en liknande tabell som kombinerar Azure RBAC tillsammans med ACL: er, se [behörighets tabell: kombinera Azure RBAC och ACL](data-lake-storage-access-control-model.md#permissions-table-combining-azure-rbac-and-acl).
@@ -204,7 +204,7 @@ För en ny Data Lake Storage Gen2-behållare är masken för åtkomst-ACL: en f�
 |--|--|--|
 |Ägande användare|`rwx`|`r-w`|
 |Ägande grupp|`r-x`|`r--`|
-|Annat|`---`|`---`|
+|Övrigt|`---`|`---`|
 
 Filerna tar inte emot X-biten eftersom det är irrelevant för filer i ett system för endast lagring. 
 

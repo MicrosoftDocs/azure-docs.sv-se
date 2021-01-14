@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2017
 ms.author: duau
-ms.openlocfilehash: 83300a5c518a3acf853968164031a80e1c882187
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9d4b4ba6830fd573a545eb6308fe15a4781873c4
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89401245"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184330"
 ---
 # <a name="countryregion-hierarchy-used-by-azure-traffic-manager-for-geographic-traffic-routing-method"></a>Hierarki för land/region som används av Azure Traffic Manager för geografisk Traffic routing-metod
 
-I den här artikeln listas de länder och regioner som används av routningsmetod för **geografisk**  trafik i Azure Traffic Manager. Du kan också få den här informationen genom programmering genom att anropa [Azure Traffic Managers REST API](https://docs.microsoft.com/rest/api/trafficmanager/). 
+I den här artikeln listas de länder och regioner som används av routningsmetod för **geografisk**  trafik i Azure Traffic Manager. Du kan också få den här informationen genom programmering genom att anropa [Azure Traffic Managers REST API](/rest/api/trafficmanager/). 
 
 - VÄRLD (världen)
 

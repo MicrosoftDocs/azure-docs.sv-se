@@ -5,12 +5,12 @@ services: automation
 ms.date: 12/04/2020
 ms.topic: conceptual
 ms.service: automation
-ms.openlocfilehash: c6d0f38eaa25f2fe033a5e2cf48ee6daa51fcbe6
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: f00002c7374e0c35c7bb91c28b2dd87ad71e3350
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96929284"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184925"
 ---
 # <a name="troubleshoot-update-management-issues"></a>Felsöka problem med Uppdateringshantering
 
@@ -425,7 +425,7 @@ Felet kan uppstå på grund av någon av följande orsaker:
 
 Använd [dynamiska grupper](../update-management/configure-groups.md) för dina uppdaterings distributioner när det är tillämpligt. Dessutom kan du utföra följande steg.
 
-1. Kontrol lera att datorn eller servern uppfyller [kraven](../update-management/overview.md#client-requirements).
+1. Kontrol lera att datorn eller servern uppfyller [kraven](../update-management/overview.md#system-requirements).
 2. Kontrol lera anslutningen till Hybrid Runbook Worker med hjälp av Hybrid Runbook Worker agent-felsökaren. Mer information om fel sökaren finns i [Felsöka problem med uppdaterings agenten](update-agent-issues.md).
 
 ## <a name="scenario-updates-are-installed-without-a-deployment"></a><a name="updates-nodeployment"></a>Scenario: uppdateringar installeras utan distribution

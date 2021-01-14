@@ -4,15 +4,15 @@ description: Go-to-Marketing-tjänster – Microsoft-resurser som utgivare kan a
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 09/24/2020
+ms.date: 01/13/2021
 author: keferna
 ms.author: keferna
-ms.openlocfilehash: ad86ebe1ca397004745e75dd279ea0a7cfe8348e
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 263c038cf5003d950cf500ccc13cf562ac71db0c
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94746575"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185050"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>Dina kommersiella marknads förmåner
 
@@ -104,16 +104,16 @@ Alla aktiviteter som beskrivs på den här sidan omfattas av Microsoft [Publishe
 
 Microsoft förbehåller sig rätten att återkalla och säga upp förmåner till marknads plats förmåner för utgivare som:
 
-* Delta i olaglig aktivitet med hjälp av sin Marketplace-lista.
-* Ta emot ett köp som är känt eller misstänks vara bedrägligt.
-* Finns i listan från den kommersiella marknads platsen.
-* Använd sitt erbjudande för att Visa marknadsföring eller annat innehåll som strider mot upphovs rätts eller varumärkes lagar.
-* Strider mot principerna för [Azure Sponsring-programmet](https://azure.microsoft.com/offers/ms-azr-0036p/), inklusive, men inte begränsat till, med hjälp av Azure sponsring-finansiering för sina egna interna åtgärder eller Bitcoin-utvinning.
+- Delta i olaglig aktivitet med hjälp av sin Marketplace-lista.
+- Ta emot ett köp som är känt eller misstänks vara bedrägligt.
+- Finns i listan från den kommersiella marknads platsen.
+- Använd sitt erbjudande för att Visa marknadsföring eller annat innehåll som strider mot upphovs rätts eller varumärkes lagar.
+- Strider mot principerna för [Azure Sponsring-programmet](https://azure.microsoft.com/offers/ms-azr-0036p/), inklusive, men inte begränsat till, med hjälp av Azure sponsring-finansiering för sina egna interna åtgärder eller Bitcoin-utvinning.
 
 Microsoft förbehåller sig rätten att återkalla och säga upp marknads förmåner när:
 
-* Kunden som gör köpet gjorde det oavsiktligt och vill säga upp köpet.
-* Kunden avbryter innan du använder partnerns produkt.
+- Kunden som gör köpet gjorde det oavsiktligt och vill säga upp köpet.
+- Kunden avbryter innan du använder partnerns produkt.
 
 ### <a name="offer-availability"></a>Erbjudande tillgänglighet
 

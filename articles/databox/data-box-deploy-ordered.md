@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 11/19/2020
 ms.author: alkohli
-ms.openlocfilehash: db97a34a79ac45525177a79a59a17426003aeab0
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: aad6a3ef754b5ba2c65a9b93fbdfcfdc26348487
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302632"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98186166"
 ---
 # <a name="tutorial-order-azure-data-box"></a>Självstudie: Beställa Azure Data Box
 
@@ -239,7 +239,7 @@ Utför följande steg i Azure Portal för att beställa en enhet.
 
 6. Gå till fliken **grundläggande** i **ordning**. Ange eller Välj följande information och välj **Nästa: data mål>**.
 
-    |Inställning  |Värde  |
+    |Inställningen  |Värde  |
     |---------|---------|
     |Prenumeration      | Prenumerationen fylls i automatiskt baserat på din tidigare val.|
     |Resursgrupp    | Den resurs grupp som du valde tidigare. |
@@ -259,7 +259,7 @@ Utför följande steg i Azure Portal för att beställa en enhet.
 
     Om du använder Data Box-enhet för att skapa **hanterade diskar** från lokala virtuella hård diskar (VHD: er), måste du också ange följande information:
 
-    |Inställning  |Värde  |
+    |Inställningen  |Värde  |
     |---------|---------|
     |Resursgrupper     | Skapa nya resursgrupper om du planerar att skapa hanterade diskar från lokala virtuella hårddiskar. Du kan bara använda en befintlig resurs grupp om resurs gruppen skapades tidigare när du skapade en Data Box-enhet order för Managed disks av tjänsten Data Box-enhet. <br> Ange flera resursgrupper avgränsade med semikolon. Högst 10 resursgrupper stöds.|
 
@@ -409,7 +409,7 @@ Utför följande steg med Azure CLI för att beställa en enhet:
 
 1. Skriv ned inställningarna för din Data Box-enhets ordning. Inställningarna omfattar din personliga/affärs information, prenumerations namn, enhets information och information om leverans. Du måste använda de här inställningarna som parametrar när du kör CLI-kommandot för att skapa Data Box-enhets ordningen. I följande tabell visas de parameter inställningar som används för `az databox job create` :
 
-   | Inställning (parameter) | Beskrivning |  Exempelvärde |
+   | Inställning (parameter) | Description |  Exempelvärde |
    |---|---|---|
    |resource-group| Använd ett befintligt eller skapa ett nytt. En resursgrupp är en logisk container för de resurser som kan hanteras eller distribueras tillsammans. | myresourcegroup|
    |name| Namnet på den ordning som du skapar. | "mydataboxorder"|
@@ -528,7 +528,7 @@ Utför följande steg med Azure PowerShell för att beställa en enhet:
 
 2. Skriv ned inställningarna för din Data Box-enhets ordning. Inställningarna omfattar din personliga/affärs information, prenumerations namn, enhets information och information om leverans. Du måste använda de här inställningarna som parametrar när du kör PowerShell-kommandot för att skapa Data Box-enhets ordningen. I följande tabell visas de parameter inställningar som används för [New-AzDataBoxJob](/powershell/module/az.databox/New-AzDataBoxJob).
 
-    | Inställning (parameter) | Beskrivning |  Exempelvärde |
+    | Inställning (parameter) | Description |  Exempelvärde |
     |---|---|---|
     |ResourceGroupName [krävs]| Använd en befintlig resurs grupp. En resursgrupp är en logisk container för de resurser som kan hanteras eller distribueras tillsammans. | myresourcegroup|
     |Namn [obligatoriskt]| Namnet på den ordning som du skapar. | "mydataboxorder"|
@@ -774,7 +774,7 @@ Om du vill avbryta en Azure Data Boxs ordning kan du köra [AZ data-Job Cancel](
    |resurs-grupp [obligatoriskt]| Namnet på resurs gruppen som är kopplad till den ordning som ska tas bort. En resursgrupp är en logisk container för de resurser som kan hanteras eller distribueras tillsammans. | myresourcegroup|
    |namn [obligatoriskt]| Namnet på den ordning som ska tas bort. | "mydataboxorder"|
    |Orsak [required]| Orsaken till att ordern annulleras. | "Jag har angett felaktig information och behövde avbryta beställningen." |
-   |yes| Begär inte bekräftelse. | --Ja (-y)| --Ja-y |
+   |ja| Begär inte bekräftelse. | --Ja (-y)| --Ja-y |
    |felsökning| Inkludera felsöknings information för utförlig loggning | --Felsök |
    |Hjälp| Visa hjälp information för det här kommandot. | --hjälp-h |
    |endast-show-Errors| Visa endast fel, ignorera varningar. | --endast-show-Errors |
@@ -811,7 +811,7 @@ Om du har avbrutit en Azure Data Box order kan du köra [AZ](/cli/azure/ext/data
    |resurs-grupp [obligatoriskt]| Namnet på resurs gruppen som är kopplad till den ordning som ska tas bort. En resursgrupp är en logisk container för de resurser som kan hanteras eller distribueras tillsammans. | myresourcegroup|
    |namn [obligatoriskt]| Namnet på den ordning som ska tas bort. | "mydataboxorder"|
    |prenumeration| Namnet eller ID (GUID) för din Azure-prenumeration. | "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX" |
-   |yes| Begär inte bekräftelse. | --Ja (-y)| --Ja-y |
+   |ja| Begär inte bekräftelse. | --Ja (-y)| --Ja-y |
    |felsökning| Inkludera felsöknings information för utförlig loggning | --Felsök |
    |Hjälp| Visa hjälp information för det här kommandot. | --hjälp-h |
    |endast-show-Errors| Visa endast fel, ignorera varningar. | --endast-show-Errors |

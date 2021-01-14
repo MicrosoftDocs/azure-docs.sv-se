@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 09/11/2020
+ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: 8e951e6cb18596b19f49bf42179297f656e3fa5f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 849afe54125588cb7664ee221e4f229e83be8f96
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91304310"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185486"
 ---
 # <a name="camera-placement-guide"></a>Guide för kamera placering
 
@@ -52,7 +52,7 @@ I följande bild visas upphöjnings läget för personens riktning.
 
 ## <a name="camera-height"></a>Kamerans höjd
 
-I allmänhet ska kameror monteras 12-14 fötter från marken. När du planerar monteringen av kameran i det här intervallet bör du tänka på hinder (till exempel: hylla, hängande ljus, hängande signering och visning) som kan påverka kameravyn och sedan justera höjden efter behov.
+I allmänhet ska kameror monteras 12-14 fötter från marken. För identifiering av ansikts mask rekommenderar vi att kameror monteras 8-12 fötter från marken. När du planerar monteringen av kameran i det här intervallet bör du tänka på hinder (till exempel: hylla, hängande ljus, hängande signering och visning) som kan påverka kameravyn och sedan justera höjden efter behov.
 
 ## <a name="camera-to-focal-point-distance"></a>Avstånd för kamera till brännvidd
 
@@ -68,7 +68,7 @@ Från ovan ser det ut så här:
 
 ![Hur kamera-till-fokus-punkt avstånd mäts från över](./media/spatial-analysis/camera-focal-point-above.png)
 
-Använd tabellen nedan för att fastställa kamerans avstånd från fokus punkten baserat på olika monterings höjd. De här avstånden är för optimal placering. Observera att tabellen ger vägledning under 12-14-rekommendationen eftersom vissa tak kan begränsa höjden.
+Använd tabellen nedan för att fastställa kamerans avstånd från fokus punkten baserat på olika monterings höjd. De här avstånden är för optimal placering. Observera att tabellen ger vägledning under 12-14-rekommendationen eftersom vissa tak kan begränsa höjden. För identifiering av ansikts mask, rekommenderat värde för kamera till fokus-avstånd (min/max) är 4 "-10" för kamera höjden mellan 8 och 12.
 
 | Kamerans höjd | Avstånd för kamera till fokus punkt (min/max) |  
 | ------------- | ---------------------------------------- |  
@@ -91,7 +91,7 @@ I det här avsnittet beskrivs acceptabla monterings intervall för kamera vinkel
 
 ### <a name="line-configuration"></a>Linje konfiguration
 
-I följande tabell visas rekommendationer för de kameror som har kon figurer ATS för åtgärden **cognitiveservices. vision. spatialanalysis-personcrossingline** . 
+I följande tabell visas rekommendationer för de kameror som har kon figurer ATS för åtgärden **cognitiveservices. vision. spatialanalysis-personcrossingline** . För identifiering av ansikts mask är +/-30 grader den optimala kamerans monterings vinkel för kamera höjden mellan 8 och 12.
 
 | Kamerans höjd | Avstånd för kamera till brännvidd | Optimal kamera monterings vinkel (min/max) |  
 | ------------- | ------------------------------ | ------------------------------------------ |  
@@ -127,7 +127,7 @@ Följande bild visar simuleringar för vänster och höger kameravy i ett områd
 
 #### <a name="queues"></a>Köer
 
-**Cognitiveservices. vision. spatialanalysis-personcount**, **cognitiveservices. vision. spatialanalysis-persondistance**och **cognitiveservices. vision. spatialanalysis-personcrossingpolygon-** kunskaper kan användas för att övervaka köer. För optimala köade data kvalitet är det möjligt att dra tillbaka band hinder till att minimera ocklusion i kön och se till att platsen för köer är konsekvent över tid.
+**Cognitiveservices. vision. spatialanalysis-personcount**, **cognitiveservices. vision. spatialanalysis-persondistance** och **cognitiveservices. vision. spatialanalysis-personcrossingpolygon-** kunskaper kan användas för att övervaka köer. För optimala köade data kvalitet är det möjligt att dra tillbaka band hinder till att minimera ocklusion i kön och se till att platsen för köer är konsekvent över tid.
 
 ![Återkallning av band kön](./media/spatial-analysis/retractable-belt-queue.png)
 

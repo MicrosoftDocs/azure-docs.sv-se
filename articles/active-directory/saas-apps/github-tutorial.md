@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/07/2020
+ms.date: 12/24/2020
 ms.author: jeedes
-ms.openlocfilehash: 67a17aaa647d9aa6943b37d54fc0e3308ad8955f
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: 68de75f25c70db9e2f5fcdb524e6b55fb6939e9a
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96558546"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98186300"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-a-github-enterprise-cloud-organization"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med en GitHub företags moln organisation
 
@@ -24,8 +24,6 @@ I den här självstudien får du lära dig hur du integrerar en GitHub företags
 
 * Kontroll i Azure AD som har åtkomst till din GitHub företags moln organisation.
 * Hantera åtkomst till din GitHub företags moln organisation på en central plats – Azure Portal.
-
-Mer information om SaaS app integration med Azure AD finns i [Vad är program åtkomst och enkel inloggning med Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Krav
 
@@ -41,39 +39,39 @@ I den här självstudien konfigurerar och testar du enkel inloggning med Azure A
 * GitHub stöder **IDP**-initierad enkel inloggning
 
 * GitHub stöder [ **automatiserad** användar etablering (organisatoriska inbjudningar)](github-provisioning-tutorial.md)
-* När du har konfigurerat GitHub kan du genomdriva session Control, som skyddar exfiltrering och intrånget för organisationens känsliga data i real tid. Kontroll av sessionen sträcker sig från villkorlig åtkomst. [Lär dig hur du tvingar fram sessions kontroll med Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad)
+
 
 ## <a name="adding-github-from-the-gallery"></a>Lägga till GitHub från galleriet
 
 För att konfigurera integreringen av GitHub till Azure AD behöver du lägga till GitHub från galleriet till listan över hanterade SaaS-appar.
 
-1. Logga in på [Azure Portal](https://portal.azure.com) med antingen ett arbets-eller skol konto eller en personlig Microsoft-konto.
+1. Logga in på Azure Portal med antingen ett arbets-eller skol konto eller en personlig Microsoft-konto.
 1. I det vänstra navigerings fönstret väljer du tjänsten **Azure Active Directory** .
 1. Navigera till **företags program** och välj sedan **alla program**.
 1. Välj **nytt program** om du vill lägga till ett nytt program.
 1. I avsnittet **Lägg till från galleriet** , skriver du **GitHub** i sökrutan.
 1. Välj **GitHub Enterprise Cloud-Organization** från panelen resultat och Lägg sedan till appen. Vänta några sekunder medan appen läggs till i din klient organisation.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-github"></a>Konfigurera och testa enkel inloggning med Azure AD för GitHub
+## <a name="configure-and-test-azure-ad-sso-for-github"></a>Konfigurera och testa Azure AD SSO för GitHub
 
 Konfigurera och testa Azure AD SSO med GitHub med hjälp av en test användare som heter **B. Simon**. För att SSO ska fungera måste du upprätta en länk relation mellan en Azure AD-användare och den relaterade användaren i GitHub.
 
-Om du vill konfigurera och testa Azure AD SSO med GitHub, slutför du följande Bygg stenar:
+Utför följande steg för att konfigurera och testa Azure AD SSO med GitHub:
 
 1. **[Konfigurera Azure AD SSO](#configure-azure-ad-sso)** – så att användarna kan använda den här funktionen.
-    * **[Skapa en Azure AD-test](#create-an-azure-ad-test-user)** för att testa enkel inloggning med Azure AD med B. Simon.
-    * **[Tilldela Azure AD-testuser](#assign-the-azure-ad-test-user)** -för att aktivera B. Simon för att använda enkel inloggning med Azure AD.
+    1. **[Skapa en Azure AD-test](#create-an-azure-ad-test-user)** för att testa enkel inloggning med Azure AD med B. Simon.
+    1. **[Tilldela Azure AD-testuser](#assign-the-azure-ad-test-user)** -för att aktivera B. Simon för att använda enkel inloggning med Azure AD.
 1. **[Konfigurera GITHUB SSO](#configure-github-sso)** – för att konfigurera inställningarna för enkel inloggning på program sidan.
-    * **[Skapa GitHub test User](#create-github-test-user)** -om du vill ha en motsvarighet till B. Simon i GitHub som är länkad till Azure AD-representation av användare.
+    1. **[Skapa GitHub test User](#create-github-test-user)** -om du vill ha en motsvarighet till B. Simon i GitHub som är länkad till Azure AD-representation av användare.
 1. **[Testa SSO](#test-sso)** – för att kontrol lera om konfigurationen fungerar.
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurera Azure AD SSO
 
 Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
-1. I [Azure Portal](https://portal.azure.com/)går du till sidan för program integrering i **GitHub** , letar upp avsnittet **Hantera** och väljer **enkel inloggning**.
+1. I Azure Portal går du till sidan för program integrering i **GitHub** , letar upp avsnittet **Hantera** och väljer **enkel inloggning**.
 1. På sidan **Välj metod för enkel inloggning** väljer du **SAML**.
-1. På sidan **Konfigurera enkel inloggning med SAML** klickar du på ikonen Redigera/penna för **grundläggande SAML-konfiguration** för att redigera inställningarna.
+1. På sidan **Konfigurera enkel inloggning med SAML** klickar du på Penn ikonen för **grundläggande SAML-konfiguration** för att redigera inställningarna.
 
    ![Redigera grundläggande SAML-konfiguration](common/edit-urls.png)
 
@@ -101,11 +99,6 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
     ![Kopiera konfigurations-URL:er](common/copy-configuration-urls.png)
 
-    a. Inloggnings-URL
-
-    b. Azure AD-identifierare
-
-    c. Utloggnings-URL
 
 ### <a name="create-an-azure-ad-test-user"></a>Skapa en Azure AD-testanvändare
 
@@ -115,7 +108,7 @@ I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I **Namn**-fältet skriver du `B.Simon`.  
-   1. I fältet **användar namn** anger du username@companydomain.extension . Exempelvis `B.Simon@contoso.com`.
+   1. I fältet **användar namn** anger du username@companydomain.extension . Ett exempel är `B.Simon@contoso.com`.
    1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
    1. Klicka på **Skapa**.
 
@@ -126,20 +119,11 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 1. I Azure Portal väljer du **företags program** och väljer sedan **alla program**.
 1. I programlistan väljer du **GitHub**.
 1. På sidan Översikt för appen letar du reda på avsnittet **Hantera** och väljer **användare och grupper**.
-
-   ![Länken ”Användare och grupper”](common/users-groups-blade.png)
-
 1. Välj **Lägg till användare** och välj sedan **användare och grupper** i dialog rutan **Lägg till tilldelning** .
-
-    ![Länken Lägg till användare](common/add-assign-user.png)
-
 1. I dialog rutan **användare och grupper** väljer du **B. Simon** från listan användare och klickar sedan på knappen **Välj** längst ned på skärmen.
-1. Om du förväntar dig ett roll värde i SAML-kontrollen, i dialog rutan **Välj en roll** , väljer du lämplig roll för användaren i listan och klickar sedan på knappen **Välj** längst ned på skärmen.
+1. Om du förväntar dig att en roll ska tilldelas användarna kan du välja den från List rutan **Välj en roll** . Om ingen roll har kon figurer ATS för den här appen ser du rollen "standard åtkomst" vald.
 
     ![användarroll](./media/github-tutorial/user-role.png)
-
-    > [!NOTE]
-    > **Välj ett roll** alternativ kommer att inaktive ras och standard rollen är användare för den valda användaren.
 
 7. Klicka på knappen **tilldela** i dialog rutan **Lägg till tilldelning** .
 
@@ -147,11 +131,11 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 
 1. Logga in på din GitHub-organisations webbplats som administratör i ett annat webbläsarfönster.
 
-2. Gå till **Inställningar** och klicka på **Säkerhet**
+2. Navigera till **Inställningar** och klicka på **säkerhet**.
 
     ![Skärm bild som visar GitHub "organisations inställningar" med "säkerhet" valt.](./media/github-tutorial/security.png)
 
-3. Markera rutan **Aktivera SAML-autentisering**. Då visas konfigurationsfälten för enkel inloggning. utför följande steg:
+3. Markera kryss rutan **Aktivera SAML-autentisering** och Visa konfigurations fälten för enkel inloggning genom att utföra följande steg:
 
     ![Skärm bild som visar avsnittet "S A M L enkel inloggning" med text rutorna "Aktivera S A M L" med text rutorna för U R L markerade.](./media/github-tutorial/saml-sso.png)
 
@@ -215,18 +199,14 @@ Målet med det här avsnittet är att skapa en användare som kallas Britta Simo
 
 ## <a name="test-sso"></a>Testa SSO 
 
-I det här avsnittet testar du konfigurationen för enkel inloggning Azure AD med hjälp av åtkomstpanelen.
+I det här avsnittet ska du testa Azure AD-konfigurationen för enkel inloggning med följande alternativ. 
 
-När du klickar på GitHub-panelen i åtkomstpanelen bör du automatiskt loggas in på GitHub som du har konfigurerat enkel inloggning för. Mer information om åtkomstpanelen finns i [introduktionen till åtkomstpanelen](../user-help/my-apps-portal-end-user-access.md).
+* Klicka på **testa det här programmet** i Azure Portal. Detta omdirigeras till GitHub-inloggnings-URL där du kan starta inloggnings flödet. 
 
-## <a name="additional-resources"></a>Ytterligare resurser
+* Gå till GitHub-inloggnings-URL: en direkt och starta inloggnings flödet därifrån.
 
-- [ Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory ](./tutorial-list.md)
+* Du kan använda Microsoft Mina appar. När du klickar på panelen GitHub i Mina appar omdirigeras det till GitHub-inloggnings-URL. Mer information om Mina appar finns i [Introduktion till Mina appar](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-- [Vad är program åtkomst och enkel inloggning med Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
+## <a name="next-steps"></a>Nästa steg
 
-- [Vad är villkorlig åtkomst i Azure Active Directory?](../conditional-access/overview.md)
-
-- [Prova GitHub med Azure AD](https://aad.portal.azure.com/)
-
-- [Vad är session Control i Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)
+När du har konfigurerat GitHub kan du genomdriva session Control, som skyddar exfiltrering och intrånget för organisationens känsliga data i real tid. Kontroll av sessionen sträcker sig från villkorlig åtkomst. [Lär dig hur du tvingar fram sessions kontroll med Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad)

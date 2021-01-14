@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/02/2020
 ms.author: mnayak
-ms.openlocfilehash: 656f8a0e0530a20807fc8fddd4cd96d1d955c8ac
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: fa83c51469636eb269aa5dc3192ff7e65b53ce89
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97912707"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98186149"
 ---
 # <a name="what-is-routing-preference-preview"></a>Vad är cirkulations inställningar (för hands version)?
 
@@ -65,7 +65,7 @@ Alternativet för offentlig IP-adress med Routning val "Microsoft globalt nätve
 För lagring använder primära slut punkter alltid **Microsofts globala nätverk**. Du kan aktivera sekundära slut punkter med **Internet** som du väljer för trafik dirigering. De lagrings tjänster som stöds är:
 
 * Blobar
-* Filer
+* Files
 * Webb
 * Azure DataLake
 
@@ -74,7 +74,7 @@ Pris skillnaden mellan båda alternativen återspeglas i priset för utgående d
 
 ## <a name="limitations"></a>Begränsningar
 
-* Dirigerings inställningen är endast kompatibel med standard-SKU: n för offentlig IP-adress. Grundläggande SKU för offentlig IP-adress stöds inte.
+* Dirigerings inställningar är bara kompatibla med zon-redundant standard-SKU för offentlig IP-adress. Grundläggande SKU för offentlig IP-adress stöds inte.
 * Inställningen routning stöder för närvarande endast IPv4 offentliga IP-adresser. Offentliga IPv6-IP-adresser stöds inte.
 * Virtuella datorer med flera nätverkskort kan bara ha en typ av cirkulations inställningar.
 

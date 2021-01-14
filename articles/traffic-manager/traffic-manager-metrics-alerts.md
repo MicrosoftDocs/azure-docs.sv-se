@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/11/2018
 ms.author: duau
-ms.openlocfilehash: 997e2e97161e6db7cdca04c1b79f5149a2e4c409
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: bd3588c207fe8828744a665539830d81805bd7b3
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96003539"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184279"
 ---
 # <a name="traffic-manager-metrics-and-alerts"></a>Traffic Manager mått och aviseringar
 
@@ -58,10 +58,10 @@ Det här måttet kan visas antingen som ett agg regerings värde som representer
 
 *Bild 4: delad vy över slut punkts status mått*
 
-Du kan använda dessa mått via [Azure Monitor tjänstens](../azure-monitor/platform/metrics-supported.md)portal, [REST API](https://docs.microsoft.com/rest/api/monitor/), [Azure CLI](https://docs.microsoft.com/cli/azure/monitor)och [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.applicationinsights), eller genom avsnittet mått i Traffic Managers Portal upplevelse.
+Du kan använda dessa mått via [Azure Monitor tjänstens](../azure-monitor/platform/metrics-supported.md)portal, [REST API](/rest/api/monitor/), [Azure CLI](/cli/azure/monitor)och [Azure PowerShell](/powershell/module/az.applicationinsights), eller genom avsnittet mått i Traffic Managers Portal upplevelse.
 
 ## <a name="alerts-on-traffic-manager-metrics"></a>Varningar om Traffic Manager mått
-Förutom att bearbeta och visa mått från Azure Monitor Traffic Manager kan kunderna konfigurera och ta emot aviseringar som är associerade med dessa mått. Du kan välja vilka villkor som måste uppfyllas i dessa mått för att en avisering ska inträffa, hur ofta dessa villkor måste övervakas och hur aviseringarna ska skickas till dig. Mer information finns i [dokumentationen om Azure Monitor-aviseringar](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md).
+Förutom att bearbeta och visa mått från Azure Monitor Traffic Manager kan kunderna konfigurera och ta emot aviseringar som är associerade med dessa mått. Du kan välja vilka villkor som måste uppfyllas i dessa mått för att en avisering ska inträffa, hur ofta dessa villkor måste övervakas och hur aviseringarna ska skickas till dig. Mer information finns i [dokumentationen om Azure Monitor-aviseringar](../azure-monitor/platform/alerts-metric.md).
 
 ## <a name="next-steps"></a>Nästa steg
 - Läs mer om [Azure Monitor-tjänsten](../azure-monitor/platform/metrics-supported.md)

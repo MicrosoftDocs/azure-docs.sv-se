@@ -1,7 +1,7 @@
 ---
-title: Konfigurera kors validering och data delningar i automatiserade Machine Learning-experiment
+title: Data delas och kors validering i automatiserad maskin inlärning
 titleSuffix: Azure Machine Learning
-description: Lär dig hur du konfigurerar delning av kors validering och data uppsättningar för automatiserade maskin inlärnings experiment
+description: Lär dig hur du konfigurerar data uppsättnings delningar och kors validering för automatiserade maskin inlärnings experiment
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,27 +11,27 @@ ms.author: cesardl
 author: CESARDELATORRE
 ms.reviewer: nibaccam
 ms.date: 06/16/2020
-ms.openlocfilehash: c29c8ab31507c0ec904a7534e50ef6523e1aab96
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 2e26bfa484d573c0158e518b31087fb10bdcdfb9
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360113"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185690"
 ---
 # <a name="configure-data-splits-and-cross-validation-in-automated-machine-learning"></a>Konfigurera datadelningar och korsvalidering vid automatiserad maskininlärning
 
-I den här artikeln får du lära dig de olika alternativen för att konfigurera inlärnings-och verifierings data delas och kors validering för din automatiserade maskin inlärning, AutoML, experiment.
+I den här artikeln får du lära dig de olika alternativen för att konfigurera inlärnings-och verifierings data delas och kors validering för din automatiserade maskin inlärning, automatiserade ML-experiment.
 
-När du använder AutoML för att skapa flera ML-modeller i Azure Machine Learning måste varje underordnad körning verifiera den relaterade modellen genom att beräkna kvalitets måtten för modellen, till exempel precision eller AUC viktad. Dessa mått beräknas genom att jämföra förutsägelserna som gjorts med varje modell med verkliga etiketter från tidigare observationer i verifierings data. 
+När du använder automatisk ML för att skapa flera ML-modeller i Azure Machine Learning måste varje underordnad körning verifiera den relaterade modellen genom att beräkna kvalitets måtten för modellen, till exempel precision eller AUC viktad. Dessa mått beräknas genom att jämföra förutsägelserna som gjorts med varje modell med verkliga etiketter från tidigare observationer i verifierings data. 
 
-AutoML experiment utför automatisk modell validering. I följande avsnitt beskrivs hur du kan anpassa verifierings inställningarna ytterligare med [Azure Machine Learning python SDK](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py). 
+Automatiserade ML-experiment utför automatisk modell validering. I följande avsnitt beskrivs hur du kan anpassa verifierings inställningarna ytterligare med [Azure Machine Learning python SDK](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py). 
 
 En låg kod eller ingen kod får [du i skapa dina automatiserade Machine Learning-experiment i Azure Machine Learning Studio](how-to-use-automated-ml-for-ml-models.md). 
 
 > [!NOTE]
 > Studio stöder för närvarande utbildning/validering av data delningar och alternativ för kors validering, men det går inte att ange enskilda datafiler för verifierings uppsättningen. 
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 För den här artikeln behöver du
 
@@ -39,13 +39,13 @@ För den här artikeln behöver du
 
 * Bekanta dig med att ställa in ett automatiserat maskin inlärnings experiment med Azure Machine Learning SDK. Följ [själv studie kursen](tutorial-auto-train-models.md) eller [anvisningar](how-to-configure-auto-train.md) för att se design mönster för de grundläggande automatiserade tipsen för maskin inlärning.
 
-* En förståelse för kors validerings-och tåg-och verifierings data delas upp som ML-begrepp. En förklaring på hög nivå
+* En förståelse för att träna/Verifiera data delas och kors validering som metoder för maskin inlärning. En förklaring på hög nivå
 
     * [Om tåg, validering och test uppsättningar i Machine Learning](https://towardsdatascience.com/train-validation-and-test-sets-72cb40cba9e7)
 
-    * [Förstå kors validering](https://towardsdatascience.com/understanding-cross-validation-419dbd47e9bd)
+    * [Förstå kors validering i Machine Learning](https://towardsdatascience.com/understanding-cross-validation-419dbd47e9bd)
 
-## <a name="default--data-splits-and-cross-validation"></a>Standard data delning och kors validering
+## <a name="default-data-splits-and-cross-validation"></a>Standard data delning och kors validering
 
 Använd [AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?preserve-view=true&view=azure-ml-py) -objektet för att definiera dina experiment-och utbildnings inställningar. Observera att endast de parametrar som krävs har definierats i följande kodfragment, det vill säga parametrarna för `n_cross_validation` eller `validation_ data` **inte** ingår.
 
@@ -117,7 +117,7 @@ Om du vill utföra kors validering inkluderar du `n_cross_validations` parameter
 
 I följande kod definieras fem vikningar för kors validering. Därför är fem olika utbildningar, varje utbildning som använder 4/5 av data och varje validering som använder 1/5 av data med en annan uttrycks vikning varje tillfälle.
 
-Därför beräknas måtten med medelvärdet av 5 verifierings måtten.
+Resultatet blir att måtten beräknas med genomsnittet av de fem verifierings måtten.
 
 ```python
 data = "https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/creditcard.csv"

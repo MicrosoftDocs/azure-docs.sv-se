@@ -9,12 +9,12 @@ ms.author: mlearned
 description: Anslut ett Azure Arc-aktiverat Kubernetes-kluster med Azure Arc
 keywords: Kubernetes, båge, Azure, K8s, behållare
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 8155ed709045626dee44fb499304ff5244a61b54
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 131ec014c9ac016a682bc4928f74910a3405a5da
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060256"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98186013"
 ---
 # <a name="connect-an-azure-arc-enabled-kubernetes-cluster-preview"></a>Ansluta ett Azure Arc-aktiverat Kubernetes-kluster (förhandsversion)
 
@@ -35,19 +35,19 @@ Kontrol lera att du har följande krav:
   
   Installera `connectedk8s` tillägget, som hjälper dig att ansluta Kubernetes-kluster till Azure:
   
-  ```console
+  ```azurecli
   az extension add --name connectedk8s
   ```
   
   Installera `k8sconfiguration` tillägget:
   
-  ```console
+  ```azurecli
   az extension add --name k8sconfiguration
   ```
   
   Om du vill uppdatera tilläggen senare kör du följande kommandon:
   
-  ```console
+  ```azurecli
   az extension update --name connectedk8s
   az extension update --name k8sconfiguration
   ```
@@ -64,7 +64,7 @@ Azure Arc-agenter kräver att följande protokoll/portar/utgående URL: er funge
 * TCP på port 443--> `https://:443`
 * TCP på port 9418--> `git://:9418`
 
-| Slut punkt (DNS)                                                                                               | Beskrivning                                                                                                                 |
+| Slut punkt (DNS)                                                                                               | Description                                                                                                                 |
 | ------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------- |
 | `https://management.azure.com`                                                                                 | Krävs för att agenten ska kunna ansluta till Azure och registrera klustret                                                        |
 | `https://eastus.dp.kubernetesconfiguration.azure.com`, `https://westeurope.dp.kubernetesconfiguration.azure.com` | Data planens slut punkt för agenten för att push-överföra status och hämta konfigurations information                                      |

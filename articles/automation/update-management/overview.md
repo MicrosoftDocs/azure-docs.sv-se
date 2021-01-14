@@ -3,14 +3,14 @@ title: Översikt över Azure Automation Uppdateringshantering
 description: Den här artikeln innehåller en översikt över den Uppdateringshantering funktionen som implementerar uppdateringar för dina Windows-och Linux-datorer.
 services: automation
 ms.subservice: update-management
-ms.date: 12/09/2020
+ms.date: 01/13/2021
 ms.topic: conceptual
-ms.openlocfilehash: 4b557c9772e76b6b61cdf01799ee30ba6bc11807
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: d66d4d32c788317d8b0781f9f24120fbce2f6f8f
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96928434"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185622"
 ---
 # <a name="update-management-overview"></a>Översikt över Uppdateringshantering
 
@@ -65,16 +65,16 @@ En dator som är registrerad för Uppdateringshantering i fler än en Log Analyt
 
 ## <a name="clients"></a>Klienter
 
-### <a name="supported-client-types"></a>Klient typer som stöds
+### <a name="supported-operating-systems"></a>Operativsystem som stöds
 
-I följande tabell visas de operativ system som stöds för uppdaterings bedömning och uppdatering. Uppdatering kräver en Hybrid Runbook Worker, som installeras automatiskt när du aktiverar den virtuella datorn eller servern för hantering genom att Uppdateringshantering. Information om Hybrid Runbook Worker system krav finns i [distribuera en Windows-hybrid Runbook Worker](../automation-windows-hrw-install.md) och [distribuera en Linux-hybrid Runbook Worker](../automation-linux-hrw-install.md).
+I följande tabell visas de operativ system som stöds för uppdaterings bedömning och uppdatering. Uppdatering kräver en system Hybrid Runbook Worker, som installeras automatiskt när du aktiverar den virtuella datorn eller servern för hantering genom att Uppdateringshantering. Information om Hybrid Runbook Worker system krav finns i [distribuera en Windows-hybrid Runbook Worker](../automation-windows-hrw-install.md) och [distribuera en Linux-hybrid Runbook Worker](../automation-linux-hrw-install.md).
 
 > [!NOTE]
 > Uppdaterings utvärdering av Linux-datorer stöds bara i vissa regioner enligt listan i Automation-kontot och Log Analytics [mappnings tabellen](../how-to/region-mappings.md#supported-mappings)för arbets ytan.
 
 |Operativsystem  |Kommentarer  |
 |---------|---------|
-|Windows Server 2019 (Data Center/Data Center Core/standard)<br><br>Windows Server 2016 (Data Center/Data Center Core/standard)<br><br>Windows Server 2012 R2 (Data Center/standard)<br><br>Windows Server 2012 ||
+|Windows Server 2019 (Data Center/Data Center Core/standard)<br>Windows Server 2016 (Data Center/Data Center Core/standard)<br>Windows Server 2012 R2 (Data Center/standard)<br>Windows Server 2012 |
 |Windows Server 2008 R2 (RTM och SP1 standard)| Uppdateringshantering stöder utvärderingar och korrigeringar för det här operativ systemet. [Hybrid Runbook Worker](../automation-windows-hrw-install.md) stöds för Windows Server 2008 R2. |
 |CentOS 6 och 7 (x64)      | Linux-agenter kräver åtkomst till ett uppdaterings lager. Klassificerings-baserad uppdatering kräver `yum` att returnera säkerhets data som CentOS inte har i sina RTM-versioner. Mer information om klassificerings-baserad uppdatering på CentOS finns i [uppdaterings klassificeringar i Linux](view-update-assessments.md#linux).          |
 |Red Hat Enterprise 6 och 7 (x64)     | Linux-agenter kräver åtkomst till ett uppdaterings lager.        |
@@ -84,9 +84,9 @@ I följande tabell visas de operativ system som stöds för uppdaterings bedömn
 > [!NOTE]
 > Skalnings uppsättningar för virtuella Azure-datorer kan hanteras via Uppdateringshantering. Uppdateringshantering fungerar på själva instanserna och inte på bas avbildningen. Du måste schemalägga uppdateringarna på ett stegvist sätt så att alla VM-instanser inte uppdateras samtidigt. Du kan lägga till noder för skalnings uppsättningar för virtuella datorer genom att följa stegen under [Lägg till en icke-Azure-dator i ändringsspårning och inventering](../automation-tutorial-installed-software.md#add-a-non-azure-machine-to-change-tracking-and-inventory).
 
-### <a name="unsupported-client-types"></a>Klient typer som inte stöds
+### <a name="unsupported-operating-systems"></a>Operativsystem som inte stöds
 
-I följande tabell visas operativ system som inte stöds:
+I följande tabell visas de operativ system som inte stöds av Uppdateringshantering:
 
 |Operativsystem  |Kommentarer  |
 |---------|---------|
@@ -94,15 +94,20 @@ I följande tabell visas operativ system som inte stöds:
 |Windows Server 2016 Nano Server     | Stöds inte.       |
 |Azure Kubernetes service-noder | Stöds inte. Använd korrigerings processen som beskrivs i [tillämpa säkerhets-och kernel-uppdateringar på Linux-noder i Azure Kubernetes service (AKS)](../../aks/node-updates-kured.md)|
 
-### <a name="client-requirements"></a>Klientkrav
+### <a name="system-requirements"></a>Systemkrav
 
-Följande information beskriver särskilda klient krav för operativ systemet. Ytterligare vägledning finns i [nätverks planering](#ports). Information om klient kraven för TLS 1,2 finns i [TLS 1,2 Enforcement för Azure Automation](../automation-managing-data.md#tls-12-enforcement-for-azure-automation).
+Följande information beskriver särskilda krav för operativ system. Ytterligare vägledning finns i [nätverks planering](#ports). För att förstå kraven för TLS 1,2, se [tls 1,2-tvång för Azure Automation](../automation-managing-data.md#tls-12-enforcement-for-azure-automation).
 
 #### <a name="windows"></a>Windows
 
+Program varu krav:
+
+- .NET Framework 4,6 eller senare krävs. ([Hämta .NET Framework](/dotnet/framework/install/guide-for-developers).
+- Windows PowerShell 5,1 krävs ([Ladda ned Windows Management Framework 5,1](https://www.microsoft.com/download/details.aspx?id=54616).)
+
 Windows-agenter måste konfigureras för att kommunicera med en WSUS-server, eller de kräver åtkomst till Microsoft Update. För Hybrid datorer rekommenderar vi att du installerar Log Analytics agent för Windows genom att först ansluta datorn till [Azure Arc-aktiverade servrar](../../azure-arc/servers/overview.md)och sedan använda Azure policy för att tilldela den inbyggda principen [distribuera Log Analytics agent till Windows Azure Arc-datorer](../../governance/policy/samples/built-in-policies.md#monitoring) . Alternativt, om du planerar att övervaka datorerna med Azure Monitor for VMs, använder du i stället [aktivera Azure Monitor for VMS](../../governance/policy/samples/built-in-initiatives.md#monitoring) initiativ.
 
-Du kan använda Uppdateringshantering med Microsoft Endpoint Configuration Manager. Mer information om integrations scenarier finns i [integrera uppdateringshantering med Windows-slutpunkt Configuration Manager](mecmintegration.md). [Log Analytics agent för Windows](../../azure-monitor/platform/agent-windows.md) krävs för Windows-servrar som hanteras av-platser i din Configuration Manager-miljö. 
+Du kan använda Uppdateringshantering med Microsoft Endpoint Configuration Manager. Mer information om integrations scenarier finns i [integrera uppdateringshantering med Windows-slutpunkt Configuration Manager](mecmintegration.md). [Log Analytics agent för Windows](../../azure-monitor/platform/agent-windows.md) krävs för Windows-servrar som hanteras av-platser i din Configuration Manager-miljö.
 
 Som standard är virtuella Windows-datorer som distribueras från Azure Marketplace inställda på att ta emot automatiska uppdateringar från Windows Update-tjänsten. Det här beteendet ändras inte när du lägger till virtuella Windows-datorer i din arbets yta. Om du inte aktivt hanterar uppdateringar med hjälp av Uppdateringshantering gäller standard beteendet (för att tillämpa uppdateringar automatiskt).
 
@@ -111,7 +116,11 @@ Som standard är virtuella Windows-datorer som distribueras från Azure Marketpl
 
 #### <a name="linux"></a>Linux
 
-För Linux kräver datorn åtkomst till ett uppdaterings lager, antingen privat eller offentlig. TLS 1,1 eller TLS 1,2 krävs för att interagera med Uppdateringshantering. Uppdateringshantering har inte stöd för en Log Analytics-agent för Linux som är konfigurerad att rapportera till fler än en Log Analytics arbets yta. Datorn måste också ha python 2. x installerat.
+Program varu krav:
+
+- Datorn måste ha åtkomst till ett uppdaterings lager, antingen privat eller offentlig.
+- TLS 1,1 eller TLS 1,2 krävs för att interagera med Uppdateringshantering.
+- Python 2. x har installerats.
 
 > [!NOTE]
 > Uppdaterings utvärdering av Linux-datorer stöds bara i vissa regioner. Se tabellen Automation-konto och Log Analytics [mappningar](../how-to/region-mappings.md#supported-mappings)för arbets ytor.
@@ -130,11 +139,11 @@ Uppdateringshantering använder resurserna som beskrivs i det här avsnittet. De
 
 ### <a name="hybrid-runbook-worker-groups"></a>Hybrid Runbook Worker grupper
 
-När du har aktiverat Uppdateringshantering konfigureras en Windows-dator som är direkt ansluten till din Log Analytics arbets yta automatiskt som en Hybrid Runbook Worker för att stödja Runbooks som stöder Uppdateringshantering.
+När du har aktiverat Uppdateringshantering konfigureras en Windows-dator som är direkt ansluten till din Log Analytics arbets yta automatiskt som en system Hybrid Runbook Worker för att stödja Runbooks som stöder Uppdateringshantering.
 
 Varje Windows-dator som hanteras av Uppdateringshantering visas i rutan hybrid Worker-grupper som en system hybrid Worker-grupp för Automation-kontot. I grupperna används `Hostname FQDN_GUID` namngivnings konventionen. Du kan inte rikta de här grupperna med Runbooks i ditt konto. Om du försöker, Miss lyckas försöket. De här grupperna är endast avsedda att stödja Uppdateringshantering. Mer information om hur du visar listan över Windows-datorer som kon figurer ATS som en Hybrid Runbook Worker finns i [Visa hybrid Runbook Worker](../automation-hybrid-runbook-worker.md#view-system-hybrid-runbook-workers).
 
-Du kan lägga till Windows-datorn i en Hybrid Runbook Worker grupp i ditt Automation-konto för att stödja Automation-runbooks om du använder samma konto för Uppdateringshantering och medlemskapet i Hybrid Runbook Worker gruppen. Den här funktionen har lagts till i version 7.2.12024.0 av Hybrid Runbook Worker.
+Du kan lägga till Windows-datorn till en användare Hybrid Runbook Workers grupp i ditt Automation-konto för att stödja Automation-runbooks om du använder samma konto för Uppdateringshantering och medlemskapet i Hybrid Runbook Worker gruppen. Den här funktionen har lagts till i version 7.2.12024.0 av Hybrid Runbook Worker.
 
 ### <a name="management-packs"></a>Hanteringspaket
 
@@ -158,11 +167,11 @@ Mer information om uppdateringar av hanterings paket finns i [anslut Operations 
 
 I följande tabell beskrivs de anslutna källor som Uppdateringshantering stöder:
 
-| Ansluten källa | Stöds | Beskrivning |
+| Ansluten källa | Stöds | Description |
 | --- | --- | --- |
-| Windows-agenter |Ja |Uppdateringshantering samlar in information om system uppdateringar från Windows-agenter och startar sedan installationen av nödvändiga uppdateringar. |
-| Linux-agenter |Ja |Uppdateringshantering samlar in information om system uppdateringar från Linux-agenter och startar sedan installationen av nödvändiga uppdateringar på distributioner som stöds. |
-| Operations Manager-hanteringsgrupp |Ja |Uppdateringshantering samlar in information om system uppdateringar från agenter i en ansluten hanterings grupp.<br/><br/>En direkt anslutning från Operations Manager agent till Azure Monitor loggar krävs inte. Data vidarebefordras från hanterings gruppen till Log Analytics-arbetsytan. |
+| Windows-agenter |Yes |Uppdateringshantering samlar in information om system uppdateringar från Windows-agenter och startar sedan installationen av nödvändiga uppdateringar. |
+| Linux-agenter |Yes |Uppdateringshantering samlar in information om system uppdateringar från Linux-agenter och startar sedan installationen av nödvändiga uppdateringar på distributioner som stöds. |
+| Operations Manager-hanteringsgrupp |Yes |Uppdateringshantering samlar in information om system uppdateringar från agenter i en ansluten hanterings grupp.<br/><br/>En direkt anslutning från Operations Manager agent till Azure Monitor loggar krävs inte. Data vidarebefordras från hanterings gruppen till Log Analytics-arbetsytan. |
 
 ### <a name="collection-frequency"></a>Insamlingsfrekvens
 

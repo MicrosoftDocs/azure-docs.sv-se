@@ -13,17 +13,17 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 12/01/2020
 tags: azure-synapse
-ms.openlocfilehash: ece76f0017a72484f5c4e66b2ab8c7e71d32f1a7
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 41ad711de81f075727e4c177c318054677cb0ece
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98132094"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185367"
 ---
 # <a name="data-discovery--classification"></a>Data Discovery & Classification
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-Data identifierings & klassificeringen är inbyggd i Azure SQL Database, Azure SQL-hanterad instans och Azure Synapse Analytics. Den här funktionen ger avancerade funktioner för identifiering, klassificering, märkning och rapportering av känsliga data i databasen.
+Data identifierings & klassificeringen är inbyggd i Azure SQL Database, Azure SQL-hanterad instans och Azure Synapse Analytics. Den innehåller grundläggande funktioner för att upptäcka, klassificera, märka och rapportera känsliga data i dina databaser.
 
 Dina mest känsliga data kan omfatta affärs-, finans-, sjukvårds-eller personlig information. Identifiering och klassificering av dessa data kan spela en pivot-roll i din organisations informations skydds metod. Tjänsten kan fungera som infrastruktur inom följande områden:
 
@@ -36,11 +36,11 @@ Dina mest känsliga data kan omfatta affärs-, finans-, sjukvårds-eller personl
 
 ## <a name="what-is-data-discovery--classification"></a><a id="what-is-dc"></a>Vad är data identifierings & klassificering?
 
-Data identifierings & klassificeringen introducerar en uppsättning avancerade tjänster och nya funktioner i Azure. Den bildar ett nytt informations skydds paradigm för SQL Database, SQL-hanterad instans och Azure-Synapse, som syftar till att skydda data och inte bara databasen. Paradigmet innehåller:
+Data identifierings & klassificeringen introducerar en uppsättning grundläggande tjänster och nya funktioner i Azure. Den bildar ett nytt informations skydds paradigm för SQL Database, SQL-hanterad instans och Azure-Synapse, som syftar till att skydda data och inte bara databasen. Paradigmet innehåller:
 
 - **Identifiering och rekommendationer:** Klassificerings motorn genomsöker din databas och identifierar kolumner som innehåller potentiellt känsliga data. Det ger dig ett enkelt sätt att granska och tillämpa Rekommenderad klassificering via Azure Portal.
 
-- **Märkning:** Du kan använda känslighets klassificerings etiketter bestående av kolumner genom att använda nya metadata-attribut som har lagts till i SQL Server databas motorn. Dessa metadata kan sedan användas för avancerade, känslighets beroende-baserade gransknings-och skydds scenarier.
+- **Märkning:** Du kan använda känslighets klassificerings etiketter bestående av kolumner genom att använda nya metadata-attribut som har lagts till i SQL Server databas motorn. Dessa metadata kan sedan användas för känslighets gransknings-och skydds scenarier.
 
 - **Frågeresultat – ange känslighet:** Känsligheten för en frågeresultat beräknas i real tid för gransknings syfte.
 
