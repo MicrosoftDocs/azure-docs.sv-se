@@ -8,18 +8,29 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 12/15/2020
+ms.date: 01/13/2021
 ms.author: pafarley
-ms.openlocfilehash: 98b8cca95b8815b32fb5de6567adcf4f150551eb
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 33987be39258adc74cf4f88dbb0544f7026f6086
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97561978"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183361"
 ---
 # <a name="whats-new-in-computer-vision"></a>Vad är nytt i Visuellt innehåll
 
 Läs om vad som är nytt i tjänsten. Dessa objekt kan vara viktig information, videor, blogg inlägg och andra typer av information. Skapa ett bok märke för den här sidan för att hålla dig uppdaterad med tjänsten.
+
+## <a name="january-2021"></a>Januari 2021
+
+### <a name="spatial-analysis-container-update"></a>Uppdatering av rums analys behållare
+
+En ny version av [behållaren för rums analys](spatial-analysis-container.md) har släppts med en ny funktions uppsättning. Med den här Docker-behållaren kan du analysera real tids strömnings video för att förstå spatiala relationer mellan människor och deras rörelse genom fysiska miljöer. 
+
+* [Åtgärder för spatial analys](spatial-analysis-operations.md) kan nu konfigureras för att identifiera om en person får en skyddande ansikte som en mask. 
+    * Du kan aktivera en mask-klassificerare `personcount` för `personcrossingline` `personcrossingpolygon` åtgärderna och genom att konfigurera `ENABLE_FACE_MASK_CLASSIFIER` parametern.
+    * Attributen `face_mask` och `face_noMask` kommer att returneras som metadata med förtroende poäng för varje person som identifieras i video strömmen
+
 
 ## <a name="october-2020"></a>Oktober 2020
 

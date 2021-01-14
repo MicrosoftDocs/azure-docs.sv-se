@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 11/06/2020
+ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: 9b9390b498f28fc8f9029f1c11805b970aaca73d
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: de011fb0f827ea90efe33e237bbf1c5100dc76a7
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95014568"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183480"
 ---
 # <a name="how-to-deploy-a-people-counting-web-application"></a>Så här distribuerar du en användare som räknar webb program
 
@@ -28,7 +28,7 @@ I den här självstudien får du lära dig hur man
 * Konfigurera IoT Hub anslutning i webb programmet
 * Distribuera och testa webb programmet
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 * Azure-prenumeration – [skapa en kostnads fritt](https://azure.microsoft.com/free/cognitive-services/)
 * Grundläggande förståelse för Azure IoT Edge distributions konfiguration och en [Azure-IoT Hub](../../iot-hub/index.yml)
@@ -63,12 +63,12 @@ az iot hub device-identity create --hub-name "<IoT Hub Name>" --device-id "<Edge
 
 ### <a name="deploy-the-container-on-azure-iot-edge-on-the-host-computer"></a>Distribuera behållaren på Azure IoT Edge på värddatorn
 
-Distribuera behållaren för rums analys som en IoT-modul på värddatorn med hjälp av Azure CLI. Distributions processen kräver en distributions manifest fil som beskriver de obligatoriska behållarna, variablerna och konfigurationerna för distributionen. Du kan hitta ett exempel på [Azure Stack Edge-särskilt distributions manifest](https://github.com/Azure-Samples/cognitive-services-rest-api-samples/) och ett [icke-Azure Stack-särskilt distributions manifest](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json) på GitHub, som innehåller en grundläggande distributions konfiguration för behållaren för *spatial analys* . 
+Distribuera behållaren för rums analys som en IoT-modul på värddatorn med hjälp av Azure CLI. Distributions processen kräver en distributions manifest fil som beskriver de obligatoriska behållarna, variablerna och konfigurationerna för distributionen. Du hittar ett Azure Stack exempel på ett särskilt distributions [manifest](https://go.microsoft.com/fwlink/?linkid=2142179), ett [icke Azure Stack-](https://go.microsoft.com/fwlink/?linkid=2152189)särskilt distributions manifest och en [virtuell Azure-dator med GPU](https://go.microsoft.com/fwlink/?linkid=2152189) -GitHub, som innehåller en grundläggande distributions konfiguration för behållaren för *spatial analys* . 
 
 Du kan också använda Azure IoT-tillägg för Visual Studio Code för att utföra åtgärder med IoT Hub. Gå till [distribuera Azure IoT Edge moduler från Visual Studio Code](../../iot-edge/how-to-deploy-modules-vscode.md) för mer information.
 
 > [!NOTE] 
-> Behållarna *spatial-analys-teleympkvistar* och *spatial-analys – diagnostik* är valfria. Du kan välja att ta bort dem från *DeploymentManifest.jsi* filen. Mer information finns i artikeln om [telemetri och fel sökning](./spatial-analysis-logging.md) . Du kan hitta två exempel *DeploymentManifest.jspå* filer på GitHub, antingen för en [Azure Stack Edge-enhet](https://go.microsoft.com/fwlink/?linkid=2142179) eller en annan [stationär dator](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json)
+> Behållarna *spatial-analys-teleympkvistar* och *spatial-analys – diagnostik* är valfria. Du kan välja att ta bort dem från *DeploymentManifest.jsi* filen. Mer information finns i artikeln om [telemetri och fel sökning](./spatial-analysis-logging.md) . Du kan hitta tre exempel *DeploymentManifest.jspå* filer på GitHub, för [Azure Stack gräns enheter](https://go.microsoft.com/fwlink/?linkid=2142179), en [stationär dator](https://go.microsoft.com/fwlink/?linkid=2152189)eller en [virtuell Azure-dator med GPU](https://go.microsoft.com/fwlink/?linkid=2152189)
 
 ### <a name="set-environment-variables"></a>Ange miljövariabler
 
@@ -185,7 +185,7 @@ Vänta tills installationen är klar och navigera till din resurs i Azure Portal
 * `EventHubConsumerGroup` – Namnet på konsument gruppen från Azure IoT Hub kan du skapa en ny konsument grupp i IoT Hub eller använda standard gruppen. 
 * `IotHubConnectionString` – Anslutnings strängen till Azure-IoT Hub kan hämtas från avsnittet nycklar i Azure IoT Hub resurs ![ Konfigurera parametrar](./media/spatial-analysis/solution-app-config-page.png)
 
-När de här två inställningarna har lagts till klickar du på **Spara**. Klicka sedan på **autentisering/auktorisering** i den vänstra navigerings menyn och uppdatera den med önskad autentiseringsnivå. Vi rekommenderar Azure Active Director (Azure AD) Express. 
+När de här två inställningarna har lagts till klickar du på **Spara**. Klicka sedan på **autentisering/auktorisering** i den vänstra navigerings menyn och uppdatera den med önskad autentiseringsnivå. Vi rekommenderar Azure Active Directory (Azure AD) Express. 
 
 ### <a name="test-the-app"></a>Testa appen
 

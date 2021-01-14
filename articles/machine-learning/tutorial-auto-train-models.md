@@ -11,12 +11,12 @@ ms.author: anumamah
 ms.reviewer: nibaccam
 ms.date: 08/14/2020
 ms.custom: devx-track-python, automl
-ms.openlocfilehash: e1a5370501fe73fb783db9a039d9f060acdb0a35
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: f4d26ba6bec8f3e63ba89ed9abae789704a0828b
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96511040"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184109"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>Självstudie: Använda automatiserad maskininlärning till att beräkna taxikostnader
 
@@ -208,7 +208,7 @@ För att träna en modell automatiskt gör du följande:
 
 Definiera experiment parametern och modell inställningarna för träning. Visa hela listan med [inställningar](how-to-configure-auto-train.md). Att skicka experimentet med dessa standardinställningar tar cirka 5-20 min, men om du vill ha en kortare körnings tid minskar du `experiment_timeout_hours` parametern.
 
-|Egenskap| Värde i den här självstudien |Beskrivning|
+|Egenskap| Värde i den här självstudien |Description|
 |----|----|---|
 |**iteration_timeout_minutes**|10|Tidsgräns i minuter för varje iteration. Öka värdet för större data uppsättningar som behöver mer tid för varje iteration.|
 |**experiment_timeout_hours**|0.3|Maximal tid i timmar som alla iterationer kombineras kan ta innan experimentet avslutas.|
@@ -255,7 +255,7 @@ När experimentet har startats visas uppdateringarna Live som experimentet. För
 
 ```python
 from azureml.core.experiment import Experiment
-experiment = Experiment(ws, "taxi-experiment")
+experiment = Experiment(ws, "Tutorial-NYCTaxi")
 local_run = experiment.submit(automl_config, show_output=True)
 ```
 

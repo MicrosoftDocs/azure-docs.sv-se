@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: d2c0003058c2271e46a352567a14e1b01dfabdbf
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: b1fa4d3e6c017232922e500352558e34726b90cc
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98071110"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183089"
 ---
 # <a name="tutorial-train-your-first-machine-learning-model-part-3-of-4"></a>Självstudie: träna din första Machine Learning-modell (del 3 av 4)
 
@@ -38,9 +38,10 @@ I den här kursen får du:
 > * Logga mått till Azure Machine Learning.
 > * Visa dina mått i molnet.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
-* Slut för ande av [del 2](tutorial-1st-experiment-hello-world.md) av serien.
+- [Anaconda](https://www.anaconda.com/download/) eller [Miniconda](https://www.anaconda.com/download/) för att hantera virtuella python-miljöer och installera paket.
+- Slut för ande av [part1](tutorial-1st-experiment-sdk-setup-local.md) och [del 2](tutorial-1st-experiment-hello-world.md) av serien.
 
 ## <a name="create-training-scripts"></a>Skapa utbildnings skript
 
@@ -87,7 +88,7 @@ Den här miljön har alla beroenden som ditt modell-och utbildnings skript kräv
 
 ## <a name="test-locally"></a><a name="test-local"></a> Testa lokalt
 
-Använd följande kod för att testa skriptet lokalt i den nya miljön.  
+I ett terminal-eller Anaconda-kommandotolk-fönster använder du följande kod för att testa skriptet lokalt i den nya miljön.  
 
 ```bash
 conda deactivate                                # If you are still using the tutorial environment, exit it

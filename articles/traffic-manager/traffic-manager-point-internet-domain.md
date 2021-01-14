@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/11/2016
 ms.author: duau
-ms.openlocfilehash: 93a8076f12b8f006d600cbd32ce39169f4b47c67
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: e0e2acfb0ec0068dcd08ae660e397f65e039a665
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96014337"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183752"
 ---
 # <a name="point-a-company-internet-domain-to-an-azure-traffic-manager-domain"></a>Peka företagets Internetdomän mot en Azure Traffic Manager-domän
 
@@ -33,5 +33,5 @@ Alla trafik begär anden till *www- \. contoso.com* får dirigeras till *contoso
 ## <a name="next-steps"></a>Nästa steg
 
 * [Traffic Manager-dirigeringsmetoder](traffic-manager-routing-methods.md)
-* [Traffic Manager-inaktivera, aktivera eller ta bort en profil](disable-enable-or-delete-a-profile.md)
-* [Traffic Manager – Inaktivera eller aktivera en slutpunkt](disable-or-enable-an-endpoint.md)
+* [Traffic Manager-inaktivera, aktivera eller ta bort en profil](./traffic-manager-manage-profiles.md)
+* [Traffic Manager – Inaktivera eller aktivera en slutpunkt](./traffic-manager-manage-endpoints.md)

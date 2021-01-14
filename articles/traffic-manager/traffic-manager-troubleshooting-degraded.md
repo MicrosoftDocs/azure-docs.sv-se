@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/03/2017
 ms.author: duau
-ms.openlocfilehash: 83dc432a1f88b443d500bf9a977abfed69211156
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b76eab5771d724e4f0ec56b7d5acd5cf5f91edc0
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96003862"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183463"
 ---
 # <a name="troubleshooting-degraded-state-on-azure-traffic-manager"></a>Felsöka degraderat tillstånd på Azure Traffic Manager
 
-Den här artikeln beskriver hur du felsöker en Azure Traffic Manager-profil som visar en degraderad status. Det första steget i att felsöka ett Azure-Traffic Manager degraderat tillstånd är att aktivera loggning.  Mer information hittar du i [Aktivera resurs loggar](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-diagnostic-logs) . I det här scenariot bör du tänka på att du har konfigurerat en Traffic Manager-profil som pekar på några av dina cloudapp.net-värdbaserade tjänster. Om hälso tillståndet för Traffic Manager visar **degraderad** status kan statusen för en eller flera slut punkter **försämras**:
+Den här artikeln beskriver hur du felsöker en Azure Traffic Manager-profil som visar en degraderad status. Det första steget i att felsöka ett Azure-Traffic Manager degraderat tillstånd är att aktivera loggning.  Mer information hittar du i [Aktivera resurs loggar](./traffic-manager-diagnostic-logs.md) . I det här scenariot bör du tänka på att du har konfigurerat en Traffic Manager-profil som pekar på några av dina cloudapp.net-värdbaserade tjänster. Om hälso tillståndet för Traffic Manager visar **degraderad** status kan statusen för en eller flera slut punkter **försämras**:
 
 ![status för degraderad slut punkt](./media/traffic-manager-troubleshooting-degraded/traffic-manager-degradedifonedegraded.png)
 
@@ -31,8 +31,8 @@ Om hälso tillståndet för Traffic Manager visar **inaktiv** status kan båda s
 
 ## <a name="understanding-traffic-manager-probes"></a>Förstå Traffic Manager avsökningar
 
-* Traffic Manager anser att en slut punkt endast är ONLINE när avsökningen får ett HTTP 200-svar tillbaka från avsöknings Sök vägen. Om du returnerar en annan HTTP-svarskod måste du lägga till den svars koden till [förväntade status kod intervall](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-monitoring#configure-endpoint-monitoring) i Traffic Manager profilen.
-* Ett 30 omdirigerings svar behandlas som ett haveri om du inte har angett en giltig svarskod i [förväntade status kod intervall](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-monitoring#configure-endpoint-monitoring) för din Traffic Manager profil. Traffic Manager avsöker inte omdirigerings målet.
+* Traffic Manager anser att en slut punkt endast är ONLINE när avsökningen får ett HTTP 200-svar tillbaka från avsöknings Sök vägen. Om du returnerar en annan HTTP-svarskod måste du lägga till den svars koden till [förväntade status kod intervall](./traffic-manager-monitoring.md#configure-endpoint-monitoring) i Traffic Manager profilen.
+* Ett 30 omdirigerings svar behandlas som ett haveri om du inte har angett en giltig svarskod i [förväntade status kod intervall](./traffic-manager-monitoring.md#configure-endpoint-monitoring) för din Traffic Manager profil. Traffic Manager avsöker inte omdirigerings målet.
 * Certifikat fel ignoreras för HTTPs-avsökningar.
 * Det faktiska innehållet i avsöknings Sök vägen spelar ingen roll, så länge som en 200 returneras. Avsökning av en URL till ett statiskt innehåll, t. ex. "/favicon.ico" är en vanlig teknik. Dynamiskt innehåll, som ASP-sidor, kan inte alltid returnera 200, även om programmet är felfritt.
 * Ett bra tips är att ställa in avsöknings Sök vägen till något som har tillräckligt med logik för att avgöra om platsen är aktiv eller inte. I föregående exempel, genom att ange sökvägen till "/favicon.ico", testar du bara att w3wp.exe svarar. Den här avsökningen kanske inte indikerar att webb programmet är felfritt. Ett bättre alternativ är att ange en sökväg till något som "/PROBE.aspx" som har logik för att fastställa webbplatsens hälso tillstånd. Du kan till exempel använda prestanda räknare för processor användning eller mäta antalet misslyckade förfrågningar. Eller så kan du försöka få åtkomst till databas resurser eller sessionstillstånd för att kontrol lera att webb programmet fungerar.
@@ -87,12 +87,12 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
 
 [Vad är Traffic Manager](traffic-manager-overview.md)
 
-[Molntjänster](https://go.microsoft.com/fwlink/?LinkId=314074)
+[Molntjänster](/previous-versions/azure/jj155995(v=azure.100))
 
 [Azure App Service](https://azure.microsoft.com/documentation/services/app-service/web/)
 
-[Åtgärder i Traffic Manager (REST-API-referens)](https://go.microsoft.com/fwlink/?LinkId=313584)
+[Åtgärder i Traffic Manager (REST-API-referens)](/previous-versions/azure/reference/hh758255(v=azure.100))
 
 [Azure Traffic Manager-cmdletar][1]
 
-[1]: https://docs.microsoft.com/powershell/module/az.trafficmanager
+[1]: /powershell/module/az.trafficmanager

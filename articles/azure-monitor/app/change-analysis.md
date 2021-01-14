@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: cawams
 ms.author: cawa
 ms.date: 05/04/2020
-ms.openlocfilehash: 50e199d2d56016086bb409f8690e9828f1d19984
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 0cdb82bbf38244bc91ed54ffb7d7d734cefe9dd2
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97881517"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183327"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>Använda program ändrings analys (för hands version) i Azure Monitor
 
@@ -194,6 +194,27 @@ Om det är första gången du visar ändrings historik efter dess integrering me
 ### <a name="azure-lighthouse-subscription-is-not-supported"></a>Azure Lighthouse-prenumeration stöds inte
 
 - **Det gick inte att fråga Microsoft. ChangeAnalysis Resource Provider** med meddelande *Azure Lighthouse-prenumerationen stöds inte. ändringarna är bara tillgängliga i prenumerationens hem klient organisation*. Det finns en begränsning just nu för att kunna registrera Analysis Resource Provider via Azure Lighthouse-prenumerationen för användare som inte finns i hem klient organisationen. Vi förväntar sig att den här begränsningen ska åtgärdas inom en snar framtid. Om detta är ett blockerings problem finns det en lösning som inbegriper att skapa ett huvud namn för tjänsten och uttryckligen tilldela rollen för att tillåta åtkomst.  Kontakta changeanalysishelp@microsoft.com om du vill veta mer om det.
+
+### <a name="an-error-occurred-while-getting-changes-please-refresh-this-page-or-come-back-later-to-view-changes"></a>Ett fel uppstod vid hämtning av ändringar. Uppdatera den här sidan eller kom tillbaka senare om du vill visa ändringar
+
+Detta är det allmänna fel meddelandet som presenteras av program ändrings analys tjänsten när det inte gick att läsa in ändringar. Några kända orsaker är:
+- Internet anslutnings fel från klient enheten
+- Change Analysis Service är tillfälligt otillgängligt om du uppdaterar sidan efter några minuter åtgärdar det här problemet vanligt vis. Om felet kvarstår kan du kontakta changeanalysishelp@micorosoft.com
+
+### <a name="you-dont-have-enough-permissions-to-view-some-changes-contact-your-azure-subscription-administrator"></a>Du har inte tillräcklig behörighet för att visa vissa ändringar. Kontakta administratören för Azure-prenumerationen
+
+Detta är det allmänna obehöriga fel meddelandet, som förklarar att den aktuella användaren inte har tillräcklig behörighet för att visa ändringen. Åtkomst till minst läsare krävs för resursen för att Visa infrastruktur ändringar som returneras av Azure Resource Graph och Azure Resource Manager. För webb program ändringar i gäst filen och konfigurations ändringar krävs minst deltagar roll.
+
+### <a name="failed-to-register-microsoftchangeanalysis-resource-provider"></a>Det gick inte att registrera Microsoft. ChangeAnalysis Resource Provider
+ 
+**Du har inte tillräcklig behörighet för att registrera Microsoft. ChangeAnalysis Resource Provider. Kontakta administratören för Azure-prenumerationen.** Det här fel meddelandet innebär att din roll i den aktuella prenumerationen inte har det definitions område för **Microsoft. support/register/åtgärd** som är associerat med den. Detta kan inträffa om du inte är ägare till en prenumeration och har delade åtkomst behörigheter via en medarbetare. t. ex. Visa åtkomst till en resurs grupp. Du kan åtgärda detta genom att kontakta Prenumerationens ägare för att registrera **Microsoft. ChangeAnalysis** -resurs leverantören. Detta kan göras i Azure Portal via **prenumerationer | Resurs leverantörer** och Sök efter ```Microsoft.ChangeAnalysis``` och registrera i användar gränssnittet, eller via Azure PowerShell eller Azure CLI.
+
+Registrera resurs leverantör via PowerShell: 
+
+```PowerShell
+# Register resource provider
+Register-AzResourceProvider -ProviderNamespace "Microsoft.ChangeAnalysis"
+```
 
 ## <a name="next-steps"></a>Nästa steg
 

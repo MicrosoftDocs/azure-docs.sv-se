@@ -11,12 +11,12 @@ ms.author: laobri
 ms.reviewer: laobri
 ms.date: 10/13/2020
 ms.custom: contperf-fy20q4, devx-track-python
-ms.openlocfilehash: 916064742e69b7d355a0c7e541d4f2270e8854f4
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 8222f88f5118c4ac8f489bb05ee5ca2724dbf067
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98134457"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184092"
 ---
 # <a name="tutorial-build-an-azure-machine-learning-pipeline-for-batch-scoring"></a>Självstudie: Bygg en Azure Machine Learning pipeline för batch-Poäng
 
@@ -38,7 +38,7 @@ I den här självstudien slutför du följande uppgifter:
 
 Om du inte har någon Azure-prenumeration kan du skapa ett kostnadsfritt konto innan du börjar. Prova den [kostnads fria eller betalda versionen av Azure Machine Learning](https://aka.ms/AMLFree) idag.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 * Om du inte redan har en Azure Machine Learning arbets yta eller en virtuell dator i datorn, fyller du [i del 1 i installations guiden för](tutorial-1st-experiment-sdk-setup.md).
 * När du är klar med installations självstudien använder du samma Notebook-Server för att öppna *självstudierna/Machine-Learning-pipelines-Advanced/tutorial-pipeline-batch-scoring-Classification. ipynb* Notebook.
@@ -341,7 +341,7 @@ from azureml.core import Experiment
 from azureml.pipeline.core import Pipeline
 
 pipeline = Pipeline(workspace=ws, steps=[batch_score_step])
-pipeline_run = Experiment(ws, 'batch_scoring').submit(pipeline)
+pipeline_run = Experiment(ws, 'Tutorial-Batch-Scoring').submit(pipeline)
 pipeline_run.wait_for_completion(show_output=True)
 ```
 
@@ -405,7 +405,7 @@ import requests
 rest_endpoint = published_pipeline.endpoint
 response = requests.post(rest_endpoint, 
                          headers=auth_header, 
-                         json={"ExperimentName": "batch_scoring",
+                         json={"ExperimentName": "Tutorial-Batch-Scoring",
                                "ParameterAssignments": {"process_count_per_node": 6}})
 run_id = response.json()["Id"]
 ```
@@ -418,7 +418,7 @@ Den nya körningen ser ut ungefär som den pipeline du körde tidigare i självs
 from azureml.pipeline.core.run import PipelineRun
 from azureml.widgets import RunDetails
 
-published_pipeline_run = PipelineRun(ws.experiments["batch_scoring"], run_id)
+published_pipeline_run = PipelineRun(ws.experiments["Tutorial-Batch-Scoring"], run_id)
 RunDetails(published_pipeline_run).show()
 ```
 

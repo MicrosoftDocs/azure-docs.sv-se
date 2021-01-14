@@ -4,15 +4,15 @@ description: Felsök vanliga problem i en distribution på Azure File Sync, som 
 author: jeffpatt24
 ms.service: storage
 ms.topic: troubleshooting
-ms.date: 6/12/2020
+ms.date: 1/13/2021
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: c7405ada800bd5fb9161e9d96bd4c8b0484be620
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b84256188cf5df3ddf389f763e669a2b2ca00852
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005355"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183344"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Felsök Azure File Sync
 Använd Azure File Sync för att centralisera organisationens fil resurser i Azure Files, samtidigt som du behåller flexibilitet, prestanda och kompatibilitet för en lokal fil server. Windows Server omvandlas av Azure File Sync till ett snabbt cacheminne för Azure-filresursen. Du kan använda alla protokoll som är tillgängliga på Windows Server för att komma åt data lokalt, inklusive SMB, NFS och FTPS. Du kan ha så många cacheminnen som du behöver över hela världen.
@@ -199,10 +199,27 @@ På den server som visas som "visas offline" i portalen tittar du på händelse-
 - Om **GetNextJob slutfördes med status: 0** loggas kan servern kommunicera med Azure File Sync-tjänsten. 
     - Öppna Aktivitetshanteraren på servern och kontrollera att Storage Sync Monitor-processen (AzureStorageSyncMonitor.exe) körs. Om processen inte körs provar du först att starta om servern. Om det inte går att lösa problemet genom att starta om servern uppgraderar du till den senaste [agentversionen](./storage-files-release-notes.md) för Azure File Sync. 
 
-- Om **GetNextJob slutfördes med status:-2134347756** är loggad kan servern inte kommunicera med Azure File Sync tjänsten på grund av en brand vägg eller proxy. 
+- Om **GetNextJob slutfördes med status:-2134347756** har loggats kan servern inte kommunicera med Azure File Sync tjänsten på grund av en brand vägg, proxy eller TLS-chiffrering. 
     - Om servern finns bakom en brandvägg kontrollerar du att port 443 för utgående trafik tillåts. Om brand väggen begränsar trafik till vissa domäner kontrollerar du att de domäner som anges i brand Väggs [dokumentationen](./storage-sync-files-firewall-and-proxy.md#firewall) är tillgängliga.
     - Om servern finns bakom en proxyserver konfigurerar du de datorövergripande proxyinställningarna genom att följa anvisningarna i proxy- [dokumentationen](./storage-sync-files-firewall-and-proxy.md#proxy).
     - Använd Test-StorageSyncNetworkConnectivity-cmdlet för att kontrol lera nätverks anslutningen till tjänstens slut punkter. Läs mer i [testa nätverks anslutningen till tjänstens slut punkter](./storage-sync-files-firewall-and-proxy.md#test-network-connectivity-to-service-endpoints).
+    - Om du vill lägga till chiffersviter på servern använder du grup princip eller TLS-cmdlet: ar:
+        - Information om hur du använder en grup princip finns i [Konfigurera TLS-chiffrering av TLS-paket med hjälp av Grupprincip](https://docs.microsoft.com/windows-server/security/tls/manage-tls#configuring-tls-cipher-suite-order-by-using-group-policy).
+        - Information om hur du använder TLS-cmdlets finns i [Konfigurera TLS-chiffrering av TLS-paket med hjälp av TLS PowerShell-cmdletar](https://docs.microsoft.com/windows-server/security/tls/manage-tls#configuring-tls-cipher-suite-order-by-using-tls-powershell-cmdlets).
+    
+        Azure File Sync stöder för närvarande följande chiffersviter för TLS 1,2-protokollet:  
+        - TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384_P384  
+        - TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256_P256  
+        - TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384_P384  
+        - TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256_P256  
+        - TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P256  
+        - TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256  
+        - TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA_P256  
+        - TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA_P256  
+        - TLS_RSA_WITH_AES_256_GCM_SHA384  
+        - TLS_RSA_WITH_AES_128_GCM_SHA256  
+        - TLS_RSA_WITH_AES_256_CBC_SHA256  
+        - TLS_RSA_WITH_AES_128_CBC_SHA256  
 
 - Om **GetNextJob slutfördes med status:-2134347764** är inloggad kan servern inte kommunicera med Azure File Sync tjänsten på grund av ett utgånget eller Borttaget certifikat.  
     - Kör följande PowerShell-kommando på servern för att återställa certifikatet som används för autentisering:

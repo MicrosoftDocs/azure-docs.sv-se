@@ -3,12 +3,12 @@ title: Distribuera resurser till prenumerationen
 description: Beskriver hur du skapar en resurs grupp i en Azure Resource Manager-mall. Det visar också hur du distribuerar resurser i Azures prenumerations omfång.
 ms.topic: conceptual
 ms.date: 01/13/2021
-ms.openlocfilehash: ba055970a8fac71b798fca9d3c76550cb7d482a7
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 1daf95945f619d0e904880d8a8a778810a685d9a
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98179001"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183990"
 ---
 # <a name="subscription-deployments-with-arm-templates"></a>Prenumerations distribution med ARM-mallar
 
@@ -182,6 +182,8 @@ Du kan använda en kapslad distribution med `scope` och `location` Ange.
 Eller så kan du ange omfånget till `/` för vissa resurs typer, t. ex. hanterings grupper.
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/subscription-create-mg.json" highlight="12,15":::
+
+Mer information finns i [hanterings grupp](deploy-to-management-group.md#management-group).
 
 ## <a name="resource-groups"></a>Resursgrupper
 

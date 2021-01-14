@@ -6,19 +6,20 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: navits09
 ms.author: navits
-ms.date: 09/18/2020
-ms.openlocfilehash: b042d1e1f38b2a4a84522d58ad482d4262f69a4a
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.date: 01/14/2020
+ms.openlocfilehash: 8979a94ee63ef50c0a3abacd5ab3515226200131
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94488901"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183446"
 ---
 # <a name="support-for-the-commercial-marketplace-program-in-partner-center"></a>Stöd för programmet för kommersiella marknads platser i Partner Center
 
 Microsoft tillhandahåller stöd för en mängd olika produkter och tjänster. Att hitta rätt support team är viktigt för att säkerställa en lämplig och korrekt svars tid. Överväg följande scenarier, som kan hjälpa dig att dirigera din fråga till lämpligt team:
 
 - Om du är utgivare och har en fråga från en kund ber du kunden att be om support med hjälp av support länkarna i [Azure Portal](https://portal.azure.com/).
+- Om du är utgivare och har identifierat ett säkerhets problem med ett program som körs på Azure, se [så här loggar du in ett support ärende för en säkerhets händelse](/azure/security/fundamentals/event-support-ticket). Utgivare måste rapportera misstänkta säkerhets händelser, inklusive säkerhets incidenter och säkerhets risker för sina Azure Marketplace-program och tjänst erbjudanden, så snart som möjligt.
 - Om du är utgivare och har en fråga som rör din app eller tjänst kan du läsa följande support alternativ.
 
 ## <a name="support-options-for-publishers"></a>Support alternativ för utgivare
@@ -62,8 +63,8 @@ Följande alternativ blir tillgängliga:
 
 - Om du vill välja ett annat ämne väljer du en annan ämnes länk under det **valda problemet**.
 - Granska beskrivningen av det här problemet, om det är tillgängligt.  Det är den text som visas ovanför de **rekommenderade stegen**.
-- Granska **rekommenderade steg** , om det är tillgängligt.
-- Granska **rekommenderade dokument** , om det är tillgängligt.
+- Granska **rekommenderade steg**, om det är tillgängligt.
+- Granska **rekommenderade dokument**, om det är tillgängligt.
 
 ![Rekommenderade lösningar](./media/support/recommended-solutions.png)
 
@@ -85,7 +86,7 @@ För att hjälpa Support för agenter att felsöka ditt problem bör du övervä
 
 ### <a name="microsoft-edge-and-google-chrome"></a>Microsoft Edge och Google Chrome
 
-Så här genererar du en-fil med **Microsoft Edge** eller **Google Chrome** :
+Så här genererar du en-fil med **Microsoft Edge** eller **Google Chrome**:
 
 1. Gå till webb sidan där du har drabbats av problemet.
 2. I det övre högra hörnet i fönstret väljer du ikonen med tre punkter och sedan **fler verktyg** för  >  **utvecklarverktyg**. Du kan trycka på F12 som en genväg.
@@ -106,7 +107,7 @@ Så här genererar du en-fil med **Microsoft Edge** eller **Google Chrome** :
 
 ### <a name="mozilla-firefox"></a>Mozilla Firefox
 
-Så här genererar du en-fil med **Mozilla Firefox** :
+Så här genererar du en-fil med **Mozilla Firefox**:
 
 1. Gå till webb sidan där du har drabbats av problemet.
 1. I det övre högra hörnet i fönstret väljer du ikonen med tre punkter och sedan **webb utvecklarens**  >  **Växla verktyg**. Du kan trycka på F12 som en genväg.
@@ -121,9 +122,9 @@ Så här genererar du en-fil med **Mozilla Firefox** :
 
 ### <a name="apple-safari"></a>Apple Safari
 
-Så här genererar du en-fil med **Safari** :
+Så här genererar du en-fil med **Safari**:
 
-1. Aktivera utvecklarverktyg i Safari: Välj inställningar för **Safari**  >  **Preferences**. Gå till fliken **Avancerat** och välj sedan **Visa utveckla meny i meny raden**.
+1. Aktivera utvecklarverktyg i Safari: Välj inställningar för **Safari**  >  . Gå till fliken **Avancerat** och välj sedan **Visa utveckla meny i meny raden**.
 1. Gå till webb sidan där du har drabbats av problemet.
 1. Välj **utveckla** och välj sedan **Visa webb kontroll**.
 1. Välj fliken **nätverk** och välj sedan **Rensa nätverks objekt** för att ta bort befintliga loggar.

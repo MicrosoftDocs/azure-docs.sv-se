@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: fae9a4b1b82a1fe23e8882b45880a6ba0081f580
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 2f33fe4fafbe194238fcfbd4942807ed2fc4d6ff
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98071138"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183548"
 ---
 # <a name="tutorial-get-started-with-azure-machine-learning-in-your-development-environment-part-1-of-4"></a>Självstudie: kom igång med Azure Machine Learning i utvecklings miljön (del 1 av 4)
 
@@ -54,18 +54,20 @@ Om det här kommandot returnerar ett `conda not found` fel kan du [Hämta och in
 När du har installerat Conda kan du använda ett terminalfönster-eller Anaconda-kommandotolk-fönster för att skapa en ny miljö:
 
 ```bash
-conda create -n tutorial python=3.7
+conda create -n tutorial python=3.8
 ```
 
 Sedan installerar du Azure Machine Learning SDK i Conda-miljön som du skapade:
 
 ```bash
 conda activate tutorial
-pip install azureml-sdk
+pip install azureml-core
 ```
     
 > [!NOTE]
-> Det tar cirka 5 minuter innan den Azure Machine Learning SDK-installationen har slutförts.
+> Det tar ungefär 2 minuter innan installationen av Azure Machine Learning SDK slutförts.
+>
+> Försök intstead om du får ett timeout-fel `pip install --default-timeout=100 azureml-core` .
 
 
 > [!div class="nextstepaction"]

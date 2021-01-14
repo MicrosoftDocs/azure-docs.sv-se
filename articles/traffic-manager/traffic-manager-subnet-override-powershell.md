@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: traffic-manager
 ms.date: 09/18/2019
 ms.author: duau
-ms.openlocfilehash: 01bd3b1e945ee7c9ac16af7048536c0a9e2d731a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 502533b69058eacd4ad18a3b29a33fbc4a3715a5
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89401596"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183803"
 ---
 # <a name="traffic-manager-subnet-override-using-azure-powershell"></a>Traffic Manager under näts Åsidosätt med Azure PowerShell
 
@@ -43,7 +43,7 @@ Du kan köra kommandona som följer i [Azure Cloud Shell](https://shell.azure.co
 
 1. **Hämta Traffic Manager slut punkten:**
 
-    Om du vill aktivera åsidosättande av undernät hämtar du den slut punkt som du vill lägga till åsidosättningen i och lagrar den i en variabel med hjälp av [Get-AzTrafficManagerEndpoint](https://docs.microsoft.com/powershell/module/az.trafficmanager/get-aztrafficmanagerendpoint?view=azps-2.5.0).
+    Om du vill aktivera åsidosättande av undernät hämtar du den slut punkt som du vill lägga till åsidosättningen i och lagrar den i en variabel med hjälp av [Get-AzTrafficManagerEndpoint](/powershell/module/az.trafficmanager/get-aztrafficmanagerendpoint?view=azps-2.5.0).
 
     Ersätt namn, PROFILENAME och ResourceGroupName med värdena för den slut punkt som du ändrar.
 
@@ -54,7 +54,7 @@ Du kan köra kommandona som följer i [Azure Cloud Shell](https://shell.azure.co
     ```
 2. **Lägg till IP-adressintervallet till slut punkten:**
     
-    Om du vill lägga till IP-adressintervallet till slut punkten använder du [Add-AzTrafficManagerIpAddressRange](https://docs.microsoft.com/powershell/module/az.trafficmanager/add-aztrafficmanageripaddressrange?view=azps-2.5.0&viewFallbackFrom=azps-2.4.0) för att lägga till intervallet.
+    Om du vill lägga till IP-adressintervallet till slut punkten använder du [Add-AzTrafficManagerIpAddressRange](/powershell/module/az.trafficmanager/add-aztrafficmanageripaddressrange?view=azps-2.5.0&viewFallbackFrom=azps-2.4.0) för att lägga till intervallet.
 
     ```powershell
 
@@ -68,18 +68,18 @@ Du kan köra kommandona som följer i [Azure Cloud Shell](https://shell.azure.co
     Add-AzTrafficManagerIPAddressRange -TrafficManagerEndpoint $TrafficManagerEndpoint -First "12.13.14.0" -Last "12.13.14.31" -Scope 27
  
     ```
-    När intervallen har lagts till använder du [set-AzTrafficManagerEndpoint](https://docs.microsoft.com/powershell/module/az.trafficmanager/set-aztrafficmanagerendpoint?view=azps-2.5.0) för att uppdatera slut punkten.
+    När intervallen har lagts till använder du [set-AzTrafficManagerEndpoint](/powershell/module/az.trafficmanager/set-aztrafficmanagerendpoint?view=azps-2.5.0) för att uppdatera slut punkten.
 
     ```powershell
 
     Set-AzTrafficManagerEndpoint -TrafficManagerEndpoint $TrafficManagerEndpoint
 
     ```
-Borttagning av IP-adressintervall kan slutföras med hjälp av [Remove-AzTrafficManagerIpAddressRange](https://docs.microsoft.com/powershell/module/az.trafficmanager/remove-aztrafficmanageripaddressrange?view=azps-2.5.0).
+Borttagning av IP-adressintervall kan slutföras med hjälp av [Remove-AzTrafficManagerIpAddressRange](/powershell/module/az.trafficmanager/remove-aztrafficmanageripaddressrange?view=azps-2.5.0).
 
 1.  **Hämta Traffic Manager slut punkten:**
 
-    Om du vill aktivera åsidosättande av undernät hämtar du den slut punkt som du vill lägga till åsidosättningen i och lagrar den i en variabel med hjälp av [Get-AzTrafficManagerEndpoint](https://docs.microsoft.com/powershell/module/az.trafficmanager/get-aztrafficmanagerendpoint?view=azps-2.5.0).
+    Om du vill aktivera åsidosättande av undernät hämtar du den slut punkt som du vill lägga till åsidosättningen i och lagrar den i en variabel med hjälp av [Get-AzTrafficManagerEndpoint](/powershell/module/az.trafficmanager/get-aztrafficmanagerendpoint?view=azps-2.5.0).
 
     Ersätt namn, PROFILENAME och ResourceGroupName med värdena för den slut punkt som du ändrar.
 
@@ -102,7 +102,7 @@ Borttagning av IP-adressintervall kan slutföras med hjälp av [Remove-AzTraffic
     Remove-AzTrafficManagerIpAddressRange -TrafficManagerEndpoint $TrafficManagerEndpoint -First "12.13.14.0" -Last "12.13.14.31" -Scope 27
 
     ```
-     När intervallen har tagits bort använder du [set-AzTrafficManagerEndpoint](https://docs.microsoft.com/powershell/module/az.trafficmanager/set-aztrafficmanagerendpoint?view=azps-2.5.0) för att uppdatera slut punkten.
+     När intervallen har tagits bort använder du [set-AzTrafficManagerEndpoint](/powershell/module/az.trafficmanager/set-aztrafficmanagerendpoint?view=azps-2.5.0) för att uppdatera slut punkten.
 
     ```powershell
 
@@ -113,4 +113,4 @@ Borttagning av IP-adressintervall kan slutföras med hjälp av [Remove-AzTraffic
 ## <a name="next-steps"></a>Nästa steg
 Läs mer om hur du Traffic Manager [metoder för trafik cirkulation](traffic-manager-routing-methods.md).
 
-Lär dig mer om [routningsmetod för under näts trafik](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods#subnet-traffic-routing-method)
+Lär dig mer om [routningsmetod för under näts trafik](./traffic-manager-routing-methods.md#subnet-traffic-routing-method)

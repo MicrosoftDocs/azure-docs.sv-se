@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d80b8f41e11f2fffa86dc7597fdf44dd27825fc
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.openlocfilehash: c169847c96d10d1c9fb47b210bc85a15e0690e32
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98028904"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183123"
 ---
 # <a name="frequently-asked-questions-identity-protection-in-azure-active-directory"></a>Vanliga frågor om identitets skydd i Azure Active Directory
 
@@ -31,7 +31,7 @@ Det finns ett aktuellt känt problem som orsakar svars tider i det avstängda an
 
 ## <a name="frequently-asked-questions"></a>Vanliga frågor och svar
 
-### <a name="why-is-a-user-is-at-risk"></a>Varför är en användare utsatt för risk?
+### <a name="why-is-a-user-at-risk"></a>Varför är en användare utsatt för risk?
 
 Om du är Azure AD Identity Protection kund går du till vyn [riskfyllda användare](howto-identity-protection-investigate-risk.md#risky-users) och klickar på en användare som är utsatt för risk. I kassan längst ned visas alla händelser som ledde till en ändring av användar risken i fliken risk historik. Om du vill se alla riskfyllda inloggningar för användaren klickar du på användarens riskfyllda inloggningar. Om du vill se alla risk identifieringar för den här användaren klickar du på användarens risk identifieringar.
 

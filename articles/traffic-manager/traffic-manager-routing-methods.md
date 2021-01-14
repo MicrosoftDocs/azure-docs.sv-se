@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: duau
-ms.openlocfilehash: 3cf493beab6dfe1767ae35ea36732dc364e29736
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0eb49f3c2acc31cba7b245995cf3bcb579113e4c
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89401664"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183821"
 ---
 # <a name="traffic-manager-routing-methods"></a>Traffic Manager-dirigeringsmetoder
 
@@ -28,7 +28,7 @@ Följande metoder för trafik cirkulation är tillgängliga i Traffic Manager:
 * **[Prestanda](#performance):** Välj **prestanda** när du har slut punkter på olika geografiska platser och du vill att slutanvändarna ska använda den "närmast" slut punkten i förhållande till den lägsta nätverks fördröjningen.
 * **[Geografisk](#geographic):** Välj **geografisk** så att användarna dirigeras till specifika slut punkter (Azure, externa eller kapslade) baserat på vilken geografisk plats deras DNS-fråga kommer från. Detta ger Traffic Manager kunder möjlighet att aktivera scenarier där man känner till en användares geografiska region och dirigerar dem baserat på det är viktigt. Exempel innefattar att följa data suveränitets uppdrag, lokalisering av innehåll & användar upplevelse och mätning av trafik från olika regioner.
 * **[Multivärde](#multivalue):** Välj **multivärde** för Traffic Manager profiler som bara kan ha IPv4/IPv6-adresser som slut punkter. När en fråga tas emot för den här profilen returneras alla felfria slut punkter.
-* **[Undernät](#subnet):** Välj **under näts** trafik-routningsmetod för att mappa uppsättningar av IP-adressintervall till en speciell slut punkt i en Traffic Manager profil. När en begäran tas emot är slut punkten som returneras den som är mappad för den begärda käll-IP-adressen. 
+* **[Undernät](#subnet):** Välj **under näts** trafik-routningsmetod för att mappa uppsättningar av IP-adressintervall till en speciell slut punkt i en Traffic Manager profil. När en begäran tas emot är slut punkten som returneras den som är mappad för den begärda käll-IP-adressen. 
 
 
 Alla Traffic Manager profiler omfattar övervakning av slut punkts hälsa och automatisk slut punkts växling. Mer information finns i [Traffic Manager slut punkts övervakning](traffic-manager-monitoring.md). En enskild Traffic Manager-profil kan bara använda en Traffic routing-metod. Du kan när som helst välja en annan Traffic routing-metod för din profil. Ändringarna tillämpas inom en minut och ingen stillestånds tid uppstår. Trafik-routningsmetoder kan kombineras med hjälp av kapslade Traffic Manager-profiler. Kapsling möjliggör sofistikerade och flexibla konfigurationer för trafikroutning som uppfyller behoven hos större, komplexa program. Mer information finns i [kapslade Traffic Manager-profiler](traffic-manager-nested-profiles.md).
@@ -125,36 +125,36 @@ Som förklaras i [hur Traffic Manager fungerar](traffic-manager-how-it-works.md)
 
 ### <a name="faqs"></a>Vanliga frågor och svar
 
-* [Vad är några användnings fall där geografisk routning är användbart?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-are-some-use-cases-where-geographic-routing-is-useful)
+* [Vad är några användnings fall där geografisk routning är användbart?](./traffic-manager-faqs.md#what-are-some-use-cases-where-geographic-routing-is-useful)
 
-* [Hur gör jag för att avgöra om jag bör använda routningsmetod för prestanda eller geografisk routningsmetod?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-do-i-decide-if-i-should-use-performance-routing-method-or-geographic-routing-method)
+* [Hur gör jag för att avgöra om jag bör använda routningsmetod för prestanda eller geografisk routningsmetod?](./traffic-manager-faqs.md#how-do-i-decide-if-i-should-use-performance-routing-method-or-geographic-routing-method)
 
-* [Vilka regioner stöds av Traffic Manager för geografisk routning?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-are-the-regions-that-are-supported-by-traffic-manager-for-geographic-routing)
+* [Vilka regioner stöds av Traffic Manager för geografisk routning?](./traffic-manager-faqs.md#what-are-the-regions-that-are-supported-by-traffic-manager-for-geographic-routing)
 
-* [Hur avgör Traffic Manager var en användare frågar från?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-traffic-manager-determine-where-a-user-is-querying-from)
+* [Hur avgör Traffic Manager var en användare frågar från?](./traffic-manager-faqs.md#how-does-traffic-manager-determine-where-a-user-is-querying-from)
 
-* [Är det garanterat att Traffic Manager korrekt kan fastställa den exakta geografiska platsen för användaren i varje fall?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#is-it-guaranteed-that-traffic-manager-can-correctly-determine-the-exact-geographic-location-of-the-user-in-every-case)
+* [Är det garanterat att Traffic Manager korrekt kan fastställa den exakta geografiska platsen för användaren i varje fall?](./traffic-manager-faqs.md#is-it-guaranteed-that-traffic-manager-can-correctly-determine-the-exact-geographic-location-of-the-user-in-every-case)
 
-* [Behöver en slut punkt vara fysiskt placerad i samma region som den har kon figurer ATS för geografisk routning?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#does-an-endpoint-need-to-be-physically-located-in-the-same-region-as-the-one-it-is-configured-with-for-geographic-routing)
+* [Behöver en slut punkt vara fysiskt placerad i samma region som den har kon figurer ATS för geografisk routning?](./traffic-manager-faqs.md#does-an-endpoint-need-to-be-physically-located-in-the-same-region-as-the-one-it-is-configured-with-for-geographic-routing)
 
-* [Kan jag tilldela geografiska regioner till slut punkter i en profil som inte har kon figurer ATS för att göra geografisk routning?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-assign-geographic-regions-to-endpoints-in-a-profile-that-is-not-configured-to-do-geographic-routing)
+* [Kan jag tilldela geografiska regioner till slut punkter i en profil som inte har kon figurer ATS för att göra geografisk routning?](./traffic-manager-faqs.md#can-i-assign-geographic-regions-to-endpoints-in-a-profile-that-is-not-configured-to-do-geographic-routing)
 
-* [Varför får jag ett fel när jag försöker ändra routningsmetod för en befintlig profil till geografisk?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#why-am-i-getting-an-error-when-i-try-to-change-the-routing-method-of-an-existing-profile-to-geographic)
+* [Varför får jag ett fel när jag försöker ändra routningsmetod för en befintlig profil till geografisk?](./traffic-manager-faqs.md#why-am-i-getting-an-error-when-i-try-to-change-the-routing-method-of-an-existing-profile-to-geographic)
 
-* [Varför rekommenderas det starkt att kunder skapar kapslade profiler i stället för slut punkter under en profil med geografisk routning aktive rad?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#why-is-it-strongly-recommended-that-customers-create-nested-profiles-instead-of-endpoints-under-a-profile-with-geographic-routing-enabled)
+* [Varför rekommenderas det starkt att kunder skapar kapslade profiler i stället för slut punkter under en profil med geografisk routning aktive rad?](./traffic-manager-faqs.md#why-is-it-strongly-recommended-that-customers-create-nested-profiles-instead-of-endpoints-under-a-profile-with-geographic-routing-enabled)
 
-* [Finns det några begränsningar för API-versionen som stöder den här typen av cirkulations typ?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#are-there-any-restrictions-on-the-api-version-that-supports-this-routing-type)
+* [Finns det några begränsningar för API-versionen som stöder den här typen av cirkulations typ?](./traffic-manager-faqs.md#are-there-any-restrictions-on-the-api-version-that-supports-this-routing-type)
 
 ## <a name="multivalue-traffic-routing-method"></a><a name = "multivalue"></a>Metod för Multivärdes trafik – routningsmetod
 Med metoden för **Multivärdes** trafik-routning kan du hämta flera felfria slut punkter i ett enda DNS-fråge svar. Detta gör att anroparen kan utföra återförsök på klient sidan med andra slut punkter i händelse av en returnerad slut punkt som inte svarar. Det här mönstret kan öka tillgängligheten för en tjänst och minska den svarstid som är associerad med en ny DNS-fråga för att hämta en felfri slutpunkt. Routningsmetod för flera värden fungerar bara om alla slut punkter av typen ' external ' och anges som IPv4-eller IPv6-adresser. När en fråga tas emot för den här profilen returneras alla felfria slut punkter och omfattas av ett konfigurerbart Max antal retur antal.
 
 ### <a name="faqs"></a>Vanliga frågor och svar
 
-* [Vad är några användnings fall där multivärde-routning är användbart?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-are-some-use-cases-where-multivalue-routing-is-useful)
+* [Vad är några användnings fall där multivärde-routning är användbart?](./traffic-manager-faqs.md#what-are-some-use-cases-where-multivalue-routing-is-useful)
 
-* [Hur många slut punkter returneras när multivärde-routning används?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-many-endpoints-are-returned-when-multivalue-routing-is-used)
+* [Hur många slut punkter returneras när multivärde-routning används?](./traffic-manager-faqs.md#how-many-endpoints-are-returned-when-multivalue-routing-is-used)
 
-* [Får jag samma uppsättning slut punkter när multivärde-routning används?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#will-i-get-the-same-set-of-endpoints-when-multivalue-routing-is-used)
+* [Får jag samma uppsättning slut punkter när multivärde-routning används?](./traffic-manager-faqs.md#will-i-get-the-same-set-of-endpoints-when-multivalue-routing-is-used)
 
 ## <a name="subnet-traffic-routing-method"></a><a name = "subnet"></a>Under näts trafik – routningsmetod
 Med metoden för att dirigera **under nät** trafiken kan du mappa en uppsättning IP-adressintervall för slutanvändare till särskilda slut punkter i en profil. Om Traffic Manager tar emot en DNS-fråga för profilen, kommer den att inspektera käll-IP-adressen för den begäran (i de flesta fall är detta den utgående IP-adressen för den DNS-matchare som används av anroparen), avgöra vilken slut punkt den är mappad till och kommer att returnera slut punkten i fråge svaret. 
@@ -166,21 +166,17 @@ Under näts dirigering kan användas för att ge en annan upplevelse för använ
 
 ### <a name="faqs"></a>Vanliga frågor och svar
 
-* [Vad är några användnings fall där under näts dirigering är användbart?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-are-some-use-cases-where-subnet-routing-is-useful)
+* [Vad är några användnings fall där under näts dirigering är användbart?](./traffic-manager-faqs.md#what-are-some-use-cases-where-subnet-routing-is-useful)
 
-* [Hur vet Traffic Manager IP-adressen för slutanvändaren?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-traffic-manager-know-the-ip-address-of-the-end-user)
+* [Hur vet Traffic Manager IP-adressen för slutanvändaren?](./traffic-manager-faqs.md#how-does-traffic-manager-know-the-ip-address-of-the-end-user)
 
-* [Hur kan jag ange IP-adresser när jag använder Subnet-routning?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-specify-ip-addresses-when-using-subnet-routing)
+* [Hur kan jag ange IP-adresser när jag använder Subnet-routning?](./traffic-manager-faqs.md#how-can-i-specify-ip-addresses-when-using-subnet-routing)
 
-* [Hur kan jag ange en återställnings slut punkt när jag använder under näts dirigering?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-specify-a-fallback-endpoint-when-using-subnet-routing)
+* [Hur kan jag ange en återställnings slut punkt när jag använder under näts dirigering?](./traffic-manager-faqs.md#how-can-i-specify-a-fallback-endpoint-when-using-subnet-routing)
 
-* [Vad händer om en slut punkt är inaktive rad i en under näts typ profil?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-happens-if-an-endpoint-is-disabled-in-a-subnet-routing-type-profile)
+* [Vad händer om en slut punkt är inaktive rad i en under näts typ profil?](./traffic-manager-faqs.md#what-happens-if-an-endpoint-is-disabled-in-a-subnet-routing-type-profile)
 
 
 ## <a name="next-steps"></a>Nästa steg
 
 Lär dig hur du utvecklar program med hög tillgänglighet med [Traffic Manager slut punkts övervakning](traffic-manager-monitoring.md)
-
-
-
-

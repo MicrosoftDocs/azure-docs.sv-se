@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 03/16/2018
 ms.author: duau
 ms.custom: ''
-ms.openlocfilehash: 45c889ef8d67570fb075ec710616f20d110b7f50
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 618f8fff532da0f6ae315ad9e4cda35a289949d1
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89401613"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183718"
 ---
 # <a name="traffic-manager-real-user-measurements-overview"></a>Översikt över Faktisk slutanvändarmätning i Traffic Manager
 
@@ -37,48 +37,47 @@ När du använder Faktisk slutanvändarmätning faktureras du baserat på antale
 
 ## <a name="faqs"></a>Vanliga frågor och svar
 
-* [Vilka är fördelarna med att använda Faktisk slutanvändarmätning?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-are-the-benefits-of-using-real-user-measurements)
+* [Vilka är fördelarna med att använda Faktisk slutanvändarmätning?](./traffic-manager-faqs.md#what-are-the-benefits-of-using-real-user-measurements)
 
-* [Kan jag använda Faktisk slutanvändarmätning med icke-Azure-regioner?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-use-real-user-measurements-with-non-azure-regions)
+* [Kan jag använda Faktisk slutanvändarmätning med icke-Azure-regioner?](./traffic-manager-faqs.md#can-i-use-real-user-measurements-with-non-azure-regions)
 
-* [Vilken routningsmetod fördelar från Faktisk slutanvändarmätning?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#which-routing-method-benefits-from-real-user-measurements)
+* [Vilken routningsmetod fördelar från Faktisk slutanvändarmätning?](./traffic-manager-faqs.md#which-routing-method-benefits-from-real-user-measurements)
 
-* [Måste jag aktivera Faktisk slutanvändarmätning varje profil separat?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#do-i-need-to-enable-real-user-measurements-each-profile-separately)
+* [Måste jag aktivera Faktisk slutanvändarmätning varje profil separat?](./traffic-manager-faqs.md#do-i-need-to-enable-real-user-measurements-each-profile-separately)
 
-* [Hur gör jag för att inaktivera Faktisk slutanvändarmätning för min prenumeration?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-do-i-turn-off-real-user-measurements-for-my-subscription)
+* [Hur gör jag för att inaktivera Faktisk slutanvändarmätning för min prenumeration?](./traffic-manager-faqs.md#how-do-i-turn-off-real-user-measurements-for-my-subscription)
 
-* [Kan jag använda Faktisk slutanvändarmätning med andra klient program än webb sidor?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-use-real-user-measurements-with-client-applications-other-than-web-pages)
+* [Kan jag använda Faktisk slutanvändarmätning med andra klient program än webb sidor?](./traffic-manager-faqs.md#can-i-use-real-user-measurements-with-client-applications-other-than-web-pages)
 
-* [Hur många mätningar görs varje gången mitt Faktisk slutanvändarmätning-aktiverade webb sida renderas?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-many-measurements-are-made-each-time-my-real-user-measurements-enabled-web-page-is-rendered)
+* [Hur många mätningar görs varje gången mitt Faktisk slutanvändarmätning-aktiverade webb sida renderas?](./traffic-manager-faqs.md#how-many-measurements-are-made-each-time-my-real-user-measurements-enabled-web-page-is-rendered)
 
-* [Är det en fördröjning innan Faktisk slutanvändarmätning skript körs på min webb sida?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#is-there-a-delay-before-real-user-measurements-script-runs-in-my-webpage)
+* [Är det en fördröjning innan Faktisk slutanvändarmätning skript körs på min webb sida?](./traffic-manager-faqs.md#is-there-a-delay-before-real-user-measurements-script-runs-in-my-webpage)
 
-* [Kan jag bara använda Faktisk slutanvändarmätning med de Azure-regioner jag vill mäta?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-use-real-user-measurements-with-only-the-azure-regions-i-want-to-measure)
+* [Kan jag bara använda Faktisk slutanvändarmätning med de Azure-regioner jag vill mäta?](./traffic-manager-faqs.md#can-i-use-real-user-measurements-with-only-the-azure-regions-i-want-to-measure)
 
-* [Kan jag begränsa antalet mätningar som gjorts till ett speciellt tal?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-limit-the-number-of-measurements-made-to-a-specific-number)
+* [Kan jag begränsa antalet mätningar som gjorts till ett speciellt tal?](./traffic-manager-faqs.md#can-i-limit-the-number-of-measurements-made-to-a-specific-number)
 
-* [Kan jag se de mått som utförs av klient programmet som en del av Faktisk slutanvändarmätning?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-see-the-measurements-taken-by-my-client-application-as-part-of-real-user-measurements)
+* [Kan jag se de mått som utförs av klient programmet som en del av Faktisk slutanvändarmätning?](./traffic-manager-faqs.md#can-i-see-the-measurements-taken-by-my-client-application-as-part-of-real-user-measurements)
 
-* [Kan jag ändra mått skriptet som tillhandahålls av Traffic Manager?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-modify-the-measurement-script-provided-by-traffic-manager)
+* [Kan jag ändra mått skriptet som tillhandahålls av Traffic Manager?](./traffic-manager-faqs.md#can-i-modify-the-measurement-script-provided-by-traffic-manager)
 
-* [Kommer det att vara möjligt för andra att se vilken nyckel jag använder med Faktisk slutanvändarmätning?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#will-it-be-possible-for-others-to-see-the-key-i-use-with-real-user-measurements)
+* [Kommer det att vara möjligt för andra att se vilken nyckel jag använder med Faktisk slutanvändarmätning?](./traffic-manager-faqs.md#will-it-be-possible-for-others-to-see-the-key-i-use-with-real-user-measurements)
 
-* [Kan andra missbruka min RUM nyckel?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-others-abuse-my-rum-key)
+* [Kan andra missbruka min RUM nyckel?](./traffic-manager-faqs.md#can-others-abuse-my-rum-key)
 
-* [Måste jag ange måttet Java Script på alla mina webb sidor?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#do-i-need-to-put-the-measurement-javascript-in-all-my-web-pages)
+* [Måste jag ange måttet Java Script på alla mina webb sidor?](./traffic-manager-faqs.md#do-i-need-to-put-the-measurement-javascript-in-all-my-web-pages)
 
-* [Kan information om slutanvändarna identifieras av Traffic Manager om jag använder Faktisk slutanvändarmätning?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-information-about-my-end-users-be-identified-by-traffic-manager-if-i-use-real-user-measurements)
+* [Kan information om slutanvändarna identifieras av Traffic Manager om jag använder Faktisk slutanvändarmätning?](./traffic-manager-faqs.md#can-information-about-my-end-users-be-identified-by-traffic-manager-if-i-use-real-user-measurements)
 
-* [Behöver webb sidans mätnings Faktisk slutanvändarmätning använda Traffic Manager för routning?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#does-the-webpage-measuring-real-user-measurements-need-to-be-using-traffic-manager-for-routing)
+* [Behöver webb sidans mätnings Faktisk slutanvändarmätning använda Traffic Manager för routning?](./traffic-manager-faqs.md#does-the-webpage-measuring-real-user-measurements-need-to-be-using-traffic-manager-for-routing)
 
-* [Måste jag vara värd för alla tjänster i Azure-regioner som ska användas med Faktisk slutanvändarmätning?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#do-i-need-to-host-any-service-on-azure-regions-to-use-with-real-user-measurements)
+* [Måste jag vara värd för alla tjänster i Azure-regioner som ska användas med Faktisk slutanvändarmätning?](./traffic-manager-faqs.md#do-i-need-to-host-any-service-on-azure-regions-to-use-with-real-user-measurements)
 
-* [Ökar Azures bandbredds användning när jag använder Faktisk slutanvändarmätning?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#will-my-azure-bandwidth-usage-increase-when-i-use-real-user-measurements)
+* [Ökar Azures bandbredds användning när jag använder Faktisk slutanvändarmätning?](./traffic-manager-faqs.md#will-my-azure-bandwidth-usage-increase-when-i-use-real-user-measurements)
 
 ## <a name="next-steps"></a>Nästa steg
 - Lär dig hur du använder [faktisk slutanvändarmätning med webb sidor](traffic-manager-create-rum-web-pages.md)
 - Lär dig [hur Traffic Manager fungerar](traffic-manager-overview.md)
-- Lär dig mer om [Mobile Center](https://docs.microsoft.com/mobile-center/)
+- Lär dig mer om [Mobile Center](/mobile-center/)
 - Läs mer om [metoderna för trafik-routning](traffic-manager-routing-methods.md) som stöds av Traffic Manager
-- Lär dig hur du [skapar en Traffic Manager-profil](traffic-manager-create-profile.md)
-
+- Lär dig hur du [skapar en Traffic Manager-profil](./quickstart-create-traffic-manager-profile.md)
