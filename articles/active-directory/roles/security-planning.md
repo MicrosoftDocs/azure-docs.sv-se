@@ -14,12 +14,12 @@ ms.subservice: roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a7304ffbb7718205ead48e27989d4a169375997
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: c981bde4e0699c4da33ada7e287b16e54b899a58
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96861994"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98198925"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Skydda privilegierad åtkomst för hybrid- och molndistributioner i Azure AD
 
@@ -255,7 +255,7 @@ Angripare kan försöka nå privilegierade konton så att de kan störa integrit
 * Personifiering av attacker
 * Attacker mot autentiseringsuppgifter som tangenttryckning, pass-The-hash och pass-The-Ticket
 
-Genom att distribuera privilegierade åtkomst arbets stationer kan du minska risken för att administratörer anger sina autentiseringsuppgifter i en stationär miljö som inte har härdats. Mer information finns i [arbets stationer med privilegie rad åtkomst](/windows-server/identity/securing-privileged-access/privileged-access-workstations).
+Genom att distribuera privilegierade åtkomst arbets stationer kan du minska risken för att administratörer anger sina autentiseringsuppgifter i en stationär miljö som inte har härdats. Mer information finns i [arbets stationer med privilegie rad åtkomst](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/).
 
 #### <a name="review-national-institute-of-standards-and-technology-recommendations-for-handling-incidents"></a>Granska National Institute of Standards och teknik rekommendationer för hantering av incidenter
 
@@ -358,13 +358,13 @@ Steg 4 i översikten bör implementeras på sex månader och mer. Slutför din �
 
 Att skydda privilegie rad åtkomst är viktigt för att upprätta säkerhets garantier för företagets till gångar. Det bör dock ingå i ett komplett säkerhets program som tillhandahåller säkerhets garantier som pågår. Det här programmet bör innehålla element som:
 
-* Princip
-* Åtgärder
+* Policy
+* Operations
 * Informations säkerhet
 * Servrar
 * Program
 * Datorer
-* Enheter
+* Egenskaper
 * Cloud Fabric
 
 Vi rekommenderar följande metoder när du hanterar privilegierade åtkomst konton:

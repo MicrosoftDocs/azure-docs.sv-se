@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/25/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d8f69f94c53227dc86fbbf9e9936a2fc3c97ec55
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: af248b4ee3ccd079d41317fdb1db3de82ad0f835
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967881"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98199044"
 ---
 # <a name="connecting-azure-vms-to-hana-large-instances"></a>Ansluta virtuella Azure-datorer till HANA – stora instanser
 
@@ -41,7 +41,7 @@ Titta närmare på Azure Virtual Network-sidan, det finns ett behov av:
 >[!Note]
 >Det virtuella Azure-nätverket för HANA-stora instanser måste skapas med hjälp av Azure Resource Manager distributions modell. Den äldre Azure-distributions modellen, som ofta kallas för den klassiska distributions modellen, stöds inte av lösningen HANA stor instans.
 
-Du kan använda Azure Portal, PowerShell, en Azure-mall eller Azure CLI för att skapa det virtuella nätverket. (Mer information finns i [skapa ett virtuellt nätverk med hjälp av Azure Portal](../../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-virtual-network)). I följande exempel tittar vi på ett virtuellt nätverk som har skapats med hjälp av Azure Portal.
+Du kan använda Azure Portal, PowerShell, en Azure-mall eller Azure CLI för att skapa det virtuella nätverket. (Mer information finns i [skapa ett virtuellt nätverk med hjälp av Azure Portal](../../../virtual-network/manage-virtual-network.md#create-a-virtual-network)). I följande exempel tittar vi på ett virtuellt nätverk som har skapats med hjälp av Azure Portal.
 
 När du refererar till **adress utrymmet** i den här dokumentationen, till det adress utrymme som det virtuella Azure-nätverket kan använda. Det här adress utrymmet är också det adress intervall som det virtuella nätverket använder för att sprida BGP-vägar. Det här **adress utrymmet** kan visas här:
 

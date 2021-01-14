@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 09/27/2018
 ms.author: cynthn
 ms.custom: legacy
-ms.openlocfilehash: 751fa9f9fe2ba17a982b71a6332be302804f0dcc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d06dc03a016f057a9a3407a82a114f8df6757599
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89047300"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98200693"
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>Skapa en hanterad avbildning av en generaliserad virtuell dator i Azure
 
@@ -33,7 +33,7 @@ Kontrol lera att de Server roller som körs på datorn stöds av Sysprep. Mer in
 >
 >För Sysprep krävs att enheterna är helt dekrypterade. Om du har aktiverat kryptering på den virtuella datorn inaktiverar du kryptering innan du kör Sysprep.
 >
-> Om du planerar att köra Sysprep innan du laddar upp den virtuella hård disken (VHD) till Azure för första gången ser du till att du har för [berett den virtuella](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)datorn.  
+> Om du planerar att köra Sysprep innan du laddar upp den virtuella hård disken (VHD) till Azure för första gången ser du till att du har för [berett den virtuella](prepare-for-upload-vhd-image.md)datorn.  
 > 
 > 
 
@@ -47,7 +47,7 @@ Följ dessa steg om du vill generalisera din virtuella Windows-dator:
    
 4. I dialog rutan **system förberedelse verktyg** väljer du **Skriv system out-of-Box Experience (OOBE)** och markerar kryss rutan **generalisera** .
    
-5. För **avslutnings alternativ**väljer du **Stäng**av.
+5. För **avslutnings alternativ** väljer du **Stäng** av.
    
 6. Välj **OK**.
    
@@ -73,13 +73,13 @@ Följ dessa steg om du vill generalisera din virtuella Windows-dator:
 
 2. Välj den virtuella datorn i listan.
 
-3. På sidan **virtuell dator** för den virtuella datorn väljer du **avbilda**på den övre menyn.
+3. På sidan **virtuell dator** för den virtuella datorn väljer du **avbilda** på den övre menyn.
 
    Sidan **Skapa avbildning** visas.
 
 4. För **namn**, Godkänn antingen det ifyllda namnet eller ange ett namn som du vill använda för avbildningen.
 
-5. För **resurs grupp**väljer du **Skapa ny** och anger ett namn eller väljer en resurs grupp som du vill använda i list rutan.
+5. För **resurs grupp** väljer du **Skapa ny** och anger ett namn eller väljer en resurs grupp som du vill använda i list rutan.
 
 6. Om du vill ta bort den virtuella käll datorn när avbildningen har skapats väljer du **ta bort den här virtuella datorn automatiskt när du har skapat avbildningen**.
 
@@ -217,7 +217,7 @@ Du kan skapa en hanterad avbildning från en ögonblicks bild av en generalisera
 
 ## <a name="create-an-image-from-a-vm-that-uses-a-storage-account"></a>Skapa en avbildning från en virtuell dator som använder ett lagrings konto
 
-Om du vill skapa en hanterad avbildning från en virtuell dator som inte använder hanterade diskar behöver du URI för OS-VHD: n i lagrings kontot i följande format: https://*mystorageaccount*. blob.Core.Windows.net/*vhdcontainer* / *vhdfilename. VHD*. I det här exemplet är den virtuella hård disken i *mystorageaccount*, i en behållare med namnet *vhdcontainer*och VHD-filnamnet är *vhdfilename. VHD*.
+Om du vill skapa en hanterad avbildning från en virtuell dator som inte använder hanterade diskar behöver du URI för OS-VHD: n i lagrings kontot i följande format: https://*mystorageaccount*. blob.Core.Windows.net/*vhdcontainer* / *vhdfilename. VHD*. I det här exemplet är den virtuella hård disken i *mystorageaccount*, i en behållare med namnet *vhdcontainer* och VHD-filnamnet är *vhdfilename. VHD*.
 
 
 1.  Skapa vissa variabler.
@@ -250,4 +250,4 @@ Om du vill skapa en hanterad avbildning från en virtuell dator som inte använd
 
     
 ## <a name="next-steps"></a>Nästa steg
-- [Skapa en virtuell dator från en hanterad avbildning](create-vm-generalized-managed.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).    
+- [Skapa en virtuell dator från en hanterad avbildning](create-vm-generalized-managed.md). 

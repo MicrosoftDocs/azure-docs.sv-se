@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 03/25/2020
 ms.author: cynthn
 ms.reviewer: jagaveer
-ms.openlocfilehash: 0a56cfe8e282b7fb7e618dcadda5beff7c4e3f43
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0cf6fc1b37064ef6193f35334711dcc5b8d01088
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91825396"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98200795"
 ---
 # <a name="deploy-spot-vms-using-a-resource-manager-template"></a>Distribuera virtuella datorer med hjälp av en Resource Manager-mall
 
@@ -194,4 +194,4 @@ Du kan också skapa en virtuell dator med hjälp av [Azure PowerShell](../window
 
 Fråga aktuell pris information med hjälp av [Azures API för åter försäljning](/rest/api/cost-management/retail-prices/azure-retail-prices) för information om prissättning av priser. `meterName`Och `skuName` kommer båda att innehålla `Spot` .
 
-Om du stöter på ett fel, se [felkoder](../error-codes-spot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Om du stöter på ett fel, se [felkoder](../error-codes-spot.md).

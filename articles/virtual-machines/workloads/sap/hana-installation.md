@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 01/16/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a1430b32c0e74be7a0e50fa4c5c183018b2b55e0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 81d44dae0fed45d4a4df76973c7e233fd71baff1
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96006310"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98198976"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>Så här installerar och konfigurerar du SAP HANA (stora instanser) i Azure
 
@@ -129,7 +129,7 @@ Därför måste du konfigurera en separat tids server som kan användas av SAP-p
 Vi antar att du har följt rekommendationerna för att utforma dina virtuella Azure-nätverk och att ansluta de virtuella nätverken till de stora HANA-instanserna, enligt beskrivningen i följande dokument:
 
 - [Översikt över SAP HANA (stor instans) och arkitektur på Azure](./hana-overview-architecture.md)
-- [SAP HANA (stora instanser) infrastruktur och anslutning i Azure](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [SAP HANA (stora instanser) infrastruktur och anslutning i Azure](hana-overview-infrastructure-connectivity.md)
 
 Det finns vissa detaljer som är värda att nämna om nätverk för de enskilda enheterna. Varje HANA-stor instans enhet levereras med två eller tre IP-adresser som tilldelas till två eller tre NIC-portar. Tre IP-adresser används i HANA-konfigurationer och i scenariot HANA-system replikering. En av de IP-adresser som är tilldelade till NÄTVERKSKORTet finns inte på den server-IP-pool som beskrivs i [SAP HANA (stora instanser) Översikt och arkitektur på Azure](./hana-overview-architecture.md).
 
@@ -139,7 +139,7 @@ Mer information om Ethernet-information för din arkitektur finns i [scenarier f
 
 Lagrings layouten för SAP HANA på Azure (stora instanser) konfigureras genom att SAP HANA på Azure `service management` med hjälp av SAP-rekommenderade rikt linjer. Dessa rikt linjer beskrivs i [SAP HANA lagrings krav](https://go.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html) White Paper. 
 
-De höga storlekarna för de olika volymerna med de olika volymerna för HANA-stora instanser dokumenteras i [SAP HANA (stora instanser) Översikt och arkitektur på Azure](hana-overview-architecture.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+De höga storlekarna för de olika volymerna med de olika volymerna för HANA-stora instanser dokumenteras i [SAP HANA (stora instanser) Översikt och arkitektur på Azure](hana-overview-architecture.md).
 
 Namngivnings konventionerna för lagrings volymerna visas i följande tabell:
 
@@ -161,7 +161,7 @@ För skalbara miljöer delas och kopplas data, loggar och logg säkerhets kopier
 
 När du tittar på en instans av HANA-stor instans inser du att enheterna levereras med den generösa disk volymen för HANA/data och att det finns en volym HANA/logg/säkerhets kopiering. Anledningen till att vi gjorde HANA/data så stora är att lagrings ögonblicks bilderna vi erbjuder dig som en kund använder samma disk volym. Med de mer lagrings ögonblicks bilder som du utför används mer utrymme av ögonblicks bilder i de tilldelade lagrings volymerna. 
 
-Volymen HANA/log/backup ska inte vara volymen för databas säkerhets kopior. Det är en storlek som ska användas som säkerhets kopierings volym för säkerhets kopior av HANA-transaktionsloggar. Mer information finns i [SAP HANA (stora instanser) hög tillgänglighet och haveri beredskap på Azure](hana-overview-high-availability-disaster-recovery.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
+Volymen HANA/log/backup ska inte vara volymen för databas säkerhets kopior. Det är en storlek som ska användas som säkerhets kopierings volym för säkerhets kopior av HANA-transaktionsloggar. Mer information finns i [SAP HANA (stora instanser) hög tillgänglighet och haveri beredskap på Azure](hana-overview-high-availability-disaster-recovery.md). 
 
 Utöver det lagrings utrymme som tillhandahålls kan du köpa ytterligare lagrings kapacitet i steg om 1 TB. Detta ytterligare lagrings utrymme kan läggas till som nya volymer i en stor HANA-instans.
 

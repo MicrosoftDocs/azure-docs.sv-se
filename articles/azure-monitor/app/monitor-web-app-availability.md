@@ -4,12 +4,12 @@ description: Konfigurera webbtester i Application Insights. Få aviseringar om e
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 82b433407906c09d38a46c842334153525fb3c17
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 1b51c70dcebbfad5417a8478f4a956fb5d0608b1
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97007933"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98198670"
 ---
 # <a name="monitor-the-availability-of-any-website"></a>Övervaka tillgängligheten för en webbplats
 
@@ -26,6 +26,9 @@ Det finns tre typer av tillgänglighets test:
 * [Tillgänglighets test för anpassad spårning](/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability?view=azure-dotnet): om du väljer att skapa ett anpassat program för att köra tillgänglighets test, `TrackAvailability()` kan metoden användas för att skicka resultaten till Application Insights.
 
 **Du kan skapa upp till 100 tillgänglighets test per Application Insights resurs.**
+
+> [!IMPORTANT]
+> Både [URL-ping-test](#create-a-url-ping-test) och [webbtest för flera steg](availability-multistep.md) förlitar sig på den offentliga Internet-DNS-infrastrukturen för att lösa domän namnen för de testade slut punkterna. Det innebär att om du använder Privat DNS måste du antingen se till att varje domän namn för ditt test också kan matchas av de offentliga domän namn servrarna eller, om det inte är möjligt, du kan använda [anpassade tester för spårnings tillgänglighet](/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability?view=azure-dotnet) i stället.
 
 ## <a name="create-an-application-insights-resource"></a>Skapa en Application Insights-resurs
 
@@ -69,7 +72,7 @@ Om du vill skapa din första tillgänglighets förfrågan öppnar du fönstret t
 |Inställning| Förklaring
 |----|----|----|
 |**Nära real tid (för hands version)** | Vi rekommenderar att du använder aviseringar i nästan real tid. Konfigurationen av den här typen av avisering görs efter att ditt tillgänglighets test har skapats.  |
-|**Klassisk** | Vi rekommenderar inte längre att använda klassiska aviseringar för nya tillgänglighets test.|
+|**Form** | Vi rekommenderar inte längre att använda klassiska aviseringar för nya tillgänglighets test.|
 |**Tröskelvärde för aviserings plats**|Vi rekommenderar minst 3/5 platser. Den optimala relationen mellan aviserings platsens tröskelvärde och antalet test platser är **tröskelvärdet för aviserings platsens tröskel**  =  **antal test platser – 2, med minst fem test platser.**|
 
 ### <a name="location-population-tags"></a>Plats populations Taggar
@@ -98,7 +101,7 @@ Följande befolknings taggar kan användas för attributet Geo-Location när du 
 | Frankrike, södra (tidigare Frankrike centrala) | EMEA-CH-ZRH-Edge  |
 | Frankrike, centrala                         | EMEA – fr-Pra-Edge  |
 | Japan, östra                             | APAC – JP-KAW-Edge  |
-| Norra Europa                           | EMEA-GB-DB3 – AZR   |
+| Europa, norra                           | EMEA-GB-DB3 – AZR   |
 | USA, norra centrala                       | US-Il-CH1-AZR     |
 | USA, södra centrala                       | US-TX-SN1-AZR     |
 | Sydostasien                         | APAC – SG-sin-AZR   |

@@ -1,18 +1,18 @@
 ---
-title: Känslighets etikett rapportering för dina data i Azure Blob Storage
-description: Den här instruktions guiden beskriver hur du visar och använder avdelningens kontroll känslighets etikett rapportering på dina data i Azure Blob Storage.
+title: Känslighets etikett som rapporterar till dina data i Azure avdelningens kontroll med hjälp av avdelningens kontroll Insights
+description: Den här instruktions guiden beskriver hur du visar och använder avdelningens kontroll känslighets etiketter för dina data.
 author: batamig
 ms.author: bagol
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/24/2020
-ms.openlocfilehash: e6a92282d2bcd316a771742048dacd9a7181de4f
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: dffecb48a8faa869cb3df450cc220e86195bbc87
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746190"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98199384"
 ---
 # <a name="sensitivity-label-insights-about-your-data-in-azure-purview"></a>Känslighets etikett insikter om dina data i Azure avdelningens kontroll
 
@@ -27,6 +27,11 @@ I den här instruktions guiden lär du dig att:
 > - Visa känslighets etiketter för insikter om dina data
 > - Öka detalj nivån för mer känslighets märkning av data
 
+> [!NOTE]
+> Känslighets etiketter som finns på [Power BI till gångar](register-scan-power-bi-tenant.md) som genomsöks av avdelningens kontroll visas inte för närvarande i rapporten känslighets etiketter insikter. 
+>
+> Om du vill visa känslighets etiketter på Power BI till gångar kan du Visa till gången i [avdelningens kontroll Data Catalog](how-to-search-catalog.md).
+> 
 ## <a name="prerequisites"></a>Förutsättningar
 
 Innan du börjar med avdelningens kontroll Insights bör du kontrol lera att du har slutfört följande steg:
@@ -37,6 +42,8 @@ Innan du börjar med avdelningens kontroll Insights bör du kontrol lera att du 
 
 - Konfigurera och slutför en genomsökning av test data i varje data Källa
 
+- Inloggad på avdelningens kontroll med konto med en [data läsare eller data curator-roll](catalog-permissions.md#azure-purviews-pre-defined-data-plane-roles).
+
 Mer information finns i [Hantera data källor i Azure avdelningens kontroll (för hands version)](manage-data-sources.md) och [automatiskt etikettera dina data i Azure avdelningens kontroll](create-sensitivity-label.md).
 
 ## <a name="use-purview-sensitivity-labeling-insights"></a>Använda avdelningens kontroll-känslighet för att märka insikter
@@ -45,9 +52,11 @@ I avdelningens kontroll liknar klassificeringarna ämnes koder och används för
 
 Med känslighets etiketter kan du ange hur känslig viss information som finns i din organisation. Ett enskilt projekt namn kan till exempel vara mycket konfidentiellt i din organisation, medan samma term inte är konfidentiell till andra organisationer. 
 
-Medan klassificeringar matchas direkt (en social security number har en klassificering av **person nummer**) används känslighets etiketter när en eller flera klassificeringar och scenarier hittas tillsammans. 
+Klassificeringar matchas direkt, till exempel en social security number, som har en klassificering av **person nummer**. 
 
-Avdelningens kontroll använder samma klassificeringar, även kallade känsliga informations typer, som Microsoft 365. På så sätt kan du utöka dina befintliga känslighets etiketter i dina Azure avdelningens kontroll-tillgångar.
+Känslighets etiketter tillämpas däremot när en eller flera klassificeringar och villkor hittas tillsammans. I det här sammanhanget refererar [villkoren](/microsoft-365/compliance/apply-sensitivity-label-automatically) till alla parametrar som du kan definiera för ostrukturerade data, till exempel **närhet till en annan klassificering** och **% konfidensgrad**. 
+
+Avdelningens kontroll använder samma klassificeringar, även kallade [känsliga informations typer](/microsoft-365/compliance/sensitive-information-type-entity-definitions), som Microsoft 365. På så sätt kan du utöka dina befintliga känslighets etiketter i dina Azure avdelningens kontroll-tillgångar.
 
 > [!NOTE]
 > När du har skannat dina käll typer ger du **känslighets etiketter** insikter om några timmar för att avspegla de nya till gångarna.

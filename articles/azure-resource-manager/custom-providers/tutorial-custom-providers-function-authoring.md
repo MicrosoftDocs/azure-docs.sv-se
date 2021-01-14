@@ -3,14 +3,14 @@ title: Skapa en RESTful-slutpunkt
 description: I den här självstudien visas hur du skapar en RESTful-slutpunkt för anpassade providers. Den beskriver hur du hanterar begär Anden och svar för RESTful HTTP-metoder som stöds.
 author: jjbfour
 ms.topic: tutorial
-ms.date: 06/19/2019
+ms.date: 01/13/2021
 ms.author: jobreen
-ms.openlocfilehash: d7f6c51211ce0572797ade659b9316003502da1f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 54d0df287865d5d92403bf68227a2d4c5faa8bb4
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75650025"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98200217"
 ---
 # <a name="author-a-restful-endpoint-for-custom-providers"></a>Redigera en RESTful-slutpunkt för anpassade providers
 
@@ -23,7 +23,7 @@ En anpassad Provider är ett kontrakt mellan Azure och en slut punkt. Med anpass
 
 I den här självstudien uppdaterar du Function-appen så att den fungerar som en RESTful-slutpunkt för din anpassade Provider. Resurser och åtgärder i Azure modelleras efter följande grundläggande RESTful-specifikation:
 
-- **Lägg**till: skapa en ny resurs
+- **Lägg** till: skapa en ny resurs
 - **Hämta (instans)**: Hämta en befintlig resurs
 - **Ta bort**: ta bort en befintlig resurs
 - **Post**: utlöser en åtgärd
@@ -43,7 +43,7 @@ X-MS-CustomProviders-RequestPath: /subscriptions/{subscriptionId}/resourceGroups
 
 Baserat på exemplets `x-ms-customproviders-requestpath` Rubrik kan du skapa parametrarna *PartitionKey* och *rowKey* för ditt lagrings utrymme som visas i följande tabell:
 
-Parameter | Mall | Beskrivning
+Parameter | Mall | Description
 ---|---|---
 *partitionKey* | `{subscriptionId}:{resourceGroupName}:{resourceProviderName}` | Parametern *partitionKey* anger hur data partitioneras. Vanligt vis partitioneras data av den anpassade Provider-instansen.
 *rowKey* | `{myResourceType}:{myResourceName}` | Parametern *rowKey* anger den enskilda identifieraren för data. Vanligt vis är identifieraren namnet på resursen.
@@ -132,7 +132,7 @@ public static async Task<HttpResponseMessage> CreateCustomResource(HttpRequestMe
 }
 ```
 
-Metoden **CreateCustomResource** uppdaterar inkommande begäran om du vill inkludera de Azure-/regionsspecifika fält **-ID**, **namn**och **typ**. Dessa fält är toppnivå egenskaper som används av tjänster i Azure. De gör att den anpassade providern samverkar med andra tjänster som Azure Policy, Azure Resource Manager mallar och Azure aktivitets logg.
+Metoden **CreateCustomResource** uppdaterar inkommande begäran om du vill inkludera de Azure-/regionsspecifika fält **-ID**, **namn** och **typ**. Dessa fält är toppnivå egenskaper som används av tjänster i Azure. De gör att den anpassade providern samverkar med andra tjänster som Azure Policy, Azure Resource Manager mallar och Azure aktivitets logg.
 
 Egenskap | Exempel | Beskrivning
 ---|---|---
@@ -347,7 +347,7 @@ När du har lagt till metoder och klasser måste du uppdatera **using** -metoder
 ```csharp
 #r "Newtonsoft.Json"
 #r "Microsoft.WindowsAzure.Storage"
-#r "../bin/Microsoft.Azure.Management.ResourceManager.Fluent.dll"
+#r "../bin/Microsoft.Azure.Management.ResourceManager.Fluent"
 
 using System;
 using System.Net;

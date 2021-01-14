@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: e07e9035dc55f77a2e76b4f4ee306deab829980a
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 1626ee074d51048dbf45c629f261a550822d746c
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182758"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98200846"
 ---
 # <a name="azure-security-baseline-for-automation"></a>Azures säkerhets bas linje för Automation
 
@@ -44,7 +44,7 @@ Alternativt, om du har ett speciellt krav, kan Azure-brandväggen också använd
 
 * [Körnings miljö för Runbook](./automation-runbook-execution.md#runbook-execution-environment)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Kund
 
@@ -68,7 +68,7 @@ Om du använder hybrid Runbook Worker som backas upp av virtuella Azure-datorer 
 
 **Vägledning**: ej tillämpligt; den här rekommendationen är avsedd för webb program som körs på Azure App Service-eller beräknings resurser.
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -148,13 +148,13 @@ Om du använder hybrid Runbook Worker som finns på Azure Virtual Machines kan d
 
 Du kan också använda Azure-ritningar för att förenkla storskaliga Azure-distributioner genom att paketera viktiga miljö artefakter, till exempel Azure Resources Manager-mallar, Azure RBAC-kontroller och-principer, i en enda skiss definition. Du kan använda skissen för nya prenumerationer och finjustera kontroll och hantering genom versions hantering.
 
-* [Så här konfigurerar och hanterar du Azure Policy](../governance/policy/tutorials/create-and-manage.md)
+* [Konfigurera och hantera Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
 * [Azure Policy exempel för nätverk](../governance/policy/samples/built-in-policies.md#network)
 
 * [Så här skapar du en Azure Blueprint](../governance/blueprints/create-blueprint-portal.md)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Kund
 
@@ -172,7 +172,7 @@ Du kan använda Azure PowerShell eller Azure CLI för att söka efter eller utf�
 
 * [Så här skapar du en NSG med en säkerhets konfiguration](../virtual-network/tutorial-filter-network-traffic.md)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Kund
 
@@ -198,7 +198,7 @@ Du kan använda Azure PowerShell eller Azure CLI för att söka efter eller utf�
 
 * [Så här konfigurerar du tidssynkronisering för Azure Compute-resurser](../virtual-machines/windows/time-sync.md)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Microsoft
 
@@ -246,7 +246,7 @@ När du använder funktionen Hybrid Runbook Worker kan Azure Security Center til
 
 * [Konfigurera data insamlings nivå i Azure Security Center](../security-center/security-center-enable-data-collection.md#data-collection-tier)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -274,7 +274,7 @@ Alternativt kan du aktivera och fordonsbaserad data till Azure Sentinel eller en
 
 * [Så här utför du anpassade frågor i Azure Monitor](../azure-monitor/log-query/get-started-queries.md)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Kund
 
@@ -304,7 +304,7 @@ Men när du använder funktionen Hybrid Runbook Worker kan du använda Microsoft
 
 * [Aktivera övervakning på gästnivå för virtuella datorer](../cost-management-billing/cloudyn/azure-vm-extended-metrics.md)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -324,7 +324,7 @@ Men när du använder funktionen Hybrid Runbook Worker kan Azure Security Center
 
 * [Datainsamling i Azure Security Center](../security-center/security-center-enable-data-collection.md#data-collection-tier)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -390,7 +390,7 @@ Du kan också aktivera en just-in-Time/bara-tillräcklig-åtkomst genom att anv�
 
 **Vägledning**: Aktivera Azure AD Multi-Factor Authentication (MFA) och följ rekommendationer för Azure Security Center identitets-och åtkomst hantering.
 
-* [Så här aktiverar du MFA i Azure](../active-directory/authentication/howto-mfa-getstarted.md)
+* [Aktivera MFA i Azure](../active-directory/authentication/howto-mfa-getstarted.md)
 
 * [Övervaka identitet och åtkomst i Azure Security Center](../security-center/security-center-identity-access.md)
 
@@ -402,11 +402,11 @@ Du kan också aktivera en just-in-Time/bara-tillräcklig-åtkomst genom att anv�
 
 **Vägledning**: Använd Paw med Multi-Factor Authentication som kon figurer ATS för att logga in på och konfigurera Azure Automation konto resurser i produktions miljöer.
 
-* [Lär dig mer om arbets stationer med privilegie rad åtkomst](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+* [Lär dig mer om arbets stationer med privilegie rad åtkomst](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
-* [Så här aktiverar du MFA i Azure](../active-directory/authentication/howto-mfa-getstarted.md)
+* [Aktivera MFA i Azure](../active-directory/authentication/howto-mfa-getstarted.md)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Kund
 
@@ -438,7 +438,7 @@ Du kan också aktivera en just-in-Time/bara-tillräcklig-åtkomst genom att anv�
 
 **Vägledning**: Använd Azure AD som den centrala autentiserings-och auktoriserings systemet. Azure AD skyddar data med stark kryptering för data i vila och under överföring. Azure AD innehåller även salter, hash-värden och lagrar användarautentiseringsuppgifter på ett säkert sätt. Om du använder hybrid Runbook Worker kan du använda hanterade identiteter i stället för kör som-konton för att möjliggöra mer sömlöst skyddade behörigheter.
 
-* [Så skapar och konfigurerar du en Azure AD-instans](../active-directory-domain-services/tutorial-create-instance.md)
+* [Skapa och konfigurera en Azure AD-instans](../active-directory-domain-services/tutorial-create-instance.md)
 
 * [Använd Runbook-autentisering med hanterade identiteter](./automation-hrw-run-runbooks.md#runbook-auth-managed-identities)
 
@@ -532,7 +532,7 @@ Men när du använder hybrid Runbook Worker som backas upp av virtuella Azure-da
 
 * [Så här konfigurerar du aviseringen eller aviseringen och nekar med Azure-brandväggen](../firewall/threat-intel.md)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Kund
 
@@ -556,7 +556,7 @@ Följ Azure Security Center rekommendationer för kryptering i vila och krypteri
 
 * [Förstå kryptering i överföring med Azure](../security/fundamentals/encryption-overview.md#encryption-of-data-in-transit)
 
-* [Azure Automation TLS 1,2-tvång](https://azure.microsoft.com/updates/azure-automation-tls12-enforcement/)
+* [Azure Automation TLS 1,2-tvång](/azure/active-directory/hybrid/reference-connect-tls-enforcement)
 
 **Azure Security Center-övervakning**: Ja
 
@@ -650,7 +650,7 @@ Om du använder hybrid Runbook Worker som backas upp av virtuella Azure-datorer 
 
 * [Hantera uppdateringar och korrigeringar för dina virtuella datorer](./update-management/manage-updates-for-vm.md)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -664,7 +664,7 @@ Om du använder hybrid Runbook Worker som backas upp av virtuella Azure-datorer 
 
 * [Hantera uppdateringar och korrigeringar för dina virtuella Azure-datorer](./update-management/manage-updates-for-vm.md)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -672,7 +672,7 @@ Om du använder hybrid Runbook Worker som backas upp av virtuella Azure-datorer 
 
 **Vägledning**: exportera skannings resultat med jämna mellanrum och jämför resultaten för att verifiera att sårbarheter har åtgärd ATS. När du använder rekommendationen för sårbarhets hantering som föreslås av Azure Security Center kan kunden pivotera in den valda lösningens Portal för att visa historiska skannings data.
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Kund
 
@@ -682,7 +682,7 @@ Om du använder hybrid Runbook Worker som backas upp av virtuella Azure-datorer 
 
 * [Förstå Azure Security Center säkra Poäng](../security-center/secure-score-security-controls.md)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Kund
 
@@ -700,7 +700,7 @@ Om du använder hybrid Runbook Worker som backas upp av virtuella Azure-datorer 
 
 * [Förstå Azure RBAC](../role-based-access-control/overview.md)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Kund
 
@@ -710,7 +710,7 @@ Om du använder hybrid Runbook Worker som backas upp av virtuella Azure-datorer 
 
 * [Skapa och använda Taggar](../azure-resource-manager/management/tag-resources.md)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Kund
 
@@ -728,7 +728,7 @@ Om du använder hybrid Runbook Worker som backas upp av virtuella Azure-datorer 
 
 * [Hantera ett Kör som-konto för Azure Automation](./manage-runas-account.md)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Kund
 
@@ -736,7 +736,7 @@ Om du använder hybrid Runbook Worker som backas upp av virtuella Azure-datorer 
 
 **Vägledning**: du måste skapa en inventering av godkända Azure-resurser och godkänd program vara för beräknings resurser enligt organisationens behov.
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Kund
 
@@ -748,13 +748,13 @@ Om du använder hybrid Runbook Worker som backas upp av virtuella Azure-datorer 
 
 Använd dessutom Azure Resource Graph för att fråga/identifiera resurser i prenumerationer. Detta kan hjälpa till med hög säkerhetsbaserade miljöer, till exempel de med lagrings konton.
 
-* [Så här konfigurerar och hanterar du Azure Policy](../governance/policy/tutorials/create-and-manage.md)
+* [Konfigurera och hantera Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
 * [Så här skapar du frågor med Azure Resource Graph](../governance/resource-graph/first-query-portal.md)
 
 * [Azure Policy exempel på inbyggda program för Azure Automation](./policy-reference.md)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Kund
 
@@ -770,7 +770,7 @@ Om du använder hybrid Runbook Worker som backas upp av Azure Virtual Machines g
 
 * [Hantera modul i Azure Automation](./shared-resources/modules.md)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -778,11 +778,11 @@ Om du använder hybrid Runbook Worker som backas upp av Azure Virtual Machines g
 
 **Vägledning**: kunden kan förhindra att resurser skapas eller används med Azure policy som krävs av kundens företags rikt linjer. Du kan implementera en egen process för att ta bort obehöriga resurser. Inom Azure Automation-erbjudandet är det möjligt att installera, ta bort och hantera PowerShell-eller python-moduler som Runbooks har åtkomst till via portalen eller cmdlets. Ej godkänd eller gammal modul bör tas bort eller uppdateras för Runbooks.
 
-* [Så här konfigurerar och hanterar du Azure Policy](../governance/policy/tutorials/create-and-manage.md)
+* [Konfigurera och hantera Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
 * [Hantera modul i Azure Automation](./shared-resources/modules.md)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Kund
 
@@ -792,7 +792,7 @@ Om du använder hybrid Runbook Worker som backas upp av Azure Virtual Machines g
 
 * [Använda Azure Security Center adaptiva program kontroller](../security-center/security-center-adaptive-application.md)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -802,11 +802,11 @@ Om du använder hybrid Runbook Worker som backas upp av Azure Virtual Machines g
 - Otillåtna resurstyper
 - Tillåtna resurstyper
 
-* [Så här konfigurerar och hanterar du Azure Policy](../governance/policy/tutorials/create-and-manage.md)
+* [Konfigurera och hantera Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
 * [Så här nekar du en speciell resurs typ med Azure Policy](../governance/policy/samples/index.md)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Kund
 
@@ -818,7 +818,7 @@ Anpassningsbar program kontroll är en intelligent, automatiserad lösning från
 
 * [Använda Azure Security Center adaptiva program kontroller](../security-center/security-center-adaptive-application.md)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -840,7 +840,7 @@ Anpassningsbar program kontroll är en intelligent, automatiserad lösning från
 
 * [Använda Azure Security Center adaptiva program kontroller](../security-center/security-center-adaptive-application.md)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -862,7 +862,7 @@ Anpassningsbar program kontroll är en intelligent, automatiserad lösning från
 
 * [Beslutsguide för prenumerationer](/azure/cloud-adoption-framework/decision-guides/subscriptions/)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -888,7 +888,7 @@ Du kan också använda rekommendationer från Azure Security Center som en säke
 
 * [Säkerhetsrekommendationer – en referensguide](../security-center/recommendations-reference.md)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Kund
 
@@ -902,7 +902,7 @@ När du använder funktionen Hybrid Runbook Worker använder du Azure Security C
 
 * [Så här åtgärdar du Azure Security Center rekommendationer](../security-center/security-center-remediate-recommendations.md)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -914,7 +914,7 @@ När du använder funktionen Hybrid Runbook Worker använder du Azure Security C
 
 * [Information om hur du skapar Azure Resource Manager mallar](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)
 
-* [Så här konfigurerar och hanterar du Azure Policy](../governance/policy/tutorials/create-and-manage.md)
+* [Konfigurera och hantera Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
 * [Förstå Azure Policys effekter](../governance/policy/concepts/effects.md)
 
@@ -922,7 +922,7 @@ När du använder funktionen Hybrid Runbook Worker använder du Azure Security C
 
 * [Azure Policy exempel på inbyggda program för Azure Automation](./policy-reference.md)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Kund
 
@@ -944,7 +944,7 @@ I de flesta fall kan de virtuella Microsoft Base-mallarna tillsammans med Azure 
 
 * [Ladda upp en anpassad virtuell hård disk till Azure](/azure-stack/operator/azure-stack-add-vm-image?view=azs-1910)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -958,7 +958,7 @@ I de flesta fall kan de virtuella Microsoft Base-mallarna tillsammans med Azure 
 
 * [Använda källkontrollsintegrering](./source-control-integration.md)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Kund
 
@@ -972,7 +972,7 @@ Se till att du begränsar åtkomsten till den anpassade OS-avbildningen som finn
 
 * [Så här konfigurerar du Azure RBAC](../role-based-access-control/quickstart-assign-role-user-portal.md)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -980,13 +980,13 @@ Se till att du begränsar åtkomsten till den anpassade OS-avbildningen som finn
 
 **Vägledning**: definiera och implementera standardinställda säkerhetskonfigurationer för Azure-resurser med hjälp av Azure policy. Använd Azure Policy alias för att skapa anpassade principer för att granska eller tillämpa nätverks konfigurationen för dina Azure-resurser. Du kan också använda inbyggda princip definitioner som är relaterade till dina speciella resurser.
 
-* [Så här konfigurerar och hanterar du Azure Policy](../governance/policy/tutorials/create-and-manage.md)
+* [Konfigurera och hantera Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
 * [Använda alias](../governance/policy/concepts/definition-structure.md#aliases)
 
 * [Azure Policy exempel på inbyggda program för Azure Automation](./policy-reference.md)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Kund
 
@@ -998,7 +998,7 @@ När du använder Hybrid Runbook Worker-funktionen använder du Azure Automation
 
 * [Onboarding-datorer för hantering genom Azure Automation tillstånds konfiguration](./automation-dsc-onboarding.md)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -1012,11 +1012,11 @@ När du använder funktionen Hybrid Runbook Worker använder du Azure Security C
 
 * [Komma igång med konfiguration av Azure Automation tillstånd](./automation-dsc-getting-started.md)
 
-* [Så här konfigurerar och hanterar du Azure Policy](../governance/policy/tutorials/create-and-manage.md)
+* [Konfigurera och hantera Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
 * [Azure Policy exempel på inbyggda program för Azure Automation](./policy-reference.md)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Kund
 
@@ -1028,7 +1028,7 @@ När du använder funktionen Hybrid Runbook Worker använder du Azure Automation
 
 * [Onboarding-datorer för hantering genom Azure Automation tillstånds konfiguration](./automation-dsc-onboarding.md)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -1046,7 +1046,7 @@ När du använder funktionen Hybrid Runbook Worker använder du Azure Automation
 
 * [Så här tilldelar du en Key Vault åtkomst princip](../key-vault/general/assign-access-policy-portal.md)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -1058,13 +1058,13 @@ När du använder funktionen Hybrid Runbook Worker använder du Azure Automation
 
 * [Användning av Kundhanterade nycklar för ett Automation-konto](./automation-secure-asset-encryption.md#use-of-customer-managed-keys-for-an-automation-account)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
 ### <a name="713-eliminate-unintended-credential-exposure"></a>7,13: eliminera oavsiktlig exponering för autentiseringsuppgifter
 
-**Vägledning**: implementera autentiseringsuppgifterna för inloggning för att identifiera autentiseringsuppgifter inom koden. Den här skannern uppmuntrar också att flytta identifierade autentiseringsuppgifter till säkrare platser som Azure Key Vault.
+**Vägledning**: implementera autentiseringsuppgifterna för inloggning för att identifiera autentiseringsuppgifter inom koden. Credential Scanner uppmanar också till att flytta identifierade autentiseringsuppgifter till en säkrare plats som Azure Key Vault.
 
 * [Konfigurera inloggnings skannern](https://secdevtools.azurewebsites.net/helpcredscan.html)
 
@@ -1084,7 +1084,7 @@ När du använder funktionen Hybrid Runbook Worker använder du Microsofts progr
 
 * [Så här konfigurerar du Microsofts program mot skadlig kod för Cloud Services och Virtual Machines](../security/fundamentals/antimalware.md)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -1094,7 +1094,7 @@ När du använder funktionen Hybrid Runbook Worker använder du Microsofts progr
 
 * [Förstå Microsoft Antimalware för Azure Cloud Services och Virtual Machines](../security/fundamentals/antimalware.md)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -1108,7 +1108,7 @@ När du använder funktionen Hybrid Runbook Worker använder du Microsoft Antima
 
 * [Microsoft Defender Advanced Threat Protection](/windows/security/threat-protection/microsoft-defender-atp/onboard-configure)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -1196,7 +1196,7 @@ Använd funktionen för käll kontrolls integrering för att hålla dina Runbook
 
 * [Använda källkontrollsintegrering](./source-control-integration.md)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Kund
 
@@ -1206,7 +1206,7 @@ Använd funktionen för käll kontrolls integrering för att hålla dina Runbook
 
 ### <a name="101-create-an-incident-response-guide"></a>10,1: skapa en incident svars guide
 
-**Vägledning**: Bygg ut en incident svars guide för din organisation. Se till att det finns skriftliga svars planer för incidenter som definierar alla personal roller och faser för incident hantering/hantering från identifiering till granskning efter incidenten.
+**Vägledning**: Skapa en guide till incidentsvar för organisationen. Se till att det finns skriftliga planer för incidentsvar som definierar alla personalroller och faser i incidenthanteringen, från identifiering till granskning efter incidenten.
 
 * [Vägledning om hur du skapar en egen svars process för säkerhets incidenter](https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/)
 
@@ -1214,7 +1214,7 @@ Använd funktionen för käll kontrolls integrering för att hålla dina Runbook
 
 * [Kunden kan också utnyttja NISTs hanterings guide för dator säkerhet för att hjälpa till med att skapa egna incident svars planer](https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Kund
 
@@ -1234,11 +1234,11 @@ Dessutom är det tydligt att markera prenumerationer (t. ex. produktion, icke-Pr
 
 ### <a name="103-test-security-response-procedures"></a>10,3: testa säkerhets svars procedurer
 
-**Vägledning**: utföra övningar för att testa dina Systems funktioner för incident svar på en vanlig takt för att hjälpa till att skydda dina Azure-resurser. Identifiera svaga punkter och luckor och ändra planen efter behov.
+**Vägledning**: utföra övningar för att testa dina Systems funktioner för incident svar på en vanlig takt för att hjälpa till att skydda dina Azure-resurser. Identifiera svaga punkter och luckor, och ändra planen efter behov.
 
 * [NIST-guide för att testa, träna och träna program för IT-planer och funktioner](https://csrc.nist.gov/publications/detail/sp/800-84/final)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Kund
 
@@ -1280,13 +1280,13 @@ Dessutom är det tydligt att markera prenumerationer (t. ex. produktion, icke-Pr
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11,1: utför regelbundna inträngande tester av dina Azure-resurser och se till att åtgärda alla viktiga säkerhets brister
 
-**Vägledning**: Följ Microsofts regler för engagemang för att se till att dina inträngande tester inte strider mot Microsofts principer. Använd Microsofts strategi för och verkställande av Red Team-indelning och genomslagstester för live-webbplatser mot Microsoft-hanterad molninfrastruktur, tjänster och program.
+**Vägledning**: Följ Microsofts regler för engagemang för att se till att dina inträngande tester inte strider mot Microsofts principer. Använd Microsofts strategi och utförande av ”red team”-aktiviteter och intrångstester live mot molninfrastruktur, tjänster och appar som hanteras av Microsoft.
 
-* [Deltagarregler för genomslagstestning](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
+* [Regler för intrångstester](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
 
-* [Red Team-indelning i Microsoft Cloud](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
+* [”Red team”-aktiviteter i Microsoft Cloud](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Delad
 

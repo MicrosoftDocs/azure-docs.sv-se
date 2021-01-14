@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 44e9712466734c0e42fd2bea05c5110cbff6924b
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 308d30118349e020d3b407243f106d9ad8368118
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94964804"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98198993"
 ---
 # <a name="additional-network-requirements-for-large-instances"></a>Ytterligare nätverks krav för stora instanser
 
@@ -31,7 +31,7 @@ Använd antingen Azure Portal, PowerShell eller Azure CLI när du lägger till f
 
 Lägg till det nya IP-adressintervallet som ett nytt intervall i det virtuella nätverkets adress utrymme, i stället för att skapa ett nytt sammanställt intervall. Skicka den här ändringen till Microsoft. På så sätt kan du ansluta från det nya IP-adressintervallet till de stora instanser i HANA-enheten i klienten. Du kan öppna en support förfrågan för Azure för att få det nya adress utrymmet för virtuella nätverk tillagt. När du har fått en bekräftelse utför du nästa steg.
 
-Om du vill skapa ytterligare ett undernät från Azure Portal, se [skapa ett virtuellt nätverk med hjälp av Azure Portal](../../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-virtual-network). Information om hur du skapar en från PowerShell finns i [skapa ett virtuellt nätverk med hjälp av PowerShell](../../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-virtual-network).
+Om du vill skapa ytterligare ett undernät från Azure Portal, se [skapa ett virtuellt nätverk med hjälp av Azure Portal](../../../virtual-network/manage-virtual-network.md#create-a-virtual-network). Information om hur du skapar en från PowerShell finns i [skapa ett virtuellt nätverk med hjälp av PowerShell](../../../virtual-network/manage-virtual-network.md#create-a-virtual-network).
 
 ## <a name="add-virtual-networks"></a>Lägg till virtuella nätverk
 
@@ -51,11 +51,11 @@ När den nya kretsen skapas och SAP HANA på Microsoft Service Management-konfig
 
 Om du vill ta bort ett undernät för virtuellt nätverk kan du använda Azure Portal, PowerShell eller Azure CLI. Om ditt virtuella Azure-nätverks IP-adressintervall eller adress utrymme var ett sammanställt intervall finns det ingen uppföljning för dig med Microsoft. (Observera dock att det virtuella nätverket fortfarande sprider det adress utrymme för BGP-routning som innehåller det borttagna under nätet.) Du kan ha definierat det virtuella adress intervallet eller adress utrymmet för Azure-nätverket som flera IP-adressintervall, varav de har tilldelats till ditt borttagna undernät. Var noga med att ta bort det från det virtuella nätverkets adress utrymme. Informera sedan SAP HANA om Microsoft Service Management för att ta bort den från de intervall som SAP HANA på Azure (stora instanser) tillåts kommunicera med.
 
-Mer information finns i [ta bort ett undernät](../../../virtual-network/virtual-network-manage-subnet.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#delete-a-subnet).
+Mer information finns i [ta bort ett undernät](../../../virtual-network/virtual-network-manage-subnet.md#delete-a-subnet).
 
 ## <a name="delete-a-virtual-network"></a>Ta bort ett virtuellt nätverk
 
-Mer information finns i [ta bort ett virtuellt nätverk](../../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#delete-a-virtual-network).
+Mer information finns i [ta bort ett virtuellt nätverk](../../../virtual-network/manage-virtual-network.md#delete-a-virtual-network).
 
 SAP HANA på Microsoft Service Management tar bort befintliga auktoriseringar på SAP HANA på Azure (stora instanser) ExpressRoute-kretsen. Det tar också bort det virtuella Azure-nätverkets IP-adressintervall eller adress utrymme för kommunikationen med HANA-stora instanser.
 

@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 02/16/2017
 ms.author: cynthn
-ms.openlocfilehash: 38f231e63ad4974a23a1201aad4d290685860b50
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3d68ac7aa9927e62011c58b17139d7232ce4a10c
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87292161"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98200761"
 ---
 # <a name="create-virtual-network-interface-cards-and-use-internal-dns-for-vm-name-resolution-on-azure"></a>Skapa nätverkskort för virtuella nätverkskort och Använd interna DNS för namn matchning för virtuella datorer på Azure
 
@@ -22,7 +22,7 @@ Den här artikeln visar hur du ställer in statiska interna DNS-namn för virtue
 Kraven är:
 
 * [ett Azure-konto](https://azure.microsoft.com/pricing/free-trial/)
-* [offentliga och privata SSH-nyckelfiler](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [offentliga och privata SSH-nyckelfiler](mac-create-ssh-keys.md)
 
 ## <a name="quick-commands"></a>Snabbkommandon
 Om du snabbt behöver utföra uppgiften kan du använda följande avsnitt för att få information om de kommandon som behövs. Mer detaljerad information och kontext för varje steg finns i resten av dokumentet, med [början här](#detailed-walkthrough). För att utföra de här stegen måste du ha den senaste versionen av [Azure CLI](/cli/azure/install-az-cli2) installerat och inloggad på ett Azure-konto med [AZ-inloggning](/cli/azure/reference-index).
@@ -71,7 +71,7 @@ az group create --name myResourceGroup --location westus
 
 ## <a name="create-the-virtual-network"></a>Skapa det virtuella nätverket
 
-Nästa steg är att bygga ett virtuellt nätverk för att starta de virtuella datorerna i. Det virtuella nätverket innehåller ett undernät för den här genom gången. Mer information om virtuella Azure-nätverk finns i [skapa ett virtuellt nätverk](../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-virtual-network). 
+Nästa steg är att bygga ett virtuellt nätverk för att starta de virtuella datorerna i. Det virtuella nätverket innehåller ett undernät för den här genom gången. Mer information om virtuella Azure-nätverk finns i [skapa ett virtuellt nätverk](../../virtual-network/manage-virtual-network.md#create-a-virtual-network). 
 
 Skapa det virtuella nätverket med [AZ Network VNet Create](/cli/azure/network/vnet). I följande exempel skapas ett virtuellt nätverk med namnet `myVnet` och under nätet med namnet `mySubnet` :
 
@@ -85,7 +85,7 @@ az network vnet create \
 ```
 
 ## <a name="create-the-network-security-group"></a>Skapa nätverks säkerhets gruppen
-Azure nätverks säkerhets grupper motsvarar en brand vägg på nätverks nivån. Mer information om nätverks säkerhets grupper finns i [så här skapar du NSG: er i Azure CLI](../../virtual-network/tutorial-filter-network-traffic-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
+Azure nätverks säkerhets grupper motsvarar en brand vägg på nätverks nivån. Mer information om nätverks säkerhets grupper finns i [så här skapar du NSG: er i Azure CLI](../../virtual-network/tutorial-filter-network-traffic-cli.md). 
 
 Skapa nätverks säkerhets gruppen med [AZ Network NSG Create](/cli/azure/network/nsg). I följande exempel skapas en nätverks säkerhets grupp med namnet `myNetworkSecurityGroup` :
 
@@ -157,5 +157,5 @@ az vm create \
 Genom att använda CLI-flaggorna för att anropa befintliga resurser instruerar vi Azure att distribuera den virtuella datorn i det befintliga nätverket. För att upprepa igen när ett VNet och ett undernät har distribuerats kan de lämnas som statiska eller permanenta resurser i din Azure-region.  
 
 ## <a name="next-steps"></a>Nästa steg
-* [Skapa en egen anpassad miljö för en virtuell Linux-dator med hjälp av Azure CLI-kommandon](create-cli-complete.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [Skapa en virtuell Linux-dator i Azure med hjälp av mallar](create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Skapa en egen anpassad miljö för en virtuell Linux-dator med hjälp av Azure CLI-kommandon](create-cli-complete.md)
+* [Skapa en virtuell Linux-dator i Azure med hjälp av mallar](create-ssh-secured-vm-from-template.md)

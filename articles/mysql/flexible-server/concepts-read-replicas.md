@@ -5,13 +5,13 @@ author: ambhatna
 ms.author: ambhatna
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 10/26/2020
-ms.openlocfilehash: 3fe63deb8115c0043023301c6d0dc3731e97743f
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 01/14/2021
+ms.openlocfilehash: ccae7b3f201e55af0e9e6b4ca9e7fd4ffb9c4897
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492633"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98200982"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql---flexible-server"></a>Läs repliker i Azure Database for MySQL-flexibel Server
 
@@ -31,7 +31,7 @@ Mer information om funktioner och problem med MySQL-replikering finns i [dokumen
 > [!NOTE]
 > Kompensations fri kommunikation
 >
-> Microsoft stöder en mängd olika och införlivande miljöer. Den här artikeln innehåller referenser till ordet _slav_. Microsofts [stil guide för en kostnads fri kommunikation](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) känner igen detta som ett undantags ord. Ordet används i den här artikeln för konsekvens eftersom det är det ord som visas i program varan. När program varan har uppdaterats för att ta bort ordet uppdateras den här artikeln som en justering.
+> Microsoft stöder en mängd olika och införlivande miljöer. Den här artikeln innehåller referenser till orden _Master_ och _slav_. Microsofts [stil guide för kommunikation utan fördjupad kommunikation](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) känner igen dessa som undantags ord. Orden används i den här artikeln för konsekvens eftersom de är för närvarande de ord som visas i program varan. När program varan har uppdaterats för att ta bort orden uppdateras den här artikeln som en justering.
 >
 
 ## <a name="common-use-cases-for-read-replica"></a>Vanliga användnings fall för Läs replik
@@ -40,7 +40,7 @@ Funktionen Läs replik hjälper till att förbättra prestanda och skalning för
 
 Vanliga scenarier är:
 
-* Skala Läs-arbets belastningar från programmet med hjälp av proxyservern för förenklad anslutning som [ProxySQL](https://aka.ms/ProxySQLLoadBalanceReplica) eller med hjälp av mikrotjänster baserat mönster för att skala ut dina Läs frågor som kommer från programmet för att läsa repliker
+* Skala Läs-arbets belastningar från programmet med hjälp av proxyservern för förenklad anslutning som [ProxySQL](https://aka.ms/ProxySQLLoadBalanceReplica) eller använda mikrotjänster-baserade mönster för att skala ut dina Läs frågor som kommer från programmet till att läsa repliker
 * Arbets belastningar för BI-eller analys rapporter kan använda Läs repliker som data källa för rapportering
 * För IoT-eller tillverknings scenario där telemetri-information matas in i MySQL-databasmotorn samtidigt som flera Läs repliker används för rapportering av data
 
@@ -93,24 +93,24 @@ Lär dig hur du [stoppar replikering till en replik](how-to-read-replicas-portal
 
 ## <a name="failover"></a>Redundans
 
-Det finns ingen automatisk redundans mellan käll-och replik servrar. 
+Det finns ingen automatisk redundans mellan käll-och replik servrar.
 
 Läs repliker är avsedd för skalning av Läs intensiva arbets belastningar och har inte utformats för att uppfylla hög tillgänglighets behoven hos en server. Det finns ingen automatisk redundans mellan käll-och replik servrar. Att stoppa replikeringen på en Läs replik för att ta den online i Läs-/skriv läge är det sätt som den manuella redundansväxlingen utförs med.
 
-Eftersom replikeringen är asynkron finns det en fördröjning mellan källan och repliken. Mängden fördröjning kan påverkas av ett antal faktorer, t. ex. hur mycket hög belastningen som körs på käll servern och fördröjningen mellan data Center. I de flesta fall varierar replikfördröjning mellan några sekunder och några minuter. Du kan spåra den faktiska replikeringens fördröjning med hjälp av mått *replik fördröjningen*, som är tillgänglig för varje replik. Det här måttet visar tiden sedan den senaste återspelade transaktionen. Vi rekommenderar att du identifierar den genomsnittliga fördröjningen genom att iaktta din replik fördröjning under en viss tids period. Du kan ställa in en avisering på replik fördröjningen, så att om den går utanför det förväntade intervallet kan du vidta åtgärder.
+Eftersom replikeringen är asynkron finns det en fördröjning mellan källan och repliken. Mängden fördröjning kan påverkas av många faktorer, till exempel hur mycket belastningen på käll servern som körs på käll servern och fördröjningen mellan data Center. I de flesta fall varierar replikfördröjning mellan några sekunder och några minuter. Du kan spåra den faktiska replikeringens fördröjning med hjälp av mått *replik fördröjningen*, som är tillgänglig för varje replik. Det här måttet visar tiden sedan den senaste återspelade transaktionen. Vi rekommenderar att du identifierar den genomsnittliga fördröjningen genom att iaktta din replik fördröjning under en viss tids period. Du kan ställa in en avisering på replik fördröjningen, så att om den går utanför det förväntade intervallet kan du vidta åtgärder.
 
 > [!Tip]
 > Om du redundansväxlas till repliken kommer fördröjningen vid den tidpunkt då du avlänkar repliken från källan att indikera hur mycket data som förloras.
 
-När du har valt att du vill redundansväxla till en replik, 
+När du har valt att du vill redundansväxla till en replik:
 
 1. Stoppa replikering till repliken<br/>
-   Det här steget är nödvändigt för att göra replik servern tillgänglig för skrivningar. Som en del av den här processen kopplas replik servern från källan. När du har initierat stoppa replikeringen tar det vanligt vis ungefär 2 minuter att slutföra backend-processen. Se avsnittet [stoppa replikering](#stop-replication) i den här artikeln för att förstå konsekvenserna av den här åtgärden.
-    
+   Det här steget är nödvändigt för att göra replik servern tillgänglig för skrivningar. Som en del av den här processen kopplas replik servern från källan. När du har initierat stoppa replikering tar det vanligt vis ungefär 2 minuter att slutföra backend-processen. Se avsnittet [stoppa replikering](#stop-replication) i den här artikeln för att förstå konsekvenserna av den här åtgärden.
+
 2. Peka ditt program till den (tidigare) repliken<br/>
    Varje server har en unik anslutnings sträng. Uppdatera programmet så att det pekar på den (tidigare) repliken i stället för källan.
-    
-När ditt program har bearbetat läsningar och skrivningar har du slutfört redundansväxlingen. Hur lång tid det tar för program upplevelser att vara beroende av när du upptäcker ett problem och Slutför steg 1 och 2 ovan.
+
+När programmet har bearbetat läsningar och skrivningar har du slutfört redundansväxlingen. Hur lång tid det tar för program upplevelser att vara beroende av när du upptäcker ett problem och Slutför steg 1 och 2 ovan.
 
 ## <a name="considerations-and-limitations"></a>Överväganden och begränsningar
 
@@ -125,10 +125,10 @@ När ditt program har bearbetat läsningar och skrivningar har du slutfört redu
 | Stoppade repliker | Om du stoppar replikeringen mellan en käll Server och en Läs replik blir den stoppade repliken en fristående server som accepterar både läsning och skrivning. Den fristående servern kan inte göras till en replik igen. |
 | Borttagen källa och fristående servrar | När en käll server tas bort, stoppas replikeringen till alla Läs repliker. Dessa repliker blir automatiskt fristående servrar och kan acceptera både läsningar och skrivningar. Själva käll servern tas bort. |
 | Användarkonton | Användare på käll servern replikeras till läsa repliker. Du kan bara ansluta till en Läs replik med de användar konton som är tillgängliga på käll servern. |
-| Serverparametrar | I syfte att förhindra att data blir osynkroniserade samt att undvika potentiell dataförlust eller skadade data är vissa serverparametrar låsta från att uppdateras vid användning av skrivskyddade repliker. <br> Följande Server parametrar är låsta på både käll-och replik servern:<br> - [`innodb_file_per_table`](https://dev.mysql.com/doc/refman/8.0/en/innodb-file-per-table-tablespaces.html) <br> - [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) <br> [`event_scheduler`](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_event_scheduler)Parametern är låst på replik servrarna. <br> Om du vill uppdatera en av parametrarna ovan på käll servern, måste du ta bort replik servrar, uppdatera parametervärdet på källan och återskapa repliker. |
+| Serverparametrar | I syfte att förhindra att data blir osynkroniserade samt att undvika potentiell dataförlust eller skadade data är vissa serverparametrar låsta från att uppdateras vid användning av skrivskyddade repliker. <br> Följande Server parametrar är låsta på både käll-och replik servern:<br> - [`innodb_file_per_table`](https://dev.mysql.com/doc/refman/8.0/en/innodb-file-per-table-tablespaces.html) <br> - [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) <br> [`event_scheduler`](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_event_scheduler)Parametern är låst på replik servrarna. <br> Om du vill uppdatera en av parametrarna ovan på käll servern tar du bort replik servrar, uppdaterar parametervärdet på källan och återskapar repliker. |
 | Övrigt | – Det finns inte stöd för att skapa en replik av en replik. <br> -InMemory-tabeller kan orsaka att repliker inte längre är synkroniserade. Detta är en begränsning av MySQL-replikeringstrafiken. Mer information finns i [referens dokumentationen för MySQL](https://dev.mysql.com/doc/refman/5.7/en/replication-features-memory.html) . <br>– Kontrol lera att käll Server tabellerna har primär nycklar. Brist på primär nycklar kan leda till replikeringsfördröjning mellan källan och replikerna.<br>– Granska den fullständiga listan över begränsningar för MySQL-replikering i [MySQL-dokumentationen](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html) |
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Lär dig hur du [skapar och hanterar Läs repliker med hjälp av Azure Portal](how-to-read-replicas-portal.md)
-- Lär dig hur du [skapar och hanterar Läs repliker med Azure CLI](how-to-read-replicas-cli.md)
+* Lär dig hur du [skapar och hanterar Läs repliker med hjälp av Azure Portal](how-to-read-replicas-portal.md)
+* Lär dig hur du [skapar och hanterar Läs repliker med Azure CLI](how-to-read-replicas-cli.md)

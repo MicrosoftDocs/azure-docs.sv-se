@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 038d19270fbdb672d397eb2bd56bd27e17ea7af9
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: f407f9ee2ea0ca73b29e4fde9d542c005f78a929
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96929097"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98200455"
 ---
 # <a name="azure-app-configuration-best-practices"></a>Metod tips för Azure App konfiguration
 
@@ -89,6 +89,10 @@ Med konfiguration av appar kan du välja Mass [import](./howto-import-export-dat
 ## <a name="multi-region-deployment-in-app-configuration"></a>Distribution i flera regioner i appens konfiguration
 
 Konfiguration av appar är regional tjänst. För program med olika konfigurationer per region kan du skapa en enskild felpunkt genom att lagra dessa konfigurationer i en instans. Att distribuera en instans av konfigurations instanser per region i flera regioner kan vara ett bättre alternativ. Det kan hjälpa till med regional haveri beredskap, prestanda och säkerhets silo. Att konfigurera efter region förbättrar också svars tiden och använder separerade begränsnings kvoter, eftersom begränsningen är per instans. Om du vill tillämpa minskning av haveri beredskap kan du använda [flera konfigurations lager](./concept-disaster-recovery.md). 
+
+## <a name="client-applications-in-app-configuration"></a>Klient program i app-konfiguration 
+
+För många begär anden till app-konfigurationen kan leda till begränsning eller överbelastnings kostnader. Programmen drar nytta av cachelagring och intelligent uppdatering som är tillgängliga för att optimera antalet förfrågningar som de skickar. Den här processen kan speglas i klient program med hög volym genom att undvika direkta anslutningar till konfigurations arkivet. I stället ansluter klient programmen till en anpassad tjänst och den här tjänsten kommunicerar med konfigurations lagret. Den här proxyservern kan se till att klient programmen inte närmar sig begränsnings gränsen i konfigurations arkivet. Mer information om begränsning finns i [vanliga frågor och svar](https://docs.microsoft.com/azure/azure-app-configuration/faq#are-there-any-limits-on-the-number-of-requests-made-to-app-configuration).  
 
 ## <a name="next-steps"></a>Nästa steg
 

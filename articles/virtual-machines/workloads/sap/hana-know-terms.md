@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 11/20/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7777888bd27325e9094032458922969494a9a64e
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: c1e4e223e7932f7fc8699c04a94b079b7f16e3d5
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94984965"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98198908"
 ---
 # <a name="know-the-terms"></a>Förstå villkoren
 
@@ -36,7 +36,7 @@ Flera vanliga definitioner används ofta i arkitektur-och teknisk distributions 
 - **SAP HANA på Azure (stora instanser):** Officiellt namn på erbjudandet i Azure att köra HANA-instanser i på SAP HANA TDI-certifierad maskin vara som distribueras i stora instanser i olika Azure-regioner. Den relaterade termen *Hana-stor instans* är kort för *SAP HANA på Azure (stora instanser)* och används ofta i den här tekniska distributions guiden.
 - **Olika platser**: beskriver ett scenario där virtuella datorer distribueras till en Azure-prenumeration som har plats-till-plats-, flera-plats-eller Azure ExpressRoute-anslutning mellan lokala data Center och Azure. I gemensam Azure-dokumentation beskrivs även de här typerna av distributioner som scenarier med olika platser. Orsaken till anslutningen är att utöka lokala domäner, lokala Azure Active Directory/OpenLDAP och lokala DNS i Azure. Den lokala miljön är utökad till Azure-till gångar i Azure-prenumerationerna. Med det här tillägget kan de virtuella datorerna ingå i den lokala domänen. 
 
-   Domän användare av den lokala domänen kan komma åt servrarna och köra tjänster på de virtuella datorerna (till exempel DBMS-tjänster). Kommunikation och namn matchning mellan virtuella datorer som distribuerats lokalt och Azure-distribuerade virtuella datorer är möjligt. Det här scenariot är vanligt för det sätt på vilket de flesta SAP-till gångar distribueras. Mer information finns i [Azure VPN gateway](../../../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) och [skapa ett virtuellt nätverk med en plats-till-plats-anslutning med hjälp av Azure Portal](../../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+   Domän användare av den lokala domänen kan komma åt servrarna och köra tjänster på de virtuella datorerna (till exempel DBMS-tjänster). Kommunikation och namn matchning mellan virtuella datorer som distribuerats lokalt och Azure-distribuerade virtuella datorer är möjligt. Det här scenariot är vanligt för det sätt på vilket de flesta SAP-till gångar distribueras. Mer information finns i [Azure VPN gateway](../../../vpn-gateway/vpn-gateway-about-vpngateways.md) och [skapa ett virtuellt nätverk med en plats-till-plats-anslutning med hjälp av Azure Portal](../../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md).
 - **Klient organisation**: en kund som distribueras i Hana stor instans-stämpel isoleras till en *klient.* En klient är isolerad i nätverk, lagring och beräknings lager från andra klienter. Lagrings-och beräknings enheter tilldelade till olika klienter kan inte se varandra eller kommunicera med varandra på nivån HANA-stor instans stämpel. En kund kan välja att distribuera olika klienter. Även om det inte finns någon kommunikation mellan klienter på nivån HANA stor instans stämpel.
 - **SKU-kategori**: för en stor instans av Hana erbjuds följande två kategorier av SKU: er:
     - **Typ I-klass**: S72, S72m, S96, S144, S144m, S192, S192m, S192xm, S224 och S224m
@@ -47,7 +47,7 @@ Flera vanliga definitioner används ofta i arkitektur-och teknisk distributions 
     - "Revision 4" (rev 4): är en ny design som kan ge närmare närhet till värdar för virtuella Azure-datorer och med den lägre nätverks fördröjningen mellan virtuella Azure-datorer och HANA stora instans enheter 
     - "Revision 4,2" (rev 4,2): på befintliga revision 4-domänkontrollanter ommärkess resurserna till BareMetal-infrastrukturen.  Kunder kan komma åt sina resurser som BareMetal-instanser från Azure Portal. 
 
-Det finns flera olika ytterligare resurser som du kan använda för att distribuera en SAP-arbetsbelastning i molnet. Om du planerar att köra en distribution av SAP HANA i Azure måste du ha erfarenhet av och känna till principerna för Azure-IaaS och distributionen av SAP-arbetsbelastningar på Azure IaaS. Innan du fortsätter kan du läsa [Använd SAP-lösningar på Azure Virtual Machines](get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) för mer information. 
+Det finns flera olika ytterligare resurser som du kan använda för att distribuera en SAP-arbetsbelastning i molnet. Om du planerar att köra en distribution av SAP HANA i Azure måste du ha erfarenhet av och känna till principerna för Azure-IaaS och distributionen av SAP-arbetsbelastningar på Azure IaaS. Innan du fortsätter kan du läsa [Använd SAP-lösningar på Azure Virtual Machines](get-started.md) för mer information. 
 
 **Nästa steg**
 - Se [HLI-certifiering](hana-certification.md)

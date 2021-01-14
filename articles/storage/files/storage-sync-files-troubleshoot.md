@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 1/13/2021
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: b84256188cf5df3ddf389f763e669a2b2ca00852
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: e2f0d62ae6882229cee3ee32e3b362f2b6593da7
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 01/14/2021
-ms.locfileid: "98183344"
+ms.locfileid: "98199243"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Felsök Azure File Sync
 Använd Azure File Sync för att centralisera organisationens fil resurser i Azure Files, samtidigt som du behåller flexibilitet, prestanda och kompatibilitet för en lokal fil server. Windows Server omvandlas av Azure File Sync till ett snabbt cacheminne för Azure-filresursen. Du kan använda alla protokoll som är tillgängliga på Windows Server för att komma åt data lokalt, inklusive SMB, NFS och FTPS. Du kan ha så många cacheminnen som du behöver över hela världen.
@@ -52,9 +52,11 @@ Lös problemet genom att installera [KB2919355](https://support.microsoft.com/he
 <a id="server-registration-missing-subscriptions"></a>**Server registreringen visar inte alla Azure-prenumerationer**  
 När du registrerar en server med hjälp av ServerRegistration.exe, saknas prenumerationer när du klickar på list rutan för Azure-prenumeration.
 
-Det här problemet beror på att ServerRegistration.exe för närvarande inte stöder miljöer med flera klienter. Det här problemet åtgärdas i en framtida Azure File Sync agent uppdatering.
+Det här problemet beror på att ServerRegistration.exe endast kommer att hämta prenumerationer från de första 5 Azure AD-klienterna. 
 
-Du kan lösa problemet genom att använda följande PowerShell-kommandon för att registrera servern:
+Om du vill öka gränsen för Server registrerings klient på servern skapar du ett DWORD-värde med namnet ServerRegistrationTenantLimit under HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure\StorageSync med ett värde som är större än 5.
+
+Du kan också lösa problemet genom att använda följande PowerShell-kommandon för att registrera servern:
 
 ```powershell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.PowerShell.Cmdlets.dll"
