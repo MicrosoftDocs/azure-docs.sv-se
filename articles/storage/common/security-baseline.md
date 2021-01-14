@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 29e72f8358591614489be2731d16e89428ef388b
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: f6825fee4cfb78ab54d782cd4d942bb994bedae9
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96301373"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98195729"
 ---
 # <a name="azure-security-baseline-for-azure-storage"></a>Azures säkerhets bas linje för Azure Storage
 
@@ -62,13 +62,13 @@ Observera att om du har privata slut punkter som är kopplade till ditt lagrings
 
 **Vägledning**: ej tillämpligt; rekommendationen är avsedd för webb program som körs på Azure App Service-eller beräknings resurser.
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Kund
 
 ### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1,4: neka kommunikation med kända skadliga IP-adresser
 
-**Vägledning**: Aktivera avancerat skydd för ditt Azure Storage-konto. Avancerat skydd för Azure Storage ger ytterligare ett lager med säkerhets information som identifierar ovanliga och potentiellt skadliga försök att komma åt eller utnyttja lagrings konton. Azure Security Center integrerade aviseringar baseras på aktiviteter för vilka nätverkskommunikation har associerats med en IP-adress som har lösts, oavsett om IP-adressen är en känd riskfylld IP-adress (till exempel en känd cryptominer) eller en IP-adress som inte redan har identifierats som riskfylld. Säkerhets varningar utlöses när avvikelser i aktivitet inträffar. 
+**Vägledning**: Aktivera avancerat skydd för ditt Azure Storage-konto. Avancerat skydd för Azure Storage ger ytterligare ett lager med säkerhets information som identifierar ovanliga och potentiellt skadliga försök att komma åt eller utnyttja lagrings konton. Azure Security Center integrerade aviseringar baseras på aktiviteter för vilka nätverkskommunikation har associerats med en IP-adress som har lösts, oavsett om IP-adressen är en känd riskfylld IP-adress (till exempel en känd cryptominer) eller en IP-adress som inte redan har identifierats som riskfylld. Säkerhetsaviseringar utlöses när avvikelser i en aktivitet inträffar. 
 
 - [Aktivera avancerat skydd](./azure-defender-storage-configure.md?tabs=azure-portal)
 
@@ -90,7 +90,7 @@ Observera att om du har privata slut punkter som är kopplade till ditt lagrings
 
 ### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems"></a>1,6: Distribuera Network-baserad intrångs identifiering/system för skydd mot intrång
 
-**Vägledning**: Avancerat skydd för Azure Storage ger ytterligare ett lager med säkerhets information som identifierar ovanliga och potentiellt skadliga försök att komma åt eller utnyttja lagrings konton. Säkerhets varningar utlöses när avvikelser i aktivitet inträffar. Dessa säkerhets aviseringar är integrerade med Azure Security Center och skickas också via e-post till prenumerations administratörer med information om misstänkt aktivitet och rekommendationer om hur du undersöker och åtgärdar hot. 
+**Vägledning**: Avancerat skydd för Azure Storage ger ytterligare ett lager med säkerhets information som identifierar ovanliga och potentiellt skadliga försök att komma åt eller utnyttja lagrings konton. Säkerhetsaviseringar utlöses när avvikelser i en aktivitet inträffar. Dessa säkerhetsaviseringar är integrerade med Azure Security Center och skickas även via e-post till prenumerationsadministratörer med information om misstänkt aktivitet samt rekommendationer om hur de undersöker och åtgärdar hot. 
 
 - [Konfigurera Avancerat skydd för Azure Storage](./azure-defender-storage-configure.md)
 
@@ -102,7 +102,7 @@ Observera att om du har privata slut punkter som är kopplade till ditt lagrings
 
 **Vägledning**: ej tillämpligt; rekommendationen är avsedd för webb program som körs på Azure App Service-eller beräknings resurser.
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Kund
 
@@ -126,7 +126,7 @@ Använd Virtual Network tjänst slut punkts principer när nätverks åtkomst m�
 
 Du kan också använda inbyggda princip definitioner som är relaterade till lagrings kontot, t. ex.: lagrings konton bör använda en tjänst slut punkt för virtuellt nätverk 
 
-- [Så här konfigurerar och hanterar du Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
+- [Konfigurera och hantera Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
 
 - [Azure Policy exempel för lagring](../../governance/policy/samples/built-in-policies.md#storage)
 
@@ -134,7 +134,7 @@ Du kan också använda inbyggda princip definitioner som är relaterade till lag
 
 - [Så här skapar du en Azure Blueprint](../../governance/blueprints/create-blueprint-portal.md)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Kund
 
@@ -156,7 +156,7 @@ Du kan också använda inbyggda princip definitioner som är relaterade till lag
 
 **Vägledning**: Använd Azure policy för att logga konfigurations ändringar för nätverks resurser. Skapa aviseringar inom Azure Monitor som ska utlösas när ändringar av kritiska nätverks resurser sker. 
 
-- [Så här konfigurerar och hanterar du Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
+- [Konfigurera och hantera Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
 
 - [Så här skapar du aviseringar i Azure Monitor](../../azure-monitor/platform/alerts-activity-log.md)
 
@@ -172,7 +172,7 @@ Du kan också använda inbyggda princip definitioner som är relaterade till lag
 
 **Vägledning**: ej tillämpligt; Microsoft hanterar tids källor för Azure Storage-konton.
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Microsoft
 
@@ -200,7 +200,7 @@ Du kan också använda inbyggda princip definitioner som är relaterade till lag
 
 **Vägledning**: ej tillämpligt; den här rekommendationen är avsedd för beräknings resurser.
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -220,7 +220,7 @@ Du kan också använda inbyggda princip definitioner som är relaterade till lag
 
 **Vägledning**: om du vill granska Azure Storage loggar finns det vanliga alternativ, till exempel frågor genom Log Analytics-erbjudandet och ett unikt alternativ för att Visa loggfilerna direkt. I Azure Storage lagras loggarna i blobbar som måste nås direkt `http://accountname.blob.core.windows.net/$logs` (loggnings mappen är dold som standard, så du måste navigera direkt. Den visas inte i list kommandon) 
 
-Aktivera också Avancerat skydd för ditt Azure Storage-konto. Avancerat skydd för Azure Storage ger ytterligare ett lager med säkerhets information som identifierar ovanliga och potentiellt skadliga försök att komma åt eller utnyttja lagrings konton. Säkerhets varningar utlöses när avvikelser i aktivitet inträffar. Dessa säkerhets aviseringar är integrerade med Azure Security Center och skickas också via e-post till prenumerations administratörer med information om misstänkt aktivitet och rekommendationer om hur du undersöker och åtgärdar hot. 
+Aktivera också Avancerat skydd för ditt Azure Storage-konto. Avancerat skydd för Azure Storage ger ytterligare ett lager med säkerhets information som identifierar ovanliga och potentiellt skadliga försök att komma åt eller utnyttja lagrings konton. Säkerhetsaviseringar utlöses när avvikelser i en aktivitet inträffar. Dessa säkerhetsaviseringar är integrerade med Azure Security Center och skickas även via e-post till prenumerationsadministratörer med information om misstänkt aktivitet samt rekommendationer om hur de undersöker och åtgärdar hot. 
 
 - [Logga och granska data](./storage-analytics-logging.md#how-logs-are-stored)
 
@@ -252,7 +252,7 @@ Aktivera också Avancerat skydd för ditt Azure Storage-konto. Avancerat skydd f
 
 - [Konfigurera Avancerat skydd för Azure Storage](./azure-defender-storage-configure.md?tabs=azure-portal)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Kund
 
@@ -270,7 +270,7 @@ Aktivera också Avancerat skydd för ditt Azure Storage-konto. Avancerat skydd f
 
 **Vägledning**: ej tillämpligt; Benchmark är avsett för beräknings resurser.
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -298,7 +298,7 @@ Aktivera också Avancerat skydd för ditt Azure Storage-konto. Avancerat skydd f
 
 - [Förstå säkerhets objekt och åtkomst kontroll för Azure Storage konto](./storage-introduction.md)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Kund
 
@@ -334,7 +334,7 @@ Du kan också aktivera en just-in-Time/bara-tillräcklig-åtkomst genom att anv�
 
 **Vägledning**: Aktivera Azure Active Directory multifaktorautentisering och Azure Security Center Följ rekommendationerna för identitets-och åtkomst hantering som hjälper dig att skydda dina lagrings konto resurser. 
 
-- [Så här aktiverar du MFA i Azure](../../active-directory/authentication/howto-mfa-getstarted.md)
+- [Aktivera MFA i Azure](../../active-directory/authentication/howto-mfa-getstarted.md)
 
 - [Övervaka identitet och åtkomst i Azure Security Center](../../security-center/security-center-identity-access.md)
 
@@ -346,11 +346,11 @@ Du kan också aktivera en just-in-Time/bara-tillräcklig-åtkomst genom att anv�
 
 **Vägledning**: Använd Paw (arbets stationer med privilegie rad åtkomst) med MFA konfigurerat för att logga in på och konfigurera lagrings konto resurser. 
 
-- [Lär dig mer om arbets stationer med privilegie rad åtkomst](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+- [Lär dig mer om arbets stationer med privilegie rad åtkomst](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
-- [Så här aktiverar du MFA i Azure](../../active-directory/authentication/howto-mfa-getstarted.md)
+- [Aktivera MFA i Azure](../../active-directory/authentication/howto-mfa-getstarted.md)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Kund
 
@@ -382,7 +382,7 @@ Du kan också aktivera en just-in-Time/bara-tillräcklig-åtkomst genom att anv�
 
 **Vägledning**: använda Azure Active Directory (Azure AD) som central autentiserings-och auktoriserings system. Azure ger Azure rollbaserad åtkomst kontroll (Azure RBAC) för detaljerad kontroll över en klients åtkomst till resurser i ett lagrings konto.  Använd Azure AD-autentiseringsuppgifter när det är möjligt som en säkerhets metod, i stället för att använda konto nyckeln, vilket kan vara svårare att avslöja. När program designen kräver delade åtkomst-signaturer för åtkomst till blob-lagring, använder du autentiseringsuppgifter för Azure AD för att skapa en användar Delegerings-signaturer för delad åtkomst (SAS) när det är möjligt för överlägsen säkerhet.
 
-- [Så skapar och konfigurerar du en Azure AD-instans](../../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
+- [Skapa och konfigurera en Azure AD-instans](../../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
 - [Använd Azure Storage Resource Provider för att få åtkomst till hanterings resurser](./authorization-resource-provider.md)
 
@@ -458,7 +458,7 @@ Skapa diagnostikinställningar för Azure Active Directory användar konton, ski
 
 - [Förstå Customer Lockbox](../../security/fundamentals/customer-lockbox-overview.md)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Kund
 
@@ -490,7 +490,7 @@ Skapa diagnostikinställningar för Azure Active Directory användar konton, ski
 
 - [Virtual Network tjänst slut punkter](../../virtual-network/virtual-network-service-endpoints-overview.md)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Kund
 
@@ -554,7 +554,7 @@ Använd dessutom tjänst slut punkts principer för virtuella nätverk för att 
 
 **Vägledning**: ej tillämpligt; den här rekommendationen är avsedd för beräknings resurser.
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -564,7 +564,7 @@ Använd dessutom tjänst slut punkts principer för virtuella nätverk för att 
 
 - [Förstå Azure Storage kryptering i vila](./storage-service-encryption.md)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Kund
 
@@ -592,7 +592,7 @@ Använd dessutom tjänst slut punkts principer för virtuella nätverk för att 
 
 - [Säkerhetsrekommendationer – en referensguide](../../security-center/recommendations-reference.md)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Kund
 
@@ -600,7 +600,7 @@ Använd dessutom tjänst slut punkts principer för virtuella nätverk för att 
 
 **Vägledning**: ej tillämpligt; den här rekommendationen är avsedd för beräknings resurser.
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -608,7 +608,7 @@ Använd dessutom tjänst slut punkts principer för virtuella nätverk för att 
 
 **Vägledning**: ej tillämpligt; den här rekommendationen är avsedd för beräknings resurser.
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -616,7 +616,7 @@ Använd dessutom tjänst slut punkts principer för virtuella nätverk för att 
 
 **Vägledning**: ej tillämpligt; Microsoft utför sårbarhets hantering på de underliggande system som har stöd för lagrings konton.
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Kund
 
@@ -626,7 +626,7 @@ Använd dessutom tjänst slut punkts principer för virtuella nätverk för att 
 
 - [Förstå Azure Security Center säkra Poäng](../../security-center/secure-score-security-controls.md)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Kund
 
@@ -672,7 +672,7 @@ Använd också Avancerat skydd för Azure Storage för att identifiera oauktoris
 
 - [Konfigurera Avancerat skydd för Azure Storage](./azure-defender-storage-configure.md?tabs=azure-portal)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Kund
 
@@ -681,7 +681,7 @@ Använd också Avancerat skydd för Azure Storage för att identifiera oauktoris
 **Vägledning**: du måste skapa en inventering av godkända Azure-resurser enligt organisationens behov. 
 
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Kund
 
@@ -694,11 +694,11 @@ Använd också Avancerat skydd för Azure Storage för att identifiera oauktoris
 
 Använd dessutom Azure Resource Graph för att fråga/identifiera resurser i prenumerationerna. Detta kan hjälpa till med hög säkerhetsbaserade miljöer, till exempel de med lagrings konton. 
 
-- [Så här konfigurerar och hanterar du Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
+- [Konfigurera och hantera Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
 
 - [Så här skapar du frågor med Azure Graph](../../governance/resource-graph/first-query-portal.md)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Kund
 
@@ -706,7 +706,7 @@ Använd dessutom Azure Resource Graph för att fråga/identifiera resurser i pre
 
 **Vägledning**: ej tillämpligt; den här rekommendationen är avsedd för beräknings resurser.
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -714,9 +714,9 @@ Använd dessutom Azure Resource Graph för att fråga/identifiera resurser i pre
 
 **Vägledning**: kunden kan förhindra att resurser skapas eller används med Azure policy som krävs av kundens företags principer. 
 
-- [Så här konfigurerar och hanterar du Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
+- [Konfigurera och hantera Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Kund
 
@@ -724,7 +724,7 @@ Använd dessutom Azure Resource Graph för att fråga/identifiera resurser i pre
 
 **Vägledning**: ej tillämpligt; den här rekommendationen är avsedd för beräknings resurser.
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -735,11 +735,11 @@ Använd dessutom Azure Resource Graph för att fråga/identifiera resurser i pre
 - Otillåtna resurstyper 
 - Tillåtna resurstyper 
 
-- [Så här konfigurerar och hanterar du Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
+- [Konfigurera och hantera Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
 
 - [Så här nekar du en speciell resurs typ med Azure Policy](../../governance/policy/samples/index.md)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Kund
 
@@ -747,7 +747,7 @@ Använd dessutom Azure Resource Graph för att fråga/identifiera resurser i pre
 
 **Vägledning**: ej tillämpligt; den här rekommendationen är avsedd för beräknings resurser.
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -757,7 +757,7 @@ Använd dessutom Azure Resource Graph för att fråga/identifiera resurser i pre
 
 - [Så här konfigurerar du villkorlig åtkomst för att blockera åtkomst till ARM](../../role-based-access-control/conditional-access-azure-management.md)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Kund
 
@@ -765,7 +765,7 @@ Använd dessutom Azure Resource Graph för att fråga/identifiera resurser i pre
 
 **Vägledning**: ej tillämpligt; den här rekommendationen är avsedd för beräknings resurser.
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -773,7 +773,7 @@ Använd dessutom Azure Resource Graph för att fråga/identifiera resurser i pre
 
 **Vägledning**: ej tillämpligt; den här rekommendationen är avsedd för webb program som körs på Azure App Service-eller beräknings resurser.
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -794,7 +794,7 @@ Använd rekommendationer från Azure Security Center som en säker konfiguration
 
 - [Visa tillgängliga Azure Policy alias](/powershell/module/az.resources/get-azpolicyalias)
 
-- [Så här konfigurerar och hanterar du Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
+- [Konfigurera och hantera Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
 
 **Azure Security Center-övervakning**: Ja
 
@@ -804,7 +804,7 @@ Använd rekommendationer från Azure Security Center som en säker konfiguration
 
 **Vägledning**: ej tillämpligt; den här rekommendationen är avsedd för beräknings resurser.
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -812,11 +812,11 @@ Använd rekommendationer från Azure Security Center som en säker konfiguration
 
 **Vägledning**: Använd Azure policy [neka] och [distribuera om det inte finns] för att framtvinga säkra inställningar över dina lagrings konto resurser. 
 
-- [Så här konfigurerar och hanterar du Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
+- [Konfigurera och hantera Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
 
 - [Förstå Azure Policys effekter](../../governance/policy/concepts/effects.md)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Kund
 
@@ -824,7 +824,7 @@ Använd rekommendationer från Azure Security Center som en säker konfiguration
 
 **Vägledning**: ej tillämpligt; den här rekommendationen är avsedd för beräknings resurser.
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -836,7 +836,7 @@ Använd rekommendationer från Azure Security Center som en säker konfiguration
 
 - [Om behörigheter och grupper i Azure DevOps](/azure/devops/organizations/security/about-permissions)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Kund
 
@@ -844,7 +844,7 @@ Använd rekommendationer från Azure Security Center som en säker konfiguration
 
 **Vägledning**: ej tillämpligt; den här rekommendationen är avsedd för beräknings resurser.
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -852,9 +852,9 @@ Använd rekommendationer från Azure Security Center som en säker konfiguration
 
 **Vägledning**: utnyttja Azure policy för att varna, granska och genomdriva system konfigurationer för lagrings kontot. Dessutom kan du utveckla en process och pipeline för att hantera princip undantag. 
 
-- [Så här konfigurerar och hanterar du Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
+- [Konfigurera och hantera Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Kund
 
@@ -862,7 +862,7 @@ Använd rekommendationer från Azure Security Center som en säker konfiguration
 
 **Vägledning**: ej tillämpligt; den här rekommendationen är avsedd för beräknings resurser.
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -880,7 +880,7 @@ Använd rekommendationer från Azure Security Center som en säker konfiguration
 
 **Vägledning**: ej tillämpligt; den här rekommendationen är avsedd för beräknings resurser.
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -910,11 +910,11 @@ Dessutom kan du rotera lagrings konto nycklar regelbundet för att begränsa eff
 
 ### <a name="713-eliminate-unintended-credential-exposure"></a>7,13: eliminera oavsiktlig exponering för autentiseringsuppgifter
 
-**Vägledning**: implementera autentiseringsuppgifterna för inloggning för att identifiera autentiseringsuppgifter inom koden. Den här skannern uppmuntrar också att flytta identifierade autentiseringsuppgifter till säkrare platser som Azure Key Vault. 
+**Vägledning**: implementera autentiseringsuppgifterna för inloggning för att identifiera autentiseringsuppgifter inom koden. Credential Scanner uppmanar också till att flytta identifierade autentiseringsuppgifter till en säkrare plats som Azure Key Vault. 
 
 - [Konfigurera inloggnings skannern](https://secdevtools.azurewebsites.net/helpcredscan.html)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Kund
 
@@ -926,7 +926,7 @@ Dessutom kan du rotera lagrings konto nycklar regelbundet för att begränsa eff
 
 **Vägledning**: ej tillämpligt; den här rekommendationen är avsedd för beräknings resurser. Microsoft hanterar skydd mot skadlig kod för den underliggande plattformen.
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -938,7 +938,7 @@ Du kan också förskanna allt innehåll för skadlig kod innan du laddar upp til
 
 - [Konfigurera Avancerat skydd för Azure Storage](./azure-defender-storage-configure.md?tabs=azure-portal)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Kund
 
@@ -946,7 +946,7 @@ Du kan också förskanna allt innehåll för skadlig kod innan du laddar upp til
 
 **Vägledning**: ej tillämpligt; den här rekommendationen är avsedd för beräknings resurser. Microsoft hanterar skydd mot skadlig kod för den underliggande plattformen.
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvars område**: inte tillämpligt
 
@@ -1005,7 +1005,7 @@ Restore-AzKeyVaultCertificate Restore-AzKeyVaultKey Restore-AzKeyVaultManagedSto
 Obs: om du vill kopiera data till och från Azure Table Storage-tjänsten installerar du AzCopy version 7,3.
 
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Kund
 
@@ -1017,7 +1017,7 @@ Obs: om du vill kopiera data till och från Azure Table Storage-tjänsten instal
 
 - [Mjuk borttagning för Azure Storage-blobar](../blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
-- [Lagra affärs kritiska BLOB-data med oföränderlig lagring](../blobs/storage-blob-immutable-storage.md)
+- [Lagra affärskritiska blobdata med oföränderlig lagring](../blobs/storage-blob-immutable-storage.md)
 
 **Azure Security Center-övervakning**: Ja
 
@@ -1029,7 +1029,7 @@ Obs: om du vill kopiera data till och från Azure Table Storage-tjänsten instal
 
 ### <a name="101-create-incident-response-guide"></a>10,1: Skapa incident svars guide
 
-**Vägledning**: Bygg ut en incident svars guide för din organisation. Se till att det finns skriftliga svars planer för incidenter som definierar alla personal roller och faser för incident hantering/hantering från identifiering till granskning efter incidenten.
+**Vägledning**: Skapa en guide till incidentsvar för organisationen. Se till att det finns skriftliga planer för incidentsvar som definierar alla personalroller och faser i incidenthanteringen, från identifiering till granskning efter incidenten.
 
 - [Vägledning om hur du skapar en egen svars process för säkerhets incidenter](https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/)
 
@@ -1037,7 +1037,7 @@ Obs: om du vill kopiera data till och från Azure Table Storage-tjänsten instal
 
 - [Kunden kan också utnyttja NISTs hanterings guide för dator säkerhet för att hjälpa till med att skapa egna incident svars planer](https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Kund
 
@@ -1057,11 +1057,11 @@ Dessutom är det tydligt att markera prenumerationer (t. ex. produktion, icke-Pr
 
 ### <a name="103-test-security-response-procedures"></a>10,3: testa säkerhets svars procedurer
 
-**Vägledning**: utföra övningar för att testa dina Systems funktioner för incident svar på en vanlig takt för att hjälpa till att skydda dina Azure-resurser. Identifiera svaga punkter och luckor och ändra planen efter behov.
+**Vägledning**: utföra övningar för att testa dina Systems funktioner för incident svar på en vanlig takt för att hjälpa till att skydda dina Azure-resurser. Identifiera svaga punkter och luckor, och ändra planen efter behov.
 
 - [NIST-guide för att testa, träna och träna program för IT-planer och funktioner](https://csrc.nist.gov/publications/detail/sp/800-84/final)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Kund
 
@@ -1105,11 +1105,11 @@ Dessutom är det tydligt att markera prenumerationer (t. ex. produktion, icke-Pr
 
 **Vägledning**: Följ Microsofts regler för engagemang för att se till att dina inträngande tester inte strider mot Microsofts principer. Använd Microsofts strategi och körning av röda team indelning och inträngande av direktsända webbplatser mot Microsoft-hanterad moln infrastruktur, tjänster och program.
 
-- [Deltagarregler för genomslagstestning](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
+- [Regler för intrångstester](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
 
-- [Red Team-indelning i Microsoft Cloud](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
+- [”Red team”-aktiviteter i Microsoft Cloud](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 
-**Azure Security Center-övervakning**: Inte tillämpligt
+**Övervakning i Azure Security Center**: Ej tillämpligt
 
 **Ansvar**: Delad
 

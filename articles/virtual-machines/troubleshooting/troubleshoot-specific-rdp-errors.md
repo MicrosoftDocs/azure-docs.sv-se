@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: f3e4c411223a3e8fc0602602cd941a00f7a19cca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 808443cb805b2dee2426198f9cd4f7ba502d8999
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87028251"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98197514"
 ---
 # <a name="troubleshooting-specific-rdp-error-messages-to-a-windows-vm-in-azure"></a>Felsöka specifika RDP-felmeddelanden till en virtuell Windows-dator i Azure
 Du kan få ett särskilt fel meddelande när du använder fjärr skrivbords anslutning till en virtuell Windows-dator i Azure. I den här artikeln beskrivs några av de vanligaste fel meddelandena, tillsammans med fel söknings steg för att lösa dem. Om du har problem med att ansluta till din virtuella dator med hjälp av RDP men inte stöter på ett fel meddelande, se [fel söknings guiden för fjärr skrivbord](troubleshoot-rdp-connection.md).
@@ -88,7 +88,7 @@ Orsak: den virtuella mål datorn kan inte verifiera ditt konto namn och lösen o
 
 En Windows-baserad dator kan verifiera autentiseringsuppgifterna för antingen ett lokalt konto eller ett domän konto.
 
-* För lokala konton använder du syntaxen *dator*namn \\ *användar namn* (exempel: SQL1\Admin4798).
+* För lokala konton använder du syntaxen *dator* namn \\ *användar namn* (exempel: SQL1\Admin4798).
 * För domän konton använder du syntaxen *domän*\ \\ *användar namn* (exempel: CONTOSO\peterodman).
 
 Om du har uppgraderat den virtuella datorn till en domänkontrollant i en ny Active Directory skog, konverteras det lokala administratörs kontot som du loggade in med till ett motsvarande konto med samma lösen ord i den nya skogen och domänen. Det lokala kontot tas sedan bort.
@@ -109,7 +109,7 @@ Varje Windows-dator har en lokal grupp med fjärr skrivbords användare som inne
 Kontrol lera att det konto som du använder för att ansluta med har inloggnings rättigheter för fjärr skrivbord. Som en lösning kan du använda en domän eller ett lokalt administratörs konto för att ansluta via fjärr skrivbord. Om du vill lägga till det önskade kontot i den lokala gruppen fjärr skrivbords användare använder du snapin-modulen Microsoft Management Console (**system verktyg > lokala användare och grupper > grupper > fjärr skrivbords användare**).
 
 ## <a name="next-steps"></a>Nästa steg
-Om ingen av dessa fel uppstår och du har problem med att ansluta via RDP kan du läsa [fel söknings guiden för fjärr skrivbord](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Om ingen av dessa fel uppstår och du har problem med att ansluta via RDP kan du läsa [fel söknings guiden för fjärr skrivbord](troubleshoot-rdp-connection.md).
 
 * Fel söknings steg för att komma åt program som körs på en virtuell dator finns i [Felsöka åtkomst till ett program som körs på en virtuell Azure-dator](./troubleshoot-app-connection.md?toc=/azure/virtual-machines/linux/toc.json).
 * Om du har problem med att använda SSH (Secure Shell) för att ansluta till en virtuell Linux-dator i Azure läser du [FELSÖKA SSH-anslutningar till en virtuell Linux-dator i Azure](./troubleshoot-ssh-connection.md?toc=/azure/virtual-machines/linux/toc.json).

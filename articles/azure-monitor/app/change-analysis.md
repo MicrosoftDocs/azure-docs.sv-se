@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: cawams
 ms.author: cawa
 ms.date: 05/04/2020
-ms.openlocfilehash: 0cdb82bbf38244bc91ed54ffb7d7d734cefe9dd2
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 728fd8f4705d24f719b6dd47ba88d89fb399fd5a
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 01/14/2021
-ms.locfileid: "98183327"
+ms.locfileid: "98195882"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>Använda program ändrings analys (för hands version) i Azure Monitor
 
@@ -206,8 +206,10 @@ Detta är det allmänna fel meddelandet som presenteras av program ändrings ana
 Detta är det allmänna obehöriga fel meddelandet, som förklarar att den aktuella användaren inte har tillräcklig behörighet för att visa ändringen. Åtkomst till minst läsare krävs för resursen för att Visa infrastruktur ändringar som returneras av Azure Resource Graph och Azure Resource Manager. För webb program ändringar i gäst filen och konfigurations ändringar krävs minst deltagar roll.
 
 ### <a name="failed-to-register-microsoftchangeanalysis-resource-provider"></a>Det gick inte att registrera Microsoft. ChangeAnalysis Resource Provider
+Det här meddelandet innebär att något Miss lyckas omedelbart som UI skickat begäran om att registrera resurs leverantören, och det är inte relaterat till behörighets problem. Det kan förmodligen vara ett tillfälligt problem med Internet anslutningen. Försök att uppdatera sidan och kontrol lera din Internet anslutning. Om felet kvarstår kan du kontakta changeanalysishelp@microsoft.com
  
-**Du har inte tillräcklig behörighet för att registrera Microsoft. ChangeAnalysis Resource Provider. Kontakta administratören för Azure-prenumerationen.** Det här fel meddelandet innebär att din roll i den aktuella prenumerationen inte har det definitions område för **Microsoft. support/register/åtgärd** som är associerat med den. Detta kan inträffa om du inte är ägare till en prenumeration och har delade åtkomst behörigheter via en medarbetare. t. ex. Visa åtkomst till en resurs grupp. Du kan åtgärda detta genom att kontakta Prenumerationens ägare för att registrera **Microsoft. ChangeAnalysis** -resurs leverantören. Detta kan göras i Azure Portal via **prenumerationer | Resurs leverantörer** och Sök efter ```Microsoft.ChangeAnalysis``` och registrera i användar gränssnittet, eller via Azure PowerShell eller Azure CLI.
+### <a name="you-dont-have-enough-permissions-to-register-microsoftchangeanalysis-resource-provider-contact-your-azure-subscription-administrator"></a>Du har inte tillräcklig behörighet för att registrera Microsoft. ChangeAnalysis Resource Provider. Kontakta administratören för Azure-prenumerationen.
+Det här fel meddelandet innebär att din roll i den aktuella prenumerationen inte har det definitions område för **Microsoft. support/register/åtgärd** som är associerat med den. Detta kan inträffa om du inte är ägare till en prenumeration och har delade åtkomst behörigheter via en medarbetare. t. ex. Visa åtkomst till en resurs grupp. Du kan åtgärda detta genom att kontakta Prenumerationens ägare för att registrera **Microsoft. ChangeAnalysis** -resurs leverantören. Detta kan göras i Azure Portal via **prenumerationer | Resurs leverantörer** och Sök efter ```Microsoft.ChangeAnalysis``` och registrera i användar gränssnittet, eller via Azure PowerShell eller Azure CLI.
 
 Registrera resurs leverantör via PowerShell: 
 

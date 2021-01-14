@@ -2,13 +2,13 @@
 title: Vad är Azure Event Hubs? – en tjänst för inmatning av stordata | Microsoft Docs
 description: Lär dig mer om Azure Event Hubs, en strömningstjänst för stordata som matar in flera miljoner händelser per sekund.
 ms.topic: overview
-ms.date: 06/23/2020
-ms.openlocfilehash: b0124f023eab6638c986beb2305b1c4c375b47ee
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.date: 01/13/2021
+ms.openlocfilehash: 36eeb38d9ed1696c9524ae9b346065756ce49c46
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97954353"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98195778"
 ---
 # <a name="azure-event-hubs--a-big-data-streaming-platform-and-event-ingestion-service"></a>Azure Event Hubs – en stordataströmningsplattform och händelseinmatningstjänst
 Azure Event Hubs är en stordataströmningsplattform och händelseinmatningstjänst. Den kan ta emot och behandla miljoner händelser per sekund. Data som skickas till en händelsehubb kan omvandlas och lagras med hjälp av valfri provider för realtidsanalys eller batchbearbetnings-/lagringsadaptrar.
@@ -66,7 +66,7 @@ Event Hubs innehåller följande [viktiga element](event-hubs-features.md):
 
 Följande bild visar strömhanteringsarkitekturen i Event Hubs:
 
-![Event Hubs](./media/event-hubs-about/event_hubs_architecture.png)
+![Event Hubs](./media/event-hubs-about/event_hubs_architecture.svg)
 
 ## <a name="event-hubs-on-azure-stack-hub"></a>Event Hubs på Azure Stack Hub
 Med Event Hubs på Azure Stack Hub kan du använda hybrid moln scenarier. Strömnings-och händelsebaserade lösningar stöds för både lokal och Azure-molnbaserad bearbetning. Oavsett om ditt scenario är hybrid (ansluten) eller frånkopplat kan din lösning stödja bearbetning av händelser/strömmar i stor skala. Ditt scenario är bara kopplat till Event Hubs kluster storlek, som du kan etablera efter dina behov. 

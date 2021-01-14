@@ -7,12 +7,12 @@ ms.date: 08/10/2020
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: imaging
-ms.openlocfilehash: a3016900b6265bfd56ad1a5a71f70efc01181af5
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 43447454b82b74c10b1d53c41c7883b0b9bef242
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499262"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98196511"
 ---
 # <a name="azure-image-builder-service-devops-task"></a>Azure Image Builder-DevOps uppgift
 
@@ -194,7 +194,7 @@ I följande exempel förklaras hur det fungerar:
     
 #### <a name="total-length-of-image-build"></a>Total längd på avbildnings version
 
-Den totala längden kan inte ändras i DevOps pipeline-aktiviteten ännu. Standardvärdet är 240 minuter. Om du vill öka [buildTimeoutInMinutes](./image-builder-json.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#properties-buildtimeoutinminutes)kan du använda en AZ CLI-uppgift i versions pipelinen. Konfigurera uppgiften för att kopiera en mall och skicka den. Ett exempel finns i den här [lösningen](https://github.com/danielsollondon/azvmimagebuilder/tree/master/solutions/4_Using_ENV_Variables#using-environment-variables-and-parameters-with-image-builder)eller använda AZ PowerShell.
+Den totala längden kan inte ändras i DevOps pipeline-aktiviteten ännu. Standardvärdet är 240 minuter. Om du vill öka [buildTimeoutInMinutes](./image-builder-json.md#properties-buildtimeoutinminutes)kan du använda en AZ CLI-uppgift i versions pipelinen. Konfigurera uppgiften för att kopiera en mall och skicka den. Ett exempel finns i den här [lösningen](https://github.com/danielsollondon/azvmimagebuilder/tree/master/solutions/4_Using_ENV_Variables#using-environment-variables-and-parameters-with-image-builder)eller använda AZ PowerShell.
 
 
 #### <a name="storage-account"></a>Lagringskonto
@@ -298,7 +298,7 @@ Pub/erbjudande/SKU/version av käll Marketplace-avbildningen:
 Avbildnings-URI – ResourceID för den distribuerade avbildningen:
 * $ (imageUri)
 
-## <a name="faq"></a>VANLIGA FRÅGOR OCH SVAR
+## <a name="faq"></a>Vanliga frågor
 
 ### <a name="can-i-use-an-existing-image-template-i-have-already-created-outside-of-devops"></a>Kan jag använda en befintlig avbildnings mall som jag redan har skapat, utanför DevOps?
 

@@ -4,12 +4,12 @@ description: Lär dig att integrera Azure NetApp Files med Azure Kubernetes-tjä
 services: container-service
 ms.topic: article
 ms.date: 10/23/2020
-ms.openlocfilehash: bc65c3dfad4c27c1650054c6836fbbbf07a7dbf2
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 19727d3c3322b05f340463d94a2bc3884e5d9d93
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93126261"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98196018"
 ---
 # <a name="integrate-azure-netapp-files-with-azure-kubernetes-service"></a>Integrera Azure NetApp Files med Azure Kubernetes-tjänsten
 
@@ -28,14 +28,14 @@ Du måste också ha Azure CLI-versionen 2.0.59 eller senare installerad och konf
 Följande begränsningar gäller när du använder Azure NetApp Files:
 
 * Azure NetApp Files är endast tillgängligt [i valda Azure-regioner][anf-regions].
-* Innan du kan använda Azure NetApp Files måste du beviljas åtkomst till tjänsten Azure NetApp Files. Om du vill använda för åtkomst kan du använda [Waitlist-formuläret för överföring av Azure NetApp Files][anf-waitlist]. Du har inte åtkomst till tjänsten Azure NetApp Files förrän du får e-postmeddelandet från Azure NetApp Files teamet.
+* Innan du kan använda Azure NetApp Files måste du beviljas åtkomst till tjänsten Azure NetApp Files. Om du vill använda för åtkomst kan du använda [Azure NetApp Files Waitlist-formuläret för överföring][anf-waitlist] eller gå till https://azure.microsoft.com/services/netapp/#getting-started . Du har inte åtkomst till tjänsten Azure NetApp Files förrän du får e-postmeddelandet från Azure NetApp Files teamet.
 * Efter den första distributionen av ett AKS-kluster stöds endast statisk etablering för Azure NetApp Files.
 * Om du vill använda dynamisk etablering med Azure NetApp Files installerar och konfigurerar du [NetApp Trident](https://netapp-trident.readthedocs.io/) version 19,07 eller senare.
 
 ## <a name="configure-azure-netapp-files"></a>Konfigurera Azure NetApp Files
 
 > [!IMPORTANT]
-> Innan du kan registrera  *Microsoft. NetApp* -resurs leverantören måste du fylla i [Azure NetApp Files Waitlist-överförings formulär][anf-waitlist] för din prenumeration. Du kan inte registrera resursen förrän du får det officiella bekräftelse meddelandet från Azure NetApp Filess teamet.
+> Innan du kan registrera  *Microsoft. NetApp* -resurs leverantören måste du fylla i formuläret för att [Skicka Azure NetApp Files Waitlist][anf-waitlist] eller gå till https://azure.microsoft.com/services/netapp/#getting-started för din prenumeration. Du kan inte registrera resursen förrän du får det officiella bekräftelse meddelandet från Azure NetApp Filess teamet.
 
 Registrera *Microsoft. NetApp* -resurs leverantören:
 
@@ -46,7 +46,7 @@ az provider register --namespace Microsoft.NetApp --wait
 > [!NOTE]
 > Det kan ta lite tid att slutföra.
 
-När du skapar ett Azure NetApp-konto som ska användas med AKS måste du skapa kontot i resurs gruppen för **noden** . Börja med att hämta resurs gruppens namn med kommandot [AZ AKS show][az-aks-show] och Lägg till `--query nodeResourceGroup` Frågeparametern. I följande exempel hämtas nodens resurs grupp för AKS-klustret med namnet *myAKSCluster* i resurs grupps namnet *myResourceGroup* :
+När du skapar ett Azure NetApp-konto som ska användas med AKS måste du skapa kontot i resurs gruppen för **noden** . Börja med att hämta resurs gruppens namn med kommandot [AZ AKS show][az-aks-show] och Lägg till `--query nodeResourceGroup` Frågeparametern. I följande exempel hämtas nodens resurs grupp för AKS-klustret med namnet *myAKSCluster* i resurs grupps namnet *myResourceGroup*:
 
 ```azurecli-interactive
 az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv
@@ -158,6 +158,8 @@ spec:
     storage: 100Gi
   accessModes:
     - ReadWriteMany
+  mountOptions:
+    - vers=3
   nfs:
     server: 10.0.0.4
     path: /myfilepath2

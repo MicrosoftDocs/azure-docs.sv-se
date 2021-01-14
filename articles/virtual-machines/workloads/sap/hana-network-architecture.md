@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b18e1cd20a4b0a886258fd56003cd273d92381fa
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: c1403c514f5a278fd406769f1d5271cc95a5c1df
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97093986"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98195746"
 ---
 # <a name="sap-hana-large-instances-network-architecture"></a>SAP HANA (stora instanser) nätverks arkitektur
 
@@ -47,9 +47,9 @@ Om SAP HANA på Azure (stora instanser) har distribuerats i flera olika Azure-re
 
 ## <a name="additional-virtual-network-information"></a>Ytterligare information om virtuellt nätverk
 
-Om du vill ansluta ett virtuellt nätverk till ExpressRoute måste du skapa en Azure ExpressRoute-Gateway. Mer information finns i [om ExpressRoute-gatewayer för ExpressRoute](../../../expressroute/expressroute-about-virtual-network-gateways.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
+Om du vill ansluta ett virtuellt nätverk till ExpressRoute måste du skapa en Azure ExpressRoute-Gateway. Mer information finns i [om ExpressRoute-gatewayer för ExpressRoute](../../../expressroute/expressroute-about-virtual-network-gateways.md). 
 
-En Azure ExpressRoute-Gateway används med ExpressRoute till en infrastruktur utanför Azure eller till en stor instans av en Azure-instans. Du kan ansluta Azure ExpressRoute-gatewayen till maximalt fyra olika ExpressRoute-kretsar under förutsättning att anslutningarna kommer från olika Microsoft Enterprise Edge-routrar. Mer information finns i [SAP HANA (stora instanser) infrastruktur och anslutning på Azure](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
+En Azure ExpressRoute-Gateway används med ExpressRoute till en infrastruktur utanför Azure eller till en stor instans av en Azure-instans. Du kan ansluta Azure ExpressRoute-gatewayen till maximalt fyra olika ExpressRoute-kretsar under förutsättning att anslutningarna kommer från olika Microsoft Enterprise Edge-routrar. Mer information finns i [SAP HANA (stora instanser) infrastruktur och anslutning på Azure](hana-overview-infrastructure-connectivity.md). 
 
 > [!NOTE] 
 > Maximalt data flöde som du kan uppnå med en ExpressRoute-Gateway är 10 Gbit/s genom att använda en ExpressRoute-anslutning. Att kopiera filer mellan en virtuell dator som finns i ett virtuellt nätverk och ett lokalt system (som en enda kopierings ström) uppnår inte det fullständiga genomflödet av de olika Gateway-SKU: erna. Använd flera strömmar för att utnyttja den kompletta bandbredden för ExpressRoute-gatewayen. Eller så måste du kopiera olika filer i parallella strömmar av en enda fil.
@@ -60,7 +60,7 @@ Nätverks arkitekturen för en stor instans av HANA kan delas upp i fyra olika d
 
 - Lokal nätverks-och ExpressRoute-anslutning till Azure. Den här delen är kundens domän och är ansluten till Azure via ExpressRoute. Den här ExpressRoute-kretsen betalas helt av dig som kund. Bandbredden bör vara tillräckligt stor för att hantera nätverks trafiken mellan dina lokala till gångar och den Azure-region som du ansluter till. Se det nedre högra hörnet i följande figur.
 - Azure nätverks tjänster, som tidigare diskuterats, med virtuella nätverk, vilket kräver att ExpressRoute-gatewayer har lagts till. Den här delen är ett område där du behöver hitta lämpliga designer för dina program krav, säkerhet och krav på efterlevnad. Oavsett om du använder HANA stor instans är det en annan punkt att tänka på när antalet virtuella nätverk och Azure Gateway-SKU: er kan väljas. Se det övre högra hörnet i bilden.
-- Anslutning av HANA stor instans genom ExpressRoute-teknik till Azure. Den här delen distribueras och hanteras av Microsoft. Allt du behöver göra är att ange vissa IP-adressintervall efter att du har distribuerat till gångar i HANA stor instans Anslut ExpressRoute-kretsen till de virtuella nätverken. Mer information finns i [SAP HANA (stora instanser) infrastruktur och anslutning på Azure](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Det finns ingen extra avgift för dig som kund för anslutningen mellan Azure Data Centers nätverks infrastruktur resurser och HANA stora instans enheter.
+- Anslutning av HANA stor instans genom ExpressRoute-teknik till Azure. Den här delen distribueras och hanteras av Microsoft. Allt du behöver göra är att ange vissa IP-adressintervall efter att du har distribuerat till gångar i HANA stor instans Anslut ExpressRoute-kretsen till de virtuella nätverken. Mer information finns i [SAP HANA (stora instanser) infrastruktur och anslutning på Azure](hana-overview-infrastructure-connectivity.md). Det finns ingen extra avgift för dig som kund för anslutningen mellan Azure Data Centers nätverks infrastruktur resurser och HANA stora instans enheter.
 - Nätverk inom den HANA-stora instans stämpeln som är mest transparent för dig.
 
 ![Virtuellt nätverk som är anslutet till SAP HANA på Azure (stora instanser) och lokalt](./media/hana-overview-architecture/image1-architecture.png)
@@ -98,7 +98,7 @@ Mer information om hur du konfigurerar ExpressRoute snabb sökväg, finns i doku
 
 ## <a name="single-sap-system"></a>Enskilt SAP-system
 
-Den lokala infrastruktur som visades tidigare är ansluten via ExpressRoute till Azure. ExpressRoute-kretsen ansluter till en Microsoft Enterprise Edge-router (MSEE: N). Mer information finns i [teknisk översikt över ExpressRoute](../../../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). När vägen har upprättats ansluter den till Azure-stamnätet.
+Den lokala infrastruktur som visades tidigare är ansluten via ExpressRoute till Azure. ExpressRoute-kretsen ansluter till en Microsoft Enterprise Edge-router (MSEE: N). Mer information finns i [teknisk översikt över ExpressRoute](../../../expressroute/expressroute-introduction.md). När vägen har upprättats ansluter den till Azure-stamnätet.
 
 > [!NOTE] 
 > Om du vill köra SAP-landskap i Azure ansluter du till den företags gräns routern som är närmast Azure-regionen i SAP landskap. HANA-stora instanser är anslutna via dedikerade företagsspecifika router-enheter för att minimera nätverks fördröjningen mellan virtuella datorer i Azure IaaS och HANA-stora instans stämplar.
@@ -136,7 +136,7 @@ Som standard är tre nätverks Dirigerings överväganden viktiga för SAP HANA 
 
 * Om du har ett stort antal HANA-instanser som distribuerats i två olika Azure-regioner för haveri beredskap, har samma begränsningar för tillfälliga routning tillämpats tidigare. Med andra ord dirigerades inte IP-adresserna för en HANA stor instans enhet i en region (till exempel västra USA) till en stor instans enhet som har distribuerats i en annan region (till exempel USA, östra). Den här begränsningen var oberoende av användningen av Azures nätverks-peering mellan regioner eller mellan att koppla samman de ExpressRoute-kretsar som ansluter HANA-stora instans enheter till virtuella nätverk. För en grafisk representation, se bilden i avsnittet "använda HANA-stora instans enheter i flera regioner". Den här begränsningen, som medföljde den distribuerade arkitekturen, förhindrade omedelbar användning av HANA-systemreplikering som katastrof återställnings funktion. För de senaste ändringarna kan du leta upp avsnittet "använda HANA-stora instans enheter i flera regioner". 
 
-* SAP HANA på Azure-enheter (stora instanser) har en tilldelad IP-adress från adress intervallet för serverns IP-adresspool som du skickade när du begärde den stora distribution av HANA-instanser. Mer information finns i [SAP HANA (stora instanser) infrastruktur och anslutning på Azure](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Den här IP-adressen är tillgänglig via de Azure-prenumerationer och-kretsar som ansluter virtuella Azure-nätverk till HANA-stora instanser. Den IP-adress som har tilldelats från IP-adresspoolen för serverns IP-adress intervall tilldelas direkt till maskin varu enheten. Den är *inte* tilldelad till NAT längre, vilket var fallet i de första distributionerna av den här lösningen. 
+* SAP HANA på Azure-enheter (stora instanser) har en tilldelad IP-adress från adress intervallet för serverns IP-adresspool som du skickade när du begärde den stora distribution av HANA-instanser. Mer information finns i [SAP HANA (stora instanser) infrastruktur och anslutning på Azure](hana-overview-infrastructure-connectivity.md). Den här IP-adressen är tillgänglig via de Azure-prenumerationer och-kretsar som ansluter virtuella Azure-nätverk till HANA-stora instanser. Den IP-adress som har tilldelats från IP-adresspoolen för serverns IP-adress intervall tilldelas direkt till maskin varu enheten. Den är *inte* tilldelad till NAT längre, vilket var fallet i de första distributionerna av den här lösningen. 
 
 ### <a name="direct-routing-to-hana-large-instances"></a>Direkt routning till HANA-stora instanser
 

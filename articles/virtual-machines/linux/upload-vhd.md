@@ -14,12 +14,12 @@ ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 10/10/2019
 ms.author: cynthn
-ms.openlocfilehash: df2b58e0067932edd9dfa21ee1a6fbb2a5c1fdf7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 941be52f25b08589134f693b9c0fe17a8a87ff28
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87289757"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98196409"
 ---
 # <a name="create-a-linux-vm-from-a-custom-disk-with-the-azure-cli"></a>Skapa en virtuell Linux-dator från en anpassad disk med Azure CLI
 
@@ -38,12 +38,12 @@ Det finns två alternativ för att skapa en anpassad disk:
 För att utföra följande steg behöver du:
 
 - En virtuell Linux-dator som har förberetts för användning i Azure. Avsnittet [förbereda den virtuella datorn](#prepare-the-vm) i den här artikeln beskriver hur du hittar distribution information om hur du installerar Azure Linux-agenten (waagent), vilket krävs för att du ska kunna ansluta till en virtuell dator med SSH.
-- VHD-filen från en befintlig [Azure-godkänd Linux-distribution](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (eller Visa [information om icke-godkända distributioner](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)) till en virtuell disk i VHD-format. Det finns flera verktyg för att skapa en virtuell dator och en virtuell hård disk:
+- VHD-filen från en befintlig [Azure-godkänd Linux-distribution](endorsed-distros.md) (eller Visa [information om icke-godkända distributioner](create-upload-generic.md)) till en virtuell disk i VHD-format. Det finns flera verktyg för att skapa en virtuell dator och en virtuell hård disk:
   - Installera och konfigurera [qemu](https://en.wikibooks.org/wiki/QEMU/Installing_QEMU) eller [kvm](https://www.linux-kvm.org/page/RunningKVM)och ta hand om att använda VHD som avbildnings format. Om det behövs kan du [konvertera en avbildning](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) med `qemu-img convert` .
   - Du kan också använda Hyper-V [på Windows 10](/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v) eller [Windows Server 2012/2012 R2](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh846766(v=ws.11)).
 
 > [!NOTE]
-> Det nya VHDX-formatet stöds inte i Azure. När du skapar en virtuell dator anger du VHD som format. Vid behov kan du konvertera VHDX-diskar till en virtuell hård disk med [qemu-img-konvertering](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) eller PowerShell-cmdleten [Convert-VHD](/powershell/module/hyper-v/convert-vhd?view=win10-ps) . Azure stöder inte uppladdning av dynamiska virtuella hård diskar, så du måste konvertera sådana diskar till statiska virtuella hård diskar innan du laddar upp. Du kan använda verktyg som [Azure VHD-verktyg för att gå](https://github.com/Microsoft/azure-vhd-utils-for-go) till konvertera dynamiska diskar under processen med att ladda upp dem till Azure.
+> Det nya VHDX-formatet stöds inte i Azure. När du skapar en virtuell dator anger du VHD som format. Vid behov kan du konvertera VHDX-diskar till en virtuell hård disk med [qemu-img-konvertering](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) eller PowerShell-cmdleten [Convert-VHD](/powershell/module/hyper-v/convert-vhd) . Azure stöder inte uppladdning av dynamiska virtuella hård diskar, så du måste konvertera sådana diskar till statiska virtuella hård diskar innan du laddar upp. Du kan använda verktyg som [Azure VHD-verktyg för att gå](https://github.com/Microsoft/azure-vhd-utils-for-go) till konvertera dynamiska diskar under processen med att ladda upp dem till Azure.
 > 
 > 
 
@@ -56,20 +56,20 @@ I följande exempel ersätter du parameter namn med dina egna värden, till exem
 
 ## <a name="prepare-the-vm"></a>Förbereda den virtuella datorn
 
-Azure har stöd för olika Linux-distributioner (se godkända [distributioner](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)). I följande artiklar beskrivs hur du förbereder de olika Linux-distributioner som stöds i Azure:
+Azure har stöd för olika Linux-distributioner (se godkända [distributioner](endorsed-distros.md)). I följande artiklar beskrivs hur du förbereder de olika Linux-distributioner som stöds i Azure:
 
-* [CentOS-baserade distributioner](create-upload-centos.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [Debian Linux](debian-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [Oracle Linux](oracle-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [Red Hat Enterprise Linux](redhat-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [SLES och openSUSE](suse-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [Ubuntu](create-upload-ubuntu.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [Andra: icke-godkända distributioner](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [CentOS-baserade distributioner](create-upload-centos.md)
+* [Debian Linux](debian-create-upload-vhd.md)
+* [Oracle Linux](oracle-create-upload-vhd.md)
+* [Red Hat Enterprise Linux](redhat-create-upload-vhd.md)
+* [SLES och openSUSE](suse-create-upload-vhd.md)
+* [Ubuntu](create-upload-ubuntu.md)
+* [Andra: icke-godkända distributioner](create-upload-generic.md)
 
 Mer information om hur du förbereder Linux-avbildningar för Azure finns också i [Linux-installationsprogrammet](create-upload-generic.md#general-linux-installation-notes) .
 
 > [!NOTE]
-> [Service avtalet för Azure-plattformen](https://azure.microsoft.com/support/legal/sla/virtual-machines/) gäller endast virtuella datorer som kör Linux när en av de godkända distributionerna används med konfigurations informationen som anges under "versioner som stöds" i [Linux på Azure-Endorsed distributioner](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+> [Service avtalet för Azure-plattformen](https://azure.microsoft.com/support/legal/sla/virtual-machines/) gäller endast virtuella datorer som kör Linux när en av de godkända distributionerna används med konfigurations informationen som anges under "versioner som stöds" i [Linux på Azure-Endorsed distributioner](endorsed-distros.md).
 > 
 > 
 
@@ -133,4 +133,4 @@ az vm create \
 Du bör kunna SSH till den virtuella datorn med autentiseringsuppgifterna från den virtuella käll datorn. 
 
 ## <a name="next-steps"></a>Nästa steg
-När du har för berett och överfört din anpassade virtuella disk kan du läsa mer om hur du [använder Resource Manager och mallar](../../azure-resource-manager/management/overview.md). Du kanske också vill [lägga till en datadisk](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) till de nya virtuella datorerna. Om du har program som körs på dina virtuella datorer som du behöver åtkomst till, måste du [öppna portar och slut punkter](nsg-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+När du har för berett och överfört din anpassade virtuella disk kan du läsa mer om hur du [använder Resource Manager och mallar](../../azure-resource-manager/management/overview.md). Du kanske också vill [lägga till en datadisk](add-disk.md) till de nya virtuella datorerna. Om du har program som körs på dina virtuella datorer som du behöver åtkomst till, måste du [öppna portar och slut punkter](nsg-quickstart.md).

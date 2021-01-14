@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 0143b014328dfd5c164f0c3c62aeef7cabe1a17c
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 307afc8f1caafac1a511f0f9895cc73dd9b47eb4
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98065430"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98196052"
 ---
 # <a name="azure-spring-cloud-faq"></a>Vanliga frågor och svar om Azure våren Cloud
 
@@ -37,7 +37,7 @@ Säkerhet och sekretess är bland de viktigaste prioriteringarna för Azure-och 
 
 ### <a name="in-which-regions-is-azure-spring-cloud-available"></a>I vilka regioner är Azure våren Cloud tillgängligt?
 
-Östra USA, östra USA 2, centrala USA, södra centrala USA, norra centrala USA, västra USA, västra USA 2, Västeuropa, Nord Europa, Storbritannien, södra, Sydostasien, östra Australien, centrala Kanada, Nord Förenade Arabemiraten, centrala Indien, Korea, centrala och Asien, östra. [Läs mer](https://azure.microsoft.com/global-infrastructure/services/?products=spring-cloud)
+Östra USA, östra USA 2, centrala USA, södra centrala USA, norra centrala USA, västra USA, västra USA 2, västra Europa, norra Europa, Storbritannien, södra, Sydostasien, östra Australien, centrala Kanada, Nord Förenade Arabemiraten, centrala Indien, Korea, centrala, Asien, östra och Kina, östra 2 (Mooncake). [Läs mer](https://azure.microsoft.com/global-infrastructure/services/?products=spring-cloud)
 
 ### <a name="is-any-customer-data-stored-outside-of-the-specified-region"></a>Lagras alla kund data utanför den angivna regionen?
 

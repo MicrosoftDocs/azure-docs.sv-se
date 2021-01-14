@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 09/09/2016
 ms.author: daberry
-ms.openlocfilehash: f48963a4d18e80cb67bfbbdc532d34f89b8b5d8a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d94f7389ce96c2e3bda35413cbcc7b1e8a992683
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87028455"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98197548"
 ---
 # <a name="troubleshoot-resource-manager-deployment-issues-with-creating-a-new-linux-virtual-machine-in-azure"></a>Felsök distributions problem i Resource Manager med att skapa en ny Linux-virtuell dator i Azure
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-opening](../../../includes/virtual-machines-troubleshoot-deployment-new-vm-opening-include.md)]
@@ -46,9 +46,9 @@ För att starta fel sökningen samlar du in aktivitets loggarna för att identif
 
 **Överförings fel:**
 
-**N<sup>1</sup>:** Om operativ systemet är i Linux-generaliserat och det har laddats upp som specialiserat, får du ett timeout-fel för etablering eftersom den virtuella datorn fastnar i etablerings fasen.
+**N <sup>1</sup>:** Om operativ systemet är i Linux-generaliserat och det har laddats upp som specialiserat, får du ett timeout-fel för etablering eftersom den virtuella datorn fastnar i etablerings fasen.
 
-**N<sup>2</sup>:** Om operativ systemet är specialiserat på Linux och det laddas upp som generaliserat, får du ett fel meddelande om etableringen eftersom den nya virtuella datorn körs med det ursprungliga dator namnet, användar namnet och lösen ordet.
+**N <sup>2</sup>:** Om operativ systemet är specialiserat på Linux och det laddas upp som generaliserat, får du ett fel meddelande om etableringen eftersom den nya virtuella datorn körs med det ursprungliga dator namnet, användar namnet och lösen ordet.
 
 **Lösning:**
 
@@ -56,13 +56,13 @@ För att lösa båda dessa fel kan du överföra den ursprungliga virtuella hår
 
 **Infångnings fel:**
 
-**N<sup>3</sup>:** Om operativ systemet är generaliserat för Linux och det har fångats som specialiserat får du ett timeout-fel för etableringen eftersom den ursprungliga virtuella datorn inte kan användas eftersom den är markerad som generaliserad.
+**N <sup>3</sup>:** Om operativ systemet är generaliserat för Linux och det har fångats som specialiserat får du ett timeout-fel för etableringen eftersom den ursprungliga virtuella datorn inte kan användas eftersom den är markerad som generaliserad.
 
-**N<sup>4</sup>:** Om operativ systemet är specialiserat på Linux och det registreras som generaliserat får du ett fel meddelande om etableringen, eftersom den nya virtuella datorn körs med det ursprungliga dator namnet, användar namnet och lösen ordet. Dessutom går det inte att använda den ursprungliga virtuella datorn eftersom den är markerad som specialiserad.
+**N <sup>4</sup>:** Om operativ systemet är specialiserat på Linux och det registreras som generaliserat får du ett fel meddelande om etableringen, eftersom den nya virtuella datorn körs med det ursprungliga dator namnet, användar namnet och lösen ordet. Dessutom går det inte att använda den ursprungliga virtuella datorn eftersom den är markerad som specialiserad.
 
 **Lösning:**
 
-Du kan lösa båda dessa fel genom att ta bort den aktuella avbildningen från portalen och [avbilda om den från de aktuella virtuella hård diskarna](../linux/capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) med samma inställning som för operativ systemet (generaliserat/specialiserat).
+Du kan lösa båda dessa fel genom att ta bort den aktuella avbildningen från portalen och [avbilda om den från de aktuella virtuella hård diskarna](../linux/capture-image.md) med samma inställning som för operativ systemet (generaliserat/specialiserat).
 
 ## <a name="issue-custom-gallery-marketplace-image-allocation-failure"></a>Problem: anpassad/Galleri/Marketplace-avbildning; allokeringsfel
 Det här felet uppstår i situationer när den nya VM-begäran fästs i ett kluster som antingen inte stöder den virtuella dator storleken eller som inte har tillräckligt med ledigt utrymme för att hantera begäran.

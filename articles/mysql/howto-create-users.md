@@ -5,13 +5,13 @@ author: savjani
 ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
-ms.date: 10/1/2020
-ms.openlocfilehash: 2e934ede193d6efb9cc795c6b63cb485b88f792e
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.date: 01/13/2021
+ms.openlocfilehash: de4e7959a5778c7275427450ead876338f052882
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541427"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98196783"
 ---
 # <a name="create-databases-and-users-in-azure-database-for-mysql"></a>Skapa databaser och användare i Azure Database for MySQL
 
@@ -20,25 +20,23 @@ ms.locfileid: "94541427"
 I den här artikeln beskrivs hur du skapar användare i Azure Database for MySQL.
 
 > [!NOTE]
-> **Kompensations fri kommunikation**
+> Kompensations fri kommunikation
 >
-> Microsoft stöder en mängd olika och införlivande miljöer. Den här artikeln innehåller referenser till ordet *slav*. Microsofts [stil guide för en kostnads fri kommunikation](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) känner igen detta som ett undantags ord. Ordet används i den här artikeln för konsekvens eftersom det är det ord som för närvarande visas i program varan. När program varan har uppdaterats för att ta bort ordet uppdateras den här artikeln som en justering.
+> Microsoft stöder en mängd olika och införlivande miljöer. Den här artikeln innehåller referenser till orden _Master_ och _slav_. Microsofts [stil guide för kommunikation utan fördjupad kommunikation](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) känner igen dessa som undantags ord. Orden används i den här artikeln för konsekvens eftersom de är för närvarande de ord som visas i program varan. När program varan har uppdaterats för att ta bort orden uppdateras den här artikeln som en justering.
 >
 
 När du först skapade Azure Database for MySQL-servern angav du ett användar namn och lösen ord för Server administratören. Mer information finns i den här [snabb](quickstart-create-mysql-server-database-using-azure-portal.md)starten. Du kan kontrol lera ditt användar namn för Server administratören i Azure Portal.
 
-Server administratörs användaren har följande behörigheter: 
+Server administratörs användaren har följande behörigheter:
 
    VÄLJ, INFOGA, UPPDATERA, TA BORT, SKAPA, SLÄPPA, LÄSA IN, BEARBETA, REFERERA, INDEXERA, ÄNDRA, VISA DATABASER, SKAPA TEMPORÄRA TABELLER, LÅS TABELLER, KÖRA, REPLIKERING SLAVAR, REPLIKERINGSPARTNER, SKAPA, VISA, VISA, SKAPA RUTIN, ÄNDRA RUTIN, SKAPA ANVÄNDARE, HÄNDELSE, UTLÖSARE
 
-
-När du har skapat en Azure Database for MySQL-server kan du använda det första server administratörs kontot för att skapa ytterligare användare och ge administratörs åtkomst till dem. Du kan också använda Server administratörs kontot för att skapa mindre privilegierade användare som har åtkomst till enskilda databas scheman.
+När du har skapat en Azure Database for MySQL-server kan du använda det första server administratörs kontot för att skapa fler användare och ge administratörs åtkomst till dem. Du kan också använda Server administratörs kontot för att skapa mindre privilegierade användare som har åtkomst till enskilda databas scheman.
 
 > [!NOTE]
 > Rollen SUPER Privilege och DBA stöds inte. Granska [privilegierna](concepts-limits.md#privileges--data-manipulation-support) i artikeln begränsningar för att förstå vad som inte stöds i tjänsten.
 >
 > Lösen ords-plugin-program som `validate_password` och `caching_sha2_password` stöds inte av tjänsten.
-
 
 ## <a name="to-create-a-database-with-a-non-admin-user-in-azure-database-for-mysql"></a>Så här skapar du en databas med en icke-administratörs användare i Azure Database for MySQL
 
@@ -46,7 +44,7 @@ När du har skapat en Azure Database for MySQL-server kan du använda det först
    Du behöver det fullständiga servernamnet och inloggningsuppgifterna för administratör för att ansluta till databasservern. Du kan enkelt hitta Server namnet och inloggnings informationen på sidan Server **Översikt** eller på sidan **Egenskaper** i Azure Portal.
 
 2. Använd administratörs kontot och lösen ordet för att ansluta till din databas server. Använd önskat klient verktyg, till exempel MySQL Workbench, mysql.exe eller HeidiSQL.
-   
+
    Om du inte är säker på hur du ansluter, se [Anslut och fråga efter data för en enskild server](./connect-workbench.md) eller [Anslut och fråga efter data för flexibel Server](./flexible-server/connect-workbench.md).
 
 3. Redigera och kör följande SQL-kod. Ersätt placeholder-värdet `db_user` med ditt avsedda nya användar namn. Ersätt placeholder-värdet `testdb` med ditt databas namn.
@@ -73,28 +71,29 @@ När du har skapat en Azure Database for MySQL-server kan du använda det först
 
 5. Logga in på servern, ange den angivna databasen och Använd det nya användar namnet och lösen ordet. I det här exemplet visas mysql-kommandoraden. När du använder det här kommandot uppmanas du att ange användarens lösen ord. Använd ditt eget Server namn, databas namn och användar namn.
 
-   # <a name="single-server"></a>[Enskild server](#tab/single-server)
+   ### <a name="single-server"></a>[Enskild server](#tab/single-server)
 
    ```azurecli-interactive
    mysql --host mydemoserver.mysql.database.azure.com --database testdb --user db_user@mydemoserver -p
    ```
-   # <a name="flexible-server"></a>[Flexibel Server](#tab/flexible-server)
+
+   ### <a name="flexible-server"></a>[Flexibel Server](#tab/flexible-server)
 
    ```azurecli-interactive
    mysql --host mydemoserver.mysql.database.azure.com --database testdb --user db_user -p
    ```
  ---
 
-## <a name="to-create-additional-admin-users-in-azure-database-for-mysql"></a>Så här skapar du ytterligare administratörs användare i Azure Database for MySQL
+## <a name="to-create-more-admin-users-in-azure-database-for-mysql"></a>Så här skapar du fler administratörs användare i Azure Database for MySQL
 
 1. Hämta anslutnings informationen och administratörs användar namnet.
    Du behöver det fullständiga servernamnet och inloggningsuppgifterna för administratör för att ansluta till databasservern. Du kan enkelt hitta Server namnet och inloggnings informationen på sidan Server **Översikt** eller på sidan **Egenskaper** i Azure Portal.
 
 2. Använd administratörs kontot och lösen ordet för att ansluta till din databas server. Använd önskat klient verktyg, till exempel MySQL Workbench, mysql.exe eller HeidiSQL.
-   
+
    Om du inte är säker på hur du ansluter, se [Använd MySQL Workbench för att ansluta och fråga efter data](./connect-workbench.md).
 
-3. Redigera och kör följande SQL-kod. Ersätt placeholder-värdet `new_master_user` med ditt nya användar namn. Den här syntaxen beviljar de angivna behörigheterna för alla databas scheman ( *.* ) till användaren ( `new_master_user` i det här exemplet).
+3. Redigera och kör följande SQL-kod. Ersätt placeholder-värdet `new_master_user` med ditt nya användar namn. Den här syntaxen beviljar de angivna behörigheterna för alla databas scheman (*.*) till användaren ( `new_master_user` i det här exemplet).
 
    ```sql
    CREATE USER 'new_master_user'@'%' IDENTIFIED BY 'StrongPassword!';
@@ -119,7 +118,8 @@ Alla Azure Database for MySQL-servrar skapas med en användare som kallas "azure
 ## <a name="next-steps"></a>Nästa steg
 
 Öppna brand väggen för IP-adresserna för de nya användarnas datorer så att de kan ansluta:
-- [Skapa och hantera brand Väggs regler på en enskild server](howto-manage-firewall-using-portal.md) 
-- [ Skapa och hantera brand Väggs regler på en flexibel Server](flexible-server/how-to-connect-tls-ssl.md)
+
+* [Skapa och hantera brand Väggs regler på en enskild server](howto-manage-firewall-using-portal.md)
+* [Skapa och hantera brand Väggs regler på en flexibel Server](flexible-server/how-to-connect-tls-ssl.md)
 
 Mer information om hantering av användar konton finns i produkt dokumentationen för MySQL för [användar konto hantering](https://dev.mysql.com/doc/refman/5.7/en/access-control.html), [beviljande syntax](https://dev.mysql.com/doc/refman/5.7/en/grant.html)och [behörigheter](https://dev.mysql.com/doc/refman/5.7/en/privileges-provided.html).

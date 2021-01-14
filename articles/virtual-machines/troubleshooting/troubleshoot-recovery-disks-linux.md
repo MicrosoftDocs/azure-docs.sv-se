@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/16/2017
 ms.author: genli
-ms.openlocfilehash: bc796b4d9708c18f4d0612e6f3ebde9b2485d2f7
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 70855f7956e42d815e0b8135ccfe6e374853d8aa
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093148"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98197531"
 ---
 # <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-with-the-azure-cli"></a>Felsöka en virtuell Linux-dator genom att koppla OS-disken till en virtuell dator för återställning med Azure CLI
 Om din virtuella Linux-dator (VM) påträffar ett start-eller diskfel kan du behöva utföra fel söknings stegen på den virtuella hård disken. Ett vanligt exempel är en ogiltig post i `/etc/fstab` som förhindrar att den virtuella datorn kan starta. Den här artikeln beskriver hur du använder Azure CLI för att ansluta din virtuella hård disk till en annan virtuell Linux-dator för att åtgärda eventuella fel och sedan återskapa den ursprungliga virtuella datorn. 
@@ -36,7 +36,7 @@ Så här ser felsökningsprocessen ut:
 
 Om du vill utföra de här fel söknings stegen måste du ha det senaste [Azure CLI](/cli/azure/install-az-cli2) installerat och inloggat på ett Azure-konto med [AZ-inloggning](/cli/azure/reference-index).
 
-Du kan automatisera steg 1, 2, 3, 4, 6 och 7 genom att använda kommandona för reparation av virtuella datorer. Mer dokumentation och instruktioner finns i [Reparera en virtuell Linux-dator med hjälp av reparations kommandona för virtuella Azure-datorer](repair-linux-vm-using-azure-virtual-machine-repair-commands.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Du kan automatisera steg 1, 2, 3, 4, 6 och 7 genom att använda kommandona för reparation av virtuella datorer. Mer dokumentation och instruktioner finns i [Reparera en virtuell Linux-dator med hjälp av reparations kommandona för virtuella Azure-datorer](repair-linux-vm-using-azure-virtual-machine-repair-commands.md).
 
 > [!Important]
 > Skripten i den här artikeln gäller bara för de virtuella datorer som använder [hanterad disk](../managed-disks-overview.md). 

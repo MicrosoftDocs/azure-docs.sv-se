@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: how-to
-ms.openlocfilehash: 8169b277dfae918e86ac493259325ff84d0b6a4e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 83bd4a7ae0082d24f7ac617719e628f4db4baeb9
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95998540"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98197648"
 ---
 # <a name="create-an-azure-remote-rendering-account"></a>Skapa ett Azure Remote Rendering-konto
 
@@ -71,35 +71,26 @@ Värdet för **`arrAccountKey`** kan vara antingen primär eller sekundär nycke
 
 I det här stycket förklaras hur du länkar lagrings konton till ditt konto för fjärrrendering. När ett lagrings konto är länkat behöver du inte skapa en SAS-URI varje gång du vill interagera med data i ditt konto, till exempel när du läser in en modell. I stället kan du använda lagrings kontots namn direkt enligt beskrivningen i [avsnittet läsa in en modell](../concepts/models.md#loading-models).
 
-Stegen i det här stycket måste utföras för varje lagrings konto som ska använda den alternativa åtkomst metoden. Om du inte har skapat lagrings konton än kan du gå igenom respektive steg i avsnittet [konvertera en modell för att rendera snabb start](../quickstarts/convert-model.md#storage-account-creation).
+Stegen i det här stycket måste utföras för varje lagrings konto som ska använda den här åtkomst metoden. Om du inte har skapat lagrings konton än kan du gå igenom respektive steg i avsnittet [konvertera en modell för att rendera snabb start](../quickstarts/convert-model.md#storage-account-creation).
 
 Nu förutsätts det att du har ett lagrings konto. Navigera till lagrings kontot i portalen och gå till fliken **Access Control (IAM)** för det lagrings kontot:
 
 ![IAM för lagrings konto](./media/azure-storage-account.png)
 
- Se till att du har ägar behörigheter över det här lagrings kontot för att säkerställa att du kan lägga till roll tilldelningar. Om du inte har åtkomst kommer alternativet **Lägg till en roll tilldelning** att inaktive ras.
+Se till att du har ägar behörigheter över det här lagrings kontot för att säkerställa att du kan lägga till roll tilldelningar. Om du inte har åtkomst kommer alternativet **Lägg till en roll tilldelning** att inaktive ras.
 
- Du måste lägga till tre olika roller enligt beskrivningen i nästa steg. Om du inte anger alla tre åtkomst nivåer får du behörighets problem när du försöker komma åt lagrings kontot.
-
- Klicka på knappen **Lägg till** i panelen Lägg till en roll tilldelning för att lägga till den första rollen:
+Klicka på knappen **Lägg till** i panelen Lägg till en roll tilldelning för att lägga till rollen.
 
 ![Lagrings konto IAM Lägg till roll tilldelning](./media/azure-add-role-assignment.png)
 
-* Den första rollen som ska tilldelas är **ägare** som visas i skärm bilden ovan.
-* Välj **fjärrstyrt konto** från List rutan **tilldela åtkomst till** .
+* Tilldela rollen **Storage BLOB data Contributor** så som visas på skärm bilden ovan.
+* Välj **fjärrstyrt konto**  system tilldelad hanterad identitet från List rutan **tilldela åtkomst till** .
 * Välj din prenumeration och fjärråter givnings konto i de sista List rutorna.
+* Klicka på Spara för att spara ändringarna.
 
 > [!WARNING]
 > Om ditt konto för fjärrrendering inte visas i listan, se det här [fel söknings avsnittet](../resources/troubleshoot.md#cant-link-storage-account-to-arr-account).
 
-Upprepa att lägga till nya roller två gånger för respektive val i list rutan **roll** :
-
-* **Lagringskontodeltagare**
-* **Storage Blob Data-deltagare**
-
-De andra List rutorna väljs som i det första steget.
-
-Om du har lagt till alla tre roller har ditt Azure Remote rendering-konto åtkomst till ditt lagrings konto med systemtilldelade tjänst identiteter.
 > [!IMPORTANT]
 > Azure Role-tilldelningar cachelagras av Azure Storage, så det kan finnas en fördröjning på upp till 30 minuter mellan när du beviljar åtkomst till ditt konto för fjärrrendering och när det kan användas för åtkomst till ditt lagrings konto. Mer information finns i [dokumentationen för rollbaserad åtkomst kontroll i Azure (Azure RBAC)](../../role-based-access-control/troubleshooting.md#role-assignment-changes-are-not-being-detected) .
 

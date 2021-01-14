@@ -14,18 +14,18 @@ ms.workload: infrastructure
 ms.date: 06/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9254b3d19bd840b62d2f5f7023eba9a91e605d1e
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 2729369347de92153e9e8b84e008e5e22e732081
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967524"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98197446"
 ---
 # <a name="sap-hana-large-instances-storage-architecture"></a>Lagrings arkitektur för SAP HANA (stora instanser)
 
 Storage-layouten för SAP HANA på Azure (stora instanser) konfigureras genom att SAP HANA på den klassiska distributions modellen per SAP rekommenderade rikt linjer. Rikt linjerna beskrivs i [SAP HANA lagrings krav](https://go.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html) White Paper.
 
-Den stora HANA-instansen av typen I-klassen levereras med fyra gånger minnes volymen som lagrings volym. För typ II-klassen av HANA stor instans enheter är lagringen inte fyra gånger mer. Enheterna levereras med en volym som är avsedd för att lagra HANA-säkerhetskopieringar i transaktions loggen. Mer information finns i [Installera och konfigurera SAP HANA (stora instanser) i Azure](hana-installation.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Den stora HANA-instansen av typen I-klassen levereras med fyra gånger minnes volymen som lagrings volym. För typ II-klassen av HANA stor instans enheter är lagringen inte fyra gånger mer. Enheterna levereras med en volym som är avsedd för att lagra HANA-säkerhetskopieringar i transaktions loggen. Mer information finns i [Installera och konfigurera SAP HANA (stora instanser) i Azure](hana-installation.md).
 
 Se följande tabell vad gäller lagrings tilldelning. Tabellen visar den grova kapaciteten för de olika volymerna som tillhandahålls med de olika volymerna i HANA-stor instans.
 
@@ -94,7 +94,7 @@ De här storlekarna är grova volym siffror som kan variera något beroende på 
 
 Du kan behöva mer lagrings utrymme. Du kan lägga till lagring genom att köpa ytterligare lagrings utrymme i enheter om 1 TB. Detta ytterligare lagrings utrymme kan läggas till som ytterligare volym. Det kan också användas för att utöka en eller flera av de befintliga volymerna. Det går inte att minska storlek på volymerna som ursprungligen distribuerade och mest dokumenterade av föregående tabeller. Det går inte heller att ändra namnen på volymerna eller monterings namnen. Lagrings volymerna som beskrivs ovan är anslutna till de stora HANA-instans enheterna som NFS4-volymer.
 
-Du kan använda lagrings ögonblicks bilder för säkerhets kopierings-och återställnings-och haveri beredskap. Mer information finns i [SAP HANA (stora instanser) hög tillgänglighet och haveri beredskap på Azure](hana-overview-high-availability-disaster-recovery.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Du kan använda lagrings ögonblicks bilder för säkerhets kopierings-och återställnings-och haveri beredskap. Mer information finns i [SAP HANA (stora instanser) hög tillgänglighet och haveri beredskap på Azure](hana-overview-high-availability-disaster-recovery.md).
 
 Se [HLI-scenarier som stöds](hana-supported-scenario.md) för information om lagrings layout för ditt scenario.
 

@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 10/10/2019
 ms.author: cynthn
-ms.openlocfilehash: cddc7f4f453f22b0cb36b1d3a1e9c2fba2dcabaf
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 577b8527d95a6410deca8002cddfaae31be1fc97
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96455095"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98197497"
 ---
 # <a name="create-a-windows-vm-from-a-specialized-disk-by-using-powershell"></a>Skapa en virtuell Windows-dator från en specialiserad disk med PowerShell
 
@@ -54,7 +54,7 @@ Du kan ladda upp den virtuella hård disken från en specialiserad virtuell dato
 ### <a name="prepare-the-vm"></a>Förbereda den virtuella datorn
 Använd den virtuella hård disken som-är för att skapa en ny virtuell dator. 
   
-  * [Förbered en virtuell Windows-hårddisk att ladda upp till Azure](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Generalisera **inte** den virtuella datorn med hjälp av Sysprep.
+  * [Förbered en virtuell Windows-hårddisk att ladda upp till Azure](prepare-for-upload-vhd-image.md). Generalisera **inte** den virtuella datorn med hjälp av Sysprep.
   * Ta bort eventuella verktyg och agenter för gästautentisering som är installerade på den virtuella datorn (till exempel VMware-verktyg).
   * Se till att den virtuella datorn är konfigurerad för att hämta IP-adressen och DNS-inställningarna från DHCP. Detta säkerställer att servern får en IP-adress i det virtuella nätverket när den startas. 
 
@@ -193,7 +193,7 @@ $nsg = New-AzNetworkSecurityGroup `
     
 ```
 
-Mer information om slut punkter och NSG-regler finns i [öppna portar till en virtuell dator i Azure med hjälp av PowerShell](nsg-quickstart-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Mer information om slut punkter och NSG-regler finns i [öppna portar till en virtuell dator i Azure med hjälp av PowerShell](nsg-quickstart-powershell.md).
 
 ### <a name="create-a-public-ip-address-and-nic"></a>Skapa en offentlig IP-adress och ett nätverkskort
 Om du vill aktivera kommunikation med den virtuella datorn i det virtuella nätverket behöver du en [offentlig IP-adress](../../virtual-network/public-ip-addresses.md) och ett nätverks gränssnitt.

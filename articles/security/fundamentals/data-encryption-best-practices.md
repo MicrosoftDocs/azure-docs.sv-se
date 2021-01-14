@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/09/2020
 ms.author: terrylan
-ms.openlocfilehash: c88a2cf33cf1149a17af4a82dcf2858822f0c6d4
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 3808da24c1baf6dd6e3332d4bd26fd176b761c65
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94696157"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98196086"
 ---
 # <a name="azure-data-security-and-encryption-best-practices"></a>Metodtips för datasäkerhet och kryptering i Azure
 Den här artikeln beskriver metod tips för data säkerhet och kryptering.
@@ -74,7 +74,7 @@ Använd Azure RBAC för att styra vilka användare som har åtkomst till. Om du 
 Eftersom de stora majoriteten av attacker som riktar sig till slutanvändaren blir slut punkten en av de primära angrepps punkterna. En angripare som komprometterar slut punkten kan använda användarens autentiseringsuppgifter för att få åtkomst till organisationens data. De flesta slut punkts attacker drar nytta av det faktum att användarna är administratörer på sina lokala arbets stationer.
 
 **Bästa praxis**: Använd en säker hanterings arbets station för att skydda känsliga konton, uppgifter och data.   
-**Information**: Använd en [privilegie rad åtkomst arbets Station](/windows-server/identity/securing-privileged-access/privileged-access-workstations) för att minska risken för attacker i arbets stationer. Dessa säkra hanterings arbets stationer kan hjälpa dig att undvika vissa av dessa attacker och se till att dina data är säkrare.
+**Information**: Använd en [privilegie rad åtkomst arbets Station](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/) för att minska risken för attacker i arbets stationer. Dessa säkra hanterings arbets stationer kan hjälpa dig att undvika vissa av dessa attacker och se till att dina data är säkrare.
 
 **Bästa praxis**: se till att Endpoint Protection fungerar.   
 **Information**: tillämpa säkerhets principer på alla enheter som används för att använda data, oavsett data plats (moln eller lokalt).

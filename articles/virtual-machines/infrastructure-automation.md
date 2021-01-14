@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.workload: infrastructure
 ms.date: 07/17/2020
 ms.author: cynthn
-ms.openlocfilehash: dfa0efaa49fbca0b927bfd32511348f3ded7e6c7
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: 96c68850cfd8b03f7d1457eb0f1ca9ce5880c926
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302806"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98198007"
 ---
 # <a name="use-infrastructure-automation-tools-with-virtual-machines-in-azure"></a>Använd infrastruktur automatiserings verktyg med virtuella datorer i Azure
 
@@ -88,7 +88,7 @@ Skript kan laddas ned från Azure Storage eller någon offentlig plats, till exe
 Lär dig att:
 
 - [Skapa en virtuell Linux-dator med Azure CLI och Använd det anpassade skript tillägget](./scripts/virtual-machines-linux-cli-sample-create-vm-nginx.md?toc=%2fcli%2fazure%2ftoc.json).
-- [Skapa en virtuell Windows-dator med Azure PowerShell och Använd det anpassade skript tillägget](./scripts/virtual-machines-windows-powershell-sample-create-vm-iis.md?toc=%2fpowershell%2fmodule%2ftoc.json).
+- [Skapa en virtuell Windows-dator med Azure PowerShell och Använd det anpassade skript tillägget](./scripts/virtual-machines-windows-powershell-sample-create-vm-iis.md).
 
 
 ## <a name="packer"></a>Packer
@@ -109,7 +109,7 @@ Lär dig att:
 - [Skapa en Azure-infrastruktur med terraform](/azure/developer/terraform/create-linux-virtual-machine-with-infrastructure).
 
 
-## <a name="azure-automation"></a>Azure Automation
+## <a name="azure-automation"></a>Azure Automatisering
 [Azure Automation](https://azure.microsoft.com/services/automation/) använder Runbooks för att bearbeta en uppsättning aktiviteter på de virtuella datorer som du är mål för. Azure Automation används för att hantera befintliga virtuella datorer i stället för att skapa en infrastruktur. Azure Automation kan köras över både virtuella Linux-och Windows-datorer, samt lokala virtuella eller fysiska datorer med en hybrid Runbook Worker. Runbooks kan lagras i en lagrings plats för käll kontroll, till exempel GitHub. Dessa Runbooks kan sedan köras manuellt eller enligt ett definierat schema.
 
 Azure Automation tillhandahåller också en tjänst för önskad tillstånds konfiguration (DSC) som gör att du kan skapa definitioner för hur en given uppsättning virtuella datorer ska konfigureras. DSC säkerställer sedan att konfigurationen som krävs används och att den virtuella datorn förblir konsekvent. Azure Automation DSC körs på både Windows-och Linux-datorer.

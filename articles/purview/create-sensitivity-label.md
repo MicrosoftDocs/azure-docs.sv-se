@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 12/03/2020
-ms.openlocfilehash: c824e0abea7320a20441e51caa2a05d534ff61b3
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 003a71f962652b1a1436f5d9875835534090a77a
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97092694"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98196596"
 ---
 # <a name="automatically-label-your-data-in-azure-purview"></a>Etikettera data automatiskt i Azure avdelningens kontroll
 
@@ -33,8 +33,9 @@ I avdelningens kontroll liknar klassificeringarna ämnes koder och används för
 Avdelningens kontroll använder samma klassificeringar, även kallade känsliga informations typer, som Microsoft 365.  MIP känslighets etiketter skapas i Microsoft 365 Security and Compliance Center (SCC). På så sätt kan du utöka dina befintliga känslighets etiketter i dina Azure avdelningens kontroll-tillgångar.
 
 > [!NOTE]
-> Medan klassificeringar matchas direkt (en social security number har en klassificering av **person nummer**) används känslighets etiketter när en eller flera klassificeringar och scenarier hittas tillsammans. 
-> 
+> Klassificeringar matchas direkt, till exempel en social security number, som har en klassificering av **person nummer**. 
+>
+> Känslighets etiketter tillämpas däremot när en eller flera klassificeringar och villkor hittas tillsammans. I det här sammanhanget refererar [villkoren](/microsoft-365/compliance/apply-sensitivity-label-automatically) till alla parametrar som du kan definiera för ostrukturerade data, till exempel **närhet till en annan klassificering** och **% konfidensgrad**. 
 
 Känslighets etiketter i Azure avdelningens kontroll kan användas för att automatiskt tillämpa etiketter på filer och databas kolumner.
 
@@ -91,11 +92,6 @@ Genom att utöka MIPs känslighets etiketter med Azure avdelningens kontroll kan
 > Eftersom Microsoft 365 och Azure avdelningens kontroll är separata tjänster, finns det en risk att de distribueras i olika regioner. Etikett namn och namn på anpassade känsliga informations typer anses vara kund information och bevaras inom samma geografiska plats som standard för att skydda känsligheten hos dina data och för att undvika GDPR lagar.
 >
 > Därför delas etiketter och anpassade känsliga informations typer inte till Azure-avdelningens kontroll som standard och kräver att ditt medgivande används i Azure avdelningens kontroll.
-
-> [!IMPORTANT]
-> Ditt medgivande gör att Microsoft kan dela etikett namn och anpassad känslig informations typ för *både* Azure avdelningens kontroll och Azure Security Center (ASC). Microsoft använder etikett informationen från Azure avdelningens kontroll för att utöka dina rekommendationer och aviseringar i ASC. 
->
-> Samtyckning i Microsoft 365 Compliance Center gäller delning av dessa data med båda tjänsterna. Det finns för närvarande inget alternativ för att dela etikett information med Azure avdelningens kontroll.
 
 **Utöka känslighets etiketter till avdelningens kontroll:**
 
