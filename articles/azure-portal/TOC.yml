@@ -70,8 +70,6 @@
       items:
         - name: Återställa en borttagen instrumentpanel
           href: recover-shared-deleted-dashboard.md
-        - name: Felsök region eller problem med SKU-prenumeration
-          href: supportability/sku-series-unavailable.md
         - name: Samla in en webbläsarspårning för felsökning
           href: capture-browser-trace.md
 - name: Referens
