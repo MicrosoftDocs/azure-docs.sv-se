@@ -63,19 +63,8 @@
         - name: Använda Azure Lab Services i Teams
           items:
             - name: Översikt
+              displayName: labs within Teams
               href: lab-services-within-teams-overview.md
-            - name: Skapa ett labb från Teams
-              href: how-to-get-started-create-lab-within-teams.md
-            - name: Hantera användarlistor
-              href: how-to-manage-user-lists-within-teams.md
-            - name: Hantera VM-pool
-              href: how-to-manage-vm-pool-within-teams.md
-            - name: Ta bort labb
-              href: how-to-delete-lab-within-teams.md
-            - name: Scheman och inställningar
-              href: how-to-create-schedules-within-teams.md
-            - name: Komma åt en virtuell dator (studentvy)
-              href: how-to-access-vm-for-students-within-teams.md
 - name: Anvisningar
   items:
     - name: Administratörsguide
@@ -164,6 +153,20 @@
           href: how-to-set-virtual-machine-passwords-student.md
         - name: Visa supportinformation (elev)
           href: lab-user-support-information.md
+    - name: Använda labb i Teams
+      items:
+        - name: Skapa ett labb från Teams
+          href: how-to-get-started-create-lab-within-teams.md
+        - name: Hantera användarlistor
+          href: how-to-manage-user-lists-within-teams.md
+        - name: Hantera VM-pool
+          href: how-to-manage-vm-pool-within-teams.md
+        - name: Ta bort labb
+          href: how-to-delete-lab-within-teams.md
+        - name: Scheman och inställningar
+          href: how-to-create-schedules-within-teams.md
+        - name: Komma åt en virtuell dator (studentvy)
+          href: how-to-access-vm-for-students-within-teams.md
 - name: Referens
   items:
     - name: REST-API
