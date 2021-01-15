@@ -4,12 +4,12 @@ description: Lär dig hur du använder kluster autoskalning för att automatiskt
 services: container-service
 ms.topic: article
 ms.date: 07/18/2019
-ms.openlocfilehash: e644a931152c83a5232c8233d519f7807ab708af
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 5f0754638be1aa29672b6a59218a6c9d695261a5
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92542649"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223150"
 ---
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Skala ett kluster automatiskt för att uppfylla programbehov i Azure Kubernetes Service (AKS)
 
@@ -97,7 +97,7 @@ Det tar några minuter att uppdatera klustret och konfigurera inställningarna f
 > [!IMPORTANT]
 > Om du har flera resurspooler i ditt AKS-kluster går du vidare till [avsnittet autoskalning med flera agenter](#use-the-cluster-autoscaler-with-multiple-node-pools-enabled). Kluster med flera agenter kräver `az aks nodepool` att kommando uppsättningen använder kommandot för att ändra egenskaper för Node-pooler i stället för `az aks` .
 
-I föregående steg för att skapa ett AKS-kluster eller uppdatera en befintlig Node-pool, angavs det lägsta antalet noder för klustrets Autoskala till *1* , och det maximala antalet noder hade angetts till *3* . När dina program kräver ändringar kan du behöva justera antalet noder i den automatiska skalnings tjänsten för klustret.
+I föregående steg för att skapa ett AKS-kluster eller uppdatera en befintlig Node-pool, angavs det lägsta antalet noder för klustrets Autoskala till *1*, och det maximala antalet noder hade angetts till *3*. När dina program kräver ändringar kan du behöva justera antalet noder i den automatiska skalnings tjänsten för klustret.
 
 Om du vill ändra antalet noder använder du kommandot [AZ AKS Update][az-aks-update] .
 
@@ -121,7 +121,7 @@ Exemplet ovan uppdaterar kluster autoskalning på den enskild Node-poolen i *myA
 
 Du kan också konfigurera mer detaljerad information om klustrets autoskalning genom att ändra standardvärdena i den globala profilen för autoskalning i klustret. Till exempel inträffar en händelsen skala ned efter att noderna har utnyttjats efter 10 minuter. Om du har arbets belastningar som kördes var 15: e minut kanske du vill ändra profilen för autoskalning för att skala ned under använda noder efter 15 eller 20 minuter. När du aktiverar klustret autoskalning används en standard profil om du inte anger andra inställningar. Klustrets profil för autoskalning har följande inställningar som du kan uppdatera:
 
-| Inställningen                          | Beskrivning                                                                              | Standardvärde |
+| Inställning                          | Beskrivning                                                                              | Standardvärde |
 |----------------------------------|------------------------------------------------------------------------------------------|---------------|
 | genomsökning – intervall                    | Hur ofta klustret utvärderas för att skala upp eller ned                                    | 10 sekunder    |
 | skala ned-fördröjning – efter-tillägg       | Hur lång tid det tar att skala ned utvärderingen återupptas                               | 10 minuter    |
@@ -130,14 +130,15 @@ Du kan också konfigurera mer detaljerad information om klustrets autoskalning g
 | skalning – inte nödvändig-tid         | Hur länge en nod ska vara onödiga innan den kan skalas ned                  | 10 minuter    |
 | skalar ned-oläst, tid          | Hur länge en oläsbar nod ska vara onödiga innan den kan skalas ned         | 20 minuter    |
 | skalning – användning – tröskel | Nodens användnings nivå, definieras som summan av de begärda resurserna dividerat med kapaciteten, under vilken en nod kan övervägas för skalning nedåt | 0,5 |
-| Max--Termination-s     | Maximalt antal sekunder som klustrets automatiska skalning väntar på att Pod avslutas vid försök att skala ned en nod. | 600 sekunder   |
+| Max--Termination-s     | Maximalt antal sekunder som kluster autoskalning väntar på pod avslutning vid försök att skala ned en nod | 600 sekunder   |
 | balans-liknande-Node-Groups      | Identifierar liknande noders pooler och balanserar antalet noder mellan dem                 | falskt         |
-| utökningspilen                         | Typ av [Expander](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-expanders) för resurspool som ska användas vid skalning. Möjliga värden: `most-pods` , `random` , `least-waste` | slumpmässig | 
+| utökningspilen                         | Typ av [Expander](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-expanders) för resurspool som ska användas vid skalning. Möjliga värden: `most-pods` , `random` , `least-waste` , `priority` | slumpmässig | 
 | hoppa över-noder-med-lokal lagring    | Om sant kluster autoskalning aldrig tar bort noder med poddar med lokal lagring, till exempel EmptyDir eller HostPath | true |
 | hoppa över-noder-med-system-poddar      | Om sant kluster autoskalning aldrig tar bort noder med poddar från Kube-system (förutom DaemonSet eller spegel poddar) | true | 
-| Max-tom-Mass-ta bort            | Maximalt antal tomma noder som kan tas bort samtidigt.                      | 10 noder      |
-| New-Pod-Scale-in-Delay           | För scenarier som burst-/batch-skala där du inte vill att CA ska fungera innan Kubernetes Scheduler kan schemalägga alla poddar, kan du se till att CA: n ignorerar oplanerad poddar innan de är en viss ålder.                                                                                                                | 10 sekunder    |
-| Max-total-Unready-procent     | Högsta procent andel olästa noder i klustret. När den här procent andelen överskrids stoppar CA åtgärder | 45 % | 
+| Max-tom-Mass-ta bort            | Maximalt antal tomma noder som kan tas bort samtidigt                       | 10 noder      |
+| New-Pod-Scale-in-Delay           | För scenarier som burst/batch-skala där du inte vill att CA ska fungera innan Kubernetes Scheduler kan schemalägga alla poddar, kan du se till att CA: n ignorerar oplanerad poddar innan de är en viss ålder.                                                                                                                | 0 sekunder    |
+| Max-total-Unready-procent     | Högsta procent andel olästa noder i klustret. När den här procent andelen överskrids stoppar CA åtgärder | 45 % |
+| Max-nod-etablering-tid          | Längsta tid som autoskalning väntar på att en nod ska tillhandahållas                           | 15 minuter    |   
 | OK-totalt-ej skrivskyddat-antal           | Antal tillåtna olästa noder, oberoende av Max-total-Unready-procent            | tre noder       |
 
 > [!IMPORTANT]
@@ -249,7 +250,7 @@ Om du vill veta mer om vad som loggas från autoskalning läser du vanliga fråg
 
 Klustrets autoskalning kan användas tillsammans med [flera noder][aks-multiple-node-pools] aktiverade. Följ det dokumentet för att lära dig hur du aktiverar flera resurspooler och lägger till ytterligare resurspooler i ett befintligt kluster. När du använder båda funktionerna tillsammans aktiverar du klustrets autoskalning på varje enskild nod i klustret och kan skicka unika regler för automatisk skalning till var och en.
 
-Kommandot nedan förutsätter att du följde de [inledande anvisningarna](#create-an-aks-cluster-and-enable-the-cluster-autoscaler) tidigare i det här dokumentet och du vill uppdatera en befintlig nods Pools Max antal från *3* till *5* . Använd kommandot [AZ AKS nodepool Update][az-aks-nodepool-update] för att uppdatera en befintlig Node-uppsättnings inställningar.
+Kommandot nedan förutsätter att du följde de [inledande anvisningarna](#create-an-aks-cluster-and-enable-the-cluster-autoscaler) tidigare i det här dokumentet och du vill uppdatera en befintlig nods Pools Max antal från *3* till *5*. Använd kommandot [AZ AKS nodepool Update][az-aks-nodepool-update] för att uppdatera en befintlig Node-uppsättnings inställningar.
 
 ```azurecli-interactive
 az aks nodepool update \

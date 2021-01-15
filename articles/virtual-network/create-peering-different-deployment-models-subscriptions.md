@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 06/25/2020
 ms.author: kumud
 ms.reviewer: anavin
-ms.openlocfilehash: 88e576231e0231a105cd9ec303f63307b5eaff89
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 29a64931ac92eacf8948ae067118b6b25198c85d
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87051625"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223473"
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-and-subscriptions"></a>Skapa en virtuell nätverks-peering-olika distributions modeller och prenumerationer
 
@@ -43,7 +43,7 @@ Du kan använda [Azure Portal](#portal), Azures [kommando rads gränssnitt](#cli
 I den här självstudien används olika konton för varje prenumeration. Om du använder ett konto som har behörigheter till båda prenumerationerna kan du använda samma konto för alla steg, hoppa över stegen för att logga ut från portalen och hoppa över stegen för att tilldela de virtuella nätverken till en annan användar behörighet.
 
 1. Logga in på [Azure Portal](https://portal.azure.com) som användare a. Det konto som du loggar in med måste ha de behörigheter som krävs för att skapa en virtuell nätverks-peering. En lista över behörigheter finns i [behörigheter för virtuella nätverks-peering](virtual-network-manage-peering.md#permissions).
-2. Klicka på **+ ny**, klicka på **nätverk**och sedan på **virtuellt nätverk**.
+2. Klicka på **+ ny**, klicka på **nätverk** och sedan på **virtuellt nätverk**.
 3. I bladet **Skapa virtuellt nätverk** anger du eller väljer värden för följande inställningar och klickar sedan på **skapa**:
     - **Namn**: *myVnetA*
     - **Adress utrymme**: *10.0.0.0/16*
@@ -54,7 +54,7 @@ I den här självstudien används olika konton för varje prenumeration. Om du a
     - **Plats**: *östra USA*
 4. I rutan **Sök resurser** överst i portalen skriver du *myVnetA*. Klicka på **myVnetA** när den visas i Sök resultaten. Ett blad visas för det virtuella **myVnetA** -nätverket.
 5. På bladet **myVnetA** som visas klickar du på **åtkomst kontroll (IAM)** i den lodräta listan med alternativ på vänster sida av bladet.
-6. Klicka på **+ Lägg till roll tilldelning**på bladet **myVnetA-Access Control (IAM)** som visas.
+6. Klicka på **+ Lägg till roll tilldelning** på bladet **myVnetA-Access Control (IAM)** som visas.
 7. På bladet **Lägg till roll tilldelning** som visas väljer du **nätverks deltagare** i rutan **roll** .
 8. I rutan **Välj** väljer du användare b eller skriver användare b e-postadress för att söka efter den. Listan med användare som visas är från samma Azure Active Directory klient som det virtuella nätverk som du konfigurerar peering för. Klicka på användare b när den visas i listan.
 9. Klicka på **Spara**.
@@ -186,7 +186,7 @@ I den här självstudien används olika konton för varje prenumeration. Om du a
 1. Installera den senaste versionen av PowerShell [Azure](https://www.powershellgallery.com/packages/Azure) -och [AZ](https://www.powershellgallery.com/packages/Az) -modulerna. Om du inte har använt Azure PowerShell kan du läsa [Översikt över Azure PowerShell](/powershell/azure/?toc=%2fazure%2fvirtual-network%2ftoc.json).
 2. Starta en PowerShell-session.
 3. I PowerShell loggar du in på användare b-prenumerationen som användare b genom att ange `Add-AzureAccount` kommandot. Det konto som du loggar in med måste ha de behörigheter som krävs för att skapa en virtuell nätverks-peering. En lista över behörigheter finns i [behörigheter för virtuella nätverks-peering](virtual-network-manage-peering.md#permissions).
-4. Om du vill skapa ett virtuellt nätverk (klassiskt) med PowerShell måste du skapa en ny eller ändra en befintlig nätverks konfigurations fil. Lär dig hur du [exporterar, uppdaterar och importerar filer för nätverks konfiguration](virtual-networks-using-network-configuration-file.md). Filen bör innehålla följande **VirtualNetworkSite** -element för det virtuella nätverk som används i den här självstudien:
+4. Om du vill skapa ett virtuellt nätverk (klassiskt) med PowerShell måste du skapa en ny eller ändra en befintlig nätverks konfigurations fil. Lär dig hur du [exporterar, uppdaterar och importerar filer för nätverks konfiguration](/previous-versions/azure/virtual-network/virtual-networks-using-network-configuration-file). Filen bör innehålla följande **VirtualNetworkSite** -element för det virtuella nätverk som används i den här självstudien:
 
     ```xml
     <VirtualNetworkSite name="myVnetB" Location="East US">
@@ -274,11 +274,11 @@ När du är klar med den här självstudien kanske du vill ta bort de resurser s
 
 ### <a name="azure-portal"></a><a name="delete-portal"></a>Azure Portal
 
-1. Skriv **myResourceGroupA**i rutan Portal Sök. Klicka på **myResourceGroupA**i Sök resultaten.
+1. Skriv **myResourceGroupA** i rutan Portal Sök. Klicka på **myResourceGroupA** i Sök resultaten.
 2. Klicka på ikonen **ta bort** på bladet **myResourceGroupA** .
-3. Bekräfta borttagningen genom att ange **myResourceGroupA**i rutan **Skriv resurs gruppens namn** och klicka på **ta bort**.
+3. Bekräfta borttagningen genom att ange **myResourceGroupA** i rutan **Skriv resurs gruppens namn** och klicka på **ta bort**.
 4. I rutan **Sök resurser** överst i portalen skriver du *myVnetB*. Klicka på **myVnetB** när den visas i Sök resultaten. Ett blad visas för det virtuella **myVnetB** -nätverket.
-5. Klicka på **ta bort**på bladet **myVnetB** .
+5. Klicka på **ta bort** på bladet **myVnetB** .
 6. Bekräfta borttagningen genom att klicka på **Ja** i rutan **ta bort virtuellt nätverk** .
 
 ### <a name="azure-cli"></a><a name="delete-cli"></a>Azure CLI
@@ -305,7 +305,7 @@ När du är klar med den här självstudien kanske du vill ta bort de resurser s
    Remove-AzResourceGroup -Name myResourceGroupA -Force
    ```
 
-2. Om du vill ta bort det virtuella nätverket (klassisk) med PowerShell måste du ändra en befintlig nätverks konfigurations fil. Lär dig hur du [exporterar, uppdaterar och importerar filer för nätverks konfiguration](virtual-networks-using-network-configuration-file.md). Ta bort följande VirtualNetworkSite-element för det virtuella nätverk som används i den här självstudien:
+2. Om du vill ta bort det virtuella nätverket (klassisk) med PowerShell måste du ändra en befintlig nätverks konfigurations fil. Lär dig hur du [exporterar, uppdaterar och importerar filer för nätverks konfiguration](/previous-versions/azure/virtual-network/virtual-networks-using-network-configuration-file). Ta bort följande VirtualNetworkSite-element för det virtuella nätverk som används i den här självstudien:
 
    ```xml
    <VirtualNetworkSite name="myVnetB" Location="East US">

@@ -6,21 +6,21 @@ ms.service: virtual-network
 ms.topic: how-to
 ms.date: 08/26/2019
 ms.author: allensu
-ms.openlocfilehash: ed3da649ba65484a79b42ba5bb45431839e123d4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0a80c731e4245b1a295364e5b8c87f90290f7f74
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84711450"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223316"
 ---
 # <a name="move-an-azure-virtual-network-to-another-region-by-using-the-azure-portal"></a>Flytta ett virtuellt Azure-nätverk till en annan region med hjälp av Azure Portal
 
 Det finns olika scenarier för att flytta ett befintligt virtuellt Azure-nätverk från en region till en annan. Du kanske till exempel vill skapa ett virtuellt nätverk med samma konfiguration för testning och tillgänglighet som ditt befintliga virtuella nätverk. Eller så kanske du vill flytta ett virtuellt produktions nätverk till en annan region som en del av Disaster Recovery-planeringen.
 
-Du kan använda en Azure Resource Manager-mall för att slutföra flyttningen av det virtuella nätverket till en annan region. Du gör detta genom att exportera det virtuella nätverket till en mall, ändra parametrarna för att matcha mål regionen och sedan distribuera mallen till den nya regionen. Mer information om Resource Manager-mallar finns i [snabb start: skapa och distribuera Azure Resource Manager mallar med hjälp av Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal).
+Du kan använda en Azure Resource Manager-mall för att slutföra flyttningen av det virtuella nätverket till en annan region. Du gör detta genom att exportera det virtuella nätverket till en mall, ändra parametrarna för att matcha mål regionen och sedan distribuera mallen till den nya regionen. Mer information om Resource Manager-mallar finns i [snabb start: skapa och distribuera Azure Resource Manager mallar med hjälp av Azure Portal](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md).
 
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - Se till att ditt virtuella nätverk finns i den Azure-region som du vill flytta från.
 
@@ -32,7 +32,7 @@ Du kan använda en Azure Resource Manager-mall för att slutföra flyttningen av
 
 - Kontrol lera att din Azure-prenumeration låter dig skapa virtuella nätverk i mål regionen. Kontakta supporten om du vill aktivera den begärda kvoten.
 
-- Kontrol lera att din prenumeration har tillräckligt med resurser för att kunna lägga till virtuella nätverk för den här processen. Läs mer i dokumentationen om [Azure-prenumeration och tjänstbegränsningar, kvoter och krav](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits).
+- Kontrol lera att din prenumeration har tillräckligt med resurser för att kunna lägga till virtuella nätverk för den här processen. Läs mer i dokumentationen om [Azure-prenumeration och tjänstbegränsningar, kvoter och krav](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits).
 
 
 ## <a name="prepare-for-the-move"></a>Förbered för flytt
@@ -180,13 +180,13 @@ Så här exporterar du det virtuella nätverket och distribuerar det virtuella m
 
 1. Om du vill välja den prenumeration där det virtuella mål nätverket ska distribueras väljer du **grundläggande**  >  **prenumeration**.
 
-1. Välj resurs gruppen **grundläggande**om du vill välja resurs grupp där det virtuella mål nätverket ska distribueras  >  **Resource group**. 
+1. Välj resurs gruppen **grundläggande** om du vill välja resurs grupp där det virtuella mål nätverket ska distribueras  >  . 
 
     Om du behöver skapa en ny resurs grupp för det virtuella mål nätverket väljer du **Skapa ny**. Kontrol lera att namnet inte är detsamma som käll resurs gruppens namn i det befintliga virtuella nätverket.
 
 1. Kontrol lera att **grundläggande**  >  **platser** är inställt på den mål plats där du vill att det virtuella nätverket ska distribueras.
 
-1. Under **Inställningar**kontrollerar du att namnet stämmer överens med det namn som du angav tidigare i parameter redigeraren.
+1. Under **Inställningar** kontrollerar du att namnet stämmer överens med det namn som du angav tidigare i parameter redigeraren.
 
 1. Markera kryss rutan **allmänna** villkor.
 
@@ -196,18 +196,18 @@ Så här exporterar du det virtuella nätverket och distribuerar det virtuella m
 
 Om du vill ta bort det virtuella mål nätverket tar du bort resurs gruppen som innehåller det virtuella mål nätverket. Så här gör du:
 1. På instrument panelen Azure Portal väljer du resurs gruppen.
-1. Klicka på **ta bort**överst i **översikts** fönstret.
+1. Klicka på **ta bort** överst i **översikts** fönstret.
 
 ## <a name="clean-up"></a>Rensa
 
 Om du vill genomföra ändringarna och slutföra den virtuella nätverks flyttningen tar du bort det virtuella käll nätverket eller resurs gruppen. Så här gör du:
 1. På instrument panelen Azure Portal väljer du det virtuella nätverket eller resurs gruppen.
-1. Välj **ta bort**överst i varje fönster.
+1. Välj **ta bort** överst i varje fönster.
 
 ## <a name="next-steps"></a>Nästa steg
 
 I den här självstudien har du flyttat ett virtuellt Azure-nätverk från en region till en annan med hjälp av Azure Portal och sedan rensade de onödiga käll resurserna. Mer information om hur du flyttar resurser mellan regioner och haveri beredskap i Azure finns i:
 
 
-- [Flytta resurser till en ny resursgrupp eller prenumeration](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)
-- [Flytta virtuella Azure-datorer till en annan region](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-migrate)
+- [Flytta resurser till en ny resursgrupp eller prenumeration](../azure-resource-manager/management/move-resource-group-and-subscription.md)
+- [Flytta virtuella Azure-datorer till en annan region](../site-recovery/azure-to-azure-tutorial-migrate.md)

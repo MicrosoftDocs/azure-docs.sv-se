@@ -16,22 +16,22 @@ ms.workload: infrastructure-services
 ms.date: 9/18/2018
 ms.author: aanandr
 ms.custom: ''
-ms.openlocfilehash: 09a0574666441138c143932e843080e8745f1b40
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b95b3cfdf8fea6e31015d945566803569b4ba064
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87289597"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222929"
 ---
 # <a name="deploy-the-azure-virtual-network-container-network-interface-plug-in"></a>Distribuera plugin-programmet Azure Virtual Network CNI
 
-Plugin-programmet Azure Virtual Network CNI installerar en virtuell Azure-dator och tillhandahåller funktioner för virtuella nätverk i Kubernetes-poddar och Docker-containrar. Du kan läsa mer om plugin-programmet i [Enable containers to use Azure Virtual Network capabilities](container-networking-overview.md) (Aktivera Azure Virtual Network-funktioner i containrar). Du kan också använda plugin-programmet med Azure Kubernetes Service (AKS) genom att välja alternativet [Advanced Networking](../aks/networking-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (Avancerat nätverk). Om du gör det placeras AKS-containrar automatiskt i ett virtuella nätverk.
+Plugin-programmet Azure Virtual Network CNI installerar en virtuell Azure-dator och tillhandahåller funktioner för virtuella nätverk i Kubernetes-poddar och Docker-containrar. Du kan läsa mer om plugin-programmet i [Enable containers to use Azure Virtual Network capabilities](container-networking-overview.md) (Aktivera Azure Virtual Network-funktioner i containrar). Du kan också använda plugin-programmet med Azure Kubernetes Service (AKS) genom att välja alternativet [Advanced Networking](../aks/configure-azure-cni.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (Avancerat nätverk). Om du gör det placeras AKS-containrar automatiskt i ett virtuella nätverk.
 
 ## <a name="deploy-plug-in-for-acs-engine-kubernetes-cluster"></a>Distribuera plugin-program för ACS-Engine Kubernetes-kluster
 
 ACS-Engine distribuerar ett Kubernetes-kluster med en Azure Resource Manager-mall. Klusterkonfigurationen anges i en JSON-fil som överförs till verktyget när mallen skapas. Läs mer om hela listan med klusterinställningar som stöds och beskrivningar av dessa i [Microsoft Azure Container Service Engine - Cluster Definition](https://github.com/Azure/acs-engine/blob/master/docs/clusterdefinition.md). Plugin-programmet är standardplugin-program för nätverk för de kluster som skapas med ACS-Engine. Följande inställningar för nätverkskonfiguration är viktiga när du konfigurerar plugin-programmet:
 
-  | Inställningen                              | Beskrivning                                                                                                           |
+  | Inställning                              | Beskrivning                                                                                                           |
   |--------------------------------------|------------------------------------------------------------------------------------------------------                 |
   | firstConsecutiveStaticIP             | IP-adressen som har allokerats till den överordnade noden. Det här är en obligatorisk inställning.                                     |
   | clusterSubnet under kubernetesConfig | CIDR för det virtuella nätverkets undernät där klustret distribueras, och från vilket IP-adresser tilldelas till poddar   |
@@ -95,10 +95,10 @@ Utför följande steg för att installera plugin-programmet på varje virtuell A
 1. [Hämta och installera plugin-programmet](#download-and-install-the-plug-in).
 2. Förallokera en IP-adresspool för virtuellt nätverk på alla virtuella datorer från vilka IP-adresser ska tilldelas till poddar. Varje virtuell Azure-dator har en primär privat IP-adress i varje nätverksgränssnitt. Adresserna i IP-adresspoolen för poddar läggs till som sekundära adresser (*ipconfigs*) i nätverksgränssnittet med ett av följande alternativ:
 
-   - **CLI**: [tilldela flera IP-adresser med hjälp av Azure CLI](virtual-network-multiple-ip-addresses-cli.md)
-   - **PowerShell**: [tilldela flera IP-adresser med hjälp av PowerShell](virtual-network-multiple-ip-addresses-powershell.md)
-   - **Portal**: [tilldela flera IP-adresser med hjälp av Azure Portal](virtual-network-multiple-ip-addresses-portal.md)
-   - **Azure Resource Manager mall**: [tilldela flera IP-adresser med hjälp av mallar](virtual-network-multiple-ip-addresses-template.md)
+   - **CLI**: [Tilldela flera IP-adresser med Azure CLI](virtual-network-multiple-ip-addresses-cli.md)
+   - **PowerShell**: [Tilldela flera IP-adresser med PowerShell](virtual-network-multiple-ip-addresses-powershell.md)
+   - **CLI**: [Tilldela flera IP-adresser med Azure-portalen](virtual-network-multiple-ip-addresses-portal.md)
+   - **Azure Resource Manager-mall**: [Tilldela flera IP-adresser med mallar](./template-samples.md)
 
    Se till att du lägger till tillräckligt med IP-adresser för alla poddar som du tänker ha på den virtuella datorn.
 
@@ -106,7 +106,7 @@ Utför följande steg för att installera plugin-programmet på varje virtuell A
 4. Om du vill att poddarna ska ha åtkomst till Internet lägger du till följande *iptables*-regel i din Internettrafik från virtuella Linux-datorer till käll-NAT. I följande exempel är det angivna IP-intervallet 10.0.0.0/8.
 
    ```bash
-   iptables -t nat -A POSTROUTING -m iprange ! --dst-range 168.63.129.16 -m
+   iptables -t nat -A POSTROUTING -m iprange ! --dst-range 168.63.129.16 -m
    addrtype ! --dst-type local ! -d 10.0.0.0/8 -j MASQUERADE
    ```
 
@@ -157,10 +157,10 @@ CNI-nätverkskonfigurationsfilen beskrivs i JSON-format. Den finns som standard 
 
 #### <a name="settings-explanation"></a>Förklaring till inställningar
 
-- **cniVersion**: Azure Virtual Network cni-plugin-program stöder versioner 0.3.0 och 0.3.1 i [cni-specifikationen](https://github.com/containernetworking/cni/blob/master/SPEC.md).
+- **cniVersion**: Azure Virtual Network CNI-plugin-program stöder version 0.3.0 och 0.3.1 av [CNI spec](https://github.com/containernetworking/cni/blob/master/SPEC.md).
 - **name**: Namnet på nätverket. Den här egenskapen kan anges till ett unikt värde.
 - **type**: Namnet på nätverksplugin-programmet. Ange *azure-vnet*.
-- **mode**: Funktionsläge. Det här fältet är valfritt. Det enda läge som stöds är ”bridge”. Mer information finns i [operativa lägen](https://github.com/Azure/azure-container-networking/blob/master/docs/network.md).
+- **mode**: Funktionsläge. Det här fältet är valfritt. Det enda läge som stöds är ”bridge”. Mer information finns i [funktionslägen](https://github.com/Azure/azure-container-networking/blob/master/docs/network.md).
 - **bridge**: Namnet på bryggan som ska användas för att ansluta containrar till ett virtuellt nätverk. Det här fältet är valfritt. Om fältet utelämnas väljer plugin-programmet automatiskt ett unikt namn, baserat på huvudgränssnittsindex.
 - **ipam type**: Namnet på IPAM-plugin-programmet. Ange alltid *azure-vnet-ipam*.
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: allensu
-ms.openlocfilehash: 62c1b323899f03a043904f4b10d5fe3bb551e0f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d4ef8e6207d53a192b19f8343a60093e82368fa6
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91441770"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223388"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources"></a>Utforma virtuella nätverk med NAT-gateway-resurser
 
@@ -60,7 +60,7 @@ I följande diagram visas skrivbara referenser mellan de olika Azure Resource Ma
 
 NAT rekommenderas för de flesta arbets belastningar om du inte har ett speciellt beroende på [poolbaserade Load Balancer utgående anslutningar](../load-balancer/load-balancer-outbound-connections.md).  
 
-Du kan migrera från vanliga scenarier för belastnings utjämning, inklusive [utgående regler](../load-balancer/load-balancer-outbound-rules-overview.md), till NAT-gateway. För att migrera, flytta resurserna för offentliga IP-adresser och offentliga IP-adresser från belastningsutjämnare till NAT-gateway. Nya IP-adresser för NAT gateway krävs inte. Standard resurser för offentliga IP-adresser och resurser för offentliga IP-prefix kan återanvändas så länge som summan inte överstiger 16 IP-adresser. Planera för migrering med avbrott i tjänsten i åtanke under över gången.  Du kan minimera avbrottet genom att automatisera processen. Testa migreringen i en mellanlagrings miljö först.  Under över gången påverkas inte inkommande ursprungliga flöden.
+Du kan migrera från vanliga scenarier för belastnings utjämning, inklusive [utgående regler](../load-balancer/load-balancer-outbound-connections.md#outboundrules), till NAT-gateway. För att migrera, flytta resurserna för offentliga IP-adresser och offentliga IP-adresser från belastningsutjämnare till NAT-gateway. Nya IP-adresser för NAT gateway krävs inte. Standard resurser för offentliga IP-adresser och resurser för offentliga IP-prefix kan återanvändas så länge som summan inte överstiger 16 IP-adresser. Planera för migrering med avbrott i tjänsten i åtanke under över gången.  Du kan minimera avbrottet genom att automatisera processen. Testa migreringen i en mellanlagrings miljö först.  Under över gången påverkas inte inkommande ursprungliga flöden.
 
 
 Följande exempel är ett kodfragment från en Azure Resource Manager-mall.  Den här mallen distribuerar flera resurser, inklusive en NAT-gateway.  Mallen har följande parametrar i det här exemplet:
@@ -135,8 +135,8 @@ Det enda Internet-utgående scenariot som tillhandahålls av NAT-gateway kan ut�
 
 | Riktning | Resurs |
 |:---:|:---:|
-| Inbound (Inkommande) | Virtuell dator med offentlig IP på instans nivå |
-| Outbound (Utgående) | NAT Gateway |
+| Inkommande | Virtuell dator med offentlig IP på instans nivå |
+| Utgående | NAT Gateway |
 
 Den virtuella datorn kommer att använda NAT-gateway för utgående trafik.  Inkommande ursprungligt kommer inte att påverkas.
 
@@ -150,8 +150,8 @@ Den virtuella datorn kommer att använda NAT-gateway för utgående trafik.  Ink
 
 | Riktning | Resurs |
 |:---:|:---:|
-| Inbound (Inkommande) | offentlig Load Balancer |
-| Outbound (Utgående) | NAT Gateway |
+| Inkommande | offentlig Load Balancer |
+| Utgående | NAT Gateway |
 
 Eventuell utgående konfiguration från en belastnings Utjämnings regel eller utgående regler ersätts av NAT-gatewayen.  Inkommande ursprungligt kommer inte att påverkas.
 
@@ -165,8 +165,8 @@ Eventuell utgående konfiguration från en belastnings Utjämnings regel eller u
 
 | Riktning | Resurs |
 |:---:|:---:|
-| Inbound (Inkommande) | Virtuell dator med offentlig IP på instans nivå och offentlig Load Balancer |
-| Outbound (Utgående) | NAT Gateway |
+| Inkommande | Virtuell dator med offentlig IP på instans nivå och offentlig Load Balancer |
+| Utgående | NAT Gateway |
 
 Eventuell utgående konfiguration från en belastnings Utjämnings regel eller utgående regler ersätts av NAT-gatewayen.  Den virtuella datorn kommer också att använda NAT-gateway för utgående trafik.  Inkommande ursprungligt kommer inte att påverkas.
 
@@ -230,13 +230,13 @@ Ett zonindelade Promise-does't finns när a) zonen i en virtuell dator instans o
 
 Varje NAT-gateway kan ge upp till 50 Gbit/s genom strömning. Du kan dela upp dina distributioner i flera undernät och tilldela varje undernät eller grupper med undernät en NAT-gateway för att skala ut.
 
-Varje NAT-gateway har stöd för 64 000-flöden för TCP-respektive UDP per tilldelad utgående IP-adress.  Läs följande avsnitt om översättning av käll nätverks adresser (SNAT) för information och [fel söknings artikel](https://docs.microsoft.com/azure/virtual-network/troubleshoot-nat) för en detaljerad vägledning om problem lösning.
+Varje NAT-gateway har stöd för 64 000-flöden för TCP-respektive UDP per tilldelad utgående IP-adress.  Läs följande avsnitt om översättning av käll nätverks adresser (SNAT) för information och [fel söknings artikel](./troubleshoot-nat.md) för en detaljerad vägledning om problem lösning.
 
 ## <a name="source-network-address-translation"></a>Käll nätverks adress Översättning
 
 Med käll Network Address Translation (SNAT) skrivs källan för ett flöde om till härstamma från en annan IP-adress.  Resurser för NAT-gateway använder en variant av SNAT som vanligt vis kallas port adress översättning (PAT). PAT skriver om käll-och käll porten. Med SNAT finns det ingen fast relation mellan antalet privata adresser och deras översatta offentliga adresser.  
 
-### <a name="fundamentals"></a>Grunderna
+### <a name="fundamentals"></a>Grunder
 
 Nu ska vi titta på ett exempel på fyra flöden för att förklara det grundläggande konceptet.  NAT-gatewayen använder offentliga IP-65.52.1.1 och den virtuella datorn ansluter till 65.52.0.1.
 
@@ -264,7 +264,7 @@ NAT-gatewayer autentiseringsuppsättningarna åter användnings käll port (SNAT
 |:---:|:---:|:---:|
 | 4 | 192.168.0.16:4285 | 65.52.0.2:80 |
 
-En NAT-gateway kommer troligen att översätta flöde 4 till en port som även kan användas för andra mål.  Se [skalning](https://docs.microsoft.com/azure/virtual-network/nat-gateway-resource#scaling) för ytterligare en diskussion om hur du ändrar din IP-adress.
+En NAT-gateway kommer troligen att översätta flöde 4 till en port som även kan användas för andra mål.  Se [skalning](#scaling) för ytterligare en diskussion om hur du ändrar din IP-adress.
 
 | Flöden | Käll tupel | SNAT'ed-käll tupel | Mål tupel | 
 |:---:|:---:|:---:|:---:|
@@ -307,7 +307,7 @@ NAT gateway-resurser autentiseringsuppsättningarna åter användnings källa (S
 
 SNAT-portar till olika destinationer kommer förmodligen att återanvändas när det är möjligt. Det går inte att utföra flöden och som metoder för att fastställa SNAT-portar.  
 
-Se [viktigare för SNAT](https://docs.microsoft.com/azure/virtual-network/nat-gateway-resource#source-network-address-translation) till exempel.
+Se [viktigare för SNAT](#source-network-address-translation) till exempel.
 
 
 ### <a name="protocols"></a>Protokoll
@@ -359,10 +359,10 @@ Vi vill veta hur vi kan förbättra tjänsten. Saknas en funktion? Gör ditt är
   - [Portal](./quickstart-create-nat-gateway-portal.md)
   - [Mall](./quickstart-create-nat-gateway-template.md)
 * Lär dig mer om resurs-API för NAT-gateway
-  - [REST-API](https://docs.microsoft.com/rest/api/virtualnetwork/natgateways)
-  - [Azure CLI](https://docs.microsoft.com/cli/azure/network/nat/gateway)
-  - [PowerShell](https://docs.microsoft.com/powershell/module/az.network/new-aznatgateway)
+  - [REST-API](/rest/api/virtualnetwork/natgateways)
+  - [Azure CLI](/cli/azure/network/nat/gateway)
+  - [PowerShell](/powershell/module/az.network/new-aznatgateway)
 * Lär dig mer om [tillgänglighets zoner](../availability-zones/az-overview.md).
-* Läs mer om [standard Load Balancer](../load-balancer/load-balancer-standard-overview.md).
+* Läs mer om [standard Load Balancer](../load-balancer/load-balancer-overview.md).
 * Lär dig mer om [tillgänglighets zoner och standard Load Balancer](../load-balancer/load-balancer-standard-availability-zones.md).
 * [Berätta för oss vad du ska bygga härnäst för Virtual Network NAT i UserVoice](https://aka.ms/natuservoice).

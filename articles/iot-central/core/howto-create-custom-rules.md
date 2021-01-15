@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc, devx-track-csharp
 manager: philmea
-ms.openlocfilehash: f6c8272f736e2f83b4d33f3d61ce83356aa40e5d
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: c79367ca8cf9e4a4884c829c675d794b2e734737
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92126764"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98220274"
 ---
 # <a name="extend-azure-iot-central-with-custom-rules-using-stream-analytics-azure-functions-and-sendgrid"></a>Utöka Azure IoT Central med anpassade regler med hjälp av Stream Analytics, Azure Functions och SendGrid
 
@@ -63,7 +63,7 @@ Använd [Azure Portal för att skapa ett Event Hubs-namnområde](https://portal.
 | Inställning | Värde |
 | ------- | ----- |
 | Namn    | Välj namn på namn område |
-| Prisnivå | Basic |
+| Prisnivå | Grundläggande |
 | Prenumeration | Din prenumeration |
 | Resursgrupp | DetectStoppedDevices |
 | Plats | USA, östra |
@@ -119,7 +119,7 @@ När du har skapat alla nödvändiga resurser ser **DetectStoppedDevices** -resu
 Du kan konfigurera ett IoT Central program för att kontinuerligt exportera telemetri till en Event Hub. I det här avsnittet skapar du en händelsehubben som tar emot telemetri från ditt IoT Central-program. Händelsehubben ger telemetri till din Stream Analytics jobb för bearbetning.
 
 1. I Azure Portal navigerar du till Event Hubs namn området och väljer **+ Event Hub**.
-1. Namnge Event Hub- **centralexport**och välj **skapa**.
+1. Namnge Event Hub- **centralexport** och välj **skapa**.
 
 Event Hubs namn området ser ut som på följande skärm bild:
 
@@ -130,7 +130,7 @@ Event Hubs namn området ser ut som på följande skärm bild:
 Din Function-app behöver en SendGrid API-nyckel för att skicka e-postmeddelanden. Så här skapar du en SendGrid API-nyckel:
 
 1. I Azure Portal navigerar du till ditt SendGrid-konto. Välj sedan **Hantera** för att komma åt ditt SendGrid-konto.
-1. I ditt SendGrid-konto väljer du **Inställningar**och sedan **API-nycklar**. Välj **skapa API-nyckel**:
+1. I ditt SendGrid-konto väljer du **Inställningar** och sedan **API-nycklar**. Välj **skapa API-nyckel**:
 
     ![Skapa SendGrid API-nyckel](media/howto-create-custom-rules/sendgrid-api-keys.png)
 
@@ -155,7 +155,7 @@ Portalen skapar en standard funktion som kallas **HttpTrigger1**:
 Om du vill skicka e-postmeddelanden med SendGrid måste du konfigurera bindningarna för din funktion på följande sätt:
 
 1. Välj **integrera**, Välj utdata **http ($Return)** och välj sedan **ta bort**.
-1. Välj **+ nya utdata**, Välj **SendGrid**och välj sedan **Välj**. Välj **Installera** för att installera SendGrid-tillägget.
+1. Välj **+ nya utdata**, Välj **SendGrid** och välj sedan **Välj**. Välj **Installera** för att installera SendGrid-tillägget.
 1. När installationen är klar väljer du **Använd funktions retur värde**. Lägg till en giltig **adress för att** ta emot e-postaviseringar.  Lägg till en giltig **från-adress** som ska användas som e-postavsändaren.
 1. Välj **ny** bredvid **SendGrid API Key app Setting**. Ange **SendGridAPIKey** som nyckel och den SendGrid API-nyckel som du antecknade tidigare som värde. Välj sedan **Skapa**.
 1. Välj **Spara** för att spara SendGrid-bindningarna för din funktion.
@@ -239,7 +239,7 @@ test-device-3    2019-05-02T14:24:28.919Z
 
 I den här lösningen används en Stream Analytics fråga för att identifiera när en enhet slutar skicka telemetri i mer än 120 sekunder. Frågan använder Telemetrin från händelsehubben som indatatyp. Jobbet skickar frågeresultaten till Function-appen. I det här avsnittet konfigurerar du Stream Analytics jobbet:
 
-1. I Azure Portal navigerar du till ditt Stream Analytics-jobb, under **jobb sto pol Ogin** väljer **indata**, väljer **+ Lägg till Stream-indata**och väljer sedan **Event Hub**.
+1. I Azure Portal navigerar du till ditt Stream Analytics-jobb, under **jobb sto pol Ogin** väljer **indata**, väljer **+ Lägg till Stream-indata** och väljer sedan **Event Hub**.
 1. Använd informationen i följande tabell för att konfigurera indata med händelsehubben som du skapade tidigare och välj sedan **Spara**:
 
     | Inställning | Värde |
@@ -249,7 +249,7 @@ I den här lösningen används en Stream Analytics fråga för att identifiera n
     | Namnområde för händelsehubb | Ditt Event Hub-namnområde |
     | Namn på händelsehubb | Använd befintlig- **centralexport** |
 
-1. Under **jobb sto pol Ogin**väljer du **utdata**, väljer **+ Lägg till**och väljer sedan **Azure Function**.
+1. Under **jobb sto pol Ogin** väljer du **utdata**, väljer **+ Lägg till** och väljer sedan **Azure Function**.
 1. Använd informationen i följande tabell för att konfigurera utdata och välj sedan **Spara**:
 
     | Inställning | Värde |
@@ -259,7 +259,7 @@ I den här lösningen används en Stream Analytics fråga för att identifiera n
     | Funktionsapp | Din Function-app |
     | Funktion  | HttpTrigger1 |
 
-1. Under **jobb sto pol Ogin**väljer du **fråga** och ersätter den befintliga frågan med följande SQL:
+1. Under **jobb sto pol Ogin** väljer du **fråga** och ersätter den befintliga frågan med följande SQL:
 
     ```sql
     with
@@ -309,7 +309,7 @@ I den här lösningen används en Stream Analytics fråga för att identifiera n
 
 På webbplatsen [Azure IoT Central Application Manager](https://aka.ms/iotcentral) navigerar du till det IoT Central program som du skapade från contoso-mallen. I det här avsnittet konfigurerar du programmet för att strömma Telemetrin från dess simulerade enheter till händelsehubben. Konfigurera exporten:
 
-1. Gå till sidan **data export** , Välj **+ ny**och sedan **Azure Event Hubs**.
+1. Gå till sidan **data export** , Välj **+ ny** och sedan **Azure Event Hubs**.
 1. Använd följande inställningar för att konfigurera exporten och välj sedan **Spara**:
 
     | Inställning | Värde |
@@ -319,7 +319,7 @@ På webbplatsen [Azure IoT Central Application Manager](https://aka.ms/iotcentra
     | Event Hubs-namnområde | Namnet på Event Hubs namn området |
     | Händelsehubb | centralexport |
     | Mått | På |
-    | Enheter | Av |
+    | Egenskaper | Av |
     | Enhetsmallar | Av |
 
 ![Konfiguration av kontinuerlig data export](media/howto-create-custom-rules/cde-configuration.png)

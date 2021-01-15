@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 11/03/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: dd5197f99f7187e21eb466bfa213f68a7638e24d
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 54001cde76bd89305eb77544c6e6858defda6096
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98045350"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222555"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>Hantera en graf med digitala dubbla med relationer
 
@@ -157,7 +157,7 @@ Här är konsol resultatet av programmet ovan:
 > [!TIP]
 > Det dubbla diagrammet är ett koncept för att skapa relationer mellan dubbla. Om du vill visa den visuella representationen av den dubbla grafen, se [*visualiserings*](how-to-manage-graph.md#visualization) avsnittet i den här artikeln. 
 
-### <a name="create-a-twin-graph-from-a-csv-file"></a>Skapa ett dubbel diagram från en CSV-fil
+## <a name="create-graph-from-a-csv-file"></a>Skapa graf från en CSV-fil
 
 I praktiska användnings fall kommer dubbla hierarkier ofta att skapas från data som lagras i en annan databas eller kanske i ett kalkyl blad eller en CSV-fil. I det här avsnittet visas hur du läser data från en CSV-fil och skapar ett sammanflätat diagram.
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
-ms.openlocfilehash: 9685c1739a00788a974c200ddabb8cc975696b62
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 75b62eb00b1a1a534be01f9f118b4d5066e44a37
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83587739"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222895"
 ---
 # <a name="troubleshoot-virtual-network-peering-issues"></a>Felsöka problem med peering i virtuella nätverk
 
@@ -36,8 +36,8 @@ Den här fel söknings guiden innehåller steg som hjälper dig att lösa de fle
 
 Använd metoderna i följande artiklar för att konfigurera peering för virtuella nätverk för de virtuella nätverk som finns i samma prenumeration:
 
-* Om de virtuella nätverken finns i *samma region*, se [skapa en peering](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-peering#create-a-peering).
-* Om de virtuella nätverken finns i *olika regioner*, se [peering för virtuella nätverk](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview). 
+* Om de virtuella nätverken finns i *samma region*, se [skapa en peering](./virtual-network-manage-peering.md#create-a-peering).
+* Om de virtuella nätverken finns i *olika regioner*, se [peering för virtuella nätverk](./virtual-network-peering-overview.md). 
 
 > [!Note]
 > Anslutningen fungerar inte över global peering för virtuella nätverk för följande resurser: 
@@ -52,11 +52,11 @@ Använd metoderna i följande artiklar för att konfigurera peering för virtuel
 > * Azure API Management (använder Basic ILB SKU)
 > * Azure Active Directory Domain Services (Azure AD DS) (använder Basic ILB SKU)
 
-Mer information finns i [krav och begränsningar](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview#requirements-and-constraints) för global peering.
+Mer information finns i [krav och begränsningar](./virtual-network-peering-overview.md#requirements-and-constraints) för global peering.
 
 ### <a name="the-virtual-networks-are-in-different-subscriptions-or-active-directory-tenants"></a>De virtuella nätverken finns i olika prenumerationer eller Active Directory klienter
 
-Om du vill konfigurera virtuell nätverks-peering för virtuella nätverk i olika prenumerationer eller Active Directory klienter, se [skapa peering i olika prenumerationer för Azure CLI](https://docs.microsoft.com/azure/virtual-network/create-peering-different-subscriptions#cli).
+Om du vill konfigurera virtuell nätverks-peering för virtuella nätverk i olika prenumerationer eller Active Directory klienter, se [skapa peering i olika prenumerationer för Azure CLI](./create-peering-different-subscriptions.md#cli).
 
 > [!Note]
 > Om du vill konfigurera nätverks-peering måste du ha behörighet som **nätverks deltagare** i båda prenumerationerna. Mer information finns i [peering-behörigheter](virtual-network-manage-peering.md#permissions).
@@ -67,11 +67,11 @@ Om du vill konfigurera virtuell nätverks-peering för virtuella nätverk i olik
 
 ### <a name="for-a-site-to-site-connection-or-an-expressroute-connection"></a>För en plats-till-plats-anslutning eller en ExpressRoute-anslutning
 
-Följ stegen i: [Konfigurera VPN gateway-överföring för virtuell nätverks-peering](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-peering-gateway-transit?toc=/azure/virtual-network/toc.json).
+Följ stegen i: [Konfigurera VPN gateway-överföring för virtuell nätverks-peering](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 ### <a name="for-point-to-site-connections"></a>För punkt-till-plats-anslutningar
 
-1. Följ stegen i: [Konfigurera VPN gateway-överföring för virtuell nätverks-peering](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-peering-gateway-transit?toc=/azure/virtual-network/toc.json).
+1. Följ stegen i: [Konfigurera VPN gateway-överföring för virtuell nätverks-peering](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 2. När peering av virtuella nätverk har upprättats eller ändrats, laddar du ned och installerar om punkt-till-plats-paketet så att punkt-till-plats-klienterna hämtar de uppdaterade vägarna till det virtuella nätverket eker.
 
 ## <a name="configure-virtual-network-peering-with-hub-spoke-topology-virtual-network"></a>Konfigurera peering för virtuellt nätverk med nav-eker-topologi för virtuella nätverk
@@ -84,12 +84,12 @@ Följ stegen i: [Konfigurera VPN gateway-överföring för virtuell nätverks-pe
 1. I det virtuella hubb nätverket konfigurerar du en virtuell nätverks installation (NVA).
 1. I de eker-virtuella nätverken har användardefinierade vägar med nästa hopp typ "virtuell nätverks installation" tillämpats.
 
-Mer information finns i [tjänst länkning](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview#service-chaining).
+Mer information finns i [tjänst länkning](./virtual-network-peering-overview.md#service-chaining).
 
 > [!Note]
 > Om du behöver hjälp med att konfigurera en NVA [kontaktar du NVA-leverantören](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines).
 
-Information om hur du felsöker NVA enhets konfiguration och routning finns i [problem med virtuella nätverks installationer i Azure](https://docs.microsoft.com/azure/virtual-network/virtual-network-troubleshoot-nva).
+Information om hur du felsöker NVA enhets konfiguration och routning finns i [problem med virtuella nätverks installationer i Azure](./virtual-network-troubleshoot-nva.md).
 
 ### <a name="the-virtual-networks-are-in-different-regions"></a>De virtuella nätverken finns i olika regioner
 
@@ -105,11 +105,11 @@ Information om hur du felsöker NVA enhets konfiguration och routning finns i [p
 * API Management (använder Basic ILB SKU)
 * Azure AD DS (använder Basic ILB SKU)
 
-Mer information om global peering krav och begränsningar finns i det [virtuella nätverkets peering](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview#requirements-and-constraints).
+Mer information om global peering krav och begränsningar finns i det [virtuella nätverkets peering](./virtual-network-peering-overview.md#requirements-and-constraints).
 
 ## <a name="troubleshoot-a-connectivity-issue-between-two-peered-virtual-networks"></a>Felsöka ett anslutnings problem mellan två peer-anslutna virtuella nätverk
 
-Logga in på [Azure Portal](https://portal.azure.com/) med ett konto som har de [roller och behörigheter](virtual-network-manage-peering.md#permissions)som krävs. Välj det virtuella nätverket, Välj **peering**och kontrol lera sedan fältet **status** . Vad är statusen?
+Logga in på [Azure Portal](https://portal.azure.com/) med ett konto som har de [roller och behörigheter](virtual-network-manage-peering.md#permissions)som krävs. Välj det virtuella nätverket, Välj **peering** och kontrol lera sedan fältet **status** . Vad är statusen?
 
 ### <a name="the-peering-status-is-connected"></a>Peering-statusen är "ansluten"
 
@@ -117,11 +117,11 @@ Så här felsöker du problemet:
 
 1. Kontrol lera flödena för nätverks trafik:
 
-   Använd [anslutnings fel sökning](https://docs.microsoft.com/azure/network-watcher/network-watcher-connectivity-overview) och [IP-flöde verifiera](https://docs.microsoft.com/azure/network-watcher/network-watcher-ip-flow-verify-overview) från den virtuella käll datorn till den virtuella mål datorn för att avgöra om det finns en NSG eller UDR som orsakar störningar i trafikflöden.
+   Använd [anslutnings fel sökning](../network-watcher/network-watcher-connectivity-overview.md) och [IP-flöde verifiera](../network-watcher/network-watcher-ip-flow-verify-overview.md) från den virtuella käll datorn till den virtuella mål datorn för att avgöra om det finns en NSG eller UDR som orsakar störningar i trafikflöden.
 
    Om du använder en brand vägg eller en NVA: 
    1. Dokumentera UDR-parametrarna så att du kan återställa dem när det här steget har slutförts.
-   2. Ta bort UDR från det virtuella käll-eller NIC-nätverket som pekar på NVA som nästa hopp. Verifiera anslutningen från den virtuella käll datorn direkt till målet som kringgår NVA. Om det här steget inte fungerar går du till [fel sökaren för NVA](https://docs.microsoft.com/azure/virtual-network/virtual-network-troubleshoot-nva).
+   2. Ta bort UDR från det virtuella käll-eller NIC-nätverket som pekar på NVA som nästa hopp. Verifiera anslutningen från den virtuella käll datorn direkt till målet som kringgår NVA. Om det här steget inte fungerar går du till [fel sökaren för NVA](./virtual-network-troubleshoot-nva.md).
 
 2. Ta en nätverks spårning: 
    1. Starta en nätverks spårning på den virtuella mål datorn. För Windows kan du använda **netsh**. För Linux använder du **TCPDump**.
@@ -145,7 +145,7 @@ Så här felsöker du problemet:
    > * API Management (använder Basic ILB SKU)
    > * Azure AD DS (använder Basic ILB SKU)
 
-Mer information finns i [krav och begränsningar](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview#requirements-and-constraints) för global peering.
+Mer information finns i [krav och begränsningar](./virtual-network-peering-overview.md#requirements-and-constraints) för global peering.
 
 ### <a name="the-peering-status-is-disconnected"></a>Peering-statusen är "frånkopplad"
 
@@ -159,8 +159,8 @@ Använder nätverket en NVA-eller VPN-gateway från tredje part?
 
 Information om hur du felsöker anslutnings problem som påverkar en NVA eller VPN-gateway från tredje part finns i följande artiklar:
 
-* [NVA-felsökare](https://docs.microsoft.com/azure/virtual-network/virtual-network-troubleshoot-nva)
-* [Tjänstlänkning](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview#service-chaining)
+* [NVA-felsökare](./virtual-network-troubleshoot-nva.md)
+* [Tjänstlänkning](./virtual-network-peering-overview.md#service-chaining)
 
 ### <a name="my-network-does-not-use-a-third-party-nva-or-vpn-gateway"></a>Mitt nätverk använder inte någon tredjeparts-NVA eller VPN-gateway
 
@@ -190,7 +190,7 @@ För punkt-till-plats-anslutningar:
 
 Ett hubb nätverk måste innehålla en NVA. Konfigurera UDR i ekrar som har en NVA angiven som nästa hopp och aktivera **Tillåt vidarebefordrad trafik** i det virtuella hubb nätverket.
 
-Mer information finns i [tjänst länkning](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview#service-chaining)och diskutera dessa krav med den [NVA-leverantör](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines) som du väljer.
+Mer information finns i [tjänst länkning](./virtual-network-peering-overview.md#service-chaining)och diskutera dessa krav med den [NVA-leverantör](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines) som du väljer.
 
 ## <a name="troubleshoot-a-hub-spoke-network-connectivity-issue-between-spoke-virtual-networks-in-different-regions"></a>Felsöka ett problem med nätverks anslutningen mellan ekrar mellan ekrar och virtuella nätverk i olika regioner
 
@@ -206,26 +206,26 @@ Mer information finns i [tjänst länkning](https://docs.microsoft.com/azure/vir
 * API Management (använder Basic ILB SKU)
 * Azure AD DS (använder Basic ILB SKU)
 
-Mer information finns i [krav och begränsningar](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview#requirements-and-constraints) för global peering och [olika VPN-topologier](https://blogs.msdn.microsoft.com/igorpag/2016/02/11/hubspoke-daisy-chain-and-full-mesh-vnet-topologies-in-azure-arm-v2/).
+Mer information finns i [krav och begränsningar](./virtual-network-peering-overview.md#requirements-and-constraints) för global peering och [olika VPN-topologier](/archive/blogs/igorpag/hubspoke-daisy-chain-and-full-mesh-vnet-topologies-in-azure-arm-v2).
 
 ## <a name="troubleshoot-a-hub-spoke-network-connectivity-issue-between-a-web-app-and-the-spoke-virtual-network"></a>Felsöka ett problem med nätverks anslutningen från hubben mellan en webbapp och det virtuella nätverket i eker
 
 Så här felsöker du problemet:
 
-1. Logga in på Azure Portal. 
-1. I webbappen väljer du **nätverk**och väljer sedan VNet- **integrering**.
+1. Logga in på Azure-portalen. 
+1. I webbappen väljer du **nätverk** och väljer sedan VNet- **integrering**.
 1. Kontrol lera om du kan se det virtuella fjärrnätverket. Ange adress utrymmet för det virtuella fjärrnätverket manuellt (**Synkronisera nätverk** och **Lägg till vägar**).
 
 Mer information finns i följande artiklar:
 
-* [Integrera en app med ett virtuellt Azure-nätverk](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet)
-* [Om VPN-routning från punkt till plats](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-point-to-site-routing)
+* [Integrera en app med ett virtuellt Azure-nätverk](../app-service/web-sites-integrate-with-vnet.md)
+* [Om VPN-routning från punkt till plats](../vpn-gateway/vpn-gateway-about-point-to-site-routing.md)
 
 ## <a name="troubleshoot-a-virtual-network-peering-configuration-error-message"></a>Felsöka ett fel meddelande om konfiguration av virtuellt nätverk peering 
 
 ### <a name="current-tenant-tenant-id-isnt-authorized-to-access-linked-subscription"></a>Den aktuella klienten har `<TENANT ID>` inte åtkomst behörighet till den länkade prenumerationen
 
-Lös problemet genom att se [skapa peering – Azure CLI](https://docs.microsoft.com/azure/virtual-network/create-peering-different-subscriptions#cli).
+Lös problemet genom att se [skapa peering – Azure CLI](./create-peering-different-subscriptions.md#cli).
 
 ### <a name="not-connected"></a>Inte ansluten
 
@@ -233,7 +233,7 @@ Lös problemet genom att ta bort peering från båda de virtuella nätverken och
 
 ### <a name="failed-to-peer-a-databricks-virtual-network"></a>Det gick inte att peer-koppla ett Databricks virtuellt nätverk
 
-Lös problemet genom att konfigurera det virtuella nätverkets peering under **Azure Databricks**och ange det virtuella mål nätverket med hjälp av **resurs-ID**. Mer information finns i [peer a Databricks Virtual Network to a Remote Virtual Network](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-peering.html#id2).
+Lös problemet genom att konfigurera det virtuella nätverkets peering under **Azure Databricks** och ange det virtuella mål nätverket med hjälp av **resurs-ID**. Mer information finns i [peer a Databricks Virtual Network to a Remote Virtual Network](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-peering.html#id2).
 
 ### <a name="the-remote-virtual-network-lacks-a-gateway"></a>Det virtuella fjärrnätverket saknar Gateway
 
@@ -246,4 +246,4 @@ Det finns två sätt att lösa problemet:
 
 ## <a name="next-steps"></a>Nästa steg
 
-* [Felsökning av anslutningsproblem mellan virtuella Azure-datorer](https://docs.microsoft.com/azure/virtual-network/virtual-network-troubleshoot-connectivity-problem-between-vms)
+* [Felsökning av anslutningsproblem mellan virtuella Azure-datorer](./virtual-network-troubleshoot-connectivity-problem-between-vms.md)

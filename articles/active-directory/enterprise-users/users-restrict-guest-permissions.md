@@ -5,7 +5,7 @@ services: active-directory
 author: curtand
 ms.author: curtand
 manager: daveba
-ms.date: 12/03/2020
+ms.date: 01/14/2020
 ms.topic: how-to
 ms.service: active-directory
 ms.subservice: enterprise-users
@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e940c6eb2710ea43e756e4ea7956a39df9e0ce8
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: bf2d0d3335468147575eb53a99940866baa18375
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96575558"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222529"
 ---
 # <a name="restrict-guest-access-permissions-preview-in-azure-active-directory"></a>Begränsa åtkomst behörigheter för gäst (för hands version) i Azure Active Directory
 
@@ -139,18 +139,19 @@ Med stöd för vi betyder det att upplevelsen är som förväntat. Mer specifikt
 - Teams
 - Outlook (OWA)
 - SharePoint
+- Planner i Teams
+- Webb program för Planner
 
 ### <a name="services-currently-not-supported"></a>Tjänster stöds inte för närvarande
 
 Tjänsten utan aktuellt stöd kan ha kompatibilitetsproblem med den nya inställningen för gäst begränsning.
 
 - Formulär
-- Planner i Teams
-- Planner-app
+- Planner-mobilapp
 - Project
 - Yammer
 
-## <a name="frequently-asked-questions-faq"></a>Vanliga frågor och svar
+## <a name="frequently-asked-questions-faq"></a>Vanliga frågor och svar (FAQ)
 
 Fråga | Svar
 -------- | ------
@@ -158,7 +159,7 @@ Var gäller dessa behörigheter? | Dessa behörigheter för katalog nivå tillä
 Hur påverkar begränsade behörigheter vilka grupper gäster kan se? | Gäster kan inte räkna upp listan över grupper eller användare oavsett standard behörighet eller begränsad gäst behörighet. Gäster kan se grupper som de är medlemmar i i både Azure Portal och mina apps-portalen beroende på behörigheter:<li>**Standard behörigheter**: för att hitta de grupper som de är medlemmar av i Azure Portal måste gästen söka efter sitt objekt-ID i listan **alla användare** och sedan välja **grupper**. Här kan de se en lista över grupper som de är medlemmar i, inklusive alla grupp uppgifter, inklusive namn, e-post och så vidare. I portalen Mina appar kan de se en lista över grupper som de äger och grupper som de är medlemmar i.</li><li>**Begränsade gäst behörigheter**: i Azure Portal kan de fortfarande hitta listan över grupper som de är medlemmar i genom att söka efter deras objekt-ID i listan alla användare och sedan välja grupper. De kan bara se mycket begränsad information om gruppen, särskilt objekt-ID. I design är kolumnerna namn och e-post tomma och grupp typen känns inte igen. I portalen Mina appar kan de inte komma åt listan över grupper som de äger eller grupper som de är medlemmar i.</li><br>Mer detaljerad information om de katalog behörigheter som kommer från Graph API finns i [standard användar behörigheter](../fundamentals/users-default-permissions.md#member-and-guest-users).
 Vilka delar av portalen för Mina appar påverkar den här funktionen? | Grupp funktionen i portalen Mina appar kommer att respektera dessa nya behörigheter. Detta omfattar alla sökvägar för att Visa grupp listan och grupp medlemskap i Mina appar. Inga ändringar har gjorts i grupp panelens tillgänglighet. Grupp panelens tillgänglighet styrs fortfarande av den befintliga grupp inställningen i Azure Portal.
 Åsidosätter dessa behörigheter SharePoint-eller Microsoft Teams gäst inställningar? | Nej. De befintliga inställningarna styr fortfarande upplevelsen och åtkomsten i dessa program. Om du till exempel ser problem i SharePoint, dubbelklickar du på inställningarna för extern delning.
-Vilka är kända kompatibilitetsproblem i Planner och Yammer? | <li>Om behörigheterna har angetts till "begränsad" kommer gäster som loggats in i Planner-appen eller åtkomst till Planner i Microsoft team inte att kunna komma åt sina planer eller uppgifter.<li>När behörigheter har angetts till "begränsad" kommer gäster som loggats in på Yammer inte att kunna lämna gruppen.
+Vilka är kända kompatibilitetsproblem i Planner och Yammer? | <li>Om behörigheterna har angetts till "begränsad" kommer gäster som är inloggade i Planner-mobilappen inte att kunna komma åt sina planer eller aktiviteter.<li>Om behörigheterna har angetts till "begränsad" kan inte gäster som är inloggade i Yammer lämna gruppen.
 Kommer mina befintliga gäst behörigheter att ändras i min klient? | Inga ändringar har gjorts i de aktuella inställningarna. Vi bibehåller bakåtkompatibilitet med dina befintliga inställningar. Du bestämmer när du vill göra ändringar.
 Kommer de här behörigheterna att anges som standard? | Nej. De befintliga standard behörigheterna förblir oförändrade. Du kan också ange att behörigheterna ska vara mer restriktiva.
 Finns det några licens krav för den här funktionen? | Nej, det finns inga nya licensierings krav för den här funktionen.

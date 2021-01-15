@@ -5,14 +5,14 @@ services: iot-hub
 author: jlian
 ms.service: iot-fundamentals
 ms.topic: conceptual
-ms.date: 11/25/2020
+ms.date: 01/14/2020
 ms.author: jlian
-ms.openlocfilehash: f4438aebcb81d665a19a595ac7ade4fea27fc43f
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: e569cbe9030b2ac5a42bd99233b4fefc925a5662
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621016"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98220323"
 ---
 # <a name="transport-layer-security-tls-support-in-iot-hub"></a>Stöd för Transport Layer Security (TLS) i IoT Hub
 
@@ -46,9 +46,16 @@ För ytterligare säkerhet konfigurerar du IoT-hubbarna så att de *bara* tillå
 * USA, södra centrala
 * USA, västra 2
 * US Gov, Arizona
-* US Gov, Virginia
+* US Gov, Virginia (TLS 1.0/1.1-stöd är inte tillgängligt i den här regionen-TLS 1,2-tvång måste vara aktiverat eller så Miss lyckas skapande av IoT Hub)
 
-I detta syfte etablerar du en ny IoT Hub i någon av de regioner som stöds och anger `minTlsVersion` egenskapen till `1.2` i Azure Resource Manager mallens resurs specifikation för IoT Hub:
+Om du vill aktivera TLS 1,2-tvång följer du stegen i [skapa IoT Hub i Azure Portal](/.iot-hub-create-through-portal.md), förutom
+
+- Välj en **region** från ett i listan ovan.
+- Under **hantering-> Advanced-> Transport Layer Security (TLS)-> lägsta TLS-version** väljer du **1,2**. Den här inställningen visas bara för IoT Hub som skapats i en region som stöds.
+
+    :::image type="content" source="media/iot-hub-tls-12-enforcement.png" alt-text="Skärm bild som visar hur du aktiverar TLS 1,2-tvång när IoT Hub skapas":::
+
+Om du vill använda ARM-mall för att skapa en ny IoT Hub i någon av de regioner som stöds och ange `minTlsVersion` egenskapen till `1.2` i resurs specifikationen:
 
 ```json
 {

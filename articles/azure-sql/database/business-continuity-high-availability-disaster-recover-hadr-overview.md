@@ -13,12 +13,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 06/25/2019
-ms.openlocfilehash: eedc3dc1422d4eb6dcce80766077e8056f8509cf
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 7bd991bd709bb4be69325afe967d7e5600a9e1a4
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92678041"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222572"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Översikt över affärskontinuitet med Azure SQL Database
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -48,10 +48,10 @@ SQL Database och SQL-hanterad instans tillhandahåller också flera funktioner f
 
 - Med [temporära tabeller](../temporal-tables.md) kan du återställa radversioner från valfri tidpunkt.
 - [Inbyggda automatiserade säkerhets kopieringar](automated-backups-overview.md) och [tidpunkts återställning](recovery-using-backups.md#point-in-time-restore) gör att du kan återställa slutförda databaser till en viss tidpunkt inom den konfigurerade kvarhållningsperioden upp till 35 dagar.
-- Du kan [återställa en borttagen databas](recovery-using-backups.md#deleted-database-restore) till den tidpunkt då den togs bort om **servern inte har tagits bort** .
+- Du kan [återställa en borttagen databas](recovery-using-backups.md#deleted-database-restore) till den tidpunkt då den togs bort om **servern inte har tagits bort**.
 - [Långsiktig kvarhållning av säkerhets kopior](long-term-retention-overview.md) gör att du kan behålla säkerhets kopiorna upp till 10 år. Detta är en begränsad offentlig för hands version för SQL-hanterad instans
 - [Aktiv geo-replikering](active-geo-replication-overview.md) gör att du kan skapa läsbara repliker och manuellt redundansväxla till en replik i händelse av ett Data Center avbrott eller program uppgradering.
-- Med [gruppen automatisk redundans](auto-failover-group-overview.md#terminology-and-capabilities) kan programmet automatiskt återställas i händelse av ett Data Center avbrott.
+- [Gruppen automatisk redundans](auto-failover-group-overview.md#terminology-and-capabilities) gör att programmet kan återställas automatiskt i händelse av ett Data Center avbrott.
 
 ## <a name="recover-a-database-within-the-same-azure-region"></a>Återställ en databas inom samma Azure-region
 

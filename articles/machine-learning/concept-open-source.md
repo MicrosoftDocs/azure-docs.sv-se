@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 12/16/2020
-ms.openlocfilehash: d987d21700e5f19ad8228b08508e8da842cc39eb
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.date: 01/14/2020
+ms.openlocfilehash: 983e037376be48f497118b06cce8b23c430b1501
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97914118"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223082"
 ---
 # <a name="open-source-integration-with-azure-machine-learning-projects"></a>Integrering med öppen källkod med Azure Machine Learning projekt
 
@@ -42,11 +42,11 @@ Machine Learning-algoritmer med öppen källkod som kallas neurala-nätverk, en 
 
 Ramverk för djup inlärning med öppen källkod och instruktions guider är:
 
- *  [PyTorch](https://github.com/pytorch/pytorch): [träna en bild klassificerings modell för djup inlärning med hjälp av transfer Learning i PyTorch](how-to-train-pytorch.md) 
+ *  [PyTorch](https://github.com/pytorch/pytorch): [träna en bild klassificerings modell för djup inlärning med hjälp av transfer Learning](how-to-train-pytorch.md) 
  *  [TensorFlow](https://github.com/tensorflow/tensorflow): [identifiera handskrivna siffror med TensorFlow](how-to-train-tensorflow.md)
  *  [Keras](https://github.com/keras-team/keras): [Bygg ett neurala-nätverk för att analysera avbildningar med keras](how-to-train-keras.md)
 
-Utbildning en djup inlärnings modell från grunden kräver ofta stora mängder tid, data och beräknings resurser. Du kan använda en genväg till inlärnings processen med hjälp av transfer Learning. Överförings inlärning är en teknik som används för att lösa ett problem med ett annat men relaterat problem. Det innebär att du kan använda en befintlig modell som kan användas. Mer information om överförings utbildning finns i [artikeln om djup inlärning](concept-deep-learning-vs-machine-learning.md#transfer-learning) .
+Utbildning en djup inlärnings modell från grunden kräver ofta stora mängder tid, data och beräknings resurser. Du kan använda en genväg till inlärnings processen med hjälp av transfer Learning. Överförings inlärning är en teknik som används för att lösa ett problem med ett annat men relaterat problem. Det innebär att du kan använda en befintlig modell som kan användas. Mer information om överförings Inlärning finns i [artikeln djup inlärning vs Machine Learning](concept-deep-learning-vs-machine-learning.md#what-is-transfer-learning) .
 
 ### <a name="reinforcement-learning-ray-rllib"></a>Förstärka inlärning: Ray RLLib
 

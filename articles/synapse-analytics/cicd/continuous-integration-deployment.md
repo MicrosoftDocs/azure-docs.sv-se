@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: d38c57a8c8504e1e03406f7cd8a0b61725cb0511
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 7a665bf05167a6bdf20c7325c66a5d0e439aa7f1
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97008098"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223694"
 ---
 # <a name="continuous-integration-and-delivery-for-azure-synapse-workspace"></a>Kontinuerlig integrering och leverans för Azure dataSynapses-arbetsyta
 
@@ -21,7 +21,7 @@ ms.locfileid: "97008098"
 
 Kontinuerlig integrering (CI) är en process som automatiserar genereringen och testningen av kod varje gång en grupp medlem genomför ändringar i versions kontrollen. Kontinuerlig distribution (CD) är en process för att bygga, testa, konfigurera och distribuera från flera testnings-eller utvecklings miljöer till en produktions miljö.
 
-För Azure Synapse-arbetsytan, kontinuerlig integrering och leverans (CI/CD) flyttar alla entiteter från en miljö (utveckling, test, produktion) till en annan. För att kunna befordra arbets ytan till en annan arbets yta finns det två delar: Använd [Azure Resource Manager mallar](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview) för att skapa eller uppdatera arbets ytans resurser (pooler och arbets yta). Migrera artefakter (SQL-skript, Notebook, Spark jobb definition, pipeliner, data uppsättningar, data flöden osv) med Synapse CI/CD-verktyg i Azure DevOps. 
+För Azure Synapse-arbetsytan, kontinuerlig integrering och leverans (CI/CD) flyttar alla entiteter från en miljö (utveckling, test, produktion) till en annan. För att kunna befordra arbets ytan till en annan arbets yta finns det två delar: Använd [Azure Resource Manager mallar](../../azure-resource-manager/templates/overview.md) för att skapa eller uppdatera arbets ytans resurser (pooler och arbets yta). Migrera artefakter (SQL-skript, Notebook, Spark jobb definition, pipeliner, data uppsättningar, data flöden osv) med Synapse CI/CD-verktyg i Azure DevOps. 
 
 Den här artikeln beskriver hur du kan använda Azure release pipeline för att automatisera distributionen av en Synapse-arbetsyta till flera miljöer.
 
@@ -46,7 +46,7 @@ Den här artikeln beskriver hur du kan använda Azure release pipeline för att 
 
 1.  I rutan **scen namn** anger du namnet på din miljö.
 
-1.  Välj **Lägg till artefakt** och välj sedan den git-lagringsplats som kon figurer ATS med din utvecklings Synapse Studio. Välj den git-lagringsplats som du använde för att hantera ARM-mall för pooler och arbets yta. Om du använder GitHub som källa måste du skapa en tjänst anslutning för ditt GitHub-konto och pull-databaser. Mer information om [tjänst anslutning](https://docs.microsoft.com/azure/devops/pipelines/library/service-endpoints) 
+1.  Välj **Lägg till artefakt** och välj sedan den git-lagringsplats som kon figurer ATS med din utvecklings Synapse Studio. Välj den git-lagringsplats som du använde för att hantera ARM-mall för pooler och arbets yta. Om du använder GitHub som källa måste du skapa en tjänst anslutning för ditt GitHub-konto och pull-databaser. Mer information om [tjänst anslutning](/azure/devops/pipelines/library/service-endpoints) 
 
     ![Lägg till publicerings gren](media/release-creation-github.png)
 
@@ -87,7 +87,7 @@ Lägg till en Azure Resource Manager distributions uppgift för att skapa eller 
     ![bevilja behörighet](media/release-creation-grant-permission.png)
 
  > [!WARNING]
-> I fullständigt distributions läge **raderas** resurser som finns i resurs gruppen men inte har angetts i den nya Resource Manager-mallen. Mer information finns i [Azure Resource Manager distributions lägen](https://docs.microsoft.com/azure/azure-resource-manager/templates/deployment-modes)
+> I fullständigt distributions läge **raderas** resurser som finns i resurs gruppen men inte har angetts i den nya Resource Manager-mallen. Mer information finns i [Azure Resource Manager distributions lägen](../../azure-resource-manager/templates/deployment-modes.md)
 
 ## <a name="set-up-a-stage-task-for-artifacts-deployment"></a>Konfigurera en fas uppgift för distribution av artefakter 
 
@@ -122,7 +122,7 @@ Använd [distributions tillägget Synapse-arbetsyta](https://marketplace.visuals
 
 ## <a name="create-release-for-deployment"></a>Skapa version för distribution 
 
-När du har sparat alla ändringar kan du välja **Skapa version** för att skapa en version manuellt. För att automatisera skapandet av versioner, se [Azure DevOps release triggers](https://docs.microsoft.com/azure/devops/pipelines/release/triggers)
+När du har sparat alla ändringar kan du välja **Skapa version** för att skapa en version manuellt. För att automatisera skapandet av versioner, se [Azure DevOps release triggers](/azure/devops/pipelines/release/triggers)
 
    ![Välj Skapa version](media/release-creation-manually.png)
 
@@ -133,6 +133,4 @@ Om du använder git-integrering med din Synapse-arbetsyta och har en CI/CD-pipel
 -   **Git-integrering**. Konfigurera endast din utvecklings Synapse-arbetsyta med git-integrering. Ändringar av test-och produktions arbets ytor distribueras via CI/CD och kräver inte git-integrering.
 -   **Förbered pooler innan artefakter migreras**. Om du har SQL-skript eller antecknings bok ansluten till pooler i arbets ytan utveckling förväntas samma namn på pooler i olika miljöer. 
 -   **Infrastruktur som kod (IaC)**. Hantering av infrastruktur (nätverk, virtuella datorer, belastningsutjämnare och nätverkstopologi) i en beskrivande modell använder samma version som DevOps-teamet för käll koden. 
--   **Andra**. Se [metod tips för ADF-artefakter](/azure/data-factory/continuous-integration-deployment#best-practices-for-cicd)
-
-
+-   **Andra**. Se [metod tips för ADF-artefakter](../../data-factory/continuous-integration-deployment.md#best-practices-for-cicd)

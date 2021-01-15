@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/20/2020
 ms.author: allensu
-ms.openlocfilehash: 690543ebc91e346e77509fbf993493f6978374ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 70410e58acb30c7694e6fe4a6dcaff57bee98607
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87836113"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223439"
 ---
 # <a name="troubleshoot-azure-virtual-network-nat-connectivity"></a>Felsöka Azure Virtual Network NAT-anslutning
 
@@ -68,10 +68,10 @@ _**Lösning:**_ Använd lämpliga mönster och bästa metoder
 SNAT-belastningen kan också förstärkas med andra anti-mönster i det underliggande programmet. Granska dessa ytterligare mönster och bästa metoder för att förbättra tjänstens omfattning och tillförlitlighet.
 
 - Utforska effekten av att minska timeout-värdet för [TCP-inaktivitet](nat-gateway-resource.md#timers) till lägre värden, inklusive standard tids gräns för inaktivitet på 4 minuter för att frigöra antalet SNAT
-- Överväg att använda [asynkrona avsöknings mönster](https://docs.microsoft.com/azure/architecture/patterns/async-request-reply) för långvariga åtgärder för att frigöra anslutnings resurser för andra åtgärder.
+- Överväg att använda [asynkrona avsöknings mönster](/azure/architecture/patterns/async-request-reply) för långvariga åtgärder för att frigöra anslutnings resurser för andra åtgärder.
 - Långvariga flöden (till exempel återanvända TCP-anslutningar) bör använda TCP keepalive-eller Application Layer-keepalive för att undvika tids gränser för mellanliggande system. Att öka tids gränsen för inaktivitet är en sista utväg och kan inte lösa rotor saken. En lång timeout kan orsaka låg hastighets fel när tids gränsen upphört och orsakar fördröjning och onödiga fel.
-- Återställnings [mönster](https://docs.microsoft.com/azure/architecture/patterns/retry) bör användas för att undvika aggressiva återförsök/burst vid tillfälliga fel eller återställning av fel.
-Att skapa en ny TCP-anslutning för varje HTTP-åtgärd (kallas även "atomiska anslutningar") är en anti-mönster.  Atomiska anslutningar förhindrar att ditt program skalar bra och slöseri med resurser.  Pipelinerar alltid flera åtgärder i samma anslutning.  Ditt program kommer att ha nytta av transaktions hastighet och resurs kostnader.  När ditt program använder kryptering av transport skikt (t. ex. TLS), är det en betydande kostnad för bearbetningen av nya anslutningar.  Granska [moln design mönster i Azure](https://docs.microsoft.com/azure/architecture/patterns/) om du vill ha ytterligare tips.
+- Återställnings [mönster](/azure/architecture/patterns/retry) bör användas för att undvika aggressiva återförsök/burst vid tillfälliga fel eller återställning av fel.
+Att skapa en ny TCP-anslutning för varje HTTP-åtgärd (kallas även "atomiska anslutningar") är en anti-mönster.  Atomiska anslutningar förhindrar att ditt program skalar bra och slöseri med resurser.  Pipelinerar alltid flera åtgärder i samma anslutning.  Ditt program kommer att ha nytta av transaktions hastighet och resurs kostnader.  När ditt program använder kryptering av transport skikt (t. ex. TLS), är det en betydande kostnad för bearbetningen av nya anslutningar.  Granska [moln design mönster i Azure](/azure/architecture/patterns/) om du vill ha ytterligare tips.
 
 #### <a name="additional-possible-mitigations"></a>Ytterligare eventuella begränsningar
 
@@ -96,7 +96,7 @@ Följande tabell kan användas som start punkt för vilka verktyg som ska använ
 | Operativsystem | Allmän test av TCP-anslutning | Test av TCP-program | UDP |
 |---|---|---|---|
 | Linux | NC (allmän anslutnings test) | Sväng (TCP-programnivå test) | programspecifik |
-| Windows | [PsPing](https://docs.microsoft.com/sysinternals/downloads/psping) | PowerShell [Invoke-webbegäran](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-webrequest) | programspecifik |
+| Windows | [PsPing](/sysinternals/downloads/psping) | PowerShell [Invoke-webbegäran](/powershell/module/microsoft.powershell.utility/invoke-webrequest) | programspecifik |
 
 ### <a name="connectivity-failures"></a>Anslutnings problem
 
@@ -113,7 +113,7 @@ Använd verktyg som följande för att verifiera anslutningen. [ICMP-Ping stöds
 | Operativsystem | Allmän test av TCP-anslutning | Test av TCP-program | UDP |
 |---|---|---|---|
 | Linux | NC (allmän anslutnings test) | Sväng (TCP-programnivå test) | programspecifik |
-| Windows | [PsPing](https://docs.microsoft.com/sysinternals/downloads/psping) | PowerShell [Invoke-webbegäran](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-webrequest) | programspecifik |
+| Windows | [PsPing](/sysinternals/downloads/psping) | PowerShell [Invoke-webbegäran](/powershell/module/microsoft.powershell.utility/invoke-webrequest) | programspecifik |
 
 #### <a name="configuration"></a>Konfiguration
 
@@ -202,4 +202,3 @@ Om du fortfarande har problem kan du öppna ett support ärende för ytterligare
 * Lär dig om [NAT gateway-resurs](nat-gateway-resource.md)
 * Lär dig mer om [mått och aviseringar för NAT gateway-resurser](nat-metrics.md).
 * [Berätta för oss vad du ska bygga härnäst för Virtual Network NAT i UserVoice](https://aka.ms/natuservoice).
-

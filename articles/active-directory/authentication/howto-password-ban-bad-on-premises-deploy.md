@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: deb1f74902fe28d53a5180e4f341547f339a83ac
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: d0a082149d85736000b5bb6a91e2fc7132205a88
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96741994"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98220294"
 ---
 # <a name="plan-and-deploy-on-premises-azure-active-directory-password-protection"></a>Planera och distribuera lokala Azure Active Directory lösen ords skydd
 
@@ -99,7 +99,7 @@ Följande grundläggande krav gäller:
 
 Följande krav gäller för Azure AD Password Protection DC-agenten:
 
-* Alla datorer där Azure AD Password Protection DC Agent-programvaran ska installeras måste köra Windows Server 2012 eller senare.
+* Alla datorer där Azure AD Password Protection DC Agent-programvaran ska installeras måste köra Windows Server 2012 eller senare, inklusive Windows Server Core-versioner.
     * Active Directory domän eller skog behöver inte finnas på Windows Server 2012-domän funktions nivå (DFL) eller skogens funktions nivå (FFL). Som vi nämnt i [design principer](concept-password-ban-bad-on-premises.md#design-principles)finns det ingen minsta DFL eller FFL som krävs för att antingen DC-agenten eller proxy-programvaran ska kunna köras.
 * Alla datorer som kör Azure AD Password Protection DC-agenten måste ha .NET 4,5 installerat.
 * Alla Active Directory domäner som kör Azure AD Password Protection DC-agenttjänsten måste använda Distributed File System replikering (DFSR) för SYSVOL-replikering.
@@ -116,7 +116,7 @@ Följande krav gäller för Azure AD Password Protection DC-agenten:
 
 Följande krav gäller för proxy för Azure AD Password Protection-proxy:
 
-* Alla datorer där Azure AD Password Protection proxy service ska installeras måste köra Windows Server 2012 R2 eller senare.
+* Alla datorer där Azure AD Password Protection-proxytjänsten ska installeras måste köra Windows Server 2012 R2 eller senare, inklusive Windows Server Core-versioner.
 
     > [!NOTE]
     > Distribution av Azure AD-tjänsten för lösen ords skydd är ett obligatoriskt krav för att distribuera Azure AD Password Protection även om domänkontrollanten kan ha utgående direkt Internet anslutning.

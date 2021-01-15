@@ -9,16 +9,16 @@ ms.workload: infrastructure
 ms.date: 10/14/2020
 ms.author: akjosh
 ms.reviewer: cynthn
-ms.openlocfilehash: 4156308fa58ea1f02e6e3f2c5174839dc1cd381c
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 2731a7f263db223c258ddfc434bc84f59632d1f5
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96841531"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223371"
 ---
 # <a name="shared-image-galleries-overview"></a>Översikt över delade avbildnings gallerier
 
-Delade avbildnings galleri är en tjänst som hjälper dig att bygga struktur och organisation runt dina avbildningar. Delade avbildnings gallerier ger:
+Shared Image Gallery är en tjänst som hjälper dig att skapa struktur och organisation runt dina avbildningar. Delade avbildnings gallerier ger:
 
 - Global replikering av avbildningar.
 - Versions hantering och gruppering av avbildningar för enklare hantering.
@@ -106,7 +106,7 @@ Specialiserade virtuella datorer har inte genomgått någon process för att ta 
 
 Alla offentliga regioner kan vara mål regioner, men för att replikera till Australien, centrala och Australien, Central 2 måste din prenumeration läggas till i listan över tillåtna. Om du vill begära att en prenumeration läggs till i listan över tillåtna går du till: https://azure.microsoft.com/global-infrastructure/australia/contact/
 
-## <a name="limits"></a>Begränsningar 
+## <a name="limits"></a>Gränser 
 
 Det finns gränser per prenumeration för att distribuera resurser med hjälp av delade avbildnings gallerier:
 - 100 delade avbildnings gallerier, per prenumeration, per region
@@ -170,12 +170,12 @@ Anta till exempel att du har en avbildning av en 127 GB OS-disk, som endast uppt
 När du har skapat kan du göra några ändringar i avbildnings Galleri resurserna. Dessa är begränsade till:
  
 Galleri för delad avbildning:
-- Beskrivning
+- Description
 
 Bild definition:
 - Rekommenderad virtuella processorer
 - Rekommenderat minne
-- Beskrivning
+- Description
 - Datum för slut på livs längd
 
 Avbildnings version:
@@ -316,6 +316,11 @@ För virtuella datorer och distributioner av skalnings uppsättningar för virtu
 ### <a name="can-i-update-my-virtual-machine-scale-set-created-using-managed-image-to-use-shared-image-gallery-images"></a>Kan jag uppdatera min skalnings uppsättning för virtuella datorer som skapats med hanterad avbildning för att använda delade avbildnings Galleri avbildningar?
 
 Ja, du kan uppdatera skalnings uppsättningens bild referens från en hanterad avbildning till en bild för en delad avbildning, så länge operativ systemets typ, Hyper-V-generering och datadisk-layouten matchar avbildningarna.
+
+## <a name="troubleshoot-shared-image-gallery-issues"></a>Felsöka problem med delade avbildnings Galleri
+Om du har problem med att utföra åtgärder på de delade avbildnings Galleri resurserna kan du läsa listan över vanliga fel i [fel söknings guiden](troubleshooting-shared-images.md).
+
+Dessutom kan du skicka och tagga din fråga med `azure-virtual-machines-images` på [Q&A](/answers/topics/azure-virtual-machines-images.html).
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: allensu
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a4d034aefe59a661bfb0694feba36a669aa274ac
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 43b2c8271090d2254bcb4834c3b566c3601a104b
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96007281"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223252"
 ---
 # <a name="create-a-nat-gateway-using-azure-cli"></a>Skapa en NAT-gateway med Azure CLI
 
@@ -34,7 +34,7 @@ Den här självstudien visar hur du använder Azure Virtual Network NAT-tjänste
 
 ## <a name="create-a-resource-group"></a>Skapa en resursgrupp
 
-Skapa en resursgrupp med [az group create](https://docs.microsoft.com/cli/azure/group). En Azure-resursgrupp är en logisk container där Azure-resurser distribueras och hanteras.
+Skapa en resursgrupp med [az group create](/cli/azure/group). En Azure-resursgrupp är en logisk container där Azure-resurser distribueras och hanteras.
 
 I följande exempel skapas en resurs grupp med namnet **myResourceGroupNAT** på **eastus2** -platsen:
 
@@ -48,7 +48,7 @@ I följande exempel skapas en resurs grupp med namnet **myResourceGroupNAT** på
 
 ### <a name="create-a-public-ip-address"></a>Skapa en offentlig IP-adress
 
-För att få åtkomst till det offentliga Internet behöver du en eller flera offentliga IP-adresser för NAT-gatewayen. Använd [AZ Network Public-IP Create](https://docs.microsoft.com/cli/azure/network/public-ip) för att skapa en offentlig IP-adressresurs med namnet **myPublicIP** i **myResourceGroupNAT**.
+För att få åtkomst till det offentliga Internet behöver du en eller flera offentliga IP-adresser för NAT-gatewayen. Använd [AZ Network Public-IP Create](/cli/azure/network/public-ip) för att skapa en offentlig IP-adressresurs med namnet **myPublicIP** i **myResourceGroupNAT**.
 
 ```azurecli-interactive
   az network public-ip create \
@@ -59,7 +59,7 @@ För att få åtkomst till det offentliga Internet behöver du en eller flera of
 
 ### <a name="create-a-public-ip-prefix"></a>Skapa ett offentligt IP-prefix
 
-Du kan använda en eller flera offentliga IP-adressresurser, offentliga IP-prefix eller både och med NAT-gateway. Vi "l Lägg till en resurs för offentliga IP-prefix i det här scenariot för att demonstrera.   Använd [AZ Network Public-IP prefix Create](https://docs.microsoft.com/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-create) för att skapa en offentlig IP-prefixlängd som heter **myPublicIPprefix** i **myResourceGroupNAT**.
+Du kan använda en eller flera offentliga IP-adressresurser, offentliga IP-prefix eller både och med NAT-gateway. Vi "l Lägg till en resurs för offentliga IP-prefix i det här scenariot för att demonstrera.   Använd [AZ Network Public-IP prefix Create](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-create) för att skapa en offentlig IP-prefixlängd som heter **myPublicIPprefix** i **myResourceGroupNAT**.
 
 ```azurecli-interactive
   az network public-ip prefix create \
@@ -74,7 +74,7 @@ I det här avsnittet beskrivs hur du kan skapa och konfigurera följande kompone
   - En offentlig IP-pool och ett offentligt IP-prefix som används för utgående flöden som översätts av NAT gateway-resursen.
   - Ändra tids gränsen för inaktivitet från standardvärdet 4 minuter till 10 minuter.
 
-Skapa en global Azure NAT-gateway med [AZ Network NAT gateway Create](https://docs.microsoft.com/cli/azure/network/nat?view=azure-cli-latest) med namnet **myNATgateway**. Kommandot använder både den offentliga IP- **myPublicIP** och det offentliga IP-prefixet **myPublicIPprefix**. Kommandot ändrar tids gränsen för inaktivitet till **10** minuter.
+Skapa en global Azure NAT-gateway med [AZ Network NAT gateway Create](/cli/azure/network/nat?view=azure-cli-latest) med namnet **myNATgateway**. Kommandot använder både den offentliga IP- **myPublicIP** och det offentliga IP-prefixet **myPublicIPprefix**. Kommandot ändrar tids gränsen för inaktivitet till **10** minuter.
 
 ```azurecli-interactive
   az network nat gateway create \
@@ -91,7 +91,7 @@ NAT-gatewayen är nu funktionell och allt som saknas är att konfigurera vilka u
 
 Innan du distribuerar en virtuell dator och kan använda din NAT-gateway måste du skapa det virtuella nätverket.
 
-Skapa ett virtuellt nätverk med namnet **myVnet** med ett undernät med namnet **mitt undernät** i **myResourceGroupNAT** med [AZ Network VNet Create](https://docs.microsoft.com/cli/azure/network/vnet).  IP-adressutrymmet för det virtuella nätverket är **192.168.0.0/16**. Under nätet i det virtuella nätverket är **192.168.0.0/24**.
+Skapa ett virtuellt nätverk med namnet **myVnet** med ett undernät med namnet **mitt undernät** i **myResourceGroupNAT** med [AZ Network VNet Create](/cli/azure/network/vnet).  IP-adressutrymmet för det virtuella nätverket är **192.168.0.0/16**. Under nätet i det virtuella nätverket är **192.168.0.0/24**.
 
 ```azurecli-interactive
   az network vnet create \
@@ -105,7 +105,7 @@ Skapa ett virtuellt nätverk med namnet **myVnet** med ett undernät med namnet 
 
 ### <a name="configure-nat-service-for-source-subnet"></a>Konfigurera NAT-tjänst för käll under nät
 
-Vi konfigurerar käll under nätets **undernät** i det virtuella nätverket **myVnet** för att använda en angiven NAT-gateway resurs **myNATgateway** med [AZ Network VNet Subnet Update](https://docs.microsoft.com/cli/azure/network/vnet/subnet).  Med det här kommandot aktive ras NAT-tjänsten på det angivna under nätet.
+Vi konfigurerar käll under nätets **undernät** i det virtuella nätverket **myVnet** för att använda en angiven NAT-gateway resurs **myNATgateway** med [AZ Network VNet Subnet Update](/cli/azure/network/vnet/subnet).  Med det här kommandot aktive ras NAT-tjänsten på det angivna under nätet.
 
 ```azurecli-interactive
   az network vnet subnet update \
@@ -123,7 +123,7 @@ Nu ska vi skapa en virtuell dator för att använda NAT-tjänsten.  Den här vir
 
 ### <a name="create-public-ip-for-source-vm"></a>Skapa en offentlig IP-adress för den virtuella käll datorn
 
-Vi skapar en offentlig IP-adress som ska användas för åtkomst till den virtuella datorn.  Använd [AZ Network Public-IP Create](https://docs.microsoft.com/cli/azure/network/public-ip) för att skapa en offentlig IP-adressresurs med namnet **myPublicIPVM** i **myResourceGroupNAT**.
+Vi skapar en offentlig IP-adress som ska användas för åtkomst till den virtuella datorn.  Använd [AZ Network Public-IP Create](/cli/azure/network/public-ip) för att skapa en offentlig IP-adressresurs med namnet **myPublicIPVM** i **myResourceGroupNAT**.
 
 ```azurecli-interactive
   az network public-ip create \
@@ -134,7 +134,7 @@ Vi skapar en offentlig IP-adress som ska användas för åtkomst till den virtue
 
 ### <a name="create-an-nsg-for-vm"></a>Skapa en NSG för virtuell dator
 
-Eftersom standard-offentliga IP-adresser är "säkra som standard", måste vi skapa en NSG för att tillåta inkommande åtkomst för SSH-åtkomst. Använd [AZ Network NSG Create](https://docs.microsoft.com/cli/azure/network/nsg?view=azure-cli-latest#az-network-nsg-create) för att skapa en NSG-resurs med namnet **myNSG** i **myResourceGroupNAT**.
+Eftersom standard-offentliga IP-adresser är "säkra som standard", måste vi skapa en NSG för att tillåta inkommande åtkomst för SSH-åtkomst. Använd [AZ Network NSG Create](/cli/azure/network/nsg?view=azure-cli-latest#az-network-nsg-create) för att skapa en NSG-resurs med namnet **myNSG** i **myResourceGroupNAT**.
 
 ```azurecli-interactive
   az network nsg create \
@@ -144,7 +144,7 @@ Eftersom standard-offentliga IP-adresser är "säkra som standard", måste vi sk
 
 ### <a name="expose-ssh-endpoint-on-source-vm"></a>Exponera SSH-slutpunkt på den virtuella käll datorn
 
-Vi skapar en regel i NSG för SSH-åtkomst till den virtuella käll datorn. Använd [AZ Network NSG Rule Create](https://docs.microsoft.com/cli/azure/network/nsg/rule?view=azure-cli-latest#az-network-nsg-rule-create) för att skapa en NSG-regel med namnet **SSH** i NSG som heter **myNSG** i **myResourceGroupNAT**.
+Vi skapar en regel i NSG för SSH-åtkomst till den virtuella käll datorn. Använd [AZ Network NSG Rule Create](/cli/azure/network/nsg/rule?view=azure-cli-latest#az-network-nsg-rule-create) för att skapa en NSG-regel med namnet **SSH** i NSG som heter **myNSG** i **myResourceGroupNAT**.
 
 ```azurecli-interactive
   az network nsg rule create \
@@ -235,4 +235,3 @@ Granska mått i Azure Monitor för att se hur NAT-tjänsten fungerar. Diagnostis
 - Snabb start för att distribuera [NAT gateway-resurs med hjälp av Azure PowerShell](./quickstart-create-nat-gateway-powershell.md).
 - Snabb start för att distribuera [NAT gateway-resurs med hjälp av Azure Portal](./quickstart-create-nat-gateway-portal.md).
 > [!div class="nextstepaction"]
-

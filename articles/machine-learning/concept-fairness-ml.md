@@ -9,12 +9,13 @@ ms.topic: conceptual
 ms.author: luquinta
 author: luisquintanilla
 ms.date: 08/05/2020
-ms.openlocfilehash: 459cb1f7ea6c756b8cf6eba70af5ebabe76cc8b0
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.custom: responsible-ml
+ms.openlocfilehash: 29e29e73aa1094a2941592655af78a24d95c53b5
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94335766"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223099"
 ---
 # <a name="mitigate-fairness-in-machine-learning-models-preview"></a>Minimera skälighet i Machine Learning-modeller (för hands version)
 
@@ -51,7 +52,7 @@ Tillsammans gör dessa komponenter det möjligt för data experter och affärs l
 
 ## <a name="assess-fairness-in-machine-learning-models"></a>Utvärdera skälighet i Machine Learning-modeller
 
-I Fairlearn-paketet med öppen källkod är skälighet konceptuellt, trots en metod som kallas **Group skälighet** , som frågar: vilka grupper av individer riskerar att drabbas av skador? Relevanta grupper, även kallade del populationer, definieras genom **känsliga funktioner** eller känsliga attribut. Känsliga funktioner skickas till en uppskattare i Fairlearn-paketet med öppen källkod som en Vector eller en matris med namnet  `sensitive_features` . Termen rekommenderar att system designern bör vara känslig för dessa funktioner när du bedömer grupp skälighet. 
+I Fairlearn-paketet med öppen källkod är skälighet konceptuellt, trots en metod som kallas **Group skälighet**, som frågar: vilka grupper av individer riskerar att drabbas av skador? Relevanta grupper, även kallade del populationer, definieras genom **känsliga funktioner** eller känsliga attribut. Känsliga funktioner skickas till en uppskattare i Fairlearn-paketet med öppen källkod som en Vector eller en matris med namnet  `sensitive_features` . Termen rekommenderar att system designern bör vara känslig för dessa funktioner när du bedömer grupp skälighet. 
 
 Något att vara mindful av är om dessa funktioner innehåller sekretess effekter på grund av privata data. Men ordet "känslig" innebär inte att dessa funktioner inte ska användas för att göra förutsägelser.
 

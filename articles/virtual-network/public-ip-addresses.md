@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/28/2020
 ms.author: allensu
-ms.openlocfilehash: 1e46cf78c76e873bcb78af4942f42a5c4be45391
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: deb9f60cd3f75eacdf0adc06f6f7470819949555
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955594"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223235"
 ---
 # <a name="public-ip-addresses"></a>Offentliga IP-adresser
 
@@ -44,7 +44,7 @@ Mer information om SKU-uppgradering finns i [offentlig IP-uppgradering](../virtu
 Offentliga IP-adresser skapas med någon av följande SKU:er:
 
 >[!IMPORTANT]
-> Matchande SKU: er krävs för belastnings utjämning och offentliga IP-resurser. Du kan inte blanda grundläggande SKU-resurser och standard-SKU-resurser. Du kan inte bifoga fristående virtuella datorer, virtuella datorer i en tillgänglighetsuppsättningsresurs eller en virtuell dators skalningsuppsättningsresurser till båda SKU:erna samtidigt.  Ny design bör överväga att använda standard-SKU-resurser.  Mer information finns i [Standard Load Balancer](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+> Matchande SKU: er krävs för belastnings utjämning och offentliga IP-resurser. Du kan inte blanda grundläggande SKU-resurser och standard-SKU-resurser. Du kan inte bifoga fristående virtuella datorer, virtuella datorer i en tillgänglighetsuppsättningsresurs eller en virtuell dators skalningsuppsättningsresurser till båda SKU:erna samtidigt.  Ny design bör överväga att använda standard-SKU-resurser.  Mer information finns i [Standard Load Balancer](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 ### <a name="standard"></a>Standard
 
@@ -52,13 +52,13 @@ Offentliga IP-adresser för standard-SKU:
 
 - Använd alltid den statiska allokeringsmetoden.
 - Har en justerbar inkommande tidsgräns för inaktivitet i flöde på 4–30 minuter, med ett standardvärde på 4 minuter, och en fast utgående tidsgräns för inaktivitet i flöde på 4 minuter.
-- Skydda som standard och stängas till inkommande trafik. Tillåt en lista över inkommande trafik med en [nätverks säkerhets grupp](security-overview.md#network-security-groups).
-- Tilldelad till nätverks gränssnitt, offentliga standard belastningsutjämnare eller programgatewayer. Mer information om standard Load Balancer finns i [Azure standard Load Balancer](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
-- Kan vara Zone-redundant (annonseras från alla tre zoner) eller zonindelade (kan skapas zonindelade och garanteras i en bestämd tillgänglighets zon). Om du vill veta mer om tillgänglighetszoner kan du läsa [Översikt över tillgänglighetszoner](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) och [Standard Load Balancer och tillgänglighetszoner](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json). **Zon redundanta IP-adresser kan bara skapas i [regioner där 3 tillgänglighets zoner](https://docs.microsoft.com/azure/availability-zones/az-region) är Live.** IP-adresser som skapats innan zoner är Live är inte zonens redundanta.
-- Kan användas som anycast-klient-IP [-adresser för belastningsutjämnare mellan regioner](https://docs.microsoft.com/azure/load-balancer/cross-region-overview) (för hands versions funktioner).
+- Skydda som standard och stängas till inkommande trafik. Tillåt en lista över inkommande trafik med en [nätverks säkerhets grupp](./network-security-groups-overview.md#network-security-groups).
+- Tilldelad till nätverks gränssnitt, offentliga standard belastningsutjämnare eller programgatewayer. Mer information om standard Load Balancer finns i [Azure standard Load Balancer](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+- Kan vara Zone-redundant (annonseras från alla tre zoner) eller zonindelade (kan skapas zonindelade och garanteras i en bestämd tillgänglighets zon). Om du vill veta mer om tillgänglighetszoner kan du läsa [Översikt över tillgänglighetszoner](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) och [Standard Load Balancer och tillgänglighetszoner](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json). **Zon redundanta IP-adresser kan bara skapas i [regioner där 3 tillgänglighets zoner](../availability-zones/az-region.md) är Live.** IP-adresser som skapats innan zoner är Live är inte zonens redundanta.
+- Kan användas som anycast-klient-IP [-adresser för belastningsutjämnare mellan regioner](../load-balancer/cross-region-overview.md) (för hands versions funktioner).
  
 > [!NOTE]
-> Inkommande kommunikation med en resurs med standard-SKU misslyckas tills du har skapat och kopplat en [nätverkssäkerhetsgrupp](security-overview.md#network-security-groups) och uttryckligen tillåtit önskad inkommande trafik.
+> Inkommande kommunikation med en resurs med standard-SKU misslyckas tills du har skapat och kopplat en [nätverkssäkerhetsgrupp](./network-security-groups-overview.md#network-security-groups) och uttryckligen tillåtit önskad inkommande trafik.
 
 > [!NOTE]
 > Endast offentliga IP-adresser med Basic SKU är tillgängliga när du använder [IMDS för instans-metadata](../virtual-machines/windows/instance-metadata-service.md). Standard-SKU stöds inte.
@@ -150,7 +150,7 @@ Du kan associera en offentlig IP-adress för antingen [SKU: n](#sku) med en [Azu
 
 Du kan tilldela antingen en dynamisk eller en statisk offentlig IP-adress till klientsidan för en lastbalanserare. Du kan tilldela flera offentliga IP-adresser till en belastnings Utjämnings klient del. Den här konfigurationen möjliggör [multi-VIP-](../load-balancer/load-balancer-multivip-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) scenarier som en miljö med flera klienter med TLS-baserade webbplatser. 
 
-Mer information om SKU:er för lastbalanserare i Azure finns i [Standard-SKU för Azure Load Balancer](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Mer information om SKU:er för lastbalanserare i Azure finns i [Standard-SKU för Azure Load Balancer](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 ## <a name="vpn-gateways"></a>VPN-gateways
 
@@ -163,7 +163,7 @@ En offentlig IP-adress tilldelas till VPN Gateway för att möjliggöra kommunik
 
 ## <a name="application-gateways"></a>Programgatewayer
 
-Du kan associera en offentlig IP-adress med en Azure [Application Gateway](../application-gateway/application-gateway-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) genom att tilldela den till gatewayens konfiguration på **klientsidan**. 
+Du kan associera en offentlig IP-adress med en Azure [Application Gateway](../application-gateway/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) genom att tilldela den till gatewayens konfiguration på **klientsidan**. 
 
 * Tilldela en **dynamisk** grundläggande offentlig IP-adress till en Application Gateway v1-konfiguration för klient delen. 
 * Tilldela en **statisk** standard-SKU-adress till en konfiguration av klient delen i v2.
@@ -200,4 +200,3 @@ Offentliga IP-adresser kan medföra en nominell avgift. Mer information om prise
 ## <a name="next-steps"></a>Nästa steg
 * Lär dig mer om [privata IP-adresser i Azure](private-ip-addresses.md)
 * [Distribuera en virtuell dator med en statisk offentlig IP-adress i Azure Portal](virtual-network-deploy-static-pip-arm-portal.md)
-

@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd04d24e0e46b053381858be037a009b1987f8e9
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 40738f8fcb14c48ccfe3bc7869e5176c4ab63165
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97932528"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222338"
 ---
 # <a name="3-create-a-security-plan-for-external-access"></a>3. skapa ett säkerhets plan för extern åtkomst 
 
@@ -134,7 +134,7 @@ Tänk på följande när dina principer kommer att anpassas efter dina behov:
 
 * **Microsoft 365 grupper**. Ange en [förfallo princip för grupp](https://docs.microsoft.com/microsoft-365/solutions/microsoft-365-groups-expiration-policy?view=o365-worldwide) för Microsoft 365 grupper som externa användare ska bjudas in till. 
 
-* **Andra alternativ**. Om externa användare har åtkomst utanför behörighets hanterings paket eller Microsoft 365 grupper, ställer du in affärs processen för att granska när konton ska göras inaktiva eller borttagna. Ett exempel:
+* **Andra alternativ**. Om externa användare har åtkomst utanför behörighets hanterings paket eller Microsoft 365 grupper, ställer du in affärs processen för att granska när konton ska göras inaktiva eller borttagna. Exempel:
 
    * Ta bort inloggnings möjligheten för alla konton som inte är inloggade på i för 90 dagar.
 

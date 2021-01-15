@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/29/2020
 ms.author: allensu
-ms.openlocfilehash: 53dd6d2dda762b3cbf53f4aaec6cd3692a9656e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3d98107075c215c0a00bc2035325a6ad8bf5bfc5
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87432579"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222436"
 ---
 # <a name="public-ip-address-prefix"></a>Prefix för offentliga IP-adresser
 
 Ett offentligt IP-adressprefix är ett reserverat intervall med IP-adresser i Azure. Azure ger ett sammanhängande intervall med adresser till din prenumeration utifrån hur många du anger. 
 
-Om du inte är bekant med offentliga adresser, se [offentliga IP-adresser.](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)
+Om du inte är bekant med offentliga adresser, se [offentliga IP-adresser.](./public-ip-addresses.md#public-ip-addresses)
 
 Offentliga IP-adresser tilldelas från en adresspool med adresser i varje Azure-region. Du kan [Ladda ned](https://www.microsoft.com/download/details.aspx?id=56519) listan över intervall som Azure använder för varje region. Till exempel är 40.121.0.0/16 en av över 100 intervall som Azure använder i regionen USA, östra. Intervallet omfattar de användbara adresserna för 40.121.0.1-40.121.255.254.
 
@@ -68,9 +68,9 @@ Du kan koppla följande resurser till en statisk offentlig IP-adress från ett p
 ## <a name="constraints"></a>Villkor
 
 - Du kan inte ange IP-adresser för prefixet. Azure ger prefixets IP-adresser baserat på den storlek som du anger.
-- Du kan skapa ett prefix med upp till 16 IP-adresser eller a/28 som standard. Granska [nätverks gränser öka förfrågningar](https://docs.microsoft.com/azure/azure-portal/supportability/networking-quota-requests) och [Azure-gränser](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) för mer information.
+- Du kan skapa ett prefix med upp till 16 IP-adresser eller a/28 som standard. Granska [nätverks gränser öka förfrågningar](../azure-portal/supportability/networking-quota-requests.md) och [Azure-gränser](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) för mer information.
 - Du kan inte ändra intervallet när du har skapat prefixet.
-- Endast statiska offentliga IP-adresser som skapats med standard-SKU: n kan tilldelas från prefixets intervall. Mer information om offentliga IP-adresser finns i [offentlig IP-adress](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses).
+- Endast statiska offentliga IP-adresser som skapats med standard-SKU: n kan tilldelas från prefixets intervall. Mer information om offentliga IP-adresser finns i [offentlig IP-adress](./public-ip-addresses.md#public-ip-addresses).
 - Adresser från intervallet kan bara tilldelas Azure Resource Manager resurser. Adresser kan inte tilldelas till resurser i den klassiska distributions modellen.
 - Alla offentliga IP-adresser som skapas från prefixet måste finnas i samma Azure-region och prenumeration som prefixet. Adresser måste tilldelas till resurser i samma region och prenumeration.
 - Du kan inte ta bort ett prefix om några adresser i det har tilldelats offentliga IP-adressresurser som är kopplade till en resurs. Koppla bort alla offentliga IP-adressresurser som tilldelas IP-adresser från prefixet först.

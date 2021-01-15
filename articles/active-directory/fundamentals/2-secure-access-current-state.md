@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff656887081681a804285e9a96352feef15fc675
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 7557985b23991f1a53d45f6f2d2283500c0d73f3
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97744225"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222419"
 ---
 # <a name="discover-the-current-state-of-external-collaboration-in-your-organization"></a>Identifiera det aktuella läget för externt samarbete i din organisation 
 
@@ -46,9 +46,9 @@ Externa organisationer kan bestämmas av domän namn för externa användares e-
 
 ### <a name="use-allow-or-deny-lists"></a>Använd listorna Tillåt eller neka
 
-Ett annat sätt att identifiera vem du för närvarande samarbetar med, eller med vilka du har blockerat samarbete, är att se om du har lagt till några organisationer i [listorna över tillåtna eller nekade](../external-identities/allow-deny-list.md).
+Överväg om organisationen vill tillåta samarbete med endast vissa organisationer. Du kan också överväga om organisationen vill blockera samarbete med vissa organisationer.  På klient nivå finns en [lista över tillåtna eller nekade](../external-identities/allow-deny-list.md)som kan användas för att kontrol lera GENERELLa B2B-inbjudningar och inlösen, oavsett källa (t. ex. team, SharePoint och Azure Portal).
+Om du använder rättighets hantering kan du också begränsa åtkomst paketen till en delmängd av dina partner med hjälp av inställningen för de angivna anslutna organisationer som visas nedan.
 
-Överväg om organisationen vill tillåta samarbete med endast vissa organisationer. Tänk också på om din organisation vill blockera samarbete med vissa organisationer. De här inställningarna kan användas för allmän B2B-inlösen eller endast för ett speciellt åtkomst paket.
 
 ![Skärm bild av listan Tillåt neka i att skapa ett nytt Access-paket.](media/secure-external-access/2-new-access-package.png)
 

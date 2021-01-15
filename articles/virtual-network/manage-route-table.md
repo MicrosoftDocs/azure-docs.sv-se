@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/19/2020
 ms.author: kumud
-ms.openlocfilehash: 664e3851370be812cd7a0e58cf9beb1fddb5d991
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a8c38f4e84a6a653c3a4d887c82340409fc363af
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87291005"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98220600"
 ---
 # <a name="create-change-or-delete-a-route-table"></a>Skapa, ändra eller ta bort en routningstabell
 
@@ -81,13 +81,13 @@ Gå till [Azure Portal](https://portal.azure.com) för att hantera ditt virtuell
 
 1. I listan routningstabell väljer du den routningstabell som du vill visa information om.
 
-1. På sidan väg tabell går du till **Inställningar**och visar **vägarna** i routningstabellen eller **under näten** som routningstabellen är kopplad till.
+1. På sidan väg tabell går du till **Inställningar** och visar **vägarna** i routningstabellen eller **under näten** som routningstabellen är kopplad till.
 
 Mer information om vanliga Azure-inställningar finns i följande information:
 
 - [Aktivitetslogg](../azure-monitor/platform/platform-logs-overview.md)
 - [Åtkomstkontroll (IAM)](../role-based-access-control/overview.md)
-- [Taggen](../azure-resource-manager/management/tag-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+- [Taggar](../azure-resource-manager/management/tag-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [Lås](../azure-resource-manager/management/lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [Automationsskript](../azure-resource-manager/templates/export-template-portal.md)
 
@@ -125,7 +125,7 @@ Du kan också associera en routningstabell till ett undernät. En routningstabel
 
 1. Välj det undernät som du vill koppla routningstabellen till.
 
-1. I **routningstabell**väljer du den routningstabell som du vill koppla till under nätet.
+1. I **routningstabell** väljer du den routningstabell som du vill koppla till under nätet.
 
 1. Välj **Spara**.
 
@@ -150,7 +150,7 @@ När du kopplar bort en routningstabell från ett undernät dirigerar Azure traf
 
 1. Välj det undernät som du vill koppla routningstabellen från.
 
-1. I **routningstabellen**väljer du **ingen**.
+1. I **routningstabellen** väljer du **ingen**.
 
 1. Välj **Spara**.
 
@@ -169,7 +169,7 @@ Du kan inte ta bort en routningstabell som är kopplad till några undernät. [K
 
 1. I listan routningstabell väljer du den routningstabell som du vill ta bort.
 
-1. Välj **ta bort**och välj sedan **Ja** i bekräftelse dialog rutan.
+1. Välj **ta bort** och välj sedan **Ja** i bekräftelse dialog rutan.
 
 ### <a name="delete-a-route-table---commands"></a>Ta bort en routningstabell – kommandon
 
@@ -190,11 +190,11 @@ Det finns en gräns för hur många vägar per routningstabell som kan skapas pe
 
 1. Ange ett unikt **väg namn** för vägen i routningstabellen.
 
-1. Ange adressprefixet **, i**CIDR-notation (Classless Inter-Domain routing), som du vill dirigera trafiken till. Prefixet kan inte dupliceras i fler än en väg i routningstabellen, även om prefixet kan vara inom ett annat prefix. Om du till exempel har definierat *10.0.0.0/16* som ett prefix i en väg kan du fortfarande definiera en annan väg med adressprefixet *10.0.0.0/22* . Azure väljer en väg för trafik baserat på den längsta prefix matchningen. Mer information finns i [hur Azure väljer en väg](virtual-networks-udr-overview.md#how-azure-selects-a-route).
+1. Ange adressprefixet **, i** CIDR-notation (Classless Inter-Domain routing), som du vill dirigera trafiken till. Prefixet kan inte dupliceras i fler än en väg i routningstabellen, även om prefixet kan vara inom ett annat prefix. Om du till exempel har definierat *10.0.0.0/16* som ett prefix i en väg kan du fortfarande definiera en annan väg med adressprefixet *10.0.0.0/22* . Azure väljer en väg för trafik baserat på den längsta prefix matchningen. Mer information finns i [hur Azure väljer en väg](virtual-networks-udr-overview.md#how-azure-selects-a-route).
 
 1. Välj en **nästa hopp typ**. Mer information om nästa hopp typer finns i [trafik dirigering i virtuella nätverk](virtual-networks-udr-overview.md).
 
-1. Om du väljer en **nästa hopp typ** för **virtuell**installation anger du en IP-adress för **nästa hopp adress**.
+1. Om du väljer en **nästa hopp typ** för **virtuell** installation anger du en IP-adress för **nästa hopp adress**.
 
 1. Välj **OK**.
 
@@ -268,7 +268,7 @@ En routningstabell innehåller noll eller flera vägar. Mer information om den i
 
 1. Välj den väg som du vill ta bort.
 
-1. Välj **ta bort**och välj sedan **Ja** i bekräftelse dialog rutan.
+1. Välj **ta bort** och välj sedan **Ja** i bekräftelse dialog rutan.
 
 ### <a name="delete-a-route---commands"></a>Ta bort ett Route-kommandon
 
@@ -285,7 +285,7 @@ De effektiva vägarna för varje VM-kopplat nätverks gränssnitt är en kombina
 
 1. I listan virtuell dator väljer du den virtuella dator som du vill visa effektiva vägar för.
 
-1. Välj **nätverk**i meny raden VM.
+1. Välj **nätverk** i meny raden VM.
 
 1. Välj ett nätverks gränssnitts namn.
 
@@ -333,7 +333,7 @@ Efter en kort väntan meddelar Azure dig nästa hopp typ och ID för den väg so
 
 Om du vill utföra uppgifter i routningstabeller och vägar måste ditt konto tilldelas [rollen nätverks deltagare](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) eller till en [anpassad roll](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) som har tilldelats lämpliga åtgärder i följande tabell:
 
-| Action                                                          |   Namn                                                  |
+| Action                                                          |   Name                                                  |
 |--------------------------------------------------------------   |   -------------------------------------------           |
 | Microsoft. Network/routeTables/Read                              |   Läsa en routningstabell                                    |
 | Microsoft. Network/routeTables/Write                             |   Skapa eller uppdatera en routningstabell                        |
@@ -348,4 +348,4 @@ Om du vill utföra uppgifter i routningstabeller och vägar måste ditt konto ti
 ## <a name="next-steps"></a>Nästa steg
 
 - Skapa en routningstabell med [PowerShell](powershell-samples.md) -eller [Azure CLI](cli-samples.md) -exempel skript eller Azure [Resource Manager-mallar](template-samples.md)
-- Skapa och tilldela [Azure policy definitioner](policy-samples.md) för virtuella nätverk
+- Skapa och tilldela [Azure policy definitioner](./policy-reference.md) för virtuella nätverk

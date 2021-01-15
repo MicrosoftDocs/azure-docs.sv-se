@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/28/2020
 ms.author: allensu
-ms.openlocfilehash: 13688b73c0cd73e13e407f1b75beb8dda61a754f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36db885cab734c037b0032c714de28b905595ef0
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84172377"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223269"
 ---
 # <a name="private-ip-addresses"></a>Privata IP-adresser
 Privata IP-adresser tillåter kommunikation mellan resurser i Azure. 
@@ -82,8 +82,8 @@ Virtuella datorer som kon figurer ATS med Azure-hanterad DNS matcha värd namnen
 
 Du kan tilldela en privat IP-adress till **klient delens** konfiguration:
 
-* [Intern Azure Load Balancer](../load-balancer/load-balancer-internal-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (ILB)
-* [Azure Application Gateway](../application-gateway/application-gateway-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 
+* [Intern Azure Load Balancer](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (ILB)
+* [Azure Application Gateway](../application-gateway/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 
 
 Den här privata IP-adressen fungerar som en intern slut punkt. Den interna slut punkten är bara tillgänglig för resurserna i det virtuella nätverket och de fjärranslutna nätverken som är anslutna till den. Du kan tilldela en dynamisk eller statisk IP-adress.
 
@@ -101,7 +101,7 @@ De möjliga fördelnings metoder som kan användas visas också:
 | Lastbalanserare |Konfiguration på klientsidan |Ja |Ja |
 | Programgateway |Konfiguration på klientsidan |Ja |Ja |
 
-## <a name="limits"></a>Begränsningar
+## <a name="limits"></a>Gränser
 Gränserna för IP-adressering finns i den fullständiga uppsättningen [begränsningar för nätverk](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) i Azure. Gränserna anges per region och per prenumeration. [Kontakta supporten](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade) om du vill öka standard gränserna upp till de maximala gränserna utifrån dina affärs behov.
 
 ## <a name="next-steps"></a>Nästa steg

@@ -7,46 +7,40 @@ ms.date: 12/15/2020
 ms.topic: troubleshooting
 ms.author: susabat
 ms.reviewer: susabat
-ms.openlocfilehash: 0e67a316b012eda61607c84edfd8e10d6aa3318d
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 0ceee3c65e8c4df5d843bb441fb6426a0f4eb696
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97589176"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98220277"
 ---
 # <a name="troubleshoot-pipeline-orchestration-and-triggers-in-azure-data-factory"></a>Felsöka dirigering av pipelines och utlösare i Azure Data Factory
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-En pipelinekörning i Azure Data Factory definierar en instans av en pipeline-åtgärd. Du kan till exempel ha en pipeline som körs kl. 8:00, 9:00 AM och 10:00. I det här fallet finns det tre separata körningar av pipelinen eller pipeline-körningarna. Varje pipelinekörning har ett unikt pipelinekörnings-ID. Ett körnings-ID är ett GUID (globalt unik identifierare) som definierar en viss pipeline-körning.
+En pipelinekörning i Azure Data Factory definierar en instans av en pipeline-åtgärd. Anta till exempel att du har en pipeline som körs kl. 8:00, 9:00 AM och 10:00. I det här fallet finns det tre separata pipeline-körningar. Varje pipelinekörning har ett unikt pipelinekörnings-ID. Ett körnings-ID är en globalt unik identifierare (GUID) som definierar den specifika pipeline-körningen.
 
-Pipelinekörningar instansieras normalt genom att skicka argument till parametrar som du definierar i pipelinen. Du kan köra en pipeline antingen manuellt eller via en utlösare. Mer information finns [i pipeline-körning och utlösare i Azure Data Factory](concepts-pipeline-execution-triggers.md) .
+Pipelinekörningar instansieras normalt genom att skicka argument till parametrar som du definierar i pipelinen. Du kan köra en pipeline antingen manuellt eller genom att använda en utlösare. Mer information finns i [pipeline-körning och utlösare i Azure Data Factory](concepts-pipeline-execution-triggers.md) .
 
 ## <a name="common-issues-causes-and-solutions"></a>Vanliga problem, orsaker och lösningar
 
-### <a name="pipeline-with-azure-function-throws-error-with-private-end-point-connectivity"></a>Pipeline med Azure Function genererar fel med privat slut punkts anslutning
+### <a name="an-azure-functions-app-pipeline-throws-an-error-with-private-endpoint-connectivity"></a>En Azure Functions app-pipeline genererar ett fel med anslutning till privat slut punkt
  
-#### <a name="issue"></a>Problem
-För vissa sammanhang har du Data Factory och Azure-Funktionsapp som körs på en privat slut punkt. Du försöker få en pipeline som samverkar med Azure-Funktionsapp för att fungera. Du har provat tre olika metoder, men ett returnerar fel `Bad Request` , de andra två metoderna returnerar `103 Error Forbidden` .
+Du har Data Factory och en Azure Function-app som körs på en privat slut punkt. Du försöker köra en pipeline som samverkar med Function-appen. Du har provat tre olika metoder, men ett returnerar fel "felaktig begäran", och de andra två metoderna returnerar "103-fel förbjuden".
 
-#### <a name="cause"></a>Orsak 
-Data Factory har för närvarande inte stöd för en privat slut punkts koppling för Azure Funktionsapp. Detta bör vara orsaken till varför Azure Funktionsapp avvisar anropen eftersom det skulle konfigureras för att endast tillåta anslutningar från en privat länk.
+**Orsak**: Data Factory för närvarande inte har stöd för en privat slut punkts koppling för Function-appar. Azure Functions avvisar anrop eftersom det har kon figurer ATS för att endast tillåta anslutningar från en privat länk.
 
-#### <a name="resolution"></a>Lösning
-Du kan skapa en privat slut punkt av typen **PrivateLinkService** och tillhandahålla appens DNS-funktion och anslutningen bör fungera.
+**Lösning**: skapa en **PrivateLinkService** -slutpunkt och ange din Function app-DNS.
 
-### <a name="pipeline-run-is-killed-but-the-monitor-still-shows-progress-status"></a>Pipeline-körningen stoppas, men övervakaren visar fortfarande förlopps status
+### <a name="a-pipeline-run-is-canceled-but-the-monitor-still-shows-progress-status"></a>En pipeline-körning avbryts men övervakaren visar fortfarande förlopps status
 
-#### <a name="issue"></a>Problem
-Ofta när du avvisar en pipeline-körning visar pipelinen övervakningen fortfarande förlopps status. Detta inträffar på grund av ett problem i cachen i webbläsaren och du har inte rätt filter för övervakning.
+När du avbryter en pipeline-körning visar pipelinen ofta fortfarande status för förloppet. Detta inträffar på grund av ett problem med webbläsarens cacheminne. Du kanske inte har rätt övervaknings filter.
 
-#### <a name="resolution"></a>Lösning
-Uppdatera webbläsaren och Använd rätt filter för övervakning.
+**Lösning**: uppdatera webbläsaren och tillämpa rätt övervaknings filter.
  
-### <a name="copy-pipeline-failure--found-more-columns-than-expected-column-count-delimitedtextmorecolumnsthandefined"></a>Kopiera pipeline-problem – hittade fler kolumner än förväntat kolumn antal (DelimitedTextMoreColumnsThanDefined)
-
-#### <a name="issue"></a>Problem  
-Om filerna i en viss mapp som du kopierar innehåller filer med olika scheman, till exempel variabel antal kolumner, olika avgränsare, citat teckens inställningar eller vissa data problem, kommer Data Factory pipelinen att köras i det här felet:
+### <a name="you-see-a-delimitedtextmorecolumnsthandefined-error-when-copying-a-pipeline"></a>Du ser ett "DelimitedTextMoreColumnsThanDefined"-fel när du kopierar en pipeline
+ 
+Om en mapp som du kopierar innehåller filer med olika scheman, t. ex. variabel antal kolumner, olika avgränsare, citat teckens inställningar eller vissa data problem kan Data Factory pipelinen leda till det här felet:
 
 `
 Operation on target Copy_sks  failed: Failure happened on 'Sink' side.
@@ -56,51 +50,41 @@ Message=Error found when processing 'Csv/Tsv Format Text' source '0_2020_11_09_1
 Source=Microsoft.DataTransfer.Common,'
 `
 
-#### <a name="resolution"></a>Lösning
-Välj alternativet "binär kopia" när du skapar Kopiera data-aktiviteten. På så sätt kan du, för Mass kopiering eller migrering av data från en Data Lake till en annan, med alternativet **Binary** , Data Factory inte öppna filerna för att läsa schemat, men bara behandla varje fil som binär och kopiera dem till den andra platsen.
+**Lösning**: Välj alternativet för **binär kopia** när du skapar kopierings aktiviteten. På så sätt kan du, för Mass kopiering eller migrering av data från ett data Lake till ett annat, Data Factory inte öppna filerna för att läsa schemat. I stället behandlar Data Factory varje fil som binär och kopierar den till den andra platsen.
 
-### <a name="pipeline-run-fails-when-capacity-limit-of-integration-runtime-is-reached"></a>Pipelinen körs inte när kapacitets gränsen för integration Runtime har uppnåtts
+### <a name="a-pipeline-run-fails-when-you-reach-the-capacity-limit-of-the-integration-runtime"></a>En pipeline-körning fungerar inte när du når kapacitets gränsen för integration runtime
 
-#### <a name="issue"></a>Problem
 Felmeddelande:
 
 `
 Type=Microsoft.DataTransfer.Execution.Core.ExecutionException,Message=There are substantial concurrent MappingDataflow executions which is causing failures due to throttling under Integration Runtime 'AutoResolveIntegrationRuntime'.
 `
 
-Felet indikerar begränsningen av per integration runtime, som för närvarande är 50. Mer information finns i [begränsningar](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#version-2) .
+**Orsak**: du har nått kapacitets gränsen för integration Runtime. Du kanske kör en stor mängd data flöde genom att använda samma integration runtime på samma gång. Se [Azure-prenumeration och tjänst begränsningar, kvoter och begränsningar](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#version-2) för mer information.
 
-Om du kör stor mängd data flöde med samma integration runtime samtidigt kan det orsaka den här typen av fel.
+**Lösning**:
+ 
+- Kör dina pipelines vid olika utlösnings tider.
+- Skapa en ny integrerings körning och dela dina pipeliner över flera integrerings körningar.
 
-#### <a name="resolution"></a>Lösning 
-- Separera de här pipelinen för att köra en annan utlösnings tid.
-- Skapa en ny integrerings körning och dela dessa pipeliner över flera integrerings körningar.
+### <a name="you-have-activity-level-errors-and-failures-in-pipelines"></a>Det finns fel och fel på aktivitets nivå i pipelines
 
-### <a name="how-to-monitor-pipeline-failures-on-regular-interval"></a>Övervaka fel i pipelinen med jämna mellanrum
+Azure Data Factory Orchestration tillåter villkorlig logik och gör det möjligt för användarna att ta olika sökvägar baserat på resultatet av en tidigare aktivitet. Det tillåter fyra villkorliga sökvägar: när det är **klart** (standard pass) vid **haverining** **, och** **vid hoppa över**. 
 
-#### <a name="issue"></a>Problem
-Det finns ofta ett behov av att övervaka Data Factory pipelines i intervall, på 5 minuter. Du kan fråga efter och filtrera pipelinen som körs från en data fabrik med hjälp av slut punkten. 
+Azure Data Factory utvärderar resultatet av alla aktiviteter på lövnivå. Pipeline-resultat fungerar bara om alla löv lyckas. Om en löv aktivitet hoppades över, utvärderar vi dess överordnade aktivitet i stället. 
 
-#### <a name="recommendation"></a>Rekommendation
-1. Konfigurera en Azure Logic-app för att fråga alla misslyckade pipeliner var femte minut.
-2. Sedan kan du rapportera incidenter till vårt biljett system enligt [QueryByFactory](https://docs.microsoft.com/rest/api/datafactory/pipelineruns/querybyfactory).
+**Lösning**
 
-#### <a name="reference"></a>Referens
-- [Externa-skicka aviseringar från Data Factory](https://www.mssqltips.com/sqlservertip/5962/send-notifications-from-an-azure-data-factory-pipeline--part-2/)
+1. Implementera kontroller på aktivitets nivå genom [att följa hur du hanterar pipelines fel och fel](https://techcommunity.microsoft.com/t5/azure-data-factory/understanding-pipeline-failures-and-error-handling/ba-p/1630459).
+1. Använd Azure Logic Apps för att övervaka pipeliner med jämna mellanrum efter [fråga efter fabrik](https://docs.microsoft.com/rest/api/datafactory/pipelineruns/querybyfactory).
 
-### <a name="how-to-handle-activity-level-errors-and-failures-in-pipelines"></a>Hantera fel och fel på aktivitets nivå i pipelines
+## <a name="monitor-pipeline-failures-in-regular-intervals"></a>Övervaka pipeline-problem med jämna mellanrum
 
-#### <a name="issue"></a>Problem
-Azure Data Factory Orchestration tillåter villkorlig logik och gör det möjligt för användaren att ta olika sökvägar baserat på resultat från en tidigare aktivitet. Det tillåter fyra villkorliga sökvägar: "vid lyckad (standard pass)", "vid haveri", "vid slut för ande" och "vid hoppa över". Användning av olika sökvägar tillåts.
+Du kan behöva övervaka misslyckade Data Factory pipeliner i intervall, på 5 minuter. Du kan fråga efter och filtrera pipelinen som körs från en data fabrik med hjälp av slut punkten. 
 
-Azure Data Factory definierar slutförd körning och misslyckad pipeline-körning enligt följande:
+Konfigurera en Azure Logic-app för att fråga alla misslyckade pipeliner var femte minut, enligt beskrivningen i [fråga efter fabrik](https://docs.microsoft.com/rest/api/datafactory/pipelineruns/querybyfactory). Sedan kan du rapportera incidenter till vårt biljett system.
 
-- Utvärdera resultatet för alla aktiviteter på lövnivå. Om en löv aktivitet hoppades över, utvärderar vi dess överordnade aktivitet i stället.
-- Pipeline-resultatet fungerar om och bara om alla löv lyckas.
-
-#### <a name="recommendation"></a>Rekommendation
-- Implementera kontroller på aktivitets nivå efter [hur du hanterar pipelines fel och fel](https://techcommunity.microsoft.com/t5/azure-data-factory/understanding-pipeline-failures-and-error-handling/ba-p/1630459).
-- Använd Azure Logic app för att övervaka pipelines i regelbundna intervall efter [fråga från DataFactory]( https://docs.microsoft.com/rest/api/datafactory/pipelineruns/querybyfactory).
+Mer information finns i [skicka meddelanden från Data Factory, del 2](https://www.mssqltips.com/sqlservertip/5962/send-notifications-from-an-azure-data-factory-pipeline--part-2/).
 
 ## <a name="next-steps"></a>Nästa steg
 

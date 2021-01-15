@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/06/2020
 ms.author: steveesp
-ms.openlocfilehash: 0b009b7c44084e76194c1447fefdb2ff59f8086a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7a2f6750a4d0a48c6971f60241976fb55410b65c
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91812292"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98221450"
 ---
 # <a name="bandwidththroughput-testing-ntttcp"></a>Test av bandbredd/data flöde (NTTTCP)
 
@@ -26,7 +26,7 @@ När du testar nätverks data flödes prestanda i Azure är det bäst att använ
 Kopiera verktyget till två virtuella Azure-datorer med samma storlek. En virtuell dator fungerar som avsändare och den andra som mottagare.
 
 #### <a name="deploying-vms-for-testing"></a>Distribuera virtuella datorer för testning
-För det här testet ska de två virtuella datorerna finnas i samma [närhets placerings grupp](../virtual-machines/windows/co-location.md) eller samma tillgänglighets uppsättning så att vi kan använda sina interna IP-adresser och undanta belastningsutjämnaren från testet. Det går att testa med VIP men den här typen av testning är utanför det här dokumentets omfattning.
+För det här testet ska de två virtuella datorerna finnas i samma [närhets placerings grupp](../virtual-machines/co-location.md) eller samma tillgänglighets uppsättning så att vi kan använda sina interna IP-adresser och undanta belastningsutjämnaren från testet. Det går att testa med VIP men den här typen av testning är utanför det här dokumentets omfattning.
 
 Anteckna MOTTAGAREns IP-adress. Vi kallar IP "a. b. c. r"
 
@@ -65,7 +65,7 @@ Tillåt ntttcp via Windows-brandväggen så här:
 
 netsh advfirewall Firewall Add Rule program = \<PATH\> \\ntttcp.exe Name = "ntttcp" Protocol = any dir = in Action = Allow Enable = Ja Profile = any
 
-Om du till exempel har kopierat ntttcp.exe till mappen "c: \\ Tools", är detta kommandot: 
+Om du till exempel har kopierat ntttcp.exe till mappen "c: \\ Tools", är detta kommandot: 
 
 netsh advfirewall Firewall Add Rule program = c: \\ tools \\ntttcp.exe Name = "ntttcp" Protocol = any dir = in Action = Allow Enable = Ja Profile = any
 
@@ -82,7 +82,7 @@ ntttcp-r – m 8, \* , 10.0.0.4-t 300
 
 Starta NTTTCP på avsändaren (**Kör från cmd**, inte från PowerShell):
 
-ntttcp – s – m 8, \* , 10.0.0.4-t 300 
+ntttcp – s – m 8, \* , 10.0.0.4-t 300 
 
 Vänta på resultaten.
 
@@ -95,19 +95,19 @@ På virtuella Linux-datorer (både sändare och mottagare) kör du dessa kommand
 
 CentOS – Installera git:
 ``` bash
-  yum install gcc -y  
-  yum install git -y
+  yum install gcc -y  
+  yum install git -y
 ```
 Ubuntu – Installera git:
 ``` bash
- apt-get -y install build-essential  
- apt-get -y install git
+ apt-get -y install build-essential  
+ apt-get -y install git
 ```
 Gör och installera på båda:
 ``` bash
- git clone https://github.com/Microsoft/ntttcp-for-linux
- cd ntttcp-for-linux/src
- make && make install
+ git clone https://github.com/Microsoft/ntttcp-for-linux
+ cd ntttcp-for-linux/src
+ make && make install
 ```
 
 Som i Windows-exemplet antar vi att Linux-MOTTAGAREns IP-adress är 10.0.0.4
@@ -123,7 +123,7 @@ Och på avsändaren kör:
 ``` bash
 ntttcp -s10.0.0.4 -t 300
 ```
- 
+ 
 Test längden är som standard 60 sekunder om ingen tids parameter anges
 
 ## <a name="testing-between-vms-running-windows-and-linux"></a>Testning mellan virtuella datorer som kör Windows och LINUX:

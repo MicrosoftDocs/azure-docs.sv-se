@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e28714e2557027a3f8f5504f7052973a77720b6
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: f83e5584f8f9c6823e1259cb5e6034d8b13ae3a6
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97744263"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222385"
 ---
 # <a name="securing-external-access-with-groups"></a>Skydda extern åtkomst med grupper 
 
@@ -102,7 +102,7 @@ Både Azure AD-säkerhetsgrupper och Microsoft 365 grupper kan skapas från Azur
 
 |Överväganden | Azure AD-säkerhetsgrupper (manuellt och dynamiskt)| Microsoft 365 grupper |
 | - | - | - |
-| Vad kan gruppen innehålla?| Användare<br>Grupper<br>Tjänstprinciper<br>Enheter| Endast användare |
+| Vad kan gruppen innehålla?| Användare<br>Grupper<br>Tjänstprinciper<br>Egenskaper| Endast användare |
 | Var skapas gruppen?| Azure AD-Portal<br>M365 portal (om du vill att e-post ska vara aktive rad)<br>PowerShell<br>Microsoft Graph<br>Slut användar Portal| M365-portalen<br>Azure AD-Portal<br>PowerShell<br>Microsoft Graph<br>I Microsoft 365 program |
 | Vem skapar som standard?| Administratörer <br>Slutanvändare| Administratörer<br>Slutanvändare |
 | Vem kan läggas till som standard?| Interna användare (medlemmar)| Klient medlemmar och gäster från vilken organisation som helst |

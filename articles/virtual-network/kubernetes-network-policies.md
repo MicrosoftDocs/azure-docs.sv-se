@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 9/25/2018
 ms.author: aanandr
 ms.custom: ''
-ms.openlocfilehash: 36e5bb33b7d555c3b457b63f94d9032ff390e6cb
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: b7c683edd15ab05e9efc239ffe07759078754607
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92342322"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222657"
 ---
 # <a name="azure-kubernetes-network-policies-overview"></a>Översikt över Azure Kubernetes Network policies
 
@@ -38,7 +38,7 @@ När du implementerar säkerheten för klustret ska du använda nätverks säker
 Azure NPM kan användas på följande sätt för att tillhandahålla Micro-segmentering för poddar.
 
 ### <a name="azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS)
-NPM finns inbyggt i AKS och kan aktive ras när klustret skapas. Läs mer om det i [skydda trafik mellan poddar med hjälp av nätverks principer i Azure Kubernetes service (AKS)](https://docs.microsoft.com/azure/aks/use-network-policies).
+NPM finns inbyggt i AKS och kan aktive ras när klustret skapas. Läs mer om det i [skydda trafik mellan poddar med hjälp av nätverks principer i Azure Kubernetes service (AKS)](../aks/use-network-policies.md).
 
 ### <a name="aks-engine"></a>AKS-motor
 AKS-Engine är ett verktyg som genererar en Azure Resource Manager-mall för distributionen av ett Kubernetes-kluster i Azure. Klusterkonfigurationen anges i en JSON-fil som överförs till verktyget när mallen skapas. Läs mer om hela listan med klusterinställningar som stöds och beskrivningar av dessa i Microsoft Azure Container Service Engine - Cluster Definition.
@@ -112,7 +112,7 @@ Användare har tidigare bara kunnat lära sig om sin nätverks konfiguration med
 ### <a name="supported-metrics"></a>Mått som stöds
 Följande är en lista över mått som stöds:
 
-|Måttnamn |Beskrivning  |Prometheus Metric-typ  |Etiketter  |
+|Måttnamn |Description  |Prometheus Metric-typ  |Etiketter  |
 |---------|---------|---------|---------|
 |`npm_num_policies`     |Antal nätverks principer          |Mätare         |-         |
 |`npm_num_iptables_rules`     | antal program varan iptables-regler     | Mätare        |-         |         
@@ -130,7 +130,7 @@ Det finns också ett mått för "exec_time_count" och "exec_time_sum" för varje
 Måtten kan kasseras genom Azure Monitor för behållare eller via Prometheus.
 
 ### <a name="setup-for-azure-monitor"></a>Installations program för Azure Monitor
-Det första steget är att aktivera Azure Monitor för behållare för ditt Kubernetes-kluster. Du hittar stegen i [Azure Monitor for containers Overview](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-overview). När du har Azure Monitor för behållare aktiverade konfigurerar du [Azure Monitor for containers ConfigMap](https://aka.ms/container-azm-ms-agentconfig) för att aktivera NPM-integrering och insamling av Prometheus NPM-mått. Azure Monitor for containers ConfigMap har ett ```integrations``` avsnitt med inställningar för att samla in NPM-mått. De här inställningarna är inaktiverade som standard i ConfigMap. När du aktiverar den grundläggande inställningen ```collect_basic_metrics = true``` samlas Basic NPM-mått in. Om du aktiverar avancerad inställning ```collect_advanced_metrics = true``` samlas avancerade mått utöver de grundläggande måtten. 
+Det första steget är att aktivera Azure Monitor för behållare för ditt Kubernetes-kluster. Du hittar stegen i [Azure Monitor for containers Overview](../azure-monitor/insights/container-insights-overview.md). När du har Azure Monitor för behållare aktiverade konfigurerar du [Azure Monitor for containers ConfigMap](https://aka.ms/container-azm-ms-agentconfig) för att aktivera NPM-integrering och insamling av Prometheus NPM-mått. Azure Monitor for containers ConfigMap har ett ```integrations``` avsnitt med inställningar för att samla in NPM-mått. De här inställningarna är inaktiverade som standard i ConfigMap. När du aktiverar den grundläggande inställningen ```collect_basic_metrics = true``` samlas Basic NPM-mått in. Om du aktiverar avancerad inställning ```collect_advanced_metrics = true``` samlas avancerade mått utöver de grundläggande måtten. 
 
 När du har redigerat ConfigMap sparar du det lokalt och tillämpar ConfigMap på klustret på följande sätt.
 
@@ -143,7 +143,7 @@ integrations: |-
 ```
 Avancerade mått är valfria och när du aktiverar dem aktive ras automatiskt grundläggande mått samling. Avancerade mått omfattar för närvarande endast `npm_ipset_counts`
 
-Läs mer om [Azure Monitor för inställningar för behållare samling i config Map](https://aka.ms/azmon-containers-agent-collection-settings-doc)
+Läs mer om [Azure Monitor för inställningar för behållare samling i config Map](../azure-monitor/insights/container-insights-agent-config.md)
 
 ### <a name="visualization-options-for-azure-monitor"></a>Visualiserings alternativ för Azure Monitor
 När NPM mått samling har Aktiver ATS kan du visa måtten i Azure Portal med hjälp av container Insights eller i Grafana.
@@ -154,7 +154,7 @@ När NPM mått samling har Aktiver ATS kan du visa måtten i Azure Portal med hj
 Förutom att Visa arbets boken (bilder nedan), kan du också direkt fråga Prometheus-måtten i "logs" i avsnittet insikter. Den här frågan returnerar till exempel alla mått som samlas in.
 | där TimeGenerated > sedan (5H) | där namnet innehåller "npm_"
 
-Du kan också fråga Log Analytics direkt för måtten. Lär dig mer om det med [komma igång med Log Analytics frågor](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-log-search) 
+Du kan också fråga Log Analytics direkt för måtten. Lär dig mer om det med [komma igång med Log Analytics frågor](../azure-monitor/insights/container-insights-log-search.md) 
 
 #### <a name="viewing-in-grafana-dashboard"></a>Visa på Grafana-instrumentpanelen
 Konfigurera din Grafana-Server och konfigurera en Log Analytics data källa enligt beskrivningen [här](https://grafana.com/grafana/plugins/grafana-azure-monitor-datasource). Importera sedan [Grafana-instrumentpanelen med en Log Analytics Server](https://grafana.com/grafana/dashboards/10956) del till dina Grafana-labb.
@@ -266,4 +266,3 @@ Här följer några exempel på instrument paneler för NPM-mått i container In
 -  Lär dig mer om [behållar nätverk](container-networking-overview.md).
 - [Distribuera plugin-programmet](deploy-container-networking.md) för Kubernetes-kluster eller Docker-behållare.
 
-    

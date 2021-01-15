@@ -4,12 +4,12 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 10/21/2020
 ms.author: ccompy
-ms.openlocfilehash: 57b2955f8cec059cd20d353eba31dc39ad992d50
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 3f9dd35959980eef4e1bec550bf7e9f583cf30d2
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97506262"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98225209"
 ---
 Genom att använda regional VNet-integrering kan din app komma åt:
 
@@ -19,7 +19,7 @@ Genom att använda regional VNet-integrering kan din app komma åt:
 * Resurser över Azure ExpressRoute-anslutningar.
 * Resurser i det virtuella nätverk som du är integrerad med.
 * Resurser mellan peer-anslutningar, inklusive Azure ExpressRoute-anslutningar.
-* Privata slut punkter 
+* Privata slutpunkter 
 
 När du använder VNet-integrering med virtuella nätverk i samma region kan du använda följande funktioner i Azure-nätverk:
 
@@ -48,7 +48,6 @@ Det finns vissa begränsningar med att använda VNet-integrering med virtuella n
 * Funktionen kräver ett oanvänt undernät som är a/28 eller större i ett Azure Resource Manager VNet.
 * Appen och VNet måste finnas i samma region.
 * Du kan inte ta bort ett VNet med en integrerad app. Ta bort integrationen innan du tar bort det virtuella nätverket.
-* Du kan bara integrera med virtuella nätverk i samma prenumeration som appen.
 * Du kan bara ha en regional VNet-integration per App Service plan. Flera appar i samma App Service plan kan använda samma VNet.
 * Du kan inte ändra prenumerationen på en app eller en plan när det finns en app som använder regional VNet-integrering.
 * Din app kan inte matcha adresser i Azure DNS Private Zones utan konfigurations ändringar
@@ -108,7 +107,7 @@ De här inställningarna kommer att skicka alla utgående samtal från din app t
 > [!NOTE]
 >Det går inte att lägga till en anpassad domän i en webbapp som använder Privat DNS zon med VNET-integration. Anpassad domän verifiering görs på styrenhets nivå, inte på arbets nivå, vilket förhindrar att DNS-poster visas. Om du vill använda en anpassad domän från en Privat DNS zon måste verifieringen kringgås med en Application Gateway-eller ILB-App Service-miljön.
 
-### <a name="private-endpoints"></a>Privata slut punkter
+### <a name="private-endpoints"></a>Privata slutpunkter
 
 Om du vill göra anrop till [privata slut punkter][privateendpoints]måste du kontrol lera att dina DNS-sökningar kommer att matcha den privata slut punkten. För att säkerställa att DNS-sökningarna från din app pekar på dina privata slut punkter kan du:
 

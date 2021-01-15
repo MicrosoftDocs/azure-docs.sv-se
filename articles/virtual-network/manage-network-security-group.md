@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/13/2020
 ms.author: kumud
-ms.openlocfilehash: 42efc2bee88f073f2a628b1d2041afcc310cb871
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d42e0f5594fdde55f1b4183a806e388658e86dc3
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91822967"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222946"
 ---
 # <a name="create-change-or-delete-a-network-security-group"></a>Skapa, ändra eller ta bort en nätverkssäkerhetsgrupp
 
-Säkerhets regler i nätverks säkerhets grupper gör att du kan filtrera den typ av nätverks trafik som kan flöda in i och ut ur virtuella nätverks under nät och nätverks gränssnitt. Mer information om nätverks säkerhets grupper finns i [Översikt över nätverks säkerhets](security-overview.md)grupper. Nu ska du gå igenom självstudien [filtrera nätverks trafik](tutorial-filter-network-traffic.md) för att få lite erfarenhet av nätverks säkerhets grupper.
+Säkerhets regler i nätverks säkerhets grupper gör att du kan filtrera den typ av nätverks trafik som kan flöda in i och ut ur virtuella nätverks under nät och nätverks gränssnitt. Mer information om nätverks säkerhets grupper finns i [Översikt över nätverks säkerhets](./network-security-groups-overview.md)grupper. Nu ska du gå igenom självstudien [filtrera nätverks trafik](tutorial-filter-network-traffic.md) för att få lite erfarenhet av nätverks säkerhets grupper.
 
 ## <a name="before-you-begin"></a>Innan du börjar
 
@@ -48,7 +48,7 @@ Det finns en gräns för hur många nätverks säkerhets grupper du kan skapa f�
 
 1. I menyn i [Azure-portalen](https://portal.azure.com) eller på sidan **Start** väljer du **Skapa en resurs**.
 
-2. Välj **nätverk**och välj sedan **nätverks säkerhets grupp**.
+2. Välj **nätverk** och välj sedan **nätverks säkerhets grupp**.
 
 3. På sidan **skapa nätverks säkerhets grupp** går du till fliken **grundläggande** och anger värden för följande inställningar:
 
@@ -87,15 +87,15 @@ Gå till [Azure Portal](https://portal.azure.com) för att se dina nätverks sä
 
 2. Välj namnet på din nätverks säkerhets grupp.
 
-I meny fältet i nätverks säkerhets gruppen, under **Inställningar**, kan du Visa de **inkommande säkerhets reglerna**, **utgående säkerhets regler**, **nätverks gränssnitt**och **undernät** som nätverks säkerhets gruppen är kopplad till.
+I meny fältet i nätverks säkerhets gruppen, under **Inställningar**, kan du Visa de **inkommande säkerhets reglerna**, **utgående säkerhets regler**, **nätverks gränssnitt** och **undernät** som nätverks säkerhets gruppen är kopplad till.
 
-Under **övervakning**kan du aktivera eller inaktivera **diagnostikinställningar**. Under **support + fel sökning**kan du Visa **effektiva säkerhets regler**. Läs mer i [diagnostisk loggning för en nätverks säkerhets grupp](virtual-network-nsg-manage-log.md) och [diagnostisera ett problem med trafik filter för virtuella datorer](diagnose-network-traffic-filter-problem.md).
+Under **övervakning** kan du aktivera eller inaktivera **diagnostikinställningar**. Under **support + fel sökning** kan du Visa **effektiva säkerhets regler**. Läs mer i [diagnostisk loggning för en nätverks säkerhets grupp](virtual-network-nsg-manage-log.md) och [diagnostisera ett problem med trafik filter för virtuella datorer](diagnose-network-traffic-filter-problem.md).
 
 Mer information om de vanliga Azure-inställningarna i listan finns i följande artiklar:
 
 - [Aktivitetslogg](../azure-monitor/platform/platform-logs-overview.md)
 - [Åtkomstkontroll (IAM)](../role-based-access-control/overview.md)
-- [Taggen](../azure-resource-manager/management/tag-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+- [Taggar](../azure-resource-manager/management/tag-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [Lås](../azure-resource-manager/management/lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [Automationsskript](../azure-resource-manager/templates/export-template-portal.md)
 
@@ -156,23 +156,23 @@ Det finns en gräns för hur många regler per nätverks säkerhets grupp som du
 
 3. I meny raden för nätverks säkerhets gruppen väljer du **inkommande säkerhets regler** eller **utgående säkerhets regler**.
 
-    Flera befintliga regler visas, inklusive några som du kanske inte har lagt till. När du skapar en nätverks säkerhets grupp skapas flera standard säkerhets regler i den. Mer information finns i [Standard säkerhets regler](security-overview.md#default-security-rules).  Du kan inte ta bort standard säkerhets regler, men du kan åsidosätta dem med regler som har högre prioritet.
+    Flera befintliga regler visas, inklusive några som du kanske inte har lagt till. När du skapar en nätverks säkerhets grupp skapas flera standard säkerhets regler i den. Mer information finns i [Standard säkerhets regler](./network-security-groups-overview.md#default-security-rules).  Du kan inte ta bort standard säkerhets regler, men du kan åsidosätta dem med regler som har högre prioritet.
 
 4. <a name="security-rule-settings"></a>Välj **Lägg till**. Välj eller Lägg till värden för följande inställningar och välj sedan **OK**:
 
     | Inställning | Värde | Information |
     | ------- | ----- | ------- |
-    | **Källa** | En av:<ul><li>**Alla**</li><li>**IP-adresser**</li><li>**Service tag** (inkommande säkerhets regel) eller **VirtualNetwork** (utgående säkerhets regel)</li><li>**Program &nbsp; säkerhets &nbsp; grupp**</li></ul> | <p>Om du väljer **IP-adresser**måste du även ange **Källans IP-adresser/CIDR-intervall**.</p><p>Om du väljer **service tag**kan du också välja en **source service-tagg**.</p><p>Om du väljer **program säkerhets grupp**måste du också välja en befintlig program säkerhets grupp. Om du väljer **program säkerhets grupp** för både **källa** och **mål**måste nätverks gränssnitten i båda program säkerhets grupperna finnas i samma virtuella nätverk.</p> |
-    | **Käll-IP-adresser/CIDR-intervall** | En kommaavgränsad lista över IP-adresser och CIDR-intervall (Classless Interdomain Routing) | <p>Den här inställningen visas om du ändrar **källa** till **IP-adresser**. Du måste ange ett enskilt värde eller en kommaavgränsad lista med flera värden. Ett exempel på flera värden är `10.0.0.0/16, 192.188.1.1` . Det finns gränser för antalet värden som du kan ange. Mer information finns i [Azure-gränser](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).</p><p>Om den IP-adress du anger är tilldelad till en virtuell Azure-dator anger du dess privata IP-adress, inte dess offentliga IP-adress. Azure bearbetar säkerhets regler efter att den översätter den offentliga IP-adressen till en privat IP-adress för inkommande säkerhets regler, men innan den översätter en privat IP-adress till en offentlig IP-adress för utgående regler. Mer information om offentliga och privata IP-adresser i Azure finns i [IP-diagramtyper](virtual-network-ip-addresses-overview-arm.md).</p> |
-    | **Käll tjänst tag gen** | En service tag från List rutan | Den här valfria inställningen visas om du anger taggen **Source** to **service** för en inkommande säkerhets regel. En service tag är en fördefinierad identifierare för en kategori med IP-adresser. Om du vill veta mer om tillgängliga Service märken och hur varje tagg representerar, se [service Taggar](security-overview.md#service-tags). |
+    | **Källa** | En av:<ul><li>**Alla**</li><li>**IP-adresser**</li><li>**Service tag** (inkommande säkerhets regel) eller **VirtualNetwork** (utgående säkerhets regel)</li><li>**Program &nbsp; säkerhets &nbsp; grupp**</li></ul> | <p>Om du väljer **IP-adresser** måste du även ange **Källans IP-adresser/CIDR-intervall**.</p><p>Om du väljer **service tag** kan du också välja en **source service-tagg**.</p><p>Om du väljer **program säkerhets grupp** måste du också välja en befintlig program säkerhets grupp. Om du väljer **program säkerhets grupp** för både **källa** och **mål** måste nätverks gränssnitten i båda program säkerhets grupperna finnas i samma virtuella nätverk.</p> |
+    | **Käll-IP-adresser/CIDR-intervall** | En kommaavgränsad lista över IP-adresser och CIDR-intervall (Classless Interdomain Routing) | <p>Den här inställningen visas om du ändrar **källa** till **IP-adresser**. Du måste ange ett enskilt värde eller en kommaavgränsad lista med flera värden. Ett exempel på flera värden är `10.0.0.0/16, 192.188.1.1` . Det finns gränser för antalet värden som du kan ange. Mer information finns i [Azure-gränser](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).</p><p>Om den IP-adress du anger är tilldelad till en virtuell Azure-dator anger du dess privata IP-adress, inte dess offentliga IP-adress. Azure bearbetar säkerhets regler efter att den översätter den offentliga IP-adressen till en privat IP-adress för inkommande säkerhets regler, men innan den översätter en privat IP-adress till en offentlig IP-adress för utgående regler. Mer information om offentliga och privata IP-adresser i Azure finns i [IP-diagramtyper](./public-ip-addresses.md).</p> |
+    | **Käll tjänst tag gen** | En service tag från List rutan | Den här valfria inställningen visas om du anger taggen **Source** to **service** för en inkommande säkerhets regel. En service tag är en fördefinierad identifierare för en kategori med IP-adresser. Om du vill veta mer om tillgängliga Service märken och hur varje tagg representerar, se [service Taggar](./network-security-groups-overview.md#service-tags). |
     | **Säkerhets grupp för käll program** | En befintlig program säkerhets grupp | Den här inställningen visas om du anger **källa** till **program säkerhets grupp**. Välj en program säkerhets grupp som finns i samma region som nätverks gränssnittet. Lär dig hur du [skapar en program säkerhets grupp](#create-an-application-security-group). |
     | **Källportintervall** | En av:<ul><li>En enda port, till exempel `80`</li><li>Ett port intervall, till exempel `1024-65535`</li><li>En kommaavgränsad lista över enskilda portar och/eller port intervall, till exempel `80, 1024-65535`</li><li>En asterisk ( `*` ) för att tillåta trafik på vilken port som helst</li></ul> | Den här inställningen anger vilka portar som regeln tillåter eller nekar trafik. Det finns gränser för antalet portar som du kan ange. Mer information finns i [Azure-gränser](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits). |
-    | **Mål** | En av:<ul><li>**Alla**</li><li>**IP-adresser**</li><li>**Service tag** (utgående säkerhets regel) eller **VirtualNetwork** (inkommande säkerhets regel)</li><li>**Program &nbsp; säkerhets &nbsp; grupp**</li></ul> | <p>Om du väljer **IP-adresser**anger du även **mål-IP-adresser/CIDR-intervall**.</p><p>Om du väljer **VirtualNetwork**tillåts trafik till alla IP-adresser i det virtuella nätverkets adress utrymme. **VirtualNetwork** är en service tag.</p><p>Om du väljer **program säkerhets grupp**måste du sedan välja en befintlig program säkerhets grupp. Lär dig hur du [skapar en program säkerhets grupp](#create-an-application-security-group).</p> |
-    | **Mål-IP-adresser/CIDR-intervall** | En kommaavgränsad lista med IP-adresser och CIDR-intervall | <p>Den här inställningen visas om du ändrar **målet** till **IP-adresser**. Precis som **käll** **-och käll-IP-adresser/CIDR-intervall**kan du ange en eller flera adresser eller intervall. Det finns gränser för antalet som du kan ange. Mer information finns i [Azure-gränser](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).</p><p>Om den IP-adress du anger är tilldelad till en virtuell Azure-dator måste du ange dess privata IP-adress, inte dess offentliga IP-adress. Azure bearbetar säkerhets regler efter att den översätter den offentliga IP-adressen till en privat IP-adress för inkommande säkerhets regler, men innan Azure översätter en privat IP-adress till en offentlig IP-adress för utgående regler. Mer information om offentliga och privata IP-adresser i Azure finns i [IP-diagramtyper](virtual-network-ip-addresses-overview-arm.md).</p> |
-    | **Måltjänsttagg** | En service tag från List rutan | Den här valfria inställningen visas om du ändrar **målet** till **service tag** för en utgående säkerhets regel. En service tag är en fördefinierad identifierare för en kategori med IP-adresser. Om du vill veta mer om tillgängliga Service märken och hur varje tagg representerar, se [service Taggar](security-overview.md#service-tags). |
+    | **Mål** | En av:<ul><li>**Alla**</li><li>**IP-adresser**</li><li>**Service tag** (utgående säkerhets regel) eller **VirtualNetwork** (inkommande säkerhets regel)</li><li>**Program &nbsp; säkerhets &nbsp; grupp**</li></ul> | <p>Om du väljer **IP-adresser** anger du även **mål-IP-adresser/CIDR-intervall**.</p><p>Om du väljer **VirtualNetwork** tillåts trafik till alla IP-adresser i det virtuella nätverkets adress utrymme. **VirtualNetwork** är en service tag.</p><p>Om du väljer **program säkerhets grupp** måste du sedan välja en befintlig program säkerhets grupp. Lär dig hur du [skapar en program säkerhets grupp](#create-an-application-security-group).</p> |
+    | **Mål-IP-adresser/CIDR-intervall** | En kommaavgränsad lista med IP-adresser och CIDR-intervall | <p>Den här inställningen visas om du ändrar **målet** till **IP-adresser**. Precis som **käll** **-och käll-IP-adresser/CIDR-intervall** kan du ange en eller flera adresser eller intervall. Det finns gränser för antalet som du kan ange. Mer information finns i [Azure-gränser](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).</p><p>Om den IP-adress du anger är tilldelad till en virtuell Azure-dator måste du ange dess privata IP-adress, inte dess offentliga IP-adress. Azure bearbetar säkerhets regler efter att den översätter den offentliga IP-adressen till en privat IP-adress för inkommande säkerhets regler, men innan Azure översätter en privat IP-adress till en offentlig IP-adress för utgående regler. Mer information om offentliga och privata IP-adresser i Azure finns i [IP-diagramtyper](./public-ip-addresses.md).</p> |
+    | **Måltjänsttagg** | En service tag från List rutan | Den här valfria inställningen visas om du ändrar **målet** till **service tag** för en utgående säkerhets regel. En service tag är en fördefinierad identifierare för en kategori med IP-adresser. Om du vill veta mer om tillgängliga Service märken och hur varje tagg representerar, se [service Taggar](./network-security-groups-overview.md#service-tags). |
     | **Säkerhets grupp för mål program** | En befintlig program säkerhets grupp | Den här inställningen visas om du anger **mål** för **program säkerhets gruppen**. Välj en program säkerhets grupp som finns i samma region som nätverks gränssnittet. Lär dig hur du [skapar en program säkerhets grupp](#create-an-application-security-group). |
-    | **Målportintervall** | En av:<ul><li>En enda port, till exempel `80`</li><li>Ett port intervall, till exempel `1024-65535`</li><li>En kommaavgränsad lista över enskilda portar och/eller port intervall, till exempel `80, 1024-65535`</li><li>En asterisk ( `*` ) för att tillåta trafik på vilken port som helst</li></ul> | Precis som med **käll ports intervall**kan du ange en eller flera portar och intervall. Det finns gränser för antalet som du kan ange. Mer information finns i [Azure-gränser](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits). |
-    | **Protokoll** | **Valfri**, **TCP**, **UDP**eller **ICMP** | Du kan begränsa regeln till Transmission Control Protocol (TCP), User Datagram Protocol (UDP) eller Internet Control Message Protocol (ICMP). Standard regeln gäller för alla protokoll. |
+    | **Målportintervall** | En av:<ul><li>En enda port, till exempel `80`</li><li>Ett port intervall, till exempel `1024-65535`</li><li>En kommaavgränsad lista över enskilda portar och/eller port intervall, till exempel `80, 1024-65535`</li><li>En asterisk ( `*` ) för att tillåta trafik på vilken port som helst</li></ul> | Precis som med **käll ports intervall** kan du ange en eller flera portar och intervall. Det finns gränser för antalet som du kan ange. Mer information finns i [Azure-gränser](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits). |
+    | **Protokoll** | **Valfri**, **TCP**, **UDP** eller **ICMP** | Du kan begränsa regeln till Transmission Control Protocol (TCP), User Datagram Protocol (UDP) eller Internet Control Message Protocol (ICMP). Standard regeln gäller för alla protokoll. |
     | **Åtgärd** | **Tillåt** eller **neka** | Den här inställningen anger om den här regeln tillåter eller nekar åtkomst för den angivna käll-och mål konfigurationen. |
     | **Priority** | Ett värde mellan 100 och 4096 som är unikt för alla säkerhets regler i nätverks säkerhets gruppen | Azure bearbetar säkerhets regler i prioritetsordning. Ju lägre siffra, desto högre prioritet. Vi rekommenderar att du lämnar ett mellanrum mellan prioritets nummer när du skapar regler, till exempel 100, 200 och 300. Om du lämnar luckor blir det enklare att lägga till regler i framtiden, så att du kan ge dem högre eller lägre prioritet än befintliga regler. |
     | **Namn** | Ett unikt namn för regeln inom nätverks säkerhets gruppen | Namnet kan bestå av upp till 80 tecken. Det måste börja med en bokstav eller en siffra och måste sluta med en bokstav, en siffra eller ett under streck. Namnet får bara innehålla bokstäver, siffror, under streck, punkter eller bindestreck. |
@@ -187,7 +187,7 @@ Det finns en gräns för hur många regler per nätverks säkerhets grupp som du
 
 ### <a name="view-all-security-rules"></a>Visa alla säkerhets regler
 
-En nätverks säkerhets grupp innehåller noll eller flera regler. Mer information om den information som visas när du visar regler finns i [Översikt över nätverks säkerhets grupper](security-overview.md).
+En nätverks säkerhets grupp innehåller noll eller flera regler. Mer information om den information som visas när du visar regler finns i [Översikt över nätverks säkerhets grupper](./network-security-groups-overview.md).
 
 1. Gå till [Azure Portal](https://portal.azure.com) om du vill se reglerna för en nätverks säkerhets grupp. Sök efter och välj **nätverks säkerhets grupper**.
 
@@ -195,7 +195,7 @@ En nätverks säkerhets grupp innehåller noll eller flera regler. Mer informati
 
 3. I meny raden för nätverks säkerhets gruppen väljer du **inkommande säkerhets regler** eller **utgående säkerhets regler**.
 
-Listan innehåller alla regler som du har skapat och nätverks säkerhets gruppens [Standard säkerhets regler](security-overview.md#default-security-rules).
+Listan innehåller alla regler som du har skapat och nätverks säkerhets gruppens [Standard säkerhets regler](./network-security-groups-overview.md#default-security-rules).
 
 #### <a name="commands"></a>Kommandon
 
@@ -258,7 +258,7 @@ Listan innehåller alla regler som du har skapat och nätverks säkerhets gruppe
 
 ## <a name="work-with-application-security-groups"></a>Arbeta med programsäkerhetsgrupper
 
-En program säkerhets grupp innehåller noll eller flera nätverks gränssnitt. Mer information finns i [program säkerhets grupper](security-overview.md#application-security-groups). Alla nätverks gränssnitt i en program säkerhets grupp måste finnas i samma virtuella nätverk. Information om hur du lägger till ett nätverks gränssnitt i en program säkerhets grupp finns i [lägga till ett nätverks gränssnitt i en program säkerhets grupp](virtual-network-network-interface.md#add-to-or-remove-from-application-security-groups).
+En program säkerhets grupp innehåller noll eller flera nätverks gränssnitt. Mer information finns i [program säkerhets grupper](./network-security-groups-overview.md#application-security-groups). Alla nätverks gränssnitt i en program säkerhets grupp måste finnas i samma virtuella nätverk. Information om hur du lägger till ett nätverks gränssnitt i en program säkerhets grupp finns i [lägga till ett nätverks gränssnitt i en program säkerhets grupp](virtual-network-network-interface.md#add-to-or-remove-from-application-security-groups).
 
 ### <a name="create-an-application-security-group"></a>Skapa en program säkerhets grupp
 
@@ -279,7 +279,7 @@ En program säkerhets grupp innehåller noll eller flera nätverks gränssnitt. 
 
 5. Välj **Granska + skapa**.
 
-6. Klicka på **skapa**på fliken **Granska + skapa** när du ser meddelandet **valideringen har skickats** .
+6. Klicka på **skapa** på fliken **Granska + skapa** när du ser meddelandet **valideringen har skickats** .
 
 #### <a name="commands"></a>Kommandon
 
@@ -340,7 +340,7 @@ Du kan inte ta bort en program säkerhets grupp om den innehåller nätverks gr�
 
 2. Välj namnet på den program säkerhets grupp som du vill ta bort.
 
-3. Välj **ta bort**och välj sedan **Ja** för att ta bort program säkerhets gruppen.
+3. Välj **ta bort** och välj sedan **Ja** för att ta bort program säkerhets gruppen.
 
 #### <a name="commands"></a>Kommandon
 
@@ -355,7 +355,7 @@ Om du vill utföra uppgifter i nätverks säkerhets grupper, säkerhets regler o
 
 ### <a name="network-security-group"></a>Nätverkssäkerhetsgrupp
 
-| Action                                                        |   Namn                                                                |
+| Action                                                        |   Name                                                                |
 |-------------------------------------------------------------- |   -------------------------------------------                         |
 | Microsoft. Network/networkSecurityGroups/Read                  |   Hämta nätverks säkerhets grupp                                          |
 | Microsoft. Network/networkSecurityGroups/Write                 |   Skapa eller uppdatera nätverks säkerhets grupp                             |
@@ -364,7 +364,7 @@ Om du vill utföra uppgifter i nätverks säkerhets grupper, säkerhets regler o
 
 ### <a name="network-security-group-rule"></a>Regel för nätverks säkerhets grupp
 
-| Action                                                        |   Namn                                                                |
+| Action                                                        |   Name                                                                |
 |-------------------------------------------------------------- |   -------------------------------------------                         |
 | Microsoft. Network/networkSecurityGroups/securityRules/Read            |   Hämta regel                                                            |
 | Microsoft. Network/networkSecurityGroups/securityRules/Write           |   Skapa eller uppdatera regel                                               |
@@ -372,7 +372,7 @@ Om du vill utföra uppgifter i nätverks säkerhets grupper, säkerhets regler o
 
 ### <a name="application-security-group"></a>Programsäkerhetsgrupp
 
-| Action                                                                     | Namn                                                     |
+| Action                                                                     | Name                                                     |
 | --------------------------------------------------------------             | -------------------------------------------              |
 | Microsoft. Network/applicationSecurityGroups/joinIpConfiguration/Action     | Koppla en IP-konfiguration till en program säkerhets grupp|
 | Microsoft. Network/applicationSecurityGroups/joinNetworkSecurityRule/Action | Koppla en säkerhets regel till en program säkerhets grupp    |
@@ -383,4 +383,4 @@ Om du vill utföra uppgifter i nätverks säkerhets grupper, säkerhets regler o
 ## <a name="next-steps"></a>Nästa steg
 
 - Skapa en nätverks-eller program säkerhets grupp med [PowerShell](powershell-samples.md) -eller [Azure CLI](cli-samples.md) -exempel skript eller Azure [Resource Manager-mallar](template-samples.md)
-- Skapa och tilldela [Azure policy definitioner](policy-samples.md) för virtuella nätverk
+- Skapa och tilldela [Azure policy definitioner](./policy-reference.md) för virtuella nätverk

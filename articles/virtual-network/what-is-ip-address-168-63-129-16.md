@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/15/2019
 ms.author: genli
-ms.openlocfilehash: 03c1badf984fb150631c157f3fdc07856b60e965
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 1e304bc30a48c92fdff576723dae6af1e26ef3da
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93088905"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222589"
 ---
 # <a name="what-is-ip-address-1686312916"></a>Vad är IP-168.63.129.16?
 
@@ -37,7 +37,7 @@ IP-168.63.129.16 är en virtuell offentlig IP-adress som används för att under
 
 ## <a name="scope-of-ip-address-1686312916"></a>Omfånget för IP-168.63.129.16
 
-Den offentliga IP-168.63.129.16 används i alla regioner och i alla nationella moln. Den här särskilda offentliga IP-adressen ägs av Microsoft och kommer inte att ändras. Vi rekommenderar att du tillåter den här IP-adressen lokalt (i den virtuella datorns) brand Väggs principer (utgående riktning). Kommunikationen mellan den här särskilda IP-adressen och resurserna är säker eftersom endast den interna Azure-plattformen kan källa ett meddelande från den här IP-adressen. Om den här adressen är blockerad kan ett oväntat beteende uppstå i olika scenarier. 168.63.129.16 är en [virtuell IP-adress för noden värd](../virtual-network/security-overview.md#azure-platform-considerations) , vilket innebär att den inte omfattas av användardefinierade vägar.
+Den offentliga IP-168.63.129.16 används i alla regioner och i alla nationella moln. Den här särskilda offentliga IP-adressen ägs av Microsoft och kommer inte att ändras. Vi rekommenderar att du tillåter den här IP-adressen lokalt (i den virtuella datorns) brand Väggs principer (utgående riktning). Kommunikationen mellan den här särskilda IP-adressen och resurserna är säker eftersom endast den interna Azure-plattformen kan källa ett meddelande från den här IP-adressen. Om den här adressen är blockerad kan ett oväntat beteende uppstå i olika scenarier. 168.63.129.16 är en [virtuell IP-adress för noden värd](./network-security-groups-overview.md#azure-platform-considerations) , vilket innebär att den inte omfattas av användardefinierade vägar.
 
 - Den virtuella dator agenten kräver utgående kommunikation över portarna 80/TCP och 32526/TCP med WireServer (168.63.129.16). Dessa bör vara öppna i den lokala brand väggen på den virtuella datorn. Kommunikationen på dessa portar med 168.63.129.16 omfattas inte av de konfigurerade nätverks säkerhets grupperna.
 
@@ -49,5 +49,5 @@ Den offentliga IP-168.63.129.16 används i alla regioner och i alla nationella m
 
 ## <a name="next-steps"></a>Nästa steg
 
-- [Säkerhetsgrupper](security-overview.md)
+- [Säkerhetsgrupper](./network-security-groups-overview.md)
 - [Skapa, ändra eller ta bort en nätverkssäkerhetsgrupp](manage-network-security-group.md)
