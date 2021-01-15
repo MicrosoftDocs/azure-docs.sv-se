@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/01/2019
-ms.openlocfilehash: 53277f64c3d1b03572732157756da1fececbcd43
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 69f00416f180f83c761be5ed444e80903e9fcbb6
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96184577"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98234451"
 ---
 # <a name="import-azure-monitor-log-data-into-power-bi"></a>Importera Azure Monitor loggdata till Power BI
 
@@ -27,6 +27,9 @@ Om du vill importera data från en [Log Analytics arbets yta](manage-access.md) 
 
 ## <a name="export-query"></a>Exportera fråga
 Börja med att skapa en [logg fråga](../log-query/log-query-overview.md) som returnerar de data som du vill fylla i Power BI data uppsättningen.  Sedan kan du exportera frågan till [Power Query (M) språk](/powerquery-m/power-query-m-language-specification) som kan användas av Power BI Desktop.
+
+> [!WARNING]
+> Var noga med att [optimera din fråga](../log-query/query-optimization.md) så att den inte tar alltför lång tid att köra eller tids gränsen. Observera **TimeSpan** -värdet i den exporterade frågan som definierar TimeSpan för de data som frågan ska hämta. Använd det minsta TimeSpan som du behöver för att begränsa mängden data som frågan returnerar.
 
 1. [Skapa logg frågan i Log Analytics](../log-query/log-analytics-tutorial.md) för att extrahera data för din data uppsättning.
 2. Välj **Exportera**  >  **Power BI fråga (M)**.  Detta exporterar frågan till en textfil med namnet **PowerBIQuery.txt**. 

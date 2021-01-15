@@ -3,14 +3,14 @@ title: Återge program
 description: Det är möjligt att använda alla åter givnings program med Azure Batch. VIRTUELLA Azure Marketplace-avbildningar är dock tillgängliga med vanliga program för installation.
 ms.date: 09/19/2019
 ms.topic: how-to
-ms.openlocfilehash: f876671c6ac16137c2c1cf8d40bd70860c06975b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d4eefa287575d68acccb2697e1d262c7e48dab62
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85960494"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98234417"
 ---
-# <a name="pre-installed-applications-on-rendering-vm-images"></a>Förinstallerade program på att återge VM-avbildningar
+# <a name="pre-installed-applications-on-batch-rendering-vm-images"></a>Förinstallerade program på VM-avbildningar för batch-rendering
 
 Det är möjligt att använda alla åter givnings program med Azure Batch. VIRTUELLA Azure Marketplace-avbildningar är dock tillgängliga med vanliga program för installation.
 
@@ -87,4 +87,4 @@ Följande lista gäller för Windows Server 2016, version 1.3.7 rendering images
 
 ## <a name="next-steps"></a>Nästa steg
 
-Om du vill använda avbildningarna för rendering av virtuella datorer måste de anges i konfiguration av poolen när en pool skapas. Se [funktioner för batch-pool för rendering](./batch-rendering-functionality.md#batch-pools).
+Om du vill använda avbildningarna för rendering av virtuella datorer måste de anges i konfiguration av poolen när en pool skapas. Se [funktioner för batch-pool för rendering](./batch-rendering-functionality.md).

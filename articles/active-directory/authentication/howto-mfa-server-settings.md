@@ -29,8 +29,7 @@ Följande inställningar för MFA-servern är tillgängliga:
 
 | Funktion | Beskrivning |
 | ------- | ----------- |
-| Serverinställningar
- | Hämta MFA Server och generera autentiseringsuppgifter för aktivering för att initiera din miljö |
+| Serverinställningar | Hämta MFA Server och generera autentiseringsuppgifter för aktivering för att initiera din miljö |
 | [Kringgå vid ett tillfälle](#one-time-bypass) | Tillåt en användare att autentisera utan att utföra Multi-Factor Authentication under en begränsad tid. |
 | [Regler för cachelagring](#caching-rules) |  Cachelagring används främst när lokala system, till exempel VPN, skickar flera verifierings begär Anden medan den första begäran fortfarande pågår. Den här funktionen gör att efterföljande begär Anden kan lyckas automatiskt när användaren har slutfört den första verifieringen. |
 | Server status | Se status för dina lokala MFA-servrar, inklusive version, status, IP och senaste kommunikations tid och datum. |
