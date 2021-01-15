@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: kumud
-ms.openlocfilehash: 5ce5f5cea5d689720455dd8d60f6fff4692a9d3d
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 2cf28565818f6de4d52b57040a80c21d0e03a76c
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98179307"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98218528"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Vanliga frågor och svar (FAQ) om Azure Virtual Network
 
@@ -36,7 +36,7 @@ Använd virtuella nätverk för att:
 * Aktivera scenarier med hybrid moln. Virtuella nätverk ger dig flexibiliteten att stödja ett antal hybrid moln scenarier. Du kan på ett säkert sätt ansluta molnbaserade program till alla typer av lokala system, till exempel stordatorer och UNIX-system.
 
 ### <a name="how-do-i-get-started"></a>Hur kommer jag igång?
-Gå till [dokumentationen för det virtuella nätverket](https://docs.microsoft.com/azure/virtual-network/) för att komma igång. Det här innehållet innehåller översikts-och distributions information för alla VNet-funktioner.
+Gå till [dokumentationen för det virtuella nätverket](./index.yml) för att komma igång. Det här innehållet innehåller översikts-och distributions information för alla VNet-funktioner.
 
 ### <a name="can-i-use-vnets-without-cross-premises-connectivity"></a>Kan jag använda virtuella nätverk utan anslutning mellan platser?
 Ja. Du kan använda ett VNet utan att ansluta det till ditt lokala nätverk. Du kan till exempel köra Microsoft Windows Server Active Directory domänkontrollanter och SharePoint-grupper enbart i ett Azure VNet.
@@ -52,7 +52,7 @@ Du kan använda följande verktyg för att skapa eller konfigurera ett VNet:
 * Azure Portal
 * PowerShell
 * Azure CLI
-* En nätverks konfigurations fil (netcfg – endast för klassisk virtuella nätverk). Se artikeln [Konfigurera ett VNet med hjälp av en nätverks konfigurations fil](virtual-networks-using-network-configuration-file.md) .
+* En nätverks konfigurations fil (netcfg – endast för klassisk virtuella nätverk). Se artikeln [Konfigurera ett VNet med hjälp av en nätverks konfigurations fil](/previous-versions/azure/virtual-network/virtual-networks-using-network-configuration-file) .
 
 ### <a name="what-address-ranges-can-i-use-in-my-vnets"></a>Vilka adress intervall kan jag använda i virtuella nätverk?
 Vi rekommenderar att du använder de adress intervall som räknas upp i [RFC 1918](https://tools.ietf.org/html/rfc1918), som har tagits ur bruk av IETF för privata, icke-flyttbara adress utrymmen:
@@ -162,7 +162,7 @@ Ja. Alla nätverks gränssnitt (NIC) som är anslutna till en virtuell dator som
   - **Resource Manager**: en privat IP-adress som tilldelats med den dynamiska eller statiska metoden förblir tilldelad till en virtuell dator (Resource Manager) tills resursen har tagits bort. Skillnaden är att du väljer den adress som ska tilldelas när du använder statisk, och Azure väljer när du använder dynamisk. 
   - **Klassisk**: en privat IP-adress som tilldelats med den dynamiska metoden kan ändras när en virtuell dator (klassisk) startas om efter att ha varit i läget Stoppad (Frigjord). Om du behöver se till att den privata IP-adressen för en resurs som distribueras via den klassiska distributions modellen aldrig ändras, tilldelar du en privat IP-adress med den statiska metoden.
 
-* **Offentlig:** Kan tilldelas till nätverkskort som är anslutna till virtuella datorer som distribueras via Azure Resource Manager distributions modell. Adressen kan tilldelas med metoden för statisk eller dynamisk allokering. Alla virtuella datorer och Cloud Services roll instanser som distribueras via den klassiska distributions modellen finns i en moln tjänst, som tilldelas en *dynamisk*, offentlig virtuell IP-adress (VIP). En offentlig *statisk* IP-adress, som kallas en [reserverad IP-adress](virtual-networks-reserved-public-ip.md), kan alternativt tilldelas som VIP. Du kan tilldela offentliga IP-adresser till enskilda virtuella datorer eller Cloud Services roll instanser som distribueras via den klassiska distributions modellen. Dessa adresser kallas [offentliga IP-adresser på instans nivå (ILPIP-](virtual-networks-instance-level-public-ip.md) adresser och kan tilldelas dynamiskt).
+* **Offentlig:** Kan tilldelas till nätverkskort som är anslutna till virtuella datorer som distribueras via Azure Resource Manager distributions modell. Adressen kan tilldelas med metoden för statisk eller dynamisk allokering. Alla virtuella datorer och Cloud Services roll instanser som distribueras via den klassiska distributions modellen finns i en moln tjänst, som tilldelas en *dynamisk*, offentlig virtuell IP-adress (VIP). En offentlig *statisk* IP-adress, som kallas en [reserverad IP-adress](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip), kan alternativt tilldelas som VIP. Du kan tilldela offentliga IP-adresser till enskilda virtuella datorer eller Cloud Services roll instanser som distribueras via den klassiska distributions modellen. Dessa adresser kallas [offentliga IP-adresser på instans nivå (ILPIP-](/previous-versions/azure/virtual-network/virtual-networks-instance-level-public-ip) adresser och kan tilldelas dynamiskt).
 
 ### <a name="can-i-reserve-a-private-ip-address-for-a-vm-that-i-will-create-at-a-later-time"></a>Kan jag reservera en privat IP-adress för en virtuell dator som jag ska skapa vid ett senare tillfälle?
 Nej. Du kan inte reservera en privat IP-adress. Om en privat IP-adress är tillgänglig, tilldelas den en virtuell dator eller roll instans av DHCP-servern. Den virtuella datorn kanske inte är den som du vill att den privata IP-adressen är tilldelad till. Du kan dock ändra den privata IP-adressen för en redan skapad virtuell dator till valfri tillgänglig privat IP-adress.
@@ -177,7 +177,7 @@ Ja, men det rekommenderas inte om det behövs, till exempel när du tilldelar fl
 Ingenstans. IP-adresserna (offentliga VIP, offentliga och privata) förblir tilldelade till moln tjänst distributions facket eller den virtuella datorn.
 
 ### <a name="can-i-move-vms-from-one-subnet-to-another-subnet-in-a-vnet-without-redeploying"></a>Kan jag flytta virtuella datorer från ett undernät till ett annat undernät i ett VNet utan att distribuera om?
-Ja. Du hittar mer information i så [här flyttar du en virtuell dator eller roll instans till en annan under näts](virtual-networks-move-vm-role-to-subnet.md) artikel.
+Ja. Du hittar mer information i så [här flyttar du en virtuell dator eller roll instans till en annan under näts](/previous-versions/azure/virtual-network/virtual-networks-move-vm-role-to-subnet) artikel.
 
 ### <a name="can-i-configure-a-static-mac-address-for-my-vm"></a>Kan jag konfigurera en statisk MAC-adress för min virtuella dator?
 Nej. En MAC-adress kan inte konfigureras statiskt.
@@ -220,7 +220,7 @@ Nej. Du kan inte flytta tjänster in och ut ur virtuella nätverk. Om du vill fl
 Virtuella nätverk isoleras från varandra och andra tjänster som finns i Azure-infrastrukturen. Ett VNet är en förtroende gränser.
 
 ### <a name="can-i-restrict-inbound-or-outbound-traffic-flow-to-vnet-connected-resources"></a>Kan jag begränsa inkommande eller utgående trafik flöde till VNet-anslutna resurser?
-Ja. Du kan använda [nätverks säkerhets grupper](security-overview.md) för enskilda undernät i ett VNet, nätverkskort som är kopplade till ett VNet eller både och.
+Ja. Du kan använda [nätverks säkerhets grupper](./network-security-groups-overview.md) för enskilda undernät i ett VNet, nätverkskort som är kopplade till ett VNet eller både och.
 
 ### <a name="can-i-implement-a-firewall-between-vnet-connected-resources"></a>Kan jag implementera en brand vägg mellan VNet-anslutna resurser?
 Ja. Du kan distribuera en [brand vägg för virtuella brand väggar](https://azure.microsoft.com/marketplace/?term=firewall) från flera leverantörer via Azure Marketplace.
@@ -234,13 +234,13 @@ Nej. Virtuella nätverk lagrar ingen kund information.
 ## <a name="apis-schemas-and-tools"></a>API: er, scheman och verktyg
 
 ### <a name="can-i-manage-vnets-from-code"></a>Kan jag hantera virtuella nätverk från kod?
-Ja. Du kan använda REST-API: er för virtuella nätverk i [Azure Resource Manager](/rest/api/virtual-network) och [klassiska](https://go.microsoft.com/fwlink/?LinkId=296833) distributions modeller.
+Ja. Du kan använda REST-API: er för virtuella nätverk i [Azure Resource Manager](/rest/api/virtual-network) och [klassiska](/previous-versions/azure/ee460799(v=azure.100)) distributions modeller.
 
 ### <a name="is-there-tooling-support-for-vnets"></a>Finns det stöd för verktyg för virtuella nätverk?
 Ja. Lär dig mer om att använda:
-- Azure Portal att distribuera virtuella nätverk via [Azure Resource Manager](manage-virtual-network.md#create-a-virtual-network) och [klassiska](virtual-networks-create-vnet-classic-pportal.md) distributions modeller.
+- Azure Portal att distribuera virtuella nätverk via [Azure Resource Manager](manage-virtual-network.md#create-a-virtual-network) och [klassiska](/previous-versions/azure/virtual-network/virtual-networks-create-vnet-classic-pportal) distributions modeller.
 - PowerShell för att hantera virtuella nätverk som distribueras via [Resource Manager](/powershell/module/az.network) och [klassiska](/powershell/module/servicemanagement/azure.service/?view=azuresmps-3.7.0) distributions modeller.
-- Kommando rads gränssnittet för Azure (CLI) för att distribuera och hantera virtuella nätverk som distribueras via [Resource Manager](/cli/azure/network/vnet) och [klassiska](../virtual-machines/azure-cli-arm-commands.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-resources) distributions modeller.  
+- Kommando rads gränssnittet för Azure (CLI) för att distribuera och hantera virtuella nätverk som distribueras via [Resource Manager](/cli/azure/network/vnet) och [klassiska](/previous-versions/azure/virtual-machines/azure-cli-arm-commands?toc=%2fazure%2fvirtual-network%2ftoc.json#network-resources) distributions modeller.  
 
 ## <a name="vnet-peering"></a>VNet-peering
 
@@ -289,7 +289,7 @@ Nej. Du kan bara aktivera alternativet Använd fjärran sluten Gateway för en p
 Det kostar inget att skapa en VNet-peering-anslutning. Data överföring mellan peering-anslutningar debiteras. [Se här](https://azure.microsoft.com/pricing/details/virtual-network/).
 
 ### <a name="is-vnet-peering-traffic-encrypted"></a>Är VNet-peering-trafiken krypterad?
-När Azure-trafik flyttas mellan data Center (utanför fysiska gränser som inte styrs av Microsoft eller på uppdrag av Microsoft), används [MACsec data länk skikt kryptering](https://docs.microsoft.com/azure/security/fundamentals/encryption-overview#encryption-of-data-in-transit) på den underliggande nätverks maskin varan.  Detta gäller för VNet-peering-trafik.
+När Azure-trafik flyttas mellan data Center (utanför fysiska gränser som inte styrs av Microsoft eller på uppdrag av Microsoft), används [MACsec data länk skikt kryptering](../security/fundamentals/encryption-overview.md#encryption-of-data-in-transit) på den underliggande nätverks maskin varan.  Detta gäller för VNet-peering-trafik.
 
 ### <a name="why-is-my-peering-connection-in-a-disconnected-state"></a>Varför är min peering-anslutning i *frånkopplat* läge?
 VNet-peering-anslutningar övergår i *frånkopplat* tillstånd när en VNet-peering-länk tas bort. Du måste ta bort båda länkarna för att återupprätta en lyckad peer kopplings anslutning.
@@ -319,7 +319,7 @@ Ja. Samma virtuella nätverk tryck på resurs kan användas för att sammanstäl
 
 ### <a name="are-there-any-performance-considerations-on-production-traffic-if-i-enable-a-virtual-network-tap-configuration-on-a-network-interface"></a>Finns det några prestanda överväganden för produktions trafiken om jag aktiverar ett virtuellt nätverk genom att trycka på konfiguration i ett nätverks gränssnitt?
 
-Det virtuella nätverkets tryck är i för hands version. Det finns inget service nivå avtal för för hands versionen. Kapaciteten bör inte användas för produktions arbets belastningar. När en virtuell dators nätverks gränssnitt är aktiverat med en tryck konfiguration, används samma resurser på Azure-värden som tilldelas den virtuella datorn för att skicka produktions trafiken för att utföra speglings funktionen och skicka de speglade paketen. Välj rätt storlek på den virtuella [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) -eller [Windows](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) -datorn för att säkerställa att tillräckliga resurser är tillgängliga för den virtuella datorn för att skicka produktions trafiken och den speglade trafiken.
+Det virtuella nätverkets tryck är i för hands version. Det finns inget service nivå avtal för för hands versionen. Kapaciteten bör inte användas för produktions arbets belastningar. När en virtuell dators nätverks gränssnitt är aktiverat med en tryck konfiguration, används samma resurser på Azure-värden som tilldelas den virtuella datorn för att skicka produktions trafiken för att utföra speglings funktionen och skicka de speglade paketen. Välj rätt storlek på den virtuella [Linux](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) -eller [Windows](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) -datorn för att säkerställa att tillräckliga resurser är tillgängliga för den virtuella datorn för att skicka produktions trafiken och den speglade trafiken.
 
 ### <a name="is-accelerated-networking-for-linux-or-windows-supported-with-virtual-network-tap"></a>Stöds accelererat nätverk för [Linux](create-vm-accelerated-networking-cli.md) eller [Windows](create-vm-accelerated-networking-powershell.md) med virtuellt nätverk?
 
@@ -370,7 +370,7 @@ Som standard kan Azure-tjänstresurser som skyddas på virtuella nätverk inte n
 Om du vill skydda Azure-tjänster till flera undernät i ett virtuellt nätverk eller över flera virtuella nätverk, aktiverar du tjänstens slut punkter på nätverks sidan på varje undernät oberoende av varandra och skyddar sedan Azure-tjänstens resurser till alla undernät genom att konfigurera lämpliga VNet-ACL: er på Azure-tjänstesidan.
  
 ### <a name="how-can-i-filter-outbound-traffic-from-a-virtual-network-to-azure-services-and-still-use-service-endpoints"></a>Hur kan jag filtrera utgående trafik från ett virtuellt nätverk till Azure-tjänster och fortfarande använda tjänst slut punkter?
-Om du vill granska eller filtrera trafiken mot en Azure-tjänst från ett virtuellt nätverk kan du distribuera en virtuell nätverksinstallation inom det virtuella nätverket. Du kan sedan använda tjänst slut punkter i under nätet där den virtuella nätverks enheten distribueras och säkra Azure-tjänstens resurser enbart till det här under nätet via VNet ACL: er. Det här scenariot kan också vara användbart om du vill begränsa åtkomsten till Azure-tjänsten från det virtuella nätverket endast till vissa Azure-resurser med hjälp av filtrering av virtuella nätverks enheter. Mer information finns i [Utgående trafik med virtuella nätverksinstallationer](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/nva-ha).
+Om du vill granska eller filtrera trafiken mot en Azure-tjänst från ett virtuellt nätverk kan du distribuera en virtuell nätverksinstallation inom det virtuella nätverket. Du kan sedan använda tjänst slut punkter i under nätet där den virtuella nätverks enheten distribueras och säkra Azure-tjänstens resurser enbart till det här under nätet via VNet ACL: er. Det här scenariot kan också vara användbart om du vill begränsa åtkomsten till Azure-tjänsten från det virtuella nätverket endast till vissa Azure-resurser med hjälp av filtrering av virtuella nätverks enheter. Mer information finns i [Utgående trafik med virtuella nätverksinstallationer](/azure/architecture/reference-architectures/dmz/nva-ha).
 
 ### <a name="what-happens-when-you-access-an-azure-service-account-that-has-a-virtual-network-access-control-list-acl-enabled-from-outside-the-vnet"></a>Vad händer när du ansluter till ett Azure-tjänstkontot som har en åtkomst kontrol lista för virtuella nätverk (ACL) aktive rad utanför VNet?
 HTTP 403-eller HTTP 404-fel returneras.
@@ -400,7 +400,7 @@ Nej, ICMP-trafik som har ursprung ATS från ett undernät med aktiverade tjänst
 För att få åtkomst till Azure-tjänsten måste NSG: er tillåta utgående anslutning. Om dina NSG: er har öppnats för all utgående trafik i Internet bör tjänstens slut punkts trafik fungera. Du kan också begränsa utgående trafik till tjänst-IP-adresser endast med hjälp av tjänst taggarna.  
  
 ### <a name="what-permissions-do-i-need-to-set-up-service-endpoints"></a>Vilka behörigheter behöver jag för att konfigurera tjänst slut punkter?
-Tjänst slut punkter kan konfigureras på ett virtuellt nätverk oberoende av en användare med Skriv behörighet till det virtuella nätverket. För att skydda Azure-tjänstens resurser till ett VNet måste användaren ha behörighet **Microsoft. Network/virtualNetworks/subnets/joinViaServiceEndpoint/åtgärd** för de undernät som läggs till. Den här behörigheten ingår i den inbyggda rollen tjänst administratör som standard och kan ändras genom att skapa anpassade roller. Lär dig mer om inbyggda roller och att tilldela specifika behörigheter till [anpassade roller](https://docs.microsoft.com/azure/role-based-access-control/custom-roles?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Tjänst slut punkter kan konfigureras på ett virtuellt nätverk oberoende av en användare med Skriv behörighet till det virtuella nätverket. För att skydda Azure-tjänstens resurser till ett VNet måste användaren ha behörighet **Microsoft. Network/virtualNetworks/subnets/joinViaServiceEndpoint/åtgärd** för de undernät som läggs till. Den här behörigheten ingår i den inbyggda rollen tjänst administratör som standard och kan ändras genom att skapa anpassade roller. Lär dig mer om inbyggda roller och att tilldela specifika behörigheter till [anpassade roller](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
  
 
 ### <a name="can-i-filter-virtual-network-traffic-to-azure-services-allowing-only-specific-azure-service-resources-over-vnet-service-endpoints"></a>Kan jag filtrera en virtuell nätverks trafik till Azure-tjänster, så att endast vissa Azure-tjänst resurser tillåts, via virtuella nätverk för VNet-tjänster? 
@@ -409,7 +409,7 @@ Med tjänst slut punkts principer för virtuella nätverk (VNet) kan du filtrera
 
 ### <a name="does-azure-active-directory-azure-ad-support-vnet-service-endpoints"></a>Har Azure Active Directory (Azure AD) stöd för VNet-tjänstens slut punkter?
 
-Azure Active Directory (Azure AD) stöder inte tjänstens slut punkter internt. En fullständig lista över Azure-tjänster som stöder VNet-tjänstens slut punkter visas [här](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview). Observera att taggen "Microsoft. AzureActiveDirectory" som anges under tjänster som stöder tjänst slut punkter används för att stödja tjänst slut punkter till ADLS gen 1. För ADLS gen 1 använder Virtual Network-integrering för Azure Data Lake Storage Gen1 den virtuella nätverks tjänstens slut punkt säkerhet mellan ditt virtuella nätverk och Azure Active Directory (Azure AD) för att generera ytterligare säkerhets anspråk i åtkomsttoken. Dessa anspråk används sedan för att autentisera ditt virtuella nätverk till ditt Data Lake Storage Gen1-konto och tillåta åtkomst. Läs mer om [Azure Data Lake Store generation 1 VNet-integrering](../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+Azure Active Directory (Azure AD) stöder inte tjänstens slut punkter internt. En fullständig lista över Azure-tjänster som stöder VNet-tjänstens slut punkter visas [här](./virtual-network-service-endpoints-overview.md). Observera att taggen "Microsoft. AzureActiveDirectory" som anges under tjänster som stöder tjänst slut punkter används för att stödja tjänst slut punkter till ADLS gen 1. För ADLS gen 1 använder Virtual Network-integrering för Azure Data Lake Storage Gen1 den virtuella nätverks tjänstens slut punkt säkerhet mellan ditt virtuella nätverk och Azure Active Directory (Azure AD) för att generera ytterligare säkerhets anspråk i åtkomsttoken. Dessa anspråk används sedan för att autentisera ditt virtuella nätverk till ditt Data Lake Storage Gen1-konto och tillåta åtkomst. Läs mer om [Azure Data Lake Store generation 1 VNet-integrering](../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 
 ### <a name="are-there-any-limits-on-how-many-vnet-service-endpoints-i-can-set-up-from-my-vnet"></a>Finns det några begränsningar för hur många VNet-tjänstens slut punkter jag kan konfigurera från mitt VNet?
 Det finns ingen gräns för det totala antalet VNet-slutpunkter i ett virtuellt nätverk. För en Azure-tjänst resurs (till exempel ett Azure Storage konto) kan tjänster upprätthålla gränser för antalet undernät som används för att skydda resursen. I följande tabell visas några exempel begränsningar: 
@@ -428,10 +428,6 @@ Det finns ingen gräns för det totala antalet VNet-slutpunkter i ett virtuellt 
 >[!NOTE]
 > Begränsningarna är beroende av ändringar i Azure-tjänstens bedömning. Se respektive tjänst dokumentation för information om tjänster. 
 
-
-
-
-  
 
 
 

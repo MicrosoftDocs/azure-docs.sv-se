@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 12/04/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: a0458264b6ea0c741244531fc104a7637108b06e
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 4681039f60154b95eeb7e40196ca33055a192c74
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121353"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222113"
 ---
 # <a name="query-azure-cosmos-db-data-with-a-serverless-sql-pool-in-azure-synapse-link-preview"></a>Fråga Azure Cosmos DB data med en server lös SQL-pool i för hands versionen av Azure Synapse Link
 
@@ -205,6 +205,8 @@ Resultatet av den här frågan kan se ut som i följande tabell:
 Mer information om de SQL-typer som ska användas för Azure Cosmos DB värden finns i [reglerna för SQL-typnamn](#azure-cosmos-db-to-sql-type-mappings) i slutet av artikeln.
 
 ## <a name="create-view"></a>Skapa vy
+
+Det är inte rekommenderat eller stöd för att skapa vyer i huvud databasen eller standard databaserna. Så du måste skapa en användar databas för dina vyer.
 
 När du har identifierat schemat kan du förbereda en vy ovanpå dina Azure Cosmos DB data. Du bör placera din Azure Cosmos DB konto nyckel i en separat autentiseringsuppgift och referera till den här autentiseringsuppgiften från- `OPENROWSET` funktionen. Behåll inte din konto nyckel i vydefinitionen.
 

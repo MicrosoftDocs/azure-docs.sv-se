@@ -9,12 +9,12 @@ ms.reviewer: jrasnick, garye
 ms.date: 09/25/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: 906d3d28aabf8f6ecd6e04c38b4519937fa95c2b
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 68b113de63cfefde805c1c46e9303829c4eb33a7
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97092167"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222147"
 ---
 # <a name="machine-learning-capabilities-in-azure-synapse-analytics"></a>Machine Learning funktioner i Azure Synapse Analytics
 
@@ -40,7 +40,7 @@ De flesta Machine Learning-projekt inkluderar väletablerade steg och ett av de 
 
 #### <a name="data-source-and-pipelines"></a>Data källa och pipeliner
 
-Tack vare [Azure Data Factory](/azure/data-factory/introduction), en internt integrerad del av Azure Synapse, finns det en kraftfull uppsättning verktyg som är tillgängliga för data inmatning och pipeliner för data dirigering. På så sätt kan du enkelt bygga datapipelines för att komma åt och omvandla data till ett format som kan användas för maskin inlärning. [Lär dig mer om datapipelines](/azure/data-factory/concepts-pipelines-activities?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) i Synapse. 
+Tack vare [Azure Data Factory](../../data-factory/introduction.md), en internt integrerad del av Azure Synapse, finns det en kraftfull uppsättning verktyg som är tillgängliga för data inmatning och pipeliner för data dirigering. På så sätt kan du enkelt bygga datapipelines för att komma åt och omvandla data till ett format som kan användas för maskin inlärning. [Lär dig mer om datapipelines](../../data-factory/concepts-pipelines-activities.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json) i Synapse. 
 
 #### <a name="data-preparation-and-explorationvisualization"></a>Förberedelse av data och utforskning/visualisering
 
@@ -64,13 +64,13 @@ Förutom MLlib kan populära bibliotek som [Scikit lära](https://scikit-learn.o
 
 #### <a name="train-models-with-azure-machine-learning-automated-ml"></a>Träna modeller med Azure Machine Learning automatisk ML
 
-Ett annat sätt att träna Machine Learning-modeller, som inte kräver mycket tidigare erfarenhet med Machine Learning, är att använda automatisk ML. [Automatisk ml](/azure/machine-learning/concept-automated-ml) är en funktion som automatiskt tågen en uppsättning maskin inlärnings modeller och låter användaren välja den bästa modellen baserat på vissa mått. Tack vare en sömlös integrering med Azure Machine Learning från Azure Synapse-anteckningsböcker kan användare enkelt utnyttja automatiserad ML i Synapse med genom strömnings Azure Active Directory autentisering.  Det innebär att du bara behöver peka på din Azure Machine Learning-arbetsyta och behöver inte ange några autentiseringsuppgifter. Här är en [Automatisk ml-självstudie](../spark/apache-spark-azure-machine-learning-tutorial.md) som beskriver hur du tränar modeller med Azure Machine Learning automatiserade ml på Synapse Spark-pooler.
+Ett annat sätt att träna Machine Learning-modeller, som inte kräver mycket tidigare erfarenhet med Machine Learning, är att använda automatisk ML. [Automatisk ml](../../machine-learning/concept-automated-ml.md) är en funktion som automatiskt tågen en uppsättning maskin inlärnings modeller och låter användaren välja den bästa modellen baserat på vissa mått. Tack vare en sömlös integrering med Azure Machine Learning från Azure Synapse-anteckningsböcker kan användare enkelt utnyttja automatiserad ML i Synapse med genom strömnings Azure Active Directory autentisering.  Det innebär att du bara behöver peka på din Azure Machine Learning-arbetsyta och behöver inte ange några autentiseringsuppgifter. Här är en [Automatisk ml-självstudie](../spark/apache-spark-azure-machine-learning-tutorial.md) som beskriver hur du tränar modeller med Azure Machine Learning automatiserade ml på Synapse Spark-pooler.
 
 ### <a name="model-deployment-and-scoring"></a>Modell distribution och poängsättning
 
 Modeller som har tränats antingen i Azure Synapse eller utanför Azure Synapse kan enkelt användas för batch-poäng. För närvarande i Synapse finns det två sätt att köra batch-poäng.
 
-* Du kan använda [funktionen tsql predict](../sql-data-warehouse/sql-data-warehouse-predict.md) i Synapse SQL-pooler för att köra dina förutsägelser direkt där dina data är i livet. Med den här kraftfulla och skalbara funktionen kan du utöka dina data utan att flytta några data från ditt informations lager. En ny [miljö för den guidade maskin inlärnings modellen i Synapse Studio](https://aka.ms/synapse-ml-ui) introducerades där du kan distribuera en ONNX-modell från Azure Machine Learning Model-registret i Synapse SQL-pooler för batch-poäng med hjälp av predict.
+* Du kan använda [funktionen tsql predict](../sql-data-warehouse/sql-data-warehouse-predict.md) i Synapse SQL-pooler för att köra dina förutsägelser direkt där dina data är i livet. Med den här kraftfulla och skalbara funktionen kan du utöka dina data utan att flytta några data från ditt informations lager. En ny [miljö för den guidade maskin inlärnings modellen i Synapse Studio](./tutorial-sql-pool-model-scoring-wizard.md) introducerades där du kan distribuera en ONNX-modell från Azure Machine Learning Model-registret i Synapse SQL-pooler för batch-poäng med hjälp av predict.
 
 * Ett annat alternativ för maskin inlärnings modeller för batch-bedömning i Azure Synapse är att utnyttja Apache Spark pooler för Azure Synapse. Beroende på vilka bibliotek som används för att träna modellerna kan du använda en kod upplevelse för att köra batch-poängen.
 

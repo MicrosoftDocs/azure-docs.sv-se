@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 04/22/2020
 ms.author: errobin
-ms.openlocfilehash: 2e559d574413b8eb0be2303798e0b16bfffad2cb
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: e9f46b11d9c0b5251ee4d52f64d657926f6f9c5e
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94695409"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222997"
 ---
 # <a name="load-balancer-frequently-asked-questions"></a>Vanliga frågor och svar om Load Balancer
 
@@ -36,7 +36,7 @@ NAT-regler används för att ange en server dels resurs som trafik ska skickas t
 ## <a name="what-is-ip-1686312916"></a>Vad är IP-168.63.129.16?
 Den virtuella IP-adressen för värden som taggats som Azure-infrastruktur Load Balancer där Azures hälso avsökningen kommer. När du konfigurerar Server dels instanser måste de tillåta trafik från den här IP-adressen att kunna svara på hälso avsökningar. Den här regeln samverkar inte med åtkomst till din Load Balancer-frontend. Om du inte använder Azure Load Balancer kan du åsidosätta den här regeln. Du kan lära dig mer om service märken [här](../virtual-network/service-tags-overview.md#available-service-tags).
 
-## <a name="can-i-use-global-vnet-peering-with-basic-load-balancer"></a>Kan jag använda global VNET-peering med Basic Load Balancer?
+## <a name="can-i-use-global-vnet-peering-with-basic-load-balancer"></a>Kan jag använda global VNet-peering med Basic Load Balancer?
 Nej. Basic Load Balancer stöder inte global VNET-peering. Du kan använda en Standard Load Balancer i stället. Se artikeln [Uppgradera från Basic till standard](upgrade-basic-standard.md) för sömlös uppgradering.
 
 ## <a name="how-can-i-discover-the-public-ip-that-an-azure-vm-uses"></a>Hur kan jag identifiera den offentliga IP-adress som används av en virtuell Azure-dator?
@@ -45,6 +45,9 @@ Det finns många sätt att fastställa IP-adressen för den offentliga källan f
 Genom att använda nslookup-kommandot kan du skicka en DNS-fråga för namnet myip.opendns.com till OpenDNS-matcharen. Tjänsten returnerar käll-IP-adressen som användes för att skicka frågan. När du kör följande fråga från din virtuella dator, är svaret den offentliga IP-adress som används för den virtuella datorn:
 
  ```nslookup myip.opendns.com resolver1.opendns.com```
+ 
+## <a name="can-i-add-a-vm-from-the-same-availability-set-to-different-backend-pools-of-a-load-balancer"></a>Kan jag lägga till en virtuell dator från samma tillgänglighets uppsättning till olika backend-pooler för en Load Balancer?
+Nej, det är inte möjligt.
 
 ## <a name="how-do-connections-to-azure-storage-in-the-same-region-work"></a>Hur fungerar anslutningar till Azure Storage i samma region?
 Att ha utgående anslutningar via scenarierna ovan är inte nödvändigt för att ansluta till lagring i samma region som den virtuella datorn. Om du inte vill det använder du nätverks säkerhets grupper (NSG: er) enligt beskrivningen ovan. För anslutning till lagring i andra regioner krävs utgående anslutning. Observera att när du ansluter till lagring från en virtuell dator i samma region, kommer käll-IP-adressen i lagrings diagnostikloggar att vara en intern provideradress och inte den offentliga IP-adressen för den virtuella datorn. Om du vill begränsa åtkomsten till ditt lagrings konto till virtuella datorer i ett eller flera Virtual Network undernät i samma region, använder du [Virtual Network tjänst slut punkter](../virtual-network/virtual-network-service-endpoints-overview.md) och inte din offentliga IP-adress när du konfigurerar brand väggen för ditt lagrings konto. När tjänstens slut punkter har kon figurer ATS visas din Virtual Network privata IP-adress i dina lagrings diagnostikloggar och inte på den interna provideradress.

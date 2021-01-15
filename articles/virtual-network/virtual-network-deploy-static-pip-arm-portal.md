@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/12/2020
 ms.author: allensu
-ms.openlocfilehash: 1ae0b869b24c4e05c88b936eceb1b9b1db3a9405
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: d416af3d3a8eb8ab8057f13cc0d9a133adcb849a
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94506319"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98221164"
 ---
 # <a name="create-a-virtual-machine-with-a-static-public-ip-address-using-the-azure-portal"></a>Skapa en virtuell dator med en statisk offentlig IP-adress med hjälp av Azure Portal
 
@@ -50,7 +50,7 @@ Logga in på [Azure-portalen](https://portal.azure.com).
     | Storlek | Välj storlek på virtuell dator eller Ställ in standardinställningen |
     | **Administratörs konto** |  |
     | Användarnamn | Ange ett användar namn |
-    | lösenordsinställning | Ange ett lösen ord |
+    | Lösenord | Ange ett lösen ord |
     | Bekräfta lösenordet | Ange lösenordet igen |
 
 3. Välj fliken **Nätverk** eller **Nästa: diskar** och sedan **Nästa: nätverk**.
@@ -62,13 +62,13 @@ Logga in på [Azure-portalen](https://portal.azure.com).
     | **Nätverksgränssnitt** |  |
     | Virtuellt nätverk | Acceptera standard nätverks namnet. |
     | Undernät | Acceptera standard under näts konfigurationen. |
-    | Offentlig IP-adress | Välj **Skapa ny**. </br> I **skapa offentlig IP-adress** , i namn, anger du **myPublicIP**. </br> För **SKU** väljer du **standard**. </br> **Tilldelning** väljer du **statisk**. </br> Välj **OK**.  |
+    | Offentlig IP-adress | Välj **Skapa ny**. </br> I **skapa offentlig IP-adress**, i namn, anger du **myPublicIP**. </br> För **SKU** väljer du **standard**. </br> **Tilldelning** väljer du **statisk**. </br> Välj **OK**.  |
     | Nätverks säkerhets grupp för nätverkskort | Välj **grundläggande**|
     | Offentliga inkommande portar | Välj **Tillåt valda portar**. |
     | Välj inkommande portar | Välj **RDP (3389)** |
 
     > [!WARNING]
-    > Portal 3389 är markerad, för att aktivera fjärråtkomst till den virtuella Windows Server-datorn från Internet. Det rekommenderas inte att öppna port 3389 på Internet för att hantera produktions arbets belastningar. </br> För säker åtkomst till Azure Virtual Machines, se **[Vad är Azure skydds?](/azure/bastion/bastion-overview)**
+    > Portal 3389 är markerad, för att aktivera fjärråtkomst till den virtuella Windows Server-datorn från Internet. Det rekommenderas inte att öppna port 3389 på Internet för att hantera produktions arbets belastningar. </br> För säker åtkomst till Azure Virtual Machines, se **[Vad är Azure skydds?](../bastion/bastion-overview.md)**
    
 5. Välj **Granska + skapa**. 
   
@@ -95,7 +95,7 @@ SKU: n för den virtuella datorns offentliga IP-adress måste matcha den offentl
 
 Du kan ladda ned listan över intervall (prefix) för [offentliga](https://www.microsoft.com/download/details.aspx?id=56519) Azure-moln och för Azure-moln för [amerikanska myndigheter](https://www.microsoft.com/download/details.aspx?id=57063), [Kina](https://www.microsoft.com/download/details.aspx?id=57062) eller [Tyskland](https://www.microsoft.com/download/details.aspx?id=57064).
 
-- Läs mer om [statiska offentliga IP-adresser](virtual-network-ip-addresses-overview-arm.md#allocation-method).
-- Läs mer om [offentliga IP-adresser](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses) i Azure.
+- Läs mer om [statiska offentliga IP-adresser](./public-ip-addresses.md#allocation-method).
+- Läs mer om [offentliga IP-adresser](./public-ip-addresses.md#public-ip-addresses) i Azure.
 - Läs mer om [Inställningar för offentliga IP-adresser](virtual-network-public-ip-address.md#create-a-public-ip-address).
-- Lär dig mer om [privata IP-adresser](virtual-network-ip-addresses-overview-arm.md#private-ip-addresses) och tilldela en [statisk privat IP-adress](virtual-network-network-interface-addresses.md#add-ip-addresses) till en virtuell Azure-dator.
+- Lär dig mer om [privata IP-adresser](./private-ip-addresses.md) och tilldela en [statisk privat IP-adress](virtual-network-network-interface-addresses.md#add-ip-addresses) till en virtuell Azure-dator.

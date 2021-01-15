@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 669b8427f13efcc55a69bc7c970b6658a6719cd8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2e798f81102017b4d34c4b1b219a9f23035b0359
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86134717"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222844"
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-classic-using-powershell"></a>Konfigurera privata IP-adresser för en virtuell dator (klassisk) med hjälp av PowerShell
 
@@ -35,10 +35,10 @@ Den här artikeln beskriver hur du gör om du använder den klassiska distributi
 
 [!INCLUDE [virtual-networks-static-ip-scenario-include](../../includes/virtual-networks-static-ip-scenario-include.md)]
 
-PowerShell-kommandona nedan förväntar sig en enkel miljö som redan har skapats. Om du vill köra kommandona som de visas i det här dokumentet skapar du först test miljön som beskrivs i [skapa ett VNet](virtual-networks-create-vnet-classic-netcfg-ps.md).
+PowerShell-kommandona nedan förväntar sig en enkel miljö som redan har skapats. Om du vill köra kommandona som de visas i det här dokumentet skapar du först test miljön som beskrivs i [skapa ett VNet](/previous-versions/azure/virtual-network/virtual-networks-create-vnet-classic-netcfg-ps).
 
 ## <a name="how-to-verify-if-a-specific-ip-address-is-available"></a>Så här kontrollerar du om en speciell IP-adress är tillgänglig
-Kontrol lera att IP- *192.168.1.101* är tillgänglig i ett VNet med namnet *TestVNet*genom att köra följande PowerShell-kommando och kontrol lera värdet för *IsAvailable*:
+Kontrol lera att IP- *192.168.1.101* är tillgänglig i ett VNet med namnet *TestVNet* genom att köra följande PowerShell-kommando och kontrol lera värdet för *IsAvailable*:
 
 ```azurepowershell
 Test-AzureStaticVNetIP –VNetName TestVNet –IPAddress 192.168.1.101 
@@ -55,7 +55,7 @@ OperationStatus      : Succeeded
 ```
 
 ## <a name="how-to-specify-a-static-private-ip-address-when-creating-a-vm"></a>Så här anger du en statisk privat IP-adress när du skapar en virtuell dator
-PowerShell-skriptet nedan skapar en ny moln tjänst med namnet *TestService*och hämtar sedan en avbildning från Azure, skapar en virtuell dator med namnet *DNS01* i den nya moln tjänsten med hjälp av den hämtade avbildningen, anger att den virtuella datorn är i ett undernät med namnet *FrontEnd*och anger *192.168.1.7* som en statisk privat IP-adress för den virtuella datorn:
+PowerShell-skriptet nedan skapar en ny moln tjänst med namnet *TestService* och hämtar sedan en avbildning från Azure, skapar en virtuell dator med namnet *DNS01* i den nya moln tjänsten med hjälp av den hämtade avbildningen, anger att den virtuella datorn är i ett undernät med namnet *FrontEnd* och anger *192.168.1.7* som en statisk privat IP-adress för den virtuella datorn:
 
 ```azurepowershell
 New-AzureService -ServiceName TestService -Location "Central US"
@@ -154,7 +154,6 @@ Update-AzureVM       77d8cae2-87e6-0ead-9738-7c7dae9810cb Succeeded
 Vi rekommenderar att du inte statiskt tilldelar den privata IP-adress som tilldelats den virtuella Azure-datorn i operativ systemet på en virtuell dator, om det inte behövs. Om du manuellt ställer in den privata IP-adressen i operativ systemet måste du kontrol lera att den är samma adress som den privata IP-adress som tilldelats den virtuella Azure-datorn, eller så kan du förlora anslutningen till den virtuella datorn. Du bör aldrig manuellt tilldela den offentliga IP-adress som tilldelats till en virtuell Azure-dator i den virtuella datorns operativ system.
 
 ## <a name="next-steps"></a>Nästa steg
-* Läs mer om [reserverade offentliga IP-](virtual-networks-reserved-public-ip.md) adresser.
-* Lär dig mer om [offentliga IP-adresser på instans nivå (ILPIP)](virtual-networks-instance-level-public-ip.md) .
-* Läs [reserverad IP REST-API: er](https://msdn.microsoft.com/library/azure/dn722420.aspx).
-
+* Läs mer om [reserverade offentliga IP-](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip) adresser.
+* Lär dig mer om [offentliga IP-adresser på instans nivå (ILPIP)](/previous-versions/azure/virtual-network/virtual-networks-instance-level-public-ip) .
+* Läs [reserverad IP REST-API: er](/previous-versions/azure/reference/dn722420(v=azure.100)).

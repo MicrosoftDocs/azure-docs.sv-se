@@ -3,12 +3,12 @@ title: Information om princip definitions strukturen
 description: Beskriver hur princip definitioner används för att upprätta konventioner för Azure-resurser i din organisation.
 ms.date: 10/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 52adaf9522e4690c4c44a72ed47592f5b1d6471e
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 6e04551a2ef2f890844693fec71d2d3232a456f2
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97883256"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98220821"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy-definitionsstruktur
 
@@ -22,7 +22,7 @@ _PolicyRule_ -schemat för princip definition finns här:[https://schema.managem
 Du använder JSON för att skapa en princip definition. Princip definitionen innehåller element för:
 
 - visningsnamn
-- description
+- beskrivning
 - mode
 - metadata
 - parametrar
@@ -261,7 +261,7 @@ Du kan kapsla logiska operatorer. I följande exempel visas en åtgärd som är 
 
 ### <a name="conditions"></a>Villkor
 
-Ett villkor utvärderar om ett **fält** eller **värde** accessor uppfyller vissa villkor. De villkor som stöds är:
+Ett villkor utvärderar om ett värde uppfyller vissa villkor. De villkor som stöds är:
 
 - `"equals": "stringValue"`
 - `"notEquals": "stringValue"`
@@ -291,12 +291,9 @@ Värdet får inte ha fler än ett jokertecken `*` .
 
 När du använder **matchnings** -och **notMatch** -villkor, anger `#` du för att matcha en siffra, `?` för en bokstav, för `.` att matcha alla tecken och andra tecken som ska matcha det faktiska tecknet. Även om **match** -och **notMatch** är Skift läges känsliga, är alla andra villkor som utvärderar en _stringValue_ Skift läges känsliga. Skift läges känsliga alternativ är tillgängliga i **matchInsensitively** och **notMatchInsensitively**.
 
-Varje element i matrisen utvärderas individuellt med logiska element **och** mellan element i fältet **\[ \* \] alias för Ali Aset** . Mer information finns i [referera till mat ris resurs egenskaper](../how-to/author-policies-for-arrays.md#referencing-array-resource-properties).
-
 ### <a name="fields"></a>Fält
 
-Villkor bildas med hjälp av fält. Ett fält matchar egenskaper i nytto lasten för resurs förfrågan och beskriver resursens tillstånd.
-
+Villkor som utvärderar om värdena för egenskaper i resurs begär ande nytto Last uppfyller vissa villkor kan skapas med ett **fält** uttryck.
 Följande fält stöds:
 
 - `name`
@@ -305,6 +302,7 @@ Följande fält stöds:
 - `kind`
 - `type`
 - `location`
+  - Plats fälten är normaliserade för att stödja olika format. Anses till exempel vara `East US 2` lika med `eastus2` .
   - Använd **Global** för resurser som är plats oberoende.
 - `id`
   - Returnerar resurs-ID för den resurs som utvärderas.
@@ -324,6 +322,10 @@ Följande fält stöds:
 
 > [!NOTE]
 > `tags.<tagName>`, `tags[tagName]` , och `tags[tag.with.dots]` är fortfarande acceptabla sätt att deklarera ett Tags-fält. De prioriterade uttrycken är dock de som anges ovan.
+
+> [!NOTE]
+> I **fält** uttryck som refererar till **\[ \* \] alias** utvärderas varje element i matrisen individuellt med logiska element **och** mellan element.
+> Mer information finns i [referera till mat ris resurs egenskaper](../how-to/author-policies-for-arrays.md#referencing-array-resource-properties).
 
 #### <a name="use-tags-with-parameters"></a>Använda taggar med parametrar
 
@@ -355,7 +357,7 @@ I följande exempel `concat` används för att skapa ett fält uppslag för tagg
 
 ### <a name="value"></a>Värde
 
-Villkor kan även skapas med hjälp av **värde**. **värde** kontrollerar villkor mot [parametrar](#parameters), [mall funktioner som stöds](#policy-functions)eller litteraler. **värdet** kombineras med alla [villkor](#conditions)som stöds.
+Villkor som utvärderar om ett värde uppfyller vissa villkor kan skapas med ett **värde** uttryck. Värden kan vara litteraler, värdena för [parametrar](#parameters)eller de returnerade värdena för alla [mallar som stöds](#policy-functions).
 
 > [!WARNING]
 > Om resultatet av en _mall_ är ett fel, Miss lyckas princip utvärderingen. En misslyckad utvärdering är en implicit **nekande**. Mer information finns i [undvika mall-haverier](#avoiding-template-failures). Använd [enforcementMode](./assignment-structure.md#enforcement-mode) av **DoNotEnforce** för att förhindra påverkan av en misslyckad utvärdering på nya eller uppdaterade resurser vid testning och validering av en ny princip definition.
@@ -440,9 +442,11 @@ Med den reviderade princip regeln `if()` kontrollerar **namnet på namnet** inna
 
 ### <a name="count"></a>Antal
 
-Villkor som räknar hur många medlemmar i en matris i resurs nytto lasten uppfyller ett villkors uttryck kan skapas med hjälp av **Count** -uttryck. Vanliga scenarier kontrollerar om "minst en av", ",", "alla" eller "ingen av" mat ris medlemmarna uppfyller villkoret. **Count** utvärderar varje [ \[ \* \] alias](#understanding-the--alias) mat ris medlem för ett villkors uttryck och summerar de _sanna_ resultaten, som sedan jämförs med uttrycks operatorn. **Count** -uttryck kan läggas till upp till tre gånger i en enda **policyRule** -definition.
+Villkor som räknar hur många medlemmar i en matris som uppfyller vissa kriterier kan skapas med ett **Count** -uttryck. Vanliga scenarier kontrollerar om "minst en av", ",", "alla" eller "ingen av" mat ris medlemmarna uppfyller ett villkor. **Count** utvärderar varje mat ris medlem för ett villkors uttryck och summerar de _sanna_ resultaten, som sedan jämförs med uttrycks operatorn.
 
-Strukturen för **Count** -uttrycket är:
+#### <a name="field-count"></a>Fält antal
+
+Räkna hur många medlemmar i en matris i nytto lasten för begäran som uppfyller ett villkors uttryck. Strukturen för **fält Count** -uttryck är:
 
 ```json
 {
@@ -456,16 +460,62 @@ Strukturen för **Count** -uttrycket är:
 }
 ```
 
-Följande egenskaper används med **Count**:
+Följande egenskaper används med **antal fält**:
 
-- **Count. Field** (required): innehåller sökvägen till matrisen och måste vara ett mat ris alias. Om matrisen saknas utvärderas uttrycket till _false_ utan att ta hänsyn till villkors uttrycket.
-- **Count.** (valfritt): villkors uttrycket för att varje [ \[ \* \] alias](#understanding-the--alias) ska utvärderas individuellt i **fältet Count.** Om den här egenskapen inte anges utvärderas alla mat ris medlemmar med sökvägen för Field till _True_. Alla [villkor](../concepts/definition-structure.md#conditions) kan användas i den här egenskapen.
+- **Count. Field** (required): innehåller sökvägen till matrisen och måste vara ett mat ris alias.
+- **Count.** (valfritt): villkors uttrycket som ska utvärderas individuellt för varje [ \[ \* \] alias](#understanding-the--alias) mat ris medlem i `count.field` . Om den här egenskapen inte anges utvärderas alla mat ris medlemmar med sökvägen för Field till _True_. Alla [villkor](../concepts/definition-structure.md#conditions) kan användas i den här egenskapen.
   [Logiska operatorer](#logical-operators) kan användas i den här egenskapen för att skapa komplexa utvärderings krav.
 - **\<condition\>** (obligatoriskt): värdet jämförs med antalet objekt som uppfyllde **antalet. Where** villkors uttryck. Ett numeriskt [villkor](../concepts/definition-structure.md#conditions) ska användas.
 
-Mer information om hur du arbetar med mat ris egenskaper i Azure Policy, inklusive detaljerad förklaring om hur antalet uttryck utvärderas, finns i [referera till mat ris resurs egenskaper](../how-to/author-policies-for-arrays.md#referencing-array-resource-properties).
+**Fält Count** -uttryck kan räkna upp samma fält mat ris upp till tre gånger i en enskild **policyRule** -definition.
 
-#### <a name="count-examples"></a>Antal exempel
+Mer information om hur du arbetar med mat ris egenskaper i Azure Policy, inklusive detaljerad förklaring om hur ett **fält räknar** uttryck utvärderas, finns i [referera till mat ris resurs egenskaper](../how-to/author-policies-for-arrays.md#referencing-array-resource-properties).
+
+#### <a name="value-count"></a>Antal värden
+Räkna hur många medlemmar i en matris som uppfyller ett villkor. Matrisen kan vara en literal matris eller en [referens till en mat ris parameter](#using-a-parameter-value). Strukturen för **värde räknar** uttryck är:
+
+```json
+{
+    "count": {
+        "value": "<literal array | array parameter reference>",
+        "name": "<index name>",
+        "where": {
+            /* condition expression */
+        }
+    },
+    "<condition>": "<compare the count of true condition expression array members to this value>"
+}
+```
+
+Följande egenskaper används med **värdet antal**:
+
+- **Count. Value** (obligatoriskt): matrisen som ska utvärderas.
+- **Count.name** (obligatoriskt): index namnet, som består av engelska bokstäver och siffror. Definierar ett namn för värdet för mat ris medlemmen som utvärderas i den aktuella iterationen. Namnet används för att referera till det aktuella värdet i `count.where` villkoret. Valfritt om **Count** -uttrycket inte är underordnat ett annat **Count** -uttryck. När det inte anges är index namnet implicit inställt på `"default"` .
+- **Count.** (valfritt): villkors uttrycket som ska utvärderas separat för varje mat ris medlem i `count.value` . Om den här egenskapen inte anges utvärderas alla mat ris medlemmar som _sanna_. Alla [villkor](../concepts/definition-structure.md#conditions) kan användas i den här egenskapen. [Logiska operatorer](#logical-operators) kan användas i den här egenskapen för att skapa komplexa utvärderings krav. Värdet för den aktuella uppräknade mat ris medlemmen kan nås genom att anropa den [aktuella](#the-current-function) funktionen.
+- **\<condition\>** (obligatoriskt): värdet jämförs med antalet objekt som uppfyller `count.where` villkors uttrycket. Ett numeriskt [villkor](../concepts/definition-structure.md#conditions) ska användas.
+
+Följande gränser tillämpas:
+- Det går att använda upp till tio uttryck för **värde räknare** i en enda **policyRule** -definition.
+- Varje **värdes** uttryck kan utföra upp till 100 iterationer. Det här talet inkluderar antalet iterationer som utförts av eventuella **antal överordnade värdes** uttryck.
+
+#### <a name="the-current-function"></a>Aktuell funktion
+
+`current()`Funktionen är endast tillgänglig i `count.where` villkoret. Den returnerar värdet för den mat ris medlem som för närvarande räknas upp av en utvärdering av **Count** -uttrycket.
+
+**Användning av värde antal**
+
+- `current(<index name defined in count.name>)`. Exempel: `current('arrayMember')`.
+- `current()`. Tillåts bara när uttrycket **värde Count** inte är underordnat ett annat **Count** -uttryck. Returnerar samma värde som ovan.
+
+Om det värde som returneras av anropet är ett objekt, stöds egenskaps åtkomst. Exempel: `current('objectArrayMember').property`.
+
+**Användning av fält antal**
+
+- `current(<the array alias defined in count.field>)`. Ett exempel är `current('Microsoft.Test/resource/enumeratedArray[*]')`.
+- `current()`. Tillåts endast om **fältet Count** -uttryck inte är underordnat ett annat **Count** -uttryck. Returnerar samma värde som ovan.
+- `current(<alias of a property of the array member>)`. Ett exempel är `current('Microsoft.Test/resource/enumeratedArray[*].property')`.
+
+#### <a name="field-count-examples"></a>Exempel på fält antal
 
 Exempel 1: kontrol lera om en matris är tom
 
@@ -550,18 +600,162 @@ Exempel 5: kontrol lera att minst en mat ris medlem matchar flera egenskaper i v
 }
 ```
 
-Exempel 6: `field()` funktionen use inuti `where` villkoren för att få åtkomst till det litterala värdet för den aktuella utvärderade mat ris medlemmen. Det här villkoret kontrollerar att det inte finns några säkerhets regler med ett jämnt numrerat _prioritets_ värde.
+Exempel 6: `current()` funktionen use inuti `where` villkoren för att få åtkomst till värdet för den aktuella uppräknade mat ris medlemmen i en template-funktion. Det här tillståndet kontrollerar om ett virtuellt nätverk innehåller ett adressprefix som inte är under CIDR-intervallet 10.0.0.0/24.
 
 ```json
 {
     "count": {
-        "field": "Microsoft.Network/networkSecurityGroups/securityRules[*]",
+        "field": "Microsoft.Network/virtualNetworks/addressSpace.addressPrefixes[*]",
         "where": {
-          "value": "[mod(first(field('Microsoft.Network/networkSecurityGroups/securityRules[*].priority')), 2)]",
-          "equals": 0
+          "value": "[ipRangeContains('10.0.0.0/24', current('Microsoft.Network/virtualNetworks/addressSpace.addressPrefixes[*]'))]",
+          "equals": false
         }
     },
     "greater": 0
+}
+```
+
+Exempel 7: `field()` funktionen use inuti `where` villkoren för att få åtkomst till värdet för den aktuella uppräknade mat ris medlemmen. Det här tillståndet kontrollerar om ett virtuellt nätverk innehåller ett adressprefix som inte är under CIDR-intervallet 10.0.0.0/24.
+
+```json
+{
+    "count": {
+        "field": "Microsoft.Network/virtualNetworks/addressSpace.addressPrefixes[*]",
+        "where": {
+          "value": "[ipRangeContains('10.0.0.0/24', first(field(('Microsoft.Network/virtualNetworks/addressSpace.addressPrefixes[*]')))]",
+          "equals": false
+        }
+    },
+    "greater": 0
+}
+```
+
+#### <a name="value-count-examples"></a>Exempel på värde räknare
+
+Exempel 1: kontrol lera om resurs namnet matchar någon av de tilldelade namn mönstren.
+
+```json
+{
+    "count": {
+        "value": [ "prefix1_*", "prefix2_*" ],
+        "name": "pattern",
+        "where": {
+            "field": "name",
+            "like": "[current('pattern')]"
+        }
+    },
+    "greater": 0
+}
+```
+
+Exempel 2: kontrol lera om resurs namnet matchar någon av de tilldelade namn mönstren. `current()`Funktionen anger inget index namn. Resultatet är detsamma som i föregående exempel.
+
+```json
+{
+    "count": {
+        "value": [ "prefix1_*", "prefix2_*" ],
+        "where": {
+            "field": "name",
+            "like": "[current()]"
+        }
+    },
+    "greater": 0
+}
+```
+
+Exempel 3: kontrol lera om resurs namnet matchar något av de angivna namn mönstren från en mat ris parameter.
+
+```json
+{
+    "count": {
+        "value": "[parameters('namePatterns')]",
+        "name": "pattern",
+        "where": {
+            "field": "name",
+            "like": "[current('pattern')]"
+        }
+    },
+    "greater": 0
+}
+```
+
+Exempel 4: kontrol lera om något av de virtuella nätverks adress prefixen inte finns med i listan över godkända prefix.
+
+```json
+{
+    "count": {
+        "field": "Microsoft.Network/virtualNetworks/addressSpace.addressPrefixes[*]",
+        "where": {
+            "count": {
+                "value": "[parameters('approvedPrefixes')]",
+                "name": "approvedPrefix",
+                "where": {
+                    "value": "[ipRangeContains(current('approvedPrefix'), current('Microsoft.Network/virtualNetworks/addressSpace.addressPrefixes[*]'))]",
+                    "equals": true
+                },
+            },
+            "equals": 0
+        }
+    },
+    "greater": 0
+}
+```
+
+Exempel 5: kontrol lera att alla reserverade NSG-regler är definierade i en NSG. Egenskaperna för de reserverade NSG-reglerna definieras i en mat ris parameter som innehåller objekt.
+
+Parameter värde:
+
+```json
+[
+    {
+        "priority": 101,
+        "access": "deny",
+        "direction": "inbound",
+        "destinationPortRange": 22
+    },
+    {
+        "priority": 102,
+        "access": "deny",
+        "direction": "inbound",
+        "destinationPortRange": 3389
+    }
+]
+```
+
+Politik
+```json
+{
+    "count": {
+        "value": "[parameters('reservedNsgRules')]",
+        "name": "reservedNsgRule",
+        "where": {
+            "count": {
+                "field": "Microsoft.Network/networkSecurityGroups/securityRules[*]",
+                "where": {
+                    "allOf": [
+                        {
+                            "field": "Microsoft.Network/networkSecurityGroups/securityRules[*].priority",
+                            "equals": "[current('reservedNsgRule').priority]"
+                        },
+                        {
+                            "field": "Microsoft.Network/networkSecurityGroups/securityRules[*].access",
+                            "equals": "[current('reservedNsgRule').access]"
+                        },
+                        {
+                            "field": "Microsoft.Network/networkSecurityGroups/securityRules[*].direction",
+                            "equals": "[current('reservedNsgRule').direction]"
+                        },
+                        {
+                            "field": "Microsoft.Network/networkSecurityGroups/securityRules[*].destinationPortRange",
+                            "equals": "[current('reservedNsgRule').destinationPortRange]"
+                        }
+                    ]
+                }
+            },
+            "equals": 1
+        }
+    },
+    "equals": "[length(parameters('reservedNsgRules'))]"
 }
 ```
 
@@ -627,7 +821,6 @@ Följande funktioner är endast tillgängliga i princip regler:
   }
   ```
 
-
 - `ipRangeContains(range, targetRange)`
     - **intervall**: [required] sträng-sträng som anger ett intervall med IP-adresser.
     - **targetRange**: [required] sträng sträng som anger ett intervall med IP-adresser.
@@ -639,6 +832,8 @@ Följande funktioner är endast tillgängliga i princip regler:
     - CIDR-intervall (exempel: `10.0.0.0/24` , `2001:0DB8::/110` )
     - Intervall som definieras av start-och slut-IP-adresser (exempel: `192.168.0.1-192.168.0.9` , `2001:0DB8::-2001:0DB8::3:FFFF` )
 
+- `current(indexName)`
+    - Special-funktion som bara kan användas inuti [Count-uttryck](#count).
 
 #### <a name="policy-function-example"></a>Exempel på princip funktion
 
@@ -709,14 +904,14 @@ Listan över alias växer alltid. Använd någon av följande metoder för att t
 
 ### <a name="understanding-the--alias"></a>Förstå aliaset [*]
 
-Flera av de tillgängliga aliasen har en version som visas som ett normalt namn och en annan som är **\[\*\]** kopplad till den. Till exempel:
+Flera av de tillgängliga aliasen har en version som visas som ett normalt namn och en annan som är **\[\*\]** kopplad till den. Exempel:
 
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules`
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]`
 
 Aliaset "normal" representerar fältet som ett enda värde. Det här fältet är för exakta matchnings scenarier när hela uppsättningen med värden måste vara exakt som definierad, inte mer eller mindre.
 
-**\[\*\]** Alias representerar en samling värden som valts från elementen i en mat ris resurs egenskap. Till exempel:
+**\[\*\]** Alias representerar en samling värden som valts från elementen i en mat ris resurs egenskap. Exempel:
 
 | Alias | Valda värden |
 |:---|:---|

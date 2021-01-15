@@ -15,14 +15,14 @@ ms.workload: infrastructure-services
 ms.date: 4/26/2019
 ms.author: steveesp
 ms.reviewer: kumud, mareat
-ms.openlocfilehash: f0bad935c7c3d44f57dd171f714f31856bc2089c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b11bdf9b82352c15b7f7236168494f32fe4a4f9f
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91361321"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98221518"
 ---
-# <a name="virtual-machine-network-bandwidth"></a>Nätverks bandbredd för virtuell dator
+# <a name="virtual-machine-network-bandwidth"></a>Nätverksbandbredd för virtuell dator
 
 Azure erbjuder en mängd olika storlekar och typer av virtuella datorer, var och en med olika prestanda funktioner. En funktion är nätverks data flöde (eller bandbredd), mätt i megabit per sekund (Mbit/s). Eftersom virtuella datorer finns på delad maskin vara, måste nätverks kapaciteten delas relativt mellan de virtuella datorerna som delar samma maskin vara. Större virtuella datorer tilldelas relativt mer bandbredd än mindre virtuella datorer.
  
@@ -32,11 +32,11 @@ Ingress är inte avgiftsbelagda eller begränsade direkt. Det finns dock andra f
 
 Accelererat nätverk är en funktion som har utformats för att förbättra nätverks prestanda, inklusive svars tid, data flöde och processor belastning. Även om det accelererade nätverket kan förbättra en virtuell dators data flöde, kan det bara göra upp till den virtuella datorns allokerade bandbredd. Mer information om accelererat nätverk finns i accelererat nätverk för virtuella [Windows](create-vm-accelerated-networking-powershell.md) -eller [Linux](create-vm-accelerated-networking-cli.md) -datorer.
  
-Virtuella Azure-datorer måste ha en, men kan ha flera nätverks gränssnitt anslutna till dem. Bandbredd som tilldelas en virtuell dator är summan av all utgående trafik över alla nätverks gränssnitt som är anslutna till en virtuell dator. Med andra ord är den allokerade bandbredden per virtuell dator, oavsett hur många nätverks gränssnitt som är kopplade till den virtuella datorn. Information om hur många olika nätverks gränssnitt som stöds av Azure VM-storlekar finns i storlekar för virtuella Azure [Windows](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) -och [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) -datorer. 
+Virtuella Azure-datorer måste ha en, men kan ha flera nätverks gränssnitt anslutna till dem. Bandbredd som tilldelas en virtuell dator är summan av all utgående trafik över alla nätverks gränssnitt som är anslutna till en virtuell dator. Med andra ord är den allokerade bandbredden per virtuell dator, oavsett hur många nätverks gränssnitt som är kopplade till den virtuella datorn. Information om hur många olika nätverks gränssnitt som stöds av Azure VM-storlekar finns i storlekar för virtuella Azure [Windows](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) -och [Linux](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) -datorer. 
 
 ## <a name="expected-network-throughput"></a>Förväntat nätverks data flöde
 
-Förväntat utgående data flöde och antalet nätverks gränssnitt som stöds av varje VM-storlek beskrivs i Azure [Windows](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) -och [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) VM-storlekar. Välj en typ, till exempel generell användning, och välj sedan en storleks serie på den resulterande sidan, till exempel Dv2-serien. Varje serie har en tabell med nätverks specifikationer i den sista kolumnen med rubriken, **högsta antal nätverkskort/förväntade nätverks prestanda (Mbit/s)**. 
+Förväntat utgående data flöde och antalet nätverks gränssnitt som stöds av varje VM-storlek beskrivs i Azure [Windows](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) -och [Linux](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) VM-storlekar. Välj en typ, till exempel generell användning, och välj sedan en storleks serie på den resulterande sidan, till exempel Dv2-serien. Varje serie har en tabell med nätverks specifikationer i den sista kolumnen med rubriken, **högsta antal nätverkskort/förväntade nätverks prestanda (Mbit/s)**. 
 
 Data flödes gränsen gäller för den virtuella datorn. Data flödet påverkas inte av följande faktorer:
 - **Antal nätverks gränssnitt**: bandbredds gränsen är ackumulerad för all utgående trafik från den virtuella datorn.

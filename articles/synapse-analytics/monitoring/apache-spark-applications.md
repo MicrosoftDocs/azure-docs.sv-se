@@ -9,12 +9,12 @@ ms.subservice: monitoring
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: 16b37258d922db59f520d4e30c45773f6d1108cf
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 2f9fa6e7ef9a7ee8ea7dd2a09622f26f6fd9739e
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93341140"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223133"
 ---
 # <a name="use-synapse-studio-to-monitor-your-apache-spark-applications"></a>Använd Synapse Studio för att övervaka dina Apache Spark-program
 
@@ -29,11 +29,11 @@ Den här självstudien omfattar följande uppgifter:
 * Visa avbrutna Apache Spark program
 * Det gick inte att felsöka Apache Spark programmet
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Innan du börjar med den här självstudien måste du uppfylla följande krav:
 
-- En Synapse Studio-arbetsyta. Instruktioner finns i [skapa en Synapse Studio-arbetsyta](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace#create-a-workspace).
+- En Synapse Studio-arbetsyta. Instruktioner finns i [skapa en Synapse Studio-arbetsyta](../../machine-learning/how-to-manage-workspace.md#create-a-workspace).
 
 - En Apache Spark pool.
 
@@ -47,7 +47,7 @@ Du kan visa alla Apache Spark program från **övervaka**  ->  **Apache Spark pr
 
   ![Välj slutfört jobb](./media/how-to-monitor-spark-applications/select-completed-job.png)
 
-1. Kontrol lera **slutförda aktiviteter** , **status** och **total varaktighet**.
+1. Kontrol lera **slutförda aktiviteter**, **status** och **total varaktighet**.
 
 2. Uppdatera logg fråga.
 
@@ -59,7 +59,7 @@ Du kan visa alla Apache Spark program från **övervaka**  ->  **Apache Spark pr
 
 6. Du kan se en översikt över jobbet i diagrammet genererat jobb. Som standard visar diagrammet alla jobb. Du kan filtrera den här vyn efter **jobb-ID**.
 
-7. Som standard är visnings **förloppet** markerat. Du kan kontrol lera data flödet genom att välja **status** för Läs-och / **Skriv** / **Written** / **varaktighet** i list rutan **Visa** .
+7. Som standard är visnings **förloppet** markerat. Du kan kontrol lera data flödet genom att välja **status** för Läs-och / **Skriv** /  / **varaktighet** i list rutan **Visa** .
 
 8. Om du vill spela upp jobbet klickar du på knappen **uppspelning** . Du kan stoppa genom att klicka på **stopp** -knappen när som helst.
 
@@ -96,7 +96,7 @@ Du kan visa alla Apache Spark program från **övervaka**  ->  **Apache Spark pr
 
    ![Välj pågående jobb](./media/how-to-monitor-spark-applications/select-running-job.png)
 
-1. Kontrol lera **slutförda aktiviteter** , **status** och **total varaktighet**.
+1. Kontrol lera **slutförda aktiviteter**, **status** och **total varaktighet**.
 
 2. **Avbryt** Apache Spark programmet.
 
@@ -120,7 +120,7 @@ Du kan visa alla Apache Spark program från **övervaka**  ->  **Apache Spark pr
 
  ![Välj avbrutet jobb](./media/how-to-monitor-spark-applications/select-cancelled-job.png) 
 
-1. Kontrol lera **slutförda aktiviteter** , **status** och **total varaktighet**.
+1. Kontrol lera **slutförda aktiviteter**, **status** och **total varaktighet**.
 
 2. Uppdatera logg frågan.
 
@@ -142,7 +142,7 @@ Du kan visa alla Apache Spark program från **övervaka**  ->  **Apache Spark pr
 
 ![Välj misslyckat jobb](./media/how-to-monitor-spark-applications/select-failed-job.png)
 
-1. Kontrol lera **slutförda aktiviteter** , **status** och **total varaktighet**.
+1. Kontrol lera **slutförda aktiviteter**, **status** och **total varaktighet**.
 
 2. Uppdatera logg fråga.
 
@@ -158,4 +158,4 @@ Du kan visa alla Apache Spark program från **övervaka**  ->  **Apache Spark pr
 
 ## <a name="next-steps"></a>Nästa steg
 
-Mer information om övervakning av pipeline-körningar finns i artikeln [övervaka pipeline som körs med hjälp av Synapse Studio](how-to-monitor-pipeline-runs.md) .  
+Mer information om övervakning av pipeline-körningar finns i artikeln [övervaka pipeline som körs med hjälp av Synapse Studio](how-to-monitor-pipeline-runs.md) .

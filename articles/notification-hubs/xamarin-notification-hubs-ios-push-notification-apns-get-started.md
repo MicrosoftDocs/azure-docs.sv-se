@@ -12,16 +12,16 @@ ms.tgt_pltfrm: mobile-xamarin-ios
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.custom: mvc, devx-track-csharp
-ms.date: 07/07/2020
+ms.date: 01/12/2021
 ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 05/23/2019
-ms.openlocfilehash: 7b53767aea9df2da8dbf89e26fff03c792918016
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: ff1e5edad05ebd7157f71ad2e099ea88905be4f3
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91893687"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98221144"
 ---
 # <a name="tutorial-send-push-notifications-to-xamarinios-apps-using-azure-notification-hubs"></a>Självstudie: skicka push-meddelanden till Xamarin. iOS-appar med hjälp av Azure Notification Hubs
 
@@ -88,14 +88,20 @@ Du måste slutföra den här självstudiekursen innan du påbörjar någon annan
 7. I `AppDelegate.cs` lägger du till följande using-instruktion:
 
     ```csharp
-    using WindowsAzure.Messaging;
+    using WindowsAzure.Messaging.NotificationHubs;
     using UserNotifications
     ```
 
-8. Deklarera en instans av `SBNotificationHub`:
+8. Skapa en implementering av `MSNotificationHubDelegate` i `AppDelegate.cs` :
 
     ```csharp
-    private SBNotificationHub Hub { get; set; }
+    public class AzureNotificationHubListener : MSNotificationHubDelegate
+    {
+        public override void DidReceivePushNotification(MSNotificationHub notificationHub, MSNotificationHubMessage message)
+        {
+
+        }
+    }
     ```
 
 9. I `AppDelegate.cs` uppdaterar du `FinishedLaunching()` till att matcha följande kod:
@@ -103,105 +109,32 @@ Du måste slutföra den här självstudiekursen innan du påbörjar någon annan
     ```csharp
     public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
     {
-        if (UIDevice.CurrentDevice.CheckSystemVersion(10, 0))
-        {
-            UNUserNotificationCenter.Current.RequestAuthorization(UNAuthorizationOptions.Alert | UNAuthorizationOptions.Badge | UNAuthorizationOptions.Sound,
-                                                                    (granted, error) => InvokeOnMainThread(UIApplication.SharedApplication.RegisterForRemoteNotifications));
-        }
-        else if (UIDevice.CurrentDevice.CheckSystemVersion(8, 0))
-        {
-            var pushSettings = UIUserNotificationSettings.GetSettingsForTypes(
-                    UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound,
-                    new NSSet());
-
-            UIApplication.SharedApplication.RegisterUserNotificationSettings(pushSettings);
-            UIApplication.SharedApplication.RegisterForRemoteNotifications();
-        }
-        else
-        {
-            UIRemoteNotificationType notificationTypes = UIRemoteNotificationType.Alert | UIRemoteNotificationType.Badge | UIRemoteNotificationType.Sound;
-            UIApplication.SharedApplication.RegisterForRemoteNotificationTypes(notificationTypes);
-        }
+        // Set the Message listener
+        MSNotificationHub.SetDelegate(new AzureNotificationHubListener());
+        
+        // Start the SDK
+        MSNotificationHub.Start(ListenConnectionString, NotificationHubName);
 
         return true;
     }
     ```
 
-10. I `AppDelegate.cs` åsidosätter du metoden `RegisteredForRemoteNotifications()`:
+10. I `AppDelegate.cs` implementerar du `DidReceivePushNotification` metoden för `AzureNotificationHubListener` klassen:
 
     ```csharp
-    public override void RegisteredForRemoteNotifications(UIApplication application, NSData deviceToken)
+    public override void DidReceivePushNotification(MSNotificationHub notificationHub, MSNotificationHubMessage message)
     {
-        Hub = new SBNotificationHub(Constants.ListenConnectionString, Constants.NotificationHubName);
+        // This sample assumes { aps: { alert: { title: "Hello", body: "World" } } }
+        var alertTitle = message.Title ?? "Notification";
+        var alertBody = message.Body;
 
-        Hub.UnregisterAll (deviceToken, (error) => {
-            if (error != null)
-            {
-                System.Diagnostics.Debug.WriteLine("Error calling Unregister: {0}", error.ToString());
-                return;
-            }
-
-            NSSet tags = null; // create tags if you want
-            Hub.RegisterNative(deviceToken, tags, (errorCallback) => {
-                if (errorCallback != null)
-                    System.Diagnostics.Debug.WriteLine("RegisterNative error: " + errorCallback.ToString());
-            });
-        });
+        var myAlert = UIAlertController.Create(alertTitle, alertBody, UIAlertControllerStyle.Alert);
+        myAlert.AddAction(UIAlertAction.Create("OK", UIAlertActionStyle.Default, null));
+        UIApplication.SharedApplication.KeyWindow.RootViewController.PresentViewController(myAlert, true, null);
     }
     ```
 
-11. I `AppDelegate.cs` åsidosätter du metoden `ReceivedRemoteNotification()`:
-
-    ```csharp
-    public override void ReceivedRemoteNotification(UIApplication application, NSDictionary userInfo)
-    {
-        ProcessNotification(userInfo, false);
-    }
-    ```
-
-12. I `AppDelegate.cs` skapar du metoden `ProcessNotification()`:
-
-    ```csharp
-    void ProcessNotification(NSDictionary options, bool fromFinishedLaunching)
-    {
-        // Check to see if the dictionary has the aps key.  This is the notification payload you would have sent
-        if (null != options && options.ContainsKey(new NSString("aps")))
-        {
-            //Get the aps dictionary
-            NSDictionary aps = options.ObjectForKey(new NSString("aps")) as NSDictionary;
-
-            string alert = string.Empty;
-
-            //Extract the alert text
-            // NOTE: If you're using the simple alert by just specifying
-            // "  aps:{alert:"alert msg here"}  ", this will work fine.
-            // But if you're using a complex alert with Localization keys, etc.,
-            // your "alert" object from the aps dictionary will be another NSDictionary.
-            // Basically the JSON gets dumped right into a NSDictionary,
-            // so keep that in mind.
-            if (aps.ContainsKey(new NSString("alert")))
-                alert = (aps [new NSString("alert")] as NSString).ToString();
-
-            //If this came from the ReceivedRemoteNotification while the app was running,
-            // we of course need to manually process things like the sound, badge, and alert.
-            if (!fromFinishedLaunching)
-            {
-                //Manually show an alert
-                if (!string.IsNullOrEmpty(alert))
-                {
-                    var myAlert = UIAlertController.Create("Notification", alert, UIAlertControllerStyle.Alert);
-                    myAlert.AddAction(UIAlertAction.Create("OK", UIAlertActionStyle.Default, null));
-                    UIApplication.SharedApplication.KeyWindow.RootViewController.PresentViewController(myAlert, true, null);
-                }
-            }
-        }
-    }
-    ```
-
-    > [!NOTE]
-    > Du kan välja att åsidosätta `FailedToRegisterForRemoteNotifications()` för att hantera vissa situationer, till exempel om det inte finns någon nätverksanslutning. Detta är särskilt viktigt om användaren kan starta appen i offline-läge (t.ex. flygplansläge) och du vill hantera scenarier för push-meddelanden som är specifika för din app.
-
-13. Kör appen på enheten.
+11. Kör appen på enheten.
 
 ## <a name="send-test-push-notifications"></a>Skicka test-push-meddelanden
 
@@ -237,4 +170,4 @@ I de här självstudierna har du skickat meddelanden till alla iOS-enheter som �
 [Apple Push Notification Service]: https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html
 [Apple Push Notification Service fwlink]: https://go.microsoft.com/fwlink/p/?LinkId=272584
 [GitHub]: https://github.com/xamarin/mobile-samples/tree/master/Azure/NotificationHubs
-[Azure Portal]: https://portal.azure.com
+[Azure-portalen]: https://portal.azure.com

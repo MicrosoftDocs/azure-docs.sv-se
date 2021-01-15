@@ -9,16 +9,16 @@ ms.reviewer: jrasnick, garye
 ms.date: 11/20/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: 1b407cbee5218149f794ab125ac058e32b422558
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 6a4833cf0d73939e01fd3e3e7263c6cba3c0a28a
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96469063"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222198"
 ---
 # <a name="tutorial-sentiment-analysis-with-cognitive-services-preview"></a>Självstudie: sentiment-analys med Cognitive Services (för hands version)
 
-I den här självstudien får du lära dig hur du enkelt kan utöka dina data i Azure Synapse med [Cognitive Services](https://go.microsoft.com/fwlink/?linkid=2147492). Vi använder [textanalys](https://docs.microsoft.com/azure/cognitive-services/text-analytics/) funktionerna för att utföra sentiment-analys. En användare i Azure Synapse kan enkelt välja en tabell som innehåller en text kolumn som ska utökas med sentiment. Dessa sentiment kan vara positiva, negativa, blandade eller neutrala och en sannolikhet kommer också att returneras.
+I den här självstudien får du lära dig hur du enkelt kan utöka dina data i Azure Synapse med [Cognitive Services](../../cognitive-services/index.yml). Vi använder [textanalys](../../cognitive-services/text-analytics/index.yml) funktionerna för att utföra sentiment-analys. En användare i Azure Synapse kan enkelt välja en tabell som innehåller en text kolumn som ska utökas med sentiment. Dessa sentiment kan vara positiva, negativa, blandade eller neutrala och en sannolikhet kommer också att returneras.
 
 Den här självstudiekursen omfattar:
 
@@ -98,7 +98,7 @@ Den bärbara dator som du nyss öppnade använder [mmlspark-biblioteket](https:/
 
 Med Azure Key Vault information som du har angett kan du på ett säkert sätt referera till dina hemligheter från den här upplevelsen utan att avslöja dem.
 
-Nu kan du **köra alla** celler för att utöka dina data med sentiment. Sentiment kommer att returneras som positiv/negativ/neutral/Mixed, och du får även sannolikhet per sentiment. Läs mer om [analys av Cognitive Services-sentiment](https://go.microsoft.com/fwlink/?linkid=2147792).
+Nu kan du **köra alla** celler för att utöka dina data med sentiment. Sentiment kommer att returneras som positiv/negativ/neutral/Mixed, och du får även sannolikhet per sentiment. Läs mer om [analys av Cognitive Services-sentiment](../../cognitive-services/text-analytics/how-tos/text-analytics-how-to-sentiment-analysis.md).
 
 ![Kör Attitydanalys](media/tutorial-cognitive-services/tutorial-cognitive-services-sentiment-00h.png)
 

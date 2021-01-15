@@ -14,16 +14,16 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 12/13/2018
 ms.author: kumud
-ms.openlocfilehash: b5a136ae05b3cd410ca252b6d5a1df443aff6f7a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 97690618de5d58fa4022d01fa36a872f9d220083
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75350142"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98221688"
 ---
 # <a name="tutorial-filter-network-traffic-with-a-network-security-group-using-the-azure-portal"></a>Självstudie: filtrera nätverks trafik med en nätverks säkerhets grupp med hjälp av Azure Portal
 
-Du kan filtrera inkommande och utgående nätverkstrafik till och från ett undernät i ett virtuellt nätverk med en nätverkssäkerhetsgrupp. Nätverkssäkerhetsgrupper innehåller säkerhetsregler som filtrerar nätverkstrafik efter IP-adress, port och protokoll. Säkerhetsregler tillämpas på resurser som har distribuerats i ett undernät. I den här guiden får du lära dig att:
+Du kan filtrera inkommande och utgående nätverkstrafik till och från ett undernät i ett virtuellt nätverk med en nätverkssäkerhetsgrupp. Nätverkssäkerhetsgrupper innehåller säkerhetsregler som filtrerar nätverkstrafik efter IP-adress, port och protokoll. Säkerhetsregler tillämpas på resurser som har distribuerats i ett undernät. I de här självstudierna får du lära dig att
 
 > [!div class="checklist"]
 > * Skapa en nätverkssäkerhetsgrupp och säkerhetsregler
@@ -33,7 +33,7 @@ Du kan filtrera inkommande och utgående nätverkstrafik till och från ett unde
 
 Om du vill kan du slutföra den här självstudien med [Azure CLI](tutorial-filter-network-traffic-cli.md) eller [PowerShell](tutorial-filter-network-traffic-powershell.md).
 
-Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
+Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
 ## <a name="sign-in-to-azure"></a>Logga in på Azure
 
@@ -45,13 +45,13 @@ Logga in på Azure Portal på https://portal.azure.com.
 2. Välj **Nätverk** och välj därefter **Virtuellt nätverk**.
 3. Ange eller välj följande information, acceptera standardinställningarna för återstående inställningar och välj sedan **Skapa**:
 
-    | Inställningen                 | Värde                                              |
+    | Inställning                 | Värde                                              |
     | ---                     | ---                                                |
     | Namn                    | myVirtualNetwork                                   |
     | Adressutrymme           | 10.0.0.0/16                                        |
     | Prenumeration            | Välj din prenumeration.                          |
     | Resursgrupp          | Välj **Skapa ny** och skriv *myResourceGroup*. |
-    | Location                | Välj **USA, östra**.                                |
+    | Plats                | Välj **USA, östra**.                                |
     | Undernät – namn            | mySubnet                                           |
     | Undernät – adressintervall  | 10.0.0.0/24                                        |
 
@@ -63,7 +63,7 @@ En programsäkerhetsgrupp gör att du kan gruppera ihop servrar med liknande fun
 2. I rutan **Sök på Marketplace** anger du *Programsäkerhetsgrupp*. När **programsäkerhetsgruppen** visas i sökresultatet väljer du den. Välj sedan **Programsäkerhetsgrupp** igen under **Allt** och välj sedan **Skapa**.
 3. Välj eller ange följande information och välj **Skapa**:
 
-    | Inställningen        | Värde                                                         |
+    | Inställning        | Värde                                                         |
     | ---            | ---                                                           |
     | Namn           | myAsgWebServers                                               |
     | Prenumeration   | Välj din prenumeration.                                     |
@@ -72,7 +72,7 @@ En programsäkerhetsgrupp gör att du kan gruppera ihop servrar med liknande fun
 
 4. Slutför steg 3 igen och ange följande värden:
 
-    | Inställningen        | Värde                                                         |
+    | Inställning        | Värde                                                         |
     | ---            | ---                                                           |
     | Namn           | myAsgMgmtServers                                              |
     | Prenumeration   | Välj din prenumeration.                                     |
@@ -85,7 +85,7 @@ En programsäkerhetsgrupp gör att du kan gruppera ihop servrar med liknande fun
 2. Välj **Nätverk** och sedan **Nätverkssäkerhetsgrupp**.
 3. Välj eller ange följande information och välj **Skapa**:
 
-    |Inställningen|Värde|
+    |Inställning|Värde|
     |---|---|
     |Namn|myNsg|
     |Prenumeration| Välj din prenumeration.|
@@ -109,7 +109,7 @@ En programsäkerhetsgrupp gör att du kan gruppera ihop servrar med liknande fun
 
 2. Skapa en säkerhetsregel som tillåter portarna 80 och 443 till programsäkerhetsgruppen **myAsgWebServers**. Under **Lägg till ingående säkerhetsregel** anger eller väljer du följande värden, accepterar standardvärdena för resten av inställningarna och väljer sedan **Lägg till**:
 
-    | Inställningen                 | Värde                                                                                                           |
+    | Inställning                 | Värde                                                                                                           |
     | ---------               | ---------                                                                                                       |
     | Mål             | Välj **Programsäkerhetsgrupp** och välj sedan **myAsgWebServers** för **Programsäkerhetsgrupp**.  |
     | Målportintervall | Ange 80,443                                                                                                    |
@@ -118,7 +118,7 @@ En programsäkerhetsgrupp gör att du kan gruppera ihop servrar med liknande fun
 
 3. Slutför steg 2 igen med följande värden:
 
-    | Inställningen                 | Värde                                                                                                           |
+    | Inställning                 | Värde                                                                                                           |
     | ---------               | ---------                                                                                                       |
     | Mål             | Välj **Programsäkerhetsgrupp** och välj sedan **myAsgMgmtServers** för **Programsäkerhetsgrupp**. |
     | Målportintervall | Ange 3389                                                                                                      |
@@ -142,21 +142,21 @@ Skapa två virtuella datorer i det virtuella nätverket.
 2. Välj **Compute**, och välj sedan **Windows Server 2016 Datacenter**.
 3. Ange eller Välj följande information och godkänn standardinställningarna för de återstående inställningarna:
 
-    |Inställningen|Värde|
+    |Inställning|Värde|
     |---|---|
     |Prenumeration| Välj din prenumeration.|
     |Resursgrupp| Välj **Använd befintlig** och sedan **myResourceGroup**.|
     |Name|myVmWeb|
-    |Location| Välj **USA, östra**.|
+    |Plats| Välj **USA, östra**.|
     |Användarnamn| Ange ett valfritt användarnamn.|
     |Lösenord| Ange ett valfritt lösenord. Lösen ordet måste vara minst 12 tecken långt och uppfylla de [definierade komplexitets kraven](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
 
    
 
 4. Välj en storlek för den virtuella datorn och sedan **Välj**.
-5. Under **nätverk**väljer du följande värden och godkänner de återstående standardvärdena:
+5. Under **nätverk** väljer du följande värden och godkänner de återstående standardvärdena:
 
-    |Inställningen|Värde|
+    |Inställning|Värde|
     |---|---|
     |Virtuellt nätverk |Välj **myVirtualNetwork**.|
     |Nätverks säkerhets grupp för nätverkskort |Välj **Ingen**.|
@@ -182,7 +182,7 @@ När portalen skapade de virtuella datorerna skapade den ett nätverksgränssnit
 ## <a name="test-traffic-filters"></a>Testa trafikfilter
 
 1. Anslut till den virtuella datorn *myVmMgmt*. Ange *myVmMgmt* i sökrutan längst upp i portalen. Välj **myVmMgmt** när det visas bland sökresultaten. Välj knappen **Anslut**.
-2. Välj **Ladda ned RDP-fil**.
+2. Välj **Hämta RDP-fil**.
 3. Öppna den nedladdade RDP-filen och välj **Anslut**. Ange användarnamnet och lösenordet du angav när du skapade den virtuella datorn. Du kan behöva välja **Fler alternativ** och sedan **Använd ett annat konto** för att ange autentiseringsuppgifterna du angav när du skapade den virtuella datorn.
 4. Välj **OK**.
 5. Du kan få en certifikatvarning under inloggningen. Om du ser varningen väljer du **Ja** eller **Fortsätt** för att fortsätta med anslutningen.
@@ -221,7 +221,7 @@ Ta bort resursgruppen, skalningsuppsättningen och alla resurser som den innehå
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här självstudien har du skapat en nätverkssäkerhetsgrupp och associerat den med ett undernät i ett virtuellt nätverk. Mer information om nätverkssäkerhetsgrupper finns i [Översikt över nätverkssäkerhetsgrupper](security-overview.md) och [Hantera en nätverkssäkerhetsgrupp](manage-network-security-group.md).
+I den här självstudien har du skapat en nätverkssäkerhetsgrupp och associerat den med ett undernät i ett virtuellt nätverk. Mer information om nätverkssäkerhetsgrupper finns i [Översikt över nätverkssäkerhetsgrupper](./network-security-groups-overview.md) och [Hantera en nätverkssäkerhetsgrupp](manage-network-security-group.md).
 
 Azure dirigerar som standard trafik mellan undernät. Du kan i stället välja att exempelvis dirigera trafik mellan undernät via en virtuell dator, som fungerar som en brandvägg. Gå vidare till nästa självstudie om du vill veta hur du skapar en routningstabell.
 

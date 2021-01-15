@@ -10,13 +10,13 @@ ms.topic: troubleshooting
 author: danimir
 ms.author: danil
 ms.reviewer: wiassaf, sstein
-ms.date: 06/12/2020
-ms.openlocfilehash: c42db1445c939069f334d04ea26d54cdb843c336
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 1/14/2021
+ms.openlocfilehash: 3b57172daeffd1766da456e56cb5e445427a4858
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96488841"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98220396"
 ---
 # <a name="troubleshoot-azure-sql-database-and-azure-sql-managed-instance-performance-issues-with-intelligent-insights"></a>Felsök prestanda problem med Azure SQL Database och Azure SQL-hanterade instanser med Intelligent Insights
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -36,7 +36,7 @@ Intelligent Insights identifierar automatiskt prestanda problem baserat på vän
 | :------------------- | ------------------- | ------------------- |
 | [Når resurs gränser](intelligent-insights-troubleshoot-performance.md#reaching-resource-limits) | Förbrukningen av tillgängliga resurser (DTU: er), databas arbets trådar eller databas inloggnings sessioner som är tillgängliga i den övervakade prenumerationen har nått sin resurs gräns. Detta påverkar prestanda. | Förbrukningen av CPU-resurser når resurs gränserna. Detta påverkar databasens prestanda. |
 | [Ökad arbets belastning](intelligent-insights-troubleshoot-performance.md#workload-increase) | Ökad arbets belastning eller kontinuerlig ackumulering av arbets belastningen på databasen upptäcktes. Detta påverkar prestanda. | Arbets belastnings ökning har upptäckts. Detta påverkar databasens prestanda. |
-| [Minnes belastning](intelligent-insights-troubleshoot-performance.md#memory-pressure) | Arbetare som begärde minnes anslag måste vänta på minnes tilldelningar för statistiskt betydande tid eller en ökad ackumulering av arbets tagare som begärt minnes bidrag. Detta påverkar prestanda. | Arbetare som har begärt minnes bidrag väntar på minnes tilldelningar för en statistiskt betydande tids period. Detta påverkar databasens prestanda. |
+| [Minnesbelastning](intelligent-insights-troubleshoot-performance.md#memory-pressure) | Arbetare som begärde minnes anslag måste vänta på minnes tilldelningar för statistiskt betydande tid eller en ökad ackumulering av arbets tagare som begärt minnes bidrag. Detta påverkar prestanda. | Arbetare som har begärt minnes bidrag väntar på minnes tilldelningar för en statistiskt betydande tids period. Detta påverkar databasens prestanda. |
 | [Låsning](intelligent-insights-troubleshoot-performance.md#locking) | Onödig databas låsning påträffades för prestanda. | Databasens prestanda har upptäckts för överdriven databas. |
 | [Ökad MAXDOP](intelligent-insights-troubleshoot-performance.md#increased-maxdop) | Den högsta graden av Parallel-alternativ (MAXDOP) har ändrats påverkar effektiviteten i körningen av frågan. Detta påverkar prestanda. | Den högsta graden av Parallel-alternativ (MAXDOP) har ändrats påverkar effektiviteten i körningen av frågan. Detta påverkar prestanda. |
 | [PAGELATCH-konkurrens](intelligent-insights-troubleshoot-performance.md#pagelatch-contention) | Flera trådar försöker samtidigt få åtkomst till samma InMemory DataBuffer-sidor som resulterar i ökade vänte tider och orsakar PAGELATCH konkurrens. Detta påverkar prestanda. | Flera trådar försöker samtidigt få åtkomst till samma InMemory DataBuffer-sidor som resulterar i ökade vänte tider och orsakar PAGELATCH konkurrens. Detta påverkar prestandan för databasen. |
@@ -128,7 +128,9 @@ I diagnostik-loggen visas låsnings information som du kan använda som grund f�
 
 Det enklaste och säkraste sättet att åtgärda problemet är att hålla transaktionerna korta och minska de dyraste frågornas lock-avtryck. Du kan dela upp en stor sats med åtgärder i mindre operationer. Bra tillvägagångs sätt är att minska storleken på frågearkivet genom att göra frågan så effektiv som möjligt. Minska stora inläsningar eftersom de ökar risken för död lägen och påverkar den övergripande databas prestanda negativt. För identifierade frågor som orsakar låsning kan du skapa nya index eller lägga till kolumner i det befintliga indexet för att undvika att tabellen genomsöks.
 
-Mer information finns i [så här löser du spärrnings problem som orsakas av lås eskalering i SQL Server](https://support.microsoft.com/help/323630/how-to-resolve-blocking-problems-that-are-caused-by-lock-escalation-in).
+Fler förslag finns i:
+- [Förstå och lösa problem med Azure SQL-blockering](understand-resolve-blocking.md)
+- [Lösa blockerings problem som orsakas av lås eskalering i SQL Server](https://support.microsoft.com/help/323630/how-to-resolve-blocking-problems-that-are-caused-by-lock-escalation-in)
 
 ## <a name="increased-maxdop"></a>Ökad MAXDOP
 

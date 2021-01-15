@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/03/2020
 ms.author: kumud
-ms.openlocfilehash: 11651b7a76ea0e61f78f3b2f305e39ed621df391
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: e1efd02d60ba874178f24da2b441fc122e4a1912
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109325"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98218542"
 ---
 # <a name="what-is-azure-virtual-network"></a>Vad är Azure Virtual Network?
 
@@ -31,7 +31,7 @@ Azure Virtual Network gör det möjligt för Azure-resurser att kommunicera på 
 Alla resurser i ett VNet kan som standard kommunicera utgående till Internet. Du kan kommunicera inkommande trafik till en resurs genom att tilldela en offentlig IP-adress eller en offentlig lastbalanserare. Du kan också använda en offentlig IP-adress eller en offentlig lastbalanserare för att hantera utgående anslutningar.  Mer information om utgående anslutningar i Azure finns i avsnitten om [utgående anslutningar](../load-balancer/load-balancer-outbound-connections.md), [offentliga IP-adresser](virtual-network-public-ip-address.md) och [lastbalanseraren](../load-balancer/load-balancer-overview.md).
 
 >[!NOTE]
->Om du bara använder en intern [standardlastbalanserare](../load-balancer/load-balancer-standard-overview.md), är utgående anslutningar inte tillgängliga förrän du definierar hur du vill att [utgående anslutningar](../load-balancer/load-balancer-outbound-connections.md) ska fungera med en offentlig IP-adress på instansnivå eller en offentlig lastbalanserare.
+>Om du bara använder en intern [standardlastbalanserare](../load-balancer/load-balancer-overview.md), är utgående anslutningar inte tillgängliga förrän du definierar hur du vill att [utgående anslutningar](../load-balancer/load-balancer-outbound-connections.md) ska fungera med en offentlig IP-adress på instansnivå eller en offentlig lastbalanserare.
 
 ### <a name="communicate-between-azure-resources"></a>Kommunikation mellan Azure-resurser
 
@@ -49,14 +49,14 @@ Du kan ansluta lokala datorer och nätverk till ett virtuellt nätverk med hjäl
 - **Plats-till-plats-VPN:** Upprättas mellan den lokala VPN-enheten och Azure VPN Gateway som distribueras i ett virtuellt nätverk. Med den här anslutningstypen kan alla lokala resurser som du ger behörighet få åtkomst till ett virtuellt nätverk. Kommunikationen mellan den lokala VPN-enheten och en Azure VPN-gateway skickas genom en krypterad tunnel via Internet. Läs mer i [Plats-till-plats-VPN](../vpn-gateway/design.md?toc=%2fazure%2fvirtual-network%2ftoc.json#s2smulti).
 - **Azure ExpressRoute:** Upprättas mellan ditt nätverk och Azure, via en ExpressRoute-partner. Den här anslutningen är privat. Trafiken går inte via Internet. Läs mer i [ExpressRoute](../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
-### <a name="filter-network-traffic"></a>Filtrera nätverkstrafik
+### <a name="filter-network-traffic"></a>Filtrering av nätverkstrafik
 
 Du kan filtrera nätverkstrafik mellan undernät med ett eller båda av följande alternativ:
 
-- **Nätverks säkerhets grupper:** Nätverks säkerhets grupper och program säkerhets grupper kan innehålla flera inkommande och utgående säkerhets regler som gör att du kan filtrera trafik till och från resurser efter källans och målets IP-adress, port och protokoll. Mer information finns i [Nätverkssäkerhetsgrupper](security-overview.md#network-security-groups) eller [Programsäkerhetsgrupper](security-overview.md#application-security-groups).
+- **Nätverks säkerhets grupper:** Nätverks säkerhets grupper och program säkerhets grupper kan innehålla flera inkommande och utgående säkerhets regler som gör att du kan filtrera trafik till och från resurser efter källans och målets IP-adress, port och protokoll. Mer information finns i [Nätverkssäkerhetsgrupper](./network-security-groups-overview.md#network-security-groups) eller [Programsäkerhetsgrupper](./network-security-groups-overview.md#application-security-groups).
 - **Virtuella nätverksinstallationer:** En virtuell nätverksinstallation är en virtuell dator som utför en nätverksfunktion, till exempel en brandvägg, WAN-optimering eller annan nätverksfunktion. En lista över tillgängliga virtuella nätverksinstallationer som du kan distribuera i ett virtuellt nätverk finns i [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking?page=1&subcategories=appliances).
 
-### <a name="route-network-traffic"></a>Dirigera nätverkstrafik
+### <a name="route-network-traffic"></a>Dirigering av nätverkstrafik
 
 Azure dirigerar trafik mellan undernät, anslutna virtuella nätverk, lokala nätverk och Internet, som standard. Du kan implementera ett eller båda av följande alternativ för att åsidosätta de standardvägar som Azure skapar:
 

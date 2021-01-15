@@ -9,16 +9,16 @@ ms.reviewer: jrasnick, garye
 ms.date: 11/20/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: e219531a88787f19197a2e8c2a80040497c6dc1e
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: f3b0c5f1487951d05bc83973e5b4b9f3634a694b
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97901427"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222266"
 ---
 # <a name="tutorial-train-a-machine-learning-model-without-code"></a>Självstudie: träna en maskin inlärnings modell utan kod
 
-Du kan utöka dina data i Spark-tabeller med nya maskin inlärnings modeller som du tränar med hjälp av [Automatisk maskin inlärning](https://docs.microsoft.com/azure/machine-learning/concept-automated-ml). I Azure Synapse Analytics kan du välja en spark-tabell i arbets ytan som ska användas som en utbildnings data uppsättning för att skapa maskin inlärnings modeller, och du kan göra detta i en kod fri upplevelse.
+Du kan utöka dina data i Spark-tabeller med nya maskin inlärnings modeller som du tränar med hjälp av [Automatisk maskin inlärning](../../machine-learning/concept-automated-ml.md). I Azure Synapse Analytics kan du välja en spark-tabell i arbets ytan som ska användas som en utbildnings data uppsättning för att skapa maskin inlärnings modeller, och du kan göra detta i en kod fri upplevelse.
 
 I den här självstudien får du lära dig hur du tränar maskin inlärnings modeller genom att använda en kod fri upplevelse i Azure Synapse Analytics Studio. Du använder automatisk maskin inlärning i Azure Machine Learning, i stället för att koda upplevelsen manuellt. Vilken typ av modell du tränar beror på vilket problem du försöker lösa.
 

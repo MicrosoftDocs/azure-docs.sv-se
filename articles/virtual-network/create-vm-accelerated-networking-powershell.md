@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 04/15/2020
 ms.author: gsilva
-ms.openlocfilehash: fd50af98fe0d7f20273c45e2b86c18215a3626f0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b3728a2b67529bab0900d42b3e39140d9329bc83
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87289628"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223643"
 ---
 # <a name="create-a-windows-vm-with-accelerated-networking-using-azure-powershell"></a>Skapa en virtuell Windows-dator med accelererat nätverk med Azure PowerShell
 
@@ -65,7 +65,7 @@ Accelererat nätverk stöds i de flesta generella syftes-och beräknings optimer
 
 På instanser som stöder hyperthreading stöds accelererat nätverk på VM-instanser med fyra eller fler virtuella processorer. Serien som stöds är: D/Dsv3, D/Dsv4, da/Dasv4, E/Esv3, EA/Easv4, Fsv2, Lsv2, MS/MMS och MS/Mmsv2.
 
-Mer information om VM-instanser finns i [storlekar för virtuella Windows-datorer i Azure](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Mer information om VM-instanser finns i [storlekar för virtuella Windows-datorer i Azure](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 ### <a name="custom-images"></a>Anpassade avbildningar
 
@@ -85,7 +85,7 @@ Virtuella datorer (klassiska) kan inte distribueras med accelererat nätverk.
 
 ## <a name="vm-creation-using-the-portal"></a>Skapa virtuell dator med portalen
 
-Även om den här artikeln innehåller steg för att skapa en virtuell dator med accelererat nätverk med Azure PowerShell, kan du också [använda Azure Portal för att skapa en virtuell dator](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) som möjliggör accelererat nätverk. När du skapar en virtuell dator i portalen väljer du fliken **nätverk** på sidan **skapa en virtuell dator** . På den här fliken finns ett alternativ för **accelererat nätverk**. Om du har valt ett [operativ system som stöds](#supported-operating-systems) och storleken på den [virtuella datorn](#supported-vm-instances)är det här alternativet automatiskt inställt **på**. Annars är alternativet inställt på **av**och Azure visar anledningen till varför det inte går att aktivera.
+Även om den här artikeln innehåller steg för att skapa en virtuell dator med accelererat nätverk med Azure PowerShell, kan du också [använda Azure Portal för att skapa en virtuell dator](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) som möjliggör accelererat nätverk. När du skapar en virtuell dator i portalen väljer du fliken **nätverk** på sidan **skapa en virtuell dator** . På den här fliken finns ett alternativ för **accelererat nätverk**. Om du har valt ett [operativ system som stöds](#supported-operating-systems) och storleken på den [virtuella datorn](#supported-vm-instances)är det här alternativet automatiskt inställt **på**. Annars är alternativet inställt på **av** och Azure visar anledningen till varför det inte går att aktivera.
 
 > [!NOTE]
 > Endast operativ system som stöds kan aktive ras via portalen. Om du använder en anpassad avbildning och din avbildning har stöd för accelererat nätverk skapar du en virtuell dator med CLI eller PowerShell. 
@@ -96,7 +96,7 @@ När du har skapat den virtuella datorn kan du kontrol lera om det accelererade 
 
 2. I listan virtuell dator väljer du den nya virtuella datorn.
 
-3. Välj **nätverk**i meny raden VM.
+3. Välj **nätverk** i meny raden VM.
 
 I nätverks gränssnitts information, bredvid den **accelererade nätverks** etiketten, visar portalen antingen **inaktive rad** eller **aktive rad** för status för accelererat nätverk.
 
@@ -104,7 +104,7 @@ I nätverks gränssnitts information, bredvid den **accelererade nätverks** eti
 
 Innan du fortsätter installerar du [Azure PowerShell](/powershell/azure/install-az-ps) version 1.0.0 eller senare. Kör för att hitta den version som är installerad `Get-Module -ListAvailable Az` . Om du behöver installera eller uppgradera installerar du den senaste versionen av AZ-modulen från [PowerShell-galleriet](https://www.powershellgallery.com/packages/Az). Logga in på ett Azure-konto med [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount)i en PowerShell-session.
 
-Ersätt exempel parameter namn med dina egna värden i följande exempel. Exempel på parameter namn som ingår *myResourceGroup*, *myNic*och *myVM*.
+Ersätt exempel parameter namn med dina egna värden i följande exempel. Exempel på parameter namn som ingår *myResourceGroup*, *myNic* och *myVM*.
 
 ### <a name="create-a-virtual-network"></a>Skapa ett virtuellt nätverk
 
@@ -208,7 +208,7 @@ Ersätt exempel parameter namn med dina egna värden i följande exempel. Exempe
     $vmConfig = New-AzVMConfig -VMName "myVm" -VMSize "Standard_DS4_v2"
     ```
 
-    En lista över alla storlekar och egenskaper för virtuella datorer finns i [storlekar för virtuella Windows-datorer](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+    En lista över alla storlekar och egenskaper för virtuella datorer finns i [storlekar för virtuella Windows-datorer](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 3. Skapa resten av din VM-konfiguration med [set-AzVMOperatingSystem](/powershell/module/az.compute/set-azvmoperatingsystem) och [set-AzVMSourceImage](/powershell/module/az.compute/set-azvmsourceimage). Följande kommando skapar en virtuell Windows Server 2016-dator:
 

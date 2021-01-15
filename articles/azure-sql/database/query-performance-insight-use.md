@@ -10,13 +10,13 @@ ms.topic: how-to
 author: danimir
 ms.author: danil
 ms.reviewer: wiassaf, sstein
-ms.date: 03/10/2020
-ms.openlocfilehash: a016781e5b05c8f43c043bf1f3368a58064e43ad
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 1/14/2021
+ms.openlocfilehash: db24f280f66e567572821297cfc9bb9b1e19743b
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96501268"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222351"
 ---
 # <a name="query-performance-insight-for-azure-sql-database"></a>Query Performance Insight för Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -49,13 +49,13 @@ Du behöver följande [Azure-rollbaserad åtkomst kontroll (Azure RBAC)](../../r
 Query Performance Insight är enkelt att använda:
 
 1. Öppna [Azure Portal](https://portal.azure.com/) och leta upp en databas som du vill undersöka.
-2. Öppna **intelligenta prestanda** Query Performance Insight på menyn på den vänstra sidan  >  **Query Performance Insight**.
+2. Öppna **intelligenta prestanda** Query Performance Insight på menyn på den vänstra sidan  >  .
   
    ![Query Performance Insight på menyn](./media/query-performance-insight-use/tile.png)
 
 3. På den första fliken granskar du listan över de främsta resurs krävande frågorna.
 4. Välj en enskild fråga om du vill visa information om den.
-5. Öppna prestanda rekommendationer för **intelligent prestanda**  >  **Performance recommendations** och kontrol lera om det finns några prestanda rekommendationer. Mer information om inbyggda prestanda rekommendationer finns [Azure SQL Database Advisor](database-advisor-implement-performance-recommendations.md).
+5. Öppna prestanda rekommendationer för **intelligent prestanda**  >   och kontrol lera om det finns några prestanda rekommendationer. Mer information om inbyggda prestanda rekommendationer finns [Azure SQL Database Advisor](database-advisor-implement-performance-recommendations.md).
 6. Använd skjutreglage eller zooma ikoner för att ändra det observerade intervallet.
 
    ![Instrument panel för prestanda](./media/query-performance-insight-use/performance.png)
@@ -155,7 +155,7 @@ Så här visar du Frågedetaljer:
 
 Två mått i Query Performance Insight kan hjälpa dig att hitta potentiella Flask halsar: varaktighet och antal körningar.
 
-Tids krävande frågor har störst potential för att låsa resurser längre, blockera andra användare och begränsa skalbarheten. De är också de bästa deltagarna för optimering.
+Tids krävande frågor har störst potential för att låsa resurser längre, blockera andra användare och begränsa skalbarheten. De är också de bästa deltagarna för optimering. Mer information finns i [förstå och lösa problem med att blockera Azure SQL](understand-resolve-blocking.md).
 
 Så här identifierar du tids krävande frågor:
 

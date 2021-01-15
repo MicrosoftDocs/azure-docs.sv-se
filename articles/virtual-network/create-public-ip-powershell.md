@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2020
 ms.author: blehr
-ms.openlocfilehash: 99e79e4d094fe6e93510d139d2f4d08f260102df
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 5b79a777ba8f7e615e4637f94311cba39e8a7f6c
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96010052"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223711"
 ---
 # <a name="quickstart-create-a-public-ip-address-using-azure-powershell"></a>Snabb start: skapa en offentlig IP-adress med hjälp av Azure PowerShell
 
-Den här artikeln visar hur du skapar en offentlig IP-adressresurs med hjälp av Azure PowerShell. Mer information om vilka resurser som kan kopplas till, skillnaden mellan Basic-och standard-SKU och annan relaterad information finns i [offentliga IP-adresser](https://docs.microsoft.com/azure/virtual-network/public-ip-addresses).  I det här exemplet kommer vi bara att fokusera på IPv4-adresser. Mer information om IPv6-adresser finns i [IPv6 för Azure VNet](https://docs.microsoft.com/azure/virtual-network/ipv6-overview).
+Den här artikeln visar hur du skapar en offentlig IP-adressresurs med hjälp av Azure PowerShell. Mer information om vilka resurser som kan kopplas till, skillnaden mellan Basic-och standard-SKU och annan relaterad information finns i [offentliga IP-adresser](./public-ip-addresses.md).  I det här exemplet kommer vi bara att fokusera på IPv4-adresser. Mer information om IPv6-adresser finns i [IPv6 för Azure VNet](./ipv6-overview.md).
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -51,7 +51,7 @@ New-AzResourceGroup -Name $rg -Location $loc
 # <a name="standard-sku---using-zones"></a>[**Standard-SKU – använda zoner**](#tab/option-create-public-ip-standard-zones)
 
 >[!NOTE]
->Följande kommando fungerar för API version 2020-08-01 eller senare.  Mer information om den API-version som används för närvarande finns i [resurs leverantörer och typer](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types).
+>Följande kommando fungerar för API version 2020-08-01 eller senare.  Mer information om den API-version som används för närvarande finns i [resurs leverantörer och typer](../azure-resource-manager/management/resource-providers-and-types.md).
 
 Använd [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) för att skapa en standard zon som REDUNDANT offentlig IP-adress med namnet **myStandardZRPublicIP** i **myResourceGroup**.
 
@@ -84,12 +84,12 @@ $zone = 2
 New-AzPublicIpAddress -ResourceGroupName $rg -Name $pubIP -Location $loc -AllocationMethod $alloc -SKU $sku -zone $zone
 ```
 
-Observera att ovanstående alternativ för zoner endast är giltiga val i regioner med [Tillgänglighetszoner](https://docs.microsoft.com/azure/availability-zones/az-overview?toc=/azure/virtual-network/toc.json#availability-zones).
+Observera att ovanstående alternativ för zoner endast är giltiga val i regioner med [Tillgänglighetszoner](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#availability-zones).
 
 # <a name="standard-sku---no-zones"></a>[**Standard-SKU – inga zoner**](#tab/option-create-public-ip-standard)
 
 >[!NOTE]
->Följande kommando fungerar för API version 2020-08-01 eller senare.  Mer information om den API-version som används för närvarande finns i [resurs leverantörer och typer](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types).
+>Följande kommando fungerar för API version 2020-08-01 eller senare.  Mer information om den API-version som används för närvarande finns i [resurs leverantörer och typer](../azure-resource-manager/management/resource-providers-and-types.md).
 
 Använd [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) för att skapa en offentlig standard-IP-adress som en icke-zonindelade resurs med namnet **myStandardPublicIP** i **myResourceGroup**.
 
@@ -104,7 +104,7 @@ $alloc = 'Static'
 New-AzPublicIpAddress -ResourceGroupName $rg -Name $pubIP -Location $loc -AllocationMethod $alloc -SKU $sku
 ```
 
-Det här valet är giltigt i alla regioner och är standard valet för offentliga standard-IP-adresser i regioner utan [Tillgänglighetszoner](https://docs.microsoft.com/azure/availability-zones/az-overview?toc=/azure/virtual-network/toc.json#availability-zones).
+Det här valet är giltigt i alla regioner och är standard valet för offentliga standard-IP-adresser i regioner utan [Tillgänglighetszoner](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#availability-zones).
 
 # <a name="basic-sku"></a>[**Grundläggande SKU**](#tab/option-create-public-ip-basic)
 
@@ -126,9 +126,9 @@ Om det är acceptabelt att IP-adressen kan ändras över tid kan du välja **dyn
 
 ## <a name="additional-information"></a>Ytterligare information 
 
-Mer information om de enskilda variablerna ovan finns i [hantera offentliga IP-adresser](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address#create-a-public-ip-address).
+Mer information om de enskilda variablerna ovan finns i [hantera offentliga IP-adresser](./virtual-network-public-ip-address.md#create-a-public-ip-address).
 
 ## <a name="next-steps"></a>Nästa steg
-- Associera en [offentlig IP-adress till en virtuell dator](https://docs.microsoft.com/azure/virtual-network/associate-public-ip-address-vm#azure-portal)
-- Läs mer om [offentliga IP-adresser](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses) i Azure.
+- Associera en [offentlig IP-adress till en virtuell dator](./associate-public-ip-address-vm.md#azure-portal)
+- Läs mer om [offentliga IP-adresser](./public-ip-addresses.md#public-ip-addresses) i Azure.
 - Läs mer om [Inställningar för offentliga IP-adresser](virtual-network-public-ip-address.md#create-a-public-ip-address).

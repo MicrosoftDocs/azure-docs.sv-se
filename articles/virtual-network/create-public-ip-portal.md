@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2020
 ms.author: blehr
-ms.openlocfilehash: bd35d3288591a01c14e306960601eef6dea7e761
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: 02a6e934b517cdd118b6175d9cfef73bee4c996d
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97954149"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223014"
 ---
 # <a name="quickstart-create-a-public-ip-address-using-the-azure-portal"></a>Snabb start: skapa en offentlig IP-adress med hjälp av Azure Portal
 
-Den här artikeln visar hur du skapar en offentlig IP-adressresurs med hjälp av Azure Portal. Mer information om vilka resurser som kan kopplas till, skillnaden mellan Basic-och standard-SKU och annan relaterad information finns i [offentliga IP-adresser](https://docs.microsoft.com/azure/virtual-network/public-ip-addresses).  I det här exemplet kommer vi bara att fokusera på IPv4-adresser. Mer information om IPv6-adresser finns i [IPv6 för Azure VNet](https://docs.microsoft.com/azure/virtual-network/ipv6-overview).
+Den här artikeln visar hur du skapar en offentlig IP-adressresurs med hjälp av Azure Portal. Mer information om vilka resurser som kan kopplas till, skillnaden mellan Basic-och standard-SKU och annan relaterad information finns i [offentliga IP-adresser](./public-ip-addresses.md).  I det här exemplet kommer vi bara att fokusera på IPv4-adresser. Mer information om IPv6-adresser finns i [IPv6 för Azure VNet](./ipv6-overview.md).
 
 # <a name="standard-sku---using-zones"></a>[**Standard-SKU – använda zoner**](#tab/option-create-public-ip-standard-zones)
 
@@ -37,7 +37,7 @@ Använd följande steg för att skapa en standard zon med redundant offentlig IP
     | IP-version              | Välj IPv4                 |    
     | SKU                     | Välj **standard**         |
     | Nivå (om den visas *)                  | Välj **region**         |
-    | Namn                    | Ange *myStandardZRPublicIP*          |
+    | Name                    | Ange *myStandardZRPublicIP*          |
     | Tilldelning av IP-adress   | OBS! detta kommer att låsas som "statisk"                                        |
     | Tids gräns för inaktivitet (minuter)  | Lämna värdet vid 4        |
     | DNS-namnetikett          | Lämna värdet tomt    |
@@ -46,9 +46,9 @@ Använd följande steg för att skapa en standard zon med redundant offentlig IP
     | Plats                | Välj **USA, östra 2**      |
     | Tillgänglighetszon       | Välj **zon – redundant** eller plocka en speciell zon (se anmärkning nedan) |
 
-Observera att dessa endast är giltiga val i regioner med [Tillgänglighetszoner](https://docs.microsoft.com/azure/availability-zones/az-overview?toc=/azure/virtual-network/toc.json#availability-zones).  (Du kan också välja en speciell zon i dessa regioner, men den kommer inte att vara elastisk till zonindelade-problem.)
+Observera att dessa endast är giltiga val i regioner med [Tillgänglighetszoner](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#availability-zones).  (Du kan också välja en speciell zon i dessa regioner, men den kommer inte att vara elastisk till zonindelade-problem.)
 
-\* =-Nivån relaterar till Load Balancer funktionerna i [flera regioner](https://docs.microsoft.com/azure/load-balancer/cross-region-overview) , för närvarande i för hands version.
+\* =-Nivån relaterar till Load Balancer funktionerna i [flera regioner](../load-balancer/cross-region-overview.md) , för närvarande i för hands version.
 
 # <a name="basic-sku"></a>[**Grundläggande SKU**](#tab/option-create-public-ip-basic)
 
@@ -64,7 +64,7 @@ Använd följande steg för att skapa en grundläggande statisk offentlig IP-adr
     | ---                     | ---                         |
     | IP-version              | Välj IPv4                 |    
     | SKU                     | Välj **standard**         |
-    | Namn                    | Ange *myBasicPublicIP*          |
+    | Name                    | Ange *myBasicPublicIP*          |
     | Tilldelning av IP-adress   | Välj **statisk** (se anmärkning nedan)                                     |
     | Tids gräns för inaktivitet (minuter)  | Lämna värdet vid 4        |
     | DNS-namnetikett          | Lämna värdet tomt    |
@@ -78,9 +78,9 @@ Om det är acceptabelt att IP-adressen kan ändras över tid kan du välja **dyn
 
 ## <a name="additional-information"></a>Ytterligare information 
 
-Mer information om de enskilda fälten ovan finns i [hantera offentliga IP-adresser](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address#create-a-public-ip-address).
+Mer information om de enskilda fälten ovan finns i [hantera offentliga IP-adresser](./virtual-network-public-ip-address.md#create-a-public-ip-address).
 
 ## <a name="next-steps"></a>Nästa steg
-- Associera en [offentlig IP-adress till en virtuell dator](https://docs.microsoft.com/azure/virtual-network/associate-public-ip-address-vm#azure-portal)
-- Läs mer om [offentliga IP-adresser](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses) i Azure.
+- Associera en [offentlig IP-adress till en virtuell dator](./associate-public-ip-address-vm.md#azure-portal)
+- Läs mer om [offentliga IP-adresser](./public-ip-addresses.md#public-ip-addresses) i Azure.
 - Läs mer om [Inställningar för offentliga IP-adresser](virtual-network-public-ip-address.md#create-a-public-ip-address).

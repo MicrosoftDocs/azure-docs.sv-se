@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: lazzeri
 author: FrancescaLazzeri
-ms.date: 12/15/2020
+ms.date: 01/14/2020
 ms.custom: contperf-fy21q1,contperfq1
-ms.openlocfilehash: 17c5cc265b4199d745325bf2c9d9fbca24cc6506
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 61305e4f9ba45cb7c13a96bee9d1aab81108bb4d
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97617127"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98220702"
 ---
 # <a name="deep-learning-vs-machine-learning-in-azure-machine-learning"></a>Djup inlärning jämfört med Machine Learning i Azure Machine Learning
 
@@ -57,7 +57,7 @@ I följande tabell jämförs de två metoderna i detalj:
 |  **Körningstid** | Tar relativt lite tid att träna, från några sekunder till några timmar. | Det tar vanligt vis lång tid att träna eftersom en djup inlärnings algoritm omfattar många lager. |
 |  **Resultat** | Utdata är vanligt vis ett numeriskt värde, till exempel en poäng eller en klassificering. | Utdata kan ha flera format, t. ex. en text, en poäng eller ett ljud. |
 
-## <a name="transfer-learning"></a>Överföra utbildning
+## <a name="what-is-transfer-learning"></a>Vad är transfer Learning
 
 Inlärnings djup inlärnings modeller kräver ofta stora mängder utbildnings data, avancerade beräknings resurser (GPU, TPU) och en längre utbildnings tid. I scenarier där du inte har någon av dessa tillgängliga kan du genvägen till inlärnings processen med hjälp av en teknik som kallas *överförings inlärning.*
 
@@ -65,7 +65,7 @@ Inlärnings djup inlärnings modeller kräver ofta stora mängder utbildnings da
 
 På grund av strukturen i neurala-nätverk innehåller den första uppsättningen lager vanligt vis lågnivå funktioner, medan den slutliga uppsättningen lager innehåller en funktion på högre nivå som är närmare den aktuella domänen. Genom att syftes ändring de sista lagren för användning i en ny domän eller problem kan du avsevärt minska mängden tid, data och beräknings resurser som behövs för att träna den nya modellen. Om du till exempel redan har en modell som identifierar bilar kan du använda den för att använda transfer Learning för att även identifiera truckar, motorcyklar och andra typer av fordon.
 
-Lär dig hur du tillämpar överförings inlärning för bild klassificering med ett ramverk med öppen källkod i Azure Machine Learning: [klassificera bilder med hjälp av en Pytorch modell](./how-to-train-pytorch.md?WT.mc_id=docs-article-lazzeri).
+Lär dig hur du tillämpar överförings inlärning för bild klassificering med ett ramverk med öppen källkod i Azure Machine Learning: [träna en djup inlärnings PyTorch modell med hjälp av transfer Learning](./how-to-train-pytorch.md?WT.mc_id=docs-article-lazzeri).
 
 ## <a name="deep-learning-use-cases"></a>Användnings fall för djup inlärning
 

@@ -9,16 +9,16 @@ ms.reviewer: jrasnick, garye
 ms.date: 11/20/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: 4052d6a0773aa27e0a378ee04975c7946f1ffbfe
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 5e7b914d459d2452704f93987ce1bf91bfba988c
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96468654"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222215"
 ---
 # <a name="tutorial-anomaly-detection-with-cognitive-services-preview"></a>Självstudie: avvikelse identifiering med Cognitive Services (för hands version)
 
-I den här självstudien får du lära dig hur du enkelt kan utöka dina data i Azure Synapse med [Cognitive Services](https://go.microsoft.com/fwlink/?linkid=2147492). Vi kommer att använda [avvikelse detektor](https://go.microsoft.com/fwlink/?linkid=2147493) för att utföra avvikelse identifiering. En användare i Azure Synapse kan enkelt välja en tabell som ska utökas för identifiering av avvikelser.
+I den här självstudien får du lära dig hur du enkelt kan utöka dina data i Azure Synapse med [Cognitive Services](../../cognitive-services/index.yml). Vi kommer att använda [avvikelse detektor](../../cognitive-services/anomaly-detector/index.yml) för att utföra avvikelse identifiering. En användare i Azure Synapse kan enkelt välja en tabell som ska utökas för identifiering av avvikelser.
 
 Den här självstudiekursen omfattar:
 
@@ -94,7 +94,7 @@ Den bärbara dator som du nyss öppnade använder [mmlspark-biblioteket](https:/
 
 Med Azure Key Vault information som du har angett kan du på ett säkert sätt referera till dina hemligheter från den här upplevelsen utan att avslöja dem.
 
-Du kan nu **köra alla** celler för att utföra avvikelse identifiering. Läs mer om [Cognitive Services-avvikelse detektor](https://go.microsoft.com/fwlink/?linkid=2147493).
+Du kan nu **köra alla** celler för att utföra avvikelse identifiering. Läs mer om [Cognitive Services-avvikelse detektor](../../cognitive-services/anomaly-detector/index.yml).
 
 ![Kör avvikelse identifiering](media/tutorial-cognitive-services/tutorial-cognitive-services-anomaly-00f.png)
 

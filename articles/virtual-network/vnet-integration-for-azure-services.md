@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 12/01/2020
 ms.author: kumud
-ms.openlocfilehash: a25d6d0d1990682287b5962a7bd93a0c525db133
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: a29454f09268406511730c63dcc3bc3063b909c6
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882372"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98218662"
 ---
 # <a name="integrate-azure-services-with-virtual-networks-for-network-isolation"></a>Integrera Azure-tjänster med virtuella nätverk för nätverks isolering
 
@@ -66,7 +66,7 @@ Mer information finns i [tjänst slut punkter för virtuella nätverk](virtual-n
 
 ## <a name="service-tags"></a>Tjänsttaggar
 
-En service-tagg representerar en grupp med IP-adressprefix från en specifik Azure-tjänst. Med hjälp av service märken kan du definiera nätverks åtkomst kontroller för [nätverks säkerhets grupper](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules) eller [Azure-brandvägg](https://docs.microsoft.com/azure/firewall/service-tags). Genom att ange service tag-namnet (till exempel AzureEventGrid) i lämpligt käll-eller mål fält för en regel kan du tillåta eller neka trafiken för motsvarande tjänst.
+En service-tagg representerar en grupp med IP-adressprefix från en specifik Azure-tjänst. Med hjälp av service märken kan du definiera nätverks åtkomst kontroller för [nätverks säkerhets grupper](./network-security-groups-overview.md#security-rules) eller [Azure-brandvägg](../firewall/service-tags.md). Genom att ange service tag-namnet (till exempel AzureEventGrid) i lämpligt käll-eller mål fält för en regel kan du tillåta eller neka trafiken för motsvarande tjänst.
 
 ![Tillåta eller neka trafik med hjälp av service märken](./media/network-isolation/service-tags.png)
 
@@ -78,4 +78,4 @@ Mer information om service märken och Azure-tjänster som stöder dem finns i [
 
 - Lär dig hur [du integrerar din app med ett Azure-nätverk](../app-service/web-sites-integrate-with-vnet.md).
 - Lär dig hur du [begränsar åtkomsten till resurser med hjälp av service märken](tutorial-restrict-network-access-to-resources.md).
-- Lär dig hur du [ansluter privat till ett Azure Cosmos-konto med hjälp av en privat Azure-länk](../private-link/create-private-endpoint-cosmosdb-portal.md).
+- Lär dig hur du [ansluter privat till ett Azure Cosmos-konto med hjälp av en privat Azure-länk](../private-link/tutorial-private-endpoint-cosmosdb-portal.md).

@@ -9,12 +9,12 @@ ms.reviewer: jrasnick, garye
 ms.date: 11/20/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: cf76a3d09da83693791873feb9e6ab03c432e47f
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: eef65db05ab94b5b8de5ff82c2c51dba0730f170
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96468630"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222181"
 ---
 # <a name="tutorial-pre-requisites-for-using-cognitive-services-in-azure-synapse"></a>Självstudie: krav för att använda Cognitive Services i Azure Synapse
 
@@ -38,7 +38,7 @@ Logga in på [Azure-portalen](https://portal.azure.com/)
 
 ## <a name="create-a-cognitive-services-resource"></a>Skapa en Cognitive Services resurs
 
-[Azure Cognitive Services](https://go.microsoft.com/fwlink/?linkid=2147492) innehåller många olika typer av tjänster. Nedan visas några exempel som används i Synapse-självstudierna.
+[Azure Cognitive Services](../../cognitive-services/index.yml) innehåller många olika typer av tjänster. Nedan visas några exempel som används i Synapse-självstudierna.
 
 ### <a name="create-an-anomaly-detector-resource"></a>Skapa en resurs för avvikelse detektor
 Skapa en [avvikelse detektor](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics) i Azure Portal.
@@ -53,7 +53,7 @@ Skapa en [textanalys](https://ms.portal.azure.com/#create/Microsoft.CognitiveSer
 ## <a name="create-key-vault-and-configure-secrets-and-access"></a>Skapa Key Vault och konfigurera hemligheter och åtkomst
 
 1. Skapa en [Key Vault](https://ms.portal.azure.com/#create/Microsoft.KeyVault) i Azure Portal.
-2. Gå till **Key Vault-> åtkomst principer** och ge [Azure Synapse-arbetsyte-MSI](https://docs.microsoft.com/azure/synapse-analytics/security/synapse-workspace-managed-identity) -behörighet att läsa hemligheter från Azure Key Vault.
+2. Gå till **Key Vault-> åtkomst principer** och ge [Azure Synapse-arbetsyte-MSI](../security/synapse-workspace-managed-identity.md) -behörighet att läsa hemligheter från Azure Key Vault.
 
 >Kontrol lera att princip ändringarna har sparats. Det här steget är enkelt att sakna.
 

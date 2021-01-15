@@ -16,16 +16,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/08/2018
 ms.author: kumud
-ms.openlocfilehash: 110f5ab4f0912ae264eb1dc4b649a40cc40f4e12
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c4062dd086eeee712376a402da2792352fa3c3ae
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84703097"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98221350"
 ---
 # <a name="create-a-virtual-machine-with-a-static-public-ip-address-using-the-azure-cli"></a>Skapa en virtuell dator med en statisk offentlig IP-adress med hjälp av Azure CLI
 
-Du kan skapa en virtuell dator med en statisk offentlig IP-adress. Med en offentlig IP-adress kan du kommunicera med en virtuell dator från Internet. Tilldela en statisk offentlig IP-adress i stället för en dynamisk adress för att säkerställa att adressen aldrig ändras. Läs mer om [statiska offentliga IP-adresser](virtual-network-ip-addresses-overview-arm.md#allocation-method). Om du vill ändra en offentlig IP-adress som tilldelats till en befintlig virtuell dator från dynamisk till statisk, eller om du vill arbeta med privata IP-adresser, se [Lägg till, ändra eller ta bort IP-](virtual-network-network-interface-addresses.md)adresser. Offentliga IP-adresser har en [nominell avgift](https://azure.microsoft.com/pricing/details/ip-addresses)och det finns en [gräns](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) för hur många offentliga IP-adresser som du kan använda per prenumeration.
+Du kan skapa en virtuell dator med en statisk offentlig IP-adress. Med en offentlig IP-adress kan du kommunicera med en virtuell dator från Internet. Tilldela en statisk offentlig IP-adress i stället för en dynamisk adress för att säkerställa att adressen aldrig ändras. Läs mer om [statiska offentliga IP-adresser](./public-ip-addresses.md#allocation-method). Om du vill ändra en offentlig IP-adress som tilldelats till en befintlig virtuell dator från dynamisk till statisk, eller om du vill arbeta med privata IP-adresser, se [Lägg till, ändra eller ta bort IP-](virtual-network-network-interface-addresses.md)adresser. Offentliga IP-adresser har en [nominell avgift](https://azure.microsoft.com/pricing/details/ip-addresses)och det finns en [gräns](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) för hur många offentliga IP-adresser som du kan använda per prenumeration.
 
 ## <a name="create-a-virtual-machine"></a>Skapa en virtuell dator
 
@@ -51,7 +51,7 @@ Du kan utföra följande steg från din lokala dator eller med hjälp av Azure C
      --public-ip-address-allocation static
    ```
 
-   Om den offentliga IP-adressen måste vara en standard-SKU, lägger `--public-ip-sku Standard` du till föregående kommando. Lär dig mer om [offentliga IP-adresser SKU: er](virtual-network-ip-addresses-overview-arm.md#sku). Om den virtuella datorn ska läggas till i backend-poolen för en offentlig Azure Load Balancer måste SKU: n för den virtuella datorns offentliga IP-adress matcha SKU: n för den offentliga IP-adressen för belastningsutjämnaren. Mer information finns i [Azure Load Balancer](../load-balancer/skus.md).
+   Om den offentliga IP-adressen måste vara en standard-SKU, lägger `--public-ip-sku Standard` du till föregående kommando. Lär dig mer om [offentliga IP-adresser SKU: er](./public-ip-addresses.md#sku). Om den virtuella datorn ska läggas till i backend-poolen för en offentlig Azure Load Balancer måste SKU: n för den virtuella datorns offentliga IP-adress matcha SKU: n för den offentliga IP-adressen för belastningsutjämnaren. Mer information finns i [Azure Load Balancer](../load-balancer/skus.md).
 
 4. Visa den offentliga IP-adress som tilldelats och bekräfta att den har skapats som en statisk, grundläggande SKU-adress med [AZ Network Public-IP show](/cli/azure/network/public-ip#az-network-public-ip-show):
 
@@ -78,7 +78,7 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Läs mer om [offentliga IP-adresser](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses) i Azure
+- Läs mer om [offentliga IP-adresser](./public-ip-addresses.md#public-ip-addresses) i Azure
 - Läs mer om [Inställningar för offentliga IP-adresser](virtual-network-public-ip-address.md#create-a-public-ip-address)
-- Läs mer om [privata IP-adresser](virtual-network-ip-addresses-overview-arm.md#private-ip-addresses) och tilldelning av en [statisk privat IP-adress](virtual-network-network-interface-addresses.md#add-ip-addresses) till en virtuell Azure-dator
+- Läs mer om [privata IP-adresser](./private-ip-addresses.md) och tilldelning av en [statisk privat IP-adress](virtual-network-network-interface-addresses.md#add-ip-addresses) till en virtuell Azure-dator
 - Lär dig mer om att skapa virtuella [Linux](../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fvirtual-network%2ftoc.json) -och [Windows](../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fvirtual-network%2ftoc.json) -datorer

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2019
 ms.author: allensu
-ms.openlocfilehash: 9b5fc9e4118d98905138b7f205f61d85a96b60b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 76f92b5da2331748fbbbfc68f1e456fd50dd71ee
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88035475"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223031"
 ---
 # <a name="associate-a-public-ip-address-to-a-virtual-machine"></a>Associera en offentlig IP-adress till en virtuell dator
 
@@ -30,7 +30,7 @@ Du kan använda [Azure Portal](#azure-portal), Azures [kommando rads gränssnitt
 
 1. Logga in på [Azure-portalen](https://portal.azure.com).
 2. Bläddra till eller Sök efter den virtuella dator som du vill lägga till den offentliga IP-adressen till och välj sedan den.
-3. Under **Inställningar**väljer du **nätverk**och väljer sedan det nätverks gränssnitt som du vill lägga till den offentliga IP-adressen till, som du ser i följande bild:
+3. Under **Inställningar** väljer du **nätverk** och väljer sedan det nätverks gränssnitt som du vill lägga till den offentliga IP-adressen till, som du ser i följande bild:
 
    ![Välj nätverks gränssnitt](./media/associate-public-ip-address-vm/select-nic.png)
 
@@ -44,7 +44,7 @@ Du kan använda [Azure Portal](#azure-portal), Azures [kommando rads gränssnitt
    > [!NOTE]
    > Offentliga IP-adresser är kopplade till IP-konfigurationer för ett nätverks gränssnitt. I föregående bild har nätverks gränssnittet en IP-konfiguration. Om nätverks gränssnittet har flera IP-konfigurationer visas alla i listan, och du väljer den IP-konfiguration som du vill associera den offentliga IP-adressen med.
 
-5. Välj **aktive rad**och välj sedan **IP-adress (*Konfigurera nödvändiga inställningar*)**. Välj en befintlig offentlig IP-adress som automatiskt stänger rutan **Välj offentlig IP-adress** . Om du inte har några tillgängliga offentliga IP-adresser i listan, måste du skapa en. Mer information finns i [skapa en offentlig IP-adress](virtual-network-public-ip-address.md#create-a-public-ip-address). Välj **Spara**, som du ser i bilden nedan, och stäng sedan rutan för IP-konfigurationen.
+5. Välj **aktive rad** och välj sedan **IP-adress (*Konfigurera nödvändiga inställningar*)**. Välj en befintlig offentlig IP-adress som automatiskt stänger rutan **Välj offentlig IP-adress** . Om du inte har några tillgängliga offentliga IP-adresser i listan, måste du skapa en. Mer information finns i [skapa en offentlig IP-adress](virtual-network-public-ip-address.md#create-a-public-ip-address). Välj **Spara**, som du ser i bilden nedan, och stäng sedan rutan för IP-konfigurationen.
 
    ![Aktivera offentlig IP-adress](./media/associate-public-ip-address-vm/enable-public-ip-address.png)
 
@@ -214,4 +214,4 @@ Innan du kan ansluta till den offentliga IP-adressen från Internet måste du se
 
 ## <a name="next-steps"></a>Nästa steg
 
-Tillåt inkommande Internet trafik till den virtuella datorn med en nätverks säkerhets grupp. Information om hur du skapar en nätverks säkerhets grupp finns i [arbeta med nätverks säkerhets grupper](manage-network-security-group.md#work-with-network-security-groups). Mer information om nätverks säkerhets grupper finns i [säkerhets grupper](security-overview.md).
+Tillåt inkommande Internet trafik till den virtuella datorn med en nätverks säkerhets grupp. Information om hur du skapar en nätverks säkerhets grupp finns i [arbeta med nätverks säkerhets grupper](manage-network-security-group.md#work-with-network-security-groups). Mer information om nätverks säkerhets grupper finns i [säkerhets grupper](./network-security-groups-overview.md).

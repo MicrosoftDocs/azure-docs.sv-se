@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.custom: how-to
+ms.custom: how-to, responsible-ml
 ms.author: slbird
 author: slbird
 ms.reviewer: luquinta
 ms.date: 12/21/2020
-ms.openlocfilehash: f004f0f052e466441999c1bfd511823edd6b907e
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: ebc14d6c9d0ebaa6e0258578f94771c9f286bdb4
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97722444"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98221943"
 ---
 # <a name="use-differential-privacy-in-azure-machine-learning-preview"></a>Använd differentiell sekretess i Azure Machine Learning (för hands version)
 
@@ -148,7 +148,7 @@ Du kan använda biblioteket för att skapa mer komplexa analys diagram, med fler
 | Antal         | Gaussisk   | Långa       |
 | Histogram     | Geometriska  | Ihopfogning   |
 | Medelvärde          | Laplace    | Digitalisera   |
-| Kvantiler     |            | Filter     |
+| Kvantiler     |            | Filtrera     |
 | Sum           |            | Tillvitelse |
 | Varians/kovarians |      | Transformering  |
 
