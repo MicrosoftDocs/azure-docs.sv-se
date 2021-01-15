@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/23/2017
 ms.author: subsarma
-ms.openlocfilehash: 9f5b535a341956e5675ba96ba9570bd3f2ff3443
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ad91eb94aedcdd0e4e715162e3ae064a1d2fb1ea
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84710957"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98220430"
 ---
 # <a name="use-dynamic-dns-to-register-hostnames-in-your-own-dns-server"></a>Använd dynamisk DNS för att registrera värdnamn i DNS-servern
 
@@ -28,7 +28,7 @@ ms.locfileid: "84710957"
 När dina anpassade DNS-servrar är värdar för virtuella Azure-datorer kan du vidarebefordra värd namns frågor för samma virtuella nätverk till Azure för att matcha värdnamn. Om du inte vill använda det här alternativet kan du registrera dina VM-värdnamn på DNS-servern med hjälp av dynamisk DNS (DDNS). Azure har inte de autentiseringsuppgifter som krävs för att direkt skapa poster i dina DNS-servrar, så det krävs ofta alternativa regler. Några vanliga scenarier, med alternativ följer:
 
 ## <a name="windows-clients"></a>Windows-klienter
-Icke-domänanslutna Windows-klienter försöker med oskyddade DDNS-uppdateringar när de startar eller när deras IP-adress ändras. DNS-namnet är värd namnet och det primära DNS-suffixet. Azure lämnar det primära DNS-suffixet tomt, men du kan ange suffixet i den virtuella datorn via [användar gränssnittet](https://technet.microsoft.com/library/cc794784.aspx) eller [PowerShell](/powershell/module/dnsclient/set-dnsclient).
+Icke-domänanslutna Windows-klienter försöker med oskyddade DDNS-uppdateringar när de startar eller när deras IP-adress ändras. DNS-namnet är värd namnet och det primära DNS-suffixet. Azure lämnar det primära DNS-suffixet tomt, men du kan ange suffixet i den virtuella datorn via [användar gränssnittet](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc794784(v=ws.10)) eller [PowerShell](/powershell/module/dnsclient/set-dnsclient).
 
 Domänanslutna Windows-klienter registrerar sina IP-adresser med domänkontrollanten med hjälp av säker DDNS. Processen för domän anslutning anger det primära DNS-suffixet på klienten och skapar och underhåller förtroende relationen.
 

@@ -11,12 +11,12 @@ metadata:
   author: KumudD
   ms.author: kumud
   ms.date: 08/28/2019
-  ms.openlocfilehash: a6c0bee32fbeb50c1eef0a9625706bcee9e1ae17
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: 7bf639fb7bc89ec218b280bcf7d02c76c7bde277
+  ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
   ms.translationtype: HT
   ms.contentlocale: sv-SE
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "82086478"
+  ms.lasthandoff: 01/14/2021
+  ms.locfileid: "98223609"
 landingContent:
 - title: Om Virtual Network
   linkLists:
@@ -45,9 +45,9 @@ landingContent:
   - linkListType: concept
     links:
     - text: Nätverkssäkerhetsgrupper
-      url: security-overview.md
+      url: ./network-security-groups-overview.md
     - text: Programsäkerhetsgrupper
-      url: security-overview.md#application-security-groups
+      url: ./network-security-groups-overview.md#application-security-groups
     - text: Tjänstslutpunkter för virtuellt nätverk
       url: virtual-network-service-endpoints-overview.md
     - text: Vanliga frågor och svar om säkerhet för virtuella nätverk
@@ -63,7 +63,7 @@ landingContent:
   - linkListType: learn
     links:
     - text: Skydda och isolera åtkomst till Azure-resurser
-      url: https://docs.microsoft.com/learn/modules/secure-and-isolate-with-nsg-and-service-endpoints
+      url: /learn/modules/secure-and-isolate-with-nsg-and-service-endpoints
   - linkListType: video
     links:
     - text: Få säker åtkomst till dina Azure PaaS-resurser med Azure Private Link
@@ -93,7 +93,7 @@ landingContent:
   - linkListType: learn
     links:
     - text: Kommunicera via virtuella nätverk med peering
-      url: https://docs.microsoft.com/learn/modules/integrate-vnets-with-vnet-peering
+      url: /learn/modules/integrate-vnets-with-vnet-peering
 - title: Dirigera nätverkstrafik
   linkLists:
   - linkListType: concept
@@ -109,7 +109,7 @@ landingContent:
   - linkListType: concept
     links:
     - text: IP-adresstyper och allokeringsmetoder
-      url: virtual-network-ip-addresses-overview-arm.md
+      url: ./public-ip-addresses.md
   - linkListType: how-to-guide
     links:
     - text: Skapa, ändra eller ta bort en offentlig IP-adress
@@ -151,7 +151,7 @@ landingContent:
   - linkListType: concept
     links:
     - text: IP-adresstyper och allokeringsmetoder
-      url: virtual-network-ip-addresses-overview-arm.md
+      url: ./public-ip-addresses.md
     - text: Vad är IPv6 för virtuella Azure-nätverk?
       url: ipv6-overview.md
     - text: Prefix för offentliga IP-adresser

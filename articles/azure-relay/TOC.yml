@@ -65,7 +65,7 @@
               href: relay-hybrid-connections-node-ws-api-overview.md
     - name: Skydda
       items:
-        - name: Konfigurera IP-brandvägg (förhandsversion)
+        - name: Konfigurera IP-brandvägg
           href: ip-firewall-virtual-networks.md
         - name: Konfigurera privata slutpunkter
           href: private-link-service.md

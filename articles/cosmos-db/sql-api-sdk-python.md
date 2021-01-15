@@ -9,14 +9,14 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-python
-ms.openlocfilehash: b69b3a3888b2d6e19b8eaa92ba9b2fedf0e15545
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 27bcb220c67392661cc1b2875823abdca4593bd4
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93091131"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98220957"
 ---
-# <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB python SDK för SQL API: viktig information och resurser
+# <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Python SDK för SQL-API: Viktig information och resurser
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!div class="op_single_selector"]
@@ -118,7 +118,7 @@ ms.locfileid: "93091131"
 
 * Klient anslutningen har anpassats till att använda HTTP-pipeline som definierats i `azure.core.pipeline` .
 
-* Interaktiva objekt har nu bytt namn till proxyservrar. Det här omfattar:
+* Interaktiva objekt har nu bytt namn till proxyservrar. Du måste bland annat:
 
   * `Database` -> `DatabaseProxy`
   * `User` -> `UserProxy`
@@ -320,41 +320,41 @@ Version 4.0.0 B1 är den första förhands granskningen av våra ansträngningar
 Microsoft tillhandahåller ett meddelande minst **12 månader** i förväg för att dra tillbaka en SDK för att utjämna över gången till en nyare/version som stöds. Nya funktioner, verktyg och optimeringar läggs endast till i den aktuella SDK-versionen. Därför rekommenderar vi att du alltid uppgraderar till den senaste SDK-versionen så snart som möjligt.
 
 > [!WARNING]
-> Efter 31 augusti 2022 kommer Azure Cosmos DB inte längre att göra fel korrigeringar, lägga till nya funktioner och ge stöd till version 1. x eller 2. x av Azure Cosmos DB python SDK för SQL API. Om du föredrar att inte uppgradera fortsätter de begär Anden som skickas från version 1. x och 2. x av SDK att hanteras av Azure Cosmos DBs tjänsten.
+> Efter den 31 augusti 2022 kommer Azure Cosmos DB inte längre att göra fel korrigeringar eller ge stöd till version 1. x och 2. x av Azure Cosmos DB python SDK för SQL API. Om du föredrar att inte uppgradera fortsätter de begär Anden som skickas från version 1. x och 2. x av SDK att hanteras av Azure Cosmos DBs tjänsten.
 
 | Version | Utgivningsdatum | Förfallodatum |
 | --- | --- | --- |
 | [4.0.0](#400) |20 maj, 2020 |--- |
 | [3.0.2](#302) |Den 15 november 2018 |--- |
 | [3.0.1](#301) |Okt 04, 2018 |--- |
-| [2.3.3](#233) |Sept 08, 2018 |30 augusti 2020 |
-| [2.3.2](#232) |Den 8 maj 2018 |30 augusti 2020 |
-| [2.3.1](#231) |21 december 2017 |30 augusti 2020 |
-| [2.3.0](#230) |10 november 2017 |30 augusti 2020 |
-| [2.2.1](#221) |Sep 29, 2017 |30 augusti 2020 |
-| [2.2.0](#220) |10 maj 2017 |30 augusti 2020 |
-| [2.1.0](#210) |01 maj, 2017 |30 augusti 2020 |
-| [2.0.1](#201) |30 oktober 2016 |30 augusti 2020 |
-| [2.0.0](#200) |29 september 2016 |30 augusti 2020 |
-| [1.9.0](#190) |Den 07 juli 2016 |30 augusti 2020 |
-| [1.8.0](#180) |14 juni 2016 |30 augusti 2020 |
-| [1.7.0](#170) |26 april 2016 |30 augusti 2020 |
-| [1.6.1](#161) |08, 2016 |30 augusti 2020 |
-| [1.6.0](#160) |29 mars 2016 |30 augusti 2020 |
-| [1.5.0](#150) |03 januari 2016 |30 augusti 2020 |
-| [1.4.2](#142) |06 oktober 2015 |30 augusti 2020 |
-| 1.4.1 |06 oktober 2015 |30 augusti 2020 |
-| [1.2.0](#120) |06 augusti 2015 |30 augusti 2020 |
-| [1.1.0](#110) |9 juli 2015 |30 augusti 2020 |
-| [1.0.1](#101) |25 maj 2015 |30 augusti 2020 |
-| 1.0.0 |07, 2015 |30 augusti 2020 |
+| [2.3.3](#233) |Sept 08, 2018 |31 augusti 2022 |
+| [2.3.2](#232) |Den 8 maj 2018 |31 augusti 2022 |
+| [2.3.1](#231) |21 december 2017 |31 augusti 2022 |
+| [2.3.0](#230) |10 november 2017 |31 augusti 2022 |
+| [2.2.1](#221) |Sep 29, 2017 |31 augusti 2022 |
+| [2.2.0](#220) |10 maj 2017 |31 augusti 2022 |
+| [2.1.0](#210) |01 maj, 2017 |31 augusti 2022 |
+| [2.0.1](#201) |30 oktober 2016 |31 augusti 2022 |
+| [2.0.0](#200) |29 september 2016 |31 augusti 2022 |
+| [1.9.0](#190) |Den 07 juli 2016 |31 augusti 2022 |
+| [1.8.0](#180) |14 juni 2016 |31 augusti 2022 |
+| [1.7.0](#170) |26 april 2016 |31 augusti 2022 |
+| [1.6.1](#161) |08, 2016 |31 augusti 2022 |
+| [1.6.0](#160) |29 mars 2016 |31 augusti 2022 |
+| [1.5.0](#150) |03 januari 2016 |31 augusti 2022 |
+| [1.4.2](#142) |06 oktober 2015 |31 augusti 2022 |
+| 1.4.1 |06 oktober 2015 |31 augusti 2022 |
+| [1.2.0](#120) |06 augusti 2015 |31 augusti 2022 |
+| [1.1.0](#110) |9 juli 2015 |31 augusti 2022 |
+| [1.0.1](#101) |25 maj 2015 |31 augusti 2022 |
+| 1.0.0 |07, 2015 |31 augusti 2022 |
 | 0.9.4 – för-leasing |14 januari 2015 |29 februari 2016 |
 | 0.9.3 – för-leasing |Den 9 december 2014 |29 februari 2016 |
 | 0.9.2 – för-leasing |25 november 2014 |29 februari 2016 |
 | 0.9.1 till och – för-leasing |23 september 2014 |29 februari 2016 |
 | 0.9.0 – för-leasing |21 augusti 2014 |29 februari 2016 |
 
-## <a name="faq"></a>VANLIGA FRÅGOR OCH SVAR
+## <a name="faq"></a>Vanliga frågor
 
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 

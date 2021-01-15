@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 11/15/2018
 ms.author: kumud
 ms.reviewer: anavin
-ms.openlocfilehash: 148d57da549e8364620c8417cbd61d975cea1498
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1ff9fcbb693f7e606c07985f9bce9acd60c5591a
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87046091"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222980"
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-same-subscription"></a>Skapa en virtuell nätverks-peering-olika distributions modeller, samma prenumeration
 
@@ -35,7 +35,7 @@ Stegen för att skapa en virtuell nätverks-peering skiljer sig beroende på om 
 |[Båda Resource Manager](create-peering-different-subscriptions.md) |Olika|
 |[En Resource Manager, en klassisk](create-peering-different-deployment-models-subscriptions.md) |Olika|
 
-Det går inte att skapa en virtuell nätverks-peering mellan två virtuella nätverk som distribueras via den klassiska distributions modellen. Om du behöver ansluta virtuella nätverk som båda har skapats via den klassiska distributions modellen kan du använda en Azure- [VPN gateway](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) för att ansluta de virtuella nätverken.
+Det går inte att skapa en virtuell nätverks-peering mellan två virtuella nätverk som distribueras via den klassiska distributions modellen. Om du behöver ansluta virtuella nätverk som båda har skapats via den klassiska distributions modellen kan du använda en Azure- [VPN gateway](../vpn-gateway/tutorial-site-to-site-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) för att ansluta de virtuella nätverken.
 
 Den här självstudien peererar virtuella nätverk i samma region. Du kan också peer-virtuella nätverk i olika [regioner som stöds](virtual-network-manage-peering.md#cross-region). Vi rekommenderar att du bekantar dig med [peering-kraven och begränsningarna](virtual-network-manage-peering.md#requirements-and-constraints) innan du peer-koppla virtuella nätverk.
 
@@ -44,7 +44,7 @@ Du kan använda Azure Portal, Azure [Command-Line Interface](#cli) (CLI), Azure 
 ## <a name="create-peering---azure-portal"></a>Skapa peering-Azure Portal
 
 1. Logga in på [Azure-portalen](https://portal.azure.com). Det konto som du loggar in med måste ha de behörigheter som krävs för att skapa en virtuell nätverks-peering. En lista över behörigheter finns i [behörigheter för virtuella nätverks-peering](virtual-network-manage-peering.md#requirements-and-constraints).
-2. Klicka på **+ ny**, klicka på **nätverk**och sedan på **virtuellt nätverk**.
+2. Klicka på **+ ny**, klicka på **nätverk** och sedan på **virtuellt nätverk**.
 3. I bladet **Skapa virtuellt nätverk** anger du eller väljer värden för följande inställningar och klickar sedan på **skapa**:
     - **Namn**: *myVnet1*
     - **Adress utrymme**: *10.0.0.0/16*
@@ -71,7 +71,7 @@ Du kan använda Azure Portal, Azure [Command-Line Interface](#cli) (CLI), Azure 
      - **Namn**: *myVnet1ToMyVnet2*
      - **Distributions modell för virtuellt nätverk**: Välj **klassisk**.
      - **Prenumeration**: Välj din prenumeration
-     - **Virtuellt nätverk**: Klicka på **Välj ett virtuellt nätverk**och klicka sedan på **myVnet2**.
+     - **Virtuellt nätverk**: Klicka på **Välj ett virtuellt nätverk** och klicka sedan på **myVnet2**.
      - **Tillåt åtkomst till virtuellt nätverk:** Se till att **aktive rad** är markerat.
     Inga andra inställningar används i den här självstudien. Om du vill veta mer om alla peering-inställningar läser du [Hantera peering för virtuella nätverk](virtual-network-manage-peering.md#create-a-peering).
 12. När du klickar på **OK** i föregående steg stängs bladet **Lägg till peering** och du ser bladet **myVnet1-peering** igen. Efter några sekunder visas peering du skapade på bladet. **Ansluten** visas i kolumnen **peering-status** för **myVnet1ToMyVnet2** -peering som du skapade.
@@ -148,7 +148,7 @@ Utför följande steg med hjälp av den klassiska Azure-CLI: en och Azure CLI. D
 1. Installera den senaste versionen av PowerShell [Azure](https://www.powershellgallery.com/packages/Azure) -och [AZ](https://www.powershellgallery.com/packages/Az/) -modulerna. Om du inte har använt Azure PowerShell kan du läsa [Översikt över Azure PowerShell](/powershell/azure/?toc=%2fazure%2fvirtual-network%2ftoc.json).
 2. Starta en PowerShell-session.
 3. I PowerShell loggar du in på Azure genom att ange `Add-AzureAccount` kommandot. Det konto som du loggar in med måste ha de behörigheter som krävs för att skapa en virtuell nätverks-peering. En lista över behörigheter finns i [behörigheter för virtuella nätverks-peering](virtual-network-manage-peering.md#requirements-and-constraints).
-4. Om du vill skapa ett virtuellt nätverk (klassiskt) med PowerShell måste du skapa en ny eller ändra en befintlig nätverks konfigurations fil. Lär dig hur du [exporterar, uppdaterar och importerar filer för nätverks konfiguration](virtual-networks-using-network-configuration-file.md). Filen bör innehålla följande **VirtualNetworkSite** -element för det virtuella nätverk som används i den här självstudien:
+4. Om du vill skapa ett virtuellt nätverk (klassiskt) med PowerShell måste du skapa en ny eller ändra en befintlig nätverks konfigurations fil. Lär dig hur du [exporterar, uppdaterar och importerar filer för nätverks konfiguration](/previous-versions/azure/virtual-network/virtual-networks-using-network-configuration-file). Filen bör innehålla följande **VirtualNetworkSite** -element för det virtuella nätverk som används i den här självstudien:
 
     ```xml
     <VirtualNetworkSite name="myVnet2" Location="East US">
@@ -212,9 +212,9 @@ När du är klar med den här självstudien kanske du vill ta bort de resurser s
 
 ### <a name="azure-portal"></a><a name="delete-portal"></a>Azure Portal
 
-1. Skriv **myResourceGroup**i rutan Portal Sök. Klicka på **myResourceGroup**i Sök resultaten.
+1. Skriv **myResourceGroup** i rutan Portal Sök. Klicka på **myResourceGroup** i Sök resultaten.
 2. Klicka på ikonen **ta bort** på bladet **myResourceGroup** .
-3. Bekräfta borttagningen genom att ange **myResourceGroup**i rutan **Skriv resurs gruppens namn** och klicka på **ta bort**.
+3. Bekräfta borttagningen genom att ange **myResourceGroup** i rutan **Skriv resurs gruppens namn** och klicka på **ta bort**.
 
 ### <a name="azure-cli"></a><a name="delete-cli"></a>Azure CLI
 
@@ -240,7 +240,7 @@ När du är klar med den här självstudien kanske du vill ta bort de resurser s
     Remove-AzResourceGroup -Name myResourceGroup -Force
     ```
 
-2. Om du vill ta bort det virtuella nätverket (klassisk) med PowerShell måste du ändra en befintlig nätverks konfigurations fil. Lär dig hur du [exporterar, uppdaterar och importerar filer för nätverks konfiguration](virtual-networks-using-network-configuration-file.md). Ta bort följande VirtualNetworkSite-element för det virtuella nätverk som används i den här självstudien:
+2. Om du vill ta bort det virtuella nätverket (klassisk) med PowerShell måste du ändra en befintlig nätverks konfigurations fil. Lär dig hur du [exporterar, uppdaterar och importerar filer för nätverks konfiguration](/previous-versions/azure/virtual-network/virtual-networks-using-network-configuration-file). Ta bort följande VirtualNetworkSite-element för det virtuella nätverk som används i den här självstudien:
 
     ```xml
     <VirtualNetworkSite name="myVnet2" Location="East US">

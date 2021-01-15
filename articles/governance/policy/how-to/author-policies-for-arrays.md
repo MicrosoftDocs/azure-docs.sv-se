@@ -3,12 +3,12 @@ title: Redigera principer för mat ris egenskaper för resurser
 description: Lär dig att arbeta med mat ris parametrar och matris språk uttryck, utvärdera [*]-aliaset och lägga till element med Azure Policy definitions regler.
 ms.date: 10/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 60044d4a599c14088ea923a6a14cb46543646995
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: 650b2ec6bc1bbd12cd10abb1917ef5ea2d6029e9
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94920465"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98220753"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>Redigera principer för mat ris egenskaper på Azure-resurser
 
@@ -16,10 +16,8 @@ Azure Resource Manager egenskaper definieras vanligt vis som strängar och boole
 
 - Typ av [definitions parameter](../concepts/definition-structure.md#parameters)för att tillhandahålla flera alternativ
 - En del av en [princip regel](../concepts/definition-structure.md#policy-rule) med hjälp av villkoren **i** eller **notIn**
-- En del av en princip regel som utvärderar det [ \[ \* \] alias](../concepts/definition-structure.md#understanding-the--alias) som ska utvärderas:
-  - Scenarier som **ingen**, **alla** eller **alla**
-  - Komplexa scenarier med **antal**
-- I Lägg till- [effekter](../concepts/effects.md#append) för att ersätta eller lägga till i en befintlig matris
+- En del av en princip regel som räknar hur många mat ris medlemmar som uppfyller ett villkor
+- I [Lägg](../concepts/effects.md#append) till och [ändra](../concepts/effects.md#modify) -effekter för att uppdatera en befintlig matris
 
 Den här artikeln beskriver varje användning av Azure Policy och innehåller flera exempel definitioner.
 
@@ -99,48 +97,121 @@ Använd följande kommandon om du vill använda den här strängen med varje SDK
 - Azure PowerShell: cmdlet [New-AzPolicyAssignment](/powershell/module/az.resources/New-Azpolicyassignment) med parametern **PolicyParameter**
 - REST API: i åtgärden _Lägg_ till [skapa](/rest/api/resources/policyassignments/create) som en del av begär ande texten som värde för egenskapen **Properties. Parameters**
 
-## <a name="array-conditions"></a>Mat ris villkor
+## <a name="using-arrays-in-conditions"></a>Använda matriser i villkor
 
-Princip regel [villkoren](../concepts/definition-structure.md#conditions) som en _mat ris_ 
- **typ** parameter kan användas med är begränsad till `in` och `notIn` . Vidta följande princip definition med villkor `equals` som exempel:
+### <a name="in-and-notin"></a>`In` och `notIn`
+
+`in` `notIn` Villkoren fungerar bara med mat ris värden. De kontrollerar förekomsten av ett värde i en matris. Matrisen kan vara en litteral JSON-matris eller en referens till en mat ris parameter. Exempel:
 
 ```json
 {
-  "policyRule": {
-    "if": {
-      "not": {
-        "field": "location",
-        "equals": "[parameters('allowedLocations')]"
-      }
-    },
-    "then": {
-      "effect": "audit"
-    }
-  },
-  "parameters": {
-    "allowedLocations": {
-      "type": "Array",
-      "metadata": {
-        "description": "The list of allowed locations for resources.",
-        "displayName": "Allowed locations",
-        "strongType": "location"
-      }
-    }
-  }
+      "field": "tags.environment",
+      "in": [ "dev", "test" ]
 }
 ```
 
-Försöket att skapa princip definitionen via Azure Portal leder till ett fel meddelande som detta fel meddelande:
+```json
+{
+      "field": "location",
+      "notIn": "[parameters('allowedLocations')]"
+}
+```
 
-- "Det gick inte att parameterstyrda principen {GUID} på grund av verifierings fel. Kontrol lera att princip parametrarna är korrekt definierade. Det inre undantaget för utvärderings resultatet av språk uttrycket [parameters (' allowedLocations ')] är type ' matris ', förväntad typ är sträng '. "
+### <a name="value-count"></a>Antal värden
 
-Den förväntade **typen** av villkor `equals` är _sträng_. Eftersom **allowedLocations** har definierats som **typ** _mat ris_, utvärderar principmodulen språk uttryck och genererar felet. Med `in` `notIn` villkoret och förväntar sig princip motorn **typ** _mat ris_ i språk uttrycket. Lös det här fel meddelandet genom att ändra `equals` till antingen `in` eller `notIn` .
+Antalet [värde räknare](../concepts/definition-structure.md#value-count) uttryck räknar hur många mat ris medlemmar som uppfyller ett villkor. Det är ett sätt att utvärdera samma villkor flera gånger, med olika värden för varje iteration. Följande villkor kontrollerar till exempel om resurs namnet matchar något mönster från en matris med mönster:
+
+```json
+{
+    "count": {
+        "value": [ "test*", "dev*", "prod*" ],
+        "name": "pattern",
+        "where": {
+            "field": "name",
+            "like": "[current('pattern')]"
+        }
+    },
+    "greater": 0
+}
+```
+
+För att utvärdera uttrycket utvärderar Azure Policy `where` villkoret 3 gånger, en gång för varje medlem i `[ "test*", "dev*", "prod*" ]` och räknar hur många gånger det utvärderades `true` . Vid varje iteration kopplas värdet för den aktuella mat ris medlemmen samman med `pattern` index namnet som definieras av `count.name` . Det här värdet kan sedan refereras inuti `where` villkoret genom att anropa en särskild mall-funktion: `current('pattern')` .
+
+| Iteration | `current('pattern')` returnerat värde |
+|:---|:---|
+| 1 | `"test*"` |
+| 2 | `"dev*"` |
+| 3 | `"prod*"` |
+
+Villkoret är sant endast om det resulterande antalet är större än 0.
+
+Om du vill göra villkoret över mer generiskt använder du parameter referens i stället för en litteral matris:
+
+ ```json
+{
+    "count": {
+        "value": "[parameters('patterns')]",
+        "name": "pattern",
+        "where": {
+            "field": "name",
+            "like": "[current('pattern')]"
+        }
+    },
+    "greater": 0
+}
+```
+
+Om uttrycket **värde Count** inte finns under ett annat **Count** -uttryck, `count.name` är det valfritt och `current()` funktionen kan användas utan argument:
+
+```json
+{
+    "count": {
+        "value": "[parameters('patterns')]",
+        "where": {
+            "field": "name",
+            "like": "[current()]"
+        }
+    },
+    "greater": 0
+}
+```
+
+**Värdet antal** stöder också matriser med komplexa objekt, vilket möjliggör mer komplexa villkor. Följande villkor definierar t. ex. ett önskat taggvärde för varje namn mönster och kontrollerar om resurs namnet matchar mönstret, men inte har det obligatoriska taggnings värdet:
+
+```json
+{
+    "count": {
+        "value": [
+            { "pattern": "test*", "envTag": "dev" },
+            { "pattern": "dev*", "envTag": "dev" },
+            { "pattern": "prod*", "envTag": "prod" },
+        ],
+        "name": "namePatternRequiredTag",
+        "where": {
+            "allOf": [
+                {
+                    "field": "name",
+                    "like": "[current('namePatternRequiredTag').pattern]"
+                },
+                {
+                    "field": "tags.env",
+                    "notEquals": "[current('namePatternRequiredTag').envTag]"
+                }
+            ]
+        }
+    },
+    "greater": 0
+}
+```
+
+Användbara exempel finns i [exempel på värde räknare](../concepts/definition-structure.md#value-count-examples).
 
 ## <a name="referencing-array-resource-properties"></a>Referera till egenskaper för mat ris resurs
 
 Många användnings fall kräver att du arbetar med mat ris egenskaper i den utvärderade resursen. Vissa scenarier kräver att du refererar till en hel matris (till exempel genom att kontrol lera dess längd). Andra måste tillämpa ett villkor för varje enskild mat ris medlem (till exempel se till att alla brand Väggs regler blockerar åtkomst från Internet). Att förstå de olika sätten Azure Policy kan referera till resurs egenskaper och hur dessa referenser beter sig när de refererar till mat ris egenskaper är nyckeln för att skriva villkor som beskriver dessa scenarier.
 
 ### <a name="referencing-resource-properties"></a>Refererande resurs egenskaper
+
 Resurs egenskaper kan refereras till av Azure Policy med hjälp av [alias](../concepts/definition-structure.md#aliases) det finns två sätt att referera till värdena för en resurs egenskap i Azure policy:
 
 - Använd [fält](../concepts/definition-structure.md#fields) villkor för att kontrol lera om **alla** valda resurs egenskaper uppfyller ett villkor. Exempel:
@@ -219,9 +290,9 @@ Om matrisen innehåller objekt kan ett `[*]` alias användas för att välja vä
 }
 ```
 
-Det här villkoret är sant om värdena för alla `property` Egenskaper i `objectArray` är lika med `"value"` .
+Det här villkoret är sant om värdena för alla `property` Egenskaper i `objectArray` är lika med `"value"` . Fler exempel finns i [ \[ \* \] exempel på ytterligare alias](#appendix--additional--alias-examples).
 
-När du använder `field()` funktionen för att referera till ett mat ris alias är det returnerade värdet en matris med alla valda värden. Detta innebär att det vanliga användnings fallet för `field()` funktionen, möjligheten att tillämpa mall-funktioner till resurs egenskaps värden, är mycket begränsad. De enda mal funktioner som kan användas i det här fallet är de som accepterar mat ris argument. Det är till exempel möjligt att hämta längden på matrisen med `[length(field('Microsoft.Test/resourceType/objectArray[*].property'))]` . Det är dock bara möjligt att använda fler komplexa scenarier som att använda funktionen mall för varje mat ris medlem och jämföra det med ett önskat värde när du använder `count` uttrycket. Mer information finns i [Count-uttryck](#count-expressions).
+När du använder `field()` funktionen för att referera till ett mat ris alias är det returnerade värdet en matris med alla valda värden. Detta innebär att det vanliga användnings fallet för `field()` funktionen, möjligheten att tillämpa mall-funktioner till resurs egenskaps värden, är mycket begränsad. De enda mal funktioner som kan användas i det här fallet är de som accepterar mat ris argument. Det är till exempel möjligt att hämta längden på matrisen med `[length(field('Microsoft.Test/resourceType/objectArray[*].property'))]` . Det är dock bara möjligt att använda fler komplexa scenarier som att använda funktionen mall för varje mat ris medlem och jämföra det med ett önskat värde när du använder `count` uttrycket. Mer information finns i [fält Count-uttryck](#field-count-expressions).
 
 Information om hur du sammanfattar finns i följande exempel på resurs innehåll och de valda värdena som returneras av olika alias:
 
@@ -275,9 +346,9 @@ När du använder `field()` funktionen i resurs innehållet i exemplet är resul
 | `[field('Microsoft.Test/resourceType/objectArray[*].nestedArray')]` | `[[ 1, 2 ], [ 3, 4 ]]` |
 | `[field('Microsoft.Test/resourceType/objectArray[*].nestedArray[*]')]` | `[1, 2, 3, 4]` |
 
-## <a name="count-expressions"></a>Räkna uttryck
+### <a name="field-count-expressions"></a>Uttryck för fält antal
 
-[Count-uttryck räknar](../concepts/definition-structure.md#count) hur många mat ris medlemmar som uppfyller ett villkor och jämför antalet till ett målvärde. `Count` är mer intuitivt och flexibelt för utvärdering av matriser jämfört med `field` villkor. Syntax:
+Antal [fält Count](../concepts/definition-structure.md#field-count) -uttryck hur många mat ris medlemmar uppfyller ett villkor och jämför antalet till ett målvärde. `Count` är mer intuitivt och flexibelt för utvärdering av matriser jämfört med `field` villkor. Syntax:
 
 ```json
 {
@@ -289,7 +360,7 @@ När du använder `field()` funktionen i resurs innehållet i exemplet är resul
 }
 ```
 
-När det används utan ett Where-villkor `count` returnerar bara längden på en matris. Med exempel resurs innehållet från föregående avsnitt `count` utvärderas följande uttryck `true` eftersom `stringArray` har tre medlemmar:
+När det används utan ett `where` villkor `count` returnerar bara längden på en matris. Med exempel resurs innehållet från föregående avsnitt `count` utvärderas följande uttryck `true` eftersom `stringArray` har tre medlemmar:
 
 ```json
 {
@@ -314,6 +385,7 @@ Det här beteendet fungerar också med kapslade matriser. Till exempel `count` u
 Kraften hos `count` är i `where` villkoret. När den anges räknar Azure Policy upp mat ris medlemmarna och utvärdera var och en av dem mot villkoret och räknar hur många mat ris medlemmar som utvärderas till `true` . I varje iteration av `where` villkors utvärderingen väljer Azure policy en enskild mat ris medlem ***i** _ och utvärdera resurs innehållet mot `where` villkoret _* som om **_i_*_ är den enda medlemmen i array_ *. Att endast en mat ris medlem är tillgänglig i varje iteration är ett sätt att tillämpa komplexa villkor på varje enskild mat ris medlem.
 
 Exempel:
+
 ```json
 {
   "count": {
@@ -326,7 +398,7 @@ Exempel:
   "equals": 1
 }
 ```
-För att utvärdera `count` uttrycket utvärderar Azure policy `where` villkoret 3 gånger, en gång för varje medlem i `stringArray` och räknar hur många gånger det utvärderades `true` . När `where` villkoret refererar till `Microsoft.Test/resourceType/stringArray[*]` mat ris medlemmar, i stället för att markera alla medlemmar i `stringArray` , så markeras bara en enskild mat ris medlem varje gång:
+För att utvärdera `count` uttrycket utvärderar Azure policy `where` villkoret 3 gånger, en gång för varje medlem i `stringArray` och räknar hur många gånger det utvärderades `true` . När `where` villkoret refererar till `Microsoft.Test/resourceType/stringArray[*]` mat ris medlemmar, i stället för att välja alla medlemmar i `stringArray` , så markeras bara en enskild mat ris medlem varje gång:
 
 | Iteration | Valda `Microsoft.Test/resourceType/stringArray[*]` värden | `where` Utvärderings resultat |
 |:---|:---|:---|
@@ -337,6 +409,7 @@ För att utvärdera `count` uttrycket utvärderar Azure policy `where` villkoret
 Och kommer därför `count` att returnera `1` .
 
 Här är ett mer komplext uttryck:
+
 ```json
 {
   "count": {
@@ -366,6 +439,7 @@ Här är ett mer komplext uttryck:
 Och därmed `count` returneras `1` .
 
 Det faktum att `where` uttrycket utvärderas mot **hela** begär ande innehållet (med ändringar enbart till den mat ris medlem som för närvarande räknas upp) innebär att `where` villkoret kan också referera till fält utanför matrisen:
+
 ```json
 {
   "count": {
@@ -384,6 +458,7 @@ Det faktum att `where` uttrycket utvärderas mot **hela** begär ande innehålle
 | 2 | `tags.env` => `"prod"` | `true` |
 
 Kapslade Count-uttryck tillåts också:
+
 ```json
 {
   "count": {
@@ -417,9 +492,33 @@ Kapslade Count-uttryck tillåts också:
 | 2 | `Microsoft.Test/resourceType/objectArray[*].property` => `"value2`</br> `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `3`, `4` | 1 | `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `3` |
 | 2 | `Microsoft.Test/resourceType/objectArray[*].property` => `"value2`</br> `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `3`, `4` | 2 | `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `4` |
 
-### <a name="the-field-function-inside-where-conditions"></a>`field()`Funktionen inuti `where` villkor
+#### <a name="accessing-current-array-member-with-template-functions"></a>Åtkomst till aktuell mat ris medlem med mall funktioner
 
-Hur `field()` funktioner fungerar när de ingår i ett `where` villkor baseras på följande begrepp:
+När du använder mallar använder du `current()` funktionen för att få åtkomst till värdet för den aktuella mat ris medlemmen eller värdena för någon av dess egenskaper. Om du vill komma åt värdet för den aktuella mat ris medlemmen skickar du det alias som definieras i `count.field` eller något av dess underordnade alias som ett argument till `current()` funktionen. Exempel:
+
+```json
+{
+  "count": {
+    "field": "Microsoft.Test/resourceType/objectArray[*]",
+    "where": {
+        "value": "[current('Microsoft.Test/resourceType/objectArray[*].property')]",
+        "like": "value*"
+    }
+  },
+  "equals": 2
+}
+
+```
+
+| Iteration | `current()` returnerat värde | `where` Utvärderings resultat |
+|:---|:---|:---|
+| 1 | Värdet för `property` i den första medlemmen i `objectArray[*]` : `value1` | `true` |
+| 2 | Värdet för `property` i den första medlemmen i `objectArray[*]` : `value2` | `true` |
+
+#### <a name="the-field-function-inside-where-conditions"></a>Fält funktionen i WHERE-villkor
+
+`field()`Funktionen kan också användas för att få åtkomst till värdet för den aktuella mat ris medlemmen så länge **Count** -uttrycket inte är i ett **existenss villkor** ( `field()` funktionen refererar alltid till resursen som utvärderas i **IF** -villkoret).
+Beteendet `field()` vid hänvisning till den utvärderade matrisen baseras på följande begrepp:
 1. Mat ris Ali Aset matchas i en samling värden som valts från alla mat ris medlemmar.
 1. `field()` funktioner som refererar till mat ris Ali Aset returnerar en matris med de valda värdena.
 1. Referenser till det räknade mat ris Ali Aset i `where` villkoret returnerar en samling med ett enskilt värde markerat från den mat ris medlem som utvärderas i den aktuella iterationen.
@@ -465,7 +564,7 @@ När det finns ett behov av att komma åt värdet för det räknade mat ris Ali 
 | 2 | `Microsoft.Test/resourceType/stringArray[*]` => `"b"` </br>  `[first(field('Microsoft.Test/resourceType/stringArray[*]'))]` => `"b"` | `true` |
 | 3 | `Microsoft.Test/resourceType/stringArray[*]` => `"c"` </br>  `[first(field('Microsoft.Test/resourceType/stringArray[*]'))]` => `"c"` | `true` |
 
-Användbara exempel finns i [antal exempel](../concepts/definition-structure.md#count-examples).
+Användbara exempel finns i [exempel på fält antal](../concepts/definition-structure.md#field-count-examples).
 
 ## <a name="modifying-arrays"></a>Ändra matriser
 
@@ -487,6 +586,59 @@ Användbara exempel finns i [antal exempel](../concepts/definition-structure.md#
 | `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].action` | `modify` med `addOrReplace` åtgärd | Azure Policy lägger till eller ersätter den befintliga `action` egenskapen för varje mat ris medlem. |
 
 Mer information finns i [Lägg till exempel](../concepts/effects.md#append-examples).
+
+## <a name="appendix--additional--alias-examples"></a>Bilaga – ytterligare [*] Ali Aset-exempel
+
+Vi rekommenderar att du använder [fält Count-uttryck](#field-count-expressions) för att kontrol lera om alla medlemmar i en matris i innehållet i begäran uppfyller ett villkor. För vissa enkla villkor är det dock möjligt att uppnå samma resultat genom att använda en fält accessor med ett mat ris Ali Aset (som beskrivs i [referera till samlingen av mat ris medlemmar](#referencing-the-array-members-collection)). Detta kan vara användbart i princip regler som överskrider gränsen för **antal** tillåtna uttryck. Här följer några exempel på vanliga användnings fall:
+
+Exempel princip regeln för scenario tabellen nedan:
+
+```json
+"policyRule": {
+    "if": {
+        "allOf": [
+            {
+                "field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules",
+                "exists": "true"
+            },
+            <-- Condition (see table below) -->
+        ]
+    },
+    "then": {
+        "effect": "[parameters('effectType')]"
+    }
+}
+```
+
+**IpRules** -matrisen ser ut så här i scenario tabellen nedan:
+
+```json
+"ipRules": [
+    {
+        "value": "127.0.0.1",
+        "action": "Allow"
+    },
+    {
+        "value": "192.168.1.1",
+        "action": "Allow"
+    }
+]
+```
+
+Ersätt med för varje villkors exempel `<field>` nedan `"field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].value"` .
+
+Följande resultat är resultatet av kombinationen av villkoret och exempel princip regeln och matrisen med befintliga värden ovan:
+
+|Villkor |Resultat | Scenario |Förklaring |
+|-|-|-|-|
+|`{<field>,"notEquals":"127.0.0.1"}` |Ingenting |Ingen matchning |Ett mat ris element utvärderas som falskt (127.0.0.1! = 127.0.0.1) och ett som sant (127.0.0.1! = 192.168.1.1), så **notEquals** -villkoret är _falskt_ och effekterna utlöses inte. |
+|`{<field>,"notEquals":"10.0.4.1"}` |Princip påverkan |Ingen matchning |Båda mat ris elementen utvärderas som sant (10.0.4.1! = 127.0.0.1 och 10.0.4.1! = 192.168.1.1), så **notEquals** -villkoret är _Sant_ och resultatet utlöses. |
+|`"not":{<field>,"notEquals":"127.0.0.1" }` |Princip påverkan |En eller flera matchningar |Ett mat ris element utvärderas som falskt (127.0.0.1! = 127.0.0.1) och ett som sant (127.0.0.1! = 192.168.1.1), så **notEquals** -villkoret är _falskt_. Den logiska operatorn utvärderas som sant (**inte** _falskt_), så att resultatet utlöses. |
+|`"not":{<field>,"notEquals":"10.0.4.1"}` |Ingenting |En eller flera matchningar |Båda mat ris elementen utvärderas som sant (10.0.4.1! = 127.0.0.1 och 10.0.4.1! = 192.168.1.1), så **notEquals** -villkoret är _Sant_. Den logiska operatorn utvärderar sig som falskt (**inte** _Sant_), så det utlöses inte. |
+|`"not":{<field>,"Equals":"127.0.0.1"}` |Princip påverkan |Ingen matchning |Ett mat ris element utvärderas som sant (127.0.0.1 = = 127.0.0.1) och ett som falskt (127.0.0.1 = = 192.168.1.1), så **likhets** villkoret är _falskt_. Den logiska operatorn utvärderas som sant (**inte** _falskt_), så att resultatet utlöses. |
+|`"not":{<field>,"Equals":"10.0.4.1"}` |Princip påverkan |Ingen matchning |Båda mat ris elementen utvärderas som falskt (10.0.4.1 = = 127.0.0.1 och 10.0.4.1 = = 192.168.1.1), vilket innebär **att villkoret är** _false_. Den logiska operatorn utvärderas som sant (**inte** _falskt_), så att resultatet utlöses. |
+|`{<field>,"Equals":"127.0.0.1"}` |Ingenting |Alla matchningar |Ett mat ris element utvärderas som sant (127.0.0.1 = = 127.0.0.1) och ett som falskt (127.0.0.1 = = 192.168.1.1), så **likhets** villkoret är _falskt_ och effekterna utlöses inte. |
+|`{<field>,"Equals":"10.0.4.1"}` |Ingenting |Alla matchningar |Båda mat ris elementen utvärderas som falskt (10.0.4.1 = = 127.0.0.1 och 10.0.4.1 = = 192.168.1.1), så **likhets** villkoret är _falskt_ och effekterna utlöses inte. |
 
 ## <a name="next-steps"></a>Nästa steg
 

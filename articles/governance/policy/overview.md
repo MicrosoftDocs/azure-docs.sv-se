@@ -1,14 +1,14 @@
 ---
 title: Översikt över Azure Policy
 description: Azure Policy är en tjänst i Azure som används för att skapa, tilldela och hantera principdefinitioner i Azure-miljön.
-ms.date: 10/05/2020
+ms.date: 01/14/2021
 ms.topic: overview
-ms.openlocfilehash: 96fd29b5e3d24bc3e678461a95005e004a8a3a80
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: df430586af2e701ec2881f6ea760095fd2ca79d0
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97803960"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98220736"
 ---
 # <a name="what-is-azure-policy"></a>Vad är Azure Policy?
 
@@ -57,7 +57,7 @@ Följande översikt över Azure Policy är från Build 2018. För nedladdning av
 
 > [!VIDEO https://www.youtube.com/embed/dxMaYF2GB7o]
 
-## <a name="getting-started"></a>Komma igång
+## <a name="getting-started"></a>Kom igång
 
 ### <a name="azure-policy-and-azure-rbac"></a>Azure Policy och Azure RBAC
 
@@ -83,7 +83,7 @@ Om ingen av de inbyggda rollerna har de behörigheter som krävs skapar du en [a
 
 ### <a name="resources-covered-by-azure-policy"></a>Resurser som omfattas av Azure Policy
 
-Azure Policy utvärderar alla resurser i Azure och Arc-aktiverade resurser. För vissa resurs leverantörer, till exempel [gäst konfiguration](./concepts/guest-configuration.md), [Azure Kubernetes service](../../aks/intro-kubernetes.md)och [Azure Key Vault](../../key-vault/general/overview.md), finns det en djupare integrering för hantering av inställningar och objekt. Mer information finns i [resurs leverantörs lägen](./concepts/definition-structure.md).
+Azure Policy utvärderar alla Azure-resurser på eller under prenumerations nivå, inklusive Arc-aktiverade resurser. För vissa resurs leverantörer, till exempel [gäst konfiguration](./concepts/guest-configuration.md), [Azure Kubernetes service](../../aks/intro-kubernetes.md)och [Azure Key Vault](../../key-vault/general/overview.md), finns det en djupare integrering för hantering av inställningar och objekt. Mer information finns i [resurs leverantörs lägen](./concepts/definition-structure.md).
 
 ### <a name="recommendations-for-managing-policies"></a>Rekommendationer för principhantering
 
@@ -145,7 +145,7 @@ Precis som principparametrar underlättar initiativparametrar initiativhantering
 
 Ta till exempel scenariot där du har en initiativdefinition, **initiativeC**, med principdefinitionerna **policyA** och **policyB** som vardera förväntar sig olika typer av parametrar:
 
-| Princip | Parameternamn |Parametertyp  |Anteckning |
+| Policy | Parameternamn |Parametertyp  |Anteckning |
 |---|---|---|---|
 | principA | allowedLocations | matris  |Den här parametern förväntar sig en lista med strängar för ett värde eftersom parametertypen har definierats som en matris |
 | principB | allowedSingleLocation |sträng |Den här parametern förväntar sig ett ord som värde eftersom parametertypen har definierats som en sträng |
