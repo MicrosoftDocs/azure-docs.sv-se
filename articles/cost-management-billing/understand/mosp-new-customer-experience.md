@@ -6,14 +6,14 @@ ms.reviewer: amberbhargava
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 08/03/2020
+ms.date: 01/11/2021
 ms.author: banders
-ms.openlocfilehash: 7bec455b804d1f4b13ab7e13677092077214a121
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: f0645115246995c9605563626d99bbf6a76784e1
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965858"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98133578"
 ---
 # <a name="get-started-with-your-updated-azure-billing-account"></a>Kom igång med ditt uppdaterade Azure-faktureringskonto
 
@@ -40,7 +40,7 @@ En faktureringsprofil används för att hantera dina fakturerings- och betalning
 
 När ditt konto uppdateras skapas en faktureringsprofil automatiskt för varje prenumeration. Prenumerationsavgifterna faktureras till respektive faktureringsprofil och visas på fakturan.
 
-Roller för faktureringsprofiler har behörighet att visa och hantera fakturor och betalningsmetoder. De här rollerna bör tilldelas till användare som betalar fakturor, t.ex. medlemmar i redovisningsteamet i en organisation. Mer information finns i [Roller och uppgifter för faktureringsprofiler](../manage/understand-mca-roles.md#billing-profile-roles-and-tasks). 
+Roller för faktureringsprofiler har behörighet att visa och hantera fakturor och betalningsmetoder. De här rollerna bör tilldelas till användare som betalar fakturor, t.ex. medlemmar i redovisningsteamet i en organisation. Mer information finns i [Roller och uppgifter för faktureringsprofiler](../manage/understand-mca-roles.md#billing-profile-roles-and-tasks).
 
 För varje prenumeration som du har gett andra behörighet att [visa fakturor](download-azure-invoice.md#allow-others-to-download-the-your-subscription-invoice) för, tilldelas användare som har en Azure-roll som ägare, deltagare, läsare eller faktureringsläsare, rollen som läsare i den aktuella faktureringsprofilen när ditt konto uppdateras.
 
@@ -82,11 +82,11 @@ Den nya miljön innehåller följande kostnadshanterings- och faktureringsfunkti
 
 **Ge faktureringsbehörighet till flera administratörer** – Bevilja faktureringsbehörighet till flera användare så att de kan hantera faktureringen för ditt konto. Öka flexibiliteten genom att ge andra läsbehörighet, skrivbehörighet eller både läs- och skrivbehörighet.
 
-**Skapa fler prenumerationer direkt på Azure-portalen** – Skapa alla dina prenumerationer med ett enda klick på Azure-portalen.
+**Skapa fler prenumerationer direkt på Azure-portalen** – Skapa alla dina prenumerationer med en enkel knapptryckning på Azure-portalen.
 
 #### <a name="api-support"></a>API-stöd
 
-**Hantera fakturering och kostnader via API:er, SDK och PowerShell-** – Använd API:er för kostnadshantering, fakturering och förbrukning för att hämta fakturerings- och kostnadsdata till dina dataanalysverktyg.
+**Hantera fakturering och kostnader via API:er, SDK och PowerShell** – Använd API:er för kostnadshantering, fakturering och förbrukning för att hämta fakturerings- och kostnadsdata till dina dataanalysverktyg.
 
 **Hantera alla prenumerationsåtgärder via API:er, SDK och PowerShell** – Använd API:er för Azure-prenumerationer för att automatisera hanteringen av dina Azure-prenumerationer, t.ex. för att skapa, byta namn på eller avsluta en prenumeration.
 
@@ -106,6 +106,57 @@ Om du använder API:er för kostnadshantering och fakturering för att köra fr�
 |---------|---------|
 |[API:et Billing Accounts – List](/rest/api/billing/2019-10-01-preview/billingaccounts/list) | I API:et Billing Accounts – List har ditt gamla faktureringskonto agreementType **MicrosoftOnlineServiceProgram**, och ditt nya faktureringskonto har agreementType **MicrosoftCustomerAgreement**. Om du har ett agreementType-beroende uppdaterar du det. |
 |[Invoices – List By Billing Subscription](/rest/api/billing/2019-10-01-preview/invoices/listbybillingsubscription)     | Detta API returnerar bara fakturor som genererades innan ditt konto uppdaterades. Du måste använda API:et [Invoices – List By Billing Account](/rest/api/billing/2019-10-01-preview/invoices/listbybillingaccount) för att få fakturor som genereras i det nya faktureringskontot. |
+
+## <a name="cost-management-updates-after-account-update"></a>Cost Management-uppdateringar efter kontouppdatering
+
+Ditt uppdaterade Azure-faktureringskonto för ditt Microsoft-kundavtal ger dig tillgång till nya och utökade Cost Managements-upplevelser på Azure-portalen som inte var tillgängliga med ditt ”betala per användning”-konto.
+
+### <a name="new-capabilities"></a>Nya funktioner
+
+Följande nya funktioner är tillgängliga med ditt Azure-faktureringskonto.
+
+#### <a name="new-billing-scopes"></a>Nya faktureringsomfång
+
+Som en del av ditt uppdaterade konto har du tillgång till nya omfång i Cost Management + Billing. Förutom att underlätta den hierarkiska organiseringen och faktureringen är de också ett sätt att visa kombinerade avgifter från flera underliggande prenumerationer. Mer information om faktureringsomfång finns i [Omfång för Microsoft-kundavtal](../costs/understand-work-scopes.md#microsoft-customer-agreement-scopes).
+
+Du kan också använda Cost Management-API:er för att visa kombinerade kostnadsvyer i högre omfång. Alla Cost Management-API:er som använder prenumerationsomfånget är fortfarande tillgängliga med några mindre ändringar i schemat. Mer information om API:erna finns i avsnitten om [Azure Cost Management-API:er](/rest/api/cost-management/) och [Azure Consumption-API:er](/rest/api/consumption/).
+
+#### <a name="cost-allocation"></a>Kostnadsallokering
+
+Med ditt uppdaterade konto kan du använda kostnadsallokeringsfunktioner för att fördela kostnader från delade tjänster i din organisation. Mer information om hur du allokerar kostnader finns i avsnittet [Skapa och hantera regler för kostnadsallokering i Azure](../costs/allocate-costs.md).
+
+#### <a name="power-bi"></a>Power BI
+
+Med Azure Cost Management-anslutningsappen för Power BI Desktop kan du skapa anpassade visualiseringar och rapporter över din Azure-användning och dina Azure-utgifter. Du kommer åt dina kostnader och användningsdata när du har anslutit till ditt uppdaterade konto. Mer information om Azure Cost Management-anslutningsappen för Power BI Desktop finns i [Skapa visuella objekt och rapporter med Azure Cost Management-kopplingen i Power BI Desktop](/power-bi/connect-data/desktop-connect-azure-cost-management).
+
+### <a name="updated-capabilities"></a>Uppdaterade funktioner
+
+Följande uppdaterade funktioner är tillgängliga med ditt Azure-faktureringskonto.
+
+#### <a name="cost-analysis"></a>Kostnadsanalys
+
+Precis som tidigare kan du visa och spåra din månatliga förbrukningskostnad, och nu kan du även visa kostnader för reservationer och Marketplace-köp i kostnadsanalyser.
+
+Med ditt uppdaterade konto får du en enda faktura för alla Azure-avgifter. Nu har du även tillgång till en enda förenklad månadskalendervy som ersätter den tidigare faktureringsperiodvyn.
+
+Om faktureringsperioden exempelvis var den 24 november till den 23 december med ditt gamla konto, blir perioden efter uppgraderingen den 1 november till den 30 november, den 1 december till den 31 december och så vidare.
+
+:::image type="content" source="./media/mosp-new-customer-experience/billing-periods.png" alt-text="Bild som visar en jämförelse mellan gamla och nya faktureringsperioder " lightbox="./media/mosp-new-customer-experience/billing-periods.png" :::
+
+#### <a name="budgets"></a>Budgetar
+
+Nu kan du skapa budgetar för faktureringskontot, så att du kan spåra kostnader mellan prenumerationer. Du kan också hålla koll på dina inköpskostnader med hjälp av budgetar. Mer information om budgetar finns i [Skapa och hantera Azure-budgetar](../costs/tutorial-acm-create-budgets.md).
+
+#### <a name="exports"></a>Exporter
+
+Det nya faktureringskontot har förbättrade exportfunktioner. Du kan till exempel skapa exporter för faktiska kostnader som inkluderar inköp eller periodiserade kostnader (kostnader för reservationsköp fördelade över inköpsperioden). Du kan också skapa en export för faktureringskontot för att hämta information om användning och avgifter för alla prenumerationer i faktureringskontot. Mer information om exporter finns i [Skapa och hantera exporterade data](../costs/tutorial-export-acm-data.md).
+
+> [!NOTE]
+> Exporter som skapades innan kontouppdateringen med typen **Månatlig export av den senaste månadens kostnader** exporterar data för den senaste kalendermånaden, inte den senaste faktureringsperioden.
+
+Exempelvis skulle den exporterade CSV-filen för faktureringsperioden från den 23 december till den 22 januari innehålla kostnads- och användningsdata för den perioden. Efter uppdateringen kommer exporten att innehålla data för kalendermånaden. Till exempel från den 1 januari till den 31 januari och så vidare.
+
+:::image type="content" source="./media/mosp-new-customer-experience/export-amortized-costs.png" alt-text="Bild som visar en jämförelse mellan gammal och ny exportinformation " lightbox="./media/mosp-new-customer-experience/export-amortized-costs.png" :::
 
 ## <a name="additional-information"></a>Ytterligare information
 

@@ -12,6 +12,9 @@
       href: manage-ddos-protection-powershell.md
     - name: Skapa en DDOS-skyddsplan – CLI
       href: manage-ddos-protection-cli.md
+    - name: Skapa en DDOS-skyddsplan – ARM-mall
+      displayName: Resource Manager
+      href: manage-ddos-protection-template.md
 - name: Självstudier
   items:
     - name: Visa och konfigurera telemetri för DDoS-skydd

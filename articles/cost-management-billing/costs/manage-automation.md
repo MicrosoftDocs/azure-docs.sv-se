@@ -3,17 +3,17 @@ title: Hantera Azure-kostnader med automatisering
 description: Den här artikeln beskriver hur du kan hantera Azure-kostnader med automatisering.
 author: bandersmsft
 ms.author: banders
-ms.date: 11/19/2020
+ms.date: 01/06/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
-ms.openlocfilehash: 47d9c2838c5c806214e3be2f9ba7ce335bc0af67
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 02215bace693ac5ac36f9fc29758215d45b23eb1
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94956100"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98051793"
 ---
 # <a name="manage-costs-with-automation"></a>Hantera kostnader med automatisering
 
@@ -56,6 +56,22 @@ Vi rekommenderar att du inte gör _fler än ett begärande_ till API:et för anv
 **Mål på den översta nivån utan filtrering**
 
 Använd API:et för att hämta alla data som du behöver på den högsta tillgängliga nivån. Vänta tills alla data som behövs har matats in innan du utför någon filtrering, gruppering eller aggregerad analys. API:et är optimerat för att tillhandahålla stora mängder råa, icke-aggregerade kostnadsdata. Du kan läsa mer om vilka omfång som är tillgängliga i Cost Management i [Förstå och arbeta med omfång](./understand-work-scopes.md). När du har laddat ned de data som behövs för ett omfång använder du Excel för att analysera data ytterligare med filter och pivottabeller.
+
+### <a name="notes-about-pricing"></a>Anmärkningar om prissättning
+
+Observera följande information om du vill stämma av användning och avgifter mot ditt prisdokument eller din faktura.
+
+Priser i prisdokumentet – Priserna som visas i prisdokumentet är de priser som du får från Azure. De justeras till en bestämd måttenhet. Tyvärr är måttenheten inte alltid samma som måttenheten som den faktiska resursanvändningen och de faktiska kostnaderna genereras i.
+
+Priser i användningsinformation – Användningsfiler visar justerade data som kanske inte matchar exakt med prisdokumentet. Specifikt:
+
+- Enhetspris – Priset justeras för att matcha måttenheten som avgifterna faktiskt genereras i av resurserna i Azure. Om en justering görs kommer priset inte att matcha priset som visas i prisdokumentet.
+- Måttenhet – Representerar den enhet som kostnaderna faktiskt genereras i av resurserna i Azure.
+- Faktiskt pris/resurspris – Priset motsvarar det faktiska pris som du betalar per enhet, efter att rabatter har beräknats. Det är det pris som ska användas med antalet i ”pris × antal”-beräkningar för att stämma av avgifter. Priset tar i beaktande följande scenarier och det justerade enhetspriset som också finns i filerna. Det innebär att det kan skilja sig från det skalade enhetspriset.
+  - Nivåindelad prissättning – Exempel: 10 USD för de första 100 enheterna och 8 USD för efterföljande 100 enheter.
+  - Inkluderad kvantitet – Exempel: De första 100 enheterna är kostnadsfria och därefter är priset 10 USD per enhet.
+  - Reservationer
+  - Avrundning som görs under beräkningen – Avrundningen tar hänsyn till den förbrukade kvantiteten, priset per nivåindelad/inkluderad kvantitet och det justerade enhetspriset.
 
 ## <a name="example-usage-details-api-requests"></a>Exempelbegäranden till API:et för användningsinformation
 
@@ -325,7 +341,7 @@ Du kan konfigurera budgetar för att starta automatiska åtgärder med hjälp av
 
 ## <a name="data-latency-and-rate-limits"></a>Svarstid och hastighetsbegränsningar för data
 
-Vi rekommenderar att du anropar API:erna högst en gång per dag. Cost Management-data uppdateras var fjärde timme i och med att nya användningsdata tas emot från Azure-resursleverantörer. Mer frekventa anrop resulterar inte i ytterligare data. Det medför bara en ökad belastning. Om du vill veta mer om hur ofta data ändras och hur svarstiden hanteras kan du läsa [Förstå Cost Management-data](understand-cost-mgt-data.md).
+Vi rekommenderar att du anropar API:erna högst en gång per dag. Cost Management-data uppdateras var fjärde timme i och med att nya användningsdata tas emot från Azure-resursleverantörer. Mer frekventa anrop ger inte mer data. Det skapar bara en ökad belastning. Om du vill veta mer om hur ofta data ändras och hur svarstiden hanteras kan du läsa [Förstå Cost Management-data](understand-cost-mgt-data.md).
 
 ### <a name="error-code-429---call-count-has-exceeded-rate-limits"></a>Felkod 429 – Antalet anrop har överskridit hastighetsbegränsningen
 

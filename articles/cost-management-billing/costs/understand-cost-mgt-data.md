@@ -3,18 +3,18 @@ title: Förstå Azure Cost Management-data
 description: Den här artikeln hjälper dig att bättre förstå data som ingår i Azure Cost Management samt hur ofta de bearbetas, samlas in, visas och stängs.
 author: bandersmsft
 ms.author: banders
-ms.date: 10/26/2020
+ms.date: 01/06/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 97ae2ba26818bbc306da71af814d9b4f95858b6a
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: e6096c259ec1870a711a515bf02d5d00b4f75345
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032583"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964158"
 ---
 # <a name="understand-cost-management-data"></a>Förstå Cost Management-data
 
@@ -101,7 +101,7 @@ Följande tabeller visar data som ingår eller inte ingår i Cost Management. Al
 
 _<sup>**5**</sup> Användning av Azure-tjänster baseras på reservationer och förhandlade priser._
 
-_<sup>**6**</sup> Marketplace-inköp är inte tillgängliga för MSDN och Visual Studio för tillfället._
+_<sup>**6**</sup> Marketplace-köp är för närvarande inte tillgängliga för MSDN- och Visual Studio-erbjudanden._
 
 _<sup>**7**</sup> Reservationsköp är endast tillgängliga för Enterprise-avtalskonton (EA) och Microsoft-kundavtalskonton för tillfället._
 
@@ -114,15 +114,15 @@ Azure Cost Management tar emot taggar som en del av varje användningspost som s
 - Vissa distribuerade resurser kanske inte stöder taggar eller så kanske de inte innehåller taggar i användningsdata.
 - Resurstaggar ingår bara i användningsdata under tiden taggen används – taggar används inte för historiska data.
 - Resurstaggar är endast tillgängliga i Cost Management efter att data har uppdaterats.
-- Resurstaggar är bara tillgängliga i Cost Management när resursen är aktiv/körs och skapar användningsposter (t. ex. inte när en virtuell dator frigörs).
+- Resurstaggar är bara tillgängliga i Cost Management när resursen är aktiv/körs och skapar användningsposter. Exempelvis när en virtuell dator frigörs.
 - För hantering av taggar krävs deltagaråtkomst till varje resurs.
 - För hantering av taggprinciper krävs antingen ägar- eller principdeltagaråtkomst till en hanteringsgrupp, prenumeration eller resursgrupp.
     
-Överväg följande om du inte kan se en specifik tagg i Cost Management:
+Gå igenom följande frågor om du inte kan se en specifik tagg i Cost Management:
 
 - Användes taggen direkt för resursen?
 - Användes taggen för mer än 24 timmar sedan?
-- Stöder resurstypen taggar? Följande resurstyper stöder inte taggar i användningsdata från den 1 december 2019. En fullständig lista över vad som stöds finns i [Stöd för taggar för Azure-resurser](../../azure-resource-manager/management/tag-support.md).
+- Stöder resurstypen taggar? Följande resurstyper stöder inte taggar i användningsdata per den 1 december 2019. En fullständig lista över vad som stöds finns i [Stöd för taggar för Azure-resurser](../../azure-resource-manager/management/tag-support.md).
     - Azure Active Directory B2C-kataloger
     - Azure Bastion
     - Azure Firewall-brandväggar
@@ -139,8 +139,7 @@ Här följer några tips för att arbeta med taggar:
 
 - Planera framåt och definiera en taggningsstrategi som gör att du kan bryta ned kostnader efter organisation, program, miljö osv.
 - Använd Azure Policy för att kopiera resursgrupptaggar till enskilda resurser och tillämpa din taggningsstrategi.
-- Använd Tags-API:t med Query eller UsageDetails om du vill hämta alla kostnader baserat på de aktuella taggarna.
-
+- Använd Tags-API:et med Query eller UsageDetails om du vill hämta alla kostnader baserat på de aktuella taggarna.
 
 ## <a name="cost-and-usage-data-updates-and-retention"></a>Uppdateringar av kostnader och användningsdata och kvarhållning
 
@@ -151,13 +150,14 @@ Kostnads- och användningsdata finns vanligtvis i Kostnadshantering + fakturerin
 - Uppskattade avgifter för den aktuella faktureringsperioden kan ändras när du förbrukar mer användning.
 - Varje uppdatering är kumulativ och innehåller alla radobjekt och all information från föregående uppdatering.
 - Azure slutför, eller _stänger_, den aktuella faktureringsperioden upp till 72 timmar (tre kalenderdagar) efter faktureringsperiodens slut.
+- Under perioden för den öppna månaden (inte fakturerad) bör kostnadshanteringsdata endast betraktas som en uppskattning. I vissa fall kan det uppstå en fördröjning mellan själva användningen och dess registrering i systemet.
 
 I följande exempel visas hur faktureringsperioder kan sluta:
 
 * Enterprise-avtalsprenumerationer (EA) – om faktureringsmånaden upphör den 31 mars uppdateras de uppskattade avgifterna upp till 72 timmar senare. I det här exemplet blir det senast midnatt (UTC) 4 april.
 * Betala per användning-prenumerationer – om faktureringsmånaden upphör den 15 maj kan de uppskattade avgifterna uppdateras upp till 72 timmar senare. I det här exemplet blir det senast midnatt (UTC) 19 maj.
 
-När kostnader och användningsdata blir tillgängliga i Kostnadshantering + fakturering hålls de kvar i minst sju år.
+När kostnader och användningsdata blir tillgängliga i Cost Management + Billing bevaras de i minst sju år.
 
 ### <a name="rerated-data"></a>Omklassificerade data
 
@@ -184,6 +184,6 @@ Historiska data för kreditbaserade och förbetalda erbjudanden överensstämmer
 - MSDN (MS-AZR-0062P)
 - Visual Studio (MS-AZR-0029P, MS-AZR-0059P, MS-AZR-0060P, MS-AZR-0063P, MS-AZR-0064P)
 
-## <a name="see-also"></a>Se även
+## <a name="next-steps"></a>Nästa steg
 
-- Om du inte redan har slutfört den första snabbstarten för Cost Management kan du läsa den i [Börja analysera kostnader](./quick-acm-cost-analysis.md).
+- Om du inte redan har slutfört den första Cost Management-snabbstarten kan du gå till [Börja analysera kostnader](./quick-acm-cost-analysis.md).

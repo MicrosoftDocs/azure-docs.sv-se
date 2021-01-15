@@ -201,6 +201,10 @@
       items:
         - name: 'Arbeta med Defender for IoT-API:er'
           href: references-work-with-defender-for-iot-apis.md
+        - name: Horizon-API
+          href: references-horizon-api.md
+        - name: Horizon-SDK
+          href: references-horizon-sdk.md
         - name: Arbeta med Defender for IoT-CLI-kommandon
           href: references-work-with-defender-for-iot-cli-commands.md
         - name: Hantera upphovsrättsskyddade protokoll (Horisont)
@@ -235,5 +239,5 @@
           href: 'https://azure.microsoft.com/regions/services/'
         - name: Prissättning
           href: 'https://azure.microsoft.com/pricing/details/security-center/'
-        - name: Videoklipp
+        - name: Video
           href: 'https://azure.microsoft.com/resources/videos/index/?services=security-center&service=internet-of-things&page=1&sort=newest'
