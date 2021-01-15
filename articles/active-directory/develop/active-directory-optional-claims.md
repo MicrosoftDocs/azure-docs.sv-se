@@ -12,12 +12,12 @@ ms.date: 1/06/2021
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: 1debeab6e420d9021ebba1cecb2d551cf21c9fe2
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.openlocfilehash: 6b5c328503a28c6eb92c2c20ca54d4d3d80c9a15
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98028479"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232479"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>Gör så här: Ange valfria anspråk för din app
 
@@ -45,11 +45,11 @@ Listor över standard anspråk finns i [åtkomsttoken](access-tokens.md) och [id
 Den uppsättning valfria anspråk som är tillgängliga som standard för program som ska användas visas nedan. Om du vill lägga till anpassade valfria anspråk för programmet, se [katalog tillägg](#configuring-directory-extension-optional-claims)nedan. När anspråk läggs till i **åtkomsttoken gäller** anspråken för de åtkomsttoken som begärs *för* programmet (ett webb-API), inte anspråk som begärts *av* programmet. Oavsett hur klienten har åtkomst till ditt API, finns rätt data i den åtkomsttoken som används för att autentisera mot ditt API.
 
 > [!NOTE]
-> Majoriteten av dessa anspråk kan inkluderas i JWTs för v 1.0-och v 2.0-token, men inte SAML-token, förutom vad som anges i kolumnen tokentyp. Konsument konton har stöd för en delmängd av dessa anspråk som marker ATS i kolumnen "användar typ".  Många av anspråken i listan gäller inte konsument användare (de har ingen innehavare, så `tenant_ctry` har inget värde).
+>Majoriteten av dessa anspråk kan inkluderas i JWTs för v 1.0-och v 2.0-token, men inte SAML-token, förutom vad som anges i kolumnen tokentyp. Konsument konton har stöd för en delmängd av dessa anspråk som marker ATS i kolumnen "användar typ".  Många av anspråken i listan gäller inte konsument användare (de har ingen innehavare, så `tenant_ctry` har inget värde).
 
 **Tabell 2: v 1.0 och v 2.0 valfri anspråks uppsättning**
 
-| Namn                       |  Beskrivning   | Tokentyp | Användar typ | Anteckningar  |
+| Namn                       |  Beskrivning   | Tokentyp | Användar typ | Kommentarer  |
 |----------------------------|----------------|------------|-----------|--------|
 | `auth_time`                | Tid när användaren senast autentiserades. Se OpenID Connect spec.| JWT        |           |  |
 | `tenant_region_scope`      | Resurs innehavarens region | JWT        |           | |
@@ -148,13 +148,13 @@ Du kan konfigurera valfria anspråk för ditt program via användar gränssnitte
 [![Konfigurera valfria anspråk i användar gränssnittet](./media/active-directory-optional-claims/token-configuration.png)](./media/active-directory-optional-claims/token-configuration.png)
 
 1. Under **Hantera** väljer du **token-konfiguration**.
+   - Bladet för **konfiguration** av UI-alternativ är inte tillgängligt för appar som är registrerade i en Azure AD B2C-klient som kan konfigureras genom att ändra applikations manifestet. Mer information finns i  [lägga till anspråk och anpassa användarindata med anpassade principer i Azure Active Directory B2C](../../active-directory-b2c/configure-user-input.md)  
+
 1. Välj **Lägg till valfritt anspråk**.
 1. Välj den tokentyp som du vill konfigurera.
 1. Välj de valfria anspråk som ska läggas till.
 1. Välj **Lägg till**.
 
-> [!NOTE]
-> Bladet för **konfiguration** av UI-alternativ är inte tillgängligt för appar som registrerats i en Azure AD B2C klient för närvarande. För program som är registrerade i en B2C-klient kan de valfria anspråken konfigureras genom att ändra applikations manifestet. Mer information finns i [lägga till anspråk och anpassa användarindata med anpassade principer i Azure Active Directory B2C](../../active-directory-b2c/configure-user-input.md) 
 
 **Konfigurera valfria anspråk via applikations manifestet:**
 
@@ -227,8 +227,7 @@ Förutom de vanliga valfria anspråks uppsättningarna kan du också konfigurera
 
 Schema-och öppna tillägg stöds inte av valfria anspråk, bara katalog tilläggen AAD-Graph Style. Den här funktionen är användbar för att bifoga ytterligare användar information som din app kan använda – till exempel en ytterligare identifierare eller ett viktigt konfigurations alternativ som användaren har angett. Se slutet på den här sidan för ett exempel.
 
-> [!NOTE]
-> Katalog schema utökningar är en Azure AD-funktion. Om ditt program manifest begär ett anpassat tillägg och en MSA-användare loggar in i din app, returneras inte dessa tillägg.
+Katalog schema utökningar är en Azure AD-funktion. Om ditt program manifest begär ett anpassat tillägg och en MSA-användare loggar in i din app, returneras inte dessa tillägg.
 
 ### <a name="directory-extension-formatting"></a>Formatering av katalog tillägg
 
@@ -274,7 +273,7 @@ Det här avsnittet beskriver konfigurations alternativen under valfria anspråk 
    - "DirectoryRole"
    - "Variabeln applicationgroup" (det här alternativet inkluderar endast grupper som är kopplade till programmet)
 
-   Exempel:
+   Här är några exempel:
 
     ```json
     "groupMembershipClaims": "SecurityGroup"
@@ -290,8 +289,7 @@ Det här avsnittet beskriver konfigurations alternativen under valfria anspråk 
    - accessToken för OAuth-åtkomsttoken
    - Saml2Token för SAML-token.
 
-   > [!NOTE]
-   > Saml2Token-typen gäller för både SAML 1.1 och SAML 2.0-format-token.
+   Saml2Token-typen gäller för både SAML 1.1 och SAML 2.0-format-token.
 
    För varje relevant tokentyp ändrar du grupp anspråk till att använda OptionalClaims-avsnittet i manifestet. OptionalClaims-schemat ser ut så här:
 
@@ -315,8 +313,7 @@ Det här avsnittet beskriver konfigurations alternativen under valfria anspråk 
 
    Vissa program kräver grupp information om användaren i roll anspråket.  Om du vill ändra anspråks typen från ett grupp anspråk till ett roll anspråk lägger du till "emit_as_roles" i ytterligare egenskaper.  Grupp värden genereras i roll anspråket.
 
-   > [!NOTE]
-   > Om emit_as_roles används visas inte alla program roller som har kon figurer ATS att användaren är tilldelad i roll anspråket.
+   Om emit_as_roles används visas inte alla program roller som har kon figurer ATS att användaren är tilldelad i roll anspråket.
 
 **Exempel:**
 

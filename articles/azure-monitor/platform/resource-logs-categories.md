@@ -4,12 +4,12 @@ description: Referens för Azure Monitor förstå tjänster och händelse schema
 ms.subservice: logs
 ms.topic: reference
 ms.date: 12/09/2020
-ms.openlocfilehash: c7b2d48b40843930bba78f54d2294769d952daf6
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: aeac069b4e9382867664a82af62e29e72da7585e
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96931239"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232256"
 ---
 # <a name="supported-categories-for-azure-resource-logs"></a>Kategorier som stöds för Azure-resurs loggar
 
@@ -18,7 +18,7 @@ ms.locfileid: "96931239"
 
 [Azure Monitor resurs loggar](./platform-logs-overview.md) genereras av Azure-tjänster som beskriver driften av dessa tjänster eller resurser. Alla resurs loggar som är tillgängliga via Azure Monitor dela ett gemensamt schema på högsta nivå, med flexibilitet för varje tjänst för att generera unika egenskaper för sina egna händelser.
 
-En kombination av resurs typen (tillgänglig i `resourceId` egenskapen) och `category` unikt identifiera ett schema. Det finns ett gemensamt schema för alla resurs loggar med tjänstspecifika fält och läggs till för olika logg kategorier. Mer information finns i [common and Service Specific schema för Azures resurs loggar]()
+En kombination av resurs typen (tillgänglig i `resourceId` egenskapen) och `category` unikt identifiera ett schema. Det finns ett gemensamt schema för alla resurs loggar med tjänstspecifika fält som har lagts till för olika logg kategorier. Mer information finns i [common and Service-Specific schema för Azures resurs loggar]()
 
 
 ## <a name="costs"></a>Kostnader
@@ -34,7 +34,7 @@ Vissa kategorier kan bara användas för vissa typer av resurser. Se den Resourc
 Om du fortfarande saknar något kan du öppna en GitHub-kommentar längst ned i den här artikeln.
 ## <a name="microsoftanalysisservicesservers"></a>Microsoft. AnalysisServices/servers
 
-Kostnad: kostnads fri 
+Kostnad för export: kostnads fritt 
 
 |Kategori |Kategori visnings namn|
 |---|---|
@@ -44,7 +44,7 @@ Kostnad: kostnads fri
 
 ## <a name="microsoftapimanagementservice"></a>Microsoft.ApiManagement/service
 
-Kostnad: kostnads fri 
+Kostnad för export: kostnads fritt 
 
 |Kategori |Kategori visnings namn|
 |---|---|
@@ -53,7 +53,7 @@ Kostnad: kostnads fri
 
 ## <a name="microsoftappplatformspring"></a>Microsoft. AppPlatform/våren
 
-Kostnad: kostnads fri 
+Kostnad för export: kostnads fritt 
 
 |Kategori |Kategori visnings namn|
 |---|---|
@@ -63,7 +63,7 @@ Kostnad: kostnads fri
 
 ## <a name="microsoftautomationautomationaccounts"></a>Microsoft. Automation/automationAccounts
 
-Kostnad: kostnads fri 
+Kostnad för export: kostnads fritt 
 
 |Kategori |Kategori visnings namn|
 |---|---|
@@ -74,7 +74,7 @@ Kostnad: kostnads fri
 
 ## <a name="microsoftbatchbatchaccounts"></a>Microsoft.BatCH/batchAccounts
 
-Kostnad: kostnads fri 
+Kostnad för export: kostnads fritt 
 
 |Kategori |Kategori visnings namn|
 |---|---|
@@ -83,7 +83,7 @@ Kostnad: kostnads fri
 
 ## <a name="microsoftbatchaiworkspaces"></a>Microsoft.BatchAI/arbets ytor
 
-Kostnad: kostnads fri 
+Kostnad för export: kostnads fritt 
 
 |Kategori |Kategori visnings namn|
 |---|---|
@@ -94,7 +94,7 @@ Kostnad: kostnads fri
 
 ## <a name="microsoftblockchainblockchainmembers"></a>Microsoft. blockchain/blockchainMembers
 
-Kostnad: kostnads fri 
+Kostnad för export: kostnads fritt 
 
 |Kategori |Kategori visnings namn|
 |---|---|
@@ -106,7 +106,7 @@ Kostnad: kostnads fri
 
 ## <a name="microsoftblockchaincordamembers"></a>Microsoft. blockchain/cordaMembers
 
-Kostnad: kostnads fri 
+Kostnad för export: kostnads fritt 
 
 |Kategori |Kategori visnings namn|
 |---|---|
@@ -115,16 +115,16 @@ Kostnad: kostnads fri
 
 ## <a name="microsoftcdncdnwebapplicationfirewallpolicies"></a>Microsoft. CDN/cdnwebapplicationfirewallpolicies
 
-Kostnad: kostnads fri 
+Kostnad för export: kostnads fritt 
 
 |Kategori |Kategori visnings namn|
 |---|---|
-|WebApplicationFirewallLogs|Brand Väggs loggar för webb webbappen|
+|WebApplicationFirewallLogs|Brand Väggs loggar för webb program|
 
 
 ## <a name="microsoftcdnprofiles"></a>Microsoft. CDN/profiler
 
-Kostnad: kostnads fri 
+Kostnad för export: kostnads fritt 
 
 |Kategori |Kategori visnings namn|
 |---|---|
@@ -133,7 +133,7 @@ Kostnad: kostnads fri
 
 ## <a name="microsoftcdnprofilesendpoints"></a>Microsoft. CDN/profiler/slut punkter
 
-Kostnad: kostnads fri 
+Kostnad för export: kostnads fritt 
 
 |Kategori |Kategori visnings namn|
 |---|---|
@@ -142,7 +142,7 @@ Kostnad: kostnads fri
 
 ## <a name="microsoftclassicnetworknetworksecuritygroups"></a>Microsoft. ClassicNetwork/networksecuritygroups
 
-Kostnad: kostnads fri 
+Kostnad för export: kostnads fritt 
 
 |Kategori |Kategori visnings namn|
 |---|---|
@@ -151,7 +151,7 @@ Kostnad: kostnads fri
 
 ## <a name="microsoftcognitiveservicesaccounts"></a>Microsoft. CognitiveServices/konton
 
-Kostnad: kostnads fri 
+Kostnad för export: kostnads fritt 
 
 |Kategori |Kategori visnings namn|
 |---|---|
@@ -162,7 +162,7 @@ Kostnad: kostnads fri
 
 ## <a name="microsoftcontainerregistryregistries"></a>Microsoft. ContainerRegistry/register
 
-Kostnad: kostnads fri 
+Kostnad för export: kostnads fritt 
 
 |Kategori |Kategori visnings namn|
 |---|---|
@@ -172,7 +172,7 @@ Kostnad: kostnads fri
 
 ## <a name="microsoftcontainerservicemanagedclusters"></a>Microsoft. container service/managedClusters
 
-Kostnad: kostnads fri 
+Kostnad för export: kostnads fritt 
 
 |Kategori |Kategori visnings namn|
 |---|---|
@@ -185,7 +185,7 @@ Kostnad: kostnads fri
 
 ## <a name="microsoftcustomprovidersresourceproviders"></a>Microsoft. CustomProviders/resourceproviders
 
-Kostnad: kostnads fri 
+Kostnad för export: kostnads fritt 
 
 |Kategori |Kategori visnings namn|
 |---|---|
@@ -194,7 +194,7 @@ Kostnad: kostnads fri
 
 ## <a name="microsoftdatabricksworkspaces"></a>Microsoft. Databricks/arbets ytor
 
-Kostnad: kostnads fri 
+Kostnad för export: kostnads fritt 
 
 |Kategori |Kategori visnings namn|
 |---|---|
@@ -203,7 +203,7 @@ Kostnad: kostnads fri
 |dBFS|Databricks-filsystem|
 |instancePools|Instans-pooler|
 |utskrifts|Databricks-jobb|
-|notebook|Databricks-anteckningsbok|
+|notebook-fil|Databricks-anteckningsbok|
 |secrets|Databricks hemligheter|
 |sqlPermissions|Databricks SQLPermissions|
 |SSH|Databricks SSH|
@@ -212,7 +212,7 @@ Kostnad: kostnads fri
 
 ## <a name="microsoftdatafactoryfactories"></a>Microsoft. DataFactory/fabriker
 
-Kostnad: kostnads fri 
+Kostnad för export: kostnads fritt 
 
 |Kategori |Kategori visnings namn|
 |---|---|
@@ -223,7 +223,7 @@ Kostnad: kostnads fri
 
 ## <a name="microsoftdatalakestoreaccounts"></a>Microsoft. DataLakeStore/konton
 
-Kostnad: kostnads fri 
+Kostnad för export: kostnads fritt 
 
 |Kategori |Kategori visnings namn|
 |---|---|
@@ -233,7 +233,7 @@ Kostnad: kostnads fri
 
 ## <a name="microsoftdatashareaccounts"></a>Microsoft. DataShare/konton
 
-Kostnad: kostnads fri 
+Kostnad för export: kostnads fritt 
 
 |Kategori |Kategori visnings namn|
 |---|---|
@@ -245,7 +245,7 @@ Kostnad: kostnads fri
 
 ## <a name="microsoftdbformariadbservers"></a>Microsoft. DBforMariaDB/servers
 
-Kostnad: kostnads fri 
+Kostnad för export: kostnads fritt 
 
 |Kategori |Kategori visnings namn|
 |---|---|
@@ -255,7 +255,7 @@ Kostnad: kostnads fri
 
 ## <a name="microsoftdbformysqlflexibleservers"></a>Microsoft. DBforMySQL/flexibleServers
 
-Kostnad: kostnads fri 
+Kostnad för export: kostnads fritt 
 
 |Kategori |Kategori visnings namn|
 |---|---|
@@ -265,7 +265,7 @@ Kostnad: kostnads fri
 
 ## <a name="microsoftdbformysqlservers"></a>Microsoft. DBforMySQL/servers
 
-Kostnad: kostnads fri 
+Kostnad för export: kostnads fritt 
 
 |Kategori |Kategori visnings namn|
 |---|---|
@@ -275,7 +275,7 @@ Kostnad: kostnads fri
 
 ## <a name="microsoftdbforpostgresqlflexibleservers"></a>Microsoft. DBforPostgreSQL/flexibleServers
 
-Kostnad: kostnads fri 
+Kostnad för export: kostnads fritt 
 
 |Kategori |Kategori visnings namn|
 |---|---|
@@ -284,7 +284,7 @@ Kostnad: kostnads fri
 
 ## <a name="microsoftdbforpostgresqlservers"></a>Microsoft. DBforPostgreSQL/servers
 
-Kostnad: kostnads fri 
+Kostnad för export: kostnads fritt 
 
 |Kategori |Kategori visnings namn|
 |---|---|
@@ -295,7 +295,7 @@ Kostnad: kostnads fri
 
 ## <a name="microsoftdbforpostgresqlserversv2"></a>Microsoft. DBforPostgreSQL/serversv2
 
-Kostnad: kostnads fri 
+Kostnad för export: kostnads fritt 
 
 |Kategori |Kategori visnings namn|
 |---|---|
@@ -304,7 +304,7 @@ Kostnad: kostnads fri
 
 ## <a name="microsoftdesktopvirtualizationapplicationgroups"></a>Microsoft. DesktopVirtualization/applicationgroups
 
-Kostnad: kostnads fri 
+Kostnad för export: kostnads fritt 
 
 |Kategori |Kategori visnings namn|
 |---|---|
@@ -315,7 +315,7 @@ Kostnad: kostnads fri
 
 ## <a name="microsoftdesktopvirtualizationhostpools"></a>Microsoft. DesktopVirtualization/hostpools
 
-Kostnad: kostnads fri 
+Kostnad för export: kostnads fritt 
 
 |Kategori |Kategori visnings namn|
 |---|---|
@@ -328,7 +328,7 @@ Kostnad: kostnads fri
 
 ## <a name="microsoftdesktopvirtualizationworkspaces"></a>Microsoft. DesktopVirtualization/arbets ytor
 
-Kostnad: kostnads fri 
+Kostnad för export: kostnads fritt 
 
 |Kategori |Kategori visnings namn|
 |---|---|
@@ -340,7 +340,7 @@ Kostnad: kostnads fri
 
 ## <a name="microsoftdevicesiothubs"></a>Microsoft. Devices/IotHubs
 
-Kostnad: kostnads fri 
+Kostnad för export: kostnads fritt 
 
 |Kategori |Kategori visnings namn|
 |---|---|
@@ -362,7 +362,7 @@ Kostnad: kostnads fri
 
 ## <a name="microsoftdevicesprovisioningservices"></a>Microsoft. Devices/provisioningServices
 
-Kostnad: kostnads fri 
+Kostnad för export: kostnads fritt 
 
 |Kategori |Kategori visnings namn|
 |---|---|
@@ -372,7 +372,7 @@ Kostnad: kostnads fri
 
 ## <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft.DocumentDB/databaseAccounts
 
-Kostnad: kostnads fri 
+Kostnad för export: kostnads fritt 
 
 |Kategori |Kategori visnings namn|
 |---|---|
@@ -388,7 +388,7 @@ Kostnad: kostnads fri
 
 ## <a name="microsofteventgriddomains"></a>Microsoft. EventGrid/Domains
 
-Kostnad: kostnads fri 
+Kostnad för export: kostnads fritt 
 
 |Kategori |Kategori visnings namn|
 |---|---|
@@ -398,7 +398,7 @@ Kostnad: kostnads fri
 
 ## <a name="microsofteventgridsystemtopics"></a>Microsoft. EventGrid/systemTopics
 
-Kostnad: kostnads fri 
+Kostnad för export: kostnads fritt 
 
 |Kategori |Kategori visnings namn|
 |---|---|
@@ -407,7 +407,7 @@ Kostnad: kostnads fri
 
 ## <a name="microsofteventgridtopics"></a>Microsoft. EventGrid/ämnen
 
-Kostnad: kostnads fri 
+Kostnad för export: kostnads fritt 
 
 |Kategori |Kategori visnings namn|
 |---|---|
@@ -417,7 +417,7 @@ Kostnad: kostnads fri
 
 ## <a name="microsofteventhubnamespaces"></a>Microsoft. EventHub/Namespaces
 
-Kostnad: kostnads fri 
+Kostnad för export: kostnads fritt 
 
 |Kategori |Kategori visnings namn|
 |---|---|
@@ -432,7 +432,7 @@ Kostnad: kostnads fri
 
 ## <a name="microsofthealthcareapisservices"></a>Microsoft. HealthcareApis/Services
 
-Kostnad: kostnads fri 
+Kostnad för export: kostnads fritt 
 
 |Kategori |Kategori visnings namn|
 |---|---|
@@ -441,7 +441,7 @@ Kostnad: kostnads fri
 
 ## <a name="microsoftinsightsautoscalesettings"></a>Microsoft. Insights/AutoscaleSettings
 
-Kostnad: kostnads fri 
+Kostnad för export: kostnads fritt 
 
 |Kategori |Kategori visnings namn|
 |---|---|
@@ -451,7 +451,7 @@ Kostnad: kostnads fri
 
 ## <a name="microsoftinsightscomponents"></a>Microsoft. Insights/komponenter
 
-Kostnad: kostnads fri 
+Kostnad för export: kostnads fritt 
 
 |Kategori |Kategori visnings namn|
 |---|---|
@@ -470,7 +470,7 @@ Kostnad: kostnads fri
 
 ## <a name="microsoftkeyvaultvaults"></a>Microsoft. nyckel valv/-valv
 
-Kostnad: kostnads fri 
+Kostnad för export: kostnads fritt 
 
 |Kategori |Kategori visnings namn|
 |---|---|
@@ -479,7 +479,7 @@ Kostnad: kostnads fri
 
 ## <a name="microsoftkustoclusters"></a>Microsoft. Kusto/kluster
 
-Kostnad: kostnads fri 
+Kostnad för export: kostnads fritt 
 
 |Kategori |Kategori visnings namn|
 |---|---|
@@ -494,7 +494,7 @@ Kostnad: kostnads fri
 
 ## <a name="microsoftlogicintegrationaccounts"></a>Microsoft. Logic/integrationAccounts
 
-Kostnad: kostnads fri 
+Kostnad för export: kostnads fritt 
 
 |Kategori |Kategori visnings namn|
 |---|---|
@@ -503,7 +503,7 @@ Kostnad: kostnads fri
 
 ## <a name="microsoftlogicworkflows"></a>Microsoft. Logic/arbets flöden
 
-Kostnad: kostnads fri 
+Kostnad för export: kostnads fritt 
 
 |Kategori |Kategori visnings namn|
 |---|---|
@@ -512,7 +512,7 @@ Kostnad: kostnads fri
 
 ## <a name="microsoftmachinelearningservicesworkspaces"></a>Microsoft. MachineLearningServices/arbets ytor
 
-Kostnad: kostnads fri 
+Kostnad för export: kostnads fritt 
 
 |Kategori |Kategori visnings namn|
 |---|---|
@@ -525,7 +525,7 @@ Kostnad: kostnads fri
 
 ## <a name="microsoftmediamediaservices"></a>Microsoft. Media/Media Services
 
-Kostnad: kostnads fri 
+Kostnad för export: kostnads fritt 
 
 |Kategori |Kategori visnings namn|
 |---|---|
@@ -534,7 +534,7 @@ Kostnad: kostnads fri
 
 ## <a name="microsoftnetworkapplicationgateways"></a>Microsoft. Network/applicationGateways
 
-Kostnad: kostnads fri 
+Kostnad för export: kostnads fritt 
 
 |Kategori |Kategori visnings namn|
 |---|---|
@@ -545,7 +545,7 @@ Kostnad: kostnads fri
 
 ## <a name="microsoftnetworkazurefirewalls"></a>Microsoft. Network/azurefirewalls
 
-Kostnad: kostnads fri 
+Kostnad för export: kostnads fritt 
 
 |Kategori |Kategori visnings namn|
 |---|---|
@@ -555,7 +555,7 @@ Kostnad: kostnads fri
 
 ## <a name="microsoftnetworkbastionhosts"></a>Microsoft. Network/bastionHosts
 
-Kostnad: kostnads fri 
+Kostnad för export: kostnads fritt 
 
 |Kategori |Kategori visnings namn|
 |---|---|
@@ -564,7 +564,7 @@ Kostnad: kostnads fri
 
 ## <a name="microsoftnetworkexpressroutecircuits"></a>Microsoft. Network/expressRouteCircuits
 
-Kostnad: kostnads fri 
+Kostnad för export: kostnads fritt 
 
 |Kategori |Kategori visnings namn|
 |---|---|
@@ -573,7 +573,7 @@ Kostnad: kostnads fri
 
 ## <a name="microsoftnetworkfrontdoors"></a>Microsoft. Network/frontdoors
 
-Kostnad: kostnads fri 
+Kostnad för export: kostnads fritt 
 
 |Kategori |Kategori visnings namn|
 |---|---|
@@ -583,7 +583,7 @@ Kostnad: kostnads fri
 
 ## <a name="microsoftnetworkloadbalancers"></a>Microsoft. Network/belastningsutjämnare
 
-Kostnad: kostnads fri 
+Kostnad för export: kostnads fritt 
 
 |Kategori |Kategori visnings namn|
 |---|---|
@@ -593,7 +593,7 @@ Kostnad: kostnads fri
 
 ## <a name="microsoftnetworknetworksecuritygroups"></a>Microsoft. Network/networksecuritygroups
 
-Kostnad: kostnads fri 
+Kostnad för export: kostnads fritt 
 
 |Kategori |Kategori visnings namn|
 |---|---|
@@ -604,7 +604,7 @@ Kostnad: kostnads fri
 
 ## <a name="microsoftnetworkpublicipaddresses"></a>Microsoft. Network/publicIPAddresses
 
-Kostnad: kostnads fri 
+Kostnad för export: kostnads fritt 
 
 |Kategori |Kategori visnings namn|
 |---|---|
@@ -615,7 +615,7 @@ Kostnad: kostnads fri
 
 ## <a name="microsoftnetworktrafficmanagerprofiles"></a>Microsoft. Network/trafficManagerProfiles
 
-Kostnad: kostnads fri 
+Kostnad för export: kostnads fritt 
 
 |Kategori |Kategori visnings namn|
 |---|---|
@@ -624,7 +624,7 @@ Kostnad: kostnads fri
 
 ## <a name="microsoftnetworkvirtualnetworkgateways"></a>Microsoft. Network/virtualNetworkGateways
 
-Kostnad: kostnads fri 
+Kostnad för export: kostnads fritt 
 
 |Kategori |Kategori visnings namn|
 |---|---|
@@ -637,7 +637,7 @@ Kostnad: kostnads fri
 
 ## <a name="microsoftnetworkvirtualnetworks"></a>Microsoft. Network/virtualNetworks
 
-Kostnad: kostnads fri 
+Kostnad för export: kostnads fritt 
 
 |Kategori |Kategori visnings namn|
 |---|---|
@@ -646,7 +646,7 @@ Kostnad: kostnads fri
 
 ## <a name="microsoftpowerbidedicatedcapacities"></a>Microsoft. PowerBIDedicated/kapacitet
 
-Kostnad: kostnads fri 
+Kostnad för export: kostnads fritt 
 
 |Kategori |Kategori visnings namn|
 |---|---|
@@ -655,7 +655,7 @@ Kostnad: kostnads fri
 
 ## <a name="microsoftrecoveryservicesvaults"></a>Microsoft. RecoveryServices/valv
 
-Kostnad: kostnads fri 
+Kostnad för export: kostnads fritt 
 
 |Kategori |Kategori visnings namn|
 |---|---|
@@ -677,7 +677,7 @@ Kostnad: kostnads fri
 
 ## <a name="microsoftrelaynamespaces"></a>Microsoft. Relay/namnrymder
 
-Kostnad: kostnads fri 
+Kostnad för export: kostnads fritt 
 
 |Kategori |Kategori visnings namn|
 |---|---|
@@ -686,7 +686,7 @@ Kostnad: kostnads fri
 
 ## <a name="microsoftsearchsearchservices"></a>Microsoft. search/searchServices
 
-Kostnad: kostnads fri 
+Kostnad för export: kostnads fritt 
 
 |Kategori |Kategori visnings namn|
 |---|---|
@@ -695,7 +695,7 @@ Kostnad: kostnads fri
 
 ## <a name="microsoftservicebusnamespaces"></a>Microsoft. Service Bus/namnrymder
 
-Kostnad: kostnads fri 
+Kostnad för export: kostnads fritt 
 
 |Kategori |Kategori visnings namn|
 |---|---|
@@ -704,7 +704,7 @@ Kostnad: kostnads fri
 
 ## <a name="microsoftsignalrservicesignalr"></a>Microsoft. SignalRService/SignalR
 
-Kostnad: kostnads fri 
+Kostnad för export: kostnads fritt 
 
 |Kategori |Kategori visnings namn|
 |---|---|
@@ -713,7 +713,7 @@ Kostnad: kostnads fri
 
 ## <a name="microsoftsqlmanagedinstances"></a>Microsoft. SQL/managedInstances
 
-Kostnad: kostnads fri 
+Kostnad för export: kostnads fritt 
 
 |Kategori |Kategori visnings namn|
 |---|---|
@@ -724,7 +724,7 @@ Kostnad: kostnads fri
 
 ## <a name="microsoftsqlmanagedinstancesdatabases"></a>Microsoft. SQL/managedInstances/-databaser
 
-Kostnad: kostnads fri 
+Kostnad för export: kostnads fritt 
 
 |Kategori |Kategori visnings namn|
 |---|---|
@@ -736,7 +736,7 @@ Kostnad: kostnads fri
 
 ## <a name="microsoftsqlserversdatabases"></a>Microsoft. SQL/Servers/databaser
 
-Kostnad: kostnads fri 
+Kostnad för export: kostnads fritt 
 
 |Kategori |Kategori visnings namn|
 |---|---|
@@ -760,7 +760,7 @@ Kostnad: kostnads fri
 
 ## <a name="microsoftstoragestorageaccountsblobservices"></a>Microsoft. Storage/storageAccounts/blobServices
 
-Kostnad: betalad enligt beskrivningen i avsnittet plattforms loggar på [sidan Azure Monitor prissättning.](https://azure.microsoft.com/pricing/details/monitor/) 
+Kostnad för export: betalad enligt beskrivningen i avsnittet plattforms loggar på [sidan Azure Monitor prissättning.](https://azure.microsoft.com/pricing/details/monitor/) 
 
 |Kategori |Kategori visnings namn|
 |---|---|
@@ -771,7 +771,7 @@ Kostnad: betalad enligt beskrivningen i avsnittet plattforms loggar på [sidan A
 
 ## <a name="microsoftstoragestorageaccountsfileservices"></a>Microsoft. Storage/storageAccounts/fileServices
 
-Kostnad: betalad enligt beskrivningen i avsnittet plattforms loggar på [sidan Azure Monitor prissättning.](https://azure.microsoft.com/pricing/details/monitor/) 
+Kostnad för export: betalad enligt beskrivningen i avsnittet plattforms loggar på [sidan Azure Monitor prissättning.](https://azure.microsoft.com/pricing/details/monitor/) 
 
 |Kategori |Kategori visnings namn|
 |---|---|
@@ -782,7 +782,7 @@ Kostnad: betalad enligt beskrivningen i avsnittet plattforms loggar på [sidan A
 
 ## <a name="microsoftstoragestorageaccountsqueueservices"></a>Microsoft. Storage/storageAccounts/queueServices
 
-Kostnad: betalad enligt beskrivningen i avsnittet plattforms loggar på [sidan Azure Monitor prissättning.](https://azure.microsoft.com/pricing/details/monitor/) 
+Kostnad för export: betalad enligt beskrivningen i avsnittet plattforms loggar på [sidan Azure Monitor prissättning.](https://azure.microsoft.com/pricing/details/monitor/) 
  
 |Kategori |Kategori visnings namn|
 |---|---|
@@ -793,7 +793,7 @@ Kostnad: betalad enligt beskrivningen i avsnittet plattforms loggar på [sidan A
 
 ## <a name="microsoftstoragestorageaccountstableservices"></a>Microsoft. Storage/storageAccounts/tableServices
 
-Kostnad: betalad enligt beskrivningen i avsnittet plattforms loggar på [sidan Azure Monitor prissättning.](https://azure.microsoft.com/pricing/details/monitor/) 
+Kostnad för export: betalad enligt beskrivningen i avsnittet plattforms loggar på [sidan Azure Monitor prissättning.](https://azure.microsoft.com/pricing/details/monitor/) 
  
 |Kategori |Kategori visnings namn|
 |---|---|
@@ -804,7 +804,7 @@ Kostnad: betalad enligt beskrivningen i avsnittet plattforms loggar på [sidan A
 
 ## <a name="microsoftstreamanalyticsstreamingjobs"></a>Microsoft. StreamAnalytics/streamingjobs
 
-Kostnad: kostnads fri 
+Kostnad för export: kostnads fritt 
 
 |Kategori |Kategori visnings namn|
 |---|---|
@@ -814,7 +814,7 @@ Kostnad: kostnads fri
 
 ## <a name="microsoftsynapseworkspaces"></a>Microsoft. Synapse/arbets ytor
 
-Kostnad: kostnads fri 
+Kostnad för export: kostnads fritt 
 
 |Kategori |Kategori visnings namn|
 |---|---|
@@ -826,7 +826,7 @@ Kostnad: kostnads fri
 
 ## <a name="microsoftsynapseworkspacesbigdatapools"></a>Microsoft. Synapse/arbets ytor/bigDataPools
 
-Kostnad: kostnads fri 
+Kostnad för export: kostnads fritt 
 
 |Kategori |Kategori visnings namn|
 |---|---|
@@ -835,7 +835,7 @@ Kostnad: kostnads fri
 
 ## <a name="microsoftsynapseworkspacessqlpools"></a>Microsoft. Synapse/arbets ytor/sqlPools
 
-Kostnad: kostnads fri 
+Kostnad för export: kostnads fritt 
 
 |Kategori |Kategori visnings namn|
 |---|---|
@@ -849,7 +849,7 @@ Kostnad: kostnads fri
 
 ## <a name="microsoftwebhostingenvironments"></a>Microsoft. Web/hostingenvironments
 
-Kostnad: kostnads fri 
+Kostnad för export: kostnads fritt 
 
 |Kategori |Kategori visnings namn|
 |---|---|
@@ -858,7 +858,7 @@ Kostnad: kostnads fri
 
 ## <a name="microsoftwebsites"></a>Microsoft. Web/Sites
 
-Kostnad: kostnads fri 
+Kostnad för export: kostnads fritt 
 
 
 |Kategori |Kategori visnings namn|
@@ -873,7 +873,7 @@ Kostnad: kostnads fri
 
 ## <a name="microsoftwebsitesslots"></a>Microsoft. Web/Sites/lotss
 
-Kostnad: kostnads fri 
+Kostnad för export: kostnads fritt 
 
 
 |Kategori |Kategori visnings namn|

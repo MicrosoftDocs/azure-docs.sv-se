@@ -8,12 +8,12 @@ ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: fb193637525722bf227241a614cd977fbf70c9ac
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: df4bd0ae0884feae8bd21e33f4d27b6ceb207337
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93074190"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98234009"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Vanliga frågor och svar om konfiguration och hantering för Web Apps i Azure
 
@@ -63,7 +63,7 @@ Så här ställer du in serverns tidszon för din webbapp:
 2. Under **appinställningar** lägger du till den här inställningen:
     * Nyckel = WEBSITE_TIME_ZONE
     * Värde = *den tidszon du vill använda*
-3. Välj **Spara** .
+3. Välj **Spara**.
 
 För de app Services som körs på Windows, se utdata från Windows- `tzutil /L` kommandot. Använd värdet från den andra raden i varje post. Exempel: "Tonga, normal tid". En del av dessa värden visas också i kolumnen **timezone** i [standard tids zoner](/windows-hardware/manufacture/desktop/default-time-zones).
 
@@ -78,7 +78,7 @@ Som standard inaktive ras Web Apps om de är inaktiva under en angiven tids peri
 Hämta listan över utgående IP-adresser för din webbapp:
 
 1. I Azure Portal går du till menyn **Egenskaper** på bladet webbapp.
-2. Sök efter **utgående IP-adresser** .
+2. Sök efter **utgående IP-adresser**.
 
 Listan över utgående IP-adresser visas.
 
@@ -131,7 +131,7 @@ Så här granskar du webb jobb loggar:
 2. Välj webb jobbet.
 3. Välj knappen **Växla utdata** .
 4. Hämta utdatafilen genom att välja länken **Hämta** .
-5. För enskilda körningar väljer du **individuell Invoke** .
+5. För enskilda körningar väljer du **individuell Invoke**.
 6. Välj knappen **Växla utdata** .
 7. Välj länken Hämta.
 
@@ -185,8 +185,8 @@ Du har två alternativ för att fånga en F12-spårning:
 ### <a name="f12-console-output"></a>F12-konsolens utdata
 
 1. Välj fliken **konsol** .
-2. Välj fliken ( **fel** , **Varning** eller **information** ) för varje flik som innehåller fler än noll objekt. Om fliken inte är markerad är fliken nedtonad eller svart när du flyttar markören bort från den.
-3. Högerklicka på meddelande ytan i fönstret och välj **Kopiera alla** .
+2. Välj fliken (**fel**, **Varning** eller **information**) för varje flik som innehåller fler än noll objekt. Om fliken inte är markerad är fliken nedtonad eller svart när du flyttar markören bort från den.
+3. Högerklicka på meddelande ytan i fönstret och välj **Kopiera alla**.
 4. Klistra in den kopierade texten i en fil och spara sedan filen.
 
 Om du vill visa en har-fil kan du använda [visaren har visats](http://www.softwareishard.com/har/viewer/).
@@ -284,7 +284,7 @@ Detaljerad dokumentation för autentisering och auktorisering i App Service finn
 
 ## <a name="how-do-i-redirect-the-default-azurewebsitesnet-domain-to-my-azure-web-apps-custom-domain"></a>Hur gör jag för att omdirigera standard domänen *. azurewebsites.net till min Azure Web Apps anpassade domän?
 
-När du skapar en ny webbplats genom att använda Web Apps i Azure, tilldelas *en standard plats* . azurewebsites.net-domän till din webbplats. Om du lägger till ett anpassat värdnamn på din webbplats och inte vill att användarna ska kunna komma åt din standard-azurewebsites.net-domän, kan du omdirigera standard-URL: en. Information om hur du omdirigerar all trafik från din webbplats standard domän till din anpassade domän finns i [dirigera om standard domänen till din anpassade domän i Azure Web Apps](https://zainrizvi.io/blog/block-default-azure-websites-domain/).
+När du skapar en ny webbplats genom att använda Web Apps i Azure, tilldelas *en standard plats*. azurewebsites.net-domän till din webbplats. Om du lägger till ett anpassat värdnamn på din webbplats och inte vill att användarna ska kunna komma åt din standard-azurewebsites.net-domän, kan du omdirigera standard-URL: en. Information om hur du omdirigerar all trafik från din webbplats standard domän till din anpassade domän finns i [dirigera om standard domänen till din anpassade domän i Azure Web Apps](https://zainrizvi.io/blog/block-default-azure-websites-domain/).
 
 ## <a name="how-do-i-determine-which-version-of-net-version-is-installed-in-app-service"></a>Hur gör jag för att ta reda på vilken version av .NET-versionen som är installerad i App Service?
 
@@ -317,3 +317,8 @@ Du kan också ange de angivna dynamiska och statiska MIME-typerna som du vill ko
 ## <a name="how-do-i-migrate-from-an-on-premises-environment-to-app-service"></a>Hur gör jag för att migrera från en lokal miljö till App Service?
 
 Om du vill migrera platser från Windows-och Linux-webbservrar till App Service kan du använda Azure App Service Migration Assistant. Migrations verktyget skapar webbappar och databaser i Azure efter behov och publicerar sedan innehållet. Mer information finns i [Azure App Service Migration Assistant](https://appmigration.microsoft.com/).
+
+## <a name="why-is-my-certificate-issued-for-11-months-and-not-for-a-full-year"></a>Varför utfärdas mitt certifikat i 11 månader och inte ett helt år?
+
+För certifikat som utfärdas efter 2020-09-01 är den maximala tiden nu 397 dagar. Certifikat som utfärdats innan 2020-09-01 har en maximal giltighetstid på 825 dagar innan de förnyas eller får en ny nyckel. Certifikat som förnyas efter 2020-09-01 påverkas av den här ändringen och användarna kan se en kortare giltighetstid för förnyade certifikat.
+GoDaddy har implementerat en prenumerationstjänst som uppfyller de nya kraven samtidigt som befintliga kundcertifikat respekteras. Trettio dagar innan det nyutfärdade certifikatet upphör att gälla utfärdar tjänsten automatiskt ett andra certifikat som utökar varaktigheten till det ursprungliga förfallodatumet. App Service samarbetar med GoDaddy om att åtgärda den här ändringen och se till att våra kunders certifikat får den varaktighet de ska ha.

@@ -13,12 +13,12 @@ ms.date: 01/04/2021
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40, content-perf, FY21Q1, contperf-fy21q1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: 0b3c2f74edff661326e97da7b06860914468c43b
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: ec925ce165c1de98fe920381e1b51e3388c1e4ad
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98059355"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232411"
 ---
 # <a name="configurable-token-lifetimes-in-microsoft-identity-platform-preview"></a>Konfigurerbara livstider för token i Microsoft Identity Platform (för hands version)
 
@@ -68,7 +68,7 @@ Att minska livs längden för åtkomsttoken minskar risken för att en åtkomstt
 
 Ett exempel finns i [skapa en princip för webb inloggning](configure-token-lifetimes.md#create-a-policy-for-web-sign-in).
 
-| Egenskap | Princip egenskaps sträng | Nätverk | Standard | Minimum | Maximal |
+| Egenskap | Princip egenskaps sträng | Nätverk | Standardvärde | Minimum | Maximal |
 | --- | --- | --- | --- | --- | --- |
 | Livstid för åtkomsttoken |AccessTokenLifetime |Åtkomsttoken, ID-token, SAML2-token |1 timme |10 minuter |1 dag |
 
@@ -101,8 +101,7 @@ Konfidentiella klienter är program som säkert kan lagra ett klient lösen ord 
 
 Offentliga klienter kan inte lagra ett klient lösen ord på ett säkert sätt (hemligt). En iOS/Android-app kan till exempel inte obfuscate en hemlighet från resurs ägaren, så den betraktas som en offentlig klient. Du kan ange principer för resurser för att förhindra att uppdateringstoken från offentliga klienter som är äldre än en angiven period hämtar ett nytt nyckel par för åtkomst/uppdatering. Det gör du genom att använda [egenskapen Refresh token Max inaktive](#refresh-token-max-inactive-time) rad ( `MaxInactiveTime` ). Du kan också använda principer för att ange en period utanför vilken uppdateringstoken inte längre accepteras. Det gör du genom att använda en [token för maximal ålder för en enskild faktor](#single-factor-session-token-max-age) eller [token för Multi-Factor session-token](#multi-factor-refresh-token-max-age) . Du kan justera livs längden för en uppdateringstoken för att styra när och hur ofta användaren måste ange autentiseringsuppgifter igen, i stället för att tyst autentiseras igen när du använder ett offentligt klient program.
 
-> [!NOTE]
-> Egenskapen max ålder är den tid som en enskild token kan användas. 
+Egenskapen max ålder är den tid som en enskild token kan användas. 
 
 ### <a name="single-sign-on-session-tokens"></a>Token för enkel inloggning
 När en användare autentiserar med Microsoft Identity Platform upprättas en enkel inloggnings session (SSO) med användarens webbläsare och Microsoft Identity Platform. SSO-token i form av en cookie representerar den här sessionen. SSO-sessionstoken är inte kopplat till ett specifik resurs-/klient program. SSO-sessionstoken kan återkallas och deras giltighet kontrol leras varje gång de används.
@@ -117,7 +116,7 @@ Du kan använda en princip för att ställa in tiden efter att den första sessi
 En livs längds princip för token är en typ av princip objekt som innehåller livs längds regler för token. Använd egenskaperna för principen för att kontrol lera angivna livstider för token. Om ingen princip har angetts tillämpar systemet standard livstid svärdet.
 
 #### <a name="configurable-token-lifetime-properties"></a>Egenskaper för konfigurerbar token-livstid
-| Egenskap | Princip egenskaps sträng | Nätverk | Standard | Minimum | Maximal |
+| Egenskap | Princip egenskaps sträng | Nätverk | Standardvärde | Minimum | Maximal |
 | --- | --- | --- | --- | --- | --- |
 | Maximal inaktiv tid för uppdateringstoken |MaxInactiveTime |Uppdatera token |90 dagar |10 minuter |90 dagar |
 | Högsta ålder för Single-Factor uppdaterad token |MaxAgeSingleFactor |Uppdatera tokens (för alla användare) |Tills den har återkallats |10 minuter |Till och med återkalla<sup>1</sup> |
@@ -128,7 +127,7 @@ En livs längds princip för token är en typ av princip objekt som innehåller 
 * <sup>1</sup>365 dagar är den maximala explicita längden som kan anges för dessa attribut.
 
 #### <a name="exceptions"></a>Undantag
-| Egenskap | Nätverk | Standard |
+| Egenskap | Nätverk | Standardvärde |
 | --- | --- | --- |
 | Uppdatera token max ålder (utfärdat för federerade användare som har otillräcklig åter kallelse information<sup>1</sup>) |Uppdatera tokens (utfärdat för federerade användare som har otillräcklig återkallnings information<sup>1</sup>) |12 timmar |
 | Maximal inaktiv tid för uppdateringstoken (utfärdat för konfidentiella klienter) |Uppdatera tokens (utfärdat för konfidentiella klienter) |90 dagar |
@@ -196,7 +195,7 @@ Att minska den högsta åldern tvingar användare att autentisera sig oftare. Ef
 ## <a name="configurable-token-lifetime-properties-after-the-retirement"></a>Konfigurerbara egenskaper för token-livstid efter pensionering
 Konfiguration av och sessionstoken påverkas av följande egenskaper och deras värden. Efter indragningen av uppdateringen och konfigurationen av sessionstoken den 30 januari 2021 kommer Azure AD endast att följa standardvärdena som beskrivs nedan. Om du väljer att inte använda villkorlig åtkomst för att hantera inloggnings frekvensen, ställs dina uppdaterings-och sessionstoken in på standard konfigurationen på det datumet och du kommer inte längre att kunna ändra deras livs längd.  
 
-|Egenskap   |Princip egenskaps sträng    |Nätverk |Standard |
+|Egenskap   |Princip egenskaps sträng    |Nätverk |Standardvärde |
 |----------|-----------|------------|------------|
 |Livstid för åtkomsttoken |AccessTokenLifetime |Åtkomsttoken, ID-token, SAML2-token |1 timme |
 |Maximal inaktiv tid för uppdateringstoken |MaxInactiveTime  |Uppdatera token |90 dagar  |

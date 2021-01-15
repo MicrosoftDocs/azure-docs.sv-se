@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: jrasnick, sstein
-ms.date: 03/12/2019
-ms.openlocfilehash: 3a46e47d6e12d52113bf63342c84a58ca98743d0
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.date: 12/22/2020
+ms.openlocfilehash: 08cab806d6ad8b75821a92994dde0fa07db8b960
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789615"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233601"
 ---
 # <a name="manage-file-space-for-databases-in-azure-sql-database"></a>Hantera fil utrymme för databaser i Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -84,7 +84,7 @@ Följande frågor kan användas för att fastställa antalet lagrings utrymmen f
 SELECT TOP 1 storage_in_megabytes AS DatabaseDataSpaceUsedInMB
 FROM sys.resource_stats
 WHERE database_name = 'db1'
-ORDER BY end_time DESC
+ORDER BY end_time DESC;
 ```
 
 ### <a name="database-data-space-allocated-and-unused-allocated-space"></a>Allokerat och oanvänt utrymme för databas data utrymme
@@ -98,7 +98,7 @@ SELECT SUM(size/128.0) AS DatabaseDataSpaceAllocatedInMB,
 SUM(size/128.0 - CAST(FILEPROPERTY(name, 'SpaceUsed') AS int)/128.0) AS DatabaseDataSpaceAllocatedUnusedInMB
 FROM sys.database_files
 GROUP BY type_desc
-HAVING type_desc = 'ROWS'
+HAVING type_desc = 'ROWS';
 ```
 
 ### <a name="database-data-max-size"></a>Maximal storlek för databas data
@@ -108,7 +108,7 @@ HAVING type_desc = 'ROWS'
 ```sql
 -- Connect to database
 -- Database data max size in bytes
-SELECT DATABASEPROPERTYEX('db1', 'MaxSizeInBytes') AS DatabaseDataMaxSizeInBytes
+SELECT DATABASEPROPERTYEX('db1', 'MaxSizeInBytes') AS DatabaseDataMaxSizeInBytes;
 ```
 
 ## <a name="understanding-types-of-storage-space-for-an-elastic-pool"></a>Förstå typer av lagrings utrymme för en elastisk pool
@@ -121,6 +121,9 @@ Det är viktigt att förstå följande lagrings utrymmes mängder för att hante
 |**Allokerat data utrymme**|En summering av det data utrymme som allokerats av alla databaser i den elastiska poolen.||
 |**Allokerat data utrymme men oanvänt**|Skillnaden mellan mängden allokerat data utrymme och data utrymme som används av alla databaser i den elastiska poolen.|Den här kvantiteten representerar den maximala mängden utrymme som allokerats för den elastiska poolen som kan frigöras genom att krympa datafiler för databasen.|
 |**Maximal datastorlek**|Den maximala mängden data utrymme som kan användas av den elastiska poolen för alla dess databaser.|Utrymmet som allokerats för den elastiska poolen får inte överskrida den högsta tillåtna storleken för elastisk pool.  Om det här tillståndet inträffar kan allokerat utrymme som inte används frigöras genom att krympa datafiler för databasen.|
+
+> [!NOTE]
+> Fel meddelandet "den elastiska poolen har nått sin lagrings gräns" anger att databas objekt har allokerats tillräckligt med utrymme för att uppfylla lagrings gränsen för elastisk pool, men det kan finnas oanvänt utrymme i tilldelningen av data utrymme. Överväg att öka den elastiska poolens lagrings gräns eller som en kortsiktig lösning, vilket frigör data utrymme med hjälp av avsnittet [**återta oanvänt allokerat utrymme**](#reclaim-unused-allocated-space) nedan. Du bör också vara medveten om den potentiella negativa prestanda effekten vid krympning av databasfiler, se avsnittet [**Återskapa index**](#rebuild-indexes) nedan.
 
 ## <a name="query-an-elastic-pool-for-storage-space-information"></a>Fråga en elastisk pool för lagrings utrymmes information
 
@@ -136,7 +139,7 @@ Följande frågor kan användas för att fastställa det tillgängliga lagringsu
 SELECT TOP 1 avg_storage_percent / 100.0 * elastic_pool_storage_limit_mb AS ElasticPoolDataSpaceUsedInMB
 FROM sys.elastic_pool_resource_stats
 WHERE elastic_pool_name = 'ep1'
-ORDER BY end_time DESC
+ORDER BY end_time DESC;
 ```
 
 ### <a name="elastic-pool-data-space-allocated-and-unused-allocated-space"></a>Allokerat data utrymme för elastisk pool och oanvänt allokerat utrymme
@@ -187,7 +190,7 @@ Följande skärm bild är ett exempel på utdata från skriptet:
 
 ### <a name="elastic-pool-data-max-size"></a>Maximal storlek för elastisk pool
 
-Ändra följande T-SQL-fråga för att returnera den maximala storleken för elastiska pooler.  Enheter i frågeresultatet är i MB.
+Ändra följande T-SQL-fråga för att returnera den senaste registrerade elastiska poolens data Max storlek.  Enheter i frågeresultatet är i MB.
 
 ```sql
 -- Connect to master
@@ -195,13 +198,13 @@ Följande skärm bild är ett exempel på utdata från skriptet:
 SELECT TOP 1 elastic_pool_storage_limit_mb AS ElasticPoolMaxSizeInMB
 FROM sys.elastic_pool_resource_stats
 WHERE elastic_pool_name = 'ep1'
-ORDER BY end_time DESC
+ORDER BY end_time DESC;
 ```
 
 ## <a name="reclaim-unused-allocated-space"></a>Frigör oanvänt allokerat utrymme
 
 > [!NOTE]
-> Det här kommandot kan påverka databasens prestanda när den körs, och om möjligt bör köras under perioder med låg belastning.
+> Krympnings kommandon påverkar databas prestanda vid körning, och om möjligt bör köras under perioder med låg belastning.
 
 ### <a name="dbcc-shrink"></a>DBCC-krympning
 
@@ -209,24 +212,28 @@ När databaser har identifierats för att frigöra oanvänt allokerat utrymme ä
 
 ```sql
 -- Shrink database data space allocated.
-DBCC SHRINKDATABASE (N'db1')
+DBCC SHRINKDATABASE (N'db1');
 ```
 
-Det här kommandot kan påverka databasens prestanda när den körs, och om möjligt bör köras under perioder med låg belastning.  
+Krympnings kommandon påverkar databas prestanda vid körning, och om möjligt bör köras under perioder med låg belastning.  
 
-Mer information om det här kommandot finns i [SHRINKDATABASE](/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql).
+Du bör också vara medveten om den potentiella negativa prestanda effekten vid krympning av databasfiler, se avsnittet [**Återskapa index**](#rebuild-indexes) nedan.
+
+Mer information om det här kommandot finns i [SHRINKDATABASE](/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql.md).
 
 ### <a name="auto-shrink"></a>Automatisk krympning
 
 Du kan också aktivera automatisk krympning för en databas.  Automatisk krympning minskar fil hanterings komplexiteten och är mindre påverkan på databas prestanda än `SHRINKDATABASE` eller `SHRINKFILE` .  Automatisk krympning kan vara särskilt användbart för att hantera elastiska pooler med många databaser.  Den automatiska krympningen kan dock vara mindre effektiv när du frigör fil utrymme än `SHRINKDATABASE` och `SHRINKFILE` .
+Som standard inaktive ras automatisk krympning som rekommenderas för de flesta databaser. Mer information finns i [överväganden för AUTO_SHRINK](/troubleshoot/sql/admin/considerations-autogrow-autoshrink#considerations-for-auto_shrink).
+
 Om du vill aktivera automatisk krympning ändrar du namnet på databasen i följande kommando.
 
 ```sql
 -- Enable auto-shrink for the database.
-ALTER DATABASE [db1] SET AUTO_SHRINK ON
+ALTER DATABASE [db1] SET AUTO_SHRINK ON;
 ```
 
-Mer information om det här kommandot finns i alternativ för [databas uppsättning](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) .
+Mer information om det här kommandot finns i alternativ för [databas uppsättning](/sql/t-sql/statements/alter-database-transact-sql-set-options) .
 
 ### <a name="rebuild-indexes"></a>Återskapa index
 

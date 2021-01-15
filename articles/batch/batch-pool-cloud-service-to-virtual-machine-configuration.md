@@ -3,12 +3,12 @@ title: Migrera konfigurationen av batch-poolen från Cloud Services till Virtual
 description: Lär dig hur du uppdaterar din konfiguration för poolen till den senaste och rekommenderade konfigurationen
 ms.topic: how-to
 ms.date: 1/6/2021
-ms.openlocfilehash: b6f4184f7c4f133f74cb3157638b1621dad25fda
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: d987a185efb6593fd541dd14fa74b6c4d3ca41be
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97969035"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98234315"
 ---
 # <a name="migrate-batch-pool-configuration-from-cloud-services-to-virtual-machines"></a>Migrera konfigurationen av batch-poolen från Cloud Services till Virtual Machines
 
@@ -22,7 +22,7 @@ I den här artikeln beskrivs hur du migrerar till ' virtualMachineConfiguration 
 
 Det går inte att uppdatera befintliga aktiva pooler från ' cloudServiceConfiguration ' till ' virtualMachineConfiguration ', nya pooler måste skapas. Att skapa pooler med hjälp av "virtualMachineConfiguration" stöds av alla batch-API: er, kommando rads verktyg, Azure Portal och Batch Explorer gränssnittet.
 
-I självstudierna [.net](tutorial-parallel-dotnet.md) och [python](tutorial-parallel-python.md) finns exempel på hur du skapar en pool med hjälp av "virtualMachineConfiguration".
+**I självstudierna [.net](tutorial-parallel-dotnet.md) och [python](tutorial-parallel-python.md) finns exempel på hur du skapar en pool med hjälp av "virtualMachineConfiguration".**
 
 ## <a name="pool-configuration-differences"></a>Skillnader i konfiguration av pool
 

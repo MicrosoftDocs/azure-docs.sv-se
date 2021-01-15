@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 06/25/2020
 ms.author: osamaz
-ms.openlocfilehash: e13dc868512dba15c5b335c1774aaa540eef8157
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: 9a22e58e4407897fb9418cae0ba9f32408cda8e1
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97861405"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98234213"
 ---
 # <a name="azure-for-network-engineers"></a>Azure för nätverkstekniker
 Som en konventionell nätverks tekniker har du hanterat fysiska till gångar, till exempel routrar, växlar, kablar och brand väggar för att bygga infrastruktur. I ett logiskt lager har du konfigurerat virtuellt LAN (VLAN), spanning tree Protocol (STP), routningsprotokoll (RIP, OSPF, BGP). Du har hanterat ditt nätverk med hjälp av hanterings verktyg och CLI. Nätverk i molnet är annorlunda där nätverks slut punkter är logiska och användning av routningsprotokoll är minst. Du kommer att arbeta med Azure Resource Manager API, Azure CLI och PowerShell för att konfigurera och hantera till gångar i Azure. Du kommer att starta din nätverks resa i molnet genom att förstå grundläggande klienter i Azure-nätverk. 
@@ -88,7 +88,6 @@ Läs mer om [routning av virtuella nätverk][vnet-routing].
 Lär dig mer om [nätverks säkerhets grupper][network-security].
 
 <!--Link References-->
-[VNet]: https://docs.microsoft.com/azure/virtual-network/tutorial-connect-virtual-networks-portal
-[vnet-routing]: https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview
-[network-security]: https://docs.microsoft.com/azure/virtual-network/security-overview
-
+[VNet]: ../virtual-network/tutorial-connect-virtual-networks-portal.md
+[vnet-routing]: ../virtual-network/virtual-networks-udr-overview.md
+[network-security]: ../virtual-network/network-security-groups-overview.md

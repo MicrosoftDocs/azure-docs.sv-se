@@ -7,16 +7,22 @@ ms.author: anvar
 ms.manager: bsiva
 ms.date: 04/19/2020
 ms.custom: mvc
-ms.openlocfilehash: 7ff9d9c6624016d4b1ea94072d52de1c42d73913
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: fbafed60019005fe2d81c96fb9557e3c307669ac
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400479"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233771"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Vad är nytt i Azure Migrate
 
 [Azure Migrate](migrate-services-overview.md) hjälper dig att identifiera, utvärdera och migrera lokala servrar, appar och data till Microsoft Azure molnet. I den här artikeln sammanfattas nya versioner och funktioner i Azure Migrate.
+
+## <a name="update-january-2021"></a>Uppdatering (januari 2021)
+-  Migrering av virtuella VMware-datorer till Azure Virtual Machines med diskar som har krypterats med hjälp av Double Encryption med plattforms-och Kundhanterade nycklar (CMK) med hjälp av Azure Migrate Server-migrering (agent lös replikering) är nu tillgängligt via Azure Portal.
+- Migrering av virtuella VMware-datorer till Azure Virtual Machines med diskar som är krypterade med kryptering på Server sidan (SSE) med Kundhanterade nycklar (CMK) och Double Encryption med hanterade och Kundhanterade nycklar, med hjälp av Azure Migrate Server migration (agent-baserad replikering) är nu tillgänglig via Azure Portal.
+- Migrering av fysiska servrar och virtuella datorer från andra moln, till exempel AWS och GCP till Azure Virtual Machines med diskar som är krypterade med kryptering på Server sidan (SSE) med Kundhanterade nycklar (CMK) och Double Encryption med hanterade och Kundhanterade nycklar, med hjälp av Azure Migrate Server migration (agent-baserad replikering) är nu tillgängligt via Azure Portal.
+
 ## <a name="update-december-2020"></a>Uppdatering (december 2020)
 - Azure Migrate installerar nu automatiskt Azure VM-agenten på de virtuella VMware-datorerna samtidigt som de migrerar dem till Azure med hjälp av metoden för att VMware-migreringen ska gå
 - Migrering av virtuella VMware-datorer till Azure Virtual Machines med diskar som är krypterade med kryptering på Server sidan (SSE) med Kundhanterade nycklar (CMK) med hjälp av Azure Migrate Server-migrering (agent lös replikering) är nu tillgängligt via Azure Portal.

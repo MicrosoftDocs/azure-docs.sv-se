@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0876478d638963e7157f7a16a263000eec634db0
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: f4b443265047edfadb449582483dba3c463d927d
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97005127"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232751"
 ---
 # <a name="overview-of-role-based-access-control-in-azure-active-directory"></a>Översikt över rollbaserad åtkomst kontroll i Azure Active Directory
 
@@ -38,7 +38,7 @@ Inbyggda roller är färdiga roller som har en fast uppsättning behörigheter. 
 
 När du har skapat en anpassad roll definition (eller använt en inbyggd roll) kan du tilldela den till en användare genom att skapa en roll tilldelning. En roll tilldelning ger användaren behörigheten i en roll definition i en angiven omfattning. Med den här två stegs processen kan du skapa en enda roll definition och tilldela den flera gånger i olika omfång. Ett omfång definierar uppsättningen av Azure AD-resurser som roll medlemmen har åtkomst till. Det vanligaste omfånget är hela organisationen (org-wide). En anpassad roll kan tilldelas i hela organisationen, vilket innebär att roll medlemmen har rollen behörigheter för alla resurser i organisationen. En anpassad roll kan också tilldelas i ett objekt område. Ett exempel på ett objekt omfång är ett enda program. Samma roll kan tilldelas till en användare över alla program i organisationen och sedan till en annan användare med endast en omfattning av appen Contosos utgifts rapporter.  
 
-Inbyggda och anpassade Azure AD-roller fungerar på begrepp som liknar [rollbaserad åtkomst kontroll i Azure (Azure RBAC)](../../active-directory-b2c/overview.md). [Skillnaden mellan dessa två rollbaserade åtkomst kontroll system](../../role-based-access-control/rbac-and-directory-admin-roles.md) är att Azure RBAC styr åtkomsten till Azure-resurser, till exempel virtuella datorer eller lagrings utrymme med hjälp av Azure Resource Management, och anpassade Azure AD-roller styr åtkomsten till Azure AD-resurser med hjälp av Graph API. Båda systemen utnyttjar begreppet roll definitioner och roll tilldelningar. Det går inte att ta med RBAC-behörigheter för Azure AD i Azure-roller och vice versa.
+Inbyggda och anpassade Azure AD-roller fungerar på begrepp som liknar [rollbaserad åtkomst kontroll i Azure (Azure RBAC)](https://docs.microsoft.com/azure/active-directory/develop/access-tokens#payload-claims). [Skillnaden mellan dessa två rollbaserade åtkomst kontroll system](../../role-based-access-control/rbac-and-directory-admin-roles.md) är att Azure RBAC styr åtkomsten till Azure-resurser, till exempel virtuella datorer eller lagrings utrymme med hjälp av Azure Resource Management, och anpassade Azure AD-roller styr åtkomsten till Azure AD-resurser med hjälp av Graph API. Båda systemen utnyttjar begreppet roll definitioner och roll tilldelningar. Det går inte att ta med RBAC-behörigheter för Azure AD i Azure-roller och vice versa.
 
 ### <a name="how-azure-ad-determines-if-a-user-has-access-to-a-resource"></a>Hur Azure AD avgör om en användare har åtkomst till en resurs
 

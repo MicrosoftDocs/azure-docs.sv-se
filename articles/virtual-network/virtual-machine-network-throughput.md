@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 4/26/2019
 ms.author: steveesp
 ms.reviewer: kumud, mareat
-ms.openlocfilehash: b11bdf9b82352c15b7f7236168494f32fe4a4f9f
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 280b3cbef8307691b0d50c4a26f6dca18b7fb65b
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98221518"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233873"
 ---
 # <a name="virtual-machine-network-bandwidth"></a>Nätverksbandbredd för virtuell dator
 
@@ -52,15 +52,13 @@ Data överföring mellan slut punkter kräver att flera flöden skapas förutom 
 
 ![Antal flöden för TCP-samtal via en vidarebefordrings enhet](media/virtual-machine-network-throughput/flow-count-through-network-virtual-appliance.png)
 
-## <a name="flow-limits-and-recommendations"></a>Flödes gränser och rekommendationer
+## <a name="flow-limits-and-active-connections-recommendations"></a>Rekommendationer för flödes gränser och aktiva anslutningar
 
-Idag stöder Azure Networking stack 250 000 totala nätverks flöden med höga prestanda för virtuella datorer med mer än 8 CPU-kärnor och 100 000 totala flöden med höga prestanda för virtuella datorer med färre än 8 CPU-kärnor. Tidigare minskade nätverks prestandan på ett smidigt sätt för ytterligare flöden upp till en hård gräns på 500 000 totala flöden, 250 000 inkommande och 250 000 utgående, efter vilken ytterligare flöden har släppts.
+Idag stöder Azure Networking stack totalt 1 miljon totalt antal flöden (500 000 inkommande och 500 000 utgående) för en virtuell dator. Det totala antalet aktiva anslutningar som kan hanteras av en virtuell dator i olika scenarier är följande.
+- Virtuella datorer som tillhör VNET kan hantera 500 000 **_aktiva anslutningar_* _ för alla VM-storlekar med 500 000 _*_aktiva flöden i varje riktning_*_.  
+- Virtuella datorer med virtuella nätverks installationer (NVA) som gateway, proxy, brand vägg kan hantera 250 000 _*_aktiva anslutningar_*_ med 500 000 _ *_aktiva flöden i varje riktning_** på grund av vidarebefordran och ytterligare ny flödes skapande i den nya anslutnings konfigurationen till nästa hopp som visas i diagrammet ovan. 
 
-| Prestanda nivå | Virtuella datorer med <8 CPU-kärnor | Virtuella datorer med 8 CPU-kärnor |
-| ----------------- | --------------------- | --------------------- |
-|<b>Bästa prestanda</b>|100 000 flöden |250 000 flöden|
-|<b>Försämrade prestanda</b>|Över 100 000 flöden|Över 250 000 flöden|
-|<b>Flödes gräns</b>|500 000 flöden|500 000 flöden|
+När den här gränsen har nåtts tas ytterligare anslutningar bort. Etablerings takten och termins taxan för anslutning kan också påverka nätverks prestanda som upprättande av anslutningar och avsluta delar CPU med paket bearbetnings rutiner. Vi rekommenderar att du benchmark-arbetsbelastningar mot förväntade trafik mönster och skalar ut arbets belastningar på lämpligt sätt för att matcha dina prestanda behov.
 
 Mått är tillgängliga i [Azure Monitor](../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachines) för att spåra antalet nätverks flöden och takten för skapande av flödet på den virtuella datorn eller VMSS-instanser.
 

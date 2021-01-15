@@ -3,14 +3,14 @@ title: Åter givnings funktioner
 description: Standard Azure Batch-funktioner används för att köra åter givning av arbets belastningar och appar. Batch innehåller vissa funktioner som stöder åter givning av arbets belastningar.
 author: mscurrell
 ms.author: markscu
-ms.date: 08/02/2018
+ms.date: 01/14/2021
 ms.topic: how-to
-ms.openlocfilehash: 77a6ec54495b394c597f6d6b4ddb5f5fe3285550
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: d9d196897800467fd02397bb774af0bbb9ebabf0
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107478"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98234281"
 ---
 # <a name="azure-batch-rendering-capabilities"></a>Azure Batch åter givnings funktioner
 
@@ -18,7 +18,15 @@ Standard Azure Batch-funktioner används för att köra åter givning av arbets 
 
 En översikt över batch-begrepp, inklusive pooler, jobb och aktiviteter, finns i [den här artikeln](./batch-service-workflow-features.md).
 
-## <a name="batch-pools"></a>Batch-pooler
+## <a name="batch-pools-using-custom-vm-images-and-standard-application-licensing"></a>Batch-pooler med anpassade VM-avbildningar och standard program licensiering
+
+Precis som med andra arbets belastningar och typer av program kan en anpassad VM-avbildning skapas med nödvändiga åter givnings program och plugin-program. Den anpassade VM-avbildningen placeras i det [delade avbildnings galleriet](../virtual-machines/shared-image-galleries.md) och [kan användas för att skapa batch-pooler](batch-sig-images.md).
+
+Kommando rads strängarna för aktiviteten måste referera till de program och sökvägar som används när du skapar den anpassade virtuella dator avbildningen.
+
+De flesta åter givnings program kräver licenser som hämtats från en licens Server. Om det finns en befintlig lokal licens Server måste både poolen och licens servern finnas i samma [virtuella nätverk](../virtual-network/virtual-networks-overview.md). Det är också möjligt att köra en licens server på en virtuell Azure-dator, med batch-poolen och den virtuella licens servern som finns på samma virtuella nätverk.
+
+## <a name="batch-pools-using-rendering-vm-images"></a>Batch-pooler som använder rendering av VM-avbildningar
 
 ### <a name="rendering-application-installation"></a>Återge programinstallation
 
@@ -71,13 +79,13 @@ Arnold 2017-kommando rad|kick.exe|ARNOLD_2017_EXEC|
 |Arnold 2018-kommando rad|kick.exe|ARNOLD_2018_EXEC|
 |Blender|blender.exe|BLENDER_2018_EXEC|
 
-### <a name="azure-vm-families"></a>Azure VM-familjer
+## <a name="azure-vm-families"></a>Azure VM-familjer
 
 Precis som med andra arbets belastningar varierar kraven på program systemet och prestanda kraven varierar för jobb och projekt.  En stor mängd olika VM-familjer är tillgängliga i Azure beroende på dina krav – lägsta kostnad, bästa pris/prestanda, bästa prestanda och så vidare.
 Vissa åter givnings program, till exempel Arnold, är CPU-baserade. andra som V-Ray-och blends-cykler kan använda processorer och/eller GPU: er.
 En beskrivning av tillgängliga VM-familjer och VM-storlekar [finns i VM-typer och storlekar](../virtual-machines/sizes.md).
 
-### <a name="low-priority-vms"></a>Lågprioriterade virtuella datorer
+## <a name="low-priority-vms"></a>Lågprioriterade virtuella datorer
 
 Precis som med andra arbets belastningar kan virtuella datorer med låg prioritet användas i batch-pooler för åter givning.  Virtuella datorer med låg prioritet utför samma som vanliga dedikerade virtuella datorer, men använder överskott i Azure-kapacitet och är tillgängliga för en stor rabatt.  Kompromissen med att använda virtuella datorer med låg prioritet är att de virtuella datorerna kanske inte är tillgängliga för tilldelning eller kan avbrytas när som helst, beroende på tillgänglig kapacitet. Av den anledningen kommer virtuella datorer med låg prioritet inte att vara lämpliga för alla åter givnings jobb. Om det till exempel tar flera timmar att rendera bilder, är det troligt att åter givningen av dessa avbildningar avbryts och startas om på grund av att de virtuella datorerna inte skulle vara acceptabla.
 

@@ -6,12 +6,12 @@ ms.date: 11/04/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 375f0a26006f1176174b335073709e45911d9921
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.openlocfilehash: 953a9cfeed558291fba1cb517039f26860444904
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98165815"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233669"
 ---
 # <a name="configuration-options---azure-monitor-application-insights-for-java"></a>Konfigurations alternativ – Azure Monitor Application Insights för Java
 
@@ -39,14 +39,14 @@ Du hittar mer information och ytterligare konfigurations alternativ nedan.
 
 ## <a name="configuration-file-path"></a>Sökväg till konfigurations fil
 
-Application Insights Java 3,0 förväntar sig som standard konfigurations filen som ska namnges `applicationinsights.json` och placeras i samma katalog som `applicationinsights-agent-3.0.0.jar` .
+Application Insights Java 3,0 förväntar sig som standard konfigurations filen som ska namnges `applicationinsights.json` och placeras i samma katalog som `applicationinsights-agent-3.0.1.jar` .
 
 Du kan ange en egen sökväg för konfigurations filen med antingen
 
 * `APPLICATIONINSIGHTS_CONFIGURATION_FILE` miljö variabel eller
 * `applicationinsights.configuration.file` Java system egenskap
 
-Om du anger en relativ sökväg kommer den att matchas i förhållande till den katalog där `applicationinsights-agent-3.0.0.jar` finns.
+Om du anger en relativ sökväg kommer den att matchas i förhållande till den katalog där `applicationinsights-agent-3.0.1.jar` finns.
 
 ## <a name="connection-string"></a>Anslutningssträng
 
@@ -170,7 +170,7 @@ Om du vill lägga till anpassade dimensioner i all telemetri:
 `${...}` kan användas för att läsa värdet från angiven miljö variabel vid start.
 
 > [!NOTE]
-> Från och med version 3.0.1 – BETA, om du lägger till en anpassad dimension med namnet `service.version` , kommer värdet att lagras i `application_Version` kolumnen i tabellen Application Insights loggar i stället för som en anpassad dimension.
+> Från och med version 3.0.1, om du lägger till en anpassad dimension med namnet `service.version` , kommer värdet att lagras i `application_Version` kolumnen i tabellen Application Insights loggar i stället för som en anpassad dimension.
 
 ## <a name="telemetry-processors-preview"></a>Telemetri-processorer (för hands version)
 
@@ -241,7 +241,7 @@ Så här inaktiverar du automatisk insamling av micrometer-mått (inklusive vär
 
 ## <a name="suppressing-specific-auto-collected-telemetry"></a>Förhindra automatisk insamlad telemetri
 
-Från och med version 3.0.1 – BETA. 2, kan vissa automatiskt insamlade telemetri ignoreras med följande konfigurations alternativ:
+Från och med version 3.0.1 kan vissa automatiskt insamlade telemetri ignoreras med följande konfigurations alternativ:
 
 ```json
 {
@@ -338,7 +338,7 @@ Som standard loggar Application Insights Java 3,0 på nivå `INFO` till både fi
 
 `level` kan vara en av,,,, `OFF` `ERROR` `WARN` `INFO` `DEBUG` eller `TRACE` .
 
-`path` kan vara en absolut eller relativ sökväg. Relativa sökvägar matchas mot den katalog där `applicationinsights-agent-3.0.0.jar` finns.
+`path` kan vara en absolut eller relativ sökväg. Relativa sökvägar matchas mot den katalog där `applicationinsights-agent-3.0.1.jar` finns.
 
 `maxSizeMb` är logg filens Max storlek innan den slås samman.
 

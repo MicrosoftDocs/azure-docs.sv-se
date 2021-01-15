@@ -3,16 +3,19 @@ title: Azure Service Bus med .NET och AMQP 1,0 | Microsoft Docs
 description: Den här artikeln beskriver hur du använder Azure Service Bus från ett .NET-program med hjälp av AMQP (Advanced Messaging Queuing Protocol).
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 7a67ab74efc700e16f5b1689e9cc1f459ecf14bd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0d6d7d01a56d2e7068f9c4ccb8ec505914a31ecf
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88067111"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233941"
 ---
 # <a name="use-service-bus-from-net-with-amqp-10"></a>Använda Service Bus från .NET med AMQP 1,0
 
 AMQP 1,0-support finns i Service Bus-paket version 2,1 eller senare. Du kan se till att du har den senaste versionen genom att ladda ned Service Bus bitar från [NuGet][NuGet].
+
+> [!NOTE]
+> Du kan använda antingen Advanced Message Queueing Protocol (AMQP) eller Service Bus (SBMP Messaging Protocol) med .NET-biblioteket för Service Bus. AMQP är standard protokollet som används av .NET-biblioteket. Vi rekommenderar att du använder AMQP-protokollet (som är standard) och inte åsidosätter det. 
 
 ## <a name="configure-net-applications-to-use-amqp-10"></a>Konfigurera .NET-program för att använda AMQP 1,0
 
@@ -41,6 +44,14 @@ Värdet för `Microsoft.ServiceBus.ConnectionString` inställningen är den Serv
 Var `namespace` och `SAS key` en som hämtas från [Azure Portal][Azure portal] när du skapar ett Service Bus namn område. Mer information finns i [skapa ett Service Bus-namnområde med hjälp av Azure Portal][Create a Service Bus namespace using the Azure portal].
 
 När du använder AMQP lägger du till anslutnings strängen med `;TransportType=Amqp` . Den här notationen instruerar klient biblioteket att göra anslutningen till Service Bus med AMQP 1,0.
+
+### <a name="amqp-over-websockets"></a>AMQP över WebSockets
+Om du vill använda AMQP över WebSockets anger du `TransportType` anslutnings strängen till `AmqpWebSockets` . Exempel: `Endpoint=sb://[namespace].servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=[SAS key];TransportType=AmqpWebSockets`. 
+
+Om du använder .NET Microsoft. Azure. Service Bus-biblioteket ställer du in [ServiceBusConnection. TransportType](/dotnet/api/microsoft.azure.servicebus.servicebusconnection.transporttype) på AmqpWebSockets för [TransportType Enum](/dotnet/api/microsoft.azure.servicebus.transporttype).
+
+Om du använder .NET Azure. Service Bus-biblioteket ställer du in [ServiceBusClient. TransportType](/dotnet/api/azure.messaging.servicebus.servicebusclient.transporttype) på AmqpWebSockets för [ServiceBusTransportType Enum](/dotnet/api/azure.messaging.servicebus.servicebustransporttype).
+
 
 ## <a name="message-serialization"></a>Meddelande serialisering
 
@@ -78,7 +89,7 @@ För att under lätta samverkan med non-.NET-klienter använder du bara .NET-typ
 | Dataström |binary |AMQP-data (kan vara flera). Data avsnitten innehåller rå byte som lästs från Stream-objektet. |
 | Annat objekt |binary |AMQP-data (kan vara flera). Innehåller den serialiserade binärfilen för det objekt som använder DataContractSerializer eller en serialiserare som tillhandahålls av programmet. |
 
-| .NET-typ | Mappad AMQP-beskrivande typ | Obs! |
+| .NET-typ | Mappad AMQP-beskrivande typ | Kommentarer |
 | --- | --- | --- |
 | URI |`<type name=”uri” class=restricted source=”string”> <descriptor name=”com.microsoft:uri” /></type>` |URI. AbsoluteUri |
 | DateTimeOffset |`<type name=”datetime-offset” class=restricted source=”long”> <descriptor name=”com.microsoft:datetime-offset” /></type>` |DateTimeOffset. UtcTicks |

@@ -3,12 +3,12 @@ title: Användnings analys med Azure Application Insights | Microsoft-dokument
 description: Förstå dina användare och vad de gör med din app.
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.openlocfilehash: 4f4954451bfa195b07c580ffa451b8cb333eb32c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 633d35ec16f5eb9de664421c38cd4c824dc240cf
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90532111"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233856"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Användningsanalys med Application Insights
 
@@ -65,7 +65,7 @@ Insikter på den högra punkten för att ta reda på intressanta mönster i data
 
 ## <a name="retention---how-many-users-come-back"></a>Kvarhållning – hur många användare kommer tillbaka?
 
-Kvarhållning hjälper dig att förstå hur ofta dina användare kommer att använda sin app, baserat på kohorter av användare som utförde viss affärs åtgärd under en viss tids period. 
+Kvarhållning hjälper dig att förstå hur ofta dina användare kommer att använda sin app, baserat på kohorter av användare som utförde viss affärs åtgärd under en viss tids period. 
 
 - Förstå vilka olika funktioner som gör att användarna kan komma tillbaka mer än andra 
 - Formulär Hypotheses baserat på verkliga användar data 
@@ -79,7 +79,9 @@ Med kontrollerna för kvarhållning i överkant kan du definiera enskilda hände
 
 ## <a name="custom-business-events"></a>Anpassade affärs händelser
 
-För att få en tydlig förståelse av vad användarna gör med din app, är det praktiskt att infoga rader med kod för att logga anpassade händelser. Dessa händelser kan spåra allt från detaljerade användar åtgärder, till exempel att klicka på specifika knappar, till fler viktiga affärs händelser som att göra ett köp eller vinna ett spel. 
+För att få en tydlig förståelse av vad användarna gör med din app, är det praktiskt att infoga rader med kod för att logga anpassade händelser. Dessa händelser kan spåra allt från detaljerade användar åtgärder, till exempel att klicka på specifika knappar, till fler viktiga affärs händelser som att göra ett köp eller vinna ett spel.
+
+Du kan också använda [plugin-programmet Klicka på Analytics Auto-Collection](javascript-click-analytics-plugin.md) för att samla in anpassade händelser.
 
 I vissa fall kan sid visningar representera användbara händelser, men det är inte sant i allmänhet. En användare kan öppna en produkt sida utan att köpa produkten. 
 

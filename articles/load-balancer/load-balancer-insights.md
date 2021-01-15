@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/27/2020
 ms.author: errobin
-ms.openlocfilehash: 63b91194c9ffb10fd8f4c5f1341eaf74bc81f5e1
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 88c287c4aa87b4df41bfe6bbc1992262b21d07aa
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94694889"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232768"
 ---
 # <a name="using-insights-to-monitor-and-configure-your-azure-load-balancer"></a>Använda insikter för att övervaka och konfigurera din Azure Load Balancer
 
@@ -68,7 +68,7 @@ På fliken Data flöde kan du granska inkommande och utgående data flöde för 
 ### <a name="flow-distribution"></a>Flödesfördelning
 Fliken flödes distribution hjälper dig att visualisera och hantera antalet flöden som dina Server dels instanser tar emot och skapar. Den visar skapande frekvensen för flödet och antalet flöden för inkommande och utgående trafik samt nätverks trafiken för varje virtuell dator och skalnings uppsättnings instans för virtuell dator tas emot. 
 
-Dessa vyer kan ge dig feedback om din Load Balancer-konfiguration eller trafik mönster leder till Bal anse rad trafik. Om du till exempel har konfigurerat tillhörigheten för sessionen och en enskild klient gör ett oproportionerligt antal begär Anden. Du får också veta om du närmar dig [gränsen för antalet virtuella datorer per](../virtual-network/virtual-machine-network-throughput.md#flow-limits-and-recommendations) virtuell dator storlek.
+Dessa vyer kan ge dig feedback om din Load Balancer-konfiguration eller trafik mönster leder till Bal anse rad trafik. Om du till exempel har konfigurerat tillhörigheten för sessionen och en enskild klient gör ett oproportionerligt antal begär Anden. Du får också veta om du närmar dig [gränsen för antalet virtuella datorer per](../virtual-network/virtual-machine-network-throughput.md#flow-limits-and-active-connections-recommendations) virtuell dator storlek.
 
 ### <a name="connection-monitors"></a>Anslutningsövervakare
 På fliken anslutnings övervakare visas svars tiden på en global karta för alla [anslutnings övervakare](../network-watcher/connection-monitor.md)  som du har konfigurerat. Dessa visuella objekt ger värdefull information för tjänster med strikt latens krav. För att uppfylla dina krav kan du behöva lägga till ytterligare regionala distributioner eller flytta till en [belastnings Utjämnings modell över flera regioner](./cross-region-overview.md)

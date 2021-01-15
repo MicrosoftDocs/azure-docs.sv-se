@@ -12,12 +12,12 @@ ms.date: 09/03/2020
 ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, contperf-fy21q1, contperf-fy21q2
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: cc0d908f479fe5bdf14abb2ace0e6c046fd6d7d5
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 45280ec41a9fd9423e4184b2e1ce593720ab6488
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98011957"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232360"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>Snabb start: registrera ett program med Microsoft Identity Platform
 
@@ -97,7 +97,7 @@ Det finns vissa begränsningar i formatet för omdirigerings-URI: er som du läg
 
 ## <a name="add-credentials"></a>Lägg till autentiseringsuppgifter
 
-Autentiseringsuppgifter används av konfidentiella klient program som har åtkomst till ett webb-API. Exempel på konfidentiella klienter är Web Apps, andra webb-API: er eller program för tjänst-och bakgrunds program. Autentiseringsuppgifterna gör att ditt program kan autentisera sig självt, vilket kräver ingen interaktion från en användare vid körning.
+Autentiseringsuppgifter används av [konfidentiella klient program](msal-client-applications.md) som har åtkomst till ett webb-API. Exempel på konfidentiella klienter är [Web Apps](scenario-web-app-call-api-overview.md), andra [webb-API: er](scenario-protected-web-api-overview.md)eller program för [tjänst-och bakgrunds program](scenario-daemon-overview.md). Autentiseringsuppgifterna gör att ditt program kan autentisera sig självt, vilket kräver ingen interaktion från en användare vid körning. 
 
 Du kan lägga till både certifikat och klient hemligheter (en sträng) som autentiseringsuppgifter för den konfidentiella registreringen av klient programmet.
 
@@ -105,7 +105,7 @@ Du kan lägga till både certifikat och klient hemligheter (en sträng) som aute
 
 ### <a name="add-a-certificate"></a>Lägg till ett certifikat
 
-Ibland kallas certifikat för en *offentlig nyckel* som den rekommenderade typen av autentiseringsuppgifter eftersom de ger en högre säkerhets nivå än en klient hemlighet.
+Ibland kallas certifikat för en *offentlig nyckel* som den rekommenderade typen av autentiseringsuppgifter eftersom de ger en högre säkerhets nivå än en klient hemlighet. Mer information om hur du använder certifikat som autentiseringsmetod i ditt program finns i [Microsoft Identity Platform Application Authentication Certificate Credential](active-directory-certificate-credentials.md)
 
 1. Välj ditt program i **Appregistreringar** i Azure Portal.
 1. Välj **certifikat & hemligheter**  >  **Ladda upp certifikat**.
@@ -114,7 +114,7 @@ Ibland kallas certifikat för en *offentlig nyckel* som den rekommenderade typen
 
 ### <a name="add-a-client-secret"></a>Lägg till en klient hemlighet
 
-Klient hemligheten, även kallat ett *program lösen ord*, är ett sträng värde som din app kan använda i stället för ett certifikat för att identifiera sig själv. Det är enklare att använda de två typerna av autentiseringsuppgifter som används och används ofta under utveckling, men anses vara mindre säkra än ett certifikat. Du bör använda certifikat i dina program som körs i produktion.
+Klient hemligheten, även kallat ett *program lösen ord*, är ett sträng värde som din app kan använda i stället för ett certifikat för att identifiera sig själv. Det är enklare att använda de två typerna av autentiseringsuppgifter som används och används ofta under utveckling, men anses vara mindre säkra än ett certifikat. Du bör använda certifikat i dina program som körs i produktion. Mer information om program säkerhets rekommendationer finns i [metod tips och rekommendationer för Microsoft Identity Platform](identity-platform-integration-checklist.md#security) .
 
 1. Välj ditt program i **Appregistreringar** i Azure Portal.
 1. Välj **certifikat & hemligheter**  >   **ny klient hemlighet**.
@@ -122,6 +122,8 @@ Klient hemligheten, även kallat ett *program lösen ord*, är ett sträng värd
 1. Välj en varaktighet.
 1. Välj **Lägg till**.
 1. **Registrera hemlighetens värde** för användning i klient program koden – det *visas aldrig igen* när du lämnar den här sidan.
+
+**Obs:** Det ID som genereras tillsammans med hemlighetens värde är ID: t för hemligheten, vilket skiljer sig från program-ID.
 
 ## <a name="next-steps"></a>Nästa steg
 

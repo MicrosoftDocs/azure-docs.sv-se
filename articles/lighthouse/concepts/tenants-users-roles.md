@@ -1,14 +1,14 @@
 ---
 title: Klienter, användare och roller i Azure Lighthouse-scenarier
 description: Förstå begreppen för Azure Active Directory klienter, användare och roller, samt hur de kan användas i Azure Lighthouse-scenarier.
-ms.date: 10/29/2020
+ms.date: 01/14/2021
 ms.topic: conceptual
-ms.openlocfilehash: 411b9bae19166e1875011360aa011c05d590b237
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: d78828cc739030f8e456c64885d77ddf59dd13fb
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96023950"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233924"
 ---
 # <a name="tenants-users-and-roles-in-azure-lighthouse-scenarios"></a>Klienter, användare och roller i Azure Lighthouse-scenarier
 
@@ -18,7 +18,10 @@ En *klient organisation* är en dedikerad och betrodd instans av Azure AD. Varje
 
 För att uppnå den här logiska projektionen måste en prenumeration (eller en eller flera resurs grupper inom en prenumeration *) registreras i* Azure-Lighthouse. Den här onboarding-processen kan göras antingen [via Azure Resource Manager mallar](../how-to/onboard-customer.md) eller genom [att publicera ett offentligt eller privat erbjudande till Azure Marketplace](../how-to/publish-managed-services-offers.md).
 
-Vilken onboarding-metod du väljer måste du definiera *auktoriseringar*. Varje auktorisering anger ett användar konto i hanterings klienten som kommer att ha åtkomst till de delegerade resurserna och en inbyggd roll som anger de behörigheter som var och en av dessa användare kommer att ha för dessa resurser.
+Vilken onboarding-metod du väljer måste du definiera *auktoriseringar*. Varje auktorisering anger en **principalId** som kommer att ha åtkomst till de delegerade resurserna och en inbyggd roll som anger de behörigheter som var och en av dessa användare kommer att ha för dessa resurser. Den här **principalId** definierar en Azure AD-användare,-grupp eller-tjänstens huvud namn i hanterings klienten.
+
+> [!NOTE]
+> Om inget annat anges kan referenser till en "användare" i Azure Lighthouse-dokumentationen gälla för en Azure AD-användare, en grupp eller ett tjänst huvud namn i en auktorisering.
 
 ## <a name="best-practices-for-defining-users-and-roles"></a>Metod tips för att definiera användare och roller
 

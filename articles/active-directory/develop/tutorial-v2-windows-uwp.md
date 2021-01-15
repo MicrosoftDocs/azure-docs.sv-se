@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: 63d56d8afc584a760f4b31c6021d4c764afd52b3
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: bbcebfd69789eb6ec03e565b347d05533043781c
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98064427"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232343"
 ---
 # <a name="tutorial-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Självstudie: anropa Microsoft Graph API från ett Universell Windows-plattform-program (UWP)
 
@@ -59,8 +59,8 @@ Det här avsnittet innehåller steg-för-steg-instruktioner för att integrera e
 
 Den här guiden skapar ett program som visar en knapp som frågar Microsoft Graph-API och en knapp för att logga ut. Den visar också text rutor som innehåller resultatet av anropen.
 
-> [!NOTE]
-> Vill du hämta det här exemplets Visual Studio-projekt i stället för att skapa det? [Hämta ett projekt](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/archive/msal3x.zip)och gå vidare till [programmets registrerings](#register-your-application "program registrerings steg") steg för att konfigurera kod exemplet innan det körs.
+> [!Tip]
+> Om du vill se en färdig version av projektet som du skapar i den här självstudien kan du [Ladda ned den från GitHub](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/archive/msal3x.zip).
 
 ### <a name="create-your-application"></a>Skapa ditt program
 
@@ -292,8 +292,7 @@ private async void SignOutButton_Click(object sender, RoutedEventArgs e)
     }
 ```
 
-> [!NOTE]
-> MSAL.NET använder asynkrona metoder för att förvärva token eller manipulera konton. Du måste ha stöd för UI-åtgärder i UI-tråden. Detta är orsaken till `Dispatcher.RunAsync` anropet och de försiktighets åtgärder som krävs för att anropa `ConfigureAwait(false)` .
+MSAL.NET använder asynkrona metoder för att förvärva token eller manipulera konton. Du måste ha stöd för UI-åtgärder i UI-tråden. Detta är orsaken till `Dispatcher.RunAsync` anropet och de försiktighets åtgärder som krävs för att anropa `ConfigureAwait(false)` .
 
 #### <a name="more-information-about-signing-out"></a>Mer information om att logga ut<a name="more-information-on-sign-out"></a>
 
@@ -477,8 +476,7 @@ Microsoft Graph-API: t kräver `user.read` att omfattningen läser en användar 
 
 Om du vill komma åt användarens kalendrar i ett programs kontext lägger du till den `Calendars.Read` delegerade behörigheten till program registrerings informationen. Lägg sedan till `Calendars.Read` omfånget i `acquireTokenSilent` anropet.
 
-> [!NOTE]
-> Användare kan tillfrågas om ytterligare medgivanden när du ökar antalet omfång.
+Användare kan tillfrågas om ytterligare medgivanden när du ökar antalet omfång.
 
 ## <a name="known-issues"></a>Kända problem
 

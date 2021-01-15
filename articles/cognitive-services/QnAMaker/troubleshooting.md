@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: troubleshooting
 ms.date: 11/09/2020
-ms.openlocfilehash: e8b1d985fcb2852df52382e005ec0f0266e23d9d
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: aea205bee41aed232b8453417dca521d2dfc83ab
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96345652"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233788"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>Fel sökning för QnA Maker
 
@@ -323,6 +323,29 @@ Om du har innehåll från flera språk, måste du skapa en separat tjänst för 
 
 1. Starta App Service.
 1. Kom åt din kunskaps bas för att kontrol lera att den fungerar nu.
+
+</details>
+<details>
+<summary><b>Varför fungerar inte mitt Application Insights?</b></summary>
+
+**Svar**: kontrol lera och uppdatera stegen nedan för att åtgärda problemet:
+
+1. I App Service-> inställnings grupp-> konfigurations avsnittet-> program inställningar-> namn "UserAppInsightsKey"-parametrarna har kon figurer ATS korrekt och angetts till respektive Application Insights-översikt ("Instrumentation Key") GUID. 
+
+1. I App Service > Settings Group-> "Application Insights"-> se till att App Insights är aktiverat och är anslutet till respektive Application Insights-resurs.
+
+</details>
+
+<details>
+<summary><b>Mitt Application Insights är aktiverat men varför fungerar det inte korrekt?</b></summary>
+
+**Svar**: Följ anvisningarna nedan: 
+
+1.  Kopiera värdet för "" APPINSIGHTS_INSTRUMENTATIONKEY "namn" till "UserAppInsightsKey" genom att åsidosätta om det finns något värde som redan finns där. 
+
+1.  Om nyckeln "UserAppInsightsKey" inte finns i appinställningar lägger du till en ny nyckel med det namnet och kopierar värdet.
+
+1.  Spara det och starta om App Service automatiskt. Detta bör lösa problemet. 
 
 </details>
 

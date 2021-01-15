@@ -1,14 +1,14 @@
 ---
 title: Distribuera en princip som kan åtgärdas
 description: Om du vill distribuera principer som använder en reparations uppgift via Azure Lighthouse måste du skapa en hanterad identitet i kund klienten.
-ms.date: 12/17/2020
+ms.date: 01/14/2021
 ms.topic: how-to
-ms.openlocfilehash: eb473fe2f589cf719e3944c887d46e75e9e7fdbf
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 01070133241117596bdf2b8e1e7c3fa101fc656c
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97670499"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233890"
 ---
 # <a name="deploy-a-policy-that-can-be-remediated-within-a-delegated-subscription"></a>Distribuera en princip som kan åtgärdas inom en delegerad prenumeration
 
@@ -19,9 +19,9 @@ Med [Azure-Lighthouse](../overview.md) kan tjänst leverantörer skapa och redig
 
 ## <a name="create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant"></a>Skapa en användare som kan tilldela roller till en hanterad identitet i kund klienten
 
-När du registrerar en kund i Azure Lighthouse, använder du en [Azure Resource Manager-mall](onboard-customer.md#create-an-azure-resource-manager-template) tillsammans med en parameter fil som definierar användare, användar grupper och tjänstens huvud namn i den hanterande klienten som kommer att kunna komma åt de delegerade resurserna i kund klienten. I parameter filen tilldelas var och en av dessa användare (**principalId**) en [inbyggd roll](../../role-based-access-control/built-in-roles.md) (**roleDefinitionId**) som definierar åtkomst nivån.
+När du registrerar en kund i Azure Lighthouse, använder du en [Azure Resource Manager-mall](onboard-customer.md#create-an-azure-resource-manager-template) tillsammans med en parameter fil för att definiera auktoriseringar som beviljar åtkomst till delegerade resurser i kund klienten. Varje auktorisering anger en **principalId** som motsvarar en Azure AD-användare,-grupp eller-tjänstens huvud namn i hanterings klienten och en **roleDefinitionId** som motsvarar den [inbyggda Azure-rollen](../../role-based-access-control/built-in-roles.md) som kommer att beviljas.
 
-Om du vill tillåta en **principalId** att skapa en hanterad identitet i kundens klient organisation måste du ange dess **RoleDefinitionId** till **användar åtkomst administratör**. Även om den här rollen inte stöds i allmänhet, kan den användas i det här scenariot, så att användare med den här behörigheten kan tilldela en eller flera angivna inbyggda roller till hanterade identiteter. De här rollerna definieras i egenskapen **delegatedRoleDefinitionIds** . Du kan inkludera valfri inbyggd roll här, förutom administratör för användar åtkomst eller ägare.
+Om du vill tillåta en **principalId** att skapa en hanterad identitet i kundens klient organisation måste du ange dess **RoleDefinitionId** till **användar åtkomst administratör**. Även om den här rollen inte stöds i allmänhet, kan den användas i det här scenariot, vilket gör det möjligt för användar konton med behörighet att tilldela en eller flera angivna inbyggda roller till hanterade identiteter. De här rollerna definieras i egenskapen **delegatedRoleDefinitionIds** och kan innehålla en [inbyggd Azure-inbyggd roll som stöds](../concepts/tenants-users-roles.md#role-support-for-azure-lighthouse) , förutom administratör för användar åtkomst eller ägare.
 
 När kunden har registrerats kommer **principalId** som skapats i det här tillståndet att kunna tilldela de inbyggda rollerna till hanterade identiteter i kund klienten. De kommer dock inte att ha några andra behörigheter som vanligt vis är associerade med rollen administratör för användar åtkomst.
 

@@ -10,16 +10,16 @@ ms.topic: how-to
 ms.custom: mvc
 ms.date: 08/11/2020
 ms.author: sebansal
-ms.openlocfilehash: 0925b51ed960b8007d2df86115ea7e5cf627fe7e
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: b3c917c9652954783fcddd92b9a7370c358ab3cc
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97826128"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233652"
 ---
 # <a name="export-certificates-from-azure-key-vault"></a>Exportera certifikat från Azure Key Vault
 
-Lär dig hur du exporterar certifikat från Azure Key Vault. Du kan exportera certifikat med hjälp av Azure CLI, Azure PowerShell eller Azure Portal. Du kan också använda Azure Portal för att exportera Azure App Service certifikat.
+Lär dig hur du exporterar certifikat från Azure Key Vault. Du kan exportera certifikat med hjälp av Azure CLI, Azure PowerShell eller Azure Portal. 
 
 ## <a name="about-azure-key-vault-certificates"></a>Om Azure Key Vault-certifikat
 
@@ -114,7 +114,7 @@ Om du vill hämta certifikatet väljer du **Hämta i CER-format** eller **Ladda 
 
 **Exportera Azure App Service certifikat**
 
-Azure App Service certifikat är ett bekvämt sätt att köpa SSL-certifikat. Du kan tilldela dem till Azure-appar inifrån portalen. Du kan också exportera dessa certifikat från portalen som PFX-filer som ska användas någon annan stans. När du har importerat dem finns App Service certifikaten under **hemligheter**.
+Azure App Service certifikat är ett bekvämt sätt att köpa SSL-certifikat. Du kan tilldela dem till Azure-appar inifrån portalen. När du har importerat dem finns App Service certifikaten under **hemligheter**.
 
 Mer information finns i steg för att [exportera Azure App Service certifikat](https://social.technet.microsoft.com/wiki/contents/articles/37431.exporting-azure-app-service-certificates.aspx).
 

@@ -7,12 +7,12 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 08/19/2020
 ms.custom: MVC
-ms.openlocfilehash: ddde352df5fc6063dbe04aa05fe01fca9747f8fa
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 892b731f662af57916d067c562d48f4ec25e2210
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96752846"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233057"
 ---
 # <a name="discover-assess-and-migrate-google-cloud-platform-gcp-vms-to-azure"></a>Identifiera, utvärdera och migrera Google Cloud Platform virtuella datorer (GCP) till Azure
 
@@ -61,7 +61,7 @@ Konfigurera en utvärdering på följande sätt:
 
 
 
-## <a name="prerequisites"></a>Krav 
+## <a name="prerequisites"></a>Förutsättningar 
 
 - Se till att de virtuella GCP-datorerna som du vill migrera kör en operativ system version som stöds. Virtuella GCP-datorer behandlas som fysiska datorer för migreringen. Granska de [operativ system och kernel-versioner som stöds](../site-recovery/vmware-physical-azure-support-matrix.md#replicated-machines) för migreringen av den fysiska servern. Du kan använda standard kommandon som *hostnamectl* eller *uname-a* för att kontrol lera operativ system och kernel-versioner för dina virtuella Linux-datorer.  Vi rekommenderar att du utför en testmigrering för att verifiera att den virtuella datorn fungerar som förväntat innan du fortsätter med den faktiska migreringen.
 - Se till att dina virtuella GCP-datorer uppfyller de [konfigurationer som stöds](./migrate-support-matrix-physical-migration.md#physical-server-requirements) för migrering till Azure.
@@ -246,13 +246,22 @@ En mobilitets tjänst agent måste vara installerad på de virtuella GCP-datorer
     -  Tillgänglighets zon för att fästa den migrerade datorn i en angiven tillgänglighets zon i regionen. Använd det här alternativet för att distribuera servrar som utgör en program nivå med flera noder i Tillgänglighetszoner. Om du väljer det här alternativet måste du ange den tillgänglighets zon som ska användas för var och en av de valda datorerna på fliken beräkning. Det här alternativet är bara tillgängligt om det valda mål området för migreringen stöder Tillgänglighetszoner
     -  Tillgänglighets uppsättning för att placera den migrerade datorn i en tillgänglighets uppsättning. Den valda mål resurs gruppen måste ha en eller flera tillgänglighets uppsättningar för att kunna använda det här alternativet.
     - Inget alternativ för infrastrukturs redundans krävs om du inte behöver någon av dessa tillgänglighets konfigurationer för de migrerade datorerna.
-11. I **Azure Hybrid-förmån**:
+11. I **disk krypterings typ** väljer du:
+    - Kryptering – rest med plattforms hanterad nyckel
+    - Kryptering – rest med kundhanterad nyckel
+    - Double Encryption med plattforms hanterade och Kundhanterade nycklar
+
+   > [!NOTE]
+   > För att replikera virtuella datorer med CMK måste du [skapa en disk krypterings uppsättning](https://go.microsoft.com/fwlink/?linkid=2151800) under mål resurs gruppen. Ett objekt med en disk krypterings uppsättning mappar Managed Disks till en Key Vault som innehåller den CMK som ska användas för SSE.
+  
+12. I **Azure Hybrid-förmån**:
+
     - Välj **Nej** om du inte vill använda Azure Hybrid-förmånen. Klicka på **Nästa**.
     - Välj **Ja** om du har Windows Server-datorer som omfattas av aktiva Software Assurance- eller Windows Server-prenumerationer och du vill tillämpa förmånen på de datorer som du migrerar. Klicka på **Nästa**.
 
-    ![Mål inställningar](./media/tutorial-migrate-physical-virtual-machines/target-settings.png)
+    ![Mål inställningar](./media/tutorial-migrate-vmware/target-settings.png)
 
-12. I **Compute** granskar du VM-namn, storlek, OS-disktyp och tillgänglighets konfiguration (om det valts i föregående steg). De virtuella datorerna måste följa [Azures krav](migrate-support-matrix-physical-migration.md#azure-vm-requirements).
+13. I **Compute** granskar du VM-namn, storlek, OS-disktyp och tillgänglighets konfiguration (om det valts i föregående steg). De virtuella datorerna måste följa [Azures krav](migrate-support-matrix-physical-migration.md#azure-vm-requirements).
 
     - **VM-storlek**: om du använder bedömnings rekommendationer visas den rekommenderade storleken i list rutan VM-storlek. Annars väljer Azure Migrate en storlek baserat på den närmaste matchningen i Azure-prenumerationen. Du kan också välja en storlek manuellt i **Storlek på virtuell Azure-dator**.
     - **OS-disk**: Ange OS-disken (start) för den virtuella datorn. Operativsystemdisken är den disk där operativsystemets bootloader och installationsprogram finns.
@@ -261,13 +270,13 @@ En mobilitets tjänst agent måste vara installerad på de virtuella GCP-datorer
 
 ![Beräknings inställningar](./media/tutorial-migrate-physical-virtual-machines/compute-settings.png)
 
-13. I **diskar** anger du om de virtuella dator diskarna ska replikeras till Azure och väljer disk typ (standard SSD/HDD eller Premium Managed Disks) i Azure. Klicka på **Nästa**.
+14. I **diskar** anger du om de virtuella dator diskarna ska replikeras till Azure och väljer disk typ (standard SSD/HDD eller Premium Managed Disks) i Azure. Klicka på **Nästa**.
     - Du kan undanta diskar från replikering.
     - Om du undantar diskar kommer de inte att synas i den virtuella Azure-datorn efter migreringen. 
 
     ![Disk inställningar](./media/tutorial-migrate-physical-virtual-machines/disks.png)
 
-14. I **Granska och starta replikering** kontrollerar du inställningarna och klickar på **Replikera** för att påbörja den första replikeringen för servrarna.
+15. I **Granska och starta replikering** kontrollerar du inställningarna och klickar på **Replikera** för att påbörja den första replikeringen för servrarna.
 
 > [!NOTE]
 > Du kan uppdatera replikeringsinställningar varje tid innan replikeringen startar, **Hantera**  >  **replikering av datorer**. Det går inte att ändra inställningarna efter att replikeringen har startat.
@@ -294,7 +303,7 @@ När delta-replikering börjar kan du köra en testmigrering för de virtuella d
 
 Gör en testmigrering enligt följande:
 
-1. I Server för **migrerings mål**  >  **Servers**  >  **Azure Migrate: Server migrering** klickar du på **test migrerade servrar**.
+1. I Server för **migrerings mål**  >    >  **Azure Migrate: Server migrering** klickar du på **test migrerade servrar**.
 
      ![Testmigrerade servrar](./media/tutorial-migrate-physical-virtual-machines/test-migrated-servers.png)
 

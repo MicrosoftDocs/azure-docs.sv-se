@@ -4,12 +4,12 @@ description: Infoga några rader kod i din enhet eller Skriv bords app, webb sid
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: ae64888669fb9a3c053802ee4f7ad7db6316265d
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: d553c192d62baedb93c7f8270c56526fbf8edb62
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780509"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233754"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>API för Application Insights för anpassade händelser och mått
 
@@ -146,7 +146,9 @@ telemetry.trackEvent({name: "WinGame"});
 
 ### <a name="custom-events-in-analytics"></a>Anpassade händelser i Analytics
 
-Telemetrin är tillgänglig i `customEvents` tabellen i [Application Insights Analytics](../log-query/log-query-overview.md). Varje rad representerar ett anrop till `trackEvent(..)` i din app.
+Telemetrin är tillgänglig i `customEvents` tabellen på [fliken Application Insights loggar](../log-query/log-query-overview.md) eller i [användnings upplevelsen](usage-overview.md). Händelser kan komma från `trackEvent(..)` eller [Klicka på plugin-programmet för automatisk insamling av analys](javascript-click-analytics-plugin.md).
+
+ 
 
 Om [sampling](./sampling.md) är i drift, Visar egenskapen itemCount ett värde som är större än 1. Till exempel itemCount = = 10 betyder 10 anrop till trackEvent (), men samplings processen överför bara en av dem. För att få rätt antal anpassade händelser bör du därför använda kod som `customEvents | summarize sum(itemCount)` .
 
@@ -437,7 +439,7 @@ exceptions
 | summarize sum(itemCount) by type
 ```
 
-De flesta viktiga stack-uppgifter har redan extraherats i separata variabler, men du kan dra isär `details` strukturen för att få mer information. Eftersom den här strukturen är dynamisk bör du omvandla resultatet till den typ som du förväntar dig. Exempel:
+De flesta viktiga stack-uppgifter har redan extraherats i separata variabler, men du kan dra isär `details` strukturen för att få mer information. Eftersom den här strukturen är dynamisk bör du omvandla resultatet till den typ som du förväntar dig. Här är några exempel:
 
 ```kusto
 exceptions
@@ -500,7 +502,7 @@ Du kan söka efter meddelande innehåll, men (till skillnad från egenskaps vär
 Storleks gränsen på `message` är mycket högre än gränsen för egenskaper.
 En fördel med TrackTrace är att du kan ställa in relativt långa data i meddelandet. Du kan till exempel koda POST-data där.  
 
-Dessutom kan du lägga till en allvarlighets grad i meddelandet. Liksom andra telemetri kan du lägga till egenskaps värden som hjälper dig att filtrera eller söka efter olika uppsättningar med spår. Exempel:
+Dessutom kan du lägga till en allvarlighets grad i meddelandet. Liksom andra telemetri kan du lägga till egenskaps värden som hjälper dig att filtrera eller söka efter olika uppsättningar med spår. Här är några exempel:
 
 *C#*
 
@@ -1066,7 +1068,7 @@ var appInsights = window.appInsights || function(config){ ...
 
 ## <a name="telemetrycontext"></a>TelemetryContext
 
-TelemetryClient har en kontext egenskap som innehåller värden som skickas tillsammans med alla telemetridata. De anges normalt av standardmodulerna för telemetri, men du kan också ställa in dem själv. Exempel:
+TelemetryClient har en kontext egenskap som innehåller värden som skickas tillsammans med alla telemetridata. De anges normalt av standardmodulerna för telemetri, men du kan också ställa in dem själv. Här är några exempel:
 
 ```csharp
 telemetry.Context.Operation.Name = "MyOperationName";
@@ -1086,7 +1088,7 @@ Om du anger något av dessa värden själv kan du ta bort den relevanta raden fr
 * **Session**: användarens session. ID: t har angetts till ett genererat värde, vilket ändras när användaren inte har varit aktiv under ett tag.
 * **Användare**: användar information.
 
-## <a name="limits"></a>Begränsningar
+## <a name="limits"></a>Gränser
 
 [!INCLUDE [application-insights-limits](../../../includes/application-insights-limits.md)]
 
@@ -1122,4 +1124,3 @@ Se [data kvarhållning och sekretess](./data-retention-privacy.md)för att avgö
 
 * [Sök efter händelser och loggar](./diagnostic-search.md)
 * [Felsökning](../faq.md)
-

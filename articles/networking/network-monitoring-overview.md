@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: agummadi
-ms.openlocfilehash: 36e41db6e1a3cff13f31f0abf2e83e872dfd7c49
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a92c6789723dc42ac8f3a9c471e494079dc19328
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91742340"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233448"
 ---
 # <a name="network-monitoring-solutions"></a>Lösningar för nätverks övervakning 
 
@@ -52,10 +52,10 @@ Prestanda övervakaren är en del av NPM och är nätverks övervakning för mol
 Mer information finns i följande artiklar:
 
 * [Konfigurera en Övervakare av nätverksprestanda-lösning i Azure Monitor loggar](../azure-monitor/insights/network-performance-monitor.md) 
-* [Användningsfall](https://blogs.technet.microsoft.com/msoms/2016/08/30/monitor-on-premises-cloud-iaas-and-hybrid-networks-using-oms-network-performance-monitor/)
+* [Användningsfall](/archive/blogs/msoms/monitor-on-premises-cloud-iaas-and-hybrid-networks-using-oms-network-performance-monitor)
 * Produkt uppdateringar:
-  * [Februari 2017](https://blogs.technet.microsoft.com/msoms/2017/02/27/oms-network-performance-monitor-is-now-generally-available/)
-  * [Augusti 2017](https://blogs.technet.microsoft.com/msoms/2017/08/14/improvements-to-oms-network-performance-monitor/)
+  * [Februari 2017](/archive/blogs/msoms/oms-network-performance-monitor-is-now-generally-available)
+  * [Augusti 2017](/archive/blogs/msoms/improvements-to-oms-network-performance-monitor)
 
 ## <a name="expressroute-monitor"></a>Övervakaren ExpressRoute
 
@@ -106,7 +106,7 @@ Trafikanalys förser dig med åtgärds bara information som hjälper dig att gra
 ![Geo-karta som visar trafik i regioner 2](../network-watcher/media/traffic-analytics/geo-map-view-showcasing-traffic-distribution-to-countries-and-continents.png) 
 
 Relaterade länkar:
-* [Blogg inlägg](https://aka.ms/trafficanalytics), [dokumentation](https://aka.ms/trafficanalyticsdocs), [vanliga frågor och svar](https://docs.microsoft.com/azure/network-watcher/traffic-analytics-faq)
+* [Blogg inlägg](https://aka.ms/trafficanalytics), [dokumentation](../network-watcher/traffic-analytics.md), [vanliga frågor och svar](../network-watcher/traffic-analytics-faq.md)
 
 ## <a name="dns-analytics"></a>DNS-analys
 Den här lösningen är byggd för DNS-administratörer och samlar in, analyserar och korrelerar DNS-loggar för att tillhandahålla säkerhet, åtgärder och prestanda relaterade insikter.  Några av funktionerna är:
@@ -120,8 +120,8 @@ Den här lösningen är byggd för DNS-administratörer och samlar in, analysera
 ![DNS-analys instrument panel](./media/network-monitoring-overview/dns-analytics-overview.png) 
 
 Relaterade länkar:
-* [Blogginlägg](https://blogs.technet.microsoft.com/msoms/2017/04/19/introducing-oms-dns-analytics/), [Dokumentation](https://docs.microsoft.com/azure/log-analytics/log-analytics-dns)
+* [Blogginlägg](/archive/blogs/msoms/introducing-oms-dns-analytics), [Dokumentation](../azure-monitor/insights/dns-analytics.md)
 
 ## <a name="miscellaneous"></a>Övriga farliga ämnen
 
-* [Ny prissättning](https://docs.microsoft.com/azure/log-analytics/log-analytics-network-performance-monitor-pricing-faq)
+* [Ny prissättning](../azure-monitor/insights/network-performance-monitor-pricing-faq.md)

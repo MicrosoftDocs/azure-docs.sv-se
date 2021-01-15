@@ -7,12 +7,12 @@ ms.service: virtual-network
 ms.topic: article
 ms.date: 03/26/2020
 ms.author: rambala
-ms.openlocfilehash: e0e5806ec59cd2d75111db213d8511488d043eec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 835be5b867826d75732c9482743ad6a4ca2900e7
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80982862"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98231850"
 ---
 # <a name="working-remotely-using-azure-networking-services"></a>Arbeta fjärran slutet med Azure nätverks tjänster
 
@@ -80,21 +80,21 @@ För dina distributioner i andra offentliga moln kan Microsoft tillhandahålla g
 
 I följande artiklar diskuteras hur olika funktioner i Azure-nätverk kan användas för att skala användare till fjärranslutna datorer:
 
-| **Artikel** | **Beskrivning** |
+| **Artiklar** | **Beskrivning** |
 | --- | --- |
 | [Så här gör du det möjligt för användare att arbeta fjärran slutet](../vpn-gateway/work-remotely-support.md) | Granska tillgängliga alternativ för att konfigurera fjärråtkomst för användare eller för att komplettera sina befintliga lösningar med ytterligare kapacitet för din organisation.|
 | [Kämpar för att kunna fungera från start behoven? Här kan Azure Virtual WAN hjälpa dig](../virtual-wan/work-remotely-support.md) | Använd Azure Virtual WAN för att hantera fjärr anslutnings behoven för din organisation.|
 | [Stöd för höga trafikvolymer i Application Gateway](../application-gateway/high-traffic-support.md) | Använd Application Gateway med brand vägg för webbaserade program (WAF) för en skalbar och säker metod för att hantera trafik till dina webb program. |
 | [NVA-överväganden för virtuella nätverk för fjärran sluten arbete](../vpn-gateway/nva-work-remotely-support.md)|Läs vägledning om hur du använder NVA i Azure för att tillhandahålla lösningar för fjärråtkomst. |
-| [Över gång till OpenVPN-protokoll eller IKEv2 från SSTP](https://go.microsoft.com/fwlink/?linkid=2124112) | Lösa 128 samtidiga anslutnings gränsen för SSTP genom att övergå till OpenVPN-protokoll eller IKEv2.|
+| [Över gång till OpenVPN-protokoll eller IKEv2 från SSTP](../vpn-gateway/ikev2-openvpn-from-sstp.md) | Lösa 128 samtidiga anslutnings gränsen för SSTP genom att övergå till OpenVPN-protokoll eller IKEv2.|
 | [Arbeta via fjärr anslutning med Azure skydds](../bastion/work-remotely-support.md) | Tillhandahålla säker och sömlös RDP/SSH-anslutning till virtuella datorer i det virtuella Azure-nätverket, direkt i Azure Portal utan att använda en offentlig IP-adress. |
 | [Använda Azure-ExpressRoute för att skapa hybrid anslutningar som stöder fjärran vändare](../expressroute/work-remotely-support.md) | Använd ExpressRoute för Hybrid anslutning för att göra det möjligt för användare i organisationen att arbeta på distans.|
 | [Support för Azure Firewall Remote Work](../firewall/remote-work-support.md)|Skydda dina Azure Virtual Network-resurser med hjälp av Azure-brandväggen. |
 
 <!--Link References-->
-[VNet-peer]: https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview
-[S2S]: https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal
-[ExR]: https://docs.microsoft.com/azure/expressroute/expressroute-introduction
-[ExR-eco]: https://docs.microsoft.com/azure/expressroute/expressroute-locations
-[ExR-D]: https://docs.microsoft.com/azure/expressroute/expressroute-erdirect-about
-[Az-OCI]: https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/configure-azure-oci-networking
+[VNet-peer]: ../virtual-network/virtual-network-peering-overview.md
+[S2S]: ../vpn-gateway/tutorial-site-to-site-portal.md
+[ExR]: ../expressroute/expressroute-introduction.md
+[ExR-eco]: ../expressroute/expressroute-locations.md
+[ExR-D]: ../expressroute/expressroute-erdirect-about.md
+[Az-OCI]: ../virtual-machines/workloads/oracle/configure-azure-oci-networking.md

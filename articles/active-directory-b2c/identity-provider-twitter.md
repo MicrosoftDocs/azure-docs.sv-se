@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/07/2020
+ms.date: 01/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 7779730b98630d08af046e7cb402caca1d0c2fe6
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: a0f209e0ac17c62378d279a32f4a27f48a9f74bd
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653664"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232700"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-twitter-account-using-azure-active-directory-b2c"></a>Konfigurera registrering och inloggning med ett Twitter-konto med hjälp av Azure Active Directory B2C
 
@@ -29,22 +29,27 @@ ms.locfileid: "97653664"
 
 ::: zone-end
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
 ## <a name="create-an-application"></a>Skapa ett program
 
-Om du vill använda Twitter som identitets leverantör i Azure AD B2C måste du skapa ett Twitter-program. Om du inte redan har ett Twitter-konto kan du registrera dig på [https://twitter.com/signup](https://twitter.com/signup) .
+Om du vill aktivera inloggning för användare med ett Twitter-konto i Azure Active Directory B2C (Azure AD B2C) måste du skapa ett Twitter-program. Om du inte redan har ett Twitter-konto kan du registrera dig på [https://twitter.com/signup](https://twitter.com/signup) . Du måste också [ansöka om ett Developer-konto](https://developer.twitter.com/en/apply/user.html). Mer information finns i [tillämpa för åtkomst](https://developer.twitter.com/en/apply-for-access).
 
-1. Logga in på webbplatsen för [Twitter-utvecklare](https://developer.twitter.com/en/apps) med dina Twitter-kontoautentiseringsuppgifter.
-1. Välj  **skapa en app**.
-1. Ange ett **namn på appen** och en **program beskrivning**.
-1. I **webbplats-URL** anger du `https://your-tenant.b2clogin.com` . Ersätt `your-tenant` med namnet på din klient. Ett exempel är `https://contosob2c.b2clogin.com`.
-1. Ange för **återanrops-URL: en** `https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/your-user-flow-Id/oauth1/authresp` . Ersätt `your-tenant` med namnet på ditt klient namn och `your-user-flow-Id` med identifieraren för ditt användar flöde. Ett exempel är `b2c_1A_signup_signin_twitter`. Du måste använda små bokstäver när du anger ditt klient namn och ditt användar flödes-ID även om de definieras med versaler i Azure AD B2C.
-1. Längst ned på sidan, Läs och godkänn villkoren och välj sedan **skapa**.
-1. På sidan **information om appar** väljer du **Redigera > redigera information**, markerar kryss rutan **Aktivera inloggning med Twitter** och väljer sedan **Spara**.
-1. Välj **nycklar och tokens** och registrera konsument- **API-nyckeln** och de **hemliga nyckel** värden för konsument-API som ska användas senare.
+1. Logga in på [Twitter Developer-portalen](https://developer.twitter.com/portal/projects-and-apps) med dina Twitter-kontoautentiseringsuppgifter.
+1. Under **fristående appar** väljer du **+ skapa app**.
+1. Ange ett **namn på appen** och välj sedan **Slutför**.
+1. Kopiera värdet för **appens nyckel** och **API Key Secret**.  Du använder båda alternativen för att konfigurera Twitter som en identitets leverantör i din klient organisation. 
+1. Under **Konfigurera din app** väljer du **app-inställningar**.
+1. Under **autentiseringsinställningar** väljer du **Redigera**
+    1. Markera kryss rutan **Aktivera 3-ledade OAuth** .
+    1. Kryss rutan Markera **begär e-postadress från användare** .
+    1. För **återanrops-URL: er** anger du `https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/your-user-flow-Id/oauth1/authresp` . Ersätt `your-tenant` med namnet på ditt klient namn och `your-user-flow-Id` med identifieraren för ditt användar flöde. Ett exempel är `b2c_1A_signup_signin_twitter`. Du måste använda små bokstäver när du anger ditt klient namn och ditt användar flödes-ID även om de definieras med versaler i Azure AD B2C.
+    1. För **webbplats-URL: en** anger du `https://your-tenant.b2clogin.com` . Ersätt `your-tenant` med namnet på din klient. Ett exempel är `https://contosob2c.b2clogin.com`.
+    1. Ange en URL för **tjänst villkoren**, till exempel `http://www.contoso.com/tos` . Princip-URL: en är en sida som du upprätthåller för att tillhandahålla villkor för ditt program.
+    1. Ange en URL för **Sekretess policyn**, till exempel `http://www.contoso.com/privacy` . Princip-URL: en är en sida som du upprätthåller för att tillhandahålla sekretess information för ditt program.
+    1. Välj **Spara**.
 
 ::: zone pivot="b2c-user-flow"
 
@@ -55,9 +60,19 @@ Om du vill använda Twitter som identitets leverantör i Azure AD B2C måste du 
 1. Välj **Alla tjänster** på menyn högst upp till vänster i Azure-portalen och sök efter och välj **Azure AD B2C**.
 1. Välj **identitets leverantörer** och välj sedan **Twitter**.
 1. Ange ett **namn**. Till exempel *Twitter*.
-1. För **klient-ID anger du klient-** API-nyckeln för det Twitter-program som du skapade tidigare.
-1. För **klient hemligheten** anger du den hemliga nyckel för konsument-API som du har spelat in.
+1. För **klient-ID** anger du *API-nyckeln* för det Twitter-program som du skapade tidigare.
+1. Ange den *API-nyckel hemlighet* som du har spelat in för **klient hemligheten**.
 1. Välj **Spara**.
+
+## <a name="add-twitter-identity-provider-to-a-user-flow"></a>Lägg till Twitter Identity Provider i ett användar flöde 
+
+1. Välj **användar flöden** i Azure AD B2C klient.
+1. Välj det användar flöde som du vill lägga till Twitter-identitetsprovider.
+1. Under **leverantörer av sociala identitet** väljer du **Twitter**.
+1. Välj **Spara**.
+1. Om du vill testa principen väljer du **Kör användar flöde**.
+1. För **program** väljer du det webb program som heter *testapp1* som du tidigare har registrerat. **Svars-URL: en** ska visas `https://jwt.ms` .
+1. Klicka på **Kör användar flöde**
 
 ::: zone-end
 
@@ -103,7 +118,7 @@ Du kan definiera ett Twitter-konto som en anspråks leverantör genom att lägga
             <Item Key="request_token_endpoint">https://api.twitter.com/oauth/request_token</Item>
             <Item Key="ClaimsEndpoint">https://api.twitter.com/1.1/account/verify_credentials.json?include_email=true</Item>
             <Item Key="ClaimsResponseFormat">json</Item>
-            <Item Key="client_id">Your Twitter application consumer key</Item>
+            <Item Key="client_id">Your Twitter application API key</Item>
           </Metadata>
           <CryptographicKeys>
             <Key Id="client_secret" StorageReferenceId="B2C_1A_TwitterSecret" />
@@ -127,7 +142,7 @@ Du kan definiera ett Twitter-konto som en anspråks leverantör genom att lägga
     </ClaimsProvider>
     ```
 
-4. Ersätt värdet för **client_id** med den konsument nyckel som du tidigare har registrerat.
+4. Ersätt värdet för **client_id** med den *API-nyckel hemlighet* som du tidigare har spelat in.
 5. Spara filen.
 
 ### <a name="upload-the-extension-file-for-verification"></a>Ladda upp tilläggs filen för verifiering
@@ -174,31 +189,13 @@ Nu när du har en knapp på plats måste du länka den till en åtgärd. Åtgär
 
 3. Spara *TrustFrameworkExtensions.xml* -filen och ladda upp den igen för verifiering.
 
-::: zone-end
-
-::: zone pivot="b2c-user-flow"
-
-## <a name="add-twitter-identity-provider-to-a-user-flow"></a>Lägg till Twitter Identity Provider i ett användar flöde 
-
-1. Välj **användar flöden** i Azure AD B2C klient.
-1. Klicka på det användar flöde som du vill använda för Twitter-identitetsprovider.
-1. Under **leverantörer av sociala identitet** väljer du **Twitter**.
-1. Välj **Spara**.
-1. Om du vill testa principen väljer du **Kör användar flöde**.
-1. För **program** väljer du det webb program som heter *testapp1* som du tidigare har registrerat. **Svars-URL: en** ska visas `https://jwt.ms` .
-1. Klicka på **Kör användar flöde**
-
-::: zone-end
-
-::: zone pivot="b2c-custom-policy"
-
 ## <a name="update-and-test-the-relying-party-file"></a>Uppdatera och testa den förlitande part filen
 
 Uppdatera den förlitande parten (RP) som initierar användar resan som du har skapat.
 
 1. Gör en kopia av *SignUpOrSignIn.xml* i din arbets katalog och Byt namn på den. Du kan till exempel byta namn på den till *SignUpSignInTwitter.xml*.
 1. Öppna den nya filen och uppdatera värdet för attributet **PolicyId** för **TrustFrameworkPolicy** med ett unikt värde. Ett exempel är `SignUpSignInTwitter`.
-1. Uppdatera värdet för **PublicPolicyUri** med URI: n för principen. Exempel:`http://contoso.com/B2C_1A_signup_signin_twitter`
+1. Uppdatera värdet för **PublicPolicyUri** med URI: n för principen. Till exempel`http://contoso.com/B2C_1A_signup_signin_twitter`
 1. Uppdatera värdet för attributet **ReferenceId** i **DefaultUserJourney** för att matcha ID för den nya användar resan som du skapade (SignUpSignTwitter).
 1. Spara ändringarna, ladda upp filen och välj sedan den nya principen i listan.
 1. Kontrol lera att Azure AD B2C programmet som du har skapat är markerat i fältet **Välj program** och testa det genom att klicka på **Kör nu**.

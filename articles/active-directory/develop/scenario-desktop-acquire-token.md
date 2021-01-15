@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 01/06/2021
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: d5f5e1098b688fc307bae5ea3538c818cb529b0a
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: e15dce586dc4dd43cf56fd1cbb08b84ebcda1787
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97962405"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232309"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>Skriv bords app som anropar webb-API: er: Hämta en token
 
@@ -242,7 +242,7 @@ MSAL tillhandahåller webb GRÄNSSNITTs implementeringar för de flesta plattfor
 - Du vill testa ditt program och använda en automatiserad webbläsare som kan användas med selen.
 - Webbläsaren och den app som kör MSAL finns i separata processer.
 
-##### <a name="at-a-glance"></a>Snabbt
+##### <a name="at-a-glance"></a>I korthet
 
 För att uppnå detta ger du MSAL `start Url` , som måste visas i en valfri webbläsare så att användaren kan ange objekt som användar namn.
 När autentiseringen är klar måste appen skickas tillbaka till MSAL `end Url` , som innehåller en kod från Azure AD.
@@ -420,8 +420,8 @@ Om du vill logga in en domän användare på en domän eller en Azure AD-anslute
 - Integrerad Windows-autentisering är användbart för *federerade +* användare, det vill säga användare som skapats i Active Directory och som backas upp av Azure AD. Användare som skapats direkt i Azure AD utan Active Directory säkerhets kopiering, som kallas *hanterade* användare, kan inte använda det här autentiseringsschemat. Den här begränsningen påverkar inte användar flödet och lösen ordet.
 - IWA är avsedd för appar som är skrivna för .NET Framework-, .NET Core-och Universell Windows-plattform-plattformar (UWP).
 - IWA kringgår inte [Multi-Factor Authentication (MFA)](../authentication/concept-mfa-howitworks.md). Om MFA konfigureras kan IWA Miss förväntas om en MFA-utmaning krävs, eftersom MFA kräver användar interaktion.
-  > [!NOTE]
-  > Det här är en knepig. IWA är icke-interaktivt, men MFA kräver användar-interaktivitet. Du styr inte när identitets leverantören begär MFA för att utföras, klient organisationens administratör gör. Från våra observationer krävs MFA när du loggar in från ett annat land/en annan region, om du inte är ansluten via VPN till ett företags nätverk och ibland även när du är ansluten via VPN. Vänta inte med en deterministisk uppsättning regler. Azure AD använder AI för att kontinuerligt lära sig om MFA krävs. Återgå till en användar prompt som interaktiv autentisering eller enhets kod flöde om IWA Miss lyckas.
+  
+    IWA är icke-interaktivt, men MFA kräver användar-interaktivitet. Du styr inte när identitets leverantören begär MFA för att utföras, klient organisationens administratör gör. Från våra observationer krävs MFA när du loggar in från ett annat land/en annan region, om du inte är ansluten via VPN till ett företags nätverk och ibland även när du är ansluten via VPN. Vänta inte med en deterministisk uppsättning regler. Azure AD använder AI för att kontinuerligt lära sig om MFA krävs. Återgå till en användar prompt som interaktiv autentisering eller enhets kod flöde om IWA Miss lyckas.
 
 - Utfärdaren som skickades `PublicClientApplicationBuilder` måste vara:
   - Som innehavare av formuläret `https://login.microsoftonline.com/{tenant}/` , där `tenant` är antingen det GUID som representerar klient-ID: t eller en domän som är associerad med klienten.
@@ -602,14 +602,13 @@ Du kan också hämta en token genom att ange användar namn och lösen ord. Det 
 
 ### <a name="this-flow-isnt-recommended"></a>Det här flödet rekommenderas inte
 
-Det här flödet *rekommenderas inte* eftersom ett program ber användaren att lösen ordet inte är säkert. Mer information finns i [Vad är lösningen på det växande problemet med lösen ord?](https://news.microsoft.com/features/whats-solution-growing-problem-passwords-says-microsoft/). Det prioriterade flödet för att hämta en token tyst på Windows-domänanslutna datorer är [integrerad Windows-autentisering](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Integrated-Windows-Authentication). Du kan också använda [enhets kod flödet](https://aka.ms/msal-net-device-code-flow).
+Du *rekommenderas inte* att använda användar namn och lösen ord för att låta ditt program be användaren att lösen ordet inte är säkert. Mer information finns i [Vad är lösningen på det växande problemet med lösen ord?](https://news.microsoft.com/features/whats-solution-growing-problem-passwords-says-microsoft/) Det prioriterade flödet för att hämta en token tyst på Windows-domänanslutna datorer är [integrerad Windows-autentisering](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Integrated-Windows-Authentication). Du kan också använda [enhets kod flödet](https://aka.ms/msal-net-device-code-flow).
 
-> [!NOTE]
-> Att använda ett användar namn och ett lösen ord är användbart i vissa fall, till exempel DevOps-scenarier. Men om du vill använda ett användar namn och lösen ord i interaktiva scenarier där du anger ditt eget användar gränssnitt, bör du tänka på hur du ska flytta bort från det. Genom att använda ett användar namn och lösen ord har du ett antal saker:
->
-> - Kärn Tenets av modern identitet. Ett lösen ord kan få phished och spelas upp eftersom en delad hemlighet kan fångas upp. Den är inte kompatibel med lösen ord.
-> - Användare som behöver göra MFA kan inte logga in eftersom det inte finns någon interaktion.
-> - Användare kan inte utföra enkel inloggning (SSO).
+Att använda ett användar namn och ett lösen ord är användbart i vissa fall, till exempel DevOps-scenarier. Men om du vill använda ett användar namn och lösen ord i interaktiva scenarier där du anger ditt eget användar gränssnitt, bör du tänka på hur du ska flytta bort från det. Genom att använda ett användar namn och lösen ord har du ett antal saker:
+
+- Kärn Tenets av modern identitet. Ett lösen ord kan få phished och spelas upp eftersom en delad hemlighet kan fångas upp. Den är inte kompatibel med lösen ord.
+- Användare som behöver göra MFA kan inte logga in eftersom det inte finns någon interaktion.
+- Användare kan inte utföra enkel inloggning (SSO).
 
 ### <a name="constraints"></a>Villkor
 

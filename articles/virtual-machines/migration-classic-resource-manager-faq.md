@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 24e52f517f46de06fef8aa52e889185826c20d44
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: abf4e4621a7e42829032923a67d21c5322f432ec
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498403"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232734"
 ---
 # <a name="frequently-asked-questions-about-classic-to-azure-resource-manager-migration"></a>Vanliga frågor och svar om migrering från klassiskt läge till Azure Resource Manager
 
@@ -82,11 +82,11 @@ Under migreringen omformas resurserna från klassiskt läge till Resource Manage
 
 När du flyttar en virtuell dator från klassiskt läge till Resource Manager-läge migreras inte säkerhets kopior som togs innan migreringen till den nyligen migrerade Resource Manager-datorn. Men om du vill behålla dina säkerhets kopior av klassiska virtuella datorer följer du de här stegen innan du migrerar. 
 
-1. I Recovery Services-valvet går du till fliken **skyddade objekt** och väljer den virtuella datorn. 
-2. Klicka på Stoppa skydd. Lämna alternativet *Ta bort associerade säkerhetskopieringsdata***avmarkerat**.
+1. I Recovery Services-valvet går du till bladet **säkerhets kopierings objekt** och väljer den virtuella datorn. 
+2. Klicka på stoppa säkerhets kopiering. Välj "Behåll säkerhets kopierings data" i list menyn..
 
 > [!NOTE]
-> Du debiteras reserv instans kostnaden för att spara data. Säkerhets kopior kommer att rensas enligt kvarhållningsintervall. Den senaste säkerhets kopian sparas dock alltid tills du uttryckligen tar bort säkerhetskopierade data. Vi rekommenderar att du kontrollerar kvarhållningsintervallet för den virtuella datorn och utlöser "ta bort säkerhets kopierings data" på det skyddade objektet i valvet när kvarhållningsintervallet är över. 
+> Med det här alternativet stoppas alla framtida säkerhets kopierings jobb från att skydda den virtuella datorn. Azure Backups tjänsten behåller dock de återställnings punkter som har säkerhetskopierats.  Du måste betala för att behålla återställnings punkterna i valvet (se [Azure Backup priser](https://azure.microsoft.com/pricing/details/backup/) för mer information). Du kommer att kunna återställa den virtuella datorn om det behövs. Om du väljer att återuppta skyddet för virtuella datorer kan du använda alternativet *återuppta säkerhets kopiering* .
 >
 >
 

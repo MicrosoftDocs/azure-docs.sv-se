@@ -5,41 +5,43 @@ author: savjani
 ms.author: pariks
 ms.service: mariadb
 ms.topic: how-to
-ms.date: 10/1/2020
-ms.openlocfilehash: 882c8365bda87e97bfbc3bee9bdd320b312b4114
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.date: 01/15/2021
+ms.openlocfilehash: 62aadb366fd216cb6dcefff6cdde24dc21b8483a
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542719"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98231918"
 ---
-# <a name="create-users-in-azure-database-for-mariadb"></a>Skapa användare i Azure Database for MariaDB 
+# <a name="create-users-in-azure-database-for-mariadb"></a>Skapa användare i Azure Database for MariaDB
+
 I den här artikeln beskrivs hur du kan skapa användare i Azure Database for MariaDB.
 
 > [!NOTE]
 > Kompensations fri kommunikation
 >
-> Microsoft stöder en mängd olika och införlivande miljöer. Den här artikeln innehåller referenser till ordet _slav_. Microsofts [stil guide för en kostnads fri kommunikation](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) känner igen detta som ett undantags ord. Ordet används i den här artikeln för konsekvens eftersom det är det ord som visas i program varan. När program varan har uppdaterats för att ta bort ordet uppdateras den här artikeln som en justering.
+> Microsoft stöder en mängd olika och införlivande miljöer. Den här artikeln innehåller referenser till orden _Master_ och _slav_. Microsofts [stil guide för kommunikation utan fördjupad kommunikation](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) känner igen dessa som undantags ord. Orden används i den här artikeln för konsekvens eftersom de är för närvarande de ord som visas i program varan. När program varan har uppdaterats för att ta bort orden uppdateras den här artikeln som en justering.
 >
 
 När du först skapade din Azure Database for MariaDB angav du ett användar namn och lösen ord för Server Administratörs inloggning. För mer information, kan du följa [snabb](quickstart-create-mariadb-server-database-using-azure-portal.md)starten. Du kan hitta inloggnings användar namnet för Server administratören från Azure Portal.
 
 Server administratörs användaren får vissa behörigheter för servern enligt listan: Välj, infoga, uppdatera, ta bort, skapa, ta bort, läsa in, bearbeta, REFERERA, INDEXERA, ändra, Visa databaser, skapa TEMPORÄRa tabeller, Lås tabeller, köra, replikering slav, REPLIKERINGSPARTNER, skapa vy, Visa, skapa rutin, ändra rutin, skapa användare, händelse, utlösare
 
-När Azure Database for MariaDB-servern har skapats kan du använda det första server administratörs användar kontot för att skapa ytterligare användare och ge administratörs åtkomst till dem. Server administratörs kontot kan också användas för att skapa mindre privilegierade användare som har åtkomst till enskilda databas scheman.
+När Azure Database for MariaDB-servern har skapats kan du använda det första server administratörs användar kontot för att skapa fler användare och ge administratörs åtkomst till dem. Server administratörs kontot kan också användas för att skapa mindre privilegierade användare som har åtkomst till enskilda databas scheman.
 
 > [!NOTE]
 > Superprivilegiumet och DBA-rollen stöds inte. Granska [privilegierna](concepts-limits.md#privileges--data-manipulation-support) i artikeln begränsningar för att förstå vad som inte stöds i tjänsten.<br><br>
 > Lösen ords-plugin-program som "validate_password" och "caching_sha2_password" stöds inte av tjänsten.
 
-## <a name="create-additional-admin-users"></a>Skapa ytterligare administratörs användare
-1. Hämta anslutnings informationen och administratörs användar namnet.
-   Du behöver det fullständiga servernamnet och inloggningsuppgifterna för administratör för att ansluta till databasservern. Du kan enkelt hitta server namn och inloggnings information från sidan Server **Översikt** eller sidan **Egenskaper** i Azure Portal. 
+## <a name="create-more-admin-users"></a>Skapa fler administratörs användare
 
-2. Använd administratörs kontot och lösen ordet för att ansluta till din databas server. Använd önskat klient verktyg, till exempel MySQL Workbench, mysql.exe, HeidiSQL eller andra. 
+1. Hämta anslutnings informationen och administratörs användar namnet.
+   Du behöver det fullständiga servernamnet och inloggningsuppgifterna för administratör för att ansluta till databasservern. Du kan enkelt hitta server namn och inloggnings information från sidan Server **Översikt** eller sidan **Egenskaper** i Azure Portal.
+
+2. Använd administratörs kontot och lösen ordet för att ansluta till din databas server. Använd önskat klient verktyg, till exempel MySQL Workbench, mysql.exe, HeidiSQL eller andra.
    Om du är osäker på hur du ansluter, se [Använd MySQL Workbench för att ansluta och fråga efter data](./connect-workbench.md)
 
-3. Redigera och kör följande SQL-kod. Ersätt det nya användar namnet med plats hållarens värde `new_master_user` . Den här syntaxen beviljar de angivna behörigheterna för alla databas scheman ( *.* ) till användar namnet (new_master_user i det här exemplet). 
+3. Redigera och kör följande SQL-kod. Ersätt det nya användar namnet med plats hållarens värde `new_master_user` . Den här syntaxen beviljar de angivna behörigheterna för alla databas scheman (*.*) till användar namnet (new_master_user i det här exemplet). 
 
    ```sql
    CREATE USER 'new_master_user'@'%' IDENTIFIED BY 'StrongPassword!';
@@ -49,7 +51,8 @@ När Azure Database for MariaDB-servern har skapats kan du använda det första 
    FLUSH PRIVILEGES;
    ```
 
-4. Verifiera bidragen 
+4. Verifiera bidragen.
+
    ```sql
    USE sys;
    
@@ -79,6 +82,7 @@ När Azure Database for MariaDB-servern har skapats kan du använda det första 
    ```
 
 4. Verifiera bidragen i databasen.
+
    ```sql
    USE testdb;
    
@@ -90,6 +94,7 @@ När Azure Database for MariaDB-servern har skapats kan du använda det första 
    ```bash
    mysql --host mydemoserver.mariadb.database.azure.com --database testdb --user db_user@mydemoserver -p
    ```
+
    Mer information om hantering av användar konton finns i MariaDB-dokumentationen för [användar konto hantering](https://mariadb.com/kb/en/library/user-account-management/), [beviljande av syntax](https://mariadb.com/kb/en/library/grant/)och [privilegier](https://mariadb.com/kb/en/library/grant/#privilege-levels).
 
 ## <a name="azure_superuser"></a>azure_superuser
@@ -97,6 +102,7 @@ När Azure Database for MariaDB-servern har skapats kan du använda det första 
 Alla Azure Database for MySQL-servrar skapas med en användare som kallas "azure_superuser". Detta är ett system konto som har skapats av Microsoft för att hantera-servern för att utföra övervakning, säkerhets kopiering och annat regelbundet underhåll. On-Call-tekniker kan också använda det här kontot för att få åtkomst till servern under en incident med certifikatautentisering och måste begära åtkomst med JIT-processer (just-in-Time).
 
 ## <a name="next-steps"></a>Nästa steg
+
 Öppna brand väggen för IP-adresserna för de nya användarnas datorer så att de kan ansluta: [skapa och hantera Azure Database for MariaDB brand Väggs regler med hjälp av Azure Portal](howto-manage-firewall-portal.md)  
 
 <!--or [Azure CLI](howto-manage-firewall-using-cli.md).-->

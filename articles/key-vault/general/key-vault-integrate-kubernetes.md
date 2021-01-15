@@ -7,12 +7,12 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/25/2020
-ms.openlocfilehash: f0699ed065da4c63bc88945d75a866abcfbb9053
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: f4981036ca92f6efe2d3e23ea1f507a3a1f3c70a
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121370"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98234264"
 ---
 # <a name="tutorial-configure-and-run-the-azure-key-vault-provider-for-the-secrets-store-csi-driver-on-kubernetes"></a>Självstudie: Konfigurera och kör Azure Key Vault-providern för hemligheter Store CSI-drivrutinen på Kubernetes
 
@@ -22,7 +22,7 @@ ms.locfileid: "98121370"
 
 I den här självstudien får du åtkomst till och hämtar hemligheter från Azure Key Vault med hjälp av CSI-drivrutinen (hemligheter Store container Storage Interface) för att montera hemligheterna i Kubernetes poddar.
 
-I den här guiden får du lära dig att:
+I de här självstudierna får du lära dig att
 
 > [!div class="checklist"]
 > * Använd hanterade identiteter.
@@ -37,6 +37,8 @@ I den här guiden får du lära dig att:
 * Om du inte har en Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
 * Innan du börjar den här självstudien installerar du [Azure CLI](/cli/azure/install-azure-cli-windows?view=azure-cli-latest).
+
+Den här självstudien förutsätter att du köra Azure Kubernetes-tjänsten på Linux-noder.
 
 ## <a name="use-managed-identities"></a>Använda hanterade identiteter
 
@@ -77,6 +79,8 @@ Slutför avsnitten "skapa en resurs grupp," skapa AKS-kluster "och" Anslut till 
     ![Skärm bild av Azure CLI med principalId-och clientId-värden markerad ](../media/kubernetes-key-vault-2.png) ![ skärm bild av Azure CLI med subscriptionId-och nodeResourceGroup-värden markerade](../media/kubernetes-key-vault-3.png)
     
 ## <a name="install-helm-and-the-secrets-store-csi-driver"></a>Installera Helm och nyckeln för hemligheter Store CSI
+> [!NOTE]
+> Under installationen fungerar bara på AKS i Linux. Mer information om hemligheter för att lagra CSI-drivrutiner finns i [Azure Key Vault Provider för hemligheter Store CSI-drivrutin](https://github.com/Azure/secrets-store-csi-driver-provider-azure) 
 
 Om du vill installera CSI-drivrutinen för hemligheter-arkivet måste du först installera [Helm](https://helm.sh/docs/intro/install/).
 

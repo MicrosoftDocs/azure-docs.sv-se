@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/08/2018
 ms.author: kumud
-ms.openlocfilehash: 6eab1803bf5adab42be87b5f8567682c6d75947e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8cb1a490ac8edf2630253b45d99c3394bbe721b8
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74483528"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98234162"
 ---
 # <a name="disaster-recovery-using-azure-dns-and-traffic-manager"></a>Haveriberedskap med hjälp av Azure DNS och Traffic Manager
 
@@ -45,7 +45,7 @@ De flesta företags kunder väljer en arkitektur med flera regioner för återh�
     
     *Bild: aktiv/passiv med haveri beredskap för katastrof återställning*
     
-Mer information om redundans och hög tillgänglighet finns i [haveri beredskap för Azure-program](https://docs.microsoft.com/azure/architecture/resiliency/disaster-recovery-azure-applications).
+Mer information om redundans och hög tillgänglighet finns i [haveri beredskap för Azure-program](/azure/architecture/resiliency/disaster-recovery-azure-applications).
 
 
 ## <a name="planning-your-disaster-recovery-architecture"></a>Planera din katastrof återställnings arkitektur
@@ -54,7 +54,7 @@ Det finns två tekniska aspekter för att konfigurera din katastrof återställn
 -  Använda en distributions metod för att replikera instanser, data och konfigurationer mellan primära miljöer och vänte läge. Den här typen av haveri beredskap kan göras internt via Azure Site-Recovery via Microsoft Azure partner utrustning/tjänster som Veritas eller NetApp. 
 - Utveckla en lösning för att minska nätverks-/webb trafik från den primära platsen till vänte läges platsen. Den här typen av katastrof återställning kan uppnås via Azure DNS, Azure Traffic Manager (DNS) eller globala belastningsutjämnare från tredje part.
 
-Den här artikeln är begränsad till metoder via omdirigering av nätverks-och webb trafik. Instruktioner för hur du konfigurerar Azure Site Recovery finns i [Azure Site Recovery dokumentation](https://docs.microsoft.com/azure/site-recovery/).
+Den här artikeln är begränsad till metoder via omdirigering av nätverks-och webb trafik. Instruktioner för hur du konfigurerar Azure Site Recovery finns i [Azure Site Recovery dokumentation](../site-recovery/index.yml).
 DNS är en av de mest effektiva mekanismerna för att minska nätverks trafiken eftersom DNS ofta är globalt och externt för data centret och är isolerat från eventuella regional-eller tillgänglighets zons nivå problem (AZ). En kan använda en DNS-baserad redundans och i Azure kan två DNS-tjänster utföra samma i vissa mode-Azure DNS (auktoritativ DNS) och Azure Traffic Manager (DNS-baserad Smart trafik dirigering). 
 
 Det är viktigt att förstå några av de koncept i DNS som används för att diskutera de lösningar som beskrivs i den här artikeln:
@@ -146,7 +146,7 @@ Skapa en ny Azure Traffic Manager-profil med namnet contoso123 och välj routnin
 
 ### <a name="step-2-create-endpoints-within-the-traffic-manager-profile"></a>Steg 2: skapa slut punkter i Traffic Manager profilen
 
-I det här steget skapar du slut punkter som pekar på platserna för produktion och haveri beredskap. Här väljer du **typ** som en extern slut punkt, men om resursen finns i Azure kan du även välja **Azure-slutpunkt** . Om du väljer **Azure-slutpunkt**väljer du en **mål resurs** som antingen är en **App Service** eller en **offentlig IP-adress** som tilldelas av Azure. Prioriteten anges som **1** eftersom den är den primära tjänsten för region 1.
+I det här steget skapar du slut punkter som pekar på platserna för produktion och haveri beredskap. Här väljer du **typ** som en extern slut punkt, men om resursen finns i Azure kan du även välja **Azure-slutpunkt** . Om du väljer **Azure-slutpunkt** väljer du en **mål resurs** som antingen är en **App Service** eller en **offentlig IP-adress** som tilldelas av Azure. Prioriteten anges som **1** eftersom den är den primära tjänsten för region 1.
 På samma sätt kan du skapa en slut punkt för haveri beredskap i Traffic Manager också.
 
 ![Skapa Disaster Recovery-slutpunkter](./media/disaster-recovery-dns-traffic-manager/create-disaster-recovery-endpoint.png)
@@ -170,12 +170,3 @@ Under en katastrof kommer den primära slut punkten att avsökas och statusen ä
 ## <a name="next-steps"></a>Nästa steg
 - Läs mer om [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md).
 - Läs mer om [Azure DNS](../dns/dns-overview.md).
-
-
-
-
-
-
-
-
-

@@ -4,14 +4,14 @@ description: Referens guide till funktioner i uttryck för Azure Logic Apps och 
 services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
-ms.topic: conceptual
-ms.date: 09/04/2020
-ms.openlocfilehash: 222f6ebacb6139ca26a6f1cdd0f896270c9b2fc2
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.topic: reference
+ms.date: 01/13/2021
+ms.openlocfilehash: fe40cbe84e8e3341b03c6c8e11701fe3db6bc3d0
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98034303"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98234230"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>Referens guide för att använda funktioner i uttryck för Azure Logic Apps och energi automatisering
 
@@ -103,7 +103,7 @@ Om du vill arbeta med samlingar, vanligt vis matriser, strängar och ibland kan 
 
 | Samlings funktion | Uppgift |
 | ------------------- | ---- |
-| [ingår](../logic-apps/workflow-definition-language-functions-reference.md#contains) | Kontrol lera om en samling har ett angivet objekt. |
+| [innehåller](../logic-apps/workflow-definition-language-functions-reference.md#contains) | Kontrol lera om en samling har ett angivet objekt. |
 | [tomt](../logic-apps/workflow-definition-language-functions-reference.md#empty) | Kontrol lera om en samling är tom. |
 | [förstagångskörningen](../logic-apps/workflow-definition-language-functions-reference.md#first) | Returnera det första objektet från en samling. |
 | [överlappning](../logic-apps/workflow-definition-language-functions-reference.md#intersection) | Returnera en samling som *endast* innehåller gemensamma objekt i de angivna samlingarna. |
@@ -166,7 +166,7 @@ Om du vill ändra ett värdes typ eller format kan du använda dessa konverterin
 | [float](../logic-apps/workflow-definition-language-functions-reference.md#float) | Returnera ett flytt ALS nummer för ett indatavärde. |
 | [int](../logic-apps/workflow-definition-language-functions-reference.md#int) | Returnera heltals versionen för en sträng. |
 | [utgör](../logic-apps/workflow-definition-language-functions-reference.md#json) | Returnera värdet för JavaScript Object Notation (JSON) av typen eller objektet för en sträng eller XML. |
-| [sträng](../logic-apps/workflow-definition-language-functions-reference.md#string) | Returnera sträng versionen för ett indatavärde. |
+| [nollängd](../logic-apps/workflow-definition-language-functions-reference.md#string) | Returnera sträng versionen för ett indatavärde. |
 | [uriComponent](../logic-apps/workflow-definition-language-functions-reference.md#uriComponent) | Returnera den URI-kodade versionen för ett indatavärde genom att ersätta URL-osäkra tecken med escape-tecken. |
 | [uriComponentToBinary](../logic-apps/workflow-definition-language-functions-reference.md#uriComponentToBinary) | Returnera den binära versionen för en URI-kodad sträng. |
 | [uriComponentToString](../logic-apps/workflow-definition-language-functions-reference.md#uriComponentToString) | Returnera sträng versionen för en URI-kodad sträng. |
@@ -211,10 +211,10 @@ Fullständig referens för varje funktion finns i [alfabetisk lista](../logic-ap
 
 | Matematik funktion | Uppgift |
 | ------------- | ---- |
-| [skapa](../logic-apps/workflow-definition-language-functions-reference.md#add) | Returnera resultatet från att lägga till två tal. |
+| [add](../logic-apps/workflow-definition-language-functions-reference.md#add) | Returnera resultatet från att lägga till två tal. |
 | [div](../logic-apps/workflow-definition-language-functions-reference.md#div) | Returnera resultatet från att dividera två tal. |
 | [bekräftat](../logic-apps/workflow-definition-language-functions-reference.md#max) | Returnera det högsta värdet från en uppsättning tal eller en matris. |
-| [minimum](../logic-apps/workflow-definition-language-functions-reference.md#min) | Returnera det lägsta värdet från en uppsättning tal eller en matris. |
+| [min](../logic-apps/workflow-definition-language-functions-reference.md#min) | Returnera det lägsta värdet från en uppsättning tal eller en matris. |
 | [rest](../logic-apps/workflow-definition-language-functions-reference.md#mod) | Returnera resten från att dividera två tal. |
 | [mul](../logic-apps/workflow-definition-language-functions-reference.md#mul) | Returnera produkten från att multiplicera två tal. |
 | [slump](../logic-apps/workflow-definition-language-functions-reference.md#rand) | Returnera ett slumpmässigt heltal från ett angivet intervall. |
@@ -268,7 +268,7 @@ Fullständig referens för varje funktion finns i [alfabetisk lista](../logic-ap
 
 | Arbetsflödesfunktion | Uppgift |
 | ----------------- | ---- |
-| [tgärd](../logic-apps/workflow-definition-language-functions-reference.md#action) | Returnera den aktuella åtgärdens utdata vid körning eller värden från andra JSON-namn-och värdepar. Se även [åtgärder](../logic-apps/workflow-definition-language-functions-reference.md#actions). |
+| [åtgärd](../logic-apps/workflow-definition-language-functions-reference.md#action) | Returnera den aktuella åtgärdens utdata vid körning eller värden från andra JSON-namn-och värdepar. Se även [åtgärder](../logic-apps/workflow-definition-language-functions-reference.md#actions). |
 | [actionBody](../logic-apps/workflow-definition-language-functions-reference.md#actionBody) | Returnera en åtgärds `body` utdata vid körning. Se även [brödtext](../logic-apps/workflow-definition-language-functions-reference.md#body). |
 | [actionOutputs](../logic-apps/workflow-definition-language-functions-reference.md#actionOutputs) | Returnera en åtgärds utdata vid körning. Se [utdata](../logic-apps/workflow-definition-language-functions-reference.md#outputs) och [åtgärder](../logic-apps/workflow-definition-language-functions-reference.md#actions). |
 | [Action](../logic-apps/workflow-definition-language-functions-reference.md#actions) | Returnera en åtgärds utdata vid körning eller värden från andra JSON-namn och värde-par. Se även [åtgärd](../logic-apps/workflow-definition-language-functions-reference.md#action).  |
@@ -2532,11 +2532,17 @@ Det här exemplet skapar en Counter-variabel och ökar den variabeln med ett vä
 
 ### <a name="json"></a>json
 
-Returnera värdet för JavaScript Object Notation (JSON) av typen eller objektet för en sträng eller XML.
+Returnera det JavaScript Object Notation (JSON) typ värde, objekt eller matris med objekt för en sträng eller XML.
 
 ```
 json('<value>')
+json(xml('value'))
 ```
+
+> [!IMPORTANT]
+> Om inte ett XML-schema som definierar utdatans struktur anges kan funktionen returnera resultat där strukturen skiljer sig avsevärt från det förväntade formatet, beroende på indata.
+>  
+> Det här beteendet gör den här funktionen olämplig för scenarier där resultatet måste följa ett väldefinierat kontrakt, till exempel i kritiska affärs system eller lösningar.
 
 | Parameter | Krävs | Typ | Beskrivning |
 | --------- | -------- | ---- | ----------- |
@@ -2545,12 +2551,12 @@ json('<value>')
 
 | Returvärde | Typ | Beskrivning |
 | ------------ | ---- | ----------- |
-| <*JSON-resultat*> | Inbyggd JSON-typ eller-objekt | Det interna JSON-värdet eller objektet för den angivna strängen eller XML-filen. Om strängen är null returnerar funktionen ett tomt objekt. |
+| <*JSON-resultat*> | Inbyggd JSON-typ, objekt eller matris | JSON-typens värde, objekt eller matris av objekt från Indatasträngen eller XML. <p><p>-Om du skickar XML som har ett enda underordnat element i rot elementet returnerar funktionen ett enda JSON-objekt för det underordnade elementet. <p> -Om du skickar XML som har flera underordnade element i rot elementet, returnerar funktionen en matris som innehåller JSON-objekt för de underordnade elementen. <p>-Om strängen är null returnerar funktionen ett tomt objekt. |
 ||||
 
 *Exempel 1*
 
-I det här exemplet konverteras den här strängen till JSON-värdet:
+I det här exemplet konverteras strängen till ett JSON-värde:
 
 ```
 json('[1, 2, 3]')
@@ -2568,7 +2574,7 @@ json('{"fullName": "Sophia Owen"}')
 
 Och returnerar följande resultat:
 
-```
+```json
 {
   "fullName": "Sophia Owen"
 }
@@ -2576,23 +2582,53 @@ Och returnerar följande resultat:
 
 *Exempel 3*
 
-I det här exemplet konverteras XML till JSON:
+I det här exemplet `json()` används `xml()` -och-funktionerna för att konvertera XML som har ett enda underordnat element i rot elementet till ett JSON-objekt med namnet `person` för det underordnade elementet:
 
-```
-json(xml('<?xml version="1.0"?> <root> <person id='1'> <name>Sophia Owen</name> <occupation>Engineer</occupation> </person> </root>'))
-```
+`json(xml('<?xml version="1.0"?> <root> <person id='1'> <name>Sophia Owen</name> <occupation>Engineer</occupation> </person> </root>'))`
 
 Och returnerar följande resultat:
 
 ```json
 {
-   "?xml": { "@version": "1.0" },
+   "?xml": { 
+      "@version": "1.0" 
+   },
    "root": {
-      "person": [ {
+      "person": {
          "@id": "1",
          "name": "Sophia Owen",
          "occupation": "Engineer"
-      } ]
+      }
+   }
+}
+```
+
+*Exempel 4*
+
+I det här exemplet `json()` används `xml()` -och-funktionerna för att konvertera XML som har flera underordnade element i rot elementet till en matris med namnet `person` som innehåller JSON-objekt för de underordnade elementen:
+
+`json(xml('<?xml version="1.0"?> <root> <person id='1'> <name>Sophia Owen</name> <occupation>Engineer</occupation> </person> <person id='2'> <name>John Doe</name> <occupation>Engineer</occupation> </person> </root>'))`
+
+Och returnerar följande resultat:
+
+```json
+{
+   "?xml": {
+      "@version": "1.0"
+   },
+   "root": {
+      "person": [
+         {
+            "@id": "1",
+            "name": "Sophia Owen",
+            "occupation": "Engineer"
+         },
+         {
+            "@id": "2",
+            "name": "John Doe",
+            "occupation": "Engineer"
+         }
+      ]
    }
 }
 ```

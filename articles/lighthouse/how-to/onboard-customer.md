@@ -1,14 +1,14 @@
 ---
 title: Registrera en kund i Azure Lighthouse
 description: Lär dig hur du kan publicera en kund i Azure Lighthouse, så att deras resurser kan nås och hanteras via din egen klient med Azure-delegerad resurs hantering.
-ms.date: 12/15/2020
+ms.date: 01/14/2021
 ms.topic: how-to
-ms.openlocfilehash: 023b44a77cb38a14df8aa6a885ff137c02942061
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: 1a7c8fc85819b2c34b5c64dc83cb908b7bee3c41
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516138"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232683"
 ---
 # <a name="onboard-a-customer-to-azure-lighthouse"></a>Registrera en kund i Azure Lighthouse
 
@@ -62,14 +62,17 @@ az account show
 
 ## <a name="define-roles-and-permissions"></a>Definiera roller och behörigheter
 
-Som tjänst leverantör kanske du vill utföra flera uppgifter för en enskild kund, vilket kräver olika åtkomst för olika omfång. Du kan definiera så många auktoriseringar som du behöver för att kunna tilldela lämpliga [inbyggda Azure-roller](../../role-based-access-control/built-in-roles.md) till användare i din klient organisation.
+Som tjänst leverantör kanske du vill utföra flera uppgifter för en enskild kund, vilket kräver olika åtkomst för olika omfång. Du kan definiera så många auktoriseringar som du behöver för att kunna tilldela lämpliga [inbyggda Azure-roller](../../role-based-access-control/built-in-roles.md). Varje auktorisering innehåller en **principalId** som refererar till en Azure AD-användare, en grupp eller ett tjänst huvud namn i hanterings klienten.
 
-För att förenkla hanteringen rekommenderar vi att du använder Azure AD-användargrupper för varje roll. Detta ger dig flexibiliteten att lägga till eller ta bort enskilda användare i gruppen som har åtkomst, så att du inte behöver upprepa onboarding-processen för att göra ändringar i användaren. Du kan tilldela roller till ett huvud namn för tjänsten, vilket kan vara användbart för automatiserings scenarier.
+> [!NOTE]
+> Om inget annat anges kan referenser till en "användare" i Azure Lighthouse-dokumentationen gälla för en Azure AD-användare, en grupp eller ett tjänst huvud namn i en auktorisering.
+
+För att förenkla hanteringen rekommenderar vi att du använder Azure AD-användargrupper för varje roll närhelst det är möjligt, i stället för enskilda användare. Detta ger dig flexibiliteten att lägga till eller ta bort enskilda användare i gruppen som har åtkomst, så att du inte behöver upprepa onboarding-processen för att göra ändringar i användaren. Du kan också tilldela roller till ett huvud namn för tjänsten, vilket kan vara användbart för automatiserings scenarier.
 
 > [!IMPORTANT]
 > För att du ska kunna lägga till behörigheter för en Azure AD-grupp måste **grupp typen** anges till **säkerhet**. Det här alternativet väljs när gruppen skapas. Mer information finns i [Skapa en grundläggande grupp och lägga till medlemmar med hjälp av Azure Active Directory](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
 
-När du definierar dina auktoriseringar måste du kontrol lera att du följer principen om minsta behörighet så att användarna bara har de behörigheter som krävs för att utföra sitt jobb. Rikt linjer och information om vilka roller som stöds finns i [klienter, användare och roller i Azure Lighthouse-scenarier](../concepts/tenants-users-roles.md).
+När du definierar dina auktoriseringar måste du kontrol lera att du följer principen om minsta behörighet så att användarna bara har de behörigheter som krävs för att utföra sitt jobb. Information om vilka roller och bästa metoder som stöds finns i [klienter, användare och roller i Azure Lighthouse-scenarier](../concepts/tenants-users-roles.md).
 
 För att definiera auktorisering måste du känna till ID-värdena för varje användare, användar grupp eller tjänstens huvud namn i den tjänst leverantörs klient organisation som du vill bevilja åtkomst till. Du behöver också roll Definitions-ID: t för varje inbyggd roll som du vill tilldela. Om du inte redan har gjort det kan du hämta dem genom att köra kommandona nedan inifrån tjänst leverantörens klient organisation.
 
@@ -195,7 +198,7 @@ I följande exempel visas en ändrad **delegatedResourceManagement.parameters.js
 }
 ```
 
-Den senaste auktoriseringen i exemplet ovan lägger till en **principalId** med rollen administratör för användar åtkomst (18d7d88d-d35e-4fb5-a5c3-7773c20a72d9). När du tilldelar den här rollen måste du inkludera egenskapen **delegatedRoleDefinitionIds** och en eller flera inbyggda roller. Användaren som skapas i detta tillstånd kommer att kunna tilldela de här inbyggda rollerna till [hanterade identiteter](../../active-directory/managed-identities-azure-resources/overview.md) i kund klienten, vilket krävs för att [distribuera principer som kan åtgärdas](deploy-policy-remediation.md).  Användaren kan också skapa support incidenter.  Inga andra behörigheter som vanligt vis är kopplade till rollen administratör för användar åtkomst gäller för den här användaren.
+Den senaste auktoriseringen i exemplet ovan lägger till en **principalId** med rollen administratör för användar åtkomst (18d7d88d-d35e-4fb5-a5c3-7773c20a72d9). När du tilldelar den här rollen måste du inkludera egenskapen **delegatedRoleDefinitionIds** och en eller flera inbyggda Azure-roller som stöds. Användaren som skapas i detta tillstånd kommer att kunna tilldela dessa roller till [hanterade identiteter](../../active-directory/managed-identities-azure-resources/overview.md) i kund klienten, vilket krävs för att [distribuera principer som kan åtgärdas](deploy-policy-remediation.md).  Användaren kan också skapa support incidenter. Inga andra behörigheter som är associerade med rollen administratör för användar åtkomst gäller för den här **principalId**.
 
 ## <a name="deploy-the-azure-resource-manager-templates"></a>Distribuera Azure Resource Manager mallar
 
@@ -278,7 +281,7 @@ I kundens klient organisation:
 3. Bekräfta att du kan se prenumerationerna med det erbjudande namn som du angav i Resource Manager-mallen.
 
 > [!NOTE]
-> Det kan ta några minuter efter att distributionen är klar innan uppdateringarna återspeglas i Azure Portal.
+> Det kan ta upp till 15 minuter innan distributionen är klar innan uppdateringarna återspeglas i Azure Portal. Du kanske kan se uppdateringarna tidigare om du uppdaterar din Azure Resource Manager-token genom att uppdatera webbläsaren, logga in och ut eller begära en ny token.
 
 ### <a name="powershell"></a>PowerShell
 
@@ -312,6 +315,7 @@ Om du inte kan publicera kunden eller om dina användare har problem med att kom
 - **Microsoft. ManagedServices** -resurs leverantören måste vara registrerad för den delegerade prenumerationen. Detta bör ske automatiskt under distributionen, men om inte kan du [registrera den manuellt](../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider).
 - Auktoriseringar får inte innehålla några användare med den inbyggda rollen [ägare](../../role-based-access-control/built-in-roles.md#owner) eller någon inbyggd roll med [DataActions](../../role-based-access-control/role-definitions.md#dataactions).
 - Grupper måste skapas med en [**grupp typ**](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md#group-types) som **säkerhet** och inte **Microsoft 365**.
+- Det kan finnas ytterligare fördröjning innan åtkomst har Aktiver ATS för [kapslade grupper](../..//active-directory/fundamentals/active-directory-groups-membership-azure-portal.md).
 - Användare som behöver visa resurser i Azure Portal måste ha rollen [läsare](../../role-based-access-control/built-in-roles.md#reader) (eller en annan inbyggd roll som inkluderar läsar åtkomst).
 
 ## <a name="next-steps"></a>Nästa steg

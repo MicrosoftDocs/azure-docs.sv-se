@@ -9,12 +9,12 @@ ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/01/2020
-ms.openlocfilehash: 4e83cca79a4dc99533ab17cca7e96e1ac802d598
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: ee13b2fbe4abbaf9bddf4975f8e25d746dc78f5e
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95020801"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232190"
 ---
 # <a name="azure-time-series-insights-gen2-event-sources"></a>Azure Time Series Insights händelse källor för Gen2
 
@@ -45,13 +45,25 @@ När du ansluter en händelse källa kommer din Azure Time Series Insights Gen2-
 
 - Gå inte utöver din miljös gräns för [data flödes hastighet](./concepts-streaming-ingress-throughput-limits.md) eller per partition.
 
-- Konfigurera en fördröjnings [avisering](./time-series-insights-environment-mitigate-latency.md#monitor-latency-and-throttling-with-alerts) för att bli meddelad om din miljö har problem med att bearbeta data.
+- Konfigurera en fördröjnings [avisering](./time-series-insights-environment-mitigate-latency.md#monitor-latency-and-throttling-with-alerts) för att bli meddelad om din miljö har problem med att bearbeta data. Se [produktions arbets belastningar](./concepts-streaming-ingestion-event-sources.md#production-workloads) nedan för föreslagna aviserings villkor. 
 
 - Använd strömnings inmatning för nästan endast real tids data och senaste data, så stöds inte direkt uppspelning av historiska data.
 
 - Förstå hur egenskaper kommer att utjämnas och JSON- [data ska utplattas och lagras.](./concepts-json-flattening-escaping-rules.md)
 
 - Följ principen om minsta behörighet när du tillhandahåller anslutnings strängar för händelse källan. För Event Hubs konfigurerar du en princip för delad åtkomst med endast *Skicka* anspråk och för IoT Hub använda endast *tjänst anslutnings* behörighet.
+
+## <a name="production-workloads"></a>Produktionsarbetsbelastningar
+
+Utöver de bästa metoderna ovan rekommenderar vi att du implementerar följande för affärs kritiska arbets belastningar. 
+
+- Öka din IoT Hub-eller Event Hub-datakvarhållning till maximalt 7 dagar.
+
+- Skapa miljö varningar i Azure Portal. Med aviseringar som baseras på plattforms [mått](https://docs.microsoft.com/azure/time-series-insights/how-to-monitor-tsi-reference#metrics) kan du validera pipeline-beteendet från slut punkt till slut punkt. Anvisningar för att skapa och hantera aviseringar finns [här](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-environment-mitigate-latency#monitor-latency-and-throttling-with-alerts). Föreslagna aviserings villkor:
+
+     - IngressReceivedMessagesTimeLag är större än 5 minuter
+     - IngressReceivedBytes är 0
+- Se till att din inmatnings belastning fördelas mellan IoT Hub-eller Händelsehubben-partitioner.
 
 ### <a name="historical-data-ingestion"></a>Historisk data inmatning
 

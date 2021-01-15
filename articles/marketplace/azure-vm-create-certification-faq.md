@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/19/2020
-ms.openlocfilehash: bc1ae4bc2cf64c3e2f996709c086eb23cb8b8385
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 61bd23c74fd7960317dff17175b355b473cd6dc7
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602605"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233839"
 ---
 # <a name="troubleshoot-virtual-machine-certification"></a>Felsöka virtuell dator certifiering
 
@@ -35,7 +35,7 @@ Felet uppstår när du använder en bas avbildning som tillhör en annan utgivar
 - [Windows-avbildningar](azure-vm-create-using-approved-base.md)
 
 > [!Note]
-> Om du använder en Linux-avbildning som inte tas från Azure Marketplace kan du förskjuta den första partitionen med 2048 KB. På så sätt kan du använda det oformaterade utrymmet för att lägga till ny fakturerings information och låta Azure fortsätta med publiceringen av den virtuella datorn till Azure Marketplace.  
+> Om du använder en Linux-avbildning som inte tas från Azure Marketplace ser du till att de första 2048 sektorerna (varje sektor är av 512 byte) på den virtuella hård disken är tomma så att Azure fortsätter med publiceringen av den virtuella datorn på Azure Marketplace.  
 
 ## <a name="vm-extension-failure"></a>Problem med VM-tillägg
 
@@ -328,14 +328,14 @@ I följande tabell finns några problem som kan uppstå när du laddar ned den v
 |6|Villkorlig HTTP-rubrik|SAS-webbadressen är ogiltig.|Hämta rätt SAS-URL.|
 |7|Ogiltigt VHD-namn|Kontrol lera om det finns specialtecken, till exempel ett procent tecken `%` eller citat tecken `"` , i VHD-namnet.|Byt namn på VHD-filen genom att ta bort specialtecknen.|
 
-## <a name="first-mb-2048-kb-partition-linux-only"></a>Första MB (2048 KB) partition (endast Linux)
+## <a name="first-1mb-2048-sectors-each-sector-of-512-bytes-partition-linux-only"></a>Första 1 MB (2048 sektorer, varje sektor på 512 byte) partition (endast Linux)
 
-När du skickar den virtuella hård disken måste du se till att den första 2048 KB av den virtuella hård disken är tom. Annars Miss kommer begäran.
+När du skickar den virtuella hård disken måste du se till att de första 2048 sektorerna (1 MB) för den virtuella hård disken är tomma. Annars Miss kommer begäran. Observera att detta gäller för start-/OS-diskar och inte för ytterligare data diskar.
 
 >[!NOTE]
->För vissa särskilda bilder, till exempel de som skapats ovanpå Azure Windows Base-avbildningar som tagits från Azure Marketplace, kontrollerar vi om det finns en fakturerings etikett och ignorerar MB-partitionen om fakturerings tag gen finns och matchar våra interna tillgängliga värden.
+>För vissa särskilda bilder, till exempel de som skapats ovanpå Azure Windows Base-avbildningar som tagits från Azure Marketplace eller se till att de första 1 MB (2048 sektorer) för den virtuella hård disken är tomma. 
 
-### <a name="create-a-first-mb-2048-kb-partition-on-an-empty-vhd"></a>Skapa en första MB-partition (2048 KB) på en tom virtuell hård disk
+### <a name="create-a-first-1mb-2048-sectors-each-sector-of-512-bytes-partition-on-an-empty-vhd"></a>Skapa en första 1 MB (2048 sektorer, varje sektor på 512 byte) på en tom virtuell hård disk
 
 De här stegen gäller endast för Linux.
 
@@ -386,7 +386,7 @@ De här stegen gäller endast för Linux.
    1. Ange 2048 som _första sektor_ värde. Du kan lämna den _sista sektorn_ som standardvärde.
 
       >[!IMPORTANT]
-      >Alla befintliga data kommer att raderas till 2048 KB. Säkerhets kopiering av den virtuella hård disken innan du skapar en ny partition.
+      >Befintliga data raderas till 2048 sektorer (varje sektor av 512 byte). Säkerhets kopiering av den virtuella hård disken innan du skapar en ny partition.
 
       ![Kommando rads skärm för SparaTillFil-klient visar kommandon och utdata för raderade data.](./media/create-vm/vm-certification-issues-solutions-22.png)
 
@@ -400,7 +400,7 @@ De här stegen gäller endast för Linux.
 
 1. Koppla från den virtuella hård disken från den virtuella datorn och ta bort den virtuella datorn.
 
-### <a name="create-a-first-mb-2048-kb-partition-by-moving-existing-data-on-vhd"></a>Skapa en första MB-partition (2048 KB) genom att flytta befintliga data på den virtuella hård disken
+### <a name="create-a-first-mb-2048-sectors-each-sector-of-512-bytes-partition-by-moving-existing-data-on-vhd"></a>Skapa en första MB (2048 sektorer, varje sektor om 512 byte)-partition genom att flytta befintliga data på den virtuella hård disken
 
 De här stegen gäller endast för Linux.
 

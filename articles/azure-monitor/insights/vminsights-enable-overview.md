@@ -7,12 +7,12 @@ author: bwren
 ms.author: bwren
 ms.date: 12/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: ce90ab160696e2c38d917a391eecb0d51a31282f
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 655a146ccde9c75629d0a991a6a3aafa91f40764
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97740597"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233975"
 ---
 # <a name="enable-azure-monitor-for-vms-overview"></a>Aktivera Azure Monitor for VMs översikt
 
@@ -52,6 +52,9 @@ Azure Monitor for VMs är tillgängligt för Azure Arc-aktiverade servrar i regi
 
 Azure Monitor for VMs stöder alla operativ system som stöder Log Analytics agent och beroende agent. Se [Översikt över Azure Monitor agenter ](../platform/agents-overview.md#supported-operating-systems) för en fullständig lista.
 
+> [!IMPORTANT]
+> Azure Monitor for VMs-funktionen för gäst hälsa har mer begränsat operativ system stöd medan den är i offentlig för hands version. En detaljerad lista finns i [aktivera Azure Monitor for VMS gäst hälsa (för hands version)](vminsights-health-enable.md) .
+
 Se följande lista över överväganden för Linux-stöd för den beroende agent som stöder Azure Monitor for VMs:
 
 - Endast standardversioner och SMP Linux-kernelversioner stöds.
@@ -63,7 +66,7 @@ Se följande lista över överväganden för Linux-stöd för den beroende agent
 ## <a name="log-analytics-workspace"></a>Log Analytics-arbetsyta
 Azure Monitor for VMs kräver en Log Analytics-arbetsyta. Mer information och krav för den här arbets ytan finns i [konfigurera Log Analytics arbets yta för Azure Monitor for VMS](vminsights-configure-workspace.md) .
 ## <a name="agents"></a>Agenter
-Azure Monitor for VMs kräver att följande två agenter installeras på varje virtuell dator eller skalnings uppsättning för virtuella datorer som ska övervakas. Att installera dessa agenter och ansluta dem till arbets ytan är det enda kravet att publicera resursen.
+Azure Monitor for VMs kräver att följande två agenter installeras på varje virtuell dator eller skalnings uppsättning för virtuella datorer som ska övervakas. Om du vill publicera resursen installerar du dessa agenter och ansluter dem till arbets ytan.  Se [nätverks krav](../platform/log-analytics-agent.md#network-requirements) för nätverks kraven för dessa agenter.
 
 - [Log Analytics agent](../platform/log-analytics-agent.md). Samlar in händelser och prestanda data från den virtuella datorn eller skalnings uppsättningen för den virtuella datorn och levererar den till Log Analytics arbets ytan. Distributions metoder för Log Analytics-agenten på Azure-resurser använder VM-tillägget för [Windows](../../virtual-machines/extensions/oms-windows.md) och [Linux](../../virtual-machines/extensions/oms-linux.md).
 - Beroende agent. Samlar in identifierade data om processer som körs på den virtuella datorn och externa process beroenden, vilka används av [Map-funktionen i Azure Monitor for VMS](vminsights-maps.md). Beroende agenten använder den Log Analytics agenten för att leverera data till Azure Monitor. Distributions metoder för beroende agenten på Azure-resurser använder VM-tillägget för [Windows](../../virtual-machines/extensions/agent-dependency-windows.md) och [Linux](../../virtual-machines/extensions/agent-dependency-linux.md).

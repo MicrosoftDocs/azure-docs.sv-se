@@ -5,13 +5,13 @@ author: savjani
 ms.author: pariks
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: bca995f8b2cea33266e032b543abb18ee7140f3f
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.date: 01/15/2021
+ms.openlocfilehash: 164285b1fea3dce18161066e643aa165e47cc496
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541189"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233994"
 ---
 # <a name="monitor-azure-database-for-mariadb-performance-with-query-store"></a>Övervaka Azure Database for MariaDB prestanda med Query Store
 
@@ -21,7 +21,7 @@ Funktionen Query Store i Azure Database for MariaDB är ett sätt att spåra fr�
 
 ## <a name="common-scenarios-for-using-query-store"></a>Vanliga scenarier för att använda Query Store
 
-Query Store kan användas i ett antal scenarier, inklusive följande:
+Query Store kan användas i många situationer, inklusive följande:
 
 - Identifiera försämrat-frågor
 - Bestämma hur många gånger en fråga kördes under ett angivet tidsintervall
@@ -34,14 +34,14 @@ Frågearkivet är en valbar funktion, så den är inte aktiv som standard på en
 ### <a name="enable-query-store-using-the-azure-portal"></a>Aktivera Query Store med hjälp av Azure Portal
 
 1. Logga in på Azure Portal och välj Azure Database for MariaDB-servern.
-1. Välj **Server parametrar** i avsnittet **Inställningar** på menyn.
-1. Sök efter parametern query_store_capture_mode.
-1. Ange värdet till alla och **Spara**.
+2. Välj **Server parametrar** i avsnittet **Inställningar** på menyn.
+3. Sök efter parametern query_store_capture_mode.
+4. Ange värdet till alla och **Spara**.
 
 Så här aktiverar du väntande statistik i Frågearkivet:
 
 1. Sök efter parametern query_store_wait_sampling_capture_mode.
-1. Ange värdet till alla och **Spara**.
+2. Ange värdet till alla och **Spara**.
 
 Låt upp till 20 minuter innan den första data mängden sparas i MySQL-databasen.
 
@@ -87,7 +87,7 @@ När Query Store har Aktiver ATS sparas data i 15-minuters agg regerings fönste
 
 Följande alternativ är tillgängliga för att konfigurera parametrar för Frågearkivet.
 
-| **Parameter** | **Beskrivning** | **Objekt** | **Intervall** |
+| **Parameter** | **Beskrivning** | **Standardvärde** | **Intervall** |
 |---|---|---|---|
 | query_store_capture_mode | Aktivera/inaktivera funktionen för Query Store baserat på värdet. OBS! om performance_schema är avstängd aktiverar query_store_capture_mode performance_schema och en delmängd av de prestanda schema instrument som krävs för den här funktionen. | ALL | INGEN, ALLA |
 | query_store_capture_interval | Hämtnings intervallet för frågearkivet i minuter. Tillåter att du anger det intervall som används för att aggregera frågeresultaten | 15 | 5 - 60 |
@@ -96,7 +96,7 @@ Följande alternativ är tillgängliga för att konfigurera parametrar för Frå
 
 Följande alternativ gäller specifikt för väntande statistik.
 
-| **Parameter** | **Beskrivning** | **Objekt** | **Intervall** |
+| **Parameter** | **Beskrivning** | **Standardvärde** | **Intervall** |
 |---|---|---|---|
 | query_store_wait_sampling_capture_mode | Gör det möjligt att aktivera/inaktivera väntande statistik. | ALTERNATIVET | INGEN, ALLA |
 | query_store_wait_sampling_frequency | Ändrar frekvensen för vänta-sampling i sekunder. 5 till 300 sekunder. | 30 | 5-300 |
@@ -108,9 +108,9 @@ Använd [Azure Portal](howto-server-parameters.md) för att hämta eller ange et
 
 ## <a name="views-and-functions"></a>Vyer och funktioner
 
-Visa och hantera Frågearkivet med följande vyer och funktioner. Alla i [rollen Välj offentlig behörighet](howto-create-users.md#create-additional-admin-users) kan använda dessa vyer för att se data i frågearkivet. Dessa vyer är bara tillgängliga i **MySQL** -databasen.
+Visa och hantera Frågearkivet med följande vyer och funktioner. Alla i [rollen Välj offentlig behörighet](howto-create-users.md#create-more-admin-users) kan använda dessa vyer för att se data i frågearkivet. Dessa vyer är bara tillgängliga i **MySQL** -databasen.
 
-Frågorna normaliseras genom att titta på deras struktur efter att du tagit bort litteraler och konstanter. Om två frågor är identiska förutom literala värden, har de samma hash.
+Frågorna normaliseras genom att titta på deras struktur efter att du tagit bort litteraler och konstanter. Om två frågor är identiska förutom literala värden har de samma hash-värde.
 
 ### <a name="mysqlquery_store"></a>mysql.query_store
 
@@ -139,7 +139,7 @@ Den här vyn returnerar alla data i Frågearkivet. Det finns en rad för varje d
 | `sum_select_scan` | bigint (20)| NO| Antal urvals sökningar |
 | `sum_sort_rows` | bigint (20)| NO| Antal sorterade rader|
 | `sum_no_index_used` | bigint (20)| NO| Antal gånger som frågan inte använde några index|
-| `sum_no_good_index_used` | bigint (20)| NO| Antal gånger som det inte gick att använda några användbara index i motorn för körning av fråga|
+| `sum_no_good_index_used` | bigint (20)| NO| Antal gånger när körnings motorn för frågekörning inte använde några användbara index|
 | `sum_created_tmp_tables` | bigint (20)| NO| Totalt antal skapade tabell temporära tabeller|
 | `sum_created_tmp_disk_tables` | bigint (20)| NO| Totalt antal temporära tabeller som skapats i disk (genererar I/O)|
 | `first_seen` | timestamp| NO| Frågans första förekomst (UTC) under agg regerings perioden|
@@ -161,7 +161,7 @@ Den här vyn returnerar information om väntande händelser i Frågearkivet. Det
 | `count_star` | bigint (20) | NO| Antal väntande händelser som samplats under intervallet för frågan |
 | `sum_timer_wait_ms` | double | NO| Total vänte tid (i millisekunder) för den här frågan under intervallet |
 
-### <a name="functions"></a>Funktioner
+### <a name="functions"></a>Functions
 
 | **Namn**| **Beskrivning** |
 |---|---|

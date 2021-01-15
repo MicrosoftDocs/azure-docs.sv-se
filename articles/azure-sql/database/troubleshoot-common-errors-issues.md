@@ -10,12 +10,12 @@ author: ramakoni1
 ms.author: ramakoni
 ms.reviewer: sstein,vanto
 ms.date: 01/14/2021
-ms.openlocfilehash: 7c797c7e002f40a28e4be674c125c6ea5d60a13f
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: ec61f2c67576d6e144d8d4bb7e8ecaaa157db0a9
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98219070"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233380"
 ---
 # <a name="troubleshooting-connectivity-issues-and-other-errors-with-azure-sql-database-and-azure-sql-managed-instance"></a>Fel sökning av anslutnings problem och andra fel med Azure SQL Database och Azure SQL-hanterad instans
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -42,7 +42,7 @@ Azure-infrastrukturen har kapacitet att dynamiskt omkonfigurera servrar vid öka
 ### <a name="steps-to-resolve-transient-connectivity-issues"></a>Steg för att lösa problem med tillfälliga anslutningar
 
 1. Kontrol lera [instrument panelen för Microsoft Azures tjänsten](https://azure.microsoft.com/status) för eventuella kända avbrott som inträffat under den tid då felen rapporterades av programmet.
-2. Program som ansluter till en moln tjänst som Azure SQL Database bör förvänta sig regelbunden omkonfiguration av händelser och implementera omprövnings logik för att hantera dessa fel i stället för att visa dem som program fel till användare.
+2. Program som ansluter till en moln tjänst som Azure SQL Database bör förvänta sig regelbunden omkonfiguration av händelser och implementera omprövnings logik för att hantera dessa fel i stället för Visa program fel till användare.
 3. När en databas närmar sig resurs gränserna kan det verka som ett tillfälligt anslutnings problem. Se [resurs begränsningar](resource-limits-logical-server.md#what-happens-when-database-resource-limits-are-reached).
 4. Om problem med anslutningen fortsätter eller om varaktigheten för programmet stöter på felet överskrider 60 sekunder eller om du ser flera förekomster av felet under en dag, kan du skicka en support förfrågan till Azure genom att välja **få support** på support webbplatsen för [Azure](https://azure.microsoft.com/support/options) .
 
@@ -104,49 +104,46 @@ Kontakta tjänst administratören för att få ett giltigt användar namn och l�
 Tjänst administratören kan normalt använda följande steg för att lägga till inloggnings uppgifterna:
 
 1. Logga in på servern med SQL Server Management Studio (SSMS).
-2. Kör följande SQL-fråga för att kontrol lera om inloggnings namnet är inaktiverat:
+2. Kör följande SQL-fråga i huvud databasen för att kontrol lera om inloggnings namnet är inaktiverat:
 
    ```sql
-   SELECT name, is_disabled FROM sys.sql_logins
+   SELECT name, is_disabled FROM sys.sql_logins;
    ```
 
 3. Om motsvarande namn har inaktiverats kan du aktivera det med hjälp av följande beskrivning:
 
    ```sql
-   Alter login <User name> enable
+   ALTER LOGIN <User name> ENABLE;
    ```
 
-4. Om SQL-inloggningens användar namn inte finns skapar du det genom att följa dessa steg:
-
-   1. I SSMS dubbelklickar du på **säkerhet** för att expandera den.
-   2. Högerklicka på **inloggningar** och välj sedan **ny inloggning**.
-   3. I det genererade skriptet med plats hållare redigerar du och kör följande SQL-fr åga:
+4. Om SQL-inloggningens användar namn inte finns redigerar du och kör följande SQL-fråga för att skapa en ny SQL-inloggning:
 
    ```sql
    CREATE LOGIN <SQL_login_name, sysname, login_name>
-   WITH PASSWORD = '<password, sysname, Change_Password>'
+   WITH PASSWORD = '<password, sysname, Change_Password>';
    GO
    ```
 
-5. Dubbelklicka på **databas**.
+5. I SSMS Object Explorer expanderar du **databaser**.
 6. Välj den databas som du vill ge användaren behörighet till.
-7. Dubbelklicka på **säkerhet**.
-8. Högerklicka på **användare** och välj sedan **ny användare**.
-9. I det genererade skriptet med plats hållare redigerar du och kör följande SQL-fr åga:
+7. Högerklicka på **säkerhet** och välj sedan **ny**, **användare**.
+8. I det genererade skriptet med plats hållare redigerar du och kör följande SQL-fr åga:
 
    ```sql
    CREATE USER <user_name, sysname, user_name>
    FOR LOGIN <login_name, sysname, login_name>
-   WITH DEFAULT_SCHEMA = <default_schema, sysname, dbo>
+   WITH DEFAULT_SCHEMA = <default_schema, sysname, dbo>;
    GO
-   -- Add user to the database owner role
 
-   EXEC sp_addrolemember N'db_owner', N'<user_name, sysname, user_name>'
+   -- Add user to the database owner role
+   EXEC sp_addrolemember N'db_owner', N'<user_name, sysname, user_name>';
    GO
    ```
 
+   Du kan också använda `sp_addrolemember` för att mappa vissa användare till vissa databas roller.
+
    > [!NOTE]
-   > Du kan också använda `sp_addrolemember` för att mappa vissa användare till vissa databas roller.
+   > I Azure SQL Database bör du överväga att använda den nyare [Alter Role](/sql/t-sql/statements/alter-role-transact-sql) -syntaxen för att hantera medlemskap i databas roller.  
 
 Mer information finns i [Hantera databaser och inloggningar i Azure SQL Database](./logins-create-manage.md).
 
@@ -183,7 +180,7 @@ Undvik det här problemet genom att prova någon av följande metoder:
 - Kontrol lera om det finns tids krävande frågor.
 
   > [!NOTE]
-  > Det här är en minimalist metod som kanske inte löser problemet. Detaljerad information om hur du felsöker blockerade frågor finns i [förstå och lösa problem med att blockera Azure SQL](understand-resolve-blocking.md).
+  > Det här är en minimalist metod som kanske inte löser problemet. Mer detaljerad information om hur du felsöker tids krävande eller blockerade frågor finns i [förstå och lösa Azure SQL Database spärrnings problem](understand-resolve-blocking.md).
 
 1. Kör följande SQL-fråga för att kontrol lera [sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) vyn för att se eventuella spärrnings begär Anden:
 
@@ -191,10 +188,13 @@ Undvik det här problemet genom att prova någon av följande metoder:
    SELECT * FROM sys.dm_exec_requests;
    ```
 
-2. Ta reda på **indatabufferten** för huvud blocket.
-3. Finjustera frågan om huvud Blocker.
+1. Fastställ **Indataporten** för huvud blocket med [sys.dm_exec_input_buffer](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-input-buffer-transact-sql) dynamisk hanterings funktion och session_id för den felaktiga frågan, till exempel:
 
-   En djupgående fel söknings procedur finns i finns [min fråga som körs i molnet?](/archive/blogs/sqlblog/is-my-query-running-fine-in-the-cloud). 
+   ```sql 
+   SELECT * FROM sys.dm_exec_input_buffer (100,0);
+   ```
+
+1. Finjustera frågan om huvud Blocker.
 
 Om databasen ständigt når gränsen trots att blockera och långvariga frågor, bör du överväga att uppgradera till en utgåva med fler resurs [versioner](https://azure.microsoft.com/pricing/details/sql-database/).
 
@@ -254,12 +254,18 @@ Om du upprepade gånger stöter på det här felet kan du försöka lösa proble
    SELECT * FROM sys.dm_exec_requests;
    ```
 
-2. Fastställ indatabufferten för den tids krävande frågan.
+2. Fastställ **Indataporten** för huvud blocket med [sys.dm_exec_input_buffer](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-input-buffer-transact-sql) dynamisk hanterings funktion och session_id för den felaktiga frågan, till exempel:
+
+   ```sql 
+   SELECT * FROM sys.dm_exec_input_buffer (100,0);
+   ```
+
 3. Finjustera frågan.
 
-Överväg också att gruppera dina frågor. Information om batching finns i [så här använder du batching för att förbättra SQL Database program prestanda](../performance-improve-use-batching.md).
+    > [!Note]
+    > Mer information om hur du felsöker blockering i Azure SQL Database finns [förstå och lösa Azure SQL Database blockera problem](understand-resolve-blocking.md).
 
-En djupgående fel söknings procedur finns i finns [min fråga som körs i molnet?](/archive/blogs/sqlblog/is-my-query-running-fine-in-the-cloud).
+Överväg också att gruppera dina frågor. Information om batching finns i [så här använder du batching för att förbättra SQL Database program prestanda](../performance-improve-use-batching.md).
 
 ### <a name="error-40551-the-session-has-been-terminated-because-of-excessive-tempdb-usage"></a>Fel 40551: sessionen har avslut ATS på grund av överdriven TEMPDB-användning
 
@@ -311,14 +317,14 @@ Följande fel är relaterade till att skapa och använda elastiska pooler:
 
 | Felkod | Allvarlighetsgrad | Beskrivning | Korrigerande åtgärd |
 |:--- |:--- |:--- |:--- |
-| 1132 | 17 |Den elastiska poolen har nått sin lagrings gräns. Lagrings användningen för den elastiska poolen får inte överskrida (% d) MB. Försök att skriva data till en databas när lagrings gränsen för den elastiska poolen har nåtts. Information om resurs gränser finns i: <br/>&bull;&nbsp; [DTU-baserade gränser för elastiska pooler](resource-limits-dtu-elastic-pools.md)<br/>&bull;&nbsp; [vCore-baserade gränser för elastiska pooler](resource-limits-vcore-elastic-pools.md). <br/> |Överväg att öka DTU: er och/eller lägga till lagring till den elastiska poolen om det är möjligt för att öka lagrings gränsen, minska lagrings utrymmet som används av enskilda databaser i den elastiska poolen eller ta bort databaser från den elastiska poolen. För skalning av elastiska pooler, se [skala elastiska pool resurser](elastic-pool-scale.md).|
+| 1132 | 17 |Den elastiska poolen har nått sin lagrings gräns. Lagrings användningen för den elastiska poolen får inte överskrida (% d) MB. Försök att skriva data till en databas när lagrings gränsen för den elastiska poolen har nåtts. Information om resurs gränser finns i: <br/>&bull;&nbsp; [DTU-baserade gränser för elastiska pooler](resource-limits-dtu-elastic-pools.md)<br/>&bull;&nbsp; [vCore-baserade gränser för elastiska pooler](resource-limits-vcore-elastic-pools.md). <br/> |Överväg att öka DTU: er och/eller lägga till lagring till den elastiska poolen om det är möjligt för att öka lagrings gränsen, minska lagrings utrymmet som används av enskilda databaser i den elastiska poolen eller ta bort databaser från den elastiska poolen. För skalning av elastiska pooler, se [skala elastiska pool resurser](elastic-pool-scale.md). Mer information om hur du tar bort oanvänt utrymme från databaser finns [i Hantera fil utrymme för databaser i Azure SQL Database](file-space-manage.md).|
 | 10929 | 16 |% S minsta garanti är% d, max gränsen är% d och den aktuella användningen för databasen är% d. Servern är dock för närvarande upptagen för att stödja begär Anden som är större än% d för den här databasen. Information om resurs gränser finns i: <br/>&bull;&nbsp; [DTU-baserade gränser för elastiska pooler](resource-limits-dtu-elastic-pools.md)<br/>&bull;&nbsp; [vCore-baserade gränser för elastiska pooler](resource-limits-vcore-elastic-pools.md). <br/> Annars kan du försöka igen senare. DTU/vCore min per databas; Max per databas för DTU/vCore. Det totala antalet samtidiga arbetare (begär Anden) över alla databaser i den elastiska poolen försökte överskrida poolens gräns. |Överväg att öka DTU: er-eller virtuella kärnor för den elastiska poolen om det är möjligt för att öka arbets gränsen, eller ta bort databaser från den elastiska poolen. |
-| 40844 | 16 |Databasen% ls på servern% LS är en% LS Edition-databas i en elastisk pool och kan inte ha en kontinuerlig kopierings relation.  |Saknas |
+| 40844 | 16 |Databasen% ls på servern% LS är en% LS Edition-databas i en elastisk pool och kan inte ha en kontinuerlig kopierings relation.  |Ej tillämpligt |
 | 40857 | 16 |Det gick inte att hitta någon elastisk pool för servern:% ls, namn på elastisk pool:% ls. Den angivna elastiska poolen finns inte på den angivna servern. | Ange ett giltigt namn på elastisk pool. |
 | 40858 | 16 |Den elastiska poolen% LS finns redan på servern:% ls. Den angivna elastiska poolen finns redan på den angivna servern. | Ange ett nytt namn på elastisk pool. |
 | 40859 | 16 |Den elastiska poolen stöder inte tjänst nivån% ls. Den angivna tjänst nivån stöds inte för etablering av elastisk pool. |Ange rätt utgåva eller lämna tjänst nivån tom för att använda standard tjänst nivån. |
 | 40860 | 16 |Kombinationen av elastisk pool% LS och tjänst målet% LS är ogiltig. Elastisk pool och tjänst nivå kan bara anges om resurs typ har angetts som ' ElasticPool '. |Ange rätt kombination av elastisk pool och tjänst nivå. |
-| 40861 | 16 |Databas versionen%. *ls får inte vara samma som tjänst nivån för elastisk pool, som är%.* ls. Databas versionen skiljer sig från tjänst nivån för elastisk pool. |Ange inte någon annan databas version än tjänst nivån för elastisk pool.  Observera att databas versionen inte behöver anges. |
+| 40861 | 16 |Databas versionen%. *ls får inte vara samma som tjänst nivån för elastisk pool, som är%.* ls. Databas versionen skiljer sig från tjänst nivån för elastisk pool. |Ange ingen annan databas version än tjänst nivån för elastisk pool.  Observera att databas versionen inte behöver anges. |
 | 40862 | 16 |Namn på elastisk pool måste anges om det angivna målet för tjänsten elastisk pool har angetts. Ett tjänst mål för elastisk pool kan inte unikt identifiera en elastisk pool. |Ange namnet på den elastiska poolen om du använder det elastiska pool tjänst målet. |
 | 40864 | 16 |DTU: er för den elastiska poolen måste vara minst (% d) DTU: er för tjänst nivån%. * ls. Försöker ställa in DTU: er för den elastiska poolen under minimigränsen. |Försök att ange DTU: er för den elastiska poolen till minst den minsta gränsen. |
 | 40865 | 16 |DTU: er för den elastiska poolen får inte överskrida (% d) DTU: er för tjänst nivån%. * ls. Försöker ställa in DTU: er för den elastiska poolen ovanför Max gränsen. |Försök att ange DTU: er för den elastiska poolen så att den inte överskrider max gränsen. |

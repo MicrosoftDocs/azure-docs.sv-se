@@ -12,27 +12,27 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/05/2018
-ms.openlocfilehash: cffa5677c5531f3887639c049998523d7d07586a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5c53eb65f31e32d3edebcbf31d48d166f5464a92
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79455570"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233363"
 ---
 # <a name="check-resource-usage-against-limits"></a>Kontrollera och jämföra resursanvändningen mot gränser
 
 I den här artikeln får du lära dig hur du visar antalet nätverks resurs typer som du har distribuerat i din prenumeration och vilka [prenumerations begränsningar](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fnetworking%2ftoc.json#networking-limits) som finns. Möjligheten att Visa resursanvändningen mot gränser är användbart för att spåra aktuell användning och planera för framtida användning. Du kan använda [Azure Portal](#azure-portal), [POWERSHELL](#powershell)eller [Azure CLI](#azure-cli) för att spåra användningen.
 
-## <a name="azure-portal"></a>Azure-portalen
+## <a name="azure-portal"></a>Azure Portal
 
 1. Logga in på Azure- [portalen](https://portal.azure.com).
 2. I det övre vänstra hörnet av Azure Portal väljer du **alla tjänster**.
 3. Ange *prenumerationer* i **filter** rutan. När **Prenumerationer** visas bland sökresultaten väljer du posten.
 4. Välj namnet på den prenumeration som du vill visa användnings information för.
-5. Under **Inställningar**väljer du **användning + kvot**.
+5. Under **Inställningar** väljer du **användning + kvot**.
 6. Följande alternativ finns:
    - **Resurs typer**: du kan välja alla resurs typer eller välja vilka typer av resurser som du vill visa.
-   - **Providers**: du kan välja alla resurs leverantörer eller välja **Compute**, **nätverk**eller **lagring**.
+   - **Providers**: du kan välja alla resurs leverantörer eller välja **Compute**, **nätverk** eller **lagring**.
    - **Platser**: du kan välja alla Azure-platser eller välja vissa platser.
    - Du kan välja att visa alla resurser eller bara de resurser där minst en har distribuerats.
 
@@ -40,7 +40,7 @@ I den här artikeln får du lära dig hur du visar antalet nätverks resurs type
 
        ![Visa användnings data](./media/check-usage-against-limits/view-usage.png)
 
-     Du kan sortera kolumnerna genom att välja kolumn rubriken. De gränser som visas är gränserna för din prenumeration. Om du behöver öka en standard gräns väljer du **begär ökning**och Slutför och skicka support förfrågan. Alla resurser har en övre gräns som anges i Azure- [gränser](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fnetworking%2ftoc.json#networking-limits). Om din aktuella gräns redan har nått Max värdet går det inte att öka gränsen.
+     Du kan sortera kolumnerna genom att välja kolumn rubriken. De gränser som visas är gränserna för din prenumeration. Om du behöver öka en standard gräns väljer du **begär ökning** och Slutför och skicka support förfrågan. Alla resurser har en övre gräns som anges i Azure- [gränser](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fnetworking%2ftoc.json#networking-limits). Om din aktuella gräns redan har nått Max värdet går det inte att öka gränsen.
 
 ## <a name="powershell"></a>PowerShell
 
@@ -48,7 +48,7 @@ I den här artikeln får du lära dig hur du visar antalet nätverks resurs type
 
 Du kan köra kommandona som följer i [Azure Cloud Shell](https://shell.azure.com/powershell)eller genom att köra PowerShell från datorn. Azure Cloud Shell är ett kostnads fritt interaktivt gränssnitt. Den har vanliga Azure-verktyg förinstallerat och har konfigurerats för användning med ditt konto. Om du kör PowerShell från datorn behöver du Azure PowerShell-modulen, version 1.0.0 eller senare. Kör `Get-Module -ListAvailable Az` på datorn för att hitta den installerade versionen. Om du behöver uppgradera kan du läsa [Install Azure PowerShell module](/powershell/azure/install-az-ps) (Installera Azure PowerShell-modul). Om du kör PowerShell lokalt måste du också köra `Login-AzAccount` för att logga in på Azure.
 
-Visa din användning mot gränser med [Get-AzNetworkUsage](https://docs.microsoft.com/powershell/module/az.network/get-aznetworkusage). I följande exempel hämtas användningen av resurser där minst en resurs distribueras på platsen USA, östra:
+Visa din användning mot gränser med [Get-AzNetworkUsage](/powershell/module/az.network/get-aznetworkusage). I följande exempel hämtas användningen av resurser där minst en resurs distribueras på platsen USA, östra:
 
 ```azurepowershell-interactive
 Get-AzNetworkUsage `
