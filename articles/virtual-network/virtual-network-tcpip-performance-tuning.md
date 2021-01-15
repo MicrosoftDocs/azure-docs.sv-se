@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 04/02/2019
 ms.author: rimayber
 ms.reviewer: dgoddard, stegag, steveesp, minale, btalb, prachank
-ms.openlocfilehash: 67b635f09cb9407279e89b5f7b8526dab3c08946
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 1f6abbf68d4f648aeee6c025800f24140c9459e9
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96017618"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98219325"
 ---
 # <a name="tcpip-performance-tuning-for-azure-vms"></a>Prestanda justering för TCP/IP för virtuella Azure-datorer
 
@@ -89,7 +89,7 @@ Vi uppmuntrar inte kunderna att öka VM-MTU. Denna diskussion är avsedd att fö
 
 #### <a name="large-send-offload"></a>Avlastning för stor överföring
 
-Avlastning av stor överföring (LSO) kan förbättra nätverks prestanda genom att avlasta paket segmentering till Ethernet-kortet. När LSO är aktive rad skapar TCP/IP-stacken ett stort TCP-paket och skickar det till Ethernet-kortet för segmentering innan det vidarebefordras. Fördelen med LSO är att det kan frigöra processorn från att segmentera paket i storlekar som stämmer överens med MTU och avlastning som bearbetar till Ethernet-gränssnittet där det utförs i maskin vara. Läs mer om fördelarna med LSO i stödjande överföring av [stora](https://docs.microsoft.com/windows-hardware/drivers/network/performance-in-network-adapters#supporting-large-send-offload-lso)sändningar.
+Avlastning av stor överföring (LSO) kan förbättra nätverks prestanda genom att avlasta paket segmentering till Ethernet-kortet. När LSO är aktive rad skapar TCP/IP-stacken ett stort TCP-paket och skickar det till Ethernet-kortet för segmentering innan det vidarebefordras. Fördelen med LSO är att det kan frigöra processorn från att segmentera paket i storlekar som stämmer överens med MTU och avlastning som bearbetar till Ethernet-gränssnittet där det utförs i maskin vara. Läs mer om fördelarna med LSO i stödjande överföring av [stora](/windows-hardware/drivers/network/performance-in-network-adapters#supporting-large-send-offload-lso)sändningar.
 
 När LSO är aktive rad kan Azure-kunder se stora ram storlekar när de utför paket insamlingar. Dessa stora bild storlekar kan leda till att vissa kunder tror att fragmentering sker eller att en stor MTU används när det inte är det. Med LSO kan Ethernet-kortet annonsera en större maximal segment storlek (MSS) till TCP/IP-stacken för att skapa ett större TCP-paket. Hela den icke segmenterade ramen vidarebefordras sedan till Ethernet-kortet och visas i en paket avbildning som utförs på den virtuella datorn. Men paketet kommer att delas upp i många mindre ramar av Ethernet-kortet, enligt Ethernet-kortets MTU.
 
@@ -117,7 +117,7 @@ PMTUD-processen är ineffektiv och påverkar nätverks prestanda. När paket ski
 
 Om du använder virtuella datorer som utför inkapsling (t. ex. IPsec-VPN) finns det några ytterligare överväganden angående paket storlek och MTU. VPN lägger till fler huvuden i paket, vilket ökar paket storleken och kräver en mindre MSS.
 
-För Azure rekommenderar vi att du ställer in TCP MSS ihopfogning till 1 350 byte och tunnel Interface MTU till 1 400. Mer information finns på [sidan VPN-enheter och IPSec/IKE-parametrar](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-devices).
+För Azure rekommenderar vi att du ställer in TCP MSS ihopfogning till 1 350 byte och tunnel Interface MTU till 1 400. Mer information finns på [sidan VPN-enheter och IPSec/IKE-parametrar](../vpn-gateway/vpn-gateway-about-vpn-devices.md).
 
 ### <a name="latency-round-trip-time-and-tcp-window-scaling"></a>Svars tid, Tur och retur-tid och TCP-Window skalning
 
@@ -210,7 +210,7 @@ Du kan använda `Get-NetTCPSetting` PowerShell-kommandot för att visa värdena 
 Get-NetTCPSetting
 ```
 
-Du kan ställa in den inledande TCP-fönster storleken och TCP-skalnings faktorn i Windows med hjälp av `Set-NetTCPSetting` PowerShell-kommandot. Mer information finns i  [set-NetTCPSetting](https://docs.microsoft.com/powershell/module/nettcpip/set-nettcpsetting?view=win10-ps).
+Du kan ställa in den inledande TCP-fönster storleken och TCP-skalnings faktorn i Windows med hjälp av `Set-NetTCPSetting` PowerShell-kommandot. Mer information finns i  [set-NetTCPSetting](/powershell/module/nettcpip/set-nettcpsetting?view=win10-ps).
 
 ```powershell
 Set-NetTCPSetting
@@ -253,13 +253,13 @@ Accelererat nätverk förbättrar prestanda genom att låta den virtuella gäst 
 
 - **Minskad processor användning**: om du kringgår den virtuella växeln på värden går det snabbare att bearbeta nätverks trafiken.
 
-Om du vill använda accelererat nätverk måste du uttryckligen aktivera det på varje aktuell virtuell dator. Instruktioner finns i [skapa en virtuell Linux-dator med accelererat nätverk](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli) .
+Om du vill använda accelererat nätverk måste du uttryckligen aktivera det på varje aktuell virtuell dator. Instruktioner finns i [skapa en virtuell Linux-dator med accelererat nätverk](./create-vm-accelerated-networking-cli.md) .
 
 #### <a name="receive-side-scaling"></a>Skalning på mottagar Sidan
 
-För skalning på mottagar sidan (RSS) är en teknik för nätverks driv rutiner som distribuerar mottagandet av nätverks trafiken mer effektivt genom att distribuera mottagnings bearbetning över flera processorer i ett system med flera processorer. RSS gör det möjligt för ett system att bearbeta mer mottagen trafik eftersom den använder alla tillgängliga processorer i stället för bara en. En mer teknisk diskussion om RSS finns i [Introduktion till skalning på mottagar sidan](https://docs.microsoft.com/windows-hardware/drivers/network/introduction-to-receive-side-scaling).
+För skalning på mottagar sidan (RSS) är en teknik för nätverks driv rutiner som distribuerar mottagandet av nätverks trafiken mer effektivt genom att distribuera mottagnings bearbetning över flera processorer i ett system med flera processorer. RSS gör det möjligt för ett system att bearbeta mer mottagen trafik eftersom den använder alla tillgängliga processorer i stället för bara en. En mer teknisk diskussion om RSS finns i [Introduktion till skalning på mottagar sidan](/windows-hardware/drivers/network/introduction-to-receive-side-scaling).
 
-För att få bästa möjliga prestanda när accelererat nätverk är aktiverat på en virtuell dator måste du aktivera RSS. RSS kan även ge förmåner på virtuella datorer som inte använder accelererat nätverk. En översikt över hur du avgör om RSS är aktiverat och hur du aktiverar det finns i [optimera nätverks data flöde för virtuella Azure-datorer](https://aka.ms/FastVM).
+För att få bästa möjliga prestanda när accelererat nätverk är aktiverat på en virtuell dator måste du aktivera RSS. RSS kan även ge förmåner på virtuella datorer som inte använder accelererat nätverk. En översikt över hur du avgör om RSS är aktiverat och hur du aktiverar det finns i [optimera nätverks data flöde för virtuella Azure-datorer](./virtual-network-optimize-network-bandwidth.md).
 
 ### <a name="tcp-time_wait-and-time_wait-assassination"></a>TCP-TIME_WAIT och TIME_WAIT Assassination
 
@@ -271,7 +271,7 @@ Värdet för port intervall för utgående Sockets kan vanligt vis konfigureras 
 
 Du kan använda TIME_WAIT Assassination för att hantera den här skalnings begränsningen. TIME_WAIT Assassination gör det möjligt att återanvända en socket i vissa situationer, t. ex. När sekvensnumret i IP-paketet för den nya anslutningen överskrider sekvensnumret för det sista paketet från den tidigare anslutningen. I det här fallet kommer operativ systemet att tillåta att den nya anslutningen upprättas (den kommer att acceptera den nya SYNen/ACK) och tvinga den tidigare anslutningen som var i ett TIME_WAITs tillstånd. Den här funktionen stöds på virtuella Windows-datorer i Azure. Om du vill veta mer om stöd i andra virtuella datorer kan du kontakta OS-leverantören.
 
-Information om hur du konfigurerar TCP-TIME_WAIT inställningar och käll port intervall finns i [inställningar som kan ändras för att förbättra nätverks prestanda](https://docs.microsoft.com/biztalk/technical-guides/settings-that-can-be-modified-to-improve-network-performance).
+Information om hur du konfigurerar TCP-TIME_WAIT inställningar och käll port intervall finns i [inställningar som kan ändras för att förbättra nätverks prestanda](/biztalk/technical-guides/settings-that-can-be-modified-to-improve-network-performance).
 
 ## <a name="virtual-network-factors-that-can-affect-performance"></a>Virtuella nätverks faktorer som kan påverka prestanda
 
@@ -287,7 +287,7 @@ Accelererat nätverk är utformat för att förbättra nätverks prestanda, inkl
 
 Virtuella Azure-datorer har minst ett nätverks gränssnitt kopplat till sig. De kan ha flera. Bandbredden som tilldelas en virtuell dator är summan av all utgående trafik över alla nätverks gränssnitt som är anslutna till datorn. Med andra ord allokeras bandbredden för varje virtuell dator, oavsett hur många nätverks gränssnitt som är anslutna till datorn.
 
-Förväntat utgående data flöde och antalet nätverks gränssnitt som stöds av varje VM-storlek beskrivs i [storlekar för virtuella Windows-datorer i Azure](https://docs.microsoft.com/azure/virtual-machines/windows/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json). Om du vill se maximalt data flöde väljer du en typ, som **generell användning**, och hittar sedan avsnittet om storleks serien på den resulterande sidan (till exempel "Dv2-serien"). För varje serie finns det en tabell som ger nätverks specifikationer i den sista kolumnen, som kallas "maximalt antal nätverkskort/förväntad nätverks bandbredd (Mbit/s)."
+Förväntat utgående data flöde och antalet nätverks gränssnitt som stöds av varje VM-storlek beskrivs i [storlekar för virtuella Windows-datorer i Azure](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Om du vill se maximalt data flöde väljer du en typ, som **generell användning**, och hittar sedan avsnittet om storleks serien på den resulterande sidan (till exempel "Dv2-serien"). För varje serie finns det en tabell som ger nätverks specifikationer i den sista kolumnen, som kallas "maximalt antal nätverkskort/förväntad nätverks bandbredd (Mbit/s)."
 
 Data flödes gränsen gäller för den virtuella datorn. Data flödet påverkas inte av följande faktorer:
 
@@ -299,7 +299,7 @@ Data flödes gränsen gäller för den virtuella datorn. Data flödet påverkas 
 
 - **Protokoll**: all utgående trafik över alla protokoll räknas mot gränsen.
 
-Mer information finns i [bandbredd för virtuella dator nätverk](https://aka.ms/AzureBandwidth).
+Mer information finns i [bandbredd för virtuella dator nätverk](./virtual-machine-network-throughput.md).
 
 ### <a name="internet-performance-considerations"></a>Överväganden för Internet prestanda
 
@@ -333,7 +333,7 @@ En distribution i Azure kan kommunicera med slut punkter utanför Azure på det 
 
 För varje utgående anslutning måste Azure Load Balancer underhålla mappningen under en viss tids period. Med den här typen av Azure-klient kan du behålla den här mappningen för varje utgående flöde för varje virtuell dator som kan vara resurs intensiv. Därför finns det gränser som är inställda och baserade på konfigurationen av Azure-Virtual Network. Eller, för att säga att en virtuell Azure-dator bara kan göra ett visst antal utgående anslutningar vid en viss tidpunkt. När de här gränserna uppnås kan den virtuella datorn inte göra fler utgående anslutningar.
 
-Men det här beteendet kan konfigureras. Mer information om SNAT och SNAT port överbelastning finns i [den här artikeln](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections).
+Men det här beteendet kan konfigureras. Mer information om SNAT och SNAT port överbelastning finns i [den här artikeln](../load-balancer/load-balancer-outbound-connections.md).
 
 ## <a name="measure-network-performance-on-azure"></a>Mät nätverks prestanda på Azure
 
@@ -341,13 +341,13 @@ Ett antal prestanda som är maximala i den här artikeln är relaterade till nä
 
 ### <a name="measure-round-trip-time-and-packet-loss"></a>Mäta tids fördröjning för svar och paket förlust
 
-TCP-prestanda är kraftigt beroende av sökslag och paket förlust. PING-verktyget som är tillgängligt i Windows och Linux är det enklaste sättet att mäta efter-och paket förlust. Utdata från PING visar den minsta/högsta/genomsnittliga svars tiden mellan en källa och ett mål. Det visar även paket förlust. PING använder ICMP-protokollet som standard. Du kan använda PsPing för att testa TCP-inkörning. Mer information finns i [PsPing](https://docs.microsoft.com/sysinternals/downloads/psping).
+TCP-prestanda är kraftigt beroende av sökslag och paket förlust. PING-verktyget som är tillgängligt i Windows och Linux är det enklaste sättet att mäta efter-och paket förlust. Utdata från PING visar den minsta/högsta/genomsnittliga svars tiden mellan en källa och ett mål. Det visar även paket förlust. PING använder ICMP-protokollet som standard. Du kan använda PsPing för att testa TCP-inkörning. Mer information finns i [PsPing](/sysinternals/downloads/psping).
 
 ### <a name="measure-actual-throughput-of-a-tcp-connection"></a>Mäta det faktiska data flödet för en TCP-anslutning
 
 NTttcp är ett verktyg för att testa TCP-prestandan för en virtuell Linux-eller Windows-dator. Du kan ändra olika TCP-inställningar och sedan testa fördelarna med NTttcp. Mer information finns i följande resurser:
 
-- [Test av bandbredd/data flöde (NTttcp)](https://aka.ms/TestNetworkThroughput)
+- [Test av bandbredd/data flöde (NTttcp)](./virtual-network-bandwidth-testing.md)
 
 - [NTttcp-verktyg](https://gallery.technet.microsoft.com/NTttcp-Version-528-Now-f8b12769)
 
@@ -357,9 +357,9 @@ Du kan testa prestanda för olika VM-typer, accelererade nätverk och så vidare
 
 Mer information finns i de här artiklarna:
 
-- [Felsöka ExpressRoute Network Performance](https://docs.microsoft.com/azure/expressroute/expressroute-troubleshooting-network-performance)
+- [Felsöka ExpressRoute Network Performance](../expressroute/expressroute-troubleshooting-network-performance.md)
 
-- [Verifiera VPN-dataflöde till ett virtuellt nätverk](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-validate-throughput-to-vnet)
+- [Verifiera VPN-dataflöde till ett virtuellt nätverk](../vpn-gateway/vpn-gateway-validate-throughput-to-vnet.md)
 
 ### <a name="detect-inefficient-tcp-behaviors"></a>Identifiera ineffektiva TCP-beteenden
 
@@ -371,4 +371,4 @@ Dessa paket typer anger dock att TCP-dataflöde inte uppnår sin maximala presta
 
 ## <a name="next-steps"></a>Nästa steg
 
-Nu när du har lärt dig om prestanda justering av TCP/IP-prestanda för virtuella Azure-datorer kan du läsa om andra saker att tänka på när du [planerar virtuella nätverk](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm) eller [Lär dig mer om att ansluta och konfigurera virtuella nätverk](https://docs.microsoft.com/azure/virtual-network/).
+Nu när du har lärt dig om prestanda justering av TCP/IP-prestanda för virtuella Azure-datorer kan du läsa om andra saker att tänka på när du [planerar virtuella nätverk](./virtual-network-vnet-plan-design-arm.md) eller [Lär dig mer om att ansluta och konfigurera virtuella nätverk](./index.yml).

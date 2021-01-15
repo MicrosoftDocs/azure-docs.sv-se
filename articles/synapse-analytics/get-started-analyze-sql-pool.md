@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: tutorial
 ms.date: 12/31/2020
-ms.openlocfilehash: 38332492ba9f20ea7c6682d8341ddf6b5f1f11dd
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 683da659dcfa07c0a105382f4cc93d1f4dfb21b5
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 01/14/2021
-ms.locfileid: "98209430"
+ms.locfileid: "98219545"
 ---
 # <a name="analyze-data-with-dedicated-sql-pools"></a>Analysera data med dedikerade SQL-pooler
 
@@ -24,7 +24,7 @@ Azure Synapse Analytics ger dig möjlighet att analysera data med en särskild S
 ## <a name="load-the-nyc-taxi-data-into-sqlpool1"></a>Läs in NYC taxi-data till SQLPOOL1
 
 1. Navigera till **utveckla** hubben i Synapse Studio, klicka på **+** knappen för att lägga till en ny resurs och skapa sedan ett nytt SQL-skript.
-1. Välj poolen "SQLPOOL1" (pool som skapades i [steg 1](https://docs.microsoft.com/azure/synapse-analytics/get-started-create-workspace#create-a-sql-pool) i den här själv studie kursen) i list rutan "Anslut till" ovanför skriptet.
+1. Välj poolen "SQLPOOL1" (pool som skapades i [steg 1](./get-started-create-workspace.md) i den här själv studie kursen) i list rutan "Anslut till" ovanför skriptet.
 1. Ange följande kod:
     ```
     CREATE TABLE [dbo].[Trip]
@@ -103,4 +103,3 @@ Azure Synapse Analytics ger dig möjlighet att analysera data med en särskild S
 
 > [!div class="nextstepaction"]
 > [Analysera med Spark](get-started-analyze-spark.md)
-

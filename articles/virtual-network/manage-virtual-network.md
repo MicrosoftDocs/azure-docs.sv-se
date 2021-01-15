@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: kumud
-ms.openlocfilehash: 5581a4c43f0b78dc8c14c44bfb1ded371a925fd0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 61ca4dc8cd7048df69c827e7ca657b9882900819
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88706038"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98218917"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>Skapa, ändra eller ta bort ett virtuellt nätverk
 
@@ -56,7 +56,7 @@ Utför följande åtgärder innan du slutför stegen i något avsnitt i den här
      - **Under näts namn**: under nätets namn måste vara unikt inom det virtuella nätverket. Du kan inte ändra under nätets namn när under nätet har skapats. Portalen kräver att du definierar ett undernät när du skapar ett virtuellt nätverk, även om ett virtuellt nätverk inte krävs för att ha några undernät. I portalen kan du bara definiera ett undernät när du skapar ett virtuellt nätverk. Du kan lägga till fler undernät till det virtuella nätverket senare, efter att det virtuella nätverket har skapats. Information om hur du lägger till ett undernät i ett virtuellt nätverk finns i [Hantera undernät](virtual-network-manage-subnet.md). Du kan skapa ett virtuellt nätverk som har flera undernät med hjälp av Azure CLI eller PowerShell.
 
        >[!TIP]
-       >Administratörer skapar ibland olika undernät för att filtrera eller styra trafik flödet mellan under näten. Innan du definierar undernät bör du fundera över hur du kan filtrera och dirigera trafik mellan dina undernät. Mer information om hur du filtrerar trafik mellan undernät finns i [nätverks säkerhets grupper](security-overview.md). Azure dirigerar automatiskt trafik mellan undernät, men du kan åsidosätta Azures standard vägar. Om du vill veta mer om Azures standard trafik routning för [routning, se Routning: översikt](virtual-networks-udr-overview.md).
+       >Administratörer skapar ibland olika undernät för att filtrera eller styra trafik flödet mellan under näten. Innan du definierar undernät bör du fundera över hur du kan filtrera och dirigera trafik mellan dina undernät. Mer information om hur du filtrerar trafik mellan undernät finns i [nätverks säkerhets grupper](./network-security-groups-overview.md). Azure dirigerar automatiskt trafik mellan undernät, men du kan åsidosätta Azures standard vägar. Om du vill veta mer om Azures standard trafik routning för [routning, se Routning: översikt](virtual-networks-udr-overview.md).
        >
 
      - **Adress intervall för under nätet**: intervallet måste ligga inom det adress utrymme du angav för det virtuella nätverket. Det minsta intervallet du kan ange är/29, vilket ger åtta IP-adresser för under nätet. Azure reserverar den första och sista adressen i varje undernät för protokoll avvikelse. Tre ytterligare adresser är reserverade för användning av Azure-tjänster. Därför har ett virtuellt nätverk med ett under näts adress intervall på/29 bara tre användbara IP-adresser. Om du planerar att ansluta ett virtuellt nätverk till en VPN-gateway måste du skapa ett Gateway-undernät. Läs mer om [vissa adress intervall för gateway-undernät](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub). Du kan ändra adress intervallet när under nätet har skapats, under vissa förhållanden. Information om hur du ändrar ett adress intervall för ett undernät finns i [Hantera undernät](virtual-network-manage-subnet.md).
@@ -89,7 +89,7 @@ Utför följande åtgärder innan du slutför stegen i något avsnitt i den här
    - **Vanliga Azure-inställningar**: Mer information om vanliga Azure-inställningar finns i följande information:
      - [Aktivitetslogg](../azure-monitor/platform/platform-logs-overview.md)
      - [Åtkomstkontroll (IAM)](../role-based-access-control/overview.md)
-     - [Taggen](../azure-resource-manager/management/tag-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+     - [Taggar](../azure-resource-manager/management/tag-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
      - [Lås](../azure-resource-manager/management/lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
      - [Automationsskript](../azure-resource-manager/management/manage-resource-groups-portal.md#export-resource-groups-to-templates)
 
@@ -118,7 +118,7 @@ Så här lägger du till eller tar bort ett adress intervall:
 
 1. Ange *virtuella nätverk* i sökrutan i rutan Sök högst upp i portalen. När **virtuella nätverk** visas i Sök resultaten väljer du det.
 2. I listan över virtuella nätverk väljer du det virtuella nätverk som du vill lägga till eller ta bort ett adress intervall för.
-3. Välj **adress utrymme**under **Inställningar**.
+3. Välj **adress utrymme** under **Inställningar**.
 4. Slutför något av följande alternativ:
     - **Lägg till ett adress intervall**: Ange det nya adress intervallet. Adress intervallet får inte överlappa ett befintligt adress intervall som har definierats för det virtuella nätverket.
     - **Ta bort ett adress intervall**: till höger om det adress intervall som du vill ta bort väljer du **...** och väljer sedan **ta bort**. Om det finns ett undernät i adress intervallet kan du inte ta bort adress intervallet. Om du vill ta bort ett adress intervall måste du först ta bort alla undernät (och eventuella resurser i under näten) som finns i adress intervallet.
@@ -135,10 +135,10 @@ Alla virtuella datorer som är anslutna till det virtuella nätverks registret m
 
 1. Ange *virtuella nätverk* i sökrutan i rutan Sök högst upp i portalen. När **virtuella nätverk** visas i Sök resultaten väljer du det.
 2. I listan med virtuella nätverk väljer du det virtuella nätverk som du vill ändra DNS-servrar för.
-3. Välj **DNS-servrar**under **Inställningar**.
+3. Välj **DNS-servrar** under **Inställningar**.
 4. Välj något av följande alternativ:
    - **Standard (Azure-tillhandahöll)**: alla resurs namn och privata IP-adresser registreras automatiskt till Azure DNS servrar. Du kan matcha namn mellan alla resurser som är anslutna till samma virtuella nätverk. Du kan inte använda det här alternativet för att matcha namn i virtuella nätverk. Om du vill matcha namn i virtuella nätverk måste du använda en anpassad DNS-server.
-   - **Anpassad**: du kan lägga till en eller flera servrar, upp till Azure-gränsen för ett virtuellt nätverk. Mer information om begränsningar för DNS-servern finns i [Azure-gränser](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#virtual-networking-limits-classic). Du har följande alternativ:
+   - **Anpassad**: du kan lägga till en eller flera servrar, upp till Azure-gränsen för ett virtuellt nätverk. Mer information om begränsningar för DNS-servern finns i [Azure-gränser](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#virtual-networking-limits-classic). Du kan välja mellan följande alternativ:
    - **Lägg till en adress**: lägger till servern i listan med DNS-servrar för virtuella nätverk. Det här alternativet registrerar även DNS-servern med Azure. Om du redan har registrerat en DNS-server med Azure kan du välja den DNS-servern i listan.
    - **Ta bort en adress**: bredvid den server som du vill ta bort väljer du **...** och sedan **ta bort**. Om du tar bort servern tas bara servern bort från listan med virtuella nätverk. DNS-servern är fortfarande registrerad i Azure för de andra virtuella nätverk som ska användas.
    - **Sortera om DNS-serveradresser**: det är viktigt att kontrol lera att du listar dina DNS-servrar i rätt ordning för din miljö. Listor över DNS-servrar används i den ordning som de anges. De fungerar inte som en installation för resursallokering. Om den första DNS-servern i listan kan nås använder klienten den DNS-servern, oavsett om DNS-servern fungerar som den ska. Ta bort alla DNS-servrar som visas i listan och Lägg sedan till dem igen i den ordning du vill.
@@ -157,9 +157,9 @@ Du kan bara ta bort ett virtuellt nätverk om det inte finns några resurser ans
 
 1. Ange *virtuella nätverk* i sökrutan i rutan Sök högst upp i portalen. När **virtuella nätverk** visas i Sök resultaten väljer du det.
 2. I listan med virtuella nätverk väljer du det virtuella nätverk som du vill ta bort.
-3. Bekräfta att det inte finns några enheter anslutna till det virtuella nätverket genom att välja **anslutna enheter**under **Inställningar**. Om det finns anslutna enheter måste du ta bort dem innan du kan ta bort det virtuella nätverket. Om det inte finns några anslutna enheter väljer du **Översikt**.
+3. Bekräfta att det inte finns några enheter anslutna till det virtuella nätverket genom att välja **anslutna enheter** under **Inställningar**. Om det finns anslutna enheter måste du ta bort dem innan du kan ta bort det virtuella nätverket. Om det inte finns några anslutna enheter väljer du **Översikt**.
 4. Välj **Ta bort**.
-5. Välj **Ja**för att bekräfta borttagningen av det virtuella nätverket.
+5. Välj **Ja** för att bekräfta borttagningen av det virtuella nätverket.
 
 **Kommandon**
 
@@ -170,7 +170,7 @@ Du kan bara ta bort ett virtuellt nätverk om det inte finns några resurser ans
 
 Om du vill utföra uppgifter i virtuella nätverk måste ditt konto tilldelas rollen [nätverks deltagare](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) eller till en [anpassad](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) roll som har tilldelats lämpliga åtgärder i följande tabell:
 
-| Action                                  |   Namn                                |
+| Action                                  |   Name                                |
 |---------------------------------------- |   --------------------------------    |
 |Microsoft. Network/virtualNetworks/Read   |   Läs ett virtuellt nätverk              |
 |Microsoft. Network/virtualNetworks/Write  |   Skapa eller uppdatera ett virtuellt nätverk  |
@@ -179,4 +179,4 @@ Om du vill utföra uppgifter i virtuella nätverk måste ditt konto tilldelas ro
 ## <a name="next-steps"></a>Nästa steg
 
 - Skapa ett virtuellt nätverk med [PowerShell](powershell-samples.md) -eller [Azure CLI](cli-samples.md) -exempel skript eller med Azure [Resource Manager-mallar](template-samples.md)
-- Skapa och tilldela [Azure policy definitioner](policy-samples.md) för virtuella nätverk
+- Skapa och tilldela [Azure policy definitioner](./policy-reference.md) för virtuella nätverk

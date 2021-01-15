@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2019
 ms.author: sumi
 ms.custom: ''
-ms.openlocfilehash: 7d937542201792c0d1c0be69df9bd1c2b34edea3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 93feaef01b234eeb7ac363c18d8e9d8f52b009de
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96004950"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98216537"
 ---
 # <a name="virtual-network-service-endpoints"></a>Tjänstslutpunkter för virtuellt nätverk
 
@@ -33,14 +33,14 @@ Den här funktionen är tillgänglig för följande Azure-tjänster och-regioner
 - **[Azure Synapse Analytics](../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft. SQL*): allmänt tillgänglig i alla Azure-regioner.
 - **[Azure Database for postgresql server](../postgresql/howto-manage-vnet-using-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft. SQL*): allmänt tillgänglig i Azure-regioner där databas tjänsten är tillgänglig.
 - **[Azure Database for MySQL server](../mysql/howto-manage-vnet-using-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft. SQL*): allmänt tillgänglig i Azure-regioner där databas tjänsten är tillgänglig.
-- **[Azure Database for MariaDB](https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-vnet)** (*Microsoft. SQL*): allmänt tillgänglig i Azure-regioner där databas tjänsten är tillgänglig.
-- **[Azure Cosmos DB](../cosmos-db/vnet-service-endpoint.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft. AzureCosmosDB*): allmänt tillgänglig i alla Azure-regioner.
+- **[Azure Database for MariaDB](../mariadb/concepts-data-access-security-vnet.md)** (*Microsoft. SQL*): allmänt tillgänglig i Azure-regioner där databas tjänsten är tillgänglig.
+- **[Azure Cosmos DB](../cosmos-db/how-to-configure-vnet-service-endpoint.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft. AzureCosmosDB*): allmänt tillgänglig i alla Azure-regioner.
 - **[Azure Key Vault](../key-vault/general/overview-vnet-service-endpoints.md)** (*Microsoft. nyckel valv*): allmänt tillgänglig i alla Azure-regioner.
 - **[Azure Service Bus](../service-bus-messaging/service-bus-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft. Service Bus*): allmänt tillgänglig i alla Azure-regioner.
 - **[Azure Event Hubs](../event-hubs/event-hubs-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft. EventHub*): allmänt tillgängliga i alla Azure-regioner.
 - **[Azure Data Lake Store gen 1](../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft. AzureActiveDirectory*): allmänt tillgänglig i alla Azure-regioner där ADLS gen1 är tillgängligt.
-- **[Azure App Service](https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions)** (*Microsoft. Web*): allmänt tillgänglig i alla Azure-regioner där App Service är tillgängligt.
-- **[Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-virtual-networks?tabs=portal)** (*Microsoft. CognitiveServices*): allmänt tillgänglig i alla Azure-regioner där kognitiva tjänster är tillgängliga.
+- **[Azure App Service](../app-service/app-service-ip-restrictions.md)** (*Microsoft. Web*): allmänt tillgänglig i alla Azure-regioner där App Service är tillgängligt.
+- **[Azure Cognitive Services](../cognitive-services/cognitive-services-virtual-networks.md?tabs=portal)** (*Microsoft. CognitiveServices*): allmänt tillgänglig i alla Azure-regioner där kognitiva tjänster är tillgängliga.
 
 **Offentlig för hands version**
 
@@ -98,7 +98,7 @@ Tjänstslutpunkter har följande fördelar:
 
 - Nätverkssäkerhetsgrupper (NSG) med tjänstslutpunkter:
   - Som standard tillåter NSG: er utgående Internet trafik och tillåter även trafik från ditt VNet till Azure-tjänster. Trafiken fortsätter att fungera med tjänstens slut punkter som är. 
-  - Om du vill neka all utgående Internet trafik och bara tillåta trafik till vissa Azure-tjänster kan du göra det med hjälp av [service märken](security-overview.md#service-tags) i din NSG: er. Du kan ange vilka Azure-tjänster som stöds som mål i dina NSG-regler och Azure tillhandahåller även underhåll av IP-adresser som är underliggande för varje tagg. Mer information finns i [Azure-tjänsttaggar för NSG:er](security-overview.md#service-tags). 
+  - Om du vill neka all utgående Internet trafik och bara tillåta trafik till vissa Azure-tjänster kan du göra det med hjälp av [service märken](./network-security-groups-overview.md#service-tags) i din NSG: er. Du kan ange vilka Azure-tjänster som stöds som mål i dina NSG-regler och Azure tillhandahåller även underhåll av IP-adresser som är underliggande för varje tagg. Mer information finns i [Azure-tjänsttaggar för NSG:er](./network-security-groups-overview.md#service-tags). 
 
 ### <a name="scenarios"></a>Scenarier
 
@@ -138,18 +138,18 @@ Vissa Azure-tjänster, till exempel Azure Storage-konton, kan genomdriva gränse
 
 ## <a name="vnet-service-endpoint-policies"></a>Slut punkts principer för VNet-tjänst 
 
-Med VNet-tjänstens slut punkts principer kan du filtrera virtuell nätverks trafik till Azure-tjänster. Det här filtret tillåter endast vissa Azure-tjänst resurser via tjänst slut punkter. Principer för tjänstslutpunkt ger detaljerad åtkomstkontroll för trafik i virtuella nätverk till Azure-tjänster. Mer information finns i [Virtual Network tjänst slut punkts principer](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoint-policies-overview).
+Med VNet-tjänstens slut punkts principer kan du filtrera virtuell nätverks trafik till Azure-tjänster. Det här filtret tillåter endast vissa Azure-tjänst resurser via tjänst slut punkter. Principer för tjänstslutpunkt ger detaljerad åtkomstkontroll för trafik i virtuella nätverk till Azure-tjänster. Mer information finns i [Virtual Network tjänst slut punkts principer](./virtual-network-service-endpoint-policies-overview.md).
 
 ## <a name="faqs"></a>Vanliga frågor och svar
 
-Vanliga frågor och svar [Virtual Network finns i vanliga frågor och svar om service Endpoint](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq#virtual-network-service-endpoints).
+Vanliga frågor och svar [Virtual Network finns i vanliga frågor och svar om service Endpoint](./virtual-networks-faq.md#virtual-network-service-endpoints).
 
 ## <a name="next-steps"></a>Nästa steg
 
-- [Konfigurera tjänstslutpunkter för virtuellt nätverk](tutorial-restrict-network-access-to-resources.md)
+- [Konfigurera tjänst slut punkter för virtuella nätverk](tutorial-restrict-network-access-to-resources.md)
 - [Skydda ett Azure Storage-konto till ett virtuellt nätverk](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [Skydda en Azure SQL Database till ett virtuellt nätverk](../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [Skydda en Azure Synapse-analys till ett virtuellt nätverk](../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fsql-data-warehouse%2ftoc.json)
 - [Azure Service integration i virtuella nätverk](virtual-network-for-azure-services.md)
-- [Virtual Network tjänst slut punkts principer](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoint-policies-overview)
+- [Virtual Network tjänst slut punkts principer](./virtual-network-service-endpoint-policies-overview.md)
 - [Azure Resource Manager-mall](https://azure.microsoft.com/resources/templates/201-vnet-2subnets-service-endpoints-storage-integration)

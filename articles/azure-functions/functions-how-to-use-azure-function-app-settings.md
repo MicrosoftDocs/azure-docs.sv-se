@@ -5,12 +5,12 @@ ms.assetid: 81eb04f8-9a27-45bb-bf24-9ab6c30d205c
 ms.topic: conceptual
 ms.date: 04/13/2020
 ms.custom: cc996988-fb4f-47, devx-track-azurecli
-ms.openlocfilehash: 2526fd60d6e07ecf43864945f2b05858b41ca567
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: 70aecc2613fbe21d34e36f9487d7ba383e140bc8
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98035214"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98217370"
 ---
 # <a name="manage-your-function-app"></a>Hantera din Function-app 
 
@@ -19,11 +19,6 @@ I Azure Functions tillhandahåller en Function-app körnings kontexten för dina
 Enskilda funktioner i en Function-app distribueras tillsammans och skalas tillsammans. Alla funktioner i samma Function-app delar resurser, per instans, som Function-appen skalar. 
 
 Anslutnings strängar, miljövariabler och andra program inställningar definieras separat för varje Function-app. Alla data som måste delas mellan Functions-appar ska lagras externt i ett sparat lager.
-
-Den här artikeln beskriver hur du konfigurerar och hanterar dina Function-appar. 
-
-> [!TIP]  
-> Många konfigurations alternativ kan också hanteras med hjälp av [Azure CLI]. 
 
 ## <a name="get-started-in-the-azure-portal"></a>Kom igång i Azure Portal
 
@@ -37,15 +32,17 @@ Du kan navigera till allt du behöver för att hantera din Function-app från ö
 
 ## <a name="work-with-application-settings"></a><a name="settings"></a>Arbeta med program inställningar
 
-Fliken **program inställningar** innehåller inställningar som används av din Function-app. De här inställningarna lagras krypterade och du måste välja **Visa värden** för att se värdena i portalen. Du kan också komma åt program inställningar med hjälp av Azure CLI.
+Program inställningar kan hanteras från [Azure Portal](functions-how-to-use-azure-function-app-settings.md?tabs=portal#settings) och med hjälp av [Azure CLI](functions-how-to-use-azure-function-app-settings.md?tabs=azurecli#settings) och [Azure PowerShell](functions-how-to-use-azure-function-app-settings.md?tabs=powershell#settings). Du kan också hantera program inställningar från [Visual Studio Code](functions-develop-vs-code.md#application-settings-in-azure) och från [Visual Studio](functions-develop-vs.md#function-app-settings). 
 
-### <a name="portal"></a>Portalen
+De här inställningarna lagras krypterade. Mer information finns i [program inställningar säkerhet](security-concepts.md#application-settings).
 
-Om du vill lägga till en inställning i portalen väljer du **ny program inställning** och lägger till det nya nyckel/värde-paret.
+# <a name="portal"></a>[Portal](#tab/portal)
+
+Fliken **program inställningar** innehåller inställningar som används av din Function-app. Du måste välja **Visa värden** om du vill se värdena i portalen. Om du vill lägga till en inställning i portalen väljer du **ny program inställning** och lägger till det nya nyckel/värde-paret.
 
 ![Function app-inställningar i Azure Portal.](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-settings-tab.png)
 
-### <a name="azure-cli"></a>Azure CLI
+# <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
 
 [`az functionapp config appsettings list`](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-list)Kommandot returnerar de befintliga program inställningarna, som i följande exempel:
 
@@ -62,6 +59,22 @@ az functionapp config appsettings set --name <FUNCTION_APP_NAME> \
 --resource-group <RESOURCE_GROUP_NAME> \
 --settings CUSTOM_FUNCTION_APP_SETTING=12345
 ```
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/powershell)
+
+[`Get-AzFunctionAppSetting`](/powershell/module/az.functions/get-azfunctionappsetting)Cmdleten returnerar de befintliga program inställningarna, som i följande exempel: 
+
+```azurepowershell-interactive
+Get-AzFunctionAppSetting -Name <FUNCTION_APP_NAME> -ResourceGroupName <RESOURCE_GROUP_NAME>
+```
+
+[`Update-AzFunctionAppSetting`](/powershell/module/az.functions/update-azfunctionappsetting)Kommandot lägger till eller uppdaterar en program inställning. I följande exempel skapas en inställning med en nyckel med namnet `CUSTOM_FUNCTION_APP_SETTING` och värdet `12345` :
+
+```azurepowershell-interactive
+Update-AzFunctionAppSetting -Name <FUNCTION_APP_NAME> -ResourceGroupName <RESOURCE_GROUP_NAME> -AppSetting @{"CUSTOM_FUNCTION_APP_SETTING" = "12345"}
+```
+
+---
 
 ### <a name="use-application-settings"></a>Använd program inställningar
 

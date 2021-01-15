@@ -11,18 +11,18 @@ ms.topic: how-to
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: sstein
-ms.date: 04/19/2020
-ms.openlocfilehash: 480e9f9031481621ac9d568a7bd97b942f47b947
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 1/14/2021
+ms.openlocfilehash: b87d0a2446eb2b65c20ae0bef408320686cb5165
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96493652"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98219139"
 ---
 # <a name="monitoring-microsoft-azure-sql-database-and-azure-sql-managed-instance-performance-using-dynamic-management-views"></a>Övervaka prestanda för Microsoft Azure SQL Database och Azure SQL Managed Instance med hjälp av dynamiska hanteringsvyer
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Microsoft Azure SQL Database och Azure SQL-hanterad instans gör det möjligt för en delmängd av vyer för dynamisk hantering att diagnostisera prestanda problem, vilket kan orsakas av blockerade eller långvariga frågor, resurs Flask halsar, dåliga fråge planer och så vidare. Det här avsnittet innehåller information om hur du identifierar vanliga prestanda problem med hjälp av dynamiska Management views.
+Microsoft Azure SQL Database och Azure SQL-hanterad instans gör det möjligt för en delmängd av vyer för dynamisk hantering att diagnostisera prestanda problem, vilket kan orsakas av blockerade eller långvariga frågor, resurs Flask halsar, dåliga fråge planer och så vidare. Den här artikeln innehåller information om hur du identifierar vanliga prestanda problem med hjälp av dynamiska Management views.
 
 Microsoft Azure SQL Database och Azure SQL Managed instance stöder delvis tre kategorier av vyer för dynamisk hantering:
 
@@ -254,12 +254,12 @@ GO
 
 När du identifierar i/o-prestanda problem är de vanligaste vänte typerna som är associerade med `tempdb` problem `PAGELATCH_*` (inte `PAGEIOLATCH_*` ). Vänta dock `PAGELATCH_*` inte alltid att du har `tempdb` konkurrens.  Det kan också bero på konkurrens om en datasida med användarobjekt på grund av konkurrerande begäranden som görs mot samma datasida. Om du vill bekräfta `tempdb` konkurrens ytterligare använder du [sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) för att bekräfta att wait_resource svärdet börjar med `2:x:y` där 2 är `tempdb` databas-ID: `x` t, är fil-ID och `y` är sid-ID.  
 
-För tempdb-konkurrens är en vanlig metod att minska eller omskriva program kod som förlitar sig på `tempdb` .  Vanliga `tempdb` användnings områden är:
+För tempdb-konkurrens är en vanlig metod att minska eller skriva om program kod som förlitar sig på `tempdb` .  Vanliga `tempdb` användnings områden är:
 
 - Temporära tabeller
 - Tabellvariabler
 - Tabellvärdesparametrar
-- Användning av versionslagret (specifikt associerat med tidskrävande transaktioner)
+- Användning av versions lager (kopplat till tids krävande transaktioner)
 - Frågor som har frågeplaner som använder sorteringar, hash-kopplingar och buffertar
 
 ### <a name="top-queries-that-use-table-variables-and-temporary-tables"></a>Vanligaste frågor som använder tabell variabler och temporära tabeller
@@ -563,14 +563,14 @@ SELECT resource_name, AVG(avg_cpu_percent) AS Average_Compute_Utilization
 FROM sys.server_resource_stats
 WHERE start_time BETWEEN @s AND @e  
 GROUP BY resource_name  
-HAVING AVG(avg_cpu_percent) >= 80
+HAVING AVG(avg_cpu_percent) >= 80;
 ```
 
 ### <a name="sysresource_stats"></a>sys.resource_stats
 
 [Sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) -vyn i **huvud** databasen har ytterligare information som kan hjälpa dig att övervaka databasens prestanda på den aktuella tjänst nivån och beräknings storleken. Data samlas in var 5: e minut och bevaras i cirka 14 dagar. Den här vyn är användbar för en längre historisk analys av hur databasen använder resurser.
 
-I följande diagram visas användningen av CPU-resurser för en Premium-databas med P2 Compute-storlek för varje timme under en vecka. Det här diagrammet startar på en måndag, visar 5 arbets dagar och visar sedan en helg, om det händer mycket mindre i programmet.
+I följande diagram visas användningen av CPU-resurser för en Premium-databas med P2 Compute-storlek för varje timme under en vecka. Det här diagrammet startar på en måndag, visar fem arbets dagar och visar sedan en helg, om det händer mycket mindre i programmet.
 
 ![Användning av databas resurser](./media/monitoring-with-dmvs/sql_db_resource_utilization.png)
 
@@ -589,7 +589,7 @@ Det här exemplet visar hur data i den här vyn exponeras:
 SELECT TOP 10 *
 FROM sys.resource_stats
 WHERE database_name = 'resource1'
-ORDER BY start_time DESC
+ORDER BY start_time DESC;
 ```
 
 ![Vyn sys.resource_stats katalog](./media/monitoring-with-dmvs/sys_resource_stats.png)
@@ -699,7 +699,7 @@ Om du vill se antalet aktuella aktiva sessioner kör du den här Transact-SQL-fr
 
 ```sql
 SELECT COUNT(*) AS [Sessions]
-FROM sys.dm_exec_connections
+FROM sys.dm_exec_connections;
 ```
 
 Om du analyserar en SQL Server arbets belastning ändrar du frågan så att den fokuserar på en speciell databas. Den här frågan hjälper dig att fastställa möjliga sessions behov för databasen om du överväger att flytta den till Azure.
@@ -709,7 +709,7 @@ SELECT COUNT(*) AS [Sessions]
 FROM sys.dm_exec_connections C
 INNER JOIN sys.dm_exec_sessions S ON (S.session_id = C.session_id)
 INNER JOIN sys.databases D ON (D.database_id = S.database_id)
-WHERE D.name = 'MyDatabase'
+WHERE D.name = 'MyDatabase';
 ```
 
 De här frågorna returnerar ett antal tidpunkter. Om du samlar flera prover över tid har du den bästa förståelsen av din sessions användning.
@@ -743,7 +743,7 @@ ORDER BY 2 DESC;
 
 ### <a name="monitoring-blocked-queries"></a>Övervaka blockerade frågor
 
-Långsamma eller långvariga frågor kan bidra till överdriven resurs förbrukning och vara en följd av blockerade frågor. Orsaken till blockeringen kan vara dåligt program design, dåliga fråge planer, avsaknad av användbara index och så vidare. Du kan använda vyn sys.dm_tran_locks för att hämta information om den aktuella lås aktiviteten i databasen. Exempel kod finns i [sys.dm_tran_locks (Transact-SQL)](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-locks-transact-sql).
+Långsamma eller långvariga frågor kan bidra till överdriven resurs förbrukning och vara en följd av blockerade frågor. Orsaken till blockeringen kan vara dåligt program design, dåliga fråge planer, avsaknad av användbara index och så vidare. Du kan använda vyn sys.dm_tran_locks för att hämta information om den aktuella lås aktiviteten i databasen. Exempel kod finns i [sys.dm_tran_locks (Transact-SQL)](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-locks-transact-sql). Mer information om fel sökning av blockering finns i [förstå och lösa problem med att blockera Azure SQL](understand-resolve-blocking.md).
 
 ### <a name="monitoring-query-plans"></a>Övervaknings fråge planer
 

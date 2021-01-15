@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/28/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: ec020ecd4c2bcf6e9186afb3d2c4a79ef235c371
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 32e654f002e3ba0c8bf72fb781b32d9098d83c00
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658918"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98219852"
 ---
 # <a name="understand-saml-based-single-sign-on"></a>Förstå SAML-baserad enkel inloggning
 
@@ -32,7 +32,7 @@ I [snabb starts serien](add-application-portal-setup-sso.md)finns det en artikel
 > [!IMPORTANT] 
 > Det finns vissa scenarier där alternativet **enkel inloggning** inte kommer att finnas i navigeringen för ett program i **företags program**. 
 >
-> Om programmet registrerades med **Appregistreringar** konfigureras funktionen för enkel inloggning för att använda OIDC OAuth som standard. I det här fallet visas inte alternativet för **enkel inloggning** i navigeringen under **företags program**. När du använder **Appregistreringar** för att lägga till din anpassade app konfigurerar du alternativ i manifest filen. Mer information om manifest filen finns i [Azure Active Directory app manifest](../develop/reference-app-manifest.md). Mer information om SSO-standarder finns i [autentisering och auktorisering med Microsoft Identity Platform](../develop/authentication-vs-authorization.md#authentication-and-authorization-using-microsoft-identity-platform). 
+> Om programmet registrerades med **Appregistreringar** konfigureras funktionen för enkel inloggning för att använda OIDC OAuth som standard. I det här fallet visas inte alternativet för **enkel inloggning** i navigeringen under **företags program**. När du använder **Appregistreringar** för att lägga till din anpassade app konfigurerar du alternativ i manifest filen. Mer information om manifest filen finns i [Azure Active Directory app manifest](../develop/reference-app-manifest.md). Mer information om SSO-standarder finns i [autentisering och auktorisering med Microsoft Identity Platform](../develop/authentication-vs-authorization.md#authentication-and-authorization-using-the-microsoft-identity-platform). 
 >
 > Andra scenarier där **enkel inloggning** kommer att saknas i navigeringen är när ett program finns i en annan klient organisation eller om ditt konto inte har de behörigheter som krävs (global administratör, moln program administratör, program administratör eller ägare till tjänstens huvud namn). Behörigheter kan också orsaka ett scenario där du kan öppna **enkel inloggning** men inte kan spara. Mer information om administrativa roller i Azure AD finns i ( https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) .
 
@@ -136,4 +136,4 @@ Mer information finns i [FELSÖKA SAML-baserad enkel inloggning till program i A
 - [Snabb starts serie för program hantering](view-applications-portal.md)
 - [Tilldela användare eller grupper till programmet](./assign-user-or-group-access-portal.md)
 - [Konfigurera automatisk etablering av användar konto](../app-provisioning/configure-automatic-user-provisioning-portal.md)
-- [Single Sign-On SAML-protokoll](../develop/single-sign-on-saml-protocol.md)
+- [SAML-protokoll för enkel inloggning](../develop/single-sign-on-saml-protocol.md)

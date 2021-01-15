@@ -9,12 +9,12 @@ ms.subservice: security
 ms.date: 12/03/2020
 ms.author: billgib
 ms.reviewer: jrasnick
-ms.openlocfilehash: 62c30356017b5ea5d93351e6f22b8b7b0c22718c
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 7dbbe3afb2a5eb19b5c4893bd73eddbf11e788d4
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109274"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98218084"
 ---
 # <a name="how-to-set-up-access-control-for-your-synapse-workspace"></a>Så här konfigurerar du åtkomst kontroll för din Synapse-arbetsyta 
 
@@ -43,7 +43,7 @@ För att skydda en Synapse-arbetsyta följer du ett mönster för att konfigurer
 
 I det här dokumentet används standard namn för att förenkla anvisningarna. Ersätt dem med namn som du väljer själv.
 
-|Inställning | Standard namn | Beskrivning |
+|Inställning | Standard namn | Description |
 | :------ | :-------------- | :---------- |
 | **Synapse-arbetsyta** | `workspace1` |  Namnet som Synapse-arbetsytan kommer att ha. |
 | **ADLSGEN2-konto** | `storage1` | ADLS-kontot som ska användas med din arbets yta. |
@@ -73,8 +73,8 @@ Skapa även den här säkerhets gruppen:
 För en grundläggande installation är dessa fem grupper tillräckliga. Senare kan du lägga till säkerhets grupper för att hantera användare som behöver mer specialiserad åtkomst eller ge användare endast åtkomst till specifika resurser.
 
 > [!NOTE]
->- Lär dig hur du skapar en säkerhets grupp i [den här artikeln](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal).
->- Lär dig hur du lägger till en säkerhets grupp från en annan säkerhets grupp i [den här artikeln](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-groups-membership-azure-portal).
+>- Lär dig hur du skapar en säkerhets grupp i [den här artikeln](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
+>- Lär dig hur du lägger till en säkerhets grupp från en annan säkerhets grupp i [den här artikeln](../../active-directory/fundamentals/active-directory-groups-membership-azure-portal.md).
 
 >[!Tip]
 >Enskilda Synapse-användare kan använda Azure Active Directory i Azure Portal för att se deras grupp medlemskap för att avgöra vilka roller de har beviljats.
@@ -272,7 +272,7 @@ Om du vill hantera åtkomst kan du lägga till och ta bort användare i de säke
 Som ett sista steg för att skydda arbets ytan bör du skydda nätverks åtkomsten med:
 - [Arbets ytans brand vägg](./synapse-workspace-ip-firewall.md)
 - [Hanterat virtuellt nätverk](./synapse-workspace-managed-vnet.md) 
-- [Privata slut punkter](./synapse-workspace-managed-private-endpoints.md)
+- [Privata slutpunkter](./synapse-workspace-managed-private-endpoints.md)
 - [Private Link](../../azure-sql/database/private-endpoint-overview.md)
 
 ## <a name="step-10-completion"></a>STEG 10: Slutför Ande

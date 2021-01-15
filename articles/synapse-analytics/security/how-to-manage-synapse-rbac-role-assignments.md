@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 12/1/2020
 ms.author: billgib
 ms.reviewer: jrasnick
-ms.openlocfilehash: f26b54a18ff137575cac208d70e4693c0b9914a8
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: c88371eb450d5b0e2e8b821cdec0e87190e291f8
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96572294"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98218203"
 ---
 # <a name="how-to-manage-synapse-rbac-role-assignments-in-synapse-studio"></a>Hantera Synapse RBAC-roll tilldelningar i Synapse Studio
 
@@ -24,7 +24,7 @@ Den här artikeln visar hur du lägger till och tar bort Synapse RBAC-roll tilld
 >[!Note]
 >- För att hantera Synapse RBAC-roll tilldelningar måste du ha rollen Synapse-administratör på arbets ytan eller på en lågnivå omfattning som innehåller de objekt som du vill hantera. Om du är Synapse-administratör på arbets ytan kan du bevilja åtkomst till alla objekt i arbets ytan. 
 >- **Gäst användare** från en annan AD-klient kan inte se eller hantera roll tilldelningar, även om de tilldelats Synapse-administratörs rollen.
->- För att hjälpa dig att få åtkomst till en arbets yta i händelse av att inga Synapse-administratörer har tilldelats eller är tillgängliga för dig kan användare med behörighet att hantera roll tilldelningar för **Azure RBAC** på arbets ytan även hantera Synapse-roll tilldelningar för **Synapse RBAC** , vilket gör att Synapse-administratören eller andra Synapse roll tilldelningar kan läggas till.
+>- För att hjälpa dig att få åtkomst till en arbets yta i händelse av att inga Synapse-administratörer har tilldelats eller är tillgängliga för dig kan användare med behörighet att hantera roll tilldelningar för **Azure RBAC** på arbets ytan även hantera Synapse-roll tilldelningar för  , vilket gör att Synapse-administratören eller andra Synapse roll tilldelningar kan läggas till.
 >- Åtkomst till SQL-pooler hanteras med hjälp av SQL-behörigheter.  Med undantag för Synapse-administratören och Synapse SQL-administratörs roller beviljar Synapse RBAC-roller inte åtkomst till SQL-pooler.
 
 >[!important]
@@ -65,7 +65,7 @@ Om du vill tilldela en roll med en mer kornig omfattning väljer du **arbets yta
 
 ![Lägg till roll tilldelning för arbets ytans objekt – Välj objekt typ](./media/how-to-manage-synapse-rbac-role-assignments/access-control-add-workspace-item-assignment-select-item-type.png) 
 
-Välj det **objekt** som ska användas som omfång och välj sedan den **roll** som ska tilldelas från List rutan.  List rutan visar bara de roller som är giltiga för den valda objekt typen. [Läs mer](https://go.microsoft.com/fwlink/?linkid=2148306).  
+Välj det **objekt** som ska användas som omfång och välj sedan den **roll** som ska tilldelas från List rutan.  List rutan visar bara de roller som är giltiga för den valda objekt typen. [Läs mer](./synapse-workspace-synapse-rbac.md).  
 
 ![Lägg till roll tilldelning för arbets ytans objekt – Välj roll](./media/how-to-manage-synapse-rbac-role-assignments/access-control-add-workspace-item-assignment-select-role.png) 
  
@@ -81,4 +81,4 @@ Kom ihåg att ändringar i roll tilldelningar tar 2-5 minuter att börja gälla.
 
 ## <a name="next-steps"></a>Nästa steg
 
-[Förstå de Synapse RBAC-roller som krävs för att utföra vanliga uppgifter](./synapse-workspace-understand-what-role-you-need.md) 
+[Förstå de Synapse RBAC-roller som krävs för att utföra vanliga uppgifter](./synapse-workspace-understand-what-role-you-need.md)

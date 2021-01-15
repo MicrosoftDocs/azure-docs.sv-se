@@ -3,17 +3,17 @@ title: Nätverks säkerhet för Azure Relay
 description: I den här artikeln beskrivs hur du använder IP-brandväggs regler och privata slut punkter med Azure Relay.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 608224f42fac8cd2d8ff06ab84989b1f675d418c
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 735a0b7dc303ad63cb301151e3e14e4488c856b1
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98134474"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98217251"
 ---
 # <a name="network-security-for-azure-relay"></a>Nätverks säkerhet för Azure Relay 
 I den här artikeln beskrivs hur du använder följande säkerhetsfunktioner med Azure Relay: 
 
-- IP-brandväggs regler (för hands version)
+- Regler för IP-brandvägg
 - Privata slutpunkter 
 
 > [!NOTE]
@@ -28,9 +28,6 @@ Den här funktionen är användbar i scenarier där Azure Relay bör endast vara
 IP-brandväggens regler tillämpas på relä namn områdes nivå. Reglerna gäller därför för alla anslutningar från klienter som använder ett protokoll som stöds. Alla anslutnings försök från en IP-adress som inte matchar en tillåten IP-regel i relä namn området avvisas som obehörig. Svaret innehåller ingen IP-regel. IP filter regler tillämpas i ordning och den första regeln som matchar IP-adressen avgör vilken åtgärd som godkänns eller nekas.
 
 Mer information finns i [så här konfigurerar du IP-brandvägg för ett relä namn område](ip-firewall-virtual-networks.md)
-
-> [!NOTE]
-> Den här funktionen är för närvarande en för **hands version**. 
 
 ## <a name="private-endpoints"></a>Privata slutpunkter
 

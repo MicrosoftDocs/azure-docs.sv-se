@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/02/2020
 ms.author: mnayak
-ms.openlocfilehash: ef1e33a2e43f26dcaf794b2ed81f27d39639b52d
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 2c6295db96f951abd1fd069535b98639e723d93a
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96533986"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98217574"
 ---
 # <a name="configure-routing-preference-for-a-public-ip-address-using-the-azure-portal"></a>Konfigurera cirkulations inställningar för en offentlig IP-adress med hjälp av Azure Portal
 
-Den här artikeln visar hur du konfigurerar [Inställningar för routning](https://docs.microsoft.com/azure/virtual-network/routing-preference-overview) via Internet leverantörs nätverk (**Internet** alternativ) för en offentlig IP-adress. När du har skapat den offentliga IP-adressen kan du associera den med följande Azure-resurser för inkommande och utgående trafik till Internet:
+Den här artikeln visar hur du konfigurerar [Inställningar för routning](./routing-preference-overview.md) via Internet leverantörs nätverk (**Internet** alternativ) för en offentlig IP-adress. När du har skapat den offentliga IP-adressen kan du associera den med följande Azure-resurser för inkommande och utgående trafik till Internet:
 
 * Virtuell dator
 * Skaluppsättning för virtuella datorer
@@ -56,5 +56,5 @@ Du kan associera ovanstående skapade offentliga IP-adress med en virtuell [Wind
 - Läs mer om [offentlig IP-adress med inställningar för routning](routing-preference-overview.md).
 - [Konfigurera cirkulations inställningar för en virtuell dator](tutorial-routing-preference-virtual-machine-portal.md).
 - [Konfigurera cirkulations inställningar för en offentlig IP-adress med hjälp av PowerShell](routing-preference-powershell.md).
-- Läs mer om [offentliga IP-adresser](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses) i Azure.
+- Läs mer om [offentliga IP-adresser](./public-ip-addresses.md#public-ip-addresses) i Azure.
 - Läs mer om [Inställningar för offentliga IP-adresser](virtual-network-public-ip-address.md#create-a-public-ip-address).

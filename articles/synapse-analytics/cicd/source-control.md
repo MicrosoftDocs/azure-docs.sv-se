@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: 2f1fe7c25327e8ecab9b450cab167391d8949b0a
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 1f1a74f3a26a079039e68eb8e59fac4c18ff0c32
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97008172"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98219750"
 ---
 # <a name="source-control-in-azure-synapse-studio"></a>Käll kontroll i Azure Synapse Studio
 
@@ -77,7 +77,7 @@ Du kan också använda databas länken för att snabbt peka på den git-lagrings
 
 ### <a name="use-a-different-azure-active-directory-tenant"></a>Använd en annan Azure Active Directory klient
 
-Azure databaser git-lagrings platsen kan finnas i en annan Azure Active Directory klient. För att kunna ange en annan Azure AD-klientorganisation måste du ha administratörsbehörighet för den prenumeration som du använder. Mer information finns i [ändra prenumerations administratör](https://docs.microsoft.com/azure/cost-management-billing/manage/add-change-subscription-administrator#assign-a-subscription-administrator)
+Azure databaser git-lagrings platsen kan finnas i en annan Azure Active Directory klient. För att kunna ange en annan Azure AD-klientorganisation måste du ha administratörsbehörighet för den prenumeration som du använder. Mer information finns i [ändra prenumerations administratör](../../cost-management-billing/manage/add-change-subscription-administrator.md#assign-a-subscription-administrator)
 
 > [!IMPORTANT]
 > För att ansluta till en annan Azure Active Directory måste användaren som är inloggad vara en del av Active Directory. 
@@ -86,7 +86,7 @@ Azure databaser git-lagrings platsen kan finnas i en annan Azure Active Director
 
 Om du vill använda en personlig Microsoft-konto för git-integrering kan du länka din personliga Azure-lagrings platsen till din organisations Active Directory.
 
-1. Lägg till din personliga Microsoft-konto till din organisations Active Directory som gäst. Mer information finns i [Lägg till Azure Active Directory B2B-samarbets användare i Azure Portal](https://docs.microsoft.com/azure/active-directory/external-identities/add-users-administrator).
+1. Lägg till din personliga Microsoft-konto till din organisations Active Directory som gäst. Mer information finns i [Lägg till Azure Active Directory B2B-samarbets användare i Azure Portal](../../active-directory/external-identities/add-users-administrator.md).
 
 2. Logga in på Azure Portal med din personliga Microsoft-konto. Växla sedan till din organisations Active Directory.
 

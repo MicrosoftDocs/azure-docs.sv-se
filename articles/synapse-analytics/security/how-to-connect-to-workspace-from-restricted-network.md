@@ -8,18 +8,18 @@ ms.subservice: security
 ms.date: 10/25/2020
 ms.author: xujiang1
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2e96cbf0c1464e27b0a384e8a813118056103b91
-ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
+ms.openlocfilehash: 41403a59be0395a6d9874c7369bfe59c22f5ac17
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96296716"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98218373"
 ---
 # <a name="connect-to-workspace-resources-from-a-restricted-network"></a>Ansluta till arbets ytans resurser från ett begränsat nätverk
 
 Anta att du är IT-administratör som hanterar organisationens begränsade nätverk. Du vill aktivera nätverks anslutningen mellan Azure Synapse Analytics Studio och en arbets station inom det här begränsade nätverket. Den här artikeln visar hur du gör.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * **Azure-prenumeration**: om du inte har en Azure-prenumeration kan du skapa ett [kostnads fritt Azure-konto](https://azure.microsoft.com/free/) innan du börjar.
 * **Azure Synapse Analytics-arbetsyta**: du kan skapa en från Azure Synapse Analytics. Du behöver namnet på arbets ytan i steg 4.
@@ -40,7 +40,7 @@ Följande skärm bild visar information om den Azure Resource Manager utgående 
 
 När du skapar de andra tre reglerna ersätter du värdet för **mål service tag gen** med **AzureFrontDoor. frontend**, **AzureActiveDirectory** eller **AzureMonitor** från listan.
 
-Mer information finns i [Översikt över tjänst etiketter](/azure/virtual-network/service-tags-overview).
+Mer information finns i [Översikt över tjänst etiketter](../../virtual-network/service-tags-overview.md).
 
 ## <a name="step-2-create-private-link-hubs"></a>Steg 2: skapa privata länk hubbar
 

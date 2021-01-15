@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 8dd49125dc54403328fe53ae1aa0112ab2005501
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: d625cb8e0d0fa0f2fff55fbd41818057b7e9cb89
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201135"
+ms.locfileid: "98217659"
 ---
 # <a name="azure-security-baseline-for-azure-public-ip"></a>Azures säkerhets bas linje för offentlig Azure-IP
 
@@ -30,7 +30,7 @@ Om du vill se hur Azures offentliga IP fullständigt mappar till Azures säkerhe
 
 Azure PowerShell eller Azure CLI kan användas för att söka efter eller utföra åtgärder på resurser baserat på deras taggar. 
 
-- [Skapa och använda Taggar](/azure/azure-resource-manager/resource-group-using-tags) 
+- [Skapa och använda Taggar](../azure-resource-manager/management/tag-resources.md) 
 
 - [Så här skapar du en Azure-Virtual Network](quick-create-portal.md) 
 
@@ -64,7 +64,7 @@ Du kan i stället aktivera och använda data till Azure Sentinel eller en SIEM f
 
 **Vägledning**: Använd Azure aktivitets logg för att övervaka konfigurationer och identifiera ändringar för dina offentliga IP-instanser. Förutom kontroll planet (till exempel Azure Portal) genererar själva offentliga IP inte gransknings loggar. Offentlig IP innehåller verktyg för att övervaka, diagnostisera, Visa mått och aktivera eller inaktivera loggar för resurser i ett virtuellt Azure-nätverk.
 
-- [Visa och hämta Azure aktivitets logg händelser](/azure/azure-monitor/platform/activity-log-view)
+- [Visa och hämta Azure aktivitets logg händelser](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
 **Azure Security Center-övervakning**: Ja
 
@@ -88,7 +88,7 @@ Använd Azure aktivitets logg för att övervaka konfigurationer och identifiera
 
 Offentliga IP-adresser genererar inte loggar som rör annan nätverks trafik än vid kontroll planet (till exempel Azure Portal).
 
-- [Visa och hämta Azure aktivitets logg händelser](/azure/azure-monitor/platform/activity-log-view)
+- [Visa och hämta Azure aktivitets logg händelser](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
 **Övervakning i Azure Security Center**: Ej tillämpligt
 
@@ -114,9 +114,9 @@ Offentliga IP-adresser genererar inte loggar som rör annan nätverks trafik än
 
 Inventerade eller fråge fördefinierade inbyggda Azure-roller finns för vissa resurser via verktyg som Azure CLI, Azure PowerShell eller Azure Portal.
 
-- [Så här hämtar du en katalog roll i Azure AD med PowerShell](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+- [Så här hämtar du en katalog roll i Azure AD med PowerShell](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
 
-- [Så här hämtar du medlemmar i en katalog roll i Azure AD med PowerShell](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+- [Så här hämtar du medlemmar i en katalog roll i Azure AD med PowerShell](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
 
 **Azure Security Center-övervakning**: Ja
 
@@ -128,7 +128,7 @@ Inventerade eller fråge fördefinierade inbyggda Azure-roller finns för vissa 
 
 Aktiverade just-in-Time-åtkomst med hjälp av Azure Active Directory (Azure AD) Privileged Identity Management (PIM) och Azure Resource Manager. 
 
-- [Läs mer om Privileged Identity Management](/azure/active-directory/privileged-identity-management)
+- [Läs mer om Privileged Identity Management](../active-directory/privileged-identity-management/index.yml)
 
 **Azure Security Center-övervakning**: Ja
 
@@ -164,9 +164,9 @@ Aktiverade just-in-Time-åtkomst med hjälp av Azure Active Directory (Azure AD)
 
 Granska och åtgärda Azure AD-farlighets identifieringar för aviseringar och rapporter om riskfyllda användar beteenden.
 
-- [Distribuera Privileged Identity Management (PIM)](/azure/active-directory/privileged-identity-management/pim-deployment-plan)
+- [Distribuera Privileged Identity Management (PIM)](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-- [Förstå identifieringar av Azure AD-risker](/azure/active-directory/reports-monitoring/concept-risk-events)
+- [Förstå identifieringar av Azure AD-risker](../active-directory/identity-protection/overview-identity-protection.md)
 
 **Azure Security Center-övervakning**: Ja
 
@@ -198,7 +198,7 @@ Granska och åtgärda Azure AD-farlighets identifieringar för aviseringar och r
 
 Använd granskningar av Azure Identity Access för att effektivt hantera grupp medlemskap, åtkomst till företags program och roll tilldelningar. Användar åtkomst kan granskas regelbundet för att se till att användarna har godkänt och fortsatt åtkomst.
 
-- [Förstå Azure AD repor ting](/azure/active-directory/reports-monitoring/)
+- [Förstå Azure AD repor ting](../active-directory/reports-monitoring/index.yml)
 
 - [Så här använder du granskningar av Azure Identity Access](../active-directory/governance/access-reviews-overview.md)
 
@@ -211,7 +211,7 @@ Använd granskningar av Azure Identity Access för att effektivt hantera grupp m
 **Vägledning**: implementera integrering med alla Siem/övervaknings verktyg baserat på din åtkomst till Azure Active Directory (Azure AD) inloggnings aktivitet, gransknings-och risk händelse logg källor.
 Effektivisera den här processen genom att skapa diagnostikinställningar för Azure AD-användarkonton och skicka gransknings loggar och inloggnings loggar till en Log Analytics-arbetsyta. Konfigurera önskade aviseringar inom arbets ytan Log Analytics. 
 
-- [Så här integrerar du Azure-aktivitets loggar med Azure Monitor](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Så här integrerar du Azure-aktivitets loggar med Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 **Övervakning i Azure Security Center**: Ej tillämpligt
 
@@ -220,7 +220,7 @@ Effektivisera den här processen genom att skapa diagnostikinställningar för A
 ### <a name="312-alert-on-account-login-behavior-deviation"></a>3,12: avisering om beteende för beteende för konto inloggning
 
 **Vägledning**: Använd Azure Active Directory (Azure AD) Identity Protection-funktioner för att konfigurera automatiserade svar på identifierade misstänkta åtgärder relaterade till användar identiteter. Mata in data i Azure Sentinel för ytterligare undersökning efter behov och utifrån affärs krav.
-- [Så visar du riskfyllda inloggningar för Azure AD](/azure/active-directory/reports-monitoring/concept-risky-sign-ins) 
+- [Så visar du riskfyllda inloggningar för Azure AD](../active-directory/identity-protection/overview-identity-protection.md) 
 
 - [Så här konfigurerar och aktiverar du risk principer för identitets skydd](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md) 
 
@@ -242,7 +242,7 @@ Effektivisera den här processen genom att skapa diagnostikinställningar för A
 
 - [Så här skapar du frågor med Azure Resource Graph](../governance/resource-graph/first-query-portal.md)
 
-- [Så här visar du dina Azure-prenumerationer](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+- [Så här visar du dina Azure-prenumerationer](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
 
 - [Förstå Azure RBAC](../role-based-access-control/overview.md)
 
@@ -254,7 +254,7 @@ Effektivisera den här processen genom att skapa diagnostikinställningar för A
 
 **Vägledning**: Använd taggar till Azure-resurser som ger metadata till att logiskt organisera dem i en taxonomi.
 
-- [Skapa och använda Taggar](/azure/azure-resource-manager/resource-group-using-tags)
+- [Skapa och använda Taggar](../azure-resource-manager/management/tag-resources.md)
 
 **Övervakning i Azure Security Center**: Ej tillämpligt
 
@@ -269,11 +269,11 @@ Använd dessutom Azure Policy för att ange begränsningar för den typ av resur
 - Otillåtna resurstyper
 - Tillåtna resurstyper
 
-- [Så här skapar du ytterligare Azure-prenumerationer](/azure/billing/billing-create-subscription)
+- [Så här skapar du ytterligare Azure-prenumerationer](../cost-management-billing/manage/create-subscription.md)
 
-- [Så här skapar du hanterings grupper](/azure/governance/management-groups/create)
+- [Så här skapar du hanterings grupper](../governance/management-groups/create-management-group-portal.md)
 
-- [Skapa och använda Taggar](/azure/azure-resource-manager/resource-group-using-tags)
+- [Skapa och använda Taggar](../azure-resource-manager/management/tag-resources.md)
 
 **Övervakning i Azure Security Center**: Ej tillämpligt
 
@@ -302,7 +302,7 @@ Använd Azure Resource Graph till att fråga efter och identifiera resurser i pr
 
 - [Konfigurera och hantera Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [Så här nekar du en speciell resurs typ med Azure Policy](/azure/governance/policy/samples/not-allowed-resource-types)
+- [Så här nekar du en speciell resurs typ med Azure Policy](../governance/policy/samples/index.md)
 
 **Övervakning i Azure Security Center**: Ej tillämpligt
 
@@ -350,9 +350,9 @@ Använd Azure Resource Graph till att fråga efter och identifiera resurser i pr
 
 **Vägledning**: om du använder anpassade Azure policys definitioner använder du Azure DevOps eller Azure databaser för att lagra och hantera din kod på ett säkert sätt.
 
-- [Så här lagrar du kod i Azure DevOps](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
+- [Så här lagrar du kod i Azure DevOps](/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
-- [Dokumentation om Azure databaser](https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops)
+- [Dokumentation om Azure databaser](/azure/devops/repos/index?view=azure-devops)
 
 **Övervakning i Azure Security Center**: Ej tillämpligt
 
@@ -408,7 +408,7 @@ Dessutom är det tydligt att markera prenumerationer (t. ex. produktion, icke-Pr
 
 - [Säkerhetsaviseringar i Azure Security Center](../security-center/security-center-alerts-overview.md) 
 
-- [Använda taggar för att organisera dina Azure-resurser](/azure/azure-resource-manager/resource-group-using-tags)
+- [Använda taggar för att organisera dina Azure-resurser](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center-övervakning**: Ja
 
@@ -474,5 +474,5 @@ Dessutom är det tydligt att markera prenumerationer (t. ex. produktion, icke-Pr
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Se [Azures säkerhets benchmark](/azure/security/benchmarks/overview)
-- Läs mer om [säkerhetsbaslinjer för Azure](/azure/security/benchmarks/security-baselines-overview)
+- Se [Azures säkerhets benchmark](../security/benchmarks/overview.md)
+- Läs mer om [säkerhetsbaslinjer för Azure](../security/benchmarks/security-baselines-overview.md)

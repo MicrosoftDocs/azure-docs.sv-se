@@ -10,13 +10,13 @@ ms.topic: troubleshooting
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: wiassaf, sstein
-ms.date: 03/10/2020
-ms.openlocfilehash: 6ea17f04538e3444b1baddaa8862add2cfbbaa9c
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 1/14/2021
+ms.openlocfilehash: 4d0f5404a64eae99ced0dd797954ba042b50060f
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96493431"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98217234"
 ---
 # <a name="detectable-types-of-query-performance-bottlenecks-in-azure-sql-database"></a>Identifierbara typer av flaskhalsar för frågeprestanda i Azure SQL Database
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -90,7 +90,7 @@ Här är ett exempel på en delvis parametriserad fråga:
 ```sql
 SELECT *
 FROM t1 JOIN t2 ON t1.c1 = t2.c1
-WHERE t1.c1 = @p1 AND t2.c2 = '961C3970-0E54-4E8E-82B6-5545BE897F8F'
+WHERE t1.c1 = @p1 AND t2.c2 = '961C3970-0E54-4E8E-82B6-5545BE897F8F';
 ```
 
 I det här exemplet `t1.c1` tar `@p1` , men `t2.c2` fortsätter att ta GUID som literal. I det här fallet `c2` behandlas frågan som en annan fråga och en ny kompilering sker om du ändrar värdet för. För att minska kompileringarna i det här exemplet skulle du också Parameterisera GUID.
@@ -115,7 +115,7 @@ WHERE
   rsi.start_time >= DATEADD(hour, -2, GETUTCDATE())
   AND query_parameterization_type_desc IN ('User', 'None')
 GROUP BY q.query_hash
-ORDER BY count (distinct p.query_id) DESC
+ORDER BY count (distinct p.query_id) DESC;
 ```
 
 ### <a name="factors-that-affect-query-plan-changes"></a>Faktorer som påverkar ändringar i frågeplan
@@ -187,7 +187,7 @@ När du har eliminerat ett underoptimalt schema och *väntande relaterade* probl
 
 - **Blockerar**:
 
-  En fråga kan innehålla låset på objekt i databasen medan andra försöker komma åt samma objekt. Du kan identifiera blockerade frågor med hjälp av [DMV: er](database/monitoring-with-dmvs.md#monitoring-blocked-queries) eller [intelligent Insights](database/intelligent-insights-troubleshoot-performance.md#locking).
+  En fråga kan innehålla låset på objekt i databasen medan andra försöker komma åt samma objekt. Du kan identifiera blockerade frågor med hjälp av [DMV: er](database/monitoring-with-dmvs.md#monitoring-blocked-queries) eller [intelligent Insights](database/intelligent-insights-troubleshoot-performance.md#locking). Mer information finns i [förstå och lösa problem med att blockera Azure SQL](database/understand-resolve-blocking.md).
 - **I/o-problem**
 
   Frågor kan vänta på att sidorna skrivs till data-eller loggfilerna. I det här fallet kontrollerar du `INSTANCE_LOG_RATE_GOVERNOR` `WRITE_LOG` statistiken, eller `PAGEIOLATCH_*` wait i DMV. Se använda DMV: er för att [identifiera problem med IO-prestanda](database/monitoring-with-dmvs.md#identify-io-performance-issues).

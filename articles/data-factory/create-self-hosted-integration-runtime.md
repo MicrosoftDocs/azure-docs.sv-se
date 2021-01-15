@@ -11,12 +11,12 @@ ms.author: lle
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 12/25/2020
-ms.openlocfilehash: 76d53458154a7e66589c16f955373975bb04b25b
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: fd56ef74a7641a01eae2354f149f45e84ff56833
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121634"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98217455"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Skapa och konfigurera lokalt installerad integrationskörning
 
@@ -157,21 +157,21 @@ Här följer information om programmets åtgärder och argument:
 
 |TGÄRD|args|Description|
 |------|----|-----------|
-|RN<br/>-RegisterNewNode|"`<AuthenticationKey>`" ["`<NodeName>`"]|Registrera en egen värd för integration runtime-noden med den angivna autentiseringsnyckel och nodnamn.|
-|forsknings<br/>-EnableRemoteAccess|"`<port>`" ["`<thumbprint>`"]|Aktivera fjärråtkomst på den aktuella noden för att konfigurera ett kluster med hög tillgänglighet. Eller aktivera inställning av autentiseringsuppgifter direkt mot IR med egen värd utan att gå via Azure Data Factory. Du gör det senare med hjälp av cmdleten **New-AzDataFactoryV2LinkedServiceEncryptedCredential** från en fjärrdator i samma nätverk.|
-|-erac,<br/>-EnableRemoteAccessInContainer|"`<port>`" ["`<thumbprint>`"]|Aktivera fjärråtkomst till den aktuella noden när noden körs i en behållare.|
-|Dra<br/>-DisableRemoteAccess||Inaktivera fjärråtkomst till den aktuella noden. Fjärråtkomst krävs för installation av multinoder. PowerShell **-cmdleten New-AzDataFactoryV2LinkedServiceEncryptedCredential** fungerar fortfarande även om fjärråtkomst är inaktiverat. Det här beteendet är sant så länge cmdleten körs på samma dator som den lokala IR-noden.|
-|KB<br/>-Nyckel|"`<AuthenticationKey>`"|Skriv över eller uppdatera föregående autentiseringsnyckel. Var försiktig med den här åtgärden. Din tidigare IR-nod med egen värd kan gå offline om nyckeln är en ny integrerings körning.|
-|-gbf,<br/>-GenerateBackupFile|"`<filePath>`" "`<password>`"|Skapa en säkerhets kopierings fil för den aktuella noden. Säkerhets kopian innehåller nodens nyckel och autentiseringsuppgifter för data lagring.|
-|IBF<br/>-ImportBackupFile|"`<filePath>`" "`<password>`"|Återställ noden från en säkerhets kopia.|
-|r<br/>-Restart||Starta om värd tjänsten för integration runtime med egen värd.|
-|na<br/>-Start||Starta värd tjänsten för integration runtime med egen värd.|
-|tera<br/>-Stoppa||Stoppa värd tjänsten för integration runtime med egen värd.|
-|SUS<br/>-StartUpgradeService||Starta uppgraderings tjänsten för integration runtime med egen värd.|
-|antal<br/>-StopUpgradeService||Stoppa uppgraderings tjänsten för integration runtime med egen värd.|
-|-tonau,<br/>-TurnOnAutoUpdate||Aktivera automatisk uppdatering av integrerings körningen med egen värd.|
-|-toffau,<br/>-TurnOffAutoUpdate||Inaktivera automatisk uppdatering av integrerings körningen med egen värd.|
-|skydd<br/>-SwitchServiceAccount|"`<domain\user>`" ["`<password>`"]|Ange dia Host service som ska köras som ett nytt konto. Använd det tomma lösen ordet "" för system konton och virtuella konton.|
+|`-rn`,<br/>`-RegisterNewNode`|"`<AuthenticationKey>`" ["`<NodeName>`"]|Registrera en egen värd för integration runtime-noden med den angivna autentiseringsnyckel och nodnamn.|
+|`-era`,<br/>`-EnableRemoteAccess`|"`<port>`" ["`<thumbprint>`"]|Aktivera fjärråtkomst på den aktuella noden för att konfigurera ett kluster med hög tillgänglighet. Eller aktivera inställning av autentiseringsuppgifter direkt mot IR med egen värd utan att gå via Azure Data Factory. Du gör det senare med hjälp av cmdleten **New-AzDataFactoryV2LinkedServiceEncryptedCredential** från en fjärrdator i samma nätverk.|
+|`-erac`,<br/>`-EnableRemoteAccessInContainer`|"`<port>`" ["`<thumbprint>`"]|Aktivera fjärråtkomst till den aktuella noden när noden körs i en behållare.|
+|`-dra`,<br/>`-DisableRemoteAccess`||Inaktivera fjärråtkomst till den aktuella noden. Fjärråtkomst krävs för installation av multinoder. PowerShell **-cmdleten New-AzDataFactoryV2LinkedServiceEncryptedCredential** fungerar fortfarande även om fjärråtkomst är inaktiverat. Det här beteendet är sant så länge cmdleten körs på samma dator som den lokala IR-noden.|
+|`-k`,<br/>`-Key`|"`<AuthenticationKey>`"|Skriv över eller uppdatera föregående autentiseringsnyckel. Var försiktig med den här åtgärden. Din tidigare IR-nod med egen värd kan gå offline om nyckeln är en ny integrerings körning.|
+|`-gbf`,<br/>`-GenerateBackupFile`|"`<filePath>`" "`<password>`"|Skapa en säkerhets kopierings fil för den aktuella noden. Säkerhets kopian innehåller nodens nyckel och autentiseringsuppgifter för data lagring.|
+|`-ibf`,<br/>`-ImportBackupFile`|"`<filePath>`" "`<password>`"|Återställ noden från en säkerhets kopia.|
+|`-r`,<br/>`-Restart`||Starta om värd tjänsten för integration runtime med egen värd.|
+|`-s`,<br/>`-Start`||Starta värd tjänsten för integration runtime med egen värd.|
+|`-t`,<br/>`-Stop`||Stoppa värd tjänsten för integration runtime med egen värd.|
+|`-sus`,<br/>`-StartUpgradeService`||Starta uppgraderings tjänsten för integration runtime med egen värd.|
+|`-tus`,<br/>`-StopUpgradeService`||Stoppa uppgraderings tjänsten för integration runtime med egen värd.|
+|`-tonau`,<br/>`-TurnOnAutoUpdate`||Aktivera automatisk uppdatering av integrerings körningen med egen värd.|
+|`-toffau`,<br/>`-TurnOffAutoUpdate`||Inaktivera automatisk uppdatering av integrerings körningen med egen värd.|
+|`-ssa`,<br/>`-SwitchServiceAccount`|"`<domain\user>`" ["`<password>`"]|Ange dia Host service som ska köras som ett nytt konto. Använd det tomma lösen ordet "" för system konton och virtuella konton.|
 
 
 ## <a name="install-and-register-a-self-hosted-ir-from-microsoft-download-center"></a>Installera och registrera en egen värd-IR från Microsoft Download Center
@@ -205,9 +205,9 @@ Standard inloggnings tjänst kontot för integration runtime med egen värd är 
 
 Kontrol lera att kontot har behörighet att logga in som en tjänst. Det går inte att starta den själv värdbaserade integrerings körningen. Du kan kontrol lera behörigheten i den **lokala säkerhets principen – > säkerhets inställningar-> lokala principer-> tilldelning av användar rättigheter – > logga in som en tjänst**
 
-![Tjänst konto behörighet](media/create-self-hosted-integration-runtime/shir-service-account-permission.png)
+![Skärm bild av lokal säkerhets princip – tilldelning av användar rättigheter](media/create-self-hosted-integration-runtime/shir-service-account-permission.png)
 
-![Tjänst konto behörighet](media/create-self-hosted-integration-runtime/shir-service-account-permission-2.png)
+![Skärm bild av inloggning som tilldelning av användar rättigheter för tjänst](media/create-self-hosted-integration-runtime/shir-service-account-permission-2.png)
 
 
 ## <a name="notification-area-icons-and-notifications"></a>Ikoner och meddelanden i meddelande fältet

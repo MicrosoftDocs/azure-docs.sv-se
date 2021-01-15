@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/26/2018
 ms.author: genli
-ms.openlocfilehash: 3a8982b5626e3c19dbd49a3d2e20542d44b1a1da
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 18f2128b6869b4047cc6f35e1638aca81233a014
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368595"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98219291"
 ---
 # <a name="network-virtual-appliance-issues-in-azure"></a>Problem med virtuella nätverks installationer i Azure
 
@@ -87,13 +87,13 @@ Använd PowerShell
 
 **Kontrol lera om trafiken kan dirigeras till NVA**
 
-1. Öppna **Network Watcher**på [Azure Portal](https://portal.azure.com), Välj **nästa hopp**.
+1. Öppna **Network Watcher** på [Azure Portal](https://portal.azure.com), Välj **nästa hopp**.
 2. Ange en virtuell dator som är konfigurerad för att omdirigera trafiken till NVA och en mål-IP-adress för att visa nästa hopp. 
 3. Om NVA inte visas som **nästa hopp**, kontrollerar du och uppdaterar Azure Route-tabellerna.
 
 **Kontrol lera om trafiken kan komma åt NVA**
 
-1. I [Azure Portal](https://portal.azure.com)öppnar du **Network Watcher**och väljer sedan **kontrol lera IP-flöde**. 
+1. I [Azure Portal](https://portal.azure.com)öppnar du **Network Watcher** och väljer sedan **kontrol lera IP-flöde**. 
 2. Ange den virtuella datorn och IP-adressen för NVA och kontrol lera sedan om trafiken blockeras av några nätverks säkerhets grupper (NSG).
 3. Om det finns en NSG-regel som blockerar trafiken, letar du upp NSG i **gällande säkerhets** regler och uppdaterar den sedan så att trafiken kan passera. Kör sedan **IP-flöde verifiera** igen och Använd **anslutnings fel sökning** för att testa TCP-kommunikation från virtuell dator till din interna eller externa IP-adress.
 
@@ -127,7 +127,7 @@ Om det virtuella dator nätverket använder toppar eller visar perioder med hög
 ## <a name="advanced-network-administrator-troubleshooting"></a>Avancerad nätverks administratör fel sökning
 
 ### <a name="capture-network-trace"></a>Avbilda nätverks spårning
-Avbilda en samtidig nätverks spårning på den virtuella käll datorn, NVA och den virtuella mål datorn när du kör **[PsPing](https://docs.microsoft.com/sysinternals/downloads/psping)** eller **nmap**, och stoppa sedan spårningen.
+Avbilda en samtidig nätverks spårning på den virtuella käll datorn, NVA och den virtuella mål datorn när du kör **[PsPing](/sysinternals/downloads/psping)** eller **nmap**, och stoppa sedan spårningen.
 
 1. Om du vill avbilda en samtidig nätverks spårning kör du följande kommando:
 

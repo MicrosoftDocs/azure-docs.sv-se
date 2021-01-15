@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/30/2016
 ms.author: allensu
-ms.openlocfilehash: 135504ad4956836614bfc0f2cb107e610de17c0c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a0dab64aac8bc5fa68a53fad6cd8e6f6bb4bac03
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87543494"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98217149"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-portal"></a>Tilldela flera IP-adresser till virtuella datorer med hjälp av Azure Portal
 
 > [!INCLUDE [virtual-network-multiple-ip-addresses-intro.md](../../includes/virtual-network-multiple-ip-addresses-intro.md)]
 > 
-> Den här artikeln beskriver hur du skapar en virtuell dator (VM) via Azure Resource Manager distributions modellen med hjälp av Azure Portal. Det går inte att tilldela flera IP-adresser till resurser som skapats via den klassiska distributions modellen. Läs mer om Azures distributions modeller i artikeln [förstå distributions modeller](../resource-manager-deployment-model.md) .
+> Den här artikeln beskriver hur du skapar en virtuell dator (VM) via Azure Resource Manager distributions modellen med hjälp av Azure Portal. Det går inte att tilldela flera IP-adresser till resurser som skapats via den klassiska distributions modellen. Läs mer om Azures distributions modeller i artikeln [förstå distributions modeller](../azure-resource-manager/management/deployment-models.md) .
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-scenario.md](../../includes/virtual-network-multiple-ip-addresses-scenario.md)]
 
@@ -76,7 +76,7 @@ En offentlig IP-adress är en inställning för en offentlig IP-adressresurs. Om
 
 1. Bläddra till Azure Portal vid https://portal.azure.com och logga in på den, om det behövs.
 3. I portalen klickar du på **skapa en resurs**  >  **nätverk**  >  **offentlig IP-adress**.
-4. I fönstret **skapa offentlig IP-adress** som visas anger du ett **namn**, väljer en **IP-adress tilldelnings** typ, en **prenumeration**, en **resurs grupp**och en **plats**och klickar sedan på **skapa**, som du ser i följande bild:
+4. I fönstret **skapa offentlig IP-adress** som visas anger du ett **namn**, väljer en **IP-adress tilldelnings** typ, en **prenumeration**, en **resurs grupp** och en **plats** och klickar sedan på **skapa**, som du ser i följande bild:
 
     ![Skapa en offentlig IP-adressresurs](./media/virtual-network-multiple-ip-addresses-portal/figure5.png)
 

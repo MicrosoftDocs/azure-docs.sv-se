@@ -6,17 +6,17 @@ ms.topic: how-to
 ms.date: 11/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 101b3a05591a7815ba28756bb5b07e855b64e769
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 85026092e513ecc9ec3c23e292a416297774a2e4
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94505554"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98217846"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>Använd Microsoft Teams på Windows Virtual Desktop
 
 >[!IMPORTANT]
->Medie optimering för team stöds för GCC-miljöer (Microsoft 365 myndigheter). Medie optimering för team stöds inte för GCC-High eller DoD.
+>Medie optimering för team stöds för Microsoft 365 myndigheter (GCC) och GCC-High miljöer. Medie optimering för team stöds inte för GCC-High eller DoD.
 
 >[!NOTE]
 >Medie optimering för Microsoft Teams är bara tillgänglig för Windows Skriv bords klient på Windows 10-datorer. Medie optimeringar kräver Windows Desktop Client version 1.2.1026.0 eller senare.
@@ -124,7 +124,7 @@ När du har installerat WebSocket-tjänsten och Teams Desktop-appen följer du d
 
 4. Välj användar profil avbildningen och välj sedan **Inställningar**.
 
-      Om medie optimeringar läses in räknas ljud enheterna och kamerorna som är tillgängliga lokalt i enhets menyn. Om menyn visar **fjärrljud** avslutar du team-appen och försöker igen. Om enheterna fortfarande inte visas i menyn kontrollerar du sekretess inställningarna på den lokala datorn. Se till att **Settings**  >  **Privacy**  >  inställningen **Tillåt att appar får åtkomst till mikrofonen** är **aktiverat** under Inställningar sekretess **program behörigheter** . Koppla från fjärrsessionen och Anslut sedan igen och kontrol lera ljud-och video enheterna igen. Om du vill ansluta till samtal och möten med video måste du också bevilja behörighet för appar för att få åtkomst till kameran.
+      Om medie optimeringar läses in räknas ljud enheterna och kamerorna som är tillgängliga lokalt i enhets menyn. Om menyn visar **fjärrljud** avslutar du team-appen och försöker igen. Om enheterna fortfarande inte visas i menyn kontrollerar du sekretess inställningarna på den lokala datorn. Se till att   >    >  inställningen **Tillåt att appar får åtkomst till mikrofonen** är **aktiverat** under Inställningar sekretess **program behörigheter** . Koppla från fjärrsessionen och Anslut sedan igen och kontrol lera ljud-och video enheterna igen. Om du vill ansluta till samtal och möten med video måste du också bevilja behörighet för appar för att få åtkomst till kameran.
 
       Om Optimeringarna inte läses in avinstallerar du sedan Teams och kontrollerar igen.
 
@@ -140,7 +140,7 @@ Att använda team i en virtualiserad miljö skiljer sig från att använda team 
 
 ### <a name="calls-and-meetings"></a>Samtal och möten
 
-- Teams Skriv bords klienten i Windows-miljöer för virtuella skriv bord stöder inte Live-händelser. För närvarande rekommenderar vi att du ansluter Live-händelser från [team webb klienten](https://teams.microsoft.com) i fjärrsessionen i stället.
+- Teams Skriv bords klienten i virtuella Windows-miljöer har inte stöd för att skapa Live-händelser, men du kan gå med i Live-händelser. För närvarande rekommenderar vi att du skapar Live-händelser från [team webb klienten](https://teams.microsoft.com) i fjärrsessionen i stället.
 - Anrop eller möten stöder för närvarande inte program delning. Desktop-sessioner stöder Skriv bords delning.
 - Det finns för närvarande inte stöd för att ge kontrollen och kontrollen ta kontroll.
 - Teams på virtuella Windows-datorer stöder endast en inkommande video ingång i taget. Det innebär att när någon försöker dela skärmen visas skärmen i stället för Mötes ledarens skärm.

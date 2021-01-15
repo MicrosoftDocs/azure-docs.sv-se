@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/15/2019
 ms.author: kumud
-ms.openlocfilehash: 61617777efa8241c93b2b5ffe42fc1d914b6ebcf
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: feea2d54edd8a93e6e0effbef03389ef895d5ffb
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96004984"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98216758"
 ---
 # <a name="virtual-network-peering"></a>Peering för virtuella nätverk
 
@@ -39,7 +39,7 @@ Fördelar med att använda VNET-peering (avsett om den är lokal eller global):
 
 Nätverkstrafiken mellan peer-kopplade virtuella nätverk är privat. Trafiken mellan de virtuella nätverken finns i Microsoft-stamnätverket. Vid kommunikation mellan virtuella nätverk krävs inget offentligt Internet, inga gatewayer eller ingen kryptering.
 
-## <a name="connectivity"></a>Anslutning
+## <a name="connectivity"></a>Anslutningar
 
 För peer-kopplade virtuella nätverk kan resurser i antingen det virtuella nätverket ansluta direkt till resurser i det peer-kopplade virtuella nätverket.
 
@@ -48,7 +48,7 @@ Nätverksfördröjningen mellan virtuella datorer i peer-kopplade virtuella nät
 Trafiken mellan virtuella datorer i peer-kopplade virtuella nätverk dirigeras direkt genom Microsoft-stamnätsinfrastrukturen, inte via en gateway eller det offentliga Internet.
 
 Du kan använda nätverks säkerhets grupper i virtuella nätverk för att blockera åtkomst till andra virtuella nätverk eller undernät.
-När du konfigurerar peering för virtuella nätverk kan du antingen öppna eller stänga reglerna för nätverks säkerhets gruppen mellan de virtuella nätverken. Om du öppnar fullständig anslutning mellan peer-anslutna virtuella nätverk kan du använda nätverks säkerhets grupper för att blockera eller neka åtkomst. Fullständig anslutning är standard alternativet. Mer information om nätverks säkerhets grupper finns i [säkerhets grupper](security-overview.md).
+När du konfigurerar peering för virtuella nätverk kan du antingen öppna eller stänga reglerna för nätverks säkerhets gruppen mellan de virtuella nätverken. Om du öppnar fullständig anslutning mellan peer-anslutna virtuella nätverk kan du använda nätverks säkerhets grupper för att blockera eller neka åtkomst. Fullständig anslutning är standard alternativet. Mer information om nätverks säkerhets grupper finns i [säkerhets grupper](./network-security-groups-overview.md).
 
 ## <a name="service-chaining"></a>Tjänstlänkning
 

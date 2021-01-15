@@ -9,12 +9,12 @@ ms.reviewer: jrasnick, garye
 ms.date: 09/25/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: a5d84b936679cdd5ebd5bec4938d6db7fcb641e7
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 800cbf9b7a7fa415452f29b253347188c8917c52
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96455510"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98219461"
 ---
 # <a name="quickstart-create-a-new-azure-machine-learning-linked-service-in-synapse"></a>Snabb start: skapa en ny Azure Machine Learning länkad tjänst i Synapse
 
@@ -22,7 +22,7 @@ I den här snabb starten ska du länka en Azure Synapse Analytics-arbetsyta till
 
 Genom att länka till en Azure Machine Learning arbets yta kan du till exempel använda dessa upplevelser:
 
-- Kör Azure Machine Learning pipelines som ett steg i dina Synapse-pipeliner. Läs mer i [köra Azure Machine Learning pipelines](/azure/data-factory/transform-data-machine-learning-service).
+- Kör Azure Machine Learning pipelines som ett steg i dina Synapse-pipeliner. Läs mer i [köra Azure Machine Learning pipelines](../../data-factory/transform-data-machine-learning-service.md).
 
 - Utöka dina data med förutsägelser genom att ta en maskin inlärnings modell från Azure Machine Learning modell registret och räkna ut modellen i Synapse SQL-pooler. Mer information finns i [Självstudier: bedömnings guiden för Machine Learning-modeller för SYNAPSE SQL-pooler](tutorial-sql-pool-model-scoring-wizard.md).
 
@@ -30,7 +30,7 @@ Genom att länka till en Azure Machine Learning arbets yta kan du till exempel a
 
 - Azure-prenumeration – [skapa en kostnads fritt](https://azure.microsoft.com/free/).
 - [Synapse Analytics-arbetsyta](../get-started-create-workspace.md) med ett ADLS Gen2 lagrings konto konfigurerat som standard lagring. Du måste vara **data deltagare i Storage BLOB** för det ADLS Gen2-filsystem som du arbetar med.
-- [Azure Machine Learning-arbetsyta](/azure/machine-learning/how-to-manage-workspace).
+- [Azure Machine Learning-arbetsyta](../../machine-learning/how-to-manage-workspace.md).
 - Du behöver behörigheter (eller begäran från någon som har behörighet) för att skapa ett huvud namn för tjänsten och en hemlighet som du kan använda för att skapa den länkade tjänsten. Observera att det här tjänstens huvud namn måste tilldelas deltagar rollen i Azure Machine Learning-arbetsyta.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logga in på Azure Portal

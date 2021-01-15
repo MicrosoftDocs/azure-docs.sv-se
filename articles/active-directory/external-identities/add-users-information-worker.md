@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 352d5218f91fa55134a7515b6aeee49857847468
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 345cbe2efb644fe2b84d4a6021ff962337e29285
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96173217"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98219920"
 ---
 # <a name="how-users-in-your-organization-can-invite-guest-users-to-an-app"></a>Hur användare i din organisation kan bjuda in gäst användare till en app
 
@@ -28,8 +28,8 @@ När en gäst användare har lagts till i katalogen i Azure AD kan en program ä
  - Konfigurera appen för självbetjäning och tilldela gruppen till appen
 
 > [!NOTE]
-> Den här artikeln beskriver hur du konfigurerar självbetjänings hantering för Galleri-och SAML-baserade appar som du har lagt till i din Azure AD-klient. Du kan också [Konfigurera självbetjänings Microsoft 365 grupper](../enterprise-users/groups-self-service-management.md) så att användarna kan hantera åtkomst till sina egna Microsoft 365 grupper. Mer information om hur användare kan dela Office-filer och appar med gäst användare finns i [gäst åtkomst i Microsoft 365 grupper](https://support.office.com/article/guest-access-in-office-365-groups-bfc7a840-868f-4fd6-a390-f347bf51aff6) och [dela SharePoint-filer eller mappar](https://support.office.com/article/share-sharepoint-files-or-folders-1fe37332-0f9a-4719-970e-d2578da4941c).
-
+> * Den här artikeln beskriver hur du konfigurerar självbetjänings hantering för Galleri-och SAML-baserade appar som du har lagt till i din Azure AD-klient. Du kan också [Konfigurera självbetjänings Microsoft 365 grupper](../enterprise-users/groups-self-service-management.md) så att användarna kan hantera åtkomst till sina egna Microsoft 365 grupper. Mer information om hur användare kan dela Office-filer och appar med gäst användare finns i [gäst åtkomst i Microsoft 365 grupper](https://support.office.com/article/guest-access-in-office-365-groups-bfc7a840-868f-4fd6-a390-f347bf51aff6) och [dela SharePoint-filer eller mappar](https://support.office.com/article/share-sharepoint-files-or-folders-1fe37332-0f9a-4719-970e-d2578da4941c).
+> * Användare kan bara bjuda in gäster om de har rollen som **gäst** .
 ## <a name="invite-a-guest-user-to-an-app-from-the-access-panel"></a>Bjud in en gäst användare till en app från åtkomst panelen
 
 När en app har kon figurer ATS för självbetjäning kan program ägare använda sin egen åtkomst panel för att bjuda in en gäst användare till appen som de vill dela. Gäst användaren behöver inte läggas till i Azure AD i förväg. 

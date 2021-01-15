@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 11/30/2020
 ms.author: acomet
-ms.openlocfilehash: be2657d9606f260fcea06d2535be87fc6976577c
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 8a3142199502b912f20ebe05c625aa40be9fab11
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97915682"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98218679"
 ---
 # <a name="use-power-bi-and-serverless-synapse-sql-pool-preview-to-analyze-azure-cosmos-db-data-with-synapse-link"></a>Använd Power BI och Server lös Synapse SQL-pool (för hands version) för att analysera Azure Cosmos DB data med Synapse-länk 
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -23,7 +23,7 @@ I det här scenariot ska du använda dummy-data om produkt försäljning i en pa
 > [!IMPORTANT]
 > Stöd för Synapse-server utan SQL-pool för Azure Synapse-länken för Azure Cosmos DB är för närvarande en för hands version. Den här förhandsversionen tillhandahålls utan serviceavtal och rekommenderas inte för produktionsarbetsbelastningar. Mer information finns i kompletterande användnings [villkor för Microsoft Azure för hands](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)versionerna.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Se till att skapa följande resurser innan du börjar:
 
@@ -41,7 +41,7 @@ Se till att skapa följande resurser innan du börjar:
 
 ## <a name="create-a-database-and-views"></a>Skapa en databas och vyer
 
-Från arbets ytan Synapse går du till fliken **utveckla** , väljer **+** ikonen och väljer **SQL-skript**.
+Det är inte rekommenderat eller stöd för att skapa vyer i huvud databasen eller standard databaserna. Du måste starta det här steget genom att skapa en databas. Från arbets ytan Synapse går du till fliken **utveckla** , väljer **+** ikonen och väljer **SQL-skript**.
 
 :::image type="content" source="./media/synapse-link-power-bi/add-sql-script.png" alt-text="Lägga till ett SQL-skript i Synapse Analytics-arbetsytan":::
 

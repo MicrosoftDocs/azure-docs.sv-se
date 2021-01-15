@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 536a9641b68ccd2510a7891b46483a322fb6ecb7
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: 6c065b7a7269c8da42493ede50466f44f7dd2658
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97900934"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98219954"
 ---
 # <a name="conditional-access-grant"></a>Villkorlig åtkomst: bevilja
 
@@ -139,7 +139,7 @@ Den här inställningen gäller för följande klient program:
 - Nio e-post & kalender
 
 > [!NOTE]
-> Microsoft Kaizala, Microsoft Skype för företag och Microsoft Visio stöder inte beviljande av **skydds princip för appar** . Om du vill att de här apparna ska fungera använder du enbart Granting **Kräv godkända appar** . Användningen av or-satsen mellan de båda bidragen fungerar inte för de här tre programmen.
+> Microsoft Teams, Microsoft Kaizala, Microsoft Skype för företag och Microsoft Visio stöder inte beviljande av **skydds princip för appar** . Om du vill att de här apparna ska fungera använder du enbart Granting **Kräv godkända appar** . Användningen av or-satsen mellan de båda bidragen fungerar inte för de här tre programmen.
 
 **Kommentarer**
 

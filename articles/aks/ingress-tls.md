@@ -5,12 +5,12 @@ description: Lär dig hur du installerar och konfigurerar en NGINX ingångs hant
 services: container-service
 ms.topic: article
 ms.date: 08/17/2020
-ms.openlocfilehash: 3cf7b069d6f010a4461b22c5326589ad3ec31204
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 0b0e26262f75ba8030188a2bffbce8282b38bca8
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 01/14/2021
-ms.locfileid: "98186268"
+ms.locfileid: "98219648"
 ---
 # <a name="create-an-https-ingress-controller-on-azure-kubernetes-service-aks"></a>Skapa en HTTPS ingress-styrenhet på Azure Kubernetes service (AKS)
 
@@ -262,7 +262,7 @@ kubectl apply -f aks-helloworld-two.yaml --namespace ingress-basic
 
 Båda programmen körs nu på ditt Kubernetes-kluster. De är dock konfigurerade med en tjänst av typen `ClusterIP` och är inte tillgängliga från Internet. Skapa en Kubernetes ingress-resurs för att göra dem offentligt tillgängliga. I ingress-resursen konfigureras de regler som dirigerar trafik till ett av de två programmen.
 
-I följande exempel, trafik till adressen *Hello-World-ingress. MY_CUSTOM_DOMAIN* dirigeras till *AKS-HelloWorld-* tjänsten. Trafik till adressen *Hello-World-ingress. MY_CUSTOM_DOMAIN/Hello-World-Two* dirigeras till tjänsten *AKS-HelloWorld-två* . Trafik till *Hello – värld – ingress. MY_CUSTOM_DOMAIN/static* dirigeras till tjänsten med namnet *AKS-HelloWorld* för statiska till gångar.
+I följande exempel, trafik till adressen *Hello-World-ingress. MY_CUSTOM_DOMAIN* dirigeras till tjänsten *AKS-HelloWorld-One* . Trafik till adressen *Hello-World-ingress. MY_CUSTOM_DOMAIN/Hello-World-Two* dirigeras till tjänsten *AKS-HelloWorld-två* . Trafik till *Hello – värld – ingress. MY_CUSTOM_DOMAIN/static* dirigeras till tjänsten med namnet *AKS-HelloWorld-One* för statiska till gångar.
 
 > [!NOTE]
 > Om du har konfigurerat ett fullständigt domän namn för IP-adressen för ingångs enheten i stället för en anpassad domän använder du FQDN i stället för *Hello-World-ingress. MY_CUSTOM_DOMAIN*. Om ditt FQDN till exempel är *demo-AKS-ingress.eastus.cloudapp.Azure.com* ersätter du *Hello-World-ingress. MY_CUSTOM_DOMAIN* med *demo-AKS-ingress.eastus.cloudapp.Azure.com* i `hello-world-ingress.yaml` .

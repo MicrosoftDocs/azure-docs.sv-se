@@ -10,12 +10,12 @@ ms.date: 10/19/2020
 ms.author: alehall
 ms.reviewer: jrasnick
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 005e3a3b717d4b1b8e5eb02b77a1d228908f8707
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 0537d2353d6b372ed19127101c488b872bbc5224
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92210631"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98218866"
 ---
 # <a name="quickstart-create-an-azure-synapse-workspace-with-azure-powershell"></a>Snabb start: skapa en Azure datasynapses-arbetsyta med Azure PowerShell
 
@@ -30,9 +30,9 @@ Om du inte har en Azure-prenumeration kan du skapa ett [kostnadsfritt](https://a
 - [Azure Data Lake Storage Gen2 lagrings konto](../storage/common/storage-account-create.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 
     > [!IMPORTANT]
-    > Azure Synapse-arbetsytan måste kunna läsa och skriva till det valda ADLS Gen2 kontot. För alla lagrings konton som du länkar som primärt lagrings konto måste du aktivera **hierarkiskt namn område** när lagrings kontot skapas enligt beskrivningen i [skapa ett lagrings konto](https://docs.microsoft.com/azure/storage/common/storage-account-create?tabs=azure-powershell#create-a-storage-account).
+    > Azure Synapse-arbetsytan måste kunna läsa och skriva till det valda ADLS Gen2 kontot. För alla lagrings konton som du länkar som primärt lagrings konto måste du aktivera **hierarkiskt namn område** när lagrings kontot skapas enligt beskrivningen i [skapa ett lagrings konto](../storage/common/storage-account-create.md?tabs=azure-powershell#create-a-storage-account).
 
-Om du väljer att använda Cloud Shell, se [Översikt över Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) för mer information.
+Om du väljer att använda Cloud Shell, se [Översikt över Azure Cloud Shell](../cloud-shell/overview.md) för mer information.
 
 ### <a name="install-the-azure-powershell-module-locally"></a>Installera Azure PowerShell-modulen lokalt
 
@@ -43,7 +43,7 @@ Mer information om autentisering med Azure PowerShell finns i [Logga in med Azur
 ### <a name="install-the-azure-synapse-powershell-module"></a>Installera Azure Synapse PowerShell-modulen
 
 > [!IMPORTANT]
-> Även om **AZ. Synapse** PowerShell-modulen är i för hands version måste du installera den separat med hjälp av `Install-Module` cmdleten. När den här PowerShell-modulen blir allmänt tillgänglig kommer den att ingå i framtida versioner av AZ PowerShell-modulen och är tillgängliga som standard i Azure Cloud Shell.
+> Även om **AZ. Synapse** PowerShell-modulen är i för hands version måste du installera den separat med hjälp av `Install-Module` cmdleten. När modulen blir allmänt tillgänglig kommer den att ingå i framtida versioner av Az PowerShell-modulen och vara tillgänglig som standard i Azure Cloud Shell.
 
 ```azurepowershell-interactive
 Install-Module -Name Az.Synapse
@@ -53,7 +53,7 @@ Install-Module -Name Az.Synapse
 
 1. Definiera nödvändiga miljövariabler för att skapa resurser för Azure dataSynapses-arbetsytan.
 
-   |        Variabelnamn        |                                                 Beskrivning                                                 |
+   |        Variabelnamn        |                                                 Description                                                 |
    | --------------------------- | ----------------------------------------------------------------------------------------------------------- |
    | StorageAccountName          | Namn på ditt befintliga ADLS Gen2 lagrings konto.                                                           |
    | StorageAccountResourceGroup | Namnet på din befintliga ADLS Gen2 lagrings konto resurs grupp.                                             |

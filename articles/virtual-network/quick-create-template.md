@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 06/23/2020
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: c9e9ea2e59537a1c0c8e372a766fba3aa9a1b9a0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: bc0ac1a6e882f4197828bf79c7989c16b2eb16f7
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88122188"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98217676"
 ---
 # <a name="quickstart-create-a-virtual-network---resource-manager-template"></a>Snabb start: skapa en mall för virtuellt nätverk – Resource Manager
 
@@ -36,8 +36,8 @@ Mallen som används i den här snabb starten är från [Azure snabb starts malla
 :::code language="json" source="~/quickstart-templates/101-vnet-two-subnets/azuredeploy.json" range="001-96" highlight="56-92":::
 
 Följande Azure-resurser har definierats i mallen:
-- [**Microsoft. Network/virtualNetworks**](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks): skapa ett virtuellt Azure-nätverk.
--  [**Microsoft. Network/virtualNetworks/subnets**](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks/subnets) – skapa ett undernät.
+- [**Microsoft. Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks): skapa ett virtuellt Azure-nätverk.
+-  [**Microsoft. Network/virtualNetworks/subnets**](/azure/templates/microsoft.network/virtualnetworks/subnets) – skapa ett undernät.
 
 ## <a name="deploy-the-template"></a>Distribuera mallen
 
@@ -50,13 +50,13 @@ Distribuera Resource Manager-mall till Azure:
 2. I portalen, på sidan **skapa en Virtual Network med två undernät** , skriver eller väljer du följande värden:
    - **Resurs grupp**: Välj **Skapa ny**, Skriv ett namn för resurs gruppen och välj **OK**.
    - **Virtual Network namn**: Ange ett namn för det nya virtuella nätverket.
-3. Välj **Granska + skapa**och välj sedan **Skapa**.
+3. Välj **Granska + skapa** och välj sedan **Skapa**.
 
 ## <a name="review-deployed-resources"></a>Granska distribuerade resurser
 
 Utforska de resurser som har skapats med det virtuella nätverket.
 
-Information om JSON-syntaxen och egenskaperna för ett virtuellt nätverk i en mall finns i [Microsoft. Network/virtualNetworks](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks).
+Information om JSON-syntaxen och egenskaperna för ett virtuellt nätverk i en mall finns i [Microsoft. Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks).
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 

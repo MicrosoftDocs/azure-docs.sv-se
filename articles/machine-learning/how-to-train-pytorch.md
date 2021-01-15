@@ -8,21 +8,21 @@ ms.subservice: core
 ms.author: minxia
 author: mx-iao
 ms.reviewer: peterlu
-ms.date: 12/10/2020
+ms.date: 01/14/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: e3bf77406df302c4ba83cb7a8f1a30fba9f6339e
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: 962054943a68aa61ac681de97eeebc10fe3f2b0a
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97795945"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98216639"
 ---
 # <a name="train-pytorch-models-at-scale-with-azure-machine-learning"></a>Träna PyTorch-modeller i skala med Azure Machine Learning
 
 I den här artikeln får du lära dig hur du kör dina [PyTorch](https://pytorch.org/) -utbildnings skript i företags skala med hjälp av Azure Machine Learning.
 
-Exempel skripten i den här artikeln används för att klassificera kyckling-och kalkon bilder för att bygga en DNN (djup Learning neurala Network) som baseras på PyTorch i [guiden](https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html)för överförings inlärning. Överförings inlärning är en teknik som används för att lösa ett problem med ett annat men relaterat problem. Den här genvägen är en utbildnings process genom att kräva mindre data, tid och beräknings resurser än utbildning från grunden.
+Exempel skripten i den här artikeln används för att klassificera kyckling-och kalkon bilder för att bygga en DNN (djup Learning neurala Network) som baseras på PyTorch i [guiden](https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html)för överförings inlärning. Överförings inlärning är en teknik som används för att lösa ett problem med ett annat men relaterat problem. Den här genvägen är en utbildnings process genom att kräva mindre data, tid och beräknings resurser än utbildning från grunden. Mer information om överförings Inlärning finns i artikeln [djup inlärning vs Machine Learning](./concept-deep-learning-vs-machine-learning.md#what-is-transfer-learning) .
 
 Oavsett om du tränar en djup inlärnings PyTorch-modell från grunden eller om du använder en befintlig modell i molnet kan du använda Azure Machine Learning för att skala ut utbildnings jobb för öppen källkod med elastiska moln beräknings resurser. Du kan bygga, distribuera, hantera och övervaka modeller av produktions klass med Azure Machine Learning. 
 

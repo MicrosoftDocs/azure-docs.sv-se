@@ -9,13 +9,13 @@ ms.custom: seo-lt-2019, OKR 11/2019, sqldbrb=1
 author: ramakoni1
 ms.author: ramakoni
 ms.reviewer: sstein,vanto
-ms.date: 01/14/2020
-ms.openlocfilehash: bcf11ef9b64a02383aad5175c19c5db58c3c39cf
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.date: 01/14/2021
+ms.openlocfilehash: 7c797c7e002f40a28e4be674c125c6ea5d60a13f
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791349"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98219070"
 ---
 # <a name="troubleshooting-connectivity-issues-and-other-errors-with-azure-sql-database-and-azure-sql-managed-instance"></a>Fel sökning av anslutnings problem och andra fel med Azure SQL Database och Azure SQL-hanterad instans
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -24,7 +24,7 @@ Du får fel meddelanden när det inte går att ansluta till Azure SQL Database e
 
 ## <a name="transient-fault-error-messages-40197-40613-and-others"></a>Tillfälliga fel fel meddelanden (40197, 40613 och andra)
 
-Azure-infrastrukturen har kapacitet att dynamiskt omkonfigurera servrar vid ökad arbetsbelastning i SQL Database-tjänsten.  Detta dynamiska beteende kan leda till att klient programmet förlorar anslutningen till databasen eller instansen. Den här typen av fel tillstånd kallas för ett *tillfälligt fel* . Händelser vid databas konfiguration inträffar på grund av en planerad händelse (till exempel en program uppgradering) eller en oplanerad händelse (till exempel en process krasch eller belastnings utjämning). De flesta omkonfigurations händelser är vanligt vis korta och bör slutföras på mindre än 60 sekunder. Dessa händelser kan dock ibland ta längre tid att slutföra, till exempel när en stor transaktion orsakar en tids krävande återställning. I följande tabell visas olika tillfälliga fel som program kan ta emot vid anslutning till SQL Database
+Azure-infrastrukturen har kapacitet att dynamiskt omkonfigurera servrar vid ökad arbetsbelastning i SQL Database-tjänsten.  Detta dynamiska beteende kan leda till att klient programmet förlorar anslutningen till databasen eller instansen. Den här typen av fel tillstånd kallas för ett *tillfälligt fel*. Händelser vid databas konfiguration inträffar på grund av en planerad händelse (till exempel en program uppgradering) eller en oplanerad händelse (till exempel en process krasch eller belastnings utjämning). De flesta omkonfigurations händelser är vanligt vis korta och bör slutföras på mindre än 60 sekunder. Dessa händelser kan dock ibland ta längre tid att slutföra, till exempel när en stor transaktion orsakar en tids krävande återställning. I följande tabell visas olika tillfälliga fel som program kan ta emot vid anslutning till SQL Database
 
 ### <a name="list-of-transient-fault-error-codes"></a>Lista över felkoder för tillfälliga fel
 
@@ -119,19 +119,19 @@ Tjänst administratören kan normalt använda följande steg för att lägga til
 4. Om SQL-inloggningens användar namn inte finns skapar du det genom att följa dessa steg:
 
    1. I SSMS dubbelklickar du på **säkerhet** för att expandera den.
-   2. Högerklicka på **inloggningar** och välj sedan **ny inloggning** .
+   2. Högerklicka på **inloggningar** och välj sedan **ny inloggning**.
    3. I det genererade skriptet med plats hållare redigerar du och kör följande SQL-fr åga:
 
    ```sql
    CREATE LOGIN <SQL_login_name, sysname, login_name>
-   WITH PASSWORD = ‘<password, sysname, Change_Password>’
+   WITH PASSWORD = '<password, sysname, Change_Password>'
    GO
    ```
 
-5. Dubbelklicka på **databas** .
+5. Dubbelklicka på **databas**.
 6. Välj den databas som du vill ge användaren behörighet till.
-7. Dubbelklicka på **säkerhet** .
-8. Högerklicka på **användare** och välj sedan **ny användare** .
+7. Dubbelklicka på **säkerhet**.
+8. Högerklicka på **användare** och välj sedan **ny användare**.
 9. I det genererade skriptet med plats hållare redigerar du och kör följande SQL-fr åga:
 
    ```sql
@@ -141,7 +141,7 @@ Tjänst administratören kan normalt använda följande steg för att lägga til
    GO
    -- Add user to the database owner role
 
-   EXEC sp_addrolemember N’db_owner’, N’<user_name, sysname, user_name>’
+   EXEC sp_addrolemember N'db_owner', N'<user_name, sysname, user_name>'
    GO
    ```
 
@@ -183,22 +183,20 @@ Undvik det här problemet genom att prova någon av följande metoder:
 - Kontrol lera om det finns tids krävande frågor.
 
   > [!NOTE]
-  > Det här är en minimalist metod som kanske inte löser problemet.
+  > Det här är en minimalist metod som kanske inte löser problemet. Detaljerad information om hur du felsöker blockerade frågor finns i [förstå och lösa problem med att blockera Azure SQL](understand-resolve-blocking.md).
 
 1. Kör följande SQL-fråga för att kontrol lera [sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) vyn för att se eventuella spärrnings begär Anden:
 
    ```sql
-   SELECT * FROM dm_exec_requests
+   SELECT * FROM sys.dm_exec_requests;
    ```
 
 2. Ta reda på **indatabufferten** för huvud blocket.
 3. Finjustera frågan om huvud Blocker.
 
-   En djupgående fel söknings procedur finns i finns [min fråga som körs i molnet?](/archive/blogs/sqlblog/is-my-query-running-fine-in-the-cloud).
+   En djupgående fel söknings procedur finns i finns [min fråga som körs i molnet?](/archive/blogs/sqlblog/is-my-query-running-fine-in-the-cloud). 
 
 Om databasen ständigt når gränsen trots att blockera och långvariga frågor, bör du överväga att uppgradera till en utgåva med fler resurs [versioner](https://azure.microsoft.com/pricing/details/sql-database/).
-
-Mer information om vyer för dynamisk hantering finns i [vyer för system dynamisk hantering](/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views).
 
 Mer information om databas gränser finns i  [SQL Database resurs gränser för servrar](./resource-limits-logical-server.md).
 
@@ -234,7 +232,7 @@ Följande steg kan antingen hjälpa dig att komma runt problemet eller ge dig yt
    FROM sys.objects o
    JOIN sys.dm_db_partition_stats p on p.object_id = o.object_id
    GROUP BY o.name
-   ORDER BY [Table Size (MB)] DESC
+   ORDER BY [Table Size (MB)] DESC;
    ```
 
 2. Om den aktuella storleken inte överskrider den maximala storlek som stöds för din utgåva kan du använda ALTER DATABASE för att öka inställningen MAXSIZE.
@@ -253,7 +251,7 @@ Om du upprepade gånger stöter på det här felet kan du försöka lösa proble
 1. Kontrol lera vyn sys.dm_exec_requests för att se alla öppna sessioner som har ett högt värde för kolumnen total_elapsed_time. Utför den här kontrollen genom att köra följande SQL-skript:
 
    ```sql
-   SELECT * FROM dm_exec_requests
+   SELECT * FROM sys.dm_exec_requests;
    ```
 
 2. Fastställ indatabufferten för den tids krävande frågan.
@@ -315,7 +313,7 @@ Följande fel är relaterade till att skapa och använda elastiska pooler:
 |:--- |:--- |:--- |:--- |
 | 1132 | 17 |Den elastiska poolen har nått sin lagrings gräns. Lagrings användningen för den elastiska poolen får inte överskrida (% d) MB. Försök att skriva data till en databas när lagrings gränsen för den elastiska poolen har nåtts. Information om resurs gränser finns i: <br/>&bull;&nbsp; [DTU-baserade gränser för elastiska pooler](resource-limits-dtu-elastic-pools.md)<br/>&bull;&nbsp; [vCore-baserade gränser för elastiska pooler](resource-limits-vcore-elastic-pools.md). <br/> |Överväg att öka DTU: er och/eller lägga till lagring till den elastiska poolen om det är möjligt för att öka lagrings gränsen, minska lagrings utrymmet som används av enskilda databaser i den elastiska poolen eller ta bort databaser från den elastiska poolen. För skalning av elastiska pooler, se [skala elastiska pool resurser](elastic-pool-scale.md).|
 | 10929 | 16 |% S minsta garanti är% d, max gränsen är% d och den aktuella användningen för databasen är% d. Servern är dock för närvarande upptagen för att stödja begär Anden som är större än% d för den här databasen. Information om resurs gränser finns i: <br/>&bull;&nbsp; [DTU-baserade gränser för elastiska pooler](resource-limits-dtu-elastic-pools.md)<br/>&bull;&nbsp; [vCore-baserade gränser för elastiska pooler](resource-limits-vcore-elastic-pools.md). <br/> Annars kan du försöka igen senare. DTU/vCore min per databas; Max per databas för DTU/vCore. Det totala antalet samtidiga arbetare (begär Anden) över alla databaser i den elastiska poolen försökte överskrida poolens gräns. |Överväg att öka DTU: er-eller virtuella kärnor för den elastiska poolen om det är möjligt för att öka arbets gränsen, eller ta bort databaser från den elastiska poolen. |
-| 40844 | 16 |Databasen% ls på servern% LS är en% LS Edition-databas i en elastisk pool och kan inte ha en kontinuerlig kopierings relation.  |E.t. |
+| 40844 | 16 |Databasen% ls på servern% LS är en% LS Edition-databas i en elastisk pool och kan inte ha en kontinuerlig kopierings relation.  |Saknas |
 | 40857 | 16 |Det gick inte att hitta någon elastisk pool för servern:% ls, namn på elastisk pool:% ls. Den angivna elastiska poolen finns inte på den angivna servern. | Ange ett giltigt namn på elastisk pool. |
 | 40858 | 16 |Den elastiska poolen% LS finns redan på servern:% ls. Den angivna elastiska poolen finns redan på den angivna servern. | Ange ett nytt namn på elastisk pool. |
 | 40859 | 16 |Den elastiska poolen stöder inte tjänst nivån% ls. Den angivna tjänst nivån stöds inte för etablering av elastisk pool. |Ange rätt utgåva eller lämna tjänst nivån tom för att använda standard tjänst nivån. |
@@ -340,8 +338,8 @@ Det här problemet uppstår eftersom kontot inte har behörighet att komma åt M
 
 Följ dessa anvisningar för att lösa problemet:
 
-1. Välj **alternativ** på inloggnings skärmen på SSMS och välj sedan **anslutnings egenskaper** .
-2. I fältet **Anslut till databas** anger du användarens standard databas namn som standard inloggnings databas och väljer sedan **Anslut** .
+1. Välj **alternativ** på inloggnings skärmen på SSMS och välj sedan **anslutnings egenskaper**.
+2. I fältet **Anslut till databas** anger du användarens standard databas namn som standard inloggnings databas och väljer sedan **Anslut**.
 
    ![Anslutningsegenskaper](./media/troubleshoot-common-errors-issues/cannot-open-database-master.png)
 
@@ -390,5 +388,5 @@ Mer information om hur du aktiverar loggning finns i [Aktivera diagnostikloggnin
 
 ## <a name="next-steps"></a>Nästa steg
 
-- [Arkitektur för Azure SQL Database anslutning](./connectivity-architecture.md)
+- [Azure SQL Database-anslutningsarkitektur](./connectivity-architecture.md)
 - [Azure SQL Database och Azure Synapse Analytics Network Access Controls](./network-access-controls-overview.md)

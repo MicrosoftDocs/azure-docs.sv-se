@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: rdhillon
 ms.custom: ''
-ms.openlocfilehash: a080c3953c48227301052a0bb151c8cba96e515a
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 9ce1e320a93a834a938ce95f3931d885d2214faa
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94737395"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98216877"
 ---
 # <a name="manage-data-exfiltration-to-azure-storage-accounts-with-virtual-network-service-endpoint-policies-using-the-azure-cli"></a>Hantera data exfiltrering för att Azure Storage konton med tjänst slut punkts principer för virtuella nätverk med hjälp av Azure CLI
 
@@ -114,7 +114,7 @@ az network nsg rule create \
   --destination-port-range "*"
 ```
 
-Varje nätverks säkerhets grupp innehåller flera [Standard säkerhets regler](security-overview.md#default-security-rules). Regeln nedan åsidosätter en standard säkerhets regel som tillåter utgående åtkomst till alla offentliga IP-adresser. `destination-address-prefix "Internet"`Alternativet nekar utgående åtkomst till alla offentliga IP-adresser. Den föregående regeln åsidosätter den här regeln, på grund av dess högre prioritet, vilket ger åtkomst till de offentliga IP-adresserna för Azure Storage.
+Varje nätverks säkerhets grupp innehåller flera [Standard säkerhets regler](./network-security-groups-overview.md#default-security-rules). Regeln nedan åsidosätter en standard säkerhets regel som tillåter utgående åtkomst till alla offentliga IP-adresser. `destination-address-prefix "Internet"`Alternativet nekar utgående åtkomst till alla offentliga IP-adresser. Den föregående regeln åsidosätter den här regeln, på grund av dess högre prioritet, vilket ger åtkomst till de offentliga IP-adresserna för Azure Storage.
 
 ```azurecli-interactive
 az network nsg rule create \

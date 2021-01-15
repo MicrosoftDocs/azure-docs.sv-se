@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/13/2020
 ms.author: kumud
-ms.openlocfilehash: f7253be2844f40ca52df2f9b3bc9cbba552fea2b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b45bd2e2b9ad971891cbcb944286f40b4f66883
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85480141"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98216979"
 ---
 # <a name="add-network-interfaces-to-or-remove-network-interfaces-from-virtual-machines"></a>Lägga till nätverksgränssnitt till eller ta bort nätverksgränssnitt från virtuella datorer
 
@@ -61,11 +61,11 @@ Så här lägger du till ett nätverks gränssnitt på den virtuella datorn:
 
 1. Gå till [Azure Portal](https://portal.azure.com) för att hitta en befintlig virtuell dator. Sök efter och välj **virtuella datorer**.
 
-2. Välj namnet på den virtuella datorn. Den virtuella datorn måste ha stöd för det antal nätverks gränssnitt som du vill lägga till. För att ta reda på hur många nätverks gränssnitt varje VM-storlek stöder, se storlekarna i Azure för [virtuella Linux-datorer](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) eller [virtuella Windows-datorer](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+2. Välj namnet på den virtuella datorn. Den virtuella datorn måste ha stöd för det antal nätverks gränssnitt som du vill lägga till. För att ta reda på hur många nätverks gränssnitt varje VM-storlek stöder, se storlekarna i Azure för [virtuella Linux-datorer](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) eller [virtuella Windows-datorer](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
-3. I den virtuella datorns kommando fält väljer du **stoppa**och sedan **OK** i bekräftelse dialog rutan. Vänta tills **statusen** för den virtuella datorn ändras till **stoppad (Frigjord)**.
+3. I den virtuella datorns kommando fält väljer du **stoppa** och sedan **OK** i bekräftelse dialog rutan. Vänta tills **statusen** för den virtuella datorn ändras till **stoppad (Frigjord)**.
 
-4. Från meny raden i virtuell **dator väljer du nätverk**  >  **Anslut nätverks gränssnitt**. I **bifoga befintligt nätverks gränssnitt**väljer du det nätverks gränssnitt som du vill koppla och väljer **OK**.
+4. Från meny raden i virtuell **dator väljer du nätverk**  >  **Anslut nätverks gränssnitt**. I **bifoga befintligt nätverks gränssnitt** väljer du det nätverks gränssnitt som du vill koppla och väljer **OK**.
 
     >[!NOTE]
     >Det nätverks gränssnitt du väljer kan inte ha accelererat nätverk aktiverat, kan inte ha en tilldelad IPv6-adress och måste finnas i samma virtuella nätverk med det nätverks gränssnitt som är kopplat till den virtuella datorn.
@@ -133,7 +133,7 @@ Information om inställningar för nätverks gränssnitt och hur du ändrar dem 
 
 - En virtuell dator måste ha minst ett nätverks gränssnitt kopplat till sig.
 
-- En virtuell dator kan bara ha så många nätverks gränssnitt som är anslutna till den virtuella datorns storlek. Mer information om hur många nätverks gränssnitt varje VM-storlek stöder finns i storlekarna i Azure för [virtuella Linux-datorer](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) eller [virtuella Windows-datorer](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Alla storlekar har stöd för minst två nätverks gränssnitt.
+- En virtuell dator kan bara ha så många nätverks gränssnitt som är anslutna till den virtuella datorns storlek. Mer information om hur många nätverks gränssnitt varje VM-storlek stöder finns i storlekarna i Azure för [virtuella Linux-datorer](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) eller [virtuella Windows-datorer](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Alla storlekar har stöd för minst två nätverks gränssnitt.
 
 - Nätverks gränssnitt som du lägger till i en virtuell dator kan för närvarande inte kopplas till en annan virtuell dator. Mer information om hur du skapar nätverks gränssnitt finns i [skapa ett nätverks gränssnitt](virtual-network-network-interface.md#create-a-network-interface).
 
@@ -143,7 +143,7 @@ Information om inställningar för nätverks gränssnitt och hur du ändrar dem 
 
 - Du kan styra vilka nätverks gränssnitt du skickar utgående trafik till. En virtuell dator skickar som standard all utgående trafik till IP-adressen som har tilldelats den primära IP-konfigurationen för det primära nätverks gränssnittet.
 
-- Tidigare behövde alla virtuella datorer i samma tillgänglighets uppsättning ha ett enskilt eller flera nätverks gränssnitt. Virtuella datorer med valfritt antal nätverks gränssnitt kan nu finnas i samma tillgänglighets uppsättning, upp till det antal som stöds av storleken på den virtuella datorn. Du kan bara lägga till en virtuell dator i en tillgänglighets uppsättning när den skapas. Mer information om tillgänglighets uppsättningar finns i [Hantera tillgängligheten för virtuella datorer i Azure](../virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-network%2ftoc.json#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy).
+- Tidigare behövde alla virtuella datorer i samma tillgänglighets uppsättning ha ett enskilt eller flera nätverks gränssnitt. Virtuella datorer med valfritt antal nätverks gränssnitt kan nu finnas i samma tillgänglighets uppsättning, upp till det antal som stöds av storleken på den virtuella datorn. Du kan bara lägga till en virtuell dator i en tillgänglighets uppsättning när den skapas. Mer information om tillgänglighets uppsättningar finns i [Hantera tillgängligheten för virtuella datorer i Azure](../virtual-machines/manage-availability.md?toc=%2fazure%2fvirtual-network%2ftoc.json#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy).
 
 - Du kan ansluta nätverks gränssnitt i samma virtuella dator till olika undernät i ett virtuellt nätverk. Nätverks gränssnitten måste dock vara anslutna till samma virtuella nätverk.
 

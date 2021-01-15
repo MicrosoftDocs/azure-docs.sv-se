@@ -4,12 +4,12 @@ description: Lär dig hur du använder AAD-Pod hanterade identiteter i Azure Kub
 services: container-service
 ms.topic: article
 ms.date: 12/01/2020
-ms.openlocfilehash: 150e2e71a4db8ab07caad479ae098d5b9eb746da
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: d992c5c5384c04fe39511481550ab7b0ea47069e
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96467749"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98217880"
 ---
 # <a name="use-azure-active-directory-pod-managed-identities-in-azure-kubernetes-service-preview"></a>Använda Azure Active Directory Pod-hanterade identiteter i Azure Kubernetes service (för hands version)
 
@@ -56,7 +56,7 @@ Skapa ett AKS-kluster med en hanterad identitet och Pod-hanterad identitet aktiv
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
-az aks create -g myResourceGroup -n myAKSCluster --enable-managed-identity --enable-pod-identity
+az aks create -g myResourceGroup -n myAKSCluster --enable-managed-identity --enable-pod-identity --network-plugin azure
 ```
 
 Använd [AZ AKS get-credentials][az-aks-get-credentials] för att logga in på ditt AKS-kluster. Det här kommandot hämtar också och konfigurerar `kubectl` klient certifikatet på din utvecklings dator.

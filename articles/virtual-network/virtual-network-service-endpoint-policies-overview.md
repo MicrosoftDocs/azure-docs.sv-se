@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2020
 ms.author: rdhillon
-ms.openlocfilehash: 13535a82f8aca741a1e25755e5a2d971ce45514e
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 9766379807e6d2708fd6935dd2ffbd7660f9988f
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97739305"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98216656"
 ---
 # <a name="virtual-network-service-endpoint-policies-for-azure-storage"></a>Principer för tjänstslutpunkt för virtuellt nätverk för Azure Storage
 
@@ -32,7 +32,7 @@ Principer för tjänstslutpunkt för virtuellt nätverk ger följande fördelar:
 
 - __Förbättrad säkerhet för Virtual Network trafik till Azure Storage__
 
-  Med [Azure Service-taggar för nätverks säkerhets grupper](https://aka.ms/servicetags) kan du begränsa utgående trafik för virtuella nätverk till vissa Azure Storage regioner. Detta tillåter dock trafik till alla konton inom vald Azure Storage region.
+  Med [Azure Service-taggar för nätverks säkerhets grupper](./network-security-groups-overview.md) kan du begränsa utgående trafik för virtuella nätverk till vissa Azure Storage regioner. Detta tillåter dock trafik till alla konton inom vald Azure Storage region.
   
   Med slut punkts principer kan du ange de Azure Storage konton som tillåts utgående åtkomst till virtuella nätverk och begränsa åtkomsten till alla andra lagrings konton. Detta ger mycket mer detaljerad säkerhets kontroll för att skydda data exfiltrering från ditt virtuella nätverk.
 

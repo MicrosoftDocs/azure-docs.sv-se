@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 27372207df66b4198bd9c785ecc099fa88cbe548
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: b974af343907c98ebd7a318bc60a0e553a07a233
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94335712"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98219359"
 ---
 # <a name="troubleshooting-failed-to-delete-a-virtual-network-in-azure"></a>Fel sökning: det gick inte att ta bort ett virtuellt nätverk i Azure
 
@@ -64,15 +64,15 @@ Om det finns en Application Gateway måste du ta bort den innan du kan ta bort d
 ### <a name="check-whether-azure-container-instances-still-exist-in-the-virtual-network"></a>Kontrol lera om Azure Container instances fortfarande finns i det virtuella nätverket
 
 1. I Azure Portal går du till resurs gruppens **översikts** sida.
-1. I rubriken för listan över resurs gruppens resurser väljer du **Visa dolda typer**. Nätverks profil typen är dold i Azure Portal som standard.
+1. I huvudet för listan över resursgruppens resurser väljer du **Visa dolda typer**. Nätverks profil typen är dold i Azure Portal som standard.
 1. Välj Nätverks profilen som är relaterad till behållar grupperna.
 1. Välj **Ta bort**.
 
    ![Skärm bild av listan över dolda nätverks profiler.](media/virtual-network-troubleshoot-cannot-delete-vnet/container-instances.png)
 
-1. Ta bort under nätet eller det virtuella nätverket igen.
+1. Ta bort undernätet eller det virtuella nätverket igen.
 
-Om de här stegen inte löser problemet kan du använda dessa [Azure CLI-kommandon](https://docs.microsoft.com/azure/container-instances/container-instances-vnet#clean-up-resources) för att rensa resurser. 
+Om de här stegen inte löser problemet kan du använda dessa [Azure CLI-kommandon](../container-instances/container-instances-vnet.md#clean-up-resources) för att rensa resurser. 
 
 ### <a name="check-whether-azure-active-directory-domain-service-is-enabled-in-the-virtual-network"></a>Kontrol lera om Azure Active Directory domän tjänsten är aktive rad i det virtuella nätverket
 

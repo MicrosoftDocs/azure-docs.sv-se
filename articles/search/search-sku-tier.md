@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/15/2020
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 062bd41b0803cbb08f74fbcbcebb89bbddeb0d45
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 4c58968cb6a38a10433915ec8fa00336ccad301e
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97559811"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98216418"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>Välj en pris nivå för Azure Kognitiv sökning
 
@@ -78,7 +78,7 @@ En lösning som bygger på Azure Kognitiv sökning kan ådra sig kostnaderna på
   + Kundhanterade nycklar och Double Encryption (kräver [Azure Key Vault](https://azure.microsoft.com/pricing/details/key-vault/))
   + privata slut punkter för en modell utan Internet åtkomst (kräver [Azures privata länk](https://azure.microsoft.com/pricing/details/private-link/))
 
-### <a name="service-costs"></a>Tjänste kostnader
+### <a name="service-costs"></a>Tjänstkostnader
 
 Till skillnad från virtuella datorer eller andra resurser som kan vara "pausade" för att undvika avgifter är en Azure Kognitiv sökning-tjänst alltid tillgänglig på maskin vara som är dedikerad för exklusiv användning. Därför är att skapa en tjänst en fakturerbar händelse som startar när du skapar tjänsten och slutar när du tar bort tjänsten. 
 
@@ -88,15 +88,13 @@ När du uppskattar kostnaden för en Sök lösning bör du tänka på att priser
 
 ### <a name="bandwidth-charges"></a>Bandbredds avgifter
 
-Användningen av [indexerare](search-indexer-overview.md) kan påverka faktureringen om Azure-datakällan är i en annan region än Azure kognitiv sökning. I det här scenariot är detta en kostnad för att flytta utgående data från Azure Data Source till Azure Kognitiv sökning. 
+Användningen av [indexerare](search-indexer-overview.md) kan påverka faktureringen om Azure-datakällan är i en annan region än Azure kognitiv sökning. I det här scenariot kan det finnas en kostnad för att flytta utgående data från Azure Data Source till Azure Kognitiv sökning. Mer information finns på sidan med pris information för den aktuella Azure-dataplattformen.
 
 Du kan ta bort avgifter för utgående data helt och hållet om du skapar Azure Kognitiv sökning-tjänsten i samma region som dina data. Här är lite information från [prissättnings sidan för bandbredd](https://azure.microsoft.com/pricing/details/bandwidth/):
 
-+ Microsoft debiterar inte några inkommande data till någon tjänst i Azure.
-+ Det finns ingen utgående data avgift från Azure Kognitiv sökning. Om din Sök tjänst till exempel är i västra USA och en Azure-webbapp finns i USA, kan Microsoft inte debiteras för de nytto svars nytto laster som kommer från västra USA.
-+ I lösningar med flera tjänster är det ingen avgift för data som passerar kabeln när alla tjänster är i samma region.
++ Inkommande data: Microsoft debiterar inga inkommande data till någon tjänst i Azure. 
 
-Avgifterna gäller för utgående data om tjänsterna är i olika regioner. Dessa avgifter ingår inte i din Azure Kognitiv sökning-faktura. De anges här eftersom om du använder data eller AI-berikade indexerare för att hämta data från olika regioner, ser du kostnader som återspeglas i din övergripande faktura.
++ Utgående data: utgående data refererar till frågeresultat. Kognitiv sökning debiteras inte för utgående data, men utgående avgifter från Azure är möjliga om tjänsterna är i olika regioner. Dessa avgifter ingår inte i din Azure Kognitiv sökning-faktura. De anges här eftersom om du skickar resultat till andra regioner eller appar som inte är Azure-appar kan du se att dessa kostnader avspeglas i din totala faktura.
 
 ### <a name="ai-enrichment-with-cognitive-services"></a>AI-anrikning med Cognitive Services
 

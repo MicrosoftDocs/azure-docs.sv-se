@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/29/2019
 ms.author: steveesp
-ms.openlocfilehash: 77ea14097538f722569acb5a0371674776aac8e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f8f167a7947c42ce837ec83b336ae636f593f2e4
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84687811"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98219266"
 ---
 # <a name="test-vm-network-latency"></a>Testa svarstid för VM-nätverk
 
@@ -55,7 +55,7 @@ Genom att använda dessa verktyg kan du se till att endast leverans tider för T
 Tänk på följande rekommendationer när du skapar din VM-konfiguration:
 - Använd den senaste versionen av Windows eller Linux.
 - Aktivera accelererat nätverk för bästa möjliga resultat.
-- Distribuera virtuella datorer med en [placerings grupp för Azure närhet](https://docs.microsoft.com/azure/virtual-machines/linux/co-location).
+- Distribuera virtuella datorer med en [placerings grupp för Azure närhet](../virtual-machines/co-location.md).
 - Större virtuella datorer utför vanligt vis bättre än mindre virtuella datorer.
 
 ### <a name="tips-for-analysis"></a>Tips för analys
@@ -77,7 +77,7 @@ Ladda ned den [senaste versionen av latte.exe](https://gallery.technet.microsoft
 
 ### <a name="allow-latteexe-through-windows-defender-firewall"></a>Tillåt latte.exe via Windows Defender-brandväggen
 
-På *mottagaren*skapar du en Tillåt-regel på Windows Defender-brandväggen så att latte.exe trafiken kan komma. Det är enklast att tillåta hela latte.exe program efter namn istället för att tillåta vissa TCP-portar inkommande.
+På *mottagaren* skapar du en Tillåt-regel på Windows Defender-brandväggen så att latte.exe trafiken kan komma. Det är enklast att tillåta hela latte.exe program efter namn istället för att tillåta vissa TCP-portar inkommande.
 
 Tillåt latte.exe via Windows Defender-brandväggen genom att köra följande kommando:
 
@@ -91,7 +91,7 @@ Om du till exempel har kopierat latte.exe till mappen *c:\Tools* , är detta kom
 
 ### <a name="run-latency-tests"></a>Kör svars tids test
 
-* På *mottagaren*startar du latte.exe (kör den från cmd-fönstret, inte från PowerShell):
+* På *mottagaren* startar du latte.exe (kör den från cmd-fönstret, inte från PowerShell):
 
     ```cmd
     latte -a <Receiver IP address>:<port> -i <iterations>
@@ -105,13 +105,13 @@ Om du till exempel har kopierat latte.exe till mappen *c:\Tools* , är detta kom
 
     `latte -a 10.0.0.4:5005 -i 65100`
 
-* På *avsändaren*startar du latte.exe (kör den från cmd-fönstret, inte från PowerShell):
+* På *avsändaren* startar du latte.exe (kör den från cmd-fönstret, inte från PowerShell):
 
     ```cmd
     latte -c -a <Receiver IP address>:<port> -i <iterations>
     ```
 
-    Det resulterande kommandot är detsamma som på mottagaren, förutom vid tillägg av &nbsp; *-c* för att indikera att detta är *klienten*eller *avsändaren*:
+    Det resulterande kommandot är detsamma som på mottagaren, förutom vid tillägg av &nbsp; *-c* för att indikera att detta är *klienten* eller *avsändaren*:
 
     `latte -c -a 10.0.0.4:5005 -i 65100`
 
@@ -200,7 +200,7 @@ I det här SockPerf-exemplet används en meddelande storlek på 350 byte, vilket
 
 
 ## <a name="next-steps"></a>Nästa steg
-* Förbättra svars tiden med en grupp för en [Azure närhets placering](https://docs.microsoft.com/azure/virtual-machines/linux/co-location).
+* Förbättra svars tiden med en grupp för en [Azure närhets placering](../virtual-machines/co-location.md).
 * Lär dig hur du [optimerar nätverk för virtuella datorer](../virtual-network/virtual-network-optimize-network-bandwidth.md) för ditt scenario.
 * Läs om [hur bandbredd allokeras till virtuella datorer](../virtual-network/virtual-machine-network-throughput.md).
 * Mer information finns i [vanliga frågor och svar om Azure Virtual Network](../virtual-network/virtual-networks-faq.md).

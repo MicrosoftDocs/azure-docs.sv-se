@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: fb3c7dd7b3d7e8e42e230eedcd0d1b43af104327
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: af6afa2b0285fe741241183ed99712a132953a30
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452535"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98220124"
 ---
 # <a name="secure-a-linked-service-with-private-links"></a>Skydda en länkad tjänst med privata länkar
 
@@ -23,7 +23,7 @@ I den här artikeln får du lära dig hur du skyddar en länkad tjänst i Synaps
 ## <a name="prerequisites"></a>Förutsättningar
 
 * **Azure-prenumeration**: om du inte har en Azure-prenumeration kan du skapa ett [kostnads fritt Azure-konto](https://azure.microsoft.com/free/) innan du börjar.
-* **Azure Storage konto**: du använder Azure Data Lake gen 2 som *käll* data lager. Om du inte har ett lagrings konto kan du läsa [skapa ett Azure Storage-konto](../../storage/blobs/data-lake-storage-quickstart-create-account.md) för att skapa ett. Kontrol lera att lagrings kontot har Synapse Studio IP-filtrering för att komma åt det och att du bara tillåter **valda nätverk** att komma åt lagrings kontot. Inställningen under bladets **brand väggar och virtuella nätverk** bör se ut som på bilden nedan.
+* **Azure Storage konto**: du använder Azure Data Lake gen 2 som *käll* data lager. Om du inte har ett lagrings konto kan du läsa [skapa ett Azure Storage-konto](../../storage/common/storage-account-create.md) för att skapa ett. Kontrol lera att lagrings kontot har Synapse Studio IP-filtrering för att komma åt det och att du bara tillåter **valda nätverk** att komma åt lagrings kontot. Inställningen under bladets **brand väggar och virtuella nätverk** bör se ut som på bilden nedan.
 
 ![Skyddat lagrings konto](./media/secure-storage-account.png)
 

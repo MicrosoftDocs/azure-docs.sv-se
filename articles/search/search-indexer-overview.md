@@ -9,18 +9,18 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/11/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 0405db2b68abefbfdc424def9e35e363e45043cd
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 5861e79054bed0d9d75258dfa9cb39b198f0f93d
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98180140"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98216452"
 ---
 # <a name="indexers-in-azure-cognitive-search"></a>Indexerare i Azure Cognitive Search
 
 En *indexerare* i Azure kognitiv sökning är en Crawler som extraherar sökbara data och metadata från en extern Azure-datakälla och fyller ett sökindex med fält-till-fält-mappningar mellan källdata och ditt index. Den här metoden kallas ibland för "pull-modell" eftersom tjänsten hämtar data i utan att du behöver skriva kod som lägger till data i ett index.
 
-Indexerare är enbart Azure, med enskilda indexerare för Azure SQL, Azure Cosmos DB, Azure Table Storage och Blob Storage. När du konfigurerar en indexerare anger du en data källa (ursprung), samt ett index (mål). Flera data källor, till exempel Blob Storage-indexerare, har ytterligare egenskaper som är speciella för den innehålls typen.
+Indexerare är enbart Azure, med enskilda indexerare för [Azure SQL](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md), [Azure Cosmos DB](search-howto-index-cosmosdb.md), [Azure Table Storage](search-howto-indexing-azure-tables.md) och [Blob Storage](search-howto-indexing-azure-blob-storage.md). När du konfigurerar en indexerare anger du en data källa (ursprung), samt ett index (mål). Flera källor, till exempel Blob Storage, har ytterligare konfigurations egenskaper som är speciella för innehålls typen.
 
 Du kan köra indexerare på begäran eller enligt ett återkommande data uppdaterings schema som körs så ofta som var femte minut. För frekventa uppdateringar krävs en push-modell som samtidigt uppdaterar data i både Azure-Kognitiv sökning och den externa data källan.
 
@@ -31,8 +31,8 @@ Du kan använda en indexerare som enda metod för att mata in data eller använd
 | Scenario |Strategi |
 |----------|---------|
 | Enskild källa | Det här mönstret är det enklaste: en data källa är den enda innehålls leverantören för ett sökindex. Från källan identifierar du ett fält som innehåller unika värden som ska fungera som dokument nyckel i Sök indexet. Det unika värdet kommer att användas som en identifierare. Alla andra käll fält mappas implicit eller uttryckligen till motsvarande fält i ett index. </br></br>En viktig sak är att värdet för en dokument nyckel kommer från data källan. En Sök tjänst genererar inte nyckel värden. Vid efterföljande körningar läggs inkommande dokument med nya nycklar till, medan inkommande dokument med befintliga nycklar antingen sammanfogas eller skrivs över, beroende på om index fält är null eller har fyllts i. |
-| Flera källor| Ett index kan ta emot innehåll från flera källor, där varje körning ger nytt innehåll från en annan källa. </br></br>Ett resultat kan vara ett index som får dokument när varje indexerare har körts, med hela dokument som har skapats helt från varje källa. Utmaningen för det här scenariot är att designa ett index schema som fungerar för alla inkommande data och en dokument nyckel som är enhetlig i Sök indexet. Om till exempel värdena som unikt identifierar ett dokument metadata_storage_path i en BLOB-behållare och en primär nyckel i en SQL-tabell, kan du föreställa dig att en eller båda källorna måste ändras för att ge nyckel värden i ett gemensamt format, oavsett innehållets ursprung. I det här scenariot bör du förvänta dig att utföra en viss nivå av för bearbetning för att homogenisera data så att de kan hämtas till ett enda index.</br></br>Ett alternativt resultat kan vara Sök efter dokument som delvis fyllts i den första körningen och som sedan fylls i automatiskt genom efterföljande körningar för att hämta värden från andra källor. Utmaningen med det här mönstret ser till att varje indexerings körning är riktad mot samma dokument. Sammanslagning av fält i ett befintligt dokument kräver en matchning på dokument nyckeln. En demonstration av det här scenariot finns i [Självstudier: index från flera data källor](tutorial-multiple-data-sources.md). |
-| Innehålls omvandling | Kognitiv sökning stöder valfria [AI-anriknings](cognitive-search-concept-intro.md) beteenden som lägger till bild analys och naturlig språk bearbetning för att skapa ett nytt sökbart innehåll och en ny struktur. AI-berikning definieras av en [färdigheter](cognitive-search-working-with-skillsets.md)som är kopplad till en indexerare. För att kunna utföra AI-berikning behöver indexeraren fortfarande ha ett index och en data källa, men i det här scenariot lägger till färdigheter-bearbetning till indexerare-körning. |
+| Flera källor| Ett index kan ta emot innehåll från flera källor, där varje körning ger nytt innehåll från en annan källa. </br></br>Ett resultat kan vara ett index som får dokument när varje indexerare har körts, med hela dokument som har skapats helt från varje källa. Dokument 1-100 kommer till exempel från Blob Storage, dokument 101-200 från Azure SQL och så vidare. Utmaningen för det här scenariot är att designa ett index schema som fungerar för alla inkommande data och en dokument nyckel struktur som är enhetlig i Sök indexet. Internt kan de värden som unikt identifierar ett dokument metadata_storage_path i en BLOB-behållare och en primär nyckel i en SQL-tabell. Du kan föreställa dig att en eller båda källorna måste ändras för att tillhandahålla nyckel värden i ett gemensamt format, oavsett innehållets ursprung. I det här scenariot bör du förvänta dig att utföra en viss nivå av för bearbetning för att homogenisera data så att de kan hämtas till ett enda index.</br></br>Ett alternativt resultat kan vara Sök efter dokument som delvis fyllts i den första körningen och som sedan fylls i automatiskt genom efterföljande körningar för att hämta värden från andra källor. Fält 1-10 är till exempel från Blob Storage, 11-20 från Azure SQL och så vidare. Utmaningen med det här mönstret ser till att varje indexerings körning är riktad mot samma dokument. Sammanslagning av fält i ett befintligt dokument kräver en matchning på dokument nyckeln. En demonstration av det här scenariot finns i [Självstudier: index från flera data källor](tutorial-multiple-data-sources.md). |
+| Innehålls omvandling | Kognitiv sökning stöder valfria [AI-anriknings](cognitive-search-concept-intro.md) beteenden som lägger till bild analys och naturlig språk bearbetning för att skapa ett nytt sökbart innehåll och en ny struktur. AI-berikning är indexerare driven, via en ansluten [färdigheter](cognitive-search-working-with-skillsets.md). För att kunna utföra AI-berikning behöver indexeraren fortfarande ha ett index och en data källa, men i det här scenariot lägger till färdigheter-bearbetning till indexerare-körning. |
 
 ## <a name="approaches-for-creating-and-managing-indexers"></a>Metoder för att skapa och hantera indexerare
 
@@ -92,9 +92,9 @@ Färdigheter-körning är ett valfritt steg som anropar inbyggd eller anpassad A
 
 ### <a name="stage-4-output-field-mappings"></a>Steg 4: mappningar för utgående fält
 
-Utdatan från en färdigheter är egentligen ett träd med information som kallas för ett berikat dokument. Med mappningar av utdata fält kan du välja vilka delar av trädet som ska mappas till fält i ditt index. Lär dig hur du [definierar mappningar av utdata-fält](cognitive-search-output-field-mapping.md).
+Om du inkluderar en färdigheter måste du förmodligen inkludera mappningar för utdatakolumner. Utdatan från en färdigheter är egentligen ett träd med information som kallas för ett berikat dokument. Med mappningar av utdata fält kan du välja vilka delar av trädet som ska mappas till fält i ditt index. Lär dig hur du [definierar mappningar av utdata-fält](cognitive-search-output-field-mapping.md).
 
-Precis som fält mappningar som kopplar orda Grant-värden från käll-till mål fält, anger fält mappningar för utdata att indexerare kopplar de transformerade värdena till mål fälten i indexet. Till skillnad från fält mappningar, som betraktas som valfria, så behöver du alltid definiera en mappning av utdata fält för alla transformerat innehåll som måste finnas i ett index.
+Fält mappningar associerar orda Grant-värden från data källan till mål fälten och anger indexeraren för att koppla de transformerade värdena i det berikade dokumentet till mål fälten i indexet. Till skillnad från fält mappningar, som betraktas som valfria, så behöver du alltid definiera en mappning av utdata fält för alla transformerat innehåll som måste finnas i ett index.
 
 Nästa bild visar en exempel på en [fel söknings session](cognitive-search-debug-session.md) för indexerare: dokument sprickor, fält mappningar, färdigheter körning och fält mappningar för utdata.
 

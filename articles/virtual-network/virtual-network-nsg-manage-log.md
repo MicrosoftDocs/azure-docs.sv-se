@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 06/04/2018
 ms.author: kumud
-ms.openlocfilehash: 221f7577b3181b1535ab9f544073dac4d031fe66
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d06c251ce16aff56a3645f5032cce4e27d5fc9e
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89319453"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98216922"
 ---
 # <a name="resource-logging-for-a-network-security-group"></a>Resurs loggning för en nätverks säkerhets grupp
 
@@ -26,7 +26,7 @@ När du aktiverar loggning för en NSG kan du samla in följande typer av resurs
 * **Händelse:** Poster loggas för vilka NSG-regler som tillämpas på virtuella datorer, baserat på MAC-adress.
 * **Regel räknare:** Innehåller poster för hur många gånger varje NSG-regel används för att neka eller tillåta trafik. Status för dessa regler samlas in var 300: e sekund.
 
-Resurs loggar är bara tillgängliga för NSG: er som distribueras via Azure Resource Manager distributions modell. Du kan inte aktivera resurs loggning för NSG: er som distribueras via den klassiska distributions modellen. En bättre förståelse för de två modellerna finns i [förstå Azures distributions modeller](../resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Resurs loggar är bara tillgängliga för NSG: er som distribueras via Azure Resource Manager distributions modell. Du kan inte aktivera resurs loggning för NSG: er som distribueras via den klassiska distributions modellen. En bättre förståelse för de två modellerna finns i [förstå Azures distributions modeller](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 Resurs loggning aktive ras separat för *varje* NSG som du vill samla in diagnostikdata för. Om du är intresse rad av aktivitets loggar (operativa) i stället, se Azure- [aktivitets loggning](../azure-monitor/platform/platform-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
@@ -37,18 +37,18 @@ Du kan använda [Azure Portal](#azure-portal), [POWERSHELL](#powershell)eller [A
 ### <a name="azure-portal"></a>Azure-portalen
 
 1. Logga in på [portalen](https://portal.azure.com).
-2. Välj **alla tjänster**och skriv sedan *nätverks säkerhets grupper*. När **nätverks säkerhets grupper** visas i Sök resultaten väljer du den.
+2. Välj **alla tjänster** och skriv sedan *nätverks säkerhets grupper*. När **nätverks säkerhets grupper** visas i Sök resultaten väljer du den.
 3. Välj den NSG som du vill aktivera loggning för.
-4. Under **övervakning** **väljer du diagnostikloggar och**sedan **Aktivera diagnostik**, som du ser i följande bild:
+4. Under **övervakning** **väljer du diagnostikloggar och** sedan **Aktivera diagnostik**, som du ser i följande bild:
 
    ![Slå på diagnostik](./media/virtual-network-nsg-manage-log/turn-on-diagnostics.png)
 
-5. Under **diagnostikinställningar**anger eller väljer du följande information och väljer sedan **Spara**:
+5. Under **diagnostikinställningar** anger eller väljer du följande information och väljer sedan **Spara**:
 
     | Inställning                                                                                     | Värde                                                          |
     | ---------                                                                                   |---------                                                       |
     | Namn                                                                                        | Ett namn som du väljer.  Till exempel: *myNsgDiagnostics*      |
-    | **Arkivera till ett lagrings konto**, **strömma till en Event Hub**och **Skicka till Log Analytics** | Du kan välja så många destinationer du vill. Mer information om var och en finns i [logg destinationer](#log-destinations).                                                                                                                                           |
+    | **Arkivera till ett lagrings konto**, **strömma till en Event Hub** och **Skicka till Log Analytics** | Du kan välja så många destinationer du vill. Mer information om var och en finns i [logg destinationer](#log-destinations).                                                                                                                                           |
     | LOG                                                                                         | Välj antingen eller båda logg kategorierna. Mer information om de data som loggas för varje kategori finns i [logg kategorier](#log-categories).                                                                                                                                             |
 6. Visa och analysera loggar. Mer information finns i [Visa och analysera loggar](#view-and-analyze-logs).
 
@@ -87,7 +87,7 @@ Set-AzDiagnosticSetting `
   -Enabled $true
 ```
 
-Om du bara vill logga data för en kategori eller den andra, i stället för båda, lägger du till `-Categories` alternativet i föregående kommando, följt av *NetworkSecurityGroupEvent* eller *NetworkSecurityGroupRuleCounter*. Om du vill logga till ett annat [mål](#log-destinations) än en Log Analytics arbets yta använder du lämpliga parametrar för ett Azure [Storage-konto](../azure-monitor/platform/archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json) eller en [Event Hub](../azure-monitor/platform/resource-logs-stream-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Om du bara vill logga data för en kategori eller den andra, i stället för båda, lägger du till `-Categories` alternativet i föregående kommando, följt av *NetworkSecurityGroupEvent* eller *NetworkSecurityGroupRuleCounter*. Om du vill logga till ett annat [mål](#log-destinations) än en Log Analytics arbets yta använder du lämpliga parametrar för ett Azure [Storage-konto](../azure-monitor/platform/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-azure-storage) eller en [Event Hub](../azure-monitor/platform/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-azure-event-hubs).
 
 Visa och analysera loggar. Mer information finns i [Visa och analysera loggar](#view-and-analyze-logs).
 
@@ -109,7 +109,7 @@ nsgId=$(az network nsg show \
 
 Du kan skriva resurs loggar till tre mål typer. Mer information finns i [logg destinationer](#log-destinations). I den här artikeln skickas loggar till *Log Analytics* mål, som exempel. Mer information finns i [logg kategorier](#log-categories).
 
-Aktivera resurs loggning för NSG med [AZ Monitor Diagnostic-Settings Create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create). I följande exempel loggas kategori data för händelse och räknare till en befintlig arbets yta med namnet min *arbets yta*, som finns i en resurs grupp med namnet mina *arbets ytor*och ID: t för NSG som du hämtade tidigare:
+Aktivera resurs loggning för NSG med [AZ Monitor Diagnostic-Settings Create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create). I följande exempel loggas kategori data för händelse och räknare till en befintlig arbets yta med namnet min *arbets yta*, som finns i en resurs grupp med namnet mina *arbets ytor* och ID: t för NSG som du hämtade tidigare:
 
 ```azurecli-interactive
 az monitor diagnostic-settings create \
@@ -122,16 +122,16 @@ az monitor diagnostic-settings create \
 
 Om du inte har en befintlig arbets yta kan du skapa en med hjälp av [Azure Portal](../azure-monitor/learn/quick-create-workspace.md?toc=%2fazure%2fvirtual-network%2ftoc.json) eller [PowerShell](/powershell/module/az.operationalinsights/new-azoperationalinsightsworkspace). Det finns två typer av loggning som du kan aktivera loggar för.
 
-Om du bara vill logga data för en kategori eller en annan kategori tar du bort den kategori som du inte vill logga data för i föregående kommando. Om du vill logga till ett annat [mål](#log-destinations) än en Log Analytics arbets yta använder du lämpliga parametrar för ett Azure [Storage-konto](../azure-monitor/platform/archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json) eller en [Event Hub](../azure-monitor/platform/resource-logs-stream-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Om du bara vill logga data för en kategori eller en annan kategori tar du bort den kategori som du inte vill logga data för i föregående kommando. Om du vill logga till ett annat [mål](#log-destinations) än en Log Analytics arbets yta använder du lämpliga parametrar för ett Azure [Storage-konto](../azure-monitor/platform/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-azure-storage) eller en [Event Hub](../azure-monitor/platform/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-azure-event-hubs).
 
 Visa och analysera loggar. Mer information finns i [Visa och analysera loggar](#view-and-analyze-logs).
 
 ## <a name="log-destinations"></a>Logg destinationer
 
 Diagnostikdata kan vara:
-- [Skrivs till ett Azure Storage konto](../azure-monitor/platform/archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)för granskning eller manuell kontroll. Du kan ange Retentions tiden (i dagar) med hjälp av inställningarna för resurs diagnostik.
-- [Strömmas till en Event Hub](../azure-monitor/platform/resource-logs-stream-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json) för inmatning av en tjänst från tredje part, eller en anpassad analys lösning, till exempel PowerBI.
-- [Skrivs till Azure Monitor loggar](../azure-monitor/platform/resource-logs-collect-storage.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+- [Skrivs till ett Azure Storage konto](../azure-monitor/platform/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-azure-storage)för granskning eller manuell kontroll. Du kan ange Retentions tiden (i dagar) med hjälp av inställningarna för resurs diagnostik.
+- [Strömmas till en Event Hub](../azure-monitor/platform/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-azure-event-hubs) för inmatning av en tjänst från tredje part, eller en anpassad analys lösning, till exempel PowerBI.
+- [Skrivs till Azure Monitor loggar](../azure-monitor/platform/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-azure-storage).
 
 ## <a name="log-categories"></a>Logg kategorier
 

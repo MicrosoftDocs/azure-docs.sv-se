@@ -11,12 +11,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/05/2020
 ms.author: kumud
-ms.openlocfilehash: dfeb9c6bc3dbe33881fc51ccb08a776b827dfe9c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: cc3ba3a0519400368e0cbfec7abe2d9bd1731b34
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86082445"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98217642"
 ---
 # <a name="quickstart-create-a-virtual-network-using-the-azure-portal"></a>Snabbstart: Skapa ett virtuellt nätverk med hjälp av Azure-portalen
 
@@ -28,7 +28,7 @@ I den här snabb starten får du lära dig hur du skapar ett virtuellt nätverk 
 
 ## <a name="sign-in-to-azure"></a>Logga in på Azure
 
-Logga in på [Azure Portal](https://portal.azure.com).
+Logga in på [Azure-portalen](https://portal.azure.com).
 
 ## <a name="create-a-virtual-network"></a>Skapa ett virtuellt nätverk
 
@@ -40,16 +40,16 @@ Logga in på [Azure Portal](https://portal.azure.com).
     | ------- | ----- |
     | Prenumeration | Välj din prenumeration.|
     | Resursgrupp | Välj **Skapa ny**, ange *myResourceGroup* och välj sedan **OK**. |
-    | Namn | Ange *myVirtualNetwork*. |
+    | Name | Ange *myVirtualNetwork*. |
     | Plats | Välj **USA, östra**.|
 
-1. Välj **Nästa: IP-adresser**och för **IPv4-adress utrymme**anger du *10.1.0.0/16*.
+1. Välj **Nästa: IP-adresser** och för **IPv4-adress utrymme** anger du *10.1.0.0/16*.
 
-1. Välj **Lägg till undernät**och ange sedan *MyVirtualSubnet* för **under nätets namn** och *10.1.0.0/24* för **under nätets adress intervall**.
+1. Välj **Lägg till undernät** och ange sedan *MyVirtualSubnet* för **under nätets namn** och *10.1.0.0/24* för **under nätets adress intervall**.
 
-1. Välj **Lägg till**och välj sedan **Granska + skapa**. Lämna resten som standard och välj **skapa**.
+1. Välj **Lägg till** och välj sedan **Granska + skapa**. Lämna resten som standard och välj **skapa**.
 
-1. I **Skapa virtuellt nätverk**väljer du **skapa**.
+1. I **Skapa virtuellt nätverk** väljer du **skapa**.
 
 ## <a name="create-virtual-machines"></a>Skapa virtuella datorer
 
@@ -73,7 +73,7 @@ Skapa två virtuella datorer i det virtuella nätverket:
     | Region | Välj **USA, östra**. |
     | Alternativ för tillgänglighet | **Ingen redundans krävs för infrastruktur**. |
     | Bild | Standardvärdet är **Windows Server 2019 Data Center**. |
-    | Storlek | Standard **ds1 v2**är standard. |
+    | Storlek | Standard **ds1 v2** är standard. |
     | **Administratörs konto** |  |
     | Användarnamn | Ange ett användar namn som du väljer. |
     | Lösenord | Ange ett valfritt lösenord. Lösen ordet måste vara minst 12 tecken långt och uppfylla de [definierade komplexitets kraven](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
@@ -86,7 +86,7 @@ Skapa två virtuella datorer i det virtuella nätverket:
 
 1. Välj **Nästa: diskar**.
 
-1. Behåll standardvärdena i **skapa en virtuell dator – diskar**och välj **Nästa: nätverk**.
+1. Behåll standardvärdena i **skapa en virtuell dator – diskar** och välj **Nästa: nätverk**.
 
 1. I **Skapa en virtuell dator – Nätverk** väljer du följande information:
 
@@ -112,7 +112,7 @@ Skapa två virtuella datorer i det virtuella nätverket:
     | Prestanda | Standardvärdet är **standard.** |
     | Replikering | Standard är **Lokalt Redundant lagring (LRS)**. |
 
-1. Välj **OK**och välj sedan **Granska + skapa**. Du tas till sidan **Granska + skapa** där Azure verifierar din konfiguration.
+1. Välj **OK** och välj sedan **Granska + skapa**. Du tas till sidan **Granska + skapa** där Azure verifierar din konfiguration.
 
 1. När du ser ett meddelande som anger att **valideringen har slutförts** klickar du på **Skapa**.
 
@@ -121,17 +121,17 @@ Skapa två virtuella datorer i det virtuella nätverket:
 Upprepa proceduren i föregående avsnitt om du vill skapa en annan virtuell dator.
 
 > [!IMPORTANT]
-> För namnet på den **virtuella datorn**anger du *myVm2*.
+> För namnet på den **virtuella datorn** anger du *myVm2*.
 >
-> För **diagnos lagrings konto**kontrollerar du att du väljer **myvmstorageaccount**, i stället för att skapa en.
+> För **diagnos lagrings konto** kontrollerar du att du väljer **myvmstorageaccount**, i stället för att skapa en.
 
 ## <a name="connect-to-a-vm-from-the-internet"></a>Ansluta till en virtuell dator från Internet
 
-När du har skapat *myVm1*ansluter du till Internet.
+När du har skapat *myVm1* ansluter du till Internet.
 
-1. Sök efter och välj *myVm1*i Azure Portal.
+1. Sök efter och välj *myVm1* i Azure Portal.
 
-1. Välj **Anslut**och sedan **RDP**.
+1. Välj **Anslut** och sedan **RDP**.
 
     ![Ansluta till en virtuell dator](./media/quick-create-portal/connect-to-virtual-machine.png)
 
@@ -144,7 +144,7 @@ När du har skapat *myVm1*ansluter du till Internet.
 1. Ange det användar namn och lösen ord som du angav när du skapade den virtuella datorn.
 
     > [!NOTE]
-    > Du kan behöva välja **fler alternativ**  >  **Använd ett annat konto**för att ange de autentiseringsuppgifter du angav när du skapade den virtuella datorn.
+    > Du kan behöva välja **fler alternativ**  >  **Använd ett annat konto** för att ange de autentiseringsuppgifter du angav när du skapade den virtuella datorn.
 
 1. Välj **OK**.
 
@@ -202,7 +202,7 @@ När du har skapat *myVm1*ansluter du till Internet.
         Minimum = 0ms, Maximum = 1ms, Average = 0ms
     ```
 
-    Du får svar från *myVm1*eftersom du har tillåtit ICMP via Windows-brandväggen på den virtuella datorn *myVm1* i steg 3.
+    Du får svar från *myVm1* eftersom du har tillåtit ICMP via Windows-brandväggen på den virtuella datorn *myVm1* i steg 3.
 
 1. Stäng fjärrskrivbordsanslutningen till *myVm2*.
 
@@ -225,4 +225,4 @@ Mer information om inställningar för virtuella nätverk finns i [skapa, ändra
 Som standard tillåter Azure säker kommunikation mellan virtuella datorer. Azure tillåter endast inkommande fjärr skrivbords anslutningar till virtuella Windows-datorer från Internet. Mer information om typer av nätverkskommunikation för virtuella datorer finns i [filtrera nätverks trafik](tutorial-filter-network-traffic.md).
 
 > [!NOTE] 
-> Azure-tjänster kostar pengar. Azure Cost Management hjälper dig att ställa in budgetar och konfigurera aviseringar för att behålla utgifter under kontroll. Analysera, hantera och optimera dina Azure-kostnader med Cost Management. Mer information finns i snabb starten [när du analyserar dina kostnader](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
+> Azure-tjänster kostar pengar. Azure Cost Management hjälper dig att ställa in budgetar och konfigurera aviseringar för att behålla utgifter under kontroll. Analysera, hantera och optimera dina Azure-kostnader med Cost Management. Mer information finns i snabb starten [när du analyserar dina kostnader](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).

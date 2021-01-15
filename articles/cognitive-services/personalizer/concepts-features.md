@@ -8,18 +8,18 @@ ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 10/14/2019
-ms.openlocfilehash: edd1549ddabef0ae1ba37150ad75a371ac6e6d85
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 55d1b7171201c962278d7c526528b36848c19449
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94365524"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98217897"
 ---
 # <a name="features-are-information-about-actions-and-context"></a>Funktioner är information om åtgärder och kontext
 
 Personanpassa tjänsten arbetar genom att lära dig vad ditt program ska visa för användare i en specifik kontext.
 
-I personanpassaren används **funktioner** , som innehåller information om den **aktuella kontexten** för att välja den bästa **åtgärden**. Funktionerna representerar all information du tycker kan hjälpa dig att anpassa för att uppnå högre förmåner. Funktioner kan vara mycket generiska eller bara för ett objekt. 
+I personanpassaren används **funktioner**, som innehåller information om den **aktuella kontexten** för att välja den bästa **åtgärden**. Funktionerna representerar all information du tycker kan hjälpa dig att anpassa för att uppnå högre förmåner. Funktioner kan vara mycket generiska eller bara för ett objekt. 
 
 Du kan till exempel ha en **funktion** om:
 
@@ -37,12 +37,12 @@ Personanpassaren anger inte, begränsar eller åtgärdar vilka funktioner du kan
 
 ## <a name="supported-feature-types"></a>Funktions typer som stöds
 
-En personanpassare stöder funktioner av typerna String, numeric och Boolean.
+En personanpassare stöder funktioner av typerna String, numeric och Boolean. Det är mycket troligt att ditt program oftast använder sträng funktioner, med några undantag.
 
 ### <a name="how-choice-of-feature-type-affects-machine-learning-in-personalizer"></a>Hur valet av funktions typ påverkar Machine Learning i personanpassa
 
-* **Strängar** : för sträng typer skapar varje kombination av nyckel och värde nya vikter i personanpassa maskin inlärnings modell. 
-* **Numerisk** : du bör använda numeriska värden när antalet ska proportionellt påverka anpassnings resultatet. Detta är mycket scenariot beroende. I ett förenklat exempel, t. ex. När du anpassar en återförsäljarversion, kan NumberOfPetsOwned vara en funktion som är numerisk eftersom du vill att personer med 2 eller tre hus djur ska påverka anpassnings resultatet två gånger eller tre gånger om så mycket som med 1 hus djur. Funktioner som baseras på numeriska enheter men där innebörden inte är linjär, till exempel ålder, temperatur eller person höjd – är bäst kodade som strängar, och funktions kvaliteten kan vanligt vis förbättras med hjälp av intervall. Till exempel kan ålder kodas som "ålder": "0-5", "Age": "6-10" osv.
+* **Strängar**: för sträng typer behandlas varje kombination av nyckel och värde som en One-Hot funktion (t. ex. Genre: "ScienceFiction" och Genre: "dokument" skulle skapa två nya ingångs funktioner för Machine Learning-modellen.
+* **Numerisk**: du bör använda numeriska värden när talet är en omfattning som ska påverka anpassnings resultatet proportionellt. Detta är mycket scenariot beroende. I ett förenklat exempel, t. ex. När du anpassar en återförsäljarversion, kan NumberOfPetsOwned vara en funktion som är numerisk eftersom du vill att personer med 2 eller tre hus djur ska påverka anpassnings resultatet två gånger eller tre gånger om så mycket som med 1 hus djur. Funktioner som baseras på numeriska enheter men där innebörden inte är linjär, till exempel ålder, temperatur eller person höjd – är bäst kodad som strängar. Till exempel är DayOfMonth en sträng med "1", "2"... "31". Om du har många kategorier kan du normalt förbättra funktionens kvalitet genom att använda intervall. Till exempel kan ålder kodas som "ålder": "0-5", "Age": "6-10" osv.
 * **Booleska** värden som skickas med värdet "false" fungerar som om de inte hade har skickats över huvud taget.
 
 Funktioner som inte finns ska utelämnas från begäran. Undvik att skicka funktioner med ett null-värde eftersom det kommer att bearbetas som befintligt och med värdet "null" när du tränar modellen.
@@ -80,12 +80,14 @@ JSON-objekt kan innehålla kapslade JSON-objekt och enkla egenskaper/värden. En
         { 
             "user": {
                 "profileType":"AnonymousUser",
-                "latlong": [47.6, -122.1]
+                "latlong": ["47.6", "-122.1"]
             }
         },
         {
-            "state": {
-                "timeOfDay": "noon",
+            "environment": {
+                "dayOfMonth": "28",
+                "monthOfYear": "8",
+                "timeOfDay": "13:00",
                 "weather": "sunny"
             }
         },
@@ -93,6 +95,13 @@ JSON-objekt kan innehålla kapslade JSON-objekt och enkla egenskaper/värden. En
             "device": {
                 "mobile":true,
                 "Windows":true
+            }
+        },
+        {
+            "userActivity" : {
+                "itemsInCart": 3,
+                "cartValue": 250,
+                "appliedCoupon": true
             }
         }
     ]
@@ -112,6 +121,8 @@ Strängen som du använder för att namnge namn området måste följa vissa beg
 Med en bra funktions uppsättning kan Personanpassare lära sig hur man förutsäger den åtgärd som kommer att driva den högsta belöningen. 
 
 Överväg att skicka funktioner till API: et för personanpassa rankning som följer dessa rekommendationer:
+
+* Använd kategoriska-och sträng typer för funktioner som inte är av samma storlek. 
 
 * Det finns tillräckligt med funktioner för att driva anpassning. Den mer precis riktade innehållet måste vara, desto fler funktioner behövs.
 
@@ -177,9 +188,9 @@ Skicka inte mer än 50 åtgärder vid rangordning av åtgärder. Detta kan vara 
 
 De åtgärder som du skickar till ranknings-API: et beror på vad du försöker anpassa.
 
-Här följer några exempel:
+Här är några exempel:
 
-|Syfte|Åtgärd|
+|Syfte|Action|
 |--|--|
 |Anpassa vilken artikel som är markerad på en nyhets webbplats.|Varje åtgärd är en potentiell nyhets artikel.|
 |Optimera AD-placering på en webbplats.|Varje åtgärd är en layout eller regler för att skapa en layout för annonserna (till exempel överst, till höger, små bilder, stora bilder).|

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: eb94b67b026ed108f31f6cd802010577665ec0d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ece3e639e0ef3516696e2a0bad7deeb833433a6
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87286095"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98219206"
 ---
 # <a name="troubleshooting-connectivity-problems-between-azure-vms"></a>Felsökning av anslutningsproblem mellan virtuella Azure-datorer
 
@@ -49,7 +49,7 @@ Följ dessa steg för att felsöka problemet. När du har slutfört varje steg k
 
 ### <a name="step-1-check-whether-nic-is-misconfigured"></a>Steg 1: kontrol lera om NÄTVERKSKORTet är felkonfigurerat
 
-Följ stegen i [så här återställer du nätverks gränssnittet för Azure Windows VM](../virtual-machines/windows/reset-network-interface.md). 
+Följ stegen i [så här återställer du nätverks gränssnittet för Azure Windows VM](../virtual-machines/troubleshooting/reset-network-interface.md). 
 
 Om problemet inträffar när du har ändrat nätverks gränssnittet (NIC) följer du dessa steg:
 
@@ -62,8 +62,8 @@ Mer information finns i [lägga till nätverks gränssnitt eller ta bort från v
 
 **Virtuell dator med en NIC** 
 
-- [Distribuera om virtuell Windows-dator](../virtual-machines/windows/redeploy-to-new-node.md)
-- [Distribuera virtuella Linux-datorer](../virtual-machines/linux/redeploy-to-new-node.md)
+- [Distribuera om virtuell Windows-dator](../virtual-machines/troubleshooting/redeploy-to-new-node-windows.md)
+- [Distribuera virtuella Linux-datorer](../virtual-machines/troubleshooting/redeploy-to-new-node-linux.md)
 
 ### <a name="step-2-check-whether-network-traffic-is-blocked-by-nsg-or-udr"></a>Steg 2: kontrol lera om nätverks trafiken är blockerad av NSG eller UDR
 
@@ -103,7 +103,7 @@ En åtkomst kontrol lista (ACL) ger möjlighet att selektivt tillåta eller neka
 
 ### <a name="step-7-check-whether-the-endpoint-is-created-for-the-classic-vm"></a>Steg 7: kontrol lera om slut punkten har skapats för den klassiska virtuella datorn
 
-Alla virtuella datorer som du skapar i Azure med hjälp av den klassiska distributions modellen kan kommunicera via en privat nätverks kanal automatiskt med andra virtuella datorer i samma moln tjänst eller virtuella nätverk. Datorer i andra virtuella nätverk kräver dock slut punkter för att dirigera inkommande nätverks trafik till en virtuell dator. Mer information finns i [så här konfigurerar du slut punkter](../virtual-machines/windows/classic/setup-endpoints.md).
+Alla virtuella datorer som du skapar i Azure med hjälp av den klassiska distributions modellen kan kommunicera via en privat nätverks kanal automatiskt med andra virtuella datorer i samma moln tjänst eller virtuella nätverk. Datorer i andra virtuella nätverk kräver dock slut punkter för att dirigera inkommande nätverks trafik till en virtuell dator. Mer information finns i [så här konfigurerar du slut punkter](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints).
 
 ### <a name="step-8-try-to-connect-to-a-vm-network-share"></a>Steg 8: Försök ansluta till en nätverks resurs för virtuella datorer
 
