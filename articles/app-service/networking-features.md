@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/18/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 5d950598e4a0af86ac37b53722e80eb4ef0a71a4
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 53c0d37d4a25c2f2092a9e52bcae8ea494046bb0
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183064"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98210026"
 ---
 # <a name="app-service-networking-features"></a>App Service nätverksfunktioner
 
@@ -35,7 +35,7 @@ I stället för att ansluta nätverken behöver du funktioner för att hantera o
 | App-tilldelad adress | Hybridanslutningar |
 | Åtkomst begränsningar | Gateway – nödvändig VNet-integrering |
 | Tjänstslutpunkter | VNET-integration |
-| Privata slut punkter ||
+| Privata slutpunkter ||
 
 Förutom noterade undantag kan du använda alla dessa funktioner tillsammans. Du kan blanda funktionerna för att lösa dina problem.
 
@@ -48,8 +48,8 @@ För alla typer av användnings fall kan det finnas några sätt att lösa probl
 | Stöd för IP-baserade SSL-behov för din app | App-tilldelad adress |
 | Stöd för delning av en dedikerad inkommande adress för din app | App-tilldelad adress |
 | Begränsa åtkomsten till din app från en uppsättning väldefinierade adresser | Åtkomst begränsningar |
-| Begränsa åtkomsten till din app från resurser i ett virtuellt nätverk | Tjänstslutpunkter </br> ILB ASE </br> Privata slut punkter |
-| Exponera din app på en privat IP-adress i ditt virtuella nätverk | ILB ASE </br> Privata slut punkter </br> Privat IP för inkommande trafik på en Application Gateway-instans med tjänst slut punkter |
+| Begränsa åtkomsten till din app från resurser i ett virtuellt nätverk | Tjänstslutpunkter </br> ILB ASE </br> Privata slutpunkter |
+| Exponera din app på en privat IP-adress i ditt virtuella nätverk | ILB ASE </br> Privata slutpunkter </br> Privat IP för inkommande trafik på en Application Gateway-instans med tjänst slut punkter |
 | Skydda din app med en brand vägg för webbaserade program (WAF) | Application Gateway-och ILB-ASE </br> Application Gateway med privata slut punkter </br> Application Gateway med tjänstslutpunkter </br> Azures frontend-dörr med åtkomst begränsningar |
 | Belastnings Utjämnings trafik till dina appar i olika regioner | Azures frontend-dörr med åtkomst begränsningar | 
 | Belastnings Utjämnings trafik i samma region | [Application Gateway med tjänstslutpunkter][appgwserviceendpoints] | 
@@ -110,7 +110,7 @@ Med den här funktionen kan du bygga en lista över regler för att tillåta och
 
 Funktionen IP-baserade åtkomst begränsningar hjälper när du vill begränsa de IP-adresser som kan användas för att nå din app. Det finns stöd för både IPv4 och IPv6. Några användnings fall för den här funktionen:
 * Begränsa åtkomsten till din app från en uppsättning väldefinierade adresser. 
-* Begränsa åtkomsten till trafik som kommer via en belastnings Utjämnings tjänst, till exempel Azures front dörr. Om du vill låsa inkommande trafik till Azures front dörr skapar du regler för att tillåta trafik från 147.243.0.0/16 och 2a01:111:2050::/44. 
+* Begränsa åtkomsten till trafik som kommer via en extern belastnings Utjämnings tjänst eller andra nätverks enheter med kända utgående IP-adresser. 
 
 Information om hur du aktiverar den här funktionen finns i [Konfigurera åtkomst begränsningar][iprestrictions].
 
@@ -126,7 +126,20 @@ Några användnings fall för den här funktionen:
 ![Diagram som illustrerar användningen av tjänst slut punkter med Application Gateway.](media/networking-features/service-endpoints-appgw.png)
 
 Mer information om hur du konfigurerar tjänst slut punkter med din app finns i [Azure App Service åtkomst begränsningar][serviceendpoints].
+#### <a name="access-restriction-rules-based-on-service-tags-preview"></a>Åtkomst begränsnings regler baserade på service märken (för hands version)
+[Azure Service-Taggar][servicetags] är väl definierade uppsättningar IP-adresser för Azure-tjänster. Service tag-grupp de IP-intervall som används i olika Azure-tjänster och är ofta ytterligare begränsade till vissa regioner. På så sätt kan du filtrera *inkommande* trafik från vissa Azure-tjänster. 
 
+En fullständig lista över taggar och mer information finns i länken för service tag ovan. Information om hur du aktiverar den här funktionen finns i [Konfigurera åtkomst begränsningar][iprestrictions].
+#### <a name="http-header-filtering-for-access-restriction-rules-preview"></a>Filtrering av HTTP-huvud för åtkomst begränsnings regler (för hands version)
+För varje regel för begränsning av åtkomst kan du lägga till ytterligare http-huvudfiltrering. På så sätt kan du ytterligare kontrol lera inkommande begär Anden och filtrera utifrån vissa http-huvudvärden. Varje rubrik kan innehålla upp till 8 värden per regel. Följande lista över HTTP-rubriker stöds för närvarande: 
+* X-vidarebefordrad – för
+* X-vidarebefordrad-värd
+* X-Azure-FDID
+* X-FD-HealthProbe
+
+Vissa användnings fall för HTTP-huvud filtrering är:
+* Begränsa åtkomsten till trafik från proxyservrar som vidarebefordrar värd namnet
+* Begränsa åtkomsten till en speciell instans av Azures frontend-dörr med en service tag-regel och begränsning för X-FDID-huvud
 ### <a name="private-endpoint"></a>Privat slutpunkt
 
 Privat slut punkt är ett nätverks gränssnitt som ansluter dig privat och säkert till din webbapp via en privat Azure-länk. Privat slut punkt använder en privat IP-adress från det virtuella nätverket, vilket effektivt tar webb programmet till det virtuella nätverket. Den här funktionen är endast för *inkommande* flöden till din webbapp.
@@ -207,7 +220,7 @@ Med en ASE behöver du inte använda funktioner som VNet-integrering eller tjän
 
 Eftersom appar i en ILB-ASE kan exponeras på en privat IP-adress kan du enkelt lägga till WAF-enheter för att exponera enbart de appar som du vill ha på Internet och hålla resten säker. Den här funktionen kan hjälpa till att utveckla program på flera nivåer enklare. 
 
-Vissa saker är för närvarande inte möjliga från tjänsten för flera innehavare, men är möjliga från en ASE. Här följer några exempel:
+Vissa saker är för närvarande inte möjliga från tjänsten för flera innehavare, men är möjliga från en ASE. Här är några exempel:
 
 * Exponera dina appar på en privat IP-adress.
 * Skydda all utgående trafik med nätverks kontroller som inte är en del av din app.
@@ -299,3 +312,4 @@ Om du skannar App Service hittar du flera portar som exponeras för inkommande a
 [networkinfo]: ./environment/network-info.md
 [appgwserviceendpoints]: ./networking/app-gateway-with-service-endpoints.md
 [privateendpoints]: ./networking/private-endpoint.md
+[servicetags]: ../virtual-network/service-tags-overview.md

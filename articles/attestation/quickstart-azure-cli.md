@@ -7,16 +7,16 @@ ms.service: attestation
 ms.topic: quickstart
 ms.date: 11/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: fb8b0f12844ce1057bd3cfc4716a32ee64ec5586
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: df1064128d6a4eca8497ebf3ea0c6ae8cd42255c
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937227"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98208445"
 ---
 # <a name="quickstart-set-up-azure-attestation-with-azure-cli"></a>Snabb start: Konfigurera Azure-attestering med Azure CLI
 
-Kom igång med Azure-attestering genom att använda Azure CLI för att konfigurera attestering.
+Kom igång med [Azure-attestering med hjälp av Azure CLI](/cli/azure/ext/attestation/attestation?view=azure-cli-latest).
 
 ## <a name="get-started"></a>Kom igång
 
@@ -65,7 +65,7 @@ Kom igång med Azure-attestering genom att använda Azure CLI för att konfigure
 
 Här är kommandon som du kan använda för att skapa och hantera attesterings-providern:
 
-1. Kör kommandot [AZ attestering Create](/cli/azure/ext/attestation/attestation?view=azure-cli-latest#ext_attestation_az_attestation_create) för att skapa en attesterings-provider:
+1. Kör kommandot [AZ attestering Create](/cli/azure/ext/attestation/attestation?view=azure-cli-latest#ext_attestation_az_attestation_create) för att skapa en attesterings leverantör utan krav på princip signering:
 
    ```azurecli
    az attestation create --name "myattestationprovider" --resource-group "MyResourceGroup" --location westus
@@ -128,7 +128,7 @@ Ange en princip i JWT-format för en viss typ av attestering med hjälp av fil S
 
 ```azurecli
 az attestation policy set --name "myattestationprovider" --resource-group "MyResourceGroup" \
---attestation-type SGX-IntelSDK --new-attestation-policy-file "{file_path}" --policy-format JWT
+--attestation-type SGX-IntelSDK -f "{file_path}" --policy-format JWT
 ```
 
 ## <a name="next-steps"></a>Nästa steg

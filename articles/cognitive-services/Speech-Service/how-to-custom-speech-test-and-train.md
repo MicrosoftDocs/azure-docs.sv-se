@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/27/2020
 ms.author: trbye
-ms.openlocfilehash: d24565522a75427be04cacfdc20347056a515847
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: ed79d9fb3be192d300587eda5198d9b153109241
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98070770"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209788"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Förbereda data för Custom Speech
 
@@ -46,9 +46,9 @@ I den här tabellen listas godkända data typer, när varje datatyp ska använda
 
 | Datatyp | Används för testning | Rekommenderad kvantitet | Används för utbildning | Rekommenderad kvantitet |
 |-----------|-----------------|----------|-------------------|----------|
-| [Ljud](#audio-data-for-testing) | Ja<br>Används för visuell granskning | 5 + ljudfiler | Nej | E.t. |
-| [Ljud + medmärkta avskrifter](#audio--human-labeled-transcript-data-for-testingtraining) | Ja<br>Används för att utvärdera noggrannhet | 0,5 – 5 timmars ljud | Ja | 1-20 timmars ljud |
-| [Relaterad text](#related-text-data-for-training) | Nej | Ej tillämpligt | Ja | 1-200 MB relaterad text |
+| [Ljud](#audio-data-for-testing) | Yes<br>Används för visuell granskning | 5 + ljudfiler | No | Saknas |
+| [Ljud + medmärkta avskrifter](#audio--human-labeled-transcript-data-for-testingtraining) | Yes<br>Används för att utvärdera noggrannhet | 0,5 – 5 timmars ljud | Yes | 1-20 timmars ljud |
+| [Relaterad text](#related-text-data-for-training) | No | Ej tillämpligt | Yes | 1-200 MB relaterad text |
 
 När du tränar en ny modell börjar du med [relaterad text](#related-text-data-for-training). Dessa data kommer redan att förbättra igenkänningen av särskilda termer och fraser. Det går mycket snabbare att träna med text än att träna med ljud (minuter jämfört med dagar).
 
@@ -93,7 +93,7 @@ Använd den här tabellen för att se till att ljudfilerna är korrekt formatera
 
 Använd <a href="http://sox.sourceforge.net" target="_blank" rel="noopener">SoX <span class="docon docon-navigate-external x-hidden-focus"></span> </a> för att verifiera ljud egenskaperna eller konvertera det befintliga ljudet till rätt format. Nedan visas några exempel på hur var och en av dessa aktiviteter kan göras via SoX-kommando raden:
 
-| Aktivitet | Beskrivning | SoX-kommando |
+| Aktivitet | Description | SoX-kommando |
 |----------|-------------|-------------|
 | Kontrol lera ljud formatet | Använd det här kommandot för att kontrol lera<br>ljud fil formatet. | `sox --i <filename>` |
 | Konvertera ljud format | Använd det här kommandot för att konvertera<br>ljud filen till en kanal, 16-bitars 16 KHz. | `sox <input> -b 16 -e signed-integer -c 1 -r 16k -t wav <output>.wav` |
@@ -121,11 +121,14 @@ Ljudfiler kan ha tystnad i början och slutet av inspelningen. Om möjligt, inkl
 
 För att lösa problem som Word-borttagning eller ersättning krävs en stor mängd data för att förbättra igenkänningen. Vanligt vis rekommenderar vi att du ger ord för ord-avskrifter i ungefär 10 till 20 timmars ljud. Transkriptioner för alla WAV-filer bör ingå i en enda fil med oformaterad text. Varje rad i transkriptionsfilen ska innehålla namnet på en av ljudfilerna följt av motsvarande transkription. Filnamnet och transkriptionen ska separeras med ett tabbtecken (\t).
 
-  Till exempel:
-```
-  speech01.wav  speech recognition is awesome
-  speech02.wav  the quick brown fox jumped all over the place
-  speech03.wav  the lazy dog was not amused
+Exempel:
+
+<!-- The following example contains tabs. Don't accidentally convert these into spaces. -->
+
+```input
+speech01.wav    speech recognition is awesome
+speech02.wav    the quick brown fox jumped all over the place
+speech03.wav    the lazy dog was not amused
 ```
 
 > [!IMPORTANT]

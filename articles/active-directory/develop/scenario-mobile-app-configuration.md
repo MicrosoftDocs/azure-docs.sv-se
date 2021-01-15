@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 06/16/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: a18a36b8583f8534b2a2e643e5c155dc7a2d65e2
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: e2c632de3d602fe2d3e5bfa74f78e90f48412067
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94444069"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98208921"
 ---
 # <a name="configure-a-mobile-app-that-calls-web-apis"></a>Konfigurera en mobilapp som anropar webb-API: er
 
@@ -27,7 +27,7 @@ När du har skapat ditt program får du lära dig hur du konfigurerar koden med 
 
 Följande typer av MSAL-typer (Microsoft Authentication Library) stöder mobila appar.
 
-MSAL | Beskrivning
+MSAL | Description
 ------------ | ----------
 ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Används för att utveckla bärbara program. MSAL.NET stöder följande plattformar för att skapa ett mobil program: Universell Windows-plattform (UWP), Xamarin. iOS och Xamarin. Android.
 ![MSAL. iOS](media/sample-v2-code/logo_iOS.png) <br/> MSAL. iOS | Används för att utveckla interna iOS-program med hjälp av mål-C eller Swift.
@@ -148,9 +148,9 @@ Mer information finns i [UWP-/regionsspecifika överväganden med MSAL.net](msal
 
 I Android och iOS aktiverar mäklaren:
 
-- **Enkel inloggning (SSO)** : du kan använda SSO för enheter som är registrerade med Azure Active Directory (Azure AD). När du använder SSO behöver användarna inte logga in på varje program.
-- **Enhets identifiering** : den här inställningen aktiverar villkorliga åtkomst principer som är relaterade till Azure AD-enheter. Autentiseringsprocessen använder enhets certifikatet som skapades när enheten anslöts till arbets platsen.
-- **Verifiering av program identifiering** : när ett program anropar Service Broker skickas dess omdirigerings-URL. Sedan verifieras den av Service Broker.
+- **Enkel inloggning (SSO)**: du kan använda SSO för enheter som är registrerade med Azure Active Directory (Azure AD). När du använder SSO behöver användarna inte logga in på varje program.
+- **Enhets identifiering**: den här inställningen aktiverar villkorliga åtkomst principer som är relaterade till Azure AD-enheter. Autentiseringsprocessen använder enhets certifikatet som skapades när enheten anslöts till arbets platsen.
+- **Verifiering av program identifiering**: när ett program anropar Service Broker skickas dess omdirigerings-URL. Sedan verifieras den av Service Broker.
 
 ### <a name="enable-the-broker-on-xamarin"></a>Aktivera Broker på Xamarin
 
@@ -249,8 +249,8 @@ Följ dessa steg om du vill registrera appens URL-schema:
 
    Här `BundleId` identifierar din enhet unikt. Till exempel `BundleId` `yourcompany.xforms` är ditt URL-schema `msauth.com.yourcompany.xforms` .
 
-   > [!NOTE]
-   > Detta URL-schema kommer att bli en del av omdirigerings-URI: n som unikt identifierar din app när den tar emot Service Broker-svaret.
+  
+      Detta URL-schema kommer att bli en del av omdirigerings-URI: n som unikt identifierar din app när den tar emot Service Broker-svaret.
 
    ```XML
     <key>CFBundleURLTypes</key>
@@ -310,10 +310,9 @@ När MSAL för iOS och macOS anropar Broker, anropar Broker tillbaka till ditt p
     }
 ```
 
-> [!NOTE]
-> Om du `UISceneDelegate` har använt iOS 13 eller senare placerar du MSAL-återanropet i `scene:openURLContexts:` i `UISceneDelegate` stället. MSAL `handleMSALResponse:sourceApplication:` får bara anropas en gång för varje URL.
->
-> Mer information finns i [Apples dokumentation](https://developer.apple.com/documentation/uikit/uiscenedelegate/3238059-scene?language=objc).
+Om du `UISceneDelegate` har använt iOS 13 eller senare placerar du MSAL-återanropet i `scene:openURLContexts:` i `UISceneDelegate` stället. MSAL `handleMSALResponse:sourceApplication:` får bara anropas en gång för varje URL.
+
+Mer information finns i [Apples dokumentation](https://developer.apple.com/documentation/uikit/uiscenedelegate/3238059-scene?language=objc).
 
 #### <a name="step-2-register-a-url-scheme"></a>Steg 2: registrera ett URL-schema
 
@@ -329,8 +328,7 @@ Registrera ett schema för din app:
 
    Här `BundleId` identifierar din enhet unikt. Till exempel `BundleId` `yourcompany.xforms` är ditt URL-schema `msauth.com.yourcompany.xforms` .
 
-   > [!NOTE]
-   > Detta URL-schema kommer att bli en del av omdirigerings-URI: n som unikt identifierar din app när den tar emot Service Broker-svaret. Se till att omdirigerings-URI i formatet `msauth.(BundleId)://auth` är registrerat för ditt program i [Azure Portal](https://portal.azure.com).
+    Detta URL-schema kommer att bli en del av omdirigerings-URI: n som unikt identifierar din app när den tar emot Service Broker-svaret. Se till att omdirigerings-URI i formatet `msauth.(BundleId)://auth` är registrerat för ditt program i [Azure Portal](https://portal.azure.com).
 
    ```XML
    <key>CFBundleURLTypes</key>

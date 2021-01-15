@@ -12,12 +12,12 @@ ms.date: 09/23/2020
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur, marsma
 ms.custom: aaddev, fasttrack-edit, contperf-fy21q1, identityplatformtop40
-ms.openlocfilehash: d3edadd4878dbd6e06648f7fb67a0c3e111665d1
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: da432ee3877af4de931ee6d55860b647090d8e3d
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178134"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98208785"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Behörigheter och medgivande i slutpunkten för Microsoft Identity Platform
 
@@ -31,8 +31,7 @@ Microsoft Identity Platform implementerar [OAuth 2,0](active-directory-v2-protoc
 * Microsoft 365 e-post-API: `https://outlook.office.com`
 * Azure Key Vault: `https://vault.azure.net`
 
-> [!NOTE]
-> Vi rekommenderar starkt att du använder Microsoft Graph i stället för Microsoft 365 e-postapi, osv.
+Vi rekommenderar starkt att du använder Microsoft Graph i stället för Microsoft 365 e-postapi, osv.
 
 Samma sak gäller för alla resurser från tredje part som har integrerats med Microsoft Identity Platform. Alla dessa resurser kan också definiera en uppsättning behörigheter som kan användas för att dela upp resursens funktioner i mindre segment. [Microsoft Graph](https://graph.microsoft.com) har exempelvis definierat behörigheter för att utföra följande uppgifter, bland annat:
 
@@ -115,8 +114,7 @@ https%3A%2F%2Fgraph.microsoft.com%2Fmail.send
 
 När användaren har angett sina autentiseringsuppgifter söker Microsoft Identity Platform-slutpunkten efter en matchande post för *användar medgivande*. Om användaren inte har samtyckt till någon av de begärda behörigheterna tidigare, eller om en administratör har samtyckt till dessa behörigheter åt hela organisationen, ber Microsoft Identity Platform-slutpunkten användaren att bevilja de begärda behörigheterna.
 
-> [!NOTE]
->För närvarande `offline_access` inkluderas behörigheterna ("Behåll åtkomst till data som du har fått åtkomst till") och `user.read` ("logga in och läsa din profil") automatiskt i det första medgivandeet till ett program.  De här behörigheterna krävs vanligt vis för korrekt app-funktionalitet – `offline_access` ger appen åtkomst till att uppdatera tokens, kritiskt för ursprungliga appar och webbappar, samtidigt `user.read` som den ger åtkomst till `sub` anspråket, så att klienten eller appen kan identifiera användaren över tid och komma åt elementära användar information.
+För närvarande `offline_access` inkluderas behörigheterna ("Behåll åtkomst till data som du har fått åtkomst till") och `user.read` ("logga in och läsa din profil") automatiskt i det första medgivandeet till ett program.  De här behörigheterna krävs vanligt vis för korrekt app-funktionalitet – `offline_access` ger appen åtkomst till att uppdatera tokens, kritiskt för ursprungliga appar och webbappar, samtidigt `user.read` som den ger åtkomst till `sub` anspråket, så att klienten eller appen kan identifiera användaren över tid och komma åt elementära användar information.
 
 ![Exempel skärm bild som visar godkännande av arbets konto](./media/v2-permissions-and-consent/work_account_consent.png)
 
@@ -148,8 +146,7 @@ Om programmet begär program behörigheter och en administratör beviljar behör
 
 ## <a name="using-the-admin-consent-endpoint"></a>Använda slut punkten för administratörs medgivande
 
-> [!NOTE]
-> Observera att när du har beviljat administratörs medgivande med hjälp av administratörs slut punkten har du beviljat godkännandet och användarna behöver inte utföra några ytterligare åtgärder. Efter att ha beviljat administratörs tillåtelse kan användare få en åtkomsttoken via ett typiskt auth-flöde och den resulterande åtkomsttoken har de behörigheter som har skickats.
+När du har beviljat administratörs medgivande med hjälp av administratörs medgivande slut punkten har du beviljat ett administrativt medgivande och användarna behöver inte utföra några ytterligare åtgärder. Efter att ha beviljat administratörs tillåtelse kan användare få en åtkomsttoken via ett typiskt auth-flöde och den resulterande åtkomsttoken har de behörigheter som har skickats.
 
 När en företags administratör använder ditt program och dirigeras till behörighets slut punkten identifierar Microsoft Identity Platform användarens roll och ber dem om de vill ge tillstånd åt hela klient organisationen för de behörigheter som du har begärt. Det finns dock en dedikerad slut punkt för administratörs medgivande som du kan använda om du vill proaktivt begära att en administratör ger behörighet åt hela klient organisationen. Du måste också använda den här slut punkten för att begära program behörigheter (som inte kan begäras med hjälp av auktorisera slut punkten).
 
@@ -263,8 +260,7 @@ Du kan använda `/.default` omfånget för att migrera dina appar från v 1.0-sl
 
 /.Default-omfånget kan användas i alla OAuth 2,0-flöden, men det är nödvändigt i flödet för det aktiva flödet och [klientens autentiseringsuppgifter](v2-oauth2-client-creds-grant-flow.md), samt när du använder v2 [-](v2-oauth2-on-behalf-of-flow.md) administratörens medgivande slut punkt för att begära program behörigheter.
 
-> [!NOTE]
-> Klienter kan inte kombinera statiska ( `/.default` ) och dynamiskt medgivande i en enskild begäran. Därför `scope=https://graph.microsoft.com/.default+mail.read` leder det till ett fel på grund av en kombination av omfångs typer.
+Klienter kan inte kombinera statiska ( `/.default` ) och dynamiskt medgivande i en enskild begäran. Därför `scope=https://graph.microsoft.com/.default+mail.read` leder det till ett fel på grund av en kombination av omfångs typer.
 
 ### <a name="default-and-consent"></a>/.default och medgivande
 

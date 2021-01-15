@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 10/19/2020
-ms.openlocfilehash: 56c3475ae6a03600723e7a12b3f3809f003ce7c4
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.date: 1/13/2021
+ms.openlocfilehash: 4b5020b6cf7ac2f7aec586d7e6499285c1447b68
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922267"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209771"
 ---
 # <a name="hyperscale-service-tier"></a>Hyperskalatjänstnivå
 
@@ -87,7 +87,7 @@ Följande diagram illustrerar de olika typerna av noder i en storskalig databas:
 
 En storskalig databas innehåller följande typer av komponenter:
 
-### <a name="compute"></a>Beräkning
+### <a name="compute"></a>Compute
 
 Compute-noden är den plats där Relations motorn bor. Detta är där språk-, fråge-och transaktions bearbetning sker. Alla användar interaktioner med en storskalig databas sker genom de här Compute-noderna. Compute-noder har SSD-baserade cacheminnen (märkta RBPEX-elastiska buffertpooltillägget i diagrammet ovan) för att minimera antalet nätverks fördröjningar som krävs för att hämta en sida med data. Det finns en primär Compute-nod där alla Läs-och skriv åtgärder och transaktioner bearbetas. Det finns en eller flera sekundära datornoder som fungerar som frekventa vänte läge för redundans, samt fungerar som skrivskyddade Compute-noder för avlastning av Läs arbets belastningar (om den här funktionen önskas).
 
@@ -168,16 +168,15 @@ Om du behöver återställa en storskalig databas i Azure SQL Database till en a
 2. Följ anvisningarna i avsnittet [geo-återställning](./recovery-using-backups.md#geo-restore) på sidan om hur du återställer en databas i Azure SQL Database från automatiska säkerhets kopieringar.
 
 > [!NOTE]
-> Eftersom källan och målet är i olika regioner kan databasen inte dela lagring av ögonblicks bilder med käll databasen som i icke-geo-återställningar, som är mycket snabbt. Om det finns en geo-återställning av en storskalig databas, är det en åtgärd för data storlek, även om målet är i det kopplade området för den geo-replikerade lagringen.  Det innebär att en geo-återställning tar tid som är proportionell till storleken på databasen som återställs.  Om målet är i det kopplade området, kommer kopian att vara inom en region, vilket kommer att bli betydligt snabbare än en kopia i flera regioner, men det är fortfarande en data åtgärd.
+> Eftersom källan och målet är i olika regioner, kan inte databasen dela lagring av ögonblicks bilder med käll databasen som i icke-geo-återställningar som slutförs snabbt oavsett databasens storlek. Om det finns en geo-återställning av en storskalig databas, är det en åtgärd för data storlek, även om målet är i det kopplade området för den geo-replikerade lagringen. Därför tar en geo-återställning tid i proportion till storleken på databasen som återställs. Om målet är i den länkade regionen, kommer data överföringen att vara inom en region, vilket kommer att bli betydligt snabbare än en data överföring över flera regioner, men det är fortfarande en åtgärd för data storlek.
 
 ## <a name="available-regions"></a><a name=regions></a>Tillgängliga regioner
 
-Den Azure SQL Database skalnings nivån är tillgänglig i alla regioner, men aktive ras som standard i följande regioner som anges nedan.
-Om du vill skapa en storskalig databas i en region som inte är listad som stöds kan du skicka en onboarding-begäran via Azure Portal. Anvisningar finns i [begär kvot ökningar för Azure SQL Database](quota-increase-request.md) . Använd följande rikt linjer när du skickar in din begäran:
+Den Azure SQL Database skalnings nivån är tillgänglig i alla regioner, men aktive ras som standard i följande regioner som anges nedan. Om du vill skapa en storskalig databas i en region där skalning inte är aktiverat som standard, kan du skicka en onboarding-begäran via Azure Portal. Anvisningar finns i [begär kvot ökningar för Azure SQL Database](quota-increase-request.md) . Använd följande rikt linjer när du skickar in din begäran:
 
 - Använd kvot typen [region åtkomst](quota-increase-request.md#region) SQL Database.
-- I text informationen lägger du till beräknings-SKU: n/total kärnor, inklusive läsbara repliker.
-- Ange även Beräknad TB.
+- I beskrivningen lägger du till beräknings-SKU: n/total kärnor, inklusive läsbara repliker, och anger att du begär skalnings kapacitet.
+- Ange också en projektion av den totala storleken på alla databaser över tid i TB.
 
 Aktiverade regioner:
 - Australien, östra
@@ -198,7 +197,7 @@ Aktiverade regioner:
 - Sydkorea, centrala
 - Sydkorea, södra
 - USA, norra centrala
-- Norra Europa
+- Europa, norra
 - Östra Norge
 - Norge, väst
 - Sydafrika, norra
@@ -222,13 +221,13 @@ Detta är de aktuella begränsningarna för den storskaliga tjänst nivån från
 
 | Problem | Beskrivning |
 | :---- | :--------- |
-| I fönstret hantera säkerhets kopior för en server visas inte storskaliga databaser. De kommer att filtreras från vyn.  | Den storskaliga metoden för att hantera säkerhets kopieringar har en separat metod för att hantera säkerhets kopior, så Long-Term inställningarna för kvarhållning och säkerhets kopiering av tidpunkter gäller inte. Därför visas inte storskaliga databaser i fönstret hantera säkerhets kopiering.<br><br>För databaser som har migrerats till storskaligheten från andra Azure SQL Database tjänst nivåer behålls säkerhets kopiorna innan migreringen [backup retention](automated-backups-overview.md#backup-retention) för käll databasens varaktighet. Dessa säkerhets kopior kan användas för att [återställa](recovery-using-backups.md#programmatic-recovery-using-automated-backups) käll databasen till en tidpunkt innan migreringen.|
-| Återställning från tidpunkt | En databas som inte är storskalig kan inte återställas som en storskalig databas och en storskalig databas kan inte återställas som en databas som inte är storskalig. För en icke-storskalig databas som har migrerats till storskalig genom att ändra dess tjänst nivå återställer du till en tidpunkt innan migreringen och inom lagrings perioden för säkerhets kopior av databasen är möjlig [program mässigt](recovery-using-backups.md#programmatic-recovery-using-automated-backups). Den återställda databasen får inte skalas. |
-| Om en databas har en eller flera datafiler som är större än 1 TB, Miss lyckas migreringen | I vissa fall kan det vara möjligt att undvika det här problemet genom att minska de stora filerna till mindre än 1 TB. Om du migrerar en databas som används under migreringsprocessen ser du till att ingen fil får större än 1 TB. Använd följande fråga för att fastställa storleken på databasfilerna. `SELECT *, name AS file_name, size * 8. / 1024 / 1024 AS file_size_GB FROM sys.database_files WHERE type_desc = 'ROWS'`;|
+| I fönstret hantera säkerhets kopior för en server visas inte storskaliga databaser. De kommer att filtreras från vyn.  | Den storskaliga metoden för att hantera säkerhets kopieringar har en separat metod för att hantera säkerhets kopior, så Long-Term inställningarna för kvarhållning och säkerhets kopiering av tidpunkter gäller inte. Därför visas inte storskaliga databaser i fönstret hantera säkerhets kopiering.<br><br>För databaser som har migrerats till storskaligheten från andra Azure SQL Database tjänst nivåer behålls säkerhets kopiorna innan migreringen [](automated-backups-overview.md#backup-retention) för käll databasens varaktighet. Dessa säkerhets kopior kan användas för att [återställa](recovery-using-backups.md#programmatic-recovery-using-automated-backups) käll databasen till en tidpunkt innan migreringen.|
+| Återställning från tidpunkt | En databas som inte är storskalig kan inte återställas som en storskalig databas och en storskalig databas kan inte återställas som en databas som inte är storskalig. För en icke-storskalig databas som har migrerats till storskalig genom att ändra dess tjänst nivå återställer du till en tidpunkt innan migreringen och inom lagrings perioden för säkerhets kopior av databasen stöds [program mässigt](recovery-using-backups.md#programmatic-recovery-using-automated-backups). Den återställda databasen får inte skalas. |
+| När du ändrar Azure SQL Database tjänst nivå till storskalig, Miss lyckas åtgärden om databasen har några datafiler som är större än 1 TB | I vissa fall kan det vara möjligt att undvika det här problemet genom att [minska](file-space-manage.md#shrinking-data-files) de stora filerna till mindre än 1 TB innan du försöker ändra tjänst nivån till storskalig skalning. Använd följande fråga för att fastställa den aktuella storleken på databasfiler. `SELECT file_id, name AS file_name, size * 8. / 1024 / 1024 AS file_size_GB FROM sys.database_files WHERE type_desc = 'ROWS'`;|
 | SQL-hanterad instans | Azure SQL Managed instance stöds för närvarande inte med storskaliga databaser. |
 | Elastiska pooler |  Elastiska pooler stöds inte för närvarande med skalning.|
 | Migrering till storskalig skalning är för närvarande en enkelriktad åtgärd | När en databas har migrerats till storskalig kan den inte migreras direkt till en icke-storskalig tjänst nivå. Det enda sättet att migrera en databas från storskalig till icke-storskalig är att exportera/importera med hjälp av en BACPAC-fil eller annan teknik för data förflyttning (Mass kopiering, Azure Data Factory, Azure Databricks, SSIS osv.) BACPAC export/import från Azure Portal, från PowerShell med [New-AzSqlDatabaseExport](/powershell/module/az.sql/new-azsqldatabaseexport) eller [New-AzSqlDatabaseImport](/powershell/module/az.sql/new-azsqldatabaseimport), från Azure CLI med hjälp av [AZ SQL DB export](/cli/azure/sql/db#az-sql-db-export) och [az SQL DB-import](/cli/azure/sql/db#az-sql-db-import)och från [REST API](/rest/api/sql/databases%20-%20import%20export) stöds inte. BACPAC import/export för mindre storskaliga databaser (upp till 200 GB) stöds med SSMS och [SqlPackage](/sql/tools/sqlpackage) version 18,4 och senare. För större databaser kan BACPAC export/import ta lång tid och kan Miss lyckas av olika orsaker.|
-| Migrering av databaser med In-Memory OLTP-objekt | Storskalig stöder en delmängd av In-Memory OLTP-objekt, inklusive minnesoptimerade tabell typer, Table-variabler och internt kompilerade moduler. Men när en typ av In-Memory OLTP-objekt finns i databasen som migreras, stöds inte migrering från Premium-och Affärskritisks tjänst nivåer till storskalig skalning. Alla In-Memory OLTP-objekt och deras beroenden måste släppas för att en sådan databas ska kunna migreras till skalning. När databasen har migrerats kan dessa objekt återskapas. Tåliga och icke-varaktiga minnesoptimerade tabeller stöds inte för närvarande i storskaliga och måste återskapas som disk tabeller.|
+| Migrering av databaser med In-Memory OLTP-objekt | Storskalig stöder en delmängd av In-Memory OLTP-objekt, inklusive minnesoptimerade tabell typer, Table-variabler och internt kompilerade moduler. Men när en typ av In-Memory OLTP-objekt finns i databasen som migreras, stöds inte migrering från Premium-och Affärskritisks tjänst nivåer till storskalig skalning. Alla In-Memory OLTP-objekt och deras beroenden måste släppas för att en sådan databas ska kunna migreras till skalning. När databasen har migrerats kan dessa objekt återskapas. Varaktiga och icke-varaktiga minnesoptimerade tabeller stöds inte för närvarande i storskaliga och måste ändras till disk tabeller.|
 | Geo-replikering  | Du kan inte konfigurera geo-replikering för Azure SQL Database storskaligt. |
 | Databas kopia | Databas kopiering på storskaligheten är nu i en offentlig för hands version. |
 | Intelligenta databas funktioner | Med undantag för alternativet "framtvinga plan" stöds inte alla andra automatiska justerings alternativ i den storskaliga: alternativen kan verka vara aktiverade, men inga rekommendationer eller åtgärder har gjorts. |

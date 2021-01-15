@@ -10,12 +10,12 @@ ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9ee18edd563d94a85dedf48b7a4d6df394c09707
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: b93addfe659847187dffe61f12f5a2bfac9dca21
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461390"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209635"
 ---
 # <a name="azure-synapse-analytics-shared-metadata-tables"></a>Tabeller för delade metadata i Azure Synapse Analytics
 
@@ -32,7 +32,7 @@ Eftersom tabellerna är synkroniserade med en server lös SQL-pool asynkront kom
 
 Använd Spark för att hantera Spark-skapade databaser. Du kan t. ex. ta bort den via ett jobb utan server Apache Spark pool och skapa tabeller i det från Spark.
 
-Om du skapar objekt i en sådan databas från SQL-poolen utan server eller försöker släppa databasen, lyckas åtgärden, men den ursprungliga Spark-databasen ändras inte.
+Om du skapar objekt i en sådan databas från en server lös SQL-pool eller försöker släppa databasen kommer åtgärden att Miss Miss läge. Den ursprungliga Spark-databasen kan inte ändras via server lös SQL-pool.
 
 ## <a name="expose-a-spark-table-in-sql"></a>Exponera en spark-tabell i SQL
 

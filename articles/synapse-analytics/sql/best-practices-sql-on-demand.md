@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 05/01/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 93ac8cd3e462c244840a5ed569d685a9d67fa6c2
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.openlocfilehash: c752bc6ae49f009056067545fde292dc29027d5d
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98165883"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98208139"
 ---
 # <a name="best-practices-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Metod tips för Server lös SQL-pool i Azure Synapse Analytics
 
@@ -129,7 +129,7 @@ Du kan använda en Prestandaoptimerad parser när du frågar CSV-filer. Mer info
 
 ## <a name="manually-create-statistics-for-csv-files"></a>Skapa statistik för CSV-filer manuellt
 
-SQL-poolen utan server använder statistik för att generera optimala fråge körnings planer. Statistik skapas automatiskt för kolumner i Parquet-filer vid behov. Nu skapas statistik inte automatiskt för kolumner i CSV-filer och du bör skapa statistik manuellt för kolumner som du använder i frågor, särskilt de som används i DISTINCT, JOIN, WHERE, ORDER BY och GROUP BY. Kontrol lera [statistik i Server lös SQL-pool] (utveckla-tables-Statistics. MD # Statistics-in-server utan SQL-pool för mer information.
+SQL-poolen utan server använder statistik för att generera optimala fråge körnings planer. Statistik skapas automatiskt för kolumner i Parquet-filer vid behov. Nu skapas statistik inte automatiskt för kolumner i CSV-filer och du bör skapa statistik manuellt för kolumner som du använder i frågor, särskilt de som används i DISTINCT, JOIN, WHERE, ORDER BY och GROUP BY. Mer information finns [i statistik i SQL-poolen utan server](develop-tables-statistics.md#statistics-in-serverless-sql-pool) .
 
 ## <a name="use-cetas-to-enhance-query-performance-and-joins"></a>Använd CETAS för att förbättra frågornas prestanda och kopplingar
 

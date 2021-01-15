@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: mathapli
-ms.openlocfilehash: ba7081c877f3c3adae6e678280592c9445a95d1b
-ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
+ms.openlocfilehash: 990c396c859477c83e0ef421659a299920ee0c35
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97858815"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209142"
 ---
 # <a name="how-azure-hybrid-benefit-applies-for-linux-virtual-machines"></a>Hur Azure Hybrid-förmån gäller för virtuella Linux-datorer
 
@@ -47,6 +47,9 @@ Azure Hybrid-förmån för RHEL är tillgänglig för Red Hat-kunder som uppfyll
 
 - Ha aktiva eller oanvända RHEL-prenumerationer som är tillgängliga för användning i Azure
 - Ha aktiverat en eller flera av dessa prenumerationer för användning i Azure med [Red Hat Cloud Access](https://www.redhat.com/en/technologies/cloud-computing/cloud-access) -programmet
+
+> [!IMPORTANT]
+> Se till att rätt prenumeration har Aktiver ATS i [Cloud-Access](https://www.redhat.com/en/technologies/cloud-computing/cloud-access) -programmet.
 
 Börja använda fördelarna med Red Hat:
 

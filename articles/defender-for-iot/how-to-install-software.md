@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/2/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 5e33a7adc7b529df8c7c821cbfdcb0ad5709803b
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 2bd994f14863715274e137bce2dd6873eeec1135
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97842090"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98208768"
 ---
 # <a name="defender-for-iot-installation"></a>Defender för IoT-installation
 
@@ -230,9 +230,9 @@ I den här artikeln beskrivs hur du konfigurerar BIOS med hjälp av konfiguratio
 
 4. Installationens autentiseringsuppgifter är:
 
-   - Användar namn: **Cyberx**
+   - Användar namn: **xxx**
 
-   - Lösen ord: **xhxvhttju @4338 ,**
+   - Lösen ord: **xxx**
 
      Åtgärden Importera Server profil har initierats.
 
@@ -274,7 +274,7 @@ Konfigurera manuellt:
 
    - Om installationen inte är en Defender för IoT-installation öppnar du en webbläsare och går till den IP-adress som har kon figurer ATS tidigare. Logga in med administratörs behörighet för Dell-administratörer. Använd **root** för användar namn och **Calvin** för lösen ordet.
 
-   - Om installationen är en Defender för IoT-installation loggar du in med hjälp av **Cyberx** för användar namnet och **@4338 xhxvhttju** för lösen ordet.
+   - Om installationen är en Defender för IoT-enhet loggar du in med **xxx** som användar namn och **xxx** för lösen ordet.
 
 2. När du har åtkomst till BIOS går du till **enhets inställningar**.
 
@@ -1073,4 +1073,4 @@ Så här aktiverar du tunnel trafik:
 
 ### <a name="next-steps"></a>Nästa steg
 
-[Konfigurera nätverket](how-to-set-up-your-network.md)
+[Konfigurera ditt nätverk](how-to-set-up-your-network.md)

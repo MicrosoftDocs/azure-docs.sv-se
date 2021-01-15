@@ -1,14 +1,14 @@
 ---
 title: Lär dig att granska innehållet i virtuella datorer
 description: Lär dig hur Azure Policy använder klienten för gäst konfiguration för att granska inställningar i virtuella datorer.
-ms.date: 10/14/2020
+ms.date: 01/14/2021
 ms.topic: conceptual
-ms.openlocfilehash: 5ec43516c60d2fe5d923a7b87cddbea0ad640453
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: c141169545379f1ac0dd18a97e85652f97b90e6f
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98071841"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98210128"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Om Azure Policys gästkonfiguration
 
@@ -47,7 +47,7 @@ I datorn använder gäst konfigurations klienten lokala verktyg för att köra g
 
 I följande tabell visas en lista över de lokala verktyg som används på varje operativ system som stöds. För inbyggt innehåll hanterar gäst konfigurationen inläsning av dessa verktyg automatiskt.
 
-|Operativsystem|Validerings verktyg|Anteckningar|
+|Operativsystem|Validerings verktyg|Kommentarer|
 |-|-|-|
 |Windows|[PowerShell Desired State Configuration](/powershell/scripting/dsc/overview/overview) v2| Sidan har lästs in till en mapp som endast används av Azure Policy. Är inte i konflikt med Windows PowerShell DSC. PowerShell-kärnan har inte lagts till i System Sök vägen.|
 |Linux|[Chefs INSPEC](https://www.chef.io/inspec/)| Installerar chefs inspecens version 2.2.61 på standard platsen och läggs till i System Sök vägen. Beroenden för INSPEC-paketet inklusive ruby och python installeras också. |
@@ -60,7 +60,7 @@ Klienten för gäst konfiguration söker efter nytt innehåll var 5: e minut. N�
 
 Princip definitioner för gäst konfiguration inkluderar nya versioner. Äldre versioner av operativ system som är tillgängliga på Azure Marketplace utesluts om gäst konfigurations klienten inte är kompatibel. I följande tabell visas en lista över operativ system som stöds på Azure-avbildningar:
 
-|Publisher|Namn|Versioner|
+|Publisher|Name|Versioner|
 |-|-|-|
 |Canonical|Ubuntu Server|14,04 – 18,04|
 |Credativ|Debian|8 och senare|
@@ -101,11 +101,11 @@ För Arc-anslutna servrar i privata data Center kan du tillåta trafik med följ
 
 ## <a name="managed-identity-requirements"></a>Krav för hanterade identiteter
 
-Princip definitioner i initiativet initiativ [distribuera krav för att aktivera principer för gäst konfiguration på virtuella datorer](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F12794019-7a00-42cf-95c2-882eed337cc8) möjliggör en systemtilldelad hanterad identitet om den inte finns. Det finns två princip definitioner i det initiativ som hanterar skapandet av identitet. OM villkoren i princip definitionerna säkerställer rätt beteende baserat på dator resursens aktuella tillstånd i Azure.
+Princip definitioner i initiativet initiativ _distribuera krav för att aktivera principer för gäst konfiguration på virtuella datorer_ möjliggör en systemtilldelad hanterad identitet om den inte finns. Det finns två princip definitioner i det initiativ som hanterar skapandet av identitet. OM villkoren i princip definitionerna säkerställer rätt beteende baserat på dator resursens aktuella tillstånd i Azure.
 
-Om datorn inte har några hanterade identiteter är den effektiva principen: för [ \[ hands version \] : Lägg till systemtilldelad hanterad identitet för att aktivera gäst konfigurations tilldelningar på virtuella datorer utan identiteter](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3cf2ab00-13f1-4d0c-8971-2ac904541a7e)
+Om datorn inte har några hanterade identiteter är den effektiva principen: [Lägg till systemtilldelad hanterad identitet för att aktivera gäst konfigurations tilldelningar på virtuella datorer utan identiteter](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3cf2ab00-13f1-4d0c-8971-2ac904541a7e)
 
-Om datorn för närvarande har en användardefinierad system identitet kommer den gällande principen att vara: för [ \[ hands version \] : Lägg till systemtilldelad hanterad identitet för att aktivera gäst konfigurations tilldelningar på virtuella datorer med en tilldelad identitet](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F497dff13-db2a-4c0f-8603-28fa3b331ab6)
+Om datorn för närvarande har en användardefinierad system identitet blir den effektiva principen: [Lägg till systemtilldelad hanterad identitet för att aktivera gäst konfigurations tilldelningar på virtuella datorer med en tilldelad identitet](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F497dff13-db2a-4c0f-8603-28fa3b331ab6)
 
 ## <a name="guest-configuration-definition-requirements"></a>Krav för konfigurations definition för gäst
 
@@ -120,7 +120,7 @@ Azure Policy använder **complianceStatus** -egenskapen för gäst konfiguration
 
 #### <a name="auditing-operating-system-settings-following-industry-baselines"></a>Granska operativ system inställningar efter bransch bas linjer
 
-Ett initiativ i Azure Policy ger möjlighet att granska inställningarna för operativ systemet efter en "bas linje". Definition, för _\[ hands version \] : granska virtuella Windows-datorer som inte matchar inställningarna för Azures säkerhets bas linje_ innehåller en uppsättning regler som baseras på Active Directory Grupprincip.
+Ett initiativ i Azure Policy granskar inställningarna för operativ systemet efter en "bas linje". Definitionen, för _\[ hands versionen \] : Windows-datorer bör uppfylla kraven för Azures säkerhets bas linje_ innehåller en uppsättning regler som baseras på Active Directory Grupprincip.
 
 De flesta av inställningarna är tillgängliga som parametrar. Med parametrar kan du anpassa vad som granskas.
 Justera principen med dina krav eller mappa principen till information från tredje part, till exempel bransch regelverks standarder.

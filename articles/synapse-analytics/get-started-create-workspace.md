@@ -9,19 +9,19 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
-ms.date: 11/21/2020
-ms.openlocfilehash: c9b7d796612981f0e8194be84b0ed141721f644d
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.date: 12/31/2020
+ms.openlocfilehash: 3a2636ec73d20f3011d8413c794e68ef41b1829c
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96862385"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209193"
 ---
 # <a name="creating-a-synapse-workspace"></a>Skapa en Synapse-arbetsyta
 
 I den här självstudien får du lära dig hur du skapar en Synapse-arbetsyta, en dedikerad SQL-pool och en server lös Apache Spark pool. 
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att slutföra den här själv studie kursen måste du ha åtkomst till en resurs grupp som du har tilldelats **ägar** rollen för. Skapa arbets ytan Synapse i den här resurs gruppen.
 
@@ -30,11 +30,12 @@ För att slutföra den här själv studie kursen måste du ha åtkomst till en r
 1. Öppna [Azure Portal](https://portal.azure.com)och högst upp i Sök efter **Synapse**.
 1. I Sök resultaten under **tjänster** väljer du **Azure Synapse Analytics**.
 1. Välj **Lägg till** för att skapa en arbets yta.
-1. I **grunderna** anger du önskad **prenumeration**, **resurs grupp**, **region** och väljer sedan ett namn på arbets ytan. I den här självstudien använder vi min **arbets yta**.
-1. Gå till **välj Data Lake Storage gen 2**. 
-1. Klicka på **Skapa nytt** och ge den namnet **contosolake**.
-1. Klicka på **fil system** och ge den namnet **användare**. Då skapas en behållare med namnet **användare**
+1. På fliken **grundläggande** , under projekt information, ange önskad **prenumeration**, **resurs grupp**, **region** och välj sedan ett namn på arbets ytan. I den här självstudien använder vi min **arbets yta**.
+1. Genom att **välja data Lake Storage gen 2** klickar du på knappen för **från prenumerationen**.
+1. Efter **konto namn** klickar du på **Skapa nytt** och namnger det nya lagrings kontot **contosolake** eller liknar det här namnet måste vara unikt.
+1. Efter **fil system namn** klickar du på **Skapa nytt** och ge den namnet **användare**. Detta skapar en lagrings behållare med namnet **användare**
 1. Arbets ytan kommer att använda det här lagrings kontot som det primära lagrings kontot för Spark-tabeller och Spark-programloggarna.
+1. Markera rollen "tilldela själv Storage BLOB data Contributor i Data Lake Storage Gen2 konto". 
 1. Välj **Granska + skapa** > **Skapa**. Din arbets yta är klar på några minuter.
 
 > [!NOTE]
@@ -45,8 +46,14 @@ För att slutföra den här själv studie kursen måste du ha åtkomst till en r
 
 När din Azure Synapse-arbetsyta har skapats kan du öppna Synapse Studio på två sätt:
 
-* Öppna din Synapse-arbetsyta i [Azure Portal](https://portal.azure.com). Överst i **översikts** avsnittet väljer du **Öppna Synapse Studio**.
+* Öppna din Synapse-arbetsyta [Azure Portal](https://portal.azure.com)i avsnittet **Översikt** på arbets ytan Synapse väljer du **Öppna** i rutan Öppna Synapse Studio.
 * Gå till `https://web.azuresynapse.net` och logga in på din arbets yta.
+
+
+## <a name="the-built-in-serverless-sql-pool"></a>Den inbyggda SQL-poolen utan Server
+
+Varje arbets yta levereras med en fördefinierad Server lös SQL-pool som kallas **inbyggd**. Det går inte att ta bort poolen. SQL-pooler utan Server gör att du kan använda SQL utan att behöva reservera kapacitet med dedikerade SQL-pooler. Till skillnad från dedikerade SQL-pooler baseras faktureringen för en server lös SQL-pool på mängden data som genomsöks för att köra frågan, inte antalet allokerade kapacitet till poolen.
+
 
 ## <a name="create-a-dedicated-sql-pool"></a>Skapa en dedikerad SQL-pool
 
@@ -61,6 +68,7 @@ En dedikerad SQL-pool förbrukar fakturerbara resurser så länge den är aktiv.
 > [!NOTE] 
 > När du skapar en ny dedikerad SQL-pool (tidigare SQL DW) på din arbets yta öppnas sidan dedikerad etablering av SQL-pool. Etableringen sker på den logiska SQL-servern.
 
+
 ## <a name="create-a-serverless-apache-spark-pool"></a>Skapa en server lös Apache Spark-pool
 
 1. I Synapse Studio väljer du **Hantera**  >  **Apache Spark pooler** i det vänstra fönstret.
@@ -72,9 +80,6 @@ En dedikerad SQL-pool förbrukar fakturerbara resurser så länge den är aktiv.
 
 Spark-poolen meddelar Azure Synapse hur många Spark-resurser som ska användas. Du betalar bara för de resurser du använder. När du aktivt slutar använda poolen är resurserna automatiskt utgångna och återvinns.
 
-## <a name="the-built-in-serverless-sql-pool"></a>Den inbyggda SQL-poolen utan Server
-
-Varje arbets yta levereras med en fördefinierad Server lös SQL-pool som kallas **inbyggd**. Det går inte att ta bort poolen. SQL-pooler utan Server gör att du kan använda SQL utan att behöva reservera kapacitet med dedikerade SQL-pooler. Till skillnad från dedikerade SQL-pooler baseras faktureringen för en server lös SQL-pool på mängden data som genomsöks för att köra frågan, inte antalet allokerade kapacitet till poolen.
 
 ## <a name="next-steps"></a>Nästa steg
 

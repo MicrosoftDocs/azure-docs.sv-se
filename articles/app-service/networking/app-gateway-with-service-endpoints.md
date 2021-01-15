@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/09/2019
 ms.author: madsd
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 954e94063ec91cd2a6d67d154dfd7da553e0935a
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 58886a8f7dc505a7e68d69eb00b4a2ebd776dd5a
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94560901"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209871"
 ---
 # <a name="application-gateway-integration-with-service-endpoints"></a>Application Gateway integrering med tjänst slut punkter
 Det finns tre varianter av App Service som kräver något annorlunda konfiguration av integreringen med Azure Application Gateway. Varianterna omfattar vanliga App Service, även kallade flera innehavare, interna Load Balancer (ILB) App Service-miljön (ASE) och externa ASE. Den här artikeln går igenom hur du konfigurerar den med App Service (flera innehavare) och diskuterar överväganden om ILB och externa ASE.
@@ -27,7 +27,7 @@ Det finns tre varianter av App Service som kräver något annorlunda konfigurati
 ## <a name="integration-with-app-service-multi-tenant"></a>Integrering med App Service (flera innehavare)
 App Service (flera innehavare) har en offentlig slut punkt mot Internet. Med [tjänst slut punkter](../../virtual-network/virtual-network-service-endpoints-overview.md) kan du bara tillåta trafik från ett särskilt undernät i ett Azure-Virtual Network och blockera allt annat. I följande scenario kommer vi att använda den här funktionen för att säkerställa att en App Service instans bara kan ta emot trafik från en speciell Application Gateway instans.
 
-![Diagram visar det Internet som flödar till en Application Gateway i en Azure-Virtual Network och flödar därifrån via en brand Väggs ikon till instanser av appar i App Service.](./media/app-gateway-with-service-endpoints/service-endpoints-appgw.png)
+:::image type="content" source="./media/app-gateway-with-service-endpoints/service-endpoints-appgw.png" alt-text="Diagram visar det Internet som flödar till en Application Gateway i en Azure-Virtual Network och flödar därifrån via en brand Väggs ikon till instanser av appar i App Service.":::
 
 Det finns två delar i den här konfigurationen, förutom att skapa App Service och Application Gateway. Den första delen är att aktivera tjänstens slut punkter i under nätet för den Virtual Network där Application Gateway distribueras. Tjänst slut punkter ser till att all nätverks trafik som lämnar under nätet till App Service taggas med det angivna under nätets ID. Den andra delen är att ange en åtkomst begränsning för en speciell webbapp för att säkerställa att endast trafik som är Taggad med detta speciella Undernäts-ID tillåts. Du kan konfigurera den med olika verktyg beroende på preferens.
 
@@ -36,11 +36,11 @@ Med Azure Portal följer du fyra steg för att etablera och konfigurera installa
 1. Skapa en App Service med en av snabb starterna i App Service-dokumentationen, till exempel [.net Core snabb start](../quickstart-dotnetcore.md)
 2. Skapa en Application Gateway med hjälp av [portalens snabb start](../../application-gateway/quick-create-portal.md), men hoppa över avsnittet Lägg till Server dels mål.
 3. Konfigurera [app service som Server del i Application Gateway](../../application-gateway/configure-web-app-portal.md), men hoppa över avsnittet begränsa åtkomst.
-4. Skapa slutligen [åtkomst begränsningen med hjälp av tjänst slut punkter](../../app-service/app-service-ip-restrictions.md#use-service-endpoints).
+4. Skapa slutligen [åtkomst begränsningen med hjälp av tjänst slut punkter](../../app-service/app-service-ip-restrictions.md#set-a-service-endpoint-based-rule).
 
 Du kan nu komma åt App Service via Application Gateway, men om du försöker komma åt App Service direkt, bör du få ett 403 HTTP-fel som anger att webbplatsen har stoppats.
 
-![Skärm bild som visar texten i ett fel 403 – webb programmet har stoppats.](./media/app-gateway-with-service-endpoints/web-site-stopped.png)
+![Skärm bild som visar texten i ett fel 403 – ej tillåtet.](./media/app-gateway-with-service-endpoints/website-403-forbidden.png)
 
 ## <a name="using-azure-resource-manager-template"></a>Använda Azure Resource Manager-mall
 [Distributions mal len för Resource Manager][template-app-gateway-app-service-complete] tillhandahåller ett fullständigt scenario. Scenariot består av en App Service-instans låst med tjänstens slut punkter och åtkomst begränsning för att endast ta emot trafik från Application Gateway. Mallen innehåller många smarta standardvärden och unika postfixs som läggs till i resurs namnen för att det ska vara enkelt. Om du vill åsidosätta dem måste du klona lagrings platsen eller hämta mallen och redigera den. 

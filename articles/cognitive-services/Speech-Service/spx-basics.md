@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 04/04/2020
 ms.author: trbye
-ms.openlocfilehash: 1b92d1b5853d6b794ebdcf0e2052b8f15081d608
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 57f23f1fc0441ac50487cb3008c0b0f84f4b4e78
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97507582"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209584"
 ---
 # <a name="learn-the-basics-of-the-speech-cli"></a>Lär dig grunderna i tal-CLI
 
@@ -173,11 +173,13 @@ I Windows kan du spela upp ljud filen genom att ange `start greetings.wav` .
 
 Det enklaste sättet att köra batch text-till-tal är att skapa en ny `.tsv` (tabbavgränsad) fil och använda `--foreach` kommandot i tal-cli. Tänk på följande fil `text_synthesis.tsv` :
 
-```output
+<!-- The following example contains tabs. Don't accidentally convert these into spaces. -->
+
+```input
 audio.output    text
-C:\batch_wav_output\wav_1.wav    Sample text to synthesize.
-C:\batch_wav_output\wav_2.wav    Using the Speech CLI to run batch-synthesis.
-C:\batch_wav_output\wav_3.wav    Some more text to test capabilities.
+C:\batch_wav_output\wav_1.wav   Sample text to synthesize.
+C:\batch_wav_output\wav_2.wav   Using the Speech CLI to run batch-synthesis.
+C:\batch_wav_output\wav_3.wav   Some more text to test capabilities.
 ```
 
  Sedan kör du ett kommando för att peka på `text_synthesis.tsv` , utföra syntes på varje `text` fält och skriva resultatet till motsvarande `audio.output` sökväg som en `.wav` fil. 
@@ -194,11 +196,13 @@ Det här kommandot är detsamma som att köra `spx synthesize --text Sample text
 
 Men om du har en `.tsv` fil som följande exempel, med kolumn rubriker som **inte matchar** kommando rads argument:
 
-```output
+<!-- The following example contains tabs. Don't accidentally convert these into spaces. -->
+
+```input
 wav_path    str_text
-C:\batch_wav_output\wav_1.wav    Sample text to synthesize.
-C:\batch_wav_output\wav_2.wav    Using the Speech CLI to run batch-synthesis.
-C:\batch_wav_output\wav_3.wav    Some more text to test capabilities.
+C:\batch_wav_output\wav_1.wav   Sample text to synthesize.
+C:\batch_wav_output\wav_2.wav   Using the Speech CLI to run batch-synthesis.
+C:\batch_wav_output\wav_3.wav   Some more text to test capabilities.
 ```
 
 Du kan åsidosätta dessa fält namn med rätt argument med hjälp av följande syntax i `--foreach` anropet. Detta är samma anrop som ovan.

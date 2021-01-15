@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: alkohli
-ms.openlocfilehash: 805ab0e78f0679ce483af3a73203b41132be2a59
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: df2d74701e21c3773d96564f1b06d80ddb9fce9d
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96022963"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209227"
 ---
 # <a name="use-storsimple-snapshot-manager-to-create-and-manage-volume-groups"></a>Använd StorSimple Snapshot Manager för att skapa och hantera volym grupper
 ## <a name="overview"></a>Översikt
@@ -107,7 +107,7 @@ Använd följande procedur för att redigera en volym grupp.
 #### <a name="to-edit-a-volume-group"></a>Redigera en volym grupp
 1. Klicka på Skriv bords ikonen för att starta StorSimple Snapshot Manager.
 2. I fönstret **omfattning** expanderar du noden **volym grupper** , högerklickar på ett volym grupp namn och klickar sedan på **Redigera**.
-3. Dialog rutan * * skapa en volym grupp * * visas. Du kan ändra poster för **namn**, **program** och **volymer** .
+3. Dialog rutan **skapa en volym grupp** visas. Du kan ändra poster för **namn**, **program** och **volymer** .
 4. Spara ändringarna genom att klicka på **OK**.
 
 ## <a name="delete-a-volume-group"></a>Ta bort en volym grupp

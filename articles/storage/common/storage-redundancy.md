@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/13/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 3c0b466a7db688ed3e24441f652f6a1ef1a88ee1
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 5a09a2083c1258a3120f8696aa39a0252dbfcf2d
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98180089"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209702"
 ---
 # <a name="azure-storage-redundancy"></a>Redundans i Azure Storage
 
@@ -97,11 +97,19 @@ Geo-redundant lagring (GRS) kopierar dina data synkront tre gånger inom en enda
 
 En Skriv åtgärd allokeras först till den primära platsen och replikeras med hjälp av LRS. Uppdateringen replikeras sedan asynkront till den sekundära regionen. När data skrivs till den sekundära platsen replikeras de också inom den platsen med hjälp av LRS.
 
+Följande diagram visar hur dina data replikeras med GRS eller RA-GRS:
+
+:::image type="content" source="media/storage-redundancy/geo-redundant-storage.png" alt-text="Diagram över hur data replikeras med GRS eller RA-GRS":::
+
 ### <a name="geo-zone-redundant-storage"></a>Geografiskt zonredundant lagring
 
 Geo-Zone-redundant lagring (GZRS) kombinerar den höga tillgänglighet som tillhandahålls av redundans över tillgänglighets zoner med skydd från regionala avbrott som tillhandahålls av geo-replikering. Data i ett GZRS lagrings konto kopieras över tre [tillgänglighets zoner i Azure](../../availability-zones/az-overview.md) i den primära regionen och replikeras också till en sekundär geografisk region för skydd mot regionala haverier. Microsoft rekommenderar att du använder GZRS för program som kräver maximal konsekvens, hållbarhet och tillgänglighet, utmärkt prestanda och återhämtning för haveri beredskap.
 
 Med ett GZRS lagrings konto kan du fortsätta att läsa och skriva data om en tillgänglighets zon blir otillgänglig eller inte kan återställas. Dessutom är dina data också varaktiga när det gäller ett fullständigt regionalt avbrott eller en katastrof där den primära regionen inte kan återskapas. GZRS har utformats för att ge minst 99.99999999999999% (16 9) objekts hållbarhet under ett angivet år.
+
+Följande diagram visar hur dina data replikeras med GZRS eller RA-GZRS:
+
+:::image type="content" source="media/storage-redundancy/geo-zone-redundant-storage.png" alt-text="Diagram över hur data replikeras med GZRS eller RA-GZRS":::
 
 Endast General-Purpose v2-lagrings konton stöder GZRS och RA-GZRS. Mer information om typer av lagringskonton finns i [Översikt över Azure Storage-konton](storage-account-overview.md). GZRS och RA-GZRS stöder block-blobbar, Page blobbar (utom för VHD-diskar), filer, tabeller och köer.
 

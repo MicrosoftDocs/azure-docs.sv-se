@@ -2,24 +2,24 @@
 title: Självstudie för att beställa Azure Data Box | Microsoft Docs
 description: I den här självstudien får du lära dig mer om Azure Data Box, en hybrid lösning som gör att du kan importera lokala data till Azure och hur du beställer Azure Data Box.
 services: databox
-author: alkohli
+author: v-dalc
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 11/19/2020
+ms.date: 01/13/2021
 ms.author: alkohli
-ms.openlocfilehash: aad6a3ef754b5ba2c65a9b93fbdfcfdc26348487
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: fd165795be85c26cdfcaee3c4fd01427274a7316
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 01/14/2021
-ms.locfileid: "98186166"
+ms.locfileid: "98210349"
 ---
 # <a name="tutorial-order-azure-data-box"></a>Självstudie: Beställa Azure Data Box
 
-Azure Data Box är en hybridmolnlösning som gör att du kan importera lokala data till Azure på ett snabbt, enkelt och tillförlitligt sätt. Du överför dina data till en Microsoft-levereras 80 TB-lagrings enhet (användbar kapacitet) och skickar sedan tillbaka enheten. Dessa data överförs sedan till Azure.
+Azure Data Box är en hybridmolnlösning som gör att du kan importera lokala data till Azure på ett snabbt, enkelt och tillförlitligt sätt. Du överför dina data till en Microsoft-80-TB-lagrings enhet (användbar kapacitet) och skickar sedan tillbaka enheten. Dessa data överförs sedan till Azure.
 
-I den här självstudien beskriver vi hur du kan beställa en Azure Data Box. I den här självstudien lär du dig:
+I den här självstudien beskriver vi hur du kan beställa en Azure Data Box. I den här självstudien lär du dig:  
 
 > [!div class="checklist"]
 >
@@ -239,13 +239,13 @@ Utför följande steg i Azure Portal för att beställa en enhet.
 
 6. Gå till fliken **grundläggande** i **ordning**. Ange eller Välj följande information och välj **Nästa: data mål>**.
 
-    |Inställningen  |Värde  |
+    |Inställning  |Värde  |
     |---------|---------|
     |Prenumeration      | Prenumerationen fylls i automatiskt baserat på din tidigare val.|
     |Resursgrupp    | Den resurs grupp som du valde tidigare. |
     |Importera beställnings namn | Välj ett smeknamn så att du kan spåra beställningen. <br> Namnet kan innehålla mellan 3 och 24 tecken som kan vara bokstäver, siffror och bindestreck. <br> Namnet måste börja och sluta med en bokstav eller en siffra.    |
 
-    ![Data Box-enhet guiden Importera order, grundläggande information, med rätt information ifylld](media/data-box-deploy-ordered/select-data-box-import-06.png)<!--Generic subscription. Cut note. Box command.-->
+    ![Data Box-enhet guiden Importera order, grundläggande information, med rätt information ifylld](media/data-box-deploy-ordered/select-data-box-import-06.png)
 
 7. På skärmen **data mål** väljer du **data destination** – antingen lagrings konton eller hanterade diskar.
 
@@ -253,13 +253,17 @@ Utför följande steg i Azure Portal för att beställa en enhet.
 
     ![Data Box-enhet import order guiden, data destinations skärmen, med valda lagrings konton](media/data-box-deploy-ordered/select-data-box-import-07.png)
 
-    Baserat på den angivna Azure-regionen väljer du ett eller flera lagringskonton från den filtrerade listan med befintliga lagringskonton. Data Box kan länkas med upp till 10 lagringskonton. Du kan också skapa ett nytt konto för **Generell användning v1**, **Generell användning v2** eller **bloblagring**.
+    Baserat på den angivna Azure-regionen väljer du ett eller flera lagrings konton i den filtrerade listan över befintliga lagrings konton. Data Box kan länkas med upp till 10 lagringskonton. Du kan också skapa ett nytt konto för **Generell användning v1**, **Generell användning v2** eller **bloblagring**.
+
+   > [!NOTE]
+   > - Om du väljer Azure Premium FileStorage-konton ökar den etablerade kvoten på lagrings konto resursen storleken på de data som kopieras till fil resurserna. När kvoten har ökat justeras den inte igen, till exempel om Data Box-enhet inte kan kopiera dina data.
+   > - Den här kvoten används för fakturering. När dina data har överförts till data centret bör du justera kvoten så att den passar dina behov. Mer information finns i [förstå fakturering](../../articles/storage/files/understanding-billing.md).
 
     Lagringskonton med virtuella nätverk stöds. För att Data Box-tjänsten ska fungera med skyddade lagringskonton aktiverar du de betrodda tjänsterna i inställningarna för nätverksbrandväggen för lagringskontot. Mer information finns i så här [lägger du till Azure Data box som en betrodd tjänst](../storage/common/storage-network-security.md#exceptions).
 
     Om du använder Data Box-enhet för att skapa **hanterade diskar** från lokala virtuella hård diskar (VHD: er), måste du också ange följande information:
 
-    |Inställningen  |Värde  |
+    |Inställning  |Värde  |
     |---------|---------|
     |Resursgrupper     | Skapa nya resursgrupper om du planerar att skapa hanterade diskar från lokala virtuella hårddiskar. Du kan bara använda en befintlig resurs grupp om resurs gruppen skapades tidigare när du skapade en Data Box-enhet order för Managed disks av tjänsten Data Box-enhet. <br> Ange flera resursgrupper avgränsade med semikolon. Högst 10 resursgrupper stöds.|
 
@@ -419,7 +423,7 @@ Utför följande steg med Azure CLI för att beställa en enhet:
    |sku| Den speciella Data Box-enhet enhet som du beställer. Giltiga värden är: "data," DataBoxDisk "och" DataBoxHeavy "| DataBox |
    |e-postlista| E-postadresserna som är kopplade till ordern.| "gusp@contoso.com" |
    |gata – Address1| Gatuadressen dit ordern ska skickas. | "15700 NE 39th St" |
-   |gata – Address2| Den sekundära adress informationen, till exempel lägenhets nummer eller build-nummer. | "Bld 123" |
+   |gata – Address2| Den sekundära adress informationen, till exempel lägenhets nummer eller build-nummer. | "Skapa 123" |
    |city| Den stad som enheten ska skickas till. | Redmond |
    |delstat-eller-provins| Det tillstånd som enheten ska skickas till.| WA |
    |land| Det land som enheten kommer att skickas till. | "USA" |
@@ -538,7 +542,7 @@ Utför följande steg med Azure PowerShell för att beställa en enhet:
     |DataBoxType [krävs]| Den speciella Data Box-enhet enhet som du beställer. Giltiga värden är: "data," DataBoxDisk "och" DataBoxHeavy "| DataBox |
     |EmailId [krävs]| E-postadresserna som är kopplade till ordern.| "gusp@contoso.com" |
     |StreetAddress1 [krävs]| Gatuadressen dit ordern ska skickas. | "15700 NE 39th St" |
-    |StreetAddress2| Den sekundära adress informationen, till exempel lägenhets nummer eller build-nummer. | "Bld 123" |
+    |StreetAddress2| Den sekundära adress informationen, till exempel lägenhets nummer eller build-nummer. | "Skapa 123" |
     |StreetAddress3| Den tertiära adress informationen. | |
     |Stad [obligatoriskt]| Den stad som enheten ska skickas till. | Redmond |
     |StateOrProvinceCode [krävs]| Det tillstånd som enheten ska skickas till.| WA |
@@ -601,7 +605,7 @@ Microsoft förbereder sedan enheten och skickar den via en regional transportör
 
 ### <a name="track-a-single-order"></a>Spåra en enskild order
 
-Om du vill ha spårnings information om en enskild, befintlig Azure Data Box ordning kör du [AZ Data Center-jobbet show](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-show&preserve-view=true). Kommandot visar information om ordningen, till exempel, men inte begränsat till: namn, resurs grupp, spårnings information, prenumerations-ID, kontakt information, leverans typ och enhets-SKU.
+För att få spårnings information om en enskild, befintlig Azure Data Boxs ordning, kör [`az databox job show`](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-show&preserve-view=true) . Kommandot visar information om ordningen, till exempel, men inte begränsat till: namn, resurs grupp, spårnings information, prenumerations-ID, kontakt information, leverans typ och enhets-SKU.
 
    ```azurecli
    az databox job show --resource-group <resource-group> --name <order-name>
@@ -642,7 +646,7 @@ Om du vill ha spårnings information om en enskild, befintlig Azure Data Box ord
 
 ### <a name="list-all-orders"></a>Lista alla beställningar
 
-Om du har ordnat flera enheter kan du köra [AZ](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-list&preserve-view=true) för att visa alla dina Azure Data boxs beställningar. Kommandot visar alla beställningar som tillhör en speciell resurs grupp. Visas också i utdata: order namn, leverans status, Azure-region, leverans typ, order status. Annullerade order ingår också i listan.
+Om du har ordnat flera enheter kan du köra [`az databox job list`](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-list&preserve-view=true) för att visa alla dina Azure Data boxs beställningar. Kommandot visar alla beställningar som tillhör en speciell resurs grupp. Visas också i utdata: order namn, leverans status, Azure-region, leverans typ, order status. Annullerade order ingår också i listan.
 Kommandot visar även tidsstämplar för varje order.
 
 ```azurecli
@@ -718,7 +722,7 @@ Kör [Get-AzDataBoxJob](/powershell/module/az.databox/Get-AzDataBoxJob)för att 
 
 ### <a name="list-all-orders"></a>Lista alla beställningar
 
-Om du har ordnat flera enheter kan du köra [Get-AzDataBoxJob](/powershell/module/az.databox/Get-AzDataBoxJob) för att visa alla dina Azure Data Box beställningar. Kommandot visar alla beställningar som tillhör en speciell resurs grupp. Visas också i utdata: order namn, leverans status, Azure-region, leverans typ, order status. Annullerade order ingår också i listan.
+Om du har ordnat flera enheter kan du köra [`Get-AzDataBoxJob`](/powershell/module/az.databox/Get-AzDataBoxJob) för att visa alla dina Azure Data boxs beställningar. Kommandot visar alla beställningar som tillhör en speciell resurs grupp. Visas också i utdata: order namn, leverans status, Azure-region, leverans typ, order status. Annullerade order ingår också i listan.
 Kommandot visar även tidsstämplar för varje order.
 
 ```azurepowershell
@@ -761,7 +765,7 @@ Om du vill ta bort en annullerad order går du till **Översikt** och väljer **
 
 ### <a name="cancel-an-order"></a>Annullera en beställning
 
-Om du vill avbryta en Azure Data Boxs ordning kan du köra [AZ data-Job Cancel](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-cancel&preserve-view=true). Du måste ange orsaken till annulleringen av ordern.
+Om du vill avbryta en Azure Data Boxs ordning kör du [`az databox job cancel`](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-cancel&preserve-view=true) . Du måste ange orsaken till annulleringen av ordern.
 
    ```azurecli
    az databox job cancel --resource-group <resource-group> --name <order-name> --reason <cancel-description>
@@ -798,7 +802,7 @@ Om du vill avbryta en Azure Data Boxs ordning kan du köra [AZ data-Job Cancel](
 
 ### <a name="delete-an-order"></a>Ta bort en order
 
-Om du har avbrutit en Azure Data Box order kan du köra [AZ](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-delete&preserve-view=true) för att ta bort ordern.
+Om du har avbrutit en Azure Data Box order kan du köra [`az databox job delete`](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-delete&preserve-view=true) för att ta bort ordern.
 
    ```azurecli
    az databox job delete --name [-n] <order-name> --resource-group <resource-group> [--yes] [--verbose]
@@ -871,7 +875,7 @@ PS C:\WINDOWS\system32>
 
 ### <a name="delete-an-order"></a>Ta bort en order
 
-Om du har avbrutit en Azure Data Box order kan du köra [Remove-AzDataBoxJob](/powershell/module/az.databox/remove-azdataboxjob) för att ta bort ordern.
+Om du har avbrutit en Azure Data Box order kan du köra [`Remove-AzDataBoxJob`](/powershell/module/az.databox/remove-azdataboxjob) för att ta bort ordern.
 
 ```azurepowershell
 Remove-AzDataBoxJob -Name <String> -ResourceGroup <String>

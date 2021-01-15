@@ -3,15 +3,15 @@ title: Exempel på Resource Manager-mallar för Application Insights resurser
 description: Exempel Azure Resource Manager mallar för att distribuera Application Insights resurser i Azure Monitor.
 ms.subservice: application-insights
 ms.topic: sample
-author: mrbullwinkle
-ms.author: mbullwin
+author: lgayhardt
+ms.author: lagayhar
 ms.date: 07/08/2020
-ms.openlocfilehash: 5818f1ffac9c89e24c1a12cf92fc5fbf1ddf2386
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 88c657aa89476f3be21226544e64512bd433776c
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97657234"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98210281"
 ---
 # <a name="resource-manager-template-samples-for-creating-application-insights-resources"></a>Exempel på Resource Manager-mallar för att skapa Application Insights-resurser
 

@@ -13,12 +13,12 @@ ms.date: 08/7/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 018d67b3e4e730cd46eb524a8927b3a6d68d74e8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c8167142876dfac0ae0aeff51e85b66c65c607b
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88958668"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98208856"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Microsoft Identity Platform och OAuth 2,0 på uppdrag av Flow
 
@@ -27,8 +27,8 @@ OAuth 2,0 on-of-Flow (OBO) är ett sätt att använda det fall där ett program 
 
 Den här artikeln beskriver hur du programmerar direkt mot protokollet i ditt program.  När det är möjligt rekommenderar vi att du använder MSAL (Microsoft Authentication Libraries) i stället för att [Hämta tokens och anropa säkra webb-API: er](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows).  Ta också en titt på de [exempel appar som använder MSAL](sample-v2-code.md).
 
-> [!NOTE]
-> Från maj till 2018 kan vissa implicita flöden `id_token` inte användas för OBO-flöde. Appar med en sida (SPAs) ska **skicka en åtkomsttoken** till en konfidentiell klient på mellan nivå för att utföra OBO-flöden i stället. Mer information om vilka klienter som kan utföra OBO-anrop finns i [begränsningar](#client-limitations).
+
+Från maj till 2018 kan vissa implicita flöden `id_token` inte användas för OBO-flöde. Appar med en sida (SPAs) ska **skicka en åtkomsttoken** till en konfidentiell klient på mellan nivå för att utföra OBO-flöden i stället. Mer information om vilka klienter som kan utföra OBO-anrop finns i [begränsningar](#client-limitations).
 
 ## <a name="protocol-diagram"></a>Protokoll diagram
 
@@ -42,10 +42,9 @@ Stegen som följer utgör OBO-flödet och förklaras med hjälp av följande dia
 1. API A autentiserar till slut punkten för utfärdande av Microsoft Identity Platform-token och begär en token för åtkomst till API B.
 1. Slut punkten för utfärdande av Microsoft Identity Platform-token verifierar API A: s autentiseringsuppgifter tillsammans med token A och utfärdar åtkomst-token för API B (token B) till API A.
 1. Token B anges av API A i Authorization-huvudet för begäran till API B.
-1. Data från den skyddade resursen returneras av API B till API A, och därifrån till klienten.
+1. Data från den skyddade resursen returneras av API B till API A, sedan till klienten.
 
-> [!NOTE]
-> I det här scenariot har mellanskikts tjänsten ingen användar åtgärd för att få användarens medgivande att få åtkomst till det underordnade API: et. Alternativet för att bevilja åtkomst till underordnad API visas därför som en del av godkännande steget under autentisering. Information om hur du konfigurerar detta för din app finns i [få medgivande för program på mellan nivå](#gaining-consent-for-the-middle-tier-application).
+I det här scenariot har mellanskikts tjänsten ingen användar interaktion för att få användarens medgivande att få åtkomst till det underordnade API: et. Alternativet för att bevilja åtkomst till underordnad API visas därför som en del av godkännande steget under autentisering. Information om hur du konfigurerar detta för din app finns i [få medgivande för program på mellan nivå](#gaining-consent-for-the-middle-tier-application).
 
 ## <a name="middle-tier-access-token-request"></a>Begäran om åtkomsttoken på mellan nivå
 
@@ -64,11 +63,11 @@ När du använder en delad hemlighet innehåller en begäran om tjänst-till-tj�
 | Parameter | Typ | Beskrivning |
 | --- | --- | --- |
 | `grant_type` | Krävs | Typ av Tokenbegäran. För en begäran som använder en JWT måste värdet vara `urn:ietf:params:oauth:grant-type:jwt-bearer` . |
-| `client_id` | Krävs | Program-ID: t (klienten) som [Azure Portal-Appregistreringar-](https://go.microsoft.com/fwlink/?linkid=2083908) sidan har tilldelats till din app. |
-| `client_secret` | Krävs | Den klient hemlighet som du genererade för din app på sidan Azure Portal-Appregistreringar. |
-| `assertion` | Krävs | Den åtkomsttoken som skickades till API: t mellan nivå.  Denna token måste ha en Audience ( `aud` )-anspråks ansökan () för att appen ska kunna utföra denna OBO-begäran (appen avgränsade med `client-id` fältet). Program kan inte lösa in en token för en annan app (så t. ex. om en klient skickar en API till en token som är avsedd för MS Graph kan API: t inte lösa det med OBO.  Den bör istället avvisa token.  |
-| `scope` | Krävs | En blankstegsavgränsad lista över omfång för Tokenbegäran. Mer information finns i [omfattningar](v2-permissions-and-consent.md). |
-| `requested_token_use` | Krävs | Anger hur begäran ska bearbetas. I OBO-flödet måste värdet anges till `on_behalf_of` . |
+| `client_id` | Obligatorisk | Program-ID: t (klienten) som [Azure Portal-Appregistreringar-](https://go.microsoft.com/fwlink/?linkid=2083908) sidan har tilldelats till din app. |
+| `client_secret` | Obligatorisk | Den klient hemlighet som du genererade för din app på sidan Azure Portal-Appregistreringar. |
+| `assertion` | Obligatorisk | Den åtkomsttoken som skickades till API: t mellan nivå.  Denna token måste ha en Audience ( `aud` )-anspråks ansökan () för att appen ska kunna utföra denna OBO-begäran (appen avgränsade med `client-id` fältet). Program kan inte lösa in en token för en annan app (så t. ex. om en klient skickar en API till en token som är avsedd för MS Graph kan API: t inte lösa det med OBO.  Den bör istället avvisa token.  |
+| `scope` | Obligatorisk | En blankstegsavgränsad lista över omfång för Tokenbegäran. Mer information finns i [omfattningar](v2-permissions-and-consent.md). |
+| `requested_token_use` | Obligatorisk | Anger hur begäran ska bearbetas. I OBO-flödet måste värdet anges till `on_behalf_of` . |
 
 #### <a name="example"></a>Exempel
 
@@ -96,12 +95,12 @@ En Tokenbegäran för tjänst-till-tjänst-begäran med ett certifikat innehåll
 | Parameter | Typ | Beskrivning |
 | --- | --- | --- |
 | `grant_type` | Krävs | Typ av Tokenbegäran. För en begäran som använder en JWT måste värdet vara `urn:ietf:params:oauth:grant-type:jwt-bearer` . |
-| `client_id` | Krävs |  Program-ID: t (klienten) som [Azure Portal-Appregistreringar-](https://go.microsoft.com/fwlink/?linkid=2083908) sidan har tilldelats till din app. |
-| `client_assertion_type` | Krävs | Värdet måste vara `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` . |
-| `client_assertion` | Krävs | En kontroll (en JSON-webbtoken) som du måste skapa och signera med det certifikat som du har registrerat som autentiseringsuppgifter för ditt program. Information om hur du registrerar ditt certifikat och formatet på intyget finns i autentiseringsuppgifter för [certifikat](active-directory-certificate-credentials.md). |
-| `assertion` | Krävs |  Den åtkomsttoken som skickades till API: t mellan nivå.  Denna token måste ha en Audience ( `aud` )-anspråks ansökan () för att appen ska kunna utföra denna OBO-begäran (appen avgränsade med `client-id` fältet). Program kan inte lösa in en token för en annan app (så t. ex. om en klient skickar en API till en token som är avsedd för MS Graph kan API: t inte lösa det med OBO.  Den bör istället avvisa token.  |
-| `requested_token_use` | Krävs | Anger hur begäran ska bearbetas. I OBO-flödet måste värdet anges till `on_behalf_of` . |
-| `scope` | Krävs | En blankstegsavgränsad lista över omfång för Tokenbegäran. Mer information finns i [omfattningar](v2-permissions-and-consent.md).|
+| `client_id` | Obligatorisk |  Program-ID: t (klienten) som [Azure Portal-Appregistreringar-](https://go.microsoft.com/fwlink/?linkid=2083908) sidan har tilldelats till din app. |
+| `client_assertion_type` | Obligatorisk | Värdet måste vara `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` . |
+| `client_assertion` | Obligatorisk | En kontroll (en JSON-webbtoken) som du måste skapa och signera med det certifikat som du har registrerat som autentiseringsuppgifter för ditt program. Information om hur du registrerar ditt certifikat och formatet på intyget finns i autentiseringsuppgifter för [certifikat](active-directory-certificate-credentials.md). |
+| `assertion` | Obligatorisk |  Den åtkomsttoken som skickades till API: t mellan nivå.  Denna token måste ha en Audience ( `aud` )-anspråks ansökan () för att appen ska kunna utföra denna OBO-begäran (appen avgränsade med `client-id` fältet). Program kan inte lösa in en token för en annan app (så t. ex. om en klient skickar en API till en token som är avsedd för MS Graph kan API: t inte lösa det med OBO.  Den bör istället avvisa token.  |
+| `requested_token_use` | Obligatorisk | Anger hur begäran ska bearbetas. I OBO-flödet måste värdet anges till `on_behalf_of` . |
+| `scope` | Obligatorisk | En blankstegsavgränsad lista över omfång för Tokenbegäran. Mer information finns i [omfattningar](v2-permissions-and-consent.md).|
 
 Observera att parametrarna är nästan desamma som i fallet med delad hemlighet, förutom att `client_secret` parametern ersätts av två parametrar: a `client_assertion_type` och `client_assertion` .
 
@@ -152,10 +151,9 @@ I följande exempel visas ett lyckat svar på en begäran om en åtkomsttoken f�
 }
 ```
 
-> [!NOTE]
-> Ovanstående åtkomsttoken är en v 1.0-formaterad token för Microsoft Graph. Detta beror på att token-formatet baseras på den **resurs** som används och inte är relaterat till de slut punkter som används för att begära det. Microsoft Graph har kon figurer ATS för att acceptera v 1.0-token, så Microsoft Identity Platform skapar v 1.0-åtkomsttoken när en klient begär token för Microsoft Graph. Andra appar kan indikera att de vill ha v 2.0-format-token, v 1.0-formatera tokens eller till och med tillverkarspecifika eller krypterade token-format.  Både v 1.0-och v 2.0-slutpunkterna kan generera antingen format på token – på så sätt kan resursen alltid hämta rätt format för token, oavsett hur eller var token begärdes av klienten. 
->
-> Endast program bör titta på åtkomsttoken. Klienterna **får inte** inspektera dem. Om du inspekterar åtkomsttoken för andra appar i koden kommer din app att leda till oväntad borttagning när appen ändrar formatet för deras token eller börjar kryptera dem. 
+Ovanstående åtkomsttoken är en v 1.0-formaterad token för Microsoft Graph. Detta beror på att token-formatet baseras på den **resurs** som används och inte är relaterat till de slut punkter som används för att begära det. Microsoft Graph har kon figurer ATS för att acceptera v 1.0-token, så Microsoft Identity Platform skapar v 1.0-åtkomsttoken när en klient begär token för Microsoft Graph. Andra appar kan indikera att de vill ha v 2.0-format-token, v 1.0-formatera tokens eller till och med tillverkarspecifika eller krypterade token-format.  Både v 1.0-och v 2.0-slutpunkterna kan generera antingen format på token – på så sätt kan resursen alltid hämta rätt format för token, oavsett hur eller var token begärdes av klienten. 
+
+Endast program bör titta på åtkomsttoken. Klienterna **får inte** inspektera dem. Om du inspekterar åtkomsttoken för andra appar i koden kommer din app att leda till oväntad borttagning när appen ändrar formatet för deras token eller börjar kryptera dem. 
 
 ### <a name="error-response-example"></a>Exempel på fel svar
 
@@ -189,8 +187,7 @@ Authorization: Bearer eyJ0eXAiO ... 0X2tnSQLEANnSPHY0gKcgw
 
 Vissa OAuth-baserade webb tjänster behöver åtkomst till andra webb tjänst-API: er som accepterar SAML-kontroller i icke-interaktiva flöden. Azure Active Directory kan tillhandahålla en SAML-kontroll som svar på ett ingångs flöde som använder en SAML-baserad webb tjänst som mål resurs.
 
->[!NOTE]
->Det här är ett tillägg som inte är standard för OAuth 2,0 på ett flöde som gör det möjligt för ett OAuth2 program att få åtkomst till webb tjänstens API-slutpunkter som använder SAML-token.
+Det här är ett tillägg som inte är standard för OAuth 2,0 på ett flöde som gör det möjligt för ett OAuth2 program att få åtkomst till webb tjänstens API-slutpunkter som använder SAML-token.
 
 > [!TIP]
 > När du anropar en SAML-skyddad webb tjänst från ett klient webb program kan du bara anropa API: et och initiera ett normalt interaktivt autentiseringsschema med användarens befintliga session. Du behöver bara använda ett OBO-flöde när ett tjänst-till-tjänst-anrop kräver en SAML-token för att tillhandahålla användar kontext.

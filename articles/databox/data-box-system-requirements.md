@@ -6,23 +6,23 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 10/02/2020
+ms.date: 12/23/2020
 ms.author: alkohli
-ms.openlocfilehash: 5f1623ef4dde59e816e3afe5a5f5894c49469580
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0190e295c2ab206242ab8a44a09ffb42746d75bd
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91767855"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209565"
 ---
 # <a name="azure-data-box-system-requirements"></a>Azure Data Box system krav
 
-I den här artikeln beskrivs viktiga system krav för din Microsoft Azure Data Box-enhet och för klienter som ansluter till Data Box-enhet. Vi rekommenderar att du läser informationen noggrant innan du distribuerar din Data Box-enhet och sedan läser den efter behov under distributionen och åtgärden.
+I den här artikeln beskrivs viktiga system krav för din Microsoft Azure Data Box-enhet och för klienter som ansluter till Data Box-enhet. Vi rekommenderar att du läser igenom informationen noggrant innan du distribuerar din Data Box-enhet och sedan refererar till den när du behöver under distributionen och åtgärden.
 
 System kraven är:
 
 * **Program varu krav:** För värdar som ansluter till Data Box-enhet, beskriver de operativ system som stöds, fil överförings protokoll, lagrings konton, lagrings typer och webbläsare för det lokala webb gränssnittet.
-* **Nätverks krav:** För Data Box-enhet, beskriver nätverks anslutning och port krav för den optimala driften av Data Box-enhet.
+* **Nätverks krav:** I Data Box-enhet beskrivs kraven för nätverks anslutningar och portar för att Data Box-enhet ska fungera bäst.
 
 
 ## <a name="software-requirements"></a>Programvarukrav
@@ -53,13 +53,13 @@ Program varu kraven inkluderar stödda operativ system, fil överförings protok
 
 [!INCLUDE [data-box-supported-web-browsers](../../includes/data-box-supported-web-browsers.md)]
 
-## <a name="networking-requirements"></a>Nätverks krav
+## <a name="networking-requirements"></a>Nätverkskrav
 
-Datacentret måste ha höghastighetsnätverk. Vi rekommenderar starkt att du har en anslutning på minst 10 GbE. Om en 10-GbE-anslutning inte är tillgänglig kan en 1-GbE-datalänk användas för att kopiera data, men kopierings hastigheten påverkas.
+Datacentret måste ha höghastighetsnätverk. Vi rekommenderar starkt att du har minst 1 10-GbE-anslutning. Om en 10-GbE-anslutning inte är tillgänglig kan du använda en 1-GbE-datalänk för att kopiera data, men kopierings hastigheten påverkas.
 
 ### <a name="port-requirements"></a>Portkrav
 
-I följande tabell visas de portar som måste öppnas i brand väggen för att tillåta SMB-eller NFS-trafik. I den här tabellen *avser* (*inkommande*) den riktning från vilken inkommande klient begär åtkomst till din enhet. *Ut* (eller *utgående*) avser i vilken riktning din data Box-enhet enhet skickar data externt, utöver distributionen: till exempel utgående till Internet.
+I följande tabell visas de portar som måste öppnas i brand väggen för att tillåta SMB-eller NFS-trafik. I den här tabellen *avser* (*inkommande*) den riktning från vilken inkommande klient begär åtkomst till din enhet. *Ut* (eller *utgående*) avser i vilken riktning din data Box-enhet enhet skickar data externt, utöver distributionen. Data kan till exempel vara utgående till Internet.
 
 [!INCLUDE [data-box-port-requirements](../../includes/data-box-port-requirements.md)]
 

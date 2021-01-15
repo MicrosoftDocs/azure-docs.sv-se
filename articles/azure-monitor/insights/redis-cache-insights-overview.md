@@ -2,15 +2,15 @@
 title: Azure Monitor för Azure-cache för Redis | Microsoft Docs
 description: I den här artikeln beskrivs Azure Monitor för Azure Redis Cache-funktionen, som ger cache-ägare en snabb förståelse för prestanda-och användnings problem.
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
+author: lgayhardt
+ms.author: lagayhar
 ms.date: 09/10/2020
-ms.openlocfilehash: e7b8a8e131cf7e0aae051f42043abf0640c927e4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 35f575410caa7a8a8ffbda35bdfa876418db8945
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90887005"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98210383"
 ---
 # <a name="explore-azure-monitor-for-azure-cache-for-redis"></a>Utforska Azure Monitor för Azure cache för Redis
 
@@ -46,7 +46,7 @@ Gör så här om du vill visa användning och prestanda för dina lagrings konto
 
 1. Logga in på [Azure-portalen](https://portal.azure.com).
 
-1. Sök efter **övervakare**och välj **övervaka**.
+1. Sök efter **övervakare** och välj **övervaka**.
 
     ![Sökrutan med ordet "Monitor" och Sök resultatet för tjänster som visar "övervaka" med en hastighets mätare](./media/cosmosdb-insights-overview/search-monitor.png)
 
@@ -54,7 +54,7 @@ Gör så här om du vill visa användning och prestanda för dina lagrings konto
 
 ### <a name="overview"></a>Översikt
 
-I **Översikt**visar tabellen interaktiv Azure-cache för Redis-mått. Du kan filtrera resultaten baserat på de alternativ du väljer i följande List rutor:
+I **Översikt** visar tabellen interaktiv Azure-cache för Redis-mått. Du kan filtrera resultaten baserat på de alternativ du väljer i följande List rutor:
 
 - **Prenumerationer**: endast prenumerationer som har en Azure-cache för Redis-resursen visas.  
 
@@ -79,7 +79,7 @@ När du väljer resurs namnet Azure cache för Redis markerat i blått visas sta
 - **Cachemissar**
 - **Fel (max)**
 
-### <a name="operations"></a>Åtgärder
+### <a name="operations"></a>Operations
 
 När du väljer **åtgärder** överst på sidan öppnas **Åtgärds** tabellen i arbets boks mal len. Den visar dessa kolumner:
 
@@ -87,7 +87,7 @@ När du väljer **åtgärder** överst på sidan öppnas **Åtgärds** tabellen 
 - **Tidslinje för totalt antal åtgärder**
 - **Åtgärder per sekund**
 - **Hämtningar**
-- **Inställningar**
+- **Uppsättningar**
 
 ![Skärm bild av drifts upplevelsen](./media/redis-cache-insights-overview/operations.png)
 

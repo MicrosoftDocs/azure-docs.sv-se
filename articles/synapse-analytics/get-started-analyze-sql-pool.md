@@ -9,13 +9,13 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: tutorial
-ms.date: 11/17/2020
-ms.openlocfilehash: 9014469ca063ca52be0965ecbd4e8b21709d10a0
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.date: 12/31/2020
+ms.openlocfilehash: 38332492ba9f20ea7c6682d8341ddf6b5f1f11dd
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96455164"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209430"
 ---
 # <a name="analyze-data-with-dedicated-sql-pools"></a>Analysera data med dedikerade SQL-pooler
 
@@ -23,8 +23,8 @@ Azure Synapse Analytics ger dig möjlighet att analysera data med en särskild S
 
 ## <a name="load-the-nyc-taxi-data-into-sqlpool1"></a>Läs in NYC taxi-data till SQLPOOL1
 
-1. I Synapse Studio navigerar du till **utveckla** hubben och skapar sedan ett nytt SQL-skript
-1. Välj poolen "SQLPOOL1" (pool som skapades i [steg 1](https://docs.microsoft.com/azure/synapse-analytics/get-started-create-workspace#create-a-sql-pool) i den här själv studie kursen) i avsnittet "Anslut till" i skriptet.
+1. Navigera till **utveckla** hubben i Synapse Studio, klicka på **+** knappen för att lägga till en ny resurs och skapa sedan ett nytt SQL-skript.
+1. Välj poolen "SQLPOOL1" (pool som skapades i [steg 1](https://docs.microsoft.com/azure/synapse-analytics/get-started-create-workspace#create-a-sql-pool) i den här själv studie kursen) i list rutan "Anslut till" ovanför skriptet.
 1. Ange följande kod:
     ```
     CREATE TABLE [dbo].[Trip]
@@ -71,12 +71,13 @@ Azure Synapse Analytics ger dig möjlighet att analysera data med en särskild S
     )
     OPTION (LABEL = 'COPY : Load [dbo].[Trip] - Taxi dataset');
     ```
-1. Detta skript slutförs inom cirka 60 sekunder. Den läser in 2 000 000 rader av NYC taxi-data i en tabell med namnet **dbo. Resa**
+1. Klicka på knappen Kör för att köra skriptet.
+1. Detta skript slutförs på mindre än 60 sekunder. Den läser in 2 000 000 rader av NYC taxi-data i en tabell med namnet **dbo. Resan**.
 
 ## <a name="explore-the-nyc-taxi-data-in-the-dedicated-sql-pool"></a>Utforska NYC taxi-data i den dedikerade SQL-poolen
 
 1. Gå till **datahubben** i Synapse Studio.
-1. Gå till **SQLPOOL1**-  >  **tabeller**. Du ser att flera tabeller har lästs in.
+1. Gå till **SQLPOOL1**-  >  **tabeller**. 
 1. Högerklicka på **dbo. Rese** tabell och välj **nytt SQL-skript**  >  **Markera de 100 översta raderna**.
 1. Vänta medan ett nytt SQL-skript skapas och körs.
 1. Observera att överst i SQL-skriptet **Connect to** anges automatiskt till SQL-poolen med namnet **SQLPOOL1**.
@@ -89,7 +90,7 @@ Azure Synapse Analytics ger dig möjlighet att analysera data med en särskild S
     FROM  dbo.Trip
     WHERE TripDistanceMiles > 0 AND PassengerCount > 0
     GROUP BY PassengerCount
-    ORDER BY PassengerCount
+    ORDER BY PassengerCount;
     ```
 
     Den här frågan visar hur det totala antalet rese avstånd och det genomsnittliga rese avståndet avser antalet passagerare.

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/09/2020
-ms.openlocfilehash: 182ec758a8764a959b39296163e63e800cf5108c
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: a7171d656ec9f839aea4ae73763ec6ebd20c2bb3
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97008493"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209839"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>Så här arbetar du med Sök resultat i Azure Kognitiv sökning
 
@@ -103,7 +103,7 @@ Sök Poäng förmedla allmän känsla av relevans, vilket återspeglar styrkan h
 
 ### <a name="how-to-get-consistent-ordering"></a>Så här får du en konsekvent ordning
 
-Om konsekvent sortering är ett program krav kan du uttryckligen definiera ett [ **`$orderby`** ]-uttryck (Query-OData-filter-OrderBy-syntax.MD) i ett fält. Endast fält som är indexerade som **`sortable`** kan användas för att beställa resultat. Fälten används vanligt vis i **`$orderby`** fälten bedömning, datum och plats om du anger värdet för **`orderby`** parametern för att inkludera fält namn och anrop till [**`geo.distance()` funktionen**](query-odata-filter-orderby-syntax.md) för geospatiala värden.
+Om konsekvent sortering är ett program krav kan du uttryckligen definiera ett [ **`$orderby`** uttryck](query-odata-filter-orderby-syntax.md) i ett fält. Endast fält som är indexerade som **`sortable`** kan användas för att beställa resultat. Fälten används vanligt vis i **`$orderby`** fälten bedömning, datum och plats om du anger värdet för **`orderby`** parametern för att inkludera fält namn och anrop till [**`geo.distance()` funktionen**](query-odata-filter-orderby-syntax.md) för geospatiala värden.
 
 En annan metod som främjar konsekvens använder en [anpassad bedömnings profil](index-add-scoring-profiles.md). Med bedömnings profiler får du mer kontroll över rankningen av objekt i Sök resultaten, med möjligheten att öka matchningar som finns i vissa fält. Den ytterligare bedömnings logiken kan hjälpa till att åsidosätta mindre skillnader mellan repliker eftersom Sök poängen för varje dokument ligger längre ifrån varandra. Vi rekommenderar [rangordnings algoritmen](index-ranking-similarity.md) för den här metoden.
 

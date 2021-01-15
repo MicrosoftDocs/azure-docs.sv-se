@@ -3,16 +3,16 @@ title: Diagnostisera körningsundantag med hjälp av Azure Application Insights 
 description: Självstudie om att hitta och diagnostisera körningsundantag i dina program med hjälp av Azure Application Insights.
 ms.subservice: application-insights
 ms.topic: tutorial
-author: mrbullwinkle
-ms.author: mbullwin
+author: lgayhardt
+ms.author: lagayhar
 ms.date: 09/19/2017
 ms.custom: mvc
-ms.openlocfilehash: 057b211179c6932d4214e6118e3fa97b95145ba0
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 98ccaef716ae2390dcbcfbc7c4a1916359115f93
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92926639"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98210162"
 ---
 # <a name="find-and-diagnose-run-time-exceptions-with-azure-application-insights"></a>Hitta och diagnostisera körningsundantag med Azure Application Insights
 
@@ -47,7 +47,7 @@ Logga in på Azure Portal på [https://portal.azure.com](https://portal.azure.co
 Application Insights samlar in eventuella fel i programmet, och du kan se frekvensen över olika åtgärder så att du kan fokusera på de som påverkar upplevelsen mest.  Du kan sedan detaljgranska informationen om dessa fel och identifiera grundorsaken.   
 
 1. Välj **Application Insights** och sedan din prenumeration.  
-2. Du kan öppna panelen **Fel** genom att antingen välja **Fel** på menyn **Undersök** eller klicka på diagrammet **Misslyckade förfrågningar** .
+2. Du kan öppna panelen **Fel** genom att antingen välja **Fel** på menyn **Undersök** eller klicka på diagrammet **Misslyckade förfrågningar**.
 
     ![Misslyckade förfrågningar](media/tutorial-runtime-exceptions/failed-requests.png)
 
@@ -79,11 +79,11 @@ Snapshot Debugger samlar in ögonblicksbilder av de vanligaste undantagen i ditt
 
     ![Ögonblicksbild för felsökning](media/tutorial-runtime-exceptions/debug-snapshot-01.png)
 
-3. Det första anropet som har giltiga värden är **ValidZipCode** , och vi kan se att ett postnummer angavs tillsammans med bokstäver som inte kan översättas till ett heltal.  Det här verkar vara felet i koden som måste åtgärdas.
+3. Det första anropet som har giltiga värden är **ValidZipCode**, och vi kan se att ett postnummer angavs tillsammans med bokstäver som inte kan översättas till ett heltal.  Det här verkar vara felet i koden som måste åtgärdas.
 
     ![Skärm bild som visar ett fel i koden som behöver korrigeras.    ](media/tutorial-runtime-exceptions/debug-snapshot-02.png)
 
-4. Sedan kan du ladda ned den här ögonblicksbilden till Visual Studio och leta rätt på den faktiska kod som behöver åtgärdas. Det gör du genom att klicka på **Ladda ned ögonblicksbild** .
+4. Sedan kan du ladda ned den här ögonblicksbilden till Visual Studio och leta rätt på den faktiska kod som behöver åtgärdas. Det gör du genom att klicka på **Ladda ned ögonblicksbild**.
 5. Ögonblicksbilden läses in i Visual Studio.
 6. Nu kan du köra en felsökningssession i Visual Studio Enterprise som snabbt identifierar vilken kodrad som orsakade undantaget.
 
@@ -103,7 +103,7 @@ Alla data som samlas in av Application Insights lagras i Azure Log Analytics, s�
 Om du ansluter Application Insights till ett spårningssystem som Azure DevOps eller GitHub kan du skapa ett arbetsobjekt direkt från Application Insights.
 
 1. Återgå till panelen **Exception Properties** (Egenskaper för undantag) i Application Insights.
-2. Klicka på **Nytt arbetsobjekt** .
+2. Klicka på **Nytt arbetsobjekt**.
 3. Panelen **Nytt arbetsobjekt** öppnas med detaljer om undantaget ifyllda.  Du kan lägga till ytterligare information innan du sparar objektet.
 
     ![Nytt arbetsobjekt](media/tutorial-runtime-exceptions/new-work-item.png)

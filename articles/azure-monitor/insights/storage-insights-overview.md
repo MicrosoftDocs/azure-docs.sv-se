@@ -3,15 +3,15 @@ title: Övervaka Azure Storage tjänster med Azure Monitor för lagring | Micros
 description: Den här artikeln beskriver Azure Monitor för lagrings funktionen som ger lagrings administratörer en snabb förståelse för prestanda-och användnings problem med deras Azure Storage-konton.
 ms.subservice: ''
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
+author: lgayhardt
+ms.author: lagayhar
 ms.date: 05/11/2020
-ms.openlocfilehash: 2538bc91be59ff12b39ee3f5f629e4c016480a97
-ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
+ms.openlocfilehash: 47799898251923b327954c764dcccb8157ba5119
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96296343"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98208649"
 ---
 # <a name="monitoring-your-storage-service-with-azure-monitor-for-storage"></a>Övervaka lagrings tjänsten med Azure Monitor för lagring
 
@@ -43,7 +43,7 @@ Från Azure Monitor kan du Visa information om transaktion, svars tid och kapaci
 
 Utför följande steg för att visa användning och tillgänglighet för dina lagrings konton för alla dina prenumerationer.
 
-1. Logga in på [Azure Portal](https://portal.azure.com).
+1. Logga in på [Azure-portalen](https://portal.azure.com).
 
 2. Välj **övervaka** i rutan till vänster i Azure Portal och välj **lagrings konton** under avsnittet **insikter** .
 
@@ -131,7 +131,7 @@ Du kan fästa något av mått avsnitten på en Azure-instrumentpanel genom att v
 
 ![Mått avsnitt fäst vid instrument panelen exempel](./media/storage-insights-overview/workbook-pin-example.png)
 
-**Översikten över** flera prenumerationer och lagrings **Capacity** konton har stöd för att exportera resultatet i Excel-format genom att välja ikonen nedåtpil till höger om ikonen kartnål.
+**Översikten över** flera prenumerationer och lagrings  konton har stöd för att exportera resultatet i Excel-format genom att välja ikonen nedåtpil till höger om ikonen kartnål.
 
 ![Exempel på export av arbets bokens rutnäts resultat](./media/storage-insights-overview/workbook-export-example.png)
 

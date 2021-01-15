@@ -8,12 +8,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 07/02/2020
-ms.openlocfilehash: 6bc9f69440be772910ea8200b5ccf7d5a5122ae6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9894da7486ec3c0dfb92c94c7c7f4db2247ebeb7
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90907795"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98210213"
 ---
 # <a name="train-vowpal-wabbit-model"></a>Träna Vowpal Wabbit-modell
 Den här artikeln beskriver hur du använder modulen **träna Vowpal Wabbit modell** i Azure Machine Learning designer för att skapa en maskin inlärnings modell med Vowpal Wabbit.  
@@ -22,7 +22,7 @@ Om du vill använda Vowpal Wabbit för maskin inlärning formaterar du indata en
 
 När pipelinen körs läses en instans av Vowpal Wabbit in i experimentets körnings tid, tillsammans med de angivna data. När inlärningen är klar serialiseras modellen tillbaka till arbets ytan. Du kan använda modellen direkt för att räkna data. 
 
-För att stegvis träna en befintlig modell på nya data, ansluter du en sparad modell till den **förtränade Vowpal Wabbit Model** -port för **Vowpal Wabbit**och lägger till nya data till den andra Indataporten.  
+För att stegvis träna en befintlig modell på nya data, ansluter du en sparad modell till den **förtränade Vowpal Wabbit Model** -port för **Vowpal Wabbit** och lägger till nya data till den andra Indataporten.  
 
 ## <a name="what-is-vowpal-wabbit"></a>Vad är Vowpal Wabbit?  
 
@@ -86,8 +86,8 @@ Vowpal Wabbit har stöd för stegvis utbildning genom att lägga till nya data i
 1. Lägg till modulen **träna Vowpal Wabbit modell** i din pipeline.  
 2. Anslut den tidigare tränade modellen till den **förtränade Vowpal-Wabbit modellens** dataport.
 3. Anslut de nya **tränings data till Indataporten** för modulen.
-4. I fönstret parametrar i **träna Vowpal Wabbit-modellen**anger du formatet för nya utbildnings data, och även namnet på tränings data filen om indata-datauppsättningen är en katalog.
-5. Välj den * * utdata läsbara modell filen * * och alternativen för **inverterade hash-filer** om motsvarande filer måste sparas i körnings posterna.
+4. I fönstret parametrar i **träna Vowpal Wabbit-modellen** anger du formatet för nya utbildnings data, och även namnet på tränings data filen om indata-datauppsättningen är en katalog.
+5. Välj den **utskrivbara modell filen** och **utdata inverterade** alternativ för hash-filen om motsvarande filer måste sparas i körnings posterna.
 
 6. Skicka pipelinen.  
 7. Välj modulen och välj **registrera data uppsättning** under **utdata + fliken loggar** i den högra rutan för att bevara den uppdaterade modellen i Azure Machine Learning-arbetsytan.  Om du inte anger ett nytt namn skriver den uppdaterade modellen över den befintliga sparade modellen.

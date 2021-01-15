@@ -1,16 +1,16 @@
 ---
 title: Övervaka Azure Cosmos DB med Azure Monitor för Cosmos DB | Microsoft Docs
 description: I den här artikeln beskrivs Azure Monitor för Cosmos DB-funktionen som ger Cosmos DB ägare en snabb förståelse för prestanda-och användnings problem med sina CosmosDB-konton.
-author: mrbullwinkle
-ms.author: mbullwin
+author: lgayhardt
+ms.author: lagayhar
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: 5e40f91945f83af7880f272f1578370f2ee1ec42
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 878ae21cfbe55565c4a20064d937d1447f96ce7a
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97608501"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209907"
 ---
 # <a name="explore-azure-monitor-for-azure-cosmos-db"></a>Utforska Azure Monitor för Azure Cosmos DB
 
@@ -71,7 +71,7 @@ Välj **felen** överst på sidan och **felen** i arbets bokens mall öppnas. De
 
 ![Skärm bild av problem med nedbrytning efter HTTP-begäran](./media/cosmosdb-insights-overview/failures.png)
 
-| Kod |  Beskrivning       | 
+| Kod |  Description       | 
 |-----------|:--------------------|
 | `200 OK`  | En av följande REST-åtgärder lyckades: </br>– Hämta på en resurs. </br> – PUBLICERA på en resurs. </br> – PUBLICERA på en resurs. </br> – PUBLICERA på en lagrad procedur resurs för att köra den lagrade proceduren.|
 | `201 Created` | En POST-åtgärd för att skapa en resurs har slutförts. |

@@ -13,12 +13,12 @@ ms.date: 04/15/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: b29d8007ba7c6fb41209ad4f792069667416616b
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: d855e124c84dee8554073d05fa04fe078b92ddaa
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98011551"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98208897"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory-appmanifest
 
@@ -115,17 +115,6 @@ Exempel:
     "allowPublicClient": false,
 ```
 
-### <a name="availabletoothertenants-attribute"></a>availableToOtherTenants-attribut
-
-| Nyckel | Värdetyp |
-| :--- | :--- |
-| availableToOtherTenants | Boolesk |
-
-Ange som sant om programmet delas med andra klienter. annars FALSE.
-
-> [!NOTE]
-> Det här attributet är endast tillgängligt i **Appregistreringar (bakåtkompatibelt)** . Ersätts av `signInAudience` i [Appregistreringar](https://go.microsoft.com/fwlink/?linkid=2083908) -upplevelsen.
-
 ### <a name="appid-attribute"></a>appId-attribut
 
 | Nyckel | Värdetyp |
@@ -165,17 +154,6 @@ Exempel:
     ],
 ```
 
-### <a name="displayname-attribute"></a>displayName-attribut
-
-| Nyckel | Värdetyp |
-| :--- | :--- |
-| displayName | Sträng |
-
-Appens visnings namn.
-
-> [!NOTE]
-> Det här attributet är endast tillgängligt i **Appregistreringar (bakåtkompatibelt)** . Ersätts av `name` i [Appregistreringar](https://go.microsoft.com/fwlink/?linkid=2083908) -upplevelsen.
-
 ### <a name="errorurl-attribute"></a>errorUrl-attribut
 
 | Nyckel | Värdetyp |
@@ -203,33 +181,6 @@ Exempel:
     "groupMembershipClaims": "SecurityGroup",
 ```
 
-### <a name="homepage-attribute"></a>Start sidans attribut
-
-| Nyckel | Värdetyp |
-| :--- | :--- |
-| Start |Sträng |
-
-URL: en till programmets start sida.
-
-> [!NOTE]
-> Det här attributet är endast tillgängligt i **Appregistreringar (bakåtkompatibelt)** . Ersätts av `signInUrl` i [Appregistreringar](https://go.microsoft.com/fwlink/?linkid=2083908) -upplevelsen.
-
-### <a name="objectid-attribute"></a>objectId-attribut
-
-| Nyckel | Värdetyp |
-| :--- | :--- |
-|objectId | Sträng |
-
-Den unika identifieraren för appen i katalogen.
-
-Detta är endast tillgängligt i den **Appregistreringar (äldre)** . Ersätts av `id` i [Appregistreringar](https://go.microsoft.com/fwlink/?linkid=2083908) -upplevelsen.
-
-Exempel:
-
-```json
-    "objectId": "f7f9acfc-ae0c-4d6c-b489-0a81dc1652dd",
-```
-
 ### <a name="optionalclaims-attribute"></a>optionalClaims-attribut
 
 | Nyckel | Värdetyp |
@@ -245,7 +196,6 @@ Exempel:
 ```json
     "optionalClaims": null,
 ```
-
 
 
 ### <a name="identifieruris-attribute"></a>identifierUris-attribut
@@ -489,16 +439,6 @@ Exempel:
     ],
 ```
 
-### <a name="publicclient-attribute"></a>publicClient-attribut
-
-| Nyckel | Värdetyp |
-| :--- | :--- |
-| publicClient | Boolesk|
-
-Anger om det här programmet är en offentlig klient (till exempel ett installerat program som körs på en mobil enhet).
-
-Den här egenskapen är endast tillgänglig i den **Appregistreringar (äldre)** . Ersätts av `allowPublicClient` i [Appregistreringar](https://go.microsoft.com/fwlink/?linkid=2083908) -upplevelsen.
-
 ### <a name="publisherdomain-attribute"></a>publisherDomain-attribut
 
 | Nyckel | Värdetyp |
@@ -511,17 +451,7 @@ Exempel:
 
 ```json
     "publisherDomain": "https://www.contoso.com",
-````
-
-### <a name="replyurls-attribute"></a>replyUrls-attribut
-
-| Nyckel | Värdetyp |
-| :--- | :--- |
-| replyUrls | Strängmatris |
-
-Den här egenskapen för flera värden innehåller en lista över registrerade redirect_uri värden som Azure AD accepterar som mål när token returneras.
-
-Den här egenskapen är endast tillgänglig i den **Appregistreringar (äldre)** . Ersätts av `replyUrlsWithType` i [Appregistreringar](https://go.microsoft.com/fwlink/?linkid=2083908) -upplevelsen.
+```
 
 ### <a name="replyurlswithtype-attribute"></a>replyUrlsWithType-attribut
 

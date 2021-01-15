@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de16c947c59f5a0111b9325dbefe7daf1268fb40
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 006aaf7ca5066c552f9c0b797549d7e90ac9beb7
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94649168"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98208700"
 ---
 # <a name="develop-line-of-business-apps-for-azure-active-directory"></a>Utveckla branschspecifika appar för Azure Active Directory
 Den här guiden ger en översikt över hur du utvecklar branschspecifika program (LoB) för Azure Active Directory (AD). Den avsedda mål gruppen är Active Directory/Microsoft 365 globala administratörer.
@@ -70,7 +70,7 @@ Som standard går varje användare igenom en medgivande upplevelse för att logg
 
 För program som du litar på kan du förenkla användar upplevelsen genom att samtycka till programmet på uppdrag av din organisation.
 
-Mer information om användar medgivande och medgivande upplevelsen i Azure finns i [integrera program med Azure Active Directory](../develop/quickstart-register-app.md).
+Mer information om användar medgivande och medgivande upplevelse i Azure finns i [förstå Azure AD Application medgivande-upplevelser](../develop/application-consent-experience.md).
 
 ## <a name="related-articles"></a>Relaterade artiklar
 * [Aktivera säker fjärråtkomst till lokala program med Azure AD-programproxy](application-proxy.md)

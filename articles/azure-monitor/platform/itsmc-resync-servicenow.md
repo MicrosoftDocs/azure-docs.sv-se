@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 04/12/2020
-ms.openlocfilehash: cea4503c4e3b9dd58cc475aaec355a2bb2e0bd29
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 9a6e46c0b52c22df0682034deaebd58bbfeb34a7
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98065230"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98210103"
 ---
 # <a name="troubleshooting-problems-in-itsm-connector"></a>Felsöka problem med anslutningsprogram för hantering av IT-tjänster (ITSM)
 
@@ -53,6 +53,25 @@ Om du vill visa felen på instrument panelen ska du följa anvisningarna nedan:
 
 5. Med den här instrument panelen kan du granska status och fel i din anslutning.
     ![Skärm bild som visar kopplings status.](media/itsmc-resync-servicenow/connector-dashboard.png)
+
+### <a name="dashboard-elements"></a>Instrument panels element
+
+Instrument panelen innehåller information om de aviseringar som har skickats till ITSM-verktyget med hjälp av den här anslutningen.
+Instrument panelen är uppdelad i 4 delar:
+
+1. Arbets objekt skapat: grafen och tabellen nedan innehåller antalet arbets objekt per typ. Om du klickar på grafen eller i tabellen kan du se mer information om arbets objekt.
+    ![Skärm bild som visar arbets objekt som skapats.](media/itsmc-resync-servicenow/itsm-dashboard-workitems.png)
+2. Påverkade datorer: tabellerna innehåller information om konfigurations objekt som skapade konfigurations objekt.
+    Genom att klicka på rader i tabellerna kan du få mer information om konfigurations objekten.
+    Tabellen innehåller ett begränsat antal rader om du vill se alla listor som du kan klicka på "Se alla".
+    ![Skärm bild som visar påverkade datorer.](media/itsmc-resync-servicenow/itsm-dashboard-impacted-comp.png)
+3. Anslutnings status: grafen och tabellen nedan innehåller meddelanden om anslutnings status. Genom att klicka på diagrammet på rader i tabellen kan du få mer information om meddelandena om anslutnings status.
+    Tabellen innehåller ett begränsat antal rader om du vill se alla listor som du kan klicka på "Se alla".
+    ![Skärm bild som visar kopplings status.](media/itsmc-resync-servicenow/itsm-dashboard-connector-status.png)
+4. Aviserings regler: tabellerna innehåller information om antalet aviserings regler som har identifierats.
+    Genom att klicka på rader i tabeller kan du få mer information om de regler som har identifierats.
+    Tabellen innehåller ett begränsat antal rader om du vill se alla listor som du kan klicka på "Se alla".
+    ![Skärm bild som visar varnings regler.](media/itsmc-resync-servicenow/itsm-dashboard-alert-rules.png)
 
 ### <a name="service-map"></a>Tjänst karta
 

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/16/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: c0ceae8727681c045c3bbf3e6626937633b38997
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: ba06a0f9d520f445965329203aecd6c576666737
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98013540"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209737"
 ---
 # <a name="using-an-app-service-environment"></a>Använda en App Service-miljön
 
@@ -51,7 +51,7 @@ Så här skapar du en app i en ASE:
     > Linux-appar och Windows-appar kan inte vara i samma App Service plan, men de kan vara i samma App Service-miljön.
     >
 
-1. Välj * * Nästa: övervakning * * om du vill aktivera App Insights med din app kan du göra det här när du skapar flödet. 
+1. Välj **Nästa: övervakning**  om du vill aktivera App Insights med din app kan du göra det här när du skapar flödet. 
 
 1.  Välj **Nästa: Taggar** Lägg till alla Taggar som du vill använda i appen  
 
