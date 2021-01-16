@@ -1,68 +1,68 @@
 - name: Dokumentation om Azure Data Box Gateway
   href: /azure/databox-gateway/
-  expanded: true
-- name: Data Box Gateway
+- name: Översikt
+  Expanded: true
   items:
-    - name: Översikt
+    - name: Vad är Data Box Gateway?
+      href: data-box-gateway-overview.md
+- name: Självstudier
+  items:
+    - name: 1 – Förbereda
+      href: data-box-gateway-deploy-prep.md
+    - name: 2A – Etablera i Hyper-V
+      href: data-box-gateway-deploy-provision-hyperv.md
+    - name: 2B – Etablera i VMware
+      href: data-box-gateway-deploy-provision-vmware.md
+    - name: '3 – Ansluta, konfigurera och aktivera'
+      href: data-box-gateway-deploy-connect-setup-activate.md
+    - name: 4 – Lägga till och ansluta till resurs
+      href: data-box-gateway-deploy-add-shares.md
+- name: Begrepp
+  items:
+    - name: Granska krav
+      href: data-box-gateway-system-requirements.md
+    - name: Förstå begränsningar
+      href: data-box-gateway-limits.md
+    - name: Säkerhetsöversikt
+      href: data-box-gateway-security.md
+    - name: Visa användningsfall
+      href: data-box-gateway-use-cases.md
+- name: Gör så här för att
+  items:
+    - name: Uppdatera
+      href: data-box-gateway-apply-updates.md
+    - name: Hantera
       items:
-        - name: Vad är Data Box Gateway?
-          href: data-box-gateway-overview.md
-    - name: Självstudier
+        - name: Resurser
+          href: data-box-gateway-manage-shares.md
+        - name: Användare
+          href: data-box-gateway-manage-users.md
+        - name: Bandwidth-scheman
+          href: data-box-gateway-manage-bandwidth-schedules.md
+        - name: 'Åtkomst, ström, anslutning'
+          href: data-box-gateway-manage-access-power-connectivity-mode.md
+        - name: Via PowerShell
+          href: data-box-gateway-connect-powershell-interface.md
+    - name: Övervaka
+      href: data-box-gateway-monitor.md
+    - name: Felsöka
       items:
-        - name: 1 – Förbereda
-          href: data-box-gateway-deploy-prep.md
-        - name: 2A – Etablera i Hyper-V
-          href: data-box-gateway-deploy-provision-hyperv.md
-        - name: 2B – Etablera i VMware
-          href: data-box-gateway-deploy-provision-vmware.md
-        - name: '3 – Ansluta, konfigurera och aktivera'
-          href: data-box-gateway-deploy-connect-setup-activate.md
-        - name: 4 – Lägga till och ansluta till resurs
-          href: data-box-gateway-deploy-add-shares.md
-    - name: Begrepp
-      items:
-        - name: Granska krav
-          href: data-box-gateway-system-requirements.md
-        - name: Förstå begränsningar
-          href: data-box-gateway-limits.md
-        - name: Säkerhetsöversikt
-          href: data-box-gateway-security.md
-        - name: Visa användningsfall
-          href: data-box-gateway-use-cases.md
-    - name: Gör så här för att
-      items:
-        - name: Uppdatera
-          href: data-box-gateway-apply-updates.md
-        - name: Hantera
-          items:
-            - name: Resurser
-              href: data-box-gateway-manage-shares.md
-            - name: Användare
-              href: data-box-gateway-manage-users.md
-            - name: Bandwidth-scheman
-              href: data-box-gateway-manage-bandwidth-schedules.md
-            - name: 'Åtkomst, ström, anslutning'
-              href: data-box-gateway-manage-access-power-connectivity-mode.md
-            - name: Via PowerShell
-              href: data-box-gateway-connect-powershell-interface.md
-        - name: Övervaka
-          href: data-box-gateway-monitor.md
         - name: Felsöka
           href: data-box-gateway-troubleshoot.md
         - name: Kontakta Microsoft Support
-          href: ../databox-online/azure-stack-edge-contact-microsoft-support.md
-    - name: Viktig information
-      items:
-        - name: 2007 – Aktuell
-          href: data-box-gateway-2007-release-notes.md
-        - name: 1911
-          href: data-box-gateway-1911-release-notes.md
-        - name: 1906
-          href: data-box-gateway-1906-release-notes.md
-        - name: 1905
-          href: data-box-gateway-1905-release-notes.md
-        - name: Allmän tillgänglighet (GA)
-          href: data-box-gateway-release-notes.md
+          href: ../databox-online/azure-stack-edge-contact-microsoft-support.md?toc=/azure/databox-online/toc.json&bc=/azure/databox-gateway/breadcrumb/toc.json
+- name: Viktig information
+  items:
+    - name: 2007 – Aktuell
+      href: data-box-gateway-2007-release-notes.md
+    - name: 1911
+      href: data-box-gateway-1911-release-notes.md
+    - name: 1906
+      href: data-box-gateway-1906-release-notes.md
+    - name: 1905
+      href: data-box-gateway-1905-release-notes.md
+    - name: Allmän tillgänglighet (GA)
+      href: data-box-gateway-release-notes.md
 - name: Resurser
   items:
     - name: Prissättning

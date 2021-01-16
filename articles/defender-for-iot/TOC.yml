@@ -230,7 +230,7 @@
         - name: Dokumentation om Azure Security Center
           href: ../security-center/
         - name: Dokumentation om Azure-säkerhet
-          href: 'https://docs.microsoft.com/azure/security/'
+          href: ../security/index.yml
         - name: Azure RTOS-säkerhetsmodul på Stack Overflow
           href: 'https://stackoverflow.com/questions/tagged/azure-rtos+azure-iot-security-module'
         - name: 'Blogg om säkerhet, sekretess och efterlevnad för IoT i Azure'
@@ -239,5 +239,5 @@
           href: 'https://azure.microsoft.com/regions/services/'
         - name: Prissättning
           href: 'https://azure.microsoft.com/pricing/details/security-center/'
-        - name: Video
+        - name: Videoklipp
           href: 'https://azure.microsoft.com/resources/videos/index/?services=security-center&service=internet-of-things&page=1&sort=newest'
