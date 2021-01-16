@@ -7,18 +7,18 @@ ms.author: shhazam
 ms.date: 12/2/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 2bd994f14863715274e137bce2dd6873eeec1135
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 49a0129ff26d4a12392066aa6304317d71fdb0f1
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98208768"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247598"
 ---
 # <a name="defender-for-iot-installation"></a>Defender för IoT-installation
 
 Den här artikeln beskriver hur du installerar följande element i Azure Defender för IoT:
 
-- **Sensor**: Defender för IoT-sensorer samlar in ICS-nätverks trafik genom att använda passiv (utan agent) övervakning. Vid passiv och inkräktande har sensorerna ingen påverkan på andra datorer och IoT-nätverk och-enheter. Sensorn ansluter till en intervall port eller nätverket trycker och börjar direkt övervaka nätverket. Identifieringar visas i sensor konsolen. Där kan du Visa, undersöka och analysera dem i en nätverks karta, enhets inventering och en omfattande uppsättning rapporter. Exempel är rapporter om riskbedömning, data utvinnings frågor och angrepps vektorer. Läs mer om sensor funktioner i [användar handboken för Defender för IoT-sensorn (direkt hämtning)](https://aka.ms/AzureDefenderforIoTUserGuide).
+- **Sensor**: Defender för IoT-sensorer samlar in ICS-nätverks trafik genom att använda passiv (utan agent) övervakning. Vid passiv och inkräktande har sensorerna ingen påverkan på andra datorer och IoT-nätverk och-enheter. Sensorn ansluter till en intervall port eller nätverket trycker och börjar direkt övervaka nätverket. Identifieringar visas i sensor konsolen. Där kan du Visa, undersöka och analysera dem i en nätverks karta, enhets inventering och en omfattande uppsättning rapporter. Exempel är rapporter om riskbedömning, data utvinnings frågor och angrepps vektorer. Läs mer om sensor funktioner i [användar handboken för Defender för IoT-sensorn (direkt hämtning)](./getting-started.md).
 
 - **Lokal hanterings konsol**: i den lokala hanterings konsolen kan du hantera enhets hantering, riskhantering och sårbarhets hantering. Du kan också använda den för att utföra hot övervakning och incident svar i företaget. Det ger en enhetlig vy över alla nätverks enheter, nyckel IoT och olika risk indikatorer och aviseringar som upptäckts i anläggningar där sensorer distribueras. Använd den lokala hanterings konsolen för att visa och hantera sensorer i Air-gapped nätverk.
 

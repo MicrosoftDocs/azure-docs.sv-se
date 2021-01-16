@@ -6,12 +6,12 @@ ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/11/2020
-ms.openlocfilehash: a740ad62dacc9a29cab1cc144f1789e125ec2e89
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 31b96f03a8519b068eaa816443be0a0f374a4a8c
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368587"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247037"
 ---
 # <a name="frequently-asked-questions-about-autoscale-provisioned-throughput-in-azure-cosmos-db"></a>Vanliga frågor om autoskalning av allokerat data flöde i Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -48,7 +48,7 @@ Ja. När du köper reserverad kapacitet för konton med enkla Skriv regioner, ti
 Reserverad kapacitet för flera Skriv regioner fungerar på samma sätt för autoskalning och standard (manuellt) allokerat data flöde. Se [Azure Cosmos DB reserverad kapacitet](cosmos-db-reserved-capacity.md)
 
 ### <a name="does-autoscale-work-with-free-tier"></a>Fungerar autoskalning med den kostnads fria nivån?
-Ja. På den kostnads fria nivån kan du använda autoskalning genom strömning på en behållare. Stöd för autoskalning av delade data flödes databaser med anpassade Max RU/s är ännu inte tillgängligt. Se hur [fakturering på kostnads fri nivå fungerar med autoskalning](understand-your-bill.md#billing-examples-with-free-tier-accounts).
+Ja. På den kostnads fria nivån kan du använda autoskalning genom strömning på en behållare. Stöd för autoskalning av delade data flödes databaser med anpassade Max RU/s är ännu inte tillgängligt. Se hur [fakturering på kostnads fri nivå fungerar med autoskalning](understand-your-bill.md#azure-free-tier).
 
 ### <a name="is-autoscale-supported-for-all-apis"></a>Stöds autoskalning för alla API: er?
 Ja, autoskalning stöds för alla API: er: Core (SQL), Gremlin, Table, Cassandra och API för MongoDB.

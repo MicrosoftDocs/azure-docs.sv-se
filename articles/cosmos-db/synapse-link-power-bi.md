@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 11/30/2020
 ms.author: acomet
-ms.openlocfilehash: 8a3142199502b912f20ebe05c625aa40be9fab11
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: f0111228b9b0030cbbceb9fc70d829a7a22fda01
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98218679"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247020"
 ---
 # <a name="use-power-bi-and-serverless-synapse-sql-pool-preview-to-analyze-azure-cosmos-db-data-with-synapse-link"></a>Använd Power BI och Server lös Synapse SQL-pool (för hands version) för att analysera Azure Cosmos DB data med Synapse-länk 
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -41,7 +41,7 @@ Se till att skapa följande resurser innan du börjar:
 
 ## <a name="create-a-database-and-views"></a>Skapa en databas och vyer
 
-Det är inte rekommenderat eller stöd för att skapa vyer i huvud databasen eller standard databaserna. Du måste starta det här steget genom att skapa en databas. Från arbets ytan Synapse går du till fliken **utveckla** , väljer **+** ikonen och väljer **SQL-skript**.
+Från arbets ytan Synapse går du till fliken **utveckla** , väljer **+** ikonen och väljer **SQL-skript**.
 
 :::image type="content" source="./media/synapse-link-power-bi/add-sql-script.png" alt-text="Lägga till ett SQL-skript i Synapse Analytics-arbetsytan":::
 
@@ -49,7 +49,7 @@ Varje arbets yta levereras med en SQL-slutpunkt utan server. När du har skapat 
 
 :::image type="content" source="./media/synapse-link-power-bi/enable-sql-on-demand-endpoint.png" alt-text="Aktivera SQL-skriptet för att använda Server lös SQL-slutpunkten på arbets ytan":::
 
-Skapa en ny databas med namnet **RetailCosmosDB** och en SQL-vy över Synapse-länkens aktiverade behållare. Följande kommando visar hur du skapar en databas:
+Det är inte rekommenderat eller stöd för att skapa vyer i **huvud** databasen eller **standard** databaserna. Skapa en ny databas med namnet **RetailCosmosDB** och en SQL-vy över Synapse-länkens aktiverade behållare. Följande kommando visar hur du skapar en databas:
 
 ```sql
 -- Create database

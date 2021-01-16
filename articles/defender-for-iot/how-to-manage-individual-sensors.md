@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 01/10/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: b61bef89d53da280961b818425d11a6f81bbf5ea
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 25f47be98b11f05ee6ac27018152ece05c0de4e4
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98210247"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246697"
 ---
 # <a name="manage-individual-sensors"></a>Hantera enskilda sensorer
 
@@ -84,7 +84,7 @@ Du får ett fel meddelande om det inte gick att överföra aktiverings filen. F�
 
 - **För lokalt anslutna sensorer**: aktiverings filen är inte giltig. Om filen inte är giltig går du till Defender för IoT-portalen. På sidan **sensor hantering** väljer du sensorn med den ogiltiga filen och laddar ned en ny aktiverings fil.
 
-- **För moln anslutna sensorer**: sensorn kan inte ansluta till Internet. Kontrol lera sensorns nätverks konfiguration. Om sensorn behöver ansluta via en webbproxy för att få åtkomst till Internet kontrollerar du att proxyservern har kon figurer ATS korrekt på skärmen **sensor nätverks konfiguration** . Kontrol lera att \* . Azure-Devices.net:443 är tillåtet i brand väggen och/eller proxyservern. Om jokertecken inte stöds eller om du vill ha mer kontroll, ska FQDN för din speciella Defender för IoT Hub öppnas i brand väggen och/eller proxyservern. Mer information finns i [referens-IoT Hub slut punkter](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-endpoints).  
+- **För moln anslutna sensorer**: sensorn kan inte ansluta till Internet. Kontrol lera sensorns nätverks konfiguration. Om sensorn behöver ansluta via en webbproxy för att få åtkomst till Internet kontrollerar du att proxyservern har kon figurer ATS korrekt på skärmen **sensor nätverks konfiguration** . Kontrol lera att \* . Azure-Devices.net:443 är tillåtet i brand väggen och/eller proxyservern. Om jokertecken inte stöds eller om du vill ha mer kontroll, ska FQDN för din speciella Defender för IoT Hub öppnas i brand väggen och/eller proxyservern. Mer information finns i [referens-IoT Hub slut punkter](../iot-hub/iot-hub-devguide-endpoints.md).  
 
 - **För moln anslutna sensorer**: aktiverings filen är giltig men Defender för IoT avvisade den. Om du inte kan lösa det här problemet kan du ladda ned en annan aktivering från sidan **sensor hantering** i Defender for IoT-portalen. Kontakta Microsoft Support om detta inte fungerar.
 
@@ -397,7 +397,7 @@ I konsolen visas återställnings problem.
 
 Följande procedur beskriver hur du uppdaterar en fristående sensor med hjälp av sensor konsolen. Uppdaterings processen tar cirka 30 minuter.
 
-1. Gå till [Azure-portalen](https://portal.azure.com/).
+1. Öppna [Azure-portalen](https://portal.azure.com/).
 
 2. Gå till Defender för IoT.
 

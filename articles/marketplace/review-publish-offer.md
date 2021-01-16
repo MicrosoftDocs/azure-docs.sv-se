@@ -8,12 +8,12 @@ ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 10/27/2020
-ms.openlocfilehash: b038834df3889a8b4b7f4a749568635e99f8408e
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 8b63dfb015c7337e36dac3812e92ddc53914206d
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96188759"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247173"
 ---
 # <a name="how-to-review-and-publish-an-offer-to-the-commercial-marketplace"></a>Granska och publicera ett erbjudande på den kommersiella Marketplace
 
@@ -150,7 +150,7 @@ Följande skärm bild visar sidan **erbjudande översikt** för ett SaaS-erbjuda
 ### <a name="previewing-and-approving-your-offer"></a>För hands Grans kar och godkänner ditt erbjudande
 
 > [!IMPORTANT]
-> Om du vill kontrol lera inköps-och installations flödet från slut punkt till slut punkt köper du ditt erbjudande när det är i för hands version. Meddela först Microsoft med ett [support ärende](https://aka.ms/marketplacesupport) för att se till att vi inte behandlar någon avgift.
+> Om du vill kontrol lera inköps-och installations flödet från slut punkt till slut punkt köper du ditt erbjudande när det är i för hands version. Meddela först Microsoft med ett [support ärende](https://aka.ms/marketplacesupport) för att se till att vi inte behandlar någon avgift. Om ditt erbjudande är en lista med kontakt information kan du testa att ett lead skapas som förväntat genom att tillhandahålla informationen om kontakt information under för hands versionen.
 
 På sidan **erbjudande översikt** visas förhands gransknings länkar under knappen **gå live** . Det finns en länk till antingen AppSource Preview, Azure Marketplace Preview eller båda beroende på vilka alternativ du valde när du skapade erbjudandet. Om du har valt att sälja ditt erbjudande via Microsoft kan alla som har lagts till i förhands gransknings gruppen testa förvärvet och distributionen av ditt erbjudande för att säkerställa att det uppfyller dina krav under det här skedet.
 
@@ -225,7 +225,7 @@ Du kan använda filter för att begränsa den fullständiga historiken för ditt
 Det finns fyra filter:
 * Händelser
 * Användare
-* Datum
+* Date
 * Sidor
 
 När du väljer filtret **sidor** kan du välja någon av de partner Center-sidor som gäller för din erbjudande typ. När detta används visar filtret **Pages** alla **skickade erbjudanden för för hands versions** händelser med ändringar på sidan som du har valt.

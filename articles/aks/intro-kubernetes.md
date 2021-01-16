@@ -5,12 +5,12 @@ services: container-service
 ms.topic: overview
 ms.date: 05/06/2019
 ms.custom: mvc
-ms.openlocfilehash: 75f4602be15ef2487272ed5790d92c4c884c551f
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 4115ab2140cd3bf67135e494e16fb8121c040ff6
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94681558"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246204"
 ---
 # <a name="azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS)
 
@@ -60,15 +60,15 @@ Mer information om livscykelversioner finns i [Kubernetes-versioner som stöds i
 
 ### <a name="gpu-enabled-nodes"></a>GPU-aktiverade noder
 
-AKS stöder skapandet av GPU-aktiverade nodpooler. Azure tillhandahåller för närvarande enskilda eller flera GPU-aktiverade virtuella datorer. GPU-aktiverade virtuella datorer är utformade för beräkningsintensiva, grafikintensiva och visualiseringar av arbetsbelastningar.
+AKS stöder skapande av GPU-aktiverade noder i pooler. Azure tillhandahåller för närvarande en eller flera GPU-aktiverade virtuella datorer. GPU-aktiverade virtuella datorer är utformade för beräknings intensiva, grafik intensiva och visualiserings arbets belastningar.
 
 Mer information finns i [Använda GPU-kort på AKS][aks-gpu].
 
 ### <a name="confidential-computing-nodes-public-preview"></a>Data behandlings noder (offentlig för hands version)
 
-AKS har stöd för att skapa virtuella datorer med Intel SGX-baserade konfidentiella data behandling (DCSv2 VM). Med konfidentiella data behandlings noder kan behållare köras i en maskin varu baserad betrodd och isolerad körnings miljö (enclaves). Isolering mellan behållare kombinerat med kod integritet genom attestering kan hjälpa dig med din säkerhets strategi för djupgående säkerhets behållare. Understödjande data behandlings noder stöder både konfidentiella behållare (befintliga Docker-appar) och enklaven-medvetna behållare.
+AKS har stöd för att skapa virtuella datorer med Intel SGX-baserade konfidentiella data behandling (DCSv2 VM). Med konfidentiella data behandlings noder kan behållare köras i en maskinvarubaserad betrodd körnings miljö (enclaves). Isolering mellan behållare, kombinerat med kod integritet genom attestering, kan hjälpa dig med säkerhets strategin för skydds djupet. Understödjande data behandlings noder stöder både konfidentiella behållare (befintliga Docker-appar) och enklaven behållare.
 
-Mer information finns i avsnittet [konfidentiella data behandlings noder på AKS][conf-com-node]
+Mer information finns i avsnittet [konfidentiella data behandlings noder på AKS][conf-com-node].
 
 ### <a name="storage-volume-support"></a>Stöd för lagringsvolym
 
@@ -80,7 +80,7 @@ Kom igång med dynamiska, permanenta volymer med hjälp av [Azure-diskar][azure-
 
 ## <a name="virtual-networks-and-ingress"></a>Virtuella nätverk och ingress
 
-Ett AKS-kluster kan distribueras till ett befintligt virtuellt nätverk. I den här konfigurationen tilldelas varje pod i klustret en IP-adress i det virtuella nätverket och kan kommunicera direkt med andra poddar i klustret och andra noder i det virtuella nätverket. Poddar kan också ansluta till andra tjänster i en peer-kopplad virtuell dator och lokala nätverk via ExpressRoute och plats-till-plats (S2S) VPN-anslutningar.
+Ett AKS-kluster kan distribueras till ett befintligt virtuellt nätverk. I den här konfigurationen tilldelas varje pod i klustret en IP-adress i det virtuella nätverket och kan kommunicera direkt med andra poddar i klustret och andra noder i det virtuella nätverket. Poddar kan också ansluta till andra tjänster i ett peer-kopplat virtuellt nätverk och till lokala nätverk via ExpressRoute eller VPN-anslutningar för plats-till-plats (S2S).
 
 Mer information finns i [nätverks koncepten för program i AKS][aks-networking].
 
@@ -98,15 +98,15 @@ Kubernetes har ett omfattande eko system med utvecklings-och hanterings verktyg 
 
 Vidare ger Azure Dev Spaces ger en snabb, iterativ Kubernetes-utvecklingsupplevelse för team. Du kan köra och felsöka containrar direkt i AKS med minimal konfiguration. Komma igång med [Azure Dev Spaces][azure-dev-spaces].
 
-Azure DevOps-projektet tillhandahåller en enkel lösning för att ta befintlig kod och Git-lagringsplats till Azure. DevOps-projektet skapar automatiskt Azure-resurser som AKS, en versionspipeline i Azure DevOps Services som omfattar en kompileringspipeline för CI och skapar en versionspipeline för CD och skapar sedan en Azure Application Insights-resurs för övervakning.
+DevOps starter ger en enkel lösning för att överföra befintlig kod och git-databaser till Azure. DevOps starter skapar automatiskt Azure-resurser som AKS, en versions pipeline i Azure DevOps Services som innehåller en build-pipeline för CI, konfigurerar en versions pipeline för CD och skapar en Azure Application Insights-resurs för övervakning.
 
-Mer information finns i [Azure DevOps-projekt][azure-devops].
+Mer information finns i [DevOps starter][azure-devops].
 
 ## <a name="docker-image-support-and-private-container-registry"></a>Stöd för docker-avbildning och privat containerregister
 
 AKS har stöd för Docker-avbildningsformatet. Integrera AKS med Azure Container Registry (ACR) för privat lagring av Docker-avbildningar.
 
-Om du vill skapa en privat avbildningslagring, se [Azure Container Registry][acr-docs].
+Information om hur du skapar en privat avbildnings lagrings plats finns [Azure Container Registry][acr-docs].
 
 ## <a name="kubernetes-certification"></a>Kubernetes-certifiering
 

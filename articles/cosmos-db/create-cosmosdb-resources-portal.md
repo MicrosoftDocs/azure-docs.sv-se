@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 11/10/2020
-ms.openlocfilehash: baeb5fbadfaf128c2c491a1fdb7e880b413878d6
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 731a1fdf9520efc43c954cba79602ed84f983b3d
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491094"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247258"
 ---
 # <a name="quickstart-create-an-azure-cosmos-account-database-container-and-items-from-the-azure-portal"></a>Snabb start: skapa ett Azure Cosmos-konto, databas, behållare och objekt från Azure Portal
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -48,14 +48,14 @@ Gå till [Microsoft Azure-portalen](https://portal.azure.com/) för att skapa et
 1. Välj **Lägg till**.
 1. Ange de grundläggande inställningarna för det nya Azure Cosmos-kontot på sidan **Skapa Azure Cosmos DB-konto**. 
 
-    |Inställningen|Värde|Beskrivning |
+    |Inställning|Värde|Beskrivning |
     |---|---|---|
     |Prenumeration|Prenumerationens namn|Välj den Azure-prenumeration som ska användas för det här Azure Cosmos-kontot. |
     |Resursgrupp|Namn på resursgrupp|Välj en resursgrupp eller välj **Skapa ny** och ange sedan ett unikt namn för den nya resursgruppen. |
-    |Account Name|Ett unikt namn|Ange ett namn som identifierar ditt Azure Cosmos-konto. Eftersom *documents.azure.com* läggs till det namn du anger för att skapa din URI måste du använda ett unikt namn.<br><br>Namnet får endast innehålla gemener, siffror och bindestreck (-). Det måste innehålla 3–31 tecken.|
+    |Kontonamn|Ett unikt namn|Ange ett namn som identifierar ditt Azure Cosmos-konto. Eftersom *documents.azure.com* läggs till det namn du anger för att skapa din URI måste du använda ett unikt namn.<br><br>Namnet får endast innehålla gemener, siffror och bindestreck (-). Det måste innehålla 3–31 tecken.|
     |API|Typ av konto som skapas|Välj **Core (SQL)** för att skapa en dokumentdatabas och kör frågor med hjälp av SQL-syntax. <br><br>API:et avgör vilken typ av konto som skapas. Azure Cosmos DB tillhandahåller fem API: er: Core (SQL) och MongoDB för dokument data, Gremlin för graf-data, Azure Table och Cassandra. För närvarande måste du skapa ett separat konto för varje API. <br><br>[Läs mer om SQL-API: et](introduction.md).|
     |Kapacitetsläge|Allokerat data flöde eller Server lös|Välj **tillhandahållet data flöde** för att skapa ett konto i ett [allokerat data flödes](set-throughput.md) läge. Välj **Server** lös om du vill skapa ett konto i [Server](serverless.md) fritt läge.|
-    |Tillämpa rabatt för kostnadsfri nivå|Tillämpa eller Verkställ inte|Med Azure Cosmos DB kostnads fri nivå får du de första 400 RU/s och 5 GB lagring kostnads fritt i ett konto. Läs mer om den [kostnads fria nivån](https://azure.microsoft.com/pricing/details/cosmos-db/).|
+    |Använd Azure Cosmos DB kostnads fri nivå rabatt|Tillämpa eller Verkställ inte|Med Azure Cosmos DB kostnads fri nivå får du de första 400 RU/s och 5 GB lagring kostnads fritt i ett konto. Läs mer om den [kostnads fria nivån](https://azure.microsoft.com/pricing/details/cosmos-db/).|
     |Plats|Den region som är närmast dina användare|Välj en geografisk plats som värd för ditt Azure Cosmos DB-konto. Använd den plats som är närmast dina användare för att ge dem så snabb åtkomst till data som möjligt.|
     |Kontotyp|Produktion eller icke-produktion|Välj **produktion** om kontot ska användas för en produktions arbets belastning. Välj **icke-produktion** om kontot ska användas för icke-produktion, t. ex. utveckling, testning, frågor och svar eller mellanlagring. Det här är en Azure-resurs tag-inställning som justerar Portal upplevelsen, men som inte påverkar det underliggande Azure Cosmos DB kontot. Du kan ändra det här värdet när som helst.|
     |Geo-redundans|Aktivera eller inaktivera|Aktivera eller inaktivera global distribution på ditt konto genom att para ihop din region med en par region. Du kan lägga till fler regioner i kontot senare.|
@@ -66,7 +66,7 @@ Gå till [Microsoft Azure-portalen](https://portal.azure.com/) för att skapa et
 > Du kan ha upp till en kostnads fri nivå Azure Cosmos DB ett konto per Azure-prenumeration och måste välja när du skapar kontot. Om du inte ser alternativet för att tillämpa rabatten på den kostnads fria nivån innebär det att ett annat konto i prenumerationen redan har Aktiver ATS med den kostnads fria nivån.
 
 > [!NOTE]
-> Följande alternativ är inte tillgängliga om du väljer **Server** lös som **kapacitets läge** :
+> Följande alternativ är inte tillgängliga om du väljer **Server** lös som **kapacitets läge**:
 > - Tillämpa rabatt för kostnadsfri nivå
 > - Geo-redundans
 > - Skrivåtgärder för flera regioner
@@ -77,7 +77,7 @@ Gå till [Microsoft Azure-portalen](https://portal.azure.com/) för att skapa et
 
 1. Granska kontoinställningarna och välj sedan **Skapa**. Det tar några minuter att skapa kontot. Vänta tills portalsidan visar meddelandet **Distributionen är klar**. 
 
-    :::image type="content" source="./media/create-cosmosdb-resources-portal/azure-cosmos-db-account-deployment-successful.png" alt-text="Meddelandefönstret i Azure-portalen":::
+    :::image type="content" source="./media/create-cosmosdb-resources-portal/azure-cosmos-db-account-deployment-successful.png" alt-text="Meddelandefönstret på Azure-portalen":::
 
 1. Välj **Gå till resurs** för att gå till sidan för Azure Cosmos DB-kontot. 
 
@@ -145,7 +145,7 @@ Lägg till data i den nya databasen med hjälp av Datautforskaren.
 Om du bara vill ta bort databasen och använda Azure Cosmos-kontot i framtiden kan du ta bort databasen med följande steg:
 
 * Fick ditt Azure Cosmos-konto.
-* Öppna **datautforskaren** , högerklicka på den databas som du vill ta bort och välj **ta bort databas**.
+* Öppna **datautforskaren**, högerklicka på den databas som du vill ta bort och välj **ta bort databas**.
 * Ange databas-ID/databas namn för att bekräfta borttagnings åtgärden. 
 
 ## <a name="next-steps"></a>Nästa steg

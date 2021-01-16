@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2020
 ms.reviewer: sngun
-ms.openlocfilehash: b51be165d3d05ae753c7e0e5536a157fbbacf1ab
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: b0d27cb2f941db374a144cbd5c026444730e24e8
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96938638"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247513"
 ---
 # <a name="understand-your-azure-cosmos-db-bill"></a>Förstå Azure Cosmos DB-fakturan
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -215,8 +215,12 @@ Den totala månads fakturan blir (förutsatt att 30 dagar/720 timmar per månad)
 | | |Data flödes faktura för 2 ytterligare regioner: östra USA, norra Europa (alla regioner är skrivbara)  |`(1 + 1) * (70 K RU/sec /100 * $0.016) * 20 hours = $448`  |$224  |
 || |**Total månads kostnad**  | |**$38 688**   |
 
-## <a name="billing-examples-with-free-tier-accounts"></a>Fakturerings exempel med kostnads fria nivå konton
+## <a name="billing-examples-with-azure-cosmos-db-free-tier-accounts"></a><a id="azure-free-tier"></a>Fakturerings exempel med Azure Cosmos DB kostnads fria nivå konton
+
 Med Azure Cosmos DB kostnads fri nivå får du de första 400 RU/s och 5 GB lagrings utrymme i ditt konto kostnads fritt, som tillämpas på konto nivå. RU/s och lagring utöver 400 RU/s och 5 GB debiteras enligt pris sidans priser. På fakturan visas ingen avgift eller ett rad objekt för de kostnads fria 400 ru/s-och 5 GB, bara RU/s och lagring utöver vad som omfattas av den kostnads fria nivån. 400 RU/s gäller för alla typer av RU/s-etablerade data flöden, autoskalning och flera regioner.  
+
+> [!NOTE]
+> Azure Cosmos DB kostnads fri nivå skiljer sig från det kostnads fria Azure-kontot. Azures kostnads fria konto erbjuder Azure-krediter och-resurser kostnads fritt under en begränsad tid. När du använder Azure Cosmos DB som en del av det här kostnads fria kontot får du 25 GB lagring och 400 RU/s med etablerade data flöde i 12 månader.
 
 ### <a name="billing-example---container-or-database-with-provisioned-throughput"></a>Fakturerings exempel – behållare eller databas med etablerad data flöde
 - Vi antar att vi skapar en databas eller behållare på ett kostnads fritt konto med 400 RU/s och 5 GB lagrings utrymme.

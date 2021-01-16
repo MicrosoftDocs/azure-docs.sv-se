@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 6/25/2020
-ms.openlocfilehash: 4432178d5908d4360cda05a62b62d05687be4235
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 7797ee9d20b33a25c1b51289036651c7ad9f22a1
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541138"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247506"
 ---
 # <a name="server-parameters-in-azure-database-for-mariadb"></a>Server parametrar i Azure Database for MariaDB
 
@@ -159,7 +159,7 @@ Frågespråket är aktiverat som standard i MariaDB med `have_query_cache` param
 
 Läs mer om den här parametern i [MariaDB-dokumentationen](https://mariadb.com/kb/en/server-system-variables/#query_cache_size) .
 
-|**Prisnivå**|**vCore (s)**|**Standardvärde (byte)**|**Minsta värde (byte)**|* * Max värde * *|
+|**Prisnivå**|**vCore (s)**|**Standardvärde (byte)**|**Minsta värde (byte)**|**Max värde (byte)**|
 |---|---|---|---|---|
 |Grundläggande|1|Kan inte konfigureras på Basic-nivå|Saknas|Saknas|
 |Grundläggande|2|Kan inte konfigureras på Basic-nivå|Saknas|Saknas|

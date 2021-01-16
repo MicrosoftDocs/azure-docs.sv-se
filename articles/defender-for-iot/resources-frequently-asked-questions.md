@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/07/2020
 ms.author: rkarlin
-ms.openlocfilehash: 0c303adb4ee7c7551c6b389ec169d92a661a63bc
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 678b50ffb2df2cd16312548109b93f6f1a7f08ff
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97835031"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247473"
 ---
 # <a name="azure-defender-for-iot-frequently-asked-questions"></a>Vanliga frågor och svar om Azure Defender för IoT
 
@@ -38,7 +38,7 @@ Azure Defender för IoT tillhandahåller omfattande protokoll stöd. Förutom st
 Den här unika lösningen för att utveckla protokoll som plugin-program kräver inte särskilda utvecklar team eller versioner för att kunna stödja ett nytt protokoll. Utvecklare, partner och kunder kan på ett säkert sätt utveckla protokoll och dela insikter och kunskap med hjälp av Horisont. 
 
 ## <a name="do-i-have-to-purchase-hardware-appliances-from-microsoft-partners"></a>Måste jag köpa maskin varu enheter från Microsoft-partner?
-Azure Defender for IoT-sensorn körs på specifika specifikationer för maskin vara som beskrivs i [hand boken för maskin varu specifikationer](https://aka.ms/AzureDefenderforIoTBareMetalAppliance), kunder kan köpa certifierad maskin vara från Microsoft-partner eller använda den tillhandahållna räkningen av material (BOM) och köpa den på egen hand. 
+Azure Defender for IoT-sensorn körs på specifika specifikationer för maskin vara som beskrivs i [hand boken för maskin varu specifikationer](./how-to-identify-required-appliances.md), kunder kan köpa certifierad maskin vara från Microsoft-partner eller använda den tillhandahållna räkningen av material (BOM) och köpa den på egen hand. 
 
 Certifierad maskin vara har testats i våra labb för driv rutins stabilitet, paket som sjunker och nätverks storlek.
 
@@ -51,7 +51,7 @@ Ja, du kan! Azure Defender för IoT Platforms lokala lösning distribueras som e
 
 Azure Defender för IoT-sensorn ansluter till en intervall port eller ett nätverk, och börjar omedelbart samla in ICS-nätverks trafik via passiv (utan agent) övervakning. Den har ingen påverkan på nätverks vägs nätverk eftersom den inte placerats i data Sök vägen och söker inte aktivt på enhets nivå.
 
-Exempel:
+Här är några exempel:
 - En enda apparat (virtuell fysisk) kan finnas i DMZ-lagret, där all fabriks våningsplan trafik dirigeras till detta skikt.
 - Du kan också hitta små mini-sensorer i varje arbets plan för arbets ytan med moln-eller lokal hantering som kommer att finnas i arbets ytan DMZ lager. En annan installation (virtuell eller fysisk) kan övervaka trafiken i affär DMZ-lagret (för SCADA, historian eller marknads avdelningen).
 

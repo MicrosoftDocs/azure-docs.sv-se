@@ -12,12 +12,12 @@ ms.date: 01/12/2021
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 2cdd02ef6ff67f14dbf99e40a254f2c214e23afb
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.openlocfilehash: 646c47920d87fe1d11bc991838ba767b8569a6c9
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98165424"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246765"
 ---
 # <a name="tutorial---build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>Självstudie – Bygg en SCIM-slutpunkt och konfigurera användar etablering med Azure AD
 
@@ -790,6 +790,7 @@ SCIM-tjänsten måste ha ett certifikat för HTTP-adress och serverautentisering
 * Go-Daddy
 * VeriSign
 * WoSign
+* DST-rot CA-x3
 
 I .NET Core SDK ingår ett HTTPS-utvecklings certifikat som kan användas under utvecklingen, certifikatet installeras som en del av upplevelsen för första körningen. Beroende på hur du kör ASP.NET Core webb program lyssnar den på en annan port:
 
@@ -1118,7 +1119,7 @@ Kontakta din programprovider eller dokumentationen för program leverantören om
 > [!IMPORTANT]
 > Azure AD SCIM-implementeringen bygger på Azure AD-tjänsten för användar etablering, som är utformad för att ständigt hålla användarna synkroniserade mellan Azure AD och mål programmet och implementerar en mycket specifik uppsättning standard åtgärder. Det är viktigt att förstå dessa beteenden för att förstå beteendet för Azure AD SCIM-klienten. Mer information finns i avsnittet [etablerings cykler: initial och stegvisa](how-provisioning-works.md#provisioning-cycles-initial-and-incremental) [anvisningar för hur etablering fungerar](how-provisioning-works.md).
 
-### <a name="getting-started"></a>Komma igång
+### <a name="getting-started"></a>Kom igång
 
 Program som stöder SCIM-profilen som beskrivs i den här artikeln kan anslutas till Azure Active Directory med hjälp av funktionen "icke-galleriprogram" i program galleriet för Azure AD. När du är ansluten kör Azure AD en synkroniseringsprocess var 40 minut där den frågar programmets SCIM-slutpunkt för tilldelade användare och grupper och skapar eller ändrar dem enligt tilldelnings informationen.
 

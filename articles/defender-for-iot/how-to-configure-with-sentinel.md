@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/28/2020
 ms.author: shhazam
-ms.openlocfilehash: d4686f1d7192d1469e52e653185f1fc9389764de
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 2d82aaadf158e45cb8faaeee0b9b4e0fc80a3420
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97832326"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247343"
 ---
 # <a name="connect-your-data-from-defender-for-iot-to-azure-sentinel"></a>Anslut dina data från Defender för IoT till Azure Sentinel 
 
@@ -65,5 +65,5 @@ När du har anslutit en **prenumeration** är Hub-data tillgängliga i Azure Sen
 
 I det här dokumentet har du lärt dig hur du ansluter till Defender för IoT till Azure Sentinel. Mer information om hot identifiering och säkerhets data åtkomst finns i följande artiklar:
 
-- Lär dig hur du använder Azure Sentinel för att [få insyn i dina data och potentiella hot](https://docs.microsoft.com/azure/sentinel/quickstart-get-visibility).
+- Lär dig hur du använder Azure Sentinel för att [få insyn i dina data och potentiella hot](../sentinel/quickstart-get-visibility.md).
 - Lär dig hur du [kommer åt dina IoT-säkerhetsdata](how-to-security-data-access.md)

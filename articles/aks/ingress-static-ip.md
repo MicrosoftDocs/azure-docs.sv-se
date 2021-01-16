@@ -5,12 +5,12 @@ description: Lär dig hur du installerar och konfigurerar en NGINX ingress Contr
 services: container-service
 ms.topic: article
 ms.date: 08/17/2020
-ms.openlocfilehash: 14835f7d332b1fcc6e1afabec9a6ee6e55d699e7
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: e6777946b0c83eb7f7eb6f3230bb95da2313e741
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98219869"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246238"
 ---
 # <a name="create-an-ingress-controller-with-a-static-public-ip-address-in-azure-kubernetes-service-aks"></a>Skapa en ingångs kontroll enhet med en statisk offentlig IP-adress i Azure Kubernetes service (AKS)
 
@@ -103,7 +103,7 @@ Inga ingångs regler har skapats ännu. därför visas sidan NGINX ingress Contr
 Du kan kontrol lera att DNS-namnets etikett har tillämpats genom att fråga FQDN på den offentliga IP-adressen enligt följande:
 
 ```azurecli-interactive
-az network public-ip list --resource-group MC_myResourceGroup_myAKSCluster_eastus --query "[?name=='myAKSPublicIP'].[dnsSettings.fqdn]" -o tsv
+az network public-ip list --resource-group MC_myResourceGroup_myAKSCluster_eastus --query "[?ipAddress=='myAKSPublicIP'].[dnsSettings.fqdn]" -o tsv
 ```
 
 Ingångs styrenheten är nu tillgänglig via IP-adressen eller det fullständiga domän namnet.

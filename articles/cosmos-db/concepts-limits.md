@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/19/2020
-ms.openlocfilehash: 9d351bc945c08c82e96791059b00dc94eb94b918
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 793ff9eedb747da0edcbbf2df50b62f06f407892
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368766"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247433"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB tjänst kvoter
 
@@ -252,11 +252,12 @@ I följande tabell visas gränserna för try- [Azure Cosmos dB för kostnads fri
 | Maximalt antal behållare per prenumeration (MongoDB-API) | 3 |
 | Maximalt data flöde per behållare | 5000 |
 | Maximalt data flöde per delat data flödes databas | 20000 |
-| Maximalt totalt lagrings utrymme per konto | 10 GB |
+| Maximalt totalt lagrings utrymme per konto | 10 GB |
 
 Testa Cosmos DB stöder global distribution bara i Central USA, Nord Europa och Sydostasien regioner. Det går inte att skapa biljetter för Azure-Support för try Azure Cosmos DB-konton. Support ges dock för prenumeranter med befintliga support avtal.
 
-## <a name="free-tier-account-limits"></a>Begränsningar för konton på den kostnadsfria nivån
+## <a name="azure-cosmos-db-free-tier-account-limits"></a>Konto gränser för Azure Cosmos DB kostnads fri nivå
+
 I följande tabell visas gränserna för [Azure Cosmos DB kostnads fria nivå konton.](optimize-dev-test.md#azure-cosmos-db-free-tier)
 
 | Resurs | Standardgräns |
@@ -268,7 +269,10 @@ I följande tabell visas gränserna för [Azure Cosmos DB kostnads fria nivå ko
 | Maximalt antal delade data flödes databaser | 5 |
 | Maximalt antal behållare i en delad data flödes databas | 25 <br>På kostnads fria nivå konton är de lägsta RU/s för en delad data flödes databas med upp till 25 behållare 400 RU/s. |
 
-  Utöver ovanstående gäller [gräns värdena per konto](#per-account-limits) även för konton på den kostnads fria nivån.
+Utöver ovanstående gäller [gräns värdena per konto](#per-account-limits) även för konton på den kostnads fria nivån.
+
+> [!NOTE]
+> Azure Cosmos DB kostnads fri nivå skiljer sig från det kostnads fria Azure-kontot. Azures kostnads fria konto erbjuder Azure-krediter och-resurser kostnads fritt under en begränsad tid. När du använder Azure Cosmos DB som en del av det här kostnads fria kontot får du 25 GB lagring och 400 RU/s med etablerade data flöde i 12 månader.
 
 ## <a name="next-steps"></a>Nästa steg
 

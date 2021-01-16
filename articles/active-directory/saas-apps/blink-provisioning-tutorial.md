@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/19/2019
 ms.author: Zhchia
-ms.openlocfilehash: 5f49d2c918164fa529b12313e000aff5f8893a65
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: d691807f673dcd6c8147c9ff18a95c6ce0c88ae6
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201865"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247445"
 ---
 # <a name="tutorial-configure-blink-for-automatic-user-provisioning"></a>Självstudie: Konfigurera Blink för automatisk användar etablering
 
@@ -50,7 +50,7 @@ Innan du konfigurerar och aktiverar automatisk användar etablering bör du best
 
 ## <a name="setup-blink-for-provisioning"></a>Konfigurera blinkning för etablering
 
-1. Logga ett [support ärende](https://support.joinblink.com) eller skicka ett e-postmeddelande till **blinkande** support@joinblink.com för att begära en scim-token. .
+1. Logga ett [support ärende](https://support.joinblink.com) eller skicka ett e-postmeddelande till **blinkande** support@joinblink.com för att begära en scim-token.
 
 2.  Kopiera **scim-autentiseringstoken**. Det här värdet anges i fältet Hemlig token på fliken etablering i programmet blinkar i Azure Portal.
 
@@ -117,7 +117,23 @@ Det här avsnittet vägleder dig genom stegen för att konfigurera Azure AD Prov
 
 9. Granska de användarattribut som synkroniseras från Azure AD och blinkar i avsnittet **Mappning av attribut** . Attributen som väljs som **matchande** egenskaper används för att matcha användar kontona i Blink för uppdaterings åtgärder. Välj knappen **Spara** för att spara ändringarna.
 
-    ![Blinkar användarattribut](media/blink-provisioning-tutorial/new-user-attributes.png)
+   |Attribut|Typ|Stöds för filtrering|
+   |---|---|---|
+   |userName|Sträng|&check;|
+   |aktiv|Boolesk|
+   |title|Sträng|
+   |emails[type eq "work"].value|Sträng|
+   |name.givenName|Sträng|
+   |name.familyName|Sträng|
+   |phoneNumbers[type eq "work"].value|Sträng|
+   |phoneNumbers[type eq "mobile"].value|Sträng|
+   |externalId|Sträng|
+   |urn: IETF: params: scim: schemas: tillägg: Enterprise: 2.0: användare: avdelning|Sträng|
+   |urn: IETF: params: scim: schemas: tillägg: Enterprise: 2.0: användare: employeeNumber|Sträng|
+   |urn: IETF: params: scim: schemas: tillägg: Enterprise: 2.0: användare: Manager|Referens|
+   |urn: IETF: params: scim: schemas: tillägg: blinka: 2.0: användare: företag|Sträng|
+   urn: IETF: params: scim: schemas: tillägg: blinka: 2.0: användare: Beskrivning|Sträng|
+   urn: IETF: params: scim: schemas: tillägg: blinka: 2.0: användare: plats|Sträng|
 
 10. Information om hur du konfigurerar omfångsfilter finns i följande instruktioner i [självstudien för omfångsfilter](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
@@ -137,15 +153,23 @@ Den här åtgärden startar den första synkroniseringen av alla användare som 
 
 Mer information om hur du läser etablerings loggarna i Azure AD finns i [rapportering om automatisk etablering av användar konton](../app-provisioning/check-status-user-account-provisioning.md).
 
+## <a name="step-6-monitor-your-deployment"></a>Steg 6. Övervaka distributionen
+När du har konfigurerat etableringen använder du följande resurser till att övervaka distributionen:
+
+* Använd [etableringsloggarna](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) för att se vilka användare som har etablerats och vilka som har misslyckats
+* Kontrollera [förloppsindikatorn](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user) för att se status för etableringscykeln och hur nära den är att slutföras
+* Om etableringskonfigurationen verkar innehålla fel, kommer programmet att placeras i karantän. Läs mer om karantänstatus [här](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status).  
+
+
 ## <a name="change-log"></a>Ändringslogg
 
-* 01/14/2021 – anpassat tillägg-attribut **företag** , **Beskrivning** och **plats** har lagts till.
+* 01/14/2021 – anpassade tilläggsfiler attribut **företag**, **Beskrivning** och **plats** har lagts till.
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-* [Hantera användarkontoetablering för Enterprise-appar](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Hantera användarkontoetablering för Enterprise-appar](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Vad är programåtkomst och enkel inloggning med Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Nästa steg
 
-* [Lär dig att granska loggar och hämta rapporter om etableringsaktivitet](../app-provisioning/check-status-user-account-provisioning.md)
+* [Lär dig att granska loggar och hämta rapporter om etableringsaktivitet](../manage-apps/check-status-user-account-provisioning.md)

@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 10/25/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0d833c32000eb91511782184ef4455bc1973a714
-ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
+ms.openlocfilehash: a7ee4e205851a751f7a50ac0ddadfb4e4c7eb81a
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97807917"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247411"
 ---
 # <a name="azure-synapse-analytics-frequently-asked-questions"></a>Vanliga frågor och svar om Azure Synapse Analytics
 
@@ -138,11 +138,6 @@ A: det finns ingen "flytta" eller "migrering". Du kan välja att aktivera nya fu
 ### <a name="q-what-is-the-default-deployment-of-dedicated-sql-pools-now"></a>F: Vad är standard distributionen av dedikerade SQL-pooler nu? 
 
 A: som standard kommer alla nya dedikerade SQL-pooler att distribueras till en arbets yta. men om du behöver kan du fortfarande skapa en dedikerad SQL-pool (tidigare SQL DW) i en fristående form faktor. 
-
-
-### <a name="q-what-are-the-functional-differences-between-dedicated-sql-pools-and-serverless-sql-pools"></a>F: vilka är de funktionella skillnaderna mellan dedikerade SQL-pooler och SQL-pooler utan Server?
-
-S: du hittar en fullständig lista över skillnader i [skillnaderna i T-SQL-funktionen i SYNAPSE SQL](./sql/overview-features.md).
 
 ## <a name="next-steps"></a>Nästa steg
 

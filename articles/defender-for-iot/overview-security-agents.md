@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/27/2019
 ms.author: shhazam
-ms.openlocfilehash: d3b50d909fb167ee123b548603628bae7d844c5b
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 2b1cd131e578b1d16fabee99b8de536e4a48ece0
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97843693"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247309"
 ---
 # <a name="get-started-with-azure-defender-for-iot-device-security-agents"></a>Kom igång med Azure Defender för IoT-enhetens säkerhets agenter
 
@@ -31,7 +31,7 @@ Säkerhets agenter för Defender för IoT hanterar rå händelse insamling från
 Använd följande arbets flöde för att distribuera och testa dina Defender for IoT-säkerhetsagenter:
 
 1. [Aktivera Defender för IoT-tjänsten till din IoT Hub](quickstart-onboard-iot-hub.md)
-1. Om din IoT Hub inte har några registrerade enheter [registrerar du en ny enhet](../iot-accelerators/quickstart-device-simulation-deploy.md).
+1. Om din IoT Hub inte har några registrerade enheter [registrerar du en ny enhet](../iot-accelerators/iot-accelerators-device-simulation-overview.md).
 1. [Skapa en azureiotsecurity säkerhetsmodul](quickstart-create-security-twin.md) för dina enheter.
 1. Om du vill installera agenten på en simulerad Azure-enhet i stället för att installera på en faktisk enhet, kan du [skapa en ny virtuell Azure-dator (VM)](../virtual-machines/linux/quick-create-portal.md) i en tillgänglig zon.
 1. [Distribuera en Defender for IoT-säkerhetsagent](how-to-deploy-linux-cs.md) på din IoT-enhet eller till en ny virtuell dator.

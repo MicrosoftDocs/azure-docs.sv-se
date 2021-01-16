@@ -1,20 +1,20 @@
 ---
-title: Identifiera nödvändiga enheter
+title: Identifiera apparater som krävs
 description: Läs mer om maskin vara och virtuella enheter för Certified Defender för IoT-sensorer och den lokala hanterings konsolen.
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 12/21/2020
+ms.date: 01/13/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: b22f880eee1b691b6b50b8151a64a2d501b891b3
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 25685d7e933c9d171e1547be2f5899c08443321a
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97842560"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246578"
 ---
-# <a name="identify-required-appliances"></a>Identifiera nödvändiga enheter
+# <a name="identify-required-appliances"></a>Identifiera apparater som krävs
 
 Den här artikeln innehåller information om Certified Defender for IoT sensor-enheter. Defender fort IoT kan distribueras på fysiska och virtuella enheter.
 
@@ -109,7 +109,7 @@ I det här avsnittet beskrivs specifikationer för maskin vara för följande ut
 
 ### <a name="appliance-bom"></a>Apparat struktur
 
-| PN | Beskrivning | Kvantitet |
+| PN | Beskrivning | Antal |
 |--|--|--|
 | P19766-B21 | HPE DL360 Gen10 8SFF NC CTO Server | 1 |
 | P19766-B21 | Europa – flerspråkig lokalisering | 1 |
@@ -145,7 +145,7 @@ I det här avsnittet beskrivs specifikationer för maskin vara för följande ut
 
 ### <a name="appliance-bom"></a>Apparat struktur
 
-| PN | Beskrivning: hög slut | Kvantitet |
+| PN | Beskrivning: hög slut | Antal |
 |--|--|--|
 | P06963-B21 | HPE DL20 Gen10 4SFF CTO Server | 1 |
 | P06963-B21 | HPE DL20 Gen10 4SFF CTO Server | 1 |
@@ -180,7 +180,7 @@ I det här avsnittet beskrivs specifikationer för maskin vara för följande ut
 
 ### <a name="appliance-bom"></a>Apparat struktur
 
-| PN | Beskrivning | Kvantitet |
+| PN | Beskrivning | Antal |
 |--|--|--|
 | P06961-B21 | HPE DL20 Gen10 NHP 2LFF CTO Server | 1 |
 | P06961-B21 | HPE DL20 Gen10 NHP 2LFF CTO Server | 1 |
@@ -254,28 +254,6 @@ När du har köpt installationen går du till **Defender för IoT**  >  **Networ
 ## <a name="dell-r340-bom"></a>Dell R340-struktur
 
 :::image type="content" source="media/how-to-prepare-your-network/enterprise-deployment-for-azure-defender-for-iot-dell-r340-bom.png" alt-text="Dell R340-struktur.":::
-
-## <a name="smb-deployment-neousys-nuvo-5006lp"></a>SMB-distribution: Neousys NUVO-5006LP
-
-| Komponent | Tekniska specifikationer |
-|--|--|
-| Konstruktion | Design av aluminium, fanless och damm korrektur |
-| Dimensioner | 240 mm (W) x 225 mm (D) x 77 mm (H) |
-| Vikt | 3,1 kg (inklusive processor, minne och HDD) |
-| Processor | Intel Core i5 – 6500TE (6 M cache, upp till 3,30 GHz) S1151 |
-| 855 | Hubb för Intel Q170 Platform Controller |
-| Minne | 8 GB DDR4 2133 MHz bred temperatur SODIMM |
-| Lagring | 128 GB 3ME3 bred temperatur mSATA SSD |
-| Nätverks styrenhet | 6x Gigabit Ethernet-portar med Intel I219 |
-| Enhets åtkomst | 4 USBs: två framtill, två baktill, en intern |
-| Nätadapter | 120/240VAC-20VDC/6A |
-| Ansluter | Monterings sats, DIN järnväg |
-| Drift temperatur | \-25 ° C ~ 70 ° C |
-| Lagrings temperatur | \-40 ° C ~ 85 ° C |
-| Luftfuktighet | 10% ~ 90%, icke-kondenserande |
-| Vibrationer | Drift, 5 Grms, 5-500 Hz, 3 axlar <br>(w/SSD, enligt IEC60068-2-64) |
-| Skydd | Drift, 50 Grms, halva-sinus 11-MS duration (w/SSD, enligt IEC60068-2-27) |
-| EMC | CE/FCC klass A, enligt EN 55022, EN 55024 och EN 55032 |
 
 ## <a name="next-steps"></a>Nästa steg
 

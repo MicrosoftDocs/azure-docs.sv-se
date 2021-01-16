@@ -16,12 +16,12 @@ ms.date: 03/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77271679306b0fbde10c748afc7535f3ad3d0945
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c6ec162ceb51c3bf19be42219b054d8371ff221
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317573"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247360"
 ---
 # <a name="troubleshoot-password-hash-synchronization-with-azure-ad-connect-sync"></a>Felsöka synkronisering av lösenordshash med Azure AD Connect-synkronisering
 
@@ -64,13 +64,13 @@ Så här felsöker du problem där inga lösen ord synkroniseras:
 
 3. Starta guiden Azure AD Connect.
 
-4. Gå till sidan **Ytterligare aktiviteter** , Välj **Felsök**och klicka på **Nästa**.
+4. Gå till sidan **Ytterligare aktiviteter** , Välj **Felsök** och klicka på **Nästa**.
 
 5. På sidan fel sökning klickar du på **Starta** för att starta fel söknings menyn i PowerShell.
 
 6. I huvud menyn väljer du **Felsök hash-synkronisering av lösen ord**.
 
-7. Välj **Password hash-synkronisering inte alls**på undermenyn.
+7. Välj **Password hash-synkronisering inte alls** på undermenyn.
 
 ### <a name="understand-the-results-of-the-troubleshooting-task"></a>Förstå resultaten av fel söknings aktiviteten
 
@@ -147,7 +147,7 @@ Så här felsöker du problem för ett bestämt användar objekt:
 
 3. Starta guiden Azure AD Connect.
 
-4. Gå till sidan **Ytterligare aktiviteter** , Välj **Felsök**och klicka på **Nästa**.
+4. Gå till sidan **Ytterligare aktiviteter** , Välj **Felsök** och klicka på **Nästa**.
 
 5. På sidan fel sökning klickar du på **Starta** för att starta fel söknings menyn i PowerShell.
 
@@ -235,7 +235,7 @@ Så här felsöker du problem där inga lösen ord synkroniseras för en använd
    Invoke-ADSyncDiagnostics -PasswordSync -ADConnectorName <Name-of-AD-Connector> -DistinguishedName <DistinguishedName-of-AD-object>
    ```
 
-   Exempel:
+   Här är några exempel:
 
    ```powershell
    Invoke-ADSyncDiagnostics -PasswordSync -ADConnectorName "contoso.com" -DistinguishedName "CN=TestUserCN=Users,DC=contoso,DC=com"
@@ -253,7 +253,7 @@ Följ dessa steg för att avgöra varför inga lösen ord synkroniseras:
 
     ![PowerShell-skriptets utdata från inställningarna för lösen ords synkronisering](./media/tshoot-connect-password-hash-synchronization/psverifyconfig.png)  
 
-3. Om funktionen inte är aktive rad i Azure AD eller om synkroniserings kanal status inte är aktive rad kör du guiden Anslut installationen. Välj **Anpassa synkroniseringsalternativ**och avmarkera Lösenordssynkronisering. Den här ändringen inaktiverar tillfälligt funktionen. Kör sedan guiden igen och aktivera synkronisering av lösen ord igen. Kör skriptet igen för att kontrol lera att konfigurationen är korrekt.
+3. Om funktionen inte är aktive rad i Azure AD eller om synkroniserings kanal status inte är aktive rad kör du guiden Anslut installationen. Välj **Anpassa synkroniseringsalternativ** och avmarkera Lösenordssynkronisering. Den här ändringen inaktiverar tillfälligt funktionen. Kör sedan guiden igen och aktivera synkronisering av lösen ord igen. Kör skriptet igen för att kontrol lera att konfigurationen är korrekt.
 
 4. Sök efter fel i händelse loggen. Leta efter följande händelser, vilket tyder på ett problem:
     * Källa: "katalog synkronisering" ID: 0, 611, 652, 655 om du ser dessa händelser har du problem med anslutningen. Händelse logg meddelandet innehåller information om skogar där du har problem. Mer information finns i [anslutnings problem](#connectivity problem).
@@ -270,9 +270,9 @@ Har kontot behörighet att läsa lösen ordets hash-värden i alla domäner? Om 
 
 Om du har använt anpassad installation anger du behörigheterna manuellt genom att göra följande:
     
-1. Starta **Synchronization Service Manager**för att hitta kontot som används av Active Directory-anslutningen. 
+1. Starta **Synchronization Service Manager** för att hitta kontot som används av Active Directory-anslutningen. 
  
-2. Gå till **anslutningar**och Sök sedan efter den lokala Active Directorys skogen som du felsöker. 
+2. Gå till **anslutningar** och Sök sedan efter den lokala Active Directorys skogen som du felsöker. 
  
 3. Välj kopplingen och klicka sedan på **Egenskaper**. 
  
@@ -281,7 +281,7 @@ Om du har använt anpassad installation anger du behörigheterna manuellt genom 
     ![Konto som används av Active Directory Connector](./media/tshoot-connect-password-hash-synchronization/connectoraccount.png)  
     Anteckna användar namnet och domänen där kontot finns.
     
-5. Starta **Active Directory användare och datorer**och kontrol lera att det konto som du har hittat tidigare har följande behörigheter som angetts i roten för alla domäner i skogen:
+5. Starta **Active Directory användare och datorer** och kontrol lera att det konto som du har hittat tidigare har följande behörigheter som angetts i roten för alla domäner i skogen:
     * Replikera katalog ändringar
     * Replikera katalog ändringar alla
 
@@ -304,7 +304,7 @@ Om du har använt anpassad installation anger du behörigheterna manuellt genom 
 
 Du kan enkelt Felsöka problem med hash-synkronisering av lösen ord genom att granska status för ett objekt.
 
-1. I **Active Directory användare och datorer**söker du efter användaren och kontrollerar sedan att kryss rutan **användaren måste byta lösen ord vid nästa inloggning** är avmarkerad.  
+1. I **Active Directory användare och datorer** söker du efter användaren och kontrollerar sedan att kryss rutan **användaren måste byta lösen ord vid nästa inloggning** är avmarkerad.  
 
     ![Active Directory produktiva lösen ord](./media/tshoot-connect-password-hash-synchronization/adprodpassword.png)  
 
@@ -320,13 +320,13 @@ Du kan enkelt Felsöka problem med hash-synkronisering av lösen ord genom att g
 
     d. Välj **search Connector-utrymme**.
 
-    e. I rutan **omfattning** väljer du **DN eller ankare**och anger sedan det fullständiga DN för den användare som du felsöker.
+    e. I rutan **omfattning** väljer du **DN eller ankare** och anger sedan det fullständiga DN för den användare som du felsöker.
 
     ![Sök efter användare i anslutnings utrymme med DN](./media/tshoot-connect-password-hash-synchronization/searchcs.png)  
 
     f. Leta upp den användare du söker och klicka sedan på **Egenskaper** för att visa alla attribut. Om användaren inte är med i Sök resultatet kontrollerar du [filtrerings reglerna](how-to-connect-sync-configure-filtering.md) och kontrollerar att du kör [tillämpa och verifiera ändringar](how-to-connect-sync-configure-filtering.md#apply-and-verify-changes) för användaren som ska visas i Anslut.
 
-    ex. Klicka på **logg**om du vill se information om lösen ords synkronisering för objektet under den senaste veckan.  
+    ex. Klicka på **logg** om du vill se information om lösen ords synkronisering för objektet under den senaste veckan.  
 
     ![Objekt logg information](./media/tshoot-connect-password-hash-synchronization/csobjectlog.png)  
 
@@ -346,7 +346,7 @@ Du kan enkelt Felsöka problem med hash-synkronisering av lösen ord genom att g
 
     ![Metaversum-information](./media/tshoot-connect-password-hash-synchronization/mvconnectors.png)  
 
-    k. Välj den rad som representerar Azure AD, klicka på **Egenskaper**och klicka sedan på fliken **härkomst** . Objektet för anslutnings utrymmet måste ha en utgående regel i kolumnen **PasswordSync** inställd på **True**. I standard konfigurationen är namnet på synkroniseringsregeln **till AAD-User Join**.  
+    k. Välj den rad som representerar Azure AD, klicka på **Egenskaper** och klicka sedan på fliken **härkomst** . Objektet för anslutnings utrymmet måste ha en utgående regel i kolumnen **PasswordSync** inställd på **True**. I standard konfigurationen är namnet på synkroniseringsregeln **till AAD-User Join**.  
 
     ![Dialog rutan objekt egenskaper för kopplings utrymme](./media/tshoot-connect-password-hash-synchronization/cspasswordsync2.png)  
 
@@ -380,7 +380,7 @@ if ($aadConnectors -ne $null -and $adConnectors -ne $null)
 {
     if ($aadConnectors.Count -eq 1)
     {
-        $features = Get-ADSyncAADCompanyFeature -ConnectorName $aadConnectors[0].Name
+        $features = Get-ADSyncAADCompanyFeature
         Write-Host
         Write-Host "Password sync feature enabled in your Azure AD directory: "  $features.PasswordHashSync
         foreach ($adConnector in $adConnectors)

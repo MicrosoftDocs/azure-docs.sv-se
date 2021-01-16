@@ -3,12 +3,12 @@ title: Azure Event Grid leverans och försök igen
 description: Beskriver hur Azure Event Grid levererar händelser och hur de hanterar meddelanden som inte levererats.
 ms.topic: conceptual
 ms.date: 10/29/2020
-ms.openlocfilehash: 51473cf457a1c713e6694edd23c344be8c4d439e
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 3c4ed6ec2c9eae4dbcf70a831e3e7f70a28a57a0
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96463244"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247377"
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>Event Grid meddelande leverans och försök igen
 
@@ -67,7 +67,7 @@ Nedan visas de typer av slut punkter för vilka försök inte sker:
 | Webhook | 400 Felaktig begäran, 413 begär ande enhet för stor, 403 förbjuden, 404 hittades inte, 401 obehörig |
  
 > [!NOTE]
-> Om Dead-Letter inte har kon figurer ATS för slut punkten försvinner händelserna när ovanstående fel inträffar, så Överväg att konfigurera obeställbara meddelanden om du inte vill att dessa typer av händelser ska släppas.
+> Om Dead-Letter inte har kon figurer ATS för slut punkten försvinner händelserna när ovanstående fel inträffar. Överväg att konfigurera obeställbara meddelanden om du inte vill att dessa typer av händelser ska släppas.
 
 Om felet som returnerades av den prenumererade slut punkten inte finns i listan ovan, utför EventGrid det nya försöket med principer som beskrivs nedan:
 
@@ -80,7 +80,10 @@ Event Grid väntar 30 sekunder på ett svar när ett meddelande har levererats. 
 - 10 minuter
 - 30 minuter
 - 1 timme
-- Per timme i upp till 24 timmar
+- 3 timmar
+- 6 timmar
+- Var 12: e timme upp till 24 timmar
+
 
 Om slut punkten svarar inom 3 minuter försöker Event Grid ta bort händelsen från kön för nya försök på bästa möjliga sätt, men dubbletter kan ändå tas emot.
 
@@ -104,7 +107,7 @@ När Event Grid inte kan leverera en händelse inom en viss tids period eller n�
 
 Om något av villkoren är uppfyllt tas händelsen bort eller tas bort från kön.  Som standard aktiverar Event Grid inte obeställbara meddelanden. Om du vill aktivera det måste du ange ett lagrings konto som ska innehålla ej levererade händelser när händelse prenumerationen skapas. Du kan hämta händelser från det här lagrings kontot för att lösa leveranser.
 
-Event Grid skickar en händelse till platsen för obeställbara meddelanden när den har provat alla nya försök. Om Event Grid får en 400 (felaktig begäran) eller 413 (den begärda entiteten för stor) svars kod skickar den omedelbart händelsen till slut punkten för obeställbara meddelanden. Dessa svars koder indikerar att händelsen levereras aldrig.
+Event Grid skickar en händelse till platsen för obeställbara meddelanden när den har provat alla nya försök. Om Event Grid får en 400 (felaktig begäran) eller 413 (den begärda entiteten för stor) svarskod schemaläggs omedelbart händelsen för obeställbara meddelanden. Dessa svars koder indikerar att händelsen levereras aldrig.
 
 Tiden till Live-utgången kontrol leras bara vid nästa schemalagda leverans försök. Det innebär att om Time-to-Live går ut före nästa schemalagda leverans försök, kontrol leras händelsen som upphör att gälla vid nästa leverans och sedan i efterhand. 
 

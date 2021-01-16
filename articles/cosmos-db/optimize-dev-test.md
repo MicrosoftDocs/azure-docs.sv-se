@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: b0e2cc3f23a8c39e51523e6f6fd974ebf46f7322
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 3ddae808fbb2e3dcfe20909c8b3d0c5a20bb04bd
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097455"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247530"
 ---
 # <a name="optimize-development-and-testing-cost-in-azure-cosmos-db"></a>Optimera utvecklings- och testkostnaden i Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -37,7 +37,7 @@ Den kostnads fria nivån är oändlig för kontots livstid och levereras med all
 
 ## <a name="azure-free-account"></a>Kostnadsfritt Azure-konto
 
-Azure Cosmos DB ingår i det [kostnads fria Azure-kontot](https://azure.microsoft.com/free), vilket ger Azure-krediter och resurser kostnads fritt under en viss tids period. Specifikt för Azure Cosmos DB erbjuder det här kostnads fria kontot 5 GB lagring och 400 ru: er data flöde för hela året. Den här upplevelsen gör det möjligt för utvecklare att enkelt testa funktionerna i Azure Cosmos DB eller integrera den med andra Azure-tjänster på noll kostnader. Med Azures kostnads fria konto får du en $200 kredit att spendera under de första 30 dagarna. Du debiteras inte, även om du börjar använda tjänsterna tills du väljer att uppgradera. Gå till sidan [kostnads fritt Azure-konto](https://azure.microsoft.com/free) för att komma igång.
+Azure Cosmos DB ingår i det [kostnads fria Azure-kontot](https://azure.microsoft.com/free), vilket ger Azure-krediter och resurser kostnads fritt under en viss tids period. Specifikt för Azure Cosmos DB erbjuder det här kostnads fria kontot 25 GB lagring och 400 ru: er data flöde för hela året. Den här upplevelsen gör det möjligt för utvecklare att enkelt testa funktionerna i Azure Cosmos DB eller integrera den med andra Azure-tjänster på noll kostnader. Med Azures kostnads fria konto får du en $200 kredit att spendera under de första 30 dagarna. Du debiteras inte, även om du börjar använda tjänsterna tills du väljer att uppgradera. Gå till sidan [kostnads fritt Azure-konto](https://azure.microsoft.com/free) för att komma igång.
 
 ## <a name="azure-cosmos-db-serverless"></a>Azure Cosmos DB utan Server
 

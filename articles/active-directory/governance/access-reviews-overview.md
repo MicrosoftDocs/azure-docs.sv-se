@@ -17,12 +17,12 @@ ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 08399c1b2d930abfdd5832cb102a789844931d61
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 22bfef17f68b2e83e4f7462d8e9af6fb8aacc284
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97027704"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246748"
 ---
 # <a name="what-are-azure-ad-access-reviews"></a>Vad är Azure AD-åtkomstgranskningar?
 
@@ -103,7 +103,7 @@ Här följer några exempel på licens scenarier som hjälper dig att fastställ
 | En administratör skapar en åtkomst granskning av grupp B med 500 användare och tre grupp ägare och tilldelar de tre grupp ägarna som granskare. | 3 licenser för varje grupp ägare som granskare | 3 |
 | En administratör skapar en åtkomst granskning av grupp B med 500 användare. Gör det till en själv granskning. | 500 licenser för varje användare som självgranskare | 500 |
 | En administratör skapar en åtkomst granskning av grupp C med 50 medlems användare och 25 gäst användare. Gör det till en själv granskning. | 50 licenser för varje användare som egen granskare. * | 50 |
-| En administratör skapar en åtkomst granskning av grupp D med 6 medlems användare och 108 gäst användare. Gör det till en själv granskning. | 6 licenser för varje användare som självgranskare. Gäst användare faktureras baserat på en månatlig aktiv användare (MAU). Inga ytterligare licenser krävs. *  | - |
+| En administratör skapar en åtkomst granskning av grupp D med 6 medlems användare och 108 gäst användare. Gör det till en själv granskning. | 6 licenser för varje användare som självgranskare. Gäst användare faktureras baserat på en månatlig aktiv användare (MAU). Inga ytterligare licenser krävs. *  | 6 |
 
 \* Priser för externa Azure AD-identiteter (gäst användare) baseras på månatliga aktiva användare (MAU), vilket är antalet unika användare med autentiserings aktivitet inom en kalender månad. Den här modellen ersätter förhållandet mellan 1:5 och fakturerings modell, som tillåter upp till fem gäst användare för varje Azure AD Premium licens i din klient organisation. När klienten är länkad till en prenumeration och du använder externa identiteter för att samar beta med gäst användare debiteras du automatiskt med hjälp av den MAU fakturerings modellen. Mer information finns i fakturerings modell för externa Azure AD-identiteter.
 

@@ -5,14 +5,14 @@ services: dns
 author: rohinkoul
 ms.service: dns
 ms.topic: article
-ms.date: 10/05/2019
+ms.date: 01/15/2021
 ms.author: rohink
-ms.openlocfilehash: 24f2ca238288854b99160a25c3d4dcedf8ce3368
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 3272f4fea4169fd5e91b1ba2b97ad72dfbb49080
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94952394"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247394"
 ---
 # <a name="azure-private-dns-faq"></a>Vanliga frågor och svar om Azure Private DNS
 
@@ -88,6 +88,10 @@ Om din befintliga privata DNS-zon har skapats med hjälp av för hands versionen
 ## <a name="how-do-i-migrate-my-existing-private-dns-zones-to-the-new-model"></a>Hur gör jag för att migrera mina befintliga privata DNS-zoner till den nya modellen?
 
 Vi rekommenderar starkt att du migrerar till den nya resurs modellen så snart som möjligt. Äldre resurs modell kommer att stödjas men ytterligare funktioner kommer inte att utvecklas ovanpå den här modellen. I framtiden planerar vi att bli av med den nya resurs modellens fördel. Vägledning om hur du migrerar befintliga privata DNS-zoner till en ny resurs modell finns i[migreringsguiden för Azure DNS privata zoner](private-dns-migration-guide.md).
+
+### <a name="does-azure-dns-private-zones-store-any-customer-content"></a>Lagrar Azure DNS privata zoner alla kund innehåll?
+
+Nej, Azure DNS privata zoner inte lagrar något kund innehåll.
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -2,15 +2,15 @@
 title: Felsöka Azure Automation Uppdateringshantering problem
 description: Den här artikeln beskriver hur du felsöker och löser problem med Azure Automation Uppdateringshantering.
 services: automation
-ms.date: 12/04/2020
+ms.date: 01/13/2021
 ms.topic: conceptual
 ms.service: automation
-ms.openlocfilehash: f00002c7374e0c35c7bb91c28b2dd87ad71e3350
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 55e58c92004f4f4cf4ba6a96620b4f037c80cdb4
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98184925"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246272"
 ---
 # <a name="troubleshoot-update-management-issues"></a>Felsöka problem med Uppdateringshantering
 
@@ -144,13 +144,11 @@ Det här problemet kan orsakas av lokala konfigurations problem eller av en fela
    | summarize by Computer, Solutions
    ```
 
-4. Om du inte ser datorn i frågeresultatet har den nyligen checkats in. Det finns förmodligen ett lokalt konfigurations problem och du bör [installera om agenten](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows).
+    Om du inte ser datorn i frågeresultatet har den nyligen checkats in. Det finns förmodligen ett lokalt konfigurations problem och du bör [installera om agenten](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows).
 
-5. Om din dator visas i frågeresultatet kontrollerar du om det finns problem med omfattnings konfigurationen. [Omfattnings konfigurationen](../update-management/scope-configuration.md) avgör vilka datorer som har kon figurer ats för uppdateringshantering.
+    Om din dator listas i frågeresultatet kontrollerar du under egenskapen **lösningar** som **uppdateras** . Detta verifierar att det är registrerat med Uppdateringshantering. Om det inte är det kontrollerar du om det finns problem med omfattnings konfigurationen. [Omfattnings konfigurationen](../update-management/scope-configuration.md) avgör vilka datorer som har kon figurer ats för uppdateringshantering. Information om hur du konfigurerar omfattnings konfigurationen för målet som datorn finns i [Aktivera datorer i arbets ytan](../update-management/enable-from-automation-account.md#enable-machines-in-the-workspace).
 
-6. Om datorn visas på arbets ytan men inte i Uppdateringshantering måste du konfigurera omfattnings konfigurationen så att den passar datorn. Information om hur du gör detta finns i [Aktivera datorer i arbets ytan](../update-management/enable-from-automation-account.md#enable-machines-in-the-workspace).
-
-7. Kör den här frågan i din arbets yta.
+4. Kör den här frågan i din arbets yta.
 
    ```kusto
    Operation
@@ -158,9 +156,9 @@ Det här problemet kan orsakas av lokala konfigurations problem eller av en fela
    | sort by TimeGenerated desc
    ```
 
-8. Om du får ett `Data collection stopped due to daily limit of free data reached. Ingestion status = OverQuota` resultat har den kvot som definierats på din arbets yta nåtts, vilket har stoppat data från att sparas. I arbets ytan går du till **data volym hantering** under **användning och beräknade kostnader** och ändrar eller tar bort kvoten.
+   Om du får ett `Data collection stopped due to daily limit of free data reached. Ingestion status = OverQuota` resultat har den kvot som definierats på din arbets yta nåtts, vilket har stoppat data från att sparas. I arbets ytan går du till **data volym hantering** under **användning och beräknade kostnader** och ändrar eller tar bort kvoten.
 
-9. Om problemet fortfarande är olöst följer du stegen i [distribuera en Windows-hybrid Runbook Worker](../automation-windows-hrw-install.md) för att installera om hybrid Worker för Windows. För Linux följer du stegen i [distribuera ett Linux-hybrid Runbook Worker](../automation-linux-hrw-install.md).
+5. Om problemet fortfarande är olöst följer du stegen i [distribuera en Windows-hybrid Runbook Worker](../automation-windows-hrw-install.md) för att installera om hybrid Worker för Windows. För Linux följer du stegen i [distribuera ett Linux-hybrid Runbook Worker](../automation-linux-hrw-install.md).
 
 ## <a name="scenario-unable-to-register-automation-resource-provider-for-subscriptions"></a><a name="rp-register"></a>Scenario: det går inte att registrera Automation Resource Provider för prenumerationer
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
 ms.date: 03/30/2020
-ms.openlocfilehash: b4dabee6a725fd02b7be6dd12c8a032e3d816835
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 5bea2cf256e30bd896957bbee0e0ad824057a569
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94489377"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247190"
 ---
 # <a name="use-an-https-endpoint-to-manage-commercial-marketplace-leads"></a>Använd en HTTPS-slutpunkt för att hantera affärs marknads platser
 
@@ -43,7 +43,7 @@ I den här artikeln beskrivs hur du skapar ett nytt flöde i Energis par för at
 
     ![Expandera flödes steget](./media/commercial-marketplace-lead-management-instructions-https/expand-flow-step.png)
 
-1. Använd någon av följande metoder för att konfigurera **begär ande texten JSON-schema** :
+1. Använd någon av följande metoder för att konfigurera **begär ande texten JSON-schema**:
 
     - Kopiera JSON-schemat till text rutan **JSON-schema för begär ande** text.
     - Välj **Generera schemat genom att använda en exempelnyttolast**. Klistra in i JSON-exemplet i text rutan **Ange eller klistra in en JSON-nyttolast i exemplet** . Välj **färdig** för att skapa schemat.
@@ -66,6 +66,10 @@ I den här artikeln beskrivs hur du skapar ett nytt flöde i Energis par för at
         },
         "LeadSource": {
           "id": "/properties/LeadSource",
+          "type": "string"
+        },
+        "Description": {
+          "id": "/properties/Description",
           "type": "string"
         },
         "UserDetails": {
@@ -162,15 +166,15 @@ I den här artikeln beskrivs hur du skapar ett nytt flöde i Energis par för at
 
 1. I fönstret **Skicka ett e-postmeddelande** konfigurerar du följande obligatoriska fält:
 
-   - **Till** : ange minst en giltig e-postadress dit leads ska skickas.
-   - **Subject** : med energi alternativ får du möjlighet att lägga till dynamiskt innehåll, t. ex. **LeadSource** som visas på följande skärm bild. Börja med att ange ett fält namn. Välj sedan listan över dynamiskt innehåll i listan från popup-fönstret. 
+   - **Till**: ange minst en giltig e-postadress dit leads ska skickas.
+   - **Subject**: med energi alternativ får du möjlighet att lägga till dynamiskt innehåll, t. ex. **LeadSource** som visas på följande skärm bild. Börja med att ange ett fält namn. Välj sedan listan över dynamiskt innehåll i listan från popup-fönstret. 
 
         >[!NOTE] 
         > När du lägger till fält namn kan du följa varje namn med ett kolon (:) och välj sedan **RETUR** för att skapa en ny rad. När du har lagt till dina fält namn kan du lägga till varje associerad parameter från den dynamiska plock listan.
 
         ![Lägg till en e-poståtgärd med hjälp av dynamiskt innehåll](./media/commercial-marketplace-lead-management-instructions-https/add-email-using-dynamic-content.png)
 
-   - **Brödtext** : Lägg till den information som du vill ha i e-postmeddelandets brödtext i listan med dynamiskt innehåll. Använd till exempel LastName, FirstName, E-mail och Company. När du är klar med att konfigurera e-postmeddelandet ser det ut som exemplet på följande skärm bild.
+   - **Brödtext**: Lägg till den information som du vill ha i e-postmeddelandets brödtext i listan med dynamiskt innehåll. Använd till exempel LastName, FirstName, E-mail och Company. När du är klar med att konfigurera e-postmeddelandet ser det ut som exemplet på följande skärm bild.
 
 
        ![Exempel på e-postmeddelande](./media/commercial-marketplace-lead-management-instructions-https/send-an-email.png)

@@ -8,14 +8,14 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 11/25/2020
+ms.date: 01/15/2021
 ms.custom: designer
-ms.openlocfilehash: 14be695f2f58b9738af11a3d2ca3f06592a1cc6e
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 6bba5ad17cbb6f1ed72d06b37c6d6af9ebd26495
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96575966"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246476"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-designer"></a>Självstudie: Distribuera en maskin inlärnings modell med designern
 
@@ -28,7 +28,7 @@ Du kan distribuera den förutsägande modellen som utvecklats i [del ett av sjä
 > * Distribuera real tids slut punkten.
 > * Testa real tids slut punkten.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Slutför [del ett av självstudien](tutorial-designer-automobile-price-train-score.md) och lär dig hur du tränar och poängs ätter en maskin inlärnings modell i designern.
 
@@ -97,11 +97,30 @@ När din AKS-tjänst har slutfört etableringen återgår du till inferencing-pi
 
 1. Välj det AKS-kluster som du skapade.
 
-1. Välj **Distribuera**.
-    
     :::image type="content" source="./media/tutorial-designer-automobile-price-deploy/setup-endpoint.png"alt-text="Skärm bild som visar hur du konfigurerar en ny slut punkt för Real tid":::
 
+    Du kan också ändra den **avancerade** inställningen för slut punkten i real tid.
+    
+    |Avancerad inställning|Beskrivning|
+    |---|---|
+    |Aktivera Application Insights diagnostik och data insamling| Om Azure Application Ingishts ska kunna samla in data från de distribuerade slut punkterna. </br> Som standard: falskt |
+    |Poängsättnings-timeout| En timeout i millisekunder för att tvinga fram Poäng anrop till webb tjänsten.</br>Som standard: 60000|
+    |Automatisk skalning aktive rad|   Om autoskalning ska aktive ras för webb tjänsten.</br>Som standard: sant|
+    |Minsta antal repliker| Det minsta antal behållare som ska användas när den här webb tjänsten autoskalas.</br>Som standard: 1|
+    |Maximalt antal repliker| Det maximala antal behållare som ska användas när den här webb tjänsten autoskalas.</br> Som standard: 10|
+    |Mål användning|Mål användningen (i procent av 100) som autoskalning ska försöka underhålla för den här webb tjänsten.</br> Som standard: 70|
+    |Uppdaterings period|Hur ofta (i sekunder) som autoskalning försöker skala webb tjänsten.</br> Som standard: 1|
+    |PROCESSOR reserv kapacitet|Antalet processor kärnor som ska allokeras för den här webb tjänsten.</br> Som standard: 0,1|
+    |Minnes reserv kapacitet|Mängden minne (i GB) som ska allokeras för den här webb tjänsten.</br> Som standard: 0,5|
+        
+
+1. Välj **Distribuera**. 
+
     Ett meddelande visas ovanför arbets ytan när distributionen är klar. Det kan ta några minuter.
+
+> [!TIP]
+> Du kan också distribuera till **Azure Container instance** (ACI) om du väljer **Azure Container instance** för **Compute-typ** i inställnings rutan för slut punkt i real tid.
+> Azure Container instance används för testning eller utveckling. Använd ACI för processorbaserade CPU-baserade arbets belastningar som kräver mindre än 48 GB RAM-minne.
 
 ## <a name="view-the-real-time-endpoint"></a>Visa real tids slut punkten
 

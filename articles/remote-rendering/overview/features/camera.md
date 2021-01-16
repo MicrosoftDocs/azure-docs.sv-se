@@ -5,12 +5,12 @@ author: christophermanthei
 ms.author: chmant
 ms.date: 03/07/2020
 ms.topic: article
-ms.openlocfilehash: fc82d046caa3663cffcda585258642813ab3a7d8
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 76bb9d289e984dd8c229bdaaab09e679e11283fe
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207265"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246289"
 ---
 # <a name="camera"></a>Kamera
 
@@ -32,7 +32,7 @@ Följande egenskaper kan ändras i kamera inställningarna:
 
 **Nära och långt plan:**
 
-För att se till att inga ogiltiga intervall kan anges är **NearPlane** -och **FarPlane** -egenskaperna skrivskyddade och en separat funktion **SetNearAndFarPlane** finns för att ändra intervallet. Dessa data kommer att skickas till servern i slutet av ramen.
+För att se till att inga ogiltiga intervall kan anges är **NearPlane** -och **FarPlane** -egenskaperna skrivskyddade och en separat funktion **SetNearAndFarPlane** finns för att ändra intervallet. Dessa data kommer att skickas till servern i slutet av ramen. När du anger dessa värden måste **NearPlane** vara mindre än **FarPlane**. Annars uppstår ett fel.
 
 > [!IMPORTANT]
 > I Union hanteras detta automatiskt när du ändrar huvud kamerans nära och ett långt plan.
@@ -44,6 +44,21 @@ Ibland är det bra att inaktivera bufferten för djupet i fjärravbildningen fö
 > [!TIP]
 > I Union anges en fel söknings komponent som heter **EnableDepthComponent** som kan användas för att växla den här funktionen i redigerings gränssnittet.
 
+**InverseDepth**:
+
+> [!NOTE]
+> Den här inställningen är endast viktig om `EnableDepth` är inställd på `true` . Annars har den här inställningen ingen effekt.
+
+Djup buffertar registrerar vanligt vis z-värden i ett flytt ALS intervall på [0; 1], med 0 som anger djupet och 1 som anger djupet i det nära planet. Det är också möjligt att invertera det här intervallet och registrera djupet i intervallet [1; 0], det vill säga att djup planet blir 1 och djupet på planet blir 0. I allmänhet förbättrar den senare fördelningen av flytt ALS precisionen i det icke-linjära z-intervallet.
+
+> [!WARNING]
+> En vanlig metod är att invertera de nära planet-och långt plan-värdena i Camera-objekten. Det går inte att göra en Azure-fjärrrendering med ett fel när du försöker igen på `CameraSettings` .
+
+API: t för Azure-fjärrrendering måste veta om den lokala åter givnings profilens djup konvention för att skapa fjärrdjup i den lokala djup bufferten. Om intervallet för djupet är [0; 1] lämnar du denna flagga som `false` . Om du använder en inverterad djup buffert med intervallet [1; 0] anger du `InverseDepth` flaggan till `true` .
+
+> [!NOTE]
+> För enhets enhet tillämpas rätt inställning redan av `RemoteManager` så att du inte behöver göra några manuella åtgärder.
+
 Du kan ändra kamera inställningarna på följande sätt:
 
 ```cs
@@ -53,6 +68,7 @@ void ChangeCameraSetting(AzureSession session)
 
     settings.SetNearAndFarPlane(0.1f, 20.0f);
     settings.EnableDepth = false;
+    settings.InverseDepth = false;
 }
 ```
 
@@ -63,6 +79,7 @@ void ChangeStageSpace(ApiHandle<AzureSession> session)
 
     settings->SetNearAndFarPlane(0.1f, 20.0f);
     settings->SetEnableDepth(false);
+    settings->SetInverseDepth(false);
 }
 ```
 

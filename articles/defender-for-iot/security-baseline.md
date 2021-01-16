@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/19/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 115691fdbc41d1ffec021aed89bfff43fb29dbb8
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 6fbd70c1de99818e2baf73d15ed365db3a54e43d
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96530654"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246731"
 ---
 # <a name="azure-security-baseline-for-azure-defender-for-iot"></a>Azures säkerhets bas linje för Azure Defender för IoT
 
@@ -393,7 +393,7 @@ Markera även resurser med taggar och skapa ett namngivningssystem för att iden
 
 ## <a name="posture-and-vulnerability-management"></a>Hantering av säkerhetsposition och säkerhetsrisker
 
-*Mer information finns i [Azure Security Benchmark: Hantering av säkerhetsposition och säkerhetsrisker](/azure/security/benchmarks/security-controls-v2-posture-vulnerability-management).*
+*Mer information finns i [Azure Security Benchmark: Hantering av säkerhetsposition och säkerhetsrisker](../security/benchmarks/security-controls-v2-posture-vulnerability-management.md).*
 
 ### <a name="pv-8-conduct-regular-attack-simulation"></a>PV-8: Utför regelbundna angreppssimuleringar
 
@@ -443,9 +443,9 @@ Läs mer i följande referenser:
 
 - [Cloud Adoption Framework – regelverk kring datasäkerhet och kryptering i Azure](../security/fundamentals/data-encryption-best-practices.md?bc=%2fazure%2fcloud-adoption-framework%2f_bread%2ftoc.json&toc=%2fazure%2fcloud-adoption-framework%2ftoc.json)
 
-- [Azure Security Benchmark – hantering av tillgångar](/azure/security/benchmarks/security-controls-v2-asset-management)
+- [Azure Security Benchmark – hantering av tillgångar](../security/benchmarks/security-controls-v2-asset-management.md)
 
-- [Azure Security Benchmark – dataskydd](/azure/security/benchmarks/security-controls-v2-data-protection)
+- [Azure Security Benchmark – dataskydd](../security/benchmarks/security-controls-v2-data-protection.md)
 
 **Övervakning i Azure Security Center**: Ej tillämpligt
 
@@ -473,7 +473,7 @@ Se till att segmenteringsstrategin implementeras konsekvent för olika kontrollt
 
 **Vägledning**: Mät och minimera risker gällande enskilda tillgångar och miljöerna där de finns regelbundet. Prioritera värdefulla tillgångar och attackytor med stor exponering, som publicerade appar, in- och utgångar i nätverket och slutpunkter för användare och administratörer.
 
-- [Azure Security Benchmark – hantering av säkerhetspositionen och säkerhetsrisker](/azure/security/benchmarks/security-controls-v2-posture-vulnerability-management)
+- [Azure Security Benchmark – hantering av säkerhetspositionen och säkerhetsrisker](../security/benchmarks/security-controls-v2-posture-vulnerability-management.md)
 
 **Övervakning i Azure Security Center**: Ej tillämpligt
 
@@ -514,7 +514,7 @@ Strategin bör omfatta dokumenterad vägledning, policyer och standarder för f�
 Läs mer i följande referenser:
 - [Regelverk för Azure-säkerhet 11 – arkitektur. En enhetlig säkerhetsstrategi](/azure/cloud-adoption-framework/security/security-top-10#11-architecture-establish-a-single-unified-security-strategy)
 
-- [Azure Security Benchmark – nätverkssäkerhet](/azure/security/benchmarks/security-controls-v2-network-security)
+- [Azure Security Benchmark – nätverkssäkerhet](../security/benchmarks/security-controls-v2-network-security.md)
 
 - [Översikt över nätverkssäkerhet i Azure](../security/fundamentals/network-overview.md)
 
@@ -542,9 +542,9 @@ Strategin bör omfatta dokumenterad vägledning, policyer och standarder för f�
 
 Läs mer i följande referenser:
 
-- [Azure Security Benchmark – hantering av identiteter](/azure/security/benchmarks/security-controls-v2-identity-management)
+- [Azure Security Benchmark – hantering av identiteter](../security/benchmarks/security-controls-v2-identity-management.md)
 
-- [Azure Security Benchmark – privilegierad åtkomst](/azure/security/benchmarks/security-controls-v2-privileged-access)
+- [Azure Security Benchmark – privilegierad åtkomst](../security/benchmarks/security-controls-v2-privileged-access.md)
 
 - [Regelverk för Azure-säkerhet 11 – arkitektur. En enhetlig säkerhetsstrategi](/azure/cloud-adoption-framework/security/security-top-10#11-architecture-establish-a-single-unified-security-strategy)
 
@@ -576,9 +576,9 @@ Strategin bör omfatta dokumenterad vägledning, policyer och standarder för f�
 
 Läs mer i följande referenser:
 
-- [Azure Security Benchmark – loggning och hotidentifiering](/azure/security/benchmarks/security-controls-v2-logging-threat-detection)
+- [Azure Security Benchmark – loggning och hotidentifiering](../security/benchmarks/security-controls-v2-logging-threat-detection.md)
 
-- [Azure Security Benchmark – svar på incidenter](/azure/security/benchmarks/security-controls-v2-incident-response)
+- [Azure Security Benchmark – svar på incidenter](../security/benchmarks/security-controls-v2-incident-response.md)
 
 - [Regelverk för Azure-säkerhet 4 – process: uppdatera processer kring incidentsvar för molnet](/azure/cloud-adoption-framework/security/security-top-10#4-process-update-incident-response-ir-processes-for-cloud)
 
