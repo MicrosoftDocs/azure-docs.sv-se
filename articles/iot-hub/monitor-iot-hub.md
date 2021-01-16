@@ -6,12 +6,12 @@ ms.author: robinsh
 ms.topic: conceptual
 ms.service: iot-hub
 ms.date: 11/06/2020
-ms.openlocfilehash: 2fabf75f74ccf57f57e7b47720ceda8885420842
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 35134f3ee4946d294ba6c6f71bd3953823d6d138
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460916"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250036"
 ---
 # <a name="monitoring-azure-iot-hub"></a>Övervaka Azure-IoT Hub
 
@@ -87,7 +87,7 @@ En lista över de plattforms mått som samlas in för Azure IoT Hub finns i [må
 
 För IoT Hub plattforms mått som samlas in i antal enheter kan vissa agg regeringar inte vara tillgängliga eller användbara. Mer information finns i [agg regeringar som stöds i data referens för övervakning av Azure-IoT Hub](monitor-iot-hub-reference.md#supported-aggregations).
 
-Vissa IoT Hub mått, till exempel [routnings mått](monitor-iot-hub-reference.md#routing-metrics), är flerdimensionella. För dessa mått kan du använda [filter](../azure-monitor/platform/metrics-charts.md#apply-filters-to-charts) och [dela upp](../azure-monitor/platform/metrics-charts.md#apply-splitting-to-a-chart) i dina diagram baserat på en dimension.
+Vissa IoT Hub mått, till exempel [routnings mått](monitor-iot-hub-reference.md#routing-metrics), är flerdimensionella. För dessa mått kan du använda [filter](../azure-monitor/platform/metrics-charts.md#filters) och [dela upp](../azure-monitor/platform/metrics-charts.md#apply-splitting) i dina diagram baserat på en dimension.
 
 ## <a name="analyzing-logs"></a>Analysera loggar
 

@@ -3,12 +3,12 @@ title: Azure Relay FAQ | Microsoft Docs
 description: Den här artikeln innehåller svar på några vanliga frågor om Azure Relay tjänsten.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 77d3122942289654c0f651f9f648307123b23546
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 83cbc4b02bb8b63878abd046ed2314728546e87a
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131856"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250066"
 ---
 # <a name="azure-relay-faqs"></a>Azure Relay vanliga frågor
 
@@ -70,7 +70,7 @@ Reläer som öppnas med hjälp av **netTCPRelay** WCF-bindning behandla meddelan
 ## <a name="quotas"></a>Kvoter
 | Kvot namn | Omfång |  Kommentarer | Värde |
 | --- | --- | --- | --- |
-| Samtidiga lyssnare i ett relä |Entitet |Efterföljande begär Anden om ytterligare anslutningar avvisas och ett undantag tas emot av den anropande koden. |25 |
+| Samtidiga lyssnare i ett relä |Entitet (hybrid anslutning eller WCF-relä) |Efterföljande begär Anden om ytterligare anslutningar avvisas och ett undantag tas emot av den anropande koden. |25 |
 | Samtidiga relä anslutningar per alla relä slut punkter i ett tjänst namn område |Namnområde |- |5 000 |
 | Relä slut punkter per tjänst namn område |Namnområde |- |10 000 |
 | Meddelande storlek för [NetOnewayRelayBinding](/dotnet/api/microsoft.servicebus.netonewayrelaybinding) -och [NetEventRelayBinding](/dotnet/api/microsoft.servicebus.neteventrelaybinding) -reläer |Namnområde |Inkommande meddelanden som överskrider dessa kvoter avvisas och ett undantag tas emot av den anropande koden. |64 kB |

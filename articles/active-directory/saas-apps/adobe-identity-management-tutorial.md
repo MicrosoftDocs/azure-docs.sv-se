@@ -2,26 +2,21 @@
 title: 'Självstudie: Azure Active Directory enkel inloggning (SSO) med Adobe Identity Management | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Adobe Identity Management.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 9db7f01d-7f15-492f-a839-55963790a12e
+manager: CelesteDG
+ms.reviewer: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/26/2019
+ms.date: 01/15/2021
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 96a49df85f02083571e84ec884b37fb43b0d4001
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 18c626a11724b585bf699f8be470b439177991ae
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97622242"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250914"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-adobe-identity-management"></a>Självstudie: Azure Active Directory enkel inloggning (SSO) med Adobe Identity Management
 
@@ -31,9 +26,7 @@ I den här självstudien får du lära dig hur du integrerar Adobe Identity Mana
 * Gör det möjligt för användarna att logga in automatiskt till Adobe Identity Management med sina Azure AD-konton.
 * Hantera dina konton på en central plats – Azure Portal.
 
-Mer information om SaaS app integration med Azure AD finns i [Vad är program åtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att komma igång behöver du följande objekt:
 
@@ -50,18 +43,18 @@ I den här självstudien konfigurerar och testar du Azure AD SSO i en test milj�
 
 Om du vill konfigurera integrationen av Adobe Identity Management i Azure AD måste du lägga till Adobe Identity Management från galleriet i listan över hanterade SaaS-appar.
 
-1. Logga in på [Azure Portal](https://portal.azure.com) med antingen ett arbets-eller skol konto eller en personlig Microsoft-konto.
+1. Logga in på Azure Portal med antingen ett arbets-eller skol konto eller en personlig Microsoft-konto.
 1. I det vänstra navigerings fönstret väljer du tjänsten **Azure Active Directory** .
 1. Navigera till **företags program** och välj sedan **alla program**.
 1. Välj **nytt program** om du vill lägga till ett nytt program.
 1. I avsnittet **Lägg till från galleriet** , skriver du **Adobe Identity Management** i sökrutan.
 1. Välj **Adobe Identity Management** från panelen resultat och Lägg sedan till appen. Vänta några sekunder medan appen läggs till i din klient organisation.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-adobe-identity-management"></a>Konfigurera och testa enkel inloggning med Azure AD för Adobe Identity Management
+## <a name="configure-and-test-azure-ad-sso-for-adobe-identity-management"></a>Konfigurera och testa Azure AD SSO för Adobe Identity Management
 
 Konfigurera och testa Azure AD SSO med Adobe Identity Management med hjälp av en test användare som heter **B. Simon**. För att SSO ska fungera måste du upprätta en länk relation mellan en Azure AD-användare och den relaterade användaren i Adobe Identity Management.
 
-Om du vill konfigurera och testa Azure AD SSO med Adobe Identity Management slutför du följande Bygg stenar:
+Utför följande steg för att konfigurera och testa Azure AD SSO med Adobe Identity Management:
 
 1. **[Konfigurera Azure AD SSO](#configure-azure-ad-sso)** – så att användarna kan använda den här funktionen.
     1. **[Skapa en Azure AD-test](#create-an-azure-ad-test-user)** för att testa enkel inloggning med Azure AD med B. Simon.
@@ -74,15 +67,15 @@ Om du vill konfigurera och testa Azure AD SSO med Adobe Identity Management slut
 
 Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
-1. På sidan för **Adobe Identity Management** -programintegration i [Azure Portal](https://portal.azure.com/)letar du upp avsnittet **Hantera** och väljer **enkel inloggning**.
+1. På sidan för **Adobe Identity Management** -programintegration i Azure Portal letar du upp avsnittet **Hantera** och väljer **enkel inloggning**.
 1. På sidan **Välj metod för enkel inloggning** väljer du **SAML**.
-1. På sidan **Konfigurera enkel inloggning med SAML** klickar du på ikonen Redigera/penna för **grundläggande SAML-konfiguration** för att redigera inställningarna.
+1. På sidan **Konfigurera enkel inloggning med SAML** klickar du på Penn ikonen för **grundläggande SAML-konfiguration** för att redigera inställningarna.
 
    ![Redigera grundläggande SAML-konfiguration](common/edit-urls.png)
 
 1. I avsnittet **grundläggande SAML-konfiguration** anger du värden för följande fält:
 
-    a. I rutan **Inloggnings-URL** anger du en URL: `https://adobe.com`
+    a. I rutan **Inloggnings-URL** anger du följande URL: `https://adobe.com`
 
     b. I textrutan **Identifierare (entitets-ID)** anger du en URL enligt följande mönster: `https://federatedid-na1.services.adobe.com/federated/saml/metadata/alias/<CUSTOM_ID>`
 
@@ -116,38 +109,63 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 1. I Azure Portal väljer du **företags program** och väljer sedan **alla program**.
 1. I listan program väljer du **Adobe Identity Management**.
 1. På sidan Översikt för appen letar du reda på avsnittet **Hantera** och väljer **användare och grupper**.
-
-   ![Länken ”Användare och grupper”](common/users-groups-blade.png)
-
 1. Välj **Lägg till användare** och välj sedan **användare och grupper** i dialog rutan **Lägg till tilldelning** .
-
-    ![Länken Lägg till användare](common/add-assign-user.png)
-
 1. I dialog rutan **användare och grupper** väljer du **B. Simon** från listan användare och klickar sedan på knappen **Välj** längst ned på skärmen.
-1. Om du förväntar dig ett roll värde i SAML Assertion, i dialog rutan **Välj roll** , väljer du lämplig roll för användaren i listan och klickar sedan på knappen **Välj** längst ned på skärmen.
+1. Om du förväntar dig att en roll ska tilldelas användarna kan du välja den från List rutan **Välj en roll** . Om ingen roll har kon figurer ATS för den här appen ser du rollen "standard åtkomst" vald.
 1. Klicka på knappen **tilldela** i dialog rutan **Lägg till tilldelning** .
 
 ## <a name="configure-adobe-identity-management-sso"></a>Konfigurera Adobe Identity Management SSO
 
-Om du vill konfigurera enkel inloggning på **Adobe Identity Management** -sidan måste du skicka den hämtade **XML-metadata för federationsmetadata** och lämpliga kopierade url: er från Azure Portal till [Adobes support team för identitets hantering](mailto:identity@adobe.com). De anger inställningen så att SAML SSO-anslutningen ställs in korrekt på båda sidorna.
+1. Om du vill automatisera konfigurationen i Adobe Identity Management måste du installera **Mina appar säker inloggnings webb läsar tillägg** genom att klicka på **installera tillägget**.
+
+    ![Mina Apps-tillägg](common/install-myappssecure-extension.png)
+
+2. När du har lagt till tillägg i webbläsaren, klickar du på **Konfigurera Adobe Identity Management** för att dirigera dig till Adobe Identity Management-programmet. Därifrån anger du administratörsautentiseringsuppgifter för att logga in på Adobe Identity Management. Webb läsar tillägget kommer automatiskt att konfigurera programmet åt dig och automatisera steg 3-8.
+
+    ![Konfigurera konfiguration](common/setup-sso.png)
+
+3. Om du vill konfigurera Adobe Identity Management manuellt i ett annat webbläsarfönster loggar du in på ditt Adobe Identity Management företags webbplats som administratör.
+
+4. Gå till fliken **Inställningar** och klicka på **Skapa katalog**.
+
+    ![Inställningar för Adobe Identity Management](./media/adobe-identity-management-tutorial/settings.png)
+
+5. Ge katalog namnet i text rutan och välj **FEDERERAT ID**, klicka på **Nästa**.
+
+    ![Skapa katalog för Adobe Identity Management](./media/adobe-identity-management-tutorial/create-directory.png)
+
+6. Välj **andra SAML-providers** och klicka på **Nästa**.
+ 
+    ![SAML-providers för Adobe Identity Management](./media/adobe-identity-management-tutorial/saml-providers.png)
+
+7. Klicka på **Välj** för att ladda upp **metadata-XML-** filen som du har laddat ned från Azure Portal.
+
+    ![SAML-konfiguration för Adobe Identity Management](./media/adobe-identity-management-tutorial/saml-configuration.png)
+
+8. Klicka på **färdig**.
 
 ### <a name="create-adobe-identity-management-test-user"></a>Skapa test användare av Adobe Identity Management
 
-I det här avsnittet skapar du en användare som heter B. Simon i Adobe Identity Management. Arbeta med [support teamet för Adobe Identity Management](mailto:identity@adobe.com) för att lägga till användare i Adobe Identity Management-plattformen. Användare måste skapas och aktiveras innan du använder enkel inloggning.
+1. Gå till fliken **användare** och klicka på **Lägg till användare**.
 
-## <a name="test-sso"></a>Testa SSO 
+    ![Lägg till användare i Adobe Identity Management](./media/adobe-identity-management-tutorial/add-user.png)
 
-I det här avsnittet testar du konfigurationen för enkel inloggning Azure AD med hjälp av åtkomstpanelen.
+2. Ge **e-postadressen** i text rutan **Ange användarens e-postadress** .
 
-När du klickar på panelen Adobe Identity Management på åtkomst panelen bör du loggas in automatiskt på den Adobe Identity Management som du ställer in SSO för. Mer information om åtkomstpanelen finns i [introduktionen till åtkomstpanelen](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+    ![Spara användare i Adobe Identity Management](./media/adobe-identity-management-tutorial/save-user.png)
 
-## <a name="additional-resources"></a>Ytterligare resurser
+3. Klicka på **Spara**.
 
-- [ Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+## <a name="test-sso"></a>Testa SSO
 
-- [Vad är program åtkomst och enkel inloggning med Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+I det här avsnittet ska du testa Azure AD-konfigurationen för enkel inloggning med följande alternativ.
 
-- [Vad är villkorlig åtkomst i Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+* Klicka på **testa det här programmet** i Azure Portal. Detta omdirigeras till Adobe Identity Management-inloggnings-URL där du kan starta inloggnings flödet.
 
-- [Testa Adobe Identity Management med Azure AD](https://aad.portal.azure.com/)
+* Gå till inloggnings-URL: en för Adobe Identity Management direkt och starta inloggnings flödet därifrån.
 
+* Du kan använda Microsoft Mina appar. När du klickar på panelen Adobe Identity Management i Mina appar omdirigeras den till inloggnings-URL: en för Adobe Identity Management. Mer information om Mina appar finns i [Introduktion till Mina appar](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+
+## <a name="next-steps"></a>Nästa steg
+
+När du har konfigurerat Adobe Identity Management kan du framtvinga kontroll av sessioner, vilket skyddar exfiltrering och intrånget för organisationens känsliga data i real tid. Kontroll av sessionen sträcker sig från villkorlig åtkomst. [Lär dig hur du tvingar fram en session med Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).

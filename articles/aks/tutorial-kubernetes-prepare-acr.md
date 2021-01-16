@@ -3,14 +3,14 @@ title: Självstudiekurs om Kubernetes i Azure – Skapa ett containerregister
 description: I den här självstudien om Azure Kubernetes Service (AKS) ska du skapa en Azure Container Registry-instans och ladda upp en containeravbildning för exempelprogrammet.
 services: container-service
 ms.topic: tutorial
-ms.date: 09/30/2020
+ms.date: 01/12/2021
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: b0f78c3969f3d02c19824fdb6d1e3b786dceb43c
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: d1dce1c59c4bf40eaead89e4a8a088e9a8ea4f76
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92747065"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250629"
 ---
 # <a name="tutorial-deploy-and-use-azure-container-registry"></a>Självstudier: Distribuera och använda Azure Container Registry
 
@@ -22,7 +22,7 @@ Azure Container Registry (ACR) är ett privat register för containeravbildninga
 > * ladda upp avbildningen till ACR.
 > * Visa avbildningar i registret
 
-I ytterligare självstudier integrerar du den här ACR-instansen med ett Kubernetes-kluster i AKS och distribuerar ett program från avbildningen.
+I senare självstudier är den här ACR-instansen integrerad med ett Kubernetes-kluster i AKS och ett program distribueras från avbildningen.
 
 ## <a name="before-you-begin"></a>Innan du börjar
 
@@ -34,7 +34,7 @@ Den här självstudien kräver att du kör Azure CLI version 2.0.53 eller senare
 
 För att skapa en Azure Container Registry-instans behöver du en resursgrupp. En Azure-resursgrupp är en logisk container där Azure-resurser distribueras och hanteras.
 
-Skapa en resursgrupp med kommandot [az group create][az-group-create]. I följande exempel skapas en resursgrupp med namnet *myResourceGroup* i regionen *eastus* :
+Skapa en resursgrupp med kommandot [az group create][az-group-create]. I följande exempel skapas en resursgrupp med namnet *myResourceGroup* i regionen *eastus*:
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
@@ -60,12 +60,12 @@ Kommandot returnerar ett meddelande om att *inloggningen har* slutförts.
 
 Om du vill visa en lista över dina aktuella lokala avbildningar använder du kommandot [docker images][docker-images]:
 
-```azurecli
+```console
 $ docker images
 ```
-Ovanstående kommando utdata visar listan över aktuella lokala avbildningar:
+Kommandots utdata i ovanstående kommando visar listan över aktuella lokala avbildningar:
 
-```
+```output
 REPOSITORY                                     TAG                 IMAGE ID            CREATED             SIZE
 mcr.microsoft.com/azuredocs/azure-vote-front   v1                  84b41c268ad9        7 minutes ago       944MB
 mcr.microsoft.com/oss/bitnami/redis            6.0.8               3a54a920bb6c        2 days ago          103MB
@@ -104,7 +104,7 @@ tiangolo/uwsgi-nginx-flask                      python3.6           a16ce562e863
 
 ## <a name="push-images-to-registry"></a>Push-överför avbildningar till registret
 
-När avbildningen har skapats och taggats push-överför du avbildningen *azure-vote-front* till ACR-instansen. Använd [docker push][docker-push] och tillhandahåll din egen *acrLoginServer* -adress för avbildningsnamnet på följande sätt:
+När avbildningen har skapats och taggats push-överför du avbildningen *azure-vote-front* till ACR-instansen. Använd [docker push][docker-push] och tillhandahåll din egen *acrLoginServer*-adress för avbildningsnamnet på följande sätt:
 
 ```console
 docker push <acrLoginServer>/azure-vote-front:v1
@@ -120,9 +120,9 @@ Du kan returnera en lista med avbildningar som har överförts till ACR-instanse
 az acr repository list --name <acrName> --output table
 ```
 
-Följande exempelutdata visar *azure-vote-front* -avbildningen i registret:
+Följande exempelutdata visar *azure-vote-front*-avbildningen i registret:
 
-```
+```output
 Result
 ----------------
 azure-vote-front
@@ -134,9 +134,9 @@ Om du vill visa taggarna för en viss avbildning kör du kommandot [az acr repos
 az acr repository show-tags --name <acrName> --repository azure-vote-front --output table
 ```
 
-Följande exempelutdata visar *v1* -avbildningen som taggades i föregående steg:
+Följande exempelutdata visar *v1*-avbildningen som taggades i föregående steg:
 
-```
+```output
 Result
 --------
 v1

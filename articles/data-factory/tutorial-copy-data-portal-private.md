@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 05/15/2020
+ms.date: 01/15/2021
 ms.author: jingwang
-ms.openlocfilehash: 4f5d691ef99ac4647d2031d6588d0b3922edd8cf
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: dfd2ed47c3fd963d7e119d235719771b25bdaf34
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94505996"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98249524"
 ---
 # <a name="copy-data-securely-from-azure-blob-storage-to-a-sql-database-by-using-private-endpoints"></a>Kopiera data säkert från Azure Blob Storage till en SQL-databas med hjälp av privata slut punkter
 
@@ -45,7 +45,7 @@ Förbered nu Blob Storage och SQL Database för självstudien genom att utföra 
 
 #### <a name="create-a-source-blob"></a>Skapa en källblob
 
-1. Öppna Anteckningar. Kopiera följande text och spara den som en **emp.txt** -fil på din disk:
+1. Öppna Anteckningar. Kopiera följande text och spara den som en **emp.txt**-fil på din disk:
 
     ```
     FirstName,LastName
@@ -78,13 +78,13 @@ I det här steget skapar du en datafabrik och startar sedan användargränssnitt
 
 1. På den vänstra menyn väljer du **skapa en resurs**  >  **analys**  >  **Data Factory**.
 
-1. I fönstret **Ny datafabrik** , under **Namn** anger du **ADFTutorialDataFactory**.
+1. I fönstret **Ny datafabrik**, under **Namn** anger du **ADFTutorialDataFactory**.
 
    Namnet på Azure Data Factory måste vara *globalt unikt*. Om du får ett fel meddelande om name-värdet anger du ett annat namn på data fabriken (till exempel Dittnamnadftutorialdatafactory). Se artikeln [Namnregler för Data Factory](./naming-rules.md) för namnregler för Data Factory-artefakter.
 
-1. Välj den Azure- **prenumeration** som du vill skapa den nya datafabriken i.
+1. Välj den Azure-**prenumeration** som du vill skapa den nya datafabriken i.
 
-1. Gör något av följande för **Resursgrupp** :
+1. Gör något av följande för **Resursgrupp**:
 
     - Välj **Använd befintlig** och välj en befintlig resurs grupp i den nedrullningsbara listan.
     - Välj **Skapa ny** och ange namnet på en resurs grupp. 
@@ -107,7 +107,8 @@ I det här steget skapar du en Azure integration Runtime och aktiverar Data Fact
 1. I Data Factory portal går du till **Hantera** och väljer **ny** för att skapa en ny Azure integration Runtime.
 
    ![Skärm bild som visar hur du skapar en ny Azure integration Runtime.](./media/tutorial-copy-data-portal-private/create-new-azure-ir.png)
-1. Välj att skapa en **Azure** integration Runtime.
+1. På sidan **installation av integration runtime** väljer du vilken integrerings körning som ska skapas baserat på de funktioner som krävs. I den här självstudien väljer du **Azure, egen värd** och klickar sedan på **Fortsätt**. 
+1. Välj **Azure** och klicka sedan på **Fortsätt** för att skapa en Azure integration Runtime.
 
    ![Skärm bild som visar en ny Azure integration Runtime.](./media/tutorial-copy-data-portal-private/azure-ir.png)
 1. Under **konfiguration av virtuellt nätverk (för hands version)** väljer du **Aktivera**.
@@ -136,7 +137,7 @@ I den här självstudien börjar du med att skapa en pipeline. Sedan skapar du l
 ### <a name="configure-a-source"></a>Konfigurera en källa
 
 >[!TIP]
->I den här självstudien använder du **konto nyckel** som autentiseringstyp för ditt käll data lager. Du kan också välja andra autentiseringsmetoder som stöds, till exempel **SAS-URI** , **tjänstens huvud namn** och **hanterad identitet** om det behövs. Mer information finns i motsvarande avsnitt i [Kopiera och transformera data i Azure Blob Storage med hjälp av Azure Data Factory](./connector-azure-blob-storage.md#linked-service-properties).
+>I den här självstudien använder du **konto nyckel** som autentiseringstyp för ditt käll data lager. Du kan också välja andra autentiseringsmetoder som stöds, till exempel **SAS-URI**,**tjänstens huvud namn** och **hanterad identitet** om det behövs. Mer information finns i motsvarande avsnitt i [Kopiera och transformera data i Azure Blob Storage med hjälp av Azure Data Factory](./connector-azure-blob-storage.md#linked-service-properties).
 >
 >För att lagra hemligheter för data lager på ett säkert sätt rekommenderar vi också att du använder Azure Key Vault. Mer information och illustrationer finns [i lagra autentiseringsuppgifter i Azure Key Vault](./store-credentials-in-key-vault.md).
 

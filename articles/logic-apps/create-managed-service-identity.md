@@ -3,31 +3,48 @@ title: Autentisera med hanterade identiteter
 description: Åtkomst till resurser som skyddas av Azure Active Directory utan att logga in med autentiseringsuppgifter eller hemligheter med hjälp av en hanterad identitet
 services: logic-apps
 ms.suite: integration
-ms.reviewer: jonfan, logicappspm
+ms.reviewer: estfan, logicappspm, azla
 ms.topic: article
-ms.date: 10/27/2020
-ms.openlocfilehash: 1152c8b72bcb830a7ba4efa053d3ffff667f9dc8
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.date: 01/15/2021
+ms.openlocfilehash: 9ac8a23569d9a85787768419a0377967026e9bd9
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98034177"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251604"
 ---
 # <a name="authenticate-access-to-azure-resources-by-using-managed-identities-in-azure-logic-apps"></a>Autentisera åtkomst till Azure-resurser med hjälp av hanterade identiteter i Azure Logic Apps
 
-För att enkelt komma åt andra resurser som skyddas av Azure Active Directory (Azure AD) och autentisera din identitet utan att logga in, kan din Logic app använda en [hanterad identitet](../active-directory/managed-identities-azure-resources/overview.md) (tidigare HANTERAD TJÄNSTIDENTITET eller MSI) i stället för autentiseringsuppgifter eller hemligheter. Azure hanterar den här identiteten åt dig och hjälper till att skydda dina autentiseringsuppgifter eftersom du inte måste ange eller rotera hemligheter.
+För att enkelt komma åt andra resurser som skyddas av Azure Active Directory (Azure AD) och autentisera din identitet, kan din Logi Kap par använda en [hanterad identitet](../active-directory/managed-identities-azure-resources/overview.md) (tidigare HANTERAD TJÄNSTIDENTITET eller MSI) i stället för autentiseringsuppgifter, hemligheter eller Azure AD-token. Azure hanterar den här identiteten för dig och skyddar dina autentiseringsuppgifter eftersom du inte behöver hantera hemligheter eller direkt använda Azure AD-token.
 
-Azure Logic Apps stöder både [*systemtilldelade*](../active-directory/managed-identities-azure-resources/overview.md) och [*användarspecifika*](../active-directory/managed-identities-azure-resources/overview.md) hanterade identiteter. Din Logi Kap par kan använda antingen den systemtilldelade identiteten eller en *enskild* användardefinierad identitet, som du kan dela i en grupp av logi Kap par, men inte båda. För närvarande har endast [vissa inbyggda utlösare och åtgärder](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound) stöd för hanterade identiteter, inte hanterade anslutningar eller anslutningar, till exempel:
+Azure Logic Apps stöder både [*systemtilldelade*](../active-directory/managed-identities-azure-resources/overview.md) och [*användarspecifika*](../active-directory/managed-identities-azure-resources/overview.md) hanterade identiteter. Din Logi Kap par eller enskilda anslutningar kan använda antingen den systemtilldelade identiteten eller en *enskild* användardefinierad identitet, som du kan dela i en grupp av logi Kap par, men inte båda.
 
-* HTTP
-* Azure Functions
+## <a name="where-can-logic-apps-use-managed-identities"></a>Var kan Logic Apps använda hanterade identiteter?
+
+För närvarande kan endast [vissa inbyggda utlösare och åtgärder](../logic-apps/logic-apps-securing-a-logic-app.md#authentication-types-supported-triggers-actions) och [särskilda hanterade anslutningar](../logic-apps/logic-apps-securing-a-logic-app.md#authentication-types-supported-triggers-actions) som stöder Azure AD OAuth använda en hanterad identitet för autentisering. Här är ett exempel:
+
+**Inbyggda utlösare och åtgärder**
+
 * Azure API Management
 * Azure App Services
+* Azure Functions
+* HTTP
+* HTTP + webhook
+
+**Hanterade anslutningar**
+
+* Azure Automation
+* Azure Event Grid
+* Azure Key Vault
+* Azure Monitor-loggar
+* Azure Resource Manager
+* HTTP med Azure AD
+
+Stöd för hanterade anslutningar är för närvarande en för hands version. För den aktuella listan, se [autentiseringstyper för utlösare och åtgärder som stöder autentisering](../logic-apps/logic-apps-securing-a-logic-app.md#authentication-types-supported-triggers-actions).
 
 Den här artikeln visar hur du konfigurerar båda typerna av hanterade identiteter för din Logic app. Mer information finns i de här ämnena:
 
-* [Utlösare och åtgärder som har stöd för hanterade identiteter](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)
-* [Autentiseringstyper som stöds för utgående anrop](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)
+* [Utlösare och åtgärder som har stöd för hanterade identiteter](../logic-apps/logic-apps-securing-a-logic-app.md#authentication-types-supported-triggers-actions)
 * [Begränsningar för hanterade identiteter för Logic Apps](../logic-apps/logic-apps-limits-and-config.md#managed-identity)
 * [Azure-tjänster som stöder Azure AD-autentisering med hanterade identiteter](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)
 
@@ -39,7 +56,7 @@ Den här artikeln visar hur du konfigurerar båda typerna av hanterade identitet
 
 * Den Azure-resurs som du vill få åtkomst till. På den här resursen lägger du till en roll för den hanterade identiteten som hjälper Logic-appen att autentisera åtkomsten till mål resursen.
 
-* Den Logic app där du vill använda [utlösaren eller åtgärder som har stöd för hanterade identiteter](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)
+* Den Logic app där du vill använda [utlösaren eller åtgärder som har stöd för hanterade identiteter](../logic-apps/logic-apps-securing-a-logic-app.md#authentication-types-supported-triggers-actions).
 
 ## <a name="enable-managed-identity"></a>Aktivera hanterad identitet
 
@@ -55,7 +72,7 @@ Om du vill ställa in den hanterade identitet som du vill använda följer du l�
 Till skillnad från användarens tilldelade identiteter behöver du inte skapa den systemtilldelade identiteten manuellt. För att ställa in den systemtilldelade identiteten för din Logi Kap par, är följande alternativ som du kan använda:
 
 * [Azure-portalen](#azure-portal-system-logic-app)
-* [Azure Resource Manager mallar](#template-system-logic-app)
+* [Azure Resource Manager-mallar](#template-system-logic-app)
 
 <a name="azure-portal-system-logic-app"></a>
 
@@ -70,7 +87,7 @@ Till skillnad från användarens tilldelade identiteter behöver du inte skapa d
    > [!NOTE]
    > Om du får ett fel meddelande om att du bara kan ha en enda hanterad identitet, är din Logic app redan kopplad till den tilldelade identiteten. Innan du kan lägga till den systemtilldelade identiteten måste du först *ta bort* den användare som tilldelats identiteten från din Logic app.
 
-   Din Logic app kan nu använda den systemtilldelade identiteten, som registreras med Azure Active Directory och representeras av ett objekt-ID.
+   Din Logi Kap par kan nu använda den systemtilldelade identiteten, som är registrerad i Azure AD och representeras av ett objekt-ID.
 
    ![Objekt-ID för systemtilldelad identitet](./media/create-managed-service-identity/object-id-system-assigned-identity.png)
 
@@ -133,7 +150,7 @@ När Azure skapar din resurs definition för Logic app `identity` får objektet 
 Om du vill konfigurera en användardefinierad hanterad identitet för din Logic app måste du först skapa den identiteten som en separat fristående Azure-resurs. Här följer de alternativ som du kan använda:
 
 * [Azure-portalen](#azure-portal-user-identity)
-* [Azure Resource Manager mallar](#template-user-identity)
+* [Azure Resource Manager-mallar](#template-user-identity)
 * Azure PowerShell
   * [Skapa användare tilldelad identitet](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)
   * [Lägg till rolltilldelning](../active-directory/managed-identities-azure-resources/howto-assign-access-powershell.md)
@@ -294,6 +311,8 @@ Innan du kan använda din Logic Apps-hanterade identitet för autentisering ska 
 
 ### <a name="assign-access-in-the-azure-portal"></a>Tilldela åtkomst i Azure Portal
 
+På Azure-resursen där du vill att den hanterade identiteten ska ha åtkomst, ger du identiteten rollbaserad åtkomst till mål resursen.
+
 1. I [Azure Portal](https://portal.azure.com)går du till den Azure-resurs där du vill att den hanterade identiteten ska ha åtkomst.
 
 1. På resurs menyn väljer du behörighet för **åtkomst kontroll (IAM)**  >   där du kan granska de aktuella roll tilldelningarna för resursen. Välj **Lägg till**  >  **Lägg till roll tilldelning** i verktygsfältet.
@@ -345,7 +364,7 @@ Innan du kan använda din Logic Apps-hanterade identitet för autentisering ska 
 
 ## <a name="authenticate-access-with-managed-identity"></a>Autentisera åtkomst med hanterad identitet
 
-När du har [aktiverat den hanterade identiteten för din Logic app](#azure-portal-system-logic-app) och [ger den identitets åtkomst till mål resursen eller entiteten](#access-other-resources)kan du använda identiteten i [utlösare och åtgärder som stöder hanterade identiteter](logic-apps-securing-a-logic-app.md#managed-identity-authentication).
+När du har [aktiverat den hanterade identiteten för din Logic app](#azure-portal-system-logic-app) och [ger den identitets åtkomst till mål resursen eller entiteten](#access-other-resources)kan du använda identiteten i [utlösare och åtgärder som stöder hanterade identiteter](logic-apps-securing-a-logic-app.md#authentication-types-supported-triggers-actions).
 
 > [!IMPORTANT]
 > Om du har en Azure-funktion där du vill använda den systemtilldelade identiteten aktiverar du först [autentisering för Azure Functions](../logic-apps/logic-apps-azure-functions.md#enable-authentication-for-functions).
@@ -354,44 +373,120 @@ De här stegen visar hur du använder den hanterade identiteten med en utlösare
 
 1. I [Azure Portal](https://portal.azure.com)öppnar du din Logic app i Logic Apps designer.
 
-1. Om du inte har gjort det lägger du till [utlösaren eller åtgärden som har stöd för hanterade identiteter](logic-apps-securing-a-logic-app.md#managed-identity-authentication).
+1. Om du inte har gjort det lägger du till [utlösaren eller åtgärden som har stöd för hanterade identiteter](logic-apps-securing-a-logic-app.md#authentication-types-supported-triggers-actions).
 
-   HTTP-utlösaren eller åtgärden kan till exempel använda den systemtilldelade identitet som du har aktiverat för din Logic app. I allmänhet använder HTTP-utlösaren eller åtgärden dessa egenskaper för att ange den resurs eller entitet som du vill få åtkomst till:
+   > [!NOTE]
+   > Det är inte alla utlösare och åtgärder som har stöd för att lägga till en autentiseringstyp. Mer information finns i [autentiseringstyper för utlösare och åtgärder som stöder autentisering](../logic-apps/logic-apps-securing-a-logic-app.md#authentication-types-supported-triggers-actions).
 
-   | Egenskap | Krävs | Beskrivning |
-   |----------|----------|-------------|
-   | **Metod** | Ja | HTTP-metoden som används av den åtgärd som du vill köra |
-   | **URI** | Ja | Slut punkts-URL för åtkomst till Azure-resursen eller-entiteten. URI-syntaxen innehåller vanligt vis [resurs-ID](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) för Azure-resursen eller-tjänsten. |
-   | **Sidhuvuden** | Nej | Eventuella rubrik värden som du behöver eller vill inkludera i den utgående begäran, till exempel innehålls typen |
-   | **Frågor** | Nej | Alla frågeparametrar som du behöver eller vill inkludera i begäran, till exempel parametern för en åtgärd eller API-versionen för den åtgärd som du vill köra |
-   | **Autentisering** | Ja | Autentiseringstypen som används för att autentisera åtkomsten till mål resursen eller entiteten |
-   ||||
+1. Följ de här stegen i utlösaren eller åtgärden som du har lagt till:
 
-   Som ett särskilt exempel förutsätter vi att du vill köra [ögonblicks bilds-bloben](/rest/api/storageservices/snapshot-blob) på en BLOB i det Azure Storage konto där du tidigare har konfigurerat åtkomst till din identitet. Men [Azure Blob Storage-anslutningen](/connectors/azureblob/) har för närvarande inte den här åtgärden. I stället kan du köra den här åtgärden med hjälp av [http-åtgärden](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action) eller någon annan [REST API åtgärd för BLOB service](/rest/api/storageservices/operations-on-blobs).
+   * **Inbyggda utlösare och åtgärder som stöder användning av en hanterad identitet**
 
-   > [!IMPORTANT]
-   > Om du vill komma åt Azure Storage-konton bakom brand väggar genom att använda HTTP-förfrågningar och hanterade identiteter, kontrollerar du att du även konfigurerar ditt lagrings konto med [undantaget som ger åtkomst av betrodda Microsoft-tjänster](../connectors/connectors-create-api-azureblobstorage.md#access-trusted-service).
+     1. Lägg till egenskapen **Authentication** om egenskapen inte redan visas.
 
-   För att köra [ögonblicks bildens BLOB](/rest/api/storageservices/snapshot-blob)-åtgärd anger http-åtgärden följande egenskaper:
+     1. Under **Autentiseringstyp** väljer du **hanterad identitet**.
 
-   | Egenskap | Krävs | Exempelvärde | Beskrivning |
-   |----------|----------|---------------|-------------|
-   | **Metod** | Ja | `PUT`| HTTP-metoden som ögonblicks bildens BLOB-åtgärd använder |
-   | **URI** | Ja | `https://{storage-account-name}.blob.core.windows.net/{blob-container-name}/{folder-name-if-any}/{blob-file-name-with-extension}` | Resurs-ID för en Azure Blob Storage-fil i den globala Azure-miljön (offentlig) som använder den här syntaxen |
-   | **Sidhuvuden** | För Azure Storage | `x-ms-blob-type` = `BlockBlob` <p>`x-ms-version` = `2019-02-02` <p>`x-ms-date` = `@{formatDateTime(utcNow(),'r'}` | `x-ms-blob-type`Värdena, `x-ms-version` och måste `x-ms-date` anges för Azure Storage åtgärder. <p><p>**Viktigt**: i utgående http-utlösare och åtgärds begär anden för Azure Storage, kräver huvudet `x-ms-version` egenskapen och API-versionen för den åtgärd som du vill köra. `x-ms-date`Måste vara det aktuella datumet. Annars Miss lyckas din Logic app med ett `403 FORBIDDEN` fel. Om du vill hämta det aktuella datumet i det format som krävs kan du använda uttrycket i exempel svärdet. <p>Mer information finns i de här ämnena: <p><p>- [Begärandehuvuden – ögonblicks bilds-BLOB](/rest/api/storageservices/snapshot-blob#request) <br>- [Versions hantering för Azure Storage tjänster](/rest/api/storageservices/versioning-for-the-azure-storage-services#specifying-service-versions-in-requests) |
-   | **Frågor** | Endast för BLOB-åtgärden för ögonblicks bilder | `comp` = `snapshot` | Frågans parameter namn och värde för åtgärden. |
-   |||||
+     Mer information finns i [exempel: autentisera inbyggd utlösare eller åtgärd med en hanterad identitet](#authenticate-built-in-managed-identity).
+ 
+   * **Hanterade anslutnings utlösare och åtgärder som stöder användning av en hanterad identitet**
 
-   Här är exempel på HTTP-åtgärd som visar alla dessa egenskaps värden:
+     1. På sidan Val av klient väljer du **Anslut med hanterad identitet**.
 
-   ![Lägg till en HTTP-åtgärd för att få åtkomst till en Azure-resurs](./media/create-managed-service-identity/http-action-example.png)
+     1. Ange ett namn på anslutningen på nästa sida.
 
-1. Lägg nu till egenskapen **autentisering** i http-åtgärden. I listan **Lägg till ny parameter** väljer du **autentisering**.
+        I listan över hanterade identiteter visas som standard bara den aktuella aktiverade hanterade identiteten eftersom en Logic app stöder endast en hanterad identitet i taget, till exempel:
+
+        ![Skärm bild som visar sidan anslutnings namn och den valda hanterade identiteten.](./media/create-managed-service-identity/system-assigned-managed-identity.png)
+
+     Mer information finns i [exempel: autentisera Managed Connector-utlösare eller åtgärd med en hanterad identitet](#authenticate-managed-connector-managed-identity).
+
+     Anslutningar som du skapar för att använda en hanterad identitet är en särskild Anslutnings typ som endast fungerar med en hanterad identitet. Vid körning använder anslutningen den hanterade identitet som är aktive rad i Logic app. Den här konfigurationen sparas i Logic app-resursens resurs definitions `parameters` objekt, som innehåller de `$connections` objekt som innehåller pekare till anslutningens resurs-ID tillsammans med identitetens resurs-ID, om den användardefinierade identiteten är aktive rad.
+
+     Det här exemplet visar hur konfigurationen ser ut när Logic app aktiverar den hanterade identiteten som tilldelats av systemet:
+
+     ```json
+     "parameters": {
+        "$connections": {
+           "value": {
+              "<action-name>": {
+                 "connectionId": "/subscriptions/{Azure-subscription-ID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/connections/{connection-name}",
+                 "connectionName": "{connection-name}",
+                 "connectionProperties": {
+                    "authentication": {
+                       "type": "ManagedServiceIdentity"
+                    }
+                 },
+                 "id": "/subscriptions/{Azure-subscription-ID}/providers/Microsoft.Web/locations/{Azure-region}/managedApis/{managed-connector-type}"
+              }
+           }
+        }
+     }
+     ```
+
+     Det här exemplet visar hur konfigurationen ser ut när Logic app aktiverar en hanterad identitet som tilldelats av användare:
+
+     ```json
+     "parameters": {
+        "$connections": {
+           "value": {
+              "<action-name>": {
+                 "connectionId": "/subscriptions/{Azure-subscription-ID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/connections/{connection-name}",
+                 "connectionName": "{connection-name}",
+                 "connectionProperties": {
+                    "authentication": {
+                       "identity": "/subscriptions/{Azure-subscription-ID}/resourceGroups/{resourceGroupName}/providers/microsoft.managedidentity/userassignedidentities/{managed-identity-name}",
+                       "type": "ManagedServiceIdentity"
+                    }
+                 },
+                 "id": "/subscriptions/{Azure-subscription-ID}/providers/Microsoft.Web/locations/{Azure-region}/managedApis/{managed-connector-type}"
+              }
+           }
+        }
+     }
+     ```
+
+     Under körningen kontrollerar Logic Apps tjänsten om en utlösare och åtgärder för hanterad koppling i Logic app har ställts in för att använda den hanterade identiteten och att alla nödvändiga behörigheter är konfigurerade för att använda den hanterade identiteten för åtkomst till de mål resurser som anges av utlösaren och åtgärderna. Om det lyckas hämtar Logic Apps tjänsten Azure AD-token som är associerad med den hanterade identiteten och använder den identiteten för att autentisera åtkomsten till mål resursen och utföra den konfigurerade åtgärden i utlösare och åtgärder.
+
+<a name="authenticate-built-in-managed-identity"></a>
+
+#### <a name="example-authenticate-built-in-trigger-or-action-with-a-managed-identity"></a>Exempel: autentisera inbyggd utlösare eller åtgärd med en hanterad identitet
+
+HTTP-utlösaren eller åtgärden kan använda den systemtilldelade identitet som du har aktiverat för din Logic app. I allmänhet använder HTTP-utlösaren eller åtgärden dessa egenskaper för att ange den resurs eller entitet som du vill få åtkomst till:
+
+| Egenskap | Krävs | Beskrivning |
+|----------|----------|-------------|
+| **Metod** | Ja | HTTP-metoden som används av den åtgärd som du vill köra |
+| **URI** | Ja | Slut punkts-URL för åtkomst till Azure-resursen eller-entiteten. URI-syntaxen innehåller vanligt vis [resurs-ID](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) för Azure-resursen eller-tjänsten. |
+| **Sidhuvuden** | Nej | Eventuella rubrik värden som du behöver eller vill inkludera i den utgående begäran, till exempel innehålls typen |
+| **Frågor** | Nej | Alla frågeparametrar som du behöver eller vill inkludera i begäran, till exempel parametern för en åtgärd eller API-versionen för den åtgärd som du vill köra |
+| **Autentisering** | Ja | Autentiseringstypen som används för att autentisera åtkomsten till mål resursen eller entiteten |
+||||
+
+Som ett särskilt exempel förutsätter vi att du vill köra [ögonblicks bilds-bloben](/rest/api/storageservices/snapshot-blob) på en BLOB i det Azure Storage konto där du tidigare har konfigurerat åtkomst till din identitet. Men [Azure Blob Storage-anslutningen](/connectors/azureblob/) har för närvarande inte den här åtgärden. I stället kan du köra den här åtgärden med hjälp av [http-åtgärden](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action) eller någon annan [REST API åtgärd för BLOB service](/rest/api/storageservices/operations-on-blobs).
+
+> [!IMPORTANT]
+> Om du vill komma åt Azure Storage-konton bakom brand väggar genom att använda HTTP-förfrågningar och hanterade identiteter, kontrollerar du att du även konfigurerar ditt lagrings konto med [undantaget som ger åtkomst av betrodda Microsoft-tjänster](../connectors/connectors-create-api-azureblobstorage.md#access-trusted-service).
+
+För att köra [ögonblicks bildens BLOB](/rest/api/storageservices/snapshot-blob)-åtgärd anger http-åtgärden följande egenskaper:
+
+| Egenskap | Krävs | Exempelvärde | Beskrivning |
+|----------|----------|---------------|-------------|
+| **Metod** | Ja | `PUT`| HTTP-metoden som ögonblicks bildens BLOB-åtgärd använder |
+| **URI** | Ja | `https://{storage-account-name}.blob.core.windows.net/{blob-container-name}/{folder-name-if-any}/{blob-file-name-with-extension}` | Resurs-ID för en Azure Blob Storage-fil i den globala Azure-miljön (offentlig) som använder den här syntaxen |
+| **Sidhuvuden** | För Azure Storage | `x-ms-blob-type` = `BlockBlob` <p>`x-ms-version` = `2019-02-02` <p>`x-ms-date` = `@{formatDateTime(utcNow(),'r'}` | `x-ms-blob-type`Värdena, `x-ms-version` och måste `x-ms-date` anges för Azure Storage åtgärder. <p><p>**Viktigt**: i utgående http-utlösare och åtgärds begär anden för Azure Storage, kräver huvudet `x-ms-version` egenskapen och API-versionen för den åtgärd som du vill köra. `x-ms-date`Måste vara det aktuella datumet. Annars Miss lyckas din Logic app med ett `403 FORBIDDEN` fel. Om du vill hämta det aktuella datumet i det format som krävs kan du använda uttrycket i exempel svärdet. <p>Mer information finns i de här ämnena: <p><p>- [Begärandehuvuden – ögonblicks bilds-BLOB](/rest/api/storageservices/snapshot-blob#request) <br>- [Versions hantering för Azure Storage tjänster](/rest/api/storageservices/versioning-for-the-azure-storage-services#specifying-service-versions-in-requests) |
+| **Frågor** | Endast för BLOB-åtgärden för ögonblicks bilder | `comp` = `snapshot` | Frågans parameter namn och värde för åtgärden. |
+|||||
+
+Här är exempel på HTTP-åtgärd som visar alla dessa egenskaps värden:
+
+![Lägg till en HTTP-åtgärd för att få åtkomst till en Azure-resurs](./media/create-managed-service-identity/http-action-example.png)
+
+1. När du har lagt till HTTP-åtgärden lägger du till egenskapen **autentisering** i http-åtgärden. I listan **Lägg till ny parameter** väljer du **autentisering**.
 
    ![Lägg till egenskapen "autentisering" till HTTP-åtgärd](./media/create-managed-service-identity/add-authentication-property.png)
 
    > [!NOTE]
-   > Det är inte alla utlösare och åtgärder som har stöd för att lägga till en autentiseringstyp. Mer information finns i [lägga till autentisering i utgående samtal](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
+   > Det är inte alla utlösare och åtgärder som har stöd för att lägga till en autentiseringstyp. Mer information finns i [autentiseringstyper för utlösare och åtgärder som stöder autentisering](../logic-apps/logic-apps-securing-a-logic-app.md#authentication-types-supported-triggers-actions).
 
 1. I listan **Autentiseringstyp** väljer du **hanterad identitet**.
 
@@ -425,6 +520,32 @@ De här stegen visar hur du använder den hanterade identiteten med en utlösare
 
 1. Fortsätt att skapa Logic-appen på det sätt som du vill.
 
+<a name="authenticate-managed-connector-managed-identity"></a>
+
+#### <a name="example-authenticate-managed-connector-trigger-or-action-with-a-managed-identity"></a>Exempel: autentisera hanterad kopplings utlösare eller åtgärd med en hanterad identitet
+
+Azure Resource Manager åtgärden, **läsa en resurs**, kan använda den hanterade identitet som du har aktiverat för din Logic app. Det här exemplet visar hur du använder den systemtilldelade hanterade identiteten.
+
+1. När du har lagt till åtgärden i ditt arbets flöde väljer du **Anslut med hanterad identitet** på sidan Välj klient.
+
+   ![Skärm bild som visar Azure Resource Manager åtgärd och "Anslut med hanterad identitet" vald.](./media/create-managed-service-identity/select-connect-managed-identity.png)
+
+   Åtgärden visar nu sidan anslutnings namn med listan med hanterade identiteter, som innehåller den hanterade identitets typ som för närvarande är aktive rad i Logic-appen.
+
+1. Ange ett namn för anslutningen på sidan anslutnings namn. I listan hanterad identitet väljer du den hanterade identiteten, som är **systemtilldelad hanterad identitet** i det här exemplet och väljer **skapa**. Om du har aktiverat en användardefinierad hanterad identitet väljer du den identiteten i stället.
+
+   ![Skärm bild som visar Azure Resource Manager åtgärd med det angivna anslutnings namnet och "systemtilldelad hanterad identitet" vald.](./media/create-managed-service-identity/system-assigned-managed-identity.png)
+
+   Om den hanterade identiteten inte är aktive rad visas följande fel meddelande när du försöker skapa anslutningen:
+
+   *Du måste aktivera hanterad identitet för din Logic app och sedan bevilja nödvändig åtkomst till identiteten i mål resursen.*
+
+   ![Skärm bild som visar Azure Resource Manager åtgärd med fel när ingen hanterad identitet har Aktiver ATS.](./media/create-managed-service-identity/system-assigned-managed-identity-disabled.png)
+
+1. När anslutningen har skapats kan designern hämta dynamiska värden, innehåll eller schema med hjälp av hanterad identitetsautentisering.
+
+1. Fortsätt att skapa Logic-appen på det sätt som du vill.
+
 <a name="remove-identity"></a>
 
 ## <a name="disable-managed-identity"></a>Inaktivera hanterad identitet
@@ -432,7 +553,7 @@ De här stegen visar hur du använder den hanterade identiteten med en utlösare
 Om du vill sluta använda en hanterad identitet för din Logic app har du följande alternativ:
 
 * [Azure-portalen](#azure-portal-disable)
-* [Azure Resource Manager mallar](#template-disable)
+* [Azure Resource Manager-mallar](#template-disable)
 * Azure PowerShell
   * [Ta bort roll tilldelning](../role-based-access-control/role-assignments-powershell.md)
   * [Ta bort användardefinierad identitet](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)

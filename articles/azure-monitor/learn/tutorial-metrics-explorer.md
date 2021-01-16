@@ -6,12 +6,12 @@ ms.author: bwren
 ms.subservice: metrics
 ms.topic: tutorial
 ms.date: 03/09/2020
-ms.openlocfilehash: 5dcb86ff4af2a68ecf0bb361e6da4f788ea32b62
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 121de67ddb251e7431873c76e379eb223ceacd0d
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97881301"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250680"
 ---
 # <a name="tutorial-create-a-metrics-chart-in-azure-monitor"></a>Självstudie: skapa ett mått diagram i Azure Monitor
 Mått Utforskaren är en funktion i Azure Monitor i Azure Portal som gör att du kan skapa diagram från metriska värden, visuellt korrelera trender och undersöka toppar och DIP i metriska värden. Använd Mät Utforskaren för att undersöka hälsan och användningen av dina Azure-resurser eller för att rita diagram från anpassade mått. 
@@ -70,20 +70,20 @@ Använd **tids penseln** för att undersöka ett intressant ytdiagram i diagramm
 ## <a name="apply-dimension-filters-and-splitting"></a>Använd dimensions filter och delning
 Se följande referenser för avancerade funktioner som gör att du kan utföra ytterligare analyser av dina mått och identifiera potentiella avvikare i dina data.
 
-- Med [filtrering](../platform/metrics-charts.md#apply-filters-to-charts) kan du välja vilka dimensions värden som ska ingå i diagrammet. Du kanske till exempel bara vill visa lyckade förfrågningar när du diagramerar ett mått för *Server svars tid* . 
+- Med [filtrering](../platform/metrics-charts.md#filters) kan du välja vilka dimensions värden som ska ingå i diagrammet. Du kanske till exempel bara vill visa lyckade förfrågningar när du diagramerar ett mått för *Server svars tid* . 
 
-- [Dela upp](../platform/metrics-charts.md#apply-splitting-to-a-chart) styr om diagrammet ska visa separata rader för varje värde i en dimension eller mängd värden i en enda rad. Till exempel kanske du vill se en rad för en genomsnittlig svars tid över alla Server instanser eller om du vill ha separata rader för varje server. 
+- [Dela upp](../platform/metrics-charts.md#apply-splitting) styr om diagrammet ska visa separata rader för varje värde i en dimension eller mängd värden i en enda rad. Till exempel kanske du vill se en rad för en genomsnittlig svars tid över alla Server instanser eller om du vill ha separata rader för varje server. 
 
 Se [exempel på de diagram](../platform/metric-chart-samples.md) som har filtrering och delning tillämpad.
 
 ## <a name="advanced-chart-settings"></a>Avancerade diagram inställningar
 
-Du kan anpassa diagram stil, rubrik och ändra avancerade diagram inställningar. När du är färdig med anpassning fäster du det på en instrument panel för att spara ditt arbete. Du kan också konfigurera mått aviseringar. I [avancerade funktioner i Azure Metrics Explorer](../platform/metrics-charts.md#lock-boundaries-of-chart-y-axis) kan du läsa mer om dessa och andra avancerade funktioner i Azure Monitor Metrics Explorer.
+Du kan anpassa diagram stil, rubrik och ändra avancerade diagram inställningar. När du är färdig med anpassning fäster du det på en instrument panel för att spara ditt arbete. Du kan också konfigurera mått aviseringar. I [avancerade funktioner i Azure Metrics Explorer](../platform/metrics-charts.md#locking the-range-of-the-y-axis) kan du läsa mer om dessa och andra avancerade funktioner i Azure Monitor Metrics Explorer.
 
 
 ## <a name="next-steps"></a>Nästa steg
 Nu när du har lärt dig hur du arbetar med mått i Azure Monitor kan du lära dig hur du använder mått för att skicka proaktiva aviseringar.
 
 > [!div class="nextstepaction"]
-> [Skapa, visa och hantera måttaviseringar med Azure Monitor](../platform/metrics-charts.md#create-alert-rules)
+> [Skapa, visa och hantera måttaviseringar med Azure Monitor](../platform/metrics-charts.md#alert-rules)
 

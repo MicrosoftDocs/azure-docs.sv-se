@@ -3,14 +3,14 @@ title: Självstudie om Kubernetes i Azure – Skala program
 description: I den här självstudien om Azure Kubernetes Service (AKS) lär du dig hur du skalar noder och poddar i Kubernetes och hur du implementerar horisontell automatisk skalning av poddar.
 services: container-service
 ms.topic: tutorial
-ms.date: 09/30/2020
+ms.date: 01/12/2021
 ms.custom: mvc
-ms.openlocfilehash: 7f16ba3ffe6b6f96f17df540eb67e9cec0bfea8c
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: dfebb6561e83c51063515ec655153aaaa7a09c0c
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97825680"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251377"
 ---
 # <a name="tutorial-scale-applications-in-azure-kubernetes-service-aks"></a>Självstudie: Skala program i Azure Kubernetes Service (AKS)
 
@@ -21,7 +21,7 @@ Om du har följt självstudierna så har du ett fungerande Kubernetes-kluster i 
 > * Skala Kubernetes-poddar som kör ditt program manuellt
 > * Konfigurera poddar för automatisk skalning som kör appens klientdel
 
-I ytterligare självstudier uppdateras Azure Vote-programmet till en ny version.
+I senare självstudier uppdateras Azure röstnings programmet till en ny version.
 
 ## <a name="before-you-begin"></a>Innan du börjar
 
@@ -39,7 +39,7 @@ kubectl get pods
 
 Följande exempelutdata visar en frontend-pod och en backend-pod:
 
-```
+```output
 NAME                               READY     STATUS    RESTARTS   AGE
 azure-vote-back-2549686872-4d2r5   1/1       Running   0          31m
 azure-vote-front-848767080-tf34m   1/1       Running   0          31m
@@ -51,7 +51,7 @@ Om du vill ändra antalet poddar i *azure-vote-front*-distributionen manuellt an
 kubectl scale --replicas=5 deployment/azure-vote-front
 ```
 
-Kör [kubectl get pods][kubectl-get] igen för att verifiera att AKS skapar de nya poddarna. Efter någon minut finns de nya poddarna i klustret:
+Kör [kubectl get poddar][kubectl-get] igen för att verifiera att AKS har skapat ytterligare poddar. Efter en minut eller så är poddar tillgängliga i klustret:
 
 ```console
 kubectl get pods
@@ -131,7 +131,7 @@ spec:
 
 Använd `kubectl apply` för att tillämpa autoskalning som definierats i `azure-vote-hpa.yaml` manifest filen.
 
-```
+```console
 kubectl apply -f azure-vote-hpa.yaml
 ```
 
@@ -158,7 +158,7 @@ az aks scale --resource-group myResourceGroup --name myAKSCluster --node-count 3
 
 När klustret har skalats liknar utdata följande exempel:
 
-```
+```output
 "agentPoolProfiles": [
   {
     "count": 3,

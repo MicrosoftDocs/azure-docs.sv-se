@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 11/06/2020
+ms.date: 01/14/2021
 ms.author: b-juche
-ms.openlocfilehash: a07898692c8af70fab0d2634ed1513f0f3666a4d
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 759759b67582b241d0bab1e043dd15e54a804faf
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505468"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251547"
 ---
 # <a name="troubleshoot-capacity-pool-issues"></a>Felsöka problem med kapacitetspooler
 
@@ -34,9 +34,6 @@ I den här artikeln beskrivs lösningar på problem som du kan ha när du hanter
 | Det går inte att skapa eller ändra volym med `Requested throughput not available` fel | Tillgängligt data flöde för en volym bestäms av poolens storlek och tjänst nivå. Om du inte har tillräckligt med data flöde bör du öka Poolens storlek eller justera det befintliga volym data flödet. | 
 
 ## <a name="issues-when-changing-the-capacity-pool-of-a-volume"></a>Problem vid ändring av poolens kapacitets enhet 
-
-> [!IMPORTANT] 
-> Den [dynamiskt ändrade Service nivån för en volym offentlig för](dynamic-change-volume-service-level.md) hands versions registrering är stoppad tills vidare meddelande.
 
 |     Feltillstånd    |     Lösning    |
 |-|-|

@@ -10,13 +10,13 @@ ms.topic: reference
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein
-ms.date: 10/15/2020
-ms.openlocfilehash: e706f64a7caab6873a3eec86505eaee11374ae2c
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.date: 01/15/2021
+ms.openlocfilehash: 2daa07315be85e1fcd543480cd30a57c118d8547
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882336"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251496"
 ---
 # <a name="resource-limits-for-elastic-pools-using-the-vcore-purchasing-model"></a>Resurs begränsningar för elastiska pooler med vCore inköps modell
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -235,6 +235,39 @@ Du kan ange tjänst nivå, beräknings storlek (tjänst mål) och lagrings belop
 
 <sup>3</sup> för maximalt antal samtidiga arbetare (begär Anden) för enskilda databaser, se [gränser för enskilda databas resurser](resource-limits-vcore-single-databases.md). Om den elastiska poolen exempelvis använder Gen5 och Max vCore per databas anges till 2, är värdet för Max samtidiga arbets tagare 200.  Om max vCore per databas är inställt på 0,5, är Max värdet för samtidiga arbetare 50 sedan på Gen5. det finns högst 100 samtidiga arbetare per vCore. För andra Max vCore-inställningar per databas som är mindre än 1 vCore eller mindre, skalas antalet samtidiga arbets tagare på samma sätt.
 
+
+## <a name="general-purpose---provisioned-compute---dc-series"></a>Allmänt syfte – etablerad beräkning – DC-serien
+
+|Beräknings storlek (tjänst mål)|GP_DC_2|GP_DC_4|GP_DC_6|GP_DC_8|
+|:--- | --: |--: |--: |--: |
+|Beräknings generation|DC|DC|DC|DC|
+|Virtuella kärnor|2|4|6|8|
+|Minne (GB)|9|18|27|36|
+|Max antal databaser per pool <sup>1</sup>|100|400|400|400|
+|Columnstore-stöd|Ja|Ja|Ja|Ja|
+|Minnes intern OLTP-lagring (GB)|Saknas|Saknas|Saknas|Saknas|
+|Maximal data storlek (GB)|756|1536|2048|2048|
+|Största logg storlek (GB)|227|461|614|614|
+|Maximal data storlek för TempDB (GB)|64|128|192|256|
+|Lagringstyp|Premium-lagring (Remote)|Premium-lagring (Remote)|Premium-lagring (Remote)|Premium-lagring (Remote)|
+|I/o-latens (ungefärligt)|5-7 MS (skrivning)<br>5-10 ms (läsa)|5-7 MS (skrivning)<br>5-10 ms (läsa)|5-7 MS (skrivning)<br>5-10 ms (läsa)|5-7 MS (skrivning)<br>5-10 ms (läsa)|
+|Max data IOPS per pool <sup>2</sup>|800|1600|2400|3200|
+|Högsta logg hastighet per pool (Mbit/s)|9,4|18,8|28,1|32,8|
+|Maximalt antal samtidiga arbetare per pool (begär Anden) <sup>3</sup>|168|336|504|672|
+|Maximalt antal samtidiga inloggningar per pool (begär Anden) <sup>3</sup>|168|336|504|672|
+|Maximalt antal samtidiga sessioner|30 000|30 000|30 000|30 000|
+|Minsta/högsta antal vCore alternativ för elastisk pool per databas|2|2... 4|2... 6|2... 8|
+|Antal repliker|1|1|1|1|
+|Multi-AZ|Saknas|Saknas|Saknas|Saknas|
+|Lässkalning|Saknas|Saknas|Saknas|Saknas|
+|Inkluderad säkerhets kopierings lagring|1X DB-storlek|1X DB-storlek|1X DB-storlek|1X DB-storlek|
+
+<sup>1</sup> se [resurs hantering i tätare elastiska pooler](elastic-pool-resource-management.md) för ytterligare överväganden.
+
+<sup>2</sup> det maximala värdet för IO-storlekar mellan 8 kb och 64 kB. Faktisk IOPS är arbets belastnings beroende. Mer information finns i [data IO-styrning](resource-limits-logical-server.md#resource-governance).
+
+<sup>3</sup> för maximalt antal samtidiga arbetare (begär Anden) för enskilda databaser, se [gränser för enskilda databas resurser](resource-limits-vcore-single-databases.md). Om den elastiska poolen exempelvis använder Gen5 och Max vCore per databas anges till 2, är värdet för Max samtidiga arbets tagare 200.  Om max vCore per databas är inställt på 0,5, är Max värdet för samtidiga arbetare 50 sedan på Gen5. det finns högst 100 samtidiga arbetare per vCore. För andra Max vCore-inställningar per databas som är mindre än 1 vCore eller mindre, skalas antalet samtidiga arbets tagare på samma sätt.
+
 ## <a name="business-critical---provisioned-compute---gen4"></a>Verksamhets kritiskt allokerad beräkning – Gen4
 
 > [!IMPORTANT]
@@ -406,8 +439,6 @@ Du kan ange tjänst nivå, beräknings storlek (tjänst mål) och lagrings belop
 
 Om alla virtuella kärnor av en elastisk pool är upptagna får varje databas i poolen en lika stor mängd data bearbetnings resurser för att bearbeta frågor. Azure SQL Database tillhandahåller resurs delnings skälighet mellan databaser genom att se till att det är lika med olika sektorer av beräknings tiden. Resurs delnings skälighet för elastisk pool är utöver den mängd resurser som på annat sätt garanteras för varje databas när vCore min per databas är inställt på ett värde som inte är noll.
 
-
-
 ### <a name="m-series-compute-generation-part-2"></a>Beräknings generation i M-serien (del 2)
 
 |Beräknings storlek (tjänst mål)|BC_M_20|BC_M_24|BC_M_32|BC_M_64|BC_M_128|
@@ -441,6 +472,37 @@ Om alla virtuella kärnor av en elastisk pool är upptagna får varje databas i 
 
 Om alla virtuella kärnor av en elastisk pool är upptagna får varje databas i poolen en lika stor mängd data bearbetnings resurser för att bearbeta frågor. Azure SQL Database tillhandahåller resurs delnings skälighet mellan databaser genom att se till att det är lika med olika sektorer av beräknings tiden. Resurs delnings skälighet för elastisk pool är utöver den mängd resurser som på annat sätt garanteras för varje databas när vCore min per databas är inställt på ett värde som inte är noll.
 
+## <a name="business-critical---provisioned-compute---dc-series"></a>Verksamhets kritiskt allokerad beräkning-DC-serien
+
+|Beräknings storlek (tjänst mål)|BC_DC_2|BC_DC_4|BC_DC_6|BC_DC_8|
+|:--- | --: |--: |--: |--: |
+|Beräknings generation|DC|DC|DC|DC|
+|Virtuella kärnor|2|4|6|8|
+|Minne (GB)|9|18|27|36|
+|Max antal databaser per pool <sup>1</sup>|50|100|100|100|
+|Columnstore-stöd|Ja|Ja|Ja|Ja|
+|Minnes intern OLTP-lagring (GB)|1,7|3.7|5.9|8,2|
+|Maximal data storlek (GB)|768|768|768|768|
+|Största logg storlek (GB)|230|230|230|230|
+|Maximal data storlek för TempDB (GB)|64|128|192|256|
+|Lagringstyp|Lokal SSD|Lokal SSD|Lokal SSD|Lokal SSD|
+|I/o-latens (ungefärligt)|1-2 ms (skrivning)<br>1-2 ms (läsa)|1-2 ms (skrivning)<br>1-2 ms (läsa)|1-2 ms (skrivning)<br>1-2 ms (läsa)|1-2 ms (skrivning)<br>1-2 ms (läsa)|
+|Max data IOPS per pool <sup>2</sup>|15750|31500|47250|56000|
+|Högsta logg hastighet per pool (Mbit/s)|20|60|90|120|
+|Maximalt antal samtidiga arbetare per pool (begär Anden) <sup>3</sup>|168|336|504|672|
+|Maximalt antal samtidiga inloggningar per pool (begär Anden) <sup>3</sup>|168|336|504|672|
+|Maximalt antal samtidiga sessioner|30 000|30 000|30 000|30 000|
+|Minsta/högsta antal vCore alternativ för elastisk pool per databas|2|2... 4|2... 6|2... 8|
+|Antal repliker|4|4|4|4|
+|Multi-AZ|Nej|Nej|Nej|Nej|
+|Lässkalning|Ja|Ja|Ja|Ja|
+|Inkluderad säkerhets kopierings lagring|1X DB-storlek|1X DB-storlek|1X DB-storlek|1X DB-storlek|
+
+<sup>1</sup> se [resurs hantering i tätare elastiska pooler](elastic-pool-resource-management.md) för ytterligare överväganden.
+
+<sup>2</sup> det maximala värdet för IO-storlekar mellan 8 kb och 64 kB. Faktisk IOPS är arbets belastnings beroende. Mer information finns i [data IO-styrning](resource-limits-logical-server.md#resource-governance).
+
+<sup>3</sup> för maximalt antal samtidiga arbetare (begär Anden) för enskilda databaser, se [gränser för enskilda databas resurser](resource-limits-vcore-single-databases.md). Om den elastiska poolen exempelvis använder Gen5 och Max vCore per databas anges till 2, är värdet för Max samtidiga arbets tagare 200.  Om max vCore per databas är inställt på 0,5, är Max värdet för samtidiga arbetare 50 sedan på Gen5. det finns högst 100 samtidiga arbetare per vCore. För andra Max vCore-inställningar per databas som är mindre än 1 vCore eller mindre, skalas antalet samtidiga arbets tagare på samma sätt.
 
 ## <a name="database-properties-for-pooled-databases"></a>Databas egenskaper för databaser i pooler
 

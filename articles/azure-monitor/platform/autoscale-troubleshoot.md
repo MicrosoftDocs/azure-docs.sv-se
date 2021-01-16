@@ -4,12 +4,12 @@ description: Spåra problem med automatisk skalning i Azure som används i Servi
 ms.topic: conceptual
 ms.date: 11/4/2019
 ms.subservice: autoscale
-ms.openlocfilehash: a29b5d11a6ea06af9d5b6a8b5120c6f0caa6601e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c4589acd17e76d1341d5aceada67e565c8f8c37
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90979039"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251275"
 ---
 # <a name="troubleshooting-azure-autoscale"></a>Felsöka Azures autoskalning
  
@@ -51,13 +51,13 @@ Vi går igenom måtten från AutoScale-tjänsten.
 
 ![Procent processor exempel för skalnings uppsättning för virtuell dator](media/autoscale-troubleshoot/autoscale-vmss-CPU-ex-full-2.png)
 
-***Bild 1a – procent andel CPU-mått för skalnings uppsättningen för den virtuella datorn och det observerade mått svärdet mått för autoskalning-inställningen***
+**_Bild 1a – procent andel CPU-mått för skalnings uppsättningen för den virtuella datorn och det observerade mått svärdet mått för autoskalning Setting_* _
 
 ![Mätnings tröskel och observerad kapacitet](media/autoscale-troubleshoot/autoscale-metric-threshold-capacity-ex-full.png)
 
-***Figur 1b – mätnings tröskel och observerad kapacitet***
+_*_Figur 1b – mätnings tröskel och observerad kapacitet_*_
 
-I bild 1b är **mått tröskelvärdet** (ljusblå blå linje) för den skalbara regeln 70.  Den **observerade kapaciteten** (mörk blå linje) visar antalet aktiva instanser, som för närvarande är 3. 
+I bild 1b är 70 *Metric-tröskelvärdet** (ljusblå blå linje) för den skalbara regeln.  Den **observerade kapaciteten** (mörk blå linje) visar antalet aktiva instanser, som för närvarande är 3. 
 
 > [!NOTE]
 > Du måste filtrera **mått tröskelvärdet** efter regel utlösare regel för regel utskalning (öka) för att se tröskelvärdet för skala ut och av skalan i regeln (minska). 
@@ -76,18 +76,18 @@ I det här fallet beräknas det observerade mått svärdet för autoskalning som
 
 ![Exempel på skalnings uppsättning för skalnings uppsättning för virtuell dator](media/autoscale-troubleshoot/autoscale-vmss-metric-chart-ex-2.png)
 
-***Bild 2 – exempel på skalnings uppsättningar för virtuell dator***
+**_Bild 2 – skal uppsättning för skalnings uppsättning för virtuella datorer, exempel_* _
 
 I bild 2 kan du se två mått diagram. 
 
-Diagrammet överst visar det faktiska värdet för måttet **utgående flöden** . Det faktiska värdet är 6. 
+Diagrammet överst visar det faktiska värdet för _ *utgående flöden** mått. Det faktiska värdet är 6. 
 
 Diagrammet längst ned visar några värden. 
  - Det **observerade mått svärdet** (ljus blått) är 3 eftersom det finns 2 aktiva instanser och 6 dividerat med 2 är 3. 
  - Den **observerade kapaciteten** (lila) visar antalet instanser som visas för autoskalning-motorn. 
  - **Mått tröskelvärdet** (ljus grönt) är inställt på 10. 
 
-Om det finns flera skalnings åtgärds regler kan du använda dela upp eller **Lägg till filter** i diagrammet Metrics Explorer för att titta på mått med en bestämd källa eller regel. Mer information om hur du delar ett mått diagram finns i [avancerade funktioner i mått diagram – dela upp](metrics-charts.md#apply-splitting-to-a-chart)
+Om det finns flera skalnings åtgärds regler kan du använda dela upp eller **Lägg till filter** i diagrammet Metrics Explorer för att titta på mått med en bestämd källa eller regel. Mer information om hur du delar ett mått diagram finns i [avancerade funktioner i mått diagram – dela upp](metrics-charts.md#apply-splitting)
 
 ## <a name="example-3---understanding-autoscale-events"></a>Exempel 3 – förstå autoskalning-händelser
 

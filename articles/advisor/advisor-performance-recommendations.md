@@ -3,12 +3,12 @@ title: Förbättra prestanda för Azure Apps med Advisor
 description: Använd prestanda rekommendationer i Azure Advisor för att förbättra hastighet och svars tider för affärs kritiska program.
 ms.topic: article
 ms.date: 07/29/2020
-ms.openlocfilehash: 8937272f8b6ef945d80076732ea38523f7b475a1
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: d7d4e87670ca529f38465e928c4067daec802b8f
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97802549"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98248436"
 ---
 # <a name="improve-the-performance-of-azure-applications-by-using-azure-advisor"></a>Förbättra prestanda för Azure-program med hjälp av Azure Advisor
 
@@ -177,7 +177,7 @@ Lär dig mer om [SDK för avancerad läsare](../cognitive-services/immersive-rea
 
 ## <a name="improve-vm-performance-by-changing-the-maximum-session-limit"></a>Förbättra prestanda för virtuella datorer genom att ändra gränsen för högsta antal sessioner
 
-Advisor identifierar att du har en adresspool som har ett djup som är inställt på belastnings Utjämnings algoritmen och att poolens maximala sessionsgräns är större än eller lika med 99999. Belastningsutjämning med djup-först använder maxgränsen för sessioner för att fastställa det maximala antalet användare som kan ha samtidiga sessioner på en enda sessionsvärd. Om max gränsen för sessioner är för hög, kommer alla användarsessioner att dirigeras till samma värd för sessionen och detta orsakar problem med prestanda och tillförlitlighet. När du ställer in en adresspool för att ha djupgående första belastnings utjämning måste du därför ange en lämplig gräns för maximal session enligt konfigurationen av din virtuella dators distribution och kapacitet. 
+Advisor identifierar att du har en adresspool som har ett djup som är inställt på belastnings Utjämnings algoritmen och att poolens maximala sessionsgräns är större än eller lika med 999999. Belastningsutjämning med djup-först använder maxgränsen för sessioner för att fastställa det maximala antalet användare som kan ha samtidiga sessioner på en enda sessionsvärd. Om max gränsen för sessioner är för hög, kommer alla användarsessioner att dirigeras till samma värd för sessionen och detta orsakar problem med prestanda och tillförlitlighet. När du ställer in en adresspool för att ha djupgående första belastnings utjämning måste du därför ange en lämplig gräns för maximal session enligt konfigurationen av din virtuella dators distribution och kapacitet. 
 
 Mer information om belastnings utjämning i Windows Virtual Desktop finns i [Konfigurera belastnings Utjämnings metoden för Windows virtuella skriv bord](/azure/virtual-desktop/troubleshoot-set-up-overview).
 

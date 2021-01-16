@@ -1,44 +1,44 @@
 ---
 title: Välj en pris nivå
 titleSuffix: Azure Cognitive Search
-description: 'Azure Kognitiv sökning kan tillhandahållas i dessa nivåer: kostnads fri, Basic och standard, och standard är tillgängligt i olika datorkonfigurationer och kapacitets nivåer.'
+description: 'Läs mer om pris nivåerna (eller SKU: er) för Azure Kognitiv sökning. En Sök tjänst kan tillhandahållas på dessa nivåer: kostnads fri, Basic och standard. Standard är tillgängligt i olika webbplatskonfigurationer och kapacitets nivåer.'
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/15/2020
+ms.date: 01/15/2021
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 4c58968cb6a38a10433915ec8fa00336ccad301e
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 38ddfc2d3940bb9267edd6c5c683918c1fb5dc58
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98216418"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251715"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>Välj en pris nivå för Azure Kognitiv sökning
 
-När du [skapar en Sök tjänst](search-create-service-portal.md)väljer du en pris nivå som har åtgärd ATS för tjänstens livs längd. Nivån som du väljer avgör:
+När du [skapar en Sök tjänst](search-create-service-portal.md)väljer du en pris nivå (eller SKU) som har åtgärd ATS för livs längden för tjänsten. Uppskattade månads kostnader visas på sidan **Välj pris nivå** i portalen. Om du skapar en tjänst via PowerShell eller Azure CLI i stället anges nivån via **`-Sku`** parametern.
 
-+ Antal index och andra objekt som du kan skapa (max gränser)
+Nivån som du väljer avgör:
+
++ Maximalt antal index och andra objekt som du kan skapa i tjänsten
 + Storlek och hastighet för partitioner (fysisk lagring)
-+ Fakturerbart pris, en fast månads kostnad, men även en stegvis kostnad om du lägger till partitioner eller repliker
++ Fakturerbart pris som en fast månads kostnad, men även en stegvis kostnad om du lägger till kapacitet
 
-Dessutom finns det några [Premium funktioner](#premium-features) med nivå krav.
+I några få instanser bestämmer nivån som du väljer tillgänglighet för [Premium funktioner](#premium-features).
 
 ## <a name="tier-descriptions"></a>Nivå beskrivningar
 
-Nivåerna är **kostnads fria**, **Basic**, **standard** och **Storage-optimerade**. Standard-och lagrings optimering är tillgänglig med flera konfigurationer och kapaciteter.
+Nivåerna är **kostnads fria**, **Basic**, **standard** och **Storage-optimerade**. Standard-och lagrings optimering är tillgänglig med flera konfigurationer och kapaciteter. Följande skärm bild från Azure Portal visar tillgängliga nivåer, minus priser (som du hittar i portalen och på [prissättnings sidan](https://azure.microsoft.com/pricing/details/search/). 
 
-Följande skärm bild från Azure Portal visar tillgängliga nivåer, minus priser (som du hittar i portalen och på [prissättnings sidan](https://azure.microsoft.com/pricing/details/search/). 
+:::image type="content" source="media/search-sku-tier/tiers.png" alt-text="Pris nivå diagram" border="true":::
 
-![Pris nivåer för Azure Kognitiv sökning](media/search-sku-tier/tiers.png "Pris nivåer för Azure Kognitiv sökning")
+**Kostnads fri** skapar en begränsad Sök tjänst för mindre projekt, som att köra självstudier och kod exempel. Internt delas system resurser mellan flera prenumeranter. Du kan inte skala en kostnads fri tjänst eller köra betydande arbets belastningar.
 
-**Kostnads fri** skapar en begränsad Sök tjänst för mindre projekt, som att köra självstudier och kod exempel. Internt delas repliker och partitioner mellan flera prenumeranter. Du kan inte skala en kostnads fri tjänst eller köra betydande arbets belastningar.
+**Basic** och **standard** är de vanligaste fakturerbara nivåerna, med **standard** som standard eftersom det ger dig större flexibilitet vid skalning för arbets belastningar. Med dedikerade resurser under kontrollen kan du distribuera större projekt, optimera prestanda och öka kapaciteten.
 
-**Basic** och **standard** är de vanligaste fakturerbara nivåerna, med **standard standarden** . Med dedikerade resurser under kontrollen kan du distribuera större projekt, optimera prestanda och öka kapaciteten.
-
-Vissa nivåer är optimerade för vissa typer av arbete. Till exempel är **standard 3 hög densitet (S3 HD)** ett *värd läge* för S3, där den underliggande maskin varan är optimerad för ett stort antal mindre index och är avsedd för flera organisationers scenarier. S3 HD har samma kostnad per enhet som S3, men maskin varan är optimerad för snabba fil läsningar på ett stort antal mindre index.
+Vissa nivåer är utformade för vissa typer av arbete. Till exempel är **standard 3 hög densitet (S3 HD)** ett *värd läge* för S3, där den underliggande maskin varan är optimerad för ett stort antal mindre index och är avsedd för flera organisationers scenarier. S3 HD har samma kostnad per enhet som S3, men maskin varan är optimerad för snabba fil läsningar på ett stort antal mindre index.
 
 **Lagrings optimerings** nivåer ger större lagrings kapacitet till ett lägre pris per TB än standard nivåerna. Den främsta kompromissen är högre svars tid för frågor, som du bör validera för dina specifika program krav. Mer information om prestanda överväganden för den här nivån finns i [överväganden för prestanda och optimering](search-performance-optimization.md).
 
@@ -54,78 +54,37 @@ De flesta funktioner är tillgängliga på alla nivåer, inklusive den kostnads 
 |---------|-------------|
 | [indexerare](search-indexer-overview.md) | Indexerare är inte tillgängliga på S3 HD.  |
 | [AI-berikning](search-security-manage-encryption-keys.md) | Körs på den kostnads fria nivån men rekommenderas inte. |
+| [Hanterade eller betrodda identiteter för utgående (index) åtkomst](search-howto-managed-identities-data-sources.md) | Inte tillgängligt på den kostnads fria nivån.|
 | [Kundhanterade krypterings nycklar](search-security-manage-encryption-keys.md) | Inte tillgängligt på den kostnads fria nivån. |
 | [Åtkomst till IP-brandvägg](service-configure-firewall.md) | Inte tillgängligt på den kostnads fria nivån. |
 | [Privat slut punkt (integrering med Azures privata länk)](service-create-private-endpoint.md) | För inkommande anslutningar till en search-tjänst är inte tillgänglig på den kostnads fria nivån. För utgående anslutningar från indexerare till andra Azure-resurser är de inte tillgängliga på kostnads fria eller S3 HD. För indexerare som använder färdighetsuppsättningar, inte tillgängligt på kostnads fri, grundläggande, S1 eller S3 HD.|
 
 Resurs krävande funktioner kanske inte fungerar bra om du inte ger den tillräckligt med kapacitet. [AI-anrikning](cognitive-search-concept-intro.md) har till exempel långvariga färdigheter som tar slut på en kostnads fri tjänst, om inte data uppsättningen är liten.
 
-## <a name="billable-events"></a>Fakturerbara händelser
+## <a name="upper-limits"></a>Övre gränser
 
-En lösning som bygger på Azure Kognitiv sökning kan ådra sig kostnaderna på följande sätt:
+Nivåerna fastställer det maximala lagrings utrymmet för själva tjänsten, samt det maximala antalet index, indexerare, data källor, färdighetsuppsättningar och synonymer som du kan skapa. För en fullständig paus av alla gränser, se [tjänst begränsningar i Azure kognitiv sökning](search-limits-quotas-capacity.md). 
 
-+ [Kostnaden för själva tjänsten](#service-costs) , som körs dygnet runt, med lägsta konfiguration (en partition och replik), enligt bas priset. Du kan tänka på detta som den fasta kostnaden för att köra tjänsten.
+## <a name="partition-size-and-speed"></a>Partitionens storlek och hastighet
 
-+ Lägga till kapacitet (repliker eller partitioner), där kostnader ökar vid ökningar av fakturerings takten
+Nivå priset innehåller information om lagrings utrymme per partition som sträcker sig från 2 GB för Basic, upp till 2 TB för lagrings optimerade (L2)-nivåer. Andra egenskaper för maskin vara, till exempel hastighet för åtgärder, latens och överförings priser, publiceras inte, men nivåer som är utformade för särskilda lösnings arkitekturer bygger på maskin vara som har funktioner som stöder dessa scenarier.
 
-+ Bandbredds avgifter (utgående data överföring)
+## <a name="billing-rates"></a>Fakturerings taxa
 
-+ Tilläggs tjänster som krävs för vissa funktioner eller funktioner:
+Nivåer har olika fakturerings takt, med högre taxa för nivåer som körs på dyrare maskin vara eller ger dyrare funktioner. Fakturerings takten är det du ser på [pris sidorna för Azure](https://azure.microsoft.com/pricing/details/search/) för varje tjänst nivå i Azure kognitiv sökning.
 
-  + AI-anrikning (kräver [Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/))
-  + kunskaps lager (kräver [Azure Storage](https://azure.microsoft.com/pricing/details/storage/))
-  + stegvis anrikning (kräver [Azure Storage](https://azure.microsoft.com/pricing/details/storage/), gäller AI-anrikning)
-  + Kundhanterade nycklar och Double Encryption (kräver [Azure Key Vault](https://azure.microsoft.com/pricing/details/key-vault/))
-  + privata slut punkter för en modell utan Internet åtkomst (kräver [Azures privata länk](https://azure.microsoft.com/pricing/details/private-link/))
+När du har skapat en tjänst blir fakturerings takten både en *fast kostnad* för att köra tjänsten dygnet runt och en *stegvis kostnad* om du väljer att lägga till mer kapacitet.
 
-### <a name="service-costs"></a>Tjänstkostnader
+Sök tjänster allokeras till dator resurser i form av *partitioner* (för lagring) och *repliker* (instanser av frågemotor). Inlednings vis skapas en tjänst med var och en av dem och fakturerings takten består av båda resurserna. Men om du skalar kapaciteten går kostnaderna upp eller ned i steg om fakturerings takten.
 
-Till skillnad från virtuella datorer eller andra resurser som kan vara "pausade" för att undvika avgifter är en Azure Kognitiv sökning-tjänst alltid tillgänglig på maskin vara som är dedikerad för exklusiv användning. Därför är att skapa en tjänst en fakturerbar händelse som startar när du skapar tjänsten och slutar när du tar bort tjänsten. 
+I följande exempel visas en illustration. Anta en hypotetisk fakturerings taxa på $100 per månad. Om du behåller Sök tjänsten med den första kapaciteten för en partition och en replik, är $100 vad du kan förväntat dig att betala i slutet av månaden. Men om du lägger till ytterligare två repliker för att uppnå hög tillgänglighet ökar månads fakturan till $300 ($100 för det första replik-partition paret, följt av $200 för de två replikerna).
 
-Den lägsta avgiften är den första Sök enheten (en partition med en enda replik x) till fakturerings takten. Detta minimum är fast för tjänstens livs längd eftersom tjänsten inte kan köras på något som är mindre än den här konfigurationen. Utöver det lägsta antalet kan du lägga till repliker och partitioner oberoende av varandra. Stegvisa ökningar i kapaciteten via repliker och partitioner ökar din faktura utifrån följande formel: [(repliker x partitioner x hastighet)](#search-units), där den hastighet du debiteras beror på vilken pris nivå du väljer.
-
-När du uppskattar kostnaden för en Sök lösning bör du tänka på att priserna och kapaciteten inte är linjära. (Dubbla kapaciteten är mer än dubbelt så mycket som kostnaden.) Ett exempel på hur formeln fungerar finns i [så här allokerar du repliker och partitioner](search-capacity-planning.md#how-to-allocate-replicas-and-partitions).
-
-### <a name="bandwidth-charges"></a>Bandbredds avgifter
-
-Användningen av [indexerare](search-indexer-overview.md) kan påverka faktureringen om Azure-datakällan är i en annan region än Azure kognitiv sökning. I det här scenariot kan det finnas en kostnad för att flytta utgående data från Azure Data Source till Azure Kognitiv sökning. Mer information finns på sidan med pris information för den aktuella Azure-dataplattformen.
-
-Du kan ta bort avgifter för utgående data helt och hållet om du skapar Azure Kognitiv sökning-tjänsten i samma region som dina data. Här är lite information från [prissättnings sidan för bandbredd](https://azure.microsoft.com/pricing/details/bandwidth/):
-
-+ Inkommande data: Microsoft debiterar inga inkommande data till någon tjänst i Azure. 
-
-+ Utgående data: utgående data refererar till frågeresultat. Kognitiv sökning debiteras inte för utgående data, men utgående avgifter från Azure är möjliga om tjänsterna är i olika regioner. Dessa avgifter ingår inte i din Azure Kognitiv sökning-faktura. De anges här eftersom om du skickar resultat till andra regioner eller appar som inte är Azure-appar kan du se att dessa kostnader avspeglas i din totala faktura.
-
-### <a name="ai-enrichment-with-cognitive-services"></a>AI-anrikning med Cognitive Services
-
-För [AI-anrikning](cognitive-search-concept-intro.md)bör du planera att [koppla en fakturerbar Azure Cognitive Services-resurs](cognitive-search-attach-cognitive-services.md), i samma region som Azure kognitiv sökning, på pris nivån S0 för att betala per användning. Det finns ingen fast kostnad för att bifoga Cognitive Services. Du betalar bara för den bearbetning du behöver.
-
-| Åtgärd | Fakturerings påverkan |
-|-----------|----------------|
-| Dokument sprickor, text extrahering | Kostnadsfri |
-| Dokument sprickor, avbildnings extrahering | Faktureras enligt antalet bilder som har extraherats från dina dokument. I en [indexerare-konfiguration](/rest/api/searchservice/create-indexer#indexer-parameters)är **imageAction** den parameter som utlöser avbildnings extrahering. Om **imageAction** är inställt på "ingen" (standard) debiteras du inte för avbildnings extrahering. Hastigheten för avbildnings extrahering dokumenteras på sidan med [pris information](https://azure.microsoft.com/pricing/details/search/) för Azure kognitiv sökning.|
-| [Inbyggda kognitiva kompetenser](cognitive-search-predefined-skills.md) | Faktureras enligt samma takt som om du har utfört uppgiften genom att använda Cognitive Services direkt. |
-| Anpassade färdigheter | En anpassad färdighet är funktioner som du anger. Kostnaden för att använda en anpassad färdighet beror helt på om anpassad kod anropar andra avgiftsbelagda tjänster. |
-
-Med funktionen för [förhands granskning (för hands version)](cognitive-search-incremental-indexing-conceptual.md) kan du tillhandahålla ett cacheminne som gör det möjligt för indexeraren att vara mer effektivt när du bara kör de kognitiva färdigheter som behövs om du ändrar din färdigheter i framtiden, vilket sparar tid och pengar.
-
-<a name="search-units"></a>
-
-## <a name="billing-formula-r-x-p--su"></a>Fakturerings formel (R x P = SU)
-
-Det viktigaste fakturerings konceptet att förstå för Azure Kognitiv sökning-åtgärder är *Sök enheten* (SU). Eftersom Azure Kognitiv sökning är beroende av både repliker och partitioner för indexering och frågor, är det inte bra att fakturera med bara en eller ett annat. Faktureringen baseras i stället på en sammansatt av båda.
-
-SU är produkten av de *repliker* och *partitioner* som används av en tjänst: **(R x P = SU)**.
-
-Varje tjänst börjar med en SU (en replik multiplicerad med en partition) som minimum. Det maximala antalet för en tjänst är 36 SUs. Det här max värdet kan nås på flera sätt: 6 partitioner x 6 repliker eller 3 partitioner x 12 repliker, till exempel. Det är vanligt att använda mindre än den totala kapaciteten (t. ex. en 3-replikering, en 3-partitions tjänst som faktureras som 9 SUs). Se diagrammet [partition och replik kombinations](search-capacity-planning.md#chart) diagram för giltiga kombinationer.
-
-Fakturerings takten är per timme per SU. Varje nivå har en progressivt högre hastighet. Högre nivåer levereras med större och speedier partitioner, och detta bidrar till en högre pris per timme för den nivån. Du kan visa priserna för varje nivå på [pris informations](https://azure.microsoft.com/pricing/details/search/) sidan.
-
-De flesta kunder tar bara en del av den totala kapaciteten online, där resten av reserven behålls. För fakturering bestämmer antalet partitioner och repliker som du ansluter online, vilket avgör vad du betalar per timme.
+Den här pris modellen baseras på konceptet med att tillämpa fakturerings taxan på antalet *Sök enheter* (SU) som används av en Sök tjänst. Alla tjänster etablerades från början till en SU, men du kan öka SUs-filen genom att lägga till partitioner eller repliker för att hantera större arbets belastningar. Mer information finns i [så här uppskattar du kostnader för en Sök tjänst](search-sku-manage-costs.md).
 
 ## <a name="next-steps"></a>Nästa steg
 
-Kostnads hantering är en integrerad del av kapacitets planeringen. I nästa steg ska du fortsätta med följande artikel för vägledning om hur du uppskattar kapacitet och hanterar kostnader.
+Det bästa sättet att välja en pris nivå är att starta med en lägsta-kostnad-nivå och sedan tillåta erfarenhet och testning att informera ditt beslut om att behålla tjänsten eller skapa en ny på en högre nivå. För nästa steg rekommenderar vi att du skapar en Sök tjänst på en nivå som kan hantera den test nivå som du föreslår att göra, och sedan granska följande vägledning för att få rekommendationer om hur du uppskattar kostnader och kapacitet.
 
-> [!div class="nextstepaction"]
-> [Så här hanterar du kostnader och beräknings kapacitet i Azure Kognitiv sökning](search-sku-manage-costs.md)
++ [Skapa en Sök tjänst](search-create-service-portal.md)
++ [Uppskatta kostnader](search-sku-manage-costs.md)
++ [Beräknad kapacitet](search-sku-manage-costs.md)

@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 12/09/2020
+ms.date: 01/15/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: a1307aa19c66e3f6fcb71f677e6c67551d2a01f9
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: f799ed5c18537b862a4971075ae9107b7a722fdd
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96928332"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251513"
 ---
 # <a name="frequently-asked-questions-faq-about-the-microsoft-authenticator-app"></a>Vanliga frågor och svar om Microsoft Authenticator-appen
 
@@ -33,13 +33,17 @@ Microsoft Authenticator-appen ersatte Azure Authenticator-appen och det är den 
 
 S **: när** du registrerar en enhet får enheten åtkomst till din organisations tjänster och ger inte din organisation åtkomst till din enhet.
 
-## <a name="too-many-app-permissions"></a>För många app-behörigheter
+### <a name="too-many-app-permissions"></a>För många app-behörigheter
 
 **F**: Varför begär appen så många behörigheter?
 
-**A**: här är en fullständig lista över behörigheter som kan tillfrågas och hur de används av appen. Vilka behörigheter som visas beror på vilken typ av telefon du har.
+**A**: här är en fullständig lista över behörigheter som kan tillfrågas och hur de används av appen. Vilka behörigheter som visas beror på vilken typ av telefon du har. Ibland vill din organisation veta din **plats** innan du får åtkomst till vissa resurser. Appen kommer att begära den här behörigheten endast om din organisation har en princip som kräver plats.
 
-- **Plats**. Ibland vill din organisation veta din plats innan du får åtkomst till vissa resurser. Appen kommer att begära den här behörigheten endast om din organisation har en princip som kräver plats. 
+### <a name="error-adding-account"></a>Fel vid tillägg av konto
+
+**F**: när jag försöker lägga till mitt konto visas ett fel meddelande om att kontot som du försöker lägga till inte är giltigt för tillfället. Kontakta administratören för att åtgärda det här problemet (verifiering av unikhet). " Vad ska jag göra?
+
+**A**: kontakta administratören och meddela att du inte kan lägga till ditt konto till autentisering på grund av ett verifierings problem. Du måste ange ditt inloggnings namn så att administratören kan se dig i din organisation.
 
 ### <a name="legacy-apns-support-deprecated"></a>Äldre APN-stöd är inaktuellt
 

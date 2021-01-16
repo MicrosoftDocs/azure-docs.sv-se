@@ -7,13 +7,13 @@ ms.reviewer: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 05/19/2019
-ms.openlocfilehash: 9a4b57f3813adfeee53891f733dd4d303dbbef8d
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 01/15/2021
+ms.openlocfilehash: a5c93244862d72f9c8ea2928c41e699302b1752b
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96497137"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98249451"
 ---
 # <a name="transform-data-securely-by-using-mapping-data-flow"></a>Transformera data på ett säkert sätt med hjälp av data flödet för mappning
 
@@ -34,6 +34,7 @@ I den här självstudien gör du följande:
 > * Övervaka en data flödes aktivitet.
 
 ## <a name="prerequisites"></a>Förutsättningar
+
 * **Azure-prenumeration**. Om du inte har en Azure-prenumeration kan du skapa ett [kostnads fritt Azure-konto](https://azure.microsoft.com/free/) innan du börjar.
 * **Azure Storage-konto**. Du använder Data Lake Storage som *käll* -och *mottagar* data lager. Om du inte har ett lagringskonto finns det anvisningar om hur du skapar ett i [Skapa ett Azure Storage-konto](../storage/common/storage-account-create.md?tabs=azure-portal). *Se till att lagrings kontot bara tillåter åtkomst från valda nätverk.* 
 
@@ -64,12 +65,14 @@ I det här steget skapar du en data fabrik och öppnar Data Factory gränssnitte
 1. Klicka på **Författare och övervakare** för att starta användargränssnittet för datafabriken på en separat flik.
 
 ## <a name="create-an-azure-ir-in-data-factory-managed-virtual-network"></a>Skapa en Azure IR i Data Factory hanterade Virtual Network
+
 I det här steget skapar du en Azure IR och aktiverar Data Factory hanterade Virtual Network.
 
 1. I Data Factory portal går du till **Hantera** och väljer **nytt** för att skapa en ny Azure IR.
 
    ![Skärm bild som visar hur du skapar en ny Azure IR.](./media/tutorial-copy-data-portal-private/create-new-azure-ir.png)
-1. Välj alternativet **Azure** IR.
+1. På sidan **installation av integration runtime** väljer du vilken integrerings körning som ska skapas baserat på de funktioner som krävs. I den här självstudien väljer du **Azure, egen värd** och klickar sedan på **Fortsätt**. 
+1. Välj **Azure** och klicka sedan på **Fortsätt** för att skapa en Azure integration Runtime.
 
    ![Skärm bild som visar en ny Azure IR.](./media/tutorial-copy-data-portal-private/azure-ir.png)
 

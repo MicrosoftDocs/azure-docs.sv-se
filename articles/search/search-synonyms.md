@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/18/2020
-ms.openlocfilehash: b62621a77f383b5c6413e7c187e7ba3d60beabad
-ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
+ms.openlocfilehash: 5e608d38ff70d51b569088629a6d80cb08e74ed4
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97732095"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251632"
 ---
 # <a name="synonyms-in-azure-cognitive-search"></a>Synonymer i Azure Kognitiv sökning
 
@@ -21,9 +21,9 @@ Med synonym Maps kan du associera motsvarande villkor och expandera omfånget f�
 
 ## <a name="create-synonyms"></a>Skapa synonymer
 
-En synonym karta är en till gång som kan skapas en gång och användas av många index. [Tjänst nivån](search-limits-quotas-capacity.md#synonym-limits) avgör hur många synonymer som du kan skapa, från 3 synonym kartor för kostnads fria och grundläggande nivåer, upp till 20 för standard nivåerna. 
+En synonym karta är en till gång som kan skapas en gång och användas av många index. [Tjänst nivån](search-limits-quotas-capacity.md#synonym-limits) avgör hur många synonymer som du kan skapa, från tre synonym kartor för kostnads fria och grundläggande nivåer, upp till 20 för standard nivåerna. 
 
-Du kan skapa flera synonymer för olika språk, till exempel engelska och franska versioner, eller lexikon om ditt innehåll innehåller teknisk eller dold terminologi. Även om du kan skapa flera synonym mappningar kan för närvarande ett fält endast använda en av dem.
+Du kan skapa flera synonymer för olika språk, till exempel engelska och franska versioner, eller lexikon om ditt innehåll innehåller teknisk eller dold terminologi. Även om du kan skapa flera synonymer i din Sök tjänst kan ett fält bara använda en av dem.
 
 En synonym mappning består av namn, format och regler som fungerar som synonym mappnings poster. Det enda format som stöds är `solr` och `solr` formatet bestämmer regel konstruktionen.
 
@@ -50,7 +50,7 @@ Mappnings reglerna följer synonym filter specifikationen med öppen källkod f�
 
 Varje regel måste avgränsas med det nya rad specialtecknet ( `\n` ). Du kan definiera upp till 5 000 regler per synonym mappning i en kostnads fri tjänst och 20 000 regler per karta på andra nivåer. Varje regel kan ha upp till 20 utökningar (eller objekt i en regel). Mer information finns i [synonym gränser](search-limits-quotas-capacity.md#synonym-limits).
 
-Fråga parser kommer att sänka versaler eller versaler, men om du vill bevara specialtecken i strängen, till exempel ett kommatecken eller ett bindestreck, lägger du till lämpliga escape-tecken när du skapar synonym kartan. 
+Fråga parser kommer att sänka versaler eller versaler, men om du vill bevara specialtecken i strängen, till exempel ett kommatecken eller ett bindestreck, lägger du till lämpliga escape-tecken när du skapar synonym kartan.
 
 ### <a name="equivalency-rules"></a>Regler för likvärdighet
 
@@ -85,7 +85,7 @@ I det här fallet kommer en fråga för `Washington` `Wash.` eller `WA` att skri
 
 ### <a name="escaping-special-characters"></a>Hoppar över specialtecken
 
-Om du behöver definiera synonymer som innehåller kommatecken eller andra specialtecken kan du kringgå dem med ett omvänt snedstreck, som i det här exemplet:
+Synonymer analyseras under frågans bearbetning. Om du behöver definiera synonymer som innehåller kommatecken eller andra specialtecken kan du kringgå dem med ett omvänt snedstreck, som i det här exemplet:
 
 ```json
 {
@@ -143,11 +143,15 @@ POST /indexes?api-version=2020-06-30
 
 Att lägga till synonymer ger inte nya krav på fråge konstruktion. Du kan utfärda term-och fras frågor precis som du gjorde innan du lade till synonymer. Den enda skillnaden är att om en frågeterm finns i synonym kartan, expanderar eller skriver du om termen eller frasen, beroende på vilken regel som används.
 
-## <a name="how-synonyms-interact-with-other-features"></a>Hur synonymer interagerar med andra funktioner
+## <a name="how-synonyms-are-used-during-query-execution"></a>Hur synonymer används vid frågekörningen
 
-Funktionen synonymer skriver om den ursprungliga frågan med synonymer med operatorn OR. Av den anledningen kan träff markeringar och bedömnings profiler behandla den ursprungliga termen och synonymer som likvärdiga.
+Synonymer är en metod för att utöka en fråga som kompletterar innehållet i ett index med motsvarande villkor, men endast för fält som har en synonym tilldelning. Om en fråga som omfattas av en fråga *utesluter* ett synonymt-aktiverat fält visas inte matchningar från synonym kartan.
 
-Synonymer gäller endast för Sök frågor och stöds inte för filter, ansikts, komplettera automatiskt eller förslag. Autoavsluta och förslag baseras bara på den ursprungliga termen. synonym matchningar visas inte i svaret.
+Synonymer är underställda samma text analys som det associerade fältet för synonyma, aktiverade fält. Om ett fält till exempel analyseras med hjälp av standard-Lucene Analyzer, kommer synonym villkoren också att omfattas av standard-Lucene Analyzer vid tidpunkten för frågan. Om du vill bevara interpunktion, t. ex. punkter eller bindestreck, på synonym termen, använder du en innehålls-bevarande analys i fältet.
+
+Internt skriver funktionen synonymer om den ursprungliga frågan med synonymer med operatorn OR. Av den anledningen kan träff markeringar och bedömnings profiler behandla den ursprungliga termen och synonymer som likvärdiga.
+
+Synonymer gäller endast för formulär med fritext frågor och stöds inte för filter, ansikts, komplettera automatiskt eller förslag. Autoavsluta och förslag baseras bara på den ursprungliga termen. synonym matchningar visas inte i svaret.
 
 Synonym expansionar gäller inte för sökord med jokertecken. termerna prefix, fuzzy och regex expanderas inte.
 

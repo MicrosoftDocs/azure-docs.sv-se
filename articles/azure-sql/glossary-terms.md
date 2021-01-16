@@ -11,49 +11,45 @@ ms.topic: reference
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 01/22/2020
-ms.openlocfilehash: 18ff2c9690de1708cd8382d83a0c01662a8e6fb0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 12/09/2020
+ms.openlocfilehash: 8bd1e312463cf89ae30d54bc4a32a497fc7a9a78
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91619791"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98249660"
 ---
 # <a name="azure-sql-database-glossary-of-terms"></a>Azure SQL Database ord lista med villkor
 [!INCLUDE[appliesto-asf](includes/appliesto-asf.md)]
 
 ## <a name="azure-sql-database"></a>Azure SQL Database
 
-|Kontext|Period|Mer information|
+|Kontext|Term|Mer information|
 |:---|:---|:---|
 |Azure-tjänst|Azure SQL Database eller SQL Database|[Azure SQL Database](database/sql-database-paas-overview.md)|
 |Köpmodell|DTU-baserad inköps modell|[DTU-baserad inköps modell](database/service-tiers-dtu.md)|
 ||Köpmodell baserad på virtuell kärna|[Köpmodell baserad på virtuell kärna](database/service-tiers-vcore.md)|
 |Distributions alternativ |Enskild databas|[Enkla databaser](database/single-database-overview.md)|
 ||Elastisk pool|[Elastisk pool](database/elastic-pool-overview.md)|
-|Tjänstnivå|Basic, standard, Premium, Generell användning, storskalig Affärskritisk|För tjänst nivåer i vCore-modellen, se [SQL Database tjänst nivåer](database/service-tiers-vcore.md#service-tiers). För tjänst nivåer i DTU-modellen, se [DTU-modellen](database/service-tiers-dtu.md#compare-the-dtu-based-service-tiers).|
+|Tjänstenivå|Basic, standard, Premium, Generell användning, storskalig Affärskritisk|För tjänst nivåer i vCore-modellen, se [SQL Database tjänst nivåer](database/service-tiers-vcore.md#service-tiers). För tjänst nivåer i DTU-modellen, se [DTU-modellen](database/service-tiers-dtu.md#compare-the-dtu-based-service-tiers).|
 |Beräkningsnivå|Serverlös databearbetning|[Serverlös databearbetning](database/service-tiers-vcore.md#compute-tiers)
 ||Allokerad beräkning|[Allokerad beräkning](database/service-tiers-vcore.md#compute-tiers)
-|Beräknings generation|Gen5, M-serien, Fsv2-serien|[Maskin varu generationer](database/service-tiers-vcore.md#hardware-generations)
+|Beräknings generation|Gen5, M-serien, Fsv2-serien, DC-serien|[Maskin varu generationer](database/service-tiers-vcore.md#hardware-generations)
 |Server entitet| Server |[Logiska SQL-servrar](database/logical-servers.md)|
 |Resurstyp|V-kärna|En processor kärna som tillhandahålls för beräknings resursen för en enskild databas, elastisk pool. |
 ||Beräknings storlek och lagrings belopp|Compute-storlek är den maximala mängden processor, minne och andra icke-lagrings resurser som är tillgängliga för en enskild databas eller elastisk pool.  Lagrings storleken är den maximala mängden lagring som är tillgänglig för en enskild databas eller elastisk pool. För storleks alternativ i vCore-modellen, se [vCore-enkla databaser](database/resource-limits-vcore-single-databases.md)och [vCore elastiska pooler](database/resource-limits-vcore-elastic-pools.md).  (.. /managed-instance/resource-limits.md).  Storleks alternativ i DTU-modellen finns i både [DTU-databaser](database/resource-limits-dtu-single-databases.md) och [elastiska DTU-pooler](database/resource-limits-dtu-elastic-pools.md).
 
 ## <a name="azure-sql-managed-instance"></a>Hanterad Azure SQL-instans
 
-|Kontext|Period|Mer information|
+|Kontext|Term|Mer information|
 |:---|:---|:---|
 |Azure-tjänst|Hanterad Azure SQL-instans|[SQL-hanterad instans](managed-instance/sql-managed-instance-paas-overview.md)|
 |Köpmodell|Köpmodell baserad på virtuell kärna|[Köpmodell baserad på virtuell kärna](database/service-tiers-vcore.md)|
 |Distributions alternativ |Enskild instans|[Enskild instans](managed-instance/sql-managed-instance-paas-overview.md)|
 ||Instans-pool (för hands version)|[Instanspooler](managed-instance/instance-pools-overview.md)|
-|Tjänstnivå|Generell användning Affärskritisk|[SQL-hanterad instans tjänst nivåer](managed-instance/sql-managed-instance-paas-overview.md#service-tiers)|
+|Tjänstenivå|Generell användning Affärskritisk|[SQL-hanterad instans tjänst nivåer](managed-instance/sql-managed-instance-paas-overview.md#service-tiers)|
 |Beräkningsnivå|Allokerad beräkning|[Allokerad beräkning](database/service-tiers-vcore.md#compute-tiers)|
 |Beräknings generation|Gen5|[Maskin varu generationer](database/service-tiers-vcore.md#hardware-generations)
 |Server entitet|Hanterad instans eller instans| Ej tillämpligt eftersom SQL-hanterad instans är i sig själva servern |
 |Resurstyp|V-kärna|En processor kärna som tillhandahålls för beräknings resursen för SQL-hanterad instans.|
 ||Beräknings storlek och lagrings belopp|Compute-storlek är den maximala mängden processor, minne och andra icke-lagrings resurser för SQL-hanterad instans.  Lagrings storleken är den maximala lagrings mängden som är tillgänglig för en SQL-hanterad instans.  För storleks alternativ, [SQL-hanterade instanser](managed-instance/resource-limits.md). |
-
-## <a name="sql-on-azure-vm"></a>SQL på virtuell Azure-dator
-
-behöver du mer saker här

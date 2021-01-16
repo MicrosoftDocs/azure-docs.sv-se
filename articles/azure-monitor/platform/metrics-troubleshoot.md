@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 7c3af0865282475ded0172d18aecad1dfb61721b
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: 5219553fe300d607212af1ef6cedf72ce6506762
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97814269"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250340"
 ---
 # <a name="troubleshooting-metrics-charts"></a>Felsöka måttdiagram
 
@@ -48,7 +48,7 @@ Vissa resurser genererar inte mått regelbundet. Exempelvis samlar inte Azure in
 
 ### <a name="all-metric-values-were-outside-of-the-locked-y-axis-range"></a>Alla mått låg utanför det låsta y-axelintervallet
 
-Genom att [låsa gränserna för y-axeln i diagrammet](metrics-charts.md#lock-boundaries-of-chart-y-axis) kan du oavsiktligt göra så att diagramlinjen inte visas i diagrammets visningsområdet. Om y-axeln exempelvis är låst till ett intervall mellan 0 % och 50 % och måttet har ett konstant värde på 100 %, återges linjen alltid utanför det synliga området, vilket gör att diagrammet verkar vara tomt.
+Genom att [låsa gränserna för y-axeln i diagrammet](metrics-charts.md#locking-the-range-of-the-y-axis) kan du oavsiktligt göra så att diagramlinjen inte visas i diagrammets visningsområdet. Om y-axeln exempelvis är låst till ett intervall mellan 0 % och 50 % och måttet har ett konstant värde på 100 %, återges linjen alltid utanför det synliga området, vilket gör att diagrammet verkar vara tomt.
 
 **Lösning:** Kontrol lera att diagrammets y-Axels gränser inte är låsta utanför intervallet för mått värden. Om gränserna för y-axeln är låsta kan du tillfälligt återställa dem så att måttvärdena inte faller utanför diagramintervallet. Vi avråder dig från att låsa y-axelintervallet med automatisk kornighet för diagram med aggregeringar som **summa**, **min** och **max** eftersom deras värden ändras med kornigheten när webbläsarfönstret eller skärmupplösningen ändras. Om du ändrar kornigheten kan det göra att du inte ser något i visningsområdet i diagrammet.
 

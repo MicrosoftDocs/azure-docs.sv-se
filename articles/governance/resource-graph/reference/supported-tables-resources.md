@@ -1,15 +1,15 @@
 ---
 title: Resurs typer som stöds Azure Resource Manager
 description: Ange en lista över de Azure Resource Manager resurs typer som stöds av Azure Resource Graph och ändrings historik.
-ms.date: 11/20/2020
+ms.date: 01/06/2021
 ms.topic: reference
 ms.custom: generated
-ms.openlocfilehash: fa5a5f5741f05e6f5f30a3d04958ba0b450a1bb7
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 4198c60bc298eb6a1b9902bb92e3df44648b2c0b
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94988348"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251785"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Resurs diagram tabell och referens för resurs typ i Azure
 
@@ -35,33 +35,57 @@ Azure Resource Graph stöder följande **resurs typer** av [Azure Resource Manag
 - Microsoft. Maintenance/configurationassignments
 - Microsoft. Maintenance/uppdateringar
 
+## <a name="patchassessmentresources"></a>patchassessmentresources
+
+- Microsoft. Compute/virtualmachines/patchassessmentresults
+- Microsoft. Compute/virtualmachines/patchassessmentresults/softwarepatches
+- Microsoft. hybridcompute/Machines/patchassessmentresults
+- Microsoft. hybridcompute/Machines/patchassessmentresults/softwarepatches
+
+## <a name="patchinstallationresources"></a>patchinstallationresources
+
+- Microsoft. Compute/virtualmachines/patchinstallationresults
+- Microsoft. Compute/virtualmachines/patchinstallationresults/softwarepatches
+- Microsoft. hybridcompute/Machines/patchinstallationresults
+- Microsoft. hybridcompute/Machines/patchinstallationresults/softwarepatches
+
 ## <a name="policyresources"></a>policyresources
 
 - Microsoft. policyinsights/policystates
 
+## <a name="recoveryservicesresources"></a>recoveryservicesresources
+
+- Microsoft. dataprotection/backupvaults/backupinstances
+- Microsoft. dataprotection/backupvaults/backupjobs
+- Microsoft. dataprotection/backupvaults/backuppolicies
+- Microsoft. recoveryservices/valv/aviseringar
+- Microsoft. RecoveryServices/valv/backupFabrics/protectionContainers/protectedItems (säkerhets kopierings objekt)
+- Microsoft. recoveryservices/valv/backupjobs
+- Microsoft. recoveryservices/valv/backuppolicies
+
 ## <a name="resourcecontainers"></a>resourcecontainers
 
-- Microsoft. Resources/subscriptions
-- Microsoft. Resources/Subscriptions/ResourceGroups
+- Microsoft. Resources/Subscriptions (Subscriptions)
+- Microsoft. Resources/Subscriptions/resourceGroups (resurs grupper)
 
 ## <a name="resources"></a>resources
 
-- 84codes. CloudAMQP/servers
-- Citrix. Services/xenappessentials
-- Citrix. Services/xendesktopessentials
-- conexlink. mycloudit/konton
-- Crypteron. datasecurity/Apps
+- 84codes. CloudAMQP/servrar (CloudAMQP)
+- Citrix. Services/XenAppEssentials (Citrix Virtual Apps Essentials)
+- Citrix. Services/XenDesktopEssentials (Citrix Virtual Desktops Essentials)
+- Conexlink. MyCloudIt/accounts (MyCloudIT – Azure Skriv bords värd)
+- Crypteron. DataSecurity/Apps (Crypteron)
 - Gridpro. evops/konton
 - Gridpro. evops/Accounts/eventrules
 - Gridpro. evops/Accounts/requesttemplates
 - Gridpro. evops/Accounts/views
-- Hive. strömning/tjänster
+- Hive. strömma/tjänster (Hive-direktuppspelning)
 - Incapsula. WAF/konton
-- livearena. broadcast/tjänster
-- MailJet. e-post/tjänster
-- Microsoft. AAD/domainservices
+- LiveArena. broadcast/tjänster (LiveArena broadcast)
+- MailJet. email/Services (MailJet e-posttjänst)
+- Microsoft. AAD/domainServices (Azure AD Domain Services)
 - Microsoft. aadiam/azureadmetrics
-- Microsoft. aadiam/privatelinkforazuread
+- Microsoft. aadiam/privateLinkForAzureAD (privat länk för Azure AD)
 - Microsoft. aadiam/klient organisationer
 - Microsoft. agfoodplatform/farmbeats
 - Microsoft. aisupercomputer/konton
@@ -70,29 +94,30 @@ Azure Resource Graph stöder följande **resurs typer** av [Azure Resource Manag
 - Microsoft. alertsmanagement/actionrules
 - Microsoft. alertsmanagement/resourcehealthalertrules
 - Microsoft. alertsmanagement/smartdetectoralertrules
-- Microsoft. AnalysisServices/servers
-- Microsoft. API Management/Service
+- Microsoft. AnalysisServices/-servrar (Analysis Services)
+- Microsoft. anybuild/kluster
+- Microsoft. API Management/Service (API Management Services)
 - Microsoft. appassessment/migrateprojects
-- Microsoft. appconfiguration/configurationstores
-- Microsoft. appplatform/våren
+- Microsoft. AppConfiguration/configurationStores (app Configuration)
+- Microsoft. AppPlatform/våren (Azure våren Cloud)
 - Microsoft. Archive/Collections
-- Microsoft. attestering/attestationproviders
-- Microsoft. Authorization/resourcemanagementprivatelinks
+- Microsoft. attestering/attestationProviders (attesterings leverantörer)
+- Microsoft. Authorization/resourceManagementPrivateLinks (privata Länkar för resurs hantering)
 - Microsoft. autohantering/konton
 - Microsoft. automanage/configurationprofilepreferences
-- Microsoft. Automation/automationaccounts
+- Microsoft. Automation/AutomationAccounts (Automation-konton)
 - Microsoft. Automation/automationaccounts/konfigurationer
-- Microsoft. Automation/automationaccounts/Runbooks
+- Microsoft. Automation/automationAccounts/Runbooks (Runbook)
 - Microsoft. autonomousdevelopmentplatform/konton
-- Microsoft. autonomoussystems/arbets ytor
-- Microsoft. AVS/privateclouds
+- Microsoft. AutonomousSystems/arbets ytor (Bonsai)
+- Microsoft. AVS/privateClouds (AVS-privata moln)
 - Microsoft. azconfig/configurationstores
-- Microsoft. azureactivedirectory/b2cdirectories
-- Microsoft. azureactivedirectory/guestusages
-- Microsoft. azurearcdata/datacontrollers
-- Microsoft. azurearcdata/postgresinstances
-- Microsoft. azurearcdata/sqlmanagedinstances
-- Microsoft. azurearcdata/sqlserverinstances
+- Microsoft. AzureActiveDirectory/b2cDirectories (B2C-klienter)
+- Microsoft. AzureActiveDirectory/guestUsages (gäst användningar)
+- Microsoft. AzureArcData/dataControllers (Azure Arc data controllers)
+- Microsoft. AzureArcData/postgresInstances (Azure Database for PostgreSQL Server grupper – Azure-båge)
+- Microsoft. AzureArcData/sqlManagedInstances (SQL Managed instances – Azure ARC)
+- Microsoft. AzureArcData/sqlServerInstances (SQL Server-Azure-båge)
 - Microsoft. azuredata/datacontrollers
 - Microsoft. azuredata/hybriddatamanagers
 - Microsoft. azuredata/postgresinstances
@@ -100,87 +125,92 @@ Azure Resource Graph stöder följande **resurs typer** av [Azure Resource Manag
 - Microsoft. azuredata/sqlinstances
 - Microsoft. azuredata/sqlmanagedinstances
 - Microsoft. azuredata/sqlserverinstances
-- Microsoft. azuredata/sqlserverregistrations
+- Microsoft. AzureData/sqlServerRegistrations (SQL Server register)
 - Microsoft. azurestack/edgesubscriptions
 - Microsoft. azurestack/linkedsubscriptions
-- Microsoft. azurestack/-registreringar
-- Microsoft. azurestackhci/kluster
+- Microsoft. Azurestack/-registreringar (Azure Stack hubbar)
+- Microsoft. AzureStackHCI/kluster (Azure Stack HCI)
 - Microsoft. baremetal/consoleconnections
-- Microsoft. baremetal/crayservers
-- Microsoft. baremetal/monitoringservers
-- Microsoft. baremetalinfrastructure/baremetalinstances
-- microsoft.batCH/batchaccounts
+- Microsoft. BareMetal/crayServers (Cray-servrar)
+- Microsoft. BareMetal/monitoringServers (övervaknings servrar)
+- Microsoft. BareMetalInfrastructure/bareMetalInstances (BareMetal-instanser)
+- Microsoft.BatCH/batchAccounts (batch-konton)
 - microsoft.batChai/kluster
 - microsoft.batChai/fileservers
 - microsoft.batChai/Jobs
 - microsoft.batChai/arbets ytor
-- Microsoft. Bing/konton
-- Microsoft. bingkartssökning/mapapis
+- Microsoft. Bing/konton (Bing-resurser)
+- Microsoft. Bingkartssökning/mapApis (Bing Maps-API för företag)
 - Microsoft. biztalkservices/BizTalk
-- Microsoft. blockchain/blockchainmembers
-- Microsoft. blockchain/cordamembers
-- Microsoft. blockchain/Watcher
-- Microsoft. botservice/botservices
-- Microsoft. cache/Redis
-- Microsoft. cache/redisenterprise
-- Microsoft. CDN/cdnwebapplicationfirewallpolicies
-- Microsoft. CDN/profiler
-- Microsoft. CDN/profiler/slut punkter
-- Microsoft. certificateregistration/certificateorders
+- Microsoft. blockchain/blockchainMembers (Azure blockchain-tjänsten)
+- Microsoft. blockchain/cordaMembers (Sladdara)
+- Microsoft. blockchain/Watcher (blockchain Data Manager)
+- Microsoft. BotService/botServices (bot-tjänster)
+- Microsoft. cache/Redis (Azure cache för Redis)
+- Microsoft. cache/RedisEnterprise (Redis Enterprise)
+- Microsoft. CDN/CdnWebApplicationFirewallPolicies (brand Väggs principer för webb program (WAF))
+- Microsoft. CDN/profiler (CDN-profiler)
+- Microsoft. CDN/profiler/afdendpoints
+- Microsoft. CDN/profiler/slut punkter (slut punkter)
+- Microsoft. CertificateRegistration/certificateOrders (App Service certifikat)
 - Microsoft. kaos/chaosexperiments
-- Microsoft. classiccompute/domän namn
-- Microsoft. classiccompute/virtualmachines
-- Microsoft. classicnetwork/networksecuritygroups
-- Microsoft. classicnetwork/reservedips
-- Microsoft. classicnetwork/virtualnetworks
-- Microsoft. classicstorage/storageaccounts
+- Microsoft. classicCompute/domän namn (moln tjänster (klassisk))
+- Microsoft. ClassicCompute/VirtualMachines (Virtual Machines (klassisk))
+- Microsoft. ClassicNetwork/networkSecurityGroups (nätverks säkerhets grupper (klassisk))
+- Microsoft. ClassicNetwork/reservedIps (Reserverad IP adresser (klassisk))
+- Microsoft. ClassicNetwork/virtualNetworks (Virtual Networks (klassisk))
+- Microsoft. ClassicStorage/StorageAccounts (lagrings konton (klassisk))
 - Microsoft. Clouds/Accounts
 - Microsoft. cloudsearch/index
-- Microsoft. cloudtest/konton
-- Microsoft. cloudtest/hostedpools
-- Microsoft. cloudtest/images
-- Microsoft. cloudtest/pooler
+- Microsoft. CloudTest/konton (CloudTest-konton)
+- Microsoft. CloudTest/hostedpools (1ES Hosted Pools)
+- Microsoft. CloudTest/images (CloudTest-avbildningar)
+- Microsoft. CloudTest/pooler (CloudTest pooler)
 - Microsoft. codespaces/-planer
-- Microsoft. Cognition/syntheticsaccounts
-- Microsoft. cognitiveservices/konton
-- Microsoft. Compute/availabilitysets
-- Microsoft. Compute/cloudservices
-- Microsoft. Compute/diskaccesses
-- Microsoft. Compute/diskencryptionsets
-- Microsoft. Compute/disks
-- Microsoft. Compute/Galleri
+- Microsoft. Cognition/syntheticsAccounts (syntetiska konton)
+- Microsoft. CognitiveServices/accounts (Cognitive Services)
+- Microsoft. Compute/availabilitySets (tillgänglighets uppsättningar)
+- Microsoft. Compute/capacityreservationgroups
+- Microsoft. Compute/capacityreservationgroups/capacityreservations
+- Microsoft. Compute/capacityreservations
+- Microsoft. Compute/cloudServices (moln tjänster (utökad support))
+- Microsoft. Compute/diskAccesses (åtkomst till disk)
+- Microsoft. Compute/diskEncryptionSets (disk krypterings uppsättningar)
+- Microsoft. Compute/disks (diskar)
+- Microsoft. Compute/gallerier (delade avbildnings gallerier)
 - Microsoft. Compute/Galleri/program
 - Microsoft. Compute/Galleri/program/versioner
-- Microsoft. Compute/Galleri/bilder
-- Microsoft. Compute/Galleri/avbildningar/versioner
-- Microsoft. Compute/hostgroups
-- Microsoft. Compute/hostgroups/hosts
-- Microsoft. Compute/images
-- Microsoft. Compute/proximityplacementgroups
+- Microsoft. Compute/Galleri/bilder (bild definitioner)
+- Microsoft. Compute/Galleri/bilder/versioner (bild versioner)
+- Microsoft. Compute/hostgroups (värd grupper)
+- Microsoft. Compute/hostgroups/Hosts (hosts)
+- Microsoft. Compute/images (images)
+- Microsoft. Compute/ProximityPlacementGroups (närhets placerings grupper)
 - Microsoft. Compute/restorepointcollections
 - Microsoft. Compute/sharedvmextensions
 - Microsoft. Compute/sharedvmextensions/versions
 - Microsoft. Compute/sharedvmimages
 - Microsoft. Compute/sharedvmimages/versions
-- Microsoft. Compute/ögonblicks bilder
-- Microsoft. Compute/sshpublickeys
+- Microsoft. Compute/ögonblicks bilder (ögonblicks bilder)
+- Microsoft. Compute/sshPublicKeys (SSH-nycklar)
 - Microsoft. Compute/Swiftlets
-- Microsoft. Compute/virtualmachines
+- Microsoft. Compute/VirtualMachines (virtuella datorer)
 - Microsoft. Compute/virtualmachines/tillägg
 - Microsoft. Compute/virtualmachines/runcommands
-- Microsoft. Compute/virtualmachinescalesets
-- Microsoft. Fluent/Organizations
-- Microsoft. connectedcache/cachenodes
-- Microsoft. containerinstance/containergroups
-- Microsoft. containerregistry/register
+- Microsoft. Compute/virtualMachineScaleSets (skalnings uppsättningar för virtuella datorer)
+- Microsoft. Fluent/Organizations (samflytande organisationer)
+- Microsoft. ConnectedCache/cacheNodes (anslutna cache-resurser)
+- Microsoft. connectedvehicle/platformaccounts
+- Microsoft. ContainerInstance/containerGroups (container instances)
+- Microsoft. ContainerRegistry/register (behållar register)
 - Microsoft. containerregistry/register/agentpools
 - Microsoft. containerregistry/register/buildtasks
-- Microsoft. containerregistry/register/replikeringar
+- Microsoft. ContainerRegistry/register/replikeringar (behållar register-replikeringar)
 - Microsoft. containerregistry/register/taskruns
 - Microsoft. containerregistry/register/uppgifter
-- Microsoft. containerregistry/register/Webhooks
-- Microsoft. container service/containerservices
-- Microsoft. container service/managedclusters
+- Microsoft. ContainerRegistry/register/Webhooks (Webhooks för container Registry)
+- Microsoft. container service/containerServices (Container Services (inaktuell))
+- Microsoft. container service/managedClusters (Kubernetes Services)
 - Microsoft. container service/openshiftmanagedclusters
 - Microsoft. contoso/kluster
 - Microsoft. contoso/anställda
@@ -188,230 +218,244 @@ Azure Resource Graph stöder följande **resurs typer** av [Azure Resource Manag
 - Microsoft. costmanagement/Connectors
 - Microsoft. customproviders/resourceproviders
 - Microsoft. d365customerinsights/instances
-- Microsoft. data-och-jobb
-- Microsoft. databoxedge/databoxedgedevices
-- Microsoft. databricks/arbets ytor
-- Microsoft. datacatalog/kataloger
+- Microsoft. data-och jobb (Data Box-enhet)
+- Microsoft. DataBoxEdge/dataBoxEdgeDevices (Azure Stack Edge/Data Box Gateway)
+- Microsoft. Databricks/arbets ytor (Azure Databricks tjänster)
+- Microsoft. DataCatalog/kataloger (Data Catalog)
 - Microsoft. datacatalog/datacatalogs
-- Microsoft. datacollaboration/arbets ytor
-- Microsoft. Datadog/övervakare
-- Microsoft. DataFactory/datafactories
-- Microsoft. DataFactory/fabriker
-- Microsoft. datalakeanalytics/konton
-- Microsoft. datalakestore/konton
-- Microsoft. data migration/Services
-- Microsoft. data migration/-tjänster/-projekt
+- Microsoft. DataCollaboration/arbets ytor (data samarbete)
+- Microsoft. Datadog/Monitors (Datadog)
+- Microsoft. DataFactory/dataFactories (data fabriker)
+- Microsoft. DataFactory/fabriker (data fabriker (v2))
+- Microsoft. DataLakeAnalytics/accounts (Data Lake Analytics)
+- Microsoft. DataLakeStore/accounts (Data Lake Storage Gen1)
+- Microsoft. data migration/controllers
+- Microsoft. data migration/Services (Azure Database migration Services)
+- Microsoft. data migration/Services/Projects (Azure Database migration Projects)
 - Microsoft. data migration/platser
-- Microsoft. dataprotection/backupvaults
+- Microsoft. DataProtection/BackupVaults (säkerhets kopierings valv)
 - Microsoft. dataprotection/resourceoperationgatekeepers
-- Microsoft. datashare/konton
-- Microsoft. dbformariadb/servers
-- Microsoft. dbformysql/flexibleservers
-- Microsoft. dbformysql/servers
-- Microsoft. dbforpostgresql/flexibleservers
-- Microsoft. dbforpostgresql/servergroups
-- Microsoft. dbforpostgresql/servers
-- Microsoft. dbforpostgresql/serversv2
+- Microsoft. DataShare/konton (data resurser)
+- Microsoft. DBforMariaDB/-servrar (Azure Database for MariaDB-servrar)
+- Microsoft. DBforMySQL/flexibleServers (Azure Database for MySQL flexibla servrar)
+- Microsoft. DBforMySQL/-servrar (Azure Database for MySQL-servrar)
+- Microsoft. DBforPostgreSQL/flexibleServers (Azure Database for PostgreSQL flexibla servrar)
+- Microsoft. DBforPostgreSQL/serverGroups (Azure Database for PostgreSQL Server grupper)
+- Microsoft. DBforPostgreSQL/-servrar (Azure Database for PostgreSQL-servrar)
+- Microsoft. DBforPostgreSQL/serversv2 (Azure Database for PostgreSQL servers v2)
 - Microsoft. dbforpostgresql/singleservers
 - Microsoft. delegatednetwork/Controller
 - Microsoft. delegatednetwork/delegatedsubnets
 - Microsoft. delegatednetwork/orchestratorinstances
 - Microsoft. deploymentmanager/artifactsources
-- Microsoft. deploymentmanager/distributioner
+- Microsoft. DeploymentManager/distributioner (distributioner)
 - Microsoft. deploymentmanager/servicetopologies
 - Microsoft. deploymentmanager/servicetopologies/Services
 - Microsoft. deploymentmanager/servicetopologies/Services/serviceunits
 - Microsoft. deploymentmanager/steg
-- Microsoft. desktopvirtualization/applicationgroups
-- Microsoft. desktopvirtualization/hostpools
-- Microsoft. desktopvirtualization/arbets ytor
+- Microsoft. DesktopVirtualization/ApplicationGroups (program grupper)
+- Microsoft. DesktopVirtualization/HostPools (värd-pooler)
+- Microsoft. desktopvirtualization/scalingplans
+- Microsoft. DesktopVirtualization/arbets ytor (arbets ytor)
 - Microsoft. Devices/elasticpools
 - Microsoft. Devices/elasticpools/iothubtenants
-- Microsoft. Devices/iothubs
-- Microsoft. Devices/provisioningservices
-- Microsoft. deviceupdate/konton
+- Microsoft. Devices/IotHubs (IoT Hub)
+- Microsoft. Devices/ProvisioningServices (enhets etablerings tjänster)
+- Microsoft. DeviceUpdate/accounts (enhets uppdatering för IoT Hub)
 - Microsoft. deviceupdate/Accounts/instances
-- Microsoft. DevOps/pipelines
+- Microsoft. DevOps/pipelines (DevOps starter)
 - Microsoft. devspaces/controllers
 - Microsoft. devtestlab/labcenters
-- Microsoft. devtestlab/Labs
+- Microsoft. DevTestLab/Labs (DevTest Labs)
 - Microsoft. devtestlab/Labs/servicerunners
-- Microsoft. devtestlab/Labs/virtualmachines
+- Microsoft. DevTestLab/Labs/virtualMachines (Virtual Machines)
 - Microsoft. devtestlab/scheman
-- Microsoft. digitaltwins/digitaltwinsinstances
-- microsoft.documentdb/databaseaccounts
-- Microsoft. domainregistration/Domains
+- Microsoft. DigitalTwins/digitalTwinsInstances (Azure Digitals dubbla)
+- Microsoft.DocumentDb/databaseAccounts (Azure Cosmos DB-konton)
+- Microsoft. DomainRegistration/Domains (App Service domäner)
+- Microsoft. Elastic/Monitors (elastiska)
 - Microsoft. enterpriseknowledgegraph/Services
-- Microsoft. eventgrid/Domains
-- Microsoft. eventgrid/partnernamespaces
-- Microsoft. eventgrid/partnerregistrations
-- Microsoft. eventgrid/partnertopics
-- Microsoft. eventgrid/systemtopics
-- Microsoft. eventgrid/ämnen
-- Microsoft. eventhub/Clusters
-- Microsoft. eventhub/Namespaces
-- Microsoft. experiment/experimentworkspaces
-- Microsoft. extendedlocation/customlocations
+- Microsoft. EventGrid/Domains (Event Grid domäner)
+- Microsoft. EventGrid/partnerNamespaces (Event Grid partner namnrum)
+- Microsoft. EventGrid/partnerRegistrations (Event Grid partner registreringar)
+- Microsoft. EventGrid/partnerTopics (avsnitt om Event Grid partner)
+- Microsoft. EventGrid/systemTopics (Event Grid system ämnen)
+- Microsoft. EventGrid/ämnen (Event Grid ämnen)
+- Microsoft. EventHub/Clusters (Event Hubs kluster)
+- Microsoft. EventHub/Namespaces (Event Hubs namnrum)
+- Microsoft. experiment/experimentWorkspaces (experiment-arbetsytor)
+- Microsoft. ExtendedLocation/CustomLocations (anpassade platser)
 - Microsoft. Falcon/namnrymder
 - Microsoft. footprintmonitoring/profiler
 - Microsoft. spel/titlar
-- Microsoft. genomik/konton
+- Microsoft. genomik/konton (Genomiks konton)
 - Microsoft. guestconfiguration/automanagedaccounts
-- Microsoft. hanaonazure/hanainstances
-- Microsoft. hanaonazure/sapmonitors
+- Microsoft. HanaOnAzure/hanaInstances (SAP HANA på Azure)
+- Microsoft. HanaOnAzure/sapMonitors (Azure Monitors för SAP-lösningar)
 - Microsoft. hardwaresecuritymodules/dedicatedhsms
-- Microsoft. HDInsight/kluster
-- Microsoft. healthcareapis/Services
+- Microsoft. HDInsight/kluster (HDInsight-kluster)
+- Microsoft. HealthBot/healthBots (Azure Health bot)
+- Microsoft. HealthcareApis/Services (Azure API för FHIR)
 - Microsoft. healthcareapis/Services/privateendpointconnections
-- Microsoft. hybridcompute/Machines
+- Microsoft. healthcareapis/arbets ytor
+- Microsoft. healthcareapis/arbets ytor/dicomservices
+- Microsoft. HybridCompute/Machines (servers Azure ARC)
 - Microsoft. hybridcompute/Machines/Extensions
-- Microsoft. hybridcompute/privatelinkscopes
-- Microsoft. hybriddata/datamanagers
-- Microsoft. hybridnetwork/enheter
-- Microsoft. hybridnetwork/networkfunctions
+- Microsoft. HybridCompute/privateLinkScopes (Azure Arc Private Link-omfång)
+- Microsoft. HybridData/dataManagers (StorSimple Data Manager)
+- Microsoft. HybridNetwork/enheter (Azure Network Function Manager – enheter)
+- Microsoft. HybridNetwork/networkFunctions (Azure Network Function Manager – Nätverks funktioner)
 - Microsoft. hybridnetwork/virtualnetworkfunctions
-- Microsoft. importexport/Jobs
+- Microsoft. ImportExport/Jobs (import/export-jobb)
 - Microsoft. industrydatalifecycle/basemodels
 - Microsoft. industrydatalifecycle/custodiancollaboratives
 - Microsoft. industrydatalifecycle/derivedmodels
 - Microsoft. industrydatalifecycle/membercollaboratives
+- Microsoft. industrydatalifecycle/modelmappings
 - Microsoft. industrydatalifecycle/pipelinesets
 - Microsoft. Insights/actiongroups
 - Microsoft. Insights/activitylogalerts
 - Microsoft. Insights/alertrules
 - Microsoft. Insights/autoscalesettings
-- Microsoft. Insights/komponenter
-- Microsoft. Insights/datacollectionrules
+- Microsoft. Insights/komponenter (Application Insights)
+- Microsoft. Insights/datacollectionrules (data insamlings regler)
 - Microsoft. Insights/guestdiagnosticsettings
 - Microsoft. Insights/metricalerts
 - Microsoft. Insights/notificationgroups
 - Microsoft. Insights/notificationrules
-- Microsoft. Insights/privatelinkscopes
+- Microsoft. Insights/privateLinkScopes (Azure Monitor privata länk omfång)
 - Microsoft. Insights/querypacks
 - Microsoft. Insights/scheduledqueryrules
-- Microsoft. Insights/webbtester
-- Microsoft. Insights/arbets böcker
-- Microsoft. Insights/workbooktemplates
-- Microsoft. intelligentitdigitaltwin/digitaltwins
-- Microsoft. iotcentral/iotapps
-- Microsoft. iotspaces/Graph
+- Microsoft. Insights/webbtester (tillgänglighets test)
+- Microsoft. Insights/arbets böcker (Azure-arbetsböcker)
+- Microsoft. Insights/workbooktemplates (mallar för Azure-arbetsböcker)
+- Microsoft. IntelligentITDigitalTwin/digitalTwins (Minervas)
+- Microsoft. intelligentitdigitaltwin/digitaltwins/assets
+- Microsoft. IoTCentral/IoTApps (IoT Central program)
+- Microsoft. IoTSpaces/Graph (digitala dubbla (inaktuella))
 - Microsoft. nyckel valv/hsmpools
 - Microsoft. nyckel valv/managedhsms
-- Microsoft. nyckel valv/-valv
-- Microsoft. Kubernetes/connectedclusters
-- Microsoft. kusto/kluster
-- Microsoft. kusto/kluster/databaser
-- Microsoft. labservices/labaccounts
-- Microsoft. Logic/integrationaccounts
-- Microsoft. Logic/integrationserviceenvironments
-- Microsoft. Logic/integrationserviceenvironments/managedapis
-- Microsoft. Logic/arbets flöden
-- Microsoft. machinelearning/commitmentplans
-- Microsoft. machinelearning/WebServices
-- Microsoft. machinelearning/arbets ytor
+- Microsoft. Key Vault/valv (nyckel valv)
+- Microsoft. Kubernetes/connectedClusters (Kubernetes-Azure-båge)
+- Microsoft. Kusto/kluster (Azure Datautforskaren-kluster)
+- Microsoft. Kusto/kluster/databaser (Azure Datautforskaren-databaser)
+- Microsoft. LabServices/labAccounts (labb tjänster)
+- Microsoft. LoadTestService/LoadTests (molnets interna belastnings test)
+- Microsoft. Logic/integrationAccounts (integrations konton)
+- Microsoft. Logic/integrationServiceEnvironments (integrerings tjänst miljöer)
+- Microsoft. Logic/integrationServiceEnvironments/managedApis (hanterad koppling)
+- Microsoft. Logic/arbets flöden (Logic Apps)
+- Microsoft. Logz/Monitors (Logz-huvud konto)
+- Microsoft. Logz/Monitors/accounts (Logz-underkontot)
+- Microsoft. MachineLearning/commitmentPlans (Machine Learning Studio (klassiska) webb tjänst planer
+- Microsoft. MachineLearning/WebService (Machine Learning Studio (klassiska) webb tjänster)
+- Microsoft. MachineLearning/arbets ytor (Machine Learning Studio (klassiska) arbets ytor)
 - Microsoft. machinelearningcompute/operationalizationclusters
-- Microsoft. machinelearningservices/arbets ytor
+- Microsoft. machinelearningservices/modelinventories
+- Microsoft. machinelearningservices/modelinventory
+- Microsoft. MachineLearningServices/arbets ytor (Machine Learning)
 - Microsoft. machinelearningservices/arbets ytor/batchendpoints
+- Microsoft. machinelearningservices/arbets ytor/batchendpoints/distributioner
 - Microsoft. machinelearningservices/arbets ytor/inferenceendpoints
 - Microsoft. machinelearningservices/arbets ytor/inferenceendpoints/distributioner
-- Microsoft. machinelearningservices/arbets ytor/onlineendpoints
-- Microsoft. machinelearningservices/arbets ytor/onlineendpoints/distributioner
-- Microsoft. Maintenance/maintenanceconfigurations
+- Microsoft. MachineLearningServices/arbetsytes/onlineEndpoints (ML-appar)
+- Microsoft. MachineLearningServices/arbets ytor/onlineEndpoints/distributioner (ML app-distributioner)
+- Microsoft. Maintenance/maintenanceConfigurations (underhålls konfigurationer)
 - Microsoft. Maintenance/maintenancepolicies
 - Microsoft. managedidentity/grupper
-- Microsoft. managedidentity/userassignedidentities
+- Microsoft. ManagedIdentity/userAssignedIdentities (Managed Identities)
 - Microsoft. managednetwork/managednetworkgroups
 - Microsoft. managednetwork/managednetworkpeeringpolicies
 - Microsoft. managednetwork/managednetworks
 - Microsoft. managednetwork/managednetworks/managednetworkgroups
 - Microsoft. managednetwork/managednetworks/managednetworkpeeringpolicies
-- Microsoft. Maps/konton
+- Microsoft. Maps/accounts (Azure Maps-konton)
 - Microsoft. Maps/konton/skapare
-- Microsoft. Maps/Accounts/privateatlases
-- Microsoft. marketplaceapps/classicdevservices
-- Microsoft. Media/Media Services
-- Microsoft. Media/Media Services/liveevents
-- Microsoft. Media/Media Services/strömnings slut punkter
+- Microsoft. Maps/Accounts/privateAtlases (Azure Maps Creator-resurser)
+- Microsoft. MarketplaceApps/classicDevServices (klassiska dev Services)
+- Microsoft. Media/Media Services (Media Services)
+- Microsoft. Media/Media Services/liveevents (Live Events)
+- Microsoft. Media/Media Services/strömnings slut punkter (slut punkter för direkt uppspelning)
 - Microsoft. Media/Media Services/Transforms
 - Microsoft. microservices4spring/appclusters
 - Microsoft. Migrate/assessmentprojects
 - Microsoft. Migrate/migrateprojects
 - Microsoft. Migrate/movecollections
-- Microsoft. Migrate/Projects
-- Microsoft. mixedreality/holographicsbroadcastaccounts
-- Microsoft. mixedreality/objectunderstandingaccounts
-- Microsoft. mixedreality/remoterenderingaccounts
-- Microsoft. mixedreality/spatialanchorsaccounts
+- Microsoft. Migrate/Projects (migreringsjobb)
+- Microsoft. MixedReality/holographicsBroadcastAccounts (Holographics broadcast-konton)
+- Microsoft. MixedReality/objectUnderstandingAccounts (objekt förståelse konton)
+- Microsoft. MixedReality/remoteRenderingAccounts (Remote rendering Accounts)
+- Microsoft. MixedReality/spatialAnchorsAccounts (konton för spatiala ankare)
 - Microsoft. mixedreality/surfacereconstructionaccounts
-- Microsoft. NetApp/netappaccounts
+- Microsoft. NetApp/netAppAccounts (NetApp-konton)
 - Microsoft. NetApp/netappaccounts/backuppolicies
-- Microsoft. NetApp/netappaccounts/capacitypools
-- Microsoft. NetApp/netappaccounts/capacitypools/Volumes
+- Microsoft. NetApp/netAppAccounts/capacityPools (kapacitets grupper)
+- Microsoft. NetApp/netAppAccounts/capacityPools/Volumes (volymer)
 - Microsoft. NetApp/netappaccounts/capacitypools/Volumes/mounttargets
-- Microsoft. NetApp/netappaccounts/capacitypools/volym/ögonblicks bilder
-- Microsoft. Network/applicationgateways
-- Microsoft. Network/applicationgatewaywebapplicationfirewallpolicies
-- Microsoft. Network/applicationsecuritygroups
-- Microsoft. Network/azurefirewalls
-- Microsoft. Network/bastionhosts
-- Microsoft. Network/Connections
+- Microsoft. NetApp/netAppAccounts/capacityPools/Volumes/ögonblicks bilder (ögonblicks bilder)
+- Microsoft. Network/applicationGateways (Application Gateway)
+- Microsoft. Network/ApplicationGatewayWebApplicationFirewallPolicies (brand Väggs principer för webb program (WAF))
+- Microsoft. Network/applicationSecurityGroups (program säkerhets grupper)
+- Microsoft. Network/azureFirewalls (brand väggar)
+- Microsoft. Network/bastionHosts (topologier)
+- Microsoft. Network/Connections (Connections)
 - Microsoft. Network/customipprefixes
 - Microsoft. Network/ddoscustompolicies
-- Microsoft. Network/ddosprotectionplans
-- Microsoft. Network/dnszones
+- Microsoft. Network/ddosProtectionPlans (DDoS Protection Plans)
+- Microsoft. Network/dnsZones (DNS-zoner)
 - Microsoft. Network/dscpconfigurations
-- Microsoft. Network/expressroutecircuits
+- Microsoft. Network/expressRouteCircuits (ExpressRoute-kretsar)
 - Microsoft. Network/expressroutecrossconnections
 - Microsoft. Network/expressroutegateways
-- Microsoft. Network/expressrouteports
-- Microsoft. Network/firewallpolicies
-- Microsoft. Network/frontdoors
-- Microsoft. Network/frontdoorwebapplicationfirewallpolicies
+- Microsoft. Network/expressRoutePorts (ExpressRoute Direct)
+- Microsoft. Network/firewallPolicies (brand Väggs principer)
+- Microsoft. Network/frontdoors (Front dörrar)
+- Microsoft. Network/FrontDoorWebApplicationFirewallPolicies (brand Väggs principer för webb program (WAF))
 - Microsoft. Network/ipallocations
-- Microsoft. Network/ipgroups
-- Microsoft. Network/belastningsutjämnare
-- Microsoft. Network/localnetworkgateways
+- Microsoft. Network/ipGroups (IP-grupper)
+- Microsoft. Network/belastningsutjämnare (Load Balancer)
+- Microsoft. Network/localnetworkgateways (lokala nätverksgateway)
 - Microsoft. Network/mastercustomipprefixes
-- Microsoft. Network/natgateways
-- Microsoft. Network/networkexperimentprofiles
+- Microsoft. Network/natGateways (NAT-gatewayer)
+- Microsoft. Network/NetworkExperimentProfiles (Internet Analyzer-profiler)
 - Microsoft. Network/networkintentpolicies
-- Microsoft. Network/NetworkInterfaces
-- Microsoft. Network/NetworkManagers
+- Microsoft. Network/NetworkInterfaces (nätverks gränssnitt)
+- Microsoft. Network/networkManagers (nätverks hanterare)
 - Microsoft. Network/networkprofiles
-- Microsoft. Network/networksecuritygroups
+- Microsoft. Network/NetworkSecurityGroups (nätverks säkerhets grupper)
 - Microsoft. Network/networkvirtualappliances
-- Microsoft. Network/networkwatchers
+- Microsoft. Network/networkwatchers (Network Watcher)
 - Microsoft. Network/networkwatchers/connectionmonitors
-- Microsoft. Network/networkwatchers/flowlogs
+- Microsoft. Network/networkwatchers/flowlogs (NSG Flow-loggar)
 - Microsoft. Network/networkwatchers/linser
 - Microsoft. Network/networkwatchers/pingmeshes
 - Microsoft. Network/p2svpngateways
-- Microsoft. Network/privatednszones
+- Microsoft. Network/privateDnsZones (Privat DNS zoner)
 - Microsoft. Network/privatednszones/virtualnetworklinks
 - Microsoft. Network/privateendpointredirectmaps
-- Microsoft. Network/privateendpoints
-- Microsoft. Network/privatelinkservices
-- Microsoft. Network/publicipaddresses
-- Microsoft. Network/publicipprefixes
-- Microsoft. Network/routefilters
-- Microsoft. Network/routetables
+- Microsoft. Network/privateEndpoints (privata slut punkter)
+- Microsoft. Network/privateLinkServices (privata länk tjänster)
+- Microsoft. Network/PublicIpAddresses (offentliga IP-adresser)
+- Microsoft. Network/publicIpPrefixes (offentliga IP-prefix)
+- Microsoft. Network/routeFilters (väg filter)
+- Microsoft. Network/routeTables (Route-tabeller)
 - Microsoft. Network/sampleresources
 - Microsoft. Network/securitypartnerproviders
-- Microsoft. Network/serviceendpointpolicies
-- Microsoft. Network/trafficmanagerprofiles
+- Microsoft. Network/serviceEndpointPolicies (tjänst slut punkts principer)
+- Microsoft. Network/trafficmanagerprofiles (Traffic Manager profiler)
 - Microsoft. Network/virtualhubs
 - Microsoft. Network/virtualhubs/bgpconnections
 - Microsoft. Network/virtualhubs/ipconfigurations
-- Microsoft. Network/virtualnetworkgateways
-- Microsoft. Network/virtualnetworks
+- Microsoft. Network/virtualNetworkGateways (virtuella nätverksgateway)
+- Microsoft. Network/virtualNetworks (virtuella nätverk)
 - Microsoft. Network/virtualnetworktaps
 - Microsoft. Network/virtualrouters
-- Microsoft. Network/virtualwans
+- Microsoft. Network/virtualWans (virtuell WAN)
 - Microsoft. Network/vpngateways
 - Microsoft. Network/vpnserverconfigurations
 - Microsoft. Network/vpnsites
-- Microsoft. notificationhubs/namnrymder
-- Microsoft. notificationhubs/Namespaces/notificationhubs
+- Microsoft. NotificationHubs/namnrymder (namn rymder för Notification Hub)
+- Microsoft. NotificationHubs/Namespaces/notificationHubs (Notification Hubs)
 - Microsoft. Nutanix/Interfaces
 - Microsoft. Nutanix/Nodes
 - Microsoft. objectstore/osnamespaces
@@ -420,161 +464,163 @@ Azure Resource Graph stöder följande **resurs typer** av [Azure Resource Manag
 - Microsoft. offazure/mastersites
 - Microsoft. offazure/serversites
 - Microsoft. offazure/vmwaresites
-- Microsoft. openlogisticsplatform/arbets ytor
+- Microsoft. OpenLogisticsPlatform/arbets ytor (öppen leverans kedjas plattform)
 - Microsoft. operationalinsights/kluster
-- Microsoft. operationalinsights/querypacks
-- Microsoft. operationalinsights/arbets ytor
-- Microsoft. operationsmanagement/-lösningar
+- Microsoft. OperationalInsights/querypacks (Log Analytics Query-paket)
+- Microsoft. OperationalInsights/arbets ytor (Log Analytics arbets ytor)
+- Microsoft. OperationsManagement/lösningar (lösningar)
 - Microsoft. operationsmanagement/vyer
 - Microsoft. orbital/contactprofiles
 - Microsoft. orbital/rymder
-- Microsoft. peering/peering
-- Microsoft. peering/peeringservices
-- Microsoft. Portal/instrument paneler
+- Microsoft. peering/peering (peering)
+- Microsoft. peering/peeringServices (peering Services)
+- Microsoft. Portal/instrument paneler (delade instrument paneler)
 - Microsoft. portalsdk/rootresources
 - Microsoft. PowerBI/privatelinkservicesforpowerbi
 - Microsoft. PowerBI/klient organisationer
 - Microsoft. PowerBI/workspacecollections
-- Microsoft. powerbidedicated/kapacitet
-- Microsoft. projectbabylon/konton
-- Microsoft. avdelningens kontroll/konton
-- Microsoft. Quantum/arbets ytor
-- Microsoft. recoveryservices/valv
-- Microsoft. redhatopenshift/openshiftclusters
-- Microsoft. Relay/namnrymder
+- Microsoft. PowerBIDedicated/kapacitet (Power BI Embedded)
+- Microsoft. ProjectBabylon/konton (Babylon-konton)
+- Microsoft. avdelningens kontroll/konton (avdelningens kontroll-konton)
+- Microsoft. Quantum/arbets ytor (Quantum-arbetsytor)
+- Microsoft. RecoveryServices/valv (Recovery Services valv)
+- Microsoft. RedHatOpenShift/openShiftClusters (OpenShift-kluster)
+- Microsoft. Relay/namnrymder (reläer)
 - Microsoft. RemoteApp/samlingar
 - Microsoft. återhämtnings-/chaosexperiments
-- Microsoft. resourcegraph/frågor
-- Microsoft. Resources/deploymentscripts
-- Microsoft. Resources/templatespecs
+- Microsoft. resourceconnector/-apparater
+- Microsoft. resourcegraph/frågor (resurs diagram frågor)
+- Microsoft. Resources/deploymentScripts (distributions skript)
+- Microsoft. Resources/templateSpecs (mall-specifikationer)
 - Microsoft. Resources/templatespecs/versions
-- Microsoft. SaaS/program
-- Microsoft. Scheduler/förfrågningsåtgärder
+- Microsoft. SaaS/program (program vara som en tjänst (klassisk))
+- Microsoft. Scheduler/Förfrågningsåtgärder (Scheduler Job Collections)
 - Microsoft. SCVMM/moln
-- Microsoft. SCVMM/virtualmachines
+- Microsoft. SCVMM/virtualMachines (SCVMM virtuell dator – Azure-båge)
 - Microsoft. SCVMM/virtualmachinetemplates
 - Microsoft. SCVMM/virtualnetworks
 - Microsoft. SCVMM/vmmservers
-- Microsoft. search/searchservices
+- Microsoft. search/searchServices (Sök tjänster)
 - Microsoft. Security/automations
 - Microsoft. Security/iotsecuritysolutions
-- Microsoft. securitydetonation/kammare
-- Microsoft. Service Bus/namnrymder
-- Microsoft. servicefabric/kluster
+- Microsoft. SecurityDetonation/kammare (säkerhets Detonations kammare)
+- Microsoft. Service Bus/namnrymder (Service Bus namnrum)
+- Microsoft. ServiceFabric/kluster (Service Fabric kluster)
 - Microsoft. servicefabric/containergroupsets
-- Microsoft. servicefabric/managedclusters
-- Microsoft. servicefabricmesh/program
+- Microsoft. ServiceFabric/managedclusters (hanterade Service Fabric-kluster)
+- Microsoft. ServiceFabricMesh/program (nätprogram)
 - Microsoft. servicefabricmesh/gateways
 - Microsoft. servicefabricmesh/Networks
 - Microsoft. servicefabricmesh/hemligheter
 - Microsoft. servicefabricmesh/Volumes
-- Microsoft. serviceshub/Connectors
-- Microsoft. signalrservice/SignalR
+- Microsoft. ServicesHub/Connectors (Services Hub-kopplingar)
+- Microsoft. SignalRService/SignalR (SignalR)
 - Microsoft. Singularity/Accounts
 - Microsoft. Solutions/appliancedefinitions
 - Microsoft. Solutions/-apparater
-- Microsoft. Solutions/applicationdefinitions
-- Microsoft. Solutions/Applications
+- Microsoft. Solutions/applicationDefinitions (definitioner av hanterade program i tjänst katalogen)
+- Microsoft. Solutions/Applications (hanterade program)
 - Microsoft. Solutions/jitrequests
 - Microsoft. spoolservice/Buffers
-- Microsoft. SQL/instancepools
-- Microsoft. SQL/managedinstances
-- Microsoft. SQL/managedinstances/-databaser
-- Microsoft. SQL/Servers
-- Microsoft. SQL/Servers/databaser
-- Microsoft. SQL/Servers/elasticpools
+- Microsoft. SQL/instancePools (instans-pooler)
+- Microsoft. SQL/managedInstances (SQL Managed instances)
+- Microsoft. SQL/managedInstances/-databaser (hanterade databaser)
+- Microsoft. SQL/Servers (SQL-servrar)
+- Microsoft. SQL/Servers/databaser (SQL-databaser)
+- Microsoft. SQL/Servers/elasticpools (elastiska SQL-pooler)
 - Microsoft. SQL/Servers/jobaccounts
-- Microsoft. SQL/Servers/jobagents
-- Microsoft. SQL/virtualclusters
+- Microsoft. SQL/Servers/jobAgents (elastiska jobb agenter)
+- Microsoft. SQL/virtualClusters (virtuella kluster)
 - Microsoft. sqlvirtualmachine/sqlvirtualmachinegroups
-- Microsoft. sqlvirtualmachine/sqlvirtualmachines
+- Microsoft. SqlVirtualMachine/SqlVirtualMachines (SQL Virtual Machines)
 - Microsoft. sqlvm/dwvm
-- Microsoft. Storage/storageaccounts
-- Microsoft. storagecache/cacheminnen
-- Microsoft. storagesync/storagesyncservices
-- Microsoft. storagesyncdev/storagesyncservices
-- Microsoft. storagesyncint/storagesyncservices
-- Microsoft. StorSimple/chefer
-- Microsoft. streamanalytics/kluster
-- Microsoft. streamanalytics/streamingjobs
+- Microsoft. Storage/StorageAccounts (lagrings konton)
+- Microsoft. StorageCache/cacheminnen (HPC-cacheminnen)
+- Microsoft. StoragePool/diskpools
+- Microsoft. StorageSync/storageSyncServices (tjänster för synkronisering av lagring)
+- Microsoft. StorageSyncDev/storageSyncServices (tjänster för synkronisering av lagring)
+- Microsoft. StorageSyncInt/storageSyncServices (tjänster för synkronisering av lagring)
+- Microsoft. StorSimple/chefer (StorSimple enhets hanterare)
+- Microsoft. StreamAnalytics/kluster (Stream Analytics kluster)
+- Microsoft. StreamAnalytics/StreamingJobs (Stream Analytics jobb)
 - Microsoft. Swiftlet/virtualmachines
 - Microsoft. Swiftlet/virtualmachinesnapshots
-- Microsoft. Synapse/privatelinkhubs
-- Microsoft. Synapse/arbets ytor
-- Microsoft. Synapse/arbets ytor/bigdatapools
+- Microsoft. Synapse/privateLinkHubs (Azure Synapse Analytics (privata länk hubbar))
+- Microsoft. Synapse/arbets ytor (Azure Synapse Analytics)
+- Microsoft. Synapse/arbetsytes/bigDataPools (Apache Spark pooler)
 - Microsoft. Synapse/arbets ytor/sqldatabases
-- Microsoft. Synapse/arbets ytor/sqlpools
+- Microsoft. Synapse/arbetsytes/sqlPools (dedikerade SQL-pooler)
 - Microsoft. terraformoss/providerregistrations
-- Microsoft. timeseriesinsights/miljöer
-- Microsoft. timeseriesinsights/miljöer/eventsources
-- Microsoft. timeseriesinsights/miljöer/referencedatasets
+- Microsoft. TimeSeriesInsights/miljöer (Time Series Insights miljöer)
+- Microsoft. TimeSeriesInsights/miljöer/eventsources (Time Series Insights händelse källor)
+- Microsoft. TimeSeriesInsights/miljöer/referenceDataSets (Time Series Insights referens data uppsättningar)
 - Microsoft. token/butiker
 - Microsoft. tokenvault/valv
 - Microsoft. virtualmachineimages/imagetemplates
-- Microsoft. VisualStudio/konto
+- Microsoft. VisualStudio/Account (Azure DevOps-organisationer)
 - Microsoft. VisualStudio/konto/tillägg
-- Microsoft. VisualStudio/konto/projekt
+- Microsoft. VisualStudio/Account/Project (DevOps starter)
 - Microsoft. VMware/arczones
 - Microsoft. VMware/resourcepools
 - Microsoft. VMware/vCenter
-- Microsoft. VMware/virtualmachines
+- Microsoft. VMware/VirtualMachines (AVS Virtual Machines)
 - Microsoft. VMware/virtualmachinetemplates
 - Microsoft. VMware/virtualnetworks
-- Microsoft. vmwarecloudsimple/dedicatedcloudnodes
-- Microsoft. vmwarecloudsimple/dedicatedcloudservices
-- Microsoft. vmwarecloudsimple/virtualmachines
+- Microsoft. VMwareCloudSimple/dedicatedCloudNodes (CloudSimple-noder)
+- Microsoft. VMwareCloudSimple/dedicatedCloudServices (CloudSimple Services)
+- Microsoft. VMwareCloudSimple/virtualMachines (CloudSimple Virtual Machines)
 - Microsoft. vmwareonazure/privateclouds
 - Microsoft. vmwarevirtustream/privateclouds
 - Microsoft. VSOnline/konton
-- Microsoft. VSOnline/-planer
+- Microsoft. VSOnline/Plans (Visual Studio Online-abonnemang)
 - Microsoft. Web/apimanagementaccounts
 - Microsoft. Web/apimanagementaccounts/API: er
 - Microsoft. Web/certificates
-- Microsoft. Web/connectiongateways
-- Microsoft. Web/Connections
-- Microsoft. Web/customapis
-- Microsoft. Web/hostingenvironments
-- Microsoft. Web/kubeenvironments
-- Microsoft. Web/Server grupper
-- Microsoft. Web/Sites
+- Microsoft. Web/connectionGateways (lokala datagateways)
+- Microsoft. Web/Connections (API-anslutningar)
+- Microsoft. Web/customApis (Logic Apps anpassad anslutning)
+- Microsoft. Web/HostingEnvironments (App Service miljöer)
+- Microsoft. Web/KubeEnvironments (App Service Kubernetes-miljöer)
+- Microsoft. Web/Server grupper (App Service planer)
+- Microsoft. Web/Sites (App Services)
 - Microsoft. Web/Sites/premieraddons
-- Microsoft. Web/Sites/lotss
-- Microsoft. Web/staticsites
-- Microsoft. windowsesu/multipleactivationkeys
-- Microsoft. windowsiot/deviceservices
+- Microsoft. Web/Sites/lotss (App Service (fack))
+- Microsoft. Web/StaticSites (statisk Web Apps (för hands version))
+- Microsoft. WindowsESU/multipleActivationKeys (Windows flera aktiverings nycklar)
+- Microsoft. WindowsIoT/DeviceServices (Windows 10 IoT Core Services)
 - Microsoft. workloadbuilder/arbets belastningar
-- myget. packagemanagement/Services
-- paraleap. cloudmonix/Services
-- pokitdok. Platform/Services
-- providers. test/statefulibizaengines
+- MyGet. PackageManagement/Services (MyGet-värdbaserad NuGet, NPM, Bower och vsix)
+- Paraleap. CloudMonix/Services (CloudMonix)
+- Pokitdok. Platform/Services (PokitDok Platform)
+- Providers. test/statefulIbizaEngines (program utvärderingar)
 - providers. test/statefulresources
 - providers. test/statefulresources/nestedresources
 - providers. test/statelessresources
-- RavenHQ. db/databaser
-- Raygun. crashreporting/Apps
-- SendGrid. e-post/konton
-- Spark post. Basic/Services
-- Stackify. spårning/tjänster
+- RavenHq. db/databaser (RavenHQ)
+- Raygun. CrashReporting/Apps (Raygun)
+- SendGrid. e-post/konton (SendGrid-konton)
+- Spark post. Basic/Services (Spark post)
+- Stackify. retrace/service (Stackify)
 - test. sko/testresources
 - test. sko/testresources2
-- trendmicro. deepsecurity/konton
-- u2uconsult. theidentityhub/Services
-- wandisco. fusion/fusiongroups
-- wandisco. fusion/fusiongroups/azurezones
-- wandisco. fusion/fusiongroups/azurezones/plugin-program
-- wandisco. fusion/fusiongroups/hivereplicationrules
-- wandisco. fusion/fusiongroups/managedonpremzones
+- TrendMicro. DeepSecurity/accounts (djup säkerhets SaaS)
+- U2uconsult. TheIdentityHub/Services (identitets Hub)
+- Wandisco. fusion/fusionGroups (LiveData plan)
+- Wandisco. fusion/fusionGroups/azureZones (Azure Zones)
+- Wandisco. fusion/fusionGroups/azureZones/plugin-program (plugin-program)
+- Wandisco. fusion/fusionGroups/hiveReplicationRules (Hive-replikeringsprinciper)
+- Wandisco. fusion/fusionGroups/managedOnPremZones (lokala zoner)
 - wandisco. fusion/fusiongroups/onpremzones
-- wandisco. fusion/fusiongroups/replicationrules
-- wandisco. fusion/migrators
-- wandisco. fusion/migrators/livedatamigrations
-- wandisco. fusion/migrators/mål
+- Wandisco. fusion/fusionGroups/replicationRules (regler för replikering)
+- Wandisco. fusion/migrators (LiveData Migrators)
+- Wandisco. fusion/migrators/liveDataMigrations (migreringar)
+- Wandisco. fusion/migrators/mål (mål)
 
 ## <a name="securityresources"></a>securityresources
 
 - Microsoft. Security/bedömningar
 - Microsoft. Security/bedömningar/underbedömningar
-- Microsoft. Security/locations/Alerts
+- Microsoft. Security/locations/Alerts (säkerhets aviseringar (för hands version))
 - Microsoft. Security/prissättning
 - Microsoft. Security/regulatorycompliancestandards
 - Microsoft. Security/regulatorycompliancestandards/regulatorycompliancecontrols

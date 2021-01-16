@@ -9,17 +9,17 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: sstein
 ms.date: 06/04/2020
-ms.openlocfilehash: 44a37a912c5c7a882d21631b8ce2da2c7ba9c05e
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 27719663acfbdbcd7293defc4b746153359adb61
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97967709"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251865"
 ---
 # <a name="request-quota-increases-for-azure-sql-database-and-sql-managed-instance"></a>Begärans kvot ökar för Azure SQL Database-och SQL-hanterad instans
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Den här artikeln förklarar hur du begär en kvot ökning för Azure SQL Database och Azure SQL-hanterad instans. Det förklarar också hur du aktiverar prenumerations åtkomst till en region.
+Den här artikeln förklarar hur du begär en kvot ökning för Azure SQL Database och Azure SQL-hanterad instans. Det beskriver också hur du aktiverar prenumerations åtkomst till en region och hur du begär att aktivera en speciell maskin vara i en region.
 
 ## <a name="create-a-new-support-request"></a><a id="newquota"></a> Skapa en ny supportbegäran
 
@@ -62,8 +62,7 @@ I följande avsnitt beskrivs alternativ för att öka kvoten för **SQL Database
 
 - Databas transaktions enheter (DTU: er) per server
 - Servrar per prenumeration
-- Region åtkomst för M-serien
-- Regionåtkomst
+- Regions åtkomst för prenumerationer eller speciell maskin vara
 
 ### <a name="database-transaction-units-dtus-per-server"></a>Databas transaktions enheter (DTU: er) per server
 
@@ -109,30 +108,15 @@ Om din prenumeration behöver åtkomst i en viss region väljer du alternativet 
 
    ![Åtkomst till region för begäran](./media/quota-increase-request/quota-request.png)
 
-<!--
-### <a id="mseries"></a> Enable M-series access to a region
+### <a name="request-enabling-specific-hardware-in-a-region"></a>Begäran aktivera speciell maskin vara i en region
 
-To enable M-series hardware for a subscription and region, a support request must be opened.
+Om du vill använda en [maskin varu generation](service-tiers-vcore.md#hardware-generations) som inte är tillgänglig i din region (se [maskin varu tillgänglighet](service-tiers-vcore.md#hardware-availability)) kan du begära det med hjälp av följande steg.
 
-1. Select the **M-series region access** quota type.
+1. Välj den **andra kvot typen kvot förfrågan** .
 
-1. In the **Select a location** list, select the Azure region to use. The quota is per subscription in each region.
+1. I fältet **Beskrivning** , ange din begäran, inklusive namnet på maskin varu genereringen och namnet på den region som du behöver den i.
 
-
-   ![Request M-series region access](./media/quota-increase-request/quota-m-series.png)
--->
-
-## <a name="sql-managed-instance-quota-type"></a><a id="sqlmiquota"></a> Kvot typ för SQL-hanterad instans
-
-Använd följande steg för kvot typen **SQL-hanterad instans** :
-
-1. I listan **region** väljer du den Azure-region som du vill använda som mål.
-
-1. Ange de nya gränser som du begär för **undernät** och **vCore**.
-
-   ![Kvot information för SQL-hanterad instans](./media/quota-increase-request/quota-details-managed-instance.png)
-
-Mer information finns i [Översikt över gränser för Azure SQL Managed Instance-resurser](../managed-instance/resource-limits.md).
+   ![Begär maskin vara i en ny region](./media/quota-increase-request/hardware-in-new-region.png)
 
 ## <a name="submit-your-request"></a>Skicka din begäran
 

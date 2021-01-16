@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: ec4917aa378f746eb2caac6a7b4ce99d1c44db90
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: 55e618a7e4e0d21f6d4afab270e257c26fa15634
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98127659"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251122"
 ---
 # <a name="configure-and-submit-training-runs"></a>Konfigurera och skicka träningskörningar
 
@@ -75,6 +75,9 @@ experiment = Experiment(workspace=ws, name=experiment_name)
 Välj det beräknings mål där ditt utbildnings skript ska köras. Om du inte anger något beräknings mål i ScriptRunConfig, eller om `compute_target='local'` , kommer Azure ml att köra skriptet lokalt. 
 
 I exempel koden i den här artikeln förutsätter vi att du redan har skapat ett beräknings mål `my_compute_target` från avsnittet "förutsättningar".
+
+>[!Note]
+>Azure Databricks stöds inte som ett beräknings mål för modell träning. Du kan använda Azure Databricks för förberedelse av data och distributions uppgifter. 
 
 ## <a name="create-an-environment"></a>Skapa en miljö
 Azure Machine Learning [miljöer](concept-environments.md) är en inkapsling av miljön där din Machine Learning-utbildning sker. De specificerar python-paketen, Docker-avbildningen, miljövariablerna och program varu inställningarna kring dina utbildnings-och Poäng skript. De anger också körningar (python, Spark eller Docker).

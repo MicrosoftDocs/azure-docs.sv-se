@@ -9,12 +9,12 @@ ms.date: 08/04/2020
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: c48a7f4b5b1512ec5bcd289e4fb8bd7884ca7394
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 52f7b328b013fd520787fca420a45ffdc5e9d9b1
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922559"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250816"
 ---
 # <a name="network-file-system-nfs-30-protocol-support-in-azure-blob-storage-preview"></a>NFS (Network File System) 3,0 protokoll stöd i Azure Blob Storage (för hands version)
 
@@ -102,6 +102,8 @@ Följande NFS 3,0-funktioner stöds ännu inte med Azure Data Lake Storage Gen2.
 - Visar monteringar (t. ex. genom att använda kommandot `showmount -a` )
 
 - Lista över exporter (till exempel: genom att använda kommandot `showmount -e` )
+
+- Hård länk
 
 - Exportera en behållare som skrivskyddad
 

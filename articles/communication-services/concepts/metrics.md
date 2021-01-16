@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 05/19/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 460cca051d743102e734971cf45069362e24c147
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: e7ed4ba181d3730ebbea7725451567c93433afb8
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97106011"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251105"
 ---
 # <a name="metrics-overview"></a>Mått översikt
 
@@ -30,7 +30,7 @@ Det finns två typer av begär Anden som representeras i kommunikations tjänst 
 
 Både chatt-och SMS API-begäran mått innehåller tre dimensioner som du kan använda för att filtrera dina mått data. De här dimensionerna kan aggregeras tillsammans med `Count` agg regerings typen och har stöd för alla standard Azure agg regerings tids serier `Sum` , inklusive,, `Average` `Min` och `Max` .
 
-Mer information om sammansättnings typer och tids serie agg regeringar som stöds hittar du [i avancerade funktioner i Azure Metrics Explorer](../../azure-monitor/platform/metrics-charts.md#changing-aggregation)
+Mer information om sammansättnings typer och tids serie agg regeringar som stöds hittar du [i avancerade funktioner i Azure Metrics Explorer](../../azure-monitor/platform/metrics-charts.md#aggregation)
 
 - **Åtgärd** – alla åtgärder eller vägar som kan anropas på ACS Chat Gateway.
 - **Status kod** – status kod svaret som skickas efter begäran.

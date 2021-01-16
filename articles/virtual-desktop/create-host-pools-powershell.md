@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 10/02/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a47126a48ea63efd4e49097428679b85b7a95a61
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ec900f0537030d3ed0d1c875e8125806159bd51
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91667171"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251462"
 ---
 # <a name="create-a-windows-virtual-desktop-host-pool-with-powershell"></a>Skapa en Windows-pool för virtuella skriv bord med PowerShell
 
@@ -93,7 +93,7 @@ För att lyckas med domän koppling gör du följande på varje virtuell dator:
 
 1. [Anslut till den virtuella datorn](../virtual-machines/windows/quick-create-portal.md#connect-to-virtual-machine) med de autentiseringsuppgifter du angav när du skapade den virtuella datorn.
 2. Starta **kontroll panelen** på den virtuella datorn och välj **system**.
-3. Välj **dator namn**, Välj **ändra inställningar**och välj sedan **ändra...**
+3. Välj **dator namn**, Välj **ändra inställningar** och välj sedan **ändra...**
 4. Välj **domän** och ange sedan Active Directory domän i det virtuella nätverket.
 5. Autentisera med ett domän konto som har behörighet att ansluta till datorer med domän anslutning.
 
@@ -124,13 +124,13 @@ Registrera Windows-agenter för virtuella skriv bord genom att göra följande p
 
 Du måste uppdatera agenten om du är i någon av följande situationer:
 
-- Du vill migrera en tidigare registrerad session till en ny värdbaserad pool
+- Du vill migrera en tidigare registrerad sessionsnyckel till en ny adresspool
 - Sessionens värd visas inte i din värd-pool efter en uppdatering
 
 Så här uppdaterar du agenten:
 
 1. Logga in på den virtuella datorn som administratör.
-2. Gå till **tjänster**och stoppa **Rdagent** -och **fjärr skrivbords agentens inläsnings** processer.
+2. Gå till **tjänster** och stoppa **Rdagent** -och **fjärr skrivbords agentens inläsnings** processer.
 3. Leta sedan upp agenten och Start programmet MSIs. De finns antingen i mappen **C:\DeployAgent** eller på den plats där du sparade den när du installerade den.
 4. Hitta följande filer och avinstallera dem:
      

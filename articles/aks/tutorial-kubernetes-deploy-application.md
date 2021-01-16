@@ -3,14 +3,14 @@ title: Självstudie om Kubernetes i Azure – Distribuera ett program
 description: I den här självstudien om Azure Kubernetes Service (AKS) distribuerar du ett program med flera containrar till ditt kluster med hjälp av en anpassad avbildning som lagras i Azure Container Registry.
 services: container-service
 ms.topic: tutorial
-ms.date: 09/30/2020
+ms.date: 01/12/2021
 ms.custom: mvc
-ms.openlocfilehash: 8114aa0b6c2483d543376727a44d14041ed02b37
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a0de097a545a831e39a671fe4cf5eadcd336ce24
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91576497"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250187"
 ---
 # <a name="tutorial-run-applications-in-azure-kubernetes-service-aks"></a>Självstudie: Köra program i Azure Kubernetes Service (AKS)
 
@@ -21,7 +21,7 @@ Kubernetes tillhandahåller en distribuerad plattform för containerbaserade pro
 > * Köra ett program i Kubernetes
 > * Testa programmet
 
-I senare självstudier så kommer den här appen att skalas ut och uppdateras.
+I senare självstudier skalas det här programmet ut och uppdateras.
 
 Den här snabbstarten förutsätter grundläggande kunskaper om Kubernetes-begrepp. Mer information finns i [Viktiga koncept för Azure Kubernetes Service (AKS)][kubernetes-concepts].
 
@@ -49,7 +49,7 @@ Exempelmanifestfilen från den git-lagringsplats som klonades i den första sjä
 vi azure-vote-all-in-one-redis.yaml
 ```
 
-Ersätt *microsoft* med namnet ditt ACR-inloggningsservernamn. Avbildningens namn finns på rad 51 i manifest filen. I följande exempel visas standardnamnet för avbildning:
+Ersätt *microsoft* med namnet ditt ACR-inloggningsservernamn. Avbildningens namn finns på rad 60 i manifest filen. I följande exempel visas standardnamnet för avbildning:
 
 ```yaml
 containers:
@@ -77,7 +77,7 @@ kubectl apply -f azure-vote-all-in-one-redis.yaml
 
 Följande exempelutdata visar de resurser som skapats på AKS-klustret:
 
-```
+```console
 $ kubectl apply -f azure-vote-all-in-one-redis.yaml
 
 deployment "azure-vote-back" created
@@ -98,19 +98,19 @@ kubectl get service azure-vote-front --watch
 
 Den *externa IP-adressen* för *Azure-röst-front-* tjänsten visas som *väntar*:
 
-```
+```output
 azure-vote-front   LoadBalancer   10.0.34.242   <pending>     80:30676/TCP   5s
 ```
 
 När *EXTERNAL-IP*-adressen ändras från *väntande* till en faktisk offentlig IP-adress använder du `CTRL-C` för att stoppa `kubectl`-övervakningsprocessen. Följande exempelutdata visar en giltig offentlig IP-adress som har tilldelats tjänsten:
 
-```
+```output
 azure-vote-front   LoadBalancer   10.0.34.242   52.179.23.131   80:30676/TCP   67s
 ```
 
 Om du vill se hur programmet fungerar i praktiken så öppnar du en webbläsare till den externa IP-adressen för din tjänst:
 
-![Bild av Kubernetes-kluster i Azure](media/container-service-kubernetes-tutorials/azure-vote.png)
+:::image type="content" source="./media/container-service-kubernetes-tutorials/azure-vote.png" alt-text="Skärm bild som visar behållare avbildningen Azure röstnings app som körs i ett AKS-kluster som öppnas i en lokal webbläsare" lightbox="./media/container-service-kubernetes-tutorials/azure-vote.png":::
 
 Om det inte gick att läsa in programmet så kan det bero på ett auktoriseringsproblem med ditt avbildningsregister. Du kan visa statusen för dina containrar med hjälp av kommandot `kubectl get pods`. Om behållar avbildningarna inte kan hämtas, se [autentisera med Azure Container Registry från Azure Kubernetes-tjänsten](cluster-container-registry-integration.md).
 

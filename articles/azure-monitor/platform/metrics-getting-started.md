@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 710de93a24037031784ca8d37a8ae0be76bff9e6
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 2bf56379a32bf8035ea2d0d3fe797776ec6ba40d
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97614601"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250408"
 ---
 # <a name="getting-started-with-azure-metrics-explorer"></a>Komma igång med Azure Metrics Explorer
 
@@ -38,7 +38,7 @@ Om du vill skapa ett mått diagram går du till vyn resurs, resurs grupp, prenum
 
     > ![Välj ett mått](./media/metrics-getting-started/metrics-dropdown.png)
 
-4. Alternativt kan du [ändra mått agg regeringen](metrics-charts.md#changing-aggregation). Du kanske exempelvis vill att diagrammet ska Visa lägsta, högsta eller genomsnittliga värden för måttet.
+4. Alternativt kan du [ändra mått agg regeringen](metrics-charts.md#aggregation). Du kanske exempelvis vill att diagrammet ska Visa lägsta, högsta eller genomsnittliga värden för måttet.
 
 > [!TIP]
 > Använd knappen **Lägg till mått** och upprepa de här stegen om du vill se flera mått som är ritade i samma diagram. För flera diagram i en vy väljer du knappen **Lägg till diagram** överst.
@@ -57,7 +57,7 @@ Som standard visar diagrammet de senaste 24 timmarna med mät data. Använd pane
 
 ## <a name="apply-dimension-filters-and-splitting"></a>Använd dimensions filter och delning
 
-[Filtrering](metrics-charts.md#apply-filters-to-charts) och [delning](metrics-charts.md#apply-splitting-to-a-chart) är kraftfulla diagnostiska verktyg för mått som har dimensioner. Dessa funktioner visar hur olika mått segment ("dimensions värden") påverkar det allmänna värdet för måttet och gör det möjligt att identifiera möjliga avvikande värden.
+[Filtrering](metrics-charts.md#filters) och [delning](metrics-charts.md#apply-splitting) är kraftfulla diagnostiska verktyg för mått som har dimensioner. Dessa funktioner visar hur olika mått segment ("dimensions värden") påverkar det allmänna värdet för måttet och gör det möjligt att identifiera möjliga avvikande värden.
 
 - Med **filtrering** kan du välja vilka dimensions värden som ska ingå i diagrammet. Du kanske till exempel vill visa lyckade förfrågningar när du diagramerar måttet för *Server svars tid* . Du måste använda filtret för att kunna utföra en *begär ande* dimension. 
 

@@ -10,13 +10,13 @@ ms.topic: reference
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 10/15/2020
-ms.openlocfilehash: 4ffe663c1a1651891af5f6e65ee231cbe3e8d650
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.date: 01/15/2021
+ms.openlocfilehash: db3b168826223e4eb958f7700e65623a115e5779
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882337"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251479"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-purchasing-model"></a>Resursbegränsningar för enskilda databaser med hjälp av vCore-inköpsmodellen
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -225,7 +225,38 @@ Du kan ange tjänst nivå, beräknings storlek (tjänst mål) och lagrings utrym
 
 \* Förutom lokal SSD i/o kommer arbets belastningarna att använda [fjärrsidas serverns](service-tier-hyperscale.md#page-server) IO. Effektiv IOPS är beroende av arbets belastning. Mer information finns i [data IO-styrning](resource-limits-logical-server.md#resource-governance)och [data-i/o i statistik över resursutnyttjande](hyperscale-performance-diagnostics.md#data-io-in-resource-utilization-statistics).
 
-#### <a name="notes"></a>Obs!
+#### <a name="notes"></a>Kommentarer
+
+**Anmärkning 1**: storskalig är en arkitektur med flera nivåer med separata beräknings-och lagrings komponenter: [storskalig arkitektur för tjänst nivå](service-tier-hyperscale.md#distributed-functions-architecture)
+
+**Anmärkning 2**: svars tiden är 1-2 MS för data på den lokala beräknings repliken SSD, som cachelagrar de mest använda data sidorna. Högre latens för data som hämtas från sid servrar.
+
+## <a name="hyperscale---provisioned-compute---dc-series"></a>Storskalig-allokerad beräkning-DC-serien
+
+|Beräknings storlek (tjänst mål)|HS_DC_2|HS_DC_4|HS_DC_6|HS_DC_8|
+|:--- | --: |--: |--: |--: |---: | 
+|Beräknings generation|DC-serien|DC-serien|DC-serien|DC-serien|
+|Virtuella kärnor|2|4|6|8|
+|Minne (GB)|9|18|27|36|
+|[RBPEX](service-tier-hyperscale.md#compute) Ändra|3X-minne|3X-minne|3X-minne|3X-minne|
+|Columnstore-stöd|Ja|Ja|Ja|Ja|
+|Minnes intern OLTP-lagring (GB)|Saknas|Saknas|Saknas|Saknas|
+|Maximal data storlek (TB)|100 |100 |100 |100 |
+|Största logg storlek (TB)|Obegränsat |Obegränsat |Obegränsat |Obegränsat |
+|Maximal data storlek för TempDB (GB)|64|128|192|256|
+|Lagringstyp| [Anmärkning 1](#notes) |[Anmärkning 1](#notes)|[Anmärkning 1](#notes) |[Anmärkning 1](#notes) |
+|Max lokal SSD IOPS *|8000 |16000 |24000 |32000 |
+|Högsta logg frekvens (Mbit/s)|100 |100 |100 |100 |
+|I/o-latens (ungefärligt)|[Anmärkning 2](#notes)|[Anmärkning 2](#notes)|[Anmärkning 2](#notes)|[Anmärkning 2](#notes)|
+|Maximalt antal samtidiga arbetare (begär Anden)|160|320|480|640|
+|Maximalt antal samtidiga sessioner|30 000|30 000|30 000|30 000|
+|Sekundära repliker|0-4|0-4|0-4|0-4|
+|Multi-AZ|Saknas|Saknas|Saknas|Saknas|
+|Lässkalning|Ja|Ja|Ja|Ja|
+|Kvarhållning av lagrings utrymme för säkerhets kopior|7 dagar|7 dagar|7 dagar|7 dagar|
+|||
+
+### <a name="notes"></a>Kommentarer
 
 **Anmärkning 1**: storskalig är en arkitektur med flera nivåer med separata beräknings-och lagrings komponenter: [storskalig arkitektur för tjänst nivå](service-tier-hyperscale.md#distributed-functions-architecture)
 
@@ -389,6 +420,32 @@ Du kan ange tjänst nivå, beräknings storlek (tjänst mål) och lagrings utrym
 |Multi-AZ|Saknas|Saknas|Saknas|Saknas|Saknas|Saknas|
 |Lässkalning|Saknas|Saknas|Saknas|Saknas|Saknas|Saknas|
 |Inkluderad säkerhets kopierings lagring|1X DB-storlek|1X DB-storlek|1X DB-storlek|1X DB-storlek|1X DB-storlek|1X DB-storlek|
+
+\* Det maximala värdet för IO-storlekar mellan 8 KB och 64 KB. Faktisk IOPS är arbets belastnings beroende. Mer information finns i [data IO-styrning](resource-limits-logical-server.md#resource-governance).
+
+## <a name="general-purpose---provisioned-compute---dc-series"></a>Allmänt syfte – etablerad beräkning – DC-serien
+
+|Beräknings storlek (tjänst mål)|GP_DC_2|GP_DC_4|GP_DC_6|GP_DC_8| 
+|:---| ---:|---:|---:|---:|
+|Beräknings generation|DC-serien|DC-serien|DC-serien|DC-serien|
+|Virtuella kärnor|2|4|6|8|
+|Minne (GB)|9|18|27|36|
+|Columnstore-stöd|Ja|Ja|Ja|Ja|
+|Minnes intern OLTP-lagring (GB)|Saknas|Saknas|Saknas|Saknas|
+|Maximal data storlek (GB)|1024|1536|3072|3072|
+|Största logg storlek (GB)|307|461|922|922|
+|Maximal data storlek för TempDB (GB)|64|128|192|256|
+|Lagringstyp|Fjärr-SSD|Fjärr-SSD|Fjärr-SSD|Fjärr-SSD|
+|I/o-latens (ungefärligt)|5-7 MS (skrivning)<br>5-10 ms (läsa)|5-7 MS (skrivning)<br>5-10 ms (läsa)|5-7 MS (skrivning)<br>5-10 ms (läsa)|5-7 MS (skrivning)<br>5-10 ms (läsa)|
+|Max data IOPS *|640|1280|1920|2560|
+|Högsta logg frekvens (Mbit/s)|9|18|27|36|
+|Maximalt antal samtidiga arbetare (begär Anden)|160|320|480|640|
+|Maximalt antal samtidiga sessioner|30 000|30 000|30 000|30 000|
+|Antal repliker|1|1|1|1|
+|Multi-AZ|Saknas|Saknas|Saknas|Saknas|
+|Lässkalning|Saknas|Saknas|Saknas|Saknas|
+|Inkluderad säkerhets kopierings lagring|1X DB-storlek|1X DB-storlek|1X DB-storlek|1X DB-storlek|
+
 
 \* Det maximala värdet för IO-storlekar mellan 8 KB och 64 KB. Faktisk IOPS är arbets belastnings beroende. Mer information finns i [data IO-styrning](resource-limits-logical-server.md#resource-governance).
 
@@ -563,6 +620,31 @@ Du kan ange tjänst nivå, beräknings storlek (tjänst mål) och lagrings utrym
 > [!IMPORTANT]
 > Under vissa omständigheter kan du behöva krympa en databas för att frigöra utrymme som inte används. Mer information finns i [Hantera fil utrymme i Azure SQL Database](file-space-manage.md).
 
+## <a name="business-critical---provisioned-compute---dc-series"></a>Verksamhets kritiskt allokerad beräkning-DC-serien
+
+|Beräknings storlek (tjänst mål)|BC_DC_2|BC_DC_4|BC_DC_6|BC_DC_8|
+|:--- | --: |--: |--: |--: |
+|Beräknings generation|DC-serien|DC-serien|DC-serien|DC-serien|
+|Virtuella kärnor|2|4|6|8|
+|Minne (GB)|9|18|27|36|
+|Columnstore-stöd|Ja|Ja|Ja|Ja|
+|Minnes intern OLTP-lagring (GB)|1,7|3.7|5.9|8,2|
+|Maximal data storlek (GB)|768|768|768|768|
+|Största logg storlek (GB)|230|230|230|230|
+|Maximal data storlek för TempDB (GB)|64|128|192|256|
+|Lagringstyp|Lokal SSD|Lokal SSD|Lokal SSD|Lokal SSD|
+|I/o-latens (ungefärligt)|1-2 ms (skrivning)<br>1-2 ms (läsa)|1-2 ms (skrivning)<br>1-2 ms (läsa)|1-2 ms (skrivning)<br>1-2 ms (läsa)|1-2 ms (skrivning)<br>1-2 ms (läsa)|
+|Max data IOPS *|14000|28000|42000|56000|
+|Högsta logg frekvens (Mbit/s)|24|48|72|96|
+|Maximalt antal samtidiga arbetare (begär Anden)|200|400|600|800|
+|Maximalt antal samtidiga inloggningar|200|400|600|800|
+|Maximalt antal samtidiga sessioner|30 000|30 000|30 000|30 000|
+|Antal repliker|4|4|4|4|
+|Multi-AZ|Nej|Nej|Nej|Nej|
+|Lässkalning|Nej|Nej|Nej|Nej|
+|Inkluderad säkerhets kopierings lagring|1X DB-storlek|1X DB-storlek|1X DB-storlek|1X DB-storlek|
+
+\* Det maximala värdet för IO-storlekar mellan 8 KB och 64 KB. Faktisk IOPS är arbets belastnings beroende. Mer information finns i [data IO-styrning](resource-limits-logical-server.md#resource-governance).
 
 
 ## <a name="next-steps"></a>Nästa steg

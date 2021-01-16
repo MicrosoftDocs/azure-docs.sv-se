@@ -4,12 +4,12 @@ description: Övervaka ASP.NET Core webb program för tillgänglighet, prestanda
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 04/30/2020
-ms.openlocfilehash: 2921c6379b34e002013b5f0087cefd502ab0ab84
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 2f17f4fbed196932ad7a5680338c459740e4d3bd
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96904541"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98249116"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>Application Insights för ASP.NET Core program
 
@@ -31,7 +31,7 @@ Exemplet som vi ska använda här är ett [MVC-program](/aspnet/core/tutorials/f
 > [!NOTE]
 > ASP.NET Core 3. X kräver [Application Insights 2.8.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.8.0) eller senare.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - Ett fungerande ASP.NET Core program. Om du behöver skapa ett ASP.NET Core program följer du den här [ASP.net Core själv studie kursen](/aspnet/core/getting-started/).
 - En giltig Application Insights Instrumentation-nyckel. Den här nyckeln krävs för att skicka telemetri till Application Insights. Om du behöver skapa en ny Application Insights resurs för att hämta en Instrumentation-nyckel, se [skapa en Application Insights resurs](./create-new-resource.md).
@@ -69,7 +69,7 @@ För Visual Studio för Mac använder du den [manuella vägledningen](#enable-ap
 
     ```xml
         <ItemGroup>
-          <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.13.1" />
+          <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.16.0" />
         </ItemGroup>
     ```
 
@@ -110,7 +110,7 @@ För Visual Studio för Mac använder du den [manuella vägledningen](#enable-ap
 
     * `ApplicationInsights:InstrumentationKey`
 
-    Exempel:
+    Här är några exempel:
 
     * `SET ApplicationInsights:InstrumentationKey=putinstrumentationkeyhere`
 
@@ -125,7 +125,7 @@ För Visual Studio för Mac använder du den [manuella vägledningen](#enable-ap
 
 ### <a name="user-secrets-and-other-configuration-providers"></a>Användar hemligheter och andra konfigurations leverantörer
 
-Om du vill lagra Instrumentation-nyckeln i ASP.NET Core användar hemligheter eller hämta den från en annan Konfigurationsprovider, kan du använda överlagringen med en `Microsoft.Extensions.Configuration.IConfiguration` parameter. Exempelvis `services.AddApplicationInsightsTelemetry(Configuration);`.
+Om du vill lagra Instrumentation-nyckeln i ASP.NET Core användar hemligheter eller hämta den från en annan Konfigurationsprovider, kan du använda överlagringen med en `Microsoft.Extensions.Configuration.IConfiguration` parameter. Ett exempel är `services.AddApplicationInsightsTelemetry(Configuration);`.
 Från och med Microsoft. ApplicationInsights. AspNetCore version [2.15.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore), `services.AddApplicationInsightsTelemetry()` kommer anrop automatiskt att läsa Instrumentation-nyckeln från `Microsoft.Extensions.Configuration.IConfiguration` programmet. Du behöver inte uttryckligen ange `IConfiguration` .
 
 ## <a name="run-your-application"></a>Köra ditt program
@@ -232,7 +232,7 @@ Se de [konfigurerbara inställningarna i `ApplicationInsightsServiceOptions` ](h
 
 ### <a name="configuration-recommendation-for-microsoftapplicationinsightsaspnetcore-sdk-2150--above"></a>Konfigurations rekommendation för Microsoft. ApplicationInsights. AspNetCore SDK 2.15.0 & ovan
 
-Från och med Microsoft. ApplicationInsights. AspNetCore SDK-version [2.15.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.15.0) rekommenderar vi att du konfigurerar varje inställning som är tillgänglig i `ApplicationInsightsServiceOptions` , inklusive instrumentationkey med program `IConfiguration` instansen. Inställningarna måste ligga under avsnittet "ApplicationInsights", som du ser i exemplet nedan. I följande avsnitt från appsettings.jskonfigurerar du Instrumentation-nyckeln och inaktiverar även insamling av anpassningsbara samplings-och prestanda räknare.
+Från och med Microsoft. ApplicationInsights. AspNetCore SDK version [2.15.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.15.0), rekommenderar vi att du konfigurerar varje inställning som är tillgänglig i `ApplicationInsightsServiceOptions` , inklusive instrumentationkey med program `IConfiguration` instansen. Inställningarna måste ligga under avsnittet "ApplicationInsights", som du ser i följande exempel. I följande avsnitt från appsettings.jskonfigurerar du Instrumentation-nyckeln och inaktiverar även insamling av anpassningsbara samplings-och prestanda räknare.
 
 ```json
 {

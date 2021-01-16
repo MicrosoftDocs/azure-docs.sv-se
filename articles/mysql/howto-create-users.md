@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 01/13/2021
-ms.openlocfilehash: de4e7959a5778c7275427450ead876338f052882
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 9a6346a2b62c81dd74cf0ebe9a85df12d3488679
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98196783"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251258"
 ---
 # <a name="create-databases-and-users-in-azure-database-for-mysql"></a>Skapa databaser och användare i Azure Database for MySQL
 
@@ -20,9 +20,7 @@ ms.locfileid: "98196783"
 I den här artikeln beskrivs hur du skapar användare i Azure Database for MySQL.
 
 > [!NOTE]
-> Kompensations fri kommunikation
->
-> Microsoft stöder en mängd olika och införlivande miljöer. Den här artikeln innehåller referenser till orden _Master_ och _slav_. Microsofts [stil guide för kommunikation utan fördjupad kommunikation](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) känner igen dessa som undantags ord. Orden används i den här artikeln för konsekvens eftersom de är för närvarande de ord som visas i program varan. När program varan har uppdaterats för att ta bort orden uppdateras den här artikeln som en justering.
+> Den här artikeln innehåller referenser till termen _slav_, en term som Microsoft inte längre använder. När termen tas bort från program varan tar vi bort det från den här artikeln.
 >
 
 När du först skapade Azure Database for MySQL-servern angav du ett användar namn och lösen ord för Server administratören. Mer information finns i den här [snabb](quickstart-create-mysql-server-database-using-azure-portal.md)starten. Du kan kontrol lera ditt användar namn för Server administratören i Azure Portal.

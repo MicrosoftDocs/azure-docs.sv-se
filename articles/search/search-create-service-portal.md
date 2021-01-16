@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 10/14/2020
-ms.openlocfilehash: 1b3804029a4174698ed1e4e4f8d75fbed4fba981
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 3f55e2a7d62d2f32173d382dc9be0d6eb4f83fae
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92102820"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98249762"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>Snabbstart: Skapa en Azure Cognitive Search-tjänst i portalen
 
@@ -30,7 +30,7 @@ Föredrar du PowerShell? Använd [tjänstmallen](https://azure.microsoft.com/res
 Följande tjänst egenskaper har åtgärd ATS för livs längden för tjänsten – om du ändrar någon av dem krävs en ny tjänst. Eftersom de är fasta bör du tänka på användnings konsekvenserna när du fyller i varje egenskap:
 
 * Tjänst namnet blir en del av URL-slutpunkten ([gransknings tips](#name-the-service) för användbara tjänst namn).
-* Tjänst nivån [påverkar faktureringen](search-sku-tier.md) och ställer in en övre gräns för kapacitet. Vissa funktioner är inte tillgängliga på den kostnads fria nivån.
+* [Tjänst nivån](search-sku-tier.md) påverkar faktureringen och ställer in en övre gräns för kapacitet. Vissa funktioner är inte tillgängliga på den kostnads fria nivån.
 * Tjänste region kan avgöra om vissa scenarier är tillgängliga. Om du behöver [hög säkerhetsfunktioner](search-security-overview.md) eller [AI-berikning](cognitive-search-concept-intro.md)måste du placera Azure kognitiv sökning i samma region som andra tjänster, eller i regioner som tillhandahåller funktionen i fråga. 
 
 ## <a name="subscribe-free-or-paid"></a>Prenumerera (kostnadsfritt eller betalt)
@@ -59,11 +59,11 @@ En resurs grupp är en behållare som innehåller relaterade resurser för din A
 
 Om du inte kombinerar resurser till en enda grupp, eller om befintliga resurs grupper är fyllda med resurser som används i orelaterade lösningar, skapar du en ny resurs grupp för din Azure Kognitiv sökning-resurs. 
 
-:::image type="content" source="media/search-create-service-portal/new-resource-group.png" alt-text="Skapa en resurs i portalen" border="false":::
+:::image type="content" source="media/search-create-service-portal/new-resource-group.png" alt-text="Skapa en ny resursgrupp" border="false":::
 
 Med tiden kan du spåra aktuella och projicerade kostnader hela tiden, eller så kan du Visa avgifter för enskilda resurser. Följande skärm bild visar vilken typ av kostnads information som du kan se när du kombinerar flera resurser i en grupp.
 
-:::image type="content" source="media/search-create-service-portal/resource-group-cost-management.png" alt-text="Skapa en resurs i portalen" border="false":::
+:::image type="content" source="media/search-create-service-portal/resource-group-cost-management.png" alt-text="Hantera kostnader på resurs grupps nivå" border="false":::
 
 > [!TIP]
 > Resurs grupper fören klar rensningen eftersom borttagning av en grupp tar bort alla tjänster i den. Om du har ett prototypprojekt som använder flera tjänster kan du placera dem i samma resursgrupp. Då är det lättare att rensa upp när projektet är slutfört.
@@ -114,11 +114,11 @@ Kom ihåg att det inte går att ändra pris nivån när tjänsten har skapats. O
 
 När du har angett nödvändiga indata kan du gå vidare och skapa tjänsten. 
 
-:::image type="content" source="media/search-create-service-portal/new-service3.png" alt-text="Skapa en resurs i portalen" border="false":::
+:::image type="content" source="media/search-create-service-portal/new-service3.png" alt-text="Granska och skapa tjänsten" border="false":::
 
 Tjänsten distribueras på några minuter. Du kan övervaka förloppet via Azure-meddelanden. Överväg att fästa tjänsten på instrument panelen för enkel åtkomst i framtiden.
 
-:::image type="content" source="media/search-create-service-portal/monitor-notifications.png" alt-text="Skapa en resurs i portalen" border="false":::
+:::image type="content" source="media/search-create-service-portal/monitor-notifications.png" alt-text="Övervaka och fäst tjänsten" border="false":::
 
 ## <a name="get-a-key-and-url-endpoint"></a>Hämta en nyckel och URL-slutpunkt
 
@@ -128,7 +128,7 @@ Om du inte använder portalen kräver program mässig åtkomst till din nya tjä
 
 2. På sidan **nycklar** kopierar du antingen en av administratörs nycklarna (de är likvärdiga). API-administratörsnycklarna krävs för att skapa, uppdatera och ta bort objekt i tjänsten. Som kontrast ger frågeinställningar Läs åtkomst till index innehåll.
 
-   :::image type="content" source="media/search-create-service-portal/get-url-key.png" alt-text="Skapa en resurs i portalen" border="false":::
+   :::image type="content" source="media/search-create-service-portal/get-url-key.png" alt-text="Översikts sida för tjänsten med URL-slutpunkt" border="false":::
 
 Det behövs ingen slutpunkt eller nyckel för portalbaserade uppgifter. Portalen är redan länkad till din Azure Kognitiv sökning-resurs med administratörs behörighet. För en portal genom gång börjar du med [snabb start: skapa ett Azure kognitiv sökning-index i portalen](search-get-started-portal.md).
 
@@ -136,9 +136,9 @@ Det behövs ingen slutpunkt eller nyckel för portalbaserade uppgifter. Portalen
 
 När tjänsten har etablerats kan du skala den så att den passar dina behov. Om du väljer standard nivån för din Azure Kognitiv sökning-tjänst kan du skala din tjänst i två dimensioner: repliker och partitioner. Om du hade valt Basic-nivån hade du bara kunnat lägga till repliker. Skalning är inte tillgängligt om du etablerar tjänsten utan kostnad.
 
-Med ***Partitioner*** kan tjänsten lagra och söka igenom fler dokument.
+**_Partitioner_* _ gör att din tjänst kan lagra och söka igenom fler dokument.
 
-Med ***Repliker*** kan tjänsten hantera en högre belastning av sökfrågor.
+_*_Repliker_*_ låter tjänsten hantera en högre belastning av Sök frågor.
 
 Om du lägger till resurser blir din månatliga faktura större. [Priskalkylatorn](https://azure.microsoft.com/pricing/calculator/) kan hjälpa dig att förstå hur fakturering påverkas när du lägger till resurser. Kom ihåg att du kan ändra resurser baserat på belastning. Du kan till exempel öka resurserna för att skapa den fullständiga initiala indexeringen och sedan minska resurserna till en nivå som är mer lämplig för inkrementell indexering.
 
@@ -146,10 +146,10 @@ Om du lägger till resurser blir din månatliga faktura större. [Priskalkylator
 > En tjänst måste ha [2 repliker för skrivskyddad SLA och 3 repliker för läs-/skriv-SLA](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
 
 1. Gå till söktjänstsidan i Azure-portalen.
-2. I det vänstra navigerings fönstret väljer du **Inställningar**  >  **skala**.
+2. I det vänstra navigerings fönstret väljer du _ *Inställningar** > **skala**.
 3. Använd reglaget om du vill lägga till resurser av endera typ.
 
-:::image type="content" source="media/search-create-service-portal/settings-scale.png" alt-text="Skapa en resurs i portalen" border="false":::
+:::image type="content" source="media/search-create-service-portal/settings-scale.png" alt-text="Lägg till kapacitet via repliker och partitioner" border="false":::
 
 > [!Note]
 > Lagring och hastighet per partition ökar med högre nivåer. Mer information finns i [kapacitet och begränsningar](search-limits-quotas-capacity.md).

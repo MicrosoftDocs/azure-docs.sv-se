@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/01/2020
-ms.openlocfilehash: feda969a5818402f4a5f2dadc80c70c324ad7492
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: eafa2187308c0324b85596ce25e8310fd8506a97
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97559972"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98249610"
 ---
 # <a name="tutorial-scan-data-with-azure-purview-preview"></a>Självstudie: Genomsök data med Azure avdelningens kontroll (för hands version)
 
@@ -189,6 +189,8 @@ En hanterad identitet med samma namn som ditt Azure avdelningens kontroll-konto 
 1. Upprepa föregående steg för Azure Data Lake Storage Gen2.
 
 ### <a name="scan-your-data-sources"></a>Sök igenom dina data källor
+
+1. Gå till Azure avdelningens kontroll-resursen i [Azure Portal](https://portal.azure.com) och välj *Öppna avdelningens kontroll Studio*. Du kommer automatiskt till avdelningens kontroll Studios start sida.
 
 1. Välj **källor** på katalogens webb sida och välj **Registrera**. Välj sedan **Azure Blob Storage** och **Fortsätt**.
 

@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/19/2020
-ms.openlocfilehash: 61bd23c74fd7960317dff17175b355b473cd6dc7
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 921c05b76640935a1bd9e65d556933c23093e5b2
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98233839"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251445"
 ---
 # <a name="troubleshoot-virtual-machine-certification"></a>Felsöka virtuell dator certifiering
 
@@ -23,19 +23,6 @@ I den här artikeln beskrivs vanliga fel meddelanden under publicering av VM-avb
 > [!NOTE]
 > Kontakta [supporten för partner Center](https://aka.ms/marketplacepublishersupport)om du har frågor om den här artikeln eller förslag på förbättringar.
 
-## <a name="approved-base-image"></a>Godkänd bas avbildning
-
-När du skickar en begäran om att publicera om avbildningen med uppdateringar kan det hända att test fallet för del nummer verifiering Miss lyckas. Om det Miss lyckas godkänns inte avbildningen.
-
-Felet uppstår när du använder en bas avbildning som tillhör en annan utgivare och du har uppdaterat avbildningen. I det här fallet kommer du inte att kunna publicera din avbildning.
-
-Åtgärda problemet genom att hämta avbildningen från Azure Marketplace och göra ändringar i den. Mer information finns i följande artiklar:
-
-- [Linux-avbildningar](../virtual-machines/linux/endorsed-distros.md?toc=/azure/virtual-machines/linux/toc.json)
-- [Windows-avbildningar](azure-vm-create-using-approved-base.md)
-
-> [!Note]
-> Om du använder en Linux-avbildning som inte tas från Azure Marketplace ser du till att de första 2048 sektorerna (varje sektor är av 512 byte) på den virtuella hård disken är tomma så att Azure fortsätter med publiceringen av den virtuella datorn på Azure Marketplace.  
 
 ## <a name="vm-extension-failure"></a>Problem med VM-tillägg
 
@@ -170,7 +157,7 @@ Se följande tabell för vanliga fel som kan uppstå när du kör test fall:
 I följande tabell visas de Windows-testfall där verktygs uppsättningen ska köras, tillsammans med en beskrivning av test verifieringen:
 
 |Scenario |Testfall|Beskrivning|
-|---|---|---|---|
+|---|---|---|
 |1|Operativsystemarkitektur|Azure stöder endast 64-bitars operativ system.|
 |2|Användar konto beroende|Program körningen bör inte vara beroende av administratörs kontot.|
 |3|Redundanskluster|Funktionen kluster för växling vid fel i Windows Server stöds inte ännu. Programmet bör inte vara beroende av den här funktionen.|
@@ -250,7 +237,7 @@ Om avbildningen inte är installerad med någon av följande kernel-versioner up
 |OS-familj|Version|Kernel|
 |---|---|---|
 |Ubuntu|14,04 LTS|4.4.0 – 151| 
-||14,04 LTS|4.15.0-1049-*-Azure|
+||14,04 LTS|4.15.0-1049- \* -Azure|
 ||16,04 LTS|4.15.0 – 1049|
 ||18,04 LTS|4.18.0 – 1023|
 ||18,04 LTS|5.0.0 – 1025|
@@ -283,9 +270,9 @@ Om avbildningen inte är installerad med någon av följande kernel-versioner up
 |Oracle|6,10|UEK2 2.6.39-400.312.2<br>UEK3 3.8.13-118.35.2<br>RHCK 2.6.32-754.15.3 
 ||7.0 – 7.5|UEK3 3.8.13-118.35.2<br>UEK4 4.1.12-124.28.3<br>RHCK följer RHEL ovan|
 ||7,6|RHCK 3.10.0-957.21.3<br>UEK5 4.14.35-1902.2.0|
-|Core-stabila 2079.6.0|4.19.43*|
-||Beta 2135.3.1|4.19.50*|
-||Alpha-2163.2.1|4.19.50*|
+|Core-stabila 2079.6.0|4.19.43\*|
+||Beta 2135.3.1|4.19.50\*|
+||Alpha-2163.2.1|4.19.50\*|
 |Debian|Jessie (säkerhet)|3.16.68-2|
 ||Jessie backports|4.9.168-1 + deb9u3|
 ||Sträck ut (säkerhet)|4.9.168-1 + deb9u3|
@@ -328,14 +315,11 @@ I följande tabell finns några problem som kan uppstå när du laddar ned den v
 |6|Villkorlig HTTP-rubrik|SAS-webbadressen är ogiltig.|Hämta rätt SAS-URL.|
 |7|Ogiltigt VHD-namn|Kontrol lera om det finns specialtecken, till exempel ett procent tecken `%` eller citat tecken `"` , i VHD-namnet.|Byt namn på VHD-filen genom att ta bort specialtecknen.|
 
-## <a name="first-1mb-2048-sectors-each-sector-of-512-bytes-partition-linux-only"></a>Första 1 MB (2048 sektorer, varje sektor på 512 byte) partition (endast Linux)
+## <a name="first-1-mb-partition-2048-sectors-each-sector-of-512-bytes"></a>Första 1 MB-partitionen (2 048 sektorer, varje sektor på 512 byte)
 
-När du skickar den virtuella hård disken måste du se till att de första 2048 sektorerna (1 MB) för den virtuella hård disken är tomma. Annars Miss kommer begäran. Observera att detta gäller för start-/OS-diskar och inte för ytterligare data diskar.
+Om du [skapar en egen avbildning](azure-vm-create-using-own-image.md)måste du se till att de första 2 048 sektorerna (1 MB) av OS-disken är tomma. Annars fungerar inte publiceringen. Detta krav gäller endast för OS-disken (inte data diskar). Om du skapar din avbildning [från en godkänd bas](azure-vm-create-using-approved-base.md)kan du hoppa över det här kravet. 
 
->[!NOTE]
->För vissa särskilda bilder, till exempel de som skapats ovanpå Azure Windows Base-avbildningar som tagits från Azure Marketplace eller se till att de första 1 MB (2048 sektorer) för den virtuella hård disken är tomma. 
-
-### <a name="create-a-first-1mb-2048-sectors-each-sector-of-512-bytes-partition-on-an-empty-vhd"></a>Skapa en första 1 MB (2048 sektorer, varje sektor på 512 byte) på en tom virtuell hård disk
+### <a name="create-a-1-mb-partition-2048-sectors-each-sector-of-512-bytes-on-an-empty-vhd-linux-only-steps"></a>Skapa en 1 MB-partition (2 048 sektorer, varje sektor om 512 byte) på en tom VHD (endast Linux-steg)
 
 De här stegen gäller endast för Linux.
 
@@ -400,7 +384,7 @@ De här stegen gäller endast för Linux.
 
 1. Koppla från den virtuella hård disken från den virtuella datorn och ta bort den virtuella datorn.
 
-### <a name="create-a-first-mb-2048-sectors-each-sector-of-512-bytes-partition-by-moving-existing-data-on-vhd"></a>Skapa en första MB (2048 sektorer, varje sektor om 512 byte)-partition genom att flytta befintliga data på den virtuella hård disken
+### <a name="create-a-first-1-mb-partition-2048-sectors-each-sector-of-512-bytes-by-moving-existing-data-on-vhd"></a>Skapa en första 1 MB-partition (2 048 sektorer, varje sektor på 512 byte) genom att flytta befintliga data på den virtuella hård disken
 
 De här stegen gäller endast för Linux.
 

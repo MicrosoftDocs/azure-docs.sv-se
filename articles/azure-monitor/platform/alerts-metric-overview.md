@@ -4,12 +4,12 @@ description: Få en översikt över vad du kan göra med mått aviseringar och h
 ms.date: 01/13/2021
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: d8e0621f88455a68ad0ee1b236f6b423c9d54b52
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: ab80496784b5d86d270830546cec73aadbcc50a6
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98179902"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251241"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Förstå hur måttaviseringar fungerar i Azure Monitor
 
@@ -26,7 +26,7 @@ Anta att du har skapat en varnings regel för enkel statisk tröskel enligt föl
 - Mål resurs (den Azure-resurs som du vill övervaka): myVM
 - Mått: procent andel CPU
 - Villkors typ: statisk
-- Tids agg regering (statistik som körs över rå metriska värden. [Tids agg regeringar som stöds](metrics-charts.md#changing-aggregation) är min, Max, AVG, total, Count): genomsnitt
+- Tids agg regering (statistik som körs över rå metriska värden. [Tids agg regeringar som stöds](metrics-charts.md#aggregation) är min, Max, AVG, total, Count): genomsnitt
 - Period (fönstret för att se hur Mät värden kontrol leras): de senaste 5 minuterna
 - Frekvens (den frekvens med vilken måttets avisering kontrollerar om villkoren är uppfyllda): 1 min
 - Operator: större än
@@ -43,7 +43,7 @@ Anta att du har skapat en mått regel för enkla dynamiska tröskelvärden enlig
 - Mål resurs (den Azure-resurs som du vill övervaka): myVM
 - Mått: procent andel CPU
 - Villkors typ: dynamisk
-- Tids agg regering (statistik som körs över rå metriska värden. [Tids agg regeringar som stöds](metrics-charts.md#changing-aggregation) är min, Max, AVG, total, Count): genomsnitt
+- Tids agg regering (statistik som körs över rå metriska värden. [Tids agg regeringar som stöds](metrics-charts.md#aggregation) är min, Max, AVG, total, Count): genomsnitt
 - Period (fönstret för att se hur Mät värden kontrol leras): de senaste 5 minuterna
 - Frekvens (den frekvens med vilken måttets avisering kontrollerar om villkoren är uppfyllda): 1 min
 - Operator: större än
@@ -141,7 +141,7 @@ Den här funktionen stöds för närvarande för plattforms mått (inte anpassad
 
 | Tjänst | Offentlig Azure | Myndigheter | Kina |
 |:--------|:--------|:--------|:--------|
-| Virtuella datorer<sup>1</sup>  | **Ja** | **Ja** | No |
+| Virtuella datorer<sup>1</sup>  | **Ja** | **Ja** | Nej |
 | SQL Server-databaser | **Ja** | **Ja** | **Ja** |
 | Elastiska SQL Server-pooler | **Ja** | **Ja** | **Ja** |
 | Kapacitets pooler för NetApp-filer | **Ja** | **Ja** | **Ja** |
@@ -180,7 +180,7 @@ Du hittar en fullständig lista över resurs typer som stöds i den här [artike
 ## <a name="next-steps"></a>Nästa steg
 
 - [Lär dig hur du skapar, visar och hanterar mått varningar i Azure](alerts-metric.md)
-- [Lär dig hur du skapar aviseringar i Azure montior Metrics Explorer](./metrics-charts.md#create-alert-rules)
+- [Lär dig hur du skapar aviseringar i Azure montior Metrics Explorer](./metrics-charts.md#alert-rules)
 - [Lär dig hur du distribuerar mått aviseringar med hjälp av Azure Resource Manager mallar](./alerts-metric-create-templates.md)
 - [Läs mer om åtgärds grupper](action-groups.md)
 - [Läs mer om villkors typen för dynamiska tröskelvärden](alerts-dynamic-thresholds.md)

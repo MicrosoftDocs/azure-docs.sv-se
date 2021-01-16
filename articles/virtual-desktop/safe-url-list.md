@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/04/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 70b7042e4006cc59419d0ea6798fe7626a82c086
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 872a67d8d9f41c0c809df54304352b2a5f58e011
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621084"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251768"
 ---
 # <a name="required-url-list"></a>Obligatorisk URL-lista
 
@@ -32,12 +32,13 @@ De virtuella Azure-datorer som du skapar för virtuella Windows-datorer måste h
 |* xt.blob.core.windows.net|443|Agent trafik|AzureCloud|
 |* eh.servicebus.windows.net|443|Agent trafik|AzureCloud|
 |* xt.table.core.windows.net|443|Agent trafik|AzureCloud|
+|* xt.queue.core.windows.net|443|Agent trafik|AzureCloud|
 |catalogartifact.azureedge.net|443|Azure Marketplace|AzureCloud|
 |kms.core.windows.net|1688|Windows-aktivering|Internet|
 |mrsglobalsteus2prod.blob.core.windows.net|443|Uppdateringar av agent-och SXS-stack|AzureCloud|
 |wvdportalstorageblob.blob.core.windows.net|443|Azure Portal support|AzureCloud|
-| 169.254.169.254 | 80 | [Azure instance metadata service-slutpunkt](../virtual-machines/windows/instance-metadata-service.md) | Saknas |
-| 168.63.129.16 | 80 | [Hälso övervakning av sessions värd](../virtual-network/network-security-groups-overview.md#azure-platform-considerations) | Saknas |
+| 169.254.169.254 | 80 | [Azure instance metadata service-slutpunkt](../virtual-machines/windows/instance-metadata-service.md) | Ej tillämpligt |
+| 168.63.129.16 | 80 | [Hälso övervakning av sessions värd](../virtual-network/network-security-groups-overview.md#azure-platform-considerations) | Ej tillämpligt |
 
 >[!IMPORTANT]
 >Windows Virtual Desktop stöder nu FQDN-taggen. Mer information finns i [använda Azure Firewall för att skydda fönster distributioner av virtuella skriv bord](../firewall/protect-windows-virtual-desktop.md).
@@ -58,8 +59,8 @@ De virtuella Azure-datorer som du skapar för virtuella Windows-datorer måste h
 |Kms.core.usgovcloudapi.net|1688|Windows-aktivering|Internet|
 |mrsglobalstugviffx.blob.core.usgovcloudapi.net|443|Uppdateringar av agent-och SXS-stack|AzureCloud|
 |wvdportalstorageblob.blob.core.usgovcloudapi.net|443|Azure Portal support|AzureCloud|
-| 169.254.169.254 | 80 | [Azure instance metadata service-slutpunkt](../virtual-machines/windows/instance-metadata-service.md) | Saknas |
-| 168.63.129.16 | 80 | [Hälso övervakning av sessions värd](../virtual-network/network-security-groups-overview.md#azure-platform-considerations) | Saknas |
+| 169.254.169.254 | 80 | [Azure instance metadata service-slutpunkt](../virtual-machines/windows/instance-metadata-service.md) | Ej tillämpligt |
+| 168.63.129.16 | 80 | [Hälso övervakning av sessions värd](../virtual-network/network-security-groups-overview.md#azure-platform-considerations) | Ej tillämpligt |
 
 I följande tabell visas valfria URL: er som dina virtuella Azure-datorer kan ha åtkomst till:
 

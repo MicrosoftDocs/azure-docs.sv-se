@@ -3,14 +3,14 @@ title: Självstudie om Kubernetes i Azure – Uppdatera ett program
 description: I den här självstudien om Azure Kubernetes Service (AKS) lär du dig hur du uppdaterar en befintlig programdistribution till AKS med en ny version av programkoden.
 services: container-service
 ms.topic: tutorial
-ms.date: 09/30/2020
-ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: c8401a81a36d86b871df9fc428c393007b97c400
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.date: 01/12/2021
+ms.custom: mvc
+ms.openlocfilehash: b969e3ec1c670c0a12129289c8ff7eb81df51ff9
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94833919"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250663"
 ---
 # <a name="tutorial-update-an-application-in-azure-kubernetes-service-aks"></a>Självstudie: Uppdatera ett program i Azure Kubernetes Service (AKS)
 
@@ -64,7 +64,7 @@ docker-compose up --build -d
 
 För att kontrollera att den uppdaterade containeravbildningen visar dina ändringar öppnar du en lokal webbläsare till `http://localhost:8080`.
 
-:::image type="content" source="media/container-service-kubernetes-tutorials/vote-app-updated.png" alt-text="Skärm bild som visar ett exempel på den uppdaterade behållare avbildningen Azure röstning som öppnas med en lokal webbläsare och lokal värd.":::
+:::image type="content" source="media/container-service-kubernetes-tutorials/vote-app-updated.png" alt-text="Skärm bild som visar ett exempel på den uppdaterade behållar avbildningen Azure röstning som körs lokalt öppnad i en lokal webbläsare":::
 
 De uppdaterade värdena som anges i filen *config_file.cfg* visas i appen som körs.
 
@@ -85,7 +85,7 @@ docker tag mcr.microsoft.com/azuredocs/azure-vote-front:v1 <acrLoginServer>/azur
 Använd nu [docker push][docker-push] för att ladda upp avbildningen till registret. Ersätt `<acrLoginServer>` med namnet på din ACR-inloggningsserver.
 
 > [!NOTE]
-> Om du får problem med att skicka till ACR-registret kontrollerar du att du fortfarande är inloggad. Kör kommandot [AZ ACR login][az-acr-login] med namnet på din Azure Container Registry som du skapade i steget [skapa ett Azure Container Registry](tutorial-kubernetes-prepare-acr.md#create-an-azure-container-registry) . Exempelvis `az acr login --name <azure container registry name>`.
+> Om du får problem med att skicka till ACR-registret kontrollerar du att du fortfarande är inloggad. Kör kommandot [AZ ACR login][az-acr-login] med namnet på din Azure Container Registry som du skapade i steget [skapa ett Azure Container Registry](tutorial-kubernetes-prepare-acr.md#create-an-azure-container-registry) . Ett exempel är `az acr login --name <azure container registry name>`.
 
 ```console
 docker push <acrLoginServer>/azure-vote-front:v2
@@ -143,9 +143,9 @@ Om du vill visa det uppdaterade programmet hämtar du först den externa IP-adre
 kubectl get service azure-vote-front
 ```
 
-Öppna nu en lokal webbläsare på IP-adressen för din tjänst:
+Öppna en webbläsare med IP-adressen för din tjänst:
 
-:::image type="content" source="media/container-service-kubernetes-tutorials/vote-app-updated-external.png" alt-text="Skärm bild som visar ett exempel på den uppdaterade appen för Azure-röstning som öppnats i en lokal webbläsare.":::
+:::image type="content" source="media/container-service-kubernetes-tutorials/vote-app-updated-external.png" alt-text="Skärm bild som visar ett exempel på en uppdaterad bild av Azure röstnings program som körs i ett AKS-kluster som öppnas i en lokal webbläsare.":::
 
 ## <a name="next-steps"></a>Nästa steg
 

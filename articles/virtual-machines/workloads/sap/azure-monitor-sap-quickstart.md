@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.subservice: workloads
 ms.date: 08/17/2020
 ms.reviewer: cynthn
-ms.openlocfilehash: c3b3848e4e4f7b0445f882265dbe66bb10b48833
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 0bb0a7833e9ee3b499ae013b665ecf137c667005
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968595"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251003"
 ---
 # <a name="deploy-azure-monitor-for-sap-solutions-with-azure-portal"></a>Distribuera Azure Monitor för SAP-lösningar med Azure Portal
 
@@ -59,7 +59,7 @@ Logga in på Azure-portalen på https://portal.azure.com
 
 6. Ange det databas användar namn som du vill använda. Se till att databas användaren har tilldelats de **övervaknings** -och **katalog Läs** rollerna. 
 
-7. När du är färdig väljer du **Lägg till provider**. Fortsätt att lägga till ytterligare providrar vid behov eller Välj **Granska + skapa** för att slutföra distributionen.
+7. När du är färdig väljer du **Lägg till provider**. Fortsätt att lägga till fler leverantörer vid behov eller Välj **Granska + skapa** för att slutföra distributionen.
 
    :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-4.png" alt-text="Bild av konfigurations alternativ när du lägger till leverantörs information." lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-4.png":::
 
@@ -74,9 +74,21 @@ Logga in på Azure-portalen på https://portal.azure.com
  
 3. Mata in system-ID (SID), värdnamn och kluster namn.
 
-4. När du är färdig väljer du **Lägg till provider**. Fortsätt att lägga till ytterligare providrar vid behov eller Välj **Granska + skapa** för att slutföra distributionen.
+4. När du är färdig väljer du **Lägg till provider**. Fortsätt att lägga till fler leverantörer vid behov eller Välj **Granska + skapa** för att slutföra distributionen.
 
    :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-5.png" alt-text="Bilden visar alternativ som är relaterade till pacemaker-providern för HA-klustret." lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-5.png":::
+
+
+### <a name="os-linux-provider"></a>OS-Provider (Linux) 
+
+1. Välj OS (Linux) i list rutan 
+
+> [!IMPORTANT]
+> Om du vill konfigurera OS-providern (Linux) kontrollerar du att Node_Exporter är installerat i varje BareMetal-instans. Mer information finns i [Node_Exporter](https://github.com/prometheus/node_exporter)
+
+2. Mata in ett namn som är identifieraren för BareMetal-instansen.
+3. Mata in nodens export slut punkt i form av http://IP:9100/metrics .
+4. När du är färdig väljer du **Lägg till provider**. Fortsätt att lägga till fler leverantörer vid behov eller Välj **Granska + skapa**   för att slutföra distributionen. 
 
 
 ### <a name="microsoft-sql-server-provider"></a>Microsoft SQL Server Provider
@@ -112,7 +124,7 @@ Logga in på Azure-portalen på https://portal.azure.com
 
 3. Fyll i fälten med information som är kopplad till din Microsoft SQL Server. 
 
-4. När du är färdig väljer du **Lägg till provider**. Fortsätt att lägga till ytterligare providrar vid behov eller Välj **Granska + skapa** för att slutföra distributionen.
+4. När du är färdig väljer du **Lägg till provider**. Fortsätt att lägga till fler leverantörer vid behov eller Välj **Granska + skapa** för att slutföra distributionen.
 
      :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-6.png" alt-text="Bilden visar information om att lägga till Microsoft SQL Server-providern." lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-6.png":::
 
