@@ -4,12 +4,12 @@ ms.author: areddish
 ms.service: cognitive-services
 ms.date: 10/26/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 07aff220e211578a6a4b18e8d88ff44a4cc39a86
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 2867fd3a777242218495f8759611178130ae0c17
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97582520"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98256497"
 ---
 Den här guiden innehåller instruktioner och exempel kod som hjälper dig att komma igång med Custom Vision klient biblioteket för Node.js för att skapa en bild klassificerings modell. Du skapar ett projekt, lägger till taggar, tränar projektet och använder projektets förutsäga slut punkts-URL för att program mässigt testa det. Använd det här exemplet som mall för att skapa en egen bild igenkännings app.
 
@@ -27,7 +27,7 @@ Använd Custom Vision klient bibliotek för .NET för att:
 
 Referens dokumentation [(utbildning)](/javascript/api/@azure/cognitiveservices-customvision-training/?view=azure-node-latest) [(förutsägelse)](/javascript/api/@azure/cognitiveservices-customvision-prediction/?view=azure-node-latest) | Biblioteks käll kod [(utbildning)](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-customvision-training) [(förutsägelse)](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-customvision-prediction) | Paket (NPM) [(utbildning)](https://www.npmjs.com/package/@azure/cognitiveservices-customvision-training) [(förutsägelse)](https://www.npmjs.com/package/@azure/cognitiveservices-customvision-prediction)  |  [exempel](/samples/browse/?products=azure&terms=custom%20vision&languages=javascript)
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * Azure-prenumeration – [skapa en kostnads fritt](https://azure.microsoft.com/free/cognitive-services/)
 * Den aktuella versionen av [Node.js](https://nodejs.org/)
@@ -86,7 +86,7 @@ Lägg också till fält för ditt projekt namn och en timeout-parameter för asy
 
 ## <a name="object-model"></a>Objekt modell
 
-|Name|Beskrivning|
+|Namn|Beskrivning|
 |---|---|
 |[TrainingAPIClient](/javascript/api/@azure/cognitiveservices-customvision-training/trainingapiclient?view=azure-node-latest) | Den här klassen hanterar skapandet, utbildningen och publiceringen av dina modeller. |
 |[PredictionAPIClient](/javascript/api/@azure/cognitiveservices-customvision-prediction/predictionapiclient?view=azure-node-latest)| Den här klassen hanterar frågekörning för modeller för bild klassificerings förutsägelser.|
@@ -130,6 +130,9 @@ Om du vill skapa klassificerings Taggar i projektet lägger du till följande ko
 
 Hämta först exempel bilderna för projektet. Spara innehållet i [mappen exempel bilder](https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/CustomVision/ImageClassification/Images) på din lokala enhet.
 
+> [!NOTE]
+> Källa, ett Microsoft garage-projekt, gör att du kan samla in och köpa uppsättningar av avbildningar i utbildnings syfte. När du har samlat in dina avbildningar kan du hämta dem och sedan importera dem till ditt Custom Vision-projekt på vanligt sätt. Besök [sidan källa](https://www.microsoft.com/en-us/ai/trove?activetab=pivot1:primaryr3) om du vill veta mer.
+
 Infoga följande kod efter att taggen har skapats för att lägga till exempelbilder i projektet. Den här koden laddar upp varje bild med dess motsvarande tagg.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/CustomVision/ImageClassification/CustomVisionQuickstart.js?name=snippet_upload)]
@@ -161,7 +164,7 @@ Stäng sedan Custom Vision-funktionen och anropa den.
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/CustomVision/ImageClassification/CustomVisionQuickstart.js?name=snippet_function_close)]
 
 
-## <a name="run-the-application"></a>Köra appen
+## <a name="run-the-application"></a>Kör programmet
 
 Kör programmet med `node` kommandot på snabb starts filen.
 

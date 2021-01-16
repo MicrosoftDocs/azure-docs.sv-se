@@ -7,12 +7,12 @@ ms.author: askaur
 ms.date: 12/08/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: ea66e4295e8228aa382aa29a46fcca8147dcbc98
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 1ad6b7241c7167c6da8952e7db2797fa275b7246
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97578150"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251936"
 ---
 # <a name="quickstart-join-your-chat-app-to-a-teams-meeting"></a>Snabb start: Anslut chatt-appen till ett team möte
 
@@ -29,11 +29,7 @@ Kom igång med Azure Communication Services genom att ansluta din chatt-lösning
 
 En kommunikations tjänst användare som ansluts till ett team som är ett möte som gäst användare kan bara komma åt mötets chatt när de har anslutit sig till teamen för Mötes samtal. Se [Teams interop](../voice-video-calling/get-started-teams-interop.md) -dokumentation för att lära dig hur du lägger till en kommunikations tjänst användare till ett team som är Mötes samtal.
 
-Funktionen Teams driftskompatibilitet finns för närvarande i privat för hands version. Om du vill aktivera den här funktionen för din kommunikations tjänst resurs, kan du skicka e-post acsfeedback@microsoft.com till: 
-1. Prenumerations-ID för den Azure-prenumeration som innehåller kommunikations tjänst resursen. 
-2. Ditt teams klient-ID. Det enklaste sättet att skaffa detta är att hämta och dela en länk till teamet. 
-
-Du måste vara medlem i den ägande organisationen av båda entiteterna för att kunna använda den här funktionen. 
+Du måste vara medlem i den ägande organisationen av båda entiteterna för att kunna använda den här funktionen.
 
 [!INCLUDE [Join Teams meetings](./includes/meeting-interop-javascript.md)]
 

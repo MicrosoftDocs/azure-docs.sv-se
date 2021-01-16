@@ -4,12 +4,12 @@ ms.author: pafarley
 ms.service: cognitive-services
 ms.date: 09/15/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1e6884b1eb342c55823414e92f679ddfcbe35f5f
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: a1a32e4ddad3b0dca84bf2dd6016eb5a218cc2f3
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97582640"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98256354"
 ---
 Kom igång med Custom Vision klient biblioteket för .NET. Följ de här stegen för att installera paketet och prova exempel koden för att skapa en bild klassificerings modell. Du skapar ett projekt, lägger till taggar, tränar projektet och använder projektets förutsäga slut punkts-URL för att program mässigt testa det. Använd det här exemplet som mall för att skapa en egen bild igenkännings app.
 
@@ -28,7 +28,7 @@ Använd Custom Vision klient bibliotek för .NET för att:
 [Referens dokumentation](/dotnet/api/overview/azure/cognitiveservices/client/customvision?view=azure-dotnet) | Biblioteks käll kod [(utbildning)](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.CustomVision.Training) [(förutsägelse)](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.CustomVision.Prediction) | Paket (NuGet) [(utbildning)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training/) [(förutsägelse)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction/)  |  [exempel](/samples/browse/?products=azure&term=vision&terms=vision)
 
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * Azure-prenumeration – [skapa en kostnads fritt](https://azure.microsoft.com/free/cognitive-services/)
 * [Visual Studio IDE](https://visualstudio.microsoft.com/vs/) eller aktuell version av [.net Core](https://dotnet.microsoft.com/download/dotnet-core).
@@ -106,7 +106,7 @@ I programmets **main** -metod lägger du till anrop för de metoder som används
 
 ## <a name="object-model"></a>Objekt modell
 
-|Name|Beskrivning|
+|Namn|Beskrivning|
 |---|---|
 |[CustomVisionTrainingClient](/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.training.customvisiontrainingclient?view=azure-dotnet) | Den här klassen hanterar skapandet, utbildningen och publiceringen av dina modeller. |
 |[CustomVisionPredictionClient](/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.prediction.customvisionpredictionclient?view=azure-dotnet-preview)| Den här klassen hanterar frågekörning för modeller för bild klassificerings förutsägelser.|
@@ -147,6 +147,9 @@ Den här metoden definierar de taggar som du kommer att träna modellen på.
 ## <a name="upload-and-tag-images"></a>Ladda upp och tagga bilder
 
 Hämta först exempel bilderna för projektet. Spara innehållet i [mappen exempel bilder](https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/CustomVision/ImageClassification/Images) på din lokala enhet.
+
+> [!NOTE]
+> Källa, ett Microsoft garage-projekt, gör att du kan samla in och köpa uppsättningar av avbildningar i utbildnings syfte. När du har samlat in dina avbildningar kan du hämta dem och sedan importera dem till ditt Custom Vision-projekt på vanligt sätt. Besök [sidan källa](https://www.microsoft.com/en-us/ai/trove?activetab=pivot1:primaryr3) om du vill veta mer.
 
 Definiera sedan en hjälp metod för att ladda upp avbildningarna i den här katalogen. Du kan behöva redigera argumentet **GetFiles** för att peka på den plats där bilderna sparas.
 

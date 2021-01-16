@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/11/2021
-ms.openlocfilehash: 85172e2430a3e65edb0c5ec119c920e2c7d20217
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 877251ba7e0c1f3c33cab37e20d609479b69520c
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98234976"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251836"
 ---
 # <a name="azure-monitor-for-existing-operations-manager-customers"></a>Azure Monitor för befintliga Operations Manager-kunder
 Den här artikeln innehåller vägledning för kunder som för närvarande använder [System Center Operations Manager](https://docs.microsoft.com/system-center/scom/welcome) och som planerar en över gång till [Azure Monitor](overview.md) när de migrerar affärs program och andra resurser till Azure. Det förutsätter att ditt slutgiltiga mål är en fullständig över gång till molnet, vilket ersätter så mycket Operations Manager funktioner som möjligt med Azure Monitor, utan att kompromissa med dina verksamhets-och drift krav. 
@@ -63,7 +63,7 @@ Du aktiverar Application Insights för var och en av dina affärs program. Den i
 När du får bekanta dig med Azure Monitor börjar du med att skapa aviserings regler som kan ersätta vissa hanterings paket funktioner och börja utveckla dina affärs processer så att de använder den nya övervaknings plattformen. På så sätt kan du börja ta bort datorer och hanterings paket från Operations Manager hanterings gruppen. Du fortsätter att använda hanterings paket för kritisk serverprogram vara och lokal infrastruktur men fortsätter att titta efter nya funktioner i Azure Monitor som gör att du kan dra tillbaka ytterligare funktioner.
 
 ## <a name="monitor-azure-services"></a>Övervaka Azure-tjänster
-Azure-tjänster kräver faktiskt Azure Monitor för att samla in telemetri, och den är aktive rad så snart du skapar en Azure-prenumeration. [Aktivitets loggen](platform/activity-log.md) samlas in automatiskt för prenumerationen och [plattforms måtten](platform/data-platform-metrics.md) samlas in automatiskt från alla Azure-resurser som du skapar. Du kan börja använda [Metrics Explorer](platform/metrics-getting-started.md)direkt, som liknar prestanda vyer i drift konsolen, men den innehåller interaktiva analyser och [avancerade agg regeringar](platform/metrics-charts.md) för data. [Skapa en mått avisering](platform/alerts-metric.md) för att få ett meddelande när ett värde korsar ett tröskelvärde eller [lägga till ett diagram i en Azure-instrumentpanel](platform/metrics-charts.md#pin-charts-to-dashboards) för synlighet.
+Azure-tjänster kräver faktiskt Azure Monitor för att samla in telemetri, och den är aktive rad så snart du skapar en Azure-prenumeration. [Aktivitets loggen](platform/activity-log.md) samlas in automatiskt för prenumerationen och [plattforms måtten](platform/data-platform-metrics.md) samlas in automatiskt från alla Azure-resurser som du skapar. Du kan börja använda [Metrics Explorer](platform/metrics-getting-started.md)direkt, som liknar prestanda vyer i drift konsolen, men den innehåller interaktiva analyser och [avancerade agg regeringar](platform/metrics-charts.md) för data. [Skapa en mått avisering](platform/alerts-metric.md) för att få ett meddelande när ett värde korsar ett tröskelvärde eller [lägga till ett diagram i en Azure-instrumentpanel](platform/metrics-charts.md#pinning-to-dashboards) för synlighet.
 
 [![Måttutforskare](media/azure-monitor-operations-manager/metrics-explorer.png)](media/azure-monitor-operations-manager/metrics-explorer.png#lightbox)
 

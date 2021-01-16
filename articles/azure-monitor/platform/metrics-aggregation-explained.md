@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 01/12/2020
 ms.subservice: metrics
-ms.openlocfilehash: 79728e53c1d53a8a4463fc0bd1ddee5db89fc013
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 1d83ef07714e0ce69f01aa240cc3058195c7b1af
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98234931"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251989"
 ---
 # <a name="azure-monitor-metrics-metrics-aggregation-and-display-explained"></a>Mät värden för Azure Monitor mått och Visa förklaring
 
@@ -125,7 +125,7 @@ Med filtrering kan vi rensa diagrammet för att se vad som händer. Du kan marke
 
 :::image type="content" source="media/metrics-aggregation-explained/split-filter-total-disk write-bytes-all-VMs.png" alt-text="Skärm bild som visar disk-skrivna byte för alla virtuella datorer i Contoso hotell resurs grupp dela och filtrerat efter namn på virtuell dator" border="true" lightbox="media/metrics-aggregation-explained/split-filter-total-disk write-bytes-all-VMs.png":::
 
-Mer information om hur du visar delade dimensions data i ett Metric Explorer-diagram finns i [avancerade funktioner i mått Utforskaren – filter och delning](metrics-charts.md#apply-filters-to-charts).
+Mer information om hur du visar delade dimensions data i ett Metric Explorer-diagram finns i [avancerade funktioner i mått Utforskaren – filter och delning](metrics-charts.md#filters).
 
 ### <a name="null-and-zero-values"></a>NULL-värden och nollvärden
 

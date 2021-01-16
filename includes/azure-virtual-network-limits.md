@@ -1,6 +1,6 @@
 ---
-title: inkludera fil
-description: inkludera fil
+title: ta med fil
+description: ta med fil
 services: networking
 author: anavinahar
 ms.service: networking
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/14/2020
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: 9751bd082947e66b3fc5ea47448857558301a1e7
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 59329fccda77f16e4a595e9b1789ef684c5cbf95
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97366400"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98256318"
 ---
 ### <a name="networking-limits---azure-resource-manager"></a><a name="azure-resource-manager-virtual-networking-limits"></a>Nätverks gränser – Azure Resource Manager
 Följande begränsningar gäller endast för nätverks resurser som hanteras via **Azure Resource Manager** per region per prenumeration. Lär dig hur du [visar din aktuella resursanvändning mot dina prenumerations gränser](../articles/networking/check-usage-against-limits.md).
@@ -34,7 +34,7 @@ Följande begränsningar gäller endast för nätverks resurser som hanteras via
 | Privata IP-adresser per virtuell dator |256 |
 | Offentliga IP-adresser per nätverks gränssnitt |256 |
 | Offentliga IP-adresser per virtuell dator |256 |
-| [Samtidiga TCP-eller UDP-flöden per nätverkskort för en virtuell dator eller roll instans](../articles/virtual-network/virtual-machine-network-throughput.md#flow-limits-and-recommendations) |500 000 |
+| [Samtidiga TCP-eller UDP-flöden per nätverkskort för en virtuell dator eller roll instans](../articles/virtual-network/virtual-machine-network-throughput.md#flow-limits-and-active-connections-recommendations) |500 000 |
 | Nätverks gränssnitts kort |65 536 |
 | Nätverkssäkerhetsgrupper |5 000 |
 | NSG-regler per NSG |1 000 |

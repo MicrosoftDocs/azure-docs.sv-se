@@ -5,26 +5,18 @@ ms.author: mikben
 ms.date: 10/10/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: c72083f205fae77de366125e666cee479fd46805
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: dbba87be839d7f172d42827698a8e485c2edddd8
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97692012"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98256323"
 ---
 ## <a name="prerequisites"></a>Förutsättningar
 
 - En fungerande [kommunikations tjänst som anropar en app](../getting-started-with-calling.md).
 - En [team distribution](/deployoffice/teams-install).
 
-## <a name="enable-teams-interoperability"></a>Aktivera team samverkan
-
-Funktionen Teams driftskompatibilitet finns för närvarande i privat för hands version. Om du vill aktivera den här funktionen för din kommunikations tjänst resurs, kan du skicka e-post [acsfeedback@microsoft.com](mailto:acsfeedback@microsoft.com) till:
-
-1. Prenumerations-ID för den Azure-prenumeration som innehåller kommunikations tjänst resursen.
-2. Ditt teams klient-ID. Det enklaste sättet att skaffa detta är att [Hämta och dela en länk till teamet](https://support.microsoft.com/office/create-a-link-or-a-code-for-joining-a-team-11b0de3b-9288-4cb4-bc49-795e7028296f).
-
-Du måste vara medlem i den ägande organisationen av båda entiteterna för att kunna använda den här funktionen.
 
 ## <a name="add-the-teams-ui-controls"></a>Lägg till Team UI-kontroller
 

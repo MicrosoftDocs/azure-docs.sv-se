@@ -4,12 +4,12 @@ ms.custom: devx-track-java
 ms.author: pafarley
 ms.service: cognitive-services
 ms.date: 10/13/2020
-ms.openlocfilehash: 0a0ae0659e13035bfb29a0628330339ede349b8a
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: b5884a7b1f271a88653779e46c461c29a85ab2ed
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97582508"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98256339"
 ---
 Kom igång med Custom Vision klient bibliotek för Java för att skapa en bild klassificerings modell. Följ de här stegen för att installera paketet och prova exempel koden för grundläggande uppgifter. Använd det här exemplet som mall för att skapa en egen bild igenkännings app.
 
@@ -28,7 +28,7 @@ Använd Custom Vision klient bibliotek för Java för att:
 [Referens dokumentation](/java/api/overview/azure/cognitiveservices/client/customvision?view=azure-java-stable) | Biblioteks käll kod [(utbildning)](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cognitiveservices/ms-azure-cs-customvision-training) [(förutsägelse)](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cognitiveservices/ms-azure-cs-customvision-prediction)| Artefakt (maven) [(utbildning)](https://search.maven.org/artifact/com.azure/azure-cognitiveservices-customvision-training/1.1.0-preview.2/jar) [(förutsägelse)](https://search.maven.org/artifact/com.azure/azure-cognitiveservices-customvision-prediction/1.1.0-preview.2/jar)  | 
  [exempel](/samples/browse/?products=azure&terms=custom%20vision)
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * En Azure-prenumeration – [skapa en kostnads fritt](https://azure.microsoft.com/free/cognitive-services/)
 * Den aktuella versionen av [Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
@@ -111,7 +111,7 @@ I programmets **main** -metod lägger du till anrop för de metoder som används
 
 Följande klasser och gränssnitt hanterar några av de viktigaste funktionerna i Custom Vision Java-klient biblioteket.
 
-|Name|Beskrivning|
+|Namn|Beskrivning|
 |---|---|
 |[CustomVisionTrainingClient](/java/api/com.microsoft.azure.cognitiveservices.vision.customvision.training.customvisiontrainingclient?view=azure-java-stable) | Den här klassen hanterar skapandet, utbildningen och publiceringen av dina modeller. |
 |[CustomVisionPredictionClient](/java/api/com.microsoft.azure.cognitiveservices.vision.customvision.prediction.customvisionpredictionclient?view=azure-java-stable)| Den här klassen hanterar frågekörning för modeller för bild klassificerings förutsägelser.|
@@ -154,6 +154,9 @@ Den här metoden definierar de taggar som du kommer att träna modellen på.
 
 Hämta först exempel bilderna för projektet. Spara innehållet i [mappen exempel bilder](https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/CustomVision/ImageClassification/Images) på din lokala enhet.
 
+> [!NOTE]
+> Källa, ett Microsoft garage-projekt, gör att du kan samla in och köpa uppsättningar av avbildningar i utbildnings syfte. När du har samlat in dina avbildningar kan du hämta dem och sedan importera dem till ditt Custom Vision-projekt på vanligt sätt. Besök [sidan källa](https://www.microsoft.com/en-us/ai/trove?activetab=pivot1:primaryr3) om du vill veta mer.
+
 [!code-java[](~/cognitive-services-quickstart-code/java/CustomVision/src/main/java/com/microsoft/azure/cognitiveservices/vision/customvision/samples/CustomVisionSamples.java?name=snippet_upload)]
 
 Föregående kodfragment använder två hjälp funktioner som hämtar avbildningarna som resurs strömmar och laddar upp dem till tjänsten (du kan ladda upp till 64 avbildningar i en enda batch).
@@ -179,7 +182,7 @@ Den här metoden läser in test avbildningen, frågar modell slut punkten och ma
 
 [!code-java[](~/cognitive-services-quickstart-code/java/CustomVision/src/main/java/com/microsoft/azure/cognitiveservices/vision/customvision/samples/CustomVisionSamples.java?name=snippet_predict)]
 
-## <a name="run-the-application"></a>Köra appen
+## <a name="run-the-application"></a>Kör programmet
 
 Du kan bygga appen med:
 
