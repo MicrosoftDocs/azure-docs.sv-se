@@ -7,14 +7,14 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 12/16/2020
+ms.date: 01/15/2021
 ms.custom: generated
-ms.openlocfilehash: f22b74b16594419b0eff33f0c73d6e9c3a62ac15
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 8f44de679c9b0280652b0020d1e454a70f7114a3
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97655041"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98538534"
 ---
 # <a name="azure-built-in-roles"></a>Inbyggda roller i Azure
 
@@ -27,7 +27,7 @@ Följande tabell innehåller en kort beskrivning och det unika ID: t för varje 
 ## <a name="all"></a>Alla
 
 > [!div class="mx-tableFixed"]
-> | Inbyggd roll | Beskrivning | ID |
+> | Inbyggd roll | Description | ID |
 > | --- | --- | --- |
 > | **Allmänt** |  |  |
 > | [Deltagare](#contributor) | Ger fullständig åtkomst för att hantera alla resurser, men tillåter inte att du tilldelar roller i Azure RBAC, hanterar tilldelningar i Azure-ritningar eller delar avbildnings gallerier. | b24988ac-6180-42a0-ab88-20f7382dd24c |
@@ -119,6 +119,9 @@ Följande tabell innehåller en kort beskrivning och det unika ID: t för varje 
 > | [HDInsight Domain Services-deltagare](#hdinsight-domain-services-contributor) | Kan läsa, skapa, ändra och ta bort åtgärder för domän tjänster som krävs för HDInsight-Enterprise Security Package | 8d8d5a11-05d3-4bda-a417-a08778121c7c |
 > | [Log Analytics Contributor](#log-analytics-contributor) | Log Analytics deltagare kan läsa alla övervaknings data och redigera övervaknings inställningar. Genom att redigera övervaknings inställningarna lägger du till VM-tillägget till virtuella datorer. läsning av lagrings konto nycklar för att kunna konfigurera samling av loggar från Azure Storage. Skapa och konfigurera Automation-konton. lägga till lösningar. och konfigurera Azure Diagnostics på alla Azure-resurser. | 92aaf0da-9dab-42b6-94a3-d43ce8d16293 |
 > | [Log Analytics Reader](#log-analytics-reader) | Log Analytics läsaren kan visa och söka i alla övervaknings data samt Visa övervaknings inställningar, inklusive Visa konfigurationen av Azure Diagnostics på alla Azure-resurser. | 73c42c96-874c-492b-b04d-ab87d138a893 |
+> | [Avdelningens kontroll data curator](#purview-data-curator) | Microsoft. avdelningens kontroll-data curator kan skapa, läsa, ändra och ta bort katalog data objekt och upprätta relationer mellan objekt. Den här rollen är i för hands version och kan komma att ändras. | 8a3c2885-9b38-4fd2-9d99-91af537c1347 |
+> | [Avdelningens kontroll data läsare](#purview-data-reader) | Data läsaren Microsoft. avdelningens kontroll kan läsa katalog data objekt. Den här rollen är i för hands version och kan komma att ändras. | ff100721-1b9d-43d8-af52-42b69c1272db |
+> | [Avdelningens kontroll data källans administratör](#purview-data-source-administrator) | Microsoft. avdelningens kontroll-administratören för data källan kan hantera data källor och data genomsökningar. Den här rollen är i för hands version och kan komma att ändras. | 200bba9e-f0c8-430f-892b-6f0794863803 |
 > | [Schema register deltagare (för hands version)](#schema-registry-contributor-preview) | Läsa, skriva och ta bort schema register grupper och scheman. | 5dffeca3-4936-4216-b2bc-10343a5abb25 |
 > | [Schema register läsare (för hands version)](#schema-registry-reader-preview) | Läs och Visa lista över schema register grupper och scheman. | 2c56ea50-c6b3-40a6-83c0-9d98858bc7d2 |
 > | **Blockkedja** |  |  |
@@ -395,7 +398,7 @@ Gör att du kan hantera användar åtkomst till Azure-resurser. [Läs mer](rbac-
 }
 ```
 
-## <a name="compute"></a>Compute
+## <a name="compute"></a>Beräkning
 
 
 ### <a name="classic-virtual-machine-contributor"></a>Klassisk virtuell dator deltagare
@@ -1164,7 +1167,7 @@ Låter dig hantera Traffic Manager profiler, men låter dig inte kontrol lera ve
 }
 ```
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Lagring
 
 
 ### <a name="avere-contributor"></a>Aver deltagare
@@ -4888,6 +4891,133 @@ Log Analytics läsaren kan visa och söka i alla övervaknings data samt Visa ö
 }
 ```
 
+### <a name="purview-data-curator"></a>Avdelningens kontroll data curator
+
+Microsoft. avdelningens kontroll-data curator kan skapa, läsa, ändra och ta bort katalog data objekt och upprätta relationer mellan objekt. Den här rollen är i för hands version och kan komma att ändras.
+
+> [!div class="mx-tableFixed"]
+> | Åtgärder | Beskrivning |
+> | --- | --- |
+> | [Microsoft. avdelningens kontroll](resource-provider-operations.md#microsoftpurview)/Accounts/Read | Läs konto resursen för Microsoft avdelningens kontroll-providern. |
+> | **NotActions** |  |
+> | *inget* |  |
+> | **DataActions** |  |
+> | [Microsoft. avdelningens kontroll](resource-provider-operations.md#microsoftpurview)/Accounts/data/Read | Läs data objekt. |
+> | [Microsoft. avdelningens kontroll](resource-provider-operations.md#microsoftpurview)/Accounts/data/Write | Skapa, uppdatera och ta bort data objekt. |
+> | **NotDataActions** |  |
+> | *inget* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "The Microsoft.Purview data curator can create, read, modify and delete catalog data objects and establish relationships between objects. This role is in preview and subject to change.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/8a3c2885-9b38-4fd2-9d99-91af537c1347",
+  "name": "8a3c2885-9b38-4fd2-9d99-91af537c1347",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Purview/accounts/read"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.Purview/accounts/data/read",
+        "Microsoft.Purview/accounts/data/write"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Purview Data Curator",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="purview-data-reader"></a>Avdelningens kontroll data läsare
+
+Data läsaren Microsoft. avdelningens kontroll kan läsa katalog data objekt. Den här rollen är i för hands version och kan komma att ändras.
+
+> [!div class="mx-tableFixed"]
+> | Åtgärder | Beskrivning |
+> | --- | --- |
+> | [Microsoft. avdelningens kontroll](resource-provider-operations.md#microsoftpurview)/Accounts/Read | Läs konto resursen för Microsoft avdelningens kontroll-providern. |
+> | **NotActions** |  |
+> | *inget* |  |
+> | **DataActions** |  |
+> | [Microsoft. avdelningens kontroll](resource-provider-operations.md#microsoftpurview)/Accounts/data/Read | Läs data objekt. |
+> | **NotDataActions** |  |
+> | *inget* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "The Microsoft.Purview data reader can read catalog data objects. This role is in preview and subject to change.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/ff100721-1b9d-43d8-af52-42b69c1272db",
+  "name": "ff100721-1b9d-43d8-af52-42b69c1272db",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Purview/accounts/read"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.Purview/accounts/data/read"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Purview Data Reader",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="purview-data-source-administrator"></a>Avdelningens kontroll data källans administratör
+
+Microsoft. avdelningens kontroll-administratören för data källan kan hantera data källor och data genomsökningar. Den här rollen är i för hands version och kan komma att ändras.
+
+> [!div class="mx-tableFixed"]
+> | Åtgärder | Beskrivning |
+> | --- | --- |
+> | [Microsoft. avdelningens kontroll](resource-provider-operations.md#microsoftpurview)/Accounts/Read | Läs konto resursen för Microsoft avdelningens kontroll-providern. |
+> | **NotActions** |  |
+> | *inget* |  |
+> | **DataActions** |  |
+> | [Microsoft. avdelningens kontroll](resource-provider-operations.md#microsoftpurview)/Accounts/Scan/Read | Läs data källor och genomsökningar. |
+> | [Microsoft. avdelningens kontroll](resource-provider-operations.md#microsoftpurview)/Accounts/Scan/Write | Skapa, uppdatera och ta bort data källor och hantera genomsökningar. |
+> | **NotDataActions** |  |
+> | *inget* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "The Microsoft.Purview data source administrator can manage data sources and data scans. This role is in preview and subject to change.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/200bba9e-f0c8-430f-892b-6f0794863803",
+  "name": "200bba9e-f0c8-430f-892b-6f0794863803",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Purview/accounts/read"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.Purview/accounts/scan/read",
+        "Microsoft.Purview/accounts/scan/write"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Purview Data Source Administrator",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
 ### <a name="schema-registry-contributor-preview"></a>Schema register deltagare (för hands version)
 
 Läsa, skriva och ta bort schema register grupper och scheman.
@@ -7015,7 +7145,9 @@ Läs metadata för nycklar och utför figursatta/unwrap-åtgärder. Fungerar bar
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
 > | --- | --- |
-> | *inget* |  |
+> | [Microsoft. EventGrid](resource-provider-operations.md#microsofteventgrid)/eventSubscriptions/Write | Skapa eller uppdatera en eventSubscription |
+> | [Microsoft. EventGrid](resource-provider-operations.md#microsofteventgrid)/eventSubscriptions/Read | Läs en eventSubscription |
+> | [Microsoft. EventGrid](resource-provider-operations.md#microsofteventgrid)/eventSubscriptions/Delete | Ta bort en eventSubscription |
 > | **NotActions** |  |
 > | *inget* |  |
 > | **DataActions** |  |
@@ -7035,7 +7167,11 @@ Läs metadata för nycklar och utför figursatta/unwrap-åtgärder. Fungerar bar
   "name": "e147488a-f6f5-4113-8e2d-b22465e65bf6",
   "permissions": [
     {
-      "actions": [],
+      "actions": [
+        "Microsoft.EventGrid/eventSubscriptions/write",
+        "Microsoft.EventGrid/eventSubscriptions/read",
+        "Microsoft.EventGrid/eventSubscriptions/delete"
+      ],
       "notActions": [],
       "dataActions": [
         "Microsoft.KeyVault/vaults/keys/read",
@@ -7438,6 +7574,9 @@ Visa behörigheter för Security Center. Kan visa rekommendationer, aviseringar,
 > | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)-/Subscriptions/resourceGroups/Read | Hämtar eller listar resurs grupper. |
 > | [Microsoft. Security](resource-provider-operations.md#microsoftsecurity)/*/Read | Läsa säkerhets komponenter och principer |
 > | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/*/Read |  |
+> | [Microsoft. Security](resource-provider-operations.md#microsoftsecurity)-/iotDefenderSettings/packageDownloads/Action | Hämtar information om hämtning av IoT Defender-paket |
+> | [Microsoft. Security](resource-provider-operations.md#microsoftsecurity)-/iotDefenderSettings/downloadManagerActivation/Action | Överförings hanterarens aktiverings fil med prenumerations kvot data |
+> | [Microsoft. Security](resource-provider-operations.md#microsoftsecurity)-/iotSensors/downloadResetPassword/Action | Nedladdningar Återställ lösen ords fil för IoT-sensorer |
 > | [Microsoft. Management](resource-provider-operations.md#microsoftmanagement)-/managementGroups/Read | Visa en lista med hanterings grupper för den autentiserade användaren. |
 > | **NotActions** |  |
 > | *inget* |  |
@@ -7464,6 +7603,9 @@ Visa behörigheter för Security Center. Kan visa rekommendationer, aviseringar,
         "Microsoft.Resources/subscriptions/resourceGroups/read",
         "Microsoft.Security/*/read",
         "Microsoft.Support/*/read",
+        "Microsoft.Security/iotDefenderSettings/packageDownloads/action",
+        "Microsoft.Security/iotDefenderSettings/downloadManagerActivation/action",
+        "Microsoft.Security/iotSensors/downloadResetPassword/action",
         "Microsoft.Management/managementGroups/read"
       ],
       "notActions": [],
@@ -8611,8 +8753,8 @@ Roll definition som tillåter att alla användare/tjänster skapar connectedClus
 > | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)-/Subscriptions/operationresults/Read | Hämta prenumerations åtgärds resultatet. |
 > | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)-/Subscriptions/Read | Hämtar listan över prenumerationer. |
 > | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)-/Subscriptions/resourceGroups/Read | Hämtar eller listar resurs grupper. |
-> | Microsoft. Kubernetes/connectedClusters/Write |  |
-> | Microsoft. Kubernetes/connectedClusters/Read |  |
+> | [Microsoft. Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/Write | Skriver connectedClusters |
+> | [Microsoft. Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/Read | Läs connectedClusters |
 > | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Skapa och uppdatera ett support ärende |
 > | **NotActions** |  |
 > | *inget* |  |

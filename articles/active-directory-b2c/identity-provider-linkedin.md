@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/17/2020
+ms.date: 01/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: bde7c1adefea88ed5b5d86e2c0e17f475be1bc71
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: e2c576c97d170726f5ec1b06e5a6d0d859a85e64
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97654378"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98538128"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-linkedin-account-using-azure-active-directory-b2c"></a>Konfigurera registrering och inloggning med ett LinkedIn-konto med hjälp av Azure Active Directory B2C
 
@@ -30,13 +30,13 @@ ms.locfileid: "97654378"
 
 ::: zone-end
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
 ## <a name="create-a-linkedin-application"></a>Skapa ett LinkedIn-program
 
-Om du vill använda ett LinkedIn-konto som [identitets leverantör](authorization-code-flow.md) i Azure Active Directory B2C (Azure AD B2C) måste du skapa ett program i din klient som representerar det. Om du inte redan har ett LinkedIn-konto kan du registrera dig på [https://www.linkedin.com/](https://www.linkedin.com/) .
+Om du vill aktivera inloggning för användare med ett LinkedIn-konto i Azure Active Directory B2C (Azure AD B2C) måste du skapa ett program på [LinkedIn Developer-webbplatsen](https://www.developer.linkedin.com/). Mer information finns i [Authorization Code Flow](https://docs.microsoft.com/linkedin/shared/authentication/authorization-code-flow). Om du inte redan har ett LinkedIn-konto kan du registrera dig på [https://www.linkedin.com/](https://www.linkedin.com/) .
 
 1. Logga in på [webbplatsen LinkedIn-utvecklare](https://www.developer.linkedin.com/) med dina LinkedIn-kontoautentiseringsuppgifter.
 1. Välj **Mina appar** och klicka sedan på **skapa app**.
@@ -232,7 +232,7 @@ Nu när du har en knapp på plats måste du länka den till en åtgärd. Åtgär
 ## <a name="add-linkedin-identity-provider-to-a-user-flow"></a>Lägg till LinkedIn Identity Provider i ett användar flöde 
 
 1. Välj **användar flöden** i Azure AD B2C klient.
-1. Klicka på det användar flöde som du vill använda för LinkedIn Identity-providern.
+1. Klicka på det användar flöde som du vill lägga till LinkedIn Identity-providern.
 1. Under **leverantörer av sociala identitet** väljer du **LinkedIn**.
 1. Välj **Spara**.
 1. Om du vill testa principen väljer du **Kör användar flöde**.
@@ -249,7 +249,7 @@ Uppdatera den förlitande parten (RP) som initierar användar resan som du har s
 
 1. Gör en kopia av *SignUpOrSignIn.xml* i din arbets katalog och Byt namn på den. Du kan till exempel byta namn på den till *SignUpSignInLinkedIn.xml*.
 1. Öppna den nya filen och uppdatera värdet för attributet **PolicyId** för **TrustFrameworkPolicy** med ett unikt värde. Ett exempel är `SignUpSignInLinkedIn`.
-1. Uppdatera värdet för **PublicPolicyUri** med URI: n för principen. Exempel:`http://contoso.com/B2C_1A_signup_signin_linkedin`
+1. Uppdatera värdet för **PublicPolicyUri** med URI: n för principen. Till exempel`http://contoso.com/B2C_1A_signup_signin_linkedin`
 1. Uppdatera värdet för attributet **ReferenceId** i **DefaultUserJourney** för att matcha ID för den nya användar resan som du skapade (SignUpSignLinkedIn).
 1. Spara ändringarna, ladda upp filen och välj sedan den nya principen i listan.
 1. Kontrol lera att Azure AD B2C programmet som du har skapat är markerat i fältet **Välj program** och testa det genom att klicka på **Kör nu**.

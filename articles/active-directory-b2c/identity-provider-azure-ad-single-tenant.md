@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/07/2020
+ms.date: 01/15/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit, project-no-code
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 05c4d36f266fb526a1d0232cc32f0408e4322c80
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 2b640730bac410136ef8fdd4ea8e0261f68a3284
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97654395"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98538141"
 ---
 # <a name="set-up-sign-in-for-a-specific-azure-active-directory-organization-in-azure-active-directory-b2c"></a>Konfigurera inloggning för en speciell Azure Active Directory organisation i Azure Active Directory B2C
 
@@ -32,13 +32,13 @@ Den här artikeln visar hur du aktiverar inloggning för användare från en sä
 
 ::: zone-end
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
 ## <a name="register-an-azure-ad-app"></a>Registrera en Azure AD-app
 
-Om du vill aktivera inloggning för användare från en specifik Azure AD-organisation måste du registrera ett program inom organisationens Azure AD-klient.
+Om du vill aktivera inloggning för användare med ett Azure AD-konto från en specifik Azure AD-organisation, i Azure Active Directory B2C (Azure AD B2C), måste du skapa ett program i [Azure Portal](https://portal.azure.com). Mer information finns i [Registrera ett program med Microsoft Identity Platform](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app).
 
 1. Logga in på [Azure-portalen](https://portal.azure.com).
 1. Kontrol lera att du använder den katalog som innehåller din organisations Azure AD-klient (till exempel contoso.com). Välj **filtret katalog + prenumeration** på den översta menyn och välj sedan den katalog som innehåller din Azure AD-klient.
@@ -238,7 +238,7 @@ Nu när du har en knapp på plats måste du länka den till en åtgärd. Åtgär
 ## <a name="add-azure-ad-identity-provider-to-a-user-flow"></a>Lägga till Azure AD Identity Provider i ett användar flöde 
 
 1. Välj **användar flöden** i Azure AD B2C klient.
-1. Klicka på det användar flöde som du vill använda för Azure AD Identity-providern.
+1. Klicka på det användar flöde som du vill lägga till Azure AD Identity-providern.
 1. Under **leverantörer av sociala identitet** väljer du **contoso Azure AD**.
 1. Välj **Spara**.
 1. Om du vill testa principen väljer du **Kör användar flöde**.

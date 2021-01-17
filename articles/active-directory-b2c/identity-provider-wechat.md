@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/07/2020
+ms.date: 01/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: af840a7becb0fb2c23e01153828458ee1cfa51a1
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 1dd9af3abd723b3a7adad82f3bbb4a09fc4464f7
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97654242"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98538024"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-wechat-account-using-azure-active-directory-b2c"></a>Konfigurera registrering och inloggning med ett WeChat-konto med hjälp av Azure Active Directory B2C
 
@@ -27,13 +27,13 @@ ms.locfileid: "97654242"
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
 ## <a name="create-a-wechat-application"></a>Skapa ett WeChat-program
 
-Om du vill använda ett WeChat-konto som identitets leverantör i Azure Active Directory B2C (Azure AD B2C) måste du skapa ett program i din klient som representerar det. Om du inte redan har ett WeChat-konto kan du hämta information på [https://kf.qq.com/faq/161220Brem2Q161220uUjERB.html](https://kf.qq.com/faq/161220Brem2Q161220uUjERB.html) .
+Om du vill aktivera inloggning för användare med ett WeChat-konto i Azure Active Directory B2C (Azure AD B2C) måste du skapa ett program i [WeChat Management Center](https://open.weixin.qq.com/). Om du inte redan har ett WeChat-konto kan du hämta information på [https://kf.qq.com](https://kf.qq.com/faq/161220Brem2Q161220uUjERB.html) .
 
 ### <a name="register-a-wechat-application"></a>Registrera ett WeChat-program
 
@@ -183,7 +183,7 @@ Nu när du har en knapp på plats måste du länka den till en åtgärd. Åtgär
 ## <a name="add-wechat-identity-provider-to-a-user-flow"></a>Lägg till WeChat Identity Provider i ett användar flöde 
 
 1. Välj **användar flöden** i Azure AD B2C klient.
-1. Klicka på det användar flöde som du vill använda för WeChat-identitets leverantören.
+1. Klicka på det användar flöde som du vill lägga till WeChat Identity Provider.
 1. Under **leverantörer av sociala identitet** väljer du **WeChat**.
 1. Välj **Spara**.
 1. Om du vill testa principen väljer du **Kör användar flöde**.
@@ -200,7 +200,7 @@ Uppdatera den förlitande parten (RP) som initierar användar resan som du har s
 
 1. Gör en kopia av *SignUpOrSignIn.xml* i din arbets katalog och Byt namn på den. Du kan till exempel byta namn på den till *SignUpSignInWeChat.xml*.
 1. Öppna den nya filen och uppdatera värdet för attributet **PolicyId** för **TrustFrameworkPolicy** med ett unikt värde. Ett exempel är `SignUpSignInWeChat`.
-1. Uppdatera värdet för **PublicPolicyUri** med URI: n för principen. Exempel:`http://contoso.com/B2C_1A_signup_signin_WeChat`
+1. Uppdatera värdet för **PublicPolicyUri** med URI: n för principen. Till exempel`http://contoso.com/B2C_1A_signup_signin_WeChat`
 1. Uppdatera värdet för attributet **ReferenceId** i **DefaultUserJourney** för att matcha ID för den nya användar resan som du skapade (SignUpSignWeChat).
 1. Spara ändringarna, ladda upp filen.
 1. Under **anpassade principer** väljer du **B2C_1A_signup_signin**.

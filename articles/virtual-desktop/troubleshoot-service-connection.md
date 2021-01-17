@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 10/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6a9eb99ae7af88e77fa597fa92ff8e6278c307e6
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 42502864cfed177adfe487e9c59247579628fec8
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108957"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539074"
 ---
 # <a name="windows-virtual-desktop-service-connections"></a>Anslutningar till virtuella Windows-datorer
 
@@ -48,15 +48,16 @@ För att lösa detta behöver du bara tilldela om användarna till sina app-grup
 
 Detta kan också inträffa om en CSP-Provider skapade prenumerationen och sedan överförts till kunden. För att lösa detta omregistrerar du resurs leverantören.
 
-1. Logga in på Azure Portal.
-2. Gå till **prenumeration**och välj din prenumeration.
+1. Logga in på Azure-portalen.
+2. Gå till **prenumeration** och välj din prenumeration.
 3. I menyn på vänster sida av sidan väljer du **resurs leverantör**.
-4. Leta upp och markera **Microsoft. DesktopVirtualization**och välj sedan **registrera igen**.
+4. Leta upp och markera **Microsoft. DesktopVirtualization** och välj sedan **registrera igen**.
 
 ## <a name="next-steps"></a>Nästa steg
 
 - En översikt över fel sökning av virtuella Windows-datorer och eskalerade spår finns i [fel söknings översikt, feedback och support](troubleshoot-set-up-overview.md).
 - Om du vill felsöka problem när du skapar en Windows Virtual Desktop-miljö och en adresspool i en Windows Virtual Desktop-miljö kan du läsa mer i [miljö-och värd bassäng](troubleshoot-set-up-issues.md).
 - Information om hur du felsöker problem när du konfigurerar en virtuell dator (VM) i Windows Virtual Desktop finns i [konfiguration av Session Host-dator](troubleshoot-vm-configuration.md).
+- Information om hur du felsöker problem som rör agenten för virtuella Windows-datorer eller sessioner finns i [Felsöka vanliga problem med Windows Virtual Desktop agent](troubleshoot-agent.md).
 - Information om hur du felsöker problem när du använder PowerShell med Windows Virtual Desktop finns i [Windows Virtual Desktop PowerShell](troubleshoot-powershell.md).
 - Information om hur du går igenom en fel söknings kurs finns i [Självstudier: Felsöka distributioner av Resource Manager-mallar](../azure-resource-manager/templates/template-tutorial-troubleshoot.md).

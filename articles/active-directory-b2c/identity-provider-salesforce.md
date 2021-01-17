@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/05/2021
+ms.date: 01/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 129809a83bcebdcf80b05a7300dd9acf862e5886
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: 92c5850c3e8c6db63bb5f6287078d2b0345a051c
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97900407"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98538046"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-salesforce-account-using-azure-active-directory-b2c"></a>Konfigurera registrering och inloggning med ett Salesforce-konto med hjälp av Azure Active Directory B2C
 
@@ -37,7 +37,7 @@ ms.locfileid: "97900407"
 
 ## <a name="create-a-salesforce-application"></a>Skapa ett Salesforce-program
 
-Om du vill använda ett Salesforce-konto i Azure Active Directory B2C (Azure AD B2C) måste du skapa ett program i Salesforce **App Manager**. Mer information finns i [Konfigurera inställningar för grundläggande anslutna appar](https://help.salesforce.com/articleView?id=connected_app_create_basics.htm)och [Aktivera OAuth-inställningar för API-integrering](https://help.salesforce.com/articleView?id=connected_app_create_api_integration.htm)
+Om du vill aktivera inloggning för användare med ett Salesforce-konto i Azure Active Directory B2C (Azure AD B2C) måste du skapa ett program i Salesforce [App Manager](https://login.salesforce.com/). Mer information finns i [Konfigurera inställningar för grundläggande anslutna appar](https://help.salesforce.com/articleView?id=connected_app_create_basics.htm)och [Aktivera OAuth-inställningar för API-integrering](https://help.salesforce.com/articleView?id=connected_app_create_api_integration.htm)
 
 1. [Logga in på Salesforce](https://login.salesforce.com/).
 1. I menyn väljer du **Inställningar**.
@@ -210,7 +210,7 @@ Nu när du har en knapp på plats måste du länka den till en åtgärd. Åtgär
 ## <a name="add-salesforce-identity-provider-to-a-user-flow"></a>Lägg till Salesforce-identitetsprovider i ett användar flöde 
 
 1. Välj **användar flöden** i Azure AD B2C klient.
-1. Klicka på det användar flöde som du vill använda för Salesforce-identitetsprovider.
+1. Klicka på det användar flöde som du vill lägga till Salesforce Identity Provider.
 1. Under **leverantörer av sociala identitet** väljer du **Salesforce**.
 1. Välj **Spara**.
 1. Om du vill testa principen väljer du **Kör användar flöde**.

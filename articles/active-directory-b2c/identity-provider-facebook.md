@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/07/2020
+ms.date: 01/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 37fc33ae8084a2b4e99e7b5dc417eac70060eef5
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: 02c3890a9aca03d9d79b55098297174401cab37d
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516204"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98537958"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-facebook-account-using-azure-active-directory-b2c"></a>Konfigurera registrering och inloggning med ett Facebook-konto med hjälp av Azure Active Directory B2C
 
@@ -36,7 +36,7 @@ ms.locfileid: "97516204"
 
 ## <a name="create-a-facebook-application"></a>Skapa ett Facebook-program
 
-Om du vill använda ett Facebook-konto som [identitets leverantör](authorization-code-flow.md) i Azure Active Directory B2C (Azure AD B2C) måste du skapa ett program i din klient som representerar det. Om du inte redan har ett Facebook-konto kan du registrera dig på [https://www.facebook.com/](https://www.facebook.com/) .
+Om du vill aktivera inloggning för användare med ett Facebook-konto i Azure Active Directory B2C (Azure AD B2C) måste du skapa ett program i [Facebook-appens instrument panel](https://developers.facebook.com/). Mer information finns i [utveckling av appar](https://developers.facebook.com/docs/development). Om du inte redan har ett Facebook-konto kan du registrera dig på [https://www.facebook.com/](https://www.facebook.com/) .
 
 1. Logga in på [Facebook för utvecklare](https://developers.facebook.com/) med dina Facebook-kontoautentiseringsuppgifter.
 1. Om du inte redan har gjort det måste du registrera dig som en Facebook-utvecklare. Om du vill göra det väljer du **Kom igång** i det övre högra hörnet på sidan, accepterar Facebook-principer och slutför registrerings stegen.
@@ -93,7 +93,7 @@ Om du vill använda ett Facebook-konto som [identitets leverantör](authorizatio
 ## <a name="add-facebook-identity-provider-to-a-user-flow"></a>Lägg till Facebook Identity Provider i ett användar flöde 
 
 1. Välj **användar flöden** i Azure AD B2C klient.
-1. Klicka på det användar flöde som du vill använda för Facebook Identity Provider.
+1. Klicka på det användar flöde som du vill lägga till Facebook Identity Provider.
 1. Under **leverantörer av sociala identitet** väljer du **Facebook**.
 1. Välj **Spara**.
 1. Om du vill testa principen väljer du **Kör användar flöde**.

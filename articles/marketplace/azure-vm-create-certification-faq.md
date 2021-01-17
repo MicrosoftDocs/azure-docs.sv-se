@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
-ms.date: 10/19/2020
-ms.openlocfilehash: 921c05b76640935a1bd9e65d556933c23093e5b2
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.date: 01/15/2021
+ms.openlocfilehash: 8c2739503f00848b1515f2061c2a9aa250c091a3
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251445"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539837"
 ---
 # <a name="troubleshoot-virtual-machine-certification"></a>Felsöka virtuell dator certifiering
 
@@ -22,7 +22,6 @@ I den här artikeln beskrivs vanliga fel meddelanden under publicering av VM-avb
 
 > [!NOTE]
 > Kontakta [supporten för partner Center](https://aka.ms/marketplacepublishersupport)om du har frågor om den här artikeln eller förslag på förbättringar.
-
 
 ## <a name="vm-extension-failure"></a>Problem med VM-tillägg
 
@@ -60,12 +59,12 @@ Etablerings problem kan omfatta följande fel scenarier:
 |1|Ogiltig virtuell hård disk (VHD)|Om det angivna cookie-värdet i VHD-foten är felaktigt anses den virtuella hård disken vara ogiltig.|Återskapa avbildningen och skicka begäran.|
 |2|Ogiltig Blob-typ|VM-etableringen misslyckades eftersom det använda blocket är en Blob-typ i stället för en typ av sida.|Återskapa avbildningen och skicka begäran.|
 |3|Tids gräns för etablering eller inte generaliseras korrekt|Det finns ett problem med VM-generalisering.|Återskapa avbildningen med generalisering och skicka begäran.|
+|
 
 > [!NOTE]
 > Mer information om VM-generalisering finns i:
 > - [Linux-dokumentation](azure-vm-create-using-approved-base.md#generalize-the-image)
 > - [Windows-dokumentation](../virtual-machines/windows/capture-image-resource.md#generalize-the-windows-vm-using-sysprep)
-
 
 ## <a name="vhd-specifications"></a>VHD-specifikationer
 
@@ -93,7 +92,7 @@ Kontrollsumma|4
 Unikt ID|16
 Sparat tillstånd|1
 Reserverat|427
-
+|
 
 ### <a name="vhd-specifications"></a>VHD-specifikationer
 
@@ -139,6 +138,7 @@ I följande tabell visas de Linux-testfall där Toolkit körs. Test verifiering 
 |8|Klientens Alive-intervall|Ange ClientAliveInterval till 180. Det kan ställas in från 30 till 235 på programmets behov. Om du aktiverar SSH för dina slutanvändare måste det här värdet anges som förklarat.|
 |9|Operativsystemarkitektur|Endast 64-bitars operativsystem stöds.|
 |10|Automatisk uppdatering|Anger om automatisk uppdatering av Linux-Agent är aktiverat.|
+|
 
 ### <a name="common-test-case-errors"></a>Vanliga test fall fel
 
@@ -150,7 +150,7 @@ Se följande tabell för vanliga fel som kan uppstå när du kör test fall:
 | 2 | Test väska för bash-historik | Ett fel inträffar om storleken på bash-historiken i den skickade avbildningen är större än 1 KB. Storleken är begränsad till 1 KB för att se till att bash-historik filen inte innehåller någon potentiellt känslig information. | Lös genom att montera den virtuella hård disken till en annan fungerande virtuell dator och ändra storleken till 1 KB eller mindre. Ta till exempel bort `.bash` historikfilerna. |
 | 3 | Nödvändigt test fall för kernel-parameter | Du får det här felet när värdet för `console` inte är inställt på `ttyS0` . Kontrol lera genom att köra följande kommando: <br /> `cat /proc/cmdline` | Ange värdet för `console` till `ttyS0` och skicka begäran på nytt. |
 | 4 | Test fall för ClientAlive-intervall | Om verktygs lådan ger dig ett misslyckat resultat för det här test fallet finns det ett olämpligt värde för `ClientAliveInterval` . | Ange värdet till `ClientAliveInterval` mindre än eller lika med 235 och skicka begäran på nytt. |
-
+|
 
 ### <a name="windows-test-cases"></a>Windows-testfall
 
@@ -175,8 +175,9 @@ I följande tabell visas de Windows-testfall där verktygs uppsättningen ska k�
 |15|SNMP-tjänster|Tjänst funktionen Simple Network Management Protocol (SNMP) stöds inte ännu. Programmet bör inte vara beroende av den här funktionen.|
 |16|Windows Internet Name Service|Windows Internet Name Service. Den här server funktionen stöds inte ännu. Programmet bör inte vara beroende av den här funktionen.|
 |17|Trådlös LAN-tjänst|Tjänsten Wireless LAN. Den här server funktionen stöds inte ännu. Programmet bör inte vara beroende av den här funktionen.|
+|
 
-Om du kommer över eventuella problem med föregående test fall, se kolumnen **Beskrivning** i tabellen för lösningen. Kontakta support teamet om du vill ha mer information. 
+Om du kommer över eventuella problem med föregående test fall, se kolumnen **Beskrivning** i tabellen för lösningen. Kontakta support teamet om du vill ha mer information.
 
 ## <a name="data-disk-size-verification"></a>Verifiering av data disk storlek
 
@@ -192,6 +193,7 @@ Se följande regler för begränsningar av storleken på OS-disken. När du skic
 |---|---|
 |Linux|1 GB till 1023 GB|
 |Windows|30 GB till 250 GB|
+|
 
 Eftersom de virtuella datorerna tillåter åtkomst till det underliggande operativ systemet kontrollerar du att VHD-storleken är tillräckligt stor för den virtuella hård disken. Diskar går inte att utöka utan nedtid. Använd en disk storlek från 30 GB till 50 GB.
 
@@ -199,6 +201,7 @@ Eftersom de virtuella datorerna tillåter åtkomst till det underliggande operat
 |---|---|---|
 |>500 tebibyte (TiB)|saknas|Kontakta support teamet om du vill ha ett undantags godkännande.|
 |250-500 TiB|>200-gibibyte (GiB) skillnad från BLOB-storlek|Kontakta support teamet om du vill ha ett undantags godkännande.|
+|
 
 > [!NOTE]
 > Större disk storlekar medför högre kostnader och leder till en fördröjning under installationen och replikeringen. På grund av denna fördröjning och kostnad kan support teamet söka efter motivering för undantags godkännande.
@@ -209,7 +212,7 @@ För att förhindra en potentiell attack som är relaterad till WannaCry virus, 
 
 Du kan kontrol lera avbildnings fil versionen från `C:\windows\system32\drivers\srv.sys` eller `srv2.sys` .
 
-I följande tabell visas den lägsta korrigerings versionen av Windows Server: 
+I följande tabell visas den lägsta korrigerings versionen av Windows Server:
 
 |Operativsystem|Version|
 |---|---|
@@ -218,6 +221,7 @@ I följande tabell visas den lägsta korrigerings versionen av Windows Server:
 |Windows Server 2012 R2|6.3.9600.18604|
 |Windows Server 2016|10.0.14393.953|
 |Windows Server 2019|NA|
+|
 
 > [!NOTE]
 > Windows Server 2019 saknar nödvändiga versions krav.
@@ -230,8 +234,8 @@ Uppdatera kärnan med en godkänd version och skicka begäran på nytt. Du hitta
 
 Om avbildningen inte är installerad med någon av följande kernel-versioner uppdaterar du den med rätt korrigeringar. Begär det godkännande som krävs från support teamet efter att avbildningen har uppdaterats med de här korrigeringarna:
 
-- CVE – 2019-11477 
-- CVE – 2019-11478 
+- CVE – 2019-11477
+- CVE – 2019-11478
 - CVE – 2019-11479
 
 |OS-familj|Version|Kernel|
@@ -278,6 +282,7 @@ Om avbildningen inte är installerad med någon av följande kernel-versioner up
 ||Sträck ut (säkerhet)|4.9.168-1 + deb9u3|
 ||Debian GNU/Linux 10 (Buster)|Debian 6.3.0-18 + deb9u1|
 ||Buster, sid (sträck ut backports)|4.19.37-5|
+|
 
 ## <a name="image-size-should-be-in-multiples-of-megabytes"></a>Bild storleken måste vara i multipler av megabyte
 
@@ -303,7 +308,7 @@ Skicka din begäran med SSH-inaktive rad avbildning för certifierings processen
 3. Skicka in din begäran om certifiering.
 
 ## <a name="download-failure"></a>Nedladdnings problem
-    
+
 I följande tabell finns några problem som kan uppstå när du laddar ned den virtuella dator avbildningen med en URL för signatur för delad åtkomst (SAS).
 
 |Scenario|Fel|Orsak|Lösning|
@@ -314,12 +319,13 @@ I följande tabell finns några problem som kan uppstå när du laddar ned den v
 |4|Ogiltig signatur|Den tillhör ande SAS-URL: en för den virtuella hård disken är felaktig.|Hämta rätt SAS-URL.|
 |6|Villkorlig HTTP-rubrik|SAS-webbadressen är ogiltig.|Hämta rätt SAS-URL.|
 |7|Ogiltigt VHD-namn|Kontrol lera om det finns specialtecken, till exempel ett procent tecken `%` eller citat tecken `"` , i VHD-namnet.|Byt namn på VHD-filen genom att ta bort specialtecknen.|
+|
 
-## <a name="first-1-mb-partition-2048-sectors-each-sector-of-512-bytes"></a>Första 1 MB-partitionen (2 048 sektorer, varje sektor på 512 byte)
+## <a name="first-1-mb-2048-sectors-each-sector-of-512-bytes-partition"></a>Första 1 MB (2048 sektorer, varje sektor på 512 byte) partition
 
-Om du [skapar en egen avbildning](azure-vm-create-using-own-image.md)måste du se till att de första 2 048 sektorerna (1 MB) av OS-disken är tomma. Annars fungerar inte publiceringen. Detta krav gäller endast för OS-disken (inte data diskar). Om du skapar din avbildning [från en godkänd bas](azure-vm-create-using-approved-base.md)kan du hoppa över det här kravet. 
+Om du [skapar en egen avbildning](azure-vm-create-using-own-image.md)ser du till att de första 2048 sektorerna (1 MB) av OS-disken är tomma. Annars fungerar inte publiceringen. Detta krav gäller endast för operativ system diskar (inte data diskar). Om du skapar din avbildning [från en godkänd bas](azure-vm-create-using-approved-base.md)kan du hoppa över det här kravet.
 
-### <a name="create-a-1-mb-partition-2048-sectors-each-sector-of-512-bytes-on-an-empty-vhd-linux-only-steps"></a>Skapa en 1 MB-partition (2 048 sektorer, varje sektor om 512 byte) på en tom VHD (endast Linux-steg)
+### <a name="create-a-1-mb-2048-sectors-each-sector-of-512-bytes-partition-on-an-empty-vhd"></a>Skapa en 1 MB (2048 sektorer, varje sektor på 512 byte) partition på en tom virtuell hård disk
 
 De här stegen gäller endast för Linux.
 
@@ -374,17 +380,17 @@ De här stegen gäller endast för Linux.
 
       ![Kommando rads skärm för SparaTillFil-klient visar kommandon och utdata för raderade data.](./media/create-vm/vm-certification-issues-solutions-22.png)
 
-   1. Skriv `w` för att bekräfta att partitionen skapas. 
+   1. Skriv `w` för att bekräfta att partitionen skapas.
 
       ![Kommando rads skärm för SparaTillFil-klient visar kommandon för att skapa en partition.](./media/create-vm/vm-certification-issues-solutions-23.png)
 
-   1. Du kan kontrol lera partitionstabellen genom att köra kommandot `n fdisk /dev/sdb` och skriva `p` . Du ser att partitionen skapas med 2048 offset-värde. 
+   1. Du kan kontrol lera partitionstabellen genom att köra kommandot `n fdisk /dev/sdb` och skriva `p` . Du ser att partitionen skapas med 2048 offset-värde.
 
       ![Kommando rads skärm för SparaTillFil-klient visar kommandon för att skapa 2048-förskjutningen.](./media/create-vm/vm-certification-issues-solutions-24.png)
 
 1. Koppla från den virtuella hård disken från den virtuella datorn och ta bort den virtuella datorn.
 
-### <a name="create-a-first-1-mb-partition-2048-sectors-each-sector-of-512-bytes-by-moving-existing-data-on-vhd"></a>Skapa en första 1 MB-partition (2 048 sektorer, varje sektor på 512 byte) genom att flytta befintliga data på den virtuella hård disken
+### <a name="create-a-1-mb-2048-sectors-each-sector-of-512-bytes-partition-by-moving-existing-data-on-vhd"></a>Skapa en 1 MB (2048 sektorer, varje sektor på 512 byte) partition genom att flytta befintliga data på den virtuella hård disken
 
 De här stegen gäller endast för Linux.
 
@@ -452,11 +458,11 @@ När en avbildning skapas, kan den mappas till eller tilldelas fel OS-etikett. O
 
 Om alla avbildningar som tas från Azure Marketplace ska återanvändas måste det virtuella operativ systemet vara generaliserat.
 
-* För **Linux** generaliserar följande process en virtuell Linux-dator och distribuerar den igen som en separat virtuell dator.
+- För **Linux** generaliserar följande process en virtuell Linux-dator och distribuerar den igen som en separat virtuell dator.
 
   I SSH-fönstret anger du följande kommando: `sudo waagent -deprovision+user` .
 
-* För **Windows** generaliserar du Windows-avbildningar med hjälp av `sysreptool` .
+- För **Windows** generaliserar du Windows-avbildningar med hjälp av `sysreptool` .
 
   Mer information om `sysreptool` verktyget finns i [Översikt över system förberedelse (Sysprep)](/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview).
 

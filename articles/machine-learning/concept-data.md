@@ -11,12 +11,12 @@ author: nibaccam
 ms.author: nibaccam
 ms.date: 08/31/2020
 ms.custom: devx-track-python, data4ml
-ms.openlocfilehash: 6d8c04e48a3d0009a152830a4ee332cd706c4b2c
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 8b73676adbb9aa12e6f3b42dd26bed94b22780a8
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360181"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539895"
 ---
 # <a name="secure-data-access-in-azure-machine-learning"></a>Skydda data åtkomst i Azure Machine Learning
 
@@ -42,7 +42,7 @@ När du är redo att använda data i din molnbaserade lagrings lösning rekommen
 
     1. Använd den direkt i Azure Machine Learning lösningar, till exempel automatisk maskin inlärning (automatiserad ML) experiment körningar, maskin inlärnings pipeliner eller [Azure Machine Learning designer](concept-designer.md).
 
-4. Skapa data [uppsättnings övervakare](#data-drift) för data uppsättningen för modell utdata för att identifiera data drift. 
+4. Skapa data [uppsättnings övervakare](#drift) för data uppsättningen för modell utdata för att identifiera data drift. 
 
 5. Om data påträffas kan du uppdatera din indata-datauppsättning och träna modellen på lämpligt sätt.
 
@@ -50,7 +50,8 @@ Följande diagram innehåller en visuell demonstration av detta rekommenderade a
 
 ![Diagrammet visar den Azure Storage tjänsten som flödar till ett data lager, som flödar till en data uppsättning. Data uppsättningen flödar in i modell träning, som flödar till data drift, som flödar tillbaka till data uppsättningen.](./media/concept-data/data-concept-diagram.svg)
 
-## <a name="datastores"></a>Datalager
+<a name="datastores"></a>
+## <a name="connect-to-storage-with-datastores"></a>Ansluta till lagring med data lager
 
 Azure Machine Learning data lager sparar säkert anslutnings informationen i Azure Storage, så du behöver inte koda den i dina skript. [Registrera och skapa ett data lager](how-to-access-data.md) för att enkelt ansluta till ditt lagrings konto och få åtkomst till data i din underliggande Azure Storage-tjänst. 
 
@@ -65,7 +66,8 @@ Molnbaserade lagrings tjänster som stöds i Azure och som kan registreras som d
 + Databricks-filsystem
 + Azure Database for MySQL
 
-## <a name="datasets"></a>Datauppsättningar
+<a name="datasets"></a>
+## <a name="reference-data-in-storage-with-datasets"></a>Referens data i lagring med data uppsättningar
 
 Azure Machine Learning data uppsättningar är inte kopior av dina data. Genom att skapa en data uppsättning skapar du en referens till data i lagrings tjänsten, tillsammans med en kopia av dess metadata. 
 
@@ -105,7 +107,7 @@ Med data uppsättningar kan du utföra ett antal Machine Learning-uppgifter geno
 
 <a name="label"></a>
 
-## <a name="data-labeling"></a>Data etiketter
+## <a name="label-data-with-data-labeling-projects"></a>Märk data med data märknings projekt
 
 Att märka stora mängder data har ofta varit ett problem i Machine Learning-projekt. De med en komponent för visuellt innehåll, till exempel bild klassificering eller objekt identifiering, kräver vanligt vis tusentals avbildningar och motsvarande etiketter.
 
@@ -115,7 +117,7 @@ Skapa ett [data etiketts projekt](how-to-create-labeling-projects.md)och mata ut
 
 <a name="drift"></a>
 
-## <a name="data-drift"></a>Data avvikelse
+## <a name="monitor-model-performance-with-data-drift"></a>Övervaka modell prestanda med data avvikelse
 
 I samband med Machine Learning är data driften ändringen i modell indata som leder till modell prestanda försämring. Det är en av de främsta orsakerna till modell precisionen över tid, vilket innebär att övervakningen av data driften hjälper till att identifiera problem med modell prestanda.
 

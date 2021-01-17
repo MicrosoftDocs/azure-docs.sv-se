@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/14/2021
+ms.date: 01/15/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit, project-no-code
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: b8be516051f8eed0649064ae0f7c29a4dde85675
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 8a0d69ea57eb5b8b2a074c37d4798a99c576ce95
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98224500"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98538169"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-an-azure-ad-b2c-account-from-another-azure-ad-b2c-tenant"></a>Konfigurera registrering och inloggning med ett Azure AD B2C konto från en annan Azure AD B2C klient
 
@@ -43,7 +43,7 @@ I den här artikeln beskrivs hur du konfigurerar en federation med en annan Azur
 
 ## <a name="create-an-azure-ad-b2c-application"></a>Skapa ett Azure AD B2C program
 
-Om du vill använda ett Azure AD B2C konto som [identitets leverantör](openid-connect.md) i din Azure AD B2C klient (till exempel contoso) i den andra Azure AD B2C (till exempel Fabrikam):
+Så här aktiverar du inloggning för användare med ett konto från en annan Azure AD B2C klient organisation (till exempel Fabrikam) i din Azure AD B2C (till exempel contoso):
 
 1. Skapa ett [användar flöde](tutorial-create-user-flows.md)eller en [anpassad princip](custom-policy-get-started.md).
 1. Skapa sedan ett program i Azure AD B2C enligt beskrivningen i det här avsnittet. 

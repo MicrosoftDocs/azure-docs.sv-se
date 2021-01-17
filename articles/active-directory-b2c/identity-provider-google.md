@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/07/2020
+ms.date: 01/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: c8b942e66a76bcc3a095f9bd3d40b44bf4217e50
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 286f4f5ca8a18a67da2ac24beb4c6935de35778d
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97584892"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98538109"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-google-account-using-azure-active-directory-b2c"></a>Konfigurera registrering och inloggning med ett Google-konto med hjälp av Azure Active Directory B2C
 
@@ -30,14 +30,14 @@ ms.locfileid: "97584892"
 
 ::: zone-end
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
 
 ## <a name="create-a-google-application"></a>Skapa ett Google-program
 
-Om du vill använda ett Google-konto som [identitets leverantör](authorization-code-flow.md) i Azure Active Directory B2C (Azure AD B2C) måste du skapa ett program i din Google Developer-konsol. Om du inte redan har ett Google-konto kan du registrera dig på [https://accounts.google.com/SignUp](https://accounts.google.com/SignUp) .
+Om du vill aktivera inloggning för användare med ett Google-konto i Azure Active Directory B2C (Azure AD B2C) måste du skapa ett program i [Google Developer-konsolen](https://console.developers.google.com/). Mer information finns i [Konfigurera OAuth 2,0](https://support.google.com/googleapi/answer/6158849). Om du inte redan har ett Google-konto kan du registrera dig på [https://accounts.google.com/SignUp](https://accounts.google.com/SignUp) .
 
 1. Logga in på [Google Developer-konsolen](https://console.developers.google.com/) med dina Google-kontoautentiseringsuppgifter.
 1. I det övre vänstra hörnet på sidan väljer du projekt listan och väljer sedan **nytt projekt**.
@@ -189,7 +189,7 @@ Nu när du har en knapp på plats måste du länka den till en åtgärd. Åtgär
 ## <a name="add-google-identity-provider-to-a-user-flow"></a>Lägga till Google Identity Provider i ett användar flöde 
 
 1. Välj **användar flöden** i Azure AD B2C klient.
-1. Klicka på det användar flöde som du vill använda för Google Identity-providern.
+1. Klicka på det användar flöde som du vill lägga till Google Identity-providern.
 1. Under **leverantörer av sociala identitet** väljer du **Google**.
 1. Välj **Spara**.
 1. Om du vill testa principen väljer du **Kör användar flöde**.

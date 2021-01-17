@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 31e9b4b065b2acb8378c2eeac332341f48b28165
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84a49ea2f6ce4a5119af024ab3de67fa2b89c02e
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88005216"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539746"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>Session för konfiguration av virtuell värddator
 
@@ -82,7 +82,7 @@ Det rekommenderade sättet att etablera virtuella datorer är att använda malle
 
 Följ de här anvisningarna för att bekräfta att komponenterna är installerade och för att söka efter fel meddelanden.
 
-1. Bekräfta att de två komponenterna är installerade genom att kontrol **Control Panel**lera i program  >  **Programs**  >  **och funktioner**på kontroll panelen. Om **Windows Virtual Desktop-agenten** och **Start inläsaren för virtuella Skriv bords agenter** för Windows inte visas, är de inte installerade på den virtuella datorn.
+1. Bekräfta att de två komponenterna är installerade genom att kontrol lera i program  >    >  **och funktioner** på kontroll panelen. Om **Windows Virtual Desktop-agenten** och **Start inläsaren för virtuella Skriv bords agenter** för Windows inte visas, är de inte installerade på den virtuella datorn.
 2. Öppna **Utforskaren** och gå till **C:\Windows\Temp\ScriptLog.log**. Om filen saknas, anger det att PowerShell DSC som installerade de två komponenterna inte kunde köras i den angivna säkerhets kontexten.
 3. Om filen **C:\Windows\Temp\ScriptLog.log** finns öppnar du den och kontrollerar om det finns fel meddelanden.
 
@@ -310,7 +310,7 @@ Om något av dessa meddelanden visas innebär det att avbildningen inte har de s
 
 ### <a name="disable-the-remote-desktop-licensing-mode-group-policy-setting"></a>Inaktivera grup princip inställningen för fjärr skrivbords licensierings läge
 
-Kontrol lera grup princip inställningen genom att öppna grupprincip redigeraren på den virtuella datorn och navigera till **administrativa mallar**  >  **Windows-komponenter**  >  **Fjärrskrivbordstjänster**  >  **värd**  >  **licensiering**för fjärrskrivbordssession  >  **Ange fjärr skrivbords licensierings läge**. Om grup princip inställningen är **aktive rad**ändrar du den till **inaktive rad**. Om den redan är inaktive rad lämnar du den som den är.
+Kontrol lera grup princip inställningen genom att öppna grupprincip redigeraren på den virtuella datorn och navigera till **administrativa mallar**  >  **Windows-komponenter**  >  **Fjärrskrivbordstjänster**  >  **värd**  >  **licensiering** för fjärrskrivbordssession  >  **Ange fjärr skrivbords licensierings läge**. Om grup princip inställningen är **aktive rad** ändrar du den till **inaktive rad**. Om den redan är inaktive rad lämnar du den som den är.
 
 >[!NOTE]
 >Om du anger grup princip via din domän inaktiverar du den här inställningen för principer som riktar sig mot de här Windows 10 Enterprise-datorer med flera sessioner.
@@ -348,6 +348,7 @@ Mer information om den här principen finns i [Tillåt inloggning via Fjärrskri
 - En översikt över fel sökning av virtuella Windows-datorer och eskalerade spår finns i [fel söknings översikt, feedback och support](troubleshoot-set-up-overview.md).
 - Information om hur du felsöker problem när du skapar en adresspool i en Windows Virtual Desktop-miljö finns i avsnittet om att [skapa en miljö och en värddator](troubleshoot-set-up-issues.md).
 - Information om hur du felsöker problem när du konfigurerar en virtuell dator (VM) i Windows Virtual Desktop finns i [konfiguration av Session Host-dator](troubleshoot-vm-configuration.md).
+- Information om hur du felsöker problem som rör agenten för virtuella Windows-datorer eller sessioner finns i [Felsöka vanliga problem med Windows Virtual Desktop agent](troubleshoot-agent.md).
 - Information om hur du felsöker problem med klient anslutningar för virtuella Windows-datorer finns i [Windows Virtual Desktop Service Connections](troubleshoot-service-connection.md).
 - Information om hur du felsöker problem med fjärr skrivbords klienter finns i [Felsöka fjärr skrivbords klienten](troubleshoot-client.md)
 - Information om hur du felsöker problem när du använder PowerShell med Windows Virtual Desktop finns i [Windows Virtual Desktop PowerShell](troubleshoot-powershell.md).

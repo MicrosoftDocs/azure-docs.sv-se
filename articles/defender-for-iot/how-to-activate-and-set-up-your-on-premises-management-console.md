@@ -1,20 +1,20 @@
 ---
-title: Aktivera och konfigurera den lokala hanterings konsolen
+title: Aktivera och konfigurera den lokala hanteringskonsolen
 description: Aktivering och konfiguration av hanterings konsolen säkerställer att sensorer registreras med Azure och skickar information till den lokala hanterings konsolen och att den lokala hanterings konsolen utför hanterings uppgifter på anslutna sensorer.
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 12/24/2020
+ms.date: 1/12/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 56092d61e1eed4e4ebe4f8cb7f97d01e91e8543e
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: d344b3d9ea54243d61cc6a1f3f0982eb5ab1d238
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97843818"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98538590"
 ---
-# <a name="activate-and-set-up-your-on-premises-management-console"></a>Aktivera och konfigurera den lokala hanterings konsolen 
+# <a name="activate-and-set-up-your-on-premises-management-console"></a>Aktivera och konfigurera den lokala hanteringskonsolen 
 
 Aktivering och installation av den lokala hanterings konsolen säkerställer att:
 
@@ -51,7 +51,7 @@ Efter den första aktiveringen kan antalet övervakade enheter överstiga antale
 
 ## <a name="set-up-a-certificate"></a>Konfigurera ett certifikat
 
-Efter installationen av hanterings konsolen skapas ett lokalt självsignerat certifikat som används för att få åtkomst till-konsolen. När en administratör loggar in i hanterings konsolen för första gången uppmanas användaren att publicera ett SSL/TLS-certifikat. Vi rekommenderar att du arbetar med ett betrott CA-signerat certifikat och inte använder det lokalt genererade självsignerade certifikatet.
+Efter installationen av hanterings konsolen skapas ett lokalt självsignerat certifikat som används för att få åtkomst till-konsolen. När en administratör loggar in i hanterings konsolen för första gången uppmanas användaren att publicera ett SSL/TLS-certifikat. 
 
 Det finns två säkerhets nivåer:
 
@@ -61,7 +61,9 @@ Det finns två säkerhets nivåer:
 Konsolen stöder följande typer av certifikat:
 
 - Privata och företags nyckel infrastruktur (privat PKI)
+
 - Infrastruktur för offentliga nycklar (offentlig PKI)
+
 - Lokalt genererat på produkten (lokalt självsignerat) 
 
   > [!IMPORTANT]
@@ -226,7 +228,7 @@ I följande tabell beskrivs parametrarna i fönstret **plats hantering** .
 | Namn | Sensorns namn. Du kan bara ändra det här namnet från sensorn. Mer information finns i användar handboken för Defender for IoT. |
 | IP-adress | Sensorns IP-adress. |
 | Version | Sensor versionen. |
-| Anslutning | Sensor anslutnings status. Statusen kan vara **ansluten** eller **frånkopplad**. |
+| Anslutningar | Sensor anslutnings status. Statusen kan vara **ansluten** eller **frånkopplad**. |
 | Senaste uppgradering | Datumet för den senaste uppgraderingen. |
 | Uppgraderings förlopp | Förlopps indikatorn visar status för uppgraderings processen, enligt följande:<br />– Laddar upp paket<br />– Förbereder installation<br />– Stoppa processer<br />-Säkerhetskopiera data<br />-Tar ögonblicks bild<br />– Uppdaterar konfigurationen<br />– Uppdatering av beroenden<br />– Uppdaterar bibliotek<br />– Korrigera databaser<br />– Startar processer<br />-Verifierar systemets Sanity<br />– Verifieringen lyckades<br />-Lyckades<br />-Failure<br />-Uppgraderingen har startat<br />-Startar installationenogress bar shows the status of the upgrade process, as follows:<br />- Uploading package<br />- Preparing to install<br />- Stopping processes<br />- Backing up data<br />- Taking snapshot<br />- Updating configuration<br />- Updating dependencies<br />- Updating libraries<br />- Patching databases<br />- Starting processes<br />- Validating system sanity<br />- Validation succeeded<br />- Success<br />- Failure<br />- Upgrade started<br />- Starting installation<br /></br >Mer information om hur du uppgraderar finns i [Microsoft Support](https://support.microsoft.com/) för hjälp. |
 | Tillgångar | Det antal sätts till gångar som sensorn övervakar. |
@@ -316,4 +318,4 @@ Ta bort tilldelning och ta bort en sensor:
 
 ## <a name="see-also"></a>Se även
 
-[Felsöka sensorn och den lokala hanterings konsolen](how-to-troubleshoot-the-sensor-and-on-premises-management-console.md)
+[Felsöka sensorn och den lokala hanteringskonsolen](how-to-troubleshoot-the-sensor-and-on-premises-management-console.md)

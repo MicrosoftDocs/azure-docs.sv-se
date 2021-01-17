@@ -4,15 +4,15 @@ description: Felsök vanliga problem i en distribution på Azure File Sync, som 
 author: jeffpatt24
 ms.service: storage
 ms.topic: troubleshooting
-ms.date: 1/13/2021
+ms.date: 1/15/2021
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: a262c2b4351c96217001ba42e8c745f7d71c7d45
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 71de1d17731e086d012da5365fa6671bcb9e6e3b
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98233907"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539240"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Felsök Azure File Sync
 Använd Azure File Sync för att centralisera organisationens fil resurser i Azure Files, samtidigt som du behåller flexibilitet, prestanda och kompatibilitet för en lokal fil server. Windows Server omvandlas av Azure File Sync till ett snabbt cacheminne för Azure-filresursen. Du kan använda alla protokoll som är tillgängliga på Windows Server för att komma åt data lokalt, inklusive SMB, NFS och FTPS. Du kan ha så många cacheminnen som du behöver över hela världen.
@@ -916,6 +916,22 @@ Felet beror på att Azure File Sync inte stöder HTTP-omdirigering (3xx status k
 | **Reparation krävs** | Nej |
 
 Felet uppstår när en data inmatnings åtgärd överskrider tids gränsen. Det här felet kan ignoreras om synkroniseringen gör förlopp (AppliedItemCount är större än 0). Se [Hur gör jag för att övervaka förloppet för en aktuell Sync-session?](#how-do-i-monitor-the-progress-of-a-current-sync-session).
+
+<a id="-2134375814"></a>**Det gick inte att synkronisera eftersom det inte går att hitta sökvägen till Server slut punkten på servern.**  
+
+| | |
+|-|-|
+| **HRESULT** | 0x80c8027a |
+| **HRESULT (decimal)** | – 2134375814 |
+| **Felsträng** | ECS_E_SYNC_ROOT_DIRECTORY_NOT_FOUND |
+| **Reparation krävs** | Ja |
+
+Det här felet uppstår om katalogen som används som server slut punkts Sök väg har bytt namn eller tagits bort. Om katalogen har bytt namn byter du namn på katalogen till det ursprungliga namnet och startar om tjänsten Storage Sync agent (FileSyncSvc).
+
+Om katalogen har tagits bort utför du följande steg för att ta bort den befintliga Server slut punkten och skapa en ny server slut punkt med en ny sökväg:
+
+1. Ta bort Server slut punkten i Sync-gruppen genom att följa stegen som beskrivs i [ta bort en server slut punkt](./storage-sync-files-server-endpoint.md#remove-a-server-endpoint).
+2. Skapa en ny server slut punkt i Sync-gruppen genom att följa stegen som beskrivs i [Lägg till en server slut punkt](https://docs.microsoft.com/azure/storage/files/storage-sync-files-server-endpoint#add-a-server-endpoint).
 
 ### <a name="common-troubleshooting-steps"></a>Vanliga fel söknings steg
 <a id="troubleshoot-storage-account"></a>**Kontrol lera att lagrings kontot finns.**  

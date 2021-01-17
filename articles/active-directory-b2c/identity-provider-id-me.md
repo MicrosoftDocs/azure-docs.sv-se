@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/17/2020
+ms.date: 01/15/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 6877a82d81b46ac2ffda8d0f0bf3fb0d7b337ff3
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: c7d43a55878a07e424ce1b6f55782502c244239c
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97663691"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98537943"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-idme-account-using-azure-active-directory-b2c"></a>Konfigurera registrering och inloggning med ett ID.me-konto med hjälp av Azure Active Directory B2C
 
@@ -32,14 +32,14 @@ ms.locfileid: "97663691"
 ::: zone pivot="b2c-custom-policy"
 
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites-custom-policy](../../includes/active-directory-b2c-customization-prerequisites-custom-policy.md)]
 
 
 ## <a name="create-an-idme-application"></a>Skapa ett ID.me-program
 
-Om du vill använda ett ID.me-konto som identitets leverantör i Azure Active Directory B2C (Azure AD B2C) måste du skapa ett program i [ID.me Developer-resurser för API & SDK](https://developers.id.me/). Om du inte redan har ett ID.me-konto för utvecklare kan du registrera dig på [https://developers.id.me/registration/new](https://developers.id.me/registration/new) .
+Om du vill aktivera inloggning för användare med ett ID.me-konto i Azure Active Directory B2C (Azure AD B2C) måste du skapa ett program i [ID.me Developer-resurser för API & SDK](https://developers.id.me/). Mer information finns i [Översikt över OAuth-integrering](https://developers.id.me/documentation/oauth/overview/kyc). Om du inte redan har ett ID.me-konto för utvecklare kan du registrera dig på [https://developers.id.me/registration/new](https://developers.id.me/registration/new) .
 
 1. Logga in på [ID.me Developer-resurser för API & SDK](https://developers.id.me/) med dina ID.me-kontoautentiseringsuppgifter.
 1. Välj **Visa mina program** och välj sedan **Fortsätt**.
@@ -191,7 +191,7 @@ Uppdatera den förlitande parten (RP) som initierar användar resan som du har s
 
 1. Gör en kopia av *SignUpOrSignIn.xml* i din arbets katalog och Byt namn på den. Du kan till exempel byta namn på den till *SignUpSignInIdMe.xml*.
 1. Öppna den nya filen och uppdatera värdet för attributet **PolicyId** för **TrustFrameworkPolicy** med ett unikt värde. Ett exempel är `SignUpSignIdMe`.
-1. Uppdatera värdet för **PublicPolicyUri** med URI: n för principen. Exempel:`http://contoso.com/B2C_1A_signup_signin_IdMe`
+1. Uppdatera värdet för **PublicPolicyUri** med URI: n för principen. Till exempel`http://contoso.com/B2C_1A_signup_signin_IdMe`
 1. Uppdatera värdet för attributet **ReferenceId** i **DefaultUserJourney** för att matcha ID för den nya användar resan som du skapade (SignUpSignIdMe).
 1. Spara ändringarna, ladda upp filen.
 1. Under **anpassade principer** väljer du **B2C_1A_signup_signin**.

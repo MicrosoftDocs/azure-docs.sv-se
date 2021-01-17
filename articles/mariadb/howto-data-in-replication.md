@@ -5,13 +5,13 @@ author: savjani
 ms.author: pariks
 ms.service: mariadb
 ms.topic: how-to
-ms.date: 01/15/2021
-ms.openlocfilehash: 5ebae41e68633eb10959c56011dd71952f9564bd
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.date: 01/18/2021
+ms.openlocfilehash: 67e4da13d6954342b9979eb57a35c812cb63bb3e
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98250425"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98540000"
 ---
 # <a name="configure-data-in-replication-in-azure-database-for-mariadb"></a>Konfigurera Datareplikering i Azure Database for MariaDB
 
@@ -23,6 +23,9 @@ Granska [begränsningarna och kraven](concepts-data-in-replication.md#limitation
 
 > [!NOTE]
 > Om käll servern är version 10,2 eller senare rekommenderar vi att du konfigurerar Datareplikering med hjälp av [globalt transaktions-ID](https://mariadb.com/kb/en/library/gtid/).
+
+> [!NOTE]
+> Den här artikeln innehåller referenser till termen _slav_, en term som Microsoft inte längre använder. När termen tas bort från program varan tar vi bort det från den här artikeln.
 
 ## <a name="create-a-mariadb-server-to-use-as-a-replica"></a>Skapa en MariaDB-server som ska användas som en replik
 
@@ -40,10 +43,6 @@ Granska [begränsningarna och kraven](concepts-data-in-replication.md#limitation
 3. Lägg till käll serverns IP-adress i replikens brand Väggs regler. 
 
    Uppdatera brandväggsregler med hjälp av [Azure-portalen](howto-manage-firewall-portal.md) eller [Azure CLI](howto-manage-firewall-cli.md).
-
-> [!NOTE]
-> Den här artikeln innehåller referenser till termen _slav_, en term som Microsoft inte längre använder. När termen tas bort från program varan tar vi bort det från den här artikeln.
->
 
 ## <a name="configure-the-source-server"></a>Konfigurera käll servern
 
@@ -95,7 +94,7 @@ Följande steg förbereder och konfigurerar den MariaDB-server som finns lokalt,
 
 3. Aktivera binär loggning.
 
-    Ange följande kommando för att se om binär loggning har Aktiver ATS på huvud servern:
+    Ange följande kommando för att se om binär loggning är aktiverat på den primära:
 
    ```sql
    SHOW VARIABLES LIKE 'log_bin';

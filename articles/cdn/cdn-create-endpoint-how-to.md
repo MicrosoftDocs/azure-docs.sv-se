@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 06/12/2018
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 43718f8ebc851f27035f2999bfb4ff3ec12ca5b4
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7bbd54ed68863a4704319a25af96b6463ad2377b
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96021970"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539700"
 ---
 # <a name="create-an-azure-cdn-endpoint"></a>Skapa en Azure CDN-slutpunkt
 I den här artikeln beskrivs alla inställningar för att skapa en [Azure Content Delivery Network-slutpunkt (CDN)](cdn-overview.md) i en befintlig CDN-profil. När du har skapat en profil och en slut punkt kan du börja leverera innehåll till dina kunder. En snabb start för att skapa en profil och slut punkt finns i [snabb start: skapa en Azure CDN profil och slut punkt](cdn-create-new-endpoint.md).
@@ -97,7 +97,7 @@ Logga in på [Azure Portal](https://portal.azure.com) med ditt Azure-konto.
     Slutpunkten kan inte användas direkt, eftersom det tar tid för registreringen att sprida sig: 
     - För **Azure CDN Standard från Microsoft**-profiler slutförs spridningen vanligtvis inom 10 minuter. 
     - För **Azure CDN Standard från Akamai**-profiler slutförs spridningen vanligtvis inom en minut. 
-    - För **Azure CDN Standard från Verizon**- och **Azure CDN Premium från Verizon**-profiler slutförs spridningen vanligtvis inom 90 minuter. 
+    - För **Azure CDN Standard från Verizon** och **Azure CDN Premium från Verizon** -profiler, slutförs spridningen vanligt vis inom 30 minuter. 
    
     Om du försöker använda CDN-domännamnet innan slut punkts konfigurationen har spridits till POP-servrarna (Point-of-Presence) kan du få en HTTP 404-svars status. Om det har varit flera timmar sedan du skapade slut punkten och du fortfarande får en 404-svars status, se [fel sökning Azure CDN slut punkter som returnerar en 404-status kod](cdn-troubleshoot-endpoint.md).
 

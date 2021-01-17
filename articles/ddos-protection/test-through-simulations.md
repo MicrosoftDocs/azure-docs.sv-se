@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: e3a665e3615c9ff3a68cf13eeaef5e8f41632f6a
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: 55042c8d1e612598cc5728668c9e87b054fb3afa
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97900368"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98537831"
 ---
 # <a name="test-through-simulations"></a>Testa genom simuleringar
 
@@ -42,9 +42,9 @@ Vi samarbetar med [BreakingPoint Cloud](https://www.ixiacom.com/products/breakin
     |---------      |---------                                          |
     |Mål-IP-adress           | Ange en offentlig IP-adress som du vill testa.                     |
     |Portnummer   | Ange _443_.                       |
-    |DDoS-profil | Möjliga värden är bland annat **DNS-översvämning**, **NTPv2-översvämning**, **SSDP-översvämning**, **TCP syn-översvämning**, **UDP 64B-översvämning**, **UDP 128B-översvämning**, **UDP 256B översvämning**, **UDP 512B översvämning**, **UDP 1024B-översvämning**, **UDP 1514B-översvämning**, UDP- **fragmentering** **UDP memcached**.|
-    |Test storlek       | Möjliga värden är **100 000 PPS, 50 Mbit/s och 4 käll-IP-adresser**, **funktion PPS, 100 Mbit/s och 8 käll-IP-adresser**, **400K PPS, 200Mbps och 16 käll-IP-adresser**, **800K pps, 400 Mbit/s och 32**                                  |
-    |Test varaktighet | Möjliga värden är **10 minuter**, **15 minuter**, **20 minuter**, **25 minuter**, **30 minuter**.|
+    |DDoS-profil | Möjliga värden är,,,,,,,,,,, `DNS Flood` `NTPv2 Flood` `SSDP Flood` `TCP SYN Flood` `UDP 64B Flood` `UDP 128B Flood` `UDP 256B Flood` `UDP 512B Flood` `UDP 1024B Flood` `UDP 1514B Flood` `UDP Fragmentation` `UDP Memcached` .|
+    |Test storlek       | Möjliga värden är `100K pps, 50 Mbps and 4 source IPs` , `200K pps, 100 Mbps and 8 source IPs` , `400K pps, 200Mbps and 16 source IPs` , `800K pps, 400 Mbps and 32 source IPs` .                                  |
+    |Test varaktighet | Möjliga värden är,,,, `10 Minutes` `15 Minutes` `20 Minutes` `25 Minutes` `30 Minutes` .|
 
 Den bör nu se ut så här:
 

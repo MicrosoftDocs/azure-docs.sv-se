@@ -1,20 +1,20 @@
 ---
-title: Aktivera och konfigurera din sensor
+title: Aktivera och konfigurera sensor
 description: Den här artikeln beskriver hur du loggar in och aktiverar en sensor konsol.
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 12/26/2020
+ms.date: 1/12/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 9305609b624a96e4d785657dfb63af6639e132c4
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 4ad1562bdd9853b6ff3c537790a54dbeab96b5b8
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97842540"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98538561"
 ---
-# <a name="activate-and-set-up-your-sensor"></a>Aktivera och konfigurera din sensor
+# <a name="activate-and-set-up-your-sensor"></a>Aktivera och konfigurera sensor
 
 I den här artikeln beskrivs hur du aktiverar en sensor och utför den första installationen.
 
@@ -65,10 +65,13 @@ Det finns två säkerhets nivåer:
 Konsolen stöder följande certifikat typer:
 
 - Privata och företags nyckel infrastruktur (privat PKI)
+
 - Infrastruktur för offentliga nycklar (offentlig PKI)
+
 - Lokalt genererat på produkten (lokalt självsignerat) 
 
-  > OVIKTIG Vi rekommenderar att du inte använder det självsignerade standard certifikatet. Certifikatet är inte säkert och bör endast användas för test miljöer. Ägaren av certifikatet kan inte verifieras och säkerheten i systemet kan inte upprätthållas. Använd aldrig det här alternativet för produktions nätverk.
+  > [!IMPORTANT]
+  > Vi rekommenderar att du inte använder det självsignerade standard certifikatet. Certifikatet är inte säkert och bör endast användas för test miljöer. Ägaren av certifikatet kan inte verifieras och säkerheten i systemet kan inte upprätthållas. Använd aldrig det här alternativet för produktions nätverk.
 
 ### <a name="sign-in-and-activate-the-sensor"></a>Logga in och aktivera sensorn
 
@@ -139,7 +142,7 @@ Inlednings vis utförs den här aktiviteten i inlärnings läge, vilket instruer
 
 Granska sensorns Systeminställningar för att se till att sensorn är konfigurerad för optimal identifiering och avisering.
 
-Definiera sensorns system inställningar. Exempel:
+Definiera sensorns system inställningar. Här är några exempel:
 
 - Definiera ICS (eller IoT) och åtskiljda undernät.
 

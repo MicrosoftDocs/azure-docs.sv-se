@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/07/2020
+ms.date: 01/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 24e267b66d11cb3c5ca2b70ed09b7acb3653da99
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 36b7618fbacc18ec506f12eabc642246d3148ce0
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653613"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98537928"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-weibo-account-using-azure-active-directory-b2c"></a>Konfigurera registrering och inloggning med ett Weibo-konto med hjälp av Azure Active Directory B2C
 
@@ -26,13 +26,13 @@ ms.locfileid: "97653613"
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
 ## <a name="create-a-weibo-application"></a>Skapa ett Weibo-program
 
-Om du vill använda ett Weibo-konto som identitets leverantör i Azure Active Directory B2C (Azure AD B2C) måste du skapa ett program i din klient som representerar det. Om du inte redan har ett Weibo-konto kan du registrera dig på [https://weibo.com/signup/signup.php?lang=en-us](https://weibo.com/signup/signup.php?lang=en-us) .
+Om du vill aktivera inloggning för användare med ett Weibo-konto i Azure Active Directory B2C (Azure AD B2C) måste du skapa ett program i [Weibo Developer-portalen](https://open.weibo.com/). Om du inte redan har ett Weibo-konto kan du registrera dig på [https://weibo.com](https://weibo.com/signup/signup.php?lang=en-us) .
 
 1. Logga in på [Weibo Developer-portalen](https://open.weibo.com/) med dina Weibo-kontoautentiseringsuppgifter.
 1. När du har loggat in väljer du ditt visnings namn i det övre högra hörnet.
@@ -263,7 +263,7 @@ Nu när du har en knapp på plats måste du länka den till en åtgärd. Åtgär
 ## <a name="add-weibo-identity-provider-to-a-user-flow"></a>Lägg till Weibo Identity Provider i ett användar flöde 
 
 1. Välj **användar flöden** i Azure AD B2C klient.
-1. Klicka på det användar flöde som du vill använda för Weibo-identitets leverantören.
+1. Klicka på det användar flöde som du vill lägga till Weibo Identity Provider.
 1. Under **leverantörer av sociala identitet** väljer du **Weibo**.
 1. Välj **Spara**.
 1. Om du vill testa principen väljer du **Kör användar flöde**.
@@ -280,7 +280,7 @@ Uppdatera den förlitande parten (RP) som initierar användar resan som du har s
 
 1. Gör en kopia av *SignUpOrSignIn.xml* i din arbets katalog och Byt namn på den. Du kan till exempel byta namn på den till *SignUpSignInWeibo.xml*.
 1. Öppna den nya filen och uppdatera värdet för attributet **PolicyId** för **TrustFrameworkPolicy** med ett unikt värde. Ett exempel är `SignUpSignInWeibo`.
-1. Uppdatera värdet för **PublicPolicyUri** med URI: n för principen. Exempel:`http://contoso.com/B2C_1A_signup_signin_Weibo`
+1. Uppdatera värdet för **PublicPolicyUri** med URI: n för principen. Till exempel`http://contoso.com/B2C_1A_signup_signin_Weibo`
 1. Uppdatera värdet för attributet **ReferenceId** i **DefaultUserJourney** för att matcha ID för den nya användar resan som du skapade (SignUpSignWeibo).
 1. Spara ändringarna, ladda upp filen.
 1. Under **anpassade principer** väljer du **B2C_1A_signup_signin**.

@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/07/2020
+ms.date: 01/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 68ffde11059de4809e519c1ac4f79503f25b0004
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 38eee59ecffa0c09403f47678e588b678e038413
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653749"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98537965"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-github-account-using-azure-active-directory-b2c"></a>Konfigurera registrering och inloggning med ett GitHub-konto med hjälp av Azure Active Directory B2C
 
@@ -32,15 +32,15 @@ ms.locfileid: "97653749"
 
 ::: zone-end
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
 ## <a name="create-a-github-oauth-application"></a>Skapa ett GitHub OAuth-program
 
-Om du vill använda ett GitHub-konto som [identitets leverantör](authorization-code-flow.md) i Azure Active Directory B2C (Azure AD B2C) måste du skapa ett program i din klient som representerar det. Om du inte redan har ett GitHub-konto kan du registrera dig på [https://www.github.com/](https://www.github.com/) .
+Om du vill aktivera inloggning med ett GitHub-konto i Azure Active Directory B2C (Azure AD B2C) måste du skapa ett program i [GitHub Developer](https://github.com/settings/developers) -portalen. Mer information finns i [skapa en OAuth-app](https://docs.github.com/en/free-pro-team@latest/developers/apps/creating-an-oauth-app). Om du inte redan har ett GitHub-konto kan du registrera dig på [https://www.github.com/](https://www.github.com/) .
 
-1. Logga in på webbplatsen för [GitHub Developer](https://github.com/settings/developers) med dina GitHub-autentiseringsuppgifter.
+1. Logga in på [GitHub-utvecklaren](https://github.com/settings/developers) med dina GitHub-autentiseringsuppgifter.
 1. Välj **OAuth-appar** och välj sedan **ny OAuth-app**.
 1. Ange ett **program namn** och din **Start sidas URL**.
 1. Ange `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` i **återanrops-URL för auktorisering**. Ersätt `your-tenant-name` med namnet på din Azure AD B2C-klient. Använd små bokstäver när du anger ditt klient namn även om klienten har definierats med versaler i Azure AD B2C.
@@ -218,7 +218,7 @@ Nu när du har en knapp på plats måste du länka den till en åtgärd. Åtgär
 ## <a name="add-github-identity-provider-to-a-user-flow"></a>Lägg till GitHub Identity Provider i ett användar flöde 
 
 1. Välj **användar flöden** i Azure AD B2C klient.
-1. Klicka på det användar flöde som du vill använda för GitHub-identitets leverantören.
+1. Klicka på det användar flöde som du vill lägga till GitHub Identity Provider.
 1. Under **leverantörer av sociala identitet** väljer du **GitHub**.
 1. Välj **Spara**.
 1. Om du vill testa principen väljer du **Kör användar flöde**.
@@ -235,7 +235,7 @@ Uppdatera den förlitande parten (RP) som initierar användar resan som du har s
 
 1. Gör en kopia av *SignUpOrSignIn.xml* i din arbets katalog och Byt namn på den. Du kan till exempel byta namn på den till *SignUpSignInGitHub.xml*.
 1. Öppna den nya filen och uppdatera värdet för attributet **PolicyId** för **TrustFrameworkPolicy** med ett unikt värde. Ett exempel är `SignUpSignInGitHub`.
-1. Uppdatera värdet för **PublicPolicyUri** med URI: n för principen. Exempel:`http://contoso.com/B2C_1A_signup_signin_github`
+1. Uppdatera värdet för **PublicPolicyUri** med URI: n för principen. Till exempel`http://contoso.com/B2C_1A_signup_signin_github`
 1. Uppdatera värdet för attributet **ReferenceId** i **DefaultUserJourney** för att matcha ID för den nya användar resan som du skapade (SignUpSignGitHub).
 1. Spara ändringarna, ladda upp filen.
 1. Under **anpassade principer** väljer du **B2C_1A_signup_signin**.

@@ -5,13 +5,13 @@ author: mksuni
 ms.author: sumuth
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 01/15/2021
-ms.openlocfilehash: b0f0ee9477a84dc198ea3fb48b2ed81be10ea9c5
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.date: 01/18/2021
+ms.openlocfilehash: ac7019abab1aefaee95c155e34fbc0cb551b4d94
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251887"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98538433"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-mariadb"></a>Förstå ändringarna i rot certifikat utfärdarens ändring för Azure Database for MariaDB
 
@@ -19,6 +19,9 @@ Azure Database for MariaDB kommer att ändra rot certifikatet för klient progra
 
 >[!NOTE]
 > Baserat på feedback från kunder har vi utökat rot certifikatets utfasning för vår befintliga Baltimore rot certifikat utfärdare från oktober 26, 2020 till 15 februari 2021. Vi hoppas att det här tillägget ger tillräckligt med ledtid för att våra användare ska kunna implementera klient ändringarna om de påverkas.
+
+> [!NOTE]
+> Den här artikeln innehåller referenser till termen _slav_, en term som Microsoft inte längre använder. När termen tas bort från program varan tar vi bort det från den här artikeln.
 
 ## <a name="what-update-is-going-to-happen"></a>Vilken uppdatering ska ske?
 
@@ -69,7 +72,7 @@ Om du vill undvika att programmets tillgänglighet avbryts på grund av att cert
 
   - För .NET-användare (MariaDB Connector/NET, MariaDBConnector) ser du till att **BaltimoreCyberTrustRoot** och **DigiCertGlobalRootG2** båda finns i Windows certifikat Arkiv, betrodda rot certifikat utfärdare. Importera certifikatet som saknas om det inte finns några certifikat.
 
-    ![Azure Database for MariaDB .net-certifikat](media/overview/netconnecter-cert.png)
+    [![Azure Database for MariaDB .net-certifikat](media/overview/netconnecter-cert.png)](media/overview/netconnecter-cert.png#lightbox)
 
   - För .NET-användare på Linux med hjälp av SSL_CERT_DIR kontrollerar du att **BaltimoreCyberTrustRoot** och **DigiCertGlobalRootG2** båda finns i katalogen som anges av SSL_CERT_DIR. Om något certifikat inte finns skapar du den saknade certifikat filen.
 
@@ -80,10 +83,10 @@ Om du vill undvika att programmets tillgänglighet avbryts på grund av att cert
    (Root CA1: BaltimoreCyberTrustRoot.crt.pem)
    -----END CERTIFICATE-----
    -----BEGIN CERTIFICATE-----
-    (Root CA2: DigiCertGlobalRootG2.crt.pem)
+   (Root CA2: DigiCertGlobalRootG2.crt.pem)
    -----END CERTIFICATE-----
    ```
-   
+
 - Ersätt den ursprungliga PEM-filen för rot certifikat utfärdaren med den kombinerade rot-CA-filen och starta om programmet/klienten.
 - I framtiden kan du efter det nya certifikatet som distribuerats på Server sidan Ändra CA PEM-filen till DigiCertGlobalRootG2. CRT. pem.
 
@@ -150,11 +153,7 @@ Eftersom den här uppdateringen är en ändring på klient sidan, om klienten so
 
 ### <a name="12-if-im-using-data-in-replication-do-i-need-to-perform-any-action"></a>12. behöver jag utföra någon åtgärd om jag använder datareplikering?
 
-> [!NOTE]
-> Den här artikeln innehåller referenser till termen _slav_, en term som Microsoft inte längre använder. När termen tas bort från program varan tar vi bort det från den här artikeln.
->
-
-*   Om datareplikeringen kommer från en virtuell dator (lokal eller virtuell Azure-dator) till Azure Database for MySQL måste du kontrol lera om SSL används för att skapa repliken. Kör **Visa slav status** och kontrol lera följande inställning.
+- Om datareplikeringen kommer från en virtuell dator (lokal eller virtuell Azure-dator) till Azure Database for MySQL måste du kontrol lera om SSL används för att skapa repliken. Kör **Visa slav status** och kontrol lera följande inställning.
 
     ```azurecli-interactive
     Master_SSL_Allowed            : Yes
@@ -177,6 +176,7 @@ Om du använder [data i replikering](concepts-data-in-replication.md) för att a
   Master_SSL_Cipher             :
   Master_SSL_Key                : ~\azure_mysqlclient_key.pem
   ```
+
   Om du ser certifikatet som tillhandahålls för CA_file, SSL_Cert och SSL_Key måste du uppdatera filen genom att lägga till det [nya certifikatet](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem).
 
 - Om datareplikeringen är mellan två Azure Database for MySQL måste du återställa repliken genom att köra **anrop MySQL.az_replication_change_master** och ange det nya dubbla rot certifikatet som den sista parametern [master_ssl_ca](howto-data-in-replication.md#link-the-source-and-replica-servers-to-start-data-in-replication).

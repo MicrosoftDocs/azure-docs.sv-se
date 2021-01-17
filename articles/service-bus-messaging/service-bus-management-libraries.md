@@ -5,24 +5,30 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/13/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 97d89db17af9cde3afadee430b3d0c2a434e12c9
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 57192ab2ee1624cb18de832ac91c95290da727df
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98210145"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539881"
 ---
 # <a name="dynamically-provision-service-bus-namespaces-and-entities"></a>Etablera Service Bus namn områden och entiteter dynamiskt 
 Azure Service Bus hanterings bibliotek kan etablera Service Bus namn områden och entiteter dynamiskt. Detta möjliggör komplexa distributioner och meddelande scenarier och gör det möjligt att program mässigt avgöra vilka entiteter som ska etableras. Dessa bibliotek är för närvarande tillgängliga för .NET.
 
-## <a name="supported-functionality"></a>Funktioner som stöds
+## <a name="overview"></a>Översikt
+Det finns tre tillgängliga hanterings bibliotek för att skapa och hantera Service Bus entiteter. De är:
 
-* Skapa namnrymd, uppdatera, ta bort
-* Skapa kö, uppdatera, ta bort
-* Att skapa, uppdatera och ta bort ämnen
-* Skapa prenumeration, uppdatera, ta bort
+- [Azure. Messaging. Service Bus. administration](#azuremessagingservicebusadministration)
+- [Microsoft. Azure. Service Bus. Management](#microsoftazureservicebusmanagement)
+- [Microsoft.Azure.Management.ServiceBus](#microsoftazuremanagementservicebus)
 
-## <a name="azuremessagingservicebusadministration-recommended"></a>Azure. Messaging. Service Bus. administration (rekommenderas)
+Alla dessa paket stöder skapa, Hämta, lista, ta bort, uppdatera, ta bort och uppdatera åtgärder för **köer, ämnen och prenumerationer**. Men endast [Microsoft. Azure. Management. Service Bus](#microsoftazuremanagementservicebus) stöder åtgärder för att skapa, uppdatera, lista, hämta och ta bort på **namn områden**, lista och återskapa SAS-nycklar med mera. 
+
+Biblioteket Microsoft. Azure. Management. Service Bus fungerar bara med Azure Active Directory (Azure AD)-autentisering och stöder inte användning av en anslutnings sträng. De andra två biblioteken (Azure. Messaging. Service Bus och Microsoft. Azure. Service Bus) har stöd för att använda en anslutnings sträng för autentisering med tjänsten och är enklare att använda. Mellan dessa bibliotek är Azure. Messaging. Service Bus det senaste och vi rekommenderar att du använder.
+
+I följande avsnitt finns mer information om de här biblioteken. 
+
+## <a name="azuremessagingservicebusadministration"></a>Azure. Messaging. Service Bus. administration
 Du kan använda klassen [ServiceBusAdministrationClient](/dotnet/api/azure.messaging.servicebus.administration.servicebusadministrationclient) i namn området [Azure. Messaging. Service Bus. administration](/dotnet/api/azure.messaging.servicebus.administration) för att hantera namn områden, köer, ämnen och prenumerationer. Här är exempel koden. Ett fullständigt exempel finns i [CRUD-exempel](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/servicebus/Azure.Messaging.ServiceBus/tests/Samples/Sample07_CrudOperations.cs).
 
 ```csharp
@@ -89,7 +95,7 @@ namespace adminClientTrack2
 Du kan använda [ManagementClient](/dotnet/api/microsoft.azure.servicebus.management.managementclient) -klassen i namn området [Microsoft. Azure. Service Bus. Management](/dotnet/api/microsoft.azure.servicebus.management) för att hantera namn områden, köer, ämnen och prenumerationer. Här är exempel koden: 
 
 > [!NOTE]
-> Vi rekommenderar att du använder `ServiceBusAdministrationClient` klassen från `Azure.Messaging.ServiceBus.Administration` biblioteket, som är den senaste SDK: n. Mer information finns i det [första avsnittet](#azuremessagingservicebusadministration-recommended). 
+> Vi rekommenderar att du använder `ServiceBusAdministrationClient` klassen från `Azure.Messaging.ServiceBus.Administration` biblioteket, som är den senaste SDK: n. Mer information finns i det [första avsnittet](#azuremessagingservicebusadministration). 
 
 ```csharp
 using System;
@@ -156,7 +162,7 @@ För att komma igång med det här biblioteket måste du autentisera med tjänst
 
 * [Använd Azure Portal för att skapa Active Directory program och tjänstens huvud namn som har åtkomst till resurser](../active-directory/develop/howto-create-service-principal-portal.md)
 * [Använd Azure PowerShell för att skapa ett huvudnamn för tjänsten för resursåtkomst](../active-directory/develop/howto-authenticate-service-principal-powershell.md)
-* [Använd Azure CLI för att skapa tjänstens huvudnamn för att få åtkomst till resurser](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest)
+* [Använd Azure CLI för att skapa tjänstens huvudnamn för att få åtkomst till resurser](/cli/azure/create-an-azure-service-principal-azure-cli)
 
 De här självstudierna ger dig ett `AppId` (klient-ID), `TenantId` och `ClientSecret` (autentiseringsnyckel) som används för autentisering av hanterings biblioteken. Du måste ha minst [**Azure Service Bus data ägare**](../role-based-access-control/built-in-roles.md#azure-service-bus-data-owner) eller [**deltagar**](../role-based-access-control/built-in-roles.md#contributor) behörighet för resurs gruppen som du vill köra.
 

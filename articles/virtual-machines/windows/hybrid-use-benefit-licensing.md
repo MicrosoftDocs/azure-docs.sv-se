@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 4/22/2018
 ms.author: xujing
-ms.openlocfilehash: 43784fe2bb94d5abd012f22ed530e4631a304614
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c13203c076378e1ff8f213971466eb5f63dfc4f4
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91335994"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539170"
 ---
 # <a name="azure-hybrid-benefit-for-windows-server"></a>Azure Hybrid-förmånen för Windows Server
 För kunder med Software Assurance kan Azure Hybrid-förmån för Windows Server använda dina lokala Windows Server-licenser och köra virtuella Windows-datorer i Azure till en lägre kostnad. Du kan använda Azure Hybrid-förmån för Windows Server för att distribuera nya virtuella datorer med Windows OS. Den här artikeln går igenom stegen för att distribuera nya virtuella datorer med Azure Hybrid-förmån för Windows Server och hur du kan uppdatera befintliga virtuella datorer som körs. Mer information om Azure Hybrid-förmån för Windows Server-licensiering och kostnads besparingar finns på [sidan för Azure Hybrid-förmån för Windows Server-licensiering](https://azure.microsoft.com/pricing/hybrid-use-benefit/).
@@ -42,10 +42,9 @@ Det finns några sätt att använda virtuella Windows-datorer med Azure Hybrid-f
 Alla Windows Server OS-baserade avbildningar stöds för Azure Hybrid-förmån för Windows Server. Du kan använda Azure Platform support-avbildningar eller ladda upp dina egna anpassade Windows Server-avbildningar. 
 
 ### <a name="portal"></a>Portalen
-Om du vill skapa en virtuell dator med Azure Hybrid-förmån för Windows Server kan du använda växla under avsnittet "Spara pengar".
+Om du vill skapa en virtuell dator med Azure Hybrid-förmån för Windows Server, bläddrar du längst ned på fliken **grundläggande** under skapande processen och markerar kryss rutan under **licensiering** för att använda en befintlig Windows Server-licens. 
 
 ### <a name="powershell"></a>PowerShell
-
 
 ```powershell
 New-AzVm `
