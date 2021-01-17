@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/15/2021
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 38ddfc2d3940bb9267edd6c5c683918c1fb5dc58
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 1a1fc0ce634282ffd4fcf374138fe97a04f32062
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251715"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539598"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>Välj en pris nivå för Azure Kognitiv sökning
 
@@ -71,7 +71,7 @@ Nivå priset innehåller information om lagrings utrymme per partition som strä
 
 ## <a name="billing-rates"></a>Fakturerings taxa
 
-Nivåer har olika fakturerings takt, med högre taxa för nivåer som körs på dyrare maskin vara eller ger dyrare funktioner. Fakturerings takten är det du ser på [pris sidorna för Azure](https://azure.microsoft.com/pricing/details/search/) för varje tjänst nivå i Azure kognitiv sökning.
+Nivåer har olika fakturerings takt, med högre taxa för nivåer som körs på dyrare maskin vara eller ger dyrare funktioner. Du hittar fakturerings takten per nivå på [Azures pris sidor](https://azure.microsoft.com/pricing/details/search/) för Azure kognitiv sökning.
 
 När du har skapat en tjänst blir fakturerings takten både en *fast kostnad* för att köra tjänsten dygnet runt och en *stegvis kostnad* om du väljer att lägga till mer kapacitet.
 

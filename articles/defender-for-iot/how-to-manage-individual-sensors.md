@@ -4,15 +4,15 @@ description: Lär dig hur du hanterar enskilda sensorer, inklusive hur du hanter
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 01/10/2021
+ms.date: 1/12/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 25f47be98b11f05ee6ac27018152ece05c0de4e4
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.openlocfilehash: 68fa3ea15199ec1d9cc99f92f497847fb029acd6
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98246697"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539562"
 ---
 # <a name="manage-individual-sensors"></a>Hantera enskilda sensorer
 
@@ -90,7 +90,7 @@ Du får ett fel meddelande om det inte gick att överföra aktiverings filen. F�
 
 ## <a name="manage-certificates"></a>Hantera certifikat
 
-Efter sensor installation skapas ett lokalt självsignerat certifikat som används för att få åtkomst till sensor webb programmet. När du loggar in på sensorn för första gången uppmanas administratörs användare att tillhandahålla ett SSL/TLS-certifikat.  Mer information om första tids inställningen finns i [Logga in och aktivera en sensor](how-to-activate-and-set-up-your-sensor.md).
+Efter sensor installation skapas ett lokalt självsignerat certifikat som används för att få åtkomst till sensor webb programmet. När du loggar in på sensorn för första gången uppmanas administratörs användare att tillhandahålla ett SSL/TLS-certifikat.  Mer information om installation i första gången finns i [Logga in och aktivera en sensor](how-to-activate-and-set-up-your-sensor.md).
 
 Den här artikeln innehåller information om hur du uppdaterar certifikat, arbetar med certifikat-CLI-kommandon och certifikat parametrar som stöds.
 
@@ -98,11 +98,34 @@ Den här artikeln innehåller information om hur du uppdaterar certifikat, arbet
 
 Azure Defender för IoT använder SSL/TLS-certifikat för att:
 
-1. Uppfylla särskilda certifikat-och krypterings krav som din organisation har begärt genom att ladda upp det CA-signerade certifikatet.
+- Uppfylla särskilda certifikat-och krypterings krav som din organisation har begärt genom att ladda upp det CA-signerade certifikatet.
 
-1. Tillåt verifiering mellan hanterings konsolen och anslutna sensorer och mellan en hanterings konsol och en hanterings konsol med hög tillgänglighet. Valideringar utvärderas mot en lista över återkallade certifikat och certifikatets förfallo datum. **Om verifieringen Miss lyckas stoppas kommunikationen mellan hanterings konsolen och sensorn och ett verifierings fel visas i-konsolen. Det här alternativet är aktiverat som standard efter installationen.**
+- Tillåt verifiering mellan hanterings konsolen och anslutna sensorer och mellan en hanterings konsol och en hanterings konsol med hög tillgänglighet. Valideringar utvärderas mot en lista över återkallade certifikat och certifikatets förfallo datum. *Om verifieringen Miss lyckas stoppas kommunikationen mellan hanterings konsolen och sensorn och ett verifierings fel visas i-konsolen*. Det här alternativet är aktiverat som standard efter installationen.
 
  Regler för vidarebefordran från tredje part, till exempel aviserings information som skickas till SYSLOG, Splunk eller ServiceNow; eller kommunikation med Active Directory verifieras inte.
+
+#### <a name="ssl-certificates"></a>SSL-certifikat
+
+Defender för IoT-sensorn och den lokala hanterings konsolen använder SSL och TLS-certifikat för följande funktioner: 
+
+ - Säker kommunikation mellan användare och webb konsolen för-enheten. 
+ 
+ - Skydda kommunikationen till REST API på sensorn och den lokala hanterings konsolen.
+ 
+ - Säker kommunikation mellan sensorer och en lokal hanterings konsol. 
+
+När den har installerats genererar enheten ett lokalt självsignerat certifikat för att tillåta preliminär åtkomst till webb konsolen. Enterprise SSL och TLS-certifikat kan installeras med hjälp av [`cyberx-xsense-certificate-import`](#cli-commands) kommando rads verktyget. 
+
+ > [!NOTE]
+ > För integrerings-och vidarebefordrings regler där installationen är klienten och initieraren av sessionen används vissa certifikat och är inte relaterade till system certifikaten.  
+ >
+ >I dessa fall tas certifikaten vanligt vis emot från servern eller använda asymmetrisk kryptering där ett särskilt certifikat tillhandahålls för att konfigurera integrationen.
+
+Enheter kan använda unika certifikatfiler. Om du behöver ersätta ett certifikat har du laddat upp.
+
+- Från version 10,0 kan certifikatet ersättas från menyn system inställningar.
+
+- För tidigare versioner än 10,0 kan SSL-certifikatet ersättas med kommando rads verktyget.
 
 ### <a name="update-certificates"></a>Uppdatera certifikat
 
@@ -111,15 +134,19 @@ Användare av sensor administratörer kan uppdatera certifikat.
 Så här uppdaterar du ett certifikat:  
 
 1. Välj **Systeminställningar**.
+
 1. Välj **SSL/TLS-certifikat.**
 1. Ta bort eller redigera certifikatet och Lägg till ett nytt.
+
     - Lägg till ett certifikat namn.
+    
     - Ladda upp en CRT-fil och nyckel fil och ange en lösen fras.
     - Ladda upp en PEM-fil om det behövs.
 
 Ändra validerings inställningen:
 
 1. Aktivera eller inaktivera växling av **Aktivera certifikat validering** .
+
 1. Välj **Spara**.
 
 Om alternativet är aktiverat och verifieringen Miss lyckas, stoppas kommunikationen mellan hanterings konsolen och sensorn och ett verifierings fel visas i-konsolen.
@@ -128,87 +155,167 @@ Om alternativet är aktiverat och verifieringen Miss lyckas, stoppas kommunikati
 
 Följande certifikat stöds:
 
-- Privata/företags nyckel infrastruktur (privat PKI) 
-- Infrastruktur för offentliga nycklar (offentlig PKI) 
-- Lokalt genererat på produkten (lokalt självsignerat). **Det rekommenderas inte att använda självsignerade certifikat.** Den här anslutningen är inte *säker* och ska endast användas för test miljöer. Ägaren av certifikatet kan inte verifieras och säkerheten i systemet kan inte upprätthållas. Självsignerade certifikat ska aldrig användas för produktions nätverk.  
+- Privata och företags nyckel infrastruktur (privat PKI)
 
-Följande parametrar stöds. Certifikat CRT
+- Infrastruktur för offentliga nycklar (offentlig PKI) 
+
+- Lokalt genererat på produkten (lokalt självsignerat). 
+
+> [!IMPORTANT]
+> Vi rekommenderar inte att du använder ett självsignerat certifikat. Den här typen av anslutning är inte säker och bör endast användas för test miljöer. Eftersom certifikatets ägare inte kan verifieras, och säkerheten för systemet inte kan upprätthållas, ska de självsignerade certifikaten aldrig användas för produktions nätverk.
+
+### <a name="supported-ssl-certificates"></a>SSL-certifikat som stöds 
+
+Följande parametrar stöds. 
+
+**Certifikat CRT**
 
 - Den primära certifikat filen för ditt domän namn
+
 - Signaturalgoritm = SHA256RSA
 - Hash-algoritm för signatur = SHA256
 - Giltigt från = giltigt föregående datum
 - Giltigt till = giltigt framtida datum
-- Offentlig nyckel = RSA 2048bits (minimum) eller 4096bits
+- Offentlig nyckel = RSA 2048 bitar (minst) eller 4096 bitar
 - CRL distributions punkt = URL till. CRL-fil
-- Subject CN = URL, kan vara ett certifikat med jokertecken, t. ex. example.contoso.com eller  *. contoso.com**
-- Subject (C) ountry = Defined, t. ex. US
-- Subjekt (OU) org Unit = definierad, t. ex. contoso Labs
-- Subject (O) rganisationsnamn = Defined, t. ex. contoso Inc.
+- Subject CN = URL, kan vara ett certifikat med jokertecken. till exempel sensor. contoso. <span> com eller *. contoso. <span> com
+- Subject (C) ountry = definierad, till exempel US
+- Subjekt (OU) org Unit = definierad, till exempel contoso Labs
+- Subject (O) rganisationsnamn = definierad, till exempel contoso Inc.
 
-Nyckel fil
+**Nyckel fil**
 
-- Nyckel filen som skapades när du skapade CSR
-- RSA-2048bits (minimum) eller 4096bits
+- Nyckel filen som skapades när du skapade CSR.
 
-Certifikatskedja
+- RSA 2048 bitar (minst) eller 4096 bitar.
+
+ > [!Note]
+ > Använda en nyckel längd på 4096bits:
+ > - SSL-handskakningen vid starten av varje anslutning blir långsammare.  
+ > - CPU-användningen ökar under hand skakningarna. 
+
+**Certifikatskedja**
 
 - Den mellanliggande certifikat fil (om sådan finns) som angavs av din certifikat utfärdare
+
 - CA-certifikatet som utfärdade serverns certifikat ska vara först i filen, följt av andra upp till roten. 
 - Kan innehålla Bag-attribut.
 
-Fraser
+**Fraser**
 
-- 1 nyckel stöds
-- Konfigurera när certifikatet importeras
+- En nyckel stöds.
 
-Certifikat med andra parametrar kan fungera men stöds inte av Microsoft.
+- Konfigurera när du importerar certifikatet.
+
+Certifikat med andra parametrar kan fungera, men Microsoft stöder inte dem.
 
 #### <a name="encryption-key-artifacts"></a>Artefakter för krypterings nyckel
 
 **. PEM – certifikat container fil**
 
-Namnet är från Privacy Enhanced Mail (PEM), en historisk metod för säker e-post men behållar formatet som används och är en Base64-översättning av x509 ASN. 1-nycklar.  
+Privacy Enhanced Mail-filer (PEM) var den allmänna filtypen som används för att skydda e-postmeddelanden. Nuförtiden, PEM-filer används med certifikat och använder x509 ASN1-nycklar.  
 
-Definieras i RFC 1421 till 1424: ett behållar format som bara innehåller det offentliga certifikatet (till exempel med Apache-installationer och CA-certifikatfiler/etc/ssl/certs), eller kan innehålla en hel certifikat kedja, inklusive offentlig nyckel, privat nyckel och rot certifikat.  
+Container filen definieras i RFC 1421 till 1424, ett behållar format som bara kan innehålla det offentliga certifikatet. Exempelvis installerar Apache, ett CA-certifikat, filer, osv. SSL eller certifikat. Detta kan inkludera en hel certifikat kedja, inklusive offentlig nyckel, privat nyckel och rot certifikat.  
 
-Det kan också koda en CSR som PKCS10-format kan översättas till PEM.
+Det kan också koda en CSR som PKCS10-format, som kan översättas till PEM.
 
 **. cert. cer. CRT – certifikat behållare fil**
 
-En. PEM-fil (eller sällan. der) formaterad med ett annat fil namns tillägg. Den identifieras av Utforskaren som ett certifikat. PEM-filen känns inte igen av Utforskaren.
+En `.pem` eller en `.der` formaterad fil med ett annat fil namns tillägg. Filen identifieras av Utforskaren som ett certifikat. `.pem`   Filen känns inte igen av Utforskaren i Windows.
 
 **. nyckel – privat nyckel fil**
 
-En nyckel fil är samma "format" som en PEM-fil, men har ett annat fil namns tillägg.
-##### <a name="use-cli-commands-to-deploy-certificates"></a>Använd CLI-kommandon för att distribuera certifikat
+En nyckel fil är i samma format som en PEM-fil, men har ett annat fil namns tillägg.
 
-Använd kommandot *Cyberx-xsense-certificate-import* CLI för att importera certifikat. För att kunna använda det här verktyget måste certifikatfiler överföras till enheten (med verktyg som WinSCP eller wget).
+#### <a name="additional-commonly-available-key-artifacts"></a>Ytterligare viktiga artefakter som ofta är tillgängliga
+
+**. CSR – certifikat signerings förfrågan**.  
+
+Den här filen används för att skicka in till certifikat utfärdare. Det faktiska formatet är PKCS10, som definieras i RFC 2986 och kan innehålla några eller alla nyckel uppgifter för det begärda certifikatet. Till exempel ämne, organisation och tillstånd. Det är den offentliga nyckeln för certifikatet som signeras av CA: n och tar emot ett certifikat i retur.  
+
+Det returnerade certifikatet är det offentliga certifikatet, som innehåller den offentliga nyckeln men inte den privata nyckeln. 
+
+**. PKCS12. pfx. p12 – lösen ords behållare**. 
+
+Som ursprungligen definierades av RSA i Public-Key Cryptography Standards (PKCS) har 12-varianten ursprungligen förbättrats av Microsoft och senare skickades som RFC 7292.  
+
+Det här behållar formatet kräver ett lösen ord som innehåller både offentliga och privata certifikat par. Till skillnad från `.pem`   filer är behållaren fullständigt krypterad.  
+
+Du kan använda OpenSSL för att göra detta till en `.pem`   fil med både offentliga och privata nycklar: `openssl pkcs12 -in file-to-convert.p12 -out converted-file.pem -nodes`  
+
+**. der – binär kodad PEM**.
+
+Sättet att koda ASN. 1-syntaxen i Binary är via en `.pem`   fil som bara är en Base64-kodad `.der` fil. 
+
+OpenSSL kan konvertera dessa filer till en `.pem` :  `openssl x509 -inform der -in to-convert.der -out converted.pem` .  
+
+Windows kommer att identifiera dessa filer som certifikatfiler. Som standard kommer Windows att exportera certifikat som `.der` formaterade filer med ett annat fil namns tillägg.  
+
+**. lista över återkallade certifikat**.  
+Certifikat utfärdare producerar dessa filer som ett sätt att de ska godkänna certifikat innan de upphör att gälla.
+ 
+##### <a name="cli-commands"></a>CLI-kommandon
+
+Använd `cyberx-xsense-certificate-import` CLI-kommandot för att importera certifikat. Om du vill använda det här verktyget måste du ladda upp certifikatfiler till enheten med hjälp av verktyg som WinSCP eller wget.
 
 Kommandot stöder följande ingångs flaggor:
 
--h Visa kommando raden med hjälp av syntaxen
+- `-h`: Visar kommando rads hjälpens syntax.
 
---CRT-sökväg till certifikat fil (CRT-tillägg)
+- `--crt`: Sökväg till en certifikat fil (. CRT-tillägg).
 
---nyckel *. nyckel fil, nyckel längden ska vara minst 2048 bitar
+- `--key`:  \* . nyckel fil. Nyckel längden måste vara minst 2 048 bitar.
 
---kedje Sök väg till certifikat kedjas fil (valfritt)
+- `--chain`: Sökväg till en certifikat kedjas fil (valfritt).
 
---pass lösen fras som används för att kryptera certifikatet (valfritt)
+- `--pass`: Lösen frasen som används för att kryptera certifikatet (valfritt).
 
---lösen fras-ange standard = falskt, oanvänd. Ange till sant om du vill använda föregående lösen fras som anges med föregående certifikat (valfritt)
+- `--passphrase-set`: Standard = `False` , oanvänd. Ange till `True` att använda den tidigare lösen frasen som angavs med det tidigare certifikatet (valfritt).
 
 När du använder CLI-kommandot:
 
 - Kontrol lera att certifikatmallarna är läsbara på enheten.
 
-- Kontrol lera att domän namnet och IP-adressen i certifikatet matchar konfigurationen som planeras av IT-avdelningen.
+- Kontrol lera att domän namnet och IP-adressen i certifikatet matchar konfigurationen som IT-avdelningen har planerat.
 
+### <a name="use-openssl-to-manage-certificates"></a>Använda OpenSSL för att hantera certifikat
+
+Hantera dina certifikat med följande kommandon:
+
+| Beskrivning | CLI-kommando |
+|--|--|
+| Generera en ny privat nyckel och certifikat signerings förfrågan | `openssl req -out CSR.csr -new -newkey rsa:2048 -nodes -keyout privateKey.key` |
+| Generera ett självsignerat certifikat | `openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout privateKey.key -out certificate.crt` |
+| Generera en certifikat signerings förfrågan (CSR) för en befintlig privat nyckel | `openssl req -out CSR.csr -key privateKey.key -new` |
+| Generera en begäran om certifikat signering baserat på ett befintligt certifikat | `openssl x509 -x509toreq -in certificate.crt -out CSR.csr -signkey privateKey.key` |
+| Ta bort en lösen fras från en privat nyckel | `openssl rsa -in privateKey.pem -out newPrivateKey.pem` |
+
+Använd de här kommandona om du behöver kontrol lera informationen i ett certifikat, CSR eller privat nyckel.
+
+| Beskrivning | CLI-kommando |
+|--|--|
+| Kontrol lera en begäran om certifikat signering (CSR) | `openssl req -text -noout -verify -in CSR.csr` |
+| Kontrol lera en privat nyckel | `openssl rsa -in privateKey.key -check` |
+| Kontrol lera ett certifikat | `openssl x509 -in certificate.crt -text -noout`  |
+
+Om du får ett fel meddelande om att den privata nyckeln inte matchar certifikatet, eller om ett certifikat som har installerats på en plats inte är betrott, använder du följande kommandon för att åtgärda felet.
+
+| Beskrivning | CLI-kommando |
+|--|--|
+| Kontrol lera en MD5-hash av den offentliga nyckeln för att kontrol lera att den matchar det som finns i en CSR eller privat nyckel | 81.1. `openssl x509 -noout -modulus -in certificate.crt | openssl md5` <br /> 11.2. `openssl rsa -noout -modulus -in privateKey.key | openssl md5` <br /> 3. `openssl req -noout -modulus -in CSR.csr | openssl md5 ` |
+
+Om du vill konvertera certifikat och nycklar till olika format så att de är kompatibla med vissa typer av servrar, eller program, använder du dessa kommandon.
+
+| Beskrivning | CLI-kommando |
+|--|--|
+| Konvertera en DER-fil (. CRT. cer. der) till PEM  | `openssl x509 -inform der -in certificate.cer -out certificate.pem`  |
+| Konvertera en PEM-fil till DER | `openssl x509 -outform der -in certificate.pem -out certificate.der`  |
+| Konvertera en PKCS # 12-fil (. pfx. P12) som innehåller en privat nyckel och certifikat till PEM | `openssl pkcs12 -in keyStore.pfx -out keyStore.pem -nodes` <br />Du kan lägga till `-nocerts` enbart för att skriva ut den privata nyckeln eller lägga till `-nokeys` enbart för att spara certifikaten. |
+| Konvertera en PEM certifikat fil och en privat nyckel till PKCS # 12 (. pfx. P12) | `openssl pkcs12 -export -out certificate.pfx -inkey privateKey.key -in certificate.crt -certfile CACert.crt` |
 
 ## <a name="connect-a-sensor-to-the-management-console"></a>Ansluta en sensor till hanterings konsolen
 
-I det här avsnittet beskrivs hur du säkerställer anslutningen mellan sensorn och den lokala hanterings konsolen. Du måste göra detta om du arbetar i ett Air-gapped-nätverk och vill skicka till gångs-och aviserings information till hanterings konsolen från sensorn. Den här anslutningen gör det också möjligt för hanterings konsolen att skicka Systeminställningar till sensorn och utföra andra hanterings uppgifter på sensorn.
+I det här avsnittet beskrivs hur du säkerställer anslutningen mellan sensorn och den lokala hanterings konsolen. Gör detta om du arbetar i ett Air-gapped nätverk och vill skicka till gångs-och aviserings information till hanterings konsolen från sensorn. Den här anslutningen gör det också möjligt för hanterings konsolen att skicka Systeminställningar till sensorn och utföra andra hanterings uppgifter på sensorn.
 
 För att ansluta:
 

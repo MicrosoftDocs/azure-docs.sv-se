@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/15/2020
 ms.author: v-demjoh
-ms.openlocfilehash: 327dce053c38fdb7b03e7ceb0d7a62ec8b8e7248
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 87af99d5136a8bed93854e9396895cddeb22549a
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96992963"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98540472"
 ---
 ## <a name="download-and-install"></a>Hämta och installera
 
@@ -59,11 +59,11 @@ Följ de här stegen för att installera tal-CLI i en Docker-behållare:
 
 1. <a href="https://www.docker.com/get-started" target="_blank">Installera Docker Desktop <span class="docon docon-navigate-external x-hidden-focus"></span> </a> för din plattform om den inte redan är installerad.
 2. Skriv följande kommando i en ny kommando tolk eller Terminal:
-   ```shell   
+   ```console   
    docker pull msftspeech/spx
    ```
 3. Skriv det här kommandot. Du bör se hjälp information för tal-CLI:
-   ```shell 
+   ```console 
    docker run -it --rm msftspeech/spx help
    ```
 
@@ -93,27 +93,27 @@ När du anropar `spx` kommandot i en Docker-behållare måste du montera en kata
 
 I Windows kommer dina kommandon att starta så här:
 
-```shell
+```console
 docker run -it -v c:\spx-data:/data --rm msftspeech/spx
 ```
 
 På Linux eller macOS ser dina kommandon ut som exemplet nedan. Ersätt `ABSOLUTE_PATH` med den absoluta sökvägen för den monterade katalogen. Den här sökvägen returnerades av `pwd` kommandot i föregående avsnitt. 
 
 Om du kör det här kommandot innan du ställer in din nyckel och region får du ett fel meddelande som anger att du ställer in din nyckel och region:
-```shell   
+```console   
 sudo docker run -it -v ABSOLUTE_PATH:/data --rm msftspeech/spx
 ```
 
 Om du vill använda `spx` kommandot som är installerat i en behållare, anger du alltid det fullständiga kommandot som visas ovan, följt av parametrarna för din begäran.
 I Windows anger det här kommandot till exempel din nyckel:
 
-```shell
+```console
 docker run -it -v c:\spx-data:/data --rm msftspeech/spx config @key --set SUBSCRIPTION-KEY
 ```
 
 För mer utökad interaktion med kommando rads verktyget kan du starta en behållare med ett interaktivt bash-gränssnitt genom att lägga till en EntryPoint-parameter.
 I Windows anger du det här kommandot för att starta en behållare som visar ett interaktivt kommando rads gränssnitt där du kan ange flera `spx` kommandon:
-```shell
+```console
 docker run -it --entrypoint=/bin/bash -v c:\spx-data:/data --rm msftspeech/spx
 ```
 
@@ -160,7 +160,7 @@ Follow these instructions to create a shortcut:
 Om du vill börja använda tal-CLI måste du ange din röst prenumerations nyckel och regions-ID. Hämta dessa autentiseringsuppgifter genom att följa stegen i [testa tal tjänsten kostnads fritt](../overview.md#try-the-speech-service-for-free).
 När du har en prenumerations nyckel och region-ID (t. ex. `eastus`, `westus` ), kör följande kommandon.
 
-```shell
+```console
 spx config @key --set SUBSCRIPTION-KEY
 spx config @region --set REGION
 ```

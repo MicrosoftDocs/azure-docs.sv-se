@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/15/2021
-ms.openlocfilehash: a708fb76b5a3d0fd0683cdb8915d1a5e1824a57c
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 4ad362b983f81e2cdc10cdbccafd8dda951482d7
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251676"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539546"
 ---
 # <a name="how-to-estimate-and-manage-costs-of-an-azure-cognitive-search-service"></a>Beräkna och hantera kostnader för en Azure Kognitiv sökning-tjänst
 
@@ -23,9 +23,14 @@ I den här artikeln lär du dig om pris modellen, fakturerbara händelser och ti
 
 Skalbarhets arkitekturen i Azure Kognitiv sökning baseras på flexibla kombinationer av repliker och partitioner så att du kan variera kapaciteten beroende på om du behöver fler frågor eller indexerings kraft och bara betala för det du behöver.
 
-Antalet resurser som används av Sök tjänsten, multiplicerat med den fakturerings taxa som fastställs av tjänst nivån, bestämmer kostnaden för att köra tjänsten. Kostnaderna och kapaciteten är nära kopplade. När du uppskattar kostnaderna får du en bra uppfattning om vilka kostnader som krävs för att köra din indexering och fråga arbets belastningar.
+Hur mycket resurser som används av Sök tjänsten, multiplicerat med den fakturerings taxa som fastställs av tjänst nivån, bestämmer kostnaden för att köra tjänsten. Kostnaderna och kapaciteten är nära kopplade. När du uppskattar kostnaderna får du en bra uppfattning om vilka kostnader som krävs för att köra din indexering och fråga arbets belastningar.
 
-I fakturerings syfte har Kognitiv sökning begreppet *Sök enhet* (SU). En SU är produkten av de *repliker* och *partitioner* som används av en tjänst: **(R x P = SU)**. Antalet SUs multiplicerat med fakturerings priset **(SU * Rate = månads utgifter)** är den främsta Determinant av sökrelaterade kostnader. 
+I fakturerings syfte finns det två enkla formler att tänka på:
+
+| Formel | Beskrivning |
+|---------|-------------|
+| **R x P = SU** | Antalet repliker som används, multiplicerat med antalet partitioner som används, motsvarar antalet *Sök enheter* (SU) som används av en tjänst. En SU är en resurs enhet och kan vara antingen en partition eller en replik. |
+| **SU * fakturerings taxa = månads utgifter** | Antalet SUs multiplicerat med fakturerings taxan för den nivå där du etablerade tjänsten är den främsta faktorn för den totala månads fakturan. Vissa funktioner eller arbets belastningar har beroenden för andra Azure-tjänster, vilket kan öka kostnaden för din lösning på prenumerations nivå. Avsnittet fakturerbara händelser nedan identifierar funktioner som kan läggas till i din faktura. |
 
 Varje tjänst börjar med en SU (en replik multiplicerad med en partition) som minimum. Det maximala antalet för en tjänst är 36 SUs. Det här max värdet kan nås på flera sätt: 6 partitioner x 6 repliker eller 3 partitioner x 12 repliker, till exempel. Det är vanligt att använda mindre än den totala kapaciteten (t. ex. en 3-replikering, en 3-partitions tjänst som faktureras som 9 SUs). Se diagrammet [partition och replik kombinations](search-capacity-planning.md#chart) diagram för giltiga kombinationer.
 

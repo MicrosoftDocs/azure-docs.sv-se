@@ -1,37 +1,34 @@
 ---
-title: Begränsa Azure CDN innehåll efter land/region | Microsoft Docs
+title: Begränsa Azure CDN innehåll efter land/region
 description: Lär dig hur du begränsar åtkomst efter land/region till Azure CDN innehåll med hjälp av funktionen för geo-filtrering.
 services: cdn
 documentationcenter: ''
 author: asudbring
-manager: danielgi
-editor: ''
-ms.assetid: 12c17cc5-28ee-4b0b-ba22-2266be2e786a
 ms.service: azure-cdn
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: how-to
-ms.date: 06/19/2018
+ms.date: 01/16/2021
 ms.author: allensu
-ms.openlocfilehash: ed82adcc1432bde27042d5775c454bfabcdb96ca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8901dffb752409acd7fb08a2025bed9a4cc70132
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91358142"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539480"
 ---
 # <a name="restrict-azure-cdn-content-by-countryregion"></a>Begränsa Azure CDN innehåll efter land/region
 
 ## <a name="overview"></a>Översikt
-När en användare begär ditt innehåll, hanteras innehållet som standard oavsett var användaren befinner sig i begäran. Men i vissa fall kanske du vill begränsa åtkomsten till ditt innehåll efter land/region. Med funktionen *geo-filtrering* kan du skapa regler för vissa sökvägar på CDN-slutpunkten för att tillåta eller blockera innehåll i valda länder/regioner.
+När en användare begär innehåll, betjänas innehållet för användare på alla platser. Du kanske vill begränsa åtkomsten till ditt innehåll efter land/region. 
+
+Med funktionen *geo-filtrering* kan du skapa regler för vissa sökvägar på CDN-slutpunkten. Du kan ställa in regler för att tillåta eller blockera innehåll i valda länder/regioner.
 
 > [!IMPORTANT]
 > **Azure CDN Standard från Microsoft** -profiler stöder inte Path-baserad geo-filtrering.
 > 
 
 ## <a name="standard-profiles"></a>Standard profiler
-Procedurerna i det här avsnittet gäller **Azure CDN Standard från Akamai** och **Azure CDN Standard från Verizon** -profiler. 
+
+Dessa anvisningar gäller **Azure CDN Standard från Akamai** och **Azure CDN Standard från Verizon** -profiler.
 
 För **Azure CDN Premium från Verizon** -profiler måste du använda **hanterings** portalen för att aktivera geo-filtrering. Mer information finns i [Azure CDN Premium från Verizon-profiler](#azure-cdn-premium-from-verizon-profiles).
 
@@ -63,6 +60,7 @@ En geo-filtrerings regel för att blockera sökvägen */photos/Strasbourg/* filt
  *http: \/ / \<endpoint> . azureedge.net/photos/Strasbourg/Cathedral/1000.jpg*
 
 ### <a name="define-the-countriesregions"></a>Definiera länder/regioner
+
 I listan **lands koder** väljer du de länder/regioner som du vill blockera eller tillåta för sökvägen. 
 
 När du är färdig med att välja länder/regioner väljer du **Spara** för att aktivera den nya geo-filtrerings regeln. 
@@ -70,31 +68,33 @@ När du är färdig med att välja länder/regioner väljer du **Spara** för at
 ![Skärm bild som visar lands koder som används för att blockera eller tillåta länder eller regioner.](./media/cdn-filtering/cdn-geo-filtering-rules.png)
 
 ### <a name="clean-up-resources"></a>Rensa resurser
+
 Om du vill ta bort en regel markerar du den i listan på sidan **geo-filtrering** och väljer sedan **ta bort**.
 
 ## <a name="azure-cdn-premium-from-verizon-profiles"></a>Azure CDN Premium från Verizon-profiler
+
 För **Azure CDN Premium från Verizon** -profiler, skiljer sig användar gränssnittet för att skapa en geo-filtrerings regel:
 
-1. Välj **Hantera**på den översta menyn i Azure CDN profilen.
+1. Välj **Hantera** på den översta menyn i Azure CDN profilen.
 
-2. Välj **http stor**på Verizon-portalen och välj sedan **land filtrering**.
+2. Välj **http stor** på Verizon-portalen och välj sedan **land filtrering**.
 
-    ![Skärm bild som visar hur du väljer land filtrering i Azure C D N.](./media/cdn-filtering/cdn-geo-filtering-premium.png)
-
+    :::image type="content" source="./media/cdn-filtering/cdn-geo-filtering-premium.png" alt-text="Skärm bild som visar hur du väljer land filtrering i Azure CDN" border="true":::
+  
 3. Välj **Lägg till land filter**.
 
-    Sidan **steg ett:** visas.
+4. I **steg ett:** anger du sökvägen till katalogen. Välj **blockera** eller **Lägg till** och välj sedan **Nästa**.
 
-4. Ange sökvägen till katalogen, Välj **block** eller **Lägg till**och välj sedan **Nästa**.
-
-    Sidan **steg två:** visas. 
-
-5. Välj ett eller flera länder/regioner i listan och välj sedan **Slutför** för att aktivera regeln. 
+    > [!IMPORTANT]
+    > Slut punktens namn måste anges i sökvägen.  Exempel: **/myendpoint8675/MyFolder**.  Ersätt **myendpoint8675** med namnet på din slut punkt.
+    > 
+    
+5. I **steg två** väljer du ett eller flera länder/regioner i listan. Aktivera regeln genom att klicka på **Slutför** . 
     
     Den nya regeln visas i tabellen på sidan **land filtrering** .
-
-    ![Skärm bild som visar var regeln visas i lands filtrering.](./media/cdn-filtering/cdn-geo-filtering-premium-rules.png)
-
+    
+    :::image type="content" source="./media/cdn-filtering/cdn-geo-filtering-premium-rules.png" alt-text="Skärm bild som visar var regeln visas i lands filtrering." border="true":::
+ 
 ### <a name="clean-up-resources"></a>Rensa resurser
 I tabellen land/region filtrerings regler väljer du ikonen Ta bort bredvid en regel för att ta bort den eller redigera-ikonen för att ändra den.
 

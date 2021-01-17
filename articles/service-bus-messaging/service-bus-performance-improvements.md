@@ -2,14 +2,14 @@
 title: Metod tips för att förbättra prestanda med hjälp av Azure Service Bus
 description: Beskriver hur du använder Service Bus för att optimera prestanda vid utbyte av asynkrona meddelanden.
 ms.topic: article
-ms.date: 11/11/2020
+ms.date: 01/15/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6a0457537712ccb85191f320fd348446eed9b229
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 7bfff1a31365724ed1d1cb6ff1956a4e2ef4f4c0
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97655636"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539437"
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>Bra metoder för att öka prestanda med hjälp av meddelanden i Service Bus
 
@@ -24,22 +24,27 @@ Service Bus gör det möjligt för klienter att skicka och ta emot meddelanden v
 2. SBMP (Service Bus Messaging Protocol)
 3. HTTP (Hypertext Transfer Protocol)
 
-AMQP är den mest effektiva, eftersom den upprätthåller anslutningen till Service Bus. Den implementerar även satsvis och för hämtning. Om inget annat anges förutsätter allt innehåll i den här artikeln användningen av AMQP eller SBMP.
+AMQP är den mest effektiva, eftersom den upprätthåller anslutningen till Service Bus. Den implementerar även [satsvis](#batching-store-access) och för [hämtning](#prefetching). Om inget annat anges förutsätter allt innehåll i den här artikeln användningen av AMQP eller SBMP.
 
 > [!IMPORTANT]
 > SBMP är endast tillgänglig för .NET Framework. AMQP är standardinställningen för .NET standard.
 
 ## <a name="choosing-the-appropriate-service-bus-net-sdk"></a>Välja lämplig Service Bus .NET SDK
-Det finns två Azure Service Bus .NET-SDK: er som stöds. Deras API: er liknar varandra och det kan vara förvirrande vilket du väljer. Se följande tabell för att få hjälp med ditt beslut. Vi rekommenderar att du använder Microsoft. Azure. Service Bus SDK eftersom det är mer modernt, presterande och är plattforms oberoende. Dessutom stöder den AMQP över WebSockets och är en del av Azure .NET SDK-samlingen med projekt med öppen källkod.
+Det finns tre Azure Service Bus .NET-SDK: er som stöds. Deras API: er liknar varandra och det kan vara förvirrande vilket du väljer. Se följande tabell för att få hjälp med ditt beslut. Azure. Messaging. Service Bus SDK är det senaste och vi rekommenderar att du använder det över andra SDK: er. Både Azure. Messaging. Service Bus-och Microsoft. Azure. Service Bus SDK: er är moderna, presterande och plattforms oberoende kompatibla. Dessutom stöder de AMQP över WebSockets och ingår i Azure .NET SDK-samlingen med projekt med öppen källkod.
 
 | NuGet-paket | Primär namnrymd (er) | Minsta plattform (er) | Protokoll |
 |---------------|----------------------|---------------------|-------------|
-| <a href="https://www.nuget.org/packages/Microsoft.Azure.ServiceBus" target="_blank">Microsoft. Azure. Service Bus <span class="docon docon-navigate-external x-hidden-focus"></span></a> | `Microsoft.Azure.ServiceBus`<br>`Microsoft.Azure.ServiceBus.Management` | .NET Core 2.0<br>.NET Framework 4.6.1<br>Mono 5,4<br>Xamarin. iOS 10,14<br>Xamarin. Mac 3,8<br>Xamarin. Android 8,0<br>Universell Windows-plattform 10.0.16299 | AMQP<br>HTTP |
-| <a href="https://www.nuget.org/packages/WindowsAzure.ServiceBus" target="_blank">WindowsAzure. Service Bus <span class="docon docon-navigate-external x-hidden-focus"></span></a> | `Microsoft.ServiceBus`<br>`Microsoft.ServiceBus.Messaging` | .NET Framework 4.6.1 | AMQP<br>SBMP<br>HTTP |
+| [Azure. Messaging. Service Bus](https://www.nuget.org/packages/Azure.Messaging.ServiceBus) | `Azure.Messaging.ServiceBus`<br>`Azure.Messaging.ServiceBus.Administration` | .NET Core 2.0<br>.NET Framework 4.6.1<br>Mono 5,4<br>Xamarin. iOS 10,14<br>Xamarin. Mac 3,8<br>Xamarin. Android 8,0<br>Universell Windows-plattform 10.0.16299 | AMQP<br>HTTP |
+| [Microsoft. Azure. Service Bus](https://www.nuget.org/packages/Azure.Messaging.ServiceBus/) | `Microsoft.Azure.ServiceBus`<br>`Microsoft.Azure.ServiceBus.Management` | .NET Core 2.0<br>.NET Framework 4.6.1<br>Mono 5,4<br>Xamarin. iOS 10,14<br>Xamarin. Mac 3,8<br>Xamarin. Android 8,0<br>Universell Windows-plattform 10.0.16299 | AMQP<br>HTTP |
+| [WindowsAzure. Service Bus](https://www.nuget.org/packages/WindowsAzure.ServiceBus) | `Microsoft.ServiceBus`<br>`Microsoft.ServiceBus.Messaging` | .NET Framework 4.6.1 | AMQP<br>SBMP<br>HTTP |
 
 Mer information om lägsta stöd för .NET standard Platform finns i [.net implementation support](/dotnet/standard/net-standard#net-implementation-support).
 
 ## <a name="reusing-factories-and-clients"></a>Återanvända fabriker och klienter
+# <a name="azuremessagingservicebus-sdk"></a>[Azure. Messaging. Service Bus SDK](#tab/net-standard-sdk-2)
+Service Bus objekt som interagerar med tjänsten, till exempel [ServiceBusClient](/dotnet/api/azure.messaging.servicebus.servicebusclient), [ServiceBusSender](/dotnet/api/azure.messaging.servicebus.servicebussender), [ServiceBusReceiver](/dotnet/api/azure.messaging.servicebus.servicebusreceiver)och [ServiceBusProcessor](/dotnet/api/azure.messaging.servicebus.servicebusprocessor), bör registreras för beroende inmatning som singleton (eller instansieras en gång och delad). ServiceBusClient kan registreras för beroende inmatning med [ServiceBusClientBuilderExtensions](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/servicebus/Azure.Messaging.ServiceBus/src/Compatibility/ServiceBusClientBuilderExtensions.cs). 
+
+Vi rekommenderar att du inte stänger eller tar bort de här objekten när du skickar eller tar emot varje meddelande. Om du stänger eller tar bort enhetsspecifika objekt (ServiceBusSender/mottagare/processor) kan du bryta ned länken till Service Bus tjänsten. Om du avstår från ServiceBusClient blir anslutningen till Service Buss tjänsten överrivad. Att upprätta en anslutning är en dyr åtgärd som du kan undvika genom att återanvända samma ServiceBusClient och skapa nödvändiga entiteter-speciella objekt från samma ServiceBusClient-instans. Du kan använda dessa klient objekt på ett säkert sätt för samtidiga asynkrona åtgärder och från flera trådar.
 
 # <a name="microsoftazureservicebus-sdk"></a>[Microsoft. Azure. Service Bus SDK](#tab/net-standard-sdk)
 
@@ -55,6 +60,27 @@ Service Bus klient objekt, till exempel `QueueClient` eller `MessageSender` , sk
 Åtgärder som att skicka, ta emot, ta bort och så vidare kan ta en stund. Den här gången inkluderar den tid som Service Bus tjänsten tar för att bearbeta åtgärden och svars tiden för begäran och svaret. För att öka antalet åtgärder per tid måste åtgärder köras samtidigt.
 
 Klienten schemalägger samtidiga åtgärder genom att utföra **asynkrona** åtgärder. Nästa begäran startas innan den tidigare begäran har slutförts. Följande kodfragment är ett exempel på en asynkron sändnings åtgärd:
+
+# <a name="azuremessagingservicebus-sdk"></a>[Azure. Messaging. Service Bus SDK](#tab/net-standard-sdk-2)
+```csharp
+var messageOne = new ServiceBusMessage(body);
+var messageTwo = new ServiceBusMessage(body);
+
+var sendFirstMessageTask =
+    sender.SendMessageAsync(messageOne).ContinueWith(_ =>
+    {
+        Console.WriteLine("Sent message #1");
+    });
+var sendSecondMessageTask =
+    sender.SendMessageAsync(messageTwo).ContinueWith(_ =>
+    {
+        Console.WriteLine("Sent message #2");
+    });
+
+await Task.WhenAll(sendFirstMessageTask, sendSecondMessageTask);
+Console.WriteLine("All messages sent");
+
+```
 
 # <a name="microsoftazureservicebus-sdk"></a>[Microsoft. Azure. Service Bus SDK](#tab/net-standard-sdk)
 
@@ -101,6 +127,35 @@ Console.WriteLine("All messages sent");
 ---
 
 Följande kod är ett exempel på en asynkron mottagnings åtgärd.
+
+# <a name="azuremessagingservicebus-sdk"></a>[Azure. Messaging. Service Bus SDK](#tab/net-standard-sdk-2)
+
+```csharp
+var client = new ServiceBusClient(connectionString);
+var options = new ServiceBusProcessorOptions 
+{
+
+      AutoCompleteMessages = false,
+      MaxConcurrentCalls = 20
+};
+await using ServiceBusProcessor processor = client.CreateProcessor(queueName,options);
+processor.ProcessMessageAsync += MessageHandler;
+processor.ProcessErrorAsync += ErrorHandler;
+
+static Task ErrorHandler(ProcessErrorEventArgs args)
+{
+    Console.WriteLine(args.Exception);
+    return Task.CompletedTask;
+};
+
+static async Task MessageHandler(ProcessMessageEventArgs args)
+{
+Console.WriteLine("Handle message");
+      await args.CompleteMessageAsync(args.Message);
+}
+
+await processor.StartProcessingAsync();
+```
 
 # <a name="microsoftazureservicebus-sdk"></a>[Microsoft. Azure. Service Bus SDK](#tab/net-standard-sdk)
 
@@ -168,15 +223,18 @@ Service Bus stöder inte transaktioner för Receive-och-Delete-åtgärder. Dessu
 
 Med batching på klient sidan kan en kö-eller ämnes klient fördröja sändningen av ett meddelande under en viss tids period. Om klienten skickar ytterligare meddelanden under den här tiden överförs dessa meddelanden i en enskild batch. Satsvis batchbearbetning på klient sidan gör att en kö eller prenumerations klient kan **utföra flera fullständiga** förfrågningar till en enda begäran. Batching är endast tillgängligt för asynkrona åtgärder för att **Skicka** och **slutföra** . Synkrona åtgärder skickas omedelbart till Service Bus tjänsten. Batching sker inte för gransknings-eller mottagnings åtgärder, eller så sker batching mellan klienter.
 
+# <a name="azuremessagingservicebus-sdk"></a>[Azure. Messaging. Service Bus SDK](#tab/net-standard-sdk-2)
+Batching-funktionen för .NET standard SDK har ännu inte uppvisat en egenskap för att manipulera.
+
 # <a name="microsoftazureservicebus-sdk"></a>[Microsoft. Azure. Service Bus SDK](#tab/net-standard-sdk)
 
-Batching-funktionen för .NET standard SDK har ännu inte en egenskap att manipulera.
+Batching-funktionen för .NET standard SDK har ännu inte uppvisat en egenskap för att manipulera.
 
 # <a name="windowsazureservicebus-sdk"></a>[WindowsAzure. Service Bus SDK](#tab/net-framework-sdk)
 
 Som standard använder en klient ett batch-intervall på 20 MS. Du kan ändra batch-intervallet genom att ange egenskapen [BatchFlushInterval][BatchFlushInterval] innan du skapar meddelande fabriken. Den här inställningen påverkar alla klienter som skapas av den här fabriken.
 
-Om du vill inaktivera batchbearbetning ställer du in egenskapen [BatchFlushInterval][BatchFlushInterval] på **TimeSpan. Zero**. Exempel:
+Om du vill inaktivera batchbearbetning ställer du in egenskapen [BatchFlushInterval][BatchFlushInterval] på **TimeSpan. Zero**. Här är några exempel:
 
 ```csharp
 var settings = new MessagingFactorySettings
@@ -217,6 +275,19 @@ För att öka data flödet för en kö, ett ämne eller en prenumeration Service
 Ytterligare lagrings åtgärder som utförs under det här intervallet läggs till i batchen. Grupp åtkomst påverkar endast åtgärder för att **Skicka** och **slutföra** . mottagnings åtgärder påverkas inte. Grupp åtkomst är en egenskap för en entitet. Satsvis kompilering sker över alla entiteter som aktiverar grupp åtkomst.
 
 När du skapar en ny kö, ämne eller prenumeration, aktive ras grupp åtkomst som standard.
+
+
+# <a name="azuremessagingservicebus-sdk"></a>[Azure. Messaging. Service Bus SDK](#tab/net-standard-sdk-2)
+Om du vill inaktivera grupp åtkomst måste du ha en instans av en `ServiceBusAdministrationClient` . Skapa en `CreateQueueOptions` från en beskrivning av kön som anger `EnableBatchedOperations` egenskapen till `false` .
+
+```csharp
+var options = new CreateQueueOptions(path)
+{
+    EnableBatchedOperations = false
+};
+var queue = await administrationClient.CreateQueueAsync(options);
+```
+
 
 # <a name="microsoftazureservicebus-sdk"></a>[Microsoft. Azure. Service Bus SDK](#tab/net-standard-sdk)
 
@@ -270,6 +341,12 @@ Egenskapen TTL (Time-to-Live) för ett meddelande kontrol leras av servern vid d
 
 För hämtning påverkar inte antalet fakturerbara meddelande åtgärder och är bara tillgängligt för det Service Bus klient protokollet. HTTP-protokollet har inte stöd för för hämtning. För hämtning är tillgängligt för både synkrona och asynkrona mottagnings åtgärder.
 
+# <a name="azuremessagingservicebus-sdk"></a>[Azure. Messaging. Service Bus SDK](#tab/net-standard-sdk-2)
+Mer information finns i följande `PrefetchCount` Egenskaper:
+
+- [ServiceBusReceiver.PrefetchCount](/dotnet/api/azure.messaging.servicebus.servicebusreceiver.prefetchcount)
+- [ServiceBusProcessor.PrefetchCount](/dotnet/api/azure.messaging.servicebus.servicebusprocessor.prefetchcount)
+
 # <a name="microsoftazureservicebus-sdk"></a>[Microsoft. Azure. Service Bus SDK](#tab/net-standard-sdk)
 
 Mer information finns i följande `PrefetchCount` Egenskaper:
@@ -287,10 +364,6 @@ Mer information finns i följande `PrefetchCount` Egenskaper:
 ---
 
 ## <a name="prefetching-and-receivebatch"></a>För hämtning och ReceiveBatch
-
-> [!NOTE]
-> Det här avsnittet gäller endast för SDK för WindowsAzure. Service Bus eftersom Microsoft. Azure. Service Bus SDK inte visar batch-funktioner.
-
 Även om begreppen för att hämta flera meddelanden tillsammans har liknande semantik för att bearbeta meddelanden i en batch ( `ReceiveBatch` ), finns det vissa mindre skillnader som måste behållas i åtanke när du använder dessa metoder tillsammans.
 
 För hämtning är en konfiguration (eller läge) på klienten ( `QueueClient` och `SubscriptionClient` ) och `ReceiveBatch` är en åtgärd (som har semantik för begäran-svar).
@@ -309,7 +382,7 @@ Om en enskild kö eller ett ämne inte kan hantera förväntat kan du använda f
 ## <a name="development-and-testing-features"></a>Funktioner för utveckling och testning
 
 > [!NOTE]
-> Det här avsnittet gäller endast för SDK för WindowsAzure. Service Bus, eftersom Microsoft. Azure. Service Bus SDK inte exponerar den här funktionen.
+> Det här avsnittet gäller endast WindowsAzure. Service Bus SDK, som Microsoft. Azure. Service Bus och Azure. Messaging. Service Bus visar inte den här funktionen.
 
 Service Bus har en funktion som används specifikt för utveckling och som **aldrig ska användas i produktions konfigurationerna**: [`TopicDescription.EnableFilteringMessagesBeforePublishing`][TopicDescription.EnableFiltering] .
 
@@ -372,9 +445,9 @@ Du maximerar data flödet genom att följa dessa rikt linjer:
 * Lämna åtkomst till grupp lagring aktiverat. Den här åtkomsten minskar den övergripande belastningen på entiteten. Det minskar också den totala hastigheten med vilken meddelanden kan skrivas till kön eller ämnet.
 * Ange ett litet värde för för hämtnings antalet (till exempel PrefetchCount = 10). Det här antalet förhindrar att mottagare inaktive ras medan andra mottagare har ett stort antal meddelanden i cacheminnet.
 
-### <a name="topic-with-a-small-number-of-subscriptions"></a>Ämne med ett litet antal prenumerationer
+### <a name="topic-with-a-few-subscriptions"></a>Ämne med några prenumerationer
 
-Mål: maximera data flödet för ett ämne med ett litet antal prenumerationer. Ett meddelande tas emot av många prenumerationer, vilket innebär att den kombinerade mottagnings hastigheten för alla prenumerationer är större än sändnings takten. Antalet avsändare är litet. Antalet mottagare per prenumeration är litet.
+Mål: maximera data flödet för ett ämne med några prenumerationer. Ett meddelande tas emot av många prenumerationer, vilket innebär att den kombinerade mottagnings hastigheten för alla prenumerationer är större än sändnings takten. Antalet avsändare är litet. Antalet mottagare per prenumeration är litet.
 
 Du maximerar data flödet genom att följa dessa rikt linjer:
 
