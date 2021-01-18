@@ -6,12 +6,12 @@ ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 11/30/2020
-ms.openlocfilehash: 244f8a446e33102e018881b3ec8f32ba9d8cbcc6
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 7d624f2dd2c0c9b4c7e99d5628a1d47e4303da7f
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98014153"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98555601"
 ---
 # <a name="use-managed-identities-to-access-azure-sql-database-or-azure-synapse-analytics-from-an-azure-stream-analytics-job-preview"></a>Använda hanterade identiteter för att få åtkomst till Azure SQL Database eller Azure Synapse Analytics från ett Azure Stream Analytics jobb (förhands granskning)
 
@@ -123,7 +123,7 @@ När du har skapat en innesluten databas användare och fått åtkomst till Azur
 
 När du har skapat en innesluten databas användare och fått åtkomst till Azure-tjänster i portalen enligt beskrivningen i föregående avsnitt, har ditt Stream Analytics-jobb behörighet från hanterad identitet för att **ansluta** till din Azure Synapse Database-resurs via hanterad identitet. Vi rekommenderar att du ytterligare beviljar behörigheterna Välj, infoga och administrera databas Mass åtgärder till det Stream Analytics jobbet eftersom de behövs senare i arbets flödet Stream Analytics. Med **Select** -behörighet kan jobbet testa anslutningen till tabellen i Azure Synapse-databasen. Behörigheterna för att **Infoga** och **Administrera databas Mass åtgärder** gör att du kan testa Stream Analytics från slut punkt till slut punkt när du har konfigurerat en indata och Azure Synapse-databasens utdata.
 
-Om du vill bevilja behörigheten administrera databas Mass åtgärder måste du ge alla behörigheter som är märkta som **kontroll** [underförstådda av databas behörighet](/sql/t-sql/statements/grant-database-permissions-transact-sql?view=azure-sqldw-latest#remarks) till Stream Analytics jobbet. Du behöver den här behörigheten eftersom Stream Analyticss jobbet utför KOPIERINGs instruktionen, vilket kräver att [databasens Mass åtgärder administreras och infogas](/sql/t-sql/statements/copy-into-transact-sql).
+Om du vill bevilja behörigheten administrera databas Mass åtgärder måste du ge alla behörigheter som är märkta som **kontroll** [underförstådda av databas behörighet](/sql/t-sql/statements/grant-database-permissions-transact-sql?view=azure-sqldw-latest&preserve-view=true#remarks) till Stream Analytics jobbet. Du behöver den här behörigheten eftersom Stream Analyticss jobbet utför KOPIERINGs instruktionen, vilket kräver att [databasens Mass åtgärder administreras och infogas](/sql/t-sql/statements/copy-into-transact-sql).
 
 ---
 

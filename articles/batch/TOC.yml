@@ -223,14 +223,12 @@
           items:
             - name: Rendering med hjälp av Azure
               href: batch-rendering-service.md
-            - name: Rendering av VM-avbildningar
+            - name: Batchrendering av VM-avbildningar
               href: batch-rendering-applications.md
             - name: Batchrenderingsfunktioner
               href: batch-rendering-functionality.md
             - name: Använda batchrendering
               href: batch-rendering-using.md
-            - name: Använda renderingshanterare
-              href: batch-rendering-render-managers.md
             - name: Renderingsprogramreferens
               href: batch-rendering-application-reference.md
             - name: Lagring och dataflytt

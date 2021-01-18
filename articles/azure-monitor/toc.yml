@@ -8,6 +8,8 @@
       href: faq.md
     - name: Nyheter
       href: whats-new.md
+    - name: Migrera från Operations Manager
+      href: azure-monitor-operations-manager.md
 - name: Snabbstarter
   items:
     - name: Övervaka Azure-resurs
@@ -196,6 +198,8 @@
               href: platform/metric-chart-samples.md
             - name: Felsöka måttdiagram
               href: platform/metrics-troubleshoot.md
+            - name: Förstå måttsammansättning
+              href: platform/metrics-aggregation-explained.md
     - name: Azure Monitor-loggar
       items:
         - name: Översikt
@@ -664,6 +668,8 @@
                       href: app/javascript-react-native-plugin.md
                     - name: Plugin-programmet Angular
                       href: app/javascript-angular-plugin.md
+                    - name: Klicka på plugin-program för Analytics Auto-samling
+                      href: app/javascript-click-analytics-plugin.md
                 - name: Felsöka
                   items:
                     - name: Inläsningsfel för SDK

@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/01/2020
-ms.openlocfilehash: 6eb17537fd64b192f64c36b38bab57e11d751328
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 3513ba0cd1a894b55da604d54964affa79b6adf4
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400785"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98555975"
 ---
 # <a name="register-and-scan-an-azure-sql-database-managed-instance"></a>Registrera och skanna en Azure SQL Database Hanterad instans
 
@@ -28,19 +28,19 @@ Den Azure SQL Database hanterade instans data källan har stöd för följande f
 
 ### <a name="known-limitations"></a>Kända begränsningar
 
-Azure avdelningens kontroll stöder inte genomsökning av [vyer](https://docs.microsoft.com/sql/relational-databases/views/views?view=sql-server-ver15) i Azure SQL-hanterad instans.
+Azure avdelningens kontroll stöder inte genomsökning av [vyer](/sql/relational-databases/views/views?view=azuresqldb-mi-current&preserve-view=true) i Azure SQL-hanterad instans.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - Skapa ett nytt avdelningens kontroll-konto om du inte redan har ett.
 
-- [Konfigurera offentlig slut punkt i Azure SQL-hanterad instans](https://docs.microsoft.com/azure/azure-sql/managed-instance/public-endpoint-configure)
+- [Konfigurera offentlig slut punkt i Azure SQL-hanterad instans](/azure/azure-sql/managed-instance/public-endpoint-configure)
     > [!Note]
     > Din organisation måste kunna tillåta offentlig slut punkt eftersom den **privata slut punkten inte stöds ännu** av avdelningens kontroll. Om du använder privat slut punkt kommer sökningen inte att lyckas.
 
 ### <a name="setting-up-authentication-for-a-scan"></a>Konfigurera autentisering för en sökning
 
-Autentisering för att genomsöka Azure SQL Database hanterade instansen. Om du behöver skapa en ny autentisering måste du [godkänna databas åtkomst till SQL Database Hanterad instans](https://docs.microsoft.com/azure/azure-sql/database/logins-create-manage). Det finns tre autentiseringsmetoder som avdelningens kontroll stöder idag:
+Autentisering för att genomsöka Azure SQL Database hanterade instansen. Om du behöver skapa en ny autentisering måste du [godkänna databas åtkomst till SQL Database Hanterad instans](/azure/azure-sql/database/logins-create-manage). Det finns tre autentiseringsmetoder som avdelningens kontroll stöder idag:
 
 - SQL-autentisering
 - Tjänstens huvudnamn
@@ -51,7 +51,7 @@ Autentisering för att genomsöka Azure SQL Database hanterade instansen. Om du 
 > [!Note]
 > Endast huvud inloggningen på server nivå (som skapats av etablerings processen) eller medlemmar i `loginmanager` databas rollen i huvud databasen kan skapa nya inloggningar. Det tar ungefär **15 minuter** efter att ha beviljat behörighet, avdelningens kontroll-kontot måste ha rätt behörighet för att kunna söka igenom resurserna.
 
-Du kan följa anvisningarna i [Skapa inloggning](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-current&preserve-view=true#examples-1) för att skapa en inloggning för Azure SQL Database Hanterad instans om du inte har det här alternativet. Du måste ha **användar namn** och **lösen ord** för att kunna utföra nästa steg.
+Du kan följa anvisningarna i [Skapa inloggning](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-current&preserve-view=true#examples-1) för att skapa en inloggning för Azure SQL Database Hanterad instans om du inte har det här alternativet. Du måste ha **användar namn** och **lösen ord** för att kunna utföra nästa steg.
 
 1. Navigera till ditt nyckel valv i Azure Portal
 1. Välj **inställningar > hemligheter**
@@ -85,8 +85,8 @@ Om du vill använda ett huvud namn för tjänsten kan du använda ett befintligt
 ##### <a name="configure-azure-ad-authentication-in-the-database-account"></a>Konfigurera Azure AD-autentisering i databas kontot
 
 Tjänstens huvud namn eller hanterade identitet måste ha behörighet att hämta metadata för databasen, scheman och tabeller. Det måste också kunna fråga tabellerna för klassificering.
-- [Konfigurera och hantera Azure AD-autentisering med Azure SQL](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-configure)
-- Skapa en Azure AD-användare i Azure SQL Database Hanterad instans genom att följa kraven och självstudien om att [skapa inneslutna användare som är mappade till Azure AD-identiteter](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-configure?tabs=azure-powershell#create-contained-users-mapped-to-azure-ad-identities)
+- [Konfigurera och hantera Azure AD-autentisering med Azure SQL](/azure/azure-sql/database/authentication-aad-configure)
+- Skapa en Azure AD-användare i Azure SQL Database Hanterad instans genom att följa kraven och självstudien om att [skapa inneslutna användare som är mappade till Azure AD-identiteter](/azure/azure-sql/database/authentication-aad-configure?tabs=azure-powershell#create-contained-users-mapped-to-azure-ad-identities)
 - Tilldela `db_owner` (**rekommenderas**) behörighet till identiteten
 
 ##### <a name="add-service-principal-to-key-vault-and-purviews-credential"></a>Lägg till tjänstens huvud namn i Key Vault och avdelningens kontroll autentiseringsuppgift

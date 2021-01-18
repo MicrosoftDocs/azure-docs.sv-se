@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 10/22/2020
-ms.openlocfilehash: e0a1d8dba9ea284322584de3b4be2ae390d15fdf
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: c95f8b9e4466b22519a4dea580a86a0dcda83857
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920258"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98555941"
 ---
 # <a name="register-and-scan-azure-synapse-analytics"></a>Registrera och skanna Azure Synapse Analytics
 
@@ -24,9 +24,9 @@ Azure Synapse Analytics (tidigare SQL DW) stöder fullständiga och stegvisa gen
 
 ### <a name="known-limitations"></a>Kända begränsningar
 
-Azure avdelningens kontroll stöder inte genomsökning av [vyer](https://docs.microsoft.com/sql/relational-databases/views/views?view=sql-server-ver15) i Azure Synapse Analytics
+Azure avdelningens kontroll stöder inte genomsökning av [vyer](/sql/relational-databases/views/views?view=azure-sqldw-latest&preserve-view=true) i Azure Synapse Analytics
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - Skapa ett Azure avdelningens kontroll-konto innan du registrerar data källor. Mer information om hur du skapar ett avdelningens kontroll-konto finns i [snabb start: skapa ett Azure avdelningens kontroll-konto](create-catalog-portal.md).
 - Du måste vara en Azure avdelningens kontroll data source-administratör
@@ -45,7 +45,7 @@ Det finns tre sätt att konfigurera autentisering för Azure Blob Storage:
 
 ### <a name="managed-identity-recommended"></a>Hanterad identitet (rekommenderas) 
    
-Ditt avdelningens kontroll-konto har sin egen hanterade identitet som i princip är ditt avdelningens kontroll-namn när du skapade det. Du måste skapa en Azure AD-användare i Azure Synapse Analytics (tidigare SQL DW) med det exakta avdelningens kontroll: s hanterade identitets namn genom att följa kraven och självstudien för att [Skapa Azure AD-användare med hjälp av Azure AD-program](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-service-principal-tutorial).
+Ditt avdelningens kontroll-konto har sin egen hanterade identitet som i princip är ditt avdelningens kontroll-namn när du skapade det. Du måste skapa en Azure AD-användare i Azure Synapse Analytics (tidigare SQL DW) med det exakta avdelningens kontroll: s hanterade identitets namn genom att följa kraven och självstudien för att [Skapa Azure AD-användare med hjälp av Azure AD-program](/azure/azure-sql/database/authentication-aad-service-principal-tutorial).
 
 Exempel på SQL-syntax för att skapa användare och bevilja behörighet:
 
@@ -102,7 +102,7 @@ GO
 
 ### <a name="sql-authentication"></a>SQL-autentisering
 
-Du kan följa anvisningarna i [Skapa inloggning](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-current&preserve-view=true#examples-1) för att skapa en inloggning för Azure Synapse Analytics (tidigare SQL DW) om du inte redan har ett.
+Du kan följa anvisningarna i [Skapa inloggning](/sql/t-sql/statements/create-login-transact-sql?view=azure-sqldw-latest&preserve-view=true#examples-1) för att skapa en inloggning för Azure Synapse Analytics (tidigare SQL DW) om du inte redan har ett.
 
 När den valda autentiseringsmetoden är **SQL-autentisering** måste du hämta ditt lösen ord och lagra det i nyckel valvet:
 

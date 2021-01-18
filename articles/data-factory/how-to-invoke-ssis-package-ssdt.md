@@ -12,12 +12,12 @@ ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 09/06/2020
-ms.openlocfilehash: 6b3c94023daf51559623f69e34b8e2b1f42fde92
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: a455d547fa3db2fd6e963458a29c77f516112e18
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637249"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98556519"
 ---
 # <a name="execute-ssis-packages-in-azure-from-ssdt"></a>Köra SSIS-paket i Azure från SSDT
 
@@ -29,7 +29,7 @@ Med den här funktionen kan du koppla en nyligen skapad/befintlig Azure-SSIS IR 
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-Om du vill använda den här funktionen laddar du ned och installerar de senaste SSDT med SSIS-projekts tillägg för Visual Studio (VS) [härifrån.](https://marketplace.visualstudio.com/items?itemName=SSIS.SqlServerIntegrationServicesProjects) Du kan också hämta och installera de senaste SSDT som ett fristående installations program [härifrån.](/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017#ssdt-for-vs-2017-standalone-installer)
+Om du vill använda den här funktionen laddar du ned och installerar de senaste SSDT med SSIS-projekts tillägg för Visual Studio (VS) [härifrån.](https://marketplace.visualstudio.com/items?itemName=SSIS.SqlServerIntegrationServicesProjects) Du kan också hämta och installera de senaste SSDT som ett fristående installations program [härifrån.](/sql/ssdt/download-sql-server-data-tools-ssdt#ssdt-for-vs-2017-standalone-installer)
 
 ## <a name="azure-enable-ssis-projects"></a>Azure – aktivera SSIS-projekt
 
@@ -49,15 +49,15 @@ Om du vill ansluta till din Azure-SSIS IR direkt, se [ansluta till Azure-SSIS IR
 
 För befintliga SSIS-projekt kan du aktivera dem med Azure genom att följa dessa steg:
 
-1. Högerklicka på noden projekt i Solution Explorer fönstret i SSDT för att visa en meny. Sedan väljer du det **Azure-aktiverade projekt** objektet i **SSIS i Azure Data Factory** -undermenyn för att starta **guiden Azure-aktiverad projekt** .
+1. Högerklicka på noden projekt i Solution Explorer fönstret i SSDT för att visa en meny. Sedan väljer du det **Azure-aktiverade projekt** objektet i **SSIS i Azure Data Factory** -undermenyn för att starta **guiden Azure-aktiverad projekt**.
 
    ![Azure – aktivera befintligt SSIS-projekt](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-for-existing-project.png)
 
-2. På sidan **Välj Visual Studio-konfiguration** väljer du din befintliga vs-konfiguration för att tillämpa paket körnings inställningar i Azure. Du kan också skapa en ny, om du inte redan har gjort det, se [skapa en ny vs-konfiguration](/visualstudio/ide/how-to-create-and-edit-configurations?view=vs-2019). Vi rekommenderar att du har minst två olika VS-konfigurationer för paket körningar i lokala miljöer och moln miljöer, så att du kan använda Azure för att aktivera ditt projekt mot moln konfigurationen. På så sätt kan du, om du har parameterstyrda ditt projekt eller paket, tilldela olika värden till ditt projekt eller paket parametrar vid körning baserat på de olika körnings miljöerna (antingen på din lokala dator eller i Azure). Se till exempel miljöer för att [Växla paket körning](#switchenvironment).
+2. På sidan **Välj Visual Studio-konfiguration** väljer du din befintliga vs-konfiguration för att tillämpa paket körnings inställningar i Azure. Du kan också skapa en ny, om du inte redan har gjort det, se [skapa en ny vs-konfiguration](/visualstudio/ide/how-to-create-and-edit-configurations). Vi rekommenderar att du har minst två olika VS-konfigurationer för paket körningar i lokala miljöer och moln miljöer, så att du kan använda Azure för att aktivera ditt projekt mot moln konfigurationen. På så sätt kan du, om du har parameterstyrda ditt projekt eller paket, tilldela olika värden till ditt projekt eller paket parametrar vid körning baserat på de olika körnings miljöerna (antingen på din lokala dator eller i Azure). Se till exempel miljöer för att [Växla paket körning](#switchenvironment).
 
    ![Välj Visual Studio-konfiguration](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-select-visual-studio-configurations.png)
 
-3. Azure – aktivera dina befintliga SSIS-projekt kräver att du anger att mål Server versionen ska vara den senaste versionen som stöds av Azure-SSIS IR. Azure-SSIS IR är för närvarande baserat på **SQL Server 2017** . Kontrol lera att dina paket inte innehåller ytterligare komponenter som inte stöds på SQL Server 2017. Se också till att alla kompatibla ytterligare komponenter också har installerats på Azure-SSIS IR via anpassade installationer, se [Anpassa din Azure-SSIS IR](./how-to-configure-azure-ssis-ir-custom-setup.md). Klicka på **Nästa** om du vill fortsätta.
+3. Azure – aktivera dina befintliga SSIS-projekt kräver att du anger att mål Server versionen ska vara den senaste versionen som stöds av Azure-SSIS IR. Azure-SSIS IR är för närvarande baserat på **SQL Server 2017**. Kontrol lera att dina paket inte innehåller ytterligare komponenter som inte stöds på SQL Server 2017. Se också till att alla kompatibla ytterligare komponenter också har installerats på Azure-SSIS IR via anpassade installationer, se [Anpassa din Azure-SSIS IR](./how-to-configure-azure-ssis-ir-custom-setup.md). Klicka på **Nästa** om du vill fortsätta.
 
    ![Byt mål Server version](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-switch-target-server-version-step.png)
 
@@ -74,7 +74,7 @@ Genom att ansluta dina Azure-aktiverade projekt till SSIS i ADF kan du ladda upp
 2. På sidan **Välj SSIS IR på ADF** väljer du den befintliga ADF-filen och Azure-SSIS IR att köra paket. Du kan också skapa nya om du inte har några.
    - Välj den aktuella Azure-prenumerationen och ADF först om du vill välja din befintliga Azure-SSIS IR.
    - Om du väljer din befintliga ADF som inte har några Azure-SSIS IR väljer du knappen **skapa SSIS IR** för att skapa en ny på ADF-portalen. När du har skapat kan du gå tillbaka till den här sidan och välja nya Azure-SSIS IR.
-   - Om du väljer din befintliga Azure-prenumeration som saknar ADF, väljer du knappen **skapa SSIS IR** för att starta **guiden skapa integration runtime** . I guiden kan du ange den angivna platsen och prefixet för att vi automatiskt ska skapa en ny Azure-resurs grupp, Data Factory och SSIS IR för din räkning, med namnet i följande mönster: **YourPrefix-RG/DF/IR-YourCreationTime** . När du har skapat kan du gå tillbaka till den här sidan och välja den nya ADF-filen och Azure-SSIS IR.
+   - Om du väljer din befintliga Azure-prenumeration som saknar ADF, väljer du knappen **skapa SSIS IR** för att starta **guiden skapa integration runtime**. I guiden kan du ange den angivna platsen och prefixet för att vi automatiskt ska skapa en ny Azure-resurs grupp, Data Factory och SSIS IR för din räkning, med namnet i följande mönster: **YourPrefix-RG/DF/IR-YourCreationTime**. När du har skapat kan du gå tillbaka till den här sidan och välja den nya ADF-filen och Azure-SSIS IR.
 
    ![Välj SSIS IR i ADF](media/how-to-invoke-ssis-package-ssdt/ssis-in-adf-connection-wizard2.png)
 
@@ -109,7 +109,7 @@ När du är säker på att vissa potentiella problem med molnet inte är tilläm
 
    ![Inställningar för undervisning av utvärderings regel](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-assessment-rule-suppression-settings.png)
 
--  Du kan också högerklicka på noden projekt i Solution Explorer fönstret i SSDT för att popup-menyn. Välj det **Azure-aktiverade Settings-** objektet i **SSIS i Azure Data Factory** -undermenyn för att visa ett fönster som innehåller dina projekt egenskaps sidor. Välj egenskapen för **ignorerade bedömnings regel-ID: n** i avsnittet **Azure-aktiverade inställningar** . Välj slutligen knappen med tre punkter ( **...** ) för att visa fönstret för att visa **undervisnings inställningar för utvärderings regel** där du kan välja vilka bedömnings regler som ska undertryckas.
+-  Du kan också högerklicka på noden projekt i Solution Explorer fönstret i SSDT för att popup-menyn. Välj det **Azure-aktiverade Settings-** objektet i **SSIS i Azure Data Factory** -undermenyn för att visa ett fönster som innehåller dina projekt egenskaps sidor. Välj egenskapen för **ignorerade bedömnings regel-ID: n** i avsnittet **Azure-aktiverade inställningar** . Välj slutligen knappen med tre punkter (**...**) för att visa fönstret för att visa **undervisnings inställningar för utvärderings regel** där du kan välja vilka bedömnings regler som ska undertryckas.
 
    ![Azure-aktiverade inställningar](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-azure-enabled-setting.png)
 
@@ -125,11 +125,11 @@ Innan du kör dina paket i Azure kan du konfigurera dina Azure-aktiverade instä
 
    ![Azure-aktiverade inställningar](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-azure-enabled-setting.png)
 
-2. Markera avsnittet **Aktivera Windows-autentisering** i **Azure-aktiverade inställningar** och välj sedan **True** i list menyn. Sedan väljer du egenskapen **autentiseringsuppgifter för Windows-autentisering** och väljer sedan knappen med tre punkter ( **...** ) för att popup-fönstret **autentiseringsuppgifter för Windows-autentisering** ska visas.
+2. Markera avsnittet **Aktivera Windows-autentisering** i **Azure-aktiverade inställningar** och välj sedan **True** i list menyn. Sedan väljer du egenskapen **autentiseringsuppgifter för Windows-autentisering** och väljer sedan knappen med tre punkter (**...**) för att popup-fönstret **autentiseringsuppgifter för Windows-autentisering** ska visas.
 
    ![Aktivera Windows-autentisering](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-windows-authentication-open.png)
 
-3. Ange dina autentiseringsuppgifter för Windows-autentisering. Om du till exempel vill komma åt Azure Files kan du ange `Azure` , `YourStorageAccountName` och `YourStorageAccountKey` för **domän** , **användar namn** och **lösen ord** .
+3. Ange dina autentiseringsuppgifter för Windows-autentisering. Om du till exempel vill komma åt Azure Files kan du ange `Azure` , `YourStorageAccountName` och `YourStorageAccountKey` för **domän**, **användar namn** och **lösen ord**.
 
    ![Autentiseringsuppgifter för Windows-autentisering](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-windows-authentication-credential.png)
 
@@ -180,7 +180,7 @@ Om du Parameterisera ditt projekt/paket i projekt distributions modellen kan du 
 
    ![Anslutning till Parameterisera-källa](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-example-update-task-with-parameters.png)
 
-3. Som standard har du en befintlig VS-konfiguration för paket körningar i den lokala miljön som heter **Development** . Skapa en ny VS-konfiguration för paket körningar i moln miljön med namnet **Azure** , se [skapa en ny vs-konfiguration](/visualstudio/ide/how-to-create-and-edit-configurations?view=vs-2019), om du inte redan har gjort det.
+3. Som standard har du en befintlig VS-konfiguration för paket körningar i den lokala miljön som heter **Development**. Skapa en ny VS-konfiguration för paket körningar i moln miljön med namnet **Azure**, se [skapa en ny vs-konfiguration](/visualstudio/ide/how-to-create-and-edit-configurations), om du inte redan har gjort det.
 
 4. När du visar parametrarna för ditt paket väljer du knappen **Lägg till parametrar till konfigurationer** för att öppna fönstret **Hantera parameter värden** för ditt paket. Därefter tilldelar du olika värden för mål filens sökväg till parametern sökväg för fil **Sök** väg under **utvecklings** -och **Azure** -konfigurationerna.
 

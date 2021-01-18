@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 4/7/2020
-ms.openlocfilehash: 5566717387f6da375129a0e70c9ad825198d66b7
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 1072f915c5d8483676874422703820dc75719256
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005715"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98555754"
 ---
 # <a name="migrate-sql-server-agent-jobs-to-adf-with-ssms"></a>Migrera SQL Server Agent jobb till ADF med SSMS
 
@@ -41,7 +41,7 @@ För utvalda SQL Agent-jobb med tillämpliga jobb stegs typer i allmänhet kan *
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-Funktionen som beskrivs i den här artikeln kräver SQL Server Management Studio version 18,5 eller senare. För att få den senaste versionen av SSMS, se [Ladda ned SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15).
+Funktionen som beskrivs i den här artikeln kräver SQL Server Management Studio version 18,5 eller senare. För att få den senaste versionen av SSMS, se [Ladda ned SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms).
 
 ## <a name="migrate-ssis-jobs-to-adf"></a>Migrera SSIS-jobb till ADF
 

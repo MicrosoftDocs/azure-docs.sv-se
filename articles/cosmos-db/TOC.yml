@@ -1122,6 +1122,10 @@
           href: find-request-unit-charge-mongodb.md
         - name: Felsöka frågeprestanda
           href: mongodb-troubleshoot-query.md
+        - name: Felsök vanliga problem
+          href: mongodb-troubleshoot.md
+        - name: Förhindra fel med hastighetsbegränsning
+          href: prevent-rate-limiting-errors.md
         - name: Lagra och hantera Spring Data
           href: /azure/developer/java/spring-framework/configure-spring-data-mongodb-with-cosmos-db?context=%2fazure%2fcosmos-db%2fcontext%2fcontext
         - name: Kommandon för MongoDB-tillägg
@@ -1134,8 +1138,6 @@
           href: powershell-samples-mongodb.md
         - name: Hantera med hjälp av Azure CLI
           href: cli-samples-mongodb.md
-        - name: Felsök vanliga problem
-          href: mongodb-troubleshoot.md
     - name: Referens
       items:
         - name: REST-resursprovider

@@ -55,6 +55,8 @@
               href: ./database/security-controls-policy.md
             - name: Säkerhetsbaslinje
               href: database/security-baseline.md
+            - name: Alltid krypterad
+              href: database/always-encrypted-landing.yml
             - name: Azure Defender för SQL
               href: database/azure-defender-for-sql.md
             - name: Advanced Threat Protection
@@ -255,6 +257,8 @@
               href: database/service-tier-hyperscale.md
             - name: Vanliga frågor och svar om hyperskala
               href: database/service-tier-hyperscale-frequently-asked-questions-faq.md
+        - name: Planera och hantera kostnader
+          href: database/cost-management.md
     - name: Snabbstarter
       href: database/quickstart-content-reference-guide.md
       items:
@@ -293,14 +297,16 @@
               href: database/active-geo-replication-configure-portal.md
         - name: Säkerhet
           items:
+            - name: Always Encrypted med säkra enklaver
+              href: database/always-encrypted-enclaves-getting-started.md
             - name: Konfigurera säkerhet
               href: database/secure-database-tutorial.md
+            - name: Skapa användare med tjänsthuvudkonton
+              href: database/authentication-aad-service-principal-tutorial.md
             - name: Rotera TDE BYOK-nycklar
               href: database/transparent-data-encryption-byok-key-rotation.md
             - name: Ta bort TDE-skydd
               href: database/transparent-data-encryption-byok-remove-tde-protector.md
-            - name: Skapa användare med tjänsthuvudkonton
-              href: database/authentication-aad-service-principal-tutorial.md
         - name: Flytta data
           items:
             - name: Migrera med DMS
@@ -371,6 +377,19 @@
               href: database/sql-data-sync-troubleshoot.md
         - name: Säkerhet
           items:
+            - name: Alltid krypterad
+              href: database/always-encrypted-landing.yml
+            - name: Always Encrypted med säkra enklaver
+              href: database/always-encrypted-with-secure-enclaves-landing.yml
+              items:
+                - name: Konfigurera och använda Always Encrypted med säkra enklaver >
+                  href: /sql/relational-databases/security/encryption/configure-always-encrypted-enclaves
+                - name: Planera för Intel SGX-enklaver och attestering
+                  href: database/always-encrypted-enclaves-plan.md
+                - name: Aktivera Intel SGX
+                  href: database/always-encrypted-enclaves-enable-sgx.md
+                - name: Konfigurera Azure Attestation
+                  href: database/always-encrypted-enclaves-configure-attestation.md
             - name: Azure SQL-granskning
               href: database/auditing-overview.md
             - name: Format för granskningsloggar
@@ -922,10 +941,12 @@
               href: /sql/relational-databases/database-mail/database-mail?toc=%2fazure%2fazure-sql%2ftoc.json
         - name: Säkerhet
           items:
-            - name: Säkra offentliga slutpunkter
-              href: managed-instance/public-endpoint-overview.md
+            - name: Alltid krypterad
+              href: database/always-encrypted-landing.yml
             - name: Granskning
               href: managed-instance/auditing-configure.md
+            - name: Säkra offentliga slutpunkter
+              href: managed-instance/public-endpoint-overview.md
             - name: Serverförtroendegrupper
               href: managed-instance/server-trust-group-overview.md
     - name: Gör så här för att

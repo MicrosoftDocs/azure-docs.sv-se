@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: 9fe1b7a077142b00aaf2a8502faa0e166c4311c4
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 219f8728eb90101e7437cbb82b44a1f7124ef14d
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97915631"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98556434"
 ---
 # <a name="secure-and-isolate-azure-hdinsight-clusters-with-private-link-preview"></a>Skydda och isolera Azure HDInsight-kluster med privat länk (förhands granskning)
 
@@ -60,7 +60,7 @@ Standard belastnings utjämning ger inte automatiskt den [offentliga utgående N
 
 ### <a name="prepare-your-environment"></a>Förbered din miljö
 
-För att successgfull ska kunna skapas måste du uttryckligen [inaktivera nätverks principer för tjänsten för privata länkar](../private-link/disable-private-link-service-network-policy.md).
+För att det ska gå att skapa privata länk tjänster måste du uttryckligen [inaktivera nätverks principer för tjänsten för privata länkar](../private-link/disable-private-link-service-network-policy.md).
 
 Följande diagram visar ett exempel på den nätverks konfiguration som krävs innan du skapar ett kluster. I det här exemplet [tvingas](../firewall/forced-tunneling.md) all utgående trafik till Azure-brandväggen med hjälp av UDR och de nödvändiga utgående beroendena ska vara "tillåtna" i brand väggen innan ett kluster skapas. För Enterprise Security Package kluster kan nätverks anslutningen till Azure Active Directory Domain Services tillhandahållas av VNet-peering.
 
@@ -100,12 +100,12 @@ networkProperties: {
 
 En fullständig mall med många av säkerhets funktionerna för HDInsight-företag, inklusive privat länk, finns i [säkerhets mal len för HDInsight Enterprise](https://github.com/Azure-Samples/hdinsight-enterprise-security/tree/main/ESP-HIB-PL-Template).
 
-### <a name="use-azure-powershell"></a>Använd Azure Powershell
+### <a name="use-azure-powershell"></a>Använda Azure PowerShell
 
-Om du vill använda PowerShell ser du exemplet [här](/powershell/module/az.hdinsight/new-azhdinsightcluster?view=azps-5.1.0#example-4--create-an-azure-hdinsight-cluster-with-relay-outbound-and-private-link-feature).
+Om du vill använda PowerShell, se exemplet [här](/powershell/module/az.hdinsight/new-azhdinsightcluster#example-4--create-an-azure-hdinsight-cluster-with-relay-outbound-and-private-link-feature).
 
 ### <a name="use-azure-cli"></a>Använda Azure CLI
-Information om hur du använder Azure CLI finns i exemplet [här](/cli/azure/hdinsight?view=azure-cli-latest#az_hdinsight_create-examples).
+Information om hur du använder Azure CLI finns i exemplet [här](/cli/azure/hdinsight#az_hdinsight_create-examples).
 
 ## <a name="next-steps"></a>Nästa steg
 

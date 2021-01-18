@@ -12,12 +12,12 @@ ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 11/19/2020
-ms.openlocfilehash: 82cc58d46061ec7b623d062ab0b0e5a1fdae7ddd
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: bde8bc11a959bea4bd2c05c5ae75db81192aad6a
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96352226"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98555873"
 ---
 # <a name="configure-a-self-hosted-ir-as-a-proxy-for-an-azure-ssis-ir-in-azure-data-factory"></a>Konfigurera en egen värd-IR som en proxy för en Azure-SSIS IR i Azure Data Factory
 
@@ -54,7 +54,7 @@ Slutligen kan du hämta och installera den senaste versionen av den lokala IR-ve
 
 ### <a name="enable-windows-authentication-for-on-premises-staging-tasks"></a>Aktivera Windows-autentisering för lokala mellanlagrings uppgifter
 
-Om lokala mellanlagrings uppgifter på din egen värd-IR kräver Windows-autentisering [konfigurerar du SSIS-paketen så att de använder samma Windows-autentisering](/sql/integration-services/lift-shift/ssis-azure-connect-with-windows-auth?view=sql-server-ver15). 
+Om lokala mellanlagrings uppgifter på din egen värd-IR kräver Windows-autentisering [konfigurerar du SSIS-paketen så att de använder samma Windows-autentisering](/sql/integration-services/lift-shift/ssis-azure-connect-with-windows-auth). 
 
 Dina lokala mellanlagrings uppgifter kommer att anropas med det lokala IR-tjänstkontot (*NT SERVICE\DIAHostService*, som standard) och dina data lager kommer att få åtkomst till Windows Authentication-kontot. Båda kontona kräver att vissa säkerhets principer tilldelas till dem. På den lokala IR-datorn går du till lokala **säkerhets principer**  >  **lokala principer**  >  **tilldelning av användar rättigheter** och gör sedan följande:
 
@@ -70,7 +70,7 @@ Om du inte redan har gjort det skapar du en länkad Azure Blob Storage-tjänst i
 - För **autentiseringsmetod** väljer du **konto nyckel**, **SAS-URI**, **tjänstens huvud namn** eller **hanterad identitet**.  
 
 >[!TIP]
->Om du väljer **tjänstens huvud namns** metod ger du tjänstens huvud namn minst en roll för *Storage BLOB data Contributor* . Mer information finns i [Azure Blob Storage Connector](connector-azure-blob-storage.md#linked-service-properties). Om du väljer metoden för **hanterad identitet** ger du rätt roller för din ADM-hanterade identitet för att få åtkomst till Azure Blob Storage. Mer information finns i [komma åt Azure-Blob Storage att använda Azure Active Directory autentisering med ADM-hanterad identitet](/sql/integration-services/connection-manager/azure-storage-connection-manager?view=sql-server-ver15#managed-identities-for-azure-resources-authentication).
+>Om du väljer **tjänstens huvud namns** metod ger du tjänstens huvud namn minst en roll för *Storage BLOB data Contributor* . Mer information finns i [Azure Blob Storage Connector](connector-azure-blob-storage.md#linked-service-properties). Om du väljer metoden för **hanterad identitet** ger du rätt roller för din ADM-hanterade identitet för att få åtkomst till Azure Blob Storage. Mer information finns i [komma åt Azure-Blob Storage att använda Azure Active Directory autentisering med ADM-hanterad identitet](/sql/integration-services/connection-manager/azure-storage-connection-manager#managed-identities-for-azure-resources-authentication).
 
 ![Förbereda Azure Blob Storage-länkad tjänst för mellanlagring](media/self-hosted-integration-runtime-proxy-ssis/shir-azure-blob-storage-linked-service.png)
 
@@ -132,7 +132,7 @@ Start-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
 
 Genom att använda de senaste SSDT som antingen SSIS-projektets tillägg för Visual Studio eller ett fristående installations program kan du hitta en ny `ConnectByProxy` egenskap som har lagts till i anslutnings hanteraren för data flödes komponenter som stöds.
 * [Ladda ned SSIS Projects-tillägget för Visual Studio](https://marketplace.visualstudio.com/items?itemName=SSIS.SqlServerIntegrationServicesProjects)
-* [Hämta det fristående installations programmet](/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017#ssdt-for-vs-2017-standalone-installer)   
+* [Hämta det fristående installations programmet](/sql/ssdt/download-sql-server-data-tools-ssdt#ssdt-for-vs-2017-standalone-installer)   
 
 När du skapar nya paket som innehåller data flödes aktiviteter med komponenter som ansluter till data lokalt, kan du aktivera den här egenskapen genom att ange den som *True* i rutan **Egenskaper** för relevanta anslutnings hanterare.
 

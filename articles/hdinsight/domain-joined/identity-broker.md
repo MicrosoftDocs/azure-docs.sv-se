@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 11/03/2020
-ms.openlocfilehash: c6bc5ca748a35b17c61d314e96f7284d30e7fc3b
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: b8dfe9a23e5c6697323142212156006cb65d2f9b
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96338137"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98556536"
 ---
 # <a name="azure-hdinsight-id-broker-hib"></a>Azure HDInsight ID Broker (HIB)
 
@@ -126,9 +126,9 @@ Information om hur du felsöker problem med autentisering finns i [den här guid
 
 I HDInsight ID Broker-installationen kan anpassade appar och klienter som ansluter till gatewayen uppdateras för att först hämta den begärda OAuth-token. Följ stegen i [det här dokumentet](../../storage/common/storage-auth-aad-app.md) för att hämta token med följande information:
 
-*   URI för OAuth-resurs: `https://hib.azurehdinsight.net` 
+*    URI för OAuth-resurs: `https://hib.azurehdinsight.net` 
 *   AppId: 7865c1d2-f040-46cc-875f-831a1ef6a28a
-*   Behörighet: (namn: cluster. ReadWrite, ID: 8f89faa0-ffef-4007-974d-4989b39ad77d)
+*    Behörighet: (namn: cluster. ReadWrite, ID: 8f89faa0-ffef-4007-974d-4989b39ad77d)
 
 När du har skaffat OAuth-token använder du den i Authorization-huvudet för HTTP-begäran till kluster-gatewayen (till exempel https:// <clustername> -int.azurehdinsight.net). Ett exempel på en spiral-kommando till Apache livy-API: t kan se ut så här:
     
@@ -138,7 +138,7 @@ curl -k -v -H "Authorization: Bearer Access_TOKEN" -H "Content-Type: application
 
 För att använda Beeline och livy kan du även följa de exempel koder som anges [här](https://github.com/Azure-Samples/hdinsight-enterprise-security/tree/main/HIB/HIBSamples) för att konfigurera klienten att använda OAuth och ansluta till klustret.
 
-## <a name="faq"></a>VANLIGA FRÅGOR OCH SVAR
+## <a name="faq"></a>Vanliga frågor
 ### <a name="what-app-is-created-by-hdinsight-in-aad"></a>Vilken app skapas av HDInsight i AAD?
 För varje kluster registreras ett program från tredje part i AAD med kluster-URI som identifierar (t `https://clustername.azurehdinsight.net` . ex.).
 
@@ -146,7 +146,7 @@ För varje kluster registreras ett program från tredje part i AAD med kluster-U
 I AAD krävs medgivande för alla program från tredje part innan det kan autentisera användare eller komma åt data.
 
 ### <a name="can-the-consent-be-approved-programatically"></a>Kan medgivande godkännas program mässigt?
-Microsoft Graph API gör att du kan automatisera medgivande, se [API-dokumentationen](/graph/api/resources/oauth2permissiongrant?view=graph-rest-1.0) som sekvensen för att automatisera godkännandet är:
+Microsoft Graph API gör att du kan automatisera medgivande, se [API-dokumentationen](/graph/api/resources/oauth2permissiongrant) som sekvensen för att automatisera godkännandet är:
 
 * Registrera en app och bevilja Application. ReadWrite. alla behörigheter till appen för att få åtkomst till Microsoft Graph
 * Efter att ett kluster har skapats frågar du efter kluster appen baserat på ID-URI: n

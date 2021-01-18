@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/13/2020
-ms.openlocfilehash: 35d2073dca21b4a0d48a43bed9933bb7549cf8f3
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: d1325ac1afbca8b30cc640f1f22cb598506a5c91
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96497902"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98555720"
 ---
 # <a name="monitor-and-alert-data-factory-by-using-azure-monitor"></a>Övervaka och varna Data Factory med Azure Monitor
 
@@ -583,7 +583,7 @@ Här följer SSIS för IR-åtgärder för start/stopp/underhåll.
 
 #### <a name="ssis-event-message-context-log-attributes"></a>SSIS för händelse meddelandets kontext
 
-Här är de loggnings attributen för villkor som rör händelse meddelanden som genereras av SSIS-paket körningar på din SSIS IR. De förmedlar liknande information som [SSIS-katalog (SSISDB) händelse meddelande kontext tabell eller vy](/sql/integration-services/system-views/catalog-event-message-context?view=sql-server-ver15) som visar körnings värden för många SSIS-paket egenskaper. De genereras när du väljer `Basic/Verbose` loggnings nivå och användbart för fel sökning/kompatibilitetskontroll.
+Här är de loggnings attributen för villkor som rör händelse meddelanden som genereras av SSIS-paket körningar på din SSIS IR. De förmedlar liknande information som [SSIS-katalog (SSISDB) händelse meddelande kontext tabell eller vy](/sql/integration-services/system-views/catalog-event-message-context) som visar körnings värden för många SSIS-paket egenskaper. De genereras när du väljer `Basic/Verbose` loggnings nivå och användbart för fel sökning/kompatibilitetskontroll.
 
 ```json
 {
@@ -620,7 +620,7 @@ Här är de loggnings attributen för villkor som rör händelse meddelanden som
 | **operationId**            | Sträng | Unikt ID för att spåra en viss åtgärd i SSISDB          | `1` (1 betyder åtgärder relaterade till paket som **inte** lagras i SSISDB/anropas via T-SQL) |
 | **contextDepth**           | Sträng | Djupet i händelse meddelande kontexten                              | `0` (0 anger kontexten innan paket körningen börjar, 1 anger kontexten när ett fel inträffar, och det ökar när kontexten är ytterligare från felet) |
 | **packagePath**            | Sträng | Sökvägen till paket objekt som händelse meddelandets kontext källa      | `\Package` |
-| **contextType**            | Sträng | Typ av paket objekt som kontext källa för händelse meddelande      | `60`(se [fler kontext typer](/sql/integration-services/system-views/catalog-event-message-context?view=sql-server-ver15#remarks)) |
+| **contextType**            | Sträng | Typ av paket objekt som kontext källa för händelse meddelande      | `60`(se [fler kontext typer](/sql/integration-services/system-views/catalog-event-message-context#remarks)) |
 | **contextSourceName**      | Sträng | Namnet på paket objekt som kontext källa för händelse meddelande      | `MyPackage` |
 | **contextSourceId**        | Sträng | Unikt ID för paket objekt som kontext källa för händelse meddelande | `{E2CF27FB-EA48-41E9-AF6F-3FE938B4ADE1}` |
 | **Namn**           | Sträng | Namnet på paket egenskapen för händelse meddelandets kontext källa   | `DelayValidation` |
@@ -629,7 +629,7 @@ Här är de loggnings attributen för villkor som rör händelse meddelanden som
 
 #### <a name="ssis-event-messages-log-attributes"></a>SSIS Event Messages log attribut
 
-Här är de logg-attribut för händelse meddelanden som genereras av SSIS-paket körningar på din SSIS IR. De förmedlar liknande information som [SSISDB händelse meddelande tabell eller vy](/sql/integration-services/system-views/catalog-event-messages?view=sql-server-ver15) som visar detaljerad text/metadata för händelse meddelanden. De genereras på alla loggnings nivåer utom `None` .
+Här är de logg-attribut för händelse meddelanden som genereras av SSIS-paket körningar på din SSIS IR. De förmedlar liknande information som [SSISDB händelse meddelande tabell eller vy](/sql/integration-services/system-views/catalog-event-messages) som visar detaljerad text/metadata för händelse meddelanden. De genereras på alla loggnings nivåer utom `None` .
 
 ```json
 {
@@ -669,8 +669,8 @@ Här är de logg-attribut för händelse meddelanden som genereras av SSIS-paket
 | **nivå**                  | Sträng | Nivån för diagnostikloggar                                       | `Informational` |
 | **operationId**            | Sträng | Unikt ID för att spåra en viss åtgärd i SSISDB        | `1` (1 betyder åtgärder relaterade till paket som **inte** lagras i SSISDB/anropas via T-SQL) |
 | **messageTime**            | Sträng | Tiden då ditt händelse meddelande skapas i UTC-format          | `2017-06-28T21:00:27.3534352Z` |
-| **messageType**            | Sträng | Typ av händelse meddelande                                     | `70`(se [fler meddelande typer](/sql/integration-services/system-views/catalog-operation-messages-ssisdb-database?view=sql-server-ver15#remarks)) |
-| **messageSourceType**      | Sträng | Typ av händelse meddelande källa                              | `20`(se [fler typer av meddelande källor](/sql/integration-services/system-views/catalog-operation-messages-ssisdb-database?view=sql-server-ver15#remarks)) |
+| **messageType**            | Sträng | Typ av händelse meddelande                                     | `70`(se [fler meddelande typer](/sql/integration-services/system-views/catalog-operation-messages-ssisdb-database#remarks)) |
+| **messageSourceType**      | Sträng | Typ av händelse meddelande källa                              | `20`(se [fler typer av meddelande källor](/sql/integration-services/system-views/catalog-operation-messages-ssisdb-database#remarks)) |
 | **meddelande**                | Sträng | Texten för ditt händelse meddelande                                     | `MyPackage:Validation has started.` |
 | **packageName**            | Sträng | Namnet på den körda paket filen                             | `MyPackage.dtsx` |
 | **eventName**              | Sträng | Namnet på relaterad körnings händelse                                 | `OnPreValidate` |
@@ -683,7 +683,7 @@ Här är de logg-attribut för händelse meddelanden som genereras av SSIS-paket
 
 #### <a name="ssis-executable-statistics-log-attributes"></a>SSIS körbar statistik logg attribut
 
-Här är de loggfiler för körbar statistik som genereras av SSIS-paket körningar på din SSIS IR, där körbara filer är behållare eller uppgifter i paketets kontroll flöde. De förmedlar liknande information som [SSISDB-körbara statistik tabell eller vy](/sql/integration-services/system-views/catalog-executable-statistics?view=sql-server-ver15) som visar en rad för varje körbar fil som körs, inklusive dess iterationer. De genereras på loggnings nivå förutom `None` och är användbara för att identifiera Flask halsar/haverier på uppgifts nivå.
+Här är de loggfiler för körbar statistik som genereras av SSIS-paket körningar på din SSIS IR, där körbara filer är behållare eller uppgifter i paketets kontroll flöde. De förmedlar liknande information som [SSISDB-körbara statistik tabell eller vy](/sql/integration-services/system-views/catalog-executable-statistics) som visar en rad för varje körbar fil som körs, inklusive dess iterationer. De genereras på loggnings nivå förutom `None` och är användbara för att identifiera Flask halsar/haverier på uppgifts nivå.
 
 ```json
 {
@@ -719,7 +719,7 @@ Här är de loggfiler för körbar statistik som genereras av SSIS-paket körnin
 | **executionId frågeparameter**            | Sträng | Unikt ID för att spåra en viss körning i SSISDB      | `1` (1 indikerar körningar relaterade till paket som **inte** lagras i SSISDB/som anropas via T-SQL) |
 | **executionPath**          | Sträng | Den fullständiga sökvägen från det överordnade paketet till komponenten som körs          | `\Transformation\Data Flow Task` (Den här sökvägen fångar även komponent iterationer) |
 | **/St**              | Sträng | Tiden då den körbara filen går in i UTC-format  | `2017-06-28T21:00:27.3534352Z` |
-| **endTime**                | Sträng | Tiden då den körbara filen anges efter körning i UTC-format | `2017-06-28T21:00:27.3534352Z` |
+| **Slut**                | Sträng | Tiden då den körbara filen anges efter körning i UTC-format | `2017-06-28T21:00:27.3534352Z` |
 | **executionDuration**      | Sträng | Körnings tiden för den körbara filen i millisekunder                   | `1,125` |
 | **executionResult**        | Sträng | Resultatet av att köra körbara filer                                 | `0` (0 betyder att det går att slutföra, 1 betyder att det är slut, 2 betyder slut för ande och 3 anger att annulleringen ska avbrytas) |
 | **executionValue**         | Sträng | Det användardefinierade värdet som returnerades genom att köra körbar fil            | `1` |
@@ -727,7 +727,7 @@ Här är de loggfiler för körbar statistik som genereras av SSIS-paket körnin
 
 #### <a name="ssis-execution-component-phases-log-attributes"></a>SSIS för komponent faser för körning
 
-Här följer logg attributen för körnings statistik för data flödes komponenter som genereras av SSIS-paket körningar på din SSIS IR. De förmedlar liknande information som [SSISDB i faser eller vyer för körnings komponenter](/sql/integration-services/system-views/catalog-execution-component-phases?view=sql-server-ver15) som visar den tid som data flödes komponenterna ägnat i alla körnings faser. De genereras när du väljer `Performance/Verbose` loggnings nivå och användbart för att hämta statistik för körning av data flöden.
+Här följer logg attributen för körnings statistik för data flödes komponenter som genereras av SSIS-paket körningar på din SSIS IR. De förmedlar liknande information som [SSISDB i faser eller vyer för körnings komponenter](/sql/integration-services/system-views/catalog-execution-component-phases) som visar den tid som data flödes komponenterna ägnat i alla körnings faser. De genereras när du väljer `Performance/Verbose` loggnings nivå och användbart för att hämta statistik för körning av data flöden.
 
 ```json
 {
@@ -767,13 +767,13 @@ Här följer logg attributen för körnings statistik för data flödes komponen
 | **subcomponentName**       | Sträng | Namnet på data flödes komponenten                                     | `Derived Column` |
 | **fasa**                  | Sträng | Körnings fasens namn                                         | `AcquireConnections` |
 | **/St**              | Sträng | Tiden då körnings fasen startar i UTC-format                  | `2017-06-28T21:00:27.3534352Z` |
-| **endTime**                | Sträng | Tiden då körnings fasen slutar i UTC-format                    | `2017-06-28T21:00:27.3534352Z` |
+| **Slut**                | Sträng | Tiden då körnings fasen slutar i UTC-format                    | `2017-06-28T21:00:27.3534352Z` |
 | **executionPath**          | Sträng | Sökväg för körning av data flödes uppgift                            | `\Transformation\Data Flow Task` |
 | **resourceId**             | Sträng | Unikt ID för din ADF-resurs                                  | `/SUBSCRIPTIONS/<subscriptionID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
 
 #### <a name="ssis-execution-data-statistics-log-attributes"></a>SSIS för körnings data statistik
 
-Här följer de Säkerhetsattributen för data förflyttningar genom varje steg i pipeline för data flöden, från överordnade till efterföljande komponenter, som genereras av SSIS-paket körningar på din SSIS IR. De förmedlar liknande information som [SSISDB för körnings data statistik eller vy](/sql/integration-services/system-views/catalog-execution-data-statistics?view=sql-server-ver15) som visar rad antal data som flyttats genom data flödes aktiviteter. De genereras när du väljer `Verbose` loggnings nivå och användbart för data flödes data flöde.
+Här följer de Säkerhetsattributen för data förflyttningar genom varje steg i pipeline för data flöden, från överordnade till efterföljande komponenter, som genereras av SSIS-paket körningar på din SSIS IR. De förmedlar liknande information som [SSISDB för körnings data statistik eller vy](/sql/integration-services/system-views/catalog-execution-data-statistics) som visar rad antal data som flyttats genom data flödes aktiviteter. De genereras när du väljer `Verbose` loggnings nivå och användbart för data flödes data flöde.
 
 ```json
 {
@@ -834,7 +834,7 @@ Log Analytics ärver schemat från övervakaren med följande undantag:
     | $. Properties. UserProperties | UserProperties | Dynamisk |
     | $. Properties. Anteckningar | Anteckningar | Dynamisk |
     | $. Properties. Inleveranstransport | Indata | Dynamisk |
-    | $. Properties. Utdataparametrar | Resultat | Dynamisk |
+    | $. Properties. Utdataparametrar | Utdata | Dynamisk |
     | $. Properties. Fel. felkod | Felkod | int |
     | $. Properties. Fel. meddelande | ErrorMessage | sträng |
     | $. Properties. Fels | Fel | Dynamisk |

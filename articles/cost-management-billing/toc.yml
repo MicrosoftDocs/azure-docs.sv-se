@@ -188,16 +188,6 @@
               href: manage/pay-by-invoice.md
             - name: Skapa ytterligare prenumerationer
               href: manage/create-subscription.md
-            - name: Skapa EA-prenumerationer programmässigt
-              href: manage/programmatically-create-subscription-enterprise-agreement.md
-            - name: Skapa MCA-prenumerationer programmässigt
-              href: manage/programmatically-create-subscription-microsoft-customer-agreement.md
-            - name: Skapa MPA-prenumerationer programmässigt
-              href: manage/programmatically-create-subscription-microsoft-partner-agreement.md
-            - name: Skapa prenumerationer – ARM-mall
-              href: manage/create-subscription-template.md
-            - name: Skapa prenumerationer programmässigt – förhandsversion
-              href: manage/programmatically-create-subscription-preview.md
             - name: Bevilja åtkomst för att skapa EA-prenumerationer
               href: manage/grant-access-to-create-subscription.md
             - name: Exportera prenumerationsinformation
@@ -214,6 +204,20 @@
               href: manage/transfer-subscriptions-subscribers-csp.md
             - name: Avbryt prenumerationen
               href: manage/cancel-azure-subscription.md
+        - name: Skapa prenumerationer programmässigt
+          items:
+            - name: Skapa prenumerationer programmässigt
+              href: manage/programmatically-create-subscription.md
+            - name: Skapa EA-prenumerationer programmässigt
+              href: manage/programmatically-create-subscription-enterprise-agreement.md
+            - name: Skapa MCA-prenumerationer programmässigt
+              href: manage/programmatically-create-subscription-microsoft-customer-agreement.md
+            - name: Skapa MPA-prenumerationer programmässigt
+              href: manage/programmatically-create-subscription-microsoft-partner-agreement.md
+            - name: Skapa prenumerationer – ARM-mall
+              href: manage/create-subscription-template.md
+            - name: 'Skapa prenumerationer programmässigt – förhandsversions-API:er'
+              href: manage/programmatically-create-subscription-preview.md
         - name: Hantera Enterprise-avtalsprenumerationer
           items:
             - name: EA-roller i Azure

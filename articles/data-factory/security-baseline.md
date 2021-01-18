@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 4e82b4adbfde7623de9497c94e56a9ae303131ad
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: ff777f079116942eba32e49f359c7f7e0b99f65d
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202784"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98555788"
 ---
 # <a name="azure-security-baseline-for-azure-data-factory"></a>Azures säkerhets bas linje för Azure Data Factory
 
@@ -335,9 +335,9 @@ På klient nivå har Azure Active Directory (AD) Dessutom inbyggda roller som m�
 
 * [Information om Privileged Identity Manager](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-* [Så här hämtar du en katalog roll i Azure AD med PowerShell](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+* [Så här hämtar du en katalog roll i Azure AD med PowerShell](/powershell/module/azuread/get-azureaddirectoryrole)
 
-* [Så här hämtar du medlemmar i en katalog roll i Azure AD med PowerShell](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+* [Så här hämtar du medlemmar i en katalog roll i Azure AD med PowerShell](/powershell/module/azuread/get-azureaddirectoryrolemember)
 
 * [Information för lokala konton](../active-directory/devices/assign-local-admin.md#manage-the-device-administrator-role)
 
@@ -744,7 +744,7 @@ När Security Center identifierar sårbarheter visar den resultat och relaterad 
 
 * [Så här skapar du frågor med Azure Resource Graph](../governance/resource-graph/first-query-portal.md)
 
-* [Så här visar du dina Azure-prenumerationer](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+* [Så här visar du dina Azure-prenumerationer](/powershell/module/az.accounts/get-azsubscription)
 
 * [Förstå Azure RBAC](../role-based-access-control/overview.md)
 
@@ -880,7 +880,7 @@ Observera att detta endast gäller om din Integration Runtime körs på en virtu
 
 **Vägledning**: om du kör din körnings integration på en virtuell Azure-dator, beroende på typen av skript, kan du använda konfigurationer för operativ system eller resurser från tredje part för att begränsa användarnas möjlighet att köra skript i Azure Compute-resurser. Du kan också använda Azure Security Center adaptiva program kontroller för att säkerställa att endast auktoriserade program körs och all obehörig program vara blockeras från att köras på Azure Virtual Machines.
 
-* [Så här styr du körning av PowerShell-skript i Windows-miljöer](/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)
+* [Så här styr du körning av PowerShell-skript i Windows-miljöer](/powershell/module/microsoft.powershell.security/set-executionpolicy)
 
 * [Använda Azure Security Center adaptiva program kontroller](../security-center/security-center-adaptive-application.md)
 
@@ -918,7 +918,7 @@ Observera att detta endast gäller om din Integration Runtime körs på en virtu
 
 **Vägledning**: definiera och implementera standardinställda säkerhetskonfigurationer för Azure Data Factory med Azure policy. Använd Azure Policy alias i namn området "Microsoft. DataFactory" om du vill skapa anpassade principer för granskning eller tillämpa konfigurationen för dina Azure Data Factory-instanser.
 
-* [Visa tillgängliga Azure Policy alias](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+* [Visa tillgängliga Azure Policy alias](/powershell/module/az.resources/get-azpolicyalias)
 
 * [Konfigurera och hantera Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -964,7 +964,7 @@ I de flesta fall kan de virtuella bas-VM-mallarna tillsammans med Azure Automati
 
 * [Information om hur du skapar Azure Resource Manager mallar](../virtual-machines/windows/ps-template.md)
 
-* [Ladda upp en anpassad virtuell hård disk till Azure](/azure-stack/operator/azure-stack-add-vm-image?view=azs-1910)
+* [Ladda upp en anpassad virtuell hård disk till Azure](/azure-stack/operator/azure-stack-add-vm-image)
 
 **Azure Security Center-övervakning**: Ja
 
@@ -974,9 +974,9 @@ I de flesta fall kan de virtuella bas-VM-mallarna tillsammans med Azure Automati
 
 **Vägledning**: om du använder anpassade Azure policys definitioner använder du Azure DevOps eller Azure databaser för att lagra och hantera din kod på ett säkert sätt.
 
-* [Så här lagrar du kod i Azure DevOps](/azure/devops/repos/git/gitworkflow?view=azure-devops)
+* [Så här lagrar du kod i Azure DevOps](/azure/devops/repos/git/gitworkflow)
 
-* [Dokumentation om Azure databaser](/azure/devops/repos/index?view=azure-devops)
+* [Dokumentation om Azure databaser](/azure/devops/repos/index)
 
 **Övervakning i Azure Security Center**: Ej tillämpligt
 
@@ -1150,7 +1150,7 @@ För alla dina data lager kan du se den här tjänstens säkerhets bas linje fö
 
 * [En översikt över säkerhets kopiering av virtuella Azure-datorer](../backup/backup-azure-vms-introduction.md)
 
-* [Så här säkerhetskopierar du nyckel valv nycklar i Azure](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
+* [Så här säkerhetskopierar du nyckel valv nycklar i Azure](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
 
 **Azure Security Center-övervakning**: Ja
 
@@ -1164,7 +1164,7 @@ Information om hur du verifierar säkerhets kopior finns i tjänstens säkerhets
 
 * [Återställa filer från säkerhets kopiering av virtuella Azure-datorer](../backup/backup-azure-restore-files-from-vm.md)
 
-* [Återställa Key Vault-nycklar i Azure](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+* [Återställa Key Vault-nycklar i Azure](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey)
 
 **Övervakning i Azure Security Center**: Ej tillämpligt
 

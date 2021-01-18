@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 10/02/2020
-ms.openlocfilehash: 15708e35fa27bb4a1f72368df6f49ff747eb799b
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 36781e7f975ee9d4a03cf899650701bf2d3940ac
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97739798"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98555958"
 ---
 # <a name="register-and-scan-an-azure-sql-database"></a>Registrera och skanna en Azure SQL Database
 
@@ -28,7 +28,7 @@ Den Azure SQL Database data källan har stöd för följande funktioner:
 
 ### <a name="known-limitations"></a>Kända begränsningar
 
-Azure avdelningens kontroll stöder inte genomsökning av [vyer](https://docs.microsoft.com/sql/relational-databases/views/views?view=sql-server-ver15&preserve-view=true) i Azure SQL Database. 
+Azure avdelningens kontroll stöder inte genomsökning av [vyer](/sql/relational-databases/views/views?view=azuresqldb-current&preserve-view=true) i Azure SQL Database.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -50,7 +50,7 @@ Autentisering för att genomsöka Azure SQL Database. Om du behöver skapa en ny
 > [!Note]
 > Endast huvud inloggningen på server nivå (som skapats av etablerings processen) eller medlemmar i `loginmanager` databas rollen i huvud databasen kan skapa nya inloggningar. Det tar ungefär **15 minuter** efter att ha beviljat behörighet, avdelningens kontroll-kontot måste ha rätt behörighet för att kunna söka igenom resurserna.
 
-Du kan följa anvisningarna i [Skapa inloggning](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-current&preserve-view=true#examples-1) för att skapa en inloggning för Azure SQL Database om du inte har detta tillgängligt. Du måste ha **användar namn** och **lösen ord** för att kunna utföra nästa steg.
+Du kan följa anvisningarna i [Skapa inloggning](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-current&preserve-view=true#examples-1) för att skapa en inloggning för Azure SQL Database om du inte har detta tillgängligt. Du måste ha **användar namn** och **lösen ord** för att kunna utföra nästa steg.
 
 1. Navigera till ditt nyckel valv i Azure Portal
 1. Välj **inställningar > hemligheter**
@@ -100,7 +100,7 @@ Tjänstens huvud namn eller hanterade identitet måste ha behörighet att hämta
     ```
 
     > [!Note]
-    > `Username`Är ditt eget tjänst huvud namn eller din avdelningens kontroll-hanterade identitet. Du kan läsa mer om [fasta databas roller och deras funktioner](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/database-level-roles?view=sql-server-ver15&preserve-view=true#fixed-database-roles).
+    > `Username`Är ditt eget tjänst huvud namn eller din avdelningens kontroll-hanterade identitet. Du kan läsa mer om [fasta databas roller och deras funktioner](/sql/relational-databases/security/authentication-access/database-level-roles?view=sql-server-ver15&preserve-view=true#fixed-database-roles).
     
 ##### <a name="add-service-principal-to-key-vault-and-purviews-credential"></a>Lägg till tjänstens huvud namn i Key Vault och avdelningens kontroll autentiseringsuppgift
 

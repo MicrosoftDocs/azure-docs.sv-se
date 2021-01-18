@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.custom: devx-track-csharp
-ms.openlocfilehash: dd1c7c20441d12600e2101f738904caf6260509e
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 0305094d3883fa6fc3254a682f9aa6f3202c9e48
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96496032"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98555550"
 ---
 # <a name="create-monitor-and-manage-azure-data-factories-using-azure-data-factory-net-sdk"></a>Skapa, övervaka och hantera Azure-datafabriker med Azure Data Factory .NET SDK
 > [!NOTE]
@@ -27,7 +27,7 @@ ms.locfileid: "96496032"
 Du kan skapa, övervaka och hantera Azure-datafabriker via programmering med Data Factory .NET SDK. Den här artikeln innehåller en genom gång som du kan följa för att skapa ett exempel på ett .NET-konsol program som skapar och övervakar en data fabrik. 
 
 > [!NOTE]
-> Den här artikeln beskriver inte hela .NET-API:et för Data Factory. Läs [Data Factory .NET API-referens](/dotnet/api/index?view=azuremgmtdatafactories-4.12.1) för omfattande dokumentation om .net api för Data Factory. 
+> Den här artikeln beskriver inte hela .NET-API:et för Data Factory. Läs [Data Factory .NET API-referens](/dotnet/api/overview/azure/data-factory) för omfattande dokumentation om .net api för Data Factory. 
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -93,7 +93,7 @@ Skapa ett Azure Active Directory-program, skapa ett tjänstobjektnamn för progr
 9. Hämta program-ID:t.
 
     ```powershell
-    $azureAdApplication 
+    $azureAdApplication    
     ```
     Anteckna program-ID:t (applicationID) från utdata.
 
@@ -101,7 +101,7 @@ Du bör nu ha tillgång till följande fyra värden efter de här stegen:
 
 * Klientorganisations-ID
 * Prenumerations-ID:t
-* Program-ID:t
+* Program-ID
 * Lösenord (anges i det första kommandot)
 
 ## <a name="walkthrough"></a>Genomgång

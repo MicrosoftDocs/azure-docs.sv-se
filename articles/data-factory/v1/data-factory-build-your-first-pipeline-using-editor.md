@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
-ms.openlocfilehash: 360fbc3e1bfe7890f1f3b05899eb95ce7a3a72c2
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 4e19991de20b130b878a230313d87ca09d31a84e
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96496628"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98556451"
 ---
 # <a name="tutorial-build-your-first-data-factory-by-using-the-azure-portal"></a>Självstudie: skapa din första datafabrik med Azure-portalen
 > [!div class="op_single_selector"]
@@ -31,7 +31,7 @@ ms.locfileid: "96496628"
 > Den här artikeln gäller för version 1 av Azure Data Factory, som är allmänt tillgänglig. Läs [Quickstart: Create a data factory using Azure Data Factory](../quickstart-create-data-factory-dot-net.md) (Snabbstart: Skapa en datafabrik med Data Factory) om du använder den aktuella versionen av Data Factory-tjänsten.
 
 > [!WARNING]
-> JSON-redigeraren i Azure Portal för redigering & distribuerar ADF v1-pipeliner inaktive ras den 31 juli 2019. Efter 31 juli 2019 kan du fortsätta att använda [ADF v1 PowerShell-cmdlets](/powershell/module/az.datafactory/?view=azps-2.4.0&viewFallbackFrom=azps-2.3.2), [ADF v1 .NET SDK](/dotnet/api/microsoft.azure.management.datafactories.models?view=azure-dotnet), [ADF v1 REST-API: er](/rest/api/datafactory/) för att skapa & distribuera dina ADF v1-pipeliner.
+> JSON-redigeraren i Azure Portal för redigering & distribuerar ADF v1-pipeliner inaktive ras den 31 juli 2019. Efter 31 juli 2019 kan du fortsätta att använda [ADF v1 PowerShell-cmdlets](/powershell/module/az.datafactory/), [ADF v1 .NET SDK](/dotnet/api/microsoft.azure.management.datafactories.models), [ADF v1 REST-API: er](/rest/api/datafactory/) för att skapa & distribuera dina ADF v1-pipeliner.
 
 I den här artikeln får du lära dig hur du använder [Azure Portal](https://portal.azure.com/) till att skapa din första datafabrik. Om du vill gå igenom självstudien med andra verktyg/SDK:er kan du välja något av alternativen i listrutan. 
 
@@ -93,7 +93,7 @@ Gör så här för att skapa en datafabrik:
 Innan du skapar en pipeline i datafabriken måste du först skapa några Data Factory-entiteter. Först skapar du länkade tjänster som länkar datalager/databeräkningar till ditt datalager. Sedan definierar du in- och utdatauppsättningar för att representera in- och utdata i länkade datalager. Slutligen skapar du pipelinen med en aktivitet som använder dessa datauppsättningar.
 
 ## <a name="create-linked-services"></a>Skapa länkade tjänster
-I det här steget länkar du ditt Azure Storage-konto och ett HDInsight-kluster på begäran till din datafabrik. In- och utdata för pipelinen i det här exemplet lagras i lagringskontot. En länkad HDInsight-tjänst används för att köra Hive-skriptet som anges i pipeline-aktiviteten i det här exemplet. Identifiera vilka [data store](data-factory-data-movement-activities.md) / [beräknings tjänster](data-factory-compute-linked-services.md) för data lager som används i ditt scenario. Länka sedan dessa tjänster till datafabriken genom att skapa länkade tjänster.  
+I det här steget länkar du ditt Azure Storage-konto och ett HDInsight-kluster på begäran till din datafabrik. In- och utdata för pipelinen i det här exemplet lagras i lagringskontot. En länkad HDInsight-tjänst används för att köra Hive-skriptet som anges i pipeline-aktiviteten i det här exemplet. Identifiera vilka [](data-factory-data-movement-activities.md) / [beräknings tjänster](data-factory-compute-linked-services.md) för data lager som används i ditt scenario. Länka sedan dessa tjänster till datafabriken genom att skapa länkade tjänster.  
 
 ### <a name="create-a-storage-linked-service"></a>Skapa en länkad lagringstjänst
 I det här steget länkar du ditt lagringskonto till datafabriken. I den här självstudien använder du samma lagringskonto för att lagra indata/utdata och HQL-skriptfilen.
@@ -413,7 +413,7 @@ Du kan också använda appen Övervaka och hantera till att övervaka dina pipel
 
     ![Ikonen Övervaka och hantera](./media/data-factory-build-your-first-pipeline-using-editor/monitor-and-manage-tile.png)
 
-1. Ändra **Starttid** och **Sluttid** i appen Övervaka och hantera så att de matchar starttid och sluttid för pipelinen. Välj **Använd**.
+1. Ändra **Starttid** och **Sluttid** i appen Övervaka och hantera så att de matchar starttid och sluttid för pipelinen. Välj **Tillämpa**.
 
     ![Appen Övervaka och hantera](./media/data-factory-build-your-first-pipeline-using-editor/monitor-and-manage-app.png)
 

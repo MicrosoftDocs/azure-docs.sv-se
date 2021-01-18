@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 09/18/2020
-ms.openlocfilehash: 9003366ec0d64057ca7426d5b6b99986bc21fc9d
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 0d282ee805ac61ba17ceb3ecc6a3d8179ea7b319
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920295"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98555907"
 ---
 # <a name="register-and-scan-an-on-premises-sql-server"></a>Registrera och skanna en lokal SQL Server
 
@@ -34,9 +34,9 @@ Lokal data källa för SQL Server stöder:
 
 ### <a name="known-limitations"></a>Kända begränsningar
 
-Azure avdelningens kontroll stöder inte genomsökning av [vyer](https://docs.microsoft.com/sql/relational-databases/views/views?view=sql-server-ver15) i SQL Server. 
+Azure avdelningens kontroll stöder inte genomsökning av [vyer](/sql/relational-databases/views/views) i SQL Server.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - Skapa ett Azure avdelningens kontroll-konto innan du registrerar data källor. Mer information om hur du skapar ett avdelningens kontroll-konto finns i [snabb start: skapa ett Azure avdelningens kontroll-konto](create-catalog-portal.md).
 

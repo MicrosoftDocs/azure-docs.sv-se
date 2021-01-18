@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: lle
 author: lle
 ms.date: 04/14/2020
-ms.openlocfilehash: 98484655dec069c3a284dce0ea83477faf75d9a8
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 5f8b18375c517ab5b620b2d6d897f5133b14705d
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637759"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98556468"
 ---
 # <a name="run-ssis-packages-by-using-azure-sql-managed-instance-agent"></a>Köra SSIS-paket med Azure SQL-hanterad instans agent
 
@@ -24,7 +24,7 @@ Med den här funktionen kan du köra SSIS-paket som lagras i SSISDB i en SQL-han
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-[Hämta](/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017) och installera den senaste SQL Server Management Studio (SSMS) om du vill använda den här funktionen. Information om versions support enligt nedan:
+[Hämta](/sql/ssms/download-sql-server-management-studio-ssms) och installera den senaste SQL Server Management Studio (SSMS) om du vill använda den här funktionen. Information om versions support enligt nedan:
 
 - Om du vill köra paket i SSISDB eller fil system installerar du SSMS version 18,5 eller senare.
 - Om du vill köra paket i paket lagret installerar du SSMS version 18,6 eller senare.
@@ -36,7 +36,7 @@ Du måste också [etablera en Azure-SSIS integration runtime](./tutorial-deploy-
 I den här proceduren använder du SQL-hanterad instans agent för att anropa ett SSIS-paket som är lagrat i SSISDB.
 
 1. I den senaste versionen av SSMS ansluter du till en SQL-hanterad instans.
-1. Skapa ett nytt Agent jobb och ett nytt jobb steg. Under **SQL Server Agent** högerklickar du på mappen **jobb** och väljer sedan **nytt jobb** .
+1. Skapa ett nytt Agent jobb och ett nytt jobb steg. Under **SQL Server Agent** högerklickar du på mappen **jobb** och väljer sedan **nytt jobb**.
 
    ![Val för att skapa ett nytt Agent jobb](./media/how-to-invoke-ssis-package-managed-instance-agent/new-agent-job.png)
 
@@ -52,9 +52,9 @@ I den här proceduren använder du SQL-hanterad instans agent för att anropa et
 
 1. På fliken **konfiguration** kan du:
   
-   - Ange parameter värden under **parametrar** .
-   - Åsidosätt värden under **anslutnings hanterare** .
-   - Åsidosätt egenskapen och välj loggnings nivå under **Avancerat** .
+   - Ange parameter värden under **parametrar**.
+   - Åsidosätt värden under **anslutnings hanterare**.
+   - Åsidosätt egenskapen och välj loggnings nivå under **Avancerat**.
 
    ![Fliken Konfiguration med val för paketets käll typ](./media/how-to-invoke-ssis-package-managed-instance-agent/package-source-ssisdb-configuration.png)
 
@@ -66,7 +66,7 @@ I den här proceduren använder du SQL-hanterad instans agent för att anropa et
 I den här proceduren använder du SQL-hanterad instans agent för att köra ett SSIS-paket som lagras i fil systemet.
 
 1. I den senaste versionen av SSMS ansluter du till en SQL-hanterad instans.
-1. Skapa ett nytt Agent jobb och ett nytt jobb steg. Under **SQL Server Agent** högerklickar du på mappen **jobb** och väljer sedan **nytt jobb** .
+1. Skapa ett nytt Agent jobb och ett nytt jobb steg. Under **SQL Server Agent** högerklickar du på mappen **jobb** och väljer sedan **nytt jobb**.
 
    ![Val för att skapa ett nytt Agent jobb](./media/how-to-invoke-ssis-package-managed-instance-agent/new-agent-job.png)
 
@@ -76,19 +76,19 @@ I den här proceduren använder du SQL-hanterad instans agent för att köra ett
 
 1. På fliken **paket** :
 
-   1. För **paket plats** väljer du **fil system** .
+   1. För **paket plats** väljer du **fil system**.
 
-   1. För **fil käll typ** :
+   1. För **fil käll typ**:
 
-      - Om paketet har laddats upp till Azure Files väljer du **Azure-filresurs** .
+      - Om paketet har laddats upp till Azure Files väljer du **Azure-filresurs**.
 
         ![Alternativ för fil käll typ](./media/how-to-invoke-ssis-package-managed-instance-agent/package-source-file-system.png)
 
         Paket Sök vägen är **`\\<storage account name>.file.core.windows.net\<file share name>\<package name>.dtsx`** .
 
-        Under **paket fil åtkomst autentiseringsuppgifter** anger du Azure-filkontots namn och konto nyckel för att få åtkomst till Azure-filen. Domänen är inställd som **Azure** .
+        Under **paket fil åtkomst autentiseringsuppgifter** anger du Azure-filkontots namn och konto nyckel för att få åtkomst till Azure-filen. Domänen är inställd som **Azure**.
 
-      - Om paketet har laddats upp till en nätverks resurs väljer du **nätverks resurs** .
+      - Om paketet har laddats upp till en nätverks resurs väljer du **nätverks resurs**.
 
         Paket Sök vägen är UNC-sökvägen till paket filen med fil namns tillägget. dtsx.
 
@@ -111,7 +111,7 @@ I den här proceduren använder du SQL-hanterad instans agent för att köra ett
 I den här proceduren använder du SQL-hanterad instans agent för att köra ett SSIS-paket som lagras i Azure-SSIS IR-paket lagret.
 
 1. I den senaste versionen av SSMS ansluter du till en SQL-hanterad instans.
-1. Skapa ett nytt Agent jobb och ett nytt jobb steg. Under **SQL Server Agent** högerklickar du på mappen **jobb** och väljer sedan **nytt jobb** .
+1. Skapa ett nytt Agent jobb och ett nytt jobb steg. Under **SQL Server Agent** högerklickar du på mappen **jobb** och väljer sedan **nytt jobb**.
 
    ![Val för att skapa ett nytt Agent jobb](./media/how-to-invoke-ssis-package-managed-instance-agent/new-agent-job.png)
 
@@ -121,9 +121,9 @@ I den här proceduren använder du SQL-hanterad instans agent för att köra ett
 
 1. På fliken **paket** :
 
-   1. För **paket plats** väljer du **paket arkiv** .
+   1. För **paket plats** väljer du **paket arkiv**.
 
-   1. För **paket Sök väg** :
+   1. För **paket Sök väg**:
 
       Paket Sök vägen är **`<package store name>\<folder name>\<package name>`** .
 
@@ -146,17 +146,17 @@ I den här proceduren använder du SQL-hanterad instans agent för att köra ett
 
 Om du vill avbryta paket körningen från ett SQL-hanterat instans Agent jobb utför du följande steg i stället för att omedelbart stoppa Agent jobbet:
 
-1. Hitta ditt SQL-Agent- **jobId** från **msdb.dbo.sys-jobb** .
+1. Hitta ditt SQL-Agent- **jobId** från **msdb.dbo.sys-jobb**.
 1. Hitta motsvarande SSIS- **executionId frågeparameter** baserat på jobb-ID: t med hjälp av den här frågan:
    ```sql
    select * from '{table for job execution}' where  parameter_value = 'SQL_Agent_Job_{jobId}' order by execution_id desc
    ```
-   Om dina SSIS-paket finns i SSISDB använder du **ssisdb.internal.execution_parameter_values** som tabell för jobb körning. Om dina SSIS-paket finns i fil systemet använder du **ssisdb.internal.execution_parameter_values_noncatalog** .
-1. Högerklicka på katalogen SSISDB och välj sedan **aktiva åtgärder** .
+   Om dina SSIS-paket finns i SSISDB använder du **ssisdb.internal.execution_parameter_values** som tabell för jobb körning. Om dina SSIS-paket finns i fil systemet använder du **ssisdb.internal.execution_parameter_values_noncatalog**.
+1. Högerklicka på katalogen SSISDB och välj sedan **aktiva åtgärder**.
 
    !["Aktiva åtgärder" på snabb menyn för SSISDB-katalogen](./media/how-to-invoke-ssis-package-managed-instance-agent/catalog-active-operations.png)
 
-1. Stoppa motsvarande åtgärd baserat på **executionId frågeparameter** .
+1. Stoppa motsvarande åtgärd baserat på **executionId frågeparameter**.
 
 ## <a name="next-steps"></a>Nästa steg
 Du kan också schemalägga SSIS-paket med hjälp av Azure Data Factory. Stegvisa instruktioner finns i [Azure Data Factory händelse utlösare](how-to-create-event-trigger.md).

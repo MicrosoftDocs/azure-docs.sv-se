@@ -308,10 +308,10 @@
       items:
         - name: Välj en nivå
           href: search-sku-tier.md
-        - name: Uppskatta kapacitet och kostnad
-          href: search-sku-manage-costs.md
-        - name: Justera kapacitet
+        - name: Beräkna och hantera kapacitet
           href: search-capacity-planning.md
+        - name: Uppskatta kostnader
+          href: search-sku-manage-costs.md
         - name: Tjänstbegränsningar
           href: search-limits-quotas-capacity.md
         - name: Skala för prestanda
@@ -558,5 +558,5 @@
       href: search-faq-frequently-asked-questions.md
     - name: Prissättning
       href: 'https://azure.microsoft.com/pricing/details/search/'
-    - name: Video
+    - name: Videoklipp
       href: 'https://azure.microsoft.com/resources/videos/index/?services=search'
