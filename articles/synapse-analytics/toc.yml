@@ -1094,25 +1094,26 @@
     - name: Självstudier
       items:
         - name: Visualisera data med Apache Spark
+          displayname: machine learning
           href: ./spark/apache-spark-data-visualization-tutorial.md
-          displayname: machine learning
         - name: Använda bedömningsguiden för dedikerade SQL-pooler
-          href: machine-learning/tutorial-sql-pool-model-scoring-wizard.md
           displayname: machine learning
+          href: machine-learning/tutorial-sql-pool-model-scoring-wizard.md
         - name: Träna en modell utan kod med automatiserad ML
+          displayname: machine learning
           href: ./machine-learning/tutorial-automl.md
         - name: Träna en modell i Python med automatiserad ML
+          displayname: machine learning
           href: ./spark/apache-spark-azure-machine-learning-tutorial.md
-          displayname: machine learning
         - name: Skapa en modell med Apache Spark MLlib
-          href: ./spark/apache-spark-machine-learning-mllib-notebook.md
           displayname: machine learning
+          href: ./spark/apache-spark-machine-learning-mllib-notebook.md
+        - name: Konfigurera Cognitive Services för Azure Synapse
+          href: ./machine-learning/tutorial-configure-cognitive-services-synapse.md
         - name: Sentimentanalys med Cognitive Services
           href: ./machine-learning/tutorial-cognitive-services-sentiment.md
         - name: Avvikelseidentifiering med Cognitive Services
           href: ./machine-learning/tutorial-cognitive-services-anomaly.md
-        - name: Konfigurera Cognitive Services för Azure Synapse
-          href: ./machine-learning/tutorial-configure-cognitive-services-synapse.md
 - name: Data Catalog och styrning
   items:
     - name: Snabbstarter

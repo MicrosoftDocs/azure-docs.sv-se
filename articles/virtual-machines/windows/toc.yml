@@ -228,7 +228,7 @@
         - name: Disklagringsreservationer
           href: ../../cost-management-billing/reservations/understand-disk-reservations.md
         - name: Prestanda för virtuella datorer och diskar
-          href: disk-performance-windows.md
+          href: ../disks-performance.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Designa för höga prestanda
           href: ../premium-storage-performance.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Diskutvidgning
@@ -814,10 +814,8 @@
           href: snapshot-copy-managed-disk.md
         - name: Reservera disklagring
           href: ../disks-reserved-capacity.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-        - name: Skapa en inkrementell ögonblicksbild – PowerShell
-          href: disks-incremental-snapshots.md
-        - name: Skapa en inkrementell ögonblicksbild – portalen
-          href: disks-incremental-snapshots-portal.md
+        - name: Skapa en inkrementell ögonblicksbild
+          href: ../disks-incremental-snapshots.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Säkerhetskopiera ohanterade diskar
           href: incremental-snapshots.md
         - name: Kryptering
@@ -851,7 +849,7 @@
             - name: Använda ultradiskar
               href: ../disks-enable-ultra-ssd.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: Beräkna benchmark för en disk
-              href: disks-benchmarks.md
+              href: ../disks-benchmarks.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Hitta icke anslutna diskar – PowerShell
           href: find-unattached-disks.md
         - name: Hitta icke anslutna diskar – portalen
