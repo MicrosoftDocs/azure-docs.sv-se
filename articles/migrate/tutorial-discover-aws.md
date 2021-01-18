@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: 935aa8297e8b244bfd05483f07aad3eadb485f1b
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: 8fb17dc880b74da3ca4e96df10946878fde31909
+ms.sourcegitcommit: 949c0a2b832d55491e03531f4ced15405a7e92e3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97797085"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98541418"
 ---
 # <a name="tutorial-discover-aws-instances-with-server-assessment"></a>Självstudie: identifiera AWS-instanser med Server utvärdering
 
@@ -40,7 +40,7 @@ Innan du påbörjar den här självstudien måste du kontrol lera att du har des
 
 **Krav** | **Information**
 --- | ---
-**Enhet** | Du behöver en virtuell EC2-dator för att köra Azure Migrate-installationen. Datorn ska ha:<br/><br/> – Windows Server 2016 installerat. Det finns inte stöd för att köra installationen på en dator med Windows Server 2019.<br/><br/> – 16 GB RAM, 8 virtuella processorer, cirka 80 GB disk lagring och en extern virtuell växel.<br/><br/> – En statisk eller dynamisk IP-adress, med Internet åtkomst, antingen direkt eller via en proxyserver.
+**Enhet** | Du behöver en virtuell EC2-dator för att köra Azure Migrate-installationen. Datorn ska ha:<br/><br/> – Windows Server 2016 installerat.<br/> _Det finns inte stöd för att köra installationen på en dator med Windows Server 2019_.<br/><br/> – 16 GB RAM, 8 virtuella processorer, cirka 80 GB disk lagring och en extern virtuell växel.<br/><br/> – En statisk eller dynamisk IP-adress, med Internet åtkomst, antingen direkt eller via en proxyserver.
 **Windows-instanser** | Tillåt inkommande anslutningar på WinRM-port 5985 (HTTP), så att enheten kan hämta konfigurations-och prestanda-metadata.
 **Linux-instanser** | Tillåt inkommande anslutningar på port 22 (TCP).<br/><br/> Instanserna bör använda `bash` som standard gränssnitt, annars Miss känner identifieringen.
 
@@ -48,7 +48,7 @@ Innan du påbörjar den här självstudien måste du kontrol lera att du har des
 
 Om du vill skapa ett Azure Migrate-projekt och registrera Azure Migrate-enheten måste du ha ett konto med:
 - Deltagar-eller ägar behörigheter för en Azure-prenumeration.
-- Behörighet att registrera Azure Active Directory appar.
+- Behörighet att registrera Azure Active Directory-appar (AAD).
 
 Om du nyligen skapade ett kostnadsfritt Azure-konto är du ägare av prenumerationen. Om du inte är prenumerations ägare kan du arbeta med ägaren för att tilldela behörigheterna på följande sätt:
 
@@ -67,18 +67,20 @@ Om du nyligen skapade ett kostnadsfritt Azure-konto är du ägare av prenumerati
 
     ![Öppnar sidan Lägg till roll tilldelning för att tilldela kontot en roll](./media/tutorial-discover-aws/assign-role.png)
 
-7. I portalen söker du efter användare och under **tjänster** väljer **du användare**.
-8. I **användar inställningar** kontrollerar du att Azure AD-användare kan registrera program (anges till **Ja** som standard).
+1. För att registrera installationen behöver ditt Azure-konto **behörighet att registrera AAD-appar.**
+1. I Azure Portal navigerar du till **Azure Active Directory**  >  **användares**  >  **användar inställningar**.
+1. I **användar inställningar** kontrollerar du att Azure AD-användare kan registrera program (anges till **Ja** som standard).
 
     ![Verifiera i användar inställningar som användare kan registrera Active Directory appar](./media/tutorial-discover-aws/register-apps.png)
 
+1. Om inställningen "Appregistreringar" är inställd på "nej", ber du klienten/den globala administratören att tilldela den behörighet som krävs. Alternativt kan klient organisationen/den globala administratören tilldela rollen **programutvecklare** till ett konto för att tillåta registrering av AAD-appen. [Läs mer](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md).
 
 ## <a name="prepare-aws-instances"></a>Förbereda AWS-instanser
 
 Konfigurera ett konto som kan användas av enheten för att komma åt AWS-instanser.
 
-- För Windows-servrar konfigurerar du ett lokalt användar konto på alla Windows-servrar som du vill ska ingå i identifieringen. Lägg till användar kontot i följande grupper:-fjärr styrnings användare – prestanda övervaknings användare – prestanda loggar användare.
- - För Linux-servrar behöver du ett rotkonto på de Linux-servrar som du vill identifiera.
+- För **Windows-servrar** konfigurerar du ett lokalt användar konto på alla Windows-servrar som du vill ska ingå i identifieringen. Lägg till användar kontot i följande grupper:-fjärr styrnings användare – prestanda övervaknings användare – prestanda loggar användare.
+ - För **Linux-servrar** behöver du ett rot konto på de Linux-servrar som du vill identifiera. Se anvisningarna i [support mat ris](migrate-support-matrix-physical.md#physical-server-requirements) för ett alternativ.
 - Azure Migrate använder lösenordsautentisering vid identifiering av AWS-instanser. AWS-instanser har inte stöd för lösenordsautentisering som standard. Innan du kan identifiera instansen måste du aktivera lösenordsautentisering.
     - Tillåt WinRM-port 5985 (HTTP) för Windows-datorer. Detta tillåter fjärr-WMI-anrop.
     - För Linux-datorer:
@@ -105,11 +107,12 @@ Skapa ett nytt Azure Migrate-projekt.
    ![Rutor för projekt namn och region](./media/tutorial-discover-aws/new-project.png)
 
 7. Välj **Skapa**.
-8. Vänta några minuter tills Azure Migrate-projektet har distribuerats.
-
-Verktyget **Azure Migrate: Server bedömning** läggs till som standard i det nya projektet.
+8. Vänta några minuter tills Azure Migrate-projektet har distribuerats. Verktyget **Azure Migrate: Server bedömning** läggs till som standard i det nya projektet.
 
 ![Sida som visar verktyget för Server bedömning som har lagts till som standard](./media/tutorial-discover-aws/added-tool.png)
+
+> [!NOTE]
+> Om du redan har skapat ett projekt kan du använda samma projekt för att registrera ytterligare enheter för att identifiera och utvärdera fler servrar. [Läs mer](create-manage-projects.md#find-a-project)
 
 ## <a name="set-up-the-appliance"></a>Konfigurera installationen
 
@@ -120,17 +123,14 @@ Azure Migrate-installationen är en förenklad installation som används av Azur
 
 [Läs mer](migrate-appliance.md) om Azure Migrate-enheten.
 
-
-## <a name="appliance-deployment-steps"></a>Distributions steg för installationen
-
 Så här konfigurerar du den apparat som du:
-- Ange ett namn på apparaten och generera en Azure Migrate projekt nyckel i portalen.
-- Ladda ned en zippad fil med Azure Migrate Installer-skript från Azure Portal.
-- Extrahera innehållet från den zippade filen. Starta PowerShell-konsolen med administratörs behörighet.
-- Kör PowerShell-skriptet för att starta webb programmet för installationen.
-- Konfigurera enheten för första gången och registrera den med det Azure Migrate projektet med hjälp av Azure Migrate projekt nyckeln.
+1. Ange ett namn på apparaten och generera en Azure Migrate projekt nyckel i portalen.
+1. Ladda ned en zippad fil med Azure Migrate Installer-skript från Azure Portal.
+1. Extrahera innehållet från den zippade filen. Starta PowerShell-konsolen med administratörs behörighet.
+1. Kör PowerShell-skriptet för att starta webb programmet för installationen.
+1. Konfigurera enheten för första gången och registrera den med det Azure Migrate projektet med hjälp av Azure Migrate projekt nyckeln.
 
-### <a name="generate-the-azure-migrate-project-key"></a>Generera Azure Migrate projekt nyckel
+### <a name="1-generate-the-azure-migrate-project-key"></a>1. generera Azure Migrate projekt nyckeln
 
 1. I **Migreringsmål** > **Servrar** > **Azure Migrate: Serverutvärdering** väljer du **Identifiera**.
 2. I **identifiera datorer**  >  **är dina datorer virtualiserade?**, Välj **fysiska eller andra (AWS, GCP, Xen osv.)**.
@@ -139,10 +139,9 @@ Så här konfigurerar du den apparat som du:
 1. När Azure-resurserna har skapats skapas en **Azure Migrate projekt nyckel** .
 1. Kopiera nyckeln på samma sätt som du behöver den för att slutföra registreringen av enheten under konfigurationen.
 
-### <a name="download-the-installer-script"></a>Ladda ned installations skriptet
+### <a name="2-download-the-installer-script"></a>2. Ladda ned installations skriptet
 
 I **2: Ladda ned Azure Migrate-enheten** klickar du på **Hämta**.
-
 
 ### <a name="verify-security"></a>Verifiera säkerhet
 
@@ -167,7 +166,7 @@ Kontrol lera att den zippade filen är säker innan du distribuerar den.
         Fysisk (85 MB) | [Senaste version](https://go.microsoft.com/fwlink/?linkid=2140338) | ca67e8dbe21d113ca93bfe94c1003ab7faba50472cb03972d642be8a466f78ce
  
 
-### <a name="run-the-azure-migrate-installer-script"></a>Kör installations skriptet för Azure Migrate
+### <a name="3-run-the-azure-migrate-installer-script"></a>3. kör installations skriptet för Azure Migrate
 Installations skriptet gör följande:
 
 - Installerar agenter och ett webb program för identifiering och utvärdering av fysiska servrar.
@@ -196,13 +195,11 @@ Kör skriptet på följande sätt:
 
 Om du kommer över alla problem kan du komma åt skript loggarna på C:\ProgramData\Microsoft Azure\Logs\ AzureMigrateScenarioInstaller_<em>timestamp</em>. log för fel sökning.
 
-
-
 ### <a name="verify-appliance-access-to-azure"></a>Verifiera åtkomst till enheten till Azure
 
 Se till att den virtuella datorns virtuella datorer kan ansluta till Azure-URL: er för [offentliga](migrate-appliance.md#public-cloud-urls) och [offentliga](migrate-appliance.md#government-cloud-urls) moln.
 
-### <a name="configure-the-appliance"></a>Konfigurera installationen
+### <a name="4-configure-the-appliance"></a>4. Konfigurera enheten
 
 Konfigurera enheten för första gången.
 

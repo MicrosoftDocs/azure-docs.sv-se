@@ -13,21 +13,21 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/25/2020
+ms.date: 01/12/2021
 ms.author: yelevin
-ms.openlocfilehash: f6fd6920fafe4c1080cb5539e4e0222d9d6e18cd
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 313f201aeabd470850b27d979dc5253f80e82a55
+ms.sourcegitcommit: 949c0a2b832d55491e03531f4ced15405a7e92e3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93103028"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98541178"
 ---
 # <a name="connect-your-beyond-security-besecure-to-azure-sentinel"></a>Anslut din säkerhets efter säkerhet till Azure Sentinel
 
 > [!IMPORTANT]
-> Säkerheten för säker data anslutning i Azure Sentinel är för närvarande en offentlig för hands version. Den här funktionen tillhandahålls utan service nivå avtal. Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Den säkerhetsrelaterade säkerhets kopplingen är för närvarande en för **hands version**. Se [kompletterande användnings villkor för Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) för hands versioner av ytterligare juridiska villkor som gäller för Azure-funktioner som är i beta, för hands version eller på annat sätt ännu inte släppts till allmän tillgänglighet.
 
-Utöver säkerhet säker anslutning kan du enkelt ansluta alla dina säkra säkerhets lösningar med din Azure Sentinel, Visa instrument paneler, skapa anpassade aviseringar och förbättra undersökningen. Integreringen mellan säkert och Azure Sentinel använder REST API.
+Med hjälp av säkerhets säkra anslutnings-och säkerhets anslutningar kan du enkelt ansluta alla dina säkra säkerhets lösnings loggar med din Azure Sentinel, Visa instrument paneler, skapa anpassade aviseringar och förbättra undersökningen. Integreringen mellan säkert och Azure Sentinel använder REST API.
 
 > [!NOTE]
 > Data lagras på den geografiska platsen för den arbets yta där du kör Azure Sentinel.
@@ -36,7 +36,9 @@ Utöver säkerhet säker anslutning kan du enkelt ansluta alla dina säkra säke
 
 SÄKRA kan integreras med och exportera loggar direkt till Azure Sentinel.
 
-1. I Azure Sentinel-portalen klickar du på **data kopplingar** och väljer **bortom säkerhet säker (för hands version)** och **öppnar sedan kopplings sidan** .
+1. I navigerings menyn i Azure Sentinel väljer du **data kopplingar**.
+
+1. Från **data kopplings** galleriet väljer du **bortom säkerhet säker (för hands version)** och **öppnar sedan kopplings sidan**.
 
 1. Följ stegen nedan för att konfigurera din säkra lösning för att skicka ut genomsöknings resultat, genomsöknings status och gransknings spårnings loggar till Azure Sentinel.
 
@@ -49,8 +51,11 @@ SÄKRA kan integreras med och exportera loggar direkt till Azure Sentinel.
 
     1. Aktivera Azure Sentinel
 
-    **Ange säkra med Azure Sentinel-inställningar.**
-      - Kopiera *arbetsyte-ID: t* och *primär nyckel* värden från sidan Azure Sentinel Connector, klistra in dem i den säkra konfigurationen och klicka på **ändra** .
+    **Ange säkra med Azure Sentinel-inställningar:**
+
+      Kopiera *arbetsyte-ID: t* och *primär nyckel* värden från sidan Azure Sentinel Connector, klistra in dem i den säkra konfigurationen och klicka på **ändra**.
+      
+      :::image type="content" source="media/connectors/workspace-id-primary-key.png" alt-text="{Arbetsyte-ID och primär nyckel}":::
 
 ## <a name="find-your-data"></a>Hitta dina data
 
@@ -59,7 +64,7 @@ När en lyckad anslutning har upprättats visas data i **loggarna** under avsnit
   - `beSECURE_ScanEvents_CL`
   - `beSECURE_Audit_CL`
 
-Om du vill fråga efter säkra loggar i Log Analytics anger du ett av ovanstående tabell namn överst i frågefönstret.
+Om du vill fråga efter säkra loggar i analys regler, jakt frågor, undersökningar eller var som helst i Azure Sentinel, anger du ett av ovanstående tabell namn överst i frågefönstret.
 
 ## <a name="validate-connectivity"></a>Verifiera anslutning
 Det kan ta upp till 20 minuter innan loggarna börjar visas i Log Analytics.

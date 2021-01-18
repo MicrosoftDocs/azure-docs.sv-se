@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: 181f645540a267d65b15a0345a61752a8a5f78fa
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 079f176a741fa3423081cb96503691f0f2e2e7b2
+ms.sourcegitcommit: 949c0a2b832d55491e03531f4ced15405a7e92e3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97704745"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98541435"
 ---
 # <a name="tutorial-discover-google-cloud-platform-gcp-instances-with-server-assessment"></a>Självstudie: identifiera Google Cloud Platform-instanser (GCP) med Server utvärdering
 
@@ -40,7 +40,7 @@ Innan du påbörjar den här självstudien måste du kontrol lera att du har des
 
 **Krav** | **Information**
 --- | ---
-**Enhet** | Du behöver en GCP VM-instans där Azure Migrates apparaten ska köras. Datorn ska ha:<br/><br/> – Windows Server 2016 installerat. Det finns inte stöd för att köra installationen på en dator med Windows Server 2019.<br/><br/> – 16 GB RAM, 8 virtuella processorer, cirka 80 GB disk lagring och en extern virtuell växel.<br/><br/> – En statisk eller dynamisk IP-adress, med Internet åtkomst, antingen direkt eller via en proxyserver.
+**Enhet** | Du behöver en GCP VM-instans där Azure Migrates apparaten ska köras. Datorn ska ha:<br/><br/> – Windows Server 2016 installerat.<br/> _Det finns inte stöd för att köra installationen på en dator med Windows Server 2019_.<br/><br/> – 16 GB RAM, 8 virtuella processorer, cirka 80 GB disk lagring och en extern virtuell växel.<br/><br/> – En statisk eller dynamisk IP-adress, med Internet åtkomst, antingen direkt eller via en proxyserver.
 **Instanser av Windows VM** | Tillåt inkommande anslutningar på WinRM-port 5985 (HTTP), så att enheten kan hämta konfigurations-och prestanda-metadata.
 **VIRTUELLA Linux-instanser** | Tillåt inkommande anslutningar på port 22 (TCP).
 
@@ -48,7 +48,7 @@ Innan du påbörjar den här självstudien måste du kontrol lera att du har des
 
 Om du vill skapa ett Azure Migrate-projekt och registrera Azure Migrate-enheten måste du ha ett konto med:
 - Deltagar-eller ägar behörigheter för en Azure-prenumeration.
-- Behörighet att registrera Azure Active Directory appar.
+- Behörighet att registrera Azure Active Directory-appar (AAD).
 
 Om du nyligen skapade ett kostnadsfritt Azure-konto är du ägare av prenumerationen. Om du inte är prenumerations ägare kan du arbeta med ägaren för att tilldela behörigheterna på följande sätt:
 
@@ -67,22 +67,24 @@ Om du nyligen skapade ett kostnadsfritt Azure-konto är du ägare av prenumerati
 
     ![Öppnar sidan Lägg till roll tilldelning för att tilldela kontot en roll](./media/tutorial-discover-gcp/assign-role.png)
 
-7. I portalen söker du efter användare och under **tjänster** väljer **du användare**.
-8. I **användar inställningar** kontrollerar du att Azure AD-användare kan registrera program (anges till **Ja** som standard).
+1. För att registrera installationen behöver ditt Azure-konto **behörighet att registrera AAD-appar.**
+1. I Azure Portal navigerar du till **Azure Active Directory**  >  **användares**  >  **användar inställningar**.
+1. I **användar inställningar** kontrollerar du att Azure AD-användare kan registrera program (anges till **Ja** som standard).
 
     ![Verifiera i användar inställningar som användare kan registrera Active Directory appar](./media/tutorial-discover-gcp/register-apps.png)
 
+1. Om inställningen "Appregistreringar" är inställd på "nej", ber du klienten/den globala administratören att tilldela den behörighet som krävs. Alternativt kan klient organisationen/den globala administratören tilldela rollen **programutvecklare** till ett konto för att tillåta registrering av AAD-appen. [Läs mer](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md).
 
 ## <a name="prepare-gcp-instances"></a>Förbereda GCP-instanser
 
 Konfigurera ett konto som kan användas av enheten för att komma åt GCP VM-instanser.
 
-- För Windows-servrar
+- För **Windows-servrar**:
     - Konfigurera ett lokalt användar konto på datorer som inte är domänanslutna och ett domän konto på icke-domänanslutna datorer som du vill ska ingå i identifieringen. Lägg till användar kontot i följande grupper: 
         - Fjärrhanteringsanvändare
         - Användare av prestanda övervakning
         - Prestanda loggar användare.
-- För Linux-servrar:
+- För **Linux-servrar**:
     - Du behöver ett rot konto på de Linux-servrar som du vill identifiera. Om du inte kan ange ett rot konto läser du instruktionerna i [support mat ris](migrate-support-matrix-physical.md#physical-server-requirements) för ett alternativ.
     - Azure Migrate använder lösenordsautentisering vid identifiering av AWS-instanser. AWS-instanser har inte stöd för lösenordsautentisering som standard. Innan du kan identifiera instansen måste du aktivera lösenordsautentisering.
         1. Logga in på varje Linux-dator.
@@ -108,11 +110,12 @@ Skapa ett nytt Azure Migrate-projekt.
    ![Rutor för projekt namn och region](./media/tutorial-discover-gcp/new-project.png)
 
 7. Välj **Skapa**.
-8. Vänta några minuter tills Azure Migrate-projektet har distribuerats.
-
-Verktyget **Azure Migrate: Server bedömning** läggs till som standard i det nya projektet.
+8. Vänta några minuter innan det Azure Migrate projektet distribueras. Verktyget **Azure Migrate: Server bedömning** läggs till som standard i det nya projektet.
 
 ![Sida som visar verktyget för Server bedömning som har lagts till som standard](./media/tutorial-discover-gcp/added-tool.png)
+
+> [!NOTE]
+> Om du redan har skapat ett projekt kan du använda samma projekt för att registrera ytterligare enheter för att identifiera och utvärdera fler servrar. [Läs mer](create-manage-projects.md#find-a-project)
 
 ## <a name="set-up-the-appliance"></a>Konfigurera installationen
 
@@ -123,17 +126,14 @@ Azure Migrate-installationen är en förenklad installation som används av Azur
 
 [Läs mer](migrate-appliance.md) om Azure Migrate-enheten.
 
-
-## <a name="appliance-deployment-steps"></a>Distributions steg för installationen
-
 Så här konfigurerar du den apparat som du:
-- Ange ett namn på apparaten och generera en Azure Migrate projekt nyckel i portalen.
-- Ladda ned en zippad fil med Azure Migrate Installer-skript från Azure Portal.
-- Extrahera innehållet från den zippade filen. Starta PowerShell-konsolen med administratörs behörighet.
-- Kör PowerShell-skriptet för att starta webb programmet för installationen.
-- Konfigurera enheten för första gången och registrera den med det Azure Migrate projektet med hjälp av Azure Migrate projekt nyckeln.
+1. Ange ett namn på apparaten och generera en Azure Migrate projekt nyckel i portalen.
+1. Ladda ned en zippad fil med Azure Migrate Installer-skript från Azure Portal.
+1. Extrahera innehållet från den zippade filen. Starta PowerShell-konsolen med administratörs behörighet.
+1. Kör PowerShell-skriptet för att starta webb programmet för installationen.
+1. Konfigurera enheten för första gången och registrera den med det Azure Migrate projektet med hjälp av Azure Migrate projekt nyckeln.
 
-### <a name="generate-the-azure-migrate-project-key"></a>Generera Azure Migrate projekt nyckel
+### <a name="1-generate-the-azure-migrate-project-key"></a>1. generera Azure Migrate projekt nyckeln
 
 1. I **Migreringsmål** > **Servrar** > **Azure Migrate: Serverutvärdering** väljer du **Identifiera**.
 2. I **identifiera datorer**  >  **är dina datorer virtualiserade?**, Välj **fysiska eller andra (AWS, GCP, Xen osv.)**.
@@ -142,10 +142,9 @@ Så här konfigurerar du den apparat som du:
 5. När Azure-resurserna har skapats skapas en **Azure Migrate projekt nyckel** .
 6. Kopiera nyckeln på samma sätt som du behöver den för att slutföra registreringen av enheten under konfigurationen.
 
-### <a name="download-the-installer-script"></a>Ladda ned installations skriptet
+### <a name="2-download-the-installer-script"></a>2. Ladda ned installations skriptet
 
 I **2: Ladda ned Azure Migrate-enheten** klickar du på **Hämta**.
-
 
 ### <a name="verify-security"></a>Verifiera säkerhet
 
@@ -170,7 +169,7 @@ Kontrol lera att den zippade filen är säker innan du distribuerar den.
         Fysisk (85 MB) | [Senaste version](https://go.microsoft.com/fwlink/?linkid=2140338) | ae132ebc574caf231bf41886891040ffa7abbe150c8b50436818b69e58622276
  
 
-### <a name="run-the-azure-migrate-installer-script"></a>Kör installations skriptet för Azure Migrate
+### <a name="3-run-the-azure-migrate-installer-script"></a>3. kör installations skriptet för Azure Migrate
 Installations skriptet gör följande:
 
 - Installerar agenter och ett webb program för identifiering och utvärdering av GCP-servrar.
@@ -199,13 +198,11 @@ Kör skriptet på följande sätt:
 
 Om du kommer över alla problem kan du komma åt skript loggarna på C:\ProgramData\Microsoft Azure\Logs\ AzureMigrateScenarioInstaller_<em>timestamp</em>. log för fel sökning.
 
-
-
 ### <a name="verify-appliance-access-to-azure"></a>Verifiera åtkomst till enheten till Azure
 
 Se till att den virtuella datorns virtuella datorer kan ansluta till Azure-URL: er för [offentliga](migrate-appliance.md#public-cloud-urls) och [offentliga](migrate-appliance.md#government-cloud-urls) moln.
 
-### <a name="configure-the-appliance"></a>Konfigurera installationen
+### <a name="4-configure-the-appliance"></a>4. Konfigurera enheten
 
 Konfigurera enheten för första gången.
 
@@ -237,7 +234,6 @@ Konfigurera enheten för första gången.
 1. När du har loggat in går du tillbaka till föregående flik med installationen av Konfigurations hanteraren.
 4. Om Azure-användarkontot som används för loggning har rätt [behörigheter](#prepare-an-azure-user-account) för de Azure-resurser som skapades under den här nyckeln, initieras registrerings enheten.
 5. När installationen av enheten har registrerats kan du se registrerings informationen genom att klicka på **Visa information**.
-
 
 ## <a name="start-continuous-discovery"></a>Starta kontinuerlig identifiering
 

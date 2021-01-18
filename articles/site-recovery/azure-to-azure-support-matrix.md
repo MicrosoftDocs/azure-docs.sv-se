@@ -4,12 +4,12 @@ description: Sammanfattar stöd för haveri beredskap för virtuella Azure-dator
 ms.topic: article
 ms.date: 11/29/2020
 ms.author: raynew
-ms.openlocfilehash: e2cbea433d56d4c1290a5d1cdc54b56e81b4cd73
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: f0c7e23e45a84fa73c7e63b5aaa6280177cf8b27
+ms.sourcegitcommit: 949c0a2b832d55491e03531f4ced15405a7e92e3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98234332"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98541316"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Supportmatris för haveriberedskap för virtuella Azure-datorer mellan Azure-regioner
 
@@ -44,13 +44,13 @@ Du kan replikera och återställa virtuella datorer mellan två regioner i samma
 **Geografiskt kluster** | **Azure-regioner**
 -- | --
 Vägnar | Östra Kanada, centrala Kanada, södra centrala USA, västra centrala USA, östra USA, östra USA 2, västra USA, västra USA 2, centrala USA, norra centrala USA
-Europa | Storbritannien, västra, Storbritannien, södra, Nord Europa, Västeuropa, Västeuropa, västra Sydafrika, norra Norge, östra Norge, västra USA, centrala Frankrike, Schweiz, norra
+Europa | Storbritannien, västra, Storbritannien, södra, Nord Europa, Västeuropa, västra Europa, västra Sydafrika, norra Afrika, östra USA, centrala Frankrike, Schweiz, norra
 Asien | Södra Indien, centrala Indien, västra Indien, Sydostasien, Asien, östra, Östra Japan, västra Japan, centrala Korea, centrala Korea, södra Korea
 Australien    | Australien, östra, Australien, sydöstra, Australien, centrala, Australien, centrala 2
 Azure Government    | US GOV Virginia, US GOV Iowa, US GOV Arizona, US GOV Texas, USA DOD öst, USA DOD Central
 Tyskland    | Tyskland, centrala, Tyskland nordöstra
 Kina | Kina, östra, Kina, norra, Kina North2, Kina östra
-Begränsade regioner som är reserverade för haveri beredskap i landet |Tyskland, norra reserverad för Tyskland, västra centrala, Schweiz, västra reserverad för Schweiz, norra, Frankrike, södra reserverade för centrala Frankrike, Förenade Arabemiraten Central restricted för Förenade Arabemiraten Nord-kunder
+Begränsade regioner som är reserverade för haveri beredskap i landet |Tyskland, norra reserverad för Tyskland, västra centrala, Schweiz, västra reserverad för Schweiz, norra, Frankrikes södra reserverade för centrala Frankrike, Förenade Arabemiraten Central restricted för Förenade Arabemiraten norra kunder, Norge väst för östra Norge-kunder
 
 >[!NOTE]
 >

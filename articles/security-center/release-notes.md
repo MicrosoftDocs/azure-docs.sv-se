@@ -1,6 +1,6 @@
 ---
 title: Viktig information för Azure Security Center
-description: En beskrivning av vad som är nytt och ändrat i Azure Security Center.
+description: En beskrivning av vad som är nytt och ändrat i Azure Security Center
 services: security-center
 documentationcenter: na
 author: memildin
@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/07/2021
+ms.date: 01/17/2021
 ms.author: memildin
-ms.openlocfilehash: 86da6c0a3393dd3f47143355597cd9ccdec9928d
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 48e7093c30ffb135231f5843cb0767848f242d89
+ms.sourcegitcommit: 949c0a2b832d55491e03531f4ced15405a7e92e3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539945"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98541399"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Vad är nytt i Azure Security Center?
 
@@ -32,6 +32,24 @@ Om du vill veta mer om *planerade* ändringar som kommer snart till Security Cen
 
 
 ## <a name="january-2021"></a>Januari 2021
+
+Uppdateringar i december inkluderar:
+
+- [CSV-export av filtrerad lista över rekommendationer](#csv-export-of-filtered-list-of-recommendations)
+- [Sårbarhets bedömning för lokala och flera moln datorer är allmänt tillgänglig](#vulnerability-assessment-for-on-premise-and-multi-cloud-machines-is-generally-available)
+
+
+### <a name="csv-export-of-filtered-list-of-recommendations"></a>CSV-export av filtrerad lista över rekommendationer 
+
+I november 2020 lade vi till filter till sidan rekommendationer ([rekommendations listan innehåller nu filter](#recommendations-list-now-includes-filters)). I december expanderade vi dessa filter ([rekommendationer sidan har nya filter för miljö, allvarlighets grad och tillgängliga svar](#recommendations-page-has-new-filters-for-environment-severity-and-available-responses)). 
+
+Med det här meddelandet ändrar vi beteendet för knappen **Ladda ned till CSV** så att CSV-exporten bara innehåller de rekommendationer som visas i den filtrerade listan. 
+
+I bilden nedan kan du till exempel se att listan har filtrerats till två rekommendationer. CSV-filen som genereras innehåller statusinformation för varje resurs som påverkas av dessa två rekommendationer.   
+
+:::image type="content" source="media/security-center-managing-and-responding-alerts/export-to-csv-with-filters.png" alt-text="Exportera filtrerade rekommendationer till en CSV-fil":::
+
+Läs mer i [säkerhets rekommendationer i Azure Security Center](security-center-recommendations.md).
 
 ### <a name="vulnerability-assessment-for-on-premise-and-multi-cloud-machines-is-generally-available"></a>Sårbarhets bedömning för lokala och flera moln datorer är allmänt tillgänglig
 

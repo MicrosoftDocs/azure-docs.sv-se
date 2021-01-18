@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: 639b810cbb99496f84b76fc96124145a019fb625
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 548cee262d874f5bc0f6024a857c2bb8a5466106
+ms.sourcegitcommit: 949c0a2b832d55491e03531f4ced15405a7e92e3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97705548"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98541350"
 ---
 # <a name="tutorial-discover-physical-servers-with-server-assessment"></a>Självstudie: identifiera fysiska servrar med Server utvärdering
 
@@ -40,7 +40,7 @@ Innan du påbörjar den här självstudien måste du kontrol lera att du har des
 
 **Krav** | **Information**
 --- | ---
-**Enhet** | Du behöver en dator för att köra Azure Migrate-installationen. Datorn ska ha:<br/><br/> – Windows Server 2016 installerat. _(För närvarande stöds endast distributionen av installations programmet på Windows Server 2016.)_<br/><br/> – 16 GB RAM, 8 virtuella processorer, cirka 80 GB disk lagring<br/><br/> – En statisk eller dynamisk IP-adress, med Internet åtkomst, antingen direkt eller via en proxyserver.
+**Enhet** | Du behöver en dator för att köra Azure Migrate-installationen. Datorn ska ha:<br/><br/> – Windows Server 2016 installerat.<br/> _(För närvarande stöds endast distributionen av installations programmet på Windows Server 2016.)_<br/><br/> – 16 GB RAM, 8 virtuella processorer, cirka 80 GB disk lagring<br/><br/> – En statisk eller dynamisk IP-adress, med Internet åtkomst, antingen direkt eller via en proxyserver.
 **Windows-servrar** | Tillåt inkommande anslutningar på WinRM-port 5985 (HTTP), så att enheten kan hämta konfigurations-och prestanda-metadata.
 **Linux-servrar** | Tillåt inkommande anslutningar på port 22 (TCP).
 
@@ -48,7 +48,7 @@ Innan du påbörjar den här självstudien måste du kontrol lera att du har des
 
 Om du vill skapa ett Azure Migrate-projekt och registrera Azure Migrate-enheten måste du ha ett konto med:
 - Deltagar-eller ägar behörigheter för en Azure-prenumeration.
-- Behörighet att registrera Azure Active Directory appar.
+- Behörighet att registrera Azure Active Directory-appar (AAD).
 
 Om du nyligen skapade ett kostnadsfritt Azure-konto är du ägare av prenumerationen. Om du inte är prenumerations ägare kan du arbeta med ägaren för att tilldela behörigheterna på följande sätt:
 
@@ -67,19 +67,20 @@ Om du nyligen skapade ett kostnadsfritt Azure-konto är du ägare av prenumerati
 
     ![Öppnar sidan Lägg till roll tilldelning för att tilldela kontot en roll](./media/tutorial-discover-physical/assign-role.png)
 
-7. I portalen söker du efter användare och under **tjänster** väljer **du användare**.
-8. I **användar inställningar** kontrollerar du att Azure AD-användare kan registrera program (anges till **Ja** som standard).
+1. För att registrera installationen behöver ditt Azure-konto **behörighet att registrera AAD-appar.**
+1. I Azure Portal navigerar du till **Azure Active Directory**  >  **användares**  >  **användar inställningar**.
+1. I **användar inställningar** kontrollerar du att Azure AD-användare kan registrera program (anges till **Ja** som standard).
 
     ![Verifiera i användar inställningar som användare kan registrera Active Directory appar](./media/tutorial-discover-physical/register-apps.png)
 
-9. Alternativt kan klient organisationen/den globala administratören tilldela rollen **programutvecklare** till ett konto för att tillåta registrering av AAD-appar. [Läs mer](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md).
+9. Om inställningen "Appregistreringar" är inställd på "nej", ber du klienten/den globala administratören att tilldela den behörighet som krävs. Alternativt kan klient organisationen/den globala administratören tilldela rollen **programutvecklare** till ett konto för att tillåta registrering av AAD-appen. [Läs mer](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md).
 
 ## <a name="prepare-physical-servers"></a>Förbereda fysiska servrar
 
 Konfigurera ett konto som kan användas av enheten för att få åtkomst till de fysiska servrarna.
 
-- För Windows-servrar använder du ett domän konto för domänanslutna datorer och ett lokalt konto för datorer som inte är domänanslutna. Användarkontot bör läggas till i dessa grupper: Fjärrhanteringsanvändare, Användare av prestandaövervakning och Användare av prestandaloggar.
-- För Linux-servrar behöver du ett rotkonto på de Linux-servrar som du vill identifiera. Alternativt kan du ange ett icke-rot konto med de funktioner som krävs med hjälp av följande kommandon:
+- För **Windows-servrar** använder du ett domän konto för domänanslutna datorer och ett lokalt konto för datorer som inte är domänanslutna. Användarkontot bör läggas till i dessa grupper: Fjärrhanteringsanvändare, Användare av prestandaövervakning och Användare av prestandaloggar.
+- För **Linux-servrar** behöver du ett rot konto på de Linux-servrar som du vill identifiera. Alternativt kan du ange ett icke-rot konto med de funktioner som krävs med hjälp av följande kommandon:
 
 **Kommando** | **Syfte**
 --- | --- |
@@ -102,23 +103,25 @@ Skapa ett nytt Azure Migrate-projekt.
    ![Rutor för projekt namn och region](./media/tutorial-discover-physical/new-project.png)
 
 7. Välj **Skapa**.
-8. Vänta några minuter tills Azure Migrate-projektet har distribuerats.
-
-Verktyget **Azure Migrate: Server bedömning** läggs till som standard i det nya projektet.
+8. Vänta några minuter tills Azure Migrate-projektet har distribuerats. Verktyget **Azure Migrate: Server bedömning** läggs till som standard i det nya projektet.
 
 ![Sida som visar verktyget för Server bedömning som har lagts till som standard](./media/tutorial-discover-physical/added-tool.png)
 
+> [!NOTE]
+> Om du redan har skapat ett projekt kan du använda samma projekt för att registrera ytterligare enheter för att identifiera och utvärdera fler servrar. [Läs mer](create-manage-projects.md#find-a-project)
 
 ## <a name="set-up-the-appliance"></a>Konfigurera installationen
 
-Så här konfigurerar du den apparat som du:
-- Ange ett namn på apparaten och generera en Azure Migrate projekt nyckel i portalen.
-- Ladda ned en zippad fil med Azure Migrate Installer-skript från Azure Portal.
-- Extrahera innehållet från den zippade filen. Starta PowerShell-konsolen med administratörs behörighet.
-- Kör PowerShell-skriptet för att starta webb programmet för installationen.
-- Konfigurera enheten för första gången och registrera den med det Azure Migrate projektet med hjälp av Azure Migrate projekt nyckeln.
+Azure Migrate-installationen utför Server identifiering och skickar metadata för Server konfiguration och prestanda till Azure Migrate. Installationen kan konfigureras genom att köra ett PowerShell-skript som kan hämtas från Azure Migrate-projektet.
 
-### <a name="generate-the-azure-migrate-project-key"></a>Generera Azure Migrate projekt nyckel
+Så här konfigurerar du den apparat som du:
+1. Ange ett namn på apparaten och generera en Azure Migrate projekt nyckel i portalen.
+2. Ladda ned en zippad fil med Azure Migrate Installer-skript från Azure Portal.
+3. Extrahera innehållet från den zippade filen. Starta PowerShell-konsolen med administratörs behörighet.
+4. Kör PowerShell-skriptet för att starta webb programmet för installationen.
+5. Konfigurera enheten för första gången och registrera den med det Azure Migrate projektet med hjälp av Azure Migrate projekt nyckeln.
+
+### <a name="1-generate-the-azure-migrate-project-key"></a>1. generera Azure Migrate projekt nyckeln
 
 1. I **Migreringsmål** > **Servrar** > **Azure Migrate: Serverutvärdering** väljer du **Identifiera**.
 2. I **identifiera datorer**  >  **är dina datorer virtualiserade?**, Välj **fysiska eller andra (AWS, GCP, Xen osv.)**.
@@ -127,10 +130,9 @@ Så här konfigurerar du den apparat som du:
 1. När Azure-resurserna har skapats skapas en **Azure Migrate projekt nyckel** .
 1. Kopiera nyckeln på samma sätt som du behöver den för att slutföra registreringen av enheten under konfigurationen.
 
-### <a name="download-the-installer-script"></a>Ladda ned installations skriptet
+### <a name="2-download-the-installer-script"></a>2. Ladda ned installations skriptet
 
 I **2: Ladda ned Azure Migrate-enheten** klickar du på **Hämta**.
-
 
 ### <a name="verify-security"></a>Verifiera säkerhet
 
@@ -155,7 +157,7 @@ Kontrol lera att den zippade filen är säker innan du distribuerar den.
         Fysisk (85,8 MB) | [Senaste version](https://go.microsoft.com/fwlink/?linkid=2140338) | ae132ebc574caf231bf41886891040ffa7abbe150c8b50436818b69e58622276
  
 
-### <a name="run-the-azure-migrate-installer-script"></a>Kör installations skriptet för Azure Migrate
+### <a name="3-run-the-azure-migrate-installer-script"></a>3. kör installations skriptet för Azure Migrate
 Installations skriptet gör följande:
 
 - Installerar agenter och ett webb program för identifiering och utvärdering av fysiska servrar.
@@ -184,13 +186,11 @@ Kör skriptet på följande sätt:
 
 Om du kommer över alla problem kan du komma åt skript loggarna på C:\ProgramData\Microsoft Azure\Logs\ AzureMigrateScenarioInstaller_<em>timestamp</em>. log för fel sökning.
 
-
-
 ### <a name="verify-appliance-access-to-azure"></a>Verifiera åtkomst till enheten till Azure
 
 Se till att den virtuella datorns virtuella datorer kan ansluta till Azure-URL: er för [offentliga](migrate-appliance.md#public-cloud-urls) och [offentliga](migrate-appliance.md#government-cloud-urls) moln.
 
-### <a name="configure-the-appliance"></a>Konfigurera installationen
+### <a name="4-configure-the-appliance"></a>4. Konfigurera enheten
 
 Konfigurera enheten för första gången.
 

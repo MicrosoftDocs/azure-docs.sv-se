@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: 432104c7e2cb9486dfb47a793ae73829d8705b60
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: e294423e3f078253984dc4fcd8695c2676abb236
+ms.sourcegitcommit: 949c0a2b832d55491e03531f4ced15405a7e92e3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94655824"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98541265"
 ---
 # <a name="connect-data-sources"></a>Ansluta till datakällor
 
@@ -69,6 +69,8 @@ Följande data anslutnings metoder stöds av Azure Sentinel:
     - [Alcide kAudit](connect-alcide-kaudit.md)
     - [Barracuda WAF](connect-barracuda.md)
     - [Barracuda CloudGen-brandväggen](connect-barracuda-cloudgen-firewall.md)
+    - [BÄTTRE skydd mot mobila hot](connect-better-mtd.md)
+    - [Utöver säkerhet – beSECURE](connect-besecure.md)
     - [Citrix Analytics (Security)](connect-citrix-analytics.md)
     - [F5 BIG-IP](connect-f5-big-ip.md)
     - [Forcepoint DLP](connect-forcepoint-dlp.md)
@@ -93,6 +95,8 @@ Följande data anslutnings metoder stöds av Azure Sentinel:
         - [AI Vectra Detect](connect-ai-vectra-detect.md)
         - [Check Point](connect-checkpoint.md)
         - [Cisco ASA](connect-cisco.md)
+        - [Citrix WAF](connect-citrix-waf.md)
+        - [CyberArk Enterprise – valv för lösenord](connect-cyberark.md)
         - [ExtraHop Reveal(x)](connect-extrahop.md)
         - [F5 ASM](connect-f5.md)
         - [Forcepoint-produkter](connect-forcepoint-casb-ngfw.md)
@@ -101,6 +105,8 @@ Följande data anslutnings metoder stöds av Azure Sentinel:
         - [One Identity Safeguard](connect-one-identity.md)
         - [Palo Alto Networks](connect-paloalto.md)
         - [Trend Micro Deep Security](connect-trend-micro.md)
+        - [Trend Micro-TippingPoint](connect-trend-micro-tippingpoint.md)
+        - [WireX Network data utredning Platform](connect-wirex-systems.md)
         - [Zscaler](connect-zscaler.md)
         - [Andra CEF-baserade apparater](connect-common-event-format.md)
     - **Brand väggar, proxyservrar och slut punkter – syslog:**
@@ -137,9 +143,9 @@ Alternativt kan du distribuera agenten manuellt på en befintlig virtuell Azure-
 | AzureActivity | Översikt över [Anslut Azure-aktivitet](connect-azure-activity.md) och [aktivitets loggar](../azure-monitor/platform/platform-logs-overview.md)| &#10003; | |
 | AuditLogs | [Ansluta till Azure Active Directory](connect-azure-active-directory.md)  | &#10003; | |
 | SigninLogs | [Ansluta till Azure Active Directory](connect-azure-active-directory.md)  | &#10003; | |
-| AzureFirewall |[Azure Diagnostics](../firewall/firewall-diagnostics.md) | &#10003; | |
+| AzureFirewall |[Microsoft Azure Diagnostics](../firewall/firewall-diagnostics.md) | &#10003; | |
 | InformationProtectionLogs_CL  | [Azure Information Protection rapporter](/azure/information-protection/reports-aip)<br>[Ansluta till Azure Information Protection](connect-azure-information-protection.md)  | &#10003; | Detta använder vanligt vis **InformationProtectionEvents** -funktionen tillsammans med data typen. Mer information finns i [ändra rapporterna och skapa anpassade frågor](/azure/information-protection/reports-aip#how-to-modify-the-reports-and-create-custom-queries)|
-| AzureNetworkAnalytics_CL  | Trafik [analys schema](../network-watcher/traffic-analytics.md) [Traffic analytics](../network-watcher/traffic-analytics.md) analys  | | |
+| AzureNetworkAnalytics_CL  | Trafik [analys schema](../network-watcher/traffic-analytics.md) [](../network-watcher/traffic-analytics.md) analys  | | |
 | CommonSecurityLog  | [Anslut CEF](connect-common-event-format.md)  | &#10003; | |
 | OfficeActivity | [Ansluta Office 365](connect-office-365.md) | &#10003; | |
 | SecurityEvents | [Ansluta till Windows säkerhetshändelser](connect-windows-security-events.md)  | &#10003; | Arbets böckerna för oskyddade protokoll finns i [arbets boks konfiguration för oskyddade protokoll](./quickstart-get-visibility.md#use-built-in-workbooks)  |

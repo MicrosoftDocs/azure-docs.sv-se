@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/21/2019
 ms.author: sideeksh
-ms.openlocfilehash: 599ad76f38833e06cc458fd0687921e6975e190b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f63021275574e294fa372357d6e62724f5efe0f7
+ms.sourcegitcommit: 949c0a2b832d55491e03531f4ced15405a7e92e3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89426375"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98541198"
 ---
 # <a name="customize-networking-configurations-of-the-target-azure-vm"></a>Anpassa nätverkskonfigurationer för den virtuella Azure-måldatorn
 
@@ -44,7 +44,7 @@ Du kan ange följande nyckel resurs konfiguration för den virtuella datorn som 
 
      ![Anpassa nätverks konfigurationerna för redundans](media/azure-to-azure-customize-networking/edit-networking-properties.png)
 
-4. Välj ett virtuellt nätverk för redundanstest. Du kan välja att lämna det tomt och välja en vid tidpunkten för redundanstest.
+4. Välj ett virtuellt nätverk för redundanstest.
 5. Redundansklustret väljer du **Redigera** nära det nätverkskort som du vill konfigurera. I nästa blad som öppnas väljer du motsvarande förskapade resurser på platsen redundanstest och redundansväxlingen.
 
     ![Redigera NIC-konfigurationen](media/azure-to-azure-customize-networking/nic-drilldown.png) 

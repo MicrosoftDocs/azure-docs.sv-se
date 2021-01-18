@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: 90532a88e145507b09de9d36f704bc5c88899e95
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: 109f61d9ff76d084b292dbe3cc8ce663b50141ae
+ms.sourcegitcommit: 949c0a2b832d55491e03531f4ced15405a7e92e3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97861896"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98541333"
 ---
 # <a name="tutorial-discover-hyper-v-vms-with-server-assessment"></a>Självstudie: identifiera virtuella Hyper-V-datorer med Server utvärdering
 
@@ -42,16 +42,14 @@ Innan du påbörjar den här självstudien måste du kontrol lera att du har des
 **Krav** | **Information**
 --- | ---
 **Hyper-V-värd** | Hyper-V-värdar som de virtuella datorerna finns i kan vara fristående eller i ett kluster.<br/><br/> Värden måste köra Windows Server 2019, Windows Server 2016 eller Windows Server 2012 R2.<br/><br/> Kontrol lera att inkommande anslutningar är tillåtna på WinRM-port 5985 (HTTP), så att enheten kan ansluta till att hämta VM-metadata och prestanda data med hjälp av en Common Information Model-session (CIM).
-**Distribution av utrustning** | Hyper-V-värden behöver resurser för att allokera en virtuell dator för enheten:<br/><br/> - Windows Server 2016<br/><br/> – 16 GB RAM-minne<br/><br/> – Åtta virtuella processorer<br/><br/> – Cirka 80 GB disk lagring.<br/><br/> – En extern virtuell växel.<br/><br/> – Internet åtkomst på för den virtuella datorn, direkt eller via en proxy.
+**Distribution av utrustning** | Hyper-V-värden behöver resurser för att allokera en virtuell dator för enheten:<br/><br/> – 16 GB RAM, 8 virtuella processorer och cirka 80 GB disk lagring.<br/><br/> – En extern virtuell växel och Internet åtkomst på den virtuella dator enheten, direkt eller via en proxyserver.
 **Virtuella datorer** | Virtuella datorer kan köra ett Windows-eller Linux-operativsystem. 
-
-Innan du börjar kan du [Granska de data](migrate-appliance.md#collected-data---hyper-v) som samlas in under identifieringen.
 
 ## <a name="prepare-an-azure-user-account"></a>Förbereda ett Azure-användarkonto
 
 Om du vill skapa ett Azure Migrate-projekt och registrera Azure Migrate-enheten måste du ha ett konto med:
 - Deltagar-eller ägar behörigheter för en Azure-prenumeration.
-- Behörighet att registrera Azure Active Directory appar.
+- Behörighet att registrera Azure Active Directory-appar (AAD).
 
 Om du nyligen skapade ett kostnadsfritt Azure-konto är du ägare av prenumerationen. Om du inte är prenumerations ägare kan du arbeta med ägaren för att tilldela behörigheterna på följande sätt:
 
@@ -71,20 +69,20 @@ Om du nyligen skapade ett kostnadsfritt Azure-konto är du ägare av prenumerati
 
     ![Öppnar sidan Lägg till roll tilldelning för att tilldela kontot en roll](./media/tutorial-discover-hyper-v/assign-role.png)
 
-7. I portalen söker du efter användare och under **tjänster** väljer **du användare**.
-8. I **användar inställningar** kontrollerar du att Azure AD-användare kan registrera program (anges till **Ja** som standard).
+1. För att registrera installationen behöver ditt Azure-konto **behörighet att registrera AAD-appar.**
+1. I Azure Portal navigerar du till **Azure Active Directory**  >  **användares**  >  **användar inställningar**.
+1. I **användar inställningar** kontrollerar du att Azure AD-användare kan registrera program (anges till **Ja** som standard).
 
     ![Verifiera i användar inställningar som användare kan registrera Active Directory appar](./media/tutorial-discover-hyper-v/register-apps.png)
 
-9. Alternativt kan klient organisationen/den globala administratören tilldela rollen **programutvecklare** till ett konto för att tillåta registrering av AAD-appar. [Läs mer](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md).
+9. Om inställningen "Appregistreringar" är inställd på "nej", ber du klienten/den globala administratören att tilldela den behörighet som krävs. Alternativt kan klient organisationen/den globala administratören tilldela rollen **programutvecklare** till ett konto för att tillåta registrering av AAD-appen. [Läs mer](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md).
 
 ## <a name="prepare-hyper-v-hosts"></a>Förbereda Hyper-V-värdar
 
 Konfigurera ett konto med administratörs åtkomst på Hyper-V-värdarna. Enheten använder det här kontot för identifiering.
 
 - Alternativ 1: Förbered ett konto med administratörs åtkomst till Hyper-V-värddatorn.
-- Alternativ 2: Förbered ett lokalt administratörs konto eller ett domän administratörs konto och Lägg till kontot i dessa grupper: fjärrhanterings användare, Hyper-V-administratörer och användare av prestanda övervakning.
-
+- Alternativ 2: om du inte vill tilldela administratörs behörighet skapar du ett lokalt användar konto eller ett domän användar konto och lägger till användar kontot i dessa grupper – fjärrhanterings användare, Hyper-V-administratörer och användare av prestanda övervakning.
 
 ## <a name="set-up-a-project"></a>Konfigurera ett projekt
 
@@ -99,26 +97,28 @@ Skapa ett nytt Azure Migrate-projekt.
    ![Rutor för projekt namn och region](./media/tutorial-discover-hyper-v/new-project.png)
 
 7. Välj **Skapa**.
-8. Vänta några minuter tills Azure Migrate-projektet har distribuerats.
-
-Verktyget **Azure Migrate: Server bedömning** läggs till som standard i det nya projektet.
+8. Vänta några minuter innan det Azure Migrate projektet distribueras. Verktyget **Azure Migrate: Server bedömning** läggs till som standard i det nya projektet.
 
 ![Sida som visar verktyget för Server bedömning som har lagts till som standard](./media/tutorial-discover-hyper-v/added-tool.png)
 
+> [!NOTE]
+> Om du redan har skapat ett projekt kan du använda samma projekt för att registrera ytterligare enheter för att identifiera och utvärdera fler virtuella datorer.[Läs mer](create-manage-projects.md#find-a-project)
 
 ## <a name="set-up-the-appliance"></a>Konfigurera installationen
 
+Azure Migrate: Server utvärderingen använder en förenklad Azure Migrate-apparat. Installationen utför VM-identifiering och skickar metadata för VM-konfiguration och prestanda till Azure Migrate. Installationen kan konfigureras genom att distribuera en VHD-fil som kan laddas ned från Azure Migrate-projektet.
+
+> [!NOTE]
+> Om du av någon anledning inte kan konfigurera installationen med hjälp av mallen kan du konfigurera den med hjälp av ett PowerShell-skript på en befintlig Windows Server 2016-Server. [Läs mer](deploy-appliance-script.md#set-up-the-appliance-for-hyper-v).
+
 Den här självstudien konfigurerar installationen på en virtuell Hyper-V-dator, enligt följande:
 
-- Ange ett namn på apparaten och generera en Azure Migrate projekt nyckel i portalen.
-- Ladda ned en komprimerad virtuell Hyper-V-hårddisk från Azure Portal.
-- Skapa installationen och kontrol lera att den kan ansluta till Azure Migrate Server utvärdering.
-- Konfigurera enheten för första gången och registrera den med det Azure Migrate projektet med hjälp av Azure Migrate projekt nyckeln.
-> [!NOTE]
-> Om du av någon anledning inte kan konfigurera installationen med hjälp av en mall kan du konfigurera den med hjälp av ett PowerShell-skript. [Läs mer](deploy-appliance-script.md#set-up-the-appliance-for-hyper-v).
+1. Ange ett namn på apparaten och generera en Azure Migrate projekt nyckel i portalen.
+1. Ladda ned en komprimerad virtuell Hyper-V-hårddisk från Azure Portal.
+1. Skapa installationen och kontrol lera att den kan ansluta till Azure Migrate Server utvärdering.
+1. Konfigurera enheten för första gången och registrera den med det Azure Migrate projektet med hjälp av Azure Migrate projekt nyckeln.
 
-
-### <a name="generate-the-azure-migrate-project-key"></a>Generera Azure Migrate projekt nyckel
+### <a name="1-generate-the-azure-migrate-project-key"></a>1. generera Azure Migrate projekt nyckeln
 
 1. I **Migreringsmål** > **Servrar** > **Azure Migrate: Serverutvärdering** väljer du **Identifiera**.
 2. I **identifiera datorer**  >  **är dina datorer virtualiserade?** väljer du **Ja, med Hyper-V**.
@@ -127,10 +127,9 @@ Den här självstudien konfigurerar installationen på en virtuell Hyper-V-dator
 1. När Azure-resurserna har skapats skapas en **Azure Migrate projekt nyckel** .
 1. Kopiera nyckeln på samma sätt som du behöver den för att slutföra registreringen av enheten under konfigurationen.
 
-### <a name="download-the-vhd"></a>Ladda ned den virtuella hård disken
+### <a name="2-download-the-vhd"></a>2. Ladda ned den virtuella hård disken
 
-I **2: Ladda ned Azure Migrate-enheten** väljer du. VHD-fil och klicka på **Hämta**. 
-
+I **2: Ladda ned Azure Migrate-enheten** väljer du. VHD-fil och klicka på **Hämta**.
 
 ### <a name="verify-security"></a>Verifiera säkerhet
 
@@ -156,7 +155,7 @@ Kontrol lera att den zippade filen är säker innan du distribuerar den.
         --- | --- | ---
         Hyper-V (85,8 MB) | [Senaste version](https://go.microsoft.com/fwlink/?linkid=2140424) |  cfed44bb52c9ab3024a628dc7a5d0df8c624f156ec1ecc3507116bae330b257f
 
-### <a name="create-the-appliance-vm"></a>Skapa VM-enheten
+### <a name="3-create-the-appliance-vm"></a>3. skapa den virtuella dator enheten
 
 Importera den hämtade filen och skapa den virtuella datorn.
 
@@ -177,7 +176,7 @@ Importera den hämtade filen och skapa den virtuella datorn.
 
 Se till att den virtuella datorns virtuella datorer kan ansluta till Azure-URL: er för [offentliga](migrate-appliance.md#public-cloud-urls) och [offentliga](migrate-appliance.md#government-cloud-urls) moln.
 
-### <a name="configure-the-appliance"></a>Konfigurera installationen
+### <a name="4-configure-the-appliance"></a>4. Konfigurera enheten
 
 Konfigurera enheten för första gången.
 
@@ -214,8 +213,6 @@ Konfigurera enheten för första gången.
 1. När du har loggat in går du tillbaka till föregående flik med installationen av Konfigurations hanteraren.
 4. Om Azure-användarkontot som används för loggning har rätt behörigheter för de Azure-resurser som skapades under den här nyckeln, initieras registrerings enheten.
 1. När installationen av enheten har registrerats kan du se registrerings informationen genom att klicka på **Visa information**.
-
-
 
 ### <a name="delegate-credentials-for-smb-vhds"></a>Delegera autentiseringsuppgifter för SMB-VHD: er
 
