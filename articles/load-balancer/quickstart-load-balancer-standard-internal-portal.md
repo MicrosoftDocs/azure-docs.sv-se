@@ -15,18 +15,18 @@ ms.workload: infrastructure-services
 ms.date: 07/30/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 14203021846e97a53f59c3bc24a1586774613dec
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: f70116847a8743cf8b3cb56ff35f9d913f13f359
+ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97704341"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98562360"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Snabb start: skapa en intern belastningsutjämnare för att belastningsutjämna virtuella datorer med hjälp av Azure Portal
 
 Kom igång med Azure Load Balancer genom att använda Azure Portal för att skapa en intern belastningsutjämnare och tre virtuella datorer.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 - Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -41,11 +41,13 @@ Logga in på Azure Portal på [https://portal.azure.com](https://portal.azure.co
 >[!NOTE]
 >Standard-SKU-belastningsutjämnare rekommenderas för produktions arbets belastningar.  Mer information om SKU: er finns i **[Azure Load Balancer SKU: er](skus.md)**.
 
-:::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/resources-diagram-internal.png" alt-text="Standard belastnings Utjämnings resurser har skapats för snabb start." border="false":::
-
 I det här avsnittet skapar du en belastningsutjämnare som laddar upp virtuella datorer. 
 
 När du skapar en intern belastningsutjämnare konfigureras ett virtuellt nätverk som nätverk för belastningsutjämnaren. 
+
+Följande diagram visar de resurser som skapats i den här snabb starten:
+
+:::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/resources-diagram-internal.png" alt-text="Standard belastnings Utjämnings resurser har skapats för snabb start." border="false":::
 
 En privat IP-adress i det virtuella nätverket har kon figurer ATS som klient del (kallas som **LoadBalancerFrontend** som standard) för belastningsutjämnaren. 
 
@@ -112,7 +114,7 @@ I det här avsnittet ska du skapa ett virtuellt nätverk och ett undernät.
     | ---                     | ---                                                |
     | Prenumeration               | Välj din prenumeration.    |    
     | Resursgrupp         | Välj **CreateIntLBQS-RG** som du skapade i föregående steg.|
-    | Namn                   | Ange **myLoadBalancer**                                   |
+    | Name                   | Ange **myLoadBalancer**                                   |
     | Region         | Välj **Europa, västra**.                                        |
     | Typ          | Välj **Intern**.                                        |
     | SKU           | Välj **standard** |
@@ -199,12 +201,8 @@ I det här avsnittet ska du skapa en belastnings Utjämnings regel:
     | Hälsoavsökning | Välj **myHealthProbe**. |
     | Tids gräns för inaktivitet (minuter) | Flytta skjutreglaget till **15** minuter. |
     | TCP-återställning | Välj **Aktiverad**. |
-    | Utgående käll Network Address Translation (SNAT) | Välj **(rekommenderas) Använd utgående regler för att ge backend-poolens medlemmar åtkomst till Internet.** |
-
+    
 4. Lämna resten av standardinställningarna och välj sedan **OK**.
-
->[!NOTE]
->De virtuella datorerna i backend-poolen har ingen utgående Internet anslutning med den här konfigurationen. </br> Mer information om hur du tillhandahåller utgående anslutningar finns i: </br> **[Utgående anslutningar i Azure](load-balancer-outbound-connections.md)**</br> Alternativ för att tillhandahålla anslutning: </br> **[Konfiguration för lastbalanserare med ”endast utgående”](egress-only.md)** </br> **[Vad är Virtual Network NAT?](../virtual-network/nat-overview.md)**
 
 ## <a name="create-backend-servers"></a>Skapa serverdelsservrar
 
@@ -268,7 +266,7 @@ De här virtuella datorerna läggs till i backend-poolen för belastningsutjämn
 
     | Inställning | VM 2 | VM 3 |
     | ------- | ----- | ---- |
-    | Namn |  **myVM2** | **myVM3** |
+    | Name |  **myVM2** | **myVM3** |
     | Tillgänglighetszon | **2** | **3** |
     | Nätverkssäkerhetsgrupp | Välj den befintliga **myNSG**| Välj den befintliga **myNSG** |
 
@@ -278,11 +276,13 @@ De här virtuella datorerna läggs till i backend-poolen för belastningsutjämn
 >[!NOTE]
 >Standard-SKU-belastningsutjämnare rekommenderas för produktions arbets belastningar.  Mer information om SKU: er finns i **[Azure Load Balancer SKU: er](skus.md)**.
 
-:::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/resources-diagram-internal-basic.png" alt-text="Grundläggande belastnings Utjämnings resurser skapade i snabb starten." border="false":::
-
 I det här avsnittet skapar du en belastningsutjämnare som laddar upp virtuella datorer. 
 
 När du skapar en intern belastningsutjämnare konfigureras ett virtuellt nätverk som nätverk för belastningsutjämnaren. 
+
+Följande diagram visar de resurser som skapats i den här snabb starten:
+
+:::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/resources-diagram-internal-basic.png" alt-text="Grundläggande belastnings Utjämnings resurser skapade i snabb starten." border="false":::
 
 En privat IP-adress i det virtuella nätverket har kon figurer ATS som klient del (kallas som **LoadBalancerFrontend** som standard) för belastningsutjämnaren. 
 
@@ -349,7 +349,7 @@ I det här avsnittet ska du skapa ett virtuellt nätverk och ett undernät.
     | ---                     | ---                                                |
     | Prenumeration               | Välj din prenumeration.    |    
     | Resursgrupp         | Välj **CreateIntLBQS-RG** som du skapade i föregående steg.|
-    | Namn                   | Ange **myLoadBalancer**                                   |
+    | Name                   | Ange **myLoadBalancer**                                   |
     | Region         | Välj **Europa, västra**.                                        |
     | Typ          | Välj **Intern**.                                        |
     | SKU           | Välj **grundläggande** |
@@ -506,7 +506,7 @@ De här virtuella datorerna läggs till i backend-poolen för belastningsutjämn
 
     | Inställning | VM 2 | VM 3 |
     | ------- | ----- | ---- |
-    | Namn |  **myVM2** | **myVM3** |
+    | Name |  **myVM2** | **myVM3** |
     | Tillgänglighetsuppsättning | Välj **myAvailabilitySet** | Välj **myAvailabilitySet** |
     | Nätverkssäkerhetsgrupp | Välj den befintliga **myNSG** | Välj den befintliga **myNSG** |
 

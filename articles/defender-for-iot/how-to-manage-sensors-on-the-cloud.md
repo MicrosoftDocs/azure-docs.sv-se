@@ -7,16 +7,16 @@ ms.author: shhazam
 ms.date: 12/27/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: a763d8b65049cd9f301379c2c038a1d799114653
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 427ea3884a3db6ba33405014435cf1f962670064
+ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97841890"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98562717"
 ---
 # <a name="onboard-and-manage-sensors-in-the-defender-for-iot-portal"></a>Publicera och hantera sensorer i Defender för IoT-portalen
 
-Den här artikeln beskriver hur du hanterar, visar och hanterar sensorer i Defender for IoT-portalen.
+Den här artikeln beskriver hur du hanterar, visar och hanterar sensorer i [Defender for IoT-portalen](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started).
 
 ## <a name="onboard-sensors"></a>Registrera sensorer
 
@@ -26,9 +26,9 @@ Du registrerar en sensor genom att registrera den med Azure Defender för IoT oc
 
 Så här registrerar du dig:
 
-1. Gå till **välkomst** sidan i Defender för IoT-portalen.
+1. Gå till **välkomst** sidan i [Defender för IoT-portalen](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started).
 1. Välj **onboard-sensor**.
-1. Skapa ett sensor namn. Vi rekommenderar att du inkluderar IP-adressen för sensorn som du installerade som en del av namnet eller använder ett enkelt identifierbart namn. På så sätt kan du lättare spåra och konsekvent namnge mellan registrerings namnet i Azure Defender för IoT-portalen och IP-adressen för den distribuerade sensorn som visas i sensor konsolen.
+1. Skapa ett sensor namn. Vi rekommenderar att du inkluderar IP-adressen för sensorn som du installerade som en del av namnet eller använder ett enkelt identifierbart namn. På så sätt kan du lättare spåra och konsekvent namnge mellan registrerings namnet i Azure [Defender för IoT-portalen](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started) och IP-adressen för den distribuerade sensorn som visas i sensor konsolen.
 1. Koppla sensorn till en Azure-prenumeration.
 1. Välj ett sensor hanterings läge med hjälp av den **anslutna molnet** . Om växlings listen är på är sensorn ansluten till molnet. Om växlingen är avstängd hanteras sensorn lokalt.
 
@@ -52,7 +52,7 @@ Så här hämtar du en aktiverings fil:
 
 ## <a name="view-onboarded-sensors"></a>Visa inbyggda sensorer
 
-I Defender för IoT-portalen kan du visa grundläggande information om inbyggda sensorer. 
+I [Defender för IoT-portalen](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started)kan du visa grundläggande information om inbyggda sensorer. 
 
 1. Välj **platser och sensorer**.
 1. På sidan **platser och sensorer** använder du filter-och sökverktyg för att hitta sensor information som du behöver.
@@ -66,7 +66,7 @@ Den tillgängliga informationen innehåller:
 
 ## <a name="manage-onboarded-sensors"></a>Hantera inbyggda sensorer
 
-Du kan använda Defender för IoT-portalen för hanterings uppgifter som rör sensorer.
+Du kan använda [Defender för IoT-portalen](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started) för hanterings uppgifter som rör sensorer.
 
 ### <a name="export"></a>Exportera
 
@@ -87,9 +87,9 @@ Så här tar du bort en sensor:
 
 ### <a name="reactivate"></a>Återaktivera
 
-Du kanske vill uppdatera det läge som sensorn hanterar i. Exempel:
+Du kanske vill uppdatera det läge som sensorn hanterar i. Till exempel:
 
-- **Arbeta i Cloud-anslutet läge i stället för lokalt hanterat läge**: om du vill göra detta uppdaterar du aktiverings filen för din lokalt anslutna sensor med en aktiverings fil för en molnbaserad sensor. Efter återaktivering visas sensor identifieringar i både sensorn och Defender för IoT-portalen. När återaktiveringens filen har laddats upp skickas nyligen identifierad aviserings information till Azure.
+- **Arbeta i Cloud-anslutet läge i stället för lokalt hanterat läge**: om du vill göra detta uppdaterar du aktiverings filen för din lokalt anslutna sensor med en aktiverings fil för en molnbaserad sensor. Efter återaktivering visas sensor identifieringar i både sensorn och [Defender för IoT-portalen](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started). När återaktiveringens filen har laddats upp skickas nyligen identifierad aviserings information till Azure.
 
 - **Arbeta i lokalt anslutet läge i stället för läget för moln anslutning**: om du vill göra detta uppdaterar du aktiverings filen för en molnbaserad sensor med en aktiverings fil för en lokalt hanterad sensor. Efter återaktivering visas sensor identifierings information endast i sensorn.
 
@@ -97,7 +97,7 @@ Du kanske vill uppdatera det läge som sensorn hanterar i. Exempel:
 
 Så här återaktiverar du en sensor:
 
-1. Gå till **platser och sensorer** -sidan på-portalen för Defender för IoT.
+1. Gå till **platser och sensorer** -sidan på- [portalen för Defender för IoT](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started).
 
 2. Välj den sensor som du vill ladda upp en ny aktiverings fil för.
 
@@ -119,4 +119,4 @@ Så här återaktiverar du en sensor:
 
 ## <a name="see-also"></a>Se även
 
-[Aktivera och konfigurera din sensor](how-to-activate-and-set-up-your-sensor.md)
+[Aktivera och konfigurera sensor](how-to-activate-and-set-up-your-sensor.md)

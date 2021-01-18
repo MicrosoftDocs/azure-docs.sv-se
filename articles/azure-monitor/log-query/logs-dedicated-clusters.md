@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 09/16/2020
-ms.openlocfilehash: 34524626cc213233c3db2ca438261b238eb18a2a
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.openlocfilehash: 93b05a5535b80d0e0d1a07c88aa9b19052f1b703
+ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97831779"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98562683"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Azure Monitor loggar dedicerade kluster
 
@@ -58,7 +58,7 @@ Mer information debiteras för Log Analytics dedikerade kluster finns [här]( ht
 
 ## <a name="asynchronous-operations-and-status-check"></a>Asynkrona åtgärder och status kontroll
 
-Vissa konfigurations steg körs asynkront eftersom de inte kan slutföras snabbt. Statusen i Response kan vara något av följande: "pågår", "uppdatering", "ta bort", "lyckades eller" misslyckades ", inklusive felkoden. När du använder REST returnerar svaret ursprungligen en HTTP-statuskod 200 (OK) och rubriken med Azure-AsyncOperation-egenskapen när den godkänns:
+Vissa konfigurations steg körs asynkront eftersom de inte kan slutföras snabbt. Statusen i Response kan vara något av följande: "pågår", "uppdatering", "ta bort", "lyckades eller" misslyckades ", inklusive felkoden. När du använder REST returnerar svaret ursprungligen HTTP-statuskod 202 (accepterad) och rubrik med Azure-AsyncOperation egenskap:
 
 ```JSON
 "Azure-AsyncOperation": "https://management.azure.com/subscriptions/subscription-id/providers/Microsoft.OperationalInsights/locations/region-name/operationStatuses/operation-id?api-version=2020-08-01"
@@ -125,7 +125,7 @@ Content-type: application/json
 
 *Response*
 
-Ska vara 200 OK och en rubrik.
+Ska vara 202 (accepterad) och ett sidhuvud.
 
 ### <a name="check-cluster-provisioning-status"></a>Kontrol lera etablerings statusen för klustret
 
@@ -229,7 +229,7 @@ Content-type: application/json
 
 *Response*
 
-200 OK och rubrik.
+202 (accepterad) och rubrik.
 
 ### <a name="check-workspace-link-status"></a>Kontrol lera länk status för arbets ytan
   

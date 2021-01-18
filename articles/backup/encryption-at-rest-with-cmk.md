@@ -3,12 +3,12 @@ title: Kryptering av säkerhets kopierings data med Kundhanterade nycklar
 description: Lär dig hur Azure Backup kan kryptera dina säkerhetskopierade data med Kundhanterade nycklar (CMK).
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: cc6ad2f67b84bcd62bcc18566a4ac5d159ea32c4
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 30bcf907e1a2759c8a9977e50cb4880c2e254ca2
+ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98197788"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98562768"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>Kryptering av säkerhets kopierings data med Kundhanterade nycklar
 
@@ -37,7 +37,10 @@ I den här artikeln beskrivs följande:
 
 - Det finns för närvarande inte stöd för att flytta CMK-krypterade Recovery Services valv över resurs grupper och prenumerationer.
 
-- Den här funktionen kan för närvarande bara konfigureras från Azure Portal.
+- Den här funktionen kan konfigureras via Azure Portal och PowerShell.
+
+    >[!NOTE]
+    >Använd AZ-modulen 5.3.0 eller mer om du vill använda Kundhanterade nycklar för säkerhets kopieringar i Recovery Services valvet.
 
 Om du inte har skapat och konfigurerat Recovery Services-valvet kan du [läsa hur du gör det här](backup-create-rs-vault.md).
 
@@ -62,6 +65,8 @@ Azure Backup använder systemtilldelad hanterad identitet för att autentisera R
 >[!NOTE]
 >Den hanterade identiteten får **inte** inaktive ras (även tillfälligt). Inaktive ring av den hanterade identiteten kan leda till inkonsekvent beteende.
 
+**I portalen:**
+
 1. Gå till Recovery Services valv – > **identitet**
 
     ![Identitets inställningar](./media/encryption-at-rest-with-cmk/managed-identity.png)
@@ -70,9 +75,33 @@ Azure Backup använder systemtilldelad hanterad identitet för att autentisera R
 
 1. Ett objekt-ID genereras, vilket är den systemtilldelade hanterade identiteten för valvet.
 
+**Med PowerShell:**
+
+Använd kommandot [Update-AzRecoveryServicesVault](https://docs.microsoft.com/powershell/module/az.recoveryservices/update-azrecoveryservicesvault) för att aktivera systemtilldelad hanterad identitet för Recovery Services-valvet.
+
+Exempel:
+
+```AzurePowerShell
+$vault=Get-AzRecoveryServicesVault -ResourceGroupName "testrg" -Name "testvault"
+
+Update-AzRecoveryServicesVault -IdentityType SystemAssigned -VaultId $vault.ID
+
+$vault.Identity | fl
+```
+
+Utdata:
+
+```output
+PrincipalId : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+TenantId    : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+Type        : SystemAssigned
+```
+
 ### <a name="assign-permissions-to-the-recovery-services-vault-to-access-the-encryption-key-in-the-azure-key-vault"></a>Tilldela behörighet till Recovery Servicess valvet för att få åtkomst till krypterings nyckeln i Azure Key Vault
 
 Du måste nu tillåta Recovery Services-valvet att få åtkomst till Azure Key Vault som innehåller krypterings nyckeln. Detta görs genom att tillåta att Recovery Services valvets hanterade identitet får åtkomst till Key Vault.
+
+**I portalen**:
 
 1. Gå till dina Azure Key Vault-> **åtkomst principer**. Fortsätt till **+ Lägg till åtkomst principer**.
 
@@ -89,6 +118,32 @@ Du måste nu tillåta Recovery Services-valvet att få åtkomst till Azure Key V
 1. När du är färdig väljer du **Lägg** till för att lägga till den nya åtkomst principen.
 
 1. Välj **Spara** för att spara ändringar som gjorts i åtkomst principen för Azure Key Vault.
+
+**Med PowerShell**:
+
+Använd kommandot [set-AzRecoveryServicesVaultProperty](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultproperty) för att aktivera kryptering med Kundhanterade nycklar och för att tilldela eller uppdatera krypterings nyckeln som ska användas.
+
+Exempel:
+
+```azurepowershell
+$keyVault = Get-AzKeyVault -VaultName "testkeyvault" -ResourceGroupName "testrg" 
+$key = Get-AzKeyVaultKey -VaultName $keyVault -Name "testkey" 
+Set-AzRecoveryServicesVaultProperty -EncryptionKeyId $key.ID -KeyVaultSubscriptionId "xxxx-yyyy-zzzz"  -VaultId $vault.ID
+
+
+$enc=Get-AzRecoveryServicesVaultProperty -VaultId $vault.ID
+$enc.encryptionProperties | fl
+```
+
+Utdata:
+
+```output
+EncryptionAtRestType          : CustomerManaged
+KeyUri                        : testkey
+SubscriptionId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx 
+LastUpdateStatus              : Succeeded
+InfrastructureEncryptionState : Disabled
+```
 
 ### <a name="enable-soft-delete-and-purge-protection-on-the-azure-key-vault"></a>Aktivera mjuk borttagning och tömning av skydd på Azure Key Vault
 
@@ -220,6 +275,8 @@ Du kan kryptera den återställda disken/virtuella datorn när återställningen
 
 #### <a name="select-a-disk-encryption-set-while-restoring-from-vault-recovery-point"></a>Välj en disk krypterings uppsättning vid återställning från valv återställnings punkt
 
+**I portalen**:
+
 Disk krypterings uppsättningen anges under krypterings inställningar i återställnings fönstret, som du ser nedan:
 
 1. I **kryptera disk (er) med din nyckel** väljer du **Ja**.
@@ -230,6 +287,21 @@ Disk krypterings uppsättningen anges under krypterings inställningar i återst
 >Möjligheten att välja ett DES när du återställer är inte tillgänglig om du återställer en virtuell dator som använder Azure Disk Encryption.
 
 ![Kryptera disk med din nyckel](./media/encryption-at-rest-with-cmk/encrypt-disk-using-your-key.png)
+
+**Med PowerShell**:
+
+Använd kommandot [Get-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem) med parametern [ `-DiskEncryptionSetId <string>` ] för att [Ange det des](https://docs.microsoft.com/powershell/module/az.compute/get-azdiskencryptionset) som ska användas för att kryptera den återställda disken. Mer information om hur du återställer diskar från VM-säkerhetskopiering finns i [den här artikeln](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#restore-an-azure-vm).
+
+Exempel:
+
+```azurepowershell
+$namedContainer = Get-AzRecoveryServicesBackupContainer  -ContainerType "AzureVM" -Status "Registered" -FriendlyName "V2VM" -VaultId $vault.ID
+$backupitem = Get-AzRecoveryServicesBackupItem -Container $namedContainer  -WorkloadType "AzureVM" -VaultId $vault.ID
+$startDate = (Get-Date).AddDays(-7)
+$endDate = Get-Date
+$rp = Get-AzRecoveryServicesBackupRecoveryPoint -Item $backupitem -StartDate $startdate.ToUniversalTime() -EndDate $enddate.ToUniversalTime() -VaultId $vault.ID
+$restorejob = Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -StorageAccountName "DestAccount" -StorageAccountResourceGroupName "DestRG" -TargetResourceGroupName "DestRGforManagedDisks" -DiskEncryptionSetId “testdes1” -VaultId $vault.ID
+```
 
 #### <a name="restoring-files"></a>Filer återställs
 

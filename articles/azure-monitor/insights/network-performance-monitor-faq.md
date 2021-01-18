@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
-ms.openlocfilehash: dd6c6248fcdf30350daecaa4857a81447bbdb7a8
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: 8e26a4d996e4c1767856b3dd98ae318d8992a89b
+ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93280314"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98562700"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Vanliga frågor om Övervakare av nätverksprestanda-lösning
 
@@ -34,7 +34,7 @@ Nedan visas plattforms kraven för NPM olika funktioner:
 - NPM för ExpressRoute-övervakaren stöder bara Windows Server (2008 SP1 eller senare) operativ system.
 
 ### <a name="can-i-use-linux-machines-as-monitoring-nodes-in-npm"></a>Kan jag använda Linux-datorer som övervaknings-noder i NPM?
-Möjligheten att övervaka nätverk som använder Linux-baserade noder är för närvarande en för hands version. Öppna agenten [här](../../virtual-machines/extensions/oms-linux.md). Kontakta din konto ansvarige om du vill veta mer. Linux-agenter tillhandahåller endast övervaknings funktioner för prestanda övervakaren i NPM och är inte tillgängliga för övervaknings funktionerna för tjänst anslutning och ExpressRoute
+Funktionen för att övervaka nätverk som använder Linux-baserade noder är nu allmänt tillgänglig. Öppna agenten [här](../../virtual-machines/extensions/oms-linux.md). Linux-agenter tillhandahåller endast övervaknings funktioner för prestanda övervakaren i NPM och är inte tillgängliga för övervaknings funktionerna för tjänst anslutning och ExpressRoute
 
 ### <a name="what-are-the-size-requirements-of-the-nodes-to-be-used-for-monitoring-by-npm"></a>Vilka är storleks kraven för noderna som ska användas för övervakning av NPM?
 För att köra NPM-lösningen på nod-VM: ar för att övervaka nätverk ska noderna ha minst 500 MB minne och en kärna. Du behöver inte använda separata noder för att köra NPM. Lösningen kan köras på noder som har andra arbets belastningar som körs på den. Lösningen har möjlighet att stoppa övervaknings processen om den använder mer än 5% processor.

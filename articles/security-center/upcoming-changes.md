@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/05/2021
+ms.date: 01/18/2021
 ms.author: memildin
-ms.openlocfilehash: 071f1974e09d2754fe20f3ac2cc90929c4a2eb98
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: ba9a640c2231c7098e58ad6e29bbfa196436a7f9
+ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98180225"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98562326"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>Viktiga kommande ändringar i Azure Security Center
 
@@ -31,10 +31,24 @@ Om du letar efter den senaste versions informationen hittar du dem i [vad som ä
 
 ## <a name="planned-changes"></a>Planerade ändringar
 
+- [Två rekommendationer från "tillämpa system uppdateringar"-säkerhets kontrollen är inaktuell](#two-recommendations-from-apply-system-updates-security-control-being-deprecated)
 - [Förbättringar av SQL data klassificerings rekommendation](#enhancements-to-sql-data-classification-recommendation)
 - ["Ej tillämpligt" resurser som ska rapporteras som "kompatibla" i Azure Policy bedömningar](#not-applicable-resources-to-be-reported-as-compliant-in-azure-policy-assessments)
 - [35 för hands versioner har lagts till för att öka täckningen av Azures säkerhets prestanda](#35-preview-recommendations-being-added-to-increase-coverage-of-azure-security-benchmark)
 
+
+### <a name="two-recommendations-from-apply-system-updates-security-control-being-deprecated"></a>Två rekommendationer från "tillämpa system uppdateringar"-säkerhets kontrollen är inaktuell 
+
+**Beräknat datum för ändring:** Februari 2021
+
+Följande två rekommendationer är schemalagda att bli föråldrade i februari 2021:
+
+- **Datorerna måste startas om för att tillämpa system uppdateringar**. Detta kan leda till en lätt inverkan på dina säkra poäng.
+- **Övervaknings agenten ska installeras på datorerna**. Den här rekommendationen gäller endast för lokala datorer och en del av dess logik överförs till en annan rekommendation, **Log Analytics agent hälso problem bör lösas på dina datorer**. Detta kan leda till en lätt inverkan på dina säkra poäng.
+
+Vi rekommenderar att du kontrollerar dina kontinuerliga export-och arbets flödes automatiserings konfigurationer för att se om dessa rekommendationer ingår i dem. Dessutom bör alla instrument paneler och andra övervaknings verktyg som kan använda dem uppdateras i enlighet med detta.
+
+Läs mer om de här rekommendationerna på [referens sidan för säkerhets rekommendationer](recommendations-reference.md).
 
 
 ### <a name="enhancements-to-sql-data-classification-recommendation"></a>Förbättringar av SQL data klassificerings rekommendation

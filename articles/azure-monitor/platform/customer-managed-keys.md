@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 01/10/2021
-ms.openlocfilehash: 6c1f323828eb48b61b38370bc2fe56d4c93bf036
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: 889ee48c43119086047d6f52737266f4c611fc8d
+ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98127217"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98562751"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Kundhanterad nyckel i Azure Monitor 
 
@@ -83,19 +83,19 @@ Vissa konfigurations steg körs asynkront eftersom de inte kan slutföras snabbt
 
 # <a name="azure-portal"></a>[Azure-portalen](#tab/portal)
 
-Saknas
+Ej tillämpligt
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Saknas
+Ej tillämpligt
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Saknas
+Ej tillämpligt
 
 # <a name="rest"></a>[REST](#tab/rest)
 
-När du använder REST returnerar svaret ursprungligen en HTTP-statuskod 200 (OK) och rubriken med *Azure-AsyncOperation-* egenskapen när den godkänns:
+När du använder REST returnerar svaret ursprungligen HTTP-statuskod 202 (accepterad) och rubrik med *Azure-AsyncOperation-* egenskap:
 ```json
 "Azure-AsyncOperation": "https://management.azure.com/subscriptions/subscription-id/providers/Microsoft.OperationalInsights/locations/region-name/operationStatuses/operation-id?api-version=2020-08-01"
 ```
@@ -160,7 +160,7 @@ Uppdatera KeyVaultProperties i kluster med information om nyckel identifierare.
 
 # <a name="azure-portal"></a>[Azure-portalen](#tab/portal)
 
-Saknas
+Ej tillämpligt
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -200,7 +200,7 @@ Det tar flera minuter att slutföra spridningen av nyckeln. Du kan kontrol lera 
 1. Kopiera Azure-AsyncOperation URL-värdet från svaret och följ [status kontrollen asynkrona åtgärder](#asynchronous-operations-and-status-check).
 2. Skicka en GET-begäran i klustret och titta på egenskaperna för *KeyVaultProperties* . Den nyligen uppdaterade nyckeln bör returneras i svaret.
 
-Ett svar på GET-begäran bör se ut så här när nyckel uppdateringen är klar: 200 OK och sidhuvud
+Ett svar på GET-begäran bör se ut så här när nyckel uppdateringen är slutförd: 202 (accepterad) och rubrik
 ```json
 {
   "identity": {
@@ -283,7 +283,7 @@ Länka ett lagrings konto för *fråga* till din arbets yta – *sparade – sö
 
 # <a name="azure-portal"></a>[Azure-portalen](#tab/portal)
 
-Saknas
+Ej tillämpligt
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -327,7 +327,7 @@ Länka ett lagrings konto för *aviseringar* till arbets ytan – *logg aviserin
 
 # <a name="azure-portal"></a>[Azure-portalen](#tab/portal)
 
-Saknas
+Ej tillämpligt
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 

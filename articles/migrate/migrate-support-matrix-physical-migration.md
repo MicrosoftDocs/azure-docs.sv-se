@@ -6,16 +6,16 @@ ms.author: rahugup
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 06/14/2020
-ms.openlocfilehash: a1203133d8749b43a92d89e7251539a1e002bfd8
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: a3e8b19810a58031b4d11cc6e361215afbc85de2
+ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968576"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98562649"
 ---
 # <a name="support-matrix-for-physical-server-migration"></a>Support mat ris för fysisk server-migrering
 
-I den här artikeln sammanfattas support inställningar och begränsningar för migrering av fysiska servrar med [Azure Migrate: Server-migrering](migrate-services-overview.md#azure-migrate-server-migration-tool) . Om du vill ha information om hur du bedömer fysiska servrar för migrering till Azure läser du [matrisen för utvärderings support](migrate-support-matrix-physical.md).
+I den här artikeln sammanfattas support inställningar och begränsningar för migrering av fysiska servrar till Azure med [Azure Migrate: Server-migrering](migrate-services-overview.md#azure-migrate-server-migration-tool) . Om du vill ha information om hur du bedömer fysiska servrar för migrering till Azure läser du [matrisen för utvärderings support](migrate-support-matrix-physical.md).
 
 ## <a name="migrating-machines-as-physical"></a>Migrera datorer som fysiska
 
@@ -25,7 +25,7 @@ Du kan migrera lokala datorer som fysiska servrar med hjälp av en agent-baserad
 - Virtuella datorer som virtualiserats av plattformar som xen, KVM.
 - Virtuella Hyper-V-datorer eller virtuella VMware-datorer om du av någon anledning inte vill använda standard [Hyper-v-](tutorial-migrate-hyper-v.md) eller [VMware](server-migrate-overview.md) -flöden.
 - Virtuella datorer som körs i privata moln.
-- Virtuella datorer som körs i offentliga moln, till exempel Amazon Web Services (AWS) eller Google Cloud Platform (GCP).
+- Virtuella datorer som körs i offentliga moln, inklusive Amazon Web Services (AWS) eller Google Cloud Platform (GCP).
 
 
 ## <a name="migration-limitations"></a>Migreringsbegränsningar
@@ -57,7 +57,6 @@ Tabellen sammanfattar stödet för fysiska servrar som du vill migrera med hjäl
 **NFS** | NFS-volymer monterade som volymer på datorerna replikeras inte.
 **iSCSI-mål** | Datorer med iSCSI-mål stöds inte för migrering utan agent.
 **Multipath i/o** | Stöds inte.
-**Lagrings vMotion** | Stöds
 **Grupperade nätverkskort** | Stöds inte.
 **IPv6** | Stöds inte.
 
