@@ -571,7 +571,11 @@
             - name: Data har synkroniserats från din ITSM-produkt
               href: platform/itsmc-synced-data.md
             - name: Felsöka problem med anslutningsprogram för hantering av IT-tjänster (ITSM)
-              href: platform/itsmc-resync-servicenow.md
+              items:
+                - name: Översikt
+                  href: platform/itsmc-resync-servicenow.md
+                - name: Undersökning av instrumentpanel
+                  href: platform/itsmc-dashboard.md
             - name: Integrera med Secure Export
               items:
                 - name: Översikt
