@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 09/23/2020
+ms.date: 01/18/2021
 ms.author: alkohli
-ms.openlocfilehash: 059aad8b45aa449f5cd28c97f4ba55e2204c04ce
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 31947ca4d5eb632998f5c50257c12ef9a52dfc66
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937074"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98570107"
 ---
 # <a name="what-is-azure-stack-edge-pro-with-gpu"></a>Vad är Azure Stack Edge Pro med GPU?
 
@@ -71,7 +71,7 @@ Azure Stack Edge Pro-lösningen består av Azure Stack Edge-resurs, Azure Stack 
 
 Azure Stack fysisk enhet i Edge Pro, Azure-resursen och mål lagrings kontot som du överför data till, behöver inte allt vara i samma region.
 
-- **Resurs tillgänglighet** – för den här för hands versionen finns resursen tillgänglig i USA, västra EU och Asien, sydöstra regioner.
+- **Resurs tillgänglighet** – i den här versionen är resursen tillgänglig i USA, västra EU och Asien, sydöstra regioner.
 
 - **Enhets tillgänglighet** – för en lista över alla länder/regioner där Azure Stack Edge Pro-enheten är tillgänglig går du till avsnittet **tillgänglighet** på fliken **Azure Stack Edge Pro** för [Azure Stack Edge Pro-prissättning](https://azure.microsoft.com/pricing/details/azure-stack/edge/#azureStackEdgePro).
     

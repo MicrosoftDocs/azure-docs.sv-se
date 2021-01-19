@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: damendo
-ms.openlocfilehash: 5342c4505bd300d1287acba246ca59610f2697bd
-ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
+ms.openlocfilehash: 0d0597c2df8731171505a090de6959d8a112c004
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97858645"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98569988"
 ---
 # <a name="introduction-to-resource-troubleshooting-in-azure-network-watcher"></a>Introduktion till resurs fel sökning i Azure Network Watcher
 
@@ -54,9 +54,9 @@ Följande tabeller visar de olika fel typerna (ID under resultat från föregåe
 | PlannedMaintenance |  Gateway-instansen är under underhåll  |Nej|
 | UserDrivenUpdate | Det här felet inträffar när en användaruppdatering pågår. Uppdateringen kan vara en storleksändring. | Nej |
 | VipUnResponsive | Det här felet uppstår när den primära instansen av gatewayen inte kan nås på grund av ett fel i tillståndsavsökningen. | Nej |
-| PlatformInActive | Det är något problem med plattformen. | Nej|
-| ServiceNotRunning | Den underliggande tjänsten körs inte. | Nej|
-| NoConnectionsFoundForGateway | Det finns inga anslutningar på gatewayen. Det här felet är bara en varning.| Nej|
+| PlatformInActive | Det är något problem med plattformen. | Inga|
+| ServiceNotRunning | Den underliggande tjänsten körs inte. | Inga|
+| NoConnectionsFoundForGateway | Det finns inga anslutningar på gatewayen. Det här felet är bara en varning.| Inga|
 | ConnectionsNotConnected | Anslutningarna är inte anslutna. Det här felet är bara en varning.| Ja|
 | GatewayCPUUsageExceeded | Den aktuella processor användningen för gateway är > 95%. | Ja |
 
@@ -68,9 +68,9 @@ Följande tabeller visar de olika fel typerna (ID under resultat från föregåe
 | GatewayNotFound | Det går inte att hitta någon gateway eller gateway som har tillhandahållits |Nej|
 | PlannedMaintenance | Gateway-instansen är under underhåll  |Nej|
 | UserDrivenUpdate | Det här felet inträffar när en användaruppdatering pågår. Uppdateringen kan vara en storleksändring.  | Nej |
-| VipUnResponsive | Det här felet uppstår när den primära instansen av gatewayen inte kan nås på grund av ett fel i tillståndsavsökningen. | Nej |
-| ConnectionEntityNotFound | Anslutnings konfigurationen saknas | Nej |
-| ConnectionIsMarkedDisconnected | Anslutningen har marker ATS som "frånkopplad" |Nej|
+| VipUnResponsive | Det här felet uppstår när den primära instansen av gatewayen inte kan nås på grund av ett fel i tillståndsavsökningen. | Inga |
+| ConnectionEntityNotFound | Anslutnings konfigurationen saknas | Inga |
+| ConnectionIsMarkedDisconnected | Anslutningen har marker ATS som "frånkopplad" |Inga|
 | ConnectionNotConfiguredOnGateway | Ingen anslutning har kon figurer ATS för den underliggande tjänsten. | Ja |
 | ConnectionMarkedStandby | Den underliggande tjänsten är markerad som standby.| Ja|
 | Autentisering | I förväg delad nyckel matchar inte | Ja|
@@ -209,7 +209,9 @@ Elapsed Time            330 sec
 ```
 
 ## <a name="considerations"></a>Överväganden 
+* Endast en fel söknings åtgärd kan köras i taget per prenumeration. Om du vill köra ytterligare en fel söknings åtgärd väntar du tills den tidigare slutförts. Om fler åtgärder utlöses medan en tidigare åtgärd inte har slutförts kommer efterföljande åtgärder att Miss klaras. 
 * CLI-fel: om du använder Azure CLI för att köra kommandot måste VPN Gateway och lagrings kontot finnas i samma resurs grupp. Kunder med resurser i olika resurs grupper kan använda PowerShell eller Azure Portal i stället.  
+
 
 ## <a name="next-steps"></a>Nästa steg
 

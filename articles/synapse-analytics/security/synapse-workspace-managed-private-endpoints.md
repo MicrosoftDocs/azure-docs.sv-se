@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 01/12/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2d2b65261e09d056ec76b25d6fcb6627bc54770b
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.openlocfilehash: 65794c695fa4b36586b23a308845b1f12a20b7cb
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98165730"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98569954"
 ---
 # <a name="synapse-managed-private-endpoints"></a>Synapse hanterade privata slut punkter
 
@@ -23,7 +23,7 @@ Den här artikeln förklarar hanterade privata slut punkter i Azure Synapse Anal
 
 Hanterade privata slut punkter är privata slut punkter som skapats i en hanterad Virtual Network som är associerade med din Azure Synapse-arbetsyta. Hanterade privata slut punkter upprättar en privat länk till Azure-resurser. Azure Synapse hanterar de här privata slut punkterna för din räkning. Du kan skapa hanterade privata slut punkter från din Azure Synapse-arbetsyta för att få åtkomst till Azure-tjänster (till exempel Azure Storage eller Azure Cosmos DB) och Azure-värdbaserade kund-/partner tjänster.
 
-När du hanterade privata slut punkter går trafiken mellan din Azure Synapse-arbetsyta och andra Azure-resurser helt över Microsoft stamnät nätverket. Hanterade privata slut punkter skyddar mot data exfiltrering. En hanterad privat slutpunkt använder en privat IP-adress från din hanterade Virtual Network för att effektivt ta den Azure-tjänst som din Azure Synapse-arbetsyta kommunicerar med i Virtual Network. Hanterade privata slut punkter mappas till en angiven resurs i Azure och inte till hela tjänsten. Kunder kan begränsa anslutningen till en speciell resurs som godkänts av organisationen. 
+När du använder hanterade privata slut punkter går trafiken mellan din Azure Synapse-arbetsyta och andra Azure-resurser helt över Microsoft stamnät nätverket. Hanterade privata slut punkter skyddar mot data exfiltrering. En hanterad privat slutpunkt använder en privat IP-adress från din hanterade Virtual Network för att effektivt ta den Azure-tjänst som din Azure Synapse-arbetsyta kommunicerar med i Virtual Network. Hanterade privata slut punkter mappas till en angiven resurs i Azure och inte till hela tjänsten. Kunder kan begränsa anslutningen till en speciell resurs som godkänts av organisationen. 
 
 Lär dig mer om [privata länkar och privata slut punkter](../../private-link/index.yml).
 

@@ -13,15 +13,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/20/2020
+ms.date: 01/18/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3e99b3a8960eb49856e9a016eb054eed41eccde9
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: b4cf2e79acf4cd58ff94a2e90f07202341672a1d
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965263"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98569444"
 ---
 # <a name="azure-virtual-machines-oracle-dbms-deployment-for-sap-workload"></a>Azure Virtual Machines Oracle DBMS-distribution för SAP-arbetsbelastning
 
@@ -375,7 +375,7 @@ Information om vilka typer av virtuella Azure-datorer som stöds finns i SAP anm
 
 Den lägsta konfigurationen är följande: 
 
-| Komponent | Disk | Caching | Lagringspool |
+| Komponent | Disk | Cachelagring | Lagringspool |
 | --- | ---| --- | --- |
 | \oracle \<SID> \origlogaA & mirrlogB | Premium eller Ultra disk | Inget | Krävs inte |
 | \oracle \<SID> \origlogaB & mirrlogA | Premium eller Ultra disk | Inget | Krävs inte |
@@ -388,7 +388,7 @@ Diskar som väljs för att vara värd för online-återupprepnings loggar bör d
 
 Prestanda konfigurationen är följande:
 
-| Komponent | Disk | Caching | Lagringspool |
+| Komponent | Disk | Cachelagring | Lagringspool |
 | --- | ---| --- | --- |
 | \oracle \<SID> \origlogaA | Premium eller Ultra disk | Inget | Kan användas för Premium  |
 | \oracle \<SID> \origlogaB | Premium eller Ultra disk | Inget | Kan användas för Premium |
@@ -423,7 +423,7 @@ Mer information om haveri beredskap för Oracle-databaser i Azure finns i [haver
 
 ### <a name="accelerated-networking"></a>Snabbare nätverk
 För Oracle-distributioner i Windows rekommenderar vi att du påskyndade nätverket enligt beskrivningen i [Azure accelererat nätverk](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/). Överväg även rekommendationer som görs i [överväganden för Azure Virtual Machines DBMS-distribution för SAP-arbetsbelastningar](dbms_guide_general.md). 
-### <a name="other"></a>Annat
+### <a name="other"></a>Övrigt
 [Överväganden för azure Virtual Machines DBMS-distribution för SAP-arbetsbelastningar](dbms_guide_general.md) beskriver andra viktiga begrepp som rör distributioner av virtuella datorer med Oracle Database, inklusive Azures tillgänglighets uppsättningar och SAP-övervakning.
 
 ## <a name="specifics-for-oracle-database-on-oracle-linux"></a>Information om Oracle Database på Oracle Linux
@@ -445,15 +445,19 @@ I det här fallet rekommenderar vi att du installerar/hittar Oracle Home, Stage,
 
 ### <a name="storage-configuration"></a>Storage-konfiguration
 
-Fil systemet för ext4, xfs eller Oracle ASM stöds för Oracle Database-filer på Azure. Alla databasfiler måste lagras i dessa fil system baserat på VHD: er eller Managed Disks. De här diskarna monteras på den virtuella Azure-datorn och baseras på [Azure Page Blob Storage](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs) eller [Azure Managed disks](../../managed-disks-overview.md).
+Fil systemet ext4, xfs, NFSv 4.1 (endast på Azure NetApp Files (ANF)) eller Oracle ASM (se SAP NOTE [#2039619](https://launchpad.support.sap.com/#/notes/2039619) för versions-/versions krav) stöds för Oracle Database-filer på Azure. Alla databasfiler måste lagras i dessa fil system baserat på VHD: er, Managed Disks eller ANF. Diskarna monteras på den virtuella Azure-datorn och baseras på [Azure Page Blob Storage](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs), [azure Managed disks](../../managed-disks-overview.md)eller [Azure NetApp Files](https://azure.microsoft.com/services/netapp/).
 
-För Oracle Linux UEK-kärnor krävs minst UEK version 4 för att stödja [Azure Premium-SSD](../../premium-storage-performance.md#disk-caching).
+Lista med minimi krav som: 
+
+- För Oracle Linux UEK-kärnor krävs minst UEK version 4 för att stödja [Azure Premium-SSD](../../premium-storage-performance.md#disk-caching).
+- För Oracle med ANF är den lägsta Oracle Linux som stöds 8,2.
+- För Oracle med ANF är den lägsta Oracle-version som stöds 19c (19.8.0.0)
 
 Checka in artikeln [Azure Storage typer för SAP-arbetsbelastningar](./planning-guide-storage.md) för att få mer information om de olika lagrings typer som är lämpliga för DBMS-arbetsbelastningar.
 
-Vi rekommenderar starkt att du använder [Azure Managed disks](../../managed-disks-overview.md). Vi rekommenderar också att du använder [Azure Premium-SSD](../../disks-types.md) för dina Oracle Database-distributioner.
+Med Azure block Storage, rekommenderar vi starkt att du använder [Azure Managed disks](../../managed-disks-overview.md) och [Azure Premium-ssd](../../disks-types.md) för dina Oracle Database-distributioner.
 
-Nätverks enheter eller fjär resurser som Azure File Services stöds inte för Oracle Database-filer. Mer information finns i följande: 
+Förutom Azure NetApp Files, andra delade diskar, nätverks enheter eller fjär resurser som Azure File Services (AFS) inte stöds för Oracle Database-filer. Mer information finns i följande: 
 
 - [Introduktion till Microsoft Azure File Service](/archive/blogs/windowsazurestorage/introducing-microsoft-azure-file-service)
 
@@ -467,12 +471,12 @@ Information om vilka typer av virtuella Azure-datorer som stöds finns i SAP anm
 
 Lägsta konfiguration:
 
-| Komponent | Disk | Caching | Tar bort |
+| Komponent | Disk | Cachelagring | Tar bort |
 | --- | ---| --- | --- |
-| /Oracle/ \<SID> /origlogaA & mirrlogB | Premium eller Ultra disk | Inget | Krävs inte |
-| /Oracle/ \<SID> /origlogaB & mirrlogA | Premium eller Ultra disk | Inget | Krävs inte |
-| /Oracle/ \<SID> /sapdata1... m | Premium eller Ultra disk | Skrivskyddad | Kan användas för Premium |
-| /Oracle/ \<SID> /oraarch | Standard | Inget | Krävs inte |
+| /Oracle/ \<SID> /origlogaA & mirrlogB | Premium, Ultra disk eller ANF | Inget | Krävs inte |
+| /Oracle/ \<SID> /origlogaB & mirrlogA | Premium, Ultra disk eller ANF | Inget | Krävs inte |
+| /Oracle/ \<SID> /sapdata1... m | Premium, Ultra disk eller ANF | Skrivskyddad | Kan användas för Premium |
+| /Oracle/ \<SID> /oraarch | Standard eller ANF | Inget | Krävs inte |
 | Oracle Home, `saptrace` ,... | OS-disk (Premium) | | Krävs inte |
 
 * Ta bort: LVM rand eller MDADM med RAID0
@@ -481,15 +485,15 @@ Disk valet för att vara värd för Oracle: s online-återupprepnings loggar bö
 
 Prestanda konfiguration:
 
-| Komponent | Disk | Caching | Tar bort |
+| Komponent | Disk | Cachelagring | Tar bort |
 | --- | ---| --- | --- |
-| /Oracle/ \<SID> /origlogaA | Premium eller Ultra disk | Inget | Kan användas för Premium  |
-| /Oracle/ \<SID> /origlogaB | Premium eller Ultra disk | Inget | Kan användas för Premium |
-| /Oracle/ \<SID> /mirrlogAB | Premium eller Ultra disk | Inget | Kan användas för Premium |
-| /Oracle/ \<SID> /mirrlogBA | Premium eller Ultra disk | Inget | Kan användas för Premium |
-| /Oracle/ \<SID> /sapdata1... m | Premium eller Ultra disk | Skrivskyddad | Rekommenderas för Premium  |
-| /Oracle/ \<SID> /sapdata (n + 1) * | Premium eller Ultra disk | Inget | Kan användas för Premium |
-| /Oracle/ \<SID> /oraarch * | Premium eller Ultra disk | Inget | Krävs inte |
+| /Oracle/ \<SID> /origlogaA | Premium, Ultra disk eller ANF | Inget | Kan användas för Premium  |
+| /Oracle/ \<SID> /origlogaB | Premium, Ultra disk eller ANF | Inget | Kan användas för Premium |
+| /Oracle/ \<SID> /mirrlogAB | Premium, Ultra disk eller ANF | Inget | Kan användas för Premium |
+| /Oracle/ \<SID> /mirrlogBA | Premium, Ultra disk eller ANF | Inget | Kan användas för Premium |
+| /Oracle/ \<SID> /sapdata1... m | Premium, Ultra disk eller ANF | Skrivskyddad | Rekommenderas för Premium  |
+| /Oracle/ \<SID> /sapdata (n + 1) * | Premium, Ultra disk eller ANF | Inget | Kan användas för Premium |
+| /Oracle/ \<SID> /oraarch * | Premium, Ultra disk eller ANF | Inget | Krävs inte |
 | Oracle Home, `saptrace` ,... | OS-disk (Premium) | Krävs inte |
 
 * Ta bort: LVM rand eller MDADM med RAID0
@@ -500,6 +504,10 @@ Prestanda konfiguration:
 
 
 Om mer IOPS krävs när du använder Azure Premium Storage rekommenderar vi att du använder LVM (Logical Volume Manager) eller MDADM för att skapa en stor logisk volym över flera monterade diskar. Mer information finns i [överväganden för Azure Virtual Machines DBMS-distribution för SAP-arbetsbelastningar](dbms_guide_general.md) gällande rikt linjer och pekare om hur man utnyttjar LVM eller MDADM. Med den här metoden kan du förenkla administrationen av disk utrymmet och hjälpa dig att undvika att distribuera filer manuellt över flera monterade diskar.
+
+Om du planerar att använda Azure NetApp Files se till att dNFS-klienten är korrekt konfigurerad. Att använda dNFS är obligatorisk för att ha en miljö som stöds. Konfigurationen av dNFS dokumenteras i artikeln [skapa en Oracle Database på Direct NFS](https://docs.oracle.com/en/database/oracle/oracle-database/19/ntdbi/creating-an-oracle-database-on-direct-nfs.html#GUID-2A0CCBAB-9335-45A8-B8E3-7E8C4B889DEA).
+
+Ett exempel som demonstrerar användningen av Azure NetApp Files-baserad NFS för Oracle-databaser presenteras i bloggen [Deploy SAP AnyDB (Oracle 19c) med Azure NetApp Files](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/deploy-sap-anydb-oracle-19c-with-azure-netapp-files/ba-p/2064043).
 
 
 #### <a name="write-accelerator"></a>Skrivningsaccelerator

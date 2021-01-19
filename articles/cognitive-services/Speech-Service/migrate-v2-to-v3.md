@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: rbeckers
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e9e5db87f983c5db59715eb8b6a9561acf5fad14
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 9c8016b566db8be1b7f5c5ddb8d92123d6673db5
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97630623"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98569852"
 ---
 # <a name="migrate-code-from-v20-to-v30-of-the-rest-api"></a>Migrera kod från v 2.0 till v 3.0 av REST API
 
@@ -24,11 +24,51 @@ Jämfört med v2 är v3-versionen av tal tjänster REST API för tal-till-text m
 
 ## <a name="forward-compatibility"></a>Vidarebefordra kompatibilitet
 
-Alla entiteter från v2 kan också finnas i v3-API: t under samma identitet. Om schemat för ett resultat har ändrats, (till exempel avskrifter), kommer resultatet av en GET i v3-versionen av API: et att använda v3-schemat. Resultatet av ett GET i v2-versionen av API: et använder samma v2-schema. Nyligen skapade entiteter på v3 är **inte** tillgängliga i resultat från v2 API: er.
+Alla entiteter från v2 kan också finnas i v3-API: t under samma identitet. Om schemat för ett resultat har ändrats, (till exempel avskrifter), kommer resultatet av en GET i v3-versionen av API: et att använda v3-schemat. Resultatet av ett GET i v2-versionen av API: et använder samma v2-schema. Nyligen skapade entiteter på v3 är **inte**   tillgängliga i svar från v2-API: er. 
+
+## <a name="migration-steps"></a>Migreringsanvisningar
+
+Det här är en sammanfattning av de objekt som du måste vara medveten om när du förbereder för migrering. Information finns i de enskilda länkarna. Beroende på din nuvarande användning av API: t är alla steg som anges här tillämpliga. Endast några ändringar kräver icke-triviala ändringar i anrops koden. De flesta ändringar kräver bara en ändring av objekt namn. 
+
+Allmänna ändringar: 
+
+1. [Ändra värd namnet](#host-name-changes)
+
+1. [Byt namn på egenskaps-ID: t till själv i klient koden](#identity-of-an-entity) 
+
+1. [Ändra kod till ITER över samling av entiteter](#working-with-collections-of-entities)
+
+1. [Byt namn på egenskaps namnet till displayName i klient koden](#name-of-an-entity)
+
+1. [Justera hämtningen av metadata för refererade entiteter](#accessing-referenced-entities)
+
+1. Om du använder batch-avskriftering: 
+
+    * [Justera kod för att skapa batch-avskrifter](#creating-transcriptions) 
+
+    * [Anpassa kod till det nya schemat för avskrifts resultat](#format-of-v3-transcription-results)
+
+    * [Justera kod för hur resultat hämtas](#getting-the-content-of-entities-and-the-results)
+
+1. Om du använder API: er för anpassad modell utbildning/testning: 
+
+    * [Tillämpa ändringar på anpassad modell utbildning](#customizing-models)
+
+    * [Ändra hur bas-och anpassade modeller hämtas](#retrieving-base-and-custom-models)
+
+    * [Byt namn på Sök vägs segmentet accuracytests till utvärderingar i klient koden](#accuracy-tests)
+
+1. Om du använder API: er för slut punkter:
+
+    * [Ändra hur slut punkts loggar hämtas](#retrieving-endpoint-logs)
+
+1. Andra mindre ändringar: 
+
+    * [Skicka alla anpassade egenskaper som customProperties i stället för egenskaper i dina POST-begäranden](#using-custom-properties)
+
+    * [Läs platsen från svars huvud platsen i stället för åtgärds plats](#response-headers)
 
 ## <a name="breaking-changes"></a>Icke-bakåtkompatibla ändringar
-
-Listan över avbrytande ändringar har sorterats efter storleken på de ändringar som krävs för att anpassa. Endast några ändringar kräver icke-triviala ändringar i anrops koden. De flesta ändringar kräver bara en ändring av objekt namn.
 
 ### <a name="host-name-changes"></a>Värd namns ändringar
 

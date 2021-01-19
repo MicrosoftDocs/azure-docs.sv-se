@@ -3,12 +3,12 @@ title: Nyheter i Azure Backup
 description: Lär dig mer om nya funktioner i Azure Backup.
 ms.topic: conceptual
 ms.date: 11/11/2020
-ms.openlocfilehash: ba29ddea5d5f096640f2bfc012c44ab06bb3e131
-ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
+ms.openlocfilehash: 62a6146990863c339917777b2624fee76ebe60d8
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/29/2020
-ms.locfileid: "96309672"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98569427"
 ---
 # <a name="whats-new-in-azure-backup"></a>Nyheter i Azure Backup
 
@@ -18,6 +18,9 @@ Du kan lära dig mer om de nya versionerna genom att skriva bok märken på den 
 
 ## <a name="updates-summary"></a>Uppdaterings Sammanfattning
 
+- Januari 2021
+  - [Säkerhets kopiering av Azure-disk (i för hands version)](disk-backup-overview.md)
+  - [Kryptering i vila med Kundhanterade nycklar är nu allmänt tillgängliga](encryption-at-rest-with-cmk.md)
 - November 2020
   - [Azure Resource Manager mall för säkerhets kopiering av Azure-filresursen (AFS)](#azure-resource-manager-template-for-afs-backup)
   - [Stegvisa säkerhets kopieringar för SAP HANA databaser på virtuella Azure-datorer](#incremental-backups-for-sap-hana-databases)
@@ -31,6 +34,18 @@ Du kan lära dig mer om de nya versionerna genom att skriva bok märken på den 
   - [Säkerhetskopiera SAP HANA i RHEL Azure Virtual Machines](#backup-sap-hana-in-rhel-azure-virtual-machines)
   - [ZRS (Zone redundant Storage) för säkerhets kopierings data](#zone-redundant-storage-zrs-for-backup-data)
   - [Mjuk borttagning för SQL Server och SAP HANA arbets belastningar i virtuella Azure-datorer](#soft-delete-for-sql-server-and-sap-hana-workloads)
+
+## <a name="azure-disk-backup-in-preview"></a>Säkerhets kopiering av Azure-disk (i för hands version)
+
+Azure disk Backup erbjuder en nyckel färdig lösning som tillhandahåller hantering av ögonblicks bilder för [azure Managed disks](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview) genom att automatisera periodiska skapande av ögonblicks bilder och behålla den för en konfigurerad varaktighet med hjälp av säkerhets kopierings principen. Du kan hantera disk ögonblicks bilderna med noll som infrastruktur kostnader och utan behov av anpassade skript eller hanterings kostnader. Detta är en krasch lösning för säkerhets kopiering som tar säkerhets kopiering av en hanterad disk vid en viss tidpunkt med hjälp av [stegvisa ögonblicks bilder](https://docs.microsoft.com/azure/virtual-machines/windows/disks-incremental-snapshots) med stöd för flera säkerhets kopior per dag. Det är också en agent lös lösning som inte påverkar prestanda för produktions program. Den har stöd för säkerhets kopiering och återställning av både OS-och data diskar (inklusive delade diskar), oavsett om de är kopplade till en virtuell Azure-dator som körs eller inte.
+
+Mer information finns i [säkerhets kopiering av Azure-diskar (i för hands version)](disk-backup-overview.md).
+
+## <a name="encryption-at-rest-using-customer-managed-keys"></a>Kryptering i vila med Kundhanterade nycklar
+
+Stöd för kryptering i vila med Kundhanterade nycklar är nu allmänt tillgängligt. Detta ger dig möjlighet att kryptera säkerhetskopierade data i dina Recovery Services-valv med dina egna nycklar som lagras i Azure Key Vaults. Krypterings nyckeln som används för kryptering av säkerhets kopior i Recovery Services valvet kan skilja sig från de som används för att kryptera källan. Data skyddas med en AES 256-baserad data krypterings nyckel (DEK), som i sin tur skyddas med hjälp av nycklar som lagras i Key Vault. Jämfört med kryptering med hjälp av plattforms hanterade nycklar (som är tillgängligt som standard) ger dig mer kontroll över dina nycklar och hjälper dig att bättre uppfylla dina krav på efterlevnad.
+
+Mer information finns i [kryptering av säkerhets kopierings data med Kundhanterade nycklar](encryption-at-rest-with-cmk.md).
 
 ## <a name="azure-resource-manager-template-for-afs-backup"></a>Azure Resource Manager mall för AFS-säkerhetskopiering
 

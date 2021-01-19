@@ -159,6 +159,20 @@
           href: how-to-troubleshoot-the-sensor-and-on-premises-management-console.md
         - name: Konfigurera SNMP MIB-övervakning
           href: how-to-set-up-snmp-mib-monitoring.md
+        - name: Integrera med partner
+          items:
+            - name: Cisco ISE pxGrid-integrering
+              href: integration-cisco-ise-pxgrid.md
+            - name: Forescout-integrering
+              href: integration-forescout.md
+            - name: Fortinet-integrering
+              href: integration-fortinet.md
+            - name: Palo Alto-integrering
+              href: integration-palo-alto.md
+            - name: ServiceNow-integrering
+              href: integration-servicenow.md
+            - name: Splunk-integrering
+              href: integration-splunk.md
     - name: Agentbaserad lösning för enhetsskapare
       items:
         - name: Arbeta med säkerhetsmodul för Azure RTOS

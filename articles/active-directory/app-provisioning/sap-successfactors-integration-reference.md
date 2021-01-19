@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: reference
 ms.workload: identity
-ms.date: 07/20/2020
+ms.date: 01/19/2021
 ms.author: chmutali
-ms.openlocfilehash: 805cdc0713afd43502bb224cce60167adbc418ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e97be7fef09287e6c4f8696e217702b97853fa6a
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90969532"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98569461"
 ---
 # <a name="how-azure-active-directory-provisioning-integrates-with-sap-successfactors"></a>Hur Azure Active Directory etablering integreras med SAP SuccessFactors 
 
@@ -47,29 +47,30 @@ För varje användare i SuccessFactors hämtar Azure AD Provisioning-tjänsten f
 
 | \# | SuccessFactors-entitet                  | OData-nod     | Hämtnings regel |
 |----|----------------------------------------|------------------------------|------------------|
-| 1  | PerPerson                              | *rotnod*                  | Alltid           |
-| 2  | PerPersonal                            | personalInfoNav              | Alltid           |
-| 3  | PerPhone                               | phoneNav                     | Alltid           |
-| 4  | PerEmail                               | emailNav                     | Alltid           |
-| 5  | EmpEmployment                          | employmentNav                | Alltid           |
-| 6  | Användare                                   | employmentNav/userNav        | Alltid           |
-| 7  | EmpJob                                 | employmentNav/jobInfoNav     | Alltid           |
-| 8  | EmpEmploymentTermination               | activeEmploymentsCount       | Alltid           |
-| 9  | FOCompany                              | employmentNav/jobInfoNav/companyNav | Endast IF- `company` eller `companyId` Attribute mappas |
-| 10 | FODepartment                           | employmentNav/jobInfoNav/departmentNav | Endast IF- `department` eller `departmentId` Attribute mappas |
-| 11 | FOBusinessUnit                         | employmentNav/jobInfoNav/businessUnitNav | Endast IF- `businessUnit` eller `businessUnitId` Attribute mappas |
-| 12 | FOCostCenter                           | employmentNav/jobInfoNav/costCenterNav | Endast IF- `costCenter` eller `costCenterId` Attribute mappas |
-| 13 | FODivision                             | employmentNav/jobInfoNav/divisionNav  | Endast IF- `division` eller `divisionId` Attribute mappas |
-| 14 | FOJobCode                              | employmentNav/jobInfoNav/jobCodeNav  | Endast IF- `jobCode` eller `jobCodeId` Attribute mappas |
-| 15 | FOPayGrade                             | employmentNav/jobInfoNav/payGradeNav  | Endast IF- `payGrade` attribut mappas |
-| 16 | FOLocation                             | employmentNav/jobInfoNav/locationNav  | Endast IF- `location` attribut mappas |
-| 17 | FOCorporateAddressDEFLT                | employmentNav/jobInfoNav/addressNavDEFLT  | Om mappningen innehåller något av följande attribut: `officeLocationAddress,  officeLocationCity, officeLocationZipCode` |
-| 18 | FOEventReason                          | employmentNav/jobInfoNav/eventReasonNav  | Endast IF- `eventReason` attribut mappas |
-| 19 | EmpGlobalAssignment                    | employmentNav/empGlobalAssignmentNav | Endast om `assignmentType` har mappats |
-| 20 | EmploymentType-listruta                | employmentNav/jobInfoNav/employmentTypeNav | Endast om `employmentType` har mappats |
-| 21 | EmployeeClass-listruta                 | employmentNav/jobInfoNav/employeeClassNav | Endast om `employeeClass` har mappats |
-| 22 | EmplStatus-listruta                    | employmentNav/jobInfoNav/emplStatusNav | Endast om `emplStatus` har mappats |
-| 23 | AssignmentType-listruta                | employmentNav/empGlobalAssignmentNav/assignmentTypeNav | Endast om `assignmentType` har mappats |
+| 1  | PerPerson                              | *rotnod*                  | Always           |
+| 2  | PerPersonal                            | personalInfoNav              | Always           |
+| 3  | PerPhone                               | phoneNav                     | Always           |
+| 4  | PerEmail                               | emailNav                     | Always           |
+| 5  | EmpEmployment                          | employmentNav                | Always           |
+| 6  | User                                   | employmentNav/userNav        | Always           |
+| 7  | EmpJob                                 | employmentNav/jobInfoNav     | Always           |
+| 8  | EmpEmploymentTermination               | activeEmploymentsCount       | Always           |
+| 9  | Användarens chef                         | employmentNav/userNav/Manager/empInfo | Always  |
+| 10 | FOCompany                              | employmentNav/jobInfoNav/companyNav | Endast IF- `company` eller `companyId` Attribute mappas |
+| 11 | FODepartment                           | employmentNav/jobInfoNav/departmentNav | Endast IF- `department` eller `departmentId` Attribute mappas |
+| 12 | FOBusinessUnit                         | employmentNav/jobInfoNav/businessUnitNav | Endast IF- `businessUnit` eller `businessUnitId` Attribute mappas |
+| 13 | FOCostCenter                           | employmentNav/jobInfoNav/costCenterNav | Endast IF- `costCenter` eller `costCenterId` Attribute mappas |
+| 14 | FODivision                             | employmentNav/jobInfoNav/divisionNav  | Endast IF- `division` eller `divisionId` Attribute mappas |
+| 15 | FOJobCode                              | employmentNav/jobInfoNav/jobCodeNav  | Endast IF- `jobCode` eller `jobCodeId` Attribute mappas |
+| 16 | FOPayGrade                             | employmentNav/jobInfoNav/payGradeNav  | Endast IF- `payGrade` attribut mappas |
+| 17 | FOLocation                             | employmentNav/jobInfoNav/locationNav  | Endast IF- `location` attribut mappas |
+| 18 | FOCorporateAddressDEFLT                | employmentNav/jobInfoNav/addressNavDEFLT  | Om mappningen innehåller något av följande attribut: `officeLocationAddress,  officeLocationCity, officeLocationZipCode` |
+| 19 | FOEventReason                          | employmentNav/jobInfoNav/eventReasonNav  | Endast IF- `eventReason` attribut mappas |
+| 20 | EmpGlobalAssignment                    | employmentNav/empGlobalAssignmentNav | Endast om `assignmentType` har mappats |
+| 21 | EmploymentType-listruta                | employmentNav/jobInfoNav/employmentTypeNav | Endast om `employmentType` har mappats |
+| 22 | EmployeeClass-listruta                 | employmentNav/jobInfoNav/employeeClassNav | Endast om `employeeClass` har mappats |
+| 23 | EmplStatus-listruta                    | employmentNav/jobInfoNav/emplStatusNav | Endast om `emplStatus` har mappats |
+| 24 | AssignmentType-listruta                | employmentNav/empGlobalAssignmentNav/assignmentTypeNav | Endast om `assignmentType` har mappats |
 
 ## <a name="how-full-sync-works"></a>Hur fullständig synkronisering fungerar
 Baserat på attributet-mappningen, under fullständig synkronisering, skickar Azure AD Provisioning-tjänsten följande "GET" OData API-fråga för att hämta effektiva data för alla aktiva användare. 
@@ -245,7 +246,7 @@ Schema ändringen stöder även scenariot för arbets konvertering.
 
 När en användare i personal Central bearbetas för global tilldelning lägger SuccessFactors till en ny *EmpEmployment* -entitet och anger *ASSIGNMENTCLASS* till "ga". Det skapar också en ny entitet för *användare* . Därför har användaren nu:
 * En *EmpEmployment*-  +  *användarsession* som motsvarar hem tilldelning med *assignmentClass* inställd på "St" och 
-* En annan *EmpEmployment*  +  *User* entitet som motsvarar den globala tilldelningen med *assignmentClass* inställt på "ga"
+* En annan *EmpEmployment*  +   entitet som motsvarar den globala tilldelningen med *assignmentClass* inställt på "ga"
 
 Använd stegen nedan för att hämta attribut som tillhör standard tilldelningen och användar profilen för global tilldelning: 
 

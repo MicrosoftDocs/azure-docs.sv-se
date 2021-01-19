@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 95993b35174b80dae8c878c22554ee60afeb8a14
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 57a9f6f11283e020efc25f55f1df473a6cb2d321
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92206228"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98570005"
 ---
 # <a name="server-side-performance-queries"></a>Prestandafrågor på serversidan
 
@@ -65,9 +65,9 @@ Det hämtade `FrameStatistics` objektet innehåller följande medlemmar:
 | Medlem | Förklaring |
 |:-|:-|
 | latencyPoseToReceive | Svars tid från kamerans attityd uppskattning på klient enheten tills en server ram för den här attityden är helt tillgänglig för klient programmet. Det här värdet omfattar nätverks tur, Server åter givnings tid, video avkodning och darr-kompensation. Se **intervall 1 i bilden ovan.**|
-| latencyReceiveToPresent | Svars tid från tillgänglighet för en mottagen fjärrram tills klient appen anropar PresentFrame på processorn. |
-| latencyPresentToDisplay  | Svars tiden från att presentera en bild ruta på processorn tills skärmarna visas. Det här värdet omfattar klientens GPU-tid, eventuella ram-buffring som utförs av operativ systemet, omprojektion av maskin vara och enhets beroende bildskärms genomsökning. Se **intervall 2 i bilden ovan.**|
-| timeSinceLastPresent | Tiden mellan efterföljande anrop till PresentFrame på processorn. Värden som är större än visnings längden (till exempel 16,6 MS på en klient enhet med 60 Hz) indikerar problem som orsakas av att klient programmet inte avslutar sin processor belastning i tid. Se **intervall 3 i bilden ovan.**|
+| latencyReceiveToPresent | Svars tid från tillgänglighet för en mottagen fjärrram tills klient appen anropar PresentFrame på processorn. Se **intervall 2 i bilden ovan.**|
+| latencyPresentToDisplay  | Svars tiden från att presentera en bild ruta på processorn tills skärmarna visas. Det här värdet omfattar klientens GPU-tid, eventuella ram-buffring som utförs av operativ systemet, omprojektion av maskin vara och enhets beroende bildskärms genomsökning. Se **intervall 3 i bilden ovan.**|
+| timeSinceLastPresent | Tiden mellan efterföljande anrop till PresentFrame på processorn. Värden som är större än visnings längden (till exempel 16,6 MS på en klient enhet med 60 Hz) indikerar problem som orsakas av att klient programmet inte avslutar sin processor belastning i tid.|
 | videoFramesReceived | Antalet ramar som tagits emot från servern under den senaste sekunden. |
 | videoFrameReusedCount | Antal mottagna ramar i den senaste sekunden som användes på enheten mer än en gång. Värden som inte är noll anger att bild rutorna måste återanvändas och projiceras antingen på grund av nätverks Darr eller överdriven Server åter givnings tid. |
 | videoFramesSkipped | Antal mottagna ramar i den senaste sekunden som avkodats, men som inte visas på skärmen, eftersom en nyare ram har anlänt. Värden som inte är noll anger att nätverks skakningar orsakade att flera ramar fördröjs och sedan anländer till klient enheten i en burst. |
@@ -132,7 +132,7 @@ void QueryPerformanceAssessment(ApiHandle<AzureSession> session)
 | networkLatency | Den ungefärliga genomsnittliga fördröjningen i millisekunder för nätverks fördröjningen. I bilden ovan motsvarar detta summan av de röda pilarna. Värdet beräknas genom att dra ifrån den faktiska Server åter givnings tiden från `latencyPoseToReceive` värdet för `FrameStatistics` . Även om den här uppskattningen inte är korrekt ger den en indikation på nätverks fördröjningen, isolerad från latens värden som beräknas på klienten. |
 | polygonsRendered | Antalet trianglar som återges i en ram. Det här talet inkluderar även de trianglar som slaktas senare under åter givning. Det innebär att det här talet inte varierar mycket mellan olika kamera lägen, men prestanda kan variera drastiskt beroende på triangelns culling-pris.|
 
-För att hjälpa dig att utvärdera värdena kommer varje del att ha en kvalitets klassificering som **fantastiska**, **bra**, **mediocre**eller **dåligt**.
+För att hjälpa dig att utvärdera värdena kommer varje del att ha en kvalitets klassificering som **fantastiska**, **bra**, **mediocre** eller **dåligt**.
 Detta bedömnings mått ger en grov indikation på serverns hälsa, men bör inte ses som absolut. Anta till exempel att du ser en "mediocre"-Poäng för GPU-tiden. Det betraktas som mediocre eftersom det ligger nära gränsen för den övergripande tids perioden för ramar. I så fall kan det dock vara ett användbart värde trots att du återger en komplex modell.
 
 ## <a name="statistics-debug-output"></a>Statistik fel söknings utdata

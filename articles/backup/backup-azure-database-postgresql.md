@@ -4,12 +4,12 @@ description: Läs mer om Azure Database for PostgreSQL säkerhets kopiering med 
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.custom: references_regions
-ms.openlocfilehash: 32837e5bb871f7db5024569efc27940047aeacd7
-ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
+ms.openlocfilehash: 628f43788c11558185a7b8a735373f0a663fdad1
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97734648"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98569495"
 ---
 # <a name="azure-database-for-postgresql-backup-with-long-term-retention-preview"></a>Azure Database for PostgreSQL säkerhets kopiering med långsiktig kvarhållning (för hands version)
 
@@ -135,7 +135,7 @@ Följande instruktioner är en steg-för-steg-guide för att konfigurera säkerh
 
 1. Definiera inställningar för **kvarhållning** . Du kan lägga till en eller flera regler för kvarhållning. Varje kvarhållning regel förutsätter indata för vissa säkerhets kopieringar och data lager och Retentions tid för dessa säkerhets kopior.
 
-1. Du kan välja att lagra säkerhets kopior i ett av de två data lager (eller-nivåerna): **säkerhets kopiering av data lager** (frekvent nivå) eller **Arkiv data lager** (i för hands version). Du kan välja mellan **två olika nivåer** för att definiera när säkerhets kopiorna ska bevaras i flera data lager:
+1. Du kan välja att lagra säkerhets kopior i ett av de två data lager (eller-nivåerna): **säkerhets kopierings data lager** (standard nivå) eller **Arkiv data lager** (i för hands version). Du kan välja mellan **två olika nivåer** för att definiera när säkerhets kopiorna ska bevaras i flera data lager:
 
     - Välj att kopiera **omedelbart** om du vill ha en säkerhets kopia i både säkerhets kopierings-och Arkiv data lager samtidigt.
     - Välj att flytta **efter förfallo datum** om du föredrar att flytta säkerhets kopian för att arkivera data lagret när den upphör att gälla i säkerhets kopierings data lagret.

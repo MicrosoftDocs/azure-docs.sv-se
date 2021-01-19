@@ -13,15 +13,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/28/2020
+ms.date: 01/18/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 511801962d07e5fb99000b2fc19adce2489b46d3
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 2c7ea804e9e85578076969f0ec6bdf90b571bb75
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967490"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98570090"
 ---
 # <a name="nfs-v41-volumes-on-azure-netapp-files-for-sap-hana"></a>NFS v4.1-volymer på Azure NetApp Files för SAP HANA
 
@@ -69,10 +69,10 @@ Maximalt data flöde för en LIF och en enda Linux-session är mellan 1,2 och 1,
 | 1 TB | 16 MB/SEK | 64 MB/SEK | 128 MB/SEK |
 | 2 TB | 32 MB/SEK | 128 MB/SEK | 256 MB/SEK |
 | 4 TB | 64 MB/SEK | 256 MB/SEK | 512 MB/SEK |
-| 10 TB | 160 MB/SEK | 640 MB/SEK | 1,280 MB/SEK |
-| 15 TB | 240 MB/SEK | 960 MB/SEK | 1,400 MB/SEK |
-| 20 TB | 320 MB/SEK | 1,280 MB/SEK | 1,400 MB/SEK |
-| 40 TB | 640 MB/SEK | 1,400 MB/SEK | 1,400 MB/SEK |
+| 10 TB | 160 MB/SEK | 640 MB/SEK | 1 280 MB/SEK |
+| 15 TB | 240 MB/SEK | 960 MB/SEK | 1 400 MB/SEK |
+| 20 TB | 320 MB/SEK | 1 280 MB/SEK | 1 400 MB/SEK |
+| 40 TB | 640 MB/SEK | 1 400 MB/SEK | 1 400 MB/SEK |
 
 Det är viktigt att förstå att data skrivs till samma SSD i lagrings Server delen. Prestanda kvoten från kapacitets gruppen skapades för att kunna hantera miljön.
 KPI: er för lagring är samma för alla HANA-databas storlekar. I nästan alla fall reflekterar detta antagande inte verkligheten och kunden förväntar sig. Storleken på HANA-system innebär inte nödvändigt vis att ett litet system kräver lagrings data flöde med låg belastning – och ett stort system kräver data flöde med hög kapacitet. Men vanligt vis kan vi vänta högre data flödes krav för större HANA-databas instanser. Som ett resultat av SAP: s storleks regler för underliggande maskin vara kan sådana större HANA-instanser även ge mer processor resurser och högre parallellitet i aktiviteter som att läsa in data efter en instans omstart. Därför bör volym storlekarna antas för kundens förväntningar och krav. Och inte bara drivs av rena kapacitets krav.

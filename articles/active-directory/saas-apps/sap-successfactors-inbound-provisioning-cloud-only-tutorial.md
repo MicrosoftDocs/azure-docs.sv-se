@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 08/05/2020
+ms.date: 01/19/2021
 ms.author: chmutali
-ms.openlocfilehash: a62943c1a808424ded1a5e46ed115cda332bf7d5
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 6a73ecf18a4bd89567dc603758d9ff8501267a1f
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96020763"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98570054"
 ---
 # <a name="tutorial-configure-sap-successfactors-to-azure-ad-user-provisioning"></a>Självstudie: konfigurera SAP-SuccessFactors till användar etablering i Azure AD
 Syftet med den här självstudien är att visa de steg som du behöver utföra för att etablera arbetarnas data från SuccessFactors personal Central till Azure Active Directory, med valfri Skriv åtgärd för e-postadressen till SuccessFactors. 
@@ -49,7 +49,7 @@ Den här SuccessFactors för att Azure Active Directory användar etablerings l�
 
 * Organisationer som använder Microsoft 365 för e-post
 
-## <a name="solution-architecture"></a>Lösnings arkitektur
+## <a name="solution-architecture"></a>Lösningsarkitektur
 
 I det här avsnittet beskrivs slut punkt till slut punkt för användar etablerings lösnings arkitekturen för endast molnbaserade användare. Det finns två relaterade flöden:
 
@@ -91,51 +91,61 @@ Arbeta med ditt SuccessFactors-administratörs team eller implementerings partne
 
 ### <a name="create-an-api-permissions-role"></a>Skapa en roll för API-behörigheter
 
-* Logga in på SAP SuccessFactors med ett användar konto som har åtkomst till administrations centret.
-* Sök efter *Hantera behörighets roller* och välj **Hantera behörighets roller** från Sök resultaten.
+1. Logga in på SAP SuccessFactors med ett användar konto som har åtkomst till administrations centret.
+1. Sök efter *Hantera behörighets roller* och välj **Hantera behörighets roller** från Sök resultaten.
   ![Hantera behörighets roller](./media/sap-successfactors-inbound-provisioning/manage-permission-roles.png)
-* I listan behörighets roll klickar du på **Skapa ny**.
-  > [!div class="mx-imgBorder"]
-  > ![Skapa ny behörighets roll](./media/sap-successfactors-inbound-provisioning/create-new-permission-role-1.png)
-* Lägg till ett **roll namn** och en **Beskrivning** för den nya behörighets rollen. Namnet och beskrivningen ska ange att rollen är för API-användnings behörigheter.
-  > [!div class="mx-imgBorder"]
-  > ![Information om behörighets roll](./media/sap-successfactors-inbound-provisioning/permission-role-detail.png)
-* Under behörighets inställningar klickar du på **behörighet...** och bläddrar sedan ned behörighets listan och klickar på **Hantera integrerings verktyg**. Markera kryss rutan om **du vill tillåta administratörs åtkomst till OData-API via grundläggande autentisering**.
-  > [!div class="mx-imgBorder"]
-  > ![Hantera integrerings verktyg](./media/sap-successfactors-inbound-provisioning/manage-integration-tools.png)
-* Rulla nedåt i samma ruta och välj **medarbetares centrala API**. Lägg till behörigheter som visas nedan för att läsa med ODATA API och redigera med ODATA API. Välj alternativet Redigera om du planerar att använda samma konto för SuccessFactors-scenariot för tillbakaskrivning. 
-  > [!div class="mx-imgBorder"]
-  > ![Läs Skriv behörighet](./media/sap-successfactors-inbound-provisioning/odata-read-write-perm.png)
-* Klicka på **färdig**. Klicka på **Spara ändringar**.
+1. I listan behörighets roll klickar du på **Skapa ny**.
+    > [!div class="mx-imgBorder"]
+    > ![Skapa ny behörighets roll](./media/sap-successfactors-inbound-provisioning/create-new-permission-role-1.png)
+1. Lägg till ett **roll namn** och en **Beskrivning** för den nya behörighets rollen. Namnet och beskrivningen ska ange att rollen är för API-användnings behörigheter.
+    > [!div class="mx-imgBorder"]
+    > ![Information om behörighets roll](./media/sap-successfactors-inbound-provisioning/permission-role-detail.png)
+1. Under behörighets inställningar klickar du på **behörighet...** och bläddrar sedan ned behörighets listan och klickar på **Hantera integrerings verktyg**. Markera kryss rutan om **du vill tillåta administratörs åtkomst till OData-API via grundläggande autentisering**.
+    > [!div class="mx-imgBorder"]
+    > ![Hantera integrerings verktyg](./media/sap-successfactors-inbound-provisioning/manage-integration-tools.png)
+1. Rulla nedåt i samma ruta och välj **medarbetares centrala API**. Lägg till behörigheter som visas nedan för att läsa med ODATA API och redigera med ODATA API. Välj alternativet Redigera om du planerar att använda samma konto för SuccessFactors-scenariot för tillbakaskrivning. 
+    > [!div class="mx-imgBorder"]
+    > ![Läs Skriv behörighet](./media/sap-successfactors-inbound-provisioning/odata-read-write-perm.png)
+
+1. I rutan samma behörigheter går du till **användar behörigheter – > anställdas data** och granskar de attribut som tjänst kontot kan läsa från SuccessFactors-klienten. För att till exempel hämta attributet *username* från SuccessFactors, se till att behörigheten "Visa" beviljas för det här attributet. Granska varje attribut för visnings behörighet på samma sätt. 
+
+    > [!div class="mx-imgBorder"]
+    > ![Medarbetar data behörigheter](./media/sap-successfactors-inbound-provisioning/review-employee-data-permissions.png)
+   
+
+    >[!NOTE]
+    >En fullständig lista över attribut som hämtas av den här etablerings appen finns i referens för [SuccessFactors-attribut](../app-provisioning/sap-successfactors-attribute-reference.md)
+
+1. Klicka på **färdig**. Klicka på **Spara ändringar**.
 
 ### <a name="create-a-permission-group-for-the-api-user"></a>Skapa en behörighets grupp för API-användaren
 
-* I SuccessFactors administrations Center söker du efter *Hantera behörighets grupper* och väljer **Hantera behörighets grupper** från Sök resultaten.
-  > [!div class="mx-imgBorder"]
-  > ![Hantera behörighets grupper](./media/sap-successfactors-inbound-provisioning/manage-permission-groups.png)
-* I fönstret Hantera behörighets grupper klickar du på **Skapa nytt**.
-  > [!div class="mx-imgBorder"]
-  > ![Lägg till ny grupp](./media/sap-successfactors-inbound-provisioning/create-new-group.png)
-* Lägg till ett grupp namn för den nya gruppen. Grupp namnet ska indikera att gruppen är för API-användare.
-  > [!div class="mx-imgBorder"]
-  > ![Namn på behörighets grupp](./media/sap-successfactors-inbound-provisioning/permission-group-name.png)
-* Lägg till medlemmar i gruppen. Du kan till exempel välja **användar namn** i list rutan personer i poolen och sedan ange användar namnet för det API-konto som ska användas för integreringen. 
-  > [!div class="mx-imgBorder"]
-  > ![Lägga till gruppmedlemmar](./media/sap-successfactors-inbound-provisioning/add-group-members.png)
-* Slutför skapandet av behörighets gruppen genom att klicka på **klar** .
+1. I SuccessFactors administrations Center söker du efter *Hantera behörighets grupper* och väljer **Hantera behörighets grupper** från Sök resultaten.
+    > [!div class="mx-imgBorder"]
+    > ![Hantera behörighets grupper](./media/sap-successfactors-inbound-provisioning/manage-permission-groups.png)
+1. I fönstret Hantera behörighets grupper klickar du på **Skapa nytt**.
+    > [!div class="mx-imgBorder"]
+    > ![Lägg till ny grupp](./media/sap-successfactors-inbound-provisioning/create-new-group.png)
+1. Lägg till ett grupp namn för den nya gruppen. Grupp namnet ska indikera att gruppen är för API-användare.
+    > [!div class="mx-imgBorder"]
+    > ![Namn på behörighets grupp](./media/sap-successfactors-inbound-provisioning/permission-group-name.png)
+1. Lägg till medlemmar i gruppen. Du kan till exempel välja **användar namn** i list rutan personer i poolen och sedan ange användar namnet för det API-konto som ska användas för integreringen. 
+    > [!div class="mx-imgBorder"]
+    > ![Lägga till gruppmedlemmar](./media/sap-successfactors-inbound-provisioning/add-group-members.png)
+1. Slutför skapandet av behörighets gruppen genom att klicka på **klar** .
 
 ### <a name="grant-permission-role-to-the-permission-group"></a>Bevilja behörighets rollen till behörighets gruppen
 
-* I SuccessFactors administrations Center kan du söka efter *Hantera behörighets roller* och sedan välja **Hantera behörighets roller** från Sök resultaten.
-* I **listan behörighets roll** väljer du den roll som du har skapat för behörigheter för API-användning.
-* Under **tilldela den här rollen till... klickar du** på **Lägg till...** -knapp.
-* Välj **behörighets grupp...** från den nedrullningsbara menyn och klicka sedan på **Välj...** för att öppna fönstret grupper för att söka efter och välja den grupp som skapades ovan. 
-  > [!div class="mx-imgBorder"]
-  > ![Lägg till behörighets grupp](./media/sap-successfactors-inbound-provisioning/add-permission-group.png)
-* Granska behörighets rollen bevilja behörighets gruppen. 
-  > [!div class="mx-imgBorder"]
-  > ![Behörighets roll och grupp information](./media/sap-successfactors-inbound-provisioning/permission-role-group.png)
-* Klicka på **Spara ändringar**.
+1. I SuccessFactors administrations Center kan du söka efter *Hantera behörighets roller* och sedan välja **Hantera behörighets roller** från Sök resultaten.
+1. I **listan behörighets roll** väljer du den roll som du har skapat för behörigheter för API-användning.
+1. Under **tilldela den här rollen till... klickar du** på **Lägg till...** -knapp.
+1. Välj **behörighets grupp...** från den nedrullningsbara menyn och klicka sedan på **Välj...** för att öppna fönstret grupper för att söka efter och välja den grupp som skapades ovan. 
+    > [!div class="mx-imgBorder"]
+    > ![Lägg till behörighets grupp](./media/sap-successfactors-inbound-provisioning/add-permission-group.png)
+1. Granska behörighets rollen bevilja behörighets gruppen. 
+    > [!div class="mx-imgBorder"]
+    > ![Behörighets roll och grupp information](./media/sap-successfactors-inbound-provisioning/permission-role-group.png)
+1. Klicka på **Spara ändringar**.
 
 ## <a name="configuring-user-provisioning-from-successfactors-to-azure-ad"></a>Konfigurera användar etablering från SuccessFactors till Azure AD
 
