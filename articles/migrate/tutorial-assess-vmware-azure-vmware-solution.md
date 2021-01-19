@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: MVC
-ms.openlocfilehash: f6d3c6f77b062939a88e7277cb7f0ab6ecff9fcb
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: e57084dab00210802edbd46e3380313e034eb036
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753084"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98566751"
 ---
 # <a name="tutorial-assess-vmware-vms-for-migration-to-avs"></a>Självstudie: utvärdera virtuella VMware-datorer för migrering till AVS
 
@@ -20,7 +20,7 @@ Som en del av migreringen till Azure bedömer du dina lokala arbets belastningar
 
 Den här artikeln visar hur du bedömer identifierade virtuella VMware-datorer (VM) för migrering till Azure VMware-lösning (AVS) med hjälp av verktyget Azure Migrate: Server bedömning. AVS är en hanterad tjänst som gör att du kan köra VMware-plattformen i Azure.
 
-I den här guiden får du lära dig att:
+I de här självstudierna får du lära dig att
 > [!div class="checklist"]
 - Kör en utvärdering baserat på datorns metadata och konfigurations information.
 - Kör en utvärdering baserat på prestanda data.
@@ -58,58 +58,63 @@ Kör en utvärdering på följande sätt:
 
    ![Knappen utvärdera och migrera servrar](./media/tutorial-assess-vmware-azure-vmware-solution/assess.png)
 
-2. Klicka på **utvärdera** i **Azure Migrate: Server bedömning**.
+1. Klicka på **utvärdera** i **Azure Migrate: Server bedömning**.
 
-3. I **Assess servers**  >  **bedömnings typ** för utvärderings servrar väljer du **Azure VMware-lösning (AVS) (för hands version)**.
-4. I **identifierings källa**:
+1. I   >  **bedömnings typ** för utvärderings servrar väljer du **Azure VMware-lösning (AVS) (för hands version)**.
+
+1. I **identifierings källa**:
 
     - Om du har identifierat datorer som använder-enheten väljer du **datorer som identifierats från Azure Migrate**-installationen.
     - Om du har identifierat datorer som använder en importerad CSV-fil väljer du **importerade datorer**. 
     
-5. Ange ett namn för utvärderingen. 
-6. Klicka på **Visa alla** för att granska utvärderingsegenskaperna.
+1. Klicka på **Redigera** för att granska utvärderings egenskaperna.
 
-    ![Sida där du väljer bedömnings inställningar](./media/tutorial-assess-vmware-azure-vmware-solution/assess-servers.png)
+    :::image type="content" source="./media/tutorial-assess-vmware-azure-vmware-solution/assess-servers.png" alt-text="Sida där du väljer bedömnings inställningar":::
+ 
 
-
-7. egenskaper för 1N- **utvärderings**  >  **mål**:
+1. I **Egenskaper för kontroll**  >  **mål**:
 
     - Ange den Azure-region som du vill migrera till på **mål platsen**.
        - Storleks-och kostnads rekommendationer baseras på den plats som du anger.
-       - Du kan för närvarande utvärdera för tre regioner (östra USA, västra USA, västra Europa)
-   - Lämna **virtuellt San** i **lagrings typ**. Detta är standard lagrings typen för ett privat AVS-moln.
+       - Du kan för närvarande utvärdera fyra regioner (östra Australien, östra USA, västra Europa, västra USA)
+   - **Lagrings typen** är standard för **virtuellt San**. Detta är standard lagrings typen för ett privat AVS-moln.
    - **Reserverade instanser** stöds för närvarande inte för AVS-noder.
-8. I **VM-storlek**:
-    - I **nodtyp** väljer du en nodtyp baserat på de arbets belastningar som körs på de lokala virtuella datorerna.
-        - Azure Migrate rekommenderar noden med noder som behövs för att migrera de virtuella datorerna till AVS.
-        - Standard-nodtypen är AV36.
-    - **FTT-inställning, RAID-nivå**, väljer du kunde inte TOLERERA och RAID-kombination.  Det valda alternativet FTT, kombinerat med kravet på lokal virtuell dator disk, bestämmer det totala virtuellt San-lagrings utrymmet som krävs i AVS.
+1. I **VM-storlek**:
+    - **Nodtypen** är standard för **AV36**. Azure Migrate rekommenderar noden med noder som behövs för att migrera de virtuella datorerna till AVS.
+    - I **FTT-inställningen, RAID-nivå**, väljer du det går inte att TOLERERA och RAID-kombinationen.  Det valda alternativet FTT, kombinerat med kravet på lokal virtuell dator disk, bestämmer det totala virtuellt San-lagrings utrymmet som krävs i AVS.
     - I **CPU-överprenumeration** anger du förhållandet mellan virtuella kärnor som är associerade med en fysisk kärna i AVS-noden. Överprenumeration på över 4:1 kan orsaka prestanda försämring, men kan användas för arbets belastningar för webb server typ.
 
-9. I **Node-storlek**: 
+1. I **Node-storlek**: 
     - I **storleks kriterium** väljer du om du vill basera utvärderingen på statiska metadata eller på prestandabaserade data. Om du använder prestanda data:
         - I **prestanda historik** anger du den data varaktighet som du vill basera utvärderingen på.
         - I **percentils användning** anger du det percentilvärdet som du vill använda för prestanda exemplet. 
     - I **komfort faktor** anger du den buffert som du vill använda under utvärderingen. Dessa konton för problem som säsongs användning, kort prestanda historik och sannolika ökningar i framtida användning. Om du till exempel använder en bekvämlighets faktor på två:
     
         **Komponent** | **Effektiv användning** | **Lägg till bekvämlighets faktor (2,0)**
-        --- | --- | ---  
-        Kärnor | 2 | 4
-        Minne | 8 GB | 16 GB     
+        --- | --- | ---
+        Kärnor | 2  | 4
+        Minne | 8 GB | 16 GB  
 
-10. I **prissättning**:
+1. I **prissättning**:
     - I **erbjudandet** är [Azure-erbjudandet](https://azure.microsoft.com/support/legal/offer-details/) som du har registrerat i visat att Server utvärderingen beräknar kostnaden för det erbjudandet.
     - I **valuta** väljer du fakturerings valutan för ditt konto.
     - I **rabatt (%)**, Lägg till eventuella prenumerations rabatter som du får ovanpå Azure-erbjudandet. Standardinställningen är 0%.
 
-11. Klicka på **Spara** om du gör ändringar.
+1. Klicka på **Spara** om du gör ändringar.
 
-    ![Utvärderingsegenskaper](./media/tutorial-assess-vmware-azure-vmware-solution/view-all.png)
+    :::image type="content" source="./media/tutorial-assess-vmware-azure-vmware-solution/avs-view-all.png" alt-text="Utvärderingsegenskaper":::
 
-12. I **utvärdera servrar** klickar du på **Nästa**.
-13. I **utvärdera servrar**  >  **väljer du datorer som ska utvärderas** för att skapa en ny grupp med servrar för utvärdering, Välj **Skapa ny** och ange ett grupp namn. 
-14. Välj enheten och välj de virtuella datorer som du vill lägga till i gruppen. Klicka på **Nästa**.
-15. Granska utvärderings informationen i **Granska och skapa utvärdering** och klicka på **Skapa utvärdering** för att skapa gruppen och köra utvärderingen.
+1. I **utvärdera servrar** klickar du på **Nästa**.
+
+1. I **Välj datorer för att utvärdera**  >  **bedömnings namnet** > anger du ett namn för utvärderingen. 
+ 
+1. I **Välj eller skapa en grupp** > väljer du **Skapa ny** och anger ett grupp namn. 
+    
+    :::image type="content" source="./media/tutorial-assess-vmware-azure-vmware-solution/assess-group.png" alt-text="Lägga till virtuella datorer i en grupp":::
+ 
+1. Välj enheten och välj de virtuella datorer som du vill lägga till i gruppen. Klicka på **Nästa**.
+
+1. Granska utvärderings informationen i **Granska och skapa utvärdering** och klicka på **Skapa utvärdering** för att skapa gruppen och köra utvärderingen.
 
     > [!NOTE]
     > För prestandabaserade utvärderingar rekommenderar vi att du väntar minst en dag efter att du har startat identifieringen innan du skapar en utvärdering. Detta ger dig tid att samla in prestanda data med högre tillförlitlighet. Vi rekommenderar att du när du har startat identifieringen och väntar på varaktigheten för prestanda som du anger (dag/vecka/månad) för en bedömning med hög exakthet.
@@ -121,6 +126,8 @@ En AVS-utvärdering beskriver:
 - AVS-beredskap: om de lokala virtuella datorerna är lämpliga för migrering till Azure VMware-lösningen (AVS).
 - Antal AVS-noder: uppskattat antal AVS-noder som krävs för att köra de virtuella datorerna.
 - Användning över AVS-noder: planerad processor, minne och lagrings belastning för alla noder.
+    - Användningen inkluderar den främre faktorn i följande omkostnader för kluster hantering, till exempel vCenter Server, NSX Manager (stor), NSX Edge, om HCX har distribuerats även HCX Manager och IX-apparaten som använder ~ 44vCPU (11 CPU), 75 GB av RAM-och 722GB för lagring före komprimering och deduplicering. 
+    - Minne, deduplicera och komprimera är för närvarande inställt på 100%-användning för minne och 1,5 deduplicerar och komprimerat, vilket är en användardefinierad indata i andra versioner som gör det möjligt för användaren att finjustera storleken på den storlek som krävs.
 - Månads kostnads uppskattning: den uppskattade månads kostnaden för alla Azure VMware-lösningar (AVS)-noder som kör lokala virtuella datorer.
 
 ## <a name="view-an-assessment"></a>Visa en utvärdering
@@ -128,8 +135,12 @@ En AVS-utvärdering beskriver:
 Så här visar du en utvärdering:
 
 1. I **servrar**  >  **Azure Migrate: Server bedömning** klickar du på siffran bredvid **utvärderingar**.
-2. I **Utvärderingar** väljer du en utvärdering för att öppna den. 
-3. Granska utvärderings sammanfattningen. Du kan också redigera bedömnings egenskaperna eller beräkna om utvärderingen.
+
+1. I **Utvärderingar** väljer du en utvärdering för att öppna den. Som exempel (uppskattningar och kostnader endast för exempel): 
+
+    :::image type="content" source="./media/tutorial-assess-vmware-azure-vmware-solution/avs-assessment-summary.png" alt-text="Sammanfattning av AVS-utvärdering":::
+
+1. Granska utvärderings sammanfattningen. Du kan också redigera bedömnings egenskaperna eller beräkna om utvärderingen.
  
 
 ### <a name="review-readiness"></a>Granska beredskap

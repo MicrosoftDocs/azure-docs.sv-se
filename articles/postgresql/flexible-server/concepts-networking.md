@@ -6,12 +6,12 @@ ms.author: nlarin
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: cf7c5fa8563544add55a7fad5075848eb5116fe1
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: c30c01a18a17981b4e034c9df2cf822e6580430e
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96901940"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567735"
 ---
 # <a name="networking-overview---azure-database-for-postgresql---flexible-server"></a>Nätverks översikt – Azure Database for PostgreSQL – flexibel Server
 
@@ -74,7 +74,7 @@ Här följer några begrepp som du bör känna till när du använder virtuella 
 Lär dig hur du skapar en flexibel server med privat åtkomst (VNet-integrering) i [Azure Portal](how-to-manage-virtual-network-portal.md) eller [Azure CLI](how-to-manage-virtual-network-cli.md).
 
 > [!NOTE]
-> Om du använder den anpassade DNS-servern måste du använda en DNS-vidarebefordrare för att matcha FQDN för Azure Database for MySQL-flexibel Server. Läs mer i [namn matchning som använder din egen DNS-Server](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server) .
+> Om du använder den anpassade DNS-servern måste du använda en DNS-vidarebefordrare för att matcha FQDN för Azure Database for PostgreSQL-flexibel Server. Läs mer i [namn matchning som använder din egen DNS-Server](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server) .
 
 ## <a name="public-access-allowed-ip-addresses"></a>Offentlig åtkomst (tillåtna IP-adresser)
 Egenskaperna för den offentliga åtkomst metoden är:

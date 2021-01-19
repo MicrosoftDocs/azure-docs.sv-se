@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: 36c832e198d7b6e9a6c3f6ddc19ad87c87917f38
-ms.sourcegitcommit: 949c0a2b832d55491e03531f4ced15405a7e92e3
+ms.openlocfilehash: 80e5cc18888b0e014fc1f617ca27dee05146472e
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98541282"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567679"
 ---
 # <a name="step-2-configure-your-security-solution-to-send-cef-messages"></a>STEG 2: Konfigurera säkerhets lösningen för att skicka CEF-meddelanden
 
@@ -41,8 +41,9 @@ Om din säkerhetslösning redan har en befintlig koppling använder du de anslut
 - [Illusive Networks AMS](connect-illusive-attack-management-system.md)
 - [One Identity Safeguard](connect-one-identity.md)
 - [Palo Alto Networks](connect-paloalto.md)
+- [Thycotic hemlig Server](connect-thycotic-secret-server.md)
 - [Trend Micro Deep Security](connect-trend-micro.md)
-- [Trend Micro-TippingPoint](connect-trend-micro-tippingpoint.md)
+- [Trend Micro TippingPoint](connect-trend-micro-tippingpoint.md)
 - [WireX Network data utredning Platform](connect-wirex-systems.md)
 - [Zscaler](connect-zscaler.md)
 ## <a name="configure-any-other-solution"></a>Konfigurera andra lösningar
@@ -64,7 +65,7 @@ Om det inte finns någon koppling för din säkerhets lösning använder du föl
 > [!NOTE]
 > **Ändra källa för fältet TimeGenerated**
 >
-> - Som standard fyller Log Analytics-agenten i fältet *TimeGenerated* i schemat med den tidpunkt då agenten tog emot händelsen från syslog-daemonen. Därför registreras inte tiden då händelsen genererades på käll systemet i Azure Sentinel.
+> - Som standard fyller Log Analytics-agenten i fältet *TimeGenerated* i schemat med den tidpunkt då agenten tog emot händelsen från syslog-daemonen. Därför registreras inte tiden då händelsen genererades i källsystemet i Azure Sentinel.
 >
 > - Du kan dock köra följande kommando för att ladda ned och köra `TimeGenerated.py` skriptet. Det här skriptet konfigurerar Log Analytics-agenten så att den fyller i fältet *TimeGenerated* med händelsens ursprungliga tid på käll systemet, i stället för den tid det tog emot av agenten.
 >

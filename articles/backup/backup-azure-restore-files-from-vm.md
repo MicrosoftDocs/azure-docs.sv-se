@@ -4,12 +4,12 @@ description: I den här artikeln lär du dig hur du återställer filer och mapp
 ms.topic: conceptual
 ms.date: 03/12/2020
 ms.custom: references_regions
-ms.openlocfilehash: b4bd64fb00c2f341e474ecb96738fab47d717474
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.openlocfilehash: 9bd66c1e3c89c8974adc3970f8595e5100878088
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97831677"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567143"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Återställa filer från en säkerhetskopia av en virtuell Azure-dator
 
@@ -188,7 +188,7 @@ I Linux monteras volymerna för återställnings punkten på den mapp där skrip
 Om fil återställnings processen låser sig efter att du kört fil återställnings skriptet (till exempel om diskarna aldrig monteras eller om de är monterade men volymerna inte visas) utför du följande steg:
 
 1. I filen/etc/iSCSI/iscsid.conf ändrar du inställningen från:
-    - `node.conn[0].timeo.noop_out_timeout = 5`  att `node.conn[0].timeo.noop_out_timeout = 30`
+    - `node.conn[0].timeo.noop_out_timeout = 5`  att `node.conn[0].timeo.noop_out_timeout = 120`
 2. Kör skriptet igen när du har gjort ändringarna ovan. Om det finns tillfälliga haverier, se till att det finns ett mellanrum på 20 till 30 minuter mellan återförsök för att undvika efterföljande burst-överföring av begär Anden som påverkar mål förberedelsen. Intervallet mellan omkörningar ser till att målet är klart för anslutning från skriptet.
 3. Efter fil återställning kontrollerar du att du går tillbaka till portalen och väljer **demontera diskar** för återställnings punkter där du inte kunde montera volymerna. I stort sett rensar det här steget eventuella befintliga processer/sessioner och ökar chansen att återställa.
 

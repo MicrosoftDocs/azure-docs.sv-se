@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 93d17ec2a4fb5c191ce02c73a7a3532e9c854b00
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: fb1ec55bc68ccc323f8dee90982a9169e3085219
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96752081"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567652"
 ---
 # <a name="create-an-azure-vmware-solution-avs-assessment"></a>Skapa en Azure VMware-lösning (AVS)-utvärdering
 
@@ -58,27 +58,29 @@ Kör en Azure VMware-lösning (AVS)-utvärdering enligt följande:
 
     ![Skärm bild som visar Azure Migrate servrar med utvärdering valt under utvärderings verktyg.](./media/how-to-create-assessment/assess.png)
 
-3. I **utvärdera servrar** väljer du bedömnings typ som "Azure VMware-lösning (AVS)", väljer identifierings källa och anger namnet på utvärderingen.
+3. I **utvärdera servrar** väljer du bedömnings typ som "Azure VMware-lösning (AVS)" och väljer identifierings källa.
 
-    ![Grunder i utvärderingar](./media/how-to-create-avs-assessment/assess-servers-avs.png)
+    :::image type="content" source="./media/how-to-create-avs-assessment/assess-servers-avs.png" alt-text="Grundläggande om tillägg av utvärdering":::
 
-4. Klicka på **Visa alla** för att granska utvärderingsegenskaperna.
+4. Klicka på **Redigera** för att granska utvärderings egenskaperna.
 
-    ![Egenskaper för AVS-bedömning](./media/how-to-create-avs-assessment/avs-view-all.png)
+    :::image type="content" source="./media/tutorial-assess-vmware-azure-vmware-solution/assess-servers.png" alt-text="Plats för redigerings knappen för att granska utvärderings egenskaper":::
 
-5. Klicka på **Nästa** och **Välj datorer att utvärdera**. I **Välj eller skapa en grupp** väljer du **Skapa ny** och anger ett gruppnamn. En grupp samlar en eller flera virtuella datorer för utvärdering.
+1. I **Välj datorer för att utvärdera**  >  **bedömnings namnet** > anger du ett namn för utvärderingen. 
+ 
+1. I **Välj eller skapa en grupp** > väljer du **Skapa ny** och anger ett grupp namn. En grupp samlar en eller flera virtuella datorer för utvärdering.
+    
+    :::image type="content" source="./media/tutorial-assess-vmware-azure-vmware-solution/assess-group.png" alt-text="Lägga till virtuella datorer i en grupp":::
 
-6. I **Lägg till datorer i gruppen** väljer du de virtuella datorer som ska läggas till i gruppen.
+1. I **Lägg till datorer i gruppen** väljer du de virtuella datorer som ska läggas till i gruppen.
 
-7. Klicka på **Nästa** för att **Granska och skapa utvärdering** och granska utvärderingsinformationen.
+1. Klicka på **Nästa** för att **Granska och skapa utvärdering** och granska utvärderingsinformationen.
 
-8. Klicka på **Skapa utvärdering** för att skapa gruppen och kör utvärderingen.
+1. Klicka på **Skapa utvärdering** för att skapa gruppen och kör utvärderingen.
 
-    ![Skapa en AVS-utvärdering](./media/how-to-create-avs-assessment/avs-assessment-create.png)
+1. När utvärderingen har skapats kan du se den i **Servrar** > **Azure Migrate: Serverutvärdering** > **Utvärderingar**.
 
-9. När utvärderingen har skapats kan du se den i **Servrar** > **Azure Migrate: Serverutvärdering** > **Utvärderingar**.
-
-10. Klicka på **Exportera utvärdering** för att ladda ned den som en Excel-fil.
+1. Klicka på **Exportera utvärdering** för att ladda ned den som en Excel-fil.
 
 
 ## <a name="review-an-azure-vmware-solution-avs-assessment"></a>Granska en Azure VMware-lösning (AVS)-utvärdering
@@ -88,6 +90,8 @@ En Azure VMware Solution (AVS)-utvärdering beskriver:
 - **Beredskap för Azure VMware-lösningen (AVS)**: om de lokala virtuella datorerna är lämpliga för migrering till Azure VMware-lösning (AVS).
 - **Antal AVS-noder**: uppskattat antal AVS-noder som krävs för att köra de virtuella datorerna.
 - **Användning över AVS-noder**: planerad processor, minne och lagrings belastning för alla noder.
+    - Användningen omfattar upp till gångs faktor i följande omkostnader för kluster hantering, till exempel vCenter Server, NSX Manager (stor), NSX Edge, om HCX distribueras även HCX Manager och IX-apparaten som använder ~ 44vCPU (11 CPU), 75 GB av RAM-och 722GB för lagring före komprimering och deduplicering.
+    - Minne, deduplicera och komprimera är för närvarande inställt på 100%-användning för minne och 1,5 deduplicerar och komprimerat, vilket är en användardefinierad indata i andra versioner som gör det möjligt för användaren att finjustera storleken på den storlek som krävs.
 - **Månads kostnads uppskattning**: den uppskattade månads kostnaden för alla Azure VMware-lösningar (AVS)-noder som kör lokala virtuella datorer.
 
 
@@ -97,7 +101,7 @@ En Azure VMware Solution (AVS)-utvärdering beskriver:
 
 2. I **bedömningar** klickar du på en utvärdering för att öppna den.
 
-    ![Sammanfattning av AVS-utvärdering](./media/how-to-create-avs-assessment/avs-assessment-summary.png)
+    :::image type="content" source="./media/how-to-create-avs-assessment/avs-assessment-summary.png" alt-text="Sammanfattning av AVS-utvärdering":::
 
 ### <a name="review-azure-vmware-solution-avs-readiness"></a>Granska beredskap för Azure VMware-lösningen (AVS)
 

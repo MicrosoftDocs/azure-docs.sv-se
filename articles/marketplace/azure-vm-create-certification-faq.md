@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
-ms.date: 01/15/2021
-ms.openlocfilehash: 8c2739503f00848b1515f2061c2a9aa250c091a3
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.date: 01/18/2021
+ms.openlocfilehash: f802292d9723179b36d5291993bd4e07487fe6a8
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539837"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567389"
 ---
 # <a name="troubleshoot-virtual-machine-certification"></a>Felsöka virtuell dator certifiering
 
@@ -70,7 +70,7 @@ Etablerings problem kan omfatta följande fel scenarier:
 
 ### <a name="conectix-cookie-and-other-vhd-specifications"></a>Conectix cookie och andra VHD-specifikationer
 
-Strängen "conectix" är en del av VHD-specifikationen. Den definieras som en cookie med 8 byte i VHD-foten som identifierar filens skapare. Alla VHD-filer som skapats av Microsoft har denna cookie. 
+Strängen "conectix" är en del av VHD-specifikationen. Den definieras som en cookie med 8 byte i VHD-foten som identifierar filens skapare. Alla VHD-filer som skapats av Microsoft har denna cookie.
 
 En VHD-formaterad BLOB måste ha en 512 byte-sidfot i detta format:
 
@@ -311,14 +311,14 @@ Skicka din begäran med SSH-inaktive rad avbildning för certifierings processen
 
 I följande tabell finns några problem som kan uppstå när du laddar ned den virtuella dator avbildningen med en URL för signatur för delad åtkomst (SAS).
 
-|Scenario|Fel|Orsak|Lösning|
-|---|---|---|---|
-|1|Blobben hittades inte|Den virtuella hård disken kan antingen tas bort eller flyttas från den angivna platsen.|| 
-|2|BLOB som används|Den virtuella hård disken används av en annan intern process.|Den virtuella hård disken ska vara i ett använt tillstånd när du laddar ned den med en SAS-URL.|
-|3|Ogiltig SAS-URL|Den tillhör ande SAS-URL: en för den virtuella hård disken är felaktig.|Hämta rätt SAS-URL.|
-|4|Ogiltig signatur|Den tillhör ande SAS-URL: en för den virtuella hård disken är felaktig.|Hämta rätt SAS-URL.|
-|6|Villkorlig HTTP-rubrik|SAS-webbadressen är ogiltig.|Hämta rätt SAS-URL.|
-|7|Ogiltigt VHD-namn|Kontrol lera om det finns specialtecken, till exempel ett procent tecken `%` eller citat tecken `"` , i VHD-namnet.|Byt namn på VHD-filen genom att ta bort specialtecknen.|
+|Fel|Orsak|Lösning|
+|---|---|---|
+|Blobben hittades inte|Den virtuella hård disken kan antingen tas bort eller flyttas från den angivna platsen.|| 
+|BLOB som används|Den virtuella hård disken används av en annan intern process.|Den virtuella hård disken ska vara i ett använt tillstånd när du laddar ned den med en SAS-URL.|
+|Ogiltig SAS-URL|Den tillhör ande SAS-URL: en för den virtuella hård disken är felaktig.|Hämta rätt SAS-URL.|
+|Ogiltig signatur|Den tillhör ande SAS-URL: en för den virtuella hård disken är felaktig.|Hämta rätt SAS-URL.|
+|Villkorlig HTTP-rubrik|SAS-webbadressen är ogiltig.|Hämta rätt SAS-URL.|
+|Ogiltigt VHD-namn|Kontrol lera om det finns specialtecken, till exempel ett procent tecken `%` eller citat tecken `"` , i VHD-namnet.|Byt namn på VHD-filen genom att ta bort specialtecknen.|
 |
 
 ## <a name="first-1-mb-2048-sectors-each-sector-of-512-bytes-partition"></a>Första 1 MB (2048 sektorer, varje sektor på 512 byte) partition
@@ -558,7 +558,7 @@ För att tillhandahålla en fast VM-avbildning för att ersätta en VM-avbildnin
 
 #### <a name="provide-a-new-vm-image-to-address-the-security-vulnerability-or-exploit"></a>Skapa en ny avbildning av virtuella datorer för att lösa säkerhets risker eller sårbarhet
 
-Slutför de här stegen genom att förbereda de tekniska till gångarna för den VM-avbildning som du vill lägga till. Mer information finns i [skapa en virtuell dator med en godkänd bas](azure-vm-create-using-approved-base.md)eller [skapa en virtuell dator med hjälp av en egen avbildning](azure-vm-create-using-own-image.md) och [Generera en SAS-URI för din VM-avbildning](azure-vm-get-sas-uri.md).
+Slutför de här stegen genom att förbereda de tekniska till gångarna för den VM-avbildning som du vill lägga till. Mer information finns i [skapa en virtuell dator med en godkänd bas](azure-vm-create-using-approved-base.md) eller [skapa en virtuell dator med hjälp av en egen avbildning](azure-vm-create-using-own-image.md) och [Generera en SAS-URI för din VM-avbildning](azure-vm-get-sas-uri.md).
 
 1. Logga in på [partner Center](https://partner.microsoft.com/dashboard/home).
 1. I det vänstra fönstret väljer du **kommersiell Marketplace**-  >  **Översikt**.

@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 06/25/2020
-ms.openlocfilehash: 67d4137a21753b221e17a1effde35bc1b89600d3
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: f52c0296023098c755feb1bf0baba980f2988bd7
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753815"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567708"
 ---
 # <a name="server-assessment-overview-migrate-to-azure-vmware-solution"></a>Översikt över Server utvärdering (migrera till Azure VMware-lösning)
 
@@ -207,6 +207,8 @@ När det effektiva användning svärdet har fastställts hanteras lagring, nätv
 
 Om du använder *som lokal storlek*, anser Server utvärderingen inte prestanda historiken för de virtuella datorerna och diskarna. I stället allokeras AVS-noder baserat på den storlek som tilldelas lokalt. Standard lagrings typen är virtuellt San i AVS.
 
+[Läs mer](https://docs.microsoft.com/azure/migrate/tutorial-assess-vmware-azure-vmware-solution#review-an-assessment) om hur du granskar en Azure VMware-lösning.
+
 ## <a name="confidence-ratings"></a>Tillförlitlighets klassificering
 
 Varje prestandabaserade utvärdering i Azure Migrate associeras med en förtroende grad som sträcker sig från ett (lägst) till fem stjärnor (högst).
@@ -235,9 +237,15 @@ Beroende på hur stor procent andel data punkter som är tillgängliga, så går
 
 Här följer några skäl till varför en utvärdering kan få en låg exakthet:
 
-- Du har inte profilerat din miljö under den tid som du skapar utvärderingen. Om du till exempel skapar utvärderingen med varaktigheten inställd på en dag måste du vänta i minst en dag efter att du har startat identifieringen för alla data punkter som ska samlas in.
-- Vissa virtuella datorer stängdes ned under den period då utvärderingen beräknades. Om några virtuella datorer är inaktiverade under en viss tid kan Server utvärderingen inte samla in prestanda data för den perioden.
-- Vissa virtuella datorer skapades under den period då utvärderingen beräknades. Om du till exempel har skapat en utvärdering för prestanda historiken för den senaste månaden, men vissa virtuella datorer endast har skapats i miljön för en vecka sedan, så finns det inga prestanda historik för de nya virtuella datorerna för den fullständiga varaktigheten.
+- Du har inte profilerat din miljö under den tid som du skapar utvärderingen. Om du till exempel skapar utvärderingen med varaktigheten inställd på en dag måste du vänta minst en dag efter att du har startat identifieringen för alla data punkter som ska samlas in.
+- Utvärderingen kan inte samla in prestanda data för vissa eller alla virtuella datorer under utvärderings perioden. För en hög exakthet bör du se till att: 
+    - Virtuella datorer är påslagna under utvärderings perioden
+    - Utgående anslutningar på portarna 443 tillåts
+    - För Hyper-V virtuella datorer är dynamiskt minne aktiverat 
+    
+    Beräkna om utvärderingen så att de senaste ändringarna återspeglas i säkerhetsomdömet.
+
+- Vissa virtuella datorer skapades under den tid då utvärderingen beräknades. Anta till exempel att du har skapat en utvärdering för prestanda historiken för den senaste månaden, men vissa virtuella datorer skapades bara för en vecka sedan. I detta fall kommer prestandadata för de nya virtuella datorerna inte att vara tillgängliga för hela tidsperioden och säkerhetsomdömet blir lågt.
 
 > [!NOTE]
 > Om en utvärderings grad är mindre än fem stjärnor rekommenderar vi att du väntar minst en dag för att enheten ska profilera miljön och sedan beräkna utvärderingen på annat sätt. Om du inte gör det kanske prestandabaserade storleks ändringar inte är pålitliga. I så fall rekommenderar vi att du växlar utvärderingen till lokal storlek.

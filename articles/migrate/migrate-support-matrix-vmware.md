@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 11/10/2020
-ms.openlocfilehash: e6582443ddc56b315c1c666c81a596fa71b1d54f
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 02757477ca4a07f4526df0339291122eda57c9b5
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753985"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567426"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>Support mat ris för VMware-utvärdering 
 
@@ -23,10 +23,10 @@ Om du vill migrera virtuella VMware-datorer till Azure läser du [matrisen migra
 
 ## <a name="limitations"></a>Begränsningar
 
-**Support** | **Information**
+**Krav** | **Information**
 --- | ---
 **Projekt gränser** | Du kan skapa flera projekt i en Azure-prenumeration.<br/><br/> Du kan identifiera och utvärdera upp till 35 000 virtuella VMware-datorer i ett enda [projekt](migrate-support-matrix.md#azure-migrate-projects). Ett projekt kan även innehålla fysiska servrar och virtuella Hyper-V-datorer, upp till utvärderings gränserna för var och en.
-**Identifiering** | Azure Migrates apparaten kan identifiera upp till 10 000 virtuella VMware-datorer på en vCenter Server.
+**Identifikation** | Azure Migrates apparaten kan identifiera upp till 10 000 virtuella VMware-datorer på en vCenter Server.
 **Utvärdering** | Du kan lägga till upp till 35 000 datorer i en enda grupp.<br/><br/> Du kan utvärdera upp till 35 000 virtuella datorer i en enda utvärdering.
 
 [Läs mer](concepts-assessment-calculation.md) om utvärderingar.
@@ -72,7 +72,7 @@ Förutom att identifiera datorer kan Server utvärderingen identifiera appar, ro
 **Datorer som stöds** | Stöds för närvarande endast för virtuella VMware-datorer. Du kan identifiera appar som är installerade på upp till 10000 virtuella VMware-datorer, från varje Azure Migrate-apparat.
 **Operativsystem** | Stöd för virtuella datorer som kör alla Windows-och Linux-versioner.
 **Krav för virtuell dator** | VMware-verktyg måste installeras och köras på de virtuella datorer där du vill identifiera appar. <br/><br/> VMware Tools-versionen måste vara senare än 10.2.0.<br/><br/> Virtuella datorer måste ha PowerShell version 2,0 eller senare installerat.
-**Identifiering** | Information om appar som är installerade på en virtuell dator samlas in från vCenter Server med hjälp av VMware-verktyg som är installerade på den virtuella datorn. Programinformationen samlas in från vCenter Server med hjälp av vSphere-API: er. Identifiering av appar är agenten. Ingenting installeras på virtuella datorer och installationen ansluter inte direkt till virtuella datorer. WMI/SSH bör vara aktiverat och tillgängligt på virtuella datorer.
+**Identifikation** | Information om appar som är installerade på en virtuell dator samlas in från vCenter Server med hjälp av VMware-verktyg som är installerade på den virtuella datorn. Programinformationen samlas in från vCenter Server med hjälp av vSphere-API: er. Identifiering av appar är agenten. Ingenting installeras på virtuella datorer och installationen ansluter inte direkt till virtuella datorer. WMI/SSH bör vara aktiverat och tillgängligt på virtuella datorer.
 **vCenter** | VCenter Server skrivskyddat konto som används för utvärdering måste ha behörighet som är aktiverat för **Virtual Machines**  >  **gäst åtgärder** för att kunna interagera med den virtuella datorn för program identifiering.
 **VM-åtkomst** | Identifiering av appar behöver ett lokalt användar konto på den virtuella datorn för program identifiering.<br/><br/> Azure Migrate har för närvarande stöd för att använda en autentiseringsuppgift för alla Windows-servrar och en autentiseringsuppgift för alla Linux-servrar.<br/><br/> Du skapar ett gäst användar konto för virtuella Windows-datorer och ett vanligt/vanligt användar konto (icke-sudo åtkomst) för alla virtuella Linux-datorer.
 **Port åtkomst** | Azure Migrate-installationen måste kunna ansluta till TCP-port 443 på ESXi-värdar som kör virtuella datorer där du vill identifiera appar. VCenter Server returnerar en ESXI-värd anslutning för att ladda ned den fil som innehåller information om appen.
@@ -81,9 +81,9 @@ Förutom att identifiera datorer kan Server utvärderingen identifiera appar, ro
 
 ## <a name="dependency-analysis-requirements-agentless"></a>Krav för beroende analys (utan agent)
 
-Beroende [analys](concepts-dependency-visualization.md) hjälper dig att identifiera beroenden mellan lokala datorer som du vill utvärdera och migrera till Azure. Tabellen sammanfattar kraven för att skapa en agent utan beroende analys.
+Beroende [analys](concepts-dependency-visualization.md) hjälper dig att identifiera beroenden mellan lokala datorer som du vill utvärdera och migrera till Azure. Tabellen sammanfattar kraven för att skapa en agent utan beroende analys. 
 
-**Krav** | **Information**
+**Support** | **Information**
 --- | --- 
 **Datorer som stöds** | Stöds för närvarande endast för virtuella VMware-datorer.
 **Virtuella Windows-datorer** | Windows Server 2016<br/> Windows Server 2012 R2<br/> Windows Server 2012<br/> Windows Server 2008 R2 (64-bitars).<br/>Microsoft Windows Server 2008 (32-bitars). 

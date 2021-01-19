@@ -6,12 +6,12 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: 4531d68c2fbd0698c33d70a75bb82ac9c7f52f49
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 944d867ef888e70faa659adcc0e2d4c02f003c97
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96752251"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567403"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>Identifiering, utvärdering och beroende analys – vanliga frågor
 
@@ -46,7 +46,8 @@ Du kan identifiera upp till 10 000 virtuella VMware-datorer, upp till 5 000 virt
 Det står PercentageOfCoresUtilizedMissing eller PercentageOfMemoryUtilizedMissing för prestandabaserad utvärdering i utvärderingsrapporten när Azure Migrate-installationen inte kan samla in prestandadata för lokala virtuella datorer. Kontrollera följande:
 
 - Om de virtuella datorerna är påslagna under hela den varaktighet för vilken du skapar utvärderingen
-- Om endast minnesräknare saknas och du försöker utvärdera virtuella Hyper-V-datorer kontrollerar du om dynamiskt minne är aktiverat på de virtuella datorerna. Det finns för närvarande ett känt problem som gör att Azure Migrate-installationen inte kan samla in minnesanvändning för sådana virtuella datorer.
+- Om endast minnes räknare saknas och du försöker utvärdera virtuella Hyper-V-datorer. I det här scenariot aktiverar du dynamiskt minne på de virtuella datorerna och omberäknar utvärderingen för att avspegla de senaste ändringarna. Enheten kan samla in minnes användnings värden för virtuella Hyper-V-datorer endast när den virtuella datorn har dynamiskt minne aktiverat.
+
 - Om alla prestanda räknare saknas kontrollerar du att utgående anslutningar på portarna 443 (HTTPS) är tillåtna.
 
 Obs! Om någon av prestandaräknarna saknas återgår Azure Migrate: Server Assessment till de allokerade kärnorna/minnet lokalt och rekommenderar lämplig VM-storlek.
@@ -57,7 +58,12 @@ Säkerhetsomdömet beräknas för ”prestandabaserade” utvärderingar baserat
 
 - Du profilerade inte din miljö för hela den varaktighet för vilken du skapar utvärderingen. Om du till exempel skapar en utvärdering med en varaktighet på en vecka måste du vänta minst en vecka efter att identifieringen startade, tills alla datapunkter har samlats in. Om du inte kan vänta hela varaktigheten ändrar du varaktigheten för prestanda till en kortare period och ”räknar om” utvärderingen.
  
-- Server utvärderingen kan inte samla in prestanda data för vissa eller alla virtuella datorer under utvärderings perioden. Kontrollera att de virtuella datorerna var påslagna under utvärderingen och att utgående anslutningar tillåts på port 443. Om dynamiskt minne är aktiverat för virtuella Hyper-V-datorer saknas minnesräknare, vilket ger ett lågt säkerhetsomdöme. Beräkna om utvärderingen så att de senaste ändringarna återspeglas i säkerhetsomdömet. 
+- Server utvärderingen kan inte samla in prestanda data för vissa eller alla virtuella datorer under utvärderings perioden. För en hög exakthet bör du se till att: 
+    - Virtuella datorer är påslagna under utvärderings perioden
+    - Utgående anslutningar på portarna 443 tillåts
+    - För Hyper-V virtuella datorer är dynamiskt minne aktiverat 
+
+    Beräkna om utvärderingen så att de senaste ändringarna återspeglas i säkerhetsomdömet.
 
 - Få virtuella datorer skapades efter att identifieringen startades i Server Assessment. Om du till exempel skapar en utvärdering för prestandahistoriken för den senaste månaden, men några virtuella datorer skapades i miljön för en vecka sedan. I detta fall kommer prestandadata för de nya virtuella datorerna inte att vara tillgängliga för hela tidsperioden och säkerhetsomdömet blir lågt.
 

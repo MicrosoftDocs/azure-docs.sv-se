@@ -6,16 +6,16 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: c2a6a88e9f730e17c929cf7949352448903435f6
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 730d12558e413d96909914d06187d0d5f89ec661
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98118463"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567530"
 ---
 # <a name="azure-database-for-postgresql-single-server-data-encryption-with-a-customer-managed-key"></a>Azure Database for PostgreSQL data kryptering för enskild server med en kundhanterad nyckel
 
-Azure PostgreSQL utnyttjar [Azure Storage kryptering](../storage/common/storage-service-encryption.md) för att kryptera data i vila som standard med hjälp av Microsoft-hanterade nycklar. För Azure PostgreSQL-användare är det mycket likt transparent data Encruption (TDE) i andra databaser, till exempel SQL Server. Många organisationer kräver fullständig kontroll över åtkomsten till data med hjälp av en kundhanterad nyckel. Med data kryptering med Kundhanterade nycklar för Azure Database for PostgreSQL enskild server kan du ta med din egen nyckel (BYOK) för data skydd i vila. Det gör det även möjligt för organisationer att implementera ansvarsfördelning vad gäller hanteringen av nycklar och data. Med kundhanterad kryptering ansvarar du för och har fullständig kontroll över en nyckels livscykel, behörigheter för nyckelanvändning och granskning av åtgärder på nycklar.
+Azure PostgreSQL utnyttjar [Azure Storage kryptering](../storage/common/storage-service-encryption.md) för att kryptera data i vila som standard med hjälp av Microsoft-hanterade nycklar. För Azure PostgreSQL-användare är det mycket likt transparent datakryptering (TDE) i andra databaser, till exempel SQL Server. Många organisationer kräver fullständig kontroll över åtkomsten till data med hjälp av en kundhanterad nyckel. Med data kryptering med Kundhanterade nycklar för Azure Database for PostgreSQL enskild server kan du ta med din egen nyckel (BYOK) för data skydd i vila. Det gör det även möjligt för organisationer att implementera ansvarsfördelning vad gäller hanteringen av nycklar och data. Med kundhanterad kryptering ansvarar du för och har fullständig kontroll över en nyckels livscykel, behörigheter för nyckelanvändning och granskning av åtgärder på nycklar.
 
 Data kryptering med Kundhanterade nycklar för Azure Database for PostgreSQL enskild server, anges på server nivå. För en specifik server används en kundhanterad nyckel, som kallas nyckel krypterings nyckel (KEK), för att kryptera data krypterings nyckeln (DEK) som används av tjänsten. KEK är en asymmetrisk nyckel som lagras i en kundägda och kundhanterad [Azure Key Vault](../key-vault/general/secure-your-key-vault.md) instans. Nyckel krypterings nyckeln (KEK) och data krypterings nyckeln (DEK) beskrivs mer detaljerat längre fram i den här artikeln.
 

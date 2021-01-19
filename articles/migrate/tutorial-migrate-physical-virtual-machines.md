@@ -7,12 +7,12 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 01/02/2021
 ms.custom: MVC
-ms.openlocfilehash: aac949de0b0ae1f085187c1b5e1f3b64d8edad03
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: c0f4f1d7f0213ad24d25d8d34235475bbdb0316a
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98233822"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567109"
 ---
 # <a name="migrate-machines-as-physical-servers-to-azure"></a>Migrera datorer som fysiska servrar till Azure
 
@@ -163,6 +163,8 @@ På datorer som du vill migrera måste du installera mobilitets tjänst agenten.
     - Du kan hämta lösen frasen på replikerings enheten. Från kommando raden kör **C:\ProgramData\ASR\home\svsystems\bin\genpassphrase.exe-v** för att visa den aktuella lösen frasen.
     - Återskapa inte lösen frasen. Detta bryter anslutningen och du måste registrera om replikerings enheten.
 
+> [!NOTE]
+> I */Platform* -parametern anger du *VMware* om du migrerar virtuella VMware-datorer eller fysiska datorer.
 
 ### <a name="install-on-windows"></a>Installera i Windows
 

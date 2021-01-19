@@ -12,12 +12,12 @@ ms.date: 12/04/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 07acd71eb1a77592c82b80aa574d79b98c48f60e
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: 0067ed618f95e7f83fc041fe214bbc4d715a504f
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96608307"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567633"
 ---
 # <a name="azure-ad-connect-sync-v2-endpoint-api"></a>Slutpunkts-API för Azure AD Connect-synkronisering v2 
 Microsoft har distribuerat en ny slut punkt (API) för Azure AD Connect som förbättrar prestandan för synkroniseringstjänsten i Azure Active Directory. Genom att använda den nya v2-slutpunkten får du märkbara prestanda vinster vid export och import till Azure AD. Den här nya slut punkten stöder följande:
@@ -28,7 +28,7 @@ Microsoft har distribuerat en ny slut punkt (API) för Azure AD Connect som för
 > [!NOTE]
 > För närvarande har den nya slut punkten ingen konfigurerad grupp storleks gräns för Microsoft 365 grupper som skrivs tillbaka. Detta kan påverka din Active Directory och fördröjning av synkronisering. Vi rekommenderar att du ökar grupp storlekarna stegvis.  
 
-## <a name="pre-requisites"></a>Förutsättningar  
+## <a name="prerequisites"></a>Krav  
 För att du ska kunna använda den nya v2-slutpunkten måste du använda [Azure AD Connect version 1.5.30.0](https://www.microsoft.com/download/details.aspx?id=47594) eller senare och följa distributions stegen nedan för att aktivera v2-slutpunkten för din Azure AD Connect-Server.   
 
 ## <a name="deployment-guidance"></a>Vägledning för distribution 
@@ -106,7 +106,7 @@ Följande steg kan användas för att öka medlemskaps gränsen:
 1. Öppna redigeraren för Azure AD-synkronisering 
 2. I redigeraren väljer du **utgående** för riktning 
 3. Klicka på synkroniseringsregeln **till AAD – grupp koppling** 
-4. Klicka på **Edit** knappen Redigera ![ skärm bild som visar alternativet "Visa och hantera regler för synkronisering" med "ut till AAD-Group Join".](media/how-to-connect-sync-endpoint-api-v2/endpoint2.png)
+4. Klicka på  knappen Redigera ![ skärm bild som visar alternativet "Visa och hantera regler för synkronisering" med "ut till AAD-Group Join".](media/how-to-connect-sync-endpoint-api-v2/endpoint2.png)
 
 6. Klicka på **Ja** om du vill inaktivera standard regeln och skapa en redigerbar kopia.
  ![Skärm bild som visar fönstret "redigera reserverad regel bekräftelse" med knappen "Ja" vald.](media/how-to-connect-sync-endpoint-api-v2/endpoint3.png)
@@ -176,7 +176,7 @@ Om du har aktiverat v2-slutpunkten och behöver återställa, följer du dessa s
 ## <a name="frequently-asked-questions"></a>Vanliga frågor och svar  
  
 **När kommer den nya slut punkten att bli standard för uppgraderingar och nya installationer?**  
-</br>Vi planerar en ny version av AADConnect som ska publiceras för hämtning i januari 2021. Den här versionen använder slut punkten v2 som standard och aktiverar synkronisering av grupper som är större än 50 000 withuot ytterligare konfiguration. Den här versionen kommer senare att publiceras för automatisk uppgradering till berättigade servrar.
+</br>Vi planerar en ny version av AADConnect som ska publiceras för hämtning i januari 2021. Den här versionen använder slut punkten v2 som standard och aktiverar synkronisering av grupper som är större än 50 000 utan ytterligare konfiguration. Den här versionen kommer senare att publiceras för automatisk uppgradering till berättigade servrar.
  
 ## <a name="next-steps"></a>Nästa steg
 

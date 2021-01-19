@@ -7,18 +7,18 @@ ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 11/04/2020
-ms.openlocfilehash: a2e5cd43add6db080441812e4350d6f003ef81a2
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: b8f3a8e06bb27051417205c4dc3141948960bb00
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98538505"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567804"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-server-by-using-the-azure-portal"></a>Snabb start: skapa en Azure Database for MySQL-server med hjälp av Azure Portal
 
 Azure Database for MySQL är en hanterad tjänst som du använder för att köra, hantera och skala hög tillgängliga MySQL-databaser i molnet. Den här snabb starten visar hur du använder Azure Portal för att skapa en Azure Database for MySQL enskild server. Det visar också hur du ansluter till servern.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 En Azure-prenumeration krävs. Om du inte har en Azure-prenumeration kan du skapa ett [kostnads fritt Azure-konto](https://azure.microsoft.com/free/) innan du börjar.
 
 ## <a name="create-an-azure-database-for-mysql-single-server"></a>Skapa en Azure Database for MySQL enskild server
@@ -45,7 +45,7 @@ En Azure-prenumeration krävs. Om du inte har en Azure-prenumeration kan du skap
    Servernamn | **mydemoserver** | Ange ett unikt namn. Ditt servernamn får bara innehålla gemener, siffror och bindestreck. Det måste innehålla mellan 3 och 63 tecken.
    Datakälla |**Ingen** | Välj **Ingen** om du vill skapa en ny server från grunden. Välj endast **säkerhets kopiering** om du återställer från en geo-säkerhetskopia av en befintlig server.
    Plats |Önskad plats | Välj en plats i listan.
-   Version | Senaste huvudversion| Använd den senaste huvud versionen. Se [alla versioner som stöds](../mysql/concepts-supported-versions.md).
+   Version | Senaste huvudversion| Använd den senaste huvud versionen. Se [alla versioner som stöds](concepts-supported-versions.md).
    Beräkning och lagring | Använd standardinställningarna| Standard pris nivån är **generell användning** med **4 virtuella kärnor** och **100 GB** lagring. Kvarhållning av säkerhets kopior har angetts till **7 dagar**, med alternativet **geografiskt redundant** säkerhets kopiering.<br/>Gå igenom sidan med [priser](https://azure.microsoft.com/pricing/details/mysql/) och uppdatera standardinställningarna om du behöver.
    Användarnamn för administratör | **mydemoadmin** | Ange användar namnet för Server administratören. Du kan inte använda **azure_superuser**, **administratör**, **administratör**, **rot**, **gäst** eller **offentlig** för administratörs användar namnet.
    Lösenord | Ett lösenord | Ett nytt lösen ord för Server administratörs användaren. Lösen ordet måste vara mellan 8 och 128 tecken långt och innehålla en kombination av versaler eller gemener, siffror och icke-alfanumeriska tecken (!, $, #,% osv.).

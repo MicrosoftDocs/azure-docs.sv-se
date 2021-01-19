@@ -4,12 +4,12 @@ description: Lär dig hur du uppgraderar ett Azure Kubernetes service-kluster (A
 services: container-service
 ms.topic: article
 ms.date: 12/17/2020
-ms.openlocfilehash: 947d669d436308a550bce31f04c7b1a2b8a8485a
-ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
+ms.openlocfilehash: 1d3c275758a1e241a531b65d1897903153efab94
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97734360"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567465"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>Uppgradera ett AKS-kluster (Azure Kubernetes Service)
 
@@ -108,7 +108,7 @@ För att bekräfta att uppgraderingen har slutförts använder du kommandot [AZ 
 az aks show --resource-group myResourceGroup --name myAKSCluster --output table
 ```
 
-Följande exempel på utdata visar att klustret nu kör *1.13.10*:
+Följande exempel på utdata visar att klustret nu kör *1.18.10*:
 
 ```json
 Name          Location    ResourceGroup    KubernetesVersion    ProvisioningState    Fqdn
@@ -120,7 +120,7 @@ myAKSCluster  eastus      myResourceGroup  1.18.10              Succeeded       
 
 Förutom att uppgradera ett kluster manuellt kan du ange en kanal för automatisk uppgradering i klustret. Följande uppgraderings kanaler är tillgängliga:
 
-|Kanal| Åtgärd | Exempel
+|Kanal| Action | Exempel
 |---|---|---|
 | `none`| inaktiverar automatiska uppgraderingar och behåller klustret med den aktuella versionen av Kubernetes| Standardinställning om den lämnas oförändrad|
 | `patch`| Uppgradera automatiskt klustret till den senaste korrigerings versionen som stöds när den blir tillgänglig och behåll den lägre versionen.| Om exempelvis ett kluster kör version *1.17.7* och versions *1.17.9*, *1.18.4*, *1.18.6* och *1.19.1* är tillgängliga, uppgraderas klustret till *1.17.9*|

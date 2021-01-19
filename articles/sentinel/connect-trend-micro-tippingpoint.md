@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/12/2021
 ms.author: yelevin
-ms.openlocfilehash: 549b4e1e5e1aef3f6957fa52d69d252c55934286
-ms.sourcegitcommit: 949c0a2b832d55491e03531f4ced15405a7e92e3
+ms.openlocfilehash: 989520e079988e1821d8bb9a936f857e1f62c11a
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98541600"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567764"
 ---
 # <a name="connect-your-trend-micro-tippingpoint-solution-to-azure-sentinel"></a>Anslut din Trend Micro TippingPoint-lösning till Azure Sentinel
 
@@ -32,7 +32,7 @@ Den här artikeln förklarar hur du ansluter din lösning för Trend Micro Tippi
 > [!NOTE]
 > Data lagras på den geografiska platsen för den arbets yta där du kör Azure Sentinel.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 - Du måste ha läs-och Skriv behörighet på Azure Sentinel-arbetsytan.
 
@@ -48,15 +48,15 @@ Om du vill hämta sina loggar till Azure Sentinel konfigurerar du din TippingPoi
 
 1. Följ anvisningarna på fliken **instruktioner** under **konfiguration**:
 
-    1. **1. Linux syslog-agent konfiguration** – gör det här steget om du inte redan har en logg vidarebefordrare som körs eller om du behöver en annan. Se [steg 1: Distribuera logg vidarebefordraren](connect-cef-agent.md) i Azure Sentinel-dokumentationen för mer detaljerade instruktioner och förklaringar.
+    1. Under **1. Konfiguration av Linux syslog-agenten** – gör det här steget om du inte redan har en logg vidarebefordrare som körs eller om du behöver en annan. Se [steg 1: Distribuera logg vidarebefordraren](connect-cef-agent.md) i Azure Sentinel-dokumentationen för mer detaljerade instruktioner och förklaringar.
 
-    1. **2. Forward Trend Micro TIPPINGPOINT SMS-loggar till syslog-agenten** – den här konfigurationen ska innehålla följande element:
+    1. Under **2. Vidarebefordra Micro TippingPoint SMS-loggar till syslog-agenten** – den här konfigurationen ska innehålla följande element:
         - Logg destination – värd namnet och/eller IP-adressen för servern för logg vidarebefordran
         - Protokoll och port – **TCP 514** (om det är rekommenderat annat bör du se till att göra den parallella ändringen i syslog-daemonen på servern för logg vidarebefordran)
         - Logg format – **ARCSIGHT CEF format v 4.2**
         - Logg typer – alla tillgängliga
 
-    1. **3. Verifiera anslutnings** -kontrol lera data inmatning genom att kopiera kommandot på anslutnings sidan och köra det på logg vidarebefordraren. Se [steg 3: kontrol lera anslutningen](connect-cef-verify.md) i Azure Sentinel-dokumentationen för mer detaljerade instruktioner och förklaringar.
+    1. Under **3. Verifiera anslutning** – Verifiera data inmatning genom att kopiera kommandot på anslutnings sidan och köra det på logg vidarebefordraren. Se [steg 3: kontrol lera anslutningen](connect-cef-verify.md) i Azure Sentinel-dokumentationen för mer detaljerade instruktioner och förklaringar.
 
         Det kan ta upp till 20 minuter innan loggarna börjar visas i Log Analytics.
 

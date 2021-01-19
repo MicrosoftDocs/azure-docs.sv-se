@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: 109f61d9ff76d084b292dbe3cc8ce663b50141ae
-ms.sourcegitcommit: 949c0a2b832d55491e03531f4ced15405a7e92e3
+ms.openlocfilehash: eb10001436d3184b89aa064ec82fcd1f56bea931
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98541333"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98566926"
 ---
 # <a name="tutorial-discover-hyper-v-vms-with-server-assessment"></a>Självstudie: identifiera virtuella Hyper-V-datorer med Server utvärdering
 
@@ -79,10 +79,41 @@ Om du nyligen skapade ett kostnadsfritt Azure-konto är du ägare av prenumerati
 
 ## <a name="prepare-hyper-v-hosts"></a>Förbereda Hyper-V-värdar
 
-Konfigurera ett konto med administratörs åtkomst på Hyper-V-värdarna. Enheten använder det här kontot för identifiering.
+Du kan förbereda Hyper-V-värdar manuellt eller använda ett skript. Förberedelse stegen sammanfattas i tabellen. Skriptet förbereder dessa automatiskt.
 
-- Alternativ 1: Förbered ett konto med administratörs åtkomst till Hyper-V-värddatorn.
-- Alternativ 2: om du inte vill tilldela administratörs behörighet skapar du ett lokalt användar konto eller ett domän användar konto och lägger till användar kontot i dessa grupper – fjärrhanterings användare, Hyper-V-administratörer och användare av prestanda övervakning.
+**Steg** | **Över** | **Manuell**
+--- | --- | ---
+Kontrol lera värd kraven | Kontrollerar att värden kör en version av Hyper-V som stöds och Hyper-V-rollen.<br/><br/>Aktiverar WinRM-tjänsten och öppnar portarna 5985 (HTTP) och 5986 (HTTPS) på värden (krävs för metadata-insamling). | Värden måste köra Windows Server 2019, Windows Server 2016 eller Windows Server 2012 R2.<br/><br/> Kontrol lera att inkommande anslutningar är tillåtna på WinRM-port 5985 (HTTP), så att enheten kan ansluta till att hämta VM-metadata och prestanda data med hjälp av en Common Information Model-session (CIM).
+Verifiera PowerShell-version | Kontrollerar att du kör skriptet på en PowerShell-version som stöds. | Kontrol lera att du kör PowerShell version 4,0 eller senare på Hyper-V-värden.
+Skapa ett konto | Kontrollerar att du har rätt behörigheter på Hyper-V-värden.<br/><br/> Gör att du kan skapa ett lokalt användar konto med rätt behörighet. | Alternativ 1: Förbered ett konto med administratörs åtkomst till Hyper-V-värddatorn.<br/><br/> Alternativ 2: Förbered ett lokalt administratörs konto eller ett domän administratörs konto och Lägg till kontot i dessa grupper: fjärrhanterings användare, Hyper-V-administratörer och användare av prestanda övervakning.
+Aktivera PowerShell-fjärrkommunikation | Aktiverar PowerShell-fjärrkommunikation på värden, så att Azure Migrate-installationen kan köra PowerShell-kommandon på värden via en WinRM-anslutning. | Om du vill konfigurera, öppnar du en PowerShell-konsol som administratör på varje värd och kör det här kommandot: ``` powershell Enable-PSRemoting -force ```
+Konfigurera Hyper-V integrerings tjänster | Kontrollerar att integrerings tjänsterna för Hyper-V är aktiverade på alla virtuella datorer som hanteras av värden. | [Aktivera Hyper-V integrations tjänster](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services.md) på varje virtuell dator.<br/><br/> Om du kör Windows Server 2003 följer du [dessa anvisningar](prepare-windows-server-2003-migration.md).
+Delegera autentiseringsuppgifter om VM-diskar finns på fjärr-SMB-resurser | Delegerar autentiseringsuppgifter | Kör det här kommandot om du vill att CredSSP ska kunna delegera autentiseringsuppgifter på värdar som kör virtuella Hyper-V-datorer med diskar på SMB-resurser: ```powershell Enable-WSManCredSSP -Role Server -Force ```<br/><br/> Du kan köra det här kommandot via fjärr anslutning på alla Hyper-V-värdar.<br/><br/> Om du lägger till nya noder i ett kluster läggs de automatiskt till för identifiering, men du måste aktivera CredSSP manuellt.<br/><br/> När du konfigurerar installationen slutför du installationen av CredSSP genom att [Aktivera den på enheten](#delegate-credentials-for-smb-vhds). 
+
+### <a name="run-the-script"></a>Kör skriptet
+
+1. Hämta skriptet från [Microsoft Download Center](https://aka.ms/migrate/script/hyperv). Skriptet har signerats kryptografiskt av Microsoft.
+2. Verifiera skript integriteten med hjälp av antingen MD5-eller SHA256-hash-filer. Värdena för hashtagg anges nedan. Kör det här kommandot för att generera hashen för skriptet:
+
+    ```powershell
+    C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]
+    ```
+    Exempel på användning:
+
+    ```powershell
+    C:\>CertUtil -HashFile C:\Users\Administrators\Desktop\ MicrosoftAzureMigrate-Hyper-V.ps1 SHA256
+    ```
+3. När du har verifierat skript integriteten kör du skriptet på varje Hyper-V-värd med följande PowerShell-kommando:
+
+    ```powershell
+    PS C:\Users\Administrators\Desktop> MicrosoftAzureMigrate-Hyper-V.ps1
+    ```
+Hash-värden är:
+
+**Hash** |  **Värde**
+--- | ---
+MD5 | 0ef418f31915d01f896ac42a80dc414e
+SHA256 | 0ad60e7299925eff4d1ae9f1c7db485dc9316ef45b0964148a3c07c80761ade2
 
 ## <a name="set-up-a-project"></a>Konfigurera ett projekt
 
