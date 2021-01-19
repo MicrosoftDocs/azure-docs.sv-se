@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/08/2021
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: 9bee5fa6b76aad9305947ebe460f37c399340038
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: d858474eca34243a007d0d0ac1e023a4a0fab8ec
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98033475"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98572348"
 ---
 # <a name="text-to-speech-rest-api"></a>Text-till-tal (REST API)
 
@@ -60,9 +60,11 @@ Med `voices/list` slut punkten kan du få en fullständig lista över röster f�
 | Sydkorea, centrala | `https://koreacentral.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | USA, norra centrala | `https://northcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Europa, norra | `https://northeurope.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| Sydafrika, norra | `https://southafricanorth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | USA, södra centrala | `https://southcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Sydostasien | `https://southeastasia.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Storbritannien, södra | `https://uksouth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| USA, västra centrala | `https://westcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Europa, västra | `https://westeurope.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | USA, västra | `https://westus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | USA, västra 2 | `https://westus2.tts.speech.microsoft.com/cognitiveservices/voices/list` |
@@ -211,10 +213,10 @@ I den här tabellen listas obligatoriska och valfria rubriker för text till tal
 
 | Huvud | Beskrivning | Obligatorisk/valfri |
 |--------|-------------|---------------------|
-| `Authorization` | En autentiseringstoken föregås av ordet `Bearer` . Mer information finns i [Autentisering](#authentication). | Krävs |
-| `Content-Type` | Anger innehålls typen för den angivna texten. Accepterat värde: `application/ssml+xml` . | Krävs |
-| `X-Microsoft-OutputFormat` | Anger formatet för ljud uppspelning. En fullständig lista över godkända värden finns i [ljud utmatningar](#audio-outputs). | Krävs |
-| `User-Agent` | Programnamnet. Det tillhandahållna värdet måste vara mindre än 255 tecken. | Krävs |
+| `Authorization` | En autentiseringstoken föregås av ordet `Bearer` . Mer information finns i [Autentisering](#authentication). | Obligatorisk |
+| `Content-Type` | Anger innehålls typen för den angivna texten. Accepterat värde: `application/ssml+xml` . | Obligatorisk |
+| `X-Microsoft-OutputFormat` | Anger formatet för ljud uppspelning. En fullständig lista över godkända värden finns i [ljud utmatningar](#audio-outputs). | Obligatorisk |
+| `User-Agent` | Programnamnet. Det tillhandahållna värdet måste vara mindre än 255 tecken. | Obligatorisk |
 
 ### <a name="audio-outputs"></a>Ljud utmatningar
 

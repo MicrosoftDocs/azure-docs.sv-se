@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/18/2019
 ms.author: v-miegge
-ms.openlocfilehash: 53fd2332224d903c5a4b33563470cf3569f82b13
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ec605fd30252b9a0cfb80d0bc3ff145ed3b5a1d4
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86526664"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98573317"
 ---
 # <a name="troubleshoot-azure-virtual-machine-performance-on-linux-or-windows"></a>Felsöka prestanda för virtuella Azure-datorer i Linux eller Windows
 
@@ -52,7 +52,7 @@ Du kan kontrol lera det lagrings konto som används för att konfigurera diagnos
 
 Storage är en mycket viktig nivå när vi planerar att analysera IO-prestanda för en virtuell dator i Azure. För Storage-relaterade mått måste vi aktivera diagnostik som ett ytterligare steg. Detta kan också vara aktiverat om vi bara vill analysera de räknare som är relaterade till lagring.
 
-1. Identifiera vilket lagrings konto (eller konton) som den virtuella datorn använder genom att välja den virtuella datorn. Klicka på **Inställningar**och sedan på **diskar**:
+1. Identifiera vilket lagrings konto (eller konton) som den virtuella datorn använder genom att välja den virtuella datorn. Klicka på **Inställningar** och sedan på **diskar**:
 
    ![Klicka på Inställningar, sedan på diskar](media/troubleshoot-performance-virtual-machine-linux-windows/4-storage-disks-disks-selection.png)
 
@@ -208,7 +208,7 @@ Om du vill ta reda på om du påträffar IOPS-gränsen går du till lagrings kon
 
 Med nya disk erbjudanden under standard lagring kan IOPS-och data flödes gränserna variera, men den kumulativa gränsen för standard lagrings kontot är 20000 IOPS (Premium Storage har olika gränser på konto-eller disk nivå). Läs mer om de olika disk gränserna för standard lagring och disk utrymme:
 
-* [Skalbarhets-och prestanda mål för virtuella dator diskar i Windows](../windows/disk-scalability-targets.md).
+* [Skalbarhets-och prestanda mål för virtuella dator diskar i Windows](../disks-scalability-targets.md).
 
 #### <a name="references"></a>Referenser
 
@@ -224,7 +224,7 @@ Kontrol lera data flödes gränserna för de virtuella hård diskar som är ansl
 
 Nya disk erbjudanden under standard lagring har olika IOPS-och data flödes gränser (IOPS exponeras inte per VHD). Titta på data för att se om du är klar med gränserna för kombinerat data flöde MB på den virtuella hård disken på VM-nivå med Läs-och skriv åtgärder, och optimera sedan din VM Storage-konfiguration för att skala de tidigare enskilda VHD-gränserna. Läs mer om de olika disk gränserna för standard lagring och disk utrymme:
 
-* [Skalbarhets-och prestanda mål för virtuella dator diskar i Windows](../windows/disk-scalability-targets.md).
+* [Skalbarhets-och prestanda mål för virtuella dator diskar i Windows](../disks-scalability-targets.md).
 
 ### <a name="high-disk-utilizationlatency-remediation"></a>Hög disk användning/latens reparation
 

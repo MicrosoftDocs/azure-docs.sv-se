@@ -3,12 +3,12 @@ title: Support mat ris för VMware/fysisk haveri beredskap i Azure Site Recovery
 description: Sammanfattar stöd för haveri beredskap för virtuella VMware-datorer och fysiska servrar till Azure med hjälp av Azure Site Recovery.
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: eaf12a9799f834046bc3914816f38d672fcc931b
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 4bf0227cf11b21d7cde2807d465385bfc2b998b5
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98234094"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98573062"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Stöd mat ris för haveri beredskap för virtuella VMware-datorer och fysiska servrar till Azure
 
@@ -57,6 +57,9 @@ IIS | Kontrol lera att du:<br/><br/> -Har ingen befintlig standard webbplats <br
 Typ av nätverkskort | VMXNET3 (när den distribueras som en virtuell VMware-dator)
 IP-adresstyp | Statisk
 Portar | 443 som används för kontroll av kanal dirigering<br/>9443 för data transport
+
+> [!NOTE]
+Operativ system måste installeras med Engelskt språk. Konvertering av språkvariant efter installation kan resultera i potentiella problem.
 
 ## <a name="replicated-machines"></a>Replikerade datorer
 
@@ -208,7 +211,7 @@ Behåll Källans IP-adress | Ja
 Tjänstslutpunkter för virtuellt nätverk i Azure<br/> | Ja
 Snabbare nätverk | Nej
 
-## <a name="storage"></a>Lagring
+## <a name="storage"></a>Storage
 **Komponent** | **Stöds**
 --- | ---
 Dynamisk disk | OS-disken måste vara en standard disk. <br/><br/>Data diskar kan vara dynamiska diskar

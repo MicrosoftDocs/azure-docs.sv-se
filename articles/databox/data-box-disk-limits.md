@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: article
 ms.date: 11/05/2019
 ms.author: alkohli
-ms.openlocfilehash: fb0e56c5eeebb4f3a869feacb996d690ea7dde86
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: e003d0121721838bd5ae038a3a8b4d1b8cd9d1eb
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92124177"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98573198"
 ---
 # <a name="azure-data-box-disk-limits"></a>Azure Data Box Disk gränser
 
@@ -76,7 +76,7 @@ Här följer storleken på de Azure-objekt som kan skrivas. Se till att alla fil
 | Blockera BLOB        | ~ 4,75 TiB                                                 |
 | Sid-BLOB         | 8 TiB <br> (Alla filer som laddats upp i sid-BLOB-format måste vara 512 byte justerade, annars Miss lyckas överföringen. <br> Både VHD och VHDX är 512 byte-justerade.) |
 |Azure Files        | 1 TiB <br> Max. resurs storleken är 5 TiB     |
-| Hanterade diskar     |4 TiB <br> Mer information om storlek och begränsningar finns i: <li>[Skalbarhets mål för Managed disks](../virtual-machines/windows/disk-scalability-targets.md#managed-virtual-machine-disks)</li>|
+| Hanterade diskar     |4 TiB <br> Mer information om storlek och begränsningar finns i: <li>[Skalbarhets mål för Managed disks](../virtual-machines/disks-scalability-targets.md#managed-virtual-machine-disks)</li>|
 
 
 ## <a name="azure-block-blob-page-blob-and-file-naming-conventions"></a>Konventioner för Azure Block Blob, Page blob och namngivning av filer

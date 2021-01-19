@@ -4,12 +4,12 @@ description: Sammanfattar stöd för haveri beredskap för virtuella Azure-dator
 ms.topic: article
 ms.date: 11/29/2020
 ms.author: raynew
-ms.openlocfilehash: fdd5b8f9cea549f64c4857d1c45b95b0d9b9ec53
-ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
+ms.openlocfilehash: 2dbd7cd756e386b44c6933697ff50180021ac035
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 01/19/2021
-ms.locfileid: "98569971"
+ms.locfileid: "98572314"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Supportmatris för haveriberedskap för virtuella Azure-datorer mellan Azure-regioner
 
@@ -213,7 +213,7 @@ Offlineändringar av skyddade diskar | Att koppla från diskar och göra offline
 
 Den här tabellen sammanfattade stödet för den virtuella Azure OS-disken, data disken och den temporära disken.
 
-- Det är viktigt att Observera de virtuella datorernas disk gränser och mål för virtuella [Linux](../virtual-machines/linux/disk-scalability-targets.md) -och [Windows](../virtual-machines/windows/disk-scalability-targets.md) -datorer för att undvika prestanda problem.
+- Det är viktigt att Observera de virtuella datorernas disk gränser och mål för [hanterade diskar](../virtual-machines/disks-scalability-targets.md) för att undvika prestanda problem.
 - Om du distribuerar med standardinställningarna skapar Site Recovery automatiskt diskar och lagrings konton baserat på käll inställningarna.
 - Om du anpassar, se till att du följer rikt linjerna.
 
@@ -261,7 +261,7 @@ Skriv Accelerator aktiverade diskar | Stöds inte
 Taggar  | Användardefinierade Taggar replikeras var 24: e timme.
 
 >[!IMPORTANT]
-> Undvik prestanda problem genom att följa skalbarhet för virtuella dator diskar och prestanda mål för virtuella [Linux](../virtual-machines/linux/disk-scalability-targets.md) -eller [Windows](../virtual-machines/windows/disk-scalability-targets.md) -datorer. Om du använder standardinställningarna skapar Site Recovery de nödvändiga diskarna och lagrings kontona baserat på käll konfigurationen. Om du anpassar och väljer dina egna inställningar följer du diskens skalbarhet och prestanda mål för dina virtuella käll datorer.
+> För att undvika prestanda problem måste du kontrol lera att du följer skalbarhets-och prestanda mål för virtuella datorer för [hanterade diskar](../virtual-machines/disks-scalability-targets.md). Om du använder standardinställningarna skapar Site Recovery de nödvändiga diskarna och lagrings kontona baserat på käll konfigurationen. Om du anpassar och väljer dina egna inställningar följer du diskens skalbarhet och prestanda mål för dina virtuella käll datorer.
 
 ## <a name="limits-and-data-change-rates"></a>Begränsningar och data ändrings takt
 

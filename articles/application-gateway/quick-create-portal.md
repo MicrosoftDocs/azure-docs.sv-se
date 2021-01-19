@@ -6,15 +6,15 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: quickstart
-ms.date: 12/08/2020
+ms.date: 01/19/2021
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 42701fbcee9833fd31fff3ace55d48079015dbcd
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: c1b17d8c624d4bef74278acc24ece37a736a5ca8
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96906411"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98572977"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-portal"></a>Snabbstart: Dirigera webbtrafik med Azure Application Gateway – Azure Portal
 
@@ -26,7 +26,7 @@ Du kan också slutföra den här snabb starten med [Azure PowerShell](quick-crea
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -38,7 +38,7 @@ Logga in på [Azure-portalen](https://portal.azure.com) med ditt Azure-konto.
 
 Du skapar programgatewayen med hjälp av flikarna på sidan **skapa en Application Gateway** .
 
-1. I menyn i Azure-portalen eller på sidan **Start** väljer du **Skapa en resurs**. Fönstret **Nytt** visas.
+1. Välj **Skapa en resurs** på menyn i Microsoft Azure-portalen eller från **startsidan**. Fönstret **Nytt** visas.
 
 2. Välj **nätverk** och välj sedan **Application Gateway** i listan **aktuella** .
 
@@ -78,7 +78,7 @@ Du skapar programgatewayen med hjälp av flikarna på sidan **skapa en Applicati
    > [!NOTE]
    > För Application Gateway v2 SKU måste det finnas en **offentlig** IP-konfiguration för klient delen. Du kan fortfarande ha både en offentlig och en privat klient dels-IP-konfiguration, men endast privat IP-konfiguration för klient delen (endast ILB läge) är inte aktive rad för v2-SKU: n. 
 
-2. Välj **Skapa ny** för den **offentliga IP-adressen** och ange *myAGPublicIPAddress* för den offentliga IP-adressen och välj sedan **OK**. 
+2. Välj **Lägg till ny** för den **offentliga IP-adressen** och ange *myAGPublicIPAddress* för den offentliga IP-adressen och välj sedan **OK**. 
 
      ![Skapa ny Application Gateway: klient delar](./media/application-gateway-create-gateway-portal/application-gateway-create-frontends.png)
 
@@ -88,7 +88,7 @@ Du skapar programgatewayen med hjälp av flikarna på sidan **skapa en Applicati
 
 Backend-poolen används för att dirigera begär anden till backend-servrar som hanterar begäran. Backend-pooler kan bestå av nätverkskort, skalnings uppsättningar för virtuella datorer, offentliga IP-adresser, interna IP-adresser, fullständigt kvalificerade domän namn (FQDN) och backend-ändar för flera klienter som Azure App Service. I det här exemplet ska du skapa en tom backend-pool med din Application Gateway och sedan lägga till Server dels mål i backend-poolen.
 
-1. **På fliken Server** delar väljer du **+ Lägg till en backend-pool**.
+1. **På fliken Server** delar väljer du **Lägg till en backend-pool**.
 
 2. I fönstret **Lägg till en server dels grupp** som öppnas anger du följande värden för att skapa en tom backend-pool:
 
@@ -105,7 +105,7 @@ Backend-poolen används för att dirigera begär anden till backend-servrar som 
 
 På fliken **konfiguration** ansluter du klient dels-och backend-poolen som du skapade med en regel för routning.
 
-1. Välj **Lägg till en regel** i kolumnen **routningsregler** .
+1. Välj **Lägg till en regel för routning** i kolumnen **routningsregler** .
 
 2. I fönstret **Lägg till regel för routning** som öppnas anger du *myRoutingRule* som **regel namn**.
 
@@ -120,7 +120,7 @@ På fliken **konfiguration** ansluter du klient dels-och backend-poolen som du s
 
 4. På fliken **backend-mål** väljer du **MyBackendPool** för **Server dels målet**.
 
-5. För **http-inställningen** väljer du **Skapa ny** för att skapa en ny http-inställning. HTTP-inställningen avgör hur routningsregler fungerar. I fönstret **Lägg till en HTTP-inställning** som öppnas anger du *MyHTTPSetting* som **http-inställnings namn** och *80* för **backend-porten**. Acceptera standardvärdena för de andra inställningarna i fönstret **Lägg till en HTTP-inställning** och välj sedan **Lägg till** för att återgå till fönstret **Lägg till regel för routning** . 
+5. För **http-inställningen** väljer du **Lägg till ny** för att lägga till en ny http-inställning. HTTP-inställningen avgör hur routningsregler fungerar. I fönstret **Lägg till en HTTP-inställning** som öppnas anger du *MyHTTPSetting* som **http-inställnings namn** och *80* för **backend-porten**. Acceptera standardvärdena för de andra inställningarna i fönstret **Lägg till en HTTP-inställning** och välj sedan **Lägg till** för att återgå till fönstret **Lägg till regel för routning** . 
 
      ![Skapa ny Application Gateway: HTTP-inställning](./media/application-gateway-create-gateway-portal/application-gateway-create-httpsetting.png)
 
@@ -146,8 +146,8 @@ Det gör du genom att:
 
 ### <a name="create-a-virtual-machine"></a>Skapa en virtuell dator
 
-1. I menyn i Azure-portalen eller på sidan **Start** väljer du **Skapa en resurs**. Fönstret **Nytt** visas.
-2. Välj **Windows Server 2016 Data Center** i listan **populär** . Sidan **Skapa en virtuell dator** visas.<br>Application Gateway kan dirigera trafik till vilken typ av virtuell dator som helst som används i dess backend-pool. I det här exemplet använder du ett Windows Server 2016 Data Center.
+1. Välj **Skapa en resurs** på menyn i Microsoft Azure-portalen eller från **startsidan**. Fönstret **Nytt** visas.
+2. Välj **Windows Server 2016 Data Center** i listan **populär** . Sidan **Skapa en virtuell dator** visas.<br>Application Gateway kan dirigera trafik till vilken typ av virtuell dator som helst som används i dess backend-pool. I det här exemplet använder du en virtuell dator med Windows Server 2016 Data Center.
 3. Ange dessa värden på fliken **Grundläggande inställningar** för följande inställningar för virtuella datorer:
 
     - **Resurs grupp**: Välj **myResourceGroupAG** som resurs grupps namn.
@@ -165,9 +165,11 @@ Det gör du genom att:
 
 ### <a name="install-iis-for-testing"></a>Installera IIS för testning
 
-I det här exemplet installerar du bara IIS på de virtuella datorerna för att kontrol lera att Azure har skapat programgatewayen.
+I det här exemplet installerar du IIS på de virtuella datorerna för att verifiera att Azure har skapat programgatewayen.
 
-1. Öppna Azure PowerShell. Välj **Cloud Shell** i det övre navigerings fältet i Azure Portal och välj sedan **PowerShell** i list rutan. 
+1. Öppna Azure PowerShell.
+
+   Välj **Cloud Shell** i det övre navigerings fältet i Azure Portal och välj sedan **PowerShell** i list rutan. 
 
     ![Installera anpassat tillägg](./media/application-gateway-create-gateway-portal/application-gateway-extension.png)
 
@@ -208,7 +210,9 @@ I det här exemplet installerar du bara IIS på de virtuella datorerna för att 
 
 ## <a name="test-the-application-gateway"></a>Testa programgatewayen
 
-Även om IIS inte krävs för att skapa programgatewayen installerar du den i den här snabb starten för att kontrol lera om Azure har skapat programgatewayen. Använd IIS för att testa programgatewayen:
+Även om IIS inte krävs för att skapa programgatewayen installerar du den i den här snabb starten för att kontrol lera om Azure har skapat programgatewayen. 
+
+Använd IIS för att testa programgatewayen:
 
 1. Hitta den offentliga IP-adressen för Application Gateway på sidan **Översikt** . ![ Registrera den offentliga IP-adressen för Application Gateway ](./media/application-gateway-create-gateway-portal/application-gateway-record-ag-address.png) eller Välj **alla resurser**, ange *myAGPublicIPAddress* i sökrutan och välj sedan den i Sök resultaten. Azure visar den offentliga IP-adressen på sidan **Översikt**.
 2. Kopiera den offentliga IP-adressen och klistra in den i adress fältet i webbläsaren för att söka efter IP-adressen.
@@ -227,7 +231,7 @@ Så här tar du bort resursgruppen:
 1. På Azure Portal-menyn väljer du **resurs grupper** eller söker efter och väljer *resurs grupper*.
 2. På sidan **Resursgrupper** söker du efter och väljer **myResourceGroupAG**.
 3. Välj **Ta bort resursgrupp** på sidan **Resursgrupp**.
-4. Ange *myResourceGroupAG* för **Skriv resursgruppens namn** och välj sedan **Ta bort**
+4. Skriv *myResourceGroupAG* under **Skriv resurs gruppens namn** och välj sedan **ta bort**
 
 ## <a name="next-steps"></a>Nästa steg
 

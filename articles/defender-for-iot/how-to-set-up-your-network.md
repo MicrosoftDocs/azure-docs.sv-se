@@ -1,5 +1,5 @@
 ---
-title: Konfigurera nätverket
+title: Konfigurera ditt nätverk
 description: Lär dig om lösnings arkitektur, nätverks förberedelser, krav och annan information som behövs för att se till att du har konfigurerat nätverket så att det fungerar med Azure Defender för IoT-enheter.
 author: shhazam-ms
 manager: rkarlin
@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 01/03/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: b5cb7d0e421657b84c365d8dca536191cafd4e72
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: 2053632f24504f896d1045f99d581b9aa6050b55
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97861963"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98573147"
 ---
 # <a name="about-azure-defender-for-iot-network-setup"></a>Om installation av Azure Defender för IoT-nätverk
 
@@ -103,7 +103,7 @@ Kontrol lera att din organisations säkerhets princip tillåter åtkomst till f�
 | **Sensor ansluten till extern NTP-server (om relevant)** | NTP | UDP | In eller ut| 123 | Tidssynkronisering |
 | **Anslutning mellan Defender för IoT-plattform och hanterings plattform och e-postservern (om det behövs)** | SMTP | TCP | Slut på sensor hantering | 25 | E-post |
 | **Loggar som skickar från den lokala hanterings konsolen till syslog-servern (om det behövs)** | Syslog | UDP | Slut på sensor hantering| 514 | LEEF |
-| **DNS-serverport (om relevant)** | DNS | Saknas | In eller ut| 53 | DNS |
+| **DNS-serverport (om relevant)** | DNS | Ej tillämpligt | In eller ut| 53 | DNS |
 | **Anslutning mellan Defender för IoT-plattformen och den lokala hanterings konsolen för att Active Directory (om relevant)** | LDAPS | TCP | In eller ut | 636 <br />389 | Active Directory |
 | **Fjärr-SNMP-insamlare (om det är relevant)** | SNMP | UDP | Slut på sensor hantering| 161 | Övervakning |
 | **Övervakning av Windows-slutpunkt (om relevant)** | WMI | UDP | Slut på sensor hantering| 135 | Övervakning |
@@ -223,7 +223,7 @@ I ett stjärn nätverk är alla värdar anslutna till en central hubb. I sin enk
 
 Här följer några rekommendationer för att distribuera flera sensorer:
 
-| * * Tal * *| **Mäta** | **Beroende** | **Antal sensorer** |
+| **Nummer** | **Mäta** | **Beroende** | **Antal sensorer** |
 |--|--|--|--|
 | Det maximala avståndet mellan växlar | 80 meter | För beredd Ethernet-kabel | Mer än 1 |
 | Antal nätverks nätverk | Mer än 1 | Ingen fysisk anslutning | Mer än 1 |
@@ -562,7 +562,7 @@ Granska den här listan innan du distribuerar webbplatsen:
 
 En översikt över det industriella nätverks diagrammet gör att du kan definiera rätt plats för Defender för IoT-utrustning.
 
-1.  Visa ett globalt nätverks diagram för den industriella miljö miljön. Exempel:
+1.  Visa ett globalt nätverks diagram för den industriella miljö miljön. Till exempel:
 
     :::image type="content" source="media/how-to-set-up-your-network/ot-global-network-diagram.png" alt-text="Diagram över industri miljö för det globala nätverket.":::
 
@@ -604,7 +604,7 @@ En översikt över det industriella nätverks diagrammet gör att du kan definie
 
     Vad är principen? __________________________________ 
 
-    Exempel:
+    Till exempel:
 
     - Siemens
 

@@ -3,12 +3,12 @@ title: Säkerhetskopiera Azure Managed Disks
 description: Lär dig hur du säkerhetskopierar Azure-Managed Disks från Azure Portal.
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: c4e2d4e649d59389ac3f8bd115e43acabc792eb2
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: 2169e2f44e3ffb2c05c674d633efabed2c531878
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98558372"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98573130"
 ---
 # <a name="back-up-azure-managed-disks-in-preview"></a>Säkerhetskopiera Azure Managed Disks (för hands version)
 
@@ -129,6 +129,8 @@ Följande förutsättningar måste vara uppfyllda för att säkerhets kopiering 
    >Ange namnet på säkerhets kopierings valvet för att välja valvets hanterade identitet.
 
    ![Lägg till rollen disk ögonblicks bild deltagare](./media/backup-managed-disks/disk-snapshot-contributor-role.png)
+
+1. Om disken som ska säkerhets kopie ras är krypterad med [Kundhanterade nycklar (CMK)](https://docs.microsoft.com/azure/virtual-machines/disks-enable-customer-managed-keys-portal) eller med hjälp av [Double Encryption med hjälp av plattforms hanterade nycklar och Kundhanterade nycklar](https://docs.microsoft.com/azure/virtual-machines/disks-enable-double-encryption-at-rest-portal), tilldelar du sedan rollen **läsare** behörighet till säkerhets kopierings valvets hanterade identitet på **disk krypterings uppsättnings** resursen.
 
 1. Kontrol lera att den hanterade identiteten för säkerhets kopierings valvet har rätt uppsättning roll tilldelningar på den käll disk och resurs grupp som fungerar som ögonblicks bild data lager.
 

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 09/03/2020
 ms.author: allensu
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 3c03a207e91ae969836e208f4e6bf4ea32086c7d
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: b3ca4f11b02f32e65cf80adc65ec12d25e6e7905
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121334"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98573181"
 ---
 # <a name="what-is-azure-private-link"></a>Vad är Azure Privat Link? 
 Med Azures privata länk kan du få åtkomst till Azure PaaS-tjänster (till exempel Azure Storage och SQL Database) och Azure-värdbaserade/partner tjänster som ägs av en [privat slut punkt](private-endpoint-overview.md) i det virtuella nätverket.
@@ -37,7 +37,7 @@ Azure Private-länken ger följande fördelar:
  
 - **Utöka till dina egna tjänster**: Aktivera samma upplevelse och funktionalitet för att återge din tjänst privat för konsumenter i Azure. Genom att placera tjänsten bakom en standard Azure Load Balancer kan du aktivera den för privat länk. Konsumenten kan sedan ansluta direkt till tjänsten med hjälp av en privat slut punkt i ett eget virtuellt nätverk. Du kan hantera anslutnings begär Anden med ett samtals flöde för godkännande. En privat Azure-länk fungerar för konsumenter och tjänster som tillhör olika Azure Active Directory klienter. 
 
-## <a name="availability"></a>Tillgängligt 
+## <a name="availability"></a>Tillgänglighet 
  I följande tabell visas de privata länk tjänsterna och de regioner där de är tillgängliga. 
 
 |Tjänster som stöds  |Tillgängliga regioner | Annat som är bra att tänka på | Status  |
@@ -66,7 +66,7 @@ Azure Private-länken ger följande fördelar:
 |Azure Event Grid| Alla offentliga regioner<br/> Alla myndighets regioner       |  | Allmän tillgänglighet (GA)   <br/> [Lär dig hur du skapar en privat slut punkt för Azure Event Grid.](../event-grid/network-security.md) |
 |Azure Web Apps | Alla offentliga regioner      | Stöds med PremiumV2, PremiumV3 eller Function Premium plan  | Allmän tillgänglighet (GA)   <br/> [Lär dig hur du skapar en privat slut punkt för Azure Web Apps.](./tutorial-private-endpoint-webapp-portal.md)   |
 |Azure Machine Learning | Alla offentliga regioner    |  | Allmän tillgänglighet (GA)   <br/> [Lär dig hur du skapar en privat slut punkt för Azure Machine Learning.](../machine-learning/how-to-configure-private-link.md)   |
-| Azure Automation  | Alla offentliga regioner |  | Förhandsgranskning </br> [Lär dig hur du skapar en privat slut punkt för Azure Automation.](../automation/how-to/private-link-security.md)| |
+| Azure Automation  | Alla offentliga regioner<br/> Alla myndighets regioner |  | Förhandsgranskning </br> [Lär dig hur du skapar en privat slut punkt för Azure Automation.](../automation/how-to/private-link-security.md)| |
 | Azure IoT Hub | Alla offentliga regioner    |  | Allmän tillgänglighet (GA)   <br/> [Lär dig hur du skapar en privat slut punkt för Azure IoT Hub.](../iot-hub/virtual-network-support.md) |
 | Azure SignalR | ÖSTRA USA, SÖDRA CENTRALA USA,<br/>VÄSTRA USA 2, alla regioner i Kina      |  | Förhandsgranskning   <br/> [Lär dig hur du skapar en privat slut punkt för Azure-Signalerare.](../azure-signalr/howto-private-endpoints.md)   |
 | Azure Monitor <br/>(Log Analytics & Application Insights) | Alla offentliga regioner      |  | Allmän tillgänglighet (GA)   <br/> [Lär dig hur du skapar en privat slut punkt för Azure Monitor.](../azure-monitor/platform/private-link-security.md)   | 
@@ -100,7 +100,7 @@ Pris information finns i [priser för privata Azure-länkar](https://azure.micro
 ## <a name="faqs"></a>Vanliga frågor och svar  
 Vanliga frågor och svar om [Azures privata länkar](private-link-faq.md).
  
-## <a name="limits"></a>Gränser  
+## <a name="limits"></a>Begränsningar  
 För gränser, se [gränser för privata Azure-länkar](../azure-resource-manager/management/azure-subscription-service-limits.md#private-link-limits).
 
 ## <a name="service-level-agreement"></a>Serviceavtal

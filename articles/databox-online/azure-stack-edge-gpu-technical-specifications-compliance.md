@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 10/07/2020
+ms.date: 01/19/2021
 ms.author: alkohli
-ms.openlocfilehash: 225cb9a31b73f330d8b4ed5790caacc4fa729477
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d40d26e8fab0832a37a43c353e11189f8f193f14
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91839953"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98573334"
 ---
 # <a name="technical-specifications-and-compliance-for-azure-stack-edge-pro-with-gpu"></a>Tekniska specifikationer och efterlevnad för Azure Stack Edge Pro med GPU 
 
@@ -26,7 +26,7 @@ Azure Stack Edge Pro-enheten har följande specifikationer för beräkning och m
 | Specifikation           | Värde                  |
 |-------------------------|----------------------------|
 | Processor                     | 2 X Intel Xeon silver 4214-processor (kaskad)            |
-| Minne                  | 128 GB RAM-minne (8x16 GB)                     |
+| Minne                  | 128 GB RAM-minne (8x16 GB) <br> Dell-kompatibel 16 GB PC4 – 23400 DDR4 – 2933Mhz 2Rx8 1.2 v ECC registrerat RDIMM       |
 
 
 ## <a name="compute-acceleration-specifications"></a>Specifikationer för beräknings acceleration
@@ -45,7 +45,7 @@ Azure Stack Edge Pro-enheten har två 100-240 V-enheter för strömförsörjning
 | Specifikation           | 750 W PSU                  |
 |-------------------------|----------------------------|
 | Maximal uteffekt    | 750 W                     |
-| Frequency               | 50/60 Hz                   |
+| Frekvens               | 50/60 Hz                   |
 | Val av spännings intervall | Automatisk mellan: 100-240 V AC |
 | Hot pluggable           | Ja                        |
 
@@ -68,7 +68,7 @@ Här följer information om Mellanox-kortet:
 | Parameter           | Beskrivning                 |
 |-------------------------|----------------------------|
 | Modell    | ConnectX® – 4 LX ett nätverkskort                      |
-| Modell Beskrivning               | 25GbE dual-port SFP28; PCIe 3.0 x8; ROHS-R6                    |
+| Modell Beskrivning               | 25 GbE dual-port SFP28; PCIe 3.0 x8; ROHS-R6                    |
 | Enhets dels nummer (R640) | MCX4121A-ACAT  |
 | PSID (R640)           | MT_2420110034                         |
 
@@ -88,11 +88,9 @@ Azure Stack Edge Pro-enheter har fem 2,5 "NVMe DC P4610-SSD, var och en med en k
 |    SATA-hårddiskar med solid state-hårddiskar (SSD)      |    1                  |
 |    Start SSD-kapacitet                       |    240 GB             |
 |    Total kapacitet                          |    8,0 TB             |
-|    Total användbar kapacitet *                  |    ~ 4,19 TB          |
+|    Total användbar kapacitet                   |    ~ 4,19 TB          |
+|    RAID-konfiguration                      |    Lagringsdirigering med en kombination av spegling och paritet  |
 |    SAS-styrenhet                          |    HBA330 12 Gbit/s     |
-
-
-**Efter paritets återhämtning och reservering av utrymme för intern användning.*
 
 <!--Remove based on feedback from Ravi
 ## Other hardware specifications
@@ -150,6 +148,7 @@ I det här avsnittet visas de specifikationer som är relaterade till inne slutn
 |     Hölje                           |     Operativa specifikationer                                                                                                                                                                                         |
 |-----------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |    Luft flöde                              |    Systemets luft flöde är framifrån och bak. Systemet måste köras med en installation med låg belastning. <!--Back pressure created by rack doors and obstacles should not exceed 5 pascals (0.5 mm water gauge).-->    |
+| Ingress-skydd (IP)                 |    Den här typen av rack monterings utrustning för inomhus bruk är vanligt vis inte testad för ingress-skydd (skydd mot solider och vätskor för ett elektriskt hölje). Tillverkarens säkerhets bedömning visar IPXO (inga ingångs skydd).  |
 |    Maximal höjd, drift        |    3048 meter (10 000 meter) med maximal drift temperatur som bedöms enligt [specifikationerna för drifts temperatur avklassificering](#operating-temperature-de-rating-specifications).                                                                                |
 |    Maximal höjd, ej fungerande    |    12 000 meter (39 370 fot)                                                                                                                                                                                         |
 |    Stöt, drift                   |    6 G i 11 millisekunder med 6 orienteringar                                                                                                                                                                         |

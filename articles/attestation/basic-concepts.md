@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 51c22346ee89150194fb1dc83752e2ba2a2e0cf0
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: c6c09dc771692cb2fc2f36840e729874cfaf2d09
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185452"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98572824"
 ---
 # <a name="basic-concepts"></a>Grundläggande begrepp
 
@@ -28,9 +28,7 @@ Nedan visas några grundläggande begrepp som rör Microsoft Azure attestering.
 
 ## <a name="attestation-provider"></a>Attesterings leverantör
 
-Attesterings leverantören tillhör Azure Resource Provider med namnet Microsoft. attestering. Resurs leverantören är en tjänst slut punkt som tillhandahåller REST-avtal för Azure-attestering och distribueras med hjälp av [Azure Resource Manager](../azure-resource-manager/management/overview.md). Varje attesterings leverantör följer en speciell princip som kan upptäckas. 
-
-Attesterings leverantörer skapas med en standard princip för varje attesterings typ (Observera att VBS-enklaven inte har någon standard princip). Se [exempel på en attesterings princip](policy-examples.md) för mer information om standard principen för SGX.
+Attesterings leverantören tillhör Azure Resource Provider med namnet Microsoft. attestering. Resurs leverantören är en tjänst slut punkt som tillhandahåller REST-avtal för Azure-attestering och distribueras med hjälp av [Azure Resource Manager](../azure-resource-manager/management/overview.md). Varje attesterings leverantör följer en speciell princip som kan upptäckas. Attesterings leverantörer skapas med en standard princip för varje attesterings typ (Observera att VBS-enklaven inte har någon standard princip). Se [exempel på en attesterings princip](policy-examples.md) för mer information om standard principen för SGX.
 
 ### <a name="regional-default-provider"></a>Regional standard leverantör
 
@@ -63,7 +61,7 @@ Attesterings policyn används för att bearbeta attesterings beviset och kan kon
 
 Om standard principen i attesteringsservern inte uppfyller behoven kommer kunderna att kunna skapa anpassade principer i någon av de regioner som stöds av Azure-attestering. Princip hantering är en viktig funktion som kunder har fått av Azure-attestering. Principer kommer att vara angivna som attesterings typ och kan användas för att identifiera enclaves eller lägga till anspråk till utdataporten eller modifiera anspråk i en utdataport. 
 
-Se [exempel på en attesterings princip](policy-examples.md) för standard princip innehåll och exempel.
+Se [exempel på en attesterings princip](policy-examples.md) för princip exempel.
 
 ## <a name="benefits-of-policy-signing"></a>Fördelar med princip signering
 
@@ -85,25 +83,55 @@ Exempel på JWT som genereras för en SGX-enklaven:
 
 ```
 {
-  “alg”: “RS256”,
-  “jku”: “https://tradewinds.us.attest.azure.net/certs”,
-  “kid”: “f1lIjBlb6jUHEUp1/Nh6BNUHc6vwiUyMKKhReZeEpGc=”,
-  “typ”: “JWT”
+  "alg": "RS256",
+  "jku": "https://tradewinds.us.attest.azure.net/certs",
+  "kid": <self signed certificate reference to perform signature verification of attestation token,
+  "typ": "JWT"
 }.{
-  “maa-ehd”: <input enclave held data>,
-  “exp”: 1568187398,
-  “iat”: 1568158598,
-  “is-debuggable”: false,
-  “iss”: “https://tradewinds.us.attest.azure.net”,
-  “nbf”: 1568158598,
-  “product-id”: 4639,
-  “sgx-mrenclave”: “”,
-  “sgx-mrsigner”: “”,
-  “svn”: 0,
-  “tee”: “sgx”
+  "aas-ehd": <input enclave held data>,
+  "exp": 1568187398,
+  "iat": 1568158598,
+  "is-debuggable": false,
+  "iss": "https://tradewinds.us.attest.azure.net",
+  "maa-attestationcollateral": 
+    {
+      "qeidcertshash": <SHA256 value of QE Identity issuing certs>,
+      "qeidcrlhash": <SHA256 value of QE Identity issuing certs CRL list>,
+      "qeidhash": <SHA256 value of the QE Identity collateral>,
+      "quotehash": <SHA256 value of the evaluated quote>, 
+      "tcbinfocertshash": <SHA256 value of the TCB Info issuing certs>, 
+      "tcbinfocrlhash": <SHA256 value of the TCB Info issuing certs CRL list>, 
+      "tcbinfohash": <SHA256 value of the TCB Info collateral>
+     },
+  "maa-ehd": <input enclave held data>,
+  "nbf": 1568158598,
+  "product-id": 4639,
+  "sgx-mrenclave": <SGX enclave mrenclave value>,
+  "sgx-mrsigner": <SGX enclave msrigner value>,
+  "svn": 0,
+  "tee": "sgx"
+  "x-ms-attestation-type": "sgx", 
+  "x-ms-policy-hash": <>,
+  "x-ms-sgx-collateral": 
+    {
+      "qeidcertshash": <SHA256 value of QE Identity issuing certs>,
+      "qeidcrlhash": <SHA256 value of QE Identity issuing certs CRL list>,
+      "qeidhash": <SHA256 value of the QE Identity collateral>,
+      "quotehash": <SHA256 value of the evaluated quote>, 
+      "tcbinfocertshash": <SHA256 value of the TCB Info issuing certs>, 
+      "tcbinfocrlhash": <SHA256 value of the TCB Info issuing certs CRL list>, 
+      "tcbinfohash": <SHA256 value of the TCB Info collateral>
+     },
+  "x-ms-sgx-ehd": <>, 
+  "x-ms-sgx-is-debuggable": true,
+  "x-ms-sgx-mrenclave": <SGX enclave mrenclave value>,
+  "x-ms-sgx-mrsigner": <SGX enclave msrigner value>, 
+  "x-ms-sgx-product-id": 1, 
+  "x-ms-sgx-svn": 1,
+  "x-ms-ver": "1.0"
 }.[Signature]
 ```
-Anspråk som "EXP", "IAT", "ISS", "NBF" definieras av [JWT RFC](https://tools.ietf.org/html/rfc7517) och återstående genereras av Azure-attestering. Mer information finns i [anspråk som utfärdats av Azure-attestering](claim-sets.md) .
+Vissa av de anspråk som används ovan betraktas som föråldrade men stöds fullt ut.  Vi rekommenderar att all framtida kod och verktyg använder sig av anspråks namnen som inte är föråldrade. Mer information finns i [anspråk som utfärdats av Azure-attestering](claim-sets.md) .
 
 ## <a name="encryption-of-data-at-rest"></a>Kryptering av data i vila
 

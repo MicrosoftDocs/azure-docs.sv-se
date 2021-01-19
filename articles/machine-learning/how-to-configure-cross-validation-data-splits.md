@@ -11,18 +11,18 @@ ms.author: cesardl
 author: CESARDELATORRE
 ms.reviewer: nibaccam
 ms.date: 06/16/2020
-ms.openlocfilehash: 2e26bfa484d573c0158e518b31087fb10bdcdfb9
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 8e749e5f6ea6bcf76a1b4f143bce03ceb41cbb07
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185690"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98573300"
 ---
 # <a name="configure-data-splits-and-cross-validation-in-automated-machine-learning"></a>Konfigurera datadelningar och korsvalidering vid automatiserad maskininlärning
 
 I den här artikeln får du lära dig de olika alternativen för att konfigurera inlärnings-och verifierings data delas och kors validering för din automatiserade maskin inlärning, automatiserade ML-experiment.
 
-När du använder automatisk ML för att skapa flera ML-modeller i Azure Machine Learning måste varje underordnad körning verifiera den relaterade modellen genom att beräkna kvalitets måtten för modellen, till exempel precision eller AUC viktad. Dessa mått beräknas genom att jämföra förutsägelserna som gjorts med varje modell med verkliga etiketter från tidigare observationer i verifierings data. 
+När du använder automatisk ML för att skapa flera ML-modeller i Azure Machine Learning måste varje underordnad körning verifiera den relaterade modellen genom att beräkna kvalitets måtten för modellen, till exempel precision eller AUC viktad. Dessa mått beräknas genom att jämföra förutsägelserna som gjorts med varje modell med verkliga etiketter från tidigare observationer i verifierings data. [Lär dig mer om hur mått beräknas baserat på validerings typ](#metric-calculation-for-cross-validation-in-machine-learning). 
 
 Automatiserade ML-experiment utför automatisk modell validering. I följande avsnitt beskrivs hur du kan anpassa verifierings inställningarna ytterligare med [Azure Machine Learning python SDK](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py). 
 
@@ -31,7 +31,7 @@ En låg kod eller ingen kod får [du i skapa dina automatiserade Machine Learnin
 > [!NOTE]
 > Studio stöder för närvarande utbildning/validering av data delningar och alternativ för kors validering, men det går inte att ange enskilda datafiler för verifierings uppsättningen. 
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För den här artikeln behöver du
 
@@ -43,9 +43,9 @@ För den här artikeln behöver du
 
     * [Om tåg, validering och test uppsättningar i Machine Learning](https://towardsdatascience.com/train-validation-and-test-sets-72cb40cba9e7)
 
-    * [Förstå kors validering i Machine Learning](https://towardsdatascience.com/understanding-cross-validation-419dbd47e9bd)
+    * [Förstå kors validering i Machine Learning](https://towardsdatascience.com/understanding-cross-validation-419dbd47e9bd) 
 
-## <a name="default-data-splits-and-cross-validation"></a>Standard data delning och kors validering
+## <a name="default-data-splits-and-cross-validation-in-machine-learning"></a>Standard data delningar och kors validering i Machine Learning
 
 Använd [AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?preserve-view=true&view=azure-ml-py) -objektet för att definiera dina experiment-och utbildnings inställningar. Observera att endast de parametrar som krävs har definierats i följande kodfragment, det vill säga parametrarna för `n_cross_validation` eller `validation_ data` **inte** ingår.
 
@@ -155,6 +155,13 @@ automl_config = AutoMLConfig(compute_target = aml_remote_compute,
 
 > [!NOTE]
 > Om du vill använda `cv_split_column_names` med `training_data` och `label_column_name` uppgraderar du Azure Machine Learning python SDK-version 1.6.0 eller senare. För tidigare SDK-versioner, se använda `cv_splits_indices` , men Observera att den endast används med `X` och `y` data uppsättnings indata. 
+
+
+## <a name="metric-calculation-for-cross-validation-in-machine-learning"></a>Mått beräkning för kors validering i Machine Learning
+
+När antingen k-vikning eller Monte Carlo kors validering används, beräknas måtten på varje validerings vikning och sedan aggregeras. Agg regerings åtgärden är ett medelvärde för skalära mått och en summa för diagram. Mått som beräknas under kors valideringen baseras på alla vikningar och därmed alla exempel från inlärnings uppsättningen. [Lär dig mer om mått i automatiserad maskin inlärning](how-to-understand-automated-ml.md).
+
+När du använder en anpassad validerings uppsättning eller en automatiskt vald verifierings uppsättning, beräknas modell utvärderings måtten endast från den validerings uppsättningen, inte tränings data.
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 3747033fcaf65e0c6da07e9f1bb625771958bb4f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 262a96c0c316987d0245ed29836f6a013c4339d1
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319069"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98573164"
 ---
 # <a name="create-a-custom-voice"></a>Skapa en anpassad röst
 
@@ -44,25 +44,29 @@ Data uppsättningar verifieras automatiskt när du trycker på knappen Överför
 
 Följande tabell visar bearbetnings tillstånd för importerade data uppsättningar:
 
-| Tillstånd | Innebörd |
+| Stat | Innebörd |
 | ----- | ------- |
 | Bearbetar | Din data uppsättning har tagits emot och bearbetas. |
 | Lyckades | Din data uppsättning har verifierats och kan nu användas för att bygga en röst modell. |
-| Misslyckades | Data uppsättningen har misslyckats under bearbetningen på grund av många orsaker, till exempel filfel, data problem eller nätverks problem. |
+| Misslyckad | Data uppsättningen har misslyckats under bearbetningen på grund av många orsaker, till exempel filfel, data problem eller nätverks problem. |
 
 När verifieringen är klar kan du se det totala antalet matchade yttranden för varje data uppsättning i kolumnen **yttranden** . Om den datatyp som du har valt kräver en tids segmentering, motsvarar den här kolumnen bara den yttranden vi har segmenterat för dig antingen baserat på dina avskrifter eller genom tal avskrifts tjänsten. Du kan hämta data uppsättningen ytterligare om du vill visa detaljerad information om hur yttranden har importer ATS och deras mappnings avskrifter. Tips: lång ljud segmentering kan ta mer än en timme att slutföra data bearbetningen.
 
-För en-US-och zh-CN-datauppsättningar kan du ytterligare hämta en rapport för att kontrol lera uttal-poängen och ljud nivån för var och en av dina inspelningar. Uttal-poängen sträcker sig från 0 till 100. Poängen under 70 indikerar normalt ett tal fel eller felaktig matchning av skript. En tung accent kan minska uttal-poängen och påverka den genererade digitala rösten.
+I vyn data information kan du ytterligare kontrol lera uttal-poängen och brus nivån för varje data uppsättning. Uttal-poängen sträcker sig från 0 till 100. Poängen under 70 indikerar normalt ett tal fel eller felaktig matchning av skript. En tung accent kan minska uttal-poängen och påverka den genererade digitala rösten.
 
 En högre signal-till-brus-förhållande (SNR) indikerar lägre brus i ljudet. Du kan normalt komma åt ett 50 + SNR genom att spela in i Professional Studios. Ljud med ett SNR under 20 kan resultera i uppenbar brus i den genererade rösten.
 
 Överväg att registrera om alla yttranden med låga uttal-resultat eller dåliga signal-till-brus-förhållande. Om du inte kan spela in igen kan du undanta dessa yttranden från din data uppsättning.
 
+> [!NOTE]
+> Om du använder anpassad neurala röst måste du registrera din röst personal på fliken **röst personal** . När du förbereder ditt inspelnings skript ska du se till att ta med nedanstående mening för att få röst personal bekräftelse på att använda sina röst data för att skapa en TTS-röst modell och generera syntetiskt tal. "I [tillstånd ditt för-och efter namn] är du medveten om att inspelningar av min röst kommer att användas av [stat namnet på företaget] för att skapa och använda en syntetisk version av rösten."
+Den här meningen används för att kontrol lera om inspelningarna i dina utbildnings data uppsättningar utförs av samma person som godkänner godkännandet. [Läs mer om hur dina data kommer att bearbetas och hur röst personal-verifiering görs här](https://aka.ms/CNV-data-privacy). 
+
 ## <a name="build-your-custom-voice-model"></a>Bygg din anpassade röst modell
 
 När din data uppsättning har verifierats kan du använda den för att bygga din anpassade röst modell.
 
-1.  Navigera till **text till tal > anpassad röst > [namn på projektet] > träning**.
+1.  Navigera till **text till tal > anpassad röst > [namn på projektet] > modell**.
 
 2.  Klicka på **träna modell**.
 
@@ -72,30 +76,40 @@ När din data uppsättning har verifierats kan du använda den för att bygga di
 
     En vanlig användning av fältet **Beskrivning** är att registrera namnen på de data uppsättningar som användes för att skapa modellen.
 
-4.  På sidan **Välj tränings data** väljer du en eller flera data uppsättningar som du vill använda för utbildning. Kontrol lera antalet yttranden innan du skickar dem. Du kan börja med ett valfritt antal yttranden för en-US-och zh-CN röst modell. För andra språk måste du välja fler än 2 000 yttranden för att kunna träna en röst.
+4.  På sidan **Välj tränings data** väljer du en eller flera data uppsättningar som du vill använda för utbildning. Kontrol lera antalet yttranden innan du skickar dem. Du kan börja med ett valfritt antal yttranden för en-US-och zh-CN röst modell med hjälp av inlärnings metoden "anpassningsbar". För andra språk måste du välja fler än 2 000 yttranden för att kunna träna en röst med en standard nivå, inklusive utbildnings metoderna "statistisk parameter" och "sammanfogning" och mer än 300 yttranden för att träna en anpassad neurala-röst. 
 
     > [!NOTE]
     > Dubbla ljud namn tas bort från utbildningen. Se till att de data uppsättningar du väljer inte innehåller samma ljud namn i flera. zip-filer.
 
     > [!TIP]
-    > Att använda data uppsättningarna från samma talare krävs för kvalitets resultat. När data uppsättningarna som du har skickat för utbildning innehåller ett totalt antal mindre än 6 000 distinkta yttranden, tränar du din röst modell genom den statistiska parameter syntes tekniken. Om dina utbildnings data överstiger ett totalt antal 6 000 distinkta yttranden, kommer du att starta en tränings process med sammanslagnings tekniken. Normalt kan sammanfognings tekniken resultera i mer naturliga och högre röst resultat. [Kontakta det anpassade röst teamet](https://go.microsoft.com/fwlink/?linkid=2108737) om du vill träna en modell med den senaste neurala TTS-tekniken som kan producera en digital röst motsvarighet till de offentligt tillgängliga [neurala-rösterna](language-support.md#neural-voices).
+    > Att använda data uppsättningarna från samma talare krävs för kvalitets resultat. Olika utbildnings metoder kräver olika tränings data storlek. För att träna en modell med metoden "statistisk parameter" krävs minst 2 000 distinkta yttranden. För metoden "sammanlänkning" är det 6 000 yttranden, medan för "neurala", så är minimi kravet för data storlek 300 yttranden.
 
-5.  Klicka på **träna** för att börja skapa din röst modell.
+5. Välj **inlärnings metoden** i nästa steg. 
+
+    > [!NOTE]
+    > Om du vill träna en neurala röst måste du ange en röst personal-profil med den ljud medgivande fil som du har fått från röst personal som kan bekräfta att hans/hennes tal-data används för att träna en anpassad röst modell. Anpassad neurala-röst är tillgänglig med begränsad åtkomst. Se till att du förstår de [ansvariga AI-kraven](https://aka.ms/gating-overview) och [Använd åtkomsten här](https://aka.ms/customneural). 
+    
+    På den här sidan kan du också välja att ladda upp skriptet för testning. Test skriptet måste vara en txt-fil som är mindre än 1 MB. Kodnings formatet som stöds omfattar ANSI/ASCII, UTF-8, UTF-8-BOM, UTF-16-LE eller UTF-16. Varje stycke i uttryck resulterar i ett separat ljud. Om du vill kombinera alla meningar i ett ljud gör du dem i ett stycke. 
+
+6. Klicka på **träna** för att börja skapa din röst modell.
 
 I övnings tabellen visas en ny post som motsvarar den nyligen skapade modellen. Tabellen visar också status: bearbetning, lyckades, misslyckades.
 
 Den status som visas visar processen för att konvertera data uppsättningen till en röst modell, som visas här.
 
-| Tillstånd | Innebörd |
+| Stat | Innebörd |
 | ----- | ------- |
 | Bearbetar | Din röst modell skapas. |
 | Lyckades | Din röst modell har skapats och kan distribueras. |
-| Misslyckades | Din röst modell har misslyckats i utbildningen på grund av många orsaker, till exempel osett data problem eller nätverks problem. |
+| Misslyckad | Din röst modell har misslyckats i utbildningen på grund av många orsaker, till exempel osett data problem eller nätverks problem. |
 
-Inlärnings tiden varierar beroende på mängden ljud data som bearbetas. Vanliga tider sträcker sig från cirka 30 minuter för hundratals yttranden till 40 timmar för 20 000 yttranden. När modell utbildningen har slutförts kan du börja testa den.
+Inlärnings tiden varierar beroende på mängden ljud data som bearbetats och den tränings metod som du har valt. Det kan vara mellan 30 minuter och 40 timmar. När modell utbildningen har slutförts kan du börja testa den. 
 
 > [!NOTE]
 > F0-användare (kostnads fri prenumeration) kan träna ett röst tecken samtidigt. S0-användare (standard prenumeration) kan träna tre röster samtidigt. Om du når gränsen väntar du tills minst en av dina röst teckensnitt har slutfört utbildningen och försöker sedan igen.
+
+> [!NOTE]
+> Träning av anpassade neurala-röster är inte kostnads fritt. Sök efter [prissättningen](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/) här. 
 
 > [!NOTE]
 > Det maximala antalet röst modeller som får tränas per prenumeration är 10 modeller för F0-användare och 100-användare (standard prenumeration).
@@ -104,32 +118,27 @@ Om du använder neurala röst träning kan du välja att träna en modell som ä
 
 ## <a name="test-your-voice-model"></a>Testa din röst modell
 
-När röst teckensnittet har skapats kan du testa det innan du distribuerar det för användning.
+Varje utbildning genererar 100 samplings ljud automatiskt för att hjälpa dig att testa modellen. När din röst modell har skapats kan du testa den innan du distribuerar den för användning.
 
-1.  Navigera till **text till tal > anpassad röst > [namn på projektet] > testning**.
+1.  Navigera till **text till tal > anpassad röst > [namn på projektet] > modell**.
 
-2.  Klicka på **Lägg till test**.
+2.  Klicka på namnet på den modell som du vill testa.
 
-3.  Välj en eller flera modeller som du vill testa.
+3.  På sidan modell information hittar du exempel på ljud på fliken **test** . 
 
-4.  Ange den text som du vill att rösten eller rösten ska tala. Om du har valt att testa flera modeller samtidigt, används samma text för testningen för olika modeller.
-
-    > [!NOTE]
-    > Språket för din text måste vara detsamma som språket för röst teckensnittet. Endast framgångs bara tränade modeller kan testas. Endast oformaterad text stöds i det här steget.
-
-5.  Klicka på **Skapa**.
-
-När du har skickat in din testbegäran kommer du tillbaka till test sidan. Tabellen innehåller nu en post som motsvarar din nya begäran och kolumnen Status. Det kan ta några minuter att syntetisera talet. När kolumnen Status är **klar**kan du spela upp ljudet eller ladda ned text inmatningen (en. txt-fil) och ljud utmatningen (en. wav-fil) och ytterligare audition för kvalitet.
-
-Du kan också hitta test resultaten på sidan information i varje modell som du har valt för testning. Gå till fliken **utbildning** och klicka på modell namnet för att ange modell informations sidan.
+Kvaliteten på rösten är beroende av ett antal faktorer, inklusive storleken på tränings data, kvaliteten på inspelningen, precisionen för avskrifts filen, hur väl den inspelade rösten i tränings data matchar den personliga rösten för det avsedda användnings fallet med mera. [Läs mer om funktionerna och gränserna för vår teknik och bästa praxis för att förbättra modell kvaliteten](https://aka.ms/CNV-limits). 
 
 ## <a name="create-and-use-a-custom-voice-endpoint"></a>Skapa och Använd en anpassad röst slut punkt
 
 När du har skapat och testat din röst modell distribuerar du den i en anpassad text till tal-slutpunkt. Du använder sedan den här slut punkten i stället för den vanliga slut punkten när du gör text till tal-begäran via REST API. Din anpassade slut punkt kan bara anropas av den prenumeration som du har använt för att distribuera teckensnittet.
 
-Om du vill skapa en ny anpassad röst slut punkt går du till **text-till-tal > anpassad röst > distribution**. Välj **Lägg till slut punkt** och ange ett **namn** och en **Beskrivning** för din anpassade slut punkt. Välj sedan den anpassade röst modell som du vill koppla till den här slut punkten.
+Om du vill skapa en ny anpassad röst slut punkt går du till **text-till-tal > anpassad röst >-slutpunkt**. Välj **Lägg till slut punkt** och ange ett **namn** och en **Beskrivning** för din anpassade slut punkt. Välj sedan den anpassade röst modell som du vill koppla till den här slut punkten.
 
-När du har klickat på knappen **Lägg till** i tabellen slut punkt visas en post för den nya slut punkten. Det kan ta några minuter att instansiera en ny slut punkt. När statusen för distributionen har **slutförts**är slut punkten klar att användas.
+När du har klickat på knappen **Lägg till** i tabellen slut punkt visas en post för den nya slut punkten. Det kan ta några minuter att instansiera en ny slut punkt. När statusen för distributionen har **slutförts** är slut punkten klar att användas.
+
+Du kan **pausa** och **återuppta** slut punkten om du inte använder den hela tiden. När en slut punkt återaktiveras efter en SUS pension, kommer slut punktens URL att vara densamma så att du inte behöver ändra koden i dina appar. 
+
+Du kan också uppdatera slut punkten till en ny modell. Om du vill ändra modellen kontrollerar du att den nya modellen har samma namn som den som du vill uppdatera. 
 
 > [!NOTE]
 > F0-användare kan bara ha en modell distribuerad. S0-användare (standard prenumeration) kan skapa upp till 50 slut punkter, var och en med sin egen anpassade röst.

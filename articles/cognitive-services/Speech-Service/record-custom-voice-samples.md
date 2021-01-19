@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/13/2020
 ms.author: erhopf
-ms.openlocfilehash: dae7b8e0485c1a2456b85e0910f60b2164d4e41c
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 966b11e2c9a0f7ffc5e6ec9238080b9076d37af6
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95026326"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98572433"
 ---
 # <a name="record-voice-samples-to-create-a-custom-voice"></a>Spela in röst exempel för att skapa en anpassad röst
 
@@ -24,6 +24,14 @@ Att skapa en anpassad röst med hög kvalitet från grunden är inte ett vardagl
 Innan du kan göra dessa inspelningar måste du ha ett-skript: de ord som talas av din röst-personal för att skapa ljud exemplen. För bästa resultat måste ditt skript ha god fonetisk omfattning och tillräcklig mängd för att träna den anpassade röst modellen.
 
 Många små men viktiga uppgifter är att skapa en professionell röst inspelning. Den här guiden är en översikt över en process som hjälper dig att få bättre, konsekventa resultat.
+
+> [!NOTE]
+> Om du vill träna en neurala röst måste du ange en röst personal-profil med den ljud medgivande fil som du har fått från röst personal som kan bekräfta att hans/hennes tal-data används för att träna en anpassad röst modell. När du förbereder ditt inspelnings skript måste du se till att ta med nedanstående mening. 
+
+> "I [tillstånd ditt för-och efter namn] är du medveten om att inspelningar av min röst kommer att användas av [stat namnet på företaget] för att skapa och använda en syntetisk version av rösten."
+Den här meningen används för att kontrol lera om inlärnings data utförs av samma person som gör ditt medgivande. Läs mer om [röst personal-verifiering](https://aka.ms/CNV-data-privacy) här.
+
+> Anpassad neurala-röst är tillgänglig med begränsad åtkomst. Se till att du förstår de [ansvariga AI-kraven](https://aka.ms/gating-overview) och [Använd åtkomsten här](https://aka.ms/customneural). 
 
 > [!TIP]
 > Överväg att engagera Microsoft för att hjälpa till att utveckla din anpassade röst för högsta kvalitet. Microsoft har omfattande erfarenhet av att skapa hög kvalitets röster för sina egna produkter, inklusive Cortana och Office.
@@ -56,7 +64,7 @@ Din röst personal är den andra halvan av ekvationen. De måste kunna tala med 
 
 Inspelning av anpassade röst exempel kan vara mer fatiguing än andra typer av röst arbete. De flesta röst personal kan spela in i två eller tre timmar per dag. Begränsa sessioner till tre eller fyra veckor, med en dag från mellan om möjligt.
 
-Inspelningar som görs för en röst modell ska vara barn neutrala. Det vill säga ett Sad-uttryck bör inte läsas på ett Sad sätt. Du kan lägga till stämning i det syntetiska talet senare genom prosody-kontroller. Arbeta med din röst personal för att utveckla en "persona" som definierar den övergripande ljud-och känslomässig-tonen för den anpassade rösten. I processen får du reda på vilka "neutral"-ljud som för personen.
+Arbeta med din röst personal för att utveckla en "persona" som definierar den övergripande ljud-och känslomässig-tonen för den anpassade rösten. I processen får du reda på vilka "neutral"-ljud som för personen. Med den anpassade röst funktionen för neurala kan du träna en modell som pratar med känslor. Definiera "tal format" och be din röst personal att läsa skriptet på ett sätt som mottas av de format som du vill använda.  
 
 En persona kan till exempel ha en naturlig intakts personlighet. Så "deras"-röst kan innehålla en anteckning om optimerad, även om de pratar neutralt. En sådan personlig egenskap bör dock vara diskret och konsekvent. Lyssna på avläsningar från befintliga röster för att få en uppfattning om vad du vill ha.
 
@@ -104,7 +112,7 @@ Under upphovs rätts lagstiftning kan en aktörs läsning av upphovsrättsskydda
 
 Lyckligt vis är det möjligt att undvika dessa problem helt och hållet. Det finns många text källor som du kan använda utan behörighet eller licens.
 
-|Text källa|Description|
+|Text källa|Beskrivning|
 |-|-|
 |[CMU Arctic-sökkorpus](http://festvox.org/cmu_arctic/)|Om 1100 meningar som valts från frånvaro av upphovs rätts arbete som används i tal syntes projekt. En utmärkt start punkt.|
 |Fungerar inte längre<br>under Copyright|Vanligt vis publicerade Works före 1923. För engelska erbjuder [Project Gutenberg](https://www.gutenberg.org/) tusentals sådana arbeten. Du kanske vill fokusera på nyare arbeten, eftersom språket är närmare för modern engelska.|
@@ -211,7 +219,7 @@ Lyssna på varje fil noggrant. I det här skedet kan du redigera ut små oönska
 
 Konvertera varje fil till 16 bitar och en samplings frekvens på 16 kHz innan du sparar och, om du har spelat in Studio-Chatter, tar du bort den andra kanalen. Spara varje fil i WAV-format och namnge filerna med uttryck-numret från skriptet.
 
-Slutligen skapar du *avskriften* som associerar varje wav-fil med en text version av motsvarande uttryck. Att [skapa anpassade röst teckensnitt](./how-to-custom-voice-create-voice.md) innehåller information om det format som krävs. Du kan kopiera texten direkt från skriptet. Skapa sedan en zip-fil med WAV-filerna och text avskriften.
+Slutligen skapar du *avskriften* som associerar varje wav-fil med en text version av motsvarande uttryck. Att [skapa anpassade röster](./how-to-custom-voice-create-voice.md) innehåller information om det begärda formatet. Du kan kopiera texten direkt från skriptet. Skapa sedan en zip-fil med WAV-filerna och text avskriften.
 
 Arkivera de ursprungliga inspelningarna på ett säkert ställe om du behöver dem senare. Behåll även ditt skript och dina kommentarer.
 

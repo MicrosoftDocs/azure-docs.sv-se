@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 01/13/2021
+ms.date: 01/19/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 5a09a2083c1258a3120f8696aa39a0252dbfcf2d
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 83a4a2aa8328a6e3de9eab44bbf19fc76921b128
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98209702"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98573367"
 ---
 # <a name="azure-storage-redundancy"></a>Redundans i Azure Storage
 
@@ -35,11 +35,15 @@ Data i ett Azure Storage-konto replikeras alltid tre gånger i den primära regi
 
 ### <a name="locally-redundant-storage"></a>Lokalt redundant lagring
 
-Lokalt redundant lagring (LRS) replikerar dina data tre gånger inom en enda fysisk plats i den primära regionen. LRS tillhandahåller minst 99,999999999% (11 nio) objekts hållbarhet under ett angivet år.
+Lokalt redundant lagring (LRS) replikerar dina data tre gånger inom ett enda data Center i den primära regionen. LRS tillhandahåller minst 99,999999999% (11 nio) objekts hållbarhet under ett angivet år.
 
 LRS är det lägsta alternativet för redundans och ger minsta möjliga hållbarhet jämfört med andra alternativ. LRS skyddar dina data mot Server rack och enhets problem. Men om en katastrof, till exempel Fire eller översvämning sker i data centret, kan alla repliker av ett lagrings konto med LRS gå förlorade eller oåterkalleligt. För att minska den här risken rekommenderar Microsoft att använda [zon-redundant lagring](#zone-redundant-storage) (ZRS), [Geo-redundant lagring](#geo-redundant-storage) (GRS) eller [geo-Zone-redundant lagring](#geo-zone-redundant-storage) (GZRS).
 
 En Skriv förfrågan till ett lagrings konto som använder LRS sker synkront. Skriv åtgärden returneras bara efter att data har skrivits till alla tre repliker.
+
+Följande diagram visar hur dina data replikeras i ett enda data Center med LRS:
+
+:::image type="content" source="media/storage-redundancy/locally-redundant-storage.png" alt-text="Diagram över hur data replikeras i ett enda data Center med LRS":::
 
 LRS är ett bra val för följande scenarier:
 
@@ -54,7 +58,11 @@ Med ZRS är dina data fortfarande tillgängliga för både Läs-och skriv åtgä
 
 En Skriv förfrågan till ett lagrings konto som använder ZRS sker synkront. Skriv åtgärden returneras bara efter att data har skrivits till alla repliker i de tre tillgänglighets zonerna.
 
-Microsoft rekommenderar att du använder ZRS i den primära regionen för scenarier som kräver konsekvens, hållbarhet och hög tillgänglighet. Vi rekommenderar också att du använder ZRS om du vill begränsa ett program till att bara replikera data inom ett land eller en region på grund av data styrnings krav.
+Microsoft rekommenderar att du använder ZRS i den primära regionen för scenarier som kräver konsekvens, hållbarhet och hög tillgänglighet. ZRS rekommenderas också för att begränsa replikeringen av data till inom ett land eller en region för att uppfylla data styrnings kraven.
+
+Följande diagram visar hur dina data replikeras mellan tillgänglighets zoner i den primära regionen med ZRS:
+
+:::image type="content" source="media/storage-redundancy/zone-redundant-storage.png" alt-text="Diagram över hur data replikeras i den primära regionen med ZRS":::
 
 ZRS tillhandahåller utmärkta prestanda, låg latens och återhämtning för dina data om de blir tillfälligt otillgängliga. Men ZRS i sig kanske inte skyddar dina data mot en regional katastrof där flera zoner ständigt påverkas. För skydd mot regionala katastrofer rekommenderar Microsoft att använda [geo-Zone-redundant lagring](#geo-zone-redundant-storage) (GZRS), som använder ZRS i den primära regionen och även geo-replikerar dina data till en sekundär region.
 
@@ -172,7 +180,7 @@ Följande tabell visar om dina data är beständiga och tillgängliga i ett spec
 | Avbrott-scenario | LRS | ZRS | GRS/RA-GRS | GZRS/RA-GZRS |
 |:-|:-|:-|:-|:-|
 | En nod i ett Data Center blir otillgänglig | Ja | Ja | Ja | Ja |
-| Ett helt data Center (zonindelade eller icke-zonindelade) blir otillgängligt | Nej | Ja | Ja<sup>1</sup> | Yes |
+| Ett helt data Center (zonindelade eller icke-zonindelade) blir otillgängligt | Nej | Ja | Ja<sup>1</sup> | Ja |
 | Ett områdes omfattande avbrott uppstår i den primära regionen | Nej | Nej | Ja<sup>1</sup> | Ja<sup>1</sup> |
 | Läs behörighet till den sekundära regionen är tillgängligt om den primära regionen blir otillgänglig | Nej | Nej | Ja (med RA-GRS) | Ja (med RA-GZRS) |
 

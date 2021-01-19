@@ -3,12 +3,12 @@ title: Svar på vanliga frågor
 description: 'Svar på vanliga frågor om: Azure Backup-funktioner inklusive Recovery Services-valvet, vad du kan säkerhetskopiera, hur det fungerar, kryptering och gränser. '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: d85866e490b2c56abb7de1e94cd0ffaa8f714615
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: bd84ff553b486d200ec4501b89b42335335b223f
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96327159"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98572535"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup – Vanliga frågor och svar
 
@@ -61,6 +61,10 @@ Om du redan har konfigurerat säkerhets kopian och måste gå från GRS till LRS
 ### <a name="how-can-i-move-data-from-the-recovery-services-vault-to-on-premises"></a>Hur kan jag flytta data från Recovery Services-valvet till lokalt?
 
 Export av data direkt från Recovery Services-valvet till lokalt med hjälp av Data Box-enhet stöds inte. Data måste återställas till ett lagrings konto och kan sedan flyttas till lokalt via [data Box-enhet](../databox/data-box-overview.md) eller [Importera/exportera](../storage/common/storage-import-export-service.md).
+
+### <a name="what-is-the-difference-between-a-geo-redundant-storage-grs-vault-with-and-without-the-cross-region-restore-crr-capability-enabled"></a>Vad är skillnaden mellan ett GRS-valv (Geo-redundant Storage) med och utan CRR-funktionen (Cross-region Restore) aktive rad?
+
+Om det finns ett [GRS](azure-backup-glossary.md#grs) -valv utan [CRR](azure-backup-glossary.md#cross-region-restore-crr) -funktionen aktive rad kan inte data i den sekundära regionen nås förrän Azure deklarerar en katastrof i den primära regionen. I ett sådant scenario sker återställningen från den sekundära regionen. När CRR är aktiverat, även om den primära regionen är igång, kan du utlösa en återställning i den sekundära regionen.
 
 ## <a name="azure-backup-agent"></a>Azure Backup-agent
 

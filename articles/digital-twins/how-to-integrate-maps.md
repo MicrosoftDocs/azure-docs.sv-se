@@ -4,16 +4,16 @@ titleSuffix: Azure Digital Twins
 description: Se hur du använder Azure Functions för att skapa en funktion som kan använda den dubbla grafen och digitala Azure-meddelanden för att uppdatera en Azure Maps inomhus-karta.
 author: alexkarcher-msft
 ms.author: alkarche
-ms.date: 6/3/2020
+ms.date: 1/19/2021
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: 24487d3028b90d28f302a6f259096ba68c964541
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 6a654f74ff6a32ad37646021d504359c84942c12
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222130"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98573045"
 ---
 # <a name="use-azure-digital-twins-to-update-an-azure-maps-indoor-map"></a>Använd Azure Digitals flätas för att uppdatera en Azure Maps inomhus karta
 
@@ -72,7 +72,7 @@ Det här mönstret läser från rummet direkt, i stället för IoT-enheten, vilk
 
 ## <a name="create-a-function-to-update-maps"></a>Skapa en funktion för att uppdatera Maps
 
-Du ska skapa en *Event Grid utlöst funktion* i din Function-app från slut punkt till slut punkt ([*Självstudier: Anslut en lösning från slut punkt till slut punkt*](./tutorial-end-to-end.md)). Den här funktionen kommer att packa upp dessa meddelanden och skicka uppdateringar till en Azure Maps funktion stateset för att uppdatera temperaturen för ett rum. 
+Du ska skapa en **Event Grid utlöst funktion** i din Function-app från slut punkt till slut punkt ([*Självstudier: Anslut en lösning från slut punkt till slut punkt*](./tutorial-end-to-end.md)). Den här funktionen kommer att packa upp dessa meddelanden och skicka uppdateringar till en Azure Maps funktion stateset för att uppdatera temperaturen för ett rum.
 
 Se följande dokument som referens information: [*Azure Event Grid utlösare för Azure Functions*](../azure-functions/functions-bindings-event-grid-trigger.md).
 

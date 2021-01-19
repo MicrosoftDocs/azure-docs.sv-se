@@ -6,18 +6,18 @@ ms.service: site-recovery
 ms.date: 12/07/2020
 ms.topic: conceptual
 ms.author: ramamill
-ms.openlocfilehash: 7e4f18b5d4f074d6596b375cbc11f40c2ab69d68
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 19a98b5786f35839d84e1e969c29e45e2b5e8dea
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97616617"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98573402"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>Aktivera replikering till Azure för virtuella VMware-datorer
 
 I den här artikeln beskrivs hur du aktiverar replikering av lokala virtuella VMware-datorer (VM) till Azure.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Den här artikeln förutsätter att systemet uppfyller följande kriterier:
 
@@ -141,7 +141,7 @@ Kontrol lera sedan egenskaperna för den virtuella käll datorn. Kom ihåg att n
    :::image type="content" source="./media/vmware-azure-enable-replication/vmproperties.png" alt-text="Fönstret Egenskaper för beräkning och nätverk":::
 
    - **Namn på virtuell Azure-dator**: ändra namnet så att det uppfyller Azure-kraven, om det behövs.
-   - **Storlek på virtuell måldator eller VM-typ**: standard storleken på virtuella datorer väljs utifrån parametrar som inkluderar disk antal, antal nätverkskort, antal processor kärnor, minne och tillgängliga storlekar för virtuella dator roller i Azure-regionen. Azure Site Recovery väljer den första tillgängliga VM-storleken som uppfyller alla villkor. Du kan välja en annan VM-storlek baserat på dina behov när som helst före redundansväxlingen. Storleken på den virtuella dator disken baseras också på käll diskens storlek och kan bara ändras efter redundansväxlingen. Lär dig mer om disk storlekar och IOPS-priser vid [skalbarhet och prestanda mål för VM-diskar i Windows](../virtual-machines/windows/disk-scalability-targets.md).
+   - **Storlek på virtuell måldator eller VM-typ**: standard storleken på virtuella datorer väljs utifrån parametrar som inkluderar disk antal, antal nätverkskort, antal processor kärnor, minne och tillgängliga storlekar för virtuella dator roller i Azure-regionen. Azure Site Recovery väljer den första tillgängliga VM-storleken som uppfyller alla villkor. Du kan välja en annan VM-storlek baserat på dina behov när som helst före redundansväxlingen. Storleken på den virtuella dator disken baseras också på käll diskens storlek och kan bara ändras efter redundansväxlingen. Lär dig mer om disk storlekar och IOPS-priser vid [skalbarhet och prestanda mål för VM-diskar](../virtual-machines/disks-scalability-targets.md).
    - **Resurs grupp**: du kan välja en [resurs grupp](../azure-resource-manager/management/overview.md#resource-groups)där en virtuell dator blir en del av en post växling vid fel. Du kan ändra den här inställningen när som helst före redundansväxlingen. Efter redundansväxlingen, om du migrerar den virtuella datorn till en annan resurs grupp, avbryts skydds inställningarna för den virtuella datorn.
    - **Tillgänglighets uppsättning**: du kan välja en [tillgänglighets uppsättning](../virtual-machines/windows/tutorial-availability-sets.md) om den virtuella datorn måste ingå i en post-redundansväxling. Tänk på följande när du väljer en tillgänglighets uppsättning:
      - Endast tillgänglighets uppsättningar som tillhör den angivna resurs gruppen visas.

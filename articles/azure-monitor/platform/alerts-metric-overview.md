@@ -1,15 +1,15 @@
 ---
 title: Förstå hur mått varningar fungerar i Azure Monitor.
 description: Få en översikt över vad du kan göra med mått aviseringar och hur de fungerar i Azure Monitor.
-ms.date: 01/13/2021
+ms.date: 01/19/2021
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: ab80496784b5d86d270830546cec73aadbcc50a6
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 031768b8a72fbe9498abd3c17e0f79fd157d4f52
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251241"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98572739"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Förstå hur måttaviseringar fungerar i Azure Monitor
 
@@ -26,7 +26,7 @@ Anta att du har skapat en varnings regel för enkel statisk tröskel enligt föl
 - Mål resurs (den Azure-resurs som du vill övervaka): myVM
 - Mått: procent andel CPU
 - Villkors typ: statisk
-- Tids agg regering (statistik som körs över rå metriska värden. [Tids agg regeringar som stöds](metrics-charts.md#aggregation) är min, Max, AVG, total, Count): genomsnitt
+- Sammansättnings typ (en statistik som körs över rå metriska värden. [Sammansättnings typer som stöds](./metrics-aggregation-explained.md#aggregation-types) är minimum, maximum, Average, total, Count): genomsnitt
 - Period (fönstret för att se hur Mät värden kontrol leras): de senaste 5 minuterna
 - Frekvens (den frekvens med vilken måttets avisering kontrollerar om villkoren är uppfyllda): 1 min
 - Operator: större än
@@ -43,7 +43,7 @@ Anta att du har skapat en mått regel för enkla dynamiska tröskelvärden enlig
 - Mål resurs (den Azure-resurs som du vill övervaka): myVM
 - Mått: procent andel CPU
 - Villkors typ: dynamisk
-- Tids agg regering (statistik som körs över rå metriska värden. [Tids agg regeringar som stöds](metrics-charts.md#aggregation) är min, Max, AVG, total, Count): genomsnitt
+- Sammansättnings typ (en statistik som körs över rå metriska värden. [Sammansättnings typer som stöds](./metrics-aggregation-explained.md#aggregation-types) är minimum, maximum, Average, total, Count): genomsnitt
 - Period (fönstret för att se hur Mät värden kontrol leras): de senaste 5 minuterna
 - Frekvens (den frekvens med vilken måttets avisering kontrollerar om villkoren är uppfyllda): 1 min
 - Operator: större än
@@ -80,7 +80,7 @@ Anta att du har en App Service plan för din webbplats. Du vill övervaka CPU-an
 - Villkors typ: statisk
 - Dimensioner
   - Instans = InstanceName1, InstanceName2
-- Tids agg regering: genomsnitt
+- Sammansättnings typ: genomsnitt
 - Period: under de senaste 5 minuterna
 - Frekvens: 1 min
 - Operator: GreaterThan
@@ -95,7 +95,7 @@ Anta att du har en webbapp som kan se enorma behov och du behöver lägga till f
 - Villkors typ: statisk
 - Dimensioner
   - Instans = *
-- Tids agg regering: genomsnitt
+- Sammansättnings typ: genomsnitt
 - Period: under de senaste 5 minuterna
 - Frekvens: 1 min
 - Operator: GreaterThan
@@ -112,7 +112,7 @@ Anta att du har en webbapp med många instanser och att du inte vet vad det bäs
 - Villkors typ: dynamisk
 - Dimensioner
   - Instans = *
-- Tids agg regering: genomsnitt
+- Sammansättnings typ: genomsnitt
 - Period: under de senaste 5 minuterna
 - Frekvens: 1 min
 - Operator: GreaterThan
