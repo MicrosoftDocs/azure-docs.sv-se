@@ -3,17 +3,17 @@ title: 'Snabb start: klient biblioteket för Azure Blob Storage-v10 för Java Sc
 description: Skapa, ladda upp och ta bort blobbar och behållare i Node.js med Azure Storage klient bibliotek v10 för Java Script
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 07/24/2020
+ms.date: 01/19/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: 1f47c35997fe060fd3c318602bcad17de83b530c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 2371c789b9e4a9fc70f4207fd8a634e419c97912
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91249628"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599451"
 ---
 # <a name="quickstart-manage-blobs-with-javascript-v10-sdk-in-nodejs"></a>Snabb start: hantera blobbar med Java Script v10 SDK i Node.js
 
@@ -139,7 +139,7 @@ const ONE_MEGABYTE = 1024 * 1024;
 const FOUR_MEGABYTES = 4 * ONE_MEGABYTE;
 ```
 
-Begär Anden som görs av API: et kan ställas in på timeout efter ett angivet intervall. Klassen [Aborter](/javascript/api/%40azure/storage-blob/aborter?view=azure-node-legacy) ansvarar för att hantera tidsgränser för begäranden och den efterföljande konstanten används för att definiera tidsgränser som används i det här exemplet.
+Begär Anden som görs av API: et kan ställas in på timeout efter ett angivet intervall. Klassen [Aborter](/javascript/api/%40azure/storage-blob/aborter?view=azure-node-legacy&preserve-view=true) ansvarar för att hantera tidsgränser för begäranden och den efterföljande konstanten används för att definiera tidsgränser som används i det här exemplet.
 
 ```javascript
 const ONE_MINUTE = 60 * 1000;
@@ -178,13 +178,13 @@ const serviceURL = new ServiceURL(`https://${STORAGE_ACCOUNT_NAME}.blob.core.win
 
 Följande klasser används i det här kodblocket:
 
-- Klassen [SharedKeyCredential](/javascript/api/%40azure/storage-blob/sharedkeycredential?view=azure-node-legacy) ansvarar för att omsluta autentiseringsuppgifterna för lagringskontot och skicka dem till en pipeline som begär dem.
+- Klassen [SharedKeyCredential](/javascript/api/%40azure/storage-blob/sharedkeycredential?view=azure-node-legacy&preserve-view=true) ansvarar för att omsluta autentiseringsuppgifterna för lagringskontot och skicka dem till en pipeline som begär dem.
 
-- Klassen [StorageURL](/javascript/api/%40azure/storage-blob/storageurl?view=azure-node-legacy) ansvarar för att skapa en ny pipeline.
+- Klassen [StorageURL](/javascript/api/%40azure/storage-blob/storageurl?view=azure-node-legacy&preserve-view=true) ansvarar för att skapa en ny pipeline.
 
-- [ServiceURL](/javascript/api/%40azure/storage-blob/serviceurl?view=azure-node-legacy) modellerar en URL som används i REST-API:et. Med instanser av den här klassen kan du utföra åtgärder som att lista containrar och tillhandahålla kontextinformation för att generera container-URL:er.
+- [ServiceURL](/javascript/api/%40azure/storage-blob/serviceurl?view=azure-node-legacy&preserve-view=true) modellerar en URL som används i REST-API:et. Med instanser av den här klassen kan du utföra åtgärder som att lista containrar och tillhandahålla kontextinformation för att generera container-URL:er.
 
-*ServiceURL*-instansen används med instanserna [ContainerURL](/javascript/api/%40azure/storage-blob/containerurl?view=azure-node-legacy) och [BlockBlobURL](/javascript/api/%40azure/storage-blob/blockbloburl?view=azure-node-legacy) för att hantera containrar och blobar i ditt lagringskonto.
+*ServiceURL*-instansen används med instanserna [ContainerURL](/javascript/api/%40azure/storage-blob/containerurl?view=azure-node-legacy&preserve-view=true) och [BlockBlobURL](/javascript/api/%40azure/storage-blob/blockbloburl?view=azure-node-legacy&preserve-view=true) för att hantera containrar och blobar i ditt lagringskonto.
 
 ```javascript
 const containerURL = ContainerURL.fromServiceURL(serviceURL, containerName);

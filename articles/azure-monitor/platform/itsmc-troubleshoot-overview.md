@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 04/12/2020
-ms.openlocfilehash: 14f1056bf761eb7b591d04db34610468058bc255
-ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
+ms.openlocfilehash: 2ffe7c8994d32917a08896c7d25f20d4adf09066
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98562870"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601907"
 ---
 # <a name="troubleshooting-problems-in-itsm-connector"></a>Felsöka problem med anslutningsprogram för hantering av IT-tjänster (ITSM)
 
@@ -53,11 +53,36 @@ Om du använder Tjänstkarta kan du Visa Service Desk-objekten som skapats i ITS
      - Se till att webbappen har distribuerats och att hybrid anslutningen har skapats. Om du vill kontrol lera att anslutningen har upprättats med den lokala Service Manager datorn går du till webbappens URL enligt beskrivningen i dokumentationen för att skapa en [hybrid anslutning](./itsmc-connections-scsm.md#configure-the-hybrid-connection).  
 
 - Om Log Analytics-aviseringar för brand men arbets objekt inte skapas i ITSM-produkten, om konfigurations objekt inte skapas/länkas till arbets objekt, eller för annan information, se följande resurser:
-   -  ITSMC: lösningen visar en sammanfattning av anslutningar, arbets objekt, datorer med mera. Välj den panel som har etiketten **kopplings status** . Då kommer du att **Logga sökningen** med den relevanta frågan. Titta på logg poster med en `LogType_S` av `ERROR` för mer information.
+   -  ITSMC: lösningen visar en [Sammanfattning av anslutningar](itsmc-dashboard.md), arbets objekt, datorer med mera. Välj den panel som har etiketten **kopplings status** . Då kommer du att **Logga sökningen** med den relevanta frågan. Titta på logg poster med en `LogType_S` av `ERROR` för mer information.
+   Du kan se information om meddelandena i tabellen – [här](itsmc-dashboard-errors.md).
    - Sidan **loggs ökning** : Visa fel och relaterad information direkt med hjälp av frågan `*ServiceDeskLog_CL*` .
 
-### <a name="troubleshoot-service-manager-web-app-deployment"></a>Felsöka Service Manager Web App-distribution
+## <a name="common-symptoms---how-it-should-be-resolved"></a>Vanliga symtom – hur det ska lösas?
 
--   Om du har problem med att distribuera webbappar kontrollerar du att du har behörighet att skapa/distribuera resurser i prenumerationen.
--   Om du får en **objekt referens som inte är inställt på en instans av ett objekt** fel när du kör [skriptet](itsmc-service-manager-script.md), måste du se till att du har angett giltiga värden i avsnittet **användar konfiguration** .
--   Om du inte kan skapa Service Bus Relay-namnområdet kontrollerar du att den nödvändiga resurs leverantören är registrerad i prenumerationen. Om den inte är registrerad skapar du Service Bus Relay-namnområdet manuellt från Azure Portal. Du kan också skapa den när du [skapar hybrid anslutningen](./itsmc-connections-scsm.md#configure-the-hybrid-connection) i Azure Portal.
+Listan nedan innehåller vanliga symtom och hur ska den lösas:
+
+* **Symptom**: dubbla arbets objekt skapas
+
+    **Orsak**: orsaken kan vara något av de två alternativen:
+    * Fler än en ITSM-åtgärd har definierats för aviseringen.
+    * Aviseringen har lösts.
+
+    **Lösning**: det kan finnas två lösningar:
+    * Se till att du har en enda ITSM-åtgärds grupp per avisering.
+    * ITSM-anslutningsprogram stöder inte matchande arbets objekts status uppdatering när en avisering har lösts. Ett nytt löst arbets objekt har skapats.
+* **Symptom**: arbets objekt har inte skapats
+
+    **Orsak**: det kan finnas några orsaker till det här problemet:
+    * Kod ändring på ServiceNow sida
+    * Felaktig konfiguration av behörigheter
+    * ServiceNow hastighets begränsningar är för höga/låga
+    * Uppdateringstoken har upphört att gälla
+    * ITSM-anslutningsprogram har tagits bort
+
+    **Lösning**: du kan kontrol lera [instrument panelen](itsmc-dashboard.md) och granska felen i avsnittet anslutnings status. Granska de [vanliga felen](itsmc-dashboard-errors.md) och ta reda på hur du kan lösa felet.
+
+* **Symptom**: det gick inte att skapa ITSM-åtgärd för åtgärds gruppen
+
+    **Orsak**: nyligen skapade ITSM-anslutningsprogram har ännu slutfört den inledande synkroniseringen.
+
+    **Lösning**: du kan granska [vanliga användar gränssnitts fel](itsmc-dashboard-errors.md#ui-common-errors) och ta reda på hur du kan lösa felet.

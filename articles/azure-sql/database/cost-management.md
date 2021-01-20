@@ -7,12 +7,12 @@ ms.custom: subject-cost-optimization
 ms.service: sql-database
 ms.topic: how-to
 ms.date: 01/15/2021
-ms.openlocfilehash: 19531b9d0019fb000efe5aeb2d1b9fed34ce23f1
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 8d36166a67e683dd7f15eef18d589562b39ba568
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98253550"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600624"
 ---
 # <a name="plan-and-manage-costs-for-azure-sql-database"></a>Planera och hantera kostnader för Azure SQL Database
 
@@ -67,7 +67,7 @@ Azure SQL Database (med undantag för Server lös) faktureras enligt ett föruts
 
 ### <a name="using-monetary-credit-with-azure-sql-database"></a>Använda monetär kredit med Azure SQL Database
 
-Du kan betala för Azure SQL Database avgifter med din kredit för ditt EA-belopp. Du kan dock inte använda EA-krediter för att betala för avgifter för produkter och tjänster från tredje part, inklusive de som finns på Azure Marketplace.
+Du kan betala för Azure SQL Database avgifter med din Azure-förskotts betalning (tidigare kallat betalnings åtagande) kredit. Du kan dock inte använda Azures förskotts kredit för att betala för avgifter för produkter och tjänster från tredje part, inklusive de som finns på Azure Marketplace.
 
 ## <a name="review-estimated-costs-in-the-azure-portal"></a>Gå igenom kostnadsuppskattningarna på Azure-portalen
 

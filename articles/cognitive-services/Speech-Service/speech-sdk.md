@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: trbye
-ms.openlocfilehash: 9356cbb6eb210d6745d90e8ad001917e73592cd3
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 597a7c3954912a3a86b5db9f92ba75e8aaee63f6
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96022002"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601823"
 ---
 # <a name="about-the-speech-sdk"></a>Om Speech SDK
 
@@ -58,7 +58,7 @@ Tal-SDK: n visar många funktioner från tal tjänsten, men inte alla. Funktione
 
 ### <a name="voice-assistants"></a>Röstassistenter
 
-[Röst assistenter](voice-assistants.md) som använder tal-SDK gör det möjligt för utvecklare att skapa naturliga, mänskliga konversations gränssnitt för sina program och upplevelser. Röst assistents tjänsten ger snabb och tillförlitlig interaktion mellan en enhet och en assistent. I implementeringen används bot-ramverkets direkta rad tal kanal eller den integrerade anpassade kommandona (för hands version) för att slutföra uppgiften. Dessutom kan röst assistenter använda anpassade röster som skapats i den [anpassade röst portalen](https://aka.ms/customvoice) för att lägga till en unik röst utmatnings upplevelse.
+[Röst assistenter](voice-assistants.md) som använder tal-SDK gör det möjligt för utvecklare att skapa naturliga, mänskliga konversations gränssnitt för sina program och upplevelser. Röst assistents tjänsten ger snabb och tillförlitlig interaktion mellan en enhet och en assistent. I implementeringen används bot Framework: s direkta rad tal kanal eller den integrerade anpassade kommando tjänsten för att slutföra uppgiften. Dessutom kan röst assistenter använda anpassade röster som skapats i den [anpassade röst portalen](https://aka.ms/customvoice) för att lägga till en unik röst utmatnings upplevelse.
 
 **Röst assistenter** är tillgängliga på följande plattformar:
 

@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/08/2020
+ms.date: 01/18/2021
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: bc3640fecbe1138e46fd0d36975691740bc669dd
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: f6ae9ff27e773c36626812387b1284d660cbf39d
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97369267"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602469"
 ---
 # <a name="understand-azure-role-definitions"></a>Förstå roll definitioner för Azure
 
@@ -291,11 +291,27 @@ Om du vill visa och använda data åtgärder i REST API måste du ange parameter
 
 ## <a name="notactions"></a>NotActions
 
-`NotActions`Behörigheten anger vilka hanterings åtgärder som undantas från tillåten `Actions` . Använd `NotActions` behörigheten om den uppsättning åtgärder som du vill tillåta är enklare att definiera genom att exkludera begränsade åtgärder. Åtkomsten som beviljats av en roll (gällande behörigheter) beräknas genom att subtrahera `NotActions` åtgärderna från `Actions` åtgärderna.
+`NotActions`Behörigheten anger vilka hanterings åtgärder som subtraheras eller undantas från den tillåtna `Actions` som har ett jokertecken ( `*` ). Använd `NotActions` behörigheten om den uppsättning åtgärder som du vill tillåta är enklare att definiera genom att subtrahera från `Actions` som har ett jokertecken ( `*` ). Åtkomsten som beviljats av en roll (gällande behörigheter) beräknas genom att subtrahera `NotActions` åtgärderna från `Actions` åtgärderna.
+
+`Actions - NotActions = Effective management permissions`
+
+I följande tabell visas två exempel på gällande behörigheter för en [Microsoft. CostManagement](resource-provider-operations.md#microsoftcostmanagement) -wildcard-åtgärd:
+
+> [!div class="mx-tableFixed"]
+> | Actions | NotActions | Effektiva hanterings behörigheter |
+> | --- | --- | --- |
+> | `Microsoft.CostManagement/exports/*` | *inget* | `Microsoft.CostManagement/exports/action`</br>`Microsoft.CostManagement/exports/read`</br>`Microsoft.CostManagement/exports/write`</br>`Microsoft.CostManagement/exports/delete`</br>`Microsoft.CostManagement/exports/run/action` |
+> | `Microsoft.CostManagement/exports/*` | `Microsoft.CostManagement/exports/delete` | `Microsoft.CostManagement/exports/action`</br>`Microsoft.CostManagement/exports/read`</br>`Microsoft.CostManagement/exports/write`</br>`Microsoft.CostManagement/exports/run/action` |
 
 > [!NOTE]
 > Om en användare tilldelas en roll som undantar en åtgärd i `NotActions` och tilldelas en andra roll som beviljar åtkomst till samma åtgärd, tillåts användaren utföra åtgärden. `NotActions` är inte en regel för neka – det är bara ett bekvämt sätt att skapa en uppsättning tillåtna åtgärder när vissa åtgärder behöver undantas.
 >
+
+### <a name="differences-between-notactions-and-deny-assignments"></a>Skillnader mellan NotActions och neka tilldelningar
+
+`NotActions` och neka-tilldelningar är inte samma och tjänar olika syfte. `NotActions` är ett bekvämt sätt att subtrahera vissa åtgärder från en jokertecken ( `*` )-åtgärd.
+
+Neka tilldelningar blockera användare från att utföra vissa åtgärder även om en roll tilldelning ger åtkomst till dem. Mer information finns i [förstå Azure Deny-tilldelningar](deny-assignments.md).
 
 ## <a name="dataactions"></a>DataActions
 
@@ -311,7 +327,17 @@ Om du vill visa och använda data åtgärder i REST API måste du ange parameter
 
 ## <a name="notdataactions"></a>NotDataActions
 
-`NotDataActions`Behörigheten anger de data åtgärder som undantas från tillåten `DataActions` . Åtkomsten som beviljats av en roll (gällande behörigheter) beräknas genom att subtrahera `NotDataActions` åtgärderna från `DataActions` åtgärderna. Varje resurs leverantör tillhandahåller sin respektive uppsättning API: er för att uppfylla data åtgärder.
+`NotDataActions`Behörigheten anger de data åtgärder som subtraheras eller undantas från den tillåtna `DataActions` som har ett jokertecken ( `*` ). Använd `NotDataActions` behörigheten om den uppsättning åtgärder som du vill tillåta är enklare att definiera genom att subtrahera från `DataActions` som har ett jokertecken ( `*` ). Åtkomsten som beviljats av en roll (gällande behörigheter) beräknas genom att subtrahera `NotDataActions` åtgärderna från `DataActions` åtgärderna. Varje resurs leverantör tillhandahåller sin respektive uppsättning API: er för att uppfylla data åtgärder.
+
+`DataActions - NotDataActions = Effective data permissions`
+
+I följande tabell visas två exempel på gällande behörigheter för en [Microsoft. Storage](resource-provider-operations.md#microsoftstorage) -wildcard-åtgärd:
+
+> [!div class="mx-tableFixed"]
+> | DataActions | NotDataActions | Gällande data behörigheter |
+> | --- | --- | --- |
+> | `Microsoft.Storage/storageAccounts/queueServices/queues/messages/*` | *inget* | `Microsoft.Storage/storageAccounts/queueServices/queues/messages/read`</br>`Microsoft.Storage/storageAccounts/queueServices/queues/messages/write`</br>`Microsoft.Storage/storageAccounts/queueServices/queues/messages/delete`</br>`Microsoft.Storage/storageAccounts/queueServices/queues/messages/add/action`</br>`Microsoft.Storage/storageAccounts/queueServices/queues/messages/process/action` |
+> | `Microsoft.Storage/storageAccounts/queueServices/queues/messages/*` | `Microsoft.Storage/storageAccounts/queueServices/queues/messages/delete`</br> | `Microsoft.Storage/storageAccounts/queueServices/queues/messages/read`</br>`Microsoft.Storage/storageAccounts/queueServices/queues/messages/write`</br>`Microsoft.Storage/storageAccounts/queueServices/queues/messages/add/action`</br>`Microsoft.Storage/storageAccounts/queueServices/queues/messages/process/action` |
 
 > [!NOTE]
 > Om en användare har tilldelats en roll som undantar en data åtgärd i `NotDataActions` och har tilldelats en andra roll som beviljar åtkomst till samma data åtgärd, tillåts användaren att utföra denna data åtgärd. `NotDataActions` är inte en regel för neka – det är bara ett bekvämt sätt att skapa en uppsättning tillåtna data åtgärder när vissa data åtgärder måste undantas.

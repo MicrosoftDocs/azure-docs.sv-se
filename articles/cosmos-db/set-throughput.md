@@ -5,13 +5,13 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/10/2020
-ms.openlocfilehash: 4fea027663b55e87822eae1fd0cdb2d67dbc630b
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.date: 01/19/2021
+ms.openlocfilehash: a03ad1eb893c97671d7ab60cc38708115a73d260
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96170839"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602402"
 ---
 # <a name="introduction-to-provisioned-throughput-in-azure-cosmos-db"></a>Introduktion till etablerade data flöden i Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -109,7 +109,7 @@ Svaret på dessa metoder innehåller också det [lägsta allokerade data flödet
 Det faktiska antalet RU/s kan variera beroende på din konto konfiguration. Men vanligt vis är det högst:
 
 * 400 RU/s 
-* Aktuellt lagrings utrymme i GB * 10 RU/s (om inte din behållare eller databas innehåller mer än 1 TB data, se vårt [program för hög lagring/låg genom strömning](#high-storage-low-throughput-program))
+* Aktuellt lagrings utrymme i GB * 10 RU/s (den här begränsningen kan vara avslappnad i vissa fall, se vårt [höga lagrings-/låg data flödes program](#high-storage-low-throughput-program))
 * Mest RU/s etablerad i databasen eller containern/100
 
 ### <a name="changing-the-provisioned-throughput"></a>Ändra det etablerade data flödet
@@ -139,7 +139,7 @@ Som det beskrivs i avsnittet [Aktuellt etablerat data flöde](#current-provision
 
 Detta kan vara ett problem i situationer där du behöver lagra stora mängder data, men ha låga data flödes krav i jämförelse. För att bättre kunna hantera dessa scenarier har Azure Cosmos DB infört ett **"högt lagrings-/låg data flöde"-program** som minskar begränsningen ru/s per GB för berättigade konton.
 
-Du måste för närvarande ha minst 1 container eller en databas med delat data flöde som innehåller mer än 1 TB data i ditt konto för att bli berättigad. Om du vill delta i programmet och utvärdera din fullständiga behörighet måste du fylla i [den här undersökningen](https://customervoice.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRzBPrdEMjvxPuDm8fCLUtXpUREdDU0pCR0lVVFY5T1lRVEhWNUZITUJGMC4u). Azure Cosmos DBs teamet följer sedan upp och fortsätter med din onboarding.
+Om du vill delta i programmet och utvärdera din fullständiga behörighet måste du fylla i [den här undersökningen](https://customervoice.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRzBPrdEMjvxPuDm8fCLUtXpUREdDU0pCR0lVVFY5T1lRVEhWNUZITUJGMC4u). Azure Cosmos DBs teamet följer sedan upp och fortsätter med din onboarding.
 
 ## <a name="comparison-of-models"></a>Jämförelse av modeller
 Den här tabellen visar en jämförelse mellan Provisioning standard (manuell) data flöde i en databas jämfört med på en behållare. 

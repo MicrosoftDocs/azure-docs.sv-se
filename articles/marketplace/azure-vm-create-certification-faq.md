@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 01/18/2021
-ms.openlocfilehash: f802292d9723179b36d5291993bd4e07487fe6a8
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: 80dc19a58d212bb6ab8d608e222cd3a0bd3990d1
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567389"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600978"
 ---
 # <a name="troubleshoot-virtual-machine-certification"></a>Felsöka virtuell dator certifiering
 
@@ -321,7 +321,7 @@ I följande tabell finns några problem som kan uppstå när du laddar ned den v
 |Ogiltigt VHD-namn|Kontrol lera om det finns specialtecken, till exempel ett procent tecken `%` eller citat tecken `"` , i VHD-namnet.|Byt namn på VHD-filen genom att ta bort specialtecknen.|
 |
 
-## <a name="first-1-mb-2048-sectors-each-sector-of-512-bytes-partition"></a>Första 1 MB (2048 sektorer, varje sektor på 512 byte) partition
+## <a name="first-partition-starts-at-1-mb-2048-sectors"></a>Första partitionen börjar med 1 MB (2048 sektorer)
 
 Om du [skapar en egen avbildning](azure-vm-create-using-own-image.md)ser du till att de första 2048 sektorerna (1 MB) av OS-disken är tomma. Annars fungerar inte publiceringen. Detta krav gäller endast för operativ system diskar (inte data diskar). Om du skapar din avbildning [från en godkänd bas](azure-vm-create-using-approved-base.md)kan du hoppa över det här kravet.
 

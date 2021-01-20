@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 6d9df48839505714deead567b3d342febdb41c90
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 4e8ba291f32456bf2b8432620d1f9ea313629c9d
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98051776"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600503"
 ---
 # <a name="manage-digital-twins"></a>Hantera digitala tvillingar
 
@@ -72,7 +72,7 @@ Med hjälp klassen i `BasicDigitalTwin` kan du lagra egenskaps fält i ett "" ""
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_sample.cs" id="CreateTwin_withHelper":::
 
 >[!NOTE]
-> `BasicDigitalTwin` objekt levereras med ett `Id` fält. Du kan lämna fältet tomt, men om du lägger till ett ID-värde måste det matcha ID-parametern som skickas till `CreateOrReplaceDigitalTwinAsync()` anropet. Exempel:
+> `BasicDigitalTwin` objekt levereras med ett `Id` fält. Du kan lämna fältet tomt, men om du lägger till ett ID-värde måste det matcha ID-parametern som skickas till `CreateOrReplaceDigitalTwinAsync()` anropet. Till exempel:
 >
 >```csharp
 >twin.Id = "myRoomId";
@@ -227,9 +227,12 @@ Kodfragmentet använder [Room.jspå](https://github.com/Azure-Samples/digital-tw
 Innan du kör exemplet gör du följande:
 1. Ladda ned modell filen, placera den i projektet och Ersätt `<path-to>` plats hållaren i koden nedan för att tala om för programmet var du hittar det.
 2. Ersätt plats hållaren `<your-instance-hostname>` med din Azure Digital-instansen värdnamn.
-3. Lägg till två beroenden i projektet som behövs för att arbeta med Azure Digital-dubbla. Du kan använda länkarna nedan för att navigera till paketen på NuGet, där du kan hitta konsol kommandona (inklusive för .NET CLI) för att lägga till den senaste versionen av varje till projektet.
-    * [**Azure. DigitalTwins. Core**](https://www.nuget.org/packages/Azure.DigitalTwins.Core). Det här är paketet för [Azure Digitals dubbla SDK för .net](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true).
-    * [**Azure. Identity**](https://www.nuget.org/packages/Azure.Identity). Det här biblioteket innehåller verktyg som hjälper dig med autentisering mot Azure.
+3. Lägg till två beroenden i projektet som behövs för att arbeta med Azure Digital-dubbla. Det första är paketet för [Azure Digitals-SDK: n för .net](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true), den andra innehåller verktyg som hjälper dig att autentisera mot Azure.
+
+      ```cmd/sh
+      dotnet add package Azure.DigitalTwins.Core
+      dotnet add package Azure.Identity
+      ```
 
 Du måste också konfigurera lokala autentiseringsuppgifter om du vill köra exemplet direkt. Nästa avsnitt går igenom detta.
 [!INCLUDE [Azure Digital Twins: local credentials prereq (outer)](../../includes/digital-twins-local-credentials-outer.md)]

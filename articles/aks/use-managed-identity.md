@@ -4,12 +4,12 @@ description: Lär dig hur du använder hanterade identiteter i Azure Kubernetes 
 services: container-service
 ms.topic: article
 ms.date: 12/16/2020
-ms.openlocfilehash: 948a189e1c6e03efca046b6d43dddcaf3d141957
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: fe11170b1cdf18aacf832f4c8171bfc082339395
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97607294"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599609"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>Använda hanterade identiteter i Azure Kubernetes-tjänsten
 
@@ -38,16 +38,16 @@ AKS använder flera hanterade identiteter för inbyggda tjänster och tillägg.
 |----------------------------|-----------|----------|
 | Kontrollplan | inte synlig | Används av AKS Control plan-komponenter för att hantera kluster resurser, inklusive belastnings utjämning och AKS-hanterade offentliga IP-adresser och åtgärder för automatisk skalnings åtgärd i klustret | Deltagar roll för nod resurs grupp | stöds
 | Kubelet | AKS-kluster namn – agentpoolegenskap | Autentisering med Azure Container Registry (ACR) | NA (för Kubernetes v 1.15 +) | Stöds för närvarande inte
-| Tillägg | AzureNPM | Ingen identitet krävs | NA | No
-| Tillägg | AzureCNI nätverks övervakning | Ingen identitet krävs | NA | No
-| Tillägg | Azure-policy (Gatekeeper) | Ingen identitet krävs | NA | No
-| Tillägg | Azure-princip | Ingen identitet krävs | NA | No
-| Tillägg | Calico | Ingen identitet krävs | NA | No
-| Tillägg | Instrumentpanel | Ingen identitet krävs | NA | No
-| Tillägg | HTTPApplicationRouting | Hanterar nödvändiga nätverks resurser | Läsar roll för nod resurs grupp, deltagar roll för DNS-zon | No
-| Tillägg | Ingress Application Gateway | Hanterar nödvändiga nätverks resurser| Deltagar roll för nod resurs grupp | No
-| Tillägg | omsagent | Används för att skicka AKS-mått till Azure Monitor | Övervaknings mått utgivar rollen | No
-| Tillägg | Virtual-Node (ACIConnector) | Hanterar nödvändiga nätverks resurser för Azure Container Instances (ACI) | Deltagar roll för nod resurs grupp | No
+| Tillägg | AzureNPM | Ingen identitet krävs | NA | Nej
+| Tillägg | AzureCNI nätverks övervakning | Ingen identitet krävs | NA | Nej
+| Tillägg | Azure-policy (Gatekeeper) | Ingen identitet krävs | NA | Nej
+| Tillägg | Azure-princip | Ingen identitet krävs | NA | Nej
+| Tillägg | Calico | Ingen identitet krävs | NA | Nej
+| Tillägg | Instrumentpanel | Ingen identitet krävs | NA | Nej
+| Tillägg | HTTPApplicationRouting | Hanterar nödvändiga nätverks resurser | Läsar roll för nod resurs grupp, deltagar roll för DNS-zon | Nej
+| Tillägg | Ingress Application Gateway | Hanterar nödvändiga nätverks resurser| Deltagar roll för nod resurs grupp | Nej
+| Tillägg | omsagent | Används för att skicka AKS-mått till Azure Monitor | Övervaknings mått utgivar rollen | Nej
+| Tillägg | Virtual-Node (ACIConnector) | Hanterar nödvändiga nätverks resurser för Azure Container Instances (ACI) | Deltagar roll för nod resurs grupp | Nej
 | OSS-projekt | AAD-Pod – identitet | Gör det möjligt för program att komma åt moln resurser på ett säkert sätt med Azure Active Directory (AAD) | NA | Steg för att bevilja behörighet på https://github.com/Azure/aad-pod-identity#role-assignment .
 
 ## <a name="create-an-aks-cluster-with-managed-identities"></a>Skapa ett AKS-kluster med hanterade identiteter
@@ -131,7 +131,7 @@ Uppdatera den användare som tilldelats identiteten:
 az aks update -g <RGName> -n <AKSName> --enable-managed-identity --assign-identity <UserAssignedIdentityResourceID> 
 ```
 > [!NOTE]
-> När systemtilldelade eller användarspecifika identiteter har uppdaterats till hanterad identitet, utför du en `az nodepool upgrade --node-image-only` på noderna för att slutföra uppdateringen av den hanterade identiteten.
+> När systemtilldelade eller användarspecifika identiteter har uppdaterats till hanterad identitet, utför du en `az aks nodepool upgrade --node-image-only` på noderna för att slutföra uppdateringen av den hanterade identiteten.
 
 ## <a name="bring-your-own-control-plane-mi"></a>Ta med ditt eget kontroll plan MI
 En anpassad kontroll plan identitet ger åtkomst till den befintliga identiteten innan klustret skapas. Den här funktionen möjliggör scenarier som att använda en anpassad VNET eller outboundType av UDR med en förgenererad hanterad identitet.

@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 07/29/2020
+ms.date: 01/20/2021
 ms.author: tisande
-ms.openlocfilehash: 35232f95bc18432db05775807d95f23ceab66aea
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 09148e65e446d723fbfe7a54602db59ee0739f83
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93333791"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599352"
 ---
 # <a name="keywords-in-azure-cosmos-db"></a>Nyckelord i Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -107,6 +107,73 @@ Frågor med en sammansatt systemfunktion och en under fråga med `DISTINCT` stö
 ```sql
 SELECT COUNT(1) FROM (SELECT DISTINCT f.lastName FROM f)
 ```
+
+## <a name="like"></a>LIKADAN
+
+Returnerar ett booleskt värde beroende på om en specifik tecken sträng matchar ett angivet mönster. Ett mönster kan innehålla vanliga tecken och jokertecken. Du kan skriva logiskt motsvarande frågor med hjälp av antingen `LIKE` nyckelordet eller funktionen [RegexMatch](sql-query-regexmatch.md) system. Du kommer att observera samma index användning oavsett vilken du väljer. Därför bör du använda `LIKE` om du föredrar syntaxen mer än reguljära uttryck.
+
+> [!NOTE]
+> Eftersom `LIKE` kan använda ett index, bör du [skapa ett intervall index](indexing-policy.md) för egenskaper som du jämför med `LIKE` .
+
+Du kan använda följande jokertecken som:
+
+| Jokertecken | Beskrivning                                                  | Exempel                                     |
+| -------------------- | ------------------------------------------------------------ | ------------------------------------------- |
+| %                    | En sträng på noll eller flera tecken                      | DÄR c. Description som "% SO% PS%"      |
+| _ (under streck)     | Valfritt enskilt Character                                       | DÄR c. Description som "% SO_PS%"      |
+| [ ]                  | Ett enskilt Character inom det angivna intervallet ([a-f]) eller set ([ABCDEF]). | DÄR c. Description som "% SO [t-z] PS%"  |
+| [^]                  | Ett enskilt Character som inte ligger inom det angivna intervallet ([^ a-f]) eller set ([^ ABCDEF]). | DÄR c. Description som "% SO [^ abc] PS%" |
+
+
+### <a name="using-like-with-the--wildcard-character"></a>Använda LIKE med jokertecknet%
+
+`%`Tecknet matchar valfri sträng med noll eller flera tecken. Genom att t. ex. Placera en `%` i början och slutet av mönstret returnerar följande fråga alla objekt med en beskrivning som innehåller `fruit` :
+
+```sql
+SELECT *
+FROM c
+WHERE c.description LIKE "%fruit%"
+```
+
+Om du bara har använt ett `%` tecken i början av mönstret returnerar du bara objekt med en beskrivning som börjar med `fruit` :
+
+```sql
+SELECT *
+FROM c
+WHERE c.description LIKE "fruit%"
+```
+
+
+### <a name="using-not-like"></a>Använd inte som
+
+I exemplet nedan returneras alla objekt med en beskrivning som inte innehåller `fruit` :
+
+```sql
+SELECT *
+FROM c
+WHERE c.description NOT LIKE "%fruit%"
+```
+
+### <a name="using-the-escape-clause"></a>Använda Escape-satsen
+
+Du kan söka efter mönster som innehåller ett eller flera jokertecken med ESCAPE-satsen. Om du till exempel vill söka efter beskrivningar som innehåller strängen `20-30%` vill du inte tolka `%` som ett jokertecken.
+
+```sql
+SELECT *
+FROM c
+WHERE c.description LIKE '%20-30!%%' ESCAPE '!'
+```
+
+### <a name="using-wildcard-characters-as-literals"></a>Använda jokertecken som litteraler
+
+Du kan omge jokertecken med hakparenteser för att behandla dem som litterala tecken. När du omsluter ett jokertecken i hakparenteser tar du bort alla särskilda attribut. Här är några exempel:
+
+| Mönster           | Innebörd |
+| ----------------- | ------- |
+| SOM "20-30 [%]" | 20-30%  |
+| SOM "[_] n"     | _n      |
+| SOM "[[]"    | [       |
+| SOM "]"        | ]       |
 
 ## <a name="in"></a>IN
 

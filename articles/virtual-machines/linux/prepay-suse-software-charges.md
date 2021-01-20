@@ -8,12 +8,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: banders
-ms.openlocfilehash: a527b75d376f05ab6190187b7a03d6da775055ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5a4f7de0cacb17087e346123f53dad45ae1de357
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81759282"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602615"
 ---
 # <a name="prepay-for-azure-software-plans"></a>Förskottsbetala för programvaruplaner för Azure
 
@@ -32,7 +32,7 @@ Du kan köpa SUSE och RedHat Software-planer i Azure Portal. Så här köper du 
 Fyll i de obligatoriska fälten. Alla virtuella SUSE Linux-datorer eller virtuella RedHat-datorer som matchar attributen för det du köper får rabatten. Det faktiska antalet distributioner som erhåller rabatten beror på vald omfattning och kvantitet.
 3. Välj en prenumeration. Den används för att betala för planen.
 Betalnings metoden för prenumerationen debiteras de direkta kostnaderna för reservationen. Prenumerations typen måste vara en Enterprise-avtal (erbjudande nummer: MS-AZR-0017P eller MS-AZR-0148P) eller ett enskilt avtal med priser enligt principen betala per användning (erbjudande nummer: MS-AZR-0003P eller MS-AZR-0023P).
-    - För en företagsprenumeration dras avgifterna från registreringens återstående åtagandebelopp eller debiteras som överförbrukning.
+    - För en företags prenumeration dras avgifterna från registreringen för förskotts betalning i Azure (tidigare kallat betalnings åtagande) eller debiteras som överanvändning.
     - För en enskild prenumeration med priset betala per användning debiteras avgifterna på prenumerationens kredit kort eller faktura betalnings metod.
 4. Välj ett omfång. Omfattningen kan omfatta en prenumeration eller flera prenumerationer (delad omfattning).
     - Enskild prenumeration – plan rabatten används för att matcha användning i prenumerationen.

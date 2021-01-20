@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: a9050b85c974a3c04ca717e8fe3d5188c1bf7a40
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6773c6b29ecfd8354c54a6214cfe0b4050edcd38
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88244320"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602657"
 ---
 # <a name="how-to-sign-up-for-translator"></a>Så här registrerar du dig för Translator
 
@@ -41,7 +41,7 @@ När du har loggat in på portalen kan du skapa en prenumeration på Translator 
 När du registrerar dig för Translator får du en personlig åtkomst nyckel som är unik för din prenumeration. Den här nyckeln krävs för varje anrop till Translator.
 
 1. Hämta din autentiseringsnyckel genom att först välja lämplig prenumeration.
-1. Välj **nycklar** i avsnittet **resurs hantering** i prenumerationens information.
+1. Välj **nycklar och slut punkt** i avsnittet **resurs hantering** i prenumerationens information.
 1. Kopiera någon av de nycklar som anges för din prenumeration.
 
 ## <a name="learn-test-and-get-support"></a>Lär dig, testa och få support

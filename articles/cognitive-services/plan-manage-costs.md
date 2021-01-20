@@ -7,12 +7,12 @@ ms.custom: subject-cost-optimization
 ms.service: cognitive-services
 ms.topic: how-to
 ms.date: 12/15/2020
-ms.openlocfilehash: 4fe06edbb3e02f23ef56a3e7fff848682e36e3af
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 925a092eb67fa459213a37df0fc6b3f7a1b8a0fb
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251326"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602358"
 ---
 # <a name="plan-and-manage-costs-for-azure-cognitive-services"></a>Planera och hantera kostnader för Azure Cognitive Services
 
@@ -60,9 +60,9 @@ När du har tagit bort QnA Maker-resurser kan följande resurser fortsätta att 
 - [Azure App Service (för körning)](https://azure.microsoft.com/pricing/details/app-service/)
 - [Azure Kognitiv sökning (för data)](https://azure.microsoft.com/pricing/details/search/)
 
-### <a name="using-monetary-credit-with-cognitive-services"></a>Använda monetär kredit med Cognitive Services
+### <a name="using-azure-prepayment-credit-with-cognitive-services"></a>Använda Azures förskotts kredit med Cognitive Services
 
-Du kan betala för Cognitive Services avgifter med din kredit för ditt EA-belopp. Du kan dock inte använda EA-krediter för att betala för avgifter för produkter och tjänster från tredje part, inklusive de som finns på Azure Marketplace.
+Du kan betala för Cognitive Services avgifter med din Azure-förskotts betalning (tidigare kallat betalnings åtagande) kredit. Du kan dock inte använda Azures förskotts kredit för att betala för avgifter för produkter och tjänster från tredje part, inklusive de som finns på Azure Marketplace.
 
 ## <a name="create-budgets"></a>Skapa budgetar
 

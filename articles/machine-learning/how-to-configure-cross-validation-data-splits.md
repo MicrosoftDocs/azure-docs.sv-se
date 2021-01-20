@@ -11,16 +11,16 @@ ms.author: cesardl
 author: CESARDELATORRE
 ms.reviewer: nibaccam
 ms.date: 06/16/2020
-ms.openlocfilehash: 8e749e5f6ea6bcf76a1b4f143bce03ceb41cbb07
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: a781900534156e455c125dffe3b1334820fdf4d5
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98573300"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599068"
 ---
 # <a name="configure-data-splits-and-cross-validation-in-automated-machine-learning"></a>Konfigurera datadelningar och korsvalidering vid automatiserad maskininlärning
 
-I den här artikeln får du lära dig de olika alternativen för att konfigurera inlärnings-och verifierings data delas och kors validering för din automatiserade maskin inlärning, automatiserade ML-experiment.
+I den här artikeln lär du dig de olika alternativen för att konfigurera tränings data och verifierings data delningar tillsammans med inställningar för kors validering för din automatiserade maskin inlärning, automatiserade ML, experiment.
 
 När du använder automatisk ML för att skapa flera ML-modeller i Azure Machine Learning måste varje underordnad körning verifiera den relaterade modellen genom att beräkna kvalitets måtten för modellen, till exempel precision eller AUC viktad. Dessa mått beräknas genom att jämföra förutsägelserna som gjorts med varje modell med verkliga etiketter från tidigare observationer i verifierings data. [Lär dig mer om hur mått beräknas baserat på validerings typ](#metric-calculation-for-cross-validation-in-machine-learning). 
 
@@ -29,7 +29,7 @@ Automatiserade ML-experiment utför automatisk modell validering. I följande av
 En låg kod eller ingen kod får [du i skapa dina automatiserade Machine Learning-experiment i Azure Machine Learning Studio](how-to-use-automated-ml-for-ml-models.md). 
 
 > [!NOTE]
-> Studio stöder för närvarande utbildning/validering av data delningar och alternativ för kors validering, men det går inte att ange enskilda datafiler för verifierings uppsättningen. 
+> Studio stöder för närvarande utbildning och validering av data, samt alternativ för kors validering, men har inte stöd för att ange enskilda datafiler för verifierings uppsättningen. 
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -41,7 +41,7 @@ För den här artikeln behöver du
 
 * En förståelse för att träna/Verifiera data delas och kors validering som metoder för maskin inlärning. En förklaring på hög nivå
 
-    * [Om tåg, validering och test uppsättningar i Machine Learning](https://towardsdatascience.com/train-validation-and-test-sets-72cb40cba9e7)
+    * [Om utbildning, validering och test av data i Machine Learning](https://towardsdatascience.com/train-validation-and-test-sets-72cb40cba9e7)
 
     * [Förstå kors validering i Machine Learning](https://towardsdatascience.com/understanding-cross-validation-419dbd47e9bd) 
 
@@ -62,7 +62,7 @@ automl_config = AutoMLConfig(compute_target = aml_remote_compute,
                             )
 ```
 
-Om du inte uttryckligen anger antingen en `validation_data` -eller `n_cross_validation` -parameter, använder AutoML standard tekniker beroende på antalet rader i den enskilda data uppsättningen `training_data` som anges:
+Om du inte uttryckligen anger antingen en `validation_data` -eller `n_cross_validation` -parameter, använder automatisk ml standard tekniker beroende på antalet rader som anges i den enskilda data uppsättningen `training_data` :
 
 |Tränings &nbsp; data &nbsp; storlek| Verifierings teknik |
 |---|-----|
@@ -71,7 +71,7 @@ Om du inte uttryckligen anger antingen en `validation_data` -eller `n_cross_vali
 
 ## <a name="provide-validation-data"></a>Tillhandahåll verifierings data
 
-I det här fallet kan du antingen börja med en enda datafil och dela den i inlärnings-och validerings uppsättningar, eller så kan du ange en separat datafil för validerings uppsättningen. Oavsett hur tilldelar- `validation_data` parametern i `AutoMLConfig` objektet vilka data som ska användas som verifierings uppsättning. Den här parametern accepterar bara data mängder i form av en [Azure Machine Learning dataset](how-to-create-register-datasets.md) -eller Pandas-dataframe.   
+I det här fallet kan du antingen börja med en enda datafil och dela den i tränings data och verifierings data uppsättningar, eller så kan du ange en separat datafil för validerings uppsättningen. Oavsett hur tilldelar- `validation_data` parametern i `AutoMLConfig` objektet vilka data som ska användas som verifierings uppsättning. Den här parametern accepterar bara data mängder i form av en [Azure Machine Learning dataset](how-to-create-register-datasets.md) -eller Pandas-dataframe.   
 
 Följande kod exempel definierar uttryckligen vilken del av de tillhandahållna data som `dataset` ska användas för utbildning och verifiering.
 

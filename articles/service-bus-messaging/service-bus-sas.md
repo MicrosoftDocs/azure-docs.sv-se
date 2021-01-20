@@ -2,20 +2,20 @@
 title: Azure Service Bus åtkomst kontroll med signaturer för delad åtkomst
 description: 'Översikt över Service Bus åtkomst kontroll med signaturer för delad åtkomst: översikt, information om SAS-auktorisering med Azure Service Bus.'
 ms.topic: article
-ms.date: 11/03/2020
+ms.date: 01/19/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f71320613682f7d4b9f3b706845e68f581b3dc10
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 6bdc167c437a79d609db25a2e3c48b71e0a748b2
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93339418"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98598823"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>Service Bus åtkomst kontroll med signaturer för delad åtkomst
 
-*Signaturer för delad åtkomst* (SAS) är den primära säkerhetsmekanismen för Service Bus meddelande hantering. I den här artikeln beskrivs SAS, hur de fungerar och hur de används på ett oberoende sätt.
+I den här artikeln beskrivs *signaturer för delad åtkomst* (SAS), hur de fungerar och hur de används på ett oberoende sätt.
 
-SAS skyddar åtkomsten till Service Bus baserat på auktoriseringsregler. De konfigureras antingen på ett namn område eller en meddelande enhet (relä, kö eller ämne). En auktoriseringsregel har ett namn, är kopplat till vissa rättigheter och har ett par kryptografiska nycklar. Du använder regelns namn och nyckel via Service Bus SDK eller i din egen kod för att skapa en SAS-token. En klient kan sedan skicka token till Service Bus för att bevisa auktoriseringen för den begärda åtgärden.
+SAS skyddar åtkomsten till Service Bus baserat på auktoriseringsregler. De konfigureras antingen i ett namn område eller i en meddelande enhet (kö eller ämne). En auktoriseringsregel har ett namn, är kopplat till vissa rättigheter och har ett par kryptografiska nycklar. Du använder regelns namn och nyckel via Service Bus SDK eller i din egen kod för att skapa en SAS-token. En klient kan sedan skicka token till Service Bus för att bevisa auktoriseringen för den begärda åtgärden.
 
 > [!NOTE]
 > Azure Service Bus stöder auktorisering av åtkomst till ett Service Bus-namnområde och dess entiteter med hjälp av Azure Active Directory (Azure AD). Auktorisering av användare eller program med OAuth 2,0-token som returnerades av Azure AD ger överlägsen säkerhet och enkel användning över signaturer för delad åtkomst (SAS). Med Azure AD behöver du inte lagra tokens i din kod och potentiella säkerhets risker.
@@ -36,12 +36,12 @@ Token för [signaturen för delad åtkomst](/dotnet/api/microsoft.servicebus.sha
 
 Varje Service Bus-namnrymd och varje Service Bus entitet har en princip för delad åtkomst som består av regler. Principen på namn områdes nivån gäller för alla entiteter i namn området, oavsett deras enskilda princip konfiguration.
 
-För varje auktoriseringsregel bestämmer du om tre delar av information: **namn** , **omfattning** och **rättigheter**. **Namnet** är bara det. ett unikt namn inom det omfånget. Omfånget är tillräckligt enkelt: det är URI: n för den aktuella resursen. För ett Service Bus-namnområde är omfånget det fullständigt kvalificerade domän namnet (FQDN), till exempel `https://<yournamespace>.servicebus.windows.net/` .
+För varje auktoriseringsregel bestämmer du om tre delar av information: **namn**, **omfattning** och **rättigheter**. **Namnet** är bara det. ett unikt namn inom det omfånget. Omfånget är tillräckligt enkelt: det är URI: n för den aktuella resursen. För ett Service Bus-namnområde är omfånget det fullständigt kvalificerade domän namnet (FQDN), till exempel `https://<yournamespace>.servicebus.windows.net/` .
 
 Rättigheterna som tilldelas av princip regeln kan vara en kombination av:
 
 * Send-ger behörighet att skicka meddelanden till entiteten
-* Lyssna-ger rätt att lyssna (relä) eller ta emot (kö, prenumerationer) och all relaterad meddelande hantering
+* Lyssna-ger rätt att ta emot (kö, prenumerationer) och all relaterad meddelande hantering
 * Hantera – ger behörighet att hantera topologin för namn området, inklusive att skapa och ta bort entiteter
 
 Rättigheten "hantera" innehåller rättigheterna "Send" och "Receive".
@@ -55,16 +55,16 @@ När du skapar ett Service Bus-namnområde skapas automatiskt en princip regel m
 ## <a name="best-practices-when-using-sas"></a>Metodtips när du använder SAS
 När du använder signaturer för delad åtkomst i dina program måste du vara medveten om två potentiella risker:
 
-- Om en SAS läcker ut kan den användas av alla som erhåller den, vilket kan äventyra Event Hubs-resurser.
+- Om en SAS läcker ut kan den användas av alla som erhåller den, vilket kan äventyra Service Bus-resurser.
 - Om en SAS som tillhandahålls för ett klient program upphör att gälla och programmet inte kan hämta en ny SAS från tjänsten, kan programmets funktioner hindras.
 
 Följande rekommendationer för att använda signaturer för delad åtkomst kan minimera riskerna:
 
-- **Låt klienterna automatiskt förnya SAS vid behov** : klienterna bör förnya SAS-välbefinnande innan det går ut, för att tillåta tid för nya försök om tjänsten som tillhandahåller SAS inte är tillgänglig. Om din SAS är avsedd att användas för ett litet antal omedelbara, kortsiktiga åtgärder som förväntas bli slutförda inom förfallo perioden, kan det vara onödigt eftersom SAS inte förväntas förnyas. Men om du har en klient som rutinmässigt begär förfrågningar via SAS, kommer möjligheten att förfalla att bli i spel. Viktiga överväganden är att balansera behovet av att SAS ska vara kort livs längd (som tidigare anges) med behovet av att säkerställa att klienten begär förnyelse tillräckligt tidigt (för att undvika avbrott på grund av att SAS förfaller före en lyckad förnyelse).
-- **Var försiktig med start tiden för SAS** : om du ställer in start tiden för SAS **nu** , sedan på grund av klock skevning (skillnader i aktuell tid beroende på olika datorer), kan det hända att felen observeras oregelbundet under de första minuterna. I allmänhet anger du Start tiden till minst 15 minuter tidigare. Eller, ange inte det alls, vilket gör det giltigt omedelbart i samtliga fall. Samma gäller vanligt vis förfallo tiden. Kom ihåg att du kan titta upp till 15 minuters klock skevning i båda riktningarna. 
-- **Var speciell för den resurs som ska användas** : en säkerhets metod är att ge användaren den lägsta behörighet som krävs. Om en användare bara behöver Läs behörighet till en enskild entitet kan du ge dem Läs behörighet till den enskilda entiteten och inte läsa/skriva/ta bort åtkomst till alla entiteter. Det hjälper också till att minska skadan om en SAS komprometteras eftersom SAS har mindre kraft i händerna på en angripare.
-- **Använd inte alltid SAS** : ibland uppväger riskerna som är kopplade till en viss åtgärd mot ditt Event Hubs fördelarna med SAS. För sådana åtgärder skapar du en tjänst på mellan nivå som skriver till din Event Hubs efter verifiering, autentisering och granskning av affärs regler.
-- **Använd alltid https** : Använd alltid https för att skapa eller distribuera en SAS. Om en säkerhets Association skickas över HTTP och fångas, kan en angripare som utför en anslutning som gör att du kan läsa SAS och sedan använda den precis som den avsedda användaren kan ha, eventuellt kompromissa med känsliga data eller tillåta data skada av den skadliga användaren.
+- **Låt klienterna automatiskt förnya SAS vid behov**: klienterna bör förnya SAS-välbefinnande innan det går ut, för att tillåta tid för nya försök om tjänsten som tillhandahåller SAS inte är tillgänglig. Om din SAS är avsedd att användas för ett litet antal omedelbara, kortsiktiga åtgärder som förväntas bli slutförda inom förfallo perioden, kan det vara onödigt eftersom SAS inte förväntas förnyas. Men om du har en klient som rutinmässigt begär förfrågningar via SAS, kommer möjligheten att förfalla att bli i spel. Viktiga överväganden är att balansera behovet av att SAS ska vara kort livs längd (som tidigare anges) med behovet av att säkerställa att klienten begär förnyelse tillräckligt tidigt (för att undvika avbrott på grund av att SAS förfaller före en lyckad förnyelse).
+- **Var försiktig med start tiden för SAS**: om du ställer in start tiden för SAS **nu**, sedan på grund av klock skevning (skillnader i aktuell tid beroende på olika datorer), kan det hända att felen observeras oregelbundet under de första minuterna. I allmänhet anger du Start tiden till minst 15 minuter tidigare. Eller, ange inte det alls, vilket gör det giltigt omedelbart i samtliga fall. Samma gäller vanligt vis förfallo tiden. Kom ihåg att du kan titta upp till 15 minuters klock skevning i båda riktningarna. 
+- **Var speciell för den resurs som ska användas**: en säkerhets metod är att ge användaren den lägsta behörighet som krävs. Om en användare bara behöver Läs behörighet till en enskild entitet kan du ge dem Läs behörighet till den enskilda entiteten och inte läsa/skriva/ta bort åtkomst till alla entiteter. Det hjälper också till att minska skadan om en SAS komprometteras eftersom SAS har mindre kraft i händerna på en angripare.
+- **Använd inte alltid SAS**: ibland uppväger riskerna som är kopplade till en viss åtgärd mot ditt Event Hubs fördelarna med SAS. För sådana åtgärder skapar du en tjänst på mellan nivå som skriver till din Event Hubs efter verifiering, autentisering och granskning av affärs regler.
+- **Använd alltid https**: Använd alltid https för att skapa eller distribuera en SAS. Om en säkerhets Association skickas över HTTP och fångas, kan en angripare som utför en anslutning som gör att du kan läsa SAS och sedan använda den precis som den avsedda användaren kan ha, eventuellt kompromissa med känsliga data eller tillåta data skada av den skadliga användaren.
 
 ## <a name="configuration-for-shared-access-signature-authentication"></a>Konfiguration för autentisering av signatur för delad åtkomst
 
@@ -72,7 +72,7 @@ Du kan konfigurera [SharedAccessAuthorizationRule](/dotnet/api/microsoft.service
 
 ![SAS](./media/service-bus-sas/service-bus-namespace.png)
 
-I den här bilden gäller *manageRuleNS* -, *SendRuleNS* -och *listenRuleNS* -auktoriseringsregler både för kön Q1 och ämnet T1, medan *ListenRuleQ* och *sendRuleQ* endast gäller för kön Q1 och *sendRuleT* gäller endast ämne T1.
+I den här bilden gäller *manageRuleNS*-, *SendRuleNS*-och *listenRuleNS* -auktoriseringsregler både för kön Q1 och ämnet T1, medan *ListenRuleQ* och *sendRuleQ* endast gäller för kön Q1 och *sendRuleT* gäller endast ämne T1.
 
 ## <a name="generate-a-shared-access-signature-token"></a>Generera en token för signatur för delad åtkomst
 
@@ -82,18 +82,34 @@ Alla klienter som har åtkomst till namnet på ett namn för auktoriseringsregel
 SharedAccessSignature sig=<signature-string>&se=<expiry>&skn=<keyName>&sr=<URL-encoded-resourceURI>
 ```
 
-* **`se`** -Token upphör att gälla omedelbart. Heltal som motsvarar sekunder sedan den `00:00:00 UTC` 1 januari 1970 (UNIX-epok) när token upphör att gälla.
-* **`skn`** – Namnet på auktoriseringsregeln.
-* **`sr`** -URI för resursen som används.
-* **`sig`** Signatur.
+- `se` -Token upphör att gälla omedelbart. Heltal som motsvarar sekunder sedan den `00:00:00 UTC` 1 januari 1970 (UNIX-epok) när token upphör att gälla.
+- `skn` – Namnet på auktoriseringsregeln.
+- `sr` -URL-kodad URI för den resurs som används.
+- `sig` -URL-kodad HMACSHA256-signatur. Hash-beräkningen liknar följande pseudo-kod och returnerar base64 Binary-utdata.
 
-`signature-string`Är SHA-256-hashen som beräknats över resurs-URI: n ( **omfånget** enligt beskrivningen i föregående avsnitt) och sträng representationen av token som upphör att gälla, avgränsade med LF.
+    ```
+    urlencode(base64(hmacsha256(urlencode('https://<yournamespace>.servicebus.windows.net/') + "\n" + '<expiry instant>', '<signing key>')))
+    ```
 
-Hash-beräkningen ser ut ungefär som följande pseudo-kod och returnerar ett hash-värde på 256 bitar/32 byte.
+Här är ett exempel på en C#-kod för att skapa en SAS-token:
 
+```csharp
+private static string createToken(string resourceUri, string keyName, string key)
+{
+    TimeSpan sinceEpoch = DateTime.UtcNow - new DateTime(1970, 1, 1);
+    var week = 60 * 60 * 24 * 7;
+    var expiry = Convert.ToString((int)sinceEpoch.TotalSeconds + week);
+    string stringToSign = HttpUtility.UrlEncode(resourceUri) + "\n" + expiry;
+    HMACSHA256 hmac = new HMACSHA256(Encoding.UTF8.GetBytes(key));
+    var signature = Convert.ToBase64String(hmac.ComputeHash(Encoding.UTF8.GetBytes(stringToSign)));
+    var sasToken = String.Format(CultureInfo.InvariantCulture, "SharedAccessSignature sr={0}&sig={1}&se={2}&skn={3}", HttpUtility.UrlEncode(resourceUri), HttpUtility.UrlEncode(signature), expiry, keyName);
+    return sasToken;
+}
 ```
-SHA-256('https://<yournamespace>.servicebus.windows.net/'+'\n'+ 1438205742)
-```
+
+> [!IMPORTANT]
+> Exempel på hur du skapar en SAS-token med olika programmeringsspråk finns i [skapa SAS-token](/rest/api/eventhub/generate-sas-token). 
+
 
 Token innehåller de värden som inte är hash-kodade, så att mottagaren kan beräkna hashen på samma parametrar och kontrol lera att utfärdaren har en giltig signerings nyckel.
 
@@ -105,8 +121,6 @@ Den auktoriseringsregler för delad åtkomst som används för signering måste 
 
 En SAS-token är giltig för alla resurser som har prefixet som `<resourceURI>` används i `signature-string` .
 
-> [!NOTE]
-> Exempel på hur du skapar en SAS-token med olika programmeringsspråk finns i [skapa SAS-token](/rest/api/eventhub/generate-sas-token). 
 
 ## <a name="regenerating-keys"></a>Återskapar nycklar
 
@@ -174,7 +188,7 @@ sendClient.Send(helloMessage);
 
 Du kan också använda token-providern direkt för att utfärda token som ska skickas till andra klienter.
 
-Anslutnings strängar kan innehålla ett regel namn ( *SharedAccessKeyName* ) och en regel nyckel ( *SharedAccessKey* ) eller en tidigare Utfärdad token ( *SharedAccessSignature* ). När de finns i anslutnings strängen som skickas till en konstruktor eller fabriks metod som accepterar en anslutnings sträng skapas och fylls SAS-token-providern automatiskt.
+Anslutnings strängar kan innehålla ett regel namn (*SharedAccessKeyName*) och en regel nyckel (*SharedAccessKey*) eller en tidigare Utfärdad token (*SharedAccessSignature*). När de finns i anslutnings strängen som skickas till en konstruktor eller fabriks metod som accepterar en anslutnings sträng skapas och fylls SAS-token-providern automatiskt.
 
 Observera att om du vill använda SAS-auktorisering med Service Bus reläer kan du använda SAS-nycklar som kon figurer ATS i namn området Service Bus. Om du uttryckligen skapar ett relä i namn området ([NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) med ett [RelayDescription](/dotnet/api/microsoft.servicebus.messaging.relaydescription))-objekt kan du ange SAS-reglerna för det reläet. Om du vill använda SAS-auktorisering med Service Bus prenumerationer kan du använda SAS-nycklar som kon figurer ATS på ett Service Bus-namnområde eller i ett ämne.
 

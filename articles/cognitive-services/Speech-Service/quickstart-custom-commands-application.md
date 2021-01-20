@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
 ms.custom: references_regions
-ms.openlocfilehash: c5f8be87e7ee95e1deff12cce09204b5fe8a0bb7
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: 2cc37cc66c06dc9e6997c6a031a9c60ad050c01a
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97694197"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601764"
 ---
 # <a name="create-a-voice-assistant-using-custom-commands"></a>Skapa en röstassistent med Anpassade kommandon
 
-I den här snabb starten skapar du och testar ett grundläggande anpassat kommando program med tal Studio. Du kommer även att ha åtkomst till det här programmet från en Windows-klient. Med **anpassade kommandon** kan du enkelt bygga avancerade röst kommando program som är optimerade för röst-och första interaktions upplevelser. Det ger en enhetlig redigerings upplevelse, en automatisk värd modell och relativt lägre komplexitet, vilket hjälper dig att fokusera på att skapa den bästa lösningen för röst kommando scenarier.
+I den här snabb starten skapar du och testar ett grundläggande anpassat kommando program med tal Studio. Du kommer även att ha åtkomst till det här programmet från en Windows-klient.
 
 ## <a name="region-availability"></a>Tillgänglighet för regioner
 För tillfället stöder anpassade kommandon tal prenumerationer som skapats i följande regioner:
@@ -29,7 +29,7 @@ För tillfället stöder anpassade kommandon tal prenumerationer som skapats i f
 * East US
 * USA, östra 2
 * USA, västra centrala
-* Norra Europa
+* Europa, norra
 * Europa, västra
 * Asien, östra
 * Sydostasien

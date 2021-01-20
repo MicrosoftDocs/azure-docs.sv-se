@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 61f655d459592022a2e34b87adc50e3d49b03dc9
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 0e99f7466bd3b7ed5517157ca3fa45e7c3241217
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97935775"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599767"
 ---
 # <a name="conditional-access-securing-security-info-registration"></a>Villkorsstyrd åtkomst: Säkra registrering av säkerhetsinformation
 
@@ -34,6 +34,8 @@ Följande princip gäller för alla valda användare, som försöker registrera 
    > [!WARNING]
    > Användare måste aktive ras för den [kombinerade registreringen](../authentication/howto-registration-mfa-sspr-combined.md).
 
+   1. Under **exkludera** väljer **du användare och grupper** och väljer organisationens nödfalls åtkomst eller Bryt glas konton. 
+   1. Välj **Klar**.
 1. Under **molnappar eller åtgärder** väljer du **användar åtgärder**, markera **Registrera säkerhets information**.
 1. Under **villkor**  >  **platser**.
    1. Konfigurera **Ja**.

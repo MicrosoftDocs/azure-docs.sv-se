@@ -5,12 +5,12 @@ ms.custom: subject-cost-optimization
 ms.service: app-service
 ms.topic: how-to
 ms.date: 01/01/2021
-ms.openlocfilehash: f92b766fc1122456fda70d2deff81fa80a02d159
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 85035ff894127df4e9eb8334702fd9546d7a63c3
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98250119"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98598712"
 ---
 # <a name="plan-and-manage-costs-for-azure-app-service"></a>Planera och hantera kostnader för Azure App Service
 
@@ -51,7 +51,7 @@ Andra kostnads resurser för App Service är (se [App Service prissättning](htt
 
 När du tar bort alla appar i en App Service plan fortsätter planen att debiteras enligt dess konfigurerade pris nivå och antalet instanser. Ta bort planen eller skala ned den till den **kostnads fria** nivån för att undvika oönskade kostnader.
 
-När du har tagit bort Azure App Service-resurser kan resurser från relaterade Azure-tjänster fortsätta att existera. De fortsätter att Periodisera kostnader tills du tar bort dem. Här är några exempel:
+När du har tagit bort Azure App Service-resurser kan resurser från relaterade Azure-tjänster fortsätta att existera. De fortsätter att Periodisera kostnader tills du tar bort dem. Till exempel:
 
 - Virtual Network som du har skapat för en **isolerad** nivå App Service plan
 - Lagrings konton som du har skapat för att lagra säkerhets kopior eller diagnostikloggar
@@ -61,7 +61,7 @@ När du har tagit bort Azure App Service-resurser kan resurser från relaterade 
 
 ### <a name="using-monetary-credit-with-azure-app-service"></a>Använda monetär kredit med Azure App Service
 
-Du kan betala för Azure App Service avgifter med din kredit för ditt EA-belopp. Du kan dock inte använda EA-krediter för att betala för kostnader för produkter och tjänster från tredje part, inklusive de från Azure Marketplace.
+Du kan betala för Azure App Service avgifter med din Azure-förskotts betalning (tidigare kallat betalnings åtagande) kredit. Du kan dock inte använda Azures förskotts kredit för att betala för avgifter för produkter och tjänster från tredje part, inklusive de från Azure Marketplace.
 
 ## <a name="estimate-costs"></a>Uppskatta kostnader
 

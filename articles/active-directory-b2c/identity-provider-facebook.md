@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/15/2021
+ms.date: 01/19/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 02c3890a9aca03d9d79b55098297174401cab37d
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 64a4404fa881181f92d442a73e5da4c16ae87ae3
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98537958"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98598884"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-facebook-account-using-azure-active-directory-b2c"></a>Konfigurera registrering och inloggning med ett Facebook-konto med hjälp av Azure Active Directory B2C
 
@@ -60,7 +60,7 @@ Om du vill aktivera inloggning för användare med ett Facebook-konto i Azure Ac
 
 ::: zone pivot="b2c-user-flow"
 
-## <a name="configure-a-facebook-account-as-an-identity-provider"></a>Konfigurera ett Facebook-konto som en identitets leverantör
+## <a name="configure-facebook-as-an-identity-provider"></a>Konfigurera Facebook som identitets leverantör
 
 1. Logga in på [Azure Portal](https://portal.azure.com/) som global administratör för Azure AD B2C-klientorganisationen.
 1. Kontrol lera att du använder den katalog som innehåller din Azure AD B2C klient genom att välja filtret **katalog + prenumeration** på den översta menyn och välja den katalog som innehåller din klient.
@@ -70,25 +70,6 @@ Om du vill aktivera inloggning för användare med ett Facebook-konto i Azure Ac
 1. För **klient-ID** anger du app-ID: t för det Facebook-program som du skapade tidigare.
 1. För **klient hemligheten** anger du appens hemlighet som du har spelat in.
 1. Välj **Spara**.
-
-::: zone-end
-
-::: zone pivot="b2c-custom-policy"
-
-## <a name="add-facebook-as-an-identity-provider"></a>Lägg till Facebook som en identitets leverantör
-
-1. `SocialAndLocalAccounts/` **`TrustFrameworkExtensions.xml`** Ersätt värdet för `client_id` med Facebook-programmets ID i filen:
-
-   ```xml
-   <TechnicalProfile Id="Facebook-OAUTH">
-     <Metadata>
-     <!--Replace the value of client_id in this technical profile with the Facebook app ID"-->
-       <Item Key="client_id">00000000000000</Item>
-   ```
-
-::: zone-end
-
-::: zone pivot="b2c-user-flow"
 
 ## <a name="add-facebook-identity-provider-to-a-user-flow"></a>Lägg till Facebook Identity Provider i ett användar flöde 
 
@@ -103,6 +84,17 @@ Om du vill aktivera inloggning för användare med ett Facebook-konto i Azure Ac
 ::: zone-end
 
 ::: zone pivot="b2c-custom-policy"
+
+## <a name="configure-a-facebook-account-as-an-identity-provider"></a>Konfigurera ett Facebook-konto som en identitets leverantör
+
+1. `SocialAndLocalAccounts/` **`TrustFrameworkExtensions.xml`** Ersätt värdet för `client_id` med Facebook-programmets ID i filen:
+
+   ```xml
+   <TechnicalProfile Id="Facebook-OAUTH">
+     <Metadata>
+     <!--Replace the value of client_id in this technical profile with the Facebook app ID"-->
+       <Item Key="client_id">00000000000000</Item>
+   ```
 
 ## <a name="upload-and-test-the-policy"></a>Ladda upp och testa principen
 

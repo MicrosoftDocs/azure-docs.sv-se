@@ -13,12 +13,12 @@ ms.date: 09/18/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: fd836afd6b8574be71ad22d26d67f49971834a88
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 6616b0573019703f287d3be521569f5953aeb032
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98064733"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600294"
 ---
 # <a name="initialize-client-applications-using-msalnet"></a>Initiera klient program med MSAL.NET
 I den här artikeln beskrivs hur du initierar offentliga klient program och konfidentiella klient program med hjälp av Microsoft Authentication Library för .NET (MSAL.NET).  Läs [översikten](msal-client-applications.md)om du vill veta mer om klient program typer och program konfigurations alternativ.
@@ -166,3 +166,12 @@ app = PublicClientApplicationBuilder.Create(clientId)
         .WithB2CAuthority("https://fabrikamb2c.b2clogin.com/tfp/{tenant}/{PolicySignInSignUp}")
         .Build();
 ```
+
+## <a name="next-steps"></a>Nästa steg
+
+När du har initierat klient programmet är nästa uppgift att lägga till stöd för användar inloggning, auktoriserad API-åtkomst eller både och.
+
+Vår dokumentation om program scenario ger vägledning för att logga in en användare och förvärva en åtkomsttoken för att få åtkomst till ett API för den användarens räkning:
+
+- [Webbapp som loggar in användare: inloggning och utloggning](scenario-web-app-sign-user-sign-in.md)
+- [Webbapp som anropar webb-API: er: Hämta en token](scenario-web-app-call-api-acquire-token.md)

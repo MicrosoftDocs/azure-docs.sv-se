@@ -8,12 +8,12 @@ ms.topic: conceptual
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/19/2020
-ms.openlocfilehash: 433875e52e77a8992197b47fe0424cd0b7e9f50c
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: d9e26b6388223ae252a5e85e6e9fb9783a3b8429
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94628296"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600413"
 ---
 # <a name="how-to-plan-a-virtual-machine-offer"></a>Planera ett erbjudande för virtuell dator
 
@@ -73,7 +73,7 @@ VM-erbjudanden kräver minst en plan. En plan definierar lösningens omfattning 
 Virtuella datorer är helt handelsaktiverade med hjälp av "betala per användning"-eller "BYOL-licensierings modeller". Microsoft är värd för handels transaktionen och fakturerar kunden för din räkning. Du får fördelen med att använda den prioriterade betalnings relationen mellan kunden och Microsoft, inklusive eventuella företags avtal. Mer information finns i [Transact-funktioner för kommersiella Marketplace](./marketplace-commercial-transaction-capabilities-and-considerations.md).
 
 > [!NOTE]
-> De penning åtaganden som är kopplade till en Enterprise-avtal kan användas mot Azures användning av din virtuella dator, men inte mot licens avgifterna för program varan.
+> Den förskotts betalning i Azure (tidigare kallat betalnings åtagande) som är associerad med en Enterprise-avtal kan användas mot Azures användning av din virtuella dator, men inte mot licens avgifterna för din program vara.
 
 ### <a name="licensing-options"></a>Licensierings alternativ
 
@@ -115,7 +115,7 @@ Du måste ansluta ditt erbjudande till ditt CRM-system (Customer Relations hip M
 
 Du kan lägga till eller ändra en CRM-anslutning när som helst under eller efter att erbjudandet har skapats. Mer detaljerad information finns i [kund leads från ditt kommersiella Marketplace-erbjudande](partner-center-portal/commercial-marketplace-get-customer-leads.md).
 
-## <a name="legal-contracts"></a>Juridiska avtal
+## <a name="legal-contracts"></a>Juridiska kontrakt
 
 För att förenkla inköps processen för kunder och minska den juridiska komplexiteten för program varu leverantörer erbjuder Microsoft ett standard kontrakt som du kan använda för dina erbjudanden på den kommersiella marknaden. När du erbjuder program varan under standard kontraktet behöver kunderna bara läsa och godkänna den en gång, och du behöver inte skapa anpassade allmänna villkor.
 

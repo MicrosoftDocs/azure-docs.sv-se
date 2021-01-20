@@ -12,12 +12,12 @@ ms.date: 09/01/2020
 ms.author: trbye
 ms.custom: cog-serv-seo-aug-2020
 keywords: text till tal
-ms.openlocfilehash: af0c9338cb9661402c3a76bab55f34b01304c7b6
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 54db794d4e9cf0cd2a049a865f2e7bb52698a4bd
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024525"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599539"
 ---
 # <a name="what-is-text-to-speech"></a>Vad är text-till-tal?
 
@@ -39,7 +39,7 @@ I den här översikten får du lära dig om fördelarna och funktionerna i tjän
 
 * Neurala-röster – djup neurala nätverk används för att undvika gränserna för traditionella tal syntes med avseende på stress och intonation i talade språk. Prosody förutsägelse och röst syntes utförs samtidigt, vilket resulterar i mer Fluida och naturliga ljud. Neurala röster kan användas för att göra interaktioner med chattrobotar och röst assistenter mer naturligt och engagerande, konvertera digitala texter som e-böcker till Audiobooks och förbättra navigerings systemen i bilen. Med den humana naturliga prosody och tydligare utsättande av ord, minskar neurala-röster avsevärt lyssnings utmattning när du interagerar med AI-system. En fullständig lista över neurala-röster finns i [språk som stöds](language-support.md#text-to-speech).
 
-* SSML (Speech syntes Markup Language) – ett XML-baserat kodspråk som används för att anpassa tal till text-utdata. Med SSML kan du justera bredden, lägga till pauser, förbättra uttal, påskynda eller sakta ned tal frekvens, öka eller minska volymen och attributa flera röster till ett enda dokument. Se [SSML](speech-synthesis-markup.md).
+* Ändra tal format med SSML-SSML (Speech syntes Markup Language) är ett XML-baserat kodspråk som används för att anpassa tal till text-utdata. Med SSML kan du justera bredden, lägga till pauser, förbättra uttal, påskynda eller sakta ned tal frekvens, öka eller minska volymen och attributa flera röster till ett enda dokument. Se [instruktionen så att du kan](speech-synthesis-markup.md) justera tal formatet.
 
 ## <a name="get-started"></a>Kom igång
 

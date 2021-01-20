@@ -1,5 +1,5 @@
 ---
-title: Skapa en avbildning från en virtuell dator (för hands version)
+title: Skapa en avbildning från en virtuell dator
 description: Lär dig hur du använder Azure PowerShell för att skapa en avbildning i ett delat avbildnings Galleri från en befintlig virtuell dator i Azure.
 author: cynthn
 ms.topic: how-to
@@ -9,14 +9,14 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 3a7ca8236307bbf8a419d2988e1a6dc1e4c40597
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 1a0bfb79b03b778696faef29597cabbcff47e6df
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94964872"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601659"
 ---
-# <a name="preview-create-an-image-from-a-vm"></a>För hands version: skapa en avbildning från en virtuell dator
+# <a name="create-an-image-from-a-vm"></a>Skapa en avbildning från en virtuell dator
 
 Om du har en befintlig virtuell dator som du vill använda för att göra flera identiska virtuella datorer kan du använda den virtuella datorn för att skapa en avbildning i ett delat avbildnings galleri med hjälp av Azure PowerShell. Du kan också skapa en avbildning från en virtuell dator med hjälp av [Azure CLI](image-version-vm-cli.md).
 

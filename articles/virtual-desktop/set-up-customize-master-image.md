@@ -3,19 +3,22 @@ title: Förbereda och anpassa en huvud-VHD-avbildning – Azure
 description: Hur du förbereder, anpassar och laddar upp en Windows-huvudavbildning av ett virtuellt skriv bord till Azure.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 10/14/2019
+ms.date: 01/19/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 9e4cb4fe8a701600290d24c055e2be5187a711c5
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 33af83934e8ecc5745f2edad3a7832a870406452
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95023402"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602385"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>Förbereda och anpassa en VHD-huvudavbildning
 
 Den här artikeln beskriver hur du förbereder en avbildning av en virtuell hård disk (VHD) för uppladdning till Azure, inklusive hur du skapar virtuella datorer (VM) och installerar program vara på dem. De här anvisningarna gäller för en Windows-konfiguration med en virtuell dator som kan användas med din organisations befintliga processer.
+
+>[!IMPORTANT]
+>Vi rekommenderar att du använder en avbildning från Azures avbildnings Galleri. Men om du behöver använda en anpassad avbildning kontrollerar du att du inte redan har installerat WIndows Virtual Desktop-agenten på enheten. Om du använder en anpassad avbildning med Windows Virtual Desktop agent kan det uppstå problem med avbildningen.  
 
 ## <a name="create-a-vm"></a>Skapa en virtuell dator
 

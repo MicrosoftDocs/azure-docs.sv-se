@@ -9,12 +9,12 @@ ms.date: 11/13/2020
 ms.author: normesta
 ms.subservice: common
 ms.custom: subject-cost-optimization
-ms.openlocfilehash: 14e53efb7be9eef3ca388e6524e5ffd678671cd0
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 0bad4637f13bbcf02047416499e4f82fdc53eb4f
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251649"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601303"
 ---
 # <a name="plan-and-manage-costs-for-azure-blob-storage"></a>Planera och hantera kostnader för Azure Blob Storage
 
@@ -41,7 +41,7 @@ Använd [pris Kalkylatorn för Azure](https://azure.microsoft.com/pricing/calcul
 4. Ändra de återstående alternativen för att se hur de påverkar beräkningen.
 
    > [!NOTE]
-   > Du kan betala för Azure Blob Storage-avgifter med din Azure Enterprise-avtal-affärsmässiga kredit. Du kan dock inte använda kredit åtagande kredit för att betala för avgifter för produkter och tjänster från tredje part, inklusive de som finns på Azure Marketplace.
+   > Du kan betala för Azure Blob Storage-avgifter med din Azure-förskotts betalning (tidigare kallat betalnings åtagande) kredit. Du kan dock inte använda Azures förskotts kredit för att betala för avgifter för produkter och tjänster från tredje part, inklusive de som finns på Azure Marketplace.
 
 ## <a name="optimize-costs"></a>Optimera kostnader
 

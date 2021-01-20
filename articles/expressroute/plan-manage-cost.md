@@ -7,12 +7,12 @@ ms.custom: subject-cost-optimization
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 11/30/2020
-ms.openlocfilehash: 72068e5b0af35adce4188a8922cb2415d1f5f71f
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 9b74f6e82e39955554c13f6ce3490bc3c22c2b98
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98250734"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600450"
 ---
 # <a name="plan-and-manage-costs-for-azure-expressroute"></a>Planera och hantera kostnader för Azure-ExpressRoute
 
@@ -76,9 +76,9 @@ När du skapar en ExpressRoute-krets kan du välja att skapa en ExpressRoute-Gat
 
 Om du har en ExpressRoute-gateway när du har tagit bort ExpressRoute-kretsen debiteras du ändå för kostnaden tills du tar bort den.
 
-### <a name="using-monetary-credit"></a>Använda monetär kredit
+### <a name="using-azure-prepayment-credit"></a>Använda Azures förskotts kredit
 
-Du kan betala för ExpressRoute-avgifter med din kredit för ditt EA-belopp. Du kan dock inte använda EA-krediter för att betala för avgifter för produkter och tjänster från tredje part, inklusive de som finns på Azure Marketplace.
+Du kan betala för ExpressRoute-kostnader med din Azure-förskotts betalning (tidigare kallat betalnings åtagande) kredit. Du kan dock inte använda Azures förskotts kredit för att betala för avgifter för tredjepartsprodukter och tjänster från tredje part, inklusive de som finns på Azure Marketplace.
 
 ## <a name="monitor-costs"></a>Övervaka kostnader
 

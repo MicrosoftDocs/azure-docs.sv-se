@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: e50d7aba5cc5b3d5d620d844cc9ad169ad8b3bf6
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 6f2dfdbb5833b34441b4abba7359ad70c4717d1d
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95025899"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602163"
 ---
 # <a name="set-up-web-endpoints"></a>Konfigurera webbslutpunkter
 
@@ -23,7 +23,7 @@ I den här artikeln får du lära dig att ställa in webbslutpunkter i programme
 
 - Konfigurera webbslutpunkter i programmet Anpassade kommandon
 - Anropa webbslutpunkter i programmet Anpassade kommandon
-- Ta emot webbslutpunkternas svar 
+- Ta emot webbslutpunkternas svar
 - Integrera webbslutpunkternas svar i en anpassad JSON-nyttolast, samt skicka och visualisera det från ett Speech SDK-klientprogram för C# UWP
 
 ## <a name="prerequisites"></a>Förutsättningar
@@ -35,7 +35,7 @@ I den här artikeln får du lära dig att ställa in webbslutpunkter i programme
 
 ## <a name="setup-web-endpoints"></a>Konfigurera webbslutpunkter
 
-1. Öppna programmet Anpassade kommandon som du skapade tidigare. 
+1. Öppna programmet Anpassade kommandon som du skapade tidigare.
 1. Gå till ”Webbslutpunkter” och klicka på ”Ny webbslutpunkt”.
 
    > [!div class="mx-imgBorder"]
@@ -61,7 +61,7 @@ I den här artikeln får du lära dig att ställa in webbslutpunkter i programme
 1. Gå till kommandot **TurnOnOff**, välj **ConfirmationResponse** under slutföranderegeln och välj sedan **Lägg till en åtgärd**.
 1. Under **Ny åtgärdstyp** väljer du **Anropa webbslutpunkt**
 1. I **Redigera åtgärd – Slutpunkter** väljer du **UpdateDeviceState**, som är webbslutpunkten vi skapade nyss.  
-1. I **Konfiguration** anger du följande värden: 
+1. I **Konfiguration** anger du följande värden:
    > [!div class="mx-imgBorder"]
    > ![Anropa åtgärdsparametrar för webbslutpunkter](media/custom-commands/setup-web-endpoint-edit-action-parameters.png)
 
@@ -75,16 +75,16 @@ I den här artikeln får du lära dig att ställa in webbslutpunkter i programme
     > - De föreslagna frågeparametrarna behövs bara i slutpunktsexemplet
 
 1. I **Vid lyckad åtgärd – Åtgärd att utföra** väljer du **Skicka talsvar**.
-    
+
     I **Enkelt redigeringsprogram** anger du `{SubjectDevice} is {OnOff}`.
-   
+
    > [!div class="mx-imgBorder"]
    > ![Skärm bild som visar skärmen vid lyckad åtgärd för att köra skärmen.](media/custom-commands/setup-web-endpoint-edit-action-on-success-send-response.png)
 
    | Inställning | Föreslaget värde | Beskrivning |
    | ------- | --------------- | ----------- |
    | Åtgärd att utföra | Skicka talsvar | Åtgärd att utföra om begäran till webbslutpunkten lyckas |
-   
+
    > [!NOTE]
    > - Du kan också få direkt åtkomst till fälten i http-svaret med hjälp av `{YourWebEndpointName.FieldName}`. Exempelvis: `{UpdateDeviceState.TV}`
 
@@ -101,7 +101,7 @@ I den här artikeln får du lära dig att ställa in webbslutpunkter i programme
 
    > [!NOTE]
    > - `{WebEndpointErrorMessage}` är valfritt. Du kan ta bort den om du inte vill visa något felmeddelande.
-   > - I vårt slutpunktsexempel skickar vi tillbaka http-svar med detaljerade felmeddelanden om vanliga fel som t.ex. saknade rubrikparametrar. 
+   > - I vårt slutpunktsexempel skickar vi tillbaka http-svar med detaljerade felmeddelanden om vanliga fel som t.ex. saknade rubrikparametrar.
 
 ### <a name="try-it-out-in-test-portal"></a>Testa i testportalen
 - Svaret Vid lyckad åtgärd\
@@ -119,7 +119,7 @@ I [Instruktioner: Skicka aktivitet till klientprogram (förhandsversion)](./how-
 I de flesta fall brukar man dock vanligtvis enbart vilja skicka aktiviteten till klientprogrammet om anropet till webbslutpunkten lyckas. I det här exemplet sker det när enhetens status har uppdaterats.
 
 1. Ta bort åtgärden **Skicka aktivitet till klient** som du tidigare lade till.
-1. Redigera anrop till webbslutpunkt: 
+1. Redigera anrop till webbslutpunkt:
     1. I **Konfiguration** kontrollerar du att **Frågeparametrar** är `item={SubjectDevice}&&value={OnOff}`
     1. I **Vid lyckad åtgärd** ändrar du **Åtgärd att utföra** till **Skicka aktivitet till klient**
     1. Kopiera JSON-filen nedan till **Aktivitetsinnehåll**
@@ -133,7 +133,6 @@ I de flesta fall brukar man dock vanligtvis enbart vilja skicka aktiviteten till
       }
     }
    ```
-   
 Nu ska du enbart skicka aktiviteten till klienten när begärandet till webbslutpunkten lyckas.
 
 ### <a name="create-visuals-for-syncing-device-state"></a>Skapa visuella objekt som synkroniserar enhetstillstånd
@@ -147,7 +146,7 @@ Lägg till följande XML i `MainPage.xaml` ovanför blocket `"EnableMicrophoneBu
         .........../>
 ```
 
-### <a name="sync-device-state"></a>Synkronisera enhetstillstånd 
+### <a name="sync-device-state"></a>Synkronisera enhetstillstånd
 
 I `MainPage.xaml.cs` lägger du till referensen `using Windows.Web.Http;`. Lägg till följande kod i klassen `MainPage`. Den här metoden skickar en GET-begäran till slutpunktsexemplet och extraherar det aktuella enhetsläget för appen. Kom ihåg att ändra `<your_app_name>` till det som du använde i det anpassade kommandots **rubrik** i webbslutpunkten
 
@@ -157,7 +156,7 @@ private async void SyncDeviceState_ButtonClicked(object sender, RoutedEventArgs 
     //Create an HTTP client object
     var httpClient = new HttpClient();
 
-    //Add a user-agent header to the GET request. 
+    //Add a user-agent header to the GET request.
     var your_app_name = "<your-app-name>";
 
     Uri endpoint = new Uri("https://webendpointexample.azurewebsites.net/api/DeviceState");

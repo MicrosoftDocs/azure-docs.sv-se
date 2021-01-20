@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: 81d9a6bcbd910a60e1f659e430bbe527eb3077c6
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 5be02ff698dac02d702e47f8929c6f8ddf2adbb7
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251751"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602550"
 ---
 # <a name="plan-and-manage-costs-for-azure-machine-learning"></a>Planera och hantera kostnader för Azure Machine Learning
 
@@ -81,9 +81,9 @@ ws.delete(delete_dependent_resources=True)
 
 Om du skapar Azure Kubernetes service (AKS) på din arbets yta, eller om du kopplar några beräknings resurser till din arbets yta, måste du ta bort dem separat i [Azure Portal](https://portal.azure.com).
 
-### <a name="using-monetary-credit-with-azure-machine-learning"></a>Använda monetär kredit med Azure Machine Learning
+### <a name="using-azure-prepayment-credit-with-azure-machine-learning"></a>Använda Azures förskotts kredit med Azure Machine Learning
 
-Du kan betala för Azure Machine Learning avgifter med din kredit för ditt EA-belopp. Du kan dock inte använda EA-krediter för att betala för avgifter för produkter och tjänster från tredje part, inklusive de som finns på Azure Marketplace.
+Du kan betala för Azure Machine Learning avgifter med din Azure-förskotts betalning (tidigare kallat betalnings åtagande) kredit. Du kan dock inte använda Azure-förskotts betalning för att betala för avgifter för produkter och tjänster från tredje part, inklusive de som finns på Azure Marketplace.
 
 
 ## <a name="create-budgets"></a>Skapa budgetar

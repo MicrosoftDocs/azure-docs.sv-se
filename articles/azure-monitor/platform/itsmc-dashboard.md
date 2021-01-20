@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 01/15/2021
-ms.openlocfilehash: 9291689b362b5cbe651a72220196dd30b40745cf
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 9a43318ed935dd1e71b6da75c9f078fbebbd29eb
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98540747"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599027"
 ---
 # <a name="error-investigation-using-the-dashboard"></a>Fel undersökning med instrument panelen
 
@@ -53,6 +53,9 @@ Instrument panelen delas upp i fyra delar:
     ![Skärm bild som visar påverkade datorer.](media/itsmc-resync-servicenow/itsm-dashboard-impacted-comp.png)
 3. Anslutnings status: grafen och tabellen nedan innehåller meddelanden om anslutnings status. Genom att klicka på diagrammet på rader i tabellen kan du få mer information om meddelandets status.
     Tabellen innehåller ett begränsat antal rader om du vill se alla listor som du kan klicka på "Se alla".
+
+    Du kan se information om meddelandena i tabellen – [här](itsmc-dashboard-errors.md).
+
     ![Skärm bild som visar kopplings status.](media/itsmc-resync-servicenow/itsm-dashboard-connector-status.png)
 4. Aviserings regler: tabellerna innehåller information om antalet aviserings regler som har identifierats.
     Genom att klicka på rader i tabellerna kan du få mer information om de regler som har identifierats.

@@ -3,12 +3,12 @@ title: Spara kostnader med den reserverade instansen av Azure VMware-lösningen
 description: Lär dig hur du köper en reserverad instans för Azure VMware-lösningen.
 ms.topic: how-to
 ms.date: 11/12/2020
-ms.openlocfilehash: 80780e9718001893b6960220b5004c1c29b2fec5
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 74344889cd107350e5026c4a0369382fb9c7ef51
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96327405"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600872"
 ---
 # <a name="save-costs-with-azure-vmware-solution"></a>Spara kostnader med Azure VMware-lösningen
 
@@ -54,12 +54,12 @@ Dessa krav gäller för att köpa en reserverad dedikerad värd instans:
 
    | Fält        |  Beskrivning |
    | ------------ | ------------ |
-   | Prenumeration | Prenumerationen som används för att betala för reservationen. Reservationen debiteras via prenumerationens betalningsmetod. Prenumerations typen måste vara ett Enterprise-avtal (erbjudande nummer: MS-AZR-0017P eller MS-AZR-0148P), Microsofts kund avtal eller en enskild prenumeration med priser enligt principen betala per användning (erbjudande nummer: MS-AZR-0003P eller MS-AZR-0023P). Avgifterna dras från saldot för det ekonomiska åtagandet om det finns ett sådant eller debiteras som överförbrukning. För en prenumeration med priser enligt principen betala per användning debiteras avgifterna till prenumerationens kredit kort eller en faktura betalnings metod. |
+   | Prenumeration | Prenumerationen som används för att betala för reservationen. Reservationen debiteras via prenumerationens betalningsmetod. Prenumerations typen måste vara ett Enterprise-avtal (erbjudande nummer: MS-AZR-0017P eller MS-AZR-0148P), Microsofts kund avtal eller en enskild prenumeration med priser enligt principen betala per användning (erbjudande nummer: MS-AZR-0003P eller MS-AZR-0023P). Avgifterna dras av från den förskotts betalning i Azure (tidigare kallat betalnings åtagande), om det är tillgängligt eller debiteras som överanvändning. För en prenumeration med priser enligt principen betala per användning debiteras avgifterna till prenumerationens kredit kort eller en faktura betalnings metod. |
    | Omfång        | Reservationens omfång kan omfatta en prenumeration eller flera prenumerationer (delad omfattning). Om du väljer:<br><ul><li><b>Enskilt resurs grupps omfång</b> – tillämpar reservations rabatten på de matchande resurserna i den valda resurs gruppen.</li><li><b>Enda prenumerations omfång</b> – tillämpar reservations rabatten på de matchande resurserna i den valda prenumerationen.</li><li><b>Delat omfång</b> – använder reservations rabatten för att matcha resurser i berättigade prenumerationer som finns i fakturerings kontexten. För EA-kunder är fakturerings kontexten registreringen. För enskilda prenumerationer med betalning per användning är faktureringsomfånget alla berättigade prenumerationer som kontoadministratören har skapat.</li></ul>       |
    | Region       | Den Azure-region som omfattas av reservationen.   |
    | Värd storlek    | AV36    |
-   | Period         | Ett år eller tre år.  |
-   | Kvantitet     | Antalet instanser som ska köpas i reservationen. Antalet är antalet Azure VMware-lösningar som kan få fakturerings rabatt.    |
+   | Term         | Ett år eller tre år.  |
+   | Antal     | Antalet instanser som ska köpas i reservationen. Antalet är antalet Azure VMware-lösningar som kan få fakturerings rabatt.    |
 
 ### <a name="buy-reserved-instances-for-a-csp-subscription"></a>Köp reserverade instanser för en CSP-prenumeration
 
@@ -87,8 +87,8 @@ Kryptografiproviders som vill köpa reserverade instanser för sina kunder måst
    | Omfång        | Reservationens omfång kan omfatta en prenumeration eller flera prenumerationer (delad omfattning). Om du väljer:<br><ul><li><b>Enskilt resurs grupps omfång</b> – tillämpar reservations rabatten på de matchande resurserna i den valda resurs gruppen.</li><li><b>Enda prenumerations omfång</b> – tillämpar reservations rabatten på de matchande resurserna i den valda prenumerationen.</li><li><b>Delat omfång</b> – använder reservations rabatten för att matcha resurser i berättigade prenumerationer som finns i fakturerings kontexten. För EA-kunder är fakturerings kontexten registreringen. För enskilda prenumerationer med betalning per användning är faktureringsomfånget alla berättigade prenumerationer som kontoadministratören har skapat.</li></ul>       |
    | Region       | Den Azure-region som omfattas av reservationen.   |
    | Värd storlek    | AV36    |
-   | Period         | Ett år eller tre år.  |
-   | Kvantitet     | Antalet instanser som ska köpas i reservationen. Antalet är antalet Azure VMware-lösningar som kan få fakturerings rabatt.     |
+   | Term         | Ett år eller tre år.  |
+   | Antal     | Antalet instanser som ska köpas i reservationen. Antalet är antalet Azure VMware-lösningar som kan få fakturerings rabatt.     |
 
 Mer information om hur du visar de inköpta reservationerna för din kund finns i [Visa Azure-reservationer som en Azure Solution Provider-artikel (CSP)](../cost-management-billing/reservations/how-to-view-csp-reservations.md) .
 
@@ -122,7 +122,7 @@ Mer information om CSP-hanterade reservationer finns i [sälja Microsoft Azure r
 >
 > - En befintlig reservations region
 > - SKU
-> - Kvantitet
+> - Antal
 > - Varaktighet
 >
 >Du kan dock *byta* ut en reservation om du vill göra ändringar.

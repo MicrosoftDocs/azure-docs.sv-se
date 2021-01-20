@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 06/17/2020
-ms.openlocfilehash: 9fe0c79a2f65b27b35aa5029d0a53de62ef08078
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: e85c97df29bbbcc5d446d788cc190f3c90f24024
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251683"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602232"
 ---
 # <a name="azure-sql-database-and-azure-synapse-ip-firewall-rules"></a>Regler för Azure SQL Database-och Azure Synapse-IP-brandvägg
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -43,6 +43,9 @@ Du kan konfigurera regler för IP-brandvägg på server nivå med hjälp av Azur
 
 - Om du vill använda portalen eller PowerShell måste du vara prenumerations ägare eller en prenumerations deltagare.
 - Om du vill använda Transact-SQL måste du ansluta till *huvud* databasen som huvud inloggning på server nivå eller som Azure Active Directory administratör. (En regel för IP-brandvägg på server nivå måste först skapas av en användare som har behörighet på Azure-nivå.)
+
+> [!NOTE]
+> När en ny logisk SQL-Server skapas från Azure Portal är inställningen **Tillåt Azure-tjänster och resurser för att komma åt den här servern** som standard inställd på **Nej**.
 
 ### <a name="database-level-ip-firewall-rules"></a>Regler för IP-brandvägg på databas nivå
 

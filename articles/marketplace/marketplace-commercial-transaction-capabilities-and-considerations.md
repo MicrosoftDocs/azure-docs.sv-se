@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: d602687ea623b90ea5dcae4ece09a1ccc438ea57
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: 5a2a7abf0227812826428557b86c4468f7693c82
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97822394"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600393"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>Transact-funktioner för kommersiella Marketplace
 
@@ -115,7 +115,7 @@ I det här scenariot faktureras Microsoft $1,14 per timme för användning av de
 |Microsoft håller 100% av Azures användnings kostnad | $0,14 per timme |
 ||
 
-**Bring Your Own License (BYOL)**
+**Ta med din egen licens (BYOL)**
 
 BYOL har följande kostnads struktur:
 
@@ -160,7 +160,7 @@ I det här scenariot fakturerar Microsoft $100,00 för din program varu licens o
 
 **Kredit kort och månads faktura** – kunder kan också betala med ett kredit kort och en månads faktura. I det här fallet debiteras licens avgifterna för program varan precis som Enterprise-avtal scenariot, som en specificerad kostnad, separat från alla Azure-särskilda användnings kostnader.
 
-**Kostnads fria krediter och betalnings åtagande** – vissa kunder väljer att förskottsbetala Azure med ett penning åtagande i Enterprise-avtal eller ha fått kostnads fria krediter för användning med Azure. Även om de här krediterna kan användas för att betala för Azure-användning, kan de inte användas för att betala för licens avgifter för Publisher-programvaran.
+**Kostnads fria krediter och Azure-förskotts betalning** – vissa kunder väljer att betala Azure med Azure-förskotts betalning (tidigare kallat betalnings åtagande) i Enterprise-avtal eller ha fått kostnads fria krediter för användning med Azure. Även om de här krediterna kan användas för att betala för Azure-användning, kan de inte användas för att betala för licens avgifter för Publisher-programvaran.
 
 **Fakturering och samlingar** – licens fakturering för Publisher-programvara presenteras med kunden vald fakturerings metod och följer fakturerings tids linjen. Kunder utan en Enterprise-avtal på plats faktureras per månad för program varu licenser för Marketplace. Kunder med en Enterprise-avtal faktureras per månad via en faktura som presenteras kvartals vis.
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 10/08/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 1c957330fbd54660367fa350d6985929f0bbd3d1
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 6fd791495602846b95e2dd3e99423db5505f5307
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95531397"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600911"
 ---
 # <a name="optimize-costs-for-blob-storage-with-reserved-capacity"></a>Optimera kostnader för blobblagring med reserverad kapacitet
 
@@ -82,7 +82,7 @@ Följ dessa steg för att köpa reserverad kapacitet:
    |Fält  |Beskrivning  |
    |---------|---------|
    |**Omfång**   |  Anger hur många prenumerationer som kan använda den fakturerings förmån som är kopplad till reservationen. Den styr också hur reservationen tillämpas på vissa prenumerationer. <br/><br/> Om du väljer **delad** tillämpas reservations rabatten på Azure Storage kapacitet i en prenumeration i din fakturerings kontext. Fakturerings kontexten baseras på hur du registrerade dig för Azure. För företags kunder är det delade omfånget registreringen och innehåller alla prenumerationer i registreringen. För kunder som betalar per användning inkluderar det delade omfånget alla enskilda prenumerationer med priser enligt principen betala per användning som har skapats av konto administratören.  <br/><br/>  Om du väljer **enskild prenumeration** tillämpas reservations rabatten på Azure Storage kapacitet i den valda prenumerationen. <br/><br/> Om du väljer **enskild resurs grupp** tillämpas reservations rabatten på Azure Storage kapacitet i den valda prenumerationen och den valda resurs gruppen i den prenumerationen. <br/><br/> Du kan ändra reservations omfånget när du har köpt reservationen.  |
-   |**Prenumeration**  | Den prenumeration som används för att betala för Azure Storage reservationen. Betalnings metoden för den valda prenumerationen används för att debitera kostnaderna. Prenumerationen måste vara någon av följande typer: <br/><br/>  Enterprise-avtal (erbjudande nummer: MS-AZR-0017P eller MS-AZR-0148P): för en företags prenumeration dras avgifterna från registreringen av betalnings åtagande belopp eller debiteras som överanvändning. <br/><br/> Individuell prenumeration med priser enligt principen betala per användning (erbjudande nummer: MS-AZR-0003P eller MS-AZR-0023P): för en enskild prenumeration med taxan betala per användning debiteras avgifterna till kredit kortet eller faktura betalnings metoden för prenumerationen.    |
+   |**Prenumeration**  | Den prenumeration som används för att betala för Azure Storage reservationen. Betalnings metoden för den valda prenumerationen används för att debitera kostnaderna. Prenumerationen måste vara någon av följande typer: <br/><br/>  Enterprise-avtal (erbjudande nummer: MS-AZR-0017P eller MS-AZR-0148P): för en företags prenumeration dras avgifterna från registreringens förskotts betalning i Azure (tidigare kallat betalnings åtagande) eller debiteras som överanvändning. <br/><br/> Individuell prenumeration med priser enligt principen betala per användning (erbjudande nummer: MS-AZR-0003P eller MS-AZR-0023P): för en enskild prenumeration med taxan betala per användning debiteras avgifterna till kredit kortet eller faktura betalnings metoden för prenumerationen.    |
    | **Region** | Den region där reservationen gäller. |
    | **Åtkomstnivå** | Åtkomst nivån där reservationen gäller. Alternativen är *frekvent*, *låg frekvent* eller *Arkiv* lag ring. Mer information om åtkomst nivåer finns i [Azure Blob Storage: frekvent åtkomst, låg frekvent åtkomst och Arkiv](storage-blob-storage-tiers.md)lag rings nivåer. |
    | **Redundans** | Alternativet redundans för reservationen. Alternativen inkluderar *LRS*, *ZRS*, *GRS*, *GZRS*, *RA-GRS* och *ra-GZRS*. Mer information om redundans alternativ finns [Azure Storage redundans](../common/storage-redundancy.md). |

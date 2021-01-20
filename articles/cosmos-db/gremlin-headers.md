@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 09/03/2019
 author: christopheranderson
 ms.author: chrande
-ms.openlocfilehash: 3f5996b281c1985747f754e3796e9fb84f90fdd3
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 0442d21aebe1cf577c50d14a5aeff40bd1f6cd9c
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93356985"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600522"
 ---
 # <a name="azure-cosmos-db-gremlin-server-response-headers"></a>Azure Cosmos DB Gremlin Server-svarshuvuden
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
@@ -23,7 +23,7 @@ Tänk på att om du tar hänsyn till dessa huvuden begränsar du portabiliteten 
 
 ## <a name="headers"></a>Sidhuvuden
 
-| Sidhuvud | Typ | Exempel värde | När det ingår | Förklaring |
+| Huvud | Typ | Exempel värde | När det ingår | Förklaring |
 | --- | --- | --- | --- | --- |
 | **x-ms-request-charge** | double | 11,3243 | Lyckade och misslyckade | Mängd eller databas data flöde som förbrukas i [enheter för programbegäran (ru/s eller ru: er)](request-units.md) för ett del svars meddelande. Den här rubriken finns i varje fortsättning för förfrågningar som har flera segment. Det visar avgiften för ett visst svars segment. Endast för begär Anden som består av ett enskilt svar som denna rubrik matchar den totala kostnaden för Traversal. För majoriteten av komplexa bläddringskontroll motsvarar dock värdet en delvis kostnad. |
 | **x-ms-total-request-charge** | double | 423,987 | Lyckade och misslyckade | Mängd eller databas data flöde som förbrukas i [enheter för programbegäran (ru/s eller ru: er)](request-units.md) för hela begäran. Den här rubriken finns i varje fortsättning för förfrågningar som har flera segment. Den anger ackumulerad avgift sedan begäran börjar. Värdet för den här rubriken i det sista segmentet visar att avgiften för begäran har slutförts. |
@@ -36,13 +36,12 @@ Tänk på att om du tar hänsyn till dessa huvuden begränsar du portabiliteten 
 
 ## <a name="status-codes"></a>Statuskoder
 
-De vanligaste status koderna som returneras av servern visas nedan.
+De flesta vanliga koder som returneras för `x-ms-status-code` attributet status av servern visas nedan.
 
 | Status | Förklaring |
 | --- | --- |
 | **401** | Fel meddelandet `"Unauthorized: Invalid credentials provided"` returneras när lösen ordet för autentisering inte matchar Cosmos DB konto nyckeln. Navigera till ditt Cosmos DB Gremlin-konto i Azure Portal och bekräfta att nyckeln är korrekt.|
 | **404** | Samtidiga åtgärder som försöker ta bort och uppdatera samma kant eller hörn samtidigt. Felmeddelandet `"Owner resource does not exist"` anger att den angivna databasen eller samlingen har det felaktiga formatet `/dbs/<database name>/colls/<collection or graph name>` för anslutningsparametrarna.|
-| **408** | `"Server timeout"` indikerar att en genom gång tog mer än **30 sekunder** och avbröts av servern. Optimera dina bläddringskontroll för att snabbt köra genom att filtrera formhörn eller kanter på varje hopp med genom gång för att begränsa Sök omfånget.|
 | **409** | `"Conflicting request to resource has been attempted. Retry to avoid conflicts."` Detta inträffar vanligtvis när ett hörn eller en kant med en identifierare redan finns i grafen.| 
 | **412** | Status koden kompletteras med ett fel meddelande `"PreconditionFailedException": One of the specified pre-condition is not met` . Det här felet är en indikation på en optimistisk samtidighets kontroll överträdelse mellan att läsa en gräns eller ett hörn och att skriva tillbaka den till lagret efter ändringen. De vanligaste situationerna när det här felet inträffar är till exempel egenskaps ändringar `g.V('identifier').property('name','value')` . Gremlin-motorn skulle läsa hörnet, ändra det och skriva tillbaka. Om det finns en annan genom gång som körs parallellt försöker skriva samma hörn eller en kant, kommer en av dem att få det här felet. Programmet ska skicka en överträdelse till servern igen.| 
 | **429** | Begäran begränsades och bör provas igen efter värdet i **x-MS-retry-efter-MS**| 
@@ -53,6 +52,7 @@ De vanligaste status koderna som returneras av servern visas nedan.
 | **1004** | Den här status koden indikerar felaktig diagram förfrågan. Begäran kan vara felaktig när den avserialiseras, typen som inte är värdetyp avserialiseras eftersom värde typen eller en Gremlin-åtgärd som inte stöds begärdes. Programmet ska inte försöka utföra begäran igen eftersom det inte kommer att lyckas. | 
 | **1007** | Vanligt vis returneras denna status kod med ett fel meddelande `"Could not process request. Underlying connection has been closed."` . Den här situationen kan inträffa om klient driv rutinen försöker använda en anslutning som stängs av servern. Programmet bör försöka över gången på en annan anslutning.
 | **1008** | Cosmos DB Gremlin-servern kan avsluta anslutningar för att balansera om trafik i klustret. Klient driv rutinerna bör hantera den här situationen och endast använda Live-anslutningar för att skicka begär anden till servern. Ibland kanske klient driv rutinerna inte upptäcker att anslutningen har stängts. När programmet påträffar ett fel `"Connection is too busy. Please retry after sometime or open more connections."` bör det försöka att gå vidare med en annan anslutning.
+| **1009** | Åtgärden slutfördes inte inom den angivna tiden och avbröts av servern. Optimera dina bläddringskontroll så att de snabbt kan köras genom att filtrera formhörn eller kanter på varje hopp med Traversal för att begränsa Sök omfånget. Timeout-värde för begäran är **60 sekunder**. |
 
 ## <a name="samples"></a>Exempel
 

@@ -6,26 +6,26 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 01/18/2021
-ms.openlocfilehash: 5e12ca3bf626ae212f44fe0378ccb6649738753c
-ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
+ms.openlocfilehash: 7240c1b0f19dc49ab4130c5ee2516dcfefb2e2c2
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98562873"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602193"
 ---
 # <a name="errors-in-the-connector-status"></a>Fel i anslutnings status
 
-I listan anslutnings status hittar du fel som kan hjälpa dig att åtgärda din ITSM-anslutning.
+I listan anslutnings status hittar du fel som kan hjälpa dig att åtgärda problem i din ITSM-anslutning.
 
 ## <a name="status-common-errors"></a>Status vanliga fel
 
-i det här avsnittet hittar du det vanliga fel som du hittar i status listan och hur du bör lösa det:
+i det här avsnittet hittar du de vanliga fel som visas i avsnittet anslutnings status och hur du bör lösa det:
 
-*  **Fel**: "oväntat svar från ServiceNow tillsammans med status koden lyckades. Svar: {"import_set": "{import_set_id}", "staging_table": "x_mioms_microsoft_oms_incident", "resultat": [{"transform_map": "OMS-incident", "Tabell": "incident", "status": "fel", "error_message": {mål posten hittades inte | Ogiltig tabell | Ogiltig mellanlagringsdatabas}
+* **Fel**: "oväntat svar från ServiceNow tillsammans med status koden lyckades. Svar: {"import_set": "{import_set_id}", "staging_table": "x_mioms_microsoft_oms_incident", "resultat": [{"transform_map": "OMS-incident", "Tabell": "incident", "status": "fel", "error_message": {mål posten hittades inte | Ogiltig tabell | Ogiltig mellanlagringsdatabas}
 
     **Orsak**: det här felet returneras från ServiceNow när:
-    * Ett anpassat skript som distribueras i ServiceNow-instansen gör att incidenter ignoreras.
-    * "OMS Integrator-appens kod har ändrats på ServiceNow sida, t. ex. onBefore-skriptet.
+  * Ett anpassat skript som distribueras i ServiceNow-instansen gör att incidenter ignoreras.
+  * "OMS Integrator-appens kod har ändrats på ServiceNow sida, t. ex. onBefore-skriptet.
 
     **Lösning**: inaktivera alla anpassade skript eller kod ändringar av data import Sök vägen.
 
@@ -43,7 +43,7 @@ i det här avsnittet hittar du det vanliga fel som du hittar i status listan och
 
 * **Fel**: "ServiceDeskHttpBadRequestException: StatusCode = 429"
 
-    **Orsak**: ServiceNow hastighet är för lågt.
+    **Orsak**: ServiceNow-frekvensen är för hög/låg.
 
     **Lösning**: öka eller Avbryt frekvens gränserna i ServiceNow-instansen enligt beskrivningen [här](https://docs.servicenow.com/bundle/london-application-development/page/integrate/inbound-rest/task/investigate-rate-limit-violations.html).
 
@@ -57,14 +57,14 @@ i det här avsnittet hittar du det vanliga fel som du hittar i status listan och
 
     **Orsak**: ITSM-anslutningsprogram togs bort.
 
-    **Lösning**: ITSM-anslutningsprogram togs bort men det finns fortfarande ITSM åtgärder definierade för att använda den. Det finns två alternativ för att lösa det här problemet:
+    **Lösning**: ITSM-anslutningsprogram togs bort men det finns fortfarande ITSM åtgärds grupper som är kopplade till den. Det finns två alternativ för att lösa det här problemet:
   * Hitta och inaktivera eller ta bort sådan åtgärd
   * [Konfigurera om åtgärds gruppen](./itsmc-definition.md#create-itsm-work-items-from-azure-alerts) så att den använder en befintlig ITSM-anslutningsprogram.
   * [Skapa en ny ITSM-koppling](./itsmc-definition.md#create-an-itsm-connection) och [Konfigurera om åtgärds gruppen så att den används](itsmc-definition.md#create-itsm-work-items-from-azure-alerts).
 
 ## <a name="ui-common-errors"></a>Vanliga användar gränssnitts fel
 
-* **Fel**: "något gick fel. Det gick inte att hämta anslutnings information. "
+* **Fel**: "något gick fel. Det gick inte att hämta anslutnings information. " Det här felet presenteras när kunden definierar ITSM-åtgärds gruppen.
 
     **Orsak**: nyligen skapade ITSM-anslutningsprogram har ännu slutfört den inledande synkroniseringen.
 

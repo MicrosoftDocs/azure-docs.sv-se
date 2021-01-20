@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 02194bd6122cc97ac9dfd6887c6ae2161182c13a
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 0fbf5c07b2d8fd5d754a46484d6b072cc9b682d6
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98120435"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599844"
 ---
 # <a name="use-external-tables-with-synapse-sql"></a>Använda externa tabeller med Synapse SQL
 
@@ -381,7 +381,7 @@ SELECT TOP 1 * FROM census_external_table
 
 ## <a name="create-and-query-external-tables-from-a-file-in-azure-data-lake"></a>Skapa och fråga externa tabeller från en fil i Azure Data Lake
 
-Med hjälp av Data Lake utforsknings funktioner kan du nu skapa och skicka frågor till en extern tabell med hjälp av en dedikerad SQL-pool eller en server lös SQL-pool med enkel högerklickning på filen.
+Med hjälp av Data Lake utforsknings funktioner kan du nu skapa och skicka frågor till en extern tabell med hjälp av en dedikerad SQL-pool eller en server lös SQL-pool med enkel högerklickning på filen. En enkel klickning för att skapa externa tabeller från ADLS Gen2 lagrings kontot stöds bara för Parquet-filer. 
 
 ### <a name="prerequisites"></a>Förutsättningar
 

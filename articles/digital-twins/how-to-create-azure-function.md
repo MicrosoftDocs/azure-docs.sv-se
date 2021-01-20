@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/27/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 6c4f23406c97d647002fbb3ab4a3544866303cf4
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 6f74f973abc33d809624bd8abd5a514a52ccfe70
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98051351"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602707"
 ---
 # <a name="connect-function-apps-in-azure-for-processing-data"></a>Anslut funktions appar i Azure för att bearbeta data
 
@@ -27,7 +27,7 @@ Här är en översikt över de steg som den innehåller:
 1. Skapa ett Azure Functions-projekt i Visual Studio
 2. Skriv en funktion med en [Event Grid](../event-grid/overview.md) -utlösare
 3. Lägg till en autentiseringsnyckel till funktionen (för att kunna komma åt Azure Digital-dubbla)
-4. Publicera Function-appen till Azure
+4. Publicera funktionsappen till Azure
 5. Konfigurera [säkerhets](concepts-security.md) åtkomst för Function-appen
 
 ## <a name="prerequisite-set-up-azure-digital-twins-instance"></a>Förutsättning: Konfigurera Azure Digitals dubbla instanser
@@ -63,24 +63,20 @@ För att kunna använda SDK måste du inkludera följande paket i projektet. Du 
 Du kan göra detta genom att högerklicka på projektet och välja _Hantera NuGet-paket_ i listan. Sedan väljer du fliken _Bläddra_ i fönstret som öppnas och söker efter följande paket. Välj _Installera_ och _Godkänn_ licens avtalet för att installera paketen.
 
 * `Azure.DigitalTwins.Core`
-* `Azure.Identity` 
-
-För att konfigurationen av Azure SDK-pipeline ska kunna konfigureras korrekt för Azure Functions, behöver du även följande paket. Upprepa samma process som ovan för att installera alla paket.
-
+* `Azure.Identity`
 * `System.Net.Http`
-* `Azure.Core.Pipeline`
+* `Azure.Core`
 
 **Alternativ 2. Lägg till paket med `dotnet` kommando rads verktyget:**
 
 Du kan också använda följande `dotnet add` kommandon i ett kommando rads verktyg:
-```cmd/sh
-dotnet add package System.Net.Http
-dotnet add package Azure.Core.Pipeline
-```
 
-Lägg sedan till ytterligare två beroenden i projektet som behövs för att arbeta med Azure Digital-dubbla. Du kan använda länkarna nedan för att navigera till paketen på NuGet, där du kan hitta konsol kommandona (inklusive för .NET CLI) för att lägga till den senaste versionen av varje till projektet.
- * [**Azure. DigitalTwins. Core**](https://www.nuget.org/packages/Azure.DigitalTwins.Core). Det här är paketet för [Azure Digitals dubbla SDK för .net](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true).
- * [**Azure. Identity**](https://www.nuget.org/packages/Azure.Identity). Det här biblioteket innehåller verktyg som hjälper dig med autentisering mot Azure.
+```cmd/sh
+dotnet add package Azure.DigitalTwins.Core
+dotnet add package Azure.Identity
+dotnet add package System.Net.Http
+dotnet add package Azure.Core
+```
 
 Öppna sedan _Function.cs_ -filen i Visual Studio-Solution Explorer där du har exempel kod och Lägg till följande _using_ -instruktioner till din funktion. 
 
@@ -110,7 +106,7 @@ Efter dessa ändringar ser funktions koden ut ungefär så här:
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/adtIngestFunctionSample.cs":::
 
-## <a name="publish-the-function-app-to-azure"></a>Publicera Function-appen till Azure
+## <a name="publish-the-function-app-to-azure"></a>Publicera funktionsappen till Azure
 
 Om du vill publicera projektet i en Function-app i Azure, högerklickar du på funktions projektet (inte lösningen) i Solution Explorer och väljer **publicera**.
 
@@ -154,7 +150,7 @@ Använd följande kommando för att skapa den systemhanterade identiteten. Antec
 ```azurecli-interactive 
 az functionapp identity assign -g <your-resource-group> -n <your-App-Service-(function-app)-name>   
 ```
-Använd värdet _principalId_ i följande kommando för att tilldela Function-appens identitet till den _digitala Azure-dataägarens data ägar_ roll för Azure Digital-instansen.
+Använd _principalId_-värdet i följande kommando för att tilldela funktionsappens identitet till _Azure Digital Twins-dataägarrollen_ för Azure Digital-instansen.
 
 ```azurecli-interactive 
 az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<principal-ID>" --role "Azure Digital Twins Data Owner"

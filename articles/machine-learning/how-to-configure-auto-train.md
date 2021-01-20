@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/29/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperf-fy21q1, automl
-ms.openlocfilehash: f2170aad9bc0218d39244d08f5cc838235f8fee9
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 9021d933e3808867ec784ad3c6d0f8810d608ea3
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98134372"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600072"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Konfigurera automatiserade ML-experiment i Python
 
@@ -65,7 +65,7 @@ automl_config = AutoMLConfig(task = "classification")
 
 Automatiserad maskininlärning har stöd för både lokala data och data i molnlagring som Azure Blob Storage. Data kan läsas i en Pandas- **DataFrame** eller en **Azure Machine Learning TabularDataset**. [Läs mer om datamängder](how-to-create-register-datasets.md).
 
-Krav på träningsdata:
+Krav för tränings data i Machine Learning:
 - Data måste vara i tabell form.
 - Värdet som ska förutsäga, mål kolumnen, måste finnas i datan.
 
@@ -96,9 +96,9 @@ dataset = Dataset.Tabular.from_delimited_files(data)
 
 ## <a name="training-validation-and-test-data"></a>Utbildning, verifiering och test av data
 
-Du kan ange separata **inlärnings-och validerings uppsättningar** direkt i `AutoMLConfig` konstruktorn. Läs mer om [hur du konfigurerar data delningar och kors validering](how-to-configure-cross-validation-data-splits.md) för dina AutoML experiment. 
+Du kan ange separata **tränings data och verifierings data uppsättningar** direkt i `AutoMLConfig` konstruktorn. Läs mer om [hur du konfigurerar data delningar och kors validering](how-to-configure-cross-validation-data-splits.md) för dina AutoML experiment. 
 
-Om du inte uttryckligen anger en `validation_data` -eller `n_cross_validation` -parameter, använder AutoML standard tekniker för att avgöra hur valideringen utförs. Den här bestämningen beror på antalet rader i data uppsättningen som har tilldelats till din `training_data` parameter. 
+Om du inte uttryckligen anger en `validation_data` -eller `n_cross_validation` -parameter, använder automatisk ml standard tekniker för att avgöra hur valideringen utförs. Den här bestämningen beror på antalet rader i data uppsättningen som har tilldelats till din `training_data` parameter. 
 
 |Tränings &nbsp; data &nbsp; storlek| Verifierings teknik |
 |---|-----|
@@ -219,7 +219,7 @@ I varje automatiserad maskin inlärnings experiment skalas dina data automatiskt
 
 När du konfigurerar experiment i `AutoMLConfig` objektet kan du aktivera/inaktivera inställningen `featurization` . I följande tabell visas de accepterade inställningarna för funktionalisering i [AutoMLConfig-objektet](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig). 
 
-|Funktionalisering-konfiguration | Description |
+|Funktionalisering-konfiguration | Beskrivning |
 | ------------- | ------------- |
 |`"featurization": 'auto'`| Anger att [data guardrails och funktionalisering-steg](how-to-configure-auto-features.md#featurization) utförs automatiskt när en del av förbearbetningen. **Standardinställning**.|
 |`"featurization": 'off'`| Anger att funktionalisering-steget inte ska göras automatiskt.|

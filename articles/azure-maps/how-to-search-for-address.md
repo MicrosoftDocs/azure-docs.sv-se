@@ -3,17 +3,17 @@ title: Sök efter en plats med Azure Maps Sök tjänster
 description: 'Läs mer om Azure Maps Search-tjänsten. Se hur du använder den här uppsättningen med API: er för kodning, omvänd hår kodning, fuzzy-sökningar och omvänd Cross-gata-sökningar.'
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 10/05/2020
+ms.date: 01/19/2021
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 00ddb53276c052d538d658f2c40384e86cf72aee
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: dddf56edf2037d87a28589a59834db32f8d04a4c
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92910992"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98598374"
 ---
 # <a name="search-for-a-location-using-azure-maps-search-services"></a>Sök efter en plats med Azure Maps Sök tjänster
 
@@ -36,14 +36,14 @@ I den här självstudien används [Postman](https://www.postman.com/) -programme
 
 ## <a name="request-latitude-and-longitude-for-an-address-geocoding"></a>Begär latitud och longitud för en adress (kod)
 
-I det här exemplet använder vi Azure Maps [Hämta Sök adress-API](/rest/api/maps/search/getsearchaddress) för att konvertera en adress till latitud-och longitud-koordinater. Den här processen kallas även för en *omkodning* . Förutom att returnera koordinaterna returnerar svaret även detaljerade adress egenskaper, till exempel gata, post nummer, kommun och information om land/region.
+I det här exemplet använder vi Azure Maps [Hämta Sök adress-API](/rest/api/maps/search/getsearchaddress) för att konvertera en adress till latitud-och longitud-koordinater. Den här processen kallas även för en *omkodning*. Förutom att returnera koordinaterna returnerar svaret även detaljerade adress egenskaper, till exempel gata, post nummer, kommun och information om land/region.
 
 >[!TIP]
 >Om du har en uppsättning adresser till landskod kan du använda [batch-API: et post search](/rest/api/maps/search/postsearchaddressbatch) för att skicka en batch med frågor i ett enda API-anrop.
 
-1. Öppna Postman-appen. Längst upp i Postman-appen väljer du **nytt** . I fönstret **Skapa nytt** väljer du **samling** .  Namnge samlingen och välj knappen **skapa** . Du kommer att använda den här samlingen för resten av exemplen i det här dokumentet.
+1. Öppna Postman-appen. Längst upp i Postman-appen väljer du **nytt**. I fönstret **Skapa nytt** väljer du **samling**.  Namnge samlingen och välj knappen **skapa** . Du kommer att använda den här samlingen för resten av exemplen i det här dokumentet.
 
-2. Välj **nytt** om du vill skapa en begäran. I fönstret **Skapa nytt** väljer du **begäran** . Ange ett **namn** för begäran. Välj den samling som du skapade i föregående steg och välj sedan **Spara** .
+2. Välj **nytt** om du vill skapa en begäran. I fönstret **Skapa nytt** väljer du **begäran**. Ange ett **namn** för begäran. Välj den samling som du skapade i föregående steg och välj sedan **Spara**.
 
 3. Välj metoden **Hämta** http på fliken Builder och ange följande URL. I den här förfrågan söker vi efter en speciell adress: `400 Braod St, Seattle, WA 98109` . För den här begäran och andra begär Anden som nämns i den här artikeln ersätter `{Azure-Maps-Primary-Subscription-key}` du med den primära prenumerations nyckeln.
 
@@ -75,7 +75,7 @@ I det här exemplet ska vi använda FUZZY search för att söka hela världen ef
 >[!IMPORTANT]
 >Om du vill göra ett neutralt resultat till det relevanta utrymmet för dina användare ska du alltid lägga till så många plats detaljer som möjligt. Mer information finns i [metod tips för sökning](how-to-use-best-practices-for-search.md#geobiased-search-results).
 
-1. Öppna Postman-appen, klicka på **ny** och välj **begäran** . Ange ett **namn** för begäran. Välj den samling som du skapade i föregående avsnitt eller skapa en ny och välj sedan **Spara** .
+1. Öppna Postman-appen, klicka på **ny** och välj **begäran**. Ange ett **namn** för begäran. Välj den samling som du skapade i föregående avsnitt eller skapa en ny och välj sedan **Spara**.
 
 2. Välj metoden **Hämta** http på fliken Builder och ange följande URL. För den här begäran och andra begär Anden som nämns i den här artikeln ersätter `{Azure-Maps-Primary-Subscription-key}` du med den primära prenumerations nyckeln.
 
@@ -94,7 +94,7 @@ I det här exemplet ska vi använda FUZZY search för att söka hela världen ef
 
 4. Standard beteendet är att söka hela världen och eventuellt returnera onödiga resultat. Nu ska vi bara söka efter pizza USA. Lägg till `countrySet` nyckeln i avsnittet **params** och ange värdet till `US` . Om du anger `countrySet` nyckeln till `US` kommer resultatet att bindas till USA.
 
-    :::image type="content" source="./media/how-to-search-for-address/search-fuzzy-country.png" alt-text="Sök efter adress":::
+    :::image type="content" source="./media/how-to-search-for-address/search-fuzzy-country.png" alt-text="Sök efter pizza i USA":::
 
     Resultaten begränsas nu av lands koden och frågan returnerar pizza restauranger i USA.
 
@@ -107,9 +107,9 @@ I det här exemplet ska vi använda FUZZY search för att söka hela världen ef
     | koder | 47,620525 |
     | lon | – 122,349274 |
     | RADIUS | 400 |
-    | gränserna | 5|
+    | gräns | 5|
 
-6. Klicka på **Skicka** . Svaret innehåller resultat för pizza-restauranger nära Barr området Seattle.
+6. Klicka på **Skicka**. Svaret innehåller resultat för pizza-restauranger nära Barr området Seattle.
 
 ## <a name="search-for-a-street-address-using-reverse-address-search"></a>Sök efter en gatuadress med omvänd adresss ökning
 
@@ -123,7 +123,7 @@ Azure Maps [Get search Address reversed API]( https://docs.microsoft.com/rest/ap
 
 I det här exemplet ska vi göra omvända sökningar med några av de valfria parametrarna som är tillgängliga. En fullständig lista över valfria parametrar finns i [parametrarna för omvänd sökning](/rest/api/maps/search/getsearchaddressreverse#uri-parameters).
 
-1. I Postman-appen klickar du på **ny** och väljer **begäran** . Ange ett **namn** för begäran. Välj den samling som du skapade i det första avsnittet eller skapa en ny och välj sedan **Spara** .
+1. I Postman-appen klickar du på **ny** och väljer **begäran**. Ange ett **namn** för begäran. Välj den samling som du skapade i det första avsnittet eller skapa en ny och välj sedan **Spara**.
 
 2. Välj metoden **Hämta** http på fliken Builder och ange följande URL. För den här begäran och andra begär Anden som nämns i den här artikeln ersätter `{Azure-Maps-Primary-Subscription-key}` du med den primära prenumerations nyckeln. Begäran bör se ut som följande URL:
 
@@ -137,20 +137,20 @@ I det här exemplet ska vi göra omvända sökningar med några av de valfria pa
 
     | Tangent | Värde | Returer
     |-----|------------|------|
-    | nummer | 1 |Svaret kan innehålla sidan av gatan (vänster/höger) och även en förskjutnings position för talet.|
+    | antal | 1 |Svaret kan innehålla sidan av gatan (vänster/höger) och även en förskjutnings position för talet.|
     | returnSpeedLimit | true | Returnerar hastighets gränsen på adressen.|
     | returnRoadUse | true | Returnerar användnings typer för vägen på adressen. För alla möjliga typer av användning av vägar, se [användnings typer för vägar](/rest/api/maps/search/getsearchaddressreverse#uri-parameters).|
     | returnMatchType | true| Returnerar matchnings typen. Information om alla möjliga värden finns i [Omvänd adress Sök Resultat](/rest/api/maps/search/getsearchaddressreverse#searchaddressreverseresult)
 
-   :::image type="content" source="./media/how-to-search-for-address/search-reverse.png" alt-text="Sök efter adress":::
+   :::image type="content" source="./media/how-to-search-for-address/search-reverse.png" alt-text="Sök omvänd.":::
 
 5. Klicka på **Skicka** och granska svars texten.
 
 6. Härnäst ska vi lägga till `entityType` nyckeln och ange dess värde till `Municipality` . `entityType`Nyckeln kommer att åsidosätta `returnMatchType` nyckeln i föregående steg. Vi måste också ta bort `returnSpeedLimit` och `returnRoadUse` eftersom vi ber om information om kommunen.  För alla möjliga entitetstyper, se [enhets typer](/rest/api/maps/search/getsearchaddressreverse#entitytype).
 
-    :::image type="content" source="./media/how-to-search-for-address/search-reverse-entity-type.png" alt-text="Sök efter adress":::
+    :::image type="content" source="./media/how-to-search-for-address/search-reverse-entity-type.png" alt-text="Sök omvänd entityType.":::
 
-7. Klicka på **Skicka** . Jämför resultaten med resultaten som returnerades i steg 5.  Eftersom den begärda entitetstypen är nu `municipality` , innehåller inte svaret adress information. Den returnerade filen `geometryId` kan också användas för att begära avgränsnings polygon genom Azure Maps Hämta [API för söknings-polygon](/rest/api/maps/search/getsearchpolygon).
+7. Klicka på **Skicka**. Jämför resultaten med resultaten som returnerades i steg 5.  Eftersom den begärda entitetstypen är nu `municipality` , innehåller inte svaret adress information. Den returnerade filen `geometryId` kan också användas för att begära avgränsnings polygon genom Azure Maps Hämta [API för söknings-polygon](/rest/api/maps/search/getsearchpolygon).
 
 >[!TIP]
 >Om du vill ha mer information om dessa parametrar, och om du vill veta mer om andra, kan du läsa [avsnittet omvända Sök parametrar](/rest/api/maps/search/getsearchaddressreverse#uri-parameters).
@@ -159,7 +159,7 @@ I det här exemplet ska vi göra omvända sökningar med några av de valfria pa
 
 I det här exemplet ska vi söka efter en kors gatan baserat på en adresss koordinater.
 
-1. I Postman-appen klickar du på **ny** och väljer **begäran** . Ange ett **namn** för begäran. Välj den samling som du skapade i det första avsnittet eller skapa en ny och välj sedan **Spara** .
+1. I Postman-appen klickar du på **ny** och väljer **begäran**. Ange ett **namn** för begäran. Välj den samling som du skapade i det första avsnittet eller skapa en ny och välj sedan **Spara**.
 
 2. Välj metoden **Hämta** http på fliken Builder och ange följande URL. För den här begäran och andra begär Anden som nämns i den här artikeln ersätter `{Azure-Maps-Primary-Subscription-key}` du med den primära prenumerations nyckeln. Begäran bör se ut som följande URL:
   
@@ -167,9 +167,9 @@ I det här exemplet ska vi söka efter en kors gatan baserat på en adresss koor
    https://atlas.microsoft.com/search/address/reverse/crossstreet/json?&api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}&language=en-US&query=47.591180,-122.332700
     ```
 
-    :::image type="content" source="./media/how-to-search-for-address/search-address-cross.png" alt-text="Sök efter adress":::
+    :::image type="content" source="./media/how-to-search-for-address/search-address-cross.png" alt-text="Sök tvär gatan.":::
   
-3. Klicka på **Skicka** och granska svars texten. Du märker att svaret innehåller `crossStreet` värdet `Occidental Avenue South` .
+3. Klicka på **Skicka** och granska svars texten. Du märker att svaret innehåller `crossStreet` värdet `South Atlantic Street` .
 
 ## <a name="next-steps"></a>Nästa steg
 

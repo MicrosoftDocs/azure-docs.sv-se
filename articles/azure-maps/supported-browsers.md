@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 43bf70d66c42bc0ecd5e26e4cc724456bd4bf84e
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: f51b46efcaf9be4f51e96b038b93562d0e3eae0b
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896930"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601161"
 ---
 # <a name="web-sdk-supported-browsers"></a>Webbläsare som stöds av webb-SDK
 
@@ -36,11 +36,11 @@ Azure Maps Web SDK stöder följande Skriv bords webbläsare:
 - Microsoft Edge (aktuell och föregående version)
 - Google Chrome (aktuell och föregående version)
 - Mozilla Firefox (aktuell och föregående version)
-- Apple Safari (Mac OS X) (aktuell och tidigare version)
+- Apple Safari (macOS X) (aktuell och tidigare version)
 
 Se även [mål äldre webbläsare](#Target-Legacy-Browsers) längre fram i den här artikeln.
 
-## <a name="mobile"></a>Mobil
+## <a name="mobile"></a>Mobilt
 
 Azure Maps Web SDK stöder följande mobila webbläsare:
 
@@ -63,7 +63,7 @@ Följande Web SDK-moduler stöds också i Node.js:
 
 ## <a name="target-legacy-browsers"></a><a name="Target-Legacy-Browsers"></a>Fokusera på äldre webbläsare
 
-Du kanske vill rikta in dig på äldre webbläsare som inte stöder WebGL eller som bara har begränsat stöd för den. I sådana fall rekommenderar vi att du använder Azure Maps Services tillsammans med en kart kontroll med öppen källkod som [broschyr](https://leafletjs.com/). Här är ett exempel:
+Du kanske vill rikta in dig på äldre webbläsare som inte stöder WebGL eller som bara har begränsat stöd för den. I sådana fall rekommenderar vi att du använder Azure Maps Services tillsammans med en kart kontroll med öppen källkod som [broschyr](https://leafletjs.com/). Här är ett exempel som använder [plugin-programmet](https://github.com/azure-samples/azure-maps-leaflet)med öppen källkod Azure Maps.
 
 <br/>
 
@@ -71,6 +71,7 @@ Du kanske vill rikta in dig på äldre webbläsare som inte stöder WebGL eller 
 Se pennan <a href='https://codepen.io/azuremaps/pen/GeLgyx/'>Azure Maps + broschyr</a> efter Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) på <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
+Ytterligare kod exempel som använder Azure Maps i informations bladet hittar du [här](https://azuremapscodesamples.azurewebsites.net/?search=leaflet).
 
 ## <a name="next-steps"></a>Nästa steg
 

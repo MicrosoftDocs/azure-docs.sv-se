@@ -7,12 +7,12 @@ ms.custom: subject-cost-optimization
 ms.service: api-management
 ms.topic: how-to
 ms.date: 12/15/2020
-ms.openlocfilehash: 90449a29f58f31827e2a36b5f6c41563e88ac032
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 799ef33e78737bfd2e1c1a1cfa4991f44c8f5ec0
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251360"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599636"
 ---
 # <a name="plan-and-manage-costs-for-api-management"></a>Planera och hantera kostnader för API Management
 
@@ -49,7 +49,7 @@ Ytterligare information om priser och funktioner finns i:
 
 ### <a name="using-monetary-credit-with-api-management"></a>Använda monetär kredit med API Management
 
-Du kan betala för API Management avgifter med din kredit för ditt EA-belopp. Du kan dock inte använda EA-krediter för att betala för avgifter för produkter och tjänster från tredje part, inklusive de som finns på Azure Marketplace.
+Du kan betala för API Management avgifter med din Azure-förskotts betalning (tidigare kallat betalnings åtagande). Du kan dock inte använda Azures förskotts kredit för att betala för avgifter för tredjepartsprodukter och tjänster från tredje part, inklusive de som finns på Azure Marketplace.
 
 ## <a name="monitor-costs"></a>Övervaka kostnader
 

@@ -5,12 +5,12 @@ ms.assetid: 81eb04f8-9a27-45bb-bf24-9ab6c30d205c
 ms.topic: conceptual
 ms.date: 04/13/2020
 ms.custom: cc996988-fb4f-47, devx-track-azurecli
-ms.openlocfilehash: 70aecc2613fbe21d34e36f9487d7ba383e140bc8
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 4db6abeb3e6f4a07780268a6455177e0ca237205
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98217370"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98598483"
 ---
 # <a name="manage-your-function-app"></a>Hantera din Function-app 
 
@@ -84,7 +84,7 @@ När du utvecklar en Function-app lokalt måste du upprätthålla lokala kopior 
 
 ## <a name="hosting-plan-type"></a>Typ av värd plan
 
-När du skapar en Function-app skapar du också en App Service värd plan där appen körs. En plan kan ha en eller flera Function-appar. Funktioner, skalning och prissättning för dina funktioner beror på vilken typ av plan du har. Mer information finns på sidan med [Azure Functions priser](https://azure.microsoft.com/pricing/details/functions/).
+När du skapar en Function-app skapar du också en värd plan där appen körs. En plan kan ha en eller flera Function-appar. Funktioner, skalning och prissättning för dina funktioner beror på vilken typ av plan du har. Läs mer i [Azure Functions värd alternativ](functions-scale.md).
 
 Du kan bestämma vilken typ av plan som används av din Function-app från Azure Portal eller genom att använda Azure CLI-eller Azure PowerShell-API: er. 
 
@@ -131,6 +131,75 @@ I föregående exempel ersätter `<RESOURCE_GROUP>` och `<FUNCTION_APP_NAME>` me
 
 ---
 
+## <a name="plan-migration"></a>Planera migrering
+
+Du kan använda Azure CLI-kommandon för att migrera en Function-app mellan en förbruknings plan och en Premium plan i Windows. De speciella kommandona beror på migreringens riktning. Direkt migrering till en dedikerad (App Service) plan stöds inte för närvarande.
+
+Den här migreringen stöds inte i Linux.
+
+### <a name="consumption-to-premium"></a>Förbrukning till Premium
+
+Använd följande procedur för att migrera från en förbruknings plan till en Premium plan i Windows:
+
+1. Kör följande kommando för att skapa en ny App Service plan (elastisk Premium) i samma region och resurs grupp som din befintliga Function-app.  
+
+    ```azurecli-interactive
+    az functionapp plan create --name <NEW_PREMIUM_PLAN_NAME> --resource-group <MY_RESOURCE_GROUP> --location <REGION> --sku EP1
+    ```
+
+1. Kör följande kommando för att migrera den befintliga Function-appen till den nya Premium-planen
+
+    ```azurecli-interactive
+    az functionapp update --name <MY_APP_NAME> --resource-group <MY_RESOURCE_GROUP> --plan <NEW_PREMIUM_PLAN>
+    ```
+
+1. Om du inte längre behöver din tidigare förbruknings funktion, tar du bort din ursprungliga funktions program plan när du har bekräftat att du har migrerat till den nya. Kör följande kommando för att få en lista över alla förbruknings planer i din resurs grupp.
+
+    ```azurecli-interactive
+    az functionapp plan list --resource-group <MY_RESOURCE_GROUP> --query "[?sku.family=='Y'].{PlanName:name,Sites:numberOfSites}" -o table
+    ```
+
+    Du kan på ett säkert sätt ta bort planen med noll platser, vilket är den som du migrerade från.
+
+1. Kör följande kommando för att ta bort förbruknings planen som du migrerade från.
+
+    ```azurecli-interactive
+    az functionapp plan delete --name <CONSUMPTION_PLAN_NAME> --resource-group <MY_RESOURCE_GROUP>
+    ```
+
+### <a name="premium-to-consumption"></a>Premium till förbrukning
+
+Använd följande procedur för att migrera från en Premium-plan till en förbruknings plan i Windows:
+
+1. Kör följande kommando för att skapa en ny function-app (förbrukning) i samma region och resurs grupp som din befintliga Function-app. Det här kommandot skapar också en ny förbruknings plan där Function-appen körs.
+
+    ```azurecli-interactive
+    az functionapp create --resource-group <MY_RESOURCE_GROUP> --name <NEW_CONSUMPTION_APP_NAME> --consumption-plan-location <REGION> --runtime dotnet --functions-version 3 --storage-account <STORAGE_NAME>
+    ```
+
+1. Kör följande kommando för att migrera den befintliga Function-appen till den nya förbruknings planen.
+
+    ```azurecli-interactive
+    az functionapp update --name <MY_APP_NAME> --resource-group <MY_RESOURCE_GROUP> --plan <NEW_CONSUMPTION_PLAN>
+    ```
+
+1. Ta bort Function-appen som du skapade i steg 1, eftersom du bara behöver den plan som skapades för att köra den befintliga Function-appen.
+
+    ```azurecli-interactive
+    az functionapp delete --name <NEW_CONSUMPTION_APP_NAME> --resource-group <MY_RESOURCE_GROUP>
+    ```
+
+1. Om du inte längre behöver din tidigare Premium Function-app-plan tar du bort din ursprungliga funktions program plan när du har bekräftat att du har migrerat till den nya. Observera att om planen inte tas bort kommer du fortfarande att debiteras för Premium planen. Kör följande kommando för att hämta en lista över alla Premium-planer i resurs gruppen.
+
+    ```azurecli-interactive
+    az functionapp plan list --resource-group <MY_RESOURCE_GROUP> --query "[?sku.family=='EP'].{PlanName:name,Sites:numberOfSites}" -o table
+    ```
+
+1. Kör följande kommando för att ta bort den Premium-plan som du migrerade från.
+
+    ```azurecli-interactive
+    az functionapp plan delete --name <PREMIUM_PLAN> --resource-group <MY_RESOURCE_GROUP>
+    ```
 
 ## <a name="platform-features"></a>Plattforms funktioner
 
