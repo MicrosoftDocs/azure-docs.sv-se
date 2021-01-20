@@ -574,12 +574,12 @@
               items:
                 - name: Översikt
                   href: platform/itsmc-troubleshoot-overview.md
-                - name: Synka ITSM-anslutning
-                  href: platform/itsmc-resync-servicenow.md
                 - name: Undersökning av instrumentpanel
                   href: platform/itsmc-dashboard.md
                 - name: Vanliga fel
                   href: platform/itsmc-dashboard-errors.md
+                - name: Synka ITSM-anslutning
+                  href: platform/itsmc-resync-servicenow.md
             - name: Integrera med Secure Export
               items:
                 - name: Översikt

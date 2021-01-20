@@ -182,7 +182,7 @@
         - name: Tillfälliga operativsystemdiskar
           href: ../virtual-machines/ephemeral-os-disks.md
         - name: Skalbarhetsmål för diskar
-          href: ../virtual-machines/windows/disk-scalability-targets.md
+          href: ../virtual-machines/disks-scalability-targets.md
           maintainContext: true
         - name: Lagring och haveriberedskap för diskar
           href: ../virtual-machines/backup-and-disaster-recovery-for-azure-iaas-disks.md
