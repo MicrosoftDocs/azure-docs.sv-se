@@ -6,7 +6,7 @@
       href: overview-reports.md
     - name: Vad är Azure AD-övervakning?
       href: overview-monitoring.md
-    - name: Vad är inloggningsdiagnostik?
+    - name: Vad är inloggningsdiagnostiken?
       href: overview-sign-in-diagnostics.md
 - name: Snabbstarter
   expanded: true

@@ -35,6 +35,8 @@
       href: Face-API-How-to-Topics/specify-recognition-model.md
     - name: Ange en ansiktsavkänningsmodell
       href: Face-API-How-to-Topics/specify-detection-model.md
+    - name: Minska svarstiden när du använder tjänsten Ansiktsigenkänning
+      href: Face-API-How-to-Topics/how-to-mitigate-latency.md
     - name: Använda den storskaliga funktionen
       href: Face-API-How-to-Topics/how-to-use-large-scale.md
     - name: Analysera videor i realtid

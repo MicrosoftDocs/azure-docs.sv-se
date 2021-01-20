@@ -140,10 +140,14 @@
           href: phone-authentication-user-flows.md
     - name: Identitetsprovidrar
       items:
+        - name: Identitetsprovider för lokalt konto
+          href: identity-provider-local.md
+          displayName: 'Username, Email, Phone authorization, Phone sing-in'
         - name: Lägga till en identitetsprovider
           href: add-identity-provider.md
         - name: AD FS
           href: identity-provider-adfs.md
+          displayName: 'AD-FS, ADFS'
         - name: Amazon
           href: identity-provider-amazon.md
         - name: Azure AD (en enda klient)

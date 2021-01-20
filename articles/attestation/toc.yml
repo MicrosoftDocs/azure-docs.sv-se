@@ -21,6 +21,8 @@
       href: author-sign-policy.md
     - name: Skapa en privat slutpunkt – PowerShell
       href: private-endpoint-powershell.md
+    - name: Diagnostikövervakning i Azure
+      href: azure-diagnostic-monitoring.md
     - name: Kodexempel för SGX-attestering
       href: /samples/browse/?expanded=azure&terms=attestation
 - name: Exempel

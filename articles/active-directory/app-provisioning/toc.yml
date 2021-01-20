@@ -80,6 +80,8 @@
           href: sap-successfactors-integration-reference.md
         - name: SuccessFactors-attributreferens
           href: sap-successfactors-attribute-reference.md
+        - name: Workday-integrering
+          href: workday-integration-reference.md
         - name: Workday-attributreferens
           href: workday-attribute-reference.md
         - name: Versionshistorik för etableringsagent

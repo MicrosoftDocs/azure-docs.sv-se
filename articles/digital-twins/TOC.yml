@@ -129,90 +129,92 @@
               href: troubleshoot-error-403.md
 - name: Referens
   items:
-    - name: Digital Twins-tjänstbegränsningar
-      href: reference-service-limits.md
-    - name: Prissättning för Digital Twins
-      href: 'https://azure.microsoft.com/pricing/details/digital-twins/'
-    - name: 'API:er och SDK:er'
+    - name: Referens för REST-API
+      href: /rest/api/azure-digitaltwins/
+    - name: 'SDK:er'
       items:
-        - name: Referens för REST-API
-          href: /rest/api/azure-digitaltwins/
         - name: Kontrollplan
           items:
-            - name: Swagger
+            - name: .NET (C#) SDK
+              href: /dotnet/api/overview/azure/digitaltwins/management?view=azure-dotnet
+            - name: Java SDK
+              href: /azure/developer/java/sdk/
+        - name: Dataplanet
+          items:
+            - name: .NET (C#) SDK
+              href: /dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet
+            - name: Java SDK
+              href: /java/api/overview/azure/digitaltwins/client?preserve-view=true&view=azure-java-stable
+            - name: JavaScript SDK
+              href: /javascript/api/@azure/digital-twins-core/?branch=master&view=azure-node-latest
+            - name: Python SDK
+              href: /python/api/azure-digitaltwins-core/azure.digitaltwins.core?view=azure-python
+    - name: Digital Twins CLI
+      href: /cli/azure/ext/azure-iot/dt?view=azure-cli-latest&preserve-view=true
+- name: Resurser
+  items:
+    - name: 'API:er och SDK:er'
+      items:
+        - name: Kontrollplan
+          items:
+            - name: Kontrollplan för Swagger
               href: 'https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/stable'
             - name: .NET (C#) SDK – NuGet
               href: 'https://www.nuget.org/packages/Microsoft.Azure.Management.DigitalTwins/'
-            - name: .NET (C#) SDK – referens
-              href: /dotnet/api/overview/azure/digitaltwins/management?view=azure-dotnet
-            - name: .NET (C#) SDK – källa
+            - name: .NET (C#) SDK – källkod
               href: 'https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Microsoft.Azure.Management.DigitalTwins'
             - name: Java SDK – Maven
               href: 'https://search.maven.org/artifact/com.microsoft.azure.digitaltwins.v2020_10_31/azure-mgmt-digitaltwins/1.0.0/jar'
-            - name: Java SDK – referens
-              href: /azure/developer/java/sdk/
-            - name: Java SDK – källa
+            - name: Java SDK – källkod
               href: 'https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins/mgmt-v2020_10_31'
-            - name: JavaScript SDK
+            - name: JavaScript SDK – NPM
               href: 'https://www.npmjs.com/package/@azure/arm-digitaltwins'
-            - name: JavaScript SDK – källa
+            - name: JavaScript SDK – källkod
               href: 'https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/digitaltwins/arm-digitaltwins'
             - name: Python SDK – PyPi
               href: 'https://pypi.org/project/azure-mgmt-digitaltwins/'
-            - name: Python SDK – källa
+            - name: Python SDK – källkod
               href: 'https://github.com/Azure/azure-sdk-for-python/tree/release/v3/sdk/digitaltwins/azure-mgmt-digitaltwins'
             - name: Go SDK – GoDoc
               href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/digitaltwins/mgmt/2020-10-31/digitaltwins'
-            - name: Go – källa
+            - name: Go – källkod
               href: 'https://github.com/Azure/azure-sdk-for-go/tree/master/services/digitaltwins/mgmt/2020-10-31/digitaltwins'
         - name: Dataplanet
           items:
-            - name: Swagger
+            - name: Dataplan för Swagger
               href: 'https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/data-plane/Microsoft.DigitalTwins'
             - name: .NET (C#) SDK – NuGet
               href: 'https://www.nuget.org/packages/Azure.DigitalTwins.Core'
-            - name: .NET (C#) SDK – referens
-              href: /dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet
-            - name: .NET (C#) SDK – källa
+            - name: .NET (C#) SDK – källkod
               href: 'https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core'
             - name: Java SDK – Maven
               href: 'https://search.maven.org/artifact/com.azure/azure-digitaltwins-core/1.0.0/jar'
-            - name: Java SDK – referens
-              href: /java/api/overview/azure/digitaltwins/client?preserve-view=true&view=azure-java-stable
-            - name: Java SDK – källa
+            - name: Java SDK – källkod
               href: 'https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins/azure-digitaltwins-core'
-            - name: JavaScript SDK – npm
+            - name: JavaScript SDK – NPM
               href: 'https://www.npmjs.com/package/@azure/digital-twins-core'
-            - name: Java Script SDK – referens
-              href: /javascript/api/@azure/digital-twins-core/?branch=master&view=azure-node-latest
-            - name: JavaScript SDK – källa
+            - name: JavaScript SDK – källkod
               href: 'https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/digitaltwins/digital-twins-core'
             - name: Python SDK – PyPi
               href: 'https://pypi.org/project/azure-digitaltwins-core/'
-            - name: Python SDK – referens
-              href: /python/api/azure-digitaltwins-core/azure.digitaltwins.core?view=azure-python
-            - name: Python SDK – källa
+            - name: Python SDK – källkod
               href: 'https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/digitaltwins/azure-digitaltwins-core'
-    - name: Digital Twins CLI
-      items:
-        - name: Digital Twins CLI-referens
-          href: /cli/azure/ext/azure-iot/dt?view=azure-cli-latest&preserve-view=true
-        - name: CLI-paket
-          href: 'https://github.com/Azure/azure-iot-cli-extension/releases'
+    - name: Digital Twins CLI-paket
+      href: 'https://github.com/Azure/azure-iot-cli-extension/releases'
     - name: Digital Twins Azure PowerShell-modul
       href: 'https://www.powershellgallery.com/packages/Az.DigitalTwins/'
-    - name: DTDL
+    - name: Terraform-moduler
       items:
-        - name: DTDL v2-specifikation
-          href: 'https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md'
-        - name: DTDL-tillägg för VS Code
-          href: 'https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-dtdl'
-        - name: DTDL-parserbibliotek – NuGet
-          href: 'https://www.nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/'
-        - name: DTDL-verifierare (exempel)
-          href: /samples/azure-samples/dtdl-validator/dtdl-validator/
-        - name: DTMI-specifikation
-          href: 'https://github.com/Azure/digital-twin-model-identifier'
+        - name: Resurs för Digital Twins-instans
+          href: 'https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/digital_twins_instance'
+        - name: Datakälla för Digital Twins-instans
+          href: 'https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/digital_twins_instance'
+        - name: Resurs för händelsehubbslutpunkt
+          href: 'https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/digital_twins_endpoint_eventhub'
+        - name: Resurs för Event Grid-slutpunkt
+          href: 'https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/digital_twins_endpoint_eventgrid'
+        - name: Resurs för Service Bus-slutpunkt
+          href: 'https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/digital_twins_endpoint_servicebus'
     - name: Verktyg och exempelprojekt
       items:
         - name: Enhetssimuleringstjänst
@@ -229,6 +231,34 @@
           href: /samples/azure-samples/digitaltwins-signalr-webapp-sample/digital-twins-samples/
         - name: Anpassade swaggers för Logic Apps-anslutningsprogram
           href: /samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/
+    - name: DTDL
+      items:
+        - name: DTDL v2-specifikation
+          href: 'https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md'
+        - name: DTDL-tillägg för VS Code
+          href: 'https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-dtdl'
+        - name: DTDL-parserbibliotek – NuGet
+          href: 'https://www.nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/'
+        - name: DTDL-verifierare (exempel)
+          href: /samples/azure-samples/dtdl-validator/dtdl-validator/
+        - name: DTMI-specifikation
+          href: 'https://github.com/Azure/digital-twin-model-identifier'
+        - name: Kunddataförfrågningar
+      href: resources-customer-data-requests.md
+    - name: Priser och tillgänglighet
+      items:
+        - name: Prissättning
+          href: 'https://azure.microsoft.com/pricing/details/digital-twins'
+        - name: SLA
+          href: 'https://azure.microsoft.com/support/legal/sla/digital-twins'
+        - name: Regioner och tillgänglighet
+          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins'
+        - name: Digital Twins-tjänstbegränsningar
+          href: reference-service-limits.md
+    - name: Kundberättelser
+      href: 'https://customers.microsoft.com/en-us/search?sq=%22Azure%20Digital%20Twins%22&ff=&p=0&so=story_publish_date%20desc'
+    - name: Channel 9-video
+      href: 'https://channel9.msdn.com/Search?term=%22Azure%20Digital%20Twins%22'
     - name: Azure-verktyg
       items:
         - name: Azure Cloud Shell
@@ -239,21 +269,5 @@
           href: 'https://portal.azure.com'
     - name: Dokumentation om Azure RBAC
       href: ../role-based-access-control/overview.md
-- name: Resurser
-  items:
     - name: Alternativ för support och hjälp
       href: ../iot-fundamentals/iot-support-help.md
-    - name: Kundberättelser
-      href: 'https://customers.microsoft.com/en-us/search?sq=%22Azure%20Digital%20Twins%22&ff=&p=0&so=story_publish_date%20desc'
-    - name: Channel 9-video
-      href: 'https://channel9.msdn.com/Search?term=%22Azure%20Digital%20Twins%22'
-    - name: Kunddataförfrågningar
-      href: resources-customer-data-requests.md
-    - name: Priser och tillgänglighet
-      items:
-        - name: Prissättning
-          href: 'https://azure.microsoft.com/pricing/details/digital-twins'
-        - name: SLA
-          href: 'https://azure.microsoft.com/support/legal/sla/digital-twins'
-        - name: Regioner och tillgänglighet
-          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins'
