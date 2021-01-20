@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: 434917c1cee26a4a8eeb7f27808e3fcb487f3f55
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: aac0139e09866ce44d25989119b2eafb31e76961
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350049"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610462"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-storage-gen1"></a>Åtkomst till diagnostikloggar för Azure Data Lake Storage Gen1
 Lär dig att aktivera diagnostikloggning för ditt Azure Data Lake Storage Gen1-konto och hur du visar de loggar som samlats in för ditt konto.
@@ -115,7 +115,7 @@ Här är en exempel post i den JSON-formaterade begär ande loggen. Varje Blob h
 ```
 
 #### <a name="request-log-schema"></a>Begär logg schema
-| Namn | Typ | Beskrivning |
+| Namn | Typ | Description |
 | --- | --- | --- |
 | time |Sträng |Tids stämplingen (i UTC) för loggen |
 | resourceId |Sträng |ID för den resurs som åtgärden ägde rum på |
@@ -128,7 +128,7 @@ Här är en exempel post i den JSON-formaterade begär ande loggen. Varje Blob h
 | properties |JSON |Se nedan för information |
 
 #### <a name="request-log-properties-schema"></a>Schema för begär ande logg egenskaper
-| Namn | Typ | Beskrivning |
+| Namn | Typ | Description |
 | --- | --- | --- |
 | HttpMethod |Sträng |HTTP-metoden som används för åtgärden. Till exempel GET. |
 | Sökväg |Sträng |Den sökväg som åtgärden utfördes på |
@@ -136,6 +136,8 @@ Här är en exempel post i den JSON-formaterade begär ande loggen. Varje Blob h
 | ClientRequestId |Sträng |Det ID som unikt identifierar den här begäran |
 | StartTime |Sträng |Tiden då servern tog emot begäran |
 | EndTime |Sträng |Tiden då servern skickade ett svar |
+| StoreIngressSize |Lång |Storlek i byte som inträngt i Data Lake Store |
+| StoreEgressSize |Lång |Storlek i byte som pågick från Data Lake Store |
 
 ### <a name="audit-logs"></a>Granskningsloggar
 Här är en exempel post i den JSON-formaterade gransknings loggen. Varje Blob har ett rot objekt som heter **poster** som innehåller en matris med logg objekt
@@ -164,7 +166,7 @@ Här är en exempel post i den JSON-formaterade gransknings loggen. Varje Blob h
 ```
 
 #### <a name="audit-log-schema"></a>Schema för spårningslogg
-| Namn | Typ | Beskrivning |
+| Namn | Typ | Description |
 | --- | --- | --- |
 | time |Sträng |Tids stämplingen (i UTC) för loggen |
 | resourceId |Sträng |ID för den resurs som åtgärden ägde rum på |
@@ -177,7 +179,7 @@ Här är en exempel post i den JSON-formaterade gransknings loggen. Varje Blob h
 | properties |JSON |Se nedan för information |
 
 #### <a name="audit-log-properties-schema"></a>Schema för gransknings logg egenskaper
-| Namn | Typ | Beskrivning |
+| Namn | Typ | Description |
 | --- | --- | --- |
 | StreamName |Sträng |Den sökväg som åtgärden utfördes på |
 

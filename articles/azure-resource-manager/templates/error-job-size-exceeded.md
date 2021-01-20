@@ -2,17 +2,17 @@
 title: Jobb storleken överskred felet
 description: Beskriver hur du felsöker fel när jobb storleken eller mallen är för stor.
 ms.topic: troubleshooting
-ms.date: 10/07/2020
-ms.openlocfilehash: 638bdef246fc908ab997bfb99e7526febdb3792e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 01/19/2021
+ms.openlocfilehash: 1fde4918aff6e3bf494876f83c5b4313b3c5f3d2
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91822155"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610411"
 ---
 # <a name="resolve-errors-for-job-size-exceeded"></a>Fel för jobb storleken har överskridits
 
-Den här artikeln beskriver hur du löser **JobSizeExceededException** -och **DeploymentSizeExceededException** -felen.
+Den här artikeln beskriver hur du löser **JobSizeExceededException** -och **DeploymentJobSizeExceededException** -felen.
 
 ## <a name="symptom"></a>Symptom
 
@@ -20,9 +20,12 @@ När du distribuerar en mall får du ett fel meddelande om att distributionen ha
 
 ## <a name="cause"></a>Orsak
 
-Du kan få det här felet när storleken på mallen överskrider 4 MB. Gränsen på 4 MB gäller för mallens slutliga tillstånd när den har expanderats för resurs definitioner som använder [copy](copy-resources.md) för att skapa många instanser. Det slutliga läget innehåller också de matchade värdena för variabler och parametrar.
+Du får det här felet när distributionen överskrider en av de tillåtna gränserna. Normalt visas det här felet när din mall eller det jobb som kör distributionen är för stort.
 
-Distributions jobbet innehåller även metadata om begäran. För stora mallar kan metadata som kombineras med mallen överskrida den tillåtna storleken för ett jobb.
+Distributions jobbet får inte överstiga 1 MB. Jobbet innehåller metadata om begäran. För stora mallar kan metadata som kombineras med mallen överskrida den tillåtna storleken för ett jobb.
+
+
+Mallen får inte överstiga 4 MB. Gränsen på 4 MB gäller för mallens slutliga tillstånd när den har expanderats för resurs definitioner som använder [copy](copy-resources.md) för att skapa många instanser. Det slutliga läget innehåller också de matchade värdena för variabler och parametrar.
 
 Andra gränser för mallen är:
 
@@ -44,4 +47,4 @@ Försök att förkorta längden på de namn du använder för [parametrar](templ
 
 ## <a name="solution-3---use-serial-copy"></a>Lösning 3 – Använd serie kopia
 
-Det andra alternativet är att ändra din kopierings slinga från [parallell till seriell bearbetning](copy-resources.md#serial-or-parallel). Använd bara det här alternativet när du misstänker att felet kommer från att distribuera ett stort antal resurser genom kopiering. Den här ändringen kan öka distributions tiden avsevärt eftersom resurserna inte distribueras parallellt.
+Överväg att ändra din kopierings slinga från [parallell till seriell bearbetning](copy-resources.md#serial-or-parallel). Använd bara det här alternativet när du misstänker att felet kommer från att distribuera ett stort antal resurser genom kopiering. Den här ändringen kan öka distributions tiden avsevärt eftersom resurserna inte distribueras parallellt.

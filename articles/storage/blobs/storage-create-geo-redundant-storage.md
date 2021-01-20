@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: artek
 ms.custom: mvc, devx-track-python, devx-track-js, devx-track-csharp
 ms.subservice: blobs
-ms.openlocfilehash: 1c1ba7d8cd0e4202003a98153a48e0593d1fcd04
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: dfb7e7c7c93a8af2b59f6d3d7049e2c14b8f382a
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95543161"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98611057"
 ---
 # <a name="tutorial-build-a-highly-available-application-with-blob-storage"></a>Självstudie: Bygg ett program med hög tillgänglighet med Blob Storage
 
@@ -31,7 +31,7 @@ Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](ht
 I del ett i den här serien lärde du dig att:
 
 > [!div class="checklist"]
-> * skapar ett lagringskonto
+> * Skapa ett lagringskonto
 > * Ange anslutningssträngen
 > * Kör konsolprogrammet
 
@@ -60,7 +60,7 @@ För att slutföra den här kursen behöver du:
 
 Logga in på [Azure-portalen](https://portal.azure.com/).
 
-## <a name="create-a-storage-account"></a>skapar ett lagringskonto
+## <a name="create-a-storage-account"></a>Skapa ett lagringskonto
 
 Ett lagringskonto tillhandahåller en unik namnrymd där du kan lagra och få åtkomst till dina Azure-lagringdataobjekt.
 
@@ -184,17 +184,17 @@ Om du vill köra programmet i en terminal eller kommandotolk går du till katalo
 
 ![Konsolprogrammet körs](media/storage-create-geo-redundant-storage/figure3.png)
 
-I exempelkoden används metoden `run_circuit_breaker` i filen `circuitbreaker.py` för att ladda ned en bild från lagringskontot med hjälp av metoden [get_blob_to_path](/python/api/azure-storage-blob/azure.storage.blob.baseblobservice.baseblobservice?view=azure-python-previous#get-blob-to-path-container-name--blob-name--file-path--open-mode--wb---snapshot-none--start-range-none--end-range-none--validate-content-false--progress-callback-none--max-connections-2--lease-id-none--if-modified-since-none--if-unmodified-since-none--if-match-none--if-none-match-none--timeout-none-).
+I exempelkoden används metoden `run_circuit_breaker` i filen `circuitbreaker.py` för att ladda ned en bild från lagringskontot med hjälp av metoden [get_blob_to_path](/python/api/azure-storage-blob/azure.storage.blob.baseblobservice.baseblobservice#get-blob-to-path-container-name--blob-name--file-path--open-mode--wb---snapshot-none--start-range-none--end-range-none--validate-content-false--progress-callback-none--max-connections-2--lease-id-none--if-modified-since-none--if-unmodified-since-none--if-match-none--if-none-match-none--timeout-none-).
 
 Återförsöksfunktionen för lagringsobjektet har angetts till en linjär återförsöksprincip. Återförsöksfunktionen bestämmer om det ska göras ett nytt försök med begäran och anger antalet sekunder som ska förflyta innan det görs ett nytt försök. Ange true för värdet **retry\_to\_secondary** om det ska göras ett nytt försök till den sekundära slutpunkten om den första begäran till den primära slutpunkten misslyckas. I exempelprogrammet definieras en anpassad återförsöksprincip i funktionen `retry_callback` för lagringsobjektet.
 
-Innan nedladdningen definieras tjänst objekt [retry_callback](/python/api/azure-storage-common/azure.storage.common.storageclient.storageclient?view=azure-python) och [response_callback](/python/api/azure-storage-common/azure.storage.common.storageclient.storageclient?view=azure-python) -funktionen. Funktionerna definierar de händelsehanterare som utlöses när en nedladdning slutförs eller om en nedladdning misslyckas och ett nytt försök görs.
+Innan nedladdningen definieras tjänst objekt [retry_callback](/python/api/azure-storage-common/azure.storage.common.storageclient.storageclient) och [response_callback](/python/api/azure-storage-common/azure.storage.common.storageclient.storageclient) -funktionen. Funktionerna definierar de händelsehanterare som utlöses när en nedladdning slutförs eller om en nedladdning misslyckas och ett nytt försök görs.
 
 # <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
 Kör exemplet genom att öppna en kommando tolk, navigera till mappen exempel och sedan ange `node index.js` .
 
-Exemplet skapar en behållare i ditt Blob Storage-konto, laddar upp **HelloWorld.png** i behållaren och kontrollerar sedan upprepade gånger om behållaren och avbildningen har repliker ATS till den sekundära regionen. Efter replikeringen tillfrågas du om du vill ange **D** eller **Q** (följt av retur) för att ladda ned eller avsluta. Dina utdata bör se ut ungefär som i följande exempel:
+Exemplet skapar en behållare i ditt Blob Storage-konto, laddar upp **HelloWorld.png** i behållaren och kontrollerar sedan upprepade gånger om behållaren och avbildningen har repliker ATS till den sekundära regionen. Efter replikeringen tillfrågas du om du vill ange **D** eller **Q** (följt av retur) för att ladda ned eller avsluta. Resultatet bör se ut ungefär så här:
 
 ```
 Created container successfully: newcontainer1550799840726
@@ -276,7 +276,7 @@ private static void OperationContextRequestCompleted(object sender, RequestEvent
 
 ### <a name="retry-event-handler"></a>Händelsehanterare för nytt försök
 
-Händelsehanteraren `retry_callback` anropas när nedladdningen av bilden misslyckas och den är inställd på att göra nya försök. Om det maximala antalet återförsök som har definierats i programmet nås ändras [LocationMode](/python/api/azure-storage-common/azure.storage.common.models.locationmode?view=azure-python) för begäran till `SECONDARY`. Den här inställningen tvingar programmet att försöka ladda ned bilden från den sekundära slutpunkten. Med den här konfigurationen tar det kortare tid att begära bilden eftersom det inte görs oändliga försök att hämta den från den primära slutpunkten.
+Händelsehanteraren `retry_callback` anropas när nedladdningen av bilden misslyckas och den är inställd på att göra nya försök. Om det maximala antalet återförsök som har definierats i programmet nås ändras [LocationMode](/python/api/azure-storage-common/azure.storage.common.models.locationmode) för begäran till `SECONDARY`. Den här inställningen tvingar programmet att försöka ladda ned bilden från den sekundära slutpunkten. Med den här konfigurationen tar det kortare tid att begära bilden eftersom det inte görs oändliga försök att hämta den från den primära slutpunkten.
 
 ```python
 def retry_callback(retry_context):
@@ -300,7 +300,7 @@ def retry_callback(retry_context):
 
 ### <a name="request-completed-event-handler"></a>Händelsehanterare för slutförd begäran
 
-Händelsehanteraren `response_callback` anropas när nedladdningen av bilden slutförs. Om programmet använder den sekundära slutpunkten fortsätter programmet att använda den här slutpunkten upp till 20 gånger. Efter 20 gånger återställer programmet [LocationMode](/python/api/azure-storage-common/azure.storage.common.models.locationmode?view=azure-python) till `PRIMARY` och försöker på nytt med den primära slutpunkten. Om en begäran lyckas fortsätter programmet att läsa från den primära slutpunkten.
+Händelsehanteraren `response_callback` anropas när nedladdningen av bilden slutförs. Om programmet använder den sekundära slutpunkten fortsätter programmet att använda den här slutpunkten upp till 20 gånger. Efter 20 gånger återställer programmet [LocationMode](/python/api/azure-storage-common/azure.storage.common.models.locationmode) till `PRIMARY` och försöker på nytt med den primära slutpunkten. Om en begäran lyckas fortsätter programmet att läsa från den primära slutpunkten.
 
 ```python
 def response_callback(response):

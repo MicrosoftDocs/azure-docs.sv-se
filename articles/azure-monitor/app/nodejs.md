@@ -4,12 +4,12 @@ description: Övervaka prestanda- och diagnostiseringsproblem i Node.js-tjänste
 ms.topic: conceptual
 ms.date: 06/01/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 7aea6c03b0ce35fa0e74c39ff5f94f714447ad6f
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 0d414ce44a8d6ab308bd31f7372bb1c146fac9f5
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920578"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98611023"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>Övervaka dina Node-js-tjänster och -appar med Application Insights
 
@@ -25,7 +25,7 @@ Med TelemetryClient API kan du manuellt instrumentera och övervaka ytterligare 
 
 Utför följande uppgifter för att konfigurera övervakning för en app eller tjänst.
 
-### <a name="prerequisites"></a>Krav
+### <a name="prerequisites"></a>Förutsättningar
 
 Innan du börjar ska du se till att ha en Azure-prenumeration eller [så skaffar du en kostnadsfritt][azure-free-offer]. Om din organisation redan har en Azure-prenumeration kan en administratör följa [de här instruktionerna][add-aad-user] för att lägga till dig.
 
@@ -335,6 +335,12 @@ server.on("listening", () => {
 });
 ```
 
+### <a name="flush"></a>Flush
+
+Som standard buffras telemetri i 15 sekunder innan det skickas till inmatnings servern. Om ditt program har en kort livs längd (t. ex. ett CLI-verktyg), kan det vara nödvändigt att manuellt tömma din buffrade telemetri när programmet avslutas `appInsights.defaultClient.flush()` .
+
+Om SDK känner av att ditt program kraschar, kommer det att anropa en tömning åt dig `appInsights.defaultClient.flush({ isAppCrashing: true })` . Med alternativet Flush `isAppCrashing` antas ditt program vara i ett onormalt tillstånd, inte lämpligt för att skicka telemetri. I stället sparar SDK all buffrad telemetri till [beständig lagring](./data-retention-privacy.md#nodejs) och låter programmet avslutas. När du startar programmet igen kommer det att försöka skicka telemetri som sparats till den permanenta lagringen.
+
 ### <a name="preprocess-data-with-telemetry-processors"></a>Förbearbeta data med telemetri-processorer
 
 Du kan bearbeta och filtrera insamlade data innan de skickas för kvarhållning med hjälp av *telemetri-processorer*. Telemetri-processorer kallas en i den ordning som de lades till innan telemetri-objektet skickas till molnet.
@@ -377,7 +383,7 @@ appInsights.defaultClient.addTelemetryProcessor(removeStackTraces);
 
 Du kan skapa flera Application Insights-resurser och skicka olika data till var och en genom att använda deras respektive instrument knappar ("iKey").
 
- Exempel:
+ Till exempel:
 
 ```javascript
 let appInsights = require("applicationinsights");

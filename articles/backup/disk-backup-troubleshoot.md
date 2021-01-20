@@ -3,12 +3,12 @@ title: Fel sökning av säkerhets kopierings fel i Azure disk backup
 description: Lär dig hur du felsöker säkerhets kopierings fel i Azure disk backup
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: 0a2ef1ea20ee8d6b7a3f32e244d3e00f3add80a2
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: 3e7c81d70fc898528532a841a484bf6fff8b83a7
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98558842"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98611244"
 ---
 # <a name="troubleshooting-backup-failures-in-azure-disk-backup-in-preview"></a>Fel sökning av säkerhets kopierings fel i Azure disk Backup (i för hands version)
 
@@ -153,12 +153,30 @@ Fel meddelande: diskens ögonblicks bilds-metadata för den här återställning
 
 Rekommenderad åtgärd: Använd en annan återställnings punkt för att återställa. Mer information finns i dokumentationen för [återställning](restore-managed-disks.md).
 
+### <a name="error-code-backupagentpluginhostvalidateprotectionerror"></a>Felkod: BackupAgentPluginHostValidateProtectionError
+
+Fel meddelande: disk säkerhets kopiering är inte tillgängligt ännu i den region i säkerhets kopierings valvet under vilket ett försök görs att konfigurera skydd.
+
+Rekommenderad åtgärd: säkerhets kopierings valvet måste finnas i en region som stöds för för hands versioner. För region tillgänglighet se [support mat ris](disk-backup-support-matrix.md).
+
+### <a name="error-code-usererrordppdatasourcealreadyhasbackupinstance"></a>Felkod: UserErrorDppDatasourceAlreadyHasBackupInstance
+
+Fel meddelande: disken som du försöker konfigurera säkerhets kopiering är redan skyddad. Disken är redan kopplad till en säkerhets kopierings instans i ett säkerhets kopierings valv.
+
+Rekommenderad åtgärd: den här disken är redan kopplad till en säkerhets kopierings instans i ett säkerhets kopierings valv. Om du vill skydda disken igen tar du bort säkerhets kopierings instansen från säkerhets kopierings valvet där den är skyddad och skyddar disken i andra valv på nytt.
+
+### <a name="error-code-usererrordppdatasourcealreadyprotected"></a>Felkod: UserErrorDppDatasourceAlreadyProtected
+
+Fel meddelande: disken som du försöker konfigurera säkerhets kopiering är redan skyddad. Disken är redan kopplad till en säkerhets kopierings instans i ett säkerhets kopierings valv.
+
+Rekommenderad åtgärd: den här disken är redan kopplad till en säkerhets kopierings instans i ett säkerhets kopierings valv. Om du vill skydda disken igen tar du bort säkerhets kopierings instansen från säkerhets kopierings valvet där den för närvarande är skyddad och skyddar disken i andra valv på nytt.
+
 ### <a name="error-code-usererrormaxconcurrentoperationlimitreached"></a>Felkod: UserErrorMaxConcurrentOperationLimitReached
 
-Fel meddelande: det går inte att starta åtgärden eftersom det maximala antalet tillåtna samtidiga åtgärder har nåtts för den här åtgärds typen.
+Fel meddelande: det går inte att starta åtgärden eftersom det maximala antalet tillåtna samtidiga säkerhets kopieringar har uppnåtts.
 
-Rekommenderad åtgärd: vänta tills föregående åtgärder har slutförts.
+Rekommenderad åtgärd: vänta tills den tidigare pågående säkerhets kopieringen har slutförts.
 
 ## <a name="next-steps"></a>Nästa steg
 
-- [Support mat ris för Azure disk backup](disk-backup-support-matrix.md)
+- [Stödmatris för säkerhetskopiering av Azure-disk](disk-backup-support-matrix.md)

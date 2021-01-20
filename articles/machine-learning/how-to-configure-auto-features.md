@@ -11,26 +11,28 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to,automl,contperf-fy21q2
 ms.date: 12/18/2020
-ms.openlocfilehash: 5fcb57d1ef909d7c15e21b34c3f584c6615a6a44
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: c90ef9fe49a87c18c7f4f55175bafaebfd31d722
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98134423"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610309"
 ---
 # <a name="data-featurization-in-automated-machine-learning"></a>Data funktionalisering i Automatisk maskin inlärning
 
-
-
-Lär dig mer om inställningarna för data funktionalisering i Azure Machine Learning och hur du anpassar dessa funktioner för [automatiserade ml-experiment](concept-automated-ml.md).
+Lär dig mer om inställningarna för data funktionalisering i Azure Machine Learning och hur du anpassar dessa funktioner för [automatiserade maskin inlärnings experiment](concept-automated-ml.md).
 
 ## <a name="feature-engineering-and-featurization"></a>Funktions teknik och funktionalisering
 
-*Funktions teknik* är en process där du använder domän information om data för att skapa funktioner som hjälper Machine Learning-algoritmer (ml) att lära sig bättre. I Azure Machine Learning tillämpas teknikerna för data skalning och normalisering för att göra det enklare att använda funktionen. Tillsammans kallas dessa tekniker och den här typen av teknik för *funktionalisering* i automatiserad maskin inlärning eller *autoML*, experiment.
+Tränings data består av rader och kolumner. Varje rad är en observations-eller post och kolumnerna för varje rad är de funktioner som beskriver varje post. Normalt är de funktioner som bäst kännetecknar mönstren i data markerade för att skapa förutsägande modeller.
+
+Även om många av rå data fälten kan användas direkt för att träna en modell, är det ofta nödvändigt att skapa ytterligare (utformade) funktioner som ger information som bättre skiljer mönster i data. Den här processen kallas för **funktions teknik**, där användningen av domän kunskaper om data utnyttjas för att skapa funktioner som i sin tur hjälper Machine Learning-algoritmer att lära sig bättre. 
+
+I Azure Machine Learning tillämpas teknikerna för data skalning och normalisering för att göra det enklare att använda funktionen. Tillsammans kallas dessa tekniker och den här funktionen för **funktionalisering** i AUTOMATISERAde ml-experiment.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-Den här artikeln förutsätter att du redan vet hur du konfigurerar ett AutoML experiment. Information om konfiguration finns i följande artiklar:
+Den här artikeln förutsätter att du redan vet hur du konfigurerar ett automatiserat ML experiment. Information om konfiguration finns i följande artiklar:
 
 - För en kod-första upplevelse: [Konfigurera automatiserade ml-experiment med hjälp av Azure Machine Learning SDK för python](how-to-configure-auto-train.md).
 - För att få en kod med låg kod eller ingen kod: [skapa, granska och distribuera automatiserade maskin inlärnings modeller med hjälp av Azure Machine Learning Studio](how-to-use-automated-ml-for-ml-models.md).
@@ -59,7 +61,7 @@ I följande tabell visas de accepterade inställningarna för `featurization` i 
 I följande tabell sammanfattas de tekniker som automatiskt tillämpas på dina data. Dessa tekniker används för experiment som har kon figurer ATS med hjälp av SDK eller Studio. Om du vill inaktivera det här beteendet ställer `"featurization": 'off'` du in i `AutoMLConfig` objektet.
 
 > [!NOTE]
-> Om du planerar att exportera AutoML-modeller till en ONNX- [modell](concept-onnx.md)stöds bara de funktionalisering-alternativ som anges med en asterisk ("*") i ONNX-formatet. Lär dig mer om [att konvertera modeller till ONNX](concept-automated-ml.md#use-with-onnx).
+> Om du planerar att exportera AutoML-modeller till en ONNX- [modell](concept-onnx.md)stöds bara de funktionalisering-alternativ som anges med en asterisk ("*") i ONNX-formatet. Lär dig mer om [att konvertera modeller till ONNX](how-to-use-automl-onnx-model-dotnet.md).
 
 |Funktionalisering- &nbsp; steg| Description |
 | ------------- | ------------- |

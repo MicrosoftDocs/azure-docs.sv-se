@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 6466647056535635b67cd53012d051f11e9b484c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f04e2aa97cafe2345918e433bcef5e719cee7483
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91323319"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610174"
 ---
 # <a name="azure-functions-http-trigger"></a>Azure Functions HTTP-utlösare
 
@@ -43,11 +43,15 @@ public static async Task<IActionResult> Run(
     log.LogInformation("C# HTTP trigger function processed a request.");
 
     string name = req.Query["name"];
-
-    string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
+    
+    string requestBody = String.Empty;
+    using (StreamReader streamReader =  new  StreamReader(req.Body))
+    {
+        requestBody = await streamReader.ReadToEndAsync();
+    }
     dynamic data = JsonConvert.DeserializeObject(requestBody);
     name = name ?? data?.name;
-
+    
     return name != null
         ? (ActionResult)new OkObjectResult($"Hello, {name}")
         : new BadRequestObjectResult("Please pass a name on the query string or in the request body");
@@ -100,11 +104,15 @@ public static async Task<IActionResult> Run(HttpRequest req, ILogger log)
     log.LogInformation("C# HTTP trigger function processed a request.");
 
     string name = req.Query["name"];
-
-    string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
+    
+    string requestBody = String.Empty;
+    using (StreamReader streamReader =  new  StreamReader(req.Body))
+    {
+        requestBody = await streamReader.ReadToEndAsync();
+    }
     dynamic data = JsonConvert.DeserializeObject(requestBody);
     name = name ?? data?.name;
-
+    
     return name != null
         ? (ActionResult)new OkObjectResult($"Hello, {name}")
         : new BadRequestObjectResult("Please pass a name on the query string or in the request body");
@@ -539,14 +547,14 @@ Attribut stöds inte av python.
 
 I följande tabell förklaras de egenskaper för bindnings konfiguration som du anger i *function.js* filen och `HttpTrigger` attributet.
 
-|function.jspå egenskap | Attributets egenskap |Beskrivning|
+|function.jspå egenskap | Attributets egenskap |Description|
 |---------|---------|----------------------|
-| **bastyp** | Saknas| Required-måste anges till `httpTrigger` . |
-| **position** | Saknas| Required-måste anges till `in` . |
-| **Namn** | Saknas| Obligatoriskt – variabel namnet som används i funktions koden för begäran eller begär ande texten. |
+| **bastyp** | saknas| Required-måste anges till `httpTrigger` . |
+| **position** | saknas| Required-måste anges till `in` . |
+| **Namn** | saknas| Obligatoriskt – variabel namnet som används i funktions koden för begäran eller begär ande texten. |
 | <a name="http-auth"></a>**authLevel** |  **AuthLevel** |Bestämmer vilka nycklar, om sådana, som måste finnas på begäran för att kunna anropa funktionen. Behörighets nivån kan vara något av följande värden: <ul><li><code>anonymous</code>&mdash;Ingen API-nyckel krävs.</li><li><code>function</code>&mdash;En Function-/regionsspecifika API-nyckel krävs. Detta är standardvärdet om inget anges.</li><li><code>admin</code>&mdash;Huvud nyckeln måste anges.</li></ul> Mer information finns i avsnittet om [auktoriseringsregler](#authorization-keys). |
 | **indatametod** |**Metoder** | En matris med de HTTP-metoder som funktionen svarar på. Om inget anges svarar funktionen på alla HTTP-metoder. Se [anpassa HTTP-slutpunkten](#customize-the-http-endpoint). |
-| **styra** | **Väg** | Definierar den vägfil som styr till vilka URL-adresser din funktion svarar. Standardvärdet om inget värde anges är `<functionname>` . Mer information finns i [anpassa HTTP-slutpunkten](#customize-the-http-endpoint). |
+| **route** | **Styra** | Definierar den vägfil som styr till vilka URL-adresser din funktion svarar. Standardvärdet om inget värde anges är `<functionname>` . Mer information finns i [anpassa HTTP-slutpunkten](#customize-the-http-endpoint). |
 | **webHookType** | **WebHookType** | _Stöds endast för version 1. x-körningsmiljön._<br/><br/>Konfigurerar HTTP-utlösaren så att den fungerar som en [webhook](https://en.wikipedia.org/wiki/Webhook) -mottagare för den angivna providern. Ange inte `methods` egenskapen om du anger den här egenskapen. Webhook-typen kan vara något av följande värden:<ul><li><code>genericJson</code>&mdash;En allmän webhook-slutpunkt utan logik för en speciell Provider. Den här inställningen begränsar begär anden till endast de som använder HTTP POST och med `application/json` innehålls typen.</li><li><code>github</code>&mdash;Funktionen svarar på GitHub- [webhookar](https://developer.github.com/webhooks/). Använd inte egenskapen  _authLevel_ med GitHub-webhookar. Mer information finns i avsnittet GitHub Webhooks senare i den här artikeln.</li><li><code>slack</code>&mdash;Funktionen svarar på slack- [webhookar](https://api.slack.com/outgoing-webhooks). Använd inte _authLevel_ -egenskapen med slack-webhookar. Mer information finns i avsnittet om slack-webhookar längre fram i den här artikeln.</li></ul>|
 
 ## <a name="payload"></a>Innehållet
@@ -877,7 +885,7 @@ Om du vill skydda funktions slut punkter i produktion fullständigt bör du öve
 
 I version 1. x tillhandahåller webhook-mallar ytterligare verifiering för webhook-nyttolaster. I version 2. x och högre fungerar bas-HTTP-utlösaren fortfarande och är den rekommenderade metoden för Webhooks. 
 
-### <a name="github-webhooks"></a>GitHub-webhooks
+### <a name="github-webhooks"></a>GitHub-webhookar
 
 Om du vill svara på GitHub Webhooks måste du först skapa en funktion med en HTTP-utlösare och ange egenskapen **webHookType** till `github` . Kopiera sedan dess URL och API-nyckel till sidan **Lägg till webhook** i GitHub-lagringsplatsen. 
 
@@ -902,7 +910,7 @@ Att skicka binära data och formulär data till en icke-C #-funktion kräver att
 
 I icke-C #-funktioner skickas begär Anden som skickas med innehålls typen `image/jpeg` till ett `string` värde som skickas till funktionen. I sådana fall kan du manuellt konvertera `string` värdet till en byte-matris för att få åtkomst till rå binära data.
 
-## <a name="limits"></a>Begränsningar
+## <a name="limits"></a>Gränser
 
 Längden på HTTP-begäran är begränsad till 100 MB (104 857 600 byte) och URL-längden är begränsad till 4 KB (4 096 byte). De här gränserna anges av `httpRuntime` elementet i körningens [Web.config fil](https://github.com/Azure/azure-functions-host/blob/v3.x/src/WebJobs.Script.WebHost/web.config).
 

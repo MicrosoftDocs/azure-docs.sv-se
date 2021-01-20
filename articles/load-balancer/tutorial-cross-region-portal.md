@@ -7,18 +7,18 @@ ms.author: allensu
 ms.service: load-balancer
 ms.topic: tutorial
 ms.date: 11/24/2020
-ms.openlocfilehash: 7ee203595a796529ae0aefe8b0c52a689ac29968
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: d94736656f691da9e893e4619a2299a061acd8e8
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96762337"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98611210"
 ---
 # <a name="tutorial-create-a-cross-region-azure-load-balancer-using-the-azure-portal"></a>Självstudie: skapa en Azure Load Balancer över flera regioner med hjälp av Azure Portal
 
 En belastningsutjämnare för flera regioner säkerställer att en tjänst är tillgänglig globalt över flera Azure-regioner. Om en region Miss lyckas dirigeras trafiken till nästa närmaste felfria regionala belastnings utjämning.  
 
-I den här guiden får du lära dig att:
+I de här självstudierna får du lära dig att
 
 > [!div class="checklist"]
 > * Skapa en belastningsutjämnare för flera regioner.
@@ -41,7 +41,7 @@ Om du inte har en Azure-prenumeration kan du skapa ett [kostnads fritt konto](ht
 
 ## <a name="sign-in-to-azure-portal"></a>Logga in på Azure-portalen
 
-[Logga in](https://preview.portal.azure.com) på Azure Preview Portal.
+[Logga in](https://portal.azure.com) på Azure Preview Portal.
 
 ## <a name="create-cross-region-load-balancer"></a>Skapa en belastningsutjämnare för flera regioner
 
@@ -55,7 +55,7 @@ I det här avsnittet ska du skapa en belastningsutjämnare för flera regioner o
     | ---                     | ---                                                |
     | Prenumeration               | Välj din prenumeration.    |    
     | Resursgrupp         | Välj **Skapa ny** och ange **CreateCRLBTutorial-RG** i text rutan.|
-    | Namn                   | Ange **myLoadBalancer – CR**                                   |
+    | Name                   | Ange **myLoadBalancer – CR**                                   |
     | Region         | Välj **USA, västra**.                                        |
     | Typ          | Välj **Offentlig**.                                        |
     | SKU           | Välj **standard** |

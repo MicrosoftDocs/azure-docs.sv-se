@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: b7980bfc58ed696a74d3da259e23fb7e428621a9
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.openlocfilehash: e92b17a5743e983ca3e77ad18c0973b9f056dfbd
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98028921"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98611176"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Utvecklarguide för Azure Key Vault
 
@@ -41,7 +41,7 @@ Key Vault hantering, som liknar andra Azure-tjänster, görs via Azure Resource 
 
 | Azure CLI | PowerShell | REST-API | Resource Manager | .NET | Python | Java | JavaScript |  
 |--|--|--|--|--|--|--|--|
-|[Referens](/cli/azure/keyvault)<br>[Snabbstart](quick-create-cli.md)|[Referens](/powershell/module/az.keyvault)<br>[Snabbstart](quick-create-powershell.md)|[Referens](/rest/api/keyvault/)|[Referens](/azure/templates/microsoft.keyvault/vaults)|[Referens](/dotnet/api/microsoft.azure.management.keyvault)<br>[Snabbstart](https://docs.microsoft.com/azure/key-vault/general/vault-create-template)|[Referens](/python/api/azure-mgmt-keyvault/azure.mgmt.keyvault)|[Referens](/java/api/com.microsoft.azure.management.keyvault)|[Referens](/javascript/api/@azure/arm-keyvault)|
+|[Referens](/cli/azure/keyvault)<br>[Snabbstart](quick-create-cli.md)|[Referens](/powershell/module/az.keyvault)<br>[Snabbstart](quick-create-powershell.md)|[Referens](/rest/api/keyvault/)|[Referens](/azure/templates/microsoft.keyvault/vaults)<br>[Snabbstart](https://docs.microsoft.com/azure/key-vault/general/vault-create-template)|[Referens](/dotnet/api/microsoft.azure.management.keyvault)|[Referens](/python/api/azure-mgmt-keyvault/azure.mgmt.keyvault)|[Referens](/java/api/com.microsoft.azure.management.keyvault)|[Referens](/javascript/api/@azure/arm-keyvault)|
 
 Se [klient bibliotek](client-libraries.md) för installations paket och käll kod.
 
@@ -67,7 +67,7 @@ Scenarier med ovan autentisering stöds av **klient biblioteket för Azure Ident
 
 Mer information om Azure Identity client-Libarary finns i:
 
-### <a name="azure-identity-client-libraries"></a>Klient bibliotek för Azure Identity
+**Klient bibliotek för Azure Identity**
 
 | .NET | Python | Java | JavaScript |
 |--|--|--|--|
@@ -85,8 +85,7 @@ Självstudier om hur du autentiserar till Key Vault i program finns i:
 
 Åtkomst till nycklar, hemligheter och certifikat styrs av data planet. Åtkomst kontroll för data plan kan göras med hjälp av lokala valv åtkomst principer eller Azure RBAC (för hands version).
 
-**Nycklar och SDK: er**
-
+**Nycklars-API: er och SDK: er**
 
 | Azure CLI | PowerShell | REST-API | Resource Manager | .NET | Python | Java | JavaScript |  
 |--|--|--|--|--|--|--|--|
@@ -94,13 +93,11 @@ Självstudier om hur du autentiserar till Key Vault i program finns i:
 
 **API: er och SDK: er för certifikat**
 
-
 | Azure CLI | PowerShell | REST-API | Resource Manager | .NET | Python | Java | JavaScript |  
 |--|--|--|--|--|--|--|--|
 |[Referens](/cli/azure/keyvault/certificate)<br>[Snabbstart](../certificates/quick-create-cli.md)|[Referens](/powershell/module/az.keyvault)<br>[Snabbstart](../certificates/quick-create-powershell.md)|[Referens](/rest/api/keyvault/#certificate-operations)|Ej tillämpligt|[Referens](/dotnet/api/azure.security.keyvault.certificates)<br>[Snabbstart](../certificates/quick-create-net.md)|[Referens](/python/api/overview/azure/keyvault-certificates-readme)<br>[Snabbstart](../certificates/quick-create-python.md)|[Referens](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-security-keyvault-certificates/4.1.0/index.html)<br>[Snabbstart](../certificates/quick-create-java.md)|[Referens](/javascript/api/@azure/keyvault-certificates/)<br>[Snabbstart](../certificates/quick-create-node.md)|
 
-**Hemligheter och SDK: er för hemligheter**
-
+**Hemligheter och SDK: er**
 
 | Azure CLI | PowerShell | REST-API | Resource Manager | .NET | Python | Java | JavaScript |  
 |--|--|--|--|--|--|--|--|

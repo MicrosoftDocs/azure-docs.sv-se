@@ -8,12 +8,12 @@ ms.date: 01/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 32aa94c986c90b7bd46b9f5561021c34c0f142af
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 29f7f241f119ca7fab50409881b517961b00cf20
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492100"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610479"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Planera för distribution av Azure File Sync
 
@@ -50,6 +50,9 @@ Sync-grupper distribueras till **Storage Sync-tjänster**, som är toppnivå obj
 Innan du kan skapa en Sync-grupp i en tjänst för synkronisering av lagring måste du först registrera en Windows-Server med tjänsten för synkronisering av lagring. Detta skapar ett **registrerat Server** objekt som representerar en förtroende relation mellan servern eller klustret och tjänsten för synkronisering av lagring. Om du vill registrera en tjänst för synkronisering av lagring måste du först installera Azure File Sync-agenten på-servern. En enskild server eller ett kluster kan bara registreras med en lagrings tjänst för synkronisering i taget.
 
 En Sync-grupp innehåller en moln slut punkt, en Azure-filresurs och minst en server slut punkt. Serverns slut punkts objekt innehåller de inställningar som konfigurerar kapaciteten för **moln nivåer** , som tillhandahåller cachelagring-funktionen för Azure File Sync. För att synkronisera med en Azure-filresurs måste lagrings kontot som innehåller Azure-filresursen finnas i samma Azure-region som tjänsten för synkronisering av lagring.
+
+> [!Important]  
+> Du kan göra ändringar i alla moln slut punkter eller Server slut punkter i synkroniseringsresursen och låta filerna vara synkroniserade med de andra slut punkterna i den synkroniserade gruppen. Om du gör en ändring i moln slut punkten (Azure-filresursen) direkt måste ändringarna först identifieras av ett Azure File Sync ändrings identifierings jobb. Ett ändrings identifierings jobb initieras bara för en moln slut punkt var 24: e timme. Mer information finns i [Azure Files vanliga frågor och svar](storage-files-faq.md#afs-change-detection).
 
 ### <a name="management-guidance"></a>Vägledning för hantering
 När du distribuerar Azure File Sync rekommenderar vi att:
@@ -310,7 +313,7 @@ Azure File Sync är tillgängligt i följande regioner:
 | Offentliga | Brasilien | Brasilien, södra | `brazilsouth` |
 | Offentliga | Kanada | Kanada, centrala | `canadacentral` |
 | Offentliga | Kanada | Kanada, östra | `canadaeast` |
-| Offentliga | Europa | Norra Europa | `northeurope` |
+| Offentliga | Europa | Europa, norra | `northeurope` |
 | Offentliga | Europa | Europa, västra | `westeurope` |
 | Offentliga | Frankrike | Frankrike, centrala | `francecentral` |
 | Offentliga | Frankrike | Frankrike, södra * | `francesouth` |

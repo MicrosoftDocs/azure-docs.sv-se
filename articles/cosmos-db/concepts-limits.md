@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/19/2021
-ms.openlocfilehash: 9ace9a319f4cc6bcc1545d6d1becce61b1892765
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 007bf845bab6f493fae91debefde27a4929d9f95
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 01/20/2021
-ms.locfileid: "98598673"
+ms.locfileid: "98611040"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB tjänst kvoter
 
@@ -236,7 +236,8 @@ I följande tabell visas de gränser som är begränsade till stöd för MongoDB
 | Resurs | Standardgräns |
 | --- | --- |
 | Maximal minnes storlek för MongoDB-fråga (den här begränsningen gäller endast 3,2-Server version) | 40 MB |
-| Maximal körnings tid för MongoDB-åtgärder| 30 s |
+|Maximal körnings tid för MongoDB-åtgärder (för 3,2-Server version)| 15 sekunder|
+|Maximal körnings tid för MongoDB-åtgärder (för 3,6-Server version)| 60 sekunder|
 | Tids gräns för inaktiv anslutning för anslutning till Server Sidan * | 30 minuter |
 
 \* Vi rekommenderar att klient program ställer in tids gränsen för inaktiv anslutning i driv rutins inställningarna till 2-3 minuter, eftersom [Standard-timeout för Azure Loadbalancer är 4 minuter](../load-balancer/load-balancer-tcp-idle-timeout.md).  Den här tids gränsen ser till att inaktiva anslutningar inte stängs av en mellanliggande belastningsutjämnare mellan klient datorn och Azure Cosmos DB.

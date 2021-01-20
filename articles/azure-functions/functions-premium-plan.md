@@ -9,12 +9,12 @@ ms.custom:
 - references_regions
 - fasttrack-edit
 - devx-track-azurecli
-ms.openlocfilehash: d944512e5f6126920ab4fba99fb70513b93177ba
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 26dd3f7df5a71c687bfb4935f290e7a54b4e01fe
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936829"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610275"
 ---
 # <a name="azure-functions-premium-plan"></a>Azure Functions Premium-plan
 
@@ -154,6 +154,8 @@ Att köra på en dator med mer minne innebär inte alltid att din Function-app a
 
 Till exempel begränsas en JavaScript Function-app av standard minnes gränsen i Node.js. Om du vill öka den här fasta minnes gränsen lägger du till inställningen för appen `languageWorkers:node:arguments` med värdet `--max-old-space-size=<max memory in MB>` .
 
+För planer med mer än 4 GB minne ser du till att inställningen för bitness-plattformen är inställd på `64 Bit` under [allmänna inställningar](/azure/app-service/configure-common#configure-general-settings).
+
 ## <a name="region-max-scale-out"></a>Region, Max skala ut
 
 Nedan visas de maximala skalnings värden som stöds för närvarande för en enskild plan i varje region och OS-konfiguration. Om du vill begära en ökning kan du öppna ett support ärende.
@@ -181,7 +183,7 @@ Se den fullständiga regionala tillgängligheten för funktioner på [Azure-webb
 |Sydkorea, centrala| 100 | 20 |
 |Sydkorea, södra| Inte tillgängligt | 20 |
 |USA, norra centrala| 100 | 20 |
-|Norra Europa| 100 | 20 |
+|Europa, norra| 100 | 20 |
 |Östra Norge| 100 | 20 |
 |USA, södra centrala| 100 | 20 |
 |Indien, södra | 100 | Inte tillgängligt |

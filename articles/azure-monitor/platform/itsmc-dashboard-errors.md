@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 01/18/2021
-ms.openlocfilehash: 7240c1b0f19dc49ab4130c5ee2516dcfefb2e2c2
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 9521c13b21317bb0a782b0bea0b08312ff24b113
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 01/20/2021
-ms.locfileid: "98602193"
+ms.locfileid: "98610360"
 ---
 # <a name="errors-in-the-connector-status"></a>Fel i anslutnings status
 
@@ -27,7 +27,7 @@ i det här avsnittet hittar du de vanliga fel som visas i avsnittet anslutnings 
   * Ett anpassat skript som distribueras i ServiceNow-instansen gör att incidenter ignoreras.
   * "OMS Integrator-appens kod har ändrats på ServiceNow sida, t. ex. onBefore-skriptet.
 
-    **Lösning**: inaktivera alla anpassade skript eller kod ändringar av data import Sök vägen.
+  **Lösning**: inaktivera alla anpassade skript eller kod ändringar av data import Sök vägen.
 
 * **Fel**: {"fel": {"meddelande": "åtgärden misslyckades", "information": uppdatering av ACL-undantag misslyckades på grund av säkerhets begränsningar "}"
 

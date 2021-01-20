@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 43d593a65fd08542eb2829fcebcea81ea0c99986
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: e10f45af89e19f6fe62ff729f96d870e008c96ec
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91995444"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98611108"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Skalbarhet för Azure Files och prestandamål
 
@@ -31,7 +31,7 @@ Den överordnade resursen för en Azure-filresurs är ett Azure Storage-konto. E
 > [!Important]  
 > Generell användning av lagrings konto användningen från andra lagrings tjänster påverkar dina Azure-filresurser i ditt lagrings konto. Om du till exempel når högsta kapacitet för lagrings konton med Azure Blob Storage kan du inte skapa nya filer på Azure-filresursen, även om din Azure-filresurs är lägre än den maximala resurs storleken.
 
-## <a name="azure-files-scale-targets"></a>Azure Files skala mål
+## <a name="azure-files-scale-targets"></a>Azure Files – skalningsmål
 
 Det finns tre typer av begränsningar att överväga för Azure Files: lagrings konton, resurser och filer.
 
@@ -87,16 +87,16 @@ För att hjälpa dig att planera distributionen för var och en av stegen nedan 
 | Antal objekt | 25 000 000 objekt |
 | Storlek på data uppsättning| ~ 4,7 TiB |
 | Genomsnittlig fil storlek | ~ 200 KiB (största fil: 100 GiB) |
-| Första moln ändrings uppräkning | 7 objekt per sekund  |
+| Första moln ändrings uppräkning | 20 objekt per sekund  |
 | Ladda upp data flöde | 20 objekt per sekund per Sync-grupp |
 | Hämta data område | 400 objekt per sekund |
 
 ### <a name="initial-one-time-provisioning"></a>Första engångs etablering
 
 Första **moln ändrings uppräkning**: när en ny synkroniseringsresurs skapas är den första omräkningen av moln ändringar det första steget som ska utföras. I den här processen kommer systemet att räkna upp alla objekt i Azure-filresursen. Under den här processen kommer det inte att finnas någon Sync-aktivitet, d.v.s. inga objekt hämtas från moln slut punkten till Server slut punkten och inga objekt överförs från Server slut punkten till moln slut punkten. Synkroniseringen återupptas när den första uppräkningen av moln ändringar slutförs.
-Prestanda frekvensen är 7 objekt per sekund. Kunder kan uppskatta hur lång tid det tar att slutföra den inledande moln ändrings uppräkningen genom att fastställa antalet objekt i moln resursen och använda följande formel för att hämta tiden i dagar. 
+Prestanda frekvensen är 20 objekt per sekund. Kunder kan uppskatta hur lång tid det tar att slutföra den inledande moln ändrings uppräkningen genom att fastställa antalet objekt i moln resursen och använda följande formel för att hämta tiden i dagar. 
 
-   **Tid (i dagar) för inledande moln uppräkning = (antal objekt i moln slut punkt)/(7 * 60 * 60 * 24)**
+   **Tid (i dagar) för inledande moln uppräkning = (antal objekt i moln slut punkt)/(20 * 60 * 60 * 24)**
 
 **Hämta data område** När en ny server slut punkt läggs till i en befintlig Sync-grupp, laddas inte Azure File Sync-agenten ned något av fil innehållet från moln slut punkten. Den synkroniserar först det fullständiga namn området och utlöser sedan bakgrunden återkallande för att ladda ned filerna, antingen i sin helhet eller, om moln nivåer är aktiverade, till den moln nivå princip som angetts på Server slut punkten.
 

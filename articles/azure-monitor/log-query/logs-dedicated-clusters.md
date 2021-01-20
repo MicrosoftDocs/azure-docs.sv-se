@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 09/16/2020
-ms.openlocfilehash: 93b05a5535b80d0e0d1a07c88aa9b19052f1b703
-ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
+ms.openlocfilehash: a5cbbed3881433121f5ab811082969bc3c6c4f7f
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98562683"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98609952"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Azure Monitor loggar dedicerade kluster
 
@@ -512,27 +512,25 @@ Använd följande REST-anrop för att ta bort ett kluster:
 
 - Du kan länka en arbets yta till klustret och sedan ta bort länken till den. Antalet länk åtgärder på arbets ytan på en viss arbets yta är begränsat till 2 under en period på 30 dagar.
 
-- Arbets ytans länk till kluster ska endast utföras när du har kontrollerat att Log Analytics kluster etableringen har slutförts. Data som skickas till din arbets yta innan slut för Ande kommer att tas bort och går inte att återskapa.
-
 - Det finns för närvarande inte stöd för att flytta kluster till en annan resurs grupp eller prenumeration.
-
-- Arbets ytans länk till klustret Miss fungerar om den är länkad till ett annat kluster.
 
 - Den säkra databasen är inte tillgänglig i Kina. 
 
-- [Double Encryption](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption) konfigureras automatiskt för kluster som skapats från oktober 2020 i regioner som stöds. Du kan kontrol lera om klustret har kon figurer ATS för Double Encryption med en GET-begäran på klustret och att `"isDoubleEncryptionEnabled"` det är `true` för kluster med dubbel kryptering aktiverat. 
-  - Om du skapar ett kluster och får ett fel meddelande om att <region namn> inte stöder Double Encryption för kluster. "kan du fortfarande skapa klustret utan Double Encryption. Lägg till `"properties": {"isDoubleEncryptionEnabled": false}` egenskap i rest Request-texten.
+- [Double Encryption](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption) konfigureras automatiskt för kluster som skapats från oktober 2020 i regioner som stöds. Du kan kontrol lera om klustret har kon figurer ATS för Double Encryption genom att skicka en GET-begäran i klustret och Observera att `isDoubleEncryptionEnabled` värdet är `true` för kluster med dubbla krypterings aktiverat. 
+  - Om du skapar ett kluster och får ett fel meddelande om att <region namn> inte stöder Double Encryption för kluster. "kan du fortfarande skapa klustret utan dubbel kryptering genom att lägga till `"properties": {"isDoubleEncryptionEnabled": false}` i rest-begäran.
   - Inställningen Double Encryption kan inte ändras efter att klustret har skapats.
 
 ## <a name="troubleshooting"></a>Felsökning
 
 - Om du får ett konflikt fel när du skapar ett kluster, kan det bero på att du har tagit bort klustret under de senaste 14 dagarna och att det är i ett läge med mjuk borttagning. Kluster namnet förblir reserverat under den mjuka borttagnings perioden och du kan inte skapa ett nytt kluster med det namnet. Namnet släpps efter den mjuka borttagnings perioden när klustret tas bort permanent.
 
-- Om du uppdaterar klustret medan en åtgärd pågår, fungerar inte åtgärden.
+- Om du uppdaterar klustret när klustret är i etablerings-eller uppdaterings tillstånd kommer uppdateringen att Miss förklaras.
 
 - Vissa åtgärder är långa och kan ta en stund att slutföra – dessa är kluster skapa, kluster nyckel uppdatering och kluster borttagning. Du kan kontrol lera åtgärds statusen på två sätt:
   - När du använder REST kopierar du Azure-AsyncOperation URL-värdet från svaret och följer [status kontrollen asynkrona åtgärder](#asynchronous-operations-and-status-check).
   - Skicka GET-begäran till kluster eller arbets yta och observera svaret. Till exempel kan inte en länkad arbets yta ha *clusterResourceId* under *funktioner*.
+
+- Arbets ytans länk till klustret Miss fungerar om den är länkad till ett annat kluster.
 
 - Felmeddelanden
   

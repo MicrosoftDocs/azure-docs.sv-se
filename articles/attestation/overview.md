@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
 ms.custom: references_regions
-ms.openlocfilehash: 6a587ecbe7ff67908b22d4f2429cfdd0c511e07d
-ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
+ms.openlocfilehash: 0d1b2bd039f3e110c83d7ad4bf32f1e53e4c7a79
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96748781"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610156"
 ---
 # <a name="microsoft-azure-attestation-preview"></a>Microsoft Azure Attestation (förhandsversion)
 
@@ -39,6 +39,12 @@ Klient program kan utformas för att dra nytta av SGX-enclaves genom att deleger
 [Open enklaven](https://openenclave.io/sdk/) (OE) är en samling bibliotek som är riktade till att skapa en enda enhetlig enclaving-abstraktion för utvecklare för att skapa tee-baserade program. Den erbjuder en universell säker app-modell som minimerar plattforms information. Microsoft visar den som en viktig steg-vid-bricka mot democratizing maskinvarubaserade enklaven-tekniker som SGX och ökar sin upptagning på Azure.
 
 OE standardiserar särskilda krav för verifiering av enklaven-bevis. Detta kvalificerar OE som en mycket anpassningsbar förbrukare konsument för Azure-attestering.
+
+### <a name="tpm-attestation"></a>TPM-attestering 
+
+Trusted Platform Module (TPM)-baserad attestering är avgörande för att ge bevis på en plattforms status. TPM fungerar som roten av förtroende och säkerhets bearbetaren för att tillhandahålla kryptografisk giltighet för mätningarna (bevis). Enheter med TPM kan förlita sig på attestering för att bevisa att start integritet inte komprometteras tillsammans med anspråken för att identifiera aktivering av funktions tillstånd under start. 
+
+Klient program kan utformas för att dra nytta av TPM-attestering genom att delegera säkerhets känsliga uppgifter till att endast utföras efter att en plattform har verifierats för att vara säker. Dessa program kan sedan använda Azure-attestering för att rutinmässigt upprätta förtroende i plattformen och dess möjlighet att komma åt känsliga data.
 
 ## <a name="azure-attestation-can-run-in-a-tee"></a>Azure-attestering kan köras i en TEE
 

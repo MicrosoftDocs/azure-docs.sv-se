@@ -8,20 +8,20 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 01/14/2021
 ms.author: lagayhar
-ms.openlocfilehash: e69d5cc76f8f4b14ab87e13546c98859bb801418
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 7af26be91ff129e4c968bcb131cc98290cd8d7b9
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98234968"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610088"
 ---
 # <a name="click-analytics-auto-collection-plugin-for-application-insights-javascript-sdk"></a>Klicka på analys-plugin-programmet för automatisk insamling för Application Insights JavaScript SDK
 
-Klicka på analys-plugin-programmet för automatisk insamling för Application Insights JavaScript SDK, aktiverar automatisk spårning av klicknings händelser på webb sidor baserat på `data-*` meta-taggar. Det här plugin-programmet använder `data-*` globala attribut för att avbilda klicknings händelserna och fylla telemetridata.
+Det här plugin-programmet spårar automatiskt klicknings händelser på webb sidor och använder data-* attribut på HTML-element för att fylla i Event-telemetri.
 
-## <a name="getting-started"></a>Kom igång
+## <a name="getting-started"></a>Komma igång
 
-Användare kan konfigurera plugin-programmet för automatisk insamling via NPM.
+Användare kan konfigurera plugin-programmet för att klicka med Auto-Collection via NPM.
 
 ### <a name="npm-setup"></a>NPM-installation
 
@@ -79,7 +79,7 @@ appInsights.loadAppInsights();
 
 ## <a name="configuration"></a>Konfiguration
 
-| Namn                  | Typ                               | Standardvärde | Beskrivning                                                                                                                              |
+| Namn                  | Typ                               | Standardvärde | Description                                                                                                                              |
 | --------------------- | -----------------------------------| --------| ---------------------------------------------------------------------------------------------------------------------------------------- |
 | autofånga           | boolean                            | true    | Automatisk avbildnings konfiguration.                                                                                                         |
 | motringningsalternativ              | [IValueCallback](#ivaluecallback)  | null    | Konfigurationen för motringning.                                                                                                                 |
@@ -101,21 +101,21 @@ appInsights.loadAppInsights();
 
 ### <a name="icustomdatatags"></a>ICustomDataTags
 
-| Namn                      | Typ    | Standardvärde   | Beskrivning                                                                                       |
-|---------------------------|---------|-----------|---------------------------------------------------------------------------------------------------|
-| useDefaultContentNameOrId | boolean | falskt     | När ett visst element inte är taggat med standard customDataPrefix eller customDataPrefix inte anges av användaren, används den här flaggan för att samla in HTML-standardattribut för contentName. |
-| customDataPrefix          | sträng  | `data-`   | Automatiskt insamling av innehålls namn och värde för element som är taggade med det angivna prefixet.       |
-| aiBlobAttributeTag        | sträng  | `ai-blob` | Plugin-programmet stöder metadata för JSON-BLOB-innehåll i stället för enskilda `data-*` attribut. |
-| metaDataPrefix            | sträng  | null      | Automatiskt hämtning av HTML-huvudets meta-element namn och innehåll med angivet prefix. |
-| captureAllMetaDataContent | sträng  | null      | Samla automatiskt in alla HTML-huvudets meta-element namn och innehåll. Standardvärdet är false. Om aktive rad åsidosätts den angivna metaDataPrefix. |
-| parentDataTag             | sträng  | null      | Slutar att gå igenom DOM för att avbilda innehålls namn och värde för element när de påträffas med den här taggen.|
-| dntDataTag                | sträng  | `ai-dnt`  | HTML-element med det här attributet ignoreras av plugin-programmet för att samla in telemetridata.|
+| Namn                      | Typ    | Standardvärde   | Standard tag gen som ska användas i HTML |   Description                                                                                |
+|---------------------------|---------|-----------|-------------|----------------------------------------------------------------------------------------------|
+| useDefaultContentNameOrId | boolean | falskt     | E.t.         |Samlar in standard-HTML-attribut för contentName när ett visst element inte är taggat med standard-customDataPrefix eller när customDataPrefix inte anges av användaren. |
+| customDataPrefix          | sträng  | `data-`   | `data-*`| Automatiskt insamling av innehålls namn och värde för element som är taggade med det angivna prefixet. Kan till exempel `data-*-id` `data-<yourcustomattribute>` användas i HTML-taggarna.   |
+| aiBlobAttributeTag        | sträng  | `ai-blob` |  `data-ai-blob`| Plugin-programmet stöder ett JSON-BLOB-attribut i stället för enskilda `data-*` attribut. |
+| metaDataPrefix            | sträng  | null      | Ej tillämpligt  | Automatiskt hämtning av HTML-huvudets meta-element namn och innehåll med angivet prefix vid hämtning. Kan till exempel `custom-` användas i HTML meta-taggen. |
+| captureAllMetaDataContent | boolean | falskt     | E.t.   | Samla automatiskt in alla HTML-huvudets meta-element namn och innehåll. Standardvärdet är false. Om aktive rad åsidosätts den angivna metaDataPrefix. |
+| parentDataTag             | sträng  | null      |  Ej tillämpligt  | Slutar att gå igenom DOM för att avbilda innehålls namn och värde för element när de påträffas med den här taggen. Kan till exempel `data-<yourparentDataTag>` användas i HTML-taggarna.|
+| dntDataTag                | sträng  | `ai-dnt`  |  `data-ai-dnt`| HTML-element med det här attributet ignoreras av plugin-programmet för att samla in telemetridata.|
 
 ### <a name="behaviorvalidator"></a>behaviorValidator
 
-Du kan använda funktionen behaviorValidator när du vill säkerställa data konsekvensen om automatiska kontroller som taggats i kod följer en fördefinierad lista över känd och godkänd taxonomi i företaget. Det krävs eller förväntas inte att de flesta Azure Monitor kunder kommer att använda detta, men det är tillgängligt för avancerade scenarier. Det finns tre olika återanrops funktioner i behaviorValidator som visas som en del av tillägget. Användare kan dock använda sina egna återanrops funktioner om de exponerade funktionerna inte löser ditt krav. Avsikten är att ta med dina egna beteende data strukturer, plugin-programmet använder den här verifierings funktionen när beteendet extraheras från datataggarna.
+BehaviorValidator-funktionerna kontrollerar automatiskt att taggade beteenden i kod följer en fördefinierad lista. Detta säkerställer att taggade beteenden överensstämmer med företagets etablerade taxonomi. Det krävs eller förväntas inte att de flesta Azure Monitor kunder kommer att använda detta, men det är tillgängligt för avancerade scenarier. Det finns tre olika återanrops funktioner i behaviorValidator som visas som en del av tillägget. Användare kan dock använda sina egna återanrops funktioner om de exponerade funktionerna inte löser ditt krav. Avsikten är att ta med dina egna beteende data strukturer, plugin-programmet använder den här verifierings funktionen när beteendet extraheras från datataggarna.
 
-| Namn                   | Beskrivning                                                                        |
+| Name                   | Beskrivning                                                                        |
 | ---------------------- | -----------------------------------------------------------------------------------|
 | BehaviorValueValidator | Använd den här motringning funktionen om dina beteende data strukturer är en sträng mat ris.|
 | BehaviorMapValidator   | Använd den här motringning funktionen om dina beteende data strukturer är en ord lista.       |
@@ -312,6 +312,7 @@ appInsights.loadAppInsights();
 
 ## <a name="next-steps"></a>Nästa steg
 
+- Ta en titt på [GitHub-lagringsplatsen](https://github.com/microsoft/ApplicationInsights-JS/tree/master/extensions/applicationinsights-clickanalytics-js) och [NPM-paketet](https://www.npmjs.com/package/@microsoft/applicationinsights-clickanalytics-js) för plugin-programmet för automatisk insamling av en analys.
 - Använd [händelse analys i användnings miljö](usage-segmentation.md) för att analysera de bästa klicken och segmentera med tillgängliga dimensioner.
 - Hitta Klicka på data under innehålls fält i customDimensions-attributet i CustomEvents-tabellen i [Log Analytics](../log-query/log-analytics-tutorial.md#write-a-query).
 - Skapa en [arbets bok](../platform/workbooks-overview.md) för att skapa anpassade visualiseringar av Klicka på data.

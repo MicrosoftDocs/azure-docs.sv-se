@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: allensu
 ms.custom: references_regions
-ms.openlocfilehash: 8a2ad6cea4ab97742261b1cfd84975b243a46e87
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 4a9663e1356f616ed5f428c993f3367ce67cdbb5
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96938723"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610920"
 ---
 # <a name="cross-region-load-balancer-preview"></a>Belastningsutjämnare för flera regioner (för hands version)
 
@@ -35,7 +35,7 @@ Azure Standard Load Balancer stöder belastnings utjämning mellan regioner som 
 * [Bygg en befintlig lösning för belastnings utjämning](#build-cross-region-solution-on-existing-azure-load-balancer) utan inlärnings kurva
 
 > [!IMPORTANT]
-> Belastningsutjämnare för flera regioner är för närvarande en för hands version och dold i för hands versionen av portalen. Logga in för **https://preview.portal.azure.com** att visa och distribuera funktionen.. </br> </br>
+> Belastningsutjämnare för flera regioner är för närvarande en för hands version och kan distribueras i portalen. Logga in för **https://portal.azure.com** att visa och distribuera funktionen.. </br> </br>
 > Den här förhandsversionen tillhandahålls utan serviceavtal och rekommenderas inte för produktionsarbetsbelastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade. Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Belastnings utjämning mellan regioner ger samma fördelar med hög prestanda och låg latens som regional standard Load Balancer. 
@@ -66,7 +66,7 @@ Trafik som startas från en klient kommer att hamna närmast deltagande region o
 Till exempel har du en belastningsutjämnare för flera regioner med standard belastnings utjämning i Azure-regioner:
 
 * USA, västra
-* Norra Europa
+* Europa, norra
 
 Om ett flöde startas från Seattle, kommer trafik att komma in västra USA. Den här regionen är den närmast deltagande regionen från Seattle. Trafiken dirigeras till den närmaste regionens belastningsutjämnare, som är västra USA.
 
@@ -102,7 +102,7 @@ Lägg till dina befintliga belastnings Utjämnings distributioner i en belastnin
 * Europa, västra
 * Sydostasien
 * Central US
-* Norra Europa
+* Europa, norra
 * Asien, östra
 
 > [!NOTE]
@@ -120,7 +120,7 @@ Belastnings utjämning mellan regioner dirigerar trafiken till lämplig regional
 * USA, centrala 
 * USA, östra 2 
 * USA, västra 
-* Norra Europa 
+* Europa, norra 
 * USA, södra centrala 
 * USA, västra 2 
 * Storbritannien, södra 

@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: cynthn
-ms.openlocfilehash: 4052a9c8614a17c3b5cdd871ad78be8cc3258c5a
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 3bacec27f5253741b340688374d64402fdbc2836
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202597"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610394"
 ---
 # <a name="install-and-configure-postgresql-on-azure"></a>Installera och konfigurera PostgreSQL på Azure
 PostgreSQL är en avancerad databas med öppen källkod som liknar Oracle och DB2. Den innehåller företags klara funktioner som full syra efterlevnad, tillförlitlig transaktions bearbetning och samtidighet med flera versioner. Det stöder också standarder som ANSI SQL och SQL/with (inklusive externa data omslutningar för Oracle, MySQL, MongoDB och många andra). Den är mycket utöknings bar med stöd för över 12 procedur språk, GIN-och register index, spatiala data stöd och flera NoSQL-liknande funktioner för JSON-eller nyckel värdebaserade program.
@@ -35,7 +35,7 @@ Anslut till den virtuella Linux-dator som du skapade via SparaTillFil. Om det h�
 1. Kör följande kommando för att växla till roten (admin):
 
     ```console
-    # sudo su -
+    sudo su -
     ```
 
 2. Vissa distributioner har beroenden som du måste installera innan du installerar PostgreSQL. Sök efter din distribution i listan och kör lämpligt kommando:
@@ -43,27 +43,27 @@ Anslut till den virtuella Linux-dator som du skapade via SparaTillFil. Om det h�
    * Red Hat Base Linux:
 
         ```console
-        # yum install readline-devel gcc make zlib-devel openssl openssl-devel libxml2-devel pam-devel pam  libxslt-devel tcl-devel python-devel -y
+        yum install readline-devel gcc make zlib-devel openssl openssl-devel libxml2-devel pam-devel pam  libxslt-devel tcl-devel python-devel -y
         ```
 
    * Debian Base Linux:
 
         ```console
-        # apt-get install readline-devel gcc make zlib-devel openssl openssl-devel libxml2-devel pam-devel pam libxslt-devel tcl-devel python-devel -y
+        apt-get install readline-devel gcc make zlib-devel openssl openssl-devel libxml2-devel pam-devel pam libxslt-devel tcl-devel python-devel -y
         ```
 
    * SUSE Linux:
 
         ```console
-        # zypper install readline-devel gcc make zlib-devel openssl openssl-devel libxml2-devel pam-devel pam  libxslt-devel tcl-devel python-devel -y
+        zypper install readline-devel gcc make zlib-devel openssl openssl-devel libxml2-devel pam-devel pam  libxslt-devel tcl-devel python-devel -y
         ```
 
 3. Ladda ned PostgreSQL till rot katalogen och packa sedan upp paketet:
 
     ```console
-    # wget https://ftp.postgresql.org/pub/source/v9.3.5/postgresql-9.3.5.tar.bz2 -P /root/
+    wget https://ftp.postgresql.org/pub/source/v9.3.5/postgresql-9.3.5.tar.bz2 -P /root/
 
-    # tar jxvf  postgresql-9.3.5.tar.bz2
+    tar jxvf  postgresql-9.3.5.tar.bz2
     ```
 
     Ovanstående är ett exempel. Du kan hitta den mer detaljerade nedladdnings adressen i [indexet för/pub/source/](https://ftp.postgresql.org/pub/source/).
@@ -71,15 +71,15 @@ Anslut till den virtuella Linux-dator som du skapade via SparaTillFil. Om det h�
 4. Starta versionen genom att köra följande kommandon:
 
     ```console
-    # cd postgresql-9.3.5
+    cd postgresql-9.3.5
 
-    # ./configure --prefix=/opt/postgresql-9.3.5
+    ./configure --prefix=/opt/postgresql-9.3.5
     ```
 
 5. Om du vill skapa allt som kan skapas, inklusive dokumentationen (HTML-och man-sidor) och ytterligare moduler ( `contrib` ), kör du följande kommando i stället:
 
     ```console
-    # gmake install-world
+    gmake install-world
     ```
 
     Du bör få följande bekräftelse meddelande:
@@ -92,23 +92,23 @@ Anslut till den virtuella Linux-dator som du skapade via SparaTillFil. Om det h�
 1. Valfritt Skapa en symbolisk länk för att förkorta PostgreSQL-referensen så att den inte innehåller versions numret:
 
     ```console
-    # ln -s /opt/postgresql-9.3.5 /opt/pgsql
+    ln -s /opt/postgresql-9.3.5 /opt/pgsql
     ```
 
 2. Skapa en katalog för databasen:
 
     ```console
-    # mkdir -p /opt/pgsql_data
+    mkdir -p /opt/pgsql_data
     ```
 
 3. Skapa en icke-rot användare och ändra användarens profil. Växla sedan till den nya användaren (kallas *postgres* i vårt exempel):
 
     ```console
-    # useradd postgres
+    useradd postgres
    
-    # chown -R postgres.postgres /opt/pgsql_data
+    chown -R postgres.postgres /opt/pgsql_data
    
-    # su - postgres
+    su - postgres
     ```
    
    > [!NOTE]
@@ -135,13 +135,13 @@ Anslut till den virtuella Linux-dator som du skapade via SparaTillFil. Om det h�
 5. Kör *bash_profile* -filen:
 
     ```console
-    $ source .bash_profile
+    source .bash_profile
     ```
 
 6. Verifiera installationen med hjälp av följande kommando:
 
     ```console
-    $ which psql
+    which psql
     ```
 
     Om installationen lyckas visas följande svar:
@@ -153,13 +153,13 @@ Anslut till den virtuella Linux-dator som du skapade via SparaTillFil. Om det h�
 7. Du kan också kontrol lera PostgreSQL-versionen:
 
     ```sql
-    $ psql -V
+    psql -V
     ```
 
 8. Initiera databasen:
 
     ```console
-    $ initdb -D $PGDATA -E UTF8 --locale=C -U postgres -W
+    initdb -D $PGDATA -E UTF8 --locale=C -U postgres -W
     ```
 
     Du bör få följande utdata:
@@ -172,17 +172,17 @@ Anslut till den virtuella Linux-dator som du skapade via SparaTillFil. Om det h�
 Kör följande kommandon:
 
 ```console
-# cd /root/postgresql-9.3.5/contrib/start-scripts
+cd /root/postgresql-9.3.5/contrib/start-scripts
 
-# cp linux /etc/init.d/postgresql
+cp linux /etc/init.d/postgresql
 ```
 
 Ändra två variabler i/etc/init.d/postgresql-filen. Prefixet anges till installations Sök vägen för PostgreSQL: **/opt/pgsql**. PGDATA har angetts till data lagrings Sök vägen för PostgreSQL: **/opt/pgsql_data**.
 
 ```config
-# sed -i '32s#usr/local#opt#' /etc/init.d/postgresql
+sed -i '32s#usr/local#opt#' /etc/init.d/postgresql
 
-# sed -i '35s#usr/local/pgsql/data#opt/pgsql_data#' /etc/init.d/postgresql
+sed -i '35s#usr/local/pgsql/data#opt/pgsql_data#' /etc/init.d/postgresql
 ```
 
 ![Skärm bild som visar installationsmedia och data katalogen.](./media/postgresql-install/no2.png)
@@ -190,19 +190,19 @@ Kör följande kommandon:
 Ändra filen för att göra den körbar:
 
 ```console
-# chmod +x /etc/init.d/postgresql
+chmod +x /etc/init.d/postgresql
 ```
 
 Starta PostgreSQL:
 
 ```console
-# /etc/init.d/postgresql start
+/etc/init.d/postgresql start
 ```
 
 Kontrol lera om slut punkten för PostgreSQL är på:
 
 ```console
-# netstat -tunlp|grep 1999
+netstat -tunlp|grep 1999
 ```
 
 Du bör se följande utdata:
@@ -213,19 +213,19 @@ Du bör se följande utdata:
 Växla till postgres-användaren en gång igen:
 
 ```console
-# su - postgres
+su - postgres
 ```
 
 Skapa en postgres-databas:
 
 ```console
-$ createdb events
+createdb events
 ```
 
 Anslut till händelse databasen som du nyss skapade:
 
 ```console
-$ psql -d events
+psql -d events
 ```
 
 ## <a name="create-and-delete-a-postgres-table"></a>Skapa och ta bort en postgres-tabell

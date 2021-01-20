@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 10/20/2020
-ms.openlocfilehash: e87c9efc910d08307d40d42e58f8272a01902a41
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: b351be1e7212dc9923f701599dd951a73254afe0
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96554272"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610377"
 ---
 # <a name="role-based-access-control-in-azure-purviews-data-plane"></a>Rollbaserad åtkomst kontroll i Azure dataavdelningens kontrolls data plan
 
@@ -31,9 +31,9 @@ Azure avdelningens kontroll definierar en uppsättning fördefinierade data Plan
 
 ## <a name="understanding-how-to-use-azure-purviews-data-plane-roles"></a>Förstå hur du använder data Plans roller i Azure avdelningens kontroll
 
-När ett Azure avdelningens kontroll-konto skapas behandlas skaparen som om de befinner sig i båda rollerna avdelningens kontroll data curator och avdelningens kontroll Data Source Administrator. Men kontots skapare är inte tilldelad till dessa roller i roll arkivet. Azure avdelningens kontroll känner av att huvud kontot är skaparen av kontot och utökar dessa funktioner till dem baserat på deras identitet.
+När ett Azure avdelningens kontroll-konto skapas behandlas skaparen som om de befinner sig i båda rollerna avdelningens kontroll data curator och avdelningens kontroll Data Source Administrator. Men skaparen tilldelas inte dessa roller i rollarkivet. Azure Purview vet att skaparen är huvudansvarig för kontot och utökar dessa funktioner till skaparen utifrån skaparens identitet.
 
-Alla andra användare kan bara använda Azure avdelningens kontroll-kontot om de placeras i minst en av dessa roller. Det innebär att när ett Azure avdelningens kontroll-konto skapas, kan ingen av de som skapar åtkomst till kontot eller använda dess API: er tills de placeras i en eller flera av de tidigare definierade rollerna.
+Alla andra användare kan bara använda Azure Purview-kontot om de har tilldelats minst en av dessa roller. Det innebär att när ett Azure avdelningens kontroll-konto skapas, kan ingen av de som skapar åtkomst till kontot eller använda dess API: er tills de placeras i en eller flera av de tidigare definierade rollerna.
 
 Observera att avdelningens kontroll-rollen administratör för data källa har två scenarier som stöds. Det första scenariot är för användare som redan avdelningens kontroll data läsare eller avdelningens kontroll data Curators som också måste kunna skapa genomsökningar. Dessa användare måste finnas i två roller, minst en av avdelningens kontroll data Reader-eller avdelningens kontroll-data curator och placeras i rollen avdelningens kontroll data source administratör.
 
@@ -77,8 +77,8 @@ För användare som har till gång till företagets [Azure Portal](https://porta
 |Jag måste aktivera ett huvud namn för tjänsten eller annan programmerings identitet för att kunna konfigurera och övervaka genomsökningar i Azure avdelningens kontroll utan att ge program identiteten åtkomst till katalogens information |Avdelningens kontroll rollen som administratör för data Källa|
 |Jag måste ställa in användare i roller i Azure avdelningens kontroll | Ägare eller administratör för användar åtkomst |
 
-Gå vidare till nästa artikel om du vill lära dig hur du lägger till ett säkerhets objekt till en roll.
+Mer information om hur du lägger till ett säkerhets objekt i en roll finns i [snabb start: skapa ett Azure avdelningens kontroll-konto](create-catalog-portal.md) .
 
 ## <a name="next-steps"></a>Nästa steg
 
-* [Snabb start: skapa ett Azure avdelningens kontroll-konto](create-catalog-portal.md)
+* [Datainsikter](concept-insights.md)

@@ -1,5 +1,5 @@
 ---
-title: Funktions teknik i data vetenskap – team data science process
+title: Funktions teknik i Machine Learning – team data science process
 description: Lär dig mer om funktions teknik och dess roll i data förbättrings processen för Machine Learning.
 services: machine-learning
 author: marktab
@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.date: 05/14/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath, contperf-fy20q4
-ms.openlocfilehash: 7cf97edcb2f2f7a23d5c899194d497deade1f507
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: b20a6744644678879fedf44e960854f558eb0f03
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97031869"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610445"
 ---
-# <a name="feature-engineering-in-data-science"></a>Funktions teknik i data vetenskap
+# <a name="feature-engineering-in-machine-learning"></a>Funktions teknik i Machine Learning
 
 I den här artikeln får du lära dig mer om funktions teknik och dess roll i att förbättra data i Machine Learning. Lär dig mer om exempel som ritats från [Azure Machine Learning Studio (klassiska)](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio) experiment. 
 

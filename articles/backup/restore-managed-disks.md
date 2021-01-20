@@ -3,12 +3,12 @@ title: Återställa Azure-Managed Disks
 description: Lär dig hur du återställer Azure-Managed Disks från Azure Portal.
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: 043a10a7359c95529ff1c4dcc181ea4aba75cb5f
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: 848a7476b1c5095d4e4d3156d4c7ce33da777090
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98558382"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98611142"
 ---
 # <a name="restore-azure-managed-disks-in-preview"></a>Återställa Azure Managed Disks (för hands version)
 
@@ -65,6 +65,8 @@ Följande krav krävs för att utföra en återställnings åtgärd:
     >När roll tilldelningarna visas korrekt på portalen kan det ta ungefär 15 minuter innan behörigheten tillämpas på säkerhets kopierings valvets hanterade identitet.
     >
     >Under schemalagda säkerhets kopieringar eller en säkerhets kopiering på begäran lagrar Azure Backup diskens stegvisa ögonblicks bilder i den ögonblicks bilds resurs grupp som angavs när säkerhets kopian av disken konfigurerades. Azure Backup använder dessa stegvisa ögonblicks bilder under återställnings åtgärden. Om ögonblicks bilderna tas bort eller flyttas från resurs gruppen för ögonblicks bilder eller om roll tilldelningarna för säkerhets kopierings valvet har återkallats på resurs gruppen för ögonblicks bilder, kommer återställningen att Miss förflyttning
+
+1. Om disken som ska återställas är krypterad med [Kundhanterade nycklar (CMK)](https://docs.microsoft.com/azure/virtual-machines/disks-enable-customer-managed-keys-portal) eller med hjälp av [Double Encryption med hjälp av plattforms hanterade nycklar och Kundhanterade nycklar](https://docs.microsoft.com/azure/virtual-machines/disks-enable-double-encryption-at-rest-portal), tilldelar du sedan rollen **läsare** behörighet till säkerhets kopierings valvets hanterade identitet på **disk krypterings uppsättnings** resursen.
 
 När förutsättningarna är uppfyllda följer du stegen nedan för att utföra återställnings åtgärden.
 

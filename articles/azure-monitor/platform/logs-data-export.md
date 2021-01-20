@@ -7,12 +7,12 @@ ms.custom: references_regions, devx-track-azurecli
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2020
-ms.openlocfilehash: 8e310ea487818f6d82869fe1973c8e9ed0b04195
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: d9ae9cae1a0a8014f007cd7c4a3d1f97f27128bb
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97797119"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610972"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Log Analytics arbets ytans data export i Azure Monitor (förhands granskning)
 Med Log Analytics data export för arbets yta i Azure Monitor kan du kontinuerligt exportera data från valda tabeller i din Log Analytics arbets yta till ett Azure Storage-konto eller Azure-Event Hubs som det samlas in. Den här artikeln innehåller information om den här funktionen och hur du konfigurerar data export i dina arbets ytor.
@@ -35,13 +35,16 @@ Log Analytics data export för arbets ytan exporterar kontinuerligt data från e
 
 ## <a name="current-limitations"></a>Aktuella begränsningar
 
-- Konfigurationen kan för närvarande endast utföras med CLI-eller REST-begäranden. Du kan inte använda Azure Portal eller PowerShell.
+- Konfigurationen kan utföras med CLI-eller REST-begäranden för närvarande. Azure Portal eller PowerShell stöds inte än.
 - ```--export-all-tables```Alternativet i CLI och rest stöds inte och kommer att tas bort. Du bör ange listan över tabeller i export regler uttryckligen.
-- Tabeller som stöds är för närvarande begränsade i avsnittet [tabeller som stöds](#supported-tables) nedan. Om data export regeln innehåller en tabell som inte stöds kommer åtgärden att lyckas, men inga data exporteras för tabellen. Om data export regeln innehåller en tabell som inte finns, kommer den inte att fungera med felet ```Table <tableName> does not exist in the workspace.```
+- Tabeller som stöds är för närvarande begränsade i avsnittet [tabeller som stöds](#supported-tables) nedan. 
+- Om data export regeln innehåller en tabell som inte stöds kommer åtgärden att lyckas, men inga data exporteras för tabellen förrän tabellen har stöd för. 
+- Om data export regeln innehåller en tabell som inte finns kommer den att Miss ändå med felet ```Table <tableName> does not exist in the workspace``` .
 - Din Log Analytics arbets yta kan finnas i vilken region som helst, förutom följande:
   - Schweiz, norra
   - Schweiz, västra
   - Azure Government-regioner
+- Du kan skapa två export regler i en arbets yta – i kan vara en regel till händelsehubben och en regel för lagrings kontot.
 - Mål lagrings kontot eller händelsehubben måste finnas i samma region som Log Analytics-arbetsytan.
 - Namn på tabeller som ska exporteras får inte vara längre än 60 tecken för ett lagrings konto och högst 47 tecken till en Event Hub. Tabeller med längre namn exporteras inte.
 
@@ -115,16 +118,16 @@ Om du har konfigurerat ditt lagrings konto för att tillåta åtkomst från vald
 
 
 ### <a name="create-or-update-data-export-rule"></a>Skapa eller uppdatera data export regel
-En data export regel definierar data som ska exporteras för en uppsättning tabeller till ett enda mål. Du kan skapa en regel för varje mål.
+En data export regel definierar data som ska exporteras för en uppsättning tabeller till ett enda mål. Du kan skapa en enskild regel för varje mål.
 
 
 # <a name="azure-portal"></a>[Azure-portalen](#tab/portal)
 
-Saknas
+Ej tillämpligt
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Saknas
+Ej tillämpligt
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -402,11 +405,11 @@ Använd följande kommando för att skapa en data export regel för en speciell 
 
 # <a name="azure-portal"></a>[Azure-portalen](#tab/portal)
 
-Saknas
+Ej tillämpligt
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Saknas
+Ej tillämpligt
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -426,7 +429,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 
 # <a name="template"></a>[Mall](#tab/json)
 
-Saknas
+Ej tillämpligt
 
 ---
 
@@ -434,11 +437,11 @@ Saknas
 
 # <a name="azure-portal"></a>[Azure-portalen](#tab/portal)
 
-Saknas
+Ej tillämpligt
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Saknas
+Ej tillämpligt
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -481,11 +484,11 @@ Export regler kan inaktive ras så att du kan stoppa exporten när du inte behö
 
 # <a name="azure-portal"></a>[Azure-portalen](#tab/portal)
 
-Saknas
+Ej tillämpligt
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Saknas
+Ej tillämpligt
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -505,7 +508,7 @@ DELETE https://management.azure.com/subscriptions/<subscription-id>/resourcegrou
 
 # <a name="template"></a>[Mall](#tab/json)
 
-Saknas
+Ej tillämpligt
 
 ---
 
@@ -513,11 +516,11 @@ Saknas
 
 # <a name="azure-portal"></a>[Azure-portalen](#tab/portal)
 
-Saknas
+Ej tillämpligt
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Saknas
+Ej tillämpligt
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -537,7 +540,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 
 # <a name="template"></a>[Mall](#tab/json)
 
-Saknas
+Ej tillämpligt
 
 ---
 

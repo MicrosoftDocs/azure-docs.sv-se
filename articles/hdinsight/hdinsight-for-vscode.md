@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 10/20/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: c32f90221a73d04fd6c54c8332826232d0e6a6f3
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 30c13adfebb911e443fb042821e09628da3b9405
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968542"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610989"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>Använda Spark & Hive-verktyg för Visual Studio Code
 
@@ -21,7 +21,7 @@ Lär dig hur du använder Apache Spark & Hive-verktyg för Visual Studio Code. A
 
 Spark & Hive-verktyg kan installeras på plattformar som stöds av Visual Studio Code. Observera följande krav för olika plattformar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Följande objekt krävs för att slutföra stegen i den här artikeln:
 
@@ -211,31 +211,30 @@ Använd det interaktiva kommandot PySpark för att skicka frågorna enligt följ
 
    ![pyspark har installerats](./media/hdinsight-for-vscode/pyspark-kernel-installed-successfully.png)
 
-7. Använd kommando tolken för att köra **pip install numpy = = 1.19.3** och Läs sedan in VSCode-fönstret igen.
 
-8. I meny raden navigerar du till **Visa**  >  **kommando paletten...** eller använder tangenterna **Shift + Ctrl + P** och anger **python: Välj tolk för att starta Jupyter-servern**.
+7. I meny raden navigerar du till **Visa**  >  **kommando paletten...** eller använder tangenterna **Shift + Ctrl + P** och anger **python: Välj tolk för att starta Jupyter-servern**.
 
    ![Välj tolken för att starta Jupyter-servern](./media/hdinsight-for-vscode/select-interpreter-to-start-jupyter-server.png)
 
-9. Välj alternativet python nedan.
+8. Välj alternativet python nedan.
 
    ![Välj alternativet nedan](./media/hdinsight-for-vscode/choose-the-below-option.png)
     
-10. I meny raden navigerar du till **Visa**  >  **kommando paletten...** eller använder tangenterna **Shift + Ctrl + P** och anger **utvecklare: Läs in fönstret på nytt**.
+9. I meny raden navigerar du till **Visa**  >  **kommando paletten...** eller använder tangenterna **Shift + Ctrl + P** och anger **utvecklare: Läs in fönstret på nytt**.
 
     ![Läs in fönstret igen](./media/hdinsight-for-vscode/reload-window.png)
 
-11. [Anslut](#connect-to-an-azure-account) till ditt Azure-konto eller länka ett kluster om du inte redan har gjort det.
+10. [Anslut](#connect-to-an-azure-account) till ditt Azure-konto eller länka ett kluster om du inte redan har gjort det.
 
-12. Markera all kod, högerklicka på skript redigeraren och välj **Spark: PySpark Interactive/Synapse: PySpark Interactive** för att skicka frågan. 
+11. Markera all kod, högerklicka på skript redigeraren och välj **Spark: PySpark Interactive/Synapse: PySpark Interactive** för att skicka frågan. 
 
     ![pyspark interaktiv snabb meny](./media/hdinsight-for-vscode/pyspark-interactive-right-click.png)
 
-13. Välj klustret, om du inte har angett ett standard kluster. Efter en liten stund visas det **interaktiva python** -resultatet på en ny flik. Klicka på PySpark för att växla kernel till **PySpark/Synapse PySpark** och koden kommer att köras. Om du vill växla till Synapse Pyspark-kärnan, så uppmuntras det att inaktivera automatiska inställningar i Azure Portal. Annars kan det ta lång tid att aktivera klustret och ställa in Synapse-kärnan för första gången den används. Om verktygen också låter dig skicka in ett kodblock i stället för hela skript filen med hjälp av snabb menyn:
+12. Välj klustret, om du inte har angett ett standard kluster. Efter en liten stund visas det **interaktiva python** -resultatet på en ny flik. Klicka på PySpark för att växla kernel till **PySpark/Synapse PySpark** och koden kommer att köras. Om du vill växla till Synapse Pyspark-kärnan, så uppmuntras det att inaktivera automatiska inställningar i Azure Portal. Annars kan det ta lång tid att aktivera klustret och ställa in Synapse-kärnan för första gången den används. Om verktygen också låter dig skicka in ett kodblock i stället för hela skript filen med hjälp av snabb menyn:
 
     ![pyspark interaktiva python-fönster](./media/hdinsight-for-vscode/pyspark-interactive-python-interactive-window.png)
 
-14. Ange **%% info** och tryck sedan på SKIFT + RETUR för att visa jobb informationen (valfritt):
+13. Ange **%% info** och tryck sedan på SKIFT + RETUR för att visa jobb informationen (valfritt):
 
     ![pyspark interaktiva Visa jobb information](./media/hdinsight-for-vscode/pyspark-interactive-view-job-information.png)
 
@@ -353,7 +352,7 @@ Skicka in en fil och Lägg märke till att `.vscode` mappen automatiskt läggs t
   
   **Brödtext i begäran**
 
-  | name | description | typ |
+  | name | beskrivning | typ |
   | --- | --- | --- |
   | file | Fil som innehåller det program som ska köras | Sökväg (obligatoriskt) |
   | proxyUser | Användare som ska personifieras när jobbet körs | Sträng |
@@ -374,7 +373,7 @@ Skicka in en fil och Lägg märke till att `.vscode` mappen automatiskt läggs t
 
   **Svars text** Det skapade batch-objektet.
 
-  | name | description | typ |
+  | name | beskrivning | typ |
   | --- | ---| --- |
   | ID | Sessions-ID | Int |
   | appId | Programmets ID för den här sessionen | Sträng |

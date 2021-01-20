@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 08/19/2020
-ms.openlocfilehash: 048068a74151bb986392b5cb27787385fc0f5363
-ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
+ms.date: 01/19/2021
+ms.openlocfilehash: 7013a4ab1becd6108d30d8369f1f72bcb3e55c37
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95315540"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98611074"
 ---
 # <a name="data-collection-rules-in-azure-monitor-preview"></a>Data insamlings regler i Azure Monitor (för hands version)
 Data insamlings regler (DCR) definierar data som kommer till Azure Monitor och anger var data ska skickas eller lagras. Den här artikeln innehåller en översikt över data insamlings regler, inklusive deras innehåll och struktur och hur du kan skapa och arbeta med dem.
@@ -53,10 +53,20 @@ Begränsningar som gäller för varje data insamlings regel finns i [Azure Monit
 
 
 ## <a name="create-a-dcr"></a>Skapa en DCR
-Det finns för närvarande två tillgängliga metoder för att skapa en DCR:
+Du kan för närvarande använda någon av följande metoder för att skapa en DCR:
 
 - [Använd Azure Portal](data-collection-rule-azure-monitor-agent.md) för att skapa en data insamlings regel och associera den med en eller flera virtuella datorer.
 - Redigera data insamlings regeln direkt i JSON och [skicka med REST API](/rest/api/monitor/datacollectionrules).
+- Skapa DCR och associationer med [Azure CLI](https://github.com/Azure/azure-cli-extensions/blob/master/src/monitor-control-service/README.md).
+- Skapa DCR och associationer med Azure PowerShell.
+  - [Get-AzDataCollectionRule](https://github.com/Azure/azure-powershell/blob/master/src/Monitor/Monitor/help/Get-AzDataCollectionRule.md)
+  - [New-AzDataCollectionRule](https://github.com/Azure/azure-powershell/blob/master/src/Monitor/Monitor/help/New-AzDataCollectionRule.md)
+  - [Set-AzDataCollectionRule](https://github.com/Azure/azure-powershell/blob/master/src/Monitor/Monitor/help/Set-AzDataCollectionRule.md)
+  - [Uppdatera – AzDataCollectionRule](https://github.com/Azure/azure-powershell/blob/master/src/Monitor/Monitor/help/Update-AzDataCollectionRule.md)
+  - [Remove-AzDataCollectionRule](https://github.com/Azure/azure-powershell/blob/master/src/Monitor/Monitor/help/Remove-AzDataCollectionRule.md)
+  - [Get-AzDataCollectionRuleAssociation](https://github.com/Azure/azure-powershell/blob/master/src/Monitor/Monitor/help/Get-AzDataCollectionRuleAssociation.md)
+  - [New-AzDataCollectionRuleAssociation](https://github.com/Azure/azure-powershell/blob/master/src/Monitor/Monitor/help/New-AzDataCollectionRuleAssociation.md)
+  - [Remove-AzDataCollectionRuleAssociation](https://github.com/Azure/azure-powershell/blob/master/src/Monitor/Monitor/help/Remove-AzDataCollectionRuleAssociation.md)
 
 ## <a name="sample-data-collection-rule"></a>Exempel på data insamlings regel
 Exempel data insamlings regeln nedan är för virtuella datorer med Azures hanterings agent och har följande information:

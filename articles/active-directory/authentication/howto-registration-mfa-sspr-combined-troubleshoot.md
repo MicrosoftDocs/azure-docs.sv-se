@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: troubleshooting
-ms.date: 04/15/2020
+ms.date: 01/19/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ba1e280e3c14a24e33246799ca0d7ef8221294f
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: db87887fc2b51c7cb8cb300eb8e711d3ae9b6ac8
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96741702"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610797"
 ---
 # <a name="troubleshooting-combined-security-information-registration"></a>Felsöka kombinerad säkerhets informations registrering
 
@@ -24,7 +24,7 @@ Informationen i den här artikeln är avsedd att leda administratörer som har f
 
 ## <a name="audit-logs"></a>Granskningsloggar
 
-Händelserna som loggas för kombinerad registrering finns i kategorin autentiseringsmetoder i gransknings loggarna för Azure AD.
+Händelserna som loggas för kombinerad registrering finns i tjänsten autentiseringsmetoder i gransknings loggarna för Azure AD.
 
 ![Azure AD audit logs-gränssnittet visar registrerings händelser](media/howto-registration-mfa-sspr-combined-troubleshoot/combined-security-info-audit-log.png)
 
@@ -32,14 +32,14 @@ I följande tabell visas alla gransknings händelser som har genererats vid komb
 
 | Aktivitet | Status | Orsak | Description |
 | --- | --- | --- | --- |
-| Användaren registrerade all nödvändig säkerhets information | Success | Användaren registrerade all nödvändig säkerhets information. | Den här händelsen inträffar när en användare har slutfört registreringen.|
+| Användaren registrerade all nödvändig säkerhets information | Klart | Användaren registrerade all nödvändig säkerhets information. | Den här händelsen inträffar när en användare har slutfört registreringen.|
 | Användaren registrerade all nödvändig säkerhets information | Fel | Användaren avbröt registreringen av säkerhets information. | Den här händelsen inträffar när en användare avbryter registreringen från avbrotts läge.|
-| Användarens registrerade säkerhets information | Success | *Metod* för registrerad användare. | Den här händelsen inträffar när en användare registrerar en enskild metod. *Metoden* kan vara en Authenticator-app, telefon, e-post, säkerhets frågor, applösenord, alternativ telefon och så vidare.| 
-| Användare granskad säkerhets information | Success | Användaren har granskat säkerhets informationen. | Den här händelsen inträffar när en användare väljer **ser bra ut** på sidan granskning av säkerhets information.|
+| Användarens registrerade säkerhets information | Klart | *Metod* för registrerad användare. | Den här händelsen inträffar när en användare registrerar en enskild metod. *Metoden* kan vara en Authenticator-app, telefon, e-post, säkerhets frågor, applösenord, alternativ telefon och så vidare.| 
+| Användare granskad säkerhets information | Klart | Användaren har granskat säkerhets informationen. | Den här händelsen inträffar när en användare väljer **ser bra ut** på sidan granskning av säkerhets information.|
 | Användare granskad säkerhets information | Fel | Användaren kunde inte granska säkerhets informationen. | Den här händelsen inträffar när en användare väljer **ser bra ut** på sidan granskning av säkerhets information men det går inte att utföra något på Server delen.|
-| Användaren tog bort säkerhets information | Success | *Metoden* User Deleted. | Den här händelsen inträffar när en användare tar bort en enskild metod. *Metoden* kan vara en Authenticator-app, telefon, e-post, säkerhets frågor, applösenord, alternativ telefon och så vidare.|
+| Användaren tog bort säkerhets information | Klart | *Metoden* User Deleted. | Den här händelsen inträffar när en användare tar bort en enskild metod. *Metoden* kan vara en Authenticator-app, telefon, e-post, säkerhets frågor, applösenord, alternativ telefon och så vidare.|
 | Användaren tog bort säkerhets information | Fel | Användaren kunde inte ta bort *metoden*. | Den här händelsen inträffar när en användare försöker ta bort en metod men försöket Miss lyckas av någon anledning. *Metoden* kan vara en Authenticator-app, telefon, e-post, säkerhets frågor, applösenord, alternativ telefon och så vidare.|
-| Användaren ändrade standard säkerhets information | Success | Användaren ändrade standard säkerhets informationen för *metoden*. | Den här händelsen inträffar när en användare ändrar standard metoden. *Metoden* kan vara meddelandeautentisering, en kod från min Authenticator-app eller token, anropa + X XXXXXXXXXX, text A kod till + x xxxxxxxxx och så vidare.|
+| Användaren ändrade standard säkerhets information | Klart | Användaren ändrade standard säkerhets informationen för *metoden*. | Den här händelsen inträffar när en användare ändrar standard metoden. *Metoden* kan vara meddelandeautentisering, en kod från min Authenticator-app eller token, anropa + X XXXXXXXXXX, text A kod till + x xxxxxxxxx och så vidare.|
 | Användaren ändrade standard säkerhets information | Fel | Användaren kunde inte ändra standard säkerhets informationen för *metoden*. | Den här händelsen inträffar när en användare försöker ändra standard metoden, men försöket Miss lyckas av någon anledning. *Metoden* kan vara meddelandeautentisering, en kod från min Authenticator-app eller token, anropa + X XXXXXXXXXX, text A kod till + x xxxxxxxxx och så vidare.|
 
 ## <a name="troubleshooting-interrupt-mode"></a>Fel sökning av avbrotts läge
