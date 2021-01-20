@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 12/15/2020
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1826edb31c442fb10b8053433ec01ee5abad0eb2
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.openlocfilehash: 8bd919d2896b187d32ad5347e6b8729ccb8555de
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98109375"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98612951"
 ---
 <a name="HOLTop"></a>
 
@@ -112,7 +112,7 @@ I programmets `Main` metod lägger du till anrop för de metoder som används i 
 
 Följande klasser och gränssnitt hanterar några av de viktigaste funktionerna i Visuellt innehåll .NET SDK.
 
-|Namn|Beskrivning|
+|Name|Beskrivning|
 |---|---|
 | [ComputerVisionClient](/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-dotnet) | Den här klassen krävs för alla Visuellt innehåll-funktioner. Du instansierar det med din prenumerations information och använder den för att utföra de flesta avbildnings åtgärder.|
 |[ComputerVisionClientExtensions](/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.computervisionclientextensions?view=azure-dotnet)| Den här klassen innehåller ytterligare metoder för **ComputerVisionClient**.|
@@ -255,24 +255,9 @@ Spara en referens till URL: en för den avbildning som du vill extrahera text fr
 
 ### <a name="call-the-read-api"></a>Anropa Read API
 
-Definiera den nya metoden för att läsa text. Lägg till koden nedan, som anropar **ReadAsync** -metoden för den aktuella avbildningen. Detta returnerar ett åtgärds-ID och startar en asynkron process för att läsa innehållet i avbildningen.
+Lägg till följande metod som anropar metoden **ReadAsync** för den aktuella avbildningen. Detta returnerar ett åtgärds-ID och startar en asynkron process för att läsa innehållet i avbildningen. Hämta sedan det åtgärds-ID som returnerades från **ReadAsync** -anropet och Använd det för att avsöka tjänsten efter resultatet av åtgärden. Skriv slutligen den extraherade texten till-konsolen.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_read_url)]
-
-### <a name="get-read-results"></a>Hämta Läs resultat
-
-Hämta sedan det åtgärds-ID som returnerades från **ReadAsync** -anropet och Använd det för att fråga tjänsten efter åtgärds resultat. Följande kod kontrollerar åtgärden tills resultatet returneras. Den skriver sedan ut de extraherade text data till-konsolen.
-
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_read_response)]
-
-### <a name="display-read-results"></a>Visa Läs resultat
-
-Lägg till följande kod för att parsa och Visa hämtade text data och slutför metod definitionen.
-
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_read_display)]
-
-> [!div class="nextstepaction"]
-> [Jag](?success=read-printed-handwritten-text#run-the-application) [fick ett problem](https://www.research.net/r/7QYZKHL?issue=read-printed-handwritten-text) med att läsa texten
 
 ## <a name="run-the-application"></a>Kör programmet
 
@@ -289,8 +274,6 @@ dotnet run
 ```
 
 ---
-> [!div class="nextstepaction"]
-> [Jag körde det program](?success=run-the-application#clean-up-resources) [Jag stötte på ett problem](https://www.research.net/r/7QYZKHL?issue=run-the-application)
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
@@ -299,14 +282,10 @@ Om du vill rensa och ta bort en Cognitive Services prenumeration kan du ta bort 
 * [Portal](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-> [!div class="nextstepaction"]
-> [Jag har rensat resurser](?success=clean-up-resources#next-steps) som [jag stött på ett problem](https://www.research.net/r/7QYZKHL?issue=clean-up-resources) 
-
 ## <a name="next-steps"></a>Nästa steg
 
 > [!div class="nextstepaction"]
 >[API för visuellt innehåll referens (.NET)](/dotnet/api/overview/azure/cognitiveservices/client/computervision?view=azure-dotnet)
-
 
 * [Vad är visuellt innehåll?](../../overview.md)
 * Källkoden för det här exemplet finns på [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/ComputerVision/ComputerVisionQuickstart.cs).

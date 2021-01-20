@@ -4,12 +4,12 @@ ms.service: application-gateway
 ms.topic: include
 ms.date: 03/04/2020
 ms.author: victorh
-ms.openlocfilehash: ff97aa6c6f04ad41ba6e1b986f3cc0734ec7a326
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 4c7c68bf690097004f2f3310a8d89ce954d7f87f
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92526163"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98612909"
 ---
 | Resurs | Gräns | Anteckning |
 | --- | --- | --- |
@@ -32,6 +32,9 @@ ms.locfileid: "92526163"
 | URL-kartor per lyssnare |1 | |
 | Maximalt antal Sök vägs baserade regler per URL-mappning|100||
 | Omdirigera konfigurationer |100<sup>1</sup>| |
+| Antal omskrivnings regel uppsättningar |400| |
+| Antal huvud-eller URL-konfiguration per omskrivning regel uppsättning|40| |
+| Antal villkor per omskrivning av regel uppsättning|40| |
 | Samtidiga WebSocket-anslutningar |20 000 för medium Gateway<br> Stora gatewayer 50 000| |
 | Maximal URL-längd|32 KB| |
 | Maximal sidhuvud storlek för HTTP/2 |4KB| |
