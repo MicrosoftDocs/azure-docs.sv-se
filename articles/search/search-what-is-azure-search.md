@@ -9,34 +9,34 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 12/17/2020
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 1814555f738f37523c5b23ae729bf20bff62e1f9
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 3f62ab20359273aec6743c27ab46b33027e82b55
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97679526"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98598406"
 ---
 # <a name="what-is-azure-cognitive-search"></a>Vad är Azure Cognitive Search?
 
 Azure Kognitiv sökning ([tidigare kallat "Azure Search"](whats-new.md#new-service-name)) är en moln Sök tjänst som tillhandahåller utvecklares API: er och verktyg för att skapa en omfattande Sök upplevelse över privat, heterogent innehåll i webb-, mobil-och företags program. 
 
-När du skapar en Kognitiv sökning-tjänst får du:
+En Sök tjänst har följande komponenter:
 
-+ En sökmotor som utför indexering och frågekörningen
-+ Beständig lagring av Sök index som du skapar och hanterar
-+ Ett frågespråk för att skriva enkla till komplexa frågor
-+ [AI-drivna anrikninger](cognitive-search-concept-intro.md), skapa sökbart innehåll av bilder, rå text, programfiler
-+ Integrering med andra Azure-tjänster för data, Machine Learning/AI och säkerhet
++ Sökmotor för indexering och körning av frågor
++ Beständig lagring av användardefinierade Sök index
++ Frågespråk för att skriva enkla till komplexa frågor
++ Valfria [AI-baserade anrikninger](cognitive-search-concept-intro.md), skapa sökbart innehåll av bilder, rå text, programfiler
++ Valfri integrering med andra Azure-tjänster för data, Machine Learning/AI och säkerhet
 
 En Sök tjänst är arkitekturad mellan de externa data lager som innehåller dina data som inte har indexerats och en klient-app som skickar förfrågningar till ett sökindex och hanterar svaret.
 
 ![Azure Kognitiv sökning-arkitektur](media/search-what-is-azure-search/azure-search-diagram.svg "Azure Kognitiv sökning-arkitektur")
 
-En Sök tjänst integreras med andra Azure-tjänster i form av *indexerare* som automatiserar data inmatning/hämtning från Azure-datakällor, och *färdighetsuppsättningar* som innehåller förbruknings bara AI från Cognitive Services, till exempel bild-och text analys eller anpassad AI som du skapar i Azure Machine Learning eller omslutning i Azure Functions.
+I enlighet med detta kan sökningen integreras med andra Azure-tjänster i form av *indexerare* som automatiserar data inhämtningen/hämtningen från Azure-datakällor, och *färdighetsuppsättningar* som innehåller förbruknings bara AI från Cognitive Services, till exempel bild-och text analys eller anpassad AI som du skapar i Azure Machine Learning eller omslutning i Azure Functions.
 
 På själva Sök tjänsten är de två primära arbets belastningarna *Indexera* och *fråga*. 
 
-+ Indexeringen ger text till Sök tjänsten och gör den sökbar. Internt bearbetas inkommande text till tokens och lagras i inverterade index för snabba sökningar. 
++ Indexering skriver in text i Sök tjänsten och gör den sökbar. Internt bearbetas inkommande text till tokens och lagras i inverterade index för snabba sökningar. Du kan ladda upp innehåll som är i form av JSON-dokument.
 
   Inom indexering har du möjlighet att lägga till AI- *anrikning* genom [kognitiva kunskaper](cognitive-search-working-with-skillsets.md), antingen fördefinierade från Microsoft eller anpassade kunskaper som du skapar. Den efterföljande analysen och transformeringar kan leda till ny information och strukturer som inte tidigare fanns, vilket ger ett högt verktyg för många Sök-och kunskaps utvinnings scenarier.
 
@@ -48,13 +48,13 @@ Funktionerna exponeras via en enkel [REST API](/rest/api/searchservice/) eller [
 
 Azure Kognitiv sökning lämpar sig väl för följande program scenarier:
 
-+ Konsolidera heterogent innehåll till ett privat, användardefinierat sökindex. Du kan fylla i ett Sök index med strömmar av JSON-dokument från vilken källa som helst. Använd en *indexerare* för att automatisera indexering för källor som stöds i Azure. Kontroll över index schema och uppdaterings schema är en viktig orsak till att använda Kognitiv sökning.
++ Konsolidera heterogent innehåll till ett privat, användardefinierat sökindex.
 
-+ Enkel implementering av sökrelaterade funktioner. API: er för sökning fören klar frågornas konstruktion, fasett navigering, filter (inklusive geo-spatial sökning), synonym mappning, komplettering och relevans-justering. Med hjälp av inbyggda funktioner kan du tillgodose förväntningar på slutanvändare för en Sök upplevelse som liknar de kommersiella sökmotorer för Webbs ökning.
++ Implementera enkelt sökrelaterade funktioner: relevans-justering, fasett-navigering, filter (inklusive geo-spatial sökning), synonym mappning och Autoavsluta.
 
-+ RAW-innehåll är en stor mängd olika text-eller bildfiler eller programfiler som lagras i Azure Blob Storage eller Cosmos DB. Du kan använda [kognitiva kunskaper](cognitive-search-concept-intro.md) under indexeringen för att identifiera och extrahera text, skapa struktur eller skapa ny information, till exempel översatt text eller entiteter.
++ Transformera stora undifferentiated text-eller bildfiler eller programfiler som lagras i Azure Blob Storage eller Cosmos DB till sökbara JSON-dokument. Detta uppnås under index genom [kognitiva färdigheter](cognitive-search-concept-intro.md) som lägger till extern bearbetning.
 
-+ Innehållet behöver språklig eller anpassad text analys. Om du har ett annat innehåll än engelska, stöder Azure Kognitiv sökning både Lucene-analyser och Microsofts naturliga språk processorer. Du kan också konfigurera analys verktyg för att uppnå specialiserad bearbetning av rå data, till exempel att filtrera ut dia kritiska tecken eller identifiera och bevara mönster i strängar.
++ Lägg till språklig eller anpassad text analys. Om du har ett annat innehåll än engelska, stöder Azure Kognitiv sökning både Lucene-analyser och Microsofts naturliga språk processorer. Du kan också konfigurera analys verktyg för att uppnå specialiserad bearbetning av rå data, till exempel att filtrera ut dia kritiska tecken eller identifiera och bevara mönster i strängar.
 
 Mer information om de olika funktionerna finns i [funktioner i Azure kognitiv sökning](search-features-list.md)
 
@@ -62,11 +62,11 @@ Mer information om de olika funktionerna finns i [funktioner i Azure kognitiv s�
 
 En heltäckande utforskning av Core search-funktioner kan uppnås i fyra steg:
 
-1. [**Skapa en Sök tjänst**](search-create-service-portal.md) på den kostnads fria nivån som delas med andra prenumeranter eller en [betald nivå](https://azure.microsoft.com/pricing/details/search/) för dedikerade resurser som endast används av din tjänst. Alla snabbstarter och självstudier kan utföras med den kostnadsfria tjänsten.
+1. [**Skapa en Sök tjänst**](search-create-service-portal.md) på den delade kostnads fria nivån eller på en [fakturerbar nivå](https://azure.microsoft.com/pricing/details/search/) för dedikerade resurser som endast används av din tjänst. Alla snabb starter och självstudier kan utföras på en delad tjänst.
 
-1. [**Skapa ett Sök index**](search-what-is-an-index.md) med hjälp av portalen [REST API](/rest/api/searchservice/create-index). [.NET SDK](search-howto-dotnet-sdk.md)eller en annan SDK. Index-schemat definierar strukturen för sökbart innehåll.
+1. [**Skapa ett Sök index**](search-what-is-an-index.md) med hjälp av portalen, [REST API](/rest/api/searchservice/create-index), [.NET SDK](search-howto-dotnet-sdk.md)eller något annat SDK. Index-schemat definierar strukturen för sökbart innehåll.
 
-1. [**Överför innehåll**](search-what-is-data-import.md) till indexet. Använd ["push"-modellen](tutorial-optimize-indexing-push-api.md) för att skicka JSON-dokument från vilken källa som helst, eller Använd ["pull"-modellen (indexerarna)](search-indexer-overview.md) om dina källdata är i Azure.
+1. [**Överför innehåll**](search-what-is-data-import.md) med hjälp av ["push"-modellen](tutorial-optimize-indexing-push-api.md) för att skicka JSON-dokument från vilken källa som helst, eller Använd ["pull"-modellen (indexerare)](search-indexer-overview.md) om dina källdata finns i Azure.
 
 1. [**Fråga ett index**](search-query-overview.md) med hjälp av [Sök Utforskaren](search-explorer.md) i portalen, [REST API](search-get-started-rest.md), [.NET SDK](/dotnet/api/azure.search.documents.searchclient.search)eller något annat SDK.
 

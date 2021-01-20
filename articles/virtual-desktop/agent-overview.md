@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/16/2020
 ms.author: sefriend
 manager: clarkn
-ms.openlocfilehash: 6450b44e5c7281f0a24fd5000c9feec6e61fa29c
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 325502255e84e38a39ca5b90ee4126354c0d425b
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98540755"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601235"
 ---
 # <a name="get-started-with-the-windows-virtual-desktop-agent"></a>Kom igång med Windows Virtual Desktop-agenten
 
@@ -44,5 +44,4 @@ Den här uppdateringen varar vanligt vis 2-3 minuter på en ny virtuell dator oc
 
 Nu när du har en bättre förståelse för Windows Virtual Desktop-agenten finns här några resurser som kan hjälpa dig att:
 
-- Kolla in avsnittet [Windows-agent uppdateringar för virtuella skriv bord](whats-new.md) om du vill se information om vad den nya agent uppdateringen omfattar varje månad.
 - Om du har problem med agent-eller anslutnings problem kan du titta närmare på [fel söknings guide för Windows Virtual Desktop agent](troubleshoot-agent.md).

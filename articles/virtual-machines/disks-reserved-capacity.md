@@ -7,12 +7,12 @@ ms.date: 01/30/2020
 ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: e3642a621253b79fdfcdd8cb2b648dee534c6758
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: db6575894904e6ced2d4be48fec5961f5b8b8a54
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91968693"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602636"
 ---
 # <a name="reduce-costs-with-azure-disks-reservation"></a>Minska kostnader med Azures diskreservation
 
@@ -69,8 +69,8 @@ Följ dessa steg för att köpa reserverad kapacitet:
 
    |Element  |Beskrivning  |
    |---------|---------|
-   |**Omfång**   |  Hur många prenumerationer kan använda fakturerings förmånen som är associerad med reservationen. Det här värdet anger även hur reservationen tillämpas på vissa prenumerationer. <br/><br/> Om du väljer **delad**tillämpas reservations rabatten på Azure Storage kapacitet i varje prenumeration i din fakturerings kontext. Fakturerings kontexten baseras på hur du registrerade dig för Azure. För företags kunder är det delade omfånget registreringen och innehåller alla prenumerationer i registreringen. För kunder som betalar per användning inkluderar det delade omfånget alla enskilda prenumerationer med priser enligt principen betala per användning som har skapats av konto administratören.  <br/><br/>  Om du väljer **enskild prenumeration**tillämpas reservations rabatten på Azure Storage kapacitet i den valda prenumerationen. <br/><br/> Om du väljer **enskild resurs grupp**tillämpas reservations rabatten på Azure Storage kapacitet i den valda prenumerationen och i den valda resurs gruppen för den aktuella prenumerationen. <br/><br/> Du kan ändra reservations omfånget när du har köpt reservationen.  |
-   |**Prenumeration**  | Den prenumeration som du använder för att betala för Azure Storage reservationen. Betalnings metoden för den valda prenumerationen används för att debitera kostnaderna. Prenumerationen måste vara någon av följande typer:<br/><ul><li> Enterprise-avtal (erbjudande nummer MS-AZR-0017P och MS-AZR-0148P). För en företags prenumeration dras avgifterna från registreringen av betalnings åtagandet eller debiteras som överanvändning.</li><br/><li>Enskild prenumeration med priser enligt principen betala per användning (erbjudande nummer MS-AZR-0003P och MS-AZR-0023P). För en enskild prenumeration med priser enligt principen betala per användning debiteras avgifterna till kredit kortet eller faktura betalnings metoden för prenumerationen.</li></ul>    |
+   |**Omfång**   |  Hur många prenumerationer kan använda fakturerings förmånen som är associerad med reservationen. Det här värdet anger även hur reservationen tillämpas på vissa prenumerationer. <br/><br/> Om du väljer **delad** tillämpas reservations rabatten på Azure Storage kapacitet i varje prenumeration i din fakturerings kontext. Fakturerings kontexten baseras på hur du registrerade dig för Azure. För företags kunder är det delade omfånget registreringen och innehåller alla prenumerationer i registreringen. För kunder som betalar per användning inkluderar det delade omfånget alla enskilda prenumerationer med priser enligt principen betala per användning som har skapats av konto administratören.  <br/><br/>  Om du väljer **enskild prenumeration** tillämpas reservations rabatten på Azure Storage kapacitet i den valda prenumerationen. <br/><br/> Om du väljer **enskild resurs grupp** tillämpas reservations rabatten på Azure Storage kapacitet i den valda prenumerationen och i den valda resurs gruppen för den aktuella prenumerationen. <br/><br/> Du kan ändra reservations omfånget när du har köpt reservationen.  |
+   |**Prenumeration**  | Den prenumeration som du använder för att betala för Azure Storage reservationen. Betalnings metoden för den valda prenumerationen används för att debitera kostnaderna. Prenumerationen måste vara någon av följande typer:<br/><ul><li> Enterprise-avtal (erbjudande nummer MS-AZR-0017P och MS-AZR-0148P). För en företags prenumeration dras avgifterna från registreringen för förskotts betalning i Azure (tidigare kallat betalnings åtagande) eller debiteras som överanvändning.</li><br/><li>Enskild prenumeration med priser enligt principen betala per användning (erbjudande nummer MS-AZR-0003P och MS-AZR-0023P). För en enskild prenumeration med priser enligt principen betala per användning debiteras avgifterna till kredit kortet eller faktura betalnings metoden för prenumerationen.</li></ul>    |
    | **Diskar** | Den SKU som du vill skapa. |
    | **Region** | Den region där reservationen gäller. |
    | **Fakturerings frekvens** | Hur ofta kontot debiteras för reservationen. Alternativen omfattar **varje månad** och **längst fram**. |

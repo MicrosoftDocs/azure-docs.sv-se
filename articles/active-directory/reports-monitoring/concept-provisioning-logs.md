@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 12/28/2020
+ms.date: 1/19/2021
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 56818862b6bc4eb38b819185aceb121e6e78488e
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: 05a514debcf8036a296bbe66b2dd75c7dacacdc2
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97803535"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600743"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>Etablering av rapporter i Azure Active Directory portal (för hands version)
 
@@ -98,7 +98,7 @@ I standardvyn kan du välja följande filter:
 - Identitet
 - Date
 - Status
-- Åtgärd
+- Action
 
 
 ![Lägg till filter](./media/concept-provisioning-logs/default-filter.png "Filter")
@@ -121,7 +121,7 @@ När du väljer en anpassad tidsram kan du konfigurera ett start datum och ett s
 Med **status** filtret kan du välja:
 
 - Alla
-- Success
+- Klart
 - Fel
 - Överhoppad
 
@@ -133,7 +133,7 @@ Med **Åtgärds** filtret kan du filtrera:
 - Uppdatera
 - Ta bort
 - Inaktivera
-- Annat
+- Övrigt
 
 Dessutom kan du också ange följande filter till filtren i standardvyn:
 
@@ -215,8 +215,6 @@ Fliken **Sammanfattning** ger en översikt över vad som hände och identifierar
 - Azure Portal lagrar rapporterade etablerings data i 30 dagar om du har en Premium-version och 7 dagar om du har en kostnads fri version. Etablerings loggarna kan publiceras i [Log Analytics](../app-provisioning/application-provisioning-log-analytics.md) för kvarhållning bortom 30 dagar. 
 
 - Du kan använda attributet ändra ID som unik identifierare. Detta är till exempel användbart när du interagerar med produkt supporten.
-
-- Det finns för närvarande inget alternativ för att ladda ned etablerings data som en CSV-fil, men du kan exportera data med hjälp av [Microsoft Graph](/graph/api/provisioningobjectsummary-list?tabs=http&view=graph-rest-beta).
 
 - Du kan se hoppade händelser för användare som inte omfattas av omfånget. Detta förväntas, särskilt när Sync-omfånget är inställt på alla användare och grupper. Tjänsten kommer att utvärdera alla objekt i klienten, även de som ligger utanför omfånget. 
 

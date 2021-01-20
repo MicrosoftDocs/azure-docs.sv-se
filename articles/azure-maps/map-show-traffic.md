@@ -9,22 +9,26 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: ec7459a356221fb7b599cbbc02f1cb825920b5b3
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: b6fcf39e05c4649503f0b7a80aadaaa16df24674
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92890674"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599551"
 ---
 # <a name="show-traffic-on-the-map"></a>Visa trafik på kartan
 
 Det finns två typer av trafik data tillgängliga i Azure Maps:
 
 - Incident data – består av punkt-och linjebaserade data för sådant som konstruktion, väg stängningar och olyckor.
-- Flow-data – innehåller mått för trafik flödet på vägarna. Ofta används trafikflödes data för att färga vägarna. Färgerna baseras på hur mycket trafik som saktar ned flödet, i förhållande till hastighets gränsen eller något annat mått. Trafik flödes data i Azure Maps har tre olika mått mått:
-    - `relative` – är i förhållande till vägens fria flödes hastighet.
-    - `absolute` – är den absoluta hastigheten hos alla fordon på vägen.
-    - `relative-delay` – visar områden som är långsammare än den genomsnittliga fördröjningen.
+- Flow-data – innehåller mått för trafik flödet på vägarna. Ofta används trafikflödes data för att färga vägarna. Färgerna baseras på hur mycket trafik som saktar ned flödet, i förhållande till hastighets gränsen eller något annat mått. Det finns fyra värden som kan överföras till `flow` kartans trafik alternativ.
+
+    |Flödes värde | Beskrivning|
+    | :-- | :-- |
+    | `none` | Visar inte trafik data på kartan |
+    | `relative` | Visar trafik data som är relativa till vägens fria flödes hastighet |
+    | `relative-delay` | Visar områden som är långsammare än det genomsnittliga förväntad fördröjning |
+    | `absolute` | Visar den absoluta hastigheten för alla fordon på väg |
 
 Följande kod visar hur du visar trafik data på kartan.
 

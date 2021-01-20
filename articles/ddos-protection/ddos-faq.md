@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/28/2020
 ms.author: yitoh
-ms.openlocfilehash: e87fd8724ab9a967bf3b75579eb0e375a324a7b1
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: b53501bf5aa4bafb0229158edfe0cb244116b909
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98183106"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600849"
 ---
 # <a name="azure-ddos-protection-standard-frequent-asked-questions"></a>Azure DDoS Protection vanliga vanliga frågor och svar
 
@@ -34,6 +34,12 @@ DDoS skydds planer har en fast månads avgift på $2 944 per månad som omfattar
 Under en klient kan en enda DDoS skydds plan användas över flera prenumerationer, så det finns inget behov av att skapa mer än en DDoS-skydds plan.
 
 Se [Azure DDoS Protection standard prissättning](https://azure.microsoft.com/pricing/details/ddos-protection/) för mer information.
+
+## <a name="is-the-service-zone-resilient"></a>Är tjänst zonen elastisk?
+Ja. Azure DDoS Protection är zon-elastisk som standard.
+
+## <a name="how-do-i-configure-the-service-to-be-zone-resilient"></a>Hur gör jag för att konfigurerar du att tjänsten ska vara i zon-elastisk?
+Ingen kund konfiguration krävs för att aktivera zon återhämtning. Zon-återhämtning för Azure DDoS Protection resurser är tillgängligt som standard och hanteras av själva tjänsten.
 
 ## <a name="what-about-protection-at-the-service-layer-layer-7"></a>Vad gäller skydd på tjänst skiktet (Layer 7)?
 Kunder kan använda Azure DDoS Protection tjänst i kombination med en brand vägg för webbaserade program (WAF) för att skydda både på nätverks nivå (Layer 3 och 4, som erbjuds av Azure DDoS Protection standard) och på program nivå (Layer 7, som erbjuds av en WAF). WAF-erbjudanden omfattar Azure [Application Gateway WAF SKU](../web-application-firewall/ag/ag-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) samt WebApplication-brandväggar från tredje part som är tillgängliga på [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?page=1&search=web%20application%20firewall).

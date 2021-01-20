@@ -8,12 +8,12 @@ author: AlexandraKemperMS
 ms.author: alkemper
 ms.topic: conceptual
 ms.date: 3/9/2020
-ms.openlocfilehash: 13857580d434736fbf0b12f52d39537ca864a497
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 39455c4bc193cce036bd169c702b5c020d53d2f6
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98203154"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602252"
 ---
 # <a name="use-feature-filters-to-enable-conditional-feature-flags"></a>Använd funktions filter för att aktivera villkorliga funktions flaggor
 
@@ -31,7 +31,7 @@ Du kan också skapa ett eget funktions filter som implementerar [gränssnittet M
 
 ## <a name="registering-a-feature-filter"></a>Registrera ett funktions filter
 
-Du registrerar ett funktions filter genom att anropa `AddFeatureFilter` -metoden och ange namnet på funktions filtret. Till exempel registreras följande kod `PercentageFilter` :
+Du registrerar ett funktions filter genom att anropa `AddFeatureFilter` -metoden och ange typ namnet för det önskade funktions filtret. Till exempel registreras följande kod `PercentageFilter` :
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -56,14 +56,14 @@ Du kan konfigurera de här inställningarna för funktions flaggor som definiera
     > [!div class="mx-imgBorder"]
     > ![Redigera beta funktions flagga](./media/edit-beta-feature-flag.png)
 
-1. På sidan **Redigera** väljer du knappen **Aktivera funktions flagga** om den inte redan är markerad. Klicka sedan på knappen **Använd funktions filter** och välj **anpassad**. 
+1. I **redigerings** skärmen markerar du kryss rutan **Aktivera funktions flagga** om den inte redan är aktive rad. Markera sedan kryss rutan **Använd funktions filter** och välj **anpassad**. 
 
-1. I fältet **nyckel** anger du *Microsoft. procent*.
+1. I fältet **namn** väljer du *Microsoft. procent*.
 
     > [!div class="mx-imgBorder"]
     > ![Lägg till funktions filter](./media/feature-flag-add-filter.png)
 
-1. Klicka på snabb menyn bredvid funktions filter nyckeln. Klicka på **Redigera filter parametrar**.
+1. Klicka på snabb menyn bredvid funktions filtrets namn. Klicka på **Redigera filter parametrar**.
 
     > [!div class="mx-imgBorder"]
     > ![Redigera funktions filter parametrar](./media/feature-flags-edit-filter-parameters.png)
@@ -75,10 +75,10 @@ Du kan konfigurera de här inställningarna för funktions flaggor som definiera
 
 1. Klicka på **Använd** för att återgå till skärmen **Redigera funktions flagga** . Klicka sedan på **tillämpa** igen för att spara inställningarna för funktions flagga.
 
-1. Funktions flaggans **tillstånd** visas nu som *villkor*. Det här läget anger att funktions flaggan kommer att aktive ras eller inaktive ras för varje begäran, baserat på de kriterier som tillämpas av funktions filtret.
+1. På sidan **funktions hanterare** har funktions flaggan nu ett **funktions filter** *värde.* 
 
     > [!div class="mx-imgBorder"]
-    > ![Flagga för villkorlig funktion](./media/feature-flag-filter-enabled.png)
+    > ![Funktions flagga som anges med funktions filtrets värde "Custom"](./media/feature-flag-filter-custom.png)
 
 ## <a name="feature-filters-in-action"></a>Funktions filter i åtgärd
 

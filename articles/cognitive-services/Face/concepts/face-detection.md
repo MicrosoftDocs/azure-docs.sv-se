@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: pafarley
-ms.openlocfilehash: 92b19941f34b9bf5656c9beb188a68d2cf01f674
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 68d1e9744d937cf80327c3f41cc69f4af97d3400
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92504137"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600182"
 ---
 # <a name="face-detection-and-attributes"></a>Ansikts igenkänning och attribut
 
@@ -64,7 +64,9 @@ Använd följande tips för att se till att dina inmatade bilder ger de mest exa
 
 * De inspelnings bild format som stöds är JPEG, PNG, GIF för den första ramen och BMP.
 * Bild filens storlek får inte vara större än 6 MB.
-* Det detekterings bara områdets storleks intervall är 36 x 36 till 4096 x 4096 bild punkter. Ansikten utanför det här intervallet identifieras inte.
+* Den minsta identifierbara storleken är 36 x 36 pixlar i en bild som inte är större än 1920 x 1080 bild punkter. Bilder som är större än 1920 x 1080 bild punkter har en proportionellt större storlek. Att minska ansikts storleken kan leda till att vissa ytor inte identifieras, även om de är större än den minsta identifierade storleken.
+* Maximal ansikts storlek är 4096 x 4096 bild punkter.
+* Ansikten utanför storleks intervallet på 36 x 36 till 4096 x 4096 pixlar kommer inte att identifieras.
 * Vissa ansikten kanske inte kan identifieras på grund av tekniska utmaningar. Extrema ansikts vinklar (Head attityd) eller ansikts ocklusion (objekt som sol glasögon eller händerna som blockerar en del av ansiktet) kan påverka identifieringen. Front-och närbelägna ansikten ger bäst resultat.
 
 Om du identifierar ansikten från en video-feed kan du förbättra prestanda genom att justera vissa inställningar på video kameran:

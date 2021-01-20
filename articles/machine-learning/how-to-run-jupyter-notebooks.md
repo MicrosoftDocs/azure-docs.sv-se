@@ -1,7 +1,7 @@
 ---
-title: Köra Jupyter Notebooks på arbetsytan
+title: Så här kör du Jupyter-anteckningsböcker i din arbets yta
 titleSuffix: Azure Machine Learning
-description: Lär dig hur du kör en Jupyter Notebook utan att lämna arbets ytan i Azure Machine Learning Studio.
+description: Lär dig hur du kör en Jupyter-anteckningsbok utan att lämna din arbets yta i Azure Machine Learning Studio.
 services: machine-learning
 author: abeomor
 ms.author: osomorog
@@ -10,29 +10,21 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
-ms.date: 06/27/2020
-ms.openlocfilehash: d253699199617489947dd95a44d9bcd1eff17334
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.date: 01/19/2021
+ms.openlocfilehash: 7bb1ce8141f609feb4f354aa85f202915e197f37
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325411"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599246"
 ---
 # <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>Köra Jupyter Notebooks på arbetsytan
 
-
 Lär dig hur du kör dina Jupyter-anteckningsböcker direkt i din arbets yta i Azure Machine Learning Studio. Även om du kan starta [Jupyter](https://jupyter.org/) eller [JupyterLab](https://jupyterlab.readthedocs.io)kan du även redigera och köra dina antecknings böcker utan att lämna arbets ytan.
-
-Se hur du kan:
-
-* Skapa Jupyter-anteckningsböcker i din arbets yta
-* Köra ett experiment från en bärbar dator
-* Ändra Notebook-miljön
-* Hitta information om de beräknings instanser som används för att köra dina antecknings böcker
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-* En Azure-prenumeration. Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://aka.ms/AMLFree) innan du börjar.
+* En Azure-prenumeration. Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://aka.ms/AMLFree) innan du börjar.
 * En Machine Learning-arbetsyta. Se [skapa en Azure Machine Learning-arbetsyta](how-to-manage-workspace.md).
 
 ## <a name="create-notebooks"></a><a name="create"></a> Skapa antecknings böcker
@@ -48,7 +40,7 @@ Så här skapar du en ny antecknings bok:
     :::image type="content" source="media/how-to-run-jupyter-notebooks/create-new-file.png" alt-text="Skapa en ny fil":::
 
 1. Ge filen ett namn. 
-1. För Jupyter Notebook filer väljer du **Notebook** som filtyp.
+1. För Jupyter notebook-filer väljer du **Notebook** som filtyp.
 1. Välj en fil katalog.
 1. Välj **Skapa**.
 
@@ -153,18 +145,6 @@ Alla antecknings böcker sparas automatiskt var 30: e sekund. Spara automatiskt 
  
 Välj **kontroll punkter** i Notebook-menyn för att skapa en namngiven kontroll punkt och återställa antecknings boken till en sparad kontroll punkt.
 
-
-### <a name="useful-keyboard-shortcuts"></a>Användbara kortkommandon
-
-|Tangentbord  |Action  |
-|---------|---------|
-|SKIFT + RETUR     |  Köra en cell       |
-|CTRL + blank steg | Aktivera IntelliSense |
-|Ctrl + M (Windows)     |  Aktivera/Inaktivera fliken svällning i antecknings boken.       |
-|CTRL + SHIFT + M (Mac & Linux)     |    Aktivera/Inaktivera fliken svällning i antecknings boken.     |
-|TABB (när TABB-trap är aktiverat) | Lägg till ett "\t"-Character (indrag)
-|TABB (när TABB-trap är inaktive rad) | Ändra fokus till nästa fokus objekt (knappen Ta bort cell, knappen Kör osv.)
-
 ## <a name="delete-a-notebook"></a>Ta bort en notebook-fil
 
 Du *kan inte* ta bort **exempel** antecknings böckerna.  Dessa antecknings böcker ingår i Studio och uppdateras varje gången ett nytt SDK publiceras.  
@@ -175,20 +155,38 @@ Du *kan* ta bort antecknings böcker för **användar filer** på något av föl
 * I valfri antecknings boks verktygsfält väljer du [**Öppna Terminal**](#terminal)  för att få åtkomst till terminalfönstret för beräknings instansen.
 * I antingen Jupyter eller JupyterLab med sina verktyg.
 
-## <a name="run-an-experiment"></a>Köra ett experiment
+## <a name="run-a-notebook-or-python-script"></a>Köra ett Notebook-eller Python-skript
 
-Om du vill köra ett experiment från en antecknings bok ansluter du först till en [beräknings instans](concept-compute-instance.md)som körs. Om du inte har en beräknings instans använder du följande steg för att skapa ett: 
+Om du vill köra en bärbar dator eller ett Python-skript ansluter du först till en [beräknings instans](concept-compute-instance.md)som körs. Om du inte har en beräknings instans använder du följande steg för att skapa ett: 
 
-1. Välj **+** i antecknings bokens verktygsfält. 
+1. Välj **+** i verktygsfältet för antecknings boken eller skript. 
 2. Namnge beräkningen och välj en storlek för den **virtuella datorn**. 
 3. Välj **Skapa**.
-4. Beräknings instansen är ansluten till antecknings boken automatiskt och du kan nu köra cellerna.
+4. Beräknings instansen är automatiskt ansluten till filen.  Nu kan du köra Notebook-cellerna eller python-skriptet med verktyget till vänster om beräknings instansen
 
 Endast du kan se och använda de beräknings instanser som du skapar.  Dina **användarfiler** lagras separat från den virtuella datorn och delas mellan alla beräknings instanser i arbets ytan.
 
 ### <a name="view-logs-and-output"></a>Visa loggar och utdata
 
 Använd [Notebook-widgetar](/python/api/azureml-widgets/azureml.widgets?preserve-view=true&view=azure-ml-py) för att visa förloppet för körningen och loggarna. En widget är asynkron och innehåller uppdateringar tills inlärningen är klar. Azure Machine Learning-widgetar stöds också i Jupyter och JupterLab.
+
+:::image type="content" source="media/how-to-run-jupyter-notebooks/jupyter-widget.png" alt-text="Skärm bild: widgeten Jupyter Notebook ":::
+
+## <a name="explore-variables-in-the-notebook"></a>Utforska variabler i antecknings boken
+
+I verktygsfältet Notebook använder du **variabel Explorer** -verktyget för att visa namn, typ, längd och exempel värden för alla variabler som har skapats i din bärbara dator.
+
+:::image type="content" source="media/how-to-run-jupyter-notebooks/variable-explorer.png" alt-text="Skärm bild: verktyget variabel Explorer":::
+
+Välj verktyget för att Visa variabel Explorer-fönstret.
+
+:::image type="content" source="media/how-to-run-jupyter-notebooks/variable-explorer-window.png" alt-text="Skärm bild: fönstret variabel Utforskaren":::
+
+## <a name="navigate-with-a-toc"></a>Navigera med en innehålls förteckning
+
+I verktygsfältet Notebook använder du verktyget  **innehålls** förteckning för att visa eller dölja innehålls förteckningen.  Starta en markdown-cell med en rubrik för att lägga till den i innehålls förteckningen. Klicka på en post i tabellen om du vill bläddra till den cellen i antecknings boken.  
+
+:::image type="content" source="media/how-to-run-jupyter-notebooks/table-of-contents.png" alt-text="Skärm bild: innehålls förteckning i antecknings boken":::
 
 ## <a name="change-the-notebook-environment"></a>Ändra Notebook-miljön
 
@@ -245,7 +243,7 @@ En indikator bredvid List rutan **Compute** visar dess status.  Statusen visas o
 |Färg |Beräknings status |
 |---------|---------| 
 | Green | Beräkning som körs |
-| Röd |Det gick inte att beräkna | 
+| Red |Det gick inte att beräkna | 
 | Svart | Beräkning stoppad |
 |  Ljusblå |Beräkning skapa, starta, starta om, konfigurera |
 |  Mörkgrå |Ta bort beräkning, stoppa |
@@ -257,7 +255,90 @@ En indikator bredvid List rutan **kernel** visar dess status.
 |  Green |Kernel-ansluten, inaktiv, upptagen|
 |  Mörkgrå |Kernel inte ansluten |
 
-## <a name="find-compute-details"></a>Hitta beräknings information 
+## <a name="shortcut-keys"></a>Kortkommandon
+Azure Machine Learning Studio antecknings böcker liknar Jupyter-anteckningsböcker har ett spärrat användar gränssnitt. Tangent bordet skiljer sig åt beroende på vilket läge som Notebook-cellen finns i. Azure Machine Learning Studio Notebooks har stöd för följande två lägen för en specifik kod cell: kommando läge och redigerings läge.
+
+### <a name="command-mode-shortcuts"></a>Kortkommandon för kommando läge
+
+En cell är i kommando läge när ingen text markör visas som anger att du skriver. När en cell är i kommando läge kan du redigera antecknings boken som helhet men inte skriva in enskilda celler. Ange kommando läge genom att trycka `ESC` eller använda musen för att välja utanför cellens redigerings området.  Den vänstra kant linjen i den aktiva cellen är blå och heldragen och dess **körnings** knapp är blå.
+
+   :::image type="content" source="media/how-to-run-jupyter-notebooks/command-mode.png" alt-text="Notebook-cell i kommando läge ":::
+
+| Genvägar                      | Beskrivning                          |
+| ----------------------------- | ------------------------------------|
+| Ange                         | Växla till redigeringsläge             |        
+| Skift + Retur                 | Kör cell, Välj nedan         |     
+| Kontroll/kommando + retur       | Kör cell                            |
+| ALT + RETUR                   | Kör cell, Infoga tecken cell under    |
+| Kontroll/kommando + ALT + RETUR | Kör cell, infoga markdown cell under|
+| Alt + R                       | Kör alla      |                       
+| Y                             | Konvertera cell till kod    |                         
+| M                             | Konvertera cell till markdown  |                       
+| Upp/K                          | Markera cell ovanför    |               
+| Ned/J                        | Markera cell under    |               
+| A                             | Infoga tecken cell ovan  |            
+| B                             | Infoga kod cell under   |           
+| CTRL + Kommando + Skift + A   | Infoga markdown cell ovanför    |      
+| Kontroll/kommando + Skift + B   | Infoga markdown cell under   |       
+| X                             | Klipp ut markerad cell    |               
+| C                             | Kopiera markerad cell   |               
+| SHIFT + V                     | Klistra in markerad cell ovanför           |
+| V                             | Klistra in markerad cell under    |       
+| D D                           | Ta bort markerad cell|                
+| O                             | Växla utdata         |              
+| SKIFT + O                     | Växla utdata-rullning   |          
+| Jag                           | Avbryt kernel |                   
+| 0 0                           | Starta om kernel |                     
+| Skift + blank steg                 | Rulla uppåt  |                         
+| Space                         | Rulla nedåt|
+| Flik                           | Ändra fokus till nästa fokus objekt (när TABB-trap är inaktive rad)|
+| Kontroll/kommando + S           | Spara antecknings boken |                      
+| 1                             | Ändra till H1|                       
+| 2                             | Ändra till H2|                        
+| 3                             | Ändra till H3|                        
+| 4                             | Ändra till H4 |                       
+| 5                             | Ändra till H5 |                       
+| 6                             | Ändra till H6 |                       
+
+### <a name="edit-mode-shortcuts"></a>Genvägar för redigerings läge
+
+Redigerings läget anges av en text markör där du ombeds ange redigerings ytan. När en cell är i redigerings läge kan du skriva i cellen. Ange redigerings läge genom att trycka `Enter` eller använda musen för att välja en cells redigerings yta. Den vänstra kant linjen i den aktiva cellen är grön och streckad och dess **körnings** knapp är grön. Du ser också markör frågan i cellen i redigerings läge.
+
+   :::image type="content" source="media/how-to-run-jupyter-notebooks/edit-mode.png" alt-text="Notebook-cell i redigerings läge":::
+
+Med följande kortkommandon kan du enkelt navigera och köra kod i Azure Machine Learning antecknings böcker i redigerings läge.
+
+| Genvägar                      | Beskrivning|                                     
+| ----------------------------- | ----------------------------------------------- |
+| Escape                        | Ange kommando läge|  
+| Kontroll/kommando + blank steg       | Aktivera IntelliSense |
+| Skift + Retur                 | Kör cell, Välj nedan |                         
+| Kontroll/kommando + retur       | Kör cell  |                                      
+| ALT + RETUR                   | Kör cell, Infoga tecken cell under  |              
+| Kontroll/kommando + ALT + RETUR | Kör cell, infoga markdown cell under  |          
+| Alt + R                       | Kör alla celler     |                              
+| Upp                            | Flytta markören uppåt eller bakåt i cellen    |             
+| Ned                          | Flytta markören nedåt eller nästa cell |                  
+| Kontroll/kommando + S           | Spara antecknings boken   |                                
+| Kontroll/kommando + upp          | Gå till cell start   |                             
+| Kontroll/kommando + ned        | Gå till cell slut |                                 
+| Flik                           | Kod komplettering eller indrag (om TABB-trap är aktiverat) |
+| Kontroll/kommando + M           | Aktivera/inaktivera TABB-trap  |                       
+| Kontroll/kommando +]           | Uppgiften |                                         
+| Kontroll/kommando + [           | Dra ut  |                                        
+| Kontroll/kommando + A           | Välj alla|                                      
+| Kontroll/kommando + Z           | Ångra |                                           
+| CTRL + kommando + Shift + Z   | Gör om |                                           
+| Kontroll/kommando + Y           | Gör om |                                           
+| Kontroll/kommando + start        | Gå till cell start|                                
+| Kontroll/kommando + slut         | Gå till cell slut   |                               
+| Kontroll/kommando + vänster        | Gå ett ord till vänster |                               
+| Kontroll/kommando + höger       | Gå ett ord till höger |                              
+| Kontroll/kommando + Backsteg   | Ta bort ord före |                             
+| Kontroll/kommando + ta bort      | Ta bort ord efter |                              
+| Kontroll/kommando +/           | Växla kommentar vid CU
+
+## <a name="find-compute-details"></a>Hitta beräknings information
 
 Hitta information om dina beräknings instanser på **beräknings** sidan i [Studio](https://ml.azure.com).
 

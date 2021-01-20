@@ -8,12 +8,12 @@ author: emuench
 ms.author: mingshen
 ms.date: 10/15/2020
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: d8cb5179583dd23ea2bd4baf5ebe7d84b0ae9cbf
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: 748b6c3506127de8fce153a77571664ea531ffa1
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97814439"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601359"
 ---
 # <a name="azure-consumption-commitment-benefit"></a>Azure-förbrukningsåtagandeförmån
 
@@ -24,7 +24,7 @@ En urvals uppsättning av Microsofts kommersiella Marketplace-erbjudanden bidrar
 
 Vi validerar alla erbjudanden som ingår i det här programmet för att se till att du får lösningar av hög kvalitet.
 
-Du kan dra nytta av den här fördelen genom att bara köpa ett kvalificerande erbjudande på Azure Marketplace med en prenumeration som är relaterad till ditt Azure-avtal. Azures förskotts betalning och ekonomiska åtaganden är inte berättigade till denna förmån.
+Du kan dra nytta av den här fördelen genom att bara köpa ett kvalificerande erbjudande på Azure Marketplace med en prenumeration som är relaterad till ditt Azure-avtal. Azure-förskotts betalning (tidigare kallat betalnings åtagande) är inte berättigade till den här förmånen.
 
 > [!IMPORTANT]
 > Undantag kan gälla för CtC-avtal signerade före denna Marketplace-förmån. Kontakta Microsoft-konto Executive om du har frågor om berättigande.

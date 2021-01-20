@@ -1,7 +1,7 @@
 ---
 title: Vanliga frågor och svar om röst assistenter
 titleSuffix: Azure Cognitive Services
-description: Få svar på de vanligaste frågorna om röst assistenter med anpassade kommandon (förhands granskning) eller direkt linje tal kanalen.
+description: Få svar på de vanligaste frågorna om röst assistenter med anpassade kommandon eller direkt linje tal kanal.
 services: cognitive-services
 author: trrwilson
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: travisw
-ms.openlocfilehash: b43d446930d1f8c40c12e5d0aeba6eb202ef47ef
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 4b0bbb982ed48dc052b1a15514ad36b1d69b62b5
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353739"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599420"
 ---
 # <a name="voice-assistants-frequently-asked-questions"></a>Vanliga frågor och svar om röst assistenter
 
@@ -25,11 +25,11 @@ Om du inte kan hitta svar på dina frågor i det här dokumentet kan du titta n�
 
 **F: Vad är en röst assistent?**
 
-**A:** Precis som Cortana, är en röst assistent en lösning som lyssnar på en användares talade yttranden, analyserar innehållet i dessa yttranden för betydelse, utför en eller flera åtgärder som svar på uttrycks avsikt och ger sedan ett svar till användaren som ofta innehåller en talad komponent. Det är en "röst-in-, röst-och"-upplevelse för att interagera med ett system. röst assistents utvecklare skapar ett program på enheten med hjälp av `DialogServiceConnector` i tal-SDK: n för att kommunicera med en assistent som skapats med [anpassade kommandon (för hands version)](custom-commands.md) eller den [direkta linjens tal](direct-line-speech.md) kanal i bot Framework. Dessa assistenter kan använda anpassade nyckelord, anpassat tal och anpassad röst för att ge en upplevelse som är anpassad till ditt varumärke eller din produkt.
+**A:** Precis som Cortana, är en röst assistent en lösning som lyssnar på en användares talade yttranden, analyserar innehållet i dessa yttranden för betydelse, utför en eller flera åtgärder som svar på uttrycks avsikt och ger sedan ett svar till användaren som ofta innehåller en talad komponent. Det är en "röst-in-, röst-och"-upplevelse för att interagera med ett system. röst assistents utvecklare skapar ett program på enheten med hjälp av `DialogServiceConnector` i tal-SDK: n för att kommunicera med en assistent som skapats med [anpassade kommandon](custom-commands.md) eller den [direkta linjens tal](direct-line-speech.md) kanal i bot Framework. Dessa assistenter kan använda anpassade nyckelord, anpassat tal och anpassad röst för att ge en upplevelse som är anpassad till ditt varumärke eller din produkt.
 
-**F: ska jag använda anpassade kommandon (förhands granskning) eller direkt linje tal? Vad är skillnaden?**
+**F: ska jag använda anpassade kommandon eller direkt linje tal? Vad är skillnaden?**
 
-S **:** [anpassade kommandon (förhands granskning)](custom-commands.md) är en lägre komplexitets uppsättning med verktyg som gör det enkelt att skapa och vara värd för en assistent som är väl lämpad för scenarier med uppgift att slutföra. [Direkt linje tal](direct-line-speech.md) ger bättre och mer sofistikerade funktioner som kan möjliggöra robusta konversations scenarier. Mer information finns i [jämförelse av Assistant-lösningar](voice-assistants.md#choosing-an-assistant-solution) .
+S **:** [anpassade kommandon](custom-commands.md) är en lägre komplexitets uppsättning med verktyg som gör det enkelt att skapa och vara värd för en assistent som är väl lämpad för scenarier med uppgift att slutföra. [Direkt linje tal](direct-line-speech.md) ger bättre och mer sofistikerade funktioner som kan möjliggöra robusta konversations scenarier. Mer information finns i [jämförelse av Assistant-lösningar](voice-assistants.md#choosing-an-assistant-solution) .
 
 **F: Hur gör jag för att kom igång?**
 
@@ -61,7 +61,7 @@ En mer detaljerad guide finns i [avsnittet om självstudier](tutorial-voice-enab
 
 **A:** Det här felet indikerar ett kommunikations problem mellan din assistent och tjänsten röst assistent.
 
-- För anpassade kommandon (för hands version) ser du till att dina anpassade kommandon (för hands version) är publicerade
+- För anpassade kommandon kontrollerar du att programmet för anpassade kommandon är publicerat
 - För direkt linje tal kontrollerar du att du har [anslutit din robot till den direkta rad igenkännings kanalen](/azure/bot-service/bot-service-channel-connect-directlinespeech), [lagt till stöd för strömnings protokoll](/azure/bot-service/directline-speech-bot) i din robot (med relaterad WebSocket-support) och kontrollerar sedan att roboten svarar på inkommande begär Anden från kanalen.
 
 **F: den här koden fungerar fortfarande inte och/eller jag får ett annat fel meddelande när du använder en `DialogServiceConnector` . Vad ska jag göra?**

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a531692264a768e4f6cb8e6475807789df049d03
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e257ab39257b23c52aaadbe32f0325e8d71a8409
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89049154"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98597974"
 ---
 # <a name="conditional-access-block-access-by-location"></a>Villkorlig åtkomst: blockera åtkomst efter plats
 
@@ -41,15 +41,17 @@ Mer information om plats villkoret i villkorlig åtkomst finns i artikeln, [Vad 
 1. Bläddra till **Azure Active Directory**  >  **säkerhet**  >  **villkorlig åtkomst**.
 1. Välj **ny princip**.
 1. Ge principen ett namn. Vi rekommenderar att organisationer skapar en meningsfull standard för namnen på deras principer.
-1. Under **tilldelningar**väljer **du användare och grupper**
-   1. Under **Inkludera**väljer du **alla användare**.
-1. Under **molnappar eller åtgärder**  >  **inkluderar**och väljer du **alla molnappar**.
+1. Under **tilldelningar** väljer **du användare och grupper**
+   1. Under **Inkludera** väljer du **alla användare**.
+   1. Under **exkludera** väljer **du användare och grupper** och väljer organisationens nödfalls åtkomst eller Bryt glas konton. 
+   1. Välj **Klar**.
+1. Under **molnappar eller åtgärder**  >  **inkluderar** och väljer du **alla molnappar**.
 1. Under **villkor**  >  **plats**.
    1. **Konfigurera** till **Ja**
-   1. Under **Inkludera**väljer du **valda platser**
+   1. Under **Inkludera** väljer du **valda platser**
    1. Välj den blockerade plats som du har skapat för din organisation.
    1. Klicka på **Välj**.
-1. Under **åtkomst kontroller** > väljer du **blockera åtkomst**och väljer **Välj**.
+1. Under **åtkomst kontroller** > väljer du **blockera åtkomst** och väljer **Välj**.
 1. Bekräfta inställningarna och ange **Aktivera princip** till **på**.
 1. Välj **skapa** för att skapa en princip för villkorlig åtkomst.
 

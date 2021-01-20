@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 76232a917e8856a06645fabc0ab4716195c5c0e1
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: a303f5e6177d0dc4205eaec8c3b1911e8e004fe3
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97094207"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602430"
 ---
 # <a name="request-elevation-data-using-the-azure-maps-elevation-service-preview"></a>Begär höjnings data med hjälp av Azure Maps höjnings tjänsten (för hands version)
 
@@ -469,9 +469,9 @@ På följande exempel webb sida ser du hur du använder kart kontrollen för att
 Se rutorna för pen- <a href='https://codepen.io/azuremaps/pen/619c888c70089c3350a3e95d499f3e48'>höjning genom</a> att Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) på <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-### <a name="get-elevation-data-by-polyline-path"></a>Hämta höjnings data med en PolyLine-sökväg
+### <a name="get-elevation-data-by-polyline-path"></a>Hämta höjnings data med en polyline-sökväg
 
-På följande exempel webb sida ser du hur du använder kart kontrollen för att Visa höjnings data längs en sökväg. Användaren definierar sökvägen genom att klicka på `PolyLine` ikonen i det övre vänstra hörnet och rita en PolyLine på kartan. Kart kontrollen återger sedan utöknings data i färger som anges i nyckeln i det övre högra hörnet.
+På följande exempel webb sida ser du hur du använder kart kontrollen för att Visa höjnings data längs en sökväg. Användaren definierar sökvägen genom att klicka på `Polyline` ikonen i det övre vänstra hörnet och rita en polyline på kartan. Kart kontrollen återger sedan utöknings data i färger som anges i nyckeln i det övre högra hörnet.
 
 <br/>
 

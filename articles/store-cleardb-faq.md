@@ -12,12 +12,12 @@ ms.date: 10/27/2016
 ms.author: sumuth
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: references_regions
-ms.openlocfilehash: 25cc4dfaabee58a47cc33fe4be8dc7375bc804d2
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: d9d4ae746c192e8b4afd1781c1e072fc0dc70422
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96491650"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599789"
 ---
 # <a name="faq-for-cleardb-mysql-databases-with-azure-app-service"></a>Vanliga frågor och svar om ClearDB MySql-databaser med Azure App Service
 Vanliga frågor och svar om att använda och köpa ClearDB MySQL-databaser för Azure Web Apps.
@@ -42,7 +42,7 @@ Detta beror på vilken typ av prenumeration du använder. Här följer några va
 * [Betala per](https://azure.microsoft.com/offers/ms-azr-0003p/)användning: kräver ett kredit kort och när du köper en betald MySQL-databas debiteras ditt kredit kort.
 * [Kostnads fri utvärderings version](https://azure.microsoft.com/pricing/free-trial/): innehåller krediter för användning med Microsoft Azure tjänster, men tillåter inte köp av resurser från tredje part. Om du vill köpa tjänster från tredje part eller en betald MySQL-databas måste du använda en kredit korts aktive rad prenumeration. För Web Apps kan du skapa en kostnads fri ClearDB MySQL-databas.
 * [MSDN-prenumeration](https://azure.microsoft.com/pricing/member-offers/msdn-benefits/) och **MSDN dev-test betala per** användning: på en MSDN-prenumeration måste du ha ett kredit kort för att köpa en betald MySQL-lösning från ClearDB.
-* [Enterprise-avtal (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/): EA-kunder debiteras mot deras EA varje kvartal för alla sina Azure Marketplace-inköp (tredje part) på en separat, konsol IDE rad faktura. Du debiteras utanför det affärsmässiga åtagandet för alla marknads inköp. Observera att för närvarande är Azure Store inte tillgängligt för kunder som har registrerats i Azerbajdzjan, Kroatien, Norge och Puerto Rico. 
+* [Enterprise-avtal (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/): EA-kunder debiteras mot deras EA varje kvartal för alla sina Azure Marketplace-inköp (tredje part) på en separat, konsol IDE rad faktura. Du debiteras utanför Azure-förskotts betalningen (tidigare kallat betalnings åtagande) för alla marknads plats inköp. Observera att för närvarande är Azure Store inte tillgängligt för kunder som har registrerats i Azerbajdzjan, Kroatien, Norge och Puerto Rico. 
 
 ## <a name="why-was-i-charged-350-for-a-web-app--mysql-from-the-azure-marketplace"></a>Varför debiterades jag $3,50 för en webbapp + MySQL från Azure Marketplace?
 Standard databas alternativet är Titan, som är $3,50. Vi visar inte kostnaden när databasen skapas och du kan av misstag köpa en databas som du inte avsåg. Vi försöker hitta ett sätt att förbättra upplevelsen, men tills måste du kontrol lera alla valda pris nivåer för webbapp och databas innan du klickar på **skapa** och starta distributionen av resurserna.
@@ -94,10 +94,10 @@ Befintliga ClearDB-databaser använder det kredit kort som är associerat med be
 * Uppdatera programmet så att det använder den nya databasen.
 * Ta bort den gamla ClearDB-databasen.
 
-När du skapar en ny webbapp med MySQL (ClearDB) eller skapar en MySQL-databas (ClearDB), avgör den prenumeration du väljer hur du betalar för tjänsten. Med en EA-prenumeration kommer vi inte att blockera inköp av tjänster från tredje part, till exempel ClearDB i Azure Portal. EA-prenumerationer debiteras utanför det ekonomiska åtagandet och faktureras kvartals vis och i en resterande period. EA-kunden måste skapa en betalnings metod, till exempel ett kredit kort för att betala för alla tredje parts Marketplace-tjänster.
+När du skapar en ny webbapp med MySQL (ClearDB) eller skapar en MySQL-databas (ClearDB), avgör den prenumeration du väljer hur du betalar för tjänsten. Med en EA-prenumeration kommer vi inte att blockera inköp av tjänster från tredje part, till exempel ClearDB i Azure Portal. EA-prenumerationer debiteras utanför Azures förskotts betalning och faktureras kvartals vis och i förskott. EA-kunden måste skapa en betalnings metod, till exempel ett kredit kort för att betala för alla tredje parts Marketplace-tjänster.
 
 ## <a name="where-can-i-see-the-charges-for-cleardb-resources-in-an-ea-subscription"></a>Var kan jag se avgifterna för ClearDB-resurser i en EA-prenumeration?
-För direkta EA-kunder visas Azure Marketplace-avgifter på Enterprise Portal. Observera att alla inköps-och förbruknings platser debiteras utanför betalnings åtagandet och faktureras kvartals vis och i förskott. EA-kunder måste betala direkt till tredjepartsleverantörer och kan göra detta genom att aktivera en betalnings metod, till exempel ett kredit kort med sitt EA-konto.
+För direkta EA-kunder visas Azure Marketplace-avgifter på Enterprise Portal. Observera att alla inköp av Marketplace och förbrukning debiteras utanför Azures förskotts betalning och faktureras kvartals vis och i förskott. EA-kunder måste betala direkt till tredjepartsleverantörer och kan göra detta genom att aktivera en betalnings metod, till exempel ett kredit kort med sitt EA-konto.
 
 Indirekta EA-kunder kan hitta sina Azure Marketplace-prenumerationer på sidan **Hantera prenumerationer** i Enterprise Portal, men prissättningen är dold. Kunderna bör kontakta sin LSP för information om Marketplace-avgifter.
 

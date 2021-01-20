@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: trbye
-ms.openlocfilehash: e8c7e21b0784aacc85bd02e3c1702e1a710e76ab
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 501a0e954efbdbc9a0396fd94c915efaf0fde9fc
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95021889"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601116"
 ---
 # <a name="what-is-direct-line-speech"></a>Vad är Direct Line Speech?
 
@@ -23,7 +23,7 @@ ms.locfileid: "95021889"
 
 [Röst assistenter](voice-assistants.md) lyssnar på användare och utför en åtgärd som svar, och talar ofta tillbaka. De använder [tal-till-text](speech-to-text.md) för att skriva över användarens tal och sedan vidta åtgärder för textens naturliga språk förståelse. Den här åtgärden innehåller ofta talade utdata från assistenten som genererades med [text till tal](text-to-speech.md).
 
-Direkt linje tal ger högsta möjliga anpassnings-och riktigt ambitiös för röst assistenter. Den är utformad för konversations scenarier som är öppna, avslutade, naturliga eller hybrider av de två med uppgift att slutföra eller använda kommando-och kontroll. Den här hög flexibiliteten ger en större komplexitet och scenarier som är begränsade till väldefinierade uppgifter med hjälp av naturligt språk kan vilja överväga [anpassade kommandon (för hands version)](custom-commands.md) för en strömlinjeformad lösning.
+Direkt linje tal ger högsta möjliga anpassnings-och riktigt ambitiös för röst assistenter. Den är utformad för konversations scenarier som är öppna, avslutade, naturliga eller hybrider av de två med uppgift att slutföra eller använda kommando-och kontroll. Den här hög flexibiliteten ger en större komplexitet och scenarier som är begränsade till väldefinierade uppgifter med hjälp av naturligt språk kan vilja överväga [anpassade kommandon](custom-commands.md) för en strömlinjeformad lösning.
 
 ## <a name="getting-started-with-direct-line-speech"></a>Komma igång med direkt linje tal
 
@@ -45,7 +45,7 @@ Vi erbjuder också snabb starter som är utformade för att du ska kunna köra k
 
 Exempel kod för att skapa en röst assistent finns på GitHub. Dessa exempel avser klient programmet för att ansluta till din assistent i flera populära programmeringsspråk.
 
-* [Röst assistents exempel (SDK)](https://aka.ms/csspeech/samples)
+* [Röst assistents exempel (SDK)](https://aka.ms/csspeech/samples/#voice-assistants-quickstarts)
 * [Självstudie: röst aktivera din assistent med talet SDK, C #](tutorial-voice-enable-your-bot-speech-sdk.md)
 
 ## <a name="customization"></a>Anpassning
