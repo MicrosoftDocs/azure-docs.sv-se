@@ -1,6 +1,6 @@
 ---
-title: Konfigurera och Använd mått och loggar med en Azure IoT Hub
-description: Lär dig hur du konfigurerar och använder mått och loggar med en Azure IoT Hub. Detta ger data som ska analyseras för att hjälpa till att diagnostisera problem som navet kan ha.
+title: Självstudie – konfigurera och Använd mått och loggar med en Azure IoT Hub
+description: Självstudie – lär dig hur du konfigurerar och använder mått och loggar med en Azure IoT Hub. Detta ger data som ska analyseras för att hjälpa till att diagnostisera problem som navet kan ha.
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
@@ -12,12 +12,12 @@ ms.custom:
 - mqtt
 - devx-track-azurecli
 - devx-track-csharp
-ms.openlocfilehash: a16dbeedc2362f4a263d59a673dbb4358f7ba034
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: bf834a6dd648ffc8f4b1633dbb383f33cd99335f
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96436495"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625206"
 ---
 # <a name="tutorial-set-up-and-use-metrics-and-logs-with-an-iot-hub"></a>Självstudie: Konfigurera och Använd mått och loggar med en IoT-hubb
 
@@ -42,7 +42,7 @@ I den här självstudien utför du följande åtgärder:
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- En Azure-prenumeration. Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
+- En Azure-prenumeration. Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
 - Du behöver .NET Core SDK 2,1 eller mer på din utvecklings dator. Du kan ladda ned .NET Core-SDK:n för flera plattformar från [.NET](https://www.microsoft.com/net/download/all).
 

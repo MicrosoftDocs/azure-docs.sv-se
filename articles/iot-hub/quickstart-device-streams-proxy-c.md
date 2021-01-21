@@ -1,20 +1,20 @@
 ---
-title: Azure IoT Hub enhets strömmar C snabb start för SSH och RDP
+title: Snabb start – Azure IoT Hub enhets strömmar C snabb start för SSH och RDP
 description: I den här snabb starten kör du ett exempel C-program som fungerar som en proxy för att aktivera SSH-och RDP-scenarier över IoT Hub enhets strömmar.
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: c
 ms.topic: quickstart
-ms.custom: mvc, devx-track-azurecli
+ms.custom: references_regions
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: 037ff64f4811515e7ce64d66a36e08e71de54058
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 2305a87b91160b5de90f4cbfbc9418adc50bb92a
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94831998"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624413"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-c-proxy-application-preview"></a>Snabb start: Aktivera SSH och RDP över en IoT Hub enhets ström med hjälp av ett C proxy-program (för hands version)
 
@@ -25,6 +25,22 @@ Azure IoT Hub stöder för närvarande enhets strömmar som en [förhands gransk
 [IoT Hub-enhetsströmmar](./iot-hub-device-streams-overview.md) gör att tjänst- och enhetsprogram kan kommunicera på ett säkert och brandväggsvänligt sätt. En översikt över installationen finns i [exempel sidan lokal Proxy](./iot-hub-device-streams-overview.md#local-proxy-sample-for-ssh-or-rdp).
 
 I den här snabb starten beskrivs inställningarna för SSH-trafik (Secure Shell) i tunnel trafik (med port 22) genom enhets strömmar. Installationen av RDP-trafik (Remote Desktop Protocol) är snarlik och kräver en enkel konfigurations ändring. Eftersom enhets strömmar är program-och protokoll-oberoende kan du ändra den här snabb starten för att hantera andra typer av program trafik.
+
+## <a name="prerequisites"></a>Förutsättningar
+
+* För hands versionen av enhets strömmar stöds för närvarande bara för IoT-hubbar som skapas i följande regioner:
+
+  * Central US
+  * Centrala USA-EUAP
+  * Norra Europa
+  * Sydostasien
+
+* Installera [Visual Studio 2019](https://www.visualstudio.com/vs/) med [Desktop-utveckling med](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) arbets belastningen C++ aktiverat.
+* Installera den senaste versionen av [Git](https://git-scm.com/download/).
+
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
 ## <a name="how-it-works"></a>Så här fungerar det
 
@@ -47,22 +63,6 @@ Följande bild illustrerar hur enhets-och tjänst lokala proxy-program möjligg�
 > SSH-trafik som skickas över en enhets ström tunnlas via IoT Hub: s strömnings slut punkt i stället för att skickas direkt mellan tjänsten och enheten. Mer information finns i [fördelarna med att använda enhets strömmar för IoT Hub](iot-hub-device-streams-overview.md#benefits). Dessutom illustrerar bilden SSH-daemon som körs på samma enhet (eller dator) som enhetens lokala proxy. I den här snabb starten tillhandahåller IP-adressen för SSH-daemon en enhets lokal Proxy och daemon att köras på olika datorer också.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-
-## <a name="prerequisites"></a>Förutsättningar
-
-* För hands versionen av enhets strömmar stöds för närvarande bara för IoT-hubbar som skapas i följande regioner:
-
-  * Central US
-  * Centrala USA-EUAP
-  * Norra Europa
-  * Sydostasien
-
-* Installera [Visual Studio 2019](https://www.visualstudio.com/vs/) med [Desktop-utveckling med](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) arbets belastningen C++ aktiverat.
-* Installera den senaste versionen av [Git](https://git-scm.com/download/).
-
-[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
-
-[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
 ## <a name="prepare-the-development-environment"></a>Förbereda utvecklingsmiljön
 
@@ -120,7 +120,7 @@ I den här snabb starten använder du [Azure IoT-enhetens SDK för C](iot-hub-de
 
 ## <a name="register-a-device"></a>Registrera en enhet
 
-En enhet måste vara registrerad vid din IoT-hubb innan den kan ansluta. I det här avsnittet använder du Azure Cloud Shell med [IoT-tillägget](/cli/azure/ext/azure-iot/iot?view=azure-cli-latest) för att registrera en simulerad enhet.
+En enhet måste vara registrerad vid din IoT-hubb innan den kan ansluta. I det här avsnittet använder du Azure Cloud Shell med [IoT-tillägget](/cli/azure/ext/azure-iot/iot?view=azure-cli-latest&preserve-view=true) för att registrera en simulerad enhet.
 
 1. Skapa enhets identiteten genom att köra följande kommando i Cloud Shell:
 
@@ -138,7 +138,7 @@ En enhet måste vara registrerad vid din IoT-hubb innan den kan ansluta. I det h
    > Ersätt plats hållaren *YourIoTHubName* med det namn du valt för din IoT Hub.
 
     ```azurecli-interactive
-    az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyDevice --output table
+    az iot hub device-identity connection-string show --hub-name {YourIoTHubName} --device-id MyDevice --output table
     ```
 
     Observera den returnerade enhets anslutnings strängen för senare användning i den här snabb starten. Det ser ut som i följande exempel:

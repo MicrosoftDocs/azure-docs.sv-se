@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/14/2020
 ms.author: philmea
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 857ae8d824443e9a8abdac7c4a66e2b014be2be0
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 3772988e9bf4f733323adae6c0527c8b811c4d04
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566358"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624463"
 ---
 # <a name="tutorial-send-email-notifications-about-azure-iot-hub-events-using-event-grid-and-logic-apps"></a>Självstudie: Skicka e-postmeddelanden om Azure IoT Hub-händelser med Event Grid och Logic Apps
 
@@ -91,7 +91,7 @@ En utlösare är en specifik händelse som startar din logikapp. I den här sjä
 
    ![Använd exempel nytto Last](./media/publish-iot-hub-events-to-logic-apps/sample-payload.png)
 
-1. Klistra in den *anslutna händelse schema* -JSON i text rutan och välj sedan **färdig** :
+1. Klistra in den *anslutna händelse schema* -JSON i text rutan och välj sedan **färdig**:
 
    ```json
      [{  
@@ -137,17 +137,17 @@ En utlösare är en specifik händelse som startar din logikapp. I den här sjä
 
 1. Skapa din e-postmall. 
 
-   * **Till** : Ange e-postadressen som e-postaviseringarna ska skickas till. I den här självstudien använder du ett e-postkonto som du kan komma åt för testning. 
+   * **Till**: Ange e-postadressen som e-postaviseringarna ska skickas till. I den här självstudien använder du ett e-postkonto som du kan komma åt för testning. 
 
-   * **Ämne** : Fyll i ämnestexten. När du klickar på text rutan ämne kan du välja dynamiskt innehåll som ska inkluderas. I den här självstudien används till exempel `IoT Hub alert: {eventType}` . Om du inte kan se dynamiskt innehåll, väljer du hyperlänken **Lägg till dynamiskt innehåll** – detta växlar till och från.
+   * **Ämne**: Fyll i ämnestexten. När du klickar på text rutan ämne kan du välja dynamiskt innehåll som ska inkluderas. I den här självstudien används till exempel `IoT Hub alert: {eventType}` . Om du inte kan se dynamiskt innehåll, väljer du hyperlänken **Lägg till dynamiskt innehåll** – detta växlar till och från.
 
-   * **Brödtext** : Skriv texten för e-postmeddelandet. Välj JSON-egenskaper från valverktyget för att ta med dynamiskt innehåll baserat på händelsedata. Om du inte kan se det dynamiska innehållet väljer du hyperlänken **Lägg till dynamiskt innehåll** under text rutan **brödtext** . Om du inte ser de fält som du vill ha klickar du på *mer* på skärmen med dynamiskt innehåll för att ta med fälten från föregående åtgärd.
+   * **Brödtext**: Skriv texten för e-postmeddelandet. Välj JSON-egenskaper från valverktyget för att ta med dynamiskt innehåll baserat på händelsedata. Om du inte kan se det dynamiska innehållet väljer du hyperlänken **Lägg till dynamiskt innehåll** under text rutan **brödtext** . Om du inte ser de fält som du vill ha klickar du på *mer* på skärmen med dynamiskt innehåll för att ta med fälten från föregående åtgärd.
 
    Din e-postmall kanske liknar den i det här exemplet:
 
    ![Fyll i e-postinformation](./media/publish-iot-hub-events-to-logic-apps/email-content.png)
 
-1. Välj **Spara** i Logic Apps designer.  
+1. Välj **Spara** i Logikappdesignern.  
 
 ### <a name="copy-the-http-url"></a>Kopiera HTTP-URL:en
 
@@ -167,7 +167,7 @@ I det här avsnittet ska du konfigurera din IoT-hubb så att den publicerar hän
 
 1. Gå till din IoT-hubb på Azure Portal. Du kan göra detta genom att välja **resurs grupper** och sedan välja resurs gruppen för den här själv studie kursen och sedan välja din IoT Hub i listan över resurser.
 
-1. Välj **händelser**.
+1. Välj **Händelser**.
 
    ![Öppna Event Grid-informationen](./media/publish-iot-hub-events-to-logic-apps/event-grid.png)
 
@@ -177,22 +177,22 @@ I det här avsnittet ska du konfigurera din IoT-hubb så att den publicerar hän
 
 1. Skapa händelseprenumerationen med följande värden: 
 
-   1. I avsnittet **information om händelse prenumerationer** :
+   1. I avsnittet **Information om händelseprenumeration**:
       1. Ange ett **namn** för händelse prenumerationen. 
       2. Välj **Event Grid schema** för **händelse schema**. 
-   2. I avsnittet **information om ämnet** :
-      1. Bekräfta att **ämnes typen** har angetts till **IoT Hub**. 
-      2. Bekräfta att namnet på IoT Hub har angetts som värde för fältet för **käll resurs** . 
+   2. I avsnittet **Ämnesinformation**:
+      1. Bekräfta att **IoT Hub** har angetts som **Ämnestyp**. 
+      2. Bekräfta att namnet på IoT-hubben har angetts som värdet för fältet **Källresurs**. 
       3. Ange ett namn på **system avsnittet** som ska skapas åt dig. Information om system ämnen finns i [Översikt över system ämnen](system-topics.md).
-   3. I avsnittet **händelse typer** :
-      1. Välj List rutan **filtrera till händelse typer** .
+   3. I avsnittet **Händelsetyper**:
+      1. Välj listrutan **Filtrera till händelsetyper**.
       1. Avmarkera kryss rutorna **enhet som skapats** och **enhet borttagna** , så att kryss rutorna enhet **ansluten** och **avkopplad enhet** är markerade.
 
-         ![Välj händelse typer för prenumeration](./media/publish-iot-hub-events-to-logic-apps/subscription-event-types.png)
+         ![välja händelsetyper för prenumeration](./media/publish-iot-hub-events-to-logic-apps/subscription-event-types.png)
    
-   4. I avsnittet **information om slut punkt** : 
+   4. I avsnittet **Information om slutpunkt**: 
        1. Välj **typ av slut punkt** som **Web Hook**.
-       2. Klicka på **Välj en slut punkt** , klistra in den URL som du kopierade från din Logic app och bekräfta valet.
+       2. Klicka på **Välj en slutpunkt**, klistra in URL:en som du kopierade från din logikapp och bekräfta valet.
 
          ![webbadress till vald slutpunkt](./media/publish-iot-hub-events-to-logic-apps/endpoint-webhook.png)
 
@@ -242,4 +242,7 @@ Ta bort resurs gruppen om du vill ta bort alla resurser som skapats i den här s
 * [Lär dig att ordna enhetsanslutningshändelser och frånkopplingar](../iot-hub/iot-hub-how-to-order-connection-state-events.md)
 * Lär dig mer om vad du kan göra med [Event Grid](overview.md).
 
-En fullständig lista över Logic app-kopplingar som stöds finns i [Översikt över anslutningar](/connectors/).
+En fullständig lista över Logic app-kopplingar som stöds finns i 
+
+> [!div class="nextstepaction"]
+> [Översikt över anslutningar](/connectors/).

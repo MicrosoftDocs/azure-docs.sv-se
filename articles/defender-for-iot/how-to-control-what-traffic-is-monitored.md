@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/07/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: b2f95ddb13896ed461a20f1948fef34569586d1f
-ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
+ms.openlocfilehash: bfe3e00c4930ba57c930eb1bc2f2dd4ed11886e0
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97977087"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624692"
 ---
 # <a name="control-what-traffic-is-monitored"></a>Styr vilken trafik som övervakas
 
@@ -157,7 +157,7 @@ Om du arbetar med dynamiska nätverk hanterar du ändringar av IP-adress som int
 
 Genom att definiera dynamiska IP-adresser på varje sensor kan du använda omfattande, transparent stöd i instanser av IP-adress ändringar. Detta säkerställer omfattande rapportering för varje unik enhet.
 
-Sensor konsolen visar den mest aktuella IP-adressen som är kopplad till enheten och indikerar vilka enheter som är dynamiska. Ett exempel:
+Sensor konsolen visar den mest aktuella IP-adressen som är kopplad till enheten och indikerar vilka enheter som är dynamiska. Till exempel:
 
 - Rapporten data utvinnings rapport och enhets inventering sammanför all aktivitet som har lärts från enheten som en enhet, oavsett IP-adressen. De här rapporterna visar vilka adresser som har definierats som DHCP-adresser.
 
@@ -186,11 +186,11 @@ Ange ett DHCP-adressintervall:
 
 ## <a name="configure-dns-servers-for-reverse-lookup-resolution"></a>Konfigurera DNS-servrar för omvänd söknings upplösning
 
-För att förbättra till gångens anrikning kan du konfigurera flera DNS-servrar för att överföra omvända sökningar. Du kan matcha värdnamn eller FQDN som är associerade med de IP-adresser som identifieras i nätverks under nät. Om en sensor exempelvis identifierar en IP-adress kan den fråga flera DNS-servrar för att matcha värd namnet.
+För att förbättra enhets anrikningen kan du konfigurera flera DNS-servrar för omvänd sökning. Du kan matcha värdnamn eller FQDN som är associerade med de IP-adresser som identifieras i nätverks under nät. Om en sensor exempelvis identifierar en IP-adress kan den fråga flera DNS-servrar för att matcha värd namnet.
 
 Alla CIDR-format stöds.
 
-Värd namnet visas i inventarie lagret och till gångs kartan, samt i rapporter.
+Värd namnet visas i enhetens inventering och enhets karta och i rapporter.
 
 Du kan schemalägga matchnings scheman för omvänd sökning för olika Tim intervall, till exempel var 12: e timme. Eller så kan du schemalägga en angiven tid.
 
@@ -212,7 +212,7 @@ Så här definierar du DNS-servrar:
 
 5. I fältet **DNS-server port** anger du DNS-porten.
 
-6. Matcha nätverkets IP-adresser till till gångs-FQDN. I fältet **antal etiketter** lägger du till antalet domän etiketter som ska visas. Upp till 30 tecken visas från vänster till höger.
+6. Matcha IP-adresser för nätverket till enhetens FQDN. I fältet **antal etiketter** lägger du till antalet domän etiketter som ska visas. Upp till 30 tecken visas från vänster till höger.
 
 7. I fältet **undernät** anger du de undernät som du vill att DNS-servern ska fråga.
 
@@ -220,7 +220,7 @@ Så här definierar du DNS-servrar:
 
 ### <a name="test-the-dns-configuration"></a>Testa DNS-konfigurationen 
 
-Kontrol lera att de inställningar som du definierade fungerar korrekt genom att använda en test till gång:
+Genom att använda en testen het kontrollerar du att de inställningar som du har definierat fungerar korrekt:
 
 1. Aktivera växling av **DNS-sökning** .
 

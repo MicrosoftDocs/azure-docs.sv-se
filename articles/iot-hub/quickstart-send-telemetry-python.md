@@ -1,5 +1,5 @@
 ---
-title: Snabbstart – Skicka telemetri till Azure IoT Hub (Python) | Microsoft Docs
+title: Snabb start – skicka telemetri till Azure IoT Hub snabb start (python) | Microsoft Docs
 description: I den här snabbstarten kör du ett Python-exempelprogram som skickar simulerad telemetri till en IoT-hubb och använder ett verktyg för att läsa telemetrin från IoT-hubben.
 author: wesmc7777
 manager: philmea
@@ -15,12 +15,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - devx-track-azurecli
 ms.date: 06/16/2020
-ms.openlocfilehash: 71d91ceba48158d2abc688af572dabfc258a2e94
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: c1ea343a2674346e1028f8bb1f3d8ee61cb7e20e
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121449"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624883"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-python"></a>Snabb start: skicka telemetri från en enhet till en IoT-hubb och Läs den med Server dels program (python)
 

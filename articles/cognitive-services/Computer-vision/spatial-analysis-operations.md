@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: 63184a623c6f0a8c53e09e6af92c05e45c5e0794
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: b530fc320f6c29dd7a86a39c5a7019265bb6b724
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185991"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624430"
 ---
 # <a name="spatial-analysis-operations"></a>Åtgärder för rums analys
 
@@ -69,6 +69,38 @@ Dessa är de parametrar som krävs för var och en av dessa åtgärder för att 
 | DETECTOR_NODE_CONFIG | JSON som anger vilken GPU som ska köra detektor-noden på. Ska ha följande format: `"{ \"gpu_index\": 0 }",`|
 | SPACEANALYTICS_CONFIG | JSON-konfiguration för zonen och raden enligt beskrivningen nedan.|
 | ENABLE_FACE_MASK_CLASSIFIER | `True` för att aktivera identifiering av personer som använder ansikts masker i video strömmen, `False` för att inaktivera den. Som standard är detta inaktiverat. Identifiering av ansikts mask kräver att indatamängds parametern för video bredd är 1920 `"INPUT_VIDEO_WIDTH": 1920` . Attributet ansikts mask returneras inte om identifierade personer inte är i kontakt med kameran eller är för långt ifrån det. Mer information hittar du i hand boken för [kamera placering](spatial-analysis-camera-placement.md) . |
+
+Detta är ett exempel på DETECTOR_NODE_CONFIG parametrar för alla spatiala analys åtgärder.
+
+```json
+{
+"gpu_index": 0,
+"do_calibration": true,
+"enable_recalibration": true,
+"calibration_quality_check_frequency_seconds":86400,
+"calibration_quality_check_sampling_num": 80,
+"calibration_quality_check_sampling_times": 5,
+"calibration_quality_check_sample_collect_frequency_seconds": 300,
+"calibration_quality_check_one_round_sample_collect_num":10,
+"calibration_quality_check_queue_max_size":1000,
+"recalibration_score": 75
+}
+```
+
+| Namn | Typ| Description|
+|---------|---------|---------|
+| `gpu_index` | sträng| Det GPU-index som den här åtgärden ska köras på.|
+| `do_calibration` | sträng | Anger att kalibreringen är påslagen. `do_calibration` måste vara true för att **cognitiveservices. vision. spatialanalysis-persondistance** ska fungera korrekt. do_calibration anges som standard till sant. |
+| `enable_recalibration` | boolesk | Anger om automatisk omkalibrering är aktive rad. Standardvärdet är `true`.|
+| `calibration_quality_check_frequency_seconds` | int | Minsta antal sekunder mellan varje kvalitets kontroll för att avgöra om omkalibrering krävs eller inte. Standardvärdet är `86400` (24 timmar). Används endast när `enable_recalibration=True` .|
+| `calibration_quality_check_sampling_num` | int | Antal slumpmässigt valda lagrade data exempel för användning av fel mätning per kvalitets kontroll. Standardvärdet är `80`. Används endast när `enable_recalibration=True` .|
+| `calibration_quality_check_sampling_times` | int | Antalet gånger som fel mätningar utförs på olika uppsättningar av slumpmässigt valda data exempel per kvalitets kontroll. Standardvärdet är `5`. Används endast när `enable_recalibration=True` .|
+| `calibration_quality_check_sample_collect_frequency_seconds` | int | Minsta antal sekunder mellan insamling av nya data exempel för omkalibrering och kvalitets kontroll. Standardvärdet är `300` (5 minuter). Används endast när `enable_recalibration=True` .|
+| `calibration_quality_check_one_round_sample_collect_num` | int | Minsta antal nya data exempel som kan samlas in per avrundning av exempel samling. Standardvärdet är `10`. Används endast när `enable_recalibration=True` .|
+| `calibration_quality_check_queue_max_size` | int | Maximalt antal data exempel som ska lagras när kamera modellen kalibreras. Standardvärdet är `1000`. Används endast när `enable_recalibration=True` .|
+| `recalibration_score` | int | Högsta kvalitets tröskel för att starta omkalibreringen. Standardvärdet är `75`. Används endast när `enable_recalibration=True` . Kalibrerings kvaliteten beräknas baserat på en inverterad relation med ett omprojektering av bild mål. De identifierade målen i 2D-bildramar, målen projiceras i 3D-rymden och projiceras tillbaka till 2D-bildramen med befintliga kamera kalibrerings parametrar. Omprojektering-felet mäts i genomsnitt mellan de identifierade målen och de omprojicerade målen.|
+| `enable_breakpad`| boolesk | Anger om du vill aktivera Breakpad, som används för att generera kraschdump för att felsöka ska användas. Det är `false` som standard. Om du ställer in det på `true` måste du också lägga till `"CapAdd": ["SYS_PTRACE"]` i `HostConfig` delen av behållaren `createOptions` . Som standard laddas kraschdumpfilen upp till [RealTimePersonTracking](https://appcenter.ms/orgs/Microsoft-Organization/apps/RealTimePersonTracking/crashes/errors?version=&appBuild=&period=last90Days&status=&errorType=all&sortCol=lastError&sortDir=desc) AppCenter-appen, om du vill att krasch dum par ska överföras till din egen AppCenter-app, kan du åsidosätta miljövariabeln `RTPT_APPCENTER_APP_SECRET` med appens app Secret.
+
 
 ### <a name="zone-configuration-for-cognitiveservicesvisionspatialanalysis-personcount"></a>Zon konfiguration för cognitiveservices. vision. spatialanalysis-personcount
 
@@ -142,10 +174,10 @@ Detta är ett exempel på en JSON-ineffekt för den SPACEANALYTICS_CONFIG parame
 | `line` | lista| Definitionen av raden. Det här är en riktad linje som gör att du kan förstå "post" eller "avsluta".|
 | `start` | värdepar| x, y-koordinaterna för linjens start punkt. Värdena för float representerar placeringen av hörnen i förhållande till det övre, vänstra hörnet. För att beräkna de absoluta x-, y-värdena multiplicerar du värdena med ram storleken. |
 | `end` | värdepar| x, y-koordinaterna för linjens slut punkt. Värdena för float representerar placeringen av hörnen i förhållande till det övre, vänstra hörnet. För att beräkna de absoluta x-, y-värdena multiplicerar du värdena med ram storleken. |
-| `threshold` | flyt| Händelser utsätts när AI-modellernas tillförlitlighet är större eller lika med det här värdet. |
+| `threshold` | flyt| Händelser utsätts när AI-modellernas tillförlitlighet är större eller lika med det här värdet. Standardvärdet är 16. Detta är det rekommenderade värdet för att uppnå maximal noggrannhet. |
 | `type` | sträng| För **cognitiveservices. vision. spatialanalysis-personcrossingline** ska detta vara `linecrossing` .|
 |`trigger`|sträng|Typ av utlösare för att skicka en händelse.<br>Värden som stöds: "event": Utlös när någon korsar linjen.|
-| `focus` | sträng| Punkt platsen inom personens markerings ruta som används för att beräkna händelser. Fokus värde kan vara `footprint` (personens personliga), (det `bottom_center` nedre mitten av personens markerings ram) `center` (centrum för personens avgränsnings ruta).|
+| `focus` | sträng| Punkt platsen inom personens markerings ruta som används för att beräkna händelser. Fokus värde kan vara `footprint` (personens personliga), (det `bottom_center` nedre mitten av personens markerings ram) `center` (centrum för personens avgränsnings ruta). Standardvärdet är formal.|
 
 ### <a name="zone-configuration-for-cognitiveservicesvisionspatialanalysis-personcrossingpolygon"></a>Zon konfiguration för cognitiveservices. vision. spatialanalysis-personcrossingpolygon
 
@@ -186,10 +218,10 @@ Detta är ett exempel på en JSON-ineffekt för den SPACEANALYTICS_CONFIG parame
 | `zones` | lista| Lista över zoner. |
 | `name` | sträng| Eget namn för zonen.|
 | `polygon` | lista| Varje värde par representerar x, y för hörn i polygonen. Polygonen representerar de områden där människor spåras eller räknas. Värdena för float representerar placeringen av hörnen i förhållande till det övre, vänstra hörnet. För att beräkna de absoluta x-, y-värdena multiplicerar du värdena med ram storleken. 
-| `threshold` | flyt| Händelser utsätts när AI-modellernas tillförlitlighet är större eller lika med det här värdet. |
+| `threshold` | flyt| Händelser utsätts när AI-modellernas tillförlitlighet är större eller lika med det här värdet. Standardvärdet är 48 när typen är zonecrossing och 16 när tiden är DwellTime. Det här är de rekommenderade värdena för att uppnå maximal noggrannhet.  |
 | `type` | sträng| För **cognitiveservices. vision. spatialanalysis-personcrossingpolygon** ska detta vara `zonecrossing` eller `zonedwelltime` .|
 | `trigger`|sträng|Typ av utlösare för att skicka en händelse<br>Värden som stöds: "event": Utlös när någon anger eller avslutar zonen.|
-| `focus` | sträng| Punkt platsen inom personens markerings ruta som används för att beräkna händelser. Fokus värde kan vara `footprint` (personens personliga), (det `bottom_center` nedre mitten av personens markerings ram) `center` (centrum för personens avgränsnings ruta).|
+| `focus` | sträng| Punkt platsen inom personens markerings ruta som används för att beräkna händelser. Fokus värde kan vara `footprint` (personens personliga), (det `bottom_center` nedre mitten av personens markerings ram) `center` (centrum för personens avgränsnings ruta). Standardvärdet är formal.|
 
 ### <a name="zone-configuration-for-cognitiveservicesvisionspatialanalysis-persondistance"></a>Zon konfiguration för cognitiveservices. vision. spatialanalysis-persondistance
 
@@ -228,29 +260,6 @@ Detta är ett exempel på en JSON-ineffekt för SPACEANALYTICS_CONFIG-parametern
 | `minimum_distance_threshold` | flyt| Ett avstånd i fot som utlöser en "TooClose"-händelse när människor är mindre än avståndet mellan varandra.|
 | `maximum_distance_threshold` | flyt| Ett avstånd i fot som utlöser en "TooFar"-händelse när människor är större än det avståndet.|
 | `focus` | sträng| Punkt platsen inom personens markerings ruta som används för att beräkna händelser. Fokus värde kan vara `footprint` (personens personliga), (det `bottom_center` nedre mitten av personens markerings ram) `center` (centrum för personens avgränsnings ruta).|
-
-Detta är ett exempel på en JSON-ineffekt för parametern DETECTOR_NODE_CONFIG som konfigurerar en **cognitiveservices. vision. spatialanalysis-persondistance-** zon.
-
-```json
-{ 
-"gpu_index": 0, 
-"do_calibration": true
-}
-```
-
-| Namn | Typ| Description|
-|---------|---------|---------|
-| `gpu_index` | sträng| Det GPU-index som den här åtgärden ska köras på.|
-| `do_calibration` | sträng | Anger att kalibreringen är påslagen. `do_calibration` måste vara true för att **cognitiveservices. vision. spatialanalysis-persondistance** ska fungera korrekt.|
-| `enable_recalibration` | boolesk | Anger om automatisk omkalibrering är aktive rad. Standardvärdet är `true`.|
-| `calibration_quality_check_frequency_seconds` | int | Minsta antal sekunder mellan varje kvalitets kontroll för att avgöra om omkalibrering krävs eller inte. Standardvärdet är `86400` (24 timmar). Används endast när `enable_recalibration=True` .|
-| `calibration_quality_check_sampling_num` | int | Antal slumpmässigt valda lagrade data exempel för användning av fel mätning per kvalitets kontroll. Standardvärdet är `80`. Används endast när `enable_recalibration=True` .|
-| `calibration_quality_check_sampling_times` | int | Antalet gånger som fel mätningar utförs på olika uppsättningar av slumpmässigt valda data exempel per kvalitets kontroll. Standardvärdet är `5`. Används endast när `enable_recalibration=True` .|
-| `calibration_quality_check_sample_collect_frequency_seconds` | int | Minsta antal sekunder mellan insamling av nya data exempel för omkalibrering och kvalitets kontroll. Standardvärdet är `300` (5 minuter). Används endast när `enable_recalibration=True` .|
-| `calibration_quality_check_one_round_sample_collect_num` | int | Minsta antal nya data exempel som kan samlas in per avrundning av exempel samling. Standardvärdet är `10`. Används endast när `enable_recalibration=True` .|
-| `calibration_quality_check_queue_max_size` | int | Maximalt antal data exempel som ska lagras när kamera modellen kalibreras. Standardvärdet är `1000`. Används endast när `enable_recalibration=True` .|
-| `recalibration_score` | int | Högsta kvalitets tröskel för att starta omkalibreringen. Standardvärdet är `75`. Används endast när `enable_recalibration=True` . Kalibrerings kvaliteten beräknas baserat på en inverterad relation med ett omprojektering av bild mål. De identifierade målen i 2D-bildramar, målen projiceras i 3D-rymden och projiceras tillbaka till 2D-bildramen med befintliga kamera kalibrerings parametrar. Omprojektering-felet mäts i genomsnitt mellan de identifierade målen och de omprojicerade målen.|
-| `enable_breakpad`| boolesk | Anger om du vill aktivera Breakpad, som används för att generera kraschdump för att felsöka ska användas. Det är `false` som standard. Om du ställer in det på `true` måste du också lägga till `"CapAdd": ["SYS_PTRACE"]` i `HostConfig` delen av behållaren `createOptions` . Som standard laddas kraschdumpfilen upp till [RealTimePersonTracking](https://appcenter.ms/orgs/Microsoft-Organization/apps/RealTimePersonTracking/crashes/errors?version=&appBuild=&period=last90Days&status=&errorType=all&sortCol=lastError&sortDir=desc) AppCenter-appen, om du vill att krasch dum par ska överföras till din egen AppCenter-app, kan du åsidosätta miljövariabeln `RTPT_APPCENTER_APP_SECRET` med appens app Secret.
 
 Se rikt linjerna för [kamera placering](spatial-analysis-camera-placement.md) för att lära dig mer om zon-och linje konfigurationer.
 
@@ -606,7 +615,7 @@ Exempel-JSON för identifiering av utdata för den här åtgärden med `zonedwel
 | `trackinId` | sträng| Unikt ID för den person som identifierats|
 | `status` | sträng| Riktningen för polygon-korsningar, antingen "Enter" eller "Exit"|
 | `side` | int| Numret på den sida av polygonen som personen korsar. Varje sida är en numrerad kant mellan de två hörnen av polygonen som representerar din zon. Kanten mellan de två första hörnen i polygonen representerar första sidan|
-| `durationMs` | int | Antalet millisekunder som representerar den tid som personen har använt i zonen. Det här fältet anges när händelse typen är _personZoneDwellTimeEvent_|
+| `durationMs` | flyt | Antalet millisekunder som representerar den tid som personen har använt i zonen. Det här fältet anges när händelse typen är _personZoneDwellTimeEvent_|
 | `zone` | sträng | Fältet "namn" för polygonen som representerar den zon som korsades|
 
 | Namn på identifierings fält | Typ| Description|

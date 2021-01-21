@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: d475c76d338270cb9b8e34ea8563cdfd8fdf5122
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: a3481830a09b183213e84490b5300f2fb38f8d19
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97563066"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625072"
 ---
 # <a name="tutorial-implement-iot-spatial-analytics-by-using-azure-maps"></a>Självstudie: implementera IoT spatial Analytics med hjälp av Azure Maps
 
@@ -283,6 +283,10 @@ En fullständig lista över Azure Maps REST API: er finns i:
 Om du vill hämta en lista över enheter som är Azure-certifierade för IoT går du till:
 
 * [Azure Certified-enheter](https://catalog.azureiotsolutions.com/)
+
+## <a name="clean-up-resources"></a>Rensa resurser
+
+Det finns inga resurser som kräver rensning.
 
 ## <a name="next-steps"></a>Nästa steg
 

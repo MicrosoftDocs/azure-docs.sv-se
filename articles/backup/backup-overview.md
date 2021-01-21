@@ -4,12 +4,12 @@ description: Ger en översikt över den Azure Backup tjänsten och hur den bidra
 ms.topic: overview
 ms.date: 04/24/2019
 ms.custom: mvc
-ms.openlocfilehash: 805fa81362b9f90c1d6ba468caaf4b6745e42c62
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 6a30e31dd1462e427faf64966a38c94f9fa56df6
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746122"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624480"
 ---
 # <a name="what-is-the-azure-backup-service"></a>Vad är Azure Backup-tjänsten?
 
@@ -21,6 +21,7 @@ Azure Backup tillhandahåller enkla, säkra och kostnadseffektiva lösningar fö
 
 - **Lokala** säkerhets kopierings filer, mappar, system tillstånd med hjälp av [Microsoft Azure Recovery Services (mars) Agent](backup-support-matrix-mars-agent.md). Eller Använd DPM-eller Azure Backup Server-agenten (MABS) för att skydda lokala virtuella datorer ([Hyper-V](back-up-hyper-v-virtual-machines-mabs.md) och [VMware](backup-azure-backup-server-vmware.md)) och andra [lokala arbets belastningar](backup-mabs-protection-matrix.md)
 - **Virtuella Azure-datorer**  -  [Säkerhetskopiera hela virtuella Windows-eller Linux-datorer](backup-azure-vms-introduction.md) (med hjälp av säkerhets kopierings tillägg) eller säkerhetskopiera filer, mappar och system tillstånd med hjälp av [mars-agenten](backup-azure-manage-mars.md).
+- **Azure-Managed disks**  -  [Säkerhetskopiera Azure Managed disks (för hands version)](backup-managed-disks.md)
 - **Azure Files resurser**  -  [Säkerhetskopiera Azure-filresurser till ett lagrings konto](backup-afs.md)
 - **SQL Server på virtuella Azure-datorer**  -   [Säkerhetskopiera SQL Server databaser som körs på virtuella Azure-datorer](backup-azure-sql-database.md)
 - **SAP HANA-databaser på virtuella Azure-datorer**  -  [Säkerhetskopiera SAP HANA databaser som körs på virtuella Azure-datorer](backup-azure-sap-hana-database.md)

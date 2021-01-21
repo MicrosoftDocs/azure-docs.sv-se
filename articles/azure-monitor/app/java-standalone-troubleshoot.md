@@ -4,12 +4,12 @@ description: Lär dig hur du felsöker Java-agenten för Azure Monitor Applicati
 ms.topic: conceptual
 ms.date: 11/30/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 2876abd3749c9e56cef462e41b8268135f82cd12
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 788eea17cabbea46578d0f59919ae95a59f2223f
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98232224"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625355"
 ---
 # <a name="troubleshooting-guide-azure-monitor-application-insights-for-java"></a>Fel söknings guide: Azure Monitor Application Insights för Java
 
@@ -17,7 +17,7 @@ I den här artikeln tar vi upp några vanliga problem som kan uppstå vid instru
 
 ## <a name="check-the-self-diagnostic-log-file"></a>Kontrol lera logg filen för självdiagnostik
 
-Som standard skapar Java 3,0-agenten för Application Insights en loggfil med namnet `applicationinsights.log` i samma katalog som innehåller `applicationinsights-agent-3.0.1.jar` filen.
+Som standard skapar Java 3,0-agenten för Application Insights en loggfil med namnet `applicationinsights.log` i samma katalog som innehåller `applicationinsights-agent-3.0.2.jar` filen.
 
 Den här logg filen är den första platsen där du kan söka efter tips till eventuella problem som kan uppstå.
 

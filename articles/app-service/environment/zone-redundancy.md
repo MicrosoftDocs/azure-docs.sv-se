@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/15/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 1e88aac4209f7960b2589cf43f59ead4bd129134
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 383b5bb5c7295fe54efda883e47b9b2338286de5
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90605081"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624733"
 ---
 # <a name="availability-zone-support-for-app-service-environments"></a>Tillgänglighets zon stöd för App Service miljöer
 
@@ -30,16 +30,14 @@ Om inte stegen som beskrivs i den här artikeln följs, distribueras ILB ASE int
 Zonindelade ILB ASE kan skapas i någon av följande regioner:
 
 - Australien, östra
-- Brasilien, södra
 - Kanada, centrala
 - Central US
 - East US
 - USA, östra 2
 - USA, östra 2 (EUAP)
 - Frankrike, centrala 
-- Tyskland, västra centrala
 - Japan, östra
-- Norra Europa
+- Europa, norra
 - Europa, västra
 - Sydostasien
 - Storbritannien, södra
@@ -51,9 +49,9 @@ Program som distribueras på en zonindelade ILB-ASE fortsätter att köra och be
 
 Zonindelade ILB-ASE måste skapas med ARM-mallar. När en zonindelade ILB-ASE har skapats via en ARM-mall kan den visas och interagera med via Azure Portal och CLI.  En ARM-mall behövs bara för den första skapandet av en zonindelade ILB-ASE.
 
-Den enda förändring som krävs i en ARM-mall för att ange en zonindelade ILB-ASE är den nya ***zon*** egenskapen. Egenskapen ***Zones*** måste anges till värdet "1", "2" eller "3" beroende på den logiska tillgänglighets zon som ILB-ASE ska fästas på.
+Den enda förändring som krävs i en ARM-mall för att ange en zonindelade ILB-ASE är den nya ***Zones _ Zones** _-egenskapen. Egenskapen _*_Zones_*_ måste anges till värdet "1", "2" eller "3" beroende på den logiska tillgänglighets zon som ILB-ASE ska fästas på.
 
-I exempel ARM-kodfragmentet nedan visas egenskapen ny ***zon*** som anger att ILB-ASE ska fästas i zon 2.
+I exempel ARM-kodfragmentet nedan visas egenskapen ny _*_zon_*_ som anger att ILB-ASE ska fästas i zon 2.
 
 ```
    "resources": [
@@ -91,6 +89,6 @@ Kunderna ser till att en enskild regions data placerings genom att följa stegen
 
 Kunder kan verifiera att en App Service-miljön är korrekt konfigurerad för att lagra data i en enda region genom att följa dessa steg: 
 
-1. Använd [Resursläsaren](https://resources.azure.com)och navigera till arm-resursen för App Service-miljön.  ASE visas under *providers/Microsoft. Web/hostingEnvironments*.
+1. Använd [Resursläsaren](https://resources.azure.com)och navigera till arm-resursen för App Service-miljön.  ASE visas under _providers/Microsoft.Web/hostingEnvironments *.
 2. Om det finns en *zon* egenskap i vyn av arm JSON-syntaxen och den innehåller en enda värdefull JSON-matris med värdet "1", "2" eller "3", är ASE zonally distribuerad och kund information finns kvar i samma region.
 2. Om det inte finns någon *zon* egenskap, eller om egenskapen inte har något giltigt zonnamn som tidigare har angetts, så är ASE inte zonally distribuerad och kund information lagras inte exklusivt i samma region.

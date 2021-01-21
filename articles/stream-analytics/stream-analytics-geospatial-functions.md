@@ -6,16 +6,16 @@ ms.author: krishmam
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: 8d01f43dd6e404bb8f8ae0898625ae1ea9d09fd6
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: dc590593b9bff8f646ee6155d32a2ce3f9790f6e
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98020442"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625256"
 ---
 # <a name="introduction-to-stream-analytics-geospatial-functions"></a>Introduktion till Stream Analytics geospatiala funktioner
 
-Geospatiala funktioner i Azure Stream Analytics möjliggör analys i real tid på strömmande geospatiala data. Med bara några rader med kod kan du utveckla en lösning för produktions klass för komplexa scenarier. 
+Geospatiala funktioner i Azure Stream Analytics möjliggör analys i real tid på strömmande geospatiala data. Med bara några rader med kod kan du utveckla en lösning för produktions klass för komplexa scenarier. Dessa funktioner har stöd för alla well-typer och interjson-punkt, polygon och lin Est ring.
 
 Exempel på scenarier som kan dra nytta av geospatiala funktioner är:
 
@@ -110,7 +110,7 @@ Mer information finns på [CreatePolygon](/stream-analytics-query/createpolygon)
 
 
 ## <a name="st_distance"></a>ST_DISTANCE
-`ST_DISTANCE`Funktionen returnerar avståndet mellan två punkter i meter. 
+`ST_DISTANCE`Funktionen returnerar avståndet mellan två Geometries i meter. 
 
 Följande fråga används `ST_DISTANCE` för att generera en händelse när en gas Station är mindre än 10 km från bilen.
 
@@ -123,7 +123,7 @@ JOIN Station s ON ST_DISTANCE(c.Location, s.Location) < 10 * 1000
 Mer information finns på [ST_DISTANCE](/stream-analytics-query/st-distance) referens.
 
 ## <a name="st_overlaps"></a>ST_OVERLAPS
-`ST_OVERLAPS`Funktionen Jämför två polygoner. Om polygonerna överlappar varandra returnerar funktionen 1. Funktionen returnerar 0 om polygonerna inte överlappar varandra. 
+`ST_OVERLAPS`Funktionen Jämför två Geometries. Om Geometries överlappar varandra returnerar funktionen 1. Funktionen returnerar 0 om Geometries inte överlappar varandra. 
 
 Följande fråga används `ST_OVERLAPS` för att generera en händelse när en byggnad är inom en möjlig överbelastnings zon.
 
@@ -144,7 +144,7 @@ JOIN Storm s ON ST_OVERLAPS(c.Location, s.Course)
 Mer information finns på [ST_OVERLAPS](/stream-analytics-query/st-overlaps) referens.
 
 ## <a name="st_intersects"></a>ST_INTERSECTS
-`ST_INTERSECTS`Funktionen Jämför två lin Est ring. Om lin Est ring korsar, returnerar funktionen 1. Funktionen returnerar 0 om lin Est Ring inte överlappar varandra.
+`ST_INTERSECTS`Funktionen Jämför två Geometries. Om Geometries korsar, returnerar funktionen 1. Funktionen returnerar 0 om Geometries inte överlappar varandra.
 
 I följande exempel fråga används `ST_INTERSECTS` för att avgöra om en förberedelse väg överlappar en smuts väg.
 
@@ -170,7 +170,7 @@ FROM input
 Mer information finns på [ST_INTERSECTS](/stream-analytics-query/st-intersects) referens.
 
 ## <a name="st_within"></a>ST_WITHIN
-`ST_WITHIN`Funktionen avgör om en punkt eller polygon är i en polygon. Om polygonen innehåller punkten eller polygonen kommer funktionen att returnera 1. Funktionen kommer att returnera 0 om punkten eller polygonen inte finns i den deklarerade polygonen.
+`ST_WITHIN`Funktionen avgör om en geometri är i en annan geometri. Om den första finns i den sista, returnerar funktionen 1. Funktionen kommer att returnera 0 om den första geometrin inte finns i den sista.
 
 I följande exempel fråga används `ST_WITHIN` för att avgöra om leverans destinations platsen är inom den aktuella lager polygonen.
 

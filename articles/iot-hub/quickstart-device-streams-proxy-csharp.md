@@ -1,20 +1,20 @@
 ---
-title: Azure IoT Hub Device strömmar C# snabb start för SSH och RDP
+title: Snabb start – Azure IoT Hub enhet som strömmar C#-snabb start för SSH och RDP
 description: I den här snabb starten kör du två exempel C#-program som aktiverar SSH-och RDP-scenarier över en IoT Hub enhets ström.
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: csharp
 ms.topic: quickstart
-ms.custom: mvc, devx-track-azurecli
+ms.custom: references_regions
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: adf0f42b34a4bd7e5df2d2994408dbc175c5e01b
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 12e26818f86fc4abdc1873d031182fd994c04687
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94831930"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624379"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-c-proxy-application-preview"></a>Snabb start: Aktivera SSH och RDP över en IoT Hub enhets ström med hjälp av ett C#-proxyprogram (för hands version)
 
@@ -25,6 +25,33 @@ Microsoft Azure IoT Hub stöder för närvarande enhets strömmar som en [förha
 [IoT Hub-enhetsströmmar](iot-hub-device-streams-overview.md) gör att tjänst- och enhetsprogram kan kommunicera på ett säkert och brandväggsvänligt sätt. Den här snabb starts guiden omfattar två C#-program som aktiverar trafik mellan klient-och serverprogram (till exempel säker gränssnitt [SSH] och Remote Desktop Protocol [RDP] som ska skickas via en enhets ström som upprättas via en IoT-hubb. En översikt över installationen finns i [exempel på Local proxy-programexempel för SSH eller RDP](iot-hub-device-streams-overview.md#local-proxy-sample-for-ssh-or-rdp).
 
 Den här artikeln beskriver först inställningarna för SSH (med port 22) och beskriver hur du ändrar installations port för RDP. Eftersom enhets strömmar är program-och protokoll-oberoende kan samma exempel ändras för att hantera andra typer av program trafik. Ändringen avser vanligt vis bara att ändra kommunikations porten till den som används av det avsedda programmet.
+
+## <a name="prerequisites"></a>Förutsättningar
+
+* För hands versionen av enhets strömmar stöds för närvarande bara för IoT-hubbar som skapas i följande regioner:
+
+  * Central US
+  * Centrala USA-EUAP
+  * Sydostasien
+  * Europa, norra
+
+* De två exempel programmen som du kör i den här snabb starten skrivs i C#. Du behöver .NET Core SDK 2.1.0 eller senare på din utvecklings dator.
+
+    Du kan hämta [.net Core SDK för flera plattformar från .net](https://www.microsoft.com/net/download/all).
+
+    Kontrol lera den aktuella versionen av C# på utvecklings datorn med hjälp av följande kommando:
+
+    ```
+    dotnet --version
+    ```
+
+* [Ladda ned Azure IoT C#-exempel](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)och extrahera zip-arkivet.
+
+* Ett giltigt användar konto och autentiseringsuppgifter på enheten (Windows eller Linux) som används för att autentisera användaren.
+
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
 ## <a name="how-it-works"></a>Så här fungerar det
 
@@ -44,33 +71,6 @@ Följande bild illustrerar hur enhets lokala och lokala proxy-program i det här
 > SSH-trafik som skickas över en enhets ström tunnlas via IoT Hub: s strömnings slut punkt i stället för att skickas direkt mellan tjänsten och enheten. Mer information finns i [fördelarna med att använda enhets strömmar för IoT Hub](iot-hub-device-streams-overview.md#benefits).
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-
-## <a name="prerequisites"></a>Förutsättningar
-
-* För hands versionen av enhets strömmar stöds för närvarande bara för IoT-hubbar som skapas i följande regioner:
-
-  * Central US
-  * Centrala USA-EUAP
-  * Sydostasien
-  * Norra Europa
-
-* De två exempel programmen som du kör i den här snabb starten skrivs i C#. Du behöver .NET Core SDK 2.1.0 eller senare på din utvecklings dator.
-
-    Du kan hämta [.net Core SDK för flera plattformar från .net](https://www.microsoft.com/net/download/all).
-
-    Kontrol lera den aktuella versionen av C# på utvecklings datorn med hjälp av följande kommando:
-
-    ```
-    dotnet --version
-    ```
-
-* [Ladda ned Azure IoT C#-exempel](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)och extrahera zip-arkivet.
-
-* Ett giltigt användar konto och autentiseringsuppgifter på enheten (Windows eller Linux) som används för att autentisera användaren.
-
-[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
-
-[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
 ## <a name="create-an-iot-hub"></a>Skapa en IoT Hub
 
@@ -96,7 +96,7 @@ En enhet måste vara registrerad vid din IoT-hubb innan den kan ansluta. I den h
    > Ersätt plats hållaren *YourIoTHubName* med det namn du valt för din IoT Hub.
 
     ```azurecli-interactive
-    az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyDevice --output table
+    az iot hub device-identity connection-string show --hub-name {YourIoTHubName} --device-id MyDevice --output table
     ```
 
     Observera den returnerade enhets anslutnings strängen för senare användning i den här snabb starten. Det ser ut som i följande exempel:

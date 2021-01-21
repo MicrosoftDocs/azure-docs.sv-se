@@ -4,12 +4,12 @@ description: I den här artikeln sammanfattas några av de viktigaste en översi
 ms.topic: article
 ms.custom: devx-track-csharp
 ms.date: 06/23/2020
-ms.openlocfilehash: 44d5800c08b49118e99a678e31d02e5b7a1f550c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 724fb1a62b82036b4a0fa8b9f4f3608293f608a9
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88935678"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625139"
 ---
 # <a name="azure-relay-hybrid-connections-net-standard-api-overview"></a>Översikt över Azure Relay Hybridanslutningar .NET standard API
 
@@ -70,7 +70,7 @@ await listener.OpenAsync();
 var hybridConnectionStream = await listener.AcceptConnectionAsync();
 ```
 
-#### <a name="client"></a>Client
+#### <a name="client"></a>Klient
 
 Med hjälp av ett [HybridConnectionClient][HCClient] -objekt kan du hämta ett `HybridConnectionStream` objekt på följande sätt:
 
@@ -83,7 +83,7 @@ var hybridConnectionStream = await client.CreateConnectionAsync();
 
 ### <a name="receiving-data"></a>Tar emot data
 
-[HybridConnectionStream][HCStream] -klassen möjliggör tvåvägs kommunikation. I de flesta fall får du ständigt från strömningen. Om du läser text från data strömmen kanske du också vill använda ett [StreamReader](/dotnet/api/system.io.streamreader?view=netcore-3.1) -objekt, vilket gör det lättare att parsa data. Du kan till exempel läsa data som text, i stället för som `byte[]` .
+[HybridConnectionStream][HCStream] -klassen möjliggör tvåvägs kommunikation. I de flesta fall får du ständigt från strömningen. Om du läser text från data strömmen kanske du också vill använda ett [StreamReader](/dotnet/api/system.io.streamreader) -objekt, vilket gör det lättare att parsa data. Du kan till exempel läsa data som text, i stället för som `byte[]` .
 
 Följande kod läser enskilda text rader från data strömmen tills en uppsägning begärs:
 
@@ -110,14 +110,14 @@ while (!cancellationToken.IsCancellationRequested)
 
 ### <a name="sending-data"></a>Skickar data
 
-När en anslutning har upprättats kan du skicka ett meddelande till relä slut punkten. Eftersom anslutningsobjektet ärver data [strömmen](/dotnet/api/system.io.stream?view=netcore-3.1)skickar du dina data som en `byte[]` . I följande exempel visas hur du gör detta:
+När en anslutning har upprättats kan du skicka ett meddelande till relä slut punkten. Eftersom anslutningsobjektet ärver data [strömmen](/dotnet/api/system.io.stream)skickar du dina data som en `byte[]` . I följande exempel visas hur du gör detta:
 
 ```csharp
 var data = Encoding.UTF8.GetBytes("hello");
 await clientConnection.WriteAsync(data, 0, data.Length);
 ```
 
-Men om du vill skicka text direkt, utan att behöva koda strängen varje tid, kan du figursätta `hybridConnectionStream` objektet med ett [StreamWriter](/dotnet/api/system.io.streamwriter?view=netcore-3.1) -objekt.
+Men om du vill skicka text direkt, utan att behöva koda strängen varje tid, kan du figursätta `hybridConnectionStream` objektet med ett [StreamWriter](/dotnet/api/system.io.streamwriter) -objekt.
 
 ```csharp
 // The StreamWriter object only needs to be created once

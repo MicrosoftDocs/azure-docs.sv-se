@@ -1,28 +1,27 @@
 ---
 title: Azure Traffic Manager | Microsoft Docs
-description: Den här artikeln innehåller en översikt över Azure Traffic Manager. Se om det är rätt belastningsutjämningslösning för dig.
+description: Den här artikeln innehåller en översikt över Azure Traffic Manager. Ta reda på om det är rätt val för belastnings utjämning av användar trafik för ditt program.
 services: traffic-manager
 author: duongau
-manager: twooley
 ms.service: traffic-manager
 customer intent: As an IT admin, I want to learn about Traffic Manager and what I can use it for.
 ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/23/2019
+ms.date: 01/19/2021
 ms.author: duau
-ms.openlocfilehash: e2a4db1404709dadb2500df29f3f7acf8787c2b2
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 09b82eed5ad6a9ad121ca56d197eb9c003d027f5
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185739"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624917"
 ---
 # <a name="what-is-traffic-manager"></a>Vad är Traffic Manager?
-Azure Traffic Manager är en lastbalanserare för DNS-baserad trafik som hjälper dig att distribuera trafiken optimalt till tjänster i globala Azure-regioner, med hög tillgänglighet och korta svarstider.
+Azure Traffic Manager är en DNS-baserad trafikbelastnings utjämning. Med den här tjänsten kan du distribuera trafik till dina offentliga program i globala Azure-regioner. Traffic Manager också tillhandahålla dina offentliga slut punkter med hög tillgänglighet och snabb svars tid.
 
-Traffic Manager använder DNS för att dirigera klientbegäranden till den lämpligaste tjänstslutpunkten baserat på en trafikdirigeringsmetod och slutpunkternas hälsostatus. En slutpunkt är en Internetansluten tjänst i eller utanför Azure. Traffic Manager tillhandahåller en uppsättning [trafikdirigeringsmetoder](traffic-manager-routing-methods.md) och [alternativ för slutpunktsövervakning](traffic-manager-monitoring.md) som passar olika programbehov och modeller för automatisk redundansväxling. Traffic Manager har bra återhämtningsförmåga i händelse av fel, inklusive fel som påverkar en hel Azure-region.
+Traffic Manager använder DNS för att dirigera klient begär anden till lämplig tjänst slut punkt baserat på en metod för trafik dirigering. Traffic Manager tillhandahåller också hälso övervakning för varje slut punkt. Slut punkten kan vara valfri Internet-riktad tjänst som finns i eller utanför Azure. Traffic Manager tillhandahåller en uppsättning [trafikdirigeringsmetoder](traffic-manager-routing-methods.md) och [alternativ för slutpunktsövervakning](traffic-manager-monitoring.md) som passar olika programbehov och modeller för automatisk redundansväxling. Traffic Manager har bra återhämtningsförmåga i händelse av fel, inklusive fel som påverkar en hel Azure-region.
 
 >[!NOTE]
 > Med Azure har du tillgång till en uppsättning fullständigt hanterade belastningsutjämningslösningar för dina scenarier. Om du är intresserad av TLS-avslut (Transport Layer Security) (”SSL-avlastning”) eller bearbetning på programnivå för enskilda HTTP/HTTPS-begäranden läser du avsnittet om [Application Gateway](../application-gateway/overview.md). Om du är intresserad av regional belastningsutjämning läser du avsnittet om [Load Balancer](../load-balancer/load-balancer-overview.md). Du kan med fördel kombinera dessa lösningar efter behov för dina slutpunkts-till-slutpunkts-scenarier.
@@ -37,11 +36,11 @@ Traffic Manager tillhandahåller hög tillgänglighet för dina verksamhetskriti
     
 ## <a name="improve-application-performance"></a>Förbättra programprestanda
 
-Med Azure kan du köra molntjänster eller webbplatser på datacenter över hela världen. Traffic Manager förbättrar programmens svarstider genom att dirigera trafik till slutpunkten med den minsta nätverksfördröjningen för klienten.
+Med Azure kan du köra moln tjänster och webbplatser i Data Center som ligger runt om i världen. Traffic Manager kan förbättra svars tiden för din webbplats genom att dirigera trafiken till slut punkten med den lägsta svars tiden.
 
-## <a name="perform-service-maintenance-without-downtime"></a>Utför tjänstunderhåll utan avbrott
+## <a name="service-maintenance-without-downtime"></a>Service underhåll utan drift avbrott
 
-Du kan utföra planerat underhåll för dina program utan avbrottstid. Traffic Manager kan dirigera trafiken till alternativa slutpunkter under underhållsperioden.
+Du kan ha planerat underhåll som gjorts i dina program utan drift stopp. Traffic Manager kan dirigera trafiken till alternativa slutpunkter under underhållsperioden.
 
 ## <a name="combine-hybrid-applications"></a>Kombinera hybridprogram
 

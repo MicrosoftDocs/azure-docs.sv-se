@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-js
-ms.openlocfilehash: 398e964ad773e4c015129c6dd3d4784f1300e16b
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 801c2fe1710952a12584bf10dd8e5c77de3b839c
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905782"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625105"
 ---
 # <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>Självstudie: skapa en Store-lokaliserare med hjälp av Azure Maps
 
-Den här självstudien vägleder dig genom processen med att skapa en enkel butikslokaliserare med hjälp av Azure Maps. Butikslokaliserare är vanliga. Många av de begrepp som används i den här typen av program är tillämpliga på många andra typer av program. En butikslokaliserare för kunder är ett måste för de flesta företag som säljer direkt till konsumenter. I den här guiden får du lära dig att:
+Den här självstudien vägleder dig genom processen med att skapa en enkel butikslokaliserare med hjälp av Azure Maps. Butikslokaliserare är vanliga. Många av de begrepp som används i den här typen av program är tillämpliga på många andra typer av program. En butikslokaliserare för kunder är ett måste för de flesta företag som säljer direkt till konsumenter. I de här självstudierna får du lära dig att
 
 > [!div class="checklist"]
 > * Skapa en ny webbsida med API:et Azure Kartkontroll.
@@ -33,7 +33,7 @@ Den här självstudien vägleder dig genom processen med att skapa en enkel buti
 
 Gå vidare till [exemplet på livebutikslokaliserare](https://azuremapscodesamples.azurewebsites.net/?sample=Simple%20Store%20Locator) eller [källkoden](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 1. [Skapa ett Azure Maps konto med pris nivån S1](quick-demo-map-app.md#create-an-azure-maps-account)
 2. [Hämta en primär prenumerations nyckel](quick-demo-map-app.md#get-the-primary-key-for-your-account), även kallat primär nyckel eller prenumerations nyckel.
@@ -935,6 +935,10 @@ I den här självstudien har du lärt dig hur du skapar en grundläggande Store-
  * Lagra dina data i en databas och sök efter närliggande ställen. Mer information finns i [översikten över rumsliga data för SQL Server](/sql/relational-databases/spatial/spatial-data-types-overview?preserve-view=true&view=sql-server-2017) och [Query spatial data for the nearest neighbor](/sql/relational-databases/spatial/query-spatial-data-for-nearest-neighbor?preserve-view=true&view=sql-server-2017) (Fråga rumsliga data efter den närmaste grannen).
 
 Du kan [Visa fullständig källkod](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator), [Visa Live-exempel](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Simple%20Store%20Locator) och lära dig mer om täckningen och funktionerna i Azure Maps med hjälp av [zoomnings nivåer och panel rutnät](zoom-levels-and-tile-grid.md). Du kan också [använda data drivna format uttryck](data-driven-style-expressions-web-sdk.md) för din affärs logik.
+
+## <a name="clean-up-resources"></a>Rensa resurser
+
+Det finns inga resurser som kräver rensning.
 
 ## <a name="next-steps"></a>Nästa steg
 

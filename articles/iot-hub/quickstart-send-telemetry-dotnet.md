@@ -1,5 +1,5 @@
 ---
-title: Snabbstart – Skicka telemetri till Azure IoT Hub (C#) | Microsoft Docs
+title: Snabb start – skicka telemetri till Azure IoT Hub snabb start (C#) | Microsoft Docs
 description: I den här snabbstarten kör du två C#-exempelprogram som skickar simulerad telemetri till en IoT-hubb, läser telemetrin från IoT-hubben och bearbetar den i molnet.
 author: robinsh
 manager: philmea
@@ -14,12 +14,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - devx-track-azurecli
 ms.date: 06/01/2020
-ms.openlocfilehash: b515274ef4bcf494c071ddb487590ff9cdccf4c0
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 914df5b80dee7da041b268a3aaf25ac493d0cf5b
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121504"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624447"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-service-application-net"></a>Snabb start: skicka telemetri från en enhet till en IoT-hubb och Läs den med ett tjänst program (.NET)
 

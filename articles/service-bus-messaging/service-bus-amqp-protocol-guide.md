@@ -3,12 +3,12 @@ title: AMQP 1,0 i Azure Service Bus-och Event Hubss protokoll guide | Microsoft 
 description: Protokoll guide till uttryck och beskrivning av AMQP 1,0 i Azure Service Bus och Event Hubs
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: e001327c2c7da08cb9a3552f97fc9a7d8b7921a2
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 2154221ebfe69b659ff83100ed614133e178ccdb
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95736722"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624497"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>AMQP 1,0 i Azure Service Bus-och Event Hubs-protokoll guide
 
@@ -73,7 +73,7 @@ Anslutningar, kanaler och sessioner är tillfälliga. Om den underliggande anslu
 
 ### <a name="amqp-outbound-port-requirements"></a>AMQP utgående port krav
 
-Klienter som använder AMQP-anslutningar via TCP kräver portarna 5671 och 5672 för att kunna öppnas i den lokala brand väggen. Tillsammans med dessa portar kan du behöva öppna ytterligare portar om [EnableLinkRedirect](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.enablelinkredirect?view=azure-dotnet) -funktionen är aktive rad. `EnableLinkRedirect` är en ny meddelande funktion som hjälper dig att hoppa över ett hopp medan du tar emot meddelanden, vilket hjälper till att öka data flödet. Klienten börjar kommunicera direkt med backend-tjänsten över Port intervallet 104XX, vilket visas i följande bild. 
+Klienter som använder AMQP-anslutningar via TCP kräver portarna 5671 och 5672 för att kunna öppnas i den lokala brand väggen. Tillsammans med dessa portar kan du behöva öppna ytterligare portar om [EnableLinkRedirect](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.enablelinkredirect) -funktionen är aktive rad. `EnableLinkRedirect` är en ny meddelande funktion som hjälper dig att hoppa över ett hopp medan du tar emot meddelanden, vilket hjälper till att öka data flödet. Klienten börjar kommunicera direkt med backend-tjänsten över Port intervallet 104XX, vilket visas i följande bild. 
 
 ![Lista över mål portar][4]
 
@@ -142,49 +142,49 @@ Pilarna i följande tabell visar Performative flödes riktning.
 
 #### <a name="create-message-receiver"></a>Skapa meddelande mottagare
 
-| Client | Service Bus |
+| Klient | Service Bus |
 | --- | --- |
 | --> Anslut (<br/>namn = {Link Name},<br/>referens = {numerisk referens},<br/>roll =**mottagare**,<br/>Källa = {entitetsnamn},<br/>Target = {klient länk-ID}<br/>) |Klienten ansluter till entiteten som mottagare |
 | Service Bus svar med kopplingens slut |<--attach (<br/>namn = {Link Name},<br/>referens = {numerisk referens},<br/>roll =**avsändare**,<br/>Källa = {entitetsnamn},<br/>Target = {klient länk-ID}<br/>) |
 
 #### <a name="create-message-sender"></a>Skapa meddelande avsändare
 
-| Client | Service Bus |
+| Klient | Service Bus |
 | --- | --- |
 | --> Anslut (<br/>namn = {Link Name},<br/>referens = {numerisk referens},<br/>roll =**avsändare**,<br/>Källa = {klient länk-ID},<br/>Target = {entitetsnamn}<br/>) |Ingen åtgärd |
 | Ingen åtgärd |<--attach (<br/>namn = {Link Name},<br/>referens = {numerisk referens},<br/>roll =**mottagare**,<br/>Källa = {klient länk-ID},<br/>Target = {entitetsnamn}<br/>) |
 
 #### <a name="create-message-sender-error"></a>Skapa meddelande avsändare (fel)
 
-| Client | Service Bus |
+| Klient | Service Bus |
 | --- | --- |
 | --> Anslut (<br/>namn = {Link Name},<br/>referens = {numerisk referens},<br/>roll =**avsändare**,<br/>Källa = {klient länk-ID},<br/>Target = {entitetsnamn}<br/>) |Ingen åtgärd |
 | Ingen åtgärd |<--attach (<br/>namn = {Link Name},<br/>referens = {numerisk referens},<br/>roll =**mottagare**,<br/>Källa = null,<br/>Target = null<br/>)<br/><br/><--loss (<br/>referens = {numerisk referens},<br/>Closed =**True**,<br/>fel = {Error info}<br/>) |
 
 #### <a name="close-message-receiversender"></a>Stäng meddelande mottagare/avsändare
 
-| Client | Service Bus |
+| Klient | Service Bus |
 | --- | --- |
 | --> koppla från (<br/>referens = {numerisk referens},<br/>stängt =**Sant**<br/>) |Ingen åtgärd |
 | Ingen åtgärd |<--loss (<br/>referens = {numerisk referens},<br/>stängt =**Sant**<br/>) |
 
 #### <a name="send-success"></a>Skicka (lyckades)
 
-| Client | Service Bus |
+| Klient | Service Bus |
 | --- | --- |
 | --> överföring (<br/>leverans-ID = {numerisk referens},<br/>leverans-tag = {binär referens},<br/>Kvittat =**falskt**,, mer =**falskt**,<br/>State =**Null**,<br/>Resume =**false**<br/>) |Ingen åtgärd |
 | Ingen åtgärd |<--disposition (<br/>roll = mottagare,<br/>första = {Delivery ID},<br/>senaste = {Delivery ID},<br/>Kvittat =**Sant**,<br/>State =**accepterad**<br/>) |
 
 #### <a name="send-error"></a>Skicka (fel)
 
-| Client | Service Bus |
+| Klient | Service Bus |
 | --- | --- |
 | --> överföring (<br/>leverans-ID = {numerisk referens},<br/>leverans-tag = {binär referens},<br/>Kvittat =**falskt**,, mer =**falskt**,<br/>State =**Null**,<br/>Resume =**false**<br/>) |Ingen åtgärd |
 | Ingen åtgärd |<--disposition (<br/>roll = mottagare,<br/>första = {Delivery ID},<br/>senaste = {Delivery ID},<br/>Kvittat =**Sant**,<br/>State =**nekad**(<br/>fel = {Error info}<br/>)<br/>) |
 
 #### <a name="receive"></a>Ta emot
 
-| Client | Service Bus |
+| Klient | Service Bus |
 | --- | --- |
 | --> flöde (<br/>länk – kredit = 1<br/>) |Ingen åtgärd |
 | Ingen åtgärd |< överföring (<br/>leverans-ID = {numerisk referens},<br/>leverans-tag = {binär referens},<br/>Kvittat =**falskt**,<br/>More =**false**,<br/>State =**Null**,<br/>Resume =**false**<br/>) |
@@ -192,7 +192,7 @@ Pilarna i följande tabell visar Performative flödes riktning.
 
 #### <a name="multi-message-receive"></a>Mottagning av flera meddelanden
 
-| Client | Service Bus |
+| Klient | Service Bus |
 | --- | --- |
 | --> flöde (<br/>länk – kredit = 3<br/>) |Ingen åtgärd |
 | Ingen åtgärd |< överföring (<br/>leverans-ID = {numerisk referens},<br/>leverans-tag = {binär referens},<br/>Kvittat =**falskt**,<br/>More =**false**,<br/>State =**Null**,<br/>Resume =**false**<br/>) |
@@ -222,8 +222,8 @@ Alla egenskaper som programmet måste definiera ska mappas till AMQP- `applicati
 | --- | --- | --- |
 | meddelande-ID |Programdefinierad, fri format identifierare för det här meddelandet. Används för dubblettidentifiering. |[Meddelande](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | användar-id |Programdefinierad användar identifierare, tolkas inte av Service Bus. |Inte tillgänglig via Service Bus API. |
-| på |Programdefinierad mål identifierare, tolkas inte av Service Bus. |[Att](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
-| motiv |Programdefinierad identifierare för meddelande syfte, tolkas inte av Service Bus. |[Etikett](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| på |Programdefinierad mål identifierare, tolkas inte av Service Bus. |[Till](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| Ämne |Programdefinierad identifierare för meddelande syfte, tolkas inte av Service Bus. |[Etikett](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | svar till |Programdefinierad svars Sök vägs indikator, tolkas inte av Service Bus. |[ReplyTo](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | korrelations-id |Programdefinierad korrelations identifierare, tolkas inte av Service Bus. |[CorrelationId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | innehålls typ |Programdefinierad innehålls typ indikator för bröd texten, tolkas inte av Service Bus. |[Innehålls](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
@@ -240,14 +240,14 @@ Det finns några andra egenskaper för Service Bus-meddelanden, som inte är en 
 
 | Antecknings kart nyckel | Användning | API-namn |
 | --- | --- | --- |
-| x-opt-Scheduled-Queue-Time-Time | Deklarerar vid vilken tidpunkt meddelandet ska visas i entiteten |[ScheduledEnqueueTime](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.scheduledenqueuetimeutc?view=azure-dotnet) |
-| x-opt-partition-nyckel | Programdefinierad nyckel som avgör vilken partition som meddelandet ska landa i. | [PartitionKey](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.partitionkey?view=azure-dotnet) |
-| x-opt-Drive-partition-Key | Programdefinierat partitions nyckel värde när en transaktion ska användas för att skicka meddelanden via en överförings kön. | [ViaPartitionKey](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.viapartitionkey?view=azure-dotnet) |
-| x-opt-queued-Time | Tjänstedefinierad UTC-tid som representerar den faktiska tiden för att köa meddelandet. Ignoreras vid indatamängd. | [EnqueuedTimeUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc?view=azure-dotnet) |
-| x-opt-Sequence-Number | Det användardefinierade unika numret som tilldelats ett meddelande. | [SequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sequencenumber?view=azure-dotnet) |
-| x-opt-offset | Tjänstedefinierat ordnings nummer i kön för meddelandet. | [EnqueuedSequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedsequencenumber?view=azure-dotnet) |
-| x-opt-Locked-fram till | Tjänst definierad. Datum och tid till vilket meddelandet kommer att låsas i kön/prenumerationen. | [LockedUntilUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.lockeduntilutc?view=azure-dotnet) |
-| x-opt-obeställbara meddelanden kön-source | Tjänst definierad. Källan till det ursprungliga meddelandet om meddelandet tas emot från kön för obeställbara meddelanden. | [DeadLetterSource](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.deadlettersource?view=azure-dotnet) |
+| x-opt-Scheduled-Queue-Time-Time | Deklarerar vid vilken tidpunkt meddelandet ska visas i entiteten |[ScheduledEnqueueTime](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.scheduledenqueuetimeutc) |
+| x-opt-partition-nyckel | Programdefinierad nyckel som avgör vilken partition som meddelandet ska landa i. | [PartitionKey](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.partitionkey) |
+| x-opt-Drive-partition-Key | Programdefinierat partitions nyckel värde när en transaktion ska användas för att skicka meddelanden via en överförings kön. | [ViaPartitionKey](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.viapartitionkey) |
+| x-opt-queued-Time | Tjänstedefinierad UTC-tid som representerar den faktiska tiden för att köa meddelandet. Ignoreras vid indatamängd. | [EnqueuedTimeUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc) |
+| x-opt-Sequence-Number | Det användardefinierade unika numret som tilldelats ett meddelande. | [SequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sequencenumber) |
+| x-opt-offset | Tjänstedefinierat ordnings nummer i kön för meddelandet. | [EnqueuedSequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedsequencenumber) |
+| x-opt-Locked-fram till | Tjänst definierad. Datum och tid till vilket meddelandet kommer att låsas i kön/prenumerationen. | [LockedUntilUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.lockeduntilutc) |
+| x-opt-obeställbara meddelanden kön-source | Tjänst definierad. Källan till det ursprungliga meddelandet om meddelandet tas emot från kön för obeställbara meddelanden. | [DeadLetterSource](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.deadlettersource) |
 
 ### <a name="transaction-capability"></a>Transaktions kapacitet
 
@@ -323,7 +323,7 @@ Hanterings specifikationen för AMQP är den första av de utkast tillägg som b
 
 Alla dessa gester kräver en förfrågan/svar-interaktion mellan klienten och meddelande infrastrukturen, och därför definierar specifikationen hur interaktions mönstret ska modelleras över AMQP: klienten ansluter till meddelande infrastrukturen, initierar en session och skapar sedan ett länkat länk. På en länk fungerar klienten som avsändare och på den andra fungerar den som mottagare, vilket skapar ett länk par som kan fungera som en dubbelriktad kanal.
 
-| Logisk åtgärd | Client | Service Bus |
+| Logisk åtgärd | Klient | Service Bus |
 | --- | --- | --- |
 | Skapa sökväg för svar på begäran |--> Anslut (<br/>namn = {*Link Name*},<br/>referens = {*numerisk referens*},<br/>roll =**avsändare**,<br/>källa =**Null**,<br/>Target = "min entitet/$management"<br/>) |Ingen åtgärd |
 | Skapa sökväg för svar på begäran |Ingen åtgärd |\<-- attach(<br/>namn = {*Link Name*},<br/>referens = {*numerisk referens*},<br/>roll =**mottagare**,<br/>Källa = null,<br/>Target = "min entitet"<br/>) |
@@ -357,16 +357,16 @@ Protokoll-gesten är ett fråge-/svars utbyte som definieras av hanterings speci
 
 Begär ande meddelandet har följande program egenskaper:
 
-| Tangent | Valfritt | Värdetyp | Värde innehåll |
+| Nyckel | Valfritt | Värdetyp | Värde innehåll |
 | --- | --- | --- | --- |
-| operation |Nej |sträng |**Skicka token** |
-| typ |Nej |sträng |Typ av token som ska beställas. |
-| name |Nej |sträng |Mål gruppen som token gäller. |
-| dag |Ja |timestamp |Utgångs tiden för token. |
+| operation |No |sträng |**Skicka token** |
+| typ |No |sträng |Typ av token som ska beställas. |
+| name |No |sträng |Mål gruppen som token gäller. |
+| dag |Yes |timestamp |Utgångs tiden för token. |
 
 Egenskapen *Name* identifierar den entitet som token ska associeras med. I Service Bus är det sökvägen till kön, eller ämnet/prenumerationen. *Typ* egenskapen identifierar tokentypen:
 
-| Tokentyp | Beskrivning av token | Typ av brödtext | Anteckningar |
+| Tokentyp | Beskrivning av token | Typ av brödtext | Kommentarer |
 | --- | --- | --- | --- |
 | AMQP: JWT |JSON Web Token (JWT) |AMQP-värde (sträng) |Ännu inte tillgängligt. |
 | AMQP: SWT |Enkel webb-token (SWT) |AMQP-värde (sträng) |Stöds endast för SWT-token som utfärdats av AAD/ACS |
@@ -376,10 +376,10 @@ Tokens ger behörighet. Service Bus vet om tre grundläggande rättigheter: "Ski
 
 Svarsmeddelandet har följande *program egenskaps* värden
 
-| Tangent | Valfritt | Värdetyp | Värde innehåll |
+| Nyckel | Valfritt | Värdetyp | Värde innehåll |
 | --- | --- | --- | --- |
-| status kod |Nej |int |HTTP-svarskod **[RFC2616]**. |
-| status-Beskrivning |Ja |sträng |Beskrivning av status. |
+| status kod |No |int |HTTP-svarskod **[RFC2616]**. |
+| status-Beskrivning |Yes |sträng |Beskrivning av status. |
 
 Klienten kan anropa in *-token* upprepade gånger och för alla entiteter i meddelande infrastrukturen. Token är begränsade till den aktuella klienten och fästs på den aktuella anslutningen, vilket innebär att servern släpper alla kvarhållna token när anslutningen uppkommer.
 
@@ -399,7 +399,7 @@ Med den här funktionen skapar du en avsändare och upprättar länken till `via
 
 > Obs! autentisering måste utföras för både *via-och-* målentiteten *innan* den här länken upprättas.
 
-| Client | Riktning | Service Bus |
+| Klient | Riktning | Service Bus |
 | :--- | :---: | :--- |
 | Fäst<br/>namn = {Link Name},<br/>roll = avsändare,<br/>Källa = {klient länk-ID},<br/>mål =**{via-Entity}**,<br/>**Egenskaper = mappa [( <br/> com. Microsoft: Transfer-Address-address = <br/> {destination-entitet})]** ) | ------> | |
 | | <------ | Fäst<br/>namn = {Link Name},<br/>roll = mottagare,<br/>Källa = {klient länk-ID},<br/>mål = {via-Entity},<br/>egenskaper = Map [(<br/>com. Microsoft: Transfer-destination-Address =<br/>{destination – entitet})] ) |

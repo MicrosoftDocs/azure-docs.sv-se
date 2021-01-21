@@ -1,15 +1,15 @@
 ---
-title: Support mat ris för Azure disk backup
+title: Stödmatris för säkerhetskopiering av Azure-disk
 description: Innehåller en sammanfattning av support inställningar och begränsningar för säkerhets kopiering av Azure-diskar.
 ms.topic: conceptual
 ms.date: 01/07/2021
 ms.custom: references_regions
-ms.openlocfilehash: 950651148237c7b9374c378e27ef5cd76697ae9e
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: 099e83d8a2fb109da862657265dad8be8143f608
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98558425"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624942"
 ---
 # <a name="azure-disk-backup-support-matrix-in-preview"></a>Support mat ris för Azure disk Backup (för hands version)
 
@@ -55,6 +55,8 @@ Fler regioner kommer att meddelas när de blir tillgängliga.
 - För närvarande går det inte att ändra säkerhets kopierings principen och resurs gruppen för ögonblicks bilder som har tilldelats till en säkerhets kopierings instans när du konfigurerar säkerhets kopieringen av en disk kan inte ändras.
 
 - För närvarande är Azure Portal upplevelsen för att konfigurera säkerhets kopieringen av diskar begränsad till högst 20 diskar från samma prenumeration.
+
+- För närvarande (under för hands versionen) stöds inte användning av PowerShell och Azure CLI för att konfigurera säkerhets kopiering och återställning av diskar.
 
 - När du konfigurerar säkerhets kopiering måste disken som du har valt att säkerhets kopie ras och resurs gruppen för ögonblicks bilder där ögonblicks bilderna ska lagras vara en del av samma prenumeration. Du kan inte skapa en stegvis ögonblicks bild för en viss disk utanför diskens prenumeration. Läs mer om [stegvisa ögonblicks bilder](https://docs.microsoft.com/azure/virtual-machines/windows/disks-incremental-snapshots-portal#restrictions) för hanterad disk. Mer information om hur du väljer en resurs grupp för ögonblicks bilder finns i  [Konfigurera säkerhets kopiering](backup-managed-disks.md#configure-backup).
 

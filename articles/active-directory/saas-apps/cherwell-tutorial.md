@@ -9,33 +9,30 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/27/2020
+ms.date: 01/14/2021
 ms.author: jeedes
-ms.openlocfilehash: 4a8d570d77ae8955a427d74e9c1e21600fc83e1e
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: da6faf5791c3e02be9494d0a0bdf9d78ec7fd42e
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92456189"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624716"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cherwell"></a>Självstudie: Azure Active Directory integrering med Cherwell
 
-I den här självstudien får du lära dig hur du integrerar Cherwell med Azure Active Directory (AD Azure).
-Integreringen av Cherwell med Azure AD medför följande fördelar:
+I den här självstudien får du lära dig hur du integrerar Cherwell med Azure Active Directory (Azure AD). När du integrerar Cherwell med Azure AD kan du:
 
-* Du kan styra vem som har åtkomst till Cherwell från Azure AD.
-* Du kan konfigurera inställningar så att dina användare loggas in automatiskt i Cherwell (enkel inloggning) med sina Azure AD-konton.
-* Du kan hantera dina konton på en central plats – Azure-portalen.
+* Kontroll i Azure AD som har åtkomst till Cherwell.
+* Gör det möjligt för användarna att logga in automatiskt till Cherwell med sina Azure AD-konton.
+* Hantera dina konton på en central plats – Azure Portal.
 
-Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
-Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
-
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att konfigurera Azure AD-integrering med Cherwell behöver du följande:
 
-* En Azure AD-prenumeration. Om du inte har en Azure AD-miljö kan du få ett [kostnads fritt konto](https://azure.microsoft.com/free/)
-* En Cherwell-prenumeration med enkel inloggning aktiverat
+* En Azure AD-prenumeration. Om du inte har en Azure AD-miljö kan du få ett [kostnads fritt konto](https://azure.microsoft.com/free/).
+
+* Cherwell-aktiverad prenumeration med enkel inloggning.
 
 ## <a name="scenario-description"></a>Scenariobeskrivning
 
@@ -43,53 +40,48 @@ I den här självstudien konfigurerar och testar du enkel inloggning med Azure A
 
 * Cherwell stöder **SP**-initierad enkel inloggning
 
-* När du har konfigurerat Cherwell kan du genomdriva session Control, som skyddar exfiltrering och intrånget för organisationens känsliga data i real tid. Kontroll av sessionen sträcker sig från villkorlig åtkomst. [Lär dig hur du tvingar fram sessions kontroll med Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad)
-
 > [!NOTE]
 > ID för det här programmet är ett fast sträng värde så att endast en instans kan konfigureras i en klient.
 
-## <a name="adding-cherwell-from-the-gallery"></a>Lägga till Cherwell från galleriet
+## <a name="add-cherwell-from-the-gallery"></a>Lägg till Cherwell från galleriet
 
 För att konfigurera integreringen av Cherwell med Azure AD måste du lägga till Cherwell från galleriet i din lista över hanterade SaaS-appar.
 
-1. Logga in på [Azure Portal](https://portal.azure.com) med antingen ett arbets-eller skol konto eller en personlig Microsoft-konto.
+1. Logga in på Azure Portal med antingen ett arbets-eller skol konto eller en personlig Microsoft-konto.
 1. I det vänstra navigerings fönstret väljer du tjänsten **Azure Active Directory** .
 1. Navigera till **företags program** och välj sedan **alla program**.
-1. Välj **nytt program**om du vill lägga till ett nytt program.
+1. Välj **nytt program** om du vill lägga till ett nytt program.
 1. I avsnittet **Lägg till från galleriet** , skriver du **Cherwell** i sökrutan.
 1. Välj **Cherwell** från resultat panelen och Lägg sedan till appen. Vänta några sekunder medan appen läggs till i din klient organisation.
 
-## <a name="configure-and-test-azure-ad-sso"></a>Konfigurera och testa Azure AD SSO
+## <a name="configure-and-test-azure-ad-sso-for-cherwell"></a>Konfigurera och testa Azure AD SSO för Cherwell
 
-I det här avsnittet ska du konfigurera och testa enkel inloggning i Azure AD med Cherwell baserat på en testanvändare med namnet **Britta Simon**.
-För att enkel inloggning ska fungera måste en länkrelation mellan en Azure AD-användare och den relaterade användaren i Cherwell upprättas.
+Konfigurera och testa Azure AD SSO med Cherwell med hjälp av en test användare som heter **B. Simon**. För att SSO ska fungera måste du upprätta en länk relation mellan en Azure AD-användare och den relaterade användaren i Cherwell.
 
-För att konfigurera och testa enkel inloggning i Azure AD med Cherwell måste du utföra följande uppgifter:
+Utför följande steg för att konfigurera och testa Azure AD SSO med Cherwell:
 
 1. **[Konfigurera Azure AD SSO](#configure-azure-ad-sso)** – så att användarna kan använda den här funktionen.
-    * **[Skapa en Azure AD-testanvändare](#create-an-azure-ad-test-user)** – för att testa enkel inloggning med Azure AD med Britta Simon.
-    * **[Tilldela Azure AD-testanvändaren](#assign-the-azure-ad-test-user)** – så att Britta Simon kan använda enkel inloggning med Azure AD.
+    1. **[Skapa en Azure AD-test](#create-an-azure-ad-test-user)** för att testa enkel inloggning med Azure AD med B. Simon.
+    2. **[Tilldela Azure AD-testuser](#assign-the-azure-ad-test-user)** -för att aktivera B. Simon för att använda enkel inloggning med Azure AD.
 2. **[Konfigurera CHERWELL SSO](#configure-cherwell-sso)** – om du vill konfigurera inställningar för enskilda Sign-On på program sidan.
-    * **[Skapa Cherwell-testanvändare](#create-cherwell-test-user)** – för att skapa en motsvarighet till Britta Simon i Cherwell som är länkad till Azure AD-representationen av användaren.
+    1. **[Skapa Cherwell test User](#create-cherwell-test-user)** -om du vill ha en motsvarighet till B. Simon i Cherwell som är länkad till Azure AD-representation av användare.
 3. **[Testa SSO](#test-sso)** – för att kontrol lera om konfigurationen fungerar.
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurera Azure AD SSO
 
 Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
-1. I [Azure Portal](https://portal.azure.com/)går du till sidan för program integrering i **Cherwell** , letar upp avsnittet **Hantera** och väljer **enkel inloggning**.
+1. I Azure Portal går du till sidan för program integrering i **Cherwell** , letar upp avsnittet **Hantera** och väljer **enkel inloggning**.
 1. På sidan **Välj metod för enkel inloggning** väljer du **SAML**.
-1. På sidan **Konfigurera enkel inloggning med SAML** klickar du på ikonen Redigera/penna för **grundläggande SAML-konfiguration** för att redigera inställningarna.
+1. På sidan **Konfigurera enkel inloggning med SAML** klickar du på Penn ikonen för **grundläggande SAML-konfiguration** för att redigera inställningarna.
 
    ![Redigera grundläggande SAML-konfiguration](common/edit-urls.png)
 
 4. I avsnittet **Grundläggande SAML-konfiguration** utför du följande steg:
 
-    ![Information om enkel inloggning med Cherwell-domäner och -URL:er](common/sp-signonurl.png)
-
     a. I text rutan **inloggnings-URL** skriver du en URL med följande mönster: `https://<companyname>.cherwellondemand.com/cherwellclient`
 
-    b. Skriv en URL i text rutan **svars-URL** med följande mönster: `https://<companyname>.cherwellondemand.com/cherwellclient`
+    b. I textrutan **Svars-URL** skriver du in URL:en med hjälp av följande mönster: `https://*.cherwellondemand.com`
     
     > [!NOTE]
     > Värdet är inte verkligt. Uppdatera värdet med den faktiska inloggnings-URL: en och svars-URL: en. Kontakta [Cherwell-kundsupporten](https://cherwellsupport.com/CherwellPortal) och be om värdet. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
@@ -102,21 +94,15 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
     ![Kopiera konfigurations-URL:er](common/copy-configuration-urls.png)
 
-    a. Inloggnings-URL
-
-    b. Azure AD-identifierare
-
-    c. Utloggnings-URL
-
 ### <a name="create-an-azure-ad-test-user"></a>Skapa en Azure AD-testanvändare
 
 I det här avsnittet ska du skapa en test användare med namnet B. Simon i Azure Portal.
 
-1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory**, väljer **användare**och väljer sedan **alla användare**.
+1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory**, väljer **användare** och väljer sedan **alla användare**.
 1. Överst på skärmen väljer du **ny användare**.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I fältet **namn** anger du **B. Simon**.  
-   1. I fältet **användar namn** anger du `<username>@<companydomain>.<extension>` . Till exempel: `B.Simon@contoso.com`.
+   1. I fältet **användar namn** anger du `<username>@<companydomain>.<extension>` . Exempel: `B.Simon@contoso.com`.
    1. Markera kryss rutan **Visa lösen ord** och anteckna värdet som visas i rutan **lösen ord** .
    1. Välj **Skapa**.
 
@@ -124,20 +110,13 @@ I det här avsnittet ska du skapa en test användare med namnet B. Simon i Azure
 
 I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till Cherwell.
 
-1. I Azure Portal väljer du **företags program**och väljer sedan **alla program**.
+1. I Azure Portal väljer du **företags program** och väljer sedan **alla program**.
 1. I listan med program väljer du **Cherwell**.
 1. På sidan Översikt för appen letar du reda på avsnittet **Hantera** och väljer **användare och grupper**.
-
-   ![Länken ”Användare och grupper”](common/users-groups-blade.png)
-
-1. Välj **Lägg till användare**och välj sedan **användare och grupper** i dialog rutan **Lägg till tilldelning** .
-
-    ![Länken Lägg till användare](common/add-assign-user.png)
-
+1. Välj **Lägg till användare** och välj sedan **användare och grupper** i dialog rutan **Lägg till tilldelning** .
 1. I dialog rutan **användare och grupper** väljer du **B. Simon** från listan användare och klickar sedan på knappen **Välj** längst ned på skärmen.
 1. Om du förväntar dig ett roll värde i SAML Assertion, i dialog rutan **Välj roll** , väljer du lämplig roll för användaren i listan och klickar sedan på knappen **Välj** längst ned på skärmen.
 1. Klicka på knappen **tilldela** i dialog rutan **Lägg till tilldelning** .
-
 
 ## <a name="configure-cherwell-sso"></a>Konfigurera Cherwell SSO
 
@@ -155,14 +134,14 @@ Om du vill att Azure AD-användare ska kunna logga in på Cherwell måste de til
 
 ## <a name="test-sso"></a>Testa SSO
 
-I det här avsnittet testar du konfigurationen för enkel inloggning Azure AD med hjälp av åtkomstpanelen.
+I det här avsnittet ska du testa Azure AD-konfigurationen för enkel inloggning med följande alternativ. 
 
-När du klickar på Cherwell-panelen på åtkomstpanelen så bör du automatiskt loggas in i Cherwell-programmet som du har konfigurerat enkel inloggning för. Mer information om åtkomstpanelen finns i [introduktionen till åtkomstpanelen](../user-help/my-apps-portal-end-user-access.md).
+* Klicka på **testa det här programmet** i Azure Portal. Detta omdirigeras till Cherwell-inloggnings-URL där du kan starta inloggnings flödet. 
 
-## <a name="additional-resources"></a>Ytterligare resurser
+* Gå till Cherwell-inloggnings-URL: en direkt och starta inloggnings flödet därifrån.
 
-- [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](./tutorial-list.md)
+* Du kan använda Microsoft Mina appar. När du klickar på panelen Cherwell i Mina appar, bör du loggas in automatiskt på den Cherwell som du ställer in SSO för. Mer information om Mina appar finns i [Introduktion till Mina appar](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-- [Vad är programåtkomst och enkel inloggning med Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+## <a name="next-steps"></a>Nästa steg
 
-- [Vad är villkorlig åtkomst i Azure Active Directory?](../conditional-access/overview.md)
+När du har konfigurerat Cherwell kan du genomdriva session Control, som skyddar exfiltrering och intrånget för organisationens känsliga data i real tid. Kontroll av sessionen sträcker sig från villkorlig åtkomst. [Lär dig hur du tvingar fram sessions kontroll med Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)

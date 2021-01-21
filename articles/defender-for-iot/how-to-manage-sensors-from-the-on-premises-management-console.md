@@ -1,5 +1,5 @@
 ---
-title: Hantera sensorer från den lokala hanterings konsolen
+title: Hantera sensor från den lokala hanteringskonsolen
 description: Lär dig hur du hanterar sensorer från hanterings konsolen, inklusive uppdatering av sensor versioner, översätter system inställningar till sensorer och aktiverar och inaktiverar motorer på sensorer.
 author: shhazam-ms
 manager: rkarlin
@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/07/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 36db1b23d8fb17cec4fe981c938f8c7003543b4d
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 73eb693ab9f06535fd523eb386969e2cce961eef
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97841923"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624599"
 ---
 # <a name="manage-sensors-from-the-management-console"></a>Hantera sensorer från hanterings konsolen
 
@@ -72,7 +72,7 @@ Du kan uppdatera flera sensorer samtidigt från den lokala hanterings konsolen.
 
 Så här uppdaterar du flera sensorer:
 
-1. Gå till [Azure-portalen](https://portal.azure.com/).
+1. Öppna [Azure-portalen](https://portal.azure.com/).
 
 2. Gå till Azure Defender för IoT.
 
@@ -144,13 +144,13 @@ Du kan skicka aviseringar till tredje part med information om frånkopplade sens
 
 Sensorer skyddas av fem Defender för IoT-motorer. Du kan aktivera eller inaktivera motorer för anslutna sensorer.
 
-| Motor | Beskrivning | Exempelscenario |
+| Motor | Description | Exempelscenario |
 |--|--|--|
 | Protokolls brotts motor | Ett protokoll fel uppstår när paket strukturen eller fält värden inte följer protokoll specifikationen. | Aviseringen "Ogiltig MODBUS-åtgärd (funktions kod noll)". Den här varningen anger att en primär enhet skickade en begäran med funktions kod 0 till en sekundär enhet. Detta är inte tillåtet enligt protokoll specifikationen och den sekundära enheten kanske inte kan hantera inaktuella inmatade enheter. |
 | Princip överträdelse motor | En princip överträdelse inträffar med en avvikelse från bas linje beteendet som definierats i den inlärda eller konfigurerade principen. | Varningen "obehörig HTTP-användare agent". Den här varningen anger att ett program som inte har lärts eller godkänts av principen används som en HTTP-klient på en enhet. Detta kan vara en ny webbläsare eller ett annat program på den enheten. |
 | Motor för skadlig kod | Motorn för skadlig kod identifierar skadlig nätverks aktivitet. | "Misstanke om skadlig aktivitet (Stuxnet)"-avisering. Den här varningen anger att sensorn upptäckte misstänkt nätverks aktivitet som är känd för att vara relaterad till den skadliga kod som Stuxnet, vilket är ett avancerat beständigt hot som är avsett för industriella kontroll-och SCADA-nätverk. |
 | Avvikelse motor | Motorn för skadlig kod identifierar en avvikelse i nätverks beteendet. | "Periodiskt beteende i kommunikations kanalen." Det här är en komponent som kontrollerar nätverks anslutningar och hittar regelbunden eller cyklisk beteende för data överföring, som är vanligt i industriella nätverk. |
-| Drift motor | Den här motorn identifierar drift incidenter eller fel enheter. | "Till gången misstänks vara frånkopplad (svarar inte)" varning. Den här aviseringen utlöses när en enhet inte svarar på begär Anden för en fördefinierad period. Det kan bero på att enheten stängs av, kopplas från eller fungerar dåligt.
+| Drift motor | Den här motorn identifierar drift incidenter eller fel enheter. | `Device is Suspected to be Disconnected (Unresponsive)` varningar. Den här aviseringen utlöses när en enhet inte svarar på begär Anden för en fördefinierad period. Det kan bero på att enheten stängs av, kopplas från eller fungerar dåligt.
 |
 
 Aktivera eller inaktivera motorer för anslutna sensorer:

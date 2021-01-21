@@ -3,12 +3,12 @@ title: Konfigurera din egen nyckel för kryptering av Azure Event Hubs-data i vi
 description: Den här artikeln innehåller information om hur du konfigurerar din egen nyckel för kryptering av Azure Event Hubs data rest.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 1b0469a2f25b7f2bec2668b6ab33ff99eb1df809
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 095def84c5ab5e4dac7802027468b67eefb3161f
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348219"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625389"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>Konfigurera Kundhanterade nycklar för kryptering av Azure Event Hubs-data i vila med hjälp av Azure Portal
 Azure Event Hubs tillhandahåller kryptering av data i vila med Azure Storage Service Encryption (Azure SSE). Event Hubs förlitar sig på Azure Storage för att lagra data och som standard krypteras alla data som lagras med Azure Storage med hjälp av Microsoft-hanterade nycklar. 
@@ -42,12 +42,12 @@ Följ dessa steg om du vill aktivera Kundhanterade nycklar i Azure Portal:
 När du har aktiverat Kundhanterade nycklar måste du associera kundens hanterade nyckel med ditt Azure Event Hubs-namnområde. Event Hubs stöder endast Azure Key Vault. Om du aktiverar alternativet för **kryptering med kundhanterad nyckel** i föregående avsnitt måste nyckeln importeras till Azure Key Vault. Nycklarna måste också ha **mjuk borttagning** och **Rensa inte** konfigurerad för nyckeln. Dessa inställningar kan konfigureras med hjälp av [PowerShell](../key-vault/general/key-vault-recovery.md) eller [CLI](../key-vault/general/key-vault-recovery.md).
 
 1. Om du vill skapa ett nytt nyckel valv följer du [snabb](../key-vault/general/overview.md)starten för Azure Key Vault. Mer information om hur du importerar befintliga nycklar finns i [om nycklar, hemligheter och certifikat](../key-vault/general/about-keys-secrets-certificates.md).
-1. Om du vill aktivera både mjuk borttagning och tömning av skydd när du skapar ett valv använder du kommandot AZ-kommandot för att [skapa](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) ett valv.
+1. Om du vill aktivera både mjuk borttagning och tömning av skydd när du skapar ett valv använder du kommandot AZ-kommandot för att [skapa](/cli/azure/keyvault#az-keyvault-create) ett valv.
 
     ```azurecli-interactive
     az keyvault create --name ContosoVault --resource-group ContosoRG --location westus --enable-soft-delete true --enable-purge-protection true
     ```    
-1. Om du vill lägga till rensnings skydd i ett befintligt valv (som redan har mjuk borttagning aktiverat) använder du kommandot AZ-kommando för att [Uppdatera](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-update) .
+1. Om du vill lägga till rensnings skydd i ett befintligt valv (som redan har mjuk borttagning aktiverat) använder du kommandot AZ-kommando för att [Uppdatera](/cli/azure/keyvault#az-keyvault-update) .
 
     ```azurecli-interactive
     az keyvault update --name ContosoVault --resource-group ContosoRG --enable-purge-protection true
@@ -400,7 +400,7 @@ Vi rekommenderar att du alltid aktiverar loggar som visas i föregående avsnitt
 
 Nedan visas vanliga felkoder som du kan titta efter när BYOK-kryptering är aktiverat.
 
-| Åtgärd | Felkod | Resulterande data tillstånd |
+| Action | Felkod | Resulterande data tillstånd |
 | ------ | ---------- | ----------------------- | 
 | Ta bort behörigheten wrap/unwrap från ett nyckel valv | 403 |    Otillgänglig |
 | Ta bort AAD-rollens medlemskap från ett AAD-huvud som beviljats behörigheten wrap/unwrap | 403 |  Otillgänglig |

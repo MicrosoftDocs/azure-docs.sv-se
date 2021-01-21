@@ -1,20 +1,20 @@
 ---
-title: Azure IoT Hub enhets strömmar Node.js snabb start för SSH och RDP
+title: Snabb start – Azure IoT Hub enhets strömmar Node.js snabb start för SSH och RDP
 description: I den här snabb starten kör du ett exempel Node.js program som fungerar som en proxy för att aktivera SSH-och RDP-scenarier över IoT Hub enhets strömmar.
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.custom: mvc, devx-track-js, devx-track-azurecli
+ms.custom: references_regions
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: f32882dcb423c6f42a21a242a7e628ef6acda006
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: ef45a6277adeff09a34fe22b7abeb21d3e603167
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96902144"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624362"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-nodejs-proxy-application-preview"></a>Snabb start: Aktivera SSH och RDP över en IoT Hub enhets ström med hjälp av ett Node.js proxy-program (för hands version)
 
@@ -22,7 +22,7 @@ ms.locfileid: "96902144"
 
 I den här snabb starten aktiverar du en säker gränssnitts trafik (SSH) och Remote Desktop Protocol (RDP) som ska skickas till enheten via en enhets ström. Azure IoT Hub enhets strömmar gör att tjänst-och enhets program kan kommunicera på ett säkert och användarvänligt sätt. Den här snabb starten beskriver körningen av ett Node.js proxy-program som körs på tjänst sidan. Under den offentliga för hands versionen stöder Node.js SDK endast enhets strömmar på tjänst sidan. Därför täcker den här snabb starten instruktioner för att bara köra det tjänst lokala proxy-programmet.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * Slut för ande av [aktiverar SSH och RDP över IoT Hub enhets strömmar genom att använda ett C-proxyprogram](./quickstart-device-streams-proxy-c.md) eller [Aktivera SSH och RDP över IoT Hub enhets strömmar med hjälp av ett C#-proxyprogram](./quickstart-device-streams-proxy-csharp.md).
 

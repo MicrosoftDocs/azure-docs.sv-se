@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: ee32749e2c6f0118507fcfc6d4994a04ea3a6d69
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 759adea3cf34b79c76b6facec3bd4626ca54107e
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95997281"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625040"
 ---
 # <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>Självstudie: Konfigurera ett geofence med hjälp av Azure Maps
 
@@ -471,6 +471,10 @@ I föregående geografiskt JSON-svar har utrustningen avslutat huvud platsens gr
 
 
 Du kan också [skicka e-postmeddelanden med hjälp av event Grid och Logic Apps](../event-grid/publish-iot-hub-events-to-logic-apps.md) och kontrol lera de [händelser som stöds i Event Grid](../event-grid/event-handlers.md) med Azure Maps.
+
+## <a name="clean-up-resources"></a>Rensa resurser
+
+Det finns inga resurser som kräver rensning.
 
 ## <a name="next-steps"></a>Nästa steg
 

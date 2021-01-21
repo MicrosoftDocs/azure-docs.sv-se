@@ -1,5 +1,5 @@
 ---
-title: Importera enhets information
+title: Importera enhetsinformation
 description: Defender för IoT-sensorer övervakar och analyserar speglad trafik. I dessa fall kanske du vill importera data för att utöka informationen på enheter som redan har identifierats.
 author: shhazam-ms
 manager: rkarlin
@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/06/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 0a443ba7b41615fc62882bd8de6bf077c6b5a137
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 7cb805f60ba9feb0ae2d1483b2ab2df4e03639d8
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97842510"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625422"
 ---
 # <a name="import-device-information-to-a-sensor"></a>Importera enhets information till en sensor
 
@@ -67,7 +67,7 @@ I det här avsnittet beskrivs hur du importerar enhetens IP-adress, operativ sys
 
 Så här importerar du IP-adress, operativ system och korrigerings nivå:
 
-1. Hämta filen [assets_info_2.2.8 och up.csv](https://cyberx-labs.zendesk.com/hc/en-us/articles/360008658272-How-To-Import-Data) från [Hjälp Center](https://cyberx-labs.zendesk.com/hc/en-us) och ange informationen på följande sätt:
+1. Hämta filen [devices_info_2.2.8 och up.csv](https://cyberx-labs.zendesk.com/hc/en-us/articles/360008658272-How-To-Import-Data) från [Hjälp Center](https://cyberx-labs.zendesk.com/hc/en-us) och ange informationen på följande sätt:
 
    - **IP-adress**: Ange ENHETens IP-adress.
 
@@ -85,7 +85,7 @@ Så här importerar du IP-adress, operativ system och korrigerings nivå:
 
 Så här importerar du statusen för auktorisering:
 
-1. Hämta och spara [authorized_assets.csv](https://cyberx-labs.zendesk.com/hc/en-us/articles/360008658272-How-To-Import-Data) -filen från Defender för IoT Help Center. Kontrol lera att du har sparat filen som en CSV-fil.
+1. Hämta och spara [authorized_devices.csv](https://cyberx-labs.zendesk.com/hc/en-us/articles/360008658272-How-To-Import-Data) -filen från Defender för IoT Help Center. Kontrol lera att du har sparat filen som en CSV-fil.
 
 2. Ange informationen som:
 
@@ -154,7 +154,7 @@ I det här avsnittet beskrivs hur du importerar enhetens IP-adress, operativ sys
 
 Så här importerar du IP-adress, operativ system och korrigerings nivå:
 
-1. Hämta filen [assets_info_2.2.8 och up.csv](https://cyberx-labs.zendesk.com/hc/en-us/articles/360008658272-How-To-Import-Data) från [Hjälp Center](https://cyberx-labs.zendesk.com/hc/en-us) och ange informationen på följande sätt:
+1. Hämta filen [devices_info_2.2.8 och up.csv](https://cyberx-labs.zendesk.com/hc/en-us/articles/360008658272-How-To-Import-Data) från [Hjälp Center](https://cyberx-labs.zendesk.com/hc/en-us) och ange informationen på följande sätt:
 
    - **IP-adress**: ENHETens IP-adress.
 
@@ -172,7 +172,7 @@ Så här importerar du IP-adress, operativ system och korrigerings nivå:
 
 Så här importerar du statusen för auktorisering:
 
-1. Hämta och spara [authorized_assets.csv](https://cyberx-labs.zendesk.com/hc/en-us/articles/360008658272-How-To-Import-Data) -filen från Defender för IoT Help Center. Kontrol lera att du har sparat filen som en CSV-fil.
+1. Hämta och spara [authorized_devices.csv](https://cyberx-labs.zendesk.com/hc/en-us/articles/360008658272-How-To-Import-Data) -filen från Defender för IoT Help Center. Kontrol lera att du har sparat filen som en CSV-fil.
 
 2. Ange informationen som:
 
@@ -192,4 +192,4 @@ När informationen importeras får du aviseringar om oauktoriserade enheter för
 
 [Styr vilken trafik som övervakas](how-to-control-what-traffic-is-monitored.md)
 
-[Undersök sensor identifieringar i en enhets inventering](how-to-investigate-sensor-detections-in-a-device-inventory.md)
+[Undersök identifieringar av sensorer i en enhetsinventering](how-to-investigate-sensor-detections-in-a-device-inventory.md)

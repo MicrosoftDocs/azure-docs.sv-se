@@ -1,6 +1,6 @@
 ---
-title: Visa resultat från routning av Azure IoT Hub-meddelanden (.NET) | Microsoft Docs
-description: När du har konfigurerat alla resurser med hjälp av del 1 av självstudien lägger du till möjligheten att dirigera meddelanden till Azure Stream Analytics och visa resultaten i PowerBI.
+title: Självstudie – Visa resultat från Azure IoT Hub meddelanderoutning (.NET) | Microsoft Docs
+description: Självstudie – när du har konfigurerat alla resurser som använder del 1 av självstudien lägger du till möjligheten att dirigera meddelanden till Azure Stream Analytics och visa resultaten i Power BI.
 author: robinsh
 manager: philmea
 ms.service: iot-hub
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/25/2018
 ms.author: robinsh
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 14f6fc685e99060474a17503cb13ba09a61a5a9a
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 0db05c8caae8483de3b55448bfbe6b2bcfc23187
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92149207"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625289"
 ---
 # <a name="tutorial-part-2---view-the-routed-messages"></a>Självstudie: del 2 – Visa dirigerade meddelanden
 
@@ -116,7 +116,7 @@ Om du vill se data i Power BI-visualiseringen konfigurerar du först ett Stream 
 
 ### <a name="add-an-input-to-the-stream-analytics-job"></a>Lägga till indata till Stream Analytics-jobbet
 
-1. Under **jobb sto pol Ogin**väljer du **indata**.
+1. Under **jobb sto pol Ogin** väljer du **indata**.
 
 2. I rutan **indata** väljer du **Lägg till Stream-indata** och väljer IoT Hub. På skärmen som visas fyller du i följande fält:
 
@@ -142,9 +142,9 @@ Om du vill se data i Power BI-visualiseringen konfigurerar du först ett Stream 
 
 ### <a name="add-an-output-to-the-stream-analytics-job"></a>Lägga till utdata till Stream Analytics-jobbet
 
-1. Under **jobb sto pol Ogin**väljer du **utdata**.
+1. Under **jobb sto pol Ogin** väljer du **utdata**.
 
-2. I fönstret **utdata** väljer du **Lägg till**och väljer sedan **Power BI**. På skärmen som visas fyller du i följande fält:
+2. I fönstret **utdata** väljer du **Lägg till** och väljer sedan **Power BI**. På skärmen som visas fyller du i följande fält:
 
    **Utdataalias**: Utdatas unika alias. I självstudien används **contosooutputs**. 
 
@@ -154,7 +154,7 @@ Om du vill se data i Power BI-visualiseringen konfigurerar du först ett Stream 
 
    För resten av fälten accepterar du standardvärdena.
 
-3. Välj **auktorisera**och logga in på ditt Power BI-konto. (Det kan ta mer än ett try).
+3. Välj **auktorisera** och logga in på ditt Power BI-konto. (Det kan ta mer än ett try).
 
    ![Konfigurera utdata för Stream Analytics-jobbet](./media/tutorial-routing-view-message-routing-results/stream-analytics-job-outputs.png)
 
@@ -162,7 +162,7 @@ Om du vill se data i Power BI-visualiseringen konfigurerar du först ett Stream 
 
 ### <a name="configure-the-query-of-the-stream-analytics-job"></a>Konfigurera frågan för Stream Analytics-jobbet
 
-1. Under **jobb sto pol Ogin**väljer du **fråga**.
+1. Under **jobb sto pol Ogin** väljer du **fråga**.
 
 2. Ersätt `[YourInputAlias]` med inmatat alias för jobbet. I självstudien används **contosoinputs**.
 
@@ -176,7 +176,7 @@ Om du vill se data i Power BI-visualiseringen konfigurerar du först ett Stream 
 
 ### <a name="run-the-stream-analytics-job"></a>Köra Stream Analytics-jobbet
 
-I Stream Analytics jobb väljer du **Starta**  >  **nu**  >  **Start**. När jobbet startar ändras jobbstatusen från **Stoppad** till **Körs**.
+I Stream Analytics jobb väljer du **Starta**  >  **nu**  >  . När jobbet startar ändras jobbstatusen från **Stoppad** till **Körs**.
 
 För att konfigurera Power BI-rapporten behöver du data, så du måste konfigurera Power BI när du har skapat enheten och kör enhetssimuleringsprogrammet.
 
@@ -218,7 +218,7 @@ Om allt är korrekt konfigurerat bör då se följande resultat:
 
 2. I [Azure Portal](https://portal.azure.com)väljer du **resurs grupper** och väljer sedan din resurs grupp. I den här självstudien används **ContosoResources**. 
 
-    Välj lagrings kontot, Välj **behållare**och välj sedan behållaren. I självstudien används **contosoresults**. Du bör se en mapp, och du kan öka detaljnivån mellan kataloger tills du ser en eller flera filer. Öppna en av dessa filer. De innehåller poster som dirigeras till lagringskontot. 
+    Välj lagrings kontot, Välj **behållare** och välj sedan behållaren. I självstudien används **contosoresults**. Du bör se en mapp, och du kan öka detaljnivån mellan kataloger tills du ser en eller flera filer. Öppna en av dessa filer. De innehåller poster som dirigeras till lagringskontot. 
 
    ![Resultat filen i lagring](./media/tutorial-routing-view-message-routing-results/results-in-storage.png)
 
@@ -238,7 +238,7 @@ Nu när programmet fortfarande körs ställer du in Power BI visualiseringen fö
 
    Du bör se den listade datauppsättningen som du angav när du skapade utdata för Stream Analytics-jobbet. I självstudien används **contosodataset**. (Det kan ta 5–10 minuter innan datauppsättningen visas första gången.)
 
-4. Under **åtgärder**väljer du den första ikonen för att skapa en rapport.
+4. Under **åtgärder** väljer du den första ikonen för att skapa en rapport.
 
    ![Power BI arbets yta med åtgärder och rapport ikon markerad](./media/tutorial-routing-view-message-routing-results/power-bi-actions.png)
 
@@ -280,7 +280,7 @@ Logga in på ditt [Power BI](https://powerbi.microsoft.com/)-konto. Gå till din
 
 ### <a name="use-the-azure-cli-to-clean-up-resources"></a>Rensa resurser med hjälp av Azure CLI
 
-Om du vill ta bort resursgruppen använder du kommandot [az group delete](/cli/azure/group?view=azure-cli-latest#az-group-delete). `$resourceGroup` var inställd på att **ContosoResources** tillbaka i början av den här självstudien.
+Om du vill ta bort resursgruppen använder du kommandot [az group delete](/cli/azure/group?view=azure-cli-latest#az-group-delete&preserve-view=true). `$resourceGroup` var inställd på att **ContosoResources** tillbaka i början av den här självstudien.
 
 ```azurecli-interactive
 az group delete --name $resourceGroup

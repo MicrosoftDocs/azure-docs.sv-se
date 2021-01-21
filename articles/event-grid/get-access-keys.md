@@ -3,12 +3,12 @@ title: Hämta åtkomst nyckel för en Event Grid resurs
 description: Den här artikeln beskriver hur du får åtkomst nyckeln för ett Event Grid ämne eller en domän
 ms.topic: how-to
 ms.date: 07/07/2020
-ms.openlocfilehash: e5694fe0b5f22f7f76285c344627005ea727ae3c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2e258cebe1652178a67c292d0cccab3a151eddf7
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86105871"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624845"
 ---
 # <a name="get-access-keys-for-event-grid-resources-topics-or-domains"></a>Få åtkomst nycklar för Event Grid resurser (ämnen eller domäner)
 Åtkomst nycklar används för att autentisera ett program publicerings händelser för att Azure Event Grid resurser (ämnen och domäner). Vi rekommenderar att du återskapar dina nycklar regelbundet och sparar dem på ett säkert sätt. Du får två åtkomst nycklar så att du kan underhålla anslutningar med en nyckel när du återskapar den.
@@ -21,13 +21,13 @@ I Azure Portal växlar du till fliken **åtkomst nycklar** i **avsnittet Event G
 :::image type="content" source="./media/get-access-keys/azure-portal.png" alt-text="Sidan åtkomst nycklar":::
 
 ## <a name="azure-powershell"></a>Azure PowerShell
-Använd kommandot [Get-AzEventGridTopicKey](/powershell/module/az.eventgrid/get-azeventgridtopickey?view=azps-4.3.0) för att få åtkomst nycklar för ämnen. 
+Använd kommandot [Get-AzEventGridTopicKey](/powershell/module/az.eventgrid/get-azeventgridtopickey) för att få åtkomst nycklar för ämnen. 
 
 ```azurepowershell-interactive
 Get-AzEventGridTopicKey -ResourceGroup <RESOURCE GROUP NAME> -Name <TOPIC NAME>
 ```
 
-Använd [Get-AzEventGridDomainKey](/powershell/module/az.eventgrid/get-azeventgriddomainkey?view=azps-4.3.0) -kommandot för att få åtkomst nycklar för domäner. 
+Använd [Get-AzEventGridDomainKey](/powershell/module/az.eventgrid/get-azeventgriddomainkey) -kommandot för att få åtkomst nycklar för domäner. 
 
 ```azurepowershell-interactive
 Get-AzEventGridDomainKey -ResourceGroup <RESOURCE GROUP NAME> -Name <DOMAIN NAME>

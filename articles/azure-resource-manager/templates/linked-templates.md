@@ -2,13 +2,13 @@
 title: Länka mallar för distribution
 description: 'Beskriver hur du använder länkade mallar i en Azure Resource Manager-mall (ARM-mall) för att skapa en modulär mall-lösning. Visar hur du skickar parameter värden, anger en parameter fil och dynamiskt skapade URL: er.'
 ms.topic: conceptual
-ms.date: 12/07/2020
-ms.openlocfilehash: cac63ccdd13e245baf97695e9b138c29d3db4958
-ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
+ms.date: 01/20/2021
+ms.openlocfilehash: dd810167e07f1bb23f9563936cb481652953ccd1
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97760630"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624866"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Använda länkade och nästlade mallar vid distribution av Azure-resurser
 
@@ -162,7 +162,7 @@ Följande mall visar hur mall uttryck matchas enligt omfånget. Den innehåller 
 
 Värdet för `exampleVar` ändringar beroende på `scope` egenskapens värde i `expressionEvaluationOptions` . I följande tabell visas resultaten för båda omfattningarna.
 
-| `expressionEvaluationOptions` utrymme | Utdata |
+| Utvärderings omfång | Utdata |
 | ----- | ------ |
 | innersta | från kapslad mall |
 | yttre (eller standard) | från överordnad mall |
@@ -274,6 +274,129 @@ I följande exempel distribueras en SQL-Server och en nyckel valvs hemlighet som
   ],
   "outputs": {
   }
+}
+```
+
+Var försiktig när du använder säkra parameter värden i en kapslad mall. Om du anger omfånget till yttre lagras de säkra värdena som oformaterad text i distributions historiken. En användare som visar mallen i distributions historiken kan se säkra värden. Använd i stället det inre omfånget eller Lägg till i den överordnade mallen de resurser som behöver säkra värden.
+
+Följande utdrag visar vilka värden som är säkra och som inte är säkra.
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "adminUsername": {
+      "type": "string",
+      "metadata": {
+        "description": "Username for the Virtual Machine."
+      }
+    },
+    "adminPasswordOrKey": {
+      "type": "securestring",
+      "metadata": {
+        "description": "SSH Key or password for the Virtual Machine. SSH key is recommended."
+      }
+    }
+  },
+  ...
+  "resources": [
+    {
+      "type": "Microsoft.Compute/virtualMachines",
+      "apiVersion": "2020-06-01",
+      "name": "mainTemplate",
+      "properties": {
+        ...
+        "osProfile": {
+          "computerName": "mainTemplate",
+          "adminUsername": "[parameters('adminUsername')]",
+          "adminPassword": "[parameters('adminPasswordOrKey')]" // Yes, secure because resource is in parent template
+        }
+      }
+    },
+    {
+      "name": "outer",
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2019-10-01",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "outer"
+        },
+        "mode": "Incremental",
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "resources": [
+            {
+              "type": "Microsoft.Compute/virtualMachines",
+              "apiVersion": "2020-06-01",
+              "name": "outer",
+              "properties": {
+                ...
+                "osProfile": {
+                  "computerName": "outer",
+                  "adminUsername": "[parameters('adminUsername')]",
+                  "adminPassword": "[parameters('adminPasswordOrKey')]" // No, not secure because resource is in nested template with outer scope
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "inner",
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2019-10-01",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "parameters": {
+          "adminPasswordOrKey": {
+              "value": "[parameters('adminPasswordOrKey')]"
+          },
+          "adminUsername": {
+              "value": "[parameters('adminUsername')]"
+          }
+        },
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "parameters": {
+            "adminUsername": {
+              "type": "string",
+              "metadata": {
+                "description": "Username for the Virtual Machine."
+              }
+            },
+            "adminPasswordOrKey": {
+              "type": "securestring",
+              "metadata": {
+                "description": "SSH Key or password for the Virtual Machine. SSH key is recommended."
+              }
+            }
+          },
+          "resources": [
+            {
+              "type": "Microsoft.Compute/virtualMachines",
+              "apiVersion": "2020-06-01",
+              "name": "inner",
+              "properties": {
+                ...
+                "osProfile": {
+                  "computerName": "inner",
+                  "adminUsername": "[parameters('adminUsername')]",
+                  "adminPassword": "[parameters('adminPasswordOrKey')]" // Yes, secure because resource is in nested template and scope is inner
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  ]
 }
 ```
 
@@ -674,7 +797,7 @@ az deployment group create --resource-group ExampleGroup --template-uri $url?$to
 
 I följande exempel visas vanliga användnings områden för länkade mallar.
 
-|Huvud mal len  |Länkad mall |Beskrivning  |
+|Huvud mal len  |Länkad mall |Description  |
 |---------|---------| ---------|
 |[Hello World](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworldparent.json) |[länkad mall](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworld.json) | Returnerar en sträng från den länkade mallen. |
 |[Load Balancer med offentlig IP-adress](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) |[länkad mall](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) |Returnerar den offentliga IP-adressen från den länkade mallen och anger värdet i belastningsutjämnaren. |

@@ -7,14 +7,14 @@ ms.author: shhazam
 ms.date: 12/06/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: f3058953e702f40fa1500441e382898b0314ddbb
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 9c868685ad943c1ab9ab263a164111e46294c042
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97841810"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625439"
 ---
-# <a name="investigate-sensor-detections-in-a-device-inventory"></a>Undersök sensor identifieringar i en enhets inventering
+# <a name="investigate-sensor-detections-in-a-device-inventory"></a>Undersök identifieringar av sensorer i en enhetsinventering
 
 Enhets inventeringen visar ett stort antal enhets egenskaper som en sensor identifierar. Alternativen är tillgängliga för att:
 
@@ -32,7 +32,7 @@ Följande attribut visas i enhets inventerings tabellen.
 
 | Parameter | Beskrivning |
 |--|--|
-| Namn | Enhetens namn som sensorn upptäckte den. |
+| Name | Enhetens namn som sensorn upptäckte den. |
 | Typ | Typ av enhet. |
 | Leverantör | Namnet på enhetens leverantör, enligt vad som definieras i MAC-adressen. |
 | Operativsystem | Enhetens operativ system. |
@@ -225,6 +225,6 @@ Så här exporterar du en CSV-fil:
 
 ## <a name="see-also"></a>Se även
 
-[Undersök alla Enterprise sensor-identifieringar i en enhets inventering](how-to-investigate-all-enterprise-sensor-detections-in-a-device-inventory.md)
+[Undersök alla identifieringar av företagssensorer i en enhetsinventering](how-to-investigate-all-enterprise-sensor-detections-in-a-device-inventory.md)
 
 [Arbeta med vyer för webbplats översikt](how-to-gain-insight-into-global-regional-and-local-threats.md#work-with-site-map-views)

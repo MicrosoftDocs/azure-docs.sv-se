@@ -1,5 +1,5 @@
 ---
-title: 'Arbeta med Defender för IoT-API: er'
+title: Arbeta med Defender for IoT-API:er
 description: Använd en extern REST API för att komma åt data som upptäckts av sensorer och hanterings konsoler och utföra åtgärder med dessa data.
 author: shhazam-ms
 manager: rkarlin
@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/14/2020
 ms.topic: reference
 ms.service: azure
-ms.openlocfilehash: d49aa50b1b8843dfb5c3d32983ff0bb129543bb0
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 44ea6e8343203a9cb18947f31f45aa0b023178b0
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97843673"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624582"
 ---
 # <a name="defender-for-iot-sensor-and-management-console-apis"></a>Defender för IoT sensor-och Management Console-API: er
 
@@ -44,7 +44,7 @@ Så här genererar du en token:
 
 5. Välj **Slutför**. De token som du skapar visas **i dialog rutan åtkomsttoken.**
    
-   :::image type="content" source="media/references-work-with-defender-for-iot-apis/access-token-window.png" alt-text="Skärm bild av dialog rutan till gångs-token med fyllda token":::
+   :::image type="content" source="media/references-work-with-defender-for-iot-apis/access-token-window.png" alt-text="Skärm bild av dialog rutan token för enhet med fyllda token":::
 
    **Används** anger sista gången ett externt anrop med denna token togs emot.
 
@@ -86,7 +86,7 @@ Använd detta API för att begära en lista över alla enheter som en Defender f
 
 #### <a name="method"></a>Metod
 
-**GET**
+**TA**
 
 Begär en lista över alla enheter som Defender for IoT-sensorn har identifierat.
 
@@ -112,38 +112,38 @@ Matris med JSON-objekt som representerar enheter.
 
 | Namn | Typ | Kan ha värdet null | Lista med värden |
 |--|--|--|--|
-| **id** | Numeriskt | Nej | - |
-| **IP-adresser** | JSON-matris | Ja | IP-adresser (kan vara mer än en adress i fråga om Internet adresser eller en enhet med dubbla nätverkskort) |
-| **Namn** | Sträng | Nej | - |
-| **bastyp** | Sträng | Nej | Okänd, teknik Station, PLC, HMI, historian, domänkontrollant, DB-server, trådlös åtkomst punkt, router, växel, Server, arbets Station, IP-kamera, skrivare, brand vägg, Terminal Station, VPN Gateway, Internet eller multicast och sändning |
-| **macAddresses** | JSON-matris | Ja | MAC-adresser (kan vara mer än en adress i händelse av en enhet med dubbla nätverkskort) |
-| **operatingSystem** | Sträng | Ja | - |
-| **engineeringStation** | Boolesk | Nej | Sant eller falskt |
-| **läser** | Boolesk | Nej | Sant eller falskt |
-| **auktorisation** | Boolesk | Nej | Sant eller falskt |
-| **leverantörsspecifika** | Sträng | Ja | - |
-| **protokoll** | JSON-matris | Ja | Protokoll objekt |
-| **inbyggd program vara** | JSON-matris | Ja | Firmware-objekt |
+| **id** | Numerisk | No | - |
+| **IP-adresser** | JSON-matris | Yes | IP-adresser (kan vara mer än en adress i fråga om Internet adresser eller en enhet med dubbla nätverkskort) |
+| **name** | Sträng | No | - |
+| **bastyp** | Sträng | No | Okänd, teknik Station, PLC, HMI, historian, domänkontrollant, DB-server, trådlös åtkomst punkt, router, växel, Server, arbets Station, IP-kamera, skrivare, brand vägg, Terminal Station, VPN Gateway, Internet eller multicast och sändning |
+| **macAddresses** | JSON-matris | Yes | MAC-adresser (kan vara mer än en adress i händelse av en enhet med dubbla nätverkskort) |
+| **operatingSystem** | Sträng | Yes | - |
+| **engineeringStation** | Boolesk | No | Sant eller falskt |
+| **läser** | Boolesk | No | Sant eller falskt |
+| **auktorisation** | Boolesk | No | Sant eller falskt |
+| **leverantörsspecifika** | Sträng | Yes | - |
+| **protokoll** | JSON-matris | Yes | Protokoll objekt |
+| **inbyggd program vara** | JSON-matris | Yes | Firmware-objekt |
 
 #### <a name="protocol-fields"></a>Protokoll fält
 
 | Namn | Typ | Kan ha värdet null | Lista med värden |
 |--|--|--|--|
-| **Namn** | Sträng | Nej |  |
-| **Adresser** | JSON-matris | Ja | Huvud-eller numeriska värden |
+| **Namn** | Sträng | No |  |
+| **Adresser** | JSON-matris | Yes | Huvud-eller numeriska värden |
 
 #### <a name="firmware-fields"></a>Fält för inbyggd program vara
 
 | Namn | Typ | Kan ha värdet null | Lista med värden |
 |--|--|--|--|
-| **nummer** | Sträng | Nej | Ej tillämpligt eller det faktiska värdet |
-| **förlag** | Sträng | Nej | Ej tillämpligt eller det faktiska värdet |
-| **versionInbyggdProgramvara** | Double | Nej | Ej tillämpligt eller det faktiska värdet |
-| **additionalData** | Sträng | Nej | Ej tillämpligt eller det faktiska värdet |
-| **moduleAddress** | Sträng | Nej | Ej tillämpligt eller det faktiska värdet |
-| **räck** | Sträng | Nej | Ej tillämpligt eller det faktiska värdet |
-| **stack** | Sträng | Nej | Ej tillämpligt eller det faktiska värdet |
-| **adresspool** | Sträng | Nej | Ej tillämpligt eller det faktiska värdet |
+| **nummer** | Sträng | No | Ej tillämpligt eller det faktiska värdet |
+| **förlag** | Sträng | No | Ej tillämpligt eller det faktiska värdet |
+| **versionInbyggdProgramvara** | Double | No | Ej tillämpligt eller det faktiska värdet |
+| **additionalData** | Sträng | No | Ej tillämpligt eller det faktiska värdet |
+| **moduleAddress** | Sträng | No | Ej tillämpligt eller det faktiska värdet |
+| **räck** | Sträng | No | Ej tillämpligt eller det faktiska värdet |
+| **stack** | Sträng | No | Ej tillämpligt eller det faktiska värdet |
+| **adresspool** | Sträng | No | Ej tillämpligt eller det faktiska värdet |
 
 #### <a name="response-example"></a>Exempel på svar
 
@@ -287,7 +287,7 @@ Använd det här API: et för att begära en lista över alla anslutningar per e
 
 #### <a name="method"></a>Metod
 
-**GET**
+**TA**
 
 #### <a name="query-parameters"></a>Frågeparametrar
 
@@ -333,19 +333,19 @@ Matris med JSON-objekt som representerar enhets anslutningar.
 
 | Namn | Typ | Kan ha värdet null | Lista med värden |
 |--|--|--|--|
-| **firstDeviceId** | Numeriskt | Nej | - |
-| **secondDeviceId** | Numeriskt | Nej | - |
-| **lastSeen** | Numeriskt | Nej | Epok (UTC) |
-| **Hitta** | Numeriskt | Nej | Epok (UTC) |
-| **hamnarna** | Nummer mat ris | Nej | - |
-| **protokoll** | JSON-matris | Nej | Protokoll fält |
+| **firstDeviceId** | Numerisk | No | - |
+| **secondDeviceId** | Numerisk | No | - |
+| **lastSeen** | Numerisk | No | Epok (UTC) |
+| **Hitta** | Numerisk | No | Epok (UTC) |
+| **hamnarna** | Nummer mat ris | No | - |
+| **protokoll** | JSON-matris | No | Protokoll fält |
 
 #### <a name="protocol-field"></a>Protokoll fält
 
 | Namn | Typ | Kan ha värdet null | Lista med värden |
 |--|--|--|--|
-| **Namn** | Sträng | Nej | - |
-| **kommandon** | Strängmatris | Nej | - |
+| **name** | Sträng | No | - |
+| **kommandon** | Strängmatris | No | - |
 
 #### <a name="response-example"></a>Exempel på svar
 
@@ -455,7 +455,7 @@ Använd det här API: et för att begära en lista över alla kända CVEs som id
 
 #### <a name="method"></a>Metod
 
-**GET**
+**TA**
 
 #### <a name="query-parameters"></a>Frågeparametrar
 
@@ -491,11 +491,11 @@ Matris med JSON-objekt som representerar CVEs som identifieras på IP-adresser.
 
 | Namn | Typ | Kan ha värdet null | Lista med värden |
 |--|--|--|--|
-| **cveId** | Sträng | Nej | - |
-| **Adresser** | Sträng | Nej | IP-adress |
-| **resultat** | Sträng | Nej | 0,0 – 10,0 |
-| **attackVector** | Sträng | Nej | Nätverk, intilliggande nätverk, lokalt eller fysiskt |
-| **beteckning** | Sträng | Nej | - |
+| **cveId** | Sträng | No | - |
+| **Adresser** | Sträng | No | IP-adress |
+| **resultat** | Sträng | No | 0,0 – 10,0 |
+| **attackVector** | Sträng | No | Nätverk, intilliggande nätverk, lokalt eller fysiskt |
+| **beteckning** | Sträng | No | - |
 
 #### <a name="response-example"></a>Exempel på svar
 
@@ -565,7 +565,7 @@ Använd detta API för att begära en lista över alla aviseringar som Defender 
 
 #### <a name="method"></a>Metod
 
-**GET**
+**TA**
 
 #### <a name="query-parameters"></a>Frågeparametrar
 
@@ -605,21 +605,21 @@ Matris med JSON-objekt som representerar aviseringar.
 
 | Namn | Typ | Kan ha värdet null | Lista med värden |
 |--|--|--|--|
-| **ID** | Numeriskt | Nej | - |
-| **tid** | Numeriskt | Nej | Epok (UTC) |
-| **title** | Sträng | Nej | - |
-| **meddelande** | Sträng | Nej | - |
-| **allvarlighets grad** | Sträng | Nej | Varning, mindre, större eller kritiskt |
-| **motorn** | Sträng | Nej | Protokoll överträdelse, princip överträdelse, skadlig kod, avvikelse eller drift |
-| **sourceDevice** | Numeriskt | Ja | Enhets-ID |
-| **destinationDevice** | Numeriskt | Ja | Enhets-ID |
-| **additionalInformation** | Ytterligare informations objekt | Ja | - |
+| **ID** | Numerisk | No | - |
+| **tid** | Numerisk | No | Epok (UTC) |
+| **title** | Sträng | No | - |
+| **meddelande** | Sträng | No | - |
+| **allvarlighets grad** | Sträng | No | Varning, mindre, större eller kritiskt |
+| **motorn** | Sträng | No | Protokoll överträdelse, princip överträdelse, skadlig kod, avvikelse eller drift |
+| **sourceDevice** | Numerisk | Yes | Enhets-ID |
+| **destinationDevice** | Numerisk | Yes | Enhets-ID |
+| **additionalInformation** | Ytterligare informations objekt | Yes | - |
 
 #### <a name="additional-information-fields"></a>Ytterligare informations fält
 
 | Namn | Typ | Kan ha värdet null | Lista med värden |
 |--|--|--|--|
-| **beteckning** | Sträng | Nej | - |
+| **beteckning** | Sträng | No | - |
 | **Mer** | JSON-matris | Nej | Sträng |
 
 #### <a name="response-example"></a>Exempel på svar
@@ -693,7 +693,7 @@ Använd det här API: et för att begära en lista över händelser som rapporte
 
 #### <a name="method"></a>Metod
 
-**GET**
+**TA**
 
 #### <a name="query-parameters"></a>Frågeparametrar
 
@@ -723,11 +723,11 @@ Matris med JSON-objekt som representerar aviseringar.
 
 | Namn | Typ | Kan ha värdet null | Lista med värden |
 |--|--|--|--|--|
-| **tidsstämpel** | Numeriskt | Nej | Epok (UTC) |
-| **title** | Sträng | Nej | - |
-| **allvarlighets grad** | Sträng | Nej | INFORMATION, meddelande eller AVISERING |
-| **innehavare** | Sträng | Ja | Om händelsen skapades manuellt, kommer det här fältet innehålla det användar namn som skapade händelsen |
-| **innehåll** | Sträng | Nej | - |
+| **tidsstämpel** | Numerisk | No | Epok (UTC) |
+| **title** | Sträng | No | - |
+| **allvarlighets grad** | Sträng | No | INFORMATION, meddelande eller AVISERING |
+| **innehavare** | Sträng | Yes | Om händelsen skapades manuellt, kommer det här fältet innehålla det användar namn som skapade händelsen |
+| **innehåll** | Sträng | No | - |
 
 #### <a name="response-example"></a>Exempel på svar
 
@@ -810,7 +810,7 @@ Använd det här API: et för att begära sårbarhets bedömnings resultat för 
 
 #### <a name="method"></a>Metod
 
-**GET**
+**TA**
 
 #### <a name="response-type"></a>Svarstyp
 
@@ -832,74 +832,74 @@ Objektet enhet innehåller:
 
 | Namn | Typ | Kan ha värdet null | Lista med värden |
 |--|--|--|--|
-| **Namn** | Sträng | Nej | - |
-| **IP-adresser** | JSON-matris | Nej | - |
-| **securityScore** | Numeriskt | Nej | - |
-| **leverantörsspecifika** | Sträng | Ja |  |
-| **versionInbyggdProgramvara** | Sträng | Ja | - |
-| **förlag** | Sträng | Ja | - |
-| **isWirelessAccessPoint** | Boolesk | Nej | Sant eller falskt |
-| **operatingSystem** | Operativ system objekt | Ja | - |
-| **sårbarheter** | Sårbarhets-objekt | Ja | - |
+| **name** | Sträng | No | - |
+| **IP-adresser** | JSON-matris | No | - |
+| **securityScore** | Numerisk | No | - |
+| **leverantörsspecifika** | Sträng | Yes |  |
+| **versionInbyggdProgramvara** | Sträng | Yes | - |
+| **förlag** | Sträng | Yes | - |
+| **isWirelessAccessPoint** | Boolesk | No | Sant eller falskt |
+| **operatingSystem** | Operativ system objekt | Yes | - |
+| **sårbarheter** | Sårbarhets-objekt | Yes | - |
 
 #### <a name="operating-system-fields"></a>Fält för operativ system
 
 | Namn | Typ | Kan ha värdet null | Lista med värden |
 |--|--|--|--|
-| **Namn** | Sträng | Ja | - |
-| **Typ** | Sträng | Ja | - |
-| **Version** | Sträng | Ja | - |
-| **latestVersion** | Sträng | Ja | - |
+| **Namn** | Sträng | Yes | - |
+| **Typ** | Sträng | Yes | - |
+| **Version** | Sträng | Yes | - |
+| **latestVersion** | Sträng | Yes | - |
 
 #### <a name="vulnerabilities-fields"></a>Sårbarhets fält
  
 | Namn | Typ | Kan ha värdet null | Lista med värden |
 |--|--|--|--|
-| **Virus** | JSON-matris | Ja | Antivirus namn |
-| **plainTextPasswords** | JSON-matris | Ja | Lösen ords objekt |
-| **remoteAccess** | JSON-matris | Ja | Fjärråtkomst-objekt |
-| **isBackupServer** | Boolesk | Nej | Sant eller falskt |
-| **openedPorts** | JSON-matris | Ja | Öppna port objekt |
-| **isEngineeringStation** | Boolesk | Nej | Sant eller falskt |
-| **isKnownScanner** | Boolesk | Nej | Sant eller falskt |
-| **cves** | JSON-matris | Ja | CVE-objekt |
-| **isUnauthorized** | Boolesk | Nej | Sant eller falskt |
-| **malwareIndicationsDetected** | Boolesk | Nej | Sant eller falskt |
-| **weakAuthentication** | JSON-matris | Ja | Identifierade program som använder svag autentisering |
+| **Virus** | JSON-matris | Yes | Antivirus namn |
+| **plainTextPasswords** | JSON-matris | Yes | Lösen ords objekt |
+| **remoteAccess** | JSON-matris | Yes | Fjärråtkomst-objekt |
+| **isBackupServer** | Boolesk | No | Sant eller falskt |
+| **openedPorts** | JSON-matris | Yes | Öppna port objekt |
+| **isEngineeringStation** | Boolesk | No | Sant eller falskt |
+| **isKnownScanner** | Boolesk | No | Sant eller falskt |
+| **cves** | JSON-matris | Yes | CVE-objekt |
+| **isUnauthorized** | Boolesk | No | Sant eller falskt |
+| **malwareIndicationsDetected** | Boolesk | No | Sant eller falskt |
+| **weakAuthentication** | JSON-matris | Yes | Identifierade program som använder svag autentisering |
 
 #### <a name="password-fields"></a>Fält för lösen ord
 
 | Namn | Typ | Kan ha värdet null | Lista med värden |
 |--|--|--|--|
-| **lösenord** | Sträng | Nej | - |
-| **protokollhanterare** | Sträng | Nej | - |
-| **styrka** | Sträng | Nej | Mycket svaga, svaga, medel eller starka |
+| **lösenord** | Sträng | No | - |
+| **protokollhanterare** | Sträng | No | - |
+| **styrka** | Sträng | No | Mycket svaga, svaga, medel eller starka |
 
 #### <a name="remote-access-fields"></a>Fält för fjärråtkomst
 
 | Namn | Typ | Kan ha värdet null | Lista med värden |
 |--|--|--|--|
-| **lastning** | Numeriskt | Nej | - |
-| **källtransportadr** | Sträng | Nej | TCP eller UDP |
-| **klientsession** | Sträng | Nej | IP-adress |
-| **clientSoftware** | Sträng | Nej | SSH, VNC, fjärr skrivbord eller team Viewer |
+| **lastning** | Numerisk | No | - |
+| **källtransportadr** | Sträng | No | TCP eller UDP |
+| **klientsession** | Sträng | No | IP-adress |
+| **clientSoftware** | Sträng | No | SSH, VNC, fjärr skrivbord eller team Viewer |
 
 #### <a name="open-port-fields"></a>Öppna port fält
 
 | Namn | Typ | Kan ha värdet null | Lista med värden |
 |--|--|--|--|
-| **lastning** | Numeriskt | Nej | - |
-| **källtransportadr** | Sträng | Nej | TCP eller UDP |
-| **protokollhanterare** | Sträng | Ja | - |
-| **isConflictingWithFirewall** | Boolesk | Nej | Sant eller falskt |
+| **lastning** | Numerisk | No | - |
+| **källtransportadr** | Sträng | No | TCP eller UDP |
+| **protokollhanterare** | Sträng | Yes | - |
+| **isConflictingWithFirewall** | Boolesk | No | Sant eller falskt |
 
 #### <a name="cve-fields"></a>CVE-fält
 
 | Namn | Typ | Kan ha värdet null | Lista med värden |
 |--|--|--|--|
-| **ID** | Sträng | Nej | - |
-| **resultat** | Numeriskt | Nej | Double |
-| **beteckning** | Sträng | Nej | - |
+| **ID** | Sträng | No | - |
+| **resultat** | Numerisk | No | Double |
+| **beteckning** | Sträng | No | - |
 
 #### <a name="response-example"></a>Exempel på svar
 
@@ -1062,7 +1062,7 @@ Den här utvärderingen baseras på allmän nätverks-och system information och
 
 #### <a name="method"></a>Metod
 
-**GET**
+**TA**
 
 #### <a name="response-type"></a>Svarstyp
 
@@ -1081,9 +1081,9 @@ JSON-objekt som representerar utvärderade resultat. Varje nyckel kan vara null.
 | Fältnamn | Typ | Lista med värden |
 | ---------- | ---- | -------------- |
 | **adresspool** | Sträng | IP-adress |
-| **Namn** | Sträng | - |
-| **firstDetectionTime** | Numeriskt | Epok (UTC) |
-| lastSeen | Numeriskt | Epok (UTC) |
+| **name** | Sträng | - |
+| **firstDetectionTime** | Numerisk | Epok (UTC) |
+| lastSeen | Numerisk | Epok (UTC) |
 
 **illegalTrafficByFirewallRules**
 
@@ -1091,7 +1091,7 @@ JSON-objekt som representerar utvärderade resultat. Varje nyckel kan vara null.
 | ---------- | ---- | -------------- |
 | **servernamn** | Sträng | IP-adress |
 | **klientsession** | Sträng | IP-adress |
-| **lastning** | Numeriskt | - |
+| **lastning** | Numerisk | - |
 | **källtransportadr** | Sträng | TCP, UDP eller ICMP |
 
 **weakFirewallRules**
@@ -1109,7 +1109,7 @@ JSON-objekt som representerar utvärderade resultat. Varje nyckel kan vara null.
 | **macAddress** | Sträng | MAC-adress |
 | **leverantörsspecifika** | Sträng | Leverantörs namn |
 | **Adresser** | Sträng | IP-adress eller ej tillämpligt |
-| **Namn** | Sträng | Enhets namn eller ej tillämpligt |
+| **name** | Sträng | Enhets namn eller ej tillämpligt |
 | **trådlösa** | Sträng | Nej, misstänkt eller Ja |
 
 **connectionsBetweenSubnets**
@@ -1123,7 +1123,7 @@ JSON-objekt som representerar utvärderade resultat. Varje nyckel kan vara null.
 
 | Fältnamn | Typ | Lista med värden |
 | ---------- | ---- | -------------- |
-| **detectionTime** | Numeriskt | Epok (UTC) |
+| **detectionTime** | Numerisk | Epok (UTC) |
 | **Alertmessage som** | Sträng | - |
 | **beteckning** | Sträng | - |
 | **enhet** | JSON-matris | Enhets namn | 
@@ -1303,7 +1303,7 @@ Använd detta API för att begära resultat från en allmän sårbarhets bedömn
 
 #### <a name="method"></a>Metod
 
-**GET**
+**TA**
 
 #### <a name="response-type"></a>Svarstyp
 
@@ -1323,16 +1323,16 @@ JSON-objekt som representerar utvärderade resultat. Varje nyckel innehåller en
 |--|--|--|
 | **källicensservern** | Sträng | IP-adress |
 | **mål** | Sträng | IP-adress |
-| **lastning** | Numeriskt | - |
+| **lastning** | Numerisk | - |
 | **källtransportadr** | Sträng | TCP eller UDP |
 | **backupMaximalInterval** | Sträng | - |
-| **lastSeenBackup** | Numeriskt | Epok (UTC) |
+| **lastSeenBackup** | Numerisk | Epok (UTC) |
 
 **ipNetworks**
 
 | Fältnamn | Typ | Lista med värden |
 |--|--|--|
-| **mottagare** s | Numeriskt | - |
+| **mottagare** s | Numerisk | - |
 | **nätverks** | Sträng | IP-adress |
 | **mask** | Sträng | Nätmask |
 
@@ -1343,7 +1343,7 @@ JSON-objekt som representerar utvärderade resultat. Varje nyckel innehåller en
 | **protokollhanterare** | Sträng | - |
 | **adresser** | JSON-matris | IP-adresser |
 | **varningar** | Sträng | - |
-| **reportTime** | Numeriskt | Epok (UTC) |
+| **reportTime** | Numerisk | Epok (UTC) |
 
 **protocolDataVolumes**
 
@@ -1358,8 +1358,8 @@ JSON-objekt som representerar utvärderade resultat. Varje nyckel innehåller en
 |--|--|--|
 | **assetAddress** | Sträng | IP-adress |
 | **assetName** | Sträng | - |
-| **lastDetectionTime** | Numeriskt | Epok (UTC) |
-| **backToNormalTime** | Numeriskt | Epok (UTC) |     
+| **lastDetectionTime** | Numerisk | Epok (UTC) |
+| **backToNormalTime** | Numerisk | Epok (UTC) |     
 
 #### <a name="response-example"></a>Exempel på svar
 
@@ -1508,8 +1508,8 @@ Du behöver ingen Defender för IoT-åtkomsttoken för att använda detta API.
 
 | **Namn** | **Typ** | **Nullable** |
 |--|--|--|
-| **användar** | Sträng | Nej |
-| **lösenord** | Sträng | Nej |
+| **användar** | Sträng | No |
+| **lösenord** | Sträng | No |
 
 #### <a name="request-example"></a>Exempel på begäran
 
@@ -1617,9 +1617,9 @@ response:
 
 | **Namn** | **Typ** | **Nullable** |
 |--|--|--|
-| **användar** | Sträng | Nej |
-| **lösenord** | Sträng | Nej |
-| **new_password** | Sträng | Nej |
+| **användar** | Sträng | No |
+| **lösenord** | Sträng | No |
+| **new_password** | Sträng | No |
 
 ### <a name="user-password-update-by-system-admin"></a>Uppdatering av lösen ord för användare av system administratören
 
@@ -1692,10 +1692,10 @@ response:
 
 | **Namn** | **Typ** | **Nullable** |
 |--|--|--|
-| **admin_username** | Sträng | Nej |
-| **admin_password** | Sträng | Nej |
-| **användar** | Sträng | Nej |
-| **new_password** | Sträng | Nej |
+| **admin_username** | Sträng | No |
+| **admin_password** | Sträng | No |
+| **användar** | Sträng | No |
+| **new_password** | Sträng | No |
 
 ## <a name="on-premises-management-console-api-specifications"></a>API-specifikationer för lokal hanterings konsol
 
@@ -1746,7 +1746,7 @@ Detta API begär en lista över alla enheter som identifierats av Defender för 
 
 #### <a name="method"></a>Metod
 
-**GET**
+**TA**
 
 #### <a name="response-type"></a>Svarstyp
 
@@ -1784,40 +1784,40 @@ Matris med JSON-objekt som representerar enheter.
 
 | Namn | Typ | Kan ha värdet null | Lista med värden |
 |--|--|--|--|
-| **sensorId** | Numeriskt | Nej | - |
-| **ZonID** | Numeriskt | Ja | - |
-| **siteId** | Numeriskt | Ja | - |
-| **IP-adresser** | JSON-matris | Ja | IP-adresser (kan vara mer än en adress i fråga om Internet adresser eller en enhet med dubbla nätverkskort) |
-| **Namn** | Sträng | Nej | - |
-| **bastyp** | Sträng | Nej | Okänd, teknik Station, PLC, HMI, historian, domänkontrollant, DB-server, trådlös åtkomst punkt, router, växel, Server, arbets Station, IP-kamera, skrivare, brand vägg, Terminal Station, VPN Gateway, Internet eller multicast och sändning |
-| **macAddresses** | JSON-matris | Ja | MAC-adresser (kan vara mer än en adress i händelse av en enhet med dubbla nätverkskort) |
-| **operatingSystem** | Sträng | Ja | - |
-| **engineeringStation** | Boolesk | Nej | Sant eller falskt |
-| **läser** | Boolesk | Nej | Sant eller falskt |
-| **auktorisation** | Boolesk | Nej | Sant eller falskt |
-| **leverantörsspecifika** | Sträng | Ja | - |
-| **Protokoll** | JSON-matris | Ja | Protokoll objekt |
-| **inbyggd program vara** | JSON-matris | Ja | Firmware-objekt |
+| **sensorId** | Numerisk | No | - |
+| **ZonID** | Numerisk | Yes | - |
+| **siteId** | Numerisk | Yes | - |
+| **IP-adresser** | JSON-matris | Yes | IP-adresser (kan vara mer än en adress i fråga om Internet adresser eller en enhet med dubbla nätverkskort) |
+| **name** | Sträng | No | - |
+| **bastyp** | Sträng | No | Okänd, teknik Station, PLC, HMI, historian, domänkontrollant, DB-server, trådlös åtkomst punkt, router, växel, Server, arbets Station, IP-kamera, skrivare, brand vägg, Terminal Station, VPN Gateway, Internet eller multicast och sändning |
+| **macAddresses** | JSON-matris | Yes | MAC-adresser (kan vara mer än en adress i händelse av en enhet med dubbla nätverkskort) |
+| **operatingSystem** | Sträng | Yes | - |
+| **engineeringStation** | Boolesk | No | Sant eller falskt |
+| **läser** | Boolesk | No | Sant eller falskt |
+| **auktorisation** | Boolesk | No | Sant eller falskt |
+| **leverantörsspecifika** | Sträng | Yes | - |
+| **Protokoll** | JSON-matris | Yes | Protokoll objekt |
+| **inbyggd program vara** | JSON-matris | Yes | Firmware-objekt |
 
 #### <a name="protocol-fields"></a>Protokoll fält
 
 | Namn | Typ | Kan ha värdet null | Lista med värden |
 |--|--|--|--|
-| Namn | Sträng | Nej | - |
-| Adresser | JSON-matris | Ja | Huvud-eller numeriska värden |
+| Name | Sträng | No | - |
+| Adresser | JSON-matris | Yes | Huvud-eller numeriska värden |
 
 #### <a name="firmware-fields"></a>Fält för inbyggd program vara
 
 | Namn | Typ | Kan ha värdet null | Lista med värden |
 |--|--|--|--|
-| **nummer** | Sträng | Nej | Ej tillämpligt eller det faktiska värdet |
-| **förlag** | Sträng | Nej | Ej tillämpligt eller det faktiska värdet |
-| **versionInbyggdProgramvara** | Double | Nej | Ej tillämpligt eller det faktiska värdet |
-| **additionalData** | Sträng | Nej | Ej tillämpligt eller det faktiska värdet |
-| **moduleAddress** | Sträng | Nej | Ej tillämpligt eller det faktiska värdet |
-| **räck** | Sträng | Nej | Ej tillämpligt eller det faktiska värdet |
-| **stack** | Sträng | Nej | Ej tillämpligt eller det faktiska värdet |
-| **adresspool** | Sträng | Nej | Ej tillämpligt eller det faktiska värdet |
+| **nummer** | Sträng | No | Ej tillämpligt eller det faktiska värdet |
+| **förlag** | Sträng | No | Ej tillämpligt eller det faktiska värdet |
+| **versionInbyggdProgramvara** | Double | No | Ej tillämpligt eller det faktiska värdet |
+| **additionalData** | Sträng | No | Ej tillämpligt eller det faktiska värdet |
+| **moduleAddress** | Sträng | No | Ej tillämpligt eller det faktiska värdet |
+| **räck** | Sträng | No | Ej tillämpligt eller det faktiska värdet |
+| **stack** | Sträng | No | Ej tillämpligt eller det faktiska värdet |
+| **adresspool** | Sträng | No | Ej tillämpligt eller det faktiska värdet |
 
 #### <a name="response-example"></a>Exempel på svar
 
@@ -1967,7 +1967,7 @@ Använd detta API för att hämta alla eller filtrerade aviseringar från en lok
 
 #### <a name="method"></a>Metod
 
-**GET**
+**TA**
 
 #### <a name="query-parameters"></a>Frågeparametrar
 
@@ -2001,21 +2001,21 @@ Använd detta API för att hämta alla eller filtrerade aviseringar från en lok
 
 | Namn | Typ | Kan ha värdet null | Lista med värden |
 |--|--|--|--|
-| **ID** | Numeriskt | Nej | - |
-| **tid** | Numeriskt | Nej | Epok (UTC) |
-| **title** | Sträng | Nej | - |
-| **meddelande** | Sträng | Nej | - |
-| **allvarlighets grad** | Sträng | Nej | Varning, mindre, större eller kritiskt |
-| **motorn** | Sträng | Nej | Protokoll överträdelse, princip överträdelse, skadlig kod, avvikelse eller drift |
-| **sourceDevice** | Numeriskt | Ja | Enhets-ID |
-| **destinationDevice** | Numeriskt | Ja | Enhets-ID |
-| **additionalInformation** | Ytterligare informations objekt | Ja | - |
+| **ID** | Numerisk | No | - |
+| **tid** | Numerisk | No | Epok (UTC) |
+| **title** | Sträng | No | - |
+| **meddelande** | Sträng | No | - |
+| **allvarlighets grad** | Sträng | No | Varning, mindre, större eller kritiskt |
+| **motorn** | Sträng | No | Protokoll överträdelse, princip överträdelse, skadlig kod, avvikelse eller drift |
+| **sourceDevice** | Numerisk | Yes | Enhets-ID |
+| **destinationDevice** | Numerisk | Yes | Enhets-ID |
+| **additionalInformation** | Ytterligare informations objekt | Yes | - |
 
 #### <a name="additional-information-fields"></a>Ytterligare informations fält
 
 | Namn | Typ | Kan ha värdet null | Lista med värden |
 |--|--|--|--|
-| **beteckning** | Sträng | Nej | - |
+| **beteckning** | Sträng | No | - |
 | **Mer** | JSON-matris | Nej | Sträng |
 
 #### <a name="response-example"></a>Exempel på svar
@@ -2156,7 +2156,7 @@ JSON-objekt som representerar åtgärden som ska utföras på den avisering som 
 
 | Namn | Typ | Kan ha värdet null | Lista med värden |
 |--|--|--|--|
-| **tgärd** | Sträng | Nej | hantera eller handleAndLearn |
+| **tgärd** | Sträng | No | hantera eller handleAndLearn |
 
 #### <a name="request-example"></a>Exempel på begäran
 
@@ -2178,13 +2178,13 @@ Matris med JSON-objekt som representerar enheter.
 #### <a name="response-fields"></a>Svars fält
 
 
-| Namn | Typ | Kan ha värdet null | Beskrivning |
+| Namn | Typ | Kan ha värdet null | Description |
 |--|--|--|--|
-| **innehåll/fel** | Sträng | Nej | Om begäran lyckas visas innehålls egenskapen. Annars visas fel-egenskapen. |
+| **innehåll/fel** | Sträng | No | Om begäran lyckas visas innehålls egenskapen. Annars visas fel-egenskapen. |
 
 #### <a name="possible-content-values"></a>Möjliga innehålls värden
 
-| Statuskod | Innehålls värde | Beskrivning |
+| Statuskod | Innehålls värde | Description |
 |--|--|--|
 | 200 | Begäran om aviserings uppdatering har slutförts. | Uppdateringsbegäran har slutförts. Inga kommentarer. |
 | 200 | Aviseringen hanterades redan (**handle**). | Aviseringen hanterades redan när en hanterings förfrågan togs emot för aviseringen.<br />Aviseringen förblir **hanterad**. |
@@ -2364,7 +2364,7 @@ Matris med JSON-objekt som representerar underhålls fönster åtgärder.
 | **motor** | Strängmatris | - | ja |
 | **sensorIds** | Strängmatris | - | ja |
 | **undernät** | Strängmatris | - | ja |
-| **to** | Numeriskt | - | ja |
+| **ttl** | Numerisk | - | ja |
 | **operationType** | Sträng | Värdena är "öppna", "UPDATE" och "CLOSE" | nej |
 
 ### <a name="authenticate-user-credentials"></a>Autentisera användarautentiseringsuppgifter
@@ -2411,8 +2411,8 @@ Meddelande sträng med åtgärds status information:
 
 | **Namn** | **Typ** | **Nullable** |
 |--|--|--|
-| **användar** | Sträng | Nej |
-| **lösenord** | Sträng | Nej |
+| **användar** | Sträng | No |
+| **lösenord** | Sträng | No |
 
 #### <a name="response-example"></a>Exempel på svar
 
@@ -2492,9 +2492,9 @@ response:
 
 | **Namn** | **Typ** | **Nullable** |
 |--|--|--|
-| **användar** | Sträng | Nej |
-| **lösenord** | Sträng | Nej |
-| **new_password** | Sträng | Nej |
+| **användar** | Sträng | No |
+| **lösenord** | Sträng | No |
+| **new_password** | Sträng | No |
 
 ### <a name="user-password-update-by-system-admin"></a>Uppdatering av lösen ord för användare av system administratören
 
@@ -2567,10 +2567,10 @@ response:
 
 | **Namn** | **Typ** | **Nullable** |
 |--|--|--|
-| **admin_username** | Sträng | Nej |
-| **admin_password** | Sträng | Nej |
-| **användar** | Sträng | Nej |
-| **new_password** | Sträng | Nej |
+| **admin_username** | Sträng | No |
+| **admin_password** | Sträng | No |
+| **användar** | Sträng | No |
+| **new_password** | Sträng | No |
 
 ## <a name="see-also"></a>Se även
 [Undersök sensor identifieringar i en enhets inventering](how-to-investigate-sensor-detections-in-a-device-inventory.md) 

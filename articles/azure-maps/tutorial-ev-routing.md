@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: f30b99a1d9c8303d5b2ed4b02819d0ca837946d2
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 7a33cf4e66ce31f8fb8534de25d7564a5784ca3a
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905748"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625056"
 ---
 # <a name="tutorial-route-electric-vehicles-by-using-azure-notebooks-python"></a>Självstudie: dirigera elektriska bilar med Azure Notebooks (python)
 
@@ -35,7 +35,7 @@ I de här självstudierna får du:
 > * Hitta och visualisera en väg till närmaste elektriska fordons laddnings Station baserat på enhets tid.
 
 
-## <a name="prerequisites"></a>Krav 
+## <a name="prerequisites"></a>Förutsättningar 
 
 För att slutföra den här självstudien måste du först skapa ett Azure Maps konto och hämta din primär nyckel (prenumerations nyckel). 
 
@@ -398,6 +398,10 @@ Om du vill utforska de Azure Maps-API: er som används i den här självstudien,
 * [Publicera väg mat ris](/rest/api/maps/route/postroutematrix)
 * [Hämta väg riktningar](/rest/api/maps/route/getroutedirections)
 * [Azure Maps REST-API: er](./consumption-model.md)
+
+## <a name="clean-up-resources"></a>Rensa resurser
+
+Det finns inga resurser som kräver rensning.
 
 ## <a name="next-steps"></a>Nästa steg
 

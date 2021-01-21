@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-js
-ms.openlocfilehash: 0004a250173ce6707462b852016d205782479717
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: d8aaf093a7e2a0ad1470d72d815e919f5b4e2d05
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896688"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624990"
 ---
 # <a name="tutorial-how-to-display-route-directions-using-azure-maps-route-service-and-map-control"></a>Självstudie: så här visar du väg riktningar med Azure Maps Route service och kart kontroll
 
@@ -39,7 +39,7 @@ Du kan hämta den fullständiga käll koden för exemplet [här](https://github.
 
 Följande steg visar hur du skapar och visar kart kontrollen på en webb sida.
 
-1. Skapa en ny fil på den lokala datorn och ge den namnet **MapRoute.html** .
+1. Skapa en ny fil på den lokala datorn och ge den namnet **MapRoute.html**.
 2. Kopiera/klistra in följande HTML-kod i filen.
 
     ```HTML
@@ -174,7 +174,7 @@ I den här självstudien återger vi vägen med ett linje lager. Start-och slut 
 
 3. Spara **MapRoute.html** och uppdatera webbläsaren. Kartan centreras nu över Seattle. Den blå Teardrop-PIN-koden markerar start punkten. Den runda blå PIN-koden markerar slut punkten.
 
-    :::image type="content" source="./media/tutorial-route-location/map-pins.png" alt-text="Grundläggande kart åter givning av kart kontroll":::
+    :::image type="content" source="./media/tutorial-route-location/map-pins.png" alt-text="Visa vägarnas start-och slut punkt på kartan":::
 
 <a id="getroute"></a>
 
@@ -183,7 +183,7 @@ I den här självstudien återger vi vägen med ett linje lager. Start-och slut 
 Det här avsnittet visar hur du använder API: et för Azure Maps väg riktningar för att få väg riktningar och den uppskattade ankomst tiden från en punkt till en annan.
 
 >[!TIP]
->Azure Maps Route Services erbjuder API: er för att planera vägar baserat på olika typer av vägar, till exempel *snabbast* , *kortaste* , *eko* eller *thrilLing* vägar baserat på avstånd, trafik villkor och transport läge. Tjänsten låter också användare planera framtida vägar baserat på historiska trafik villkor. Användarna kan se förutsägelsen av väg varaktigheter för en bestämd tid. Mer information finns i [Hämta väg riktnings-API](/rest/api/maps/route/getroutedirections).
+>Azure Maps Route Services erbjuder API: er för att planera vägar baserat på olika typer av vägar, till exempel *snabbast*, *kortaste*, *eko* eller *thrilLing* vägar baserat på avstånd, trafik villkor och transport läge. Tjänsten låter också användare planera framtida vägar baserat på historiska trafik villkor. Användarna kan se förutsägelsen av väg varaktigheter för en bestämd tid. Mer information finns i [Hämta väg riktnings-API](/rest/api/maps/route/getroutedirections).
 
 1. I `GetMap` -funktionen, i kontrollens `ready` händelse hanterare, lägger du till följande i JavaScript-koden.
 
@@ -216,9 +216,13 @@ Det här avsnittet visar hur du använder API: et för Azure Maps väg riktninga
 
 3. Spara filen **MapRoute.html** och uppdatera webbläsaren. Kartan ska nu visa vägen från start till slut punkt.
 
-     :::image type="content" source="./media/tutorial-route-location/map-route.png" alt-text="Grundläggande kart åter givning av kart kontroll":::
+     :::image type="content" source="./media/tutorial-route-location/map-route.png" alt-text="Azure kart kontroll och Route service":::
 
 Du kan hämta den fullständiga käll koden för exemplet [här](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/route.html). Du hittar ett Live-exempel [här](https://azuremapscodesamples.azurewebsites.net/?sample=Route%20to%20a%20destination).
+
+## <a name="clean-up-resources"></a>Rensa resurser
+
+Det finns inga resurser som kräver rensning.
 
 ## <a name="next-steps"></a>Nästa steg
 

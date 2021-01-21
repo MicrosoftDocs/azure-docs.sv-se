@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/02/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 47e3833fe9f35467c1d16945a9b336d4014b2efd
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 9da5c8c89ee124e527584164b21b096ac815e5ca
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97841850"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625472"
 ---
 # <a name="investigate-all-enterprise-sensor-detections-in-the-device-inventory"></a>Undersök alla identifieringar av företags sensor i enhets inventeringen
 
@@ -51,7 +51,7 @@ I följande tabell beskrivs tabell kolumnerna i enhets inventeringen.
 
 Med funktionerna för data integrering kan du förbättra data i enhets inventeringen med information från andra företags resurser. Dessa källor omfattar CMDBs, DNS, brand väggar och webb-API: er.
 
-Du kan använda den här informationen för att lära dig. Exempel:
+Du kan använda den här informationen för att lära dig. Till exempel:
 
 - Datum för enhets inköp och garanti datum från sista och samma garanti
 
@@ -67,7 +67,7 @@ Du kan använda den här informationen för att lära dig. Exempel:
 
 - Användare som är inloggade på enheter
 
-:::image type="content" source="media/how-to-work-with-asset-inventory-information/asset-inventory-screen-with-items-highlighted-v2.png" alt-text="Data tabell på sidan till gångs inventering.":::
+:::image type="content" source="media/how-to-work-with-asset-inventory-information/asset-inventory-screen-with-items-highlighted-v2.png" alt-text="Data tabell på enhets inventerings skärmen.":::
 
 Du kan integrera data med antingen:
 
@@ -131,13 +131,13 @@ Arbeta med Defender-kommandon i IoT API för att hämta och integrera den här i
 
 Du kan filtrera enhets inventeringen för att visa intresse kolumner. Du kan till exempel Visa information om PLC-enheter.
 
-:::image type="content" source="media/how-to-work-with-asset-inventory-information/asset-inventory-view-v2.png" alt-text="Skärm bild av till gångs lagret.":::
+:::image type="content" source="media/how-to-work-with-asset-inventory-information/asset-inventory-view-v2.png" alt-text="Skärm bild av enhets inventeringen.":::
 
 Filtret rensas när du lämnar fönstret.
 
 Om du vill använda samma filter flera gånger kan du spara ett filter eller en kombination av filter som du behöver. Du kan öppna ett vänster fönster och Visa de filter som du har sparat:
 
-:::image type="content" source="media/how-to-work-with-asset-inventory-information/view-your-asset-inventories-v2.png" alt-text="Fönstret till gångs inventering.":::
+:::image type="content" source="media/how-to-work-with-asset-inventory-information/view-your-asset-inventories-v2.png" alt-text="Enhets inventerings skärmen.":::
 
 Så här filtrerar du enhets inventeringen:
 
@@ -187,7 +187,7 @@ Följande verktyg är tillgängliga för visning av enheter och enhets informati
 
 - **Visa egenskaper för enhet**: till exempel sensorn som övervakar enhetens och grundläggande enhets egenskaper. Högerklicka på enheten för att Visa enhets egenskaperna.
 
-  :::image type="content" source="media/how-to-work-with-asset-inventory-information/asset-properties-v2.png" alt-text="Skärm bild av vyn till gångs egenskaper.":::
+  :::image type="content" source="media/how-to-work-with-asset-inventory-information/asset-properties-v2.png" alt-text="Skärm bild av vyn över enhets egenskaper.":::
 
 - **Avisering som är associerad med en enhet:** Högerklicka på enheten för att visa relaterade aviseringar.
 
@@ -227,4 +227,4 @@ Följande ytterligare zon information är tillgänglig:
 
 ## <a name="see-also"></a>Se även
 
-[Undersök sensor identifieringar i en enhets inventering](how-to-investigate-sensor-detections-in-a-device-inventory.md)
+[Undersök identifieringar av sensorer i en enhetsinventering](how-to-investigate-sensor-detections-in-a-device-inventory.md)

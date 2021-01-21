@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-js
-ms.openlocfilehash: 8cc7c1e0b776574ec7908557108e2cda49bb2a11
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 31dd1c06b0f17b469454593131ccdc93b45b2446
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896668"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624974"
 ---
 # <a name="tutorial-search-nearby-points-of-interest-using-azure-maps"></a>Självstudie: Sök efter intresse punkter i närheten med hjälp av Azure Maps
 
@@ -31,7 +31,7 @@ Den här självstudiekursen visar hur du skapar ett konto med Azure Maps och sed
 <a id="createaccount"></a>
 <a id="getkey"></a>
 
-1. Logga in på [Azure-portalen](https://portal.azure.com). Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/free/) innan du börjar.
+1. Logga in på [Azure-portalen](https://portal.azure.com). Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/) innan du börjar.
 2. [Skapa ett Azure Maps konto](quick-demo-map-app.md#create-an-azure-maps-account)
 3. [Hämta en primär prenumerations nyckel](quick-demo-map-app.md#get-the-primary-key-for-your-account), även kallat primär nyckel eller prenumerations nyckel. Mer information om autentisering i Azure Maps finns i [hantera autentisering i Azure Maps](how-to-manage-authentication.md).
 
@@ -41,7 +41,7 @@ Den här självstudiekursen visar hur du skapar ett konto med Azure Maps och sed
 
 Kartkontroll API är ett användbart klient bibliotek. Med det här API: et kan du enkelt integrera kartor i ditt webb program. Det döljer komplexiteten hos inga REST service-anrop och ökar produktiviteten med anpassningsbara komponenter. Följande steg visar hur du skapar en statisk HTML-sida inbäddad med API:et Kartkontroll.
 
-1. Skapa en ny fil på den lokala datorn och ge den namnet **MapSearch.html** .
+1. Skapa en ny fil på den lokala datorn och ge den namnet **MapSearch.html**.
 2. Lägg till följande HTML-komponenter i filen:
 
    ```HTML
@@ -246,6 +246,10 @@ Karta som har vi gjort tittar hittills bara på longitud-/latituddata för sökr
     ![Azure Kartkontroll och Search Service](./media/tutorial-search-location/popup-map.png)
 
 Klicka [här](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/search.html)om du vill visa den fullständiga koden för den här självstudien. Klicka [här](https://azuremapscodesamples.azurewebsites.net/?sample=Search%20for%20points%20of%20interest) om du vill visa Live-exemplet
+
+## <a name="clean-up-resources"></a>Rensa resurser
+
+Det finns inga resurser som kräver rensning.
 
 ## <a name="next-steps"></a>Nästa steg
 

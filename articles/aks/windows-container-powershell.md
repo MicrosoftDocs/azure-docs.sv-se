@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 05/26/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 97741423fa8b689a92bd9db78b810e6b86aefcbd
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.openlocfilehash: 56fc11583bcdd271d0225de90ef7ab06bcf87cbf
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98247140"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625122"
 ---
 # <a name="create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-powershell"></a>Skapa en Windows Server-behållare i ett Azure Kubernetes service-kluster (AKS) med PowerShell
 
@@ -97,7 +97,7 @@ Efter några minuter slutförs kommandot och returnerar information om klustret.
 Som standard skapas ett AKS-kluster med en Node-pool som kan köra Linux-behållare. Använd `New-AzAksNodePool` cmdlet för att lägga till en noduppsättning som kan köra Windows Server-behållare tillsammans med Linux-noden.
 
 ```azurepowershell-interactive
-New-AzAksNodePool -ResourceGroupName myResourceGroup -ClusterName myAKSCluster -OsType Windows -Name npwin -KubernetesVersion 1.16.7
+New-AzAksNodePool -ResourceGroupName myResourceGroup -ClusterName myAKSCluster -VmSetType VirtualMachineScaleSets -OsType Windows -Name npwin -KubernetesVersion 1.16.7
 ```
 
 Kommandot ovan skapar en ny Node-pool med namnet **npwin** och lägger till den i **myAKSCluster**. När du skapar en Node-pool för att köra Windows Server-behållare, är standardvärdet för **VmSize** **Standard_D2s_v3**. Om du väljer att ange parametern **VmSize** kontrollerar du listan med [begränsade VM-storlekar][restricted-vm-sizes]. Den minsta rekommenderade storleken är **Standard_D2s_v3**. Föregående kommando använder också standard under nätet i det virtuella nätverk som skapas när det körs `New-AzAks` .

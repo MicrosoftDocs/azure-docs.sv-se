@@ -1,5 +1,5 @@
 ---
-title: Kommunicera med enhetens app i C med Azure IoT Hub enhets strömmar
+title: Snabb start – kommunicera med enhetens app i C med Azure IoT Hub enhets strömmar
 description: I den här snabb starten kör du ett C-program på enhets sidan som kommunicerar med en IoT-enhet via en enhets ström.
 author: robinsh
 ms.service: iot-hub
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc, devx-track-azurecli
 ms.date: 08/20/2019
 ms.author: robinsh
-ms.openlocfilehash: de310846ad0449a0dac7eccd60d82d4c68ef519b
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 403fe82c46c90c5f8efb48ce0a394a2f63488fed
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94832219"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624633"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-c-via-iot-hub-device-streams-preview"></a>Snabb start: kommunicera med ett enhets program i C via IoT Hub enhets strömmar (för hands version)
 
@@ -114,7 +114,7 @@ I den här snabb starten använder du [Azure IoT-enhetens SDK för C](iot-hub-de
 
 ## <a name="register-a-device"></a>Registrera en enhet
 
-Du måste registrera en enhet med IoT Hub innan den kan ansluta. I det här avsnittet använder du Azure Cloud Shell med [IoT-tillägget](/cli/azure/ext/azure-iot/iot?view=azure-cli-latest) för att registrera en simulerad enhet.
+Du måste registrera en enhet med IoT Hub innan den kan ansluta. I det här avsnittet använder du Azure Cloud Shell med [IoT-tillägget](/cli/azure/ext/azure-iot/iot?view=azure-cli-latest&preserve-view=true) för att registrera en simulerad enhet.
 
 1. Skapa enhets identiteten genom att köra följande kommando i Cloud Shell:
 
@@ -132,7 +132,7 @@ Du måste registrera en enhet med IoT Hub innan den kan ansluta. I det här avsn
    > Ersätt plats hållaren *YourIoTHubName* med det namn du valt för din IoT Hub.
 
     ```azurecli-interactive
-    az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyDevice --output table
+    az iot hub device-identity connection-string show --hub-name {YourIoTHubName} --device-id MyDevice --output table
     ```
 
     Observera den returnerade enhets anslutnings strängen för senare användning i den här snabb starten. Det ser ut som i följande exempel:

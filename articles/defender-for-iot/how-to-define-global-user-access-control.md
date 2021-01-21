@@ -1,5 +1,5 @@
 ---
-title: Definiera global användar åtkomst kontroll
+title: Definiera global användaråtkomstkontroll
 description: I stora organisationer kan användar behörigheter vara komplexa och kan bestämmas av en global organisations struktur, förutom standard platsen och zon strukturen.
 author: shhazam-ms
 manager: rkarlin
@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/08/2020
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: de3ff6ead1f0dd86e07c86b992a720a676a2095c
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 399eee06d472204eaf6dbc333f15cee7c4373739
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97843290"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624650"
 ---
 # <a name="define-global-access-control"></a>Definiera global åtkomst kontroll
 
@@ -20,7 +20,7 @@ I stora organisationer kan användar behörigheter vara komplexa och kan bestäm
 
 För att ge stöd åt behovet av åtkomst behörigheter som är globala och mer komplexa kan du skapa en global affärstopologi som baseras på affär senheter, regioner och platser. Sedan kan du definiera användar åtkomst behörigheter runt dessa entiteter.
 
-Arbeta med Access-verktyg för Business Topology hjälper organisationer att implementera en strategi med Tom förtroende genom att bättre styra var användarna hanterar och analyserar till gångar i Azure Defender för IoT-plattformen.
+Arbeta med Access-verktyg för Business Topology hjälper organisationer att implementera en strategi med Tom förtroende genom att bättre styra var användarna hanterar och analyserar enheter i Azure Defender för IoT-plattformen.
 
 ## <a name="about-access-groups"></a>Om åtkomst grupper
 

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/16/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: e46bb87788de27916860720284087643db7153dc
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a63c309c8e728e3f76ad904d479557b368388954
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95913410"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624783"
 ---
 # <a name="use-azure-storage-explorer-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Använda Azure Storage Explorer till att hantera kataloger, filer och åtkomstkontrollistor i Azure Data Lake Storage Gen2
 
@@ -80,7 +80,7 @@ Om du vill hämta filer med hjälp av **Azure Storage Explorer** väljer du **La
 
 Du kan ange behörigheter i roten för din behållare. För att göra det måste du vara inloggad på Azure Storage Explorer med ditt enskilda konto med behörighet att göra detta (till skillnad från med en anslutnings sträng). Högerklicka på din behållare och välj **Hantera behörigheter**, så visas dialog rutan **Hantera behörighet** .
 
-![Microsoft Azure Storage Explorer – Hantera katalogåtkomst](media/storage-quickstart-blobs-storage-Explorer/manageperms.png)
+![Microsoft Azure Storage Explorer – Hantera katalogåtkomst](media/storage-quickstart-blobs-storage-explorer/manageperms.png)
 
 I dialogrutan **Hantera behörighet** kan du hantera behörigheter för ägare och ägargruppen. Du kan även lägga till nya användare och grupper i åtkomstkontrollistan, som du sedan kan lägga till behörigheter för.
 
@@ -105,6 +105,10 @@ I båda dessa kategorier finns tre behörigheter som du kan tilldela till filer 
 > När du gör val här anges inte behörigheter för några befintliga objekt i katalogen. Du måste gå till varje enskilt objekt och ange behörigheterna manuellt, om filen redan finns.
 
 Du kan hantera behörigheter för enskilda kataloger, och enskilda filer, vilket är det som ger dig detaljerad åtkomstkontroll. Processen för att hantera behörigheter för både kataloger och filer är samma som beskrivs ovan. Högerklicka på filen eller katalogen du vill hantera behörigheter för och följ samma process.
+
+## <a name="private-endpoints-in-azure-data-lake-storage-gen2"></a>Privata slut punkter i Azure Data Lake Storage Gen2
+
+Storage Explorer använder sig av båda [slut punkterna](../common/storage-private-endpoints.md#private-endpoints-for-azure-storage) BLOB (blob) & data Lake Storage Gen2 (DFS) när du arbetar med Azure Data Lake Storage Gen2. Om åtkomst till Azure Data Lake Storage Gen2 har kon figurer ATS med hjälp av privata slut punkter, se till att två privata slut punkter skapas för lagrings kontot: en med den underordnade underresursen `blob` och den andra med mål under resursen `dfs` .
 
 ## <a name="next-steps"></a>Nästa steg
 
