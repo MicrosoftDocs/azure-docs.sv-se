@@ -3,12 +3,12 @@ title: Analysera direktsänd video med Visuellt innehåll för rums analys – A
 description: Den här självstudien visar hur du använder real tids analys tillsammans med Visuellt innehåll AI-funktionen för spatial analys från Azure Cognitive Services för att analysera en Live-videofeed från en (simulerad) IP-kamera.
 ms.topic: tutorial
 ms.date: 09/08/2020
-ms.openlocfilehash: 5b979bfeb6961b285cfeb2287888d8f157608d96
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 1c6fe6e10a91034d794437f31d495b85ef086848
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060188"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632950"
 ---
 # <a name="analyze-live-video-with-computer-vision-for-spatial-analysis-preview"></a>Analysera direktsänd video med Visuellt innehåll för rums analys (för hands version)
 
@@ -23,7 +23,8 @@ I den här självstudien kommer du att:
 > * Övervaka händelser.
  
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
-
+  > [!NOTE]
+  > Du behöver en Azure-prenumeration med behörigheter för att skapa tjänstens huvud namn (**ägar rollen** ger detta). Om du inte har rätt behörighet kan du kontakta konto administratören för att ge dig rätt behörigheter. 
 ## <a name="suggested-pre-reading"></a>Föreslagen för läsning
 
 Läs de här artiklarna innan du börjar:
@@ -136,10 +137,10 @@ Det finns några saker som du måste tänka på när du ska betala i mallen för
 1. `IpcMode` i lvaEdge-och spatial Analysis-modulen createOptions ska vara samma och inställd på Host.
 1. Se till att du har konfigurerat volym gränserna för att RTSP-simulatorn ska fungera. Mer information finns i [Konfigurera Docker volym monteringar](deploy-azure-stack-edge-how-to.md#optional-setup-docker-volume-mounts).
 
-    1. [Anslut till SMB-resursen](../../databox-online/azure-stack-edge-deploy-add-shares.md#connect-to-an-smb-share) och kopiera [exempel filen bulldozer video](https://lvamedia.blob.core.windows.net/public/bulldozer.mkv) till den lokala resursen.
+    1. [Anslut till SMB-resursen](../../databox-online/azure-stack-edge-deploy-add-shares.md#connect-to-an-smb-share) och kopiera [exempel filen bulldozer video](https://lvamedia.blob.core.windows.net/public/bulldozer.mkv) till den lokala resursen.  
+        > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4Mesi]  
     1. Se att rtspsim-modulen har följande konfiguration:
-        
-        ```json
+        ```
         "createOptions": {
                             "HostConfig": {
                               "Mounts": [
@@ -159,6 +160,8 @@ Det finns några saker som du måste tänka på när du ska betala i mallen för
                             }
                           }
         ```
+        
+
 ## <a name="generate-and-deploy-the-deployment-manifest"></a>Generera och distribuera distributions manifestet
 
 Distributions manifestet definierar vilka moduler som distribueras till en Edge-enhet. Den definierar också konfigurations inställningar för dessa moduler.
@@ -201,7 +204,7 @@ Sedan kan du söka `lvaEdge` efter `rtspsim` , `spatialAnalysis` och `rtspsim` m
 Följ dessa steg om du vill se de här händelserna:
 
 1. Öppna fliken **tillägg** i Visual Studio Code (eller tryck på Ctrl + Shift + X) och Sök efter Azure-IoT Hub.
-1. Högerklicka och välj **Inställningar för tillägg**.
+1. Högerklicka och välj Inställningar för **tillägg**.
 
     > [!div class="mx-imgBorder"]
     > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="Tilläggs inställningar":::

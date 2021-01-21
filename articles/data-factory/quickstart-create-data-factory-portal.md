@@ -5,18 +5,17 @@ services: data-factory
 documentationcenter: ''
 author: linda33wj
 manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: quickstart
 ms.date: 12/14/2020
 ms.author: jingwang
-ms.openlocfilehash: 76a490ed28f940620db7835c4cec145740f48503
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 0f22d4695a6324b0f0cde466e252b1a3a504f433
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509027"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632757"
 ---
 # <a name="quickstart-create-a-data-factory-by-using-the-azure-data-factory-ui"></a>Snabbstart: Skapa en datafabrik via gränssnittet i Azure Data Factory 
 
@@ -26,7 +25,7 @@ ms.locfileid: "97509027"
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Den här snabbstarten beskriver hur du använder Azure Data Factory-användargränssnittet till att skapa och övervaka en datafabrik. Den pipeline du skapar i den här datafabriken *kopierar* data från en mapp till en annan mapp i Azure Blob Storage. Information om hur du *omvandlar* data med hjälp av Azure Data Factory finns i [mappa data flöde](concepts-data-flow-overview.md) och [Datatransformering data flöde (för hands version)](wrangling-data-flow-overview.md).
+Den här snabbstarten beskriver hur du använder Azure Data Factory-användargränssnittet till att skapa och övervaka en datafabrik. Den pipeline du skapar i den här datafabriken *kopierar* data från en mapp till en annan mapp i Azure Blob Storage. Information om hur du *omvandlar* data med hjälp av Azure Data Factory finns i [mappa data flöde](concepts-data-flow-overview.md).
 
 > [!NOTE]
 > Om du inte har använt Azure Data Factory tidigare kan du läsa [Introduktion till Azure Data Factory](introduction.md). 

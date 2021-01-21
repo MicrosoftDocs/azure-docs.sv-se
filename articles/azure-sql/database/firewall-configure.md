@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 06/17/2020
-ms.openlocfilehash: e85c97df29bbbcc5d446d788cc190f3c90f24024
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: bbad7dcaa1d92df4969c88e4ba86a62987509e39
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98602232"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632824"
 ---
 # <a name="azure-sql-database-and-azure-synapse-ip-firewall-rules"></a>Regler för Azure SQL Database-och Azure Synapse-IP-brandvägg
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -101,7 +101,9 @@ När en dator försöker ansluta till servern från Internet kontrollerar brand 
 
 ### <a name="connections-from-inside-azure"></a>Anslutningar inifrån Azure
 
-Om du vill att program som finns i Azure ska kunna ansluta till din SQL Server måste Azure-anslutningar vara aktiverade. När ett program från Azure försöker ansluta till servern, verifierar brand väggen att Azure-anslutningar är tillåtna. Detta kan aktive ras direkt från bladet Azure Portal genom att ställa in brand Väggs regler, samt växla **över** **Tillåt Azure-tjänster och resurser för att få åtkomst till den här servern** i **brand väggar och inställningar för virtuella nätverk** . Om anslutningen inte är tillåten når begäran inte servern.
+Om du vill att program som finns i Azure ska kunna ansluta till din SQL Server måste Azure-anslutningar vara aktiverade. Om du vill aktivera Azure-anslutningar måste det finnas en brand Väggs regel med start-och slut-IP-adresser inställda på 0.0.0.0.
+
+När ett program från Azure försöker ansluta till servern, kontrollerar brand väggen att Azure-anslutningar tillåts genom att verifiera brand Väggs regeln finns. Detta kan aktive ras direkt från bladet Azure Portal genom att växla **över** **Tillåt att Azure-tjänster och-resurser får åtkomst till den här servern** i **brand väggar och virtuella nätverks** inställningar. Om du anger till på skapas en inkommande brand Väggs regel för IP 0.0.0.0-0.0.0.0 med namnet **AllowAllWindowsIP**. Använd PowerShell eller Azure CLI för att skapa en brand Väggs regel med start-och slut-IP-adresser som är satt till 0.0.0.0 om du inte använder portalen. 
 
 > [!IMPORTANT]
 > Det här alternativet konfigurerar brand väggen så att den tillåter alla anslutningar från Azure, inklusive anslutningar från andra kunders prenumerationer. Om du väljer det här alternativet ser du till att dina inloggnings-och användar behörigheter begränsar åtkomsten till behöriga användare.
@@ -155,7 +157,7 @@ Sidan översikt för servern öppnas. Det visar det fullständigt kvalificerade 
 
 ### <a name="use-transact-sql-to-manage-ip-firewall-rules"></a>Använd Transact-SQL för att hantera IP-brandväggens regler
 
-| Katalogvy eller lagrad procedur | Nivå | Beskrivning |
+| Katalogvy eller lagrad procedur | Nivå | Description |
 | --- | --- | --- |
 | [sys.firewall_rules](/sql/relational-databases/system-catalog-views/sys-firewall-rules-azure-sql-database) |Server |Visar aktuella regler för IP-brandvägg på server nivå |
 | [sp_set_firewall_rule](/sql/relational-databases/system-stored-procedures/sp-set-firewall-rule-azure-sql-database) |Server |Skapar eller uppdaterar IP-brandväggens regler på server nivå |
@@ -189,7 +191,7 @@ EXECUTE sp_delete_firewall_rule @name = N'ContosoFirewallRule'
 > [!IMPORTANT]
 > PowerShell Azure Resource Manager-modulen stöds fortfarande av Azure SQL Database, men all utveckling är nu för AZ. SQL-modulen. De här cmdletarna finns i [AzureRM. SQL](/powershell/module/AzureRM.Sql/). Argumenten för kommandona i AZ-och AzureRm-modulerna är i stort sett identiska.
 
-| Cmdlet | Nivå | Beskrivning |
+| Cmdlet | Nivå | Description |
 | --- | --- | --- |
 | [Get-AzSqlServerFirewallRule](/powershell/module/az.sql/get-azsqlserverfirewallrule) |Server |Returnerar de aktuella brandväggsreglerna på servernivå |
 | [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) |Server |Skapar en ny brandväggsregel på servernivå |
@@ -211,7 +213,7 @@ New-AzSqlServerFirewallRule -ResourceGroupName "myResourceGroup" `
 
 ### <a name="use-cli-to-manage-server-level-ip-firewall-rules"></a>Använd CLI för att hantera IP-brandväggs regler på server nivå
 
-| Cmdlet | Nivå | Beskrivning |
+| Cmdlet | Nivå | Description |
 | --- | --- | --- |
 |[AZ SQL Server-brandvägg-regel skapa](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create)|Server|Skapar en server-IP-brandväggsregel|
 |[AZ SQL Server Firewall-Rule List](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-list)|Server|Visar en lista över IP-brandväggens regler på en server|
@@ -233,7 +235,7 @@ az sql server firewall-rule create --resource-group myResourceGroup --server $se
 
 ### <a name="use-a-rest-api-to-manage-server-level-ip-firewall-rules"></a>Använd en REST API för att hantera IP-brandvägg på server nivå
 
-| API | Nivå | Beskrivning |
+| API | Nivå | Description |
 | --- | --- | --- |
 | [Visa lista över brand Väggs regler](/rest/api/sql/firewallrules/listbyserver) |Server |Visar aktuella regler för IP-brandvägg på server nivå |
 | [Skapa eller uppdatera brand Väggs regler](/rest/api/sql/firewallrules/createorupdate) |Server |Skapar eller uppdaterar IP-brandväggens regler på server nivå |

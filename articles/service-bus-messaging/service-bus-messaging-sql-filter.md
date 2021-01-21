@@ -3,16 +3,16 @@ title: Azure Service Bus SQL filter-syntax för prenumerations regel | Microsoft
 description: Den här artikeln innehåller information om grammatik i SQL-filter. Ett SQL-filter stöder en delmängd av SQL-92-standarden.
 ms.topic: article
 ms.date: 11/24/2020
-ms.openlocfilehash: 9bff18b2161e419d728c360c9ed950ac2867fea8
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 60f3cb6e85cef7a166c353f78cfb50405b962bdd
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498684"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98633179"
 ---
 # <a name="subscription-rule-sql-filter-syntax"></a>SQL filter-syntax för prenumerations regel
 
-Ett *SQL-filter* är en av de tillgängliga filter typerna för Service Bus ämnes prenumerationer. Det är ett text uttryck som är Lean för en delmängd av SQL-92-standarden. Filter uttryck används med `sqlExpression` elementet i egenskapen "sqlFilter" för en Service Bus `Rule` i en [Azure Resource Manager mall](service-bus-resource-manager-namespace-topic-with-rule.md)eller Azure CLI- `az servicebus topic subscription rule create` kommandots [`--filter-sql-expression`](/cli/azure/servicebus/topic/subscription/rule?preserve-view=true&view=azure-cli-latest#az_servicebus_topic_subscription_rule_create) argument och flera SDK-funktioner som tillåter hantering av prenumerations regler.
+Ett *SQL-filter* är en av de tillgängliga filter typerna för Service Bus ämnes prenumerationer. Det är ett text uttryck som är Lean för en delmängd av SQL-92-standarden. Filter uttryck används med `sqlExpression` elementet i egenskapen "sqlFilter" för en Service Bus `Rule` i en [Azure Resource Manager mall](service-bus-resource-manager-namespace-topic-with-rule.md)eller Azure CLI- `az servicebus topic subscription rule create` kommandots [`--filter-sql-expression`](/cli/azure/servicebus/topic/subscription/rule#az_servicebus_topic_subscription_rule_create) argument och flera SDK-funktioner som tillåter hantering av prenumerations regler.
 
 Service Bus Premium stöder även [syntaxen för SQL-JMS för SQL-meddelanden](https://docs.oracle.com/javaee/7/api/javax/jms/Message.html) via JMS 2,0-API: et.
 

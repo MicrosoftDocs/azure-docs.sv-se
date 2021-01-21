@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 03/26/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 2457952051f575306de46e3e8145cc26678a1ef8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5f83f4871d5cde23194ff51a90a22031b526cf91
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86526548"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632571"
 ---
 # <a name="windows-vm-cannot-boot-due-to-windows-boot-manager"></a>Windows VM kan inte starta på grund av Windows Boot Manager
 
@@ -40,6 +40,9 @@ Bild 1
 Felet beror på en BCD-flaggan *displaybootmenu* i Windows Boot Manager. När flaggan är aktive rad, ställer Windows Boot Manager till användaren, under start processen, för att välja vilken laddare de vill köra, vilket orsakar en start fördröjning. I Azure kan den här funktionen läggas till i den tid det tar att starta en virtuell dator.
 
 ## <a name="solution"></a>Lösning
+
+> [!TIP]
+> Om du har en ny säkerhets kopia av den virtuella datorn kan du försöka att [återställa den virtuella datorn från säkerhets kopian](../../backup/backup-azure-arm-restore-vms.md) för att åtgärda start problemet.
 
 Process översikt:
 

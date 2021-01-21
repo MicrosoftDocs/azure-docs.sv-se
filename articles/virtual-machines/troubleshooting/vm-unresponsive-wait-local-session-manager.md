@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/22/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 8af8d7695c48c6ac682109bb38935e98921fa9e4
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: fc3bd5d2590e969db07e9dffa61b4902ea4604c3
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94681915"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632554"
 ---
 # <a name="vm-is-unresponsive-while-waiting-for-the-local-session-manager-service"></a>Den virtuella datorn svarar inte under väntan på att tjänsten Local session Manager
 
@@ -34,6 +34,9 @@ När du använder [startdiagnostik](./boot-diagnostics.md) för att visa en skä
 Det kan finnas flera orsaker till att en virtuell dator har fastnat i väntan på hanteraren för lokala sessioner. Om det här problemet kvarstår måste du samla in en minnesdump för analys.
 
 ## <a name="solution"></a>Lösning
+
+> [!TIP]
+> Om du har en ny säkerhets kopia av den virtuella datorn kan du försöka att [återställa den virtuella datorn från säkerhets kopian](../../backup/backup-azure-arm-restore-vms.md) för att åtgärda start problemet.
 
 I vissa fall behöver du bara vänta tills processen har slutförts för att lösa problemet. Om den virtuella datorn inte svarar och finns kvar på skärmen vänta i mer än en timme, ska du samla in en minnesdump och sedan kontakta Microsoft support.
 

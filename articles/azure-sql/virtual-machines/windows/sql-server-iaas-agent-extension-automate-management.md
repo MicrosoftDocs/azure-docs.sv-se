@@ -17,12 +17,12 @@ ms.date: 11/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 3fe87f94ce05efa4a784ba7e3f65e53abb00fd05
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 7ddc13306f4adb1730169c4811b9d2227dedca33
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97914254"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632774"
 ---
 # <a name="automate-management-with-the-sql-server-iaas-agent-extension"></a>Automatisera hanteringen med SQL Server IaaS agent-tillägg
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -115,7 +115,7 @@ Det finns tre sätt att registrera med tillägget:
 
 ### <a name="named-instance-support"></a>Stöd för namngivna instanser
 
-Tillägget SQL Server IaaS agent fungerar med en namngiven instans av SQL Server om är den enda SQL Server instans som är tillgänglig på den virtuella datorn. Tillägget kan inte installeras på virtuella datorer som har flera SQL Server instanser. 
+Tillägget SQL Server IaaS agent fungerar med en namngiven instans av SQL Server om det är den enda SQL Server instans som är tillgänglig på den virtuella datorn. Tillägget kan inte installeras på virtuella datorer som har flera namngivna SQL Server instanser om det inte finns någon standard instans på den virtuella datorn. 
 
 Om du vill använda en namngiven instans av SQL Server distribuerar du en virtuell Azure-dator, installerar en enda namngiven SQL Server-instans och registrerar den sedan med [SQL IaaS-tillägget](sql-agent-extension-manually-register-single-vm.md).
 
@@ -228,7 +228,7 @@ Nej. En virtuell dator måste ha minst en SQL Server-instans (databas motor) fö
 
 **Kan jag registrera en virtuell dator med SQL IaaS agent-tillägget om det finns flera SQL Server instanser?**
 
-Ja. SQL IaaS agent-tillägget registrerar endast en SQL Server-instans (databas motor). SQL IaaS agent-tillägget registrerar standard SQL Server-instansen om flera instanser används. Om det inte finns någon standard instans, stöds bara registrering i Lightweight-läge. Om du vill uppgradera från läget för förenklad till fullständig hantering måste du antingen använda standard SQL Server-instansen eller den virtuella datorn får bara ha en namngiven SQL Server-instans.
+Ja, förutsatt att det finns en standard instans på den virtuella datorn. SQL IaaS agent-tillägget registrerar endast en SQL Server-instans (databas motor). SQL IaaS agent-tillägget registrerar standard SQL Server-instansen om flera instanser används.
 
 **Kan jag registrera en SQL Server-redundanskluster med agent tillägget för SQL-IaaS?**
 

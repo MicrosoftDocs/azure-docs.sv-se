@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 05/07/2020
 ms.author: v-mibufo
-ms.openlocfilehash: cbf2fe491e1fe0b553eab04ca7190da0413a3ba6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7160ec9564ede21eab0a205b2d66a7d566639506
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86526018"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632664"
 ---
 # <a name="vm-is-unresponsive-when-applying-group-policy-local-users-and-groups-policy"></a>Den virtuella datorn svarar inte när principen för lokala användare och grupper tillämpas grupprincip
 
@@ -31,7 +31,7 @@ När du använder [startdiagnostik](./boot-diagnostics.md) för att visa en skä
 
 :::image type="content" source="media//unresponsive-vm-apply-group-policy/applying-group-policy-1.png" alt-text="Skärm bild av hur du tillämpar grupprincip lokala användare och grupper princip inläsningar (Windows Server 2012 R2).":::
 
-:::image type="content" source="media/unresponsive-vm-apply-group-policy/applying-group-policy-2.png" alt-text="Skärm bild av hur du tillämpar grupprincip lokala användare och grupper princip inläsningar (Windows Server 2012 R2).":::
+:::image type="content" source="media/unresponsive-vm-apply-group-policy/applying-group-policy-2.png" alt-text="Skärm bild av hur du tillämpar grupprincip lokala användare och grupper princip inläsningar (Windows Server 2012).":::
 
 ## <a name="cause"></a>Orsak
 
@@ -47,6 +47,9 @@ Här är en problematisk princip:
 ## <a name="resolution"></a>Lösning
 
 ### <a name="process-overview"></a>Process översikt
+
+> [!TIP]
+> Om du har en ny säkerhets kopia av den virtuella datorn kan du försöka att [återställa den virtuella datorn från säkerhets kopian](../../backup/backup-azure-arm-restore-vms.md) för att åtgärda start problemet.
 
 1. [Skapa och få åtkomst till en virtuell reparations dator](#step-1-create-and-access-a-repair-vm)
 1. [Inaktivera principen](#step-2-disable-the-policy)
@@ -66,7 +69,23 @@ Här är en problematisk princip:
 1. Öppna Registereditorn på den virtuella datorn för reparation.
 1. Leta upp nyckeln **HKEY_LOCAL_MACHINE** och välj **fil**  >  **läsnings registrerings data** fil på menyn.
 
-    :::image type="content" source="media/unresponsive-vm-apply-group-policy/registry.png" alt-text="Skärm bild av hur du tillämpar grupprincip lokala användare och grupper princip inläsningar (Windows Server 2012 R2)." /v CleanupProfiles /f
+    :::image type="content" source="media/unresponsive-vm-apply-group-policy/registry.png" alt-text="Skärm bild som visar markerade HKEY_LOCAL_MACHINE och den meny som innehåller load Hive.":::
+
+    - Du kan använda läsa in Hive för att läsa in register nycklar från ett offline-system. I det här fallet är systemet den trasiga disken som är kopplad till den virtuella reparations datorn.
+    - Systemomfattande inställningar lagras på `HKEY_LOCAL_MACHINE` och kan förkortas som "HKLM".
+1. I den anslutna disken går du till `\windows\system32\config\SOFTWARE` filen och öppnar den.
+
+    1. När du uppmanas att ange ett namn, anger du BROKENSOFTWARE.
+    1. Kontrol lera att BROKENSOFTWARE har lästs in genom att expandera **HKEY_LOCAL_MACHINE** och leta efter den tillagda BROKENSOFTWARE-nyckeln.
+1. Gå till BROKENSOFTWARE och kontrol lera om CleanupProfile-nyckeln finns i den inlästa Hive.
+
+    1. Om nyckeln finns anges CleanupProfile-principen. Värdet representerar bevarande principen mätt i dagar. Fortsätt att ta bort nyckeln.
+    1. Om nyckeln inte finns anges inte CleanupProfile-principen. [Skicka ett support ärende](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), inklusive filen Memory. dmp som finns i Windows-katalogen på den anslutna OS-disken.
+
+1. Ta bort CleanupProfiles-nyckeln med hjälp av det här kommandot:
+
+    ```
+    reg delete "HKLM\BROKENSOFTWARE\Policies\Microsoft\Windows\System" /v CleanupProfiles /f
     ```
 1.  Ta bort BROKENSOFTWARE Hive med hjälp av det här kommandot:
 

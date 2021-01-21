@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: v-miegge
-ms.openlocfilehash: f83a1820eb931fa075681da7a9661b304059cd2a
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 0c0ec45eee86031e1533b97ccf352de0ecf70e38
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94635713"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98633162"
 ---
 # <a name="troubleshoot-os-start-up--windows-update-installation-capacity"></a>Felsöka OS-start – Windows Update installations kapacitet
 
@@ -38,6 +38,9 @@ I den här situationen kan operativ systemet (OS) inte slutföra en Windows Upda
 ## <a name="solution"></a>Lösning
 
 ### <a name="process-overview"></a>Process översikt:
+
+> [!TIP]
+> Om du har en ny säkerhets kopia av den virtuella datorn kan du försöka att [återställa den virtuella datorn från säkerhets kopian](../../backup/backup-azure-arm-restore-vms.md) för att åtgärda start problemet.
 
 1. Skapa och få åtkomst till en reparations-VM.
 1. Ledigt utrymme på disken.
@@ -73,12 +76,12 @@ Det kan ta flera timmar beroende på Fragmenteringens nivå.
 
 ### <a name="enable-the-serial-console-and-memory-dump-collection"></a>Aktivera samlings konsolen och minnes dumpnings samlingen
 
-**Rekommenderas** : innan du återskapar den virtuella datorn aktiverar du samlings konsolen och samlings dumpningen genom att köra följande skript:
+**Rekommenderas**: innan du återskapar den virtuella datorn aktiverar du samlings konsolen och samlings dumpningen genom att köra följande skript:
 
 1. Öppna en upphöjd kommando tolks session som administratör.
 1. Kör följande kommandon:
 
-   **Aktivera serie konsolen** :
+   **Aktivera serie konsolen**:
    
    ```
    bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /ems {<BOOT LOADER IDENTIFIER>} ON 
@@ -87,7 +90,7 @@ Det kan ta flera timmar beroende på Fragmenteringens nivå.
 
 1. Kontrol lera att det lediga utrymmet på OS-disken är större än minnes storleken (RAM) på den virtuella datorn.
 
-   Om det inte finns tillräckligt med utrymme på OS-disken, ändrar du den plats där minnesdumpen skapas och kontrollerar platsen till alla data diskar som är anslutna till den virtuella datorn med tillräckligt med ledigt utrymme. Om du vill ändra platsen ersätter du **% systemroot%** med enhets bokstaven för data disken, t. ex. **F:** , i följande kommandon.
+   Om det inte finns tillräckligt med utrymme på OS-disken, ändrar du den plats där minnesdumpen skapas och kontrollerar platsen till alla data diskar som är anslutna till den virtuella datorn med tillräckligt med ledigt utrymme. Om du vill ändra platsen ersätter du **% systemroot%** med enhets bokstaven för data disken, t. ex. **F:**, i följande kommandon.
 
    Föreslagen konfiguration för att aktivera OS-dump:
 
@@ -97,7 +100,7 @@ Det kan ta flera timmar beroende på Fragmenteringens nivå.
    REG LOAD HKLM\BROKENSYSTEM <VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config\SYSTEM 
    ```
    
-   **Aktivera på ControlSet001** :
+   **Aktivera på ControlSet001**:
 
    ```
    REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 1 /f 
@@ -105,7 +108,7 @@ Det kan ta flera timmar beroende på Fragmenteringens nivå.
    REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f
    ```
    
-   **Aktivera på ControlSet002** :
+   **Aktivera på ControlSet002**:
 
    ```
    REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 1 /f 
@@ -113,7 +116,7 @@ Det kan ta flera timmar beroende på Fragmenteringens nivå.
    REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f
    ```
    
-   **Ta bort skadad OS-disk** :
+   **Ta bort skadad OS-disk**:
 
    ```
    REG UNLOAD HKLM\BROKENSYSTEM

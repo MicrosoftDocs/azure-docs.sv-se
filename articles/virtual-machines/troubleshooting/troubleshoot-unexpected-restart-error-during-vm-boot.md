@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 06/22/2020
 ms.author: v-mibufo
-ms.openlocfilehash: cfeb040893ae2be5842959ed8458bd713bebe6ee
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: d8d2ab2bb3f24e1faa4791ebdc1ce3852f6a790e
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96512145"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632698"
 ---
 # <a name="os-start-up--computer-restarted-unexpectedly-or-encountered-an-unexpected-error"></a>OS-start – datorn har startats om oväntat eller ett oväntat fel uppstod
 
@@ -52,6 +52,9 @@ Det här problemet skapas oftast när du använder Sysprep med en lokal virtuell
 ## <a name="solution"></a>Lösning
 
 ### <a name="do-not-use-unattendxml"></a>Använd inte Unattend.xml
+
+> [!TIP]
+> Om du har en ny säkerhets kopia av den virtuella datorn kan du försöka att [återställa den virtuella datorn från säkerhets kopian](../../backup/backup-azure-arm-restore-vms.md) för att åtgärda start problemet.
 
 Åtgärda problemet genom att följa [Azure-vägledningen om hur du förbereder/fångar en avbildning](../windows/upload-generalized-managed.md) och förbereder en ny generaliserad avbildning. **Använd inte `/unattend:<your file’s name>` flagga** under Sysprep. Använd i stället bara flaggorna nedan:
 

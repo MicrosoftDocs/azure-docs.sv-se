@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 03/25/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 16f6919577955bda5b04db26deb9fe78a467e364
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 14da41815e177ece64c72ac27a7cb126e69fdc62
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86509043"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98633196"
 ---
 # <a name="boot-error--this-is-not-a-bootable-disk"></a>Startfel – det här är inte en startbar disk
 
@@ -40,6 +40,9 @@ Det här fel meddelandet innebär att start processen för operativ systemet int
 ## <a name="solution"></a>Lösning
 
 ### <a name="process-overview"></a>Process översikt
+
+> [!TIP]
+> Om du har en ny säkerhets kopia av den virtuella datorn kan du försöka att [återställa den virtuella datorn från säkerhets kopian](../../backup/backup-azure-arm-restore-vms.md) för att åtgärda start problemet.
 
 1. Skapa och få åtkomst till en reparations-VM.
 2. Ange partitionerings status till aktiv.
@@ -75,7 +78,7 @@ Virtuella datorer i generation 1 bör först kontrol lera att OS-partitionen som
 
    ![Bild 3 visar fönstret * DISKPART * med utdata från kommandot * List partition *. Partition 1 och partition 2 visas i tabellen. Det visar även utdata för kommandot * selected partition 1 * när partition 1 är den valda disken.](media/troubleshoot-guide-not-bootable-disk/3.jpg)
 
-7. Ange "Detail partition" för att kontrol lera partitionens status. Se bild 4, där partitionen är *aktiv: Nej*eller bild 5, där partitionen är "aktiv: Ja".
+7. Ange "Detail partition" för att kontrol lera partitionens status. Se bild 4, där partitionen är *aktiv: Nej* eller bild 5, där partitionen är "aktiv: Ja".
 
    Bild 4
 
@@ -85,7 +88,7 @@ Virtuella datorer i generation 1 bör först kontrol lera att OS-partitionen som
 
    ![Bild 5 visar fönstret * DISKPART * med utdata från kommandot * detail partition * när partition 1 har angetts till * Active: Yes *.](media/troubleshoot-guide-not-bootable-disk/5.jpg)
 
-8. Om partitionen inte är **aktiv**anger du *aktiv* för att ändra den *aktiva* flaggan.
+8. Om partitionen inte är **aktiv** anger du *aktiv* för att ändra den *aktiva* flaggan.
 9. Kontrol lera att status ändringen har gjorts korrekt genom att skriva in *information partition*.
 
    Bild 6

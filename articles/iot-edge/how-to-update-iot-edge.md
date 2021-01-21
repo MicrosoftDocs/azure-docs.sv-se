@@ -5,16 +5,16 @@ keywords: ''
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/22/2020
+ms.date: 01/20/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 797b5f569f081065eb950f7c10bf6449002f733b
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 9a739736182713b35c3a5e9e25742aa39c5d1122
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96436988"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98633145"
 ---
 # <a name="update-the-iot-edge-security-daemon-and-runtime"></a>Uppdatera IoT Edge-säkerhetsdaemon och runtime
 
@@ -30,7 +30,7 @@ IoT Edge Security daemon är en inbyggd komponent som behöver uppdateras med hj
 
 Kontrol lera vilken version av säkerhets-daemon som körs på enheten med hjälp av kommandot `iotedge version` .
 
-### <a name="linux-devices"></a>Linux-enheter
+# <a name="linux"></a>[Linux](#tab/linux)
 
 På linux x64-enheter använder du apt-get eller lämplig Package Manager för att uppdatera säkerhets daemonen till den senaste versionen.
 
@@ -98,26 +98,18 @@ curl -L <libiothsm-std link> -o libiothsm-std.deb && sudo dpkg -i ./libiothsm-st
 curl -L <iotedge link> -o iotedge.deb && sudo dpkg -i ./iotedge.deb
 ```
 
-### <a name="windows-devices"></a>Windows-enheter
+# <a name="windows"></a>[Windows](#tab/windows)
 
-På Windows-enheter använder du PowerShell-skriptet för att uppdatera Security daemon. Skriptet hämtar automatiskt den senaste versionen av Security daemon.
+<!-- 1.0.10 -->
+::: moniker range="iotedge-2018-06"
 
-```powershell
-. {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Update-IoTEdge -ContainerOs <Windows or Linux>
-```
+Med IoT Edge för Linux i Windows IoT Edge körs på en virtuell Linux-dator som finns på en Windows-enhet. Den här virtuella datorn är förinstallerad med IoT Edge och hanteras med Microsoft Update för att hålla komponenterna aktuella. Det finns för närvarande inga tillgängliga uppdateringar.
 
-Att köra kommandot Update-IoTEdge tar bort och uppdaterar säkerhets daemonen från enheten, tillsammans med de två behållar avbildningarna. Config. yaml-filen sparas på enheten, samt data från Moby container Engine (om du använder Windows-behållare). Att behålla konfigurations informationen innebär att du inte behöver ange anslutnings strängen eller enhets etablerings tjänstens information för enheten igen under uppdaterings processen.
+::: moniker-end
 
-Om du vill uppdatera till en speciell version av Security daemon, letar du upp den version som du vill använda för [IoT Edge-versioner](https://github.com/Azure/azure-iotedge/releases). I den versionen hämtar du **Microsoft-Azure-IoTEdge.cab** -filen. Använd sedan `-OfflineInstallationPath` parametern för att peka på den lokala fil platsen. Exempel:
+IoT Edge körs direkt på Windows-enheten med IoT Edge för Windows. Instruktioner för uppdatering med hjälp av PowerShell-skript finns i [Installera och hantera Azure IoT Edge för Windows](how-to-install-iot-edge-windows-on-windows.md).
 
-```powershell
-. {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Update-IoTEdge -ContainerOs <Windows or Linux> -OfflineInstallationPath <absolute path to directory>
-```
-
->[!NOTE]
->`-OfflineInstallationPath`Parametern söker efter en fil med namnet **Microsoft-Azure-IoTEdge.cab** i den angivna katalogen. Från och med IoT Edge version 1.0.9-RC4 finns det två CAB-filer som är tillgängliga för användning, en för AMD64-enheter och en för ARM32. Hämta rätt fil för enheten och byt sedan namn på filen för att ta bort det.
-
-Om du vill ha mer information om uppdaterings alternativ använder du kommandot `Get-Help Update-IoTEdge -full` eller läser [PowerShell-skript för IoT Edge i Windows](reference-windows-scripts.md).
+---
 
 ## <a name="update-the-runtime-containers"></a>Uppdatera runtime-behållare
 
@@ -172,35 +164,6 @@ Om du använder vissa taggar i din distribution (t. ex. mcr.microsoft.com/azurei
 
 1. Välj **Granska + skapa**, granska distributionen och välj **skapa**.
 
-## <a name="update-offline-or-to-a-specific-version"></a>Uppdatera offline eller till en annan version
-
-Om du vill uppdatera en enhet offline eller uppdatera till en speciell version av IoT Edge i stället för den senaste versionen kan du göra det med `-OfflineInstallationPath` parametern.
-
-Två komponenter används för att uppdatera en IoT Edge enhet:
-
-* Ett PowerShell-skript som innehåller installations anvisningarna
-* Microsoft Azure IoT Edge CAB, som innehåller IoT Edge Security daemon (iotedged), Moby container Engine och Moby CLI
-
-1. De senaste IoT Edge-installationsfilerna tillsammans med tidigare versioner finns i [Azure IoT Edge versioner](https://github.com/Azure/azure-iotedge/releases).
-
-2. Leta upp den version som du vill installera och ladda ned följande filer från avsnittet **till gångar** i viktig information på din IoT-enhet:
-
-   * IoTEdgeSecurityDaemon.ps1
-   * Microsoft-Azure-IoTEdge-amd64.cab från att lansera 1.0.9 eller senare, eller Microsoft-Azure-IoTEdge.cab från att lansera 1.0.8 och äldre.
-
-   Microsoft-Azure-IotEdge-arm32.cab är även tillgängligt från och med 1.0.9 endast för testning. IoT Edge stöds för närvarande inte på Windows ARM32-enheter.
-
-   Det är viktigt att använda PowerShell-skriptet från samma version som. cab-filen som du använder eftersom funktionen ändras till att stödja funktionerna i varje version.
-
-3. Om CAB-filen som du laddade ned har ett arkitektur-suffix, byter du namn på filen till bara **Microsoft-Azure-IoTEdge.cab**.
-
-4. Om du vill uppdatera med offline-komponenter kan du [punkt källa](/powershell/module/microsoft.powershell.core/about/about_scripts#script-scope-and-dot-sourcing) den lokala kopian av PowerShell-skriptet. Använd sedan `-OfflineInstallationPath` parametern som en del av `Update-IoTEdge` kommandot och ange den absoluta sökvägen till fil katalogen. Exempel:
-
-   ```powershell
-   . <path>\IoTEdgeSecurityDaemon.ps1
-   Update-IoTEdge -OfflineInstallationPath <path>
-   ```
-
 ## <a name="update-to-a-release-candidate-version"></a>Uppdatera till en version av Release Candidate
 
 Azure IoT Edge regelbundet frigör nya versioner av tjänsten IoT Edge. Innan varje stabil utgåva finns det en eller flera versioner av Release Candidate (RC). RC-versioner innehåller alla planerade funktioner för versionen, men fortsätter att testa och verifiera. Om du vill testa en ny funktion tidigt kan du installera en RC-version och ge feedback via GitHub.
@@ -213,7 +176,7 @@ Som för hands versioner ingår inte versions kandidat versioner som den senaste
 
 Använd avsnitten i den här artikeln för att lära dig hur du uppdaterar en IoT Edge-enhet till en viss version av daemon-eller körnings moduler.
 
-Om du installerar IoT Edge, i stället för att uppgradera en befintlig installation, använder du stegen i [offline eller en speciell versions installation](how-to-install-iot-edge.md#offline-or-specific-version-installation).
+Om du installerar IoT Edge, i stället för att uppgradera en befintlig installation, använder du stegen i [offline eller en speciell versions installation](how-to-install-iot-edge.md#offline-or-specific-version-installation-optional).
 
 ## <a name="next-steps"></a>Nästa steg
 

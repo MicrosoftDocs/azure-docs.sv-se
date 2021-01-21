@@ -3,16 +3,16 @@ title: Syntax för SQL-åtgärd för Azure Service Bus prenumerations regel | Mi
 description: Den här artikeln innehåller en referens för syntax för SQL-regel åtgärder. Åtgärderna skrivs i SQL-språkbaserad syntax som utförs mot ett meddelande.
 ms.topic: article
 ms.date: 11/24/2020
-ms.openlocfilehash: 7ce3332fb1a2025e89135e5e42e72d4afe1e7a5e
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 606281d42d5598d7f73312990d3a19775a202c08
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96489402"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632819"
 ---
 # <a name="subscription-rule-sql-action-syntax"></a>SQL-Action-syntax för prenumerations regel
 
-En *SQL-åtgärd* används för att manipulera metadata för meddelanden när ett meddelande har marker ATS med ett filter för en prenumerations regel. Det är ett text uttryck som är Lean för en delmängd av SQL-92-standarden. Åtgärds uttryck används med `sqlExpression` elementet i egenskapen ' Action ' för en Service Bus `Rule` i en Azure Resource Manager- [mall](service-bus-resource-manager-namespace-topic-with-rule.md)eller Azure CLI- `az servicebus topic subscription rule create` kommandoets [`--action-sql-expression`](/cli/azure/servicebus/topic/subscription/rule?preserve-view=true&view=azure-cli-latest#az_servicebus_topic_subscription_rule_create) argument och flera SDK-funktioner som tillåter hantering av prenumerations regler.
+En *SQL-åtgärd* används för att manipulera metadata för meddelanden när ett meddelande har marker ATS med ett filter för en prenumerations regel. Det är ett text uttryck som är Lean för en delmängd av SQL-92-standarden. Åtgärds uttryck används med `sqlExpression` elementet i egenskapen ' Action ' för en Service Bus `Rule` i en Azure Resource Manager- [mall](service-bus-resource-manager-namespace-topic-with-rule.md)eller Azure CLI- `az servicebus topic subscription rule create` kommandoets [`--action-sql-expression`](/cli/azure/servicebus/topic/subscription/rule#az_servicebus_topic_subscription_rule_create) argument och flera SDK-funktioner som tillåter hantering av prenumerations regler.
   
   
 ```  

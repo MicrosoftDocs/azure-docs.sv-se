@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/21/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 575742ab0d886a69dc5acccf4a65ac8c91b5a871
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: e085c5c2dbb608692ff7e766744743d3f640387b
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96341043"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98633213"
 ---
 # <a name="azure-security-baseline-for-event-grid"></a>Azures säkerhets bas linje för Event Grid
 
@@ -293,9 +293,9 @@ Med rollbaserad åtkomst kontroll i Azure (Azure RBAC) kan du hantera åtkomst t
 
 - [Auktorisera åtkomst till Event Grid resurser](security-authorization.md)
 
-- [Så här hämtar du en katalog roll i Azure AD med PowerShell](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+- [Så här hämtar du en katalog roll i Azure AD med PowerShell](/powershell/module/azuread/get-azureaddirectoryrole)
 
-- [Så här hämtar du medlemmar i en katalog roll i Azure AD med PowerShell](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+- [Så här hämtar du medlemmar i en katalog roll i Azure AD med PowerShell](/powershell/module/azuread/get-azureaddirectoryrolemember)
 
 **Azure Security Center-övervakning**: Ja
 
@@ -696,7 +696,7 @@ Använd dessutom Azure Resource Graph för att fråga/identifiera resurser i pre
 
 Azure Resource Manager kan exportera mallen i JavaScript Object Notation (JSON), som bör granskas för att säkerställa att konfigurationerna uppfyller säkerhets kraven för din organisation innan distributioner.
 
-- [Visa tillgängliga Azure Policy alias](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+- [Visa tillgängliga Azure Policy alias](/powershell/module/az.resources/get-azpolicyalias)
 
 - [Konfigurera och hantera Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -738,9 +738,9 @@ Azure Resource Manager kan exportera mallen i JavaScript Object Notation (JSON),
 
 **Vägledning**: om du använder anpassade Azure policys definitioner för dina event Grid eller relaterade resurser använder du Azure-databaser för att lagra och hantera din kod på ett säkert sätt.
 
-- [Så här lagrar du kod i Azure DevOps](/azure/devops/repos/git/gitworkflow?view=azure-devops)
+- [Så här lagrar du kod i Azure DevOps](/azure/devops/repos/git/gitworkflow)
 
-- [Dokumentation om Azure databaser](/azure/devops/repos/index?view=azure-devops)
+- [Dokumentation om Azure databaser](/azure/devops/repos/index)
 
 **Azure Security Center övervakning**: inte tillämpligt
 

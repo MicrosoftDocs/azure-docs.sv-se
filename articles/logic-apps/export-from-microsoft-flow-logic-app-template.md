@@ -3,17 +3,19 @@ title: Exportera flöden från Power automatisera till Azure Logic Apps
 description: Migrera flöden från Power automatisera till Azure Logic Apps genom att exportera som Azure Resource Manager mallar
 services: logic-apps
 ms.suite: integration
-ms.reviewer: jonfan, logicappspm
+ms.reviewer: estfan, sneshaf, pinath, logicappspm
 ms.topic: conceptual
-ms.date: 06/03/2020
-ms.openlocfilehash: 1c2f0a2c54be7adbc7b8babd596f18e08c67a024
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.date: 01/20/2021
+ms.openlocfilehash: 2192ae5f3de551cb8ff2b6c36e233804c3c56bf1
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96014422"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98633255"
 ---
 # <a name="export-flows-from-power-automate-and-deploy-to-azure-logic-apps"></a>Exportera flöden från Power Automate och distribuera till Azure Logic Apps
+
+> För flöden som skapats efter den 2020 oktober kan du inte längre exportera från automatisk start och distribution till Azure Logic Apps.
 
 Om du vill utöka och utöka ditt flödes funktioner kan du migrera flödet från [energi spar läge](https://flow.microsoft.com) till [Azure Logic Apps](../logic-apps/logic-apps-overview.md). Du kan exportera ditt flöde som en Azure Resource Manager mall för en Logic app, distribuera Logic app-mallen till en Azure-resurs grupp och sedan öppna den Logic-appen i Logic App Designer.
 
@@ -76,7 +78,7 @@ Mer information finns i [öka upp till Azure Logic Apps](https://flow.microsoft.
       | <*anslutnings namn*> | Ett eller flera namn för alla tidigare skapade anslutningar som Logic-appen kan återanvända <p><p>**Obs**: om den här Logic-appen är din första skapas alla anslutningar som nya, så att du kan acceptera standard namnen. Annars kan du ange namnen på tidigare skapade anslutningar, som du kan använda i flera Logic Apps. |
       |||
 
-      Exempel:
+      Till exempel:
 
       ![Ange indataparametrar för mall](./media/export-from-microsoft-flow-logic-app-template/template-input-parameters.png)
 
@@ -156,7 +158,7 @@ Om du har konfigurerat Visual Studio med [förutsättningarna](../logic-apps/qui
 
    ![Redigera distributions parametrar](./media/export-from-microsoft-flow-logic-app-template/edit-parameters-deployment.png)
 
-   När distributionen startar visas appens distributionsstatus i Visual Studios **utdatafönster**. Om statusen inte visas ska du öppna listan **Show output from** (Visa utdata från) och välja Azure-resursgruppen. Exempel:
+   När distributionen startar visas appens distributionsstatus i Visual Studios **utdatafönster**. Om statusen inte visas ska du öppna listan **Show output from** (Visa utdata från) och välja Azure-resursgruppen. Till exempel:
 
    ![Utdatafönster](./media/export-from-microsoft-flow-logic-app-template/output-window.png)
 

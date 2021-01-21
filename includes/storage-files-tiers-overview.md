@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/28/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: d3ba7baf79ee972ed7289a1aab93484108da70cf
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 6d06a46d2eaaad362890f1e3e44dbc746fa10898
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97724244"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98633373"
 ---
 Azure Files erbjuder fyra olika nivåer av lagring, Premium, transaktion optimerad, frekvent och låg frekvent så att du kan skräddarsy dina resurser efter prestanda-och pris krav för ditt scenario:
 
@@ -22,7 +22,7 @@ Azure Files erbjuder fyra olika nivåer av lagring, Premium, transaktion optimer
 - Frekvent **: Hot** fil resurser erbjuder lagring som är optimerad för generella fil delnings scenarier, till exempel team resurser. Hot fil resurser erbjuds på den standard lagrings maskin vara som backas upp av hård diskar.
 - Låg **frekvent: låg** frekventa fil resurser erbjuder kostnads effektiv lagring som är optimerad för online-scenarier för Arkiv lag ring. Häftiga fil resurser erbjuds på standard lagrings maskin varan som backas upp av hård diskar.
 
-Premium-filresurser distribueras i **FileStorage-lagrings kontots** typ och är bara tillgängliga i en etablerad fakturerings modell. Mer information om den etablerade fakturerings modellen för Premium-filresurser finns i [förstå etablering för Premium-filresurser](../articles/storage/files/understanding-billing.md#provisioned-billing). Standard fil resurser, inklusive transaktions optimering, frekventa och häftiga fil resurser, distribueras i **GPv2-lagring (General Purpose version 2)** och är tillgängliga via betala per användning. Frekventa och häftiga fil resurser är tillgängliga i alla offentliga Azure-och Azure Government regioner. Transaktions optimerade fil resurser är tillgängliga i alla Azure-regioner, inklusive Azure Kina och Azure Germany-regioner.
+Premium-filresurser distribueras i **FileStorage-lagrings kontots** typ och är bara tillgängliga i en etablerad fakturerings modell. Mer information om den etablerade fakturerings modellen för Premium-filresurser finns i [förstå etablering för Premium-filresurser](../articles/storage/files/understanding-billing.md#provisioned-model). Standard fil resurser, inklusive transaktions optimering, frekventa och häftiga fil resurser, distribueras i **GPv2-lagring (General Purpose version 2)** och är tillgängliga via betala per användning. Frekventa och häftiga fil resurser är tillgängliga i alla offentliga Azure-och Azure Government regioner. Transaktions optimerade fil resurser är tillgängliga i alla Azure-regioner, inklusive Azure Kina och Azure Germany-regioner.
 
 När du väljer en lagrings nivå för arbets belastningen bör du tänka på kraven på prestanda och användning. Om din arbets belastning kräver en ensiffrig svars tid, eller om du använder SSD-lagrings medier lokalt, är Premium-nivån antagligen den bästa anpassningen. Om låg latens inte är lika mycket av ett problem, till exempel med team resurser som är monterade lokalt från Azure eller cachelagras lokalt med hjälp av Azure File Sync, kan standard lagring vara en bättre anpassning från ett kostnads perspektiv.
 

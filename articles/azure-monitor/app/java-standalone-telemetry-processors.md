@@ -6,12 +6,12 @@ ms.date: 10/29/2020
 author: kryalama
 ms.custom: devx-track-java
 ms.author: kryalama
-ms.openlocfilehash: 39897e490e4653fbaad7a64ecc0b33f161d1264b
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.openlocfilehash: c0745dd4069c64292fbcaef666d843ae2d25f7b3
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98165798"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632588"
 ---
 # <a name="telemetry-processors-preview---azure-monitor-application-insights-for-java"></a>Telemetri-processorer (för hands version) – Azure Monitor Application Insights för Java
 
@@ -241,7 +241,7 @@ För `hash` åtgärden krävs följande:
 ### `extract`
 
 > [!NOTE]
-> Den här funktionen är endast i 3.0.1 och senare
+> Den här funktionen är endast i 3.0.2 och senare
 
 Extraherar värden med en regel för reguljära uttryck från den inmatade nyckeln till mål nycklar som anges i regeln. Om det redan finns en mål nyckel kommer den att åsidosättas. Den fungerar på samma sätt som inställningen för [span-processorn](#extract-attributes-from-span-name) `toAttributes` med det befintliga attributet som källa.
 

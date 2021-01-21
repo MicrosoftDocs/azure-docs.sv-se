@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: delhan
-ms.openlocfilehash: d7e56fe36af3d841cfd888dd6c1bf05502837cdd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f3e4d51b4d41fa0dc23e9b12ac0251c14215de5c
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87079850"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98633018"
 ---
 # <a name="vm-startup-is-stuck-on-getting-windows-ready-dont-turn-off-your-computer-in-azure"></a>Starten av den virtuella datorn har fastnat i "komma igång med Windows. Stäng inte av datorn i Azure
 
@@ -39,6 +39,9 @@ En virtuell Windows-dator startar inte. När du använder **startdiagnostik** f�
 Det här problemet uppstår vanligt vis när servern utför den slutliga omstarten när konfigurationen har ändrats. Konfigurations ändringen kan initieras av Windows-uppdateringar eller av ändringarna på serverns roller/funktion. För Windows Update, om Uppdateringens storlek var stor, behöver operativ systemet mer tid för att omkonfigurera ändringarna.
 
 ## <a name="collect-an-os-memory-dump"></a>Samla in en minnesdump för operativ system
+
+> [!TIP]
+> Om du har en ny säkerhets kopia av den virtuella datorn kan du försöka att [återställa den virtuella datorn från säkerhets kopian](../../backup/backup-azure-arm-restore-vms.md) för att åtgärda start problemet.
 
 Om problemet inte löses när du väntar på att ändringarna ska bearbetas måste du samla in en minnesdumpfil och kontakta supporten. Samla in dumpfilen genom att följa dessa steg:
 

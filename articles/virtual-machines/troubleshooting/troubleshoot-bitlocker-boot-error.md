@@ -13,18 +13,16 @@ ms.workload: infrastructure
 ms.date: 11/20/2020
 ms.author: genli
 ms.custom: has-adal-ref
-ms.openlocfilehash: 00095eed3fe6d143d9ed7a0c748c4702028f4632
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.openlocfilehash: 87bf311b5199ec187c24c28a42314d9dc6787998
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97832068"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98633035"
 ---
 # <a name="bitlocker-boot-errors-on-an-azure-vm"></a>BitLocker-startfel på en virtuell Azure-dator
 
  I den här artikeln beskrivs BitLocker-fel som kan uppstå när du startar en virtuell Windows-dator (VM) i Microsoft Azure.
-
- 
 
 ## <a name="symptom"></a>Symptom
 
@@ -42,6 +40,9 @@ ms.locfileid: "97832068"
 Det här problemet kan inträffa om den virtuella datorn inte kan hitta filen med återställnings nyckeln för BitLocker (BEK) för att dekryptera den krypterade disken.
 
 ## <a name="solution"></a>Lösning
+
+> [!TIP]
+> Om du har en ny säkerhets kopia av den virtuella datorn kan du försöka att [återställa den virtuella datorn från säkerhets kopian](../../backup/backup-azure-arm-restore-vms.md) för att åtgärda start problemet.
 
 Lös problemet genom att stoppa och frigöra den virtuella datorn och sedan starta den. Den här åtgärden tvingar den virtuella datorn att hämta BEK-filen från Azure Key Vault och placerar den på den krypterade disken. 
 

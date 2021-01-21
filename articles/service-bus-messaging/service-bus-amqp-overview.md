@@ -3,12 +3,12 @@ title: Översikt över AMQP 1,0 i Azure Service Bus
 description: Lär dig hur Azure Service Bus stöder Advanced Message Queueing Protocol (AMQP), ett öppet standard protokoll.
 ms.topic: article
 ms.date: 11/20/2020
-ms.openlocfilehash: 241a6b7fb9f9055ce610e44e5cd37dba87c77554
-ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
+ms.openlocfilehash: 58c2cc8e9d92fff31a286b6e9bd63b63bee26aee
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97709290"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632892"
 ---
 # <a name="amqp-10-support-in-service-bus"></a>AMQP 1,0-stöd i Service Bus
 Azure Service Bus moln tjänsten använder [Advanced Message Queueing Protocol (AMQP) 1,0](http://docs.oasis-open.org/amqp/core/v1.0/amqp-core-overview-v1.0.html) som primärt kommunikations sätt. Microsoft har samarbetat med partner över hela branschen, både kunder och leverantörer av konkurrerande meddelande hanterare, för att utveckla och utveckla AMQP under de senaste tio åren, med nya tillägg som utvecklas i [Oasis AMQP tekniska kommittén](https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=amqp). AMQP 1,0 är en ISO-och IEC standard ([iso 19464:20149](https://www.iso.org/standard/64955.html)). 
@@ -64,11 +64,11 @@ Följande bild illustrerar en exempel distribution där Java-klienter som körs 
 
 Alla tillgängliga Service Bus klient bibliotek som stöds via Azure SDK använder AMQP 1,0.
 
-- [Azure Service Bus för .NET](/dotnet/api/overview/azure/service-bus?preserve-view=true&view=azure-dotnet)
-- [Azure Service Bus bibliotek för Java](/java/api/overview/azure/servicebus?preserve-view=true&view=azure-java-stable)
+- [Azure Service Bus för .NET](/dotnet/api/overview/azure/service-bus?preserve-view=true)
+- [Azure Service Bus bibliotek för Java](/java/api/overview/azure/servicebus?preserve-view=true)
 - [Azure Service Bus Provider för Java JMS 2,0](how-to-use-java-message-service-20.md)
-- [Azure Service Bus moduler för Java Script och TypeScript](/javascript/api/overview/azure/service-bus?preserve-view=true&view=azure-node-latest)
-- [Azure Service Bus bibliotek för python](/python/api/overview/azure/servicebus?preserve-view=true&view=azure-python)
+- [Azure Service Bus moduler för Java Script och TypeScript](/javascript/api/overview/azure/service-bus?preserve-view=true)
+- [Azure Service Bus bibliotek för python](/python/api/overview/azure/servicebus?preserve-view=true)
 
 [!INCLUDE [service-bus-websockets-options](../../includes/service-bus-websockets-options.md)]
 

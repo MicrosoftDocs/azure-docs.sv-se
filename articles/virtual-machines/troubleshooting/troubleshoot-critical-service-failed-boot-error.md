@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/08/2018
 ms.author: genli
-ms.openlocfilehash: 8c3e76f1a7edffefc8773dfa548773ec0932fae6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a937528e3bfd8bea16912d614133988763748bab
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86129862"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632967"
 ---
 # <a name="windows-shows-critical-service-failed-on-blue-screen-when-booting-an-azure-vm"></a>Windows visar "kritisk tjänst misslyckades" på blå skärm vid start av en virtuell Azure-dator
 I den här artikeln beskrivs fel meddelandet "kritisk tjänst misslyckades" som kan uppstå när du startar en virtuell Windows-dator (VM) i Microsoft Azure. Den innehåller fel söknings steg som hjälper dig att lösa problemen. 
@@ -38,6 +38,9 @@ Det finns olika orsaker till stopp fel. De vanligaste orsakerna är:
 - Programmet får åtkomst till en förbjuden sektor i minnet
 
 ## <a name="solution"></a>Lösning 
+
+> [!TIP]
+> Om du har en ny säkerhets kopia av den virtuella datorn kan du försöka att [återställa den virtuella datorn från säkerhets kopian](../../backup/backup-azure-arm-restore-vms.md) för att åtgärda start problemet.
 
 För att lösa det här problemet kan du [kontakta supporten och skicka en dumpfil](./troubleshoot-common-blue-screen-error.md#collect-memory-dump-file), vilket hjälper oss att diagnostisera problemet snabbare, eller prova följande själv hjälp lösning.
 
@@ -96,7 +99,7 @@ Kör följande skript om du vill aktivera dumpnings loggar och en serie konsol.
 
 2. [Koppla från OS-disken och återanslut sedan OS-disken till den berörda virtuella datorn](troubleshoot-recovery-disks-portal-windows.md). Den virtuella datorn startas om i fel säkert läge. Om du fortfarande upplever felet går du till det valfria steget.
 3. Öppna rutan **Kör** och kör **Verifier** för att starta verktyget driv rutins hanteraren.
-4. Välj Välj **osignerade driv rutiner automatiskt**och klicka sedan på **Nästa**.
+4. Välj Välj **osignerade driv rutiner automatiskt** och klicka sedan på **Nästa**.
 5. Du får en lista över de drivrutinsfiler som är osignerade. Kom ihåg fil namnen.
 6. Kopiera samma versioner av de här filerna från en fungerande virtuell dator och ersätt sedan dessa osignerade filer. 
 
@@ -115,15 +118,15 @@ Följ dessa steg om du vill analysera dumpnings loggarna själv:
 1. Koppla OS-disken till en virtuell dator för återställning.
 2. På den OS-disk som du har bifogat bläddrar du till **\Windows\System32\Config**. Kopiera alla filerna som en säkerhets kopia om en återställning krävs.
 3. Starta **Registereditorn** (regedit.exe).
-4. Välj den **HKEY_LOCAL_MACHINE** nyckeln. På menyn väljer du **fil**  >  **läsnings registrerings data**fil.
-5. Bläddra till mappen **\windows\system32\config\SYSTEM** på den OS-disk som du har anslutit. Ange **BROKENSYSTEM**som namn på Hive. Den nya registrerings data filen visas under **HKEY_LOCAL_MACHINE** nyckeln.
+4. Välj den **HKEY_LOCAL_MACHINE** nyckeln. På menyn väljer du **fil**  >  **läsnings registrerings data** fil.
+5. Bläddra till mappen **\windows\system32\config\SYSTEM** på den OS-disk som du har anslutit. Ange **BROKENSYSTEM** som namn på Hive. Den nya registrerings data filen visas under **HKEY_LOCAL_MACHINE** nyckeln.
 6. Bläddra till **HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet00x\Control\CrashControl** och gör följande ändringar:
 
     AutoReboot = 0
 
     CrashDumpEnabled = 2
 7.  Välj **BROKENSYSTEM**. Från menyn väljer du **Arkiv**  >  **ta bort Hive**.
-8.  Ändra BCD-installationen för att starta i fel söknings läge. Kör följande kommandon från en upphöjd kommando tolk:
+8.  Ändra BCD-installationen för att starta i fel söknings läge. Kör följande kommando från en kommandorad med förhöjd behörighet:
 
     ```cmd
     REM Setup some debugging flags on the boot manager

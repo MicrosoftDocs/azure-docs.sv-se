@@ -3,12 +3,12 @@ title: Autentisera händelse leverans till händelse hanterare (Azure Event Grid
 description: I den här artikeln beskrivs olika sätt att autentisera leverans till händelse hanterare i Azure Event Grid.
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: 8360aa49e3d83879499af79448ff9f85082f47ac
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 98d7a4a0dee6c355ec340668bef7d8b306f97496
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98015546"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98633128"
 ---
 # <a name="authenticate-event-delivery-to-event-handlers-azure-event-grid"></a>Autentisera händelse leverans till händelse hanterare (Azure Event Grid)
 Den här artikeln innehåller information om hur du autentiserar händelse leverans till händelse hanterare. Den visar också hur du skyddar webhook-slutpunkter som används för att ta emot händelser från Event Grid med Azure Active Directory (Azure AD) eller en delad hemlighet.
@@ -16,7 +16,7 @@ Den här artikeln innehåller information om hur du autentiserar händelse lever
 ## <a name="use-system-assigned-identities-for-event-delivery"></a>Använd systemtilldelade identiteter för händelse leverans
 Du kan aktivera en systemtilldelad hanterad identitet för ett ämne eller en domän och använda identiteten för att vidarebefordra händelser till destinationer som stöds, till exempel Service Bus köer och ämnen, Event Hub och lagrings konton.
 
-Gör så här: 
+Här är stegen: 
 
 1. Skapa ett ämne eller en domän med en tilldelad identitet eller uppdatera ett befintligt ämne eller en befintlig domän för att aktivera identitet. 
 1. Lägg till identiteten i en lämplig roll (till exempel Service Bus data avsändare) på målet (till exempel en Service Bus kö).
@@ -35,7 +35,7 @@ Du kan skydda webhook-slutpunkten som används för att ta emot händelser från
 ### <a name="using-client-secret-as-a-query-parameter"></a>Använda klient hemlighet som frågeparameter
 Du kan också skydda webhook-slutpunkten genom att lägga till frågeparametrar i URL: en för webhook-målet som anges som en del av att skapa en händelse prenumeration. Ange att en av frågeparametrar ska vara en klient hemlighet, till exempel en [åtkomsttoken](https://en.wikipedia.org/wiki/Access_token) eller en delad hemlighet. Event Grid-tjänsten innehåller alla frågeparametrar i varje händelse leverans förfrågan till webhooken. Webhook-tjänsten kan hämta och verifiera hemligheten. Om klient hemligheten uppdateras måste händelse prenumerationen också uppdateras. Undvik leverans problem under den här hemliga rotationen genom att göra så att webhooken godkänner både gamla och nya hemligheter under en begränsad tid innan du uppdaterar händelse prenumerationen med den nya hemligheten. 
 
-Eftersom frågeparametrar kan innehålla klient hemligheter hanteras de med extra noggrannhet. De lagras som krypterade och är inte tillgängliga för tjänst operatörer. De loggas inte som en del av tjänst loggarna/spårningarna. När du hämtar egenskaperna för händelse prenumerationen returneras inte mål frågans parametrar som standard. Till exempel: [--include-fullständig-Endpoint-URL-](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-show) parameter ska användas i Azure [CLI](/cli/azure?view=azure-cli-latest).
+Eftersom frågeparametrar kan innehålla klient hemligheter hanteras de med extra noggrannhet. De lagras som krypterade och är inte tillgängliga för tjänst operatörer. De loggas inte som en del av tjänst loggarna/spårningarna. När du hämtar egenskaperna för händelse prenumerationen returneras inte mål frågans parametrar som standard. Till exempel: [--include-fullständig-Endpoint-URL-](/cli/azure/eventgrid/event-subscription#az-eventgrid-event-subscription-show) parameter ska användas i Azure [CLI](/cli/azure).
 
 Mer information om att leverera händelser till Webhooks finns i avsnittet om [leverans av webhook-händelser](webhook-event-delivery.md)
 

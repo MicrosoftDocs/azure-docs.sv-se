@@ -3,12 +3,12 @@ title: Hämta åtkomst nyckel för en Event Grid resurs
 description: Den här artikeln beskriver hur du får åtkomst nyckeln för ett Event Grid ämne eller en domän
 ms.topic: how-to
 ms.date: 07/07/2020
-ms.openlocfilehash: 2e258cebe1652178a67c292d0cccab3a151eddf7
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: a642affbac79766684dc75a37dae0373450d20e8
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624845"
+ms.locfileid: "98632537"
 ---
 # <a name="get-access-keys-for-event-grid-resources-topics-or-domains"></a>Få åtkomst nycklar för Event Grid resurser (ämnen eller domäner)
 Åtkomst nycklar används för att autentisera ett program publicerings händelser för att Azure Event Grid resurser (ämnen och domäner). Vi rekommenderar att du återskapar dina nycklar regelbundet och sparar dem på ett säkert sätt. Du får två åtkomst nycklar så att du kan underhålla anslutningar med en nyckel när du återskapar den.
@@ -34,13 +34,13 @@ Get-AzEventGridDomainKey -ResourceGroup <RESOURCE GROUP NAME> -Name <DOMAIN NAME
 ```
 
 ## <a name="azure-cli"></a>Azure CLI
-Använd [AZ eventgrid ämnes nyckel lista](/cli/azure/eventgrid/topic/key?view=azure-cli-latest#az-eventgrid-topic-key-list) för att få åtkomst nycklar för ämnen. 
+Använd [AZ eventgrid ämnes nyckel lista](/cli/azure/eventgrid/topic/key#az-eventgrid-topic-key-list) för att få åtkomst nycklar för ämnen. 
 
 ```azurecli-interactive
 az eventgrid topic key list --resource-group <RESOURCE GROUP NAME> --name <TOPIC NAME>
 ```
 
-Använd [AZ eventgrid-domän nyckel lista](/cli/azure/eventgrid/domain/key?view=azure-cli-latest#az-eventgrid-domain-key-list) för att få åtkomst nycklar för domäner. 
+Använd [AZ eventgrid-domän nyckel lista](/cli/azure/eventgrid/domain/key#az-eventgrid-domain-key-list) för att få åtkomst nycklar för domäner. 
 
 ```azurecli-interactive
 az eventgrid domain key list --resource-group <RESOURCE GROUP NAME> --name <DOMAIN NAME>

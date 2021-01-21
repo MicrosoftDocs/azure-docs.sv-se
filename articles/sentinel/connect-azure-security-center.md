@@ -9,12 +9,12 @@ ms.subservice: azure-sentinel
 ms.topic: how-to
 ms.date: 09/07/2020
 ms.author: yelevin
-ms.openlocfilehash: b37675d46d501fc43446eafc83d6c0a02f238177
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: bb188aa79015c2123b9d9d8b6baf277dfadf2f9c
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94655960"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98633052"
 ---
 # <a name="connect-azure-defender-alert-data-from-azure-security-center"></a>Anslut Azure Defender-aviserings data från Azure Security Center
 
@@ -39,6 +39,8 @@ Använd Azure Defender Alert Connector för att mata in Azure Defender-avisering
 1. Om du vill använda det relevanta schemat i Log Analytics för Azure Defender-aviseringar söker du efter **SecurityAlert**.
 
 ## <a name="next-steps"></a>Nästa steg
+
 I det här dokumentet har du lärt dig hur du ansluter Azure Defender till Azure Sentinel. Mer information om Azure Sentinel finns i följande artiklar:
+
 - Lär dig hur du [får insyn i dina data och potentiella hot](quickstart-get-visibility.md).
 - Kom igång [med att identifiera hot med Azure Sentinel](tutorial-detect-threats-built-in.md).

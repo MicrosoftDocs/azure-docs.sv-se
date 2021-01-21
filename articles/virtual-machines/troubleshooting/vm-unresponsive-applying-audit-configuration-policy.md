@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 08/24/2020
 ms.author: v-miegge
-ms.openlocfilehash: ff21975c34c28d7476635467e0c1abb8e6575e35
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: f286542c91ba473d13595d8e8299b1bbd8c93856
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977960"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632613"
 ---
 # <a name="virtual-machine-is-unresponsive-while-applying-audit-policy-configuration-policy"></a>Den virtuella datorn svarar inte när konfigurations principen för gransknings principen tillämpas
 
@@ -46,6 +46,9 @@ Här är en problematisk princip: *Computer Datorkonfiguration\principer\adminis
 
 ### <a name="process-overview"></a>Process översikt
 
+> [!TIP]
+> Om du har en ny säkerhets kopia av den virtuella datorn kan du försöka att [återställa den virtuella datorn från säkerhets kopian](../../backup/backup-azure-arm-restore-vms.md) för att åtgärda start problemet.
+
 1. Skapa och få åtkomst till en reparations-VM.
 1. Inaktivera principen.
 1. Aktivera serie konsol och samling av minnes dum par.
@@ -59,7 +62,7 @@ Här är en problematisk princip: *Computer Datorkonfiguration\principer\adminis
 
 ### <a name="disable-the-policy"></a>Inaktivera principen
 
-1. Öppna **Registereditorn**på den virtuella datorn för reparation.
+1. Öppna **Registereditorn** på den virtuella datorn för reparation.
 1. Leta upp nyckeln **HKEY_LOCAL_MACHINE** och välj **fil > läsa in Hive** från menyn.
 
    ![Navigering i Registereditorn för att läsa in en Hive.](./media/vm-unresponsive-applying-audit-configuration-policy/3.png)
@@ -180,6 +183,6 @@ För att lösa det här problemet måste du först samla in minnesdumpen för kr
 
 #### <a name="locate-the-dump-file-and-submit-a-support-ticket"></a>Leta upp dumpfilen och skicka in ett support ärende
 
-1. På den reparera virtuella datorn går du till Windows-mappen på den anslutna OS-disken. Om den driv rutins beteckning som tilldelas till den anslutna OS-disken är märkt som *F*måste du gå till `F:\Windows` .
+1. På den reparera virtuella datorn går du till Windows-mappen på den anslutna OS-disken. Om den driv rutins beteckning som tilldelas till den anslutna OS-disken är märkt som *F* måste du gå till `F:\Windows` .
 1. Leta upp `memory.dmp` filen och skicka sedan [ett support ärende](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) med minnesdumpen.
 1. Om du har problem med att hitta `memory.dmp` filen kan du i stället använda [icke-maskbart avbrott (NMI) i serie konsolen](./serial-console-windows.md#use-the-serial-console-for-nmi-calls) . Följ guiden för att [Generera en kraschdump-fil med NMI-anrop här](/windows/client-management/generate-kernel-or-complete-crash-dump).

@@ -1,12 +1,14 @@
 ---
-ms.openlocfilehash: f0f04db80472785a4e50f8deefb43293b0888c0c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: eb35b21c607eadf0ee16487b7f06c6a1f22982c6
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88691165"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98633476"
 ---
 * Ett Azure-konto som har en aktiv prenumeration. [Skapa ett konto utan kostnad](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) om du inte redan har ett.
+  > [!NOTE]
+  > Du behöver en Azure-prenumeration med behörigheter för att skapa tjänstens huvud namn (**ägar rollen** ger detta). Om du inte har rätt behörighet kan du kontakta konto administratören för att ge dig rätt behörigheter. 
 * [Visual Studio Code](https://code.visualstudio.com/) med följande fil namns tillägg:
     * [Azure IoT-verktyg](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
     * [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python)

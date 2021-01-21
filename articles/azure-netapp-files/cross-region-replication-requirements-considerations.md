@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/16/2020
+ms.date: 01/20/2021
 ms.author: b-juche
-ms.openlocfilehash: 7b664dcd1cb12808960ffacf91c6d02d58632c4e
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 4a4fff18d21ccb0c729ecb1f79df17225c8086bc
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95243145"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632681"
 ---
 # <a name="requirements-and-considerations-for-using-cross-region-replication"></a>Krav och överväganden för att använda replikering över flera regioner 
 
@@ -31,6 +31,7 @@ Observera följande krav och överväganden om hur [du använder replikeringen �
 * Azure NetApp Files replikering är endast tillgänglig i vissa fasta region par. Se de [region par som stöds](cross-region-replication-introduction.md#supported-region-pairs). 
 * SMB-volymer stöds tillsammans med NFS-volymer. Replikering av SMB-volymer kräver en Active Directory anslutning i käll-och mål NetApp-kontona. Målets AD-anslutning måste ha åtkomst till DNS-servrarna eller lägga till domänkontrollanter som kan nås från det delegerade under nätet i mål regionen. Mer information finns i [krav för Active Directory anslutningar](azure-netapp-files-create-volumes-smb.md#requirements-for-active-directory-connections). 
 * Mål kontot måste finnas i en annan region än käll volymens region. Du kan också välja ett befintligt NetApp-konto i en annan region.  
+* Mål volymen för replikeringen är skrivskyddad tills du [växlar över till mål regionen](cross-region-replication-manage-disaster-recovery.md#fail-over-to-destination-volume) för att aktivera mål volymen för läsning och skrivning. 
 * Azure NetApp Files replikering har för närvarande inte stöd för flera prenumerationer. alla replikeringar måste utföras under en enda prenumeration.
 * Du kan ställa in högst fem volymer för replikering inom en enskild prenumeration per region. Du kan öppna ett support ärende för att begära en ökning av standard kvoten för fem mål volymer för replikering (per prenumeration i en region). 
 * Det kan finnas en fördröjning på upp till fem minuter för gränssnittet för att avspegla en nyligen tillagd ögonblicks bild på käll volymen.  
@@ -41,11 +42,11 @@ Observera följande krav och överväganden om hur [du använder replikeringen �
 * Det går inte att återgå till en ögonblicks bild som togs innan mål volymen för replikering skapades.
 
 ## <a name="next-steps"></a>Nästa steg
-* [Skapa volym replikering](cross-region-replication-create-peering.md)
+* [Skapa volymreplikering](cross-region-replication-create-peering.md)
 * [Visa hälsostatus för replikeringsrelation](cross-region-replication-display-health-status.md)
 * [Hantera haveriberedskap](cross-region-replication-manage-disaster-recovery.md)
 * [Mått för volym replikering](azure-netapp-files-metrics.md#replication)
-* [Ta bort volymer eller volymer](cross-region-replication-delete.md)
+* [Ta bort volymreplikeringar eller volymer](cross-region-replication-delete.md)
 * [Felsöka replikering mellan regioner](troubleshoot-cross-region-replication.md)
 
 

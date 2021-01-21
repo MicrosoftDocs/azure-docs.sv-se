@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 09/28/2018
 ms.author: genli
-ms.openlocfilehash: b382efc4d283d64ce0f833bde9104fa2e3bc973a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9a95ddf882e5edba9daa8ff91c02d1df1f50bceb
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87088553"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632984"
 ---
 # <a name="windows-shows-blue-screen-error-when-booting-an-azure-vm"></a>Windows visar blå skärms fel vid start av en virtuell Azure-dator
 I den här artikeln beskrivs blå skärms fel som kan uppstå när du startar en virtuell Windows-dator (VM) i Microsoft Azure. Den innehåller steg som hjälper dig att samla in data för ett support ärende. 
@@ -41,6 +41,9 @@ Det kan finnas flera orsaker till varför du får ett stoppfel. De vanligaste or
 - Ett program får åtkomst till en förbjuden sektor i minnet
 
 ## <a name="collect-memory-dump-file"></a>Samla in minnesdump
+
+> [!TIP]
+> Om du har en ny säkerhets kopia av den virtuella datorn kan du försöka att [återställa den virtuella datorn från säkerhets kopian](../../backup/backup-azure-arm-restore-vms.md) för att åtgärda start problemet.
 
 För att lösa det här problemet måste du först samla in dumpfilen-filen för kraschen och kontakta supporten med dump-filen. Samla in dumpfilen genom att följa dessa steg:
 

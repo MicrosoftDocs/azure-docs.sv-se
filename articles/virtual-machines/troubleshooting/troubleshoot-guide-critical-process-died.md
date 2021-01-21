@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 03/26/2020
 ms.author: v-mibufo
-ms.openlocfilehash: c04f3b27c7214dcf821c7698796bfaea399b947d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8279aee4a0df8155b23e6f984d259bf92555dc95
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86509111"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632841"
 ---
 # <a name="windows-stop-error---0x000000ef-critical-process-died"></a>Windows Stop-fel-#0x000000EF "kritisk process har dött"
 
@@ -38,6 +38,9 @@ Detta beror vanligt vis på att en kritisk system process slutar fungera under s
 ## <a name="solution"></a>Lösning
 
 ### <a name="process-overview"></a>Process översikt:
+
+> [!TIP]
+> Om du har en ny säkerhets kopia av den virtuella datorn kan du försöka att [återställa den virtuella datorn från säkerhets kopian](../../backup/backup-azure-arm-restore-vms.md) för att åtgärda start problemet.
 
 1. Skapa och få åtkomst till en reparations-VM.
 2. Åtgärda eventuella fel i operativ systemet.
@@ -75,7 +78,7 @@ Om problemet kvarstår efter att du kört SFC, krävs analyser av en minnesdumpf
 
 ### <a name="locate-the-dump-file-and-submit-a-support-ticket"></a>Leta upp dumpfilen och skicka in ett support ärende
 
-3. På den reparera virtuella datorn går du till Windows-mappen på den anslutna OS-disken. Om den driv rutins beteckning som är kopplad till den anslutna OS-disken är *F*måste du gå till *F:\Windows*.
+3. På den reparera virtuella datorn går du till Windows-mappen på den anslutna OS-disken. Om den driv rutins beteckning som är kopplad till den anslutna OS-disken är *F* måste du gå till *F:\Windows*.
 4. Leta upp filen *Memory. dmp* och skicka sedan [ett support ärende](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) med minnesdumpen.
 
    > [!NOTE]

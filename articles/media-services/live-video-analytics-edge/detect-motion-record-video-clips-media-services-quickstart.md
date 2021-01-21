@@ -3,12 +3,12 @@ title: Identifiera rörelse, spela in video till Azure Media Services
 description: Den här snabb starten visar hur du använder real tids analys på IoT Edge för att identifiera rörelse i en video ström i real tid och spela in videoklipp i Azure Media Services.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 33deabf27fe9b74fd01dba5d6fbe3883b54dda63
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 15a9def78c7dddda7e63db66d2b21794506f6a92
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060426"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632732"
 ---
 # <a name="quickstart-detect-motion-record-video-to-media-services"></a>Snabb start: identifiera rörelse, spela in video till Media Services
 
@@ -19,6 +19,8 @@ Den här artikeln bygger ovanpå [komma igång snabb start](get-started-detect-m
 ## <a name="prerequisites"></a>Förutsättningar
 
 * Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+  > [!NOTE]
+  > Du behöver en Azure-prenumeration med behörigheter för att skapa tjänstens huvud namn (**ägar rollen** ger detta). Om du inte har rätt behörighet kan du kontakta konto administratören för att ge dig rätt behörigheter. 
 * [Visual Studio Code](https://code.visualstudio.com/) på din dator med [Azure IoT tools-tillägget](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
 * Om du inte har slutfört [komma igång snabb](get-started-detect-motion-emit-events-quickstart.md) starten tidigare går du igenom följande steg:
     * [Ställa in Azure-resurser](get-started-detect-motion-emit-events-quickstart.md#set-up-azure-resources)

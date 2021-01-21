@@ -3,12 +3,12 @@ title: Översikt över Azure Service Bus-meddelanden | Microsoft Docs
 description: Den här artikeln innehåller en översikt över Azure Service Bus, en fullständigt hanterad meddelande Broker för företags integrering.
 ms.topic: overview
 ms.date: 11/20/2020
-ms.openlocfilehash: 70e9d966a14f78866d72865eed4cbb2dfd6c18dd
-ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
+ms.openlocfilehash: d9103557eb7b32f376ba6590bbca5f557bf32764
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97755743"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632875"
 ---
 # <a name="what-is-azure-service-bus"></a>Vad är Azure Service Bus?
 Microsoft Azure Service Bus är en fullständigt hanterad meddelande tjänst för företags meddelanden med meddelande köer och publicera prenumerations ämnen. Service Bus används för att frikoppla program och tjänster från varandra, vilket ger följande fördelar:
@@ -70,7 +70,7 @@ Meddelanden levereras i *pull* -läge och levererar bara meddelanden när de beg
 
 Du kan också använda *ämnen* för att skicka och ta emot meddelanden. Medan en kö oftast används för kommunikation från punkt till punkt är ämnen användbara i scenarier med publicering/prenumeration.
 
-![Ämne](./media/service-bus-messaging-overview/about-service-bus-topic.png)
+![Avsnitt](./media/service-bus-messaging-overview/about-service-bus-topic.png)
 
 Ämnen kan ha flera, oberoende prenumerationer som ansluts till ämnet och fungerar på samma sätt som köer från mottagar sidan. En prenumerant på ett ämne får en kopia av varje meddelande. Prenumerationer kallas entiteter. Prenumerationer är beständiga som standard, men kan konfigureras att förfalla och sedan tas bort automatiskt. Med hjälp av JMS-API Service Bus: et kan du också skapa temporära prenumerationer som finns under anslutningens varaktighet.
 
@@ -138,11 +138,11 @@ För skydd mot oönskad trafik tillhandahåller Service Bus [säkerhetsfunktione
 
 Fullständigt stöd för Service Bus klient bibliotek är tillgängliga via Azure SDK.
 
-- [Azure Service Bus för .NET](/dotnet/api/overview/azure/service-bus?preserve-view=true&view=azure-dotnet)
-- [Azure Service Bus bibliotek för Java](/java/api/overview/azure/servicebus?preserve-view=true&view=azure-java-stable)
+- [Azure Service Bus för .NET](/dotnet/api/overview/azure/service-bus?preserve-view=true)
+- [Azure Service Bus bibliotek för Java](/java/api/overview/azure/servicebus?preserve-view=true)
 - [Azure Service Bus Provider för Java JMS 2,0](how-to-use-java-message-service-20.md)
-- [Azure Service Bus moduler för Java Script och TypeScript](/javascript/api/overview/azure/service-bus?preserve-view=true&view=azure-node-latest)
-- [Azure Service Bus bibliotek för python](/python/api/overview/azure/servicebus?preserve-view=true&view=azure-python)
+- [Azure Service Bus moduler för Java Script och TypeScript](/javascript/api/overview/azure/service-bus?preserve-view=true)
+- [Azure Service Bus bibliotek för python](/python/api/overview/azure/servicebus?preserve-view=true)
 
 [Azure Service Bus primärt protokoll är AMQP 1,0](service-bus-amqp-overview.md) och kan användas från valfri AMQP 1,0-kompatibel protokoll klient. Flera AMQP-klienter med öppen källkod har exempel som tydligt demonstrerar Service Bus samverkan. Granska [AMQP 1,0-protokoll guiden](service-bus-amqp-protocol-guide.md) för att förstå hur du använder Service Bus-funktioner med AMQP 1,0-klienter direkt.
 

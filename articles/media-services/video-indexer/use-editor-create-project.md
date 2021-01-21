@@ -10,16 +10,16 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 11/28/2020
 ms.author: juliako
-ms.openlocfilehash: b25341fb58c1e758d807e3c7b4345fd0ab1baa53
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 07e4b05e12a5994c707a171c5736aea04a9c9723
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98610428"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632934"
 ---
 # <a name="add-video-clips-to-your-projects"></a>Lägga till video klipp i dina projekt
 
-På [video Indexer](https://www.videoindexer.ai/) webbplats kan du använda dina videor med djupgående insikter för att: hitta rätt medie innehåll, hitta de delar som du är intresse rad av och Använd resultatet för att skapa ett helt nytt projekt. 
+På [video Indexer](https://www.videoindexer.ai/) webbplats kan du använda videons djup insikter för att: hitta rätt medie innehåll, leta upp de delar som du är intresse rad av och Använd resultatet för att skapa ett helt nytt projekt. 
 
 När projektet har skapats kan projektet renderas och hämtas från Video Indexer och användas i dina egna redigerings program eller i efterföljande arbets flöden.
 
