@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 06/01/2020
 ms.author: v-miegge
-ms.openlocfilehash: f59903ed111be1fe414f4b3ded250d754c91d323
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 75d1cf8638f922bb0275322568eb1399db4f49e8
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87069148"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98629733"
 ---
 # <a name="troubleshoot-boot-error---disk-read-error-occurred"></a>Felsöka startfel – disk läsnings fel inträffade
 
@@ -33,11 +33,14 @@ När du använder [startdiagnostik](./boot-diagnostics.md) för att Visa skärm 
 
 ## <a name="cause"></a>Orsak
 
-Det här fel meddelandet anger att disk strukturen är skadad och oläslig. Om du använder en virtuell dator i generation 1, är det också möjligt att diskpartitionen som innehåller start konfigurations data inte är **aktive**rad.
+Det här fel meddelandet anger att disk strukturen är skadad och oläslig. Om du använder en virtuell dator i generation 1, är det också möjligt att diskpartitionen som innehåller start konfigurations data inte är **aktive** rad.
 
 ## <a name="solution"></a>Lösning
 
 ### <a name="process-overview"></a>Process översikt
+
+> [!TIP]
+> Om du har en ny säkerhets kopia av den virtuella datorn kan du försöka att [återställa den virtuella datorn från säkerhets kopian](../../backup/backup-azure-arm-restore-vms.md) för att åtgärda start problemet.
 
 1. Skapa och få åtkomst till en reparations-VM.
 1. Välj en lösning:
@@ -80,7 +83,7 @@ Virtuella datorer i generation 1 bör först kontrol lera att den OS-partition s
 
    ![DiskPart-fönstret med utdata från kommandot * * detail partition * *, där partition 1 är inställt på * * Active: Yes * *.](./media/disk-read-error-occurred/5.png)
 
-1. Om partitionen inte är **aktive**rad, anger du **aktiv** för att ändra den aktiva flaggan.
+1. Om partitionen inte är **aktive** rad, anger du **aktiv** för att ändra den aktiva flaggan.
 1. Ange **detaljerad partition** för att kontrol lera att status ändringen har slutförts korrekt och kontrol lera att utdata inkluderar **Active: Ja**. 
 1. Välj **Avsluta** för att stänga DiskPart-verktyget och spara konfigurations ändringarna.
 

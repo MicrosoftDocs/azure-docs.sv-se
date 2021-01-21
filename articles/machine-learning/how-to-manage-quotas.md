@@ -5,17 +5,18 @@ description: Läs om kvoter och begränsningar för resurser för Azure Machine 
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-author: nishankgu
-ms.author: nigup
+ms.reviewer: jmartens
+author: SimranArora904
+ms.author: siarora
 ms.date: 12/1/2020
 ms.topic: conceptual
 ms.custom: troubleshooting,contperf-fy20q4, contperf-fy21q2
-ms.openlocfilehash: 3f08f401f24d95431bcd3bba48976641cebb28e9
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 78cc0aa6beb9ab83fea2039b271b071de1662fc1
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98072215"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98629188"
 ---
 # <a name="manage-and-increase-quotas-for-resources-with-azure-machine-learning"></a>Hantera och öka kvoter för resurser med Azure Machine Learning
 
@@ -123,7 +124,7 @@ Du kan inte höja gränserna för virtuella datorer över värdena som visas i f
 
 Mer information finns i [container instances gränser](../azure-resource-manager/management/azure-subscription-service-limits.md#container-instances-limits).
 
-### <a name="storage"></a>Lagring
+### <a name="storage"></a>Storage
 Azure Storage har en gräns på 250 lagrings konton per region, per prenumeration. Den här gränsen omfattar både standard-och Premium lagrings konton.
 
 Om du vill öka gränsen gör du en begäran via [supporten för Azure](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest/). Azure Storages teamet granskar ditt ärende och kan godkänna upp till 250 lagrings konton för en region.

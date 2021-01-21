@@ -4,12 +4,12 @@ description: Lär dig att anpassa funktionen för autentisering och auktoriserin
 ms.topic: article
 ms.date: 07/08/2020
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 85fd7fdba4c62f4837a419af44c83f7e46cb9e39
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 4f2f43b142b290d29a4a90e504422b6c9ba2739c
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96601789"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98630335"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Avancerad användning av autentisering och auktorisering i Azure App Service
 
@@ -34,7 +34,7 @@ På sidan **autentisering/auktorisering** i Azure Portal konfigurerar du först 
 
 I **åtgärd som ska vidtas när begäran inte autentiseras** väljer du **Tillåt anonyma begär Anden (ingen åtgärd)**.
 
-På inloggnings sidan eller i navigerings fältet eller på någon annan plats i appen lägger du till en inloggnings länk till alla providers som du har aktiverat ( `/.auth/login/<provider>` ). Exempel:
+På inloggnings sidan eller i navigerings fältet eller på någon annan plats i appen lägger du till en inloggnings länk till alla providers som du har aktiverat ( `/.auth/login/<provider>` ). Till exempel:
 
 ```html
 <a href="/.auth/login/aad">Log in with Azure AD</a>
@@ -57,7 +57,7 @@ Om du vill omdirigera användaren efter inloggning till en anpassad URL, använd
 
 I en klient-riktad inloggning loggar programmet in användaren till providern manuellt och skickar sedan autentiseringstoken till App Service för verifiering (se [Authentication Flow](overview-authentication-authorization.md#authentication-flow)). Den här verifieringen ger i själva verket ingen åtkomst till de resurser som behövs, men en lyckad verifiering ger dig en sessionstoken som du kan använda för att få åtkomst till program resurser. 
 
-För att verifiera providerns token måste App Service-appen först konfigureras med önskad Provider. När du har hämtat autentiseringstoken från providern efter att du har hämtat token, kan du ställa in token `/.auth/login/<provider>` för verifiering. Exempel: 
+För att verifiera providerns token måste App Service-appen först konfigureras med önskad Provider. När du har hämtat autentiseringstoken från providern efter att du har hämtat token, kan du ställa in token `/.auth/login/<provider>` för verifiering. Till exempel: 
 
 ```
 POST https://<appname>.azurewebsites.net/.auth/login/aad HTTP/1.1
@@ -88,7 +88,7 @@ Om providerns token verifieras, returnerar API: t med en `authenticationToken` i
 }
 ```
 
-När du har denna sessionstoken kan du komma åt skyddade app-resurser genom att lägga till `X-ZUMO-AUTH` rubriken till dina HTTP-begäranden. Exempel: 
+När du har denna sessionstoken kan du komma åt skyddade app-resurser genom att lägga till `X-ZUMO-AUTH` rubriken till dina HTTP-begäranden. Till exempel: 
 
 ```
 GET https://<appname>.azurewebsites.net/api/products/1
@@ -109,7 +109,7 @@ Här är en enkel utloggningslänk på en webbsida:
 <a href="/.auth/logout">Sign out</a>
 ```
 
-Som standard omdirigerar en lyckad utloggning klienten till URL: en `/.auth/logout/done` . Du kan ändra omdirigerings sidan efter utloggning genom att lägga till `post_logout_redirect_uri` Frågeparametern. Exempel:
+Som standard omdirigerar en lyckad utloggning klienten till URL: en `/.auth/logout/done` . Du kan ändra omdirigerings sidan efter utloggning genom att lägga till `post_logout_redirect_uri` Frågeparametern. Till exempel:
 
 ```
 GET /.auth/logout?post_logout_redirect_uri=/index.html
@@ -271,7 +271,7 @@ För alla Windows-appar kan du definiera behörighets beteendet för IIS-webbser
 
 ### <a name="identity-provider-level"></a>Identitets leverantörs nivå
 
-Identitets leverantören kan ge viss behörighet för att aktivera nycklar. Exempel:
+Identitets leverantören kan ge viss behörighet för att aktivera nycklar. Till exempel:
 
 - För [Azure App Service](configure-authentication-provider-aad.md)kan du [Hantera åtkomst på företags nivå](../active-directory/manage-apps/what-is-access-management.md) direkt i Azure AD. Instruktioner finns i [så här tar du bort en användares åtkomst till ett program](../active-directory/manage-apps/methods-for-removing-user-access.md).
 - Google [-API](configure-authentication-provider-google.md)-projekt som tillhör en [organisation](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy#organizations) kan konfigureras så att de endast tillåter åtkomst till användare i din organisation (se [Google ' **Setting Up The OAuth 2,0** support Page](https://support.google.com/cloud/answer/6158849?hl=en)).
@@ -279,6 +279,150 @@ Identitets leverantören kan ge viss behörighet för att aktivera nycklar. Exem
 ### <a name="application-level"></a>Program nivå
 
 Om någon av de andra nivåerna inte ger dig den auktorisering du behöver, eller om din plattform eller identitets leverantör inte stöds, måste du skriva anpassad kod för att auktorisera användare baserat på [användar anspråk](#access-user-claims).
+
+## <a name="updating-the-configuration-version-preview"></a>Uppdaterar konfigurations versionen (för hands version)
+
+Det finns två versioner av hanterings-API: et för funktionen autentisering/auktorisering. Preview v2-versionen krävs för "Authentication (Preview)"-upplevelsen i Azure Portal. En app som redan använder v1-API: n kan uppgradera till v2-versionen när några ändringar har gjorts. Mer specifikt måste den hemliga konfigurationen flyttas till inställningar för plats-tröga program. Konfigurationen av Microsoft-konto leverantören stöds inte heller i v2.
+
+> [!WARNING]
+> Vid migrering till v2-förhands granskning inaktive ras hanteringen av funktionen App Service autentisering/auktorisering för ditt program via vissa klienter, till exempel dess befintliga upplevelse i Azure Portal, Azure CLI och Azure PowerShell. Detta kan inte ångras. Under för hands versionen uppmuntras inte migrering av produktions arbets belastningar eller stöds. Du bör bara följa stegen i det här avsnittet för test program.
+
+### <a name="moving-secrets-to-application-settings"></a>Flytta hemligheter till program inställningar
+
+1. Hämta din befintliga konfiguration med v1-API: et:
+
+   ```azurecli
+   # For Web Apps
+   az webapp auth show -g <group_name> -n <site_name>
+
+   # For Azure Functions
+   az functionapp auth show -g <group_name> -n <site_name>
+   ```
+
+   I den resulterande JSON-nyttolasten noterar du det hemliga värde som används för varje provider som du har konfigurerat:
+
+   * AAD `clientSecret`
+   * Google `googleClientSecret`
+   * Facebook `facebookAppSecret`
+   * Twitter `twitterConsumerSecret`
+   * Microsoft-konto: `microsoftAccountClientSecret`
+
+   > [!IMPORTANT]
+   > De hemliga värdena är viktiga säkerhets referenser och bör hanteras noggrant. Dela inte dessa värden eller spara dem på en lokal dator.
+
+1. Skapa inställningar för plats för tröga program för varje hemligt värde. Du kan välja namnet på varje program inställning. Värdet måste matcha det du fick i föregående steg eller [referera till en Key Vault hemlighet](./app-service-key-vault-references.md?toc=/azure/azure-functions/toc.json) som du har skapat med det värdet.
+
+   Om du vill skapa inställningen kan du använda Azure Portal eller köra en variant av följande för varje provider:
+
+   ```azurecli
+   # For Web Apps, Google example    
+   az webapp config appsettings set -g <group_name> -n <site_name> --slot-settings GOOGLE_PROVIDER_AUTHENTICATION_SECRET=<value_from_previous_step>
+
+   # For Azure Functions, Twitter example
+   az functionapp config appsettings set -g <group_name> -n <site_name> --slot-settings TWITTER_PROVIDER_AUTHENTICATION_SECRET=<value_from_previous_step>
+   ```
+
+   > [!NOTE]
+   > Program inställningarna för den här konfigurationen ska markeras som plats-tröghet, vilket innebär att de inte flyttas mellan miljöer under en [plats växlings åtgärd](./deploy-staging-slots.md). Detta beror på att din konfiguration av autentisering är kopplad till miljön. 
+
+1. Skapa en ny JSON-fil med namnet `authsettings.json` . Ta de utdata du fick tidigare och ta bort varje hemligt värde från det. Skriv återstående utdata till filen och se till att ingen hemlighet ingår. I vissa fall kan konfigurationen ha matriser som innehåller tomma strängar. Se till att `microsoftAccountOAuthScopes` inte, och om det gör det, så ändra värdet till `null` .
+
+1. Lägg till en egenskap som `authsettings.json` pekar på det program inställnings namn som du skapade tidigare för varje provider:
+ 
+   * AAD `clientSecretSettingName`
+   * Google `googleClientSecretSettingName`
+   * Facebook `facebookAppSecretSettingName`
+   * Twitter `twitterConsumerSecretSettingName`
+   * Microsoft-konto: `microsoftAccountClientSecretSettingName`
+
+   En exempel fil efter den här åtgärden kan se ut ungefär så här, i det här fallet endast konfigurerad för AAD:
+
+   ```json
+   {
+       "id": "/subscriptions/00d563f8-5b89-4c6a-bcec-c1b9f6d607e0/resourceGroups/myresourcegroup/providers/Microsoft.Web/sites/mywebapp/config/authsettings",
+       "name": "authsettings",
+       "type": "Microsoft.Web/sites/config",
+       "location": "Central US",
+       "properties": {
+           "enabled": true,
+           "runtimeVersion": "~1",
+           "unauthenticatedClientAction": "AllowAnonymous",
+           "tokenStoreEnabled": true,
+           "allowedExternalRedirectUrls": null,
+           "defaultProvider": "AzureActiveDirectory",
+           "clientId": "3197c8ed-2470-480a-8fae-58c25558ac9b",
+           "clientSecret": null,
+           "clientSecretSettingName": "MICROSOFT_IDENTITY_AUTHENTICATION_SECRET",
+           "clientSecretCertificateThumbprint": null,
+           "issuer": "https://sts.windows.net/0b2ef922-672a-4707-9643-9a5726eec524/",
+           "allowedAudiences": [
+               "https://mywebapp.azurewebsites.net"
+           ],
+           "additionalLoginParams": null,
+           "isAadAutoProvisioned": true,
+           "aadClaimsAuthorization": null,
+           "googleClientId": null,
+           "googleClientSecret": null,
+           "googleClientSecretSettingName": null,
+           "googleOAuthScopes": null,
+           "facebookAppId": null,
+           "facebookAppSecret": null,
+           "facebookAppSecretSettingName": null,
+           "facebookOAuthScopes": null,
+           "gitHubClientId": null,
+           "gitHubClientSecret": null,
+           "gitHubClientSecretSettingName": null,
+           "gitHubOAuthScopes": null,
+           "twitterConsumerKey": null,
+           "twitterConsumerSecret": null,
+           "twitterConsumerSecretSettingName": null,
+           "microsoftAccountClientId": null,
+           "microsoftAccountClientSecret": null,
+           "microsoftAccountClientSecretSettingName": null,
+           "microsoftAccountOAuthScopes": null,
+           "isAuthFromFile": "false"
+       }   
+   }
+   ```
+
+1. Skicka den här filen som den nya autentiserings-/auktoriserings konfigurationen för din app:
+
+   ```azurecli
+   az rest --method PUT --url "/subscriptions/<subscription_id>/resourceGroups/<group_name>/providers/Microsoft.Web/sites/<site_name>/config/authsettings?api-version=2020-06-01" --body @./authsettings.json
+   ```
+
+1. Kontrol lera att din app fortfarande fungerar som förväntat efter den här gesten.
+
+1. Ta bort filen som användes i föregående steg.
+
+Du har nu migrerat appen för att lagra identitets leverantörs hemligheter som program inställningar.
+
+### <a name="support-for-microsoft-account-registrations"></a>Stöd för Microsoft-konto registreringar
+
+V2-API: t stöder för närvarande inte Microsoft-konto som en distinkt Provider. I stället utnyttjar den konvergerade [Microsoft Identity Platform](../active-directory/develop/v2-overview.md) för inloggning av användare med personliga Microsoft-konton. När du växlar till v2 API, används v1 Azure Active Directory-konfigurationen för att konfigurera Microsoft Identity Platform-providern.
+
+Om din befintliga konfiguration innehåller en Microsoft-Provider och inte innehåller en Azure Active Directory-Provider kan du växla konfigurationen till Azure Active Directory-providern och sedan utföra migreringen. Gör så här:
+
+1. Gå till [**Appregistreringar**](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) i Azure Portal och hitta registreringen som är kopplad till din Microsoft-tjänstleverantör. Det kan finnas i rubriken "program från personligt konto".
+1. Gå till sidan "autentisering" för registreringen. Under "omdirigerings-URI: er" bör du se en post som slutar på `/.auth/login/microsoftaccount/callback` . Kopiera denna URI.
+1. Lägg till en ny URI som matchar den som du precis kopierat, förutom att den är i stället `/.auth/login/aad/callback` . Detta gör att registreringen kan användas av App Service autentiserings-/auktoriserings konfiguration.
+1. Navigera till App Service autentiserings-/auktoriserings konfiguration för din app.
+1. Samla in konfigurationen för Microsoft-konto leverantören.
+1. Konfigurera Azure Active Directory-providern med hjälp av hanterings läget Avancerat, och ange de klient-ID och klient hemlighets värden som du samlade in i föregående steg. Använd use `<authentication-endpoint>/<tenant-id>/v2.0` och Ersätt *\<authentication-endpoint>* med [slut punkten för autentiseringen för din moln miljö](../active-directory/develop/authentication-national-cloud.md#azure-ad-authentication-endpoints) (t. ex. " https://login.microsoftonline.com " för Global Azure) och Ersätt *\<tenant-id>* med din **katalog (klient) ID**"för utfärdar-URL: en.
+1. När du har sparat konfigurationen testar du inloggnings flödet genom att navigera i webbläsaren till `/.auth/login/aad` slut punkten på platsen och slutföra inloggnings flödet.
+1. Nu har du kopierat konfigurationen till, men den befintliga konfigurationen av Microsoft-providern finns kvar. Innan du tar bort den måste du kontrol lera att alla delar av appen refererar Azure Active Directory-providern via inloggnings länkar osv. Kontrol lera att alla delar av din app fungerar som förväntat.
+1. När du har verifierat att saker fungerar mot AAD Azure Active Directory-providern kan du ta bort konfigurationen av Microsoft-providern.
+
+Vissa appar kan redan ha separata registreringar för Azure Active Directory-och Microsoft-konto. Dessa appar kan inte migreras just nu. 
+
+> [!WARNING]
+> Det är möjligt att konvergera de två registreringarna genom att ändra de [konto typer som stöds](../active-directory/develop/supported-accounts-validation.md) för AAD-appens registrering. Detta kan dock medföra ett nytt medgivande för användare av Microsoft-konto, och dessa användares identitets anspråk kan skilja sig åt i strukturen, `sub` särskilt när du ändrar värden eftersom ett nytt app-ID används. Den här metoden rekommenderas inte om den inte är grundligt förstått. Du bör istället vänta på stöd för de två registreringarna i v2 API-ytan.
+
+### <a name="switching-to-v2"></a>Växlar till v2
+
+När ovanstående steg har utförts navigerar du till appen i Azure Portal. Välj avsnittet "Authentication (för hands version)". 
+
+Du kan också göra en begäran-begäran mot `config/authsettingsv2` resursen under plats resursen. Schemat för nytto lasten är detsamma som det fångas i avsnittet [Konfigurera användning av en fil](#config-file) .
 
 ## <a name="configure-using-a-file-preview"></a><a name="config-file"> </a>Konfigurera med hjälp av en fil (förhands granskning)
 

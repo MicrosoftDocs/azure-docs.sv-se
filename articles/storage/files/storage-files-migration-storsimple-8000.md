@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 08ed07adbfe0fc4b22d8a3d0afcfc9ab1312dba4
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 76a244810042adf3cec64b15fe847c5b684527c2
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98134355"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98631192"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>StorSimple 8100 och 8600-migrering till Azure File Sync
 
@@ -160,7 +160,7 @@ Du har möjlighet att välja Premium Storage (SSD) för Azure-filresurser eller 
 
 Är du fortfarande osäker?
 
-* Välj Premium Storage om du behöver [prestanda för en Premium Azure-filresurs](understanding-billing.md#provisioned-billing).
+* Välj Premium Storage om du behöver [prestanda för en Premium Azure-filresurs](understanding-billing.md#provisioned-model).
 * Välj standard lagring för generella fil Server arbets belastningar som innehåller data och Arkiv data. Välj också standard lagring om den enda arbets belastningen på resursen i molnet ska Azure File Sync.
 
 #### <a name="account-kind"></a>Typ av konto

@@ -8,12 +8,12 @@ ms.date: 10/06/2020
 ms.topic: reference
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a082ccb62103ab5bd027bf49b9ee05bc48c63115
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 2878d682d0f2025a50f26baf87476f66aa236e2c
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91979677"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98630624"
 ---
 # <a name="powershell-scripts-for-iot-edge-on-windows"></a>PowerShell-skript för IoT Edge i Windows
 
@@ -61,11 +61,11 @@ Kommandot Initialize-IoTEdge konfigurerar IoT Edge med enhetens anslutnings str�
 
 | Parameter | Godkända värden | Kommentarer |
 | --------- | --------------- | -------- |
-| **ManualConnectionString** | Ingen | **Växlings parameter**. **Standardvärde**. Om ingen etablerings typ anges är manuell etablering med en anslutnings sträng standardvärdet.<br><br>Deklarerar att du kommer att ange en enhets anslutnings sträng för att etablera enheten manuellt. |
-| **ManualX509** | Ingen | **Växlings parameter**. Om ingen etablerings typ anges är manuell etablering med en anslutnings sträng standardvärdet.<br><br>Deklarerar att du får ett identitets certifikat och en privat nyckel för att etablera enheten manuellt.
-| **DpsTpm** | Ingen | **Växlings parameter**. Om ingen etablerings typ anges är manuell etablering med en anslutnings sträng standardvärdet.<br><br>Förklarar att du kommer att tillhandahålla ett omfångs-ID för enhets etablerings tjänsten (DPS) och din enhets registrerings-ID för att etablera genom DPS.  |
-| **DpsSymmetricKey** | Ingen | **Växlings parameter**. Om ingen etablerings typ anges är manuell etablering med en anslutnings sträng standardvärdet.<br><br>Förklarar att du kommer att tillhandahålla ett omfångs-ID för enhets etablerings tjänsten (DPS) och din enhets registrerings-ID för att etablera genom DPS, tillsammans med en symmetrisk nyckel för attestering. |
-| **DpsX509** | Ingen | **Växlings parameter**. Om ingen etablerings typ anges är manuell etablering med en anslutnings sträng standardvärdet.<br><br>Förklarar att du kommer att tillhandahålla ett omfångs-ID för enhets etablerings tjänsten (DPS) och din enhets registrerings-ID för att etablera via DPS, tillsammans med ett X. 509-identitets certifikat och en privat nyckel för attestering.  |
+| **ManualConnectionString** | Inget | **Växlings parameter**. **Standardvärde**. Om ingen etablerings typ anges är manuell etablering med en anslutnings sträng standardvärdet.<br><br>Deklarerar att du kommer att ange en enhets anslutnings sträng för att etablera enheten manuellt. |
+| **ManualX509** | Inget | **Växlings parameter**. Om ingen etablerings typ anges är manuell etablering med en anslutnings sträng standardvärdet.<br><br>Deklarerar att du får ett identitets certifikat och en privat nyckel för att etablera enheten manuellt.
+| **DpsTpm** | Inget | **Växlings parameter**. Om ingen etablerings typ anges är manuell etablering med en anslutnings sträng standardvärdet.<br><br>Förklarar att du kommer att tillhandahålla ett omfångs-ID för enhets etablerings tjänsten (DPS) och din enhets registrerings-ID för att etablera genom DPS.  |
+| **DpsSymmetricKey** | Inget | **Växlings parameter**. Om ingen etablerings typ anges är manuell etablering med en anslutnings sträng standardvärdet.<br><br>Förklarar att du kommer att tillhandahålla ett omfångs-ID för enhets etablerings tjänsten (DPS) och din enhets registrerings-ID för att etablera genom DPS, tillsammans med en symmetrisk nyckel för attestering. |
+| **DpsX509** | Inget | **Växlings parameter**. Om ingen etablerings typ anges är manuell etablering med en anslutnings sträng standardvärdet.<br><br>Förklarar att du kommer att tillhandahålla ett omfångs-ID för enhets etablerings tjänsten (DPS) och din enhets registrerings-ID för att etablera via DPS, tillsammans med ett X. 509-identitets certifikat och en privat nyckel för attestering.  |
 | **DeviceConnectionString** | En anslutnings sträng från en IoT Edge enhet som är registrerad i en IoT Hub, med enkla citat tecken | **Krävs** för manuell etablering med en anslutnings sträng. Om du inte anger någon anslutnings sträng i skript parametrarna uppmanas du att ange en. |
 | **IotHubHostName** | Värdnamn för den IoT-hubb som en enhet ansluter till. | **Krävs** för manuell etablering med X. 509-certifikat. Använder formatet *{Hub Name}. Azure-Devices.net*. |
 | **DeviceId** | Enhets-ID: t från en registrerad enhets identitet i IoT Hub. | **Krävs** för manuell etablering med X. 509-certifikat. |
@@ -96,13 +96,11 @@ Kommandot Initialize-IoTEdge konfigurerar IoT Edge med enhetens anslutnings str�
 
 | Parameter | Godkända värden | Kommentarer |
 | --------- | --------------- | -------- |
-| **Inför** | inget | Den här flaggan tvingar avinstallationen om det tidigare försöket att avinstallera misslyckades.
+| **Force** | inget | Den här flaggan tvingar avinstallationen om det tidigare försöket att avinstallera misslyckades.
 | **RestartIfNeeded** | inget | Den här flaggan gör att avinstallations skriptet kan starta om datorn utan att begära det om det behövs. |
 
 ## <a name="next-steps"></a>Nästa steg
 
-Lär dig hur du använder dessa kommandon i följande artiklar:
+Lär dig hur du använder dessa kommandon i följande artikel:
 
-* [Installera eller avinstallera Azure IoT Edge runtime](how-to-install-iot-edge.md)
-* [Etablera en Azure IoT Edge enhet med autentisering med symmetrisk nyckel](how-to-manual-provision-symmetric-key.md)
-* [Etablera en Azure IoT Edge enhet med autentisering med X. 509-certifikat](how-to-manual-provision-x509.md)
+* [Installera eller avinstallera Azure IoT Edge för Windows](how-to-install-iot-edge-windows-on-windows.md)

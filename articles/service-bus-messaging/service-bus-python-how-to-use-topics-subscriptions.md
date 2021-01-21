@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 11/18/2020
 ms.author: spelluru
 ms.custom: devx-track-python
-ms.openlocfilehash: 43f633e427e20cfb0b044bd42b77f866e4cc0c61
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 4eba3ea055e78888d482927fa6eed5c7d41fa0ba
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96489419"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98630055"
 ---
 # <a name="send-messages-to-an-azure-service-bus-topic-and-receive-messages-from-subscriptions-to-the-topic-python"></a>Skicka meddelanden till ett Azure Service Bus ämne och ta emot meddelanden från prenumerationer på ämnet (python)
 Den här artikeln visar hur du använder python för att skicka meddelanden till ett Service Bus ämne och ta emot meddelanden från en prenumeration på avsnittet. 
@@ -217,4 +217,4 @@ Se följande dokumentation och exempel:
 - [Exempel](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/servicebus/azure-servicebus/samples). 
     - Mappen **sync_samples** innehåller exempel som visar hur du interagerar med Service Bus på ett synkront sätt. I den här snabb starten använde du den här metoden. 
     - Mappen **async_samples** innehåller exempel som visar hur du interagerar med Service Bus på ett asynkront sätt. 
-- [dokumentation om Azure-Service Bus-referens](/python/api/azure-servicebus/azure.servicebus?preserve-view=true&view=azure-python-preview)
+- [dokumentation om Azure-Service Bus-referens](/python/api/azure-servicebus/azure.servicebus?preserve-view=true)

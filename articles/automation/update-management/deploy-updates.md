@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 12/09/2020
 ms.topic: conceptual
-ms.openlocfilehash: 62793e0551c914b77310a0e9b72fea31ec621848
-ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
+ms.openlocfilehash: 1b5ced7038f692046d1ce4ba2f4599cae3962510
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97683385"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632469"
 ---
 # <a name="how-to-deploy-updates-and-review-results"></a>Så här distribuerar du uppdateringar och granskar resultat
 
@@ -146,4 +146,5 @@ Välj **Fel** om du vill se detaljerad information om fel som uppstått vid dist
 
 ## <a name="next-steps"></a>Nästa steg
 
-Information om hur du skapar aviseringar för att meddela dig om uppdaterings distributions resultat finns i [skapa aviseringar för uppdateringshantering](configure-alerts.md).
+* Information om hur du skapar aviseringar för att meddela dig om uppdaterings distributions resultat finns i [skapa aviseringar för uppdateringshantering](configure-alerts.md).
+* Information om hur du felsöker allmänna Uppdateringshantering fel finns i [felsöka uppdateringshantering problem](../troubleshoot/update-management.md).

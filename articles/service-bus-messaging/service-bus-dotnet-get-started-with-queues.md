@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.tgt_pltfrm: dotnet
 ms.date: 11/13/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f55af61a061bf3a3897569058aace728f7465b64
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: ec3f53e6f69614028c013efa5f0e6852cbc3f8ae
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96862130"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98631648"
 ---
 # <a name="send-messages-to-and-receive-messages-from-azure-service-bus-queues-net"></a>Skicka meddelanden till och ta emot meddelanden från Azure Service Bus köer (.NET)
 I den här självstudien skapar du ett .NET Core-konsolprogram för att skicka meddelanden till och ta emot meddelanden från en Service Bus kö med hjälp av **Azure. Messaging. Service Bus** -paketet. 
@@ -142,7 +142,7 @@ Starta Visual Studio och skapa ett nytt **konsol program (.net Core)-** projekt 
             }
         }
     ```
-1. Ersätt `Main()` metoden med följande async- **async** `Main` metod. Den anropar både sändnings metoder för att skicka ett enda meddelande och en batch med meddelanden till kön. 
+1. Ersätt `Main()` metoden med följande async-  `Main` metod. Den anropar både sändnings metoder för att skicka ett enda meddelande och en batch med meddelanden till kön. 
 
     ```csharp
         static async Task Main()
@@ -240,7 +240,7 @@ I det här avsnittet ska du lägga till kod för att hämta meddelanden från k�
         }
     ```
 
-## <a name="run-the-app"></a>Köra appen
+## <a name="run-the-app"></a>Kör appen
 Kör appen. Vänta en minut och tryck sedan på valfri tangent för att sluta ta emot meddelanden. Du bör se följande utdata (blank steg för nyckeln). 
 
 ```console
@@ -272,4 +272,4 @@ Se följande dokumentation och exempel:
 
 - [Azure Service Bus klient bibliotek för .NET – viktigt](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/servicebus/Azure.Messaging.ServiceBus)
 - [Exempel på GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/servicebus/Azure.Messaging.ServiceBus/samples)
-- [.NET API-referens](/dotnet/api/azure.messaging.servicebus?preserve-view=true&view=azure-dotnet-preview)
+- [.NET API-referens](/dotnet/api/azure.messaging.servicebus?preserve-view=true)

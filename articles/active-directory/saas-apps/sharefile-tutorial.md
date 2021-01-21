@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/21/2020
+ms.date: 01/18/2021
 ms.author: jeedes
-ms.openlocfilehash: d7cafdcbbf44f3f501d54c13d1b4549c446ed8c8
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: ebd07990767d91c88f245b4ed7f8a66f93de0b85
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97724008"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98631425"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-citrix-sharefile"></a>Självstudie: Azure Active Directory integrering med Citrix ShareFile
 
@@ -31,8 +31,8 @@ Du får följande fördelar när du integrerar Citrix ShareFile med Azure AD:
 
 För att kunna konfigurera Azure AD-integrering med Citrix ShareFile behöver du följande:
 
-* En Azure AD-prenumeration. Om du inte har någon Azure AD-miljö kan du hämta en månads utvärderingsversion [här](https://azure.microsoft.com/pricing/free-trial/)
-* Citrix ShareFile-prenumeration med enkel inloggning aktiverat
+* En Azure AD-prenumeration. Om du inte har en Azure AD-miljö kan du få en månads utvärderings version [här](https://azure.microsoft.com/pricing/free-trial/).
+* Citrix ShareFile-aktiverad prenumeration för enkel inloggning.
 
 ## <a name="scenario-description"></a>Scenariobeskrivning
 
@@ -126,7 +126,7 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 1. På sidan Översikt för appen letar du reda på avsnittet **Hantera** och väljer **användare och grupper**.
 1. Välj **Lägg till användare** och välj sedan **användare och grupper** i dialog rutan **Lägg till tilldelning** .
 1. I dialog rutan **användare och grupper** väljer du **B. Simon** från listan användare och klickar sedan på knappen **Välj** längst ned på skärmen.
-Om du förväntar dig att en roll ska tilldelas användarna kan du välja den från List rutan **Välj en roll** . Om ingen roll har kon figurer ATS för den här appen ser du rollen "standard åtkomst" vald.
+1. Om du förväntar dig att en roll ska tilldelas användarna kan du välja den från List rutan **Välj en roll** . Om ingen roll har kon figurer ATS för den här appen ser du rollen "standard åtkomst" vald.
 1. Klicka på knappen **tilldela** i dialog rutan **Lägg till tilldelning** .
 
 ## <a name="configure-citrix-sharefile-sso"></a>Konfigurera Citrix ShareFile SSO
@@ -141,7 +141,7 @@ Om du förväntar dig att en roll ska tilldelas användarna kan du välja den fr
 
 3. Om du vill konfigurera Citrix ShareFile manuellt i ett annat webbläsarfönster loggar du in på din Citrix ShareFile företags plats som administratör.
 
-1. I **instrument panelen** klickar du på **Inställningar** och väljer **Administratörs inställningar**
+1. I **instrument panelen** klickar du på **Inställningar** och väljer **Administratörs inställningar**.
 
     ![Administration](./media/sharefile-tutorial/settings.png)
 
@@ -165,7 +165,9 @@ Om du förväntar dig att en roll ska tilldelas användarna kan du välja den fr
     
     f. I text rutan **Logga ut URL** klistrar du in värdet för den **utloggnings-URL** som du har kopierat från Azure Portal.
 
-5. Klicka på **Spara** på Citrix ShareFile-hanteringsportalen.
+    ex. I de **valfria inställningarna** väljer du **SP-initierat auth-kontext** som **användar namn och lösen ord** och **exakt**.
+
+5. Klicka på **Spara**.
 
 ## <a name="create-citrix-sharefile-test-user"></a>Skapa Citrix ShareFile-testanvändare
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/20/2021
 ms.author: yelevin
-ms.openlocfilehash: 9700e5d9179f7c1e33b2371eea89be9bb1c8d08f
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: e84484990725b0c39b132aead51e9b01dbb7e7ef
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 01/21/2021
-ms.locfileid: "98621370"
+ms.locfileid: "98632299"
 ---
 # <a name="connect-data-from-azure-active-directory-azure-ad"></a>Anslut data från Azure Active Directory (Azure AD)
 
@@ -28,7 +28,7 @@ Du kan använda Azure Sentinels inbyggda koppling för att samla in data från [
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Du måste ha en [Azure AD Premium P2](https://azure.microsoft.com/pricing/details/active-directory/) -prenumeration för att mata in inloggnings loggar i Azure Sentinel. Ytterligare per GB-kostnader kan tillkomma för Azure Monitor (Log Analytics) och Azure Sentinel.
+- Alla Azure AD-licenser (ledig/O365/P1/P2) räcker för att mata in inloggnings loggar i Azure Sentinel. Ytterligare per GB-kostnader kan tillkomma för Azure Monitor (Log Analytics) och Azure Sentinel.
 
 - Användaren måste tilldelas rollen Azure Sentinel Contributor på arbets ytan.
 
@@ -42,11 +42,27 @@ Du kan använda Azure Sentinels inbyggda koppling för att samla in data från [
 
 1. I data kopplings galleriet väljer du **Azure Active Directory** och väljer sedan **Öppna kopplings sida**.
 
-1. Markera kryss rutorna bredvid de loggar som du vill strömma till Azure Sentinel och klicka på **Anslut**.
+1. Markera kryss rutorna bredvid de logg typer som du vill strömma till i Azure Sentinel och klicka på **Anslut**. Detta är de logg typer som du kan välja mellan:
 
-1. Du kan välja om du vill att aviseringarna från Azure AD automatiskt ska generera incidenter i Azure Sentinel. Under **skapa incidenter** väljer du **Aktivera** för att aktivera standard analys regeln som skapar incidenter automatiskt från aviseringar som genereras i den anslutna säkerhets tjänsten. Du kan sedan redigera den här regeln under **analys** och sedan **aktiva regler**.
+    - Inloggningsloggar
+    - Granskningsloggar
+    - Inloggnings loggar för icke-interaktiva användare
+    - Inloggnings loggar för tjänstens huvud namn
+    - Inloggnings loggar för hanterade identiteter
+    - Etableringsloggar
 
-1. Om du vill använda det relevanta schemat i Log Analytics för att skicka frågor till Azure AD-aviseringar skriver du `SigninLogs` eller `AuditLogs` i frågefönstret.
+## <a name="find-your-data"></a>Hitta dina data
+
+När en lyckad anslutning har upprättats visas data i **loggarna** under avsnittet **LogManagement** i följande tabeller:
+
+- `SigninLogs`
+- `AuditLogs`
+- `AADNonInteractiveUserSignInLogs`
+- `AADServicePrincipalSignInLogs`
+- `AADManagedIdentitySignInLogs`
+- `AADProvisioningLogs`
+
+Om du vill fråga Azure AD-loggarna anger du det relevanta tabell namnet överst i frågefönstret.
 
 ## <a name="next-steps"></a>Nästa steg
 I det här dokumentet har du lärt dig hur du ansluter Azure Active Directory till Azure Sentinel. Mer information om Azure Sentinel finns i följande artiklar:

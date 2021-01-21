@@ -3,12 +3,12 @@ title: Kom igång med live video analys på IoT Edge – Azure
 description: Den här snabb starten visar hur du kommer igång med live video analys på IoT Edge. Lär dig hur du identifierar rörelser i en video ström i real tid.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 276c2ceaa9e0bef254c70f91541a3a3db7c02d47
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: cbe4b1280897064938222680fc932cfe289d2f32
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060409"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98631944"
 ---
 # <a name="quickstart-get-started---live-video-analytics-on-iot-edge"></a>Snabb start: kom igång – direktsända video analyser på IoT Edge
 
@@ -26,6 +26,10 @@ Du kan visa följande video med detaljerade anvisningar om hur du kommer igång 
 ## <a name="prerequisites"></a>Förutsättningar
 
 * Ett Azure-konto som har en aktiv prenumeration. [Skapa ett konto utan kostnad](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) om du inte redan har ett.
+
+  > [!NOTE]
+  > Du behöver en Azure-prenumeration med behörigheter för att skapa tjänstens huvud namn (**ägar rollen** ger detta). Om du inte har rätt behörighet kan du kontakta konto administratören för att ge dig rätt behörigheter.  
+
 * [Visual Studio Code](https://code.visualstudio.com/) på din utvecklings dator. Kontrol lera att du har [tillägget Azure IoT-verktyg](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
 * Kontrol lera att nätverket som utvecklings datorn är anslutet till tillåter avancerat protokoll för meddelandekö (AMQP) via port 5671. Med den här inställningen kan Azure IoT-verktyg kommunicera med Azure IoT Hub.
 
@@ -43,7 +47,7 @@ I den här självstudien krävs följande Azure-resurser:
 
 I den här snabb starten rekommenderar vi att du använder [installations skriptet Live Video Analytics-resurser](https://github.com/Azure/live-video-analytics/tree/master/edge/setup) för att distribuera de nödvändiga resurserna i din Azure-prenumeration. Det gör du på följande sätt:
 
-1. Gå till [Azure Portal](https://portal.azure.com) och välj Cloud Shell-ikonen.
+1. Gå till [Azure Portal](https://portal.azure.com) och välj ikonen Cloud Shell.
 1. Om du använder Cloud Shell för första gången uppmanas du att välja en prenumeration för att skapa ett lagrings konto och en Microsoft Azure fil resurs. Välj **skapa lagring** för att skapa ett lagrings konto för din Cloud Shell sessionsinformation. Det här lagrings kontot är skilt från kontot som skriptet skapar för användning med ditt Azure Media Services-konto.
 1. I den nedrullningsbara menyn på vänster sida av Cloud Shells fönstret väljer du **bash** som din miljö.
 
@@ -85,7 +89,7 @@ Nu distribueras modulerna, men inga medie diagram är aktiva.
 Följ dessa anvisningar för att ansluta till din IoT Hub med hjälp av tillägget Azure IoT-verktyg.
 
 1. Öppna fliken **tillägg** i Visual Studio Code (eller tryck på Ctrl + Shift + X) och Sök efter Azure-IoT Hub.
-1. Högerklicka och välj **Inställningar för tillägg**.
+1. Högerklicka och välj Inställningar för **tillägg**.
 
     > [!div class="mx-imgBorder"]
     > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="Tilläggs inställningar":::

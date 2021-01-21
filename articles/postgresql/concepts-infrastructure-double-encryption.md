@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 6/30/2020
-ms.openlocfilehash: 03d52611c89012d1132b4a27820f7f47e6cdd512
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 83635b732318a4ada76d1d71c1ce419cae8b35e9
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242032"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98630154"
 ---
 # <a name="azure-database-for-postgresql-infrastructure-double-encryption"></a>Azure Database for PostgreSQL infrastruktur Double Encryption
 
@@ -59,12 +59,6 @@ De krypterings funktioner som tillhandahålls av Azure Database for PostgreSQL k
 För Azure Database for PostgreSQL har stöd för infrastruktur med dubbel kryptering med hjälp av tjänstens hanterade nycklar följande begränsningar:
 
 * Stöd för den här funktionen är begränsat till **generell användning** och **minnesoptimerade pris nivåer** .
-* Du kan skapa en Azure Database for PostgreSQL med dubbel kryptering med infrastruktur aktiverat i följande regioner:
-
-   * East US
-   * USA, södra centrala
-   * USA, västra 2
-   
 * Den här funktionen stöds bara i regioner och servrar som har stöd för lagring upp till 16 TB. För en lista över Azure-regioner som stöder lagring upp till 16 TB, se [lagrings dokumentationen](concepts-pricing-tiers.md#storage).
 
     > [!NOTE]

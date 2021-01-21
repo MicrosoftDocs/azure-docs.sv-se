@@ -7,16 +7,28 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/20/2020
-ms.openlocfilehash: 986bc5ef24855ac0014975edc0a26a11a82ec6ca
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: ca75416a66bcf2c90028c7f1dc11fbe23a9a9bd9
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97510970"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98631375"
 ---
 # <a name="common-errors"></a>Vanliga fel
 
 Azure Database for MySQL är en fullständigt hanterad tjänst som drivs av community-versionen av MySQL. MySQL-upplevelsen i en hanterad tjänst miljö kan skilja sig från att köra MySQL i din egen miljö. I den här artikeln visas några vanliga fel som användarna kan stöta på när de migrerar till eller utvecklar Azure Database for MySQL tjänsten för första gången.
+
+## <a name="common-connection-errors"></a>Vanliga anslutnings fel
+
+#### <a name="error-1184-08s01-aborted-connection-22-to-db-db-name-user-user-host-hostip-init_connect-command-failed"></a>FEL 1184 (08S01): avbruten anslutning 22 till DB: "DB-Name" User: ' User ' Host: ' hostIP ' (init_connect kommando misslyckades)
+Ovanstående fel inträffar efter lyckad inloggning men innan ett kommando körs när sessionen har upprättats. Ovanstående meddelande anger att du har angett ett felaktigt värde för init_connect Server parametern, vilket gör att sessionen inte kan initieras.
+
+Det finns vissa Server parametrar som require_secure_transport som inte stöds på sessionstillståndet och som därför försöker ändra värdena för dessa parametrar med hjälp av init_connect kan resultera i fel 1184 vid anslutning till MySQL-servern enligt nedan
+
+MySQL> Visa databaser; FEL 2006 (HY000): MySQL-servern har borta ingen anslutning. Försöker återansluta... Anslutnings-ID: 64897 aktuell databas: * * * ingen * * _ fel 1184 (08S01): avbruten anslutning 22 till DB: ' DB-Name ' User: ' User ' värd: ' hostIP ' (init_connect kommando misslyckades)
+
+_ *Resolution**: du bör återställa init_connect värde på fliken Server parametrar i Azure Portal och bara ange de Server parametrar som stöds med hjälp av init_connect-parameter. 
+
 
 ## <a name="errors-due-to-lack-of-super-privilege-and-dba-role"></a>Fel på grund av brist på SUPER-privilegium och DBA-roll
 

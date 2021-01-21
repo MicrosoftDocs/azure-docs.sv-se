@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 07/06/2020
 ms.author: Zhchia
-ms.openlocfilehash: d374043235d6c09243ea5ecdacccf141a2d4f8b4
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 143c1a183ba697cbf5d9b19d7e0868a638650bc8
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96181356"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632020"
 ---
 # <a name="tutorial-configure-webroot-security-awareness-training-for-automatic-user-provisioning"></a>Självstudie: Konfigurera säkerhets medvetenhets utbildning för Webroot för automatisk användar etablering
 
@@ -120,7 +120,8 @@ Det här avsnittet vägleder dig genom stegen för att konfigurera Azure AD Prov
 
    |Attribut|Typ|Stöds för filtrering|
    |---|---|---|
-   |externalId|Sträng|&check;|
+   |userName|Sträng|&check;|
+   |externalId|Sträng|
    |name.givenName|Sträng|
    |name.familyName|Sträng|
    |emails[type eq "work"].value|Sträng|

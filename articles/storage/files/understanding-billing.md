@@ -4,22 +4,22 @@ description: Lär dig hur du tolkar fakturerings modellerna etablerade och betal
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/1/2020
+ms.date: 01/20/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 880ec90ce1cf0efffce0cfd6800bdbaed23f8dd0
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.openlocfilehash: 19ecbea70d9cb6b8cc31c72ed3c1294cd137ce93
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97831473"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632486"
 ---
 # <a name="understanding-azure-files-billing"></a>Förstå Azure Files fakturering
 Azure Files innehåller två olika fakturerings modeller: etablerade och betala per användning. Den etablerade modellen är bara tillgänglig för Premium-filresurser, vilket är fil resurser som distribueras i **FileStorage** -lagrings kontots typ. Modellen för att betala per användning är bara tillgänglig för standard fil resurser, vilket är fil resurser som distribueras i GPv2-lagrings konto typen **(General Purpose version 2)** . I den här artikeln beskrivs hur båda modellerna fungerar för att hjälpa dig att förstå din månatliga Azure Files faktura.
 
 Du hittar den aktuella prissättningen för Azure Files på [prissättnings sidan för Azure Files](https://azure.microsoft.com/pricing/details/storage/files/).
 
-## <a name="provisioned-billing"></a>Etablerade fakturor
+## <a name="provisioned-model"></a>Etablerad modell
 Azure Files använder en etablerad modell för Premium-filresurser. I en etablerad affärs modell anger du proaktivt till den Azure Files tjänst som dina lagrings krav är, i stället för att faktureras baserat på vad du använder. Detta liknar att köpa maskin vara lokalt, i det här fallet när du etablerar en Azure-filresurs med en viss lagrings mängd, betalar du för lagringen oavsett om du använder den eller inte, precis som du inte börjar betala kostnaden för fysiska medier lokalt när du börjar använda utrymmet. Till skillnad från att köpa fysiska media lokalt kan etablerade fil resurser dynamiskt skalas upp eller ned beroende på dina egenskaper för lagring och IO-prestanda.
 
 När du etablerar en Premium fil resurs anger du hur många GiBs din arbets belastning kräver. Varje GiB som du etablerar ger dig ytterligare IOPS och data flöde enligt ett fast förhållande. Förutom de bas linje-IOPS som du garanterar är det möjligt att varje Premium-filresurs stöder burst-skydd på bästa möjliga sätt. Formlerna för IOPS och data flöde är följande:
@@ -63,7 +63,7 @@ Dela krediter har tre tillstånd:
 
 Nya fil resurser börjar med det fullständiga antalet krediter i sin burst-Bucket. Burst-krediter kommer inte att periodiseras om resursens IOPS sjunker under bas linje IOPS på grund av begränsning av servern.
 
-## <a name="pay-as-you-go-billing"></a>Betala per användning-fakturering
+## <a name="pay-as-you-go-model"></a>Betala per användning-modell
 Azure Files använder en affärs modell enligt principen betala per användning för standard fil resurser. I en affärs modell enligt principen betala per användning bestäms det belopp du betalar efter hur mycket du faktiskt använder, i stället för baserat på en etablerad mängd. På hög nivå betalar du en kostnad för den mängd data som lagras på disk och sedan en ytterligare uppsättning transaktioner baserat på din användning av dessa data. En modell enligt principen betala per användning kan vara kostnads effektiv eftersom du inte behöver överetablera för framtida tillväxt-eller prestanda krav eller avetablera om din arbets belastning varierar över tid. Å andra sidan kan en modell enligt principen betala per användning också vara svår att planera som en del av en budget process, eftersom fakturerings modellen betala per användning drivs av slut användar förbrukning.
 
 ### <a name="differences-in-standard-tiers"></a>Skillnader på standard nivåer

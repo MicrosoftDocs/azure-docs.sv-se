@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 11/18/2020
 ms.author: spelluru
 ms.custom: seo-python-october2019, devx-track-python
-ms.openlocfilehash: 7275e33e44c20ece6eb7d620e2c1e8032be41a7b
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 0553062032a58ec9eb9cf3c474ee7c8f19fc544d
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498667"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98631563"
 ---
 # <a name="send-messages-to-and-receive-messages-from-azure-service-bus-queues-python"></a>Skicka meddelanden till och ta emot meddelanden från Azure Service Bus köer (python)
 Den här artikeln visar hur du använder python för att skicka meddelanden till och ta emot meddelanden från Azure Service Bus köer. 
@@ -208,4 +208,4 @@ Se följande dokumentation och exempel:
 - [Exempel](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/servicebus/azure-servicebus/samples). 
     - Mappen **sync_samples** innehåller exempel som visar hur du interagerar med Service Bus på ett synkront sätt. I den här snabb starten använde du den här metoden. 
     - Mappen **async_samples** innehåller exempel som visar hur du interagerar med Service Bus på ett asynkront sätt. 
-- [dokumentation om Azure-Service Bus-referens](/python/api/azure-servicebus/azure.servicebus?preserve-view=true&view=azure-python-preview)
+- [dokumentation om Azure-Service Bus-referens](/python/api/azure-servicebus/azure.servicebus?preserve-view=true)

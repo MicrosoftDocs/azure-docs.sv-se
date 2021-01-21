@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/03/2020
 ms.author: v-miegge
-ms.openlocfilehash: e58e349d7b7385ec913986c39462c17deadcb61d
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 22db9c7966b6f988ca0ea799104275f3f86c77ea
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91969610"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98629580"
 ---
 # <a name="windows-boot-manager-error---0xc0000428-status-invalid-image-hash"></a>Fel i Windows Boot Manager-0xC0000428 status ogiltigt bild-hash
 
@@ -65,6 +65,9 @@ Du kan inte förlänga utgångsdatumet för en förhandsversionsavbildning. När
 - I Azure innehåller alla avbildningar för Windows som är för hands versioner en anteckning om att de inte är avsedda för produktion och att de endast är tillgängliga för användning under en angiven utvärderings period eller som en "för hands version".
 
 ## <a name="solution"></a>Lösning
+
+> [!TIP]
+> Om du har en ny säkerhets kopia av den virtuella datorn kan du försöka att [återställa den virtuella datorn från säkerhets kopian](../../backup/backup-azure-arm-restore-vms.md) för att åtgärda start problemet.
 
 Om avbildningen är en förhands gransknings bild finns det inget sätt att förlänga förfallo datumet för den använda avbildningen. du måste [distribuera en ny virtuell dator](../windows/quick-create-portal.md) med en icke-förhands gransknings avbildning. Stegen nedan hjälper dig att identifiera om du har använt en förhands gransknings avbildning och ger resurser som hjälper dig att överföra data från den här virtuella datorn till en ny virtuell dator. Om du har identifierat avbildningen som en förhands gransknings bild går det inte att återställa bilden eftersom den nu har gått ut.
 

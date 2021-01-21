@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/08/2020
 ms.author: v-miegge
-ms.openlocfilehash: 4f181a6dee7ed182150bd0cad2b51690b6c77d7a
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 6c139398182ca9d875de0d3b21c58afe503bd8a5
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963133"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632282"
 ---
 # <a name="vm-is-unresponsive-while-applying-default-domain-controllers-policy"></a>Den virtuella datorn svarar inte när standardpolicyn för domänkontrollanter tillämpas
 
@@ -37,6 +37,9 @@ När du använder [startdiagnostik](./boot-diagnostics.md) för att Visa skärm 
 Det här problemet kan bero på att nya ändringar har gjorts i standard principen för domänkontrollanter. Annars måste en fil analys av minnesdumpen utföras för att fastställa rotor saken.
 
 ## <a name="solution"></a>Lösning
+
+> [!TIP]
+> Om du har en ny säkerhets kopia av den virtuella datorn kan du försöka att [återställa den virtuella datorn från säkerhets kopian](../../backup/backup-azure-arm-restore-vms.md) för att åtgärda start problemet.
 
 Om du nyligen har gjort ändringar i standard principen för domänkontrollanter, kanske du vill ångra ändringarna för att åtgärda problemet. Om du inte är säker på vad som orsakar problemet kan du samla in en minnesdump och sedan skicka ett support ärende.
 

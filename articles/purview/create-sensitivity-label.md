@@ -6,13 +6,13 @@ ms.author: bagol
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 12/03/2020
-ms.openlocfilehash: 003a71f962652b1a1436f5d9875835534090a77a
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.date: 01/19/2021
+ms.openlocfilehash: b376883ab7d8ef0ffd57a271e74862b684788ebd
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98196596"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98630284"
 ---
 # <a name="automatically-label-your-data-in-azure-purview"></a>Etikettera data automatiskt i Azure avdelningens kontroll
 
@@ -32,10 +32,9 @@ I avdelningens kontroll liknar klassificeringarna ämnes koder och används för
 
 Avdelningens kontroll använder samma klassificeringar, även kallade känsliga informations typer, som Microsoft 365.  MIP känslighets etiketter skapas i Microsoft 365 Security and Compliance Center (SCC). På så sätt kan du utöka dina befintliga känslighets etiketter i dina Azure avdelningens kontroll-tillgångar.
 
-> [!NOTE]
-> Klassificeringar matchas direkt, till exempel en social security number, som har en klassificering av **person nummer**. 
->
-> Känslighets etiketter tillämpas däremot när en eller flera klassificeringar och villkor hittas tillsammans. I det här sammanhanget refererar [villkoren](/microsoft-365/compliance/apply-sensitivity-label-automatically) till alla parametrar som du kan definiera för ostrukturerade data, till exempel **närhet till en annan klassificering** och **% konfidensgrad**. 
+**Klassificeringar** matchas direkt, till exempel en social Security Number, som har en klassificering av **person nummer**. 
+
+**Känslighets etiketter** tillämpas däremot när en eller flera klassificeringar och villkor hittas tillsammans. I det här sammanhanget refererar [villkoren](/microsoft-365/compliance/apply-sensitivity-label-automatically) till alla parametrar som du kan definiera för ostrukturerade data, till exempel *närhet till en annan klassificering* och *% konfidensgrad*. 
 
 Känslighets etiketter i Azure avdelningens kontroll kan användas för att automatiskt tillämpa etiketter på filer och databas kolumner.
 
@@ -44,6 +43,7 @@ Mer information finns i:
 - [Lär dig mer om känslighets etiketter](/microsoft-365/compliance/sensitivity-labels) i Microsoft 365-dokumentationen
 - [Vad är etiketterade regler?](#what-are-autolabeling-rules)
 - [Data typer som stöds för känslighets etiketter i Azure avdelningens kontroll](#supported-data-types-for-sensitivity-labels-in-azure-purview)
+- [Etiketter för SQL Database-kolumner](#labeling-for-sql-database-columns)
 
 #### <a name="what-are-autolabeling-rules"></a>Vad är etiketterade regler?
 
@@ -54,7 +54,6 @@ Regler för automärkning är villkor som du anger, och anger när en viss etike
 När du skapar etiketter ska du se till att definiera regler för automatisk etikett för både [filer](#define-autolabeling-rules-for-files) och [databas kolumner](#define-autolabeling-rules-for-database-columns) för att automatiskt tillämpa dina etiketter med varje data genomsökning. 
 
 När du har skannat dina data i avdelningens kontroll kan du visa etiketterna som används automatiskt i avdelningens kontroll-katalogen och Insight-rapporter.
-
 #### <a name="supported-data-types-for-sensitivity-labels-in-azure-purview"></a>Data typer som stöds för känslighets etiketter i Azure avdelningens kontroll
 
 Känslighets etiketter stöds i Azure dataavdelningens kontrolls för följande data typer:
@@ -62,8 +61,16 @@ Känslighets etiketter stöds i Azure dataavdelningens kontrolls för följande 
 |Datatyp  |Källor  |
 |---------|---------|
 |Automatisk etikettering för filer     |     – Azure Blob Storage  </br>-Azure Data Lake Storage gen 1 och gen 2  |
-|Automatisk etikettering för databas kolumner     |  – SQL Server </br>– Azure SQL Database </br>-Azure SQL Database Hanterad instans   <br> – Azure-Synapse  <br>-Azure Cosmos DB   |
+|Automatisk etikettering för databas kolumner     |  – SQL Server </br>– Azure SQL Database </br>-Azure SQL Database Hanterad instans   <br> – Azure-Synapse  <br>-Azure Cosmos DB <br><br>Mer information finns i [kolumn etiketter för SQL Database](#labeling-for-sql-database-columns) nedan.  |
 | | |
+
+#### <a name="labeling-for-sql-database-columns"></a>Etiketter för SQL Database-kolumner
+
+Förutom avdelningens kontroll-etiketter för databas kolumner, stöder Microsoft också etiketter för SQL Database-kolumner med SQL data-klassificeringen i [SQL Server Management Studio (SSMS)](/sql/ssms/sql-server-management-studio-ssms). När avdelningens kontroll använder globala [MIP](/microsoft-365/compliance/sensitivity-labels), använder SSMS endast etiketter som definierats lokalt.
+
+Märkning i avdelningens kontroll och märkning i SSMS är separata processer som inte interagerar med varandra. Därför visas inte etiketter som används i SSMS i avdelningens kontroll och vice versa. Vi rekommenderar Azure-avdelningens kontroll för att märka SQL-databaser, eftersom den använder globala MIP-etiketter som kan tillämpas på flera plattformar.
+
+Mer information finns i dokumentationen för [SQL data Discovery och klassificering](/sql/relational-databases/security/sql-data-discovery-and-classification).
 
 ## <a name="how-to-create-sensitivity-labels-in-microsoft-365"></a>Så här skapar du känslighets etiketter i Microsoft 365
 
@@ -86,7 +93,7 @@ Som standard är MIP känslighets etiketter bara tillgängliga för till gångar
 
 Om du vill använda MIP-känslighets etiketter på Azure-resurser i Azure avdelningens kontroll måste du uttryckligen godkänna att utöka etiketterna och välja de etiketter som du vill ska vara tillgängliga i avdelningens kontroll.
 
-Genom att utöka MIPs känslighets etiketter med Azure avdelningens kontroll kan organisationer nu identifiera, klassificera och få insikt i känsliga data källor, vilket minimerar kompatibiliteten.
+Genom att utöka MIPs känslighets etiketter med Azure avdelningens kontroll kan organisationer nu upptäcka, klassificera och få inblick i känsligheten i ett bredare utbud av data källor, vilket minimerar kompatibiliteten.
 
 > [!NOTE]
 > Eftersom Microsoft 365 och Azure avdelningens kontroll är separata tjänster, finns det en risk att de distribueras i olika regioner. Etikett namn och namn på anpassade känsliga informations typer anses vara kund information och bevaras inom samma geografiska plats som standard för att skydda känsligheten hos dina data och för att undvika GDPR lagar.
@@ -97,7 +104,7 @@ Genom att utöka MIPs känslighets etiketter med Azure avdelningens kontroll kan
 
 I Microsoft 365 går du till **Information Protection** sidan. I rutan **utöka etiketter till till gångar i Azure avdelningens kontroll** väljer du knappen **slå på** och väljer sedan **Ja** i den bekräftelse dialog ruta som visas.
 
-Exempel:
+Till exempel:
 
 :::image type="content" source="media/create-sensitivity-label/extend-sensitivity-labels-to-purview-small.png" alt-text="Välj * * Aktivera * * för att utöka känslighets etiketter till avdelningens kontroll" lightbox="media/create-sensitivity-label/extend-sensitivity-labels-to-purview.png":::
  
@@ -123,7 +130,7 @@ När du har utökat etiketter till till gångar i Azure avdelningens kontroll ka
 
     Mer information om alternativ i guiden finns i [vilka känslighets etiketter som kan](/microsoft-365/compliance/sensitivity-labels#what-sensitivity-labels-can-do) användas i Microsoft 365-dokumentationen.
 
-1. Upprepa stegen ovan för att skapa ytterligare etiketter. 
+1. Upprepa stegen ovan för att skapa fler etiketter. 
 
     Om du vill skapa en underordnad etikett väljer du den överordnade etiketten > **...**  >  **Fler åtgärder**  >  **Lägg till under etikett**.
 
@@ -155,7 +162,7 @@ Definiera regler för automärkning av filer i guiden när du skapar eller redig
 
 På sidan **Auto-Labeling för Office-appar** aktiverar du **Automatisk etikettering för Office-appar** och definierar sedan de villkor där du vill att etiketten automatiskt ska tillämpas på dina data.
 
-Exempel:
+Till exempel:
 
 :::image type="content" source="media/create-sensitivity-label/create-auto-labeling-rules-files-small.png" alt-text="Definiera regler för automärkning för filer i Microsoft 365 Security and Compliance Center" lightbox="media/create-sensitivity-label/create-auto-labeling-rules-files.png":::
  
@@ -171,7 +178,7 @@ Under alternativet **Azure avdelningens kontroll-tillgångar (för hands version
 
 1. Välj **kontrol lera känsliga informations typer** för att välja de känsliga informations typer som du vill använda för din etikett.
 
-Exempel:
+Till exempel:
         
 :::image type="content" source="media/create-sensitivity-label/create-auto-labeling-rules-db-columns-small.png" alt-text="Definiera regler för automärkning för SQL-kolumner i Microsoft 365 Security and Compliance Center" lightbox="media/create-sensitivity-label/create-auto-labeling-rules-db-columns.png":::
 
@@ -194,11 +201,11 @@ När du har definierat regler för automatisk etikett för dina etiketter i Micr
 
 **Så här visar du etiketter som används för dina till gångar i Azure avdelningens kontroll-katalogen:**
 
-I Azure avdelningens kontroll-katalogen använder du **etikett** filtrerings alternativ för att endast visa filer med vissa etiketter. Exempel: 
+I Azure avdelningens kontroll-katalogen använder du **etikett** filtrerings alternativ för att endast visa filer med vissa etiketter. Till exempel: 
 
 :::image type="content" source="media/create-sensitivity-label/filter-search-results-small.png" alt-text="Sök efter till gångar efter etikett" lightbox="media/create-sensitivity-label/filter-search-results.png":::
 
-Exempel:
+Till exempel:
 
 :::image type="content" source="media/create-sensitivity-label/view-labeled-files-blob-storage-small.png" alt-text="Visa en känslighets etikett för en fil i din Azure-Blob Storage" lightbox="media/create-sensitivity-label/view-labeled-files-blob-storage.png":::
 

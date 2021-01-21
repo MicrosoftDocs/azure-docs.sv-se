@@ -6,12 +6,12 @@ ms.date: 11/04/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 98499961f55b55b15687d5742b4d593e3d461e49
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 397c650d1d7a593a855c8f26e61dbf12ec6360fa
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 01/21/2021
-ms.locfileid: "98625338"
+ms.locfileid: "98631329"
 ---
 # <a name="configuration-options---azure-monitor-application-insights-for-java"></a>Konfigurations alternativ – Azure Monitor Application Insights för Java
 
@@ -296,7 +296,9 @@ Om ditt program ligger bakom en brand vägg och inte kan ansluta direkt till App
 }
 ```
 
-[//]: # "Observera att inte annonsera stöd för opentelemetri förrän vi har stöd för 0.10.0, som har enorma ändringar från 0.9.0"
+Application Insights Java 3,0 respekterar också den globala `-Dhttps.proxyHost` och `-Dhttps.proxyPort` om de är inställda.
+
+[//]: # "Obs! opentelemetri-stöd finns i privat för hands version tills opentelemetri-API: n når 1,0"
 
 [//]: # "# # Stöd för opentelemetri API pre-1,0-versioner"
 
@@ -343,6 +345,8 @@ Som standard loggar Application Insights Java 3,0 på nivå `INFO` till både fi
 `maxSizeMb` är logg filens Max storlek innan den slås samman.
 
 `maxHistory` är antalet upplyft över loggfiler som bevaras (utöver den aktuella logg filen).
+
+Från och med version 3.0.2 kan du också ställa in själv diagnostik `level` med miljövariabeln `APPLICATIONINSIGHTS_SELF_DIAGNOSTICS_LEVEL` .
 
 ## <a name="an-example"></a>Ett exempel
 

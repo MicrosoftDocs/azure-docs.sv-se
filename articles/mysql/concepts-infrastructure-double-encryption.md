@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/30/2020
-ms.openlocfilehash: 233dcbeee0bccc714e3b4fe93e7c8b19aa9f2df0
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: e9182a2a0b88f85af5305f5794fec2ffe7935701
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242457"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98631741"
 ---
 # <a name="azure-database-for-mysql-infrastructure-double-encryption"></a>Azure Database for MySQL infrastruktur Double Encryption
 
@@ -20,7 +20,7 @@ Azure Database for MySQL använder lagrings [kryptering av data i vila](concepts
 Infrastrukturens dubbla kryptering lägger till ett andra lager av kryptering med hjälp av tjänstens hanterade nycklar. Den använder FIPS 140-2-verifierade kryptografiska modulen, men med en annan krypteringsalgoritm. Detta ger ytterligare ett skydds lager för dina data i vila. Den nyckel som används i infrastrukturens dubbla kryptering hanteras också av tjänsten Azure Database for MySQL. Infrastruktur Double Encryption är inte aktiverat som standard eftersom det ytterligare lagret av kryptering kan påverka prestandan.
 
 > [!NOTE]
-> Den här funktionen stöds bara för pris nivåer för "Generell användning" och "Minnesoptimerade" i Azure Database for PostgreSQL.
+> Den här funktionen stöds bara för pris nivåer för "Generell användning" och "Minnesoptimerade" i Azure Database for MySQL.
 
 Kryptering av infrastruktur lager har fördelen att implementeras på det lager som ligger närmast lagrings enheten eller nätverks kabeln. Azure Database for MySQL implementerar två krypterings lager med hjälp av tjänstens hanterade nycklar. Även om det fortfarande är tekniskt i tjänst lagret, är det mycket nära maskin vara som lagrar data i vila. Du kan även aktivera data kryptering i vila med hjälp av [kund Managed Key](concepts-data-encryption-mysql.md) för den etablerade MySQL-servern. 
 
@@ -59,13 +59,7 @@ De krypterings funktioner som tillhandahålls av Azure Database for MySQL kan an
 För Azure Database for MySQL har stöd för infrastruktur med dubbel kryptering med hjälp av tjänstens hanterade nycklar följande begränsningar:
 
 * Stöd för den här funktionen är begränsat till **generell användning** och **minnesoptimerade pris nivåer** .
-* Du kan skapa en Azure Database for MySQL med infrastruktur kryptering aktive rad i följande regioner:
-
-   * East US
-   * USA, södra centrala
-   * USA, västra 2
-   
-* * Den här funktionen stöds bara i regioner och servrar som har stöd för lagring upp till 16 TB. För en lista över Azure-regioner som stöder lagring upp till 16 TB, se [lagrings dokumentationen](concepts-pricing-tiers.md#storage).
+* Den här funktionen stöds bara i regioner och servrar som har stöd för lagring upp till 16 TB. För en lista över Azure-regioner som stöder lagring upp till 16 TB, se [lagrings dokumentationen](concepts-pricing-tiers.md#storage).
 
     > [!NOTE]
     > - Alla **nya** MySQL-servrar som skapats i de regioner som anges ovan har även stöd för data kryptering med kund Manager-nycklar. I det här fallet kvalificeras inte servrar som skapats genom återställning av tidpunkt (PITR) eller Läs repliker som "nya".

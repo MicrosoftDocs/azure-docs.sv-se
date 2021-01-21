@@ -1,5 +1,5 @@
 ---
-title: Azure-tjänster som stöder Tillgänglighetszoner
+title: Azure-tjänster som har stöd för tillgänglighetszoner
 description: Om du vill skapa hög tillgängliga och elastiska program i Azure kan Tillgänglighetszoner tillhandahålla fysiskt åtskilda platser som du kan använda för att köra dina resurser.
 author: cynthn
 ms.service: azure
@@ -7,14 +7,14 @@ ms.topic: article
 ms.date: 12/17/2020
 ms.author: cynthn
 ms.custom: fasttrack-edit, mvc, references_regions
-ms.openlocfilehash: 0365a60317538ba31f39928cd30a57e2c969c832
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: ea21a56249c8eaa7c6b329b755e96b21b91ebaa1
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97723051"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632316"
 ---
-# <a name="azure-services-that-support-availability-zones"></a>Azure-tjänster som stöder Tillgänglighetszoner
+# <a name="azure-services-that-support-availability-zones"></a>Azure-tjänster som har stöd för tillgänglighetszoner
 
 Tillgänglighetszoner är ett erbjudande med hög tillgänglighet som skyddar dina program och data från data Center problem. En lista över befintliga och kommande regioner som stöder Tillgänglighetszoner finns i [regioner och Tillgänglighetszoner i Azure](az-overview.md).  
 
@@ -95,7 +95,7 @@ För att uppnå omfattande affärs kontinuitet i Azure kan du bygga din program 
 
 ## <a name="europe"></a>Europa
 
-| **Produkter** | **Frankrike, centrala** | **Norra Europa** | **Storbritannien, södra** | **Europa, västra** |
+| **Produkter** | **Frankrike, centrala** | **Europa, norra** | **Storbritannien, södra** | **Europa, västra** |
 |--|--|--|--|--|
 | **Beräkning** |  |  |  |  |
 | [App Service miljöer (ILB)](../app-service/environment/zone-redundancy.md#how-to-deploy-an-app-service-environment-in-an-availability-zone) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
@@ -124,7 +124,7 @@ För att uppnå omfattande affärs kontinuitet i Azure kan du bygga din program 
 | [Azure-datautforskaren](/azure/data-explorer/create-cluster-database-portal) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | [Azure Database for MySQL-flexibel Server](../mysql/flexible-server/concepts-high-availability.md) | röntgen | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | [Azure Database for PostgreSQL-flexibel Server](../postgresql/flexible-server/overview.md) | röntgen | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure SQL Database (Generell användning nivå)](../azure-sql/database/high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview) | röntgen | : heavy_check_mark: (förhands granskning) | röntgen | : heavy_check_mark: (förhands granskning) |
+| [Azure SQL Database (Generell användning nivå)](../azure-sql/database/high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview) | : heavy_check_mark: (förhands granskning) | : heavy_check_mark: (förhands granskning) | röntgen | : heavy_check_mark: (förhands granskning) |
 | [Azure SQL Database (Premium & Affärskritisk nivåer)](../azure-sql/database/high-availability-sla.md#premium-and-business-critical-service-tier-zone-redundant-availability) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | **Analys** |  |  |  |  |
 | [Event Hubs](../event-hubs/index.yml) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
@@ -169,7 +169,7 @@ För att uppnå omfattande affärs kontinuitet i Azure kan du bygga din program 
 | [Azure-datautforskaren](/azure/data-explorer/create-cluster-database-portal) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | [Azure Database for MySQL-flexibel Server](../mysql/flexible-server/concepts-high-availability.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | [Azure Database for PostgreSQL-flexibel Server](../postgresql/flexible-server/overview.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure SQL Database (Generell användning nivå)](../azure-sql/database/high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview) | röntgen | : heavy_check_mark: (förhands granskning) | : heavy_check_mark: (förhands granskning) |
+| [Azure SQL Database (Generell användning nivå)](../azure-sql/database/high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview) | : heavy_check_mark: (förhands granskning) | : heavy_check_mark: (förhands granskning) | : heavy_check_mark: (förhands granskning) |
 | [Azure SQL Database (Premium & Affärskritisk nivåer)](../azure-sql/database/high-availability-sla.md#premium-and-business-critical-service-tier-zone-redundant-availability) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | **Analys** |  |  |  |
 | [Event Hubs](../event-hubs/index.yml) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |

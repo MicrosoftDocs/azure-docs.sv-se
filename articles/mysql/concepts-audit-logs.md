@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/24/2020
-ms.openlocfilehash: aac8e6e04b8bac7a1d27fefc780fb9fadb3122dc
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: fa845e7c402073a64f51d75b1da51f56142eee2e
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94534185"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98630510"
 ---
 # <a name="audit-logs-in-azure-database-for-mysql"></a>Gransknings loggar i Azure Database for MySQL
 
@@ -43,7 +43,7 @@ Andra parametrar som du kan justera är:
 | `DCL` | Frågor som "beviljande behörighet" |
 | `ADMIN` | Frågor som "Visa STATUS" |
 | `GENERAL` | Alla i DML_SELECT, DML_NONSELECT, DML, DDL, DCL och ADMIN |
-| `TABLE_ACCESS` | – Endast tillgängligt för MySQL 5,7 <br> – Läs instruktioner för tabell, t. ex. SELECT eller INSERT INTO... SELECT <br> – Tabell borttagnings instruktioner, till exempel ta bort eller TRUNCATE TABLE <br> – Infoga uttryck för tabeller, till exempel infoga eller Ersätt <br> – Tabell uppdaterings instruktioner, till exempel uppdatering |
+| `TABLE_ACCESS` | – Tillgängligt för MySQL 5,7 och MySQL 8,0 <br> – Läs instruktioner för tabell, t. ex. SELECT eller INSERT INTO... SELECT <br> – Tabell borttagnings instruktioner, till exempel ta bort eller TRUNCATE TABLE <br> – Infoga uttryck för tabeller, till exempel infoga eller Ersätt <br> – Tabell uppdaterings instruktioner, till exempel uppdatering |
 
 ## <a name="access-audit-logs"></a>Åtkomst till granskningsloggar
 

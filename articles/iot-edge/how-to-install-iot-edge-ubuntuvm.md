@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: pdecarlo
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: d14ef742c19556a9df2bd193a54bfaa1672d5964
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 0e044e8102308fce4145d4aa6c887cefaa99be34
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92044232"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98629970"
 ---
 # <a name="run-azure-iot-edge-on-ubuntu-virtual-machines"></a>Kör Azure IoT Edge på Ubuntu Virtual Machines
 
@@ -50,7 +50,7 @@ Vid den första starten installerar Ubuntu 18,04 LTS Virtual Machine [den senast
 
     **Admin-användar namn**: ett användar namn som kommer att tillhandahålla rot behörigheter för distribution.
 
-    **Enhets anslutnings sträng**: en [enhets anslutnings sträng](./how-to-manual-provision-symmetric-key.md) för en enhet som har skapats i den avsedda [IoT Hub](../iot-hub/about-iot-hub.md).
+    **Enhets anslutnings sträng**: en [enhets anslutnings sträng](./how-to-register-device.md) för en enhet som har skapats i den avsedda [IoT Hub](../iot-hub/about-iot-hub.md).
 
     **VM-storlek**: [storleken](../cloud-services/cloud-services-sizes-specs.md) på den virtuella dator som ska distribueras
 

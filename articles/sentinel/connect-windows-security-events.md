@@ -1,6 +1,6 @@
 ---
 title: Anslut Windows säkerhets händelse data till Azure Sentinel | Microsoft Docs
-description: Lär dig att använda anslutnings verktyget för säkerhets händelser för att strömma alla säkerhets händelser från dina Windows-system till Azure Sentinel-arbetsytan. 
+description: Lär dig att använda anslutnings verktyget för säkerhets händelser för att strömma alla säkerhets händelser från dina Windows-system till Azure Sentinel-arbetsytan.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/16/2020
 ms.author: yelevin
-ms.openlocfilehash: a16afcafa03ef2ab8642316db560e30a473a526b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 226d5a46482d6611fdecf214d040fc27af9ac586
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90883709"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632054"
 ---
 # <a name="connect-windows-security-events"></a>Ansluta till Windows säkerhetshändelser 
 
@@ -52,20 +52,20 @@ Med Security Events Connector kan du strömma alla säkerhets händelser från d
 
 Samla in säkerhets händelser i Windows i Azure Sentinel:
 
-1. Välj **data kopplingar**på navigerings menyn i Azure Sentinel. I listan över anslutningar, klickar du på **säkerhets händelser**och sedan på knappen **Öppna kopplings sidan** längst ned till höger. Följ sedan anvisningarna på skärmen på fliken **instruktioner** , enligt beskrivningen i resten av det här avsnittet.
+1. Välj **data kopplingar** på navigerings menyn i Azure Sentinel. I listan över anslutningar, klickar du på **säkerhets händelser** och sedan på knappen **Öppna kopplings sidan** längst ned till höger. Följ sedan anvisningarna på skärmen på fliken **instruktioner** , enligt beskrivningen i resten av det här avsnittet.
 
-1. Kontrol lera att du har rätt behörigheter enligt beskrivningen i **krav**.
+1. Kontrol lera att du har rätt behörigheter enligt beskrivningen i avsnittet **krav** på kopplings sidan.
 
 1. Ladda ned och installera [Log Analytics-agenten](../azure-monitor/platform/log-analytics-agent.md) (kallas även Microsoft Monitoring Agent eller MMA) på de datorer som du vill strömma säkerhets händelser till i Azure Sentinel.
 
     För Azure-Virtual Machines:
     
-    1. Klicka på **Installera agent på Azures virtuella Windows-dator**och sedan på länken som visas nedan.
+    1. Klicka på **Installera agent på Azures virtuella Windows-dator** och sedan på länken som visas nedan.
     1. För varje virtuell dator som du vill ansluta klickar du på namnet i listan som visas till höger och klickar sedan på **Anslut**.
 
     För Windows-datorer som inte är Azure-datorer (fysisk, virtuell lokal eller virtuell i ett annat moln):
 
-    1. Klicka på **Installera agent på en Windows-dator som inte är Azure**och sedan på länken som visas nedan.
+    1. Klicka på **Installera agent på en Windows-dator som inte är Azure** och sedan på länken som visas nedan.
     1. Klicka på lämpliga nedladdnings länkar som visas till höger under Windows- **datorer**.
     1. Med hjälp av den hämtade körbara filen installerar du agenten på de Windows-system som du väljer och konfigurerar den med hjälp av **arbets ytans ID och nycklar** som visas under de nedladdnings länkar som anges ovan.
 
@@ -73,9 +73,9 @@ Samla in säkerhets händelser i Windows i Azure Sentinel:
     >
     > Om du vill tillåta att Windows-system utan nödvändig Internet anslutning ändå strömma händelser till Azure Sentinel, laddar du ned och installerar **OMS-gatewayen** på en annan dator med hjälp av länken längst ned till höger, för att fungera som en proxy.  Du måste fortfarande installera Log Analytics-agenten på varje Windows-system vars händelser du vill samla in.
     >
-    > Mer information om det här scenariot finns i [dokumentationen för **Log Analytics Gateway** ](../azure-monitor/platform/gateway.md).
+    > Mer information om det här scenariot finns i [dokumentationen för **Log Analytics Gateway**](../azure-monitor/platform/gateway.md).
 
-    Ytterligare information om installation och ytterligare information finns i dokumentationen till [ **Log Analytics agent** ](../azure-monitor/platform/agent-windows.md).
+    Ytterligare information om installation och ytterligare information finns i dokumentationen till [ **Log Analytics agent**](../azure-monitor/platform/agent-windows.md).
 
 1. Välj vilken händelse uppsättning ([alla, vanliga eller minimala](#event-sets)) som du vill strömma.
 
@@ -106,7 +106,7 @@ Azure Sentinel kan använda Machine Learning (ML) till säkerhets händelse data
 
 1. Du måste samla in RDP-inloggnings data (händelse-ID 4624) via data anslutnings tjänsten för **säkerhets händelser** . Kontrol lera att du har valt en [händelse som har angetts](#event-sets) förutom "ingen" för att strömma till Azure Sentinel.
 
-1. Klicka på **analys**på Azure Sentinel-portalen och klicka sedan på fliken **regelmallar** . Välj **identifierings regeln (förhands granskning) avvikande RDP-inloggning** och flytta skjutreglaget **status** till **aktive rad**.
+1. Klicka på **analys** på Azure Sentinel-portalen och klicka sedan på fliken **regelmallar** . Välj **identifierings regeln (förhands granskning) avvikande RDP-inloggning** och flytta skjutreglaget **status** till **aktive rad**.
 
     > [!NOTE]
     > Eftersom Machine Learning-algoritmen kräver 30 dagars data för att bygga en bas linje profil för användar beteendet, måste du tillåta att säkerhets händelse data för 30 dagar samlas in innan eventuella incidenter kan identifieras.

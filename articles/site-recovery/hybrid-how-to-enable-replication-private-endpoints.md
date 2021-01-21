@@ -6,12 +6,12 @@ ms.author: harshacs
 ms.service: site-recovery
 ms.topic: article
 ms.date: 07/14/2020
-ms.openlocfilehash: f23efa8d0439422fef685480ed270dce6e78a204
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 7f10654e1c96f1756e5864d20fa2a6817385e994
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92366861"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98629801"
 ---
 # <a name="replicate-on-premises-machines-by-using-private-endpoints"></a>Replikera lokala datorer med hjälp av privata slut punkter
 
@@ -57,7 +57,7 @@ Med en [hanterad identitet](../active-directory/managed-identities-azure-resourc
 
 1. Gå till Recovery Services-valvet. Välj **identitet** under **Inställningar**:
 
-   :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/enable-managed-identity-in-vault.png" alt-text="Diagram som visar arkitekturen för Azure Site Recovery och privata slut punkter.":::
+   :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/enable-managed-identity-in-vault.png" alt-text="Skärm bild som visar sidan med identitets inställningar.":::
 
 1. Ändra **statusen** till **på** och välj **Spara**.
 
@@ -69,21 +69,21 @@ För att skydda datorerna i det lokala käll nätverket behöver du en privat sl
 
 1. Sök efter "privat länk" i sökrutan Azure Portal Sök. Välj **privat länk** för att gå till Private Link Center:
 
-   :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/search-private-links.png" alt-text="Diagram som visar arkitekturen för Azure Site Recovery och privata slut punkter.":::
+   :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/search-private-links.png" alt-text="Skärm bild som visar hur du söker Azure Portal för privat länk Center.":::
 
 1. I det vänstra fönstret väljer du **privata slut punkter**. På sidan **privata slut punkter** väljer du **Lägg till** för att börja skapa en privat slut punkt för valvet:
 
-   :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/create-private-endpoints.png" alt-text="Diagram som visar arkitekturen för Azure Site Recovery och privata slut punkter.":::
+   :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/create-private-endpoints.png" alt-text="Skärm bild som visar hur du skapar en privat slut punkt i det privata länk centret.":::
 
 1. På sidan **skapa en privat slut punkt** anger du informationen för att skapa din privata slut punkts anslutning.
 
    1. **Grunderna**. Ange grundläggande information om dina privata slut punkter. Använd den region som du använde för det kringgåde nätverket:
 
-      :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/create-private-endpoints-basic-tab.png" alt-text="Diagram som visar arkitekturen för Azure Site Recovery och privata slut punkter.":::
+      :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/create-private-endpoints-basic-tab.png" alt-text="Skärm bild som visar fliken grundläggande för att skapa en privat slut punkt.":::
 
-   1. **Resurs**. På den här fliken måste du ange den plattform-som-tjänst-resurs som du vill skapa anslutningen för. Välj **Microsoft. RecoveryServices/valv**under **resurs typ** för den valda prenumerationen. Välj namnet på Recovery Services valvet under **resurs**. Välj **Azure Site Recovery** som **mål under resurs**.
+   1. **Resurs**. På den här fliken måste du ange den plattform-som-tjänst-resurs som du vill skapa anslutningen för. Välj **Microsoft. RecoveryServices/valv** under **resurs typ** för den valda prenumerationen. Välj namnet på Recovery Services valvet under **resurs**. Välj **Azure Site Recovery** som **mål under resurs**.
 
-      :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/create-private-endpoints-resource-tab.png" alt-text="Diagram som visar arkitekturen för Azure Site Recovery och privata slut punkter.":::
+      :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/create-private-endpoints-resource-tab.png" alt-text="Skärm bild som visar fliken resurs för länkning till en privat slut punkt.":::
 
    1. **Konfiguration**. På den här fliken anger du det kringgå nätverk och undernät där du vill att den privata slut punkten ska skapas. 
 
@@ -96,7 +96,7 @@ För att skydda datorerna i det lokala käll nätverket behöver du en privat sl
 
       Om du vill skapa en privat DNS-zon manuellt följer du stegen i [skapa privata DNS-zoner och lägger till DNS-poster manuellt](#create-private-dns-zones-and-add-dns-records-manually).
 
-      :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/create-private-endpoints-configuration-tab.png" alt-text="Diagram som visar arkitekturen för Azure Site Recovery och privata slut punkter.":::
+      :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/create-private-endpoints-configuration-tab.png" alt-text="Skärm bild som visar fliken konfiguration för konfiguration av en privat slut punkt.":::
 
    1. **Taggar**. Du kan också lägga till taggar för din privata slut punkt.
 
@@ -114,11 +114,14 @@ Om du skapar den privata slut punkten och du också är ägare till Recovery Ser
 
 Du kan gå till den privata slut punkts resursen för att granska status för anslutningen innan du fortsätter:
 
-:::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/vault-private-endpoint-connections.png" alt-text="Diagram som visar arkitekturen för Azure Site Recovery och privata slut punkter.":::
+:::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/vault-private-endpoint-connections.png" alt-text="Skärm bild som visar sidan anslutningar för privata slut punkter i valvet och listan över anslutningar.":::
 
 ### <a name="optional-create-private-endpoints-for-the-cache-storage-account"></a><a name="create-private-endpoints-for-the-cache-storage-account"></a>Valfritt Skapa privata slut punkter för lagrings kontot för cache
 
 Du kan använda en privat slut punkt för att Azure Storage. Att skapa privata slut punkter för lagrings åtkomst är valfritt för Azure Site Recovery replikering. Om du skapar en privat slut punkt för lagring behöver du en privat slut punkt för cache-/logg lagrings kontot i ditt kringgå virtuella nätverk.
+
+> [!NOTE]
+> Om privata slut punkter inte är aktiverade på lagrings kontot kommer skyddet fortfarande att lyckas. Replikeringstrafik kommer dock att transiteras via Internet till att Azure Site Recovery offentliga slut punkter. För att säkerställa replikeringstrafik via privata länkar måste lagrings kontot vara aktiverat med privata slut punkter.
 
 > [!NOTE]
 > Privata slut punkter för lagring kan bara skapas på Generell användning v2-lagrings konton. Information om priser finns i [priser för Azure Page blobbar](https://azure.microsoft.com/pricing/details/storage/page-blobs/).
@@ -147,11 +150,11 @@ De här stegen beskriver hur du lägger till en roll tilldelning till ditt lagri
 
 1. I avsnittet **Lägg till en roll tilldelning** väljer du **Lägg till**:
 
-   :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/storage-role-assignment.png" alt-text="Diagram som visar arkitekturen för Azure Site Recovery och privata slut punkter.":::
+   :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/storage-role-assignment.png" alt-text="Skärm bild som visar sidan åtkomst kontroll (IAM) för ett lagrings konto.":::
 
 1. På sidan **Lägg till en roll tilldelning** väljer du rollen i listan i början av det här avsnittet i listan **roll** . Ange namnet på valvet och välj sedan **Spara**.
 
-   :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/storage-role-assignment-select-role.png" alt-text="Diagram som visar arkitekturen för Azure Site Recovery och privata slut punkter.":::
+   :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/storage-role-assignment-select-role.png" alt-text="Skärm bild som visar sidan Lägg till roll tilldelning.":::
 
 När du har lagt till dessa behörigheter måste du tillåta åtkomst till Microsoft-betrodda tjänster. Gå till **brand väggar och virtuella nätverk** och välj **Tillåt att betrodda Microsoft-tjänster får åtkomst till det här lagrings kontot** i **undantag**.
 
@@ -174,13 +177,13 @@ Skapa en privat DNS-zon som tillåter Site Recovery-providern (för Hyper-V-dato
 
    1. Sök efter "privat DNS-zon" i Sök fältet **alla tjänster** och välj sedan **privat DNS zon** i resultatet:
 
-      :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/search-private-dns-zone.png" alt-text="Diagram som visar arkitekturen för Azure Site Recovery och privata slut punkter.":::
+      :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/search-private-dns-zone.png" alt-text="Skärm bild som visar sökning efter privat DNS-zon på sidan nya resurser i Azure Portal.":::
 
    1. På sidan **privat DNS zoner** väljer du knappen **Lägg till** för att börja skapa en ny zon.
 
    1. Ange den information som krävs på sidan **skapa privat DNS-zon** . Ange **privatelink.siterecovery.windowsazure.com** som namn på den privata DNS-zonen. Du kan välja vilken resurs grupp och vilken prenumeration som helst.
 
-      :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/create-private-dns-zone.png" alt-text="Diagram som visar arkitekturen för Azure Site Recovery och privata slut punkter.":::
+      :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/create-private-dns-zone.png" alt-text="Skärm bild som visar fliken grundläggande på sidan Skapa Privat DNS zon.":::
 
    1. Fortsätt till fliken **Granska \+ skapande** för att granska och skapa DNS-zonen.
 
@@ -192,7 +195,7 @@ Skapa en privat DNS-zon som tillåter Site Recovery-providern (för Hyper-V-dato
 
    1. Ange den information som krävs. I listan **prenumeration** och **virtuella nätverk** väljer du information som motsvarar det kringgåde nätverket. Lämna standardvärdena i övriga fält.
 
-      :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/add-virtual-network-link.png" alt-text="Diagram som visar arkitekturen för Azure Site Recovery och privata slut punkter.":::
+      :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/add-virtual-network-link.png" alt-text="Skärm bild som visar sidan Lägg till virtuell nätverks länk.":::
 
 1. Lägg till DNS-poster.
 
@@ -209,7 +212,7 @@ Skapa en privat DNS-zon som tillåter Site Recovery-providern (för Hyper-V-dato
 
       Dessa fullständigt kvalificerade domän namn matchar det här mönstret: `{Vault-ID}-asr-pod01-{type}-.{target-geo-code}.siterecovery.windowsazure.com`
 
-      :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/add-record-set.png" alt-text="Diagram som visar arkitekturen för Azure Site Recovery och privata slut punkter.":::
+      :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/add-record-set.png" alt-text="Skärm bild som visar sidan Lägg till uppsättning av poster.":::
 
 ## <a name="next-steps"></a>Nästa steg
 

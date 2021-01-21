@@ -4,12 +4,12 @@ description: Hur du ger maximal tillgänglighet och konsekvens med Azure Event H
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 81bacd5507396352bb814310979498234ee35347
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 7b97d76f29ee8b7e44373c865baa09ba5ea4dd23
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96902909"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98631927"
 ---
 # <a name="availability-and-consistency-in-event-hubs"></a>Tillgänglighet och konsekvens i Event Hubs
 
@@ -30,10 +30,10 @@ Event Hubs skapas ovanpå en partitionerad data modell. Du kan konfigurera antal
 Det enklaste sättet att komma igång med Event Hubs är att använda standard beteendet. 
 
 #### <a name="azuremessagingeventhubs-500-or-later"></a>[Azure. Messaging. EventHubs (5.0.0 eller senare)](#tab/latest)
-Om du skapar ett nytt **[EventHubProducerClient](/dotnet/api/azure.messaging.eventhubs.producer.eventhubproducerclient?view=azure-dotnet)** -objekt och använder **[SendAsync](/dotnet/api/azure.messaging.eventhubs.producer.eventhubproducerclient.sendasync?view=azure-dotnet)** -metoden distribueras händelserna automatiskt mellan partitioner i händelsehubben. Det här beteendet gör det möjligt för den största delen av tiden.
+Om du skapar ett nytt **[EventHubProducerClient](/dotnet/api/azure.messaging.eventhubs.producer.eventhubproducerclient)** -objekt och använder **[SendAsync](/dotnet/api/azure.messaging.eventhubs.producer.eventhubproducerclient.sendasync)** -metoden distribueras händelserna automatiskt mellan partitioner i händelsehubben. Det här beteendet gör det möjligt för den största delen av tiden.
 
 #### <a name="microsoftazureeventhubs-410-or-earlier"></a>[Microsoft. Azure. EventHubs (4.1.0 eller tidigare)](#tab/old)
-Om du skapar ett nytt **[EventHubClient](/dotnet/api/microsoft.azure.eventhubs.eventhubclient)** -objekt och använder **[send](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync?view=azure-dotnet#Microsoft_Azure_EventHubs_EventHubClient_SendAsync_Microsoft_Azure_EventHubs_EventData_)** -metoden, distribueras händelserna automatiskt mellan partitioner i händelsehubben. Det här beteendet gör det möjligt för den största delen av tiden.
+Om du skapar ett nytt **[EventHubClient](/dotnet/api/microsoft.azure.eventhubs.eventhubclient)** -objekt och använder **[send](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync#Microsoft_Azure_EventHubs_EventHubClient_SendAsync_Microsoft_Azure_EventHubs_EventData_)** -metoden, distribueras händelserna automatiskt mellan partitioner i händelsehubben. Det här beteendet gör det möjligt för den största delen av tiden.
 
 ---
 

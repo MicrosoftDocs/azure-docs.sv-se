@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 08/24/2020
 ms.author: v-miegge
-ms.openlocfilehash: 7d1233c97ec80d5a2efa8b53c68e9e07a823165d
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: cbfdb9a73f53e194b43010c0b2d84357aa3e2e5b
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977039"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98631993"
 ---
 # <a name="windows-stop-error---0x00000074-bad-system-config-info"></a>Windows Stop-fel-0x00000074 felaktig system konfigurations information
 
@@ -47,6 +47,9 @@ När du använder [startdiagnostik](./boot-diagnostics.md) för att Visa skärm 
 ## <a name="solution"></a>Lösning
 
 ### <a name="process-overview"></a>Process översikt:
+
+> [!TIP]
+> Om du har en ny säkerhets kopia av den virtuella datorn kan du försöka att [återställa den virtuella datorn från säkerhets kopian](../../backup/backup-azure-arm-restore-vms.md) för att åtgärda start problemet.
 
 1. Skapa och få åtkomst till en reparations-VM.
 1. Kontrol lera om Hive är skadat.

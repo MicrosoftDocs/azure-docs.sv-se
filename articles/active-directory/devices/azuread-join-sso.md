@@ -11,22 +11,22 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba802cb86d68298cd4dfff94162069590744833c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: da22a4e5e9ab13ec18347e58bea6cfc5f45333de
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91256470"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98630708"
 ---
 # <a name="how-sso-to-on-premises-resources-works-on-azure-ad-joined-devices"></a>Så fungerar enkel inloggning till lokala resurser på Azure AD-anslutna enheter
 
-Det är förmodligen inte en överraskning att en Azure Active Directory (Azure AD) ansluten enhet ger dig en enkel inloggning (SSO) till klientens molnappar. Om din miljö har en lokal Active Directory (AD) kan du utöka SSO-upplevelsen på dessa enheter till resurser och program som är beroende av lokala AD också. 
+Det är förmodligen inte en överraskning att en Azure Active Directory (Azure AD) ansluten enhet ger dig en enkel inloggning (SSO) till klientens molnappar. Om din miljö har en lokal Active Directory (AD) kan du också få enkel inloggning på Azure AD-anslutna enheter till resurser och program som är beroende av lokala AD. 
 
 Den här artikeln förklarar hur det fungerar.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
- Om Azure AD-anslutna datorer inte är anslutna till din organisations nätverk krävs en VPN-eller annan nätverks infrastruktur. Lokal inloggning kräver detaljerad kommunikation med dina lokala AD DS-domänkontrollanter.
+Lokal inloggning kräver detaljerad kommunikation med dina lokala AD DS-domänkontrollanter. Om Azure AD-anslutna enheter inte är anslutna till din organisations nätverk krävs en VPN-eller annan nätverks infrastruktur. 
 
 ## <a name="how-it-works"></a>Så här fungerar det 
 
@@ -34,10 +34,13 @@ Med en Azure AD-ansluten enhet har användarna redan en SSO-upplevelse till moln
 
 Azure AD-anslutna enheter har ingen kunskap om din lokala AD-miljö eftersom de inte är anslutna till den. Du kan dock ange ytterligare information om din lokala AD till dessa enheter med Azure AD Connect.
 
-En miljö med både en Azure AD och en lokal AD är även känd med hybrid miljö. Om du har en hybrid miljö är det troligt att du redan har Azure AD Connect distribuerat för att synkronisera din lokala identitets information till molnet. Som en del av synkroniseringsprocessen synkroniserar Azure AD Connect lokal användar information till Azure AD. När en användare loggar in på en Azure AD-ansluten enhet i en hybrid miljö:
+Om du har en hybrid miljö, med både Azure AD och lokala AD, är det troligt att du redan har Azure AD Connect distribuerat för att synkronisera din lokala identitets information till molnet. Som en del av synkroniseringsprocessen synkroniserar Azure AD Connect lokala användare och domän information till Azure AD. När en användare loggar in på en Azure AD-ansluten enhet i en hybrid miljö:
 
 1. Azure AD skickar information om användarens lokala domän tillbaka till enheten, tillsammans med den [primära uppdateringstoken](concept-primary-refresh-token.md)
 1. Tjänsten Local Security Authority (LSA) möjliggör Kerberos-och NTLM-autentisering på enheten.
+
+>[!NOTE]
+> Windows Hello för företag kräver ytterligare konfiguration för att aktivera lokal SSO från en Azure AD-ansluten enhet. Mer information finns i [Konfigurera Azure AD-anslutna enheter för lokala Single-Sign på användning av Windows Hello för företag](/windows/security/identity-protection/hello-for-business/hello-hybrid-aadj-sso-base). 
 
 Under ett åtkomst försök till en resurs som begär Kerberos eller NTLM i användarens lokala miljö, enheten:
 
@@ -45,8 +48,6 @@ Under ett åtkomst försök till en resurs som begär Kerberos eller NTLM i anv�
 1. Tar emot en Kerberos [-biljett för biljett beviljande biljetter (TGT)](/windows/desktop/secauthn/ticket-granting-tickets) eller NTLM-token baserat på det protokoll som stöds av den lokala resursen eller programmet. Om försöket att hämta Kerberos-TGT eller NTLM-token för domänen Miss lyckas (en DCLocator tids gräns kan orsaka en fördröjning), görs ett försök av Autentiseringshanteraren-poster, eller så kan användaren få ett popup-meddelande om att begära autentiseringsuppgifter för mål resursen.
 
 Alla appar som har kon figurer ATS för **Windows-integrerad autentisering** får sömlös inloggning när en användare försöker komma åt dem.
-
-Windows Hello för företag kräver ytterligare konfiguration för att aktivera lokal SSO från en Azure AD-ansluten enhet. Mer information finns i [Konfigurera Azure AD-anslutna enheter för lokala Single-Sign på användning av Windows Hello för företag](/windows/security/identity-protection/hello-for-business/hello-hybrid-aadj-sso-base). 
 
 ## <a name="what-you-get"></a>Det här får du
 

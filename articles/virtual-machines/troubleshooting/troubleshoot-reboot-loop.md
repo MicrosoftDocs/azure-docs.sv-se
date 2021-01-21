@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/15/2018
 ms.author: genli
-ms.openlocfilehash: 4c336fe9a65d7bcc44790a4bfb02bed44f028733
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ad0ed7e9619f0b789bf8949fe398aa27bc36b9e0
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86500930"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98629648"
 ---
 # <a name="windows-reboot-loop-on-an-azure-vm"></a>Loop för Windows-omstart på en virtuell Azure-dator
 I den här artikeln beskrivs den omstart-loop som du kan uppleva på en virtuell Windows-dator (VM) i Microsoft Azure.
@@ -50,13 +50,16 @@ Skadat fil system kan orsaka detta. Det är dock svårt att diagnostisera och id
 
 ## <a name="solution"></a>Lösning
 
+> [!TIP]
+> Om du har en ny säkerhets kopia av den virtuella datorn kan du försöka att [återställa den virtuella datorn från säkerhets kopian](../../backup/backup-azure-arm-restore-vms.md) för att åtgärda start problemet.
+
 Lös problemet genom att [säkerhetskopiera OS-disken](../windows/snapshot-copy-managed-disk.md)och [koppla OS-disken till en virtuell dator för räddning](./troubleshoot-recovery-disks-portal-windows.md)och följ sedan lösnings alternativen i enlighet med detta, eller prova lösningarna en i taget.
 
 ### <a name="solution-for-cause-1"></a>Lösning för orsak 1
 
 1. När OS-disken är ansluten till en fungerande virtuell dator kontrollerar du att disken är flaggad som **online** i disk hanterings konsolen och noterar enhets beteckningen för den partition som innehåller mappen **\Windows** .
 
-2. Om disken är **offline**anger du den till **online**.
+2. Om disken är **offline** anger du den till **online**.
 
 3. Skapa en kopia av **\Windows\System32\config** -mappen om det behövs en återställning av ändringarna.
 

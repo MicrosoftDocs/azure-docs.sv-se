@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/09/2018
 ms.author: genli
-ms.openlocfilehash: fe2d444bbdc09ed5ab0205d4139591e3288e3358
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 3090b7b889d914fc0cdb598b8bf29a73c81f50cb
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94734573"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632011"
 ---
 # <a name="azure-vm-startup-is-stuck-at-windows-update"></a>Starten av virtuella Azure-datorer fastnar på Windows Update
 
@@ -37,6 +37,8 @@ Den här artikeln hjälper till att lösa problemet när den virtuella datorn (V
 
 
 ## <a name="solution"></a>Lösning
+> [!TIP]
+> Om du har en ny säkerhets kopia av den virtuella datorn kan du försöka att [återställa den virtuella datorn från säkerhets kopian](../../backup/backup-azure-arm-restore-vms.md) för att åtgärda start problemet.
 
 Uppdaterings processen kan ta en stund beroende på hur många uppdateringar som installeras eller återställs. Lämna den virtuella datorn i det här läget i 8 timmar. Om den virtuella datorn fortfarande är i det här läget efter den perioden startar du om den virtuella datorn från Azure Portal och ser om den kan starta normalt. Om det här steget inte fungerar kan du prova följande lösning.
 

@@ -5,12 +5,12 @@ ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
 ms.date: 04/14/2020
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: 0c06cb11d916b417cf577b7b8f3578749feddd62
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 3d1e0eb90005abf69d90b46acc59e0258c9914c6
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97092235"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98630038"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-azure-ad-login"></a>Konfigurera din App Service-eller Azure Functions-app för att använda Azure AD-inloggning
 
@@ -77,8 +77,8 @@ Utför följande steg:
 1. Logga in på [Azure Portal], Sök efter och välj **app Services** och välj sedan din app. Anteckna appens **URL**. Du använder den för att konfigurera din Azure Active Directory app-registrering.
 1. Välj **Azure Active Directory**  >  **Appregistreringar**  >  **ny registrering**.
 1. På sidan **Registrera ett program** anger du ett **namn** för din app-registrering.
-1. I **omdirigerings-URI** väljer du **webb** och typ `<app-url>/.auth/login/aad/callback` . Exempelvis `https://contoso.azurewebsites.net/.auth/login/aad/callback`.
-1. Välj **Skapa**.
+1. I **omdirigerings-URI** väljer du **webb** och typ `<app-url>/.auth/login/aad/callback` . Ett exempel är `https://contoso.azurewebsites.net/.auth/login/aad/callback`.
+1. Välj **register**.
 1. När appens registrering har skapats kopierar du **program-ID: t** och **katalogen (klient)-ID:** t för senare.
 1. Välj **Autentisering**. Under **implicit beviljande**, aktiverar du **ID-token** för att tillåta OpenID Connect-användarkonton från App Service.
 1. Valfritt Välj **anpassning**. På **Start sidans URL** anger du URL: en för din app service-app och väljer **Spara**.
@@ -119,7 +119,7 @@ Du kan registrera interna klienter för att tillåta autentisering till webb-API
 
 1. I [Azure Portal]väljer du **Active Directory**  >  **Appregistreringar**  >  **ny registrering**.
 1. På sidan **Registrera ett program** anger du ett **namn** för din app-registrering.
-1. I **omdirigerings-URI** väljer du **offentlig klient (mobil & Desktop)** och anger URL: en `<app-url>/.auth/login/aad/callback` . Exempelvis `https://contoso.azurewebsites.net/.auth/login/aad/callback`.
+1. I **omdirigerings-URI** väljer du **offentlig klient (mobil & Desktop)** och anger URL: en `<app-url>/.auth/login/aad/callback` . Ett exempel är `https://contoso.azurewebsites.net/.auth/login/aad/callback`.
 
     > [!NOTE]
     > För ett Microsoft Store-program använder du [paket-sid](/previous-versions/azure/app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library#package-sid) som URI i stället.

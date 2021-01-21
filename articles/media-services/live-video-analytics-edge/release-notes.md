@@ -3,12 +3,12 @@ title: Video analys i real tid för IoT Edge viktig information – Azure
 description: Det här avsnittet innehåller viktig information om real tids analys av IoT Edge-versioner, förbättringar, fel korrigeringar och kända problem.
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: 7f8957d1ec93259cf6defe7980f19298f782ea5e
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 328fe97c4e03f039a1224d13ce6712ccff06b3b7
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121251"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98629784"
 ---
 # <a name="live-video-analytics-on-iot-edge-release-notes"></a>Viktig information om live video analys i IoT Edge
 
@@ -51,9 +51,12 @@ Den här versionen är den offentliga för hands versionen av video analys på I
 * Stöd har lagts till för disk utrymmes hantering för Sink-noder.
 * `MediaGraphGrpcExtension` Node stöder nu [extensionConfiguration](grpc-extension-protocol.md) -egenskapen för att använda flera AI-modeller på en enda gRPC-Server.
 * Stöd för insamling av mått för Live Video Analytics-modul i [Prometheus-format](https://prometheus.io/docs/practices/naming/)har lagts till. Läs mer om hur du [samlar in mått och vyer i Azure Monitor.](monitoring-logging.md#azure-monitor-collection-via-telegraf) 
+* Möjligheten att filtrera utdata har lagts till. Du kan bara skicka **ljud-** eller **video-** eller **ljud-och video filmer** med hjälp av `outputSelectors` till en graf-nod. 
 * Filter processor för RAM hastighet är **inaktuell**.  
     * Ram frekvens hantering är nu tillgängligt i själva diagram tillägget processor.
 
+### <a name="visual-studio-code-extension"></a>Visual Studio Code-tillägg
+* Lanserade [video analyser på IoT Edge](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.live-video-analytics-edge) – ett Visual Studio Code-tillägg som hjälper dig att hantera lva-medie diagram. Det här tillägget fungerar med **LVA 2,0-modulen** och erbjuder redigering och hantering av medie diagram med ett mycket slimmat och lättanvänt grafiskt gränssnitt.
 ## <a name="september-22-2020"></a>Den 22 september 2020
 
 Den här versions tag gen är för uppdateringen september 2020 för modulen:

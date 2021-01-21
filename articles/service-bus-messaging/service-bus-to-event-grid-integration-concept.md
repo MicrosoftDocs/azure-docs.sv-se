@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/23/2020
 ms.author: spelluru
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 5cc112767b2204d019cb1b7bd23b1603cefdf416
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 71ee21c971b71c4000a123d1561e7e93d21203e1
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882525"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98629155"
 ---
 # <a name="azure-service-bus-to-event-grid-integration-overview"></a>Översikt över integration av Azure Service Bus till Event Grid
 
@@ -186,7 +186,7 @@ Så här skapar du en ny Event Grid-prenumeration:
 
 ## <a name="azure-cli-instructions"></a>Azure CLI-instruktioner
 
-Kontrollera först att du har Azure CLI version 2.0 eller senare installerad. [Hämta installations programmet](/cli/azure/install-azure-cli?view=azure-cli-latest). Välj **Windows + X** och öppna sedan en ny PowerShell-konsol med administratörs behörighet. Du kan också använda en kommandotolk i Azure Portal.
+Kontrollera först att du har Azure CLI version 2.0 eller senare installerad. [Hämta installations programmet](/cli/azure/install-azure-cli). Välj **Windows + X** och öppna sedan en ny PowerShell-konsol med administratörs behörighet. Du kan också använda en kommandotolk i Azure Portal.
 
 Kör följande kod:
 

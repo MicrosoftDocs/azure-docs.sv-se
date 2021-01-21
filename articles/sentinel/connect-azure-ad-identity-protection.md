@@ -9,22 +9,21 @@ ms.subservice: azure-sentinel
 ms.topic: how-to
 ms.date: 06/24/2020
 ms.author: yelevin
-ms.openlocfilehash: 69ab76bf213653ea10db8dfd181b615a7e0f47b5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f420e80f10072c440f5401c042d6370a061b1a7f
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85564476"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632249"
 ---
 # <a name="connect-data-from-azure-active-directory-azure-ad-identity-protection"></a>Anslut data från Azure Active Directory (Azure AD) Identity Protection
 
 Du kan strömma loggar från [Azure AD Identity Protection](../active-directory/identity-protection/overview-identity-protection.md) till Azure Sentinel för att strömma aviseringar till Azure Sentinel för att visa instrument paneler, skapa anpassade aviseringar och förbättra undersökningen. Azure Active Directory Identity Protection ger en samlad vy över risk användare, risk identifiering och sårbarheter, med möjlighet att åtgärda risker direkt och ange principer för att automatiskt reparera framtida händelser. Tjänsten bygger på Microsofts erfarenhet av att skydda konsument identiteter och får en fantastisk precision från signalen från över 13 000 000 000 inloggningar per dag. 
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - Du måste ha en [Azure AD Premium P2-prenumeration](https://azure.microsoft.com/pricing/details/active-directory/).
 - Du måste ha en användare med behörighet som global administratör eller säkerhets administratör.
-
 
 ## <a name="connect-to-azure-ad-identity-protection"></a>Anslut till Azure AD Identity Protection
 
