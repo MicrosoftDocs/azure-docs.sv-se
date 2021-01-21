@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/16/2020
 ms.author: yelevin
-ms.openlocfilehash: 72b2ba0ea444fb14ef9fc1bc3ea6aea3654677df
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 0db4e0fe0472c75f1eae392980ae697f53007244
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94655535"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98623374"
 ---
 # <a name="connect-alerts-from-microsoft-defender-for-endpoint-formerly-microsoft-defender-atp"></a>Ansluta aviseringar från Microsoft Defender för slut punkt (tidigare Microsoft Defender ATP)
 
@@ -28,10 +28,6 @@ ms.locfileid: "94655535"
 > - **Microsoft Defender för slut punkten** kallades tidigare **Microsoft Defender Advanced Threat Protection** eller **MDATP**.
 >
 >     Du kan se att det gamla namnet fortfarande används i produkten (inklusive dess data koppling i Azure Sentinel) under en viss tids period.
->
-> - Inmatningen av Microsoft Defender för slut punkts varningar är för närvarande en offentlig för hands version.
-> Den här funktionen tillhandahålls utan service nivå avtal och rekommenderas inte för produktions arbets belastningar.
-> Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Med [Microsoft Defender för slut punkts](/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection) koppling kan du strömma aviseringar från Microsoft Defender för slut punkt till Azure Sentinel. På så sätt kan du mer utförligt analysera säkerhets händelser i din organisation och skapa spel böcker för effektiv och omedelbar respons.
 

@@ -1,5 +1,5 @@
 ---
-title: Snabbstart för att skicka telemetri till Azure IoT Hub (C) | Microsoft Docs
+title: Snabb start – skicka telemetri till Azure IoT Hub snabb start (C) | Microsoft Docs
 description: I den här snabbstarten kör du två C-exempelprogram som skickar simulerad telemetri till en IoT-hubb, läser telemetrin från IoT-hubben och bearbetar den i molnet.
 author: wesmc7777
 manager: philmea
@@ -14,12 +14,12 @@ ms.custom:
 - devx-track-azurecli
 ms.date: 04/10/2019
 ms.author: wesmc
-ms.openlocfilehash: 175ec6766f7cad96c2cc386894f01e5e9fb393fc
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 89b872557275db8651f3b55502d340ff55b7e626
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121505"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624294"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-c"></a>Snabb start: skicka telemetri från en enhet till en IoT-hubb och Läs den med ett Server dels program (C)
 
@@ -114,7 +114,7 @@ I den här snabb starten ska du dock förbereda en utvecklings miljö som använ
 
 ## <a name="register-a-device"></a>Registrera en enhet
 
-En enhet måste vara registrerad vid din IoT-hubb innan den kan ansluta. I det här avsnittet ska du använda Azure Cloud Shell med IoT- [tillägget](/cli/azure/ext/azure-iot/iot?view=azure-cli-latest) för att registrera en simulerad enhet.
+En enhet måste vara registrerad vid din IoT-hubb innan den kan ansluta. I det här avsnittet ska du använda Azure Cloud Shell med IoT- [tillägget](/cli/azure/ext/azure-iot/iot?view=azure-cli-latest&preserve-view=true) för att registrera en simulerad enhet.
 
 1. Kör följande kommando i Azure Cloud Shell för att skapa enhets identiteten.
 
@@ -183,7 +183,7 @@ Det simulerade enhetsprogrammet ansluter till en enhetsspecifik slutpunkt på di
 
 ## <a name="read-the-telemetry-from-your-hub"></a>Läs telemetrin från din hubb
 
-I det här avsnittet ska du använda Azure Cloud Shell med IoT- [tillägget](/cli/azure/ext/azure-iot/iot?view=azure-cli-latest) för att övervaka enhets meddelanden som skickas av den simulerade enheten.
+I det här avsnittet ska du använda Azure Cloud Shell med IoT- [tillägget](/cli/azure/ext/azure-iot/iot?view=azure-cli-latest&preserve-view=true) för att övervaka enhets meddelanden som skickas av den simulerade enheten.
 
 1. Med Azure Cloud Shell kör du följande kommando för att ansluta och läsa meddelanden från IoT-hubben:
 

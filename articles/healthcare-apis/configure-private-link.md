@@ -8,17 +8,14 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 10/12/2020
 ms.author: matjazl
-ms.openlocfilehash: bfbdb98e691312db5665261743f8ce698541d4cc
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: cdb41f12e8f050e3c74fccddb392d7a816c15b2f
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93398223"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621886"
 ---
 # <a name="configure-private-link"></a>Konfigurera privat länk
-
-> [!IMPORTANT]
-> Den här funktionen är tillgänglig som en offentlig förhandsversion utan servicenivåavtal och rekommenderas inte för produktionsarbetsbelastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade. Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Med privat länk kan du komma åt Azure API för FHIR över en privat slut punkt, ett nätverks gränssnitt som ansluter dig privat och på ett säkert sätt med en privat IP-adress från det virtuella nätverket. Med privat länk kan du komma åt våra tjänster på ett säkert sätt från ditt VNet som en första parts tjänst utan att behöva gå igenom en offentlig DNS. Den här artikeln vägleder dig genom hur du skapar, testar och hanterar din privata slut punkt för Azure API för FHIR.
 
@@ -90,6 +87,6 @@ Privata slut punkter och tillhör ande nätverkskort visas i Azure Portal från 
 
 ### <a name="delete"></a>Ta bort
 
-Privata slut punkter kan bara tas bort från Azure Portal via översikts bladet (enligt nedan) eller via fliken ta bort under nätverk (för hands version) fliken "anslutningar för privata slut punkter". Om du klickar på ta bort tas den privata slut punkten och det associerade NÄTVERKSKORTet bort. Om du tar bort alla privata slut punkter till FHIR-resursen och den offentliga nätverks åtkomsten är inaktive rad kommer ingen begäran att göra den till din FHIR-Server. Alla privata slut punkter måste tas bort från FHIR-resursen innan FHIR-resursen kan tas bort eller flyttas.
+Privata slut punkter kan bara tas bort från Azure Portal via översikts bladet (enligt nedan) eller via fliken ta bort under nätverk (för hands version) fliken "anslutningar för privata slut punkter". Om du klickar på ta bort tas den privata slut punkten och det associerade NÄTVERKSKORTet bort. Om du tar bort alla privata slut punkter till FHIR-resursen och den offentliga nätverks åtkomsten är inaktive rad kommer ingen begäran att göra den till din FHIR-Server.
 
 ![Ta bort privat slut punkt](media/private-link/private-link-delete.png)

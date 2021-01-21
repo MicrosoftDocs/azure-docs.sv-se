@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/13/2021
 ms.author: shhazam
-ms.openlocfilehash: f3239434a7ba737bc9323bc4f383afd794800db1
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 66b960bf874cc46985230e488c749663eff0b835
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201491"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621105"
 ---
 # <a name="azure-defender-for-iot-architecture"></a>Azure Defender för IoT-arkitektur
 
@@ -81,7 +81,7 @@ Hantering av Azure Defender för IoT i hybrid miljöer sker via två hanterings 
 - Azure Portal
 
 ### <a name="sensor-console"></a>Sensor konsol
-Sensor identifieringar visas i sensor konsolen där de kan visas, undersökas och analyseras i en nätverks karta, till gångs inventering och i många olika rapporter, till exempel riskhanterings rapporter, frågor om Data utvinning och angrepps vektorer. Du kan också använda-konsolen för att visa och hantera hot som upptäckts av sensor motorer, vidarebefordra information till partner system, hantera användare med mera.
+Sensor identifieringar visas i sensor konsolen där de kan visas, undersökas och analyseras i en nätverks karta, enhets inventering och i många olika rapporter, till exempel riskhanterings rapporter, frågor om Data utvinning och angrepps vektorer. Du kan också använda-konsolen för att visa och hantera hot som upptäckts av sensor motorer, vidarebefordra information till partner system, hantera användare med mera.
 
 :::image type="content" source="./media/architecture/sensor-console-v2.png" alt-text="Defender för IoT sensor konsol":::
 
@@ -96,7 +96,7 @@ Hanterings konsolen kan distribueras för konfiguration med hög tillgänglighet
 
 Den är nära integrerad med dina SOC-arbetsflöden och kör böcker, vilket möjliggör enkel prioritering av minsknings aktiviteter och korrelationer mellan olika webbplatser av hot.
 
-- Holistisk – minska komplexiteten med en enda enhetlig plattform för till gångs hantering, risk-och sårbarhets hantering, samt hot övervakning med incident svar.
+- Holistisk – minska komplexiteten med en enda enhetlig plattform för enhets hantering, risk-och sårbarhets hantering, samt hot övervakning med incident svar.
 
 - Agg regering och korrelation – Visa, aggregera och analysera data och aviseringar som samlats in från alla platser.
 

@@ -15,21 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: ae361c74b261bdd6a5673040f868392282b573ef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e895640daeb3fbbba2f2708969ee4cf856bf1033
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77588288"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621189"
 ---
 # <a name="connect-your-f5-big-ip-appliance"></a>Anslut din F5 BIG-IP-apparat 
 
-> [!IMPORTANT]
-> Data kopplingen F5 BIG-IP i Azure Sentinel är för närvarande en offentlig för hands version.
-> Den här funktionen tillhandahålls utan service nivå avtal och rekommenderas inte för produktions arbets belastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade. Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
 Med F5 BIG-IP-anslutningen kan du enkelt ansluta alla dina F5 stora IP-loggar med Azure Sentinel, för att Visa arbets böcker, skapa anpassade aviseringar och förbättra undersökningen. Detta ger dig bättre insikt i din organisations nätverk och förbättrar dina säkerhets åtgärder. Integreringen mellan F5 BIG-IP och Azure Sentinel använder REST API.
-
 
 > [!NOTE]
 > Data lagras på den geografiska platsen för den arbets yta där du kör Azure Sentinel.
@@ -42,7 +37,7 @@ F5 BIG-IP kan integrera och exportera loggar direkt till Azure Sentinel.
 1. Om du vill ansluta din F5 BIG-IP måste du skicka en JSON-deklaration till systemets API-slutpunkt. Instruktioner för hur du gör detta finns i [integrera F5 Big-IP med Azure Sentinel](https://devcentral.f5.com/s/articles/Integrating-the-F5-BIGIP-with-Azure-Sentinel).
 8. På sidan F5 BIG-IP-anslutning kopierar du arbetsyte-ID och primär nyckel och klistrar in dem enligt anvisningarna under [strömmande data till Azure Log Analytics](https://devcentral.f5.com/s/articles/Integrating-the-F5-BIGIP-with-Azure-Sentinel#streaming-data-to-azure-log-analytics).
 1. När du har slutfört de stora IP-instruktionerna på sidan för Azure Sentinel Connector ser du de anslutna data typerna.
-1. Om du vill använda det relevanta schemat i Log Analytics för de stora IP-händelserna i F5 söker du efter **F5Telemetry_LTM_CL**, **F5Telemetry_system_CL**och **F5Telemetry_ASM_CL**.
+1. Om du vill använda det relevanta schemat i Log Analytics för de stora IP-händelserna i F5 söker du efter **F5Telemetry_LTM_CL**, **F5Telemetry_system_CL** och **F5Telemetry_ASM_CL**.
 
 
 ## <a name="validate-connectivity"></a>Verifiera anslutning

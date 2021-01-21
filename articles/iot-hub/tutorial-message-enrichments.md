@@ -4,16 +4,16 @@ description: Självstudie som visar hur du använder meddelande anrikninger för
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
-ms.topic: conceptual
+ms.topic: tutorial
 ms.date: 12/20/2019
 ms.author: robinsh
 ms.custom: mqtt, devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 60bd416cf330676485f83720be4365b56c56baaf
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: ddc212e99c0e55156f56df6bf77e122408a727f9
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96436716"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624063"
 ---
 # <a name="tutorial-use-azure-iot-hub-message-enrichments"></a>Självstudie: Använd Azure IoT Hub meddelande-anrikning
 
@@ -38,7 +38,7 @@ Här är de uppgifter du utför för att slutföra den här självstudien:
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Du måste ha en Azure-prenumeration. Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
+- Du måste ha en Azure-prenumeration. Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
 - Installera [Visual Studio](https://www.visualstudio.com/).
 
@@ -386,7 +386,7 @@ Ta bort resurs gruppen om du vill ta bort alla resurser som du skapade i den hä
 
 ### <a name="use-the-azure-cli-to-clean-up-resources"></a>Rensa resurser med hjälp av Azure CLI
 
-Om du vill ta bort resursgruppen använder du kommandot [az group delete](/cli/azure/group?view=azure-cli-latest#az-group-delete). Återkallande som `$resourceGroup` ställdes in på **ContosoResourcesMsgEn** i början av den här självstudien.
+Om du vill ta bort resursgruppen använder du kommandot [az group delete](/cli/azure/group?view=azure-cli-latest#az-group-delete&preserve-view=true). Återkallande som `$resourceGroup` ställdes in på **ContosoResourcesMsgEn** i början av den här självstudien.
 
 ```azurecli-interactive
 az group delete --name $resourceGroup
@@ -397,6 +397,7 @@ az group delete --name $resourceGroup
 I den här självstudien har du konfigurerat och testat lägga till meddelande anrikninger för att IoT Hub meddelanden med hjälp av följande steg:
 
 **Använda IoT Hub meddelande anrikning**
+
 > [!div class="checklist"]
 > * Första metoden: skapa resurser och konfigurera meddelanderoutning med hjälp av Azure CLI. Konfigurera meddelande berikarna manuellt med hjälp av [Azure Portal](https://portal.azure.com).
 > * Andra metoden: skapa resurser och konfigurera meddelanderoutning och meddelande anrikningar med hjälp av en Azure Resource Manager mall.
@@ -407,5 +408,8 @@ Mer information om meddelande berikare finns i [Översikt över meddelande anrik
 
 Mer information om meddelanderoutning finns i följande artiklar:
 
-* [Använd IoT Hub meddelanderoutning för att skicka meddelanden från enheten till molnet till olika slut punkter](iot-hub-devguide-messages-d2c.md)
-* [Självstudie: IoT Hub routning](tutorial-routing.md)
+> [!div class="nextstepaction"]
+> [Använd IoT Hub meddelanderoutning för att skicka meddelanden från enheten till molnet till olika slut punkter](iot-hub-devguide-messages-d2c.md)
+
+> [!div class="nextstepaction"]
+> [Självstudie: IoT Hub routning](tutorial-routing.md)

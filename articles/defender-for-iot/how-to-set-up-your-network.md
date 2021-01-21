@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 01/03/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 2053632f24504f896d1045f99d581b9aa6050b55
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: a71ea75eb603b141c4b28cff5f2b4aa957583bcd
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98573147"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621320"
 ---
 # <a name="about-azure-defender-for-iot-network-setup"></a>Om installation av Azure Defender för IoT-nätverk
 
@@ -94,35 +94,36 @@ Följande webbläsare stöds för sensorer och lokala hanterings konsol webb pro
 
 Kontrol lera att din organisations säkerhets princip tillåter åtkomst till följande:
 
-| **Syfte** | **Protokoll** | **Transport** | **In eller ut** | **Port** | **Kategori** |
-| ----------- | ----------- | ------------ | ---------- | -------- | ------------ |
-| **Åtkomst till webb konsolen** | HTTPS | TCP | In eller ut | 443 | Lokal hanterings konsol för Defender för IoT-plattformen |
-| **Åtkomst till CLI** | SSH | TCP | In eller ut | 22 | CLI |
-| **Anslutning mellan Defender för IoT-plattformen och den lokala hanterings konsolen** | SSL | TCP | In eller ut | 443 | Sensor och lokal hanterings konsol|
-| **Lokal hanterings konsol som används som NTP för sensorn** | NTP | UDP| I till CM | 123 | Tidssynkronisering | 
-| **Sensor ansluten till extern NTP-server (om relevant)** | NTP | UDP | In eller ut| 123 | Tidssynkronisering |
-| **Anslutning mellan Defender för IoT-plattform och hanterings plattform och e-postservern (om det behövs)** | SMTP | TCP | Slut på sensor hantering | 25 | E-post |
-| **Loggar som skickar från den lokala hanterings konsolen till syslog-servern (om det behövs)** | Syslog | UDP | Slut på sensor hantering| 514 | LEEF |
-| **DNS-serverport (om relevant)** | DNS | Ej tillämpligt | In eller ut| 53 | DNS |
-| **Anslutning mellan Defender för IoT-plattformen och den lokala hanterings konsolen för att Active Directory (om relevant)** | LDAPS | TCP | In eller ut | 636 <br />389 | Active Directory |
-| **Fjärr-SNMP-insamlare (om det är relevant)** | SNMP | UDP | Slut på sensor hantering| 161 | Övervakning |
-| **Övervakning av Windows-slutpunkt (om relevant)** | WMI | UDP | Slut på sensor hantering| 135 | Övervakning |
-| **Övervakning av Windows-slutpunkt (om relevant)** | WMI | TCP | Slut på sensor hantering| 1024 och uppåt | Övervakning |
-| **Tunnel trafik (om relevant)** | Tunneltrafik | TCP | I till CM | 9000<br />Förutom port 443<br />Från slutanvändaren till den lokala hanterings konsolen <br />Port 22 från sensorn till den lokala hanterings konsolen | Övervakning |
-| **Utgående till Defender för IoT Hub** | HTTPS | TCP | Slut på sensor hantering| **URL**<br />*. azure-devices.net:443<br />eller om jokertecken inte stöds<br />{ditt IoT Hub-namn}. Azure-devices.net:443 |
+| Protokoll | Transport | In/ut | Port | Använt | Syfte | Källa | Mål |
+|--|--|--|--|--|--|--|--|
+| HTTPS | TCP | IN/UT | 443 | Webb konsolen för sensor och lokal hanterings konsol | Åtkomst till webb konsolen | Klient | Sensor och lokal hanterings konsol |
+| SSH | TCP | IN/UT | 22 | CLI | Åtkomst till CLI | Klient | Sensor och lokal hanterings konsol |
+| SSL | TCP | IN/UT | 443 | Sensor och lokal hanterings konsol | Anslutning mellan CyberX-plattformen och den centrala hanterings plattformen | sensor | Lokal hanterings konsol |
+| NTP | UDP | IN | 123 | Tidssynkronisering | Lokal hanterings konsol använder som NTP för sensor | sensor | lokal hanterings konsol |
+| NTP | UDP | IN/UT | 123 | Tidssynkronisering | Sensor ansluten till extern NTP-server när det inte finns någon lokal hanterings konsol installerad | sensor | NTP |
+| SMTP | TCP | GENOMFÖR | 25 | E-post | Anslutningen mellan CyberX-plattformen och hanterings plattformen och e-postservern | Sensor och lokal hanterings konsol | E-postserver |
+| Syslog | UDP | GENOMFÖR | 514 | LEEF | Loggar som skickar från den lokala hanterings konsolen till syslog-servern | Lokal hanterings konsol och sensor | Syslog-server |
+| DNS |  | IN/UT | 53 | DNS | DNS-serverport | Lokal hanterings konsol och sensor | DNS-server |
+| LDAP | TCP | IN/UT | 389 | Active Directory | Anslutningen mellan CyberX-plattformen och hanterings plattformen till Active Directory | Lokal hanterings konsol och sensor | LDAP-server |
+| LDAPS | TCP | IN/UT | 636 | Active Directory | Anslutningen mellan CyberX-plattformen och hanterings plattformen till Active Directory | Lokal hanterings konsol och sensor | LDAP-server |
+| SNMP | UDP | GENOMFÖR | 161 | Övervakning | Fjärr-SNMP-insamlare. | Lokal hanterings konsol och sensor | SNMP-Server |
+| WMI | UDP | GENOMFÖR | 135 | övervakning | Övervakning av Windows-slutpunkt | Mäta | Relevant nätverks element |
+| Tunneltrafik | TCP | IN | 9000 <br /><br />– ovanpå port 443 <br /><br />Från slutanvändaren till den lokala hanterings konsolen. <br /><br />– Port 22 från sensor till den lokala hanterings konsolen  | övervakning | Tunneltrafik | Mäta | Lokal hanterings konsol |
 
 ### <a name="planning-rack-installation"></a>Planera rack installation
 
 Planera din rack installation:
 
 1. Förbered en övervakare och ett tangent bord för dina nätverks inställningar för enheten.
-2. Allokera rack utrymme för enheten.
-3. Ha växel ström tillgänglig för installationen av enheten.
-4. Förbered LAN-kabeln för anslutning av hanteringen till nätverks växeln.
-5. Förbered LAN-kablar för att ansluta portar för växel intervall (spegling) och nätverks knackningar till Defender för IoT-enheten. 
-6. Konfigurera, Anslut och verifiera intervall portar i de speglade växlarna enligt beskrivningen i arkitektur gransknings sessionen.
-7. Anslut den konfigurerade intervall porten till en dator som kör wireshark och kontrol lera att porten är korrekt konfigurerad.
-8. Öppna alla relevanta brand Väggs portar.
+
+1. Allokera rack utrymme för enheten.
+
+1. Ha växel ström tillgänglig för installationen av enheten.
+1. Förbered LAN-kabeln för anslutning av hanteringen till nätverks växeln.
+1. Förbered LAN-kablar för att ansluta portar för växel intervall (spegling) och nätverks knackningar till Defender för IoT-enheten. 
+1. Konfigurera, Anslut och verifiera intervall portar i de speglade växlarna enligt beskrivningen i arkitektur gransknings sessionen.
+1. Anslut den konfigurerade intervall porten till en dator som kör wireshark och kontrol lera att porten är korrekt konfigurerad.
+1. Öppna alla relevanta brand Väggs portar.
 
 ## <a name="about-passive-network-monitoring"></a>Om passiv nätverks övervakning
 
@@ -141,6 +142,7 @@ I följande avsnitt beskrivs Purdue-nivåer.
 Nivå 0 består av en mängd olika sensorer, motstånd och enheter som ingår i den grundläggande tillverknings processen. Dessa enheter utför de grundläggande funktionerna i industriella automatiserings-och kontroll system, till exempel:
 
 - Köra en motor.
+
 - Mäter variabler.
 - Anger utdata.
 - Utföra viktiga funktioner, till exempel målning, svetsning och böjning.
@@ -227,7 +229,7 @@ Här följer några rekommendationer för att distribuera flera sensorer:
 |--|--|--|--|
 | Det maximala avståndet mellan växlar | 80 meter | För beredd Ethernet-kabel | Mer än 1 |
 | Antal nätverks nätverk | Mer än 1 | Ingen fysisk anslutning | Mer än 1 |
-| Antal växlar | Kan använda RSPAN-konfiguration | Upp till 8 växlar med lokalt intervall nära sensorn efter kabel avstånd | Mer än 1 |
+| Antal växlar | Kan använda RSPAN-konfiguration | Upp till åtta växlar med lokalt intervall nära sensorn efter kabel avstånd | Mer än 1 |
 
 #### <a name="traffic-mirroring"></a>Trafik spegling  
 
@@ -353,9 +355,9 @@ En aktiv eller passiv agg regerings anslutning är direkt installerad på nätve
 
 Terminal Access Point (KNACKNING) är en maskin varu enhet som gör det möjligt för nätverks trafik att flöda från Port A till port B och från Port B till port A, utan avbrott. Den skapar en exakt kopia av båda sidor av trafikflödet, kontinuerligt, utan att kompromissa med nätverks integriteten. Vissa tryckningar sammanställer överföring och tar emot trafik genom att använda växel inställningar om så önskas. Om agg regering inte stöds använder varje tryckning två sensor portar för att övervaka sändnings-och mottagnings trafik.
 
-Knackningar är fördelaktiga av olika orsaker. De är maskin varubaserade och kan inte komprometteras. De skickar all trafik, även skadade meddelanden, vilka växlar ofta släpps. De är inte processor känsliga, så paket tiden är exakt där växlar hanterar funktionen spegel som en låg prioritets aktivitet som kan påverka tiden för de speglade paketen. I kriminal tekniska-syfte är en KNACKNING den bästa enheten.
+Knackningar är fördelaktiga av olika anledningar. De är maskin varubaserade och kan inte komprometteras. De skickar all trafik, även skadade meddelanden, vilka växlar ofta släpps. De är inte processor känsliga, så paket tiden är exakt där växlar hanterar funktionen spegel som en låg prioritets aktivitet som kan påverka tiden för de speglade paketen. I kriminal tekniska-syfte är en KNACKNING den bästa enheten.
 
-Tryck på agg regeringar kan också användas för port övervakning. De här enheterna är processorbaserade och är inte lika säkra som maskin varu tryckningar. De kanske inte återspeglar den exakta paket tiden.
+Tryck på agg regeringar kan också användas för port övervakning. Dessa enheter är processorbaserade och är inte lika säkra som maskin varu tryckningar. De kanske inte återspeglar den exakta paket tiden.
 
 :::image type="content" source="media/how-to-set-up-your-network/active-passive-tap-v2.PNG" alt-text="Diagram över aktiva och passiva kranar.":::
 
@@ -364,10 +366,10 @@ Tryck på agg regeringar kan också användas för port övervakning. De här en
 Dessa modeller har testats för kompatibilitet. Andra leverantörer och modeller kan också vara kompatibla.
 
 | Bild | Modell |
-| -- | -- |
-| :::image type="content" source="media/how-to-set-up-your-network/garland-p1gccas-v2.png" alt-text="Skärm bild av Garland-P1GCCAS.":::  | Garland P1GCCAS  |
-| :::image type="content" source="media/how-to-set-up-your-network/ixia-tpa2-cu3-v2.png" alt-text="Skärm bild av IXIA TPA2-CU3.":::  | IXIA TPA2-CU3  |
-| :::image type="content" source="media/how-to-set-up-your-network/us-robotics-usr-4503-v2.png" alt-text="Skärm bild av US Robotics USR 4503.":::  | US Robotics USR 4503  |
+|--|--|
+| :::image type="content" source="media/how-to-set-up-your-network/garland-p1gccas-v2.png" alt-text="Skärm bild av Garland-P1GCCAS."::: | Garland P1GCCAS |
+| :::image type="content" source="media/how-to-set-up-your-network/ixia-tpa2-cu3-v2.png" alt-text="Skärm bild av IXIA TPA2-CU3."::: | IXIA TPA2-CU3 |
+| :::image type="content" source="media/how-to-set-up-your-network/us-robotics-usr-4503-v2.png" alt-text="Skärm bild av US Robotics USR 4503."::: | US Robotics USR 4503 |
 
 ##### <a name="special-tap-configuration"></a>Särskild tryck på konfiguration
 
@@ -425,7 +427,7 @@ Relevant information:
 
 - Om Defender för IoT-enheten ska anslutas till den växeln, finns det fysiskt tillgängligt rack utrymme i skåpet?
 
-#### <a name="additional-considerations"></a>Annat som är bra att tänka på
+#### <a name="other-considerations"></a>Ytterligare överväganden
 
 Syftet med Defender för IoT-enheten är att övervaka trafik från skikt 1 och 2.
 
@@ -671,7 +673,7 @@ Ange adress information för det sensor nätverkskort som ska anslutas i företa
 | Hemlig nyckel | |
 | SNMP v2-grupp sträng |
 
-### <a name="cm-ssl-certificate"></a>CM SSL-certifikat
+### <a name="on-premises-management-console-ssl-certificate"></a>SSL-certifikat för lokal hanterings konsol
 
 Planerar du att använda ett SSL-certifikat? Ja eller nej
 

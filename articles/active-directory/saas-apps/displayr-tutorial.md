@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
-ms.openlocfilehash: 13edc0280f1a6f7e962e8e4593d8a17990dd9e6f
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 3cb6ee3162c70d2d07c4868ae90ecc54bd489966
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92454753"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98622498"
 ---
 # <a name="tutorial-integrate-displayr-with-azure-active-directory"></a>Självstudie: integrera displayer med Azure Active Directory
 
@@ -46,7 +46,7 @@ Om du vill konfigurera en integrering av displayer i Azure AD måste du lägga t
 1. Logga in på [Azure Portal](https://portal.azure.com) med antingen ett arbets-eller skol konto eller en personlig Microsoft-konto.
 1. I det vänstra navigerings fönstret väljer du tjänsten **Azure Active Directory** .
 1. Navigera till **företags program** och välj sedan **alla program**.
-1. Välj **nytt program**om du vill lägga till ett nytt program.
+1. Välj **nytt program** om du vill lägga till ett nytt program.
 1. Skriv **displayer** i sökrutan i avsnittet **Lägg till från galleriet** .
 1. Välj **neduppspelning** från panelen resultat och Lägg sedan till appen. Vänta några sekunder medan appen läggs till i din klient organisation.
 
@@ -78,6 +78,10 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
     a. I text rutan **inloggnings-URL** skriver du en URL med följande mönster: `https://<YOURDOMAIN>.displayr.com`
 
     b. I text rutan **identifierare (enhets-ID)** anger du en URL med hjälp av följande mönster:`<YOURDOMAIN>.displayr.com`
+    
+    c. Skriv i text rutan **svars** -URL `https://app.displayr.com/Login/ProcessSamlResponse` .
+    
+    d. Klicka på **Spara**.
 
     >[!NOTE]
     >Dessa värden är inte verkliga. Uppdatera dessa värden med faktisk inloggnings-URL och identifierare. Kontakta [displayer-klientens support team](mailto:support@displayr.com) för att hämta dessa värden. Du kan även se mönstren som visas i avsnittet Grundläggande SAML-konfiguration i Azure-portalen.
@@ -86,27 +90,25 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
    ![Länk för nedladdning av certifikatet](common/certificatebase64.png)
 
-1. Avuppspelnings programmet förväntar sig SAML-intyg i ett särskilt format, vilket kräver att du lägger till anpassade mappningar av attribut i konfigurationen för SAML-token. I följande skärmbild visas listan över standardattribut. Klicka på ikonen**Redigera** för att öppna dialogrutan Användarattribut.
+1. Avuppspelnings programmet förväntar sig SAML-intyg i ett särskilt format, vilket kräver att du lägger till anpassade mappningar av attribut i konfigurationen för SAML-token. I följande skärmbild visas listan över standardattribut. Klicka på ikonen **Redigera** för att öppna dialogrutan Användarattribut.
 
-    ![Skärm bild som visar avsnittet "användarattribut" med ikonen "redigera" markerad.](common/edit-attribute.png)
+   ![Skärm bild som visar avsnittet "användarattribut" med ikonen "redigera" markerad.](common/edit-attribute.png)
 
 1. Förutom över, förväntar sig att fler attribut ska skickas tillbaka i SAML-svar från visnings programmet. I avsnittet **användarattribut &-anspråk** i dialog rutan **grupp anspråk (förhands granskning)** utför du följande steg:
 
-    a. Klicka på **pennan** bredvid **grupper som returneras i anspråk**.
+   a. Klicka på **Lägg till ett grupp anspråk**.
 
-    ![Skärm bild som visar avsnittet "användarattribut &-anspråk" med ikonen "Pen" bredvid "grupper som returneras i anspråk" markerade.](./media/displayr-tutorial/config04.png)
+      ![Skärm bild som visar fönstret "grupp anspråk (förhands granskning) med inställningar valt.](./media/displayr-tutorial/config05.png)
 
-    ![Skärm bild som visar fönstret "grupp anspråk (förhands granskning) med inställningar valt.](./media/displayr-tutorial/config05.png)
+   b. Välj **alla grupper** i alternativ listan.
 
-    b. Välj **alla grupper** i alternativ listan.
+   c. Välj **källattribut** för **grupp-ID**.
 
-    c. Välj **källattribut** för **grupp-ID**.
+   d. Markera **anpassa namnet på grupp anspråket**.
 
-    d. Markera **anpassa namnet på grupp anspråket**.
+   e. Markera **generera grupper som roll anspråk**.
 
-    e. Markera **generera grupper som roll anspråk**.
-
-    f. Klicka på **Spara**.
+   f. Klicka på **Spara**.
 
 1. I avsnittet **Konfigurera avuppspelning** kopierar du lämpliga URL: er baserat på ditt krav.
 
@@ -140,9 +142,9 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
     b. Kopiera det faktiska **ID** -värdet från avsnittet **grundläggande SAML-konfiguration** i Azure AD och klistra in det i text rutan **utfärdare** .
 
-    c. I text rutan **inloggnings-URL** klistrar du in värdet för **inloggnings-URL: en**som du har kopierat från Azure Portal.
+    c. I text rutan **inloggnings-URL** klistrar du in värdet för **inloggnings-URL: en** som du har kopierat från Azure Portal.
 
-    d. I text rutan **Logga ut URL** klistrar du in värdet för **URL för utloggning**som du har kopierat från Azure Portal.
+    d. I text rutan **Logga ut URL** klistrar du in värdet för **URL för utloggning** som du har kopierat från Azure Portal.
 
     e. Öppna certifikatet (base64) i anteckningar, kopiera innehållet och klistra in det i text rutan **certifikat** .
 
@@ -154,11 +156,11 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 I det här avsnittet ska du skapa en test användare i Azure Portal som kallas Britta Simon.
 
-1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory**, väljer **användare**och väljer sedan **alla användare**.
+1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory**, väljer **användare** och väljer sedan **alla användare**.
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I **Namn**-fältet skriver du `Britta Simon`.  
-   1. I fältet **användar namn** anger du username@companydomain.extension . Till exempel `BrittaSimon@contoso.com`.
+   1. I fältet **användar namn** anger du username@companydomain.extension . Ett exempel är `BrittaSimon@contoso.com`.
    1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
    1. Klicka på **Skapa**.
 
@@ -166,13 +168,13 @@ I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B
 
 I det här avsnittet ska du aktivera Britta Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till displayer.
 
-1. I Azure Portal väljer du **företags program**och väljer sedan **alla program**.
+1. I Azure Portal väljer du **företags program** och väljer sedan **alla program**.
 1. I listan program väljer du **neduppspelning**.
 1. På sidan Översikt för appen letar du reda på avsnittet **Hantera** och väljer **användare och grupper**.
 
    ![Länken ”Användare och grupper”](common/users-groups-blade.png)
 
-1. Välj **Lägg till användare**och välj sedan **användare och grupper** i dialog rutan **Lägg till tilldelning** .
+1. Välj **Lägg till användare** och välj sedan **användare och grupper** i dialog rutan **Lägg till tilldelning** .
 
     ![Länken Lägg till användare](common/add-assign-user.png)
 

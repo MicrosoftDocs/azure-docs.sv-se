@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/13/2020
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: 1ac87f98af555aae155a201cc20692c950fc7924
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 419e32a127947cde1d3761507f0df7a889528ff2
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97841713"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621936"
 ---
 # <a name="basic-concepts"></a>Grundläggande begrepp 
 
@@ -22,7 +22,7 @@ I den här artikeln beskrivs viktiga fördelar med Azure Defender för IoT.
 
 Defender för IoT-sensorer ansluter till en intervall port eller ett nätverk, och börjar omedelbart samla in ICS-nätverkstrafik via passiv (agent lös) övervakning. Djup paket inspektion (DPI) används för att dissect trafik från både seriell och Ethernet-kontroll av nätverks utrustning. Defender for IoT har ingen påverkan på nätverksbaserade nätverk eftersom det inte placeras i data Sök vägen och inte aktivt söker på enheter. 
 
-För att tillhandahålla ögonblicks bilder av detaljerad till gångs information, kompletterar Defender för IoT-sensorn passiv övervakning med en valfri aktiv komponent. Den här komponenten använder säkra, leverantörs godkända kommandon för att fråga både Windows-och kontrollant-enheter för till gångs information, så ofta eller så ofta du vill.
+För att tillhandahålla ögonblicks bilder av detaljerad enhets information, kompletterar Defender för IoT-sensorn passiv övervakning med en valfri aktiv komponent. Den här komponenten använder säkra, leverantörs godkända kommandon för att fråga både Windows-och kontrollant-enheter om enhets information, så ofta eller som du vill.
 
 ## <a name="embedded-knowledge-of-ics-protocols-devices-and-applications"></a>Inbäddad kunskap om ICS-protokoll, enheter och program
 
@@ -34,7 +34,7 @@ Motorer identifierar säkerhets problem via kontinuerlig övervakning och fem an
 
 - **Identifiering av protokoll fel**: identifierar användningen av paket strukturer och fält värden som strider mot ICS-protokollets specifikationer.
 
-- **Identifiering av princip** överträdelser: identifierar princip överträdelser som obehörig användning av funktions koder, åtkomst till vissa objekt eller ändringar i till gångs konfigurationen.
+- **Identifiering av princip** överträdelser: identifierar princip överträdelser som obehörig användning av funktions koder, åtkomst till vissa objekt eller ändringar i enhets konfigurationen.
 
 - **Identifiering av industriell skadlig kod**: identifierar beteenden som visar förekomsten av känt skadlig kod som Conficker, Black Energy, Havex, WannaCry och NotPetya.
 
@@ -83,7 +83,7 @@ Vi rekommenderar att du bekantar dig med de begrepp, funktioner och funktioner s
 
 Du kan utöka funktionerna i Defender för IoT genom att dela både enhets-och aviserings information med partner system. Integreringar hjälper företag att överbrygga tidigare silode säkerhetslösningar för att avsevärt förbättra enhets synlighet och hot information. Integreringar hjälper företag att påskynda de systemomfattande svaren och minimera riskerna snabbare. 
 
-Integreringarna minskar komplexiteten och eliminerar IT-och mellanliggande silor genom att integrera dem i dina befintliga SOC-arbetsflöden och säkerhets stackar. Exempel:
+Integreringarna minskar komplexiteten och eliminerar IT-och mellanliggande silor genom att integrera dem i dina befintliga SOC-arbetsflöden och säkerhets stackar. Till exempel:
 
 - Siem, till exempel IBM QRadar, Splunk, ArcSight, LogRhythm och RSA netvittne
 

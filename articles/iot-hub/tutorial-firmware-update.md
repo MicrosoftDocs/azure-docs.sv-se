@@ -1,6 +1,6 @@
 ---
-title: Uppdatera enhetens inbyggda programvara via Azure IoT Hub | Microsoft Docs
-description: Lär dig hur du implementerar en uppdatering av enhetens inbyggda program vara som kan utlösas från ett Server dels program som är anslutet till din IoT-hubb.
+title: Självstudie – uppdatera enhetens inbyggda program vara via Azure IoT Hub | Microsoft Docs
+description: Självstudie – lär dig hur du implementerar en uppdaterings process för enhetens inbyggda program vara som kan utlösas från ett Server dels program som är anslutet till din IoT Hub.
 services: iot-hub
 author: wesmc7777
 ms.author: wesmc
@@ -15,12 +15,12 @@ ms.custom:
 - 'Role: IoT Device'
 - devx-track-js
 - devx-track-azurecli
-ms.openlocfilehash: b4de685accf665c7555a454ef247ddf589c6ba5f
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 807de3c41ec8026edd2b2d8859eb70863ae5697b
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96572345"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621403"
 ---
 # <a name="tutorial-implement-a-device-firmware-update-process"></a>Självstudie: Implementera en uppdateringsprocess för enhetens inbyggda programvara
 

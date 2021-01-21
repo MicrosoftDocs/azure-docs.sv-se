@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/03/2020
+ms.date: 01/18/2021
 ms.author: jeedes
-ms.openlocfilehash: 1c15b693ecbcb4557fb5ec9ceca8436316f33747
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 07340cb66fe9ef2f22e1f3e9b201e46dd07254bb
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92522114"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98622318"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-qualtrics"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med SAP Qualtrics
 
@@ -25,8 +25,6 @@ I den här självstudien får du lära dig hur du integrerar SAP Qualtrics med A
 * Kontroll i Azure AD som har åtkomst till SAP Qualtrics.
 * Gör det möjligt för användarna att logga in automatiskt på SAP-Qualtrics med sina Azure AD-konton.
 * Hantera dina konton på en central plats: Azure Portal.
-
-Om du vill veta mer om SaaS (Software as a Service) med Azure AD, se [Vad är program åtkomst och enkel inloggning med Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -41,16 +39,15 @@ I den här självstudien konfigurerar och testar du Azure AD SSO i en test milj�
 
 * SAP Qualtrics stöder **SP** -och **IDP** -initierad SSO.
 * SAP Qualtrics stöder **just-in-Time** User-etablering.
-* När du har konfigurerat SAP-Qualtrics kan du framtvinga kontroll av sessioner, vilket skyddar exfiltrering och intrånget för organisationens känsliga data i real tid. Kontroll av sessionen sträcker sig från villkorlig åtkomst. Mer information finns i [Lär dig hur du tvingar fram en session med Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="add-sap-qualtrics-from-the-gallery"></a>Lägg till SAP-Qualtrics från galleriet
 
 Om du vill konfigurera integreringen av SAP-Qualtrics i Azure AD måste du lägga till SAP Qualtrics från galleriet i listan över hanterade SaaS-appar.
 
-1. Logga in på [Azure Portal](https://portal.azure.com) med ett arbets-eller skol konto eller en personlig Microsoft-konto.
+1. Logga in på Azure Portal med ett arbets-eller skol konto eller en personlig Microsoft-konto.
 1. I den vänstra rutan väljer du **Azure Active Directory**.
 1. Gå till **Företagsprogram** och välj sedan **Alla program**.
-1. Välj **nytt program**om du vill lägga till ett nytt program.
+1. Välj **nytt program** om du vill lägga till ett nytt program.
 1. I avsnittet **Lägg till från galleriet** , Skriv **SAP Qualtrics** i sökrutan.
 1. Välj **SAP-Qualtrics** från resultat och Lägg sedan till appen. Vänta några sekunder medan appen läggs till i din klient organisation.
 
@@ -71,11 +68,11 @@ Om du vill konfigurera och testa Azure AD SSO med SAP Qualtrics slutför du föl
 
 Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
-1. I [Azure Portal](https://portal.azure.com/)går du till sidan för program integrering i **SAP Qualtrics** och letar upp avsnittet **Hantera** . Välj **enkel inloggning**.
+1. I Azure Portal går du till sidan för program integrering i **SAP Qualtrics** och letar upp avsnittet **Hantera** . Välj **enkel inloggning**.
 1. På sidan **Välj metod för enkel inloggning** väljer du **SAML**.
 1. På sidan **Konfigurera enkel inloggning med SAML** väljer du Penn ikonen för **grundläggande SAML-konfiguration** för att redigera inställningarna.
 
-   ![Skärm bild som visar hur du konfigurerar enkla Sign-On med SAML-sidan med Penn ikonen markerad](common/edit-urls.png)
+   ![Redigera grundläggande SAML-konfiguration](common/edit-urls.png)
 
 1. På sidan **Konfigurera enkel inloggning med SAML** , om du vill konfigurera programmet i **IDP** initierat läge, anger du värdena för följande fält:
     
@@ -91,7 +88,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
     `https://< brandID >.< DATACENTER >.qualtrics.com`
 
-1. Välj **Ange ytterligare URL: er**och utför följande steg om du vill konfigurera programmet i **SP** -initierat läge:
+1. Välj **Ange ytterligare URL: er** och utför följande steg om du vill konfigurera programmet i **SP** -initierat läge:
 
     I text rutan **inloggnings-URL** anger du en URL som använder följande mönster:
 
@@ -102,7 +99,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 1. På sidan **Konfigurera enkel inloggning med SAML** , i avsnittet **SAML-signeringscertifikat** , väljer du kopierings ikonen för att kopiera URL för **metadata för app Federation** och spara den på din dator.
 
-    ![Skärm bild av SAML-signerings certifikat med kopiera-ikonen markerad](common/copy-metadataurl.png)
+    ![Länk för nedladdning av certifikatet](common/copy-metadataurl.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Skapa en Azure AD-testanvändare
 
@@ -112,7 +109,7 @@ I det här avsnittet skapar du en test användare i Azure Portal som kallas B. S
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I **Namn**-fältet skriver du `B.Simon`.  
-   1. I fältet **användar namn** anger du username@companydomain.extension . Till exempel `B.Simon@contoso.com`.
+   1. I fältet **användar namn** anger du username@companydomain.extension . Ett exempel är `B.Simon@contoso.com`.
    1. Markera kryss rutan **Visa lösen ord** och skriv sedan lösen ordet.
    1. Välj **Skapa**.
 
@@ -123,13 +120,7 @@ I det här avsnittet aktiverar du B. Simon för att använda enkel inloggning me
 1. I Azure Portal väljer du **företags program**  >  **alla program**.
 1. I listan program väljer du **SAP Qualtrics**.
 1. På sidan Översikt för appen letar du reda på avsnittet **Hantera** och väljer **användare och grupper**.
-
-   ![Skärm bild av avsnittet hantera där användare och grupper är markerade](common/users-groups-blade.png)
-
 1. Välj **Lägg till användare**. I dialog rutan **Lägg till tilldelning** väljer **du användare och grupper**.
-
-    ![Skärm bild av sidan användare och grupper där Lägg till användare är markerat](common/add-assign-user.png)
-
 1. I dialog rutan **användare och grupper** väljer du **B. Simon** från listan över användare. Välj sedan **Välj** längst ned på skärmen.
 1. Om du förväntar dig ett roll värde i SAML-intyget väljer du lämplig roll för användaren i listan i dialog rutan **Välj roll** . Välj sedan **Välj** längst ned på skärmen.
 1. I dialogrutan **Lägg till tilldelning** väljer du **Tilldela**.
@@ -144,20 +135,20 @@ SAP Qualtrics stöder just-in-Time-etablering, som är aktiverat som standard. D
 
 ## <a name="test-sso"></a>Testa SSO 
 
-I det här avsnittet testar du konfigurationen av enkel inloggning med Azure AD med hjälp av åtkomst panelen.
+I det här avsnittet ska du testa Azure AD-konfigurationen för enkel inloggning med följande alternativ. 
 
-När du väljer panelen SAP-Qualtrics i åtkomst panelen loggas du automatiskt in på SAP-Qualtrics som du ställer in SSO för. Mer information finns i [Logga in och starta appar från portalen Mina appar](../user-help/my-apps-portal-end-user-access.md).
+#### <a name="sp-initiated"></a>SP initierad:
 
-## <a name="additional-resources"></a>Ytterligare resurser
+* Klicka på **testa det här programmet** i Azure Portal. Detta omdirigerar till SAP Qualtrics-inloggnings-URL: en där du kan starta inloggnings flödet.  
 
-- [Självstudier för att integrera SaaS-appar med Azure Active Directory](./tutorial-list.md)
+* Gå till SAP Qualtrics-inloggnings-URL: en direkt och starta inloggnings flödet därifrån.
 
-- [Vad är programåtkomst och enkel inloggning med Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+#### <a name="idp-initiated"></a>IDP initierad:
 
-- [Vad är villkorlig åtkomst i Azure Active Directory?](../conditional-access/overview.md)
+* Klicka på **testa det här programmet** i Azure Portal så bör du loggas in automatiskt på den SAP-Qualtrics som du ställer in SSO för.
 
-- [Prova SAP Qualtrics med Azure AD](https://aad.portal.azure.com/)
+Du kan också använda Microsoft Mina appar för att testa programmet i vilket läge som helst. När du klickar på panelen SAP-Qualtrics i Mina appar, om det kon figurer ATS i SP-läge, omdirigeras du till programmets inloggnings sida för att initiera inloggnings flödet och om det kon figurer ATS i IDP-läge, bör du logga in automatiskt på SAP-Qualtrics som du ställer in SSO för. Mer information om Mina appar finns i [Introduktion till Mina appar](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-- [Vad är session Control i Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)
+## <a name="next-steps"></a>Nästa steg
 
-- [Skydda SAP-Qualtrics med avancerad synlighet och kontroller](/cloud-app-security/proxy-intro-aad)
+När du har konfigurerat SAP-Qualtrics kan du framtvinga kontroll av sessioner, vilket skyddar exfiltrering och intrånget för organisationens känsliga data i real tid. Kontroll av sessionen sträcker sig från villkorlig åtkomst. Mer information finns i [Lär dig hur du tvingar fram en session med Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

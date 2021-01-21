@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 1/12/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 4ad1562bdd9853b6ff3c537790a54dbeab96b5b8
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 908460bd0a034e21524b6ea6d3042f362cc810d4
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98538561"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98623597"
 ---
 # <a name="activate-and-set-up-your-sensor"></a>Aktivera och konfigurera sensor
 
@@ -44,7 +44,7 @@ Innan du loggar in på sensor konsolen bör administratörs användare ha åtkom
 
 Din sensor har publicerats till Azure Defender för IoT i ett särskilt hanterings läge:
 
-| Typ av läge | Beskrivning |
+| Typ av läge | Description |
 |--|--|
 | **Läge för moln anslutning** | Information som sensorn känner av visas i sensor konsolen. Aviserings information levereras också via IoT Hub och kan delas med andra Azure-tjänster, till exempel Azure Sentinel. |
 | **Lokalt ansluten läge** | Information som sensorn känner av visas i sensor konsolen. Identifierings information delas också med den lokala hanterings konsolen, om sensorn är ansluten till den. |
@@ -134,15 +134,15 @@ När du har loggat in öppnas Azure Defender för IoT-konsolen.
 
 ## <a name="initial-setup-and-learning-for-administrators"></a>Inledande installation och inlärning (för administratörer)
 
-Efter din första inloggning börjar Azure Defender för IoT-sensorn att övervaka ditt nätverk automatiskt. Nätverks till gångar visas i avsnitten till gångs karta och till gångs lager. Azure Defender för IoT börjar identifiera och varna dig om alla säkerhets-och drifts incidenter som inträffar i nätverket. Du kan sedan skapa rapporter och frågor baserat på den identifierade informationen.
+Efter din första inloggning börjar Azure Defender för IoT-sensorn att övervaka ditt nätverk automatiskt. Nätverks enheter visas i avsnitten enhets karta och enhets inventering. Azure Defender för IoT börjar identifiera och varna dig om alla säkerhets-och drifts incidenter som inträffar i nätverket. Du kan sedan skapa rapporter och frågor baserat på den identifierade informationen.
 
-Inlednings vis utförs den här aktiviteten i inlärnings läge, vilket instruerar din sensor att lära sig din nätverks vanliga aktivitet. Sensorn lär sig till exempel till gångar som identifierats i nätverket, protokoll som identifierats i nätverket och fil överföringar mellan vissa till gångar. Den här aktiviteten blir nätverkets bas linje aktivitet.
+Inlednings vis utförs den här aktiviteten i inlärnings läge, vilket instruerar din sensor att lära sig din nätverks vanliga aktivitet. Sensorn lär sig till exempel enheter som identifierats i nätverket, protokoll som identifierats i nätverket och fil överföringar mellan vissa enheter. Den här aktiviteten blir nätverkets bas linje aktivitet.
 
 ### <a name="review-and-update-basic-system-settings"></a>Granska och uppdatera grundläggande Systeminställningar
 
 Granska sensorns Systeminställningar för att se till att sensorn är konfigurerad för optimal identifiering och avisering.
 
-Definiera sensorns system inställningar. Här är några exempel:
+Definiera sensorns system inställningar. Till exempel:
 
 - Definiera ICS (eller IoT) och åtskiljda undernät.
 
@@ -177,7 +177,7 @@ Du kommer åt konsol verktyg från sido menyn.
 
 **Navigering** 
 
-| Fönster | Ikon | Beskrivning |
+| Fönster | Ikon | Description |
 | -----------|--|--|
 | Instrumentpanel | :::image type="icon" source="media/concept-sensor-console-overview/dashboard-icon-azure.png" border="false"::: | Visa en intuitiv ögonblicks bild av status för nätverkets säkerhet. |
 | Enhets karta | :::image type="icon" source="media/concept-sensor-console-overview/asset-map-icon-azure.png" border="false"::: | Visa nätverks enheter, enhets anslutningar och enhets egenskaper på en karta. Olika zoomnings-, markerings-och filter alternativ är tillgängliga för visning av ditt nätverk. |
@@ -187,13 +187,13 @@ Du kommer åt konsol verktyg från sido menyn.
 
 **Analys**
 
-| Fönster| Ikon | Beskrivning |
+| Fönster| Ikon | Description |
 |---|---|---|
 | Händelse tids linje | :::image type="icon" source="media/concept-sensor-console-overview/event-timeline-icon-azure.png" border="false"::: | Visa en tids linje med information om aviseringar, nätverks händelser (information) och användar åtgärder, till exempel användar inloggningar och användar borttagningar.|
 
 **Navigering**
 
-| Fönster | Ikon | Beskrivning |
+| Fönster | Ikon | Description |
 |---|---|---|
 | Data utvinning | :::image type="icon" source="media/concept-sensor-console-overview/data-mining-icon-azure.png" border="false"::: | Generera omfattande och detaljerad information om dina nätverks enheter på olika lager. |
 | Trender och statistik | :::image type="icon" source="media/concept-sensor-console-overview/trends-and-statistics-icon-azure.jpg" border="false"::: | Visa trender och statistik i en mängd olika widgetar. |
@@ -201,7 +201,7 @@ Du kommer åt konsol verktyg från sido menyn.
 
 **Administratör**
 
-| Fönster | Ikon | Beskrivning |
+| Fönster | Ikon | Description |
 |---|---|---|
 | Användare | :::image type="icon" source="media/concept-sensor-console-overview/users-icon-azure.png" border="false"::: | Definiera användare och roller med olika åtkomst nivåer. |
 | Styr | :::image type="icon" source="media/concept-sensor-console-overview/forwarding-icon-azure.png" border="false"::: | Vidarebefordra aviserings information till partner som integreras med Defender för IoT, till e-postadresser, till webhook-servrar med mera. <br /> Mer information finns i [vidarebefordra aviserings information](how-to-forward-alert-information-to-partners.md) . |
@@ -210,7 +210,7 @@ Du kommer åt konsol verktyg från sido menyn.
 
 **Support**
 
-| Fönster| Ikon | Beskrivning |
+| Fönster| Ikon | Description |
 |----|---|---|
 | Support | :::image type="icon" source="media/concept-sensor-console-overview/support-icon-azure.png" border="false"::: | Kontakta [Microsoft Support](https://support.microsoft.com/) om du behöver hjälp. |
 

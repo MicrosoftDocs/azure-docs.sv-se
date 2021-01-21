@@ -3,12 +3,12 @@ title: Azure Event Hubs – visualisera data avvikelser i real tids händelser
 description: 'Självstudie: visualisera data avvikelser i real tids händelser som skickas till Microsoft Azure Event Hubs'
 ms.topic: tutorial
 ms.date: 06/23/2020
-ms.openlocfilehash: b72b82f3959565e6bd0598fef8e21bb64fedb053
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: bd08d611761e125fdd03173ce6027c60e82baed6
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97655687"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98623466"
 ---
 # <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>Självstudie: Visualisera dataavvikelser i realtidshändelser som skickats till Azure Event Hubs
 
@@ -16,7 +16,7 @@ Du kan använda Azure Stream Analytics med Azure Event Hubs för att kontrollera
 
 I den här självstudien får du simulera det här exemplet. Du kör ett program som skapar och skickar kreditkortstransaktioner till en händelsehubb. Sedan läser du data strömmen i real tid med Azure Stream Analytics, som avgränsar giltiga transaktioner från ogiltiga transaktioner och använder sedan Power BI för att visuellt identifiera de transaktioner som är märkta som ogiltiga.
 
-I den här guiden får du lära dig att:
+I de här självstudierna får du lära dig att
 > [!div class="checklist"]
 > * Skapa ett Event Hubs-namnområde
 > * Skapa en händelsehubb
@@ -312,7 +312,7 @@ I Stream Analytics-jobbet klickar du på **Starta**, på **Nu** och sedan på **
 
    Klicka på **Nästa**.
 
-10. Ange **Fraudulent uses** (Bedräglig användning) som rubrik och **Sum in last few minutes** (Summa de senaste minuterna) som underrubrik. Klicka på **Använd**. Panelen sparas på instrumentpanelen.
+10. Ange **Fraudulent uses** (Bedräglig användning) som rubrik och **Sum in last few minutes** (Summa de senaste minuterna) som underrubrik. Klicka på **Applicera**. Panelen sparas på instrumentpanelen.
 
     ![Skärmbild av rubrik och underrubrik för panelen på instrumentpanelen.](./media/event-hubs-tutorial-visualize-anomalies/power-bi-tile-details.png)
 
@@ -349,7 +349,7 @@ Logga in på ditt Power BI-konto. Gå till **Min arbetsyta**. Klicka på raden m
 
 ### <a name="clean-up-resources-using-azure-cli"></a>Rensa resurser med hjälp av Azure CLI
 
-Om du vill ta bort resursgruppen använder du kommandot [az group delete](/cli/azure/group?view=azure-cli-latest#az-group-delete).
+Om du vill ta bort resursgruppen använder du kommandot [az group delete](/cli/azure/group#az-group-delete).
 
 ```azurecli-interactive
 az group delete --name $resourceGroup

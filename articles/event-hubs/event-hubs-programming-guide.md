@@ -4,12 +4,12 @@ description: Den här artikeln innehåller information om hur du skriver kod fö
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 46bd0c3c1488d6dd7afbae5e88e0b83f56654bb8
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: a299813620ee90591d8c9491991237f75f2e9382
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131244"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98623056"
 ---
 # <a name="net-programming-guide-for-azure-event-hubs-legacy-microsoftazureeventhubs-package"></a>Programmerings guide för .NET för Azure Event Hubs (äldre Microsoft. Azure. EventHubs-paket)
 I den här artikeln beskrivs några vanliga scenarier när du skriver kod med hjälp av Azure Event Hubs. Den förutsätter att du har en grundläggande förståelse av händelsehubbar. En konceptuell översikt av händelsehubbar finns på [Översikt av händelsehubbar](./event-hubs-about.md).
@@ -57,7 +57,7 @@ Du skickar händelser till en Event Hub genom att skapa en [EventHubClient][] -i
 
 ## <a name="event-serialization"></a>Händelseserialisering
 
-Klassen [EventData][] har [två överbelastade konstruktorer](/dotnet/api/microsoft.azure.eventhubs.eventdata.-ctor) som tar en rad olika parametrar, byte eller en byte mat ris som representerar händelse data nytto lasten. När du använder JSON med [EventData][] kan du använda **Encoding.UTF8.GetBytes()** för att hämta bytematrisen för en JSON-kodad sträng. Exempel:
+Klassen [EventData][] har [två överbelastade konstruktorer](/dotnet/api/microsoft.azure.eventhubs.eventdata.-ctor) som tar en rad olika parametrar, byte eller en byte mat ris som representerar händelse data nytto lasten. När du använder JSON med [EventData][] kan du använda **Encoding.UTF8.GetBytes()** för att hämta bytematrisen för en JSON-kodad sträng. Till exempel:
 
 ```csharp
 for (var i = 0; i < numMessagesToSend; i++)
@@ -97,7 +97,7 @@ En enskild batch får inte överskrida gränsen på 1 MB för en händelse. Dess
 
 ## <a name="send-asynchronously-and-send-at-scale"></a>Skicka asynkront och skicka i skala
 
-Du skickar händelser till en Event Hub asynkront. Om du skickar asynkront ökar den hastighet som en klient kan skicka händelser till. [SendAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync) returnerar ett [aktivitets](/dotnet/api/system.threading.tasks.task?view=netcore-3.1) objekt. Du kan använda [RetryPolicy](/dotnet/api/microsoft.servicebus.retrypolicy) -klassen på klienten för att kontrol lera alternativen för klient återförsök.
+Du skickar händelser till en Event Hub asynkront. Om du skickar asynkront ökar den hastighet som en klient kan skicka händelser till. [SendAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync) returnerar ett [aktivitets](/dotnet/api/system.threading.tasks.task) objekt. Du kan använda [RetryPolicy](/dotnet/api/microsoft.servicebus.retrypolicy) -klassen på klienten för att kontrol lera alternativen för klient återförsök.
 
 ## <a name="event-consumers"></a>Händelsekonsumenter
 Klassen [EventProcessorHost][] bearbetar data från händelsehubbar. Du bör använda den här implementeringen när du skapar händelseläsare på .NET-plattformen. [EventProcessorHost][] ger en trådsäker, flerprocessig, säker körningsmiljö för implementeringar av händelseprocessorer som också ger hantering av kontrollpunkter och hantering av partitionsleasing.
@@ -109,7 +109,7 @@ Om du vill använda klassen [EventProcessorHost][] kan du implementera [IEventPr
 * [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync)
 * [ProcessErrorAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processerrorasync)
 
-Starta händelse bearbetningen genom att instansiera [EventProcessorHost][], med lämpliga parametrar för händelsehubben. Exempel:
+Starta händelse bearbetningen genom att instansiera [EventProcessorHost][], med lämpliga parametrar för händelsehubben. Till exempel:
 
 > [!NOTE]
 > EventProcessorHost och dess relaterade klasser finns i paketet **Microsoft. Azure. EventHubs. processor** . Lägg till paketet i Visual Studio-projektet genom att följa anvisningarna i [den här artikeln](event-hubs-dotnet-framework-getstarted-send.md#add-the-event-hubs-nuget-package) eller genom att utfärda följande kommando i fönstret [Package Manager-konsol](https://docs.nuget.org/docs/start-here/using-the-package-manager-console) : `Install-Package Microsoft.Azure.EventHubs.Processor` .

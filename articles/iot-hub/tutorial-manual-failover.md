@@ -1,6 +1,6 @@
 ---
-title: Manuell redundans för Azure IoT-hubb | Microsoft Docs
-description: Lär dig hur du utför en manuell redundansväxling av IoT-hubben till en annan region och bekräftar att den fungerar, och sedan återgår till den ursprungliga regionen och markerar den igen.
+title: Självstudie – manuell redundansväxling av en Azure IoT Hub | Microsoft Docs
+description: Självstudie – lär dig hur du utför en manuell redundansväxling av IoT-hubben till en annan region och bekräftar att den fungerar, och sedan återställer den till den ursprungliga regionen och markerar den igen.
 author: robinsh
 manager: timlt
 ms.service: iot-hub
@@ -11,12 +11,12 @@ ms.author: robinsh
 ms.custom:
 - mvc
 - mqtt
-ms.openlocfilehash: 69a0795b9c299b5113c39ce2c4556573f730e4b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3b6bc972f5c26c78ffff81f5bab8c2812cf2cb11
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89013953"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98622920"
 ---
 # <a name="tutorial-perform-manual-failover-for-an-iot-hub"></a>Självstudie: utföra manuell redundans för en IoT-hubb
 
@@ -39,7 +39,7 @@ Mer information om manuell redundans och Microsoft-initierad redundans med IoT H
 
 * Kontrol lera att port 8883 är öppen i brand väggen. Enhets exemplet i den här självstudien använder MQTT-protokoll, som kommunicerar via port 8883. Den här porten kan blockeras i vissa företags-och miljö nätverks miljöer. Mer information och sätt att kringgå det här problemet finns i [ansluta till IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
-## <a name="create-an-iot-hub"></a>Skapa en IoT-hubb
+## <a name="create-an-iot-hub"></a>Skapa en IoT Hub
 
 1. Logga in på [Azure Portal](https://portal.azure.com). 
 
@@ -79,9 +79,9 @@ Observera att det finns en gräns på två redundanser och två återställninga
 
    ![Skärmbild som visar fönsterrutan för manuell redundans](./media/tutorial-manual-failover/trigger-failover-02.png)
 
-1. Klicka på **Starta redundans**överst i fönstret manuell redundans. 
+1. Klicka på **Starta redundans** överst i fönstret manuell redundans. 
 
-1. I bekräftelse fönstret fyller du i namnet på din IoT Hub för att bekräfta att det är det som du vill redundansväxla. Klicka sedan på **redundans**för att starta redundansväxlingen.
+1. I bekräftelse fönstret fyller du i namnet på din IoT Hub för att bekräfta att det är det som du vill redundansväxla. Klicka sedan på **redundans** för att starta redundansväxlingen.
 
    Den tid det tar att utföra manuell redundans är proportionell mot antalet enheter som är registrerade för din hubb. Om du till exempel har 100 000 enheter kan det ta 15 minuter, men om du har fem miljoner enheter kan det ta en timme eller längre.
 
@@ -114,7 +114,7 @@ En återställning efter fel utförs precis som en manuell redundans. Det här �
 
 2. Under **Inställningar** i fönstret IoT Hub klickar du på **redundans**. 
 
-3. Klicka på **Starta redundans**överst i fönstret manuell redundans. 
+3. Klicka på **Starta redundans** överst i fönstret manuell redundans. 
 
 4. I bekräftelse fönstret fyller du i namnet på din IoT Hub för att bekräfta att det är det som du vill återställa efter fel. Sedan initierar du återställning efter fel genom att klicka på OK. 
 

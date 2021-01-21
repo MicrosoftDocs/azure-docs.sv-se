@@ -4,12 +4,12 @@ description: I den här artikeln beskrivs händelse bearbetnings värden i Azure
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a05f2172b266301919d0a800fb863b8f0dbe5884
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: de5d8f0f8bf9f64a473b18a50434cac83e8e38c3
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89319510"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98622070"
 ---
 # <a name="event-processor-host"></a>Värd för händelsebearbetning
 > [!NOTE]
@@ -42,7 +42,7 @@ I stället för att skapa en egen lösning för detta ger Event Hubs den här fu
 
 ## <a name="ieventprocessor-interface"></a>IEventProcessor-gränssnitt
 
-Först implementerar program som använder  [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) -gränssnittet, som har fyra metoder: [openAsync, CloseAsync, ProcessErrorAsync och ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor?view=azure-dotnet#methods). Det här gränssnittet innehåller den faktiska koden för att förbruka de händelser som Event Hubs skickar. Följande kod visar en enkel implementering:
+Först implementerar program som använder  [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) -gränssnittet, som har fyra metoder: [openAsync, CloseAsync, ProcessErrorAsync och ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor#methods). Det här gränssnittet innehåller den faktiska koden för att förbruka de händelser som Event Hubs skickar. Följande kod visar en enkel implementering:
 
 ```csharp
 public class SimpleEventProcessor : IEventProcessor
@@ -150,11 +150,11 @@ Som förklarat tidigare fören klar spårnings tabellen den automatiska skalning
 
 ## <a name="control-event-processor-host-options"></a>Styr värd alternativ för händelse bearbetning
 
-Dessutom tar en överlagring av [RegisterEventProcessorAsync](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost.registereventprocessorasync?view=azure-dotnet#Microsoft_Azure_EventHubs_Processor_EventProcessorHost_RegisterEventProcessorAsync__1_Microsoft_Azure_EventHubs_Processor_EventProcessorOptions_) ett [EventProcessorOptions](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost.registereventprocessorasync?view=azure-dotnet#Microsoft_Azure_EventHubs_Processor_EventProcessorHost_RegisterEventProcessorAsync__1_Microsoft_Azure_EventHubs_Processor_EventProcessorOptions_) -objekt som en parameter. Använd den här parametern för att styra beteendet för [EventProcessorHost. UnregisterEventProcessorAsync](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost.unregistereventprocessorasync) . [EventProcessorOptions](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions) definierar fyra egenskaper och en händelse:
+Dessutom tar en överlagring av [RegisterEventProcessorAsync](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost.registereventprocessorasync#Microsoft_Azure_EventHubs_Processor_EventProcessorHost_RegisterEventProcessorAsync__1_Microsoft_Azure_EventHubs_Processor_EventProcessorOptions_) ett [EventProcessorOptions](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost.registereventprocessorasync#Microsoft_Azure_EventHubs_Processor_EventProcessorHost_RegisterEventProcessorAsync__1_Microsoft_Azure_EventHubs_Processor_EventProcessorOptions_) -objekt som en parameter. Använd den här parametern för att styra beteendet för [EventProcessorHost. UnregisterEventProcessorAsync](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost.unregistereventprocessorasync) . [EventProcessorOptions](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions) definierar fyra egenskaper och en händelse:
 
 - [MaxBatchSize](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.maxbatchsize): den maximala storleken på den samling som du vill ta emot i ett anrop till [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync). Den här storleken är inte minimal, bara den maximala storleken. Om det finns färre meddelanden att ta emot körs **ProcessEventsAsync** med så många som var tillgängliga.
 - [PrefetchCount](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.prefetchcount): ett värde som används av den underliggande AMQP-kanalen för att fastställa den övre gränsen för hur många meddelanden klienten ska ta emot. Värdet måste vara större än eller lika med [MaxBatchSize](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.maxbatchsize).
-- [InvokeProcessorAfterReceiveTimeout](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.invokeprocessorafterreceivetimeout): om den här parametern är **True**anropas [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync) när det underliggande anropet att ta emot händelser på en tids gräns för partitionen. Den här metoden är användbar för att ta tidsbaserade åtgärder under perioder av inaktivitet på partitionen.
+- [InvokeProcessorAfterReceiveTimeout](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.invokeprocessorafterreceivetimeout): om den här parametern är **True** anropas [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync) när det underliggande anropet att ta emot händelser på en tids gräns för partitionen. Den här metoden är användbar för att ta tidsbaserade åtgärder under perioder av inaktivitet på partitionen.
 - [InitialOffsetProvider](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.initialoffsetprovider): aktiverar en funktions pekare eller ett lambda-uttryck som ska anges, vilket anropas för att ange den inledande förskjutningen när en läsare börjar läsa en partition. Utan att ange den här förskjutningen startar läsaren vid den äldsta händelsen, om inte en JSON-fil med en förskjutning redan har sparats i det lagrings konto som har angetts för [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) -konstruktorn. Den här metoden är användbar när du vill ändra beteendet för läsarens start. När den här metoden anropas innehåller parametern Object det partitions-ID som läsaren startas för.
 - [ExceptionReceivedEventArgs](/dotnet/api/microsoft.azure.eventhubs.processor.exceptionreceivedeventargs): gör att du kan få aviseringar om eventuella underliggande undantag som inträffar i [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost). Om saker inte fungerar som du förväntar dig, är den här händelsen en bra plats att börja titta på.
 
@@ -163,7 +163,7 @@ Dessutom tar en överlagring av [RegisterEventProcessorAsync](/dotnet/api/micros
 Så här fungerar den mottagna epoken:
 
 ### <a name="with-epoch"></a>Med epok
-Epok är en unik identifierare (värde värde) som tjänsten använder för att framtvinga ägande mellan partitioner och lån. Du skapar en epok-baserad mottagare med metoden [CreateEpochReceiver](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createepochreceiver?view=azure-dotnet) . Den här metoden skapar en epok-baserad mottagare. Mottagaren skapas för en specifik Event Hub-partition från den angivna konsument gruppen.
+Epok är en unik identifierare (värde värde) som tjänsten använder för att framtvinga ägande mellan partitioner och lån. Du skapar en epok-baserad mottagare med metoden [CreateEpochReceiver](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createepochreceiver) . Den här metoden skapar en epok-baserad mottagare. Mottagaren skapas för en specifik Event Hub-partition från den angivna konsument gruppen.
 
 Funktionen epok ger användarna möjlighet att se till att det bara finns en mottagare på en konsument grupp vid en viss tidpunkt, med följande regler:
 
@@ -172,7 +172,7 @@ Funktionen epok ger användarna möjlighet att se till att det bara finns en mot
 - Om det finns en mottagare med värdet ett värde av värde E1 och en ny mottagare skapas med ett värde på epoken E2 där E1 > E2, och sedan skapa E2 med fel: det finns redan en mottagare med epok E1.
 
 ### <a name="no-epoch"></a>Ingen epok
-Du skapar en icke-epok-baserad mottagare med hjälp av metoden [CreateReceiver](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createreceiver?view=azure-dotnet) . 
+Du skapar en icke-epok-baserad mottagare med hjälp av metoden [CreateReceiver](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createreceiver) . 
 
 Det finns vissa scenarier i Stream-bearbetningen där användare vill skapa flera mottagare i en enda konsument grupp. För att stödja sådana scenarier har vi möjlighet att skapa en mottagare utan epok och i det här fallet tillåter vi upp till 5 samtidiga mottagare på konsument gruppen.
 

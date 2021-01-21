@@ -11,12 +11,12 @@ ms.date: 09/22/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f1b1d792891b3ab8dabff42757d0e705e512879
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 80a035f30294449a024bbde76df2d42ddc23396e
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98614282"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98622719"
 ---
 # <a name="azure-ad-connect-cloud-sync-attribute-mapping"></a>Azure AD Connect mappning av attributdefinitioner för molnet
 
@@ -57,9 +57,9 @@ Följ stegen nedan om du vill använda den nya funktionen.
 
 1.  Välj **Azure Active Directory** i Azure Portal.
 2.  Välj **Azure AD Connect**.
-3.  Välj **Hantera etablering**.
+3.  Välj **hantera synkronisering av moln**.
 
-    ![Hantera etablering](media/how-to-configure/manage-1.png)
+    ![Hantera etablering](media/how-to-install/install-6.png)
 
 4. Under **konfiguration** väljer du din konfiguration.
 5. Välj **Klicka om du vill redigera mappningar**.  Då öppnas skärmen mappning av attribut.

@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 62fb239fd9cb8c1817dea5ab5c22684a65955ed5
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: 3a66ad61afe1439a80d750097d3c90d010547539
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98555737"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98622416"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Behörigheter för administratörsroller i Azure Active Directory
 
@@ -80,7 +80,7 @@ Användare med den här rollen kan ange eller återställa autentiseringsuppgift
 Rollen [Privileged Authentication Administrator](#privileged-authentication-administrator) har behörighet kan framtvinga omregistrering och Multi-Factor Authentication för alla användare.
 
 > [!IMPORTANT]
-> Användare med den här rollen kan ändra autentiseringsuppgifter för personer som kan ha åtkomst till känslig eller privat information eller kritisk konfiguration i och utanför Azure Active Directory. Att ändra autentiseringsuppgifterna för en användare kan innebära att du förutsätter att användarens identitet och behörigheter. Här är några exempel:
+> Användare med den här rollen kan ändra autentiseringsuppgifter för personer som kan ha åtkomst till känslig eller privat information eller kritisk konfiguration i och utanför Azure Active Directory. Att ändra autentiseringsuppgifterna för en användare kan innebära att du förutsätter att användarens identitet och behörigheter. Till exempel:
 >
 >* Program registrering och företags program ägare, som kan hantera autentiseringsuppgifter för appar som de äger. De här apparna kan ha privilegierade behörigheter i Azure AD och inte beviljas till autentiserings administratörer. Genom den här sökvägen kan en administratörs administratör kunna ta hänsyn till identiteten för en program ägare och sedan ytterligare anta identiteten för ett privilegierat program genom att uppdatera autentiseringsuppgifterna för programmet.
 >* Azure-Prenumerationens ägare, som kan ha åtkomst till känslig eller privat information eller kritisk konfiguration i Azure.
@@ -268,7 +268,7 @@ Användare med den här rollen kan ändra lösen ord, ogiltig uppdatera tokens, 
 * Rapportläsare
 
 > [!IMPORTANT]
-> Användare med den här rollen kan ändra lösen ord för personer som kan ha åtkomst till känslig eller privat information eller kritisk konfiguration i och utanför Azure Active Directory. Att ändra lösen ordet för en användare kan innebära att du antar användarens identitet och behörigheter. Här är några exempel:
+> Användare med den här rollen kan ändra lösen ord för personer som kan ha åtkomst till känslig eller privat information eller kritisk konfiguration i och utanför Azure Active Directory. Att ändra lösen ordet för en användare kan innebära att du antar användarens identitet och behörigheter. Till exempel:
 >
 >- Program registrering och företags program ägare, som kan hantera autentiseringsuppgifter för appar som de äger. De här apparna kan ha privilegierade behörigheter i Azure AD och beviljas ingen annan support administratör. Med hjälp av den här sökvägen kan IT-administratören kunna ta hänsyn till identiteten för en program ägare och sedan ytterligare utgå från identiteten för ett privilegierat program genom att uppdatera autentiseringsuppgifterna för programmet.
 >- Azure-Prenumerationens ägare, som kan ha åtkomst till känslig eller privat information eller kritisk konfiguration i Azure.
@@ -512,7 +512,7 @@ Användare med den här rollen kan skapa användare och hantera alla aspekter av
 | Endast på användare som inte är administratörer eller någon av följande begränsade administratörs roller:<ul><li>Katalog läsare<li>Grupp administratör<li>Gäst deltagare<li>Support administratör<li>Meddelande Center läsare<li>Lösen ords administratör<li>Rapportläsare<li>Användaradministratör|<p>Ta bort och Återställ</p><p>Inaktivera och aktivera</p><p>Invalidera uppdateringstoken</p><p>Hantera alla användar egenskaper inklusive användarens huvud namn</p><p>Återställa lösenord</p><p>Uppdatera (FIDO) enhets nycklar</p>|
 
 > [!IMPORTANT]
-> Användare med den här rollen kan ändra lösen ord för personer som kan ha åtkomst till känslig eller privat information eller kritisk konfiguration i och utanför Azure Active Directory. Att ändra lösen ordet för en användare kan innebära att du antar användarens identitet och behörigheter. Här är några exempel:
+> Användare med den här rollen kan ändra lösen ord för personer som kan ha åtkomst till känslig eller privat information eller kritisk konfiguration i och utanför Azure Active Directory. Att ändra lösen ordet för en användare kan innebära att du antar användarens identitet och behörigheter. Till exempel:
 >
 >- Program registrering och företags program ägare, som kan hantera autentiseringsuppgifter för appar som de äger. Dessa appar kan ha privilegierade behörigheter i Azure AD och inte beviljas till användar administratörer. Genom den här sökvägen kan en användar administratör kunna ta hänsyn till identiteten för en program ägare och sedan ytterligare anta identiteten för ett privilegierat program genom att uppdatera autentiseringsuppgifterna för programmet.
 >- Azure-Prenumerationens ägare, som kan ha åtkomst till känslig eller privat information eller kritisk konfiguration i Azure.
@@ -1971,6 +1971,7 @@ Programutvecklare | Programutvecklare | CF1C38E5-3621-4004-A7CB-879624DCED7C
 Administratör för autentisering | Administratör för autentisering | c4e39bd9-1100-46d3-8c65-fb160da0071f
 Författare för angrepps nytto Last | Författare för angrepps nytto Last | 9c6df0f2-1e7c-4dc3-b195-66dfbd24aa8f
 Administratör för attack simulering | Administratör för attack simulering | c430b396-e693-46cc-96f3-db01bf8bb62a
+Lokal administratör för Azure AD-ansluten enhet | Lokal administratör för Azure AD-ansluten enhet | 9f06204d-73c1-4d4c-880a-6edb90606fd8
 Azure DevOps-administratör | Azure DevOps-administratör | e3973bdf-4987-49ae-837a-ba8e231c7286
 Azure Information Protection administratör | Azure Information Protection administratör | 7495fdc4-34c4-4d15-a289-98788ce399fd
 B2C IEF Keys-administratör | B2C IEF Keys-administratör | aaf43236-0c0d-4d5f-883a-6955382ac081
@@ -1978,24 +1979,23 @@ B2C IEF-princip administratör | B2C IEF-princip administratör | 3edaf663-341e-
 Faktureringsadministratör | Faktureringsadministratör | b0f54661-2d74-4c50-afa3-1ec803f12efe
 Molnprogramadministratör | Moln program administratör | 158c047a-c907-4556-b7ef-446551a6b5f7
 Moln enhets administratör | Moln enhets administratör | 7698a772-787b-4ac8-901f-60d6b08affd2
-Företagsadministratör | Global administratör | 62e90394-69f5-4237-9190-012177145e10
 Efterlevnadsadministratör | Administratör för efterlevnad | 17315797-102d-40b4-93e0-432062caca18
 Efterlevnadsdataadministratör | Data administratör för efterlevnad | e6d1a23a-da11-4be4-9570-befc86d067a7
 Administratör för villkorsstyrd åtkomst | Administratör för villkorlig åtkomst | b1be1c3e-b65d-4f19-8427-f6fa0d97feb9
-Administratör för CRM-tjänsten | Dynamics 365-administratör | 44367163-eba1-44c3-98af-f5787879f96a
 Åtkomst god kännare för kund lås | Customer Lockbox åtkomst god kännare | 5c4f9dcd-47dc-4cf7-8c9a-9e4207cbfc91
 Administratör för Skriv bords analys | Administratör för Skriv bords analys | 38a96431-2bdf-4b4c-8b6e-5d3d8abac1a4
-Enhetsadministratörer | Enhets administratörer | 9f06204d-73c1-4d4c-880a-6edb90606fd8
 Enhets anslutning | Inaktuell | 9c094953-4995-41c8-84c8-3ebb9b32c93f
 Enhets hanterare | Inaktuell | 2b499bcd-da44-4968-8aec-78e1674fa64d
 Enhets användare | Inaktuell | d405c6df-0af8-4e3b-95e4-4d06e542189e
 Katalog läsare | Katalog läsare | 88d8e3e3-8f55-4a1e-953a-9b9898b8876b
 Konton för katalog synkronisering | Visas inte eftersom det inte ska användas | d29b2b05-8046-44ba-8758-1e26182fcf32
 Katalog skrivare | Katalog skrivare | 9360feb5-F418-4baa-8175-e2a00bac4301
-Exchange service-administratör | Exchange-administratör | 29232cdf-9323-42fd-ade2-1d097af3e4de
+Dynamics 365-administratör | Dynamics 365-administratör | 44367163-eba1-44c3-98af-f5787879f96a
+Exchange-administratör | Exchange-administratör | 29232cdf-9323-42fd-ade2-1d097af3e4de
 Användar flödes administratör för externt ID | Användar flödes administratör för externt ID | 6e591065-9bad-43ed-90f3-e9424366d2f0
 Administratör för externt ID-attribut för användar flöde | Administratör för externt ID-attribut för användar flöde | 0f971eea-41eb-4569-a71e-57bb8a3eff1e
 Administratör för extern identitetsprovider | Administratör för extern identitetsprovider | be2f45a1-457d-42af-a067-6ec1fa63bc45
+Global administratör | Global administratör | 62e90394-69f5-4237-9190-012177145e10
 Global läsare | Global läsare | f2ef992c-3afb-46b9-b7cf-a126ee74c451
 Grupp administratör | Grupp administratör | fdd7a751-b60b-444a-984c-02652fe8fa1c 
 Gäst deltagare | Gäst deltagare | 95e79109-95c0-4d8e-aee3-d01accf2d47b
@@ -2003,10 +2003,9 @@ Support administratör | Support administratör | 729827e3-9c14-49f7-bb1b-9608f1
 Hybrid identitets administratör | Hybrid identitets administratör | 8ac3fc64-6eca-42ea-9e69-59f4c7b60eb2
 Insights-administratör | Insights-administratör | eb1f4a8d-243a-41f0-9fbd-c7cdf6c5ef7c
 Affärs ledare för insikter | Affärs ledare för insikter | 31e939ad-9672-4796-9c2e-873181342d2d
-Intune Service-administratör | Intune-administratör | 3a2c62db-5318-420d-8d74-23affee5d9d5
+Intune-administratör | Intune-administratör | 3a2c62db-5318-420d-8d74-23affee5d9d5
 Kaizala-administratör | Kaizala-administratör | 74ef975b-6605-40af-a5d2-b9539d836353
 Licens administratör | Licensadministratör | 4d6ac14f-3453-41d0-bef9-a3e0c569773a
-Administratör för Lync-tjänsten | Skype for Business-administratör | 75941009-915a-4869-abe7-691bff18279e
 Meddelande Center sekretess läsare | Meddelande Center sekretess läsare | ac16e43d-7b2d-40e0-ac05-243ff356ab5b
 Meddelande Center läsare | Meddelande Center läsare | 790c1fb9-7f7d-4f88-86a1-ef1f95c05c1b
 Modern Commerce-användare | Modern Commerce-användare | d24aef57-1500-4070-84db-2666f29cf966
@@ -2015,7 +2014,7 @@ Office Apps-administratör | Office Apps-administratör | 2b745bdf-0803-4d80-aa6
 Support för partner 1 | Visas inte eftersom det inte ska användas | 4ba39ca4-527c-499a-b93d-d9b492c50246
 Support för partner – nivå 2 | Visas inte eftersom det inte ska användas | e00e864a-17c5-4a4b-9c06-f5b95a8d5bd8
 Lösen ords administratör | Lösenordsadministratör | 966707d0-3269-4727-9be2-8c3a10f19b9d
-Power BI-tjänstadministratör | Power BI administratör | a9ea8996-122f-4c74-9520-8edcd192826c
+Power BI administratör | Power BI administratör | a9ea8996-122f-4c74-9520-8edcd192826c
 Power Platform-administratör | Power-plattform administratör | 11648597-926c-4cf3-9c36-bcebb0ba8dcc
 Skrivar administratör | Skrivar administratör | 644ef478-e28f-4e28-b9dc-3fdde9aa0b1f
 Skrivar tekniker | Skrivar tekniker | e8cef6f1-e4bd-4ea8-bc07-4b8d950f4477
@@ -2028,15 +2027,16 @@ Säkerhetsadministratör | Säkerhetsadministratör | 194ae4cb-b126-40b2-bd5b-60
 Säkerhetsoperatör | Säkerhets operatör | 5f2222b1-57c3-48ba-8ad5-d4759f1fde6f
 Säkerhetsläsare | Säkerhetsläsare | 5d6b6bb7-de71-4623-b4af-96380a352509
 Tjänst support administratör | Tjänstsupportadministratör | f023fd81-a637-4b56-95fd-791ac0226033
-SharePoint-tjänsteadministratör | SharePoint-administratör | f28a1f50-f6e7-4571-818b-6a12f2af6b6c
+SharePoint-administratör | SharePoint-administratör | f28a1f50-f6e7-4571-818b-6a12f2af6b6c
+Skype för företag-administratör | Skype for Business-administratör | 75941009-915a-4869-abe7-691bff18279e
 Team kommunikations administratör | Team kommunikations administratör | baf37b3a-610e-45da-9e62-d9d1e5e8914b
 Support tekniker för Teams kommunikation | Support tekniker för Teams kommunikation | f70938a0-fc10-4177-9e90-2178f8765737
 Support specialist för Teams kommunikation | Support specialist för Teams kommunikation | fcf91098-03e3-41a9-b5ba-6f0ec8188a12
 Team enhets administratör | Team enhets administratör | 3d762c5a-1b6c-493f-843e-55a3b42923d4
-Team tjänst administratör | Team tjänst administratör | 69091246-20e8-4a56-aa4d-066075b2a7a8
+Team administratör | Team administratör | 69091246-20e8-4a56-aa4d-066075b2a7a8
 Rapport läsare för användnings Sammanfattning | Rapport läsare för användnings Sammanfattning | 75934031-6c7e-415a-99d7-48dbd49e875e
 User | Visas inte eftersom det inte kan användas | a0b1b346-4d3e-4e8b-98f8-753987be4970
-Administratör för användar konton | Användaradministratör | fe930be7-5e62-47db-91af-98c3a49a38b1
+Användaradministratör | Användaradministratör | fe930be7-5e62-47db-91af-98c3a49a38b1
 Anslutning till arbets plats enhet | Inaktuell | c34f683f-4d5a-4403-affd-6615e00e3a7f
 
 ## <a name="deprecated-roles"></a>Föråldrade roller
@@ -2057,15 +2057,11 @@ Alla roller som returneras av PowerShell eller MS Graph API visas i Azure Portal
 
 API-namn | Azure Portal namn | Kommentarer
 -------- | ------------------- | -------------
-Företagsadministratör | Global administratör | [Namnet ändrades för bättre klarhet](permissions-reference.md#role-template-ids)
-Administratör för CRM-tjänsten | Dynamics 365-administratör | [Visar aktuell produkt anpassning](permissions-reference.md#role-template-ids)
 Enhets anslutning | Inaktuell | [Dokumentation om föråldrade roller](permissions-reference.md#deprecated-roles)
 Enhets hanterare | Inaktuell | [Dokumentation om föråldrade roller](permissions-reference.md#deprecated-roles)
 Enhets användare | Inaktuell | [Dokumentation om föråldrade roller](permissions-reference.md#deprecated-roles)
 Konton för katalog synkronisering | Visas inte eftersom det inte ska användas | [Dokumentation om Directory Synchronization-konton](permissions-reference.md#directory-synchronization-accounts)
-Katalog skrivare | Visas inte eftersom det inte ska användas | [Dokumentation om katalog författare](permissions-reference.md#directory-writers)
 Gästanvändare | Visas inte eftersom det inte kan användas  | NA
-Administratör för Lync-tjänsten | Skype for Business-administratör | [Visar aktuell produkt anpassning](permissions-reference.md#role-template-ids)
 Support på partner nivå 1 | Visas inte eftersom det inte ska användas | [Support dokumentation för partner 1](permissions-reference.md#partner-tier1-support)
 Support på partner nivå 2 | Visas inte eftersom det inte ska användas | [Support dokumentation för partner – nivå 2](permissions-reference.md#partner-tier2-support)
 Begränsad gäst användare | Visas inte eftersom det inte kan användas | NA

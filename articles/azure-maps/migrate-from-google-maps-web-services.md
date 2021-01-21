@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 444e7c9ad06c6f2ad584c0701fa652b901a4c3e7
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 3bb0aadf81ba501070ce0c734847bb16c0378896
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97680768"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624046"
 ---
 # <a name="tutorial-migrate-web-service-from-google-maps"></a>Självstudie: Migrera webb tjänsten från Google Maps
 
@@ -22,6 +22,7 @@ Både Azure och Google Maps ger till gång till spatiala API: er via REST-webbtj
 
 I den här självstudien får du lära dig hur man:
 
+> [!div class="checklist"]
 > * Forward och omvända polykodning
 > * Söka efter platser av intresse
 > * Beräkna vägar och vägbeskrivningar
@@ -40,7 +41,7 @@ I tabellen visas Azure Maps tjänst-API: er, som har liknande funktioner som lis
 
 | API för Google Maps-tjänsten | API för Azure Maps tjänsten                                                                      |
 |-------------------------|---------------------------------------------------------------------------------------------|
-| Anvisningar              | [Väg](/rest/api/maps/route)                                     |                         
+| Anvisningar              | [Styra](/rest/api/maps/route)                                     |                         
 | Avstånds mat ris         | [Väg mat ris](/rest/api/maps/route/postroutematrixpreview)       |                         
 | Geokodning               | [Sök](/rest/api/maps/search)                                   |                         
 | Sök efter platser           | [Sök](/rest/api/maps/search)                                   |                         
@@ -66,7 +67,7 @@ Azure Maps har flera andra REST-webbtjänster som kan vara av intresse:
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-1. Logga in på [Azure-portalen](https://portal.azure.com). Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/free/) innan du börjar.
+1. Logga in på [Azure-portalen](https://portal.azure.com). Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/) innan du börjar.
 2. [Skapa ett Azure Maps konto](quick-demo-map-app.md#create-an-azure-maps-account)
 3. [Hämta en primär prenumerations nyckel](quick-demo-map-app.md#get-the-primary-key-for-your-account), även kallat primär nyckel eller prenumerations nyckel. Mer information om autentisering i Azure Maps finns i [hantera autentisering i Azure Maps](how-to-manage-authentication.md).
 
@@ -115,7 +116,7 @@ Den här tabellen kors referenser till Google Maps API-parametrar med jämförba
 | `key`                       | `subscription-key` – Se även [autentiseringen med Azure Maps](azure-maps-authentication.md) -dokumentationen. |
 | `language`                  | `language` – Se dokumentation om [språk som stöds](supported-languages.md) .  |
 | `latlng`                    | `query`  |
-| `location_type`             | *Saknas*     |
+| `location_type`             | *Ej tillämpligt*     |
 | `result_type`               | `entityType`    |
 
 Granska [metod tips för sökning](how-to-use-best-practices-for-search.md).
@@ -159,9 +160,9 @@ Tabellen kors refererar till Google Maps API-parametrar med de jämförbara Azur
 
 | Google Maps API-parameter | Jämförbar Azure Maps API-parameter |
 |---------------------------|-------------------------------------|
-| `fields`                  | *Saknas*                               |
+| `fields`                  | *Ej tillämpligt*                               |
 | `input`                   | `query`                             |
-| `inputtype`               | *Saknas*                               |
+| `inputtype`               | *Ej tillämpligt*                               |
 | `key`                     | `subscription-key` – Se även [autentiseringen med Azure Maps](azure-maps-authentication.md) -dokumentationen. |
 | `language`                | `language` – Se dokumentation om [språk som stöds](supported-languages.md) .  |
 | `locationbias`            | `lat`, `lon` och `radius`<br/>`topLeft` och `btmRight`<br/>`countrySet`  |
@@ -178,13 +179,13 @@ I tabellen visas Google Maps API-parametrar med de jämförbara Azure Maps API-p
 | `keyword`                   | `categorySet` och `brandSet`        |
 | `language`                  | `language` – Se dokumentation om [språk som stöds](supported-languages.md) .  |
 | `location`                  | `lat` och `lon`                     |
-| `maxprice`                  | *Saknas*                               |
-| `minprice`                  | *Saknas*                               |
+| `maxprice`                  | *Ej tillämpligt*                               |
+| `minprice`                  | *Ej tillämpligt*                               |
 | `name`                      | `categorySet` och `brandSet`        |
-| `opennow`                   | *Saknas*                               |
+| `opennow`                   | *Ej tillämpligt*                               |
 | `pagetoken`                 | `ofs` och `limit`                   |
 | `radius`                    | `radius`                            |
-| `rankby`                    | *Saknas*                               |
+| `rankby`                    | *Ej tillämpligt*                               |
 | `type`                      | `categorySet –` Se dokumentation om [Sök kategorier som stöds](supported-search-categories.md) .   |
 
 ## <a name="calculate-routes-and-directions"></a>Beräkna vägar och vägbeskrivningar
@@ -264,10 +265,10 @@ Tabellen kors refererar till Google Maps API-parametrar med de jämförbara API-
 | `markers`                   | `pins`                             |
 | `path`                      | `path`                             |
 | `region`                    | *Ej tillämpligt* – det här är en funktion för att koda en funktion. Använd `countrySet` parametern när du använder API: et för Azure Maps-kodning.  |
-| `scale`                     | *Saknas*                              |
+| `scale`                     | *Ej tillämpligt*                              |
 | `size`                      | `width` och `height` – kan vara upp till 8192x8192 i storlek. |
-| `style`                     | *Saknas*                              |
-| `visible`                   | *Saknas*                              |
+| `style`                     | *Ej tillämpligt*                              |
+| `visible`                   | *Ej tillämpligt*                              |
 | `zoom`                      | `zoom`                             |
 
 > [!NOTE]

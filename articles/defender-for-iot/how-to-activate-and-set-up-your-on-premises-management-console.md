@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 1/12/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: d344b3d9ea54243d61cc6a1f3f0982eb5ab1d238
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 94a1db30419e5d7e52f369392d94b817d0dc273a
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98538590"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98623762"
 ---
 # <a name="activate-and-set-up-your-on-premises-management-console"></a>Aktivera och konfigurera den lokala hanteringskonsolen 
 
@@ -147,13 +147,13 @@ Så här konfigurerar du tunnel trafik på sensorn:
 
 ## <a name="set-up-a-site"></a>Konfigurera en plats
 
-Standard företags kartan ger en övergripande vy över dina till gångar enligt flera nivåer av geografiska platser.
+Standard företags kartan ger en övergripande vy över dina enheter i enlighet med flera olika nivåer av geografiska platser.
 
-Du kan behöva visa dina till gångar där organisationens struktur och användar behörigheter är komplexa. I dessa fall kan plats installationen bestämmas av en global organisations struktur, förutom standard platsen eller zon strukturen.
+Du kan behöva visa dina enheter där organisationens struktur och användar behörigheter är komplexa. I dessa fall kan plats installationen bestämmas av en global organisations struktur, förutom standard platsen eller zon strukturen.
 
 För att stödja den här miljön måste du skapa en global affärstopologi som baseras på organisationens affär senheter, regioner, platser och zoner. Du måste också definiera användar åtkomst behörigheter runt dessa entiteter med hjälp av åtkomst grupper.
 
-Med åtkomst grupper får du bättre kontroll över var användare hanterar och analyserar till gångar i-plattformen Defender för IoT.
+Med åtkomst grupper får du bättre kontroll över var användarna hanterar och analyserar enheter i-plattformen Defender för IoT.
 
 ### <a name="how-it-works"></a>Så här fungerar det
 
@@ -215,7 +215,7 @@ Så här tar du bort en webbplats:
 
 ## <a name="create-enterprise-zones"></a>Skapa företags zoner
 
-Zoner är logiska entiteter som gör att du kan dela in till gångar inom en plats i grupper utifrån olika egenskaper. Du kan till exempel skapa grupper för produktions rader, understationer, plats områden eller typer av till gångar. Du kan definiera zoner utifrån alla egenskaper som är lämpliga för din organisation.
+Zoner är logiska entiteter som gör att du kan dela upp enheter inom en plats i grupper baserat på olika egenskaper. Du kan till exempel skapa grupper för produktions linjer, understationer, plats områden eller typer av enheter. Du kan definiera zoner utifrån alla egenskaper som är lämpliga för din organisation.
 
 Du konfigurerar zoner som en del av plats konfigurations processen.
 
@@ -225,13 +225,13 @@ I följande tabell beskrivs parametrarna i fönstret **plats hantering** .
 
 | Parameter | Beskrivning |
 |--|--|
-| Namn | Sensorns namn. Du kan bara ändra det här namnet från sensorn. Mer information finns i användar handboken för Defender for IoT. |
+| Name | Sensorns namn. Du kan bara ändra det här namnet från sensorn. Mer information finns i användar handboken för Defender for IoT. |
 | IP-adress | Sensorns IP-adress. |
 | Version | Sensor versionen. |
-| Anslutningar | Sensor anslutnings status. Statusen kan vara **ansluten** eller **frånkopplad**. |
+| Anslutning | Sensor anslutnings status. Statusen kan vara **ansluten** eller **frånkopplad**. |
 | Senaste uppgradering | Datumet för den senaste uppgraderingen. |
 | Uppgraderings förlopp | Förlopps indikatorn visar status för uppgraderings processen, enligt följande:<br />– Laddar upp paket<br />– Förbereder installation<br />– Stoppa processer<br />-Säkerhetskopiera data<br />-Tar ögonblicks bild<br />– Uppdaterar konfigurationen<br />– Uppdatering av beroenden<br />– Uppdaterar bibliotek<br />– Korrigera databaser<br />– Startar processer<br />-Verifierar systemets Sanity<br />– Verifieringen lyckades<br />-Lyckades<br />-Failure<br />-Uppgraderingen har startat<br />-Startar installationenogress bar shows the status of the upgrade process, as follows:<br />- Uploading package<br />- Preparing to install<br />- Stopping processes<br />- Backing up data<br />- Taking snapshot<br />- Updating configuration<br />- Updating dependencies<br />- Updating libraries<br />- Patching databases<br />- Starting processes<br />- Validating system sanity<br />- Validation succeeded<br />- Success<br />- Failure<br />- Upgrade started<br />- Starting installation<br /></br >Mer information om hur du uppgraderar finns i [Microsoft Support](https://support.microsoft.com/) för hjälp. |
-| Tillgångar | Det antal sätts till gångar som sensorn övervakar. |
+| Enheter | Antalet enhets enheter som sensorn övervakar. |
 | Aviseringar | Antalet aviseringar på sensorn. |
 | :::image type="icon" source="media/how-to-activate-and-set-up-your-on-premises-management-console/assign-icon.png" border="false"::: | Aktiverar tilldelning av en sensor till zoner. |
 | :::image type="icon" source="media/how-to-activate-and-set-up-your-on-premises-management-console/delete-icon.png" border="false":::| Aktiverar borttagning av en frånkopplad sensor från platsen. |

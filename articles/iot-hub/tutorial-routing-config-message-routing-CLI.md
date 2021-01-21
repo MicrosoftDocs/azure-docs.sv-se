@@ -1,6 +1,6 @@
 ---
-title: Konfigurera meddelanderoutning för Azure IoT Hub med Azure CLI
-description: Konfigurera meddelanderoutning för Azure IoT Hub med Azure CLI. Beroende på egenskaperna i meddelandet dirigerar du antingen till ett lagrings konto eller en Service Bus kö.
+title: Självstudie – konfigurera meddelanderoutning för Azure IoT Hub med Azure CLI
+description: Självstudie – konfigurera meddelanderoutning för Azure IoT Hub med hjälp av Azure CLI. Beroende på egenskaperna i meddelandet dirigerar du antingen till ett lagrings konto eller en Service Bus kö.
 author: robinsh
 manager: philmea
 ms.service: iot-hub
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: robinsh
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 239d8f2bcc1422a1098fb8f6cb3fba6706d671f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 25c3ff7582ed408776c0ae6904e4bacddd89e40b
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87500205"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624178"
 ---
 # <a name="tutorial-use-the-azure-cli-to-configure-iot-hub-message-routing"></a>Självstudie: Använd Azure CLI för att konfigurera IoT Hub meddelanderoutning
 
@@ -147,7 +147,7 @@ Nu när bas resurserna har kon figurer ATS kan du konfigurera meddelanderoutning
 
 [!INCLUDE [iot-hub-include-create-routing-description](../../includes/iot-hub-include-create-routing-description.md)]
 
-Om du vill skapa en Dirigerings slut punkt använder du [AZ IoT Hub routing-Endpoint Create](/cli/azure/iot/hub/routing-endpoint?view=azure-cli-latest#az-iot-hub-routing-endpoint-create). Om du vill skapa meddelande vägen för slut punkten använder du [AZ IoT Hub Route Create](/cli/azure/iot/hub/route?view=azure-cli-latest#az-iot-hub-route-create).
+Om du vill skapa en Dirigerings slut punkt använder du [AZ IoT Hub routing-Endpoint Create](/cli/azure/iot/hub/routing-endpoint?view=azure-cli-latest#az-iot-hub-routing-endpoint-create&preserve-view=true). Om du vill skapa meddelande vägen för slut punkten använder du [AZ IoT Hub Route Create](/cli/azure/iot/hub/route?view=azure-cli-latest#az-iot-hub-route-create&preserve-view=true).
 
 ### <a name="route-to-a-storage-account"></a>Dirigera till ett lagrings konto
 

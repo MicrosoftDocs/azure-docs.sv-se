@@ -1,6 +1,6 @@
 ---
-title: Konfigurera meddelanderoutning för Azure IoT Hub att använda en Azure Resource Manager-mall
-description: Konfigurera meddelanderoutning för Azure IoT Hub att använda en Azure Resource Manager-mall
+title: Självstudie – konfigurera meddelanderoutning för Azure IoT Hub att använda en Azure Resource Manager mall
+description: Självstudie – konfigurera meddelanderoutning för Azure IoT Hub att använda en Azure Resource Manager mall
 author: robinsh
 manager: philmeagit st
 ms.service: iot-hub
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: e5ae5948c8baf1573393c73026c84d0f62e8693e
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 53217340b0d91f3de77e5e0d8c0a82e30599d6ed
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92480113"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621435"
 ---
 # <a name="tutorial-use-an-azure-resource-manager-template-to-configure-iot-hub-message-routing"></a>Självstudie: Använd en Azure Resource Manager-mall för att konfigurera IoT Hub meddelanderoutning
 
@@ -58,7 +58,7 @@ De flesta av dessa parametrar har standardvärden. De som slutar med **_In** sam
 
 **sku_name**: det här fältet är skalningen för IoT Hub. Värdet måste vara S1 eller högre. en kostnads fri nivå fungerar inte för den här självstudien eftersom den inte tillåter flera slut punkter.
 
-**sku_units**: det här fältet går till **sku_name**och är antalet IoT Hub enheter som kan användas.
+**sku_units**: det här fältet går till **sku_name** och är antalet IoT Hub enheter som kan användas.
 
 **d2c_partitions**: det här fältet är antalet partitioner som används för händelse strömmen.
 
@@ -74,7 +74,7 @@ De flesta av dessa parametrar har standardvärden. De som slutar med **_In** sam
 
 **AuthRules_sb_queue**: det här fältet är auktoriseringsregler för Service Bus-kön som används för att hämta anslutnings strängen för kön.
 
-### <a name="variables"></a>Variables (Variabler)
+### <a name="variables"></a>Variabler
 
 Dessa värden används i mallen och är mest härledda från parametrar.
 
@@ -364,7 +364,7 @@ Använd Utforskaren som öppnas för att hitta filerna på den lokala disken och
 
 När filerna har laddats upp visas en resultat dialog ruta som liknar följande bild.
 
-![Cloud Shell meny raden med Ladda upp/ladda ned filer markerade](media/tutorial-routing-config-message-routing-RM-template/CloudShell_upload_results.png)
+![Cloud Shell meny raden med resultat för uppladdning/hämtning markerad](media/tutorial-routing-config-message-routing-RM-template/CloudShell_upload_results.png)
 
 Filerna överförs till resursen som används av Cloud Shell-instansen. 
 

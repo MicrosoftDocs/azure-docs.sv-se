@@ -1,6 +1,6 @@
 ---
-title: Kontrollera enhetens anslutning till Azure IoT-hubb
-description: Använd IoT-hubb-verktyg för att felsöka anslutningsproblem för enheten till din IoT-hubb under utvecklingen.
+title: Självstudie – kontrol lera enhets anslutningen till Azure IoT Hub
+description: Självstudie – Använd IoT Hub-verktyg för att felsöka, under utveckling, problem med enhets anslutning till IoT Hub.
 services: iot-hub
 author: wesmc7777
 manager: philmea
@@ -16,12 +16,12 @@ ms.custom:
 ms.date: 02/22/2019
 ms.topic: tutorial
 ms.service: iot-hub
-ms.openlocfilehash: 1eead9bb93fe8b753ace518cde18b240ab1a3cd4
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 060ed8bfc424fcb9dab8fc12faf5e3822fa86a31
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96572685"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621451"
 ---
 # <a name="tutorial-use-a-simulated-device-to-test-connectivity-with-your-iot-hub"></a>Självstudier: Använda en simulerad enhet för att testa anslutningen till din IoT-hubb
 
@@ -29,7 +29,7 @@ I den här kursen använder du Azure IoT Hub-portalverktyg och Azure CLI-kommand
 
 Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-I den här guiden får du lära dig att:
+I de här självstudierna får du lära dig att
 > [!div class="checklist"]
 > * Kontrollera din enhetsautentisering
 > * Kontrollera anslutningen från enhet till moln

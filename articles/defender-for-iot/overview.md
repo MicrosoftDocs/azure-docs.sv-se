@@ -12,18 +12,18 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/09/2020
-ms.openlocfilehash: 13f9e2271dd18121ba740c843e99fae86c76821d
-ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
+ms.openlocfilehash: 5b4ab207462955be3876dc1a25fae491e48a9cd2
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/01/2021
-ms.locfileid: "97845414"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621718"
 ---
 # <a name="welcome-to-azure-defender-for-iot"></a>Välkommen till Azure Defender för IoT
 
 Drift teknik nätverk har många av de mest kritiska aspekterna av vårt samhälle. Men många av dessa tekniker har inte utformats med säkerhet i åtanke och kan inte skyddas med traditionella IT-säkerhetskontroller. Under tiden är Sakernas Internet (IoT) att möjliggöra en ny våg av innovation med miljarder anslutna enheter, vilket ökar risken för attacker och risker.  
 
-Azure Defender for IoT är en enhetlig säkerhetslösning för att identifiera IoT/sätt-tillgångar, sårbarheter och hot. Det gör att du kan skydda hela IoT/miljö-miljön, oavsett om du behöver skydda befintliga IoT/enhets enheter eller bygga säkerhet i nya IoT-innovationer.  
+Azure Defender for IoT är en enhetlig säkerhetslösning för att identifiera IoT/enhets enheter, sårbarheter och hot. Det gör att du kan skydda hela IoT/miljö-miljön, oavsett om du behöver skydda befintliga IoT/enhets enheter eller bygga säkerhet i nya IoT-innovationer.  
 
 Azure Defender for IoT erbjuder två uppsättningar funktioner som passar din miljös behov.
 
@@ -47,7 +47,7 @@ Funktionerna för övervakning utan agent i Azure Defender för IoT ger dig insy
 
 ### <a name="automatic-device-discovery"></a>Automatisk enhets identifiering  
 
-Använd passiv, agent lös nätverks övervakning för att få en fullständig inventering av alla IoT/egendoms-tillgångar, deras information och hur de kommunicerar, med noll påverkan på IoT/nätverks-nätverket.  
+Använd passiv, agent lös nätverks övervakning för att få en fullständig inventering av alla IoT/enhets enheter, deras information och hur de kommunicerar, med noll påverkan på IoT/nätverks-nätverket.  
 
 ### <a name="proactive-visibility-into-risk-and-vulnerabilities"></a>Proaktiv insyn i risker och sårbarheter
  
@@ -61,7 +61,7 @@ Identifiera avvikande eller obehöriga aktiviteter med specialiserad IoT/känsli
 
 Integrera i Azure Sentinel för en fågels ögon visning av hela organisationen. Implementera enhetlig IoT/annan säkerhets styrning med integrering i dina befintliga arbets flöden, inklusive verktyg från tredje part som Splunk, IBM QRadar och ServiceNow. 
 
-## <a name="agent-based-solution-for-device-builders"></a>Agent-baserad lösning för enhets byggare 
+## <a name="agent-based-solution-for-device-builders"></a>Agentbaserad lösning för enhetsskapare 
 
 Säkerhet är ett nära universellt problem för IoT-implementeringar. IoT-enheter har unika behov för slut punkts övervakning, hantering av säkerhets position och hot identifiering – allt med mycket specifika prestanda krav. 
 

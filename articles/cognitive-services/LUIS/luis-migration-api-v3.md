@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 06/30/2020
-ms.openlocfilehash: 59cf250a9db5a1f6759495c1b5a3c48cb07cde15
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 59dfa439f6428f2db972a8f848887e1a74bc2622
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95018795"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624311"
 ---
 # <a name="prediction-endpoint-changes-for-v3"></a>Förutsägelse slut punkt ändringar för v3
 
@@ -66,9 +66,6 @@ Detta API stöds inte i v3 förutsägelse slut punkt – Fortsätt att använda 
 
 Fortsätt att använda v2 API förutsägelse-slutpunkten tills V 4.7 i bot Framework har släppts.
 
-## <a name="v2-api-deprecation"></a>V2 API-utfasning
-
-API: et förutsägelser är inte längre i minst 9 månader efter för hands versionen av v3, den 8 juni 2020.
 
 ## <a name="endpoint-url-changes"></a>Slut punkts-URL-ändringar
 
@@ -268,9 +265,6 @@ I v3, samma resultat med `verbose` flaggan för att returnera metadata för enti
 
 Lär dig [begrepp](schema-change-prediction-runtime.md) om hur du utökar appen vid förutsägelse körning.
 
-## <a name="deprecation"></a>Utfasning
-
-V2-API: t är inte inaktuellt i minst 9 månader efter för hands versionen av v3.
 
 ## <a name="next-steps"></a>Nästa steg
 

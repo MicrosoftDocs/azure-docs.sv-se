@@ -1,6 +1,6 @@
 ---
-title: Synkronisera enhetens tillstånd från Azure IoT Hub | Microsoft Docs
-description: Lär dig hur du använder enhets dubbla för att konfigurera dina enheter från molnet och ta emot status-och efterlevnadsprinciper från dina enheter.
+title: Självstudie – synkronisera enhets tillstånd från Azure IoT Hub | Microsoft Docs
+description: Självstudie – lär dig hur du använder enhets dubbla för att konfigurera dina enheter från molnet och få status-och efterlevnadsprinciper från dina enheter.
 services: iot-hub
 author: wesmc7777
 ms.author: wesmc
@@ -15,12 +15,12 @@ ms.custom:
 - 'Role: IoT Device'
 - devx-track-js
 - devx-track-azurecli
-ms.openlocfilehash: 9ec2c51f01d6b13f33bc2d537a8f73a6721967d4
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 912e59197970e60f57a13c049ffadbd2ad938a9b
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96572532"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621419"
 ---
 <!-- **TODO** Update publish config with repo paths before publishing! -->
 

@@ -3,12 +3,12 @@ title: Azure Service Bus vanliga frågor och svar (FAQ) | Microsoft Docs
 description: Den här artikeln innehåller svar på några vanliga frågor och svar om Azure Service Bus.
 ms.topic: article
 ms.date: 09/16/2020
-ms.openlocfilehash: acd741101928f5a2dfd72eab1598af6e4556a3d1
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 576df12a9d53ec3585f8691016cd250bf1ba4be3
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96022155"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98623115"
 ---
 # <a name="azure-service-bus---frequently-asked-questions-faq"></a>Vanliga frågor och svar om Azure Service Bus
 
@@ -57,7 +57,7 @@ De officiella Azure-SDK: erna använder vanligt vis AMQP-protokollet för att sk
 
 [!INCLUDE [service-bus-websockets-options](../../includes/service-bus-websockets-options.md)]
 
-Det äldre WindowsAzure. Service Bus-paketet för .NET Framework har ett alternativ för att använda det äldre "Service Bus Messaging Protocol" (SBMP), även kallat "netmessaging". Protokollet använder TCP-portarna 9350-9354. Standard läget för det här paketet är att automatiskt identifiera om dessa portar är tillgängliga för kommunikation och kommer att växla till WebSockets med TLS via port 443 om så inte är fallet. Du kan åsidosätta den här inställningen och framtvinga det här läget genom att ställa in `Https` [ConnectivityMode](/dotnet/api/microsoft.servicebus.connectivitymode?view=azure-dotnet) på [`ServiceBusEnvironment.SystemConnectivity`](/dotnet/api/microsoft.servicebus.servicebusenvironment.systemconnectivity?view=azure-dotnet) inställningen, som tillämpas globalt för programmet.
+Det äldre WindowsAzure. Service Bus-paketet för .NET Framework har ett alternativ för att använda det äldre "Service Bus Messaging Protocol" (SBMP), även kallat "netmessaging". Protokollet använder TCP-portarna 9350-9354. Standard läget för det här paketet är att automatiskt identifiera om dessa portar är tillgängliga för kommunikation och kommer att växla till WebSockets med TLS via port 443 om så inte är fallet. Du kan åsidosätta den här inställningen och framtvinga det här läget genom att ställa in `Https` [ConnectivityMode](/dotnet/api/microsoft.servicebus.connectivitymode) på [`ServiceBusEnvironment.SystemConnectivity`](/dotnet/api/microsoft.servicebus.servicebusenvironment.systemconnectivity) inställningen, som tillämpas globalt för programmet.
 
 ### <a name="what-ip-addresses-do-i-need-to-add-to-allow-list"></a>Vilka IP-adresser måste jag lägga till i listan över tillåtna?
 Följ dessa steg om du vill hitta rätt IP-adresser som ska läggas till i listan över tillåtna anslutningar:

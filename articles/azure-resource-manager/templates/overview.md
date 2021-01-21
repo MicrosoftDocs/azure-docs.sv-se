@@ -2,13 +2,13 @@
 title: Översikt över mallar
 description: Beskriver fördelarna med Azure Resource Manager mallar (ARM-mallar) för att distribuera resurser.
 ms.topic: conceptual
-ms.date: 12/17/2020
-ms.openlocfilehash: c4995791b784351219458c546442d082e2396315
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.date: 01/20/2021
+ms.openlocfilehash: dd9207ca1d0397b7dce63eb826567f07b1d0b892
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97657319"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621847"
 ---
 # <a name="what-are-arm-templates"></a>Vad är ARM-mallar?
 
@@ -125,6 +125,12 @@ Om du tänker dig att dina nivåer har separata livscykler kan du distribuera di
 ![nivåmall](./media/overview/tier-templates.png)
 
 Mer information om kapslade mallar finns i [Använda länkade mallar med Azure Resource Manager](linked-templates.md).
+
+## <a name="share-templates"></a>Dela mallar
+
+När du har skapat mallen kanske du vill dela den med andra användare i din organisation. Med [specifikationer för mallar](template-specs.md) kan du lagra en mall som en resurs typ. Du använder rollbaserad åtkomst kontroll för att hantera åtkomst till mallen specifikation. Användare med Läs behörighet till mallen specifikation kan distribuera den, men inte ändra mallen.
+
+Den här metoden innebär att du på ett säkert sätt kan dela mallar som uppfyller organisationens standarder.
 
 ## <a name="next-steps"></a>Nästa steg
 

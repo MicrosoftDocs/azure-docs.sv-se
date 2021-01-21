@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 12/04/2020
+ms.date: 01/19/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8dce284c0fffe10fe077fcb6c6713ba65c45751
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 9442489efd2a84ac8a31dfb2efb5718e1fd4f594
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743912"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621801"
 ---
 # <a name="combined-security-information-registration-for-azure-active-directory-overview"></a>Kombinerad säkerhets informations registrering för Azure Active Directory översikt
 
@@ -30,18 +30,18 @@ Den här artikeln beskriver hur kombinerad säkerhets registrering är. Informat
 > [!div class="nextstepaction"]
 > [Aktivera kombinerad säkerhets registrering](howto-registration-mfa-sspr-combined.md)
 
-![Min profil visar registrerad säkerhets information för en användare](media/concept-registration-mfa-sspr-combined/combined-security-info-defualts-registered.png)
+![Mitt konto visar registrerad säkerhets information för en användare](media/concept-registration-mfa-sspr-combined/combined-security-info-defaults-registered.png)
 
 Innan du aktiverar den nya upplevelsen kan du läsa den här administratörs säkra dokumentationen och den användar fokuserade dokumentationen så att du förstår funktionerna och effekterna av den här funktionen. Basera din utbildning på [användar dokumentationen](../user-help/security-info-setup-signin.md) för att förbereda dina användare för den nya upplevelsen och hjälpa till att säkerställa en lyckad distribution.
 
 Den kombinerade säkerhets informations registreringen i Azure AD är för närvarande inte tillgänglig för nationella moln som Azure Germany eller Azure Kina 21Vianet. Den är tillgänglig för Azure amerikanska myndigheter.
 
 > [!IMPORTANT]
-> Användare som har Aktiver ATS för både den ursprungliga för hands versionen och den förbättrade kombinerade registrerings upplevelsen ser det nya beteendet. Användare som är aktiverade för båda upplevelserna ser bara den nya min profil upplevelsen. Den nya *min profil* överensstämmer med utseendet och känslan av kombinerad registrering och ger en sömlös upplevelse för användarna. Användarna kan se min profil genom att gå till [https://myprofile.microsoft.com](https://myprofile.microsoft.com) .
+> Användare som har Aktiver ATS för både den ursprungliga för hands versionen och den förbättrade kombinerade registrerings upplevelsen ser det nya beteendet. Användare som är aktiverade för båda upplevelserna ser bara mitt konto upplevelse. *Mitt konto* överensstämmer med utseendet och känslan av kombinerad registrering och ger en sömlös upplevelse för användarna. Användarna kan se mitt konto genom att gå till [https://myaccount.microsoft.com](https://myaccount.microsoft.com) .
 >
 > Du kan stöta på ett fel meddelande när du försöker få åtkomst till alternativet för säkerhets information, till exempel "det går inte att logga in". Bekräfta att du inte har någon konfigurations-eller grup princip objekt som blockerar cookies från tredje part i webbläsaren.
 
-*Mina profil* sidor är lokaliserade baserat på språk inställningarna för den dator som har åtkomst till sidan. Microsoft lagrar det senaste språket som används i webbläsarens cacheminne, så efterföljande försök att komma åt sidorna fortsätter att återges på det senast använda språket. Sidorna återges igen om du rensar cacheminnet.
+*Mina konto* sidor är lokaliserade baserat på språk inställningarna för datorn som kommer åt sidan. Microsoft lagrar det senaste språket som används i webbläsarens cacheminne, så efterföljande försök att komma åt sidorna fortsätter att återges på det senast använda språket. Sidorna återges igen om du rensar cacheminnet.
 
 Om du vill tvinga ett speciellt språk kan du lägga till `?lng=<language>` i slutet av webb adressen, där `<language>` är koden för det språk som du vill återge.
 
@@ -53,15 +53,15 @@ Kombinerad registrering stöder följande autentiseringsmetoder och åtgärder:
 
 | Metod | Registrera dig | Ändra | Ta bort |
 | --- | --- | --- | --- |
-| Microsoft Authenticator | Ja (högst 5) | Inga | Ja |
-| Annan Authenticator-app | Ja (högst 5) | Inga | Ja |
-| Maskinvaru-token | Inga | Inga | Ja |
+| Microsoft Authenticator | Ja (högst 5) | Nej | Ja |
+| Annan Authenticator-app | Ja (högst 5) | Nej | Ja |
+| Maskinvaru-token | Nej | Nej | Ja |
 | Telefon | Ja | Ja | Ja |
 | Alternativ telefon | Ja | Ja | Ja |
 | Arbetstelefon | Ja | Ja | Ja |
 | E-post | Ja | Ja | Ja |
-| Säkerhetsfrågor | Ja | Inga | Ja |
-| Applösenord | Ja | Inga | Ja |
+| Säkerhetsfrågor | Ja | Nej | Ja |
+| Applösenord | Ja | Nej | Ja |
 | FIDO2 säkerhets nycklar<br />*Endast hanterat läge från sidan [säkerhets information](https://mysignins.microsoft.com/security-info)*| Ja | Ja | Ja |
 
 > [!NOTE]
@@ -116,7 +116,7 @@ Om SSPR-principen kräver att användare granskar sin säkerhets information med
 
 ### <a name="manage-mode"></a>Hantera läge
 
-Användare kan komma åt hanterings läget genom att gå till [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) eller genom att välja **säkerhets information** från min profil. Därifrån kan användarna lägga till metoder, ta bort eller ändra befintliga metoder, ändra standard metoden med mera.
+Användare kan komma åt hanterings läget genom att gå till [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) eller genom att välja **säkerhets information** från mitt konto. Därifrån kan användarna lägga till metoder, ta bort eller ändra befintliga metoder, ändra standard metoden med mera.
 
 ## <a name="key-usage-scenarios"></a>Scenarier för nyckel användning
 
@@ -126,17 +126,17 @@ En administratör har tvingat registrering.
 
 En användare har inte konfigurerat all nödvändig säkerhets information och går till Azure Portal. När du har angett användar namn och lösen ord uppmanas användaren att ställa in säkerhets information. Användaren följer sedan stegen som visas i guiden för att konfigurera den säkerhets information som krävs. Om inställningarna tillåter det kan användaren välja att ställa in andra metoder än de som visas som standard. När du har slutfört guiden granskar användarna de metoder de har ställt in och deras standard metod för Multi-Factor Authentication. För att slutföra installationen bekräftar användaren informationen och fortsätter till Azure Portal.
 
-### <a name="set-up-security-info-from-my-profile"></a>Konfigurera säkerhets information från min profil
+### <a name="set-up-security-info-from-my-account"></a>Konfigurera säkerhets information från mitt konto
 
 En administratör har inte tvingat registrering.
 
-En användare som ännu inte har konfigurerat all nödvändig säkerhets information går till [https://myprofile.microsoft.com](https://myprofile.microsoft.com) . Användaren väljer **säkerhets information** i den vänstra rutan. Därifrån väljer användaren att lägga till en metod, väljer någon av de tillgängliga metoderna och följer stegen för att ställa in den metoden. När du är färdig ser användaren den metod som har angetts på sidan säkerhets information.
+En användare som ännu inte har konfigurerat all nödvändig säkerhets information går till [https://myaccount.microsoft.com](https://myaccount.microsoft.com) . Användaren väljer **säkerhets information** i den vänstra rutan. Därifrån väljer användaren att lägga till en metod, väljer någon av de tillgängliga metoderna och följer stegen för att ställa in den metoden. När du är färdig ser användaren den metod som har angetts på sidan säkerhets information.
 
-### <a name="delete-security-info-from-my-profile"></a>Ta bort säkerhets information från min profil
+### <a name="delete-security-info-from-my-account"></a>Ta bort säkerhets information från mitt konto
 
 En användare som tidigare har konfigurerat minst en metod navigerar till [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) . Användaren väljer att ta bort en av de tidigare registrerade metoderna. När du är färdig ser användaren inte längre metoden på sidan säkerhets information.
 
-### <a name="change-the-default-method-from-my-profile"></a>Ändra standard metoden från min profil
+### <a name="change-the-default-method-from-my-account"></a>Ändra standard metod från mitt konto
 
 En användare som tidigare har konfigurerat minst en metod som kan användas för Multi-Factor Authentication navigerar till [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) . Användaren ändrar den aktuella standard metoden till en annan standard metod. När du är färdig ser användaren den nya standard metoden på sidan säkerhets information.
 

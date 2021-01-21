@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/21/2020
+ms.date: 01/15/2021
 ms.author: jeedes
-ms.openlocfilehash: ad7b5b97149d38b64d75f5a02cd0aa776893e832
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: eb583db5137eb4b138c52958d34e6da9a2a6e651
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92522572"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624210"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-mimecast-personal-portal"></a>Självstudie: Azure Active Directory enkel inloggning (SSO) med Mimecast Personal Portal
 
@@ -25,8 +25,6 @@ I den här självstudien får du lära dig att integrera Mimecast Personal Porta
 * Kontroll i Azure AD som har åtkomst till Mimecast Personal Portal.
 * Gör det möjligt för användarna att logga in automatiskt för att Mimecast personliga portal med sina Azure AD-konton.
 * Hantera dina konton på en central plats – Azure Portal.
-
-Mer information om SaaS app integration med Azure AD finns i [Vad är program åtkomst och enkel inloggning med Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -40,24 +38,23 @@ För att komma igång behöver du följande objekt:
 I den här självstudien konfigurerar och testar du Azure AD SSO i en test miljö.
 
 * Mimecast Personal Portal stöder **SP-och IDP** -INITIERAd SSO
-* När du har konfigurerat Mimecast Personal Portal kan du framtvinga kontroll över sessioner, som skyddar exfiltrering och intrånget för organisationens känsliga data i real tid. Kontroll av sessionen utökas från villkorlig åtkomst. [Lär dig hur du tvingar fram en session med Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
-
-## <a name="adding-mimecast-personal-portal-from-the-gallery"></a>Lägga till Mimecast Personal Portal från galleriet
+ 
+## <a name="add-mimecast-personal-portal-from-the-gallery"></a>Lägg till Mimecast Personal Portal från galleriet
 
 För att konfigurera integreringen av Mimecast Personal Portal med Azure AD måste du lägga till Mimecast Personal Portal från galleriet i din lista över hanterade SaaS-appar.
 
-1. Logga in på [Azure Portal](https://portal.azure.com) med antingen ett arbets-eller skol konto eller en personlig Microsoft-konto.
+1. Logga in på Azure Portal med antingen ett arbets-eller skol konto eller en personlig Microsoft-konto.
 1. I det vänstra navigerings fönstret väljer du tjänsten **Azure Active Directory** .
 1. Navigera till **företags program** och välj sedan **alla program**.
-1. Välj **nytt program**om du vill lägga till ett nytt program.
+1. Välj **nytt program** om du vill lägga till ett nytt program.
 1. I avsnittet **Lägg till från galleriet** , Skriv **Mimecast Personal Portal** i sökrutan.
 1. Välj **Mimecast Personal Portal** från resultat panelen och Lägg sedan till appen. Vänta några sekunder medan appen läggs till i din klient organisation.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-mimecast-personal-portal"></a>Konfigurera och testa enkel inloggning med Azure AD för Mimecast Personal Portal
+## <a name="configure-and-test-azure-ad-sso-for-mimecast-personal-portal"></a>Konfigurera och testa Azure AD SSO för Mimecast Personal Portal
 
 Konfigurera och testa Azure AD SSO med Mimecast Personal Portal med hjälp av en test användare som heter **B. Simon**. För att SSO ska fungera måste du upprätta en länk relation mellan en Azure AD-användare och den relaterade användaren i Mimecast Personal Portal.
 
-Om du vill konfigurera och testa Azure AD SSO med Mimecast Personal Portal, fyller du i följande Bygg stenar:
+Utför följande steg för att konfigurera och testa Azure AD SSO med Mimecast Personal Portal:
 
 1. **[Konfigurera Azure AD SSO](#configure-azure-ad-sso)** – så att användarna kan använda den här funktionen.
     1. **[Skapa en Azure AD-test](#create-an-azure-ad-test-user)** för att testa enkel inloggning med Azure AD med B. Simon.
@@ -70,15 +67,15 @@ Om du vill konfigurera och testa Azure AD SSO med Mimecast Personal Portal, fyll
 
 Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
-1. I [Azure Portal](https://portal.azure.com/)på sidan **Mimecast Personal Portal** Application Integration hittar du avsnittet **Hantera** och väljer **enkel inloggning**.
+1. I Azure Portal på sidan **Mimecast Personal Portal** Application Integration hittar du avsnittet **Hantera** och väljer **enkel inloggning**.
 1. På sidan **Välj metod för enkel inloggning** väljer du **SAML**.
-1. På sidan **Konfigurera enkel inloggning med SAML** klickar du på ikonen Redigera/penna för **grundläggande SAML-konfiguration** för att redigera inställningarna.
+1. På sidan **Konfigurera enkel inloggning med SAML** klickar du på Penn ikonen för **grundläggande SAML-konfiguration** för att redigera inställningarna.
 
    ![Redigera grundläggande SAML-konfiguration](common/edit-urls.png)
 
 1. I avsnittet **grundläggande SAML-konfiguration** , om du vill konfigurera programmet i IDP initierat läge, utför följande steg:
 
-    a. I textrutan **Identifierare** anger du en URL med följande mönster:
+    a. I text rutan **identifierare** skriver du URL: en med följande mönster:
 
     | Region  |  Värde | 
     | --------------- | --------------- |
@@ -91,7 +88,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
     > [!NOTE]
     > Du hittar `accountcode` värdet i Mimecast Personal Portal under **konto**  >  **Inställningar**  >  **konto kod**. Lägg `accountcode` till i identifieraren.
 
-    b. I textrutan **Svars-URL** anger du en URL:
+    b. I textrutan **Svars-URL** anger du URL:en:
 
     | Region  |  Värde |
     | --------------- | --------------- |
@@ -103,7 +100,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 1. Om du vill konfigurera programmet i **SP** initierat läge:
 
-    I rutan **Inloggnings-URL** anger du en URL:
+    I rutan **Inloggnings-URL** anger du URL:en:
 
     | Region  |  Värde |
     | --------------- | --------------- |
@@ -123,11 +120,11 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B. Simon.
 
-1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory**, väljer **användare**och väljer sedan **alla användare**.
+1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory**, väljer **användare** och väljer sedan **alla användare**.
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I **Namn**-fältet skriver du `B.Simon`.  
-   1. I fältet **användar namn** anger du username@companydomain.extension . Till exempel `B.Simon@contoso.com`.
+   1. I fältet **användar namn** anger du username@companydomain.extension . Ett exempel är `B.Simon@contoso.com`.
    1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
    1. Klicka på **Skapa**.
 
@@ -135,18 +132,12 @@ I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B
 
 I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till Mimecast personliga portal.
 
-1. I Azure Portal väljer du **företags program**och väljer sedan **alla program**.
+1. I Azure Portal väljer du **företags program** och väljer sedan **alla program**.
 1. I listan program väljer du **Mimecast Personal Portal**.
 1. På sidan Översikt för appen letar du reda på avsnittet **Hantera** och väljer **användare och grupper**.
-
-   ![Länken ”Användare och grupper”](common/users-groups-blade.png)
-
-1. Välj **Lägg till användare**och välj sedan **användare och grupper** i dialog rutan **Lägg till tilldelning** .
-
-    ![Länken Lägg till användare](common/add-assign-user.png)
-
+1. Välj **Lägg till användare** och välj sedan **användare och grupper** i dialog rutan **Lägg till tilldelning** .
 1. I dialog rutan **användare och grupper** väljer du **B. Simon** från listan användare och klickar sedan på knappen **Välj** längst ned på skärmen.
-1. Om du förväntar dig ett roll värde i SAML Assertion, i dialog rutan **Välj roll** , väljer du lämplig roll för användaren i listan och klickar sedan på knappen **Välj** längst ned på skärmen.
+1. Om du förväntar dig att en roll ska tilldelas användarna kan du välja den från List rutan **Välj en roll** . Om ingen roll har kon figurer ATS för den här appen ser du rollen "standard åtkomst" vald.
 1. Klicka på knappen **tilldela** i dialog rutan **Lägg till tilldelning** .
 
 ## <a name="configure-mimecast-personal-portal-sso"></a>Konfigurera Mimecast Personal Portal SSO
@@ -173,7 +164,7 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 
     ![Skärm bild som visar var du väljer framtvinga SAML-autentisering för administrations konsolen.](./media/mimecast-personal-portal-tutorial/sso-settings.png)
 
-    a. För **Provider**väljer du **Azure Active Directory** i list rutan.
+    a. För **Provider** väljer du **Azure Active Directory** i list rutan.
 
     b. I text rutan **metadata-URL** klistrar du in URL-värdet för **app Federation-Metadata** , som du har kopierat från Azure Portal.
 
@@ -219,21 +210,20 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 
 
 ## <a name="test-sso"></a>Testa SSO 
+I det här avsnittet ska du testa Azure AD-konfigurationen för enkel inloggning med följande alternativ. 
 
-I det här avsnittet testar du konfigurationen för enkel inloggning Azure AD med hjälp av åtkomstpanelen.
+#### <a name="sp-initiated"></a>SP initierad:
 
-När du klickar på panelen för Mimecast Personal Portal på åtkomstpanelen bör du loggas in automatiskt i Mimecast Personal Portal-programmet som du har konfigurerat enkel inloggning för. Mer information om åtkomstpanelen finns i [introduktionen till åtkomstpanelen](../user-help/my-apps-portal-end-user-access.md).
+* Klicka på **testa det här programmet** i Azure Portal. Detta omdirigeras till Mimecast personliga portal inloggnings-URL där du kan starta inloggnings flödet.  
 
-## <a name="additional-resources"></a>Ytterligare resurser
+* Gå till Mimecast Personal Portal inloggnings-URL direkt och starta inloggnings flödet därifrån.
 
-- [ Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory ](./tutorial-list.md)
+#### <a name="idp-initiated"></a>IDP initierad:
 
-- [Vad är program åtkomst och enkel inloggning med Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
+* Klicka på **testa det här programmet** i Azure Portal så bör du loggas in automatiskt på den Mimecast personliga portal som du ställer in SSO för. 
 
-- [Vad är villkorlig åtkomst i Azure Active Directory?](../conditional-access/overview.md)
+Du kan också använda Microsoft Mina appar för att testa programmet i vilket läge som helst. När du klickar på panelen Mimecast Personal Portal i Mina appar, om den har kon figurer ATS i SP-läge, kommer du att omdirigeras till programmets inloggnings sida för att initiera inloggnings flödet och om det kon figurer ATS i IDP-läge, bör du logga in automatiskt på den Mimecast personliga portal som du har konfigurerat SSO för. Mer information om Mina appar finns i [Introduktion till Mina appar](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-- [Prova Mimecast Personal Portal med Azure AD](https://aad.portal.azure.com/)
+## <a name="next-steps"></a>Nästa steg
 
-- [Vad är session Control i Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)
-
-- [Så här skyddar du Mimecast Personal Portal med avancerad synlighet och kontroller](/cloud-app-security/proxy-intro-aad)
+När du har konfigurerat Mimecast Personal Portal kan du genomdriva session Control, som skyddar exfiltrering och intrånget för organisationens känsliga data i real tid. Kontroll av sessionen sträcker sig från villkorlig åtkomst. [Lär dig hur du tvingar fram sessions kontroll med Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)

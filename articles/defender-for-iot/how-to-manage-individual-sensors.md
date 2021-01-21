@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 1/12/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 68fa3ea15199ec1d9cc99f92f497847fb029acd6
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 16031c3d67b075e962c73fbb38ada36c7efeddad
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539562"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621222"
 ---
 # <a name="manage-individual-sensors"></a>Hantera enskilda sensorer
 
@@ -282,7 +282,7 @@ När du använder CLI-kommandot:
 
 Hantera dina certifikat med följande kommandon:
 
-| Beskrivning | CLI-kommando |
+| Description | CLI-kommando |
 |--|--|
 | Generera en ny privat nyckel och certifikat signerings förfrågan | `openssl req -out CSR.csr -new -newkey rsa:2048 -nodes -keyout privateKey.key` |
 | Generera ett självsignerat certifikat | `openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout privateKey.key -out certificate.crt` |
@@ -292,7 +292,7 @@ Hantera dina certifikat med följande kommandon:
 
 Använd de här kommandona om du behöver kontrol lera informationen i ett certifikat, CSR eller privat nyckel.
 
-| Beskrivning | CLI-kommando |
+| Description | CLI-kommando |
 |--|--|
 | Kontrol lera en begäran om certifikat signering (CSR) | `openssl req -text -noout -verify -in CSR.csr` |
 | Kontrol lera en privat nyckel | `openssl rsa -in privateKey.key -check` |
@@ -300,13 +300,13 @@ Använd de här kommandona om du behöver kontrol lera informationen i ett certi
 
 Om du får ett fel meddelande om att den privata nyckeln inte matchar certifikatet, eller om ett certifikat som har installerats på en plats inte är betrott, använder du följande kommandon för att åtgärda felet.
 
-| Beskrivning | CLI-kommando |
+| Description | CLI-kommando |
 |--|--|
 | Kontrol lera en MD5-hash av den offentliga nyckeln för att kontrol lera att den matchar det som finns i en CSR eller privat nyckel | 81.1. `openssl x509 -noout -modulus -in certificate.crt | openssl md5` <br /> 11.2. `openssl rsa -noout -modulus -in privateKey.key | openssl md5` <br /> 3. `openssl req -noout -modulus -in CSR.csr | openssl md5 ` |
 
 Om du vill konvertera certifikat och nycklar till olika format så att de är kompatibla med vissa typer av servrar, eller program, använder du dessa kommandon.
 
-| Beskrivning | CLI-kommando |
+| Description | CLI-kommando |
 |--|--|
 | Konvertera en DER-fil (. CRT. cer. der) till PEM  | `openssl x509 -inform der -in certificate.cer -out certificate.pem`  |
 | Konvertera en PEM-fil till DER | `openssl x509 -outform der -in certificate.pem -out certificate.der`  |
@@ -315,7 +315,7 @@ Om du vill konvertera certifikat och nycklar till olika format så att de är ko
 
 ## <a name="connect-a-sensor-to-the-management-console"></a>Ansluta en sensor till hanterings konsolen
 
-I det här avsnittet beskrivs hur du säkerställer anslutningen mellan sensorn och den lokala hanterings konsolen. Gör detta om du arbetar i ett Air-gapped nätverk och vill skicka till gångs-och aviserings information till hanterings konsolen från sensorn. Den här anslutningen gör det också möjligt för hanterings konsolen att skicka Systeminställningar till sensorn och utföra andra hanterings uppgifter på sensorn.
+I det här avsnittet beskrivs hur du säkerställer anslutningen mellan sensorn och den lokala hanterings konsolen. Du måste göra detta om du arbetar i ett Air-gapped-nätverk och vill skicka enhets-och aviserings information till hanterings konsolen från sensorn. Den här anslutningen gör det också möjligt för hanterings konsolen att skicka Systeminställningar till sensorn och utföra andra hanterings uppgifter på sensorn.
 
 För att ansluta:
 

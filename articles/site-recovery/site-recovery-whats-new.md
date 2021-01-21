@@ -2,13 +2,13 @@
 title: Vad är nytt i Azure Site Recovery
 description: Innehåller en sammanfattning av nya funktioner och de senaste uppdateringarna i Azure Site Recoverys tjänsten.
 ms.topic: conceptual
-ms.date: 10/22/2020
-ms.openlocfilehash: 3667f963eac0ebc719872db00ac069c7da70ec91
-ms.sourcegitcommit: b849ecdc8aa97337299b0f09970b7810c59cd044
+ms.date: 01/20/2021
+ms.openlocfilehash: 2778f1af99512c4594d2d688eea7e04b3b81ae47
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96310365"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621768"
 ---
 # <a name="whats-new-in-site-recovery"></a>Nyheter i Site Recovery
 
@@ -22,13 +22,27 @@ För Site Recovery-komponenter stöder vi N-4-versioner, där N är den senaste 
 
 **Uppdatera** |  **Enhetlig installation** | **Konfigurations Server för ägg** | **Mobilitets tjänst agent** | **Site Recovery Provider** | **Recovery Services agent**
 --- | --- | --- | --- | --- | ---
+[Samlad uppdatering 53](https://support.microsoft.com/help/4602881/)  | 9.40.5850.1 | 5.1.6537.0 | 9.40.5850.1 | 5.1.6537.0  | 2.0.9202.0
 [Samlad uppdatering 52](https://support.microsoft.com/help/4597409/)  | 9.39.5796.1 | 5.1.6458.0 | 9.39.5796.1 | 5.1.6458.0  | 2.0.9196.0
 [Samlad uppdatering 51](https://support.microsoft.com/help/4590304)  | 9.38.5761.1 | 5.1.6400.0 | 9.38.5761.1 | 5.1.6400.0  | 2.0.9193.0
 [Samlad uppdatering 50](https://support.microsoft.com/help/4582666/) | 9.37.5724.1 | 5.1.6347.0 | 9.37.5724.1 | 5.1.6347.0  | 2.0.9192.0
 [Samlad uppdatering 49](https://support.microsoft.com/help/4578241/) | 9.36.5696.1 | 5.1.6315.0 | 9.36.5696.1 | 5.1.6315.0 | 2.0.9188.0
-[Samlad uppdatering 48](https://support.microsoft.com/help/4573888/) | 9.35.5659.1 | 5.1.6200.0 | 9.35.5659.1 | 5.1.6200.0 | 2.0.9186.0
+
 
 [Läs mer](service-updates-how-to.md) om installation och stöd för uppdateringar.
+
+## <a name="updates-january-2021"></a>Uppdateringar (januari 2021)
+
+### <a name="update-rollup-53"></a>Samlad uppdatering 53
+
+Samlad [uppdatering 53](https://support.microsoft.com/help/4602881/update-rollup-53-for-azure-site-recovery) innehåller följande uppdateringar:
+
+**Uppdatera** | **Information**
+--- | ---
+**Leverantörer och agenter** | Uppdateringar till Site Recovery agenter och leverantörer enligt beskrivningen i den samlade uppdateringen.
+**Problem korrigeringar/förbättringar** | Ett antal korrigeringar och förbättringar som beskrivs i den samlade uppdateringen. 
+**Haveri beredskap för Azure VM** | Replikering för Taggar stöds nu. Alla Taggar som läggs till i virtuella Azure-datorer, diskar och nätverkskort i käll regionen replikeras till datorer i mål regionen.<br/><br/> Virtuella Azure-datorer som kör Debian 10 stöds nu för replikering.
+**VMware VM/fysisk haveri beredskap till Azure** | Uppdateringen innehåller loggnings förbättringar för VMware VM-replikering till Azure och förbättrade fel meddelanden.<br/><br/> Virtuella VMware-datorer och fysiska datorer som kör Debian 10 stöds nu för replikering.
 
 
 ## <a name="updates-november-2020"></a>Uppdateringar (november 2020)

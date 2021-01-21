@@ -4,12 +4,12 @@ description: I den här artikeln förklaras hur du uppskjuta leverans av Azure S
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 7c9ec55de24c97df3530d80deef55ed87be84077
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e3a940f8aa9e72d9b09e9c0a3305521c6f17dfb0
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86511287"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98622053"
 ---
 # <a name="message-deferral"></a>Skjut upp meddelanden
 
@@ -26,7 +26,7 @@ I slut ändan hjälper uppbelastningen att sortera om meddelanden från order in
 
 ## <a name="message-deferral-apis"></a>API: er för avstängning av meddelande
 
-API: et är [BrokeredMessage. Överlåt](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.defer?view=azureservicebus-4.1.1#Microsoft_ServiceBus_Messaging_BrokeredMessage_Defer) eller [BrokeredMessage. DeferAsync](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.deferasync?view=azureservicebus-4.1.1#Microsoft_ServiceBus_Messaging_BrokeredMessage_DeferAsync) i .NET Framework-klienten, [MessageReceiver. DeferAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.deferasync) i .net standard-klienten och [IMessageReceiver. Överlåt](/java/api/com.microsoft.azure.servicebus.imessagereceiver.defer?view=azure-java-stable) eller [IMessageReceiver. DeferAsync](/java/api/com.microsoft.azure.servicebus.imessagereceiver.deferasync?view=azure-java-stable) i Java-klienten. 
+API: et är [BrokeredMessage. Överlåt](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.defer#Microsoft_ServiceBus_Messaging_BrokeredMessage_Defer) eller [BrokeredMessage. DeferAsync](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.deferasync#Microsoft_ServiceBus_Messaging_BrokeredMessage_DeferAsync) i .NET Framework-klienten, [MessageReceiver. DeferAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.deferasync) i .net standard-klienten och [IMessageReceiver. Överlåt](/java/api/com.microsoft.azure.servicebus.imessagereceiver.defer) eller [IMessageReceiver. DeferAsync](/java/api/com.microsoft.azure.servicebus.imessagereceiver.deferasync) i Java-klienten. 
 
 Uppskjutna meddelanden finns kvar i huvud kön tillsammans med alla andra aktiva meddelanden (till skillnad från meddelanden med obeställbara meddelanden som bor i en underkö), men de kan inte längre tas emot med hjälp av de vanliga Receive-/ReceiveAsync-funktionerna. Uppskjutna meddelanden kan upptäckas via [meddelande bläddring](message-browsing.md) om ett program förlorar sitt spår.
 

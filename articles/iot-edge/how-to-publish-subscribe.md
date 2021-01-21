@@ -10,12 +10,12 @@ ms.date: 11/09/2020
 ms.topic: conceptual
 ms.service: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 005830575ba7f45d30fed71a73e7a419e4d98220
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 13bfd7c602389ff286a80f625829da5924a73bdf
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922594"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621903"
 ---
 # <a name="publish-and-subscribe-with-azure-iot-edge"></a>Publicera och prenumerera med Azure IoT Edge
 
@@ -171,7 +171,7 @@ Några saker att tänka på när du skriver auktoriseringsprincipen:
     - `{{iot:identity}}` representerar identiteten för den för tillfället anslutna klienten. Till exempel en enhets identitet som `myDevice` eller en modul identitet som `myEdgeDevice/SampleModule` .
     - `{{iot:device_id}}` representerar identiteten för den anslutna enhet som är ansluten. Till exempel en enhets identitet som `myDevice` eller enhets identiteten där en modul körs `myEdgeDevice` .
     - `{{iot:module_id}}` representerar identiteten för den för tillfället anslutna modulen. Den här variabeln är tom för anslutna enheter eller en modul identitet som `SampleModule` .
-    - `{{iot:this_device_id}}` representerar identiteten för den IoT Edge enhet som kör auktoriseringsprincipen. Exempelvis `myIoTEdgeDevice`.
+    - `{{iot:this_device_id}}` representerar identiteten för den IoT Edge enhet som kör auktoriseringsprincipen. Ett exempel är `myIoTEdgeDevice`.
 
 Auktoriseringar för avsnitt om IoT Hub hanteras något annorlunda än användardefinierade ämnen. Här är de viktiga punkter som du bör komma ihåg:
 
@@ -251,7 +251,7 @@ Skapa två IoT-enheter i IoT Hub och hämta sina lösen ord. Använda Azure CLI 
 
 ### <a name="authorize-publisher-and-subscriber-clients"></a>Auktorisera utgivare och prenumerant klienter
 
-Om du vill auktorisera utgivaren och prenumeranten redigerar du IoT Edge Hub, antingen via Azure CLI, Visual Studio eller Visual Studio Code för att inkludera följande auktoriseringsprincip:
+Om du vill auktorisera utgivaren och prenumeranten redigerar du IoT Edge Hub, dubbelt genom att skapa en IoT Edge distribution antingen via Azure CLI, Visual Studio eller Visual Studio Code för att inkludera följande auktoriseringsprincip:
 
 ```json
 {

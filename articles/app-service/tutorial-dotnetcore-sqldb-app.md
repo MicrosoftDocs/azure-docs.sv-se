@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 06/20/2020
 ms.custom: devx-track-csharp, mvc, cli-validate, seodec18, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: e953c3f442d01c023df04c1a8af3c5fe56ea59ed
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: bafebcc54e4cbde87e8deb776eff227fc99035cc
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347106"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98623862"
 ---
 # <a name="tutorial-build-an-aspnet-core-and-azure-sql-database-app-in-azure-app-service"></a>Självstudie: Bygg en ASP.NET Core-och Azure SQL Database-app i Azure App Service
 
@@ -29,7 +29,7 @@ ms.locfileid: "97347106"
 
 ![app som körs i App Service](./media/tutorial-dotnetcore-sqldb-app/azure-app-in-browser.png)
 
-I den här guiden får du lära dig att:
+I de här självstudierna får du lära dig att
 
 > [!div class="checklist"]
 > * skapa en SQL Database i Azure
@@ -67,7 +67,7 @@ cd dotnetcore-sqldb-tutorial
 
 Exempelprojektet innehåller en grundläggande CRUD-app (create-read-update-delete) med [Entity Framework Core](/ef/core/).
 
-### <a name="run-the-application"></a>Köra appen
+### <a name="run-the-application"></a>Kör programmet
 
 Kör följande kommandon för att installera de nödvändiga paketen, köra databasmigreringar och starta programmet.
 
@@ -190,7 +190,7 @@ Kör följande kommandon från lagrings platsens rot. Ersätt *\<connection-stri
 
 ```
 # Delete old migrations
-rm Migrations -r
+rm -r Migrations
 # Recreate migrations
 dotnet ef migrations add InitialCreate
 
@@ -286,7 +286,7 @@ Compressing objects: 100% (171/171), done.
 Writing objects: 100% (268/268), 1.18 MiB | 1.55 MiB/s, done.
 Total 268 (delta 95), reused 251 (delta 87), pack-reused 0
 remote: Resolving deltas: 100% (95/95), done.
-remote: Updating branch 'master'.
+remote: Updating branch 'main'.
 remote: Updating submodules.
 remote: Preparing deployment for commit id '64821c3558'.
 remote: Generating deployment script.
@@ -303,7 +303,7 @@ remote: Running post deployment command(s)...
 remote: Triggering recycle (preview mode disabled).
 remote: App container will begin restart within 10 seconds.
 To https://&lt;app-name&gt;.scm.azurewebsites.net/&lt;app-name&gt;.git
- * [new branch]      master -> master
+ * [new branch]      main -> main
 </pre>
 
 ::: zone-end
@@ -321,7 +321,7 @@ Writing objects: 100% (273/273), 1.19 MiB | 1.85 MiB/s, done.
 Total 273 (delta 96), reused 259 (delta 88)
 remote: Resolving deltas: 100% (96/96), done.
 remote: Deploy Async
-remote: Updating branch 'master'.
+remote: Updating branch 'main'.
 remote: Updating submodules.
 remote: Preparing deployment for commit id 'cccecf86c5'.
 remote: Repository path is /home/site/repository
@@ -337,7 +337,7 @@ remote: Triggering recycle (preview mode disabled).
 remote: Deployment successful.
 remote: Deployment Logs : 'https://&lt;app-name&gt;.scm.azurewebsites.net/newui/jsonviewer?view_url=/api/deployments/cccecf86c56493ffa594e76ea1deb3abb3702d89/log'
 To https://&lt;app-name&gt;.scm.azurewebsites.net/&lt;app-name&gt;.git
- * [new branch]      master -> master
+ * [new branch]      main -> main
 </pre>
 
 ::: zone-end
@@ -446,7 +446,7 @@ dotnet run
 ```bash
 git add .
 git commit -m "added done field"
-git push azure master
+git push azure main
 ```
 
 När du `git push` är klar navigerar du till din app service-app och försöker lägga till ett att göra-objekt och checken är **klar**.

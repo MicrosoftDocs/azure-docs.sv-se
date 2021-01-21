@@ -3,13 +3,13 @@ title: Felsök vanliga distributionsfel
 description: Beskriver hur du löser vanliga fel när du distribuerar resurser till Azure med hjälp av Azure Resource Manager.
 tags: top-support-issue
 ms.topic: troubleshooting
-ms.date: 09/09/2020
-ms.openlocfilehash: 785a74184cae8523b99da7f647ca87fda53c8648
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.date: 01/20/2021
+ms.openlocfilehash: bb701baf164cfd6ba1dd5c670a406343e83c5c70
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185835"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98622819"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Felsöka vanliga fel i Azure-distributioner med Azure Resource Manager
 
@@ -25,7 +25,7 @@ Om du letar efter information om en felkod och informationen inte finns i den h�
 | AccountPropertyCannotBeSet | Kontrol lera egenskaperna för tillgängligt lagrings konto. | [storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |
 | AllocationFailed | Det finns inga tillgängliga resurser för klustret eller regionen eller så stöds inte den begärda virtuella dator storleken. Försök igen vid ett senare tillfälle eller begär en annan VM-storlek. | [Etablerings-och tilldelnings problem för Linux](../../virtual-machines/troubleshooting/troubleshoot-deployment-new-vm-linux.md), [etablering och tilldelning av Windows](../../virtual-machines/troubleshooting/troubleshoot-deployment-new-vm-windows.md) och [fel sökning av allokeringsfel](../../virtual-machines/troubleshooting/allocation-failure.md)|
 | AnotherOperationInProgress | Vänta tills den samtidiga åtgärden har slutförts. | |
-| AuthorizationFailed | Ditt konto eller tjänstens huvud namn har inte tillräcklig åtkomst för att slutföra distributionen. Kontrol lera vilken roll ditt konto tillhör och dess åtkomst till distributions omfånget.<br><br>Du kan få det här felet när en resurs leverantör som krävs inte är registrerad. | [Azure RBAC (rollbaserad åtkomstkontroll)](../../role-based-access-control/role-assignments-portal.md)<br><br>[Lös registrering](error-register-resource-provider.md) |
+| AuthorizationFailed | Ditt konto eller tjänstens huvud namn har inte tillräcklig åtkomst för att slutföra distributionen. Kontrol lera vilken roll ditt konto tillhör och dess åtkomst till distributions omfånget.<br><br>Du kan få det här felet när en resurs leverantör som krävs inte är registrerad. | [Rollbaserad åtkomst kontroll i Azure (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md)<br><br>[Lös registrering](error-register-resource-provider.md) |
 | BadRequest | Du skickade distributions värden som inte matchar det som förväntas av Resource Manager. Kontrol lera meddelandet om inre status för att få hjälp med fel sökning. | [Referera till mallar](/azure/templates/) och [platser som stöds](resource-location.md) |
 | Konflikt | Du begär en åtgärd som inte är tillåten i resursens aktuella tillstånd. Till exempel tillåts disk storleks ändring bara när du skapar en virtuell dator eller när den virtuella datorn frigörs. | |
 | DeploymentActiveAndUneditable | Vänta tills en samtidig distribution till den här resurs gruppen har slutförts. | |
@@ -34,7 +34,7 @@ Om du letar efter information om en felkod och informationen inte finns i den h�
 | DeploymentNameLengthLimitExceeded | Distributions namnen är begränsade till 64 tecken.  | |
 | DeploymentFailed | DeploymentFailed-felet är ett allmänt fel som inte innehåller den information du behöver för att lösa problemet. Se fel informationen för en felkod som innehåller mer information. | [Hitta felkod](#find-error-code) |
 | DeploymentQuotaExceeded | Om du når gränsen på 800-distributioner per resurs grupp tar du bort distributioner från den historik som inte längre behövs. | [Lös fel när antalet distributioner överskrider 800](deployment-quota-exceeded.md) |
-| DeploymentSizeExceeded | Förenkla din mall för att minska storleken. | [Lös fel i mal Lav Tor lek](error-job-size-exceeded.md) |
+| DeploymentJobSizeExceeded | Förenkla din mall för att minska storleken. | [Lös fel i mal Lav Tor lek](error-job-size-exceeded.md) |
 | DnsRecordInUse | DNS-postens namn måste vara unikt. Ange ett annat namn. | |
 | ImageNotFound | Kontrol lera inställningarna för VM-avbildningar. |  |
 | InUseSubnetCannotBeDeleted | Du kan få det här felet när du försöker uppdatera en resurs, och begäran bearbetas genom att ta bort och skapa resursen. Se till att du anger alla värden som inte har ändrats. | [Uppdatera resurs](/azure/architecture/building-blocks/extending-templates/update-resource) |
