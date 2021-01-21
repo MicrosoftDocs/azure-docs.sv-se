@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 7640b7a6053532360da4c908089aecfe163bd3de
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: f8210c3bc0437180ace110f8decd9f83e18650ed
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95912662"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661940"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-hdinsight"></a>Självstudie: extrahera, transformera och läsa in data med hjälp av Azure HDInsight
 
@@ -40,7 +40,7 @@ Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](ht
 
 * **Azure SQL Database**: du använder Azure SQL Database som mål data lager. Om du inte har en databas i SQL Database kan du läsa [skapa en databas i Azure SQL Database i Azure Portal](../../azure-sql/database/single-database-create-quickstart.md).
 
-* **Azure CLI**: om du inte har installerat Azure CLI kan du läsa [Installera Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest).
+* **Azure CLI**: om du inte har installerat Azure CLI kan du läsa [Installera Azure CLI](/cli/azure/install-azure-cli).
 
 * **En SSH-klient (Secure Shell)**: Mer information finns i [ansluta till HDInsight (Hadoop) med hjälp av SSH](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md).
 
@@ -76,7 +76,7 @@ I det här avsnittet laddar du upp data till ditt HDInsight-kluster och kopierar
 
    Om du använder ett lösenord för att autentisera din SSH-inloggning uppmanas du att ange lösenordet.
 
-   Om du använder en offentlig nyckel kan du behöva använda `-i`-parametern och ange sökvägen till motsvarande privata nyckel. Exempelvis `scp -i ~/.ssh/id_rsa <file_name>.zip <user-name>@<cluster-name>-ssh.azurehdinsight.net:`.
+   Om du använder en offentlig nyckel kan du behöva använda `-i`-parametern och ange sökvägen till motsvarande privata nyckel. Ett exempel är `scp -i ~/.ssh/id_rsa <file_name>.zip <user-name>@<cluster-name>-ssh.azurehdinsight.net:`.
 
 2. När uppladdningen är klar kan du ansluta till klustret med hjälp av SSH. Öppna kommandotolken och ange följande kommando:
 
@@ -226,7 +226,7 @@ Som en del av Apache Hive-jobbet importerar du data från CSV-filen till en Apac
 
 Du behöver Server namnet från SQL Database för den här åtgärden. Slutför stegen nedan för att hitta namnet på servern.
 
-1. Gå till [Azure-portalen](https://portal.azure.com).
+1. Öppna [Azure-portalen](https://portal.azure.com).
 
 2. Välj **SQL-databaser**.
 

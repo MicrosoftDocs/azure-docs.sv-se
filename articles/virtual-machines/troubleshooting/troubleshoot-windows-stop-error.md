@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 06/26/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 33b4c59e14301e496d0eddafa7bdfdf201b7aa29
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d6e738152e542617046834980d3e7c58e497093
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87005913"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664689"
 ---
 # <a name="windows-stop-error---status-no-memory"></a>Windows-stoppfel – status slut på minne
 
@@ -44,6 +44,9 @@ Operativ systemets disk är antingen full, för fragmenterad eller operativ syst
 ## <a name="solution"></a>Lösning
 
 ### <a name="process-overview"></a>Process översikt:
+
+> [!TIP]
+> Om du har en ny säkerhets kopia av den virtuella datorn kan du försöka att [återställa den virtuella datorn från säkerhets kopian](../../backup/backup-azure-arm-restore-vms.md) för att åtgärda start problemet.
 
 1. Skapa och få åtkomst till en virtuell reparations dator
 1. Frigör utrymme på disken
@@ -95,7 +98,7 @@ Nu när den skadade disken är kopplad till den virtuella reparations datorn bö
 
 1. Kontrol lera att disken är full genom att högerklicka på enheten på den anslutna disken och välja **Egenskaper**.
 1. Om disken har **mindre än 300 MB ledigt utrymme** [expanderar du den till maximalt 1 TB med hjälp av PowerShell](../windows/expand-os-disk.md).
-1. När disk storleken är **1 TB**måste du utföra en disk rensning. Du kan frigöra utrymme med [disk rensnings verktyget](https://support.microsoft.com/help/4026616/windows-10-disk-cleanup) .
+1. När disk storleken är **1 TB** måste du utföra en disk rensning. Du kan frigöra utrymme med [disk rensnings verktyget](https://support.microsoft.com/help/4026616/windows-10-disk-cleanup) .
 1. Öppna en kommando tolk med förhöjd behörighet (kör som administratör) och utför en defragmentering på enheten:
 
    ``
@@ -146,7 +149,7 @@ Innan du vidtar några steg bör du skapa en kopia av mappen **\Windows\System32
    1. I HKEY_LOCAL_MACHINE\BROKENSYSTEM expanderar du katalogen som matchar det ControlSet-nummer som du identifierade i steg 4, till exempel **ControlSet001**.
    1. Gå till **kontroll >> sessionshanteraren >> minnes hantering** och notera platsen för **ExistingPageFiles** -nyckeln.
    1. Den här nyckeln bör finnas på Azure-standardplatsen för temp-enheten. Om den inte finns där och finns på en virtuell hård disk på en annan plats, t. ex. data disk enhet eller operativ system enhet, måste du ta bort den.
-   1. Bläddra till den platsen i Utforskaren och ta sedan bort **pagefile.syss ** filen.
+   1. Bläddra till den platsen i Utforskaren och ta sedan bort **pagefile.syss** filen.
 
 ### <a name="enable-the-serial-console-and-memory-dump-collection"></a>Aktivera samlings konsolen och minnes dumpnings samlingen
 

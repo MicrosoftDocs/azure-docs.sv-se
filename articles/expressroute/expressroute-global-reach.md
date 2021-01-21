@@ -8,19 +8,19 @@ ms.topic: conceptual
 ms.date: 09/18/2020
 ms.author: duau
 ms.custom: references_regions
-ms.openlocfilehash: e3f9105037c049a53f1b7b99da96dd857070fcc7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 50679e11697a4227af69b8568c5f3cd23fe26cbe
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90987610"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98662805"
 ---
 # <a name="expressroute-global-reach"></a>ExpressRoute Global Reach
 ExpressRoute är ett privat och flexibelt sätt att ansluta dina lokala nätverk till Microsoft Cloud. Du kan komma åt många moln tjänster från Microsoft, till exempel Azure och Microsoft 365 från ditt privata data Center eller ditt företags nätverk. Du kan till exempel ha ett avdelnings kontor i San Francisco med en ExpressRoute-krets i Silicon dal och ett annat avdelnings kontor i London med en ExpressRoute-krets i samma stad. Både avdelnings kontor har snabb anslutning till Azure-resurser i västra USA och Storbritannien, södra. Men avdelnings kontoren kan inte ansluta och skicka data direkt med varandra. Med andra ord kan 10.0.1.0/24 skicka data till 10.0.3.0/24 och 10.0.4.0/24-nätverket, men inte till 10.0.2.0/24-nätverket.
 
 ![Diagram som visar kretsar som inte länkats tillsammans med Express Route Global Reach.][1]
 
-Med **ExpressRoute Global Reach**kan du länka ExpressRoute-kretsar tillsammans för att skapa ett privat nätverk mellan dina lokala nätverk. I ovanstående exempel, med tillägget av ExpressRoute Global Reach, kan ditt San Francisco-kontor (10.0.1.0/24) direkt utbyta data med ditt London-kontor (10.0.2.0/24) genom befintliga ExpressRoute-kretsar och via Microsofts globala nätverk. 
+Med **ExpressRoute Global Reach** kan du länka ExpressRoute-kretsar tillsammans för att skapa ett privat nätverk mellan dina lokala nätverk. I ovanstående exempel, med tillägget av ExpressRoute Global Reach, kan ditt San Francisco-kontor (10.0.1.0/24) direkt utbyta data med ditt London-kontor (10.0.2.0/24) genom befintliga ExpressRoute-kretsar och via Microsofts globala nätverk. 
 
 ![Diagram som visar kretsar som länkats tillsammans med Express Route Global Reach.][2]
 
@@ -47,6 +47,7 @@ ExpressRoute Global Reach stöds på följande platser.
 * Nya Zeeland
 * Norge
 * Singapore
+* Sydafrika (endast Johannesburg)
 * Sverige
 * Schweiz
 * Storbritannien

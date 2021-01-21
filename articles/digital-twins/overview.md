@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
-ms.openlocfilehash: 49b7bae1a0cc224b92f292b891fae210f2cffa4e
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 91915f204a68d59a603b8bdea383b497a5b33d34
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400615"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664035"
 ---
 # <a name="what-is-azure-digital-twins"></a>Vad är Azure Digital Twins?
 
@@ -34,13 +34,15 @@ I Azure Digitals, definierar du de digitala entiteter som representerar personer
 
 Du kan tänka på dessa modell definitioner som en specialiserad vokabulär för att beskriva ditt företag. För att skapa en hanterings lösning kan du till exempel definiera modeller som "byggnad", "golv" och "hiss". Du kan sedan skapa **digitala dubbla** nätverk baserat på dessa modeller för att representera din speciella miljö.
 
+[!INCLUDE [digital-twins-versus-device-twins](../../includes/digital-twins-versus-device-twins.md)]
+
 Modeller definieras i ett JSON-liknande språk som kallas för [digitala DTDL (Endefinierat definitions språk)](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)och de beskriver vad de har för tillstånds egenskaper, telemetri, kommandon, komponenter och relationer.
 * Modeller definierar semantiska **relationer** mellan dina entiteter så att du kan ansluta dina delar till ett kunskaps diagram som återspeglar deras interaktioner. Du kan tänka dig att modeller som Substantiv i en beskrivning av din värld och relationerna som verb.
 * Du kan också specialisera dig på att använda modell arv. En modell kan ärva från en annan.
 
 DTDL används för data modeller i andra Azure IoT-tjänster, inklusive [IoT plug and Play (PNP)](../iot-pnp/overview-iot-plug-and-play.md) och [Time Series Insights (TSD)](../time-series-insights/overview-what-is-tsi.md). Detta hjälper dig att hålla din Azure digital-lösning ansluten och kompatibel med andra delar av Azure-eko systemet.
 
-### <a name="live-execution-environment"></a>Miljö för Live-körning
+### <a name="live-execution-environment"></a>Livekörningsmiljö
 
 Digitala modeller i digitala Azure-sändningar är Live, uppdaterade representationer av den verkliga världen. Med hjälp av relationerna i dina anpassade DTDL-modeller kan du ansluta dubbla till en **levande graf** som representerar din miljö.
 
@@ -67,11 +69,11 @@ Du kan också köra Azure Digitals-enheter från andra data källor med hjälp a
 Data i din Azure Digital-modell med dubbla modeller kan dirigeras till underordnade Azure-tjänster för ytterligare analys eller lagring. Detta tillhandahålls via **händelse vägar**, som använder [händelsehubben](../event-hubs/event-hubs-about.md), [Event Grid](../event-grid/overview.md)eller [Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) för att driva dina önskade data flöden.
 
 Några saker du kan göra med händelse vägar är:
-* Lagra Azure Digitals dubbla data i [Azure Data Lake](../storage/blobs/data-lake-storage-introduction.md)
-* Analysera Azure Digitals dubbla data med [Azure Synapse Analytics](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)eller andra Microsoft data Analytics-verktyg
-* Integrera större arbets flöden med Logic Apps
+* Lagra Azure Digital Twins-data i [Azure Data Lake](../storage/blobs/data-lake-storage-introduction.md)
+* Analysera Azure Digital Twins-data med [Azure Synapse Analytics](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) eller andra Microsoft-verktyg för dataanalys
+* Integrera större arbetsflöden med Logic Apps
 * Att ansluta Azure Digitals dubbla steg till Time Series Insights för att spåra tids serie historiken för varje dubbla
-* Justera en tids serie modell i Time Series Insights med en källa i Azure Digitals dubbla
+* Anpassa en Time Series-modell i Time Series Insights med en källa i Azure Digital Twins
 
 Det här är ett annat sätt att Azure Digitals, kan ansluta till en större lösning och stödja dina anpassade behov för att fortsätta arbeta med dessa insikter.
 

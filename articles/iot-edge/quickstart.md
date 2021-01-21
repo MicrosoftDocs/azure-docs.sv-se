@@ -10,12 +10,12 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, devx-track-azurecli
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: f3af2b7839465f886d1edba01eb9988419761dac
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 71e38059aceb7da63f3545610b9acfe48c5d3150
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 01/21/2021
-ms.locfileid: "98631087"
+ms.locfileid: "98663221"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-windows-device-preview"></a>Snabb start: distribuera din första IoT Edge-modul till en Windows-enhet (förhands granskning)
 
@@ -108,58 +108,69 @@ Installera IoT Edge för Linux i Windows på din enhet och konfigurera den med e
 ![Diagram – starta IoT Edge runtime på enheten](./media/quickstart/start-runtime.png)
 
 1. [Hämta Windows administrations Center](https://aka.ms/WACDownloadEFLOW).
-2. Följ installations guiden för att konfigurera Windows administrations Center på enheten.
-3. När du är i Windows administrations Center väljer du **kugg hjuls ikonen Inställningar** i det övre högra hörnet på skärmen  
-4. Från menyn Inställningar, under Gateway, väljer du **tillägg**
-5. I listan över **tillgängliga tillägg** väljer du **Azure IoT Edge**
-6. **Installera** tillägget
 
-7. När tillägget har installerats går du till sidan för huvud instrument panelen genom att välja **Windows administrations Center** överst till vänster i hörnet på skärmen.
+1. Följ installations guiden för att konfigurera Windows administrations Center på enheten.
 
-8. Den lokala värd anslutningen visas som representerar den dator där du kör Windows administrations Center.
+1. När du är i Windows administrations Center väljer du **kugg hjuls ikonen Inställningar** i det övre högra hörnet på skärmen
+
+1. Från menyn Inställningar, under Gateway, väljer du **tillägg**
+
+1. Välj fliken **feeds** och välj **Lägg till**.
+
+1. Ange https://aka.ms/wac-insiders-feed i text rutan och välj **Lägg till**.
+
+1. När du har lagt till feeden går du till fliken **tillgängliga tillägg** . Det kan ta en stund att uppdatera listan över tillägg.
+
+1. I listan över **tillgängliga tillägg** väljer du **Azure IoT Edge**
+
+1. **Installera** tillägget
+
+1. När tillägget har installerats går du till sidan för huvud instrument panelen genom att välja **Windows administrations Center** överst till vänster i hörnet på skärmen.
+
+1. Den lokala värd anslutningen visas som representerar den dator där du kör Windows administrations Center.
 
    :::image type="content" source="media/quickstart/windows-admin-center-start-page.png" alt-text="Skärm bild – start sida för Windows-administratör":::
 
-9. Välj **Lägg till**.
+1. Välj **Lägg till**.
 
    :::image type="content" source="media/quickstart/windows-admin-center-start-page-add.png" alt-text="Skärm bild – Windows Admin start sida Lägg till knapp":::
 
-10. Leta upp panelen Azure IoT Edge och välj **Skapa ny**. Då startas installations guiden.
+1. Leta upp panelen Azure IoT Edge och välj **Skapa ny**. Då startas installations guiden.
 
     :::image type="content" source="media/quickstart/select-tile-screen.png" alt-text="Skärm bild – Azure IoT Edge för Linux på Windows-panelen":::
 
-11. Fortsätt med installations guiden för att godkänna licens avtalet och välj **Nästa**
+1. Fortsätt med installations guiden för att godkänna licens avtalet och välj **Nästa**
 
     :::image type="content" source="media/quickstart/wizard-welcome-screen.png" alt-text="Skärm bild – Välkommen till guiden":::
 
-12. Välj de **valfria diagnostikdata** för att tillhandahålla utökade diagnostikdata som hjälper Microsoft att övervaka och underhålla tjänst kvalitet och klicka på **Nästa: Distribuera**
+1. Välj de **valfria diagnostikdata** för att tillhandahålla utökade diagnostikdata som hjälper Microsoft att övervaka och underhålla tjänst kvalitet och klicka på **Nästa: Distribuera**
 
     :::image type="content" source="media/quickstart/diagnostic-data-screen.png" alt-text="Skärm bild – diagnostikdata":::
 
-13. På skärmen **Välj mål enhet** väljer du önskad målenhet för att kontrol lera att den uppfyller minimi kraven. I den här snabb starten ska vi installera IoT Edge på den lokala enheten, så Välj localhost-anslutningen. När du har bekräftat väljer du **Nästa** för att fortsätta
+1. På skärmen **Välj mål enhet** väljer du önskad målenhet för att kontrol lera att den uppfyller minimi kraven. I den här snabb starten ska vi installera IoT Edge på den lokala enheten, så Välj localhost-anslutningen. När du har bekräftat väljer du **Nästa** för att fortsätta
 
     :::image type="content" source="media/quickstart/wizard-select-target-device-screen.png" alt-text="Skärm bild – Välj mål enhet":::
 
-14. Godkänn standardinställningarna genom att välja **Nästa**.
+1. Godkänn standardinställningarna genom att välja **Nästa**.
 
-15. På sidan distribution visas processen för att ladda ned paketet, installera paketet, konfigurera värden och slutföra konfigurationen av den virtuella Linux-datorn.  En lyckad distribution kommer att se ut så här:
+1. På sidan distribution visas processen för att ladda ned paketet, installera paketet, konfigurera värden och slutföra konfigurationen av den virtuella Linux-datorn.  En lyckad distribution kommer att se ut så här:
 
     :::image type="content" source="media/quickstart/wizard-deploy-success-screen.png" alt-text="Skärm bild – guide distributionen lyckades":::
 
-16. Klicka på **Nästa: Anslut** för att fortsätta till det sista steget för att etablera din Azure IoT Edge-enhet med sitt enhets-ID från din IoT Hub-instans.
+1. Klicka på **Nästa: Anslut** för att fortsätta till det sista steget för att etablera din Azure IoT Edge-enhet med sitt enhets-ID från din IoT Hub-instans.
 
-17. Kopiera anslutnings strängen från enheten i Azure IoT Hub och klistra in den i fältet enhets anslutnings sträng. Välj sedan **etablering med den valda metoden**.
+1. Kopiera anslutnings strängen från enheten i Azure IoT Hub och klistra in den i fältet enhets anslutnings sträng. Välj sedan **etablering med den valda metoden**.
 
     > [!NOTE]
     > Se steg 3 i föregående avsnitt, [Registrera en IoT Edge-enhet](#register-an-iot-edge-device)för att hämta anslutnings strängen.
 
     :::image type="content" source="media/quickstart/wizard-provision.png" alt-text="Skärm bild – guide etablering":::
 
-18. När etableringen är klar väljer du **Slutför** för att slutföra och återgå till Start skärmen i Windows administrations Center. Du bör nu kunna se din enhet i listan som en IoT Edge enhet.
+1. När etableringen är klar väljer du **Slutför** för att slutföra och återgå till Start skärmen i Windows administrations Center. Du bör nu kunna se din enhet i listan som en IoT Edge enhet.
 
     :::image type="content" source="media/quickstart/windows-admin-center-device-screen.png" alt-text="Skärm bild – Windows administrations Center Azure IoT Edge enhet":::
 
-19. Välj din Azure IoT Edge enhet om du vill visa dess instrument panel. Du bör se att arbets belastningarna från enheten är dubbla i Azure IoT Hub har distribuerats. **Listan IoT Edge modul** ska visa en modul som kör, **edgeAgent** och **IoT Edges status** ska visa **aktiv (körs)**.
+1. Välj din Azure IoT Edge enhet om du vill visa dess instrument panel. Du bör se att arbets belastningarna från enheten är dubbla i Azure IoT Hub har distribuerats. **Listan IoT Edge modul** ska visa en modul som kör, **edgeAgent** och **IoT Edges status** ska visa **aktiv (körs)**.
 
 IoT Edge-enheten har nu konfigurerats. Den är redo att köra molndistribuerade moduler.
 

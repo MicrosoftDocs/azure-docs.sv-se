@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 09/28/2020
 ms.author: alkemper
-ms.openlocfilehash: d465f3c44ede8b4df56ef0da08c5bbbcd477d93f
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: a4890dd93cf77e20aff09ca6fd33ec3434a45a4b
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96932155"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98663054"
 ---
 # <a name="quickstart-add-feature-flags-to-an-aspnet-core-app"></a>Snabb start: Lägg till funktions flaggor i en ASP.NET Core app
 
@@ -20,7 +20,7 @@ I den här snabb starten skapar du en end-to-end-implementering av funktions han
 
 Biblioteken för .NET Core Feature Management utökar ramverket med omfattande stöd för funktions flaggor. Dessa bibliotek skapas ovanpå konfigurations systemet för .NET Core. De integreras sömlöst med app-konfigurationen via sin .NET Core-Konfigurationsprovider.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * Azure-prenumeration – [skapa en kostnads fritt](https://azure.microsoft.com/free/dotnet)
 * [.NET Core SDK](https://dotnet.microsoft.com/download)
@@ -75,6 +75,21 @@ dotnet new mvc --no-https --output TestFeatureFlags
     > [!IMPORTANT]
     > `CreateHostBuilder` ersätter `CreateWebHostBuilder` i .net Core 3. x. Välj rätt syntax baserat på din miljö.
 
+     #### <a name="net-5x"></a>[.NET 5. x](#tab/core5x)
+
+    ```csharp
+    public static IHostBuilder CreateHostBuilder(string[] args) =>
+        Host.CreateDefaultBuilder(args)
+            .ConfigureWebHostDefaults(webBuilder =>
+                webBuilder.ConfigureAppConfiguration(config =>
+                {
+                    var settings = config.Build();
+                    var connection = settings.GetConnectionString("AppConfig");
+                    config.AddAzureAppConfiguration(options =>
+                        options.Connect(connection).UseFeatureFlags());
+                }).UseStartup<Startup>());
+    ```
+
     #### <a name="net-core-3x"></a>[.NET Core 3. x](#tab/core3x)
 
     ```csharp
@@ -116,6 +131,15 @@ dotnet new mvc --no-https --output TestFeatureFlags
 
 1. Uppdatera `Startup.ConfigureServices` metoden för att lägga till stöd för funktions flaggor genom att anropa `AddFeatureManagement` metoden. Du kan också ta med alla filter som ska användas med funktions flaggor genom att anropa `AddFeatureFilter<FilterType>()` :
 
+     #### <a name="net-5x"></a>[.NET 5. x](#tab/core5x)
+
+    ```csharp    
+    public void ConfigureServices(IServiceCollection services)
+    {
+        services.AddControllersWithViews();
+        services.AddFeatureManagement();
+    }
+    ```
     #### <a name="net-core-3x"></a>[.NET Core 3. x](#tab/core3x)
 
     ```csharp    
@@ -181,7 +205,7 @@ dotnet new mvc --no-https --output TestFeatureFlags
 
     Med föregående kod kan du `<feature>` använda etikett hjälpen i projektets *. cshtml* -filer.
 
-1. Öppna *_Layout. cshtml* i den *Views* \\ *delade* katalogen för vyer. Leta upp `<nav>` streckkoden under `<body>`  >  `<header>` . Infoga en ny `<feature>` tagg mellan *Start* -och *Sekretess* navigerings objekt, som du ser i de markerade raderna nedan.
+1. Öppna *_Layout. cshtml* i den  \\ *delade* katalogen för vyer. Leta upp `<nav>` streckkoden under `<body>`  >  `<header>` . Infoga en ny `<feature>` tagg mellan *Start* -och *Sekretess* navigerings objekt, som du ser i de markerade raderna nedan.
 
     :::code language="html" source="../../includes/azure-app-configuration-navbar.md" range="15-38" highlight="13-17":::
 

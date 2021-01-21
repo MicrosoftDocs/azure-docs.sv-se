@@ -4,12 +4,12 @@ description: Lär dig hur du skapar en SSH-anslutning med AKS-klusternoder (Azur
 services: container-service
 ms.topic: article
 ms.date: 07/31/2019
-ms.openlocfilehash: 50a52584618e505aa2ae7bd9ed7e0a9f6bc330a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c044b552cd0c28a7073364c48b9572045a290331
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87015620"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98662857"
 ---
 # <a name="connect-with-ssh-to-azure-kubernetes-service-aks-cluster-nodes-for-maintenance-or-troubleshooting"></a>Ansluta med SSH till AKS-klusternoder (Azure Kubernetes Service) vid underhåll eller felsökning
 
@@ -25,7 +25,7 @@ Som standard hämtas SSH-nycklar, eller genereras, och läggs sedan till noderna
 
 Den här artikeln förutsätter också att du har en SSH-nyckel. Du kan skapa en SSH-nyckel med [MacOS eller Linux][ssh-nix] eller [Windows][ssh-windows]. Om du använder funktionen SparaTillFil för att skapa nyckel paret sparar du nyckel paret i ett OpenSSH-format i stället för standardvärdet för formatet SparaTillFil-privat nyckel (. PPK-fil).
 
-Du måste också ha Azure CLI-versionen 2.0.64 eller senare installerad och konfigurerad. Kör  `az --version` för att hitta versionen. Om du behöver installera eller uppgradera kan du läsa  [Installera Azure CLI 2.0][install-azure-cli].
+Du måste också ha Azure CLI-versionen 2.0.64 eller senare installerad och konfigurerad. Kör `az --version` för att hitta versionen. Om du behöver installera eller uppgradera kan du läsa [Installera Azure CLI][install-azure-cli].
 
 ## <a name="configure-virtual-machine-scale-set-based-aks-clusters-for-ssh-access"></a>Konfigurera AKS-kluster för skalnings uppsättningar för virtuella datorer för SSH-åtkomst
 
@@ -35,7 +35,7 @@ Använd kommandot [AZ AKS show][az-aks-show] för att hämta resurs grupps namne
 
 ```azurecli-interactive
 CLUSTER_RESOURCE_GROUP=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv)
-SCALE_SET_NAME=$(az vmss list --resource-group $CLUSTER_RESOURCE_GROUP --query [0].name -o tsv)
+SCALE_SET_NAME=$(az vmss list --resource-group $CLUSTER_RESOURCE_GROUP --query '[0].name' -o tsv)
 ```
 
 Exemplet ovan tilldelar namnet på kluster resurs gruppen för *myAKSCluster* i *myResourceGroup* till *CLUSTER_RESOURCE_GROUP*. Exemplet använder sedan *CLUSTER_RESOURCE_GROUP* för att visa namnet på skalnings uppsättningen och tilldela det till *SCALE_SET_NAME*.

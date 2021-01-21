@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0a8e08d0045d0520241341cc08fb800468ed6897
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: c3e6c1d6bfa83ef238ef38b25b189510cf142a38
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96928621"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661093"
 ---
 # <a name="overview-of-user-accounts-in-azure-active-directory-b2c"></a>Översikt över användar konton i Azure Active Directory B2C
 
@@ -38,7 +38,7 @@ När du lägger till ett nytt arbets konto måste du tänka på följande konfig
 
 - **Namn** och **användar namn** – egenskapen **Name** innehåller användarens tilldelade och efter namn. **Användar namnet** är det ID som användaren anger för att logga in. Användar namnet innehåller den fullständiga domänen. Domän namns delen av användar namnet måste antingen vara det initiala standard domän namnet *your-domain.onmicrosoft.com*, eller ett verifierat, icke-federerat [anpassat domän](../active-directory/fundamentals/add-custom-domain.md) namn, till exempel *contoso.com*.
 - **Profil** -kontot har kon figurer ATS med en profil med användar data. Du har möjlighet att ange förnamn, efter namn, befattning och avdelnings namn. Du kan redigera profilen när kontot har skapats.
-- **Grupper** – Använd en grupp för att utföra hanterings uppgifter, till exempel tilldela licenser eller behörigheter till flera användare eller enheter samtidigt. Du kan ställa in det nya kontot i en befintlig [grupp](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md) i din klient organisation.
+- **Grupper** – Använd grupper för att utföra hanterings uppgifter, till exempel tilldela licenser eller behörigheter till många användare eller enheter på samma gång. Du kan ställa in det nya kontot i en befintlig [grupp](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md) i din klient organisation.
 - **Katalog roll** – du måste ange den åtkomst nivå som användar kontot måste ha för resurser i din klient organisation. Följande behörighets nivåer är tillgängliga:
 
     - **Användare** – användare har åtkomst till tilldelade resurser, men kan inte hantera de flesta klient resurser.
@@ -70,7 +70,7 @@ Du kan använda följande information för att återställa lösen ordet för en
 
 Du kan bjuda in externa användare till din klient som gäst användare. Ett typiskt scenario för att bjuda in en gäst användare till din Azure AD B2C klient organisation är att dela administrations ansvar. Ett exempel på hur du använder ett gäst konto finns i [Egenskaper för en Azure Active Directory B2B-samarbets användare](../active-directory/external-identities/user-properties.md).
 
-När du bjuder in en gäst användare till din klient anger du e-postadressen till mottagaren och ett meddelande som beskriver inbjudan. Länken inbjudan tar användaren till sidan för godkännande där knappen **Kom igång** är markerad och granskningen av behörigheter godkänns. Om en inkorg inte är kopplad till e-postadressen kan användaren gå till sidan medgivande genom att gå till en Microsoft-sida med de inbjudna autentiseringsuppgifterna. Användaren tvingas sedan att lösa in inbjudan på samma sätt som om du klickar på länken i e-postmeddelandet. Exempel: `https://myapps.microsoft.com/B2CTENANTNAME`.
+När du bjuder in en gäst användare till din klient anger du e-postadressen till mottagaren och ett meddelande som beskriver inbjudan. Länken inbjudan tar användaren till sidan medgivande. Om en inkorg inte är kopplad till e-postadressen kan användaren gå till sidan medgivande genom att gå till en Microsoft-sida med de inbjudna autentiseringsuppgifterna. Användaren tvingas sedan att lösa in inbjudan på samma sätt som om du klickar på länken i e-postmeddelandet. Exempel: `https://myapps.microsoft.com/B2CTENANTNAME`.
 
 Du kan också använda [Microsoft Graph API](/graph/api/invitation-post?view=graph-rest-beta) för att bjuda in en gäst användare.
 
@@ -78,7 +78,7 @@ Du kan också använda [Microsoft Graph API](/graph/api/invitation-post?view=gra
 
 Konsument användaren kan logga in på program som skyddas av Azure AD B2C, men kan inte komma åt Azure-resurser som Azure Portal. Konsument användaren kan använda ett lokalt konto eller federerade konton, till exempel Facebook eller Twitter. Ett konsument konto skapas med hjälp av ett [registrerings-eller inloggnings användar flöde](user-flow-overview.md)med hjälp av Microsoft Graph-API eller med hjälp av Azure Portal.
 
-Du kan ange de data som samlas in när ett konsument användar konto skapas med anpassade användarattribut. Mer information finns i [definiera anpassade attribut i Azure Active Directory B2C](user-flow-custom-attributes.md).
+Du kan ange de data som samlas in när ett konsument användar konto skapas. Mer information finns i [lägga till användarattribut och anpassa användarindata](configure-user-input.md).
 
 Mer information om hur du hanterar konsument konton finns i [hantera Azure AD B2C användar konton med Microsoft Graph](manage-user-accounts-graph-api.md).
 

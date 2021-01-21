@@ -3,12 +3,12 @@ title: Azure Backup ord lista
 description: Den här artikeln definierar termer som är användbara för användning med Azure Backup.
 ms.topic: conceptual
 ms.date: 12/21/2020
-ms.openlocfilehash: 1e28f0c2ad5d14ea2a8dc6ce8d5fa2b21c7e65ac
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 121258665ab275fdcffd618e7c0cf1b3e0537e70
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97935078"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661484"
 ---
 # <a name="azure-backup-glossary"></a>Azure Backup ord lista
 

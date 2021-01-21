@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/1/2020
 ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 1fd495083f5f9be367dd0f125883b181e3bed27b
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 7072720e2600221e7b8ad8d2337577b65b079afb
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96930559"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660690"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>Självstudie: Använd dynamisk konfiguration i en ASP.NET Core app
 
@@ -33,13 +33,13 @@ Den här självstudien visar hur du kan implementera dynamiska konfigurationsupp
 
 Du kan använda valfri kod redigerare för att utföra stegen i den här självstudien. [Visual Studio Code](https://code.visualstudio.com/) är ett utmärkt alternativ som är tillgängligt på Windows-, MacOS-och Linux-plattformarna.
 
-I den här guiden får du lära dig att:
+I de här självstudierna får du lära dig att
 
 > [!div class="checklist"]
 > * Konfigurera ditt program för att uppdatera konfigurationen som svar på ändringar i ett konfigurations lager för appar.
 > * Mata in den senaste konfigurationen i dina programs kontrollanter.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill göra den här själv studie kursen installerar du [.net Core SDK](https://dotnet.microsoft.com/download).
 
@@ -68,28 +68,27 @@ En *kontroll nyckel* är en särskild nyckel som används för att signalera nä
 
 1. Öppna *program.cs* och uppdatera `CreateWebHostBuilder` metoden för att lägga till- `config.AddAzureAppConfiguration()` metoden.
 
-    #### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
+   #### <a name="net-5x"></a>[.NET 5. x](#tab/core5x)
 
     ```csharp
-    public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-        WebHost.CreateDefaultBuilder(args)
-            .ConfigureAppConfiguration((hostingContext, config) =>
-            {
-                var settings = config.Build();
-
-                config.AddAzureAppConfiguration(options =>
+    public static IHostBuilder CreateHostBuilder(string[] args) =>
+        Host.CreateDefaultBuilder(args)
+            .ConfigureWebHostDefaults(webBuilder =>
+                webBuilder.ConfigureAppConfiguration((hostingContext, config) =>
                 {
-                    options.Connect(settings["ConnectionStrings:AppConfig"])
-                           .ConfigureRefresh(refresh =>
-                                {
-                                    refresh.Register("TestApp:Settings:Sentinel", refreshAll: true)
-                                           .SetCacheExpiration(new TimeSpan(0, 5, 0));
-                                });
-                });
-            })
-            .UseStartup<Startup>();
-    ```
-
+                    var settings = config.Build();
+                    config.AddAzureAppConfiguration(options =>
+                    {
+                        options.Connect(settings["ConnectionStrings:AppConfig"])
+                               .ConfigureRefresh(refresh =>
+                                    {
+                                        refresh.Register("TestApp:Settings:Sentinel", refreshAll: true)
+                                               .SetCacheExpiration(new TimeSpan(0, 5, 0));
+                                    });
+                    });
+                })
+            .UseStartup<Startup>());
+    ```   
     #### <a name="net-core-3x"></a>[.NET Core 3. x](#tab/core3x)
 
     ```csharp
@@ -111,6 +110,27 @@ En *kontroll nyckel* är en särskild nyckel som används för att signalera nä
                 })
             .UseStartup<Startup>());
     ```
+    #### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
+
+    ```csharp
+    public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+        WebHost.CreateDefaultBuilder(args)
+            .ConfigureAppConfiguration((hostingContext, config) =>
+            {
+                var settings = config.Build();
+
+                config.AddAzureAppConfiguration(options =>
+                {
+                    options.Connect(settings["ConnectionStrings:AppConfig"])
+                           .ConfigureRefresh(refresh =>
+                                {
+                                    refresh.Register("TestApp:Settings:Sentinel", refreshAll: true)
+                                           .SetCacheExpiration(new TimeSpan(0, 5, 0));
+                                });
+                });
+            })
+            .UseStartup<Startup>();
+    ```
     ---
 
     `ConfigureRefresh`Metoden används för att ange inställningarna som används för att uppdatera konfigurations data med appens konfigurations Arkiv när en uppdatering aktive ras. `refreshAll`Parametern till `Register` metoden indikerar att alla konfigurations värden ska uppdateras om kontroll nyckeln ändras.
@@ -122,7 +142,7 @@ En *kontroll nyckel* är en särskild nyckel som används för att signalera nä
 
     Om du vill utlösa en uppdaterings åtgärd måste du konfigurera en uppdatering mellanprogram för programmet för att uppdatera konfigurations data när någon ändring sker. Du får se hur du gör detta i ett senare steg.
 
-2. Lägg till en *Settings.cs*-fil som definierar och implementerar en ny `Settings`-klass.
+2. Lägg till en *Settings.cs* -fil i katalogen controllers som definierar och implementerar en ny `Settings` klass. Ersätt namn området med namnet på ditt projekt. 
 
     ```csharp
     namespace TestAppConfig
@@ -139,6 +159,26 @@ En *kontroll nyckel* är en särskild nyckel som används för att signalera nä
 
 3. Öppna *startup.cs* och Använd `IServiceCollection.Configure<T>` i- `ConfigureServices` metoden för att binda konfigurations data till `Settings` klassen.
 
+    #### <a name="net-5x"></a>[.NET 5. x](#tab/core5x)
+
+    ```csharp
+    public void ConfigureServices(IServiceCollection services)
+    {
+        services.Configure<Settings>(Configuration.GetSection("TestApp:Settings"));
+        services.AddControllersWithViews();
+        services.AddAzureAppConfiguration();
+    }
+    ```
+    #### <a name="net-core-3x"></a>[.NET Core 3. x](#tab/core3x)
+
+    ```csharp
+    public void ConfigureServices(IServiceCollection services)
+    {
+        services.Configure<Settings>(Configuration.GetSection("TestApp:Settings"));
+        services.AddControllersWithViews();
+        services.AddAzureAppConfiguration();
+    }
+    ```
     #### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
 
     ```csharp
@@ -148,16 +188,6 @@ En *kontroll nyckel* är en särskild nyckel som används för att signalera nä
         services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
     }
     ```
-
-    #### <a name="net-core-3x"></a>[.NET Core 3. x](#tab/core3x)
-
-    ```csharp
-    public void ConfigureServices(IServiceCollection services)
-    {
-        services.Configure<Settings>(Configuration.GetSection("TestApp:Settings"));
-        services.AddControllersWithViews();
-    }
-    ```
     ---
     > [!Tip]
     > Mer information om alternativ mönster när du läser konfigurations värden finns [i alternativ mönster i ASP.net Core](/aspnet/core/fundamentals/configuration/options?view=aspnetcore-3.1).
@@ -165,23 +195,41 @@ En *kontroll nyckel* är en särskild nyckel som används för att signalera nä
 4. Uppdatera `Configure` metoden, Lägg till `UseAzureAppConfiguration` mellanprogram för att tillåta att konfigurations inställningarna som registreras för uppdatering uppdateras medan den ASP.net Core webbappen fortsätter att ta emot begär Anden.
 
 
-    #### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
+    #### <a name="net-5x"></a>[.NET 5. x](#tab/core5x)
 
     ```csharp
-    public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
     {
-        app.UseAzureAppConfiguration();
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
+            else
+            {
+                app.UseExceptionHandler("/Home/Error");
+                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+                app.UseHsts();
+            }
 
-        services.Configure<CookiePolicyOptions>(options =>
-        {
-            options.CheckConsentNeeded = context => true;
-            options.MinimumSameSitePolicy = SameSiteMode.None;
-        });
+            // Add the following line:
+            app.UseAzureAppConfiguration();
 
-        app.UseMvc();
+            app.UseHttpsRedirection();
+            
+            app.UseStaticFiles();
+
+            app.UseRouting();
+
+            app.UseAuthorization();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
+            });
     }
     ```
-
     #### <a name="net-core-3x"></a>[.NET Core 3. x](#tab/core3x)
 
     ```csharp
@@ -217,6 +265,22 @@ En *kontroll nyckel* är en särskild nyckel som används för att signalera nä
             });
     }
     ```
+    #### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
+
+    ```csharp
+    public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+    {
+        app.UseAzureAppConfiguration();
+
+        services.Configure<CookiePolicyOptions>(options =>
+        {
+            options.CheckConsentNeeded = context => true;
+            options.MinimumSameSitePolicy = SameSiteMode.None;
+        });
+
+        app.UseMvc();
+    }
+    ```
     ---
     
     Mellanprogram använder den uppdaterings konfiguration som anges i `AddAzureAppConfiguration` -metoden i `Program.cs` för att utlösa en uppdatering för varje begäran som tas emot av ASP.net Core webbappen. För varje begäran utlöses en uppdaterings åtgärd och klient biblioteket kontrollerar om det cachelagrade värdet för den registrerade konfigurations inställningen har upphört att gälla. Om den har gått ut uppdateras den.
@@ -234,32 +298,9 @@ En *kontroll nyckel* är en särskild nyckel som används för att signalera nä
 
 2. Uppdatera `HomeController` klassen som ska tas emot `Settings` via beroende insprutning och använd dess värden.
 
-    #### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
+ #### <a name="net-5x"></a>[.NET 5. x](#tab/core5x)
 
-    ```csharp
-    public class HomeController : Controller
-    {
-        private readonly Settings _settings;
-        public HomeController(IOptionsSnapshot<Settings> settings)
-        {
-            _settings = settings.Value;
-        }
-
-        public IActionResult Index()
-        {
-            ViewData["BackgroundColor"] = _settings.BackgroundColor;
-            ViewData["FontSize"] = _settings.FontSize;
-            ViewData["FontColor"] = _settings.FontColor;
-            ViewData["Message"] = _settings.Message;
-
-            return View();
-        }
-    }
-    ```
-
-    #### <a name="net-core-3x"></a>[.NET Core 3. x](#tab/core3x)
-
-    ```csharp
+```csharp
     public class HomeController : Controller
     {
         private readonly Settings _settings;
@@ -283,8 +324,57 @@ En *kontroll nyckel* är en särskild nyckel som används för att signalera nä
 
         // ...
     }
-    ```
-    ---
+```
+#### <a name="net-core-3x"></a>[.NET Core 3. x](#tab/core3x)
+
+```csharp
+    public class HomeController : Controller
+    {
+        private readonly Settings _settings;
+        private readonly ILogger<HomeController> _logger;
+
+        public HomeController(ILogger<HomeController> logger, IOptionsSnapshot<Settings> settings)
+        {
+            _logger = logger;
+            _settings = settings.Value;
+        }
+
+        public IActionResult Index()
+        {
+            ViewData["BackgroundColor"] = _settings.BackgroundColor;
+            ViewData["FontSize"] = _settings.FontSize;
+            ViewData["FontColor"] = _settings.FontColor;
+            ViewData["Message"] = _settings.Message;
+
+            return View();
+        }
+
+        // ...
+    }
+```
+#### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
+
+```csharp
+    public class HomeController : Controller
+    {
+        private readonly Settings _settings;
+        public HomeController(IOptionsSnapshot<Settings> settings)
+        {
+            _settings = settings.Value;
+        }
+
+        public IActionResult Index()
+        {
+            ViewData["BackgroundColor"] = _settings.BackgroundColor;
+            ViewData["FontSize"] = _settings.FontSize;
+            ViewData["FontColor"] = _settings.FontColor;
+            ViewData["Message"] = _settings.Message;
+
+            return View();
+        }
+    }
+```
+---
 
 
 
@@ -340,7 +430,7 @@ En *kontroll nyckel* är en särskild nyckel som används för att signalera nä
     | TestApp:Settings:Message | Data från Azure App Configuration – nu med live-uppdateringar! |
     | TestApp: inställningar: Sentinel | 2 |
 
-1. Uppdatera webbläsarsidan för att visa de nya konfigurationsinställningarna. Du kan behöva uppdatera mer än en gång för att ändringarna ska visas.
+1. Uppdatera webbläsarsidan för att visa de nya konfigurationsinställningarna. Du kan behöva uppdatera mer än en gång för att ändringarna ska reflekteras, eller ändra den automatiska uppdaterings hastigheten till mindre än 5 minuter. 
 
     ![Starta uppdaterad snabb starts app lokalt](./media/quickstarts/aspnet-core-app-launch-local-after.png)
 

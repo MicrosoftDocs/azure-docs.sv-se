@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 11/04/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 1ce594d9e3ffddf781c61717ae4534f0c7bd40f8
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: beb658474e49f9b47900d8481dab0424dae8c5be
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94681898"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661399"
 ---
 # <a name="windows-stop-error---0x0000007e-system-thread-exception-not-handled"></a>Windows Stop-fel – 0x0000007E system tråd undantag hanterades inte
 
@@ -34,6 +34,10 @@ När du använder [startdiagnostik](./boot-diagnostics.md) för att visa en skä
 Det går inte att fastställa orsaken till att en minnesdumpfil analyseras. Fortsätt att samla in minnesdumpen.
 
 ## <a name="solution"></a>Lösning
+
+> [!TIP]
+> Om du har en ny säkerhets kopia av den virtuella datorn kan du försöka att [återställa den virtuella datorn från säkerhets kopian](../../backup/backup-azure-arm-restore-vms.md) för att åtgärda start problemet.
+
 
 För att lösa det här problemet måste du först samla in minnesdumpen för kraschen och sedan skicka filen till Microsoft support. Samla in dumpfilen genom att följa anvisningarna i följande två avsnitt.
 

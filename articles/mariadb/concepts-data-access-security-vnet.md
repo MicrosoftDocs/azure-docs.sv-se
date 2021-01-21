@@ -3,15 +3,15 @@ title: Slut punkter för VNet-tjänst – Azure Database for MariaDB
 description: Beskriver hur VNet-tjänstens slut punkter fungerar för din Azure Database for MariaDB-Server.
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: conceptual
 ms.date: 7/17/2020
-ms.openlocfilehash: bd7d08e4f65612b9a76b63e8153603d043209ad3
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 0f90e64f2a20b6455d5a169025230b78e64287cc
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96453385"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98662686"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mariadb"></a>Använda tjänstslutpunkter för virtuellt nätverk och regler för Azure Database for MariaDB
 
@@ -52,7 +52,7 @@ En regel för virtuella nätverk instruerar Azure Database for MariaDB servern a
 
 De virtuella datorerna i under näten kan inte kommunicera med din Azure Database for MariaDB-Server förrän du vidtar åtgärder. En åtgärd som upprättar kommunikationen är att skapa en regel för virtuella nätverk. Anledningen till att du väljer regel metoden för VNet kräver en jämförelse-och-kontrast-diskussion som involverar de konkurrerande säkerhets alternativ som erbjuds av brand väggen.
 
-### <a name="a-allow-access-to-azure-services"></a>A. Tillåta åtkomst till Azure-tjänster
+### <a name="a-allow-access-to-azure-services"></a>A. Tillåt åtkomst till Azure-tjänster
 
 Fönstret anslutnings säkerhet har en **på/av-** knapp med etiketten **Tillåt åtkomst till Azure-tjänster**. Inställningen **on** tillåter kommunikation från alla Azure IP-adresser och alla Azure-undernät. Dessa Azure IP-adresser eller undernät kanske inte ägs av dig. Den **här** inställningen är förmodligen mer öppen än du vill att din Azure Database for MariaDB-databas ska vara. Funktionen för regel för virtuella nätverk ger en mycket noggrannare detaljerad kontroll.
 

@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 1/19/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 24b4f56e5798acc4d9bd0962be7059a359958645
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: 97f1f5d0f1f351164e05d18b9f80c7f26450f31b
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98573249"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661609"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-time-series-insights"></a>Integrera Azure Digitals dubbla med Azure Time Series Insights
 
@@ -65,7 +65,7 @@ Självstudien om Azure Digitals sammanhållen [*: Anslut en lösning från slut 
 4. Skapa en Azure Digital- [slutpunkt](concepts-route-events.md#create-an-endpoint) som länkar din händelsehubben till din Azure Digital-instansen.
 
     ```azurecli-interactive
-    az dt endpoint create eventhub --endpoint-name <name for your Event Hubs endpoint> --eventhub-resource-group <resource group name> --eventhub-namespace <Event Hubs namespace from above> --eventhub <Twins event hub name from above> --eventhub-policy <Twins auth rule from above> -n <your Azure Digital Twins instance name>
+    az dt endpoint create eventhub -n <your Azure Digital Twins instance name> --endpoint-name <name for your Event Hubs endpoint> --eventhub-resource-group <resource group name> --eventhub-namespace <Event Hubs namespace from above> --eventhub <Twins event hub name from above> --eventhub-policy <Twins auth rule from above>
     ```
 
 5. Skapa en [väg](concepts-route-events.md#create-an-event-route) i Azure Digital Twins för att skicka dubbla uppdateringshändelser till din slutpunkt. Filtret i den här vägen tillåter endast att dubbla uppdaterings meddelanden skickas till din slut punkt.
@@ -89,11 +89,16 @@ Med den här funktionen konverteras de dubbla uppdaterings händelserna från si
 
 Mer information om hur du använder Event Hubs med Azure Functions finns i [*Azure Event Hubs-utlösare för Azure Functions*](../azure-functions/functions-bindings-event-hubs-trigger.md).
 
-I din publicerade Function-app ersätter du funktions koden med följande kod.
+I din publicerade Function-app lägger du till en ny funktion som kallas **ProcessDTUpdatetoTSI** med följande kod.
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/updateTSI.cs":::
 
-Härifrån skickar funktionen de JSON-objekt som skapas till en andra händelsehubben, som du kommer att ansluta till Time Series Insights.
+>[!NOTE]
+>Du kan behöva lägga till paketen i projektet med hjälp av `dotnet add package` kommandot eller paket hanteraren i Visual Studio NuGet.
+
+**Publicera** sedan den nya Azure-funktionen. Instruktioner för hur du gör detta finns i [*instruktion: Konfigurera en Azure-funktion för bearbetning av data*](how-to-create-azure-function.md#publish-the-function-app-to-azure).
+
+Den här funktionen kommer att skicka de JSON-objekt som skapas till en andra händelsehubben, som du ansluter till Time Series Insights. Du skapar den Event Hub i nästa avsnitt.
 
 Senare kan du ange vissa miljövariabler som den här funktionen ska använda för att ansluta till dina egna Event Hub.
 
@@ -130,7 +135,7 @@ Därefter måste du ställa in miljövariabler i din Function-app från tidigare
     az eventhubs eventhub authorization-rule keys list --resource-group <resource group name> --namespace-name <Event Hubs namespace> --eventhub-name <Twins event hub name from earlier> --name <Twins auth rule from earlier>
     ```
 
-2. Använd anslutningssträngen som du får som resultat för att skapa en app-inställning i din funktionsapp som innehåller anslutningssträngen:
+2. Använd *primaryConnectionString* -värdet från resultatet för att skapa en app-inställning i din Function-app som innehåller anslutnings strängen:
 
     ```azurecli-interactive
     az functionapp config appsettings set --settings "EventHubAppSetting-Twins=<Twins event hub connection string>" -g <resource group> -n <your App Service (function app) name>
@@ -152,15 +157,15 @@ Därefter måste du ställa in miljövariabler i din Function-app från tidigare
 
 ## <a name="create-and-connect-a-time-series-insights-instance"></a>Skapa och ansluta en Time Series Insights-instans
 
-Därefter ställer du in en Time Series Insights-instans för att ta emot data från den andra händelsehubben. Följ stegen nedan och mer information om den här processen finns i [*Självstudier: Konfigurera en Azure Time Series Insights Gen2 PAYG-miljö*](../time-series-insights/tutorials-set-up-tsi-environment.md).
+Därefter ställer du in en Time Series Insights-instans för att ta emot data från din andra (TSD) Event Hub. Följ stegen nedan och mer information om den här processen finns i [*Självstudier: Konfigurera en Azure Time Series Insights Gen2 PAYG-miljö*](../time-series-insights/tutorials-set-up-tsi-environment.md).
 
-1. I Azure Portal börjar du skapa en Time Series Insights resurs. 
+1. I Azure Portal börjar du skapa en Time Series Insights miljö. 
     1. Välj pris nivå för **Gen2 (L1)** .
     2. Du måste välja ett **Time Series-ID** för den här miljön. Tids serie-ID: t kan innehålla upp till tre värden som du kan använda för att söka efter data i Time Series Insights. I den här självstudien kan du använda **$dtId**. Läs mer om att välja ett ID-värde i [*metod tips för att välja ett Time Series-ID*](../time-series-insights/how-to-select-tsid.md).
     
         :::image type="content" source="media/how-to-integrate-time-series-insights/create-twin-id.png" alt-text="Skapa Portal-UX för en Time Series Insights miljö. Pris nivån för Gen2 (L1) väljs och egenskaps namnet för Time Series-ID: t är $dtId" lightbox="media/how-to-integrate-time-series-insights/create-twin-id.png":::
 
-2. Välj **Nästa: händelse källa** och välj din Event Hubs information från ovan. Du måste också skapa en ny Event Hubs konsument grupp.
+2. Välj **Nästa: händelse källa** och välj din TSD Event Hub-information från tidigare. Du måste också skapa en ny Event Hubs konsument grupp.
     
     :::image type="content" source="media/how-to-integrate-time-series-insights/event-source-twins.png" alt-text="Skapa Portal-UX för en Time Series Insights miljö händelse källa. Du skapar en händelse källa med information om händelsehubben från ovan. Du skapar också en ny konsument grupp." lightbox="media/how-to-integrate-time-series-insights/event-source-twins.png":::
 
@@ -174,7 +179,7 @@ Om du använder självstudierna från slut punkt till slut punkt ([*Självstudie
 
 Nu bör data flöda till Time Series Insights-instansen som är redo att analyseras. Följ stegen nedan för att utforska de data som kommer i.
 
-1. Öppna Time Series Insights-instansen i [Azure Portal](https://portal.azure.com) (du kan söka efter namnet på din instans i portalens Sök fält). Besök den *Time Series Insights Explorer-URL* som visas i instans översikten.
+1. Öppna din Time Series Insights-miljö i [Azure Portal](https://portal.azure.com) (du kan söka efter namnet på din miljö i portalens Sök fält). Besök den *Time Series Insights Explorer-URL* som visas i instans översikten.
     
     :::image type="content" source="media/how-to-integrate-time-series-insights/view-environment.png" alt-text="Välj URL: en för Time Series Insights Explorer på fliken Översikt i din Time Series Insights-miljö":::
 

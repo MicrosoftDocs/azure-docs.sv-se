@@ -1,5 +1,5 @@
 ---
-title: Hantera administratörs konton för nöd åtkomst – Azure AD | Microsoft Docs
+title: Hantera administratörs konton för nöd åtkomst – Azure AD
 description: Den här artikeln beskriver hur du använder konton för nöd situationer för att förhindra oavsiktligt låsning av din Azure Active Directory (Azure AD)-organisation.
 services: active-directory
 author: markwahl-msft
@@ -13,18 +13,18 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10d93b92f3bb0adfe734ad439079afdfcaa6270e
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 6ef8e7ed662d8c0acfc7c43112d6d7edb1cb9a94
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94834446"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660655"
 ---
-# <a name="manage-emergency-access-accounts-in-azure-ad"></a>Hantera konton för nöd åtkomst i Azure AD
+# <a name="manage-emergency-access-accounts-in-azure-ad"></a>Hantera konton för nödåtkomst i Azure AD
 
 Det är viktigt att du förhindrar oavsiktligt låst av din Azure Active Directory (Azure AD)-organisation eftersom du inte kan logga in eller aktivera en annan användares konto som administratör. Du kan minska effekten av haveri brist på administrativ åtkomst genom att skapa två eller fler konton för *nöd åtkomst* i din organisation.
 
-Konton för nöd åtkomst är mycket privilegierade och de är inte tilldelade till vissa individer. Konton för nöd åtkomst är begränsade till nöd situationer eller "Break glas"-scenarier där normala administrativa konton inte kan användas. Vi rekommenderar att du upprätthåller ett mål för att begränsa användningen av nödfall till bara de tider då det är absolut nödvändigt.
+Konton för nöd åtkomst är mycket privilegierade och de är inte tilldelade till vissa individer. Konton för nödåtkomst är begränsade till nödsituationer där du inte kan använda normala administratörskonton. Vi rekommenderar att du upprätthåller ett mål för att begränsa användningen av nödfall till bara de tider då det är absolut nödvändigt.
 
 Den här artikeln innehåller rikt linjer för att hantera konton för nöd åtkomst i Azure AD.
 
@@ -60,7 +60,7 @@ Under en nöd situation vill du inte att en princip kan blockera åtkomsten för
 
 ## <a name="federation-guidance"></a>Vägledning om Federation
 
-Ett ytterligare alternativ för organisationer som använder AD Domain Services och ADFS eller liknande identitets leverantör för att federera till Azure AD är att konfigurera ett åtkomst konto för nöd situationer vars MFA-anspråk kan tillhandahållas av identitets leverantören.  Till exempel kan kontot för nöd åtkomst backas upp av ett certifikat och nyckel par, till exempel ett som lagras på ett smartkort.  När användaren autentiseras till AD kan ADFS tillhandahålla ett anspråk till Azure AD som anger att användaren har uppfyllt MFA-kraven.  Till och med den här metoden måste organisationer fortfarande ha molnbaserade nöd åtkomst konton i fall federationen kan inte upprättas. 
+Vissa organisationer använder AD Domain Services och ADFS eller liknande identitets leverantör för att federera till Azure AD. [Det får inte finnas några lokala konton med administratörs behörighet](../fundamentals/protect-m365-from-on-premises-attacks.md). Autentiserings-och käll autentisering för konton med administratörs behörighet utanför Azure AD lägger till onödig risk i händelse av avbrott eller komprometterande av dessa system.
 
 ## <a name="store-account-credentials-safely"></a>Lagra konto uppgifter på ett säkert sätt
 

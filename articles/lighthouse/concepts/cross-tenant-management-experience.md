@@ -1,14 +1,14 @@
 ---
 title: Miljöer för hantering av flera klienter
 description: Azure-delegerad resurs hantering möjliggör hantering av flera innehavare.
-ms.date: 01/07/2020
+ms.date: 01/20/2021
 ms.topic: conceptual
-ms.openlocfilehash: a550655b8076a1e3946ff015239715ddf0712236
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 0e380b49f122e63113e790f4e866fed40aa9beac
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131771"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98662720"
 ---
 # <a name="cross-tenant-management-experiences"></a>Miljöer för hantering av flera klienter
 
@@ -173,6 +173,7 @@ Tänk på följande nuvarande begränsningar i alla scenarier:
 - Roll tilldelningar måste använda [inbyggda Azure-roller](../../role-based-access-control/built-in-roles.md). Alla inbyggda roller stöds för närvarande med Azure-delegerad resurs hantering förutom för ägare eller inbyggda roller med [`DataActions`](../../role-based-access-control/role-definitions.md#dataactions) behörighet. Rollen administratör för användar åtkomst stöds endast för begränsad användning i [tilldela roller till hanterade identiteter](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant).  Administratörs roller för anpassade roller och [klassiska prenumerationer](../../role-based-access-control/classic-administrators.md) stöds inte.
 - Även om du kan publicera prenumerationer som använder Azure Databricks kan användare i hanterings klienten inte starta Azure Databricks arbets ytor i en delegerad prenumeration just nu.
 - Även om du kan publicera prenumerationer och resurs grupper som har resurs lås, kommer dessa lås inte att förhindra att åtgärder utförs av användare i hanterings klienten. [Neka tilldelningar](../../role-based-access-control/deny-assignments.md) som skyddar systemhanterade resurser, t. ex. de som skapats av Azure-hanterade program eller Azure-skisser (systemtilldelade neka-tilldelningar), förhindrar användare i hanterings klienten från att fungera på dessa resurser. men vid den här tidpunkten kan användare i kund klienten inte skapa sina egna neka-tilldelningar (användar tilldelning neka tilldelningar).
+- Delegering av prenumerationer i ett [nationellt moln](../../active-directory/develop/authentication-national-cloud.md) och det offentliga Azure-molnet, eller över två separata nationella moln, stöds inte.
 
 ## <a name="next-steps"></a>Nästa steg
 

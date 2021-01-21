@@ -3,16 +3,16 @@ title: 'Snabb start: skapa en Azure-databas för MariaDB-ARM-mall'
 description: I den här snabb starts artikeln lär du dig hur du skapar en Azure Database for MariaDB-server med hjälp av en Azure Resource Manager mall.
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 05/14/2020
-ms.openlocfilehash: de6df8349025c3e87e5b005196008053039fa49f
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: b40aa30121bf98e756e26d70b44bc74a500de79f
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94537151"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98662081"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-mariadb-server"></a>Snabb start: Använd en ARM-mall för att skapa en Azure Database for MariaDB-Server
 
@@ -70,30 +70,30 @@ Välj följande länk för att distribuera Azure Database for MariaDB Server mal
 
 På sidan **distribuera Azure Database for MariaDB med VNet** :
 
-1. För **resurs grupp** väljer du **Skapa ny** , anger ett namn för den nya resurs gruppen och väljer **OK**.
+1. För **resurs grupp** väljer du **Skapa ny**, anger ett namn för den nya resurs gruppen och väljer **OK**.
 
 2. Om du har skapat en ny resurs grupp väljer du en **plats** för resurs gruppen och den nya servern.
 
-3. Ange ett **Server namn** , **Administratörs inloggning** och **lösen ord för Administratörs inloggning**.
+3. Ange ett **Server namn**, **Administratörs inloggning** och **lösen ord för Administratörs inloggning**.
 
     ![Distribuera Azure Database for MariaDB med VNet-fönstret, Azure snabb starts mal len Azure Portal](./media/quickstart-create-mariadb-server-database-arm-template/deploy-azure-database-mariadb-vnet.png)
 
 4. Ändra de andra standardinställningarna om du vill:
 
-    * **Prenumeration** : den Azure-prenumeration som du vill använda för servern.
-    * **SKU-kapacitet** : vCore-kapaciteten, som kan *vara 2* (standard), *4* , *8* , *16* , *32* eller *64*.
-    * **SKU-namn** : SKU-nivåns prefix, SKU-serien och SKU-kapaciteten som ingår i under streck, till exempel *B_Gen5_1* , *GP_Gen5_2* (standard) eller *MO_Gen5_32*.
-    * **SKU-storlek MB** : lagrings utrymmet i megabyte för Azure Database for MariaDB Server (standard *51200* ).
-    * **SKU-nivå** : distributions nivån, till *exempel Basic* , *generalpurpose* (standard) eller *MemoryOptimized*.
-    * **SKU-familj** : *Gen4* eller *Gen5* (standard), vilket indikerar maskin varu generering för Server distribution.
-    * **MariaDB-version** : den version av MariaDB-servern som ska distribueras, till exempel *10,2* eller *10,3* (standard).
-    * **Kvarhållning av säkerhets kopierings dagar** : den önskade perioden för kvarhållning av Geo-redundant säkerhets kopia i dagar (standard *7* ).
-    * **Geo-redundant säkerhets kopiering** : *aktive rad* eller *inaktive* rad (standard), beroende på krav för geo-haveri beredskap (geo-Dr).
-    * **Virtual Network namn** : namnet på det virtuella nätverket (standard *azure_mariadb_vnet* ).
-    * **Under näts namn** : namnet på under nätet (standard *azure_mariadb_subnet* ).
-    * **Virtual Network regel namn** : namnet på den virtuella nätverks regel som tillåter under nätet (standard *AllowSubnet* ).
-    * **VNet-** adressprefix: adressprefixet för det virtuella nätverket (standard *10.0.0.0/16* ).
-    * **Undernätsprefixet** : adressprefixet för under nätet (standard *10.0.0.0/16* ).
+    * **Prenumeration**: den Azure-prenumeration som du vill använda för servern.
+    * **SKU-kapacitet**: vCore-kapaciteten, som kan *vara 2* (standard), *4*, *8*, *16*, *32* eller *64*.
+    * **SKU-namn**: SKU-nivåns prefix, SKU-serien och SKU-kapaciteten som ingår i under streck, till exempel *B_Gen5_1*, *GP_Gen5_2* (standard) eller *MO_Gen5_32*.
+    * **SKU-storlek MB**: lagrings utrymmet i megabyte för Azure Database for MariaDB Server (standard *51200*).
+    * **SKU-nivå**: distributions nivån, till *exempel Basic*, *generalpurpose* (standard) eller *MemoryOptimized*.
+    * **SKU-familj**: *Gen4* eller *Gen5* (standard), vilket indikerar maskin varu generering för Server distribution.
+    * **MariaDB-version**: den version av MariaDB-servern som ska distribueras, till exempel *10,2* eller *10,3* (standard).
+    * **Kvarhållning av säkerhets kopierings dagar**: den önskade perioden för kvarhållning av Geo-redundant säkerhets kopia i dagar (standard *7*).
+    * **Geo-redundant säkerhets kopiering**: *aktive rad* eller *inaktive* rad (standard), beroende på krav för geo-haveri beredskap (geo-Dr).
+    * **Virtual Network namn**: namnet på det virtuella nätverket (standard *azure_mariadb_vnet*).
+    * **Under näts namn**: namnet på under nätet (standard *azure_mariadb_subnet*).
+    * **Virtual Network regel namn**: namnet på den virtuella nätverks regel som tillåter under nätet (standard *AllowSubnet*).
+    * **VNet-** adressprefix: adressprefixet för det virtuella nätverket (standard *10.0.0.0/16*).
+    * **Undernätsprefixet**: adressprefixet för under nätet (standard *10.0.0.0/16*).
 
 5. Läs de allmänna villkoren och välj sedan **Jag accepterar villkoren som anges ovan**.
 

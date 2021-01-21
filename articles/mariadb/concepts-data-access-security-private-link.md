@@ -3,15 +3,15 @@ title: Privat länk – Azure Database for MariaDB
 description: Lär dig hur en privat länk fungerar för Azure Database for MariaDB.
 author: mksuni
 ms.author: sumuth
-ms.service: mariadb
+ms.service: jroth
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: ec43fa995fc9772964db399baa0b6f8c2a7db1db
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 12f52cd497d606fda6bbea9b54f467522373eeb7
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93241505"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98665148"
 ---
 # <a name="private-link-for-azure-database-for-mariadb"></a>Privat länk för Azure Database for MariaDB
 
@@ -114,9 +114,9 @@ Följande situationer och resultat är möjliga när du använder en privat län
 
 ## <a name="deny-public-access-for-azure-database-for-mariadb"></a>Neka offentlig åtkomst för Azure Database for MariaDB
 
-Om du bara vill använda privata slut punkter för att komma åt sina Azure Database for MariaDB, kan du inaktivera inställningen alla offentliga slut punkter ( [brand Väggs regler](concepts-firewall-rules.md) och [VNet-tjänstens slut punkter](concepts-data-access-security-vnet.md)) genom att ange inställningen **neka offentlig nätverks åtkomst** på databas servern. 
+Om du bara vill använda privata slut punkter för att komma åt sina Azure Database for MariaDB, kan du inaktivera inställningen alla offentliga slut punkter ([brand Väggs regler](concepts-firewall-rules.md) och [VNet-tjänstens slut punkter](concepts-data-access-security-vnet.md)) genom att ange inställningen **neka offentlig nätverks åtkomst** på databas servern. 
 
-När den här inställningen är inställd på *Ja* , tillåts bara anslutningar via privata slut punkter till din Azure Database for MariaDB. När den här inställningen är inställd på *Nej* kan klienter ansluta till din Azure Database for MariaDB baserat på inställningarna för brand väggen eller VNet-tjänstens slut punkt. När värdet för åtkomst till privat nätverk har angetts kan kunder dessutom inte lägga till och/eller uppdatera befintliga brand Väggs regler och VNet-tjänstens slut punkts regler.
+När den här inställningen är inställd på *Ja*, tillåts bara anslutningar via privata slut punkter till din Azure Database for MariaDB. När den här inställningen är inställd på *Nej* kan klienter ansluta till din Azure Database for MariaDB baserat på inställningarna för brand väggen eller VNet-tjänstens slut punkt. När värdet för åtkomst till privat nätverk har angetts kan kunder dessutom inte lägga till och/eller uppdatera befintliga brand Väggs regler och VNet-tjänstens slut punkts regler.
 
 > [!Note]
 > Den här funktionen är tillgänglig i alla Azure-regioner där Azure Database for PostgreSQL-enskild server stöder Generell användning och minnesoptimerade pris nivåer.

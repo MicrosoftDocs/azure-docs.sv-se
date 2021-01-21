@@ -1,14 +1,14 @@
 ---
 title: Hantera Azure Arc-aktiverade servrar-agenten
 description: I den här artikeln beskrivs de olika hanterings aktiviteter som du vanligt vis utför under livs cykeln för Azure Arc-aktiverade servrar som är anslutna till dator agenten.
-ms.date: 12/21/2020
+ms.date: 01/21/2021
 ms.topic: conceptual
-ms.openlocfilehash: f408048f61f76d6b258ea8e063630b4e2aa841af
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 27712dcd30857ca8c677de4f99dc4ed7e2e7b292
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97724382"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98662134"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>Hantera och underhålla den anslutna dator agenten
 
@@ -34,7 +34,74 @@ För servrar eller datorer som du inte längre vill hantera med Azure Arc-aktive
 
     * Använda [Azure CLI](../../azure-resource-manager/management/delete-resource-group.md?tabs=azure-cli#delete-resource) eller [Azure PowerShell](../../azure-resource-manager/management/delete-resource-group.md?tabs=azure-powershell#delete-resource). För `ResourceType` parametern använder `Microsoft.HybridCompute/machines` .
 
-3. Avinstallera agenten från datorn eller servern. Följ stegen nedan.
+3. [Avinstallera agenten](#remove-the-agent) från datorn eller servern genom att följa stegen nedan.
+
+## <a name="renaming-a-machine"></a>Byta namn på en dator
+
+När du ändrar namnet på Linux-eller Windows-datorn som är ansluten till Azure Arc-aktiverade servrar, identifieras inte det nya namnet automatiskt eftersom resurs namnet i Azure inte kan ändras. Precis som med andra Azure-resurser måste du ta bort resursen och återskapa den för att kunna använda det nya namnet.
+
+För Arc-aktiverade servrar måste du ta bort de virtuella dator tilläggen innan du byter namn på datorn innan du fortsätter.
+
+> [!NOTE]
+> När de installerade tilläggen fortsätter att köras och utföra sin normala åtgärd när proceduren har slutförts kan du inte hantera dem. Om du försöker distribuera om tilläggen på datorn kan det uppstå oförutsägbara beteenden.
+
+> [!WARNING]
+> Vi rekommenderar att du undviker att byta namn på datorns dator namn och bara utföra den här proceduren om det är absolut nödvändigt.
+
+Stegen nedan sammanfattar datorns namnbytes steg.
+
+1. Granska de VM-tillägg som är installerade på datorn och anteckna konfigurationen, med hjälp av [Azure CLI](manage-vm-extensions-cli.md#list-extensions-installed) eller med [Azure PowerShell](manage-vm-extensions-powershell.md#list-extensions-installed).
+
+2. Ta bort VM-tilläggen med PowerShell, Azure CLI eller från Azure Portal.
+
+    > [!NOTE]
+    > Om du har distribuerat Azure Monitor for VMs-agenten (insikter) eller Log Analytics agent med hjälp av en Azure Policy princip för gäst konfiguration omdistribueras agenterna efter nästa [utvärderings cykel](../../governance/policy/how-to/get-compliance-data.md#evaluation-triggers) och efter att den omdöpta datorn har registrerats med ARC-aktiverade servrar.
+
+3. Koppla bort datorn från Arc-aktiverade servrar med PowerShell, Azure CLI eller från portalen.
+
+4. Byt namn på datorn.
+
+5. Anslut datorn med ARC-aktiverade servrar med `Azcmagent` verktyget för att registrera och skapa en ny resurs i Azure.
+
+6. Distribuera VM-tillägg som tidigare installerats på mål datorn.
+
+Använd följande steg för att slutföra den här uppgiften.
+
+1. Ta bort VM-tillägg som är installerade från [Azure Portal](manage-vm-extensions-portal.md#uninstall-extension), med hjälp av [Azure CLI](manage-vm-extensions-cli.md#remove-an-installed-extension)eller med [Azure PowerShell](manage-vm-extensions-powershell.md#remove-an-installed-extension).
+
+2. Använd någon av följande metoder för att koppla bort datorn från Azure-bågen. Om du kopplar från datorn från Arc-aktiverade servrar tas inte den anslutna dator agenten bort, och du behöver inte ta bort agenten som en del av den här processen. Alla VM-tillägg som distribueras till datorn fortsätter att fungera under den här processen.
+
+    # <a name="azure-portal"></a>[Azure-portalen](#tab/azure-portal)
+
+    1. Gå till [Azure Portal](https://portal.azure.com)i webbläsaren.
+    1. I portalen bläddrar du till **servrar – Azure Arc** och väljer hybrid datorn i listan.
+    1. Välj **ta bort** från det översta fältet på den valda registrerade Arc-aktiverad servern för att ta bort resursen i Azure.
+
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+    
+    ```azurecli
+    az resource delete \
+      --resource-group ExampleResourceGroup \
+      --name ExampleArcMachine \
+      --resource-type "Microsoft.HybridCompute/machines"
+    ```
+
+    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+    ```powershell
+    Remove-AzResource `
+     -ResourceGroupName ExampleResourceGroup `
+     -ResourceName ExampleArcMachine `
+     -ResourceType Microsoft.HybridCompute/machines
+    ```
+
+3. Byt namn på datorns dator namn.
+
+### <a name="after-renaming-operation"></a>Efter namnbytets åtgärd
+
+När en dator har bytt namn måste den anslutna dator agenten registreras igen med ARC-aktiverade servrar. Kör `azcmagent` verktyget med [Connect](#connect) -parametern slutför det här steget.
+
+Distribuera om de VM-tillägg som ursprungligen distribuerades till datorn från Arc-aktiverade servrar. Om du har distribuerat Azure Monitor for VMs-agenten (insikter) eller Log Analytics agent med en Azure Policy princip för gäst konfiguration omdistribueras agenterna efter nästa [utvärderings cykel](../../governance/policy/how-to/get-compliance-data.md#evaluation-triggers).
 
 ## <a name="upgrading-agent"></a>Uppgraderar agent
 

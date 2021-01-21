@@ -3,15 +3,15 @@ title: Data-i replikering – Azure Database for MariaDB
 description: Lär dig mer om att använda datareplikering för att synkronisera från en extern server till tjänsten Azure Database for MariaDB.
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 331e064bcf11af31a778cb8dd06c463712421b7c
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 4f83af5c72529b652b23db53bf9532e87b824ea4
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94533437"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98662635"
 ---
 # <a name="replicate-data-into-azure-database-for-mariadb"></a>Replikera data till Azure Database for MariaDB
 
@@ -37,7 +37,7 @@ Huvud scenarierna för att överväga att använda Datareplikering är:
 - Om käll servern har SSL aktiverat kontrollerar du att det SSL-CA-certifikat som har angetts för domänen har inkluderats i den `mariadb.az_replication_change_master` lagrade proceduren. Se följande [exempel](howto-data-in-replication.md#link-the-source-and-replica-servers-to-start-data-in-replication) och `master_ssl_ca` parametern.
 - Se till att käll serverns IP-adress har lagts till Azure Database for MariaDB replik serverns brand Väggs regler. Uppdatera brandväggsregler med hjälp av [Azure-portalen](howto-manage-firewall-portal.md) eller [Azure CLI](howto-manage-firewall-cli.md).
 - Se till att den dator som är värd för käll servern tillåter både inkommande och utgående trafik på port 3306.
-- Kontrol lera att käll servern har en **offentlig IP-adress** , att DNS är offentligt tillgängligt eller har ett fullständigt kvalificerat domän namn (FQDN).
+- Kontrol lera att käll servern har en **offentlig IP-adress**, att DNS är offentligt tillgängligt eller har ett fullständigt kvalificerat domän namn (FQDN).
 
 ### <a name="other"></a>Övrigt
 - Datareplikering stöds bara i Generell användning och minnesoptimerade pris nivåer.

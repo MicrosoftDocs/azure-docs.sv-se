@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: overview
-ms.date: 12/03/2020
+ms.date: 01/20/2021
 ms.author: justinha
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 765aa10e57c472d7a1af0952364783bb1d711078
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: 194a5420f38e99d45f74241f67ae8cfbbaaee8f4
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97861503"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661005"
 ---
 # <a name="what-is-azure-active-directory-domain-services"></a>Vad är Azure Active Directory Domain Services?
 
@@ -24,10 +24,14 @@ Azure Active Directory Domain Services (AD DS) tillhandahåller hanterade domän
 
 Med en Azure AD DS-hanterad domän kan du köra äldre program i molnet som inte kan använda moderna autentiseringsmetoder eller där du inte vill att katalogs ökningar alltid ska gå tillbaka till en lokal AD DS-miljö. Du kan lyfta och flytta de äldre programmen från din lokala miljö till en hanterad domän utan att behöva hantera AD DS-miljön i molnet.
 
-Azure AD DS integreras med din befintliga Azure AD-klient. Den här integrationen gör att användarna kan logga in på tjänster och program som är anslutna till den hanterade domänen med sina befintliga autentiseringsuppgifter. Du kan också använda befintliga grupper och användar konton för att skydda åtkomsten till resurser. Dessa funktioner ger en smidigare ökning och växling av lokala resurser till Azure.
+Azure AD DS integreras med din befintliga Azure AD-klient. Med den här integreringen kan användarna logga in på tjänster och program som är anslutna till den hanterade domänen med sina befintliga autentiseringsuppgifter. Du kan också använda befintliga grupper och användar konton för att skydda åtkomsten till resurser. Dessa funktioner ger en smidigare ökning och växling av lokala resurser till Azure.
 
 > [!div class="nextstepaction"]
 > [Kom igång genom att skapa en Azure AD DS-hanterad domän med hjälp av Azure Portal][tutorial-create]
+
+Ta en titt på vår korta video och lär dig mer om Azure AD DS.
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4LblD]
 
 ## <a name="how-does-azure-ad-ds-work"></a>Hur fungerar Azure AD DS?
 
