@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 01/11/2021
-ms.openlocfilehash: a411f4ce261ee6d203e274efe3cf23ca23203453
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.date: 01/22/2021
+ms.openlocfilehash: 48450218975f2c6ee14e12af8d722942e8db1347
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98070937"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695856"
 ---
 # <a name="copy-and-transform-data-in-azure-synapse-analytics-by-using-azure-data-factory"></a>Kopiera och transformera data i Azure Synapse Analytics med hjälp av Azure Data Factory
 
@@ -76,6 +76,9 @@ För olika typer av autentiseringar, se följande avsnitt om krav respektive JSO
 - [SQL-autentisering](#sql-authentication)
 - Azure AD Application token-autentisering: [tjänstens huvud namn](#service-principal-authentication)
 - Azure AD Application token-autentisering: [hanterade identiteter för Azure-resurser](#managed-identity)
+
+>[!TIP]
+>När du skapar en länkad tjänst för Azure Synapse **Server** utan SQL-pool från UI väljer du "ange manuellt" i stället för att bläddra från prenumerationen.
 
 >[!TIP]
 >Om du stöter på fel med felkoden "UserErrorFailedToConnectToSqlServer" och "Message" som "sessionsgränsen för databasen är XXX och har nåtts.", Lägg till `Pooling=false` i anslutnings strängen och försök igen.
@@ -780,6 +783,7 @@ Inställningar som är särskilt tillgängliga för Azure Synapse Analytics finn
 
 - När du använder hanterad identitetsautentisering för den länkade lagrings tjänsten kan du läsa om de konfigurationer som krävs för [Azure-Blob](connector-azure-blob-storage.md#managed-identity) respektive [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#managed-identity) .
 - Om din Azure Storage har kon figurer ATS med VNet-tjänstens slut punkt måste du använda hanterad identitetsautentisering med alternativet "Tillåt betrodd Microsoft-tjänst" på lagrings kontot, se [effekten av att använda VNet-tjänstens slut punkter med Azure Storage](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-virtual-network-service-endpoints-with-azure-storage).
+- När du använder Azure Synapse- **Server** utan SQL-pool som källa stöds inte mellanlagring.
 
 **Fråga**: om du väljer fråga i fältet inmatat anger du en SQL-fråga för källan. Den här inställningen åsidosätter alla tabeller som du har valt i data uppsättningen. **Order by** -satser stöds inte här, men du kan ange en fullständig Select from-instruktion. Du kan också använda användardefinierade tabell funktioner. **Select * from udfGetData ()** är en UDF i SQL som returnerar en tabell. Med den här frågan skapas en käll tabell som du kan använda i ditt data flöde. Att använda frågor är också ett bra sätt att minska antalet rader för testning eller sökning.
 

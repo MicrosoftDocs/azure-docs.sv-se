@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: a541e1b068ec3667120bbb31e65ca7bc35febadb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f5e3d7e61b6c2a6ad3c121da9c0198c95ac24850
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89265923"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98694582"
 ---
 # <a name="streaming-endpoints-overview"></a>Översikt över slut punkter för direkt uppspelning  
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> Inga nya funktioner läggs till i Media Services v2. <br/>Kolla in den senaste versionen [Media Services v3](../latest/index.yml). Se även [vägledning för migrering från v2 till v3](../latest/migrate-from-v2-to-v3.md)
+> Inga nya funktioner läggs till i Media Services v2. <br/>Kolla in den senaste versionen [Media Services v3](../latest/index.yml). Se även [vägledning för migrering från v2 till v3](../latest/migrate-v-2-v-3-migration-introduction.md)
 
 I Microsoft Azure Media Services (AMS) representerar en **strömmande slut punkt** en strömmande tjänst som kan leverera innehåll direkt till ett klient program eller till ett Content Delivery Network (CDN) för vidare distribution. Media Services ger också sömlös Azure CDN-integrering. Den utgående strömmen från en StreamingEndpoint-tjänst kan vara en Live Stream, en video på begäran eller progressiv nedladdning av din till gång på ditt Media Servicess konto. Varje Azure Media Services konto innehåller en standard StreamingEndpoint. Ytterligare strömnings slut punkter kan skapas under kontot. Det finns två versioner av strömnings slut punkter, 1,0 och 2,0. Från och med 10 januari 2017 kommer eventuella nyligen skapade AMS-konton att inkludera version 2,0 **standard** StreamingEndpoint. Ytterligare slut punkter för direkt uppspelning som du lägger till i det här kontot kommer också att vara version 2,0. Ändringen påverkar inte befintliga konton. befintliga strömnings slut punkter kommer att vara version 1,0 och kan uppgraderas till version 2,0. Med den här ändringen kan du göra ändringar i funktioner, fakturerings-och funktions ändringar (mer information finns i avsnittet **strömnings typer och versioner** som beskrivs nedan).
 
@@ -79,10 +79,10 @@ Om din **version "1,0"** för strömnings slut punkten har >= 1 Premium streamin
 
 |Typ|StreamingEndpointVersion|ScaleUnits|CDN|Fakturering|
 |--------------|----------|-----------------|-----------------|-----------------|
-|Klassisk|1.0|0|Ej tillämpligt|Kostnadsfri|
-|Standard slut punkt för direkt uppspelning (förhands granskning)|2,0|0|Ja|Förutbetalt|
-|Premium – direktuppspelningsenheter|1.0|> 0|Ja|Förutbetalt|
-|Premium – direktuppspelningsenheter|2,0|> 0|Ja|Förutbetalt|
+|Klassisk|1,0|0|NA|Kostnadsfri|
+|Standard slut punkt för direkt uppspelning (förhands granskning)|2.0|0|Ja|Betald|
+|Premium – direktuppspelningsenheter|1,0|> 0|Ja|Betald|
+|Premium – direktuppspelningsenheter|2.0|> 0|Ja|Betald|
 
 ### <a name="features"></a>Funktioner
 

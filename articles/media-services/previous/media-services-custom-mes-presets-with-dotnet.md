@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/26/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a300345749351a360a16dc00424ee41ece7a17c9
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 6c1c74f86a9cf0e4bcd73844222f256a715cbfe5
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97652987"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695898"
 ---
 # <a name="customizing-media-encoder-standard-presets"></a>Anpassa Media Encoder Standard för inställningar
 
@@ -33,7 +33,7 @@ I den här artikeln lär du dig hur du utför avancerad kodning med Media Encode
 Den här artikeln visar hur du anpassar en för inställning genom att ta H264,-förvalet för [flera bit](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) hastigheter och minska antalet lager. I artikeln [anpassa Media Encoder Standard för inställningar](media-services-advanced-encoding-with-mes.md) visas anpassade för hands inställningar som du kan använda för att utföra avancerade kodnings uppgifter.
 
 > [!NOTE]
-> De anpassade för inställningar som beskrivs i den här artikeln kan inte användas i [Media Services v3](../latest/index.yml) -omvandlingar eller CLI-kommandon. Mer information finns i [vägledningen om migrering från v2 till v3](../latest/migrate-from-v2-to-v3.md) .
+> De anpassade för inställningar som beskrivs i den här artikeln kan inte användas i [Media Services v3](../latest/index.yml) -omvandlingar eller CLI-kommandon. Mer information finns i [vägledningen om migrering från v2 till v3](../latest/migrate-v-2-v-3-migration-introduction.md) .
 
 ## <a name="customizing-a-mes-preset"></a><a id="customizing_presets"></a> Anpassa en inställning för en inställning
 

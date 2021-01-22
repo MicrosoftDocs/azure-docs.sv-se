@@ -4,20 +4,20 @@ ms.service: storage
 ms.topic: include
 ms.date: 08/10/2020
 ms.author: rogarana
-ms.openlocfilehash: 8dcb58499113b0b7ae0814419f0a76965a0ed945
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 86bf4911026e46c997469b956f9e7c75c4f17164
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94680964"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98698054"
 ---
 #### <a name="additional-premium-file-share-level-limits"></a>Ytterligare begränsningar för Premium fil resurs nivå
 
 |Område  |Mål  |
 |---------|---------|
 |Minsta storlek för ökning/minskning    |1 GiB      |
-|Bas linje IOPS    |1 IOPS per GiB, upp till 100 000|
-|IOPS-burst    |3x IOPS per GiB, upp till 100 000|
+|Bas linje IOPS    |400 + 1 IOPS per GiB, upp till 100 000|
+|IOPS-burst    |Max (4000, 3x IOPS per GiB), upp till 100 000|
 |Utgående hastighet         |60 MiB/s + 0,06 * etablerad GiB        |
 |Ingress-pris| 40 MiB/s + 0,04 * etablerad GiB |
 

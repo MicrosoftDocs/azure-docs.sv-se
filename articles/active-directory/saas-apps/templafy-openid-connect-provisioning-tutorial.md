@@ -12,12 +12,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/19/2021
 ms.author: zhchia
-ms.openlocfilehash: f9e462d66e438e42c40b16ba9b818ddd330e9e5a
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 7afcf6c5814917b3356d86e7288fd2920a04cad7
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98614764"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695999"
 ---
 # <a name="tutorial-configure-templafy-openid-connect-for-automatic-user-provisioning"></a>Självstudie: Konfigurera Templafy OpenID Connect för automatisk användar etablering
 
@@ -133,7 +133,26 @@ Det här avsnittet vägleder dig genom stegen för att konfigurera Azure AD Prov
 
 9. Granska de användarattribut som synkroniseras från Azure AD till Templafy OpenID Connect i avsnittet **Mappning av attribut** . Attributen som väljs som **matchande** egenskaper används för att matcha användar kontona i Templafy OpenID Connect för uppdaterings åtgärder. Välj knappen **Spara** för att spara ändringarna.
 
-    ![Templafy OpenID Connect User attributes](media/templafy-openid-connect-provisioning-tutorial/user-attribute.png)
+   |Attribut|Typ|Stöds för filtrering|
+   |---|---|---|
+   |userName|Sträng|&check;|
+   |aktiv|Boolesk|
+   |displayName|Sträng|
+   |title|Sträng|
+   |preferredLanguage|Sträng|
+   |name.givenName|Sträng|
+   |name.familyName|Sträng|
+   |phoneNumbers[type eq "work"].value|Sträng|
+   |phoneNumbers[type eq "mobile"].value|Sträng|
+   |phoneNumbers [Type EQ "fax"]. värde|Sträng|
+   |externalId|Sträng|
+   |adresser [Type EQ "Work"]. plats|Sträng|
+   |adresser [Type EQ "Work"]. Postnr|Sträng|
+   |adresser [Type EQ "Work"]. region|Sträng|
+   |adresser [Type EQ "Work"]. streetAddress|Sträng|
+   |adresser [Type EQ "Work"]. land|Sträng|
+   |urn: IETF: params: scim: schemas: tillägg: Enterprise: 2.0: användare: avdelning|Sträng|
+   |urn: IETF: params: scim: schemas: tillägg: Enterprise: 2.0: användare: organisation|Sträng|
 
 10. Under avsnittet **mappningar** väljer du **Synkronisera Azure Active Directory grupper till Templafy**.
 
@@ -141,7 +160,11 @@ Det här avsnittet vägleder dig genom stegen för att konfigurera Azure AD Prov
 
 11. Granska gruppattributen som synkroniseras från Azure AD till Templafy OpenID Connect i avsnittet **Mappning av attribut** . Attributen som väljs som **matchande** egenskaper används för att matcha grupperna i Templafy OpenID Connect för uppdaterings åtgärder. Välj knappen **Spara** för att spara ändringarna.
 
-    ![Templafy OpenID Connect Group-attribut](media/templafy-openid-connect-provisioning-tutorial/group-attribute.png)
+      |Attribut|Typ|Stöds för filtrering|
+      |---|---|---|
+      |displayName|Sträng|&check;|
+      |medlemmar|Referens|
+      |externalId|Sträng|      
 
 12. Information om hur du konfigurerar omfångsfilter finns i följande instruktioner i [självstudien för omfångsfilter](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 

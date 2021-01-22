@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 0701e9c6428283d45cf4b4a2e24c8de99d9a286b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4bf9a96d7ffc3b939abe8cfb889c5bd49fee09cc
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89265906"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98694629"
 ---
 # <a name="azure-media-services-telemetry"></a>Azure Media Services telemetri  
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> Inga nya funktioner läggs till i Media Services v2. <br/>Kolla in den senaste versionen [Media Services v3](../latest/index.yml). Se även [vägledning för migrering från v2 till v3](../latest/migrate-from-v2-to-v3.md)
+> Inga nya funktioner läggs till i Media Services v2. <br/>Kolla in den senaste versionen [Media Services v3](../latest/index.yml). Se även [vägledning för migrering från v2 till v3](../latest/migrate-v-2-v-3-migration-introduction.md)
 
-Azure Media Services (AMS) gör det möjligt att komma åt telemetri/Mät data för sina tjänster. Med den aktuella versionen av AMS kan du samla in telemetri-data för entiteter i Live **Channel**, **StreamingEndpoint**och Live **Archive** . 
+Azure Media Services (AMS) gör det möjligt att komma åt telemetri/Mät data för sina tjänster. Med den aktuella versionen av AMS kan du samla in telemetri-data för entiteter i Live **Channel**, **StreamingEndpoint** och Live **Archive** . 
 
 Telemetri skrivs till en lagrings tabell i ett Azure Storage konto som du anger (vanligt vis använder du det lagrings konto som är associerat med ditt AMS-konto). 
 
@@ -81,7 +81,7 @@ PartitionKey|{konto-ID} _ {enhets-ID}|e49bef329c29495f9b9570989682069d_64435281c
 RowKey|{sekunder till midnatt} _ {slump värde}|01688_00199<br/><br/>Rad nyckeln börjar med antalet sekunder till midnatt för att tillåta flest n format frågor i en partition. Mer information finns i [den här](../../cosmos-db/table-storage-design-guide.md#log-tail-pattern) artikeln. 
 Timestamp|Datum/tid|Automatisk tidsstämpel från Azure-tabellen 2016-09-09T22:43:42.241 Z
 Typ|Typ av entitet som tillhandahåller telemetridata|Kanal/StreamingEndpoint/Arkiv<br/><br/>Händelse typen är bara ett sträng värde.
-Namn|Namnet på telemetri händelsen|ChannelHeartbeat/StreamingEndpointRequestLog
+Name|Namnet på telemetri händelsen|ChannelHeartbeat/StreamingEndpointRequestLog
 ObservedTime|Tiden då telemetri-händelsen inträffade (UTC)|2016-09-09T22:42:36.924 Z<br/><br/>Den observerade tiden tillhandahålls av den entitet som skickar Telemetrin (till exempel en kanal). Det kan finnas tidssynkroniserings problem mellan komponenter så att värdet är ungefärligt
 ServiceID|{tjänst-ID}|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 Entitet-/regionsspecifika egenskaper|Som definieras av händelsen|StreamName: STREAM1, bit hastighet 10123,...<br/><br/>De återstående egenskaperna har definierats för den angivna händelse typen. Azure Table Content är nyckel värdes par.  (det vill säga olika rader i tabellen har olika uppsättningar med egenskaper).
