@@ -3,21 +3,21 @@ title: Privat länk – Azure Portal-Azure Database for MariaDB
 description: Lär dig hur du konfigurerar en privat länk för Azure Database for MariaDB från Azure Portal
 author: mksuni
 ms.author: sumuth
-ms.service: mariadb
+ms.service: jroth
 ms.topic: how-to
 ms.date: 01/09/2020
-ms.openlocfilehash: 79b3c3f8eca2fa4442a7845ca4aa3921d0302453
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 127a1c83525c4a9c457f551c05045a63a3c4347a
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005052"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98659632"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mariadb-using-portal"></a>Skapa och hantera en privat länk för Azure Database for MariaDB med hjälp av portalen
 
 En privat slut punkt är det grundläggande Bygg blocket för privat länk i Azure. Den gör det möjligt för Azure-resurser, t. ex. Virtual Machines (VM), att kommunicera privat med privata länk resurser.  I den här artikeln får du lära dig hur du använder Azure Portal för att skapa en virtuell dator i en Azure-Virtual Network och en Azure Database for MariaDB-server med en privat Azure-slutpunkt.
 
-Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
+Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
 > [!NOTE]
 > Funktionen privat länk är bara tillgänglig för Azure Database for MariaDB servrar i Generell användning eller Minnesoptimerade pris nivåer. Se till att databas servern är på någon av dessa pris nivåer.
@@ -245,7 +245,7 @@ När du har skapat **myVm** ansluter du till den från Internet på följande s�
 ## <a name="clean-up-resources"></a>Rensa resurser
 När du är klar med den privata slut punkten, MariaDB-servern och den virtuella datorn tar du bort resurs gruppen och alla resurser den innehåller:
 
-1. Skriv  *myResourceGroup*   i sökrutan längst upp i portalen och välj **Search**  *myResourceGroup*   från Sök resultaten.
+1. Skriv *myResourceGroup*   i sökrutan längst upp i portalen och välj   *myResourceGroup*   från Sök resultaten.
 2. Välj **Ta bort resursgrupp**.
 3. Ange myResourceGroup för **Skriv resurs gruppens namn** och välj **ta bort**.
 

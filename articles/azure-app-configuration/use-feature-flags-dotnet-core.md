@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 09/17/2020
 ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 8c0dd9713c673ad676058acc7dbbb3cb5a65362e
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 1794d5b15c724008d95cfc59b16960b7ae6a0783
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96929199"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661576"
 ---
 # <a name="tutorial-use-feature-flags-in-an-aspnet-core-app"></a>Självstudie: använda funktions flaggor i en ASP.NET Core app
 
@@ -37,7 +37,6 @@ I den här självstudien får du lära dig hur man:
 ## <a name="set-up-feature-management"></a>Konfigurera funktions hantering
 
 Lägg till en referens till `Microsoft.FeatureManagement.AspNetCore` `Microsoft.FeatureManagement` NuGet-paketen och Använd .net Core Feature Manager.
-    
 .NET Core Feature Manager `IFeatureManager` hämtar funktions flaggor från ramverkets inbyggda konfigurations system. Därför kan du definiera programmets funktions flaggor genom att använda en konfigurations källa som .NET Core stöder, inklusive den lokala *appsettings.jspå* fil-eller miljövariabler. `IFeatureManager` förlitar sig på .NET Core-beroende inmatning. Du kan registrera funktions hanterings tjänsterna genom att använda standard konventioner:
 
 ```csharp
@@ -109,7 +108,7 @@ Det enklaste sättet att ansluta din ASP.NET Core program till app-konfiguration
 2. Öppna *startup.cs* och uppdatera `Configure` metoden för att lägga till det inbyggda mellanprogram som kallas `UseAzureAppConfiguration` . Det här mellanprogramet tillåter att funktions flagg värden uppdateras vid ett återkommande intervall medan ASP.NET Core webbappen fortsätter att ta emot begär Anden.
 
    ```csharp
-   public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+   public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
    {
        app.UseAzureAppConfiguration();
        app.UseMvc();
@@ -173,7 +172,7 @@ public enum MyFeatureFlags
 
 ## <a name="feature-flag-checks"></a>Funktions flagga kontrollerar
 
-Det grundläggande mönstret för funktions hantering är att först kontrol lera om en funktions flagga har angetts till *på*. I så fall kör funktions hanteraren de åtgärder som funktionen innehåller. Exempel:
+Det grundläggande mönstret för funktions hantering är att först kontrol lera om en funktions flagga har angetts till *på*. I så fall kör funktions hanteraren de åtgärder som funktionen innehåller. Till exempel:
 
 ```csharp
 IFeatureManager featureManager;
@@ -189,6 +188,8 @@ if (await featureManager.IsEnabledAsync(nameof(MyFeatureFlags.FeatureA)))
 I ASP.NET Core MVC kan du komma åt funktions hanteraren `IFeatureManager` via beroende inmatning:
 
 ```csharp
+using Microsoft.FeatureManagement;
+
 public class HomeController : Controller
 {
     private readonly IFeatureManager _featureManager;

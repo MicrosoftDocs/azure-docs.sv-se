@@ -4,12 +4,12 @@ description: Tillgänglighet för beräknings-och minnes resurser för tjänsten
 ms.topic: article
 ms.date: 04/27/2020
 ms.custom: references_regions
-ms.openlocfilehash: 8651a1cc2c2ba41e2c28e9f63dc78c091a6af61d
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: 63ec7c9027f957714108263dcbb4300a3cc68388
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96763901"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661382"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Resurs tillgänglighet för Azure Container Instances i Azure-regioner
 
@@ -31,26 +31,28 @@ Följande regioner och maximala resurser är tillgängliga för behållar gruppe
 
 | Region | Maximal CPU | Högsta mängd minne (GB) | Max-CPU för VNET | Största mängd minne i VNET (GB) | Lagring (GB) | GPU SKU: er (för hands version) |
 | -------- | :---: | :---: | :----: | :-----: | :-------: | :----: |
-| Australien, östra | 4 | 16 | 4 | 16 | 50 | Saknas |
-| Brasilien, södra | 4 | 16 | 2 | 8 | 50 | Saknas |
-| Kanada, centrala | 4 | 16 | 4 | 16 | 50 | Saknas |
+| Australien, östra | 4 | 16 | 4 | 16 | 50 | Ej tillämpligt |
+| Brasilien, södra | 4 | 16 | 2 | 8 | 50 | Ej tillämpligt |
+| Kanada, centrala | 4 | 16 | 4 | 16 | 50 | Ej tillämpligt |
 | Indien, centrala | 4 | 16 | Saknas | Saknas | 50 | V100 |
-| Central US | 4 | 16 | 4 | 16 | 50 | Saknas |
-| Asien, östra | 4 | 16 | 4 | 16 | 50 | Saknas |
+| Central US | 4 | 16 | 4 | 16 | 50 | Ej tillämpligt |
+| Asien, östra | 4 | 16 | 4 | 16 | 50 | Ej tillämpligt |
 | East US | 4 | 16 | 4 | 16 | 50 | K80, P100, V100 |
-| USA, östra 2 | 4 | 16 | 4 | 16 | 50 | Saknas |
-| Frankrike, centrala | 4 | 16 | 4 | 16 | 50 | Saknas |
-| Japan, östra | 2 | 8 | 4 | 16 | 50 | Saknas |
-| Sydkorea, centrala | 4 | 16 | Saknas | Saknas | 50 | Saknas |
+| USA, östra 2 | 4 | 16 | 4 | 16 | 50 | Ej tillämpligt |
+| Frankrike, centrala | 4 | 16 | 4 | 16 | 50 | Ej tillämpligt |
+| Tyskland, västra centrala | 3 | 16 | Saknas | Saknas | 50 | Ej tillämpligt |
+| Japan, östra | 2 | 8 | 4 | 16 | 50 | Ej tillämpligt |
+| Sydkorea, centrala | 4 | 16 | Saknas | Saknas | 50 | Ej tillämpligt |
 | USA, norra centrala | 2 | 3.5 | 4 | 16 | 50 | K80, P100, V100 |
-| Norra Europa | 4 | 16 | 4 | 16 | 50 | K80 |
-| USA, södra centrala | 4 | 16 | 4 | 16 | 50 | Saknas |
+| Europa, norra | 4 | 16 | 4 | 16 | 50 | K80 |
+| USA, södra centrala | 4 | 16 | 4 | 16 | 50 | Ej tillämpligt |
 | Sydostasien | 4 | 16 | 4 | 16 | 50 | P100, V100 |
-| Indien, södra | 4 | 16 | Saknas | Saknas | 50 | Saknas |
-| Storbritannien, södra | 4 | 16 | 4 | 16 | 50 | Saknas |
-| USA, västra centrala| 4 | 16 | 4 | 16 | 50 | Saknas |
+| Indien, södra | 4 | 16 | Saknas | Saknas | 50 | Ej tillämpligt |
+| Storbritannien, södra | 4 | 16 | 4 | 16 | 50 | Ej tillämpligt |
+| Förenade Arabemiraten, norra | 3 | 16 | Saknas | Saknas | 50 | Ej tillämpligt |
+| USA, västra centrala| 4 | 16 | 4 | 16 | 50 | Ej tillämpligt |
 | Europa, västra | 4 | 16 | 4 | 16 | 50 | K80, P100, V100 |
-| USA, västra | 4 | 16 | 4 | 16 | 50 | Saknas |
+| USA, västra | 4 | 16 | 4 | 16 | 50 | Ej tillämpligt |
 | USA, västra 2 | 4 | 16 | 4 | 16 | 50 | K80, P100, V100 |
 
 Följande maximala resurser är tillgängliga för en behållar grupp som distribueras med [GPU-resurser](container-instances-gpu.md) (för hands version).
@@ -92,7 +94,7 @@ Följande regioner och maximalt antal resurser är tillgängliga för behållar 
 | Japan, östra | 4 | 16 | 4 | 16 | 20 |
 | Sydkorea, centrala | 4 | 16 | 4 | 16 | 20 |
 | USA, norra centrala | 4 | 16 | 4 | 16 | 20 |
-| Norra Europa | 2 | 8 | 2 | 8 | 20 |
+| Europa, norra | 2 | 8 | 2 | 8 | 20 |
 | USA, södra centrala | 2 | 3.5 | 2 | 8 | 20 |
 | Sydostasien | Saknas | Saknas | 2 | 3.5 | 20 |
 | Indien, södra | 2 | 3.5 | 2 | 3.5 | 20 |
@@ -122,7 +124,7 @@ Följande regioner och maximalt antal resurser är tillgängliga för behållar 
 | Japan, östra | Saknas | Saknas | 4 | 16 | 20 |
 | Sydkorea, centrala | 4 | 16 | 4 | 16 | 20 |
 | USA, norra centrala | 4 | 16 | 4 | 16 | 20 |
-| Norra Europa | 4 | 16 | 4 | 16 | 20 |
+| Europa, norra | 4 | 16 | 4 | 16 | 20 |
 | USA, södra centrala | 4 | 16 | 4 | 16 | 20 |
 | Sydostasien | 4 | 16 | 4 | 16 | 20 |
 | Indien, södra | 4 | 16 | 4 | 16 | 20 |

@@ -10,26 +10,18 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 563a3e224ffedc98bcc3102ea865f06315294365
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: 28cc0e27e5ac97ca52f5e94a556795b1404f6961
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98573113"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98663204"
 ---
 # <a name="prepare-data-to-create-a-custom-voice"></a>Förbereda data för att skapa en anpassad röst
 
 När du är redo att skapa en anpassad text till tal-röst för ditt program är det första steget att samla in ljud inspelningar och tillhör ande skript för att börja träna röst modellen. Tal tjänsten använder dessa data för att skapa en unik röst som passar rösten i inspelningarna. När du har tränat rösten kan du börja syntetisera tal i dina program.
 
-Innan du kan träna din egen text till tal-röst modell behöver du ljud inspelningar och tillhör ande text avskrifter. På den här sidan granskar vi data typer, hur de används och hur du hanterar dem.
-
-> [!NOTE]
-> Om du vill träna en neurala röst måste du ange en röst personal-profil med den ljud medgivande fil som du har fått från röst personal som kan bekräfta att hans/hennes tal-data används för att träna en anpassad röst modell. När du förbereder ditt inspelnings skript måste du se till att ta med nedanstående mening. 
-
-> "I [tillstånd ditt för-och efter namn] är du medveten om att inspelningar av min röst kommer att användas av [stat namnet på företaget] för att skapa och använda en syntetisk version av rösten."
-Den här meningen används för att kontrol lera om inlärnings data utförs av samma person som gör ditt medgivande. Läs mer om [röst personal-verifiering](https://aka.ms/CNV-data-privacy) här.
-
-> Anpassad neurala-röst är tillgänglig med begränsad åtkomst. Se till att du förstår de [ansvariga AI-kraven](https://aka.ms/gating-overview) och [Använd åtkomsten här](https://aka.ms/customneural). 
+Du kan börja med en liten mängd data för att skapa ett koncept bevis. Men mer data som du anger, desto mer naturlig kommer din anpassade röst att ljud. Innan du kan träna din egen text till tal-röst modell behöver du ljud inspelningar och tillhör ande text avskrifter. På den här sidan granskar vi data typer, hur de används och hur du hanterar dem.
 
 ## <a name="data-types"></a>Datatyper
 
@@ -39,22 +31,22 @@ I vissa fall kanske du inte har rätt data uppsättning klar och vill testa den 
 
 Den här tabellen innehåller data typer och hur de används för att skapa en anpassad röst modell för text till tal.
 
-| Datatyp | Beskrivning | När du ska använda detta | Ytterligare bearbetning krävs | 
-| --------- | ----------- | ----------- | --------------------------- |
-| **Individuell yttranden + matchande avskrift** | En samling (. zip) av ljudfiler (. wav) som enskilda yttranden. Varje ljudfil bör vara högst 15 sekunder, länkad med en formaterad avskrift (. txt). | Professionella inspelningar med matchande avskrifter | Redo för utbildning. |
-| **Långt ljud + avskrift (beta)** | En samling (. zip) av långa, segmenterade ljudfiler (längre än 20 sekunder), kopplad till en avskrift (. txt) som innehåller alla talade ord. | Du har ljudfiler och matchande avskrifter, men de är inte segmenterade i yttranden. | Segmentering (med batch-avskriftering).<br>Omvandling av ljud format där det behövs. | 
-| **Endast ljud (beta)** | En samling (. zip) av ljudfiler utan avskrift. | Du har bara ljudfiler tillgängliga, utan avskrifter. | Segmentering och avskrifts generering (med batch-avskriftering).<br>Omvandling av ljud format där det behövs.| 
+| Datatyp | Beskrivning | När du ska använda detta | Ytterligare tjänst krävs | Kvantitet för träning av en modell | Språk (er) |
+| --------- | ----------- | ----------- | --------------------------- | ----------------------------- | --------- |
+| **Individuell yttranden + matchande avskrift** | En samling (. zip) av ljudfiler (. wav) som enskilda yttranden. Varje ljudfil bör vara högst 15 sekunder, länkad med en formaterad avskrift (. txt). | Professionella inspelningar med matchande avskrifter | Redo för utbildning. | Inget hård krav för en-US och zh-CN. Fler än 2000 + distinkta yttranden för andra språk. | [Alla anpassade röst inställningar](language-support.md#customization) |
+| **Långt ljud + avskrift (beta)** | En samling (. zip) av långa, segmenterade ljudfiler (längre än 20 sekunder), kopplad till en avskrift (. txt) som innehåller alla talade ord. | Du har ljudfiler och matchande avskrifter, men de är inte segmenterade i yttranden. | Segmentering (med batch-avskriftering).<br>Omvandling av ljud format där det behövs. | Inget hård krav  | [Alla anpassade röst inställningar](language-support.md#customization) |
+| **Endast ljud (beta)** | En samling (. zip) av ljudfiler utan avskrift. | Du har bara ljudfiler tillgängliga, utan avskrifter. | Segmentering och avskrifts generering (med batch-avskriftering).<br>Omvandling av ljud format där det behövs.| Inget hård krav | [Alla anpassade röst inställningar](language-support.md#customization) |
 
 Filerna ska grupperas efter typ i en data uppsättning och laddas upp som en zip-fil. Varje data uppsättning får bara innehålla en enda datatyp.
 
 > [!NOTE]
-> Det maximala antalet data uppsättningar som får importeras per prenumeration är 10 zip-filer för kostnads fria prenumerationer (F0) och 500 för S0-användare (standard prenumeration).
+> Det maximala antalet data uppsättningar som får importeras per prenumeration är 10. zip-filer för kostnads fria prenumerationer (F0) och 500 för S0-användare (standard prenumeration).
 
 ## <a name="individual-utterances--matching-transcript"></a>Individuell yttranden + matchande avskrift
 
 Du kan förbereda inspelningar av enskilda yttranden och den matchande avskriften på två sätt. Skriv antingen ett skript och låt det läsas av en röst personal eller Använd allmänt tillgänglig ljud och skriv det till text. Om du gör det senare kan du redigera disfluencies från ljudfilerna, till exempel "UM" och andra fyllnings ljud, hackare, mumbled ord eller feluttal.
 
-Om du vill skapa en bra röst modell skapar du inspelningar i ett tyst rum med en mikrofon med hög kvalitet. Konsekvent volym, tal hastighet, talande färgdjup och lättfattliga programspecifika mannerisms av tal är viktigt.
+Om du vill skapa ett bra röst teckensnitt skapar du inspelningarna i ett tyst rum med en mikrofon med hög kvalitet. Konsekvent volym, tal hastighet, talande färgdjup och lättfattliga programspecifika mannerisms av tal är viktigt.
 
 > [!TIP]
 > Om du vill skapa en röst för produktions användning rekommenderar vi att du använder en proffsig inspelning Studio och röst personal. Mer information finns i [så här spelar du in röst exempel för en anpassad röst](record-custom-voice-samples.md).
@@ -97,6 +89,9 @@ Nedan visas ett exempel på hur avskrifterna organiseras uttryck av uttryck i en
 0000000003[tab] It was Janet Maslin.
 ```
 Det är viktigt att avskrifterna är 100% exakta avskrifter av motsvarande ljud. Fel i avskrifterna kommer att medföra kvalitets förluster under utbildningen.
+
+> [!TIP]
+> När du skapar text till tal-röster för produktion väljer du yttranden (eller Skriv skript) som tar hänsyn till både fonetisk täckning och effektivitet. Har du problem med att få de resultat du vill ha? [Kontakta det anpassade röst](mailto:speechsupport@microsoft.com) teamet och lär dig mer om att be oss att kontakta.
 
 ## <a name="long-audio--transcript-beta"></a>Långt ljud + avskrift (beta)
 

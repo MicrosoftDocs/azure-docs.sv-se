@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: overview
-ms.date: 07/13/2020
+ms.date: 01/20/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f85b78480e7258780f8dd396431edeb968189e4c
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: ae7ae239493c999d98100bf9dee4f4f0183addf2
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96741260"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660821"
 ---
 # <a name="what-is-azure-active-directory-authentication"></a>Vad är Azure Active Directory autentisering?
 
@@ -27,6 +27,8 @@ En av huvud funktionerna i en identitets plattform är att verifiera, eller *aut
 * Hybrid integrering för att skriva lösen ords ändringar tillbaka till en lokal miljö
 * Hybrid integrering som tillämpar principer för lösen ords skydd för en lokal miljö
 * Lösenordsfri autentisering
+
+Ta en titt på vår korta video för att lära dig mer om de här komponenterna för autentisering.
 
 ## <a name="improve-the-end-user-experience"></a>Förbättra slut användar upplevelsen
 
@@ -80,7 +82,7 @@ Slut målet för många miljöer är att ta bort användningen av lösen ord som
 
 ![Säkerhet och bekvämlighet med autentiseringsprocessen som leder till lösen ords lös](./media/concept-authentication-passwordless/passwordless-convenience-security.png)
 
-När du loggar in med en metod utan lösen ord tillhandahålls autentiseringsuppgifter genom att använda metoder som biometrik med Windows Hello för företag, eller en säkerhets nyckel för FIDO2. Dessa autentiseringsmetoder kan inte enkelt dupliceras av en angripare.
+När du loggar in med en metod för lösen ords skydd tillhandahålls autentiseringsuppgifterna med metoder som biometrik med Windows Hello för företag, eller en säkerhets nyckel för FIDO2. Dessa autentiseringsmetoder kan inte enkelt dupliceras av en angripare.
 
 Azure AD tillhandahåller olika sätt att autentisera med hjälp av lösen ords lös metoder för att förenkla inloggnings upplevelsen för användare och minska risken för attacker.
 

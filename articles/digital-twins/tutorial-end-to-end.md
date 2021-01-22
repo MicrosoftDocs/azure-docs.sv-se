@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 09ce611b5bca6c04d55da95a82a8fcd7ae348db3
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 4f68eba8106a20d357fe6d3fb2baac1d1661aa1e
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98049226"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660546"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>Självstudie: Bygg ut en lösning från slut punkt till slut punkt
 
@@ -167,11 +167,13 @@ Om du vill göra det möjligt för Function-appen att komma åt Azure Digitals, 
 
 [!INCLUDE [digital-twins-role-rename-note.md](../../includes/digital-twins-role-rename-note.md)]
 
-I Azure Cloud Shell använder du följande kommando för att ange en program inställning som din Function-app ska använda för att referera till din Azure Digital-instansen.
+I Azure Cloud Shell använder du följande kommando för att ange en program inställning som din Function-app ska använda för att referera till din Azure Digital-instansen. Fyll i plats hållarna med information om dina resurser (kom ihåg att URL: en för Azure Digital-instansen är värd namnet föregånget av *https://*).
 
 ```azurecli-interactive
 az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "ADT_SERVICE_URL=<your-Azure-Digital-Twins-instance-URL>"
 ```
+
+Utdata är listan över inställningar för Azure-funktionen som nu ska innehålla en post som kallas *ADT_SERVICE_URL*.
 
 Använd följande kommando för att skapa den systemhanterade identiteten. Anteckna fältet *principalId* i utdata.
 
@@ -257,7 +259,7 @@ Utdata är information om enheten som skapades.
 
 ### <a name="configure-and-run-the-simulation"></a>Konfigurera och kör simuleringen
 
-Konfigurera sedan enhets simulatorn för att skicka data till IoT Hub-instansen.
+Konfigurera sedan enhetssimulatorn för att skicka data till IoT Hub-instansen.
 
 Börja med att hämta *anslutnings strängen för IoT Hub* med det här kommandot:
 
@@ -265,7 +267,7 @@ Börja med att hämta *anslutnings strängen för IoT Hub* med det här kommando
 az iot hub connection-string show -n <your-IoT-hub-name>
 ```
 
-Hämta sedan *enhets anslutnings strängen* med det här kommandot:
+Hämta sedan *enhetens anslutningssträng* med det här kommandot:
 
 ```azurecli-interactive
 az iot hub device-identity connection-string show --device-id thermostat67 --hub-name <your-IoT-hub-name>

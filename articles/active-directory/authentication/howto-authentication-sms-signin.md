@@ -1,31 +1,28 @@
 ---
 title: SMS-baserad användar inloggning för Azure Active Directory
-description: Lär dig hur du konfigurerar och gör det möjligt för användare att logga in till Azure Active Directory med SMS (för hands version)
+description: Lär dig hur du konfigurerar och gör det möjligt för användare att logga in på Azure Active Directory med SMS
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 10/05/2020
+ms.date: 01/21/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: rateller
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10bac65fa8b1ed192e2ece1682f22e7feb528431
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 43573b54be6884e01121e404370d2e1d85a3c4e8
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743351"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660889"
 ---
-# <a name="configure-and-enable-users-for-sms-based-authentication-using-azure-active-directory-preview"></a>Konfigurera och aktivera användare för SMS-baserad autentisering med hjälp av Azure Active Directory (för hands version)
+# <a name="configure-and-enable-users-for-sms-based-authentication-using-azure-active-directory"></a>Konfigurera och aktivera användare för SMS-baserad autentisering med hjälp av Azure Active Directory 
 
-För att minska komplexiteten och säkerhets riskerna för att användare ska kunna logga in på program och tjänster ger Azure Active Directory (Azure AD) flera autentiseringsalternativ. SMS-baserad autentisering, som för närvarande finns i för hands version, låter användarna logga in utan att behöva ange eller ens känna till sitt användar namn och lösen ord. När kontot har skapats av en identitets administratör kan de ange sitt telefonnummer i inloggnings meddelandet och ange en kod som skickas till dem via SMS. Den här autentiseringsmetoden fören klar åtkomsten till program och tjänster, särskilt för anställda på arbets ledningen.
+Azure Active Directory (Azure AD) tillhandahåller flera autentiseringsalternativ för att förenkla och säkra inloggning till program och tjänster. SMS-baserad autentisering gör det möjligt för användarna att logga in utan att behöva ange användar namn och lösen ord. När kontot har skapats av en identitets administratör kan de ange sitt telefonnummer vid inloggnings meddelandet. De får en autentiseringsnyckel via SMS som de kan ange för att slutföra inloggningen. Den här autentiseringsmetoden fören klar åtkomsten till program och tjänster, särskilt för anställda på arbets ledningen.
 
 Den här artikeln visar hur du aktiverar SMS-baserad autentisering för utvalda användare eller grupper i Azure AD.
-
-> [!NOTE]
-> SMS-baserad autentisering för användare är en offentlig förhands gransknings funktion i Azure Active Directory. Mer information om för hands versionerna finns i kompletterande användnings [villkor för Microsoft Azure för hands](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)versionerna.
 
 ## <a name="before-you-begin"></a>Innan du börjar
 
@@ -43,10 +40,10 @@ För att slutföra den här artikeln behöver du följande resurser och behörig
 
 ## <a name="limitations"></a>Begränsningar
 
-Under den offentliga för hands versionen av SMS-baserad autentisering gäller följande begränsningar:
+Följande begränsningar gäller för SMS-baserad autentisering:
 
 * SMS-baserad autentisering är för närvarande inte kompatibel med Azure AD Multi-Factor Authentication.
-* Med undantag för team är SMS-baserad autentisering för närvarande inte kompatibel med inbyggda Office-program.
+* Förutom för team är SMS-baserad autentisering inte kompatibel med inbyggda Office-program.
 * SMS-baserad autentisering rekommenderas inte för B2B-konton.
 * Federerade användare autentiseras inte i hem klienten. De autentiseras bara i molnet.
 
@@ -57,15 +54,15 @@ Det finns tre huvudsakliga steg för att aktivera och använda SMS-baserad auten
 * Aktivera principen för autentiserings metoden.
 * Välj användare eller grupper som kan använda den SMS-baserade autentiseringsmetoden.
 * Tilldela ett telefonnummer för varje användar konto.
-    * Det här telefonnumret kan tilldelas i Azure Portal (som visas i den här artikeln) och i *min personal* eller *min profil*.
+    * Det här telefonnumret kan tilldelas i Azure Portal (som visas i den här artikeln) och i *min personal* eller *mitt konto*.
 
 Först ska vi aktivera SMS-baserad autentisering för Azure AD-klienten.
 
 1. Logga in på [Azure Portal][azure-portal] som *Global administratör*.
 1. Sök efter och välj **Azure Active Directory**.
-1. I navigerings menyn till vänster i Azure Active Directory-fönstret väljer du **säkerhets > autentiseringsmetoder > princip för autentiserings metod (för hands version)**.
+1. I navigerings menyn till vänster i fönstret Azure Active Directory väljer du **säkerhets > autentiseringsmetoder > princip för autentiserings metod**.
 
-    [![Bläddra till och välj den autentiseringsmetod för princip (förhands granskning) i Azure Portal.](media/howto-authentication-sms-signin/authentication-method-policy-cropped.png)](media/howto-authentication-sms-signin/authentication-method-policy.png#lightbox)
+    [![Bläddra till och välj principen för autentiseringsmetod i Azure Portal.](media/howto-authentication-sms-signin/authentication-method-policy-cropped.png)](media/howto-authentication-sms-signin/authentication-method-policy.png#lightbox)
 
 1. I listan över tillgängliga autentiseringsmetoder väljer du **textmeddelande**.
 1. Ange **Tillåt** till *Ja*.
@@ -89,7 +86,7 @@ Varje användare som är aktive rad i principen för autentiseringsmetoden för 
 
 ## <a name="set-a-phone-number-for-user-accounts"></a>Ange ett telefonnummer för användar konton
 
-Användare är nu aktiverade för SMS-baserad autentisering, men deras telefonnummer måste kopplas till användar profilen i Azure AD innan de kan logga in. Användaren kan [Ange själva telefonnumret](../user-help/sms-sign-in-explainer.md) i *min profil*, eller så kan du tilldela telefonnumret med hjälp av Azure Portal. Telefonnummer kan ställas in av *globala administratörer*, *autentisera administratörer* eller *privilegierade autentiserings administratörer*.
+Användare är nu aktiverade för SMS-baserad autentisering, men deras telefonnummer måste kopplas till användar profilen i Azure AD innan de kan logga in. Användaren kan [Ange det här telefonnumret](../user-help/sms-sign-in-explainer.md) i *mitt konto*, eller så kan du tilldela telefonnumret med hjälp av Azure Portal. Telefonnummer kan ställas in av *globala administratörer*, *autentisera administratörer* eller *privilegierade autentiserings administratörer*.
 
 När ett telefonnummer anges för SMS-signera, är det också tillgängligt för användning med [Azure AD Multi-Factor Authentication][tutorial-azure-mfa] och [lösen ords återställning][tutorial-sspr]via självbetjäning.
 
@@ -136,13 +133,13 @@ Om en användare redan har registrerat sig för Azure AD Multi-Factor Authentica
 
 En användare som har ett telefonnummer som redan har angetts för sitt konto visas en knapp för att *Aktivera SMS-inloggning* på **min profil** sida. Välj den här knappen så är kontot aktiverat för användning med SMS-baserad inloggning och föregående Azure AD Multi-Factor Authentication-eller SSPR-registrering.
 
-Mer information om slut användar upplevelsen finns i SMS- [inloggning användar upplevelse för telefonnummer (för hands version)](../user-help/sms-sign-in-explainer.md).
+Mer information om slut användar upplevelsen finns i SMS- [inloggning användar upplevelse för telefonnummer](../user-help/sms-sign-in-explainer.md).
 
 ### <a name="error-when-trying-to-set-a-phone-number-on-a-users-account"></a>Fel vid försök att ange ett telefonnummer för ett användar konto
 
 Om du får ett fel meddelande när du försöker ange ett telefonnummer för ett användar konto i Azure Portal kan du läsa följande fel söknings steg:
 
-1. Se till att du är aktive rad för den SMS-baserade inloggnings för hands versionen.
+1. Se till att du är aktive rad för den SMS-baserade inloggningen.
 1. Bekräfta att användar kontot är aktiverat i principen för autentiseringsmetoden för *SMS* .
 1. Se till att ange telefonnumret med rätt formatering, som verifieras i Azure Portal (till exempel *+ 1 4251234567*).
 1. Kontrol lera att telefonnumret inte används någon annan stans i din klient organisation.

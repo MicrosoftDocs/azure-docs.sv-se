@@ -8,12 +8,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 01/14/2021
 ms.author: lagayhar
-ms.openlocfilehash: 7af26be91ff129e4c968bcb131cc98290cd8d7b9
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: b2e9c267b0a3723c9ac7b3edd49e23b95741962f
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98610088"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660461"
 ---
 # <a name="click-analytics-auto-collection-plugin-for-application-insights-javascript-sdk"></a>Klicka på analys-plugin-programmet för automatisk insamling för Application Insights JavaScript SDK
 
@@ -69,7 +69,7 @@ appInsights.loadAppInsights();
     2. För att förbättra effektiviteten använder plugin-programmet den här taggen som en flagga när den påträffas kommer den att stoppas av ytterligare bearbetning av DOM (Document Object Model) uppåt.
     
     > [!CAUTION]
-    > När används är `parentDataTag` det en permanent inverkan i hela programmet och inte bara det HTML-element som du använde i.
+    > När `parentDataTag` har använts börjar SDK söka efter överordnade taggar i hela programmet och inte bara det HTML-element där du använde det.
 4. `customDataPrefix` anges av användaren ska alltid börja med `data-` , till exempel `data-sample-` . I HTML `data-*` utgörs de globala attributen av en klass med attribut som kallas anpassade dataattribut, vilket innebär att ägande information utbyts mellan HTML-och dess dom-representation av skript. Äldre webbläsare (Internet Explorer, Safari) släpper attribut som inte kan tolkas, såvida de inte börjar med `data-` .
 
     `*`I `data-*` kan ersättas med ett namn som följer [produktions regeln för XML-namn](https://www.w3.org/TR/REC-xml/#NT-Name) med följande begränsningar:
@@ -314,5 +314,5 @@ appInsights.loadAppInsights();
 
 - Ta en titt på [GitHub-lagringsplatsen](https://github.com/microsoft/ApplicationInsights-JS/tree/master/extensions/applicationinsights-clickanalytics-js) och [NPM-paketet](https://www.npmjs.com/package/@microsoft/applicationinsights-clickanalytics-js) för plugin-programmet för automatisk insamling av en analys.
 - Använd [händelse analys i användnings miljö](usage-segmentation.md) för att analysera de bästa klicken och segmentera med tillgängliga dimensioner.
-- Hitta Klicka på data under innehålls fält i customDimensions-attributet i CustomEvents-tabellen i [Log Analytics](../log-query/log-analytics-tutorial.md#write-a-query).
+- Hitta Klicka på data under innehålls fält i customDimensions-attributet i CustomEvents-tabellen i [Log Analytics](../log-query/log-analytics-tutorial.md#write-a-query). Ytterligare vägledning finns i [exempel appen](https://go.microsoft.com/fwlink/?linkid=2152871) .
 - Skapa en [arbets bok](../platform/workbooks-overview.md) för att skapa anpassade visualiseringar av Klicka på data.

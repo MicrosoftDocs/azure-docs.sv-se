@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/18/2021
+ms.date: 01/21/2021
 ms.author: memildin
-ms.openlocfilehash: ba9a640c2231c7098e58ad6e29bbfa196436a7f9
-ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
+ms.openlocfilehash: 6d656dbb3fb50091fc8721ba40431b37f77c4ad6
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98562326"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98662955"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>Viktiga kommande ändringar i Azure Security Center
 
@@ -33,7 +33,6 @@ Om du letar efter den senaste versions informationen hittar du dem i [vad som ä
 
 - [Två rekommendationer från "tillämpa system uppdateringar"-säkerhets kontrollen är inaktuell](#two-recommendations-from-apply-system-updates-security-control-being-deprecated)
 - [Förbättringar av SQL data klassificerings rekommendation](#enhancements-to-sql-data-classification-recommendation)
-- ["Ej tillämpligt" resurser som ska rapporteras som "kompatibla" i Azure Policy bedömningar](#not-applicable-resources-to-be-reported-as-compliant-in-azure-policy-assessments)
 - [35 för hands versioner har lagts till för att öka täckningen av Azures säkerhets prestanda](#35-preview-recommendations-being-added-to-increase-coverage-of-azure-security-benchmark)
 
 
@@ -61,15 +60,6 @@ Den aktuella versionen av rekommendations **känsliga data i dina SQL-databaser 
 - Säkerhets kontrollen ("Använd data klassificering") kommer inte längre att påverka dina säkra Poäng
 - Rekommendationens ID kommer också att ändras (för närvarande b0df6f56-862d-4730-8597-38c0fd4ebd59)
 
-
-
-### <a name="not-applicable-resources-to-be-reported-as-compliant-in-azure-policy-assessments"></a>"Ej tillämpligt" resurser som ska rapporteras som "kompatibla" i Azure Policy bedömningar
-
-**Beräknat datum för ändring:** Januari 2021
-
-För närvarande visas resurser som utvärderas för en rekommendation och som inte är **tillämpliga** i Azure policy som "icke-kompatibla". Inga användar åtgärder kan ändra deras status till "kompatibel". Från den här planerade ändringen rapporteras de som "kompatibla" för förbättrad klarhet.
-
-Den enda påverkan visas i Azure Policy där antalet kompatibla resurser kommer att öka. Det kommer inte att påverka dina säkra poäng i Azure Security Center.
 
 ### <a name="35-preview-recommendations-being-added-to-increase-coverage-of-azure-security-benchmark"></a>35 för hands versions rekommendationer läggs till för att öka täckningen av Azures säkerhets prestanda
 

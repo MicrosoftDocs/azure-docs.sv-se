@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: fea8d93121fcb5622f86257febcc7d834b444098
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 34bc50f5f95725b59c0d2b30b529e12abb6aa7fa
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178814"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661161"
 ---
 # <a name="migrate-users-to-azure-ad-b2c"></a>Migrera användare till Azure AD B2C
 
-Att migrera från en annan identitetsprovider till Azure Active Directory B2C (Azure AD B2C) kan också kräva att befintliga användar konton migreras. Två metoder för migrering beskrivs här, *för migrering* och *sömlös migrering*. Med båda metoderna måste du skriva ett program eller skript som använder [Microsoft Graph-API: et](manage-user-accounts-graph-api.md) för att skapa användar konton i Azure AD B2C.
+Att migrera från en annan identitetsprovider till Azure Active Directory B2C (Azure AD B2C) kan också kräva att befintliga användar konton migreras. Två metoder för migrering beskrivs här, *för migrering* och *sömlös migrering*. Med båda metoderna måste du skriva ett program eller skript som använder [Microsoft Graph-API: et](microsoft-graph-operations.md) för att skapa användar konton i Azure AD B2C.
 
 ## <a name="pre-migration"></a>Före migrering
 
@@ -34,7 +34,7 @@ Använd för inmigrerings flödet i någon av dessa två situationer:
 - Du har åtkomst till en användares autentiseringsuppgifter för oformaterad text (användar namn och lösen ord).
 - Autentiseringsuppgifterna är krypterade, men du kan dekryptera dem.
 
-Information om hur du skapar användar konton via programmering finns i [hantera Azure AD B2C användar konton med Microsoft Graph](manage-user-accounts-graph-api.md).
+Information om hur du skapar användar konton via programmering finns i [hantera Azure AD B2C användar konton med Microsoft Graph](microsoft-graph-operations.md).
 
 ## <a name="seamless-migration"></a>Sömlös migrering
 

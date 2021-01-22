@@ -1,5 +1,5 @@
 ---
-title: SMS-inloggning användar upplevelse för telefonnummer (för hands version) – Azure AD
+title: Användar upplevelse för SMS-inloggning för telefonnummer – Azure AD
 description: Lär dig mer om SMS-inloggning användar upplevelse för nya eller befintliga telefonnummer
 services: active-directory
 author: curtand
@@ -8,18 +8,18 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: end-user-help
-ms.date: 04/14/2020
+ms.date: 01/21/2021
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: a4dcb6774990c03ce3d55fb6c519b0600a1086f9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a50f2032a978a552205d1bba602249f34f0478a
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91536893"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661608"
 ---
-# <a name="use-your-phone-number-as-a-user-name-preview"></a>Använd ditt telefonnummer som användar namn (förhands granskning)
+# <a name="use-your-phone-number-as-a-user-name"></a>Använd ditt telefonnummer som användar namn
 
 När du registrerar en enhet får du till gång till din organisations tjänster och ger inte din organisation åtkomst till din telefon. Om du är administratör kan du hitta mer information i [Konfigurera och aktivera användare för SMS-baserad autentisering](../authentication/howto-authentication-sms-signin.md).
 
@@ -36,7 +36,7 @@ Om du får en ny telefon eller nytt nummer och du registrerar den med en organis
 1. Du får ett meddelande om att "SMS har verifierats. Din telefon har registrerats. "
 
 > [!Important]
-> På grund av ett känt problem i för hands versionen registreras inte numret för SMS-inloggning under kort tid för att lägga till telefonnummer. Du måste logga in med det tillagda numret och sedan följa anvisningarna för att registrera numret för SMS-inloggning.
+> På grund av ett känt problem registrerar inte numret för SMS-inloggning för kort tid som lägger till telefonnummer. Du måste logga in med det tillagda numret och sedan följa anvisningarna för att registrera numret för SMS-inloggning.
 
 ### <a name="when-the-phone-number-is-in-use"></a>När telefonnumret används
 

@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/24/2020
+ms.date: 01/20/2021
 ms.author: justinha
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 4e65b47b2a1fd71c69ecb350f60df1fedff66b74
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 34692f5e563e4931a27ea59db84d9c88f27817da
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96618917"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660906"
 ---
 # <a name="configure-scoped-synchronization-from-azure-ad-to-azure-active-directory-domain-services-using-the-azure-portal"></a>Konfigurera omfångst synkronisering från Azure AD till Azure Active Directory Domain Services med hjälp av Azure Portal
 
@@ -43,15 +43,14 @@ För att slutföra den här artikeln behöver du följande resurser och behörig
 
 Som standard synkroniseras alla användare och grupper från en Azure AD-katalog till en hanterad domän. Om bara några få användare behöver åtkomst till den hanterade domänen kan du bara synkronisera dessa användar konton. Den här omfånget är gruppbaserad. När du konfigurerar gruppbaserad omsynkronisering synkroniseras bara de användar konton som tillhör de grupper som du anger till den hanterade domänen. Kapslade grupper är inte synkroniserade, bara de enskilda grupper som du väljer.
 
-Du kan ändra omfånget för synkronisering när du skapar den hanterade domänen eller när den har distribuerats. Du kan också ändra omfånget för synkroniseringen på en befintlig hanterad domän utan att behöva skapa den igen.
+Du kan ändra omfånget för synkronisering före eller efter att du har skapat den hanterade domänen. Omfånget för synkronisering definieras av ett huvud namn för tjänsten med program identifieraren 2565bd9d-DA50-47d4-8b85-4c97f669dc36. Du kan förhindra omfattnings förlust genom att inte ta bort eller ändra tjänstens huvud namn. Om det tas bort av misstag går det inte att återställa omfånget för synkronisering. 
+
+Tänk på följande varningar om du ändrar omfånget för synkronisering:
+
+- En fullständig synkronisering sker.
+- Objekt som inte längre behövs i den hanterade domänen tas bort. Nya objekt skapas i den hanterade domänen.
 
 Läs mer om synkroniseringsprocessen i [förstå synkronisering i Azure AD Domain Services][concepts-sync].
-
-> [!WARNING]
-> Om du ändrar omfånget för synkroniseringen synkroniserar den hanterade domänen om alla data. Följande gäller:
->
->  * När du ändrar omfånget för synkronisering för en hanterad domän sker en fullständig omsynkronisering.
->  * Objekt som inte längre behövs i den hanterade domänen tas bort. Nya objekt skapas i den hanterade domänen.
 
 ## <a name="enable-scoped-synchronization"></a>Aktivera omfångs synkronisering
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/05/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: d39d72a79d4b273918986d0d350df4706592c77d
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: c30d8a66cf9deffaa32e5ec0356a9067575b77e8
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95503180"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660710"
 ---
 # <a name="header-based-single-sign-on-for-on-premises-apps-with-azure-ad-app-proxy-preview"></a>Rubrik-baserad enkel inloggning för lokala appar med Azure AD App proxy (för hands version)
 
@@ -82,12 +82,16 @@ Innan du börjar med enkel inloggning för huvudbaserade program bör du redan h
     - Du kan också lägga till ett **grupp huvud** för att skicka alla grupper som en användare är en del av eller de grupper som har tilldelats programmet som en rubrik. Läs mer om att konfigurera grupper som ett värde i: [Konfigurera grupp anspråk för program](../hybrid/how-to-connect-fed-group-claims.md#add-group-claims-to-tokens-for-saml-applications-using-sso-configuration). 
 6. Välj Spara 
 
-## <a name="test-your-app"></a>Testa din app 
+## <a name="test-your-app"></a>Testa appen 
 
 När du har slutfört alla de här stegen ska appen köras och vara tillgänglig. Så här testar du appen: 
 1. Öppna en ny webbläsare eller ett privat webbläsarfönster för att se till att tidigare cachelagrade rubriker är rensade. Gå sedan till den **externa URL:** en   från inställningarna för programproxyn.
 2. Logga in med det test konto som du har tilldelat till appen. Om du kan läsa in och logga in i programmet med hjälp av SSO är du nöjd! 
 
+## <a name="considerations"></a>Överväganden
+
+- Application Proxy används för att ge fjärråtkomst till appar lokalt eller i ett privat moln. Application Proxy rekommenderas inte för att hantera trafik som härstammar internt från företags nätverket.
+- Åtkomst till huvudbaserade autentiserings program bör begränsas till enbart trafik från anslutningen eller någon annan tillåten autentiseringsnyckel. Detta görs vanligt vis genom att begränsa nätverks åtkomsten till programmet med hjälp av en brand vägg eller en IP-begränsning på program servern.
 
 ## <a name="next-steps"></a>Nästa steg
 

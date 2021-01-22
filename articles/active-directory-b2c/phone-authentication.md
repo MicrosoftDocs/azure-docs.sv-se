@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/01/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8d41f8959d0a1ec0d6e48cf2fa4711a8ef8d8ae5
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 2600ea3488c643bcf215b058425de42cd439dcff
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178950"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660275"
 ---
 # <a name="set-up-phone-sign-up-and-sign-in-with-custom-policies-in-azure-ad-b2c"></a>Konfigurera telefonin loggning och inloggning med anpassade principer i Azure AD B2C
 
@@ -39,12 +39,12 @@ Med telefonin loggning och inloggning kan användaren registrera sig för appen 
 >
 > *&lt;Infoga: en länk till din sekretess policy&gt;*<br/>*&lt;Infoga: en länk till dina användnings villkor&gt;*
 
-Om du vill lägga till din egen medgivande information, anpassa följande exempel och inkludera det i LocalizedResources för ContentDefinition som används av den självkontrollerade sidan med visnings kontrollen ( *Phone_Email_Base.xml* -filen i [telefon-och inloggnings start paketet][starter-pack-phone]):
+För att lägga till din egen medgivande information, anpassa följande exempel. Ta med den i `LocalizedResources` för ContentDefinition som används av den självkontrollerade sidan med visnings kontrollen ( *Phone_Email_Base.xml* -filen i [registrerings-och inloggnings start paketet][starter-pack-phone]):
 
 ```xml
 <LocalizedResources Id="phoneSignUp.en">        
     <LocalizedStrings>
-    <LocalizedString ElementType="DisplayControl" ElementId="phoneControl" StringId="disclaimer_msg_intro">By providing your phone number, you consent to receiving a one-time passcode sent by text message to help you sign into {insert your application name}. Standard messsage and data rates may apply.</LocalizedString>          
+    <LocalizedString ElementType="DisplayControl" ElementId="phoneControl" StringId="disclaimer_msg_intro">By providing your phone number, you consent to receiving a one-time passcode sent by text message to help you sign into {insert your application name}. Standard message and data rates may apply.</LocalizedString>          
     <LocalizedString ElementType="DisplayControl" ElementId="phoneControl" StringId="disclaimer_link_1_text">Privacy Statement</LocalizedString>                
     <LocalizedString ElementType="DisplayControl" ElementId="phoneControl" StringId="disclaimer_link_1_url">{insert your privacy statement URL}</LocalizedString>          
     <LocalizedString ElementType="DisplayControl" ElementId="phoneControl" StringId="disclaimer_link_2_text">Terms and Conditions</LocalizedString>             
@@ -64,7 +64,7 @@ En verifierings kod vid enstaka tidpunkt skickas till användarens telefonnummer
 
 ![Användaren verifierar kod under telefon registreringen](media/phone-authentication/phone-signup-verify-code.png)
 
- Användaren anger en annan information som begärs på registrerings sidan, till exempel **visnings namn**, **tilldelat namn** och efter **namn** (land och telefonnummer förblir ifyllda). Om användaren vill använda ett annat telefonnummer kan de välja **ändra nummer** för att starta om registreringen. När du är färdig väljer användaren **Fortsätt**.
+Användaren anger all annan information som begärs på registrerings sidan. Till exempel, **visnings namn**, **tilldelat namn** och efter **namn** (land och telefonnummer förblir ifyllda). Om användaren vill använda ett annat telefonnummer kan de välja **ändra nummer** för att starta om registreringen. När du är färdig väljer användaren **Fortsätt**.
 
 ![Användaren har ytterligare information](media/phone-authentication/phone-signup-additional-info.png)
 
@@ -88,7 +88,7 @@ I vissa fall kanske du måste ta bort en användare och tillhör ande data från
 
 
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Du behöver följande resurser på plats innan du konfigurerar eng ång slö sen ord.
 
@@ -99,8 +99,6 @@ Du behöver följande resurser på plats innan du konfigurerar eng ång slö sen
 ## <a name="get-the-phone-sign-up--sign-in-starter-pack"></a>Hämta inloggnings start paketet för telefon &
 
 Börja med att uppdatera de anpassade principerna för registrering av telefon och inloggning för att arbeta med din Azure AD B2C-klient.
-
-Följande steg förutsätter att du har slutfört [kraven](#prerequisites) och redan klonat den [anpassade principens start paket][starter-pack] lagrings plats till den lokala datorn.
 
 1. Hitta de [anpassade principerna för registrering och inloggning][starter-pack-phone] i din lokala kloning av start paketets lagrings platsen eller ladda ned dem direkt. XML-principfiler finns i följande katalog:
 
@@ -136,15 +134,15 @@ När du överför varje fil lägger Azure till prefixet `B2C_1A_` .
 
 ## <a name="get-user-account-by-phone-number"></a>Hämta användar konto per telefonnummer
 
-En användare som registrerar sig med ett telefonnummer men som inte anger någon återställnings-e-postadress registreras i din Azure AD B2C katalog med deras telefonnummer som inloggnings namn. Om användaren sedan vill ändra sitt telefonnummer måste supportavdelningen eller support teamet först hitta sitt konto och sedan uppdatera sitt telefonnummer.
+En användare som registrerar sig med ett telefonnummer, utan en återställnings-e-postadress registreras i din Azure AD B2C katalog med deras telefonnummer som inloggnings namn. Om du vill ändra telefonnumret måste supportavdelningen eller support teamet först hitta sitt konto och sedan uppdatera sitt telefonnummer.
 
-Du kan hitta en användare med deras telefonnummer (inloggnings namn) genom att använda [Microsoft Graph](manage-user-accounts-graph-api.md):
+Du kan hitta en användare med deras telefonnummer (inloggnings namn) genom att använda [Microsoft Graph](microsoft-graph-operations.md):
 
 ```http
 GET https://graph.microsoft.com/v1.0/users?$filter=identities/any(c:c/issuerAssignedId eq '+{phone number}' and c/issuer eq '{tenant name}.onmicrosoft.com')
 ```
 
-Exempel:
+Till exempel:
 
 ```http
 GET https://graph.microsoft.com/v1.0/users?$filter=identities/any(c:c/issuerAssignedId eq '+450334567890' and c/issuer eq 'contosob2c.onmicrosoft.com')

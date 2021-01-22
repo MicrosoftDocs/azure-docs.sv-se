@@ -3,16 +3,16 @@ title: Konfigurera SSL – Azure Database for MariaDB
 description: Instruktioner för hur du konfigurerar Azure Database for MariaDB och associerade program korrekt för att använda SSL-anslutningar
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: how-to
 ms.date: 07/08/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8f541e2302bc1f1de132de76e0638f9843d7003f
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: bda9c54fa344d44da01fba75d3f814d8f311fd48
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94592489"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98662278"
 ---
 # <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mariadb"></a>Konfigurera SSL-anslutning i ditt program för att ansluta säkert till Azure Database for MariaDB
 Azure Database for MariaDB stöder anslutning av Azure Database for MariaDB-servern till klient program med hjälp av Secure Sockets Layer (SSL). Framtvingande av SSL-anslutningar mellan databasservern och klientprogrammen hjälper till att skydda mot ”man in the middle”-attacker genom att kryptera dataströmmen mellan servern och programmet.
@@ -58,7 +58,7 @@ mysql.exe -h mydemoserver.mariadb.database.azure.com -u Username@mydemoserver -p
 
 ## <a name="enforcing-ssl-connections-in-azure"></a>Tvinga SSL-anslutningar i Azure 
 
-### <a name="using-the-azure-portal"></a>Använda Azure-portalen
+### <a name="using-the-azure-portal"></a>Använda Azure Portal
 Använd Azure Portalen, gå till Azure Database for MariaDB-servern och klicka sedan på **anslutnings säkerhet**. Använd växlings knappen för att aktivera eller inaktivera inställningen **tvinga SSL-anslutning** och klicka sedan på **Spara**. Microsoft rekommenderar att alltid aktivera inställningen **tvinga SSL-anslutning** för förbättrad säkerhet.
 ![Aktivera-SSL för MariaDB-Server](./media/howto-configure-ssl/enable-ssl.png)
 

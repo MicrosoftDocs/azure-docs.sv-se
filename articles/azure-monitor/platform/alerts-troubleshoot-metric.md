@@ -4,14 +4,14 @@ description: Vanliga problem med Azure Monitor metriska aviseringar och möjliga
 author: harelbr
 ms.author: harelbr
 ms.topic: troubleshooting
-ms.date: 01/11/2021
+ms.date: 01/21/2021
 ms.subservice: alerts
-ms.openlocfilehash: e4e876b58c82605df0c005b225dcf2cdbcda1b34
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 11dc71578b3d94ce41fe040557184ff32bcf3240
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98070743"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661805"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Felsöka problem i Azure Monitor-måttaviseringar 
 
@@ -24,8 +24,9 @@ Azure Monitor aviseringar proaktivt meddela dig när viktiga villkor finns i din
 Om du tror att en måtta avisering ska ha utlösts men den inte har startats och inte finns i Azure Portal kan du prova följande steg:
 
 1. **Konfiguration** – granska varnings regel konfigurationen för att kontrol lera att den är korrekt konfigurerad:
-    - Kontrol lera att **sammansättnings typen**, **agg regerings precisionen (period)** och **tröskelvärdet** eller **känslighets** värdet är konfigurerade som förväntat
-    - För en varnings regel som använder dynamiska tröskelvärden kontrollerar du om avancerade inställningar har kon figurer ATS. **antalet överträdelser** kan filtrera aviseringar och **Ignorera data innan** de kan påverka hur tröskelvärdena beräknas
+    - Kontrol lera att **sammansättnings typen** och **agg regerings precisionen (period)** är konfigurerade som förväntat. **Sammansättnings typen** avgör hur mått värden aggregeras (Läs mer [här](./metrics-aggregation-explained.md#aggregation-types)) och **agg regerings kornig het (period)** styr hur långt tillbaka utvärderingen aggregerar mått värden varje gång som varnings regeln körs.
+    -  Kontrol lera att **tröskelvärdet** eller **känslighets** värdet är konfigurerat som förväntat.
+    - För en varnings regel som använder dynamiska tröskelvärden kontrollerar du om avancerade inställningar har kon figurer ATS. **antalet överträdelser** kan filtrera aviseringar och **Ignorera data innan** de kan påverka hur tröskelvärdena beräknas.
 
        > [!NOTE] 
        > Dynamiska tröskelvärden kräver minst 3 dagar och 30 mått exempel innan de blir aktiva.

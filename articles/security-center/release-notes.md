@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/17/2021
+ms.date: 01/21/2021
 ms.author: memildin
-ms.openlocfilehash: 48e7093c30ffb135231f5843cb0767848f242d89
-ms.sourcegitcommit: 949c0a2b832d55491e03531f4ced15405a7e92e3
+ms.openlocfilehash: d171e3a7f1f0d63d0a5d130c6e19b246bf0cd795
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98541399"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661822"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Vad är nytt i Azure Security Center?
 
@@ -35,27 +35,17 @@ Om du vill veta mer om *planerade* ändringar som kommer snart till Security Cen
 
 Uppdateringar i december inkluderar:
 
+- [Sårbarhets bedömning för lokala datorer och datorer med flera moln släpps för allmän tillgänglighet (GA)](#vulnerability-assessment-for-on-premise-and-multi-cloud-machines-is-released-for-general-availability-ga)
+- [Secure score-API har släppts för allmän tillgänglighet (GA)](#secure-score-api-is-released-for-general-availability-ga)
 - [CSV-export av filtrerad lista över rekommendationer](#csv-export-of-filtered-list-of-recommendations)
-- [Sårbarhets bedömning för lokala och flera moln datorer är allmänt tillgänglig](#vulnerability-assessment-for-on-premise-and-multi-cloud-machines-is-generally-available)
+- ["Ej tillämpligt" resurser rapporteras nu som "kompatibla" i Azure Policy bedömningar](#not-applicable-resources-now-reported-as-compliant-in-azure-policy-assessments)
 
 
-### <a name="csv-export-of-filtered-list-of-recommendations"></a>CSV-export av filtrerad lista över rekommendationer 
-
-I november 2020 lade vi till filter till sidan rekommendationer ([rekommendations listan innehåller nu filter](#recommendations-list-now-includes-filters)). I december expanderade vi dessa filter ([rekommendationer sidan har nya filter för miljö, allvarlighets grad och tillgängliga svar](#recommendations-page-has-new-filters-for-environment-severity-and-available-responses)). 
-
-Med det här meddelandet ändrar vi beteendet för knappen **Ladda ned till CSV** så att CSV-exporten bara innehåller de rekommendationer som visas i den filtrerade listan. 
-
-I bilden nedan kan du till exempel se att listan har filtrerats till två rekommendationer. CSV-filen som genereras innehåller statusinformation för varje resurs som påverkas av dessa två rekommendationer.   
-
-:::image type="content" source="media/security-center-managing-and-responding-alerts/export-to-csv-with-filters.png" alt-text="Exportera filtrerade rekommendationer till en CSV-fil":::
-
-Läs mer i [säkerhets rekommendationer i Azure Security Center](security-center-recommendations.md).
-
-### <a name="vulnerability-assessment-for-on-premise-and-multi-cloud-machines-is-generally-available"></a>Sårbarhets bedömning för lokala och flera moln datorer är allmänt tillgänglig
+### <a name="vulnerability-assessment-for-on-premise-and-multi-cloud-machines-is-released-for-general-availability-ga"></a>Sårbarhets bedömning för lokala datorer och datorer med flera moln släpps för allmän tillgänglighet (GA)
 
 I oktober presenterade vi en förhands granskning för att genomsöka Azure Arc-aktiverade servrar med [Azure Defender for servers](defender-for-servers-introduction.md)"Integrated sårbarhet Assessment Scanner (drivs av Qualys).
 
-Den är nu allmänt tillgänglig. 
+Den är nu lanserad för allmän tillgänglighet (GA).
 
 När du har aktiverat Azure Arc på datorer som inte är Azure-datorer erbjuder Security Center att distribuera den integrerade sårbarhets skannern på dem – manuellt och i skala.
 
@@ -71,6 +61,36 @@ Huvud funktioner:
 [Lär dig mer om att distribuera den integrerade sårbarhets-skannern till dina hybrid datorer](deploy-vulnerability-assessment-vm.md#deploy-the-integrated-scanner-to-your-azure-and-hybrid-machines).
 
 [Läs mer om Azure Arc-aktiverade servrar](../azure-arc/servers/index.yml).
+
+
+### <a name="secure-score-api-is-released-for-general-availability-ga"></a>Secure score-API har släppts för allmän tillgänglighet (GA)
+
+Nu kan du komma åt dina poäng via [Secure score-API: et](/rest/api/securitycenter/securescores/). API-metoderna ger flexibiliteten att fråga data och skapa en egen rapporterings mekanism för dina säkra poäng över tid. Du kan till exempel använda **Secure Scores** -API: et för att hämta poängen för en speciell prenumeration. Dessutom kan du använda API: et för **säker Poäng** för att visa en lista över säkerhets kontrollerna och de aktuella poängen för dina prenumerationer.
+
+Exempel på externa verktyg som möjliggörs med Secure score-API: et finns i avsnittet [Secure Scores i vår GitHub-community](https://github.com/Azure/Azure-Security-Center/tree/master/Secure%20Score).
+
+Läs mer om [säkra poäng-och säkerhets kontroller i Azure Security Center](secure-score-security-controls.md).
+
+
+### <a name="csv-export-of-filtered-list-of-recommendations"></a>CSV-export av filtrerad lista över rekommendationer 
+
+I november 2020 lade vi till filter till sidan rekommendationer ([rekommendations listan innehåller nu filter](#recommendations-list-now-includes-filters)). I december expanderade vi dessa filter ([rekommendationer sidan har nya filter för miljö, allvarlighets grad och tillgängliga svar](#recommendations-page-has-new-filters-for-environment-severity-and-available-responses)). 
+
+Med det här meddelandet ändrar vi beteendet för knappen **Ladda ned till CSV** så att CSV-exporten bara innehåller de rekommendationer som visas i den filtrerade listan. 
+
+I bilden nedan kan du till exempel se att listan har filtrerats till två rekommendationer. CSV-filen som genereras innehåller statusinformation för varje resurs som påverkas av dessa två rekommendationer.   
+
+:::image type="content" source="media/security-center-managing-and-responding-alerts/export-to-csv-with-filters.png" alt-text="Exportera filtrerade rekommendationer till en CSV-fil":::
+
+Läs mer i [säkerhets rekommendationer i Azure Security Center](security-center-recommendations.md).
+
+
+### <a name="not-applicable-resources-now-reported-as-compliant-in-azure-policy-assessments"></a>"Ej tillämpligt" resurser rapporteras nu som "kompatibla" i Azure Policy bedömningar
+
+Tidigare fanns resurser som utvärderades för en rekommendation och som **inte är tillämpliga** i Azure policy som "icke-kompatibla". Inga användar åtgärder kan ändra sin status till "kompatibel". Med den här ändringen har de rapporter ATS som "kompatibla" för förbättrad klarhet.
+
+Den enda påverkan visas i Azure Policy där antalet kompatibla resurser kommer att öka. Det kommer inte att påverka dina säkra poäng i Azure Security Center.
+
 
 
 ## <a name="december-2020"></a>December 2020
@@ -419,7 +439,7 @@ Läs mer i [ta bort en standard från din instrument panel](update-regulatory-co
 
 Azure Resource Graph är en tjänst i Azure som är utformad för att tillhandahålla effektiv resurs utforskning med möjlighet att fråga i skala över en specifik uppsättning prenumerationer så att du effektivt kan styra din miljö. 
 
-För Azure Security Center kan du använda ARG och [KQL (Kusto Query Language)](/azure/data-explorer/kusto/query/) för att fråga efter en mängd säkerhets position data. Här är några exempel:
+För Azure Security Center kan du använda ARG och [KQL (Kusto Query Language)](/azure/data-explorer/kusto/query/) för att fråga efter en mängd säkerhets position data. Till exempel:
 
 - Till gångs lager använder (ARG)
 - Vi har dokumenterat en exempel-ARG-fråga för att [identifiera konton utan Multi-Factor Authentication (MFA) aktiverat](security-center-identity-access.md#identify-accounts-without-multi-factor-authentication-mfa-enabled)
@@ -807,7 +827,7 @@ Om du har skript, frågor eller automatiseringar som refererar till föregående
 ||||
 
 
-|Princip|Omfång|
+|Policy|Omfång|
 |----|:----|
 |**Sårbarhets bedömning ska vara aktiverat på virtuella datorer**<br>Princip-ID: 501541f7-f7e7-4cd6-868c-4190fdad3ac9|Inbyggd|
 |**Säkerhets risker bör åtgärdas av en lösning för sårbarhets bedömning**<br>Princip-ID: 760a85ff-6162-42b3-8d70-698e268f648c|BYOL|
@@ -822,7 +842,7 @@ Om du har skript, frågor eller automatiseringar som refererar till föregående
 |**Säkerhets risker på dina virtuella datorer bör åtgärdas**<br>Nyckel: 1195afff-c881-495e-9bc5-1486211ae03f|Inbyggda + BYOL|
 ||||
 
-|Princip|Omfång|
+|Policy|Omfång|
 |----|:----|
 |[**Sårbarhets bedömning ska vara aktiverat på virtuella datorer**](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f501541f7-f7e7-4cd6-868c-4190fdad3ac9)<br>Princip-ID: 501541f7-f7e7-4cd6-868c-4190fdad3ac9 |Inbyggda + BYOL|
 ||||

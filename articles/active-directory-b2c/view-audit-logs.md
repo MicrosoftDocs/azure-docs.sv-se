@@ -12,12 +12,12 @@ ms.date: 02/20/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 9485fb09d3ac7684ba91bcd37720a0e55603404b
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 04d5a989fcaf3cef3eea3b782842fb3255d4b317
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94952734"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661110"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Åtkomst till Azure AD B2C gransknings loggar
 
@@ -32,7 +32,7 @@ Gransknings logg händelser behålls endast i **sju dagar**. Planera att ladda n
 
 Kategorin **B2C** i gransknings loggar innehåller följande typer av aktiviteter:
 
-|Aktivitetstyp |Beskrivning  |
+|Aktivitetstyp |Description  |
 |---------|---------|
 |Auktorisering |Aktiviteter som rör auktorisering av en användare för att få åtkomst till B2C-resurser (till exempel en administratör som har åtkomst till en lista över B2C-principer).         |
 |Katalog |Aktiviteter relaterade till katalogattribut som hämtats när en administratör loggar in med hjälp av Azure Portal. |
@@ -51,9 +51,9 @@ I den här exempel bilden från Azure Portal visas de data som registrerats när
 
 Panelen aktivitets information innehåller följande relevanta information:
 
-|Section|Fält|Beskrivning|
+|Avsnitt|Fält|Beskrivning|
 |-------|-----|-----------|
-| Aktivitet | Namn | Vilken aktivitet som ägde rum. Du kan till exempel *utfärda en id_token till programmet*, vilket avslutar den faktiska användar inloggningen. |
+| Aktivitet | Name | Vilken aktivitet som ägde rum. Du kan till exempel *utfärda en id_token till programmet*, vilket avslutar den faktiska användar inloggningen. |
 | Initierad av (aktör) | ObjectId | **Objekt-ID** för det B2C-program som användaren loggar in på. Den här identifieraren visas inte i Azure Portal, men är tillgänglig via Microsoft Graph API. |
 | Initierad av (aktör) | Namn | **Program-ID** för det B2C-program som användaren loggar in på. |
 | Mål | ObjectId | **Objekt-ID** för den användare som loggar in. |
@@ -223,4 +223,4 @@ Här är en JSON-representation av exempel aktivitets händelsen som visades tid
 
 ## <a name="next-steps"></a>Nästa steg
 
-Du kan automatisera andra administrations uppgifter, till exempel [hantera Azure AD B2C användar konton med Microsoft Graph](manage-user-accounts-graph-api.md).
+Du kan automatisera andra administrations uppgifter, till exempel [hantera Azure AD B2C användar konton med Microsoft Graph](microsoft-graph-operations.md).

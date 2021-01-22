@@ -3,15 +3,15 @@ title: Anslutnings arkitektur – Azure Database for MariaDB
 description: Beskriver anslutnings arkitekturen för din Azure Database for MariaDB-Server.
 author: mksuni
 ms.author: sumuth
-ms.service: mariadb
+ms.service: jroth
 ms.topic: conceptual
 ms.date: 6/8/2020
-ms.openlocfilehash: 98a75cee88a7d30161fc3166bce0eaec855d347c
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 57e14fa4a026dafb085ea636611ab26b6bad7c01
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97656724"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661712"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-mariadb"></a>Anslutnings arkitektur i Azure Database for MariaDB
 Den här artikeln förklarar Azure Database for MariaDB anslutnings arkitektur och hur trafiken dirigeras till din Azure Database for MariaDB-instans från klienter både inom och utanför Azure.
@@ -70,7 +70,7 @@ I följande tabell visas gatewayens IP-adresser för den Azure Database for Mari
 | Sydkorea, centrala | 52.231.32.42   | | |
 | Sydkorea, södra | 52.231.200.86    | | |
 | USA, norra centrala | 23.96.178.199, 23.98.55.75, 52.162.104.35, 52.162.104.36    | | |
-| Norra Europa | 52.138.224.6, 52.138.224.7  |40.113.93.91 |191.235.193.75 |
+| Europa, norra | 52.138.224.6, 52.138.224.7  |40.113.93.91 |191.235.193.75 |
 | Sydafrika, norra  | 102.133.152.0    | | |
 | Sydafrika, västra | 102.133.24.0   | | |
 | USA, södra centrala |104.214.16.39, 20.45.120.0  |13.66.62.124  |23.98.162.75 |

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/30/2020
 ms.author: Zhchia
-ms.openlocfilehash: 881309c040f6c1bdff758d17ab7f51e935437192
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: a49258208f7a5945ac71c8f17db56fccfdcd6515
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97607889"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98662008"
 ---
 # <a name="tutorial-configure-mediusflow-for-automatic-user-provisioning"></a>Självstudie: Konfigurera MediusFlow för automatisk användar etablering
 
@@ -31,7 +31,7 @@ I den här självstudien beskrivs de steg du behöver utföra i både MediusFlow
 > * Etablera grupper och grupp medlemskap i MediusFlow
 > * Enkel inloggning till MediusFlow (rekommenderas)
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Det scenario som beskrivs i den här självstudien förutsätter att du redan har följande krav:
 
@@ -155,17 +155,25 @@ Det här avsnittet vägleder dig genom stegen för att konfigurera Azure AD Prov
 
 9. Granska de användarattribut som synkroniseras från Azure AD till MediusFlow i avsnittet **attribut-mappning** . Attributen som väljs som **matchande** egenskaper används för att matcha användar kontona i Mediusflow för uppdaterings åtgärder. Om du väljer att ändra [matchande målattribut](../app-provisioning/customize-application-attributes.md)måste du se till att MediusFlow-API: et stöder filtrering av användare baserat på det attributet. Välj knappen **Spara** för att spara ändringarna.
 
-   |Attribut|Typ|
-   |---|---|
-   |userName|Sträng|
+   |Attribut|Typ|Stöds för filtrering|
+   |---|---|---|
+   |userName|Sträng|&check;|
    |emails[type eq "work"].value|Sträng|
    |Name. displayName|Sträng|
    |aktiv|Boolesk|
    |name.givenName|Sträng|
    |name.familyName|Sträng|
    |namn. formaterad|Sträng|
-   |externalID|Sträng|
+   |externalId|Sträng|
    |urn: IETF: params: scim: schemas: tillägg: Enterprise: 2.0: användare: Manager|Referens|
+   |urn: IETF: params: scim: schemas: tillägg: Medius: 2.0: användare: configurationFilter|Sträng|
+   |urn: IETF: params: scim: schemas: tillägg: Medius: 2.0: användare: identityProvider|Sträng|
+   |urn: IETF: params: scim: schemas: tillägg: Medius: 2.0: användare: nameIdentifier|Sträng|
+   |urn: IETF: params: scim: schemas: tillägg: Medius: 2.0: användare: customFieldText1|Sträng|
+   |urn: IETF: params: scim: schemas: tillägg: Medius: 2.0: användare: customFieldText2|Sträng|
+   |urn: IETF: params: scim: schemas: tillägg: Medius: 2.0: användare: customFieldText3|Sträng|
+   |urn: IETF: params: scim: schemas: tillägg: Medius: 2.0: användare: customFieldText4|Sträng|
+   |urn: IETF: params: scim: schemas: tillägg: Medius: 2.0: användare: customFieldText5|Sträng|
 
 
 10. Under avsnittet **mappningar** väljer du **Synkronisera Azure Active Directory grupper till MediusFlow**.
@@ -200,6 +208,10 @@ När du har konfigurerat etableringen använder du följande resurser till att �
 1. Använd [etableringsloggarna](../reports-monitoring/concept-provisioning-logs.md) för att se vilka användare som har etablerats och vilka som har misslyckats
 2. Kontrollera [förloppsindikatorn](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md) för att se status för etableringscykeln och hur nära den är att slutföras
 3. Om etableringskonfigurationen verkar innehålla fel, kommer programmet att placeras i karantän. Läs mer om karantänstatus [här](../app-provisioning/application-provisioning-quarantine-status.md).
+
+## <a name="change-log"></a>Ändringslogg
+
+* 01/21/2021 – anpassade tilläggs-attribut **configurationFilter**, **identityProvider**, **nameIdentifier**, **customFieldText1**, **customFieldText2**, **customFieldText3**, **customFieldText3** och **customFieldText5** har lagts till.
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 

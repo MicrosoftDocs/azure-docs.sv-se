@@ -1,5 +1,5 @@
 ---
-title: Hantera resurser med Microsoft Graph
+title: Registrera ett Microsoft Graph-program
 titleSuffix: Azure AD B2C
 description: Förbered för att hantera Azure AD B2C resurser med Microsoft Graph genom att registrera ett program som har beviljats nödvändiga Graph API behörigheter.
 services: B2C
@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 02/14/2020
+ms.date: 01/21/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 61e32f50e02e45487830c5ea7ff476a0571960f6
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 1886a0308f32ed53a1c9f0974715f20823e8bdd5
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94954009"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660360"
 ---
-# <a name="manage-azure-ad-b2c-with-microsoft-graph"></a>Hantera Azure AD B2C med Microsoft Graph
+# <a name="register-a-microsoft-graph-application"></a>Registrera ett Microsoft Graph-program
 
 Med [Microsoft Graph][ms-graph] kan du hantera många av resurserna i Azure AD B2C-klienten, inklusive kund användar konton och anpassade principer. Genom att skriva skript eller program som anropar [Microsoft Graph API][ms-graph-api], kan du automatisera klient hanterings uppgifter som:
 
@@ -83,12 +83,13 @@ Om programmet eller skriptet måste ta bort användare eller uppdatera sina lös
 1. Välj **Lägg till**. Det kan ta några minuter innan behörigheterna är fullständigt spridda.
 
 ## <a name="next-steps"></a>Nästa steg
+
 Nu när du har registrerat ditt hanterings program och har beviljat den nödvändiga behörigheten kan dina program och tjänster (till exempel Azure-pipeliner) använda sina autentiseringsuppgifter och behörigheter för att interagera med Microsoft Graph-API: et. 
 
 * [Hämta en åtkomsttoken från Azure AD](/graph/auth-v2-service#4-get-an-access-token)
 * [Använd åtkomsttoken för att anropa Microsoft Graph](/graph/auth-v2-service#4-get-an-access-token)
 * [B2C-åtgärder som stöds av Microsoft Graph](microsoft-graph-operations.md)
-* [Hantera Azure AD B2C användar konton med Microsoft Graph](manage-user-accounts-graph-api.md)
+* [Hantera Azure AD B2C användar konton med Microsoft Graph](microsoft-graph-operations.md)
 * [Hämta gransknings loggar med Azure AD repor ting API](view-audit-logs.md#get-audit-logs-with-the-azure-ad-reporting-api)
 
 <!-- LINKS -->

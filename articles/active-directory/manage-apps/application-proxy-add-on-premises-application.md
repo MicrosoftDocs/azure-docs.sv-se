@@ -8,20 +8,22 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/10/2020
+ms.date: 01/20/2021
 ms.author: kenwith
 ms.reviewer: japere
-ms.custom: contperf-fy21q2
-ms.openlocfilehash: bcb484d62b7c4add7e1ab5562c19417a90cfb7e1
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.custom: contperf-fy21q3
+ms.openlocfilehash: 6b46a5ea71bf8c9705ffc3bc51ea48f4b0c28502
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97587561"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660771"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Självstudie: Lägg till ett lokalt program för fjärråtkomst via Application Proxy i Azure Active Directory
 
 Azure Active Directory (Azure AD) innehåller en programproxytjänst som gör att användarna kan komma åt lokala program genom att logga in med sitt Azure AD-konto. Den här självstudien förbereder din miljö för användning med programproxy. När din miljö är redo använder du Azure-portalen för att lägga till ett lokalt program till Azure AD-klientorganisationen.
+
+:::image type="content" source="./media/application-proxy-add-on-premises-application/app-proxy-diagram.png" alt-text="Översikts diagram över Application Proxy" lightbox="./media/application-proxy-add-on-premises-application/app-proxy-diagram.png":::
 
 Kopplingar är en viktig del av programproxyn. Mer information om anslutningar finns i [förstå Azure AD-programproxy-kopplingar](application-proxy-connectors.md).
 
@@ -34,7 +36,7 @@ I den här självstudien:
 > * Lägger till ett lokalt program till Azure AD-klientorganisationen
 > * Verifierar att en test användare kan logga in på programmet med hjälp av ett Azure AD-konto
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill lägga till ett lokalt program i Azure AD behöver du:
 
@@ -126,7 +128,11 @@ Tillåt åtkomst till följande webbadresser:
 | login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>&ast;.microsoftonline.com<br>&ast;. microsoftonline-p.com<br>&ast;. msauth.net<br>&ast;. msauthimages.net<br>&ast;. msecnd.net<br>&ast;. msftauth.net<br>&ast;. msftauthimages.net<br>&ast;. phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net<br>ctldl.windowsupdate.com<br>www.microsoft.com/pkiops | 443/HTTPS |Anslutningsprogrammet använder dessa webbadresser under registreringen. |
 | ctldl.windowsupdate.com | 80/HTTP |Anslutningen använder denna URL under registrerings processen. |
 
-Du kan tillåta anslutningar till &ast; . msappproxy.net, &ast; . ServiceBus.Windows.net och andra URL: er ovan om din brand vägg eller proxy låter dig konfigurera listan över tillåtna DNS-listor. Om inte, måste du tillåta åtkomst till [Azure IP-intervall och service märken – offentligt moln](https://www.microsoft.com/download/details.aspx?id=56519). IP-adressintervallen uppdateras varje vecka.
+Du kan tillåta anslutningar till &ast; . msappproxy.net, &ast; . ServiceBus.Windows.net och andra URL: er ovan om din brand vägg eller proxy låter dig konfigurera åtkomst regler baserade på domänsuffix. Om inte, måste du tillåta åtkomst till [Azure IP-intervall och service märken – offentligt moln](https://www.microsoft.com/download/details.aspx?id=56519). IP-adressintervallen uppdateras varje vecka.
+
+### <a name="dns-name-resolution-for-azure-ad-application-proxy-endpoints"></a>DNS-namnmatchning för Azure AD-programproxy-slutpunkter
+
+Offentliga DNS-poster för Azure AD-programproxy-slutpunkter är länkade CNAME-poster som pekar på en A-post. Detta säkerställer fel tolerans och flexibilitet. Det garanterar att Azure AD-programproxy Connector alltid har åtkomst till värdnamn med domänsuffix _*. msappproxy.net_ eller _*. ServiceBus.Windows.net_. Men under namn matchningen kan CNAME-posterna innehålla DNS-poster med olika värdnamn och suffix.  På grund av detta måste du se till att enheten (beroende på din installation-Connector-Server, brand vägg, utgående proxy) kan matcha alla poster i kedjan och tillåter anslutning till de matchade IP-adresserna. Eftersom DNS-posterna i kedjan kan komma att ändras från tid till och med kan vi inte tillhandahålla någon lista över DNS-poster.
 
 ## <a name="install-and-register-a-connector"></a>Installera och registrera ett anslutningsprogram
 
