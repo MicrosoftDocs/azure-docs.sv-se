@@ -11,12 +11,12 @@ ms.date: 04/19/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 46a165ea7fa21c02e859c16027086695f1f378c3
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 3f7d6f8ca285fdc024db9ba952af9f7d169e7188
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462799"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678482"
 ---
 # <a name="optimizing-transactions-in-dedicated-sql-pool-in-azure-synapse-analytics"></a>Optimera transaktioner i dedikerad SQL-pool i Azure Synapse Analytics
 
@@ -69,7 +69,7 @@ CTAS och infoga... SELECT är både Mass inläsnings åtgärder. Båda påverkas
 
 | Primärt index | Läs in scenario | Loggnings läge |
 | --- | --- | --- |
-| Heap |Alla |**Minimal** |
+| Heap |Valfri |**Minimal** |
 | Grupperat index |Tom mål tabell |**Minimal** |
 | Grupperat index |Inlästa rader överlappar inte befintliga sidor i mål |**Minimal** |
 | Grupperat index |Inlästa rader överlappar befintliga sidor i målet |Fullständig |
@@ -85,7 +85,7 @@ Inläsning av data i en icke-tom tabell med ett grupperat index kan ofta innehå
 
 ## <a name="optimizing-deletes"></a>Optimerar borttagningar
 
-TA bort är en fullständigt loggad åtgärd.  Om du behöver ta bort en stor mängd data i en tabell eller partition är det ofta mer meningsfullt för `SELECT` de data som du vill behålla, vilket kan köras som en minimalt loggad åtgärd.  Om du vill välja data skapar du en ny tabell med [CTAs](sql-data-warehouse-develop-ctas.md).  När du har skapat använder du [rename](/sql/t-sql/statements/rename-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) för att byta ut den gamla tabellen med den tabell som skapats nyligen.
+TA bort är en fullständigt loggad åtgärd.  Om du behöver ta bort en stor mängd data i en tabell eller partition är det ofta mer meningsfullt för `SELECT` de data som du vill behålla, vilket kan köras som en minimalt loggad åtgärd.  Om du vill välja data skapar du en ny tabell med [CTAs](sql-data-warehouse-develop-ctas.md).  När du har skapat använder du [rename](/sql/t-sql/statements/rename-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) för att byta ut den gamla tabellen med den tabell som skapats nyligen.
 
 ```sql
 -- Delete all sales transactions for Promotions except PromotionKey 2.
@@ -117,7 +117,7 @@ RENAME OBJECT [dbo].[FactInternetSales_d] TO [FactInternetSales];
 
 ## <a name="optimizing-updates"></a>Optimera uppdateringar
 
-UPPDATERINGEN är en fullständigt loggad åtgärd.  Om du behöver uppdatera ett stort antal rader i en tabell eller partition, kan det ofta vara mycket mer effektivt att använda en minimalt loggad åtgärd, till exempel [CTAs](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) .
+UPPDATERINGEN är en fullständigt loggad åtgärd.  Om du behöver uppdatera ett stort antal rader i en tabell eller partition, kan det ofta vara mycket mer effektivt att använda en minimalt loggad åtgärd, till exempel [CTAs](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) .
 
 I exemplet nedan har en fullständig tabell uppdatering konverterats till en CTAS så att minimal loggning är möjlig.
 
@@ -414,7 +414,7 @@ Med dedikerad SQL-pool kan du [pausa, återuppta och skala](sql-data-warehouse-m
 
 Det bästa scenariot är att låta ändringar i Flight-datatransaktionerna slutföras innan du pausar eller skalar en dedikerad SQL-pool. Det här scenariot är dock inte alltid praktiskt. Överväg något av följande alternativ för att minska risken för en lång återställning:
 
-* Skriv över tids krävande åtgärder med [CTAs](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+* Skriv över tids krävande åtgärder med [CTAs](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
 * Bryt åtgärden i segment. körs på en delmängd av raderna
 
 ## <a name="next-steps"></a>Nästa steg

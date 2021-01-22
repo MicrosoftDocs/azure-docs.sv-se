@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 32ce875600bb948e7c3e8479f712e99d25eb6367
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 276dd5b7eba33081c5131eba722df91d8685adff
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624958"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678170"
 ---
 # <a name="tutorial-join-sensor-data-with-weather-forecast-data-by-using-azure-notebooks-python"></a>Självstudie: koppla sensor data med väder prognos data med hjälp av Azure Notebooks (python)
 
@@ -27,7 +27,7 @@ Vind styrkan är en alternativ energi källa för fossila bränslen för att bek
 I de här självstudierna får du:
 
 > [!div class="checklist"]
-> * Arbeta med datafiler i [Azure Notebooks](../notebooks/index.yml) i molnet.
+> * Arbeta med datafiler i [Azure Notebooks](https://notebooks.azure.com) i molnet.
 > * Läs in demo data från fil.
 > * Anropa Azure Maps REST-API: er i python.
 > * Återge plats data på kartan.
@@ -206,4 +206,4 @@ Det finns inga resurser som kräver rensning.
 Mer information om Azure Notebooks finns i
 
 > [!div class="nextstepaction"]
-> [Azure Notebooks](../notebooks/index.yml)
+> [Azure Notebooks](https://notebooks.azure.com)

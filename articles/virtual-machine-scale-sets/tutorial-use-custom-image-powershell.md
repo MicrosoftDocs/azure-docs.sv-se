@@ -9,12 +9,12 @@ ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.custom: akjosh
-ms.openlocfilehash: 8a0ee8565d22e935535bbe1e830d8399b2489f5c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 803bbf485d783fc160d1f2644a56e1339f73690e
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86527531"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678312"
 ---
 # <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-azure-powershell"></a>Självstudie: Skapa och använd en anpassad avbildning för VM-skalningsuppsättningar med Azure PowerShell
 
@@ -80,7 +80,7 @@ $gallery = New-AzGallery `
 
 ## <a name="create-an-image-definition"></a>Skapa en avbildnings definition 
 
-Bild definitioner skapa en logisk gruppering för avbildningar. De används för att hantera information om de avbildnings versioner som skapas i dem. Namn på bild definitioner kan bestå av versaler eller gemener, siffror, punkter, streck och punkter. Mer information om de värden som du kan ange för en bild definition finns i [bild definitioner](../virtual-machines/windows/shared-image-galleries.md#image-definitions).
+Bild definitioner skapa en logisk gruppering för avbildningar. De används för att hantera information om de avbildnings versioner som skapas i dem. Namn på bild definitioner kan bestå av versaler eller gemener, siffror, punkter, streck och punkter. Mer information om de värden som du kan ange för en bild definition finns i [bild definitioner](../virtual-machines/shared-image-galleries.md#image-definitions).
 
 Skapa avbildnings definitionen med [New-AzGalleryImageDefinition](/powershell/module/az.compute/new-azgalleryimageversion). I det här exemplet heter Galleri bilden *myGalleryImage* och skapas för en specialiserad avbildning. 
 
@@ -256,7 +256,7 @@ Remove-AzResourceGroup -Name myResoureceGroup
 
 ## <a name="azure-image-builder"></a>Azure Image Builder
 
-Azure erbjuder också en tjänst som bygger på Packer, [Azure VM Image Builder](../virtual-machines/windows/image-builder-overview.md). Du behöver bara beskriva dina anpassningar i en mall så att du kan hantera avbildnings skapandet. 
+Azure erbjuder också en tjänst som bygger på Packer, [Azure VM Image Builder](../virtual-machines/image-builder-overview.md). Du behöver bara beskriva dina anpassningar i en mall så att du kan hantera avbildnings skapandet. 
 
 ## <a name="next-steps"></a>Nästa steg
 I den här självstudien fick du läsa om hur du skapar och använder en anpassad virtuell datoravbildning för dina skalningsuppsättningar med Azure PowerShell:

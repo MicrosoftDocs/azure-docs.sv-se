@@ -13,12 +13,12 @@ ms.date: 05/22/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: d4abc9e1bba151f46adf71dd0185ddddad916a38
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 5087278e5c89514cd43b7ca871a58f18e0fa98f2
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98216469"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678154"
 ---
 # <a name="authentication-vs-authorization"></a>Autentisering kontra auktorisering
 
@@ -51,7 +51,7 @@ I den här videon förklaras Microsofts identitets plattform och grunderna för 
 Här är en jämförelse av de protokoll som används av Microsoft Identity Platform:
 
 * **OAuth kontra OpenID Connect**: plattformen använder OAuth för auktorisering och OpenID Connect (OIDC) för autentisering. OpenID Connect är byggt på OAuth 2,0, så terminologin och flödet liknar de två. Du kan även både autentisera en användare (via OpenID Connect) och få åtkomst behörighet till en skyddad resurs som användaren äger (via OAuth 2,0) i en begäran. Mer information finns i [OAuth 2,0-och OpenID Connect-protokoll](active-directory-v2-protocols.md) och [OpenID Connect-protokoll](v2-protocols-oidc.md).
-* **OAuth kontra SAML**: plattformen använder OAuth 2,0 för auktorisering och SAML för autentisering. Mer information om hur du använder dessa protokoll tillsammans för att både autentisera en användare och få åtkomst till en skyddad resurs finns i [Microsoft Identity Platform och OAuth 2,0 SAML Bearer-försäkrat flöde](v2-saml-bearer-assertion.md).
+* **OAuth kontra SAML**: plattformen använder OAuth 2,0 för auktorisering och SAML för autentisering. Mer information om hur du använder dessa protokoll tillsammans för att både autentisera en användare och få åtkomst till en skyddad resurs finns i [Microsoft Identity Platform och OAuth 2,0 SAML Bearer-försäkrat flöde](./scenario-token-exchange-saml-oauth.md).
 * **OpenID Connect jämfört med SAML**: plattformen använder både OpenID Connect och SAML för att autentisera en användare och aktivera enkel inloggning. SAML-autentisering används ofta med identitets leverantörer som Active Directory Federation Services (AD FS) (AD FS) federerade till Azure AD, så den används ofta i företags program. OpenID Connect används ofta för appar som är helt i molnet, till exempel mobilappar, webbplatser och webb-API: er.
 
 ## <a name="next-steps"></a>Nästa steg

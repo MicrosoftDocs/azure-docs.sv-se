@@ -8,12 +8,12 @@ ms.topic: overview
 author: peterclu
 ms.author: peterlu
 ms.date: 08/24/2020
-ms.openlocfilehash: f59ed16f98a22f77b2e67ec2bf829f58dccef611
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 4212c76d052fe1f272963003e836425b50d6f105
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97740512"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98677622"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>Vad är Azure Machine Learning Studio?
 
@@ -90,7 +90,7 @@ I följande tabell sammanfattas viktiga skillnader mellan ML Studio (klassisk) o
 | Funktion | ML Studio (klassisk) | Azure Machine Learning |
 |---| --- | --- |
 | Dra och släpp gränssnitt | Klassisk miljö | Uppdaterad erfarenhet – [Azure Machine Learning designer](concept-designer.md)| 
-| Kod-SDK: er | Stöd saknas | Fullständigt integrerat med [Azure Machine Learning python](/python/api/overview/azure/ml/) -och [R](tutorial-1st-r-experiment.md) SDK: er |
+| Kod-SDK: er | Stöd saknas | Fullständigt integrerat med [Azure Machine Learning python](/python/api/overview/azure/ml/) -och [R](https://github.com/Azure/azureml-sdk-for-r) SDK: er |
 | Experiment | Skalbar (10 GB inlärnings data gräns) | Skala med beräknings mål |
 | Inlärnings mål | Patentskyddat beräknings mål, endast CPU-stöd | Brett utbud av anpassningsbara [inlärnings mål](concept-compute-target.md#train). Innehåller stöd för GPU och CPU | 
 | Beräknings mål för distribution | Eget webb tjänst format, inte anpassningsbart | Brett utbud av anpassningsbara [beräknings mål för distribution](concept-compute-target.md#deploy). Innehåller stöd för GPU och CPU |

@@ -12,12 +12,12 @@ ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tag: azure-Synapse
-ms.openlocfilehash: 5348c0ed5d80e2738bb865ca3ec1ddf5aaed009a
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 76a154d3a137017f374247308a3980d598698246
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98118055"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678667"
 ---
 # <a name="analyze-data-with-azure-machine-learning"></a>Analysera data med Azure Machine Learning
 
@@ -161,4 +161,4 @@ Jämför kolumnen BikeBuyer (faktisk) med de poäng etiketter (förutsägelse) s
 
 Mer information om Azure Machine Learning finns i [Introduktion till Machine Learning på Azure](../../machine-learning/overview-what-is-azure-ml.md).
 
-Lär dig mer om den inbyggda poängen i informations [lagret.](/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest)
+Lär dig mer om den inbyggda poängen i informations [lagret.](/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest&preserve-view=true)

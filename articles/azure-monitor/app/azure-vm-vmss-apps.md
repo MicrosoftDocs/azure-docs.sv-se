@@ -3,12 +3,12 @@ title: Övervaka prestanda på virtuella Azure-datorer – Azure Application ins
 description: Övervakning av program prestanda för virtuella Azure-datorer och skalnings uppsättningar för virtuella Azure-datorer. Diagrammets inläsnings-och svars tid, beroende information och ange aviseringar för prestanda.
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: 6bc70b3d9a1a7a2d3fffb71ad28f2cf64cbd323b
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: ed56bc88a9d2e8a9490331605cd4a72aef6930db
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461723"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98677951"
 ---
 # <a name="deploy-the-azure-monitor-application-insights-agent-on-azure-virtual-machines-and-azure-virtual-machine-scale-sets"></a>Distribuera Azure Monitor Application Insights-agenten på virtuella Azure-datorer och skalnings uppsättningar för virtuella Azure-datorer
 
@@ -17,7 +17,7 @@ Nu är det enklare än någonsin att aktivera övervakning av .NET-baserade webb
 Den här artikeln vägleder dig genom att aktivera Application Insights övervakning med hjälp av Application Insights agent och ger preliminär vägledning för att automatisera processen för storskalig distribution.
 
 > [!IMPORTANT]
-> Azure Application Insights-agenten för ASP.NET-program som körs på **virtuella Azure-datorer och VMSS** är för närvarande en offentlig för hands version. För att övervaka dina ASP.Net-program som körs **lokalt** använder du [Azure Application Insights-agenten för lokala servrar](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-overview), som är allmänt tillgänglig och fullt stöd.
+> Azure Application Insights-agenten för ASP.NET-program som körs på **virtuella Azure-datorer och VMSS** är för närvarande en offentlig för hands version. För att övervaka dina ASP.Net-program som körs **lokalt** använder du [Azure Application Insights-agenten för lokala servrar](./status-monitor-v2-overview.md), som är allmänt tillgänglig och fullt stöd.
 > För hands versionen av virtuella Azure-datorer och VMSS tillhandahålls utan service nivå avtal och vi rekommenderar det inte för produktions arbets belastningar. Vissa funktioner kanske inte stöds och vissa kan ha begränsade funktioner.
 > Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 

@@ -2,18 +2,21 @@
 title: Vidarebefordra Azure Service Bus meddelande enheter automatiskt
 description: I den här artikeln beskrivs hur du kedjar en Azure Service Bus kö eller en prenumeration till en annan kö eller ett ämne.
 ms.topic: article
-ms.date: 06/23/2020
+ms.date: 01/20/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8f5f93f65871c0b9658a75264ab959dbae7fefe7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 80bef52d568130fa800a1da661f4867abb3df02c
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91819567"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678996"
 ---
 # <a name="chaining-service-bus-entities-with-autoforwarding"></a>Kedja Service Bus entiteter med vidarebefordran
 
 Med funktionen Service Bus *autoforwarding* kan du kedja en kö eller en prenumeration till en annan kö eller ett ämne som ingår i samma namnrymd. När automatisk vidarebefordran har Aktiver ATS tar Service Bus automatiskt bort meddelanden som placeras i den första kön eller prenumerationen (källa) och placerar dem i den andra kön eller ämnet (målet). Det är fortfarande möjligt att skicka ett meddelande till målentiteten direkt.
+
+> [!NOTE]
+> Den grundläggande Service Buss nivån stöder inte funktionen för autovidarebefordran. Standard-och Premium-nivån stöder funktionen. För skillnader mellan dessa nivåer, se [Service Bus prissättning](https://azure.microsoft.com/pricing/details/service-bus/).
 
 ## <a name="using-autoforwarding"></a>Använda vidarebefordran
 

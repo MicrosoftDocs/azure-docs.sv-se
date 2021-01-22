@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 58e14ab04084871dfd5de400cac0c38401855d0c
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: a89fa72db3deaec12a9073233f861aa6835288a5
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98120265"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678363"
 ---
 # <a name="design-a-polybase-data-loading-strategy-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Utforma en PolyBase data inläsnings strategi för dedikerad SQL-pool i Azure Synapse Analytics
 
@@ -50,7 +50,7 @@ Att hämta data från käll systemet beror på lagrings platsen.  Målet är att
 
 PolyBase läser in data från UTF-8-och UTF-16-kodade avgränsade textfiler. Förutom de avgränsade textfilerna läses de in från Hadoop-filformatet RC-filen, ORC och Parquet. PolyBase kan också läsa in data från gzip och fästa komprimerade filer. PolyBase stöder för närvarande inte utökade ASCII-, fast bredd-format och kapslade format som WinZip, JSON och XML.
 
-Om du exporterar från SQL Server kan du använda [kommando rads verktyget BCP](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) för att exportera data till avgränsade textfiler. Data typs mappningen Parquet till Azure Synapse Analytics är följande:
+Om du exporterar från SQL Server kan du använda [kommando rads verktyget BCP](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) för att exportera data till avgränsade textfiler. Data typs mappningen Parquet till Azure Synapse Analytics är följande:
 
 | **Data typen Parquet** |                      **SQL-datatyp**                       |
 | :-------------------: | :----------------------------------------------------------: |
@@ -97,9 +97,9 @@ Innan du kan läsa in data måste du definiera externa tabeller i ditt informati
 
 Definiera externa tabeller innebär att du anger data källan, formatet på textfilerna och tabell definitionerna. I följande avsnitt finns information om T-SQL-syntaxen som du behöver:
 
-- [SKAPA EXTERN DATA KÄLLA](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [SKAPA EXTERN TABELL](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [SKAPA EXTERN DATA KÄLLA](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
+- [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
+- [SKAPA EXTERN TABELL](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
 
 ### <a name="format-text-files"></a>Formatera textfiler
 
@@ -108,7 +108,7 @@ Formatera textfilerna:
 
 - Om dina data kommer från en icke-relationell källa måste du omvandla den till rader och kolumner. Oavsett om data kommer från en Relations källa eller icke-relationell källa måste data omvandlas för att anpassas efter kolumn definitionerna för den tabell som du planerar att läsa in data i.
 - Formatera data i text filen så att de överensstämmer med kolumnerna och data typerna i SQL-poolens mål tabell. Fel justering mellan data typer i externa textfiler och data lager tabellen gör att rader avvisas under belastningen.
-- Separera fält i text filen med en avslutning.  Se till att du använder ett Character eller en teckensekvens som inte finns i dina källdata. Använd den avslutnings fil som du angav med [Skapa externt fil format](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
+- Separera fält i text filen med en avslutning.  Se till att du använder ett Character eller en teckensekvens som inte finns i dina källdata. Använd den avslutnings fil som du angav med [Skapa externt fil format](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
 
 ## <a name="4-load-the-data-into-dedicated-sql-pool-staging-tables-using-polybase"></a>4. Läs in data i dedikerade SQL-pool för mellanlagrings tabeller med PolyBase
 
@@ -119,13 +119,13 @@ Vi rekommenderar att du läser in data i en mellanlagringsplats. Med mellanlagri
 Om du vill läsa in data med PolyBase kan du använda något av följande inläsnings alternativ:
 
 - [PolyBase med T-SQL](../sql-data-warehouse/load-data-from-azure-blob-storage-using-copy.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json) fungerar bra när dina data finns i Azure Blob storage eller Azure Data Lake Store. Du får störst kontroll över inläsnings processen, men du måste också definiera externa data objekt. De andra metoderna definierar dessa objekt bakom scenerna när du mappar käll tabeller till mål tabeller.  För att dirigera T-SQL-inläsningar kan du använda Azure Data Factory, SSIS eller Azure Functions.
-- [PolyBase med SSIS](/sql/integration-services/load-data-to-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) fungerar bra när dina källdata är i SQL Server. SSIS definierar källa till mål tabell mappningar och dirigerar även belastningen. Om du redan har SSIS-paket kan du ändra paketen så att de fungerar med det nya informations lager målet.
+- [PolyBase med SSIS](/sql/integration-services/load-data-to-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) fungerar bra när dina källdata är i SQL Server. SSIS definierar källa till mål tabell mappningar och dirigerar även belastningen. Om du redan har SSIS-paket kan du ändra paketen så att de fungerar med det nya informations lager målet.
 - [PolyBase med Azure Data Factory (ADF)](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) är ett annat Orchestration-verktyg.  Den definierar en pipeline och schemalägger jobb.
 - [PolyBase med Azure Databricks](/azure/databricks/scenarios/databricks-extract-load-sql-data-warehouse?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json) överför data från en Azure Synapse Analytics-tabell till en Databricks-dataframe och/eller skriver data från en Databricks-dataframe till en Azure Synapse Analytics-tabell med PolyBase.
 
 ### <a name="non-polybase-loading-options"></a>Alternativ för icke-PolyBase-inläsning
 
-Om dina data inte är kompatibla med PolyBase kan du använda [BCP](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) -eller [SQLBulkCopy-API: et](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json). BCP läser in direkt till dedikerad SQL-pool utan att gå via Azure Blob Storage, och är endast avsedd för små belastningar. Obs! belastnings prestandan för de här alternativen är betydligt långsammare än PolyBase.
+Om dina data inte är kompatibla med PolyBase kan du använda [BCP](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) -eller [SQLBulkCopy-API: et](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json). BCP läser in direkt till dedikerad SQL-pool utan att gå via Azure Blob Storage, och är endast avsedd för små belastningar. Obs! belastnings prestandan för de här alternativen är betydligt långsammare än PolyBase.
 
 ## <a name="5-transform-the-data"></a>5. transformera data
 

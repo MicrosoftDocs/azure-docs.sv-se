@@ -7,12 +7,12 @@ ms.date: 12/11/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: ece9f62e64eb64b1f34af46b42d57ec583f8f214
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 43c89b0fac08bf9f2c72f885fbf4788371876b17
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97675939"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678584"
 ---
 # <a name="build-deploy-and-extend-the-iot-plug-and-play-bridge"></a>Skapa, distribuera och utöka IoT Plug and Play-bryggan
 
@@ -176,7 +176,7 @@ I [README för kamera kortet](https://github.com/Azure/iot-plug-and-play-bridge/
 | Windows |  Yes |
 | Linux | Yes |
 
-### <a name="prerequisites"></a>Krav
+### <a name="prerequisites"></a>Förutsättningar
 
 För att slutföra det här avsnittet måste du installera följande program vara på den lokala datorn:
 
@@ -188,7 +188,7 @@ För att slutföra det här avsnittet måste du installera följande program var
 
 Klona [IoT plug and Play Bridge](https://github.com/Azure/iot-plug-and-play-bridge) -lagringsplatsen till den lokala datorn:
 
-```cmd/sh
+```console
 git clone https://github.com/Azure/iot-plug-and-play-bridge.git
 
 cd iot-plug-and-play-bridge
@@ -205,7 +205,7 @@ Vi tror att föregående kommando tar flera minuter att köra.
 
 Öppna **kommando tolken för utvecklare för VS 2019** och navigera till den mapp som innehåller den lagrings plats du har klonat och kör följande kommandon:
 
-```cmd
+```console
 cd pnpbridge\scripts\windows
 
 build.cmd
@@ -279,7 +279,7 @@ Granska resten av konfigurations filen för att se vilka gränssnitts komponente
 
 Starta Bridge genom att köra den i kommando tolken:
 
-```cmd
+```console
 cd iot-plug-and-play-bridge\pnpbridge\cmake\pnpbridge_x86\src\pnpbridge\samples\console
 
 Debug\pnpbridge_bin.exe
@@ -298,7 +298,7 @@ Debug\pnpbridge_bin.exe
 | Windows |  Nej |
 | Linux | Yes |
 
-### <a name="prerequisites"></a>Krav
+### <a name="prerequisites"></a>Förutsättningar
 
 För att slutföra det här avsnittet behöver du en kostnads fri Azure IoT-hubb på nivån standard eller standard. Information om hur du skapar en IoT Hub finns i [skapa en IoT-hubb](../iot-hub/iot-hub-create-through-portal.md).
 
@@ -330,13 +330,13 @@ Kommandona skapar en IoT Edge enhet som körs på en virtuell Azure-dator. Att k
 
 Om du vill skapa en IoT Edge enhets registrering i din IoT-hubb kör du följande kommandon i din WSL 2-miljö. Använd `az login` kommandot för att logga in på din Azure-prenumeration:
 
-```bash
+```azurecli
 az iot hub device-identity create --device-id bridge-edge-device --edge-enabled true --hub-name {your IoT hub name}
 ```
 
 Kör följande kommandon för att skapa en virtuell Azure-dator med IoT Edge runtime installerad. Uppdatera plats hållarna med lämpliga värden:
 
-```bash
+```azurecli
 az group create --name bridge-edge-resources --location eastus
 az deployment group create \
 --resource-group bridge-edge-resources \
@@ -350,7 +350,7 @@ az deployment group create \
 
 Nu har du IoT Edge runtime som körs på en virtuell dator. Du kan använda följande kommando för att kontrol lera att **$edgeAgent** och **$edgeHub** körs på enheten:
 
-```bash
+```azurecli
 az iot hub module-identity list --device-id bridge-edge-device -o table --hub-name {your IoT hub name}
 ```
 
@@ -405,7 +405,7 @@ En IoT Edge enhet laddar ned sina modulblad från ett behållar register. I det 
 
 Skapa ett Azure Container Registry i resurs gruppen **resurser-Edge-Resources** . Aktivera sedan administratörs åtkomst till ditt behållar register och hämta de autentiseringsuppgifter som din IoT Edge enhet behöver för att ladda ned modulerna:
 
-```bash
+```azurecli
 az acr create -g bridge-edge-resources --sku Basic -n {your container registry name}
 az acr update --admin-enabled true -n {your container registry name}
 az acr credential show -n {your container registry name}
@@ -517,7 +517,7 @@ I VS Code högerklickar du på filen *pnpbridge/config/deployment.amd64.jspå* f
 
 Kör följande kommando för att visa status för modulerna på enheten:
 
-```bash
+```azurecli
 az iot hub module-identity list --device-id bridge-edge-device -o table --hub-name {your IoT hub name}
 ```
 
@@ -527,7 +527,7 @@ I listan över moduler som körs finns nu **ModulePnpBridge** -modulen som är k
 
 Om du vill ta bort den virtuella datorn och behållar registret från din Azure-prenumeration kör du följande kommando:
 
-```bash
+```azurecli
 az group delete -n bridge-edge-resources
 ```
 

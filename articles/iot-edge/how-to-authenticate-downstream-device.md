@@ -8,12 +8,12 @@ ms.date: 10/15/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: f2dd7cac8370c261f24f5587e801bd621fbdb0f0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 3876b44bc6bb1ddbc5398126421fb9651003838f
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96017006"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678831"
 ---
 # <a name="authenticate-a-downstream-device-to-azure-iot-hub"></a>Autentisera en underordnad enhet på Azure IoT Hub
 
@@ -71,7 +71,7 @@ Ange följande information när du skapar den nya enhets identiteten:
 
 Du kan också använda [IoT-tillägget för Azure CLI för](https://github.com/Azure/azure-iot-cli-extension) att slutföra samma åtgärd. I följande exempel används [AZ IoT Hub Device-Identity-](/cli/azure/ext/azure-iot/iot/hub/device-identity) kommandot för att skapa en ny IoT-enhet med symmetrisk nyckel autentisering och tilldela en överordnad enhet:
 
-```cli
+```azurecli
 az iot hub device-identity create -n {iothub name} -d {new device ID} --pd {existing gateway device ID}
 ```
 
@@ -126,7 +126,7 @@ För X. 509-självsignerad autentisering, som ibland kallas tumavtryck, måste d
 
 Du kan också använda [IoT-tillägget för Azure CLI för](https://github.com/Azure/azure-iot-cli-extension) att slutföra samma enhets skapande åtgärd. I följande exempel används [AZ IoT Hub Device-Identity-](/cli/azure/ext/azure-iot/iot/hub/device-identity) kommandot för att skapa en ny IoT-enhet med en självsignerad X. 509-autentisering och tilldelar en överordnad enhet:
 
-```cli
+```azurecli
 az iot hub device-identity create -n {iothub name} -d {device ID} --pd {gateway device ID} --am x509_thumbprint --ptp {primary thumbprint} --stp {secondary thumbprint}
 ```
 
@@ -170,7 +170,7 @@ Det här avsnittet baseras på instruktionerna som beskrivs i IoT Hub artikel ko
 
 Du kan också använda [IoT-tillägget för Azure CLI för](https://github.com/Azure/azure-iot-cli-extension) att slutföra samma enhets skapande åtgärd. I följande exempel används [AZ IoT Hub Device-Identity-](/cli/azure/ext/azure-iot/iot/hub/device-identity) kommandot för att skapa en ny IoT-enhet med X. 509 ca-signerad autentisering och tilldelar en överordnad enhet:
 
-```cli
+```azurecli
 az iot hub device-identity create -n {iothub name} -d {device ID} --pd {gateway device ID} --am x509_ca
 ```
 
@@ -191,19 +191,19 @@ Anslutnings strängar för underordnade enheter behöver följande komponenter:
 
 Tillsammans ser en fullständig anslutnings sträng ut så här:
 
-```
+```console
 HostName=myiothub.azure-devices.net;DeviceId=myDownstreamDevice;SharedAccessKey=xxxyyyzzz;GatewayHostName=myGatewayDevice
 ```
 
 Eller
 
-```
+```console
 HostName=myiothub.azure-devices.net;DeviceId=myDownstreamDevice;x509=true;GatewayHostName=myGatewayDevice
 ```
 
-Tack vare den överordnade/underordnade relationen kan du förenkla anslutnings strängen genom att anropa gatewayen direkt som anslutnings värd. Exempel:
+Tack vare den överordnade/underordnade relationen kan du förenkla anslutnings strängen genom att anropa gatewayen direkt som anslutnings värd. Till exempel:
 
-```
+```console
 HostName=myGatewayDevice;DeviceId=myDownstreamDevice;SharedAccessKey=xxxyyyzzz
 ```
 

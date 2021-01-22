@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 2f26716a4d04b574bf393f502758a725948419da
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 85bc6f4468e0365d247b0adc204bd53ce9fa3006
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89299957"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98676724"
 ---
 # <a name="copy-an-image-from-another-gallery-using-powershell"></a>Kopiera en bild från ett annat galleri med hjälp av PowerShell
 
@@ -164,6 +164,6 @@ $job.State
 
 Skapa en virtuell dator från en [generaliserad](vm-generalized-image-version-powershell.md) eller [specialiserad](vm-specialized-image-version-powershell.md) avbildnings version.
 
-[Azure Image Builder (för hands version)](./linux/image-builder-overview.md) kan hjälpa dig att automatisera avbildnings versionen, du kan även använda den för att uppdatera och [skapa en ny avbildnings version från en befintlig avbildnings version](./linux/image-builder-gallery-update-image-version.md). 
+[Azure Image Builder (för hands version)](./image-builder-overview.md) kan hjälpa dig att automatisera avbildnings versionen, du kan även använda den för att uppdatera och [skapa en ny avbildnings version från en befintlig avbildnings version](./linux/image-builder-gallery-update-image-version.md). 
 
 Information om hur du anger information om inköps planer finns i [tillhandahålla information om inköps plan för Azure Marketplace när du skapar avbildningar](marketplace-images.md).

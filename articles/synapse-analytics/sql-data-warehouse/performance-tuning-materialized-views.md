@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick; azure-synapse
-ms.openlocfilehash: 902f0ac96349cf3e30ec12aeda02130afc2b800c
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: e137611809e2d2beefecfeaea11b4295bf6ba141
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460763"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678499"
 ---
 # <a name="performance-tune-with-materialized-views"></a>Prestanda justering med materialiserade vyer
 
@@ -29,7 +29,7 @@ En standardvy beräknar data varje gång som vyn används.  Det finns inga data 
 
 En materialiserad vy för beräkning, lager och underhåll av data i SQL-poolen precis som en tabell.  Ingen omberäkning krävs varje gång en materialiserad vy används.  Det är anledningen till att frågor som använder alla eller delmängd av data i materialiserade vyer kan få snabbare prestanda.  Även bättre, frågor kan använda en materialiserad vy utan att hänvisa till den, så du behöver inte ändra program koden.  
 
-De flesta av kraven för en standardvy gäller fortfarande för en materialiserad vy. Mer information om syntaxen för materialiserade vyer och andra krav finns i [skapa materialiserad vy som Välj](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+De flesta av kraven för en standardvy gäller fortfarande för en materialiserad vy. Mer information om syntaxen för materialiserade vyer och andra krav finns i [skapa materialiserad vy som Välj](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
 
 | Jämförelse                     | Visa                                         | Materialiserad vy
 |:-------------------------------|:---------------------------------------------|:--------------------------------------------------------------|
@@ -37,7 +37,7 @@ De flesta av kraven för en standardvy gäller fortfarande för en materialisera
 |Visa innehåll                    | Genereras varje gång som vyn används.   | Förbehandlade och lagrade i SQL-poolen när du skapar vyn. Uppdateras när data läggs till i de underliggande tabellerna.
 |Datauppdatering                    | Alltid uppdaterad                               | Alltid uppdaterad
 |Hastighet för att hämta visnings data från komplexa frågor     | Långsam                                         | Snabb  
-|Extra lagrings utrymme                   | Inga                                           | Ja
+|Extra lagrings utrymme                   | Nej                                           | Ja
 |Syntax                          | CREATE VIEW                                  | SKAPA MATERIALISERAD VY SOM VÄLJ
 
 ## <a name="benefits-of-using-materialized-views"></a>Fördelar med att använda materialiserade vyer
@@ -55,8 +55,8 @@ De materialiserade vyerna som implementeras i SQL-poolen ger också följande yt
 Jämfört med andra data lager leverantörer ger de materialiserade vyerna som implementeras i Azure Synapse Analytics även följande ytterligare fördelar:
 
 - Automatisk och synkron data uppdatering med data ändringar i bas tabeller. Ingen användar åtgärd krävs.
-- Brett stöd för mängd funktioner. Se [skapa materialiserad vy som Select (Transact-SQL)](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
-- Support för fråga-Specific materialiserad View-rekommendation.  Se [förklaring (Transact-SQL)](/sql/t-sql/queries/explain-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
+- Brett stöd för mängd funktioner. Se [skapa materialiserad vy som Select (Transact-SQL)](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
+- Support för fråga-Specific materialiserad View-rekommendation.  Se [förklaring (Transact-SQL)](/sql/t-sql/queries/explain-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
 
 ## <a name="common-scenarios"></a>Vanliga scenarier  
 
@@ -115,7 +115,7 @@ Alternativ för att minska antalet materialiserade vyer:
 
 - Ta bort de materialiserade vyerna som har låg användning eller som inte längre behövs.  En inaktive rad materialiserad vy underhålls inte, men den kostar fortfarande lagrings kostnaden.  
 
-- Kombinera materialiserade vyer som skapats på samma eller liknande bas tabeller även om deras data inte överlappar varandra.  Att kombinera materialiserade vyer kan resultera i en större vy än summan av de separata vyerna, men vyn underhålls kostnader bör minska.  Exempel:
+- Kombinera materialiserade vyer som skapats på samma eller liknande bas tabeller även om deras data inte överlappar varandra.  Att kombinera materialiserade vyer kan resultera i en större vy än summan av de separata vyerna, men vyn underhålls kostnader bör minska.  Till exempel:
 
 ```sql
 

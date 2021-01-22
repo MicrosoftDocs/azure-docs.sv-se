@@ -9,18 +9,18 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 967250cf29d1f0248f296cb545a764bd8e611773
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 9500d682a99e6345289a83b4b3b2fc29ffe18457
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462663"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98676892"
 ---
 # <a name="query-storage-files-with-serverless-sql-pool-in-azure-synapse-analytics"></a>Fråga Storage-filer med Server lös SQL-pool i Azure Synapse Analytics
 
 Med Server lös SQL-pool kan du fråga efter data i data Lake. Den innehåller en fråge yta för T-SQL-frågor som hanterar halv strukturerade och ostrukturerade data frågor. För frågor stöds följande T-SQL-aspekter:
 
-- Fullständigt [val](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) av yta, inklusive majoriteten av [SQL Functions och operatorer](overview-features.md).
+- Fullständigt [val](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) av yta, inklusive majoriteten av [SQL Functions och operatorer](overview-features.md).
 - Skapa extern tabell som SELECT ([CETAS](develop-tables-cetas.md)) skapar en [extern tabell](develop-tables-external-tables.md) och sedan exporterar parallellt resultatet av en Transact-SQL SELECT-instruktion till Azure Storage.
 
 Mer information om vad är vs. vad som inte stöds för närvarande finns i [översikts](on-demand-workspace-overview.md) artikeln om SQL-poolen utan server eller följande artiklar:
@@ -190,15 +190,15 @@ Läs avsnittet åtkomst element från kapslade kolumner i artikeln [fråga Parqu
 
 #### <a name="access-elements-from-repeated-columns"></a>Få åtkomst till element från upprepade kolumner
 
-För att få åtkomst till element från en upprepad kolumn, t. ex. ett element i en matris eller karta, använder du funktionen [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) för varje skalärt element som du behöver för att projicera och tillhandahålla:
+För att få åtkomst till element från en upprepad kolumn, t. ex. ett element i en matris eller karta, använder du funktionen [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) för varje skalärt element som du behöver för att projicera och tillhandahålla:
 
 - Kapslad eller upprepad kolumn som den första parametern
-- En [JSON-sökväg](/sql/relational-databases/json/json-path-expressions-sql-server?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) som anger det element eller den egenskap som ska kommas åt, som en andra parameter
+- En [JSON-sökväg](/sql/relational-databases/json/json-path-expressions-sql-server?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) som anger det element eller den egenskap som ska kommas åt, som en andra parameter
 
-Om du vill komma åt icke-skalära element från en upprepad kolumn använder du funktionen [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) för varje icke-skalärt element som du behöver för att projicera och tillhandahålla:
+Om du vill komma åt icke-skalära element från en upprepad kolumn använder du funktionen [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) för varje icke-skalärt element som du behöver för att projicera och tillhandahålla:
 
 - Kapslad eller upprepad kolumn som den första parametern
-- En [JSON-sökväg](/sql/relational-databases/json/json-path-expressions-sql-server?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) som anger det element eller den egenskap som ska kommas åt, som en andra parameter
+- En [JSON-sökväg](/sql/relational-databases/json/json-path-expressions-sql-server?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) som anger det element eller den egenskap som ska kommas åt, som en andra parameter
 
 Se syntaxen nedan:
 

@@ -11,12 +11,12 @@ ms.date: 08/13/2020
 ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: b82342ffb76f8bb58b8f6875751601094d6131ca
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: b6dd2199452837d81c201cf4aef2bcd94b35cda3
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461893"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98677213"
 ---
 # <a name="convert-resource-classes-to-workload-groups"></a>Konvertera resurs klasser till arbets belastnings grupper
 
@@ -56,7 +56,7 @@ CREATE WORKLOAD GROUP wgDataLoads WITH
 
 ## <a name="create-the-classifier"></a>Skapa klassificeraren
 
-Tidigare genomfördes mappningen av frågor till resurs klasser med [sp_addrolemember](resource-classes-for-workload-management.md#change-a-users-resource-class).  Om du vill uppnå samma funktioner och mappa begär anden till arbets belastnings grupper använder du KLASSIFICERINGs-syntaxen [skapa arbets belastning](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) .  Med sp_addrolemember får du bara mappa resurser till en begäran baserat på en inloggning.  En klassificerare innehåller ytterligare alternativ förutom inloggning, till exempel:
+Tidigare genomfördes mappningen av frågor till resurs klasser med [sp_addrolemember](resource-classes-for-workload-management.md#change-a-users-resource-class).  Om du vill uppnå samma funktioner och mappa begär anden till arbets belastnings grupper använder du KLASSIFICERINGs-syntaxen [skapa arbets belastning](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) .  Med sp_addrolemember får du bara mappa resurser till en begäran baserat på en inloggning.  En klassificerare innehåller ytterligare alternativ förutom inloggning, till exempel:
     - etikett
     - session
     - tid i exemplet nedan tilldelar frågor från `AdfLogin` inloggningen som också har [alternativ etiketten](sql-data-warehouse-develop-label.md)  inställd till `factloads` den arbets belastnings grupp som du `wgDataLoads` skapade ovan.
@@ -91,4 +91,4 @@ SELECT request_id, [label], classifier_name, group_name, command
 - [Arbets belastnings isolering](sql-data-warehouse-workload-isolation.md)
 - [Så här skapar du en arbets belastnings grupp](quickstart-configure-workload-isolation-tsql.md)
 - [Skapa klassificering av arbets belastning (Transact-SQL)](/sql/t-sql/statements/create-workload-classifier-transact-sql?&view=azure-sqldw-latest)
-- [SKAPA arbets BELASTNINGs grupp (Transact-SQL)](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest)
+- [SKAPA arbets BELASTNINGs grupp (Transact-SQL)](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest&preserve-view=true)

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/29/2016
 ms.author: kundanap
-ms.openlocfilehash: b8b7a03d5176f5dbd8500b5ff9044c2f22ecbfc0
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: 343ddb109de41a0959533b16b11762841b5b1105
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98127149"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98676767"
 ---
 # <a name="troubleshooting-azure-windows-vm-extension-failures"></a>Felsöka problem med Azure Windows VM-tillägg
 [!INCLUDE [virtual-machines-common-extensions-troubleshoot](../../../includes/virtual-machines-common-extensions-troubleshoot.md)]
@@ -85,7 +85,7 @@ Certifikatet återskapas automatiskt genom att starta om Windows gäst agenten i
 - Högerklicka på och välj "Avsluta aktivitet". Processen kommer att startas om automatiskt
 
 
-Du kan också utlösa en ny GoalState för den virtuella datorn genom att köra en "VM reapply". VM-återaktivering är ett API som introducerades i 2020 för att [återanvända en](https://docs.microsoft.com/rest/api/compute/virtualmachines/reapply) VM-status. Vi rekommenderar att du gör detta vid en tidpunkt när du kan tolerera en kort VM-nedtid. När återaktivering av sig inte orsakar en VM-omstart, och de allra flesta gånger som anropar tillämpa inte, startar inte om den virtuella datorn, det finns en mycket liten risk för att vissa andra väntande uppdateringar av VM-modellen tillämpas när utlösare är ett nytt mål tillstånd och att andra ändringar kan kräva en omstart. 
+Du kan också utlösa en ny GoalState för den virtuella datorn genom att köra en "VM reapply". VM-återaktivering är ett API som introducerades i 2020 för att [återanvända en](/rest/api/compute/virtualmachines/reapply) VM-status. Vi rekommenderar att du gör detta vid en tidpunkt när du kan tolerera en kort VM-nedtid. När återaktivering av sig inte orsakar en VM-omstart, och de allra flesta gånger som anropar tillämpa inte, startar inte om den virtuella datorn, det finns en mycket liten risk för att vissa andra väntande uppdateringar av VM-modellen tillämpas när utlösare är ett nytt mål tillstånd och att andra ändringar kan kräva en omstart. 
 
 Azure Portal:
 

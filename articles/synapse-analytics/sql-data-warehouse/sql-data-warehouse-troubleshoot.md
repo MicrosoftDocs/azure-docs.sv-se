@@ -11,12 +11,12 @@ ms.date: 11/13/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 8db1825e7abfaaeca4650cbd03dd05eec4777c21
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 9b2fc61054c40f52f7e638117109ec556cc63a78
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121285"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678465"
 ---
 # <a name="troubleshooting-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Felsöka dedikerad SQL-pool (tidigare SQL DW) i Azure Synapse Analytics
 
@@ -30,13 +30,13 @@ Den här artikeln innehåller vanliga fel söknings problem i dedikerad SQL-pool
 | Serverns huvudnamn MyUserName kan inte komma åt huvuddatabasen i den aktuella säkerhetskontexten. Det går inte att öppna användarens standarddatabas. Det gick inte att logga in. Inloggningen misslyckades för användaren MyUserName. (Microsoft SQL Server, fel: 916) | Det här felet uppstår när en Azure AD-användare försöker ansluta till huvud databasen, men inte har en användare i Master.  Du kan åtgärda det här problemet genom att antingen ange den dedikerade SQL-pool (tidigare SQL DW) som du vill ansluta till vid anslutningen eller lägga till användaren i huvud databasen.  Mer information finns i [säkerhets översikts](sql-data-warehouse-overview-manage-security.md) artikeln. |
 | CTAIP-fel                                                  | Det här felet kan inträffa när en inloggning har skapats på SQL Database huvud databasen, men inte i den aktuella SQL-databasen.  Om du stöter på det här felet kan du ta en titt på artikeln [säkerhets översikt](sql-data-warehouse-overview-manage-security.md) .  Den här artikeln beskriver hur du skapar en inloggning och användare i huvud databasen och hur du skapar en användare i en SQL-databas. |
 | Blockerad av brandvägg                                          | Dedikerad SQL-pool (tidigare SQL DW) skyddas av brand väggar så att endast kända IP-adresser har åtkomst till en databas. Brand väggarna är säkra som standard, vilket innebär att du måste uttryckligen aktivera och IP-adresser eller adress intervall innan du kan ansluta.  Konfigurera brand väggen för åtkomst genom att följa stegen i [Konfigurera serverns brand Väggs åtkomst för klientens IP-adress](create-data-warehouse-portal.md) i [etablerings anvisningarna](create-data-warehouse-portal.md). |
-| Det går inte att ansluta med verktyget eller driv rutinen                           | Dedikerad SQL-pool (tidigare SQL DW) rekommenderar att du använder [SSMS](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), [SSDT för Visual Studio](sql-data-warehouse-install-visual-studio.md)eller [SQLCMD](sql-data-warehouse-get-started-connect-sqlcmd.md) för att fråga dina data. Mer information om driv rutiner och hur du ansluter till Azure Synapse finns i [driv rutiner för Azure Synapse](sql-data-warehouse-connection-strings.md) och [ansluta till Azure Synapse](sql-data-warehouse-connect-overview.md) -artiklar. |
+| Det går inte att ansluta med verktyget eller driv rutinen                           | Dedikerad SQL-pool (tidigare SQL DW) rekommenderar att du använder [SSMS](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true), [SSDT för Visual Studio](sql-data-warehouse-install-visual-studio.md)eller [SQLCMD](sql-data-warehouse-get-started-connect-sqlcmd.md) för att fråga dina data. Mer information om driv rutiner och hur du ansluter till Azure Synapse finns i [driv rutiner för Azure Synapse](sql-data-warehouse-connection-strings.md) och [ansluta till Azure Synapse](sql-data-warehouse-connect-overview.md) -artiklar. |
 
 ## <a name="tools"></a>Verktyg
 
 | Problem                                                        | Lösning                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| Azure AD-användare saknas i Visual Studio Object Explorer           | Detta är ett känt problem.  Som en lösning kan du Visa användare i [sys.database_principals](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).  Se [autentisering till Azure Synapse](sql-data-warehouse-authentication.md) för att lära dig mer om hur du använder Azure Active Directory med dedikerad SQL-pool (tidigare SQL DW). |
+| Azure AD-användare saknas i Visual Studio Object Explorer           | Detta är ett känt problem.  Som en lösning kan du Visa användare i [sys.database_principals](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).  Se [autentisering till Azure Synapse](sql-data-warehouse-authentication.md) för att lära dig mer om hur du använder Azure Active Directory med dedikerad SQL-pool (tidigare SQL DW). |
 | Manuell skript användning med skript guiden eller anslutning via SSMS är långsam, svarar inte eller skapar fel | Se till att användarna har skapats i huvud databasen. I skript alternativ ser du också till att motor versionen är inställd på "Microsoft Azure Synapse Analytics Edition" och att motor typen är "Microsoft Azure SQL Database". |
 | Generera skript Miss lyckas i SSMS                               | Det går inte att skapa ett skript för dedikerad SQL-pool (tidigare SQL DW) om alternativet "skapa skript för beroende objekt" är inställt på "true". Som en lösning måste användarna manuellt gå till **verktyg-> alternativ->SQL Server Object Explorer-> skapa skript för beroende alternativ och ange värdet FALSKT** |
 
@@ -75,7 +75,7 @@ Den här artikeln innehåller vanliga fel söknings problem i dedikerad SQL-pool
 | SQL Database funktioner som inte stöds     | Se [tabell funktioner som inte stöds](sql-data-warehouse-tables-overview.md#unsupported-table-features). |
 | SQL Database data typer som inte stöds   | Se [data typer som inte stöds](sql-data-warehouse-tables-data-types.md#identify-unsupported-data-types).        |
 | Begränsningar för lagrade procedurer          | Se [begränsningar för lagrade](sql-data-warehouse-develop-stored-procedures.md#limitations) procedurer för att förstå vissa begränsningar för lagrade procedurer. |
-| UDF: er stöder inte SELECT-instruktioner | Detta är en aktuell begränsning i vår UDF: er.  Se [skapa funktion](/sql/t-sql/statements/create-function-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) för den syntax som vi stöder. |
+| UDF: er stöder inte SELECT-instruktioner | Detta är en aktuell begränsning i vår UDF: er.  Se [skapa funktion](/sql/t-sql/statements/create-function-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) för den syntax som vi stöder. |
 
 ## <a name="next-steps"></a>Nästa steg
 

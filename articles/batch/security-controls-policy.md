@@ -1,18 +1,18 @@
 ---
 title: Azure Policy kontroll av efterlevnad för Azure Batch
 description: Visar Azure Policy regler för regelefterlevnad som är tillgängliga för Azure Batch. Dessa inbyggda princip definitioner tillhandahåller vanliga metoder för att hantera kompatibiliteten för dina Azure-resurser.
-ms.date: 01/08/2021
+ms.date: 01/21/2021
 ms.topic: sample
 author: JnHs
 ms.author: jenhayes
 ms.service: batch
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 769950b2ac0452bc684b614b88e9d76a11095fa7
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: bfbe4f56fcab22f1833f40a195d60f6f7855882b
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98050618"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678897"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-batch"></a>Azure Policy kontroll av efterlevnad för Azure Batch
 

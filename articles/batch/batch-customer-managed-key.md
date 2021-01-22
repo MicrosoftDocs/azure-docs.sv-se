@@ -5,12 +5,12 @@ author: pkshultz
 ms.topic: how-to
 ms.date: 07/17/2020
 ms.author: peshultz
-ms.openlocfilehash: 404103caf376b792d363996664a69f655d5bd202
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 2ed19846209d098d9eba8dba991e08d1fc57f185
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96326020"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678017"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-batch-account-with-azure-key-vault-and-managed-identity"></a>Konfigurera Kundhanterade nycklar för ditt Azure Batch-konto med Azure Key Vault och hanterad identitet
 
@@ -39,7 +39,7 @@ När kontot har skapats kan du hitta ett unikt GUID i fältet **identitetens huv
 
 När du skapar ett nytt batch-konto anger du `SystemAssigned` för- `--identity` parametern.
 
-```powershell
+```azurecli
 resourceGroupName='myResourceGroup'
 accountName='mybatchaccount'
 
@@ -52,7 +52,7 @@ az batch account create \
 
 När kontot har skapats kan du kontrol lera att systemtilldelad hanterad identitet har Aktiver ATS för det här kontot. Tänk på att Observera att det `PrincipalId` här värdet krävs för att bevilja det här batch-kontot åtkomst till Key Vault.
 
-```powershell
+```azurecli
 az batch account show \
     -n $accountName \
     -g $resourceGroupName \
@@ -100,7 +100,7 @@ Gå till sidan för batch-kontot i [Azure Portal](https://portal.azure.com/). Ak
 
 När batch-kontot har skapats med systemtilldelad hanterad identitet och åtkomsten till Key Vault beviljas, uppdaterar du batch-kontot med `{Key Identifier}` URL-adressen under `keyVaultProperties` parametern. Ange också **encryption_key_source** som `Microsoft.KeyVault` .
 
-```powershell
+```azurecli
 az batch account set \
     -n $accountName \
     -g $resourceGroupName \
@@ -110,7 +110,7 @@ az batch account set \
 
 ## <a name="update-the-customer-managed-key-version"></a>Uppdatera den kund hanterade nyckel versionen
 
-När du skapar en ny version av en nyckel uppdaterar du batch-kontot för att använda den nya versionen. Gör så här:
+När du skapar en ny version av en nyckel uppdaterar du batch-kontot för att använda den nya versionen. Följ de här stegen:
 
 1. Navigera till ditt batch-konto i Azure Portal och Visa krypterings inställningarna.
 2. Ange URI för den nya nyckel versionen. Alternativt kan du välja nyckel valvet och nyckeln igen för att uppdatera versionen.
@@ -118,7 +118,7 @@ När du skapar en ny version av en nyckel uppdaterar du batch-kontot för att an
 
 Du kan också använda Azure CLI för att uppdatera versionen.
 
-```powershell
+```azurecli
 az batch account set \
     -n $accountName \
     -g $resourceGroupName \
@@ -134,7 +134,7 @@ Följ dessa steg om du vill ändra den nyckel som används för batch-kryptering
 
 Du kan också använda Azure CLI för att använda en annan nyckel.
 
-```powershell
+```azurecli
 az batch account set \
     -n $accountName \
     -g $resourceGroupName \

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: a3481830a09b183213e84490b5300f2fb38f8d19
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: b5c65035f8b51b53f617d4562fe1982f53f0deec
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98625072"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678279"
 ---
 # <a name="tutorial-implement-iot-spatial-analytics-by-using-azure-maps"></a>Självstudie: implementera IoT spatial Analytics med hjälp av Azure Maps
 
@@ -161,15 +161,15 @@ IoT Hub möjliggör säker och tillförlitlig dubbelriktad kommunikation mellan 
 > [!NOTE]
 > Möjligheten att publicera händelser för enhets telemetri på Event Grid är för närvarande en för hands version. Den här funktionen är tillgänglig i alla regioner förutom följande: östra USA, västra USA, Västeuropa, Azure Government, Azure Kina 21Vianet och Azure Germany.
 
-Om du vill skapa en IoT-hubb i resurs gruppen *ContosoRental* följer du stegen i [skapa en IoT-hubb](https://docs.microsoft.com/azure/iot-hub/quickstart-send-telemetry-dotnet#create-an-iot-hub).
+Om du vill skapa en IoT-hubb i resurs gruppen *ContosoRental* följer du stegen i [skapa en IoT-hubb](../iot-hub/quickstart-send-telemetry-dotnet.md#create-an-iot-hub).
 
 ## <a name="register-a-device-in-your-iot-hub"></a>Registrera en enhet i IoT Hub
 
-Enheter kan inte ansluta till IoT Hub om de inte är registrerade i IoT Hub Identity-registret. Här skapar du en enskild enhet med namnet *InVehicleDevice*. Om du vill skapa och registrera enheten i din IoT-hubb följer du stegen i [Registrera en ny enhet i IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-create-through-portal#register-a-new-device-in-the-iot-hub). Se till att kopiera den primära anslutnings strängen för enheten. Du behöver det senare.
+Enheter kan inte ansluta till IoT Hub om de inte är registrerade i IoT Hub Identity-registret. Här skapar du en enskild enhet med namnet *InVehicleDevice*. Om du vill skapa och registrera enheten i din IoT-hubb följer du stegen i [Registrera en ny enhet i IoT Hub](../iot-hub/iot-hub-create-through-portal.md#register-a-new-device-in-the-iot-hub). Se till att kopiera den primära anslutnings strängen för enheten. Du behöver det senare.
 
 ## <a name="create-a-function-and-add-an-event-grid-subscription"></a>Skapa en funktion och Lägg till en Event Grid-prenumeration
 
-Azure Functions är en server lös beräknings tjänst som gör att du kan köra små delar av kod ("Functions"), utan att uttryckligen behöva etablera eller hantera beräknings infrastruktur. Läs mer i [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview).
+Azure Functions är en server lös beräknings tjänst som gör att du kan köra små delar av kod ("Functions"), utan att uttryckligen behöva etablera eller hantera beräknings infrastruktur. Läs mer i [Azure Functions](../azure-functions/functions-overview.md).
 
 En funktion utlöses av en viss händelse. Här skapar du en funktion som utlöses av en Event Grid-utlösare. Skapa relationen mellan utlösare och funktion genom att skapa en händelse prenumeration för IoT Hub telemetri för enhets händelser. När en händelse för telemetri om enhet inträffar, anropas funktionen som en slut punkt och tar emot relevanta data för den enhet som du tidigare registrerade i IoT Hub.
 
@@ -223,7 +223,7 @@ Konfigurera nu Azure-funktionen.
 
 ## <a name="filter-events-by-using-iot-hub-message-routing"></a>Filtrera händelser med hjälp av IoT Hub meddelanderoutning
 
-När du lägger till en Event Grid-prenumeration i Azure-funktionen skapas en meddelande väg automatiskt i den angivna IoT-hubben. Med meddelanderoutning kan du dirigera olika data typer till olika slut punkter. Du kan till exempel dirigera meddelanden om enhets telemetri, livs cykel händelser för enhet och enhets dubbla ändrings händelser. Mer information finns i [använda IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c)meddelanderoutning.
+När du lägger till en Event Grid-prenumeration i Azure-funktionen skapas en meddelande väg automatiskt i den angivna IoT-hubben. Med meddelanderoutning kan du dirigera olika data typer till olika slut punkter. Du kan till exempel dirigera meddelanden om enhets telemetri, livs cykel händelser för enhet och enhets dubbla ändrings händelser. Mer information finns i [använda IoT Hub](../iot-hub/iot-hub-devguide-messages-d2c.md)meddelanderoutning.
 
 :::image type="content" source="./media/tutorial-iot-hub-maps/hub-route.png" alt-text="Skärm bild av meddelanderoutning i IoT Hub.":::
 
@@ -232,7 +232,7 @@ I ditt exempel scenario vill du bara ta emot meddelanden när hyr bil flyttas. S
 :::image type="content" source="./media/tutorial-iot-hub-maps/hub-filter.png" alt-text="Skärm bild av filtrera Dirigerings meddelanden.":::
 
 >[!TIP]
->Det finns olika sätt att fråga IoT-meddelanden från enhet till moln. Mer information om syntax för meddelanderoutning finns i [IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax)meddelanderoutning.
+>Det finns olika sätt att fråga IoT-meddelanden från enhet till moln. Mer information om syntax för meddelanderoutning finns i [IoT Hub](../iot-hub/iot-hub-devguide-routing-query-syntax.md)meddelanderoutning.
 
 ## <a name="send-telemetry-data-to-iot-hub"></a>Skicka telemetridata till IoT Hub
 

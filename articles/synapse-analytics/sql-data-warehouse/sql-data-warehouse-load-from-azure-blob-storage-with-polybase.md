@@ -11,12 +11,12 @@ ms.date: 11/20/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: bbe61444404b16a09a1e0d2bdead72ac53a60744
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: aac0d8b923dc87f8be59cb594b155aafcf25fd0e
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452884"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98677162"
 ---
 # <a name="load-contoso-retail-data-into-dedicated-sql-pools-in-azure-synapse-analytics"></a>Läs in Contosos detalj handels data i dedikerade SQL-pooler i Azure Synapse Analytics
 
@@ -77,7 +77,7 @@ WITH (
 
 ## <a name="create-the-external-data-source"></a>Skapa den externa data källan
 
-Använd det här kommandot [skapa extern data källa](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) för att lagra data platsen och data typen.
+Använd det här kommandot [skapa extern data källa](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) för att lagra data platsen och data typen.
 
 ```sql
 CREATE EXTERNAL DATA SOURCE AzureStorage_west_public
@@ -221,7 +221,7 @@ GO
 
 ### <a name="load-the-data-into-new-tables"></a>Läs in data i nya tabeller
 
-Använd uttrycket [CREATE TABLE as Select (Transact-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) för att läsa in data från Azure Blob Storage till data lager tabellen. När du läser in med [CTAs](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) utnyttjas de mest skrivna externa tabellerna som du har skapat. Om du vill läsa in data i nya tabeller använder du ett CTAS-uttryck per tabell.
+Använd uttrycket [CREATE TABLE as Select (Transact-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) för att läsa in data från Azure Blob Storage till data lager tabellen. När du läser in med [CTAs](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) utnyttjas de mest skrivna externa tabellerna som du har skapat. Om du vill läsa in data i nya tabeller använder du ett CTAS-uttryck per tabell.
 
 CTAS skapar en ny tabell och fyller den med resultatet av en SELECT-instruktion. CTAS definierar den nya tabellen för att ha samma kolumner och data typer som resultatet av SELECT-instruktionen. Om du väljer alla kolumner från en extern tabell är den nya tabellen en replik av kolumnerna och data typerna i den externa tabellen.
 

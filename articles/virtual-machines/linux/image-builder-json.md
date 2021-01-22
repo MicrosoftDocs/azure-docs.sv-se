@@ -8,12 +8,12 @@ ms.topic: reference
 ms.service: virtual-machines
 ms.subservice: imaging
 ms.reviewer: cynthn
-ms.openlocfilehash: 43f33093010aa6a70d02c58e9faa34f7f0e2dfee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ae477dd04237e285915157615dcb6a6b841ca99
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91307287"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678263"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>För hands version: skapa en Azure Image Builder-mall 
 
@@ -69,7 +69,7 @@ Platsen är den region där den anpassade avbildningen kommer att skapas. För f
 - USA, västra centrala
 - USA, västra
 - USA, västra 2
-- Norra Europa
+- Europa, norra
 - Europa, västra
 
 
@@ -154,7 +154,7 @@ API: t kräver en ' SourceType ' som definierar källan för avbildnings version
 > När du använder befintliga anpassade Windows-avbildningar kan du köra Sysprep-kommandot upp till 8 gånger på en enda Windows-avbildning. mer information finns i [Sysprep](/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep) -dokumentationen.
 
 ### <a name="platformimage-source"></a>PlatformImage-källa 
-Azure Image Builder stöder Windows Server och klient, och Linux Azure Marketplace-avbildningar finns [här](../windows/image-builder-overview.md#os-support) för den fullständiga listan. 
+Azure Image Builder stöder Windows Server och klient, och Linux Azure Marketplace-avbildningar finns [här](../image-builder-overview.md#os-support) för den fullständiga listan. 
 
 ```json
         "source": {

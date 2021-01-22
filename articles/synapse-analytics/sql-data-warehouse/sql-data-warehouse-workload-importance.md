@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 07c781672874bff306c9d25a464ec66414ebc9f1
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 06d1957d182f2cabc336afcfc47a790442a3cb9a
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322127"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678414"
 ---
 # <a name="azure-synapse-analytics-workload-importance"></a>Arbets belastnings prioritet för Azure Synapse Analytics
 
@@ -38,7 +38,7 @@ Utöver det grundläggande prioritets scenario som beskrivs ovan med försäljni
 
 ### <a name="locking"></a>Låsning
 
-Åtkomst till Lås för läsnings-och skriv aktivitet är ett av naturliga konkurrens områden. Aktiviteter som [partitions växling](sql-data-warehouse-tables-partition.md) eller [namnbytes objekt](/sql/t-sql/statements/rename-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) kräver utökade lås.  Utan arbets belastnings prioritet optimerar dedicerad SQL-pool i Azure Synapse för data flöde. Optimering för data flöde innebär att när du kör och köade begär Anden har samma lås behov och resurser är tillgängliga, kan köade begär Anden kringgå begär Anden med högre låsnings behov som anlänt i kön för begär Anden tidigare. När arbets belastnings prioriteten tillämpas på begär Anden med högre låsnings behov. Begäran med högre prioritet kommer att köras före begäran med lägre prioritet.
+Åtkomst till Lås för läsnings-och skriv aktivitet är ett av naturliga konkurrens områden. Aktiviteter som [partitions växling](sql-data-warehouse-tables-partition.md) eller [namnbytes objekt](/sql/t-sql/statements/rename-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) kräver utökade lås.  Utan arbets belastnings prioritet optimerar dedicerad SQL-pool i Azure Synapse för data flöde. Optimering för data flöde innebär att när du kör och köade begär Anden har samma lås behov och resurser är tillgängliga, kan köade begär Anden kringgå begär Anden med högre låsnings behov som anlänt i kön för begär Anden tidigare. När arbets belastnings prioriteten tillämpas på begär Anden med högre låsnings behov. Begäran med högre prioritet kommer att köras före begäran med lägre prioritet.
 
 Se följande exempel:
 
@@ -62,8 +62,8 @@ Eftersom Q5 är mediumrc krävs två samtidiga platser. Q5 måste vänta på att
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Mer information om hur du skapar en klassificerare finns i [create klassificerare för arbets belastning (Transact-SQL)](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).  
+- Mer information om hur du skapar en klassificerare finns i [create klassificerare för arbets belastning (Transact-SQL)](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).  
 - Mer information om arbets belastnings klassificering finns i avsnittet om [arbets belastnings klassificering](sql-data-warehouse-workload-classification.md).  
 - Se hur du skapar en arbets belastnings klassificering genom att [skapa](quickstart-create-a-workload-classifier-tsql.md) en arbets belastnings klassificerare för snabb start.
 - Se instruktions artiklar för att [Konfigurera arbets belastnings prioritet](sql-data-warehouse-how-to-configure-workload-importance.md) och hur du [hanterar och övervakar arbets belastnings hantering](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md).
-- Se [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) för att visa frågor och tilldelade prioritet.
+- Se [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) för att visa frågor och tilldelade prioritet.

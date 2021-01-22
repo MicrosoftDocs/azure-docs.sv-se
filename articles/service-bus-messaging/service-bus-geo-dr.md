@@ -3,12 +3,12 @@ title: Azure Service Bus geo-haveri beredskap | Microsoft Docs
 description: Hur du använder geografiska regioner för att redundansväxla och utföra haveri beredskap i Azure Service Bus
 ms.topic: article
 ms.date: 01/04/2021
-ms.openlocfilehash: c07721c07923a40da9fe28e0e3116bfd6a52210f
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: b25fd1befded253c79267b1b016cef979005d01e
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97862358"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98676463"
 ---
 # <a name="azure-service-bus-geo-disaster-recovery"></a>Azure Service Bus geo-haveri beredskap
 
@@ -48,6 +48,8 @@ Följande villkor används i den här artikeln:
 
 -  *Primär/sekundär namnrymd*: de namn områden som motsvarar aliaset. Det primära namn området är "aktivt" och tar emot meddelanden (det kan vara ett befintligt eller nytt namn område). Det sekundära namn området är "passiv" och tar inte emot meddelanden. Metadata mellan båda är synkroniserade, så båda kan sömlöst acceptera meddelanden utan program kod eller anslutnings sträng ändringar. För att säkerställa att endast det aktiva namn området tar emot meddelanden måste du använda aliaset. 
 
+    > [!IMPORTANT]
+    > Funktionen för geo-katastrof återställning kräver att prenumerationen och resurs gruppen är samma för primära och sekundära namn områden.
 -  *Metadata*: entiteter som köer, ämnen och prenumerationer. och deras egenskaper för tjänsten som är associerad med namn området. Observera att endast entiteter och deras inställningar replikeras automatiskt. Meddelanden replikeras inte.
 
 -  *Redundans*: processen att aktivera det sekundära namn området.
@@ -149,7 +151,7 @@ Du kan bara aktivera Tillgänglighetszoner på nya namn områden med hjälp av A
 
 ![3][]
 
-## <a name="private-endpoints"></a>Privata slut punkter
+## <a name="private-endpoints"></a>Privata slutpunkter
 Det här avsnittet innehåller ytterligare information om hur du använder geo-haveri beredskap med namn områden som använder privata slut punkter. Information om hur du använder privata slut punkter med Service Bus i allmänhet finns i [integrera Azure Service Bus med Azure Private Link](private-link-service.md).
 
 ### <a name="new-pairings"></a>Nya par

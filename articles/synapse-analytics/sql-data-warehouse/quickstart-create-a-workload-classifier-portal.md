@@ -11,12 +11,12 @@ ms.date: 05/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 4c761404ab5a95bc0189407cc97ce779b66356fe
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 1f4d113f3bc6add67dd34a7ef5e3f8cdc08cecf0
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460657"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98677529"
 ---
 # <a name="quickstart-create-a-dedicated-sql-pool-workload-classifier-using-the-azure-portal"></a>Snabb start: skapa en dedikerad SQL-pool arbets belastnings klassificering med hjälp av Azure Portal
 
@@ -45,7 +45,7 @@ Det finns en arbets belastnings grupp `DataLoads` .  Se självstudierna [snabb s
 
 ## <a name="create-a-login-for-eltlogin"></a>Skapa en inloggning för ELTLogin
 
-Skapa en inloggning för SQL Server autentisering i `master` databasen med hjälp av [Skapa inloggning](/sql/t-sql/statements/create-login-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) för `ELTLogin` .
+Skapa en inloggning för SQL Server autentisering i `master` databasen med hjälp av [Skapa inloggning](/sql/t-sql/statements/create-login-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) för `ELTLogin` .
 
 ```sql
 IF NOT EXISTS (SELECT * FROM sys.sql_logins WHERE name = 'ELTLogin')
@@ -57,7 +57,7 @@ END
 
 ## <a name="create-user-and-grant-permissions"></a>Skapa användare och bevilja behörigheter
 
-När inloggningen har skapats måste du skapa en användare i-databasen.  Använd [create User](/sql/t-sql/statements/create-user-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) för att skapa SQL-användaren `ELTRole` i **mySampleDataWarehouse**.  Eftersom vi kommer att testa klassificeringen under den här självstudien beviljar `ELTLogin` du behörighet till **mySampleDataWarehouse**. 
+När inloggningen har skapats måste du skapa en användare i-databasen.  Använd [create User](/sql/t-sql/statements/create-user-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) för att skapa SQL-användaren `ELTRole` i **mySampleDataWarehouse**.  Eftersom vi kommer att testa klassificeringen under den här självstudien beviljar `ELTLogin` du behörighet till **mySampleDataWarehouse**. 
 
 ```sql
 IF NOT EXISTS (SELECT * FROM sys.database_principals WHERE name = 'ELTLogin')
@@ -96,13 +96,13 @@ Klassificeringen gör att du kan dirigera förfrågningar baserat på en uppsät
     ![Klicka på Konfigurera](./media/quickstart-create-a-workload-classifier-portal/config-wc.png)
 
 ## <a name="verify-and-test-classification"></a>Verifiera och testa klassificering
-Kontrol lera att klassificeraren finns i vyn [sys.workload_management_workload_classifiers](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifiers-transact-sql?view=azure-sqldw-latest) katalog `ELTLoginDataLoads` .
+Kontrol lera att klassificeraren finns i vyn [sys.workload_management_workload_classifiers](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifiers-transact-sql?view=azure-sqldw-latest&preserve-view=true) katalog `ELTLoginDataLoads` .
 
 ```sql
 SELECT * FROM sys.workload_management_workload_classifiers WHERE name = 'ELTLoginDataLoads'
 ```
 
-Kontrol lera i vyn [sys.workload_management_workload_classifier_details](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifier-details-transact-sql?view=azure-sqldw-latest) Catalog om du vill verifiera klassificerings information.
+Kontrol lera i vyn [sys.workload_management_workload_classifier_details](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifier-details-transact-sql?view=azure-sqldw-latest&preserve-view=true) Catalog om du vill verifiera klassificerings information.
 
 ```sql
 SELECT c.[name], c.group_name, c.importance, cd.classifier_type, cd.classifier_value

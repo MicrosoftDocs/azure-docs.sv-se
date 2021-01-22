@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: anvang
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: f3eaa6383b174e06ff6ce9b1b08c4eba9108d770
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: ffffeb38aeb9d1f01f376d58a52323bb7b84b306
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98115522"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98676331"
 ---
 # <a name="quickstart-scale-compute-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics-using-t-sql"></a>Snabb start: skala beräkning för dedikerad SQL-pool (tidigare SQL DW) i Azure Synapse Analytics med hjälp av T-SQL
 
@@ -26,7 +26,7 @@ Om du inte har en Azure-prenumeration kan du skapa ett [kostnadsfritt](https://a
 
 ## <a name="before-you-begin"></a>Innan du börjar
 
-Ladda ned och installera den senaste versionen av [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS).
+Ladda ned och installera den senaste versionen av [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (SSMS).
 
 ## <a name="create-a-dedicated-sql-pool-formerly-sql-dw"></a>Skapa en dedikerad SQL-pool (tidigare SQL DW)
 
@@ -34,7 +34,7 @@ Använd [snabb start: skapa och Anslut – Portal](create-data-warehouse-portal.
 
 ## <a name="connect-to-the-server-as-server-admin"></a>Ansluta till servern som serveradministratör
 
-I det här avsnittet används [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS) för att upprätta en anslutning till Azure SQL-servern.
+I det här avsnittet används [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (SSMS) för att upprätta en anslutning till Azure SQL-servern.
 
 1. Öppna SQL Server Management Studio.
 
@@ -46,7 +46,7 @@ I det här avsnittet används [SQL Server Management Studio](/sql/ssms/download-
    | Servernamn | Fullständigt kvalificerat servernamn | Här är ett exempel: **mySampleDataWarehouseservername.Database.Windows.net**. |
    | Autentisering | SQL Server-autentisering | SQL-autentisering är den enda autentiseringstypen som vi konfigurerar i den här självstudiekursen. |
    | Inloggning | Serveradministratörskontot | Kontot som du angav när du skapade servern. |
-   | lösenordsinställning | Lösenordet för serveradministratörskontot | Det lösen ord som du angav när du skapade servern. |
+   | Lösenord | Lösenordet för serveradministratörskontot | Det lösen ord som du angav när du skapade servern. |
 
     ![Anslut till servern](./media/quickstart-scale-compute-tsql/connect-to-server.png)
 
@@ -90,7 +90,7 @@ I dedikerad SQL-pool (tidigare SQL DW) kan du öka eller minska beräknings resu
 Så här ändrar du informationslagerenheter:
 
 1. Högerklicka på **huvuddatabas** och välj **Ny fråga**.
-2. Använd T-SQL-instruktionen [ALTER DATABASE](/sql/t-sql/statements/alter-database-azure-sql-database?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) för att ändra tjänstmålet. Kör följande fråga för att ändra tjänstmålet till DW300.
+2. Använd T-SQL-instruktionen [ALTER DATABASE](/sql/t-sql/statements/alter-database-azure-sql-database?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) för att ändra tjänstmålet. Kör följande fråga för att ändra tjänstmålet till DW300.
 
     ```Sql
     ALTER DATABASE mySampleDataWarehouse
@@ -136,7 +136,7 @@ När en dedikerad SQL-pool (tidigare SQL DW) har pausats kan du inte ansluta til
 
 ## <a name="check-operation-status"></a>Kontrollera åtgärdsstatus
 
-Om du vill returnera information om olika hanterings åtgärder på den dedikerade SQL-poolen (tidigare SQL DW) kör du följande fråga på [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) DMV. Den returnerar exempelvis åtgärden och åtgärdens tillstånd, som är IN_PROGRESS eller COMPLETED.
+Om du vill returnera information om olika hanterings åtgärder på den dedikerade SQL-poolen (tidigare SQL DW) kör du följande fråga på [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) DMV. Den returnerar exempelvis åtgärden och åtgärdens tillstånd, som är IN_PROGRESS eller COMPLETED.
 
 ```sql
 SELECT *

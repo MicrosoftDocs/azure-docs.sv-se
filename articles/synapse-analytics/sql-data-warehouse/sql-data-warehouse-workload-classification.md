@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: bf19e2d1674d0a0c2102280b28b5549505c1dfab
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 7cd3619aa60f1bd8ac13ff767857b44348989285
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96447764"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678431"
 ---
 # <a name="workload-classification-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Arbets belastnings klassificering för dedikerad SQL-pool i Azure Synapse Analytics
 
@@ -36,7 +36,7 @@ Alla instruktioner klassificeras inte eftersom de inte kräver resurser eller ä
 
 ## <a name="classification-process"></a>Klassificerings process
 
-Klassificering för dedikerad SQL-pool uppnås idag genom att tilldela användare till en roll som har en motsvarande resurs klass som är tilldelad till den med hjälp av [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest). Möjligheten att karakterisera begär Anden utöver en inloggning till en resurs klass är begränsad till den här funktionen. En bättre metod för klassificering är nu tillgänglig med [klassificerings metoden skapa arbets belastning](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) .  Med den här syntaxen kan dedikerade SQL-pool användare tilldela prioritet och hur mycket system resurser som tilldelas en begäran via `workload_group` parametern.
+Klassificering för dedikerad SQL-pool uppnås idag genom att tilldela användare till en roll som har en motsvarande resurs klass som är tilldelad till den med hjälp av [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true). Möjligheten att karakterisera begär Anden utöver en inloggning till en resurs klass är begränsad till den här funktionen. En bättre metod för klassificering är nu tillgänglig med [klassificerings metoden skapa arbets belastning](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) .  Med den här syntaxen kan dedikerade SQL-pool användare tilldela prioritet och hur mycket system resurser som tilldelas en begäran via `workload_group` parametern.
 
 > [!NOTE]
 > Klassificeringen utvärderas per begäran. Flera begär anden i en enda session kan klassificeras på olika sätt.
@@ -76,7 +76,7 @@ Föreställ dig följande scenario:
 - För att testa den nya klassificerings syntaxen, databas rollen DBARole (som DBAUser är medlem i), har en klassificerare som skapats för dem att mappa dem till mediumrc och hög prioritet.
 - När DBAUser loggar in och kör en fråga, tilldelas frågan till largerc. Eftersom en användare prioriteras över ett roll medlemskap.
 
-För att under lätta fel sökningen av fel klassificering rekommenderar vi att du tar bort mappningar av resurs klass roller när du skapar arbets belastnings klassificerare.  Koden nedan returnerar befintliga roll medlemskap i resurs klass.  Kör [sp_droprolemember](/sql/relational-databases/system-stored-procedures/sp-droprolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) för varje medlems namn som returneras från motsvarande resurs klass.
+För att under lätta fel sökningen av fel klassificering rekommenderar vi att du tar bort mappningar av resurs klass roller när du skapar arbets belastnings klassificerare.  Koden nedan returnerar befintliga roll medlemskap i resurs klass.  Kör [sp_droprolemember](/sql/relational-databases/system-stored-procedures/sp-droprolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) för varje medlems namn som returneras från motsvarande resurs klass.
 
 ```sql
 SELECT  r.name AS [Resource Class]
@@ -92,7 +92,7 @@ sp_droprolemember '[Resource Class]', membername
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Mer information om hur du skapar en klassificerare finns i [create klassificerare för arbets belastning (Transact-SQL)](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).  
+- Mer information om hur du skapar en klassificerare finns i [create klassificerare för arbets belastning (Transact-SQL)](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).  
 - Se snabb start för hur du skapar en arbets belastnings klassificering [skapa en arbets belastnings klassificering](quickstart-create-a-workload-classifier-tsql.md).
 - Se instruktions artiklar för att [Konfigurera arbets belastnings prioritet](sql-data-warehouse-how-to-configure-workload-importance.md) och hur du [hanterar och övervakar arbets belastnings hantering](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md).
-- Se [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) för att visa frågor och tilldelade prioritet.
+- Se [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) för att visa frågor och tilldelade prioritet.

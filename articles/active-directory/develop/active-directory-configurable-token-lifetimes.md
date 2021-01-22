@@ -13,12 +13,12 @@ ms.date: 01/04/2021
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40, content-perf, FY21Q1, contperf-fy21q1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: ec925ce165c1de98fe920381e1b51e3388c1e4ad
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 33dffa40e0236483d641c2e2bbe318bb62a7724d
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98232411"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678195"
 ---
 # <a name="configurable-token-lifetimes-in-microsoft-identity-platform-preview"></a>Konfigurerbara livstider för token i Microsoft Identity Platform (för hands version)
 
@@ -82,9 +82,11 @@ Du kan ange livs längds principer för token för uppdateringstoken och session
 > [!IMPORTANT]
 > Från maj till 2020 kan nya klienter inte konfigurera livstid för uppdatering och sessionstoken.  Innehavare med befintlig konfiguration kan ändra uppdaterings-och token-principer fram till den 30 januari 2021.   Azure Active Directory slutar att svara på befintlig konfiguration och sessionstoken i principer efter 30 januari 2021. Du kan fortfarande konfigurera åtkomst-, SAML-och ID-livstid för token efter indragningen.
 >
-> Om du behöver fortsätta att definiera tids perioden innan en användare uppmanas att logga in igen, konfigurerar du inloggnings frekvensen i villkorlig åtkomst. Läs mer om villkorlig åtkomst i [Konfigurera hantering av autentisering med villkorlig åtkomst](/azure/active-directory/conditional-access/howto-conditional-access-session-lifetime).
+> Om du behöver fortsätta att definiera tids perioden innan en användare uppmanas att logga in igen, konfigurerar du inloggnings frekvensen i villkorlig åtkomst. Läs mer om villkorlig åtkomst i [Konfigurera hantering av autentisering med villkorlig åtkomst](../conditional-access/howto-conditional-access-session-lifetime.md).
 >
 > Om du inte vill använda villkorlig åtkomst efter indragnings datumet kommer dina uppdaterings-och sessionstoken att ställas in på [standard konfigurationen](#configurable-token-lifetime-properties-after-the-retirement) på det datumet och du kommer inte längre att kunna ändra deras livstid.
+>
+> Den befintliga tokens livs längd kommer inte att ändras. När de har gått ut utfärdas en ny token baserat på standardvärdet.
 
 :::image type="content" source="./media/active-directory-configurable-token-lifetimes/roadmap.svg" alt-text="Information om pension":::
 

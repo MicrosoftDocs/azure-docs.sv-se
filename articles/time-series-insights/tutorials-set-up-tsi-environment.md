@@ -8,20 +8,20 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: tutorial
-ms.date: 09/30/2020
+ms.date: 01/19/2021
 ms.custom: seodec18
-ms.openlocfilehash: eeb3de2fc3f0e3e0be9c98002f11e470eaf04f8c
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 912dbf48254a8d68b9bf76db04734fd791a3edb9
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95020937"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98677061"
 ---
 # <a name="tutorial-set-up-an-azure-time-series-insights-gen2-environment"></a>Självstudie: Konfigurera en Azure Time Series Insights Gen2-miljö
 
 Den här självstudien vägleder dig genom processen att skapa en *Azure Time Series Insights Gen2 PAYG-miljö* ().
 
-I den här guiden får du lära dig att:
+I de här självstudierna får du lära dig att
 
 > [!div class="checklist"]
 >
@@ -95,7 +95,7 @@ I det här avsnittet beskrivs hur du skapar en Azure Time Series Insights Gen2-m
     | _ *Lagrings konto namn** | Ange ett globalt unikt namn för ett nytt lagrings konto.|
     | **Typ av lagrings konto** | Välj lagrings typ för ett nytt lagrings konto. Vi rekommenderar StorageV2|
     | **Replikering av lagrings konto** | Välj lagrings typ för ett nytt lagrings konto. Utifrån val av plats kan du välja mellan LRS, GRS och ZRS. I den här självstudien kan du välja LRS|
-    | **Hierarkiskt namn område** |Det här alternativet kan väljas när du har valt den lagrings typ som ska StorageV2. Som standard är den inaktive rad. I den här självstudien kan du lämna den i *inaktiverat* standard läge|
+    | **Hierarkisk namnrymd** |Det här alternativet kan väljas när du har valt den lagrings typ som ska StorageV2. Som standard är den inaktive rad. I den här självstudien kan du lämna den i *inaktiverat* standard läge|
     |**Aktivera varmt Arkiv**|Välj **Ja** om du vill aktivera varmt arkiv. Den här inställningen kan inaktive ras och aktive ras igen efter att miljön har skapats. |
     |**Data lagring (i dagar)**|Välj standard alternativet 7 dagar. |
 
@@ -229,32 +229,32 @@ I det här avsnittet tillämpar du en modell för att strukturera data. För att
         | Parameter | Action |
         | --- | --- |
         | **Namn** | Ange **Genomsnittlig temperatur**. |
-        | **Typ** | Välj **numerisk** |
+        | **Variant** | Välj **numerisk** |
         | **Värde** | Välj från förval: Välj **temperatur (dubbel)**. <br /> Obs! det kan ta några minuter innan **värdet** fylls i automatiskt när Azure Time Series Insights Gen2 börjar ta emot händelser.|
         | **Sammansättningsåtgärd** | Expandera **Avancerade alternativ**. <br /> Välj **AVG**. |
 
-    1. Välj **Tillämpa**. Sedan, **+ Lägg till variabel** igen och ange följande värden:
+    1. Välj **Använd**. Sedan, **+ Lägg till variabel** igen och ange följande värden:
 
         | Parameter | Action |
         | --- | --- |
         | **Namn** | Ange **genomsnittlig vibration**. |
-        | **Typ** | Välj **numerisk** |
+        | **Variant** | Välj **numerisk** |
         | **Värde** | Välj från förval: Välj **vibrationer (dubbel)**. <br /> Obs! det kan ta några minuter innan **värdet** fylls i automatiskt när Azure Time Series Insights Gen2 börjar ta emot händelser.|
         | **Sammansättningsåtgärd** | Expandera **Avancerade alternativ**. <br /> Välj **AVG**. |
 
-    1. Välj **Tillämpa**. Sedan, **+ Lägg till variabel** igen och ange följande värden för den tredje och sista variabeln:
+    1. Välj **Använd**. Sedan, **+ Lägg till variabel** igen och ange följande värden för den tredje och sista variabeln:
 
         | Parameter | Action |
         | --- | --- |
         | **Namn** | Ange **basyta**. |
-        | **Typ** | Välj **kategoriska** |
+        | **Variant** | Välj **kategoriska** |
         | **Värde** | Välj från förval: Välj **basyta (dubbel)**. <br /> Obs! det kan ta några minuter innan **värdet** fylls i automatiskt när Azure Time Series Insights Gen2 börjar ta emot händelser.|
         | **Kategorier** | <span style="text-decoration: underline">Etikett</span>   -  <span style="text-decoration: underline">Värden</span> <br /> Lägre: 1, 2, 3, 4 <br /> Mellan: 5, 6, 7, 8, 9 <br /> Versal: 10, 11, 12, 13, 14, 15 |
         | **Standard kategori** | Ange **okänd** |
 
         [![Lägg till typer av variabler.](media/v2-update-provision/tsi-add-type-variables.png)](media/v2-update-provision/tsi-add-type-variables.png#lightbox)
 
-    1. Välj **Tillämpa**. 
+    1. Välj **Använd**. 
     1. Välj **Spara**. Tre variabler skapas och visas.
 
         [![När du har lagt till typen granskar du den i vyn modell.](media/v2-update-provision/tsi-add-type-and-view.png)](media/v2-update-provision/tsi-add-type-and-view.png#lightbox)

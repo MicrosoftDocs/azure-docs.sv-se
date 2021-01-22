@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: mvc
-ms.openlocfilehash: 874da5ffcd2777648bb06c6e702932d64a32e59c
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 740563935e12d5a7418bada2a18b48fb573f6e7d
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97682018"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98679015"
 ---
 # <a name="quickstart-create-an-android-app-with-azure-maps"></a>Snabb start: skapa en Android-app med Azure Maps
 
@@ -28,7 +28,7 @@ Den här artikeln visar hur du lägger till Azure Maps i en Android-app. Vi går
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-1. Skapa ett Azure Maps-konto genom att logga in på [Azure Portal](https://portal.azure.com). Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/free/) innan du börjar.
+1. Skapa ett Azure Maps-konto genom att logga in på [Azure Portal](https://portal.azure.com). Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/) innan du börjar.
 2. [Skapa ett Azure Maps konto](quick-demo-map-app.md#create-an-azure-maps-account)
 3. [Hämta en primär prenumerations nyckel](quick-demo-map-app.md#get-the-primary-key-for-your-account), även kallat primär nyckel eller prenumerations nyckel. Mer information om autentisering i Azure Maps finns i [hantera autentisering i Azure Maps](how-to-manage-authentication.md).
 4. [Ladda ned Android Studio](https://developer.android.com/studio/) kostnads fritt från Google.
@@ -59,7 +59,7 @@ När ditt Maps-konto har skapats hämtar du den primära nyckeln som gör att du
 3. Kopiera **Primärnyckel** till Urklipp. Spara den lokalt för senare användning i den här självstudien.
 
 >[!NOTE]
-> Om du använder Azures prenumerations nyckel i stället för Azure Maps primär nyckel, återges inte kartan på rätt sätt. Av säkerhets skäl rekommenderar vi också att du roterar mellan dina primära och sekundära nycklar. Om du vill rotera nycklar uppdaterar du appen så att den använder den sekundära nyckeln, distribuerar och trycker sedan på knappen cykel/uppdatera bredvid den primära nyckeln för att generera en ny primär nyckel. Den gamla primär nyckeln kommer att inaktive ras. Mer information om nyckel rotation finns i [konfigurera Azure Key Vault med nyckel rotation och granskning](https://docs.microsoft.com/azure/key-vault/secrets/key-rotation-log-monitoring)
+> Om du använder Azures prenumerations nyckel i stället för Azure Maps primär nyckel, återges inte kartan på rätt sätt. Av säkerhets skäl rekommenderar vi också att du roterar mellan dina primära och sekundära nycklar. Om du vill rotera nycklar uppdaterar du appen så att den använder den sekundära nyckeln, distribuerar och trycker sedan på knappen cykel/uppdatera bredvid den primära nyckeln för att generera en ny primär nyckel. Den gamla primär nyckeln kommer att inaktive ras. Mer information om nyckel rotation finns i [konfigurera Azure Key Vault med nyckel rotation och granskning](../key-vault/secrets/tutorial-rotation-dual.md)
 
 ![Hämta primär nyckel Azure Maps nyckel i Azure Portal](media/quick-android-map/get-key.png)
 

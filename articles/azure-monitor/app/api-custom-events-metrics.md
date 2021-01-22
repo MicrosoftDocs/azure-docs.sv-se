@@ -4,12 +4,12 @@ description: Infoga några rader kod i din enhet eller Skriv bords app, webb sid
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: d553c192d62baedb93c7f8270c56526fbf8edb62
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 8fecca4875ba291da093bf1eea596eef290f80c8
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98233754"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678120"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>API för Application Insights för anpassade händelser och mått
 
@@ -439,7 +439,7 @@ exceptions
 | summarize sum(itemCount) by type
 ```
 
-De flesta viktiga stack-uppgifter har redan extraherats i separata variabler, men du kan dra isär `details` strukturen för att få mer information. Eftersom den här strukturen är dynamisk bör du omvandla resultatet till den typ som du förväntar dig. Här är några exempel:
+De flesta viktiga stack-uppgifter har redan extraherats i separata variabler, men du kan dra isär `details` strukturen för att få mer information. Eftersom den här strukturen är dynamisk bör du omvandla resultatet till den typ som du förväntar dig. Till exempel:
 
 ```kusto
 exceptions
@@ -502,7 +502,7 @@ Du kan söka efter meddelande innehåll, men (till skillnad från egenskaps vär
 Storleks gränsen på `message` är mycket högre än gränsen för egenskaper.
 En fördel med TrackTrace är att du kan ställa in relativt långa data i meddelandet. Du kan till exempel koda POST-data där.  
 
-Dessutom kan du lägga till en allvarlighets grad i meddelandet. Liksom andra telemetri kan du lägga till egenskaps värden som hjälper dig att filtrera eller söka efter olika uppsättningar med spår. Här är några exempel:
+Dessutom kan du lägga till en allvarlighets grad i meddelandet. Liksom andra telemetri kan du lägga till egenskaps värden som hjälper dig att filtrera eller söka efter olika uppsättningar med spår. Till exempel:
 
 *C#*
 
@@ -534,7 +534,7 @@ Om [sampling](./sampling.md) är i drift, Visar egenskapen itemCount ett värde 
 Använd TrackDependency-anropet för att spåra svars tiderna och framgångs frekvensen för anrop till en extern kod. Resultaten visas i beroende diagram i portalen. Kodfragmentet nedan måste läggas till överallt där ett beroende anrop görs.
 
 > [!NOTE]
-> För .NET och .NET Core kan du alternativt använda `TelemetryClient.StartOperation` metoden (Extension) som fyller de `DependencyTelemetry` egenskaper som behövs för korrelationen och andra egenskaper som start tid och varaktighet, så att du inte behöver skapa en anpassad timer som i exemplen nedan. Mer information finns [i artikeln om utgående beroende spårning](https://docs.microsoft.com/azure/azure-monitor/app/custom-operations-tracking#outgoing-dependencies-tracking).
+> För .NET och .NET Core kan du alternativt använda `TelemetryClient.StartOperation` metoden (Extension) som fyller de `DependencyTelemetry` egenskaper som behövs för korrelationen och andra egenskaper som start tid och varaktighet, så att du inte behöver skapa en anpassad timer som i exemplen nedan. Mer information finns [i artikeln om utgående beroende spårning](./custom-operations-tracking.md#outgoing-dependencies-tracking).
 
 *C#*
 
@@ -1068,7 +1068,7 @@ var appInsights = window.appInsights || function(config){ ...
 
 ## <a name="telemetrycontext"></a>TelemetryContext
 
-TelemetryClient har en kontext egenskap som innehåller värden som skickas tillsammans med alla telemetridata. De anges normalt av standardmodulerna för telemetri, men du kan också ställa in dem själv. Här är några exempel:
+TelemetryClient har en kontext egenskap som innehåller värden som skickas tillsammans med alla telemetridata. De anges normalt av standardmodulerna för telemetri, men du kan också ställa in dem själv. Till exempel:
 
 ```csharp
 telemetry.Context.Operation.Name = "MyOperationName";

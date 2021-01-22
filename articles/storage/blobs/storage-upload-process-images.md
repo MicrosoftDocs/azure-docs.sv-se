@@ -9,12 +9,12 @@ ms.date: 06/24/2020
 ms.author: mhopkins
 ms.reviewer: dineshm
 ms.custom: devx-track-js, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: c20c78cb3c946c666b1640ccac6f86c9b52387ea
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: b50aadfa16ed95bacb5247187c15489a1b017d39
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843884"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98676598"
 ---
 # <a name="tutorial-upload-image-data-in-the-cloud-with-azure-storage"></a>Självstudie: Ladda upp bilddata i molnet med Azure Storage
 
@@ -34,7 +34,7 @@ I del ett i den här serien lärde du dig att:
 
 > [!div class="checklist"]
 
-> * skapar ett lagringskonto
+> * Skapa ett lagringskonto
 > * Skapar en container och anger behörigheter
 > * Hämta en åtkomstnyckel
 > * Distribuera en webbapp till Azure
@@ -55,7 +55,7 @@ Skapa en resursgrupp med kommandot [az group create](/cli/azure/group). En Azure
 
 I följande exempel skapas en resursgrupp med namnet `myResourceGroup`.
 
-```bash
+```azurecli
 az group create --name myResourceGroup --location southeastasia
 ```
 
@@ -63,7 +63,7 @@ az group create --name myResourceGroup --location southeastasia
 az group create --name myResourceGroup --location southeastasia
 ```
 
-## <a name="create-a-storage-account"></a>skapar ett lagringskonto
+## <a name="create-a-storage-account"></a>Skapa ett lagringskonto
 
 Exemplet överför avbildningar till en BLOB-behållare i ett Azure Storage-konto. Ett Azure-lagringskonto tillhandahåller en unik namnrymd där du kan lagra och få åtkomst till dina Azure-lagringdataobjekt. Skapa ett lagringskonto i resursgruppen du skapade med hjälp av kommandot [az storage account create](/cli/azure/storage/account).
 
@@ -72,7 +72,7 @@ Exemplet överför avbildningar till en BLOB-behållare i ett Azure Storage-kont
 
 I följande kommando ersätter du ditt globalt unika namn för det Blob Storage-konto där platshållaren `<blob_storage_account>` visas.
 
-```bash
+```azurecli
 blobStorageAccount="<blob_storage_account>"
 
 az storage account create --name $blobStorageAccount --location southeastasia \
@@ -130,7 +130,7 @@ Skapa en App Service-plan med kommandot [az appservice plan create](/cli/azure/a
 
 I följande exempel skapas en App Service-plan med namnet `myAppServicePlan` på prisnivån **Kostnadsfri**:
 
-```bash
+```azurecli
 az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku Free
 ```
 
@@ -144,7 +144,7 @@ Webbappen tillhandahåller ett värdutrymme för exempelappens kod som distribue
 
 I följande kommando ersätter du `<web_app>` med ett unikt namn. Giltiga tecken är `a-z`, `0-9` och `-`. Om `<web_app>` inte är unikt får du ett fel meddelande: det *`<web_app>` finns redan en webbplats med det namnet.* Standardwebbadressen för webbappen är `https://<web_app>.azurewebsites.net`.  
 
-```bash
+```azurecli
 webapp="<web_app>"
 
 az webapp create --name $webapp --resource-group myResourceGroup --plan myAppServicePlan
@@ -164,7 +164,7 @@ App Service har stöd för flera olika sätt att distribuera innehåll till en w
 
 Exempelprojektet innehåller en [ASP.NET MVC](https://www.asp.net/mvc)-app. Appen accepterar en bild, sparar den till ett lagringskonto och visar bilder från en container med miniatyrer. Webbappen använder [Azure. Storage](/dotnet/api/azure.storage), [Azure. Storage. blobar](/dotnet/api/azure.storage.blobs)och [Azure. Storage. blobar.](/dotnet/api/azure.storage.blobs.models) namn rymder för modeller för att interagera med den Azure Storage tjänsten.
 
-```bash
+```azurecli
 az webapp deployment source config --name $webapp --resource-group myResourceGroup \
   --branch master --manual-integration \
   --repo-url https://github.com/Azure-Samples/storage-blob-upload-from-webapp
@@ -180,7 +180,7 @@ az webapp deployment source config --name $webapp --resource-group myResourceGro
 
 App Service har stöd för flera olika sätt att distribuera innehåll till en webbapp. I de här självstudierna distribuerar du webbappen från en [offentlig GitHub exempellagringsplats](https://github.com/Azure-Samples/azure-sdk-for-js-storage-blob-stream-nodejs). Konfigurera lokal Git-distribution till webbappen med kommandot [az webapp deployment source config-local-git](/cli/azure/webapp/deployment/source).
 
-```bash
+```azurecli
 az webapp deployment source config --name $webapp --resource-group myResourceGroup \
   --branch master --manual-integration \
   --repo-url https://github.com/Azure-Samples/azure-sdk-for-js-storage-blob-stream-nodejs
@@ -200,7 +200,7 @@ az webapp deployment source config --name $webapp --resource-group myResourceGro
 
 Webbappens exempel använder [Azure Storage-API: er för .net](/dotnet/api/overview/azure/storage) för att ladda upp avbildningar. Autentiseringsuppgifterna för lagrings kontot anges i app-inställningarna för webbappen. Lägg till appinställningar till den distribuerade appen med kommandot [az webapp config appsettings set](/cli/azure/webapp/config/appsettings).
 
-```bash
+```azurecli
 az webapp config appsettings set --name $webapp --resource-group myResourceGroup \
   --settings AzureStorageConfig__AccountName=$blobStorageAccount \
     AzureStorageConfig__ImageContainer=images \
@@ -220,7 +220,7 @@ az webapp config appsettings set --name $webapp --resource-group myResourceGroup
 
 Exempel webb programmet använder [Azure Storage klient bibliotek för Java Script](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage) för att ladda upp bilder. Autentiseringsuppgifterna för lagrings kontot anges i app-inställningarna för webbappen. Lägg till appinställningar till den distribuerade appen med kommandot [az webapp config appsettings set](/cli/azure/webapp/config/appsettings).
 
-```bash
+```azurecli
 az webapp config appsettings set --name $webapp --resource-group myResourceGroup \
   --settings AZURE_STORAGE_ACCOUNT_NAME=$blobStorageAccount \
     AZURE_STORAGE_ACCOUNT_ACCESS_KEY=$blobStorageAccountKey

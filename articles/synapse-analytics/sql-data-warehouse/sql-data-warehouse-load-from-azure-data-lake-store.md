@@ -11,16 +11,16 @@ ms.date: 11/20/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 4f881dcc0d26589c4029246019119fa0555dcd5d
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 0974e880b75cce69f2b5ac82e3c4b39de53e03ce
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98117783"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98677112"
 ---
 # <a name="load-data-from-azure-data-lake-storage-into-dedicated-sql-pools-in-azure-synapse-analytics"></a>Läs in data från Azure Data Lake Storage i dedikerade SQL-pooler i Azure Synapse Analytics
 
-Den här guiden beskriver hur du använder Copy- [instruktionen](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) för att läsa in data från Azure Data Lake Storage. Exempel på hur du använder COPY-instruktionen för alla autentiseringsmetoder finns i följande dokumentation: [Läs in data på ett säkert sätt med dedikerade SQL-pooler](./quickstart-bulk-load-copy-tsql-examples.md).
+Den här guiden beskriver hur du använder Copy- [instruktionen](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true) för att läsa in data från Azure Data Lake Storage. Exempel på hur du använder COPY-instruktionen för alla autentiseringsmetoder finns i följande dokumentation: [Läs in data på ett säkert sätt med dedikerade SQL-pooler](./quickstart-bulk-load-copy-tsql-examples.md).
 
 > [!NOTE]  
 > Skicka ett e-postmeddelande till följande distributions lista för att ge feedback eller rapportera problem på KOPIERINGs instruktionen: sqldwcopypreview@service.microsoft.com .
@@ -34,7 +34,7 @@ Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](ht
 
 ## <a name="before-you-begin"></a>Innan du börjar
 
-Innan du börjar med de här självstudierna ska du ladda ned och installera den senaste versionen av [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS).
+Innan du börjar med de här självstudierna ska du ladda ned och installera den senaste versionen av [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (SSMS).
 
 För att kunna köra den här självstudien behöver du:
 
@@ -133,6 +133,6 @@ Inläsning av data är det första steget för att utveckla en informations lage
 > [Lär dig hur du utvecklar tabeller för data lager hantering](sql-data-warehouse-tables-overview.md)
 
 Läs följande dokumentation om du vill läsa mer om exempel och referenser:
-- [Referens dokumentation för KOPIERINGs instruktion](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest#syntax)
+- [Referens dokumentation för KOPIERINGs instruktion](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true#syntax)
 - [Kopiera exempel för varje autentiseringsmetod](./quickstart-bulk-load-copy-tsql-examples.md)
 - [Kopiera snabb start för en enskild tabell](./quickstart-bulk-load-copy-tsql.md)

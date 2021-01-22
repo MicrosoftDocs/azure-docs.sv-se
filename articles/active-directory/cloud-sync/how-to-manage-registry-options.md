@@ -16,12 +16,12 @@ ms.subservice: hybrid
 ms.reviewer: chmutali
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4cdda52271bc7b9e9d854e0af181e2c8f22ad9a
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 1f39ef611e2ea15ef3bc3dbfcf09e9624cbcf8b3
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98614122"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678229"
 ---
 # <a name="manage-agent-registry-options"></a>Hantera agentens register alternativ
 
@@ -34,7 +34,7 @@ När du utför LDAP-åtgärder på konfigurerade Active Directory domänkontroll
 System.DirectoryServices.Protocols.LdapException: The operation was aborted because the client side timeout limit was exceeded.
 `
 
-LDAP search-åtgärder kan ta längre tid om sökattributet inte är indexerat. Som ett första steg, om du får ovanstående fel, kontrollerar du först om attributet search/lookup är [Indexerat](https://docs.microsoft.com/windows/win32/ad/indexed-attributes). Om sökattributen är indexerade och felet kvarstår kan du öka tids gränsen för LDAP-anslutningen med hjälp av följande steg: 
+LDAP search-åtgärder kan ta längre tid om sökattributet inte är indexerat. Som ett första steg, om du får ovanstående fel, kontrollerar du först om attributet search/lookup är [Indexerat](/windows/win32/ad/indexed-attributes). Om sökattributen är indexerade och felet kvarstår kan du öka tids gränsen för LDAP-anslutningen med hjälp av följande steg: 
 
 1. Logga in som administratör på Windows Server som kör Azure AD Connect etablerings agenten.
 1. Använd meny alternativet *Kör* för att öppna registereditorn (regedit.exe) 
@@ -48,7 +48,7 @@ LDAP search-åtgärder kan ta längre tid om sökattributet inte är indexerat. 
 1. Om du har distribuerat flera etablerings agenter ska du tillämpa den här register ändringen på alla agenter för konsekvens. 
 
 ## <a name="configure-referral-chasing"></a>Konfigurera hänvisnings jaga
-Som standard visar Azure AD Connect etablerings agenten inte [hänvisningar](https://docs.microsoft.com/windows/win32/ad/referrals). Du kanske vill aktivera hänvisnings-jaga för att stödja vissa HR-scenarier för inkommande etablering, till exempel: 
+Som standard visar Azure AD Connect etablerings agenten inte [hänvisningar](/windows/win32/ad/referrals). Du kanske vill aktivera hänvisnings-jaga för att stödja vissa HR-scenarier för inkommande etablering, till exempel: 
 * Kontrol lera unikt UPN över flera domäner
 * Lösa kors domän hanterarens referenser
 

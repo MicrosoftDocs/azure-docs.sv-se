@@ -3,12 +3,12 @@ title: Skapa en Azure Functions Premium-plan i portalen
 description: Lär dig hur du använder Azure Portal för att skapa en Function-app som körs i Premium-planen.
 ms.topic: how-to
 ms.date: 10/30/2020
-ms.openlocfilehash: 20921423247dda3cbb39b58dcc805dac6d367390
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 9cab67f096665c9333fa40bcb790896fcbebd8d5
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97937779"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98676594"
 ---
 # <a name="create-a-premium-plan-function-app-in-the-azure-portal"></a>Skapa en Premium Plans funktion-app i Azure Portal
 
@@ -35,4 +35,4 @@ Nu kan du skapa funktioner i den nya Function-appen. Dessa funktioner kan dra ny
 ## <a name="next-steps"></a>Nästa steg
 
 > [!div class="nextstepaction"]
-> [Lägg till en HTTP-utlöst funktion](functions-create-first-azure-function.md#create-function)
+> [Lägg till en HTTP-utlöst funktion] (./functions-get-started.md

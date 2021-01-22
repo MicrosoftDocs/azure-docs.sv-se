@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 761976741bf794a21182e8f962b274ae32925060
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 5640c1e254c4738ab53881544a09808b4894a462
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324471"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98676977"
 ---
 # <a name="what-is-workload-management"></a>Vad är arbets belastnings hantering?
 
@@ -44,7 +44,7 @@ Om du till exempel beviljar ett ad hoc användar roll medlemskap till smallrc ti
 
 Dedikerad arbets belastnings hantering i SQL-pool i Azure Synapse består av tre koncept på hög nivå: [arbets belastnings klassificering](sql-data-warehouse-workload-classification.md), [arbets belastnings prioritet](sql-data-warehouse-workload-importance.md)och [arbets belastnings isolering](sql-data-warehouse-workload-isolation.md).  Med de här funktionerna får du mer kontroll över hur arbets belastningen använder system resurser.
 
-Arbets belastnings klassificering är begreppet att tilldela en begäran till en arbets belastnings grupp och ange prioritets nivåer.  Tidigare genomfördes den här tilldelningen via roll medlemskap med hjälp av [sp_addrolemember](resource-classes-for-workload-management.md#change-a-users-resource-class).  Den här åtgärden kan nu utföras via [CLASSIFER skapa arbets belastning](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).  Klassificerings funktionen ger en mer omfattande uppsättning alternativ, till exempel etikett, session och tid för klassificering av begär Anden.
+Arbets belastnings klassificering är begreppet att tilldela en begäran till en arbets belastnings grupp och ange prioritets nivåer.  Tidigare genomfördes den här tilldelningen via roll medlemskap med hjälp av [sp_addrolemember](resource-classes-for-workload-management.md#change-a-users-resource-class).  Den här åtgärden kan nu utföras via [CLASSIFER skapa arbets belastning](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).  Klassificerings funktionen ger en mer omfattande uppsättning alternativ, till exempel etikett, session och tid för klassificering av begär Anden.
 
 Arbets belastnings prioriteten påverkar i vilken ordning en begäran får åtkomst till resurser.  På ett upptaget system har en begäran med högre prioritet först åtkomst till resurser.  Prioriteten kan också se till att åtkomsten till lås har beställts.
 

@@ -11,12 +11,12 @@ ms.date: 03/22/2019
 ms.author: xiaoyul
 ms.custom: azure-synapse
 ms.reviewer: igorstan
-ms.openlocfilehash: 67cb4868ee8d4190c47e23315bf2a22e5c847ff1
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 8144c588d4b6794cadc0577bf63dabc2cc3e0efd
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121183"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98677294"
 ---
 # <a name="use-transactions-in-a-sql-pool-in-azure-synapse"></a>Använda transaktioner i en SQL-pool i Azure Synapse 
 
@@ -30,7 +30,7 @@ Som förväntat stöder SQL-poolen transaktioner som en del av arbets belastning
 
 SQL-poolen implementerar syror-transaktioner. Isolerings nivån för transaktions stödet är som standard SKRIVSKYDDad.  Du kan ändra den för att läsa en ISOLERAd ÖGONBLICKs bild isolering genom att aktivera READ_COMMITTED_SNAPSHOT databas alternativ för en SQL-pool för användare när du är ansluten till huvud databasen.  
 
-När den är aktive rad körs alla transaktioner i den här databasen under den SKRIVSKYDDade ÖGONBLICKs bild ISOLERINGen och inställningen Läs upp ej ALLOKERAd på sessions nivå kommer inte att ske. Se [Alter Database set Options (Transact-SQL)](/sql/t-sql/statements/alter-database-transact-sql-set-options?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) för mer information.
+När den är aktive rad körs alla transaktioner i den här databasen under den SKRIVSKYDDade ÖGONBLICKs bild ISOLERINGen och inställningen Läs upp ej ALLOKERAd på sessions nivå kommer inte att ske. Se [Alter Database set Options (Transact-SQL)](/sql/t-sql/statements/alter-database-transact-sql-set-options?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) för mer information.
 
 ## <a name="transaction-size"></a>Transaktions storlek
 

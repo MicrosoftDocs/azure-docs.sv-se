@@ -11,12 +11,12 @@ ms.date: 10/10/2019
 ms.author: xiaoyul
 ms.reviewer: nidejaco;
 ms.custom: azure-synapse
-ms.openlocfilehash: 2b54277d0306244dc4ab6740fdd30e52668dd63c
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: d8c6c8d22c059c63fb4f84c84a02a70de30d4ebe
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460777"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678533"
 ---
 # <a name="performance-tuning-with-result-set-caching"></a>Prestandajustering med cachelagring av resultatuppsättningar
 
@@ -24,13 +24,13 @@ När cachelagring av resultat uppsättningar är aktiverat cachelagrar dedikerad
 
 ## <a name="key-commands"></a>Nyckel kommandon
 
-[Aktivera/inaktivera cachelagring av resultat uppsättningar för en användar databas](/sql/t-sql/statements/alter-database-transact-sql-set-options?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+[Aktivera/inaktivera cachelagring av resultat uppsättningar för en användar databas](/sql/t-sql/statements/alter-database-transact-sql-set-options?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
 
-[Aktivera/inaktivera cachelagring av resultat uppsättningar för en session](/sql/t-sql/statements/set-result-set-caching-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+[Aktivera/inaktivera cachelagring av resultat uppsättningar för en session](/sql/t-sql/statements/set-result-set-caching-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
 
-[Kontrol lera storleken på den cachelagrade resultat uppsättningen](/sql/t-sql/database-console-commands/dbcc-showresultcachespaceused-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)  
+[Kontrol lera storleken på den cachelagrade resultat uppsättningen](/sql/t-sql/database-console-commands/dbcc-showresultcachespaceused-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)  
 
-[Rensa cacheminnet](/sql/t-sql/database-console-commands/dbcc-dropresultsetcache-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+[Rensa cacheminnet](/sql/t-sql/database-console-commands/dbcc-dropresultsetcache-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
 
 ## <a name="whats-not-cached"></a>Vad är inte cachelagrat  
 
@@ -74,7 +74,7 @@ Den cachelagrade resultat uppsättningen återanvänds för en fråga om alla f�
 - Det finns en exakt matchning mellan den nya frågan och den föregående frågan som genererade resultat uppsättningens cacheminne.
 - Det finns inga data eller schema ändringar i tabellerna där den cachelagrade resultat uppsättningen genererades.
 
-Kör det här kommandot för att kontrol lera om en fråga kördes med en resultat-cacheträffar eller missar. I kolumnen result_cache_hit returneras 1 för cacheträff, 0 för cache-missar och negativa värden av skäl varför cachelagring av resultat uppsättningar inte användes. Mer information finns i [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) .
+Kör det här kommandot för att kontrol lera om en fråga kördes med en resultat-cacheträffar eller missar. I kolumnen result_cache_hit returneras 1 för cacheträff, 0 för cache-missar och negativa värden av skäl varför cachelagring av resultat uppsättningar inte användes. Mer information finns i [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) .
 
 ```sql
 SELECT request_id, command, result_cache_hit FROM sys.dm_pdw_exec_requests

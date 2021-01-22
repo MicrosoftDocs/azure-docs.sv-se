@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 09/07/2020
 ms.author: alkohli
-ms.openlocfilehash: 8ea0c27fdd64bae1e6fe9443df76c86e0eb89a75
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: 54a4a938be18d39993652cecb87b3604e268fcef
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97762934"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678961"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-using-azure-cli-and-python"></a>Distribuera virtuella datorer på Azure Stack Edge Pro GPU-enhet med hjälp av Azure CLI och python
 
@@ -123,7 +123,7 @@ Innan du börjar skapa och hantera en virtuell dator på din Azure Stack Edge Pr
 
     Följande är ett exempel på utdata av kommandot ovan:
 
-    ```powershell
+    ```output
     PS C:\windows\system32> az --version
     azure-cli                         2.0.80
     
@@ -147,7 +147,7 @@ Innan du börjar skapa och hantera en virtuell dator på din Azure Stack Edge Pr
     PS C:\windows\system32>
     ```
 
-    Om du inte har Azure CLI laddar du ned och [installerar Azure CLI i Windows](/cli/azure/install-azure-cli-windows?view=azure-cli-latest). Du kan köra Azure CLI med kommando tolken i Windows eller via Windows PowerShell.
+    Om du inte har Azure CLI laddar du ned och [installerar Azure CLI i Windows](/cli/azure/install-azure-cli-windows). Du kan köra Azure CLI med kommando tolken i Windows eller via Windows PowerShell.
 
 2. Anteckna CLI: s python-plats. Du behöver detta för att bestämma platsen för betrodda rot certifikat Arkiv för Azure CLI.
 
@@ -171,7 +171,7 @@ Innan du börjar skapa och hantera en virtuell dator på din Azure Stack Edge Pr
 
     Följande exempel på utdata visar installationen av Haikunator:
 
-    ```powershell
+    ```output
     PS C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2> .\python.exe -m pip install haikunator
 
     Collecting haikunator
@@ -187,7 +187,7 @@ Innan du börjar skapa och hantera en virtuell dator på din Azure Stack Edge Pr
 
     Följande exempel på utdata visar installationen av pip för `msrestazure` : 
     
-    ```powershell
+    ```output
     PS C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2> .\python.exe -m pip install msrestazure==0.6.2
     Requirement already satisfied: msrestazure==0.6.2 in c:\program files (x86)\microsoft sdks\azure\cli2\lib\site-packages (0.6.2)
     Requirement already satisfied: msrest<2.0.0,>=0.6.0 in c:\program files (x86)\microsoft sdks\azure\cli2\lib\site-packages (from msrestazure==0.6.2) (0.6.10)
@@ -211,7 +211,7 @@ Innan du börjar skapa och hantera en virtuell dator på din Azure Stack Edge Pr
     
     Cmdleten returnerar certifikat platsen som visas nedan:  
         
-    ```powershell
+    ```output
     PS C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2> .\python -c "import certifi; print(certifi.where())"
     C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\lib\site-packages\certifi\cacert.pem
     PS C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2>
@@ -323,7 +323,7 @@ Innan du börjar skapa och hantera en virtuell dator på din Azure Stack Edge Pr
 
    I följande exempel visas utdata för ett lyckat inloggnings försök efter att du har angett lösen ordet:  
    
-   ```powershell
+   ```output
    PS C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2> az login -u EdgeARMuser
    Password:
    [

@@ -11,12 +11,12 @@ ms.date: 05/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 302249b7d8490e43b841116c52500e686626433d
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 5773691852ddc723ec84503edee37c678bbbcfd9
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460600"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98677512"
 ---
 # <a name="quickstart-configure-dedicated-sql-pool-workload-isolation-using-a-workload-group-in-the-azure-portal"></a>Snabb start: konfigurera dedikerad arbets belastnings isolering i SQL-pool med en arbets belastnings grupp i Azure Portal
 
@@ -93,7 +93,7 @@ Rensa resurserna genom att följa dessa steg.
 
 ## <a name="next-steps"></a>Nästa steg
 
-Om du vill använda `DataLoads` arbets belastnings gruppen måste en [arbets belastnings klassificerare](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) skapas för att dirigera begär anden till arbets belastnings gruppen.  Fortsätt till självstudien [skapa arbets belastnings klassificering](quickstart-create-a-workload-classifier-portal.md) för att skapa en klassificering för arbets belastning för `DataLoads` .
+Om du vill använda `DataLoads` arbets belastnings gruppen måste en [arbets belastnings klassificerare](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) skapas för att dirigera begär anden till arbets belastnings gruppen.  Fortsätt till självstudien [skapa arbets belastnings klassificering](quickstart-create-a-workload-classifier-portal.md) för att skapa en klassificering för arbets belastning för `DataLoads` .
 
 ## <a name="see-also"></a>Se även
 Se artikeln om hur du [hanterar och övervakar arbets belastnings hantering](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md) för mer information om hur du övervakar arbets belastningar för hantering av arbets belastning.

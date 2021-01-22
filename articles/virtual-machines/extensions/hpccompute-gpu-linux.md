@@ -12,14 +12,14 @@ ms.subservice: extensions
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 02/11/2019
-ms.author: akjosh
-ms.openlocfilehash: c06d8e4ab368934182ed67b91dedb9ba9bcfc199
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.date: 01/21/2021
+ms.author: amverma
+ms.openlocfilehash: a241086e6a590096cf40cbdb7a84838b14889f73
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965331"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678296"
 ---
 # <a name="nvidia-gpu-driver-extension-for-linux"></a>NVIDIA GPU-drivrutins tillägg för Linux
 
@@ -30,7 +30,7 @@ Det här tillägget installerar NVIDIA GPU-drivrutiner på virtuella datorer i L
 Anvisningar om manuell installation av driv rutinerna och de aktuella versioner som stöds finns [här](../linux/n-series-driver-setup.md).
 Det finns också ett tillägg för att installera NVIDIA GPU-drivrutiner på [virtuella datorer med Windows N-serien](hpccompute-gpu-windows.md).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 ### <a name="operating-system"></a>Operativsystem
 
@@ -39,8 +39,8 @@ Det här tillägget har stöd för följande OS-distributioner, beroende på dri
 | Distribution | Version |
 |---|---|
 | Linux: Ubuntu | 16,04 LTS 18,04 LTS |
-| Linux: Red Hat Enterprise Linux | 7,3, 7,4, 7,5, 7,6, 7,7 |
-| Linux: CentOS | 7,3, 7,4, 7,5, 7,6, 7,7 |
+| Linux: Red Hat Enterprise Linux | 7,3, 7,4, 7,5, 7,6, 7,7, 7,8 |
+| Linux: CentOS | 7,3, 7,4, 7,5, 7,6, 7,7, 7,8 |
 
 ### <a name="internet-connectivity"></a>Internetanslutning
 
@@ -72,9 +72,9 @@ Följande JSON visar schemat för tillägget.
 
 ### <a name="properties"></a>Egenskaper
 
-| Namn | Värde/exempel | Datatyp |
+| Name | Värde/exempel | Datatyp |
 | ---- | ---- | ---- |
-| apiVersion | 2015-06-15 | datum |
+| apiVersion | 2015-06-15 | date |
 | utgivare | Microsoft. HpcCompute | sträng |
 | typ | NvidiaGpuDriverLinux | sträng |
 | typeHandlerVersion | 1.3 | int |
@@ -83,10 +83,10 @@ Följande JSON visar schemat för tillägget.
 
 Alla inställningar är valfria. Standard beteendet är att inte uppdatera kerneln om det inte krävs för installation av driv rutiner, installera den senaste driv rutinen och CUDA Toolkit (i tillämpliga fall).
 
-| Namn | Beskrivning | Standardvärde | Giltiga värden | Datatyp |
+| Name | Beskrivning | Standardvärde | Giltiga värden | Datatyp |
 | ---- | ---- | ---- | ---- | ---- |
 | Uppdatering | Uppdatera kärnan även om det inte krävs för att installera driv rutiner | falskt | SANT, FALSKT | boolean |
-| driverVersion | NV: RUTNÄTs driv rutins version<br> NC/ND: CUDA Toolkit-version. De senaste driv rutinerna för de valda CUDA installeras automatiskt. | senaste | RUTNÄT: "430,30", "418,70", "410,92", "410,71", "390,75", "390,57", "390,42"<br> CUDA: "10.0.130", "9.2.88", "9.1.85" | sträng |
+| driverVersion | NV: RUTNÄTs driv rutins version<br> NC/ND: CUDA Toolkit-version. De senaste driv rutinerna för de valda CUDA installeras automatiskt. | senaste | [Lista](https://github.com/Azure/azhpc-extensions/blob/master/NvidiaGPU/resources.json) över driv rutins versioner som stöds | sträng |
 | installCUDA | Installera CUDA Toolkit. Endast relevant för virtuella datorer i NC/ND-serien. | true | SANT, FALSKT | boolean |
 
 

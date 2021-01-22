@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7519b6c7e1f3381be77b9a0734ddda250228e7d
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: fd14c7911676768a61d2b2c0e366d2c227455be8
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96860311"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678212"
 ---
 # <a name="continuous-access-evaluation"></a>Utvärdering av kontinuerlig åtkomst
 
@@ -28,7 +28,7 @@ Svars tiden för princip överträdelser eller säkerhets problem kräver verkli
 
 Den första implementeringen av utvärderingen av kontinuerlig åtkomst fokuserar på Exchange, teams och SharePoint Online.
 
-Information om hur du förbereder program för att använda CAE finns i [så här använder du utvärderings funktioner för kontinuerlig åtkomst i dina program](/azure/active-directory/develop/app-resilience-continuous-access-evaluation).
+Information om hur du förbereder program för att använda CAE finns i [så här använder du utvärderings funktioner för kontinuerlig åtkomst i dina program](../develop/app-resilience-continuous-access-evaluation.md).
 
 ### <a name="key-benefits"></a>Viktiga fördelar
 
@@ -146,7 +146,7 @@ För CAE har vi bara insikter om namngivna IP-baserade namngivna platser. Vi har
 
 ### <a name="ip-address-configuration"></a>Konfigurera IP-adress
 
-Identitets leverantören och resurs leverantörerna kan se olika IP-adresser. Detta matchnings fel kan inträffa på grund av nätverks-proxy-implementeringar i din organisation eller felaktiga IPv4/IPv6-konfigurationer mellan identitets leverantören och resurs leverantören. Exempel:
+Identitets leverantören och resurs leverantörerna kan se olika IP-adresser. Detta matchnings fel kan inträffa på grund av nätverks-proxy-implementeringar i din organisation eller felaktiga IPv4/IPv6-konfigurationer mellan identitets leverantören och resurs leverantören. Till exempel:
 
 - Din identitetsprovider ser en IP-adress från klienten.
 - Resurs leverantören ser en annan IP-adress från klienten när den har passerat via en proxy.

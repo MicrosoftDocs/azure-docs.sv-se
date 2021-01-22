@@ -7,12 +7,12 @@ ms.date: 05/06/2020
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: imaging
-ms.openlocfilehash: f598ed3e2aef2f53b90b213d0bd1b002f56bd30c
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: 19320b8b497202c473f72f4751daf2110a347080
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94517758"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98676775"
 ---
 # <a name="configure-azure-image-builder-service-permissions-using-azure-cli"></a>Konfigurera Azure Image Builder-tjänstens behörigheter med Azure CLI
 
@@ -41,7 +41,7 @@ Azure Image Builder kräver att du skapar en [Azure-användardefinierad hanterad
 
 I följande exempel visas hur du skapar en hanterad Azure-användare som tilldelats Azure. Ersätt inställningarna för plats hållaren genom att ange dina variabler.
 
-| Inställningen | Beskrivning |
+| Inställning | Beskrivning |
 |---------|-------------|
 | \<Resource group\> | Resurs grupp där du kan skapa den hanterade identiteten som användaren tilldelats. |
 
@@ -118,7 +118,7 @@ I följande exempel skapas en Azure-roll som använder och distribuerar en anpas
 
 För att förenkla utbytet av värden i exemplet anger du först följande variabler. Ersätt inställningarna för plats hållaren genom att ange dina variabler.
 
-| Inställningen | Beskrivning |
+| Inställning | Beskrivning |
 |---------|-------------|
 | \<Subscription ID\> | Ditt Azure-prenumerations-ID |
 | \<Resource group\> | Resurs grupp för anpassad avbildning |
@@ -160,7 +160,7 @@ I följande exempel skapas en Azure-roll som använder och distribuerar en befin
 
 För att förenkla utbytet av värden i exemplet anger du först följande variabler. Ersätt inställningarna för plats hållaren genom att ange dina variabler.
 
-| Inställningen | Beskrivning |
+| Inställning | Beskrivning |
 |---------|-------------|
 | \<Subscription ID\> | Ditt Azure-prenumerations-ID |
 | \<Resource group\> | VNET-resurs grupp |
@@ -227,7 +227,7 @@ I Image Builder-mallen måste du ange den användare som tilldelats den hanterad
 
 Ersätt följande plats hållarnas inställningar:
 
-| Inställningen | Beskrivning |
+| Inställning | Beskrivning |
 |---------|-------------|
 | \<Region\> | Mall region |
 | \<Resource group\> | Resursgrupp |
@@ -238,4 +238,4 @@ Mer information om hur du använder en användardefinierad hanterad identitet fi
 
 ## <a name="next-steps"></a>Nästa steg
 
-Mer information finns i [Översikt över Azure Image Builder](image-builder-overview.md).
+Mer information finns i [Översikt över Azure Image Builder](../image-builder-overview.md).

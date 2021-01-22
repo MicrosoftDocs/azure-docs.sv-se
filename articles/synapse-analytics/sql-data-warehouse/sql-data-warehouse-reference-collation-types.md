@@ -11,12 +11,12 @@ ms.date: 12/04/2019
 ms.author: anvang
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 39b89f8d303c10eead63839420141a74d3d3c74c
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 18720d99bc8cf0e237e25ea13f686970573d5704
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452765"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678448"
 ---
 # <a name="database-collation-support-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Stöd för databas sortering för dedikerad SQL-pool (tidigare SQL DW) i Azure Synapse Analytics 
 
@@ -111,4 +111,4 @@ Om du vill kontrol lera den aktuella sorteringen för databasen kan du köra fö
 SELECT DATABASEPROPERTYEX(DB_NAME(), 'Collation') AS Collation;
 ```
 
-När den skickade sorteringen som egenskaps parameter returnerar funktionen DatabasePropertyEx den aktuella sorteringen för den angivna databasen. Mer information finns i [DatabasePropertyEx](/sql/t-sql/functions/databasepropertyex-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
+När den skickade sorteringen som egenskaps parameter returnerar funktionen DatabasePropertyEx den aktuella sorteringen för den angivna databasen. Mer information finns i [DatabasePropertyEx](/sql/t-sql/functions/databasepropertyex-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).

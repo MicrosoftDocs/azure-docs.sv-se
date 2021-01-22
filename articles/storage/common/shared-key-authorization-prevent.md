@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/07/2020
+ms.date: 01/21/2021
 ms.author: tamram
 ms.reviewer: fryu
-ms.openlocfilehash: 6a24713a6027c38d2b9817928f3a82161bd37314
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: e4a5803b3d04b59316f71e50af24945efc87cb69
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96936734"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98677571"
 ---
 # <a name="prevent-shared-key-authorization-for-an-azure-storage-account-preview"></a>Förhindra auktorisering av delad nyckel för ett Azure Storage konto (förhands granskning)
 
@@ -239,8 +239,6 @@ Vissa Azure-verktyg ger dig möjlighet att använda Azure AD-auktorisering för 
 ## <a name="about-the-preview"></a>Om för hands versionen
 
 För hands versionen för att tillåta autentisering av delad nyckel är tillgänglig i det offentliga Azure-molnet. Det finns stöd för lagrings konton som endast använder Azure Resource Manager distributions modell. Information om vilka lagrings konton som använder Azure Resource Manager distributions modell finns i [typer av lagrings konton](storage-account-overview.md#types-of-storage-accounts).
-
-Om du vill registrera dig för för hands versionen kan du läsa mer i [Azure Storage Tillåt åtkomst begränsad offentlig för hands version](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxW65f1VQyNCuBHMIMBV8qlUN1o4TUtUUzZBV0JYVlhKQ1FITDlVUUU0Ui4u).
 
 > [!IMPORTANT]
 > Den här för hands versionen är endast avsedd för användning utan produktion.

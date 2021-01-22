@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 8b7726e4e8fee0044a7865c8c494ef6451425676
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 9c8e971b4fda313ffede58455dd6d057d6848ce4
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96903878"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678137"
 ---
 # <a name="azure-maps-weather-services-preview-frequently-asked-questions-faq"></a>Vanliga frågor och svar om Azure Maps väder tjänster (för hands version)
 
@@ -21,7 +21,7 @@ ms.locfileid: "96903878"
 > Azure Maps väder tjänster finns för närvarande i offentlig för hands version.
 > Den här förhandsversionen tillhandahålls utan serviceavtal och rekommenderas inte för produktionsarbetsbelastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade. Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Den här artikeln innehåller svar på vanliga frågor om Azure Maps data och funktioner för [väder tjänster](https://docs.microsoft.com/rest/api/maps/weather) . Följande avsnitt beskrivs:
+Den här artikeln innehåller svar på vanliga frågor om Azure Maps data och funktioner för [väder tjänster](/rest/api/maps/weather) . Följande avsnitt beskrivs:
 
 * Data källor och data modeller
 * Täckning och tillgänglighet för väder tjänster
@@ -59,7 +59,7 @@ Många väder väglednings system används för att formulera globala prognoser.
 
 **Vilken typ av täckning kan jag förväntar mig för olika länder/regioner?**
 
-Täckningen för väder tjänster varierar beroende på land/region. Alla funktioner är inte tillgängliga i varje land/region. Mer information finns i [dokumentation om täckning](https://docs.microsoft.com/azure/azure-maps/weather-coverage).
+Täckningen för väder tjänster varierar beroende på land/region. Alla funktioner är inte tillgängliga i varje land/region. Mer information finns i [dokumentation om täckning](./weather-coverage.md).
 
 ## <a name="data-update-frequency"></a>Data uppdaterings frekvens
 
@@ -79,7 +79,7 @@ API: er för Azure Mapss prognos cachelagras i upp till 30 minuter. Om du vill s
 
 **Har Azure Maps Web SDK inbyggt stöd för väder tjänster (för hands version)?**
 
-Azure Maps Web SDK tillhandahåller en Services-modul. Modulen tjänster är ett hjälp bibliotek som gör det enkelt att använda Azure Maps REST-tjänsterna i webb-eller Node.js program. med hjälp av Java Script eller TypeScript. Information om hur du kommer igång finns i vår [dokumentation](https://docs.microsoft.com/azure/azure-maps/how-to-use-services-module).
+Azure Maps Web SDK tillhandahåller en Services-modul. Modulen tjänster är ett hjälp bibliotek som gör det enkelt att använda Azure Maps REST-tjänsterna i webb-eller Node.js program. med hjälp av Java Script eller TypeScript. Information om hur du kommer igång finns i vår [dokumentation](./how-to-use-services-module.md).
 
 **Stöder Azure Maps Android SDK intern support för väder tjänster (för hands version)?**
 
@@ -91,26 +91,26 @@ Vi planerar att skapa en Services-modul för Java/Android som liknar Web SDK-mod
 
 **Har Azure Maps Power BI Visual support Azure Maps väder paneler?**
 
-Ja. Information om hur du migrerar radar-och infraröda satellit paneler till Microsoft Power BI Visual finns i [lägga till ett panel lager till Power BI visuella](https://docs.microsoft.com/azure/azure-maps/power-bi-visual-add-tile-layer)objekt. 
+Ja. Information om hur du migrerar radar-och infraröda satellit paneler till Microsoft Power BI Visual finns i [lägga till ett panel lager till Power BI visuella](./power-bi-visual-add-tile-layer.md)objekt. 
 
 **Hur gör jag för att tolka färger som används för radar-och satellit paneler?**
 
-Artikeln Azure Maps [väder begrepp](https://docs.microsoft.com/azure/azure-maps/weather-services-concepts#radar-and-satellite-imagery-color-scale) innehåller en guide som hjälper dig att tolka färger som används för radar-och satellit paneler. I artikeln beskrivs färg exempel och HEXADECIMALa färg koder.
+Artikeln Azure Maps [väder begrepp](./weather-services-concepts.md#radar-and-satellite-imagery-color-scale) innehåller en guide som hjälper dig att tolka färger som används för radar-och satellit paneler. I artikeln beskrivs färg exempel och HEXADECIMALa färg koder.
  
 **Kan jag skapa radar-och satellit panels animeringar?**
 
-Ja. Förutom radar-och satellit paneler i real tid kan Azure Maps kunder begära tidigare och framtida paneler för att förbättra data visualiseringar med kart överlägg. Detta kan göras genom att anropa [API: t för kartans panel v2](https://aka.ms/AzureMapsWeatherTiles ) eller genom att begära paneler via Azure Maps Web SDK. Radar paneler är tillgängliga i upp till 1,5 timmar förr och upp till 2 timmar i framtiden. Panelerna och är tillgängliga i 5-minuters intervall. IR-paneler tillhandahålls för upp till 3 timmar tidigare och är tillgängliga i 10-minuters intervall. Mer information finns i [exempel](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Animated%20tile%20layer)på en väder panel med öppen källkod.  
+Ja. Förutom radar-och satellit paneler i real tid kan Azure Maps kunder begära tidigare och framtida paneler för att förbättra data visualiseringar med kart överlägg. Detta kan göras genom att anropa [API: t för kartans panel v2](/rest/api/maps/renderv2/getmaptilepreview) eller genom att begära paneler via Azure Maps Web SDK. Radar paneler är tillgängliga i upp till 1,5 timmar förr och upp till 2 timmar i framtiden. Panelerna och är tillgängliga i 5-minuters intervall. IR-paneler tillhandahålls för upp till 3 timmar tidigare och är tillgängliga i 10-minuters intervall. Mer information finns i [exempel](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Animated%20tile%20layer)på en väder panel med öppen källkod.  
 
 **Erbjuder du ikoner för olika väder förhållanden?**
 
-Ja. Du kan hitta ikoner och deras respektive koder [här](https://docs.microsoft.com/azure/azure-maps/weather-services-concepts#weather-icons). Observera att endast vissa av API: erna för väder tjänst (för hands version), till exempel  [Hämta aktuella villkor](https://aka.ms/azuremapsweathercurrentconditions), returnerar *iconCode* i svaret. Mer information finns i det aktuella [exemplet med kod exempel](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Get%20current%20weather%20at%20a%20location)för öppen källkod i WeatherConditions.
+Ja. Du kan hitta ikoner och deras respektive koder [här](./weather-services-concepts.md#weather-icons). Observera att endast vissa av API: erna för väder tjänst (för hands version), till exempel  [Hämta aktuella villkor](/rest/api/maps/weather/getcurrentconditionspreview), returnerar *iconCode* i svaret. Mer information finns i det aktuella [exemplet med kod exempel](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Get%20current%20weather%20at%20a%20location)för öppen källkod i WeatherConditions.
 
 ## <a name="next-steps"></a>Nästa steg
 
 Om dessa vanliga frågor inte besvarar din fråga kan du kontakta oss genom följande kanaler (i eskalerad ordning):
 
 * Avsnittet kommentarer i den här artikeln.
-* [MSFT Q&en sida för Azure Maps](https://docs.microsoft.com/answers/topics/azure-maps.html).
+* [MSFT Q&en sida för Azure Maps](/answers/topics/azure-maps.html).
 * Microsoft Support. Om du vill skapa en ny supportbegäran går du till fliken hjälp i [Azure Portal](https://portal.azure.com/), väljer **Hjälp +** support-knappen och väljer sedan **ny supportbegäran**.
 * [Azure Maps UserVoice](https://feedback.azure.com/forums/909172-azure-maps) för att skicka funktions förfrågningar.
 
@@ -125,4 +125,4 @@ Koncept artikel för Azure Maps väder tjänster (för hands version):
 Utforska API-dokumentationen för Azure Maps väder tjänster (för hands version):
 
 > [!div class="nextstepaction"]
-> [Azure Maps väder tjänster](/rest/api/maps/weather)
+> [Azure Maps vädertjänster](/rest/api/maps/weather)
