@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 11/12/2020
 ms.author: aahi
-ms.openlocfilehash: b19fb3f86be46a5db60fb87f9c7f5c3e28ac6428
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 82c33c038a1f8eaba540c9906efcffa0a9214762
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965174"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98689896"
 ---
 ## <a name="install-the-container"></a>Installera behållaren
 
@@ -38,7 +38,7 @@ Kör följande `docker run` kommando. Ersätt plats hållarna nedan med dina egn
 | **{API_KEY}** | Nyckeln till din Textanalys-resurs. Du hittar den på resursens nyckel- **och slut punkts** sida på Azure Portal. |`xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`|
 | **{ENDPOINT_URI}** | Slut punkten för att få åtkomst till API för textanalys. Du hittar den på resursens nyckel- **och slut punkts** sida på Azure Portal. | `https://<your-custom-subdomain>.cognitiveservices.azure.com` |
 | **{IMAGE_ID}** | Bild-ID för din behållare. | `1.1.011300001-amd64-preview` |
-| **{INPUT_DIR}** | Indatamängden för behållaren. | Aktivitets `C:\healthcareMount` <br> Linux/MacOS: `/home/username/input` |
+| **{INPUT_DIR}** | Indatamängden för behållaren. | Windows: `C:\healthcareMount` <br> Linux/MacOS: `/home/username/input` |
 
 ```bash
 docker run --rm -it -p 5000:5000 --cpus 6 --memory 12g \
@@ -62,7 +62,7 @@ Det här kommandot:
 > [!NOTE]
 > Demonstrationen är endast tillgänglig med Textanalys för hälso container.
 
-Containern innehåller REST-baserade slutpunkts-API:er för frågeförutsägelse.  Vi har också tillhandahållit ett visualiserings verktyg i behållaren som kan nås genom att lägga `/demo` till i slut punkten för behållaren. Exempel:
+Containern innehåller REST-baserade slutpunkts-API:er för frågeförutsägelse.  Vi har också tillhandahållit ett visualiserings verktyg i behållaren som kan nås genom att lägga `/demo` till i slut punkten för behållaren. Till exempel:
 
 ```
 http://<serverURL>:5000/demo
@@ -84,7 +84,7 @@ Azure [Web App for containers](https://azure.microsoft.com/services/app-service/
 
 Kör det här PowerShell-skriptet med Azure CLI för att skapa en Web App for Containers med hjälp av din prenumeration och behållar avbildningen över HTTPS. Vänta tills skriptet har slutförts (cirka 25-30 minuter) innan du skickar den första begäran.
 
-```bash
+```azurecli
 $subscription_name = ""                    # THe name of the subscription you want you resource to be created on.
 $resource_group_name = ""                  # The name of the resource group you want the AppServicePlan
                                            #    and AppSerivce to be attached to.
@@ -118,7 +118,7 @@ Se [ACI regional support](../../../container-instances/container-instances-regio
 > [!NOTE] 
 > Azure Container Instances inkluderar inte HTTPS-stöd för de inbyggda domänerna. Om du behöver HTTPS måste du konfigurera den manuellt, inklusive att skapa ett certifikat och registrera en domän. Du hittar anvisningar om hur du gör detta med NGINX nedan.
 
-```bash
+```azurecli
 $subscription_name = ""                    # The name of the subscription you want you resource to be created on.
 $resource_group_name = ""                  # The name of the resource group you want the AppServicePlan
                                            # and AppService to be attached to.

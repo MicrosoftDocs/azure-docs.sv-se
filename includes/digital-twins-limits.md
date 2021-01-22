@@ -5,31 +5,31 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 6/9/2020
 ms.author: baanders
-ms.openlocfilehash: 183d12b5e9d32c777c8acf01177c8cbbe1b6ca00
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 08ae189253c6141a6b84035b71016ff5099ec162
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96027363"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98689651"
 ---
 ### <a name="functional-limits"></a>Funktionella gränser
 
 I tabellen nedan visas funktionella gränser för Azure Digital-dubbla.
 
-| Område | Kapacitet | Standardgräns | Justerbar? |
+| Område | Funktion | Standardgräns | Justerbar? |
 | --- | --- | --- | --- |
 | Azure-resurs | Antal Azure Digitals dubbla instanser i en region, per prenumeration | 10 | Yes |
 | Digitala tvillingenheter | Antal dubbla i en digital Azure-instans | 200 000 | Yes |
 | Digitala tvillingenheter | Antal inkommande relationer till en enda | 5 000 | No |
 | Digitala tvillingenheter | Antal utgående relationer från en enda delad | 5 000 | No |
-| Digitala tvillingenheter | Maximal storlek för en enkel | 32 KB | No |
+| Digitala tvillingenheter | Maximal storlek (för JSON-innehåll i en begäran eller en PATCH-begäran) för en enskild | 32 KB | No |
 | Digitala tvillingenheter | Maximal nytto Last storlek för begäran | 32 KB | No | 
 | Routning | Antal slut punkter för en enskild Azure Digitals dubbla instans | 6 | No |
 | Routning | Antal vägar för en enda digital Azure-instans | 6 | Yes |
 | Modeller | Antal modeller inom en enskild Azure Digital-instans | 10 000 | Yes |
 | Modeller | Antal modeller som kan överföras i ett enda API-anrop | 250 | No |
 | Modeller | Antal objekt som har returnerats på en enda sida | 100 | No |
-| Fråga | Antal objekt som har returnerats på en enda sida | 100 | Ja |
+| Söka i data | Antal objekt som har returnerats på en enda sida | 100 | Ja |
 | Söka i data | Antal `AND`  /  `OR` uttryck i en fråga | 50 | Ja |
 | Söka i data | Antal mat ris objekt i en `IN`  /  `NOT IN` sats | 50 | Ja |
 | Söka i data | Antal tecken i en fråga | 8,000 | Ja |
@@ -39,7 +39,7 @@ I tabellen nedan visas funktionella gränser för Azure Digital-dubbla.
 
 Följande tabell visar frekvens gränserna för olika API: er.
 
-| API | Kapacitet | Standardgräns | Justerbar? |
+| API | Funktion | Standardgräns | Justerbar? |
 | --- | --- | --- | --- |
 | Modell-API | Antal begär Anden per sekund | 100 | Yes |
 | Digitals dubbla API | Antal begär Anden per sekund | 2 000 | Yes |

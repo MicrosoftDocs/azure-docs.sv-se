@@ -2,13 +2,13 @@
 title: Azure Event Grid begrepp
 description: Beskriver Azure Event Grid och dess begrepp. Definierar flera viktiga komponenter i Event Grid.
 ms.topic: conceptual
-ms.date: 10/29/2020
-ms.openlocfilehash: 6cfb8b3aaf16a0080b9864ce5198b8a7232e8bc8
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.date: 01/21/2021
+ms.openlocfilehash: 6edc8a3980bfea15f28cfb7114bb9f8350a47a3f
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93075117"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685711"
 ---
 # <a name="concepts-in-azure-event-grid"></a>Begrepp i Azure Event Grid
 
@@ -18,10 +18,7 @@ I den här artikeln beskrivs huvud begreppen i Azure Event Grid.
 
 En händelse är den minsta mängden information som fullständigt beskriver något som hände i systemet. Varje händelse har gemensam information, t. ex. Händelsens källa, tid då händelsen ägde rum och unik identifierare. Varje händelse har också en speciell information som endast är relevant för den speciella typen av händelse. Till exempel, en händelse som handlar om en fil som har skapats i Azure Storage innehåller information om filen, såsom värdet `lastTimeModified`. Eller en händelse i Event Hubs har URL:en för Capture-filen. 
 
-En händelse av en storlek på upp till 64 KB omfattas av allmän tillgänglighet (GA) Serviceavtal (SLA). Stöd för en händelse av en storlek på upp till 1 MB är för närvarande en för hands version. Händelser över 64 KB debiteras i steg om 64 KB. 
-
-
-De egenskaper som skickas i en händelse finns i [Azure Event Grid händelse schema](event-schema.md).
+Den största tillåtna storleken för en händelse är 1 MB. Händelser över 64 KB debiteras i steg om 64 KB. De egenskaper som skickas i en händelse finns i [Azure Event Grid händelse schema](event-schema.md).
 
 ## <a name="publishers"></a>Utgivare
 
@@ -41,7 +38,7 @@ Avsnittet Event Grid innehåller en slut punkt där källan skickar händelser. 
 
 **Anpassade ämnen** är program-och tredje parts ämnen. När du skapar eller tilldelas åtkomst till ett anpassat ämne visas detta anpassade ämne i din prenumeration. Mer information finns i avsnittet om [anpassade ämnen](custom-topics.md). När du designar ditt program är du flexibel när du bestämmer hur många ämnen som ska skapas. Skapa ett anpassat ämne för varje kategori av relaterade händelser för stora lösningar. Tänk dig ett program som skickar händelser som handlar om att ändra användarkonton och bearbeta beställningar. Det är osannolikt alla händelsehanteraren vill ha båda händelsekategorier. Skapa två anpassade ämnen och låt händelsehanteraren prenumerera på det mest relevanta. För små lösningar kanske du föredrar att skicka alla händelser till ett enda ämne. Händelse prenumeranter kan filtrera efter de händelse typer som de vill ha.
 
-Det finns en annan typ av ämne: **partner ämne** . Med funktionen [partner händelser](partner-events-overview.md) kan en SaaS-provider från tredje part publicera händelser från sina tjänster så att de blir tillgängliga för konsumenter som kan prenumerera på dessa händelser. SaaS-providern visar en ämnes typ, ett **partner ämne** , som prenumeranter använder för att använda händelser. Den erbjuder även en ren pub-sub-modell genom att åtskilja problem och ägarskap av resurser som används av händelse utgivare och prenumeranter.
+Det finns en annan typ av ämne: **partner ämne**. Med funktionen [partner händelser](partner-events-overview.md) kan en SaaS-provider från tredje part publicera händelser från sina tjänster så att de blir tillgängliga för konsumenter som kan prenumerera på dessa händelser. SaaS-providern visar en ämnes typ, ett **partner ämne**, som prenumeranter använder för att använda händelser. Den erbjuder även en ren pub-sub-modell genom att åtskilja problem och ägarskap av resurser som används av händelse utgivare och prenumeranter.
 
 ## <a name="event-subscriptions"></a>Prenumerationer på händelser
 
@@ -76,10 +73,7 @@ Om Event Grid inte kan bekräfta att en händelse har mottagits av prenumeranten
 
 ## <a name="batching"></a>Batchbearbetning
 
-När du använder ett anpassat ämne måste händelser alltid publiceras i en matris. Detta kan vara en batch med en för låg data flödes scenarier, men för stora mängder användnings fall rekommenderar vi att du grupperar flera händelser per publicering för att uppnå högre effektivitet. Batchar kan vara upp till 1 MB. Varje händelse ska fortfarande inte vara större än 64 KB (allmän tillgänglighet) eller 1 MB (för hands version).
-
-> [!NOTE]
-> En händelse av en storlek på upp till 64 KB omfattas av allmän tillgänglighet (GA) Serviceavtal (SLA). Stöd för en händelse av en storlek på upp till 1 MB är för närvarande en för hands version. Händelser över 64 KB debiteras i steg om 64 KB. 
+När du använder ett anpassat ämne måste händelser alltid publiceras i en matris. Detta kan vara en batch med en för låg data flödes scenarier, men för stora mängder användnings fall rekommenderar vi att du grupperar flera händelser per publicering för att uppnå högre effektivitet. Batchar kan vara upp till 1 MB och den maximala storleken för en händelse är 1 MB. 
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -5,15 +5,15 @@ services: event-hubs
 author: spelluru
 ms.service: event-hubs
 ms.topic: include
-ms.date: 11/19/2020
+ms.date: 01/21/2021
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 7ebb9dbce020086a716872c86221b97b4b7a6653
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 44afd8ea4ef2ab06ec31b7528e9776faebc3b4dc
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97978897"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98690037"
 ---
 ### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>Vilka portar måste jag öppna i brand väggen? 
 Du kan använda följande protokoll med Azure Event Hubs för att skicka och ta emot händelser:
@@ -36,10 +36,10 @@ De officiella Azure-SDK: erna använder vanligt vis AMQP-protokollet för att sk
 
 | Språk | Alternativ   |
 | -------- | ----- |
-| .NET     | [EventHubConnectionOptions. TransportType](/dotnet/api/azure.messaging.eventhubs.eventhubconnectionoptions.transporttype?view=azure-dotnet&preserve-view=true) -egenskapen med [EventHubsTransportType. AmqpTcp](/dotnet/api/azure.messaging.eventhubs.eventhubstransporttype?view=azure-dotnet&preserve-view=true) eller [EventHubsTransportType. AmqpWebSockets](/dotnet/api/azure.messaging.eventhubs.eventhubstransporttype?view=azure-dotnet&preserve-view=true) |
-| Java     | [com. Microsoft. Azure. eventhubs. EventProcessorClientBuilder. transporttype](/java/api/com.azure.messaging.eventhubs.eventprocessorclientbuilder.transporttype?view=azure-java-stable&preserve-view=true) med [AmqpTransportType. AMQP](/java/api/com.azure.core.amqp.amqptransporttype?view=azure-java-stable&preserve-view=true) eller [AmqpTransportType.AMQP_WEB_SOCKETS](/java/api/com.azure.core.amqp.amqptransporttype?view=azure-java-stable&preserve-view=true) |
-| Nod  | [EventHubConsumerClientOptions](/javascript/api/@azure/event-hubs/eventhubconsumerclientoptions?view=azure-node-latest&preserve-view=true) har en- `webSocketOptions` egenskap. |
-| Python | [EventHubConsumerClient.transport_type](/python/api/azure-eventhub/azure.eventhub.eventhubconsumerclient?view=azure-python&preserve-view=true) med [TransportType. AMQP](/python/api/azure-eventhub/azure.eventhub.transporttype?view=azure-python) eller [TransportType. AmqpOverWebSocket](/python/api/azure-eventhub/azure.eventhub.transporttype?view=azure-python&preserve-view=true) |
+| .NET     | [EventHubConnectionOptions. TransportType](/dotnet/api/azure.messaging.eventhubs.eventhubconnectionoptions.transporttype) -egenskapen med [EventHubsTransportType. AmqpTcp](/dotnet/api/azure.messaging.eventhubs.eventhubstransporttype) eller [EventHubsTransportType. AmqpWebSockets](/dotnet/api/azure.messaging.eventhubs.eventhubstransporttype) |
+| Java     | [com. Microsoft. Azure. eventhubs. EventProcessorClientBuilder. transporttype](/java/api/com.azure.messaging.eventhubs.eventprocessorclientbuilder.transporttype) med [AmqpTransportType. AMQP](/java/api/com.azure.core.amqp.amqptransporttype) eller [AmqpTransportType.AMQP_WEB_SOCKETS](/java/api/com.azure.core.amqp.amqptransporttype) |
+| Nod  | [EventHubConsumerClientOptions](/javascript/api/@azure/event-hubs/eventhubconsumerclientoptions) har en- `webSocketOptions` egenskap. |
+| Python | [EventHubConsumerClient.transport_type](/python/api/azure-eventhub/azure.eventhub.eventhubconsumerclient) med [TransportType. AMQP](/python/api/azure-eventhub/azure.eventhub.transporttype) eller [TransportType. AmqpOverWebSocket](/python/api/azure-eventhub/azure.eventhub.transporttype) |
 
 ### <a name="what-ip-addresses-do-i-need-to-allow"></a>Vilka IP-adresser måste jag tillåta?
 När du arbetar med Azure måste du ibland tillåta vissa IP-adressintervall eller URL: er i företagets brand vägg eller proxy för att få åtkomst till alla Azure-tjänster som du använder eller försöker använda. Kontrol lera att trafiken tillåts på IP-adresser som används av Event Hubs. För IP-adresser som används av Azure Event Hubs: se [Azure IP-intervall och service märken – offentligt moln](https://www.microsoft.com/download/details.aspx?id=56519).

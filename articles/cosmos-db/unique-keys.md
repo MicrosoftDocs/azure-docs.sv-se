@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 165fb2937db5edfa4f51f62033afaf87cfff83ef
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 9eb2b916bfe6c73a1535afb077b04fbb081dd5f1
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353110"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685728"
 ---
 # <a name="unique-key-constraints-in-azure-cosmos-db"></a>Unika nyckel begränsningar i Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -22,7 +22,7 @@ Unika nycklar Lägg till ett lager med data integritet i en Azure Cosmos-behåll
 
 När du har skapat en behållare med en unik nyckel princip förhindras skapandet av en ny eller en uppdatering av ett befintligt objekt som resulterar i en dubblett i en logisk partition, enligt vad som anges i den unika nyckel begränsningen. Partitionsnyckel i kombination med den unika nyckeln garanterar att ett objekt är unikt inom omfånget för behållaren.
 
-Anta till exempel en Azure Cosmos-behållare med e-postadress som unik nyckel begränsning och `CompanyID` som partitionsnyckel. När du konfigurerar användarens e-postadress med en unik nyckel har varje objekt en unik e-postadress inom ett angivet `CompanyID` . Det går inte att skapa två objekt med dubbla e-postadresser och med samma partitionsnyckel. I Azure Cosmos DB SQL-API: n (Core) lagras objekten som JSON-värden. Dessa JSON-värden är Skift läges känsliga. När du väljer en egenskap som unik nyckel kan du infoga Skift läges känsliga värden för den egenskapen. Om du till exempel har en unik nyckel definierad i egenskapen namn, är "Gaby" inte detsamma som "Gaby" och du kan infoga båda i behållaren.
+Överväg till exempel en Azure Cosmos-behållare med `Email address` som unik nyckel begränsning och `CompanyID` som partitionsnyckel. När du konfigurerar användarens e-postadress med en unik nyckel har varje objekt en unik e-postadress inom ett angivet `CompanyID` . Det går inte att skapa två objekt med dubbla e-postadresser och med samma partitionsnyckel. I Azure Cosmos DB SQL-API: n (Core) lagras objekten som JSON-värden. Dessa JSON-värden är Skift läges känsliga. När du väljer en egenskap som unik nyckel kan du infoga Skift läges känsliga värden för den egenskapen. Om du till exempel har en unik nyckel definierad i egenskapen namn, är "Gaby" inte detsamma som "Gaby" och du kan infoga båda i behållaren.
 
 Om du vill skapa objekt med samma e-postadress, men inte samma förnamn, efter namn och e-postadress, lägger du till fler sökvägar i den unika nyckel principen. I stället för att skapa en unik nyckel som enbart baseras på e-postadressen, kan du också skapa en unik nyckel med en kombination av förnamn, efter namn och e-postadress. Den här nyckeln kallas en sammansatt unik nyckel. I det här fallet tillåts varje unik kombination av de tre värdena inom ett angivet `CompanyID` . 
 

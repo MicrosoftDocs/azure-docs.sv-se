@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/16/2020
 ms.author: radeltch
-ms.openlocfilehash: 23a5ea2d3ffc1511bea66bb8bc3c4282b6d16cc2
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: c97975d6920cd0f04a7d2d4e73c00104a2b13235
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96489130"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685620"
 ---
 # <a name="high-availability-of-sap-hana-scale-out-system-on-red-hat-enterprise-linux"></a>Hög tillgänglighet för SAP HANA skalbart system på Red Hat Enterprise Linux 
 
@@ -165,7 +165,7 @@ För konfigurationen som presenteras i det här dokumentet distribuerar du sju v
 
     b. Kör följande kommandon för att aktivera accelererat nätverk för ytterligare nätverks gränssnitt, som är kopplade till- `inter` och- `hsr` undernät.  
 
-    ```
+    ```azurecli
     az network nic update --id /subscriptions/your subscription/resourceGroups/your resource group/providers/Microsoft.Network/networkInterfaces/hana-s1-db1-inter --accelerated-networking true
     az network nic update --id /subscriptions/your subscription/resourceGroups/your resource group/providers/Microsoft.Network/networkInterfaces/hana-s1-db2-inter --accelerated-networking true
     az network nic update --id /subscriptions/your subscription/resourceGroups/your resource group/providers/Microsoft.Network/networkInterfaces/hana-s1-db3-inter --accelerated-networking true
@@ -256,7 +256,7 @@ Konfigurera och Förbered ditt operativ system genom att utföra följande steg:
 
 1. **[A]** underhålla värd filen på de virtuella datorerna. Inkludera poster för alla undernät. Följande poster har lagts till i `/etc/hosts` i det här exemplet.  
 
-    ```
+    ```bash
      # Client subnet
      10.23.0.11 hana-s1-db1
      10.23.0.12 hana-s1-db1
@@ -303,7 +303,7 @@ I det här exemplet distribueras de delade HANA-fil systemen på Azure NetApp Fi
 
 1. **[Ah]** Skapa monterings punkter för HANA-databasens volymer.  
 
-    ```
+    ```bash
     mkdir -p /hana/shared
     ```
 
@@ -313,7 +313,7 @@ I det här exemplet distribueras de delade HANA-fil systemen på Azure NetApp Fi
     > [!IMPORTANT]
     > Se till att ange att NFS-domänen på `/etc/idmapd.conf` den virtuella datorn ska matcha standard domän konfigurationen på Azure NetApp Files: **`defaultv4iddomain.com`** . Om det finns ett matchnings fel mellan domän konfigurationen på NFS-klienten (d.v.s. den virtuella datorn) och NFS-servern, t. ex. Azure NetApp-konfigurationen, så visas behörigheterna för filer på Azure NetApp-volymer som är monterade på de virtuella datorerna som `nobody` .  
 
-    ```
+    ```bash
     sudo cat /etc/idmapd.conf
     # Example
     [General]
@@ -326,7 +326,7 @@ I det här exemplet distribueras de delade HANA-fil systemen på Azure NetApp Fi
 3. **[Ah]** Verifiera `nfs4_disable_idmapping` . Den måste anges till **Y**. Kör monterings kommandot för att skapa en katalog struktur där `nfs4_disable_idmapping` finns. Du kan inte skapa katalogen manuellt under/sys/modules eftersom åtkomst är reserverad för kernel/driv rutiner.  
    Det här steget behövs bara om du använder Azure NetAppFiles NFSv 4.1.  
 
-    ```
+    ```bash
     # Check nfs4_disable_idmapping 
     cat /sys/module/nfs/parameters/nfs4_disable_idmapping
     # If you need to set nfs4_disable_idmapping to Y
@@ -342,20 +342,20 @@ I det här exemplet distribueras de delade HANA-fil systemen på Azure NetApp Fi
 
 4. **[AH1]** Montera de delade Azure NetApp Files volymerna på de virtuella SITE1 HANA-DATABASerna.  
 
-    ```
+    ```bash
     sudo mount -o rw,vers=4,minorversion=1,hard,timeo=600,rsize=262144,wsize=262144,intr,noatime,lock,_netdev,sec=sys 10.23.1.7:/HN1-shared-s1 /hana/shared
     ```
 
 5. **[AH2]** Montera de delade Azure NetApp Files volymerna på de virtuella SITE2 HANA-DATABASerna.  
 
-    ```
+    ```bash
     sudo mount -o rw,vers=4,minorversion=1,hard,timeo=600,rsize=262144,wsize=262144,intr,noatime,lock,_netdev,sec=sys 10.23.1.7:/HN1-shared-s2 /hana/shared
     ```
 
 
 10. **[Ah]** Kontrol lera att motsvarande `/hana/shared/` fil system är monterade på alla Hana DB VM: ar med NFS- **NFSv4**.  
 
-    ```
+    ```bash
     sudo nfsstat -m
     # Verify that flag vers is set to 4.1 
     # Example from SITE 1, hana-s1-db1
@@ -372,25 +372,25 @@ I den `/hana/data` `/hana/log` sammanställda konfigurationen och distribueras f
 Konfigurera disklayouten med  **Logical Volume Manager (LVM)**. I följande exempel förutsätts att varje HANA-virtuell dator har tre data diskar anslutna, som används för att skapa två volymer.
 
 1. **[Ah]** Lista alla tillgängliga diskar:
-    ```
+    ```bash
     ls /dev/disk/azure/scsi1/lun*
     ```
 
    Exempel på utdata:
 
-    ```
+    ```bash
     /dev/disk/azure/scsi1/lun0  /dev/disk/azure/scsi1/lun1  /dev/disk/azure/scsi1/lun2 
     ```
 
 2. **[Ah]** Skapa fysiska volymer för alla diskar som du vill använda:
-    ```
+    ```bash
     sudo pvcreate /dev/disk/azure/scsi1/lun0
     sudo pvcreate /dev/disk/azure/scsi1/lun1
     sudo pvcreate /dev/disk/azure/scsi1/lun2
     ```
 
 3. **[Ah]** Skapa en volym grupp för datafilerna. Använd en volym grupp för loggfilerna och en för den delade katalogen för SAP HANA:
-    ```
+    ```bash
     sudo vgcreate vg_hana_data_HN1 /dev/disk/azure/scsi1/lun0 /dev/disk/azure/scsi1/lun1
     sudo vgcreate vg_hana_log_HN1 /dev/disk/azure/scsi1/lun2
     ```
@@ -402,7 +402,7 @@ Konfigurera disklayouten med  **Logical Volume Manager (LVM)**. I följande exem
    > Använd `-i` växeln och Ställ in den på den underliggande fysiska volymens nummer när du använder mer än en fysisk volym för varje data-eller logg volym. Använd `-I` växeln för att ange stripe-storlek när du skapar en stripe-volym.  
    > Se [SAP HANA VM Storage-konfigurationer](./hana-vm-operations-storage.md) för rekommenderade diskpartitionskonfigurationer, inklusive stripe-storlekar och antal diskar.  
 
-    ```
+    ```bash
     sudo lvcreate -i 2 -I 256 -l 100%FREE -n hana_data vg_hana_data_HN1
     sudo lvcreate -l 100%FREE -n hana_log vg_hana_log_HN1
     sudo mkfs.xfs /dev/vg_hana_data_HN1/hana_data
@@ -410,7 +410,7 @@ Konfigurera disklayouten med  **Logical Volume Manager (LVM)**. I följande exem
     ```
 
 5. **[Ah]** Skapa monterings kataloger och kopiera UUID: n för alla logiska volymer:
-    ```
+    ```bash
     sudo mkdir -p /hana/data/HN1
     sudo mkdir -p /hana/log/HN1
     # Write down the ID of /dev/vg_hana_data_HN1/hana_data and /dev/vg_hana_log_HN1/hana_log
@@ -418,20 +418,20 @@ Konfigurera disklayouten med  **Logical Volume Manager (LVM)**. I följande exem
     ```
 
 6. **[Ah]** Skapa `fstab` poster för de logiska volymerna och montera:
-    ```
+    ```bash
     sudo vi /etc/fstab
     ```
 
    Lägg till följande rad i `/etc/fstab` filen:
 
-    ```
+    ```bash
     /dev/disk/by-uuid/UUID of /dev/mapper/vg_hana_data_HN1-hana_data /hana/data/HN1 xfs  defaults,nofail  0  2
     /dev/disk/by-uuid/UUID of /dev/mapper/vg_hana_log_HN1-hana_log /hana/log/HN1 xfs  defaults,nofail  0  2
     ```
 
    Montera de nya volymerna:
 
-    ```
+    ```bash
     sudo mount -a
     ```
 
@@ -444,27 +444,27 @@ I det här exemplet har vi använt HANA 2,0 SP4 i det här exemplet för att dis
 1. **[Ah]** Ange rot lösen ordet före HANA-installationen. Du kan inaktivera rot lösen ordet när installationen har slutförts. Kör som- `root` kommando `passwd` .  
 
 2. **[1, 2]** ändra behörigheter för `/hana/shared` 
-    ```
+    ```bash
     chmod 775 /hana/shared
     ```
 
 3. **[1]** kontrol lera att du kan logga in via SSH till de virtuella Hana-databaserna på den här platsen **Hana-S1-DB2** och **Hana-S1-DB3**, utan att uppmanas att ange ett lösen ord.  
    Om så inte är fallet, Exchange SSH-nycklar, som dokumenteras i [använda nyckelbaserad autentisering](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/deployment_guide/s2-ssh-configuration-keypairs).  
-    ```
+    ```bash
     ssh root@hana-s1-db2
     ssh root@hana-s1-db3
     ```
 
 4. **[2]** kontrol lera att du kan logga in via SSH till de virtuella Hana-databaserna på den här platsen **Hana-S2-DB2** och **Hana-S2-DB3**, utan att uppmanas att ange ett lösen ord.  
    Om så inte är fallet, Exchange SSH-nycklar, som dokumenteras i [använda nyckelbaserad autentisering](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/deployment_guide/s2-ssh-configuration-keypairs).  
-    ```
+    ```bash
     ssh root@hana-s2-db2
     ssh root@hana-s2-db3
     ```
 
 5. **[Ah]** Installera ytterligare paket, vilket krävs för HANA 2,0 SP4. Mer information finns i SAP NOTE [2593824](https://launchpad.support.sap.com/#/notes/2593824) för RHEL 7. 
 
-    ```
+    ```bash
     # If using RHEL 7
     yum install libgcc_s1 libstdc++6 compat-sap-c++-7 libatomic1
     # If using RHEL 8
@@ -473,7 +473,7 @@ I det här exemplet har vi använt HANA 2,0 SP4 i det här exemplet för att dis
 
 
 6. **[A]** inaktivera brand väggen tillfälligt, så att den inte störs av Hana-installationen. Du kan aktivera den igen när HANA-installationen är färdig. 
-    ```
+    ```bash
     # Execute as root
     systemctl stop firewalld
     systemctl disable firewalld
@@ -485,7 +485,7 @@ I det här exemplet har vi använt HANA 2,0 SP4 i det här exemplet för att dis
 
    a. Starta **hdblcm** -programmet som `root` från installations program katalogen Hana. Använd `internal_network` parametern och skicka adress utrymmet för under nätet som används för den interna Hana-kommunikationen mellan noderna.  
 
-    ```
+    ```bash
     ./hdblcm --internal_network=10.23.1.128/26
     ```
 
@@ -522,7 +522,7 @@ I det här exemplet har vi använt HANA 2,0 SP4 i det här exemplet för att dis
 
    Visa global.ini och se till att konfigurationen för den interna SAP HANA kommunikationen mellan noderna är på plats. Verifiera **kommunikations** avsnittet. Det ska ha adress utrymmet för `inter` under nätet och `listeninterface` ska vara inställt på `.internal` . Verifiera **internal_hostname_resolution** avsnittet. Den bör ha IP-adresserna för de HANA-virtuella datorer som tillhör `inter` under nätet.  
 
-   ```
+   ```bash
      sudo cat /usr/sap/HN1/SYS/global/hdb/custom/config/global.ini
      # Example from SITE1 
      [communication]
@@ -536,7 +536,7 @@ I det här exemplet har vi använt HANA 2,0 SP4 i det här exemplet för att dis
 
 4. **[1, 2]** Förbered `global.ini` för installation i icke-delad miljö, enligt beskrivningen i SAP anmärkning [2080991](https://launchpad.support.sap.com/#/notes/0002080991).  
 
-   ```
+   ```bash
     sudo vi /usr/sap/HN1/SYS/global/hdb/custom/config/global.ini
     [persistence]
     basepath_shared = no
@@ -544,14 +544,14 @@ I det här exemplet har vi använt HANA 2,0 SP4 i det här exemplet för att dis
 
 4. **[1, 2]** starta om SAP HANA för att aktivera ändringarna.  
 
-   ```
+   ```bash
     sudo -u hn1adm /usr/sap/hostctrl/exe/sapcontrol -nr 03 -function StopSystem
     sudo -u hn1adm /usr/sap/hostctrl/exe/sapcontrol -nr 03 -function StartSystem
    ```
 
 6. **[1, 2]** kontrol lera att klient gränssnittet kommer att använda IP-adresserna från `client` under nätet för kommunikation.  
 
-    ```
+    ```bash
     # Execute as hn1adm
     /usr/sap/HN1/HDB03/exe/hdbsql -u SYSTEM -p "password" -i 03 -d SYSTEMDB 'select * from SYS.M_HOST_INFORMATION'|grep net_publicname
     # Expected result - example from SITE 2
@@ -562,13 +562,13 @@ I det här exemplet har vi använt HANA 2,0 SP4 i det här exemplet för att dis
 
 7. **[Ah]** Ändra behörigheter för data-och logg kataloger för att undvika HANA-installations fel.  
 
-   ```
+   ```bash
     sudo chmod o+w -R /hana/data /hana/log
    ```
 
 8. **[1]** installera de sekundära Hana-noderna. Exempel instruktionerna i det här steget är för plats 1.  
    a. Starta det inhemska **hdblcm** -programmet som `root` .    
-    ```
+    ```bash
      cd /hana/shared/HN1/hdblcm
      ./hdblcm 
     ```
@@ -602,21 +602,21 @@ I det här exemplet har vi använt HANA 2,0 SP4 i det här exemplet för att dis
 
    Säkerhetskopiera databaserna som **HN1** ADM:
 
-    ```
+    ```bash
     hdbsql -d SYSTEMDB -u SYSTEM -p "passwd" -i 03 "BACKUP DATA USING FILE ('initialbackupSYS')"
     hdbsql -d HN1 -u SYSTEM -p "passwd" -i 03 "BACKUP DATA USING FILE ('initialbackupHN1')"
     ```
 
    Kopiera systemets PKI-filer till den sekundära platsen:
 
-    ```
+    ```bash
     scp /usr/sap/HN1/SYS/global/security/rsecssfs/data/SSFS_HN1.DAT hana-s2-db1:/usr/sap/HN1/SYS/global/security/rsecssfs/data/
     scp /usr/sap/HN1/SYS/global/security/rsecssfs/key/SSFS_HN1.KEY  hana-s2-db1:/usr/sap/HN1/SYS/global/security/rsecssfs/key/
     ```
 
    Skapa den primära platsen:
 
-    ```
+    ```bash
     hdbnsutil -sr_enable --name=HANA_S1
     ```
 
@@ -624,7 +624,7 @@ I det här exemplet har vi använt HANA 2,0 SP4 i det här exemplet för att dis
     
    Registrera den andra platsen för att starta systemreplikeringen. Kör följande kommando som <hanasid \> ADM:
 
-    ```
+    ```bash
     sapcontrol -nr 03 -function StopWait 600 10
     hdbnsutil -sr_register --remoteHost=hana-s1-db1 --remoteInstance=03 --replicationMode=sync --name=HANA_S2
     sapcontrol -nr 03 -function StartSystem
@@ -634,7 +634,7 @@ I det här exemplet har vi använt HANA 2,0 SP4 i det här exemplet för att dis
 
    Kontrol lera replikeringsstatus och vänta tills alla databaser är synkroniserade.
 
-    ```
+    ```bash
     sudo su - hn1adm -c "python /usr/sap/HN1/HDB03/exe/python_support/systemReplicationStatus.py"
     # | Database | Host          | Port  | Service Name | Volume ID | Site ID | Site Name | Secondary     | Secondary | Secondary | Secondary | Secondary     | Replication | Replication | Replication    |
     # |          |               |       |              |           |         |           | Host          | Port      | Site ID   | Site Name | Active Status | Mode        | Status      | Status Details |
@@ -657,12 +657,12 @@ I det här exemplet har vi använt HANA 2,0 SP4 i det här exemplet för att dis
 
 4. **[1, 2]** ändra Hana-konfigurationen så att kommunikation för Hana-systemreplikering om det riktas mot de virtuella nätverks gränssnitten Hana System Replication.   
    - Stoppa HANA på båda platserna
-    ```
+    ```bash
     sudo -u hn1adm /usr/sap/hostctrl/exe/sapcontrol -nr 03 -function StopSystem HDB
     ```
 
    - Redigera global.ini för att lägga till värd mappningen för HANA-systemreplikering: Använd IP-adresserna från `hsr` under nätet.  
-    ```
+    ```bash
     sudo vi /usr/sap/HN1/SYS/global/hdb/custom/config/global.ini
     #Add the section
     [system_replication_hostname_resolution]
@@ -675,7 +675,7 @@ I det här exemplet har vi använt HANA 2,0 SP4 i det här exemplet för att dis
     ```
 
    - Starta HANA på båda platserna
-   ```
+   ```bash
     sudo -u hn1adm /usr/sap/hostctrl/exe/sapcontrol -nr 03 -function StartSystem HDB
    ```
 
@@ -683,7 +683,7 @@ I det här exemplet har vi använt HANA 2,0 SP4 i det här exemplet för att dis
 
 5. **[Ah]** Återaktivera brand väggen.  
    - Återaktivera brand väggen
-       ```
+       ```bash
        # Execute as root
        systemctl start firewalld
        systemctl enable firewalld
@@ -694,7 +694,7 @@ I det här exemplet har vi använt HANA 2,0 SP4 i det här exemplet för att dis
        > [!IMPORTANT]
        > Skapa brand Väggs regler för att tillåta att kommunikation mellan noder och klient trafik i HANA är över. De portar som krävs visas på [TCP/IP-portar för alla SAP-produkter](https://help.sap.com/viewer/ports). Följande kommandon är bara ett exempel. I det här scenariot med använt system Number 03.
 
-       ```
+       ```bash
         # Execute as root
         sudo firewall-cmd --zone=public --add-port=30301/tcp --permanent
         sudo firewall-cmd --zone=public --add-port=30301/tcp
@@ -753,19 +753,19 @@ Ta med alla virtuella datorer, inklusive majoriteten i klustret.
 
 1. **[1, 2]** stoppa SAP HANA på båda replikerings platserna. Kör som <sid \> adm.  
 
-    ```
+    ```bash
     sapcontrol -nr 03 -function StopSystem
     ```
 
 2. **[Ah]** Demontera fil system `/hana/shared` , som temporärt monterats för installationen på alla Hana DB-VM: ar. Du måste stoppa alla processer och sessioner som använder fil systemet innan du kan demontera den. 
  
-    ```
+    ```bash
     umount /hana/shared 
     ```
 
 3. **[1]** skapa fil systemets kluster resurser för `/hana/shared` inaktiverat tillstånd. Resurserna skapas med alternativet `--disabled` eftersom du måste definiera plats begränsningarna innan monteringarna aktive ras.  
 
-    ```
+    ```bash
     # /hana/shared file system for site 1
     pcs resource create fs_hana_shared_s1 --disabled ocf:heartbeat:Filesystem device=10.23.1.7:/HN1-shared-s1  directory=/hana/shared \
     fstype=nfs options='defaults,rw,hard,timeo=600,rsize=262144,wsize=262144,proto=tcp,intr,noatime,sec=sys,vers=4.1,lock,_netdev' op monitor interval=20s on-fail=fence timeout=40s OCF_CHECK_LEVEL=20 \
@@ -787,7 +787,7 @@ Ta med alla virtuella datorer, inklusive majoriteten i klustret.
 
 4. **[1]** konfigurera och verifiera Node-attributen. Alla SAP HANA DB-noder på replikering plats 1 tilldelas attribut `S1` , och alla SAP HANA DB-noder på replikering plats 2 tilldelas attribut `S2` .  
 
-    ```
+    ```bash
     # HANA replication site 1
     pcs node attribute hana-s1-db1 NFS_SID_SITE=S1
     pcs node attribute hana-s1-db2 NFS_SID_SITE=S1
@@ -801,7 +801,7 @@ Ta med alla virtuella datorer, inklusive majoriteten i klustret.
     ```
 
 5. **[1]** konfigurera begränsningarna som avgör var NFS-filsystemen ska monteras och aktivera fil system resurserna.  
-    ```
+    ```bash
     # Configure the constraints
     pcs constraint location fs_hana_shared_s1-clone rule resource-discovery=never score=-INFINITY NFS_SID_SITE ne S1
     pcs constraint location fs_hana_shared_s2-clone rule resource-discovery=never score=-INFINITY NFS_SID_SITE ne S2
@@ -814,7 +814,7 @@ Ta med alla virtuella datorer, inklusive majoriteten i klustret.
  
 6. **[Ah]** Kontrol lera att ANF-volymerna är monterade `/hana/shared` på alla Hana DB-VM: er på båda platserna.
 
-    ```
+    ```bash
     sudo nfsstat -m
     # Verify that flag vers is set to 4.1 
     # Example from SITE 1, hana-s1-db1
@@ -827,7 +827,7 @@ Ta med alla virtuella datorer, inklusive majoriteten i klustret.
 
 7. **[1]** konfigurera attributets resurser. Konfigurera begränsningarna som ska ange attributen till `true` , om NFS-monteringarna för `hana/shared` är monterade.  
 
-    ```
+    ```bash
     # Configure the attribure resources
     pcs resource create hana_nfs_s1_active ocf:pacemaker:attribute active_value=true inactive_value=false name=hana_nfs_s1_active
     pcs resource create hana_nfs_s2_active ocf:pacemaker:attribute active_value=true inactive_value=false name=hana_nfs_s2_active
@@ -843,7 +843,7 @@ Ta med alla virtuella datorer, inklusive majoriteten i klustret.
    > Om konfigurationen innehåller andra fil system, förutom/ `hana/shared` , som är NFS-monterade, ska du inkludera `sequential=false` alternativet, så att det inte finns några ordnings beroenden mellan fil systemen. Alla NFS-monterade fil system måste startas före motsvarande Attribute-resurs, men de behöver inte starta i någon ordning i förhållande till varandra. Mer information finns i [Hur gör jag för att konfigurera SAP HANA Scale-Out HSR i ett pacemaker-kluster när Hana-filsystemen är NFS-resurser](https://access.redhat.com/solutions/5423971).  
 
 8. **[1]** placera pacemaker i underhålls läge, som förberedelse för att skapa Hana-klusterresurser.  
-    ```
+    ```bash
     pcs property set maintenance-mode=true
     ```
 
@@ -851,7 +851,7 @@ Ta med alla virtuella datorer, inklusive majoriteten i klustret.
 
 1. **[A]** installera Hana-skalbar resurs agent på alla klusternoder, inklusive majoritets Maker.    
 
-    ```
+    ```bash
     yum install -y resource-agents-sap-hana-scaleout 
     ```
 
@@ -862,14 +862,14 @@ Ta med alla virtuella datorer, inklusive majoriteten i klustret.
 2. **[1, 2]** installera Hana-"systemets replikerings-Hook". Hooken måste installeras på en HANA DB-nod på varje plats för system replikering. SAP HANA bör vara kvar.        
 
    1. Förbered hooken som `root` 
-    ```
+    ```bash
      mkdir -p /hana/shared/myHooks
      cp /usr/share/SAPHanaSR-ScaleOut/SAPHanaSR.py /hana/shared/myHooks
      chown -R hn1adm:sapsys /hana/shared/myHooks
     ```
 
    2. Automatiskt `global.ini`
-    ```
+    ```bash
     # add to global.ini
     [ha_dr_provider_SAPHanaSR]
     provider = SAPHanaSR
@@ -881,7 +881,7 @@ Ta med alla virtuella datorer, inklusive majoriteten i klustret.
     ```
 
 3. **[Ah]** Klustret kräver sudoers-konfiguration på klusternoden för <sid \> adm. I det här exemplet som uppnås genom att skapa en ny fil. Kör-kommandona som `root` .    
-    ``` 
+    ```bash
     cat << EOF > /etc/sudoers.d/20-saphana
     # SAPHanaSR-ScaleOut needs for srHook
      Cmnd_Alias SOK = /usr/sbin/crm_attribute -n hana_hn1_glob_srHook -v SOK -t crm_config -s SAPHanaSR
@@ -892,13 +892,13 @@ Ta med alla virtuella datorer, inklusive majoriteten i klustret.
 
 4. **[1, 2]** starta SAP HANA på båda replikerings platserna. Kör som <sid \> adm.  
 
-    ```
+    ```bash
     sapcontrol -nr 03 -function StartSystem 
     ```
 
 5. **[1]** kontrol lera Hook-installationen. Kör som <sid \> adm på den aktiva webbplatsen för Hana-systemreplikering.   
 
-    ```
+    ```bash
     cdtrace
      awk '/ha_dr_SAPHanaSR.*crm_attribute/ \
      { printf "%s %s %s %s\n",$2,$3,$5,$16 }' nameserver_*
@@ -917,7 +917,7 @@ Ta med alla virtuella datorer, inklusive majoriteten i klustret.
     
    2. Skapa sedan resursen HANA-topologi.  
       Om du skapar RHEL **7. x** -kluster använder du följande kommandon:  
-      ```
+      ```bash
       pcs resource create SAPHanaTopology_HN1_HDB03 SAPHanaTopologyScaleOut \
        SID=HN1 InstanceNumber=03 \
        op start timeout=600 op stop timeout=300 op monitor interval=10 timeout=600
@@ -926,7 +926,7 @@ Ta med alla virtuella datorer, inklusive majoriteten i klustret.
       ```
 
       Om du skapar RHEL **8. x** -kluster, använder du följande kommandon:  
-      ```
+      ```bash
       pcs resource create SAPHanaTopology_HN1_HDB03 SAPHanaTopology \
        SID=HN1 InstanceNumber=03 meta clone-node-max=1 interleave=true \
        op methods interval=0s timeout=5 \
@@ -940,7 +940,7 @@ Ta med alla virtuella datorer, inklusive majoriteten i klustret.
       > Den här artikeln innehåller referenser till termen *slav*, en term som Microsoft inte längre använder. När termen tas bort från program varan tar vi bort det från den här artikeln.  
  
       Om du skapar RHEL **7. x** -kluster använder du följande kommandon:    
-      ```
+      ```bash
       pcs resource create SAPHana_HN1_HDB03 SAPHanaController \
        SID=HN1 InstanceNumber=03 PREFER_SITE_TAKEOVER=true DUPLICATE_PRIMARY_TIMEOUT=7200 AUTOMATED_REGISTER=false \
        op start interval=0 timeout=3600 op stop interval=0 timeout=3600 op promote interval=0 timeout=3600 \
@@ -951,7 +951,7 @@ Ta med alla virtuella datorer, inklusive majoriteten i klustret.
       ```
 
       Om du skapar RHEL **8. x** -kluster, använder du följande kommandon:  
-      ```
+      ```bash
       pcs resource create SAPHana_HN1_HDB03 SAPHanaController \
        SID=HN1 InstanceNumber=03 PREFER_SITE_TAKEOVER=true DUPLICATE_PRIMARY_TIMEOUT=7200 AUTOMATED_REGISTER=false \
        op demote interval=0s timeout=320 op methods interval=0s timeout=5 \
@@ -965,7 +965,7 @@ Ta med alla virtuella datorer, inklusive majoriteten i klustret.
       > Vi rekommenderar att du bara anger AUTOMATED_REGISTER till **Nej**, samtidigt som du utför omfattande fel söknings test, för att förhindra att den primära instansen registreras som sekundär automatiskt. När de misslyckade testerna har slutförts ställer du in AUTOMATED_REGISTER till **Ja**, så att när uppköps system replikering kan återupptas automatiskt. 
 
    4. Skapa virtuell IP-adress och associerade resurser.  
-      ```
+      ```bash
       pcs resource create vip_HN1_03 ocf:heartbeat:IPaddr2 ip=10.23.0.18 op monitor interval="10s" timeout="20s"
       sudo pcs resource create nc_HN1_03 azure-lb port=62503
       sudo pcs resource group add g_ip_HN1_03 nc_HN1_03 vip_HN1_03
@@ -973,7 +973,7 @@ Ta med alla virtuella datorer, inklusive majoriteten i klustret.
 
    5. Skapa kluster begränsningar  
       Om du skapar RHEL **7. x** -kluster använder du följande kommandon:  
-      ```
+      ```bash
       #Start HANA topology, before the HANA instance
       pcs constraint order SAPHanaTopology_HN1_HDB03-clone then msl_SAPHana_HN1_HDB03
 
@@ -983,7 +983,7 @@ Ta med alla virtuella datorer, inklusive majoriteten i klustret.
       ```
  
       Om du skapar RHEL **8. x** -kluster, använder du följande kommandon:  
-      ```
+      ```bash
       #Start HANA topology, before the HANA instance
       pcs constraint order SAPHanaTopology_HN1_HDB03-clone then SAPHana_HN1_HDB03-clone
 
@@ -993,7 +993,7 @@ Ta med alla virtuella datorer, inklusive majoriteten i klustret.
       ```
 
 7. **[1]** placera klustret ur underhålls läge. Kontrol lera att klustrets status är OK och att alla resurser har startats.  
-    ```
+    ```bash
     sudo pcs property set maintenance-mode=false
     #If there are failed cluster resources, you may need to run the next command
     pcs resource cleanup
@@ -1007,7 +1007,7 @@ Ta med alla virtuella datorer, inklusive majoriteten i klustret.
 1. Innan du startar ett test kontrollerar du klustrets och SAP HANA systemets replikeringsstatus.  
 
    a. Kontrol lera att det inte finns några misslyckade kluster åtgärder  
-     ```
+     ```bash
      #Verify that there are no failed cluster actions
      pcs status
      # Example
@@ -1044,7 +1044,7 @@ Ta med alla virtuella datorer, inklusive majoriteten i klustret.
 
    b. Kontrol lera att SAP HANA system replikering är synkroniserat
 
-      ```
+      ```bash
       # Verify HANA HSR is in sync
       sudo su - hn1adm -c "python /usr/sap/HN1/HDB03/exe/python_support/systemReplicationStatus.py"
       #| Database | Host        | Port  | Service Name | Volume ID | Site ID | Site Name | Secondary     | Secondary| Secondary | Secondary | Secondary     | Replication | Replication | Replication    |
@@ -1074,7 +1074,7 @@ Ta med alla virtuella datorer, inklusive majoriteten i klustret.
    **Förväntat resultat**: när du monterar om `/hana/shared` som *skrivskyddad* Miss lyckas den övervaknings åtgärd som utför läsning/skrivning i fil systemet, eftersom det inte går att skriva till fil systemet och kommer att utlösa Hana-resurs växling vid fel. Samma resultat förväntas när HANA-noden förlorar åtkomst till NFS-resursen.  
      
    Du kan kontrol lera status för kluster resurserna genom att köra `crm_mon` eller `pcs status` . Resurs tillstånd innan du startar testet:
-      ```
+      ```bash
       # Output of crm_mon
       #7 nodes configured
       #45 resources configured
@@ -1103,7 +1103,7 @@ Ta med alla virtuella datorer, inklusive majoriteten i klustret.
       ```
 
    Om du vill simulera felen för `/hana/shared` på en av de virtuella datorerna för den primära replikeringen kör du följande kommando:
-      ```
+      ```bash
       # Execute as root 
       mount -o ro /hana/shared
       # Or if the above command returns an error
@@ -1114,7 +1114,7 @@ Ta med alla virtuella datorer, inklusive majoriteten i klustret.
          
    Om klustret inte har startats på den virtuella datorn startar du klustret genom att köra: 
 
-      ```
+      ```bash
       # Start the cluster 
       pcs cluster start
       ```
@@ -1122,7 +1122,7 @@ Ta med alla virtuella datorer, inklusive majoriteten i klustret.
    När klustret startas kommer fil systemet `/hana/shared` automatiskt att monteras.     
    Om du anger AUTOMATED_REGISTER = "false" måste du konfigurera SAP HANA system replikering på den sekundära platsen. I så fall kan du köra dessa kommandon för att konfigurera om SAP HANA som sekundär.   
 
-      ```
+      ```bash
       # Execute on the secondary 
       su - hn1adm
       # Make sure HANA is not running on the secondary site. If it is started, stop HANA
@@ -1135,7 +1135,7 @@ Ta med alla virtuella datorer, inklusive majoriteten i klustret.
 
    Resursens tillstånd, efter testet: 
 
-      ```
+      ```bash
       # Output of crm_mon
       #7 nodes configured
       #45 resources configured

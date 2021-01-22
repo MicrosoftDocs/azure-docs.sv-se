@@ -9,12 +9,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 07/22/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 243f6f26be592e2db82d8f46df3de9aafcd2078b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b0760b86012504ea86e4a0cde36ae878e8ff3b26
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95996992"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685745"
 ---
 # <a name="monitor-and-debug-with-metrics-in-azure-cosmos-db"></a>Övervaka och felsöka med mått i Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -77,7 +77,7 @@ När du har identifierat vilken partitionsnyckel som orsakar snedheten i distrib
 
 ## <a name="compare-data-size-against-index-size"></a>Jämför data storleken mot index storleken
 
-I Azure Cosmos DB är den totala förbrukade lagringen kombinationen av både data storlek och index storlek. Index storleken är vanligt vis en bråkdel av data storleken. På bladet mått i [Azure Portal](https://portal.azure.com)visar fliken Storage fördelningen av lagrings förbrukning baserat på data och index.
+I Azure Cosmos DB är den totala förbrukade lagringen kombinationen av både data storlek och index storlek. Index storleken är vanligt vis en bråkdel av data storleken. Mer information finns i artikeln [index storlek](index-policy.md#index-size) . På bladet mått i [Azure Portal](https://portal.azure.com)visar fliken Storage fördelningen av lagrings förbrukning baserat på data och index.
 
 ```csharp
 // Measure the document size usage (which includes the index size)  

@@ -4,15 +4,15 @@ description: Beskriver data källor och anslutningar som stöds för tabell 1200
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 08/21/2020
+ms.date: 01/21/2021
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 61efc7719b071ff4e8e5c0e07534b72a2883aff1
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: b778cf55ea485d7b3b4d3730d3659750f27b2697
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96458874"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685603"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Datakällor som stöds i Azure Analysis Services
 
@@ -24,13 +24,13 @@ Data källor och anslutningar som visas i guiden hämta data eller tabell import
 |---------|---------|---------|---------|
 |Azure SQL Database      |   Ja      |    Ja      |<sup>[2](#azprovider)</sup>, <sup> [3](#azsqlmanaged)</sup>|
 |Azure Synapse Analytics (SQL DW)      |   Ja      |   Ja       |<sup>[11.2](#azprovider)</sup>|
-|Azure Blob Storage      |   Ja       |    Inga      | <sup>[1](#tab1400a)</sup> |
-|Azure Table Storage     |   Ja       |    Inga      | <sup>[1](#tab1400a)</sup>|
-|Azure Cosmos DB     |  Ja        |  Inga        |<sup>[1](#tab1400a)</sup> |
-|Azure Data Lake Store Gen1      |   Ja       |    Inga      |<sup>[1](#tab1400a)</sup> |
-|Azure Data Lake Store Gen2       |   Ja       |    Inga      |<sup>[1](#tab1400a)</sup>, <sup> [5](#gen2)</sup>|
-|Azure HDInsight HDFS    |     Ja     |   Inga       |<sup>[1](#tab1400a)</sup> |
-|Azure HDInsight Spark     |   Ja       |   Inga       |<sup>[1](#tab1400a)</sup>, <sup> [4](#databricks)</sup>|
+|Azure Blob Storage      |   Ja       |    Nej      | <sup>[1](#tab1400a)</sup> |
+|Azure Table Storage     |   Ja       |    Nej      | <sup>[1](#tab1400a)</sup>|
+|Azure Cosmos DB     |  Ja        |  Nej        |<sup>[1](#tab1400a)</sup> |
+|Azure Data Lake Store Gen1      |   Ja       |    Nej      |<sup>[1](#tab1400a)</sup> |
+|Azure Data Lake Store Gen2       |   Ja       |    Nej      |<sup>[1](#tab1400a)</sup>, <sup> [5](#gen2)</sup>|
+|Azure HDInsight HDFS    |     Ja     |   Nej       |<sup>[1](#tab1400a)</sup> |
+|Azure HDInsight Spark     |   Ja       |   Nej       |<sup>[1](#tab1400a)</sup>, <sup> [4](#databricks)</sup>|
 ||||
 
 **Anteckningar:**
@@ -46,34 +46,34 @@ Data källor och anslutningar som visas i guiden hämta data eller tabell import
 |Datakälla | Minnesintern | DirectQuery |Kommentarer   |
 |  --- | --- | --- | --- |
 |Access-databas     |  Ja | Inga |  |
-|Active Directory     |  Ja | Inga | <sup>[3-6](#tab1400b)</sup>  |
-|Analysis Services     |  Ja | Inga |  |
-|Analys plattforms system     |  Ja | Inga |  |
-|CSV-fil  |Ja | Inga |  |
-|Dynamics 365     |  Ja | Inga | <sup>[3-6](#tab1400b)</sup> |
-|Excel-arbetsbok     |  Ja | Inga |  |
-|Exchange      |  Ja | Inga | <sup>[3-6](#tab1400b)</sup> |
-|Mapp      |Ja | Inga | <sup>[3-6](#tab1400b)</sup> |
-|IBM Informix  |Ja | Inga |  |
-|JSON-dokument      |  Ja | Inga | <sup>[3-6](#tab1400b)</sup> |
-|Rader från binär      | Ja | Inga | <sup>[3-6](#tab1400b)</sup> |
+|Active Directory     |  Ja | Nej | <sup>[3-6](#tab1400b)</sup>  |
+|Analysis Services     |  Ja | Nej |  |
+|Analys plattforms system     |  Ja | Nej |  |
+|CSV-fil  |Ja | Nej |  |
+|Dynamics 365     |  Ja | Nej | <sup>[3-6](#tab1400b)</sup> |
+|Excel-arbetsbok     |  Ja | Nej |  |
+|Exchange      |  Ja | Nej | <sup>[3-6](#tab1400b)</sup> |
+|Mapp      |Ja | Nej | <sup>[3-6](#tab1400b)</sup> |
+|IBM Informix  |Ja | Nej |  |
+|JSON-dokument      |  Ja | Nej | <sup>[3-6](#tab1400b)</sup> |
+|Rader från binär      | Ja | Nej | <sup>[3-6](#tab1400b)</sup> |
 |MySQL-databas     | Ja | Inga |  |
-|OData-feed      |  Ja | Inga | <sup>[3-6](#tab1400b)</sup> |
+|OData-feed      |  Ja | Nej | <sup>[3-6](#tab1400b)</sup> |
 |ODBC-fråga     | Ja | Inga |  |
 |OLE DB     |   Ja | Nej |  |
 |Oracle  | Ja  |Ja  | <sup>[1.9](#oracle)</sup> |
-|PostgreSQL-databas   | Ja | Inga | <sup>[3-6](#tab1400b)</sup> |
-|Salesforce-objekt|  Ja | Inga | <sup>[3-6](#tab1400b)</sup> |
-|Salesforce-rapporter |Ja | Inga | <sup>[3-6](#tab1400b)</sup> |
-|SAP HANA     |  Ja | Inga |  |
-|SAP Business Warehouse    |  Ja | Inga | <sup>[3-6](#tab1400b)</sup> |
-|SharePoint-lista      |   Ja | Inga | <sup>[6](#tab1400b)</sup>, <sup> [11](#filesSP)</sup> |
+|PostgreSQL-databas   | Ja | Nej | <sup>[3-6](#tab1400b)</sup> |
+|Salesforce-objekt|  Ja | Nej | <sup>[3-6](#tab1400b)</sup> |
+|Salesforce-rapporter |Ja | Nej | <sup>[3-6](#tab1400b)</sup> |
+|SAP HANA     |  Ja | Nej |  |
+|SAP Business Warehouse    |  Ja | Nej | <sup>[3-6](#tab1400b)</sup> |
+|SharePoint-lista      |   Ja | Nej | <sup>[6](#tab1400b)</sup>, <sup> [11](#filesSP)</sup> |
 |SQL Server |Ja   | Ja  | <sup>[7](#sqlim)</sup>, <sup> [8](#instgw)</sup> |
 |SQL Server informations lager |Ja   | Ja  | <sup>[7](#sqlim)</sup>, <sup> [8](#instgw)</sup> |
 |Sybase-databas     |  Ja | Nej |  |
 |Teradata | Ja  | Ja  | <sup>[10](#teradata)</sup> |
-|TXT-fil  |Ja | Inga |  |
-|XML-tabell    |  Ja | Inga | <sup>[3-6](#tab1400b)</sup> |
+|TXT-fil  |Ja | Nej |  |
+|XML-tabell    |  Ja | Nej | <sup>[3-6](#tab1400b)</sup> |
 | | | |
 
 **Anteckningar:**  
@@ -117,6 +117,14 @@ För lokala data Källor:
 För moln data Källor:
 
 * Om du använder SQL-autentisering ska personifiering vara ett tjänst konto.
+
+## <a name="service-principal-authentication"></a>Autentisering av tjänstens huvud namn
+
+När den har angetts som data källa för *providern* stöder Azure Analysis Services [MSOLEDBSQL](/sql/connect/oledb/release-notes-for-oledb-driver-for-sql-server) Azure Active Directory tjänstens huvud namns autentisering för Azure SQL Database och Azure Synapse-datakällor.
+
+`
+Provider=MSOLEDBSQL;Data Source=[server];Initial Catalog=[database];Authentication=ActiveDirectoryServicePrincipal;User ID=[Application (client) ID];Password=[Application (client) secret];Use Encryption for Data=true
+`
 
 ## <a name="oauth-credentials"></a>Autentiseringsuppgifter för OAuth
 

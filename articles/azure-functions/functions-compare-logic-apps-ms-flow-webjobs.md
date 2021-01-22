@@ -4,12 +4,12 @@ description: 'Jämför Microsofts moln tjänster som är optimerade för integra
 ms.topic: overview
 ms.date: 04/09/2018
 ms.custom: mvc
-ms.openlocfilehash: 81b143219fd0b53d4cd00761af6b767c173ed88d
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 95167791efe13526b0a70c28fa89771542a9d220
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97934874"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685569"
 ---
 # <a name="choose-the-right-integration-and-automation-services-in-azure"></a>Välja rätt integrerings- och automationstjänster i Azure
 
@@ -79,7 +79,7 @@ Azure Functions bygger på WebJobs-SDK:n, och delar därför många händelseutl
 |  | Functions | WebJobs med Webjobs-SDK:n |
 | --- | --- | --- |
 |**[Program modell utan server](https://azure.microsoft.com/solutions/serverless/) med [automatisk skalning](event-driven-scaling.md)**|✔||
-|**[Utveckla och testa i webbläsare](functions-create-first-azure-function.md)** |✔||
+|**[Utveckla och testa i webbläsare](./functions-get-started.md)** |✔||
 |**[Betala per användning](consumption-plan.md)**|✔||
 |**[Integrering med Logic Apps](functions-twitter-email.md)**|✔||
 | **Utlösarhändelser** |[Timer](functions-bindings-timer.md)<br>[Azure Storage-köer och blobar](functions-bindings-storage-blob.md)<br>[Azure Service Bus köer och ämnen](functions-bindings-service-bus.md)<br>[Azure Cosmos DB](functions-bindings-cosmosdb.md)<br>[Azure Event Hubs](functions-bindings-event-hubs.md)<br>[HTTP/WebHook (GitHub, Slack)](functions-bindings-http-webhook.md)<br>[Azure Event Grid](functions-bindings-event-grid.md)|[Timer](functions-bindings-timer.md)<br>[Azure Storage-köer och blobar](functions-bindings-storage-blob.md)<br>[Azure Service Bus köer och ämnen](functions-bindings-service-bus.md)<br>[Azure Cosmos DB](functions-bindings-cosmosdb.md)<br>[Azure Event Hubs](functions-bindings-event-hubs.md)<br>[Filsystem](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Files/FileTriggerAttribute.cs)|
@@ -124,4 +124,4 @@ Kom igång genom att skapa ditt första flöde, din första logikapp eller din f
 
 * [Kom igång med Power Automate](/power-automate/getting-started)
 * [Skapa en logikapp](../logic-apps/quickstart-create-first-logic-app-workflow.md)
-* [Skapa din första Azure-funktion](functions-create-first-azure-function.md)
+* [Skapa din första Azure-funktion](./functions-get-started.md)

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 01/19/2021
-ms.openlocfilehash: cdd8783daf9e1e1458f47e773eb3b6ccedfbae83
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: d6832238b0c76059079e2a1330d31eed3212b242
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624565"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685586"
 ---
 # <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>Köra Jupyter Notebooks på arbetsytan
 
@@ -230,6 +230,7 @@ Antecknings boken hittar automatiskt alla Jupyter-kernels som är installerade p
     conda install -y ipykernel
     python -m ipykernel install --user --name newenv --display-name "Python (newenv)"
     ```
+1. När du har installerat kärnan ska du uppdatera sidan och öppna en antecknings bok. Nu visas den nya kerneln i kernel-listan.
 
 > [!NOTE]
 > För paket hantering i en bärbar dator använder du **% pip** eller **% Conda** Magic Functions för att automatiskt installera paket i den **aktuella kerneln** i stället för **! pip** eller **! Conda** som refererar till alla paket (inklusive paket utanför den aktuella kerneln som körs)

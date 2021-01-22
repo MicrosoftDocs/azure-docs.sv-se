@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: 0a73651b11c9ca6f7cb34deb755543c3b5a6d710
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: f8e4925f721b307abd85a8b881caff3e5fc04fde
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92042991"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685670"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-cli"></a>Distribuera och övervaka IoT Edge moduler i skala med hjälp av Azure CLI
 
@@ -25,7 +25,7 @@ Mer information finns i [förstå IoT Edge automatiska distributioner för enski
 
 I den här artikeln ställer du in Azure CLI och IoT-tillägget. Du lär dig sedan att distribuera moduler till en uppsättning IoT Edge enheter och övervaka förloppet med hjälp av tillgängliga CLI-kommandon.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * En [IoT-hubb](../iot-hub/iot-hub-create-using-cli.md) i din Azure-prenumeration.
 * En eller flera IoT Edge enheter.
@@ -155,7 +155,7 @@ Här är ett grundläggande distributions manifest med lager med en modul som ex
 }
 ```
 
-I föregående exempel visades en lager distributions inställning `properties.desired` för en modul. Om den här skiktade distributionen är riktad mot en enhet där samma modul redan tillämpades, skulle den skriva över alla befintliga önskade egenskaper. För att kunna uppdatera, i stället för att skriva över, önskade egenskaper, kan du definiera ett nytt underavsnitt. Exempel:
+I föregående exempel visades en lager distributions inställning `properties.desired` för en modul. Om den här skiktade distributionen är riktad mot en enhet där samma modul redan tillämpades, skulle den skriva över alla befintliga önskade egenskaper. För att kunna uppdatera, i stället för att skriva över, önskade egenskaper, kan du definiera ett nytt underavsnitt. Till exempel:
 
 ```json
 "SimulatedTEmperatureSensor": {
@@ -191,7 +191,7 @@ Du distribuerar moduler till mål enheterna genom att skapa en distribution som 
 
 Använd kommandot [AZ IoT Edge Deployment Create](/cli/azure/ext/azure-iot/iot/edge/deployment#ext-azure-iot-az-iot-edge-deployment-create) för att skapa en distribution:
 
-```cli
+```azurecli
 az iot edge deployment create --deployment-id [deployment id] --hub-name [hub name] --content [file path] --labels "[labels]" --target-condition "[target query]" --priority [int]
 ```
 
@@ -204,9 +204,9 @@ Kommandot för att skapa distribution tar följande parametrar:
 * **--innehålls** -sökväg till distributions manifest-JSON. Obligatorisk parameter.
 * **--hubb-Name** -namnet på den IoT-hubb som distributionen ska skapas i. Navet måste finnas i den aktuella prenumerationen. Ändra den aktuella prenumerationen med `az account set -s [subscription name]` kommandot.
 * **--Etiketter** – Lägg till etiketter som hjälper dig att spåra dina distributioner. Etiketter är namn, värdepar som beskriver din distribution. Etiketter tar JSON-formatering för namn och värden. Till exempel `{"HostPlatform":"Linux", "Version:"3.0.1"}`
-* **--mål villkor** – ange ett mål villkor för att avgöra vilka enheter som ska vara mål för distributionen.Villkoret baseras på enhetens dubbla taggar eller enhets egenskaper med dubbla rapporter och ska överensstämma med uttrycks formatet.Exempelvis `tags.environment='test' and properties.reported.devicemodel='4000x'`.
+* **--mål villkor** – ange ett mål villkor för att avgöra vilka enheter som ska vara mål för distributionen. Villkoret baseras på enhetens dubbla taggar eller enhets egenskaper med dubbla rapporter och ska överensstämma med uttrycks formatet. Ett exempel är `tags.environment='test' and properties.reported.devicemodel='4000x'`.
 * **--prioritet** -ett positivt heltal. I händelse av att två eller flera distributioner är riktade mot samma enhet gäller distributionen med det högsta numeriska värdet för prioritet.
-* **--mått** – skapa mått som frågar edgeHub-rapporterade egenskaper för att spåra statusen för en distribution. Måtten tar JSON-inmatade eller en fil Sök väg. Exempelvis `'{"queries": {"mymetric": "SELECT deviceId FROM devices WHERE properties.reported.lastDesiredStatus.code = 200"}}'`.
+* **--mått** – skapa mått som frågar edgeHub-rapporterade egenskaper för att spåra statusen för en distribution. Måtten tar JSON-inmatade eller en fil Sök väg. Ett exempel är `'{"queries": {"mymetric": "SELECT deviceId FROM devices WHERE properties.reported.lastDesiredStatus.code = 200"}}'`.
 
 Information om hur du övervakar en distribution med Azure CLI finns i [övervaka IoT Edge distributioner](how-to-monitor-iot-edge-deployments.md#monitor-a-deployment-with-azure-cli).
 
@@ -224,7 +224,7 @@ Det går inte att uppdatera innehållet i en distribution, som innehåller de mo
 
 Använd kommandot [AZ IoT Edge Deployment Update](/cli/azure/ext/azure-iot/iot/edge/deployment#ext-azure-iot-az-iot-edge-deployment-update) för att uppdatera en-distribution:
 
-```cli
+```azurecli
 az iot edge deployment update --deployment-id [deployment id] --hub-name [hub name] --set [property1.property2='value']
 ```
 
@@ -245,7 +245,7 @@ När du tar bort en distribution tar alla enheter med den näst högsta priorite
 
 Använd kommandot [AZ IoT Edge Deployment Delete](/cli/azure/ext/azure-iot/iot/edge/deployment#ext-azure-iot-az-iot-edge-deployment-delete) för att ta bort en distribution:
 
-```cli
+```azurecli
 az iot edge deployment delete --deployment-id [deployment id] --hub-name [hub name]
 ```
 

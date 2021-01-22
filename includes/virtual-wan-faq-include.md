@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/02/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 5aab11b31756ee8430e8ae4d54a2b3de5ea2e136
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 8cd6f6a32071dc7bbd4aaccb92168cda009933a6
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97612710"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98689790"
 ---
 ### <a name="is-azure-virtual-wan-in-ga"></a>Är Azure Virtual WAN i GA?
 
@@ -198,6 +198,9 @@ När VPN-platser ansluter till en hubb gör de det med anslutningar. Virtuellt W
 ### <a name="what-is-the-total-vpn-throughput-of-a-vpn-tunnel-and-a-connection"></a>Vad är det totala VPN-dataflödet för en VPN-tunnel och en anslutning?
 
 Det totala VPN-dataflödet för en hubb är upp till 20 Gbit/s baserat på den valda skalnings enheten för VPN-gatewayen. Data flödet delas av alla befintliga anslutningar. Varje tunnel i en anslutning har stöd för upp till 1 Gbit/s.
+
+### <a name="can-i-use-nat-t-on-my-vpn-connections"></a>Kan jag använda NAT-T på mina VPN-anslutningar?
+Ja, NAT Traversal (NAT-T) stöds. Virtuella WAN-VPN Gateway kommer inte att utföra NAT-liknande funktioner på de inre paketen till/från IPsec-tunnlarna. I den här konfigurationen kontrollerar du att den lokala enheten initierar IPSec-tunneln.
 
 ### <a name="i-dont-see-the-20-gbps-setting-for-the-virtual-hub-in-portal-how-do-i-configure-that"></a>Jag ser inte inställningen 20 Gbit/s för den virtuella hubben i portalen. Hur gör jag för att konfigurera?
 

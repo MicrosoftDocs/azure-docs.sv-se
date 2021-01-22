@@ -7,13 +7,13 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: include
-ms.date: 01/08/2021
-ms.openlocfilehash: e805725be3750639ab8560c09a52f9e62c8e8ddb
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.date: 01/21/2021
+ms.openlocfilehash: c386f78223006f63f5dc91fdff96f7df2a6aa842
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98052765"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98689591"
 ---
 > [!NOTE]
-> Från och med januari 18 konsol IDE ras de regionala portalerna (au.luis.ai och eu.luis.ai) till en enda portal och URL. Om du använde någon av dessa portaler kommer du automatiskt att dirigeras om till [Luis.AI](https://luis.ai/). Du kommer att fortsätta använda samma regionala resurser som du har skapat och dina data fortsätter att sparas och bearbetas i samma region som din resurs.
+> Från och med den 20 januari samlas regionala portaler (au.luis.ai och eu.luis.ai) till en enda portal och URL. Om du använde någon av dessa portaler kommer du automatiskt att dirigeras om till [Luis.AI](https://luis.ai/). Du kommer att fortsätta använda samma regionala resurser som du har skapat och dina data fortsätter att sparas och bearbetas i samma region som din resurs.

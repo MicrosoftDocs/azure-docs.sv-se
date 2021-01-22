@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 09/10/2020
-ms.openlocfilehash: 4ba06af98714004e4429fe802a206acdfa8fb148
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: 117bc71ba304445e3186b4e633f5888647be9223
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98127625"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685637"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Viktig information om Azure Machine Learning
 
@@ -1421,7 +1421,7 @@ Få åtkomst till följande webbaserade redigerings verktyg från Studio:
 
 ### <a name="r-sdk"></a>R SDK 
  
-Data forskare och AI-utvecklare använder [Azure Machine Learning SDK för R](tutorial-1st-r-experiment.md) för att skapa och köra Machine Learning-arbetsflöden med Azure Machine Learning.
+Data forskare och AI-utvecklare använder [Azure Machine Learning SDK för R](https://github.com/Azure/azureml-sdk-for-r) för att skapa och köra Machine Learning-arbetsflöden med Azure Machine Learning.
 
 Azure Machine Learning SDK för R använder paketet för att `reticulate` binda till python SDK. Genom att binda direkt till python ger SDK för R dig åtkomst till kärn objekt och metoder som implementeras i python SDK från valfri R-miljö som du väljer.
 
@@ -1597,13 +1597,13 @@ Azure Machine Learning är nu en resurs leverantör för Event Grid kan du konfi
   + **azureml-träna-automl**
     + När du skapar ett [experiment](/python/api/azureml-core/azureml.core.experiment.experiment) objekt hämtas eller skapas experimentet i Azure Machine Learning-arbetsytan för körning av historik spårning. Experiment-ID: t och den arkiverade tiden fylls i experiment-objektet när det skapas. Exempel:
 
-        ```py
+        ```python
         experiment = Experiment(workspace, "New Experiment")
         experiment_id = experiment.id
         ```
         [Arkiv ()](/python/api/azureml-core/azureml.core.experiment.experiment#archive--) och [återaktivera ()](/python/api/azureml-core/azureml.core.experiment.experiment#reactivate-new-name-none-) är funktioner som kan anropas på ett experiment för att dölja och återställa experimentet som visas i UX eller som returneras som standard i ett anrop till List experiment. Om ett nytt experiment skapas med samma namn som ett arkiverat experiment, kan du byta namn på det arkiverade experimentet när du återaktiverar genom att skicka ett nytt namn. Det kan bara finnas ett aktivt experiment med ett angivet namn. Exempel:
 
-        ```py
+        ```python
         experiment1 = Experiment(workspace, "Active Experiment")
         experiment1.archive()
         # Create new active experiment with the same name as the archived.
@@ -1612,7 +1612,7 @@ Azure Machine Learning är nu en resurs leverantör för Event Grid kan du konfi
         ```
         Den statiska metod [listan ()](/python/api/azureml-core/azureml.core.experiment.experiment#list-workspace--experiment-name-none--view-type--activeonly---tags-none-) i experimentet kan ta ett namn filter och ViewType-filter. ViewType-värden är "ACTIVE_ONLY", "ARCHIVED_ONLY" och "alla". Exempel:
 
-        ```py
+        ```python
         archived_experiments = Experiment.list(workspace, view_type="ARCHIVED_ONLY")
         all_first_experiments = Experiment.list(workspace, name="First Experiment", view_type="ALL")
         ```
@@ -1768,7 +1768,7 @@ Fliken experiment i den [nya arbets ytans Portal](https://ml.azure.com) har uppd
     + Stöd för Dockerfile har lagts till i `environment_definition` parametern i uppskattningar.
     + Förenklade utbildnings parametrar i uppskattningar.
 
-         ```py
+         ```python
         from azureml.train.dnn import TensorFlow, Mpi, ParameterServer
         ```
 
@@ -1820,14 +1820,14 @@ I samband med den här versionen stöds följande webbläsare: Chrome, Firefox, 
   + **azureml-core**
     + Introducera Dataset.get_all (arbets yta), som returnerar en ord lista `TabularDataset` och `FileDataset` objekt som har registrerats med registrerings namnet.
 
-    ```py
+    ```python
     workspace = Workspace.from_config()
     all_datasets = Dataset.get_all(workspace)
     mydata = all_datasets['my-data']
     ```
 
     + Presentera `parition_format` som argument till `Dataset.Tabular.from_delimited_files` och `Dataset.Tabular.from_parquet.files` . Partitionsinformation för varje data Sök väg extraheras till kolumner baserat på det angivna formatet. {column_name} skapar en sträng kolumn och {column_name: ÅÅÅÅ/MM/dd/HH/mm/SS} skapar kolumnen DateTime, där ÅÅÅÅ, MM, DD, HH, mm och SS används för att extrahera år, månad, dag, timme, minut och sekund för datum/tid-typen. Partition_format bör starta från positionen för den första partitionen tills fil Sök vägen är slut. Till exempel, med sökvägen ".. /USA/2019/01/01/data.csv "där partitionen är per land och tid, partition_format = '/{Country}/{PartitionDate: ÅÅÅÅ/MM/DD}/data.csv ' skapar sträng kolumnen land med värdet" USA "och datetime-kolumnen" PartitionDate "med värdet" 2019-01-01 ".
-        ```py
+        ```python
         workspace = Workspace.from_config()
         all_datasets = Dataset.get_all(workspace)
         mydata = all_datasets['my-data']
@@ -2239,7 +2239,7 @@ Azure Machine Learning SDK för python v-1.0.30 har släppts.
 
 ### <a name="azure-machine-learning-sdk-for-python-v1018"></a>Azure Machine Learning SDK för python v-1.0.18
 
- + **Något**
+ + **Ändringar**
    + Azureml-tensorboard-paketet ersätter azureml-contrib-tensorboard.
    + I den här versionen kan du konfigurera ett användar konto på ditt hanterade beräknings kluster (amlcompute) medan du skapar det. Detta kan göras genom att de här egenskaperna skickas i konfigurationen. Du hittar mer information i [referens dokumentationen för SDK](/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute#provisioning-configuration-vm-size-----vm-priority--dedicated---min-nodes-0--max-nodes-none--idle-seconds-before-scaledown-none--admin-username-none--admin-user-password-none--admin-user-ssh-key-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--tags-none--description-none--remote-login-port-public-access--notspecified--).
 

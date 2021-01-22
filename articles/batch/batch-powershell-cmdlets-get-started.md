@@ -2,34 +2,34 @@
 title: Kom igång med PowerShell
 description: En snabb introduktion till Azure PowerShell-cmdlets som du kan använda för att hantera Batch-resurserna.
 ms.topic: how-to
-ms.date: 01/15/2019
+ms.date: 01/21/2021
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: 3c152733ee3a75732d119db16f7db7c266740fdb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b51a2a7852df82625fb342bbbbc4a3a1cbf72a3
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89079854"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685518"
 ---
 # <a name="manage-batch-resources-with-powershell-cmdlets"></a>Hantera Batch-resurser med PowerShell-cmdletar
 
-Med Azure Batch PowerShell-cmdletarna kan du genomföra och skriva många av de uppgifter som du utför med Batch-API:erna, Azure-portalen och Azures kommandoradsgränssnitt (CLI). Det här är en snabb introduktion till de cmdletar som du kan använda för att hantera Batch-konton och arbeta med Batch-resurser, t.ex. pooler, jobb och uppgifter.
+Med Azure Batch PowerShell-cmdletar kan du utföra och skripta många vanliga batch-uppgifter. Det här är en snabb introduktion till de cmdletar som du kan använda för att hantera Batch-konton och arbeta med Batch-resurser, t.ex. pooler, jobb och uppgifter.
 
 En fullständig lista över alla Batch-cmdlets och en detaljerad cmdlet-syntax finns i [Cmdlet-referens för Azure Batch](/powershell/module/az.batch).
 
-Den har artikeln baseras på cmdletar i Azure Batch-modulen 1.0.0. Vi rekommenderar att du uppdaterar Azure PowerShell-moduler ofta för att dra nytta av tjänstuppdateringar och förbättringar.
+Vi rekommenderar att du uppdaterar Azure PowerShell-moduler ofta för att dra nytta av tjänstuppdateringar och förbättringar.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-* [Installera och konfigurera Azure PowerShell-modulen](/powershell/azure/). Information om hur du installerar en viss Azure Batch-modul, till exempel en förhandsversion av en modul, finns i [PowerShell-galleriet](https://www.powershellgallery.com/packages/Az.Batch/1.0.0).
+- [Installera och konfigurera Azure PowerShell-modulen](/powershell/azure/). Information om hur du installerar en viss Azure Batch-modul, till exempel en förhandsversion av en modul, finns i [PowerShell-galleriet](https://www.powershellgallery.com/packages/Az.Batch/).
 
-* Kör cmdleten **Connect-AzAccount** för att ansluta till din prenumeration (Azure Batch-cmdletar medföljer Azure Resource Manager-modulen):
+- Kör cmdleten **Connect-AzAccount** för att ansluta till din prenumeration (Azure Batch-cmdletar medföljer Azure Resource Manager-modulen):
 
   ```powershell
   Connect-AzAccount
   ```
 
-* **Registrera med Batch-leverantörens namnområde**. Du behöver bara utför den här åtgärden **en gång per prenumeration**.
+- **Registrera med Batch-leverantörens namnområde**. Du behöver bara utför den här åtgärden **en gång per prenumeration**.
   
   ```powershell
   Register-AzResourceProvider -ProviderNamespace Microsoft.Batch
@@ -39,13 +39,13 @@ Den har artikeln baseras på cmdletar i Azure Batch-modulen 1.0.0. Vi rekommende
 
 ### <a name="create-a-batch-account"></a>Skapa ett Batch-konto
 
-**New-AzBatchAccount** skapar ett Batch-konto i en angiven resursgrupp. Om du inte redan har en resursgrupp skapar du en genom att köra cmdleten [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). Ange ett av Azure-områdena i parametern **Plats**, till exempel "USA, centrala". Exempel:
+**New-AzBatchAccount** skapar ett Batch-konto i en angiven resursgrupp. Om du inte redan har en resursgrupp skapar du en genom att köra cmdleten [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). Ange ett av Azure-områdena i parametern **Plats**, till exempel "USA, centrala". Till exempel:
 
 ```powershell
 New-AzResourceGroup –Name MyBatchResourceGroup –Location "Central US"
 ```
 
-Skapa sedan ett Batch-konto i resursgruppen. Ange ett namn för kontot i <*account_name*>, och platsen och namnet för resursgruppen. Det kan ta en stund innan skapandet av Batch-kontot har slutförts. Exempel:
+Skapa sedan ett Batch-konto i resursgruppen. Ange ett namn för kontot i <*account_name*>, och platsen och namnet för resursgruppen. Det kan ta en stund innan skapandet av Batch-kontot har slutförts. Till exempel:
 
 ```powershell
 New-AzBatchAccount –AccountName <account_name> –Location "Central US" –ResourceGroupName <res_group_name>
@@ -79,7 +79,7 @@ New-AzBatchAccountKey -AccountName <account_name> -KeyType Primary
 
 ### <a name="delete-a-batch-account"></a>Ta bort ett Batch-konto
 
-**Remove-AzBatchAccount** tar bort ett Batch-konto. Exempel:
+**Remove-AzBatchAccount** tar bort ett Batch-konto. Till exempel:
 
 ```powershell
 Remove-AzBatchAccount -AccountName <account_name>
@@ -114,9 +114,9 @@ När du använder många av dessa cmdletar måste du, förutom att skicka ett Ba
 
 ### <a name="create-a-batch-pool"></a>Skapa en Batch-pool
 
-När du skapar eller uppdaterar en batch-pool väljer du antingen Cloud Services-konfigurationen eller den virtuella dator konfigurationen för operativ systemet på datornoderna (se [noder och pooler](nodes-and-pools.md#configurations)). Om du anger konfigurationen för molntjänsterna avbildas dina beräkningsnoder med någon av [versionerna av Azures gäst-OS](../cloud-services/cloud-services-guestos-update-matrix.md#releases). Om du anger konfigurationen för den virtuella datorn kan du antingen ange någon av VM-avbildningarna som stöds av Linux eller Windows som anges på [Azure Virtual Machines Marketplace][vm_marketplace] eller ange en anpassad avbildning som du har förberett.
+När du skapar eller uppdaterar en batch-pool anger du en [konfiguration](nodes-and-pools.md#configurations). Pooler bör normalt konfigureras med konfiguration av virtuell dator, vilket gör att du antingen kan ange någon av de virtuella Linux-eller Windows-avbildningar som anges i [Azure Virtual Machines Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute?filters=virtual-machine-images&page=1)eller ange en anpassad avbildning som du har för berett. Cloud Services-mediepooler tillhandahåller endast Windows Compute-noder och har inte stöd för alla batch-funktioner.
 
-När du kör **New-AzBatchPool** skickar du operativsystemsinställningarna i ett PSCloudServiceConfiguration- eller PSVirtualMachineConfiguration-objekt. Till exempel skapar följande kodavsnitt en Batch-pool med beräkningsnoder i storleken Standard_A1 i konfigurationen för virtuella datorer, avbildade med Ubuntu Server 18.04-LTS. Här anger parametern **VirtualMachineConfiguration** variabeln *$configuration* som PSVirtualMachineConfiguration-objekt. Parametern **BatchContext** anger en tidigare definierad variabel, *$context*, som BatchAccountContext-objektet.
+När du kör **New-AzBatchPool** ska du skicka inställningarna för operativ systemet i ett PSVirtualMachineConfiguration-eller PSCloudServiceConfiguration-objekt. Till exempel skapar följande kodavsnitt en Batch-pool med beräkningsnoder i storleken Standard_A1 i konfigurationen för virtuella datorer, avbildade med Ubuntu Server 18.04-LTS. Här anger parametern **VirtualMachineConfiguration** variabeln *$configuration* som PSVirtualMachineConfiguration-objekt. Parametern **BatchContext** anger en tidigare definierad variabel, *$context*, som BatchAccountContext-objektet.
 
 ```powershell
 $imageRef = New-Object -TypeName "Microsoft.Azure.Commands.Batch.Models.PSImageReference" -ArgumentList @("UbuntuServer","Canonical","18.04-LTS")
@@ -164,7 +164,7 @@ Parametern **Id** stöder endast sökningar efter fullständiga ID:n, inte joker
 
 ### <a name="use-the-maxcount-parameter"></a>Använda parametern MaxCount
 
-Som standard returnerar varje cmdlet högst 1 000 objekt. Om du når den här gränsen kan du antingen förfina filtret så att färre objekt returneras eller uttryckligen ställa in ett högsta antal med parametern **MaxCount**. Exempel:
+Som standard returnerar varje cmdlet högst 1 000 objekt. Om du når den här gränsen kan du antingen förfina filtret så att färre objekt returneras eller uttryckligen ställa in ett högsta antal med parametern **MaxCount**. Till exempel:
 
 ```powershell
 Get-AzBatchTask -MaxCount 2500 -BatchContext $context
@@ -190,7 +190,10 @@ Get-AzBatchComputeNode -PoolId "myPool" -BatchContext $context | Restart-AzBatch
 
 ## <a name="application-package-management"></a>Hantera programpaket
 
-Programpaket är ett förenklat sätt att distribuera program till beräkningsnoder i dina pooler. Med Batch-PowerShell-cmdlet:ar kan du överföra och hantera programpaket i Batch-kontot och distribuera paketversioner för att beräkna noder.
+[Programpaket](batch-application-packages.md) är ett förenklat sätt att distribuera program till Compute-noderna i dina pooler. Med Batch-PowerShell-cmdlet:ar kan du överföra och hantera programpaket i Batch-kontot och distribuera paketversioner för att beräkna noder.
+
+> [!IMPORTANT]
+> Du måste koppla ett Azure Storage-konto till Batch-kontot för att använda programpaket.
 
 **Skapa** ett program:
 
@@ -247,17 +250,13 @@ $appPackageReference.ApplicationId = "MyBatchApplication"
 $appPackageReference.Version = "1.0"
 ```
 
-Skapa nu konfigurationen och poolen. I det här exemplet används parametern **CloudServiceConfiguration** med ett `PSCloudServiceConfiguration` typ objekt initierat i `$configuration` , vilket anger **OSFamily** till `6` för "Windows Server 2019" och **OSVersion** till `*` . Ange paket referens objekt som argument till `ApplicationPackageReferences` alternativet:
+Skapa nu poolen och ange paketreferensobjekt som argument till `ApplicationPackageReferences`-alternativet:
 
 ```powershell
-$configuration = New-Object -TypeName "Microsoft.Azure.Commands.Batch.Models.PSCloudServiceConfiguration" -ArgumentList @(6,"*")  # 6 = OSFamily 'Windows Server 2019'
-New-AzBatchPool -Id "PoolWithAppPackage" -VirtualMachineSize "Small" -CloudServiceConfiguration $configuration -BatchContext $context -ApplicationPackageReferences $appPackageReference
+New-AzBatchPool -Id "PoolWithAppPackage" -VirtualMachineSize "Small" -VirtualMachineConfiguration $configuration -BatchContext $context -ApplicationPackageReferences $appPackageReference
 ```
 
 Mer information om programpaket finns i [Deploy applications to compute nodes with Batch application packages](batch-application-packages.md) (Distribuera program till beräkningsnoder med Batch-programpaket).
-
-> [!IMPORTANT]
-> Du måste koppla ett Azure Storage-konto till Batch-kontot för att använda programpaket.
 
 ### <a name="update-a-pools-application-packages"></a>Uppdatera programpaket för en pool
 
@@ -272,7 +271,7 @@ $appPackageReference.Version = "2.0"
 
 ```
 
-Sedan hämtar du poolen från Batch, tar bort eventuella befintliga paket, lägger till vår nya paketreferens och uppdaterat Batch-tjänsten med de nya poolinställningarna:
+Hämta sedan poolen från batch, ta bort alla befintliga paket, Lägg till den nya paket referensen och uppdatera batch-tjänsten med de nya inställningarna för poolen:
 
 ```powershell
 $pool = Get-AzBatchPool -BatchContext $context -Id "PoolWithAppPackage"
@@ -291,11 +290,9 @@ Get-AzBatchComputeNode -PoolId "PoolWithAppPackage" -BatchContext $context | Res
 ```
 
 > [!TIP]
-> Du kan distribuera flera programpaket till beräkningsnoder i poolen. Om du vill *lägga till* ett programpaket i stället för att ersätta de för närvarande distribuerade paketen, utelämnar du raden `$pool.ApplicationPackageReferences.Clear()` ovan.
+> Du kan distribuera flera programpaket till beräkningsnoder i poolen. Om du vill lägga till ett programpaket i stället för att ersätta de för närvarande distribuerade paketen, utelämnar du raden `$pool.ApplicationPackageReferences.Clear()` ovan.
 
 ## <a name="next-steps"></a>Nästa steg
 
-* Detaljerad cmdlet-syntax och exempel finns i [Cmdlet-referens för Azure Batch](/powershell/module/az.batch).
-* Mer information om program och programpaket i Batch finns i [Deploy applications to compute nodes with Batch application packages](batch-application-packages.md) (Distribuera program till beräkningsnoder med Batch-programpaket).
-
-[vm_marketplace]: https://azuremarketplace.microsoft.com/marketplace/apps/category/compute?filters=virtual-machine-images&page=1
+- Granska [Azure Batch cmdlet-referens](/powershell/module/az.batch) för detaljerad cmdlet-syntax och exempel.
+- Lär dig hur du [distribuerar program för att beräkna noder med batch-programpaket](batch-application-packages.md).

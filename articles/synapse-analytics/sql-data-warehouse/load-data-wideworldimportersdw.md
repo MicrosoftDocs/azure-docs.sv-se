@@ -11,16 +11,16 @@ ms.date: 01/12/2021
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, synapse-analytics
-ms.openlocfilehash: c492ec930cea000e45f7b6f09cc5e9c7a6a0db22
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: bd9d477ed20122b0706e7997ab8922dcce7a59ba
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98134508"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685433"
 ---
 # <a name="tutorial-load-data-to--azure-synapse-analytics-sql-pool"></a>Självstudie: läsa in data till Azure Synapse Analytics SQL-pool
 
-I den här självstudien används PolyBase för att läsa in informations lagret wideworldimportersdw Data Warehouse från Azure Blob Storage till ditt data lager i Azure Synapse Analytics SQL-poolen. I självstudierna används [Azure-portalen](https://portal.azure.com) och [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS) för att:
+I den här självstudien används PolyBase för att läsa in informations lagret wideworldimportersdw Data Warehouse från Azure Blob Storage till ditt data lager i Azure Synapse Analytics SQL-poolen. I självstudierna används [Azure-portalen](https://portal.azure.com) och [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (SSMS) för att:
 
 > [!div class="checklist"]
 >
@@ -35,7 +35,7 @@ Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](ht
 
 ## <a name="before-you-begin"></a>Innan du börjar
 
-Innan du börjar med de här självstudierna ska du ladda ned och installera den senaste versionen av [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS).
+Innan du börjar med de här självstudierna ska du ladda ned och installera den senaste versionen av [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (SSMS).
 
 Den här självstudien förutsätter att du redan har skapat en dedikerad SQL-pool från följande [självstudie](./create-data-warehouse-portal.md#connect-to-the-server-as-server-admin). 
 
@@ -111,7 +111,7 @@ Kör följande SQL-skript för att ange information om de data du vill läsa in.
     CREATE MASTER KEY;
     ```
 
-4. Kör instruktionen [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) för att definiera platsen för Azure-blobben. Det här är platsen för externa data från Världs omfattande importörer.  För att köra ett kommando som du har bifogat till frågefönstret markerar du de kommandon du vill köra och klickar på **Kör**.
+4. Kör instruktionen [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) för att definiera platsen för Azure-blobben. Det här är platsen för externa data från Världs omfattande importörer.  För att köra ett kommando som du har bifogat till frågefönstret markerar du de kommandon du vill köra och klickar på **Kör**.
 
     ```sql
     CREATE EXTERNAL DATA SOURCE WWIStorage
@@ -122,7 +122,7 @@ Kör följande SQL-skript för att ange information om de data du vill läsa in.
     );
     ```
 
-5. Ange formateringsegenskaper och alternativ för den externa datafilen genom att köra T-SQL-uttrycket [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SKAPA EXTERNT FILFORMAT). Den här instruktionen anger att externa data lagras som text och att värdena avgränsas med pipe-tecknet ('|').  
+5. Ange formateringsegenskaper och alternativ för den externa datafilen genom att köra T-SQL-uttrycket [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (SKAPA EXTERNT FILFORMAT). Den här instruktionen anger att externa data lagras som text och att värdena avgränsas med pipe-tecknet ('|').  
 
     ```sql
     CREATE EXTERNAL FILE FORMAT TextFileFormat
@@ -137,7 +137,7 @@ Kör följande SQL-skript för att ange information om de data du vill läsa in.
     );
     ```
 
-6. Kör instruktionerna för [CREATE SCHEMA](/sql/t-sql/statements/create-schema-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SKAPA SCHEMA) för att skapa ett schema för ditt externa filformat. Det externa schemat innehåller en metod för att ordna de externa tabeller som du ska skapa. Wwi-schemat organiserar de standardtabeller som ska innehålla data.
+6. Kör instruktionerna för [CREATE SCHEMA](/sql/t-sql/statements/create-schema-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (SKAPA SCHEMA) för att skapa ett schema för ditt externa filformat. Det externa schemat innehåller en metod för att ordna de externa tabeller som du ska skapa. Wwi-schemat organiserar de standardtabeller som ska innehålla data.
 
     ```sql
     CREATE SCHEMA ext;
@@ -431,7 +431,7 @@ I det här avsnittet används de externa tabeller som du har definierat för att
 > [!NOTE]
 > De här självstudierna läser in data direkt till den slutliga tabellen. I en produktionsmiljö använder du vanligtvis CREATE TABLE AS SELECT FÖR att läsa in till en mellanlagringstabell. Du kan utföra alla nödvändiga omvandlingar när data är i mellanlagringstabellen. Du kan använda instruktionen INSERT...SELECT om du vill lägga till data i mellanlagringstabellen i en produktionstabell. Mer information finns i [Infoga data i en produktionstabell](guidance-for-loading-data.md#inserting-data-into-a-production-table).
 
-Skriptet använder T-SQL-instruktionen [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) för att läsa in data från Azure Storage Blob till nya tabeller i informationslagret. CTAS skapar en ny tabell baserat på resultatet av en SELECT-instruktion. Den nya tabellen har samma kolumner och datatyper som resultatet av select-instruktionen. När SELECT-instruktionen väljer från en extern tabell, importeras data till en Relations tabell i data lagret.
+Skriptet använder T-SQL-instruktionen [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) för att läsa in data från Azure Storage Blob till nya tabeller i informationslagret. CTAS skapar en ny tabell baserat på resultatet av en SELECT-instruktion. Den nya tabellen har samma kolumner och datatyper som resultatet av select-instruktionen. När SELECT-instruktionen väljer från en extern tabell, importeras data till en Relations tabell i data lagret.
 
 Det här skriptet läser inte in data i wwi.dimension_Date och wwi.fact_Sale tabeller. Tabellerna genereras i ett senare steg för att tabellerna ska innehålla ett radantal med justerbar storlek.
 
