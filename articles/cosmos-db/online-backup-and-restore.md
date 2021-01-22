@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 43625a80df76ff35b8bb1804df5f5fd1524326c5
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: ba66013e37c196c58291a6bcd979be7fb5fa0130
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097540"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684584"
 ---
 # <a name="online-backup-and-on-demand-data-restore-in-azure-cosmos-db"></a>Säkerhets kopiering online och data återställning på begäran i Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -52,15 +52,15 @@ Använd följande steg för att ändra standard alternativ för säkerhets kopie
 
    * **Kopior av data som behålls** – som standard erbjuds två säkerhets kopior av dina data utan kostnad. Du får ytterligare en avgift om du behöver fler än två kopior. Mer information om priset för ytterligare kopior finns i avsnittet Förbrukat lagringsutrymme på [sidan Prissättning](https://azure.microsoft.com/pricing/details/cosmos-db/).
 
-   :::image type="content" source="./media/online-backup-and-restore/configure-backup-interval-retention.png" alt-text="Regelbundna fullständiga säkerhets kopieringar av alla Cosmos DB entiteter i GRS Azure Storage" border="true":::
+   :::image type="content" source="./media/online-backup-and-restore/configure-backup-interval-retention.png" alt-text="Konfigurera intervall för säkerhets kopiering och kvarhållning för ett befintligt Azure Cosmos-konto" border="true":::
 
-Om du konfigurerar säkerhets kopierings alternativ när kontot skapas kan du konfigurera **säkerhets kopierings principen** , som är antingen **Periodisk** eller **kontinuerlig** . Med den periodiska principen kan du konfigurera intervallet för säkerhets kopiering och kvarhållning av säkerhets kopior. Den kontinuerliga principen är för närvarande endast tillgänglig vid registrering. Azure Cosmos DBs teamet kommer att bedöma din arbets belastning och godkänna din begäran.
+Om du konfigurerar säkerhets kopierings alternativ när kontot skapas kan du konfigurera **säkerhets kopierings principen**, som är antingen **Periodisk** eller **kontinuerlig**. Med den periodiska principen kan du konfigurera intervallet för säkerhets kopiering och kvarhållning av säkerhets kopior. Den kontinuerliga principen är för närvarande endast tillgänglig vid registrering. Azure Cosmos DBs teamet kommer att bedöma din arbets belastning och godkänna din begäran.
 
-:::image type="content" source="./media/online-backup-and-restore/configure-periodic-continuous-backup-policy.png" alt-text="Regelbundna fullständiga säkerhets kopieringar av alla Cosmos DB entiteter i GRS Azure Storage" border="true":::
+:::image type="content" source="./media/online-backup-and-restore/configure-periodic-continuous-backup-policy.png" alt-text="Konfigurera regelbunden eller kontinuerlig säkerhets kopierings princip för nya Azure Cosmos-konton" border="true":::
 
 ## <a name="request-data-restore-from-a-backup"></a>Begär data återställning från en säkerhets kopia
 
-Om du av misstag tar bort databasen eller en behållare kan du välja [ett support ärende](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) eller [kontakta Azure-supporten](https://azure.microsoft.com/support/options/) för att återställa data från automatiska säkerhets kopieringar online. Support för Azure är tillgängligt för valda planer, till exempel **standard** , **utvecklare** och planer som är högre än de. Azure-supporten är inte tillgänglig med **Basic** -planen. Mer information om olika support avtal finns på sidan [support](https://azure.microsoft.com/support/plans/) avtal för Azure.
+Om du av misstag tar bort databasen eller en behållare kan du välja [ett support ärende](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) eller [kontakta Azure-supporten](https://azure.microsoft.com/support/options/) för att återställa data från automatiska säkerhets kopieringar online. Support för Azure är tillgängligt för valda planer, till exempel **standard**, **utvecklare** och planer som är högre än de. Azure-supporten är inte tillgänglig med **Basic** -planen. Mer information om olika support avtal finns på sidan [support](https://azure.microsoft.com/support/plans/) avtal för Azure.
 
 För att återställa en speciell ögonblicks bild av säkerhets kopieringen kräver Azure Cosmos DB att data är tillgängliga under tiden för säkerhets kopierings cykeln för ögonblicks bilden.
 Du bör ha följande information innan du begär en återställning:
@@ -81,7 +81,7 @@ Förutom namnet på Azure Cosmos-kontot, databas namn, behållar namn, bör du a
 
 Följande skärm bild visar hur du skapar en support förfrågan för en behållare (samling/graf/tabell) för att återställa data med hjälp av Azure Portal. Ange ytterligare information, till exempel typ av data, syftet med återställningen, tid när data togs bort för att prioritera begäran.
 
-:::image type="content" source="./media/online-backup-and-restore/backup-support-request-portal.png" alt-text="Regelbundna fullständiga säkerhets kopieringar av alla Cosmos DB entiteter i GRS Azure Storage":::
+:::image type="content" source="./media/online-backup-and-restore/backup-support-request-portal.png" alt-text="Skapa en support förfrågan för säkerhets kopiering med Azure Portal":::
 
 ## <a name="considerations-for-restoring-the-data-from-a-backup"></a>Att tänka på när du återställer data från en säkerhets kopia
 
@@ -115,6 +115,13 @@ Om du av misstag har tagit bort eller skadat dina data bör du kontakta [Azure-s
 
 Om du etablerar data flöde på databas nivå sker säkerhets kopierings-och återställnings processen i det här fallet på hela databas nivån och inte på de enskilda behållar nivåerna. I sådana fall kan du inte välja en delmängd av behållare som ska återställas.
 
+## <a name="required-permissions-to-change-retention-or-restore-from-the-portal"></a>Behörigheter som krävs för att ändra kvarhållning eller återställning från portalen
+Huvud konton som ingår i rollen [CosmosdbBackupOperator](../role-based-access-control/built-in-roles.md#cosmosbackupoperator), ägare eller deltagare kan begära en återställning eller ändra kvarhållningsperioden.
+
+## <a name="understanding-costs-of-extra-backups"></a>Förstå kostnader för extra säkerhets kopieringar
+2 säkerhets kopior tillhandahålls kostnads fritt och extra säkerhets kopieringar debiteras enligt den regionbaserade prissättningen för säkerhets kopierings lagring som beskrivs i pris nivån för [säkerhets kopiering](https://azure.microsoft.com/en-us/pricing/details/cosmos-db/). Exempel: om kvarhållning av säkerhets kopior har kon figurer ATS till 240 timmar, d.v.s. 10 dagar och intervall för säkerhets kopiering till 24 timmar. Detta innebär 10 kopior av säkerhets kopierings data. Vi antar 1 TB data i USA, västra 2, som är 1000 * 0,12 ~ $120 för lagring av säkerhets kopior under den månaden. 
+
+
 ## <a name="options-to-manage-your-own-backups"></a>Alternativ för att hantera dina egna säkerhets kopior
 
 Med Azure Cosmos DB SQL API-konton kan du även underhålla dina egna säkerhets kopior genom att använda någon av följande metoder:
@@ -147,4 +154,3 @@ Härnäst kan du lära dig hur du återställer data från ett Azure Cosmos-kont
 * Om du vill göra en återställnings förfrågan kontaktar du Azure-supporten, [File a Ticket från Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)
 * [Använd Cosmos DB ändra feed](change-feed.md) för att flytta data till Azure Cosmos dB.
 * [Använd Azure Data Factory](../data-factory/connector-azure-cosmos-db.md) för att flytta Data till Azure Cosmos dB.
-

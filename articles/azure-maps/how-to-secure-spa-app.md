@@ -10,12 +10,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: devx-track-js
-ms.openlocfilehash: c39104912c99b199d38cf489bb61d64e83b89286
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 3b647a02731a4fa404aab4bb648853eea766d92e
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895604"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684080"
 ---
 # <a name="how-to-secure-a-single-page-application-with-non-interactive-sign-in"></a>Så här skyddar du ett enda sid program med icke-interaktiv inloggning
 
@@ -30,7 +30,7 @@ Följande guide avser ett program som använder Azure Active Directory (Azure AD
 
 Skapa ett skyddat webb tjänst program som ansvarar för autentisering till Azure AD. 
 
-1. Skapa en funktion i Azure Portal. Mer information finns i [skapa en Azure-funktion](../azure-functions/functions-create-first-azure-function.md).
+1. Skapa en funktion i Azure Portal. Mer information finns i [skapa en Azure-funktion](../azure-functions/functions-get-started.md).
 
 2. Konfigurera CORS-principen på Azure-funktionen så att den kan nås av webb programmet för en enskild sida. Detta skyddar webb läsar klienter till de tillåtna ursprungen för ditt webb program. Se [Lägg till CORS-funktioner](../app-service/app-service-web-tutorial-rest-api.md#add-cors-functionality).
 
@@ -102,14 +102,14 @@ Skapa ett skyddat webb tjänst program som ansvarar för autentisering till Azur
 
 ## <a name="grant-role-based-access"></a>Bevilja rollbaserad åtkomst
 
-Du ger åtkomst till Azure-rollbaserad *åtkomst kontroll (Azure RBAC)* genom att tilldela den systemtilldelade identiteten till en eller flera roll definitioner för Azure. Om du vill visa de roll definitioner för Azure som är tillgängliga för Azure Maps går du till **åtkomst kontroll (IAM)** . Välj **roller** och Sök sedan efter roller som börjar med *Azure Maps* .
+Du ger åtkomst till Azure-rollbaserad *åtkomst kontroll (Azure RBAC)* genom att tilldela den systemtilldelade identiteten till en eller flera roll definitioner för Azure. Om du vill visa de roll definitioner för Azure som är tillgängliga för Azure Maps går du till **åtkomst kontroll (IAM)**. Välj **roller** och Sök sedan efter roller som börjar med *Azure Maps*.
 
-1. Gå till ditt **Azure Maps-konto** . Välj roll tilldelningen **åtkomst kontroll (IAM)**  >  **Role assignment** .
+1. Gå till ditt **Azure Maps-konto**. Välj roll tilldelningen **åtkomst kontroll (IAM)**  >  .
 
     > [!div class="mx-imgBorder"]
     > ![Bevilja åtkomst med Azure RBAC](./media/how-to-manage-authentication/how-to-grant-rbac.png)
 
-2. På fliken **roll tilldelningar** under **roll** väljer du en inbyggd Azure Maps roll definition som **Azure Maps data läsare** eller **Azure Maps data deltagare** . Under **tilldela åtkomst till** väljer du **Funktionsapp** . Välj huvudobjektet efter namn. Välj sedan **Spara** .
+2. På fliken **roll tilldelningar** under **roll** väljer du en inbyggd Azure Maps roll definition som **Azure Maps data läsare** eller **Azure Maps data deltagare**. Under **tilldela åtkomst till** väljer du **Funktionsapp**. Välj huvudobjektet efter namn. Välj sedan **Spara**.
 
    * Se information om [Lägg till eller ta bort roll tilldelningar](../role-based-access-control/role-assignments-portal.md).
 

@@ -1,18 +1,18 @@
 ---
 title: Azure Policy regler för regelefterlevnad för Azure RBAC
 description: Visar Azure Policy regler för regelefterlevnad som är tillgängliga för rollbaserad åtkomst kontroll i Azure (Azure RBAC). Dessa inbyggda princip definitioner tillhandahåller vanliga metoder för att hantera kompatibiliteten för dina Azure-resurser.
-ms.date: 01/08/2021
+ms.date: 01/21/2021
 ms.topic: sample
 author: rolyon
 ms.author: rolyon
 ms.service: role-based-access-control
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 824b3975d4c8c192aeb87ae02c4a6dd4fc1177df
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 23f04dbfcdedc534394fc9fe3b35b8389e4d0775
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98050312"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684178"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-rbac"></a>Azure Policy regler för regelefterlevnad för Azure RBAC
 

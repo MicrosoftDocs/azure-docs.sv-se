@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Felsöka vanliga problem med ARC-aktiverade Kubernetes-kluster.
 keywords: Kubernetes, båge, Azure, behållare
-ms.openlocfilehash: 42c90708854af6973ed1ef399b9867101a736b07
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 0827386eb6ec089cf7951e8fa513a77fc78aef22
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97586167"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684097"
 ---
 # <a name="azure-arc-enabled-kubernetes-troubleshooting-preview"></a>Azure Arc Enabled Kubernetes Troubleshooting (för hands version)
 
@@ -24,7 +24,7 @@ Det här dokumentet innehåller några vanliga fel söknings scenarier med anslu
 ### <a name="azure-cli-set-up"></a>Konfigurera Azure CLI
 Innan du använder AZ-connectedk8s eller AZ k8sconfiguration CLI-kommandon bör du se till att AZ är inställt på att fungera mot rätt Azure-prenumeration.
 
-```console
+```azurecli
 az account set --subscription 'subscriptionId'
 az account show
 ```
@@ -79,7 +79,7 @@ Att ansluta kluster till Azure kräver åtkomst till både en Azure-prenumeratio
 
 Om den angivna kubeconfig-filen inte har tillräcklig behörighet för att installera Azure Arc-agenterna returnerar Azure CLI-kommandot ett fel som försöker anropa Kubernetes-API: et.
 
-```console
+```azurecli
 $ az connectedk8s connect --resource-group AzureArc --name AzureArcCluster
 Command group 'connectedk8s' is in preview. It may be changed/removed in a future release.
 Ensure that you have the latest helm version installed before proceeding to avoid unexpected errors.
@@ -94,7 +94,7 @@ Kluster ägaren bör använda en Kubernetes-användare med kluster administratö
 
 Installationen av Azure Arc-agenten kräver att en uppsättning behållare körs på mål klustret. Om klustret körs över en långsam Internet anslutning kan behållar avbildningen ta längre tid än tids gränsen för Azure CLI.
 
-```console
+```azurecli
 $ az connectedk8s connect --resource-group AzureArc --name AzureArcCluster
 Command group 'connectedk8s' is in preview. It may be changed/removed in a future release.
 Ensure that you have the latest helm version installed before proceeding to avoid unexpected errors.

@@ -6,19 +6,22 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 03/18/2020
 ms.author: mjbrown
-ms.openlocfilehash: a416b12b039c3e3886ff4f4d42506fd9bf95b4b8
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: c29d131948be42a53bf568aa4048fe4e7d61c36e
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93099531"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684329"
 ---
 # <a name="create-an-azure-cosmos-db-account-with-ip-firewall"></a>Skapa ett Azure Cosmos DB-konto med IP-brandvägg
 [!INCLUDE[appliesto-all-apis](../../../includes/appliesto-all-apis.md)]
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
-[!INCLUDE [sample-powershell-install](../../../../../includes/sample-powershell-install-no-ssh.md)]
+Det här exemplet kräver Azure PowerShell AZ 5.4.0 eller senare. Kör `Get-Module -ListAvailable Az` för att se vilka versioner som är installerade.
+Om du behöver installera, se [installera Azure PowerShell-modulen](/powershell/azure/install-az-ps).
+
+Kör [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) för att logga in på Azure.
 
 ## <a name="sample-script"></a>Exempelskript
 

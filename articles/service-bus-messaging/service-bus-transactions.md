@@ -4,16 +4,19 @@ description: Den här artikeln innehåller en översikt över transaktions bearb
 ms.topic: article
 ms.date: 10/28/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9162b8578fe4f48cc3740b38d9d84ffaa2f260de
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 9a95a200b57d348109884a319b5433f0ffd5dde1
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96023609"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684799"
 ---
 # <a name="overview-of-service-bus-transaction-processing"></a>Översikt över Service Bus transaktions bearbetning
 
 I den här artikeln beskrivs transaktions funktionerna i Microsoft Azure Service Bus. En stor del av diskussionen illustreras av [AMQP-transaktioner med Service Bus exemplet](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/TransactionsAndSendVia/TransactionsAndSendVia/AMQPTransactionsSendVia). Den här artikeln är begränsad till en översikt över transaktions bearbetning och funktionen *Skicka via* i Service Bus, medan exemplet för atom transaktioner är bredare och mer komplext i omfånget.
+
+> [!NOTE]
+> Basic-nivån för Service Bus stöder inte transaktioner. Standard-och Premium-nivåerna stöder transaktioner. För skillnader mellan dessa nivåer, se [Service Bus prissättning](https://azure.microsoft.com/pricing/details/service-bus/).
 
 ## <a name="transactions-in-service-bus"></a>Transaktioner i Service Bus
 
@@ -42,7 +45,7 @@ Kraften i denna transaktions funktion blir tydlig när överförings kön eller 
 
 ### <a name="see-it-in-code"></a>Se det i kod
 
-Om du vill konfigurera sådana överföringar skapar du en meddelande avsändare som är riktad mot målkön via överförings kön. Du har också en mottagare som hämtar meddelanden från samma kö. Exempel:
+Om du vill konfigurera sådana överföringar skapar du en meddelande avsändare som är riktad mot målkön via överförings kön. Du har också en mottagare som hämtar meddelanden från samma kö. Till exempel:
 
 ```csharp
 var connection = new ServiceBusConnection(connectionString);

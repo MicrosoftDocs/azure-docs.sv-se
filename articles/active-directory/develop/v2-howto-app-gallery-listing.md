@@ -12,12 +12,12 @@ ms.date: 12/14/2020
 ms.author: kenwith
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 37d9c24d58e0dd9fb10db607ef1b96de0a44eb78
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 1f1100c27bb3c02e3d1a5040942509c24bab0e65
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97399374"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683996"
 ---
 # <a name="publish-your-app-to-the-azure-ad-app-gallery"></a>Publicera din app i Azure AD App-galleriet
 
@@ -69,7 +69,7 @@ Stegen för att publicera din app i Azure AD App-galleriet är:
 - Ömsesidiga kunder får en steg-för-steg-konfigurations guide.
 - Kunder som använder systemet för[scim](https://techcommunity.microsoft.com/t5/Identity-Standards-Blog/Provisioning-with-SCIM-getting-started/ba-p/880010)(Cross-Domain Identity Management) kan använda etablering för samma app.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Du behöver ett permanent konto för testning med minst två användare registrerade.
 
@@ -175,7 +175,7 @@ Stöd för [scim](https://aka.ms/scimoverview) -etablering är ett valfritt, men
 Mer information om SCIM-standarder och-förmåner för dina kunder finns i [etableringen with scim-kom igång](https://aka.ms/scimoverview).
 
 ### <a name="understand-the-azure-ad-scim-implementation"></a>Förstå Azure AD SCIM-implementeringen
-Mer information om Azure AD SCIM-implementeringen finns i [bygga en scim-slutpunkt och konfigurera användar etablering med Azure AD](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups).
+Mer information om Azure AD SCIM-implementeringen finns i [bygga en scim-slutpunkt och konfigurera användar etablering med Azure AD](../app-provisioning/use-scim-to-provision-users-and-groups.md).
 
 ### <a name="implement-scim"></a>Implementera SCIM
 Azure AD innehåller en [referens kod](https://aka.ms/scimoverview) som hjälper dig att bygga en scim-slutpunkt. Det finns också många bibliotek/referenser från tredje part som du hittar på GitHub.  
@@ -186,7 +186,7 @@ Du behöver en Azure AD-klient för att testa appen. Information om hur du konfi
 
 En Azure AD-klient levereras med varje Microsoft 365 prenumeration. Information om hur du konfigurerar en kostnads fri Microsoft 365 utvecklings miljö finns i [delta i Microsoft 365 Developer-programmet](/office/developer-program/microsoft-365-developer-program).
 
-När du har en klient måste du testa enkel inloggning och [etablering](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#step-4-integrate-your-scim-endpoint-with-the-azure-ad-scim-client). 
+När du har en klient måste du testa enkel inloggning och [etablering](../app-provisioning/use-scim-to-provision-users-and-groups.md#step-4-integrate-your-scim-endpoint-with-the-azure-ad-scim-client). 
 
 [Registrera ditt program](quickstart-register-app.md) som ett program med flera innehavare **för OIDC-eller Oath-program**. Välj kontona i valfri organisations katalog och alternativet personliga Microsoft-konton i de konto typer som stöds.
 
@@ -274,7 +274,7 @@ Om du vill lägga till ditt program i listan i galleriet med hjälp av lösen or
 
 ![Visar en lista med ett SSO-program i galleriet](./media/howto-app-gallery-listing/passwordsso.png)
 
-Om du implementerar en [SCIM](../app-provisioning/use-scim-to-provision-users-and-groups.md) 2,0-slutpunkt för användar etablering väljer du alternativet som visas. När du tillhandahåller schemat i onboarding-begäran kan du följa anvisningarna [här](https://docs.microsoft.com/azure/active-directory/app-provisioning/export-import-provisioning-configuration) för att ladda ned ditt schema. Vi kommer att använda det schema som du konfigurerade när du testar program som inte är Galleri för att bygga Galleri programmet. 
+Om du implementerar en [SCIM](../app-provisioning/use-scim-to-provision-users-and-groups.md) 2,0-slutpunkt för användar etablering väljer du alternativet som visas. När du tillhandahåller schemat i onboarding-begäran kan du följa anvisningarna [här](../app-provisioning/export-import-provisioning-configuration.md) för att ladda ned ditt schema. Vi kommer att använda det schema som du konfigurerade när du testar program som inte är Galleri för att bygga Galleri programmet. 
 
    ![Begäran om användar etablering](./media/howto-app-gallery-listing/user-provisioning.png)
 

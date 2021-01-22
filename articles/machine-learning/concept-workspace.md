@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 09/22/2020
-ms.openlocfilehash: 7acb555ddde20d6512119af85a8db055bcd9eeed
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 5211555102c0a8d29eb05abd7a680935d828f9dc
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701661"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683448"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>Vad är en Azure Machine Learning-arbetsyta?
 
@@ -134,6 +134,5 @@ För att komma igång med Azure Machine Learning, se:
 + [Skapa och hantera en arbets yta](how-to-manage-workspace.md)
 + [Självstudie: kom igång med Azure Machine Learning i din utvecklings miljö](tutorial-1st-experiment-sdk-setup-local.md)
 + [Självstudie: kom igång med att skapa ditt första ML experiment på en beräknings instans](tutorial-1st-experiment-sdk-setup.md)
-+ [Självstudie: kom igång med Azure Machine Learning med R SDK](tutorial-1st-r-experiment.md)
 + [Självstudie: Skapa din första klassificeringsmodell med automatiserad maskininlärning](tutorial-first-experiment-automated-ml.md) 
-+ [Självstudie: förutsäga Automobile-priset med designern](tutorial-designer-automobile-price-train-score.md)
++ [Självstudie: Förutsäg ett bilpris med designern](tutorial-designer-automobile-price-train-score.md)

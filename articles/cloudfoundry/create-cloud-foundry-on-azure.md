@@ -14,12 +14,12 @@ ms.service: azure
 ms.tgt_pltfrm: multiple
 ms.topic: tutorial
 ms.workload: web
-ms.openlocfilehash: 65d8ade438228d7af71de1fc66639e5b6de2edda
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 735c0955a25a3995c94c73bd6471643ce2783df3
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93040801"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98682621"
 ---
 # <a name="create-a-pivotal-cloud-foundry-cluster-on-azure"></a>Skapa ett Pivotal Cloud Foundry-kluster i Azure
 
@@ -42,11 +42,13 @@ Mer information finns i [Använda SSH-nycklar med Windows i Azure](../virtual-ma
 
 > [!NOTE]
 >
-> Du behöver behörighet till ägarkontot för att kunna skapa tjänstens huvudnamn. Du kan också skriva ett skript som automatiserar skapandet av tjänstens huvudnamn. Till exempel kan du använda Azure CLI [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest).
+> Du behöver behörighet till ägarkontot för att kunna skapa tjänstens huvudnamn. Du kan också skriva ett skript som automatiserar skapandet av tjänstens huvudnamn. Till exempel kan du använda Azure CLI [az ad sp create-for-rbac](/cli/azure/ad/sp).
 
 1. Logga in på ditt Azure-konto.
 
-    `az login`
+    ```azurecli
+    az login
+    ```
 
     ![Azure CLI-inloggning](media/deploy/az-login-output.png )
  
@@ -54,13 +56,17 @@ Mer information finns i [Använda SSH-nycklar med Windows i Azure](../virtual-ma
 
 2. Ange din standardprenumeration för den här konfigurationen.
 
-    `az account set -s {id}`
+    ```azurecli
+    az account set -s {id}
+    ```
 
-3. Skapa ett Azure Active Directory-program för din PCF. Ange ett unikt alfanumeriskt lösenord. Lagra lösenordet som **clientSecret** , vilket vi ska använda senare.
+3. Skapa ett Azure Active Directory-program för din PCF. Ange ett unikt alfanumeriskt lösenord. Lagra lösenordet som **clientSecret**, vilket vi ska använda senare.
 
-    `az ad app create --display-name "Svc Principal for OpsManager" --password {enter-your-password} --homepage "{enter-your-homepage}" --identifier-uris {enter-your-homepage}`
+    ```azurecli
+    az ad app create --display-name "Svc Principal for OpsManager" --password {enter-your-password} --homepage "{enter-your-homepage}" --identifier-uris {enter-your-homepage}
+    ```
 
-    Kopiera sedan värdet ”appId” i utdatan som **clientID** , vilket vi ska använda senare.
+    Kopiera sedan värdet ”appId” i utdatan som **clientID**, vilket vi ska använda senare.
 
     > [!NOTE]
     >
@@ -68,23 +74,31 @@ Mer information finns i [Använda SSH-nycklar med Windows i Azure](../virtual-ma
 
 4. Skapa ett huvudnamn för tjänsten med ditt nya app-ID.
 
-    `az ad sp create --id {appId}`
+    ```azurecli
+    az ad sp create --id {appId}
+    ```
 
 5. Ange behörighetsrollen för tjänstens huvudnamn som Deltagare.
 
-    `az role assignment create --assignee "{enter-your-homepage}" --role "Contributor"`
+    ```azurecli
+    az role assignment create --assignee "{enter-your-homepage}" --role "Contributor"
+    ```
 
     Du kan också använda
 
-    `az role assignment create --assignee {service-principal-name} --role "Contributor"`
+    ```azurecli
+    az role assignment create --assignee {service-principal-name} --role "Contributor"
+    ```
 
     ![Rolltilldelning för tjänstens huvudnamn](media/deploy/svc-princ.png )
 
 6. Kontrollera att du kan logga in på tjänstens huvudnamn med app-ID, lösenord och klient-ID.
 
-    `az login --service-principal -u {appId} -p {your-password}  --tenant {tenantId}`
+    ```azurecli
+    az login --service-principal -u {appId} -p {your-password}  --tenant {tenantId}
+    ```
 
-7. Skapa en .json-fil i nedanstående format. Använd de värden för **prenumerations-ID** , **tenantID** , **clientID** och **clientSecret** som du kopierade tidigare. Spara filen.
+7. Skapa en .json-fil i nedanstående format. Använd de värden för **prenumerations-ID**, **tenantID**, **clientID** och **clientSecret** som du kopierade tidigare. Spara filen.
 
     ```json
     {
@@ -98,8 +112,8 @@ Mer information finns i [Använda SSH-nycklar med Windows i Azure](../virtual-ma
 ## <a name="get-the-pivotal-network-token"></a>Hämta Pivotal Network-token
 
 1. Registrera dig eller logga in på ditt [Pivotal Network](https://network.pivotal.io)-konto.
-2. Välj ditt profilnamn i det övre högra hörnet på sidan. Välj **Redigera profil** .
-3. Rulla längst ned på sidan och kopiera värdet **LEGACY API TOKEN** . Det här är ditt värde för **Pivotal Network-token** som du kommer att använda senare.
+2. Välj ditt profilnamn i det övre högra hörnet på sidan. Välj **Redigera profil**.
+3. Rulla längst ned på sidan och kopiera värdet **LEGACY API TOKEN**. Det här är ditt värde för **Pivotal Network-token** som du kommer att använda senare.
 
 ## <a name="provision-your-cloud-foundry-cluster-on-azure"></a>Etablera Cloud Foundry-klustret i Azure
 

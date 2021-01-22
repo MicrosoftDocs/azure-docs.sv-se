@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/23/2020
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 52071b964412071d820745b173e8835c6f9e7d0e
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 62f89106538ab7f57047e211fc8715878f889af1
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97510999"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684567"
 ---
 # <a name="ephemeral-os-disks-for-azure-vms"></a>Tillfälliga OS-diskar för virtuella Azure-datorer
 
@@ -26,7 +26,7 @@ Huvud funktionerna för tillfälliga diskar är:
 - Lägre latens, ungefär som en tillfällig disk. 
 - De tillfälliga OS-diskarna är kostnads fria, du debiteras ingen lagrings kostnad för OS-disken.
 - De är tillgängliga i alla Azure-regioner. 
-- Den tillfälliga OS-disken stöds av det [delade avbildnings galleriet](./linux/shared-image-galleries.md). 
+- Den tillfälliga OS-disken stöds av det [delade avbildnings galleriet](./shared-image-galleries.md). 
  
 
  

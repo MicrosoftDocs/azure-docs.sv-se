@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: devx-track-js
-ms.openlocfilehash: ef2c69409ce3f479338ffc9d418b3469f197ad30
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: db53e4407674abc1e6c81090dc4a50afa784940d
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97679398"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684832"
 ---
 # <a name="tutorial-migrate-a-web-app-from-bing-maps"></a>Självstudier: Migrera en webbapp från Bing Maps
 
@@ -46,7 +46,7 @@ Om du utvecklar med ett JavaScript-ramverk kan något av följande projekt med �
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-1. Logga in på [Azure-portalen](https://portal.azure.com). Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/free/) innan du börjar.
+1. Logga in på [Azure-portalen](https://portal.azure.com). Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/) innan du börjar.
 2. [Skapa ett Azure Maps konto](quick-demo-map-app.md#create-an-azure-maps-account)
 3. [Hämta en primär prenumerations nyckel](quick-demo-map-app.md#get-the-primary-key-for-your-account), även kallat primär nyckel eller prenumerations nyckel. Mer information om autentisering i Azure Maps finns i [hantera autentisering i Azure Maps](how-to-manage-authentication.md).
 
@@ -70,7 +70,7 @@ I följande tabell visas viktiga API-funktioner i Bing Maps V8 JavaScript SDK oc
 | Netencoder-tjänst         | ✓                                                                                      |
 | Vägbeskrivnings tjänst       | ✓                                                                                      |
 | Distans mat ris tjänst  | ✓                                                                                      |
-| Spatial data tjänst     | Saknas                                                                                    |
+| Spatial data tjänst     | Ej tillämpligt                                                                                    |
 | Satellit-/flyg bilder | ✓                                                                                      |
 | Fåglars ögon bilder         | Planerad                                                                                |
 | Streetside bilder       | Planerad                                                                                |
@@ -85,7 +85,7 @@ Azure Maps också många ytterligare [moduler med öppen källkod för webb-SDK]
 
 Följande är några av de viktigaste skillnaderna mellan Bing Maps och Azure Maps webb-SDK: er som ska vara medvetna om:
 
-* Förutom att tillhandahålla en värdbaserad slut punkt för åtkomst till Azure Maps Web SDK är ett NPM-paket också tillgängligt för att bädda in webb-SDK i appar om det är lämpligt. Mer information finns i den här [dokumentationen](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control) . Det här paketet innehåller även TypeScript-definitioner.
+* Förutom att tillhandahålla en värdbaserad slut punkt för åtkomst till Azure Maps Web SDK är ett NPM-paket också tillgängligt för att bädda in webb-SDK i appar om det är lämpligt. Mer information finns i den här [dokumentationen](./how-to-use-map-control.md) . Det här paketet innehåller även TypeScript-definitioner.
 * Bing Maps innehåller två värdbaserade grenar av sina SDK: er. Lansering och experiment. Experiment grenen kan ta emot flera uppdateringar per dag när en ny utveckling sker. Azure Maps bara är värd för en versions gren, men experimentella funktioner skapas som anpassade moduler i projektet med öppen källkod Azure Maps kod exempel. Bing Maps som används för att ha en frusen gren och som har uppdaterats mindre ofta, vilket minskar risken för att bryta ändringar på grund av en version. I Azure Maps där kan du använda modulen NPM och peka på en tidigare del versions version.
 
 > [!TIP]
@@ -95,7 +95,7 @@ Följande är några av de viktigaste skillnaderna mellan Bing Maps och Azure Ma
 * Båda plattformarna använder ett liknande överlappande system för bas Maps, men panelerna i Bing Maps är 256 pixlar i dimensionen, medan panelerna i Azure Maps är 512 pixlar i dimensionen. För att få samma Map-vy i Azure Maps som Bing Maps måste en zoomnivå som används i Bing Maps subtraheras av en i Azure Maps.
 * Koordinaterna i Bing Maps kallas `latitude, longitude` när Azure Maps används `longitude, latitude` . Det här formatet överensstämmer med standarden `[x, y]` som följs av de flesta GIS-plattformarna.
 
-* Former i Azure Maps Web SDK baseras på det interjson-schemat. Hjälp klasser exponeras genom [Atlas. data område](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data). Det finns även [atlasen. Shape](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape) -klass som kan användas för att figursätta INTERjson-objekt och göra dem enkla att uppdatera och underhålla på ett data bindnings sätt.
+* Former i Azure Maps Web SDK baseras på det interjson-schemat. Hjälp klasser exponeras genom [Atlas. data område](/javascript/api/azure-maps-control/atlas.data). Det finns även [atlasen. Shape](/javascript/api/azure-maps-control/atlas.shape) -klass som kan användas för att figursätta INTERjson-objekt och göra dem enkla att uppdatera och underhålla på ett data bindnings sätt.
 * Koordinater i Azure Maps definieras som positions objekt som kan anges som en enkel siffer mat ris i formatet `[longitude, latitude]` eller `new atlas.data.Position(longitude, latitude)` .
 
 > [!TIP]
@@ -909,7 +909,7 @@ I Azure Maps läggs data till och hanteras av en data källa. Lager ansluter til
 
 När klustring är aktiverat skickar data källan klustrade och data punkter som inte är klustrade till lager för åter givning. Data källan kan klustra hundratals tusen data punkter. En klustrad data punkt har följande egenskaper:
 
-| Egenskapsnamn               | Typ    | Beskrivning                                    |
+| Egenskapsnamn               | Typ    | Description                                    |
 |-----------------------------|---------|------------------------------------------------|
 | `cluster`                   | boolean | Anger om funktionen representerar ett kluster.     |
 | `cluster_id`                | sträng  | Ett unikt ID för klustret som kan användas med `DataSource` klasserna `getClusterExpansionZoom` , `getClusterChildren` och `getClusterLeaves` . |
@@ -918,7 +918,7 @@ När klustring är aktiverat skickar data källan klustrade och data punkter som
 
 `DataSource`Klassen har följande hjälp funktion för att få åtkomst till ytterligare information om ett kluster med hjälp av `cluster_id` .
 
-| Funktion       | Returtyp        | Beskrivning     |
+| Funktion       | Returtyp        | Description     |
 |----------------|--------------------|-----------------|
 | `getClusterChildren(clusterId: number)`                              | `Promise<Feature<Geometry, any> | Shape>` | Hämtar underordnade för det aktuella klustret på nästa zoomnings nivå. Dessa underordnade kan vara en kombination av former och del kluster. Under klustren är funktioner med egenskaper som matchar kluster egenskaper. |
 | `getClusterExpansionZoom(clusterId: number)`                         | `Promise<number>`                            | Beräknar en zoomnings nivå som klustret börjar att utöka eller dela upp.    |

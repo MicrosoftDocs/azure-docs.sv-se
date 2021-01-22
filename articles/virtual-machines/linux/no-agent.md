@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 09/01/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 9f0309f4e8273c2ef19ea86636de8e3aa6b6c4bc
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: edbcabfe4d0b633a784163562f52b303120916ca
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96435108"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685078"
 ---
 # <a name="creating-generalized-images-without-a-provisioning-agent"></a>Skapa generaliserade avbildningar utan en etablerings agent
 
@@ -180,7 +180,7 @@ Om den virtuella datorn inte har python installerat eller tillgängligt kan du �
 
 Den här demon använder system som är det vanligaste initierings systemet i moderna Linux-distributioner. Det enklaste och mest inbyggda sättet att se till att den här rapporten är redo att köras vid rätt tidpunkt är att skapa en system tjänst enhet. Du kan lägga till följande enhets fil i `/etc/systemd/system` (det här exemplet namnger enhets filen `azure-provisioning.service` ):
 
-```
+```bash
 [Unit]
 Description=Azure Provisioning
 
@@ -204,7 +204,7 @@ Den här system tjänsten gör tre saker för grundläggande etablering:
 
 Använd enheten i fil systemet och kör följande för att aktivera det:
 
-```
+```bash
 $ sudo systemctl enable azure-provisioning.service
 ```
 
@@ -214,14 +214,14 @@ Nu är den virtuella datorn klar att generaliseras och har en avbildning som ska
 
 Gå tillbaka till utvecklings datorn och kör följande för att förbereda avbildnings skapande från den virtuella bas datorn:
 
-```
+```bash
 $ az vm deallocate --resource-group demo1 --name demo1
 $ az vm generalize --resource-group demo1 --name demo1
 ```
 
 Och skapa avbildningen från den här virtuella datorn:
 
-```
+```bash
 $ az image create \
     --resource-group demo1 \
     --source demo1 \
@@ -231,7 +231,7 @@ $ az image create \
 
 Nu är vi redo att skapa en ny virtuell dator (eller flera virtuella datorer) från avbildningen:
 
-```
+```bash
 $ IMAGE_ID=$(az image show -g demo1 -n demo1img --query id -o tsv)
 $ az vm create \
     --resource-group demo12 \
@@ -249,7 +249,7 @@ $ az vm create \
 
 Den här virtuella datorn ska kunna etablering. Logga in på den virtuella datorn med den virtuella datorn. du bör kunna se resultatet av rapportens färdiga system tjänster:
 
-```
+```bash
 $ sudo journalctl -u azure-provisioning.service
 -- Logs begin at Thu 2020-06-11 20:28:45 UTC, end at Thu 2020-06-11 20:31:24 UTC. --
 Jun 11 20:28:49 thstringnopa systemd[1]: Starting Azure Provisioning...

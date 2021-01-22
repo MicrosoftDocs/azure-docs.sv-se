@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 06/26/2020
 ms.reviewer: jushiman
 ms.custom: avverma, devx-track-azurecli
-ms.openlocfilehash: 4ebb16186e613affdb886a8819240d47f944c42f
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: ff1a29577c0778d6ef88d3523c726f7a48739cdc
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763548"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684618"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Automatiska uppgraderingar av OS-avbildningar i skalningsuppsättningar med virtuella Azure-datorer
 
@@ -49,7 +49,7 @@ Skalnings uppsättningen operativ system uppgraderings Orchestrator kontrollerar
 >Automatisk uppgradering av operativ systemet uppgraderar inte referens avbildnings-SKU: n i skalnings uppsättningen. Om du vill ändra SKU: n (t. ex. Ubuntu 16,04-LTS till 18,04-LTS) måste du uppdatera [skalnings uppsättnings modellen](virtual-machine-scale-sets-upgrade-scale-set.md#the-scale-set-model) direkt med önskad avbildnings-SKU. Det går inte att ändra avbildnings utgivaren och erbjudandet för en befintlig skalnings uppsättning.  
 
 ## <a name="supported-os-images"></a>OS-avbildningar som stöds
-Det finns för närvarande inte stöd för vissa avbildningar av operativ system plattformen. Anpassade avbildningar [stöds](virtual-machine-scale-sets-automatic-upgrade.md#automatic-os-image-upgrade-for-custom-images) om skalnings uppsättningen använder anpassade bilder via det [delade bild galleriet](shared-image-galleries.md).
+Det finns för närvarande inte stöd för vissa avbildningar av operativ system plattformen. Anpassade avbildningar [stöds](virtual-machine-scale-sets-automatic-upgrade.md#automatic-os-image-upgrade-for-custom-images) om skalnings uppsättningen använder anpassade bilder via det [delade bild galleriet](../virtual-machines/shared-image-galleries.md).
 
 Följande plattforms-SKU: er stöds för närvarande (och fler läggs till regelbundet):
 
@@ -89,11 +89,11 @@ Se till att hållbarhets inställningarna inte stämmer överens med Service Fab
 
 ## <a name="automatic-os-image-upgrade-for-custom-images"></a>Automatisk uppgradering av operativ system avbildning för anpassade avbildningar
 
-Automatisk uppgradering av operativ Systems avbildning stöds för anpassade avbildningar som distribueras via [delade avbildnings galleriet](shared-image-galleries.md). Andra anpassade avbildningar stöds inte för automatisk uppgradering av OS-avbildningar.
+Automatisk uppgradering av operativ Systems avbildning stöds för anpassade avbildningar som distribueras via [delade avbildnings galleriet](../virtual-machines/shared-image-galleries.md). Andra anpassade avbildningar stöds inte för automatisk uppgradering av OS-avbildningar.
 
 ### <a name="additional-requirements-for-custom-images"></a>Ytterligare krav för anpassade avbildningar
 - Installations-och konfigurations processen för automatisk uppgradering av operativ system avbildningar är samma för alla skalnings uppsättningar som beskrivs i [konfigurations avsnittet](virtual-machine-scale-sets-automatic-upgrade.md#configure-automatic-os-image-upgrade) på den här sidan.
-- Instanser av skalnings uppsättningar som kon figurer ATS för automatisk uppgradering av OS-avbildningar uppgraderas till den senaste versionen av avbildningen av den delade avbildningen när en ny version av avbildningen publiceras och [replikeras](shared-image-galleries.md#replication) till regionen i den skalnings uppsättningen. Om den nya avbildningen inte replikeras till den region där skalan distribueras, uppgraderas inte skalnings uppsättnings instanserna till den senaste versionen. Med regional avbildnings replikering kan du styra distributionen av den nya avbildningen för dina skalnings uppsättningar.
+- Instanser av skalnings uppsättningar som kon figurer ATS för automatisk uppgradering av OS-avbildningar uppgraderas till den senaste versionen av avbildningen av den delade avbildningen när en ny version av avbildningen publiceras och [replikeras](../virtual-machines/shared-image-galleries.md#replication) till regionen i den skalnings uppsättningen. Om den nya avbildningen inte replikeras till den region där skalan distribueras, uppgraderas inte skalnings uppsättnings instanserna till den senaste versionen. Med regional avbildnings replikering kan du styra distributionen av den nya avbildningen för dina skalnings uppsättningar.
 - Den nya avbildnings versionen ska inte uteslutas från den senaste versionen för Galleri avbildningen. Avbildnings versioner som undantas från Galleri avbildningens senaste version distribueras inte till skalnings uppsättningen via automatisk uppgradering av operativ system avbildning.
 
 > [!NOTE]

@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: a557d4045b18b5c0ff71b3e47f0c189028702863
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7714ce748eb172565357723924ab2212e9559e1f
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91289539"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685335"
 ---
 # <a name="workload-management-with-resource-classes-in-azure-synapse-analytics"></a>Arbets belastnings hantering med resurs klasser i Azure Synapse Analytics
 
@@ -129,7 +129,7 @@ Följande instruktioner är undantagna från resurs klasser och körs alltid i s
 - Skapa eller släppa vy
 - INFOGA VÄRDEN
 - Välj från systemvyer och DMV: er
-- Vad
+- EXPLAIN
 - DBCC
 
 <!--
@@ -162,13 +162,13 @@ WHERE  name LIKE '%rc%' AND type_desc = 'DATABASE_ROLE';
 
 Resurs klasser implementeras genom att tilldela användare till databas roller. När en användare kör en fråga körs frågan med användarens resurs klass. Om en användare till exempel är medlem i databas rollen staticrc10, körs frågorna med små mängder minne. Om en databas användare är medlem i databas rollerna xlargerc eller staticrc80, körs frågorna med stora mängder minne.
 
-Om du vill öka en användares resurs klass använder du [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) för att lägga till användaren till en databas roll för en stor resurs klass.  Koden nedan lägger till en användare i largerc-databas rollen.  Varje begäran får 22% av system minnet.
+Om du vill öka en användares resurs klass använder du [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) för att lägga till användaren till en databas roll för en stor resurs klass.  Koden nedan lägger till en användare i largerc-databas rollen.  Varje begäran får 22% av system minnet.
 
 ```sql
 EXEC sp_addrolemember 'largerc', 'loaduser';
 ```
 
-Om du vill minska resurs klassen använder du [sp_droprolemember](/sql/relational-databases/system-stored-procedures/sp-droprolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).  Om ' loaduser ' inte är en medlem eller någon annan resurs klass hamnar de i standard resurs klassen smallrc med 3% minnes tilldelning.  
+Om du vill minska resurs klassen använder du [sp_droprolemember](/sql/relational-databases/system-stored-procedures/sp-droprolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).  Om ' loaduser ' inte är en medlem eller någon annan resurs klass hamnar de i standard resurs klassen smallrc med 3% minnes tilldelning.  
 
 ```sql
 EXEC sp_droprolemember 'largerc', 'loaduser';

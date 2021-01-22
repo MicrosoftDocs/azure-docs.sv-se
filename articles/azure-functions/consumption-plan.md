@@ -3,12 +3,12 @@ title: Azure Functions förbruknings plan som värd
 description: Lär dig mer om hur du använder Azure Function förbruknings plan för att köra din kod i en miljö som skalas dynamiskt, men som du bara betalar för resurser som används under körningen.
 ms.date: 8/31/2020
 ms.topic: conceptual
-ms.openlocfilehash: c0619def4687935cd9e403563966b35b84f13c7c
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: ffb556ce48f18702e06fcdb02dda84f41ae5f906
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97937791"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684699"
 ---
 # <a name="azure-functions-consumption-plan-hosting"></a>Azure Functions förbruknings plan som värd
 
@@ -33,10 +33,10 @@ När du skapar en Function-app i Azure Portal är förbruknings planen standard.
 Använd följande länkar om du vill lära dig hur du skapar en server lös Function-app i en förbruknings plan, antingen via programmering eller i Azure Portal:
 
 + [Azure CLI](./scripts/functions-cli-create-serverless.md)
-+ [Azure-portalen](functions-create-first-azure-function.md)
++ [Azure-portalen](./functions-get-started.md)
 + [Azure Resource Manager-mall](functions-create-first-function-resource-manager.md)
 
-Du kan också skapa Function-appar i en förbruknings plan när du publicerar ett Functions-projekt från [Visual Studio Code](functions-create-first-function-vs-code.md#publish-the-project-to-azure) eller [Visual Studio](functions-create-your-first-function-visual-studio.md#publish-the-project-to-azure).
+Du kan också skapa Function-appar i en förbruknings plan när du publicerar ett Functions-projekt från [Visual Studio Code](./create-first-function-vs-code-csharp.md#publish-the-project-to-azure) eller [Visual Studio](functions-create-your-first-function-visual-studio.md#publish-the-project-to-azure).
 
 ## <a name="multiple-apps-in-the-same-plan"></a>Flera appar i samma plan
 

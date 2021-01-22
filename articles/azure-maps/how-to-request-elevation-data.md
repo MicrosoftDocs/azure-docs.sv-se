@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: a303f5e6177d0dc4205eaec8c3b1911e8e004fe3
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: d14eda84144105bf2e04f1238284bc58a91c4c03
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98602430"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684063"
 ---
 # <a name="request-elevation-data-using-the-azure-maps-elevation-service-preview"></a>Begär höjnings data med hjälp av Azure Maps höjnings tjänsten (för hands version)
 
@@ -22,7 +22,7 @@ ms.locfileid: "98602430"
 > Tjänsten Azure Maps höjning är för närvarande en offentlig för hands version.
 > Den här förhandsversionen tillhandahålls utan serviceavtal och rekommenderas inte för produktionsarbetsbelastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade. Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Tjänsten Azure Maps [höjning](https://docs.microsoft.com/rest/api/maps/elevation) innehåller API: er för att fråga höjnings data var som helst på jordens yta. Du kan begära exempel på höjnings data längs sökvägar, inom en definierad avgränsnings ruta eller vid vissa koordinater. Du kan också använda [rendera v2 – Hämta API för kart panel](https://docs.microsoft.com/rest/api/maps/renderv2) för att hämta höjnings data i panel format. Panelerna levereras i GeoTIFF raster-format. Den här artikeln visar hur du använder Azure Maps-höjnings tjänsten och API: t för att hämta kart panel för att begära utökade data. Det går att begära höjnings data i både formaten interjson och GeoTiff.
+Tjänsten Azure Maps [höjning](/rest/api/maps/elevation) innehåller API: er för att fråga höjnings data var som helst på jordens yta. Du kan begära exempel på höjnings data längs sökvägar, inom en definierad avgränsnings ruta eller vid vissa koordinater. Du kan också använda [rendera v2 – Hämta API för kart panel](/rest/api/maps/renderv2) för att hämta höjnings data i panel format. Panelerna levereras i GeoTIFF raster-format. Den här artikeln visar hur du använder Azure Maps-höjnings tjänsten och API: t för att hämta kart panel för att begära utökade data. Det går att begära höjnings data i både formaten interjson och GeoTiff.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -35,7 +35,7 @@ I den här artikeln används [Postman](https://www.postman.com/) -programmet, me
 
 ## <a name="request-elevation-data-in-raster-tiled-format"></a>Begär höjnings data i raster sida vid sida
 
-Om du vill begära höjnings data i raster panels format använder du [kart panels-API: t rendering v2-get](https://docs.microsoft.com/rest/api/maps/renderv2). Om panelen kan hittas, returnerar API panelen som en GeoTIFF. Annars returnerar API 0. Alla raster paneler visas med jordnings läget för GeoID (Sea-nivå). I det här exemplet ska vi begära höjnings data för MT. Everest.
+Om du vill begära höjnings data i raster panels format använder du [kart panels-API: t rendering v2-get](/rest/api/maps/renderv2). Om panelen kan hittas, returnerar API panelen som en GeoTIFF. Annars returnerar API 0. Alla raster paneler visas med jordnings läget för GeoID (Sea-nivå). I det här exemplet ska vi begära höjnings data för MT. Everest.
 
 >[!TIP]
 >Om du vill hämta en panel vid ett speciellt område på kartan måste du hitta rätt panel på lämplig zoomnivå. Observera också att WorldDEM täcker hela den globala landmass men omfattar inte havs.  Mer information finns i [zoomnings nivåer och panel rutnät](zoom-levels-and-tile-grid.md).
@@ -58,9 +58,9 @@ Använd API: erna för upphöjnings tjänsten (för hands version) för att beg�
 
 * [Hämta data för punkter](/rest/api/maps/elevation/getdataforpoints)
 * [Publicera data för Poäng](/rest/api/maps/elevation/postdataforpoints)
-* [Hämta data för polyline](https://docs.microsoft.com/rest/api/maps/elevation/getdataforpolyline)
-* [Publicera data för polylinje](https://docs.microsoft.com/rest/api/maps/elevation/postdataforpolyline)
-* [Hämta data för markerings ram](https://docs.microsoft.com/rest/api/maps/elevation/getdataforboundingbox)
+* [Hämta data för polyline](/rest/api/maps/elevation/getdataforpolyline)
+* [Publicera data för polylinje](/rest/api/maps/elevation/postdataforpolyline)
+* [Hämta data för markerings ram](/rest/api/maps/elevation/getdataforboundingbox)
 
 >[!IMPORTANT]
 > När inga data kan returneras returneras alla API: er `0` .
@@ -126,11 +126,11 @@ I det här exemplet ska vi använda [API: t hämta data för punkter](/rest/api/
 
 ### <a name="request-elevation-data-samples-along-a-polyline"></a>Begär data exempel för utökade data längs en sammansatt linje
 
-I det här exemplet ska vi använda [Hämta data för polylinje](https://docs.microsoft.com/rest/api/maps/elevation/getdataforpolyline) för att begära fem jämnt fördelade exempel på höjnings data längs en rät linje mellan koordinaterna vid Mt. Everest och Chamlang berg. Båda koordinaterna måste definieras i formatet Long/lat. Om du inte anger något värde för `samples` parametern är antalet exempel standardvärdet 10. Det maximala antalet prover är 2 000.
+I det här exemplet ska vi använda [Hämta data för polylinje](/rest/api/maps/elevation/getdataforpolyline) för att begära fem jämnt fördelade exempel på höjnings data längs en rät linje mellan koordinaterna vid Mt. Everest och Chamlang berg. Båda koordinaterna måste definieras i formatet Long/lat. Om du inte anger något värde för `samples` parametern är antalet exempel standardvärdet 10. Det maximala antalet prover är 2 000.
 
 Sedan kommer vi att använda hämta data för polylinje för att begära tre lika stora exempel på höjnings data längs en bana. Vi definierar den exakta platsen för exemplen genom att skicka tre långa/lat-koordinater.
 
-Slutligen använder vi [post-data för polyline-API](https://docs.microsoft.com/rest/api/maps/elevation/postdataforpolyline) för att begära höjnings data vid samma tre lika stora exempel.
+Slutligen använder vi [post-data för polyline-API](/rest/api/maps/elevation/postdataforpolyline) för att begära höjnings data vid samma tre lika stora exempel.
 
 Latituder och longituder i URL-adressen förväntas vara i WGS84 (Geodetic System) decimaler.
 
@@ -229,7 +229,7 @@ Latituder och longituder i URL-adressen förväntas vara i WGS84 (Geodetic Syste
     }
     ```
 
-7. Nu anropar vi post- [data för polylinje-API](https://docs.microsoft.com/rest/api/maps/elevation/postdataforpolyline) för att få utökade data för samma tre punkter. Välj metoden **post** http på fliken Builder och ange följande URL. För den här begäran och andra begär Anden som nämns i den här artikeln ersätter `{Azure-Maps-Primary-Subscription-key}` du med den primära prenumerations nyckeln.
+7. Nu anropar vi post- [data för polylinje-API](/rest/api/maps/elevation/postdataforpolyline) för att få utökade data för samma tre punkter. Välj metoden **post** http på fliken Builder och ange följande URL. För den här begäran och andra begär Anden som nämns i den här artikeln ersätter `{Azure-Maps-Primary-Subscription-key}` du med den primära prenumerations nyckeln.
 
     ```http
     https://atlas.microsoft.com/elevation/line/json?api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}&samples=5
@@ -256,7 +256,7 @@ Latituder och longituder i URL-adressen förväntas vara i WGS84 (Geodetic Syste
 
 ### <a name="request-elevation-data-by-bounding-box"></a>Begär höjnings data efter avgränsnings ruta
 
-Nu ska vi använda [rutan hämta data för att binda](https://docs.microsoft.com/rest/api/maps/elevation/getdataforboundingbox) till att begära höjnings data nära Mt. Rainier, WA. Höjnings data returneras på lika stora platser inom en markerings ram. Det avgränsnings område som definieras av (2) uppsättningar av Lat/Long-koordinater (södra latitud, västra longitud | Nord latitud, östra longitud) är indelade i rader och kolumner. Kanterna i avgränsnings Rute kontot för två (2) av raderna och två (2) av kolumnerna. Utökade höjder returneras för rutnäts hörnen som skapas på rad-och kolumn skärnings punkter. Upp till 2000-höjningar kan returneras i en enskild begäran.
+Nu ska vi använda [rutan hämta data för att binda](/rest/api/maps/elevation/getdataforboundingbox) till att begära höjnings data nära Mt. Rainier, WA. Höjnings data returneras på lika stora platser inom en markerings ram. Det avgränsnings område som definieras av (2) uppsättningar av Lat/Long-koordinater (södra latitud, västra longitud | Nord latitud, östra longitud) är indelade i rader och kolumner. Kanterna i avgränsnings Rute kontot för två (2) av raderna och två (2) av kolumnerna. Utökade höjder returneras för rutnäts hörnen som skapas på rad-och kolumn skärnings punkter. Upp till 2000-höjningar kan returneras i en enskild begäran.
 
 I det här exemplet ska vi ange rader = 3 och kolumnerna = 6. 18 höjnings värden returneras i svaret. I följande diagram ordnas upphöjnings värden från och med sydvästra hörn och fortsätter sedan väst till öst och syd till norr.  Höjd punkterna är numrerade i den ordning som de returneras.
 
@@ -488,15 +488,15 @@ För att ytterligare utforska API: erna för Azure Maps höjning (för hands ver
 > [Höjning (för hands version) – Hämta data för lat-långa koordinater](/rest/api/maps/elevation/getdataforpoints)
 
 > [!div class="nextstepaction"]
-> [Höjning (för hands version) – Hämta data för markerings ram](https://docs.microsoft.com/rest/api/maps/elevation/getdataforboundingbox)
+> [Höjning (för hands version) – Hämta data för markerings ram](/rest/api/maps/elevation/getdataforboundingbox)
 
 > [!div class="nextstepaction"]
-> [Höjning (för hands version) – Hämta data för polyline](https://docs.microsoft.com/rest/api/maps/elevation/getdataforpolyline)
+> [Höjning (för hands version) – Hämta data för polyline](/rest/api/maps/elevation/getdataforpolyline)
 
 > [!div class="nextstepaction"]
-> [Rendera v2 – Hämta kart panel](https://docs.microsoft.com/rest/api/maps/renderv2)
+> [Rendera v2 – Hämta kart panel](/rest/api/maps/renderv2)
 
 En fullständig lista över Azure Maps REST API: er finns i:
 
 > [!div class="nextstepaction"]
-> [Azure Maps REST-API: er](https://docs.microsoft.com/rest/api/maps/)
+> [Azure Maps REST-API: er](/rest/api/maps/)

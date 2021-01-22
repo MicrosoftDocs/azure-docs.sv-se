@@ -2,14 +2,14 @@
 title: Kör Linux på virtuella datorers datornoder
 description: Lär dig hur du bearbetar parallella beräknings arbets belastningar i pooler för virtuella Linux-datorer i Azure Batch.
 ms.topic: how-to
-ms.date: 11/10/2020
+ms.date: 01/21/2021
 ms.custom: H1Hack27Feb2017, devx-track-python, devx-track-csharp
-ms.openlocfilehash: 0a9c801a13af05f077b87f296992da7f50742e4b
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: c711ec0d035b9b59ec7628a51fe3cff26de358bc
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94533505"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683708"
 ---
 # <a name="provision-linux-compute-nodes-in-batch-pools"></a>Etablera Linux Compute-noder i batch-pooler
 
@@ -17,9 +17,7 @@ Du kan använda Azure Batch för att köra parallella beräknings arbets belastn
 
 ## <a name="virtual-machine-configuration"></a>Konfiguration av virtuell dator
 
-När du skapar en pool med datornoder i batch har du två alternativ för att välja Node-storlek och operativ system: Cloud Services konfiguration och konfiguration av virtuell dator. De flesta pooler med Windows Compute-noder använder [Cloud Services konfiguration](nodes-and-pools.md#cloud-services-configuration), som anger att poolen består av Azure Cloud Services-noder. Dessa pooler tillhandahåller endast Windows Compute-noder.
-
-[Konfiguration av virtuell dator](nodes-and-pools.md#virtual-machine-configuration) anger däremot att poolen består av virtuella Azure-datorer, som kan skapas från Linux-eller Windows-avbildningar. När du skapar en pool med konfiguration av virtuell dator måste du ange en [tillgänglig beräknings-nods storlek](../virtual-machines/sizes.md), referensen för den virtuella datorn och batch Node agent-SKU: n (ett program som körs på varje nod och som tillhandahåller ett gränssnitt mellan noden och batch-tjänsten) och avbildnings referensen för den virtuella datorn som kommer att installeras på noderna.
+När du skapar en pool med datornoder i batch har du två alternativ för att välja Node-storlek och operativ system: Cloud Services konfiguration och konfiguration av virtuell dator. [Konfigurations pooler för virtuella datorer](nodes-and-pools.md#virtual-machine-configuration) består av virtuella Azure-datorer, som kan skapas från antingen Linux-eller Windows-avbildningar. När du skapar en pool med konfiguration av virtuell dator anger du en [tillgänglig storlek](../virtual-machines/sizes.md)på en Compute-nod, avbildnings referensen för den virtuella datorn som ska installeras på noderna och batch Node agent-SKU: n (ett program som körs på varje nod och ger ett gränssnitt mellan noden och batch-tjänsten).
 
 ### <a name="virtual-machine-image-reference"></a>Referens för avbildning av virtuell dator
 
@@ -35,7 +33,11 @@ När du skapar en avbildnings referens för en virtuell dator måste du ange fö
 | Version |senaste |
 
 > [!TIP]
-> Du kan lära dig mer om de här egenskaperna och hur du anger Marketplace-avbildningar i [hitta virtuella Linux-avbildningar på Azure Marketplace med Azure CLI](../virtual-machines/linux/cli-ps-findimage.md). Observera att inte alla Marketplace-avbildningar för närvarande är kompatibla med batch.
+> Du kan lära dig mer om de här egenskaperna och hur du anger Marketplace-avbildningar i [hitta virtuella Linux-avbildningar på Azure Marketplace med Azure CLI](../virtual-machines/linux/cli-ps-findimage.md). Observera att vissa Marketplace-avbildningar inte är kompatibla med batch.
+
+### <a name="list-of-virtual-machine-images"></a>Lista över avbildningar av virtuella datorer
+
+Alla Marketplace-avbildningar är inte kompatibla med de för närvarande tillgängliga batch Node-agenterna. Om du vill visa en lista över virtuella Marketplace-avbildningar som stöds för batch-tjänsten och deras motsvarande Node agent-SKU: er, använder [list_supported_images](/python/api/azure-batch/azure.batch.operations.AccountOperations#list-supported-images-account-list-supported-images-options-none--custom-headers-none--raw-false----operation-config-) (python), [ListSupportedImages](/dotnet/api/microsoft.azure.batch.pooloperations.listsupportedimages) (batch .net) eller motsvarande API i ett annat språk-SDK.
 
 ### <a name="node-agent-sku"></a>Node agent-SKU
 
@@ -44,10 +46,6 @@ När du skapar en avbildnings referens för en virtuell dator måste du ange fö
 - batch. Node. Ubuntu 18,04
 - batch. Node. CentOS 7
 - batch. Node. Windows amd64
-
-### <a name="list-of-virtual-machine-images"></a>Lista över avbildningar av virtuella datorer
-
-Alla Marketplace-avbildningar är inte kompatibla med de för närvarande tillgängliga batch Node-agenterna. Om du vill visa en lista över virtuella Marketplace-avbildningar som stöds för batch-tjänsten och deras motsvarande Node agent-SKU: er, använder [list_supported_images](/python/api/azure-batch/azure.batch.operations.AccountOperations#list-supported-images-account-list-supported-images-options-none--custom-headers-none--raw-false----operation-config-) (python), [ListSupportedImages](/dotnet/api/microsoft.azure.batch.pooloperations.listsupportedimages) (batch .net) eller motsvarande API i ett annat språk-SDK.
 
 ## <a name="create-a-linux-pool-batch-python"></a>Skapa en Linux-pool: batch python
 

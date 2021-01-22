@@ -1,25 +1,25 @@
 ---
-title: Implementera differentiell sekretess med SmartNoise-paketet (förhands granskning)
+title: Differentiell sekretess i Machine Learning (för hands version)
 titleSuffix: Azure Machine Learning
-description: Lär dig vad differentiell sekretess är och hur SmartNoise-paketet kan hjälpa dig att implementera differentiella privata system som bevarar data sekretess.
+description: Lär dig vad differentiell sekretess är och hur du kan implementera Differentiellt privata system som behåller data sekretessen.
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 12/21/2020
+ms.date: 01/21/2020
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.custom: responsible-ml
-ms.openlocfilehash: 22ba505a2e13b2f88f212f2fe1b85d07f79f77e5
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 39f4b1a7b9eb1ad7a87097240dd772e4f2dadf17
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98218968"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683554"
 ---
-# <a name="preserve-data-privacy-by-using-differential-privacy-and-the-smartnoise-package-preview"></a>Bevara data sekretessen med hjälp av differentiell sekretess och SmartNoise-paketet (för hands version)
+# <a name="what-is-differential-privacy-in-machine-learning-preview"></a>Vad är differentiell integritet i Machine Learning (för hands version)
 
-Lär dig vad differentiell sekretess är och hur SmartNoise-paketet kan hjälpa dig att implementera Differentiellt privata system.
+Lär dig mer om differentiell integritet i Machine Learning och hur det fungerar.
 
 Eftersom den mängd data som en organisation samlar in och använder för analyser ökar, så kan du läsa sekretess och säkerhet. Analyser kräver data. Normalt är de mer data som används för att träna modeller, desto mer exakta är de. När person uppgifter används för dessa analyser är det särskilt viktigt att data förblir privata under hela användningen.
 
@@ -28,9 +28,9 @@ Eftersom den mängd data som en organisation samlar in och använder för analys
 Differentiell sekretess är en uppsättning system och metoder som hjälper till att skydda enskilda personers och privata data.
 
 > [!div class="mx-imgBorder"]
-> ![Differentiell sekretess process](./media/concept-differential-privacy/differential-privacy-process.jpg)
+> ![Studie process för differentiell integritets dator](./media/concept-differential-privacy/differential-privacy-machine-learning.jpg)
 
-I traditionella scenarier lagras rå data i filer och databaser. När användarna analyserar data använder de vanligt vis rå data. Detta är ett problem eftersom det kan orsaka intrång i en individs integritet. Differentiell sekretess försöker åtgärda problemet genom att lägga till "brus" eller slumpmässig het för data så att användarna inte kan identifiera enskilda data punkter. Som minst ger ett sådant system plausible för att kunna nekas.
+I traditionella scenarier lagras rå data i filer och databaser. När användarna analyserar data använder de vanligt vis rå data. Detta är ett problem eftersom det kan orsaka intrång i en individs integritet. Differentiell sekretess försöker åtgärda problemet genom att lägga till "brus" eller slumpmässig het för data så att användarna inte kan identifiera enskilda data punkter. Som minst ger ett sådant system plausible för att kunna nekas. Därför bevaras sekretessen för enskilda personer med begränsad inverkan på data noggrannheten.
 
 I ett särskilt privat system delas data via begär Anden som kallas **frågor**. När en användare skickar en fråga för data, så kallas de **säkerhetsmekanismerna** för att överföra data till de begärda data. Sekretess rutiner returnerar en *uppskattning av data* i stället för rå data. Den här sekretessen – bevara resultatet visas i en **rapport**. Rapporter består av två delar, faktiska data som beräknas och en beskrivning av hur data skapades.
 
@@ -42,22 +42,22 @@ Epsilon-värden är icke-negativa. Värdena under 1 ger fullständig plausible f
 
 Ett annat värde som är direkt korrelerat med Epsilon är **delta**. Delta är ett mått på sannolikheten att en rapport inte är helt privat. Ju högre delta, desto högre Epsilon. Eftersom dessa värden är korrelerade används Epsilon oftare.
 
-## <a name="privacy-budget"></a>Sekretess budget
+## <a name="limit-queries-with-a-privacy-budget"></a>Begränsa frågor med en sekretess budget
 
-För att säkerställa sekretess i system där flera frågor tillåts definierar differentiell integritet en hastighets begränsning. Den här gränsen kallas för en **Sekretess budget**. Sekretess budgetar tilldelas en Epsilon-mängd, vanligt vis mellan 1 och 3 för att begränsa risken för omidentifiering. När rapporter skapas håller sekretess budgetarna reda på Epsilon-värdet för enskilda rapporter samt summan för alla rapporter. När en sekretess budget har lagts till eller blivit slut kan användarna inte längre komma åt data.  
+För att säkerställa sekretess i system där flera frågor tillåts definierar differentiell integritet en hastighets begränsning. Den här gränsen kallas för en **Sekretess budget**. Sekretess budgetar förhindrar att data återskapas genom flera frågor. Sekretess budgetar tilldelas en Epsilon-mängd, vanligt vis mellan 1 och 3 för att begränsa risken för omidentifiering. När rapporter skapas håller sekretess budgetarna reda på Epsilon-värdet för enskilda rapporter samt summan för alla rapporter. När en sekretess budget har lagts till eller blivit slut kan användarna inte längre komma åt data. 
 
 ## <a name="reliability-of-data"></a>Data tillförlitlighet
 
-Även om bevarande av sekretess bör vara målet, är det en kompromiss när det gäller användbarhet och tillförlitlighet för data. I data analys kan precisionen betraktas som ett åtgärds mått som introduceras genom samplings fel. Denna osäkerhet tenderar att falla inom vissa gränser. **Noggrannhet** från ett Differentiellt sekretess perspektiv i stället mäter tillförlitligheten för data, vilket påverkas av den osäkerhet som introducerats av sekretess rutinerna. I korthet översätts en högre nivå av brus eller sekretess till data som har lägre Epsilon, exakthet och tillförlitlighet. Även om data är mer privata, eftersom de inte är pålitliga, är det mindre troligt att det används.
+Även om bevarande av sekretess bör vara målet, är det en kompromiss när det gäller användbarhet och tillförlitlighet för data. I data analys kan precisionen betraktas som ett åtgärds mått som introduceras genom samplings fel. Denna osäkerhet tenderar att falla inom vissa gränser. **Noggrannhet** från ett Differentiellt sekretess perspektiv i stället mäter tillförlitligheten för data, vilket påverkas av den osäkerhet som introducerats av sekretess rutinerna. I korthet översätts en högre nivå av brus eller sekretess till data som har lägre Epsilon, exakthet och tillförlitlighet. 
 
-## <a name="implementing-differentially-private-systems"></a>Implementera Differentiellt privat system
+## <a name="open-source-differential-privacy-libraries"></a>Integritets bibliotek med öppen källkod
 
-Att implementera Differentiellt privat system är svårt. SmartNoise är ett projekt med öppen källkod som innehåller olika komponenter för att skapa globala, Differentiellt privata system. SmartNoise består av följande toppnivå komponenter:
+SmartNoise är ett projekt med öppen källkod som innehåller olika komponenter för att skapa globala, Differentiellt privata system. SmartNoise består av följande toppnivå komponenter:
 
-- Kärna
-- SDK
+- Kärn bibliotek för SmartNoise
+- SDK-bibliotek för SmartNoise
 
-### <a name="core"></a>Kärna
+### <a name="smartnoise-core"></a>SmartNoise-kärna
 
 Kärn biblioteket innehåller följande sekretessfunktioner för att implementera ett Differentiellt privat system:
 
@@ -68,7 +68,7 @@ Kärn biblioteket innehåller följande sekretessfunktioner för att implementer
 |Körning     | Mediet för att köra analysen. Referens körningen skrivs i Rust men körningar kan skrivas med hjälp av alla beräknings ramverk som SQL och Spark beroende på dina data behov.        |
 |Bindningar     | Språk bindningar och hjälp bibliotek för att bygga analyser. För närvarande tillhandahåller SmartNoise python-bindningar. |
 
-### <a name="sdk"></a>SDK
+### <a name="smartnoise-sdk"></a>SmartNoise SDK
 
 System biblioteket innehåller följande verktyg och tjänster för att arbeta med tabell-och Relations data:
 
@@ -80,6 +80,6 @@ System biblioteket innehåller följande verktyg och tjänster för att arbeta m
 
 ## <a name="next-steps"></a>Nästa steg
 
-[Bevara data sekretessen](how-to-differential-privacy.md) i Azure Machine Learning.
+[Så här skapar du ett Differentiellt privat system](how-to-differential-privacy.md) i Azure Machine Learning.
 
-Mer information om komponenterna i SmartNoise finns i GitHub-databaserna för [SmartNoise Core-paket](https://github.com/opendifferentialprivacy/smartnoise-core), [SmartNoise SDK](https://github.com/opendifferentialprivacy/smartnoise-sdk)och SmartNoise- [exempel](https://github.com/opendifferentialprivacy/smartnoise-samples).
+Mer information om komponenterna i SmartNoise finns i GitHub-databaserna för [SmartNoise Core](https://github.com/opendifferentialprivacy/smartnoise-core), [SmartNoise SDK](https://github.com/opendifferentialprivacy/smartnoise-sdk)och [SmartNoise-exempel](https://github.com/opendifferentialprivacy/smartnoise-samples).

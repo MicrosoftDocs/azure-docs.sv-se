@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: 3490e3004e5f5dd99795967f0deb8510200fa50b
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: b0b0c43039648737b229edc79dd4e0a3dc45f38e
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93311043"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683348"
 ---
 # <a name="use-managed-identities-with-azure-machine-learning-preview"></a>Använda hanterade identiteter med Azure Machine Learning (förhands granskning)
 
@@ -38,7 +38,7 @@ I den här artikeln får du lära dig hur du använder hanterade identiteter fö
 - En Azure Machine Learning-arbetsyta. Mer information finns i [skapa en Azure Machine Learning-arbetsyta](how-to-manage-workspace.md).
 - [Azure CLI-tillägget för Machine Learning tjänst](reference-azure-machine-learning-cli.md)
 - [Azure Machine Learning python SDK](/python/api/overview/azure/ml/intro?view=azure-ml-py).
-- För att tilldela roller måste inloggningen för din Azure-prenumeration ha rollen [hanterad identitets operatör](../role-based-access-control/built-in-roles.md#managed-identity-operator) eller annan roll som ger nödvändiga åtgärder (till exempel __ägare__ ).
+- För att tilldela roller måste inloggningen för din Azure-prenumeration ha rollen [hanterad identitets operatör](../role-based-access-control/built-in-roles.md#managed-identity-operator) eller annan roll som ger nödvändiga åtgärder (till exempel __ägare__).
 - Du måste vara bekant med att skapa och arbeta med [hanterade identiteter](../active-directory/managed-identities-azure-resources/overview.md).
 
 ## <a name="configure-managed-identities"></a>Konfigurera hanterade identiteter
@@ -59,7 +59,7 @@ Om ACR admin-användare inte tillåts av en prenumerations princip bör du förs
 [Skapa ACR från Azure CLI](../container-registry/container-registry-get-started-azure-cli.md) utan att ange ```--admin-enabled``` argument eller från Azure Portal utan att aktivera administratörs användare. När du sedan skapar Azure Machine Learning arbets ytan anger du Azure-resurs-ID: t för ACR. I följande exempel visas hur du skapar en ny Azure ML-arbetsyta som använder en befintlig ACR:
 
 > [!TIP]
-> Hämta värdet för `--container-registry` parametern genom att använda kommandot [AZ ACR show](/cli/azure/acr?view=azure-cli-latest#az_acr_show) för att visa information för din ACR. `id`Fältet innehåller resurs-ID för din ACR.
+> Hämta värdet för `--container-registry` parametern genom att använda kommandot [AZ ACR show](/cli/azure/acr#az_acr_show) för att visa information för din ACR. `id`Fältet innehåller resurs-ID för din ACR.
 
 ```azurecli-interactive
 az ml workspace create -w <workspace name> \
@@ -90,7 +90,7 @@ Om du inte tar med din egen ACR skapar Azure Machine Learning tjänsten en åt d
 
     Det här kommandot returnerar ett värde som liknar följande text. Du vill bara den sista delen av texten, som är ACR-instansens namn:
 
-    ```text
+    ```output
     /subscriptions/<subscription id>/resourceGroups/<my resource group>/providers/MicrosoftContainerReggistry/registries/<ACR instance name>
     ```
 

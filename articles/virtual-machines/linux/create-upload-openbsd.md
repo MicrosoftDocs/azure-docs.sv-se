@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: how-to
 ms.date: 05/24/2017
 ms.author: guybo
-ms.openlocfilehash: 08b18dae6cec3f30ba9ecc69a3537eec428cc9ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: efa38384778bb63857d3c867d74ace7f4f199118
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87372730"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685097"
 ---
 # <a name="create-and-upload-an-openbsd-disk-image-to-azure"></a>Skapa och ladda upp en OpenBSD disk avbildning till Azure
 Den här artikeln visar hur du skapar och laddar upp en virtuell hård disk (VHD) som innehåller operativ systemet OpenBSD. När du har laddat upp det kan du använda det som en egen avbildning för att skapa en virtuell dator (VM) i Azure via Azure CLI.
@@ -56,7 +56,7 @@ På den virtuella datorn där du installerade operativ systemet OpenBSD 6,1, som
     ln -sf /usr/local/bin/python2.7 /usr/local/bin/python
     ln -sf /usr/local/bin/python2.7-2to3 /usr/local/bin/2to3
     ln -sf /usr/local/bin/python2.7-config /usr/local/bin/python-config
-    ln -sf /usr/local/bin/pydoc2.7  /usr/local/bin/pydoc
+    ln -sf /usr/local/bin/pydoc2.7  /usr/local/bin/pydoc
     ```
 
 6. Den senaste versionen av Azure-agenten kan alltid hittas på [GitHub](https://github.com/Azure/WALinuxAgent/releases). Så här installerar du agenten:
@@ -140,7 +140,7 @@ az storage blob upload \
 
 
 ## <a name="create-vm-from-your-vhd"></a>Skapa en virtuell dator från din virtuella hård disk
-Du kan skapa en virtuell dator med ett [exempel skript](../scripts/virtual-machines-linux-cli-sample-create-vm-vhd.md) eller direkt med [AZ VM Create](/cli/azure/vm). Om du vill ange OpenBSD-VHD: n som du överför använder du `--image` parametern på följande sätt:
+Du kan skapa en virtuell dator med ett [exempel skript](/previous-versions/azure/virtual-machines/scripts/virtual-machines-linux-cli-sample-create-vm-vhd) eller direkt med [AZ VM Create](/cli/azure/vm). Om du vill ange OpenBSD-VHD: n som du överför använder du `--image` parametern på följande sätt:
 
 ```azurecli
 az vm create \
@@ -168,4 +168,4 @@ ssh azureuser@<ip address>
 ## <a name="next-steps"></a>Nästa steg
 Om du vill veta mer om Hyper-V-stöd på OpenBSD 6.1 läser du [OpenBSD 6,1](https://www.openbsd.org/61.html) och [HyperV. 4](https://man.openbsd.org/hyperv.4).
 
-Om du vill skapa en virtuell dator från den hanterade disken läser du [AZ disk](/cli/azure/disk). 
+Om du vill skapa en virtuell dator från den hanterade disken läser du [AZ disk](/cli/azure/disk).

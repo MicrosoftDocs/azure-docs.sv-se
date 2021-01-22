@@ -9,18 +9,18 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 1a0bfb79b03b778696faef29597cabbcff47e6df
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: a7b8cb10f75d7a99198ddfdc1a1bbef3c34a03da
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98601659"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685114"
 ---
 # <a name="create-an-image-from-a-vm"></a>Skapa en avbildning från en virtuell dator
 
 Om du har en befintlig virtuell dator som du vill använda för att göra flera identiska virtuella datorer kan du använda den virtuella datorn för att skapa en avbildning i ett delat avbildnings galleri med hjälp av Azure PowerShell. Du kan också skapa en avbildning från en virtuell dator med hjälp av [Azure CLI](image-version-vm-cli.md).
 
-Du kan avbilda en avbildning från både [specialiserade och generaliserade](./windows/shared-image-galleries.md#generalized-and-specialized-images) virtuella datorer med hjälp av Azure PowerShell. 
+Du kan avbilda en avbildning från både [specialiserade och generaliserade](./shared-image-galleries.md#generalized-and-specialized-images) virtuella datorer med hjälp av Azure PowerShell. 
 
 Bilder i ett bild galleri har två komponenter som vi kommer att skapa i det här exemplet:
 - En **bild definition** innehåller information om avbildningen och kraven för att använda den. Detta inkluderar om avbildningen är Windows eller Linux, specialiserad eller generaliserad, viktig information och lägsta och högsta minnes krav. Det är en definition av en typ av bild. 
@@ -77,7 +77,7 @@ Bild definitioner skapa en logisk gruppering för avbildningar. De används för
 
 När du gör en avbildnings definition ser du till att har all rätt information. Om du generaliserar den virtuella datorn (med Sysprep för Windows eller waagent för Linux) bör du skapa en avbildnings definition med hjälp av `-OsState generalized` . Om du inte generaliserade den virtuella datorn skapar du en avbildnings definition med hjälp av `-OsState specialized` .
 
-Mer information om de värden som du kan ange för en bild definition finns i [bild definitioner](./windows/shared-image-galleries.md#image-definitions).
+Mer information om de värden som du kan ange för en bild definition finns i [bild definitioner](./shared-image-galleries.md#image-definitions).
 
 Skapa avbildnings definitionen med [New-AzGalleryImageDefinition](/powershell/module/az.compute/new-azgalleryimageversion). 
 

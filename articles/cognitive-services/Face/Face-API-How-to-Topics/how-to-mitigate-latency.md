@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 1/5/2021
 ms.author: v-jawe
-ms.openlocfilehash: 07c9bd12664a94c64a0d0b37d638b5668cc7f61e
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: b4035e2039afb6fe66d2658ebfcd3206d46e1de5
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98605634"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98682470"
 ---
 # <a name="how-to-mitigate-latency-when-using-the-face-service"></a>Gör så här: minimera svars tiden när du använder ansikts tjänsten
 
@@ -42,7 +42,11 @@ var faces = await client.Face.DetectWithUrlAsync("https://www.biography.com/.ima
 
 Ansikts tjänsten måste sedan ladda ned avbildningen från fjärrservern. Om anslutningen från ansikts tjänsten till fjärrservern är långsam, påverkas svars tiden för identifierings metoden.
 
-För att undvika detta bör du överväga att [lagra avbildningen i Azure Premium-Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-upload-process-images?tabs=dotnet).
+För att undvika detta bör du överväga att [lagra avbildningen i Azure Premium-Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-upload-process-images?tabs=dotnet). Till exempel:
+
+``` csharp
+var faces = await client.Face.DetectWithUrlAsync("https://csdx.blob.core.windows.net/resources/Face/Images/Family1-Daughter1.jpg");
+```
 
 ### <a name="large-upload-size"></a>Storlek för stor uppladdning
 
@@ -58,7 +62,10 @@ Om filen som ska överföras är stor, vilket påverkar svars tiden för `Detect
 - Tjänsten tar längre tid att bearbeta filen, i proportion till fil storleken.
 
 Åtgärder
-- Överväg att [lagra avbildningen i Azure Premium-Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-upload-process-images?tabs=dotnet).
+- Överväg att [lagra avbildningen i Azure Premium-Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-upload-process-images?tabs=dotnet). Till exempel:
+``` csharp
+var faces = await client.Face.DetectWithUrlAsync("https://csdx.blob.core.windows.net/resources/Face/Images/Family1-Daughter1.jpg");
+```
 - Överväg att ladda upp en mindre fil.
     - Se rikt linjerna angående indata [för ansikts](https://docs.microsoft.com/azure/cognitive-services/face/concepts/face-detection#input-data) igenkänning och [indata för ansikts igenkänning](https://docs.microsoft.com/azure/cognitive-services/face/concepts/face-recognition#input-data).
     - När identifierings modellen används i ansikts igenkänning `DetectionModel.Detection01` ökar bild filens storlek genom att minska bearbetnings hastigheten. När du använder identifierings modellen `DetectionModel.Detection02` ökar bild filens storlek bara bearbetnings hastigheten om bild filen är mindre än 1920x1080.

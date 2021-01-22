@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: b8738b46359287ce1d4e410292cdce213ab80999
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 9077ce35065b1bf45646496cc4c43d6def82d958
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98115828"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685233"
 ---
 # <a name="what-is-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Vad är en dedikerad SQL-pool (tidigare SQL DW) i Azure Synapse Analytics?
 
@@ -29,7 +29,7 @@ Azure Synapse Analytics är en analystjänst som sammanför informationslager i 
 
 Dedikerad SQL-pool (tidigare SQL DW) representerar en samling analys resurser som tillhandahålls när du använder Synapse SQL. Storleken på en dedikerad SQL-pool (tidigare SQL DW) bestäms av data lager enheter (DWU).
 
-När din dedikerade SQL-pool har skapats kan du importera stora data med enkla [PolyBase](/sql/relational-databases/polybase/polybase-guide?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL-frågor och sedan använda kraften i den distribuerade Frågeredigeraren för att köra analys med höga prestanda. När du integrerar och analyserar data blir dedikerad SQL-pool (tidigare SQL DW) den enda versionen av sanningen som ditt företag kan räkna med för snabbare och mer robusta insikter.
+När din dedikerade SQL-pool har skapats kan du importera stora data med enkla [PolyBase](/sql/relational-databases/polybase/polybase-guide?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) T-SQL-frågor och sedan använda kraften i den distribuerade Frågeredigeraren för att köra analys med höga prestanda. När du integrerar och analyserar data blir dedikerad SQL-pool (tidigare SQL DW) den enda versionen av sanningen som ditt företag kan räkna med för snabbare och mer robusta insikter.
 
 > [!NOTE]
 >Utforska [Azure Synapse Analytics-dokumentationen](../overview-what-is.md).

@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 34ce36f0ff348f896b7c2ea680c113b5e9e4ea09
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 87f592f0cff8504fbafba392d20f405640e2578a
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96463173"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98682978"
 ---
 # <a name="serverless-sql-pool-in-azure-synapse-analytics"></a>SQL-pool utan server i Azure Synapse Analytics 
 
@@ -75,7 +75,7 @@ Säkerhet kan tillämpas med:
 
 T-SQL som stöds:
 
-- Det finns stöd för fullständig [Select](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) -arean, inklusive en majoritet av SQL-funktioner
+- Det finns stöd för fullständig [Select](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) -arean, inklusive en majoritet av SQL-funktioner
 - CETAS – SKAPA EXTERN TABELL SOM VÄLJ
 - DDL-instruktioner relaterade till vyer och säkerhet
 
@@ -89,7 +89,7 @@ SQL-poolen utan server har ingen lokal lagring, endast metadata-objekt lagras i-
 
 ### <a name="extensions"></a>Tillägg
 
-För att möjliggöra smidig användning av frågor om data som finns i filer i data Lake, utökar SQL-poolen utan Server en befintlig [OpenRowSet](/sql/t-sql/functions/openrowset-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) -funktion genom att lägga till följande funktioner:
+För att möjliggöra smidig användning av frågor om data som finns i filer i data Lake, utökar SQL-poolen utan Server en befintlig [OpenRowSet](/sql/t-sql/functions/openrowset-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) -funktion genom att lägga till följande funktioner:
 
 [Fråga efter flera filer eller mappar](query-data-storage.md#query-multiple-files-or-folders)
 
@@ -125,7 +125,7 @@ Autentisering utan SQL-pool avser hur användare bekräftar sin identitet när d
 
 - **Azure Active Directory autentisering**:
 
-  Den här autentiseringsmetoden använder identiteter som hanteras av Azure Active Directory. För Azure AD-användare kan Multi-Factor Authentication aktive ras. Använd Active Directory-autentisering (integrerad säkerhet) [närhelst det går](/sql/relational-databases/security/choose-an-authentication-mode?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
+  Den här autentiseringsmetoden använder identiteter som hanteras av Azure Active Directory. För Azure AD-användare kan Multi-Factor Authentication aktive ras. Använd Active Directory-autentisering (integrerad säkerhet) [närhelst det går](/sql/relational-databases/security/choose-an-authentication-mode?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
 
 #### <a name="authorization"></a>Auktorisering
 

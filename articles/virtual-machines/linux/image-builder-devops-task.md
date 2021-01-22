@@ -7,12 +7,12 @@ ms.date: 08/10/2020
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: imaging
-ms.openlocfilehash: 43447454b82b74c10b1d53c41c7883b0b9bef242
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 634fc183cc27db1ae949959c3ae7fae8eda5b644
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98196511"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684550"
 ---
 # <a name="azure-image-builder-service-devops-task"></a>Azure Image Builder-DevOps uppgift
 
@@ -71,10 +71,10 @@ Använd resurs gruppen där den tillfälliga avbildnings mal len artefakt ska la
  
 ### <a name="location"></a>Plats
 
-Platsen är den region där Image Builder ska köras. Endast ett angivet antal [regioner](../windows/image-builder-overview.md#regions) stöds. Käll avbildningarna måste finnas på den här platsen. Om du till exempel använder delade avbildnings Galleri måste det finnas en replik i den regionen.
+Platsen är den region där Image Builder ska köras. Endast ett angivet antal [regioner](../image-builder-overview.md#regions) stöds. Käll avbildningarna måste finnas på den här platsen. Om du till exempel använder delade avbildnings Galleri måste det finnas en replik i den regionen.
 
 ### <a name="managed-identity-required"></a>Hanterad identitet (krävs)
-Image Builder kräver en hanterad identitet som används för att läsa anpassade käll bilder, ansluta till Azure Storage och skapa anpassade avbildningar. Mer information finns [här](./image-builder-overview.md#permissions).
+Image Builder kräver en hanterad identitet som används för att läsa anpassade käll bilder, ansluta till Azure Storage och skapa anpassade avbildningar. Mer information finns [här](../image-builder-overview.md#permissions).
 
 ### <a name="vnet-support"></a>VNET-stöd
 
@@ -154,7 +154,7 @@ I följande exempel förklaras hur det fungerar:
     & 'c:\buildArtifacts\webapp\webconfig.ps1'
     ```
 
-* Linux-på Linux-system placeras Bygg artefakterna i `/tmp` katalogen. Men på många Linux-OSs i en omstart tas katalogen/tmp-katalogens innehåll bort. Om du vill att artefakterna ska finnas i avbildningen måste du skapa en annan katalog och kopiera dem.  Exempel:
+* Linux-på Linux-system placeras Bygg artefakterna i `/tmp` katalogen. Men på många Linux-OSs i en omstart tas katalogen/tmp-katalogens innehåll bort. Om du vill att artefakterna ska finnas i avbildningen måste du skapa en annan katalog och kopiera dem.  Till exempel:
 
     ```bash
     sudo mkdir /lib/buildArtifacts
@@ -176,7 +176,7 @@ I följande exempel förklaras hur det fungerar:
 > Avbildnings verktyget tar inte bort Bygg artefakterna automatiskt, men vi rekommenderar starkt att du alltid har kod för att ta bort Bygg artefakterna.
 > 
 
-* Windows-Image Builder distribuerar filer till `c:\buildArtifacts` katalogen. Katalogen är beständig. du måste ta bort katalogen. Du kan ta bort den i skriptet som du kör. Exempel:
+* Windows-Image Builder distribuerar filer till `c:\buildArtifacts` katalogen. Katalogen är beständig. du måste ta bort katalogen. Du kan ta bort den i skriptet som du kör. Till exempel:
 
     ```PowerShell
     # Clean up buildArtifacts directory
@@ -186,7 +186,7 @@ I följande exempel förklaras hur det fungerar:
     Remove-Item -Path "C:\buildArtifacts" -Force 
     ```
     
-* Linux – build-artefakterna placeras i `/tmp` katalogen. Men på många Linux-OSs på en omstart `/tmp` raderas katalog innehållet. Vi rekommenderar att du har kod för att ta bort innehållet och inte förlitar dig på operativ systemet för att ta bort innehållet. Exempel:
+* Linux – build-artefakterna placeras i `/tmp` katalogen. Men på många Linux-OSs på en omstart `/tmp` raderas katalog innehållet. Vi rekommenderar att du har kod för att ta bort innehållet och inte förlitar dig på operativ systemet för att ta bort innehållet. Till exempel:
 
     ```bash
     sudo rm -R "/tmp/AppsAndImageBuilderLinux"
@@ -298,7 +298,7 @@ Pub/erbjudande/SKU/version av käll Marketplace-avbildningen:
 Avbildnings-URI – ResourceID för den distribuerade avbildningen:
 * $ (imageUri)
 
-## <a name="faq"></a>Vanliga frågor
+## <a name="faq"></a>VANLIGA FRÅGOR OCH SVAR
 
 ### <a name="can-i-use-an-existing-image-template-i-have-already-created-outside-of-devops"></a>Kan jag använda en befintlig avbildnings mall som jag redan har skapat, utanför DevOps?
 
@@ -312,7 +312,7 @@ Nej. Ett unikt Mallnamn används och tas sedan bort.
 
 Om ett build-problem uppstår tar DevOps-aktiviteten inte bort den mellanlagrings resurs gruppen. Du kan komma åt den mellanlagrings resurs grupp som innehåller anpassnings loggen för build.
 
-Du kommer att se ett fel i DevOps-loggen för aktiviteten VM Image Builder och se platsen anpassning. log. Exempel:
+Du kommer att se ett fel i DevOps-loggen för aktiviteten VM Image Builder och se platsen anpassning. log. Till exempel:
 
 :::image type="content" source="./media/image-builder-devops-task/devops-task-error.png" alt-text="Exempel på DevOps-aktivitets fel som visar ett fel.":::
 
@@ -335,4 +335,4 @@ Resurs artefakten för avbildnings mal len finns i den resurs grupp som ursprung
 
 ## <a name="next-steps"></a>Nästa steg
 
-Mer information finns i [Översikt över Azure Image Builder](image-builder-overview.md).
+Mer information finns i [Översikt över Azure Image Builder](../image-builder-overview.md).

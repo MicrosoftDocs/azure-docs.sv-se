@@ -7,12 +7,12 @@ ms.author: vkukke
 ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
-ms.openlocfilehash: b3babfe93012fae15e79362ba34f3f48856bc833
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8314447e7d5d282eb428ec9316c4eef6844a7423
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86171745"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98682387"
 ---
 # <a name="event-grid-concepts"></a>Event Grid-begrepp
 
@@ -48,7 +48,7 @@ Se [REST API dokumentation](api.md) om hur du hanterar prenumerationer i Event G
 
 ## <a name="event-handlers"></a>Händelsehanterare
 
-Från ett Event Grid perspektiv är en händelse hanterare den plats där händelsen skickas. Hanteraren vidtar ytterligare åtgärder för att bearbeta händelsen. Event Grid stöder flera typer av hanterare. Du kan använda en Azure-tjänst som stöds eller din egen webhook som hanterare. Beroende på typen av hanterare Event Grid följande olika mekanismer för att garantera att händelsen levereras. Om mål händelse hanteraren är en HTTP-webbhook görs ett nytt försök att utföra händelsen när hanteraren returnerar status koden `200 – OK` . För Edge Hub, om händelsen levereras utan undantag, betraktas den som lyckad.
+Från ett Event Grid perspektiv är en händelse hanterare den plats där händelsen skickas. Hanteraren vidtar ytterligare åtgärder för att bearbeta händelsen. Event Grid stöder flera typer av hanterare. Du kan använda en Azure-tjänst som stöds eller din egen webhook som hanterare. Beroende på typen av hanterare Event Grid följande olika mekanismer för att garantera att händelsen levereras. Om mål händelse hanteraren är en HTTP-webbhook görs ett nytt försök att utföra händelsen tills hanteraren returnerar status koden `200 – OK` . För Edge Hub, om händelsen levereras utan undantag, betraktas den som lyckad.
 
 ## <a name="security"></a>Säkerhet
 

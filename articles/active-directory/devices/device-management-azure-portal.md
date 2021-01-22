@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: hafowler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a735817f59e43e1a9e5d2a513f1ad397f18aab8
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 92a0cc93b4d159a4ba87c1cadc2d0dedc0a28b2d
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98232326"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683818"
 ---
 # <a name="manage-device-identities-using-the-azure-portal"></a>Hantera enhetsidentiteter med hjälp av Azure-portalen
 
@@ -168,7 +168,7 @@ Du måste ha tilldelats någon av följande roller för att kunna visa eller han
 - **Enheter som ska vara Azure AD-anslutna eller registrerade i Azure AD kräver Multi-Factor Authentication** – du kan välja om användarna måste ange ytterligare en autentiseringsnivå för att ansluta till eller registrera enheten i Azure AD. Standardvärdet är **Nej**. Vi rekommenderar att du kräver Multi-Factor Authentication när du registrerar eller ansluter till en enhet. Innan du aktiverar Multi-Factor Authentication för den här tjänsten måste du se till att Multi-Factor Authentication har kon figurer ATS för de användare som registrerar sina enheter. Mer information om olika Azure AD Multi-Factor Authentication-tjänster finns i [komma igång med Azure ad Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md). 
 
 > [!NOTE]
-> **Enheter som är anslutna till Azure AD eller Azure AD-registrerade kräver Multi-Factor Authentication** inställningen gäller för enheter som antingen är Azure AD-anslutna (med vissa undantag) eller Azure AD registrerad. Den här inställningen gäller inte för Hybrid Azure AD-anslutna enheter, [Azure AD-anslutna virtuella datorer i Azure](/azure/active-directory/devices/howto-vm-sign-in-azure-ad-windows#enabling-azure-ad-login-in-for-windows-vm-in-azure) -och Azure AD-anslutna enheter med hjälp av [själv distributions läge för Windows autopilot](/mem/autopilot/self-deploying).
+> **Enheter som är anslutna till Azure AD eller Azure AD-registrerade kräver Multi-Factor Authentication** inställningen gäller för enheter som antingen är Azure AD-anslutna (med vissa undantag) eller Azure AD registrerad. Den här inställningen gäller inte för Hybrid Azure AD-anslutna enheter, [Azure AD-anslutna virtuella datorer i Azure](./howto-vm-sign-in-azure-ad-windows.md#enabling-azure-ad-login-in-for-windows-vm-in-azure) -och Azure AD-anslutna enheter med hjälp av [själv distributions läge för Windows autopilot](/mem/autopilot/self-deploying).
 
 - **Maximalt antal enheter** – med den här inställningen kan du välja maximalt antal Azure AD-anslutna eller Azure AD-registrerade enheter som en användare kan ha i Azure AD. Om en användare når den här kvoten kan de inte lägga till fler enheter förrän en eller flera av de befintliga enheterna tas bort. Standardvärdet är **50**.
 

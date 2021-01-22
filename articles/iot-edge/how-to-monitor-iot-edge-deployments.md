@@ -10,12 +10,12 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: 4ff4d5a810eb79fb11e66591cd0b695062b1c9f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 45df700cc1772250e42a0e007fb4ea91b49471ba
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91450173"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684211"
 ---
 # <a name="monitor-iot-edge-deployments"></a>Övervaka IoT Edge-distributioner
 
@@ -25,7 +25,7 @@ Både enheter och moduler har liknande data, till exempel anslutningar, så att 
 
 IoT Hubs tjänsten samlar in data som rapporter ATS av enhet och modul, och innehåller antalet olika tillstånd som enheterna kan ha. Tjänsten IoT Hub organiserar dessa data i fyra grupper av mått:
 
-| Typ | Beskrivning |
+| Typ | Description |
 | --- | ---|
 | Riktad | Visar de IoT Edge enheter som matchar villkoret för distributions målet. |
 | Tillämpat | Visar mål IoT Edge enheter som inte är riktade till en annan distribution med högre prioritet. |
@@ -41,9 +41,9 @@ Använd följande steg för att visa information om en distribution och övervak
 1. Logga in på [Azure Portal](https://portal.azure.com) och navigera till din IoT Hub.
 1. Välj **IoT Edge** på menyn i den vänstra rutan.
 1. Välj fliken **IoT Edge distributioner** .
-1. Granska distributions listan.För varje distribution kan du se följande information:
+1. Granska distributions listan. För varje distribution kan du se följande information:
 
-    | Kolumn | Beskrivning |
+    | Kolumn | Description |
     | --- | --- |
     | ID | Namnet på distributionen. |
     | Typ | Distributions typ, antingen **distribution** eller **lager distribution**. |
@@ -54,7 +54,7 @@ Använd följande steg för att visa information om en distribution och övervak
     | Anpassade mått | Antalet IoT Edge enheter som rapporterar data för alla mät värden som du har definierat för distributionen. |
     | Skapande tid | Tidsstämpeln från när distributionen skapades. Den här tidsstämpeln används för att avbryta relationer när två distributioner har samma prioritet. |
 
-1. Välj den distribution som du vill övervaka.  
+1. Välj den distribution som du vill övervaka.  
 1. Rulla ned till det nedersta avsnittet på sidan **distributions information** och välj fliken **mål villkor** . Välj **Visa** för att visa en lista över de enheter som matchar mål villkoret. Du kan ändra villkoret och även **prioriteten**. Välj **Spara** om du har gjort ändringar.
 
    ![Visa riktade enheter för en distribution](./media/how-to-monitor-iot-edge-deployments/target-devices.png)
@@ -69,7 +69,7 @@ Information om hur du gör ändringar i distributionen finns i [ändra en distri
 
 Använd kommandot [az IoT Edge Deployment show](/cli/azure/ext/azure-iot/iot/edge/deployment#ext-azure-iot-az-iot-edge-deployment-show) för att visa information om en enda distribution:
 
-```cli
+```azurecli
 az iot edge deployment show --deployment-id [deployment id] --hub-name [hub name]
 ```
 
@@ -78,7 +78,7 @@ Kommandot Deployment show tar följande parametrar:
 * **--Deployment-ID** – namnet på den distribution som finns i IoT Hub. Obligatorisk parameter.
 * **--hubb-Name** -namnet på den IoT-hubb som distributionen finns i. Navet måste finnas i den aktuella prenumerationen. Växla till önskad prenumeration med kommandot `az account set -s [subscription name]`
 
-Granska distributionen i kommando fönstret.Egenskapen **mått** visar ett antal för varje mått som utvärderas av varje hubb:
+Granska distributionen i kommando fönstret. Egenskapen **mått** visar ett antal för varje mått som utvärderas av varje hubb:
 
 * **targetedCount** – ett system mått som anger antalet enheter i IoT Hub som matchar mål villkoret.
 * **appliedCount** – ett system mått anger det antal enheter som har haft det distributions innehåll som tillämpas på deras modul är dubbla i IoT Hub.
@@ -87,7 +87,7 @@ Granska distributionen i kommando fönstret.Egenskapen **mått** visar ett antal
 
 Du kan visa en lista över enhets-ID: n eller objekt för vart och ett av måtten med kommandot [az IoT Edge Deployment show-Metric](/cli/azure/ext/azure-iot/iot/edge/deployment#ext-azure-iot-az-iot-edge-deployment-show-metric) :
 
-```cli
+```azurecli
 az iot edge deployment show-metric --deployment-id [deployment id] --metric-id [metric id] --hub-name [hub name]
 ```
 

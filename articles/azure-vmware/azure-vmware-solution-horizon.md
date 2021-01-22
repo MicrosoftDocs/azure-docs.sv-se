@@ -3,12 +3,12 @@ title: Distribuera Horisont på Azure VMware-lösning
 description: Lär dig hur du distribuerar VMware-Horisont på Azure VMware-lösningen.
 ms.topic: how-to
 ms.date: 09/29/2020
-ms.openlocfilehash: 6d5d8e12e358e2289128af9840660be18f5f217a
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 2cf6fc5cb7662188650365cb019774d6c778d405
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95537449"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684883"
 ---
 # <a name="deploy-horizon-on-azure-vmware-solution"></a>Distribuera Horisont på Azure VMware-lösning 
 
@@ -130,15 +130,35 @@ Metoden för att ändra storlek på en värd som körs i Azure VMware-lösningen
 
 ### <a name="sizing-tables"></a>Storleks tabeller
 
-Tabellerna visar vanliga arbets belastningar för inloggning VSI och arbets belastningar för arbets belastningar.
+Specifika vCPU/vRAM-krav för Horisont av virtuella skriv bord är beroende av kundens specifika arbets belastnings profil.   Arbeta med ditt team för MSFT och VMware för att hjälpa dig att fastställa dina vCPU/vRAM-krav för dina virtuella skriv bord. 
 
-#### <a name="knowledge-worker-workloads"></a>Arbets belastning för kunskaps arbetare
+| vCPU per virtuell dator | vRAM per virtuell dator (GB) | Instans | 100 virtuella datorer | 200 virtuella datorer | 300 virtuella datorer | 400 virtuella datorer | 500 virtuella datorer | 600 virtuella datorer | 700 virtuella datorer | 800 virtuella datorer | 900 virtuella datorer | 1000 virtuella datorer | 2000 virtuella datorer | 3000 virtuella datorer | 4000 virtuella datorer | 5000 virtuella datorer | 6000 virtuella datorer | 6400 virtuella datorer |
+|:-----------:|:----------------:|:--------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:--------:|:--------:|:--------:|:--------:|:--------:|:--------:|:--------:|
+|      2      |        3.5       |    AVS   |    3    |    3    |    4    |    4    |    5    |    6    |    6    |    7    |    8    |     9    |    17    |    25    |    33    |    41    |    49    |    53    |
+|      2      |         4        |    AVS   |    3    |    3    |    4    |    5    |    6    |    6    |    7    |    8    |    9    |     9    |    18    |    26    |    34    |    42    |    51    |    54    |
+|      2      |         6        |    AVS   |    3    |    4    |    5    |    6    |    7    |    9    |    10   |    11   |    12   |    13    |    26    |    38    |    51    |    62    |    75    |    79    |
+|      2      |         8        |    AVS   |    3    |    5    |    6    |    8    |    9    |    11   |    12   |    14   |    16   |    18    |    34    |    51    |    67    |    84    |    100   |    106   |
+|      2      |        12        |    AVS   |    4    |    6    |    9    |    11   |    13   |    16   |    19   |    21   |    23   |    26    |    51    |    75    |    100   |    124   |    149   |    158   |
+|      2      |        16        |    AVS   |    5    |    8    |    11   |    14   |    18   |    21   |    24   |    27   |    30   |    34    |    67    |    100   |    133   |    165   |    198   |    211   |
+|      4      |        3.5       |    AVS   |    3    |    3    |    4    |    5    |    6    |    7    |    8    |    9    |    10   |    11    |    22    |    33    |    44    |    55    |    66    |    70    |
+|      4      |         4        |    AVS   |    3    |    3    |    4    |    5    |    6    |    7    |    8    |    9    |    10   |    11    |    22    |    33    |    44    |    55    |    66    |    70    |
+|      4      |         6        |    AVS   |    3    |    4    |    5    |    6    |    7    |    9    |    10   |    11   |    12   |    13    |    26    |    38    |    51    |    62    |    75    |    79    |
+|      4      |         8        |    AVS   |    3    |    5    |    6    |    8    |    9    |    11   |    12   |    14   |    16   |    18    |    34    |    51    |    67    |    84    |    100   |    106   |
+|      4      |        12        |    AVS   |    4    |    6    |    9    |    11   |    13   |    16   |    19   |    21   |    23   |    26    |    51    |    75    |    100   |    124   |    149   |    158   |
+|      4      |        16        |    AVS   |    5    |    8    |    11   |    14   |    18   |    21   |    24   |    27   |    30   |    34    |    67    |    100   |    133   |    165   |    198   |    211   |
+|      6      |        3.5       |    AVS   |    3    |    4    |    5    |    6    |    7    |    9    |    10   |    11   |    13   |    14    |    27    |    41    |    54    |    68    |    81    |    86    |
+|      6      |         4        |    AVS   |    3    |    4    |    5    |    6    |    7    |    9    |    10   |    11   |    13   |    14    |    27    |    41    |    54    |    68    |    81    |    86    |
+|      6      |         6        |    AVS   |    3    |    4    |    5    |    6    |    7    |    9    |    10   |    11   |    13   |    14    |    27    |    41    |    54    |    68    |    81    |    86    |
+|      6      |         8        |    AVS   |    3    |    5    |    6    |    8    |    9    |    11   |    12   |    14   |    16   |    18    |    34    |    51    |    67    |    84    |    100   |    106   |
+|      6      |        12        |    AVS   |    4    |    6    |    9    |    11   |    13   |    16   |    19   |    21   |    23   |    26    |    51    |    75    |    100   |    124   |    149   |    158   |
+|      6      |        16        |    AVS   |    5    |    8    |    11   |    14   |    18   |    21   |    24   |    27   |    30   |    34    |    67    |    100   |    133   |    165   |    198   |    211   |
+|      8      |        3.5       |    AVS   |    3    |    4    |    6    |    7    |    9    |    10   |    12   |    14   |    15   |    17    |    33    |    49    |    66    |    82    |    98    |    105   |
+|      8      |         4        |    AVS   |    3    |    4    |    6    |    7    |    9    |    10   |    12   |    14   |    15   |    17    |    33    |    49    |    66    |    82    |    98    |    105   |
+|      8      |         6        |    AVS   |    3    |    4    |    6    |    7    |    9    |    10   |    12   |    14   |    15   |    17    |    33    |    49    |    66    |    82    |    98    |    105   |
+|      8      |         8        |    AVS   |    3    |    5    |    6    |    8    |    9    |    11   |    12   |    14   |    16   |    18    |    34    |    51    |    67    |    84    |    100   |    106   |
+|      8      |        12        |    AVS   |    4    |    6    |    9    |    11   |    13   |    16   |    19   |    21   |    23   |    26    |    51    |    75    |    100   |    124   |    149   |    158   |
+|      8      |        16        |    AVS   |    5    |    8    |    11   |    14   |    18   |    21   |    24   |    27   |    30   |    34    |    67    |    100   |    133   |    165   |    198   |    211   |
 
-:::image type="content" source="media/horizon/common-vdi-profiles-vsi-workloads-knowledge.png" alt-text="Tabell med vanliga VDI-profiler för VMware-horisont för inloggning VSI arbets belastning för kunskaps arbetare" lightbox="media/horizon/common-vdi-profiles-vsi-workloads-knowledge.png" border="false":::
-
-#### <a name="power-worker-workloads"></a>Arbets belastningar för arbets kraft
-
-:::image type="content" source="media/horizon/common-vdi-profiles-vsi-workloads-power.png" alt-text="Tabell med vanliga VDI-profiler för VMware-horisont för inloggning VSI avancerade arbets belastningar" lightbox="media/horizon/common-vdi-profiles-vsi-workloads-power.png" border="false":::
 
 ### <a name="horizon-sizing-inputs"></a>Data för Horisont storlek
 
@@ -189,24 +209,9 @@ Om du har distribuerat på Azure VMware-lösningen och lokalt, som med en katast
 
 Arbeta med din VMware EUC-säljteam för att fastställa Horisont licens kostnaden utifrån dina behov.
 
-### <a name="cost-of-the-horizon-infrastructure-vms-on-azure-virtual-network"></a>Kostnaderna för de virtuella datorerna för Horisont infrastruktur på Azure Virtual Network
+### <a name="azure-instance-types"></a>Azure instance types
 
-Utifrån standard distributions arkitekturen består de virtuella datorerna för Horisont infrastruktur av anslutnings servrar, UAGs, program volym hanterare. De distribueras i kundens Azure-Virtual Network. Ytterligare Azure Native-instanser krävs för att stödja hög tillgänglighet (HA), Microsoft SQL-eller Microsoft Active Directory-tjänster (AD) i Azure. I tabellen visas Azure-instanserna baserat på ett exempel på en distribution med 2 000-skriv bord. 
-
->[!NOTE]
->För att kunna hantera problem kan du distribuera en server som krävs för antalet anslutningar (n + 1). Det minsta rekommenderade antalet instanser av anslutnings servern, UAG och app Volume Manager är 2 och antalet som krävs kommer att växa baserat på mängden användare som miljön kommer att ha stöd för.  En enda anslutnings Server stöder högst 4 000 sessioner, även om 2 000 rekommenderas som bästa praxis. Upp till sju anslutnings servrar stöds per POD med en rekommendation på 12 000 aktiva sessioner totalt per POD. De mest aktuella talen finns i [VMware Knowledge Base-artikeln VMware Horisont 7 storleks gränser och rekommendationer](https://kb.vmware.com/s/article/2150348).
-
-| Komponent för Horisont infrastruktur | Azure-instans | Antal instanser som behövs (för 2 000-datorer)    | Kommentar  |
-|----------------------------------|----------------|----------------------------------------------------|----------|
-| Anslutnings Server                | D4sv3          | 2       | *Se anmärkning ovan*                         |    
-| UAG                              | F2sv2          | 2       | *Se anmärkning ovan*                         |
-| App Volumes-hanteraren              | D4sv3          | 2       | *Se anmärkning ovan*                         |
-| Cloud Connector                  | D4sv3          | 1       |                                          |
-| AD-styrenhet                    | D4sv3          | 2       | *Alternativ för att använda MSFT AD-tjänsten på Azure* |
-| MS-SQL Database                  | D4sv3          | 2       | *Alternativ för att använda SQL-tjänsten på Azure*     |
-| Windows-filresurs               | D4sv3          |         | *Valfritt*                               |
-
-Den virtuella datorns infrastruktur kostnad uppgår till \$ 0,36 per användare per månad för distributionen av 2 000-Desktop i exemplet ovan. I det här exemplet används priserna för östra Azure-instansen i juni 2020. Din prissättning kan variera beroende på region, valda alternativ och tids inställning.
+För att förstå de storlekar på virtuella Azure-datorer som krävs för Horisont infrastrukturen, se VMwares rikt linjer som du hittar [här](https://techzone.vmware.com/resource/horizon-on-azure-vmware-solution-configuration#horizon-installation-on-azure-vmware-solution).
 
 ## <a name="next-steps"></a>Nästa steg
 Läs mer om VMware-Horisont på Azure VMware-lösningen i [vanliga frågor och svar om VMware-Horisont](https://www.vmware.com/content/dam/digitalmarketing/vmware/en/pdf/products/horizon/vmw-horizon-on-microsoft-azure-vmware-solution-faq.pdf).

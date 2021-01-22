@@ -4,12 +4,12 @@ description: Lär dig hur du ansluter din Function-app för att Application Insi
 ms.date: 8/31/2020
 ms.topic: how-to
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 24350eb07481db66907d199cd96f84a02cc98c9e
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 73ed679288d9d03b81a0b01670aa0f574a14839f
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97937288"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684716"
 ---
 # <a name="how-to-configure-monitoring-for-azure-functions"></a>Så här konfigurerar du övervakning för Azure Functions
 
@@ -233,7 +233,7 @@ az functionapp config appsettings delete --name <FUNCTION_APP_NAME> \
 
 För att en Function-app ska skicka data till Application Insights måste den känna till Instrumentation-nyckeln för en Application Insights resurs. Nyckeln måste vara i en app-inställning med namnet **APPINSIGHTS_INSTRUMENTATIONKEY**.
 
-När du skapar en Function-app [i Azure Portal](functions-create-first-azure-function.md), från kommando raden med hjälp av [Azure Functions Core tools](./create-first-function-cli-csharp.md)eller genom att använda [Visual Studio Code](./create-first-function-vs-code-csharp.md), aktive ras Application Insights integration som standard. Application Insights resursen har samma namn som din Function-app, och den skapas antingen i samma region eller i den närmaste regionen.
+När du skapar en Function-app [i Azure Portal](./functions-get-started.md), från kommando raden med hjälp av [Azure Functions Core tools](./create-first-function-cli-csharp.md)eller genom att använda [Visual Studio Code](./create-first-function-vs-code-csharp.md), aktive ras Application Insights integration som standard. Application Insights resursen har samma namn som din Function-app, och den skapas antingen i samma region eller i den närmaste regionen.
 
 ### <a name="new-function-app-in-the-portal"></a>Ny function-app i portalen
 

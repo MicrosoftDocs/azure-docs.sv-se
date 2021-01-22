@@ -3,12 +3,12 @@ title: Azure Service Bus identifiering av duplicerade meddelanden | Microsoft Do
 description: Den här artikeln förklarar hur du kan identifiera dubbletter i Azure Service Bus meddelanden. Det duplicerade meddelandet kan ignoreras och tas bort.
 ms.topic: article
 ms.date: 01/13/2021
-ms.openlocfilehash: 29972f756c66f524cc2e4684fcb7afd1ca628820
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 8ff98b3a052be6004a2dc070f10d6f8c9ca0617f
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98184687"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684816"
 ---
 # <a name="duplicate-detection"></a>Dubblettidentifiering
 
@@ -17,6 +17,9 @@ Om ett program Miss lyckas på grund av ett allvarligt fel omedelbart efter det 
 Det är också möjligt att ett fel på klienten eller på nätverks nivå inträffar en stund och att ett meddelande som skickas skickas till kön, med bekräftelsen som inte har returnerats till klienten. Det här scenariot lämnar klienten tveksam om resultatet av åtgärden skicka.
 
 Dubblettidentifiering tar bort tvivel från dessa situationer genom att göra det möjligt för avsändaren att skicka samma meddelande igen och kön eller avsnittet tar bort dubbletter av kopior.
+
+> [!NOTE]
+> Den grundläggande Service Buss nivån stöder inte dubblettidentifiering. Standard-och Premium-nivåerna stöder dubblettidentifiering. För skillnader mellan dessa nivåer, se [Service Bus prissättning](https://azure.microsoft.com/pricing/details/service-bus/).
 
 ## <a name="how-it-works"></a>Hur fungerar det? 
 Genom att aktivera dubblettidentifiering kan du hålla koll på det programstyrda *messageid* för alla meddelanden som skickas till en kö eller ett ämne under en angiven tids period. Om ett nytt meddelande skickas med *messageid* som loggades under tids perioden, rapporteras meddelandet som accepterat (sändnings åtgärden lyckas), men det nyligen skickade meddelandet ignoreras och tas bort omedelbart. Inga andra delar av meddelandet förutom *messageid* beaktas.

@@ -10,12 +10,12 @@ ms.custom: how-to
 ms.author: larryfr
 author: BlackMist
 ms.date: 03/05/2020
-ms.openlocfilehash: 812bbb2507310d088c42fa1cf2cad4c330755892
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: ec99be6082e01ea49e75ff29b5fb3c37d56b6dd5
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98072334"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683382"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Vad hände med Azure Machine Learning Workbench?
 
@@ -101,7 +101,7 @@ Skapa ditt första experiment med önskad metod:
 
   + [Använd din egen miljö](tutorial-1st-experiment-sdk-setup-local.md)
   + [Använda python-anteckningsböcker](tutorial-1st-experiment-sdk-setup.md)
-  + [Använd R-markdown](tutorial-1st-r-experiment.md) 
+  + [Använd R-markdown](https://github.com/Azure/azureml-sdk-for-r) 
   + [Använda Automatisk maskin inlärning](tutorial-designer-automobile-price-train-score.md) 
   + [Använd designerns dra & släpp funktioner](tutorial-first-experiment-automated-ml.md) 
   + [Använd ML-tillägget till CLI](tutorial-train-deploy-model-cli.md)
