@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 1667c21b9a35b8e93feffb8cf1b37d4409da73c3
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 1552401953a8cba9dda787a0f0e461adb7972920
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98044316"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664460"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-scripted"></a>Konfigurera en digital Azure-instans och autentisering (skript)
 
@@ -29,11 +29,13 @@ Den här versionen av den här artikeln slutför de här stegen genom att köra 
 
 ## <a name="prerequisites-download-the-script"></a>Krav: Hämta skriptet
 
-Exempel skriptet skrivs i PowerShell. Den är en del av de [**digitala Azure-samlingarna från slut punkt till slut punkt**](/samples/azure-samples/digital-twins-samples/digital-twins-samples/), som du kan ladda ned till din dator genom att gå till den exempel länken och välja *hämtnings zip* -knappen under rubriken.
+Exempel skriptet skrivs i PowerShell. Den är en del av de [**digitala Azure-samlingarna från slut punkt till slut punkt**](/samples/azure-samples/digital-twins-samples/digital-twins-samples/), som du kan ladda ned till datorn genom att gå till exempel länken och välja knappen *Bläddra kod* under rubriken. Detta tar dig till GitHub-lagrings platsen för exemplen, som du kan hämta som en *. ZIP* genom att välja knappen *kod* och *Hämta zip*.
 
-Detta kommer att ladda ned exempelprojektet till datorn som _**Azure_Digital_Twins_end_to_end_samples.zip**_. Navigera till mappen på din dator och packa upp den för att extrahera filerna.
+:::image type="content" source="media/includes/download-repo-zip.png" alt-text="Vy över de digitala-och lagrings platsen-exemplen på GitHub. Knappen kod är markerad och skapar en liten dialog ruta där hämtnings ZIP-knappen är markerad." lightbox="media/includes/download-repo-zip.png":::
 
-I den zippade mappen finns distributions skriptet på _Azure_Digital_Twins_end_to_end_samples > skript > **deploy.ps1**_.
+Då hämtas en *. ZIP* -mapp på din dator som **digital-twins-samples-master.zip**. Navigera till mappen på din dator och packa upp den för att extrahera filerna.
+
+I den zippade mappen finns distributions skriptet på _digitala-och-exempel-master >-skript > **deploy.ps1**_.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -56,7 +58,7 @@ Här följer stegen för att köra distributions skriptet i Cloud Shell.
 
     :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-upload.png" alt-text="Cloud Shell fönster som visar uppladdnings ikonen":::
 
-    Navigera till _**deploy.ps1**_ -filen på din dator (i _Azure_Digital_Twins_end_to_end_samples > skript > **deploy.ps1**_) och tryck på "öppna". Detta kommer att överföra filen till Cloud Shell så att du kan köra den i fönstret Cloud Shell.
+    Navigera till _**deploy.ps1**_ -filen på din dator (i _digital-endrives-exempel-Master >-skript > **deploy.ps1**_) och tryck på "öppna". Detta kommer att överföra filen till Cloud Shell så att du kan köra den i fönstret Cloud Shell.
 
 4. Kör skriptet genom `./deploy.ps1` att skicka kommandot i Cloud Shells fönstret. Du kan kopiera kommandot nedan (kom ihåg att klistra in i Cloud Shell, du kan använda **CTRL + SHIFT + v** på Windows och Linux eller **cmd + Shift + v** på MacOS. Du kan också använda snabb menyn.
 
@@ -102,7 +104,7 @@ Den här sidan visar alla dina Azure Digitals dubbla instanser. Leta efter namne
 
 Om verifieringen misslyckades kan du försöka skapa en instans med hjälp av [portalen](how-to-set-up-instance-portal.md#create-the-azure-digital-twins-instance) eller [CLI](how-to-set-up-instance-cli.md#create-the-azure-digital-twins-instance).
 
-### <a name="collect-instance-values"></a>Samla in instans värden
+### <a name="collect-instance-values"></a>Samla in instansvärden
 
 Öppna instansens *översikts* sida genom att välja namnet på din instans från [sidan Azure Digitals dubbla](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.DigitalTwins%2FdigitalTwinsInstances) . Anteckna *namn*, *resurs grupp* och *värdnamn*. Du kan behöva dessa senare för att identifiera och ansluta till din instans.
 

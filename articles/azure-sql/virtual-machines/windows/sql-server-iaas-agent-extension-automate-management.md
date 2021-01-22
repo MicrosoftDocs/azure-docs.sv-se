@@ -17,12 +17,12 @@ ms.date: 11/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 7ddc13306f4adb1730169c4811b9d2227dedca33
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 481a4ff21c361e4cf82a21d9e98357a4c8b7b1b4
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 01/21/2021
-ms.locfileid: "98632774"
+ms.locfileid: "98663680"
 ---
 # <a name="automate-management-with-the-sql-server-iaas-agent-extension"></a>Automatisera hanteringen med SQL Server IaaS agent-tillägg
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -34,7 +34,7 @@ Den här artikeln innehåller en översikt över tillägget. Om du vill installe
 
 ## <a name="overview"></a>Översikt
 
-Tillägget SQL Server IaaS-agent ger ett antal fördelar för SQL Server på virtuella Azure-datorer: 
+Med tillägget SQL Server IaaS-agent kan du integrera med Azure Portal och, beroende på hanterings läget, låsa upp ett antal funktions förmåner för SQL Server på virtuella Azure-datorer: 
 
 - **Funktions förmåner**: tillägget låser upp ett antal funktioner för automatiserings funktioner, till exempel portal hantering, licens flexibilitet, automatisk säkerhets kopiering, automatiserad uppdatering och mer. Mer information finns i [funktions förmånerna](#feature-benefits) längre fram i den här artikeln. 
 
@@ -74,12 +74,13 @@ Följande tabell innehåller information om dessa fördelar:
 
 | Funktion | Beskrivning |
 | --- | --- |
-| **Portalhantering** | Låser upp [hantering i portalen](manage-sql-vm-portal.md), så att du kan visa alla dina SQL Server virtuella datorer på en plats, och så att du kan aktivera och inaktivera SQL-funktioner direkt från portalen. 
-| **Automatisk säkerhets kopiering** |Automatisera schemaläggning av säkerhets kopieringar för alla databaser antingen för standard instansen eller en [korrekt installerad](frequently-asked-questions-faq.md#administration) namngiven instans av SQL Server på den virtuella datorn. Mer information finns i [Automatisk säkerhets kopiering för SQL Server i Azure Virtual Machines (Resource Manager)](automated-backup-sql-2014.md). |
-| **Automatiserad uppdatering** |Konfigurerar en underhålls period då viktiga Windows-och SQL Server säkerhets uppdateringar till den virtuella datorn kan ske, så att du kan undvika uppdateringar under hög belastnings tider för din arbets belastning. Mer information finns i [automatiserad uppdatering för SQL Server i Azure Virtual Machines (Resource Manager)](automated-patching.md). |
-| **Azure Key Vault-integrering** |Gör att du kan installera och konfigurera Azure Key Vault automatiskt på din SQL Server VM. Mer information finns i [konfigurera Azure Key Vault-integrering för SQL Server på Azure-Virtual Machines (Resource Manager)](azure-key-vault-integration-configure.md). |
-| **Flexibel licensiering** | Spara pengar genom [sömlös över gång](licensing-model-azure-hybrid-benefit-ahb-change.md) från den tillkommande licensen (även kallat Azure Hybrid-förmån) till licens modellen betala per användning och tillbaka igen. | 
-| **Flexibel version/utgåva** | Om du väljer att ändra [versionen](change-sql-server-version.md) [eller versionen](change-sql-server-edition.md) av SQL Server kan du uppdatera metadata i Azure Portal utan att behöva distribuera om hela SQL Server VM.  | 
+| **Portalhantering** | Låser upp [hantering i portalen](manage-sql-vm-portal.md), så att du kan visa alla dina SQL Server virtuella datorer på en plats, och så att du kan aktivera och inaktivera SQL-funktioner direkt från portalen. <br/> Hanterings läge: lightweight & full|  
+| **Automatisk säkerhets kopiering** |Automatisera schemaläggning av säkerhets kopieringar för alla databaser antingen för standard instansen eller en [korrekt installerad](frequently-asked-questions-faq.md#administration) namngiven instans av SQL Server på den virtuella datorn. Mer information finns i [Automatisk säkerhets kopiering för SQL Server i Azure Virtual Machines (Resource Manager)](automated-backup-sql-2014.md). <br/> Hanterings läge: fullständigt|
+| **Automatiserad uppdatering** |Konfigurerar en underhålls period då viktiga Windows-och SQL Server säkerhets uppdateringar till den virtuella datorn kan ske, så att du kan undvika uppdateringar under hög belastnings tider för din arbets belastning. Mer information finns i [automatiserad uppdatering för SQL Server i Azure Virtual Machines (Resource Manager)](automated-patching.md). <br/> Hanterings läge: fullständigt|
+| **Azure Key Vault-integrering** |Gör att du kan installera och konfigurera Azure Key Vault automatiskt på din SQL Server VM. Mer information finns i [konfigurera Azure Key Vault-integrering för SQL Server på Azure-Virtual Machines (Resource Manager)](azure-key-vault-integration-configure.md). <br/> Hanterings läge: fullständigt|
+| **Visa disk användning i portalen** | Gör att du kan visa en grafisk representation av disk användningen av dina SQL-datafiler i Azure Portal.  <br/> Hanterings läge: fullständigt | 
+| **Flexibel licensiering** | Spara pengar genom [sömlös över gång](licensing-model-azure-hybrid-benefit-ahb-change.md) från den tillkommande licensen (även kallat Azure Hybrid-förmån) till licens modellen betala per användning och tillbaka igen. <br/> Hanterings läge: lightweight & full| 
+| **Flexibel version/utgåva** | Om du väljer att ändra [versionen](change-sql-server-version.md) [eller versionen](change-sql-server-edition.md) av SQL Server kan du uppdatera metadata i Azure Portal utan att behöva distribuera om hela SQL Server VM.  <br/> Hanterings läge: lightweight & full| 
 
 
 ## <a name="management-modes"></a>Hanterings lägen

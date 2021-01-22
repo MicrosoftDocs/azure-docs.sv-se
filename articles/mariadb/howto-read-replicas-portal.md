@@ -3,15 +3,15 @@ title: Hantera Läs repliker – Azure Portal-Azure Database for MariaDB
 description: Den här artikeln beskriver hur du konfigurerar och hanterar Läs repliker i Azure Database for MariaDB med hjälp av portalen
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: how-to
 ms.date: 6/10/2020
-ms.openlocfilehash: 3ca6ef3c368a5f578cc90fae3923caa89f3b076a
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: fa2afdccf9c8bd6ec7f5808674e6eec968838d10
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94537755"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98665012"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-the-azure-portal"></a>Skapa och hantera Läs repliker i Azure Database for MariaDB med hjälp av Azure Portal
 
@@ -31,7 +31,7 @@ I den här artikeln får du lära dig hur du skapar och hanterar Läs repliker i
 
 Du kan skapa en Läs replik server med följande steg:
 
-1. Logga in på [Azure-portalen](https://portal.azure.com/).
+1. Logga in på [Azure Portal](https://portal.azure.com/).
 
 2. Välj den befintliga Azure Database for MariaDB-server som du vill använda som huvud server. Den här åtgärden öppnar **översikts** sidan.
 
@@ -122,7 +122,7 @@ Gör så här om du vill ta bort en käll Server från Azure Portal:
 
 1. I [Azure Portal](https://portal.azure.com/)väljer du den replik Azure Database for MariaDBs server som du vill övervaka.
 
-2. Under avsnittet **övervakning** på sid panelen väljer du **mått** :
+2. Under avsnittet **övervakning** på sid panelen väljer du **mått**:
 
 3. Välj **replikeringsfördröjning i sekunder** från List rutan med tillgängliga mått.
 

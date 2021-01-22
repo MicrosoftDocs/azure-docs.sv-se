@@ -3,15 +3,15 @@ title: Långsamma Query-loggar – Azure Database for MariaDB
 description: Beskriver de loggar som är tillgängliga i Azure Database for MariaDB och de tillgängliga parametrarna för att aktivera olika loggnings nivåer.
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: conceptual
 ms.date: 11/6/2020
-ms.openlocfilehash: a5acf3b6447b2e3722a27951700138f756a99251
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 2d3c3c92cc4d0da38f18c7895f4f7f3f3385c653
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541121"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664171"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mariadb"></a>Långsamma Query-loggar i Azure Database for MariaDB
 I Azure Database for MariaDB är den långsamma fråge loggen tillgänglig för användare. Åtkomst till transaktions loggen stöds inte. Den långsamma frågans logg kan användas för att identifiera Flask halsar i prestanda för fel sökning.
@@ -25,11 +25,11 @@ Som standard är den långsamma frågans logg inaktive rad. Om du vill aktivera 
 
 Andra parametrar som du kan justera är:
 
-- **long_query_time** : om en fråga tar längre tid än long_query_time (i sekunder) som frågan loggas. Standardvärdet är 10 sekunder.
-- **log_slow_admin_statements** : om on innehåller administrativa uttryck som ALTER_TABLE och ANALYZE_TABLE i de instruktioner som skrivs till slow_query_log.
-- **log_queries_not_using_indexes** : bestämmer om frågor som inte använder index ska loggas i slow_query_log
-- **log_throttle_queries_not_using_indexes** : den här parametern begränsar antalet icke-indexfrågor som kan skrivas till den långsamma fråge loggen. Den här parametern börjar gälla när log_queries_not_using_indexes är inställt på på.
-- **log_output** : om "File", tillåter att den långsamma fråge loggen skrivs till både den lokala serverns lagrings plats och för att Azure Monitor diagnostikloggar. Om du anger ”None” skrivs loggen för långsamma frågor bara till Azure Monitor Diagnostic Logs. 
+- **long_query_time**: om en fråga tar längre tid än long_query_time (i sekunder) som frågan loggas. Standardvärdet är 10 sekunder.
+- **log_slow_admin_statements**: om on innehåller administrativa uttryck som ALTER_TABLE och ANALYZE_TABLE i de instruktioner som skrivs till slow_query_log.
+- **log_queries_not_using_indexes**: bestämmer om frågor som inte använder index ska loggas i slow_query_log
+- **log_throttle_queries_not_using_indexes**: den här parametern begränsar antalet icke-indexfrågor som kan skrivas till den långsamma fråge loggen. Den här parametern börjar gälla när log_queries_not_using_indexes är inställt på på.
+- **log_output**: om "File", tillåter att den långsamma fråge loggen skrivs till både den lokala serverns lagrings plats och för att Azure Monitor diagnostikloggar. Om du anger ”None” skrivs loggen för långsamma frågor bara till Azure Monitor Diagnostic Logs. 
 
 > [!IMPORTANT]
 > Om dina tabeller inte är indexerade kan inställning av `log_queries_not_using_indexes` `log_throttle_queries_not_using_indexes` parametrarna och på på påverka MariaDB prestanda eftersom alla frågor som körs mot dessa icke-indexerade tabeller skrivs till den långsamma frågans logg.<br><br>

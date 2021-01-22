@@ -3,17 +3,17 @@ title: Hantera brand Väggs regler – Azure CLI – Azure Database for MariaDB
 description: Den här artikeln beskriver hur du skapar och hanterar Azure Database for MariaDB brand Väggs regler med hjälp av kommando raden i Azure CLI.
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 3/18/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: ef04e2b4c820c14ea7df6c35ecb0189ef31ef7dc
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: f4ae1f3b736f6d263b8d769e241d969d058a69f4
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94540908"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98665046"
 ---
 # <a name="create-and-manage-azure-database-for-mariadb-firewall-rules-by-using-the-azure-cli"></a>Skapa och hantera Azure Database for MariaDB brand Väggs regler med hjälp av Azure CLI
 Brand Väggs regler på server nivå kan användas för att hantera åtkomst till en Azure Database for MariaDB-Server från en speciell IP-adress eller ett intervall med IP-adresser. Med hjälp av praktiska Azure CLI-kommandon kan du skapa, uppdatera, ta bort, Visa och Visa brand Väggs regler för hantering av servern. En översikt över Azure Database for MariaDB brand väggar finns i [Azure Database for MariaDB Server brand Väggs regler](./concepts-firewall-rules.md).
@@ -28,11 +28,11 @@ Virtual Network-regler (VNet) kan också användas för att skydda åtkomsten ti
 Kommandot **AZ MariaDB Server Firewall-Rule** används från Azure CLI för att skapa, ta bort, lista, Visa och uppdatera brand Väggs regler.
 
 Kommandon:
-- **skapa** : skapa en brand Väggs regel för Azure MariaDB Server.
-- **ta bort** : ta bort en regel för Azure MariaDB Server-brandvägg.
-- **lista** : visar en lista över brand Väggs regler för Azure MariaDB Server.
-- **Visa** : Visa information om en brand Väggs regel för Azure MariaDB Server.
-- **uppdatering** : uppdatera en brand Väggs regel för Azure MariaDB Server.
+- **skapa**: skapa en brand Väggs regel för Azure MariaDB Server.
+- **ta bort**: ta bort en regel för Azure MariaDB Server-brandvägg.
+- **lista**: visar en lista över brand Väggs regler för Azure MariaDB Server.
+- **Visa**: Visa information om en brand Väggs regel för Azure MariaDB Server.
+- **uppdatering**: uppdatera en brand Väggs regel för Azure MariaDB Server.
 
 ## <a name="sign-in-to-azure-and-list-your-azure-database-for-mariadb-servers"></a>Logga in på Azure och lista dina Azure Database for MariaDB-servrar
 Anslut säkert Azure CLI med ditt Azure-konto med hjälp av kommandot **AZ login** .

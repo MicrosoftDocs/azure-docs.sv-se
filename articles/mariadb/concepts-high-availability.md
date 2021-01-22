@@ -3,15 +3,15 @@ title: Hög tillgänglighet – Azure Database for MariaDB
 description: Den här artikeln innehåller information om hög tillgänglighet i Azure Database for MariaDB
 author: mksuni
 ms.author: sumuth
-ms.service: mariadb
+ms.service: jroth
 ms.topic: conceptual
 ms.date: 7/7/2020
-ms.openlocfilehash: 4dcb1ac7ce4b468374993c11578bce553f766a42
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: dc37474a56ddb7d2c48c7acfce881fb812f0b8a4
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93241352"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664341"
 ---
 # <a name="high-availability-in-azure-database-for-mariadb"></a>Hög tillgänglighet i Azure Database for MariaDB
 Tjänsten Azure Database for MariaDB tillhandahåller en garanterad hög tillgänglighets nivå med det ekonomiskt service avtal (SLA) på [99,99%](https://azure.microsoft.com/support/legal/sla/MariaDB) drift tid. Azure Database for MariaDB ger hög tillgänglighet under planerade händelser som initated Scale Compute operation och även när oplanerade händelser som underliggande maskin vara, program eller nätverks fel inträffar. Azure Database for MariaDB kan snabbt återställas från de mest kritiska förhållandena, vilket säkerställer att det är praktiskt taget ingen program tids period när tjänsten används.
@@ -24,7 +24,7 @@ Azure Database for MariaDB är lämpligt för att köra verksamhets kritiska dat
 | ------------ | ----------- |
 | <b>MariaDB-databasserver | Azure Database for MariaDB tillhandahåller säkerhet, isolering, resurs skydd och snabb omstart för databas servrar. Dessa funktioner underlättar åtgärder som skalnings-och databas server återställnings åtgärder när ett avbrott inträffar på några sekunder. <br/> Data ändringar i databas servern sker vanligt vis i samband med en databas transaktion. Alla databas ändringar registreras synkront i form av Skriv Ahead-loggar (ib_log) på Azure Storage – som är kopplad till databas servern. Under [kontroll punkts](https://mariadb.com/kb/innodb-redo-log/#checkpoints) processen för databasen rensas data sidor från databas serverns minne också till lagringen. |
 | <b>Fjärrlagring | Alla MariaDB fysiska datafiler och loggfiler lagras på Azure Storage, vilket är utformat för att lagra tre kopior av data inom en region för att säkerställa dataredundans, tillgänglighet och tillförlitlighet. Lagrings lagret är också oberoende av databas servern. Den kan kopplas från en misslyckad databas server och återkopplas till en ny databas server inom några sekunder. Dessutom övervakas Azure Storage kontinuerligt för eventuella lagrings fel. Om en blockerande skada identifieras korrigeras den automatiskt genom att en ny lagrings kopia instansieras. |
-| <b>Nyckeln | Gatewayen fungerar som en databas-proxy och dirigerar alla klient anslutningar till databas servern. |
+| <b>Gateway | Gatewayen fungerar som en databas-proxy och dirigerar alla klient anslutningar till databas servern. |
 
 ## <a name="planned-downtime-mitigation"></a>Minskning av planerad stillestånds tid
 Azure Database for MariaDB konstrueras för att ge hög tillgänglighet under planerade stillestånds åtgärder. 

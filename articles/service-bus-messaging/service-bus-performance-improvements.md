@@ -4,12 +4,12 @@ description: Beskriver hur du använder Service Bus för att optimera prestanda 
 ms.topic: article
 ms.date: 01/15/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7bfff1a31365724ed1d1cb6ff1956a4e2ef4f4c0
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 70f2fe88cf363572bcbca71115ba08dc0ed10e6d
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539437"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664706"
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>Bra metoder för att öka prestanda med hjälp av meddelanden i Service Bus
 
@@ -150,8 +150,8 @@ static Task ErrorHandler(ProcessErrorEventArgs args)
 
 static async Task MessageHandler(ProcessMessageEventArgs args)
 {
-Console.WriteLine("Handle message");
-      await args.CompleteMessageAsync(args.Message);
+    Console.WriteLine("Handle message");
+    await args.CompleteMessageAsync(args.Message);
 }
 
 await processor.StartProcessingAsync();
@@ -234,7 +234,7 @@ Batching-funktionen för .NET standard SDK har ännu inte uppvisat en egenskap f
 
 Som standard använder en klient ett batch-intervall på 20 MS. Du kan ändra batch-intervallet genom att ange egenskapen [BatchFlushInterval][BatchFlushInterval] innan du skapar meddelande fabriken. Den här inställningen påverkar alla klienter som skapas av den här fabriken.
 
-Om du vill inaktivera batchbearbetning ställer du in egenskapen [BatchFlushInterval][BatchFlushInterval] på **TimeSpan. Zero**. Här är några exempel:
+Om du vill inaktivera batchbearbetning ställer du in egenskapen [BatchFlushInterval][BatchFlushInterval] på **TimeSpan. Zero**. Till exempel:
 
 ```csharp
 var settings = new MessagingFactorySettings
@@ -346,6 +346,8 @@ Mer information finns i följande `PrefetchCount` Egenskaper:
 
 - [ServiceBusReceiver.PrefetchCount](/dotnet/api/azure.messaging.servicebus.servicebusreceiver.prefetchcount)
 - [ServiceBusProcessor.PrefetchCount](/dotnet/api/azure.messaging.servicebus.servicebusprocessor.prefetchcount)
+
+Du kan ange värden för dessa egenskaper i [ServiceBusReceiverOptions](/dotnet/api/azure.messaging.servicebus.servicebusreceiveroptions) eller [ServiceBusProcessorOptions](/dotnet/api/azure.messaging.servicebus.servicebusprocessoroptions).
 
 # <a name="microsoftazureservicebus-sdk"></a>[Microsoft. Azure. Service Bus SDK](#tab/net-standard-sdk)
 

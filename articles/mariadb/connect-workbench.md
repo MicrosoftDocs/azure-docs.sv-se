@@ -3,16 +3,16 @@ title: 'Snabb start: Anslut MySQL Workbench – Azure Database for MariaDB'
 description: Den här snabbstarten förklarar hur du använder MySQL Workbench för att ansluta till och fråga efter data från Azure Database for MariaDB.
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 3/18/2020
-ms.openlocfilehash: 209c793903f1f706fc27102a783aa76e65382fcd
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: f4426e1d1b22c521dc436dc7e304d57e57b1812c
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541104"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664392"
 ---
 # <a name="quickstart-azure-database-for-mariadb-use-mysql-workbench-to-connect-and-query-data"></a>Snabb start: Azure Database for MariaDB: Använd MySQL Workbench för att ansluta och fråga efter data
 
@@ -35,7 +35,7 @@ Skaffa den information som du behöver för att ansluta till Azure Database för
 
 1. Logga in på [Azure-portalen](https://portal.azure.com/).
 
-2. Välj **Alla resurser** på menyn längst till vänster i Azure-portalen. Sök sedan efter den server som du skapade (som **mydemoserver** ).
+2. Välj **Alla resurser** på menyn längst till vänster i Azure-portalen. Sök sedan efter den server som du skapade (som **mydemoserver**).
 
 3. Välj servernamnet.
 
@@ -49,7 +49,7 @@ För att ansluta till en Azure Database for MariaDB-server med MySQL Workbench g
 
 1. Öppna MySQL Workbench på datorn. 
 
-2. I dialogrutan **Konfigurera ny anslutning** anger du följande information på fliken **Parametrar** :
+2. I dialogrutan **Konfigurera ny anslutning** anger du följande information på fliken **Parametrar**:
 
    | Inställning | Föreslaget värde | Fältbeskrivning |
    |---|---|---|

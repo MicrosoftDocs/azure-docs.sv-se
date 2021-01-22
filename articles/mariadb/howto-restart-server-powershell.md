@@ -3,16 +3,16 @@ title: Starta om Server – Azure PowerShell-Azure Database for MariaDB
 description: I den här artikeln beskrivs hur du startar om en Azure Database for MariaDB-server med PowerShell.
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: how-to
 ms.date: 5/26/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 14cde5b1302c46b819bb7d841fb5b84a43c580c0
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 0311111285d7dc0d60bc63ce9cef2be3f0ddfb19
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94538962"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664876"
 ---
 # <a name="restart-azure-database-for-mariadb-server-using-powershell"></a>Starta om Azure Database for MariaDB server med PowerShell
 

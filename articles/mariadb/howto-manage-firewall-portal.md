@@ -3,15 +3,15 @@ title: Hantera brand Väggs regler – Azure Portal-Azure Database for MariaDB
 description: Skapa och hantera Azure Database for MariaDB brand Väggs regler med hjälp av Azure Portal
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: 895c8e51e16cb0b82ebf3edcf954dabe62b08ff4
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a708326db1a782cf3ded5f9108e1b87c6d53fe20
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96021783"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98665063"
 ---
 # <a name="create-and-manage-azure-database-for-mariadb-firewall-rules-by-using-the-azure-portal"></a>Skapa och hantera Azure Database for MariaDB brand Väggs regler med hjälp av Azure Portal
 Brand Väggs regler på server nivå kan användas för att hantera åtkomst till en Azure Database for MariaDB-Server från en angiven IP-adress eller ett intervall med IP-adresser.

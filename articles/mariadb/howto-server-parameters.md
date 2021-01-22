@@ -3,15 +3,15 @@ title: Konfigurera Server parametrar – Azure Portal-Azure Database for MariaDB
 description: I den här artikeln beskrivs hur du konfigurerar MariaDB-Server parametrar i Azure Database for MariaDB att använda Azure Portal.
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: how-to
 ms.date: 10/1/2020
-ms.openlocfilehash: 7081535bb709e6731a9a15436334e8742e7bdd08
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: cda6b2bd3d49bd71b4c57d5d459c07b61addb493
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94539464"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664808"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-mariadb-using-the-azure-portal"></a>Konfigurera Server parametrar i Azure Database for MariaDB att använda Azure Portal
 
@@ -41,7 +41,7 @@ Om den server parameter som du vill uppdatera inte visas i Azure Portal, kan du 
 3. Lägg till Server parametrarna i formatet: `SET parameter_name=YOUR_DESIRED_VALUE` i värde kolumnen värde.
 
     Du kan till exempel ändra teckenuppsättningen för servern genom att ställa in på `init_connect``SET character_set_client=utf8;SET character_set_database=utf8mb4;SET character_set_connection=latin1;SET character_set_results=latin1;`
-4. Klicka på **Spara** för att spara ändringarna.
+4. Klicka på **Spara** för att spara dina ändringar.
 
 ## <a name="working-with-the-time-zone-parameter"></a>Arbeta med tids zons parametern
 

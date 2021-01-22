@@ -3,16 +3,16 @@ title: Läsa repliker – Azure Database for MariaDB
 description: 'Lär dig mer om att läsa repliker i Azure Database for MariaDB: välja regioner, skapa repliker, ansluta till repliker, övervaka replikering och stoppa replikering.'
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: conceptual
 ms.date: 01/18/2021
 ms.custom: references_regions
-ms.openlocfilehash: 39547e3156a684293a0624f974a8b0930f656485
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 375db7e5c113c2a48642365624207ce3acbde8a2
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98540015"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664222"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>Skrivskyddad replik i Azure Database for MariaDB
 

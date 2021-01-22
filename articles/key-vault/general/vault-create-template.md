@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/5/2020
 ms.author: mbaldwin
-ms.openlocfilehash: e19277aa3639031371e0e8dd28f4dd849efd4597
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 24fef1680c5660a70a20ae727833b045f6c5aa88
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97933939"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664358"
 ---
 # <a name="how-to-create-an-azure-key-vault-and-vault-access-policy-by-using-a-resource-manager-template"></a>Så här skapar du en Azure Key Vault-och en valv åtkomst princip med hjälp av en Resource Manager-mall
 
@@ -23,7 +23,7 @@ ms.locfileid: "97933939"
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att slutföra stegen i den här artikeln:
 
@@ -150,7 +150,7 @@ Du kan distribuera åtkomst principer till ett befintligt nyckel valv utan att o
             "permissions": {
               "keys": "[parameters('keysPermissions')]",
               "secrets": "[parameters('secretsPermissions')]",
-              "certificates": [parameters('certificatesPermissions')]
+              "certificates": "[parameters('certificatesPermissions')]"
             }
           }
         ]
@@ -160,6 +160,7 @@ Du kan distribuera åtkomst principer till ett befintligt nyckel valv utan att o
 }
 
 ```
+
 Mer information om inställningar för Key Vault mal len finns i [referens för Key Vault arm-mall](/azure/templates/microsoft.keyvault/vaults/accesspolicies).
 
 ## <a name="more-key-vault-resource-manager-templates"></a>Fler Key Vault Resource Manager-mallar
@@ -217,6 +218,6 @@ Write-Host "Press [ENTER] to continue..."
 
 ## <a name="next-steps"></a>Nästa steg
 
-- [Säker åtkomst till ett nyckel valv](secure-your-key-vault.md)
+- [Säker åtkomst till ett nyckelvalv](secure-your-key-vault.md)
 - [Autentisera till ett nyckel valv](authentication.md)
 - [Utvecklarguide för Azure Key Vault](developers-guide.md)

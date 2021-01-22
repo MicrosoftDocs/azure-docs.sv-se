@@ -3,17 +3,17 @@ title: CLI-skript – skala Server-Azure Database for MariaDB
 description: Det här CLI-exempelskriptet skalar Azure Database for MariaDB-servern till en annan prestandanivå efter frågekörning mot måtten.
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc, devx-track-azurecli
 ms.date: 12/02/2019
-ms.openlocfilehash: 71a2ad5b8d09812eb999ab75a3522caf5a8dd20a
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: ac59ee30b75f4d6cab7d773b3561fcea542cb778
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94536653"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664558"
 ---
 # <a name="monitor-and-scale-an-azure-database-for-mariadb-server-using-azure-cli"></a>Övervaka och skala en Azure Database for MariaDB-server med Azure CLI
 Det här CLI-skriptet skalar beräkning och lagring för en enskild Azure Database for MariaDB Server efter att ha frågat måtten. Compute kan skala upp eller ned. Lagringen kan bara skalas upp.

@@ -7,12 +7,12 @@ ms.author: aymarqui
 ms.date: 09/02/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: d84acc5501b3d40f6db85d0ee6ee369aec5a6aa4
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 71e74789654d2df91d9a087eaaf8d8f2a2664f7b
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98051113"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664120"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-signalr-service"></a>Integrera Azure Digitals dubbla med Azure SignalR-tjänsten
 
@@ -40,7 +40,11 @@ Du kommer att ansluta Azure SignalR-tjänsten till Azure Digitals dubbla steg ge
 
 Ladda först ned de exempel appar som krävs. Du behöver båda följande:
 * [**Azure Digitals dubblare-exempel**](/samples/azure-samples/digital-twins-samples/digital-twins-samples/): det här exemplet innehåller en *AdtSampleApp* med två Azure Functions för att flytta data runt en Azure Digital-instansen (du kan lära dig mer om det här scenariot i [*Självstudier: Anslut en lösning från slut punkt till slut punkt*](tutorial-end-to-end.md)). Det innehåller också ett *DeviceSimulator* exempel program som simulerar en IoT-enhet och genererar ett nytt temperatur värde varje sekund. 
-    - Navigera till exempel länken och tryck på *hämtnings zip* -knappen för att ladda ned en kopia av exemplet till din dator, som _**Azure_Digital_Twins_end_to_end_samples.zip**_. Packa upp mappen.
+    - Om du inte redan har laddat ned exemplet som en del av själv studie kursen i [*krav*](#prerequisites)navigerar du till exempel länken och väljer knappen *Bläddra kod* under rubriken. Detta tar dig till GitHub-lagrings platsen för exemplen, som du kan hämta som en *. ZIP* genom att välja knappen *kod* och *Hämta zip*.
+
+    :::image type="content" source="media/includes/download-repo-zip.png" alt-text="Vy över de digitala-och lagrings platsen-exemplen på GitHub. Knappen kod är markerad och skapar en liten dialog ruta där hämtnings ZIP-knappen är markerad." lightbox="media/includes/download-repo-zip.png":::
+
+    Då hämtas en kopia av exempel lagrings platsen till din dator, som **digital-twins-samples-master.zip**. Packa upp mappen.
 * [**Exempel på integrations-**](/samples/azure-samples/digitaltwins-signalr-webapp-sample/digital-twins-samples/)webbapp: det här är ett exempel på att en webbapp används för att använda Azure Digitals informations data från en Azure SignalR-tjänst.
     -  Navigera till exempel länken och tryck på *hämtnings zip* -knappen för att ladda ned en kopia av exemplet till din dator, som _**Azure_Digital_Twins_SignalR_integration_web_app_sample.zip**_. Packa upp mappen.
 
@@ -63,7 +67,7 @@ Gå först till webbläsaren där Azure Portal öppnas och utför följande steg
 
     :::image type="content" source="media/how-to-integrate-azure-signalr/signalr-keys.png" alt-text="Skärm bild av Azure Portal som visar sidan nycklar för signal instansen. Ikonen Kopiera till Urklipp bredvid den primära ANSLUTNINGS STRÄNGEN är markerad." lightbox="media/how-to-integrate-azure-signalr/signalr-keys.png":::
 
-Starta sedan Visual Studio (eller en annan valfri kod redigerare) och öppna kod lösningen i mappen *Azure_Digital_Twins_end_to_end_samples > ADTSampleApp* . Utför sedan följande steg för att skapa funktionerna:
+Starta sedan Visual Studio (eller en annan valfri kod redigerare) och öppna kod lösningen i mappen Digital-endrived *-samples-master > ADTSampleApp* . Utför sedan följande steg för att skapa funktionerna:
 
 1. Skapa en ny C# Sharp-klass med namnet **SignalRFunctions.cs** i *SampleFunctionsApp* -projektet.
 
@@ -71,7 +75,7 @@ Starta sedan Visual Studio (eller en annan valfri kod redigerare) och öppna kod
     
     :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/signalRFunction.cs":::
 
-1. I Visual Studios fönstret *Package Manager-konsol* eller något kommando fönster på datorn i mappen *Azure_Digital_Twins_end_to_end_samples \adtsampleapp\samplefunctionsapp* kör du följande kommando för att installera NuGet- `SignalRService` paketet till projektet:
+1. I Visual Studios fönstret *Package Manager-konsol* eller något kommando fönster på datorn i mappen *digital-Twins-samples-master\AdtSampleApp\SampleFunctionsApp* kör du följande kommando för att installera `SignalRService` NuGet-paketet till projektet:
     ```cmd
     dotnet add package Microsoft.Azure.WebJobs.Extensions.SignalRService --version 1.2.0
     ```
@@ -126,7 +130,7 @@ I det här avsnittet visas resultatet av åtgärden. Först ska du starta den **
 
 Under den heltäckande själv studie kursen [konfigurerade du enhets simulatorn](tutorial-end-to-end.md#configure-and-run-the-simulation) för att skicka data via en IoT Hub och till din Azure Digital-instansen.
 
-Nu behöver du bara starta Simulator projektet, som finns i *Azure_Digital_Twins_end_to_end_samples > DeviceSimulator > DeviceSimulator. SLN*. Om du använder Visual Studio kan du öppna projektet och sedan köra det med den här knappen i verktygsfältet:
+Nu behöver du bara starta Simulator projektet, som finns i *digital-endrives-samples-master > DeviceSimulator > DeviceSimulator. SLN*. Om du använder Visual Studio kan du öppna projektet och sedan köra det med den här knappen i verktygsfältet:
 
 :::image type="content" source="media/how-to-integrate-azure-signalr/start-button-simulator.png" alt-text="Start knappen i Visual Studio (DeviceSimulator-projekt)":::
 
@@ -188,7 +192,7 @@ Med hjälp av Azure Cloud Shell eller lokalt Azure CLI kan du ta bort alla Azure
 az group delete --name <your-resource-group>
 ```
 
-Slutligen tar du bort de exempel mappar för Project som du laddade ned till din lokala dator (*Azure_Digital_Twins_end_to_end_samples.zip* och *Azure_Digital_Twins_SignalR_integration_web_app_sample.zip*).
+Slutligen tar du bort de exempel mappar för Project som du laddade ned till din lokala dator (*digital-twins-samples-master.zip* och *Azure_Digital_Twins_SignalR_integration_web_app_sample.zip*).
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -3,15 +3,15 @@ title: Query Performance Insight-Azure Database for MariaDB
 description: I den här artikeln beskrivs Query Performance Insight funktionen i Azure Database for MariaDB
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: b643ba3305736480e06d7c10d594b2271839038f
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 9e8e4527ba1717b4d152f501a38c3c8f65faf70e
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94536340"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664239"
 ---
 # <a name="query-performance-insight-in-azure-database-for-mariadb"></a>Information om frågeprestanda i Azure Database for MariaDB
 
@@ -56,7 +56,7 @@ Du kan klicka och dra i diagrammet för att begränsa till ett specifikt tidsfö
 ### <a name="wait-statistics"></a>Vänta med statistik 
 
 > [!NOTE]
-> Väntande statistik är avsedd för fel sökning av problem med frågans prestanda. Vi rekommenderar att du bara aktive ras i fel söknings syfte. <br>Om du får fel meddelandet i Azure Portal " *problemet upptäcktes för" Microsoft. DBforMariaDB "; Det går inte att slutföra begäran. Kontakta supporten med den här informationen om problemet fortsätter eller är oväntat.* " Använd en kortare tids period när du visar väntande statistik.
+> Väntande statistik är avsedd för fel sökning av problem med frågans prestanda. Vi rekommenderar att du bara aktive ras i fel söknings syfte. <br>Om du får fel meddelandet i Azure Portal "*problemet upptäcktes för" Microsoft. DBforMariaDB "; Det går inte att slutföra begäran. Kontakta supporten med den här informationen om problemet fortsätter eller är oväntat.*" Använd en kortare tids period när du visar väntande statistik.
 
 Vänta med statistik är en vy över de väntande händelser som inträffar när en speciell fråga körs. Läs mer om händelse typerna wait i [MySQL Engine-dokumentationen](https://go.microsoft.com/fwlink/?linkid=2098206).
 

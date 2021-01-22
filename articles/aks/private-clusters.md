@@ -4,12 +4,12 @@ description: Lär dig hur du skapar ett privat Azure Kubernetes service-kluster 
 services: container-service
 ms.topic: article
 ms.date: 7/17/2020
-ms.openlocfilehash: 87966a9bd2f83916998a724fc6c1c26a91609665
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 2b0cc8a2fe9a45120bf0b74dbad5e107fd860845
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98133403"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664375"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>Skapa ett privat Azure Kubernetes service-kluster
 
@@ -66,23 +66,23 @@ Där `--enable-private-cluster` är en obligatorisk flagga för ett privat klust
 > [!NOTE]
 > Om Docker-bryggan Address CIDR (172.17.0.1/16) står i konflikt med under nätets CIDR, ändra Docker-bryggans adress på lämpligt sätt.
 
-### <a name="configure-private-dns-zone"></a>Konfigurera Privat DNS zon
+## <a name="configure-private-dns-zone"></a>Konfigurera Privat DNS zon
 
 Följande parametrar kan utnyttjas för att konfigurera Privat DNS zon.
 
 1. "System" är standardvärdet. Om argumentet--Private-DNS-Zone utelämnas, kommer AKS att skapa en Privat DNS zon i resurs gruppen för noden.
 2. "Ingen" innebär att AKS inte skapar någon Privat DNS zon.  Detta kräver att du tar med din egen DNS-server och konfigurerar DNS-matchning för det privata fullständiga domän namnet.  Om du inte konfigurerar DNS-matchning kan DNS bara matchas inom agentens noder och kan orsaka kluster problem efter distributionen.
-3. "Namn på anpassad privat DNS-zon" ska vara i det här formatet för Azures globala moln: `privatelink.<region>.azmk8s.io` . Användaren som tilldelats identiteten eller tjänstens huvud namn måste tilldelas minst `private dns zone contributor` en roll till den anpassade privata DNS-zonen.
+3. "Namn på anpassad privat DNS-zon" ska vara i det här formatet för Azures globala moln: `privatelink.<region>.azmk8s.io` . Du behöver resurs-ID för den Privat DNS zonen.  Dessutom behöver du en användare som tilldelats identitets-eller tjänstens huvud namn med minst `private dns zone contributor` rollen som anpassad privat DNS-zon.
 
-## <a name="no-private-dns-zone-prerequisites"></a>Inga Privat DNS zon krav
+### <a name="prerequisites"></a>Förutsättningar
 
-* Azure CLI-version 0.4.71 eller senare
+* AKS Preview version 0.4.71 eller senare
 * API-version 2020-11-01 eller senare
 
-## <a name="create-a-private-aks-cluster-with-private-dns-zone"></a>Skapa ett privat AKS-kluster med Privat DNS zon
+### <a name="create-a-private-aks-cluster-with-private-dns-zone"></a>Skapa ett privat AKS-kluster med Privat DNS zon
 
 ```azurecli-interactive
-az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster --private-dns-zone [none|system|custom private dns zone]
+az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster --enable-managed-identity --assign-identity <ResourceId> --private-dns-zone [none|system|custom private dns zone ResourceId]
 ```
 ## <a name="options-for-connecting-to-the-private-cluster"></a>Alternativ för att ansluta till det privata klustret
 
@@ -94,7 +94,7 @@ API-serverns slut punkt har ingen offentlig IP-adress. Om du vill hantera API-se
 
 Att skapa en virtuell dator i samma VNET som AKS-klustret är det enklaste alternativet.  Express Route och VPN lägger till kostnader och kräver ytterligare nätverks komplexitet.  Peering av virtuella nätverk kräver att du planerar dina nätverks-CIDR-intervall för att se till att det inte finns några överlappande intervall.
 
-## <a name="virtual-network-peering"></a>Peering för virtuella nätverk
+## <a name="virtual-network-peering"></a>Virtuell nätverkspeering
 
 Som nämnts är virtuell nätverks-peering ett sätt att komma åt ditt privata kluster. Om du vill använda peering för virtuella nätverk måste du konfigurera en länk mellan det virtuella nätverket och den privata DNS-zonen.
     

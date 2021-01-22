@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: d9a6eb572b1ab870fdb848f8b0989f88e6dbc3c0
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: a4875c2c75b133f0ab4046266d6aac36d5478fe4
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98045962"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664052"
 ---
 # <a name="understand-digital-twins-and-their-twin-graph"></a>Förstå digitala sammanflätade och deras dubbla diagram
 
@@ -25,7 +25,9 @@ I en Azure digital-lösning för dubbla lösningar representeras entiteterna i d
 
 Innan du kan skapa en digital i din Azure Digitals-instans måste du ha en *modell* som överförs till tjänsten. En modell beskriver uppsättningen egenskaper, telemetri-meddelanden och relationer som en viss, t. ex. kan ha, bland annat. Information om vilka typer av information som definieras i en modell finns i [*begrepp: anpassade modeller*](concepts-models.md).
 
-När du har skapat och laddat upp en modell kan ditt klient program skapa en instans av typen. Detta är en digital, dubbel. När du har skapat en *vånings* modell kan du till exempel skapa en eller flera digitala garn som använder den här typen (t. ex. en typ av *golv* som kallas *GroundFloor*, en annan som kallas *Floor2* osv.). 
+När du har skapat och laddat upp en modell kan ditt klient program skapa en instans av typen. Detta är en digital, dubbel. När du har skapat en *vånings* modell kan du till exempel skapa en eller flera digitala garn som använder den här typen (t. ex. en typ av *golv* som kallas *GroundFloor*, en annan som kallas *Floor2* osv.).
+
+[!INCLUDE [digital-twins-versus-device-twins](../../includes/digital-twins-versus-device-twins.md)]
 
 ## <a name="relationships-a-graph-of-digital-twins"></a>Relationer: ett diagram över digitala dubbla
 
@@ -41,7 +43,7 @@ Resultatet av den här processen är en uppsättning noder (de digitala dubbla) 
 
 Det här avsnittet visar hur det ser ut för att skapa digitala dubbla objekt och relationer från ett klient program. Den innehåller exempel på .NET-kod som använder [DigitalTwins-API: er](/rest/api/digital-twins/dataplane/twins)för att ge ytterligare kontext för vad som händer i var och en av dessa begrepp.
 
-### <a name="create-digital-twins"></a>Skapa digitala dubbla
+### <a name="create-digital-twins"></a>Skapa digitala tvillingar
 
 Nedan visas ett fragment med klient koden som använder [DigitalTwins-API: er](/rest/api/digital-twins/dataplane/twins) för att instansiera ett garn av typen *Room*.
 
@@ -68,7 +70,7 @@ Digitala dubbla data och Relations data lagras både i JSON-format. Det innebär
 
 När ett digitalt objekt visas som ett JSON-objekt visas följande fält:
 
-| Fältnamn | Beskrivning |
+| Fältnamn | Description |
 | --- | --- |
 | `$dtId` | En användardefinierad sträng som representerar ID: t för den digitala dubbla |
 | `$etag` | Standard-HTTP-fält som tilldelas av webb servern |
@@ -135,7 +137,7 @@ Här är ett exempel på en digital, dubbels formaterad som ett JSON-objekt:
 
 När den visas som ett JSON-objekt, visas följande fält i en relation från en digital:
 
-| Fältnamn | Beskrivning |
+| Fältnamn | Description |
 | --- | --- |
 | `$relationshipId` | En användardefinierad sträng som representerar ID: t för den här relationen. Den här strängen är unik i kontexten för källan Digital, som också innebär att `sourceId`  +  `relationshipId` är unik i kontexten för Azure Digitals-instansen. |
 | `$etag` | Standard-HTTP-fält som tilldelas av webb servern |

@@ -3,16 +3,16 @@ title: 'Självstudie: utforma en Azure Database for MariaDB-Azure Portal'
 description: I den här självstudien beskrivs hur du skapar och hanterar en Azure Database for MariaDB-server och -databas med Azure-portalen.
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: tutorial
 ms.date: 3/18/2020
 ms.custom: mvc
-ms.openlocfilehash: fe503d0e579e30b0c355d3be3e8d02b2bd7a44a8
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 9df151be99ba81af28f6b7b0cc012eae7db3ea1b
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542447"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664476"
 ---
 # <a name="tutorial-design-an-azure-database-for-mariadb-database-by-using-the-azure-portal"></a>Självstudie: skapa en Azure Database for MariaDB-databas med Azure-portalen
 
@@ -55,7 +55,7 @@ Du skapar en Azure Database for MariaDB-server med en definierad uppsättning [b
     Prenumeration | *din prenumeration* | Välj den Azure-prenumeration som ska användas för servern. Om du har flera prenumerationer väljer du den prenumeration som resursen ska debiteras till.
     Resursgrupp | **myresourcegroup** | Ange ett nytt resursgruppsnamn eller välj en befintlig resursgrupp.
     Välj källa | **Tom** | Välj **Tom** om du vill skapa en ny server. (Välj **Säkerhetskopiering** om du skapar en server från en geo-säkerhetskopia av en befintlig Azure Database for MariaDB-server).
-    Inloggning för serveradministratör | **myadmin** | Ett inloggningskonto att använda när du ansluter till servern. Inloggningsnamnet för administratören får inte vara **azure_superuser** , **admin** , **administrator** , **root** , **guest** eller **public**.
+    Inloggning för serveradministratör | **myadmin** | Ett inloggningskonto att använda när du ansluter till servern. Inloggningsnamnet för administratören får inte vara **azure_superuser**, **admin**, **administrator**, **root**, **guest** eller **public**.
     Lösenord | *ditt val* | Ange ett nytt lösenord för serverns administratörskonto. Det måste innehålla mellan 8 och 128 tecken. Lösenordet måste innehålla tecken från tre av följande kategorier: engelska versala bokstäver, engelska gemena bokstäver, siffror (0-9) och icke-alfanumeriska tecken (!, $, #, % osv).
     Bekräfta lösenordet | *ditt val*| Bekräfta administratörslösenordet.
     Plats | *den region som är närmast dina användare*| Välj den plats som är närmast dina användare eller dina andra Azure-program.
@@ -170,14 +170,14 @@ Anta att du av misstag har tagit bort en viktig databastabell och inte enkelt ka
 
    ![Återställ en databas](./media/tutorial-design-database-using-portal/1-restore-a-db.png)
 
-2. Ange eller välj följande information på sidan **Återställa** :
+2. Ange eller välj följande information på sidan **Återställa**:
 
    ![Återställningsformulär](./media/tutorial-design-database-using-portal/2-restore-form.png)
    
-   - **Återställningspunkt** : Välj en tidpunkt du vill återställa till, inom den tidsperiod som visas. Var noga med att konvertera din lokala tidszon till UTC.
-   - **Återställ till ny server** : Ange ett nytt servernamn som du vill återställa till.
-   - **Plats** : Regionen är samma som källservern och kan inte ändras.
-   - **Prisnivå** : Prisnivån är samma som källservern och kan inte ändras.
+   - **Återställningspunkt**: Välj en tidpunkt du vill återställa till, inom den tidsperiod som visas. Var noga med att konvertera din lokala tidszon till UTC.
+   - **Återställ till ny server**: Ange ett nytt servernamn som du vill återställa till.
+   - **Plats**: Regionen är samma som källservern och kan inte ändras.
+   - **Prisnivå**: Prisnivån är samma som källservern och kan inte ändras.
    
 3. Klicka på **OK** för att återställa servern till en tidpunkt [återställa till en tidpunkt](./howto-restore-server-portal.md) innan tabellen togs bort. När du återställer en server skapas en ny kopia av servern vid den tidpunkt du anger. 
 

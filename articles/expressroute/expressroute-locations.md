@@ -6,14 +6,14 @@ author: duongau
 ms.service: expressroute
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 01/05/2021
+ms.date: 01/21/2021
 ms.author: duau
-ms.openlocfilehash: c68d9654c673b75742205853ec186caa5d6a3ce5
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 589f8bef7e5023a3667ce0ebf9a14637b007223d
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97916158"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664069"
 ---
 # <a name="expressroute-connectivity-partners-and-peering-locations"></a>ExpressRoute-anslutningspartner och peering-platser
 
@@ -93,7 +93,7 @@ I följande tabell visas platser efter tjänstleverantör. Om du vill visa tillg
 | **[Chief Telecom](https://www.chief.com.tw/)** |Stöds |Stöds |Hong Kong, Taipei, |
 | **Kina, mobil internationell** |Stöds |Stöds | Hong Kong, Hong Kong2, Singapore |
 | **China Telecom Global** |Stöds |Stöds |Hong Kong, Hong Kong2 |
-| **Kina, Unicom global** |Stöds |Stöds | Singapore2 |
+| **Kina, Unicom global** |Stöds |Stöds | Hong Kong, Singapore2 |
 | **[Chunghwa Telecom](https://www.cht.com.tw/en/home/cht/about-cht/products-and-services/International/Cloud-Service)** |Stöds |Stöds |Taipei |
 | **[Claro](https://www.usclaro.com/enterprise-mnc/connectivity/mpls/)** |Stöds |Stöds |Miami |
 | **[Cologix](https://www.cologix.com/hyperscale/microsoft-azure/)** |Stöds |Stöds |Chicago, Borås, Minneapolis, Montrealprotokollet, Toronto, Vancouver, Washington DC |
@@ -121,6 +121,7 @@ I följande tabell visas platser efter tjänstleverantör. Om du vill visa tillg
 | **[Internet Initiative Japan Inc. - IIJ](https://www.iij.ad.jp/en/news/pressrelease/2015/1216-2.html)** |Stöds |Stöds |Osaka, Tokyo |
 | **[Internet-lösningar – moln anslutning](https://www.is.co.za/solution/cloud-connect/)** |Stöds |Stöds |Kapstaden, Johannesburg, London |
 | **[Interxion](https://www.interxion.com/why-interxion/colocate-with-the-clouds/Microsoft-Azure/)** |Stöds |Stöds |Amsterdam, Amsterdam2, köpen hamn, Dublin, Frankfurt, London, Marseille, Paris, Zürich |
+| **[IRIDEOS](https://irideos.it/)** |Stöds |Stöds |Milano |
 | **[IX Reach](https://www.ixreach.com/partners/cloud-partners/microsoft-azure/)**|Stöds |Stöds | Amsterdam, London2, Silicon dal, Toronto, Washington DC |
 | **Jaguar-nätverk** |Stöds |Stöds |Marseille, Paris |
 | **[Jisc](https://www.jisc.ac.uk/microsoft-azure-expressroute)** |Stöds |Stöds |London, Newport (Wales) |
@@ -159,7 +160,7 @@ I följande tabell visas platser efter tjänstleverantör. Om du vill visa tillg
 | **[Swisscom](https://www.swisscom.ch/en/business/enterprise/offer/cloud-data-center/microsoft-cloud-services/microsoft-azure-von-swisscom.html)** | Stöds | Stöds | Zürich |
 | **[Tata Communications](https://www.tatacommunications.com/lp/izo/azure/azure_index.html)** |Stöds |Stöds |Amsterdam, Chennai, Hong Kong SAR, London, Mumbai, Sao Paulo, Silicon dal, Singapore, Washington DC |
 | **[Telefonica](https://www.business-solutions.telefonica.com/es/enterprise/solutions/efficient-infrastructure/managed-voice-data-connectivity/)** |Stöds |Stöds |Amsterdam, Sao Paulo |
-| **[Telehouse – KDDI](https://www.telehouse.net/solutions/cloud-services/cloud-link)** |Stöds |Stöds |London, London2 |
+| **[Telehouse – KDDI](https://www.telehouse.net/solutions/cloud-services/cloud-link)** |Stöds |Stöds |London, London2, Singapore2 |
 | **Telenor** |Stöds |Stöds |Amsterdam, London, Oslo |
 | **[Telia-bärvåg](https://www.teliacarrier.com/)** | Stöds | Stöds |Amsterdam, Chicago, Borås, Frankfurt, Hongkong, London, Oslo, Paris, Silicon dal, Stockholm, Washington DC |
 | **[Telin](https://www.telin.net/)** | Stöds | Stöds |Jakarta |

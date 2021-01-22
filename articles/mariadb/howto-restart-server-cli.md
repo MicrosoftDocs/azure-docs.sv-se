@@ -3,16 +3,16 @@ title: Starta om Server – Azure CLI – Azure Database for MariaDB
 description: I den här artikeln beskrivs hur du startar om en Azure Database for MariaDB-server med hjälp av Azure CLI.
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: how-to
 ms.date: 3/18/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 8ae69adfe83b871eb29c85fc4d03e817026ec006
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 50389c7c4e1f497e63c5221181713649a7b068c5
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541376"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664927"
 ---
 # <a name="restart-azure-database-for-mariadb-server-using-the-azure-cli"></a>Starta om Azure Database for MariaDB server med Azure CLI
 I det här avsnittet beskrivs hur du kan starta om en Azure Database for MariaDB-Server. Du kan behöva starta om servern för underhålls orsaker, vilket orsakar ett kort avbrott eftersom servern utför åtgärden.

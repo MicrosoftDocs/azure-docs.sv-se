@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein
-ms.date: 09/03/2020
-ms.openlocfilehash: 9c09a54daa482d738ded9f7aca1c95c2b640617e
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.date: 01/20/2021
+ms.openlocfilehash: 5f9e7e1c96db2b60e41fe0ded69ea562cf8fcea6
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790278"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98663993"
 ---
 # <a name="use-read-only-replicas-to-offload-read-only-query-workloads"></a>Använd skrivskyddade repliker för att avlasta skrivskyddade arbets belastningar
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -85,7 +85,7 @@ När du är ansluten till en skrivskyddad replik visar DMV: er (Dynamic Manageme
 
 Ofta använda vyer är:
 
-| Namn | Syfte |
+| Name | Syfte |
 |:---|:---|
 |[sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| Tillhandahåller Mät värden för resursutnyttjande under den senaste timmen, inklusive CPU, data-IO och logg Skriv användning i förhållande till begränsningar i tjänst målet.|
 |[sys.dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql)| Tillhandahåller sammanställd wait-statistik för databas motor instansen. |
@@ -115,12 +115,12 @@ I sällsynta fall, om en ögonblicks bild isolerings transaktion har åtkomst ti
 
 ### <a name="long-running-queries-on-read-only-replicas"></a>Tids krävande frågor om skrivskyddade repliker
 
-Frågor som körs på skrivskyddade repliker behöver åtkomst till metadata för de objekt som refereras till i frågan (tabeller, index, statistik osv.) I sällsynta fall, om ett metadataobjekt ändras på den primära repliken medan en fråga har ett lås på samma objekt på den skrivskyddade repliken, kan frågan [blockera](/sql/database-engine/availability-groups/windows/troubleshoot-primary-changes-not-reflected-on-secondary#BKMK_REDOBLOCK) processen som tillämpar ändringar från den primära repliken till den skrivskyddade repliken. Om en sådan fråga skulle köras under en längre tid skulle det innebära att den skrivskyddade repliken var betydligt ur synk med den primära repliken. 
+Frågor som körs på skrivskyddade repliker behöver åtkomst till metadata för de objekt som refereras till i frågan (tabeller, index, statistik osv.) I sällsynta fall, om ett metadataobjekt ändras på den primära repliken medan en fråga har ett lås på samma objekt på den skrivskyddade repliken, kan frågan [blockera](/sql/database-engine/availability-groups/windows/troubleshoot-primary-changes-not-reflected-on-secondary#BKMK_REDOBLOCK) processen som tillämpar ändringar från den primära repliken till den skrivskyddade repliken. Om en sådan fråga skulle köras under en längre tid skulle det innebära att den skrivskyddade repliken var betydligt ur synk med den primära repliken.
 
-Om en tids krävande fråga på en skrivskyddad replik orsakar den här typen av blockering, kommer den automatiskt att avslutas och sessionen får fel 1219 meddelandet "din session har kopplats från på grund av en DDL-åtgärd med hög prioritet".
+Om en tids krävande fråga på en skrivskyddad replik orsakar den här typen av blockering kommer den automatiskt att avslutas. Sessionen kommer att ta emot fel 1219, "din session har kopplats från på grund av en DDL-åtgärd med hög prioritet", eller fel 3947 ", avbröts av transaktionen eftersom den sekundära beräkningen inte kunde fångas upp upprepas. Försök att utföra transaktionen igen. "
 
 > [!NOTE]
-> Om du får fel 3961 eller fel 1219 när du kör frågor mot en skrivskyddad replik kan du försöka köra frågan igen.
+> Om du får fel meddelandet 3961, 1219 eller 3947 när du kör frågor mot en skrivskyddad replik kan du försöka köra frågan igen.
 
 > [!TIP]
 > När du är ansluten till en skrivskyddad replik i Premium-och Affärskritisk tjänst nivåerna `redo_queue_size` `redo_rate` kan kolumnerna i [sys.dm_database_replica_states](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-replica-states-azure-sql-database) DMV användas för att övervaka processen för synkronisering av data, och fungerar som indikatorer för data svars tiden på den skrivskyddade repliken.

@@ -3,17 +3,17 @@ title: Säkerhets kopiering och återställning – Azure CLI – Azure Database
 description: Lär dig hur du säkerhetskopierar och återställer en server i Azure Database for MariaDB med hjälp av Azure CLI.
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 3/27/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a6e46efd7f998437c3998df9a989ef9e1500e888
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: ceda6c99493818042aa281ab545465e91493a80e
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94539591"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664842"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-mariadb-using-the-azure-cli"></a>Säkerhetskopiera och återställa en server i Azure Database for MariaDB med Azure CLI
 
@@ -100,7 +100,7 @@ För geo-återställning av servern, i kommando tolken för Azure CLI, anger du 
 az mariadb server georestore --resource-group myresourcegroup --name mydemoserver-georestored --source-server mydemoserver --location eastus --sku-name GP_Gen5_8
 ```
 
-Det här kommandot skapar en ny server med namnet *mydemoserver-långsiktig återställning* i östra USA som ska tillhöra *myresourcegroup*. Det är en Generell användning, gen 5-Server med 8 virtuella kärnor. Servern skapas från den geo-redundanta säkerhets kopieringen av *mydemoserver* , som också finns i resurs gruppen *myresourcegroup*
+Det här kommandot skapar en ny server med namnet *mydemoserver-långsiktig återställning* i östra USA som ska tillhöra *myresourcegroup*. Det är en Generell användning, gen 5-Server med 8 virtuella kärnor. Servern skapas från den geo-redundanta säkerhets kopieringen av *mydemoserver*, som också finns i resurs gruppen *myresourcegroup*
 
 Om du vill skapa den nya servern i en annan resurs grupp än den befintliga servern, kan du i- `--source-server` parametern kvalificera Server namnet som i följande exempel:
 

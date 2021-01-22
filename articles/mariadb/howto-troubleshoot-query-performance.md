@@ -3,15 +3,15 @@ title: Felsöka fråge prestanda – Azure Database for MariaDB
 description: Lär dig hur du använder förklaring för att felsöka fråge prestanda i Azure Database for MariaDB.
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: troubleshooting
 ms.date: 3/18/2020
-ms.openlocfilehash: 2b7491723ffcff73e4b243fe54ef18608167d636
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 8c996520a77a107017aecad30c221da9ec69137c
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94537245"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664723"
 ---
 # <a name="how-to-use-explain-to-profile-query-performance-in-azure-database-for-mariadb"></a>Så här använder du förklaringar för att profilera frågor om prestanda i Azure Database for MariaDB
 **Förklaring** är ett användbart verktyg för att optimera frågor. FÖRKLARINGs instruktionen kan användas för att hämta information om hur SQL-uttryck körs. Följande utdata visar ett exempel på körning av en FÖRKLARINGs instruktion.
@@ -75,7 +75,7 @@ possible_keys: NULL
         Extra: Using where; Using temporary; Using filesort
 ```
 
-Som kan ses från utdata använder MariaDB inte några index eftersom det inte finns några lämpliga index. Den visar också *användning av temporärt. Att använda fil sortering* , vilket innebär att MariaDB skapar en temporär tabell för att uppfylla **Group by** -satsen.
+Som kan ses från utdata använder MariaDB inte några index eftersom det inte finns några lämpliga index. Den visar också *användning av temporärt. Att använda fil sortering*, vilket innebär att MariaDB skapar en temporär tabell för att uppfylla **Group by** -satsen.
  
 Att skapa ett index för enbart Column **C2** gör ingen skillnad, och MariaDB måste fortfarande skapa en tillfällig tabell:
 

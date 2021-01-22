@@ -3,16 +3,16 @@ title: Hantera Läs repliker – Azure PowerShell-Azure Database for MariaDB
 description: Lär dig hur du konfigurerar och hanterar Läs repliker i Azure Database for MariaDB med PowerShell.
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: how-to
 ms.date: 6/10/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 713f99f67706caded0694d88ece220373920e555
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 43f0de153a19c0ee7ef44539407c0af4fda61c72
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98250561"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664995"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-powershell"></a>Skapa och hantera Läs repliker i Azure Database for MariaDB med PowerShell
 
@@ -54,10 +54,10 @@ Get-AzMariaDbServer -Name mydemoserver -ResourceGroupName myresourcegroup |
 
 `New-AzMariaDbServerReplica`Kommandot kräver följande parametrar:
 
-| Inställning | Exempelvärde | Beskrivning  |
+| Inställning | Exempelvärde | Description  |
 | --- | --- | --- |
 | ResourceGroupName |  myresourcegroup |  Resurs gruppen där replik servern skapas.  |
-| Namn | mydemoreplicaserver | Namnet på den nya replik servern som skapas. |
+| Name | mydemoreplicaserver | Namnet på den nya replik servern som skapas. |
 
 Om du vill skapa en skrivskyddad replik av en kors region använder du parametern **location** . I följande exempel skapas en replik i regionen **USA, västra** .
 
@@ -83,7 +83,7 @@ Get-AzMariaDReplica -ResourceGroupName myresourcegroup -ServerName mydemoserver
 
 `Get-AzMariaDReplica`Kommandot kräver följande parametrar:
 
-| Inställning | Exempelvärde | Beskrivning  |
+| Inställning | Exempelvärde | Description  |
 | --- | --- | --- |
 | ResourceGroupName |  myresourcegroup |  Resurs gruppen där replik servern ska skapas.  |
 | ServerName | mydemoserver | Namnet eller ID: t för käll servern. |

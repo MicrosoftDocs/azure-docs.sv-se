@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/20/2021
 ms.author: v-tcassi
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 68fdc29edfd41799e2628abf40efa6a9453a90b9
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: e603e99c1aa9c49d20bdb281bbfd96131ae2efdd
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 01/21/2021
-ms.locfileid: "98634268"
+ms.locfileid: "98663629"
 ---
 # <a name="install-and-provision-azure-iot-edge-for-linux-on-a-windows-device-preview"></a>Installera och etablera Azure IoT Edge för Linux på en Windows-enhet (förhands granskning)
 
@@ -61,6 +61,12 @@ I den här artikeln beskrivs stegen för att ställa in IoT Edge på en Windows-
       ![Välj kugg hjuls ikonen längst upp till höger på instrument panelen för att få åtkomst till inställningarna.](./media/how-to-install-iot-edge-on-windows/select-gear-icon.png)
 
    1. Välj **tillägg** under **Gateway** på menyn **Inställningar** .
+
+   1. Välj fliken **feeds** och välj **Lägg till**.
+
+   1. Ange https://aka.ms/wac-insiders-feed i text rutan och välj **Lägg till**.
+
+   1. När du har lagt till feeden går du till fliken **tillgängliga tillägg** . Det kan ta en stund att uppdatera listan över tillägg.
 
    1. På fliken **tillgängliga tillägg** söker du efter **Azure IoT Edge** i listan över tillägg. Välj den och välj **installations** meddelandet ovanför listan med tillägg.
 

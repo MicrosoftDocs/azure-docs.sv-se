@@ -3,15 +3,15 @@ title: Prisnivåer – Azure Database for MariaDB
 description: Lär dig mer om de olika pris nivåerna för Azure Database for MariaDB inklusive Compute-generationer, lagrings typer, lagrings storlek, virtuella kärnor, minne och kvarhållning av säkerhets kopior.
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: b5b5a506b2f932d20a617634ace7ebf02093fbfa
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 6c786ea80ecbe2f174d8c3b701316791e1b6104f
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94536293"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664256"
 ---
 # <a name="azure-database-for-mariadb-pricing-tiers"></a>Azure Database for MariaDB pris nivåer
 
@@ -108,7 +108,7 @@ Skalning av lagring och ändring av kvarhållning av säkerhets kopior är true 
 
 ## <a name="pricing"></a>Prissättning
 
-Den senaste pris informationen finns på [sidan med pris](https://azure.microsoft.com/pricing/details/mariadb/)information för tjänsten. Om du vill se kostnaden för den konfiguration du vill ha, visar [Azure Portal](https://portal.azure.com/#create/Microsoft.MariaDBServer) månads kostnaden på fliken **pris nivå** baserat på de alternativ du väljer. Om du inte har någon Azure-prenumeration kan du använda pris Kalkylatorn för Azure för att få ett uppskattat pris. På webbplatsen för [Azures pris kalkylator](https://azure.microsoft.com/pricing/calculator/) väljer du **Lägg till objekt** , expanderar kategorin **databaser** och väljer **Azure Database for MariaDB** för att anpassa alternativen.
+Den senaste pris informationen finns på [sidan med pris](https://azure.microsoft.com/pricing/details/mariadb/)information för tjänsten. Om du vill se kostnaden för den konfiguration du vill ha, visar [Azure Portal](https://portal.azure.com/#create/Microsoft.MariaDBServer) månads kostnaden på fliken **pris nivå** baserat på de alternativ du väljer. Om du inte har någon Azure-prenumeration kan du använda pris Kalkylatorn för Azure för att få ett uppskattat pris. På webbplatsen för [Azures pris kalkylator](https://azure.microsoft.com/pricing/calculator/) väljer du **Lägg till objekt**, expanderar kategorin **databaser** och väljer **Azure Database for MariaDB** för att anpassa alternativen.
 
 ## <a name="next-steps"></a>Nästa steg
 - Läs mer om [tjänst begränsningarna](concepts-limits.md).
