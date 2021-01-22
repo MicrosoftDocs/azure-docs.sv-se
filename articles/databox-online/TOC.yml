@@ -397,6 +397,11 @@
   items:
     - name: Säkerhetsbaslinje
       href: security-baseline.md
+- name: Referenser
+  items:
+    - name: Inbyggda Azure Policy-program
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: Resurser
   items:
     - name: Exempel på Azure Stack Edge Pro C#-moduler (.NET)

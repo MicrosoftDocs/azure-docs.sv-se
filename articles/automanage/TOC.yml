@@ -19,6 +19,8 @@
       href: virtual-machines-custom-preferences.md
     - name: Aktivera på virtuella datorer via Azure Policy
       href: virtual-machines-policy-enable.md
+    - name: Felsöka onboarding-fel
+      href: common-errors.md
     - name: Reparera ett trasigt Automanage-konto
       href: repair-automanage-account.md
 - name: Resurser

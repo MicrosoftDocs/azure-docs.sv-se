@@ -70,10 +70,6 @@
         - name: Bilddata om etiketter
           displayName: 'tag, tagging, images'
           href: tutorial-labeling.md
-    - name: R SDK
-      items:
-        - name: Skapa ett första ML-experiment (R)
-          href: tutorial-1st-r-experiment.md
     - name: CLI
       items:
         - name: Träna och distribuera med CLI

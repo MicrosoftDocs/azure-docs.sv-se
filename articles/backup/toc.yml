@@ -210,6 +210,8 @@
           items:
             - name: Återställa filer från Azure till Windows Server
               href: backup-azure-restore-windows-server.md
+            - name: Återställa alla filer på en volym
+              href: restore-all-files-volume-mars.md
             - name: Återställa Windows Server System-tillstånd
               href: backup-azure-restore-system-state.md
         - name: Hantera

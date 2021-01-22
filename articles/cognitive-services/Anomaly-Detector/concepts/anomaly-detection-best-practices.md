@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: conceptual
-ms.date: 03/26/2019
+ms.date: 01/22/2021
 ms.author: mbullwin
-ms.openlocfilehash: 9457c610b256dd4602ef0dc51a47eeffb3c63b49
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: b0869335c386712e6b759bb0ced459ebd1bf383c
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97705157"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98702734"
 ---
 # <a name="best-practices-for-using-the-anomaly-detector-api"></a>Metod tips för att använda API: t för avvikelse detektor
 
@@ -34,9 +34,9 @@ Med hjälp av API: et för avvikelse detektorns API kan du identifiera avvikelse
 * En säsongs tids serie med tillfällig avvikelse.
 * En plan med fasta trender, med tillfälliga toppar/DIP. 
 
-Vi rekommenderar inte att du använder avvikelse identifiering i real tid för data övervakning i real tid eller använder det på tids serie data som inte har mer än egenskaper. 
+Vi rekommenderar inte att du använder avvikelse identifiering i real tid för data övervakning i real tid eller använder det på tids serie data som inte har ovanstående egenskaper. 
 
-* Med batch-identifiering skapas och används bara en modell, identifieringen för varje punkt görs i hela serien. Om tids serie data trender uppåt och nedåt utan säsongs beroende kan vissa ändrings punkter (DIP och toppar i data) missas av modellen. På samma sätt kan vissa ändringar som är mindre viktiga än de senare i data uppsättningen inte räknas som tillräckligt stora för att införlivas i modellen.
+* Med batch-identifiering skapas och används bara en modell, identifieringen för varje punkt görs i kontexten för hela serien. Om tids serie data trender uppåt och nedåt utan säsongs beroende kan vissa ändrings punkter (DIP och toppar i data) missas av modellen. På samma sätt kan vissa ändringar som är mindre viktiga än de senare i data uppsättningen inte räknas som tillräckligt stora för att införlivas i modellen.
 
 * Batch-identifiering är långsammare än att identifiera avvikelse statusen för den senaste punkten vid data övervakning i real tid, på grund av antalet poäng som analyseras.
 
@@ -54,7 +54,7 @@ Nedan finns samma data uppsättning med hjälp av batch-avvikelse identifiering.
 
 API: t för avvikelse detektor accepterar Time Series-data som är formaterade i ett JSON-Request-objekt. En tids serie kan vara alla numeriska data som registreras över tid i nummerordning. Du kan skicka Windows av dina Time Series-data till API-slutpunkten för avvikelse detektorn för att förbättra prestandan för API: et. Det minsta antalet data punkter som du kan skicka är 12 och det maximala värdet är 8640 punkter. [Granularitet](/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.granularity?view=azure-dotnet-preview) definieras som den hastighet som data samplas på. 
 
-Data punkter som skickas till API: t för avvikelse detektor måste ha en giltig tidsstämpel för UTC-tid (Coordinated Universal Time) och numeriskt värde. 
+Data punkter som skickas till API: t för avvikelse detektor måste ha en giltig tidsstämpel för UTC-tid (Coordinated Universal Time) och ett numeriskt värde. 
 
 ```json
 {
@@ -87,7 +87,7 @@ Data punkter som saknas är vanliga i data uppsättningar med jämnt distribuera
 
 ### <a name="aggregate-distributed-data"></a>Sammanställda distribuerade data
 
-API: t för avvikelse detektor fungerar bäst på en jämnt distribuerad tids serie. Om dina data är slumpmässigt distribuerade, ska du samla in dem med en tidsenhet, till exempel per minut, varje timme eller varje dag.
+API: t för avvikelse detektor fungerar bäst på en jämnt distribuerad tids serie. Om dina data är slumpmässigt distribuerade ska du samla in dem med en tidsenhet, till exempel per minut, varje timme eller varje dag.
 
 ## <a name="anomaly-detection-on-data-with-seasonal-patterns"></a>Avvikelse identifiering på data med säsongs mönster
 
@@ -95,7 +95,7 @@ Om du vet att tids serie data har ett säsongs mönster (en som inträffar med j
 
 `period`Om du anger en när du skapar en JSON-begäran kan du minska avvikelse identifierings fördröjningen med upp till 50%. `period`Är ett heltal som anger ungefär hur många data punkter tids serien tar för att upprepa ett mönster. En tids serie med en data punkt per dag skulle till exempel ha en `period` as `7` -serie och en tids serie med en punkt per timme (med samma vecko mönster) som har en `period`  `7*24` . Om du är osäker på dina data mönster behöver du inte ange den här parametern.
 
-För bästa resultat ger du 4 en `period` data punkt, plus ytterligare en. Till exempel, data för varje timme med ett vecko mönster enligt beskrivningen ovan bör tillhandahålla 673 data punkter i begär ande texten ( `7 * 24 * 4 + 1` ).
+För bästa resultat ger du fyra `period` data punkter, plus ytterligare en. Till exempel, data för varje timme med ett vecko mönster enligt beskrivningen ovan bör tillhandahålla 673 data punkter i begär ande texten ( `7 * 24 * 4 + 1` ).
 
 ### <a name="sampling-data-for-real-time-monitoring"></a>Samplings data för övervakning i real tid
 

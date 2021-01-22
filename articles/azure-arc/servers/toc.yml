@@ -55,7 +55,7 @@
               href: manage-vm-extensions-powershell.md
             - name: Distribuera tillägg med en ARM-mall
               href: manage-vm-extensions-template.md
-        - name: Använde hanterade identiteter på servern
+        - name: Använd hanterade identiteter på servern
           href: managed-identity-authentication.md
         - name: Hantera agent
           href: manage-agent.md
@@ -82,7 +82,7 @@
     - name: .NET
       href: /dotnet/api/overview/azure/hybridcompute/management
     - name: Azure Stack HCI REST
-      href: 'https://docs.microsoft.com/rest/api/stackhci'
+      href: /rest/api/stackhci
     - name: REST
       href: /rest/api/hybridcompute
     - name: Go

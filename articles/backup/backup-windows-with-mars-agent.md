@@ -3,12 +3,12 @@ title: Säkerhetskopiera Windows-datorer med hjälp av MARS-agenten
 description: Använd MARS-agenten (Microsoft Azure Recovery Services) för att säkerhetskopiera Windows-datorer.
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: d2cdd5d1fa98462a70d72fd9f8723685952b665a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 54932192d61633da55657e2ba57adf4e30c4fbc7
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90052230"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98702776"
 ---
 # <a name="back-up-windows-server-files-and-folders-to-azure"></a>Säkerhetskopiera Windows Server-filer och-mappar till Azure
 
@@ -40,11 +40,11 @@ Så här skapar du en säkerhetskopieringspolicy:
 
 1. När du har hämtat och registrerat MARS-agenten öppnar du agent konsolen. Du hittar den genom att söka efter **Microsoft Azure Backup** på datorn.  
 
-1. Under **åtgärder**väljer du **Schemalägg säkerhets kopiering**.
+1. Under **åtgärder** väljer du **Schemalägg säkerhets kopiering**.
 
     ![Schemalägga en Windows Server-säkerhetskopiering](./media/backup-configure-vault/schedule-first-backup.png)
 1. I guiden Schemalägg säkerhets kopiering väljer du **komma igång**  >  **härnäst**.
-1. Under **Välj objekt som ska säkerhets kopie ras**väljer du **Lägg till objekt**.
+1. Under **Välj objekt som ska säkerhets kopie ras** väljer du **Lägg till objekt**.
 
     ![Lägg till objekt som ska säkerhets kopie ras](./media/backup-azure-manage-mars/select-item-to-backup.png)
 
@@ -53,7 +53,7 @@ Så här skapar du en säkerhetskopieringspolicy:
     ![Välj objekt som ska säkerhets kopie ras](./media/backup-azure-manage-mars/selected-items-to-backup.png)
 
 1. På sidan **Välj objekt som ska säkerhets kopie ras** väljer du **Nästa**.
-1. På sidan **Ange schema för säkerhets kopiering** anger du när du vill göra en daglig eller veckovis säkerhets kopiering. Välj **Nästa**.
+1. På sidan **Ange schema för säkerhets kopiering** anger du när du vill göra en daglig eller veckovis säkerhets kopiering. Välj sedan **Nästa**.
 
     * En återställnings punkt skapas när en säkerhets kopia görs.
     * Antalet återställnings punkter som har skapats i din miljö beror på ditt schema för säkerhets kopiering.
@@ -65,7 +65,7 @@ Så här skapar du en säkerhetskopieringspolicy:
 
         ![Konfigurera ett schema för veckovis säkerhets kopiering](./media/backup-configure-vault/week-schedule.png)
 
-1. På sidan **Välj bevarande princip** anger du hur du vill lagra historiska kopior av dina data. Välj **Nästa**.
+1. På sidan **Välj bevarande princip** anger du hur du vill lagra historiska kopior av dina data. Välj sedan **Nästa**.
 
     * Inställningarna för kvarhållning anger vilka återställnings punkter som ska lagras och hur länge de ska lagras.
     * För en inställning för daglig kvarhållning anger du att vid den tid som anges för daglig kvarhållning, kommer den senaste återställnings punkten att behållas för det angivna antalet dagar. Du kan också ange en bevarande princip per månad för att ange att återställnings punkten som skapades den 30 i varje månad ska lagras i 12 månader.
@@ -104,7 +104,7 @@ För att utföra en offline-överföring:
 1. Skriv säkerhets kopierings data till en mellanlagringsplats.
 1. Använd AzureOfflineBackupDiskPrep-verktyget för att kopiera data från mellanlagringsplatsen till en eller flera SATA-diskar.
 
-    Verktyget skapar ett Azure-importerat jobb. Mer information finns i [Vad är Azure import/export-tjänsten](../storage/common/storage-import-export-service.md).
+    Verktyget skapar ett Azure-importerat jobb. Mer information finns i [Vad är Azure import/export-tjänsten](../import-export/storage-import-export-service.md).
 1. Skicka SATA-diskarna till ett Azure-datacenter.
 
     På data centret kopieras disk data till ett Azure Storage-konto. Azure Backup kopierar data från lagrings kontot till valvet och stegvisa säkerhets kopieringar schemaläggs.

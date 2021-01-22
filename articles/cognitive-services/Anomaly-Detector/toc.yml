@@ -38,7 +38,7 @@
           href: ../containers/index.yml
 - name: Begrepp
   items:
-    - name: 'Regelverk för API:et för avvikelseidentifiering'
+    - name: 'Metod tips för API: er med avvikelse detektor'
       href: concepts/anomaly-detection-best-practices.md
 - name: Referens
   items:

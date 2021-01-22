@@ -238,8 +238,10 @@
           items:
             - name: Mailjet
               href: custom-email-mailjet.md
+              displayName: 'Custom email, Custom verification email, Verification email'
             - name: SendGrid
               href: custom-email-sendgrid.md
+              displayName: 'Custom email, Custom verification email, Verification email'
           displayName: verification
         - name: Lägg till din egen affärslogik
           items:
@@ -381,6 +383,8 @@
           href: partner-itsme.md
         - name: Jumio
           href: partner-jumio.md
+        - name: Keyless
+          href: partner-keyless.md
         - name: LexisNexis
           href: partner-lexisnexis.md
         - name: N8 Identity
@@ -415,9 +419,9 @@
         - name: Azure Monitor
           href: azure-monitor.md
           displayName: 'log, logs, logging, usage, events'
-        - name: Hantera användare – Microsoft Graph
-          href: manage-user-accounts-graph-api.md
-          displayName: 'account, accounts'
+        - name: Microsoft Graph API
+          href: microsoft-graph-operations.md
+          displayName: 'account, accounts, msgraph, ms graph, graph'
         - name: Distribuera med Azure Pipelines
           href: deploy-custom-policies-devops.md
           displayName: 'azure devops, ci/cd, cicd, custom policy, policies'
@@ -461,8 +465,6 @@
       href: extensions-app.md
     - name: Anpassad policy (IEF) –viktig information
       href: custom-policy-developer-notes.md
-    - name: 'Åtgärder i API:et Microsoft Graph'
-      href: microsoft-graph-operations.md
     - name: Sidlayoutversioner
       href: page-layout.md
     - name: Regionstillgänglighet och dataplacering

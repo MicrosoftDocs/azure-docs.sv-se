@@ -1,0 +1,50 @@
+### YamlMime:Landing
+title: Dokumentation om Azure AD Connect Cloud Sync
+summary: Med Azure AD Connect Cloud Sync kan du förenkla och automatisera hanteringen av Azure AD-användare genom molnbaserade regler för att synkronisera dessa användare från befintliga AD-skogar.
+metadata:
+  author: billmath
+  description: Med Cloud Sync kan du förenkla och automatisera hanteringen av Azure AD-användare genom molnbaserade regler för att synkronisera dessa användare från befintliga AD-skogar.
+  ms.author: billmath
+  ms.collection: na
+  ms.date: 09/05/2019
+  ms.service: active-directory
+  ms.subservice: na
+  ms.topic: landing-page
+  services: active-directory
+  ms.openlocfilehash: 52032c39e77fb4ebd6488f25d660428ba59dfbd3
+  ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+  ms.translationtype: MT
+  ms.contentlocale: sv-SE
+  ms.lasthandoff: 01/20/2021
+  ms.locfileid: "98611787"
+landingContent:
+- title: Om molnbaserad synkronisering
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Vad är Azure AD Connect Cloud Sync?
+      url: what-is-cloud-sync.md
+- title: Lär dig att implementera den bästa lösningen för att hantera livscykeln för dina användare och grupper
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Integrera en enda AD-skog med en enda Azure AD-klient
+      url: tutorial-single-forest.md
+    - text: Integrera en befintlig skog med en ny skog med en enskild Azure AD-klientorganisation
+      url: tutorial-existing-forest.md
+    - text: Pilot molnets synkronisering för en befintlig synkroniserad AD-skog
+      url: tutorial-pilot-aadc-aadccp.md
+- title: Kom igång med molnbaserad synkronisering
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Krav för Azure AD Connect Cloud Sync
+      url: how-to-prerequisites.md
+    - text: Installera Azure AD Connect Cloud Sync
+      url: how-to-install.md
+    - text: Konfiguration av Azure AD Connect etablerings agent
+      url: how-to-configure.md
+  - linkListType: reference
+    links:
+    - text: Topologier och scenarier som stöds
+      url: plan-cloud-sync-topologies.md

@@ -89,8 +89,10 @@
       items:
         - name: SQL Server till SQL Database
           href: howto-sql-server-to-azure-sql-powershell.md
-        - name: SQL Server till SQL-hanterad instans
-          href: howto-sql-server-to-azure-sql-mi-powershell.md
+        - name: SQL Server till SQL MI (online)
+          href: howto-sql-server-to-azure-sql-managed-instance-powershell-online.md
+        - name: SQL Server till SQL MI (offline)
+          href: howto-sql-server-to-azure-sql-managed-instance-powershell-offline.md
     - name: Distribuera om SSIS-paket till
       items:
         - name: Azure SQL Database
@@ -137,17 +139,17 @@
               href: known-issues-dms-hybrid-mode.md
         - name: Kända migreringsproblem
           items:
-            - name: till SQL Database
+            - name: SQL Database
               href: known-issues-azure-sql-online.md
             - name: SQL-hanterad instans
               href: known-issues-azure-sql-db-managed-instance-online.md
-            - name: till Azure DB for MySQL
+            - name: Azure DB för MySQL
               href: known-issues-azure-mysql-online.md
-            - name: från PostgreSQL till Azure DB for PostgreSQL
+            - name: PostgreSQL till Azure DB för PostgreSQL
               href: known-issues-azure-postgresql-online.md
-            - name: från Oracle till Azure DB for PostgreSQL
+            - name: Oracle till Azure DB för PostgreSQL
               href: known-issues-oracle-azure-postgresql-online.md
-            - name: 'från MongoDB till Azure Cosmos DB:s API för MongoDB'
+            - name: MongoDB till Azure Cosmos DB API för MongoDB
               href: known-issues-mongo-cosmos-db.md
     - name: Videoklipp
       items:

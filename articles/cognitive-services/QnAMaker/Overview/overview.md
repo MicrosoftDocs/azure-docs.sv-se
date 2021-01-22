@@ -4,15 +4,15 @@ description: QnA Maker är en molnbaserad NLP-tjänst som enkelt skapar ett natu
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: overview
-ms.date: 05/26/2020
+ms.date: 01/22/2021
 ms.custom: cog-serv-seo-aug-2020
 keywords: QNA Maker, robotar med låg kod, flera konversationer
-ms.openlocfilehash: 9655f64da455fb7a7124a97e6dc2d1d8437d05b7
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 16f30801d52aa46184c4eb394f3d1cfebecd4be6
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353144"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98700736"
 ---
 # <a name="what-is-qna-maker"></a>Vad är QnA Maker?
 
@@ -46,7 +46,7 @@ När en QnA Maker kunskaps bas har publicerats skickar ett klient program en fr�
 
 ![Ställ en robot till en fråga och få svar från kunskaps bas innehållet](../media/qnamaker-overview-learnabout/bot-chat-with-qnamaker.png)
 
-|Steg|Åtgärd|
+|Steg|Action|
 |:--|:--|
 |1|Klient programmet skickar användarens _fråga_ (text i sina egna ord), "Hur gör jag för att program mässigt uppdatera min kunskaps bas?" till din kunskaps bas slut punkt.|
 |2|QnA Maker använder den utbildade kunskaps basen för att tillhandahålla rätt svar och eventuella uppföljnings instruktioner som kan användas för att förfina sökningen efter det bästa svaret. QnA Maker returnerar ett JSON-formaterat svar.|
@@ -63,7 +63,7 @@ När din kunskaps bas har redigerats publicerar du kunskaps basen till en funger
 
 QnA Makers systemet är ett skiktat rangordnings sätt. Data lagras i Azure Search, som också fungerar som det första rangordnings skiktet. De främsta resultaten från Azure Search skickas sedan genom QnA Maker NLP omrangordnings modell för att producera de slutliga resultaten och förtroende poängen.
 
-## <a name="multi-turn-conversations"></a>Flera-turn-konversationer
+## <a name="multi-turn-conversations"></a>Konversation med flera turer
 
 QnA Maker tillhandahåller frågor med flera frågor och aktiv utbildning för att hjälpa dig att förbättra dina grundläggande frågor och svar-par.
 
@@ -85,8 +85,6 @@ Vi erbjuder snabb starter i de flesta populära programmeringsspråk, som var oc
 
 * [Kom igång med QnA Maker klient bibliotek](../quickstarts/quickstart-sdk.md)
 * [Kom igång med QnA Maker Portal](../quickstarts/create-publish-knowledge-base.md)
-* [Kom igång med QnA Maker REST API: er](../quickstarts/quickstart-rest-curl.md)
-
 
 ## <a name="next-steps"></a>Nästa steg
 QnA Maker innehåller allt du behöver för att bygga, hantera och distribuera din anpassade kunskaps bas.

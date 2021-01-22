@@ -71,6 +71,8 @@
           href: spring-cloud-howto-launch-from-source.md
         - name: Använda IntelliJ för att distribuera appar
           href: spring-cloud-tutorial-intellij-deploy-apps.md
+        - name: Använda VS Code för att distribuera appar
+          href: 'https://code.visualstudio.com/docs/java/java-spring-cloud'
         - name: Distribuera Azure Spring Cloud med Azure PowerShell
           href: spring-cloud-howto-deploy-powershell.md
     - name: Konfigurera

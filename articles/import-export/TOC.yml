@@ -1,0 +1,54 @@
+- name: Dokumentation om Azure import/export
+  href: ./index.yml
+- name: Översikt
+  expanded: true
+  items:
+    - name: Vad är import/export?
+      href: storage-import-export-service.md
+- name: Begrepp
+  items:
+    - name: Granska krav
+      href: storage-import-export-requirements.md
+    - name: VANLIGA FRÅGOR OCH SVAR
+      href: storage-import-export-service-faq.md
+- name: Gör så här för att
+  expanded: true
+  items:
+    - name: Distribuera
+      items:
+        - name: Importera data till blobar
+          href: storage-import-export-data-to-blobs.md
+        - name: Importera data till filer
+          href: storage-import-export-data-to-files.md
+        - name: Exportera data från blobar
+          href: storage-import-export-data-from-blobs.md
+    - name: Använda Kundhanterade nycklar
+      href: storage-import-export-encryption-key-portal.md
+    - name: Monitor
+      items:
+        - name: Visa enhetsstatus
+          href: storage-import-export-view-drive-status.md
+        - name: Granska jobbstatus
+          href: storage-import-export-tool-reviewing-job-status-v1.md
+    - name: Felsöka
+      items:
+        - name: Åtgärda vanliga fel
+          href: storage-import-export-tool-troubleshooting-v1.md
+        - name: Reparera ett import jobb
+          href: storage-import-export-tool-repairing-an-import-job-v1.md
+        - name: Reparera ett export jobb
+          href: storage-import-export-tool-repairing-an-export-job-v1.md
+        - name: Kontakta supporten
+          href: storage-import-export-contact-microsoft-support.md
+- name: Referens
+  items:
+    - name: REST-API
+      href: /rest/api/storageimportexport/jobs
+    - name: Azure PowerShell
+      href: /powershell/module/Az.ImportExport
+- name: Resurser
+  items:
+    - name: Exportera data offline
+      href: /learn/modules/export-data-with-azure-import-export
+    - name: Andra alternativ för offline-överföring
+      href: ../databox/index.yml

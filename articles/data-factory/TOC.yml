@@ -109,8 +109,8 @@
               href: tutorial-data-flow.md
             - name: Videokurser för dataflödesmappning
               href: data-flow-tutorials.md
-        - name: Förbereda data med dataflödesomvandling
-          href: wrangling-data-flow-tutorial.md
+        - name: Förbereda data med datatransformering
+          href: wrangling-tutorial.md
         - name: Använda externa tjänster
           items:
             - name: HDInsight Spark
@@ -197,12 +197,12 @@
               href: concepts-data-flow-expression-builder.md
             - name: Uttrycksspråk
               href: data-flow-expression-functions.md
-        - name: Förbereda data med omvandlingsdataflöden
+        - name: Förbereda data med Power Query data datatransformering
           items:
-            - name: Översikt över omvandlingsdataflöden
-              href: wrangling-data-flow-overview.md
+            - name: Översikt över data datatransformering
+              href: wrangling-overview.md
             - name: Funktioner som stöds
-              href: wrangling-data-flow-functions.md
+              href: wrangling-functions.md
     - name: Roller och behörigheter
       href: concepts-roles-permissions.md
     - name: Namngivningsregler
@@ -464,6 +464,8 @@
       items:
         - name: Köra aktiviteter för Dataflöde
           href: control-flow-execute-data-flow-activity.md
+        - name: Kör Power Query aktivitet
+          href: control-flow-power-query-activity.md
         - name: Azure Function-aktivitet
           href: control-flow-azure-function-activity.md
         - name: Anpassad aktivitet

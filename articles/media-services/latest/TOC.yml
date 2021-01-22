@@ -258,14 +258,49 @@
               href: job-error-codes.md
         - name: Återställa autentiseringsuppgifter för konto
           href: cli-reset-account-credentials.md
-    - name: Migrering från v2 till v3
+    - name: Migreringsguide
+      displayName: migration
       items:
-        - name: v2 vs v3
-          displayName: 'migrate, v2 to v3'
-          href: media-services-v2-vs-v3.md
-        - name: Vägledning för migrering
-          href: migrate-from-v2-to-v3.md
-          displayName: naming
+        - name: Introduktion till migration guide
+          href: migrate-v-2-v-3-migration-introduction.md
+          displayName: migration
+        - name: Steg 1 – fördelar
+          href: migrate-v-2-v-3-migration-benefits.md
+          displayName: 'migration, benefits'
+        - name: Steg 2 – skillnader
+          items:
+            - name: API-åtkomst
+              href: migrate-v-2-v-3-differences-api-access.md
+              displayName: 'migration, api'
+            - name: Funktions luckor
+              href: migrate-v-2-v-3-differences-feature-gaps.md
+              displayName: 'migration, features'
+            - name: Ändringar av terminologi och enhet
+              href: migrate-v-2-v-3-differences-terminology.md
+              displayName: 'migration, entity, api'
+        - name: Steg 3 – SDK-installation
+          href: migrate-v-2-v-3-migration-setup.md
+          displayName: 'migration, SDK`'
+        - name: Steg 4 – scenario-baserad migrations vägledning
+          items:
+            - name: Kodning
+              href: migrate-v-2-v-3-migration-scenario-based-encoding.md
+              displayName: 'migration, encoding'
+            - name: Liveuppspelning
+              href: migrate-v-2-v-3-migration-scenario-based-live-streaming.md
+              displayName: 'migration, live streaming'
+            - name: Paketering och leverans
+              href: migrate-v-2-v-3-migration-scenario-based-publishing.md
+              displayName: 'migration, packaging, delivery, publishing'
+            - name: Innehållsskydd
+              href: migrate-v-2-v-3-migration-scenario-based-content-protection.md
+              displayName: 'migration, content protection, DRM, digital rights management'
+            - name: Reserverade enheter (Mac)
+              href: migrate-v-2-v-3-migration-scenario-based-media-reserved-units.md
+              displayName: 'migration, media reserved units'
+        - name: Exempel jämförelse
+          href: migrate-v-2-v-3-migration-samples.md
+          displayName: 'migration, samples'
 - name: Anvisningar
   items:
     - name: Skapa tillgångar och ladda upp media

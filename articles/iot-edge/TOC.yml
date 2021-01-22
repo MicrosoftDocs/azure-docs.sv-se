@@ -17,9 +17,9 @@
   items:
     - name: Konfigurera utvecklingsmiljön
       items:
-        - name: Utveckla för Linux-enheter
+        - name: Utveckla med Linux-behållare
           href: tutorial-develop-for-linux.md
-        - name: Utveckla för Windows-enheter
+        - name: Utveckla med Windows-behållare
           href: tutorial-develop-for-windows.md
     - name: Utveckla anpassade kodmoduler
       items:
@@ -77,6 +77,8 @@
   items:
     - name: IoT Edge-körning
       href: iot-edge-runtime.md
+    - name: IoT Edge för Linux på Windows
+      href: iot-edge-for-linux-on-windows.md
     - name: IoT Edge-moduler
       items:
         - name: Förstå Azure IoT Edge-moduler
@@ -119,23 +121,25 @@
   items:
     - name: Skapa en IoT Edge-enhet
       items:
-        - name: Installera körning
-          href: how-to-install-iot-edge.md
-        - name: Registrera och autentisera enhet
+        - name: Registrera enheten i IoT Hub
+          href: how-to-register-device.md
+        - name: Installera och etablera IoT Edge
           items:
-            - name: Autentisering med symmetrisk nyckel
-              href: how-to-manual-provision-symmetric-key.md
-            - name: X.509-certifikatautentisering
-              href: how-to-manual-provision-x509.md
+            - name: Installera IoT Edge för Linux
+              href: how-to-install-iot-edge.md
+            - name: Kör IoT Edge för Linux på Windows
+              href: how-to-install-iot-edge-on-windows.md
         - name: Uppdatera körning
           href: how-to-update-iot-edge.md
         - name: Hantera enhetscertifikat
           href: how-to-manage-device-certificates.md
-        - name: Skapa testcertifikat
-          href: how-to-create-test-certificates.md
-        - name: IoT Edge på Kubernetes
+    - name: Alternativa enhets scenarier
+      items:
+        - name: Kör IoT Edge med Windows-behållare
+          href: how-to-install-iot-edge-windows-on-windows.md
+        - name: Kör IoT Edge på Kubernetes
           href: how-to-install-iot-edge-kubernetes.md
-        - name: Virtuell IoT Edge-dator med hjälp av en ARM-mall
+        - name: Distribuera IoT Edge virtuell dator med en ARM-mall
           href: how-to-install-iot-edge-ubuntuvm.md
     - name: Automatisk etablering med DPS
       items:
@@ -243,6 +247,8 @@
           href: troubleshoot-common-errors.md
 - name: Referens
   items:
+    - name: Skapa testcertifikat
+      href: how-to-create-test-certificates.md
     - name: Skript för Windows-enhetshantering
       href: reference-windows-scripts.md
     - name: Azure CLI

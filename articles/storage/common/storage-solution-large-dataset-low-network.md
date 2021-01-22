@@ -8,12 +8,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: 8afedec224fed55f617340af512485726ff44326
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 9b83ba106b35a0a3abd035e85f60c4c39bbadd3b
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92792947"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98704648"
 ---
 # <a name="data-transfer-for-large-datasets-with-low-or-no-network-bandwidth"></a>Dataöverföring för stora datamängder med låg eller ingen nätverksbandbredd
  
@@ -38,12 +38,12 @@ För att bekräfta om en fysisk enhet är rätt alternativ, använder du följan
 
 Alternativen som är tillgängliga i det här scenariot är enheter för Azure Data Box offline-överföring eller Azure import/export.
 
-- **Azure Data boxs familj för offline-överföringar** – Använd enheter från Microsoft-data Box-enhet enheter för att flytta stora mängder data till Azure när du är begränsad till tid, nätverks tillgänglighet eller kostnader. Kopiera lokala data med hjälp av verktyg som Robocopy. Beroende på data storleken som ska överföras kan du välja mellan Data Box Disk, Data Box-enhet eller Data Box Heavy.
-- **Azure import/export** – Använd Azures import-/export tjänst genom att leverera egna disk enheter för att på ett säkert sätt importera stora mängder data till Azure Blob storage och Azure Files. Den här tjänsten kan också användas för att överföra data från Azure Blob Storage till disk enheter och leverera till dina lokala platser.
+- **Azure Data boxs familj för offline-överföringar** – Använd enheter från Microsoft-data Box-enhet enheter för att flytta stora mängder data till Azure när du är begränsad till tid, nätverks tillgänglighet eller kostnader. Kopiera lokala data med hjälp av verktyg som Robocopy. Beroende på hur mycket data du tänkt överföra kan du välja mellan Data Box Disk, Data Box eller Data Box Heavy.
+- **Azure import/export** – Använd Azures import-/export tjänst genom att leverera egna disk enheter för att på ett säkert sätt importera stora mängder data till Azure Blob storage och Azure Files. Du kan också använda den här tjänsten till att överföra data från Azure Blob Storage till diskenheter som sedan levereras till dig lokalt.
 
 ## <a name="comparison-of-key-capabilities"></a>Jämförelse av viktiga funktioner
 
-I följande tabell sammanfattas skillnaderna mellan viktiga funktioner.
+I den här tabellen sammanfattas skillnaderna mellan de viktigaste funktionerna.
 
 |                                     |    Data Box Disk      |    Data Box                                      |    Data Box – tung              |    Import/Export                       |
 |-------------------------------------|---------------------------------|--------------------------------------------------|------------------------------------------|----------------------------------------|
@@ -68,4 +68,4 @@ I följande tabell sammanfattas skillnaderna mellan viktiga funktioner.
 
     - [Överför data med data Box disk](../../databox/data-box-disk-quickstart-portal.md).
     - [Överför data med data Box-enhet](../../databox/data-box-quickstart-portal.md).
-    - [Överför data med import/export](./storage-import-export-data-to-blobs.md).
+    - [Överför data med import/export](../../import-export/storage-import-export-data-to-blobs.md).

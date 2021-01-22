@@ -1,0 +1,71 @@
+### YamlMime:Landing
+title: Dokumentation om Azure import/export – online-överföring
+summary: Använd Azure import/export för att på ett säkert sätt importera stora mängder data till Azure Blob Storage och Azure Files genom att leverera disk enheter till ett Azure-datacenter.
+metadata:
+  title: Dokumentation om Azure import/export
+  description: Azure import/export-dokumentation för att på ett säkert sätt importera/exportera stora mängder data till och från Azure-datacenter genom att leverera fysiska diskar.
+  services: storage
+  ms.service: storage
+  ms.subservice: storage
+  ms.topic: landing-page
+  ms.collection: collection
+  author: v-dalc
+  ms.author: alkohli
+  ms.date: 01/08/201
+  ms.openlocfilehash: 5bccc4c64da4493e2f6d5e969949eb13df8bc1e7
+  ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+  ms.translationtype: MT
+  ms.contentlocale: sv-SE
+  ms.lasthandoff: 01/22/2021
+  ms.locfileid: "98707940"
+landingContent:
+- title: Om import/export i Azure
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Vad är import/export?
+      url: storage-import-export-service.md
+  - linkListType: architecture
+    links:
+    - text: Välja dataöverföringsalternativ
+      url: /azure/storage/common/storage-choose-data-transfer-solution
+    - text: Använda nätverks- eller offlineöverföring
+      url: /azure/storage/common/storage-solution-large-dataset-low-network#offline-transfer-or-network-transfer
+- title: Krav
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Krav
+      url: storage-import-export-requirements.md
+    - text: VANLIGA FRÅGOR OCH SVAR
+      url: storage-import-export-service-faq.md
+- title: Distribuera
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Importera data till blobar
+      url: storage-import-export-data-to-blobs.md
+    - text: Importera data till filer
+      url: storage-import-export-data-to-files.md
+    - text: Exportera data från blobar
+      url: storage-import-export-data-from-blobs.md
+  - linkListType: learn
+    links:
+    - text: Exportera data offline med import/export
+      url: /learn/modules/export-data-with-azure-import-export/
+- title: Monitor
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Visa enhetsstatus
+      url: storage-import-export-view-drive-status.md
+    - text: Granska jobbstatus
+      url: storage-import-export-tool-reviewing-job-status-v1.md
+- title: Felsök
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Felsök
+      url: storage-import-export-contact-microsoft-support.md
+    - text: Kontakta supporten
+      url: storage-import-export-contact-microsoft-support.md

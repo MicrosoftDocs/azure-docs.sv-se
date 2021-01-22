@@ -25,6 +25,8 @@
       href: 'https://github.com/Azure-Samples/media-services-video-indexer'
 - name: Begrepp
   items:
+    - name: Översikt
+      href: concepts-overview.md
     - name: Jämföra förinställningar för Video Indexer och Media Services
       href: compare-video-indexer-with-media-services-presets.md
     - name: Hantera flera klientorganisationer

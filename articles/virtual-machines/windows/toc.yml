@@ -1,0 +1,1011 @@
+- name: Dokumentation för virtuella Windows-datorer
+  href: index.yml
+- name: Översikt
+  items:
+    - name: Om Virtual Machines
+      href: overview.md
+- name: Snabbstarter
+  items:
+    - name: Skapa VM – Portal
+      href: quick-create-portal.md
+    - name: Skapa VM – PowerShell
+      href: quick-create-powershell.md
+    - name: Skapa VM – Azure CLI
+      href: quick-create-cli.md
+    - name: Skapa VM – ARM-mall
+      displayName: 'Resource Manager, template, json'
+      href: quick-create-template.md
+  expanded: true
+- name: Självstudier
+  items:
+    - name: Skapa/hantera en virtuell dator
+      href: tutorial-manage-vm.md
+    - name: Skapa/hantera diskar
+      href: tutorial-manage-data-disk.md
+    - name: Automatisera konfigurationen
+      href: tutorial-automate-vm-deployment.md
+    - name: Skapa avbildningar av virtuella datorer
+      href: tutorial-custom-images.md
+    - name: Virtuella datorer med hög tillgänglighet
+      href: tutorial-availability-sets.md
+    - name: Skapa en skalningsuppsättning
+      href: tutorial-create-vmss.md
+    - name: Belastningsutjämna virtuella datorer
+      href: tutorial-load-balancer.md
+    - name: Hantera nätverk
+      href: tutorial-virtual-network.md
+    - name: Aktivera haveri beredskap
+      href: tutorial-disaster-recovery.md
+    - name: Hantera virtuella datorer
+      displayName: scope policy Azure RBAC lock tag
+      href: tutorial-govern-resources.md
+    - name: Spåra och uppdatera virtuella datorer
+      href: tutorial-config-management.md
+    - name: Övervaka virtuella datorer
+      href: tutorial-monitor.md
+    - name: Säker webbserver med SSL
+      href: tutorial-secure-web-server.md
+- name: Begrepp
+  items:
+    - name: Avbildningar
+      href: ../shared-image-galleries.md
+    - name: Azure Resource Manager
+      href: ../../azure-resource-manager/management/overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+      items:
+        - name: Mallar för Resurshanteraren
+          href: template-description.md
+    - name: Regioner
+      href: ../regions.md
+      items:
+        - name: Om Azure-tillägg
+          href: ../extensions/overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: VM-agent för Linux
+          href: ../extensions/agent-windows.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Funktioner
+          href: ../extensions/features-windows.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+    - name: Tillgänglighet och prestanda
+      items:
+        - name: Tillgänglighet
+          href: ../availability.md
+        - name: Samlokalisering
+          href: ../co-location.md
+        - name: Nätverksprestanda
+          href: ../../virtual-network/virtual-network-optimize-network-bandwidth.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+    - name: VM-typer och storlekar
+      items:
+        - name: VM-storlekar
+          href: ../sizes.md
+        - name: 'Virtuella datorer, generation 2'
+          href: ../generation-2.md
+        - name: Generellt syfte
+          items:
+            - name: Översikt
+              href: ../sizes-general.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Av2-serien
+              href: ../av2-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Anpassningsbara B-serien
+              href: ../sizes-b-series-burstable.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: DCv2-serien
+              href: ../dcv2-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Dv2- och DSv2-serien
+              href: ../dv2-dsv2-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Dv3- och Dsv3-serien
+              href: ../dv3-dsv3-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Dav4- och Dasv4-serien
+              href: ../dav4-dasv4-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Ddv4- och Ddsv4-serien
+              href: ../ddv4-ddsv4-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: DV4- och Dsv4-serien
+              href: ../dv4-dsv4-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Beräkningsoptimerad
+          items:
+            - name: Översikt
+              href: ../sizes-compute.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Fsv2-serien
+              href: ../fsv2-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Minnesoptimerad
+          displayName: Esv3 Ev3 Easv4 Eav4 M-series GS G-series DSv2 Dv2
+          items:
+            - name: Översikt
+              href: ../sizes-memory.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Dv2- och DSv2-serien 11–15
+              href: ../dv2-dsv2-series-memory.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Ev3- och Esv3-serien
+              href: ../ev3-esv3-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Eav4- och Easv4-serien
+              href: ../eav4-easv4-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Edv4- och Edsv4-serien
+              href: ../edv4-edsv4-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Ev4- och Esv4-serien
+              href: ../ev4-esv4-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: M-serien
+              href: ../m-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Mv2-serien
+              href: ../mv2-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: 'Begränsade vCPU:er'
+              href: ../constrained-vcpu.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Lagringsoptimerad
+          items:
+            - name: Översikt
+              href: ../sizes-storage.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Lsv2-serien
+              href: ../lsv2-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Optimera prestanda
+              href: storage-performance.md
+        - name: GPU – snabbare beräkning
+          items:
+            - name: Översikt
+              href: ../sizes-gpu.md?bc=/azure/virtual-machines/windows/breadcrumb/toc.json&toc=/azure/virtual-machines/windows/toc.json
+            - name: NC-serien
+              href: ../nc-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: NCv2-serien
+              href: ../ncv2-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: NCv3-serien
+              href: ../ncv3-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: NCasT4_v3-serien
+              href: ../nct4-v3-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: ND-serien
+              href: ../nd-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: NDv2-serien
+              href: ../ndv2-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: NV-serien
+              href: ../nv-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: NVv3-serien
+              href: ../nvv3-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: NVv4-serien
+              href: ../nvv4-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Konfigurera NVIDIA GPU-drivrutiner
+              href: n-series-driver-setup.md
+            - name: Konfigurera AMD GPU-drivrutiner
+              href: n-series-amd-driver-setup.md
+        - name: Databehandling med höga prestanda
+          displayName: H-series
+          items:
+            - name: Översikt
+              href: ../sizes-hpc.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: H-serien
+              href: ../h-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: HB-serien
+              href: ../hb-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: HBv2-serien
+              href: ../hbv2-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: HC-serien
+              href: ../hc-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Reserverade instanser
+          items:
+            - name: Förskottsbetala för virtuella datorer
+              href: ../prepay-reserved-vm-instances.md
+            - name: Förskottsbetala för Dedicated Host
+              href: ../prepay-dedicated-hosts-reserved-instances.md
+            - name: Vad är Azure-reservationer?
+              href: ../../cost-management-billing/reservations/save-compute-costs-reservations.md?toc=/azure/virtual-machines/windows/toc.json
+            - name: Flexibilitet för VM-instansstorlek
+              href: ../reserved-vm-instance-size-flexibility.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Virtuella Spot-datorer
+          displayName: 'pre-empt, preempt, spot'
+          href: ../spot-vms.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Virtuella Azure-datorer utan temporär disk
+          href: ../azure-vms-no-temp-disk.md
+        - name: Namnkonventioner för Azure VM-storlekar
+          href: ../vm-naming-conventions.md
+        - name: Tidigare generationer
+          displayName: D-series Ds-series A-series Basic
+          href: ../sizes-previous-gen.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Isolerade storlekar
+          href: ../isolation.md
+        - name: Azure-beräkningsenheter (ACU)
+          href: ../acu.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Benchmark-poäng
+          href: compute-benchmark-scores.md
+        - name: vCPU-kvoter
+          href: quotas.md
+        - name: Reserverade instanser
+          items:
+            - name: Förskottsbetala för virtuella datorer
+              href: ../prepay-reserved-vm-instances.md
+            - name: Vad är Azure-reservationer?
+              href: ../../cost-management-billing/reservations/save-compute-costs-reservations.md
+            - name: Flexibilitet för VM-instansstorlek
+              href: ../reserved-vm-instance-size-flexibility.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+    - name: Dedikerade värdar
+      href: ../dedicated-hosts.md
+    - name: Underhåll och uppdateringar
+      href: ../maintenance-and-updates.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+    - name: Disklagring
+      items:
+        - name: Introduktion till hanterade diskar
+          href: ../managed-disks-overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Välja en disktyp för virtuella IaaS-datorer
+          href: ../disks-types.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Kryptering
+          href: ../disk-encryption.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Disklagringsreservationer
+          href: ../../cost-management-billing/reservations/understand-disk-reservations.md
+        - name: Prestanda för virtuella datorer och diskar
+          href: ../disks-performance.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Designa för höga prestanda
+          href: ../premium-storage-performance.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Diskutvidgning
+          href: ../disk-bursting.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Skalbarhetsmål för diskar
+          href: ../disks-scalability-targets.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Lagring och haveriberedskap för diskar
+          href: ../backup-and-disaster-recovery-for-azure-iaas-disks.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Delade diskar
+          href: ../disks-shared.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Prestandanivåer för disk
+          href: ../disks-change-performance.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Tillfälliga operativsystemdiskar
+          href: ../ephemeral-os-disks.md
+    - name: Nätverk
+      href: ../network-overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+    - name: Skalningsuppsättningar
+      href: ../../virtual-machine-scale-sets/overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+    - name: Infrastruktur för automatisering
+      href: ../infrastructure-automation.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+    - name: Säkerhet
+      items:
+        - name: Säkerhet och principer
+          href: ../security-policy.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Azure Disk Encryption
+          href: disk-encryption-overview.md
+        - name: Säkerhetskontroller av Azure Policy
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ../security-controls-policy.md
+        - name: Säkerhetsbaslinje för Azure Security Benchmark
+          href: security-baseline.md
+        - name: Bastion
+          href: ../../bastion/bastion-overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+    - name: Tillstånd och livscykel
+      href: ../states-lifecycle.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+    - name: PUT-anrop för åtgärder för att skapa eller uppdatera
+      href: ../put-calls-create-or-update.md
+      maintainContext: true
+    - name: Övervakning
+      href: ../../azure-monitor/insights/monitor-vm-azure.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+    - name: Startdiagnostik
+      href: ../../virtual-machines/boot-diagnostics.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+    - name: Säkerhetskopiering och återställning
+      href: ../backup-recovery.md
+    - name: Ramverk för molnimplementering
+      href: /azure/cloud-adoption-framework/get-started/?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+    - name: Arkitekturcenter
+      href: /azure/architecture/
+- name: Anvisningar
+  items:
+    - name: 'Skapa VM:ar'
+      items:
+        - name: Använda dedikerade värdar
+          items:
+            - name: PowerShell
+              href: dedicated-hosts-powershell.md
+            - name: Portalen
+              href: ../dedicated-hosts-portal.md
+        - name: Distribuera virtuella Spot-datorer
+          items:
+            - name: Portalen
+              href: ../spot-portal.md
+            - name: PowerShell
+              href: spot-powershell.md
+            - name: ARM-mall
+              displayName: Azure Resource Manager
+              href: ../linux/spot-template.md
+            - name: Felkoder
+              href: ../error-codes-spot.md
+        - name: Använda C#
+          href: ../../azure-resource-manager/templates/deploy-rest.md
+        - name: Använda specialiserad disk
+          items:
+            - name: Portalen
+              href: create-vm-specialized-portal.md
+            - name: PowerShell
+              href: create-vm-specialized.md
+        - name: Skapa en virtuell dator med Chef
+          href: /azure/developer/chef/windows-vm-configure
+        - name: Använda Java
+          href: java.md
+        - name: Använda Python
+          href: python.md
+        - name: Använda ARM-mall
+          displayName: Azure Resource Manager template
+          href: ps-template.md
+        - name: Ansluta till en virtuell dator
+          href: connect-logon.md
+        - name: SSH till virtuella Linux-datorer
+          displayName: ssh keygen ssk-key putty
+          items:
+            - name: I portalen
+              href: ../ssh-keys-portal.md
+            - name: På Windows
+              href: ../linux/ssh-from-windows.md
+        - name: Använda licens för Azure Hybrid-förmånen
+          href: hybrid-use-benefit-licensing.md
+        - name: Använda värdrättigheter för flera innehavare för Windows 10
+          href: windows-desktop-multitenant-hosting-deployment.md
+    - name: Migrera från klassisk till Azure Resource Manager
+      items:
+        - name: Tas ur bruk från och med 1 mars 2023
+          href: ../classic-vm-deprecation.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Översikt över migrering
+          href: ../migration-classic-resource-manager-overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Djupgående om migrering
+          href: ../migration-classic-resource-manager-deep-dive.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Planera för migrering
+          href: ../migration-classic-resource-manager-plan.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Migrera med hjälp av PowerShell
+          href: ../migration-classic-resource-manager-ps.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Vanliga migreringsfel
+          href: ../migration-classic-resource-manager-errors.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Community-verktyg för migrering
+          href: ../migration-classic-resource-manager-community-tools.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: VANLIGA FRÅGOR OCH SVAR
+          href: ../migration-classic-resource-manager-faq.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+    - name: Använda avbildningar
+      displayName: 'SIG, AMI, image'
+      items:
+        - name: Skapa och dela avbildningar
+          items:
+            - name: PowerShell
+              items:
+                - name: Skapa ett galleri
+                  href: ../shared-images-powershell.md
+                - name: Skapa en avbildning
+                  items:
+                    - name: Från en virtuell dator
+                      href: ../image-version-vm-powershell.md
+                    - name: Från en hanterad disk eller ögonblicksbild
+                      href: ../image-version-snapshot-powershell.md
+                    - name: Klona en hanterad avbildning
+                      href: ../image-version-managed-image-powershell.md
+                    - name: Kopiera från ett annat galleri
+                      href: ../image-version-another-gallery-powershell.md
+                - name: Skapa en virtuell dator
+                  items:
+                    - name: Generaliserade
+                      href: ../vm-generalized-image-version-powershell.md
+                    - name: Specialiserade
+                      href: ../vm-specialized-image-version-powershell.md
+                - name: Uppdatera avbildningsresurser
+                  href: ../update-image-resources-powershell.md
+            - name: CLI
+              items:
+                - name: Skapa ett galleri
+                  href: ../shared-images-cli.md
+                - name: Skapa en avbildning
+                  items:
+                    - name: Från en virtuell dator
+                      href: ../image-version-vm-cli.md
+                    - name: Från en hanterad disk eller ögonblicksbild
+                      href: ../image-version-snapshot-cli.md
+                    - name: Klona en hanterad avbildning
+                      href: ../image-version-managed-image-cli.md
+                    - name: Kopiera från ett annat galleri
+                      href: ../image-version-another-gallery-cli.md
+                    - name: Kopiera från ett annat galleri
+                      href: ../image-version-another-gallery-cli.md
+                - name: Skapa en virtuell dator
+                  items:
+                    - name: Specialiserade
+                      href: ../vm-specialized-image-version-cli.md
+                    - name: Generaliserade
+                      href: ../vm-generalized-image-version-cli.md
+                - name: Uppdatera avbildningsresurser
+                  href: ../update-image-resources-cli.md
+            - name: Portalen
+              items:
+                - name: 'Skapa ett galleri, en avbildning och en virtuell dator'
+                  href: shared-images-portal.md
+            - name: Resource Manager-mallar
+              items:
+                - name: Skapa ett Shared Image Gallery
+                  href: 'https://azure.microsoft.com/resources/templates/101-sig-create/'
+                - name: Skapa en avbildningsdefinition i ett Shared Image Gallery
+                  href: 'https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/'
+                - name: Skapa en avbildningsversion i ett Shared Image Gallery
+                  href: 'https://azure.microsoft.com/resources/templates/101-sig-image-version-create/'
+                - name: Skapa en virtuell dator från avbildningsversion
+                  href: 'https://azure.microsoft.com/resources/templates/101-vm-from-sig/'
+            - name: Felsöka delade bilder
+              href: ../troubleshooting-shared-images.md
+            - name: Använda kundhanterade nycklar
+              displayName: 'SSE, CMK, encrypt'
+              href: ../image-version-encryption.md
+        - name: Image Builder (förhandsversion)
+          items:
+            - name: Översikt
+              href: ../image-builder-overview.md
+            - name: Använda Image Builder
+              items:
+                - name: CLI
+                  href: image-builder.md
+                - name: PowerShell
+                  href: image-builder-powershell.md
+            - name: Använda ett VNET
+              href: image-builder-vnet.md
+            - name: Nätverksalternativ
+              href: ../linux/image-builder-networking.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Konfigurera behörigheter
+              items:
+                - name: CLI
+                  href: ../linux/image-builder-permissions-cli.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                - name: PowerShell
+                  href: ../linux/image-builder-permissions-powershell.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: DevOps-uppgift
+              href: ../linux/image-builder-devops-task.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Mallreferens för Image Builder
+              displayName: json
+              href: ../linux/image-builder-json.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Skapa för avbildningsgallerier
+              href: image-builder-gallery.md
+            - name: Uppdatera en befintlig avbildning
+              href: image-builder-gallery-update-image-version.md
+            - name: Lagra skript
+              href: ../linux/image-builder-user-assigned-identity.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Felsöka
+              href: ../linux/image-builder-troubleshoot.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Hitta och använda avbildningar
+          href: cli-ps-findimage.md
+        - name: Inköpsplaninformation
+          href: ../marketplace-images.md
+        - name: Förbereda en virtuell dator för uppladdning
+          href: prepare-for-upload-vhd-image.md
+        - name: Spela in den virtuella datorn till avbildning
+          href: capture-image-resource.md
+        - name: Använda generaliserad avbildning
+          href: create-vm-generalized-managed.md
+        - name: Skapa en avbildning med Packer
+          href: build-image-with-packer.md
+        - name: Använda Windows-klientavbildningar
+          href: client-images.md
+        - name: Ladda ned befintlig disk
+          href: download-vhd.md
+        - name: Hanterad disk från avbildningsversion
+          href: ../managed-disk-from-image-version.md
+    - name: Säkra virtuella datorer
+      items:
+        - name: Rekommendationer
+          href: ../security-recommendations.md
+        - name: Just-in-time-åtkomst
+          href: ../../security-center/security-center-just-in-time.md
+        - name: Använd Bastion
+          items:
+            - name: Skapa en Bastion-värd
+              items:
+                - name: Portalen
+                  href: ../../bastion/tutorial-create-host-portal.md
+                - name: PowerShell
+                  href: ../../bastion/bastion-create-host-powershell.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                - name: CLI
+                  href: ../../bastion/create-host-cli.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Använd Bastion för att ansluta
+              href: ../../bastion/bastion-connect-vm-ssh.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+              items:
+                - name: Bastion SSH-anslutning
+            - name: Bastion RDP-anslutning
+              href: ../../bastion/bastion-connect-vm-rdp.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Kryptera
+          items:
+            - name: Diskkrypteringsscenarier för Windows
+              href: disk-encryption-windows.md
+            - name: VM-kryptering med Azure CLI
+              href: disk-encryption-cli-quickstart.md
+            - name: VM-kryptering med Azure PowerShell
+              href: disk-encryption-powershell-quickstart.md
+            - name: VM-kryptering med Azure Portal
+              href: disk-encryption-portal-quickstart.md
+            - name: Nyckelvalv för Azure Disk Encryption
+              href: disk-encryption-key-vault.md
+            - name: Exempelskript för diskkryptering
+              href: disk-encryption-sample-scripts.md
+            - name: Felsökning för diskkryptering
+              href: disk-encryption-troubleshooting.md
+            - name: Vanliga frågor och svar om diskkryptering
+              href: disk-encryption-faq.md
+            - name: Diskkryptering – föregående version
+              items:
+                - name: Översikt
+                  href: disk-encryption-overview-aad.md
+                - name: Nyckelvalv för Azure Disk Encryption
+                  href: disk-encryption-key-vault-aad.md
+                - name: Diskkrypteringsscenarier för Windows
+                  href: disk-encryption-windows-aad.md
+        - name: Använda WinRM
+          href: winrm.md
+        - name: Använda åtkomstkontroller
+          href: ../../role-based-access-control/overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Använda principer
+          href: policy.md
+        - name: Skapa en Key Vault-lösning
+          href: key-vault-setup.md
+    - name: Skydda virtuella datorer
+      items:
+        - name: Haveriberedskap
+          href: ../virtual-machines-disaster-recovery-guidance.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Säkerhetskopiera virtuella datorer
+          href: ../../backup/backup-overview.md?bc=/azure/virtual-machines/windows/breadcrumb/toc.json&toc=/azure/virtual-machines/windows/toc.json
+          items:
+            - name: Säkerhetskopiera en enskild virtuell dator
+              href: ../../backup/quick-backup-vm-cli.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Säkerhetskopiera flera virtuella datorer
+              href: ../../backup/tutorial-backup-vm-at-scale.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Återställa en disk
+              href: ../../backup/tutorial-restore-disk.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Återställa enskilda filer
+              href: ../../backup/tutorial-restore-files.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Konfigurera haveriberedskap för virtuella datorer
+          href: ../../site-recovery/site-recovery-overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+          items:
+            - name: Aktivera haveriberedskap för en virtuell dator
+              href: ../../site-recovery/azure-to-azure-tutorial-enable-replication.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Köra ett programåterställningstest för en virtuell dator
+              href: ../../site-recovery/azure-to-azure-tutorial-dr-drill.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Redundansväxla en virtuell dator till en annan region
+              href: ../../site-recovery/azure-to-azure-tutorial-failover-failback.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+    - name: Hantera virtuella datorer
+      items:
+        - name: VM-användning
+          href: ../vm-usage.md
+        - name: Vanliga PowerShell-åtgärder
+          href: ps-common-ref.md
+        - name: Ändra storlek på en virtuell dator
+          href: resize-vm.md
+        - name: Växla OS-disk
+          href: os-disk-swap.md
+        - name: Tagga en virtuell dator
+          href: time-sync.md
+          items:
+            - name: Portalen
+              href: ../tag-portal.md
+            - name: PowerShell
+              href: ../tag-powershell.md
+            - name: CLI
+              href: ../tag-cli.md
+            - name: Mall
+              href: ../tag-template.md
+            - name: Tidssynkronisering
+        - name: Köra skript på en virtuell dator
+          href: run-scripts-in-vm.md
+          items:
+            - name: Anpassat skripttillägg
+              href: ../extensions/custom-script-windows.md
+            - name: Kör kommando
+              href: run-command.md
+        - name: Ändra temporär enhetsbeteckning
+          href: change-drive-letter.md
+        - name: Ändra tillgänglighetsuppsättning
+          href: change-availability-set.md
+        - name: Virtuell Azure-datoragent
+          href: ../extensions/agent-windows.md
+        - name: Minimera spekulativ körning
+          href: ../mitigate-se.md
+        - name: Övervaka metadata
+          href: instance-metadata-service.md
+        - name: Aktivera kapslad virtualisering
+          href: nested-virtualization.md
+        - name: Automatisk snabbkorrigering av VM-gäster (förhandsversion)
+          href: automatic-vm-guest-patching.md
+    - name: Kontroll av underhåll
+      items:
+        - name: Meddelanden om underhåll
+          items:
+            - name: Översikt
+              href: ../maintenance-notifications.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: CLI
+              href: ../maintenance-notifications-cli.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Portalen
+              href: ../maintenance-notifications-portal.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: PowerShell
+              href: ../maintenance-notifications-powershell.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Underhåll av plattform
+          items:
+            - name: Översikt
+              href: ../maintenance-control.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: CLI
+              href: ../maintenance-control-cli.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: PowerShell
+              href: ../maintenance-control-powershell.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Portalen
+              href: ../maintenance-control-portal.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Schemalagda händelser
+          href: scheduled-events.md
+        - name: Windows-tjänst för schemalagda händelser
+          href: scheduled-event-service.md
+        - name: Uppgradering av operativsystemavbildning för skalningsuppsättning för virtuell dator
+          items:
+            - name: Automatiska uppgraderingar av operativsystem
+              href: ../../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Kontroll av underhåll
+              items:
+                - name: Översikt (förhandsversion)
+                  href: ../virtual-machine-scale-sets-maintenance-control.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                - name: PowerShell (förhandsversion)
+                  href: ../virtual-machine-scale-sets-maintenance-control-powershell.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+    - name: Övervaka virtuella datorer
+      items:
+        - name: Agenter
+          items:
+            - name: Översikt över agenter
+              href: ../../azure-monitor/platform/agents-overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: VANLIGA FRÅGOR OCH SVAR
+              href: ../../azure-monitor/faq.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json#agents
+            - name: Azure Diagnostics-tillägg
+              items:
+                - name: Översikt
+                  href: ../../azure-monitor/platform/diagnostics-extension-overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                  items:
+                    - name: Skicka till Azure Monitor-mått
+                      items:
+                        - name: Virtuell dator
+                          href: ../../azure-monitor/platform/collect-custom-metrics-guestos-resource-manager-vm.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                        - name: Skalningsuppsättning
+                          href: ../../azure-monitor/platform/collect-custom-metrics-guestos-resource-manager-vmss.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                    - name: Skicka till Event Hubs
+                      href: ../../azure-monitor/platform/diagnostics-extension-stream-event-hubs.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                    - name: Skicka till loggar
+                      href: ../../azure-monitor/platform/diagnostics-extension-logs.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                    - name: Skicka till Application Insights
+                      href: ../../azure-monitor/platform/diagnostics-extension-to-application-insights.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                    - name: Versionshistorik
+                      href: ../../azure-monitor/platform/diagnostics-extension-versions.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                    - name: JSON Lines-format för resursloggar
+                      href: ../../azure-monitor/platform/resource-logs-blob-format.md
+                    - name: Felsökning
+                      href: ../../azure-monitor/platform/diagnostics-extension-troubleshooting.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Log Analytics-agent
+              items:
+                - name: Översikt
+                  href: ../../azure-monitor/platform/log-analytics-agent.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                - name: Windows-agenter
+                  href: ../../azure-monitor/platform/agent-windows.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                - name: VM-tillägg för Windows
+                  href: ../extensions/oms-windows.md?bc=/azure/virtual-machines/windows/breadcrumb/toc.json?toc=/azure/azure-monitor/toc.json&toc=/azure/virtual-machines/windows/toc.json
+                - name: Log Analytics-gatewayen
+                  href: ../../azure-monitor/platform/gateway.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                - name: Agenthantering
+                  href: ../../azure-monitor/platform/agent-manage.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                - name: Agenthälsa
+                  href: ../../azure-monitor/insights/solution-agenthealth.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                - name: Datakällor
+                  items:
+                    - name: Översikt
+                      href: ../../azure-monitor/platform/agent-data-sources.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                    - name: Windows-händelser
+                      href: ../../azure-monitor/platform/data-sources-windows-events.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                    - name: Anpassade JSON-data
+                      href: ../../azure-monitor/platform/data-sources-json.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                    - name: CollectD-prestandadata
+                      href: ../../azure-monitor/platform/data-sources-collectd.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                    - name: Syslog
+                      href: ../../azure-monitor/platform/data-sources-syslog.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                    - name: Prestandaräknare
+                      href: ../../azure-monitor/platform/data-sources-performance-counters.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                    - name: IIS-loggar
+                      href: ../../azure-monitor/platform/data-sources-iis-logs.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                    - name: Anpassade loggar
+                      href: ../../azure-monitor/platform/data-sources-custom-logs.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                    - name: Anpassade fält
+                      href: ../../azure-monitor/platform/custom-fields.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Felsöka
+              items:
+                - name: Log Analytics-tillägg för virtuella datorer
+                  href: ../../azure-monitor/platform/vmext-troubleshoot.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                  displayname: 'troubleshoot, troubleshooting'
+                - name: Windows-agenten för Log Analytics
+                  href: ../../azure-monitor/platform/agent-windows-troubleshoot.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                  displayname: 'troubleshoot, troubleshooting'
+        - name: Azure Monitor för virtuella datorer
+          items:
+            - name: Översikt
+              href: ../../azure-monitor/insights/vminsights-overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Vanliga frågor och svar om allmän tillgänglighet
+              href: ../../azure-monitor/insights/vminsights-ga-release-faq.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: VANLIGA FRÅGOR OCH SVAR
+              href: ../../azure-monitor/faq.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json#azure-monitor-for-vms
+            - name: Aktivera övervakning
+              items:
+                - name: Aktivera övervakningsöversikt
+                  href: ../../azure-monitor/insights/vminsights-enable-overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                - name: Aktivera för enskild virtuell Azure-dator
+                  href: ../../azure-monitor/insights/vminsights-enable-portal.md
+                - name: Aktivera med hjälp av Azure Policy
+                  href: ../../azure-monitor/insights/vminsights-enable-policy.md
+                - name: Aktivera med hjälp av Azure PowerShell
+                  href: ../../azure-monitor/insights/vminsights-enable-powershell.md
+                - name: Aktivera för hybridmiljö
+                  href: ../../azure-monitor/insights/vminsights-enable-hybrid.md
+            - name: Mappa beroenden
+              href: ../../azure-monitor/insights/vminsights-maps.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Övervaka prestanda
+              href: ../../azure-monitor/insights/vminsights-performance.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Analysera data med loggfrågor
+              href: ../../azure-monitor/insights/vminsights-log-search.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Visualisera data med arbetsböcker
+              href: ../../azure-monitor/insights/vminsights-workbooks.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Skapa aviseringsregler
+              href: ../../azure-monitor/insights/vminsights-alerts.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Uppgradera Dependency Agent
+              href: ../../azure-monitor/insights/vminsights-dependency-agent-maintenance.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Inaktivera övervakning
+              href: ../../azure-monitor/insights/vminsights-optout.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+    - name: Tillgänglighet och skalning
+      items:
+        - name: Virtual Machine Scale Sets
+          href: ../../virtual-machine-scale-sets/overview.md?bc=/azure/virtual-machines/windows/breadcrumb/toc.json&toc=/azure/virtual-machines/windows/toc.json
+        - name: Hög tillgänglighet
+          href: ../manage-availability.md
+        - name: Skapa en närhetsplaceringsgrupp
+          displayName: ppg aligned colocation co-location
+          items:
+            - name: Portalen
+              href: proximity-placement-groups-portal.md
+            - name: PowerShell
+              href: proximity-placement-groups.md
+        - name: Lodrätt skalning
+          items:
+            - name: PowerShell
+              href: create-powershell-availability-zone.md
+            - name: Portalen
+              href: create-portal-availability-zone.md
+    - name: Använda automatiseringsverktyg
+      items:
+        - name: Anpassade data
+          href: ../custom-data.md
+        - name: Chef
+          href: /azure/developer/chef/windows-vm-configure
+    - name: Köra program
+      items:
+        - name: SQL Server
+          href: ../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md
+        - name: MongoDB
+          href: install-mongodb.md
+        - name: SAP på Azure
+          href: ../workloads/sap/get-started.md
+        - name: Visual Studio
+          href: using-visual-studio-vm.md
+        - name: Databehandling med höga prestanda (HPC)
+          href: /powershell/high-performance-computing/overview
+          items:
+            - name: HPC Pack 2016-kluster
+              href: /powershell/high-performance-computing/overview
+            - name: HPC Pack 2016 Azure Active Directory-integrering
+              href: /powershell/high-performance-computing/hpcpack-cluster-active-directory
+            - name: HPC Pack 2012 R2-huvudnod
+              href: /powershell/high-performance-computing/deploy-an-hpc-pack-2016-cluster-in-azure
+            - name: Skicka lokala jobb till HPC Pack 2012 R2
+              href: /powershell/high-performance-computing/hpcpack-cluster-submit-jobs-in-azure
+            - name: Excel i HPC Pack
+              href: /powershell/high-performance-computing/excel-2016-offloading-to-azure-cluster
+    - name: Hantera lagring
+      items:
+        - name: Lägg till en disk
+          items:
+            - name: Azure PowerShell
+              href: attach-disk-ps.md
+            - name: Azure Portal
+              href: attach-managed-disk-portal.md
+        - name: Ändra disknivå – PowerShell/CLI
+          href: ../disks-performance-tiers.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Ändra disknivå – Portalen
+          href: ../disks-performance-tiers-portal.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Koppla från en disk
+          href: detach-disk.md
+        - name: Distribuera diskar med ARM-mall
+          displayName: Azure Resource Manager
+          href: ../using-managed-disks-template-deployments.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Aktivera delade diskar
+          href: ../disks-shared-enable.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Ladda upp en virtuell hårddisk till en disk – PowerShell
+          href: disks-upload-vhd-to-managed-disk-powershell.md
+        - name: Importera/exportera en disk på säkert sätt – portalen
+          href: ../disks-enable-private-links-for-import-export-portal.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Ändra storlek på en disk
+          href: expand-os-disk.md
+        - name: Använda Storage Explorer för att hantera diskar
+          href: ../disks-use-storage-explorer-managed-disks.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Ögonblicksbild av en disk
+          href: snapshot-copy-managed-disk.md
+        - name: Reservera disklagring
+          href: ../disks-reserved-capacity.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Skapa en inkrementell ögonblicksbild
+          href: ../disks-incremental-snapshots.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Säkerhetskopiera ohanterade diskar
+          href: incremental-snapshots.md
+        - name: Kryptering
+          items:
+            - name: Aktivera kryptering på värddator – PowerShell
+              href: disks-enable-host-based-encryption-powershell.md
+            - name: Aktivera kryptering på värddator – portalen
+              href: ../disks-enable-host-based-encryption-portal.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Aktivera kundhanterade nycklar – PowerShell
+              href: disks-enable-customer-managed-keys-powershell.md
+            - name: Aktivera kundhanterade nycklar – Portal
+              href: ../disks-enable-customer-managed-keys-portal.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Aktivera dubbel kryptering i vila
+              href: disks-enable-double-encryption-at-rest-powershell.md
+            - name: Aktivera dubbel kryptering i vila – portalen
+              href: ../disks-enable-double-encryption-at-rest-portal.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Migrering och konvertering
+          items:
+            - name: Konvertera en disk mellan Standard och Premium
+              href: convert-disk-storage.md
+            - name: Migrera till Premium Storage med Azure Site Recovery
+              href: migrate-to-premium-storage-using-azure-site-recovery.md
+            - name: Migrera till Managed Disks
+              href: migrate-to-managed-disks.md
+            - name: Ohanterad virtuell dator till Managed Disks
+              href: convert-unmanaged-to-managed-disks.md
+        - name: Prestanda
+          items:
+            - name: Aktivera Write Accelerator
+              href: ../how-to-enable-write-accelerator.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Använda ultradiskar
+              href: ../disks-enable-ultra-ssd.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Beräkna benchmark för en disk
+              href: ../disks-benchmarks.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Hitta icke anslutna diskar – PowerShell
+          href: find-unattached-disks.md
+        - name: Hitta icke anslutna diskar – portalen
+          href: ../disks-find-unattached-portal.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Mappa Azure-diskar till gästdiskar
+          href: azure-to-guest-disk-mapping.md
+        - name: Vanliga frågor och svar om diskar
+          href: ../faq-for-disks.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+    - name: Hantera nätverk
+      href: ps-common-network-ref.md
+      items:
+        - name: Skapa det virtuella nätverket
+          href: ../../virtual-network/quick-create-portal.md?bc=/azure/virtual-machines/windows/breadcrumb/toc.json&toc=/azure/virtual-machines/windows/toc.json
+        - name: Öppna portar till en virtuell dator
+          items:
+            - name: Azure Portal
+              href: nsg-quickstart-portal.md
+            - name: Azure PowerShell
+              href: nsg-quickstart-powershell.md
+        - name: Tilldela offentlig IP-adress
+          href: ../../virtual-network/virtual-network-deploy-static-pip-arm-portal.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Använda flera nätverkskort
+          href: multiple-nics.md
+        - name: Använda accelererat nätverk
+          href: ../../virtual-network/create-vm-accelerated-networking-powershell.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Tilldela offentligt DNS-namn
+          href: ../create-fqdn.md
+        - name: DNS-upplösning
+          href: ../../dns/dns-for-azure-services.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+    - name: Konfigurera hanterade identiteter
+      items:
+        - name: Portalen
+          href: ../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: CLI
+          href: ../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: PowerShell
+          href: ../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Azure Resource Manager-mall
+          displayName: ARM
+          href: ../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: REST
+          href: ../../active-directory/managed-identities-azure-resources/qs-configure-rest-vm.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: 'Azure-SDK:er'
+          href: ../../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+    - name: Använd tillägg
+      items:
+        - name: Begränsa installation av tillägg
+          href: ../extensions/extensions-rmpolicy-howto-ps.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Exportera tillägg
+          href: ../extensions/export-templates.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Felsöka
+          href: ../extensions/troubleshoot.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Azure Disk Encryption
+          href: ../extensions/azure-disk-enc-windows.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Azure Key Vault
+          href: ../extensions/key-vault-windows.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Azure Backup för SQL Server
+          href: ../extensions/backup-azure-sql-server-running-azure-vm.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Anpassat skript
+          href: ../extensions/custom-script-windows.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: IaaS-program mot skadlig kod för Windows
+          href: ../extensions/iaas-antimalware-windows.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: VM-ögonblicksbild
+          href: ../extensions/vmsnapshot-windows.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Network Watcher-agent
+          href: ../extensions/network-watcher-windows.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: NVIDIA GPU-drivrutiner
+          href: ../extensions/hpccompute-gpu-windows.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: AMD GPU-drivrutiner
+          href: ../extensions/hpccompute-amd-gpu-windows.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Azure Monitor
+          items:
+            - name: Diagnostics-tillägg
+              href: ../extensions/../../azure-monitor/platform/diagnostics-extension-overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json?toc=/azure/virtual-machines/extensions/toc.json
+            - name: Log Analytics
+              href: ../extensions/oms-windows.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Azure Monitor beroendeagent för Windows
+              href: ../extensions/agent-dependency-windows.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: PowerShell DSC
+          href: ../extensions/dsc-overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+          items:
+            - name: DSC och Windows
+              href: ../extensions/dsc-windows.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Hantera autentiseringsuppgifter
+              href: ../extensions/dsc-credentials.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Använd mallar
+              href: ../extensions/dsc-template.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Åtkomst till virtuella datorer
+          href: ../extensions/vmaccess.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Tillägg från tredje part
+          items:
+            - name: Chef
+              href: ../extensions/chef.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Stackify Retrace
+              href: ../extensions/stackify-retrace-linux.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Symantec
+              href: ../extensions/symantec.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+    - name: Flytta virtuella datorer
+      items:
+        - name: Ändra prenumeration eller resursgrupp
+          href: move-vm.md
+        - name: Flytta regioner
+          href: ../../site-recovery/azure-to-azure-tutorial-migrate.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Flytta till en tillgänglighetszon
+          href: ../../site-recovery/move-azure-vms-avset-azone.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Flytta konfigurationer för underhållskontroll till en annan region
+          href: ../move-region-maintenance-configuration.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Flytta konfigurationsresurser för underhållskontroll till en annan region
+          href: ../move-region-maintenance-configuration-resources.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Migrera AWS och lokala virtuella datorer
+          href: on-prem-to-azure.md
+          items:
+            - name: Ladda upp lokala virtuella datorer
+              href: upload-generalized-managed.md
+            - name: Från Amazon Web Services (AWS)
+              href: aws-to-azure.md
+            - name: Använda Azure Site Recovery
+              href: ../../site-recovery/migrate-overview.md?bc=/azure/virtual-machines/windows/breadcrumb/toc.json&toc=/azure/virtual-machines/windows/toc.json
+- name: Felsöka
+  href: ../troubleshooting/index.yml
+- name: Referens
+  items:
+    - name: Azure CLI
+      href: /cli/azure/vm
+    - name: Azure PowerShell
+      href: /powershell/azure/
+    - name: .NET
+      href: /dotnet/api/microsoft.azure.management.compute
+    - name: Java
+      href: /java/api
+    - name: Node.js
+      href: 'https://azure.microsoft.com/develop/nodejs/#azure-sdk'
+    - name: Python
+      href: 'https://azure.microsoft.com/develop/python/'
+    - name: Compute REST
+      href: /rest/api/compute
+    - name: Managed Disks REST
+      href: /rest/api/compute/disks
+    - name: Resource Manager-mall
+      displayName: ARM
+      href: /azure/templates/microsoft.compute/allversions
+    - name: Inbyggda Azure Policy-program
+      displayName: 'samples, policies, definitions'
+      href: ../policy-reference.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+- name: Resurser
+  items:
+    - name: Vanliga frågor och svar
+      href: /answers/topics/azure-virtual-machines.html
+    - name: Skapa ARM-mallar
+      displayName: Azure Resource Manager
+      href: ../../azure-resource-manager/templates/template-syntax.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+    - name: Utveckla dina färdigheter med Microsoft Learn
+      href: /learn/browse/?products=azure-virtual-machines
+    - name: Azure-översikt
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Community-mallar
+      href: 'https://azure.microsoft.com/documentation/templates'
+    - name: Prissättning
+      href: 'https://azure.microsoft.com/pricing/details/#Windows'
+    - name: Regional tillgänglighet
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-virtual-machine'
+    - name: Videoklipp
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines'
+    - name: VANLIGA FRÅGOR OCH SVAR
+      href: faq.md

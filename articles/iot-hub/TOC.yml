@@ -1,4 +1,4 @@
-- name: Dokumentation om IoT Hub
+- name: IoT Hub dokumentation
   href: index.yml
 - name: Översikt
   items:
@@ -481,6 +481,8 @@
           href: iot-hub-migrate-to-diagnostics-settings.md
         - name: Föråldrad användning av TLS 1.0 och 1.1
           href: iot-hub-tls-deprecating-1-0-and-1-1.md
+        - name: Klassiskt IP-filter
+          href: iot-hub-ip-filter-classic.md
 - name: Resurser
   items:
     - name: Alternativ för support och hjälp

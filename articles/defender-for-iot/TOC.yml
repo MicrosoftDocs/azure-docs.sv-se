@@ -73,8 +73,6 @@
           href: concept-baseline.md
         - name: Händelsesammansättning
           href: event-aggregation.md
-        - name: Prissättning och associerade kostnader
-          href: concept-pricing.md
 - name: Anvisningar
   items:
     - name: Lösning utan agent för organisationer
@@ -252,6 +250,6 @@
         - name: Regional tillgänglighet
           href: 'https://azure.microsoft.com/regions/services/'
         - name: Prissättning
-          href: 'https://azure.microsoft.com/pricing/details/security-center/'
-        - name: Videoklipp
+          href: 'https://azure.microsoft.com/pricing/details/azure-defender/'
+        - name: Video
           href: 'https://azure.microsoft.com/resources/videos/index/?services=security-center&service=internet-of-things&page=1&sort=newest'

@@ -58,6 +58,8 @@
       href: fqdn-filtering-network-rules.md
     - name: Säkerhetsbaslinje
       href: security-baseline.md
+    - name: Stöd för Active FTP
+      href: active-ftp-support.md
 - name: Anvisningar
   items:
     - name: Distribuera med hjälp av Azure PowerShell

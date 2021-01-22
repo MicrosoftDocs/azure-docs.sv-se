@@ -1,0 +1,88 @@
+- name: Molnbaserad synkronisering
+  href: index.yml
+- name: Översikt
+  items:
+    - name: Vad är identitetsetablering?
+      href: what-is-provisioning.md
+    - name: Vad är Azure AD Connect Cloud Sync?
+      href: what-is-cloud-sync.md
+      maintainContext: true
+- name: Självstudier
+  expanded: true
+  items:
+    - name: Integrera en enskild AD-skog med en enskild Azure AD-klientorganisation
+      href: tutorial-single-forest.md
+    - name: Integrera en befintlig skog med en ny skog med en enskild Azure AD-klientorganisation
+      href: tutorial-existing-forest.md
+    - name: Pilot molnets synkronisering för en befintlig synkroniserad AD-skog
+      href: tutorial-pilot-aadc-aadccp.md
+- name: Begrepp
+  items:
+    - name: Så här fungerar det
+      href: concept-how-it-works.md
+    - name: Vad är hash-synkronisering av lösenord?
+      href: ../hybrid/whatis-phs.md?context=%2fazure%2factive-directory%2fcloud-provisioning%2fcontext%2fcloud-provisioning-context
+    - name: 'Förstå Azure AD-schemat, attribut och uttryck'
+      href: concept-attributes.md
+    - name: Skriva uttryck för attributmappningar i Azure Active Directory
+      href: reference-expressions.md
+- name: Anvisningar
+  items:
+    - name: Installation och uppgradering
+      items:
+        - name: Installationskrav
+          href: how-to-prerequisites.md
+        - name: Installera agenten för Azure AD Connect-molnetablering
+          href: how-to-install.md
+        - name: Konfiguration av molnbaserad synkronisering
+          href: how-to-configure.md
+        - name: Etablering på begäran
+          href: how-to-on-demand-provision.md
+        - name: Attributmappning
+          href: how-to-attribute-mapping.md
+        - name: Använd enkel inloggning
+          href: how-to-sso.md
+    - name: Planera och designa
+      items:
+        - name: Topologier och scenarier för Azure AD Connect Cloud Sync
+          href: plan-cloud-sync-topologies.md
+    - name: Hantera
+      items:
+        - name: Automatisk agentuppgradering
+          href: how-to-automatic-upgrade.md
+        - name: Oavsiktliga borttagningar
+          href: how-to-accidental-deletes.md
+        - name: Alternativ för agentregistrering
+          href: how-to-manage-registry-options.md
+        - name: GMSA PowerShell-cmdletar för agent
+          href: how-to-gmsa-cmdlets.md
+        - name: Installera etablerings agenten med hjälp av PowerShell
+          href: how-to-install-pshell.md
+    - name: Utveckla
+      items:
+        - name: Transformeringar
+          href: how-to-transformation.md
+        - name: Inkommande synkronisering med MS Graph API
+          href: how-to-inbound-synch-ms-graph.md
+        - name: API för synkronisering med Azure AD
+          href: /graph/api/resources/synchronization-overview
+    - name: Felsöka
+      items:
+        - name: Felsöka Cloud Sync
+          href: how-to-troubleshoot.md
+        - name: Dubblettattribut
+          href: ../hybrid/how-to-connect-syncservice-duplicate-attribute-resiliency.md?context=%2fazure%2factive-directory%2fcloud-provisioning%2fcontext%2fcp-context
+- name: Referens
+  items:
+    - name: Versionshistorik för agent för Azure AD Connect-molnetablering
+      href: reference-version-history.md
+    - name: Vanliga frågor och svar om Azure AD Connect Cloud Sync
+      href: reference-cloud-sync-faq.md
+    - name: AADCloudSyncTools PowerShell-modul
+      href: reference-powershell.md
+    - name: Attribut som har synkroniserats
+      href: ../hybrid/reference-connect-sync-attributes-synchronized.md?context=%2fazure%2factive-directory%2fcloud-provisioning%2fcontext%2fcp-context
+    - name: Felkoder och beskrivningar
+      href: reference-error-codes.md
+    - name: Basic Active Directory och Azure AD-miljöer
+      href: tutorial-basic-ad-azure.md

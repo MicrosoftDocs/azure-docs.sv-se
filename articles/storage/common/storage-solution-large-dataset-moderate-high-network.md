@@ -8,12 +8,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: f1ded1ce87df1cb57960bbc99cd950ed7b3f97ee
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: cf0e423648db174433f0717f2e5971ac49697b42
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96573943"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98704631"
 ---
 # <a name="data-transfer-for-large-datasets-with-moderate-to-high-network-bandwidth"></a>Dataöverföring för stora datamängder med måttlig eller hög nätverksbandbredd
  
@@ -95,7 +95,7 @@ Om du använder data överföring online använder du tabellen i följande avsni
 
 ## <a name="next-steps"></a>Nästa steg
 
-- [Lär dig hur du överför data med import/export](./storage-import-export-data-to-blobs.md).
+- [Lär dig hur du överför data med import/export](../../import-export/storage-import-export-data-to-blobs.md).
 - Förstå hur du
 
     - [Överför data med data Box disk](../../databox/data-box-disk-quickstart-portal.md).

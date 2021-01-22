@@ -154,9 +154,9 @@
           href: howto-password-ban-bad-on-premises-faq.md
         - name: Agentversionshistorik
           href: howto-password-ban-bad-on-premises-agent-versions.md
-    - name: Använda SMS-baserad autentisering (förhandsversion)
+    - name: Använd SMS-baserad autentisering
       href: howto-authentication-sms-signin.md
-    - name: Använd inloggning med e-postadress (förhandsversion)
+    - name: Använd e-postadress för inloggning
       href: howto-authentication-use-email-signin.md
     - name: Smart utlåsning i Azure AD
       href: howto-password-smart-lockout.md

@@ -59,8 +59,12 @@
   items:
     - name: Exempel på C#-direktmetod
       href: 'https://github.com/Azure-Samples/live-video-analytics-iot-edge-csharp'
+    - name: C# SDK-exempel
+      href: 'https://github.com/Azure-Samples/live-video-analytics-iot-edge-csharp-sdk'
     - name: Exempel på Python-direktmetod
       href: 'https://github.com/Azure-Samples/live-video-analytics-iot-edge-python'
+    - name: Python SDK-exempel
+      href: 'https://github.com/Azure-Samples/live-video-analytics-iot-edge-python-sdk'
 - name: Begrepp
   items:
     - name: Mediegraf

@@ -6,6 +6,8 @@
       href: automation-intro.md
     - name: VANLIGA FRÅGOR OCH SVAR
       href: automation-faq.md
+    - name: Nyheter
+      href: whats-new.md
 - name: Snabbstarter
   items:
     - name: Skapa ett Automation-konto

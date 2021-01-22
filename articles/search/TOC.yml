@@ -5,9 +5,9 @@
   items:
     - name: Vad är Cognitive Search?
       href: search-what-is-azure-search.md
-    - name: Funktioner i Cognitive Search
+    - name: Funktionslista
       href: search-features-list.md
-    - name: Senaste nytt i Cognitive Search
+    - name: Ny i sökning
       href: whats-new.md
 - name: Snabbstarter
   items:
@@ -558,5 +558,5 @@
       href: search-faq-frequently-asked-questions.md
     - name: Prissättning
       href: 'https://azure.microsoft.com/pricing/details/search/'
-    - name: Videoklipp
+    - name: Video
       href: 'https://azure.microsoft.com/resources/videos/index/?services=search'
