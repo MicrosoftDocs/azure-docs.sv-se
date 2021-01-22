@@ -9,18 +9,18 @@ ms.subservice: enterprise
 ms.topic: tutorial
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: d707051e20b4ce9d1289557aec6f8256c2e6bfba
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 643aac7927cc7b14693387fbb5765bdcd0214dc2
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150073"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98598254"
 ---
 # <a name="understand-your-azure-enterprise-agreement-bill"></a>Förstå fakturan för ditt Azure Enterprise-avtal
 
 Azure-kunder med ett Enterprise-avtal får en faktura när de överskrider organisationens kredit eller använder tjänster som inte omfattas av krediten.
 
-Din organisations kredit inkluderar ditt ekonomiska åtagande. Det ekonomiska åtagandet är det belopp som din organisation förskottsbetalade för användningen av Azure-tjänster. Du kan lägga till belopp för ekonomiskt åtagande till ditt Enterprise-avtal genom att kontakta din Microsoft-kontoansvarige eller återförsäljare.
+Organisationens kredit omfattar din Azure-förskottsbetalning (kallades tidigare ekonomiskt åtagande). Azure-förskottsbetalning är det belopp som din organisation förskottsbetalade för användningen av Azure-tjänster. Du kan lägga till belopp för Azure-förskottsbetalning till ditt Enterprise-avtal genom att kontakta din Microsoft-kontoansvarige eller återförsäljare.
 
 Den här självstudien gäller endast för Azure-kunder som har ett Azure Enterprise-avtal.
 
@@ -155,7 +155,7 @@ Några orsaker till prisskillnader:
 
 ## <a name="request-detailed-usage-information"></a>Begära detaljerad användningsinformation
 
-Företagsadministratörer kan visa en sammanfattning av användningsdata, förbrukat betalningsåtagande samt avgifter som är kopplade till ytterligare användning i Azure Enterprise-portalen. Avgifterna presenteras på sammanfattningsnivå för alla konton och prenumerationer.
+Företagsadministratörer kan visa en sammanfattning av användningsdata, förbrukad Azure-förskottsbetalning samt avgifter som är kopplade till ytterligare användning i Azure Enterprise-portalen. Avgifterna presenteras på sammanfattningsnivå för alla konton och prenumerationer.
 
 Om du vill visa detaljerad användning i specifika konton laddar du ned rapporten med användningsinformation genom att gå till **Rapporter** > **Ladda ned användning**.
 
@@ -166,7 +166,7 @@ För indirekta registreringar behöver din partner aktivera markeringsfunktionen
 
 ## <a name="reports"></a>Rapporter
 
-Företagsadministratörer kan visa en sammanfattning av användningsdata, förbrukat betalningsåtagande samt avgifter som är kopplade till ytterligare användning i Azure Enterprise-portalen. Avgifterna presenteras på sammanfattningsnivå för alla konton och prenumerationer.
+Företagsadministratörer kan visa en sammanfattning av användningsdata, förbrukad Azure-förskottsbetalning samt avgifter som är kopplade till ytterligare användning i Azure Enterprise-portalen. Avgifterna presenteras på sammanfattningsnivå för alla konton och prenumerationer.
 
 ### <a name="azure-enterprise-reports"></a>Azure Enterprise-rapporter
 
@@ -251,7 +251,7 @@ Om en europeisk valuta använder en punkt (.) som tusentalsavgränsare och ett k
    Guiden för att importera text visas.
 1. Välj **Avgränsade** under **Ursprunglig datatyp**.  Standardvärdet är **Fast bredd**.
 1. Välj **Nästa**.
-1. Under Avgränsare markerar du kryssrutan för**kommatecken**. Avmarkera **Flik** om det är markerat.
+1. Under Avgränsare markerar du kryssrutan för **kommatecken**. Avmarkera **Flik** om det är markerat.
 1. Välj **Nästa**.
 1. Bläddra till kolumnerna **ResourceRate** och **ExtendedCost**.
 1. Välj kolumnen **ResourceRate**. Den visas markerad i svart.

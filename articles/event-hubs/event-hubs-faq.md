@@ -2,13 +2,13 @@
 title: Vanliga frågor och svar – Azure Event Hubs | Microsoft Docs
 description: Den här artikeln innehåller en lista med vanliga frågor och svar (FAQ) för Azure Event Hubs och deras svar.
 ms.topic: article
-ms.date: 10/27/2020
-ms.openlocfilehash: e7a34fe0f2ef04fffeeddc5615d3ac1749467902
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.date: 01/20/2021
+ms.openlocfilehash: e6fd4814e771d03827e51f1cd5ee182c9e432cc5
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955424"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696116"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Vanliga frågor och svar om Event Hubs
 
@@ -55,8 +55,8 @@ Du kan konfigurera kvarhållningsperioden för de infångade data på ditt lagri
 ### <a name="how-do-i-monitor-my-event-hubs"></a>Hur gör jag för att övervaka mina Event Hubs?
 Event Hubs utvärderar uttömmande Mät värden som ger resursernas tillstånd att [Azure Monitor](../azure-monitor/overview.md). De gör det också möjligt att utvärdera den övergripande hälsan för tjänsten Event Hubs inte bara på namn områdes nivån, utan även på enhets nivå. Lär dig mer om vilken övervakning som erbjuds för [Azure Event Hubs](event-hubs-metrics-azure-monitor.md).
 
-### <a name="where-does-azure-event-hubs-store-customer-data"></a><a name="in-region-data-residency"></a>Var lagrar Azure Event Hubs kund information?
-Azure Event Hubs lagrar kund information. Dessa data lagras automatiskt av Event Hubs i en enda region, så den här tjänsten uppfyller automatiskt placering-kraven för region, inklusive de som anges i [säkerhets Center](https://azuredatacentermap.azurewebsites.net/).
+### <a name="where-does-azure-event-hubs-store-data"></a><a name="in-region-data-residency"></a>Var lagrar Azure Event Hubs data?
+Azure Event Hubs standard-och dedikerade nivåer lagrar metadata och data i regioner som du väljer. När geo-haveri beredskap har kon figurer ATS för ett Azure Event Hubs-namnområde kopieras metadata till den sekundära regionen som du väljer. Den här tjänsten uppfyller därför automatiskt placering-kraven för regions data, inklusive de som anges i [säkerhets Center](https://azuredatacentermap.azurewebsites.net/).
 
 [!INCLUDE [event-hubs-connectivity](../../includes/event-hubs-connectivity.md)]
 
@@ -252,5 +252,5 @@ Ett exempel på hur du kan rikta en speciell lagrings-API-version från koden fi
 Du kan lära dig mer om Event Hubs genom att gå till följande länkar:
 
 * [Översikt över Event Hubs](./event-hubs-about.md)
-* [Skapa en Händelsehubben](event-hubs-create.md)
+* [Skapa en händelsehubb](event-hubs-create.md)
 * [Event Hubs automatiskt bred mitt](event-hubs-auto-inflate.md)

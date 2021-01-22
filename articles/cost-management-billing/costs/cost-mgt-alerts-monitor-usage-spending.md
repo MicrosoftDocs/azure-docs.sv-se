@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
-ms.openlocfilehash: c59bd7f9bc8c5049572afdf93343222b30c0007b
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: d1546ef92d923b9d72c4aca0ddf61d2b93646656
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131912"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602350"
 ---
 # <a name="use-cost-alerts-to-monitor-usage-and-spending"></a>Använda kostnadsaviseringar för att övervaka användning och utgifter
 
@@ -29,7 +29,7 @@ Du kan använda API för budgetar för att skicka e-postaviseringar på ett anna
 
 ## <a name="credit-alerts"></a>Kreditaviseringar
 
-Kreditaviseringar meddelar dig när dina ekonomiska åtaganden i Azure-krediten har förbrukats. Ekonomiska åtaganden finns för organisationer som har Enterprise-avtal. Kreditaviseringar genereras automatiskt vid 90 % och 100 % av ditt Azure-kreditsaldo. När en avisering genereras återspeglas den i kostnadsaviseringar och i e-postmeddelandet som skickas till kontoinnehavarna.
+Kreditaviseringar meddelar dig när din Azure-förskottsbetalning (kallades tidigare ekonomiskt åtagande) har förbrukats. Azure-förskottsbetalning är till för organisationer med Enterprise-avtal. Kreditaviseringar genereras automatiskt vid 90 % och vid 100 % av ditt kreditsaldo för Azure-förskottsbetalning. När en avisering genereras återspeglas den i kostnadsaviseringar och i e-postmeddelandet som skickas till kontoinnehavarna.
 
 ## <a name="department-spending-quota-alerts"></a>Aviseringar för avdelningens utgiftskvot
 

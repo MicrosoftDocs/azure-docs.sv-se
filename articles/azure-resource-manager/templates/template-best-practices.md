@@ -3,12 +3,12 @@ title: Metodtips för mallar
 description: Beskriver rekommenderade metoder för att redigera Azure Resource Manager mallar (ARM-mallar). Innehåller förslag på hur du undviker vanliga problem när du använder mallar.
 ms.topic: conceptual
 ms.date: 12/01/2020
-ms.openlocfilehash: 85d58098508d5ac7cad6c1cb3cb68ad6c7f179f9
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: c0b26c300a9474cc5db0b1a7b732c4416a9e6f5f
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97724994"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696354"
 ---
 # <a name="arm-template-best-practices"></a>Metod tips för ARM-mall
 
@@ -26,7 +26,7 @@ Du är också begränsad till:
 * 64-utmatnings värden
 * 24 576 tecken i ett mall uttryck
 
-Du kan överskrida vissa begränsningar för mallar genom att använda en kapslad mall. Mer information finns i [använda länkade och kapslade mallar när du distribuerar Azure-resurser](linked-templates.md). Om du vill minska antalet parametrar, variabler eller utdata kan du kombinera flera värden i ett objekt. Mer information finns i [objekt som parametrar](/azure/architecture/building-blocks/extending-templates/objects-as-parameters).
+Du kan överskrida vissa begränsningar för mallar genom att använda en kapslad mall. Mer information finns i [använda länkade och kapslade mallar när du distribuerar Azure-resurser](linked-templates.md). Om du vill minska antalet parametrar, variabler eller utdata kan du kombinera flera värden i ett objekt. Mer information finns i [objekt som parametrar](/azure/architecture/guide/azure-resource-manager/advanced-templates/objects-as-parameters).
 
 ## <a name="resource-group"></a>Resursgrupp
 

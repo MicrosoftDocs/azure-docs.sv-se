@@ -8,12 +8,12 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: b7d7380114046fbeaaf4b6eb2660997d64168715
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 390a8b421a7b34391bde689e4b968fa98cdbaf76
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91368574"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599172"
 ---
 # <a name="optimize-azure-databricks-costs-with-a-pre-purchase"></a>Optimera Azure Databricks-kostnader med ett förhandsköp
 
@@ -48,7 +48,7 @@ Du kan köpa Databricks-planer i [Azure-portalen](https://portal.azure.com/#blad
 **Så här köper du:**
 
 1. Gå till [Azure-portalen](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22Databricks%22%7D).
-1. Välj en prenumeration. Använd **prenumerationslistan** och välj den prenumeration som används till att betala för den reserverade kapaciteten. Betalningsmetoden för prenumerationen debiteras förhandskostnaderna för den reserverade kapaciteten. Avgifterna dras från registreringens saldo för ekonomiskt åtagande eller debiteras som överförbrukning.
+1. Välj en prenumeration. Använd **prenumerationslistan** och välj den prenumeration som används till att betala för den reserverade kapaciteten. Betalningsmetoden för prenumerationen debiteras förhandskostnaderna för den reserverade kapaciteten. Avgifterna dras från saldot för Azure-förskottsbetalningen (kallades tidigare ekonomiskt åtagande) om det finns ett sådant eller debiteras som överförbrukning.
 1. Välj ett omfång. Använd **omfångslistan** till att välja ett prenumerationsomfång:
     - **Omfång för enskild resursgrupp** – reservationsrabatten tillämpas endast på matchande resurser i den valda resursgruppen.
     - **Omfång för enskild prenumeration** – reservationsrabatten tillämpas på matchande resurser i den valda prenumerationen.

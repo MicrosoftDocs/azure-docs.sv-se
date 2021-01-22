@@ -13,19 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 3d6c494232456b4819c9275d66fa6f7ab5de9b77
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c2ac03f600f57ae97cebb77e3b67bcd466955d0b
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89260738"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695415"
 ---
 # <a name="get-started-with-azure-ad-authentication-by-using-the-azure-portal"></a>Kom igång med Azure AD-autentisering med Azure-portalen
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> Inga nya funktioner läggs till i Media Services v2. <br/>Kolla in den senaste versionen [Media Services v3](../latest/index.yml). Se även [vägledning för migrering från v2 till v3](../latest/migrate-from-v2-to-v3.md)
+> Inga nya funktioner läggs till i Media Services v2. <br/>Kolla in den senaste versionen [Media Services v3](../latest/index.yml). Se även [vägledning för migrering från v2 till v3](../latest/migrate-v-2-v-3-migration-introduction.md)
 
 Lär dig hur du använder Azure Portal för att komma åt Azure Active Directory-autentisering (Azure AD) för att få åtkomst till Azure Media Services API.
 
@@ -45,7 +45,7 @@ På den här sidan kan du välja den autentiseringsmetod som du vill använda f�
 
 1. I [Azure Portal](https://portal.azure.com/)väljer du ditt Media Services-konto.
 2. Välj hur du vill ansluta till Media Services API.
-3. Under **Anslut till Media Services-API**väljer du den Media Services API-version som du vill ansluta till.
+3. Under **Anslut till Media Services-API** väljer du den Media Services API-version som du vill ansluta till.
 
 ## <a name="service-principal-authentication--recommended"></a>Autentisering av tjänstens huvud namn (rekommenderas)
 

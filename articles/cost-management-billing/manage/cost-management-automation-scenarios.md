@@ -9,12 +9,12 @@ ms.subservice: common
 ms.topic: reference
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 8cef36cf26231758eb839379d0c020484cbe09fb
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: e0a7553269e1223a5e744db967d65814877878ab
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132609"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98598277"
 ---
 # <a name="automation-scenarios-for-billing-and-cost-management"></a>Automationsscenarier för fakturering och kostnadshantering
 
@@ -103,7 +103,7 @@ Följande API:er gäller endast för Enterprise:
 ### <a name="whats-the-difference-between-the-enterprise-reporting-apis-and-the-consumption-apis-when-should-i-use-each"></a>Vad är skillnaden mellan API:erna för företagsrapportering och förbruknings-API:erna? När ska jag använda respektive API?
 Dessa API:er har en liknande uppsättning funktioner och kan besvara samma breda uppsättning frågor vad gäller fakturering och kostnadshantering. Men de riktar sig till olika målgrupper:
 
-- API:er för företagsrapportering är tillgängliga för kunder som har registrerat ett Enterprise-avtal med Microsoft som ger dem tillgång till förhandlade ekonomiska åtaganden och anpassad prissättning. API:erna kräver en nyckel som du kan hämta från [Enterprise-portalen](https://ea.azure.com). En beskrivning av dessa API:er finns i [översikten över rapporterings-API:er för Enterprise-kunder](enterprise-api.md).
+- API:er för företagsrapportering är tillgängliga för kunder som har signerat ett Enterprise-avtal med Microsoft som ger dem tillgång till förhandlad Azure-förskottsbetalning (kallades tidigare ekonomiskt åtagande) och anpassad prissättning. API:erna kräver en nyckel som du kan hämta från [Enterprise-portalen](https://ea.azure.com). En beskrivning av dessa API:er finns i [översikten över rapporterings-API:er för Enterprise-kunder](enterprise-api.md).
 
 - Förbruknings-API:er är tillgängliga för alla kunder, med några undantag. Mer information finns i [Översikt över API för Azure Consumption](consumption-api-overview.md) och [referensen för förbruknings-API i Azure](/rest/api/consumption/). Vi rekommenderar de tillhandahållna API:erna som lösning för de senaste utvecklingsscenarierna.
 
@@ -112,7 +112,7 @@ Dessa API:er erbjuder data som skiljer sig i grunden:
 
 - [API:et för användningsinformation](/rest/api/consumption/usagedetails) ger information om Azure-användning och kostnader per mätarinstans. Tillhandahållna data har redan passerat genom kostnadsmätningssystemet i Azure, och kostnader samt andra möjliga ändringar har tillämpats på dem:
 
-   - Ändringar av kontot för användning av förbetalda ekonomiska åtaganden
+   - Ändringar av kontot för användning av förbetald Azure-förskottsbetalning
    - Ändringar av kontot för användningsskillnader som identifieras av Azure
 
 - [API:er för användning](/previous-versions/azure/reference/mt219003(v=azure.100)) ger rå Azure-användningsinformation innan den går genom systemet för kostnadsberäkning i Azure. Dessa data har kanske inte någon korrelation med den användning eller det avgiftsbelopp som visas efter Azure-systemet för avgiftsberäkning.

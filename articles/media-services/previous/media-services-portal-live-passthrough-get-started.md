@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 707c12cac6bbceee925c4710eff29482f687d47f
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 08d1e9cd281cf41a79d1b30d709062c01abbab33
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93040737"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695449"
 ---
 # <a name="perform-live-streaming-with-on-premises-encoders-using-azure-portal"></a>Utför Direktsänd strömning med lokala kodare med hjälp av Azure Portal
 
@@ -33,7 +33,7 @@ ms.locfileid: "93040737"
 > 
 
 > [!NOTE]
-> Inga nya funktioner läggs till i Media Services v2. <br/>Kolla in den senaste versionen [Media Services v3](../latest/index.yml). Se även [vägledning för migrering från v2 till v3](../latest/migrate-from-v2-to-v3.md)
+> Inga nya funktioner läggs till i Media Services v2. <br/>Kolla in den senaste versionen [Media Services v3](../latest/index.yml). Se även [vägledning för migrering från v2 till v3](../latest/migrate-v-2-v-3-migration-introduction.md)
 
 Den här vägledningen visar dig stegen för att använda Azure-portalen för att skapa en **kanal** som är konfigurerad för en genomströmningsleverans. 
 
@@ -55,7 +55,7 @@ Vi rekommenderar att du tittar närmare på följande artiklar:
 Följande steg beskriver uppgifter som ingår i att skapa vanliga appar för direktsänd strömning som använder kanaler som har konfigurerats för genomströmningsleverans. Den här vägledningen visar hur du skapar och hanterar en genomströmningskanal och direktsända händelser.
 
 > [!NOTE]
-> Kontrollera att slutpunkten för direktuppspelning som du vill spela upp innehåll från har tillståndet **Körs** . 
+> Kontrollera att slutpunkten för direktuppspelning som du vill spela upp innehåll från har tillståndet **Körs**. 
     
 1. Anslut en videokamera till en dator. <br/>För installations tips kan du läsa mer i installations [programmet för enkel och bärbar händelse]( https://link.medium.com/KNTtiN6IeT).
 1. Starta och konfigurera en lokal direktsänd kodare som matar ut en RTMP- eller fragmenterad MP4-dataström i multibithastighet. Mer information finns i [Support och direktsända kodare för Azure Media Services RTMP](https://go.microsoft.com/fwlink/?LinkId=532824).<br/>Ta också en titt på den här bloggen: [produktion av Direktsänd strömning med onlinebanksystem](https://link.medium.com/ttuwHpaJeT).
@@ -90,7 +90,7 @@ Klicka på meddelandeikonen om du vill visa meddelanden och fel som genereras av
 ## <a name="create-and-start-pass-through-channels-and-events"></a>Skapa och starta genomströmningskanaler och händelser
 En kanal är associerad med händelser och program som gör att du kan styra publicering och lagring av segment i en direktsänd dataström. Kanaler hanterar händelser. 
 
-Du kan ange det antal timmar som du vill behålla inspelat innehåll för programmet genom att ställa in längden för **Arkivfönster** . Det här värdet kan anges från minst 5 minuter till högst 25 timmar. Även arkivfönstrets längd påverkar den maximala tid som klienter kan söka bakåt i tiden från den aktuella direktsända positionen. Händelser kan köras under den angivna tidsperioden men innehåll som understiger fönsterlängden ignoreras kontinuerligt. Värdet för den här egenskapen avgör också hur länge klientmanifesten kan växa.
+Du kan ange det antal timmar som du vill behålla inspelat innehåll för programmet genom att ställa in längden för **Arkivfönster**. Det här värdet kan anges från minst 5 minuter till högst 25 timmar. Även arkivfönstrets längd påverkar den maximala tid som klienter kan söka bakåt i tiden från den aktuella direktsända positionen. Händelser kan köras under den angivna tidsperioden men innehåll som understiger fönsterlängden ignoreras kontinuerligt. Värdet för den här egenskapen avgör också hur länge klientmanifesten kan växa.
 
 Varje händelse är associerad till en tillgång. För att publicera händelsen måste du skapa en OnDemand-lokaliserare för den associerade tillgången. Med den här lokaliseraren kan du skapa en strömnings-URL som du kan tillhandahålla till dina klienter.
 
@@ -112,7 +112,7 @@ Detta avsnitt visar hur du använder alternativet **Snabbregistrering** för att
 Mer information om genomströmningskanaler finns i [Liveuppspelning med lokala kodare som skapar dataströmmar i multibithastighet](media-services-live-streaming-with-onprem-encoders.md).
 
 1. Välj ditt Azure Media Services-konto i [Azure-portalen](https://portal.azure.com/).
-2. I fönstret **Inställningar** klickar du på **Direktsänd strömning** . 
+2. I fönstret **Inställningar** klickar du på **Direktsänd strömning**. 
    
     ![Komma igång](./media/media-services-portal-passthrough-get-started/media-services-getting-started.png)
    
@@ -120,13 +120,13 @@ Mer information om genomströmningskanaler finns i [Liveuppspelning med lokala k
 3. Klicka på **Snabbregistrering** för att skapa en genomströmningskanal med RTMP-infogningsprotokollet.
    
     Fönstret **SKAPA EN NY KANAL** visas.
-4. Namnge den nya kanalen och klicka på **Skapa** . 
+4. Namnge den nya kanalen och klicka på **Skapa**. 
    
     Detta skapar en genomströmningskanal med RTMP-infogningsprotokollet.
 
 ## <a name="create-events"></a>Skapa händelser
 1. Välj en kanal till vilken du vill lägga till en händelse.
-2. Tryck på knappen **Direktsänd händelse** .
+2. Tryck på knappen **Direktsänd händelse**.
 
 ![Händelse](./media/media-services-portal-passthrough-get-started/media-services-create-events.png)
 
@@ -151,7 +151,7 @@ Mer information om genomströmningskanaler finns i [Liveuppspelning med lokala k
 ## <a name="view-archived-content"></a>Visa arkiverat innehåll
 Även efter att du stoppat och tagit bort händelsen skulle användarna kunna strömma ditt arkiverade innehåll som en video på begäran så länge du inte tar bort tillgången. En tillgång kan inte tas bort om den används av en händelse. Händelsen måste tas bort först. 
 
-Om du vill hantera dina till gångar väljer du **inställning** och klickar på **till gångar** .
+Om du vill hantera dina till gångar väljer du **inställning** och klickar på **till gångar**.
 
 ![Tillgångar](./media/media-services-portal-passthrough-get-started/media-services-assets.png)
 

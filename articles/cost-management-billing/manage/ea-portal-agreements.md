@@ -3,17 +3,17 @@ title: Azure EA-avtal och ändringar
 description: I den här artikeln förklaras hur Azure EA-avtal och ändringar påverkar din användning av Azure EA-portalen.
 author: bandersmsft
 ms.author: banders
-ms.date: 09/03/2020
+ms.date: 01/19/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: 9e6750bd8404b4f9b910dda93859a0ca3fd268d4
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: c2c3636e98d67616826b03cca9657b806c5bd653
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442538"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98598004"
 ---
 # <a name="azure-ea-agreements-and-amendments"></a>Azure EA-avtal och ändringar
 
@@ -21,7 +21,7 @@ I den här artikeln beskrivs hur Azure EA-avtal och ändringar kan påverka åtk
 
 ## <a name="enrollment-provisioning-status"></a>Status för registreringens etablering
 
-Startdatumet för en ny Azure-förskottsbetalning definieras som det datum då det regionala åtgärdscentret bearbetade det. Eftersom Azure-förskottsbetalningsorder via Azure EA-portalen bearbetas i UTC-tidszonen, kan det uppstå en fördröjning om din Azure-förskottsbetalningsorder bearbetades i en annan region. Startdatumet för täckningen på inköpsordern är startdatumet för Azure-förskottsbetalningen. Startdatumet för täckningen är det datum då Azure-förskottsbetalningen visas på Azure EA-portalen.
+Startdatumet för en ny Azure-förskottsbetalning (kallades tidigare ekonomiskt åtagande) definieras av det datum då det regionala driftcentret bearbetade den. Eftersom Azure-förskottsbetalningsorder via Azure EA-portalen bearbetas i UTC-tidszonen, kan det uppstå en fördröjning om din Azure-förskottsbetalningsorder bearbetades i en annan region. Startdatumet för täckningen på inköpsordern är startdatumet för Azure-förskottsbetalningen. Startdatumet för täckningen är det datum då Azure-förskottsbetalningen visas på Azure EA-portalen.
 
 ## <a name="support-for-enterprise-customers"></a>Support för Enterprise-kunder
 
@@ -60,7 +60,7 @@ Microsoft använder inte det angivna pålägget och tillhörande priser för nå
 
 ### <a name="how-the-calculation-works"></a>Så här fungerar beräkningen
 
-Licenstjänsteleverantören tillhandahåller ett enda procentvärde i EA-portalen.  All kommersiell information på portalen lyfts upp av procenttalet som anges av licenstjänsteleverantören. Exempel:
+Licenstjänsteleverantören tillhandahåller ett enda procentvärde i EA-portalen.    All kommersiell information på portalen lyfts upp av procenttalet som anges av licenstjänsteleverantören. Exempel:
 
 - Kunden signerar ett EA med en Azure-förskottsbetalning på 100 000 USD.
 - Mätarpriset för tjänst A är 10 USD/timme.
@@ -101,13 +101,14 @@ Se till att granska den kommersiella informationen – saldo, prislista osv inna
 Granska påläggspriset i _Sammanfattning av användning_ för förskottsbetalningsperioden i kundvyn. Microsoft-priset är fortfarande tillgängligt i partnervyn. Vyerna kan växlas med hjälp av partnerpåläggets växlingsknapp för personer högst upp till höger.
 
 1. Granska priserna i prisdokumentet.
-1. Du kan göra ändringar innan du publicerar genom att välja **Edit** (Redigera) på fliken _View Usage Summary > Customer View_ (Visa användningssammanfattning > Kundvy).  
-  Pålägg görs för både tjänsterna och förskottsbetalningssaldon med samma procentsatser. Om du har olika procentsatser för saldo och mätarpriser, eller olika procentsatser för olika tjänster, ska du inte använda den här funktionen.
+1. Du kan göra ändringar innan du publicerar genom att välja **Edit** (Redigera) på fliken _View Usage Summary > Customer View_ (Visa användningssammanfattning > Kundvy). 
+   
+Pålägg görs för både tjänsterna och förskottsbetalningssaldon med samma procentsatser. Om du har olika procentsatser för saldo och mätarpriser, eller olika procentsatser för olika tjänster, ska du inte använda den här funktionen.
 
 **Steg tre: Publicera**
 
 När priserna har granskats och verifierats klickar du på **Publish** (Publicera).
-  
+  
 Priser med pålägg blir tillgängliga för företagsadministratörer direkt efter att du har valt publicera. Redigeringar kan inte göras av pålägg. Du måste inaktivera pålägg och börja om med steg 1.
 
 ### <a name="which-enrollments-have-a-markup-enabled"></a>Vilka registreringar har pålägg aktiverat?

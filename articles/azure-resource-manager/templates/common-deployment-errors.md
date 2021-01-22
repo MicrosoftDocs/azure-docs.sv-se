@@ -4,12 +4,12 @@ description: Beskriver hur du löser vanliga fel när du distribuerar resurser t
 tags: top-support-issue
 ms.topic: troubleshooting
 ms.date: 01/20/2021
-ms.openlocfilehash: bb701baf164cfd6ba1dd5c670a406343e83c5c70
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 61a306cd36c55a005ee9ebd897fcfc9a6c88d7c9
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98622819"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696404"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Felsöka vanliga fel i Azure-distributioner med Azure Resource Manager
 
@@ -25,7 +25,7 @@ Om du letar efter information om en felkod och informationen inte finns i den h�
 | AccountPropertyCannotBeSet | Kontrol lera egenskaperna för tillgängligt lagrings konto. | [storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |
 | AllocationFailed | Det finns inga tillgängliga resurser för klustret eller regionen eller så stöds inte den begärda virtuella dator storleken. Försök igen vid ett senare tillfälle eller begär en annan VM-storlek. | [Etablerings-och tilldelnings problem för Linux](../../virtual-machines/troubleshooting/troubleshoot-deployment-new-vm-linux.md), [etablering och tilldelning av Windows](../../virtual-machines/troubleshooting/troubleshoot-deployment-new-vm-windows.md) och [fel sökning av allokeringsfel](../../virtual-machines/troubleshooting/allocation-failure.md)|
 | AnotherOperationInProgress | Vänta tills den samtidiga åtgärden har slutförts. | |
-| AuthorizationFailed | Ditt konto eller tjänstens huvud namn har inte tillräcklig åtkomst för att slutföra distributionen. Kontrol lera vilken roll ditt konto tillhör och dess åtkomst till distributions omfånget.<br><br>Du kan få det här felet när en resurs leverantör som krävs inte är registrerad. | [Rollbaserad åtkomst kontroll i Azure (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md)<br><br>[Lös registrering](error-register-resource-provider.md) |
+| AuthorizationFailed | Ditt konto eller tjänstens huvud namn har inte tillräcklig åtkomst för att slutföra distributionen. Kontrol lera vilken roll ditt konto tillhör och dess åtkomst till distributions omfånget.<br><br>Du kan få det här felet när en resurs leverantör som krävs inte är registrerad. | [Azure RBAC (rollbaserad åtkomstkontroll)](../../role-based-access-control/role-assignments-portal.md)<br><br>[Lös registrering](error-register-resource-provider.md) |
 | BadRequest | Du skickade distributions värden som inte matchar det som förväntas av Resource Manager. Kontrol lera meddelandet om inre status för att få hjälp med fel sökning. | [Referera till mallar](/azure/templates/) och [platser som stöds](resource-location.md) |
 | Konflikt | Du begär en åtgärd som inte är tillåten i resursens aktuella tillstånd. Till exempel tillåts disk storleks ändring bara när du skapar en virtuell dator eller när den virtuella datorn frigörs. | |
 | DeploymentActiveAndUneditable | Vänta tills en samtidig distribution till den här resurs gruppen har slutförts. | |
@@ -37,7 +37,7 @@ Om du letar efter information om en felkod och informationen inte finns i den h�
 | DeploymentJobSizeExceeded | Förenkla din mall för att minska storleken. | [Lös fel i mal Lav Tor lek](error-job-size-exceeded.md) |
 | DnsRecordInUse | DNS-postens namn måste vara unikt. Ange ett annat namn. | |
 | ImageNotFound | Kontrol lera inställningarna för VM-avbildningar. |  |
-| InUseSubnetCannotBeDeleted | Du kan få det här felet när du försöker uppdatera en resurs, och begäran bearbetas genom att ta bort och skapa resursen. Se till att du anger alla värden som inte har ändrats. | [Uppdatera resurs](/azure/architecture/building-blocks/extending-templates/update-resource) |
+| InUseSubnetCannotBeDeleted | Du kan få det här felet när du försöker uppdatera en resurs, och begäran bearbetas genom att ta bort och skapa resursen. Se till att du anger alla värden som inte har ändrats. | [Uppdatera resurs](/azure/architecture/guide/azure-resource-manager/advanced-templates/update-resource) |
 | InvalidAuthenticationTokenTenant | Hämta åtkomsttoken för lämplig klient organisation. Du kan bara hämta token från den klient som ditt konto tillhör. | |
 | InvalidContentLink | Du har troligen försökt länka till en kapslad mall som inte är tillgänglig. Dubbelt kontrol lera den URI du angav för den kapslade mallen. Om mallen finns i ett lagrings konto kontrollerar du att URI: n är tillgänglig. Du kan behöva skicka en SAS-token. För närvarande kan du inte länka till en mall som finns i ett lagrings konto bakom en [Azure Storage-brandvägg](../../storage/common/storage-network-security.md). Överväg att flytta mallen till en annan lagrings plats, t. ex. GitHub. | [Länkade mallar](linked-templates.md) |
 | InvalidDeploymentLocation | När du distribuerar på prenumerations nivå har du angett en annan plats för ett tidigare använt distributions namn. | [Distributioner av prenumerations nivå](deploy-to-subscription.md) |
@@ -64,7 +64,7 @@ Om du letar efter information om en felkod och informationen inte finns i den h�
 | PasswordTooLong | Du kanske har valt ett lösen ord med för många tecken eller konverterat ditt lösen ord till en säker sträng innan du skickar det som en parameter. Om mallen innehåller en **säker sträng** -parameter behöver du inte konvertera värdet till en säker sträng. Ange lösen ordets värde som text. |  |
 | PrivateIPAddressInReservedRange | Den angivna IP-adressen innehåller ett adress intervall som krävs av Azure. Ändra IP-adress för att undvika reserverat intervall. | [IP-adresser](../../virtual-network/public-ip-addresses.md) |
 | PrivateIPAddressNotInSubnet | Den angivna IP-adressen ligger utanför under nätets intervall. Ändra IP-adressen så att den hamnar inom under nätets intervall. | [IP-adresser](../../virtual-network/public-ip-addresses.md) |
-| PropertyChangeNotAllowed | Vissa egenskaper kan inte ändras i en distribuerad resurs. Begränsa ändringarna till tillåtna egenskaper när du uppdaterar en resurs. | [Uppdatera resurs](/azure/architecture/building-blocks/extending-templates/update-resource) |
+| PropertyChangeNotAllowed | Vissa egenskaper kan inte ändras i en distribuerad resurs. Begränsa ändringarna till tillåtna egenskaper när du uppdaterar en resurs. | [Uppdatera resurs](/azure/architecture/guide/azure-resource-manager/advanced-templates/update-resource) |
 | RequestDisallowedByPolicy | Din prenumeration innehåller en resurs princip som förhindrar en åtgärd som du försöker utföra under distributionen. Hitta principen som blockerar åtgärden. Om möjligt kan du ändra distributionen för att uppfylla begränsningarna från principen. | [Lös principer](error-policy-requestdisallowedbypolicy.md) |
 | ReservedResourceName | Ange ett resurs namn som inte innehåller ett reserverat namn. | [Reserverade resurs namn](error-reserved-resource-name.md) |
 | ResourceGroupBeingDeleted | Vänta tills borttagningen har slutförts. | |

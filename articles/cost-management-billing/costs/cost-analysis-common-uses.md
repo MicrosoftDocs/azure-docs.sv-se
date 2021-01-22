@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
-ms.openlocfilehash: c03bf5e52ae7f6b259c7b744e6033d760af23dd0
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 72b371fd1184c9c9e69593c5ad7e57310abf1de2
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683682"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600025"
 ---
 # <a name="common-cost-analysis-uses"></a>Vanlig användning av kostnadsanalyser
 
@@ -198,7 +198,7 @@ Kostnaderna visas bara för din aktiva registrering. Om du överförde en regist
 
 
 1. Gå till **Cost Management och fakturering** > **Översikt** i Azure-portalen.
-1. Klicka på **Uppdelning** för den aktuella månaden och se uppdelningen av ditt ekonomiska åtagande.  
+1. Klicka på **Uppdelning** för den aktuella månaden så ser du detaljerad information om din Azure förskottsbetalning (kallades tidigare ekonomiskt åtagande).  
     [![Översikt över EA-kostnader – sammanfattning av uppdelning](./media/cost-analysis-common-uses/breakdown1.png)](./media/cost-analysis-common-uses/breakdown1.png#lightbox)
 1.  Klicka på fliken **Användning och avgifter** och visa den föregående månadens uppdelning under det valda tidsintervallet.  
     [![Fliken Användning och avgifter](./media/cost-analysis-common-uses/breakdown2.png)](./media/cost-analysis-common-uses/breakdown2.png#lightbox)

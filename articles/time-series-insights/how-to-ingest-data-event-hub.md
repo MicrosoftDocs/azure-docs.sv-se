@@ -9,14 +9,14 @@ manager: diviso
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 09/30/2020
+ms.date: 01/21/2021
 ms.custom: seodec18
-ms.openlocfilehash: 7d672da30a4d81ead9115fc6b829c35aeab3ee6a
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: f4b5d4915cd6520edd7a45af85a836c3360eee32
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95016827"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696337"
 ---
 # <a name="add-an-event-hub-event-source-to-your-azure-time-series-insights-environment"></a>Lägg till händelse källan för Event Hub i Azure Time Series Insightss miljön
 

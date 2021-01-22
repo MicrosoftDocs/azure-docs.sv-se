@@ -15,19 +15,19 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 591f69855204c4489eb3e9c6edb3900044dda2db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c5a1c45290d07099c1f7d202854284ef638ad638
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89258409"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695983"
 ---
 # <a name="monitor-job-progress-using-net"></a>Övervaka jobb förloppet med hjälp av .NET
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> Inga nya funktioner läggs till i Media Services v2. <br/>Kolla in den senaste versionen [Media Services v3](../latest/index.yml). Se även [vägledning för migrering från v2 till v3](../latest/migrate-from-v2-to-v3.md)
+> Inga nya funktioner läggs till i Media Services v2. <br/>Kolla in den senaste versionen [Media Services v3](../latest/index.yml). Se även [vägledning för migrering från v2 till v3](../latest/migrate-v-2-v-3-migration-introduction.md)
 
 När du kör jobb krävs ofta ett sätt att spåra jobbets förlopp. Du kan kontrol lera förloppet genom att definiera en händelse hanterare för StateChanged (enligt beskrivningen i det här avsnittet) eller använda Azure Queue Storage för att övervaka Media Services jobb meddelanden (enligt beskrivningen i [det här](media-services-dotnet-check-job-progress-with-queues.md) avsnittet).
 

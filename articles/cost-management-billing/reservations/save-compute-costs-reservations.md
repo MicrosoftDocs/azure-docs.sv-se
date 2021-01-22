@@ -8,12 +8,12 @@ ms.subservice: reservations
 ms.topic: overview
 ms.date: 12/15/2020
 ms.author: banders
-ms.openlocfilehash: b79bde204d82b069b3314855a45a680b863c3f69
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 0e45e9741e92bb9e1fe23af79695cae06e64e871
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97560499"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602058"
 ---
 # <a name="what-are-azure-reservations"></a>Vad är Azure Reservations?
 
@@ -56,7 +56,7 @@ Mer information finns i [Köpa en reservation](prepare-buy-reservation.md).
 
 ## <a name="how-is-a-reservation-billed"></a>Hur faktureras en reservation? 
 
-En reservation debiteras enligt den betalningsmetod som är kopplad till prenumerationen. Reservationskostnaden dras av från ditt saldo för ekonomiskt åtagande i förekommande fall. När ditt saldo för ekonomiskt åtagande inte täcker kostnaden för reservationen debiteras du för överförbrukningen. Om du har en prenumeration från en enskild plan med Betala per användning-priser debiteras det kreditkort som du har på ditt konto omedelbart för förskottsköp. Månatliga betalningar visas på din faktura, och ditt kreditkort debiteras månatligen. När du faktureras per faktura visas avgifterna på nästa faktura. 
+En reservation debiteras enligt den betalningsmetod som är kopplad till prenumerationen. Reservationskostnaden dras av från saldot på din Azure-förskottsbetalning (kallades tidigare ekonomiskt åtagande), om tillgängligt. Om ditt saldo för Azure-förskottsbetalning inte täcker kostnaden för reservationen debiteras du för överförbrukningen. Om du har en prenumeration från en enskild plan med Betala per användning-priser debiteras det kreditkort som du har på ditt konto omedelbart för förskottsköp. Månatliga betalningar visas på din faktura, och ditt kreditkort debiteras månatligen. När du faktureras per faktura visas avgifterna på nästa faktura. 
 
 ## <a name="who-can-manage-a-reservation-by-default"></a>Vem kan hantera en reservation som standard?
 

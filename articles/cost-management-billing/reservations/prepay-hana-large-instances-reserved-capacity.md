@@ -8,12 +8,12 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: d6d0d0a4c4b3328fa50777b5106bac202c9972ef
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: ea1ee2311d8655ce17017c73309bc69e89f4b5f4
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151495"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599121"
 ---
 # <a name="save-on-sap-hana-large-instances-with-an-azure-reservation"></a>Få rabatt på SAP HANA – stora instanser med en Azure-reservation
 
@@ -224,7 +224,7 @@ Här förklaras innebörden av de olika reservationsfälten.
 
   **Typ av reserverad resurs** `SapHana`
 
-  **Prenumeration** prenumerationen som används för att betala reservationen. Reservationen debiteras via prenumerationens betalningsmetod. Prenumerationstypen måste vara EA (erbjudandenummer: MS-AZR-0017P eller MS-AZR-0148P) eller Microsoft-kundavtal. Avgifterna dras från saldot för det ekonomiska åtagandet om det finns ett sådant eller debiteras som överförbrukning.
+  **Prenumeration** prenumerationen som används för att betala reservationen. Reservationen debiteras via prenumerationens betalningsmetod. Prenumerationstypen måste vara EA (erbjudandenummer: MS-AZR-0017P eller MS-AZR-0148P) eller Microsoft-kundavtal. Avgifterna dras från saldot för Azure-förskottsbetalningen (kallades tidigare ekonomiskt åtagande) om det finns ett sådant eller debiteras som överförbrukning.
 
   **Omfång** reservationens omfång måste vara ett enskilt omfång.
 

@@ -2,13 +2,13 @@
 title: Azure Service Bus vanliga frågor och svar (FAQ) | Microsoft Docs
 description: Den här artikeln innehåller svar på några vanliga frågor och svar om Azure Service Bus.
 ms.topic: article
-ms.date: 09/16/2020
-ms.openlocfilehash: e5bc9aae081868c92e0968c88c8cb6dcfb8ee57c
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.date: 01/20/2021
+ms.openlocfilehash: 3a96cf94ca4a7edd115f12b3e2eded11a5894e04
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 01/22/2021
-ms.locfileid: "98676382"
+ms.locfileid: "98693417"
 ---
 # <a name="azure-service-bus---frequently-asked-questions-faq"></a>Vanliga frågor och svar om Azure Service Bus
 
@@ -35,8 +35,11 @@ Ordningen är inte säkerställd när du använder partitionerade entiteter. I h
 
  Partitionerade entiteter stöds inte längre i [Premium-SKU: n](service-bus-premium-messaging.md). 
 
-### <a name="where-does-azure-service-bus-store-customer-data"></a><a name="in-region-data-residency"></a>Var lagrar Azure Service Bus kund information?
-Azure Service Bus lagrar kund information. Dessa data lagras automatiskt av Service Bus i en enda region, så den här tjänsten uppfyller automatiskt placering-kraven för regions data, inklusive de som anges i [säkerhets Center](https://azuredatacentermap.azurewebsites.net/).
+### <a name="where-does-azure-service-bus-store-data"></a><a name="in-region-data-residency"></a>Var lagrar Azure Service Bus data?
+Azure Service Bus standard nivån använder Azure SQL Database för sitt Server dels lagrings lager. För alla regioner utom Brasilien och Sydostasien finns säkerhets kopian av databasen i en annan region (vanligt vis i den Azure-kopplade regionen). För södra Brasilien och Sydostasien regioner lagras databas säkerhets kopior i samma region för att tillgodose placering-krav för de här regionerna.
+
+Azure Service Bus Premium-nivån lagrar metadata och data i regioner som du väljer. När geo-haveri beredskap har kon figurer ATS för ett Azure Service Bus Premium-namnområde kopieras metadata till den sekundära regionen som du väljer.
+
 
 ### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>Vilka portar måste jag öppna i brand väggen? 
 Du kan använda följande protokoll med Azure Service Bus för att skicka och ta emot meddelanden:

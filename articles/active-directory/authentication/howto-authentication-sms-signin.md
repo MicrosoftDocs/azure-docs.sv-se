@@ -11,16 +11,16 @@ author: justinha
 manager: daveba
 ms.reviewer: rateller
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43573b54be6884e01121e404370d2e1d85a3c4e8
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: d9430066ad92b4d0b69bd07c763e3f7b5d6e889a
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98660889"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98693544"
 ---
 # <a name="configure-and-enable-users-for-sms-based-authentication-using-azure-active-directory"></a>Konfigurera och aktivera användare för SMS-baserad autentisering med hjälp av Azure Active Directory 
 
-Azure Active Directory (Azure AD) tillhandahåller flera autentiseringsalternativ för att förenkla och säkra inloggning till program och tjänster. SMS-baserad autentisering gör det möjligt för användarna att logga in utan att behöva ange användar namn och lösen ord. När kontot har skapats av en identitets administratör kan de ange sitt telefonnummer vid inloggnings meddelandet. De får en autentiseringsnyckel via SMS som de kan ange för att slutföra inloggningen. Den här autentiseringsmetoden fören klar åtkomsten till program och tjänster, särskilt för anställda på arbets ledningen.
+Azure Active Directory (Azure AD) tillhandahåller flera autentiseringsalternativ för att förenkla och säkra inloggning till program och tjänster. SMS-baserad autentisering gör det möjligt för användarna att logga in utan att behöva ange användar namn och lösen ord. När kontot har skapats av en identitets administratör kan de ange sitt telefonnummer vid inloggnings meddelandet. De får en autentiseringsnyckel via SMS som de kan ange för att slutföra inloggningen. Den här autentiseringsmetoden fören klar åtkomsten till program och tjänster, särskilt för Frontline-anställda.
 
 Den här artikeln visar hur du aktiverar SMS-baserad autentisering för utvalda användare eller grupper i Azure AD.
 

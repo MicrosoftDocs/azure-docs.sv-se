@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: 7c8a35e7c8ecd0952f8e02b66c5071253d9b0445
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 072377f98939d996547cb6ee9f9a535b4b32a3dc
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348933"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98597956"
 ---
 # <a name="azure-ea-vm-reserved-instances"></a>Reserverade instanser av virtuella Azure EA-datorer
 
@@ -25,7 +25,7 @@ Du kan byta en reservation mot en annan reservation av samma typ. Du kan också 
 
 ### <a name="partial-refunds"></a>Partiella återbetalningar
 
-Vi utfärdar en partiell återbetalning när EA-kunder returnerar reservationer som köpts med överförbrukning, inte ekonomiskt åtagande.
+Vi utfärdar en partiell återbetalning när EA-kunder returnerar reservationer som köpts med överförbrukning, inte Azure-förskottsbetalning (kallades tidigare ekonomiskt åtagande).
 
 Återbetalningen visas i EA-portalen som en negativ justering i föregående månad och en positiv justering i aktuell månad. Den visas på ett sätt som liknar ett reservationsutbyte. Kreditnotan refererar till det ursprungliga fakturanumret. För att stämma av det första köpet med kreditnotan bör du därför se det ursprungliga fakturanumret.
 

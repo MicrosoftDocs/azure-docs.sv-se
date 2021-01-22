@@ -7,24 +7,24 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/15/2020
+ms.date: 01/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: ffb5a78c13413a46565a9c57c87dc8273742fd24
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 49364681f0c5b4b6cc4d5f20778edb61e9f6f5b3
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97563457"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695788"
 ---
 # <a name="security-in-azure-cognitive-search---overview"></a>Säkerhet i Azure Kognitiv sökning – översikt
 
-I den här artikeln beskrivs viktiga säkerhetsfunktioner i Azure Kognitiv sökning som kan skydda innehåll och åtgärder.
+I den här artikeln beskrivs säkerhetsfunktionerna i Azure Kognitiv sökning som skyddar innehåll och åtgärder.
 
-+ Vid lagrings nivån är kryptering vid vila inbyggt för allt tjänst hanterat innehåll som sparas på disk, inklusive index, synonym mappningar och definitioner av indexerare, data källor och färdighetsuppsättningar. Azure Kognitiv sökning stöder även tillägg av Kundhanterade nycklar (CMK) för kompletterande kryptering av indexerat innehåll. För tjänster som skapats efter 1 2020 augusti utökas CMK-kryptering till data på temporära diskar för fullständig dubbel kryptering av indexerat innehåll.
++ På lagrings nivån är data krypteringen inbyggd för allt tjänst hanterat innehåll som sparas till disk, inklusive index, synonym mappningar och definitioner av indexerare, data källor och färdighetsuppsättningar. Alternativt kan du lägga till Kundhanterade nycklar (CMK) för kompletterande kryptering av indexerat innehåll. För tjänster som skapats efter 1 2020 augusti utökas CMK-kryptering till data på temporära diskar, för fullständig "dubbel kryptering" av indexerat innehåll.
 
-+ Inkommande säkerhet skyddar Sök tjänstens slut punkt på ökade säkerhets nivåer: från API-nycklar på begäran till inkommande regler i brand väggen till privata slut punkter som helt skyddar din tjänst från det offentliga Internet.
++ Inkommande säkerhet syftar på skydd på Sök tjänstens slut punkt vid ökande säkerhets nivåer: från API-nycklar på begäran till inkommande regler i brand väggen till privata slut punkter som helt skyddar din tjänst från det offentliga Internet.
 
-+ Utgående säkerhet gäller indexerare som hämtar innehåll från externa källor. För utgående begär Anden ställer du in en hanterad identitet för att söka efter en betrodd tjänst vid åtkomst till data från Azure Storage, Azure SQL, Cosmos DB eller andra Azure-datakällor. En hanterad identitet är en ersättning för autentiseringsuppgifter eller åtkomst nycklar på anslutningen. Utgående säkerhet beskrivs inte i den här artikeln. Mer information om den här funktionen finns i [Anslut till en data källa med hjälp av en hanterad identitet](search-howto-managed-identities-data-sources.md).
++ Utgående säkerhet relaterar till indexerare som hämtar innehåll från externa källor. För utgående begär Anden ställer du in en hanterad identitet för att söka efter en betrodd tjänst vid åtkomst till data från Azure Storage, Azure SQL, Cosmos DB eller andra Azure-datakällor. En hanterad identitet är en ersättning för autentiseringsuppgifter eller åtkomst nycklar på anslutningen. Utgående säkerhet beskrivs inte i den här artikeln. Mer information om den här funktionen finns i [Anslut till en data källa med hjälp av en hanterad identitet](search-howto-managed-identities-data-sources.md).
 
 Titta på den här videon med snabb takt för en översikt över säkerhets arkitekturen och varje funktions kategori.
 
@@ -126,7 +126,7 @@ Hur en användare kommer åt ett index och andra objekt bestäms av typen av API
 
 Om du behöver detaljerad kontroll över varje användare över Sök resultat kan du bygga säkerhets filter på dina frågor och returnera dokument som är associerade med en viss säkerhets identitet. I stället för fördefinierade roller och roll tilldelningar implementeras identitetsbaserade åtkomst kontroller som ett *filter* som trimmar Sök Resultat för dokument och innehåll baserat på identiteter. I följande tabell beskrivs två metoder för att trimma Sök Resultat av obehörigt innehåll.
 
-| Metod | Description |
+| Metod | Beskrivning |
 |----------|-------------|
 |[Säkerhets trimning baserat på identitets filter](search-security-trimming-for-azure-search.md)  | Dokumenterar det grundläggande arbets flödet för att implementera åtkomst kontroll för användar identitet. Det omfattar att lägga till säkerhets identifierare i ett index och sedan förklarar filtreringen för fältet för att trimma resultat från otillåtet innehåll. |
 |[Säkerhets trimning baserat på Azure Active Directory identiteter](search-security-trimming-for-azure-search-with-aad.md)  | Den här artikeln visar hur du hämtar identiteter från Azure Active Directory (Azure AD), en av de [kostnads fria tjänsterna](https://azure.microsoft.com/free/) i Azure Cloud Platform. |

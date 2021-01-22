@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 50a0fe0fa5dece41ac9e343d5a8939e8d9dc634e
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 9e48d14419e2cd24251f1b00a09fd0289c50c55f
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426880"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98693815"
 ---
 # <a name="media-services-v3-frequently-asked-questions"></a>Vanliga frågor och svar om Media Services v3
 
@@ -30,7 +30,7 @@ Den här artikeln innehåller svar på vanliga frågor om Azure Media Services v
 
 Du kan använda [Azure Portal](https://portal.azure.com/) för att hantera v3 Live-händelser, Visa v3-till gångar och jobb, hämta information om åtkomst till API: er, Kryptera innehåll. <br/>För alla andra hanterings aktiviteter (till exempel hantering av transformeringar och jobb eller analys av v3-innehåll) använder du [REST API](/rest/api/media/accountfilters), [CLI](/cli/azure/ams)eller någon av de [SDK](media-services-apis-overview.md#sdks): er som stöds.
 
-Om din video tidigare har laddats upp till Media Services kontot med hjälp av Media Services v3 API eller om innehållet genererades baserat på Live-utdata, visas inte knapparna **koda**, **analysera**eller **kryptera** i Azure Portal. Använd Media Services v3-API: erna för att utföra dessa uppgifter.  
+Om din video tidigare har laddats upp till Media Services kontot med hjälp av Media Services v3 API eller om innehållet genererades baserat på Live-utdata, visas inte knapparna **koda**, **analysera** eller **kryptera** i Azure Portal. Använd Media Services v3-API: erna för att utföra dessa uppgifter.  
 
 ### <a name="what-azure-roles-can-perform-actions-on-azure-media-services-resources"></a>Vilka Azure-roller kan utföra åtgärder på Azure Media Services resurser? 
 
@@ -60,7 +60,7 @@ När du använder sid brytning bör du alltid använda nästa länk för att rä
 
 ### <a name="what-features-are-not-yet-available-in-azure-media-services-v3"></a>Vilka funktioner är inte tillgängliga än i Azure Media Services v3?
 
-Mer information finns i [funktions luckor med avseende på v2-API: er](media-services-v2-vs-v3.md#feature-gaps-with-respect-to-v2-apis).
+Mer information finns i [migreringsguiden](migrate-v-2-v-3-migration-introduction.md).
 
 ### <a name="what-is-the-process-of-moving-a-media-services-account-between-subscriptions"></a>Vad är processen att flytta ett Media Services konto mellan prenumerationer?  
 
@@ -169,7 +169,7 @@ För alla andra hanterings uppgifter (t. ex. [transformationer och jobb](transfo
 
 `AssetFile`Konceptet togs bort från Media Services API för att separera Media Services från Storage SDK-beroendet. Nu Azure Storage, inte Media Services, behåller den information som ingår i Storage SDK: n. 
 
-Mer information finns i [migrera till Media Services v3](media-services-v2-vs-v3.md).
+Mer information finns i [migrera till Media Services v3](migrate-v-2-v-3-migration-introduction.md).
 
 ### <a name="where-did-client-side-storage-encryption-go"></a>Var finns lagrings kryptering på klient Sidan?
 

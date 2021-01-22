@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 061d66f08e79f935c778eb84dd47f71cab1a62d7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5ddd31f96ca88a02fa667f8809a00e2a4e3ecc50
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89266637"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695432"
 ---
 # <a name="configure-content-protection-policies-by-using-the-azure-portal"></a>Konfigurera principer för innehålls skydd med hjälp av Azure Portal
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> Du behöver ett Azure-konto för att genomföra kursen. Mer information om den kostnadsfria utvärderingsversionen av Azure finns [Kostnadsfri utvärderingsversion av Azure](https://azure.microsoft.com/pricing/free-trial/).   > inga nya funktioner läggs till i Media Services v2. <br/>Kolla in den senaste versionen [Media Services v3](../latest/index.yml). Se även [vägledning för migrering från v2 till v3](../latest/migrate-from-v2-to-v3.md)
+> Du behöver ett Azure-konto för att genomföra kursen. Mer information om den kostnadsfria utvärderingsversionen av Azure finns [Kostnadsfri utvärderingsversion av Azure](https://azure.microsoft.com/pricing/free-trial/).   > inga nya funktioner läggs till i Media Services v2. <br/>Kolla in den senaste versionen [Media Services v3](../latest/index.yml). Se även [vägledning för migrering från v2 till v3](../latest/migrate-v-2-v-3-migration-introduction.md)
 >
 
  Med Azure Media Services kan du skydda dina medier från den tid det lämnar datorn genom lagring, bearbetning och leverans. Du kan använda Media Services för att leverera ditt innehåll krypterat dynamiskt med Advanced Encryption Standard (AES) med hjälp av 128-bitars krypterings nycklar. Du kan också använda den med common Encryption (CENC) med hjälp av PlayReady och/eller Widevine Digital Rights Management (DRM) och Apple FairPlay. 
@@ -75,8 +75,8 @@ Om du konfigurerar en licens som beständigt sparas den i beständig lagring på
 ## <a name="widevine-license-template"></a>Widevine-licensmall
 Widevine licens mal len anger de funktioner som är aktiverade för dina Widevine-licenser.
 
-### <a name="basic"></a>Basic
-När du väljer **Basic**skapas mallen med alla standardvärden.
+### <a name="basic"></a>Grundläggande
+När du väljer **Basic** skapas mallen med alla standardvärden.
 
 ### <a name="advanced"></a>Avancerat
 Mer information om Widevine Rights-mall finns i [Översikt över Widevine-licens mal len](media-services-widevine-license-template-overview.md).
@@ -105,7 +105,7 @@ Kryptering med klar text nyckel för AES är aktiverat på alla strömnings prot
 ![Krypterings konfiguration](./media/media-services-portal-content-protection/media-services-content-protection008.png)
 
 #### <a name="drm"></a>Rights
-1. När du har valt **DRM**ser du olika innehålls skydds principer (som måste konfigureras av den här punkten) och en uppsättning strömnings protokoll:
+1. När du har valt **DRM** ser du olika innehålls skydds principer (som måste konfigureras av den här punkten) och en uppsättning strömnings protokoll:
 
     a. **PlayReady och Widevine med MPEG-streck** krypterar dynamiskt din MPEG-Tanks-ström med PlayReady och Widevine DRM: er.
 
@@ -117,7 +117,7 @@ Kryptering med klar text nyckel för AES är aktiverat på alla strömnings prot
     
     e. **Fairplay endast med HLS** KRYPTERAr HLS-dataströmmen dynamiskt med Fairplay.
 
-1. Om du vill aktivera FairPlay-kryptering väljer du **Fairplay konfiguration**på bladet **Content Protection globala inställningar** . Välj sedan **appens certifikat**och ange den **hemliga nyckeln**.
+1. Om du vill aktivera FairPlay-kryptering väljer du **Fairplay konfiguration** på bladet **Content Protection globala inställningar** . Välj sedan **appens certifikat** och ange den **hemliga nyckeln**.
 
     ![Krypterings typ](./media/media-services-portal-content-protection/media-services-content-protection009.png)
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: 1d5c79a141dbe1310762dc90b447fe78848ac10d
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 46c5f5995c7a1d4eb074f6c1b25ecaad7e2da37e
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94962492"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695548"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-sql-managed-instance"></a>Kända problem/migrerings begränsningar med online-migreringar till Azure SQL-hanterad instans
 
@@ -31,7 +31,7 @@ Kända problem och begränsningar som är associerade med online-migrering från
 
     Azure Database Migration Service använder säkerhets kopierings-och återställnings metoden för att migrera dina lokala databaser till SQL-hanterad instans. Azure Database Migration Service stöder endast säkerhets kopieringar som skapats med kontroll summa.
 
-    [Aktivera eller inaktivera kontroll summor för säkerhets kopiering under säkerhets kopiering eller återställning (SQL Server)](/sql/relational-databases/backup-restore/enable-or-disable-backup-checksums-during-backup-or-restore-sql-server?view=sql-server-2017)
+    [Aktivera eller inaktivera säkerhets kopiering av kontroll summor under säkerhets kopiering eller återställning (SQL Server)](/sql/relational-databases/backup-restore/enable-or-disable-backup-checksums-during-backup-or-restore-sql-server).
 
     > [!NOTE]
     > Om du tar databas säkerhets kopior med komprimering, är kontroll summan ett standard beteende om det inte uttryckligen inaktive ras.
@@ -65,3 +65,29 @@ Kända problem och begränsningar som är associerade med online-migrering från
     SQL-hanterad instans är en PaaS-tjänst med automatisk uppdatering och versions uppdateringar. Vid migreringen av din SQL-hanterade instans hålls icke-kritiska uppdateringar i upp till 36 timmar. Efteråt (och för kritiska uppdateringar) återställs processen till ett fullständigt återställnings tillstånd om migreringen avbryts.
 
     Migrerings-start punkt kan bara anropas efter att den fullständiga säkerhets kopieringen har återställts och fångats upp med alla logg säkerhets kopior. Om migrering för produktion påverkas kan du kontakta [aliaset för Azure DMS-feedback](mailto:dmsfeedback@microsoft.com).
+
+## <a name="smb-file-share-connectivity"></a>SMB fil resurs anslutning
+
+Problem som ansluter till SMB-filresursen orsakas sannolikt av ett behörighets problem. 
+
+Följ dessa steg om du vill testa SMB-fildelnings anslutning: 
+
+1. Spara en säkerhets kopia till SMB-filresursen. 
+1. Kontrol lera nätverks anslutningen mellan under nätet för Azure Database Migration Service och käll SQL Server. Det enklaste sättet att göra detta är att distribuera en SQL Server virtuell dator till DMS-undernätet och ansluta till käll SQL Server med hjälp av SQL Server Management Studio. 
+1. Återställ sidhuvudet på käll SQL Server från säkerhets kopian på fil resursen: 
+
+   ```sql
+   RESTORE HEADERONLY   
+   FROM DISK = N'\\<SMB file share path>\full.bak'
+   ```
+
+Om du inte kan ansluta till fil resursen konfigurerar du behörigheter med följande steg: 
+
+1. Navigera till fil resursen med Utforskaren. 
+1. Högerklicka på fil resursen och välj egenskaper. 
+1. Välj fliken **delning** och välj **Avancerad delning**. 
+1. Lägg till det Windows-konto som används för migrering och tilldela det fullständig behörighet. 
+1. Lägg till SQL Server tjänst kontot och tilldela det fullständig behörighet. Kontrol lera **Konfigurationshanteraren för SQL Server** för SQL Server tjänst kontot om du inte är säker på vilket konto som används. 
+
+   :::image type="content" source="media/known-issues-azure-sql-db-managed-instance-online/assign-fileshare-permissions.png" alt-text="Ge fullständig behörighet till de Windows-konton som används för migrering och för SQL Server tjänst kontot. ":::
+

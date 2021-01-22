@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 04/16/2019
 ms.author: willzhan
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a26be590d5f7b467f57e8e18eac54ce57be24094
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bd1d50003ef4334f1ea83ac256b371b20d021936
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89266603"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98693900"
 ---
 # <a name="offline-playready-streaming-for-windows-10"></a>PlayReady-direktuppspelning offline för Windows 10
 
@@ -31,7 +31,7 @@ ms.locfileid: "89266603"
 > * [Version 2](offline-playready-streaming-windows-10.md)
 
 > [!NOTE]
-> Inga nya funktioner läggs till i Media Services v2. <br/>Kolla in den senaste versionen [Media Services v3](../latest/index.yml). Se även [vägledning för migrering från v2 till v3](../latest/migrate-from-v2-to-v3.md)
+> Inga nya funktioner läggs till i Media Services v2. <br/>Kolla in den senaste versionen [Media Services v3](../latest/index.yml). Se även [vägledning för migrering från v2 till v3](../latest/migrate-v-2-v-3-migration-introduction.md)
 
 Azure Media Services stöd för nedladdning/uppspelning av data offline med DRM-skydd. Den här artikeln beskriver offline-stöd för Azure Media Services för Windows 10/PlayReady-klienter. Du kan läsa om offline-läges stödet för iOS/FairPlay-och Android/Widevine-enheter i följande artiklar:
 
@@ -42,7 +42,7 @@ Azure Media Services stöd för nedladdning/uppspelning av data offline med DRM-
 
 Det här avsnittet innehåller en bakgrund i uppspelning av offline-läge, särskilt varför:
 
-* I vissa länder/regioner är Internet tillgänglighet och/eller bandbredd fortfarande begränsad.Användarna kan välja att ladda ned för att kunna se innehållet i tillräckligt med hög upplösning för tillfredsställande visnings upplevelse. I det här fallet är problemet ofta inte nätverks tillgänglig, och den är begränsad nätverks bandbredd. OTT/OVP-providers ber om stöd för offline-läge.
+* I vissa länder/regioner är Internet tillgänglighet och/eller bandbredd fortfarande begränsad. Användarna kan välja att ladda ned för att kunna se innehållet i tillräckligt med hög upplösning för tillfredsställande visnings upplevelse. I det här fallet är problemet ofta inte nätverks tillgänglig, och den är begränsad nätverks bandbredd. OTT/OVP-providers ber om stöd för offline-läge.
 * Som anges i konferensen Netflix 2016, kvartals visare, är nedladdning av innehåll en "OFT-begärd funktion" och "Vi är öppna för IT", som kallas för Reed Hastings, Netflix VD.
 * En del innehålls leverantörer får inte tillåta leverans av DRM-licenser utöver ett land/regions gräns. Om en användare behöver resa utomlands och fortfarande vill titta på innehåll krävs offline-nedladdning.
  

@@ -14,19 +14,19 @@ ms.topic: conceptual
 ms.date: 11/03/2020
 ms.author: inhenkel
 ms.custom: references_regions
-ms.openlocfilehash: cf84e45ff43643c7e9a983b867194a7920aa1b57
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 458927afc78c46ad365d437a574d0b40b32fc11e
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93351923"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695805"
 ---
 # <a name="media-services-regional-availability"></a>Media Services regional tillgänglighet
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> Inga nya funktioner läggs till i Media Services v2. Kolla in den senaste versionen [Media Services v3](../latest/media-services-overview.md). Se även [vägledning för migrering från v2 till v3](../latest/migrate-from-v2-to-v3.md)
+> Inga nya funktioner läggs till i Media Services v2. Kolla in den senaste versionen [Media Services v3](../latest/media-services-overview.md). Se även [vägledning för migrering från v2 till v3](../latest/migrate-v-2-v-3-migration-introduction.md)
 
 Microsoft Azure Media Services (AMS) gör det möjligt att på ett säkert sätt överföra, lagra, koda och paketera video- eller ljudinnehåll för att strömma både på begäran och live till olika klienter (till exempel TV, datorer och mobila enheter).
 
@@ -40,7 +40,7 @@ Använd [Azure-produkter per region](https://azure.microsoft.com/global-infrastr
 
 ## <a name="streaming-endpoints"></a>Slutpunkter för direktuppspelning
 
-Media Services-kunder kan antingen välja en **Standard** -slutpunkt för direktuppspelning eller en **Premium** -slutpunkt för direktuppspelning.
+Media Services-kunder kan antingen välja en **Standard**-slutpunkt för direktuppspelning eller en **Premium**-slutpunkt för direktuppspelning.
 
 |Name|Status|Region
 |---|---|---|

@@ -15,19 +15,19 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c6c1dcb0af500c47aabbd8e8193c066bb4a921c5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 634b508ca15349152540aca90125575b17943929
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89267777"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696438"
 ---
 # <a name="use-azure-queue-storage-to-monitor-media-services-job-notifications-with-net"></a>Använd Azure Queue Storage för att övervaka Media Services jobb meddelanden med .NET
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> Inga nya funktioner läggs till i Media Services v2. <br/>Kolla in den senaste versionen [Media Services v3](../latest/index.yml). Se även [vägledning för migrering från v2 till v3](../latest/migrate-from-v2-to-v3.md)
+> Inga nya funktioner läggs till i Media Services v2. <br/>Kolla in den senaste versionen [Media Services v3](../latest/index.yml). Se även [vägledning för migrering från v2 till v3](../latest/migrate-v-2-v-3-migration-introduction.md)
 
 När du kör kodnings jobb kräver du ofta ett sätt att spåra jobb förloppet. Du kan konfigurera Media Services att leverera meddelanden till [Azure Queue Storage](../../storage/queues/storage-dotnet-how-to-use-queues.md). Du kan övervaka jobb förloppet genom att hämta meddelanden från kön lagring. 
 
@@ -60,7 +60,7 @@ Kod exemplet i det här avsnittet gör följande:
     job.JobNotificationSubscriptions.AddNew(NotificationJobState.FinalStatesOnly, _notificationEndPoint);
     ```
 
-7. Om du skickar **NotificationJobState. alla**får du följande meddelanden om status ändringar: köade, schemalagda, bearbetade och avslutade. Som tidigare nämnts garanterar inte Queue Storage den beställda leveransen. Om du vill beställa meddelanden använder du egenskapen **timestamp** (definieras i **EncodingJobMessage** -typen i exemplet nedan). Duplicerade meddelanden är möjliga. Om du vill söka efter dubbletter använder du **egenskapen etag** (definieras i **EncodingJobMessage** -typen). Det är också möjligt att vissa aviseringar om tillstånds ändringar hoppas över.
+7. Om du skickar **NotificationJobState. alla** får du följande meddelanden om status ändringar: köade, schemalagda, bearbetade och avslutade. Som tidigare nämnts garanterar inte Queue Storage den beställda leveransen. Om du vill beställa meddelanden använder du egenskapen **timestamp** (definieras i **EncodingJobMessage** -typen i exemplet nedan). Duplicerade meddelanden är möjliga. Om du vill söka efter dubbletter använder du **egenskapen etag** (definieras i **EncodingJobMessage** -typen). Det är också möjligt att vissa aviseringar om tillstånds ändringar hoppas över.
 8. Väntar på att jobbet ska gå till det färdiga läget genom att kontrol lera kön var 10: e sekund. Tar bort meddelanden när de har bearbetats.
 9. Tar bort kön och meddelande slut punkten.
 

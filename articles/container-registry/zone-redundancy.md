@@ -3,12 +3,12 @@ title: Zone-redundant register för hög tillgänglighet
 description: Läs om hur du aktiverar zon-redundans i Azure Container Registry. Skapa ett behållar register eller replikering i en tillgänglighets zon i Azure. Zon redundans är en funktion i Premium service-nivån.
 ms.topic: article
 ms.date: 01/07/2021
-ms.openlocfilehash: 8c03b2bb093f8d0fa70ff5132f7448ce86e8779d
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: 7de8ed101d2df9e491c475f522a56580798c49a9
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98127368"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696286"
 ---
 # <a name="enable-zone-redundancy-in-azure-container-registry-for-resiliency-and-high-availability"></a>Aktivera zon redundans i Azure Container Registry för återhämtning och hög tillgänglighet
 
@@ -39,7 +39,7 @@ Om du vill använda Azure CLI för att aktivera zon redundans måste du ha Azure
 
 ### <a name="create-a-resource-group"></a>Skapa en resursgrupp
 
-Om det behövs kör du kommandot [AZ Group Create](/cli/az/group#az_group_create) för att skapa en resurs grupp för registret.
+Om det behövs kör du kommandot [AZ Group Create](/cli/azure/group#az_group_create) för att skapa en resurs grupp för registret.
 
 ```azurecli
 az group create --name <resource-group-name> --location <location>
@@ -47,7 +47,7 @@ az group create --name <resource-group-name> --location <location>
 
 ### <a name="create-zone-enabled-registry"></a>Skapa Zone-aktiverat register
 
-Kör kommandot [AZ ACR Create](/cli/az/acr#az_acr_create) för att skapa ett zon redundant register på Premium-tjänstnivå. Välj en region som [har stöd för tillgänglighets zoner](../availability-zones/az-region.md) för Azure Container Registry. I följande exempel är zon redundans aktiverat i regionen *östra* . Mer information `az acr create` om register alternativ finns i kommando hjälpen.
+Kör kommandot [AZ ACR Create](/cli/azure/acr?view=azure-cli-latest#az_acr_create) för att skapa ett zon redundant register på Premium-tjänstnivå. Välj en region som [har stöd för tillgänglighets zoner](../availability-zones/az-region.md) för Azure Container Registry. I följande exempel är zon redundans aktiverat i regionen *östra* . Mer information `az acr create` om register alternativ finns i kommando hjälpen.
 
 ```azurecli
 az acr create \
@@ -69,7 +69,7 @@ I kommandot utdata noterar du `zoneRedundancy` egenskapen för registret. När d
 
 ### <a name="create-zone-redundant-replication"></a>Skapa zon – redundant replikering
 
-Kör kommandot [AZ ACR Replication Create](/cli/az/acr/replication#az_acr_replication_create) för att skapa en zon redundant register replik i en region som [stöder tillgänglighets zoner](../availability-zones/az-region.md) för Azure Container Registry, till exempel *westus2*. 
+Kör kommandot [AZ ACR Replication Create](/cli/azure/acr/replication?view=azure-cli-latest#az_acr_replication_create) för att skapa en zon redundant register replik i en region som [stöder tillgänglighets zoner](../availability-zones/az-region.md) för Azure Container Registry, till exempel *westus2*. 
 
 ```azurecli
 az acr replication create \
@@ -113,7 +113,7 @@ Så här skapar du en zon-redundant replikering:
 
 ### <a name="create-a-resource-group"></a>Skapa en resursgrupp
 
-Om det behövs kör du kommandot [AZ Group Create](/cli/az/group#az_group_create) för att skapa en resurs grupp för registret i en region som [stöder tillgänglighets zoner](../availability-zones/az-region.md) för Azure Container Registry, till exempel *öster*. Den här regionen används av mallen för att ange register platsen.
+Om det behövs kör du kommandot [AZ Group Create](/cli/azure/group#az_group_create) för att skapa en resurs grupp för registret i en region som [stöder tillgänglighets zoner](../availability-zones/az-region.md) för Azure Container Registry, till exempel *öster*. Den här regionen används av mallen för att ange register platsen.
 
 ```azurecli
 az group create --name <resource-group-name> --location eastus
@@ -219,7 +219,7 @@ Kopiera följande innehåll till en ny fil och spara det med ett fil namn, till 
   }
 ```
 
-Kör följande [AZ distribution Group Create](/cli/az/deployment#az_group_deployment_create) -kommando för att skapa registret med hjälp av föregående mallfil. Ange där det anges:
+Kör följande [AZ distribution Group Create](/cli/azure/group/deployment?view=azure-cli-latest#az_group_deployment_create) -kommando för att skapa registret med hjälp av föregående mallfil. Ange där det anges:
 
 * ett unikt register namn, eller att distribuera mallen utan parametrar och skapar ett unikt namn för dig
 * en plats för repliken som stöder tillgänglighets zoner, till exempel *westus2*

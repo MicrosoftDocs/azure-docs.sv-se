@@ -10,21 +10,19 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: a5b995fd273fcfa231e101bc77b11d268be728fb
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 294870d3448886b9cea573a0e79b3ac436941f89
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359143"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696497"
 ---
 # <a name="tutorial-configuring-netsuite-for-automatic-user-provisioning"></a>Självstudie: Konfigurera Netsuite för automatisk användar etablering
 
 Syftet med den här självstudien är att visa de steg du behöver utföra i Netsuite-OneWorld och Azure AD för att automatiskt etablera och avetablera användar konton från Azure AD till Netsuite.
 
-> [!NOTE]
-> Den här integrationen autentiseras för närvarande med grundläggande autentisering (användar namn och lösen ord). NetSuite har implementerat ett krav för Multi-Factor Authentication som hindrar kunder från att använda denna integrering, om de inte har ett undantag från detta krav. Vi arbetar med Netsuite för att uppdatera den här integrationen till en nyare autentiseringsmetod så att kunder utan undantag kan använda den igen. Vi kommer att uppdatera det här dokumentet med en ETA när det är tillgängligt.
-
-Rekommenderad åtgärd: vänta tills vi släpper en uppdatering av autentiserings beteendet för den här integreringen eller når ut till Netsuite-stöd för att fråga om ett undantag för Multi-Factor Authentication-kravet.
+> [!WARNING]
+> Den här etablerings integrationen upphör att fungera i februari 2020 på grund av en ändring i Netsuite-API: er som används av Microsoft för att etablera användare i Netsuite. Därför kommer etablerings funktionerna i Netsuite-programmet i Azure Active Directory Enterprise App Gallery att tas bort snart. Programmets SSO-funktioner är oförändrade. Microsoft arbetar med Netsuite för att bygga en ny modern etablerings integrering, men det finns för närvarande ingen ETA på när detta kommer att slutföras.
 
 ## <a name="prerequisites"></a>Förutsättningar
 

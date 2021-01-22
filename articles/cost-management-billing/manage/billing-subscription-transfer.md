@@ -8,15 +8,15 @@ tags: billing,top-support-issue
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 11/11/2020
+ms.date: 01/06/2021
 ms.author: banders
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: d37225f988cc906bdd92467afcf3f286220eebda
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: ae588708a41c1259628b726a3a471034dba7d131
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97027874"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601540"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>Överföra faktureringsägarskap för en Azure-prenumeration till ett annat konto
 
@@ -72,6 +72,18 @@ Om du har godkänt faktureringsägarskapet för en Azure-prenumeration rekommend
    1. Åtkomstnycklar för tjänster såsom Storage. Mer information finns i [Om Azure Storage-konton](../../storage/common/storage-account-create.md)
    1. Autentiseringsuppgifter för fjärråtkomst för tjänster såsom Azure Virtual Machines.
 1. Om du arbetar med en partner kan du överväga att uppdatera partner-ID i prenumerationen. Du kan uppdatera partner-ID i [Azure-portalen](https://portal.azure.com). Mer information finns i [Länka ett partner-ID till dina Azure-konton](link-partner-id.md)
+
+## <a name="cancel-a-transfer-request"></a>Avbryta en överföringsbegäran
+
+Endast en överföringsbegäran i taget är aktiv. En överföringsbegäran är giltig i 15 dagar. Efter de 15 dagarna går överföringsbegäran ut.
+
+Så här avbryter du en överföringsbegäran:
+
+1. Logga in på [Azure-portalen](https://portal.azure.com).
+1. Gå till **Prenumerationer** > Välj den prenumeration som du har skickat en överföringsbegäran för > Välj **Överför faktureringsägarskap**.
+1. Längst ned på sidan väljer du **Avbryt överföringsbegäran**.
+
+:::image type="content" source="./media/billing-subscription-transfer/transfer-billing-owership-cancel-request.png" alt-text="Exempel som visar fönstret Överför faktureringsägarskap med alternativet Avbryt överföringsbegäran" lightbox="./media/billing-subscription-transfer/transfer-billing-owership-cancel-request.png" :::
 
 ## <a name="troubleshooting"></a>Felsökning
 

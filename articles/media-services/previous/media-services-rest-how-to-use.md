@@ -15,19 +15,19 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: johndeu
-ms.openlocfilehash: 84e94a431efdc84ff6896de416bd222120784899
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f48a01bb81829ff2bc10b4db1ed543382f992b58
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89264291"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696235"
 ---
 # <a name="media-services-operations-rest-api-overview"></a>Översikt över Media Services åtgärder REST API
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> Inga nya funktioner läggs till i Media Services v2. <br/>Kolla in den senaste versionen [Media Services v3](../latest/index.yml). Se även [vägledning för migrering från v2 till v3](../latest/migrate-from-v2-to-v3.md)
+> Inga nya funktioner läggs till i Media Services v2. <br/>Kolla in den senaste versionen [Media Services v3](../latest/index.yml). Se även [vägledning för migrering från v2 till v3](../latest/migrate-v-2-v-3-migration-introduction.md)
 
 REST-API: et **Media Services Operations** används för att skapa jobb, till gångar, direktsända kanaler och andra resurser i ett Media Services konto. Mer information finns i [Media Services åtgärder REST API referens](/rest/api/media/operations/azure-media-services-rest-api-reference).
 
@@ -62,12 +62,12 @@ Följande överväganden gäller när du använder REST.
 ## <a name="standard-http-request-headers-supported-by-media-services"></a>Standard-HTTP-begärandehuvuden som stöds av Media Services
 För varje anrop du gör i Media Services finns det en uppsättning obligatoriska huvuden som du måste inkludera i din begäran och även en uppsättning valfria huvuden som du kanske vill inkludera. I tabellen nedan visas de huvuden som krävs:
 
-| Sidhuvud | Typ | Värde |
+| Huvud | Typ | Värde |
 | --- | --- | --- |
 | Auktorisering |Bearer |Bearer är den enda godkända mekanismen för auktorisering. Värdet måste också innehålla den åtkomsttoken som tillhandahålls av Azure Active Directory. |
 | x-MS-version |Decimal |2,17 (eller senaste versionen)|
-| DataServiceVersion |Decimal |3,0 |
-| MaxDataServiceVersion |Decimal |3,0 |
+| DataServiceVersion |Decimal |3.0 |
+| MaxDataServiceVersion |Decimal |3.0 |
 
 > [!NOTE]
 > Eftersom Media Services använder OData för att exponera REST-API: erna, ska DataServiceVersion-och MaxDataServiceVersion-huvuden tas med i alla begär Anden. men om de inte är det antar Media Services det DataServiceVersion-värde som används är 3,0.
@@ -76,7 +76,7 @@ För varje anrop du gör i Media Services finns det en uppsättning obligatorisk
 
 Följande är en uppsättning valfria huvuden:
 
-| Sidhuvud | Typ | Värde |
+| Huvud | Typ | Värde |
 | --- | --- | --- |
 | Date |RFC 1123-datum |Tidsstämpel för begäran |
 | Acceptera |Innehållstyp |Begärd innehålls typ för svaret, till exempel följande:<p> -Application/JSON; OData = verbose<p> -Application/Atom + XML<p> Svar kan ha en annan innehålls typ, till exempel en BLOB Fetch, där ett lyckat svar innehåller BLOB-dataströmmen som nytto lasten. |
@@ -90,7 +90,7 @@ Följande är en uppsättning valfria huvuden:
 ## <a name="standard-http-response-headers-supported-by-media-services"></a>Standard-HTTP-svarshuvuden som stöds av Media Services
 Följande är en uppsättning huvuden som kan returneras till dig, beroende på vilken resurs du begärde och vilka åtgärder du avsåg att utföra.
 
-| Sidhuvud | Typ | Värde |
+| Huvud | Typ | Värde |
 | --- | --- | --- |
 | begärande-ID |Sträng |En unik identifierare för den aktuella åtgärden, genererad tjänst. |
 | klient-begärande-ID |Sträng |En identifierare som anges av anroparen i den ursprungliga begäran, om sådan finns. |

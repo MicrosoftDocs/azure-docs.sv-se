@@ -5,14 +5,14 @@ author: mumian
 ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: bc6dc5b385a39ddb1c4f1663649ea21e5ed14767
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 4affc2add2822702c1d5395f81efe01eeedf448b
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97669320"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696031"
 ---
-# <a name="tutorial-use-condition-in-arm-templates"></a>Självstudie: använda villkor i ARM-mallar
+# <a name="tutorial-use-condition-in-arm-templates"></a>Självstudie: Använda villkor i ARM-mallar
 
 Lär dig hur du distribuerar Azure-resurser baserat på villkor i en Azure Resource Manager-mall (ARM-mall).
 
@@ -31,7 +31,7 @@ Den här självstudien omfattar följande uppgifter:
 Den här kursen täcker bara ett grundläggande scenario med att använda villkor. Mer information finns i:
 
 * [Mallens fil struktur: villkor](conditional-resource-deployment.md).
-* [Distribuera en resurs villkorligt i en arm-mall](/azure/architecture/building-blocks/extending-templates/conditional-deploy).
+* [Distribuera en resurs villkorligt i en arm-mall](/azure/architecture/guide/azure-resource-manager/advanced-templates/conditional-deploy).
 * [Template-funktion: IF](./template-functions-logical.md#if).
 * [Jämförelse funktioner för ARM-mallar](./template-functions-comparison.md)
 
@@ -39,7 +39,7 @@ En Microsoft Learn-modul som täcker villkor finns i [hantera komplexa moln dist
 
 Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att kunna följa stegen i den här artikeln behöver du:
 

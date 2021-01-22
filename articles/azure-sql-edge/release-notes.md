@@ -10,16 +10,31 @@ author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
 ms.date: 11/24/2020
-ms.openlocfilehash: c18cb1cef9b46b4b3cd2f614945f98abf9de7c58
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: e078fb91b3279b6f4321cd51dfb094f82bbe5f14
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97704358"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696387"
 ---
 # <a name="azure-sql-edge-release-notes"></a>Viktig information om Azure SQL Edge 
 
 I den här artikeln beskrivs vad som är nytt och vad som har ändrats med varje ny version av Azure SQL Edge.
+
+## <a name="azure-sql-edge-102"></a>Azure SQL Edge-1.0.2
+
+SQL-motor build-15.0.2000.1554
+
+### <a name="fixes"></a>Korrigeringar
+
+- T-SQL-strömning  
+   - Åtgärda i ägarskap och behörigheter för strömmande objekt
+   - Loggning av förbättringar med logg rotation och logg för-prefix
+   - Azure Stream Analytics: loggnings förbättringar, förbättra felkoden/fel meddelanden på kort 
+
+- ONNX
+    - Fel korrigeringar för scenarion med parallella frågor och fel i modell rensning
+    - Uppgraderade ONNX runtime till 1.5.1
 
 ## <a name="azure-sql-edge-101"></a>Azure SQL Edge-1.0.1
 
@@ -93,7 +108,7 @@ SQL-motor build-15.0.2000.1549
 ## <a name="ctp-22"></a>CTP 2,2
 SQL-motor build-15.0.2000.1546
 ### <a name="whats-new"></a>Nyheter
-- Stöd för ej rot behållare 
+- Stöd för icke-rot behållare 
 - Stöd för insamling av användnings data och diagnostikdata 
 - Strömnings uppdateringar för T-SQL:
    - Stöd för Unicode-tecken för strömmande objekt namn

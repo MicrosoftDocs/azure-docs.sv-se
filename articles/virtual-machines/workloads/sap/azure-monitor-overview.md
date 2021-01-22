@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/30/2020
 ms.author: radeltch
 ms.reviewer: cynthn
-ms.openlocfilehash: bcb912a24dfb2a5e78719cf9010fd23afe0df185
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 1c33011d947d6dc9dd9ee4dd6331c24c06d99b38
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96484404"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98693832"
 ---
 # <a name="azure-monitor-for-sap-solutions-preview"></a>Azure Monitor för SAP-lösningar (för hands version)
 
@@ -35,7 +35,7 @@ Databaser som stöds:
 - SAP HANA-databas
 - Microsoft SQL Server
 
-Azure Monitor for SAP-lösningar utnyttjar kraften hos befintliga [Azure Monitor](../../../azure-monitor/overview.md) funktioner som Log Analytics och [arbets böcker](../../../azure-monitor/platform/workbooks-overview.md) för att tillhandahålla ytterligare övervakningsfunktioner. Kunder kan skapa [anpassade visualiseringar](../../../azure-monitor/platform/workbooks-overview.md#getting-started) genom att redigera standard arbets böckerna som tillhandahålls av Azure Monitor för SAP-lösningar, skriva [anpassade frågor](../../../azure-monitor/log-query/log-analytics-tutorial.md) och skapa [anpassade aviseringar](../../../azure-monitor/learn/tutorial-response.md) med hjälp av Azure Log Analytics-arbetsytan, dra nytta av den [flexibla kvarhållningsperioden](../../../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period) och ansluta övervaknings data med sitt biljett system.
+Azure Monitor for SAP-lösningar använder kraften i befintliga [Azure Monitor](../../../azure-monitor/overview.md) funktioner som Log Analytics och [arbets böcker](../../../azure-monitor/platform/workbooks-overview.md) för att ge fler övervaknings funktioner. Kunder kan skapa [anpassade visualiseringar](../../../azure-monitor/platform/workbooks-overview.md#getting-started) genom att redigera standard arbets böckerna som tillhandahålls av Azure Monitor för SAP-lösningar, skriva [anpassade frågor](../../../azure-monitor/log-query/log-analytics-tutorial.md) och skapa [anpassade aviseringar](../../../azure-monitor/learn/tutorial-response.md) med hjälp av Azure Log Analytics-arbetsytan, dra nytta av den [flexibla kvarhållningsperioden](../../../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period) och ansluta övervaknings data med sitt biljett system.
 
 ## <a name="what-data-does-azure-monitor-for-sap-solutions-collect"></a>Vilka data Azure Monitor för att samla in SAP-lösningar?
 
@@ -60,8 +60,17 @@ Microsoft SQL Server-telemetri:
 - Batch-begäranden, kompileringar och sid livs längd förväntad över tid
 - De 10 mest dyra SQL-uttrycken över tid
 - Topp 12 största tabell i SAP-systemet
-- Problem som registrerats i SQL Server fel loggar
+- Problem som registrerats i SQL Server fel loggen
 - Blockera processer och SQL-wait-statistik över tid
+
+Telemetri för operativ system (Linux) 
+- PROCESSOR användning, antal förgreningar, processer som körs och blockeras. 
+- Minnes användning och distribution som används, cachelagras, buffras. 
+- Växlings användning, växlings grad och växlings takt. 
+- Utnyttjande av fil system, antal lästa byte som har lästs och skrivits per block enhet. 
+- Läs-/skriv latens per block enhet. 
+- Löpande I/O-antal, beständiga minnes läsning/skrivning byte. 
+- Nätverks paket in/ut, nätverks-byte in/ut 
 
 ## <a name="data-sharing-with-microsoft"></a>Data delning med Microsoft
 
@@ -96,9 +105,9 @@ Huvud komponenterna i arkitekturen är:
 
 Följande är de viktigaste höjd punkterna i arkitekturen:
  - **Flera** instanser – kunder kan skapa Övervakare för flera instanser av en viss komponent typ (till exempel Hana DB, ha-kluster, Microsoft SQL Server) över flera SAP-sid i ett VNet med en enda resurs med Azure Monitor för SAP-lösningar.
- - **Multi-Provider** – diagrammet ovan visar SAP HANA leverantören som ett exempel. På samma sätt kan kunder konfigurera ytterligare providrar för motsvarande komponenter (till exempel HANA DB, HA-kluster, Microsoft SQL Server) för att samla in data från dessa komponenter.
+ - **Multi-Provider** – diagrammet ovan visar SAP HANA leverantören som ett exempel. På samma sätt kan kunder konfigurera fler leverantörer för motsvarande komponenter (till exempel HANA DB, HA-kluster, Microsoft SQL Server) för att samla in data från dessa komponenter.
  - **Öppen källkod** – käll koden för Azure Monitor för SAP-lösningar finns i [GitHub](https://github.com/Azure/AzureMonitorForSAPSolutions). Kunder kan referera till leverantörs koden och lära sig mer om produkten, bidra eller dela feedback.
- - **Extensible Query Framework** -SQL-frågor för att samla in telemetridata skrivs i [JSON](https://github.com/Azure/AzureMonitorForSAPSolutions/blob/master/sapmon/content/SapHana.json). Det går lätt att lägga till ytterligare SQL-frågor för att samla in mer telemetridata. Kunder kan begära särskilda telemetridata som ska läggas till Azure Monitor för SAP-lösningar genom att lämna feedback via länken i slutet av det här dokumentet eller kontakta sitt konto team.
+ - **Extensible Query Framework** -SQL-frågor för att samla in telemetridata skrivs i [JSON](https://github.com/Azure/AzureMonitorForSAPSolutions/blob/master/sapmon/content/SapHana.json). Det går enkelt att lägga till fler SQL-frågor för att samla in mer telemetridata. Kunder kan begära särskilda telemetridata som ska läggas till Azure Monitor för SAP-lösningar genom att lämna feedback via länken i slutet av det här dokumentet eller kontakta sitt konto team.
 
 ## <a name="pricing"></a>Prissättning
 Azure Monitor för SAP-lösningar är en kostnads fri produkt (ingen licens avgift). Kunderna ansvarar för att betala kostnaden för de underliggande komponenterna i den hanterade resurs gruppen.

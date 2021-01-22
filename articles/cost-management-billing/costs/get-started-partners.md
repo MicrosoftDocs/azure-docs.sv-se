@@ -3,18 +3,18 @@ title: Kom igång med Azure Cost Management för partner
 description: I den här artikeln förklaras hur partner använder Azure Cost Management-funktioner och hur de ger Cost Management-åtkomst för sina kunder.
 author: bandersmsft
 ms.author: banders
-ms.date: 11/16/2020
+ms.date: 01/19/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: cd3ca4d3ddf73469cd1f1fc065eccb369cf765af
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 8a04cb2c590bc4f0104a93ac7c7c2cf7b71a4662
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905687"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602174"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>Kom igång med Azure Cost Management för partner
 
@@ -71,9 +71,9 @@ När du har registrerat dina kunder med ett Microsoft-kundavtal är följande _f
 
 Använd faktureringskontoomfånget för att visa kostnader före moms i alla dina kund- och faktureringsprofiler. Fakturakostnader visas bara för kundens förbrukningsbaserade produkter i Microsoft-kundavtalet. Fakturakostnader visas dock för inköpsbaserade produkter för kunder i både Microsoft-kundavtalet och CSP-erbjudandet. För närvarande är standardvalutan för att visa kostnader i omfånget USD. Budgetar som angetts för omfånget är också i USD.
 
-Oberoende av olika valutor för kundfaktureringar använder partner faktureringskontoomfånget för att ange budgetar och hantera kostnader i USD för alla kunder, prenumerationer, resurser och resursgrupper.
+Oavsett olika valutor för fakturering använder partner faktureringskontoomfånget för att ange budgetar och hantera kostnader i USD för alla kunder, prenumerationer, resurser och resursgrupper.
 
-Partner filtrerar också kostnader i en bestämd faktureringsvaluta för kunderna i vyn för kostnadsanalys. Välj listan **Faktisk kostnad** för att visa kostnader i de valutor för kundfakturering som stöds.
+Partner filtrerar också kostnader i en bestämd faktureringsvaluta för kunderna i vyn för kostnadsanalys. Välj listan **Faktisk kostnad** för att se kostnaderna i de faktureringsvalutor som stöds.
 
 ![Exempel som visar val av Faktisk kostnad för valutor](./media/get-started-partners/actual-cost-selector.png)
 
@@ -83,7 +83,7 @@ Använd vyn [Amorterad kostnad](quick-acm-cost-analysis.md#customize-cost-views)
 
 Använd faktureringsprofilsomfången för att visa kostnader före skatt i faktureringsvalutan för alla kunder för alla produkter och prenumerationer som ingår i en faktura. Du kan filtrera kostnader i en faktureringsprofil för en specifik faktura med hjälp av filtret **InvoiceID**. Filtret visar förbruknings- och produktinköpskostnader för en specifik faktura. Du kan också filtrera kostnaderna för en specifik kund på fakturan för att visa kostnader före skatt.
 
-När du har registrerat kunderna med ett Microsoft-kundavtal får du en faktura som innehåller alla avgifter för alla produkter (förbrukning, inköp och berättiganden) för dessa kunder i Microsoft-kundavtalet. Vid fakturering i samma valuta inkluderar dessa fakturor även avgifter för berättigande och inköpta produkter som SaaS, Azure Marketplace och reservationer för kunder som fortfarande ingår i CSP-erbjudandet.
+När du har registrerat kunderna med ett Microsoft-kundavtal får du en faktura som innehåller alla avgifter för alla produkter (förbrukning, inköp och berättiganden) för dessa kunder i Microsoft-kundavtalet. Vid fakturering i samma valuta inkluderar dessa fakturor även avgifter för berättigande och inköpta produkter som SaaS, Azure Marketplace och reservationer för kunder som fortfarande ingår i CSP-erbjudandet, inte i Azure-planen.
 
 För att hjälpa till att stämma av avgifterna mot kundfakturan kan du med faktureringsprofilsomfånget se alla kostnader som påförs en faktura för kunderna. Precis som fakturan visar omfånget kostnader för varje kund i det nya Microsoft-kundavtalet. Omfånget visar också alla kostnader för kundberättigande till produkter som fortfarande finns i det aktuella CSP-erbjudandet.
 
@@ -91,7 +91,7 @@ Faktureringsprofilen och faktureringskontoomfånget är de enda tillämpliga omf
 
 Faktureringsprofiler definierar de prenumerationer som ingår i en faktura. Faktureringsprofiler är den funktionella motsvarigheten till en företagsavtalsregistrering. En faktureringsprofil är det omfång där fakturor genereras.
 
-För närvarande är kundens faktureringsvaluta standardvaluta när du visar kostnader i faktureringsprofilsomfånget. Budgetarna som anges i faktureringsprofilsomfånget visas i faktureringsvalutan.
+För närvarande är faktureringsvalutan standardvaluta när du visar kostnader i faktureringsprofilsomfånget. Budgetarna som anges i faktureringsprofilsomfånget visas i faktureringsvalutan.
 
 Partner kan använda omfånget för att stämma av fakturor. Och de använder omfånget för att ange budgetar i faktureringsvalutan för följande objekt:
 
@@ -220,7 +220,7 @@ Följande datafält finns i filer för detaljerad användningsinformation och AP
 | Kvantitet | Uppmätt kvantitet som köpts eller förbrukats. Mängden av mätaren som använts under faktureringsperioden. | Antal enheter. Se till att det matchar informationen i faktureringssystemet under avstämningen. |
 | unitOfMeasure | Identifierar i vilken enhet tjänsten debiteras. Till exempel GB och timmar. | Identifierar i vilken enhet tjänsten debiteras. Till exempel GB, timmar, 10 000-tal. |
 | pricingCurrency | Den valuta som definierar enhetspriset. | Valutan i prislistan.|
-| billingCurrency | Den valuta som definierar den fakturerade kostnaden. | Valutan för kundens geografiska region. |
+| billingCurrency | Den valuta som definierar den fakturerade kostnaden. | Den valuta som definieras som faktureringsvaluta på fakturan. |
 | chargeType | Definierar den typ av avgift som kostnaden representerar i Azure Cost Management, som inköp och återbetalning. | Typ av avgift eller justering. Inte tillgängligt för den aktuella aktiviteten. |
 | costinBillingCurrency | ExtendedCost eller blandad kostnad före skatt i den fakturerade valutan. | Ej tillämpligt |
 | costinPricingCurrency | ExtendedCost eller blandad kostnad före skatt i prissättningsvalutan som motsvarar priserna. | Ej tillämpligt |

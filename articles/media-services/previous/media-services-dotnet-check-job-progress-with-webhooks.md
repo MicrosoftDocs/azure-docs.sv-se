@@ -15,19 +15,19 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 24e4bf9940de0f7b0e851bdfdbd2d788757034e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e99d2c2676d05772106296d8b960dd55fd30501c
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89267742"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696480"
 ---
 # <a name="use-azure-webhooks-to-monitor-media-services-job-notifications-with-net"></a>Använd Azure Webhooks för att övervaka Media Services jobb meddelanden med .NET
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> Inga nya funktioner läggs till i Media Services v2. <br/>Kolla in den senaste versionen [Media Services v3](../latest/index.yml). Se även [vägledning för migrering från v2 till v3](../latest/migrate-from-v2-to-v3.md)
+> Inga nya funktioner läggs till i Media Services v2. <br/>Kolla in den senaste versionen [Media Services v3](../latest/index.yml). Se även [vägledning för migrering från v2 till v3](../latest/migrate-v-2-v-3-migration-introduction.md)
 
 När du kör jobb krävs ofta ett sätt att spåra jobbets förlopp. Du kan övervaka Media Services jobb meddelanden med hjälp av Azure Webhooks eller [Azure Queue Storage](media-services-dotnet-check-job-progress-with-queues.md). Den här artikeln visar hur du arbetar med Webhooks.
 
@@ -64,7 +64,7 @@ När du utvecklar Media Services funktioner är det praktiskt att lägga till mi
 
 Avsnittet [program inställningar](media-services-dotnet-how-to-use-azure-functions.md#configure-function-app-settings) definierar parametrar som används i webhooken som definieras i den här artikeln. Lägg också till följande parametrar i appens inställningar. 
 
-|Namn|Definition|Exempel| 
+|Name|Definition|Exempel| 
 |---|---|---|
 |SigningKey |En signerings nyckel.| j0txf1f8msjytzvpe40nxbpxdcxtqcgxy0nt|
 |WebHookEndpoint | En webhook-slutpunkt. När din webhook-funktion har skapats kan du kopiera URL: en från länken **Hämta funktions webb adress** . | https: \/ /juliakofuncapp.azurewebsites.NET/API/Notification_Webhook_Function?Code=iN2phdrTnCxmvaKExFWOTulfnm4C71mMLIy8tzLr7Zvf6Z22HHIK5g = =.|

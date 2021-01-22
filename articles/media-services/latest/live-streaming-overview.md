@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: dc08e23b6ef040ba5833ffa97f71d8cd1da3bb8a
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 3f9fc9fd1bacce8733949969b496dc03d6c10901
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019808"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695839"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Direktsänd strömning med Azure Media Services v3
 
@@ -62,7 +62,7 @@ Dynamisk filtrering används för att styra antalet spår, format, bit hastighet
 
 ![Diagram som visar hur video-och ljud strömmar från en direkt sändnings händelse matas in och bearbetas.](./media/live-streaming/pass-through.svg)
 
-När du använder direkt **sändnings evenemang**förlitar du dig på din lokala Live-kodare för att generera en video ström med flera bit hastigheter och skicka den som bidrags flödet till Live-händelsen (med hjälp av RTMP eller fragmenterad MP4-inmatnings protokoll). Live-händelsen bevarar sedan genom inkommande video strömmar till den dynamiska Paketeraren (slut punkt för direkt uppspelning) utan ytterligare kodning. En sådan direkt sändnings händelse är optimerad för långvariga Live-händelser eller linjär direkt uppspelning med 24x365. 
+När du använder direkt **sändnings evenemang** förlitar du dig på din lokala Live-kodare för att generera en video ström med flera bit hastigheter och skicka den som bidrags flödet till Live-händelsen (med hjälp av RTMP eller fragmenterad MP4-inmatnings protokoll). Live-händelsen bevarar sedan genom inkommande video strömmar till den dynamiska Paketeraren (slut punkt för direkt uppspelning) utan ytterligare kodning. En sådan direkt sändnings händelse är optimerad för långvariga Live-händelser eller linjär direkt uppspelning med 24x365. 
 
 ### <a name="live-encoding"></a>Live Encoding  
 
@@ -135,4 +135,4 @@ Kolla in [Azure Media Services community](media-services-community.md) -artikeln
 
 * [Snabb start för Live Streaming](live-events-wirecast-quickstart.md)
 * [Själv studie kurs om Live-direktuppspelning](stream-live-tutorial-with-api.md)
-* [Vägledning för migrering för att flytta från Media Services v2 till v3](migrate-from-v2-to-v3.md)
+* [Vägledning för migrering för att flytta från Media Services v2 till v3](migrate-v-2-v-3-migration-introduction.md)

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/31/2019
 ms.author: tomsh
-ms.openlocfilehash: 9dcb1113bb37cb0f5f65c54ae9d6ca76a88330c1
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: c3674b6877438a0dd4fe53569cf6852e872334a7
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94698673"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98693620"
 ---
 # <a name="azure-operational-security-overview"></a>Översikt över Azures drift säkerhet
 
@@ -68,7 +68,7 @@ Azure AD innehåller också en fullständig uppsättning [funktioner för identi
 - [Lösenordshantering via självbetjäning](https://azure.microsoft.com/resources/videos/self-service-password-reset-azure-ad/)
 - [Grupp hantering via självbetjäning](../../active-directory/user-help/active-directory-passwords-update-your-own-password.md)
 - [Hantering av privilegierade konton](../../active-directory/privileged-identity-management/pim-configure.md)
-- [Azure RBAC (rollbaserad åtkomstkontroll)](../../role-based-access-control/overview.md)
+- [Rollbaserad åtkomst kontroll i Azure (Azure RBAC)](../../role-based-access-control/overview.md)
 - [Övervakning av program användning](../../active-directory/hybrid/whatis-hybrid-identity.md)
 - [Omfattande granskning](../../active-directory/reports-monitoring/concept-audit-logs.md)
 - [Säkerhetsövervakning och aviseringar](../../security-center/security-center-managing-and-responding-alerts.md)
@@ -171,21 +171,21 @@ Ritningar ger ett deklarativ sätt att dirigera distributionen av olika resursfi
 
 ## <a name="devops"></a>DevOps
 
-Innan [DevOps-program (Developer Operations)](https://www.visualstudio.com/learn/what-is-devops/) är det ansvarigt att samla in affärs krav för ett program och skriva kod. Sedan har ett separat frågor och svar testat programmet i en isolerad utvecklings miljö. Om kraven uppfylldes, utgjorde frågor och svar-teamet koden för att distribuera. Distributions teamen fragmenterades ytterligare i grupper som nätverk och databas. Varje gången ett program utlöstes via väggen till ett oberoende team lades Flask halsar till.
+Innan [DevOps-program (Developer Operations)](https://azure.microsoft.com/overview/what-is-devops/) är det ansvarigt att samla in affärs krav för ett program och skriva kod. Sedan har ett separat frågor och svar testat programmet i en isolerad utvecklings miljö. Om kraven uppfylldes, utgjorde frågor och svar-teamet koden för att distribuera. Distributions teamen fragmenterades ytterligare i grupper som nätverk och databas. Varje gången ett program utlöstes via väggen till ett oberoende team lades Flask halsar till.
 
 DevOps gör det möjligt för team att leverera säkrare, högre kvalitets lösningar snabbare och mer billigt. Kunderna förväntar sig en dynamisk och tillförlitlig upplevelse vid användning av program vara och tjänster. Teamen måste snabbt iterera efter program uppdateringar och mäta effekten av uppdateringarna. De måste svara snabbt med nya utvecklings iterationer för att åtgärda problem eller tillhandahålla mer värde.  
 
 Moln plattformarna som Microsoft Azure har tagit bort traditionella Flask halsar och hjälpte commoditize-infrastruktur. Program vara REIGNS i alla verksamheter som nyckel differentiering och faktor i affärs resultat. Ingen organisation, utvecklare eller IT-anställd kan eller bör undvika DevOps rörelse.
 
-DevOps praktiserande läkare antar flera av följande metoder. Dessa metoder [omfattar personer](https://www.visualstudio.com/learn/what-is-devops-culture/) för att forma strategier baserat på affärs scenarier. Verktyg kan automatisera de olika metoderna.
+DevOps praktiserande läkare antar flera av följande metoder. Dessa metoder [omfattar personer](/azure/devops/learn/what-is-devops-culture) för att forma strategier baserat på affärs scenarier. Verktyg kan automatisera de olika metoderna.
 
 - [Flexibla planerings-och projekt hanterings](https://www.visualstudio.com/learn/what-is-agile/) tekniker används för att planera och isolera arbete i Sprint, hantera teamets kapacitet och hjälpa teamen att snabbt anpassa sig till föränderliga affärs behov.
-- [Versions kontroll, vanligt vis med git](https://www.visualstudio.com/learn/what-is-git/), gör att team som finns var som helst i världen kan dela källan och integrera med program utvecklings verktyg för att automatisera lanserings pipelinen.
-- [Kontinuerlig integrering](https://www.visualstudio.com/learn/what-is-continuous-integration/) styr pågående sammanslagning och testning av kod, vilket leder till att hitta fel tidigt.  Andra förmåner omfattar mindre tid på att bekämpa sammanfognings problem och snabbt feedback för utvecklings team.
-- [Kontinuerlig leverans](https://www.visualstudio.com/learn/what-is-continuous-delivery/) av program varu lösningar till produktions-och test miljöer hjälper organisationer att snabbt åtgärda buggar och svara på föränderliga affärs behov.
-- [Övervakning](https://www.visualstudio.com/learn/what-is-monitoring/) av program som körs, inklusive produktions miljöer för program hälsa, samt kund användning – hjälper organisationer att bilda en hypotes och snabbt validera eller Visa strategier.  Omfattande data samlas in och lagras i olika loggnings format.
-- [Infrastruktur som kod (IaC)](https://www.visualstudio.com/learn/what-is-infrastructure-as-code/) är en metod som möjliggör automatisering och validering av skapande och Teardown av nätverk och virtuella datorer för att hjälpa till med att leverera säkra, stabila program värd plattformar.
-- Arkitektur för [mikrotjänster](https://www.visualstudio.com/learn/what-are-microservices/) används för att isolera företags användnings fall till små återanvändbara tjänster.  Den här arkitekturen möjliggör skalbarhet och effektivitet.
+- [Versions kontroll, vanligt vis med git](/azure/devops/learn/git/what-is-git), gör att team som finns var som helst i världen kan dela källan och integrera med program utvecklings verktyg för att automatisera lanserings pipelinen.
+- [Kontinuerlig integrering](/azure/devops/learn/what-is-continuous-integration) styr pågående sammanslagning och testning av kod, vilket leder till att hitta fel tidigt.  Andra förmåner omfattar mindre tid på att bekämpa sammanfognings problem och snabbt feedback för utvecklings team.
+- [Kontinuerlig leverans](/azure/devops/learn/what-is-continuous-delivery) av program varu lösningar till produktions-och test miljöer hjälper organisationer att snabbt åtgärda buggar och svara på föränderliga affärs behov.
+- [Övervakning](/azure/devops/learn/what-is-monitoring) av program som körs, inklusive produktions miljöer för program hälsa, samt kund användning – hjälper organisationer att bilda en hypotes och snabbt validera eller Visa strategier.  Omfattande data samlas in och lagras i olika loggnings format.
+- [Infrastruktur som kod (IaC)](/azure/devops/learn/what-is-infrastructure-as-code) är en metod som möjliggör automatisering och validering av skapande och Teardown av nätverk och virtuella datorer för att hjälpa till med att leverera säkra, stabila program värd plattformar.
+- Arkitektur för [mikrotjänster](/azure/devops/learn/what-are-microservices) används för att isolera företags användnings fall till små återanvändbara tjänster.  Den här arkitekturen möjliggör skalbarhet och effektivitet.
 
 ## <a name="next-steps"></a>Nästa steg
 

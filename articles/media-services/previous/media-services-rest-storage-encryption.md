@@ -15,19 +15,19 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8a3a51644f61d4a1e118798986f9c6fb6c52d0e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4ae1d19ee3da59c43722ca1ea720eb441f6dd484
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89264172"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696218"
 ---
 # <a name="encrypting-your-content-with-storage-encryption"></a>Kryptera ditt innehåll med lagrings kryptering
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> Du behöver ett Azure-konto för att genomföra kursen. Mer information om den kostnadsfria utvärderingsversionen av Azure finns [Kostnadsfri utvärderingsversion av Azure](https://azure.microsoft.com/pricing/free-trial/).   > inga nya funktioner läggs till i Media Services v2. <br/>Kolla in den senaste versionen [Media Services v3](../latest/index.yml). Se även [vägledning för migrering från v2 till v3](../latest/migrate-from-v2-to-v3.md)
+> Du behöver ett Azure-konto för att genomföra kursen. Mer information om den kostnadsfria utvärderingsversionen av Azure finns [Kostnadsfri utvärderingsversion av Azure](https://azure.microsoft.com/pricing/free-trial/).   > inga nya funktioner läggs till i Media Services v2. <br/>Kolla in den senaste versionen [Media Services v3](../latest/index.yml). Se även [vägledning för migrering från v2 till v3](../latest/migrate-v-2-v-3-migration-introduction.md)
 >
 
 Den här artikeln ger en översikt över AMS Storage Encryption och visar hur du överför det krypterade lagrings innehållet:
@@ -110,7 +110,7 @@ Följande är allmänna steg för att skapa innehålls nycklar som du associerar
     }
     ```
 
-5. Skapa innehålls nyckeln med **EncryptedContentKey** (konverterad till Base64-kodad sträng), **ProtectionKeyId**, **ProtectionKeyType**, **ContentKeyType**och **kontroll Summa** som du har tagit emot i föregående steg.
+5. Skapa innehålls nyckeln med **EncryptedContentKey** (konverterad till Base64-kodad sträng), **ProtectionKeyId**, **ProtectionKeyType**, **ContentKeyType** och **kontroll Summa** som du har tagit emot i föregående steg.
 
     För lagrings kryptering ska följande egenskaper tas med i begär ande texten.
 

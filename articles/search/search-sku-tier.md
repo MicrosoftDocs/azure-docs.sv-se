@@ -9,24 +9,27 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/15/2021
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 1a1fc0ce634282ffd4fcf374138fe97a04f32062
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 320f02f6ece106b4d0e14293f95533aa5b4e0743
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539598"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98693459"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>Välj en pris nivå för Azure Kognitiv sökning
 
-När du [skapar en Sök tjänst](search-create-service-portal.md)väljer du en pris nivå (eller SKU) som har åtgärd ATS för livs längden för tjänsten. Uppskattade månads kostnader visas på sidan **Välj pris nivå** i portalen. Om du skapar en tjänst via PowerShell eller Azure CLI i stället anges nivån via **`-Sku`** parametern.
+En del av att [skapa en Sök tjänst](search-create-service-portal.md) innebär att välja en pris nivå (eller SKU) som har åtgärd ATS för livs längden för tjänsten. Priser – eller den uppskattade månads kostnaden för att köra tjänsten – visas på sidan **Välj pris nivå** för portalen när du skapar tjänsten. Om du har etablering via PowerShell eller Azure CLI i stället anges nivån via- **`-Sku`** parametern och du bör kontrol lera [service prissättningen](https://azure.microsoft.com/pricing/details/search/) för att lära dig mer om de beräknade kostnaderna.
 
 Nivån som du väljer avgör:
 
-+ Maximalt antal index och andra objekt som du kan skapa i tjänsten
++ Maximalt antal index och andra objekt som tillåts för tjänsten
 + Storlek och hastighet för partitioner (fysisk lagring)
 + Fakturerbart pris som en fast månads kostnad, men även en stegvis kostnad om du lägger till kapacitet
 
 I några få instanser bestämmer nivån som du väljer tillgänglighet för [Premium funktioner](#premium-features).
+
+> [!NOTE]
+> Letar du efter information om "Azure SKU"? Börja med [priser för Azure](https://azure.microsoft.com/pricing/) och rulla sedan nedåt för länkar till pris sidor per tjänst.
 
 ## <a name="tier-descriptions"></a>Nivå beskrivningar
 
@@ -67,7 +70,7 @@ Nivåerna fastställer det maximala lagrings utrymmet för själva tjänsten, sa
 
 ## <a name="partition-size-and-speed"></a>Partitionens storlek och hastighet
 
-Nivå priset innehåller information om lagrings utrymme per partition som sträcker sig från 2 GB för Basic, upp till 2 TB för lagrings optimerade (L2)-nivåer. Andra egenskaper för maskin vara, till exempel hastighet för åtgärder, latens och överförings priser, publiceras inte, men nivåer som är utformade för särskilda lösnings arkitekturer bygger på maskin vara som har funktioner som stöder dessa scenarier.
+Nivå priset innehåller information om lagrings utrymme per partition som sträcker sig från 2 GB för Basic, upp till 2 TB för lagrings optimerade (L2)-nivåer. Andra egenskaper för maskin vara, till exempel hastighet för åtgärder, latens och överförings priser, publiceras inte, men nivåer som är utformade för särskilda lösnings arkitekturer bygger på maskin vara som har funktioner som stöder dessa scenarier. Mer information om partitioner finns i [Beräkna och hantera kapacitet](search-capacity-planning.md) och [skala för prestanda](search-performance-optimization.md).
 
 ## <a name="billing-rates"></a>Fakturerings taxa
 

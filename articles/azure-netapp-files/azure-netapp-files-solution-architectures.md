@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/19/2021
+ms.date: 01/21/2021
 ms.author: b-juche
-ms.openlocfilehash: f50cde2fa67351552d1f31500da09a5f800b2bcc
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 4320222e02f3447dcdff280f04ad26115323e798
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98600117"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696164"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>Lösningsarkitekturer med Azure NetApp Files
 Den här artikeln innehåller referenser till bästa praxis som kan hjälpa dig att förstå lösnings arkitekturerna för att använda Azure NetApp Files.  
@@ -92,6 +92,10 @@ Det här avsnittet innehåller referenser till SAP på Azure-lösningar.
 * [Azure NetApp Files – SAP HANA avlasta säkerhets kopiering med molnbaserad synkronisering](https://blog.netapp.com/azure-netapp-files-sap-hana)
 * [Påskynda dina SAP HANA system kopior med Azure NetApp Files](https://blog.netapp.com/sap-hana-faster-using-azure-netapp-files/)
 * [Moln volymer ONTAP och Azure NetApp Files: SAP HANA systemmigrering enkelt](https://blog.netapp.com/cloud-volumes-ontap-and-azure-netapp-files-sap-hana-system-migration-made-easy/)
+
+## <a name="azure-vmware-solutions"></a>Azure VMware-lösningar
+
+* [Azure NetApp Files med Azure VMware-lösning – montering av gäst operativ system](../azure-vmware/net-app-files-with-azure-vmware-solution.md)
 
 ## <a name="virtual-desktop-infrastructure-solutions"></a>Infrastruktur lösningar för virtuella datorer
 

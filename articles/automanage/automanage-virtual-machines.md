@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: deanwe
 ms.custom: references_regions
-ms.openlocfilehash: ab056e0685264b03d35ee6b95afad7c6362f9db6
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: 0d8ce501b951f3543e1baf54c8a52648b13f6e66
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97695793"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695678"
 ---
 # <a name="azure-automanage-for-virtual-machines"></a>Azure automanage för virtuella datorer
 
@@ -43,16 +43,16 @@ Det finns flera förutsättningar att tänka på innan du försöker aktivera Az
 
 - Endast Windows Server-VM
 - Virtuella datorer måste köras
-- Virtuella datorer måste finnas i en region som stöds
+- Virtuella datorer måste finnas i en region som stöds (se punkt nedan)
 - Användaren måste ha rätt behörigheter (se stycket nedan)
 - Automanage stöder inte sandbox-prenumerationer just nu
 
-Du måste ha **deltagar** rollen i resurs gruppen som innehåller dina virtuella datorer för att aktivera autohantering på virtuella datorer med ett befintligt konto för autohantering. Om du aktiverar automanage med ett nytt konto för autohantering behöver du följande behörigheter för din prenumeration: **ägar** roll eller **deltagare** tillsammans med administratörs roller för **användar åtkomst** . 
+Det är också viktigt att Observera att den automatiska hanteringen endast stöder virtuella Windows-datorer som finns i följande regioner: Västeuropa, östra USA, västra USA 2, centrala Kanada, västra centrala USA, Östra Japan.
+
+Du måste ha **deltagar** rollen i resurs gruppen som innehåller dina virtuella datorer för att aktivera autohantering på virtuella datorer med ett befintligt konto för autohantering. Om du aktiverar automanage med ett nytt konto för autohantering behöver du följande behörigheter för din prenumeration: **ägar** roll eller **deltagare** tillsammans med administratörs roller för **användar åtkomst** .
 
 > [!NOTE]
 > Om du vill använda automanage på en virtuell dator som är ansluten till en arbets yta i en annan prenumeration måste du ha de behörigheter som beskrivs ovan för varje prenumeration.
-
-Det är också viktigt att Observera att den automatiska hanteringen endast stöder virtuella Windows-datorer som finns i följande regioner: Västeuropa, östra USA, västra USA 2, centrala Kanada, västra centrala USA, Östra Japan.
 
 ## <a name="participating-services"></a>Deltagande tjänster
 
@@ -102,12 +102,20 @@ Du kan justera inställningarna för en standard konfigurations profil via inst�
 
 ## <a name="automanage-account"></a>Hantera konto
 
-Kontot för automatisk hantering är säkerhets kontexten eller den identitet under vilken de automatiserade åtgärderna utförs. Normalt är alternativet för automatisk hantering av konton inte nödvändigt för dig att välja, men om det var ett Delegerings scenario där du ville dela upp den automatiserade hanteringen (kanske mellan två system administratörer) kan du med det här alternativet definiera en Azure-identitet för var och en av dessa administratörer.
+Kontot för automatisk hantering är säkerhets kontexten eller den identitet under vilken de automatiserade åtgärderna utförs. Vanligt vis är alternativet för att hantera konton onödigt att du väljer, men om det var ett Delegerings scenario där du ville dela upp den automatiserade hanteringen av dina resurser (kanske mellan två system administratörer) kan du med det här alternativet definiera en Azure-identitet för var och en av dessa administratörer.
 
 När du aktiverar autohantering på de virtuella datorerna i Azure Portals upplevelsen finns en avancerad listruta på bladet **Aktivera Azure VM Best Practice** som gör att du kan tilldela eller skapa det automatiska hanterings kontot manuellt.
 
+Kontot för att hantera automatiskt kommer att beviljas roller för både **deltagare** och **resurs princip deltagare** till de prenumerationer som innehåller de datorer som du har registrerat i autohantering. Du kan använda samma konto för autohantering på datorer över flera prenumerationer, vilket ger dig behörighet att automatiskt hantera konto **deltagare** och behörigheter för **resurs principer** för alla prenumerationer.
+
+Om den virtuella datorn är ansluten till en Log Analytics arbets yta i en annan prenumeration beviljas det automatiska hanterings kontot både **deltagar** -och **resurs princip deltagare** i den andra prenumerationen.
+
+Om du aktiverar automanage med ett nytt konto för autohantering behöver du följande behörigheter för din prenumeration: **ägar** roll eller **deltagare** tillsammans med administratörs roller för **användar åtkomst** .
+
+Om du aktiverar automanage med ett befintligt konto för autohantering måste du ha **deltagar** rollen i resurs gruppen som innehåller dina virtuella datorer.
+
 > [!NOTE]
-> Du måste ha rollen **deltagare** i resurs gruppen som innehåller dina virtuella datorer för att aktivera autohantering på virtuella datorer med ett befintligt konto för autohantering. Om du aktiverar automanage med ett nytt konto för autohantering behöver du följande behörigheter för din prenumeration: **ägar** roll eller **deltagare** tillsammans med administratörs roller för **användar åtkomst** .
+> När du inaktiverar metoder för autohantering av den här funktionen, bevaras automatiskt hantera kontots behörigheter för alla associerade prenumerationer. Ta bort behörigheterna manuellt genom att gå till prenumerationens IAM-sida eller ta bort det automatiska hanterings kontot. Det går inte att ta bort det automatiska hanterings kontot om det fortfarande hanterar datorer.
 
 
 ## <a name="status-of-vms"></a>Status för virtuella datorer
@@ -122,6 +130,7 @@ Följande information visas för varje virtuell dator i listan: namn, konfigurat
 - *Pågående* – den virtuella datorn har precis Aktiver ATS och konfigureras
 - *Konfigurerad* – den virtuella datorn har kon figurer ATS och ingen avvikelse har upptäckts
 - *Misslyckades* – den virtuella datorn har inträffat och vi kunde inte åtgärda det
+- *Väntar* – den virtuella datorn körs inte för tillfället och den automatiska hanteringen försöker att publicera eller reparera den virtuella datorn när den körs nästa gång
 
 Om du ser **status** som *misslyckad* kan du felsöka distributionen via resurs gruppen som den virtuella datorn finns i. Gå till **resurs grupper**, välj din resurs grupp, klicka på **distributioner** och se statusen *misslyckades* där, med fel information.
 
@@ -145,7 +154,6 @@ Läs noggrant igenom meddelande tjänsten i det resulterande popup-meddelandet i
 
 
 Först och främst kommer vi inte att stänga av den virtuella datorn från någon av de tjänster som vi har publicerat till och konfigurerat. Avgifterna för dessa tjänster kommer att fortsätta vara fakturerbara. Om det behövs måste du stänga av kortet. Alla beteenden för automatiskt hantering stoppas omedelbart. Till exempel kommer vi inte längre att övervaka den virtuella datorn för drift.
-
 
 ## <a name="next-steps"></a>Nästa steg
 

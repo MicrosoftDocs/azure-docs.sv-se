@@ -14,19 +14,19 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: willzhan; johndeu
-ms.openlocfilehash: 8bea4c049c3d7ea17e173f069a3e99cbcca1fe48
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 28719046c9a8ccc65d231244ef8b5b3f8e116282
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93041981"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98694738"
 ---
 # <a name="use-azure-ad-authentication-to-access-the-media-services-api-with-rest"></a>Använda Azure AD-autentisering för att ansluta till API:et för Media Services med REST
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> Inga nya funktioner läggs till i Media Services v2. <br/>Kolla in den senaste versionen [Media Services v3](../latest/index.yml). Se även [vägledning för migrering från v2 till v3](../latest/migrate-from-v2-to-v3.md)
+> Inga nya funktioner läggs till i Media Services v2. <br/>Kolla in den senaste versionen [Media Services v3](../latest/index.yml). Se även [vägledning för migrering från v2 till v3](../latest/migrate-v-2-v-3-migration-introduction.md)
 
 När du använder Azure AD-autentisering med Azure Media Services kan du autentisera på ett av två sätt:
 
@@ -56,7 +56,7 @@ I de här självstudierna får du lära dig att
 - Läs artikeln om att [komma åt Azure Media Services API med Azure AD-autentisering](media-services-use-aad-auth-to-access-ams-api.md) .
 - Installera [Postman](https://www.getpostman.com/) rest-klienten för att köra REST-API: erna som visas i den här artikeln. 
 
-    I den här självstudien använder vi **Postman** , men resten av verktyget är lämpligt. Andra alternativ är: **Visual Studio Code** med rest-plugin-programmet eller **Telerik-Fiddler** . 
+    I den här självstudien använder vi **Postman** , men resten av verktyget är lämpligt. Andra alternativ är: **Visual Studio Code** med rest-plugin-programmet eller **Telerik-Fiddler**. 
 
 ## <a name="get-the-authentication-information-from-the-azure-portal"></a>Hämta autentiseringsinformation från Azure Portal
 
@@ -75,10 +75,10 @@ Du måste samla in följande data punkter för att få åtkomst till Media Servi
 
 Följ dessa steg för att hämta informationen:
 
-1. Logga in på [Azure-portalen](https://portal.azure.com).
+1. Logga in på [Azure Portal](https://portal.azure.com).
 2. Navigera till din AMS-instans.
-3. Välj **API-åtkomst** .
-4. Klicka på **Anslut för att Azure Media Services API med tjänstens huvud namn** .
+3. Välj **API-åtkomst**.
+4. Klicka på **Anslut för att Azure Media Services API med tjänstens huvud namn**.
 
     ![Skärm bild som visar "A P I Access" vald från "Media Services"-menyn och "Anslut till Azure Media Services ett P I med tjänstens huvud namn" valt i den högra rutan.](./media/connect-with-rest/connect-with-rest01.png)
 
@@ -89,10 +89,10 @@ Följ dessa steg för att hämta informationen:
 
     Följ dessa steg om du behöver skapa en ny AD-App:
     
-   1. Tryck på **Skapa nytt** .
+   1. Tryck på **Skapa nytt**.
    2. Ange ett namn.
    3. Tryck på **Skapa nytt** igen.
-   4. Tryck på **Spara** .
+   4. Tryck på **Spara**.
 
       ![Skärm bild som visar dialog rutan "Skapa ny" med text rutan "skapa app" markerad och knappen "Spara" markerad.](./media/connect-with-rest/new-app.png)
 
@@ -107,11 +107,11 @@ Följ dessa steg för att hämta informationen:
 
 7. Hämta programmets **nyckel** (klient hemlighet). 
 
-   1. Klicka på knappen **hantera program** (Observera att klient-ID-informationen är under **program-ID** ). 
-   2. Tryck på **nycklar** .
+   1. Klicka på knappen **hantera program** (Observera att klient-ID-informationen är under **program-ID**). 
+   2. Tryck på **nycklar**.
     
        ![Skärm bild som visar knappen "hantera program" markerad, "program I D" i mitten av fönstret markerat och "Keys" markerat i den högra rutan.](./media/connect-with-rest/manage-app.png)
-   3. Generera appens nyckel (klient hemlighet) genom att fylla i **Beskrivning** och **upphör att gälla** och trycka på **Spara** .
+   3. Generera appens nyckel (klient hemlighet) genom att fylla i **Beskrivning** och **upphör att gälla** och trycka på **Spara**.
     
        När knappen **Spara** har tryckts ned visas värdet nyckel. Kopiera nyckelvärdet innan du lämnar bladet.
 
@@ -124,11 +124,11 @@ Du kan lägga till värden för AD-anslutnings parametrar till din web.config el
 
 ## <a name="get-the-access-token-using-postman"></a>Hämta åtkomsttoken med Postman
 
-Det här avsnittet visar hur du använder **Postman** för att köra en REST API som returnerar en JWT Bearer-token (Access-token). Om du vill anropa Media Services REST API måste du lägga till rubriken "Authorization" till anropen och lägga till värdet "Bearer- *your_access_token* " i varje anrop (se nästa avsnitt i den här självstudien). 
+Det här avsnittet visar hur du använder **Postman** för att köra en REST API som returnerar en JWT Bearer-token (Access-token). Om du vill anropa Media Services REST API måste du lägga till rubriken "Authorization" till anropen och lägga till värdet "Bearer- *your_access_token*" i varje anrop (se nästa avsnitt i den här självstudien). 
 
-1. Öppna **Postman** .
-2. Välj **POST** .
-3. Ange den URL som innehåller klient namnet i följande format: klient namnet måste sluta med **. onmicrosoft.com** och URL: en ska sluta med **OAuth2/token** : 
+1. Öppna **Postman**.
+2. Välj **POST**.
+3. Ange den URL som innehåller klient namnet i följande format: klient namnet måste sluta med **. onmicrosoft.com** och URL: en ska sluta med **OAuth2/token**: 
 
     `https://login.microsoftonline.com/{your-aad-tenant-name.onmicrosoft.com}/oauth2/token`
 
@@ -158,7 +158,7 @@ Det här avsnittet visar hur du använder **Postman** för att köra en REST API
     resource:https://rest.media.azure.net
     ```
 
-8. Tryck på **Skicka** .
+8. Tryck på **Skicka**.
 
     ![Skärm bild som visar flikarna "post", "sidhuvud" och "Body" och "access_token" markerat och "Skicka"-knappen har identifierats.](./media/connect-with-rest/connect-with-rest04.png)
 
@@ -166,13 +166,13 @@ Det returnerade svaret innehåller den **åtkomsttoken** som du behöver använd
 
 ## <a name="test-the-assets-api-using-the-access-token"></a>Testa **till gångs** -API: et med hjälp av åtkomsttoken
 
-Det här avsnittet visar hur du kommer åt **till gångs** -API: et med **Postman** .
+Det här avsnittet visar hur du kommer åt **till gångs** -API: et med **Postman**.
 
-1. Öppna **Postman** .
-2. Välj **GET** .
+1. Öppna **Postman**.
+2. Välj **GET**.
 3. Klistra in REST API slut punkten (till exempel https://amshelloworld.restv2.westus.media.azure.net/api/Assets)
 4. Välj fliken **auktorisering** . 
-5. Välj **Bearer-token** .
+5. Välj **Bearer-token**.
 6. Klistra in token som skapades i föregående avsnitt.
 
     ![Hämta token](./media/connect-with-rest/connect-with-rest05.png)
@@ -182,7 +182,7 @@ Det här avsnittet visar hur du kommer åt **till gångs** -API: et med **Postma
 
    ![Auth-huvud](./media/connect-with-rest/auth-header.png)
 
-7. Välj **sidhuvud** .
+7. Välj **sidhuvud**.
 5. Klicka på **Mass redigerings** länk till höger i fönstret Postman.
 6. Klistra in följande rubriker:
 
@@ -194,7 +194,7 @@ Det här avsnittet visar hur du kommer åt **till gångs** -API: et med **Postma
     MaxDataServiceVersion:3.0
     ```
 
-7. Tryck på **Skicka** .
+7. Tryck på **Skicka**.
 
 Det returnerade svaret innehåller de till gångar som finns i ditt konto.
 

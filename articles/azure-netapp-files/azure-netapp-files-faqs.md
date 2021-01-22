@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/05/2020
+ms.date: 01/21/2020
 ms.author: b-juche
-ms.openlocfilehash: 913d61c506505d18fff416291e7f3b718f1d92f3
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: f680b1ec76200cb4d3bfc90cd83a2c134f379245
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97913506"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696133"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Vanliga frågor och svar om Azure NetApp Files
 
@@ -258,6 +258,16 @@ Nej. Azure Data Box stöder för närvarande inte Azure NetApp Files.
 ### <a name="is-migration-with-azure-importexport-service-supported"></a>Stöds migrering med Azure import/export-tjänsten?
 
 Nej. Azure import/export-tjänsten stöder inte Azure NetApp Files för närvarande.
+
+## <a name="product-faqs"></a>Vanliga frågor om produkter
+
+### <a name="can-i-use-azure-netapp-files-nfs-or-smb-volumes-with-azure-vmware-solution-avs"></a>Kan jag använda Azure NetApp Files NFS eller SMB-volymer med Azure VMware-lösningen (AVS)?
+
+Du kan montera Azure NetApp Files NFS-volymer på virtuella Windows-datorer eller virtuella Linux-datorer i AVS. Du kan mappa Azure NetApp Files SMB-resurser i AVS-virtuella Windows-datorer. Mer information finns i [Azure NetApp Files med Azure VMware-lösningen]( ../azure-vmware/net-app-files-with-azure-vmware-solution.md).  
+
+### <a name="what-regions-are-supported-for-using-azure-netapp-files-nfs-or-smb-volumes-with-azure-vmware-solution-avs"></a>Vilka regioner stöds för att använda Azure NetApp Files NFS-eller SMB-volymer med Azure VMware-lösningen (AVS)?
+
+Användning av Azure NetApp Files NFS-eller SMB-volymer med AVS stöds i följande regioner – östra USA, västra USA, västra Europa och östra Australien.
 
 ## <a name="next-steps"></a>Nästa steg  
 

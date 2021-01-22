@@ -3,18 +3,18 @@ title: Fakturor för Azure Enterprise-registrering
 description: Den här artikeln förklarar hur du hanterar och använder din Azure Enterprise-faktura.
 author: bandersmsft
 ms.author: banders
-ms.date: 12/09/2020
+ms.date: 01/19/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: c64127f7ebbb416d9dfebb5e417cd27d51697665
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 90ae9bdcee5f5f4c4281f2c3f931389b2ebf9486
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97030730"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98598076"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Fakturor för Azure Enterprise-registrering
 
@@ -238,7 +238,7 @@ Grundläggande information om offentliga priser, måttenheter, vanliga frågor o
 
 ### <a name="enterprise-agreement-units-of-measure"></a>Måttenhet för Enterprise-avtal
 
-Enheten för Enterprise-avtal skiljer sig ofta från andra program som prenumerationsavtalet för Microsoft Online (MOSA). Den här skillnaden innebär att för ett antal tjänster aggregeras måttenheten för att ge det normaliserade priset. Den måttenhet som visas i användningssammanfattningsvyn i Azure Enterprise-portalen är alltid Enterprise-måttet. En fullständig lista över aktuella måttenheter och omvandlingar för varje tjänst finns i Excel-filen [Friendly Service Names](https://azurepricing.blob.core.windows.net/supplemental/Friendly_Service_Names.xlsx).
+Enheten för Enterprise-avtal skiljer sig ofta från andra program som prenumerationsavtalet för Microsoft Online (MOSA). Den här skillnaden innebär att för ett antal tjänster aggregeras måttenheten för att ge det normaliserade priset. Den måttenhet som visas i användningssammanfattningsvyn i Azure Enterprise-portalen är alltid Enterprise-måttet. Om du vill ha en fullständig lista över aktuella måttenheter och omvandlingar för varje tjänst kan du skicka en [supportbegäran](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
 ### <a name="conversion-between-usage-detail-report-and-the-usage-summary-page"></a>Konvertering mellan rapporten för användningsinformation och sidan med sammanfattning av användning
 
@@ -324,13 +324,6 @@ Om ändringen av kanal partner sker i mitten av månaden får kunden en faktura 
 Fakturorna släpps efter den månad då faktureringsperioden slutar. Om faktureringstakten är månatlig kommer septemberfakturan att släppas i oktober för båda partnerna. Om faktureringsperioden är kvartals- eller årsvis kan kunden förvänta sig en faktura för användningen under perioden för den tidigare associerade partnern, medan resten hamnar på den nya partnern baserat på faktureringstakten.
 
 ## <a name="next-steps"></a>Nästa steg
-
-- I Excel-filerna nedan finns information om Azure-tjänster. Informationen uppdateras den 6:e och 20:e i varje månad.
-
-   | Titel | Beskrivning | Filnamn |
-   | --- | --- | --- |
-   | [Friendly Service Names](https://azurepricing.blob.core.windows.net/supplemental/Friendly_Service_Names.xlsx) | Visar aktiva tjänster och innefattar: <br>  <ul><li>tjänstekategori</li>   <li>beskrivande namn på tjänst</li>   <li>Förskottsbetalningar – namn och artikelnummer</li> <li>förbrukningsnamn och artikelnummer</li>   <li>måttenhet</li>   <li>konverteringsfaktorer mellan den rapporterade användningen och användningen som visas i Enterprise-portalen</li></ul> | Friendly\_Service\_Names.xlsx |
-   | [Service Download Fields](https://azurepricing.blob.core.windows.net/supplemental/Service_Download_Fields.xlsx) | Det här kalkylbladet innehåller en lista över alla möjliga kombinationer av tjänsterelaterade fält i den nedladdningsbara användningsrapporten. | Service\_Download\_Fields.xlsx |
 
 - Information om hur du tolkar din faktura och dina kostnader finns i [Förstå fakturan för ditt Azure Enterprise-avtal](../understand/review-enterprise-agreement-bill.md).
 - Om du vill börja använda Azure Enterprise-portalen kan du läsa [Komma igång med Azure EA-portalen](ea-portal-get-started.md).

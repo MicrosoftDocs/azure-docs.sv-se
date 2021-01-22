@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: f04e2aa97cafe2345918e433bcef5e719cee7483
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: eaba099725530f24dcd6aa5da7eb59cb233efd46
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98610174"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695653"
 ---
 # <a name="azure-functions-http-trigger"></a>Azure Functions HTTP-utlösare
 
@@ -547,7 +547,7 @@ Attribut stöds inte av python.
 
 I följande tabell förklaras de egenskaper för bindnings konfiguration som du anger i *function.js* filen och `HttpTrigger` attributet.
 
-|function.jspå egenskap | Attributets egenskap |Description|
+|function.jspå egenskap | Attributets egenskap |Beskrivning|
 |---------|---------|----------------------|
 | **bastyp** | saknas| Required-måste anges till `httpTrigger` . |
 | **position** | saknas| Required-måste anges till `in` . |
@@ -749,6 +749,10 @@ Följande konfiguration visar hur `{id}` parametern skickas till bindningens `ro
 }
 ```
 
+När du använder väg parametrar `invoke_URL_template` skapas automatiskt en för din funktion. Dina klienter kan använda URL-mallen för att förstå de parametrar som de behöver för att skicka in URL: en när funktionen anropas med hjälp av dess URL. Navigera till en av dina HTTP-utlösta funktioner i [Azure Portal](https://portal.azure.com) och välj **Hämta funktions webb adress**.
+
+Du kan via programmering få åtkomst till `invoke_URL_template` med hjälp av Azure Resource Manager-API: er för [list funktioner](https://docs.microsoft.com/rest/api/appservice/webapps/listfunctions) eller [Hämta funktion](https://docs.microsoft.com/rest/api/appservice/webapps/getfunction).
+
 ## <a name="working-with-client-identities"></a>Arbeta med klient identiteter
 
 Om din Function-app använder [App Service autentisering/auktorisering](../app-service/overview-authentication-authorization.md)kan du Visa information om autentiserade klienter från din kod. Den här informationen är tillgänglig som [begär ande huvuden som injiceras av plattformen](../app-service/app-service-authentication-how-to.md#access-user-claims).
@@ -846,11 +850,17 @@ Den autentiserade användaren är tillgänglig via [http-huvuden](../app-service
 
 ## <a name="obtaining-keys"></a>Hämta nycklar
 
-Nycklar lagras som en del av din Function-app i Azure och är krypterade i vila. Om du vill visa dina nycklar, skapa nya eller rulla nycklar till nya värden, navigerar du till någon av dina HTTP-utlösta funktioner i [Azure Portal](https://portal.azure.com) och väljer **Hantera**.
+Nycklar lagras som en del av din Function-app i Azure och är krypterade i vila. Om du vill visa dina nycklar, skapa nya eller rulla nycklar till nya värden, navigerar du till någon av dina HTTP-utlösta funktioner i [Azure Portal](https://portal.azure.com) och väljer **funktions nycklar**.
 
-![Hantera funktions nycklar i portalen.](./media/functions-bindings-http-webhook/manage-function-keys.png)
+Du kan också hantera värd nycklar. Navigera till Function-appen i [Azure Portal](https://portal.azure.com) och välj **app-nycklar**.
 
-Du kan få funktions nycklar genom programmering med hjälp av [API: er för nyckel hantering](https://github.com/Azure/azure-functions-host/wiki/Key-management-API).
+Du kan hämta funktions-och värd nycklar program mässigt med hjälp av Azure Resource Manager API: er. Det finns API: er för att [lista funktions nycklar](/rest/api/appservice/webapps/listfunctionkeys) och [lista värd nycklar](/rest/api/appservice/webapps/listhostkeys), och när du använder distributions platser motsvarar motsvarande API: er en [lista över funktions nycklar](/rest/api/appservice/webapps/listfunctionkeysslot) och [listar värd nycklar](/rest/api/appservice/webapps/listhostkeysslot).
+
+Du kan också skapa nya funktions-och värd nycklar program mässigt med hjälp av [funktionen Skapa eller uppdatera funktion hemlighet](/rest/api/appservice/webapps/createorupdatefunctionsecret), [skapa eller uppdatera funktionens hemliga plats](/rest/api/appservice/webapps/createorupdatefunctionsecretslot), [skapa eller uppdatera värd hemlighet](/rest/api/appservice/webapps/createorupdatehostsecret) och [skapa eller uppdatera värd hemliga plats](/rest/api/appservice/webapps/createorupdatehostsecretslot) -API: er.
+
+Funktions-och värd nycklar kan tas bort program mässigt med hjälp av [funktionen Ta bort funktion hemlighet](/rest/api/appservice/webapps/deletefunctionsecret), [ta bort funktionens hemliga plats](/rest/api/appservice/webapps/deletefunctionsecretslot), [ta bort värd hemlighet](/rest/api/appservice/webapps/deletehostsecret)och ta bort API: er för [värd hemliga platser](/rest/api/appservice/webapps/deletehostsecretslot) .
+
+Du kan också använda de [äldre API: erna för nyckel hantering för att få funktions nycklar](https://github.com/Azure/azure-functions-host/wiki/Key-management-API), men med hjälp av Azure Resource Manager API: er rekommenderas i stället.
 
 ## <a name="api-key-authorization"></a>Auktorisering av API-nyckel
 

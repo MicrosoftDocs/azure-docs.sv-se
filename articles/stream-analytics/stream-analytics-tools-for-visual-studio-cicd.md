@@ -6,12 +6,12 @@ ms.author: sujie
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 05/15/2019
-ms.openlocfilehash: 9fe1aaed58d6069cd583f8607f7bd6332f97674e
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 0b4356c74b2e0c1494456d5d1082efd7b8953a15
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98019898"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98693383"
 ---
 # <a name="use-the-azure-stream-analytics-cicd-nuget-package-for-integration-and-development"></a>Använd Azure Stream Analytics CI/CD NuGet-paketet för integrering och utveckling 
 Den här artikeln beskriver hur du använder Azure Stream Analytics CI/CD NuGet-paketet för att skapa en kontinuerlig integrering och distributions process.
@@ -51,7 +51,7 @@ Standard parametrarna i parameters.jsi filen är från inställningarna i Visual
       "value": null
     },
 ```
-Lär dig mer om hur du [distribuerar med en Resource Manager-mallfil och Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md). Lär dig mer om hur du [använder ett objekt som en parameter i en Resource Manager-mall](/azure/architecture/building-blocks/extending-templates/objects-as-parameters).
+Lär dig mer om hur du [distribuerar med en Resource Manager-mallfil och Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md). Lär dig mer om hur du [använder ett objekt som en parameter i en Resource Manager-mall](/azure/architecture/guide/azure-resource-manager/advanced-templates/objects-as-parameters).
 
 Om du vill använda hanterad identitet för Azure Data Lake Store gen1 som utgående mottagare måste du ge åtkomst till tjänstens huvud namn med hjälp av PowerShell innan du distribuerar till Azure. Lär dig mer om hur du [distribuerar ADLS gen1 med hanterad identitet med Resource Manager-mall](stream-analytics-managed-identities-adls.md#resource-manager-template-deployment).
 

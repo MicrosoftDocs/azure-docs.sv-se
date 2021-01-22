@@ -9,12 +9,12 @@ author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 9578793c88c069b885f03dd682c47ae9f1f1b0a1
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: bc2f802a902212633fdbc081d33a51407d374e36
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97802634"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696370"
 ---
 # <a name="install-software-and-set-up-resources-for-the-tutorial"></a>Installera program vara och konfigurera resurser för självstudien
 
@@ -32,7 +32,6 @@ I den här självstudien med tre delar skapar du en maskin inlärnings modell f�
 5. Installera den senaste versionen av [Azure CLI](https://github.com/Azure/azure-powershell/releases/tag/v3.5.0-February2020). Följande skript kräver att AZ PowerShell är den senaste versionen (3.5.0, feb 2020).
 6. Konfigurera miljön för att felsöka, köra och testa IoT Edge lösning genom att installera [verktyget Azure IoT EdgeHub dev](https://pypi.org/project/iotedgehubdev/).
 7. Installera Docker.
-8. Hämta filen DACPAC som kommer att användas i självstudien. 
 
 ## <a name="deploy-azure-resources-using-powershell-script"></a>Distribuera Azure-resurser med PowerShell-skript
 

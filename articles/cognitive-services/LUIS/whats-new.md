@@ -4,13 +4,13 @@ description: Den här artikeln uppdateras regelbundet med nyheter om Azure Cogni
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: overview
-ms.date: 01/12/2021
-ms.openlocfilehash: 4bcd25e96aba1ca103737679540cb9ff67674914
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.date: 01/21/2021
+ms.openlocfilehash: 5fdde81d31eae4c50b86a5553742f9b599f32505
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98179137"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98693603"
 ---
 # <a name="whats-new-in-language-understanding"></a>Vad är nytt i Language Understanding
 
@@ -21,6 +21,7 @@ Läs om vad som är nytt i tjänsten. Dessa objekt innehåller viktig informatio
 ### <a name="january-2021"></a>Januari 2021
 
 * V3-förutsägelse API har nu stöd för [Bing API för stavnings](luis-how-to-publish-app.md#spelling-correction)kontroll.
+* De regionala portalerna (au.luis.ai och eu.luis.ai) har konsoliderats till en enda portal och URL. Om du använde någon av dessa portaler kommer du automatiskt att dirigeras om till luis.ai.
 
 ### <a name="december-2020"></a>December 2020
 

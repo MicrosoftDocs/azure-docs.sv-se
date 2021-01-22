@@ -9,18 +9,18 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 19451fb09919238a04ac953c9c38fc70b4744d16
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: 986019ec4de2fc25b6d8714a8c687cc9342f47b8
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955305"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696082"
 ---
 # <a name="create-azure-arc-data-controller-using-the-azure-data-cli-azdata"></a>Skapa en Azure Arc-dataenhet med hjälp av [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Läs avsnittet [skapa data styrenheten för Azure båg](create-data-controller.md) för översikts information.
 
@@ -266,34 +266,11 @@ När du har kört kommandot fortsätter du med att [övervaka skapande status](#
 
 ### <a name="create-on-azure-red-hat-openshift-aro"></a>Skapa på Azure Red Hat OpenShift (ARO)
 
-#### <a name="apply-the-scc"></a>Tillämpa SCC
+Det krävs en säkerhets kontext begränsning för att OpenShift i Azure Red Hat.
 
-Innan du skapar datakontrollanten på en Red Hat OpenShift måste du tillämpa vissa säkerhets kontext begränsningar (SCC). För för hands versionen gör dessa säkerhets begränsningar begränsade. Framtida versioner kommer att tillhandahålla uppdaterad SCC.
+#### <a name="apply-the-security-context"></a>Tillämpa säkerhets kontexten
 
-1. Hämta den anpassade säkerhets kontext begränsningen (SCC). Använd något av följande: 
-   - [GitHub](https://github.com/microsoft/azure_arc/tree/main/arc_data_services/deploy/yaml/arc-data-scc.yaml) 
-   - ([RAW](https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/arc-data-scc.yaml))
-   - `curl` Följande kommando hämtar Arc-data-SCC. yaml:
-
-      ```console
-      curl https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/arc-data-scc.yaml -o arc-data-scc.yaml
-      ```
-
-1. Skapa SCC.
-
-   ```console
-   oc create -f arc-data-scc.yaml
-   ```
-
-1. Tillämpa SCC på tjänst kontot.
-
-   > [!NOTE]
-   > Använd samma namnrymd här och i `azdata arc dc create` kommandot nedan. Exempel är `arc` .
-
-   ```console
-   oc adm policy add-scc-to-user arc-data-scc --serviceaccount default --namespace arc
-   ```
-
+[!INCLUDE [apply-security-context-constraint](includes/apply-security-context-constraint.md)]
 
 #### <a name="create-custom-deployment-profile"></a>Skapa anpassad distributions profil
 
@@ -324,33 +301,11 @@ När du har kört kommandot fortsätter du med att [övervaka skapande status](#
 > [!NOTE]
 > Om du använder Red Hat OpenShift container Platform på Azure rekommenderar vi att du använder den senaste tillgängliga versionen.
 
-#### <a name="apply-the-scc"></a>Tillämpa SCC
+Innan du skapar datakontrollanten på Red Hat-OCP måste du tillämpa vissa begränsningar för säkerhets kontexten. 
 
-Innan du skapar datakontrollanten på Red Hat-OCP måste du tillämpa vissa säkerhets kontext begränsningar (SCC). För för hands versionen gör dessa säkerhets begränsningar begränsade. Framtida versioner kommer att tillhandahålla uppdaterad SCC.
+#### <a name="apply-the-security-context-constraint"></a>Tillämpa säkerhets kontextens begränsning
 
-1. Hämta den anpassade säkerhets kontext begränsningen (SCC). Använd något av följande: 
-   - [GitHub](https://github.com/microsoft/azure_arc/tree/main/arc_data_services/deploy/yaml/arc-data-scc.yaml) 
-   - ([RAW](https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/arc-data-scc.yaml))
-   - `curl` Följande kommando hämtar Arc-data-SCC. yaml:
-
-      ```console
-      curl https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/arc-data-scc.yaml -o arc-data-scc.yaml
-      ```
-
-1. Skapa SCC.
-
-   ```console
-   oc create -f arc-data-scc.yaml
-   ```
-
-1. Tillämpa SCC på tjänst kontot.
-
-   > [!NOTE]
-   > Använd samma namnrymd här och i `azdata arc dc create` kommandot nedan. Exempel är `arc` .
-
-   ```console
-   oc adm policy add-scc-to-user arc-data-scc --serviceaccount default --namespace arc
-   ```
+[!INCLUDE [apply-security-context-constraint](includes/apply-security-context-constraint.md)]
 
 #### <a name="determine-storage-class"></a>Bestäm lagrings klass
 

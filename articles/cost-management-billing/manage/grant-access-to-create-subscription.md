@@ -4,20 +4,23 @@ description: Lär dig hur du ger en användare eller ett tjänsthuvudnamn möjli
 author: bandersmsft
 ms.service: cost-management-billing
 ms.subservice: billing
-ms.reviewer: amberb
+ms.reviewer: andalmia
 ms.topic: conceptual
-ms.date: 08/26/2020
+ms.date: 01/13/2021
 ms.author: banders
-ms.openlocfilehash: c13670df26e5d0f7774b5a2aac81f656de94c960
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 039e728f6518d21ddfb9c7c359a6cf2ec743f232
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844718"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185112"
 ---
 # <a name="grant-access-to-create-azure-enterprise-subscriptions-preview"></a>Bevilja behörighet att skapa Azure Enterprise-prenumerationer (förhandsversion)
 
 Som Azure-kund med [Enterprise-avtal (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) kan du ge en annan användare eller ett tjänsthuvudnamn behörighet att skapa prenumerationer som debiteras ditt konto. I den här artikeln får du lära dig hur du använder [rollbaserad åtkomstkontroll i Azure (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md) för att dela möjligheten att skapa prenumerationer och hur du granskar skapande av prenumerationer. Du måste ha ägarrollen för det konto som du vill dela.
+
+> [!NOTE]
+> Detta API fungerar bara med [förhandsversions-API:er för prenumerationsskapande](programmatically-create-subscription-preview.md). Om du vill använda [den allmänt tillgängliga versionen](programmatically-create-subscription-enterprise-agreement.md) använder du den senaste API-versionen på [2019-10-01-preview](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put). Om du migrerar till användning av de nyare API:erna måste du bevilja ägarbehörigheter igen med [2019-10-01-preview](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put). Din tidigare konfiguration som använder följande API:er konverteras inte automatiskt för användning med nyare API:er.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 

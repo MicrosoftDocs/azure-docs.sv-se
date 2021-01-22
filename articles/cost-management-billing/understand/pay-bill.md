@@ -8,14 +8,14 @@ tags: billing, past due, pay now, bill, invoice, pay
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 12/17/2020
+ms.date: 01/13/2021
 ms.author: banders
-ms.openlocfilehash: 2983f870d6ab20dac4da487ba03ebf84905f8dcc
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 8117f3ca70f51f2d9b11c479803ac33b49f416e7
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97680311"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98540038"
 ---
 # <a name="how-to-pay-your-bill-for-microsoft-azure"></a>Så betalar du din faktura för Microsoft Azure
 
@@ -24,6 +24,8 @@ Den här artikeln gäller kunder med ett Microsoft-kundavtal.
 [Kontrollera din åtkomst till ett Microsoft-kundavtal](#check-access-to-a-microsoft-customer-agreement).
 
 Det finns två sätt att betala en faktura för Azure. Du kan betala med betalningsmetoden som är standard för din faktureringsprofil, eller göra en engångsbetalning som kallas **Betala nu**.
+
+Om du har registrerat dig för Azure via en Microsoft-representant anges din standardbetalningsmetod alltid som *check eller banköverföring*.
 
 Om du har Azure-krediter tillämpas de automatiskt på din faktura varje faktureringsperiod.
 

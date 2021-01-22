@@ -8,19 +8,19 @@ ms.subservice: enterprise
 ms.topic: reference
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: b78b046e2991fa4ebfb575e4f6a1cc900df0d298
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: a1c420eed89b7b45ea6c50345737b8615f39ad8c
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686912"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602082"
 ---
 # <a name="overview-of-reporting-apis-for-enterprise-customers"></a>Översikt över rapporterings-API:er för Enterprise-kunder
 
 > [!Note]
 > Microsoft uppdaterar inte längre Azures fakturerings-API:er för Azure-rapportering. I stället bör du använda API:er för [Azures Consumption](/rest/api/consumption).
 
-Med rapporterings-API:erna kan Enterprise-kunder hämta förbruknings- och faktureringsdata till önskade dataanalysverktyg. Enterprise-kunder har signerat [ett Enterprise-avtal (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) med Azure om särskilda betalningsåtaganden som berättigar till anpassade priser för Azure-resurser.
+Med rapporterings-API:erna kan Enterprise-kunder hämta förbruknings- och faktureringsdata till önskade dataanalysverktyg. Enterprise-kunder har signerat [ett Enterprise-avtal (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) med Azure om förhandlad förskottsbetalning (kallades tidigare ekonomiskt åtagande) som berättigar till anpassade priser för Azure-resurser.
 
 Alla datum- och tidsparametrar som krävs för API:er måste anges som kombinerade UTC-värden (Coordinated Universal Time). Värden som returneras av API:er visas i UTC-format.
 
