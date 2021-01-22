@@ -13,12 +13,12 @@ ms.date: 9/18/2019
 ms.author: brianmel
 ms.reviewer: rapong
 ms.custom: aaddev
-ms.openlocfilehash: a8c7ae8de41a01cb07a4bbbcd5943fb6290eced8
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: f87f2e79bd9439fddb52fad82c7ab4712fc68fb9
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131652"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98680373"
 ---
 # <a name="use-msal-for-android-with-b2c"></a>Använda MSAL för Android med B2C
 
@@ -36,7 +36,7 @@ Ett B2C-program som har två principer:
 
 Konfigurations filen för appen deklarerar två `authorities` . En för varje princip. `type`Egenskapen för varje myndighet är `B2C` .
 
->Obs: `account_mode` måste anges till **Multiple** för B2C-program. Läs dokumentationen om du vill ha mer information om [flera offentliga klient program för konton](https://docs.microsoft.com/azure/active-directory/develop/single-multi-account#multiple-account-public-client-application).
+>Obs: `account_mode` måste anges till **Multiple** för B2C-program. Läs dokumentationen om du vill ha mer information om [flera offentliga klient program för konton](./single-multi-account.md#multiple-account-public-client-application).
 
 ### `app/src/main/res/raw/msal_config.json`
 ```json
@@ -142,7 +142,7 @@ pca.acquireTokenSilentAsync(parameters);
 
 ## <a name="specify-a-policy"></a>Ange en princip
 
-Eftersom principerna i B2C representeras som separata myndigheter, så kan du anropa en annan princip än standardvärdet genom att ange en `fromAuthority` sats vid konstruktion `acquireToken` eller `acquireTokenSilent` parametrar.  Exempel:
+Eftersom principerna i B2C representeras som separata myndigheter, så kan du anropa en annan princip än standardvärdet genom att ange en `fromAuthority` sats vid konstruktion `acquireToken` eller `acquireTokenSilent` parametrar.  Till exempel:
 
 ```java
 AcquireTokenParameters parameters = new AcquireTokenParameters.Builder()

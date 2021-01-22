@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 01/14/2019
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: fcfddce568be6c641a5bf5be70c2cd0ad368095f
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 1eeb291c7a058efd8905e95ebf1ea14fed046691
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843612"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98680526"
 ---
 # <a name="stream-azure-spring-cloud-app-logs-in-real-time"></a>Strömma apploggar för Azure Spring Cloud i realtid
 
@@ -31,7 +31,7 @@ Azure våren Cloud gör det möjligt att logga strömning i Azure CLI för att f
 ## <a name="use-cli-to-tail-logs"></a>Använd CLI för att logga loggar
 
 Om du vill undvika att flera gånger specificera resurs gruppen och tjänst instans namnet anger du standard resurs grupps namn och kluster namn.
-```
+```azurecli
 az configure --defaults group=<service group name>
 az configure --defaults spring-cloud=<service instance name>
 ```
@@ -39,11 +39,11 @@ I följande exempel kommer resurs gruppen och tjänst namnet att utelämnas i ko
 
 ### <a name="tail-log-for-app-with-single-instance"></a>Pilslut för app med en enda instans
 Om en app som heter auth-service bara har en instans, kan du visa loggen för App-instansen med följande kommando:
-```
+```azurecli
 az spring-cloud app logs -n auth-service
 ```
 Då returneras loggar:
-```
+```output
 ...
 2020-01-15 01:54:40.481  INFO [auth-service,,,] 1 --- [main] o.apache.catalina.core.StandardService  : Starting service [Tomcat]
 2020-01-15 01:54:40.482  INFO [auth-service,,,] 1 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.22]
@@ -58,12 +58,12 @@ Om det finns flera instanser för appen med namnet `auth-service` kan du Visa in
 
 Först kan du hämta instans namnen för appen med följande kommando.
 
-```
+```azurecli
 az spring-cloud app show -n auth-service --query properties.activeDeployment.properties.instances -o table
 ```
 Med resultat:
 
-```
+```output
 Name                                         Status    DiscoveryStatus
 -------------------------------------------  --------  -----------------
 auth-service-default-12-75cc4577fc-pw7hb  Running   UP
@@ -72,7 +72,7 @@ auth-service-default-12-75cc4577fc-n25mh  Running   UP
 ``` 
 Sedan kan du strömma loggar för en app-instans med alternativet alternativ `-i/--instance` :
 
-```
+```azurecli
 az spring-cloud app logs -n auth-service -i auth-service-default-12-75cc4577fc-pw7hb
 ```
 
@@ -81,11 +81,11 @@ Du kan också få information om App-instanser från Azure Portal.  När du har 
 ### <a name="continuously-stream-new-logs"></a>Strömma nya loggar kontinuerligt
 Som standard `az spring-cloud ap log tail` skriver ut endast befintliga loggar som strömmas till app-konsolen och sedan avslutas. Om du vill strömma nya loggar lägger du till-f (--följ):  
 
-```
+```azurecli
 az spring-cloud app logs -n auth-service -f
 ``` 
 Så här kontrollerar du vilka loggnings alternativ som stöds:
-``` 
+```azurecli
 az spring-cloud app logs -h 
 ```
 

@@ -11,12 +11,12 @@ ms.date: 12/04/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e65569cadd8f778a94f93aa22dd3924c52ff12f8
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 3796b3d86f647e38cf2ff018e8c0c903d9a64e41
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98614258"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98682046"
 ---
 # <a name="inbound-synchronization-for-cloud-sync-using-ms-graph-api"></a>Inkommande synkronisering för molnbaserad synkronisering med MS Graph API
 
@@ -31,7 +31,7 @@ Strukturen för hur du gör detta består av följande steg.  De är:
 - [Starta synkroniseringsjobb](#start-sync-job)
 - [Gransknings status](#review-status)
 
-Använd dessa [Microsoft Azure Active Directory-modul för Windows PowerShell](https://docs.microsoft.com/powershell/module/msonline/) -kommandon för att aktivera synkronisering för en produktions klient, ett krav för att kunna anropa administrations webb tjänsten för den klienten.
+Använd dessa [Microsoft Azure Active Directory-modul för Windows PowerShell](/powershell/module/msonline/) -kommandon för att aktivera synkronisering för en produktions klient, ett krav för att kunna anropa administrations webb tjänsten för den klienten.
 
 ## <a name="basic-setup"></a>Grundläggande konfiguration
 
@@ -60,7 +60,7 @@ Du måste använda detta program-ID 1a4721b3-e57f-4451-ae87-ef078703ec94. Displa
 ## <a name="create-sync-job"></a>Skapa synkroniseringsjobb
 Utdata från kommandot ovan returnerar objectId för det tjänst huvud namn som skapades. I det här exemplet är objectId 614ac0e9-a59b-481f-bd8f-79a73d167e1c.  Använd Microsoft Graph för att lägga till en synchronizationJob till tjänstens huvud namn.  
 
-Dokumentation om hur du skapar ett synkroniseringsjobb finns [här](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-post?view=graph-rest-beta&tabs=http).
+Dokumentation om hur du skapar ett synkroniseringsjobb finns [här](/graph/api/synchronization-synchronizationjob-post?tabs=http&view=graph-rest-beta).
 
 Om du inte har loggat in med ID: t ovan kan du hitta tjänstens huvud namn genom att köra följande MS Graph-anrop. Du behöver Directory. Read. alla behörigheter för att utföra det anropet:
  
@@ -216,11 +216,11 @@ Jobbet kan hämtas igen via följande kommando:
 
  `GET https://graph.microsoft.com/beta/servicePrincipals/[SERVICE_PRINCIPAL_ID]/synchronization/jobs/ ` 
 
-Dokumentation för att hämta jobb hittar du [här](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-list?view=graph-rest-beta&tabs=http). 
+Dokumentation för att hämta jobb hittar du [här](/graph/api/synchronization-synchronizationjob-list?tabs=http&view=graph-rest-beta). 
  
 Starta jobbet genom att utfärda denna begäran med hjälp av objectId för tjänstens huvud namn som skapades i det första steget och jobb identifieraren som returnerades från begäran som skapade jobbet.
 
-Dokumentation om hur du startar ett jobb hittar du [här](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-start?view=graph-rest-beta&tabs=http). 
+Dokumentation om hur du startar ett jobb hittar du [här](/graph/api/synchronization-synchronizationjob-start?tabs=http&view=graph-rest-beta). 
 
  ```
  POST  https://graph.microsoft.com/beta/servicePrincipals/8895955e-2e6c-4d79-8943-4d72ca36878f/synchronization/jobs/AD2AADProvisioning.fc96887f36da47508c935c28a0c0b6da/start
@@ -228,7 +228,7 @@ Dokumentation om hur du startar ett jobb hittar du [här](https://docs.microsoft
 
 Förväntat svar är... HTTP 204/inget innehåll.
 
-Andra kommandon för att kontrol lera jobbet dokumenteras [här](https://docs.microsoft.com/graph/api/resources/synchronization-synchronizationjob?view=graph-rest-beta).
+Andra kommandon för att kontrol lera jobbet dokumenteras [här](/graph/api/resources/synchronization-synchronizationjob?view=graph-rest-beta).
  
 För att starta om ett jobb använder det...
 
@@ -254,4 +254,4 @@ Titta under avsnittet status för det returnerade objektet för relevant informa
 
 - [Vad är Azure AD Connect Cloud Sync?](what-is-cloud-sync.md)
 - [Transformeringar](how-to-transformation.md)
-- [API för Azure AD-synkronisering](https://docs.microsoft.com/graph/api/resources/synchronization-overview?view=graph-rest-beta)
+- [API för Azure AD-synkronisering](/graph/api/resources/synchronization-overview?view=graph-rest-beta)

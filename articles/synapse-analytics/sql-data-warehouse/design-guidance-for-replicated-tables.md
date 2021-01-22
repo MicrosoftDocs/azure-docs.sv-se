@@ -11,12 +11,12 @@ ms.date: 03/19/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 0cf40990d59aff984226244f520e6f8f937713fd
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 7dcb884d8eafdfa5218e96d63f62a5d462d20cf8
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96456495"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98679938"
 ---
 # <a name="design-guidance-for-using-replicated-tables-in-synapse-sql-pool"></a>Design Guide för att använda replikerade tabeller i Synapse SQL-pool
 
@@ -46,8 +46,8 @@ Replikerade tabeller fungerar bra för dimensions tabeller i ett stjärn schema.
 
 Överväg att använda en replikerad tabell när:
 
-- Tabell storleken på disken är mindre än 2 GB, oavsett antalet rader. Du kan använda [DBCC PDW_SHOWSPACEUSED](/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) kommandot för att hitta storleken på en tabell: `DBCC PDW_SHOWSPACEUSED('ReplTableCandidate')` .
-- Tabellen används i kopplingar som annars kräver data förflyttning. När du kopplar ihop tabeller som inte är distribuerade i samma kolumn, till exempel en hash-distribuerad tabell till en Round Robin-tabell, krävs data flytt för att slutföra frågan.  Om en av tabellerna är liten bör du tänka på en replikerad tabell. Vi rekommenderar att du använder replikerade tabeller i stället för Round-Robin-tabeller i de flesta fall. Använd [sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)om du vill visa åtgärder för data förflyttning i fråge planer.  BroadcastMoveOperation är den typiska data flytt åtgärden som kan elimineras med hjälp av en replikerad tabell.  
+- Tabell storleken på disken är mindre än 2 GB, oavsett antalet rader. Du kan använda [DBCC PDW_SHOWSPACEUSED](/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) kommandot för att hitta storleken på en tabell: `DBCC PDW_SHOWSPACEUSED('ReplTableCandidate')` .
+- Tabellen används i kopplingar som annars kräver data förflyttning. När du kopplar ihop tabeller som inte är distribuerade i samma kolumn, till exempel en hash-distribuerad tabell till en Round Robin-tabell, krävs data flytt för att slutföra frågan.  Om en av tabellerna är liten bör du tänka på en replikerad tabell. Vi rekommenderar att du använder replikerade tabeller i stället för Round-Robin-tabeller i de flesta fall. Använd [sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)om du vill visa åtgärder för data förflyttning i fråge planer.  BroadcastMoveOperation är den typiska data flytt åtgärden som kan elimineras med hjälp av en replikerad tabell.  
 
 Replikerade tabeller kanske inte ger bästa prestanda för frågor när:
 
@@ -78,7 +78,7 @@ WHERE EnglishDescription LIKE '%frame%comfortable%'
 
 Om du redan har en Round-Robin-tabell rekommenderar vi att du konverterar dem till replikerade tabeller om de uppfyller de kriterier som beskrivs i den här artikeln. Replikerade tabeller ger bättre prestanda över Round-Robin-tabeller eftersom de eliminerar behovet av data förflyttning.  En Round-Robin-tabell kräver alltid data förflyttning för kopplingar.
 
-I det här exemplet används [CTAs](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) för att ändra DimSalesTerritory-tabellen till en replikerad tabell. Det här exemplet fungerar oavsett om DimSalesTerritory är hash-Distributed eller Round-Robin.
+I det här exemplet används [CTAs](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) för att ändra DimSalesTerritory-tabellen till en replikerad tabell. Det här exemplet fungerar oavsett om DimSalesTerritory är hash-Distributed eller Round-Robin.
 
 ```sql
 CREATE TABLE [dbo].[DimSalesTerritory_REPLICATE]
@@ -99,7 +99,7 @@ DROP TABLE [dbo].[DimSalesTerritory_old];
 
 ### <a name="query-performance-example-for-round-robin-versus-replicated"></a>Exempel på prestanda frågor för resursallokering med resursallokering och replikerad
 
-En replikerad tabell kräver ingen data förflyttning för kopplingar eftersom hela tabellen redan finns på varje Compute-nod. Om dimensions tabellerna har distribuerats med resursallokering, kopierar en koppling dimensions tabellen i fullständig till varje Compute-nod. För att flytta data innehåller frågeuttrycket en åtgärd som kallas BroadcastMoveOperation. Den här typen av data förflyttnings åtgärd saktar ned frågans prestanda och elimineras genom att använda replikerade tabeller. Använd vyn [sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) system katalog för att Visa plan steg för frågor.  
+En replikerad tabell kräver ingen data förflyttning för kopplingar eftersom hela tabellen redan finns på varje Compute-nod. Om dimensions tabellerna har distribuerats med resursallokering, kopierar en koppling dimensions tabellen i fullständig till varje Compute-nod. För att flytta data innehåller frågeuttrycket en åtgärd som kallas BroadcastMoveOperation. Den här typen av data förflyttnings åtgärd saktar ned frågans prestanda och elimineras genom att använda replikerade tabeller. Använd vyn [sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) system katalog för att Visa plan steg för frågor.  
 
 I följande fråga mot AdventureWorks `FactInternetSales` -schemat är tabellen till exempel hash-distribuerad. `DimDate`Tabellerna och `DimSalesTerritory` är mindre dimensions tabeller. Den här frågan returnerar den totala försäljningen i Nordamerika för räkenskapsår 2004:
 
@@ -170,7 +170,7 @@ Till exempel läser det här inläsnings mönstret data från fyra källor, men 
 
 För att säkerställa konsekvent körning av frågor, kan du överväga att tvinga fram skapandet av de replikerade tabellerna efter en batch-belastning. Annars kommer den första frågan fortfarande använda data förflyttning för att slutföra frågan.
 
-Den här frågan använder [sys.pdw_replicated_table_cache_state](/sql/relational-databases/system-catalog-views/sys-pdw-replicated-table-cache-state-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) DMV för att visa en lista över replikerade tabeller som har ändrats, men inte återskapas.
+Den här frågan använder [sys.pdw_replicated_table_cache_state](/sql/relational-databases/system-catalog-views/sys-pdw-replicated-table-cache-state-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) DMV för att visa en lista över replikerade tabeller som har ändrats, men inte återskapas.
 
 ```sql
 SELECT [ReplicatedTable] = t.[name]
@@ -193,7 +193,7 @@ SELECT TOP 1 * FROM [ReplicatedTable]
 
 Använd någon av följande instruktioner för att skapa en replikerad tabell:
 
-- [CREATE TABLE (SQL-pool)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [CREATE TABLE som SELECT (SQL-pool)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [CREATE TABLE (SQL-pool)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
+- [CREATE TABLE som SELECT (SQL-pool)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
 
 En översikt över distribuerade tabeller finns i [distribuerade tabeller](sql-data-warehouse-tables-distribute.md).

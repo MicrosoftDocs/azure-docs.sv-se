@@ -1,20 +1,20 @@
 ---
 title: De kontroller som är skyddade av den australiska regeringens exempel kontroller
 description: Kontroll av mappning av det insamlade utkastet av myndigheter som är skyddat av myndigheter. Varje kontroll mappas till en eller flera Azure Policy definitioner som hjälper till med utvärderingen.
-ms.date: 09/11/2020
+ms.date: 01/21/2021
 ms.topic: sample
-ms.openlocfilehash: 9f036c7e1a749043a0b81717b75202a5c6c37c8c
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: df143a871db3d871fe6354eab23b7ca6dc012b78
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932234"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98680004"
 ---
 # <a name="control-mapping-of-the-australian-government-ism-protected-blueprint-sample"></a>Kontroll mappning för det insamlade utkastet av myndigheter som är skyddat av myndigheter
 
 I följande artikel beskrivs hur Azure-skisser det skyddade skiss exemplet för Azure-ritningar mappar till ISM-skyddade kontroller. Mer information om kontrollerna finns i [ISM Protected](https://www.cyber.gov.au/ism).
 
-Följande mappningar är till de **skyddade ISM** -kontrollerna. Använd navigeringen till höger om du vill gå direkt till en bestämd kontroll mappning. Många av de mappade kontrollerna implementeras med ett [Azure policy](../../../policy/overview.md) initiativ. Om du vill granska hela initiativet öppnar du **princip** i Azure Portal och väljer sidan **definitioner** . Leta sedan reda på och välj ** \[ förhands granskningen \] : granska de skyddade kontrollerna i australisk myndigheter och distribuera särskilda VM-tillägg för att ge stöd för det inbyggda princip initiativet för gransknings krav** .
+Följande mappningar är till de **skyddade ISM** -kontrollerna. Använd navigeringen till höger om du vill gå direkt till en bestämd kontroll mappning. Många av de mappade kontrollerna implementeras med ett [Azure policy](../../../policy/overview.md) initiativ. Om du vill granska hela initiativet öppnar du **princip** i Azure Portal och väljer sidan **definitioner** . Leta sedan reda på och välj **\[ förhands granskningen \] : granska de skyddade kontrollerna i australisk myndigheter och distribuera särskilda VM-tillägg för att ge stöd för det inbyggda princip initiativet för gransknings krav** .
 
 > [!IMPORTANT]
 > Varje kontroll nedan är kopplad till en eller flera [Azure policy](../../../policy/overview.md) -definitioner. Dessa principer kan hjälpa dig att [utvärdera efterlevnaden](../../../policy/how-to/get-compliance-data.md) av kontrollen. Det finns dock ofta ingen en-till-en-eller fullständig matchning mellan en kontroll och en eller flera principer. Som sådan är **kompatibel** i Azure policy endast som avser själva principerna. Detta garanterar inte att du är helt kompatibel med alla krav för en kontroll. Standarden för efterlevnad innehåller dessutom kontroller som inte åtgärdas av några Azure Policy definitioner för tillfället. Därför är regelefterlevnad i Azure Policy bara en partiell vy av din övergripande kompatibilitetsstatus. Kopplingarna mellan kontroller och Azure Policy definitioner för det här skiss exemplet för efterlevnad kan ändras med tiden. Om du vill visa ändrings historiken läser du [inchecknings historiken för GitHub](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/ism-protected/control-mapping.md).
@@ -322,7 +322,7 @@ Den här skissen hjälper dig att begränsa platsen för distributionen av alla 
 
 ### <a name="1424-web-browser-based-security-controls-are-implemented-for-web-applications-in-order-to-help-protect-both-web-applications-and-their-users"></a>1424 säkerhets kontroller implementeras för webb program för att hjälpa till att skydda både webb program och deras användare
 
-- CORS (Cross Origin Resource Sharing) bör inte tillåta att alla resurser har åtkomst till dina webbappar
+- CORS bör inte tillåta alla resurser åtkomst till dina webb program
 
 ## <a name="guidelines-for-network-management---network-design-and-configuration"></a>Rikt linjer för nätverks hantering – nätverks design och konfiguration
 

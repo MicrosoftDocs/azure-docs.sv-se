@@ -12,23 +12,23 @@ ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 817a912dabfc5365eabe8e0dabd7e0b40e40c525
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: fb34051f7d4b24190806dde939c8cc6d9c2a4896
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462511"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98679955"
 ---
 # <a name="column-level-security"></a>Säkerhet på kolumnnivå
 
 Column-Level säkerhet gör det möjligt för kunder att kontrol lera åtkomsten till tabell kolumner baserat på användarens körnings kontext eller grupp medlemskap.
 
 > [!VIDEO https://www.youtube.com/embed/OU_ESg0g8r8]
-Eftersom den här videon har publicerats [säkerhet på radnivå](/sql/relational-databases/security/row-level-security?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) blev tillgänglig för dedikerad SQL-pool i Azure Synapse.
+Eftersom den här videon har publicerats [säkerhet på radnivå](/sql/relational-databases/security/row-level-security?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) blev tillgänglig för dedikerad SQL-pool i Azure Synapse.
 
 Säkerhet på kolumn nivå fören klar utformningen och kodningen av säkerhet i ditt program, så att du kan begränsa kolumn åtkomsten för att skydda känsliga data. Till exempel ser du till att specifika användare bara har åtkomst till vissa kolumner i en tabell som är relevanta för deras avdelning. Logiken för åtkomst begränsning finns i databas nivån i stället för bort från data i en annan program nivå. Databasen tillämpar åtkomst begränsningar varje gång data åtkomsten görs från vilken nivå som helst. Den här begränsningen gör din säkerhet mer tillförlitlig och robust genom att minska det totala säkerhets systemets Area. Dessutom eliminerar säkerhet på kolumn nivå behovet av att introducera vyer för att filtrera bort kolumner för att få åtkomst begränsningar för användarna.
 
-Du kan implementera säkerhet på kolumn nivå med instruktionen [bevilja](/sql/t-sql/statements/grant-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL. Med den här mekanismen stöds både SQL-och Azure Active Directory-autentisering (Azure AD).
+Du kan implementera säkerhet på kolumn nivå med instruktionen [bevilja](/sql/t-sql/statements/grant-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) T-SQL. Med den här mekanismen stöds både SQL-och Azure Active Directory-autentisering (Azure AD).
 
 ![Diagrammet visar en schematisk tabell med den första kolumnen med ett stängt hänglås och dess celler en orange färg medan de andra kolumnerna är vita celler.](./media/column-level-security/cls.png)
 

@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 12/07/2020
+ms.date: 01/21/2021
 ms.author: tisande
-ms.openlocfilehash: 00c80fa311837918a78f26e941f00cb17f1dc279
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 4d2ad9cf6b47d8307d9652419b82de8ffcbcb099
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98019184"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98681658"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Indexeringsprinciper i Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -35,6 +35,17 @@ Azure Cosmos DB stöder två indexerings lägen:
 > Azure Cosmos DB stöder också ett Lazy-indexerings läge. Lazy-indexering utför uppdateringar av indexet på en mycket lägre prioritetsnivå när motorn inte utför något annat arbete. Detta kan ge **inkonsekventa eller ofullständiga** frågeresultat. Om du planerar att fråga en Cosmos-container bör du inte välja Lazy-indexering. Nya behållare kan inte välja Lazy-indexering. Du kan begära ett undantag genom att kontakta [Azure-supporten](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) (förutom om du använder ett Azure Cosmos-konto i ett [Server](serverless.md) fritt läge som inte stöder Lazy-indexering).
 
 Indexerings principen är som standard inställd på `automatic` . Den uppnås genom att ställa in `automatic` egenskapen i indexerings principen på `true` . Genom att ange den här egenskapen kan `true` Azure-CosmosDB automatiskt indexera dokument när de skrivs.
+
+## <a name="index-size"></a><a id="index-size"></a>Index storlek
+
+I Azure Cosmos DB är den totala förbrukade lagringen kombinationen av både data storlek och index storlek. Följande är några funktioner i index storlek:
+
+* Index storleken beror på indexerings principen. Om alla egenskaper är indexerade kan index storleken vara större än data storleken.
+* När data tas bort komprimeras indexen på en nästan kontinuerlig basis. För att ta bort små data kan du dock inte omedelbart Observera en minskning av index storleken.
+* Index storleken kan växa i följande fall:
+
+  * Varaktighet för partitions delning – index utrymmet släpps efter att partitionens delning har slutförts.
+  * När en partition delas, ökar index utrymmet tillfälligt när partitionen delas. 
 
 ## <a name="including-and-excluding-property-paths"></a><a id="include-exclude-paths"></a>Inklusive och exklusive egenskaps Sök vägar
 
@@ -91,7 +102,7 @@ När du inkluderar och exkluderar sökvägar kan du stöta på följande attribu
 
 Om detta inte anges kommer dessa egenskaper att ha följande standardvärden:
 
-| **Egenskaps namn**     | **Standardvärde** |
+| **Egenskapens namn**     | **Standardvärde** |
 | ----------------------- | -------------------------------- |
 | `kind`   | `range` |
 | `precision`   | `-1`  |

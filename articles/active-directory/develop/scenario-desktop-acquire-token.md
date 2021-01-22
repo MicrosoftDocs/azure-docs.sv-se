@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 01/06/2021
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: e15dce586dc4dd43cf56fd1cbb08b84ebcda1787
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 040f9fa67617b058138926310706f4bc56c4ff62
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98232309"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98680981"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>Skriv bords app som anropar webb-API: er: Hämta en token
 
@@ -1181,7 +1181,7 @@ Anpassningen av cachelagring av token för att dela SSO-tillstånd mellan ADAL.N
 
 ### <a name="simple-token-cache-serialization-msal-only"></a>Simple token cache-serialisering (endast MSAL)
 
-Följande exempel är en naïve-implementering av anpassad serialisering av ett token-cache för Skriv bords program. Här finns användarens token cache i en fil i samma mapp som programmet eller, i en mapp per användare per app, i det fall där appen är ett [paketerat Skriv bords program](https://docs.microsoft.com/windows/msix/desktop/desktop-to-uwp-behind-the-scenes). Fullständig kod finns i följande exempel: [Active-Directory-dotNet-Desktop-msgraph-v2](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2).
+Följande exempel är en naïve-implementering av anpassad serialisering av ett token-cache för Skriv bords program. Här finns användarens token cache i en fil i samma mapp som programmet eller, i en mapp per användare per app, i det fall där appen är ett [paketerat Skriv bords program](/windows/msix/desktop/desktop-to-uwp-behind-the-scenes). Fullständig kod finns i följande exempel: [Active-Directory-dotNet-Desktop-msgraph-v2](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2).
 
 När du har skapat programmet aktiverar du serialiseringen genom att anropa ``TokenCacheHelper.EnableSerialization()`` och skicka programmet `UserTokenCache` .
 

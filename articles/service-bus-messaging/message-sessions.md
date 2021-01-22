@@ -2,13 +2,13 @@
 title: Azure Service Bus Message-sessioner | Microsoft Docs
 description: Den här artikeln förklarar hur du använder sessioner för att aktivera gemensam och ordnad hantering av icke-bundna sekvenser av relaterade meddelanden.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 05efc550e119186a2925c13d3fcfed11bec17251
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 01/20/2021
+ms.openlocfilehash: 6d316571d69d2e1e73ddca4ccca53c116ee8fa5f
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86511304"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98680761"
 ---
 # <a name="message-sessions"></a>Meddelandesessioner
 Microsoft Azure Service Bus-sessioner möjliggör gemensam och ordnad hantering av icke-bundna sekvenser av relaterade meddelanden. Sessioner kan användas i de mönster som **först in, först ut (FIFO)** och **begär ande svar** . Den här artikeln visar hur du använder sessioner för att implementera dessa mönster när du använder Service Bus. 
@@ -25,7 +25,7 @@ I sessionsbaserade köer eller prenumerationer kommer det att finnas sessioner n
 
 Ett program har vanligt vis ett tydligt begrepp där en uppsättning relaterade meddelanden startar och slutar. Service Bus anger inte några speciella regler.
 
-Ett exempel på hur du kan avgränsa en sekvens för att överföra en fil är att ange egenskapen **etikett** för det första meddelandet som ska **startas**, för mellanliggande meddelanden till **innehåll**och för det sista meddelandet som ska **avslutas**. Innehålls meddelandets relativa position kan beräknas som det aktuella meddelandet *SequenceNumber* delta från **Start** meddelandet *SequenceNumber*.
+Ett exempel på hur du kan avgränsa en sekvens för att överföra en fil är att ange egenskapen **etikett** för det första meddelandet som ska **startas**, för mellanliggande meddelanden till **innehåll** och för det sista meddelandet som ska **avslutas**. Innehålls meddelandets relativa position kan beräknas som det aktuella meddelandet *SequenceNumber* delta från **Start** meddelandet *SequenceNumber*.
 
 Funktionen session i Service Bus aktiverar en enskild Receive-åtgärd i form av [MessageSession](/dotnet/api/microsoft.servicebus.messaging.messagesession) i C#-och Java-API: er. Du aktiverar funktionen genom att ställa in egenskapen [requiresSession](/azure/templates/microsoft.servicebus/namespaces/queues#property-values) i kön eller prenumerationen via Azure Resource Manager eller genom att ställa in flaggan i portalen. Det krävs innan du försöker använda relaterade API-åtgärder.
 
@@ -34,9 +34,9 @@ I portalen anger du flaggan med följande kryss ruta:
 ![Skärm bild av dialog rutan skapa kö med alternativet Aktivera sessioner markerat och anges i rött.][2]
 
 > [!NOTE]
-> När sessioner är aktiverade i en kö eller en prenumeration kan klient programmen ***inte längre*** skicka/ta emot vanliga meddelanden. Alla meddelanden måste skickas som en del av en session (genom att ställa in sessions-ID) och tas emot genom att ta emot sessionen.
+> När sessioner aktive ras i en kö eller en prenumeration kan klient programmen **inte längre** skicka/ta emot vanliga meddelanden. Alla meddelanden måste skickas som en del av en session (genom att ställa in sessions-ID) och tas emot genom att ta emot sessionen.
 
-API: erna för sessioner finns i kö-och prenumerations klienter. Det finns en tvingande modell som styr när sessioner och meddelanden tas emot, och en hanterare-baserad modell, som liknar *motringningen OnMessage*, som döljer komplexiteten med att hantera Receive-slingan.
+API: erna för sessioner finns i kö-och prenumerations klienter. Det finns en tvingande modell som styr när sessioner och meddelanden tas emot och en hanterad modell, som liknar _OnMessage *, som döljer komplexiteten med att hantera Receive-loopen.
 
 ### <a name="session-features"></a>Session funktioner
 
@@ -78,8 +78,8 @@ Definitionen av leverans antal per meddelande i samband med sessioner skiljer si
 
 | Scenario | Är meddelandets leverans antal ökas |
 |----------|---------------------------------------------|
-| Sessionen godkänns, men sessions låset upphör att gälla (på grund av tids gräns) | Ja |
-| Sessionen godkänns, meddelandena i sessionen slutförs inte (även om de är låsta) och sessionen stängs | Inga |
+| Sessionen godkänns, men sessions låset upphör att gälla (på grund av tids gräns) | Yes |
+| Sessionen godkänns, meddelandena i sessionen slutförs inte (även om de är låsta) och sessionen stängs | No |
 | Sessionen godkänns, meddelanden slutförs och sedan stängs sessionen explicit | Ej tillämpligt (det är standard flödet. Meddelanden tas bort från sessionen) |
 
 ## <a name="request-response-pattern"></a>Mönster för begäran-svar

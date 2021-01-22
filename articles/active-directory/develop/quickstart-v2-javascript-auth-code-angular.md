@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 01/14/2021
 ms.author: jamesmantu
 ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: 8fa2e1ee4e42619a30a8af419c539df8e9e4399c
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: acaa87f44fbd496aea843de673c0b2d7652fe542
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98634467"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98681051"
 ---
 # <a name="quickstart-sign-in-and-get-an-access-token-in-an-angular-spa-using-the-auth-code-flow"></a>Snabb start: Logga in och hämta en åtkomsttoken i ett särskilt skydd med auth Code Flow
 
@@ -65,6 +65,15 @@ I den här snabb starten används MSAL-vinkeln v2 med Authorization Code Flow. F
 > 1. Klicka på knappen **Konfigurera** för att tillämpa ändringarna.
 > 1. Expandera **program med en enda sida** under **plattforms konfiguration** .
 > 1. Bekräfta att  ![ ](media/quickstart-v2-javascript/green-check.png) OMdirigerings-URI: n är berättigad till Flow-flödet med PKCE under beviljande typer som redan har kon figurer ATS.
+
+> [!div class="sxs-lookup" renderon="portal"]
+> #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>Steg 1: Konfigurera din app i Azure-portalen
+> Om du vill att kod exemplet i den här snabb starten ska fungera måste du lägga till ett `redirectUri` som `http://localhost:4200/` .
+> > [!div renderon="portal" id="makechanges" class="nextstepaction"]
+> > [Gör ändringarna åt mig]()
+>
+> > [!div id="appconfigured" class="alert alert-info"]
+> > ![Redan konfigurerad](media/quickstart-v2-javascript/green-check.png) Programmet konfigureras med de här attributen.
 
  #### <a name="step-2-download-the-project"></a>Steg 2: Ladda ned projektet
 

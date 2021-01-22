@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: pepogors
-ms.openlocfilehash: 0876891e42ce629a3b088d8068c74386d690492d
-ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
+ms.openlocfilehash: 3767a16656ac4d11511c0928be8b2703c4e94c7c
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97683190"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98680611"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-with-stateless-only-node-types-preview"></a>Distribuera ett Azure Service Fabric-kluster med endast tillstånds lösa Node-typer (för hands version)
 Service Fabric Node-typer levereras med ett förutsättnings antagande som vid en viss tidpunkt kan tillstånds känsliga tjänster placeras på noderna. Tillstånds lösa nodtyper sänker detta antagande för en nodtyp, vilket innebär att nodtypen kan använda andra funktioner, till exempel snabbare skalnings åtgärder, stöd för automatiska operativ system uppgraderingar på brons-hållbarhet och skalbarhet till fler än 100 noder i en enda skalnings uppsättning för virtuella datorer.
@@ -253,6 +253,8 @@ För att börja måste du lägga till de nya resurserna i din befintliga Resourc
 
 När resurserna har distribuerats kan du börja inaktivera noderna i nodtypen som du vill ta bort från det ursprungliga klustret.
 
+>[!NOTE]
+> När du använder autoskalning med tillstånds lösa nodetypes med brons hållbarhet, rensas inte Node State automatiskt när åtgärden har slutförts. För att rensa NodeState i noderna under autoskalning bör du använda [Service Fabric autoskalning-hjälpen](https://github.com/Azure/service-fabric-autoscale-helper) .
 
 ## <a name="next-steps"></a>Nästa steg 
 * [Reliable Services](service-fabric-reliable-services-introduction.md)

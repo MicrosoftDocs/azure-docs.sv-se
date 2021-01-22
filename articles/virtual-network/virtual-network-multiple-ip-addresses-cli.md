@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/17/2016
 ms.author: allensu
-ms.openlocfilehash: a1d94166c6c56a3652dc0ad532bd481c6e792c52
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 0b5e8f28be9960a2bb4e1406a293ab5e03962681
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98217098"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98680577"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-cli"></a>Tilldela flera IP-adresser till virtuella datorer med Azure CLI
 
@@ -38,7 +38,7 @@ Stegen nedan beskriver hur du skapar ett exempel på en virtuell dator med flera
 3. Logga in med kommandot i ett kommando gränssnitt `az login` och välj den prenumeration som du använder.
 4. Skapa den virtuella datorn genom att köra skriptet som följer på en Linux-eller Mac-dator. Skriptet skapar en resurs grupp, ett virtuellt nätverk (VNet), ett nätverkskort med tre IP-konfigurationer och en virtuell dator med de två nätverkskort som är anslutna till det. NÄTVERKSKORTet, den offentliga IP-adressen, det virtuella nätverket och de virtuella dator resurserna måste finnas på samma plats och i samma prenumeration. Även om resurserna inte behöver finnas i samma resurs grupp, i följande skript.
 
-```bash
+```azurecli
     
 #!/bin/sh
     

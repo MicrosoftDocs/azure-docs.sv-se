@@ -11,12 +11,12 @@ ms.date: 11/13/2020
 ms.author: joanpo
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019"
-ms.openlocfilehash: b033fd9c0a7f752cf08d6e679facc9fa27b44037
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: d8c680ec30dcecc56c064f08e4690cbbde9c2377
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98120214"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98679921"
 ---
 # <a name="backup-and-restore-in-azure-synapse-dedicated-sql-pool"></a>Säkerhets kopiering och återställning i Azure Synapse-dedikerad SQL-pool
 
@@ -88,7 +88,7 @@ Mer information om priser för Azure Synapse finns i [priser för Azure Synapse]
 
 Varje ögonblicks bild skapar en återställnings punkt som representerar tidpunkten då ögonblicks bilden startades. Om du vill återställa ett informations lager väljer du en återställnings punkt och utfärdar kommandot Restore.  
 
-Du kan antingen behålla det återställda informations lagret och det aktuella, eller ta bort ett av dem. Om du vill ersätta det aktuella data lagret med det återställda data lagret kan du byta namn på det med hjälp av [Alter Database](/sql/t-sql/statements/alter-database-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) med alternativet ändra namn.
+Du kan antingen behålla det återställda informations lagret och det aktuella, eller ta bort ett av dem. Om du vill ersätta det aktuella data lagret med det återställda data lagret kan du byta namn på det med hjälp av [Alter Database](/sql/t-sql/statements/alter-database-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) med alternativet ändra namn.
 
 Information om hur du återställer ett informations lager finns i [återställa en dedikerad SQL-pool](sql-data-warehouse-restore-points.md#create-user-defined-restore-points-through-the-azure-portal).
 

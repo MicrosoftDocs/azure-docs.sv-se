@@ -11,12 +11,12 @@ ms.date: 05/15/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 067551d198f717dd40995cb8bc3e1345e82f078f
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 38fb842cf90c110266f53b79a9ab2ef6157025b4
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461906"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98681293"
 ---
 # <a name="configure-workload-importance-in-dedicated-sql-pool-for-azure-synapse-analytics"></a>Konfigurera arbets belastnings prioritet i dedikerad SQL-pool för Azure Synapse Analytics
 
@@ -24,7 +24,7 @@ Genom att ange prioritet i dedikerad SQL-pool för Azure Synapse kan du påverka
 
 ## <a name="create-a-workload-classifier-with-importance"></a>Skapa en klassificering av arbets belastningar med prioritet
 
-Ofta i ett informations lager scenario har du användare i ett upptaget system som behöver köra sina frågor snabbt.  Användaren kan vara chefer för företaget som behöver köra rapporter eller så kan användaren vara en analytiker som kör en adhoc-fråga. För att tilldela prioritet, skapar du en klassificering av arbets belastningar och prioriteten tilldelas en fråga.  I exemplen nedan används  [klassificerings-syntaxen skapa arbets belastning](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) för att skapa två klassificerare. `Membername` kan vara en enskild användare eller en grupp.  Om du vill hitta befintliga dedikerade användare av SQL-pooler kör du:
+Ofta i ett informations lager scenario har du användare i ett upptaget system som behöver köra sina frågor snabbt.  Användaren kan vara chefer för företaget som behöver köra rapporter eller så kan användaren vara en analytiker som kör en adhoc-fråga. För att tilldela prioritet, skapar du en klassificering av arbets belastningar och prioriteten tilldelas en fråga.  I exemplen nedan används  [klassificerings-syntaxen skapa arbets belastning](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) för att skapa två klassificerare. `Membername` kan vara en enskild användare eller en grupp.  Om du vill hitta befintliga dedikerade användare av SQL-pooler kör du:
 
 ```sql
 Select name from sys.sysusers

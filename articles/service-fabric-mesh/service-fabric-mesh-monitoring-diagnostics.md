@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: srrengar
 ms.custom: mvc, devcenter, devx-track-azurecli
-ms.openlocfilehash: eda0b62729343b0a138d027548d8750b1e0fc74f
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 63c79169646f05cddc7c605c764398bdef7492d4
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844411"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98682079"
 ---
 # <a name="monitoring-and-diagnostics"></a>Övervakning och diagnostik
 Azure Service Fabric Mesh är en fullständigt hanterad tjänst som gör att utvecklare kan distribuera mikrotjänstprogram utan att hantera virtuella datorer, lagring eller nätverk. Övervakning och diagnostik för Service Fabric nät kategoriseras i tre huvud typer av diagnostikdata:
@@ -26,7 +26,7 @@ I den här artikeln beskrivs alternativ för övervakning och diagnostik för de
 
 Du kan visa dina Docker-loggar från dina distribuerade behållare på en per container-basis. I programmets modell för Service Fabric nät är varje behållare ett kod paket i ditt program. Om du vill se de associerade loggarna med ett kod paket använder du följande kommando:
 
-```cli
+```azurecli
 az mesh code-package-log get --resource-group <nameOfRG> --app-name <nameOfApp> --service-name <nameOfService> --replica-name <nameOfReplica> --code-package-name <nameOfCodePackage>
 ```
 
@@ -35,7 +35,7 @@ az mesh code-package-log get --resource-group <nameOfRG> --app-name <nameOfApp> 
 
 Det här ser ut så här för att se loggarna från VotingWeb. Code-behållaren från röstnings programmet:
 
-```cli
+```azurecli
 az mesh code-package-log get --resource-group <nameOfRG> --application-name SbzVoting --service-name VotingWeb --replica-name 0 --code-package-name VotingWeb.Code
 ```
 
@@ -51,11 +51,11 @@ Nät miljön visar en fåtal av mått som anger hur dina behållare presterar. F
 | AllocatedMemory | Allokerat minne per Azure Resource Manager mall | MB |
 | ActualCpu | CPU-användning | Millicores |
 | ActualMemory | Minnesanvändning | MB |
-| Container status | 0 – ogiltig: behållar statusen är okänd <br> 1 – väntar: behållaren har schemalagts att starta <br> 2-start: behållaren håller på att starta <br> 3-startad: behållaren har startats <br> 4-stopp: behållaren stoppas <br> 5-stoppad: behållaren har stoppats | E.t. |
-| ApplicationStatus | 0-okänd: statusen kan inte hämtas <br> 1 – klart: programmet körs <br> 2 – uppgradering: en pågående uppgradering pågår <br> 3 – skapar: programmet skapas <br> 4-tar bort: programmet tas bort <br> 5 – misslyckades: det gick inte att distribuera programmet | E.t. |
-| ServiceStatus | 0 – ogiltig: tjänsten har för närvarande ingen hälso status <br> 1 – OK: tjänsten är felfri  <br> 2-varning: det kan vara något fel som kräver undersökning <br> 3-fel: det är något fel som kräver undersökning <br> 4-okänd: statusen kan inte hämtas | E.t. |
-| ServiceReplicaStatus | 0 – ogiltig: repliken har för närvarande ingen hälso status <br> 1 – OK: tjänsten är felfri  <br> 2-varning: det kan vara något fel som kräver undersökning <br> 3-fel: det är något fel som kräver undersökning <br> 4-okänd: statusen kan inte hämtas | E.t. | 
-| RestartCount | Antal omstarter av behållare | E.t. |
+| Container status | 0 – ogiltig: behållar statusen är okänd <br> 1 – väntar: behållaren har schemalagts att starta <br> 2-start: behållaren håller på att starta <br> 3-startad: behållaren har startats <br> 4-stopp: behållaren stoppas <br> 5-stoppad: behållaren har stoppats | Ej tillämpligt |
+| ApplicationStatus | 0-okänd: statusen kan inte hämtas <br> 1 – klart: programmet körs <br> 2 – uppgradering: en pågående uppgradering pågår <br> 3 – skapar: programmet skapas <br> 4-tar bort: programmet tas bort <br> 5 – misslyckades: det gick inte att distribuera programmet | Ej tillämpligt |
+| ServiceStatus | 0 – ogiltig: tjänsten har för närvarande ingen hälso status <br> 1 – OK: tjänsten är felfri  <br> 2-varning: det kan vara något fel som kräver undersökning <br> 3-fel: det är något fel som kräver undersökning <br> 4-okänd: statusen kan inte hämtas | Ej tillämpligt |
+| ServiceReplicaStatus | 0 – ogiltig: repliken har för närvarande ingen hälso status <br> 1 – OK: tjänsten är felfri  <br> 2-varning: det kan vara något fel som kräver undersökning <br> 3-fel: det är något fel som kräver undersökning <br> 4-okänd: statusen kan inte hämtas | Ej tillämpligt | 
+| RestartCount | Antal omstarter av behållare | Ej tillämpligt |
 
 > [!NOTE]
 > Värdena för ServiceStatus och ServiceReplicaStatus är desamma som för [hälso](/dotnet/api/system.fabric.health.healthstate?view=azure-dotnet) tillstånd i Service Fabric. 
@@ -74,7 +74,7 @@ Varje dimension motsvarar olika komponenter i [Service Fabric program modellen](
 
 ### <a name="azure-monitor-cli"></a>Azure Monitor CLI
 
-En fullständig lista över kommandon finns i [Azure Monitor CLI-dokument](/cli/azure/monitor/metrics?view=azure-cli-latest#az-monitor-metrics-list) , men vi har inkluderat några användbara exempel nedan 
+En fullständig lista över kommandon finns i [Azure Monitor CLI-dokument](/cli/azure/monitor/metrics#az-monitor-metrics-list) , men vi har inkluderat några användbara exempel nedan 
 
 I varje exempel är resurs-ID: t följande mönster
 
@@ -83,21 +83,21 @@ I varje exempel är resurs-ID: t följande mönster
 
 * CPU-användning för behållarna i ett program
 
-```cli
+```azurecli
     az monitor metrics list --resource <resourceId> --metric "CpuUtilization"
 ```
 * Minnes användning för varje tjänst replik
-```cli
+```azurecli
     az monitor metrics list --resource <resourceId> --metric "MemoryUtilization" --dimension "ServiceReplicaName"
 ``` 
 
 * Startar om för varje behållare i ett 1 timme-fönster 
-```cli
+```azurecli
     az monitor metrics list --resource <resourceId> --metric "RestartCount" --start-time 2019-02-01T00:00:00Z --end-time 2019-02-01T01:00:00Z
 ``` 
 
 * Genomsnittlig CPU-belastning mellan tjänster med namnet "VotingWeb" i ett 1 timmes fönster
-```cli
+```azurecli
     az monitor metrics list --resource <resourceId> --metric "CpuUtilization" --start-time 2019-02-01T00:00:00Z --end-time 2019-02-01T01:00:00Z --aggregation "Average" --filter "ServiceName eq 'VotingWeb'"
 ``` 
 
@@ -118,4 +118,4 @@ In addition to the metrics explorer, we also have a dashboard available out of t
 
 ## <a name="next-steps"></a>Nästa steg
 * Mer information om Service Fabric Mesh finns i [översikten över Service Fabric Mesh](service-fabric-mesh-overview.md).
-* Mer information om kommandon för Azure Monitor mått finns i [Azure Monitor CLI-dokument](/cli/azure/monitor/metrics?view=azure-cli-latest#az-monitor-metrics-list).
+* Mer information om kommandon för Azure Monitor mått finns i [Azure Monitor CLI-dokument](/cli/azure/monitor/metrics#az-monitor-metrics-list).

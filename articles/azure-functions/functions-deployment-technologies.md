@@ -4,12 +4,12 @@ description: Lär dig hur du kan distribuera kod till Azure Functions på olika 
 ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.openlocfilehash: 04d96a09d41ace64bed5667bb9f0fa6e4beed244
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 51a76adcf25d5d1bc4025eab12073df0886fde3d
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936965"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98681838"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Distributions tekniker i Azure Functions
 
@@ -181,7 +181,7 @@ Du kan använda FTP för att överföra filer direkt till Azure Functions.
 
 I det portalbaserade redigerings programmet kan du redigera filerna som finns i din Function-app direkt (distribueras i princip varje gång du sparar ändringarna).
 
->__Så här använder du den:__ För att kunna redigera dina funktioner i Azure Portal måste du ha [skapat dina funktioner i portalen](functions-create-first-azure-function.md). Om du vill bevara en enda källa till sanningen kan du använda en annan distributions metod för att göra din funktion skrivskyddad och förhindra fortsatt Portal redigering. Om du vill gå tillbaka till ett tillstånd där du kan redigera dina filer i Azure Portal kan du manuellt växla redigerings läget till `Read/Write` och ta bort eventuella distributions program inställningar (t. ex `WEBSITE_RUN_FROM_PACKAGE` .).
+>__Så här använder du den:__ För att kunna redigera dina funktioner i Azure Portal måste du ha [skapat dina funktioner i portalen](./functions-get-started.md). Om du vill bevara en enda källa till sanningen kan du använda en annan distributions metod för att göra din funktion skrivskyddad och förhindra fortsatt Portal redigering. Om du vill gå tillbaka till ett tillstånd där du kan redigera dina filer i Azure Portal kan du manuellt växla redigerings läget till `Read/Write` och ta bort eventuella distributions program inställningar (t. ex `WEBSITE_RUN_FROM_PACKAGE` .).
 
 >__När du ska använda den:__ Portalen är ett bra sätt att komma igång med Azure Functions. För mer intensiv utvecklings arbete rekommenderar vi att du använder något av följande klient verktyg:
 >
@@ -210,7 +210,7 @@ När du gör en distribution kan alla befintliga körningar slutföras, och tids
 
 Om du behöver mer kontroll över den här över gången bör du använda distributions platser.
 
-## <a name="deployment-slots"></a>Distributionsplatser
+## <a name="deployment-slots"></a>Distributionsfack
 
 När du distribuerar din Function-app till Azure kan du distribuera till en separat distributions plats i stället för direkt till produktion. Mer information om distributions platser finns i dokumentationen för [Azure Functions distributions fack](functions-deployment-slots.md) för mer information.
 

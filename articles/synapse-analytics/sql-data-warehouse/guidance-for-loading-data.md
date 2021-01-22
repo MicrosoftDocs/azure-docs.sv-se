@@ -11,12 +11,12 @@ ms.date: 11/20/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: c91310d9d1e67dd77098ee13a87190ee6d411607
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 10e43332728ea70d27c08cf4d3dfe116c83b3f1f
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98120112"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98679812"
 ---
 # <a name="best-practices-for-loading-data-using-dedicated-sql-pools-in-azure-synapse-analytics"></a>Metod tips för att läsa in data med dedikerade SQL-pooler i Azure Synapse Analytics
 
@@ -47,7 +47,7 @@ I det här exemplet skapas en inläsnings användare som klassificeras till en s
    CREATE LOGIN loader WITH PASSWORD = 'a123STRONGpassword!';
 ```
 
-Anslut till den dedikerade SQL-poolen och skapa en användare. Följande kod förutsätter att du är ansluten till databasen som heter mySampleDataWarehouse. Det visar hur du skapar en användare som kallas Loader och ger användaren behörighet att skapa tabeller och läsa in med hjälp av [kopierings instruktionen](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest). Sedan klassificerar den användaren till arbets belastnings gruppen DataLoads med maximalt antal resurser. 
+Anslut till den dedikerade SQL-poolen och skapa en användare. Följande kod förutsätter att du är ansluten till databasen som heter mySampleDataWarehouse. Det visar hur du skapar en användare som kallas Loader och ger användaren behörighet att skapa tabeller och läsa in med hjälp av [kopierings instruktionen](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true). Sedan klassificerar den användaren till arbets belastnings gruppen DataLoads med maximalt antal resurser. 
 
 ```sql
    -- Connect to the dedicated SQL pool
@@ -79,7 +79,7 @@ Om du vill köra en belastning med resurser för belastnings arbets belastnings 
 
 ## <a name="allowing-multiple-users-to-load-polybase"></a>Tillåta att flera användare läser in (PolyBase)
 
-Det finns ofta ett behov av att flera användare ska kunna läsa in data i en dedikerad SQL-pool. Om du läser in med [CREATE TABLE som Select (Transact-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (PolyBase) krävs kontroll behörigheter för databasen.  CONTROL-behörigheten ger kontrollbehörighet till alla scheman.
+Det finns ofta ett behov av att flera användare ska kunna läsa in data i en dedikerad SQL-pool. Om du läser in med [CREATE TABLE som Select (Transact-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (PolyBase) krävs kontroll behörigheter för databasen.  CONTROL-behörigheten ger kontrollbehörighet till alla scheman.
 
 Du kanske inte vill att alla användare som läser in ska ha behörighet för alla scheman. Om du vill begränsa behörigheten använder du DENY CONTROL-instruktionen.
 
@@ -114,7 +114,7 @@ Vid brist på minne kanske kolumnlagringsindexet inte kan uppnå den maximala ko
 
 ## <a name="increase-batch-size-when-using-sqlbulkcopy-api-or-bcp"></a>Öka batchstorleken när du använder SqLBulkCopy API eller BCP
 
-Om du läser in med COPY-instruktionen får du högsta data flöde med dedikerade SQL-pooler. Om du inte kan använda KOPIERINGen för att läsa in och måste använda [SqLBulkCopy-API](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) eller [BCP](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)bör du fundera på att öka batchstorleken för bättre data flöde.
+Om du läser in med COPY-instruktionen får du högsta data flöde med dedikerade SQL-pooler. Om du inte kan använda KOPIERINGen för att läsa in och måste använda [SqLBulkCopy-API](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) eller [BCP](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)bör du fundera på att öka batchstorleken för bättre data flöde.
 
 > [!TIP]
 > En batchstorlek mellan 100 K och 1 miljon rader är den rekommenderade bas linjen för att fastställa den optimala storleken för batchstorlek.
@@ -130,11 +130,11 @@ En data post anses vara smutsig om den uppfyller något av följande villkor:
 
 Du kan åtgärda de ändrade posterna genom att se till att definitionerna för den externa tabellen och det externa filformatet är korrekta och att dina externa data följer dessa definitioner.
 
-Om en delmängd av externa data poster är smutsig kan du välja att avvisa dessa poster för dina frågor genom att använda avvisnings alternativen i [skapa extern tabell (Transact-SQL)](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
+Om en delmängd av externa data poster är smutsig kan du välja att avvisa dessa poster för dina frågor genom att använda avvisnings alternativen i [skapa extern tabell (Transact-SQL)](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
 
 ## <a name="inserting-data-into-a-production-table"></a>Infoga data i en produktionstabell
 
-En engångsinläsning i en liten tabell med en [INSERT-instruktion](/sql/t-sql/statements/insert-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) eller till och med en regelbunden inläsning på nytt av en sökning kan fungera tillräckligt bra för dina behov med en instruktion som `INSERT INTO MyLookup VALUES (1, 'Type 1')`.  Enskilda infogningar är emellertid inte lika effektiva som en massinläsning.
+En engångsinläsning i en liten tabell med en [INSERT-instruktion](/sql/t-sql/statements/insert-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) eller till och med en regelbunden inläsning på nytt av en sökning kan fungera tillräckligt bra för dina behov med en instruktion som `INSERT INTO MyLookup VALUES (1, 'Type 1')`.  Enskilda infogningar är emellertid inte lika effektiva som en massinläsning.
 
 Om du har tusentals eller fler enskilda infogningar under dagen bör du gruppera dem så att du kan infoga dem med en massinläsning.  Utveckla dina processer så att enskilda infogningar bifogas i en fil och skapa sedan en annan process som regelbundet läser in filen.
 
@@ -158,7 +158,7 @@ Det är en bra säkerhetsrutin att regelbundet ändra åtkomstnyckeln till din B
 
 Så här roterar du Azure Storage-kontonycklar:
 
-För varje lagringskonto vars nyckel har ändrats utfärdar du [ALTER DATABASE SCOPED CREDENTIAL](/sql/t-sql/statements/alter-database-scoped-credential-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
+För varje lagringskonto vars nyckel har ändrats utfärdar du [ALTER DATABASE SCOPED CREDENTIAL](/sql/t-sql/statements/alter-database-scoped-credential-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
 
 Exempel:
 

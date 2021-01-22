@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 7a33cf4e66ce31f8fb8534de25d7564a5784ca3a
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 7341d1f07e8814edcad7b84f6b3b46c7bece3159
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98625056"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98680339"
 ---
 # <a name="tutorial-route-electric-vehicles-by-using-azure-notebooks-python"></a>Självstudie: dirigera elektriska bilar med Azure Notebooks (python)
 
@@ -27,7 +27,7 @@ I den här självstudien får du hjälp med att gå igenom en driv rutin vars ba
 I de här självstudierna får du:
 
 > [!div class="checklist"]
-> * Skapa och kör en Jupyter Notebook-fil på [Azure Notebooks](../notebooks/index.yml) i molnet.
+> * Skapa och kör en Jupyter Notebook-fil på [Azure Notebooks](https://notebooks.azure.com) i molnet.
 > * Anropa Azure Maps REST-API: er i python.
 > * Sök efter ett nåbart intervall baserat på den elektriska fordons förbruknings modellen.
 > * Sök efter elektriska fordons uttags stationer inom det nåbara intervallet eller isochrone.
@@ -49,7 +49,7 @@ Mer information om autentisering i Azure Maps finns i [hantera autentisering i A
 
 Om du vill följa med i den här själv studie kursen måste du skapa ett Azure Notebooks-projekt och hämta och köra Jupyter Notebook-filen. Jupyter Notebook-filen innehåller python-kod som implementerar scenariot i den här självstudien. Gör så här om du vill skapa ett Azure Notebooks-projekt och överföra Jupyter Notebook dokumentet till det:
 
-1. Gå till [Azure Notebooks](https://notebooks.azure.com) och logga in. Mer information finns i [snabb start: Logga in och ange ett användar-ID](../notebooks/quickstart-sign-in-azure-notebooks.md).
+1. Gå till [Azure Notebooks](https://notebooks.azure.com) och logga in. Mer information finns i [snabb start: Logga in och ange ett användar-ID](https://notebooks.azure.com).
 1. Välj **Mina projekt** högst upp på den offentliga profil sidan.
 
     ![Knappen mina projekt](./media/tutorial-ev-routing/myproject.png)
@@ -408,4 +408,4 @@ Det finns inga resurser som kräver rensning.
 Mer information om Azure Notebooks finns i
 
 > [!div class="nextstepaction"]
-> [Azure Notebooks](../notebooks/index.yml)
+> [Azure Notebooks](https://notebooks.azure.com)

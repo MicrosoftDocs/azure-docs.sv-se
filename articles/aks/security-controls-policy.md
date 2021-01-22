@@ -1,16 +1,16 @@
 ---
 title: Azure Policy regler för kontroll av efterlevnad för Azure Kubernetes service (AKS)
 description: Visar Azure Policy regler för regelefterlevnad som är tillgängliga för Azure Kubernetes service (AKS). Dessa inbyggda princip definitioner tillhandahåller vanliga metoder för att hantera kompatibiliteten för dina Azure-resurser.
-ms.date: 01/08/2021
+ms.date: 01/21/2021
 ms.topic: sample
 ms.service: container-service
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 398702d0110b9430d55a0c90f751e8cf14eb33f7
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 5d9f7797923cf47811f6726a2e3cd7957950b080
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98049479"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98681922"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-kubernetes-service-aks"></a>Azure Policy regler för kontroll av efterlevnad för Azure Kubernetes service (AKS)
 

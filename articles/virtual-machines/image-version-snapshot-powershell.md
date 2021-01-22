@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 06/30/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 2ebff0d86c27bcdbc11d23e18116b33b4ea838a6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f4ca28efce28933eed9be5cca7bd412f2d9505aa
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89300263"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98679542"
 ---
 # <a name="create-an-image-from-a-managed-disk-or-snapshot-in-a-shared-image-gallery-using-powershell"></a>Skapa en bild från en hanterad disk eller ögonblicks bild i ett delat avbildnings galleri med PowerShell
 
@@ -90,9 +90,9 @@ Bild definitioner skapa en logisk gruppering för avbildningar. De används för
 
 När du gör en avbildnings definition ser du till att har all rätt information. I det här exemplet antar vi att ögonblicks bilden eller den hanterade disken kommer från en virtuell dator som används och inte har generaliserats. Om den hanterade disken eller ögonblicks bilden tog ett generaliserat operativ system (efter att du kört Sysprep för Windows eller [waagent](https://github.com/Azure/WALinuxAgent) `-deprovision` eller `-deprovision+user` för Linux) ändrar `-OsState` du till `generalized` . 
 
-Mer information om de värden som du kan ange för en bild definition finns i [bild definitioner](./windows/shared-image-galleries.md#image-definitions).
+Mer information om de värden som du kan ange för en bild definition finns i [bild definitioner](./shared-image-galleries.md#image-definitions).
 
-Skapa avbildnings definitionen med [New-AzGalleryImageDefinition](/powershell/module/az.compute/new-azgalleryimageversion). I det här exemplet heter avbildnings definitionen *myImageDefinition*och är för ett specialiserat Windows-operativsystem. Använd om du vill skapa en definition för avbildningar med hjälp av ett Linux-operativsystem `-OsType Linux` . 
+Skapa avbildnings definitionen med [New-AzGalleryImageDefinition](/powershell/module/az.compute/new-azgalleryimageversion). I det här exemplet heter avbildnings definitionen *myImageDefinition* och är för ett specialiserat Windows-operativsystem. Använd om du vill skapa en definition för avbildningar med hjälp av ett Linux-operativsystem `-OsType Linux` . 
 
 ```azurepowershell-interactive
 $imageDefinition = New-AzGalleryImageDefinition `

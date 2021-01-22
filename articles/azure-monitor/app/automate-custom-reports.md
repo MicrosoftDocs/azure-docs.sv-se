@@ -4,12 +4,12 @@ description: Automatisera anpassade dagliga/veckovis/månads Visa rapporter med 
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.reviewer: sdash
-ms.openlocfilehash: d465666ce5d631a234644d1adc85afcf6e3c1e27
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: da465fbc899cb52fc48dbde830d3db4f3b58c68b
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96010613"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98680458"
 ---
 # <a name="automate-custom-reports-with-azure-application-insights-data"></a>Automatisera anpassade rapporter med Azure Application Insights-data
 
@@ -33,7 +33,7 @@ Du kan [köra program mässigt fråga Application Insights](https://dev.applicat
 
 * [Automatisera rapporter med energi automatisering](../platform/logicapp-flow-connector.md)
 * [Automatisera rapporter med Logic Apps](automate-with-logic-apps.md)
-* Använd [Azure Function](../../azure-functions/functions-create-first-azure-function.md) -mallen "Application Insights schemalagd Sammanfattning" i övervaknings scenariot. Den här funktionen använder SendGrid för att leverera e-postmeddelandet. 
+* Använd [Azure Function](../../azure-functions/functions-get-started.md) -mallen "Application Insights schemalagd Sammanfattning" i övervaknings scenariot. Den här funktionen använder SendGrid för att leverera e-postmeddelandet. 
 
     ![Azure Function-mall](./media/automate-custom-reports/azure-function-template.png)
 
@@ -72,7 +72,7 @@ availabilityResults
 
 1. Skapa ett Azure-Funktionsapp. (Application Insights _på_ krävs bara om du vill övervaka nya Funktionsapp med Application Insights)
 
-   Besök Azure Functions-dokumentationen och lär dig hur du [skapar en Function-app](../../azure-functions/functions-create-first-azure-function.md#create-a-function-app)
+   Besök Azure Functions-dokumentationen och lär dig hur du [skapar en Function-app](../../azure-functions/functions-get-started.md)
 
 2. När din nya Funktionsapp har slutfört distributionen väljer **du gå till resurs**.
 
@@ -91,7 +91,7 @@ availabilityResults
 
    ![Skärm bild för funktions inställningar](./media/automate-custom-reports/scheduled-digest.png)
 
-6. Välj konfiguration av **Funktionsapp**  >  **plattforms funktioner**  >  **Configuration**.
+6. Välj konfiguration av **Funktionsapp**  >  **plattforms funktioner**  >  .
 
     ![Skärm bild för Azure Function program-inställningar](./media/automate-custom-reports/config.png)
 
@@ -154,4 +154,3 @@ De här stegen gäller endast om du inte redan har ett SendGrid-konto konfigurer
 * Lär dig mer om att [fråga Application Insights data](https://dev.applicationinsights.io/) på ett program
 * Läs mer om [Logic Apps](../../logic-apps/logic-apps-overview.md).
 * Lär dig mer om [Microsoft Power automatisering](https://ms.flow.microsoft.com).
-

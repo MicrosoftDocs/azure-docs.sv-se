@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: da6c9f6df0e9e74de297cf6c8f655b62e3446bad
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: bd911868028825164cdd9627bf6b5c6d56de7164
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462705"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98679626"
 ---
 # <a name="azure-synapse-sql-architecture"></a>Azure Synapse SQL-arkitektur 
 
@@ -49,7 +49,7 @@ När du använder Synapse SQL kan du med fristående lagrings utrymme och data b
 
 Synapse SQL utnyttjar Azure Storage för att skydda dina användar data. Eftersom dina data lagras och hanteras av Azure Storage, finns det en separat avgift för lagrings användningen. 
 
-Med Server lös SQL-poolen kan du söka i filer i data Lake på skrivskyddat sätt, medan SQL-poolen låter dig mata in data. När data matas in i en dedikerad SQL-pool, är data shardade i **distributioner** för att optimera systemets prestanda. Du kan välja vilket horisontell partitionering-mönster som ska användas för att distribuera data när du definierar tabellen. Dessa horisontell partitionering-mönster stöds:
+Med Server lös SQL-poolen kan du söka i filer i data Lake på skrivskyddat sätt, medan SQL-poolen låter dig mata in data. När data matas in i en dedikerad SQL-pool, är data shardade i **distributioner** för att optimera systemets prestanda. Du kan välja vilket mönster för horisontell partitionering som ska användas för att distribuera data när du definierar tabellen. Dessa horisontell partitionering-mönster stöds:
 
 * Hash
 * Resursallokering (round robin)
@@ -67,7 +67,7 @@ I en server lös SQL-pool körs DQP-motorn på Control-noden för att optimera o
 
 Beräkningsnoderna ger dataresurser. 
 
-I dedikerad SQL-pool mappas distributioner till datornoder för bearbetning. När du betalar för fler beräknings resurser mappar poolen om distributionerna till de tillgängliga datornoderna. Antalet datornoder sträcker sig från 1 till 60 och bestäms av Service nivån för den dedikerade SQL-poolen. Varje Compute-nod har ett nod-ID som visas i systemvyer. Du kan se Compute Node ID genom att leta efter kolumnen node_id i systemvyer vars namn börjar med sys.pdw_nodes. En lista över dessa system visningar finns i [SYNAPSE SQL system views](/sql/relational-databases/system-catalog-views/sql-data-warehouse-and-parallel-data-warehouse-catalog-views?view=azure-sqldw-latest).
+I dedikerad SQL-pool mappas distributioner till datornoder för bearbetning. När du betalar för fler beräknings resurser mappar poolen om distributionerna till de tillgängliga datornoderna. Antalet datornoder sträcker sig från 1 till 60 och bestäms av Service nivån för den dedikerade SQL-poolen. Varje Compute-nod har ett nod-ID som visas i systemvyer. Du kan se Compute Node ID genom att leta efter kolumnen node_id i systemvyer vars namn börjar med sys.pdw_nodes. En lista över dessa system visningar finns i [SYNAPSE SQL system views](/sql/relational-databases/system-catalog-views/sql-data-warehouse-and-parallel-data-warehouse-catalog-views?view=azure-sqldw-latest&preserve-view=true).
 
 I SQL-poolen utan server tilldelas varje datornod en aktivitet och en uppsättning filer att köra aktiviteten på. Uppgiften är distribuerad frågekörning, som faktiskt är en del av frågan som användaren skickat. Automatisk skalning används för att se till att tillräckligt många datornoder används för att köra användar frågor.
 

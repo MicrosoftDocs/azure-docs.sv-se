@@ -3,12 +3,12 @@ title: Geo-haveri beredskap – Azure Event Hubs | Microsoft Docs
 description: Använda geografiska regioner för att redundansväxla och utföra haveri beredskap i Azure Event Hubs
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 8824334e762237c3f18cb763d5b39fa55d6415a3
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.openlocfilehash: 0e0a207630898eb7fe7613acb311364a64f9b38b
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98108496"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98681691"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure Event Hubs-geo-haveri beredskap 
 
@@ -43,8 +43,10 @@ Följande villkor används i den här artikeln:
 
 -  *Alias*: namnet på en katastrof återställnings konfiguration som du ställer in. Aliaset innehåller en enda stabil fullständigt kvalificerad domän namns anslutnings sträng (FQDN). Program använder den här Ali Aset-anslutningssträngen för att ansluta till ett namn område. 
 
--  *Primär/sekundär namnrymd*: de namn områden som motsvarar aliaset. Det primära namn området är "aktivt" och tar emot meddelanden (kan vara ett befintligt eller nytt namn område). Det sekundära namn området är "passiv" och tar inte emot meddelanden. Metadata mellan båda är synkroniserade, så båda kan sömlöst acceptera meddelanden utan program kod eller anslutnings sträng ändringar. För att säkerställa att endast det aktiva namn området tar emot meddelanden måste du använda aliaset. 
+-  *Primär/sekundär namnrymd*: de namn områden som motsvarar aliaset. Det primära namn området är "aktivt" och tar emot meddelanden (kan vara ett befintligt eller nytt namn område). Det sekundära namn området är "passiv" och tar inte emot meddelanden. Metadata mellan båda är synkroniserade, så båda kan sömlöst acceptera meddelanden utan program kod eller anslutnings sträng ändringar. För att säkerställa att endast det aktiva namn området tar emot meddelanden måste du använda aliaset.
 
+    > [!IMPORTANT]
+    > Funktionen för geo-katastrof återställning kräver att prenumerationen och resurs gruppen är samma för primära och sekundära namn områden. 
 -  *Metadata*: entiteter som händelse hubbar och konsument grupper; och deras egenskaper för tjänsten som är associerad med namn området. Endast entiteter och deras inställningar replikeras automatiskt. Meddelanden och händelser replikeras inte. 
 
 -  *Redundans*: processen att aktivera det sekundära namn området.
@@ -54,10 +56,10 @@ Följande kombinationer av primära och sekundära namn rymder stöds:
 
 | Primär namnrymd | Sekundär namnrymd | Stöds | 
 | ----------------- | -------------------- | ---------- |
-| Standard | Standard | Ja | 
-| Standard | Dedikerad | Ja | 
-| Dedikerad | Dedikerad | Ja | 
-| Dedikerad | Standard | Nej | 
+| Standard | Standard | Yes | 
+| Standard | Dedikerad | Yes | 
+| Dedikerad | Dedikerad | Yes | 
+| Dedikerad | Standard | No | 
 
 > [!NOTE]
 > Det går inte att para ihop namn områden som finns i samma dedicerade kluster. Du kan para ihop namn områden som finns i separata kluster. 
@@ -73,12 +75,12 @@ Följande avsnitt innehåller en översikt över redundansväxlingen och förkla
 Först skapar du eller använder ett befintligt primärt namn område och ett nytt sekundärt namn område och kopplar sedan samman de två. Den här ihopparningen ger dig ett alias som du kan använda för att ansluta. Eftersom du använder ett alias behöver du inte ändra anslutnings strängarna. Det går bara att lägga till nya namn områden i ihopparningen för redundans. 
 
 1. Skapa det primära namn området.
-1. Skapa det sekundära namn området. Det här är valfritt. Du kan skapa det sekundära namn området när du skapar kopplingen i nästa steg. 
+1. Skapa det sekundära namn området i prenumerationen och resurs gruppen som har det primära namn området. Det här är valfritt. Du kan skapa det sekundära namn området när du skapar kopplingen i nästa steg. 
 1. I Azure Portal navigerar du till ditt primära namn område.
 1. Välj **geo-återställning** på den vänstra menyn och välj **Starta koppling** i verktygsfältet. 
 
     :::image type="content" source="./media/event-hubs-geo-dr/primary-namspace-initiate-pairing-button.png" alt-text="Starta koppling från det primära namn området":::    
-1. På sidan **initiera koppling** väljer du ett befintligt sekundärt namn område eller skapar ett. Välj sedan **skapa**. I följande exempel väljs ett befintligt sekundärt namn område. 
+1. På sidan **initiera koppling** väljer du ett befintligt sekundärt namn område eller skapar ett i prenumerationen och resurs gruppen som har det primära namn området. Välj sedan **Skapa**. I följande exempel väljs ett befintligt sekundärt namn område. 
 
     :::image type="content" source="./media/event-hubs-geo-dr/initiate-pairing-page.png" alt-text="Välj sekundär namnrymd":::        
 1. När du nu väljer **geo-återställning** för det primära namn området bör du se sidan **geo-Dr-alias** som ser ut som följande bild:

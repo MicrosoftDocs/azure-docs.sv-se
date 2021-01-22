@@ -11,12 +11,12 @@ ms.date: 05/28/2019
 ms.author: pimorano
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 4da99200079557ab9d1674635c0df26c9e62d488
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: ecab573f7a98bcee79231b8e20077bb32bffd48c
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98120282"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98680122"
 ---
 # <a name="quickstart-create-and-query-a-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics-using-the-azure-portal"></a>Snabb start: skapa och fråga en dedikerad SQL-pool (tidigare SQL DW) i Azure Synapse Analytics med hjälp av Azure Portal
 
@@ -29,7 +29,7 @@ Skapa och fråga snabbt en dedikerad SQL-pool (tidigare SQL DW) i Azure Synapse 
    > [!NOTE]
    > Att skapa en dedikerad SQL-pool (tidigare SQL DW) i Azure Synapse kan resultera i en ny fakturerbar tjänst. Mer information finns i [priser för Azure Synapse Analytics](https://azure.microsoft.com/pricing/details/synapse-analytics/).
 
-2. Ladda ned och installera den senaste versionen av [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS).
+2. Ladda ned och installera den senaste versionen av [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (SSMS).
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logga in på Azure Portal
 
@@ -55,7 +55,7 @@ Följ dessa steg om du vill skapa en dedikerad SQL-pool (tidigare SQL DW) som in
    | :------ | :-------------- | :---------- |
    | **Prenumeration** | Din prenumeration | Mer information om dina prenumerationer finns i [Prenumerationer](https://account.windowsazure.com/Subscriptions). |
    | **Resursgrupp** | myResourceGroup | Giltiga resursgruppnamn finns i [Namngivningsregler och begränsningar](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). |
-   | **SQL-poolnamn** | Globalt unikt namn (ett exempel är *mySampleDataWarehouse*) | För giltiga databas namn, se [databas identifierare](/sql/relational-databases/databases/database-identifiers?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).  |
+   | **SQL-poolnamn** | Globalt unikt namn (ett exempel är *mySampleDataWarehouse*) | För giltiga databas namn, se [databas identifierare](/sql/relational-databases/databases/database-identifiers?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).  |
    | **Server** | Valfritt globalt unikt namn | Välj befintlig server eller skapa ett nytt Server namn och välj **Skapa ny**. Giltiga servernamn finns i [Namngivningsregler och begränsningar](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). |
 
    ![skapa grundläggande information om informations lagret](./media/create-data-warehouse-portal/create-sql-pool-basics.png)
@@ -128,7 +128,7 @@ Hämta det fullständigt kvalificerade Server namnet för servern i Azure Portal
 
 ## <a name="connect-to-the-server-as-server-admin"></a>Ansluta till servern som serveradministratör
 
-I det här avsnittet används [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS) för att upprätta en anslutning till servern.
+I det här avsnittet används [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (SSMS) för att upprätta en anslutning till servern.
 
 1. Öppna SQL Server Management Studio.
 
@@ -140,7 +140,7 @@ I det här avsnittet används [SQL Server Management Studio](/sql/ssms/download-
    | Servernamn | Fullständigt kvalificerat servernamn | Här är ett exempel: **sqlpoolservername.Database.Windows.net**. |
    | Autentisering | SQL Server-autentisering | SQL-autentisering är den enda autentiseringstypen som vi konfigurerar i den här självstudiekursen. |
    | Inloggning | Serveradministratörskontot | Kontot som du angav när du skapade servern. |
-   | lösenordsinställning | Lösenordet för serveradministratörskontot | Lösen ordet du angav när du skapade servern. |
+   | Lösenord | Lösenordet för serveradministratörskontot | Lösen ordet du angav när du skapade servern. |
    ||||
 
    ![Anslut till server](./media/create-data-warehouse-portal/connect-to-server-ssms.png)

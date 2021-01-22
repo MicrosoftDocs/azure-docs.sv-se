@@ -8,24 +8,24 @@ ms.topic: how-to
 ms.date: 10/08/2018
 ms.author: cynthn
 ms.custom: legacy, devx-track-azurecli
-ms.openlocfilehash: eacd1426b856de11a18b0da6c509d281b3bca94c
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 53fb11216e65ebead43c02a7153d937c37b841a0
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97655177"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98681068"
 ---
 # <a name="how-to-create-a-managed-image-of-a-virtual-machine-or-vhd"></a>Så här skapar du en hanterad avbildning av en virtuell dator eller virtuell hård disk
 
 Om du vill skapa flera kopior av en virtuell dator (VM) för användning i Azure för utveckling och testning kan du avbilda en hanterad avbildning av den virtuella datorn eller OS-VHD: n. Information om hur du skapar, lagrar och delar bilder i skala finns i [delade avbildnings gallerier](../shared-images-cli.md).
 
-En hanterad avbildning har stöd för upp till 20 samtidiga distributioner. Om du försöker skapa fler än 20 virtuella datorer samtidigt, från samma hanterade avbildning, kan timeout uppstå för etablerings tids gränsen på grund av lagrings prestanda begränsningarna för en enda virtuell hård disk. Om du vill skapa fler än 20 virtuella datorer samtidigt använder du en avbildning av [delade avbildnings gallerier](shared-image-galleries.md) som kon figurer ATS med 1 replik för varje 20 samtidiga VM-distributioner.
+En hanterad avbildning har stöd för upp till 20 samtidiga distributioner. Om du försöker skapa fler än 20 virtuella datorer samtidigt, från samma hanterade avbildning, kan timeout uppstå för etablerings tids gränsen på grund av lagrings prestanda begränsningarna för en enda virtuell hård disk. Om du vill skapa fler än 20 virtuella datorer samtidigt använder du en avbildning av [delade avbildnings gallerier](../shared-image-galleries.md) som kon figurer ATS med 1 replik för varje 20 samtidiga VM-distributioner.
 
 Om du vill skapa en hanterad avbildning måste du ta bort personlig konto information. I följande steg avetablerar du en befintlig virtuell dator, frigör den och skapar en avbildning. Du kan använda den här avbildningen för att skapa virtuella datorer i alla resurs grupper i din prenumeration.
 
 Om du vill skapa en kopia av din befintliga virtuella Linux-dator för säkerhets kopiering eller fel sökning eller ladda upp en specialiserad Linux-VHD från en lokal virtuell dator, se [Ladda upp och skapa en virtuell Linux-dator från anpassad disk avbildning](upload-vhd.md).  
 
-Du kan använda tjänsten **Azure VM Image Builder (offentlig för hands version)** för att skapa en anpassad avbildning, inget behov av att lära sig några verktyg eller skapa pipelines för att skapa en avbildning av Image Builder. Mer information finns i [komma igång med Azure VM Image Builder](./image-builder-overview.md).
+Du kan använda tjänsten **Azure VM Image Builder (offentlig för hands version)** för att skapa en anpassad avbildning, inget behov av att lära sig några verktyg eller skapa pipelines för att skapa en avbildning av Image Builder. Mer information finns i [komma igång med Azure VM Image Builder](../image-builder-overview.md).
 
 Du behöver följande objekt innan du skapar en avbildning:
 

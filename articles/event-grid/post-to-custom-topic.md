@@ -3,12 +3,12 @@ title: Avsnittet publicera händelse i anpassade Azure Event Grid
 description: Den här artikeln beskriver hur du publicerar en händelse i ett anpassat ämne. Den visar formatet på post-och händelse data.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 197d8eb1963300bc6576e664c7c3fd470cf70bb2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ed126487938e524264c94544903460854ffc4d41
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86108268"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98681625"
 ---
 # <a name="post-to-custom-topic-for-azure-event-grid"></a>Publicera till anpassat avsnitt för Azure Event Grid
 
@@ -34,7 +34,7 @@ Om du vill hämta slut punkten för ett anpassat ämne med Azure PowerShell anv�
 (Get-AzEventGridTopic -ResourceGroupName <topic-resource-group> -Name <topic-name>).Endpoint
 ```
 
-## <a name="header"></a>Sidhuvud
+## <a name="header"></a>Huvud
 
 I begäran inkluderar du ett huvud värde med namnet `aeg-sas-key` som innehåller en nyckel för autentisering.
 
@@ -71,10 +71,7 @@ För anpassade ämnen innehåller data på översta nivån samma fält som stand
 ]
 ```
 
-En beskrivning av dessa egenskaper finns i [Azure Event Grid Event schema](event-schema.md). När du publicerar händelser i ett event Grid-ämne kan matrisen ha en total storlek på upp till 1 MB. Varje händelse i matrisen är begränsad till 64 KB (allmän tillgänglighet) eller 1 MB (för hands version).
-
-> [!NOTE]
-> En händelse av en storlek på upp till 64 KB omfattas av allmän tillgänglighet (GA) Serviceavtal (SLA). Stöd för en händelse av en storlek på upp till 1 MB är för närvarande en för hands version. Händelser över 64 KB debiteras i steg om 64 KB. 
+En beskrivning av dessa egenskaper finns i [Azure Event Grid Event schema](event-schema.md). När du publicerar händelser i ett event Grid-ämne kan matrisen ha en total storlek på upp till 1 MB. Den största tillåtna storleken för en händelse är också 1 MB. Händelser över 64 KB debiteras i steg om 64 KB. 
 
 Ett giltigt händelse data schema är till exempel:
 

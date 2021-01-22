@@ -4,12 +4,12 @@ description: Övervaka din webbapp i real tid med anpassade mått och diagnostis
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.reviewer: sdash
-ms.openlocfilehash: c50f7e57c520321d752d6d46e36c45c615b5e785
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: 865de94f1d9b4012a908643bbf87f38aeb8594a0
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97803586"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98679474"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Live Metrics Stream: övervaka & diagnostisera med en andra svars tid
 
@@ -36,7 +36,7 @@ Live-mått stöds för närvarande för ASP.NET-, ASP.NET Core-, Azure Functions
    * [ASP.net Core](./asp-net-core.md)-Live-mått är aktiverat som standard.
    * [.Net/.net Core-konsolen/Worker](./worker-service.md)-Live-mått är aktiverat som standard.
    * [.NET-program – aktivera med hjälp av kod](#enable-livemetrics-using-code-for-any-net-application).
-    * [Java](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent) -Live-mått är aktiverat som standard.
+    * [Java](./java-in-process-agent.md) -Live-mått är aktiverat som standard.
    * [Node.js](./nodejs.md#live-metrics)
 
 2. I [Azure Portal](https://portal.azure.com)öppnar du Application Insights resurs för din app och öppnar sedan Live Stream.

@@ -1,7 +1,7 @@
 ---
-title: Bevara data sekretessen med SmartNoise-paketen (för hands version)
+title: Differentiell sekretess SmartNoise (för hands version)
 titleSuffix: Azure Machine Learning
-description: Lär dig hur du använder metod tips för differentiell integritet för att Azure Machine Learning modeller med SmartNoise-paketen.
+description: Lär dig hur du använder metod tips för differentiell integritet för att Azure Machine Learning modeller med SmartNoise-bibliotek med öppen källkod.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,19 +10,19 @@ ms.custom: how-to, responsible-ml
 ms.author: slbird
 author: slbird
 ms.reviewer: luquinta
-ms.date: 12/21/2020
-ms.openlocfilehash: ebc14d6c9d0ebaa6e0258578f94771c9f286bdb4
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.date: 01/21/2020
+ms.openlocfilehash: 62a002569696da4ef18e7bd967f027eb8247ef65
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98221943"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98681412"
 ---
 # <a name="use-differential-privacy-in-azure-machine-learning-preview"></a>Använd differentiell sekretess i Azure Machine Learning (för hands version)
 
-Lär dig hur du använder metod tips för differentiell integritet för att Azure Machine Learning modeller med SmartNoise python-paket.
+Lär dig hur du använder metod tips för differentiell integritet för att Azure Machine Learning modeller med hjälp av SmartNoise python-bibliotek med öppen källkod.
 
-Differentiell integritet är den guld standard definitionen av sekretess. System som följer denna definition av sekretess ger starka garantier mot en rad olika data återuppbyggnads-och återidentifierings attacker, inklusive attacker från angripare som har hjälp information. Läs mer om hur [differentiell integritet fungerar](./concept-differential-privacy.md).
+Differentiell integritet är den guld standard definitionen av sekretess. System som följer denna definition av sekretess ger starka garantier mot en rad olika data återuppbyggnads-och återidentifierings attacker, inklusive attacker från angripare som har hjälp information. Läs mer om [hur differentiell integritet fungerar](./concept-differential-privacy.md).
 
 
 ## <a name="prerequisites"></a>Förutsättningar
@@ -30,7 +30,7 @@ Differentiell integritet är den guld standard definitionen av sekretess. System
 - Om du inte har en Azure-prenumeration kan du skapa ett kostnadsfritt konto innan du börjar. Prova den [kostnads fria eller betalda versionen av Azure Machine Learning](https://aka.ms/AMLFree) idag.
 - [Python 3](https://www.python.org/downloads/)
 
-## <a name="install-smartnoise-packages"></a>Installera SmartNoise-paket
+## <a name="install-smartnoise-python-libraries"></a>Installera SmartNoise python-bibliotek
 
 ### <a name="standalone-installation"></a>Fristående installation
 
@@ -51,7 +51,7 @@ import opendp.smartnoise.sql
 
 Om importen lyckas installeras biblioteken och är redo att användas.
 
-### <a name="docker-image"></a>Docker-avbildning
+### <a name="docker-image-installation"></a>Installation av Docker-avbildning
 
 Du kan också använda SmartNoise-paket med Docker.
 

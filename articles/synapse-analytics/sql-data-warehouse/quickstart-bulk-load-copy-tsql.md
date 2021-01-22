@@ -11,16 +11,16 @@ ms.date: 11/20/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 939a74a2bbedf6b00159f0c33a50eeb93595cda4
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 547f697c4f8ffb903006e48e94086433d64225c7
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98116083"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98681344"
 ---
 # <a name="quickstart-bulk-load-data-using-the-copy-statement"></a>Snabb start: Mass inläsning av data med hjälp av KOPIERINGs instruktionen
 
-I den här snabb starten ska du samla in data i den dedikerade SQL-poolen med hjälp av den enkla och flexibla [kopierings instruktionen](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) för data inmatning med stora data flöden. KOPIERINGs instruktionen är det rekommenderade inläsnings verktyget, som du kan använda för att sömlöst och flexibelt läsa in data genom att tillhandahålla funktioner för att:
+I den här snabb starten ska du samla in data i den dedikerade SQL-poolen med hjälp av den enkla och flexibla [kopierings instruktionen](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true) för data inmatning med stora data flöden. KOPIERINGs instruktionen är det rekommenderade inläsnings verktyget, som du kan använda för att sömlöst och flexibelt läsa in data genom att tillhandahålla funktioner för att:
 
 - Tillåt att lägre privilegierade användare läser in utan att du behöver strikt behörighet för data lagret
 - Använd endast ett enda T-SQL-uttryck utan att behöva skapa några ytterligare databas objekt

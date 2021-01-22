@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/05/2020
-ms.openlocfilehash: fc89790c7d268bcfa0c08bd26249bc91979d7fca
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 7fb84d544138b771170f95b5df71c33087252564
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186906"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98679491"
 ---
 # <a name="monitoring-azure-virtual-machines-with-azure-monitor"></a>Övervaka virtuella Azure-datorer med Azure Monitor
 Den här artikeln beskriver hur du använder Azure Monitor för att samla in och analysera övervaknings data från virtuella Azure-datorer för att upprätthålla deras hälsa. Virtuella datorer kan övervakas för tillgänglighet och prestanda med Azure Monitor som [andra Azure](monitor-azure-resource.md)-resurser, men de är unika för andra resurser eftersom du också behöver övervaka gäst operativ systemet och de arbets belastningar som körs i den. 
@@ -113,7 +113,7 @@ Samla in plattforms mått med en diagnostisk inställning för den virtuella dat
 Set-AzDiagnosticSetting -Name vm-diagnostics -ResourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microsoft.Compute/virtualMachines/my-vm" -Enabled $true -MetricCategory AllMetrics -workspaceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/my-resource-group/providers/microsoft.operationalinsights/workspaces/my-workspace"
 ```
 
-```CLI
+```azurecli
 az monitor diagnostic-settings create \
 --name VM-Diagnostics 
 --resource /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microsoft.Compute/virtualMachines/my-vm \
@@ -148,7 +148,7 @@ Du kan analysera mått för virtuella datorer med hjälp av Metric Explorer geno
 
 Det finns tre namn områden som används av virtuella datorer för mått:
 
-| Namnområde | Beskrivning | Krav |
+| Namnområde | Description | Krav |
 |:---|:---|:---|
 | Virtuell värddator | Värd mått samlas in automatiskt för alla virtuella Azure-datorer. Detaljerad lista över mått på [Microsoft. Compute/virtualMachines](../platform/metrics-supported.md#microsoftcomputevirtualmachines). | Samlas in automatiskt utan konfiguration krävs. |
 | Gäst (klassisk) | Begränsad uppsättning prestanda data för gäst operativ system och program. Tillgängligt i Metrics Explorer men inte andra Azure Monitor funktioner som mått varningar.  | [Diagnostiskt tillägg](../platform/diagnostics-extension-overview.md) installerat. Data läses från Azure Storage.  |

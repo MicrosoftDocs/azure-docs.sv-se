@@ -3,18 +3,20 @@ title: Samar beta med andra – LUIS
 titleSuffix: Azure Cognitive Services
 description: En app-ägare kan lägga till deltagare till redigerings resursen. Dessa deltagare kan ändra modellen, träna och publicera appen.
 services: cognitive-services
+author: aahill
+ms.author: aahi
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
-ms.date: 12/08/2020
-ms.openlocfilehash: d4bde21dd13b562ffbb51b27ef083ee53685397a
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.date: 01/21/2021
+ms.openlocfilehash: ea95b2097c611635eb937498c6f1d87cb544bcd1
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97007979"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98681102"
 ---
 # <a name="add-contributors-to-your-app"></a>Lägg till deltagare i din app
 
@@ -66,9 +68,7 @@ LUIS använder standard Azure Active Directory (Azure AD) för godkännande flö
 Klient organisationens administratör bör arbeta direkt med den användare som behöver åtkomst beviljad att använda LUIS i Azure AD.
 
 * Först loggar användaren in på LUIS och ser popup-dialogrutan som kräver administratörs godkännande. Användaren kontaktar klient administratören innan du fortsätter.
-* Sedan loggar klient organisations administratören in på LUIS och ser en dialog ruta för godkännande flöde. Det här är den dialog som administratören behöver för att ge användaren behörighet. När administratören godkänner behörigheten kan användaren fortsätta med LUIS. Om klient organisationen inte kommer att logga in på LUIS kan administratören komma åt [medgivande](https://account.activedirectory.windowsazure.com/r#/applications) för Luis, som visas i följande skärm bild. Observera att listan filtreras till objekt som innehåller namnet `LUIS` .
-
-![Azure Active Directory-behörighet från App-webbplats](./media/luis-how-to-collaborate/tenant-permissions.png)
+* Sedan loggar klient organisations administratören in på LUIS och ser en dialog ruta för godkännande flöde. Det här är den dialog som administratören behöver för att ge användaren behörighet. När administratören godkänner behörigheten kan användaren fortsätta med LUIS. Om klient organisationens administratör inte kan logga in på LUIS kan administratören komma åt [medgivande](https://account.activedirectory.windowsazure.com/r#/applications) för Luis. På den här sidan kan du filtrera listan till objekt som innehåller namnet `LUIS` .
 
 Om klient administratören bara vill att vissa användare ska använda LUIS, finns det ett par möjliga lösningar:
 * Ge "administrativt medgivande" (medgivande till alla användare av Azure AD), men Ställ sedan in på "Ja" "användar tilldelning krävs" under egenskaper för företags program och tilldela/Lägg slutligen till de önskade användarna i programmet. Med den här metoden ger administratören fortfarande "administrativt medgivande" till appen, men det är möjligt att kontrol lera vilka användare som har åtkomst till den.

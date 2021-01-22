@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: swmachan
-ms.openlocfilehash: 6163f059581c2699d0b2780545c3ad5ec80f2907
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 60da61d094316b29c8fbc5454472bb898d693937
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882423"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98681591"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>Språk-och region stöd för text-och tal Översättning
 
@@ -195,24 +195,38 @@ Metoden translittererad stöder följande språk. I "till/från", "<-->" anger a
 |:----------- |:-------------:|:-------------:|:-------------:|:-------------:|
 | Arabiska | `ar` | Arabiska `Arab` | <--> | Latin `Latn` |
 | Bangla  | `bn` | Bengali `Beng` | <--> | Latin `Latn` |
+|Vitryska| `be` | Kyrillisk `Cyrl`  | <--> | Latin `Latn` |
+|Bulgariska| `bg` | Kyrillisk `Cyrl`  | <--> | Latin `Latn` |
 | Kinesiska (förenklad) | `zh-Hans` | Kinesiska, förenklad `Hans`| <--> | Latin `Latn` |
 | Kinesiska (förenklad) | `zh-Hans` | Kinesiska, förenklad `Hans`| <--> | Kinesiska, traditionell `Hant`|
 | Kinesiska (traditionell) | `zh-Hant` | Kinesiska, traditionell `Hant`| <--> | Latin `Latn` |
 | Kinesiska (traditionell) | `zh-Hant` | Kinesiska, traditionell `Hant`| <--> | Kinesiska, förenklad `Hans` |
+|Grekiska| `el` | Grekiska `Grek`  | <--> | Latin `Latn` |
 | Gujarati | `gu`  | Gujarati `Gujr` | <--> | Latin `Latn` |
 | Hebreiska | `he` | Hebreiska `Hebr` | <--> | Latin `Latn` |
 | Hindi | `hi` | Devanagari `Deva` | <--> | Latin `Latn` |
 | Japanska | `ja` | Japanska `Jpan` | <--> | Latin `Latn` |
 | Kannada | `kn` | Kannada `Knda` | <--> | Latin `Latn` |
+|Kazakiska| `kk` | Kyrillisk `Cyrl`  | <--> | Latin `Latn` |
+|Kirgiziska| `ky` | Kyrillisk `Cyrl`  | <--> | Latin `Latn` |
+|Makedonska| `mk` | Kyrillisk `Cyrl`  | <--> | Latin `Latn` |
 | Malayalam | `ml` | Malayalam `Mlym` | <--> | Latin `Latn` |
 | Marathi | `mr` | Devanagari `Deva` | <--> | Latin `Latn` |
+|Mongoliska| `mn` | Kyrillisk `Cyrl`  | <--> | Latin `Latn` |
 | Odia | `or` | Odia `Orya` | <--> | Latin `Latn` |
+|Persiska| `fa` | Arabiska `Arab`  | <--> | Latin `Latn` |
 | Punjabi | `pa` | Gurmukhi `Guru`  | <--> | Latin `Latn`  |
+|Ryska| `ru` | Kyrillisk `Cyrl`  | <--> | Latin `Latn` |
 | Serbiska (kyrillisk) | `sr-Cyrl` | Kyrillisk `Cyrl`  | --> | Latin `Latn` |
 | Serbiska (latinsk) (Serbien) | `sr-Latn` | Latin `Latn` | --> | Kyrillisk `Cyrl`|
+|Sindhi| `sd` | Arabiska `Arab`  | <--> | Latin `Latn` |
+|Tadzjikiska| `tg` | Kyrillisk `Cyrl`  | <--> | Latin `Latn` |
 | Tamilska | `ta` | Tamilska `Taml` | <--> | Latin `Latn` |
+|Tatariska| `tt` | Kyrillisk `Cyrl`  | <--> | Latin `Latn` |
 | Telugu | `te` | Telugu `Telu` | <--> | Latin `Latn` |
 | Thailändska | `th` | Thai `Thai` | --> | Latin `Latn` |
+|Ukrainska| `uk` | Kyrillisk `Cyrl`  | <--> | Latin `Latn` |
+|Urdu| `ur` | Arabiska `Arab`  | <--> | Latin `Latn` |
 
 ### <a name="dictionary"></a>Ordlista
 
