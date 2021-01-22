@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 3b61df954e913671eafff4b739e0f53a4d420c28
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 5aefe869041d9fff8112b6aa380961ca6568ae0b
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98117307"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98673577"
 ---
 # <a name="guidance-for-designing-distributed-tables-using-dedicated-sql-pool-in-azure-synapse-analytics"></a>Vägledning för att utforma distribuerade tabeller med dedikerad SQL-pool i Azure Synapse Analytics
 
@@ -96,7 +96,7 @@ Data som lagras i kolumnen distribution kan uppdateras. Uppdateringar av data i 
 
 Att välja en distributions kolumn är ett viktigt design beslut eftersom värdena i den här kolumnen avgör hur raderna ska distribueras. Det bästa valet beror på flera faktorer och inbegriper vanligt vis kompromisser. När du har valt en distributions kolumn kan du inte ändra den.  
 
-Om du inte väljer den bästa kolumnen första gången kan du använda [CREATE TABLE som Select (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) för att återskapa tabellen med en annan distributions kolumn.
+Om du inte väljer den bästa kolumnen första gången kan du använda [CREATE TABLE som Select (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) för att återskapa tabellen med en annan distributions kolumn.
 
 ### <a name="choose-a-distribution-column-with-data-that-distributes-evenly"></a>Välj en distributions kolumn med data som distribuerar jämnt
 
@@ -133,7 +133,7 @@ När data har lästs in i en hash-distribuerad tabell, kontrollerar du om du vil
 
 ### <a name="determine-if-the-table-has-data-skew"></a>Ta reda på om tabellen har en data skev
 
-Ett snabbt sätt att söka efter data skevning är att använda [DBCC PDW_SHOWSPACEUSED](/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest). Följande SQL-kod returnerar antalet tabell rader som lagras i var och en av 60-distributionerna. För balanserade prestanda bör raderna i den distribuerade tabellen spridas jämnt över alla distributioner.
+Ett snabbt sätt att söka efter data skevning är att använda [DBCC PDW_SHOWSPACEUSED](/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true). Följande SQL-kod returnerar antalet tabell rader som lagras i var och en av 60-distributionerna. För balanserade prestanda bör raderna i den distribuerade tabellen spridas jämnt över alla distributioner.
 
 ```sql
 -- Find data skew for a distributed table
@@ -183,7 +183,7 @@ Eftersom du inte kan ändra distributions kolumnen i en befintlig tabell, är de
 
 ### <a name="re-create-the-table-with-a-new-distribution-column"></a>Återskapa tabellen med en ny distributions kolumn
 
-I det här exemplet används [CREATE TABLE som Välj](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) för att återskapa en tabell med en annan hash-fördelnings kolumn.
+I det här exemplet används [CREATE TABLE som Välj](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) för att återskapa en tabell med en annan hash-fördelnings kolumn.
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales_CustomerKey]
@@ -225,5 +225,5 @@ RENAME OBJECT [dbo].[FactInternetSales_CustomerKey] TO [FactInternetSales];
 
 Använd någon av följande instruktioner om du vill skapa en distribuerad tabell:
 
-- [CREATE TABLE (dedikerad SQL-pool)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [CREATE TABLE som SELECT (dedikerad SQL-pool)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [CREATE TABLE (dedikerad SQL-pool)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
+- [CREATE TABLE som SELECT (dedikerad SQL-pool)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)

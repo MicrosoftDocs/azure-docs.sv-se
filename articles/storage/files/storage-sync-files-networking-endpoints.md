@@ -8,12 +8,12 @@ ms.date: 5/11/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 61ff5d05eb74804af69b90d839115a8468619275
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 64d66e1b9eab225b38ee21306fea6f9534a708f3
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96921717"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98673865"
 ---
 # <a name="configuring-azure-file-sync-network-endpoints"></a>Konfigurera nätverksslutpunkter i Azure File Sync
 Azure Files och Azure File Sync ger två huvud typer av slut punkter för åtkomst till Azure-fil resurser: 
@@ -26,7 +26,7 @@ Den här artikeln fokuserar på hur du konfigurerar nätverks slut punkter för 
 
 Vi rekommenderar att du läser [Azure File Sync nätverks överväganden](storage-sync-files-networking-overview.md) innan du läser den här guiden.
 
-## <a name="prerequisites"></a>Krav 
+## <a name="prerequisites"></a>Förutsättningar 
 Den här artikeln förutsätter att:
 - Du har en Azure-prenumeration. Om du inte redan har en prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 - Du har redan skapat en Azure-filresurs i ett lagrings konto som du vill ansluta till från den lokala platsen. Information om hur du skapar en Azure-filresurs finns i [skapa en Azure-fil resurs](storage-how-to-create-file-share.md).
@@ -52,13 +52,13 @@ När du skapar en privat slut punkt för en Azure-resurs distribueras följande 
 
 Om du har en virtuell dator i det virtuella nätverket, eller om du har konfigurerat DNS-vidarebefordran enligt beskrivningen i [Konfigurera DNS-vidarebefordran för Azure Files](storage-files-networking-dns.md), kan du testa att den privata slut punkten har kon figurer ATS korrekt genom att köra följande kommandon från PowerShell, kommando raden eller terminalen (fungerar för Windows, Linux eller MacOS). Du måste ersätta `<storage-account-name>` med lämpligt lagrings konto namn:
 
-```
+```console
 nslookup <storage-account-name>.file.core.windows.net
 ```
 
 Om allt har fungerat korrekt bör du se följande utdata, där `192.168.0.5` är den privata IP-adressen för den privata slut punkten i det virtuella nätverket (utdata som visas för Windows):
 
-```Output
+```output
 Server:  UnKnown
 Address:  10.2.4.4
 
@@ -73,7 +73,7 @@ Aliases:  storageaccount.file.core.windows.net
 
 Om du har en virtuell dator i det virtuella nätverket, eller om du har konfigurerat DNS-vidarebefordran enligt beskrivningen i [Konfigurera DNS-vidarebefordran för Azure Files](storage-files-networking-dns.md), kan du testa att den privata slut punkten har kon figurer ATS korrekt med följande kommandon:
 
-```PowerShell
+```powershell
 $storageAccountHostName = [System.Uri]::new($storageAccount.PrimaryEndpoints.file) | `
     Select-Object -ExpandProperty Host
 
@@ -82,7 +82,7 @@ Resolve-DnsName -Name $storageAccountHostName
 
 Om allt har fungerat korrekt bör du se följande utdata, där `192.168.0.5` är den privata IP-adressen för den privata slut punkten i det virtuella nätverket:
 
-```Output
+```output
 Name                             Type   TTL   Section    NameHost
 ----                             ----   ---   -------    --------
 storageaccount.file.core.windows CNAME  60    Answer     storageaccount.privatelink.file.core.windows.net
@@ -113,7 +113,7 @@ nslookup $hostName
 
 Om allt har fungerat korrekt bör du se följande utdata, där `192.168.0.5` är den privata IP-adressen för den privata slut punkten i det virtuella nätverket:
 
-```Output
+```output
 Server:         127.0.0.53
 Address:        127.0.0.53#53
 
@@ -168,7 +168,7 @@ Get-AzPrivateEndpoint `
 
 Om allt har fungerat korrekt bör du se följande utdata där `192.168.1.4` , `192.168.1.5` , `192.168.1.6` och `192.168.1.7` är de privata IP-adresserna som tilldelats till den privata slut punkten:
 
-```Output
+```output
 Name     : mysssmanagement.westus2.afs.azure.net
 Type     : CNAME
 TTL      : 60
@@ -244,7 +244,7 @@ if ($null -eq $storageSyncService) {
 
 Om du vill skapa en privat slut punkt måste du skapa en anslutning för privata länkar till tjänsten för synkronisering av lagring. Den privata länk anslutningen är inmatad för att skapa den privata slut punkten.
 
-```PowerShell 
+```powershell 
 # Disable private endpoint network policies
 $subnet.PrivateEndpointNetworkPolicies = "Disabled"
 $virtualNetwork = $virtualNetwork | `
@@ -325,7 +325,7 @@ if ($null -eq $dnsZone) {
 ```
 Nu när du har en referens till den privata DNS-zonen måste du skapa en A-post för lagrings tjänsten för synkronisering.
 
-```PowerShell 
+```powershell 
 $privateEndpointIpFqdnMappings = $privateEndpoint | `
     Select-Object -ExpandProperty NetworkInterfaces | `
     Select-Object -ExpandProperty Id | `
@@ -607,7 +607,8 @@ $storageSyncService = $storageSyncService | Set-AzResource -Confirm:$false -Forc
 ```
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-<a name="azure-cli-does-not-support-setting-the-incomingtrafficpolicy-property-on-the-storage-sync-service-please-select-the-azure-powershell-tab-to-get-instructions-on-how-to-disable-the-storage-sync-service-public-endpoint"></a>Azure CLI har inte stöd för att ange `incomingTrafficPolicy` egenskapen för synkroniseringstjänsten för lagring. Välj fliken Azure PowerShell för att få anvisningar om hur du inaktiverar den offentliga slut punkten för Storage Sync-tjänsten.
+Azure CLI har inte stöd för att ange `incomingTrafficPolicy` egenskapen för synkroniseringstjänsten för lagring. Välj fliken Azure PowerShell för att få anvisningar om hur du inaktiverar den offentliga slut punkten för Storage Sync-tjänsten.
+
 ---
 
 ## <a name="see-also"></a>Se även

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/13/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7b134c4e9e980104a54f6a96d45445ee114556a5
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: f76aecc80537e6db55c8c4f2e5a7a240be6b1415
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178729"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98675754"
 ---
 # <a name="user-profile-attributes"></a>Attribut för användarprofil
 
@@ -50,7 +50,7 @@ I tabellen nedan visas de egenskaper för [användar resurs typ](/graph/api/reso
 |land         |Sträng|Landet/regionen där användaren finns. Exempel: "oss" eller "Storbritannien". Maxlängd 128.|Ja|Ja|Bestående, utdata|
 |createdDateTime|DateTime|Det datum då användarobjektet skapades. Skrivskyddad.|Nej|Nej|Bestående, utdata|
 |creationType    |Sträng|Om användar kontot har skapats som ett lokalt konto för en Azure Active Directory B2C klient, är värdet LocalAccount eller nameCoexistence. Skrivskyddad.|Nej|Nej|Bestående, utdata|
-|dateOfBirth     |Datum|Födelsedatum.|Nej|Nej|Bestående, utdata|
+|dateOfBirth     |Date|Födelsedatum.|Nej|Nej|Bestående, utdata|
 |avdelning      |Sträng|Namnet på den avdelning där användaren arbetar. Maxlängd 64.|Ja|Nej|Bestående, utdata|
 |displayName     |Sträng|Användarens visnings namn. Maxlängd 256.|Ja|Ja|Bestående, utdata|
 |facsimileTelephoneNumber<sup>1</sup>|Sträng|Telefonnumret till användarens företags Fax maskin.|Ja|Nej|Bestående, utdata|
@@ -160,7 +160,7 @@ Om de konton som du vill migrera har en mindre lösen ords styrka än den [stark
 
 ## <a name="mfa-phone-number-attribute"></a>Attribut för MFA-telefonnummer
 
-När du använder en telefon för Multi-Factor Authentication (MFA) används mobil telefonen för att verifiera användar identiteten. Om du vill [lägga till](https://docs.microsoft.com/graph/api/authentication-post-phonemethods) ett nytt telefonnummer program mässigt, [Uppdatera](https://docs.microsoft.com/graph/api/b2cauthenticationmethodspolicy-update), [Hämta](https://docs.microsoft.com/graph/api/b2cauthenticationmethodspolicy-get)eller [ta bort](https://docs.microsoft.com/graph/api/phoneauthenticationmethod-delete) telefonnumret, använder du [metoden MS Graph API Phone Authentication](https://docs.microsoft.com/graph/api/resources/phoneauthenticationmethod).
+När du använder en telefon för Multi-Factor Authentication (MFA) används mobil telefonen för att verifiera användar identiteten. Om du vill [lägga till](/graph/api/authentication-post-phonemethods) ett nytt telefonnummer program mässigt, [Uppdatera](/graph/api/b2cauthenticationmethodspolicy-update), [Hämta](/graph/api/b2cauthenticationmethodspolicy-get)eller [ta bort](/graph/api/phoneauthenticationmethod-delete) telefonnumret, använder du [metoden MS Graph API Phone Authentication](/graph/api/resources/phoneauthenticationmethod).
 
 I Azure AD B2C [anpassade principer](custom-policy-overview.md)är telefonnumret tillgängligt via `strongAuthenticationPhoneNumber` anspråks typ.
 
@@ -175,7 +175,7 @@ Utökade attribut [utökar schemat](/graph/extensibility-overview#schema-extensi
 > - Om programmet B2C-Extensions-app tas bort, tas dessa tilläggsfiler bort från alla användare tillsammans med alla data som de innehåller.
 > - Om ett attribut för tillägg tas bort av programmet tas det bort från alla användar konton och värdena tas bort.
 
-Attribut för tillägg i Graph API namnges med hjälp av konventionen `extension_ApplicationClientID_AttributeName` , där `ApplicationClientID` är **programmets (klient) ID** för `b2c-extensions-app` programmet (hittas i **Appregistreringar**  >  **alla program** i Azure Portal). Observera att **program-ID: t (klient)** som det visas i attributets namn för tillägg inte innehåller några bindestreck. Exempel:
+Attribut för tillägg i Graph API namnges med hjälp av konventionen `extension_ApplicationClientID_AttributeName` , där `ApplicationClientID` är **programmets (klient) ID** för `b2c-extensions-app` programmet (hittas i **Appregistreringar**  >  **alla program** i Azure Portal). Observera att **program-ID: t (klient)** som det visas i attributets namn för tillägg inte innehåller några bindestreck. Till exempel:
 
 ```json
 "extension_831374b3bd5041bfaa54263ec9e050fc_loyaltyNumber": "212342"

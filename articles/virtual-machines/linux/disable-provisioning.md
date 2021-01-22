@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 07/06/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 2a17825d062496e6600966dc7c90b14749507e4d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0fea82c376a178de0be8ede6c0393e1de21de614
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86494521"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98675812"
 ---
 # <a name="disable-or-remove-the-linux-agent-from-vms-and-images"></a>Inaktivera eller ta bort Linux-agenten från virtuella datorer och avbildningar
 
@@ -31,9 +31,9 @@ Azure-plattformen är värd för många tillägg som sträcker sig från konfigu
 
 ## <a name="disabling-extension-processing"></a>Inaktiverar tilläggs bearbetning
 
-Det finns flera sätt att inaktivera bearbetning av tillägg, beroende på dina behov, men innan du fortsätter **måste** du ta bort alla tillägg som distribueras till den virtuella datorn, till exempel med hjälp av AZ CLI, och du kan [Visa](/cli/azure/vm/extension?view=azure-cli-latest#az-vm-extension-list) och [ta bort](/cli/azure/vm/extension?view=azure-cli-latest#az-vm-extension-delete):
+Det finns flera sätt att inaktivera bearbetning av tillägg, beroende på dina behov, men innan du fortsätter **måste** du ta bort alla tillägg som distribueras till den virtuella datorn, till exempel med hjälp av Azure CLI, och du kan [Visa](/cli/azure/vm/extension#az-vm-extension-list) och [ta bort](/cli/azure/vm/extension#az-vm-extension-delete):
 
-```bash
+```azurecli
 az vm extension delete -g MyResourceGroup --vm-name MyVm -n extension_name
 ```
 > [!Note]
@@ -43,7 +43,7 @@ az vm extension delete -g MyResourceGroup --vm-name MyVm -n extension_name
 ### <a name="disable-at-the-control-plane"></a>Inaktivera vid kontroll planet
 Om du inte är säker på om du kommer att behöva tillägg i framtiden kan du lämna Linux-agenten installerad på den virtuella datorn och sedan inaktivera tilläggs bearbetnings kapacitet från plattformen. Det här alternativet är tillgängligt i `Microsoft.Compute` API `2018-06-01` -versionen eller högre, och har inte något beroende av versionen av Linux-agenten installerad.
 
-```bash
+```azurecli
 az vm update -g <resourceGroup> -n <vmName> --set osProfile.allowExtensionOperations=false
 ```
 Du kan enkelt återaktivera den här tilläggs bearbetningen från plattformen med kommandot ovan, men ange det till true.
@@ -132,7 +132,7 @@ När du har slutfört ovanstående kan du skapa den anpassade avbildningen med h
 
 
 **Skapa en vanlig hanterad avbildning**
-```bash
+```azurecli
 az vm deallocate -g <resource_group> -n <vm_name>
 az vm generalize -g <resource_group> -n <vm_name>
 az image create -g <resource_group> -n <image_name> --source <vm_name>
@@ -140,7 +140,7 @@ az image create -g <resource_group> -n <image_name> --source <vm_name>
 
 **Skapa en avbildnings version i ett galleri för delad avbildning**
 
-```bash
+```azurecli
 az sig image-version create \
     -g $sigResourceGroup 
     --gallery-name $sigName 
@@ -157,7 +157,7 @@ När du skapar den virtuella datorn från avbildningen utan någon Linux-Agent m
 
 Om du vill distribuera den virtuella datorn med tillägg inaktiverade kan du använda Azure CLI med [--Enable-agent](/cli/azure/vm#az-vm-create).
 
-```bash
+```azurecli
 az vm create \
     --resource-group $resourceGroup \
     --name $prodVmName \

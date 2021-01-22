@@ -8,12 +8,12 @@ ms.date: 08/13/2020
 ms.topic: troubleshooting
 ms.service: iot-central
 ms.custom: device-developer, devx-track-azurecli
-ms.openlocfilehash: 2bbf400840c968587de3a0a0951d28c7c35b210f
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: d1a7c94152b611ea0dbea249156add617178d7ca
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94990898"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98673242"
 ---
 # <a name="troubleshoot-why-data-from-your-devices-isnt-showing-up-in-azure-iot-central"></a>Felsök varför data från dina enheter inte visas i Azure IoT Central
 
@@ -35,11 +35,11 @@ Det här avsnittet hjälper dig att avgöra om dina data når IoT Central.
 
 Installera verktyget och tillägget om du inte redan gjort det `az cli` `azure-iot` .
 
-Information om hur du installerar `az cli` finns i [Installera Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest).
+Information om hur du installerar `az cli` finns i [Installera Azure CLI](/cli/azure/install-azure-cli).
 
-[Installera](/cli/azure/azure-cli-reference-for-IoT?view=azure-cli-latest#extension-reference-installation) `azure-iot` tillägget genom att köra följande kommando:
+[Installera](/cli/azure/azure-cli-reference-for-IoT#extension-reference-installation) `azure-iot` tillägget genom att köra följande kommando:
 
-```cmd/bash
+```azurecli
 az extension add --name azure-iot
 ```
 
@@ -50,20 +50,20 @@ När du har installerat `azure-iot` tillägget kan du starta enheten för att se
 
 Använd följande kommandon för att logga in på prenumerationen där du har ditt IoT Central-program:
 
-```cmd/bash
+```azurecli
 az login
 az set account --subscription <your-subscription-id>
 ```
 
 Använd följande kommando för att övervaka den telemetri som enheten skickar:
 
-```cmd/bash
+```azurecli
 az iot central diagnostics monitor-events --app-id <app-id> --device-id <device-name>
 ```
 
 Om enheten har anslutit till IoT Central visas utdata som liknar följande:
 
-```cmd/bash
+```output
 Monitoring telemetry.
 Filtering on device: device-001
 {
@@ -82,13 +82,13 @@ Filtering on device: device-001
 
 Om du vill övervaka egenskapen uppdateringar som enheten utbyter med IoT Central använder du följande för hands versions kommando:
 
-```cmd/bash
+```azurecli
 az iot central diagnostics monitor-properties --app-id <app-id> --device-id <device-name>
 ```
 
 Om enheten har skickat egenskaps uppdateringar ser du utdata som liknar följande:
 
-```cmd/bash
+```output
 Changes in reported properties:
 version : 32
 {'state': 'true', 'name': {'value': {'value': 'Contoso'}, 'status': 'completed', 'desiredVersion': 7, 'ad': 'completed', 'av': 7, 'ac
@@ -106,7 +106,7 @@ Om du fortfarande inte ser några data i terminalen är det troligt att enheten 
 
 Om dina data inte visas på övervakaren kontrollerar du etablerings statusen för enheten genom att köra följande kommando:
 
-```cmd/bash
+```azurecli
 az iot central device registration-info --app-id <app-id> --device-id <device-name>
 ```
 
@@ -132,7 +132,7 @@ https://aka.ms/iotcentral-docs-dps-SAS",
 
 | Enhets etablerings status | Description | Möjlig minskning |
 | - | - | - |
-| Etablerad | Ingen direkt identifierbar fråga. | E.t. |
+| Etablerad | Ingen direkt identifierbar fråga. | Ej tillämpligt |
 | Registrerad | Enheten har ännu inte anslutits till IoT Central. | Kontrol lera dina enhets loggar för anslutnings problem. |
 | Blockerad | Enheten har blockerats från att ansluta till IoT Central. | Enheten blockeras från att ansluta till IoT Central-programmet. Avblockera enheten i IoT Central och försök igen. Mer information finns i [blockera enheter](concepts-get-connected.md#device-status-values). |
 | Ej godkända | Enheten är inte godkänd. | Enheten är inte godkänd för att ansluta till IoT Central-programmet. Godkänn enheten i IoT Central och försök igen. Läs mer i [Godkänn enheter](concepts-get-connected.md#device-registration) |
@@ -176,13 +176,13 @@ För att identifiera vilka kategorier ditt problem är i kör du det mest lämpl
 
 - Använd för hands versions kommandot för att validera telemetri:
 
-    ```cmd/bash
+    ```azurecli
     az iot central diagnostics validate-messages --app-id <app-id> --device-id <device-name>
     ```
 
 - Om du vill validera egenskaps uppdateringar använder du kommandot för hands version
 
-    ```cmd/bash
+    ```azurecli
     az iot central diagnostics validate-properties --app-id <app-id> --device-id <device-name>
     ```
 
@@ -190,7 +190,7 @@ Du kan uppmanas att installera `uamqp` biblioteket första gången du kör ett `
 
 Följande utdata visar exempel fel och varnings meddelanden från kommandot validate:
 
-```cmd/bash
+```output
 Validating telemetry.
 Filtering on device: v22upeoqx6.
 Exiting after 300 second(s), or 10 message(s) have been parsed (whichever happens first).

@@ -11,12 +11,12 @@ ms.date: 04/02/2019
 ms.author: emtehran
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: cc6a58b4ef78aca60d2a26870980e032c0b11a52
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: e28eeac131c737d673cac947a3fda30239180a62
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96463220"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98673594"
 ---
 # <a name="using-stored-procedures-for-dedicated-sql-pools-in-azure-synapse-analytics"></a>Använda lagrade procedurer för dedikerade SQL-pooler i Azure Synapse Analytics
 
@@ -73,7 +73,7 @@ GO
 EXEC prc_nesting
 ```
 
-Dedikerad SQL-pool stöder för närvarande inte [@ @NESTLEVEL ](/sql/t-sql/functions/nestlevel-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest). Därför måste du spåra kapslings nivån. Det är osannolikt att du överskrider gränsen på åtta kapslings nivåer. Men om du gör det måste du arbeta om koden för att passa de kapslade nivåerna i den här gränsen.
+Dedikerad SQL-pool stöder för närvarande inte [@ @NESTLEVEL ](/sql/t-sql/functions/nestlevel-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true). Därför måste du spåra kapslings nivån. Det är osannolikt att du överskrider gränsen på åtta kapslings nivåer. Men om du gör det måste du arbeta om koden för att passa de kapslade nivåerna i den här gränsen.
 
 ## <a name="insertexecute"></a>INSERT..EXESÖTA
 

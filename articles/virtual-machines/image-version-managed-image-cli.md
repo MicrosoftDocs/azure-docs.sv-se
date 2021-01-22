@@ -10,12 +10,12 @@ ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 0e53bebf9cdb8c0fc084d04550c7444c1c01be50
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 56611794bc2f190eccef739679da8474c9b04eb4
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96352872"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98675968"
 ---
 # <a name="clone-a-managed-image-to-an-image-version-using-the-azure-cli"></a>Klona en hanterad avbildning till en avbildnings version med hjälp av Azure CLI
 Om du har en befintlig hanterad avbildning som du vill klona till ett delat avbildnings Galleri kan du skapa en avbildning av en delad avbildning direkt från den hanterade avbildningen. När du har testat din nya avbildning kan du ta bort den hanterade käll avbildningen. Du kan också migrera från en hanterad avbildning till ett delat avbildnings galleri med hjälp av [PowerShell](image-version-managed-image-powershell.md).
@@ -41,11 +41,11 @@ Eftersom hanterade avbildningar alltid är generaliserade avbildningar skapar du
 
 Namn på bild definitioner kan bestå av versaler eller gemener, siffror, punkter, streck och punkter. 
 
-Mer information om de värden som du kan ange för en bild definition finns i [bild definitioner](./linux/shared-image-galleries.md#image-definitions).
+Mer information om de värden som du kan ange för en bild definition finns i [bild definitioner](./shared-image-galleries.md#image-definitions).
 
 Skapa en bild definition i galleriet med hjälp av [AZ sig-bild-definition Create](/cli/azure/sig/image-definition#az-sig-image-definition-create).
 
-I det här exemplet heter avbildnings definitionen *myImageDefinition* och är för en [GENERALISERAd](./linux/shared-image-galleries.md#generalized-and-specialized-images) Linux OS-avbildning. Använd om du vill skapa en definition för avbildningar med hjälp av ett Windows-operativsystem `--os-type Windows` . 
+I det här exemplet heter avbildnings definitionen *myImageDefinition* och är för en [GENERALISERAd](./shared-image-galleries.md#generalized-and-specialized-images) Linux OS-avbildning. Använd om du vill skapa en definition för avbildningar med hjälp av ett Windows-operativsystem `--os-type Windows` . 
 
 ```azurecli-interactive 
 resourceGroup=myGalleryRG

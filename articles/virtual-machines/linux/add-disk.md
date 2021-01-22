@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 9520196c8dce9ea511c2f3b799bd12b34c6f988f
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: ad3a2ae9fd9a99398b384ef4e4a44820faccf8c7
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499755"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98675893"
 ---
 # <a name="add-a-disk-to-a-linux-vm"></a>Lägg till en disk till en virtuell Linux-dator
 
@@ -181,5 +181,5 @@ Det finns två sätt att aktivera TRIMNINGs stöd i din virtuella Linux-dator. S
 
 ## <a name="next-steps"></a>Nästa steg
 
-* För att säkerställa att din virtuella Linux-dator har kon figurer ATS korrekt kan du granska prestanda rekommendationerna [optimera dina Linux-datorer](optimization.md) .
+* För att säkerställa att din virtuella Linux-dator har kon figurer ATS korrekt kan du granska prestanda rekommendationerna [optimera dina Linux-datorer](/previous-versions/azure/virtual-machines/linux/optimization) .
 * Utöka lagrings kapaciteten genom att lägga till ytterligare diskar och [Konfigurera RAID](/previous-versions/azure/virtual-machines/linux/configure-raid) för ytterligare prestanda.

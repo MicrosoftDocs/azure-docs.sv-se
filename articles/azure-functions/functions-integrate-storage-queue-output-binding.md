@@ -5,12 +5,12 @@ ms.assetid: 0b609bc0-c264-4092-8e3e-0784dcc23b5d
 ms.topic: how-to
 ms.date: 04/24/2020
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 9c635b01bcd04bd03191fca2590b0189bad0f544
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d2821a16e0b72b32cc392b7ae626d782734458a6
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90982022"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98674209"
 ---
 # <a name="add-messages-to-an-azure-storage-queue-using-functions"></a>Lägga till meddelanden i en Azure Storage-kö med Functions
 
@@ -22,23 +22,23 @@ För att slutföra den här snabbstarten behöver du:
 
 - En Azure-prenumeration. Om du inte har ett konto kan du skapa ett [kostnads fritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
-- Följ anvisningarna i [Skapa din första funktion i Azure Portal](functions-create-first-azure-function.md) och utför inte steget **Rensa resurser**. Den här snabbstarten skapar funktionsappen och funktionen som du använder här.
+- Följ anvisningarna i [Skapa din första funktion i Azure Portal](./functions-get-started.md) och utför inte steget **Rensa resurser**. Den här snabbstarten skapar funktionsappen och funktionen som du använder här.
 
 ## <a name="add-an-output-binding"></a><a name="add-binding"></a>Lägga till en utdatabindning
 
 I det här avsnittet använder du portalens användargränssnitt för att lägga till en Queue Storage-utdatabindning till funktionen som du skapade tidigare. Den här bindningen gör det möjligt att skriva minimal kod för att skapa ett meddelande i en kö. Du behöver inte skriva kod för uppgifter som till exempel att öppna en lagringsanslutning, skapa en kö eller lägga till en referens i en kö. Azure Functions-körningen och utdatabindningen tar hand om de här aktiviteterna åt dig.
 
-1. Öppna sidan för funktionsappen som du skapade i [Skapa din första funktion i Azure Portal](functions-create-first-azure-function.md) på sidan för funktionsappar i Azure Portal. Öppna sidan genom att söka efter och välja **Funktionsapp**. Välj sedan din Function-app.
+1. Öppna sidan för funktionsappen som du skapade i [Skapa din första funktion i Azure Portal](./functions-get-started.md) på sidan för funktionsappar i Azure Portal. Öppna sidan genom att söka efter och välja **Funktionsapp**. Välj sedan din Function-app.
 
 1. Välj din Function-app och välj sedan den funktion som du skapade i den tidigare snabb starten.
 
-1. Välj **integrering**och välj sedan **+ Lägg till utdata**.
+1. Välj **integrering** och välj sedan **+ Lägg till utdata**.
 
    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/function-create-output-binding.png" alt-text="Skapa en utgående bindning för din funktion." border="true":::
 
 1. Välj typ av **Azure Queue Storage** -bindning och Lägg till inställningarna som anges i tabellen som följer den här skärm bilden: 
 
-    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/function-create-output-binding-details.png" alt-text="Skapa en utgående bindning för din funktion." border="true":::
+    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/function-create-output-binding-details.png" alt-text="Lägg till en Queue Storage-utdatabindning i en funktion på Azure Portal." border="true":::
     
     | Inställning      |  Föreslaget värde   | Beskrivning                              |
     | ------------ |  ------- | -------------------------------------------------- |
@@ -94,11 +94,11 @@ I det här avsnittet lägger du till kod som skriver ett meddelande till utdatak
 1. När kod ändringarna har sparats väljer du **test**.
 1. Bekräfta att testet matchar bilden nedan och välj **Kör**. 
 
-    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/functions-test-run-function.png" alt-text="Skapa en utgående bindning för din funktion." border="true":::
+    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/functions-test-run-function.png" alt-text="Testa bindningen för Queue Storage i Azure Portal." border="true":::
 
     Observera att **Begärandetexten** innehåller värdet `name`*Azure*. Värdet visas i kömeddelandet som skapas när funktionen anropas.
     
-    Som ett alternativ till att välja **Kör** här kan du anropa funktionen genom att ange en URL i en webbläsare och ange värdet `name` i frågesträngen. Webbläsarmetoden visas i den [tidigare snabbstarten](functions-create-first-azure-function.md#test-the-function).
+    Som ett alternativ till att välja **Kör** här kan du anropa funktionen genom att ange en URL i en webbläsare och ange värdet `name` i frågesträngen. Webbläsarmetoden visas i den [tidigare snabbstarten](./functions-get-started.md).
 
 1. Kontrollera i loggarna att funktionen har slutförts utan fel. 
 
@@ -109,19 +109,19 @@ En ny kö med namnet **outqueue** skapas i ditt lagringskonto av funktionskörni
 
 1. Gå till din Function-app och välj **konfiguration**.
 
-1. Under **program inställningar**väljer du **AzureWebJobsStorage**.
+1. Under **program inställningar** väljer du **AzureWebJobsStorage**.
 
-    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/function-find-storage-account.png" alt-text="Skapa en utgående bindning för din funktion." border="true":::
+    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/function-find-storage-account.png" alt-text="Skärm bild som visar konfigurations sidan med AzureWebJobsStorage valt." border="true":::
 
 1. Leta upp och anteckna konto namnet.
 
-    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/function-storage-account-name.png" alt-text="Skapa en utgående bindning för din funktion." border="true":::
+    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/function-storage-account-name.png" alt-text="Leta upp lagrings kontot som är anslutet till AzureWebJobsStorage." border="true":::
 
 ### <a name="examine-the-output-queue"></a>Granska utdatakö
 
 1. I resurs gruppen för din Function-app väljer du det lagrings konto som du använder för den här snabb starten.
 
-1. Under **kötjänst**väljer du **köer** och **väljer kön som heter kön**. 
+1. Under **kötjänst** väljer du **köer** och **väljer kön som heter kön**. 
 
    Kön innehåller meddelandet som köutdatabindningen skapade när du körde den HTTP-utlösta funktionen. Om du startade en funktion med standardvärdet `name` för *Azure* så är kömeddelandet *Name passed to the function: Azure* (Namn som skickats till funktionen: Azure).
 

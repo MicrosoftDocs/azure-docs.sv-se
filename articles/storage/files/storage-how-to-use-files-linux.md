@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: c271107b85e4903153c29b58aadadd37fb051b76
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 5161d8e169a7eb9e757dfbfa71fa697880e1806e
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96022572"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98673695"
 ---
 # <a name="use-azure-files-with-linux"></a>Använda Azure Files med Linux
 [Azure Files](storage-files-introduction.md) är Microsofts lättanvända filsystem i molnet. Azure-filresurser kan monteras i Linux-distributioner med [SMB-kernel-klienten](https://wiki.samba.org/index.php/LinuxCIFS). Den här artikeln visar två sätt att montera en Azure-fil resurs: på begäran med `mount` kommandot och i start genom att skapa en post i `/etc/fstab` .
@@ -59,7 +59,7 @@ uname -r
     sudo yum install cifs-utils 
     ```
 
-    Använd **openSUSE** Package Manager på openSUSE `zypper` :
+    Använd Package Manager på openSUSE `zypper` :
 
     ```bash
     sudo zypper install cifs-utils
@@ -67,7 +67,7 @@ uname -r
 
     Använd lämplig paket hanterare eller [kompilera från källa](https://wiki.samba.org/index.php/LinuxCIFS_utils#Download) för andra distributioner
 
-* **Den senaste versionen av kommando rads gränssnittet för Azure (CLI).** Mer information om hur du installerar Azure CLI finns i [Installera Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) och välj operativ system. Om du föredrar att använda Azure PowerShell-modulen i PowerShell 6 + kan du se till att anvisningarna nedan visas för Azure CLI.
+* **Den senaste versionen av kommando rads gränssnittet för Azure (CLI).** Mer information om hur du installerar Azure CLI finns i [Installera Azure CLI](/cli/azure/install-azure-cli) och välj operativ system. Om du föredrar att använda Azure PowerShell-modulen i PowerShell 6 + kan du se till att anvisningarna nedan visas för Azure CLI.
 
 * **Se till att port 445 är öppen**: SMB kommunicerar via TCP-port 445 – kontrol lera om brand väggen inte blockerar TCP-portarna 445 från klient datorn.  Ersätt `<your-resource-group>` och `<your-storage-account>` kör sedan följande skript:
     ```bash
@@ -87,7 +87,7 @@ uname -r
 
     Om anslutningen lyckades ser du något som liknar följande utdata:
 
-    ```
+    ```ouput
     Connection to <your-storage-account> 445 port [tcp/microsoft-ds] succeeded!
     ```
 
@@ -215,7 +215,7 @@ När du är färdig med Azure-filresursen kan du använda `sudo umount $mntPath`
     ```bash
     sudo yum install autofs 
     ```
-    Använd **openSUSE** Package Manager på openSUSE `zypper` :
+    Använd Package Manager på openSUSE `zypper` :
     ```bash
     sudo zypper install autofs
     ```

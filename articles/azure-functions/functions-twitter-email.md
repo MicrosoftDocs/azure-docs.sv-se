@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 04/27/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, mvc, cc996988-fb4f-47
-ms.openlocfilehash: feb6b36f8e5e7bbec83d8882552484f68abfd56d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5750597d7d4d372be975aa64ce8db11859791da2
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91537760"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98674325"
 ---
 # <a name="create-a-function-that-integrates-with-azure-logic-apps"></a>Skapa en funktion som kan integreras med Azure Logic Apps
 
@@ -22,7 +22,7 @@ Den här självstudien visar hur du använder Azure Functions med Logic Apps och
 
 ![bild på de första två stegen för en app i Logikappdesignern](media/functions-twitter-email/00-logic-app-overview.png)
 
-I den här guiden får du lära dig att:
+I de här självstudierna får du lära dig att
 
 > [!div class="checklist"]
 > * Skapa en API-resurs för Cognitive Services.
@@ -32,7 +32,7 @@ I den här guiden får du lära dig att:
 > * Anslut logikappen till funktionen.
 > * Skicka ett e-postmeddelande baserat på svar från funktionen.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 + Ett aktivt [Twitter](https://twitter.com/)-konto. 
 + Ett [Outlook.com](https://outlook.com/)-konto (för att skicka meddelanden).
@@ -40,7 +40,7 @@ I den här guiden får du lära dig att:
 > [!NOTE]
 > Om du vill använda Gmail Connector kan endast företags konton i G-Suite använda den här anslutningen utan begränsningar i Logic Apps. Om du har ett Gmail-konto kan du använda Gmail-anslutningen med endast vissa Google-godkända appar och tjänster, eller så kan du [skapa en Google-klient som används för autentisering i Gmail-anslutningen](/connectors/gmail/#authentication-and-bring-your-own-application). Mer information finns i [principer för data säkerhet och sekretess för Google Connectors i Azure Logic Apps](../connectors/connectors-google-data-security-privacy-policy.md).
 
-+ För den här artikeln förutsätts de resurser som skapades i avsnittet om hur du [skapar din första funktion i Azure-portalen](functions-create-first-azure-function.md).
++ För den här artikeln förutsätts de resurser som skapades i avsnittet om hur du [skapar din första funktion i Azure-portalen](./functions-get-started.md).
 Om du inte redan har gjort detta måste du slutföra stegen för att skapa din funktionsapp.
 
 ## <a name="create-a-cognitive-services-resource"></a>Skapa en -resurs för Cognitive Services
@@ -80,13 +80,13 @@ Azure Functions är ett bra sätt att avlasta bearbetnings uppgifter i ett Logic
 
 ## <a name="create-an-http-trigger-function"></a>Skapa en HTTP-utlösnings funktion  
 
-1. På den vänstra menyn i fönstret **funktioner** väljer du **Functions**och väljer sedan **Lägg till** på den översta menyn.
+1. På den vänstra menyn i fönstret **funktioner** väljer du **Functions** och väljer sedan **Lägg till** på den översta menyn.
 
-2. Välj **http-utlösare**i fönstret **ny funktion** .
+2. Välj **http-utlösare** i fönstret **ny funktion** .
 
     ![Välj funktionen HTTP-utlösare](./media/functions-twitter-email/06-function-http-trigger.png)
 
-3. Välj **skapa funktion**på sidan **ny funktion** .
+3. Välj **skapa funktion** på sidan **ny funktion** .
 
 4. I den nya funktionen HTTP-utlösare väljer du **kod + test** på den vänstra menyn, ersätter innehållet i `run.csx` filen med följande kod och väljer sedan **Spara**:
 
@@ -126,7 +126,7 @@ Azure Functions är ett bra sätt att avlasta bearbetnings uppgifter i ett Logic
 
     Den här funktionskoden returnerar en färgkategori baserat på sentimentets poäng från begäran. 
 
-5. Om du vill testa funktionen väljer du **test** på den översta menyn. Ange ett värde i bröd texten på fliken **inmatare** `0.2` och välj sedan **Kör**. **Body** Värdet **röd** returneras i **http-svarets innehåll** på fliken **utdata** . 
+5. Om du vill testa funktionen väljer du **test** på den översta menyn. Ange ett värde i bröd texten på fliken **inmatare** `0.2` och välj sedan **Kör**.  Värdet **röd** returneras i **http-svarets innehåll** på fliken **utdata** . 
 
     :::image type="content" source="./media/functions-twitter-email/07-function-test.png" alt-text="Definiera proxyinställningarna":::
 
@@ -239,7 +239,7 @@ Den sista delen av arbetsflödet är att utlösa ett e-postmeddelande när senti
     
 | Inställning      |  Föreslaget värde   | Beskrivning  |
 | ----------------- | ------------ | ------------- |
-| **Om du vill** | Skriv din e-postadress | E-postadressen som tar emot ett meddelande. |
+| **Till** | Skriv din e-postadress | E-postadressen som tar emot ett meddelande. |
 | **Ämne** | Negativt tweetsentiment identifierat  | E-postmeddelandets ämnesrad.  |
 | **Brödtext** | Tweet-text, plats | Klicka på parametrarna **Tweet-text** och **Plats**. |
 

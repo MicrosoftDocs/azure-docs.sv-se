@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 12/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ed477a931ed63c0db378ff84f85544072492ef96
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: 644192de74a888daa0391b31dd42eb6028403fd8
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97387045"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98674482"
 ---
 # <a name="azure-ad-b2c-custom-policy-overview"></a>Översikt över Azure AD B2C anpassad princip
 
@@ -53,7 +53,7 @@ När principen körs skickar Azure AD B2C och tar emot anspråk till och från i
 
 ### <a name="customize-and-localize-your-ui"></a>Anpassa och lokalisera ditt användar gränssnitt
 
-När du vill samla in information från användarna genom att presentera en sida i webbläsaren använder du den [självkontrollerade tekniska profilen](self-asserted-technical-profile.md). Du kan redigera din självkontrollerade tekniska profil för att [lägga till anspråk och anpassa användarindata](custom-policy-configure-user-input.md).
+När du vill samla in information från användarna genom att presentera en sida i webbläsaren använder du den [självkontrollerade tekniska profilen](self-asserted-technical-profile.md). Du kan redigera din självkontrollerade tekniska profil för att [lägga till anspråk och anpassa användarindata](./configure-user-input.md).
 
 Om du vill [Anpassa användar gränssnittet](customize-ui-with-html.md) för din självkontrollerade tekniska profil anger du en URL i [innehålls definitions](contentdefinitions.md) elementet med anpassat HTML-innehåll. I den självkontrollerade tekniska profilen pekar du på det här innehålls Definitions-ID: t.
 
@@ -133,11 +133,11 @@ I en Azure AD B2C anpassad princip kan du integrera din egen affärs logik för 
 
 - Skapa din logik i **tilläggs principen** eller principen för **vidarebefordrande parter**. Du kan lägga till nya element som åsidosätter bas principen genom att referera till samma ID. På så sätt kan du skala ut projektet samtidigt som du gör det lättare att uppgradera grund principen senare om Microsoft släpper nya start paket.
 - I **bas principen** rekommenderar vi starkt att du gör ändringar.  Vid behov kan du göra kommentarer där ändringarna görs.
-- När du åsidosätter ett element, till exempel tekniska metadata för teknisk profil, bör du undvika att kopiera hela den tekniska profilen från bas principen. Kopiera i stället bara det obligatoriska avsnittet i-elementet. Se [inaktivera e-postverifiering](custom-policy-disable-email-verification.md) för ett exempel på hur du gör ändringen.
+- När du åsidosätter ett element, till exempel tekniska metadata för teknisk profil, bör du undvika att kopiera hela den tekniska profilen från bas principen. Kopiera i stället bara det obligatoriska avsnittet i-elementet. Se [inaktivera e-postverifiering](./disable-email-verification.md) för ett exempel på hur du gör ändringen.
 - Om du vill minska dubbleringen av tekniska profiler, där kärn funktioner delas, använder du [teknisk profil inkludering](technicalprofiles.md#include-technical-profile).
 - Undvik att skriva till Azure AD-katalogen under inloggningen, vilket kan leda till problem med begränsningen.
 - Om principen har externa beroenden, t. ex. REST API se till att de är hög tillgängliga.
-- För en bättre användar upplevelse ser du till att dina anpassade HTML-mallar är globalt distribuerade med [innehålls leverans online](https://docs.microsoft.com/azure/cdn/). Med Azure Content Delivery Network (CDN) kan du minska inläsnings tider, spara bandbredd och snabba svars tider.
+- För en bättre användar upplevelse ser du till att dina anpassade HTML-mallar är globalt distribuerade med [innehålls leverans online](../cdn/index.yml). Med Azure Content Delivery Network (CDN) kan du minska inläsnings tider, spara bandbredd och snabba svars tider.
 - Om du vill göra en ändring i användar resan. Kopiera hela användar resan från bas principen till tilläggs principen. Ange ett unikt användar resa-ID för användar resan som du har kopierat. I principen för [förlitande part](relyingparty.md)ändrar du sedan [standard användar transport](relyingparty.md#defaultuserjourney) elementet så att det pekar på den nya användar resan.
 
 ## <a name="troubleshooting"></a>Felsökning
@@ -168,9 +168,9 @@ Du kommer igång med Azure AD B2C anpassad princip:
 
 När du har konfigurerat och testat din Azure AD B2C-princip kan du börja anpassa principen. Gå igenom följande artiklar om du vill lära dig att:
 
-- [Lägg till anspråk och anpassa användarindata](custom-policy-configure-user-input.md) med anpassade principer. Lär dig hur du definierar ett anspråk, lägger till ett anspråk i användar gränssnittet genom att anpassa några av de tekniska profilerna för start paket.
+- [Lägg till anspråk och anpassa användarindata](./configure-user-input.md) med anpassade principer. Lär dig hur du definierar ett anspråk, lägger till ett anspråk i användar gränssnittet genom att anpassa några av de tekniska profilerna för start paket.
 - Anpassa ditt programs [användar gränssnitt](customize-ui-with-html.md) med hjälp av en anpassad princip. Lär dig hur du skapar ett eget HTML-innehåll och anpassar innehålls definitionen.
-- [Lokalisera användar gränssnittet](custom-policy-localization.md) för ditt program med hjälp av en anpassad princip. Lär dig hur du konfigurerar en lista över språk som stöds och tillhandahåller språkspecifika etiketter genom att lägga till det lokaliserade resurs elementet.
-- Under din policy utveckling och testning kan du [inaktivera e-postverifiering](custom-policy-disable-email-verification.md). Lär dig hur du skriver över en teknisk profils metadata.
-- [Konfigurera inloggning med ett Google-konto](identity-provider-google-custom.md) med anpassade principer. Lär dig hur du skapar en ny anspråks leverantör med OAuth2 Technical Profile. Anpassa sedan användar resan till att inkludera alternativet Google-inloggning.
+- [Lokalisera användar gränssnittet](./language-customization.md) för ditt program med hjälp av en anpassad princip. Lär dig hur du konfigurerar en lista över språk som stöds och tillhandahåller språkspecifika etiketter genom att lägga till det lokaliserade resurs elementet.
+- Under din policy utveckling och testning kan du [inaktivera e-postverifiering](./disable-email-verification.md). Lär dig hur du skriver över en teknisk profils metadata.
+- [Konfigurera inloggning med ett Google-konto](./identity-provider-google.md) med anpassade principer. Lär dig hur du skapar en ny anspråks leverantör med OAuth2 Technical Profile. Anpassa sedan användar resan till att inkludera alternativet Google-inloggning.
 - För att diagnosticera problem med dina anpassade principer kan du [samla in Azure Active Directory B2C loggar med Application Insights](troubleshoot-with-application-insights.md). Lär dig hur du lägger till nya tekniska profiler och hur du konfigurerar policyn för vidarebefordrande parter.

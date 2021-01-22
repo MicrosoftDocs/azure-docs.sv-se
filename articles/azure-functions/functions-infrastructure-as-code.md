@@ -5,12 +5,12 @@ ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: dbb380dca231f75f6d6e77676c9059ef3762dac5
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 4b649942a52c51aef0d6edd17b913f75e1fb247b
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98050943"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98674175"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Automatisera resurs distributionen för din Function-app i Azure Functions
 
@@ -28,8 +28,8 @@ En Azure Functions distribution består vanligt vis av följande resurser:
 
 | Resurs                                                                           | Krav | Syntax och egenskaper-referens                                                         |
 |------------------------------------------------------------------------------------|-------------|-----------------------------------------------------------------------------------------|
-| En Function-app                                                                     | Krävs    | [Microsoft. Web/Sites](/azure/templates/microsoft.web/sites)                             |
-| Ett [Azure Storage](../storage/index.yml) konto                                   | Krävs    | [Microsoft. Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |
+| En Function-app                                                                     | Obligatorisk    | [Microsoft. Web/Sites](/azure/templates/microsoft.web/sites)                             |
+| Ett [Azure Storage](../storage/index.yml) konto                                   | Obligatorisk    | [Microsoft. Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |
 | En [Application Insights](../azure-monitor/app/app-insights-overview.md) -komponent | Valfritt    | [Microsoft. Insights/komponenter](/azure/templates/microsoft.insights/components)         |
 | En [värd plan](./functions-scale.md)                                             | Valfria<sup>1</sup>    | [Microsoft. Web/Server grupper](/azure/templates/microsoft.web/serverfarms)                 |
 
@@ -112,7 +112,7 @@ Dessutom måste instrument ställnings nyckeln tillhandahållas till Function-ap
 Definitionen av värd planen varierar och kan vara något av följande:
 * [Förbruknings plan](#consumption) (standard)
 * [Premiumplan](#premium)
-* [App Service plan](#app-service-plan)
+* [App Service-plan](#app-service-plan)
 
 ### <a name="function-app"></a>Funktionsapp
 
@@ -137,7 +137,7 @@ Function app-resursen definieras genom att använda en resurs av typen **Microso
 
 En Function-app måste innehålla följande program inställningar:
 
-| Inställningsnamn                 | Beskrivning                                                                               | Exempelvärden                        |
+| Inställningsnamn                 | Description                                                                               | Exempelvärden                        |
 |------------------------------|-------------------------------------------------------------------------------------------|---------------------------------------|
 | AzureWebJobsStorage          | En anslutnings sträng till ett lagrings konto som Functions runtime använder för intern kö | Se [lagrings konto](#storage)       |
 | FUNCTIONS_EXTENSION_VERSION  | Versionen av Azure Functions runtime                                                | `~3`                                  |
@@ -692,7 +692,7 @@ Lär dig mer om hur du utvecklar och konfigurerar Azure Functions.
 
 * [Azure Functions, info för utvecklare](functions-reference.md)
 * [Så här konfigurerar du inställningar för Azure Function-appar](functions-how-to-use-azure-function-app-settings.md)
-* [Skapa din första Azure-funktion](functions-create-first-azure-function.md)
+* [Skapa din första Azure-funktion](./functions-get-started.md)
 
 <!-- LINKS -->
 

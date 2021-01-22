@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/10/2020
 ms.author: kenwith
-ms.openlocfilehash: 012038399796a0f2dc87acfb350043542268379a
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: efdbec10c74a6b1892df13b8308538e61f42f679
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96936989"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98673509"
 ---
 # <a name="tutorial---customize-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Självstudie – anpassa användar etablering attribut-mappningar för SaaS-program i Azure Active Directory
 
@@ -115,7 +115,7 @@ Program och system som stöder anpassning av attributlistan är:
 
 
 > [!NOTE]
-> Redigering av listan över attribut som stöds rekommenderas endast för administratörer som har anpassat schemat för sina program och system, och som har första kunskap om hur deras egna attribut har definierats. Detta kräver ibland välbekanthet med de API: er och utvecklingsverktyg som tillhandahålls av ett program eller system. Möjligheten att redigera listan över attribut som stöds är låst som standard, men kunder kan aktivera funktionen genom att gå till följande URL: https://portal.azure.com/?Microsoft_AAD_IAM_forceSchemaEditorEnabled=true . Du kan sedan navigera till programmet för att Visa attributlistan enligt beskrivningen [ovan](https://docs.microsoft.com/azure/active-directory/app-provisioning/customize-application-attributes#editing-the-list-of-supported-attributes). 
+> Redigering av listan över attribut som stöds rekommenderas endast för administratörer som har anpassat schemat för sina program och system, och som har första kunskap om hur deras egna attribut har definierats. Detta kräver ibland välbekanthet med de API: er och utvecklingsverktyg som tillhandahålls av ett program eller system. Möjligheten att redigera listan över attribut som stöds är låst som standard, men kunder kan aktivera funktionen genom att gå till följande URL: https://portal.azure.com/?Microsoft_AAD_IAM_forceSchemaEditorEnabled=true . Du kan sedan navigera till programmet för att Visa attributlistan enligt beskrivningen [ovan](#editing-the-list-of-supported-attributes). 
 
 När du redigerar listan över attribut som stöds anges följande egenskaper:
 
@@ -128,7 +128,7 @@ När du redigerar listan över attribut som stöds anges följande egenskaper:
   - *Reference* -Attribute innehåller ett ID som refererar till ett värde som lagras i en annan tabell i mål programmet.
   - *String*  -Attribute innehåller en text sträng.
 - **Primär nyckel?** – Anger om attributet definieras som ett primär nyckel fält i målobjektets schema.
-- **Kunna?** – Anger om attributet måste fyllas i mål programmet eller systemet.
+- **Krävs?** – Anger om attributet måste fyllas i mål programmet eller systemet.
 - **Flera värden?** – Anger om attributet stöder flera värden.
 - **Exakt fall?** – Om attributvärdena utvärderas på ett skift läges känsligt sätt.
 - **API-uttryck** – Använd inte, om det inte instrueras att göra det i dokumentationen för en speciell etablerings anslutning (till exempel Workday).

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 11/23/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 19aa847ce7ce1a6ba727a4733aefcdfad845e8c6
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 282ec6a25dc381dc51f28534d272bae57d2e792e
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97629399"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98675001"
 ---
 # <a name="tutorial-to-configure-nevis-with-azure-active-directory-b2c-for-passwordless-authentication"></a>Självstudie för att konfigurera Nevis med Azure Active Directory B2C för lösen ords lös autentisering
 
@@ -30,9 +30,9 @@ För att komma igång behöver du:
 
 - En Azure AD-prenumeration. Om du inte har något kan du skaffa ett [kostnads fritt konto](https://azure.microsoft.com/free/).
 
-- En [Azure AD B2C klient](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant) som är länkad till din Azure-prenumeration.
+- En [Azure AD B2C klient](./tutorial-create-tenant.md) som är länkad till din Azure-prenumeration.
 
-- Konfigurerat Azure AD B2Cs miljö för att använda [anpassade principer](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started), om du vill integrera Nevis i ditt registrerings princip flöde.
+- Konfigurerat Azure AD B2Cs miljö för att använda [anpassade principer](./custom-policy-get-started.md), om du vill integrera Nevis i ditt registrerings princip flöde.
 
 ## <a name="scenario-description"></a>Scenariobeskrivning
 
@@ -46,7 +46,7 @@ I diagrammet visas implementeringen.
 
 ![Inloggnings flöde för lösen ord på hög nivå med Azure AD B2C och Nevis](./media/partner-nevis/nevis-architecture-diagram.png)
 
-|Steg | Beskrivning |
+|Steg | Description |
 |:-----| :-----------|
 | 1. | En användare försöker logga in eller registrera sig för ett program via Azure AD B2C inloggnings-och registrerings princip.
 | 2. | Under registreringen registreras Nevis-appen till användar enheten med hjälp av en QR-kod. En privat nyckel genereras på användarens enhet och används för att signera användar förfrågningar.
@@ -134,9 +134,9 @@ Du får två e-postmeddelanden:
 
 4. **Spara** ändringarna i filen.
 
-5. Följ [anvisningarna](https://docs.microsoft.com/azure/active-directory-b2c/customize-ui-with-html#2-create-an-azure-blob-storage-account) och ladda upp **nevis.html** -filen till Azure Blob Storage.
+5. Följ [anvisningarna](./customize-ui-with-html.md#2-create-an-azure-blob-storage-account) och ladda upp **nevis.html** -filen till Azure Blob Storage.
 
-6. Följ [instruktionerna](https://docs.microsoft.com/azure/active-directory-b2c/customize-ui-with-html#3-configure-cors) och aktivera resurs delning mellan ursprung (CORS) för den här filen.
+6. Följ [instruktionerna](./customize-ui-with-html.md#3-configure-cors) och aktivera resurs delning mellan ursprung (CORS) för den här filen.
 
 7. När uppladdningen är klar och CORS har Aktiver ATS, väljer du **nevis.html** -filen i listan.
 
@@ -268,6 +268,6 @@ Du får två e-postmeddelanden:
 
 Mer information finns i följande artiklar
 
-- [Anpassade principer i Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
+- [Anpassade principer i Azure AD B2C](./custom-policy-overview.md)
 
-- [Kom igång med anpassade principer i Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications)
+- [Kom igång med anpassade principer i Azure AD B2C](./custom-policy-get-started.md?tabs=applications)

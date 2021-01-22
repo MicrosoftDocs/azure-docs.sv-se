@@ -9,16 +9,16 @@ ms.subservice: sql-dw
 ms.date: 07/10/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 25c692ea9a2dce4723472f6812ac46d82b2b318d
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 1551e85bd45d4d64861b43bf53dd0c155520861f
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98120996"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98673645"
 ---
 # <a name="securely-load-data-using-synapse-sql"></a>Läs in data på ett säkert sätt med Synapse SQL
 
-Den här artikeln beskriver och innehåller exempel på mekanismer för säker autentisering för [kopierings instruktionen](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest). KOPIERINGs instruktionen är det mest flexibla och säkra sättet för Mass inläsning av data i Synapse SQL.
+Den här artikeln beskriver och innehåller exempel på mekanismer för säker autentisering för [kopierings instruktionen](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true). KOPIERINGs instruktionen är det mest flexibla och säkra sättet för Mass inläsning av data i Synapse SQL.
 ## <a name="supported-authentication-mechanisms"></a>Autentiseringsmekanismer som stöds
 
 I följande matris beskrivs de autentiseringsmetoder som stöds för varje filtyp och lagrings konto. Detta gäller för käll lagrings platsen och fel filens plats.
@@ -176,5 +176,5 @@ Hanterad identitets autentisering krävs när ditt lagrings konto är kopplat ti
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Mer information finns i artikeln om att [Kopiera instruktionen](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest#syntax)
+- Mer information finns i artikeln om att [Kopiera instruktionen](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true#syntax)
 - Läs artikeln [Översikt över data inläsning](./design-elt-data-loading.md#what-is-elt) för att läsa in metod tips

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 2f383876963e3e1d310e7d93f7dc99bb58b189d3
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 78b0cbbdccc7d6853d4ce2821bf659e888680a5f
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97681658"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98674651"
 ---
 # <a name="create-a-data-source-android-sdk"></a>Skapa en data källa (Android SDK)
 
@@ -355,10 +355,10 @@ En vektor panels källa beskriver hur du får åtkomst till ett vektor panels la
 
 Azure Maps följer [specifikationen Mapbox Vector panel](https://github.com/mapbox/vector-tile-spec), en öppen standard. Azure Maps tillhandahåller följande tjänster för vektor paneler som en del av plattformen:
 
-- Information om [](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview)  |  [data format](https://developer.tomtom.com/maps-api/maps-api-documentation-vector/tile) för Road panels dokumentation
-- Information om trafik incidenter [dokumentation](https://docs.microsoft.com/rest/api/maps/traffic/gettrafficincidenttile)  |  [data format](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-incidents/vector-incident-tiles)
-- [](https://docs.microsoft.com/rest/api/maps/traffic/gettrafficflowtile)  |  [Information om data format](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-flow/vector-flow-tiles) för trafikflödets dokumentation
-- Med Azure Maps Creator kan du också skapa och få till gång till anpassade vektor paneler via [Get panel rendering v2](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview)
+- Information om [](/rest/api/maps/renderv2/getmaptilepreview)  |  [data format](https://developer.tomtom.com/maps-api/maps-api-documentation-vector/tile) för Road panels dokumentation
+- Information om trafik incidenter [dokumentation](/rest/api/maps/traffic/gettrafficincidenttile)  |  [data format](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-incidents/vector-incident-tiles)
+- [](/rest/api/maps/traffic/gettrafficflowtile)  |  [Information om data format](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-flow/vector-flow-tiles) för trafikflödets dokumentation
+- Med Azure Maps Creator kan du också skapa och få till gång till anpassade vektor paneler via [Get panel rendering v2](/rest/api/maps/renderv2/getmaptilepreview)
 
 Om du vill visa data från en vektor panels källa på kartan ansluter du källan till en av data åter givnings skikten. Alla lager som använder en Vector-källa måste ange ett `sourceLayer` värde i alternativen. Följande kod läser in tjänsten Azure Maps Traffic Flow Vector panel som en vektor panels källa. därefter visas den på en karta med ett linje lager. Den här vektor panels källan har en enda uppsättning data i käll skiktet som kallas "trafikflöde". Rad data i den här data uppsättningen har en egenskap `traffic_level` som kallas som används i den här koden för att välja färg och skala storleken på linjerna.
 
@@ -523,4 +523,4 @@ Se följande artiklar för fler kod exempel som du kan lägga till i dina kartor
 > [Lägg till en värme karta](map-add-heat-map-layer-android.md)
 
 > [!div class="nextstepaction"]
-> [Kod exempel för webb-SDK](https://docs.microsoft.com/samples/browse/?products=azure-maps)
+> [Kod exempel för webb-SDK](/samples/browse/?products=azure-maps)

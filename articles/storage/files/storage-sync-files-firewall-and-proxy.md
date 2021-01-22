@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: cffa6b1200b7236b3c0a3e48b50c58275cf4c57b
-ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
+ms.openlocfilehash: 01ac42cce29f941a90631936ece025f02afedeaf
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95316628"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98673628"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Inställningar för Azure File Sync-proxy och brandväggar
 Azure File Sync ansluter dina lokala servrar till Azure Files, vilket möjliggör synkronisering av flera platser och moln nivåer. En lokal server måste därför vara ansluten till Internet. En IT-administratör måste bestämma den bästa sökvägen för att servern ska kunna komma åt Azure Cloud Services.
@@ -129,14 +129,16 @@ För affärs kontinuitet och haveri beredskap (BCDR) kan du ha angett Azure-filr
 | Offentliga | Sydkorea, centrala | https: \/ /koreacentral01.AFS.Azure.net/ | Sydkorea, södra | https: \/ /TM-koreacentral01.AFS.Azure.net/ |
 | Offentliga | Sydkorea, södra | https: \/ /koreasouth01.AFS.Azure.net/ | Sydkorea, centrala | https: \/ /TM-koreasouth01.AFS.Azure.net/ |
 | Offentliga | USA, norra centrala | https: \/ /northcentralus01.AFS.Azure.net | USA, södra centrala | https: \/ /TM-northcentralus01.AFS.Azure.net |
-| Offentliga | Norra Europa | https: \/ /northeurope01.AFS.Azure.net<br>https: \/ /kailani7.One.Microsoft.com | Europa, västra | https: \/ /TM-northeurope01.AFS.Azure.net<br>https: \/ /TM-kailani7.One.Microsoft.com |
+| Offentliga | Europa, norra | https: \/ /northeurope01.AFS.Azure.net<br>https: \/ /kailani7.One.Microsoft.com | Europa, västra | https: \/ /TM-northeurope01.AFS.Azure.net<br>https: \/ /TM-kailani7.One.Microsoft.com |
 | Offentliga | USA, södra centrala | https: \/ /southcentralus01.AFS.Azure.net | USA, norra centrala | https: \/ /TM-southcentralus01.AFS.Azure.net |
 | Offentliga | Indien, södra | https: \/ /southindia01.AFS.Azure.net<br>https: \/ /Kailani-sin.One.Microsoft.com | Indien, centrala | https: \/ /TM-southindia01.AFS.Azure.net<br>https: \/ /TM-Kailani-sin.One.Microsoft.com |
 | Offentliga | Sydostasien | https: \/ /southeastasia01.AFS.Azure.net<br>https: \/ /kailani10.One.Microsoft.com | Asien, östra | https: \/ /TM-southeastasia01.AFS.Azure.net<br>https: \/ /TM-kailani10.One.Microsoft.com |
+| Offentliga | Schweiz, norra | https: \/ /switzerlandnorth01.AFS.Azure.net<br>https: \/ /TM-switzerlandnorth01.AFS.Azure.net | Schweiz, västra | https: \/ /switzerlandwest01.AFS.Azure.net<br>https: \/ /TM-switzerlandwest01.AFS.Azure.net |
+| Offentliga | Schweiz, västra | https: \/ /switzerlandwest01.AFS.Azure.net<br>https: \/ /TM-switzerlandwest01.AFS.Azure.net | Schweiz, norra | https: \/ /switzerlandnorth01.AFS.Azure.net<br>https: \/ /TM-switzerlandnorth01.AFS.Azure.net |
 | Offentliga | Storbritannien, södra | https: \/ /uksouth01.AFS.Azure.net<br>https: \/ /Kailani-UKS.One.Microsoft.com | Storbritannien, västra | https: \/ /TM-uksouth01.AFS.Azure.net<br>https: \/ /TM-Kailani-UKS.One.Microsoft.com |
 | Offentliga | Storbritannien, västra | https: \/ /ukwest01.AFS.Azure.net<br>https: \/ /Kailani-UKW.One.Microsoft.com | Storbritannien, södra | https: \/ /TM-ukwest01.AFS.Azure.net<br>https: \/ /TM-Kailani-UKW.One.Microsoft.com |
 | Offentliga | USA, västra centrala | https: \/ /westcentralus01.AFS.Azure.net | USA, västra 2 | https: \/ /TM-westcentralus01.AFS.Azure.net |
-| Offentliga | Europa, västra | https: \/ /westeurope01.AFS.Azure.net<br>https: \/ /kailani6.One.Microsoft.com | Norra Europa | https: \/ /TM-westeurope01.AFS.Azure.net<br>https: \/ /TM-kailani6.One.Microsoft.com |
+| Offentliga | Europa, västra | https: \/ /westeurope01.AFS.Azure.net<br>https: \/ /kailani6.One.Microsoft.com | Europa, norra | https: \/ /TM-westeurope01.AFS.Azure.net<br>https: \/ /TM-kailani6.One.Microsoft.com |
 | Offentliga | USA, västra | https: \/ /westus01.AFS.Azure.net<br>https: \/ /Kailani.One.Microsoft.com | East US | https: \/ /TM-westus01.AFS.Azure.net<br>https: \/ /TM-Kailani.One.Microsoft.com |
 | Offentliga | USA, västra 2 | https: \/ /westus201.AFS.Azure.net | USA, västra centrala | https: \/ /TM-westus201.AFS.Azure.net |
 | Myndigheter | US Gov, Arizona | https: \/ /usgovarizona01.AFS.Azure.us | US Gov, Texas | https: \/ /TM-usgovarizona01.AFS.Azure.us |

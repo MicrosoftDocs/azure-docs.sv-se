@@ -5,12 +5,12 @@ ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: conceptual
 ms.date: 11/17/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 0b32efe3738dedbe8178889b3e9008964d485b00
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: 3e99b156d220b4c24a368886b1c0ca0813ffdc51
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98034925"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98674141"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions JavaScript-guide för utvecklare
 
@@ -201,7 +201,7 @@ module.exports = (context) => {
 
 Kontexten som skickas till funktionen exponerar en `executionContext` egenskap, som är ett objekt med följande egenskaper:
 
-| Egenskapsnamn  | Typ  | Beskrivning |
+| Egenskapsnamn  | Typ  | Description |
 |---------|---------|---------|
 | `invocationId` | Sträng | Innehåller en unik identifierare för det specifika funktions anropet. |
 | `functionName` | Sträng | Anger namnet på den aktiva funktionen |
@@ -567,7 +567,7 @@ Lägg till dina egna miljövariabler i en Function-app i både lokala och molnba
 
 ### <a name="in-local-development-environment"></a>I lokal utvecklings miljö
 
-När du kör lokalt, innehåller Functions-projektet en [ `local.settings.json` fil](/azure/azure-functions/functions-run-local)där du lagrar miljövariablerna i `Values` objektet. 
+När du kör lokalt, innehåller Functions-projektet en [ `local.settings.json` fil](./functions-run-local.md)där du lagrar miljövariablerna i `Values` objektet. 
 
 ```json
 {
@@ -688,7 +688,7 @@ TypeScript-filer (. TS) är destaplade i JavaScript-filer (. js) i `dist` utdata
 
 Hur du utvecklar och distribuerar lokalt från ett TypeScript-projekt beror på ditt utvecklingsverktyg.
 
-### <a name="visual-studio-code"></a>Visual Studio-koden
+### <a name="visual-studio-code"></a>Visuell Studio-kod
 
 Med [Azure Functions för kod tillägget för Visual Studio](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) kan du utveckla dina funktioner med typescript. Kärn verktygen är ett krav i Azure Functions-tillägget.
 

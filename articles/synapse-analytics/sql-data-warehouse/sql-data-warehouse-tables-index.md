@@ -11,12 +11,12 @@ ms.date: 03/18/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: fea314d595fb39a1e35dec8ab24533ad4b893f98
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: fabbdf330d43737ffa85379f9cc4d5ac59c4a734
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96448073"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98673526"
 ---
 # <a name="indexing-dedicated-sql-pool-tables-in-azure-synapse-analytics"></a>Indexera dedikerade SQL pool tabeller i Azure Synapse Analytics
 
@@ -24,9 +24,9 @@ Rekommendationer och exempel för indexering av tabeller i dedikerad SQL-pool.
 
 ## <a name="index-types"></a>Indextyper
 
-Dedikerad SQL-pool erbjuder flera indexerings alternativ, inklusive [grupperade columnstore-index](/sql/relational-databases/indexes/columnstore-indexes-overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), [grupperade index och icke-grupperade index](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)och ett icke-index-alternativ som också kallas [heap](/sql/relational-databases/indexes/heaps-tables-without-clustered-indexes?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).  
+Dedikerad SQL-pool erbjuder flera indexerings alternativ, inklusive [grupperade columnstore-index](/sql/relational-databases/indexes/columnstore-indexes-overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true), [grupperade index och icke-grupperade index](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)och ett icke-index-alternativ som också kallas [heap](/sql/relational-databases/indexes/heaps-tables-without-clustered-indexes?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).  
 
-Information om hur du skapar en tabell med ett index finns i dokumentationen för [CREATE TABLE (dedikerad SQL-pool)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) .
+Information om hur du skapar en tabell med ett index finns i dokumentationen för [CREATE TABLE (dedikerad SQL-pool)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) .
 
 ## <a name="clustered-columnstore-indexes"></a>Grupperade columnstore-index
 
@@ -230,7 +230,7 @@ EXEC sp_addrolemember 'xlargerc', 'LoadUser'
 
 Logga in som användaren från steg 1 (t. ex. LoadUser), som nu använder en högre resurs klass och kör ALTER INDEX-instruktionerna. Se till att användaren har behörigheten Ändra för tabellerna där indexet återskapas. I de här exemplen visas hur du återskapar hela columnstore-indexet eller hur du återskapar en enda partition. I stora tabeller är det mer praktiskt att återskapa index för en enda partition i taget.
 
-Alternativt kan du i stället för att återskapa indexet kopiera tabellen till en ny tabell [med hjälp av CTAs](sql-data-warehouse-develop-ctas.md). Vilket sätt är bäst? För stora mängder data är CTAS ofta snabbare än [Alter index](/sql/t-sql/statements/alter-index-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest). För mindre data volymer är det enklare att använda ALTER INDEX och du behöver inte byta ut tabellen.
+Alternativt kan du i stället för att återskapa indexet kopiera tabellen till en ny tabell [med hjälp av CTAs](sql-data-warehouse-develop-ctas.md). Vilket sätt är bäst? För stora mängder data är CTAS ofta snabbare än [Alter index](/sql/t-sql/statements/alter-index-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true). För mindre data volymer är det enklare att använda ALTER INDEX och du behöver inte byta ut tabellen.
 
 ```sql
 -- Rebuild the entire clustered index
@@ -252,7 +252,7 @@ ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_CO
 ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_COMPRESSION = COLUMNSTORE)
 ```
 
-Återskapande av ett index i en dedikerad SQL-pool är en offline-åtgärd.  Mer information om hur du återskapar index finns i avsnittet ALTER INDEX Rebuild i [columnstore-index defragmentering](/sql/relational-databases/indexes/columnstore-indexes-defragmentation?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)och [ändra index](/sql/t-sql/statements/alter-index-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
+Återskapande av ett index i en dedikerad SQL-pool är en offline-åtgärd.  Mer information om hur du återskapar index finns i avsnittet ALTER INDEX Rebuild i [columnstore-index defragmentering](/sql/relational-databases/indexes/columnstore-indexes-defragmentation?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)och [ändra index](/sql/t-sql/statements/alter-index-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
 
 ### <a name="step-3-verify-clustered-columnstore-segment-quality-has-improved"></a>Steg 3: kontrol lera att den klustrade columnstore-segmentets kvalitet har förbättrats
 
@@ -260,7 +260,7 @@ Kör frågan som identifierade tabellen med dålig segment kvalitet och kontrol 
 
 ## <a name="rebuilding-indexes-with-ctas-and-partition-switching"></a>Återskapa index med CTAS och partition växling
 
-I det här exemplet används instruktionen [CREATE TABLE as Select (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) och partition byte för att återskapa en table-partition.
+I det här exemplet används instruktionen [CREATE TABLE as Select (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) och partition byte för att återskapa en table-partition.
 
 ```sql
 -- Step 1: Select the partition of data and write it out to a new table using CTAS

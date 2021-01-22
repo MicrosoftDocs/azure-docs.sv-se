@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp, devx-track-js
 ms.date: 03/25/2019
 ms.author: cshoe
-ms.openlocfilehash: 2488a476fe40c2bf1f3e290b462babceff30a9b0
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: f75f42f3879f551a945bdeb2d88450ae3b9d6106
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96601398"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98674158"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>Strategier för att testa din kod i Azure Functions
 
@@ -32,12 +32,12 @@ I följande exempel beskrivs hur du skapar en C# Function-app i Visual Studio oc
 
 ![Testa Azure Functions med C# i Visual Studio](./media/functions-test-a-function/azure-functions-test-visual-studio-xunit.png)
 
-### <a name="setup"></a>Konfiguration
+### <a name="setup"></a>Installation
 
 Om du vill konfigurera din miljö skapar du en funktion och testar appen. Följande steg hjälper dig att skapa appar och funktioner som krävs för att stödja testerna:
 
-1. [Skapa en ny Functions-app](./functions-create-first-azure-function.md) och **namnge den-funktionen**
-2. [Skapa en HTTP-funktion från mallen](./functions-create-first-azure-function.md) och ge den namnet **MyHttpTrigger**.
+1. [Skapa en ny Functions-app](./functions-get-started.md) och **namnge den-funktionen**
+2. [Skapa en HTTP-funktion från mallen](./functions-get-started.md) och ge den namnet **MyHttpTrigger**.
 3. [Skapa en timer-funktion från mallen](./functions-create-scheduled-function.md) och ge den namnet **MyTimerTrigger**.
 4. [Skapa en testapp för xUnit](https://xunit.net/docs/getting-started/netcore/cmdline) i lösningen och ge den namnet **functions. tests**.
 5. Använd NuGet för att lägga till en referens från testappen till [Microsoft. AspNetCore. MVC](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc/)
@@ -269,7 +269,7 @@ I följande exempel beskrivs hur du skapar en JavaScript Function-app i VS Code 
 
 ![Testa Azure Functions med Java Script i VS Code](./media/functions-test-a-function/azure-functions-test-vs-code-jest.png)
 
-### <a name="setup"></a>Konfiguration
+### <a name="setup"></a>Installation
 
 Om du vill konfigurera din miljö initierar du en ny Node.js app i en tom mapp genom att köra `npm init` .
 

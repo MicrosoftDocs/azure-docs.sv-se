@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 12/09/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 254f8da74a187e88cfb973da7100fe5654c84bb6
-ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
+ms.openlocfilehash: fe427150b15c6bccb97172ae751235d388c95c7b
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97732454"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98675034"
 ---
 # <a name="tutorial-configure-zscaler-private-access-with-azure-active-directory-b2c"></a>Självstudie: Konfigurera Zscaler privat åtkomst med Azure Active Directory B2C
 
@@ -27,7 +27,7 @@ I den här självstudien får du lära dig att integrera Azure Active Directory 
 Innan du börjar behöver du:
 
 - En Azure-prenumeration. Om du inte har någon prenumeration kan du få ett [kostnads fritt konto](https://azure.microsoft.com/free/).  
-- [En Azure AD B2C klient](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant) som är länkad till din Azure-prenumeration.  
+- [En Azure AD B2C klient](./tutorial-create-tenant.md) som är länkad till din Azure-prenumeration.  
 - [En ZPA-prenumeration](https://azuremarketplace.microsoft.com/marketplace/apps/aad.zscalerprivateaccess?tab=Overview).
 
 ## <a name="scenario-description"></a>Scenariobeskrivning
@@ -96,15 +96,15 @@ När du har konfigurerat Azure AD B2C återupptas resten av IdP-konfigurationen.
 >[!Note]
 >Det här steget krävs bara om du inte redan har konfigurerat anpassade principer. Om du redan har en eller flera anpassade principer kan du hoppa över det här steget.
 
-Information om hur du konfigurerar anpassade principer på Azure AD B2C klient organisationen finns i [komma igång med anpassade principer i Azure Active Directory B2C](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started).
+Information om hur du konfigurerar anpassade principer på Azure AD B2C klient organisationen finns i [komma igång med anpassade principer i Azure Active Directory B2C](./custom-policy-get-started.md).
 
 ### <a name="step-3-register-zpa-as-a-saml-application-in-azure-ad-b2c"></a>Steg 3: registrera ZPA som ett SAML-program i Azure AD B2C
 
-Information om hur du konfigurerar ett SAML-program i Azure AD B2C finns i [Registrera ett SAML-program i Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/connect-with-saml-service-providers). 
+Information om hur du konfigurerar ett SAML-program i Azure AD B2C finns i [Registrera ett SAML-program i Azure AD B2C](./connect-with-saml-service-providers.md). 
 
-I steg ["3,2 Ladda upp och testa dina principens metadata"](https://docs.microsoft.com/azure/active-directory-b2c/connect-with-saml-service-providers#32-upload-and-test-your-policy-metadata)kopierar eller noterar du IDP SAML metadata URL som används av Azure AD B2C. Du behöver det senare.
+I steg ["3,2 Ladda upp och testa dina principens metadata"](./connect-with-saml-service-providers.md#32-upload-and-test-your-policy-metadata)kopierar eller noterar du IDP SAML metadata URL som används av Azure AD B2C. Du behöver det senare.
 
-Följ anvisningarna genom steg ["4,2 uppdatera app-manifestet"](https://docs.microsoft.com/azure/active-directory-b2c/connect-with-saml-service-providers#42-update-the-app-manifest). I steg 4,2 uppdaterar du appens manifest egenskaper enligt följande:
+Följ anvisningarna genom steg ["4,2 uppdatera app-manifestet"](./connect-with-saml-service-providers.md#42-update-the-app-manifest). I steg 4,2 uppdaterar du appens manifest egenskaper enligt följande:
 
 - För **identifierUris**: Använd tjänste leverantörens ENTITETS-ID som du kopierade eller noterade tidigare i "steg 1.6. b".  
 - För **samlMetadataUrl**: hoppa över den här egenskapen eftersom ZPA inte är värd för en SAML-metadata-URL.  
@@ -149,7 +149,7 @@ Gå till en användar Portal för ZPA eller ett program för webb läsar åtkoms
 
 Mer information finns i följande artiklar:
 
-- [Kom igång med anpassade principer i Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started)
-- [Registrera ett SAML-program i Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/connect-with-saml-service-providers)
+- [Kom igång med anpassade principer i Azure AD B2C](./custom-policy-get-started.md)
+- [Registrera ett SAML-program i Azure AD B2C](./connect-with-saml-service-providers.md)
 - [Steg-för-steg-konfigurations guide för ZPA](https://help.zscaler.com/zpa/step-step-configuration-guide-zpa)
 - [Konfigurera en IdP för enkel inloggning](https://help.zscaler.com/zpa/configuring-idp-single-sign)

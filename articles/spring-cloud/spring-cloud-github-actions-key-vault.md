@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 09/08/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 995d10b3c7064e462500e0bec4d5d8aa010afe64
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0ea0db1faf8c452958b8d95c193d45506057777c
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90888786"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98673340"
 ---
 # <a name="authenticate-azure-spring-cloud-with-key-vault-in-github-actions"></a>Autentisera Azure våren Cloud med Key Vault i GitHub-åtgärder
 
@@ -22,13 +22,14 @@ Key Vault är en säker plats för att lagra nycklar. Företags användare måst
 
 ## <a name="generate-credential"></a>Generera autentiseringsuppgifter
 Om du vill generera en nyckel för att komma åt nyckel valvet, kör du kommandot nedan på den lokala datorn:
-```
+
+```azurecli
 az ad sp create-for-rbac --role contributor --scopes /subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP>/providers/Microsoft.KeyVault/vaults/<KEY_VAULT> --sdk-auth
 ```
 Det omfång som anges av `--scopes` parametern begränsar nyckel åtkomsten till resursen.  Den kan bara komma åt den starka rutan.
 
 Med resultat:
-```
+```output
 {
     "clientId": "<GUID>",
     "clientSecret": "<GUID>",
@@ -50,7 +51,7 @@ Gå till **Key Vault** instrument panelen i Azure Portal, klicka på menyn **åt
 
  ![Ange åtkomst princip](./media/github-actions/key-vault1.png)
 
-Kopiera namnet på autentiseringsuppgiften, till exempel `azure-cli-2020-01-19-04-39-02` . Öppna menyn **åtkomst principer** , klicka på länken **Lägg till åtkomst princip** .  Välj `Secret Management` för **mall**och välj sedan **huvud konto**. Klistra in **namnet på autentiseringsuppgiften i** / rutan**Välj** inmatare:
+Kopiera namnet på autentiseringsuppgiften, till exempel `azure-cli-2020-01-19-04-39-02` . Öppna menyn **åtkomst principer** , klicka på länken **Lägg till åtkomst princip** .  Välj `Secret Management` för **mall** och välj sedan **huvud konto**. Klistra in **namnet på autentiseringsuppgiften i** / rutan **Välj** inmatare:
 
  ![Välj](./media/github-actions/key-vault2.png)
 
@@ -59,12 +60,12 @@ Kopiera namnet på autentiseringsuppgiften, till exempel `azure-cli-2020-01-19-0
 ## <a name="generate-full-scope-azure-credential"></a>Generera Azure-autentiseringsuppgift med fullständig omfattning
 Detta är huvud nyckeln för att öppna alla dörrar i byggnaden. Proceduren liknar föregående steg, men här ändrar vi omfattningen för att generera huvud nyckeln:
 
-```
+```azurecli
 az ad sp create-for-rbac --role contributor --scopes /subscriptions/<SUBSCRIPTION_ID> --sdk-auth
 ```
 
 Igen, resultat:
-```
+```output
 {
     "clientId": "<GUID>",
     "clientSecret": "<GUID>",
@@ -84,7 +85,7 @@ Kopiera hela JSON-strängen.  Bo tillbaka till **Key Vault** instrument panel. �
 ## <a name="combine-credentials-in-github-actions"></a>Kombinera autentiseringsuppgifter i GitHub-åtgärder
 Ange de autentiseringsuppgifter som ska användas när CICD-pipeline körs:
 
-```
+```console
 on: [push]
 
 jobs:
