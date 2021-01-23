@@ -1,28 +1,24 @@
 ---
 title: Vanliga frågor och svar om konfiguration och hantering
-titleSuffix: Azure Cloud Services
 description: Den här artikeln innehåller vanliga frågor och svar om konfiguration och hantering av Microsoft Azure Cloud Services.
-services: cloud-services
-documentationcenter: ''
-author: genlin
-manager: dcscontentpm
-editor: ''
-tags: top-support-issue
-ms.assetid: 84985660-2cfd-483a-8378-50eef6a0151d
-ms.service: cloud-services
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 07/23/2018
-ms.author: genli
-ms.openlocfilehash: c4497805e64ef303c9d7340c48a49027b3a26bef
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.service: cloud-services
+ms.date: 10/14/2020
+ms.author: tagore
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: c5dd09292897d69f90606e8661b4e6cb28090612
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96011039"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742598"
 ---
-# <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Konfigurations-och hanterings problem för Azure Cloud Services: vanliga frågor och svar
+# <a name="configuration-and-management-issues-for-azure-cloud-services-classic-frequently-asked-questions-faqs"></a>Konfigurations-och hanterings problem för Azure Cloud Services (klassisk): vanliga frågor och svar
+
+> [!IMPORTANT]
+> [Azure Cloud Services (utökad support)](../cloud-services-extended-support/overview.md) är en ny Azure Resource Manager baserad distributions modell för Azure Cloud Services-produkten.Med den här ändringen har Azure Cloud Services som körs på Azure Service Manager-baserade distributions modellen bytt namn som Cloud Services (klassisk) och alla nya distributioner bör använda [Cloud Services (utökad support)](../cloud-services-extended-support/overview.md).
 
 Den här artikeln innehåller vanliga frågor om konfigurations-och hanterings problem för [Microsoft Azure Cloud Services](https://azure.microsoft.com/services/cloud-services). Du kan också se storleks information på [sidan Cloud Services virtuell dator storlek](cloud-services-sizes-specs.md) .
 
@@ -62,7 +58,7 @@ Den här artikeln innehåller vanliga frågor om konfigurations-och hanterings p
 
 **Allmänna**
 
-- [Hur gör jag för att lägger du till "nosniffer" på min webbplats?](#how-do-i-add-nosniff-to-my-website)
+- [Hur gör jag för att lägga till `nosniff` på min webbplats?](#how-do-i-add-nosniff-to-my-website)
 - [Hur gör jag för att anpassa IIS för en webb roll?](#how-do-i-customize-iis-for-a-web-role)
 - [Vilken är kvot gränsen för min moln tjänst?](#what-is-the-quota-limit-for-my-cloud-service)
 - [Varför visar enheten i min moln tjänst VM mycket ledigt disk utrymme?](#why-does-the-drive-on-my-cloud-service-vm-show-very-little-free-disk-space)
@@ -128,7 +124,7 @@ $cert = New-SelfSignedCertificate -DnsName yourdomain.cloudapp.net -CertStoreLoc
 $password = ConvertTo-SecureString -String "your-password" -Force -AsPlainText
 Export-PfxCertificate -Cert $cert -FilePath ".\my-cert-file.pfx" -Password $password
 ```
-Det kommer snart att välja BLOB eller lokalt för csdef-och cscfg-uppladdnings platsen. Med [New-AzureDeployment](/powershell/module/servicemanagement/azure.service/new-azuredeployment?view=azuresmps-4.0.0)kan du ange varje plats värde.
+Det kommer snart att välja BLOB eller lokalt för csdef-och cscfg-uppladdnings platsen. Med [New-AzureDeployment](/powershell/module/servicemanagement/azure.service/new-azuredeployment?view=azuresmps-4.0.0&preserve-view=true)kan du ange varje plats värde.
 
 Möjlighet att övervaka mått på instans nivå. Ytterligare övervakningsfunktioner finns i [så här övervakar du Cloud Services](cloud-services-how-to-monitor.md).
 
@@ -148,7 +144,7 @@ Du kan aktivera Windows Azure-diagnostik (WAD)-loggning genom följande alternat
 2. [Aktivera via .NET-kod](./cloud-services-dotnet-diagnostics.md)
 3. [Aktivera via PowerShell](./cloud-services-diagnostics-powershell.md)
 
-För att kunna hämta de aktuella WAD-inställningarna för moln tjänsten kan du använda [Get-AzureServiceDiagnosticsExtensions](./cloud-services-diagnostics-powershell.md#get-current-diagnostics-extension-configuration) PS cmd eller så kan du Visa den via portalen från bladet "Cloud Services--> tillägg".
+För att kunna hämta de aktuella WAD-inställningarna för moln tjänsten kan du använda [Get-AzureServiceDiagnosticsExtensions](./cloud-services-diagnostics-powershell.md#get-current-diagnostics-extension-configuration) PowerShell cmd eller så kan du Visa den via portalen från bladet "Cloud Services--> tillägg".
 
 
 ## <a name="network-configuration"></a>Konfiguration av nätverk
@@ -254,7 +250,7 @@ Mer information om hur du aktiverar Azure-diagnostik loggning för Cloud Service
 
 ## <a name="generic"></a>Allmänna
 
-### <a name="how-do-i-add-nosniff-to-my-website"></a>Hur gör jag för att lägger du till "nosniffer" på min webbplats?
+### <a name="how-do-i-add-nosniff-to-my-website"></a>Hur gör jag för att lägga till `nosniff` på min webbplats?
 Om du vill förhindra att klienter kan använda MIME-typer lägger du till en inställning i *web.config* -filen.
 
 ```xml
@@ -284,11 +280,11 @@ Se [tjänstspecifika gränser](../azure-resource-manager/management/azure-subscr
 ### <a name="why-does-the-drive-on-my-cloud-service-vm-show-very-little-free-disk-space"></a>Varför visar enheten i min moln tjänst VM mycket ledigt disk utrymme?
 Detta är ett förväntat beteende och det bör inte orsaka något problem med ditt program. Journalering har Aktiver ATS för% appens rot%-enheten i virtuella Azure PaaS-datorer, vilket i princip förbrukar dubbelt så mycket utrymme som filer normalt tar upp. Det finns dock flera saker som du bör känna till, vilket innebär att det innebär ett icke-problem.
 
-Enhets storleken% appens rot% beräknas som \<size of .cspkg + max journal size + a margin of free space> eller 1,5 GB, beroende på vilket som är större. Den virtuella datorns storlek har ingen betydelse för den här beräkningen. (Storleken på den virtuella datorn påverkar endast storleken på den temporära enheten C:.) 
+Enhets storleken% appens rot% beräknas som <storlek för. cspkg + Max Journal storlek + en marginal på det lediga utrymmet> eller 1,5 GB, beroende på vilket som är störst. Den virtuella datorns storlek har ingen betydelse för den här beräkningen. (Storleken på den virtuella datorn påverkar endast storleken på den temporära enheten C:.) 
 
 Det går inte att skriva till% appens rot%-enheten. Om du skriver till den virtuella Azure-datorn måste du göra det i en tillfällig LocalStorage-resurs (eller något annat alternativ, till exempel Blob Storage, Azure Files osv.). Därför är mängden ledigt utrymme i mappen% appens rot% inte meningsfull. Om du inte är säker på om ditt program skriver till% appens rot%-enheten, kan du alltid låta tjänsten köras i några dagar och sedan jämföra storlekarna "före" och "efter". 
 
-Azure skriver inte något till% appens rot%-enheten. När den virtuella hård disken har skapats från. cspkg och monterats i den virtuella Azure-datorn är ditt program det enda som kan skriva till den här enheten. 
+Azure skriver inte något till% appens rot%-enheten. När den virtuella hård disken har skapats från `.cspkg` och monterats i den virtuella Azure-datorn är programmet det enda som kan skriva till den här enheten. 
 
 Journal inställningarna kan inte konfigureras, så du kan inte stänga av den.
 
@@ -297,7 +293,7 @@ Journal inställningarna kan inte konfigureras, så du kan inte stänga av den.
 Du kan aktivera tillägg för program mot skadlig kod med hjälp av PowerShell-skript i Start aktiviteten. Följ stegen i de här artiklarna för att implementera det: 
  
 - [Skapa en start åtgärd för PowerShell](cloud-services-startup-tasks-common.md#create-a-powershell-startup-task)
-- [Set-AzureServiceAntimalwareExtension](/powershell/module/servicemanagement/azure.service/Set-AzureServiceAntimalwareExtension?view=azuresmps-4.0.0 )
+- [Set-AzureServiceAntimalwareExtension](/powershell/module/servicemanagement/azure.service/Set-AzureServiceAntimalwareExtension?view=azuresmps-4.0.0&preserve-view=true)
 
 Mer information om scenarier för distribution av program mot skadlig kod och hur du aktiverar det från portalen finns i [scenarier för distribution av program mot skadlig kod](../security/fundamentals/antimalware.md#antimalware-deployment-scenarios).
 

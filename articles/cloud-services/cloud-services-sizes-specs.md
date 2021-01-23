@@ -1,21 +1,25 @@
 ---
-title: Storlekar på virtuella datorer för Azure Cloud Services | Microsoft Docs
+title: Storlekar på virtuella datorer för Azure Cloud Services (klassisk) | Microsoft Docs
 description: 'Visar en lista över de olika storlekarna för virtuella datorer (och ID: n) för webb-och arbets roller i Azure Cloud service.'
-services: cloud-services
-documentationcenter: ''
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 07/18/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: b617ba8db8f9dbb1c25ac34aa879613c29c723b7
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 55fa3ab4e5bd4472f7dae9692ae3ac9bcfa8e2b6
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96340296"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743176"
 ---
-# <a name="sizes-for-cloud-services"></a>Storlek för Cloud Services
+# <a name="sizes-for-cloud-services-classic"></a>Storlekar för Cloud Services (klassisk)
+
+> [!IMPORTANT]
+> [Azure Cloud Services (utökad support)](../cloud-services-extended-support/overview.md) är en ny Azure Resource Manager baserad distributions modell för Azure Cloud Services-produkten.Med den här ändringen har Azure Cloud Services som körs på Azure Service Manager-baserade distributions modellen bytt namn som Cloud Services (klassisk) och alla nya distributioner bör använda [Cloud Services (utökad support)](../cloud-services-extended-support/overview.md).
+
 I det här avsnittet beskrivs tillgängliga storlekar och alternativ för moln tjänst roll instanser (webb roller och arbets roller). Den innehåller också distributions överväganden för att vara medveten om när du planerar att använda dessa resurser. Varje storlek har ett ID som du anger i [tjänst definitions filen](cloud-services-model-and-package.md#csdef). Priserna för varje storlek finns på sidan [Cloud Services priser](https://azure.microsoft.com/pricing/details/cloud-services/) .
 
 > [!NOTE]
@@ -58,12 +62,12 @@ Vi har skapat konceptet för Azure Compute Unit (ACU) för att tillhandahålla e
 | [A5-7](#a-series) |100 |
 | [A8-A11](#a-series) |225* |
 | [En v2](#av2-series) |100 |
-| [D](#d-series) |160 |
+| [Styr](#d-series) |160 |
 | [D v2](#dv2-series) |160 – 190 * |
 | [D v3](#dv3-series) |160 – 190 * |
 | [E v3](#ev3-series) |160 – 190 * |
-| [G](#g-series) |180 - 240* |
-| [H](#h-series) |290 - 300* |
+| [Projektredovisnings](#g-series) |180 - 240* |
+| [&](#h-series) |290 - 300* |
 
 ACU:er som visas med * använder Intel® Turbo-teknik för att öka processorfrekvensen och prestanda. Prestandaökningens storlek kan variera beroende på storleken på den virtuella datorn, arbetsbelastningen och andra arbetsbelastningar som körs på samma värd.
 

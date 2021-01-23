@@ -1,21 +1,24 @@
 ---
-title: Övervaka en Azure-moln tjänst | Microsoft Docs
+title: Övervaka en Azure-moln tjänst (klassisk) | Microsoft Docs
 description: Beskriver vad som övervakar en Azure-molnbaserad tjänst och vilka alternativ som finns.
-services: cloud-services
-documentationcenter: ''
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 01/29/2018
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 61c794ba03934ae1828ba310f3f776bfb61b652b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 60f320f86860cca482cdf25c7d93f84dae8c4e5f
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85847242"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743380"
 ---
-# <a name="introduction-to-cloud-service-monitoring"></a>Introduktion till moln tjänst övervakning
+# <a name="introduction-to-cloud-service-classic-monitoring"></a>Introduktion till moln tjänst (klassisk) övervakning
+
+> [!IMPORTANT]
+> [Azure Cloud Services (utökad support)](../cloud-services-extended-support/overview.md) är en ny Azure Resource Manager baserad distributions modell för Azure Cloud Services-produkten.Med den här ändringen har Azure Cloud Services som körs på Azure Service Manager-baserade distributions modellen bytt namn som Cloud Services (klassisk) och alla nya distributioner bör använda [Cloud Services (utökad support)](../cloud-services-extended-support/overview.md).
 
 Du kan övervaka viktiga prestanda mått för alla moln tjänster. Varje moln tjänst roll samlar in minimala data: CPU-användning, nätverks användning och disk användning. Om `Microsoft.Azure.Diagnostics` tillägget används för en roll i moln tjänsten kan den rollen samla in ytterligare data punkter. Den här artikeln innehåller en introduktion till Azure-diagnostik för Cloud Services.
 

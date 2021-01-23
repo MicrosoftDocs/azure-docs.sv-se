@@ -1,28 +1,27 @@
 ---
-title: Använd Visual Studio för att aktivera fjärr skrivbord för en roll (Azure Cloud Services)
+title: Använd Visual Studio för att aktivera fjärr skrivbord för en roll (Azure Cloud Services Classic)
 description: Så här konfigurerar du Azure Cloud Service-programmet för att tillåta fjärr skrivbords anslutningar
-services: cloud-services
-author: ghogen
-manager: jillfra
-ms.assetid: f5727ebe-9f57-4d7d-aff1-58761e8de8c1
-ms.prod: visual-studio-dev15
-ms.technology: vs-azure
-ms.custom: vs-azure
-ms.topic: conceptual
-ms.workload: azure-vs
-ms.date: 03/06/2018
-ms.author: ghogen
-ms.openlocfilehash: f4622e44c795182ee68c617f335c9e1651d3adcc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.topic: article
+ms.service: cloud-services
+ms.date: 10/14/2020
+ms.author: tagore
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: ad95cefbdf839c28b0979b051e217a1dfec76eea
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80294392"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743244"
 ---
-# <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services-using-visual-studio"></a>Aktivera Anslutning till fjärrskrivbord för en roll i Azure Cloud Services med Visual Studio
+# <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services-classic-using-visual-studio"></a>Aktivera Anslutning till fjärrskrivbord för en roll i Azure Cloud Services (klassisk) med hjälp av Visual Studio
+
+> [!IMPORTANT]
+> [Azure Cloud Services (utökad support)](../cloud-services-extended-support/overview.md) är en ny Azure Resource Manager baserad distributions modell för Azure Cloud Services-produkten.Med den här ändringen har Azure Cloud Services som körs på Azure Service Manager-baserade distributions modellen bytt namn som Cloud Services (klassisk) och alla nya distributioner bör använda [Cloud Services (utökad support)](../cloud-services-extended-support/overview.md).
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](cloud-services-role-enable-remote-desktop-new-portal.md)
+> * [Azure-portalen](cloud-services-role-enable-remote-desktop-new-portal.md)
 > * [PowerShell](cloud-services-role-enable-remote-desktop-powershell.md)
 > * [Visual Studio](cloud-services-role-enable-remote-desktop-visual-studio.md)
 
@@ -40,14 +39,14 @@ När du använder Visual Studio 2017 version 15,4 och tidigare kan du använda a
 
 2. Logga in på din Azure-prenumeration om det behövs och välj **Nästa**.
 
-3. På sidan **Inställningar** väljer du **Aktivera fjärr skrivbord för alla roller**och väljer sedan länken **Inställningar...** för att öppna dialog rutan **konfiguration av fjärr skrivbord** .
+3. På sidan **Inställningar** väljer du **Aktivera fjärr skrivbord för alla roller** och väljer sedan länken **Inställningar...** för att öppna dialog rutan **konfiguration av fjärr skrivbord** .
 
-4. Klicka på **fler alternativ**längst ned i dialog rutan. Det här kommandot visar en listruta där du skapar eller väljer ett certifikat så att du kan kryptera autentiseringsinformation när du ansluter via fjärr skrivbord.
+4. Klicka på **fler alternativ** längst ned i dialog rutan. Det här kommandot visar en listruta där du skapar eller väljer ett certifikat så att du kan kryptera autentiseringsinformation när du ansluter via fjärr skrivbord.
 
    > [!Note]
    > De certifikat som du behöver för en fjärr skrivbords anslutning skiljer sig från de certifikat som du använder för andra Azure-åtgärder. Remote Access-certifikatet måste ha en privat nyckel.
 
-5. Välj ett certifikat i listan eller Välj ** &lt; skapa. &gt; **... Om du skapar ett nytt certifikat anger du ett eget namn för det nya certifikatet när du uppmanas till det och väljer **OK**. Det nya certifikatet visas i list rutan.
+5. Välj ett certifikat i listan eller Välj **&lt; skapa. &gt;**... Om du skapar ett nytt certifikat anger du ett eget namn för det nya certifikatet när du uppmanas till det och väljer **OK**. Det nya certifikatet visas i list rutan.
 
 6. Ange ett användar namn och ett lösen ord. Du kan inte använda ett befintligt konto. Använd inte "administratör" som användar namn för det nya kontot.
 
@@ -86,7 +85,7 @@ Du kan distribuera ett Cloud Service-projekt från en build-Server (till exempel
 
 Om du vill använda RDP-tillägget från Azure DevOps Services inkluderar du följande information i din build-pipeline:
 
-1. Ta med `/p:ForceRDPExtensionOverPlugin=true` i dina MSBuild-argument för att se till att distributionen fungerar med RDP-tillägget i stället för RDP-plugin-programmet. Exempel:
+1. Ta med `/p:ForceRDPExtensionOverPlugin=true` i dina MSBuild-argument för att se till att distributionen fungerar med RDP-tillägget i stället för RDP-plugin-programmet. Ett exempel:
 
     ```
     msbuild AzureCloudService5.ccproj /t:Publish /p:TargetProfile=Cloud /p:DebugType=None

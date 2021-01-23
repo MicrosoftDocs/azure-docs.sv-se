@@ -1,24 +1,25 @@
 ---
-title: Installera .NET på Azure Cloud Services-roller | Microsoft Docs
+title: Installera .NET på Azure Cloud Services (klassiska) roller | Microsoft Docs
 description: Den här artikeln beskriver hur du installerar .NET Framework manuellt i webb-och arbets roller för moln tjänsten
-services: cloud-services
-documentationcenter: .net
-author: tgore03
-manager: carmonm
-ms.service: cloud-services
-ms.devlang: dotnet
-ms.custom: devx-track-dotnet
 ms.topic: article
-ms.date: 06/22/2018
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 6de4b79560557fc86edb9e1a25e32a6a1983ceb0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 18665fabad079a8759f26be8834b2fe029ab5f49
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88932244"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742785"
 ---
-# <a name="install-net-on-azure-cloud-services-roles"></a>Installera .NET på Azure Cloud Services-roller
+# <a name="install-net-on-azure-cloud-services-classic-roles"></a>Installera .NET på Azure Cloud Services (klassiska) roller
+
+> [!IMPORTANT]
+> [Azure Cloud Services (utökad support)](../cloud-services-extended-support/overview.md) är en ny Azure Resource Manager baserad distributions modell för Azure Cloud Services-produkten.Med den här ändringen har Azure Cloud Services som körs på Azure Service Manager-baserade distributions modellen bytt namn som Cloud Services (klassisk) och alla nya distributioner bör använda [Cloud Services (utökad support)](../cloud-services-extended-support/overview.md).
+
 Den här artikeln beskriver hur du installerar versioner av .NET Framework som inte ingår i Azures gäst operativ system. Du kan använda .NET på gäst operativ systemet för att konfigurera webb-och arbets roller för moln tjänsten.
 
 Du kan till exempel installera .NET Framework 4.6.2 på gäst operativ system familj 4, som inte ingår i någon version av .NET Framework 4,6. (Gäst operativ system familjen 5 levereras med .NET Framework 4,6.) Den senaste informationen om Azure-gästens OS-versioner finns i [nyheter om Azure gäst operativ system](cloud-services-guestos-update-matrix.md). 

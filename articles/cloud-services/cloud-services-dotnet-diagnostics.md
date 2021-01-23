@@ -1,37 +1,38 @@
 ---
-title: Så här använder du Azure Diagnostics (.NET) med Cloud Services | Microsoft Docs
+title: Så här använder du Azure Diagnostics (.NET) med Cloud Services (klassisk) | Microsoft Docs
 description: Använd Azure Diagnostics för att samla in data från Azure Cloud Services för fel sökning, mätning av prestanda, övervakning, trafik analys med mera.
-services: cloud-services
-documentationcenter: .net
-author: tgore03
-manager: carmonm
-ms.service: cloud-services
-ms.devlang: dotnet
-ms.custom: devx-track-csharp
 ms.topic: article
-ms.date: 05/22/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 6a015a8d56cf3991d04b212db73d5b752c13a793
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 89ba50b91e8ff2e2d7a05d59f2b738a1f87a5fd2
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92077549"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742156"
 ---
-# <a name="enabling-azure-diagnostics-in-azure-cloud-services"></a>Aktivera Azure-diagnostik i Azure Cloud Services
-Se [Azure-diagnostik översikt](../azure-monitor/platform/diagnostics-extension-overview.md) för en bakgrund på Azure-diagnostik.
+# <a name="enabling-azure-diagnostics-in-azure-cloud-services-classic"></a>Aktivera Azure-diagnostik i Azure Cloud Services (klassisk)
+
+> [!IMPORTANT]
+> [Azure Cloud Services (utökad support)](../cloud-services-extended-support/overview.md) är en ny Azure Resource Manager baserad distributions modell för Azure Cloud Services-produkten.Med den här ändringen har Azure Cloud Services som körs på Azure Service Manager-baserade distributions modellen bytt namn som Cloud Services (klassisk) och alla nya distributioner bör använda [Cloud Services (utökad support)](../cloud-services-extended-support/overview.md).
+
+Se [Azure-diagnostik översikt](../azure-diagnostics.md) för en bakgrund på Azure-diagnostik.
 
 ## <a name="how-to-enable-diagnostics-in-a-worker-role"></a>Så här aktiverar du diagnostik i en arbets roll
 Den här genom gången beskriver hur du implementerar en Azure Worker-roll som utvärderar telemetridata med hjälp av .NET EventSource-klassen. Azure-diagnostik används för att samla in telemetri data och lagra dem i ett Azure Storage-konto. När du skapar en arbets roll aktiverar Visual Studio automatiskt diagnostik 1,0 som en del av lösningen i Azure SDK: er för .NET 2,4 och tidigare. Följande anvisningar beskriver processen för att skapa arbets rollen, inaktivera diagnostik 1,0 från lösningen och distribuera diagnostik 1,2 eller 1,3 till din arbets roll.
 
-### <a name="prerequisites"></a>Förutsättningar
+### <a name="prerequisites"></a>Krav
 Den här artikeln förutsätter att du har en Azure-prenumeration och använder Visual Studio med Azure SDK. Om du inte har någon Azure-prenumeration kan du registrera dig för den [kostnads fria utvärderings versionen][Free Trial]. Se till att [Installera och konfigurera Azure PowerShell version 0.8.7 eller senare][Install and configure Azure PowerShell version 0.8.7 or later].
 
 ### <a name="step-1-create-a-worker-role"></a>Steg 1: skapa en arbets roll
 1. Starta **Visual Studio**.
 2. Skapa ett **Azure Cloud Service-** projekt från den **moln** mal len som är mål .NET Framework 4,5.  Ge projektet namnet "WadExample" och klicka på OK.
 3. Välj **arbets roll** och klicka på OK. Projektet kommer att skapas.
-4. I **Solution Explorer**dubbelklickar du på egenskaps filen **WorkerRole1** .
+4. I **Solution Explorer** dubbelklickar du på egenskaps filen **WorkerRole1** .
 5. Avmarkera **Aktivera diagnostik** på fliken **konfiguration** för att inaktivera diagnostik 1,0 (Azure SDK 2,4 och tidigare).
 6. Bygg din lösning för att kontrol lera att du inte har några fel.
 
@@ -183,7 +184,7 @@ Set-AzureServiceDiagnosticsExtension -StorageContext $storageContext -Diagnostic
 ```
 
 ### <a name="step-6-look-at-your-telemetry-data"></a>Steg 6: titta på dina telemetridata
-I Visual Studio- **Server Explorer**navigerar du till lagrings kontot för wadexample. När moln tjänsten har körts ungefär fem (5) minuter bör tabellerna **WADEnumsTable**, **WADHighFreqTable**, **WADMessageTable**, **WADPerformanceCountersTable** och **WADSetOtherTable**visas. Dubbelklicka på en av tabellerna om du vill visa Telemetrin som har samlats in.
+I Visual Studio- **Server Explorer** navigerar du till lagrings kontot för wadexample. När moln tjänsten har körts ungefär fem (5) minuter bör tabellerna **WADEnumsTable**, **WADHighFreqTable**, **WADMessageTable**, **WADPerformanceCountersTable** och **WADSetOtherTable** visas. Dubbelklicka på en av tabellerna om du vill visa Telemetrin som har samlats in.
 
 ![CloudServices_diag_tables](./media/cloud-services-dotnet-diagnostics/WadExampleTables.png)
 
@@ -193,7 +194,7 @@ Konfigurations filen för diagnostik definierar värden som används för att in
 ## <a name="troubleshooting"></a>Felsökning
 Om du har problem kan du läsa [fel sökning Azure-diagnostik](../azure-monitor/platform/diagnostics-extension-troubleshooting.md) för att få hjälp med vanliga problem.
 
-## <a name="next-steps"></a>Efterföljande moment
+## <a name="next-steps"></a>Nästa steg
 [Se en lista över relaterade Azure Virtual-Machine-diagnostiska artiklar](../azure-monitor/platform/diagnostics-extension-overview.md) för att ändra de data som du samlar in, felsöka problem eller Lär dig mer om diagnostik i allmänhet.
 
 [EventSource Class]: /dotnet/api/system.diagnostics.tracing.eventsource

@@ -2,25 +2,38 @@
 title: Azure Service Bus ämnes filter | Microsoft Docs
 description: Den här artikeln förklarar hur prenumeranter kan definiera vilka meddelanden som ska tas emot från ett ämne genom att ange filter.
 ms.topic: conceptual
-ms.date: 06/23/2020
-ms.openlocfilehash: 04ae585c42f8acfbf338bf23befb32a5521fcf57
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.date: 01/22/2021
+ms.openlocfilehash: 63cf6e67d4fa32c5c7f52f569094e1165554108c
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94889039"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742972"
 ---
 # <a name="topic-filters-and-actions"></a>Ämnesfilter och åtgärder
 
-Prenumeranter kan definiera vilka meddelanden som de vill ta emot från ett ämne. Dessa meddelanden anges i form av en eller flera namngivna prenumerationsregler. Varje regel består av ett villkor som väljer specifika meddelanden och en åtgärd som kommenterar det valda meddelandet. Prenumerationen skapar en kopia av meddelandet som får kommenteras på olika sätt för varje matchande regel för varje matchande regelvillkor.
+Prenumeranter kan definiera vilka meddelanden som de vill ta emot från ett ämne. Dessa meddelanden anges i form av en eller flera namngivna prenumerationsregler. Varje regel består av ett **filter** villkor som väljer specifika meddelanden och som **kan** innehålla en **åtgärd** som kommenterar det valda meddelandet. 
+
+Alla regler **utan åtgärder** kombineras med ett `OR` villkor och resulterar i ett **enda meddelande** i prenumerationen även om du har flera matchnings regler. 
+
+Varje regel **med en åtgärd** genererar en kopia av meddelandet. Det här meddelandet har en egenskap `RuleName` som kallas där värdet är namnet på den matchande regeln. Åtgärden kan lägga till eller uppdatera egenskaper eller ta bort egenskaper från det ursprungliga meddelandet för att skapa ett meddelande i prenumerationen. 
+
+Föreställ dig följande scenario:
+
+- Prenumerationen har fem regler.
+- Två regler innehåller åtgärder.
+- Tre regler innehåller inte åtgärder.
+
+Om du i det här exemplet skickar ett meddelande som matchar alla fem reglerna får du tre meddelanden i prenumerationen. Det är två meddelanden för två regler med åtgärder och ett meddelande för tre regler utan åtgärder. 
 
 Varje nyligen skapad ämnes prenumeration har en första standard prenumerations regel. Om du inte uttryckligen anger ett filter villkor för regeln, är det filter som används det **sanna** filtret som gör att alla meddelanden kan väljas i prenumerationen. Standard regeln har ingen associerad antecknings åtgärd.
 
+## <a name="filters"></a>Filter
 Service Bus stöder tre filter villkor:
 
--   *Booleska filter* – **TrueFilter** och **FalseFilter** kan antingen orsaka att alla inkommande meddelanden (**True**) eller inget av de inkommande meddelandena (**falskt**) väljs för prenumerationen. Dessa två filter härleds från SQL-filtret. 
-
 -   *SQL-filter* – en **SQLFILTER** innehåller ett SQL-liknande villkorligt uttryck som utvärderas i Service Broker mot de inkommande meddelanden som är användardefinierade egenskaper och system egenskaper. Alla system egenskaper måste föregås av `sys.` i villkors uttrycket. [SQL-språkets delmängd för filter villkor](service-bus-messaging-sql-filter.md) testar om det finns egenskaper ( `EXISTS` ), null-värden ( `IS NULL` ), logiska not/och/eller relationella operatorer, enkla numeriska aritmetiska och enkla text mönster matchning med `LIKE` .
+
+-   *Booleska filter* – **TrueFilter** och **FalseFilter** kan antingen orsaka att alla inkommande meddelanden (**True**) eller inget av de inkommande meddelandena (**falskt**) väljs för prenumerationen. Dessa två filter härleds från SQL-filtret. 
 
 -   *Korrelations filter* – en **CorrelationFilter** innehåller en uppsättning villkor som matchas mot ett eller flera av de inloggade meddelandets användar-och system egenskaper. En vanlig användning är att matcha mot egenskapen **correlationId** , men programmet kan också välja att matcha följande egenskaper:
 
@@ -30,7 +43,7 @@ Service Bus stöder tre filter villkor:
      - **ReplyTo**
      - **ReplyToSessionId**
      - **SessionId** 
-     - **Att**
+     - **Till**
      - användardefinierade egenskaper. 
      
      En matchning finns när värdet för en egenskap som anländer är lika med värdet som anges i korrelations filtret. Jämförelsen är Skift läges känslig för sträng uttryck. När du anger flera matchnings egenskaper kombinerar filtret dem som ett logiskt och villkor, vilket innebär att filtret ska matcha, alla villkor måste matcha.
@@ -53,74 +66,8 @@ Partitionering använder filter för att distribuera meddelanden över flera bef
 
 Routning använder filter för att distribuera meddelanden över ämnes prenumerationer på ett förutsägbart sätt, men inte nödvändigt vis exklusivt. I samband med funktionen för [automatisk vidarebefordring](service-bus-auto-forwarding.md) kan ämnes filter användas för att skapa komplexa vägvals diagram inom ett Service Bus namn område för meddelande distribution inom en Azure-region. Med Azure Functions eller Azure Logic Apps fungerar som en bro mellan Azure Service Bus namnrum kan du skapa komplexa globala topologier med direkt integrering i branschspecifika program.
 
-## <a name="examples"></a>Exempel
+[!INCLUDE [service-bus-filter-examples](../../includes/service-bus-filter-examples.md)]
 
-### <a name="set-rule-action-for-a-sql-filter"></a>Ange regel åtgärd för ett SQL-filter
-
-```csharp
-// instantiate the ManagementClient
-this.mgmtClient = new ManagementClient(connectionString);
-
-// create the SQL filter
-var sqlFilter = new SqlFilter("source = @stringParam");
-
-// assign value for the parameter
-sqlFilter.Parameters.Add("@stringParam", "orders");
-
-// instantiate the Rule = Filter + Action
-var filterActionRule = new RuleDescription
-{
-    Name = "filterActionRule",
-    Filter = sqlFilter,
-    Action = new SqlRuleAction("SET source='routedOrders'")
-};
-
-// create the rule on Service Bus
-await this.mgmtClient.CreateRuleAsync(topicName, subscriptionName, filterActionRule);
-```
-
-### <a name="sql-filter-on-a-system-property"></a>SQL-filter på en system egenskap
-
-```csharp
-sys.Label LIKE '%bus%'`
-```
-
-### <a name="using-or"></a>Använda eller 
-
-```csharp
-sys.Label LIKE '%bus%' OR user.tag IN ('queue', 'topic', 'subscription')
-```
-
-### <a name="using-in-and-not-in"></a>Använda i och inte i
-
-```csharp
-StoreId IN('Store1', 'Store2', 'Store3')"
-
-sys.To IN ('Store5','Store6','Store7') OR StoreId = 'Store8'
-
-sys.To NOT IN ('Store1','Store2','Store3','Store4','Store5','Store6','Store7','Store8') OR StoreId NOT IN ('Store1','Store2','Store3','Store4','Store5','Store6','Store7','Store8')
-```
-
-Ett C#-exempel som använder dessa filter finns i [avsnittet Filtrera exempel på GitHub](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Azure.Messaging.ServiceBus/BasicSendReceiveTutorialwithFilters).
-
-### <a name="correlation-filter-using-correlationid"></a>Korrelations filter med hjälp av CorrelationID
-
-```csharp
-new CorrelationFilter("Contoso");
-```
-
-Den filtrerar meddelanden med `CorrelationID` inställningen till `Contoso` . 
-
-### <a name="correlation-filter-using-system-and-user-properties"></a>Korrelations filter med system-och användar egenskaper
-
-```csharp
-var filter = new CorrelationFilter();
-filter.Label = "Important";
-filter.ReplyTo = "johndoe@contoso.com";
-filter.Properties["color"] = "Red";
-```
-
-Det motsvarar: `sys.ReplyTo = 'johndoe@contoso.com' AND sys.Label = 'Important' AND color = 'Red'`
 
 
 > [!NOTE]

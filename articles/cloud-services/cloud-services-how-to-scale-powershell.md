@@ -1,21 +1,24 @@
 ---
-title: Skala en Azure-molnbaserad tjänst i Windows PowerShell | Microsoft Docs
+title: Skala en Azure Cloud Service (klassisk) i Windows PowerShell | Microsoft Docs
 description: form Lär dig hur du använder PowerShell för att skala en webb roll eller arbets roll i Azure.
-services: cloud-services
-author: mmccrory
-ms.service: cloud-services
 ms.topic: article
-ms.date: 12/01/2016
-ms.author: memccror
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c2cec08d86760694ec3c41a98af62c6b86e0a4c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.service: cloud-services
+ms.date: 10/14/2020
+ms.author: tagore
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: a090da1933b0fcd6edb5b2415c773f9efcb27387
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89071099"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743312"
 ---
-# <a name="how-to-scale-a-cloud-service-in-powershell"></a>Så här skalar du en moln tjänst i PowerShell
+# <a name="how-to-scale-an-azure-cloud-service-classic-in-powershell"></a>Så här skalar du en Azure Cloud Service (klassisk) i PowerShell
+
+> [!IMPORTANT]
+> [Azure Cloud Services (utökad support)](../cloud-services-extended-support/overview.md) är en ny Azure Resource Manager baserad distributions modell för Azure Cloud Services-produkten.Med den här ändringen har Azure Cloud Services som körs på Azure Service Manager-baserade distributions modellen bytt namn som Cloud Services (klassisk) och alla nya distributioner bör använda [Cloud Services (utökad support)](../cloud-services-extended-support/overview.md).
 
 Du kan använda Windows PowerShell för att skala en webb roll eller arbets roll i eller ut genom att lägga till eller ta bort instanser.  
 

@@ -1,28 +1,24 @@
 ---
 title: Distributions problem för Microsoft Azure Cloud Services vanliga frågor och svar | Microsoft Docs
 description: Den här artikeln innehåller vanliga frågor om distribution för Microsoft Azure Cloud Services.
-services: cloud-services
-documentationcenter: ''
-author: genlin
-manager: dcscontentpm
-editor: ''
-tags: top-support-issue
-ms.assetid: 84985660-2cfd-483a-8378-50eef6a0151d
-ms.service: cloud-services
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 10/31/2018
-ms.author: genli
-ms.openlocfilehash: 63a219078927e9001a8eb4085c722e7ec8d2fac9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.service: cloud-services
+ms.date: 10/14/2020
+ms.author: tagore
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 67c20823d1f80360b2ab23dc3f208673d36a7374
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75980631"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742224"
 ---
-# <a name="deployment-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Distributions problem för Azure Cloud Services: vanliga frågor och svar
+# <a name="deployment-issues-for-azure-cloud-services-classic-frequently-asked-questions-faqs"></a>Distributions problem för Azure Cloud Services (klassisk): vanliga frågor och svar
 
+> [!IMPORTANT]
+> [Azure Cloud Services (utökad support)](../cloud-services-extended-support/overview.md) är en ny Azure Resource Manager baserad distributions modell för Azure Cloud Services-produkten.Med den här ändringen har Azure Cloud Services som körs på Azure Service Manager-baserade distributions modellen bytt namn som Cloud Services (klassisk) och alla nya distributioner bör använda [Cloud Services (utökad support)](../cloud-services-extended-support/overview.md).
 Den här artikeln innehåller vanliga frågor om distributions problem för [Microsoft Azure Cloud Services](https://azure.microsoft.com/services/cloud-services). Du kan också se storleks information på [sidan Cloud Services virtuell dator storlek](cloud-services-sizes-specs.md) .
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
@@ -63,9 +59,9 @@ Du kan inte ändra den virtuella dator storleken för en distribuerad moln tjän
 
 Mer information finns i [så här uppdaterar du en moln tjänst](cloud-services-update-azure-service.md).
 
-## <a name="why-am-i-not-able-to-deploy-cloud-services-through-service-management-apis-or-powershell-when-using-azure-resource-manager-storage-account"></a>Varför kan jag inte distribuera Cloud Services via API: er för service hantering eller PowerShell när du använder Azure Resource Manager lagrings konto? 
+## <a name="why-am-i-not-able-to-deploy-cloud-services-through-service-management-apis-or-powershell-when-using-azure-resource-manager-storage-account"></a>Varför kan jag inte distribuera Cloud Services via API: er för service hantering eller PowerShell när du använder Azure Resource Manager lagrings konto? 
 
-Eftersom moln tjänsten är en klassisk resurs som inte är direkt kompatibel med Azure Resource Manager modellen kan du inte associera den med Azure Resource Manager lagrings konton. Här är några alternativ: 
+Eftersom moln tjänsten är en klassisk resurs som inte är direkt kompatibel med Azure Resource Manager modellen kan du inte associera den med Azure Resource Manager lagrings konton. Här är några alternativ: 
 
 - Distribuera via REST API.
 
@@ -73,7 +69,7 @@ Eftersom moln tjänsten är en klassisk resurs som inte är direkt kompatibel me
 
 - Distribuera via [Azure Portal](https://portal.azure.com).
 
-    Detta fungerar från [Azure Portal](https://portal.azure.com) när anropet går via en proxy/shim som tillåter kommunikation mellan Azure Resource Manager och klassiska resurser. 
+    Detta fungerar från [Azure Portal](https://portal.azure.com) när anropet går via en proxy/shim som tillåter kommunikation mellan Azure Resource Manager och klassiska resurser. 
 
 ## <a name="why-does-azure-portal-require-me-to-provide-a-storage-account-for-deployment"></a>Varför kräver Azure Portal mig att tillhandahålla ett lagrings konto för distribution?
 

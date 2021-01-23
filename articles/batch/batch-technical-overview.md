@@ -3,12 +3,12 @@ title: Azure Batch kör stora parallella jobb i molnet
 description: Lär dig mer om hur du använder Azure Batch-tjänsten för storskaliga parallella arbetsbelastningar och HPC-arbetsbelastningar
 ms.topic: overview
 ms.date: 07/30/2020
-ms.openlocfilehash: 93dcf19b3b6af0f369fe19b7823bf43d597a9c21
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: dbd27dc1a00966a2d71952335cfb47c7ca55bc24
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97106656"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743108"
 ---
 # <a name="what-is-azure-batch"></a>Vad är Azure Batch?
 
@@ -74,6 +74,9 @@ Följande diagram illustrerar stegen i ett vanligt Batch-arbetsflöde med ett kl
 Tänk på att det arbets flöde som beskrivs ovan bara är ett sätt att använda batch och det finns många andra funktioner och alternativ. Du kan till exempel köra [flera aktiviteter parallellt](batch-parallel-node-tasks.md) på varje beräkningsnod. Du kan också använda [jobb förberedelse-och slut för ande uppgifter](batch-job-prep-release.md) för att förbereda noderna för dina jobb och sedan Rensa efteråt.
 
 Se [batch-tjänstens arbets flöde och resurser](batch-service-workflow-features.md) för en översikt över funktioner som pooler, noder, jobb och aktiviteter. Se även de senaste [Batch-tjänstuppdateringarna](https://azure.microsoft.com/updates/?product=batch).
+
+## <a name="in-region-data-residency"></a>Placering för region data
+Azure Batch flyttar eller lagrar inte kund information från den region där den distribueras. 
 
 ## <a name="next-steps"></a>Nästa steg
 

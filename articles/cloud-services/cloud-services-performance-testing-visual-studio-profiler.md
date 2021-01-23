@@ -1,27 +1,25 @@
 ---
-title: Profilering av en moln tjänst lokalt i Compute-emulatorn | Microsoft Docs
-services: cloud-services
+title: Profilering av en moln tjänst (klassisk) lokalt i Compute-emulatorn | Microsoft Docs
 description: Undersök prestanda problem i Cloud Services med Visual Studio profiler
-documentationcenter: ''
-author: mikejo
-manager: jillfra
-editor: ''
-tags: ''
-ms.assetid: 25e40bf3-eea0-4b0b-9f4a-91ffe797f6c3
-ms.service: cloud-services
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/18/2016
-ms.author: mikejo
-ms.openlocfilehash: 6b5707405879c462a1d919e04730d368332ba68c
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.service: cloud-services
+ms.date: 10/14/2020
+ms.author: tagore
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 2f924d84967c1a1928a47b59fd3a8c28da091130
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92077163"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743567"
 ---
-# <a name="testing-the-performance-of-a-cloud-service-locally-in-the-azure-compute-emulator-using-the-visual-studio-profiler"></a>Testa prestanda för en moln tjänst lokalt i Azure Compute-emulatorn med hjälp av Visual Studio profiler
+# <a name="testing-the-performance-of-a-cloud-service-classic-locally-in-the-azure-compute-emulator-using-the-visual-studio-profiler"></a>Testa prestanda för en moln tjänst (klassisk) lokalt i Azure Compute-emulatorn med hjälp av Visual Studio profiler
+
+> [!IMPORTANT]
+> [Azure Cloud Services (utökad support)](../cloud-services-extended-support/overview.md) är en ny Azure Resource Manager baserad distributions modell för Azure Cloud Services-produkten.Med den här ändringen har Azure Cloud Services som körs på Azure Service Manager-baserade distributions modellen bytt namn som Cloud Services (klassisk) och alla nya distributioner bör använda [Cloud Services (utökad support)](../cloud-services-extended-support/overview.md).
+
 Det finns en mängd olika verktyg och tekniker för att testa prestanda för moln tjänster.
 När du publicerar en moln tjänst till Azure kan du låta Visual Studio samla in profilerings data och analysera det lokalt, enligt beskrivningen i [profilering av en Azure Application][1].
 Du kan också använda diagnostik för att spåra olika prestanda räknare, enligt beskrivningen i [använda prestanda räknare i Azure][2].
@@ -30,11 +28,11 @@ Du kanske också vill profilera ditt program lokalt i Compute-emulatorn innan du
 Den här artikeln beskriver CPU-samplings metoden för profilering, som kan göras lokalt i emulatorn. CPU-sampling är en metod för profilering som inte är väldigt påträngande. Profileraren tar en ögonblicks bild av anrops stacken vid ett angivet samplings intervall. Data samlas in under en viss tids period och visas i en rapport. Den här metoden för profilering är en indikation på var i ett beräknings intensivt program som är mest av processor arbetet som utförs.  Det ger dig möjlighet att fokusera på "frekvent sökväg" där ditt program kostar det senaste tillfället.
 
 ## <a name="1-configure-visual-studio-for-profiling"></a>1: Konfigurera Visual Studio för profilering
-Först finns det några alternativ för Visual Studio-konfiguration som kan vara till hjälp vid profilering. För att kunna göra profilerings rapporterna behöver du symboler (. PDB-filer) för ditt program och även symboler för system bibliotek. Du måste se till att du refererar till de tillgängliga symbol servrarna. Det gör du genom att gå till **verktyg** -menyn i Visual Studio, välja **alternativ**, välja **fel sökning**och sedan **symboler**. Se till att Microsoft Symbol Server visas under **symbol fil platser (. pdb)**.  Du kan också referera till https://referencesource.microsoft.com/symbols , som kan ha ytterligare symboler.
+Först finns det några alternativ för Visual Studio-konfiguration som kan vara till hjälp vid profilering. För att kunna göra profilerings rapporterna behöver du symboler (. PDB-filer) för ditt program och även symboler för system bibliotek. Du måste se till att du refererar till de tillgängliga symbol servrarna. Det gör du genom att gå till **verktyg** -menyn i Visual Studio, välja **alternativ**, välja **fel sökning** och sedan **symboler**. Se till att Microsoft Symbol Server visas under **symbol fil platser (. pdb)**.  Du kan också referera till https://referencesource.microsoft.com/symbols , som kan ha ytterligare symboler.
 
 ![Symbol alternativ][4]
 
-Om du vill kan du förenkla rapporterna som profileraren genererar genom att ange Just My Code. Med Just My Code aktiverat är funktions anrops stackar förenklade så att anrop helt internt till bibliotek och .NET Framework är dolda från rapporterna. Välj **alternativ**på **verktyg** -menyn. Expandera sedan noden **prestanda verktyg** och välj **Allmänt**. Markera kryss rutan för **att aktivera just My Code för profiler-rapporter**.
+Om du vill kan du förenkla rapporterna som profileraren genererar genom att ange Just My Code. Med Just My Code aktiverat är funktions anrops stackar förenklade så att anrop helt internt till bibliotek och .NET Framework är dolda från rapporterna. Välj **alternativ** på **verktyg** -menyn. Expandera sedan noden **prestanda verktyg** och välj **Allmänt**. Markera kryss rutan för **att aktivera just My Code för profiler-rapporter**.
 
 ![Just My Code alternativ][17]
 
@@ -163,7 +161,7 @@ Grattis! Du har börjat med profileraren.
 * Om du har använt någon av profilerings kommandona från kommando raden, särskilt de globala inställningarna, kontrollerar du att VSPerfClrEnv/globaloff har anropats och att VsPerfMon.exe har avslut ATS.
 * Om du ser meddelandet "PRF0025: inga data har samlats in", kontrollerar du att den process som du har kopplat till har processor aktivitet. Program som inte gör något beräknings arbete kanske inte genererar några samplings data.  Det är också möjligt att processen avslutades innan någon sampling utfördes. Kontrol lera att körnings metoden för en roll som du profileringr inte avslutas.
 
-## <a name="next-steps"></a>Efterföljande moment
+## <a name="next-steps"></a>Nästa steg
 Instrumentering av Azure-binärfiler i emulatorn stöds inte i Visual Studio profiler, men om du vill testa minnesallokering kan du välja det alternativet vid profilering. Du kan också välja samtidiga profilering, som hjälper dig att avgöra om trådar tar tid att konkurrera för lås, eller nivå interaktions profilering, som hjälper dig att spåra prestanda problem när du interagerar mellan olika nivåer av ett program, oftast mellan data nivån och en arbets roll.  Du kan visa databas frågorna som din app genererar och använder profilerings data för att förbättra din användning av databasen. Information om nivå interaktions profilering finns i genom gång av blogg inlägg [: använda nivån interaktions profiler i Visual Studio Team System 2010][3].
 
 [1]: ../azure-monitor/app/profiler.md

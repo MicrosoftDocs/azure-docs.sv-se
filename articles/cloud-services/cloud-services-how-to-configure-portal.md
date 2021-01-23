@@ -1,21 +1,24 @@
 ---
-title: Så här konfigurerar du en moln tjänst (portal) | Microsoft Docs
+title: Så här konfigurerar du en moln tjänst (klassisk) – Portal | Microsoft Docs
 description: Lär dig hur du konfigurerar moln tjänster i Azure. Lär dig att uppdatera moln tjänst konfigurationen och konfigurera fjärråtkomst till roll instanser. I de här exemplen används Azure Portal.
-services: cloud-services
-documentationcenter: ''
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 12/07/2016
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 4f2b5716e253f2810ff953a10c879574c6a6c342
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: f16fcfe227663958279281659b09929a4cd2d386
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91576667"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743431"
 ---
-# <a name="how-to-configure-cloud-services"></a>Så här konfigurerar du Cloud Services
+# <a name="how-to-configure-and-azure-cloud-service-classic"></a>Konfigurera och Azure Cloud Service (klassisk)
+
+> [!IMPORTANT]
+> [Azure Cloud Services (utökad support)](../cloud-services-extended-support/overview.md) är en ny Azure Resource Manager baserad distributions modell för Azure Cloud Services-produkten.Med den här ändringen har Azure Cloud Services som körs på Azure Service Manager-baserade distributions modellen bytt namn som Cloud Services (klassisk) och alla nya distributioner bör använda [Cloud Services (utökad support)](../cloud-services-extended-support/overview.md).
 
 Du kan konfigurera de vanligaste inställningarna för en moln tjänst i Azure Portal. Eller, om du vill uppdatera konfigurationsfilerna direkt, kan du hämta en tjänst konfigurations fil som ska uppdateras och sedan ladda upp den uppdaterade filen och uppdatera moln tjänsten med konfigurations ändringarna. Oavsett hur du gör så skickas konfigurations uppdateringarna ut till alla roll instanser.
 
@@ -29,7 +32,7 @@ När du har öppnat [Azure Portal](https://portal.azure.com/)går du till moln t
 
 ![Sidan Inställningar](./media/cloud-services-how-to-configure-portal/cloud-service.png)
 
-Länkarna **Inställningar** eller **alla inställningar** öppnar **Inställningar** där du kan ändra **egenskaperna**, ändra **konfigurationen**, hantera **certifikaten**, konfigurera **aviserings regler**och hantera de **användare** som har åtkomst till den här moln tjänsten.
+Länkarna **Inställningar** eller **alla inställningar** öppnar **Inställningar** där du kan ändra **egenskaperna**, ändra **konfigurationen**, hantera **certifikaten**, konfigurera **aviserings regler** och hantera de **användare** som har åtkomst till den här moln tjänsten.
 
 ![Azure Cloud Service-inställningar](./media/cloud-services-how-to-configure-portal/cs-settings-blade.png)
 
@@ -62,7 +65,7 @@ Härifrån kan du konfigurera en avisering. Med list rutan **mått** kan du stä
 
 ### <a name="configure-monitoring-from-a-metric-tile"></a>Konfigurera övervakning från en mått panel
 
-I stället för **Settings**att använda  >  **varnings regler**för inställningar kan du klicka på någon av mått panelerna i **övervaknings** avsnittet i moln tjänsten.
+I stället för att använda  >  **varnings regler** för inställningar kan du klicka på någon av mått panelerna i **övervaknings** avsnittet i moln tjänsten.
 
 ![Övervakning av moln tjänst](./media/cloud-services-how-to-configure-portal/cs-monitoring.png)
 

@@ -1,22 +1,25 @@
 ---
-title: Azure Cloud Services NetworkConfiguration-schema | Microsoft Docs
+title: NetworkConfiguration-schema för Azure Cloud Services (klassisk) | Microsoft Docs
 description: Lär dig mer om de underordnade elementen för NetworkConfiguration-elementet i tjänst konfigurations filen, som anger Virtual Network och DNS-värden.
-ms.custom: ''
-ms.date: 12/07/2016
-services: cloud-services
+ms.topic: article
 ms.service: cloud-services
-ms.topic: reference
-caps.latest.revision: 28
-author: tgore03
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: a3f62bb33332e818cc40c5195a1cc2f667f819b4
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+'---thor': tagore
+ms.openlocfilehash: acf4c050ade21a6e5fc51ee6ace512eff00360ab
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92072585"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743465"
 ---
-# <a name="azure-cloud-services-config-networkconfiguration-schema"></a>NetworkConfiguration-schema för Azure Cloud Services config
+# <a name="azure-cloud-services-classic-config-networkconfiguration-schema"></a>Azure Cloud Services (klassisk) konfiguration av NetworkConfiguration-schema
+
+> [!IMPORTANT]
+> [Azure Cloud Services (utökad support)](../cloud-services-extended-support/overview.md) är en ny Azure Resource Manager baserad distributions modell för Azure Cloud Services-produkten.Med den här ändringen har Azure Cloud Services som körs på Azure Service Manager-baserade distributions modellen bytt namn som Cloud Services (klassisk) och alla nya distributioner bör använda [Cloud Services (utökad support)](../cloud-services-extended-support/overview.md).
 
 `NetworkConfiguration`Elementet i tjänst konfigurations filen anger Virtual Network-och DNS-värden. De här inställningarna är valfria för moln tjänster.
 

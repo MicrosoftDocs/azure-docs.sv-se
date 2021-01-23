@@ -1,24 +1,24 @@
 ---
-title: Bygg och distribuera en Node.js Express-app till Azure Cloud Services
-titleSuffix: Azure Cloud Services
+title: Bygg och distribuera en Node.js Express-app till Azure Cloud Services (klassisk)
 description: Använd den här självstudien för att skapa ett nytt program med hjälp av Express-modulen, som innehåller ett MVC-ramverk för att skapa Node.js webb program.
-services: cloud-services
-documentationcenter: nodejs
-author: tgore03
-ms.service: cloud-services
-ms.devlang: nodejs
 ms.topic: article
-ms.date: 08/17/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.custom: devx-track-js
-ms.openlocfilehash: 7ecaccf36988e94d0cb1114bd04c5d571d4fe86d
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: e15af589b3a3c496738c97c0c2c6429ba708ba7e
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92071871"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743346"
 ---
-# <a name="build-and-deploy-a-nodejs-web-application-using-express-on-an-azure-cloud-services"></a>Bygg och distribuera ett Node.js-webbprogram med hjälp av Express på en Azure-Cloud Services
+# <a name="build-and-deploy-a-nodejs-web-application-using-express-on-an-azure-cloud-services-classic"></a>Bygg och distribuera ett Node.js-webbprogram med hjälp av Express på en Azure-Cloud Services (klassisk)
+
+> [!IMPORTANT]
+> [Azure Cloud Services (utökad support)](../cloud-services-extended-support/overview.md) är en ny Azure Resource Manager baserad distributions modell för Azure Cloud Services-produkten.Med den här ändringen har Azure Cloud Services som körs på Azure Service Manager-baserade distributions modellen bytt namn som Cloud Services (klassisk) och alla nya distributioner bör använda [Cloud Services (utökad support)](../cloud-services-extended-support/overview.md).
 
 Node.js innehåller en minimal uppsättning funktioner i kärn körningen.
 Utvecklare använder ofta moduler från tredje part för att tillhandahålla ytterligare funktioner när du utvecklar ett Node.js-program. I den här självstudien får du skapa ett nytt program med hjälp av [Express](https://github.com/expressjs/express) -modulen, som innehåller ett MVC-ramverk för att skapa Node.js webb program.
@@ -32,7 +32,7 @@ En skärm bild av det färdiga programmet är nedan:
 
 Utför följande steg för att skapa ett nytt Cloud Service-projekt med namnet "expressapp":
 
-1. Från **Start-menyn** eller **Start skärmen**söker du efter **Windows PowerShell**. Högerklicka slutligen på **Windows PowerShell** och välj **Kör som administratör**.
+1. Från **Start-menyn** eller **Start skärmen** söker du efter **Windows PowerShell**. Högerklicka slutligen på **Windows PowerShell** och välj **Kör som administratör**.
 
     ![Azure PowerShell ikon](./media/cloud-services-nodejs-develop-deploy-express-app/azure-powershell-start.png)
 2. Ändra kataloger till katalogen **c: \\ Node** och ange sedan följande kommandon för att skapa en ny lösning med namnet **expressapp** och en webbroll med namnet **WebRole1**:

@@ -1,20 +1,25 @@
 ---
-title: Vad är Azure Cloud Services | Microsoft Docs
+title: Vad är Azure Cloud Services (klassisk) | Microsoft Docs
 description: Lär dig mer om vad Azure Cloud Services är, särskilt att det är utformat för att stödja program som är skalbara, tillförlitliga och billiga att fungera.
-services: cloud-services
-author: tgore03
-ms.service: multiple
 ms.topic: article
-ms.date: 04/19/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 0013a3a29bae9d2dde7896b3ae23d0d358946f2b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: cbb9aae57b952c05aa722f81309158a11aef826b
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88224296"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742819"
 ---
-# <a name="overview-of-azure-cloud-services"></a>Översikt över Azure Cloud Services
+# <a name="overview-of-azure-cloud-services-classic"></a>Översikt över Azure Cloud Services (klassisk)
+
+> [!IMPORTANT]
+> [Azure Cloud Services (utökad support)](../cloud-services-extended-support/overview.md) är en ny Azure Resource Manager baserad distributions modell för Azure Cloud Services-produkten.Med den här ändringen har Azure Cloud Services som körs på Azure Service Manager-baserade distributions modellen bytt namn som Cloud Services (klassisk) och alla nya distributioner bör använda [Cloud Services (utökad support)](../cloud-services-extended-support/overview.md).
+
 Azure Cloud Services är ett exempel på en [plattform som en tjänst](https://azure.microsoft.com/overview/what-is-paas/) (PaaS). Precis som [Azure App Service](../app-service/overview.md)är den här tekniken utformad för att stödja program som är skalbara, tillförlitliga och billiga att fungera. På samma sätt som App Service finns på virtuella datorer (VM: ar) så är det också för Azure Cloud Services. Men du har större kontroll över de virtuella datorerna. Du kan installera din egen program vara på virtuella datorer som använder Azure Cloud Services och du kan komma åt dem via en fjärr anslutning.
 
 ![Azure Cloud Services-diagram](./media/cloud-services-choose-me/diagram.png)

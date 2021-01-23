@@ -1,20 +1,25 @@
 ---
-title: Anslut en moln tjänst till en anpassad domänkontrollant | Microsoft Docs
+title: Anslut en moln tjänst (klassisk) till en anpassad domänkontrollant | Microsoft Docs
 description: Lär dig hur du ansluter dina webb-/Worker-roller till en anpassad AD-domän med PowerShell och AD-domän tillägg
-services: cloud-services
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 07/18/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: fa918a3a6894205ed36c4b576608e7a71e523a92
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 8c2c8377944caa7ad28f6b379531e6d5bf44c9e7
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87092719"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742513"
 ---
-# <a name="connecting-azure-cloud-services-roles-to-a-custom-ad-domain-controller-hosted-in-azure"></a>Ansluta Azure Cloud Services-roller till en anpassad AD-domänkontrollant som finns i Azure
+# <a name="connecting-azure-cloud-services-classic-roles-to-a-custom-ad-domain-controller-hosted-in-azure"></a>Ansluta Azure Cloud Services-roller (klassiska) till en anpassad AD-domänkontrollant som finns i Azure
+
+> [!IMPORTANT]
+> [Azure Cloud Services (utökad support)](../cloud-services-extended-support/overview.md) är en ny Azure Resource Manager baserad distributions modell för Azure Cloud Services-produkten.Med den här ändringen har Azure Cloud Services som körs på Azure Service Manager-baserade distributions modellen bytt namn som Cloud Services (klassisk) och alla nya distributioner bör använda [Cloud Services (utökad support)](../cloud-services-extended-support/overview.md).
+
 Vi konfigurerar först en Virtual Network (VNet) i Azure. Vi lägger sedan till en Active Directory-domän kontroll (som finns på en virtuell Azure-dator) i VNet. Nu ska vi lägga till befintliga Cloud Service-roller i det förskapade VNet-nätverket och sedan ansluta dem till domänkontrollanten.
 
 Innan vi börjar kan du tänka på följande:
@@ -27,7 +32,7 @@ Följ den här steg-för-steg-guiden och om du stöter på problem, lämna oss e
 Nätverket som moln tjänsten refererar till måste vara ett **klassiskt virtuellt nätverk**.
 
 ## <a name="create-a-virtual-network"></a>Skapa ett virtuellt nätverk
-Du kan skapa en Virtual Network i Azure med hjälp av Azure Portal eller PowerShell. I den här självstudien används PowerShell. Information om hur du skapar ett virtuellt nätverk med hjälp av Azure Portal finns i [skapa ett virtuellt nätverk](../virtual-network/quick-create-portal.md). Artikeln beskriver hur du skapar ett virtuellt nätverk (Resource Manager), men du måste skapa ett virtuellt nätverk (klassiskt) för Cloud Services. Det gör du genom att välja **skapa en resurs**i portalen, skriva ett *virtuellt nätverk* i **sökrutan och** sedan trycka på **RETUR**. I Sök resultaten under **allt**väljer du **virtuellt nätverk**. Välj **klassisk**under **Välj en distributions modell**och välj sedan **skapa**. Du kan sedan följa stegen i artikeln.
+Du kan skapa en Virtual Network i Azure med hjälp av Azure Portal eller PowerShell. I den här självstudien används PowerShell. Information om hur du skapar ett virtuellt nätverk med hjälp av Azure Portal finns i [skapa ett virtuellt nätverk](../virtual-network/quick-create-portal.md). Artikeln beskriver hur du skapar ett virtuellt nätverk (Resource Manager), men du måste skapa ett virtuellt nätverk (klassiskt) för Cloud Services. Det gör du genom att välja **skapa en resurs** i portalen, skriva ett *virtuellt nätverk* i **sökrutan och** sedan trycka på **RETUR**. I Sök resultaten under **allt** väljer du **virtuellt nätverk**. Välj **klassisk** under **Välj en distributions modell** och välj sedan **skapa**. Du kan sedan följa stegen i artikeln.
 
 ```powershell
 #Create Virtual Network

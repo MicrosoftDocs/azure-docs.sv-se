@@ -9,19 +9,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
-ms.date: 03/16/2018
+ms.date: 01/22/2021
 ms.author: duau
 ms.custom: ''
-ms.openlocfilehash: b20357413c62460aba55a2d354b90995a2aa4815
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 66376655c61903761d93ea228c6d72fa05734353
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98183701"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743057"
 ---
 # <a name="traffic-manager-traffic-view"></a>Traffic Manager Trafikvy
 
-Traffic Manager tillhandahåller routning av DNS-nivå så att slutanvändarna dirigeras till felfria slut punkter baserat på den routningsmetod som angavs när du skapade profilen. Trafikvy ger Traffic Manager en vy över dina användar baser (på en detaljerad nivå för DNS-matchning) och deras trafik mönster. När du aktiverar Trafikvy bearbetas den här informationen för att ge dig till gång till åtgärds bara insikter. 
+Traffic Manager tillhandahåller routning av DNS-nivå (Domain Name System). Med den här tjänsten kan slutanvändarna få till gång till felfria slut punkter baserat på vilken routningsmetod du väljer. Trafikvy ger Traffic Manager en vy över dina användar baser (på en detaljerad nivå för DNS-matchning) och deras trafik mönster. När du aktiverar Trafikvy bearbetas den här informationen för att ge dig till gång till åtgärds bara insikter. 
 
 Med hjälp av Trafikvy kan du:
 - förstå var dina användar baser finns (upp till en lokal DNS-matchare på nivån).
@@ -29,21 +29,22 @@ Med hjälp av Trafikvy kan du:
 - få insikter om vad som är den representativa svars tiden som dessa användare upplever.
 - djupgående att ta sig in i de speciella trafik mönstren från var och en av dessa användar baser till Azure-regioner där du har slut punkter. 
 
-Du kan till exempel använda Trafikvy för att förstå vilka regioner som har ett stort antal trafik, men som är lidande från högre fördröjningar. Sedan kan du använda den här informationen för att planera expansions utrymmet till nya Azure-regioner så att dessa användare kan ha en lägre svars tid.
+Du kan till exempel använda Trafikvy för att förstå vilka regioner som har stora mängder trafik men som är lidande från högre fördröjningar. Sedan använder du den här informationen för att planera expansions utrymme till nya Azure-regioner. På så sätt får användarna en lägre svars tid.
 
 ## <a name="how-traffic-view-works"></a>Så här fungerar Trafikvy
 
-Trafikvy fungerar genom att Traffic Manager titta på inkommande frågor som tagits emot under de senaste sju dagarna mot en profil som har den här funktionen aktive rad. Från informationen om inkommande frågor, Trafikvy extraherar käll-IP: en för den DNS-matchare som används som en representation av användarnas platser. De grupperas sedan tillsammans på en precisions nivå för DNS-matchning för att skapa användar bas regioner genom att använda den geografiska informationen för IP-adresser som underhålls av Traffic Manager. Traffic Manager tittar sedan på de Azure-regioner som frågan dirigerades till och skapar en trafik flödes karta för användare från dessa regioner.  
-I nästa steg korrelerar Traffic Manager användarens bas region till Azures region mappning med de tabeller för nätverks informations latenter som den upprätthåller för olika slut användar nätverk för att förstå genomsnittlig svars tid för användare från dessa regioner vid anslutning till Azure-regioner. Alla dessa beräkningar kombineras sedan till en IP-nivå för en lokal DNS-matchare innan den presenteras för dig. Du kan använda informationen på olika sätt.
+Trafikvy fungerar genom att titta på inkommande frågor som tagits emot under de senaste sju dagarna för en profil. Från informationen om inkommande frågor, Trafikvy extraherar käll-IP: en för den DNS-matchare som används för att representera användarnas platser. Den här informationen grupperas tillsammans på en DNS-matchare för att skapa användar bas regioner. Traffic Manager underhåller den geografiska informationen för IP-adresser. Traffic Manager tittar sedan på de Azure-regioner som frågan dirigeras till och skapar en trafik flödes karta för användare från dessa regioner.
+ 
+I nästa steg korrelerar Traffic Manager användar bas regionen till mappningen av Azure-regionen med tabell för nätverks informations fördröjning. Den här tabellen upprätthålls för olika slut användar nätverk för att förstå den genomsnittliga svars tiden från användare från dessa regioner vid anslutning till Azure-regioner. Alla dessa beräkningar kombineras sedan till en IP-nivå för en lokal DNS-matchare innan den presenteras för dig. Du kan använda informationen på olika sätt.
 
-Frekvensen för data uppdatering av trafikvyer beror på flera interna tjänst-variabler. Data uppdateras dock vanligt vis var 24: e timme.
+Frekvensen för data uppdatering av trafikvyer beror på flera interna tjänst-variabler. Data uppdateras dock en gång var 24: e timme.
 
 >[!NOTE]
 >Svars tiden som beskrivs i Trafikvy är en representativ fördröjning mellan slutanvändaren och de Azure-regioner som de var anslutna till och som inte är svars tiden för DNS-sökning. Trafikvy gör en uppskattning av svars tiden mellan den lokala DNS-matcharen och den Azure-region som frågan dirigerades till, om det inte finns tillräckligt med data tillgängliga, kommer svars tiden som returneras vara null. 
 
 ## <a name="visual-overview"></a>Visuell översikt
 
-När du navigerar till avsnittet **trafikvy** på Traffic Manager sidan, visas en geografisk karta med en överlagring av trafikvy insikter. Kartan ger information om användar basen och slut punkterna för din Traffic Manager profil.
+När du navigerar till avsnittet **trafikvy** på Traffic Manager sidan, ser du en geografisk karta med en överlägg av trafikvy insikter. Kartan ger information om användar basen och slut punkterna för din Traffic Manager profil.
 
 ![Traffic Manager geografisk vy för Trafikvy][1]
 
@@ -59,12 +60,20 @@ Om du hovrar över en DNS-matchare på kartan visas följande:
 
 ### <a name="endpoint-information"></a>Slut punkts information
 
-De Azure-regioner där slut punkterna finns visas som blå punkter i kartan. Om slut punkten är extern och inte har någon mappad Azure-region visas den överst i kartan. Klicka på en slut punkt om du vill se olika platser (baserat på den DNS-matchare som används) från vilken trafik dirigerades till slut punkten. Anslutningarna visas som en linje mellan slut punkten och platsen för DNS-matchning och är färgade enligt den representativa svars tiden mellan det paret. Dessutom kan du se namnet på slut punkten, den Azure-region där den körs och den totala mängden begär Anden som har dirigerats till den av den här Traffic Manager profilen.
+De Azure-regioner där slut punkterna finns visas som blå punkter i kartan. Om slut punkten är extern och inte har någon Azure-regions karta visas de överst i kartan. Välj en slut punkt om du vill se olika platser (baserat på den DNS-matchare som används) från vilken trafik dirigerades till slut punkten. Anslutningarna visas som en linje mellan slut punkten och platsen för DNS-matchning. De är färgade enligt den representativa svars tiden mellan det paret. Du kan se namnet på slut punkten och den Azure-region där den körs. Den totala mängden begär Anden som omdirigeras till den av den här Traffic Manager profilen visas också.
 
 
 ## <a name="tabular-listing-and-raw-data-download"></a>Hämtning av Tabellista och rå data
 
-Du kan visa Trafikvy data i tabell format i Azure Portal. Det finns en post för varje IP/Endpoint-par i DNS-matcharen som visar IP-adressen för DNS-matcharen, namnet på och den geografiska platsen för den Azure-region där slut punkten finns (om den är tillgänglig), antalet begär Anden som associeras med den här DNS-matcharen till den slut punkten och den representativa svars tid som är kopplad till slutanvändarna Du kan också hämta Trafikvy data som en CSV-fil som kan användas som en del av ett analys arbets flöde som du väljer.
+Du kan visa Trafikvy data i tabell format i Azure Portal. Det finns en post för varje IP/Endpoint-par för DNS-matchare som visar:
+
+* IP-adressen för DNS-matcharen.
+* Namnet.
+* Den geografiska platsen för den Azure-region där slut punkten finns (om tillgänglig).
+* Volymen av begär Anden som är kopplade till den DNS-matcharen till den slut punkten.
+* Den representativa svars tid som är kopplad till slutanvändare som använder DNS (där det är tillgängligt). 
+
+Du kan också hämta Trafikvy data som en CSV-fil som kan användas som en del av ett analys arbets flöde som du väljer.
 
 ## <a name="billing"></a>Fakturering
 

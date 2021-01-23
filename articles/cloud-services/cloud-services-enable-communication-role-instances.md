@@ -1,22 +1,25 @@
 ---
-title: Kommunikation för roller i Cloud Services | Microsoft Docs
+title: Kommunikation för roller i Cloud Services (klassisk) | Microsoft Docs
 description: Roll instanser i Cloud Services kan ha slut punkter (http, https, TCP, UDP) definierade för dem som kommunicerar med utanför eller mellan andra roll instanser.
-services: cloud-services
-documentationcenter: ''
-author: tgore03
-manager: carmonm
-ms.service: cloud-services
 ms.topic: article
-ms.date: 12/14/2016
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 094e08becf4f3a60c98d89bfae7e7c3a69b677f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 82aa1579a1f7feb36732153341e1eacf266a7218
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75386348"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743040"
 ---
-# <a name="enable-communication-for-role-instances-in-azure"></a>Aktivera kommunikation för roll instanser i Azure
+# <a name="enable-communication-for-role-instances-in-azure-cloud-services-classic"></a>Aktivera kommunikation för roll instanser i Azure Cloud Services (klassisk)
+
+> [!IMPORTANT]
+> [Azure Cloud Services (utökad support)](../cloud-services-extended-support/overview.md) är en ny Azure Resource Manager baserad distributions modell för Azure Cloud Services-produkten.Med den här ändringen har Azure Cloud Services som körs på Azure Service Manager-baserade distributions modellen bytt namn som Cloud Services (klassisk) och alla nya distributioner bör använda [Cloud Services (utökad support)](../cloud-services-extended-support/overview.md).
+
 Moln tjänst roller kommunicerar via interna och externa anslutningar. Externa anslutningar kallas för **ingångs slut punkter** medan interna anslutningar kallas **interna slut punkter**. I det här avsnittet beskrivs hur du ändrar [tjänst definitionen](cloud-services-model-and-package.md#csdef) för att skapa slut punkter.
 
 ## <a name="input-endpoint"></a>Slut punkt för indatakälla
@@ -106,7 +109,7 @@ Egenskapen **instances** returnerar en samling **RoleInstance** -objekt. Den hä
 > 
 > 
 
-Om du vill fastställa port numret för en intern slut punkt på en roll instans kan du använda egenskapen [InstanceEndpoints](/previous-versions/azure/reference/ee741917(v=azure.100)) för att returnera ett Dictionary-objekt som innehåller slut punkts namn och deras motsvarande IP-adresser och portar. Egenskapen [IPEndpoint](/previous-versions/azure/reference/ee741919(v=azure.100)) returnerar IP-adressen och porten för en angiven slut punkt. Egenskapen **PublicIPEndpoint** returnerar porten för en belastningsutjämnad slut punkt. IP-adress delen av egenskapen **PublicIPEndpoint** används inte.
+Om du vill fastställa port numret för en intern slut punkt på en roll instans kan du använda [`InstanceEndpoints`](/previous-versions/azure/reference/ee741917(v=azure.100)) egenskapen för att returnera ett Dictionary-objekt som innehåller slut punkts namn och deras motsvarande IP-adresser och portar. [`IPEndpoint`](/previous-versions/azure/reference/ee741919(v=azure.100))Egenskapen returnerar IP-adressen och porten för en angiven slut punkt. `PublicIPEndpoint`Egenskapen returnerar porten för en belastningsutjämnad slut punkt. IP-adress delen av `PublicIPEndpoint` egenskapen används inte.
 
 Här är ett exempel som itererar roll instanser.
 
@@ -323,7 +326,7 @@ Tillåter endast nätverks trafik från **WebRole1** till **WorkerRole1**, och *
 ```
 
 ### <a name="scenario-4"></a>Scenario 4
-Tillåter endast nätverks trafik från **WebRole1** till **WorkerRole1**, **WebRole1** till **WorkerRole2**och **WorkerRole1** till **WorkerRole2**.
+Tillåter endast nätverks trafik från **WebRole1** till **WorkerRole1**, **WebRole1** till **WorkerRole2** och **WorkerRole1** till **WorkerRole2**.
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">

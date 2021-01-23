@@ -2,23 +2,23 @@
 title: VANLIGA fel söknings roller tilldelade till moln grupp – Azure Active Directory | Microsoft Docs
 description: Lär dig några vanliga frågor och fel söknings tips för att tilldela roller till grupper i Azure Active Directory.
 services: active-directory
-author: curtand
+author: rolyon
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: article
 ms.date: 11/05/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8735a0d34b9fcf5b86b6592980ffc5c7c3e3073c
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 0ff906654dc91c7b1980292efd2a737503e684e9
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96861943"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742921"
 ---
 # <a name="troubleshooting-roles-assigned-to-cloud-groups"></a>Felsökningsroller tilldelade till molngrupper
 
@@ -61,7 +61,7 @@ Team tjänst administratör | Katalog ägare  | &nbsp; | ✔️  | &nbsp;  | &nb
 SharePoint-administratör | Katalog ägare | &nbsp; | ✔️  | &nbsp;  | ✔️ 
 Program administratör | Katalog ägare  | &nbsp;  | &nbsp; | ✔️  | &nbsp;
 Moln program administratör | Katalog ägare  | &nbsp;  | &nbsp; | ✔️  | &nbsp;
-Användare | Katalog ägare | Endast om grupp ägare | Endast om grupp ägare | Endast om app-ägare  | &nbsp;
+User | Katalog ägare | Endast om grupp ägare | Endast om grupp ägare | Endast om app-ägare  | &nbsp;
 
 \*Gruppen är inte roll tilldelnings bara. det vill säga isAssignableToRole = false. Om en grupp är tilldelnings bara för roll måste personen som skapar åtkomst paketet också vara ägare till den roll tilldelnings bara gruppen.
 

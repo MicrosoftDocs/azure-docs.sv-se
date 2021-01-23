@@ -1,21 +1,25 @@
 ---
-title: Så här skapar och distribuerar du en moln tjänst | Microsoft Docs
+title: Så här skapar och distribuerar du en moln tjänst (klassisk) | Microsoft Docs
 description: Lär dig hur du använder snabb skapande metoden för att skapa en moln tjänst och använda upload för att ladda upp och distribuera ett moln tjänst paket i Azure.
-services: cloud-services
-documentationcenter: ''
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 05/18/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 66938975784f1de2abdc0ac22e62aaca82279f86
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 879b86714adf50b5a4da4398389405063ac046dc
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92164172"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743414"
 ---
-# <a name="how-to-create-and-deploy-a-cloud-service"></a>Skapa och distribuera en moln tjänst
+# <a name="how-to-create-and-deploy-an-azure-cloud-service-classic"></a>Så här skapar och distribuerar du en Azure Cloud Service (klassisk)
+
+> [!IMPORTANT]
+> [Azure Cloud Services (utökad support)](../cloud-services-extended-support/overview.md) är en ny Azure Resource Manager baserad distributions modell för Azure Cloud Services-produkten.Med den här ändringen har Azure Cloud Services som körs på Azure Service Manager-baserade distributions modellen bytt namn som Cloud Services (klassisk) och alla nya distributioner bör använda [Cloud Services (utökad support)](../cloud-services-extended-support/overview.md).
+
 I Azure Portal kan du skapa och distribuera en moln tjänst på två sätt: *snabb registrering* och *anpassad skapande*.
 
 Den här artikeln förklarar hur du använder metoden snabb registrering för att skapa en ny moln tjänst och sedan använder du **upload** för att ladda upp och distribuera ett moln tjänst paket i Azure. När du använder den här metoden gör Azure Portal tillgängliga praktiska länkar för att slutföra alla krav när du går. Om du är redo att distribuera moln tjänsten när du skapar den kan du göra båda samtidigt med hjälp av anpassade skapa.
@@ -53,10 +57,11 @@ Om du vill skapa en moln tjänst med distributioner av webb roller eller arbets 
 * Om några roll instanser kräver ett certifikat skapar du certifikaten. Cloud Services kräver en. pfx-fil med en privat nyckel. Du kan ladda upp certifikaten till Azure när du skapar och distribuerar moln tjänsten.
 
 ## <a name="create-and-deploy"></a>Skapa och distribuera
-1. Logga in på [Azure-portalen](https://portal.azure.com/).
-2. Klicka på **skapa en resurs > Compute**och bläddra sedan ned till och klicka på **moln tjänst**.
+1. Logga in på [Azure Portal](https://portal.azure.com/).
+2. Klicka på **skapa en resurs > Compute** och bläddra sedan ned till och klicka på **moln tjänst**.
 
-    ![Skärm bild som visar moln tjänst alternativet under skapa en resurs > beräkning.](media/cloud-services-how-to-create-deploy-portal/create-cloud-service.png)
+    ![Publicera din moln Service1](media/cloud-services-how-to-create-deploy-portal/create-cloud-service.png)
+
 3. I fönstret ny **moln tjänst** anger du ett värde för **DNS-namnet**.
 4. Skapa en ny **resurs grupp** eller Välj en befintlig.
 5. Välj en **plats**.
@@ -65,22 +70,22 @@ Om du vill skapa en moln tjänst med distributioner av webb roller eller arbets 
 8. Klicka på **OK** för att stänga fönstret **Ladda upp ett paket** .
 9. Om du inte har några certifikat att lägga till klickar du på **skapa**.
 
-    ![Publicera din moln tjänst](media/cloud-services-how-to-create-deploy-portal/select-package.png)
+    ![Publicera din moln service2](media/cloud-services-how-to-create-deploy-portal/select-package.png)
 
 ## <a name="upload-a-certificate"></a>Ladda upp ett certifikat
 Om distributions paketet har [kon figurer ATS för att använda certifikat](cloud-services-configure-ssl-certificate-portal.md#modify)kan du ladda upp certifikatet nu.
 
-1. Välj **certifikat**och i fönstret **Lägg till certifikat** väljer du filen TLS/SSL Certificate. pfx och anger sedan **lösen ordet** för certifikatet.
-2. Klicka på **bifoga certifikat**och sedan på **OK** i fönstret **Lägg till certifikat** .
+1. Välj **certifikat** och i fönstret **Lägg till certifikat** väljer du filen TLS/SSL Certificate. pfx och anger sedan **lösen ordet** för certifikatet.
+2. Klicka på **bifoga certifikat** och sedan på **OK** i fönstret **Lägg till certifikat** .
 3. Klicka på **skapa** i fönstret **moln tjänst** . När distributionen har nått statusen **klar** kan du fortsätta till nästa steg.
 
-    ![Skärm bild som visar processen för att ladda upp ett certifikat.](media/cloud-services-how-to-create-deploy-portal/attach-cert.png)
+    ![Publicera din moln service3](media/cloud-services-how-to-create-deploy-portal/attach-cert.png)
 
 ## <a name="verify-your-deployment-completed-successfully"></a>Verifiera att distributionen har slutförts
 1. Klicka på moln tjänst instansen.
 
     Statusen bör visa att tjänsten **körs**.
-2. Under **Essentials**klickar du på **webbplatsens URL** för att öppna moln tjänsten i en webbläsare.
+2. Under **Essentials** klickar du på **webbplatsens URL** för att öppna moln tjänsten i en webbläsare.
 
     ![CloudServices_QuickGlance](./media/cloud-services-how-to-create-deploy-portal/running.png)
 

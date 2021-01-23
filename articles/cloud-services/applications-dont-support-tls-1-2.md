@@ -12,14 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: ''
 ms.date: 03/16/2020
 ms.author: tagore
-ms.openlocfilehash: ae284a6afa1f2e396aef8177229c344b569be6ec
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 70bcf5bce1c8c07633baf070149a9bb80c331d9c
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075679"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742581"
 ---
 # <a name="troubleshooting-applications-that-dont-support-tls-12"></a>Felsöka program som inte stöder TLS 1,2
+
+> [!IMPORTANT]
+> [Azure Cloud Services (utökad support)](../cloud-services-extended-support/overview.md) är en ny Azure Resource Manager baserad distributions modell för Azure Cloud Services-produkten.Med den här ändringen har Azure Cloud Services som körs på Azure Service Manager-baserade distributions modellen bytt namn som Cloud Services (klassisk) och alla nya distributioner bör använda [Cloud Services (utökad support)](../cloud-services-extended-support/overview.md).
+
 I den här artikeln beskrivs hur du aktiverar de äldre TLS-protokollen (TLS 1,0 och 1,1) samt tillämpar äldre chiffersviter för att stödja ytterligare protokoll i webb-och arbets roller för Windows Server 2019 Cloud service. 
 
 Vi är införstådd med att vi vidtar åtgärder för att föråldra TLS 1,0 och TLS 1,1, men våra kunder kan behöva stödja de äldre protokollen och chiffersviter för att kunna planera för deras utfasning.  Vi rekommenderar att du inte aktiverar de här äldre värdena igen, men vi ger vägledning för att hjälpa kunderna. Vi uppmuntrar kunderna att utvärdera risken för regression innan du implementerar de ändringar som beskrivs i den här artikeln. 

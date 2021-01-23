@@ -1,26 +1,27 @@
 ---
-title: Kom igång med Azure Cloud Services och ASP.NET | Microsoft Docs
+title: Kom igång med Azure Cloud Services (klassisk) och ASP.NET | Microsoft Docs
 description: Lär dig hur du kan skapa en app för flera nivåer med ASP.NET MVC och Azure. Appen körs i en molntjänst med en webbroll och en arbetsroll. Appen använder Entity Framework, SQL Database och Azure Storage-köer och -blobbar.
-services: cloud-services, storage
-documentationcenter: .net
-author: tgore03
-manager: carmonm
+ms.topic: article
 ms.service: cloud-services
-ms.devlang: dotnet
-ms.custom: devx-track-csharp
-ms.topic: conceptual
-ms.date: 05/15/2017
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: a875c036c79419357f1134c32f62fdb060fec7c6
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: ae7fd5a7c9bc858cb18473374e7bd5589717eac6
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562301"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742088"
 ---
-# <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Kom igång med Azure Cloud Services och ASP.NET
+# <a name="get-started-with-azure-cloud-services-classic-and-aspnet"></a>Kom igång med Azure Cloud Services (klassisk) och ASP.NET
 
 ## <a name="overview"></a>Översikt
+
+> [!IMPORTANT]
+> [Azure Cloud Services (utökad support)](../cloud-services-extended-support/overview.md) är en ny Azure Resource Manager baserad distributions modell för Azure Cloud Services-produkten.Med den här ändringen har Azure Cloud Services som körs på Azure Service Manager-baserade distributions modellen bytt namn som Cloud Services (klassisk) och alla nya distributioner bör använda [Cloud Services (utökad support)](../cloud-services-extended-support/overview.md).
+
 Under den här kursen får du lära dig hur du skapar ett .NET-program på flera nivåer med en ASP.NET MVC-klientdel, samt att distribuera det till en [Azure-molntjänst](cloud-services-choose-me.md). Programmet använder [Azure SQL Database](/previous-versions/azure/ee336279(v=azure.100)), [Azure Blob-tjänsten](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage) och [Azure-kötjänsten](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern). Du kan [hämta Visual Studio-projektet](https://code.msdn.microsoft.com/Simple-Azure-Cloud-Service-e01df2e4) från MSDN Code Gallery.
 
 Under kursen får du lära dig hur du skapar och kör programmet lokalt, hur du distribuerar det till Azure och kör det i molnet, och hur du skapar det från grunden. Du kan börja med att skapa från grunden och sedan göra test- och distributionsstegen efteråt om du föredrar det.
@@ -28,7 +29,7 @@ Under kursen får du lära dig hur du skapar och kör programmet lokalt, hur du 
 ## <a name="contoso-ads-application"></a>Contoso Ads-program
 Programmet är en anslagstavla för annonser. Användare skapar en annons genom att skriva in text och ladda upp en bild. De kan se en lista över annonser med miniatyrbilder, och de kan se bilden i full storlek när de markerar en annons för att se detaljerna.
 
-![Annonslista](./media/cloud-services-dotnet-get-started/list.png)
+![Bild som visar AD-lista](./media/cloud-services-dotnet-get-started/list.png)
 
 Programmet använder det [köcentriska arbetsmönstret](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern) för att avlasta det processorintensiva arbetet med att skapa miniatyrbilder till en serverdelsprocess.
 
@@ -43,7 +44,7 @@ Under den här kursen får du lära dig hur du kör både klient- och serverdele
 * Hur du laddar upp filer och lagrar dem i Azure Blob-tjänsten.
 * Hur du använder Azure-kötjänsten för kommunikation mellan nivåer.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 Kursen förutsätter att du förstår [grundläggande koncept om Azure-molntjänster](cloud-services-choose-me.md), t.ex. termerna *webbroll* och *arbetsroll*.  Det förutsätts även att du kan använda [ASP.NET MVC](https://www.asp.net/mvc/tutorials/mvc-5/introduction/getting-started)- eller [Web Forms](https://www.asp.net/web-forms/tutorials/aspnet-45/getting-started-with-aspnet-45-web-forms/introduction-and-overview)-projekt i Visual Studio. Exempelprogrammet använder MVC, men större delen av kursen gäller också Web Forms.
 
 Du kan köra appen lokalt utan en Azure-prenumeration, men du behöver en prenumeration för att kunna distribuera programmet i molnet. Om du inte har ett konto kan du [aktivera MSDN-prenumerantförmåner](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A55E3C668) eller [registrera dig för en kostnadsfri utvärderingsversion](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A55E3C668).
@@ -60,7 +61,7 @@ Om du inte har någon av dessa kan Visual Studio installeras automatiskt när du
 ## <a name="application-architecture"></a>Programmets arkitektur
 Appen lagrar annonser i en SQL-databas och använder Entity Framework Code First för att skapa tabellerna och komma åt data. Databasen lagrar två URL:er för varje annons, en för bilden i full storlek och en för miniatyrbilden.
 
-![Annonstabell](./media/cloud-services-dotnet-get-started/adtable.png)
+![Det här är en bild av en AD-tabell](./media/cloud-services-dotnet-get-started/adtable.png)
 
 När en användare laddar upp en bild, lagrar klientdelen som körs i en webbroll bilden i en [Azure-blob](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage), och den lagrar annonsinformationen i databasen med en URL som pekar på blobben. Samtidigt skriver den ett meddelande till en Azure-kö. En serverdelsprocess som körs i en arbetsroll söker regelbundet i kön efter nya meddelanden. När ett nytt meddelande dyker upp, skapar arbetsrollen en miniatyrbild för den bilden och uppdaterar miniatyrbildens URL-databasfält för den annonsen. I följande diagram visas hur programmets olika delar fungerar tillsammans.
 
@@ -83,11 +84,11 @@ När en användare laddar upp en bild, lagrar klientdelen som körs i en webbrol
 
     Första gången du kör ett molntjänstprojekt tar det ungefär en minut för emulatorerna att starta. När emulatorerna har startats öppnas standardwebbläsaren med programmets startsida.
 
-    ![Contoso Ads-arkitektur](./media/cloud-services-dotnet-get-started/home.png)
+    ![Contoso Ads-arkitektur 1](./media/cloud-services-dotnet-get-started/home.png)
 8. Klicka på **Create an Ad** (Skapa en annons).
 9. Ange lite testdata och välj en *.jpg*-bild som ska laddas upp, och klicka sedan på **Create** (Skapa).
 
-    ![Sidan Create (Skapa)](./media/cloud-services-dotnet-get-started/create.png)
+    ![Bild som visar skapa sida](./media/cloud-services-dotnet-get-started/create.png)
 
     Appen går till indexsidan, men den visar inte en miniatyrbild för den nya annonsen eftersom den bearbetningen inte har utförts än.
 10. Vänta en stund och uppdatera sedan indexsidan om du vill se miniatyrbilden.
@@ -129,7 +130,7 @@ En Azure-molntjänst är den miljö som programmet kommer att köras i.
 
     I följande bild skapas en molntjänst med URL:en CSvccontosoads.cloudapp.net.
 
-    ![Ny molntjänst](./media/cloud-services-dotnet-get-started/newcs.png)
+    ![Bild som visar ny moln tjänst](./media/cloud-services-dotnet-get-started/newcs.png)
 
 ### <a name="create-a-database-in-azure-sql-database"></a>Skapa en databas i Azure SQL Database
 När appen körs i molnet använder den en molnbaserad databas.
@@ -230,7 +231,7 @@ Azure-lagringskontots anslutningssträngar för både webbrollsprojektet och arb
 
 1. I **Solution Explorer** högerklickar du på **ContosoAdsWeb** under **Roles** (Roller) i **ContosoAdsCloudService**-projektet. Klicka sedan på **Properties** (Egenskaper).
 
-    ![Rollegenskaper](./media/cloud-services-dotnet-get-started/roleproperties.png)
+    ![Bild som visar roll egenskaper](./media/cloud-services-dotnet-get-started/roleproperties.png)
 2. Klicka på fliken **Inställningar** . I list rutan **tjänst konfiguration** väljer du **moln**.
 
     ![Molnkonfiguration](./media/cloud-services-dotnet-get-started/sccloud.png)
@@ -378,7 +379,8 @@ I det här avsnittet konfigurerar du Azure Storage- och SQL-anslutningssträngar
 2. Spara ändringarna.
 3. Högerklicka på ContosoAdsWeb under **Roles** (Roller) i ContosoAdsCloudService-projektet, och klicka sedan på **Properties** (Egenskaper).
 
-    ![Skärm bild som visar meny alternativet egenskaper under roller.](./media/cloud-services-dotnet-get-started/roleproperties.png)
+    ![Bild av roll egenskaper](./media/cloud-services-dotnet-get-started/roleproperties.png)
+
 4. Klicka på fliken **Settings** (Inställningar) i egenskapsfönstret för **ContosoAdsWeb [roll]**, och klicka sedan på **Add Setting** (Lägg till inställning).
 
     Lämna **Service Configuration** (Tjänstkonfiguration) inställd på **All Configurations** (Alla konfigurationer).

@@ -1,21 +1,25 @@
 ---
 title: Vanliga hanterings uppgifter för moln tjänster | Microsoft Docs
 description: Lär dig hur du hanterar Cloud Services i Azure Portal. I de här exemplen används Azure Portal.
-services: cloud-services
-documentationcenter: ''
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 07/05/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 84e450a55f9482c3a713943adfcc4d7940ab873f
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 306da8dae31c2bbdb487e7128e3a2e24424c239d
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92076716"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743397"
 ---
-# <a name="manage-cloud-services-in-the-azure-portal"></a>Hantera Cloud Services i Azure Portal
+# <a name="manage-cloud-services-classic-in-the-azure-portal"></a>Hantera Cloud Services (klassisk) i Azure Portal
+
+> [!IMPORTANT]
+> [Azure Cloud Services (utökad support)](../cloud-services-extended-support/overview.md) är en ny Azure Resource Manager baserad distributions modell för Azure Cloud Services-produkten.Med den här ändringen har Azure Cloud Services som körs på Azure Service Manager-baserade distributions modellen bytt namn som Cloud Services (klassisk) och alla nya distributioner bör använda [Cloud Services (utökad support)](../cloud-services-extended-support/overview.md).
+
 I **Cloud Servicess** delen av Azure Portal kan du:
 
 * Uppdatera en tjänst roll eller en distribution.
@@ -77,7 +81,7 @@ Det finns två viktiga krav för en lyckad distributions växling:
 
 - Om du vill använda en statisk IP-adress för din produktions plats måste du även reservera en för mellanlagringsplatsen. Annars Miss lyckas växlingen.
 
-- Alla instanser av dina roller måste köras innan du kan utföra växlingen. Du kan kontrol lera status för dina instanser på bladet **Översikt** i Azure Portal. Du kan också använda kommandot [Get-AzureRole](/powershell/module/servicemanagement/azure.service/get-azurerole?view=azuresmps-3.7.0) i Windows PowerShell.
+- Alla instanser av dina roller måste köras innan du kan utföra växlingen. Du kan kontrol lera status för dina instanser på bladet **Översikt** i Azure Portal. Du kan också använda kommandot [Get-AzureRole](/powershell/module/servicemanagement/azure.service/get-azurerole?view=azuresmps-3.7.0&preserve-view=true) i Windows PowerShell.
 
 Observera att gäst operativ system uppdateringar och tjänst återställnings åtgärder också kan orsaka att distributions växlingar inte fungerar. Mer information finns i [Felsöka problem med distribution av moln tjänster](cloud-services-troubleshoot-deployment-problems.md).
 
@@ -94,7 +98,7 @@ Använd följande procedur för att ta bort en distribution eller din moln tjän
 
 1. I [Azure Portal][Azure portal]väljer du den moln tjänst som du vill ta bort. Det här steget öppnar bladet moln tjänst instans.
 
-2. Välj **ta bort**på bladet.
+2. Välj **ta bort** på bladet.
 
     ![Knappen Cloud Services ta bort](./media/cloud-services-how-to-manage-portal/delete-button.png)
 
@@ -104,7 +108,7 @@ Använd följande procedur för att ta bort en distribution eller din moln tjän
 
 4. Välj **ta bort** längst ned.
 
-5. Om du vill ta bort moln tjänsten väljer du **ta bort moln tjänst**. Sedan väljer du **Ja**i bekräftelse meddelandet.
+5. Om du vill ta bort moln tjänsten väljer du **ta bort moln tjänst**. Sedan väljer du **Ja** i bekräftelse meddelandet.
 
 > [!NOTE]
 > När en moln tjänst tas bort och utförlig övervakning har kon figurer ATS måste du ta bort data manuellt från ditt lagrings konto. Information om var du hittar mått tabeller finns i [Introduktion till moln tjänst övervakning](cloud-services-how-to-monitor.md).

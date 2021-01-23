@@ -3,23 +3,23 @@ title: Administratörs roll dokument i Microsoft 365 Services – Azure AD | Mic
 description: Hitta innehålls-och API-referenser för administratörs roller för Microsoft 365 Services i Azure Active Directory
 services: active-directory
 documentationcenter: ''
-author: curtand
+author: rolyon
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: reference
 ms.date: 11/05/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 42b1798646281ef4e78c9950e9931332cde373ed
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 5579e0d2094c3dc596e8e50992ae6bc31818ff87
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499177"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743074"
 ---
 # <a name="roles-for-microsoft-365-services-in-azure-active-directory"></a>Roller för Microsoft 365 tjänster i Azure Active Directory
 
@@ -38,7 +38,7 @@ Säkerhets & Compliance Center (Office 365 Avancerat skydd, Exchange Online Prot
 Säkra Poäng | [Administratörs roller för Azure AD](permissions-reference.md) | [Graph API](/graph/api/overview?view=graph-rest-1.0&preserve-view=true)<br>[Hämta roll tilldelningar](/graph/api/directoryrole-list?view=graph-rest-1.0&preserve-view=true)
 Compliance Manager (Efterlevnadshanteraren) | [Compliance Manager-roller](/office365/securitycompliance/meet-data-protection-and-regulatory-reqs-using-microsoft-cloud#permissions-and-role-based-access-control) | Inte tillgängligt
 Azure Information Protection | [Administratörs roller för Azure AD](permissions-reference.md) | [Graph API](/graph/api/overview?view=graph-rest-1.0&preserve-view=true)<br>[Hämta roll tilldelningar](/graph/api/directoryrole-list?view=graph-rest-1.0&preserve-view=true)
-Microsoft Cloud App Security | [Rollbaserad åtkomstkontroll](/cloud-app-security/manage-admins) | [API-referens](/cloud-app-security/api-tokens) 
+Microsoft Cloud App Security | [Rollbaserad åtkomst kontroll](/cloud-app-security/manage-admins) | [API-referens](/cloud-app-security/api-tokens) 
 Azure Advanced Threat Protection | [Azure ATP-rollgrupper](/azure-advanced-threat-protection/atp-role-groups) | Inte tillgängligt
 Windows Defender Advanced Threat Protection | [Windows Defender ATP – rollbaserad åtkomst kontroll](/windows/security/threat-protection/windows-defender-atp/rbac-windows-defender-advanced-threat-protection) | Inte tillgängligt
 Privileged Identity Management | [Administratörs roller för Azure AD](permissions-reference.md) | [Graph API](/graph/api/overview?view=graph-rest-1.0&preserve-view=true)<br>[Hämta roll tilldelningar](/graph/api/directoryrole-list?view=graph-rest-1.0&preserve-view=true)

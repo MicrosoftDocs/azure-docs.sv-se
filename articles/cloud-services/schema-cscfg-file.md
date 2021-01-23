@@ -1,22 +1,25 @@
 ---
-title: Definitions schema för Azure-Cloud Services (. cscfg-fil) | Microsoft Docs
+title: Definitions schema för Azure Cloud Services (klassisk) (. cscfg-fil) | Microsoft Docs
 description: En tjänst konfigurations fil (. cscfg) anger hur många roll instanser som ska distribueras för varje roll, konfigurations värden och certifikat tumavtrycken för en roll.
-services: cloud-services
-ms.custom: ''
-ms.date: 12/07/2016
+ms.topic: article
 ms.service: cloud-services
-ms.topic: reference
-caps.latest.revision: 35
-author: tgore03
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: cb77181e00c97b7f426429793f17af3cb5e84ebe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: ba933d4981fb7ed209a7fb5d5c41113750f312de
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79534753"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743482"
 ---
-# <a name="azure-cloud-services-config-schema-cscfg-file"></a>Azure Cloud Services config-schema (. cscfg-fil)
+# <a name="azure-cloud-services-classic-config-schema-cscfg-file"></a>Konfigurations schema för Azure Cloud Services (klassisk) (. cscfg-fil)
+
+> [!IMPORTANT]
+> [Azure Cloud Services (utökad support)](../cloud-services-extended-support/overview.md) är en ny Azure Resource Manager baserad distributions modell för Azure Cloud Services-produkten.Med den här ändringen har Azure Cloud Services som körs på Azure Service Manager-baserade distributions modellen bytt namn som Cloud Services (klassisk) och alla nya distributioner bör använda [Cloud Services (utökad support)](../cloud-services-extended-support/overview.md).
+
 Tjänst konfigurations filen anger antalet roll instanser som ska distribueras för varje roll i tjänsten, värdena för alla konfigurations inställningar och tumavtrycken för alla certifikat som är associerade med en roll. Om tjänsten är en del av en Virtual Network måste konfigurations information för nätverket anges i tjänst konfigurations filen, samt i konfigurations filen för det virtuella nätverket. Standard tillägget för tjänst konfigurations filen är. cscfg.
 
 Tjänst modellen beskrivs av det [klassiska definitions schemat för moln tjänsten](schema-csdef-file.md).

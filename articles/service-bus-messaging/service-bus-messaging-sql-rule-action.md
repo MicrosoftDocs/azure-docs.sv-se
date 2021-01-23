@@ -3,12 +3,12 @@ title: Syntax för SQL-åtgärd för Azure Service Bus prenumerations regel | Mi
 description: Den här artikeln innehåller en referens för syntax för SQL-regel åtgärder. Åtgärderna skrivs i SQL-språkbaserad syntax som utförs mot ett meddelande.
 ms.topic: article
 ms.date: 11/24/2020
-ms.openlocfilehash: 606281d42d5598d7f73312990d3a19775a202c08
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: f7b8cdfcccc22508b98a42391d2a0ef9955232d0
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98632819"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742697"
 ---
 # <a name="subscription-rule-sql-action-syntax"></a>SQL-Action-syntax för prenumerations regel
 
@@ -53,11 +53,11 @@ En *SQL-åtgärd* används för att manipulera metadata för meddelanden när et
   
 ## <a name="arguments"></a>Argument  
   
--   `<scope>` är en valfri sträng som anger omfånget för `<property_name>` . Giltiga värden är `sys` eller `user` . `sys`Värdet anger systemets omfattning där `<property_name>` är ett offentligt egenskaps namn för [klassen BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage). `user` anger användar omfång där `<property_name>` är en nyckel för [BrokeredMessage-klass](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) ord listan. `user` omfånget är standard omfånget om `<scope>` inget värde anges.  
+-   `<scope>` är en valfri sträng som anger omfånget för `<property_name>` . Giltiga värden är `sys` eller `user` . `sys`Värdet anger systemets omfattning där `<property_name>` är ett offentligt egenskaps namn för [klassen BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage). `user` anger användar omfång där `<property_name>` är en nyckel för [BrokeredMessage-klass](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) ord listan. `user` omfånget är standard omfånget om det `<scope>` inte har angetts.  
   
 ### <a name="remarks"></a>Kommentarer  
 
-Ett försök att komma åt en icke-befintlig system egenskap är ett fel, medan ett försök att få åtkomst till en icke-befintlig användar egenskap inte är ett fel. I stället utvärderas en icke-befintlig användar egenskap internt som ett okänt värde. Ett okänt värde behandlas särskilt under utvärderingen av operatorn.  
+Ett försök att komma åt en icke-befintlig system egenskap är ett fel, medan ett försök att komma åt en icke-befintlig användar egenskap inte är ett fel. I stället utvärderas en icke-befintlig användar egenskap internt som ett okänt värde. Ett okänt värde behandlas särskilt under utvärderingen av operatorn.  
   
 ## <a name="property_name"></a>property_name  
   
@@ -94,7 +94,7 @@ Ett försök att komma åt en icke-befintlig system egenskap är ett fel, medan 
   
 ```  
   
- `<quoted_identifier>` är en sträng som omges av dubbla citat tecken. Ett dubbelt citat tecken i identifierare representeras som två dubbla citat tecken. Du bör inte använda citerade identifierare eftersom det enkelt kan förväxlas med en strängkonstant. Använd en avgränsad identifierare om möjligt. Följande är ett exempel på `<quoted_identifier>` :  
+ `<quoted_identifier>` är en sträng som omges av dubbla citat tecken. Ett dubbelt citat tecken i identifierare representeras som två dubbla citat tecken. Det rekommenderas inte att använda citerade identifierare eftersom det enkelt kan förväxlas med en strängkonstant. Använd en avgränsad identifierare om möjligt. Följande är ett exempel på `<quoted_identifier>` :  
   
 ```  
 "Contoso & Northwind"  
@@ -137,7 +137,7 @@ Ett försök att komma åt en icke-befintlig system egenskap är ett fel, medan 
   
 ### <a name="arguments"></a>Argument  
   
--   `<integer_constant>` är en sträng med tal som inte omges av citat tecken och som inte innehåller några decimaler. Värdena lagras som `System.Int64` internt och följer samma intervall.  
+-   `<integer_constant>` är en sträng med tal som inte står inom citat tecken och som inte innehåller några decimaler. Värdena lagras som `System.Int64` internt och följer samma intervall.  
   
      Följande är exempel på långa konstanter:  
   
@@ -195,9 +195,11 @@ Sträng konstanter omges av enkla citat tecken och innehåller alla giltiga Unic
   
 ### <a name="remarks"></a>Kommentarer  
 
-`newid()`Funktionen returnerar ett **system. GUID** som genereras av `System.Guid.NewGuid()` metoden.  
+`newid()`Funktionen returnerar en `System.Guid` som genereras av `System.Guid.NewGuid()` metoden.  
   
 `property(name)`Funktionen returnerar värdet för den egenskap som refereras till av `name` . `name`Värdet kan vara ett giltigt uttryck som returnerar ett sträng värde.  
+
+[!INCLUDE [service-bus-filter-examples](../../includes/service-bus-filter-examples.md)]
   
 ## <a name="considerations"></a>Överväganden
 
@@ -205,7 +207,7 @@ Sträng konstanter omges av enkla citat tecken och innehåller alla giltiga Unic
 - TA bort används för att ta bort en egenskap.
 - SET utför implicit konvertering om det är möjligt när uttrycks typen och den befintliga egenskaps typen skiljer sig.
 - Åtgärden Miss lyckas om det inte finns några refererade system egenskaper.
-- Det går inte att utföra åtgärden om det inte finns referenser till användar egenskaper som inte finns.
+- Åtgärden kunde inte utföras om det inte finns några referenser till användar egenskaperna.
 - En icke-befintlig användar egenskap utvärderas som "okänd" internt och följer samma semantik som [SQLFilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter) vid utvärdering av operatorer.
 
 ## <a name="next-steps"></a>Nästa steg
@@ -214,5 +216,5 @@ Sträng konstanter omges av enkla citat tecken och innehåller alla giltiga Unic
 - [SQLRuleAction-klass (.NET standard)](/dotnet/api/microsoft.azure.servicebus.sqlruleaction)
 - [SqlRuleAction-klass (Java)](/java/api/com.microsoft.azure.servicebus.rules.sqlruleaction)
 - [SqlRuleAction (Java Script)](/javascript/api/@azure/service-bus/sqlruleaction)
-- [prenumerations regel för AZ Service Bus-ämne](/cli/azure/servicebus/topic/subscription/rule)
+- [`az servicebus topic subscription rule`](/cli/azure/servicebus/topic/subscription/rule)
 - [New-AzServiceBusRule](/powershell/module/az.servicebus/new-azservicebusrule)

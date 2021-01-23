@@ -1,23 +1,24 @@
 ---
 title: Node.js program med Socket.io – Azure
-description: Använd den här självstudien för att lära dig att vara värd för en socket. I/o-baserade chatt-program på Azure. Socket.IO tillhandahåller kommunikation i real tid för en node.js-Server och-klienter.
-services: cloud-services
-documentationcenter: nodejs
-author: tgore03
-ms.service: cloud-services
-ms.devlang: nodejs
+description: Använd den här självstudien för att lära dig att vara värd för en socket. I/o-baserade chatt-program på Azure. Socket.IO tillhandahåller real tids kommunikation för en node.js-Server och-klienter.
 ms.topic: article
-ms.date: 08/17/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.custom: devx-track-js
-ms.openlocfilehash: ef7325b53f7d6450acdff4664f3e338c31be9612
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: abc02769d7d978e14975d90ae0f98547bdc4faf7
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92077226"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743329"
 ---
-# <a name="build-a-nodejs-chat-application-with-socketio-on-an-azure-cloud-service"></a>Bygg ett Node.js chatt-program med Socket.IO på en moln tjänst i Azure
+# <a name="build-a-nodejs-chat-application-with-socketio-on-an-azure-cloud-service-classic"></a>Bygg ett Node.js chatt-program med Socket.IO på en Azure Cloud Service (klassisk)
+
+> [!IMPORTANT]
+> [Azure Cloud Services (utökad support)](../cloud-services-extended-support/overview.md) är en ny Azure Resource Manager baserad distributions modell för Azure Cloud Services-produkten.Med den här ändringen har Azure Cloud Services som körs på Azure Service Manager-baserade distributions modellen bytt namn som Cloud Services (klassisk) och alla nya distributioner bör använda [Cloud Services (utökad support)](../cloud-services-extended-support/overview.md).
 
 Socket.IO tillhandahåller kommunikation i real tid mellan node.js Server och klienter. Den här självstudien vägleder dig genom att vara värd för en socket. IO-baserat chat-program på Azure. Mer information om Socket.IO finns i [socket.io](https://socket.io).
 
@@ -25,7 +26,7 @@ En skärm bild av det färdiga programmet är nedan:
 
 ![Ett webbläsarfönster som visar tjänsten som finns på Azure][completed-app]
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 Se till att följande produkter och versioner är installerade för att kunna slutföra exemplet i den här artikeln:
 
 * Installera [Visual Studio](https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx)
@@ -35,7 +36,7 @@ Se till att följande produkter och versioner är installerade för att kunna sl
 ## <a name="create-a-cloud-service-project"></a>Skapa ett moln tjänst projekt
 Följande steg skapar det moln tjänst projekt som ska vara värd för Socket.IO-programmet.
 
-1. Från **Start-menyn** eller **Start skärmen**söker du efter **Windows PowerShell**. Högerklicka slutligen på **Windows PowerShell** och välj **Kör som administratör**.
+1. Från **Start-menyn** eller **Start skärmen** söker du efter **Windows PowerShell**. Högerklicka slutligen på **Windows PowerShell** och välj **Kör som administratör**.
 
     ![Azure PowerShell ikon][powershell-menu]
 2. Skapa en katalog som heter **c: \\ Node**.
@@ -50,7 +51,7 @@ Följande steg skapar det moln tjänst projekt som ska vara värd för Socket.IO
     PS C:\> cd node
     ```
 
-4. Ange följande kommandon för att skapa en ny lösning med namnet **ChatApp** och en arbets roll med namnet **WorkerRole1**:
+4. Ange följande kommandon för att skapa en ny lösning med namnet `chatapp` och en arbets roll med namnet `WorkerRole1` :
 
     ```powershell
     PS C:\node> New-AzureServiceProject chatapp
@@ -72,7 +73,7 @@ För det här projektet kommer vi att använda chatt-exemplet från [socket.io G
    ![Explorer, som visar innehållet i exemplen i \\ Chat-katalogen som extraherats från arkivet][chat-contents]
 
    De markerade objekten i skärm bilden ovan är filerna som kopieras från **exemplen i \\ Chat** -katalogen
-3. I katalogen **C: \\ Node \\ ChatApp \\ WorkerRole1** tar du bort **server.js** -filen och byter sedan namn på **app.js** filen till **server.js**. Detta tar bort standard **server.jss ** filen som skapades tidigare av cmdleten **Add-AzureNodeWorkerRole** och ersätter den med program filen från Chat-exemplet.
+3. I katalogen **C: \\ Node \\ ChatApp \\ WorkerRole1** tar du bort **server.js** -filen och byter sedan namn på **app.js** filen till **server.js**. Detta tar bort standard **server.jss** filen som skapades tidigare av cmdleten **Add-AzureNodeWorkerRole** och ersätter den med program filen från Chat-exemplet.
 
 ### <a name="modify-serverjs-and-install-modules"></a>Ändra Server.js och installera moduler
 Innan du testar programmet i Azure-emulatorn måste vi göra några mindre ändringar. Utför följande steg i server.js-filen:
@@ -92,14 +93,14 @@ Innan du testar programmet i Azure-emulatorn måste vi göra några mindre ändr
 3. Se till att programmet lyssnar på rätt port genom att öppna server.js i anteckningar eller din favorit redigerare och sedan ändra följande rad genom att ersätta **3000** med **process. kuvert. port** enligt nedan:
 
     ```js
-    //app.listen(3000, function () {            //Original
+    //app.listen(3000, function () {            //Original
     app.listen(process.env.port, function () {  //Updated
       var addr = app.address();
       console.log('   app listening on http://' + addr.address + ':' + addr.port);
     });
     ```
 
-När du har sparat ändringarna i **server.js**använder du följande steg för att installera nödvändiga moduler och testar sedan programmet i Azure-emulatorn:
+När du har sparat ändringarna i **server.js** använder du följande steg för att installera nödvändiga moduler och testar sedan programmet i Azure-emulatorn:
 
 1. Använd **Azure PowerShell**, ändra kataloger till katalogen **C: \\ Node \\ ChatApp \\ WorkerRole1** och Använd följande kommando för att installera modulerna som krävs för det här programmet:
 
@@ -139,7 +140,7 @@ När du har sparat ändringarna i **server.js**använder du följande steg för 
     PS C:\node\chatapp\WorkerRole1> Stop-AzureEmulator
     ```
 
-5. Använd cmdleten **Publish-AzureServiceProject** om du vill distribuera programmet till Azure. Exempel:
+5. Använd cmdleten **Publish-AzureServiceProject** om du vill distribuera programmet till Azure. Ett exempel:
 
     ```powershell
     PS C:\node\chatapp\WorkerRole1> Publish-AzureServiceProject -ServiceName mychatapp -Location "East US" -Launch

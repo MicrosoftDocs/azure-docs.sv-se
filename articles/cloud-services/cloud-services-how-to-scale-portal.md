@@ -1,20 +1,24 @@
 ---
-title: Skala en moln tjänst automatiskt i portalen | Microsoft Docs
+title: Skala en moln tjänst automatiskt (klassisk) i portalen | Microsoft Docs
 description: Lär dig hur du använder portalen för att konfigurera regler för automatisk skalning för en webb roll eller arbets roll i en moln tjänst i Azure.
-services: cloud-services
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 05/18/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 06a0209c2bbd0982054d33c199685d016f405b0c
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: a3e7f72dbe16c51280b922da2b5fc6550dee1d34
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92165493"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743363"
 ---
-# <a name="how-to-configure-auto-scaling-for-a-cloud-service-in-the-portal"></a>Så här konfigurerar du automatisk skalning för en moln tjänst i portalen
+# <a name="how-to-configure-auto-scaling-for-a-cloud-service-classic-in-the-portal"></a>Så här konfigurerar du automatisk skalning för en moln tjänst (klassisk) i portalen
+
+> [!IMPORTANT]
+> [Azure Cloud Services (utökad support)](../cloud-services-extended-support/overview.md) är en ny Azure Resource Manager baserad distributions modell för Azure Cloud Services-produkten.Med den här ändringen har Azure Cloud Services som körs på Azure Service Manager-baserade distributions modellen bytt namn som Cloud Services (klassisk) och alla nya distributioner bör använda [Cloud Services (utökad support)](../cloud-services-extended-support/overview.md).
 
 Villkor kan anges för en arbets roll för en moln tjänst som utlöser en skalning i eller ut-åtgärd. Villkoren för rollen kan baseras på CPU, disk eller nätverks belastning för rollen. Du kan också ange ett villkor baserat på en meddelandekö eller mått för en annan Azure-resurs som är associerad med din prenumeration.
 
@@ -34,7 +38,7 @@ Du bör fundera över följande information innan du konfigurerar skalning för 
 
 * Om du vill aktivera hög tillgänglighet för ditt program bör du kontrol lera att det har distribuerats med två eller fler roll instanser. Mer information finns i [service nivå avtal](https://azure.microsoft.com/support/legal/sla/).
 
-* Automatisk skalning sker bara när alla roller har statusen **klar** .  
+* Automatisk skalning sker bara när alla roller har statusen **klar** .  
 
 
 ## <a name="where-scale-is-located"></a>Där skalan finns
@@ -53,7 +57,7 @@ Du kan konfigurera skalnings inställningar för en roll med antingen två läge
 
 Ställ in alternativet **skala enligt** för **schema-och prestanda regler**.
 
-![Skärm bild som visar alternativet schema och prestanda regler.](./media/cloud-services-how-to-scale-portal/schedule-basics.png)
+![bild moln tjänster skalnings inställningar med profil och regel](./media/cloud-services-how-to-scale-portal/schedule-basics.png)
 
 1. En befintlig profil.
 2. Lägg till en regel för den överordnade profilen.

@@ -3,12 +3,12 @@ title: Azure Service Bus SQL filter-syntax för prenumerations regel | Microsoft
 description: Den här artikeln innehåller information om grammatik i SQL-filter. Ett SQL-filter stöder en delmängd av SQL-92-standarden.
 ms.topic: article
 ms.date: 11/24/2020
-ms.openlocfilehash: 93739b0d64fb029f4d2af1d8dbbf91947085337d
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 810d17d458de79c851b6f1ada4556a231bfd20eb
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737667"
+ms.locfileid: "98742989"
 ---
 # <a name="subscription-rule-sql-filter-syntax"></a>SQL filter-syntax för prenumerations regel
 
@@ -270,91 +270,7 @@ Tänk på följande [SqlFilter](/dotnet/api/microsoft.servicebus.messaging.sqlfi
 -   Aritmetiska operatorer som,,, `+` `-` `*` `/` och `%` följer samma semantik som operatorn C# i data typs kampanjer och implicita konverteringar.
 
 
-## <a name="examples"></a>Exempel
-
-### <a name="filter-on-system-properties"></a>Filtrera efter system egenskaper
-Om du vill referera till en system egenskap i ett filter använder du följande format: `sys.<system-property-name>` . 
-
-```csharp
-sys.Label LIKE '%bus%'`
-sys.messageid = 'xxxx'
-sys.correlationid like 'abc-%'
-```
-
-## <a name="filter-on-message-properties"></a>Filtrera efter meddelande egenskaper
-Här följer några exempel på hur du använder meddelande egenskaper i ett filter. Du kan komma åt meddelande egenskaper med `user.property-name` eller bara `property-name` .
-
-```csharp
-MessageProperty = 'A'
-SuperHero like 'SuperMan%'
-```
-
-### <a name="filter-on-message-properties-with-special-characters"></a>Filtrera på meddelande egenskaper med specialtecken
-Om meddelandets egenskaps namn har specialtecken använder du dubbla citat tecken ( `"` ) för att omge egenskaps namnet. Om egenskaps namnet till exempel är `"http://schemas.microsoft.com/xrm/2011/Claims/EntityLogicalName"` använder du följande syntax i filtret. 
-
-```csharp
-"http://schemas.microsoft.com/xrm/2011/Claims/EntityLogicalName" = 'account'
-```
-
-### <a name="filter-on-message-properties-with-numeric-values"></a>Filtrera på meddelande egenskaper med numeriska värden
-I följande exempel visas hur du kan använda egenskaper med numeriska värden i filter. 
-
-```csharp
-MessageProperty = 1
-MessageProperty > 1
-MessageProperty > 2.08
-MessageProperty = 1 AND MessageProperty2 = 3
-MessageProperty = 1 OR MessageProperty2 = 3
-```
-
-### <a name="parameter-based-filters"></a>Parameterbaserade filter
-Här följer några exempel på hur du använder parameterbaserade filter. I de här exemplen `DataTimeMp` är en meddelande egenskap av typen `DateTime` och `@dtParam` en parameter som skickas till filtret som ett `DateTime` objekt.
-
-```csharp
-DateTimeMp < @dtParam
-DateTimeMp > @dtParam
-
-(DateTimeMp2-DateTimeMp1) <= @timespan //@timespan is a parameter of type TimeSpan
-DateTimeMp2-DateTimeMp1 <= @timespan
-```
-
-### <a name="using-in-and-not-in"></a>Använda i och inte i
-
-```csharp
-StoreId IN('Store1', 'Store2', 'Store3')"
-
-sys.To IN ('Store5','Store6','Store7') OR StoreId = 'Store8'
-
-sys.To NOT IN ('Store1','Store2','Store3','Store4','Store5','Store6','Store7','Store8') OR StoreId NOT IN ('Store1','Store2','Store3','Store4','Store5','Store6','Store7','Store8')
-```
-
-Ett C#-exempel finns i [avsnittet Filtrera exempel på GitHub](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Azure.Messaging.ServiceBus/BasicSendReceiveTutorialwithFilters).
-
-
-### <a name="set-rule-action-for-a-sql-filter"></a>Ange regel åtgärd för ett SQL-filter
-
-```csharp
-// instantiate the ManagementClient
-this.mgmtClient = new ManagementClient(connectionString);
-
-// create the SQL filter
-var sqlFilter = new SqlFilter("source = @stringParam");
-
-// assign value for the parameter
-sqlFilter.Parameters.Add("@stringParam", "orders");
-
-// instantiate the Rule = Filter + Action
-var filterActionRule = new RuleDescription
-{
-    Name = "filterActionRule",
-    Filter = sqlFilter,
-    Action = new SqlRuleAction("SET source='routedOrders'")
-};
-
-// create the rule on Service Bus
-await this.mgmtClient.CreateRuleAsync(topicName, subscriptionName, filterActionRule);
-```
-
+[!INCLUDE [service-bus-filter-examples](../../includes/service-bus-filter-examples.md)]
 
 ## <a name="next-steps"></a>Nästa steg
 

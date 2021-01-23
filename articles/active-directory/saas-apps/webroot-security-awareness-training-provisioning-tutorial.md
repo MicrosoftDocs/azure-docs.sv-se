@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 07/06/2020
 ms.author: Zhchia
-ms.openlocfilehash: 143c1a183ba697cbf5d9b19d7e0868a638650bc8
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: f015718c59178b8094f535280edadd641d22a806
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98632020"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98741935"
 ---
 # <a name="tutorial-configure-webroot-security-awareness-training-for-automatic-user-provisioning"></a>Självstudie: Konfigurera säkerhets medvetenhets utbildning för Webroot för automatisk användar etablering
 
@@ -34,7 +34,7 @@ I den här självstudien beskrivs de steg som du behöver utföra i både säker
 > * Behåll användarattribut synkroniserade mellan Azure AD och Webroot Security medvetenhet Training
 > * Etablera grupper och grupp medlemskap i säkerhets medvetenhets träning för Webroot
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Det scenario som beskrivs i den här självstudien förutsätter att du redan har följande krav:
 
@@ -157,7 +157,10 @@ När du har konfigurerat etableringen använder du följande resurser till att �
 
 1. Använd [etableringsloggarna](../reports-monitoring/concept-provisioning-logs.md) för att se vilka användare som har etablerats och vilka som har misslyckats
 2. Kontrollera [förloppsindikatorn](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md) för att se status för etableringscykeln och hur nära den är att slutföras
-3. Om etableringskonfigurationen verkar innehålla fel, kommer programmet att placeras i karantän. Läs mer om karantänstatus [här](../app-provisioning/application-provisioning-quarantine-status.md).  
+3. Om etableringskonfigurationen verkar innehålla fel, kommer programmet att placeras i karantän. Läs mer om karantänstatus [här](../app-provisioning/application-provisioning-quarantine-status.md).
+
+## <a name="change-log"></a>Ändringslogg
+* 1/21/2021 – stöd för Core-attributet "userName" för användare har lagts till.
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 

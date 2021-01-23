@@ -1,22 +1,24 @@
 ---
-title: Schema för Azure Cloud Services-roller | Microsoft Docs
+title: Roll schema för Azure Cloud Services (klassisk) | Microsoft Docs
 description: Roll elementet i en tjänst konfigurations fil anger hur många roll instanser som ska distribueras för varje roll, konfigurations värden och certifikat tumavtrycken.
-ms.custom: ''
-ms.date: 12/07/2016
-services: cloud-services
+ms.topic: article
 ms.service: cloud-services
-ms.topic: reference
-caps.latest.revision: 12
-author: tgore03
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: b64f9d27e382a39b132593502fed32c565af473a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 2dc8e14a4e4d8855abb615632bb7d43b9034d360
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79528429"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743448"
 ---
-# <a name="azure-cloud-services-config-role-schema"></a>Roll schema för Azure Cloud Services-konfiguration
+# <a name="azure-cloud-services-classic-config-role-schema"></a>Schema för konfigurations roll för Azure Cloud Services (klassisk)
+
+> [!IMPORTANT]
+> [Azure Cloud Services (utökad support)](../cloud-services-extended-support/overview.md) är en ny Azure Resource Manager baserad distributions modell för Azure Cloud Services-produkten.Med den här ändringen har Azure Cloud Services som körs på Azure Service Manager-baserade distributions modellen bytt namn som Cloud Services (klassisk) och alla nya distributioner bör använda [Cloud Services (utökad support)](../cloud-services-extended-support/overview.md).
 
 `Role`Elementet i konfigurations filen anger antalet roll instanser som ska distribueras för varje roll i tjänsten, värdena för alla konfigurations inställningar och tumavtrycken för alla certifikat som är associerade med en roll.
 
@@ -51,7 +53,7 @@ I följande tabell beskrivs `Role` elementets underordnade element.
 | Element | Beskrivning |
 | ------- | ----------- |
 | Instanser | Krävs. Anger antalet instanser som ska distribueras för rollen. Antalet instanser definieras av ett heltal för `count` attributet.|
-| Inställningen   | Valfritt. Anger ett inställnings namn och-värde i en samling inställningar för en roll. Inställnings namnet definieras av en sträng för `name` attributet och värdet Setting definieras av en sträng för `value` attributet.|
+| Inställning   | Valfritt. Anger ett inställnings namn och-värde i en samling inställningar för en roll. Inställnings namnet definieras av en sträng för `name` attributet och värdet Setting definieras av en sträng för `value` attributet.|
 | Certifikat | Valfritt. Anger namn, tumavtryck och algoritm för ett tjänst certifikat som ska associeras med rollen. Certifikat namnet definieras av en sträng för `name` attributet. Tumavtryck för certifikatet definieras av en sträng med hexadecimala tal som inte innehåller några blank steg för `thumbprint` attributet. De hexadecimala talen måste representeras med siffror och versaler i alfabetet. Certifikatets algoritm definieras av en sträng för `thumbprintAlgorithm` attributet.|
 
 ## <a name="see-also"></a>Se även

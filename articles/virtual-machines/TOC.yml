@@ -903,16 +903,14 @@
               href: ./workloads/redhat/redhat-rhui.md
 - name: Avbildningar
   items:
-    - name: Marketplace-avbildningar
+    - name: Hitta Azure Marketplace-avbildningar
       items:
-        - name: Hitta Azure Marketplace-avbildningar
-          items:
-            - name: CLI
-              href: ./linux/cli-ps-findimage.md
-            - name: PowerShell
-              href: ./windows/cli-ps-findimage.md
-            - name: Windows-klient avbildningar
-              href: ./windows/client-images.md
+        - name: CLI
+          href: ./linux/cli-ps-findimage.md
+        - name: PowerShell
+          href: ./windows/cli-ps-findimage.md
+        - name: Windows-klient avbildningar
+          href: ./windows/client-images.md
     - name: Anpassade Linux-avbildningar
       items:
         - name: Översikt
@@ -1058,6 +1056,8 @@
           href: image-version-encryption.md
         - name: Hanterad disk från avbildningsversion
           href: managed-disk-from-image-version.md
+        - name: Inköpsplaninformation
+          href: marketplace-images.md
     - name: Image Builder (förhandsversion)
       items:
         - name: Översikt
@@ -1105,8 +1105,6 @@
           href: ./linux/image-builder-user-assigned-identity.md
         - name: Felsöka
           href: ./linux/image-builder-troubleshoot.md
-    - name: Inköpsplaninformation
-      href: marketplace-images.md
     - name: Skapa en avbildning med Packer
       items:
         - name: Linux

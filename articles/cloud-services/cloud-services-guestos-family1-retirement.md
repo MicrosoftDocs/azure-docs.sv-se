@@ -9,14 +9,15 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 5/21/2017
 ms.author: raiye
-ms.openlocfilehash: 6de03969a22c5b699fdfd2be17a6ba65905d23e6
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 7f6d3feee95d4cce654b2cc1547b8bd7f4eb45d2
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92073401"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743023"
 ---
 # <a name="guest-os-family-1-retirement-notice"></a>Påminnelse om gäst operativ system familj 1
+
 Indragningen av OS-familjen 1 lanserades första den 1 juni 2013.
 
 **Sept 2, 2014** Azure gäst operativ systemet (gäst operativ system) Family 1. x, som baseras på operativ systemet Windows Server 2008, drogs tillbaka officiellt. Alla försök att distribuera nya tjänster eller uppgradera befintliga tjänster som använder Family 1 kommer att Miss lyckas med ett fel meddelande om att gäst operativ system familj 1 har dragits tillbaka.

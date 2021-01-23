@@ -1,20 +1,25 @@
 ---
-title: Köra start åtgärder i Azure Cloud Services | Microsoft Docs
+title: Köra start åtgärder i Azure Cloud Services (klassisk) | Microsoft Docs
 description: Start aktiviteter hjälper dig att förbereda din moln tjänst miljö för din app. Detta lär dig hur start aktiviteter fungerar och hur du gör dem
-services: cloud-services
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 07/05/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: f2417389de98f9998c189e7cbbbcdae77fbb8840
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 25190075bdd13bd4b75dd82c97ee06ee60f4c26c
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96020712"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743193"
 ---
-# <a name="how-to-configure-and-run-startup-tasks-for-a-cloud-service"></a>Konfigurera och köra start åtgärder för en moln tjänst
+# <a name="how-to-configure-and-run-startup-tasks-for-an-azure-cloud-service-classic"></a>Konfigurera och köra start åtgärder för en Azure Cloud Service (klassisk)
+
+> [!IMPORTANT]
+> [Azure Cloud Services (utökad support)](../cloud-services-extended-support/overview.md) är en ny Azure Resource Manager baserad distributions modell för Azure Cloud Services-produkten.Med den här ändringen har Azure Cloud Services som körs på Azure Service Manager-baserade distributions modellen bytt namn som Cloud Services (klassisk) och alla nya distributioner bör använda [Cloud Services (utökad support)](../cloud-services-extended-support/overview.md).
+
 Du kan använda Start åtgärder för att utföra åtgärder innan en roll startar. Åtgärder som du kanske vill utföra är att installera en komponent, registrera COM-komponenter, ange register nycklar eller starta en tids krävande process.
 
 > [!NOTE]
@@ -112,7 +117,7 @@ I följande avsnitt beskrivs attributen för **aktivitets** elementet i filen [s
   > 
   > 
   
-    Kör kommandot **errorlevel** `EXIT /B 0` i slutet av batch-filprocessen för att säkerställa att kommando filen slutar med en ERRORLEVEL på noll.
+    Kör kommandot  `EXIT /B 0` i slutet av batch-filprocessen för att säkerställa att kommando filen slutar med en ERRORLEVEL på noll.
 * **background**  
   Aktiviteter körs asynkront, parallellt med rollens start.
 * **överst**  

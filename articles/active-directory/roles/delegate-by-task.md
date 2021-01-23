@@ -3,23 +3,23 @@ title: Delegera roller efter administratörs uppgift – Azure Active Directory 
 description: Roller som ska delegeras för identitets uppgifter i Azure Active Directory
 services: active-directory
 documentationcenter: ''
-author: curtand
+author: rolyon
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: reference
 ms.date: 11/05/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e83ff37140369cb073f4bdc2bd24ac08ee9b1ab
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 3ad48141c69d78096981b89758afd56089093021
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93379102"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742938"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>Administratörs roller efter administratörs uppgift i Azure Active Directory
 
@@ -120,7 +120,7 @@ Skapa Azure AD Domain Services instans | Global administratör |
 Utföra alla Azure AD Domain Services uppgifter | Gruppen Azure AD DC-administratörer ([Se dokumentationen](../../active-directory-domain-services/tutorial-create-management-vm.md#administrative-tasks-you-can-perform-on-a-managed-domain)) | 
 Läs all konfiguration | Läsare på Azure-prenumeration som innehåller AD DS-tjänsten | 
 
-## <a name="devices"></a>Egenskaper
+## <a name="devices"></a>Enheter
 
 Uppgift | Minst privilegie rad roll | Ytterligare roller
 ---- | --------------------- | ----------------
@@ -211,7 +211,7 @@ Uppgift | Minst privilegie rad roll | Ytterligare roller
 ---- | --------------------- | ----------------
 Läs inloggnings loggar | Rapport läsare | Säkerhets läsare, säkerhets administratör
 
-## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
+## <a name="multi-factor-authentication"></a>Multifaktorautentisering
 
 Uppgift | Minst privilegie rad roll | Ytterligare roller
 ---- | --------------------- | ----------------

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 03/25/2019
 ms.author: genli
-ms.openlocfilehash: 2f242de3bfa6a2bc95dc46b4ca5c10222b755a2f
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 720d25079e1350315c9f403a8215f650db49ceb7
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98200931"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743091"
 ---
 # <a name="reset-remote-desktop-services-or-its-administrator-password-in-a-windows-vm"></a>Återställa Fjärrskrivbordstjänster eller dess administratörs lösen ord på en virtuell Windows-dator
 Om du inte kan ansluta till en virtuell Windows-dator (VM) kan du återställa det lokala administratörs lösen ordet eller återställa Fjärrskrivbordstjänster-konfigurationen (stöds inte på Windows-domänkontrollanter). Om du vill återställa lösenordet använder du Azure-portalen eller tillägget för VM-åtkomst i Azure PowerShell. När du har loggat in till den virtuella datorn kan du återställa lösenordet för den lokala administratören.  
@@ -90,10 +90,14 @@ Kontrol lera först att du har den [senaste PowerShell-modulen installerad och k
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Om åtkomst tillägget för Azure VM inte svarar och du inte kan återställa lösen ordet kan du [återställa det lokala Windows-lösenordet offline](reset-local-password-without-agent.md). Den här metoden är mer avancerad och kräver att du ansluter den virtuella hård disken för den felande virtuella datorn till en annan virtuell dator. Följ stegen som beskrivs i den här artikeln först och försök att återställa lösen ord för offline endast om de här stegen inte fungerar.
+
+- Om tillägget Azure VM Access inte kan installeras kan du [Felsöka problem med VM-tillägg](../extensions/troubleshoot.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+
+- Om du inte kan återställa lösen ordet med hjälp av tillägget för VM-åtkomst kan du [återställa det lokala Windows-lösenordet offline](reset-local-password-without-agent.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Den här metoden är mer avancerad och kräver att du ansluter den virtuella hård disken för den felande virtuella datorn till en annan virtuell dator. Följ stegen som beskrivs i den här artikeln först och försök att återställa lösen ord för offline endast om de här stegen inte fungerar.
 
 - [Lär dig mer om Azure VM-tillägg och-funktioner](../extensions/features-windows.md).
 
 - [Anslut till en virtuell Azure-dator med RDP eller SSH](/previous-versions/azure/dn535788(v=azure.100)).
 
-- [Felsök fjärr skrivbords anslutningar till en Windows-baserad virtuell Azure-dator](troubleshoot-rdp-connection.md).
+
+- [Felsök fjärr skrivbords anslutningar till en Windows-baserad virtuell Azure-dator](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

@@ -1,21 +1,24 @@
 ---
 title: Konfigurera TLS för en moln tjänst | Microsoft Docs
 description: Lär dig hur du anger en HTTPS-slutpunkt för en webbroll och hur du överför ett TLS/SSL-certifikat för att skydda ditt program. I de här exemplen används Azure Portal.
-services: cloud-services
-documentationcenter: .net
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 05/26/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: c69b74cf91d8e097f8ad8a9ba2a16f3375f483ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 33aa088efd7768153d4a17472d82e0826f4ffa6b
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82024854"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742649"
 ---
 # <a name="configuring-tls-for-an-application-in-azure"></a>Konfigurera TLS för ett program i Azure
+
+> [!IMPORTANT]
+> [Azure Cloud Services (utökad support)](../cloud-services-extended-support/overview.md) är en ny Azure Resource Manager baserad distributions modell för Azure Cloud Services-produkten.Med den här ändringen har Azure Cloud Services som körs på Azure Service Manager-baserade distributions modellen bytt namn som Cloud Services (klassisk) och alla nya distributioner bör använda [Cloud Services (utökad support)](../cloud-services-extended-support/overview.md).
 
 Transport Layer Security (TLS), som tidigare kallades SSL-kryptering (Secure Socket Layer), är den vanligaste metoden för att skydda data som skickas via Internet. Den här vanliga åtgärden beskriver hur du anger en HTTPS-slutpunkt för en webbroll och hur du överför ett TLS/SSL-certifikat för att skydda ditt program.
 
@@ -34,7 +37,7 @@ Certifikatet måste uppfylla följande krav för TLS/SSL-certifikat i Azure:
 
 * Certifikatet måste innehålla en offentlig nyckel.
 * Certifikatet måste skapas för nyckel utbyte, exporteras till en personal information Exchange-fil (. pfx).
-* Certifikatets ämnes namn måste matcha den domän som används för att få åtkomst till moln tjänsten. Det går inte att hämta ett TLS/SSL-certifikat från en certifikat utfärdare (CA) för cloudapp.net-domänen. Du måste skaffa ett anpassat domän namn som ska användas vid åtkomst till tjänsten. När du begär ett certifikat från en certifikat utfärdare måste certifikatets ämnes namn matcha det anpassade domän namn som används för att få åtkomst till ditt program. Om ditt anpassade domän namn till exempel är **contoso.com** kan du begära ett certifikat från din certifikat utfärdare för ***. contoso.com** eller **www \. contoso.com**.
+* Certifikatets ämnes namn måste matcha den domän som används för att få åtkomst till moln tjänsten. Det går inte att hämta ett TLS/SSL-certifikat från en certifikat utfärdare (CA) för cloudapp.net-domänen. Du måste skaffa ett anpassat domän namn som ska användas vid åtkomst till tjänsten. När du begär ett certifikat från en certifikat utfärdare måste certifikatets ämnes namn matcha det anpassade domän namn som används för att få åtkomst till ditt program. Om ditt anpassade domän namn till exempel är **contoso.com** kan du begära ett certifikat från din certifikat utfärdare för **_. contoso.com_* eller **www \. contoso.com**.
 * Certifikatet måste ha minst 2048-bitars kryptering.
 
 I test syfte kan du [skapa](cloud-services-certs-create.md) och använda ett självsignerat certifikat. Ett självsignerat certifikat autentiseras inte via en CA och kan använda cloudapp.net-domänen som webbplats-URL. Följande uppgift använder till exempel ett självsignerat certifikat där det egna namnet (CN) som används i certifikatet är **sslexample.cloudapp.net**.
@@ -130,7 +133,7 @@ Ditt program måste vara konfigurerat för att använda certifikatet och en HTTP
 
 (Det här exemplet använder **SHA1** för tumavtrycket. Ange lämpligt värde för certifikatets tumavtryck-algoritm.)
 
-Nu när tjänst definitions-och tjänstekonfigurationsfiler har uppdaterats kan du paketera distributionen för att ladda upp till Azure. Om du använder **CSPack**ska du inte använda flaggan **/generateConfigurationFile** , eftersom den kommer att skriva över den certifikat information som du nyss infogade.
+Nu när tjänst definitions-och tjänstekonfigurationsfiler har uppdaterats kan du paketera distributionen för att ladda upp till Azure. Om du använder **CSPack** ska du inte använda flaggan **/generateConfigurationFile** , eftersom den kommer att skriva över den certifikat information som du nyss infogade.
 
 ## <a name="step-3-upload-a-certificate"></a>Steg 3: Ladda upp ett certifikat
 Anslut till Azure Portal och...
@@ -147,7 +150,7 @@ Anslut till Azure Portal och...
 
     ![Klicka på meny alternativet överför](media/cloud-services-configure-ssl-certificate-portal/Upload_menu.png)
 
-4. Ange **filen**, **lösen ordet**och klicka sedan på **överför** längst ned i data inmatnings området.
+4. Ange **filen**, **lösen ordet** och klicka sedan på **överför** längst ned i data inmatnings området.
 
 ## <a name="step-4-connect-to-the-role-instance-by-using-https"></a>Steg 4: Anslut till roll instansen med hjälp av HTTPS
 Nu när din distribution är igång i Azure kan du ansluta till den med hjälp av HTTPS.
@@ -156,7 +159,7 @@ Nu när din distribution är igång i Azure kan du ansluta till den med hjälp a
 
    ![Klicka på webbplatsens URL](media/cloud-services-configure-ssl-certificate-portal/navigate.png)
 
-2. I webbläsaren ändrar du länken för att använda **https** i stället för **http**och besöker sidan.
+2. I webbläsaren ändrar du länken för att använda **https** i stället för **http** och besöker sidan.
 
    > [!NOTE]
    > Om du använder ett självsignerat certifikat kan du se ett certifikat fel i webbläsaren när du bläddrar till en HTTPS-slutpunkt som är associerad med det självsignerade certifikatet. Om du använder ett certifikat som signerats av en betrodd certifikat utfärdare elimineras problemet. under tiden kan du ignorera felet. (Ett annat alternativ är att lägga till det självsignerade certifikatet i användarens certifikat Arkiv för betrodd certifikat utfärdare.)
