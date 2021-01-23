@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: cc373a67ee0f4ed2e900e7b41cbcb96d31d67b34
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: eafdebc795d5bede7fa52a3562d33c806035697f
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98126894"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98704439"
 ---
 # <a name="how-to-create-human-labeled-transcriptions"></a>Så här skapar du medmärkade avskrifter
 
@@ -47,6 +47,8 @@ Text normalisering är en transformering av ord i ett konsekvent format som anv�
 - Icke-alfabetiska tecken eller blandade alfanumeriska tecken ska skrivas av som uttalade.
 - Förkortningar som uttalats som ord bör inte redige ras (till exempel "polärdiagram", "Laser", "RAM" eller "NATO").
 - Skriv ut förkortningar som uttalas som separata bokstäver med varje bokstav avgränsat med ett blank steg.
+- Om du använder ljud, ska du skriva om siffror som ord som matchar ljudet (till exempel "101" kan uttalas som "1 0 1" eller "101").
+- Undvik upprepade tecken, ord eller grupper med ord över tre gånger, till exempel "Ja Ja Ja". Rader med sådana repetitioner kan släppas av tal tjänsten.
 
 Här följer några exempel på normalisering som du bör utföra på avskriften:
 

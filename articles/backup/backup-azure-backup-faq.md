@@ -3,12 +3,12 @@ title: Svar på vanliga frågor
 description: 'Svar på vanliga frågor om: Azure Backup-funktioner inklusive Recovery Services-valvet, vad du kan säkerhetskopiera, hur det fungerar, kryptering och gränser. '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: bd84ff553b486d200ec4501b89b42335335b223f
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: dbe6ce95427b559c037e38525f9f48195a2a76a4
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98572535"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98703427"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup – Vanliga frågor och svar
 
@@ -58,9 +58,9 @@ Om du redan har konfigurerat säkerhets kopian och måste gå från GRS till LRS
 - ILR stöds för virtuella Azure-datorer som säkerhetskopieras av säkerhetskopiering av virtuella Azure-datorer. Mer information finns i [artikeln](backup-azure-restore-files-from-vm.md)
 - ILR stöds inte för online-återställnings punkter för lokala virtuella datorer som säkerhets kopie ras av Azure Backup Server (MABS) eller System Center DPM.
 
-### <a name="how-can-i-move-data-from-the-recovery-services-vault-to-on-premises"></a>Hur kan jag flytta data från Recovery Services-valvet till lokalt?
+### <a name="how-can-i-move-data-from-the-recovery-services-vault-to-on-premises"></a>Hur kan jag flytta data från Recovery Services-valvet till en lokal plats?
 
-Export av data direkt från Recovery Services-valvet till lokalt med hjälp av Data Box-enhet stöds inte. Data måste återställas till ett lagrings konto och kan sedan flyttas till lokalt via [data Box-enhet](../databox/data-box-overview.md) eller [Importera/exportera](../storage/common/storage-import-export-service.md).
+Export av data direkt från Recovery Services-valvet till lokalt med hjälp av Data Box-enhet stöds inte. Data måste återställas till ett lagrings konto och kan sedan flyttas till lokalt via [data Box-enhet](../databox/data-box-overview.md) eller [Importera/exportera](../import-export/storage-import-export-service.md).
 
 ### <a name="what-is-the-difference-between-a-geo-redundant-storage-grs-vault-with-and-without-the-cross-region-restore-crr-capability-enabled"></a>Vad är skillnaden mellan ett GRS-valv (Geo-redundant Storage) med och utan CRR-funktionen (Cross-region Restore) aktive rad?
 

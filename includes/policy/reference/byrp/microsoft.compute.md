@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 01/08/2021
+ms.date: 01/21/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: ec78d1b454e80a9374f484023807a259827ec4d7
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 40cbd12d64ae8bd76d16f225de4bfc0471008921
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98044900"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98704086"
 ---
-|Namn<br /><sub>(Azure Portal)</sub> |Beskrivning |Påverkan (ar) |Version<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Beskrivning |Påverkan (ar) |Version<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[\[För hands version \] : granska Log Analytics agent distribution-VM avbildning (OS) har inte listats](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F32133ab0-ee4b-4b44-98d6-042180979d50) |Rapporterar virtuella datorer som icke-kompatibla om VM-avbildningen (OS) inte finns i listan och agenten inte är installerad. Listan över OS-avbildningar uppdateras med tiden då supporten uppdateras. |auditIfNotExists |[1.0.0 – för hands version](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/LogAnalytics_OSImage_Audit.json) |
 |[En lösning för sårbarhets bedömning ska vara aktive rad på dina virtuella datorer](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F501541f7-f7e7-4cd6-868c-4190fdad3ac9) |Granskar virtuella datorer för att identifiera om de kör en lösning för sårbarhets bedömning som stöds. En kärn komponent i varje cyberhot risk-och säkerhets program är identifiering och analys av sårbarheter. Azure Security Center standard pris nivån omfattar sårbarhets skanning för dina virtuella datorer utan extra kostnad. Dessutom kan Security Center distribuera verktyget automatiskt åt dig. |AuditIfNotExists, inaktiverat |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_ServerVulnerabilityAssessment_Audit.json) |

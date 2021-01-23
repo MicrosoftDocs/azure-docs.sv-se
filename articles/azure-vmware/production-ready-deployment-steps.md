@@ -3,12 +3,12 @@ title: Planera distributionen av Azure VMware-lösningen
 description: Den här artikeln beskriver ett arbets flöde för distribution av Azure VMware-lösningar.  Det slutliga resultatet är en miljö som är redo för generering och migrering av virtuella datorer (VM).
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: 2cc4d40fd8088a632e0c24e3c4b770ebdc9de2e8
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: cdf4ddd6166920fa7461bfd85e01ef0efd6dfbb9
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97912741"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98704578"
 ---
 # <a name="planning-the-azure-vmware-solution-deployment"></a>Planera distributionen av Azure VMware-lösningen
 
@@ -95,26 +95,32 @@ Tänk på följande:
 
 ## <a name="azure-virtual-network-to-attach-azure-vmware-solution"></a>Azure Virtual Network för att ansluta Azure VMware-lösning
 
-För att få åtkomst till ditt privata moln i Azure VMware-lösningen måste ExpressRoute-kretsen, som medföljer Azure VMware-lösningen, kopplas till en Azure-Virtual Network.  Under distributionen kan du definiera ett nytt virtuellt nätverk eller välja ett befintligt.
+I det här steget ska du identifiera en ExpressRoute virtuell nätverksgateway och stödja Azure Virtual Network som används för att ansluta Azure VMware-lösningens ExpressRoute-krets.  ExpressRoute-kretsen fören klar anslutningen till och från Azure VMware-lösningens privata moln till andra Azure-tjänster, Azure-resurser och lokala miljöer.
 
-ExpressRoute-kretsen från Azure VMware-lösningen ansluter till en ExpressRoute-gateway i Azure-Virtual Network som du definierar i det här steget.  
-
->[!IMPORTANT]
->Du kan använda en befintlig ExpressRoute-Gateway för att ansluta till Azure VMware-lösningen så länge den inte överskrider gränsen på fyra ExpressRoute-kretsar per virtuellt nätverk.  Men för att få åtkomst till Azure VMware-lösningen från lokala platser via ExpressRoute måste du ha ExpressRoute Global Reach eftersom ExpressRoute-gatewayen inte tillhandahåller transitiv routning mellan dess anslutna kretsar.  
-
-Om du vill ansluta ExpressRoute-kretsen från Azure VMware-lösningen till en befintlig ExpressRoute-Gateway kan du göra det efter distributionen.  
-
-Så i sammanfattning vill du ansluta Azure VMware-lösningen till en befintlig Express Route-Gateway?  
-
-* **Ja** = identifiera det virtuella nätverk som inte används under distributionen.
-* **Nej** = identifiera ett befintligt virtuellt nätverk eller skapa ett nytt under distributionen.
-
-Oavsett hur du vill kan du dokumentera vad du vill göra i det här steget.
-
->[!NOTE]
->Det här virtuella nätverket visas av din lokala miljö och Azure VMware-lösning, så se till att det IP-segment som du använder i det här virtuella nätverket och undernät inte överlappar.
+Du kan använda en *befintlig* eller *ny* ExpressRoute virtuell nätverksgateway.
 
 :::image type="content" source="media/pre-deployment/azure-vmware-solution-expressroute-diagram.png" alt-text="Identitet – Azure Virtual Network för att ansluta Azure VMware-lösning" border="false":::
+
+### <a name="use-an-existing-expressroute-virtual-network-gateway"></a>Använd en befintlig ExpressRoute virtuell nätverksgateway
+
+Om du använder en *befintlig* ExpressRoute virtuell nätverksgateway upprättas Azure VMware-lösningen ExpressRoute-kretsen efter att du har distribuerat det privata molnet.  Så du behöver inte fylla i fältet **Virtual Network** .  
+
+Anteckna vilken ExpressRoute virtuell nätverksgateway du ska använda och fortsätt till nästa steg.
+
+### <a name="create-a-new-expressroute-virtual-network-gateway"></a>Skapa en ny ExpressRoute virtuell nätverksgateway
+
+Om du skapar en *ny* ExpressRoute virtuell nätverksgateway kan du använda en befintlig azure-Virtual Network, eller så kan du skapa en ny azure-Virtual Network.  
+
+Om valet är att använda en befintlig Azure-Virtual Network verifiera att det inte finns några befintliga ExpressRoute virtuella nätverksgateway i det virtuella nätverket och markera det i list rutan Virtual Network i list rutan skapa en privat moln distribution.
+
+Om du väljer att skapa ett nytt Azure-Virtual Network kan du skapa det i förväg eller under distributionen genom att klicka på avsnittet Skapa nytt alternativ för Virtual Network i avsnittet Skapa ett privat moln distributions fönster.
+
+För referens nedan är en bild av distributions skärmen **skapa ett privat moln** och beskrivs i rött det Azure **Virtual Network** -fält som har refererats till i det här avsnittet.
+
+:::image type="content" source="media/pre-deployment/azure-vmware-solution-deployment-screen-vnet-circle.png" alt-text="Skärm bild av Azure VMware-distributionen av VMware-lösningar med en inringad virtuell nätverksgateway.":::
+
+>[!NOTE]
+>Alla virtuella nätverk som ska användas eller skapas kan ses av din lokala miljö och Azure VMware-lösning, så se till att det IP-segment som du använder i det här virtuella nätverket och undernät inte överlappar varandra.
 
 ## <a name="vmware-hcx-network-segments"></a>Nätverks segment för VMware HCX
 

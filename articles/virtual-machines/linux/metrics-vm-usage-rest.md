@@ -8,12 +8,12 @@ ms.custom: REST
 ms.topic: how-to
 ms.date: 06/13/2018
 ms.author: routlaw
-ms.openlocfilehash: 0a448d4b4538d62c1631cf16d88ec0a7e7f2a399
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 9430eaeb3ba22bd0d9fc0675ab97c84944a0cf7c
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97508041"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737854"
 ---
 # <a name="get-virtual-machine-usage-metrics-using-the-rest-api"></a>Hämta användnings statistik för virtuella datorer med hjälp av REST API
 
@@ -40,9 +40,9 @@ Följande huvuden krävs:
 
 ### <a name="uri-parameters"></a>URI-parametrar
 
-| Namn | Beskrivning |
+| Name | Beskrivning |
 | :--- | :---------- |
-| subscriptionId | Det prenumerations-ID som identifierar en Azure-prenumeration. Om du har flera prenumerationer kan du läsa mer i [arbeta med flera prenumerationer](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest). |
+| subscriptionId | Det prenumerations-ID som identifierar en Azure-prenumeration. Om du har flera prenumerationer kan du läsa mer i [arbeta med flera prenumerationer](/cli/azure/manage-azure-subscriptions-azure-cli). |
 | resourceGroupName | Namnet på den Azure-resurs grupp som är kopplad till resursen. Du kan hämta det här värdet från Azure Resource Manager API, CLI eller portalen. |
 | VMName | Namnet på den virtuella Azure-datorn. |
 | metricnames | Kommaavgränsad lista över giltiga  [load BALANCERS mått](../../load-balancer/load-balancer-standard-diagnostics.md). |

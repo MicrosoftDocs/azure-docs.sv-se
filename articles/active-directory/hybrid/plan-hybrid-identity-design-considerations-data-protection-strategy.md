@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e991fb0c60e8f08eb43cb7799027d4200263c9b5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bac3f53def6db1038a6dd7e45d7933daa22df9f0
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89659554"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98703860"
 ---
 # <a name="define-data-protection-strategy-for-your-hybrid-identity-solution"></a>Definiera data skydds strategi för din hybrid identitets lösning
 I den här uppgiften definierar du data skydds strategin för din hybrid identitets lösning som uppfyller de affärs krav som du definierade i:
@@ -37,7 +37,7 @@ Som förklaras i [fastställa krav för katalog synkronisering](plan-hybrid-iden
 
 När autentiseringen har autentiserats läses User Principal Name (UPN) från autentiseringstoken. Sedan fastställer auktoriserings systemet den replikerade partitionen och behållaren som motsvarar användarens domän. Information om användarens existens, aktiverade tillstånd och roll hjälper auktoriserings systemet att avgöra om åtkomsten till mål klienten har behörighet för användaren i den sessionen. Vissa behöriga åtgärder (särskilt skapa användare och lösen ords återställning) skapa en Gransknings logg som en klient administratör använder för att hantera efterlevnad eller undersökningar av efterlevnad.
 
-Det är inte alltid möjligt att flytta data från ditt lokala data Center till Azure Storage via en Internet anslutning på grund av data volym, bandbredds tillgänglighet eller andra överväganden. [Tjänsten Azure Storage import/export](../../storage/common/storage-import-export-service.md) innehåller ett maskinvarubaserade alternativ för att placera/hämta stora mängder data i Blob Storage. Med den kan du skicka [BitLocker-krypterade](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn306081(v=ws.11)#BKMK_BL2012R2) hård diskar direkt till ett Azure-datacenter där moln operatörer laddar upp innehållet till ditt lagrings konto, eller så kan de Ladda ned dina Azure-data till dina enheter för att komma tillbaka till dig. Endast krypterade diskar accepteras för den här processen (med en BitLocker-nyckel som genererats av själva tjänsten under jobb konfigurationen). BitLocker-nyckeln tillhandahålls till Azure separat, vilket ger en delning med out-of-band-nyckel.
+Det är inte alltid möjligt att flytta data från ditt lokala data Center till Azure Storage via en Internet anslutning på grund av data volym, bandbredds tillgänglighet eller andra överväganden. [Tjänsten Azure Storage import/export](../../import-export/storage-import-export-service.md) innehåller ett maskinvarubaserade alternativ för att placera/hämta stora mängder data i Blob Storage. Med den kan du skicka [BitLocker-krypterade](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn306081(v=ws.11)#BKMK_BL2012R2) hård diskar direkt till ett Azure-datacenter där moln operatörer laddar upp innehållet till ditt lagrings konto, eller så kan de Ladda ned dina Azure-data till dina enheter för att komma tillbaka till dig. Endast krypterade diskar accepteras för den här processen (med en BitLocker-nyckel som genererats av själva tjänsten under jobb konfigurationen). BitLocker-nyckeln tillhandahålls till Azure separat, vilket ger en delning med out-of-band-nyckel.
 
 Eftersom data som överförs kan ske i olika scenarier, är det också viktigt att veta att Microsoft Azure använder [virtuella nätverk](https://azure.microsoft.com/documentation/services/virtual-network/) för att isolera trafik trafik från varandra, som använder åtgärder som värd-och gäst brand väggar, IP-paketfiltrering, Port blockering och https-slutpunkter. De flesta av Azures interna kommunikation, inklusive infrastruktur-till-infrastruktur och infrastruktur till kund (lokalt), krypteras också. Ett annat viktigt scenario är kommunikationen i Azure-datacentren. Microsoft hanterar nätverk för att säkerställa att ingen virtuell dator kan personifiera eller eavesdrop på IP-adressen för en annan. TLS/SSL används vid åtkomst till Azure Storage-eller SQL-databaser eller vid anslutning till Cloud Services. I det här fallet ansvarar kund administratören för att erhålla ett TLS/SSL-certifikat och distribuera det till klient infrastrukturen. Data trafik som flyttas mellan Virtual Machines i samma distribution eller mellan klienter i en enda distribution via Microsoft Azure Virtual Network kan skyddas via krypterade kommunikations protokoll som HTTPS, SSL/TLS, eller andra.
 

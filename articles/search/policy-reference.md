@@ -1,18 +1,18 @@
 ---
 title: Inbyggda princip definitioner för Azure Kognitiv sökning
 description: Visar Azure Policy inbyggda princip definitioner för Azure Kognitiv sökning. Dessa inbyggda princip definitioner tillhandahåller vanliga metoder för att hantera dina Azure-resurser.
-ms.date: 01/08/2021
+ms.date: 01/21/2021
 ms.topic: reference
 author: HeidiSteen
 ms.author: heidist
 ms.service: search
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 543b6468fa830b422f310142b962173dbad030e2
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 697895eab1fc819ba4aaa85b3f28f29e48aba734
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98049581"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98703648"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-cognitive-search"></a>Azure Policy inbyggda definitioner för Azure Kognitiv sökning
 

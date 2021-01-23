@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: how-to
 ms.date: 12/18/2020
 ms.author: alkohli
-ms.openlocfilehash: ac86dfba02b54730773a1d243981e85d563517e7
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: aac1fb8e2da7a3c84b3abff47c8f476b9fb9049c
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98183838"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98704346"
 ---
 # <a name="tutorial-create-export-order-for-azure-data-box"></a>Självstudie: skapa en export ordning för Azure Data Box
 
@@ -80,7 +80,7 @@ Utför följande steg på Azure-portalen för att beställa en enhet.
 
 6. Ange **grundläggande** beställnings information i **ordning**. Ange eller välj följande information.
 
-    |Inställningen  |Värde  |
+    |Inställning  |Värde  |
     |---------|---------|
     |Prenumeration     | Prenumerationen fylls i automatiskt baserat på din tidigare val.|
     |Resursgrupp | Den resurs grupp som du valde tidigare. |
@@ -96,11 +96,11 @@ Utför följande steg på Azure-portalen för att beställa en enhet.
 
 8. I **Välj export alternativ** anger du alternativ informationen för export. Ange eller Välj följande information och välj sedan **Lägg till**.
 
-    |Inställningen  |Värde  |
+    |Inställning  |Värde  |
     |---------|---------|
     |Lagringskonto     | Det Azure Storage konto som du vill exportera data från. |
     |Export typ     | Anger vilken typ av data som ska exporteras från **alla objekt** och **använda XML-filen**.<ul><li> **Alla objekt** – anger att jobbet ska exportera alla data beroende på ditt val av **överförings alternativ**.</li><li> **Använd XML-fil** – anger en XML-fil som innehåller en uppsättning sökvägar och prefix för blobbar och/eller filer som ska exporteras från lagrings kontot. XML-filen måste finnas i det valda lagrings kontots behållare och det finns för närvarande inte stöd för att välja från fil resurser. Filen måste vara en XML-fil som inte är tom.</li></ul>        |
-    |Överförings alternativ     |  Anger alternativ för data överföring från **Välj alla**, **alla blobbar** och **alla filer**. <ul><li> **Markera alla** -anger att alla blobbar och Azure Files exporteras. Om du använder ett lagrings konto som bara stöder blobbar (Blob Storage konto) går det inte att välja alternativet **alla filer** .</li><li> **Alla blobbar** – anger att endast block-och sid-blobar ska exporteras.</li><li> **Alla filer** -anger att alla filer exporteras exklusive blobbar. Vilken typ av lagrings konto du har (GPv1 och GPv2, Premium Storage eller Blob Storage) bestämmer vilka typer av data som du kan exportera. Mer information finns i [lagrings konton som stöds för export](../storage/common/storage-import-export-requirements.md#supported-storage-types).</li></ul>         |
+    |Överförings alternativ     |  Anger alternativ för data överföring från **Välj alla**, **alla blobbar** och **alla filer**. <ul><li> **Markera alla** -anger att alla blobbar och Azure Files exporteras. Om du använder ett lagrings konto som bara stöder blobbar (Blob Storage konto) går det inte att välja alternativet **alla filer** .</li><li> **Alla blobbar** – anger att endast block-och sid-blobar ska exporteras.</li><li> **Alla filer** -anger att alla filer exporteras exklusive blobbar. Vilken typ av lagrings konto du har (GPv1 och GPv2, Premium Storage eller Blob Storage) bestämmer vilka typer av data som du kan exportera. Mer information finns i [lagrings konton som stöds för export](../import-export/storage-import-export-requirements.md#supported-storage-types).</li></ul>         |
     |Inkludera utförlig logg     | Anger om du vill ha en utförlig logg fil som innehåller en lista över alla filer som har exporter ATS.        |
 
     > [!NOTE]
@@ -330,7 +330,7 @@ Några viktiga punkter i avseende XML-filer:
 
 I följande tabell visas exempel på giltiga BLOB-sökvägar:
 
-   | Väljare | BLOB-sökväg | Description |
+   | Väljare | BLOB-sökväg | Beskrivning |
    | --- | --- | --- |
    | Börjar med |/ |Exporterar alla blobar i lagrings kontot |
    | Börjar med |/$root/ |Exporterar alla blobbar i rot behållaren |

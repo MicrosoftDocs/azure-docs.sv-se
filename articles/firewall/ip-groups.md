@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 01/21/2021
+ms.date: 01/22/2021
 ms.author: victorh
-ms.openlocfilehash: dc1eb64b5cfb527c10967a1a46525a418fdc37e3
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 6910fda855402d2f99994da1e835560be84ca2dd
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 01/22/2021
-ms.locfileid: "98674005"
+ms.locfileid: "98703385"
 ---
 # <a name="ip-groups-in-azure-firewall"></a>IP-grupper i Azure-brandväggen
 
@@ -28,7 +28,7 @@ En IP-grupp kan ha en enskild IP-adress, flera IP-adresser eller ett eller flera
 IP-grupper kan återanvändas i Azure brand Väggs DNAT, nätverks-och program regler för flera brand väggar mellan regioner och prenumerationer i Azure. Grupp namn måste vara unika. Du kan konfigurera en IP-grupp i Azure Portal, Azure CLI eller REST API. En exempel mall är avsedd att hjälpa dig att komma igång.
 
 > [!NOTE]
-> IP-grupper är för närvarande inte tillgängliga i miljöer med Azure National Cloud.
+> IP-grupper är för närvarande inte tillgängliga i Azures nationella moln miljöer.
 
 ## <a name="sample-format"></a>Samplingsformat
 

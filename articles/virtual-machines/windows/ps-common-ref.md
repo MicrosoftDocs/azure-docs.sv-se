@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 06/01/2018
 ms.author: cynthn
-ms.openlocfilehash: 074a088e0fb342b5d1064d385d819c48ee089c5e
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: ecc3f5934e4dd37cc27a1715ea39f86619d581ff
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201815"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98730214"
 ---
 # <a name="common-powershell-commands-for-creating-and-managing-azure-virtual-machines"></a>Vanliga PowerShell-kommandon för att skapa och hantera Azure Virtual Machines
 
@@ -40,7 +40,7 @@ Dessa variabler kan vara användbara för dig om du kör fler än ett av kommand
 | Uppgift | Kommando |
 | ---- | ------- |
 | Skapa en VM-konfiguration |$vm = [New-AzVMConfig](/powershell/module/az.compute/new-azvmconfig) -VMName $MyVM-VMSize "Standard_D1_v1"<BR></BR><BR></BR>Konfigurationen av den virtuella datorn används för att definiera eller uppdatera inställningarna för den virtuella datorn. Konfigurationen initieras med namnet på den virtuella datorn och dess [storlek](../sizes.md). |
-| Lägg till konfigurations inställningar |$vm = [set-AzVMOperatingSystem](/powershell/module/az.compute/set-azvmoperatingsystem) -VM $VM-Windows-ComputerName $MyVM-Credential $cred-ProvisionVMAgent-EnableAutoUpdate<BR></BR><BR></BR>Operativ systemets inställningar, inklusive [autentiseringsuppgifter](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1&preserve-view=true) , läggs till i konfigurationsobjektet som du skapade tidigare med New-AzVMConfig. |
+| Lägg till konfigurations inställningar |$vm = [set-AzVMOperatingSystem](/powershell/module/az.compute/set-azvmoperatingsystem) -VM $VM-Windows-ComputerName $MyVM-Credential $cred-ProvisionVMAgent-EnableAutoUpdate<BR></BR><BR></BR>Operativ systemets inställningar, inklusive [autentiseringsuppgifter](/powershell/module/microsoft.powershell.security/get-credential) , läggs till i konfigurationsobjektet som du skapade tidigare med New-AzVMConfig. |
 | Lägg till ett nätverks gränssnitt |$vm = [Add-AzVMNetworkInterface](/powershell/module/az.compute/add-azvmnetworkinterface) -VM $VM-ID $NIC. Identitet<BR></BR><BR></BR>En virtuell dator måste ha ett [nätverks gränssnitt](./quick-create-powershell.md?toc=/azure/virtual-machines/windows/toc.json) för att kunna kommunicera i ett virtuellt nätverk. Du kan också använda [Get-AzNetworkInterface](/powershell/module/az.compute/add-azvmnetworkinterface) för att hämta ett befintligt nätverks gränssnitts objekt. |
 | Ange en plattforms avbildning |$vm = [set-AzVMSourceImage](/powershell/module/az.compute/set-azvmsourceimage) -VM $VM-PublisherName "publisher_name"-erbjudande "publisher_offer"-SKU: er "product_sku"-version "senaste"<BR></BR><BR></BR>[Avbildnings information](cli-ps-findimage.md) läggs till i konfigurationsobjektet som du skapade tidigare med New-AzVMConfig. Objektet som returneras från det här kommandot används bara när du anger att operativ system disken ska använda en plattforms avbildning. |
 | Skapa en virtuell dator |[New-AzVM](/powershell/module/az.compute/new-azvm) -ResourceGroupName $MyResourceGroup-location $location-VM $VM<BR></BR><BR></BR>Alla resurser skapas i en [resurs grupp](../../azure-resource-manager/management/manage-resource-groups-powershell.md). Innan du kör det här kommandot kör du New-AzVMConfig, set-AzVMOperatingSystem, set-AzVMSourceImage, Add-AzVMNetworkInterface och set-AzVMOSDisk. |

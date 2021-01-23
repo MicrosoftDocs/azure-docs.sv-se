@@ -4,12 +4,12 @@ description: Innehåller en sammanfattning av support inställningar och begrän
 ms.topic: conceptual
 ms.date: 01/07/2021
 ms.custom: references_regions
-ms.openlocfilehash: 099e83d8a2fb109da862657265dad8be8143f608
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 447283ba1d63267722e4167e0727a827e63d2e0d
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624942"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98732987"
 ---
 # <a name="azure-disk-backup-support-matrix-in-preview"></a>Support mat ris för Azure disk Backup (för hands version)
 
@@ -18,7 +18,7 @@ ms.locfileid: "98624942"
 >
 >[Fyll i det här formuläret](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR1vE8L51DIpDmziRt_893LVUNFlEWFJBN09PTDhEMjVHS05UWFkxUlUzUS4u) om du vill registrera dig för för hands versionen.
 
-Du kan använda [Azure Backup](https://docs.microsoft.com/azure/backup/backup-overview) för att skydda Azure-diskar. Den här artikeln sammanfattar regions tillgänglighet, scenarier som stöds och begränsningar.
+Du kan använda [Azure Backup](./backup-overview.md) för att skydda Azure-diskar. Den här artikeln sammanfattar regions tillgänglighet, scenarier som stöds och begränsningar.
 
 ## <a name="supported-regions"></a>Regioner som stöds
 
@@ -36,9 +36,9 @@ Fler regioner kommer att meddelas när de blir tillgängliga.
 
 - För närvarande stöds inte alternativet Original-Location återställning (OLR) som ska återställas genom att befintliga käll diskar ersätts från den plats där säkerhets kopiorna gjordes. Du kan återställa från återställnings punkt för att skapa en ny disk antingen i samma resurs grupp som käll disken från vilken säkerhets kopian gjordes eller i någon annan resurs grupp. Detta kallas Alternate-Location återställning (återställning till).
 
-- Azure Backup för Managed Disks använder stegvisa ögonblicks bilder, som är begränsade till 200 ögonblicks bilder per disk. För att du ska kunna ta säkerhets kopior på begäran från schemalagda säkerhets kopieringar begränsar säkerhets kopierings principen den totala säkerhets kopian till 180. Läs mer om [stegvis ögonblicks bild](https://docs.microsoft.com/azure/virtual-machines/windows/disks-incremental-snapshots-portal#restrictions) för hanterade diskar.
+- Azure Backup för Managed Disks använder stegvisa ögonblicks bilder, som är begränsade till 200 ögonblicks bilder per disk. För att du ska kunna ta säkerhets kopior på begäran från schemalagda säkerhets kopieringar begränsar säkerhets kopierings principen den totala säkerhets kopian till 180. Läs mer om [stegvis ögonblicks bild](../virtual-machines/disks-incremental-snapshots.md#restrictions) för hanterade diskar.
 
-- Azure [-prenumeration och tjänst begränsningar](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#virtual-machine-disk-limits) gäller för det totala antalet disk ögonblicks bilder per region per prenumeration.
+- Azure [-prenumeration och tjänst begränsningar](../azure-resource-manager/management/azure-subscription-service-limits.md#virtual-machine-disk-limits) gäller för det totala antalet disk ögonblicks bilder per region per prenumeration.
 
 - Ögonblicks bilder av flera diskar som är anslutna till en virtuell dator stöds inte.
 
@@ -58,13 +58,13 @@ Fler regioner kommer att meddelas när de blir tillgängliga.
 
 - För närvarande (under för hands versionen) stöds inte användning av PowerShell och Azure CLI för att konfigurera säkerhets kopiering och återställning av diskar.
 
-- När du konfigurerar säkerhets kopiering måste disken som du har valt att säkerhets kopie ras och resurs gruppen för ögonblicks bilder där ögonblicks bilderna ska lagras vara en del av samma prenumeration. Du kan inte skapa en stegvis ögonblicks bild för en viss disk utanför diskens prenumeration. Läs mer om [stegvisa ögonblicks bilder](https://docs.microsoft.com/azure/virtual-machines/windows/disks-incremental-snapshots-portal#restrictions) för hanterad disk. Mer information om hur du väljer en resurs grupp för ögonblicks bilder finns i  [Konfigurera säkerhets kopiering](backup-managed-disks.md#configure-backup).
+- När du konfigurerar säkerhets kopiering måste disken som du har valt att säkerhets kopie ras och resurs gruppen för ögonblicks bilder där ögonblicks bilderna ska lagras vara en del av samma prenumeration. Du kan inte skapa en stegvis ögonblicks bild för en viss disk utanför diskens prenumeration. Läs mer om [stegvisa ögonblicks bilder](../virtual-machines/windows/disks-incremental-snapshots-portal.md#restrictions) för hanterad disk. Mer information om hur du väljer en resurs grupp för ögonblicks bilder finns i  [Konfigurera säkerhets kopiering](backup-managed-disks.md#configure-backup).
 
 - För lyckade säkerhets kopierings-och återställnings åtgärder krävs roll tilldelningar av säkerhets kopierings valvets hanterade identitet. Använd endast de roll definitioner som anges i dokumentationen. Det finns inte stöd för användning av andra roller som ägare, deltagare och så vidare. Du kan få problem med behörigheten om du börjar konfigurera säkerhets kopierings-eller återställnings åtgärder efter tilldelningen av roller. Detta beror på att roll tilldelningarna tar några minuter att börja gälla.
 
-- Managed disks tillåter att prestanda nivån ändras vid distribution eller efteråt utan att storleken på disken ändras. Lösningen för säkerhets kopiering av Azure-disk stöder prestanda nivå ändringar till käll disken som säkerhets kopie ras. Under återställningen är prestanda nivån för den återställda disken densamma som käll disken vid säkerhets kopieringen. Följ dokumentationen [här](https://docs.microsoft.com/azure/virtual-machines/disks-performance-tiers-portal) för att ändra diskens prestanda nivå efter återställnings åtgärden.
+- Managed disks tillåter att prestanda nivån ändras vid distribution eller efteråt utan att storleken på disken ändras. Lösningen för säkerhets kopiering av Azure-disk stöder prestanda nivå ändringar till käll disken som säkerhets kopie ras. Under återställningen är prestanda nivån för den återställda disken densamma som käll disken vid säkerhets kopieringen. Följ dokumentationen [här](../virtual-machines/disks-performance-tiers-portal.md) för att ändra diskens prestanda nivå efter återställnings åtgärden.
 
-- Med stöd för [privata länkar](https://docs.microsoft.com/azure/virtual-machines/disks-enable-private-links-for-import-export-portal) för hanterade diskar kan du begränsa exporten och importen av hanterade diskar så att det bara sker i det virtuella Azure-nätverket. Säkerhets kopiering av Azure-diskar har stöd för säkerhets kopiering av diskar som har privata slut punkter aktiverade. Detta inkluderar inte säkerhets kopierings data eller ögonblicks bilder som kan nås via den privata slut punkten.
+- Med stöd för [privata länkar](../virtual-machines/disks-enable-private-links-for-import-export-portal.md) för hanterade diskar kan du begränsa exporten och importen av hanterade diskar så att det bara sker i det virtuella Azure-nätverket. Säkerhets kopiering av Azure-diskar har stöd för säkerhets kopiering av diskar som har privata slut punkter aktiverade. Detta inkluderar inte säkerhets kopierings data eller ögonblicks bilder som kan nås via den privata slut punkten.
 
 ## <a name="next-steps"></a>Nästa steg
 

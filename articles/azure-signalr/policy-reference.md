@@ -1,18 +1,18 @@
 ---
 title: Inbyggda princip definitioner för Azure SignalR
 description: Visar Azure Policy inbyggda princip definitioner för Azure SignalR. Dessa inbyggda princip definitioner tillhandahåller vanliga metoder för att hantera dina Azure-resurser.
-ms.date: 01/08/2021
+ms.date: 01/21/2021
 author: sffamily
 ms.author: zhshang
 ms.service: signalr
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 77f9d1acbe5d1213b3fae0b28643729d6cd12e75
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 98d7714d0b1c06725dc28509607d0d9e2ccde86a
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98050652"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98704885"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-signalr"></a>Azure Policy inbyggda definitioner för Azure SignalR
 

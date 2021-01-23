@@ -9,12 +9,12 @@ ms.date: 12/08/2020
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 13d1ad0b1b5e32ea2ca86e7556dd910c542bcbe2
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 9032576f3705c360ebf53d8fdb4d6c15f77f450e
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98070583"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98703512"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurera brandväggar och virtuella nätverk i Azure Storage
 
@@ -379,7 +379,7 @@ När du aktiverar inställningen **Tillåt betrodda Microsoft-tjänster...** , b
 | Azure Event Hubs         | Microsoft. EventHub         | Arkivera data med Event Hubs avbildning. [Läs mer](../../event-hubs/event-hubs-capture-overview.md). |
 | Azure File Sync          | Microsoft. StorageSync      | Gör att du kan omvandla din lokal fil server till ett cacheminne för Azure-filresurser. Tillåter synkronisering av flera platser, snabb katastrof återställning och säkerhets kopiering på moln sidan. [Läs mer](../files/storage-sync-files-planning.md) |
 | Azure HDInsight          | Microsoft. HDInsight        | Etablera det inledande innehållet i standard fil systemet för ett nytt HDInsight-kluster. [Läs mer](../../hdinsight/hdinsight-hadoop-use-blob-storage.md). |
-| Azure import-export      | Microsoft. ImportExport     | Möjliggör import av data till Azure Storage eller export av data från Azure Storage med hjälp av Azure Storage import/export-tjänsten. [Läs mer](./storage-import-export-service.md).  |
+| Azure import-export      | Microsoft. ImportExport     | Möjliggör import av data till Azure Storage eller export av data från Azure Storage med hjälp av Azure Storage import/export-tjänsten. [Läs mer](../../import-export/storage-import-export-service.md).  |
 | Azure Monitor            | Microsoft. Insights         | Tillåter skrivning av övervaknings data till ett skyddat lagrings konto, inklusive resurs loggar, Azure Active Directory inloggnings-och gransknings loggar och Microsoft Intune loggar. [Läs mer](../../azure-monitor/platform/roles-permissions-security.md). |
 | Azure-nätverk         | Microsoft.Network          | Lagra och analysera nätverks trafik loggar, inklusive via Network Watcher-och Trafikanalys-tjänsterna. [Läs mer](../../network-watcher/network-watcher-nsg-flow-logging-overview.md). |
 | Azure Site Recovery      | Microsoft. SiteRecovery     | Aktivera replikering för haveri beredskap för virtuella Azure IaaS-datorer när du använder brand Väggs-aktiverade cache-, käll-eller mål lagrings konton.  [Läs mer](../../site-recovery/azure-to-azure-tutorial-enable-replication.md). |

@@ -1,5 +1,5 @@
 ---
-title: Tjänst slut punkter för virtuella nätverk för Azure Key Vault
+title: Tjänstslutpunkter för virtuellt nätverk för Azure Key Vault
 description: Lär dig hur tjänst slut punkter i virtuella nätverk för Azure Key Vault ger dig möjlighet att begränsa åtkomsten till ett angivet virtuellt nätverk, inklusive användnings scenarier.
 services: key-vault
 author: amitbapat
@@ -9,14 +9,14 @@ ms.date: 01/02/2019
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: 9dcabe10822fd09c8f7a0da6259d81a089c1a042
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 4a817f386d68c144968540dd05f3fa6859bb0acc
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936302"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98704177"
 ---
-# <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Tjänst slut punkter för virtuella nätverk för Azure Key Vault
+# <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Tjänstslutpunkter för virtuellt nätverk för Azure Key Vault
 
 Med tjänst slut punkter för virtuella nätverk för Azure Key Vault kan du begränsa åtkomsten till ett angivet virtuellt nätverk. Med slut punkterna kan du också begränsa åtkomsten till en lista över IPv4-adress intervall (Internet Protocol version 4). Alla användare som ansluter till nyckel valvet utanför dessa källor nekas åtkomst.
 
@@ -43,7 +43,7 @@ Här är en lista över betrodda tjänster som har behörighet att komma åt ett
 | --- | --- |
 |Azure Virtual Machines Deployment service|[Distribuera certifikat till virtuella datorer från kund hanterade Key Vault](/archive/blogs/kv/updated-deploy-certificates-to-vms-from-customer-managed-key-vault).|
 |Azure Resource Manager mall distributions tjänst|[Skicka säkra värden under distributionen](../../azure-resource-manager/templates/key-vault-parameter.md).|
-|Azure Application Gateway v2 SKU|[TLS-avslutning med Key Vault certifikat](../../application-gateway/key-vault-certs.md)|
+|Azure Application Gateway v2 SKU|[TLS-avslutning med Key Vault-certifikat](../../application-gateway/key-vault-certs.md)|
 |Azure Disk Encryption volym krypterings tjänst|Tillåt åtkomst till BitLocker Key (Windows VM) eller DM-lösen fras (Linux VM) och nyckel krypterings nyckel under distributionen av virtuella datorer. Detta gör att [Azure Disk Encryption](../../security/fundamentals/encryption-overview.md).|
 |Azure Backup|Tillåt säkerhets kopiering och återställning av relevanta nycklar och hemligheter under Azure Virtual Machines säkerhets kopiering med [Azure Backup](../../backup/backup-overview.md).|
 |Exchange Online & SharePoint Online|Tillåt åtkomst till kund nyckel för Azure Storage tjänst kryptering med [kund nyckel](/microsoft-365/compliance/customer-key-overview).|
@@ -57,7 +57,7 @@ Här är en lista över betrodda tjänster som har behörighet att komma åt ett
 |Azure Data Factory|[Hämta autentiseringsuppgifter för data lager i Key Vault från Data Factory](https://go.microsoft.com/fwlink/?linkid=2109491)|
 |Azure Event Hubs|[Tillåt åtkomst till ett nyckel valv för kund hanterade nyckel scenarier](../../event-hubs/configure-customer-managed-key.md)|
 |Azure Service Bus|[Tillåt åtkomst till ett nyckel valv för kund hanterade nyckel scenarier](../../service-bus-messaging/configure-customer-managed-key.md)|
-|Azure Import/Export| [Använda Kundhanterade nycklar i Azure Key Vault för import/export-tjänsten](../../storage/common/storage-import-export-encryption-key-portal.md)
+|Azure Import/Export| [Använda Kundhanterade nycklar i Azure Key Vault för import/export-tjänsten](../../import-export/storage-import-export-encryption-key-portal.md)
 |Azure Container Registry|[Register kryptering med Kundhanterade nycklar](../../container-registry/container-registry-customer-managed-keys.md)
 
 > [!NOTE]

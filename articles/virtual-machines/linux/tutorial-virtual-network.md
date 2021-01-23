@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 72c7f1dd6652a51a960c80829a697b97fd74f8de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c806e5d1d9c9242b6ba57496327c672d7fed0654
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87500035"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98704497"
 ---
 # <a name="tutorial-create-and-manage-azure-virtual-networks-for-linux-virtual-machines-with-the-azure-cli"></a>Självstudie: Skapa och hantera virtuella Azure-nätverk för virtuella Linux-datorer med Azure CLI
 
@@ -300,7 +300,4 @@ I den här självstudien har du skapat och skyddat Azure-nätverk som är relate
 > * Skydda nätverkstrafiken
 > * Skapa en virtuell dator för serverdelen
 
-Gå vidare till nästa självstudie för att lära dig att skydda data på virtuella datorer med Azures säkerhetskopiering. 
-
-> [!div class="nextstepaction"]
-> [Säkerhetskopiera virtuella Linux-datorer i Azure](./tutorial-backup-vms.md)
+Information om hur du skyddar dina virtuella dator diskar finns i [säkerhets kopiering och haveri beredskap för diskar](backup-and-disaster-recovery-for-azure-iaas-disks.md).

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
-ms.openlocfilehash: d6c3dbc28da7bee0bc24a6dc24608c78e480c20e
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: e7a8a72d0669f39cc27c997d83af1e6272d045a6
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462165"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98704160"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>Extrahera, transformera och läsa in (ETL) i skala
 
@@ -27,7 +27,7 @@ I följande avsnitt lär du dig var och en av de olika ETL-faserna och deras ass
 
 ## <a name="orchestration"></a>Orkestrering
 
-Dirigering sträcker sig över alla faser i ETL-pipeline. ETL-jobb i HDInsight omfattar ofta flera olika produkter som arbetar tillsammans med varandra. Exempel:
+Dirigering sträcker sig över alla faser i ETL-pipeline. ETL-jobb i HDInsight omfattar ofta flera olika produkter som arbetar tillsammans med varandra. Ett exempel:
 
 - Du kan använda Apache Hive för att rensa en del av data och Apache gris för att rensa en annan del.
 - Du kan använda Azure Data Factory för att läsa in data i Azure SQL Database från Azure Data Lake Store.
@@ -82,7 +82,7 @@ För att ladda upp data uppsättningar i intervallet terabyte kan nätverks för
 
 - **Azure-ExpressRoute:** Skapa privata anslutningar mellan Azure-datacenter och din lokala infrastruktur. Dessa anslutningar ger ett tillförlitligt alternativ för överföring av stora mängder data. Mer information finns i [dokumentationen om Azure ExpressRoute](../../expressroute/expressroute-introduction.md).
 
-- **Data uppladdning från hård diskar:** Du kan använda [Azure import/export-tjänsten](../../storage/common/storage-import-export-service.md) för att leverera hård diskar med dina data till ett Azure-datacenter. Dina data laddas först upp till Azure Blob Storage. Du kan sedan använda Azure Data Factory eller AdlCopy-verktyget för att kopiera data från Azure Blob Storage till Data Lake Storage.
+- **Data uppladdning från hård diskar:** Du kan använda [Azure import/export-tjänsten](../../import-export/storage-import-export-service.md) för att leverera hård diskar med dina data till ett Azure-datacenter. Dina data laddas först upp till Azure Blob Storage. Du kan sedan använda Azure Data Factory eller AdlCopy-verktyget för att kopiera data från Azure Blob Storage till Data Lake Storage.
 
 ### <a name="azure-synapse-analytics"></a>Azure Synapse Analytics
 

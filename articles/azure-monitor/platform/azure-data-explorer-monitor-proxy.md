@@ -7,16 +7,16 @@ ms.reviewer: bwren
 ms.subservice: logs
 ms.topic: conceptual
 ms.date: 10/13/2020
-ms.openlocfilehash: 8942735ed65f8aa0cf6d315568e00412adcb353a
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: a31ef69d84f64e4bcaa46adac26a29d2cc367351
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060545"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98731708"
 ---
 # <a name="query-data-in-azure-monitor-using-azure-data-explorer-preview"></a>Fråga efter data i Azure Monitor med Azure Datautforskaren (förhands granskning)
 
-Azure Datautforskaren stöder kors tjänst frågor mellan Azure Datautforskaren, [Application Insights (AI)](/azure/azure-monitor/app/app-insights-overview)och [Log Analytics (La)](/azure/azure-monitor/platform/data-platform-logs). Du kan sedan fråga din Log Analytics/Application Insights-arbetsyta med Azure Datautforskaren-verktyg och se den i en kors tjänst fråga. Artikeln visar hur du skapar en kors tjänst fråga och hur du lägger till arbets ytan Log Analytics/Application Insights till Azure Datautforskaren Web UI.
+Azure Datautforskaren stöder kors tjänst frågor mellan Azure Datautforskaren, [Application Insights (AI)](../app/app-insights-overview.md)och [Log Analytics (La)](./data-platform-logs.md). Du kan sedan fråga din Log Analytics/Application Insights-arbetsyta med Azure Datautforskaren-verktyg och se den i en kors tjänst fråga. Artikeln visar hur du skapar en kors tjänst fråga och hur du lägger till arbets ytan Log Analytics/Application Insights till Azure Datautforskaren Web UI.
 
 Azure Datautforskaren Cross service-frågor Flow: :::image type="content" source="media\azure-data-explorer-monitor-proxy\azure-data-explorer-monitor-flow.png" alt-text="Azure Data Explorer-proxyläge.":::
 
@@ -62,7 +62,7 @@ Du kan köra frågorna med hjälp av klient verktyg som har stöd för Kusto-fr�
 > * Databas namnet måste ha samma namn som den resurs som anges i kors tjänst frågan. Namnen är skiftlägeskänsliga.
 > * I kors kluster frågor kontrollerar du att namngivningen av Application Insights appar och Log Analytics arbets ytor är korrekt.
 > * Om namnen innehåller specialtecken ersätts de av URL-kodning i kors tjänst frågan.
-> * Om namnen innehåller tecken som inte uppfyller [KQL-ID: n](https://docs.microsoft.com/azure/data-explorer/kusto/query/schema-entities/entity-names), ersätts de av bindestrecks **-** tecknet.
+> * Om namnen innehåller tecken som inte uppfyller [KQL-ID: n](/azure/data-explorer/kusto/query/schema-entities/entity-names), ersätts de av bindestrecks **-** tecknet.
 
 ### <a name="direct-query-on-your-log-analytics-or-application-insights-workspaces-from-azure-data-explorer-client-tools"></a>Direkt fråga på din Log Analytics eller Application Insights arbets ytor från Azure Datautforskaren-klient verktyg
 
@@ -90,7 +90,7 @@ union <Azure Data Explorer table>, cluster(CL1).database(<workspace-name>).<tabl
 
 :::image type="content" source="media\azure-data-explorer-monitor-proxy\azure-data-explorer-cross-query-proxy.png" alt-text="Kors tjänst fråga från Azure-Datautforskaren.":::
 
-Om du använder [ `join` operatorn](https://docs.microsoft.com/azure/data-explorer/kusto/query/joinoperator)i stället för union kan [`hint`](https://docs.microsoft.com/azure/data-explorer/kusto/query/joinoperator#join-hints) du behöva köra den på ett internt Azure datautforskaren-kluster.
+Om du använder [ `join` operatorn](/azure/data-explorer/kusto/query/joinoperator)i stället för union kan [`hint`](/azure/data-explorer/kusto/query/joinoperator#join-hints) du behöva köra den på ett internt Azure datautforskaren-kluster.
 
 ### <a name="join-data-from-an-azure-data-explorer-cluster-in-one-tenant-with-an-azure-monitor-resource-in-another"></a>Koppla data från ett Azure Datautforskaren-kluster i en klient organisation med en Azure Monitor-resurs i en annan
 
@@ -98,9 +98,9 @@ Frågor över flera klienter mellan-tjänsterna stöds inte. Du är inloggad på
 
 Om Azure Datautforskaren-resursen finns i klient organisationen "A" och Log Analytics arbets ytan är i klient organisationen "B" använder du någon av följande två metoder:
 
-1. Med Azure Datautforskaren kan du lägga till roller för huvud konton i olika klienter. Lägg till ditt användar-ID i klienten ' B ' som en behörig användare i Azure Datautforskaren-klustret. Verifiera att egenskapen *[' TrustedExternalTenant '](https://docs.microsoft.com/powershell/module/az.kusto/update-azkustocluster)* i Azure datautforskaren-klustret innehåller klienten ' B '. Kör kors frågan fullständigt i klient organisationen ' B '.
+1. Med Azure Datautforskaren kan du lägga till roller för huvud konton i olika klienter. Lägg till ditt användar-ID i klienten ' B ' som en behörig användare i Azure Datautforskaren-klustret. Verifiera att egenskapen *[' TrustedExternalTenant '](/powershell/module/az.kusto/update-azkustocluster)* i Azure datautforskaren-klustret innehåller klienten ' B '. Kör kors frågan fullständigt i klient organisationen ' B '.
 
-2. Använd [Lighthouse](https://docs.microsoft.com/azure/lighthouse/) för att projicera Azure Monitor resursen i klient organisationen "A".
+2. Använd [Lighthouse](../../lighthouse/index.yml) för att projicera Azure Monitor resursen i klient organisationen "A".
 ### <a name="connect-to-azure-data-explorer-clusters-from-different-tenants"></a>Ansluta till Azure Datautforskaren-kluster från olika klienter
 
 Kusto Explorer loggar automatiskt in till den klient som användar kontot ursprungligen tillhör. För att få åtkomst till resurser i andra klienter med samma användar konto måste det `tenantId` uttryckligen anges i anslutnings strängen: `Data Source=https://ade.applicationinsights.io/subscriptions/SubscriptionId/resourcegroups/ResourceGroupName;Initial Catalog=NetDefaultDB;AAD Federated Security=True;Authority ID=` **TenantId**
@@ -134,4 +134,4 @@ Följande syntax är tillgängliga när du anropar Log Analytics-eller Applicati
 ## <a name="next-steps"></a>Nästa steg
 
 - Läs mer om [data strukturen för Log Analytics arbets ytor och Application Insights](data-platform-logs.md).
-- Lär dig att [skriva frågor i Azure datautforskaren](https://docs.microsoft.com/azure/data-explorer/write-queries).
+- Lär dig att [skriva frågor i Azure datautforskaren](/azure/data-explorer/write-queries).

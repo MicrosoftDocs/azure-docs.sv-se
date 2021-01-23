@@ -3,12 +3,12 @@ title: Översikt över säkerhets kopiering av Azure-diskar
 description: Lär dig mer om Azure disk backup-lösningen.
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: fea0dd9d01bdc7c31d724cedd89d1fe6891c650a
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: d73c431fdc2b2906dc1d3d9485bded9449b2f2ba
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98558435"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98733038"
 ---
 # <a name="overview-of-azure-disk-backup-in-preview"></a>Översikt över säkerhets kopiering av Azure-diskar (i för hands version)
 
@@ -19,15 +19,15 @@ ms.locfileid: "98558435"
 
 Azure disk Backup är en inbyggd, molnbaserad säkerhets kopierings lösning som skyddar dina data i Managed disks. Det är en enkel, säker och kostnads effektiv lösning som gör att du kan konfigurera skydd för hanterade diskar med några få steg. Det garanterar att du kan återställa dina data i ett katastrof scenario.
 
-Azure disk Backup erbjuder en nyckel färdig lösning som tillhandahåller hantering av ögonblicks bilder för hanterade diskar genom att automatisera regelbunden generering av ögonblicks bilder och behålla den för konfigurerad varaktighet med hjälp av säkerhets kopierings principen. Du kan hantera disk ögonblicks bilderna med noll som infrastruktur kostnader och utan behov av anpassade skript eller hanterings kostnader. Detta är en krasch lösning för säkerhets kopiering som tar säkerhets kopiering av en hanterad disk vid en viss tidpunkt med hjälp av [stegvisa ögonblicks bilder](https://docs.microsoft.com/azure/virtual-machines/windows/disks-incremental-snapshots) med stöd för flera säkerhets kopior per dag. Det är också en agent lös lösning som inte påverkar prestanda för produktions program. Den har stöd för säkerhets kopiering och återställning av både OS-och data diskar (inklusive delade diskar), oavsett om de är kopplade till en virtuell Azure-dator som körs eller inte.
+Azure disk Backup erbjuder en nyckel färdig lösning som tillhandahåller hantering av ögonblicks bilder för hanterade diskar genom att automatisera regelbunden generering av ögonblicks bilder och behålla den för konfigurerad varaktighet med hjälp av säkerhets kopierings principen. Du kan hantera disk ögonblicks bilderna med noll som infrastruktur kostnader och utan behov av anpassade skript eller hanterings kostnader. Detta är en krasch lösning för säkerhets kopiering som tar säkerhets kopiering av en hanterad disk vid en viss tidpunkt med hjälp av [stegvisa ögonblicks bilder](../virtual-machines/disks-incremental-snapshots.md) med stöd för flera säkerhets kopior per dag. Det är också en agent lös lösning som inte påverkar prestanda för produktions program. Den har stöd för säkerhets kopiering och återställning av både OS-och data diskar (inklusive delade diskar), oavsett om de är kopplade till en virtuell Azure-dator som körs eller inte.
 
-Om du behöver programkonsekvent säkerhets kopiering av virtuell dator, inklusive data diskarna, eller ett alternativ för att återställa en hel virtuell dator från en säkerhets kopia, återställa en fil eller mapp, eller återställa till en sekundär region, använder du lösningen för [säkerhets kopiering](backup-azure-vms-introduction.md) av virtuella Azure-datorer. Azure Backup erbjuder sida-vid-sida-stöd för säkerhets kopiering av hanterade diskar med hjälp av disk säkerhets kopiering förutom [Azure VM backup](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction) -lösningar. Detta är användbart när du behöver en gång per dag program som är konsekventa med säkerhets kopiering av virtuella datorer och även oftare säkerhets kopiering av OS-diskar eller en specifik datadisk som är kraschad och som inte påverkar prestandan för produktions programmet.
+Om du behöver programkonsekvent säkerhets kopiering av virtuell dator, inklusive data diskarna, eller ett alternativ för att återställa en hel virtuell dator från en säkerhets kopia, återställa en fil eller mapp, eller återställa till en sekundär region, använder du lösningen för [säkerhets kopiering](backup-azure-vms-introduction.md) av virtuella Azure-datorer. Azure Backup erbjuder sida-vid-sida-stöd för säkerhets kopiering av hanterade diskar med hjälp av disk säkerhets kopiering förutom [Azure VM backup](./backup-azure-vms-introduction.md) -lösningar. Detta är användbart när du behöver en gång per dag program som är konsekventa med säkerhets kopiering av virtuella datorer och även oftare säkerhets kopiering av OS-diskar eller en specifik datadisk som är kraschad och som inte påverkar prestandan för produktions programmet.
 
 Säkerhets kopiering av Azure-diskar är integrerat i Backup Center, som ger en **enhetlig hanterings upplevelse** i Azure för företag för att styra, övervaka, hantera och analysera säkerhets kopior i stor skala.
 
 ## <a name="key-benefits-of-disk-backup"></a>Viktiga fördelar med disk säkerhets kopiering
 
-Säkerhets kopiering av Azure-diskar är en lösnings löst och krasch lösning som använder [stegvisa ögonblicks bilder](https://docs.microsoft.com/azure/virtual-machines/windows/disks-incremental-snapshots) och ger följande fördelar:
+Säkerhets kopiering av Azure-diskar är en lösnings löst och krasch lösning som använder [stegvisa ögonblicks bilder](../virtual-machines/disks-incremental-snapshots.md) och ger följande fördelar:
 
 - Mer frekvent och snabb säkerhets kopiering utan att avbryta den virtuella datorn.
 - Påverkar inte produktions programmets prestanda.
@@ -59,13 +59,13 @@ Lösning för säkerhets kopiering av Azure-disk är användbar i följande scen
 
 - Om du vill konfigurera säkerhets kopiering går du till säkerhets kopierings valvet, tilldelar en princip för säkerhets kopiering, väljer den hanterade disk som behöver säkerhets kopie ras och anger en resurs grupp där ögonblicks bilderna ska lagras och hanteras. Azure Backup automatiskt utlöser schemalagda säkerhets kopierings jobb som skapar en stegvis ögonblicks bild av disken enligt säkerhets kopierings frekvensen. Äldre ögonblicks bilder tas bort i enlighet med den Retentions tid som anges av säkerhets kopierings principen.
 
-- Azure Backup använder [stegvisa ögonblicks bilder](https://docs.microsoft.com/azure/virtual-machines/windows/disks-incremental-snapshots-portal#restrictions) av den hanterade disken. Stegvisa ögonblicks bilder är en kostnads effektiv säkerhets kopia av hanterade diskar som faktureras för förändrings ändringarna på disken sedan den senaste ögonblicks bilden. De lagras alltid på den mest kostnads effektiva lagrings platsen, vilket är standard-HDD-lagring oavsett lagrings typ för överordnade diskar. Den första ögonblicks bilden av disken upptar diskens använda storlek och i följd stegvisa ögonblicks bilder lagrar delta ändringar på disken sedan den senaste ögonblicks bilden.
+- Azure Backup använder [stegvisa ögonblicks bilder](../virtual-machines/disks-incremental-snapshots.md#restrictions) av den hanterade disken. Stegvisa ögonblicks bilder är en kostnads effektiv säkerhets kopia av hanterade diskar som faktureras för förändrings ändringarna på disken sedan den senaste ögonblicks bilden. De lagras alltid på den mest kostnads effektiva lagrings platsen, vilket är standard-HDD-lagring oavsett lagrings typ för överordnade diskar. Den första ögonblicks bilden av disken upptar diskens använda storlek och i följd stegvisa ögonblicks bilder lagrar delta ändringar på disken sedan den senaste ögonblicks bilden.
 
 - När du har konfigurerat säkerhets kopian av en hanterad disk skapas en säkerhets kopierings instans i säkerhets kopierings valvet. Med hjälp av säkerhets kopierings instansen kan du hitta hälso tillståndet för säkerhets kopierings åtgärder, utlösa säkerhets kopior på begäran och utföra återställnings åtgärder. Du kan också Visa hälso tillståndet för säkerhets kopieringar i flera valv och säkerhets kopierings instanser med Backup Center, som ger en enda ruta i glas visning.
 
 - Om du vill återställa väljer du bara den återställnings punkt från vilken du vill återställa disken. Ange resurs gruppen där den återställda disken ska skapas från ögonblicks bilden. Azure Backup ger en omedelbar återställnings upplevelse eftersom ögonblicks bilderna lagras lokalt i din prenumeration.
 
-- Säkerhets kopierings valv använder hanterad identitet för att få åtkomst till andra Azure-resurser. Om du vill konfigurera säkerhets kopiering av en hanterad disk och återställa från tidigare säkerhets kopiering, kräver säkerhets kopierings valvets hanterade identitet en uppsättning behörigheter på käll disken, resurs gruppen för ögonblicks bilder där ögonblicks bilder skapas och hanteras och mål resurs gruppen där du vill återställa säkerhets kopian. Du kan bevilja behörighet till den hanterade identiteten med hjälp av rollbaserad åtkomst kontroll i Azure (Azure RBAC). Hanterad identitet är ett tjänst objekt av en särskild typ som bara kan användas med Azure-resurser. Läs mer om [hanterade identiteter](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
+- Säkerhets kopierings valv använder hanterad identitet för att få åtkomst till andra Azure-resurser. Om du vill konfigurera säkerhets kopiering av en hanterad disk och återställa från tidigare säkerhets kopiering, kräver säkerhets kopierings valvets hanterade identitet en uppsättning behörigheter på käll disken, resurs gruppen för ögonblicks bilder där ögonblicks bilder skapas och hanteras och mål resurs gruppen där du vill återställa säkerhets kopian. Du kan bevilja behörighet till den hanterade identiteten med hjälp av rollbaserad åtkomst kontroll i Azure (Azure RBAC). Hanterad identitet är ett tjänst objekt av en särskild typ som bara kan användas med Azure-resurser. Läs mer om [hanterade identiteter](../active-directory/managed-identities-azure-resources/overview.md).
 
 - För närvarande har Azure disk backup stöd för drift säkerhets kopiering av hanterade diskar och kopierar inte säkerhets kopior till lagring med säkerhets kopierings valv. I [support mat ris](disk-backup-support-matrix.md)finns en detaljerad lista över scenarier som stöds och som inte stöds och regions tillgänglighet.
 
@@ -75,4 +75,4 @@ Azure Backup erbjuder en hanterings lösning för ögonblicks bilder för att sk
 
 ## <a name="next-steps"></a>Nästa steg
 
-- [Support mat ris för Azure disk backup](disk-backup-support-matrix.md)
+- [Stödmatris för säkerhetskopiering av Azure-disk](disk-backup-support-matrix.md)

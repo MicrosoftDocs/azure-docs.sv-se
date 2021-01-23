@@ -1,34 +1,1874 @@
 - name: Dokumentation om Virtual Machines
   href: index.yml
-- name: Virtuella Linux-datorer i Azure
-  href: ./linux/index.yml
-- name: Virtuella Windows-datorer i Azure
-  href: ./windows/index.yml
-- name: Dokumentation om VM-tillägg
-  href: ./extensions/overview.md
+- name: Översikt
+  items:
+    - name: Om Virtuella Linux-datorer
+      href: ./linux/overview.md
+    - name: Om Virtuella Windows-datorer
+      href: ./windows/overview.md
+- name: Snabbstarter
+  items:
+    - name: Skapa en virtuell Linux-dator
+      items:
+        - name: CLI
+          href: ./linux/quick-create-cli.md
+        - name: Portalen
+          href: ./linux/quick-create-portal.md
+        - name: PowerShell
+          href: ./linux/quick-create-powershell.md
+        - name: ARM-mall
+          displayName: 'Resource Manager, template, json'
+          href: ./linux/quick-create-template.md
+    - name: Skapa en virtuell Windows-dator
+      items:
+        - name: CLI
+          href: ./windows/quick-create-cli.md
+        - name: Portalen
+          href: ./windows/quick-create-portal.md
+        - name: PowerShell
+          href: ./windows/quick-create-powershell.md
+        - name: ARM-mall
+          displayName: 'Resource Manager, template, json'
+          href: ./windows/quick-create-template.md
+  expanded: true
+- name: Självstudier
+  items:
+    - name: Linux
+      items:
+        - name: 1 – Skapa/hantera virtuella datorer
+          href: ./linux/tutorial-manage-vm.md
+        - name: 2 – Skapa/hantera diskar
+          href: ./linux/tutorial-manage-disks.md
+        - name: 3 – Automatisera konfiguration
+          href: ./linux/tutorial-automate-vm-deployment.md
+        - name: 4 – Skapa avbildningar av virtuella datorer
+          href: ./linux/tutorial-custom-images.md
+        - name: 5 – Virtuella datorer med hög tillgänglighet
+          href: ./linux/tutorial-availability-sets.md
+        - name: 6 – Skapa en skalningsuppsättning
+          href: ./linux/tutorial-create-vmss.md
+        - name: 7 – Belastningsutjämna virtuella datorer
+          href: ./linux/tutorial-load-balancer.md
+        - name: 8 – Hantera nätverk
+          href: ./linux/tutorial-virtual-network.md
+    - name: Windows
+      items:
+        - name: 1 – Skapa/hantera en virtuell dator
+          href: ./windows/tutorial-manage-vm.md
+        - name: 2 – Skapa/hantera diskar
+          href: ./windows/tutorial-manage-data-disk.md
+        - name: 3 – Automatisera konfiguration
+          href: ./windows/tutorial-automate-vm-deployment.md
+        - name: 4 – Skapa avbildningar av virtuella datorer
+          href: ./windows/tutorial-custom-images.md
+        - name: 5 – Virtuella datorer med hög tillgänglighet
+          href: ./windows/tutorial-availability-sets.md
+        - name: 6 – Skapa en skalningsuppsättning
+          href: ./windows/tutorial-create-vmss.md
+        - name: 7 – Belastningsutjämna virtuella datorer
+          href: ./windows/tutorial-load-balancer.md
+        - name: 8 – Hantera nätverk
+          href: ./windows/tutorial-virtual-network.md
 - name: Arbetsbelastningar
   items:
     - name: Red Hat
       href: ./workloads/redhat/overview.md
-    - name: Beräkning med höga prestanda
-      href: ./workloads/hpc/overview.md
-    - name: SAP
-      href: ./workloads/sap/get-started.md
+    - name: Cloud Foundry
+      href: ../cloudfoundry/index.yml
+    - name: Cassandra
+      href: /azure/architecture/reference-architectures/n-tier/n-tier-cassandra
+    - name: OpenShift
+      items:
+        - name: Översikt över OpenShift
+          href: ./linux/openshift-get-started.md
+        - name: OpenShift Container Platform 4.x
+          href: ./linux/openshift-container-platform-4x.md
+        - name: Förutsättningar för OpenShift Container Platform 3.11
+          href: ./linux/openshift-container-platform-3x-prerequisites.md
+        - name: OpenShift Container Platform 3.11
+          href: ./linux/openshift-container-platform-3x.md
+        - name: OpenShift Container Platform 3.11 – självhanterad Marketplace
+          href: ./linux/openshift-container-platform-3x-marketplace-self-managed.md
+        - name: Azure Stack
+          href: ./linux/openshift-azure-stack.md
+        - name: OpenShift Container Platform 3.11 – uppgifter efter distribution
+          href: ./linux/openshift-container-platform-3x-post-deployment.md
+        - name: Felsöka distributioner av OpenShift Container Platform 3.11
+          href: ./linux/openshift-container-platform-3x-troubleshooting.md
+        - name: Distribuera OKD
+          href: ./linux/openshift-okd.md
+    - name: SAP på Azure
+      items:
+        - name: Kom igång
+          href: ./workloads/sap/get-started.md
+        - name: Certifieringar
+          href: ./workloads/sap/sap-certifications.md
+        - name: SAP HANA på Azure (stora instanser)
+          items:
+            - name: Översikt
+              items:
+                - name: Vad är SAP HANA på stora Azure-instanser?
+                  href: ./workloads/sap/hana-overview-architecture.md
+                - name: Förstå villkoren
+                  href: ./workloads/sap/hana-know-terms.md
+                - name: Certifiering
+                  href: ./workloads/sap/hana-certification.md
+                - name: 'Tillgängliga SKU:er för HLI'
+                  href: ./workloads/sap/hana-available-skus.md
+                - name: Storlekar
+                  href: ./workloads/sap/hana-sizing.md
+                - name: Registreringskrav
+                  href: ./workloads/sap/hana-onboarding-requirements.md
+                - name: SAP HANA-datanivåer och -tilläggsnoder
+                  href: ./workloads/sap/hana-data-tiering-extension-nodes.md
+                - name: Driftmodell och ansvarsområden
+                  href: ./workloads/sap/hana-operations-model.md
+                - name: Kompatibla operativsystem
+                  href: ./workloads/sap/os-compatibility-matrix-hana-large-instance.md
+        - name: Arkitektur
+          items:
+            - name: Allmän arkitektur
+              href: ./workloads/sap/hana-architecture.md
+            - name: Nätverksarkitektur
+              href: ./workloads/sap/hana-network-architecture.md
+            - name: Lagringsarkitektur
+              href: ./workloads/sap/hana-storage-architecture.md
+            - name: HLI-scenarier som stöds
+              href: ./workloads/sap/hana-supported-scenario.md
+        - name: Infrastruktur och anslutning
+          items:
+            - name: HLI-distribution
+              href: ./workloads/sap/hana-overview-infrastructure-connectivity.md
+            - name: Ansluta virtuella Azure-datorer till HANA – stora instanser
+              href: ./workloads/sap/hana-connect-azure-vm-large-instances.md
+            - name: Ansluta ett virtuellt nätverk till HANA – stora instanser ExpressRoute
+              href: ./workloads/sap/hana-connect-vnet-express-route.md
+            - name: Ytterligare nätverkskrav
+              href: ./workloads/sap/hana-additional-network-requirements.md
+        - name: Installera SAP HANA
+          items:
+            - name: Verifiera konfigurationen
+              href: ./workloads/sap/hana-installation.md
+            - name: Exempel på HANA-installation
+              href: ./workloads/sap/hana-example-installation.md
+        - name: Hög tillgänglighet och haveriberedskap
+          items:
+            - name: Alternativ och överväganden
+              href: ./workloads/sap/hana-overview-high-availability-disaster-recovery.md
+            - name: Säkerhetskopiering och återställning
+              href: ./workloads/sap/hana-backup-restore.md
+            - name: Principer och förberedelse
+              href: ./workloads/sap/hana-concept-preparation.md
+            - name: Redundans för haveriberedskap
+              href: ./workloads/sap/hana-failover-procedure.md
+        - name: Felsök och övervaka
+          items:
+            - name: Övervaka HLI
+              href: ./workloads/sap/troubleshooting-monitoring.md
+            - name: Övervaka och felsöka från HANA-sida
+              href: ./workloads/sap/hana-monitor-troubleshoot.md
+        - name: Gör så här för att
+          items:
+            - name: Kontroll av Azure HANA – stora instanser med Azure Portal
+              href: ./workloads/sap/hana-li-portal.md
+            - name: Konfiguration för hög tillgänglighet med STONITH
+              href: ./workloads/sap/ha-setup-with-stonith.md
+            - name: 'Säkerhetskopiering av operativsystem för Type II-SKU:er'
+              href: ./workloads/sap/os-backup-type-ii-skus.md
+            - name: Aktivera kdump för många HANA-instanser
+              href: ./workloads/sap/hana-large-instance-enable-kdump.md
+            - name: Uppgradering av operativsystem för HANA på stora instanser
+              href: ./workloads/sap/os-upgrade-hana-large-instance.md
+            - name: Konfigurera SMT-server för SUSE Linux
+              href: ./workloads/sap/hana-setup-smt.md
+            - name: Migrera virtuella datorer från HMI till Azure
+              href: ./workloads/sap/hana-large-instance-virtual-machine-migration.md
+            - name: Köp en reservation för stora SAP HANA-instanser
+              href: ../cost-management-billing/reservations/prepay-hana-large-instances-reserved-capacity.md?context=/azure/virtual-machines/context/context
+    - name: SAP HANA på Azure Virtual Machines
+      items:
+        - name: Installation av SAP HANA på virtuella Azure-datorer
+          href: ./workloads/sap/hana-get-started.md
+        - name: Distributionsguide för S/4 HANA eller BW/4 HANA SAP CAL
+          href: ./workloads/sap/cal-s4h.md
+        - name: Konfigurationer och åtgärder för SAP HANA i Azure-infrastrukturer
+          href: ./workloads/sap/hana-vm-operations.md
+        - name: Lagringskonfigurationer för virtuella Azure-datorer för SAP HANA
+          href: ./workloads/sap/hana-vm-operations-storage.md
+        - name: NFS v4.1-volymer på Azure NetApp Files för SAP HANA
+          href: ./workloads/sap/hana-vm-operations-netapp.md
+        - name: SAP HANA-tillgänglighet i Azure Virtual Machines
+          items:
+            - name: Tillgänglighetsöversikt för SAP HANA på Azure
+              href: ./workloads/sap/sap-hana-availability-overview.md
+            - name: Tillgänglighet för SAP HANA på Azure inom en Azure-region
+              href: ./workloads/sap/sap-hana-availability-one-region.md
+            - name: Tillgänglighet för SAP HANA på Azure i flera Azure-regioner
+              href: ./workloads/sap/sap-hana-availability-across-regions.md
+            - name: Konfigurera SAP HANA System Replication på SLES
+              href: ./workloads/sap/sap-hana-high-availability.md
+            - name: Konfigurera SAP HANA System Replication på RHEL
+              href: ./workloads/sap/sap-hana-high-availability-rhel.md
+            - name: Konfigurera SAP HANA System Replication med ANF på RHEL
+              href: ./workloads/sap/sap-hana-high-availability-netapp-files-red-hat.md
+            - name: Felsöka SAP HANA-utskalning och Pacemaker på SLES
+              href: ./workloads/sap/hana-vm-troubleshoot-scale-out-ha-on-sles.md
+            - name: Utskalnings-HSR för SAP HANA med Pacemaker på RHEL
+              href: ./workloads/sap/sap-hana-high-availability-scale-out-hsr-rhel.md
+            - name: SAP HANA-utskalning med väntelägesnod med Azure NetApp Files på SLES
+              href: ./workloads/sap/sap-hana-scale-out-standby-netapp-files-suse.md
+            - name: SAP HANA-utskalning med väntelägesnod med Azure NetApp Files på RHEL
+              href: ./workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel.md
+        - name: Översikt över SAP HANA-säkerhetskopiering
+          href: ./workloads/sap/sap-hana-backup-guide.md
+        - name: Säkerhetskopiering av SAP HANA-filnivå
+          href: ./workloads/sap/sap-hana-backup-file-level.md
+    - name: SAP NetWeaver och Business One på Azure Virtual Machines
+      items:
+        - name: Planera för SAP-arbetsbelastning och checklista för distribution
+          href: ./workloads/sap/sap-deployment-checklist.md
+        - name: Planera och implementera SAP NetWeaver på Azure
+          href: ./workloads/sap/planning-guide.md
+          items:
+            - name: Azure Storage-typer för SAP-arbetsbelastning
+              href: ./workloads/sap/planning-guide-storage.md
+            - name: SAP-arbetsbelastning på en virtuell Azure-dator – scenarier som stöds
+              href: ./workloads/sap/sap-planning-supported-configurations.md
+            - name: Vilken SAP-programvara stöds för Azure-distributioner
+              href: ./workloads/sap/sap-supported-product-on-azure.md
+        - name: Distributionsguide för SAP NetWeaver
+          href: ./workloads/sap/deployment-guide.md
+        - name: DBMS-distributionsguider för SAP-arbetsbelastning
+          items:
+            - name: DBMS-distribution för SAP-arbetsbelastning på vanliga Azure Virtual Machines
+              href: ./workloads/sap/dbms_guide_general.md
+            - name: DBMS-distribution för SAP-arbetsbelastning för SQL Server på Azure Virtual Machines
+              href: ./workloads/sap/dbms_guide_sqlserver.md
+            - name: DBMS-distribution för SAP-arbetsbelastning för Oracle på Azure Virtual Machines
+              href: ./workloads/sap/dbms_guide_oracle.md
+            - name: DBMS-distribution för SAP-arbetsbelastning för IBM Db2 på virtuella Azure-datorer
+              href: ./workloads/sap/dbms_guide_ibm.md
+            - name: Hög tillgänglighet för IBM Db2 LUW på virtuella Azure-datorer på SUSE Linux Enterprise Server
+              href: ./workloads/sap/dbms-guide-ha-ibm.md
+            - name: Hög tillgänglighet för IBM Db2 LUW på virtuella Azure-datorer på Red Hat Enterprise Linux Server
+              href: ./workloads/sap/high-availability-guide-rhel-ibm-db2-luw.md
+            - name: DBMS-distribution för SAP-arbetsbelastning för SAP ASE på Azure Virtual Machines
+              href: ./workloads/sap/dbms_guide_sapase.md
+            - name: 'Distribution av SAP MaxDB, liveCache och innehållsserver på Azure'
+              href: ./workloads/sap/dbms_guide_maxdb.md
+            - name: SAP HANA-tillgänglighet i Azure Virtual Machines
+              items:
+                - name: Tillgänglighetsöversikt för SAP HANA på Azure
+                  href: ./workloads/sap/sap-hana-availability-overview.md
+                - name: Tillgänglighet för SAP HANA på Azure inom en Azure-region
+                  href: ./workloads/sap/sap-hana-availability-one-region.md
+                - name: Tillgänglighet för SAP HANA på Azure i flera Azure-regioner
+                  href: ./workloads/sap/sap-hana-availability-across-regions.md
+        - name: SAP Business One på Azure Virtual Machines
+          href: ./workloads/sap/business-one-azure.md
+        - name: Distributionsguide för SAP IDES i Windows/SQL Server SAP CAL
+          href: ./workloads/sap/cal-ides-erp6-erp7-sp3-sql.md
+        - name: SAP LaMa-anslutning för Azure
+          href: ./workloads/sap/lama-installation.md
+        - name: Hög tillgänglighet på Windows och Linux
+          items:
+            - name: Översikt
+              href: ./workloads/sap/sap-high-availability-guide-start.md
+            - name: Arkitektur med hög tillgänglighet
+              items:
+                - name: Arkitektur med hög tillgänglighet och scenarier
+                  href: ./workloads/sap/sap-high-availability-architecture-scenarios.md
+                - name: Arkitektur med högre tillgänglighet och scenarier
+                  href: ./workloads/sap/sap-higher-availability-architecture-scenarios.md
+                - name: SAP-arbetsbelastningskonfigurationer med Azure-tillgänglighetszoner
+                  href: ./workloads/sap/sap-ha-availability-zones.md
+                - name: Hög tillgänglighet på Windows med delad disk för (A)SCS-instans
+                  href: ./workloads/sap/sap-high-availability-guide-wsfc-shared-disk.md
+                - name: Hög tillgänglighet på Windows med SOFS-filresurs för (A)SCS-instans
+                  href: ./workloads/sap/sap-high-availability-guide-wsfc-file-share.md
+                - name: HA för SAP NetWeaver på Windows med Azure NetApp Files (SMB)
+                  href: ./workloads/sap/high-availability-guide-windows-netapp-files-smb.md
+                - name: Hög tillgänglighet på SUSE Linux för (A)SCS-instans
+                  href: ./workloads/sap/high-availability-guide-suse.md
+                - name: Hög tillgänglighet på SUSE Linux för (A)SCS-instans med Azure NetApp Files
+                  href: ./workloads/sap/high-availability-guide-suse-netapp-files.md
+                - name: Hög tillgänglighet på Red Hat Enterprise Linux för (A)SCS-instans
+                  href: ./workloads/sap/high-availability-guide-rhel.md
+                - name: Hög tillgänglighet på Red Hat Enterprise Linux för (A)SCS-instans med Azure NetApp Files
+                  href: ./workloads/sap/high-availability-guide-rhel-netapp-files.md
+            - name: Förberedelse av Azure-infrastruktur
+              items:
+                - name: Windows med delad disk för (A)SCS-instans
+                  href: ./workloads/sap/sap-high-availability-infrastructure-wsfc-shared-disk.md
+                - name: Windows med SOFS-filresurs för (A)SCS-instans
+                  href: ./workloads/sap/sap-high-availability-infrastructure-wsfc-file-share.md
+                - name: Hög tillgänglighet för NFS på virtuella Azure-datorer eller SLES
+                  href: ./workloads/sap/high-availability-guide-suse-nfs.md
+                - name: GlusterFS på virtuella Azure-datorer på Red Hat Enterprise Linux för SAP NetWeaver
+                  href: ./workloads/sap/high-availability-guide-rhel-glusterfs.md
+                - name: Pacemaker på SLES
+                  href: ./workloads/sap/high-availability-guide-suse-pacemaker.md
+                - name: Pacemaker på RHEL
+                  href: ./workloads/sap/high-availability-guide-rhel-pacemaker.md
+                - name: Offentlig anslutningsmöjlighet för slutpunkter för virtuella datorer med Azure Standard Load Balancer i SAP-scenarier med hög tillgänglighet
+                  href: ./workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections.md
+            - name: SAP-installation
+              items:
+                - name: Windows med delad disk för (A)SCS-instans
+                  href: ./workloads/sap/sap-high-availability-installation-wsfc-shared-disk.md
+                - name: Windows med SOFS-filresurs för (A)SCS-instans
+                  href: ./workloads/sap/sap-high-availability-installation-wsfc-file-share.md
+                - name: HA för SAP NetWeaver på Windows med Azure NetApp Files (SMB)
+                  href: ./workloads/sap/high-availability-guide-windows-netapp-files-smb.md
+                - name: SUSE Linux med NFS för (A)SCS-instans
+                  href: ./workloads/sap/high-availability-guide-suse.md
+                - name: SUSE Linux med NFS för (A)SCS-instans med Azure NetApp Files
+                  href: ./workloads/sap/high-availability-guide-suse-netapp-files.md
+                - name: Hög tillgänglighet för SAP NetWeaver på Red Hat Enterprise Linux
+                  href: ./workloads/sap/high-availability-guide-rhel.md
+                - name: Red Hat Enterprise Linux med NFS för (A)SCS-instans med Azure NetApp Files
+                  href: ./workloads/sap/high-availability-guide-rhel-netapp-files.md
+            - name: SAP – flera säkerhetsidentifierare
+              items:
+                - name: Windows med delad disk i Azure för (A)SCS-instans
+                  href: ./workloads/sap/sap-ascs-ha-multi-sid-wsfc-azure-shared-disk.md
+                - name: Windows med delad disk för (A)SCS-instans
+                  href: ./workloads/sap/sap-ascs-ha-multi-sid-wsfc-shared-disk.md
+                - name: Windows med SOFS-filresurs för (A)SCS-instans
+                  href: ./workloads/sap/sap-ascs-ha-multi-sid-wsfc-file-share.md
+                - name: SLES med multi-SID-pacemaker för en A(SCS)-instans
+                  href: ./workloads/sap/high-availability-guide-suse-multi-sid.md
+                - name: RHEL med multi-SID-pacemaker för en A(SCS)-instans
+                  href: ./workloads/sap/high-availability-guide-rhel-multi-sid.md
+        - name: Haveriberedskap för Azure Site Recovery för SAP
+          href: ../site-recovery/site-recovery-workload.md#protect-sap
+        - name: Närhetsplaceringsgrupper i Azure för optimal svarstid för nätverk med SAP-program
+          href: ./workloads/sap/sap-proximity-placement-scenarios.md
+        - name: SAP BusinessObjects Business Intelligence-plattform i Azure
+          items:
+            - name: Planerings- och implementeringsguide för SAP BusinessObjects BI-plattform i Azure
+              href: ./workloads/sap/businessobjects-deployment-guide.md
+            - name: Distributionsguide för SAP BusinessObjects BI-plattform för Linux i Azure
+              href: ./workloads/sap/businessobjects-deployment-guide-linux.md
+        - name: Integrera Azure AD med SAP-program
+          items:
+            - name: Etablera användare från SAP SuccessFactors till Active Directory
+              href: ../active-directory/saas-apps/sap-successfactors-inbound-provisioning-tutorial.md?context=/azure/virtual-machines/context/context
+            - name: Etablera användare från SAP SuccessFactors till Azure AD
+              href: ../active-directory/saas-apps/sap-successfactors-inbound-provisioning-cloud-only-tutorial.md?context=/azure/virtual-machines/context/context
+            - name: Skriva tillbaka användare från Azure AD till SAP SuccessFactors
+              href: ../active-directory/saas-apps/sap-successfactors-writeback-tutorial.md?context=/azure/virtual-machines/context/context
+            - name: Etablera användare till SAP Cloud Platform Identity Authentication Service
+              href: ../active-directory/saas-apps/sap-cloud-platform-identity-authentication-provisioning-tutorial.md?context=/azure/virtual-machines/context/context
+            - name: Konfigurera enkel inloggning med SAP Cloud Platform Identity Authentication Service
+              href: ../active-directory/saas-apps/sap-hana-cloud-platform-identity-authentication-tutorial.md?context=/azure/virtual-machines/context/context
+            - name: Konfigurera enkel inloggning med SAP SuccessFactors
+              href: ../active-directory/saas-apps/successfactors-tutorial.md?context=/azure/virtual-machines/context/context
+            - name: Konfigurera enkel inloggning med SAP Analytics Cloud
+              href: ../active-directory/saas-apps/sapboc-tutorial.md?context=/azure/virtual-machines/context/context
+            - name: Konfigurera enkel inloggning med SAP Fiori
+              href: ../active-directory/saas-apps/sap-fiori-tutorial.md?context=/azure/virtual-machines/context/context
+            - name: Konfigurera enkel inloggning med SAP Qualtrics
+              href: ../active-directory/saas-apps/qualtrics-tutorial.md?context=/azure/virtual-machines/context/context
+            - name: Konfigurera enkel inloggning med SAP Ariba
+              href: ../active-directory/saas-apps/ariba-tutorial.md?context=/azure/virtual-machines/context/context
+            - name: Konfigurera enkel inloggning med SAP Concur Travel and Expense
+              href: ../active-directory/saas-apps/concur-travel-and-expense-tutorial.md?context=/azure/virtual-machines/context/context
+            - name: Konfigurera enkel inloggning med SAP Cloud Platform
+              href: ../active-directory/saas-apps/sap-hana-cloud-platform-tutorial.md?context=/azure/virtual-machines/context/context
+            - name: Konfigurera enkel inloggning med SAP NetWeaver
+              href: ../active-directory/saas-apps/sap-netweaver-tutorial.md?context=/azure/virtual-machines/context/context
+            - name: Konfigurera enkel inloggning med SAP Business ByDesign
+              href: ../active-directory/saas-apps/sapbusinessbydesign-tutorial.md?context=/azure/virtual-machines/context/context
+            - name: Konfigurera enkel inloggning med SAP HANA
+              href: ../active-directory/saas-apps/saphana-tutorial.md?context=/azure/virtual-machines/context/context
+            - name: Konfigurera enkel inloggning med SAP Cloud for Customer
+              href: ../active-directory/saas-apps/sap-customer-cloud-tutorial.md?context=/azure/virtual-machines/context/context
+            - name: Konfigurera enkel inloggning med SAP Fiori Launchpad
+              href: 'https://blogs.sap.com/2017/02/20/your-s4hana-environment-part-7-fiori-launchpad-saml-single-sing-on-with-azure-ad'
+        - name: Integrering av Azure-tjänster till SAP
+          items:
+            - name: Använda SAP HANA i Power BI Desktop
+              href: /power-bi/desktop-sap-hana
+            - name: DirectQuery och SAP HANA
+              href: /power-bi/desktop-directquery-sap-hana
+            - name: Använda SAP BW-anslutningsappen i Power BI Desktop
+              href: /power-bi/desktop-sap-bw-connector
+            - name: Azure Data Factory erbjuder dataintegrering för SAP HANA och Business Warehouse
+              href: 'https://azure.microsoft.com/blog/azure-data-factory-offer-sap-hana-and-business-warehouse-data-integration'
+        - name: Azure Monitor för SAP-lösningar
+          items:
+            - name: Azure Monitor för SAP-lösningar – översikt
+              href: ./workloads/sap/azure-monitor-overview.md
+            - name: Azure Monitor för SAP-lösningar – providrar
+              href: ./workloads/sap/azure-monitor-providers.md
+            - name: Konfigurera Azure Monitor för SAP-lösningar – Portalen
+              href: ./workloads/sap/azure-monitor-sap-quickstart.md
+            - name: Konfigurera Azure Monitor för SAP-lösningar – Azure PowerShell
+              href: ./workloads/sap/azure-monitor-sap-quickstart-powershell.md
+            - name: Azure Monitor för SAP-lösningar – Vanliga frågor och svar
+              href: ./workloads/sap/azure-monitor-faq.md
+        - name: Referens
+          items:
+            - name: Azure CLI
+              href: /cli/azure/ext/sap-hana/hanainstance
+            - name: Azure PowerShell
+              href: /powershell/module/az.hanaonazure/#sap-hana-on-azure
     - name: Oracle
-      href: ./workloads/oracle/oracle-overview.md
-    - name: Byta värd för stordator
-      href: ./workloads/mainframe-rehosting/overview.md
-- name: Klassiska distributioner
+      href: ./workloads/oracle/oracle-database-quick-create.md
+    - name: Elasticsearch
+      href: ./linux/tutorial-elasticsearch.md
+    - name: FreeBSD-paketfilter
+      href: ./linux/freebsd-pf-nat.md
+    - name: Databaser
+      items:
+        - name: MySQL på SUSE
+          href: ./linux/mysql-on-opensuse.md
+        - name: MongoDB
+          items:
+            - name: Linux
+              href: ./linux/install-mongodb.md
+            - name: Windows
+              href: ./windows/install-mongodb.md
+        - name: PostgreSQL
+          href: ./linux/postgresql-install.md
+        - name: MS SQL på Linux
+          href: /sql/linux/sql-server-linux-azure-virtual-machine
+    - name: Databehandling med höga prestanda (HPC)
+      href: /azure/architecture/topics/high-performance-computing/
+    - name: IBM Db2 pureScale
+      items:
+        - name: Arkitektur
+          href: ./linux/ibm-db2-purescale-azure.md
+        - name: Distribution
+          href: ./linux/deploy-ibm-db2-purescale-azure.md
+    - name: Containers
+      items:
+        - name: Skapa Docker-värd
+          href: 'https://github.com/Azure/azure-docker-extension/blob/master/README.md'
+        - name: Använda Docker Machine
+          href: ./linux/docker-machine.md
+        - name: Använda Docker Compose
+          href: ./linux/docker-compose-quickstart.md
+    - name: Visual Studio
+      href: ./windows/using-visual-studio-vm.md
+- name: Instanser
   items:
-    - name: Virtuella Linux-datorer med klassisk distribution
-      href: /previous-versions/azure/virtual-machines/linux/classic/
-    - name: Virtuella Windows-datorer med klassisk distribution
-      href: /previous-versions/azure/virtual-machines/windows/classic/
+    - name: Storlekar
+      items:
+        - name: Översikt
+          href: sizes.md
+        - name: Ändra storleken på den virtuella datorn
+          items:
+            - name: CLI
+              href: ./linux/change-vm-size.md
+            - name: Portal eller PowerShell
+              href: ./windows/resize-vm.md
+        - name: 'Virtuella datorer, generation 2'
+          href: generation-2.md
+        - name: Generellt syfte
+          items:
+            - name: Översikt
+              href: sizes-general.md
+            - name: Av2-serien
+              href: av2-series.md
+            - name: Anpassningsbara B-serien
+              href: sizes-b-series-burstable.md
+            - name: DCv2-serien
+              href: dcv2-series.md
+            - name: Dv2- och DSv2-serien
+              href: dv2-dsv2-series.md
+            - name: Dv3- och Dsv3-serien
+              href: dv3-dsv3-series.md
+            - name: Dav4- och Dasv4-serien
+              href: dav4-dasv4-series.md
+            - name: Ddv4- och Ddsv4-serien
+              href: ddv4-ddsv4-series.md
+            - name: DV4- och Dsv4-serien
+              href: dv4-dsv4-series.md
+        - name: Beräkningsoptimerad
+          items:
+            - name: Översikt
+              href: sizes-compute.md
+            - name: Fsv2-serien
+              href: fsv2-series.md
+        - name: Minnesoptimerad
+          displayName: Esv3 Ev3 Easv4 Eav4 M-series GS G-series DSv2 Dv2
+          items:
+            - name: Översikt
+              href: sizes-memory.md
+            - name: Dv2- och DSv2-serien 11–15
+              href: dv2-dsv2-series-memory.md
+            - name: Ev3- och Esv3-serien
+              href: ev3-esv3-series.md
+            - name: Eav4- och Easv4-serien
+              href: eav4-easv4-series.md
+            - name: Edv4- och Edsv4-serien
+              href: edv4-edsv4-series.md
+            - name: Ev4- och Esv4-serien
+              href: ev4-esv4-series.md
+            - name: M-serien
+              href: m-series.md
+            - name: Mv2-serien
+              href: mv2-series.md
+            - name: 'Begränsade vCPU:er'
+              href: constrained-vcpu.md
+        - name: Lagringsoptimerad
+          items:
+            - name: Översikt
+              href: sizes-storage.md
+            - name: Lsv2-serien
+              href: lsv2-series.md
+            - name: Optimera prestanda
+              items:
+                - name: Linux
+                  href: ./linux/storage-performance.md
+                - name: Windows
+                  href: ./windows/storage-performance.md
+        - name: GPU – snabbare beräkning
+          items:
+            - name: Översikt
+              href: sizes-gpu.md?context=/azure/virtual-machines/context/context
+            - name: NC-serien
+              href: nc-series.md
+            - name: NCv2-serien
+              href: ncv2-series.md
+            - name: NCv3-serien
+              href: ncv3-series.md
+            - name: NCasT4_v3-serien
+              href: nct4-v3-series.md
+            - name: ND-serien
+              href: nd-series.md
+            - name: NDv2-serien
+              href: ndv2-series.md
+            - name: NV-serien
+              href: nv-series.md
+            - name: NVv3-serien
+              href: nvv3-series.md
+            - name: NVv4-serien
+              href: nvv4-series.md
+            - name: Konfigurera NVIDIA GPU-drivrutiner
+              items:
+                - name: Linux
+                  href: ./linux/n-series-driver-setup.md
+                - name: Windows
+                  href: ./windows/n-series-driver-setup.md
+            - name: Konfigurera AMD GPU-drivrutiner
+              href: ./windows/n-series-amd-driver-setup.md
+        - name: Databehandling med höga prestanda
+          displayName: H-series
+          items:
+            - name: Översikt
+              href: sizes-hpc.md
+            - name: H-serien
+              href: h-series.md
+            - name: HB-serien
+              href: hb-series.md
+            - name: HBv2-serien
+              href: hbv2-series.md
+            - name: HC-serien
+              href: hc-series.md
+        - name: vCPU-kvoter
+          items:
+            - name: CLI
+              href: ./linux/quotas.md
+            - name: PowerShell
+              href: ./windows/quotas.md
+        - name: Virtuella Azure-datorer utan temporär disk
+          href: azure-vms-no-temp-disk.md
+        - name: Namnkonventioner för Azure VM-storlekar
+          href: vm-naming-conventions.md
+        - name: Tidigare generationer
+          displayName: D-series Ds-series A-series Basic
+          href: sizes-previous-gen.md
+        - name: Isolerade storlekar
+          href: isolation.md
+        - name: Azure-beräkningsenheter (ACU)
+          href: acu.md
+        - name: Benchmark-poäng
+          items:
+            - name: Linux
+              href: ./linux/compute-benchmark-scores.md
+            - name: Windows
+              href: ./windows/compute-benchmark-scores.md
+    - name: Dedikerade värdar
+      items:
+        - name: Översikt
+          href: ./linux/dedicated-hosts.md
+        - name: CLI
+          href: ./linux/dedicated-hosts-cli.md
+        - name: Portalen
+          href: dedicated-hosts-portal.md
+        - name: PowerShell
+          href: ./windows/dedicated-hosts-powershell.md
+    - name: Inköpsalternativ
+      items:
+        - name: Virtuella Spot-datorer
+          displayName: 'pre-empt, preempt, spot'
+          items:
+            - name: Översikt
+              href: spot-vms.md
+            - name: CLI
+              href: ./linux/spot-cli.md
+            - name: Portalen
+              href: spot-portal.md
+            - name: PowerShell
+              href: ./windows/spot-powershell.md
+            - name: ARM-mall
+              displayName: template ARM
+              href: ./linux/spot-template.md
+            - name: Felkoder
+              href: error-codes-spot.md
+        - name: Azure Hybrid-förmån
+          items:
+            - name: Linux
+              href: ./linux/azure-hybrid-benefit-linux.md
+            - name: Windows
+              items:
+                - name: Använda licens för Azure Hybrid-förmånen
+                  href: ./windows/hybrid-use-benefit-licensing.md
+                - name: Använda värdrättigheter för flera innehavare för Windows 10
+                  href: ./windows/windows-desktop-multitenant-hosting-deployment.md
+        - name: Reserverade instanser
+          items:
+            - name: Förskottsbetala för virtuella datorer
+              href: ./linux/prepay-reserved-vm-instances.md
+            - name: Förskottsbetala för Dedicated Host
+              href: prepay-dedicated-hosts-reserved-instances.md
+            - name: Vad är Azure-reservationer?
+              href: ../cost-management-billing/reservations/save-compute-costs-reservations.md?context=/azure/virtual-machines/context/context
+            - name: Flexibilitet för VM-instansstorlek
+              href: reserved-vm-instance-size-flexibility.md
+    - name: Skapa virtuella Linux-datorer
+      items:
+        - name: Godkända distributioner
+          href: ./linux/endorsed-distros.md
+        - name: Använda CLI
+          href: ./linux/create-cli-complete.md
+        - name: Använda en ARM-mall
+          displayName: Azure Resource Manager
+          href: ./linux/create-ssh-secured-vm-from-template.md
+        - name: Använda REST-API
+          href: ./linux/create-vm-rest-api.md
+        - name: Kopiera en virtuell dator med CLI
+          href: ./linux/copy-vm.md
+        - name: Bygg med Jenkins
+          href: /azure/developer/jenkins/pipeline-with-github-and-docker
+        - name: Integrera Jenkins med Azure DevOps
+          href: /azure/developer/jenkins/deploy-to-linux-vm-using-azure-devops-services
+        - name: Konfigurera strategi för löpande distribution
+          href: ./linux/tutorial-devops-azure-pipelines-classic.md
+        - name: Konfigurera strategin för Kanarie-distribution
+          href: ./linux/tutorial-azure-devops-canary-strategy.md
+        - name: Konfigurera strategin för Blue-Green distribution
+          href: ./linux/tutorial-azure-devops-blue-green-strategy.md
+        - name: CI/CD med Azure-pipeliner (YAML)
+          href: ./linux/tutorial-build-deploy-azure-pipelines.md
+        - name: Skapa LAMP-stack
+          href: ./linux/tutorial-lamp-stack.md
+        - name: Säker webbserver med SSL
+          items:
+            - name: Linux
+              href: ./linux/tutorial-secure-web-server.md
+            - name: Windows
+              href: ./windows/tutorial-secure-web-server.md
+    - name: Anslut till virtuella Linux-datorer
+      items:
+        - name: SSH för virtuella Linux-datorer
+          items:
+            - name: På Linux eller macOS
+              href: ./linux/mac-create-ssh-keys.md
+            - name: På Windows
+              href: ./linux/ssh-from-windows.md
+            - name: I portalen
+              href: ssh-keys-portal.md
+            - name: Detaljerade steg
+              href: ./linux/create-ssh-keys-detailed.md
+        - name: Fjärr skrivbord för Linux
+          href: ./linux/use-remote-desktop.md
+    - name: Skapa virtuella Windows-datorer
+      items:
+        - name: Använda C#
+          href: ../azure-resource-manager/templates/deploy-rest.md?context=/azure/virtual-machines/context/context
+        - name: Använda specialiserad disk
+          items:
+            - name: Portalen
+              href: ./windows/create-vm-specialized-portal.md
+            - name: PowerShell
+              href: ./windows/create-vm-specialized.md
+        - name: Skapa en virtuell dator med Chef
+          href: /azure/developer/chef/windows-vm-configure
+        - name: Använda Java
+          href: ./windows/java.md
+        - name: Använda Python
+          href: ./windows/python.md
+        - name: Använda ARM-mall
+          displayName: Azure Resource Manager template
+          href: ./windows/ps-template.md
+    - name: Ansluta till virtuella Windows-datorer
+      href: ./windows/connect-logon.md
+      items:
+        - name: WinRM
+          href: ./windows/winrm.md
+    - name: Tillägg
+      items:
+        - name: Översikt
+          href: ./extensions/overview.md
+        - name: Linux
+          items:
+            - name: Linux-funktioner
+              href: ./extensions/features-linux.md
+            - name: VM-agent för Linux
+              href: ./extensions/agent-linux.md
+        - name: Windows
+          items:
+            - name: Windows-funktioner
+              href: ./extensions/features-windows.md
+            - name: VM-agent för Windows
+              href: ./extensions/agent-windows.md
+        - name: Azure Disk Encryption
+          items:
+            - name: Linux
+              href: ./extensions/azure-disk-enc-linux.md
+            - name: Windows
+              href: ./extensions/azure-disk-enc-windows.md
+        - name: Azure Key Vault
+          items:
+            - name: Linux
+              href: ./extensions/key-vault-linux.md
+            - name: Windows
+              href: ./extensions/key-vault-windows.md
+        - name: Azure Backup för SQL Server
+          items:
+            - name: Azure Backup för SQL Server
+              href: ./extensions/backup-azure-sql-server-running-azure-vm.md
+        - name: Anpassat skript
+          items:
+            - name: Linux – version 2
+              href: ./extensions/custom-script-linux.md
+            - name: Windows
+              href: ./extensions/custom-script-windows.md
+        - name: IaaS-program mot skadlig kod för Windows
+          href: ./extensions/iaas-antimalware-windows.md
+        - name: VM-ögonblicksbild
+          items:
+            - name: Linux
+              href: ./extensions/vmsnapshot-linux.md
+            - name: Windows
+              href: ./extensions/vmsnapshot-windows.md
+        - name: Network Watcher-tillägget
+          items:
+            - name: Linux
+              href: ./extensions/network-watcher-linux.md
+            - name: Windows
+              href: ./extensions/network-watcher-windows.md
+            - name: Uppdatera till den senaste versionen
+              href: ./extensions/network-watcher-update.md
+        - name: InfiniBand-drivrutiner
+          items:
+            - name: Linux
+              href: ./extensions/hpc-compute-infiniband-linux.md
+            - name: Windows
+              href: ./extensions/hpc-compute-infiniband-windows.md
+        - name: NVIDIA GPU-drivrutiner
+          items:
+            - name: Linux
+              href: ./extensions/hpccompute-gpu-linux.md
+            - name: Windows
+              href: ./extensions/hpccompute-gpu-windows.md
+        - name: AMD GPU-drivrutiner
+          items:
+            - name: Windows
+              href: ./extensions/hpccompute-amd-gpu-windows.md
+        - name: Azure Monitor
+          items:
+            - name: Azure Monitor-agent
+              href: ../azure-monitor/platform/azure-monitor-agent-install.md?context=/azure/virtual-machines/context/context
+            - name: Diagnostics-tillägg
+              href: ../azure-monitor/platform/diagnostics-extension-overview.md?context=/azure/virtual-machines/context/context
+            - name: Log Analytics
+              items:
+                - name: Linux
+                  href: ./extensions/oms-linux.md
+                - name: Windows
+                  href: ./extensions/oms-windows.md
+            - name: Azure Monitor för virtuella datorer
+              items:
+                - name: Beroendeagent för Linux
+                  href: ./extensions/agent-dependency-linux.md
+                - name: Beroendeagent för Windows
+                  href: ./extensions/agent-dependency-windows.md
+        - name: PowerShell DSC
+          href: ./extensions/dsc-overview.md
+          items:
+            - name: DSC och Linux
+              href: ./extensions/dsc-linux.md
+            - name: DSC och Windows
+              href: ./extensions/dsc-windows.md
+            - name: Hantera autentiseringsuppgifter
+              href: ./extensions/dsc-credentials.md
+            - name: Använd mallar
+              href: ./extensions/dsc-template.md
+        - name: Åtkomst till virtuella datorer
+          href: ./extensions/vmaccess.md
+        - name: Tillägg från tredje part
+          items:
+            - name: Chef
+              href: ./extensions/chef.md
+            - name: Stackify Retrace
+              href: ./extensions/stackify-retrace-linux.md
+            - name: Symantec
+              href: ./extensions/symantec.md
+        - name: Begränsa installation av tillägg
+          items:
+            - name: Linux
+              href: ./extensions/extensions-rmpolicy-howto-cli.md
+            - name: Windows
+              href: ./extensions/extensions-rmpolicy-howto-ps.md
+        - name: Uppdatera Linux-agenten
+          href: ./extensions/update-linux-agent.md
+        - name: Exportera tillägg
+          href: ./extensions/export-templates.md
+        - name: Felsöka
+          href: ./extensions/troubleshoot.md
+        - name: Problem med Python 3-aktiverade Linux-system
+          href: ./extensions/issues-using-vm-extensions-python-3.md
+    - name: Migrera från klassisk till Azure Resource Manager
+      items:
+        - name: Tas ur bruk från och med 1 mars 2023
+          href: classic-vm-deprecation.md
+        - name: Översikt över migrering
+          href: migration-classic-resource-manager-overview.md
+        - name: Djupgående om migrering
+          href: migration-classic-resource-manager-deep-dive.md
+        - name: Planera för migrering
+          href: migration-classic-resource-manager-plan.md
+        - name: Migrera med CLI
+          href: migration-classic-resource-manager-cli.md
+        - name: Migrera med hjälp av PowerShell
+          href: migration-classic-resource-manager-ps.md
+        - name: Vanliga migreringsfel
+          href: migration-classic-resource-manager-errors.md
+        - name: Community-verktyg för migrering
+          href: migration-classic-resource-manager-community-tools.md
+        - name: VANLIGA FRÅGOR OCH SVAR
+          href: migration-classic-resource-manager-faq.md
+    - name: Grundläggande om hantering
+      items:
+        - name: Hantera resurser
+          items:
+            - name: Linux
+              href: ./linux/tutorial-govern-resources.md
+            - name: Windows
+              href: ./windows/tutorial-govern-resources.md
+        - name: Tidssynkronisering
+          items:
+            - name: Linux
+              href: ./linux/time-sync.md
+            - name: Windows
+              href: ./windows/time-sync.md
+        - name: Köra skript på en virtuell dator
+          items:
+            - name: Anpassat skripttillägg
+              items:
+                - name: Linux
+                  href: ./extensions/custom-script-linux.md
+                - name: Windows
+                  href: ./extensions/custom-script-windows.md
+            - name: Kör kommando
+              items:
+                - name: Linux
+                  href: ./linux/run-command.md
+                - name: Windows
+                  href: ./windows/run-command.md
+            - name: Hybrid Runbook Worker
+              href: ../automation/automation-hybrid-runbook-worker.md
+            - name: Seriekonsol
+              items:
+                - name: Linux
+                  href: ./troubleshooting/serial-console-linux.md
+                - name: Windows
+                  href: ./troubleshooting/serial-console-windows.md
+        - name: Aktivera kapslad virtualisering
+          href: ./windows/nested-virtualization.md
+        - name: File Storage
+          items:
+            - name: Linux-montering med SMB
+              href: ./linux/mount-azure-file-storage-on-linux-using-smb.md
+            - name: Kopiera filer till en virtuell Linux-dator
+              href: ./linux/copy-files-to-linux-vm-using-scp.md
+        - name: Uppdateringar och korrigeringar
+          items:
+            - name: Red Hat Update Infrastructure
+              href: ./workloads/redhat/redhat-rhui.md
+- name: Avbildningar
+  items:
+    - name: Marketplace-avbildningar
+      items:
+        - name: Hitta Azure Marketplace-avbildningar
+          items:
+            - name: CLI
+              href: ./linux/cli-ps-findimage.md
+            - name: PowerShell
+              href: ./windows/cli-ps-findimage.md
+            - name: Windows-klient avbildningar
+              href: ./windows/client-images.md
+    - name: Anpassade Linux-avbildningar
+      items:
+        - name: Översikt
+          href: ./linux/imaging.md
+        - name: Linux-etablering
+          href: ./linux/provisioning.md
+        - name: Särskilda krav för Linux-distribution
+          items:
+            - name: Allmänna steg
+              href: ./linux/create-upload-generic.md
+            - name: CentOS
+              href: ./linux/create-upload-centos.md
+            - name: Debian
+              href: ./linux/debian-create-upload-vhd.md
+            - name: Flatcar Container Linux
+              href: ./linux/flatcar-create-upload-vhd.md
+            - name: FreeBSD
+              href: ./linux/freebsd-intro-on-azure.md
+            - name: Oracle Linux
+              href: ./linux/oracle-create-upload-vhd.md
+            - name: OpenBSD
+              href: ./linux/create-upload-openbsd.md
+            - name: Red Hat
+              href: ./linux/redhat-create-upload-vhd.md
+            - name: SUSE
+              href: ./linux/suse-create-upload-vhd.md
+            - name: Ubuntu
+              href: ./linux/create-upload-ubuntu.md
+        - name: Använd cloud-init
+          items:
+            - name: Översikt över Cloud-init
+              href: ./linux/using-cloud-init.md
+            - name: Deep dive
+              href: ./linux/cloud-init-deep-dive.md
+            - name: Felsökning
+              href: ./linux/cloud-init-troubleshooting.md
+            - name: Konfigurera VM-värdnamn
+              href: ./linux/cloudinit-update-vm-hostname.md
+            - name: Uppdateringspaket i en virtuell dator
+              href: ./linux/cloudinit-update-vm.md
+            - name: Lägg till en användare till en virtuell dator
+              href: ./linux/cloudinit-add-user.md
+            - name: Konfigurera växlingsfil
+              href: ./linux/cloudinit-configure-swapfile.md
+            - name: Kör befintliga bash-skript
+              href: ./linux/cloudinit-bash-script.md
+            - name: Förbered en befintlig virtuell dator för cloud-init
+              href: ./linux/cloudinit-prepare-custom-image.md
+        - name: Skapa Linux-avbildningar utan en etablerings agent
+          href: ./linux/no-agent.md
+        - name: Inaktivera etablering av Linux-agent
+          href: ./linux/disable-provisioning.md
+        - name: Avbilda virtuell dator till hanterad avbildning
+          href: ./linux/capture-image.md
+    - name: Anpassade Windows-avbildningar
+      items:
+        - name: Förbered en virtuell hård disk för uppladdning
+          href: ./windows/prepare-for-upload-vhd-image.md
+        - name: Ladda upp en virtuell hård disk och skapa en hanterad avbildning
+          href: ./windows/upload-generalized-managed.md
+        - name: Avbilda en hanterad avbildning
+          href: ./windows/capture-image-resource.md
+        - name: Skapa en virtuell dator från en hanterad avbildning
+          href: ./windows/create-vm-generalized-managed.md
+    - name: Shared Image Galleries
+      items:
+        - name: Översikt
+          href: ./linux/shared-image-galleries.md
+        - name: CLI
+          items:
+            - name: Skapa ett galleri
+              href: shared-images-cli.md
+            - name: Skapa en avbildning
+              items:
+                - name: Från en virtuell dator
+                  href: image-version-vm-cli.md
+                - name: Från en hanterad disk eller ögonblicksbild
+                  href: image-version-snapshot-cli.md
+                - name: Klona en hanterad avbildning
+                  href: image-version-managed-image-cli.md
+                - name: Kopiera från ett annat galleri
+                  href: image-version-another-gallery-cli.md
+            - name: Skapa en virtuell dator
+              items:
+                - name: Generaliserade
+                  href: vm-generalized-image-version-cli.md
+                - name: Specialiserade
+                  href: vm-specialized-image-version-cli.md
+            - name: Uppdatera avbildningsresurser
+              href: update-image-resources-cli.md
+            - name: Appregistrering för delning
+              items:
+                - name: Linux
+                  href: ./linux/share-images-across-tenants.md
+                - name: Windows
+                  href: ./windows/share-images-across-tenants.md
+        - name: PowerShell
+          items:
+            - name: Skapa ett galleri
+              href: shared-images-powershell.md
+            - name: Skapa en avbildningsversion
+              items:
+                - name: Från en virtuell dator
+                  href: image-version-vm-powershell.md
+                - name: Från en hanterad disk eller ögonblicksbild
+                  href: image-version-snapshot-powershell.md
+                - name: Klona en hanterad avbildning
+                  href: image-version-managed-image-powershell.md
+                - name: Kopiera från ett annat galleri
+                  href: image-version-another-gallery-powershell.md
+            - name: Skapa en virtuell dator
+              items:
+                - name: Generaliserade
+                  href: vm-generalized-image-version-powershell.md
+                - name: Specialiserade
+                  href: vm-specialized-image-version-powershell.md
+                - name: Uppdatera avbildningsresurser
+                  href: update-image-resources-powershell.md
+                - name: Appregistrering för delning
+                  href: windows/share-images-across-tenants.md
+        - name: Portalen
+          items:
+            - name: 'Skapa ett galleri, en avbildning och en virtuell dator'
+              items:
+                - name: Linux
+                  href: ./linux/shared-images-portal.md
+                - name: Windows
+                  href: ./windows/shared-images-portal.md
+        - name: Resource Manager-mallar
+          items:
+            - name: Skapa ett Shared Image Gallery
+              href: 'https://azure.microsoft.com/resources/templates/101-sig-create/'
+            - name: Skapa en avbildningsdefinition i ett Shared Image Gallery
+              href: 'https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/'
+            - name: Skapa en avbildningsversion i ett Shared Image Gallery
+              href: 'https://azure.microsoft.com/resources/templates/101-sig-image-version-create/'
+            - name: Skapa en virtuell dator från avbildningsversion
+              href: 'https://azure.microsoft.com/resources/templates/101-vm-from-sig/'
+        - name: Felsöka delade bilder
+          href: troubleshooting-shared-images.md
+        - name: Använda kundhanterade nycklar
+          displayName: 'SSE, CMK, encrypt'
+          href: image-version-encryption.md
+        - name: Hanterad disk från avbildningsversion
+          href: managed-disk-from-image-version.md
+    - name: Image Builder (förhandsversion)
+      items:
+        - name: Översikt
+          href: image-builder-overview.md
+        - name: CLI
+          items:
+            - name: Linux
+              href: ./linux/image-builder.md
+            - name: Windows
+              href: ./windows/image-builder.md
+        - name: PowerShell
+          href: ./windows/image-builder-powershell.md
+        - name: Använda ett VNET
+          items:
+            - name: CLI
+              href: ./linux/image-builder-vnet.md
+            - name: PowerShell
+              href: ./windows/image-builder-vnet.md
+        - name: Nätverksalternativ
+          href: ./linux/image-builder-networking.md
+        - name: Konfigurera behörigheter
+          items:
+            - name: CLI
+              href: ./linux/image-builder-permissions-cli.md
+            - name: PowerShell
+              href: ./linux/image-builder-permissions-powershell.md
+        - name: DevOps-uppgift
+          href: ./linux/image-builder-devops-task.md
+        - name: Mallreferens för Image Builder
+          displayName: json
+          href: ./linux/image-builder-json.md
+        - name: Skapa för avbildningsgallerier
+          items:
+            - name: Linux
+              href: ./linux/image-builder-gallery.md
+            - name: Windows
+              href: ./windows/image-builder-gallery.md
+        - name: Uppdatera en befintlig avbildning
+          items:
+            - name: Linux
+              href: ./linux/image-builder-gallery-update-image-version.md
+            - name: Windows
+              href: ./windows/image-builder-gallery-update-image-version.md
+        - name: Lagra skript
+          href: ./linux/image-builder-user-assigned-identity.md
+        - name: Felsöka
+          href: ./linux/image-builder-troubleshoot.md
+    - name: Inköpsplaninformation
+      href: marketplace-images.md
+    - name: Skapa en avbildning med Packer
+      items:
+        - name: Linux
+          href: ./linux/build-image-with-packer.md
+        - name: Windows
+          href: ./windows/build-image-with-packer.md
+- name: Tillgänglighet och skalning
+  items:
+    - name: Skalningsuppsättningar
+      href: ../virtual-machine-scale-sets/overview.md?context=/azure/virtual-machines/context/context
+    - name: Tillgänglighet
+      href: availability.md
+    - name: Samlokalisering
+      href: ./linux/co-location.md
+    - name: Nätverksprestanda
+      href: ../virtual-network/virtual-network-optimize-network-bandwidth.md?context=/azure/virtual-machines/context/context
+    - name: Tillstånd och livscykel
+      href: states-lifecycle.md
+    - name: Automatisk skalning
+      href: ../virtual-machine-scale-sets/overview.md?context=/azure/virtual-machines/context/context
+    - name: Hög tillgänglighet
+      href: manage-availability.md
+    - name: Tillgänglighetsuppsättningar
+      items:
+        - name: Linux
+          href: ./linux/tutorial-availability-sets.md
+        - name: Windows
+          items:
+            - name: Skapa en tillgänglighetsuppsättning
+              href: ./windows/tutorial-availability-sets.md
+            - name: Ändra tillgänglighetsuppsättning
+              href: ./windows/change-availability-set.md
+    - name: Skapa en närhetsplaceringsgrupp
+      displayName: PPG aligned colocation co-location
+      items:
+        - name: CLI
+          href: ./linux/proximity-placement-groups.md
+        - name: Portalen
+          href: ./windows/proximity-placement-groups-portal.md
+        - name: PowerShell
+          href: ./windows/proximity-placement-groups.md
+    - name: Skapa virtuell dator i tillgänglighetszon
+      href: ./linux/create-cli-availability-zone.md
+- name: Diskar
+  items:
+    - name: Introduktion till hanterade diskar
+      href: managed-disks-overview.md
+    - name: Välja en disktyp för virtuella IaaS-datorer
+      href: disks-types.md
+    - name: Delade diskar
+      href: disks-shared.md
+    - name: Aktivera delade diskar
+      href: disks-shared-enable.md
+    - name: Kryptering
+      items:
+        - name: Kryptering på serversidan
+          items:
+            - name: Översikt över kryptering på Server Sidan
+              href: disk-encryption.md
+            - name: Aktivera Kundhanterade nycklar
+              items:
+                - name: Portalen
+                  href: disks-enable-customer-managed-keys-portal.md
+                - name: PowerShell
+                  href: windows/disks-enable-customer-managed-keys-powershell.md
+                - name: CLI
+                  href: linux/disks-enable-customer-managed-keys-cli.md
+            - name: Aktivera kryptering på värden
+              items:
+                - name: Portalen
+                  href: disks-enable-host-based-encryption-portal.md
+                - name: PowerShell
+                  href: windows/disks-enable-host-based-encryption-powershell.md
+                - name: CLI
+                  href: linux/disks-enable-host-based-encryption-cli.md
+            - name: Aktivera dubbel kryptering i vila
+              items:
+                - name: Portalen
+                  href: disks-enable-double-encryption-at-rest-portal.md
+                - name: PowerShell
+                  href: windows/disks-enable-double-encryption-at-rest-powershell.md
+                - name: CLI
+                  href: linux/disks-enable-double-encryption-at-rest-cli.md
+        - name: Azure Disk Encryption scenarier
+          items:
+            - name: Azure Disk Encryption översikter
+              items:
+                - name: Windows
+                - name: Linux
+            - name: Linux
+              href: ./linux/disk-encryption-linux.md
+            - name: Windows
+              href: ./windows/disk-encryption-windows.md
+            - name: CLI
+              items:
+                - name: Linux
+                  href: ./linux/disk-encryption-cli-quickstart.md
+                - name: Windows
+                  href: ./windows/disk-encryption-cli-quickstart.md
+            - name: PowerShell
+              items:
+                - name: Linux
+                  href: ./linux/disk-encryption-powershell-quickstart.md
+                - name: Windows
+                  href: ./windows/disk-encryption-powershell-quickstart.md
+            - name: Portalen
+              items:
+                - name: Linux
+                  href: ./linux/disk-encryption-portal-quickstart.md
+                - name: Windows
+                  href: ./windows/disk-encryption-portal-quickstart.md
+            - name: Nyckelvalv för Azure Disk Encryption
+              items:
+                - name: Linux
+                  href: ./linux/disk-encryption-key-vault.md
+                - name: Windows
+                  href: ./windows/disk-encryption-key-vault.md
+            - name: Exempelskript
+              items:
+                - name: Linux
+                  href: ./linux/disk-encryption-sample-scripts.md
+                - name: Windows
+                  href: ./windows/disk-encryption-sample-scripts.md
+            - name: Azure Disk Encryption i ett isolerat nätverk
+              href: ./linux/disk-encryption-isolated-network.md
+            - name: Så här verifierar du krypteringsstatus
+              href: ./linux/how-to-verify-encryption-status.md
+            - name: Så här konfigurerar du LVM RAID på crypt
+              href: ./linux/how-to-configure-lvm-raid-on-crypt.md
+            - name: Ändra storlek på krypterade LVM-volymer
+              href: ./linux/how-to-resize-encrypted-lvm.md
+            - name: Ändra storlek på Linux GPT OS-partitioner
+              href: linux/resize-os-disk-gpt-partition.md
+            - name: felsökning
+              items:
+                - name: Linux
+                  href: ./linux/disk-encryption-troubleshooting.md
+                - name: Windows
+                  href: ./windows/disk-encryption-troubleshooting.md
+            - name: VANLIGA FRÅGOR OCH SVAR
+              items:
+                - name: Linux
+                  href: ./linux/disk-encryption-faq.md
+                - name: Windows
+                  href: ./windows/disk-encryption-faq.md
+            - name: Azure Disk Encryption-tidigare version
+              items:
+                - name: Översikt
+                  items:
+                    - name: Linux
+                      href: ./linux/disk-encryption-overview-aad.md
+                    - name: Windows
+                      href: ./windows/disk-encryption-overview-aad.md
+                - name: Nyckelvalv för Azure Disk Encryption
+                  items:
+                    - name: Linux
+                      href: ./linux/disk-encryption-key-vault-aad.md
+                    - name: Windows
+                      href: ./windows/disk-encryption-key-vault-aad.md
+                - name: Disk krypterings scenarier
+                  items:
+                    - name: Linux
+                      href: ./linux/disk-encryption-linux-aad.md
+                    - name: Windows
+                      href: ./windows/disk-encryption-windows-aad.md
+    - name: Optimering av prestanda och kostnad
+      items:
+        - name: Ultradiskar
+          href: disks-enable-ultra-ssd.md
+        - name: Prestanda för virtuella datorer och diskar
+          href: disks-performance.md
+        - name: Disklagringsreservationer
+          href: ../cost-management-billing/reservations/understand-disk-reservations.md?context=/azure/virtual-machines/context/context
+        - name: Reservera disklagring
+          href: disks-reserved-capacity.md
+        - name: Design för hög prestanda
+          href: premium-storage-performance.md
+        - name: Diskutvidgning
+          href: disk-bursting.md
+        - name: Prestandanivåer för disk
+          href: disks-change-performance.md
+        - name: Ändra disk prestanda nivå
+          items:
+            - name: CLI och PowerShell
+              href: disks-performance-tiers.md
+            - name: Portalen
+              href: disks-performance-tiers-portal.md
+        - name: Aktivera Write Accelerator
+          href: how-to-enable-write-accelerator.md
+        - name: Beräkna benchmark för en disk
+          href: disks-benchmarks.md
+    - name: Skalbarhetsmål för diskar
+      href: disks-scalability-targets.md
+    - name: Säkerhets kopiering och data skydd
+      items:
+        - name: Lagring och haveriberedskap för diskar
+          href: backup-and-disaster-recovery-for-azure-iaas-disks.md
+        - name: Aktivera stegvisa ögonblicks bilder
+          href: disks-incremental-snapshots.md
+        - name: Ögonblicks bild a disk-CLI
+          href: ./linux/snapshot-copy-managed-disk.md
+        - name: Ögonblicks bild a disk – PowerShell
+          href: ./windows/snapshot-copy-managed-disk.md
+        - name: Säkerhetskopiera ohanterade diskar
+          href: ./linux/incremental-snapshots.md
+    - name: Tillfälliga operativsystemdiskar
+      href: ephemeral-os-disks.md
+    - name: Migrering och konvertering
+      items:
+        - name: Konvertera en disk mellan Standard och Premium
+          items:
+            - name: CLI
+              href: ./linux/convert-disk-storage.md
+            - name: PowerShell
+              href: ./windows/convert-disk-storage.md
+        - name: Migrera till Premium-SSD med Azure Site Recovery
+          items:
+            - name: Linux
+              href: ./linux/migrate-to-premium-storage-using-azure-site-recovery.md
+            - name: Windows
+              href: ./windows/migrate-to-premium-storage-using-azure-site-recovery.md
+        - name: Migrera till Managed Disks
+          href: ./windows/migrate-to-managed-disks.md
+        - name: Ohanterad virtuell dator till Managed Disks
+          items:
+            - name: CLI
+              href: ./linux/convert-unmanaged-to-managed-disks.md
+            - name: PowerShell
+              href: ./windows/convert-unmanaged-to-managed-disks.md
+    - name: Lägg till en datadisk
+      items:
+        - name: Linux
+          items:
+            - name: Azure CLI
+              href: ./linux/add-disk.md
+            - name: Azure Portal
+              href: ./linux/attach-disk-portal.md
+        - name: Windows
+          items:
+            - name: Azure PowerShell
+              href: ./windows/attach-disk-ps.md
+            - name: Azure Portal
+              href: ./windows/attach-managed-disk-portal.md
+            - name: Ändra enhets beteckning för temporär enhet
+              href: ./windows/change-drive-letter.md
+    - name: Koppla från en disk
+      items:
+        - name: Linux
+          href: ./linux/detach-disk.md
+        - name: Windows
+          href: ./windows/detach-disk.md
+    - name: Expandera operativsystemets disk
+      items:
+        - name: Linux
+          href: ./linux/expand-disks.md
+        - name: Windows
+          href: ./windows/expand-os-disk.md
+    - name: Hantera lagring
+      items:
+        - name: Distribuera diskar med ARM-mall
+          displayName: Azure Resource Manager
+          href: using-managed-disks-template-deployments.md
+        - name: Importera/exportera en disk på ett säkert sätt
+          items:
+            - name: Konfigurera privata Länkar för diskar – CLI
+              href: ./linux/disks-export-import-private-links-cli.md
+            - name: Konfigurera privata Länkar för diskar – Portal
+              href: disks-enable-private-links-for-import-export-portal.md
+            - name: Ladda upp en virtuell hårddisk till en disk – PowerShell
+              href: ./windows/disks-upload-vhd-to-managed-disk-powershell.md
+            - name: Ladda upp en virtuell hårddisk till en disk – CLI
+              href: ./linux/disks-upload-vhd-to-managed-disk-cli.md
+            - name: Ladda ned en virtuell hårddisk
+              items:
+                - name: Linux
+                  href: ./linux/download-vhd.md
+                - name: Windows
+                  href: ./windows/download-vhd.md
+        - name: Använda Storage Explorer för att hantera diskar
+          href: disks-use-storage-explorer-managed-disks.md
+        - name: Växla OS-disken – CLI
+          href: ./linux/os-disk-swap.md
+        - name: Växla OS-disken – PowerShell
+          href: ./windows/os-disk-swap.md
+        - name: Mappa hanterad disk till gäst disk – Linux
+          href: ./linux/azure-to-guest-disk-mapping.md
+        - name: Mappa hanterad disk till gäst disk – Windows
+          href: ./windows/azure-to-guest-disk-mapping.md
+        - name: Hitta icke anslutna diskar
+          items:
+            - name: CLI
+              href: ./linux/find-unattached-disks.md
+            - name: PowerShell
+              href: ./windows/find-unattached-disks.md
+            - name: Portalen
+              href: disks-find-unattached-portal.md
+        - name: Vanliga frågor och svar om diskar
+          href: faq-for-disks.md
+    - name: Kodexempel
+      items:
+        - name: CLI
+          items:
+            - name: Skapa en hanterad disk från en virtuell hårddisk
+              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-cli-sample-create-managed-disk-from-vhd.md'
+            - name: Skapa en hanterad disk från en ögonblicksbild
+              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-cli-sample-create-managed-disk-from-snapshot.md'
+            - name: Kopiera en hanterad disk till samma eller en annan prenumeration
+              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-cli-sample-copy-managed-disks-to-same-or-different-subscription.md'
+            - name: Kopiera en ögonblicks bild till samma eller en annan prenumeration
+              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-cli-sample-copy-snapshot-to-same-or-different-subscription.md'
+            - name: Exportera en ögonblicksbild som en virtuell hårddisk till ett lagringskonto
+              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-cli-sample-copy-snapshot-to-storage-account.md'
+            - name: Exportera en hanterad disk som en virtuell hård disk till ett lagrings konto
+              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-cli-sample-copy-managed-disks-vhd.md'
+        - name: PowerShell
+          items:
+            - name: Skapa en hanterad disk från en virtuell hårddisk
+              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-powershell-sample-create-managed-disk-from-vhd.md'
+            - name: Skapa en hanterad disk från en ögonblicksbild
+              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-powershell-sample-create-managed-disk-from-snapshot.md'
+            - name: Kopiera en ögonblicks bild till samma eller en annan prenumeration
+              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-powershell-sample-copy-snapshot-to-same-or-different-subscription.md'
+            - name: Exportera en ögonblicksbild som en virtuell hårddisk till ett lagringskonto
+              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-powershell-sample-copy-snapshot-to-storage-account.md'
+            - name: Exportera en hanterad disk som en virtuell hård disk till ett lagrings konto
+              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-powershell-sample-copy-managed-disks-vhd.md'
+            - name: Skapa en ögonblicksbild från en virtuell hårddisk
+              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-powershell-sample-create-snapshot-from-vhd.md'
+- name: Nätverk
+  items:
+    - name: Översikt
+      href: network-overview.md
+    - name: Skapa det virtuella nätverket
+      href: ../virtual-network/quick-create-cli.md?context=/azure/virtual-machines/context/context
+    - name: Öppna portar till en virtuell dator
+      items:
+        - name: CLI
+          href: ./linux/nsg-quickstart.md
+        - name: PowerShell
+          href: ./windows/nsg-quickstart-powershell.md
+        - name: Portalen
+          href: ./windows/nsg-quickstart-portal.md
+    - name: Tilldela offentlig IP-adress
+      href: ../virtual-network/virtual-network-deploy-static-pip-arm-cli.md?context=/azure/virtual-machines/context/context
+    - name: Använda flera nätverkskort
+      items:
+        - name: Linux med CLI
+          href: ./linux/multiple-nics.md
+        - name: Windows med PowerShell
+          href: ./windows/multiple-nics.md
+    - name: Använda accelererat nätverk
+      href: ../virtual-network/create-vm-accelerated-networking-cli.md?context=/azure/virtual-machines/context/context
+    - name: Tilldela offentligt DNS-namn
+      href: create-fqdn.md
+    - name: Hitta och ta bort ej anslutna nätverkskort
+      href: ./linux/find-unattached-nics.md
+    - name: DNS-upplösning
+      href: ./linux/azure-dns.md
+    - name: Använda internt DNS
+      href: ./linux/static-dns-name-resolution-for-linux-on-azure.md
+- name: Säkerhet
+  items:
+    - name: Azure Security Center
+      href: ../security-center/security-center-introduction.md
+    - name: Säkerhetsbaslinjer
+      items:
+        - name: Linux
+          href: ./linux/security-baseline.md
+        - name: Windows
+          href: ./windows/security-baseline.md
+    - name: Rekommendationer
+      href: security-recommendations.md
+    - name: Just-in-time-åtkomst
+      href: ../security-center/security-center-just-in-time.md
+    - name: Policy
+      items:
+        - name: Översikt
+          href: security-policy.md
+        - name: Kontroller efter princip
+          displayName: 'regulatory, compliance, standards, domains'
+          href: security-controls-policy.md
+        - name: Principreferens
+          href: policy-reference.md
+        - name: Använda principer
+          items:
+            - name: Linux
+              href: ./linux/policy.md
+            - name: Windows
+              href: ./windows/policy.md
+    - name: Bastion
+      items:
+        - name: Översikt
+          href: ../bastion/bastion-overview.md
+        - name: Skapa en Bastion-värd
+          items:
+            - name: Portalen
+              href: ../bastion/bastion-create-host-portal.md
+            - name: PowerShell
+              href: ../bastion/bastion-create-host-powershell.md
+            - name: CLI
+              href: ../bastion/create-host-cli.md
+            - name: Bastion SSH-anslutning
+              href: ../bastion/bastion-connect-vm-ssh.md
+              items: null
+            - name: Bastion RDP-anslutning
+              href: ../bastion/bastion-connect-vm-rdp.md
+        - name: Använda åtkomstkontroller
+          href: ../role-based-access-control/overview.md
+        - name: Skapa en Key Vault-lösning
+          items:
+            - name: CLI
+              href: ./linux/key-vault-setup.md
+            - name: PowerShell
+              href: ./windows/key-vault-setup.md
+    - name: Minimera spekulativ körning
+      href: mitigate-se.md
+    - name: Anslut en virtuell Linux-dator till Azure Active Directory
+      displayName: Azure AD
+      items:
+        - name: Red Hat Enterprise Linux
+          href: ../active-directory-domain-services/join-rhel-linux-vm.md
+        - name: CentOS
+          href: ../active-directory-domain-services/join-centos-linux-vm.md
+        - name: Ubuntu
+          href: ../active-directory-domain-services/join-ubuntu-linux-vm.md
+    - name: Konfigurera hanterade identiteter
+      items:
+        - name: Portalen
+          href: ../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md?context=/azure/virtual-machines/context/context
+        - name: CLI
+          href: ../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md?context=/azure/virtual-machines/context/context
+        - name: PowerShell
+          href: ../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md?context=/azure/virtual-machines/context/context
+        - name: Azure Resource Manager-mall
+          displayName: ARM
+          href: ../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md?context=/azure/virtual-machines/context/context
+        - name: REST
+          href: ../active-directory/managed-identities-azure-resources/qs-configure-rest-vm.md?context=/azure/virtual-machines/context/context
+        - name: 'Azure-SDK:er'
+          href: ../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md?context=/azure/virtual-machines/context/context
+    - name: Linux Active Directory inloggning
+      href: ./linux/login-using-aad.md
+- name: Underhåll och uppdateringar
+  items:
+    - name: Översikt
+      href: maintenance-and-updates.md
+    - name: Automatisk snabbkorrigering av VM-gäster (förhandsversion)
+      href: ./windows/automatic-vm-guest-patching.md
+    - name: Kontroll av underhåll
+      items:
+        - name: Meddelanden om underhåll
+          items:
+            - name: Översikt
+              href: maintenance-notifications.md
+            - name: CLI
+              href: maintenance-notifications-cli.md
+            - name: Portalen
+              href: maintenance-notifications-portal.md
+            - name: PowerShell
+              href: maintenance-notifications-powershell.md
+        - name: Underhåll av plattform
+          items:
+            - name: Översikt
+              href: maintenance-control.md
+            - name: CLI
+              href: maintenance-control-cli.md
+            - name: PowerShell
+              href: maintenance-control-powershell.md
+            - name: Portalen
+              href: maintenance-control-portal.md
+        - name: Schemalagda händelser
+          items:
+            - name: Linux
+              href: ./linux/scheduled-events.md
+            - name: Windows
+              href: ./windows/scheduled-events.md
+        - name: Spåra och uppdatera virtuella datorer
+          items:
+            - name: Linux
+              href: ./linux/tutorial-config-management.md
+            - name: Windows
+              href: ./windows/tutorial-config-management.md
+        - name: Uppgradering av operativsystemavbildning för skalningsuppsättning för virtuell dator
+          items:
+            - name: Automatiska uppgraderingar av operativsystem
+              href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md?context=/azure/virtual-machines/context/context
+            - name: Kontroll av underhåll
+              items:
+                - name: Översikt (förhandsversion)
+                  href: virtual-machine-scale-sets-maintenance-control.md
+                - name: PowerShell (förhandsversion)
+                  href: virtual-machine-scale-sets-maintenance-control-powershell.md
+- name: Övervakning
+  items:
+    - name: Översikt
+      href: ../azure-monitor/insights/monitor-vm-azure.md?context=/azure/virtual-machines/context/context
+    - name: Övervaka virtuella datorer
+      items:
+        - name: Linux
+          href: ./linux/tutorial-monitor.md
+        - name: Windows
+          href: ./windows/tutorial-monitor.md
+    - name: Agenter
+      items:
+        - name: Översikt över agenter
+          href: ../azure-monitor/platform/agents-overview.md?context=/azure/virtual-machines/context/context
+        - name: VANLIGA FRÅGOR OCH SVAR
+          href: ../azure-monitor/faq.md?context=/azure/virtual-machines/context/context#agents
+        - name: Azure Diagnostics-tillägg
+          items:
+            - name: Översikt
+              href: ../azure-monitor/platform/diagnostics-extension-overview.md?context=/azure/virtual-machines/context/context
+            - name: Tillägg för Linux-diagnostik
+              items:
+                - name: Översikt
+                  href: ../virtual-machines/extensions/diagnostics-linux.md?context=/azure/virtual-machines/context/context
+                - name: Samla in mått med Telegraf
+                  href: ../azure-monitor/platform/collect-custom-metrics-linux-telegraf.md?context=/azure/virtual-machines/context/context
+                  displayname: diagnostics extension
+        - name: Log Analytics-agent
+          items:
+            - name: Översikt
+              href: ../azure-monitor/platform/log-analytics-agent.md?context=/azure/virtual-machines/context/context
+            - name: Linux-agenter
+              href: ../azure-monitor/platform/agent-linux.md?context=/azure/virtual-machines/context/context
+            - name: Log Analytics-gatewayen
+              href: ../azure-monitor/platform/gateway.md?context=/azure/virtual-machines/context/context
+            - name: Agenthantering
+              href: ../azure-monitor/platform/agent-manage.md?context=/azure/virtual-machines/context/context
+            - name: Agenthälsa
+              href: ../azure-monitor/insights/solution-agenthealth.md?context=/azure/virtual-machines/context/context
+            - name: Datakällor
+              items:
+                - name: Översikt
+                  href: ../azure-monitor/platform/agent-data-sources.md?context=/azure/virtual-machines/context/context
+                - name: Anpassade JSON-data
+                  href: ../azure-monitor/platform/data-sources-json.md?context=/azure/virtual-machines/context/context
+                - name: collectd-prestandadata
+                  href: ../azure-monitor/platform/data-sources-collectd.md?context=/azure/virtual-machines/context/context
+                - name: Syslog
+                  href: ../azure-monitor/platform/data-sources-syslog.md?context=/azure/virtual-machines/context/context
+                - name: Prestandaräknare
+                  href: ../azure-monitor/platform/data-sources-performance-counters.md?context=/azure/virtual-machines/context/context
+                - name: Programprestanda på Linux
+                  href: ../azure-monitor/platform/data-sources-linux-applications.md?context=/azure/virtual-machines/context/context
+                - name: Anpassade loggar
+                  href: ../azure-monitor/platform/data-sources-custom-logs.md?context=/azure/virtual-machines/context/context
+                - name: Anpassade fält
+                  href: ../azure-monitor/platform/custom-fields.md?context=/azure/virtual-machines/context/context
+        - name: Felsöka
+          items:
+            - name: Log Analytics-tillägg för virtuella datorer
+              href: ../azure-monitor/platform/vmext-troubleshoot.md?context=/azure/virtual-machines/context/context
+              displayname: 'troubleshoot, troubleshooting'
+            - name: Log Analytics-agent för Linux
+              href: ../azure-monitor/platform/agent-linux-troubleshoot.md?context=/azure/virtual-machines/context/context
+              displayname: 'troubleshoot, troubleshooting'
+        - name: Azure Monitor för virtuella datorer
+          items:
+            - name: Översikt
+              href: ../azure-monitor/insights/vminsights-overview.md?context=/azure/virtual-machines/context/context
+            - name: Vanliga frågor och svar om allmän tillgänglighet
+              href: ../azure-monitor/insights/vminsights-ga-release-faq.md?context=/azure/virtual-machines/context/context
+            - name: VANLIGA FRÅGOR OCH SVAR
+              href: ../azure-monitor/faq.md?context=/azure/virtual-machines/context/context#azure-monitor-for-vms
+            - name: Aktivera övervakning
+              items:
+                - name: Aktivera övervakningsöversikt
+                  href: ../azure-monitor/insights/vminsights-enable-overview.md?context=/azure/virtual-machines/context/context
+                - name: Aktivera för enskild virtuell Azure-dator
+                  href: ../azure-monitor/insights/vminsights-enable-portal.md?context=/azure/virtual-machines/context/context
+                - name: Aktivera med hjälp av Azure Policy
+                  href: ../azure-monitor/insights/vminsights-enable-policy.md?context=/azure/virtual-machines/context/context
+                - name: Aktivera med hjälp av Azure PowerShell
+                  href: ../azure-monitor/insights/vminsights-enable-powershell.md?context=/azure/virtual-machines/context/context
+                - name: Aktivera för hybridmiljö
+                  href: ../azure-monitor/insights/vminsights-enable-hybrid.md?context=/azure/virtual-machines/context/context
+            - name: Mappa beroenden
+              href: ../azure-monitor/insights/vminsights-maps.md?context=/azure/virtual-machines/context/context
+            - name: Övervaka prestanda
+              href: ../azure-monitor/insights/vminsights-performance.md?context=/azure/virtual-machines/context/context
+            - name: Analysera data med loggfrågor
+              href: ../azure-monitor/insights/vminsights-log-search.md?context=/azure/virtual-machines/context/context
+            - name: Visualisera data med arbetsböcker
+              href: ../azure-monitor/insights/vminsights-workbooks.md?context=/azure/virtual-machines/context/context
+            - name: Skapa aviseringsregler
+              href: ../azure-monitor/insights/vminsights-alerts.md?context=/azure/virtual-machines/context/context
+            - name: Uppgradera Dependency Agent
+              href: ../azure-monitor/insights/vminsights-dependency-agent-maintenance.md?context=/azure/virtual-machines/context/context
+            - name: Inaktivera övervakning
+              href: ../azure-monitor/insights/vminsights-optout.md?context=/azure/virtual-machines/context/context
+    - name: VM-användning
+      href: vm-usage.md
+    - name: Tagga en virtuell dator
+      items:
+        - name: CLI
+          href: tag-cli.md
+        - name: Portalen
+          href: tag-portal.md
+        - name: PowerShell
+          href: tag-powershell.md
+        - name: Mall
+          href: tag-template.md
+    - name: Övervaka metadata
+      items:
+        - name: CLI
+          href: ./linux/instance-metadata-service.md
+        - name: PowerShell
+          href: ./windows/instance-metadata-service.md
+    - name: Hämta användningsstatistik med REST
+      href: ./linux/metrics-vm-usage-rest.md
+    - name: Startdiagnostik
+      href: boot-diagnostics.md
+- name: Säkerhetskopiering och återställning
+  items:
+    - name: Översikt
+      href: backup-recovery.md
+    - name: Tjänst avbrott
+      href: virtual-machines-disaster-recovery-guidance.md
+    - name: Säkerhetskopiera virtuella datorer
+      items:
+        - name: Översikt
+          href: ../backup/backup-azure-vms-introduction.md
+        - name: Snabbstarter
+          items:
+            - name: CLI
+              href: ../backup/quick-backup-vm-cli.md
+            - name: PowerShell
+              href: ../backup/quick-backup-vm-powershell.md
+            - name: Portalen
+              href: ../backup/quick-backup-vm-portal.md
+            - name: Mall
+              href: ../backup/quick-backup-vm-template.md
+        - name: Säkerhetskopiera flera virtuella datorer
+          href: ../backup/tutorial-backup-vm-at-scale.md
+        - name: Återställningsalternativ
+          href: /backup/backup-azure-arm-restore-vms.md
+        - name: Stödmatris
+          href: ../backup/backup-support-matrix-iaas.md
+        - name: Prissättning
+          href: ../backup/azure-backup-pricing.md
+        - name: VANLIGA FRÅGOR OCH SVAR
+          href: ../backup/backup-azure-vm-backup-faq.md
+    - name: Haveriberedskap
+      items:
+        - name: Översikt
+          href: ../site-recovery/site-recovery-overview.md
+        - name: Aktivera haveri beredskap
+          items:
+            - name: Linux
+              href: ./linux/tutorial-disaster-recovery.md
+            - name: Windows
+              href: ./windows/tutorial-disaster-recovery.md
+        - name: Aktivera haveriberedskap för en virtuell dator
+          href: ../site-recovery/azure-to-azure-tutorial-enable-replication.md
+        - name: Köra ett programåterställningstest för en virtuell dator
+          href: ../site-recovery/azure-to-azure-tutorial-dr-drill.md
+        - name: Redundansväxla en virtuell dator till en annan region
+          href: ../site-recovery/azure-to-azure-tutorial-failover-failback.md
+    - name: Flytta och migrera virtuella datorer
+      items:
+        - name: Ändra prenumeration eller resursgrupp
+          items:
+            - name: CLI
+              href: ./linux/move-vm.md
+            - name: PowerShell
+              href: ./windows/move-vm.md
+        - name: Flytta virtuella datorer till en annan region
+          href: ../site-recovery/azure-to-azure-tutorial-migrate.md
+        - name: Flytta till en tillgänglighetszon
+          href: ../site-recovery/move-azure-vms-avset-azone.md
+        - name: Flytta konfigurationer för underhållskontroll till en annan region
+          href: move-region-maintenance-configuration.md
+        - name: Flytta konfigurationsresurser för underhållskontroll till en annan region
+          href: move-region-maintenance-configuration-resources.md
+        - name: Migrera AWS och lokala virtuella datorer
+          href: ./windows/on-prem-to-azure.md
+          items:
+            - name: Migrera från Amazon Web Services (AWS) till Azure
+              href: ./windows/aws-to-azure.md
+            - name: Ladda upp lokala virtuella datorer
+              href: ./linux/upload-vhd.md
+            - name: Använda Azure Site Recovery
+              href: ../site-recovery/migrate-overview.md?context=/azure/virtual-machines/context/context
+- name: Infrastruktur för automatisering
+  items:
+    - name: Översikt
+      href: infrastructure-automation.md
+    - name: Anpassade data
+      href: custom-data.md
+    - name: Ansible
+      items:
+        - name: Installera och konfigurera
+          href: /azure/developer/ansible/install-on-linux-vm
+        - name: Skapa en virtuell Linux-dator
+          href: /azure/developer/ansible/vm-configure
+        - name: Hantera en virtuell Linux-dator
+          href: /azure/developer/ansible/vm-manage
+    - name: Terraform
+      items:
+        - name: Installera och konfigurera
+          href: /azure/developer/terraform/install-configure
+        - name: Skapa fullständig virtuell dator
+          href: /azure/developer/terraform/create-linux-virtual-machine-with-infrastructure
+    - name: Jenkins
+      href: /azure/developer/jenkins/overview
+      items:
+        - name: Skapa en Jenkins-server
+          href: /azure/developer/jenkins/configure-on-linux-vm
+        - name: Skala med VM-agenter
+          href: /azure/developer/jenkins/scale-deployments-using-vm-agents
+        - name: Publicera artefakter till Storage
+          href: /azure/developer/jenkins/azure-storage-blobs-as-build-artifact-repository
+        - name: Säker Jenkins
+          href: 'https://jenkins.io/blog/2017/04/20/secure-jenkins-on-azure/'
+    - name: Azure DevOps
+      href: ./linux/tutorial-azure-devops-blue-green-strategy.md
+- name: Felsöka
+  href: ./troubleshooting/index.yml
 - name: Resurser
   items:
+    - name: Ramverk för molnimplementering
+      href: /azure/cloud-adoption-framework/get-started/
+    - name: Arkitekturcenter
+      href: /azure/architecture/
+    - name: Microsoft Q&A
+      href: /answers/topics/azure-virtual-machines.html
+    - name: Azure-snabbstartsmallar
+      href: 'https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Compute&pageNumber=1&sort=Popular'
+    - name: Prissättning
+      href: 'https://azure.microsoft.com/pricing/details/#Linux'
+    - name: Regional tillgänglighet
+      href: 'https://azure.microsoft.com/regions/services/'
     - name: Utveckla dina färdigheter med Microsoft Learn
       href: /learn/browse/?products=azure-virtual-machines
     - name: Azure-översikt
       href: 'https://azure.microsoft.com/roadmap/?category=compute'
     - name: Priskalkylator
       href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Exempel
+      items:
+        - name: Azure CLI-exempel lagrings platsen
+          href: 'https://github.com/Azure-Samples/azure-cli-samples/tree/master/virtual-machine'
+        - name: PowerShell-exempel lagrings platsen
+          href: 'https://github.com/Azure/azure-docs-powershell-samples/tree/master/virtual-machine'
+    - name: Vanliga CLI-kommandon
+      href: ./linux/cli-manage.md
+    - name: Vanliga PowerShell-kommandon
+      href: ./windows/ps-common-ref.md
+    - name: Vanliga nätverk PowerShell-kommandon
+      href: ./windows/ps-common-network-ref.md
+    - name: Beskrivning av mall för virtuell dator
+      href: ./windows/template-description.md
+    - name: Klassiska distributioner
+      items:
+        - name: Virtuella Linux-datorer med klassisk distribution
+          href: /previous-versions/azure/virtual-machines/linux/classic/
+        - name: Virtuella Windows-datorer med klassisk distribution
+          href: /previous-versions/azure/virtual-machines/windows/classic/
+    - name: VANLIGA FRÅGOR OCH SVAR
+      items:
+        - name: Linux
+          href: ./linux/faq.md
+        - name: Windows
+          href: ./windows/faq.md

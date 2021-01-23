@@ -3,12 +3,12 @@ title: Konfigurera Azure Backup Server för Azure VMware-lösning
 description: Konfigurera din Azure VMware-lösning för att säkerhetskopiera virtuella datorer med Azure Backup Server.
 ms.topic: how-to
 ms.date: 10/23/2020
-ms.openlocfilehash: e71ec19402d22643d51f1435d1abcf56b20a290b
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 7885c0bc73bd5f7cd802e76ed9db470f77eda30d
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92517386"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98703410"
 ---
 # <a name="set-up-azure-backup-server-for-azure-vmware-solution"></a>Konfigurera Azure Backup Server för Azure VMware-lösning
 
@@ -154,7 +154,7 @@ Ett Recovery Services-valv är en lagrings enhet som lagrar återställnings pun
 
    Dialogrutan **Recovery Services-valv** öppnas.
 
-1. Ange värden för **namn**, **prenumeration**, **resurs grupp**och **plats**.
+1. Ange värden för **namn**, **prenumeration**, **resurs grupp** och **plats**.
 
    ![Konfigurera Recovery Services-valvet.](../backup/media/backup-create-rs-vault/create-new-vault-dialog.png)
 
@@ -180,7 +180,7 @@ Med alternativet lagrings replikering kan du välja mellan Geo-redundant lagring
 
 1. Välj det nya valvet från **Recovery Services-valv**. 
 
-1. Under **Inställningar** väljer du **Egenskaper**. Under **säkerhets kopierings konfiguration**väljer du **Uppdatera**.
+1. Under **Inställningar** väljer du **Egenskaper**. Under **säkerhets kopierings konfiguration** väljer du **Uppdatera**.
 
 1. Välj typ av lagrings replikering och välj **Spara**.
 
@@ -192,11 +192,11 @@ Följ stegen i det här avsnittet för att ladda ned, extrahera och installera p
 
 1. Logga in på [Azure-portalen](https://portal.azure.com/).
 
-1. Om du redan har ett Recovery Services-valv öppet kan du fortsätta till nästa steg. Om du inte har ett Recovery Services-valv öppet och du är i Azure Portal väljer du **Bläddra**i huvud menyn.
+1. Om du redan har ett Recovery Services-valv öppet kan du fortsätta till nästa steg. Om du inte har ett Recovery Services-valv öppet och du är i Azure Portal väljer du **Bläddra** i huvud menyn.
 
-   1. Ange **Recovery Services**i listan över resurser.
+   1. Ange **Recovery Services** i listan över resurser.
 
-   1. När du börjar skriva filtreras listan baserat på det du skriver. När du ser **Recovery Services valv**väljer du det.
+   1. När du börjar skriva filtreras listan baserat på det du skriver. När du ser **Recovery Services valv** väljer du det.
 
    ![Skapa Recovery Services Vault steg 1](../backup/media/backup-azure-microsoft-azure-backup/open-recovery-services-vault.png)
 
@@ -218,21 +218,21 @@ Följ stegen i det här avsnittet för att ladda ned, extrahera och installera p
 
    1. På menyn **där körs din arbets belastning? väljer du** **lokalt**.
 
-      :::image type="content" source="media/azure-vmware-solution-backup/deploy-mabs-on-premises-workload.png" alt-text="Azure Backup Server distribueras som en virtuell dator i Azure Infrastructure as a Service (IaaS) för att skydda virtuella datorer i Azure VMware-lösningen.":::
+      :::image type="content" source="media/azure-vmware-solution-backup/deploy-mabs-on-premises-workload.png" alt-text="Var körs din arbets belastning?":::
 
    1. På menyn **vad vill du säkerhetskopiera?** väljer du de arbets belastningar som du vill skydda med hjälp av Azure Backup Server.
 
    1. Välj **Förbered infrastruktur** för att ladda ned och installera Azure Backup Server och autentiseringsuppgifterna för valvet.
 
-      :::image type="content" source="media/azure-vmware-solution-backup/deploy-mabs-prepare-infrastructure.png" alt-text="Azure Backup Server distribueras som en virtuell dator i Azure Infrastructure as a Service (IaaS) för att skydda virtuella datorer i Azure VMware-lösningen.":::
+      :::image type="content" source="media/azure-vmware-solution-backup/deploy-mabs-prepare-infrastructure.png" alt-text="Förbered infrastruktur":::
 
 1. I fönstret **Förbered infrastruktur** öppnas:
 
    1. Välj länken **Hämta** för att installera Azure Backup Server.
 
-   1. 1. Välj **redan laddat ned eller Använd den senaste Azure Backup Server installationen** och **Ladda ned** för att ladda ned autentiseringsuppgifterna för valvet. Du använder dessa autentiseringsuppgifter när du registrerar Azure Backup Server i Recovery Services-valvet. Länkarna tar dig till Download Center där du laddar ned program varu paketet.
+   1. Välj **redan laddat ned eller Använd den senaste Azure Backup Server installationen** och **Ladda ned** för att ladda ned autentiseringsuppgifterna för valvet. Du använder dessa autentiseringsuppgifter när du registrerar Azure Backup Server i Recovery Services-valvet. Länkarna tar dig till Download Center där du laddar ned program varu paketet.
 
-   :::image type="content" source="media/azure-vmware-solution-backup/deploy-mabs-prepare-infrastructure2.png" alt-text="Azure Backup Server distribueras som en virtuell dator i Azure Infrastructure as a Service (IaaS) för att skydda virtuella datorer i Azure VMware-lösningen.":::
+   :::image type="content" source="media/azure-vmware-solution-backup/deploy-mabs-prepare-infrastructure2.png" alt-text="Förbered infrastruktur – Azure Backup Server":::
 
 1. På sidan Hämta väljer du alla filer och väljer **Nästa**.
 
@@ -263,13 +263,13 @@ Om du har laddat ned program varu paketet till en annan server kopierar du filer
 
 ### <a name="install-the-software-package"></a>Installera programpaketet
 
-1. I installations fönstret under **Installera**väljer du **Microsoft Azure Backup** för att öppna installations guiden.
+1. I installations fönstret under **Installera** väljer du **Microsoft Azure Backup** för att öppna installations guiden.
 
    ![I installations fönstret under installera väljer du Microsoft Azure Backup för att öppna installations guiden.](../backup/media/backup-azure-microsoft-azure-backup/launch-screen2.png)
 
 1. På **välkomst** skärmen väljer du **Nästa** för att fortsätta till sidan **krav kontroll** .
 
-1. Välj **kontrol lera igen** för att avgöra om maskin varan och program varan uppfyller kraven för Azure Backup Server. Välj **Nästa**om det är uppfyllt.
+1. Välj **kontrol lera igen** för att avgöra om maskin varan och program varan uppfyller kraven för Azure Backup Server. Välj **Nästa** om det är uppfyllt.
 
    ![ Välj kontrol lera igen för att avgöra om maskin varan och program varan uppfyller kraven för Azure Backup Server. Välj nästa om det är uppfyllt.](../backup/media/backup-azure-microsoft-azure-backup/prereq/prereq-screen2.png)
 
@@ -288,7 +288,7 @@ Om du har laddat ned program varu paketet till en annan server kopierar du filer
 
    **Konfigurera repor ting Services med SQL Server 2017**
 
-   Om du använder din instans av SQL Server 2017 måste du konfigurera SQL Server 2017 repor ting Services (SSRS) manuellt. När du har konfigurerat SSRS, se till att ange egenskapen **IsInitialized** för SSRS till **True**. Om värdet är **True**förutsätter Azure Backup server att SSRS redan har kon figurer ATS och hoppar över SSRS-konfigurationen.
+   Om du använder din instans av SQL Server 2017 måste du konfigurera SQL Server 2017 repor ting Services (SSRS) manuellt. När du har konfigurerat SSRS, se till att ange egenskapen **IsInitialized** för SSRS till **True**. Om värdet är **True** förutsätter Azure Backup server att SSRS redan har kon figurer ATS och hoppar över SSRS-konfigurationen.
 
    Kontrol lera status för SSRS-konfigurationen genom att köra:
 
@@ -303,9 +303,9 @@ Om du har laddat ned program varu paketet till en annan server kopierar du filer
    Använd följande värden för SSRS-konfiguration:
 
    * **Tjänst konto**: **Använd det inbyggda kontot** ska vara **nätverks tjänst**.
-   * **Webb tjänst-URL**: den **virtuella katalogen** ska vara **ReportServer_ \<SQLInstanceName> **.
-   * **Databas**: **databasename** ska vara **reportserver $ \<SQLInstanceName> **.
-   * **Webb portal-URL**: den **virtuella katalogen** ska vara **Reports_ \<SQLInstanceName> **.
+   * **Webb tjänst-URL**: den **virtuella katalogen** ska vara **ReportServer_ \<SQLInstanceName>**.
+   * **Databas**: **databasename** ska vara **reportserver $ \<SQLInstanceName>**.
+   * **Webb portal-URL**: den **virtuella katalogen** ska vara **Reports_ \<SQLInstanceName>**.
 
    [Läs mer](/sql/reporting-services/report-server/configure-and-administer-a-report-server-ssrs-native-mode) om SSRS-konfiguration.
 
@@ -332,7 +332,7 @@ Om du har laddat ned program varu paketet till en annan server kopierar du filer
 
    ![Välj om du vill använda Microsoft Update för att söka efter uppdateringar och välj Nästa.](../backup/media/backup-azure-microsoft-azure-backup/update-opt-screen2.png)
 
-1. Granska **sammanfattningen av inställningarna**och välj **Installera**.
+1. Granska **sammanfattningen av inställningarna** och välj **Installera**.
 
    Installationen sker i faser. 
    - Den första fasen installerar Microsoft Azure Recovery Services agenten.

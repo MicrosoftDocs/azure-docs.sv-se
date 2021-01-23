@@ -4,18 +4,18 @@ description: Lär dig hur du kan använda Azure Backup för att skicka data frå
 ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 05/17/2018
-ms.openlocfilehash: f3cf44a34babab79d135923db040630a1c8e3dfe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3ea470c2e732b7e0ef46e9e5fa78c744aa30c955
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88892022"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98704371"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Arbets flöde för offline-säkerhetskopiering i Azure Backup
 
 Azure Backup har flera inbyggda effektivitets vinster som sparar kostnader för nätverk och lagring under de första fullständiga säkerhets kopieringarna av data till Azure. De första fullständiga säkerhets kopieringarna överför ofta stora mängder data och kräver mer nätverks bandbredd jämfört med efterföljande säkerhets kopieringar som bara överför delta/steg. Genom processen för dirigering av dirigering kan Azure Backup använda diskar för att ladda upp offline-säkerhetskopierade data till Azure.
 
-Azure Backup offline-seeding-processen är nära integrerad med [Azure import/export-tjänsten](../storage/common/storage-import-export-service.md). Du kan använda den här tjänsten för att överföra första säkerhets kopierings data till Azure med hjälp av diskar. Om du har terabyte (TBs) av inledande säkerhets kopierings data som behöver överföras via ett nätverk med hög latens och låg bandbredd, kan du använda arbets flödet offline-seeding för att leverera den första säkerhets kopian på en eller flera hård diskar till ett Azure-datacenter. Följande bild ger en översikt över stegen i arbets flödet.
+Azure Backup offline-seeding-processen är nära integrerad med [Azure import/export-tjänsten](../import-export/storage-import-export-service.md). Du kan använda den här tjänsten för att överföra första säkerhets kopierings data till Azure med hjälp av diskar. Om du har terabyte (TBs) av inledande säkerhets kopierings data som behöver överföras via ett nätverk med hög latens och låg bandbredd, kan du använda arbets flödet offline-seeding för att leverera den första säkerhets kopian på en eller flera hård diskar till ett Azure-datacenter. Följande bild ger en översikt över stegen i arbets flödet.
 
   ![Översikt över arbets flödes processen offline-import](./media/backup-azure-backup-import-export/offlinebackupworkflowoverview.png)
 
@@ -42,7 +42,7 @@ Följande Azure Backup funktioner eller arbets belastningar stöder användning 
 
 [!INCLUDE [backup-upgrade-mars-agent.md](../../includes/backup-upgrade-mars-agent.md)]
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
   > [!NOTE]
   > Följande nödvändiga komponenter och arbets flöde gäller endast offline-säkerhetskopiering av filer och mappar med hjälp av den [senaste Azure Recovery Services-agenten](https://aka.ms/azurebackup_agent). Om du vill utföra säkerhets kopiering offline för arbets belastningar med System Center DPM eller Azure Backup Server, se [arbets flöde för offline-säkerhetskopiering för DPM och Azure Backup Server](backup-azure-backup-server-import-export.md).
@@ -59,17 +59,17 @@ Innan du startar arbets flödet offline måste du uppfylla följande krav:
     1. På huvud menyn väljer du **prenumerationer**.
     1. Om du prenumererar på flera prenumerationer väljer du den prenumeration som du planerar att använda för säkerhets kopiering offline. Om du bara använder en prenumeration visas din prenumeration.
     1. På menyn prenumeration väljer du **resurs leverantörer** för att visa listan över leverantörer.
-    1. Rulla ned till *Microsoft. ImportExport*i listan över providrar. Om **statusen** är **NotRegistered**väljer du **Registrera**.
+    1. Rulla ned till *Microsoft. ImportExport* i listan över providrar. Om **statusen** är **NotRegistered** väljer du **Registrera**.
 
         ![Registrera resursprovidern](./media/backup-azure-backup-import-export/registerimportexport.png)
 
 * En mellanlagringsplats, som kan vara en nätverks resurs eller ytterligare en enhet på datorn, intern eller extern, med tillräckligt disk utrymme för att lagra din ursprungliga kopia skapas. Om du till exempel vill säkerhetskopiera en fil server med 500 GB kontrollerar du att mellanlagringsområdet är minst 500 GB. (En mindre mängd används på grund av komprimering.)
-* När du skickar diskar till Azure använder du bara 2,5-tums SSD-eller 2,5-tums eller 3,5-tums interna SATA II/III-hårddiskar. Du kan använda hård diskar upp till 10 TB. Läs [dokumentationen för Azure import/export-tjänsten](../storage/common/storage-import-export-requirements.md#supported-hardware) för den senaste uppsättningen enheter som stöds av tjänsten.
+* När du skickar diskar till Azure använder du bara 2,5-tums SSD-eller 2,5-tums eller 3,5-tums interna SATA II/III-hårddiskar. Du kan använda hård diskar upp till 10 TB. Läs [dokumentationen för Azure import/export-tjänsten](../import-export/storage-import-export-requirements.md#supported-hardware) för den senaste uppsättningen enheter som stöds av tjänsten.
 * SATA-enheterna måste vara anslutna till en dator (kallas *kopierings dator*) från den plats där kopian av säkerhets kopierings data från mellanlagringsplatsen till SATA-enheterna görs. Se till att BitLocker är aktiverat på kopierings datorn.
 
 ## <a name="workflow"></a>Arbetsflöde
 
-I det här avsnittet beskrivs arbets flödet offline-säkerhetskopiering så att dina data kan skickas till ett Azure-datacenter och laddas upp till Azure Storage. Om du har frågor om import tjänsten eller någon del av processen kan du läsa mer i [översikts dokumentationen för Azure import/export-tjänsten](../storage/common/storage-import-export-service.md).
+I det här avsnittet beskrivs arbets flödet offline-säkerhetskopiering så att dina data kan skickas till ett Azure-datacenter och laddas upp till Azure Storage. Om du har frågor om import tjänsten eller någon del av processen kan du läsa mer i [översikts dokumentationen för Azure import/export-tjänsten](../import-export/storage-import-export-service.md).
 
 ## <a name="initiate-offline-backup"></a>Starta säkerhets kopiering offline
 
@@ -82,7 +82,7 @@ I det här avsnittet beskrivs arbets flödet offline-säkerhetskopiering så att
     > [!NOTE]
     > Använd Azure Data Box alternativet för att överföra första säkerhets kopierings data offline. Det här alternativet sparar den ansträngning som krävs för att skaffa dina egna Azure-kompatibla diskar. Den ger Microsoft-patentskyddade, säkra och tamperproof-Azure Data Box enheter som säkerhetskopierade data kan skrivas direkt till av Recovery Servicess agenten.
 
-1. Välj **Nästa**och fyll i rutorna noggrant.
+1. Välj **Nästa** och fyll i rutorna noggrant.
 
     ![Ange din disk information](./media/backup-azure-backup-import-export/your-disk-details.png)
 
@@ -173,7 +173,7 @@ I följande procedur uppdateras leverans informationen för Azure import-jobbet.
 * Returnera leverans information för diskarna.
 
 1. Logga in på din Azure-prenumeration.
-1. I huvud menyn väljer du **alla tjänster**. I dialog rutan **alla tjänster** anger du **Importera**. När du ser **import/export-jobb**väljer du det.
+1. I huvud menyn väljer du **alla tjänster**. I dialog rutan **alla tjänster** anger du **Importera**. När du ser **import/export-jobb** väljer du det.
 
     ![Ange leverans information](./media/backup-azure-backup-import-export/search-import-job.png)<br/>
 
@@ -202,7 +202,7 @@ Hur lång tid det tar att bearbeta ett Azure-importerat jobb varierar. Bearbetni
 
 ### <a name="monitor-azure-import-job-status"></a>Övervaka status för Azure import-jobb
 
-Du kan övervaka statusen för ditt import jobb från Azure Portal. Gå till sidan **import/export-jobb** och välj ditt jobb. Mer information om status för import jobben finns i [Vad är Azure import/export-tjänsten?](../storage/common/storage-import-export-service.md).
+Du kan övervaka statusen för ditt import jobb från Azure Portal. Gå till sidan **import/export-jobb** och välj ditt jobb. Mer information om status för import jobben finns i [Vad är Azure import/export-tjänsten?](../import-export/storage-import-export-service.md).
 
 ### <a name="finish-the-workflow"></a>Slutför arbets flödet
 
@@ -218,4 +218,4 @@ När den första säkerhets kopieringen är färdig kan du på ett säkert sätt
 
 ## <a name="next-steps"></a>Nästa steg
 
-* Om du har frågor om Azures arbets flöde för import/export-tjänsten kan du läsa mer i [använda tjänsten Microsoft Azure import/export för att överföra data till Blob Storage](../storage/common/storage-import-export-service.md).
+* Om du har frågor om Azures arbets flöde för import/export-tjänsten kan du läsa mer i [använda tjänsten Microsoft Azure import/export för att överföra data till Blob Storage](../import-export/storage-import-export-service.md).

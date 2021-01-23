@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 01/08/2021
+ms.date: 01/21/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 6b622d1c22dd9481881d2d68eb26ef34a1e5ca5c
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: c2cfb368f40fa43879c69c54f7b630206cd8edd4
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98045759"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98704208"
 ---
-|Namn<br /><sub>(Azure Portal)</sub> |Beskrivning |Påverkan (ar) |Version<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Beskrivning |Påverkan (ar) |Version<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Azure Batch konto ska använda Kundhanterade nycklar för att kryptera data](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F99e9ccd8-3db9-4592-b0d1-14b1715a4d8a) |Använd Kundhanterade nycklar (CMKs) för att hantera krypteringen i resten av batch-kontots data. Som standard krypteras kund information med tjänst hanterade nycklar, men CMKs krävs ofta för att uppfylla gällande regler för efterlevnad. CMKs gör det möjligt att kryptera data med en Azure Key Vault-nyckel som skapats och ägs av dig. Du har fullständig kontroll och ansvar för nyckel livs cykeln, inklusive rotation och hantering. Läs mer om CMK-kryptering på [https://aka.ms/Batch-CMK](https://aka.ms/Batch-CMK) . |Granska, neka, inaktive rad |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Batch/Batch_CustomerManagedKey_Audit.json) |
 |[Distribuera diagnostikinställningar för batch-konto till Händelsehubben](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fdb51110f-0865-4a6e-b274-e2e07a5b2cd7) |Distribuerar diagnostiska inställningar för batch-konto till data strömmar till en regional Händelsehubben när ett batch-konto som saknar de här diagnostikinställningar skapas eller uppdateras. |DeployIfNotExists, inaktiverat |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/Batch_DeployDiagnosticLog_Deploy_EventHub.json) |

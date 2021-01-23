@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/20/2021
 ms.author: v-tcassi
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: e603e99c1aa9c49d20bdb281bbfd96131ae2efdd
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 3470e07c1b5673efa6cd015e43e077828da1573e
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98663629"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98703673"
 ---
 # <a name="install-and-provision-azure-iot-edge-for-linux-on-a-windows-device-preview"></a>Installera och etablera Azure IoT Edge för Linux på en Windows-enhet (förhands granskning)
 
@@ -28,7 +28,7 @@ I den här artikeln beskrivs stegen för att ställa in IoT Edge på en Windows-
 >[!NOTE]
 >IoT Edge för Linux på Windows finns i en [offentlig för hands version](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 * Ett Azure-konto med en giltig prenumeration. Om du inte har en [Azure-prenumeration](../guides/developer/azure-developer-guide.md#understanding-accounts-subscriptions-and-billing)kan du skapa ett [kostnads fritt konto](https://azure.microsoft.com/free/) innan du börjar.
 
@@ -162,7 +162,7 @@ Installera IoT Edge för Linux på Windows på mål enheten om du inte redan har
    Om körnings principen för `local machine` inte är det `AllSigned` kan du ange körnings principen med hjälp av:
 
    ```azurepowershell-interactive
-   Set-ExecutionPolicy - ExecutionPolicy AllSigned -Force
+   Set-ExecutionPolicy -ExecutionPolicy AllSigned -Force
    ```
 
 1. Skapa IoT Edge för Linux på Windows-distribution.

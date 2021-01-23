@@ -6,12 +6,12 @@ ms.author: rahugup
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 06/14/2020
-ms.openlocfilehash: a3e8b19810a58031b4d11cc6e361215afbc85de2
-ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
+ms.openlocfilehash: 4ebc363f29ed8956d10e91f41be1d257cbcc492f
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98562649"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98703894"
 ---
 # <a name="support-matrix-for-physical-server-migration"></a>Support mat ris för fysisk server-migrering
 
@@ -81,7 +81,7 @@ Gäst operativ systemets arkitektur | 64-bitars. | Kontrollen Miss lyckas om den
 Storlek på operativsystemdisk | Upp till 2 048 GB. | Kontrollen Miss lyckas om den inte stöds.
 Antal operativsystemdiskar | 1 | Kontrollen Miss lyckas om den inte stöds.
 Antal datadiskar | 64 eller mindre. | Kontrollen Miss lyckas om den inte stöds.
-Data disk storlek | Upp till 4 095 GB | Kontrollen Miss lyckas om den inte stöds.
+Data disk storlek | Upp till 32 TB | Kontrollen Miss lyckas om den inte stöds.
 Nätverkskort | Flera nätverkskort stöds. |
 Delad VHD | Stöds inte. | Kontrollen Miss lyckas om den inte stöds.
 FC-disk | Stöds inte. | Kontrollen Miss lyckas om den inte stöds.

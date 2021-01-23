@@ -3,18 +3,18 @@ title: Skapa & distribuera resurs grupps projekt i Visual Studio
 description: Använd Visual Studio för att skapa ett Azure-resursgruppsprojekt och distribuera resurserna till Azure.
 ms.topic: conceptual
 ms.date: 10/16/2019
-ms.openlocfilehash: 479dbed1f288148c24fc8464f7895cd3e2b182f9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f1a06a3e89c5fd2ea8906ff9a438c170f135d6ec
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91372654"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98704422"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>Skapa och distribuera Azure-resursgrupper via Visual Studio
 
 Med Visual Studio kan du skapa ett projekt som distribuerar din infrastruktur och kod till Azure. Du kan till exempel distribuera webb värden, webbplatsen och koden för webbplatsen. Visual Studio har många olika startmallar som du kan använda för att distribuera vanliga scenarier. I den här artikeln distribuerar du en webbapp.
 
-Den här artikeln visar hur du använder [Visual Studio 2019 eller senare med arbets belastningarna Azure Development och ASP.net installerat](/visualstudio/install/install-visual-studio?view=vs-2019). Om du använder Visual Studio 2017 är din upplevelse i stort sett densamma.
+Den här artikeln visar hur du använder [Visual Studio 2019 eller senare med arbets belastningarna Azure Development och ASP.net installerat](/visualstudio/install/install-visual-studio). Om du använder Visual Studio 2017 är din upplevelse i stort sett densamma.
 
 ## <a name="create-azure-resource-group-project"></a>Skapa ett projekt för en Azure-resursgrupp
 
@@ -259,7 +259,7 @@ Observera i föregående exempel att det inte finns något `'/',` mellan **param
 
 För AzureRM-modulens skript använder du Visual Studio:
 
-1. Om du vill distribuera igen väljer du **distribuera**och den resurs grupp som du distribuerade tidigare.
+1. Om du vill distribuera igen väljer du **distribuera** och den resurs grupp som du distribuerade tidigare.
 
     ![Distribuera om projekt](./media/create-visual-studio-deployment-project/redeploy.png)
 

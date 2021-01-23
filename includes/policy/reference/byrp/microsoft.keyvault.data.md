@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 01/08/2021
+ms.date: 01/21/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: fdda4d43787844b2eba888c5aef92475994c85fc
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 2dd76afd8c31bfe70ea1aaa62dc9bb071f1ac69f
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98049751"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98703480"
 ---
-|Namn<br /><sub>(Azure Portal)</sub> |Beskrivning |Påverkan (ar) |Version<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Beskrivning |Påverkan (ar) |Version<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Certifikat ska utfärdas av den angivna integrerade certifikat utfärdaren](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F8e826246-c976-48f6-b03e-619bb92b3d82) |Hantera organisationens krav på efterlevnad genom att ange de Azure-integrerade certifikat utfärdare som kan utfärda certifikat i nyckel valvet, till exempel DigiCert eller GlobalSign. |granska, neka, inaktive rad |[2.0.0 – för hands version](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/Certificates_Issuers_SupportedCAs.json) |
 |[Certifikat ska utfärdas av den angivna icke-integrerade certifikat utfärdaren](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa22f4a40-01d3-4c7d-8071-da157eeff341) |Hantera organisationens krav på efterlevnad genom att ange de anpassade eller interna certifikat utfärdare som kan utfärda certifikat i ditt nyckel valv. |granska, neka, inaktive rad |[2.0.0 – för hands version](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/Certificates_Issuers_CustomCAs.json) |

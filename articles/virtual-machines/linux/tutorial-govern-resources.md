@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 09/30/2019
 ms.author: tomfitz
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 565315ad78a2994f44973c4fdcd4519ab9e03ea8
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: d1fb9347e33c56c647e15b9e90df4afe5dd55b65
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94831794"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98704749"
 ---
 # <a name="tutorial-learn-about-linux-virtual-machine-management-with-azure-cli"></a>Självstudie: Lär dig mer om hantering av virtuella Linux-datorer med Azure CLI
 
@@ -55,7 +55,7 @@ För hanteringen av VM-lösningar finns det tre resursspecifika roller som bevil
 
 I stället för att tilldela roller till enskilda användare är det ofta lättare att använda en Azure Active Directory-grupp som har användare som behöver utföra liknande åtgärder. Därefter tilldelar du gruppen lämplig roll. För den här artikeln använder du en befintlig grupp för den virtuella datorn eller använder portalen för att [skapa en Azure Active Directory-grupp](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
 
-När du har skapat en ny grupp eller hittar en befintlig använder du kommandot [az role assignment create](/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-create) för att tilldela den nya Azure Active Directory-gruppen till rollen Virtuell datordeltagare för resursgruppen.
+När du har skapat en ny grupp eller hittar en befintlig använder du kommandot [az role assignment create](/cli/azure/policy/assignment#az-policy-assignment-create) för att tilldela den nya Azure Active Directory-gruppen till rollen Virtuell datordeltagare för resursgruppen.
 
 ```azurecli-interactive
 adgroupId=$(az ad group show --group <your-group-name> --query objectId --output tsv)
@@ -69,7 +69,7 @@ Normalt upprepar du processen för *Nätverksdeltagare* och *Lagringskontodeltag
 
 ## <a name="azure-policy"></a>Azure Policy
 
-[Azure Policy](../../governance/policy/overview.md) hjälper dig se till att alla resurser i prenumerationen uppfyller företagets standarder. Din prenumeration har redan flera principdefinitioner. Om du vill visa de tillgängliga principdefinitionerna använder du kommandot [az policy definition list](/cli/azure/policy/definition?view=azure-cli-latest#az-policy-definition-list):
+[Azure Policy](../../governance/policy/overview.md) hjälper dig se till att alla resurser i prenumerationen uppfyller företagets standarder. Din prenumeration har redan flera principdefinitioner. Om du vill visa de tillgängliga principdefinitionerna använder du kommandot [az policy definition list](/cli/azure/policy/definition#az-policy-definition-list):
 
 ```azurecli-interactive
 az policy definition list --query "[].[displayName, policyType, name]" --output table
@@ -81,7 +81,7 @@ De befintliga principdefinitionerna visas. Principtypen är antingen **BuiltIn**
 * Begränsa SKU:erna för virtuella datorer.
 * Granskar virtuella datorer som inte använder hanterade diskar.
 
-I exemplet nedan hämtar du tre principdefinitioner baserat på visningsnamnet. Du använder kommandot [az policy assignment create](/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-create) för att tilldela dessa definitioner till resursgruppen. För vissa principer anger du parametervärden för att definiera de tillåtna värdena.
+I exemplet nedan hämtar du tre principdefinitioner baserat på visningsnamnet. Du använder kommandot [az policy assignment create](/cli/azure/policy/assignment#az-policy-assignment-create) för att tilldela dessa definitioner till resursgruppen. För vissa principer anger du parametervärden för att definiera de tillåtna värdena.
 
 ```azurecli-interactive
 # Get policy definitions for allowed locations, allowed SKUs, and auditing VMs that don't use managed disks
@@ -143,7 +143,7 @@ När distributionen är klar kan du lägga till fler hanteringsinställningar f�
 
 För att kunna skapa eller ta bort hanteringslås måste du ha åtkomst till `Microsoft.Authorization/locks/*`-åtgärder. Av de inbyggda rollerna har endast **Ägare** och **Administratör för användaråtkomst** åtkomst till dessa åtgärder.
 
-Om du vill låsa den virtuella datorn och nätverkssäkerhetsgruppen använder du kommandot [az lock create](/cli/azure/resource/lock?view=azure-cli-latest#az-resource-lock-create):
+Om du vill låsa den virtuella datorn och nätverkssäkerhetsgruppen använder du kommandot [az lock create](/cli/azure/resource/lock#az-resource-lock-create):
 
 ```azurecli-interactive
 # Add CanNotDelete lock to the VM
@@ -175,7 +175,7 @@ Du kan använda [taggar](../../azure-resource-manager/management/tag-resources.m
 
 [!INCLUDE [Resource Manager governance tags CLI](../../../includes/resource-manager-governance-tags-cli.md)]
 
-Om du vill lägga till taggar till en virtuell dator använder du kommandot [az resource tag](/cli/azure/resource?view=azure-cli-latest#az-resource-list). En resurs eventuella befintliga taggar bevaras inte.
+Om du vill lägga till taggar till en virtuell dator använder du kommandot [az resource tag](/cli/azure/resource#az-resource-list). En resurs eventuella befintliga taggar bevaras inte.
 
 ```azurecli-interactive
 az resource tag -n myVM \
@@ -186,7 +186,7 @@ az resource tag -n myVM \
 
 ### <a name="find-resources-by-tag"></a>Hitta resurser efter tagg
 
-Om du vill söka efter resurser med ett taggnamn och taggvärde använder du kommandot [az resource list](/cli/azure/resource?view=azure-cli-latest#az-resource-list):
+Om du vill söka efter resurser med ett taggnamn och taggvärde använder du kommandot [az resource list](/cli/azure/resource#az-resource-list):
 
 ```azurecli-interactive
 az resource list --tag Environment=Test --query [].name
@@ -204,7 +204,7 @@ az vm stop --ids $(az resource list --tag Environment=Test --query "[?type=='Mic
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
-Den låsta nätverkssäkerhetsgruppen kan inte tas bort förrän låset tagits bort. Om du vill ta bort lås hämtar du låsens ID:n och anger dem i kommandot [az lock delete](/cli/azure/resource/lock?view=azure-cli-latest#az-resource-lock-delete):
+Den låsta nätverkssäkerhetsgruppen kan inte tas bort förrän låset tagits bort. Om du vill ta bort lås hämtar du låsens ID:n och anger dem i kommandot [az lock delete](/cli/azure/resource/lock#az-resource-lock-delete):
 
 ```azurecli-interactive
 vmlock=$(az lock show --name LockVM \
@@ -218,7 +218,7 @@ nsglock=$(az lock show --name LockNSG \
 az lock delete --ids $vmlock $nsglock
 ```
 
-När de inte längre behövs kan du använda kommandot [AZ Group Delete](/cli/azure/group?view=azure-cli-latest#az-group-delete) för att ta bort resurs gruppen, den virtuella datorn och alla relaterade resurser. Avsluta SSH-sessionen till den virtuella datorn och ta sedan bort resurserna enligt följande:
+När de inte längre behövs kan du använda kommandot [AZ Group Delete](/cli/azure/group#az-group-delete) för att ta bort resurs gruppen, den virtuella datorn och alla relaterade resurser. Avsluta SSH-sessionen till den virtuella datorn och ta sedan bort resurserna enligt följande:
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup

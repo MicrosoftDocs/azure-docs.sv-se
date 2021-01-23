@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/21/2021
+ms.date: 01/22/2021
 ms.author: b-juche
-ms.openlocfilehash: 4320222e02f3447dcdff280f04ad26115323e798
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 41e0f996bcd75ba1663bb8eb3880d550bed01f94
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 01/22/2021
-ms.locfileid: "98696164"
+ms.locfileid: "98703444"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>Lösningsarkitekturer med Azure NetApp Files
 Den här artikeln innehåller referenser till bästa praxis som kan hjälpa dig att förstå lösnings arkitekturerna för att använda Azure NetApp Files.  
@@ -76,6 +76,7 @@ Det här avsnittet innehåller referenser till SAP på Azure-lösningar.
 * [Hög tillgänglighet för SAP HANA skala upp med Azure NetApp Files på Red Hat Enterprise Linux](../virtual-machines/workloads/sap/sap-hana-high-availability-netapp-files-red-hat.md)
 * [SAP HANA skala ut med noden vänte läge på virtuella Azure-datorer med Azure NetApp Files på SUSE Linux Enterprise Server](../virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse.md)
 * [SAP HANA skala ut med noden vänte läge på virtuella Azure-datorer med Azure NetApp Files på Red Hat Enterprise Linux](../virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel.md)
+* [Azure Application enhetligt ögonblicks bild verktyget (AzAcSnap)](azacsnap-introduction.md)
 
 ### <a name="sap-anydb"></a>SAP-AnyDB
 

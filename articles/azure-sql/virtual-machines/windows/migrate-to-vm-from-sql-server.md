@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 08/18/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 4cd37128893309be5a1e362671b9e28dcc436b1b
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: f6e9009040d2d02702f8a71c352716491d07d1f7
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97356216"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98704312"
 ---
 # <a name="migrate-a-sql-server-database-to-sql-server-on-an-azure-virtual-machine"></a>Migrera en SQL Server databas till SQL Server på en virtuell Azure-dator
 
@@ -68,7 +68,7 @@ I följande tabell visas var och en av de primära metoderna för migrering och 
 | [Säkerhetskopiera till en URL och Återställ den till den virtuella Azure-datorn från URL: en](#backup-to-url-and-restore-from-url) |SQL Server 2012 SP1 CU2 eller senare | SQL Server 2012 SP1 CU2 eller senare | < 12,8 TB för SQL Server 2016, annars < 1 TB | Den här metoden är bara ett annat sätt att flytta säkerhets kopian till den virtuella datorn med Azure Storage. |
 | [Koppla från och kopiera sedan data-och loggfilerna till Azure Blob Storage och bifoga sedan till SQL Server i den virtuella Azure-datorn från URL: en](#detach-and-attach-from-a-url) | SQL Server 2005 eller mer |SQL Server 2014 eller mer | [Lagrings gräns för Azure VM](../../../index.yml) | Använd den här metoden när du planerar att [lagra filerna med hjälp av Azure Blob Storage-tjänsten](/sql/relational-databases/databases/sql-server-data-files-in-microsoft-azure) och koppla dem till SQL Server som körs i en virtuell Azure-dator, särskilt med mycket stora databaser |
 | [Konvertera den lokala datorn till Hyper-V-VHD: er, ladda upp till Azure Blob Storage och distribuera sedan en ny virtuell dator med Uppladdad virtuell hård disk](#convert-to-a-vm-upload-to-a-url-and-deploy-as-a-new-vm) |SQL Server 2005 eller mer |SQL Server 2005 eller mer |[Lagrings gräns för Azure VM](../../../index.yml) |Använd när du använder [din egen SQL Server-licens](../../../azure-sql/azure-sql-iaas-vs-paas-what-is-overview.md)när du migrerar en databas som du ska köra på en äldre version av SQL Server, eller när du migrerar system-och användar databaser tillsammans som en del av migreringen av databasen som är beroende av andra användar databaser och/eller system databaser. |
-| [Leverera hård disk med tjänsten Windows import/export](#ship-a-hard-drive) |SQL Server 2005 eller mer |SQL Server 2005 eller mer |[Lagrings gräns för Azure VM](../../../index.yml) |Använd [tjänsten Windows import/export](../../../storage/common/storage-import-export-service.md) när metoden för manuell kopiering är för långsam, t. ex. med mycket stora databaser |
+| [Leverera hård disk med tjänsten Windows import/export](#ship-a-hard-drive) |SQL Server 2005 eller mer |SQL Server 2005 eller mer |[Lagrings gräns för Azure VM](../../../index.yml) |Använd [tjänsten Windows import/export](../../../import-export/storage-import-export-service.md) när metoden för manuell kopiering är för långsam, t. ex. med mycket stora databaser |
 | [Använd guiden Lägg till Azure-replik](/previous-versions/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-sql-onprem-availability) |SQL Server 2012 eller mer |SQL Server 2012 eller mer |[Lagrings gräns för Azure VM](../../../index.yml) |Minimerar drift stopp, Använd när du har en lokal distribution som alltid är lokal |
 | [Använd SQL Server Transaktionsreplikering](/sql/relational-databases/replication/transactional/transactional-replication) |SQL Server 2005 eller mer |SQL Server 2005 eller mer |[Lagrings gräns för Azure VM](../../../index.yml) |Använd när du behöver minimera nedtid och inte har en lokal distribution som alltid är lokal |
 
@@ -83,7 +83,7 @@ Säkerhetskopiera databasen med komprimering, kopiera säkerhets kopian till den
 
 ## <a name="backup-to-url-and-restore-from-url"></a>Säkerhetskopiera till URL och Återställ från URL
 
-I stället för att säkerhetskopiera till en lokal fil kan du använda [Backup to URL](/sql/relational-databases/backup-restore/sql-server-backup-to-url) och sedan återställa från webb adressen till den virtuella datorn. SQL Server 2016 har stöd för stripe-säkerhetskopieringar. De rekommenderas för prestanda och måste överskrida storleks gränserna per blob. För mycket stora databaser rekommenderas användningen av [tjänsten Windows import/export](../../../storage/common/storage-import-export-service.md) .
+I stället för att säkerhetskopiera till en lokal fil kan du använda [Backup to URL](/sql/relational-databases/backup-restore/sql-server-backup-to-url) och sedan återställa från webb adressen till den virtuella datorn. SQL Server 2016 har stöd för stripe-säkerhetskopieringar. De rekommenderas för prestanda och måste överskrida storleks gränserna per blob. För mycket stora databaser rekommenderas användningen av [tjänsten Windows import/export](../../../import-export/storage-import-export-service.md) .
 
 ## <a name="detach-and-attach-from-a-url"></a>Koppla från och koppla från en URL
 
@@ -106,7 +106,7 @@ Använd den här metoden för att migrera alla system-och användar databaser i 
 
 ## <a name="ship-a-hard-drive"></a>Leverera en hård disk
 
-Använd [metoden Windows import/export-tjänsten](../../../storage/common/storage-import-export-service.md) för att överföra stora mängder fildata till Azure Blob Storage i situationer där överföring över nätverket är prohibitively dyrt eller inte genomförbart. Med den här tjänsten kan du skicka en eller flera hård diskar som innehåller dessa data till ett Azure-datacenter där dina data ska överföras till ditt lagrings konto.
+Använd [metoden Windows import/export-tjänsten](../../../import-export/storage-import-export-service.md) för att överföra stora mängder fildata till Azure Blob Storage i situationer där överföring över nätverket är prohibitively dyrt eller inte genomförbart. Med den här tjänsten kan du skicka en eller flera hård diskar som innehåller dessa data till ett Azure-datacenter där dina data ska överföras till ditt lagrings konto.
 
 ## <a name="next-steps"></a>Nästa steg
 
