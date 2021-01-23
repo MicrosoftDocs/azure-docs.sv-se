@@ -1,15 +1,15 @@
 ---
 title: Inbyggda princip definitioner för Azure Arc-aktiverade servrar
 description: Visar Azure Policy inbyggda princip definitioner för Azure Arc-aktiverade servrar (för hands version). Dessa inbyggda princip definitioner tillhandahåller vanliga metoder för att hantera dina Azure-resurser.
-ms.date: 01/08/2021
+ms.date: 01/21/2021
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 4aec47351a74a9f4d1dc330d25ff23756914ff81
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 3639c76e8d4a56b580252c6397e149a0016c9e6f
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98046653"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98701208"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-arc-enabled-servers"></a>Azure Policy inbyggda definitioner för Azure Arc-aktiverade servrar
 

@@ -6,16 +6,16 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: d04a5c0e53e9a5db8bba03a5a9e9d95b87a8b5a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 940b7ac90f85e0254d59459b70ccc15312cd69f4
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85855671"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98700847"
 ---
 # <a name="use-the-azure-importexport-service-for-offline-copy-of-data-to-data-lake-storage-gen1"></a>Använd Azures import-/export tjänst för att kopiera data offline till Data Lake Storage Gen1
 
-I den här artikeln får du lära dig hur du kopierar enorma data uppsättningar (>200 GB) till Data Lake Storage Gen1 genom att använda kopierings metoder offline, t. ex. [Azure import/export-tjänsten](../storage/common/storage-import-export-service.md). Mer specifikt är filen som används som ett exempel i den här artikeln 339 420 860 416 byte, eller cirka 319 GB på disken. Vi kallar den här filen 319GB. tsv.
+I den här artikeln får du lära dig hur du kopierar enorma data uppsättningar (>200 GB) till Data Lake Storage Gen1 genom att använda kopierings metoder offline, t. ex. [Azure import/export-tjänsten](../import-export/storage-import-export-service.md). Mer specifikt är filen som används som ett exempel i den här artikeln 339 420 860 416 byte, eller cirka 319 GB på disken. Vi kallar den här filen 319GB. tsv.
 
 Med tjänsten Azure import/export kan du överföra stora mängder data på ett säkrare sätt till Azure Blob Storage genom att leverera hård diskar till ett Azure-datacenter.
 
@@ -44,7 +44,7 @@ Delnings åtgärden skapar filer med följande namn.
 
 ## <a name="get-disks-ready-with-data"></a>Hämta diskar som är klara med data
 
-Följ anvisningarna i [använda Azure import/export-tjänsten](../storage/common/storage-import-export-service.md) (under avsnittet **förbereda dina enheter** ) för att förbereda dina hård diskar. Här är den övergripande ordningen:
+Följ anvisningarna i [använda Azure import/export-tjänsten](../import-export/storage-import-export-service.md) (under avsnittet **förbereda dina enheter** ) för att förbereda dina hård diskar. Här är den övergripande ordningen:
 
 1. Skaffa en hård disk som uppfyller de krav som ska användas för Azure import/export-tjänsten.
 2. Identifiera ett Azure Storage-konto där data ska kopieras efter att de skickats till Azure-datacentret.
@@ -53,12 +53,12 @@ Följ anvisningarna i [använda Azure import/export-tjänsten](../storage/common
     ```
     WAImportExport PrepImport /sk:<StorageAccountKey> /t: <TargetDriveLetter> /format /encrypt /logdir:e:\myexportimportjob\logdir /j:e:\myexportimportjob\journal1.jrn /id:myexportimportjob /srcdir:F:\demo\ExImContainer /dstdir:importcontainer/vf1/
     ```
-    Se [använda Azure import/export-tjänsten](../storage/common/storage-import-export-service.md) för fler exempel kods tycken.
+    Se [använda Azure import/export-tjänsten](../import-export/storage-import-export-service.md) för fler exempel kods tycken.
 4. Föregående kommando skapar en journal fil på den angivna platsen. Använd den här Journal filen för att skapa ett import jobb från [Azure Portal](https://portal.azure.com).
 
 ## <a name="create-an-import-job"></a>Skapa ett import jobb
 
-Nu kan du skapa ett import jobb genom att följa anvisningarna i [använda Azure import/export-tjänsten](../storage/common/storage-import-export-service.md) (under avsnittet **skapa import jobb** ). För det här import jobbet, med annan information, anger du även Journal filen som skapades när du förbereder disk enheterna.
+Nu kan du skapa ett import jobb genom att följa anvisningarna i [använda Azure import/export-tjänsten](../import-export/storage-import-export-service.md) (under avsnittet **skapa import jobb** ). För det här import jobbet, med annan information, anger du även Journal filen som skapades när du förbereder disk enheterna.
 
 ## <a name="physically-ship-the-disks"></a>Leverera diskarna fysiskt
 

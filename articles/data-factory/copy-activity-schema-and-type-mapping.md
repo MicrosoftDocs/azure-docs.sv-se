@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: jingwang
-ms.openlocfilehash: ce7c0cba4a231fbdb33679f8cdac7d57c79845f5
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: afcc7ad34807b74fa0b1ddaaa29223d8a6e25584
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968882"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98702227"
 ---
 # <a name="schema-and-data-type-mapping-in-copy-activity"></a>Schema-och data typs mappning i kopierings aktiviteten
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -47,7 +47,7 @@ Läs mer om:
 
 Du kan konfigurera mappningen på Data Factory redigerings gränssnitt – > kopiera aktivitet-> Mapping-fliken, eller ange mappningen i aktiviteten Kopiera aktivitet-> `translator` . Följande egenskaper stöds i `translator`  ->  `mappings` array-> Objects-> `source` och `sink` , som pekar på den angivna kolumnen/fältet för att mappa data.
 
-| Egenskap | Beskrivning                                                  | Krävs |
+| Egenskap | Beskrivning                                                  | Obligatorisk |
 | -------- | ------------------------------------------------------------ | -------- |
 | name     | Namn på kolumn/fält för källa eller mottagare. Använd för tabell källa och mottagare. | Ja      |
 | numret  | Kolumn index. Starta från 1. <br>Använd och krävs när du använder avgränsad text utan rubrik rad. | Nej       |
@@ -185,6 +185,9 @@ Du kan definiera en sådan mappning på Data Factory redigerings gränssnitt:
 2. Välj den matris som du vill iterera och extrahera data från. Den fylls i automatiskt som **samlings referens**. Observera att endast en enskild matris stöds för den här åtgärden.
 
 3. Mappa de fält som behövs till Sink. Data Factory identifierar automatiskt motsvarande JSON-sökvägar för den hierarkiska sidan.
+
+> [!NOTE]
+> För poster där matrisen som marker ATS som samlings referens är tom och kryss rutan är markerad, hoppas hela posten över.
 
 ![Mappa hierarkiskt till tabell med hjälp av användar gränssnittet](media/copy-activity-schema-and-type-mapping/map-hierarchical-to-tabular-ui.png)
 

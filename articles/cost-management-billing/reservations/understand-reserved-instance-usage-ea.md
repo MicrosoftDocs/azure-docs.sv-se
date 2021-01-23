@@ -1,24 +1,24 @@
 ---
-title: Förstå hur Azure-reservationer används för Enterprise-avtal
-description: Lär dig hur du läser dina användningsdata, så att du vet hur Azure-reservationen används med din Enterprise-registrering.
+title: Förstå användningen av Azure-reservationer för Enterprise-avtal och Microsofts kund avtal
+description: Lär dig mer om hur du läser användnings informationen för att förstå hur en Azure-reservation gäller för Enterprise-avtal och Microsofts kund avtals användning.
 author: bandersmsft
 ms.reviewer: yashar
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: conceptual
-ms.date: 12/02/2020
+ms.date: 01/19/2020
 ms.author: banders
-ms.openlocfilehash: 874d5cb022a38b172bb37009bd86b5e6988f3204
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
-ms.translationtype: HT
+ms.openlocfilehash: 0c69e9533130d6ca70c57422c7cdd5fc75adff72
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96545612"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683725"
 ---
-# <a name="get-enterprise-agreement-reservation-costs-and-usage"></a>Hämta data om reservationskostnader och reservationsanvändning för Enterprise-avtal (EA)
+# <a name="get-enterprise-agreement-and-microsoft-customer-agreement-reservation-costs-and-usage"></a>Hämta kostnader och användning för Enterprise-avtal och Microsofts kund avtal
 
-Reservationskostnader och användningsdata är tillgängliga för Enterprise-avtalskunder från Azure-portalen och REST-API:er. I den här artikeln lär du dig hur du:
+Förbättrade data för reservations kostnader och användning är tillgängligt för Enterprise-avtal (EA) och användning av Microsoft Customer Agreement (MCA) i kostnads hantering. I den här artikeln lär du dig hur du:
 
 - Hämtar data om reservationsköp
 - Ser vilken prenumeration, resursgrupp eller resurs som använt reservationen
@@ -61,9 +61,7 @@ Annan information som är tillgänglig i Azures användningsdata har ändrats:
 
 Du kan hämta data med hjälp av API:et eller ladda ned det från Azure-portalen.
 
-Du anropar [API:et för användningsinformation](/rest/api/consumption/usagedetails/list) för att hämta nya data. Mer information om terminologi finns i [användningsvillkoren](../understand/understand-usage.md). Anroparen måste vara en företagsadministratör för Enterprise-avtalet och använda [EA-portalen](https://ea.azure.com). Företagsadministratörer som har skrivskyddad behörighet kan också hämta data.
-
-Observera att dessa data inte är tillgängliga i [rapporterings-API:er för Enterprise-kunder – användningsinformation](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail).
+Du anropar [API:et för användningsinformation](/rest/api/consumption/usagedetails/list) för att hämta nya data. Mer information om terminologi finns i [användningsvillkoren](../understand/understand-usage.md).
 
 Här är ett exempel på ett anrop till API:et för användningsinformation:
 
@@ -87,7 +85,7 @@ Informationen i följande tabell om mått och filter kan hjälpa dig att lösa v
 
 ## <a name="download-the-usage-csv-file-with-new-data"></a>Ladda ned CSV-filen med nya användningsdata
 
-Om du är EA-administratör kan du ladda ned CSV-filen som innehåller nya användningsdata från Azure-portalen. Dessa data är inte tillgängliga från EA-portalen (ea.azure.com). Du måste hämta användningsfilen från Azure-portalen (portal.azure.com) för att se nya data.
+Om du är en EA-administratör kan du ladda ned den CSV-fil som innehåller nya användnings data från Azure Portal. Dessa data är inte tillgängliga från EA-portalen (ea.azure.com). Du måste hämta användningsfilen från Azure-portalen (portal.azure.com) för att se nya data.
 
 Navigera till [Kostnadshantering + fakturering](https://portal.azure.com/#blade/Microsoft_Azure_Billing/ModernBillingMenuBlade/BillingAccounts) på Azure-portalen.
 
@@ -150,7 +148,7 @@ Reservationskostnader är tillgängliga i [kostnadsanalysen](https://aka.ms/cost
 
 Gruppera efter avgiftstyp om du vill visa en uppdelning av användning, inköp och återbetalningar, eller efter reservation om du vill visa en uppdelning av reservationskostnader och kostnader på begäran. Kom ihåg att de enda reservationskostnader du ser när du tittar på den faktiska kostnaden är inköp, men att kostnaderna är allokerade till de enskilda resurserna som använde förmånen när du tittar på en amorterad kostnad. Du ser också en ny **UnusedReservation**-avgiftstyp när du tittar på en amorterad kostnad.
 
-## <a name="need-help-contact-us"></a>Behöver du hjälp? Kontakta oss.
+## <a name="need-help-contact-us"></a>Behöver du hjälp? Kontakta oss
 
 Om du har frågor eller behöver hjälp kan du [skapa en supportbegäran](https://go.microsoft.com/fwlink/?linkid=2083458).
 

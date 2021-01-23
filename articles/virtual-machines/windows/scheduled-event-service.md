@@ -1,20 +1,20 @@
 ---
-title: Övervaka schemalagda händelser för dina virtuella Windows-datorer i Azure
+title: Övervaka schemalagda händelser för dina virtuella datorer i Azure
 description: Lär dig hur du övervakar dina virtuella Azure-datorer för schemalagda händelser.
 author: mysarn
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.subservice: monitoring
 ms.date: 08/20/2019
 ms.author: sarn
 ms.topic: how-to
-ms.openlocfilehash: 0d1edde5ac1b83feab458eb5d12d524163d3ffb1
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: e3e44019d09927ff700e74b713a1b02136fedbc1
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96483308"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98702278"
 ---
-# <a name="monitoring-scheduled-events"></a>Övervaknings Schemalagda händelser
+# <a name="monitor-scheduled-events-for-your-azure-vms"></a>Övervaka schemalagda händelser för dina virtuella Azure-datorer
 
 Uppdateringar tillämpas på olika delar av Azure varje dag för att hålla tjänsterna som körs på dem säkra och uppdaterade. Förutom planerade uppdateringar kan oplanerade händelser också uppstå. Om t. ex. maskin varu försämring eller fel upptäcks kan Azure-tjänster behöva utföra oplanerat underhåll. I de flesta fall är de här händelserna nästan transparenta för kunder, och de har ingen påverkan eller det tar några sekunder av den virtuella datorns frysning med hjälp av direktmigrering. Men för vissa program kan det leda till en påverkan även om några sekunder av den virtuella datorns frysning. Att veta i förväg om kommande Azure-underhåll är viktigt för att säkerställa bästa möjliga upplevelse för dessa program. [Schemalagda händelser-tjänsten](scheduled-events.md) ger dig ett programmerings gränssnitt för att få information om kommande underhåll och gör det möjligt att hantera underhållet på ett smidigt sätt. 
 
@@ -29,7 +29,7 @@ I den här artikeln får du lära dig hur du samlar in underhålls Schemalagda h
 
 ![Diagram över händelsens livs cykel](./media/notifications/events.png)
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 I det här exemplet måste du skapa en [virtuell Windows-dator i en tillgänglighets uppsättning](tutorial-availability-sets.md). Schemalagda händelser ange meddelanden om ändringar som kan påverka någon av de virtuella datorerna i din tillgänglighets uppsättning, moln tjänst, skalnings uppsättning för virtuell dator eller fristående virtuella datorer. Vi kommer att köra en [tjänst](https://github.com/microsoft/AzureScheduledEventsService) som avsöker efter schemalagda händelser på en av de virtuella datorer som fungerar som en insamlare, för att hämta händelser för alla andra virtuella datorer i tillgänglighets uppsättningen.    
 
@@ -39,7 +39,7 @@ Du måste också [skapa en Log Analytics arbets yta](../../azure-monitor/learn/q
 
 ## <a name="set-up-the-environment"></a>Konfigurera miljön
 
-Du bör nu ha två första virtuella datorer i en tillgänglighets uppsättning. Nu måste vi skapa en virtuell dator som heter myCollectorVM, i samma tillgänglighets uppsättning. 
+Du bör nu ha två första virtuella datorer i en tillgänglighets uppsättning. Nu måste vi skapa en tredje virtuell dator, `myCollectorVM` som kallas, i samma tillgänglighets uppsättning. 
 
 ```azurepowershell-interactive
 New-AzVm `
@@ -150,7 +150,7 @@ När händelserna flyttas till Log Analytics kan du köra följande [fråga](../
     | project-away RenderedDescription,ReqJson
     ```
 
-1. Välj **Spara** och skriv *logQuery* som namn, lämna **frågan** som typ, Skriv *VMLogs* som **kategori** och välj sedan **Spara**. 
+1. Välj **Spara** och skriv sedan `ogQuery` för namnet, lämna **frågan** som typ, Skriv `VMLogs` som **kategori** och välj sedan **Spara**. 
 
     ![Spara frågan](./media/notifications/save-query.png)
 
@@ -160,7 +160,7 @@ När händelserna flyttas till Log Analytics kan du köra följande [fråga](../
 1. Under **tröskelvärde** anger du *0* och väljer sedan **färdig**.
 1. Under **åtgärder** väljer du **skapa åtgärds grupp**. Sidan **Lägg till åtgärds grupp** öppnas.
 1. I **Åtgärds grupp namn** skriver du *myActionGroup*.
-1. Skriv **myActionGroup** i **kort namn**.
+1. Skriv *myActionGroup* i **kort namn**.
 1. I **resurs grupp** väljer du **myResourceGroupAvailability**.
 1. Under åtgärder, under **Åtgärds namn** skriver du **e-post** och väljer sedan **e-post/SMS/push/röst**. Sidan **e-post/SMS/push/Voice** öppnas.
 1. Välj **e**-postadress, Skriv in din e-postadress och välj sedan **OK**.

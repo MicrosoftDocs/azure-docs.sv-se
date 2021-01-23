@@ -10,12 +10,12 @@ ms.workload: infrastructure
 ms.date: 08/04/2020
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 22993e8a1513ae34b3752ebd80c60761467f396e
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: d61f4be63a2f3b2f75228848e2e4fe18fb27f598
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97912673"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98702066"
 ---
 # <a name="tutorial-create-and-manage-azure-virtual-networks-for-windows-virtual-machines-with-azure-powershell"></a>Självstudie: Skapa och hantera virtuella Azure-nätverk för virtuella Windows-datorer med Azure PowerShell
 
@@ -280,7 +280,4 @@ I den här självstudien har du skapat och skyddat Azure-nätverk som är relate
 > * Skydda nätverkstrafiken
 > * Skapa en virtuell dator för serverdelen
 
-Gå vidare till nästa självstudie för att lära dig om att övervaka och skydda data på virtuella datorer med Azure Backup.
-
-> [!div class="nextstepaction"]
-> [Säkerhetskopiera virtuella Windows-datorer i Azure](./tutorial-backup-vms.md)
+Information om hur du skyddar dina virtuella dator diskar finns i [säkerhets kopiering och haveri beredskap för diskar](backup-and-disaster-recovery-for-azure-iaas-disks.md).

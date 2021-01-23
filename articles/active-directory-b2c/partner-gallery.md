@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 01/11/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9aca01bae7911d2b6234d48bedc14b116e911a79
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 6af68f51e76f60c807be2008ae61e27879ebbb11
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 01/22/2021
-ms.locfileid: "98675392"
+ms.locfileid: "98703215"
 ---
 # <a name="azure-active-directory-b2c-isv-partners"></a>Azure Active Directory B2C ISV-partner
 
@@ -40,7 +40,6 @@ Microsoft samarbetar med följande ISV: er för identitets verifiering och språ
 |![Skärm bild av en Experian:-logotyp.](./media/partner-gallery/experian-logo.png) | [Experian:](./partner-experian.md) är en identitets verifiering och en kontroll leverantör som utför riskbedömningar baserat på användarattribut för att förhindra bedrägerier. |
 |![Skärm bild av en IDology-logotyp.](./media/partner-gallery/idology-logo.png) | [IDology](./partner-idology.md) är en identitets verifiering och en språkprovider med ID-verifierings lösningar, bedrägeri förebyggande lösningar, lösningar för efterlevnad och andra.|
 |![Skärm bild av en Jumio-logotyp.](./media/partner-gallery/jumio-logo.png) | [Jumio](./partner-jumio.md) är en tjänst för ID-verifiering som möjliggör verifiering av AUTOMATISERAt ID i real tid, vilket skyddar kund information. |
-|![Skärm bild av en Keyless-logotyp.](./media/partner-gallery/keyless-logo.png) | [Keyless](./partner-keyless.md) är en tjänst för ID-verifiering som tillhandahåller autentisering i form av en bio metrisk genomsökning i ansikts form och eliminerar bedrägerier, nätfiske och återanvändandet av autentiseringsuppgifter.
 | ![Skärm bild av en LexisNexis-logotyp.](./media/partner-gallery/lexisnexis-logo.png) | [LexisNexis](./partner-lexisnexis.md) är en profilerings-och identitets verifierings leverantör som verifierar användar identifiering och ger omfattande riskbedömning baserat på användarens enhet. |
 | ![Skärm bild av en Onfido-logotyp](./media/partner-gallery/onfido-logo.png) | [Onfido](./partner-onfido.md) är ett dokument-ID och en verifierings lösning för ansikts biometrik som gör det möjligt för företag att möta sina *kunskaper om kund* -och identitets krav i real tid.  |
 
@@ -52,6 +51,7 @@ Microsoft samarbetar med följande ISV: er för MFA-och lösenordsbaserad autent
 |:-------------------------|:--------------|
 | ![Skärm bild av en hypr-logotyp](./media/partner-gallery/hypr-logo.png) | [Hypr](./partner-hypr.md) är en lösenordsskyddad autentiseringsprovider som ersätter lösen ord med krypteringar med offentliga nycklar som eliminerar bedrägerier, nätfiske och åter användning av autentiseringsuppgifter. |
 | ![Skärm bild av en itsme-logotyp](./media/partner-gallery/itsme-logo.png) | [itsme](./partner-itsme.md) är en eiDAS-kompatibel (Electronic Identification, Authentication and Trust Services) Digital ID-lösning som gör att användarna kan logga in på ett säkert sätt utan kort läsare, lösen ord, tvåfaktorautentisering och flera PIN-koder. |
+|![Skärm bild av en Keyless-logotyp.](./media/partner-gallery/keyless-logo.png) | [Keyless](./partner-keyless.md) är en lösenordsskyddad autentiseringsprovider som ger autentisering i form av en bio metrisk genomsökning i ansikts form och eliminerar bedrägerier, nätfiske och åter användning av autentiseringsuppgifter.
 | ![Skärm bild av en Nevis-logotyp](./media/partner-gallery/nevis-logo.png) | [Nevis](./partner-nevis.md) möjliggör lösenordsautentisering utan lösen ord och ger en mobil-och helt anpassad slut användar upplevelse med Nevis-åtkomst-appen för stark kundautentisering och för att uppfylla PSD2 transaktions krav. |
 | ![Skärm bild av en trusona-logotyp](./media/partner-gallery/trusona-logo.png) | [Trusona](./partner-trusona.md) -integreringen hjälper dig att logga in på ett säkert sätt och möjliggör autentisering med lösen ords avsökning, MFA och digital License. |
 | ![Skärm bild av en Twilio-logotyp.](./media/partner-gallery/twilio-logo.png) | [Twilio verifiera app](./partner-twilio.md) tillhandahåller flera lösningar för att aktivera MFA via SMS eng ång slö sen ord (eng ång slö sen ord), tidsbaserat eng ång slö sen ord (TOTP mobilapp) och push-meddelanden och för att uppfylla SCA-kraven för PSD2. |

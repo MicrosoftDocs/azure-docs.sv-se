@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5bcc6503af5f5f685ee589ed7671b4715834fef
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 496a8dba9b9ea7fb82ad9016479154d6a61cb767
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96779370"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98703283"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>Så här fungerar det: Självbetjäning av lösenordsåterställning i Azure AD
 
@@ -137,7 +137,7 @@ När du använder en mobilapp som en metod för lösen ords återställning, t. 
 Användarna har inte möjlighet att registrera sin mobilapp när de registrerar sig för lösen ords återställning via självbetjäning från [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup) . Användare kan registrera sina mobilappar på [https://aka.ms/mfasetup](https://aka.ms/mfasetup) eller i den kombinerade registreringen av säkerhets information på [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo) .
 
 > [!IMPORTANT]
-> Det går inte att välja Authenticator-appen som enda autentiseringsmetod när endast metod krävs. På samma sätt kan inte Authenticator-appen och endast en ytterligare metod väljas när du kräver två metoder.
+> Det går inte att välja Authenticator-appen som enda autentiseringsmetod när endast en metod krävs. På samma sätt kan inte Authenticator-appen och endast en ytterligare metod väljas när du kräver två metoder.
 >
 > När du konfigurerar SSPR-principer som inkluderar Authenticator-appen som en metod måste du välja minst en ytterligare metod när en metod krävs, och minst två ytterligare metoder måste väljas när du konfigurerar två metoder.
 >

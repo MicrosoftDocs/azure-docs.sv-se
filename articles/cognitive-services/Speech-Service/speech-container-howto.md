@@ -12,12 +12,12 @@ ms.date: 11/17/2020
 ms.author: aahi
 ms.custom: cog-serv-seo-aug-2020
 keywords: lokal, Docker, behållare
-ms.openlocfilehash: 829514637b72582dbb317970b0d23f92eb11bcad
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: 79e53bf39e411569f87a46bfc275c784ce84babc
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97862287"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98703334"
 ---
 # <a name="install-and-run-docker-containers-for-the-speech-service-apis"></a>Installera och kör Docker-behållare för tal tjänstens API: er 
 
@@ -45,7 +45,7 @@ Speech-containrar gör det möjligt för kunder att bygga en arkitektur för tal
 | Custom Speech till text | Genom att använda en anpassad modell från [Custom Speech portalen](https://speech.microsoft.com/customspeech), kan du skriva över kontinuerliga tal i real tid eller köra ljud inspelningar i text med mellanliggande resultat. | 2.7.0 |
 | Text till tal | Konverterar text till tal med naturligt ljud med text indata eller SSML (Speech syntes Markup Language). | 1.9.0 |
 | Anpassad text till tal | Med hjälp av en anpassad modell från den [anpassade röst portalen](https://aka.ms/custom-voice-portal)konverteras text till tal med naturligt ljud med text-eller tal syntess språk (SSML). | 1.9.0 |
-| Tal Språkidentifiering | Identifiera det språk som talas i ljudfiler. | 1,0 |
+| Tal Språkidentifiering | Identifiera det språk som talas i ljudfiler. | 1.0 |
 | Neurala text till tal | Konverterar text till naturligt ljuds tal med djup neurala nätverks teknik, vilket ger mer naturliga syntetiskt syntetiskt tal. | 1.3.0 |
 
 Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/free/cognitive-services/) innan du börjar.
@@ -54,7 +54,7 @@ Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto]
 
 Följande krav gäller innan du använder tal behållare:
 
-| Obligatoriskt | Syfte |
+| Obligatorisk | Syfte |
 |--|--|
 | Docker-motorn | Du behöver Docker-motorn installerad på en [värddator](#the-host-computer). Docker innehåller paket som konfigurerar Docker-miljön på [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) och [Linux](https://docs.docker.com/engine/installation/#supported-platforms). En introduktion till grunderna för Docker och containrar finns i [Docker-översikt](https://docs.docker.com/engine/docker-overview/).<br><br> Docker måste konfigureras för att tillåta att behållarna ansluter till och skicka fakturerings data till Azure. <br><br> **I Windows** måste Docker också konfigureras för att stödja Linux-behållare.<br><br> |
 | Bekant med Docker | Du bör ha grundläggande kunskaper om Docker-koncept, t. ex. register, databaser, behållare och behållar avbildningar, samt kunskaper om grundläggande `docker` kommandon. |
@@ -326,7 +326,7 @@ Från och med v 2.6.0 av den tal-till-text-behållare ska du använda TextAnalyt
 > [!NOTE]
 > Textanalys- `v3.0` API: t är inte bakåtkompatibel med textanalys `v3.0-preview.1` . För att få den senaste stöd för sentiment-funktioner använder `v2.6.0` du behållar avbildningen tal-till-text och textanalys `v3.0` .
 
-Från och med v-2.2.0 av den tal-till-text-behållaren kan du anropa [sentiment Analysis v3-API: et](../text-analytics/how-tos/text-analytics-how-to-sentiment-analysis.md) på utdata. Om du vill anropa sentiment-analysen behöver du en API för textanalys resurs slut punkt. Exempel: 
+Från och med v-2.2.0 av den tal-till-text-behållaren kan du anropa [sentiment Analysis v3-API: et](../text-analytics/how-tos/text-analytics-how-to-sentiment-analysis.md) på utdata. Om du vill anropa sentiment-analysen behöver du en API för textanalys resurs slut punkt. Ett exempel: 
 * `https://westus2.api.cognitive.microsoft.com/text/analytics/v3.0-preview.1/sentiment`
 * `https://localhost:5000/text/analytics/v3.0-preview.1/sentiment`
 
@@ -355,7 +355,7 @@ Från och med v-2.6.0 av den tal-till-text-behållaren kan du hämta utdata med 
 
 * "Det här är en mening som är den **största man** är en mening."
 
-Om du vill konfigurera en fras lista måste du lägga till egna fraser när du gör anropet. Exempel:
+Om du vill konfigurera en fras lista måste du lägga till egna fraser när du gör anropet. Ett exempel:
 
 ```python
     phrase="the tall man"
@@ -373,13 +373,6 @@ Om du har flera fraser att lägga till ska du anropa `.addPhrase()` för varje f
 # <a name="custom-speech-to-text"></a>[Custom Speech till text](#tab/cstt)
 
 *Custom Speech-till-text-* behållaren är beroende av en anpassad tal modell. Den anpassade modellen måste ha [tränats](how-to-custom-speech-train-model.md) med hjälp av den [anpassade tal portalen](https://speech.microsoft.com/customspeech).
-
-> [!IMPORTANT]
-> Custom Speech modellen måste tränas från någon av följande modell versioner:
-> * **20181201 (v 3.3 enhetligt)**
-> * **20190520 (v 4.14 Unified)**
-> * **20190701 (v 4.17 Unified)**<br>
-> ![Custom Speech träna behållar modell](media/custom-speech/custom-speech-train-model-container-scoped.png)
 
 Det anpassade tal **modells-ID: t** krävs för att köra behållaren. Du hittar den på sidan **utbildning** i den anpassade tal portalen. Från den anpassade tal portalen navigerar du till sidan **utbildning** och väljer modellen.
 <br>
@@ -424,7 +417,7 @@ Det här kommandot:
 
 
 #### <a name="base-model-download-on-the-custom-speech-to-text-container"></a>Bas modell hämtning av den anpassade tal-till-text-behållaren  
-Från och med v 2.6.0 av den anpassade-till-text-behållaren kan du hämta den tillgängliga bas modell informationen med hjälp av alternativet `BaseModelLocale=<locale>` . Med det här alternativet får du en lista över tillgängliga bas modeller på det aktuella språket under ditt fakturerings konto. Exempel:
+Från och med v 2.6.0 av den anpassade-till-text-behållaren kan du hämta den tillgängliga bas modell informationen med hjälp av alternativet `BaseModelLocale=<locale>` . Med det här alternativet får du en lista över tillgängliga bas modeller på det aktuella språket under ditt fakturerings konto. Ett exempel:
 
 ```bash
 docker run --rm -it \
@@ -440,7 +433,7 @@ Det här kommandot:
 * Kör en *Custom Speech-till-text-* behållare från behållar avbildningen.
 * Kontrol lera och returnera tillgängliga bas modeller för mål språket.
 
-Utdata ger dig en lista över bas modeller med information språk, modell-ID och datum/tid för skapande. Du kan använda modell-ID: t för att hämta och använda den aktuella bas modell som du föredrar. Exempel:
+Utdata ger dig en lista över bas modeller med information språk, modell-ID och datum/tid för skapande. Du kan använda modell-ID: t för att hämta och använda den aktuella bas modell som du föredrar. Ett exempel:
 ```
 Checking available base model for en-us
 2020/10/30 21:54:20 [Info] Searching available base models for en-us
@@ -591,7 +584,7 @@ docker run --rm -v ${HOME}:/root -ti antsu/on-prem-client:latest ./speech-to-tex
 > [!NOTE]
 > Använd ett unikt port nummer om du kör flera behållare.
 
-| Containrar | SDK-värd-URL | Protokoll |
+| Containers | SDK-värd-URL | Protokoll |
 |--|--|--|
 | Standard tal-till-text och Custom Speech-till-text | `ws://localhost:5000` | WS |
 | Text till tal (inklusive standard, anpassad och neurala), igenkänning av tal språk | `http://localhost:5000` | HTTP |

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/27/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 04ca8d515dbc5a28a7d3a30369d97877928c9dc1
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 1178b0ab5af3642026fe78c7de788f354691b13a
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 01/22/2021
-ms.locfileid: "98683926"
+ms.locfileid: "98701177"
 ---
 # <a name="connect-function-apps-in-azure-for-processing-data"></a>Anslut funktions appar i Azure för att bearbeta data
 
@@ -38,19 +38,19 @@ Här är en översikt över de steg som den innehåller:
 
 I Visual Studio 2019 väljer du _fil > nytt > projekt_ och söker efter _Azure Functions_ -mallen. Välj _Nästa_.
 
-:::image type="content" source="media/how-to-create-azure-function/create-azure-function-project.png" alt-text="Visual Studio: dialog rutan nytt projekt":::
+:::image type="content" source="media/how-to-create-azure-function/create-azure-function-project.png" alt-text="Skärm bild av Visual Studio som visar dialog rutan nytt projekt. Den Azure Functions projekt mal len är markerad.":::
 
 Ange ett namn för Function-appen och välj _skapa_.
 
-:::image type="content" source="media/how-to-create-azure-function/configure-new-project.png" alt-text="Visual Studio: Konfigurera nytt projekt":::
+:::image type="content" source="media/how-to-create-azure-function/configure-new-project.png" alt-text="Skärm bild av Visual Studio som visar dialog rutan för att konfigurera ett nytt projekt, inklusive projekt namn, spara plats, val för att skapa en ny lösning och lösnings namn.":::
 
 Välj programmets typ av *Event Grid utlösare* och välj _skapa_.
 
-:::image type="content" source="media/how-to-create-azure-function/event-grid-trigger-function.png" alt-text="Visual Studio: Azure Functions projekt utlösare, dialog ruta":::
+:::image type="content" source="media/how-to-create-azure-function/event-grid-trigger-function.png" alt-text="Skärm bild av Visual Studio som visar dialog rutan för att skapa ett nytt Azure Functions-program. Alternativet Event Grid utlösare är markerat.":::
 
 När din Function-app har skapats kommer Visual Studio att generera ett kod exempel i en **Function1.cs** -fil i projektmappen. Den här korta funktionen används för att logga händelser.
 
-:::image type="content" source="media/how-to-create-azure-function/visual-studio-sample-code.png" alt-text="Visual Studio: projekt fönster med exempel kod":::
+:::image type="content" source="media/how-to-create-azure-function/visual-studio-sample-code.png" alt-text="Skärm bild av Visual Studio i projekt fönstret för det nya projektet som har skapats. Det finns en kod för en exempel funktion som kallas Function1." lightbox="media/how-to-create-azure-function/visual-studio-sample-code.png":::
 
 ## <a name="write-a-function-with-an-event-grid-trigger"></a>Skriv en funktion med en Event Grid-utlösare
 
@@ -150,27 +150,27 @@ En systemtilldelad hanterad identitet gör det möjligt för Azure-resurser att 
 
 I [Azure Portal](https://portal.azure.com/)söker du efter _Function-appen_ i Sök fältet med namnet på den funktion som du skapade tidigare. Välj *Funktionsapp* i listan. 
 
-:::image type="content" source="media/how-to-create-azure-function/portal-search-for-function-app.png" alt-text="Azure Portal: Sök funktionens app":::
+:::image type="content" source="media/how-to-create-azure-function/portal-search-for-function-app.png" alt-text="Skärm bild av Azure Portal: namnet på appens funktion genomsöks i portalens sökfält och Sök resultatet är markerat.":::
 
 I fönstret Function-app väljer du _identitet_ i navigerings fältet till vänster för att aktivera hanterad identitet.
 Under fliken _tilldelade system_ växlar du _statusen_ till på och _sparar_ den. Du kommer att se ett popup-fönster för att _Aktivera systemtilldelad hanterad identitet_.
 Välj _Ja_ -knapp. 
 
-:::image type="content" source="media/how-to-create-azure-function/enable-system-managed-identity.png" alt-text="Azure Portal: Aktivera Systemhanterad identitet":::
+:::image type="content" source="media/how-to-create-azure-function/enable-system-managed-identity.png" alt-text="Skärm bild av Azure Portal: på sidan identitet för Function-appen är alternativet för att aktivera systemtilldelad hanterad identitet inställd på Ja. Alternativet status är inställt på on.":::
 
 Du kan kontrol lera i meddelandena att din funktion har registrerats med Azure Active Directory.
 
-:::image type="content" source="media/how-to-create-azure-function/notifications-enable-managed-identity.png" alt-text="Azure Portal: meddelanden":::
+:::image type="content" source="media/how-to-create-azure-function/notifications-enable-managed-identity.png" alt-text="Skärm bild av Azure Portal: listan meddelanden från val av Bell-formad ikon i portalens översta fält. Det finns ett meddelande om att användaren har aktiverat hanterad identitet som tilldelats av systemet.":::
 
 Observera också det **objekt-ID** som visas på sidan _identitet_ , eftersom det kommer att användas i nästa avsnitt.
 
-:::image type="content" source="media/how-to-create-azure-function/object-id.png" alt-text="Kopiera objekt-ID: t som ska användas i framtiden":::
+:::image type="content" source="media/how-to-create-azure-function/object-id.png" alt-text="Skärm bild av Azure Portal: en högdager runt fältet objekt-ID från Azure-funktionens identitets sida.":::
 
 ### <a name="assign-access-roles-using-azure-portal"></a>Tilldela åtkomst roller med Azure Portal
 
 Välj knappen _Azure Role-tilldelningar_ som öppnar sidan *roll tilldelningar för Azure* . Välj sedan _+ Lägg till roll tilldelning (för hands version)_.
 
-:::image type="content" source="media/how-to-create-azure-function/add-role-assignments.png" alt-text="Azure Portal: Lägg till roll tilldelning":::
+:::image type="content" source="media/how-to-create-azure-function/add-role-assignments.png" alt-text="Skärm bild av Azure Portal: en högdager runt knappen roll tilldelningar i Azure under behörigheter på Azure-funktionens identitets sida.":::
 
 På sidan _Lägg till roll tilldelning (förhands granskning)_ som öppnas väljer du:
 
@@ -181,7 +181,7 @@ På sidan _Lägg till roll tilldelning (förhands granskning)_ som öppnas välj
 
 Spara sedan informationen genom att trycka på knappen _Spara_ .
 
-:::image type="content" source="media/how-to-create-azure-function/add-role-assignment.png" alt-text="Azure Portal: Lägg till roll tilldelning (för hands version) ":::
+:::image type="content" source="media/how-to-create-azure-function/add-role-assignment.png" alt-text="Skärm bild av dialog rutan Azure Portal: för att lägga till en ny roll tilldelning (för hands version). Det finns fält för omfånget, prenumerationen, resurs gruppen och rollen.":::
 
 ### <a name="configure-application-settings-using-azure-portal"></a>Konfigurera program inställningar med Azure Portal
 
@@ -189,37 +189,37 @@ Du kan göra webb adressen till din Azure Digital-instansen tillgänglig för di
 
 Om du vill ange en miljö variabel med URL: en för din instans, hämtar du först URL: en genom att hitta värd namnet för Azure Digital-instansen. Sök efter din instans i [Azure Portal](https://portal.azure.com) Sök fältet. Välj sedan _Översikt_ i det vänstra navigerings fältet för att visa _värd namnet_. Kopiera det här värdet.
 
-:::image type="content" source="media/how-to-create-azure-function/adt-hostname.png" alt-text="Azure Portal: översikt – > kopiera värdnamn som ska användas i fältet _Value_.":::
+:::image type="content" source="media/how-to-create-azure-function/adt-hostname.png" alt-text="Skärm bild av Azure Portal: på sidan Översikt för Azure Digital-instansen är värd namn svärdet markerat.":::
 
 Nu kan du skapa en program inställning genom att följa stegen nedan:
 
-1. Sök efter din app med hjälp av namnet på appens funktion i Sök fältet och välj Function-appen i listan
+1. Sök efter din Function-app i Portal Sök fältet och välj den från resultaten
 1. Välj _konfiguration_ i navigerings fältet till vänster för att skapa en ny program inställning
 1. På fliken _program inställningar_ väljer du _+ ny program inställning_
 
-:::image type="content" source="media/how-to-create-azure-function/search-for-azure-function.png" alt-text="Azure Portal: Sök efter en befintlig Function-app" lightbox="media/how-to-create-azure-function/search-for-azure-function.png":::
+:::image type="content" source="media/how-to-create-azure-function/portal-search-for-function-app.png" alt-text="Skärm bild av Azure Portal: namnet på appens funktion genomsöks i portalens sökfält och Sök resultatet är markerat.":::
 
-:::image type="content" source="media/how-to-create-azure-function/application-setting.png" alt-text="Azure Portal: Konfigurera program inställningar":::
+:::image type="content" source="media/how-to-create-azure-function/application-setting.png" alt-text="Skärm bild av Azure Portal: på sidan konfiguration för Function-appen markeras knappen för att skapa en ny program inställning.":::
 
 I fönstret som öppnas, använder du värd namn svärdet som du kopierade ovan för att skapa en program inställning.
-* _Namn_ : ADT_SERVICE_URL
-* _Värde_: https://{Your-Azure-Digital-Garns-Host-Name}
+* **Namn**: ADT_SERVICE_URL
+* **Värde**: https://{Your-Azure-Digital-Garns-Host-Name}
 
 Välj _OK_ för att skapa en program inställning.
 
-:::image type="content" source="media/how-to-create-azure-function/add-application-setting.png" alt-text="Azure Portal: Lägg till program inställningar.":::
+:::image type="content" source="media/how-to-create-azure-function/add-application-setting.png" alt-text="Skärm bild av Azure Portal: knappen OK är markerad när du har fyllt i fälten namn och värde på inställnings sidan Lägg till/redigera program.":::
 
 Du kan visa dina program inställningar med program namn under fältet _namn_ . Spara sedan program inställningarna genom att välja knappen _Spara_ .
 
-:::image type="content" source="media/how-to-create-azure-function/application-setting-save-details.png" alt-text="Azure Portal: Visa programmet som skapats och starta om programmet":::
+:::image type="content" source="media/how-to-create-azure-function/application-setting-save-details.png" alt-text="Skärm bild av Azure Portal: Sidan program inställningar med den nya inställningen ADT_SERVICE_URL markerad. Knappen Spara markeras också.":::
 
-Alla ändringar av program inställningarna behöver starta om programmet. Välj _Fortsätt_ för att starta om programmet.
+Eventuella ändringar av program inställningarna kräver att en program omstart börjar gälla. Välj _Fortsätt_ för att starta om programmet.
 
-:::image type="content" source="media/how-to-create-azure-function/save-application-setting.png" alt-text="Azure Portal: Spara program inställningar":::
+:::image type="content" source="media/how-to-create-azure-function/save-application-setting.png" alt-text="Skärm bild av Azure Portal: det finns ett meddelande om att program inställningarna har ändrats med starta om programmet. Knappen Fortsätt är markerad.":::
 
 Du kan visa att program inställningarna uppdateras genom att välja _meddelande_ ikon. Om program inställningen inte skapas kan du försöka lägga till en program inställning genom att följa ovanstående process.
 
-:::image type="content" source="media/how-to-create-azure-function/notifications-update-web-app-settings.png" alt-text="Azure Portal: meddelanden om att uppdatera program inställningar":::
+:::image type="content" source="media/how-to-create-azure-function/notifications-update-web-app-settings.png" alt-text="Skärm bild av Azure Portal: listan meddelanden från val av Bell-formad ikon i portalens översta fält. Det finns ett meddelande om att inställningarna för webbapp har uppdaterats.":::
 
 ## <a name="next-steps"></a>Nästa steg
 

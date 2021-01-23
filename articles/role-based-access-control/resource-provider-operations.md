@@ -9,12 +9,12 @@ author: rolyon
 ms.author: rolyon
 ms.date: 01/15/2021
 ms.custom: generated
-ms.openlocfilehash: 36f266a8402721dffecc9e80c4f769bd51b0e172
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: a521623447f4415e35a06c5c60e3723a69b4aa15
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539100"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98700609"
 ---
 # <a name="azure-resource-provider-operations"></a>Azure Resource Provider-åtgärder
 
@@ -84,7 +84,7 @@ Klicka på namnet på resurs leverantören i följande tabell om du vill se en l
 | [Microsoft. StreamAnalytics](#microsoftstreamanalytics) |
 | **Blockkedja** |
 | [Microsoft. blockchain](#microsoftblockchain) |
-| **AI + maskin inlärning** |
+| **AI + maskininlärning** |
 | [Microsoft. BotService](#microsoftbotservice) |
 | [Microsoft. CognitiveServices](#microsoftcognitiveservices) |
 | [Microsoft. MachineLearning](#microsoftmachinelearning) |
@@ -94,7 +94,7 @@ Klicka på namnet på resurs leverantören i följande tabell om du vill se en l
 | [Microsoft. IoTCentral](#microsoftiotcentral) |
 | [Microsoft. NotificationHubs](#microsoftnotificationhubs) |
 | [Microsoft. TimeSeriesInsights](#microsofttimeseriesinsights) |
-| **Mixad verklighet** |
+| **Mixed Reality** |
 | [Microsoft. IoTSpaces](#microsoftiotspaces) |
 | [Microsoft. MixedReality](#microsoftmixedreality) |
 | **Integrering** |
@@ -1369,7 +1369,7 @@ Azure-tjänst: [Application Gateway](../application-gateway/index.yml), [azure s
 > | Microsoft. Network/vpnsites/Delete | Tar bort en VPN-webbplats resurs. |
 > | Microsoft. Network/vpnSites/vpnSiteLinks/Read | Hämtar en länk till VPN-platsen |
 
-## <a name="storage"></a>Lagring
+## <a name="storage"></a>Storage
 
 ### <a name="microsoftclassicstorage"></a>Microsoft. ClassicStorage
 
@@ -1464,7 +1464,7 @@ Azure-tjänst: [Azure Data Box](../databox/index.yml)
 
 ### <a name="microsoftimportexport"></a>Microsoft. ImportExport
 
-Azure-tjänst: [Azure import/export](../storage/common/storage-import-export-service.md)
+Azure-tjänst: [Azure import/export](../import-export/storage-import-export-service.md)
 
 > [!div class="mx-tableFixed"]
 > | Åtgärd | Beskrivning |
@@ -2675,7 +2675,7 @@ Azure-tjänst: [App Service](../app-service/index.yml), [Azure Functions](../azu
 > | Microsoft. Web/staticSites/privateEndpointConnections/Delete | Ta bort en privat slut punkts anslutning för en statisk plats |
 > | Microsoft. Web/staticSites/privateLinkResources/Read | Hämta resurser för privat länk |
 
-## <a name="containers"></a>Containrar
+## <a name="containers"></a>Containers
 
 ### <a name="microsoftcontainerinstance"></a>Microsoft. ContainerInstance
 
@@ -4354,7 +4354,7 @@ Azure-tjänst: [SQL Server på azure Virtual Machines](../azure-sql/virtual-mach
 > | Microsoft. SqlVirtualMachine/sqlVirtualMachines/Write | Skapa en ny eller ändra egenskaper för befintlig virtuell SQL-dator |
 > | Microsoft. SqlVirtualMachine/sqlVirtualMachines/Delete | Ta bort befintlig virtuell SQL-dator |
 
-## <a name="analytics"></a>Analytics
+## <a name="analytics"></a>Analys
 
 ### <a name="microsoftanalysisservices"></a>Microsoft. AnalysisServices
 
@@ -7730,7 +7730,7 @@ Azure-tjänst: [Azure Migrate](../migrate/migrate-services-overview.md)
 > | Microsoft. OffAzure/VMwareSites/vCenter/Read | Hämtar egenskaperna för en VMware vCenter |
 > | Microsoft. OffAzure/VMwareSites/vCenter/Write | Skapar eller uppdaterar VMware vCenter |
 
-## <a name="monitor"></a>Övervaka
+## <a name="monitor"></a>Monitor
 
 ### <a name="microsoftalertsmanagement"></a>Microsoft. AlertsManagement
 

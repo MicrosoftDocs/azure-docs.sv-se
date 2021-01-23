@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/27/2020
 ms.author: trbye
-ms.openlocfilehash: ed79d9fb3be192d300587eda5198d9b153109241
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 605bae706bbc1db2e008b8d050cbba9eacd16933
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98209788"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98702210"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Förbereda data för Custom Speech
 
@@ -46,9 +46,9 @@ I den här tabellen listas godkända data typer, när varje datatyp ska använda
 
 | Datatyp | Används för testning | Rekommenderad kvantitet | Används för utbildning | Rekommenderad kvantitet |
 |-----------|-----------------|----------|-------------------|----------|
-| [Ljud](#audio-data-for-testing) | Yes<br>Används för visuell granskning | 5 + ljudfiler | No | Saknas |
-| [Ljud + medmärkta avskrifter](#audio--human-labeled-transcript-data-for-testingtraining) | Yes<br>Används för att utvärdera noggrannhet | 0,5 – 5 timmars ljud | Yes | 1-20 timmars ljud |
-| [Relaterad text](#related-text-data-for-training) | No | Ej tillämpligt | Yes | 1-200 MB relaterad text |
+| [Ljud](#audio-data-for-testing) | Ja<br>Används för visuell granskning | 5 + ljudfiler | Nej | Ej tillämpligt |
+| [Ljud + medmärkta avskrifter](#audio--human-labeled-transcript-data-for-testingtraining) | Ja<br>Används för att utvärdera noggrannhet | 0,5 – 5 timmars ljud | Ja | 1-20 timmars ljud |
+| [Relaterad text](#related-text-data-for-training) | Nej | Ej tillämpligt | Ja | 1-200 MB relaterad text |
 
 När du tränar en ny modell börjar du med [relaterad text](#related-text-data-for-training). Dessa data kommer redan att förbättra igenkänningen av särskilda termer och fraser. Det går mycket snabbare att träna med text än att träna med ljud (minuter jämfört med dagar).
 
@@ -93,7 +93,7 @@ Använd den här tabellen för att se till att ljudfilerna är korrekt formatera
 
 Använd <a href="http://sox.sourceforge.net" target="_blank" rel="noopener">SoX <span class="docon docon-navigate-external x-hidden-focus"></span> </a> för att verifiera ljud egenskaperna eller konvertera det befintliga ljudet till rätt format. Nedan visas några exempel på hur var och en av dessa aktiviteter kan göras via SoX-kommando raden:
 
-| Aktivitet | Description | SoX-kommando |
+| Aktivitet | Beskrivning | SoX-kommando |
 |----------|-------------|-------------|
 | Kontrol lera ljud formatet | Använd det här kommandot för att kontrol lera<br>ljud fil formatet. | `sox --i <filename>` |
 | Konvertera ljud format | Använd det här kommandot för att konvertera<br>ljud filen till en kanal, 16-bitars 16 KHz. | `sox <input> -b 16 -e signed-integer -c 1 -r 16k -t wav <output>.wav` |
@@ -121,7 +121,7 @@ Ljudfiler kan ha tystnad i början och slutet av inspelningen. Om möjligt, inkl
 
 För att lösa problem som Word-borttagning eller ersättning krävs en stor mängd data för att förbättra igenkänningen. Vanligt vis rekommenderar vi att du ger ord för ord-avskrifter i ungefär 10 till 20 timmars ljud. Transkriptioner för alla WAV-filer bör ingå i en enda fil med oformaterad text. Varje rad i transkriptionsfilen ska innehålla namnet på en av ljudfilerna följt av motsvarande transkription. Filnamnet och transkriptionen ska separeras med ett tabbtecken (\t).
 
-Exempel:
+Ett exempel:
 
 <!-- The following example contains tabs. Don't accidentally convert these into spaces. -->
 
@@ -174,7 +174,7 @@ Använd den här tabellen för att se till att din relaterade datafil för yttra
 
 Dessutom bör du ta hänsyn till följande begränsningar:
 
-* Undvik upprepade tecken mer än fyra gånger. Till exempel: "AAAA" eller "uuuu".
+* Undvik upprepade tecken, ord eller grupper med ord över tre gånger. Exempel: "AAAA", "Ja Ja Ja" eller "det är det som är det". Röst tjänsten kan ta bort rader med för många repetitioner.
 * Använd inte specialtecken eller UTF-8-tecken ovan `U+00A1` .
 * URI: er kommer att avvisas.
 

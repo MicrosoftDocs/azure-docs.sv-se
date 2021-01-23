@@ -3,17 +3,17 @@ title: REST-API:er för Azure Enterprise
 description: I den här artikeln beskrivs de REST-API:er du använder med din Azure Enterprise-registrering.
 author: bandersmsft
 ms.author: banders
-ms.date: 09/03/2020
+ms.date: 01/21/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: c4c99142c64278514066efa8925ed8e3f6617235
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
-ms.translationtype: HT
+ms.openlocfilehash: 1fdf64053a55eb33d80ed461c231e8c6dd84d63b
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132592"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98677739"
 ---
 # <a name="azure-enterprise-rest-apis"></a>REST-API:er för Azure Enterprise
 
@@ -93,17 +93,9 @@ När du använder ett API returneras statuskoder. De beskrivs i följande tabell
 
 Filerna med användnings- och faktureringsdata uppdateras var 24:e timme under den aktuella faktureringsmånaden. Det kan dock uppstå fördröjningar på upp till tre dagar. Om användningen till exempel sker på en måndag kanske inte data visas i filen förrän på torsdag.
 
-### <a name="test-enrollment-for-development"></a>Testregistrering för utveckling
-
-Om du är en partner eller utvecklare utan någon Azure Enterprise-registrering och du vill ha åtkomst till API:et kan du använda testregistreringen. Registreringsnamnet är _EnrollmentNumber 100_ , du kan söka efter och testa användningsinformation fram till juni 2018. Sedan kan du använda följande nyckel för anrop till API:et och se exempeldata.
-
-```
-eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImpoeXA2UU9DWlZmY1pmdmhDVGR1OFdxeTJ5byJ9.eyJFbnJvbGxtZW50TnVtYmVyIjoiMTAwIiwiSWQiOiI1ZTc2ZmNiMy0xN2I4LTQ5ZDItYjdkOC0zMDU0YjUwOWY0MWYiLCJSZXBvcnRWaWV3IjoiU3lzdGVtIiwiUGFydG5lcklkIjoiIiwiRGVwYXJ0bWVudElkIjoiIiwiQWNjb3VudElkIjoiIiwiaXNzIjoiZWEubWljcm9zb2Z0YXp1cmUuY29tIiwiYXVkIjoiY2xpZW50LmVhLm1pY3Jvc29mdGF6dXJlLmNvbSIsImV4cCI6MTU4NjM5MDA2OSwibmJmIjoxNTcwNTc4ODY5fQ.lENR5pCBph6iZCVexUlN1b-j7StaILCyBewVHoILD-_fn8S2o2bHY1qUseGOkBwNlaFQfk2OZIo-jQYvnf3eP3UNrNVTCINT0APbc1RqgwSjZSxugVVHH9jnSzEjONkJaSKmi4tlidk6zkF1-uY-TPJkKxYN_9ar7BgLshF9JGXk7t8OZhxSCxDZc-smntu6ORFDl4gRZZVBKXhqOGjOAdYX5tPiGDF2Bxb68RSzh9Xyr5PXxKLx5yivZzUdo0-GFHo13V9w6a5VQM4R1w4_ro8jF8WAo3mpGZ_ovx_U5IY6zMNmi_AoA1mUyvTGotgcu94RragutoJRxAGHbNJZ0Q
-```
-
 ### <a name="azure-service-catalog"></a>Katalogen med Azure-tjänster
 
-Alla Azure-tjänster publiceras i en katalog i CSV-format på en Azure Storage-blogg. Den är användbar om du behöver skapa en katalog med utvalda Azure-tjänster för ditt system. Den aktuella katalogen finns på [https://azurecatalog.blob.core.windows.net/catalog/AzureCatalog.csv](https://azurecatalog.blob.core.windows.net/catalog/AzureCatalog.csv).
+Alla Azure-tjänster publiceras i en katalog i CSV-format på en Azure Storage-blogg. Den är användbar om du behöver skapa en katalog med utvalda Azure-tjänster för ditt system. Den aktuella katalogen finns på [https://azurecatalog.blob.core.windows.net/catalog/AzureCatalog.csv](https://azurecatalog.blob.core.windows.net/catalog/AzureCatalog.csv) .
 
 ### <a name="csv-data-file-details"></a>Informationen i CSV-datafilen
 
@@ -120,31 +112,31 @@ JSON-formatet genereras från CSV-rapporten. Formatet är därför detsamma som 
 | ServiceAdministratorId | ServiceAdministratorLiveId | ServiceAdministratorLiveId |   |
 | SubscriptionId | SubscriptionId | SubscriptionId |   |
 | SubscriptionGuid | MOCPSubscriptionGuid | SubscriptionGuid |   |
-| Prenumerationens namn | SubscriptionName | SubscriptionName |   |
-| Datum | Datum | Datum | Visar datumet när tjänstkatalogsrapporten kördes. Formatet är en datumsträng utan tidstämpel. |
-| Month | Month | Month |   |
-| Day | Dag | Dag |   |
-| År | År | Year |   |
-| Produkt | BillableItemName | Produkt |   |
-| Mätar-ID | ResourceGUID | MeterId |   |
-| Mätarkategori | Tjänst | MeterCategory | Användbar när du ska hitta tjänster. Relevant för tjänster som har flera tjänsttyper. Ett exempel är virtuella datorer. |
-| Mätarens underkategori | ServiceType | MeterSubCategory | Ger en andra detaljnivå för en tjänst. Till exempel A1 VM (inte Windows).  |
-| Mätarregion | ServiceRegion | MeterRegion | Den tredje detaljnivån som krävs för en tjänst. Användbart när du ska hitta regionkontexten för ett ResourceGUID. |
-| Mätarnamn | ServiceResource | MeterName | Namnet på tjänsten. |
-| Förbrukat antal | ResourceQtyConsumed | ConsumedQuantity |   |
+| Subscription Name | SubscriptionName | SubscriptionName |   |
+| Date | Date | Date | Visar datumet när tjänstkatalogsrapporten kördes. Formatet är en datumsträng utan tidstämpel. |
+| Månad | Månad | Månad |   |
+| Dag | Dag | Dag |   |
+| År | År | År |   |
+| Product | BillableItemName | Product |   |
+| Meter ID | ResourceGUID | MeterId |   |
+| Meter Category | Tjänst | MeterCategory | Användbar när du ska hitta tjänster. Relevant för tjänster som har flera tjänsttyper. Ett exempel är virtuella datorer. |
+| Meter Sub-Category | ServiceType | MeterSubCategory | Ger en andra detaljnivå för en tjänst. Till exempel A1 VM (inte Windows).  |
+| Meter Region | ServiceRegion | MeterRegion | Den tredje detaljnivån som krävs för en tjänst. Användbart när du ska hitta regionkontexten för ett ResourceGUID. |
+| Meter Name | ServiceResource | MeterName | Namnet på tjänsten. |
+| Consumed Quantity | ResourceQtyConsumed | ConsumedQuantity |   |
 | ResourceRate | ResourceRate | ResourceRate |   |
 | ExtendedCost | ExtendedCost | ExtendedCost |   |
-| Resursplats | ServiceSubRegion | ResourceLocation |   |
-| Förbrukad tjänst | ServiceInfo | ConsumedService |   |
-| Instans-ID | Komponent | InstanceId |   |
+| Resource Location | ServiceSubRegion | ResourceLocation |   |
+| Consumed Service | ServiceInfo | ConsumedService |   |
+| Instance ID | Komponent | InstanceId |   |
 | ServiceInfo1 | ServiceInfo1 | ServiceInfo1 |   |
 | ServiceInfo2 | ServiceInfo2 | ServiceInfo2 |   |
 | AdditionalInfo | AdditionalInfo | AdditionalInfo |   |
 | Taggar | Taggar | Taggar |   |
-| Id för Store-tjänst   | OrderNumber | StoreServiceIdentifier   |   |
-| Avdelningsnamn | DepartmentName | DepartmentName |   |
-| Kostnadsställe | CostCenter | CostCenter |   |
-| Måttenhet | UnitOfMeasure | UnitOfMeasure | Exempelvärden: Timmar, GB, händelser, push-meddelanden, enhet, enhetstimmar, MB, dagliga enheter |
+| Store Service Identifier   | OrderNumber | StoreServiceIdentifier   |   |
+| Department Name | DepartmentName | DepartmentName |   |
+| Cost Center | CostCenter | CostCenter |   |
+| Måttenhet | UnitOfMeasure | UnitOfMeasure | Exempel värden: timmar, GB, händelser, push-meddelanden, enhet, Enhetstimmar, MB, dagliga enheter |
 | ResourceGroup | ResourceGroup | ResourceGroup |   |
 
 #### <a name="azure-marketplace-report"></a>Azure Marketplace-rapport
@@ -155,25 +147,25 @@ JSON-formatet genereras från CSV-rapporten. Formatet är därför detsamma som 
 | Kontonamn | AccountName | AccountName |
 | SubscriptionId | SubscriptionId | SubscriptionId |
 | SubscriptionGuid | SubscriptionGuid | SubscriptionGuid |
-| Prenumerationens namn | SubscriptionName |  SubscriptionName |
+| Subscription Name | SubscriptionName |  SubscriptionName |
 | Datum | BillingCycle |  Datum (endast datum sträng, ingen tidsstämpel)
-| Month | Month |  Month |
-| Day | Dag |  Dag |
+| Månad | Månad |  Månad |
+| Dag | Dag |  Dag |
 | År | År |  År |
-| Mätar-ID | MeterResourceId |  MeterId |
+| Meter ID | MeterResourceId |  MeterId |
 | Utgivarens namn | PublisherFriendlyName |  PublisherName |
 | Erbjudandets namn | OfferFriendlyName |  OfferName |
 | Plannamn | PlanFriendlyName |  PlanName |
-| Förbrukat antal | BilledQty |  ConsumedQuantity |
+| Consumed Quantity | BilledQty |  ConsumedQuantity |
 | ResourceRate | ResourceRate | ResourceRate |
 | ExtendedCost | ExtendedCost | ExtendedCost |
 | Måttenhet | UnitOfMeasure | UnitOfMeasure |
-| Instans-ID | InstanceId | InstanceId |
+| Instance ID | InstanceId | InstanceId |
 | Ytterligare info | AdditionalInfo | AdditionalInfo |
 | Taggar | Taggar | Taggar |
 | Ordernummer | OrderNumber | OrderNumber |
-| Avdelningsnamn | DepartmentNames | DepartmentName |
-| Kostnadsställe | CostCenters |  CostCenter |
+| Department Name | DepartmentNames | DepartmentName |
+| Cost Center | CostCenters |  CostCenter |
 | Resursgrupp | ResourceGroup |  ResourceGroup |
 
 #### <a name="price-sheet"></a>Prisdokument
@@ -192,7 +184,7 @@ När du använder REST-API:er för Azure Enterprise kan du stöta på något av 
 
 Du kanske försöker använda en API-nyckel som inte har rätt typ av behörighet. API-nycklar genereras av:
 
-- Företagsadministratörer
+- Företagsadministratör
 - Avdelningsadministratörer (DA)
 - Kontoägare (AO)
 

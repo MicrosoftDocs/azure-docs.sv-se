@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: conceptual
 ms.date: 12/17/2020
 ms.author: alkohli
-ms.openlocfilehash: 3df8f75a726639e87157a1aa7fd9ff4d35c0ef4f
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 103e4453ecf848822db0d82bc13e93b0c8c68331
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97654633"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98702142"
 ---
 # <a name="azure-data-box-disk-frequently-asked-questions"></a>Azure Data Box Disk: vanliga frågor och svar
 
@@ -66,7 +66,7 @@ Om du till exempel vill flytta data på din plats i Kanada till ett lagrings kon
 
 ### <a name="option-1"></a>Alternativ 1: 
 
-Leverera en [disk som stöds](../storage/common/storage-import-export-requirements.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#supported-disks) och som innehåller data med [Azure import/export-tjänsten](../storage/common/storage-import-export-service.md) från käll platsen i Kanada till Azures Data Center i USA, västra.
+Leverera en [disk som stöds](../import-export/storage-import-export-requirements.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#supported-disks) och som innehåller data med [Azure import/export-tjänsten](../import-export/storage-import-export-service.md) från käll platsen i Kanada till Azures Data Center i USA, västra.
 
 ### <a name="option-2"></a>Alternativ 2:
 

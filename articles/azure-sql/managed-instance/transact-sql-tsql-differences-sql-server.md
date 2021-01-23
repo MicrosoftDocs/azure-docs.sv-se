@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
 ms.date: 11/10/2020
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 6fb17ead2546875c0f334aae322f8fb070e8f1ea
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 6634ab3521fee3062ecee465eaf6dcda80ee6ff8
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684916"
+ms.locfileid: "98699522"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>Skillnader i T-SQL mellan SQL Server & Azure SQL-hanterad instans
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -277,7 +277,7 @@ Följande alternativ kan inte ändras:
 - `SINGLE_USER`
 - `WITNESS`
 
-Vissa `ALTER DATABASE` instruktioner (t. ex. [inne slutning](https://docs.microsoft.com/sql/relational-databases/databases/migrate-to-a-partially-contained-database?#converting-a-database-to-partially-contained-using-transact-sql)) kan Miss förväntas tillfälligt, till exempel under den automatiserade säkerhets kopieringen av databasen eller direkt efter att en databas har skapats. I den här Case- `ALTER DATABASE` instruktionen bör du göra ett nytt försök. Mer information och information om relaterade fel meddelanden finns i [avsnittet anmärkningar](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-mi-current&preserve-view=true&tabs=sqlpool#remarks-2).
+Vissa `ALTER DATABASE` instruktioner (till exempel [UPPSÄTTNINGS inne slutning](https://docs.microsoft.com/sql/relational-databases/databases/migrate-to-a-partially-contained-database?#converting-a-database-to-partially-contained-using-transact-sql)) kan sluta fungera tillfälligt, till exempel under den automatiserade säkerhets kopieringen av databasen eller direkt efter att en databas har skapats. I den här Case- `ALTER DATABASE` instruktionen bör du göra ett nytt försök. Mer information om relaterade fel meddelanden finns i [avsnittet anmärkningar](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-mi-current&preserve-view=true&tabs=sqlpool#remarks-2).
 
 Mer information finns i [Alter Database](/sql/t-sql/statements/alter-database-transact-sql-file-and-filegroup-options).
 
@@ -305,7 +305,7 @@ Mer information finns i [Alter Database](/sql/t-sql/statements/alter-database-tr
   - Aviseringar stöds inte än.
   - Proxyservrar stöds inte.
 - EventLog stöds inte.
-- Användaren måste mappas direkt till Azure AD server-huvudobjektet (inloggning) för att skapa, ändra eller köra SQL Agent-jobb. Användare som inte är direkt mappade, t. ex. användare som tillhör en Azure AD-grupp som har behörighet att skapa, ändra eller köra SQL Agent-jobb, kan inte effektivt utföra dessa åtgärder. Detta beror på personifiering av hanterade instanser och [körs som begränsningar](#logins-and-users).
+- Användaren måste mappas direkt till Azure AD server-huvudobjektet (inloggning) för att skapa, ändra eller köra SQL Agent-jobb. Användare som inte är direkt mappade, till exempel användare som tillhör en Azure AD-grupp som har behörighet att skapa, ändra eller köra SQL Agent-jobb, kan inte effektivt utföra dessa åtgärder. Detta beror på personifiering av hanterade instanser och [körs som begränsningar](#logins-and-users).
 
 Följande SQL Agent-funktioner stöds för närvarande inte:
 
@@ -400,12 +400,12 @@ Mer information finns i [FILESTREAM](/sql/relational-databases/blob/filestream-s
 Länkade servrar i SQL-hanterad instans har stöd för ett begränsat antal mål:
 
 - Mål som stöds är SQL-hanterad instans, SQL Database, Azure Synapse SQL [Server](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/) lös och dedikerade pooler och SQL Server instanser. 
-- Länkade servrar har inte stöd för distribuerade skrivbara transaktioner (MS DTC).
+- Distribuerade skrivbara transaktioner är bara möjliga mellan hanterade instanser. Mer information finns i [distribuerade transaktioner](https://docs.microsoft.com/azure/azure-sql/database/elastic-transactions-overview). MS DTC stöds dock inte.
 - Mål som inte stöds är filer, Analysis Services och andra RDBMS. Försök att använda intern CSV-import från Azure Blob Storage att använda `BULK INSERT` eller `OPENROWSET` som ett alternativ för fil import eller läsa in filer med en [Server lös SQL-pool i Azure Synapse Analytics](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/).
 
 Åtgärder: 
 
-- Skriv transaktioner över instanser stöds inte.
+- Skriv transaktioner över [instanser](https://docs.microsoft.com/azure/azure-sql/database/elastic-transactions-overview) stöds endast för hanterade instanser.
 - `sp_dropserver` stöds för att släppa en länkad server. Se [sp_dropserver](/sql/relational-databases/system-stored-procedures/sp-dropserver-transact-sql).
 - `OPENROWSET`Funktionen kan endast användas för att köra frågor på SQL Server instanser. De kan antingen hanteras, lokalt eller på virtuella datorer. Se [OpenRowSet](/sql/t-sql/functions/openrowset-transact-sql).
 - `OPENDATASOURCE`Funktionen kan endast användas för att köra frågor på SQL Server instanser. De kan antingen hanteras, lokalt eller på virtuella datorer. Endast `SQLNCLI` -, `SQLNCLI11` -och- `SQLOLEDB` värden stöds som en provider. Ett exempel är `SELECT * FROM OPENDATASOURCE('SQLNCLI', '...').AdventureWorks2012.HumanResources.Employee`. Se [OpenDataSource](/sql/t-sql/functions/opendatasource-transact-sql).
@@ -413,7 +413,7 @@ Länkade servrar i SQL-hanterad instans har stöd för ett begränsat antal mål
 
 ### <a name="polybase"></a>PolyBase
 
-De enda tillgängliga typerna av extern källa är RDBMS (i offentlig för hands version) till Azure SQL Database, Azure SQL-hanterad instans och Azure Synapse pool. Du kan använda [en extern tabell som refererar till en server lös SQL-pool i Synapse Analytics](https://devblogs.microsoft.com/azure-sql/read-azure-storage-files-using-synapse-sql-external-tables/) som en lösning för PolyBase-externa tabeller som direkt läser från Azure Storage. I Azure SQL Managed instance kan du använda länkade servrar till [en server lös SQL-pool i Synapse Analytics](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/) eller SQL Server för att läsa Azure Storage-data.
+Den enda tillgängliga typen av extern källa är RDBMS (i offentlig för hands version) till Azure SQL Database, Azure SQL-hanterad instans och Azure Synapse pool. Du kan använda [en extern tabell som refererar till en server lös SQL-pool i Synapse Analytics](https://devblogs.microsoft.com/azure-sql/read-azure-storage-files-using-synapse-sql-external-tables/) som en lösning för PolyBase-externa tabeller som direkt läser från Azure Storage. I Azure SQL Managed instance kan du använda länkade servrar till [en server lös SQL-pool i Synapse Analytics](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/) eller SQL Server för att läsa Azure Storage-data.
 Information om PolyBase finns i [PolyBase](/sql/relational-databases/polybase/polybase-guide).
 
 ### <a name="replication"></a>Replikering

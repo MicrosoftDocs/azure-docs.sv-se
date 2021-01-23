@@ -4,12 +4,12 @@ description: Lär dig hur du kontinuerligt skapar, testar och distribuerar Azure
 ms.date: 08/24/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 8e9f047497f493752947d8115084dcfe86f5e040
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: e7e2cda0524e4d754fbf879c046fee2d43c44cb3
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97588139"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98701719"
 ---
 # <a name="tutorial-continuous-integration-of-arm-templates-with-azure-pipelines"></a>Självstudie: kontinuerlig integrering av ARM-mallar med Azure-pipelines
 
@@ -39,12 +39,12 @@ För att kunna följa stegen i den här artikeln behöver du:
 
 * **Ett GitHub-konto** där du använder det för att skapa en lagrings plats för mallarna. Om du inte har något konto kan du [skapa ett utan kostnad](https://github.com). Mer information om hur du använder GitHub-databaser finns i [bygga GitHub-databaser](/azure/devops/pipelines/repos/github).
 * **Installera git**. I den här självstudien används *git bash* eller *git-gränssnittet*. Anvisningar finns i [Installera git](https://www.atlassian.com/git/tutorials/install-git).
-* **En Azure DevOps-organisation**. Om du inte har något konto kan du skapa ett utan kostnad. Se [skapa en organisation eller en projekt samling](/azure/devops/organizations/accounts/create-organization?view=azure-devops).
+* **En Azure DevOps-organisation**. Om du inte har något konto kan du skapa ett utan kostnad. Se [skapa en organisation eller en projekt samling](/azure/devops/organizations/accounts/create-organization).
 * valfritt **Visual Studio Code med Resource Manager Tools-tillägg**. Se [snabb start: skapa arm-mallar med Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md).
 
 ## <a name="prepare-a-github-repository"></a>Förbereda en GitHub-lagringsplats
 
-GitHub används för att lagra projekt käll koden, inklusive Resource Manager-mallar. För andra databaser som stöds, se [databaser som stöds av Azure-DevOps](/azure/devops/pipelines/repos/?view=azure-devops).
+GitHub används för att lagra projekt käll koden, inklusive Resource Manager-mallar. För andra databaser som stöds, se [databaser som stöds av Azure-DevOps](/azure/devops/pipelines/repos/).
 
 ### <a name="create-a-github-repository"></a>Skapa en GitHub-lagringsplats
 

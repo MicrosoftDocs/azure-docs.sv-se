@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/15/2021
-ms.openlocfilehash: 4a9a6b61e392ed2efd68cdcb1cf7e53d6bde5ccd
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 8d984a303234a24423ceae100bd139cb484d6495
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98249745"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98702793"
 ---
 # <a name="estimate-and-manage-capacity-of-an-azure-cognitive-search-service"></a>Beräkna och hantera kapaciteten för en Azure Kognitiv sökning-tjänst
 
 Innan du [konfigurerar en Sök tjänst](search-create-service-portal.md) och låser en viss pris nivå kan du ta några minuter på att förstå hur kapaciteten fungerar och hur du kan justera repliker och partitioner för att hantera arbets belastnings variationer.
 
-Kapacitet är en funktion för [tjänst nivån](search-sku-tier.md). Nivåerna åtskiljs av maximalt lagrings utrymme, lagrings utrymme per partition och de maximala gränserna för antalet objekt som du kan skapa. Basic-nivån är utformad för appar som har enkla lagrings krav (endast en partition) men med möjlighet att köra i en konfiguration med hög tillgänglighet (tre repliker). Andra nivåer är utformade för vissa arbets belastningar eller mönster, till exempel flera innehavare. Internt har tjänster som skapats på dessa nivåer nytta av maskin vara som hjälper dessa scenarier.
+Kapacitet är en funktion i [tjänst nivån](search-sku-tier.md), etablering av maximalt lagrings utrymme per tjänst, per partition och de maximala gränserna för antalet objekt som du kan skapa. Basic-nivån är utformad för appar som har enkla lagrings krav (endast en partition) men med möjlighet att köra i en konfiguration med hög tillgänglighet (tre repliker). Andra nivåer är utformade för vissa arbets belastningar eller mönster, till exempel flera innehavare. Internt har tjänster som skapats på dessa nivåer nytta av maskin vara som hjälper dessa scenarier.
 
 Skalbarheten i Azure Kognitiv sökning baseras på flexibla kombinationer av repliker och partitioner så att du kan variera kapaciteten beroende på om du behöver fler frågor eller indexerings kraft. När en tjänst har skapats kan du öka eller minska antalet repliker eller partitioner oberoende av varandra. Kostnaderna går till varje ytterligare fysisk resurs, men när stora arbets belastningar är klara kan du minska skalan för att sänka fakturan. Beroende på nivån och storleken på justeringen kan tillägg eller minskning av kapaciteten ta var som helst från 15 minuter till flera timmar.
 

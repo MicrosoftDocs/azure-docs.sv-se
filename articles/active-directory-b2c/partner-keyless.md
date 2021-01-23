@@ -11,14 +11,14 @@ ms.topic: how-to
 ms.date: 1/17/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 7e6f19e03eee6fb6ddf946ea79d197a231f5f113
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 2ab1b5ae87cee6265c965c45b706c7fbf10dfe3f
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 01/22/2021
-ms.locfileid: "98690635"
+ms.locfileid: "98702963"
 ---
-# <a name="tutorial-for-configuring-keyless-with-azure-active-directory-b2c"></a>Självstudie för att konfigurera Keyless med Azure Active Directory B2C
+# <a name="tutorial-configure-keyless-with-azure-active-directory-b2c"></a>Självstudie: Konfigurera Keyless med Azure Active Directory B2C
 
 I den här självstudien ger vi vägledning om hur du konfigurerar Azure Active Directory (AD) B2C med [Keyless](https://keyless.io/). Med Azure AD B2C som identitets leverantör kan du integrera Keyless med något av dina kund program för att ge användarna sann autentisering med lösen ord.
 
@@ -50,7 +50,7 @@ I följande arkitektur diagram visas implementeringen.
 
 ![Bilden visar Keyless-arkitektur diagram](./media/partner-keyless/keyless-architecture-diagram.png)
 
-|Steg | Description |
+|Steg | Beskrivning |
 |:-----| :-----------|
 | 1. | Användaren kommer till inloggnings sidan. Användare väljer inloggning/registrera och anger användar namnet
 | 2. | Programmet skickar användarattribut till Azure AD B2C för identitets verifiering.

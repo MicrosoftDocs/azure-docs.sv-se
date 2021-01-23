@@ -6,14 +6,14 @@ author: duongau
 ms.service: expressroute
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 01/21/2021
+ms.date: 01/22/2021
 ms.author: duau
-ms.openlocfilehash: 589f8bef7e5023a3667ce0ebf9a14637b007223d
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: a97efd3e1a0384ba9896ba68bc67d4cf67c0c046
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98664069"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98702751"
 ---
 # <a name="expressroute-connectivity-partners-and-peering-locations"></a>ExpressRoute-anslutningspartner och peering-platser
 
@@ -132,7 +132,7 @@ I följande tabell visas platser efter tjänstleverantör. Om du vill visa tillg
 | **[Level 3 Communications](http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** |Stöds |Stöds |Amsterdam, Chicago, Dallas, London, Newport (Wales), Sao Paulo, Seattle, Silicon Valley, Singapore, Washington DC |
 | **LG CNS** |Stöds |Stöds |Busan, Söul |
 | **[Liquid Telecom](https://www.liquidtelecom.com/products-and-services/cloud.html)** |Stöds |Stöds |Kapstaden, Johannesburg |
-| **[Megaport](https://www.megaport.com/services/microsoft-expressroute/)** |Stöds |Stöds |Amsterdam, Atlanta, Auckland, Chicago, Borås, Denver, Dubai2, Dublin, Frankfurt, Genève, Hongkong SAR, Las Vegas, London, London2, Los Angeles, Melbourne, Miami, Montrealprotokollet, New York, Oslo, Perth, Quebec City, San Antonio, Seattle, Silicon dal, Singapore, Singapore2, Stavanger, Stockholm, Sydney, Sydney2, Tokyo, Tokyo2 Toronto, Washington DC, Washington DC2, Zürich |
+| **[Megaport](https://www.megaport.com/services/microsoft-expressroute/)** |Stöds |Stöds |Amsterdam, Atlanta, Auckland, Chicago, Borås, Denver, Dubai2, Dublin, Frankfurt, Genève, Hongkong, Hongkong, Hong Kong2, Las Vegas, London, London2, Los Angeles, Melbourne, Miami, Montrealprotokollet, New York, Osaka, Oslo, Perth, Quebec City, San Antonio, Seattle, Silicon dal, Singapore, Singapore2, Stavanger, Stockholm, Sydney, Sydney2, Tokyo, Tokyo2 Toronto, Washington DC, Washington DC2, Zürich |
 | **[MTN](https://www.mtnbusiness.co.za/en/Cloud-Solutions/Pages/microsoft-express-route.aspx)** |Stöds |Stöds |London |
 | **[Neutrona Networks](https://www.neutrona.com/index.php/azure-expressroute/)** |Stöds |Stöds |Borås, Los Angeles, Miami, Sao Paulo, Washington DC |
 | **[Nästa generations data](https://vantage-dc-cardiff.co.uk/)** |Stöds |Stöds |Newport(Wales) |

@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: swmachan
-ms.openlocfilehash: 60da61d094316b29c8fbc5454472bb898d693937
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: e8e54a97c13a69fce2e80676fa68d6d795736a83
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 01/22/2021
-ms.locfileid: "98681591"
+ms.locfileid: "98703130"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>Språk-och region stöd för text-och tal Översättning
 
@@ -194,6 +194,7 @@ Metoden translittererad stöder följande språk. I "till/från", "<-->" anger a
 | Språk    | Språkkod | Skript | Till/från | Skript|
 |:----------- |:-------------:|:-------------:|:-------------:|:-------------:|
 | Arabiska | `ar` | Arabiska `Arab` | <--> | Latin `Latn` |
+| Assamesiska | `as` | Bengali `Beng` | <--> | Latin `Latn` |
 | Bangla  | `bn` | Bengali `Beng` | <--> | Latin `Latn` |
 |Vitryska| `be` | Kyrillisk `Cyrl`  | <--> | Latin `Latn` |
 |Bulgariska| `bg` | Kyrillisk `Cyrl`  | <--> | Latin `Latn` |
@@ -208,6 +209,7 @@ Metoden translittererad stöder följande språk. I "till/från", "<-->" anger a
 | Japanska | `ja` | Japanska `Jpan` | <--> | Latin `Latn` |
 | Kannada | `kn` | Kannada `Knda` | <--> | Latin `Latn` |
 |Kazakiska| `kk` | Kyrillisk `Cyrl`  | <--> | Latin `Latn` |
+|Koreanska| `ko` | Koreanska `Kore`  | <--> | Latin `Latn` |
 |Kirgiziska| `ky` | Kyrillisk `Cyrl`  | <--> | Latin `Latn` |
 |Makedonska| `mk` | Kyrillisk `Cyrl`  | <--> | Latin `Latn` |
 | Malayalam | `ml` | Malayalam `Mlym` | <--> | Latin `Latn` |
@@ -220,6 +222,7 @@ Metoden translittererad stöder följande språk. I "till/från", "<-->" anger a
 | Serbiska (kyrillisk) | `sr-Cyrl` | Kyrillisk `Cyrl`  | --> | Latin `Latn` |
 | Serbiska (latinsk) (Serbien) | `sr-Latn` | Latin `Latn` | --> | Kyrillisk `Cyrl`|
 |Sindhi| `sd` | Arabiska `Arab`  | <--> | Latin `Latn` |
+|Sinhala| `si` | Sinhala `Sinh`  | <--> | Latin `Latn` |
 |Tadzjikiska| `tg` | Kyrillisk `Cyrl`  | <--> | Latin `Latn` |
 | Tamilska | `ta` | Tamilska `Taml` | <--> | Latin `Latn` |
 |Tatariska| `tt` | Kyrillisk `Cyrl`  | <--> | Latin `Latn` |

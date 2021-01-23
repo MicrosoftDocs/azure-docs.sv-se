@@ -3,12 +3,12 @@ title: Resurs leverantörer efter Azure-tjänster
 description: Visar en lista över alla resurs leverantörs namn områden för Azure Resource Manager och Azure-tjänsten för namn området visas.
 ms.topic: conceptual
 ms.date: 12/01/2020
-ms.openlocfilehash: 5e89b2b7cf7c27a501d93f63c74d81d8fb40883c
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: c319a6d06cbbcf5d36178c37207cc13f295a5897
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033552"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98702861"
 ---
 # <a name="resource-providers-for-azure-services"></a>Resursleverantörer för Azure-tjänster
 
@@ -102,7 +102,7 @@ De resurs leverantörer som är markerade med **-registrerade** registreras som 
 | Microsoft. HybridCompute | [Azure Arc](../../azure-arc/index.yml) |
 | Microsoft. HybridData | [StorSimple](../../storsimple/index.yml) |
 | Microsoft. HybridNetwork  | [Privata gräns zoner](../../networking/edge-zones-overview.md) |
-| Microsoft. ImportExport | [Azure Import/Export](../../storage/common/storage-import-export-service.md) |
+| Microsoft. ImportExport | [Azure Import/Export](../../import-export/storage-import-export-service.md) |
 | Microsoft. Insights | [Azure Monitor](../../azure-monitor/index.yml) |
 | Microsoft. IoTCentral | [Azure IoT Central](../../iot-central/index.yml) |
 | Microsoft. IoTSpaces | [Azure Digital Twins](../../digital-twins/index.yml) |
