@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: troubleshooting
 ms.date: 09/02/2020
 ms.author: genli
-ms.openlocfilehash: 390cda604b71404735b7c14382d30067e154ef70
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: e409211c167f7b29128faf9fdfc02aa5c0a7d0e3
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91976195"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736262"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Förbereda en VHD eller VHDX i Windows för överföring till Azure
 
@@ -197,7 +197,7 @@ Kontrol lera att följande inställningar är korrekt konfigurerade för fjärr�
 
 1. Om den virtuella datorn tillhör en domän kontrollerar du följande principer för att se till att de tidigare inställningarna inte har återställts.
 
-    |                 Mål                  |                                                                            Princip                                                                            |                           Värde                            |
+    |                 Mål                  |                                                                            Policy                                                                            |                           Värde                            |
     | ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------- |
     | RDP är aktiverat                        | Dator konfiguration \ konfiguration Settings\Administrative Templates\Components\Remote Desktop Services\Remote Desktop Session Host\Connections         | Tillåt användare att fjärrans luta via fjärr skrivbord    |
     | Princip för NLA-grup princip                      | Settings\Administrative Templates\Components\Remote Desktop Services\Remote Desktop Session Host\Security                                                    | Kräv användarautentisering för fjärråtkomst med hjälp av NLA |
@@ -241,7 +241,7 @@ Kontrol lera att följande inställningar är korrekt konfigurerade för fjärr�
 
 1. Om den virtuella datorn tillhör en domän kontrollerar du följande Azure AD-principer för att kontrol lera att de tidigare inställningarna inte har återställts.
 
-    |                 Mål                 |                                                                         Princip                                                                          |                  Värde                  |
+    |                 Mål                 |                                                                         Policy                                                                          |                  Värde                  |
     | ------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------- |
     | Aktivera profiler för Windows-brandväggen | Datorn konfiguration \ konfiguration Settings\Administrative Templates\Network\Network Connection\Windows Firewall\Domain Profile\Windows Firewall   | Skydda alla nätverks anslutningar         |
     | Aktivera RDP                           | Datorn konfiguration \ konfiguration Settings\Administrative Templates\Network\Network Connection\Windows Firewall\Domain Profile\Windows Firewall   | Tillåt inkommande fjärr skrivbords undantag |
@@ -356,7 +356,7 @@ Vi rekommenderar att du behåller datorn uppdaterad till *korrigerings nivån*, 
 
 |        Komponent        |     Binär     | Windows 7 SP1, Windows Server 2008 R2 SP1 |       Windows 8, Windows Server 2012        | Windows 8,1, Windows Server 2012 R2 | Windows 10 v1607, Windows Server 2016 v1607 |      Windows 10-v1703      | Windows 10 v1709, Windows Server 2016 v1709 | Windows 10 v1803, Windows Server 2016 v1803 |
 | ----------------------- | -------------- | ----------------------------------------- | ------------------------------------------- | ----------------------------------- | ------------------------------------------- | -------------------------- | ------------------------------------------- | ------------------------------------------- |
-| Lagring                 | disk.sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.17638 / 6.2.9200.21757 - KB3137061 | 6.3.9600.18203 - KB3137061          | -                                           | -                          | -                                           | -                                           |
+| Storage                 | disk.sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.17638 / 6.2.9200.21757 - KB3137061 | 6.3.9600.18203 - KB3137061          | -                                           | -                          | -                                           | -                                           |
 |                         | storport.sys   | 6.1.7601.23403 - KB3125574                | 6.2.9200.17188 / 6.2.9200.21306 - KB3018489 | 6.3.9600.18573 - KB4022726          | 10.0.14393.1358 - KB4022715                 | 10.0.15063.332             | -                                           | -                                           |
 |                         | ntfs.sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.17623 / 6.2.9200.21743 - KB3121255 | 6.3.9600.18654 - KB4022726          | 10.0.14393.1198 - KB4022715                 | 10.0.15063.447             | -                                           | -                                           |
 |                         | Iologmsg.dll   | 6.1.7601.23403 - KB3125574                | 6.2.9200.16384 - KB2995387                  | -                                   | -                                           | -                          | -                                           | -                                           |
@@ -426,14 +426,14 @@ I synnerhet kräver Sysprep att enheterna måste dekrypteras fullständigt innan
 1. I dialog rutan **system förberedelse verktyg** väljer du **Använd OOBE (system out-of-Box Experience)** och kontrollerar att kryss rutan **generalize** är markerad.
 
     ![System förberedelse verktyg](media/prepare-for-upload-vhd-image/syspre.png)
-1. I **avslutnings alternativ**väljer du **Stäng**av.
+1. I **avslutnings alternativ** väljer du **Stäng** av.
 1. Välj **OK**.
 1. När Sysprep är klar stänger du den virtuella datorn. Använd inte **omstart** för att stänga av den virtuella datorn.
 
 Nu kan den virtuella hård disken laddas upp. Mer information om hur du skapar en virtuell dator från en generaliserad disk finns i [överföra en generaliserad virtuell hård disk och använda den för att skapa en ny virtuell dator i Azure](/previous-versions/azure/virtual-machines/windows/sa-upload-generalized).
 
 >[!NOTE]
-> Det finns inte stöd för en anpassad *unattend.xml* -fil. Även om vi har stöd för egenskapen **additionalUnattendContent** , som endast ger begränsat stöd för att lägga till [Microsoft-Windows-Shell-Setup-](/windows-hardware/customize/desktop/unattend/microsoft-windows-shell-setup) alternativ i *unattend.xml* -filen som Azure Provisioning-agenten använder. Du kan till exempel använda [additionalUnattendContent](/dotnet/api/microsoft.azure.management.compute.models.additionalunattendcontent?view=azure-dotnet&preserve-view=true) för att lägga till FirstLogonCommands och LogonCommands. Mer information finns i [AdditionalUnattendContent FirstLogonCommands-exempel](https://github.com/Azure/azure-quickstart-templates/issues/1407).
+> Det finns inte stöd för en anpassad *unattend.xml* -fil. Även om vi har stöd för egenskapen **additionalUnattendContent** , som endast ger begränsat stöd för att lägga till [Microsoft-Windows-Shell-Setup-](/windows-hardware/customize/desktop/unattend/microsoft-windows-shell-setup) alternativ i *unattend.xml* -filen som Azure Provisioning-agenten använder. Du kan till exempel använda [additionalUnattendContent](/dotnet/api/microsoft.azure.management.compute.models.additionalunattendcontent) för att lägga till FirstLogonCommands och LogonCommands. Mer information finns i [AdditionalUnattendContent FirstLogonCommands-exempel](https://github.com/Azure/azure-quickstart-templates/issues/1407).
 
 ## <a name="convert-the-virtual-disk-to-a-fixed-size-vhd"></a>Konvertera den virtuella disken till en virtuell hård disk med fast storlek
 

@@ -6,14 +6,14 @@ titleSuffix: Azure VPN Gateway
 author: ricmmartins
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 01/15/2021
+ms.date: 01/22/2021
 ms.author: ricmart
-ms.openlocfilehash: 3b9e60eb037182318e9d1ef7336565908a9c8f32
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: a0655ce1d2e9939981bb4fd3280af80e359ea1e1
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98664791"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737752"
 ---
 # <a name="create-a-vpn-connection-between-azure-and-aws-using-managed-solutions"></a>Skapa en VPN-anslutning mellan Azure och AWS med hjälp av hanterade lösningar
 
@@ -42,6 +42,8 @@ Skapa en VPN-gateway för det virtuella nätverket. Mer information finns i [Sj�
 
 Följande exempel värden och inställningar används i den här artikeln:
 
+* **Gateway-namn:** VPN – Azure-AWS
+* **Region:** USA, östra
 * **Gateway-typ:** Konfigurera
 * **VPN-typ:** Route-baserad
 * **SKU:** VpnGw1
@@ -173,15 +175,13 @@ I det här avsnittet skapar du en andra anslutning för att säkerställa hög t
 
    :::image type="content" source="./media/create-vpn-azure-aws-managed-solutions/azure-tunnels.png" alt-text="Status för Azure-anslutning":::
 
-1. Visa AWS-anslutningarna.
+1. Visa AWS-anslutningarna. I det här exemplet kan du se att anslutningarna nu har upprättats.
 
    :::image type="content" source="./media/create-vpn-azure-aws-managed-solutions/aws-tunnels.png" alt-text="Status för AWS-anslutning":::
 
-Anslutningarna upprättas nu.
+## <a name="to-test-connections"></a>Så här testar du anslutningar
 
-## <a name="test-connections"></a>Test anslutningar
-
-1. Lägg till en Internet-gateway i VPC på AWS. Internet-gatewayen är en logisk anslutning mellan en Amazon-VPN och Internet. Med den här resursen kan du ansluta till den virtuella test datorn från AWS offentliga IP via Internet. Den här resursen krävs inte för VPN-anslutningen. Vi använder det bara för att testa.
+1. Lägg till en **Internet-Gateway** i VPC på AWS. Internet-gatewayen är en logisk anslutning mellan en Amazon-VPN och Internet. Med den här resursen kan du ansluta till den virtuella test datorn från AWS offentliga IP via Internet. Den här resursen krävs inte för VPN-anslutningen. Vi använder det bara för att testa.
 
    :::image type="content" source="./media/create-vpn-azure-aws-managed-solutions/create-igw.png" alt-text="Skapa Internet-gatewayen":::
 
@@ -189,7 +189,7 @@ Anslutningarna upprättas nu.
 
    :::image type="content" source="./media/create-vpn-azure-aws-managed-solutions/attach-igw.png" alt-text="Ansluta Internet-gatewayen till VPC":::
 
-1. Välj en VPC och **Koppla Internet-gatewayen**.
+1. Välj en VPC och **Koppla Internet-Gateway**.
 
    :::image type="content" source="./media/create-vpn-azure-aws-managed-solutions/attach-igw-2.png" alt-text="Bifoga gatewayen":::
 
@@ -201,11 +201,11 @@ Anslutningarna upprättas nu.
 
    :::image type="content" source="./media/create-vpn-azure-aws-managed-solutions/azure-effective-routes.png" alt-text="Kontrol lera de effektiva vägarna":::
 
-1. Från en virtuell Linux-dator på Azure liknar miljön följande exempel.
+1. Du kan testa detta från en virtuell Linux-dator på Azure. Resultatet ser ut ungefär som i följande exempel.
 
    :::image type="content" source="./media/create-vpn-azure-aws-managed-solutions/azure-overview.png" alt-text="Översikt över Azure från virtuella Linux-datorer":::
 
-1. Från en virtuell Linux-dator på AWS liknar miljön följande exempel.
+1. Du kan också testa detta från en virtuell Linux-dator på AWS. Resultatet ser ut ungefär som i följande exempel.
 
    :::image type="content" source="./media/create-vpn-azure-aws-managed-solutions/aws-overview.png" alt-text="Översikt över AWS från virtuella Linux-datorer":::
 

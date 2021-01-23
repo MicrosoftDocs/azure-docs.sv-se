@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/25/2020
 ms.author: jeedes
-ms.openlocfilehash: 939db97a03b69335c9d648c894f453cbb2010edb
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 34365a8bd7a15f502aa89a966adb14807e802cc4
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97967097"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737006"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-confluence-saml-sso-by-microsoft"></a>Självstudie: Azure Active Directory enkel inloggning (SSO) med Confluence SAML SSO från Microsoft
 
@@ -252,7 +252,7 @@ I det här avsnittet ska du testa Azure AD-konfigurationen för enkel inloggning
 
 * Gå till Confluence SAML SSO via Microsoft Sign-URL direkt och starta inloggnings flödet därifrån.
 
-* Du kan använda Microsoft Mina appar. När du klickar på Confluence SAML SSO med Microsofts panel i Mina appar omdirigeras det till Confluence SAML SSO med Microsoft Sign-on URL. Mer information om Mina appar finns i [Introduktion till Mina appar](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* Du kan använda Microsoft Mina appar. När du klickar på Confluence SAML SSO med Microsofts panel i Mina appar omdirigeras det till Confluence SAML SSO med Microsoft Sign-on URL. Mer information om Mina appar finns i [Introduktion till Mina appar](../user-help/my-apps-portal-end-user-access.md).
 
 
 ## <a name="next-steps"></a>Nästa steg

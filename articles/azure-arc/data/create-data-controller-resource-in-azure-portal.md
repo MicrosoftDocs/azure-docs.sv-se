@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 297efa83fb1563e3a360f652a6ac1bc2b1679998
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bd8c079e91a6765dff8ad347085c44d0aa2f8d82
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90941876"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737311"
 ---
 # <a name="create-an-azure-arc-data-controller-in-the-azure-portal"></a>Skapa en Azure båg-datakontrollant i Azure Portal
 
@@ -40,12 +40,16 @@ Följ stegen nedan för att skapa en Azure Arc-dataenhet med hjälp av Azure Por
 6. Klicka på **informations knappen data enhet** .
 7. Välj en prenumeration, resurs grupp och Azure-plats precis som du skulle göra för alla andra resurser som du skulle skapa i Azure Portal. I det här fallet kommer den Azure-plats som du väljer att lagra metadata om resursen.  Själva resursen kommer att skapas på den infrastruktur du väljer. Den behöver inte vara med i Azure-infrastrukturen.
 8. Ange ett namn för data kontrollen.
-9. För närvarande stöds inte det indirekt anslutna läget i för hands versionen.
-10. Välj en distributions konfigurations profil.
-11. Klicka på knappen **Öppna i Azure Studio** .
-12. På nästa skärm visas en sammanfattning av dina val och en antecknings bok som genereras.  Du kan hämta antecknings boken genom att klicka på knappen **Hämta antecknings bok för etablering** .
-13. Öppna den bärbara datorn i Azure Data Studio och klicka på knappen **Kör alla** överst.
-14. Följ anvisningarna och anvisningarna i antecknings boken för att slutföra skapandet av datakontrollanten.
+9. Välj anslutnings läge för data styrenheten. Läs mer om [anslutnings lägen och krav](./connectivity.md). 
+
+   > [!NOTE] 
+   > Om du väljer **direkt** anslutnings läge kontrollerar du att autentiseringsuppgifterna för tjänstens huvud namn har angetts via miljövariabler enligt beskrivningen i [skapa tjänstens huvud namn](upload-metrics-and-logs-to-azure-monitor.md#create-service-principal). 
+
+1. Välj en distributions konfigurations profil.
+1. Klicka på knappen **Öppna i Azure Studio** .
+1. På nästa skärm visas en sammanfattning av dina val och en antecknings bok som genereras.  Du kan hämta antecknings boken genom att klicka på knappen **Hämta antecknings bok för etablering** .
+1. Öppna den bärbara datorn i Azure Data Studio och klicka på knappen **Kör alla** överst.
+1. Följ anvisningarna och anvisningarna i antecknings boken för att slutföra skapandet av datakontrollanten.
 
 ## <a name="monitoring-the-creation-status"></a>Övervaka skapande status
 

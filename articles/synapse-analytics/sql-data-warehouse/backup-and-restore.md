@@ -11,12 +11,12 @@ ms.date: 11/13/2020
 ms.author: joanpo
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019"
-ms.openlocfilehash: d8c680ec30dcecc56c064f08e4690cbbde9c2377
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 842f2f92133664f58ca60d6d30181d48d63271eb
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98679921"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736313"
 ---
 # <a name="backup-and-restore-in-azure-synapse-dedicated-sql-pool"></a>Säkerhets kopiering och återställning i Azure Synapse-dedikerad SQL-pool
 
@@ -71,8 +71,16 @@ När du släpper en dedikerad SQL-pool skapas en slutgiltig ögonblicks bild som
 
 En geo-säkerhetskopiering skapas en gång per dag till ett [parat Data Center](../../best-practices-availability-paired-regions.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). Återställningen för en geo-återställning är 24 timmar. Du kan återställa geo-backup till en server i någon annan region där dedikerad SQL-pool stöds. En geo-säkerhetskopiering garanterar att du kan återställa data lagret om du inte kan komma åt återställnings punkterna i din primära region.
 
+Om du inte behöver geo-säkerhetskopiering för din dedikerade SQL-pool kan du inaktivera dem och spara kostnader för haveri beredskap för lagring. Det gör du genom att läsa mer i [Guide: inaktivera geo-säkerhetskopieringar för en dedikerad SQL-pool (tidigare SQL DW)](disable-geo-backup.md). Observera att om du inaktiverar geo-säkerhetskopieringar kommer du inte att kunna återställa din dedikerade SQL-pool till din kopplade Azure-region om ditt primära Azure-datacenter inte är tillgängligt. 
+
 > [!NOTE]
 > Om du behöver en kortare återställnings punkt för geo-säkerhetskopiering, röst för den här funktionen [här](https://feedback.azure.com/forums/307516-sql-data-warehouse). Du kan också skapa en användardefinierad återställnings punkt och återställa från den nyligen skapade återställnings punkten till ett nytt informations lager i en annan region. När du har återställt har du data lagret online och kan pausa det oändligt för att spara beräknings kostnader. Den pausade databasen ådrar sig lagrings kostnader med Azure Premium Storage rate. Om du behöver en aktiv kopia av data lagret kan du fortsätta vilket som bör ta några minuter.
+
+## <a name="data-residency"></a>Dataplacering 
+
+Om ditt kopplade data Center ligger utanför den geografiska gränsen kan du se till att dina data ligger inom den geografiska gränsen genom att väljer från Geo-redundant lagring. Detta kan göras när du etablerar din dedikerade SQL-pool (tidigare SQL DW) via alternativet Geo-redundant lagring när du skapar eller återställer en dedikerad SQL-pool (tidigare SQL DW). 
+
+För att bekräfta att ditt kopplade data Center finns i ett annat land, se [Azure-kopplade regioner](../../best-practices-availability-paired-regions.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
 
 ## <a name="backup-and-restore-costs"></a>Säkerhetskopiera och återställa kostnader
 

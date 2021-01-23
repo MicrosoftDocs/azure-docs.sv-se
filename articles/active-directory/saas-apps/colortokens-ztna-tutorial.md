@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/16/2020
 ms.author: jeedes
-ms.openlocfilehash: 54386bd7431c2003dd29a905b3b696f69a39d2d9
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: c87eb3b52843f4de39d0c037bdf452160be1ca2b
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97914441"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735981"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-colortokens-ztna"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med ColorTokens ZTNA
 
@@ -86,13 +86,13 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 1. Utöver ovan förväntar sig ColorTokens ZTNA-program att fler attribut skickas tillbaka i SAML-svar som visas nedan. Dessa attribut är också förifyllda, men du kan granska dem enligt dina krav.
 
-    | Namn | Källattribut|
+    | Name | Källattribut|
     | ------------- | --------- |
     | avdelning | user.userprincipalname |
-    | Grupp | användare. grupper |
+    | Group | användare. grupper |
 
     > [!NOTE]
-    > Klicka [här](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps#app-roles-ui) om du vill veta hur du skapar roller i Azure AD.
+    > Klicka [här](../develop/howto-add-app-roles-in-azure-ad-apps.md#app-roles-ui--preview) om du vill veta hur du skapar roller i Azure AD.
 
 1. På sidan **Konfigurera enkel inloggning med SAML** , i avsnittet **SAML-signeringscertifikat** , letar du upp **XML för federationsmetadata** och väljer **Hämta** för att ladda ned certifikatet och spara det på din dator.
 
@@ -142,7 +142,7 @@ I det här avsnittet ska du testa Azure AD-konfigurationen för enkel inloggning
 
 * Gå till ColorTokens ZTNA-inloggnings-URL: en direkt och starta inloggnings flödet därifrån.
 
-* Du kan använda Microsoft Mina appar. När du klickar på panelen ColorTokens ZTNA i Mina appar omdirigeras det till ColorTokens ZTNA-inloggnings-URL. Mer information om Mina appar finns i [Introduktion till Mina appar](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* Du kan använda Microsoft Mina appar. När du klickar på panelen ColorTokens ZTNA i Mina appar omdirigeras det till ColorTokens ZTNA-inloggnings-URL. Mer information om Mina appar finns i [Introduktion till Mina appar](../user-help/my-apps-portal-end-user-access.md).
 
 
 ## <a name="next-steps"></a>Nästa steg

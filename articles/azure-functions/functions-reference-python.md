@@ -4,12 +4,12 @@ description: Förstå hur du utvecklar funktioner med python
 ms.topic: article
 ms.date: 11/4/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: cf1d8f89de61a548f6c542d6d8a73fde93675e95
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: a13b4463d2a9c32a3487f839c0bf53b4c5bd2963
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97895418"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735851"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Guide för Azure Functions python-utvecklare
 
@@ -305,7 +305,7 @@ För skalnings-och prestanda metod tips för python Function-appar, se [artikeln
 
 Om du vill hämta anrops kontexten för en funktion under körningen ska du inkludera [`context`](/python/api/azure-functions/azure.functions.context?view=azure-python&preserve-view=true) argumentet i signaturen.
 
-Till exempel:
+Ett exempel:
 
 ```python
 import azure.functions
@@ -366,7 +366,7 @@ Azure Functions stöder följande python-versioner:
 
 | Funktions version | Python- <sup>*</sup> versioner |
 | ----- | ----- |
-| 3.x | 3,8<br/>3.7<br/>3,6 |
+| 3.x | 3,9 (för hands version) <br/> 3,8<br/>3.7<br/>3,6 |
 | 2x | 3.7<br/>3,6 |
 
 <sup>*</sup>Officiella CPython-distributioner
@@ -588,6 +588,7 @@ Om du vill visa fullständig information om listan över dessa bibliotek kan du 
 * [Python 3,6 standard bibliotek](https://docs.python.org/3.6/library/)
 * [Python 3,7 standard bibliotek](https://docs.python.org/3.7/library/)
 * [Python 3,8 standard bibliotek](https://docs.python.org/3.8/library/)
+* [Python 3,9 standard bibliotek](https://docs.python.org/3.9/library/)
 
 ### <a name="azure-functions-python-worker-dependencies"></a>Azure Functions python Worker-beroenden
 
@@ -615,7 +616,7 @@ Om du vill ha en lista över förinstallerade system bibliotek i python Worker D
 |  Functions-körning  | Debian-version | Python-versioner |
 |------------|------------|------------|
 | Version 2. x | Sträck  | [Python 3,6](https://github.com/Azure/azure-functions-docker/blob/master/host/2.0/stretch/amd64/python/python36/python36.Dockerfile)<br/>[Python 3.7](https://github.com/Azure/azure-functions-docker/blob/master/host/2.0/stretch/amd64/python/python37/python37.Dockerfile) |
-| Version 3. x | Buster | [Python 3,6](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python36/python36.Dockerfile)<br/>[Python 3.7](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python37/python37.Dockerfile)<br />[Python 3.8](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python38/python38.Dockerfile) |
+| Version 3. x | Buster | [Python 3,6](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python36/python36.Dockerfile)<br/>[Python 3.7](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python37/python37.Dockerfile)<br />[Python 3.8](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python38/python38.Dockerfile)<br/> [Python 3,9](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python39/python39.Dockerfile)|
 
 ## <a name="cross-origin-resource-sharing"></a>Cross-origin resource sharing (CORS)
 

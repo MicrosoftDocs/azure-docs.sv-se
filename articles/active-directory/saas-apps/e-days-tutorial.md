@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/14/2020
 ms.author: jeedes
-ms.openlocfilehash: 7c9fcff08e686b5150ac96420c74291ebc9e2a30
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 3116b9f4f8311ff4904795b1b9c27d5fe81dcb2f
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97607694"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736617"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-e-days"></a>Självstudie: Azure Active Directory enkel inloggning (SSO) med E-dagar
 
@@ -155,7 +155,7 @@ I det här avsnittet ska du testa Azure AD-konfigurationen för enkel inloggning
 
 * Klicka på **testa det här programmet** i Azure Portal så bör du loggas in automatiskt på de E-dagar för vilka du ställer in SSO 
 
-Du kan också använda Microsoft Mina appar för att testa programmet i vilket läge som helst. När du klickar på panelen E-dagar i Mina appar, om det kon figurer ATS i SP-läge omdirigeras du till programmets inloggnings sida för att initiera inloggnings flödet och om det kon figurer ATS i IDP-läge, bör du loggas in automatiskt på de E-dagar som du ställer in SSO för. Mer information om Mina appar finns i [Introduktion till Mina appar](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Du kan också använda Microsoft Mina appar för att testa programmet i vilket läge som helst. När du klickar på panelen E-dagar i Mina appar, om det kon figurer ATS i SP-läge omdirigeras du till programmets inloggnings sida för att initiera inloggnings flödet och om det kon figurer ATS i IDP-läge, bör du loggas in automatiskt på de E-dagar som du ställer in SSO för. Mer information om Mina appar finns i [Introduktion till Mina appar](../user-help/my-apps-portal-end-user-access.md).
 
 
 ## <a name="next-steps"></a>Nästa steg

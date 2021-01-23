@@ -6,29 +6,29 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/11/2021
-ms.openlocfilehash: 877251ba7e0c1f3c33cab37e20d609479b69520c
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: c213a38286de05df5c3be8e3498bcca4ab6e1fbf
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251836"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736153"
 ---
 # <a name="azure-monitor-for-existing-operations-manager-customers"></a>Azure Monitor för befintliga Operations Manager-kunder
-Den här artikeln innehåller vägledning för kunder som för närvarande använder [System Center Operations Manager](https://docs.microsoft.com/system-center/scom/welcome) och som planerar en över gång till [Azure Monitor](overview.md) när de migrerar affärs program och andra resurser till Azure. Det förutsätter att ditt slutgiltiga mål är en fullständig över gång till molnet, vilket ersätter så mycket Operations Manager funktioner som möjligt med Azure Monitor, utan att kompromissa med dina verksamhets-och drift krav. 
+Den här artikeln innehåller vägledning för kunder som för närvarande använder [System Center Operations Manager](/system-center/scom/welcome) och som planerar en över gång till [Azure Monitor](overview.md) när de migrerar affärs program och andra resurser till Azure. Det förutsätter att ditt slutgiltiga mål är en fullständig över gång till molnet, vilket ersätter så mycket Operations Manager funktioner som möjligt med Azure Monitor, utan att kompromissa med dina verksamhets-och drift krav. 
 
 De rekommendationer som görs i den här artikeln kommer att ändras som Azure Monitor och Operations Manager lägga till funktioner. Den grundläggande strategin är även konsekvent.
 
 > [!IMPORTANT]
 > Det finns en kostnad för att implementera flera Azure Monitor funktioner som beskrivs här, så du bör utvärdera värdet innan du distribuerar det i hela miljön.
 
-## <a name="prerequisites"></a>Förutsättningar
-Den här artikeln förutsätter att du redan använder [Operations Manager](https://docs.microsoft.com/system-center/scom) och minst har en grundläggande förståelse för [Azure Monitor](overview.md). En fullständig jämförelse mellan de två finns i [Cloud Monitoring guide: Monitoring Platforms Overview](/azure/cloud-adoption-framework/manage/monitor/platform-overview). Artikeln innehåller information om olika funktions skillnader mellan till två som hjälper dig att förstå några av de rekommendationer som görs här. 
+## <a name="prerequisites"></a>Krav
+Den här artikeln förutsätter att du redan använder [Operations Manager](/system-center/scom) och minst har en grundläggande förståelse för [Azure Monitor](overview.md). En fullständig jämförelse mellan de två finns i [Cloud Monitoring guide: Monitoring Platforms Overview](/azure/cloud-adoption-framework/manage/monitor/platform-overview). Artikeln innehåller information om olika funktions skillnader mellan till två som hjälper dig att förstå några av de rekommendationer som görs här. 
 
 
 ## <a name="general-strategy"></a>Allmän strategi
 Det finns inga Migreringsverktyg för att konvertera till gångar från Operations Manager till Azure Monitor eftersom plattformarna är fundamentalt annorlunda. Din migrering kommer i stället att utgöra en [standard Azure Monitor implementering](deploy.md) medan du fortsätter att använda Operations Manager. När du anpassar Azure Monitor för att uppfylla dina krav för olika program och komponenter och eftersom det får fler funktioner, kan du börja dra tillbaka olika hanterings paket och agenter i Operations Manager.
 
-Den allmänna strategin som rekommenderas i den här artikeln är samma som i [moln övervaknings guiden](https://docs.microsoft.com/azure/cloud-adoption-framework/manage/monitor/), som rekommenderar en [hybrid moln övervaknings](/azure/cloud-adoption-framework/manage/monitor/cloud-models-monitor-overview#hybrid-cloud-monitoring) strategi som gör det möjligt att göra en gradvis över gång till molnet. Även om vissa funktioner kan överlappa, kan du använda den här strategin för att underhålla dina befintliga affärs processer när du blir mer bekant med den nya plattformen. Flytta bara bort från Operations Manager-funktioner som du kan ersätta med Azure Monitor. Med hjälp av flera övervaknings verktyg kan du lägga till komplexitet, men du kan dra nytta av Azure Monitors möjlighet att övervaka nästa generations moln arbets belastningar samtidigt som du behåller Operations Managers möjlighet att övervaka komponenter för serverprogram vara och infrastruktur som kan vara lokala eller i andra moln. 
+Den allmänna strategin som rekommenderas i den här artikeln är samma som i [moln övervaknings guiden](/azure/cloud-adoption-framework/manage/monitor/), som rekommenderar en [hybrid moln övervaknings](/azure/cloud-adoption-framework/manage/monitor/cloud-models-monitor-overview#hybrid-cloud-monitoring) strategi som gör det möjligt att göra en gradvis över gång till molnet. Även om vissa funktioner kan överlappa, kan du använda den här strategin för att underhålla dina befintliga affärs processer när du blir mer bekant med den nya plattformen. Flytta bara bort från Operations Manager-funktioner som du kan ersätta med Azure Monitor. Med hjälp av flera övervaknings verktyg kan du lägga till komplexitet, men du kan dra nytta av Azure Monitors möjlighet att övervaka nästa generations moln arbets belastningar samtidigt som du behåller Operations Managers möjlighet att övervaka komponenter för serverprogram vara och infrastruktur som kan vara lokala eller i andra moln. 
 
 
 ## <a name="components-to-monitor"></a>Komponenter som ska övervakas
@@ -37,7 +37,7 @@ Den hjälper till att kategorisera de olika typerna av arbets belastningar som d
 Innan molnet använde du Operations Manager för att övervaka alla lager. När du startar över gången med IaaS (Infrastructure as a Service) fortsätter du att använda Operations Manager för dina virtuella datorer, men börjar använda Azure Monitor för dina moln resurser. När du senare övergår till moderna program med PaaS (Platform as a Service) kan du fokusera mer på Azure Monitor och börja dra Operations Manager-funktionen.
 
 
-![Moln modeller](https://docs.microsoft.com/azure/cloud-adoption-framework/strategy/media/monitoring-strategy/cloud-models.png)
+![Moln modeller](/azure/cloud-adoption-framework/strategy/media/monitoring-strategy/cloud-models.png)
 
 Dessa lager kan för enklas i följande kategorier, som beskrivs i resten av den här artikeln. Alla övervaknings arbets belastningar i din miljö kanske inte passar in i någon av dessa kategorier, var och en bör vara tillräckligt nära en viss kategori för att de allmänna rekommendationerna ska gälla.
 

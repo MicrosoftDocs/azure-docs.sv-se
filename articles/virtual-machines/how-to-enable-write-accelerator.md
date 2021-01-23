@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 2/20/2019
 ms.author: raiye
 ms.subservice: disks
-ms.openlocfilehash: e4f6cefd56c12162b370c78b6df2cd29ece030f1
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 827643866c23583051bc290c2c50bed3f1bdd421
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92515720"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737922"
 ---
 # <a name="enable-write-accelerator"></a>Aktivera Skrivningsaccelerator
 
@@ -63,7 +63,7 @@ IOPS-gränserna är per virtuell dator och *inte* per disk. Alla Skrivningsaccel
 
 I följande avsnitt beskrivs hur Skrivningsaccelerator kan aktive ras på Azure Premium Storage-VHD: er.
 
-### <a name="prerequisites"></a>Förutsättningar
+### <a name="prerequisites"></a>Krav
 
 Följande krav gäller för användning av Skrivningsaccelerator vid den här tidpunkten:
 
@@ -77,23 +77,23 @@ Följande Power Shell-kommandon har ändrats och utökas för att acceptera en p
 
 En ny växel parameter, **-WriteAccelerator** har lagts till i följande cmdletar:
 
-- [Set-AzVMOsDisk](/powershell/module/az.compute/set-azvmosdisk?view=azurermps-6.0.0)
-- [Add-AzVMDataDisk](/powershell/module/az.compute/Add-AzVMDataDisk?view=azurermps-6.0.0)
-- [Set-AzVMDataDisk](/powershell/module/az.compute/Set-AzVMDataDisk?view=azurermps-6.0.0)
-- [Add-AzVmssDataDisk](/powershell/module/az.compute/Add-AzVmssDataDisk?view=azurermps-6.0.0)
+- [Set-AzVMOsDisk](/powershell/module/az.compute/set-azvmosdisk)
+- [Add-AzVMDataDisk](/powershell/module/az.compute/Add-AzVMDataDisk)
+- [Set-AzVMDataDisk](/powershell/module/az.compute/Set-AzVMDataDisk)
+- [Add-AzVmssDataDisk](/powershell/module/az.compute/Add-AzVmssDataDisk)
 
 Om du inte anger egenskapen till false och distribuerar diskar som inte har stöd för Skrivningsaccelerator.
 
 En ny växel parameter, **-OsDiskWriteAccelerator** , har lagts till i följande cmdlets:
 
-- [Set-AzVmssStorageProfile](/powershell/module/az.compute/Set-AzVmssStorageProfile?view=azurermps-6.0.0)
+- [Set-AzVmssStorageProfile](/powershell/module/az.compute/Set-AzVmssStorageProfile)
 
 Om du inte anger parametern anger egenskapen till false som standard, vilket returnerar diskar som inte utnyttjar Skrivningsaccelerator.
 
 En ny valfri boolesk parameter (icke-nullbar), **-OsDiskWriteAccelerator** har lagts till i följande cmdlets:
 
-- [Update-AzVM](/powershell/module/az.compute/Update-AzVM?view=azurermps-6.0.0)
-- [Update-AzVmss](/powershell/module/az.compute/Update-AzVmss?view=azurermps-6.0.0)
+- [Update-AzVM](/powershell/module/az.compute/Update-AzVM)
+- [Update-AzVmss](/powershell/module/az.compute/Update-AzVmss)
 
 Ange antingen $true eller $false för att kontrol lera stöd för Azure-Skrivningsaccelerator med diskarna.
 
@@ -168,13 +168,13 @@ Du kan aktivera Skrivningsaccelerator via portalen där du anger inställningarn
 
 ## <a name="enabling-write-accelerator-using-the-azure-cli"></a>Aktivera Azure Write Accelerator med Azure CLI
 
-Du kan använda [Azure CLI](/cli/azure/?view=azure-cli-latest) för att aktivera Skrivningsaccelerator.
+Du kan använda [Azure CLI](/cli/azure/) för att aktivera Skrivningsaccelerator.
 
-Om du vill aktivera Skrivningsaccelerator på en befintlig disk använder du [AZ VM Update](/cli/azure/vm?view=azure-cli-latest#az-vm-update). du kan använda följande exempel om du ersätter DiskName, VMName och ResourceGroup med dina egna värden: `az vm update -g group1 -n vm1 -write-accelerator 1=true`
+Om du vill aktivera Skrivningsaccelerator på en befintlig disk använder du [AZ VM Update](/cli/azure/vm#az_vm_update). du kan använda följande exempel om du ersätter DiskName, VMName och ResourceGroup med dina egna värden: `az vm update -g group1 -n vm1 -write-accelerator 1=true`
 
-Om du vill ansluta en disk med Skrivningsaccelerator aktiverat Använd [AZ VM disk Attach](/cli/azure/vm/disk?view=azure-cli-latest#az-vm-disk-attach)kan du använda följande exempel om du ersätter dina egna värden: `az vm disk attach -g group1 -vm-name vm1 -disk d1 --enable-write-accelerator`
+Om du vill ansluta en disk med Skrivningsaccelerator aktiverat Använd [AZ VM disk Attach](/cli/azure/vm/disk#az_vm_disk_attach)kan du använda följande exempel om du ersätter dina egna värden: `az vm disk attach -g group1 -vm-name vm1 -disk d1 --enable-write-accelerator`
 
-Om du vill inaktivera Skrivningsaccelerator använder du [AZ VM Update](/cli/azure/vm?view=azure-cli-latest#az-vm-update)och anger egenskaperna till falskt: `az vm update -g group1 -n vm1 -write-accelerator 0=false 1=false`
+Om du vill inaktivera Skrivningsaccelerator använder du [AZ VM Update](/cli/azure/vm#az_vm_update)och anger egenskaperna till falskt: `az vm update -g group1 -n vm1 -write-accelerator 0=false 1=false`
 
 ## <a name="enabling-write-accelerator-using-rest-apis"></a>Aktivera Skrivningsaccelerator med hjälp av REST API: er
 

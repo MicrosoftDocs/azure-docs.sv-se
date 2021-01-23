@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 06/16/2020
-ms.openlocfilehash: 8343c06992c896986ba26a90171e25f9c8c4f2f8
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 9b8dafa4a69358b3f6f09551ac426b908750e2f4
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98600105"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735480"
 ---
 # <a name="prepay-for-azure-database-for-postgresql---single-server-compute-resources-with-reserved-capacity"></a>Förskottsbetala för Azure Database for PostgreSQL-beräknings resurser för en server med reserverad kapacitet
 
@@ -35,7 +35,7 @@ Information om hur företags kunder och kunder som betalar per användning debit
 
 Reservations storleken bör baseras på den totala mängd data som används av befintliga eller närmast distribuerade servrar inom en angiven region och som använder samma prestanda nivå och maskin varu generering.</br>
 
-Anta till exempel att du kör ett allmänt syfte Gen5 – 32 vCore PostgreSQL Database och två minnesoptimerade Gen5 – 16 vCore PostgreSQL-databaser. Vi vill också att du planerar att distribuera inom en och samma månad ytterligare ett allmänt Gen5 – 32 vCore-databasserver och en minnesoptimerade Gen5 – 16 vCore Database Server. Anta att du vet att du kommer att behöva dessa resurser i minst ett år. I det här fallet bör du köpa en 64 (2x32) virtuella kärnor, ett års reservation för en enkel databas generell användning-Gen5 och en 48 (2x16 + 16) vCore ett års reservation för enkel databas minne optimerad-Gen5
+Anta till exempel att du kör ett allmänt syfte Gen5 – 32 vCore PostgreSQL Database och två minnesoptimerade Gen5 – 16 vCore PostgreSQL-databaser. Vi vill också att du planerar att distribuera inom en och samma månad ytterligare en generell Gen5 – 8 vCore-databas server och en minnesoptimerade Gen5 – 32 vCore-databas server. Anta att du vet att du kommer att behöva dessa resurser i minst ett år. I det här fallet bör du köpa en 40 (32 + 8) virtuella kärnor, ett års reservation för enkel databas generell användning – Gen5 och en 64 (2x16 + 32) vCore ett års reservation för enkel databas minne optimerad-Gen5
 
 
 ## <a name="buy-azure-database-for-postgresql-reserved-capacity"></a>Köp Azure Database for PostgreSQL reserverad kapacitet
@@ -53,13 +53,13 @@ I följande tabell beskrivs obligatoriska fält.
 
 | Fält | Beskrivning |
 | :------------ | :------- |
-| Prenumeration   | Prenumerationen som används för att betala för den Azure Database for PostgreSQL reserverade kapacitets reservationen. Betalnings metoden för prenumerationen debiteras mot startkostnader för den Azure Database for PostgreSQL reserverade kapacitets reservationen. Prenumerations typen måste vara ett Enterprise-avtal (erbjudande nummer: MS-AZR-0017P eller MS-AZR-0148P) eller ett enskilt avtal med priser enligt principen betala per användning (erbjudande nummer: MS-AZR-0003P eller MS-AZR-0023P). För en företags prenumeration dras avgifterna från registreringen för förskotts betalning i Azure (tidigare kallat betalnings åtagande) eller debiteras som överanvändning. För en enskild prenumeration med priset betala per användning debiteras avgifterna till kredit kortet eller faktura betalnings metoden för prenumerationen.
+| Prenumeration   | Prenumerationen som används för att betala för den Azure Database for PostgreSQL reserverade kapacitets reservationen. Betalnings metoden för prenumerationen debiteras mot startkostnader för den Azure Database for PostgreSQL reserverade kapacitets reservationen. Prenumerations typen måste vara ett Enterprise-avtal (erbjudande nummer: MS-AZR-0017P eller MS-AZR-0148P) eller ett enskilt avtal med priser enligt principen betala per användning (erbjudande nummer: MS-AZR-0003P eller MS-AZR-0023P). För företagsprenumerationer dras avgifterna från registreringens saldo för Azure-förskottsbetalning (kallades tidigare ekonomiskt åtagande) eller debiteras som överförbrukning. För en enskild prenumeration med priset betala per användning debiteras avgifterna till kredit kortet eller faktura betalnings metoden för prenumerationen.
 | Omfång | VCore-reservationens omfång kan omfatta en prenumeration eller flera prenumerationer (delad omfattning). Om du väljer: </br></br> **Delat** används reservations rabatten för vCore på Azure Database for PostgreSQL servrar som körs i en prenumeration i din fakturerings kontext. För företags kunder är det delade omfånget registreringen och innehåller alla prenumerationer i registreringen. För Betala per användning-kunder gäller den delade omfattningen samtliga Betala per användning-prenumerationer som kontoadministratören har skapat.</br></br> **Enskild prenumeration** tillämpas reservations rabatten för vCore på Azure Database for PostgreSQL servrar i den här prenumerationen. </br></br> **En enda resurs grupp**, reservations rabatten tillämpas på Azure Database for PostgreSQL servrar i den valda prenumerationen och den valda resurs gruppen i den prenumerationen.
 | Region | Den Azure-region som omfattas av reservationen Azure Database for PostgreSQL reserverad kapacitet.
 | Distributions typ | Den Azure Database for PostgreSQL resurs typ som du vill köpa reservationen för.
 | Prestanda nivå | Tjänst nivån för Azure Database for PostgreSQL-servrarna.
-| Term | Ett år
-| Antal | Mängden data bearbetnings resurser som köps i Azure Database for PostgreSQL reserverade kapacitets reservationen. Antalet är ett antal virtuella kärnor i den valda Azure-regionen och prestanda nivån som reserveras och kommer att få fakturerings rabatten. Om du till exempel kör eller planerar att köra en Azure Database for PostgreSQL-server med den totala beräknings kapaciteten för Gen5 16 virtuella kärnor i regionen USA, östra, skulle du ange kvantitet som 16 för att maximera förmånen för alla servrar.
+| Period | Ett år
+| Kvantitet | Mängden data bearbetnings resurser som köps i Azure Database for PostgreSQL reserverade kapacitets reservationen. Antalet är ett antal virtuella kärnor i den valda Azure-regionen och prestanda nivån som reserveras och kommer att få fakturerings rabatten. Om du till exempel kör eller planerar att köra en Azure Database for PostgreSQL-server med den totala beräknings kapaciteten för Gen5 16 virtuella kärnor i regionen USA, östra, skulle du ange kvantitet som 16 för att maximera förmånen för alla servrar.
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>Avbryta, byta ut eller återbetala reservationer
 
@@ -67,7 +67,8 @@ Du kan avbryta, byta ut och återbetala reservationer med vissa begränsningar. 
 
 ## <a name="vcore-size-flexibility"></a>flexibilitet för vCore-storlek
 
-vCore storleks flexibilitet hjälper dig att skala upp eller ned i en prestanda nivå och region, utan att förlora den reserverade kapacitets förmånen. 
+vCore storleks flexibilitet hjälper dig att skala upp eller ned i en prestanda nivå och region, utan att förlora den reserverade kapacitets förmånen. Om du skalar till högre virtuella kärnor än din reserverade kapacitet debiteras du för den överskjutande virtuella kärnor med hjälp av priset betala per användning.
+
 
 ## <a name="need-help-contact-us"></a>Behöver du hjälp? Kontakta oss
 
@@ -77,7 +78,7 @@ Om du har frågor eller behöver hjälp kan du [skapa en supportbegäran](https:
 
 Reservations rabatten för vCore tillämpas automatiskt på antalet Azure Database for PostgreSQL servrar som Azure Database for PostgreSQL matchar omfånget och attributen för reserverade kapacitets reservationer. Du kan uppdatera omfånget för Azure Database för PostgreSQL-reserverad kapacitets reservation via Azure Portal, PowerShell, CLI eller via API: et.
 
-Du kan läsa mer om Azure-reservationer i följande artiklar:
+Mer information om Azure-reservationer finns i följande artiklar:
 
 * [Vad är Azure reservations](../cost-management-billing/reservations/save-compute-costs-reservations.md)?
 * [Hantera Azure Reservations](../cost-management-billing/reservations/manage-reserved-vm-instance.md)

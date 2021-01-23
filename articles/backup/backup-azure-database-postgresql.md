@@ -4,12 +4,12 @@ description: Läs mer om Azure Database for PostgreSQL säkerhets kopiering med 
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.custom: references_regions
-ms.openlocfilehash: 628f43788c11558185a7b8a735373f0a663fdad1
-ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
+ms.openlocfilehash: 1e2d83d4a5e21ed747ec9d4dcf2fa03d1e3935cc
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98569495"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737581"
 ---
 # <a name="azure-database-for-postgresql-backup-with-long-term-retention-preview"></a>Azure Database for PostgreSQL säkerhets kopiering med långsiktig kvarhållning (för hands version)
 
@@ -31,7 +31,7 @@ Du kan använda den här lösningen fristående eller utöver den inbyggda säke
 
 |Support  |Information  |
 |---------|---------|
-|Distributioner som stöds   |  [Azure Database for PostgreSQL – enskild server](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---single-server)     |
+|Distributioner som stöds   |  [Azure Database for PostgreSQL – enskild server](../postgresql/overview.md#azure-database-for-postgresql---single-server)     |
 |Azure-regioner som stöds |  USA, östra USA, östra USA 2, centrala USA, södra centrala USA, västra USA, västra USA 2, västra centrala USA, södra Brasilien, centrala Kanada, Nord Europa, Västeuropa, Storbritannien, södra, Storbritannien, västra, Tyskland, västra centrala, Schweiz, norra, Schweiz, västra, Asien, östra, USA, östra, västra Japan, centrala USA, södra centrala USA, östra Australien, centrala Australien 2, östra  |
 |Azure PostgreSQL-versioner som stöds    |   9,5, 9,6, 10, 11      |
 

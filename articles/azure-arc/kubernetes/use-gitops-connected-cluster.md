@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Använda GitOps för att konfigurera ett Azure Arc-aktiverat Kubernetes-kluster (för hands version)
 keywords: GitOps, Kubernetes, K8s, Azure, Arc, Azure Kubernetes service, AKS, containers
-ms.openlocfilehash: 751b274a9cae68f6bc9b1adc45804f2dd2ef4c72
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: a068ed90ea53b3b25a1f41cebd9a5b8e607afa54
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684765"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737192"
 ---
 # <a name="deploy-configurations-using-gitops-on-arc-enabled-kubernetes-cluster-preview"></a>Distribuera konfigurationer med hjälp av GitOps på Arc-aktiverade Kubernetes-kluster (förhandsversion)
 
@@ -138,7 +138,7 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 > [!NOTE]
 > HTTPS Helm release Private auth stöds bara med Helm-operatörens diagram version >= 1.2.0.  Version 1.2.0 används som standard.
 > HTTPS Helm release Private auth stöds inte för närvarande för Azure Kubernetes Services-hanterade kluster.
-> Om du behöver flöden för att komma åt git-lagrings platsen via din proxy måste du uppdatera Azure Arc-agenterna med proxyinställningarna. [Mer information](https://docs.microsoft.com/azure/azure-arc/kubernetes/connect-cluster#connect-using-an-outbound-proxy-server)
+> Om du behöver flöden för att komma åt git-lagrings platsen via din proxy måste du uppdatera Azure Arc-agenterna med proxyinställningarna. [Mer information](./connect-cluster.md#connect-using-an-outbound-proxy-server)
 
 #### <a name="additional-parameters"></a>Ytterligare parametrar
 

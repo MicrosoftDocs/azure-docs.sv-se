@@ -10,12 +10,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake
 ms.date: 01/15/2021
-ms.openlocfilehash: 6589f451d4db8f2ed77ce70a2bdfa9d76927c1e2
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 35cdfdbdc04d0c88bc49c024ea7465537583e0d7
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251224"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735519"
 ---
 # <a name="vcore-model-overview---azure-sql-database-and-azure-sql-managed-instance"></a>Översikt över vCore-modellen – Azure SQL Database och Azure SQL-hanterad instans 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -34,7 +34,7 @@ Tjänst nivå alternativ i vCore-modellen omfattar Generell användning, Affärs
 |-|**Generell användning**|**Affärskritisk**|**Hyperskala**|
 |---|---|---|---|
 |Bäst för|De flesta företags arbets belastningar. Erbjuder budgetorienterade, balanserade och skalbara beräknings- och lagringsalternativ. |Erbjuder affärs program den högsta återhämtningen till problem genom att använda flera isolerade repliker och ger den högsta I/O-prestandan per databas replik.|De flesta företags arbets belastningar med mycket skalbara lagrings-och Läs skalnings krav.  Ger högre återhämtning till problem genom att tillåta konfiguration av mer än en isolerad databas replik. |
-|Lagring|Använder Fjärrlagring.<br/>**SQL Database etablerings beräkning**:<br/>5 GB – 4 TB<br/>**Server lös beräkning**:<br/>5 GB-3 TB<br/>**SQL-hanterad instans**: 32 GB-8 TB |Använder lokal SSD-lagring.<br/>**SQL Database etablerings beräkning**:<br/>5 GB – 4 TB<br/>**SQL-hanterad instans**:<br/>32 GB – 4 TB |Flexibel automatisk storleks ökning av lagring vid behov. Har stöd för upp till 100 TB lagrings utrymme. Använder lokal SSD-lagring för lokal cache för buffring och lokal data lagring. Använder Azure Fjärrlagring som sista långsiktigt långsiktigt data lager. |
+|Storage|Använder Fjärrlagring.<br/>**SQL Database etablerings beräkning**:<br/>5 GB – 4 TB<br/>**Server lös beräkning**:<br/>5 GB-3 TB<br/>**SQL-hanterad instans**: 32 GB-8 TB |Använder lokal SSD-lagring.<br/>**SQL Database etablerings beräkning**:<br/>5 GB – 4 TB<br/>**SQL-hanterad instans**:<br/>32 GB – 4 TB |Flexibel automatisk storleks ökning av lagring vid behov. Har stöd för upp till 100 TB lagrings utrymme. Använder lokal SSD-lagring för lokal cache för buffring och lokal data lagring. Använder Azure Fjärrlagring som sista långsiktigt långsiktigt data lager. |
 |IOPS och data flöde (ungefärligt)|**SQL Database**: se resurs gränser för [enskilda databaser](resource-limits-vcore-single-databases.md) och [elastiska pooler](resource-limits-vcore-elastic-pools.md).<br/>**SQL-hanterad instans**: se [Översikt över gränser för Azure SQL Managed Instance-resurser](../managed-instance/resource-limits.md#service-tier-characteristics).|Se resurs gränser för [enskilda databaser](resource-limits-vcore-single-databases.md) och [elastiska pooler](resource-limits-vcore-elastic-pools.md).|Hög skalning är en arkitektur med flera nivåer med cachelagring på flera nivåer. Effektiv IOPS och data flöde beror på arbets belastningen.|
 |Tillgänglighet|1 replik, inga storskaliga repliker|3 repliker, 1 [storskalig replik](read-scale-out.md),<br/>zon-redundant hög tillgänglighet (HA)|1 Läs-och skriv replik, plus 0-4 storskalig [repliker](read-scale-out.md)|
 |Säkerhetskopior|[Geo-redundant lagring med Läs behörighet (RA-GRS)](../../storage/common/geo-redundant-design.md), 7-35 dagar (7 dagar som standard)|[RA-GRS](../..//storage/common/geo-redundant-design.md), 7-35 dagar (7 dagar som standard)|Ögonblicks bilds säkerhets kopieringar i Azure Remote Storage. Återställningar använder dessa ögonblicks bilder för snabb återställning. Säkerhets kopieringar är omedelbara och påverkar inte beräknings-I/O-prestanda. Återställningar är snabba och är inte en storleks data åtgärd (tar några minuter i stället för timmar eller dagar).|
@@ -106,7 +106,7 @@ To enable M-series hardware for a subscription and region, a support request mus
 > DC-serien är för närvarande en **offentlig för hands version**.
 
 - Maskin vara för maskin varu serien använder Intel-processorer med Software Guard-tillägg (Intel SGX)-teknik.
-- DC-serien krävs för [Always Encrypted med säker enclaves](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-enclaves), vilket inte stöds med andra maskinvarukonfigurationer.
+- DC-serien krävs för [Always Encrypted med säker enclaves](/sql/relational-databases/security/encryption/always-encrypted-enclaves), vilket inte stöds med andra maskinvarukonfigurationer.
 - DC-serien är utformad för arbets belastningar som bearbetar känsliga data och begär Anden om funktioner för hemliga frågor, som tillhandahålls av Always Encrypted med säker enclaves.
 - Maskin varu seriens maskin vara ger balanserade beräknings-och minnes resurser.
 

@@ -12,12 +12,12 @@ ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 6538243cf8fc12131e1480c8578bfa8739c4f561
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: e3ebd83646353e34c239e7d1812e380b9e9d2e26
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98676297"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737531"
 ---
 # <a name="dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics-release-notes"></a>Dedikerad SQL-pool (tidigare SQL DW) i versions information för Azure Synapse Analytics
 
@@ -52,7 +52,7 @@ För verktygs förbättringar kontrollerar du att rätt version är installerad 
 | Förbättringar av tjänsten | Information |
 | --- | --- |
 |**Infogade T-SQL infogade Table-Valued funktioner (förhands granskning)**|I den här versionen kan du nu skapa infogade tabell värdes funktioner med Transact-SQL och fråga resultaten på samma sätt som en tabell. Den här funktionen är för närvarande en för hands version och kommer att stödjas i verktyg i GA. Mer information finns i [skapa funktion (Azure Synapse Analytics)](/sql/t-sql/statements/create-function-sql-data-warehouse?view=azure-sqldw-latest&preserve-view=true).|
-|**MERGE-kommando (förhands granskning)**|Nu kan du köra INSERT-, Update-eller Delete-åtgärder på en mål tabell från resultatet av en koppling med en käll tabell. Du kan till exempel synkronisera två tabeller genom att infoga, uppdatera eller ta bort rader i en tabell baserat på skillnader som finns i den andra tabellen.  Kontrol lera [sammanslagning](/sql/t-sql/statements/merge-transact-sql?view=azuresqldb-current) för mer information.|
+|**MERGE-kommando (förhands granskning)**|Nu kan du köra INSERT-, Update-eller Delete-åtgärder på en mål tabell från resultatet av en koppling med en käll tabell. Du kan till exempel synkronisera två tabeller genom att infoga, uppdatera eller ta bort rader i en tabell baserat på skillnader som finns i den andra tabellen.  Kontrol lera [sammanslagning](/sql/t-sql/statements/merge-transact-sql??view=azure-sqldw-latest&preserve-view=true) för mer information.|
 
 ## <a name="aug-2020"></a>Aug 2020
 
@@ -68,7 +68,7 @@ För verktygs förbättringar kontrollerar du att rätt version är installerad 
 |**Kryptering på kolumn nivå (offentlig för hands version)**|Skydda känslig information i din Azure Synapse-analys genom att använda symmetrisk kryptering i en kolumn med data med hjälp av Transact-SQL. Kryptering på kolumn nivå har inbyggda funktioner som du kan använda för att kryptera data med hjälp av symmetriska nycklar som skyddas ytterligare med ett certifikat, lösen ord, symmetrisk nyckel eller asymmetrisk nyckel. Mer information finns [i kryptera en kolumn med data](/sql/relational-databases/security/encryption/encrypt-a-column-of-data?view=azure-sqldw-latest&preserve-view=true).|
 |**Stöd för kompatibilitetsnivå (GA)**|I den här versionen kan användarna nu ange en databas kompatibilitetsnivå för att hämta Transact-SQL-språket och fråga efter bearbetnings beteenden för en specifik version av Synapse SQL-motorn. Mer information finns i [sys.database_scoped_configurations](/sql/relational-databases/system-catalog-views/sys-database-scoped-configurations-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) och [ändra databas omfattnings konfiguration](/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).|
 |**Säkerhet på radnivå**|Den här versionen innehåller en förbättring av uppdaterings-och borttagnings åtgärder på rader med RLS tillämpade på dem. I den här versionen kommer Update och Delete-åtgärder med inbyggda funktioner som is_rolemember att lyckas om den inre inte refererar till någon kolumn i DML-mål tabellen. Innan den här förbättringen misslyckades dessa åtgärder på grund av begränsning i de underliggande DML-åtgärderna.|
-|**DBCC SHRINKDATABASE (GA)**|Nu kan du minska storleken på data-och loggfilerna i den angivna databasen. Mer information finns i [dokumentationen](/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql?view=sql-server-ver15).|
+|**DBCC SHRINKDATABASE (GA)**|Nu kan du minska storleken på data-och loggfilerna i den angivna databasen. Mer information finns i [dokumentationen](/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql?view=azure-sqldw-latest&preserve-view=true).|
 
 ## <a name="may-2020"></a>Maj 2020
 

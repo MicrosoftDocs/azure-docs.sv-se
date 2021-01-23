@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 2bf56379a32bf8035ea2d0d3fe797776ec6ba40d
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: e31eb8deb3102ab03809f01e33b1e6548113dae4
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98250408"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736397"
 ---
 # <a name="getting-started-with-azure-metrics-explorer"></a>Komma igång med Azure Metrics Explorer
 
@@ -29,7 +29,7 @@ Azure Monitor Metrics Explorer är en komponent i Microsoft Azure-portalen som g
 
 Om du vill skapa ett mått diagram går du till vyn resurs, resurs grupp, prenumeration eller Azure Monitor, öppnar fliken **mått** och följer de här stegen:
 
-1. Klicka på knappen "Välj ett omfång" för att öppna resurs omfattnings väljaren. På så kan du välja de resurser som du vill visa mått för. Resursen bör redan vara ifylld om du öppnade Metrics Explorer från resursens meny. [Läs den här artikeln](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-dynamic-scope)om du vill veta mer om hur du visar mått över flera resurser.
+1. Klicka på knappen "Välj ett omfång" för att öppna resurs omfattnings väljaren. På så kan du välja de resurser som du vill visa mått för. Resursen bör redan vara ifylld om du öppnade Metrics Explorer från resursens meny. [Läs den här artikeln](./metrics-dynamic-scope.md)om du vill veta mer om hur du visar mått över flera resurser.
     > ![Välj en resurs](./media/metrics-getting-started/scope-picker.png)
 
 2. För vissa resurser måste du välja ett namn område. Namn området är bara ett sätt att organisera mått så att du lätt kan hitta dem. Lagrings konton har till exempel separata namn rymder för lagring av filer, tabeller, blobbar och köers mått. Många resurs typer har bara ett namn område.

@@ -3,18 +3,18 @@ title: Använd Azure Batch klient bibliotek för Node.js
 description: Lär dig de grundläggande principerna för Azure Batch och skapa en enkel lösning med Node.js.
 ms.topic: how-to
 ms.date: 10/08/2020
-ms.openlocfilehash: 8d34d5bbb302e3781aabdd697de11d3d492b879a
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 36a127a20014e87554f0d3e3927b05679b6f72f1
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97106707"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737294"
 ---
 # <a name="get-started-with-batch-sdk-for-nodejs"></a>Kom igång med Batch SDK för Node.js
 
 Lär dig grunderna i att bygga en Batch-klient i Node.js med [Azure Batch Node.js SDK](/javascript/api/overview/azure/batch). Vi går igenom ett scenario med ett batch-program, steg för steg, och utför sedan en konfigurering med en Node.js-klient.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Den här artikeln förutsätter att du har kunskaper om Node.js och att du är bekant med Linux. Den förutsätter också att du har ett Azure-konto med behörighet att skapa batch- och lagringstjänster.
 
@@ -38,7 +38,7 @@ Node.js-klienten distribuerar ett batch-jobb med en förberedande aktivitet (bes
 
 > [!TIP]
 > Node.js-klienten i den angivna länken innehåller ingen kod som kan distribueras som en Azure-funktionsapp. Se följande länkar för att få anvisningar om hur du skapar en sådan.
-> - [Skapa funktionsappen](../azure-functions/functions-create-first-azure-function.md)
+> - [Skapa funktionsappen](../azure-functions/functions-get-started.md)
 > - [Skapa timerutlösare](../azure-functions/functions-bindings-timer.md)
 
 ## <a name="build-the-application"></a>Skapa programmet

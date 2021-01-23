@@ -3,12 +3,12 @@ title: Felsöka återställning av virtuella Azure-filer
 description: Felsök problem när du återställer filer och mappar från en virtuell Azure-säkerhetskopiering.
 ms.topic: troubleshooting
 ms.date: 07/12/2020
-ms.openlocfilehash: aec69b91ad1dae5864e5e8fba61c53e6d15887f4
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: c4d0d233237cb477d72efea0b91d4e5288e2a302
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624514"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735885"
 ---
 # <a name="troubleshoot-issues-in-file-recovery-of-an-azure-vm-backup"></a>Felsöka problem vid fil återställning av en virtuell Azure-säkerhetskopiering
 
@@ -46,7 +46,7 @@ Det här avsnittet innehåller anvisningar för att felsöka vanliga problem som
 
 ### <a name="you-cant-download-the-script"></a>Du kan inte ladda ned skriptet
 
-1. Se till att du har de [behörigheter som krävs för att ladda ned skriptet](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#select-recovery-point-who-can-generate-script).
+1. Se till att du har de [behörigheter som krävs för att ladda ned skriptet](./backup-azure-restore-files-from-vm.md#select-recovery-point-who-can-generate-script).
 1. Kontrol lera anslutningen till Azure-mål-IP-adresserna. Kör något av följande kommandon från en upphöjd kommando tolk:
 
    `nslookup download.microsoft.com`
@@ -67,7 +67,7 @@ När du kör python-skriptet för återställning på objekt nivå (ILR) på SUS
 
 Du kan se fel meddelandet "undantag påträffades vid anslutning till mål".
 
-1. Se till att datorn där skriptet körs uppfyller [åtkomst kraven](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#step-4-access-requirements-to-successfully-run-the-script).
+1. Se till att datorn där skriptet körs uppfyller [åtkomst kraven](./backup-azure-restore-files-from-vm.md#step-4-access-requirements-to-successfully-run-the-script).
 1. Kontrol lera anslutningen till Azure-mål-IP-adresserna. Kör något av följande kommandon från en upphöjd kommando tolk:
 
    `nslookup download.microsoft.com`

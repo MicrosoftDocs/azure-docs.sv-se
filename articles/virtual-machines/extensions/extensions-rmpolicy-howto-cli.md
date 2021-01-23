@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 03/23/2018
 ms.author: akjosh
 ms.reviewer: cynthn
-ms.openlocfilehash: 26874c33c496b57bf6317a7b837b3afddc2f5e37
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 41457f26c22e3b8ed529ce77cfaf452618b03655
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94955658"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737650"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-linux-vms"></a>Använd Azure Policy för att begränsa installationen av tillägg på virtuella Linux-datorer
 
@@ -98,7 +98,7 @@ När du är färdig trycker du på **ESC** -tangenten och skriver sedan **: Wq**
 
 ## <a name="create-the-policy"></a>Skapa principen
 
-En princip definition är ett objekt som används för att lagra den konfiguration som du vill använda. Princip definitionen använder filerna regler och parametrar för att definiera principen. Skapa princip definitionen med [AZ-princip definition Create](/cli/azure/role/assignment?view=azure-cli-latest).
+En princip definition är ett objekt som används för att lagra den konfiguration som du vill använda. Princip definitionen använder filerna regler och parametrar för att definiera principen. Skapa princip definitionen med [AZ-princip definition Create](/cli/azure/role/assignment).
 
 I det här exemplet är reglerna och parametrarna de filer som du har skapat och lagrat som JSON-filer i Cloud Shell.
 
@@ -117,7 +117,7 @@ az policy definition create \
 
 I det här exemplet tilldelas principen en resurs grupp med [AZ policy Assignment Create](/cli/azure/policy/assignment). Alla virtuella datorer som skapats i resurs gruppen **myResourceGroup** kommer inte att kunna installera Linux VM-åtkomst eller anpassade skript tillägg för Linux. Resurs gruppen måste finnas innan du kan tilldela principen.
 
-Använd [AZ Account List](/cli/azure/account?view=azure-cli-latest) för att hämta ditt PRENUMERATIONS-ID i stället för det som visas i exemplet.
+Använd [AZ Account List](/cli/azure/account) för att hämta ditt PRENUMERATIONS-ID i stället för det som visas i exemplet.
 
 
 ```azurecli-interactive

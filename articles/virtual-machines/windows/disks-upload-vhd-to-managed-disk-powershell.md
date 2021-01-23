@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: virtual-machines
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: 17b99a9d3fa6b2934705d913170f2f617c856998
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 1655c48eeb9227bf934c7fd9bb37610327b2b98c
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97915767"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736279"
 ---
 # <a name="upload-a-vhd-to-azure-or-copy-a-managed-disk-to-another-region---azure-powershell"></a>Ladda upp en virtuell hård disk till Azure eller kopiera en hanterad disk till en annan region – Azure PowerShell
 
@@ -44,7 +44,7 @@ Den här typen av hanterade diskar har två unika tillstånd:
 
 Innan du kan skapa en tom standard hård disk för uppladdning behöver du fil storleken på den virtuella hård disk som du vill ladda upp, i byte. Exempel koden kommer att ge dig, men för att göra det själv kan du använda: `$vhdSizeBytes = (Get-Item "<fullFilePathHere>").length` . Det här värdet används när du anger parametern **-UploadSizeInBytes** .
 
-I det lokala gränssnittet skapar du en tom standard hård disk för uppladdning genom att ange **uppladdnings** inställningen i parametern **-CreateOption** och parametern **-UploadSizeInBytes** i cmdleten [New-AzDiskConfig](/powershell/module/az.compute/new-azdiskconfig?view=azps-1.8.0&preserve-view=true) . Anropa sedan [New-AzDisk](/powershell/module/az.compute/new-azdisk?view=azps-1.8.0&preserve-view=true) för att skapa disken.
+I det lokala gränssnittet skapar du en tom standard hård disk för uppladdning genom att ange **uppladdnings** inställningen i parametern **-CreateOption** och parametern **-UploadSizeInBytes** i cmdleten [New-AzDiskConfig](/powershell/module/az.compute/new-azdiskconfig) . Anropa sedan [New-AzDisk](/powershell/module/az.compute/new-azdisk) för att skapa disken.
 
 Ersätt `<yourdiskname>` , `<yourresourcegroupname>` och `<yourregion>` kör sedan följande kommandon:
 

@@ -8,20 +8,20 @@ ms.author: robreed
 ms.date: 04/26/2019
 ms.topic: how-to
 manager: carmonm
-ms.openlocfilehash: 5baa6d57bd3895640f1654cf7a5ebca52f101cbe
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: dae77dfb72fb6b11721500686991f2b199606b99
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91970579"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737871"
 ---
 # <a name="run-shell-scripts-in-your-linux-vm-by-using-run-command"></a>Kör Shell-skript i din virtuella Linux-dator med kommandot kör
 
-Funktionen Kör kommando använder agenten för virtuella datorer (VM) för att köra gränssnitts skript i en virtuell Azure Linux-dator. Du kan använda dessa skript för allmän hantering av datorer eller program. De kan hjälpa dig att snabbt diagnostisera och åtgärda åtkomst till virtuella datorer och nätverks problem och återställa den virtuella datorn till ett lyckat tillstånd.
+Funktionen Run Command använder agenten för virtuella datorer (VM) till att köra gränssnittsskript i en virtuell Azure Linux-dator. Du kan använda de här skripten till allmän hantering av datorer eller program. De kan hjälpa dig att snabbt diagnostisera och åtgärda åtkomst till virtuella datorer och nätverks problem och återställa den virtuella datorn till ett lyckat tillstånd.
 
 ## <a name="benefits"></a>Fördelar
 
-Du kan komma åt dina virtuella datorer på flera olika sätt. Kommandot kör kan köra skript på dina virtuella datorer via en fjärr anslutning med hjälp av VM-agenten. Du använder kommandot kör via Azure Portal, [REST API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand)eller [Azure CLI](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke) för virtuella Linux-datorer.
+Du kan komma åt dina virtuella datorer på flera olika sätt. Kommandot kör kan köra skript på dina virtuella datorer via en fjärr anslutning med hjälp av VM-agenten. Du använder kommandot kör via Azure Portal, [REST API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand)eller [Azure CLI](/cli/azure/vm/run-command#az_vm_run_command_invoke) för virtuella Linux-datorer.
 
 Den här funktionen är användbar i alla scenarier där du vill köra ett skript i en virtuell dator. Det är ett av de enda sätt som du kan använda för att felsöka och reparera en virtuell dator som inte har RDP-eller SSH-porten öppen på grund av en felaktig konfiguration av nätverks-eller administrativa användare.
 
@@ -56,7 +56,7 @@ The entity was not found in this Azure location
 
 ## <a name="azure-cli"></a>Azure CLI
 
-I följande exempel används kommandot [AZ VM Run-Command](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke) för att köra ett gränssnitts skript på en virtuell Azure Linux-dator.
+I följande exempel används kommandot [AZ VM Run-Command](/cli/azure/vm/run-command#az_vm_run_command_invoke) för att köra ett gränssnitts skript på en virtuell Azure Linux-dator.
 
 ```azurecli-interactive
 az vm run-command invoke -g myResourceGroup -n myVm --command-id RunShellScript --scripts "apt-get update && apt-get install -y nginx"
@@ -71,7 +71,7 @@ Gå till en virtuell dator i [Azure Portal](https://portal.azure.com) och välj 
 
 ![Lista med kommandon](./media/run-command/run-command-list.png)
 
-Välj ett kommando som ska köras. Några av kommandona kan ha valfria eller obligatoriska indataparametrar. För dessa kommandon visas parametrarna som textfält så att du kan ange indatavärdena. Du kan visa skriptet som körs genom att expandera **visnings skript**för varje kommando. **RunShellScript** skiljer sig från de andra kommandona, eftersom det gör att du kan ange ett eget anpassat skript.
+Välj ett kommando som ska köras. Några av kommandona kan ha valfria eller obligatoriska indataparametrar. För dessa kommandon visas parametrarna som textfält så att du kan ange indatavärdena. Du kan visa skriptet som körs genom att expandera **visnings skript** för varje kommando. **RunShellScript** skiljer sig från de andra kommandona, eftersom det gör att du kan ange ett eget anpassat skript.
 
 > [!NOTE]
 > De inbyggda kommandona kan inte redige ras.
@@ -88,7 +88,7 @@ I följande exempel används cmdleten [Invoke-AzVMRunCommand](/powershell/module
 Invoke-AzVMRunCommand -ResourceGroupName '<myResourceGroup>' -Name '<myVMName>' -CommandId 'RunShellScript' -ScriptPath '<pathToScript>' -Parameter @{"arg1" = "var1";"arg2" = "var2"}
 ```
 
-## <a name="limiting-access-to-run-command"></a>Begränsa åtkomst till Kör kommando
+## <a name="limiting-access-to-run-command"></a>Begränsa åtkomst till Run Command
 
 Det krävs behörighet för att Visa körnings kommandon eller Visa information om ett kommando `Microsoft.Compute/locations/runCommands/read` . Den inbyggda [läsar](../../role-based-access-control/built-in-roles.md#reader) rollen och högre nivåer har den här behörigheten.
 

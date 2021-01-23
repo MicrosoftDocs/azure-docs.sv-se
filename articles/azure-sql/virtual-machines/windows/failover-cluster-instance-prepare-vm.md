@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: 1b8d88167dac6b2d0b1ba2afc90c443fd80b9e46
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 10f01fd5943928eda1f1e4518f30c8e3ccf56b46
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223167"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737803"
 ---
 # <a name="prepare-virtual-machines-for-an-fci-sql-server-on-azure-vms"></a>Förbereda virtuella datorer för en FCI (SQL Server på virtuella Azure-datorer)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -27,7 +27,7 @@ Den här artikeln beskriver hur du förbereder virtuella Azure-datorer (VM) att 
 
 Mer information finns i Översikt över [FCI med SQL Server på Azure VM](failover-cluster-instance-overview.md) och [kluster metod tips](hadr-cluster-best-practices.md). 
 
-## <a name="prerequisites"></a>Förutsättningar 
+## <a name="prerequisites"></a>Krav 
 
 - En Microsoft Azure-prenumeration. Kom igång [kostnads fritt](https://azure.microsoft.com/free/). 
 - En Windows-domän på virtuella Azure-datorer eller ett lokalt Data Center som utökats till Azure med länkning av virtuella nätverk.
@@ -44,7 +44,7 @@ Konfigurations inställningarna för den virtuella datorn varierar beroende på 
 
 ## <a name="configure-vm-availability"></a>Konfigurera tillgänglighet för virtuell dator 
 
-Funktionen kluster för växling vid fel kräver att virtuella datorer placeras i en [tillgänglighets uppsättning](../../../virtual-machines/linux/tutorial-availability-sets.md) eller i en [tillgänglighets zon](../../../availability-zones/az-overview.md#availability-zones). Om du väljer tillgänglighets uppsättningar kan du använda [närhets placerings grupper](../../../virtual-machines/windows/co-location.md#proximity-placement-groups) för att hitta de virtuella datorerna närmare. I själva verket är närhets grupper nödvändiga för att använda Azure-delade diskar. 
+Funktionen kluster för växling vid fel kräver att virtuella datorer placeras i en [tillgänglighets uppsättning](../../../virtual-machines/linux/tutorial-availability-sets.md) eller i en [tillgänglighets zon](../../../availability-zones/az-overview.md#availability-zones). Om du väljer tillgänglighets uppsättningar kan du använda [närhets placerings grupper](../../../virtual-machines/co-location.md#proximity-placement-groups) för att hitta de virtuella datorerna närmare. I själva verket är närhets grupper nödvändiga för att använda Azure-delade diskar. 
 
 Välj noga alternativet tillgänglighet för virtuell dator som matchar den avsedda kluster konfigurationen: 
 

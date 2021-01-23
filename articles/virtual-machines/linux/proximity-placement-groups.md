@@ -1,5 +1,5 @@
 ---
-title: Använd närhets placerings grupper
+title: Använda närhetsplaceringsgrupper
 description: Lär dig mer om att skapa och använda närhets placerings grupper för virtuella datorer i Azure.
 author: cynthn
 ms.service: virtual-machines
@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 10/30/2019
 ms.author: cynthn
-ms.openlocfilehash: ee172203d6aa54b4b539356835f8a6bf2d21bad3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ea50d0fdc5a772cae449951901af36eed4e93771
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87288424"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737633"
 ---
 # <a name="deploy-vms-to-proximity-placement-groups-using-azure-cli"></a>Distribuera virtuella datorer till närhetsplaceringsgrupper med Azure CLI
 
@@ -67,7 +67,7 @@ Du kan också skapa en tillgänglighets uppsättning i närheten av placerings g
 
 ## <a name="scale-sets"></a>Skalningsuppsättningar
 
-Du kan också skapa en skalnings uppsättning i närheten av placerings gruppen. Använd samma `--ppg` parameter med [AZ VMSS Create](/cli/azure/vmss?view=azure-cli-latest#az-vmss-create) för att skapa en skalnings uppsättning och alla instanser kommer att skapas i samma närhets placerings grupp.
+Du kan också skapa en skalnings uppsättning i närheten av placerings gruppen. Använd samma `--ppg` parameter med [AZ VMSS Create](/cli/azure/vmss#az_vmss_create) för att skapa en skalnings uppsättning och alla instanser kommer att skapas i samma närhets placerings grupp.
 
 ## <a name="next-steps"></a>Nästa steg
 

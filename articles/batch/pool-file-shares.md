@@ -3,12 +3,12 @@ title: Azure-filresurs för Azure Batch pooler
 description: Montera en Azure Files resurs från datornoder i en Linux-eller Windows-pool i Azure Batch.
 ms.topic: how-to
 ms.date: 05/24/2018
-ms.openlocfilehash: 6bbaba20512a17de563e74ba095057c5c3f71f6b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e5682e7ba853973592c3a650a06ce72615cec7b6
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87986431"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735502"
 ---
 # <a name="use-an-azure-file-share-with-a-batch-pool"></a>Använda en Azure-filresurs med en batch-pool
 
@@ -20,7 +20,7 @@ ms.locfileid: "87986431"
 
 * Azure-filresurser är [kostnads effektiva](https://azure.microsoft.com/pricing/details/storage/files/) och kan konfigureras med datareplikering till en annan region så att de är globalt redundanta. 
 
-* Du kan montera en Azure-filresurs samtidigt från en lokal dator. Men se till att du förstår [samtidighets konsekvenser](../storage/common/storage-concurrency.md) särskilt när du använder REST-API: er.
+* Du kan montera en Azure-filresurs samtidigt från en lokal dator. Men se till att du förstår [samtidighets konsekvenser](../storage/blobs/concurrency-manage.md) särskilt när du använder REST-API: er.
 
 * Se även de allmänna [planerings övervägandena](../storage/files/storage-files-planning.md) för Azure-filresurser.
 

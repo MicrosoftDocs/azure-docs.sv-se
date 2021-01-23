@@ -7,12 +7,12 @@ ms.date: 10/02/2020
 ms.topic: troubleshooting
 ms.service: virtual-machines
 ms.subservice: imaging
-ms.openlocfilehash: 7c937353c645ee5d977a52ec0f8e935eba19a940
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 73984694d764234e9e1ec11e6b189a9ad85d97a8
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91969984"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737412"
 ---
 # <a name="troubleshoot-azure-image-builder-service"></a>Felsöka Azure Image Builder-tjänsten
 
@@ -152,7 +152,7 @@ Get-AzImageBuilderTemplate -ImageTemplateName  <imageTemplateName> -ResourceGrou
 
 När avbildnings versionen körs skapas loggar och lagras i ett lagrings konto. Azure Image Builder skapar lagrings kontot i den tillfälliga resurs gruppen när du skapar en avbildnings mal len artefakt.
 
-Namnet på lagrings kontot använder följande mönster: **IT_ \<ImageResourceGroupName\> _\<TemplateName\>_ \<GUID\> **
+Namnet på lagrings kontot använder följande mönster: **IT_ \<ImageResourceGroupName\> _\<TemplateName\>_ \<GUID\>**
 
 Till exempel *IT_aibmdi_helloImageTemplateLinux01*.
 
@@ -209,7 +209,7 @@ Anpassningen. log innehåller följande steg:
     ```
 5. Avetablerings steg. Azure Image Builder lägger till en dold anpassning. Det här avetablerings steget ansvarar för att förbereda den virtuella datorn för inetablering. Den kör Windows Sysprep (med c:\DeprovisioningScript.ps1) eller i Linux waagent deetablering (med/tmp/DeprovisioningScript.sh). 
 
-    Till exempel:
+    Ett exempel:
     ```text
     PACKER ERR 2020/03/04 23:05:04 [INFO] (telemetry) Starting provisioner powershell
     PACKER ERR 2020/03/04 23:05:04 packer: 2020/03/04 23:05:04 Found command: if( TEST-PATH c:\DeprovisioningScript.ps1 ){cat c:\DeprovisioningScript.ps1} else {echo "Deprovisioning script [c:\DeprovisioningScript.ps1] could not be found. Image build may fail or the VM created from the Image may not boot. Please make sure the deprovisioning script is not accidentally deleted by a Customizer in the Template."}
@@ -247,7 +247,7 @@ Anpassnings problem.
 
 Granska loggen för att hitta de anpassade felen. Sök efter *(telemetri)*. 
 
-Till exempel:
+Ett exempel:
 ```text
 (telemetry) Starting provisioner windows-update
 (telemetry) ending windows-update
@@ -586,7 +586,7 @@ Det kanske finns fall där du behöver undersöka lyckade versioner och vill gra
 
 Om versionen inte har avbrutits av en användare avbröts den av Azure DevOps user agent. Förmodligen har tids gränsen på 1 timme uppstått på grund av Azure DevOps-funktioner. Om du använder ett privat projekt och en agent får du 60 minuter för bygg tiden. Om versionen överskrider tids gränsen avbryter DevOps aktiviteten som körs.
 
-Mer information om funktioner och begränsningar för Azure DevOps finns i [Microsoft-värdbaserade agenter](/azure/devops/pipelines/agents/hosted?view=azure-devops#capabilities-and-limitations)
+Mer information om funktioner och begränsningar för Azure DevOps finns i [Microsoft-värdbaserade agenter](/azure/devops/pipelines/agents/hosted#capabilities-and-limitations)
  
 #### <a name="solution"></a>Lösning
 
@@ -606,7 +606,7 @@ I första hand i Image-versionen kontrollerar du att det inte finns några vänt
  
 ## <a name="vms-created-from-aib-images-do-not-create-successfully"></a>Det gick inte att skapa virtuella datorer som skapats från AIB-avbildningar
 
-Som standard körs *avetablerings* kod i Azure Image Builder i slutet av varje bild anpassnings fas för att *generalisera* avbildningen. Generalize är en process där avbildningen har kon figurer ATS att återanvändas för att skapa flera virtuella datorer och du kan överföra inställningar för virtuella datorer, till exempel värdnamn, användar namn, osv. För Windows kör Azure Image Builder *Sysprep*och för Linux Azure Image Builder körs `waagent -deprovision` . 
+Som standard körs *avetablerings* kod i Azure Image Builder i slutet av varje bild anpassnings fas för att *generalisera* avbildningen. Generalize är en process där avbildningen har kon figurer ATS att återanvändas för att skapa flera virtuella datorer och du kan överföra inställningar för virtuella datorer, till exempel värdnamn, användar namn, osv. För Windows kör Azure Image Builder *Sysprep* och för Linux Azure Image Builder körs `waagent -deprovision` . 
 
 För Windows använder Azure Image Builder ett allmänt Sysprep-kommando. Detta är dock inte lämpligt för varje lyckad Windows-generalisering. Med Azure Image Builder kan du anpassa Sysprep-kommandot. Obs! Azure Image Builder är ett verktyg för bild automatisering. Det ansvarar för att köra Sysprep-kommandot. Men du kan behöva olika Sysprep-kommandon för att kunna använda avbildningen igen. För Linux använder Azure Image Builder ett allmänt `waagent -deprovision+user` kommando. Mer information finns i [Microsoft Azure Linux Agent-dokumentation](https://github.com/Azure/WALinuxAgent#command-line-options).
 

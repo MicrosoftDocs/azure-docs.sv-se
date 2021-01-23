@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/08/2020
 ms.author: jeedes
-ms.openlocfilehash: 3db6fd2e6df96590d7d405157cbb33900c7d8531
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: 286dc20ba70c78f8248f611abd75e0acc303c068
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98127812"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736195"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-amazon-web-services-aws"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med Amazon Web Services (AWS)
 
@@ -31,7 +31,7 @@ I den här självstudien får du lära dig hur du integrerar Amazon Web Services
 
 ![Diagram över Azure AD-och AWS-relationer](./media/amazon-web-service-tutorial/tutorial_amazonwebservices_image.png)
 
-Du kan konfigurera flera identifierare för flera instanser. Exempel:
+Du kan konfigurera flera identifierare för flera instanser. Ett exempel:
 
 * `https://signin.aws.amazon.com/saml#1`
 
@@ -50,7 +50,7 @@ Vi rekommenderar den här metoden av följande orsaker:
 > [!Note]
 > Se till att du endast använder ett galleri program.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 För att komma igång behöver du följande objekt:
 
@@ -120,7 +120,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
     | SessionDuration | ”ange ett värde mellan 900 sekunder (15 minuter) och 43 200 sekunder (12 timmar)” |  `https://aws.amazon.com/SAML/Attributes` |
 
     > [!NOTE]
-    > AWS förväntar sig roller för användare som tilldelats programmet. Konfigurera de här rollerna i Azure AD så att användarna kan tilldelas lämpliga roller. Information om hur du konfigurerar roller i Azure AD finns [här](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps#app-roles-ui)
+    > AWS förväntar sig roller för användare som tilldelats programmet. Konfigurera de här rollerna i Azure AD så att användarna kan tilldelas lämpliga roller. Information om hur du konfigurerar roller i Azure AD finns [här](../develop/howto-add-app-roles-in-azure-ad-apps.md#app-roles-ui--preview)
 
 1. På sidan **Konfigurera enkel inloggning med SAML** , i dialog rutan **SAML-signeringscertifikat** (steg 3), väljer du **Lägg till ett certifikat**.
 

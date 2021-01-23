@@ -5,12 +5,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 04/16/2019
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 5e83c599ceed76927f2a313f78c83638d708f1bb
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 81005a3032355f566aef2a6794cf2ec5038b0dd8
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90985137"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737124"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-powershell"></a>Säkerhetskopiera en virtuell dator med PowerShell
 
@@ -18,7 +18,7 @@ Modulen [Azure POWERSHELL AZ](/powershell/azure/new-azureps-module-az) används 
 
 [Azure Backup](backup-overview.md) säkerhetskopierar lokala datorer och appar och virtuella Azure-datorer. Den här artikeln visar hur du säkerhetskopierar en virtuell Azure-dator med AZ-modulen. Alternativt kan du säkerhetskopiera en virtuell dator med hjälp av [Azure CLI](quick-backup-vm-cli.md)eller i [Azure Portal](quick-backup-vm-portal.md).
 
-I den här snabbstarten sker säkerhetskopieringen på en befintlig virtuell Azure-dator. Om du behöver skapa en virtuell dator kan du [skapa en virtuell dator med Azure PowerShell](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm.md?toc=%2fpowershell%2fmodule%2ftoc.json).
+I den här snabbstarten sker säkerhetskopieringen på en befintlig virtuell Azure-dator. Om du behöver skapa en virtuell dator kan du [skapa en virtuell dator med Azure PowerShell](/previous-versions/azure/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm?toc=%2fpowershell%2fmodule%2ftoc.json).
 
 Den här snabb starten kräver Azure PowerShell AZ-modul version 1.0.0 eller senare. Kör `Get-Module -ListAvailable Az` för att hitta versionen. Om du behöver installera eller uppgradera kan du läsa [Install Azure PowerShell module](/powershell/azure/install-az-ps) (Installera Azure PowerShell-modul).
 
@@ -45,7 +45,7 @@ Ett [Recovery Services valv](backup-azure-recovery-services-vault-overview.md) �
 När du skapar valvet:
 
 - För resurs gruppen och platsen anger du resurs grupp och plats för den virtuella dator som du vill säkerhetskopiera.
-- Om du använde det här [exempel skriptet](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm.md?toc=%2fpowershell%2fmodule%2ftoc.json) för att skapa den virtuella datorn är resurs gruppen **myResourceGroup**, den virtuella datorn är ***MyVM**och resurserna finns i **WestEurope** -regionen.
+- Om du använde det här [exempel skriptet](/previous-versions/azure/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm?toc=%2fpowershell%2fmodule%2ftoc.json) för att skapa den virtuella datorn är resurs gruppen **myResourceGroup**, den virtuella datorn är **_MyVM_* och resurserna finns i **WestEurope** -regionen.
 - Azure Backup hanterar automatiskt lagring för säkerhetskopierade data. Som standard använder valvet [Geo-redundant lagring (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage). GEO-redundans garanterar att säkerhetskopierade data replikeras till en sekundär Azure-region, hundratals mil bort från den primära regionen.
 
 Skapa ett valv nu:

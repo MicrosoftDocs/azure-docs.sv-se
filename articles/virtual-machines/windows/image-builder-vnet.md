@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.subservice: imaging
 ms.reviewer: danis
-ms.openlocfilehash: 94e3b95e5e1d3c65550046c5db56e0f783fd60c3
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 8ae41167b642be75c7bb99042bca829fd8c1728e
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91976309"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736380"
 ---
 # <a name="use-azure-image-builder-for-windows-vms-allowing-access-to-an-existing-azure-vnet"></a>Använd Azure Image Builder för virtuella Windows-datorer som tillåter åtkomst till ett befintligt Azure VNET
 
@@ -90,7 +90,7 @@ Skapa resursgruppen.
 New-AzResourceGroup -Name $imageResourceGroup -Location $location
 ```
 
-## <a name="configure-networking"></a>Konfigurera nätverk
+## <a name="configure-networking"></a>Konfigurera nätverksfunktioner
 
 Om du inte har en befintlig VNET\Subnet\NSG kan du använda följande skript för att skapa ett.
 
@@ -258,7 +258,7 @@ $runOutJsonStatus
 ```
 ## <a name="create-a-vm"></a>Skapa en virtuell dator
 
-Nu när versionen är färdig kan du bygga en virtuell dator från avbildningen. Använd exemplen från [PowerShell New-AzVM-dokumentationen](/powershell/module/az.compute/new-azvm?view=azps-2.5.0#description).
+Nu när versionen är färdig kan du bygga en virtuell dator från avbildningen. Använd exemplen från [PowerShell New-AzVM-dokumentationen](/powershell/module/az.compute/new-azvm#description).
 
 ## <a name="clean-up"></a>Rensa
 

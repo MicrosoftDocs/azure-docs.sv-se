@@ -10,13 +10,13 @@ ms.topic: reference
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein
-ms.date: 01/15/2021
-ms.openlocfilehash: 2daa07315be85e1fcd543480cd30a57c118d8547
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.date: 01/22/2021
+ms.openlocfilehash: 619f4deee81c97f2d7a0b4359e2b999c476b1ae2
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251496"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737580"
 ---
 # <a name="resource-limits-for-elastic-pools-using-the-vcore-purchasing-model"></a>Resurs begränsningar för elastiska pooler med vCore inköps modell
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -218,7 +218,7 @@ Du kan ange tjänst nivå, beräknings storlek (tjänst mål) och lagrings belop
 |Maximal data storlek för TempDB (GB)|83,25|92,5|111|148|166,5|333|
 |Lagringstyp|Fjärr-SSD|Fjärr-SSD|Fjärr-SSD|Fjärr-SSD|Fjärr-SSD|Fjärr-SSD|
 |I/o-latens (ungefärligt)|5-7 MS (skrivning)<br>5-10 ms (läsa)|5-7 MS (skrivning)<br>5-10 ms (läsa)|5-7 MS (skrivning)<br>5-10 ms (läsa)|5-7 MS (skrivning)<br>5-10 ms (läsa)|5-7 MS (skrivning)<br>5-10 ms (läsa)|5-7 MS (skrivning)<br>5-10 ms (läsa)|
-|Max data IOPS per pool <sup>2</sup>|5760|6400|7680|10240|11520|23040|
+|Max data IOPS per pool <sup>2</sup>|5760|6400|7680|10240|11520|12800|
 |Högsta logg hastighet per pool (Mbit/s)|48|48|48|48|48|48|
 |Maximalt antal samtidiga arbetare per pool (begär Anden) <sup>3</sup>|900|1000|1200|1600|1800|3600|
 |Maximalt antal samtidiga inloggningar per pool (begär Anden) <sup>3</sup>|1800|2000|2400|3200|3600|7200|
@@ -481,7 +481,7 @@ Om alla virtuella kärnor av en elastisk pool är upptagna får varje databas i 
 |Minne (GB)|9|18|27|36|
 |Max antal databaser per pool <sup>1</sup>|50|100|100|100|
 |Columnstore-stöd|Ja|Ja|Ja|Ja|
-|Minnes intern OLTP-lagring (GB)|1,7|3.7|5.9|8,2|
+|Minnes intern OLTP-lagring (GB)|1.7|3.7|5.9|8,2|
 |Maximal data storlek (GB)|768|768|768|768|
 |Största logg storlek (GB)|230|230|230|230|
 |Maximal data storlek för TempDB (GB)|64|128|192|256|

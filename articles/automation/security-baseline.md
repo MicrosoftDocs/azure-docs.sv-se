@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 1626ee074d51048dbf45c629f261a550822d746c
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: ea984e527eb526e49c87ce5385ba5715803cc72d
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98200846"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737260"
 ---
 # <a name="azure-security-baseline-for-automation"></a>Azures säkerhets bas linje för Automation
 
@@ -556,7 +556,7 @@ Följ Azure Security Center rekommendationer för kryptering i vila och krypteri
 
 * [Förstå kryptering i överföring med Azure](../security/fundamentals/encryption-overview.md#encryption-of-data-in-transit)
 
-* [Azure Automation TLS 1,2-tvång](/azure/active-directory/hybrid/reference-connect-tls-enforcement)
+* [Azure Automation TLS 1,2-tvång](../active-directory/hybrid/reference-connect-tls-enforcement.md)
 
 **Azure Security Center-övervakning**: Ja
 
@@ -938,7 +938,7 @@ När du använder Hybrid Runbook Worker-funktionen finns det flera alternativ f�
 
 I de flesta fall kan de virtuella Microsoft Base-mallarna tillsammans med Azure Automation tillstånds konfiguration hjälpa till att möta och upprätthålla säkerhets kraven.
 
-* [Information om hur du hämtar mallen för virtuella datorer](../virtual-machines/windows/download-template.md)
+* [Information om hur du hämtar mallen för virtuella datorer](/previous-versions/azure/virtual-machines/windows/download-template)
 
 * [Information om hur du skapar ARM-mallar](../virtual-machines/windows/ps-template.md)
 

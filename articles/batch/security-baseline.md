@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: c27ef1af3e439b22f00f9247b5270118bbe9ca89
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 3678ead9f3e1ba2556fde3c2fbe30df4e7dc2225
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98197718"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737243"
 ---
 # <a name="azure-security-baseline-for-batch"></a>Azures säkerhets bas linje för batch
 
@@ -62,9 +62,9 @@ Vid behov inaktiverar du offentlig nätverks åtkomst genom att använda Azures 
 
 **Vägledning**: Aktivera standard skydd för Azure-DDoS (distributed denial-of-Service) på det virtuella nätverket som skyddar Azure Batch-poolen för skydd mot DDoS-attacker. Använd Azure Security Center integrerad Hot information för att neka kommunikation med kända skadliga eller oanvända Internet-IP-adresser.
 
-- [Så här konfigurerar du DDoS-skydd](/azure/virtual-network/manage-ddos-protection)
+- [Så här konfigurerar du DDoS-skydd](../ddos-protection/manage-ddos-protection.md)
 
-- [Förstå Azure Security Center integrerad Hot information](/azure/security-center/security-center-alerts-service-layer)
+- [Förstå Azure Security Center integrerad Hot information](../security-center/azure-defender.md)
 
 **Azure Security Center-övervakning**: Ja
 
@@ -126,7 +126,7 @@ Använd någon av de inbyggda Azure Policy definitionerna som är relaterade til
 
 Du kan använda Azure PowerShell eller Azure CLI för att söka efter eller utföra åtgärder på resurser baserat på deras taggar.
 
-- [Skapa och använda Taggar](/azure/azure-resource-manager/resource-group-using-tags)
+- [Skapa och använda Taggar](../azure-resource-manager/management/tag-resources.md)
 
 - [Så här skapar du ett virtuellt nätverk](../virtual-network/quick-create-portal.md)
 
@@ -140,7 +140,7 @@ Du kan använda Azure PowerShell eller Azure CLI för att söka efter eller utf�
 
 **Vägledning**: Använd Azure aktivitets logg för att övervaka konfigurationer av nätverks resurser och identifiera ändringar för nätverks resurser som är relaterade till Azure Batch pooler. Skapa aviseringar inom Azure Monitor som ska utlösas när ändringar av kritiska nätverks resurser sker.
 
-- [Visa och hämta Azure aktivitets logg händelser](/azure/azure-monitor/platform/activity-log-view) 
+- [Visa och hämta Azure aktivitets logg händelser](../azure-monitor/platform/activity-log.md#view-the-activity-log) 
 
 - [Så här skapar du aviseringar i Azure Monitor](../azure-monitor/platform/alerts-activity-log.md)
 
@@ -188,7 +188,7 @@ Om det behövs kan du ansluta till dina noder för enskilda pooler via SSH (Secu
 
 - [Så här samlar du in diagnostikloggar från ditt Azure Batch-konto](batch-diagnostics.md#batch-diagnostics)
 
-- [Fjärrans luta till Azure Batch pool-noder](/azure/batch/batch-api-basics#error-handling)
+- [Fjärrans luta till Azure Batch pool-noder](./batch-service-workflow-features.md#basic-workflow)
 
 **Azure Security Center-övervakning**: Ja
 
@@ -260,9 +260,9 @@ Om det behövs kan du ansluta till dina noder för enskilda pooler via SSH (Secu
 
 Dessutom kan du använda rekommendationer för Azure Security Center identitets-och åtkomst hantering.
 
-- [Så här hämtar du en katalog roll i Azure AD med PowerShell](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0&amp;preserve-view=true)
+- [Så här hämtar du en katalog roll i Azure AD med PowerShell](/powershell/module/azuread/get-azureaddirectoryrole?preserve-view=true&view=azureadps-2.0)
 
-- [Så här hämtar du medlemmar i en katalog roll i Azure AD med PowerShell](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0&amp;preserve-view=true)
+- [Så här hämtar du medlemmar i en katalog roll i Azure AD med PowerShell](/powershell/module/azuread/get-azureaddirectoryrolemember?preserve-view=true&view=azureadps-2.0)
 
 - [Övervaka identitet och åtkomst med Azure Security Center](../security-center/security-center-identity-access.md)
 
@@ -324,7 +324,7 @@ Dessutom kan du använda rekommendationer för Azure Security Center identitets-
 
 **Vägledning**: om du har integrerat autentisering för Azure Batch program med Azure Active Directory använder du Azure Active Directory säkerhets rapporter för att skapa loggar och varningar när misstänkt eller osäker aktivitet inträffar i miljön. Använd Azure Security Center för att övervaka identitets-och åtkomst aktiviteter.
 
-- [Så här identifierar du Azure AD-användare som har flaggats för riskfylld aktivitet](/azure/active-directory/reports-monitoring/concept-user-at-risk)
+- [Så här identifierar du Azure AD-användare som har flaggats för riskfylld aktivitet](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [Övervaka användarnas identitets-och åtkomst aktiviteter i Azure Security Center](../security-center/security-center-identity-access.md)
 
@@ -378,7 +378,7 @@ Dessutom kan du använda rekommendationer för Azure Security Center identitets-
 
 **Vägledning**: Använd Azure Active Directory risk identifieringar och identitets skydds funktion för att konfigurera automatiserade svar på identifierade misstänkta åtgärder som rör användar identiteter. Dessutom kan du mata in data i Azure Sentinel för ytterligare undersökning.
 
-- [Så visar du riskfyllda inloggningar för Azure AD](/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [Så visar du riskfyllda inloggningar för Azure AD](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [Så här konfigurerar och aktiverar du risk principer för identitets skydd](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
@@ -406,7 +406,7 @@ Dessutom kan du använda rekommendationer för Azure Security Center identitets-
 
 **Vägledning**: Använd taggar för att spåra Azure-resurser som lagrar eller bearbetar känslig information.
 
-- [Skapa och använda Taggar](/azure/azure-resource-manager/resource-group-using-tags)
+- [Skapa och använda Taggar](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center-övervakning**: Inte tillgänglig för tillfället
 
@@ -418,7 +418,7 @@ Dessutom kan du använda rekommendationer för Azure Security Center identitets-
 
 - [Så här skapar du en Azure Batch pool i en Virtual Network](batch-virtual-network.md)
 
-- [Skydda Azure Storage-konton](/azure/storage/common/storage-security-guide)
+- [Skydda Azure Storage-konton](../storage/blobs/security-recommendations.md)
 
 **Azure Security Center-övervakning**: Ja
 
@@ -434,7 +434,7 @@ För den underliggande plattform som hanteras av Microsoft behandlar Microsoft a
 
 - [Förstå skydd av kunddata i Azure](../security/fundamentals/protection-customer-data.md)
 
-- [Skydda Azure Storage-konton](/azure/storage/common/storage-security-guide)
+- [Skydda Azure Storage-konton](../storage/blobs/security-recommendations.md)
 
 **Azure Security Center-övervakning**: Inte tillgänglig för tillfället
 
@@ -462,7 +462,7 @@ För den underliggande plattform som hanteras av Microsoft behandlar Microsoft a
 
 - [Förstå skydd av kunddata i Azure](../security/fundamentals/protection-customer-data.md)
 
-- [Skydda Azure Storage-konton](/azure/storage/common/storage-security-guide)
+- [Skydda Azure Storage-konton](../storage/blobs/security-recommendations.md)
 
 **Azure Security Center-övervakning**: Inte tillgänglig för tillfället
 
@@ -498,9 +498,9 @@ För den underliggande plattform som hanteras av Microsoft behandlar Microsoft a
 
 Azure Disk Encryption kan användas för att skydda och skydda dina data så att de uppfyller organisationens säkerhets-och efterlevnads åtaganden. Alla hanterade diskar, ögonblicks bilder, avbildningar och data som skrivs till befintliga diskar krypteras automatiskt i vila med plattforms hanterade nycklar.
 
-- [Hantera krypterings nycklar för Azure Storage konton](/azure/storage/common/storage-encryption-keys-portal)
+- [Hantera krypterings nycklar för Azure Storage konton](../storage/common/customer-managed-keys-configure-key-vault.md)
 
-- [Så här konfigurerar du Kundhanterade krypterings nycklar](/azure/storage/common/storage-encryption-keys-portal)
+- [Så här konfigurerar du Kundhanterade krypterings nycklar](../storage/common/customer-managed-keys-configure-key-vault.md)
 
 - [Så här skapar du en pool med disk kryptering aktiverat](disk-encryption.md)
 
@@ -580,7 +580,7 @@ Om du har en Rapid7, Qualys eller någon annan plattforms prenumeration för så
 
 - [Skapa frågor med Azure Resource Graph Explorer](../governance/resource-graph/first-query-portal.md)
 
-- [Så här visar du dina Azure-prenumerationer](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-4.8.0&amp;preserve-view=true)
+- [Så här visar du dina Azure-prenumerationer](/powershell/module/az.accounts/get-azsubscription?preserve-view=true&view=azps-4.8.0)
 
 - [Förstå Azure RBAC](../role-based-access-control/overview.md)
 
@@ -592,7 +592,7 @@ Om du har en Rapid7, Qualys eller någon annan plattforms prenumeration för så
 
 **Vägledning**: Använd taggar till Azure-resurser som ger metadata till att logiskt organisera dem i en taxonomi.
 
-- [Skapa och använda Taggar](/azure/azure-resource-manager/resource-group-using-tags)
+- [Skapa och använda Taggar](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center-övervakning**: Inte tillgänglig för tillfället
 
@@ -602,11 +602,11 @@ Om du har en Rapid7, Qualys eller någon annan plattforms prenumeration för så
 
 **Vägledning**: Använd taggning, hanterings grupper och separata prenumerationer, vid behov, för att organisera och spåra till gångar. Stäm av inventering regelbundet och se till att obehöriga resurser tas bort från prenumerationen inom rimlig tid.
 
-- [Så här skapar du ytterligare Azure-prenumerationer](/azure/billing/billing-create-subscription)
+- [Så här skapar du ytterligare Azure-prenumerationer](../cost-management-billing/manage/create-subscription.md)
 
-- [Så här skapar du Hanteringsgrupper](/azure/governance/management-groups/create)
+- [Så här skapar du Hanteringsgrupper](../governance/management-groups/create-management-group-portal.md)
 
-- [Skapa och använda Taggar](/azure/azure-resource-manager/resource-group-using-tags)
+- [Skapa och använda Taggar](../azure-resource-manager/management/tag-resources.md)
 
 **Övervakning i Azure Security Center**: Ej tillämpligt
 
@@ -701,7 +701,7 @@ Använd Azure Resource Graph för att fråga/identifiera resurser i dina prenume
 
 **Vägledning**: Använd Azure policy alias i namn rymden "Microsoft.BatCH" om du vill skapa anpassade principer för att granska eller tillämpa konfigurationen av dina Azure Batch-konton och pooler.
 
-- [Visa tillgängliga Azure Policy alias](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-4.8.0&amp;preserve-view=true)
+- [Visa tillgängliga Azure Policy alias](/powershell/module/az.resources/get-azpolicyalias?preserve-view=true&view=azps-4.8.0)
 
 - [Konfigurera och hantera Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -747,9 +747,9 @@ Använd Azure Resource Graph för att fråga/identifiera resurser i dina prenume
 
 **Vägledning**: om du använder anpassade Azure policys definitioner för dina Azure Batch konton, pooler eller relaterade resurser använder du Azure-databaser för att lagra och hantera din kod på ett säkert sätt.
 
-- [Så här lagrar du kod i Azure DevOps](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops&amp;preserve-view=true)
+- [Så här lagrar du kod i Azure DevOps](/azure/devops/repos/git/gitworkflow?preserve-view=true&view=azure-devops)
 
-- [Dokumentation om Azure databaser](https://docs.microsoft.com/azure/devops/repos/?view=azure-devops&amp;preserve-view=true)
+- [Dokumentation om Azure databaser](/azure/devops/repos/?preserve-view=true&view=azure-devops)
 
 **Övervakning i Azure Security Center**: Ej tillämpligt
 
@@ -791,7 +791,7 @@ Använd Azure Resource Graph för att fråga/identifiera resurser i dina prenume
 - Undernät ska associeras med en nätverks säkerhets grupp-lagrings konton bör använda en tjänst slut punkt för virtuellt nätverk
 - Diagnostikloggar i batch-konton måste vara aktiverade
 
-- [Visa tillgängliga Azure Policy alias](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-4.8.0&amp;preserve-view=true)
+- [Visa tillgängliga Azure Policy alias](/powershell/module/az.resources/get-azpolicyalias?preserve-view=true&view=azps-4.8.0)
 
 - [Konfigurera och hantera Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -884,7 +884,7 @@ Genomsök alla filer som laddas upp till Azure-resurser som inte är Compute, ti
 
 - [Så här konfigurerar du redundans för Azure Storage konton](../storage/common/storage-redundancy.md)
 
-- [Så här säkerhetskopierar du nyckel valv nycklar i Azure](https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultkey?view=azps-4.8.0&amp;preserve-view=true)
+- [Så här säkerhetskopierar du nyckel valv nycklar i Azure](/powershell/module/az.keyvault/backup-azkeyvaultkey?preserve-view=true&view=azps-4.8.0)
 
 **Azure Security Center-övervakning**: Ja
 
@@ -894,9 +894,9 @@ Genomsök alla filer som laddas upp till Azure-resurser som inte är Compute, ti
 
 **Vägledning**: om du hanterar dina egna nycklar för Azure Storage konton eller andra resurser som är relaterade till din Azure Batch implementering, kan du regelbundet testa återställning av säkerhetskopierade nycklar.
 
-- [Så här säkerhetskopierar du nyckel valv nycklar i Azure](https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultkey?view=azps-4.8.0&amp;preserve-view=true)
+- [Så här säkerhetskopierar du nyckel valv nycklar i Azure](/powershell/module/az.keyvault/backup-azkeyvaultkey?preserve-view=true&view=azps-4.8.0)
 
-- [Så här återställer du en kundhanterad nyckel med PowerShell](https://docs.microsoft.com/powershell/module/az.keyvault/restore-azkeyvaultkey?view=azps-4.8.0&amp;preserve-view=true)
+- [Så här återställer du en kundhanterad nyckel med PowerShell](/powershell/module/az.keyvault/restore-azkeyvaultkey?preserve-view=true&view=azps-4.8.0)
 
 **Övervakning i Azure Security Center**: Ej tillämpligt
 
@@ -906,7 +906,7 @@ Genomsök alla filer som laddas upp till Azure-resurser som inte är Compute, ti
 
 **Vägledning**: om Azure Key Vault används för att lagra nycklar som är relaterade till Azure Batch pool lagrings konton, aktiverar du Soft-Delete i Azure Key Vault för att skydda nycklar mot oavsiktlig eller skadlig borttagning.
 
-- [Så här aktiverar du mjuk borttagning i Azure Key Vault](/azure/key-vault/key-vault-soft-delete-powershell)
+- [Så här aktiverar du mjuk borttagning i Azure Key Vault](../key-vault/general/key-vault-recovery.md)
 
 **Azure Security Center-övervakning**: Ja
 
@@ -994,5 +994,5 @@ Du hittar mer information om Microsofts strategi och körning av röda team inde
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Läs mer i [Översikten över Azure Security Benchmark V2](/azure/security/benchmarks/overview)
-- Läs mer om [säkerhetsbaslinjer för Azure](/azure/security/benchmarks/security-baselines-overview)
+- Läs mer i [Översikten över Azure Security Benchmark V2](../security/benchmarks/overview.md)
+- Läs mer om [säkerhetsbaslinjer för Azure](../security/benchmarks/security-baselines-overview.md)

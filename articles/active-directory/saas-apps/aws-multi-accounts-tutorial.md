@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/24/2020
 ms.author: jeedes
-ms.openlocfilehash: e6b4175f4f47c9dd378bec84da2575c079a2079f
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 440fe52689a345eec36c3ac613d6bc2cc2dccc13
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98014458"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735485"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-amazon-web-services-aws-legacy-tutorial"></a>Självstudie: Azure Active Directory integration med Amazon Web Services (AWS) (tidigare självstudier)
 
@@ -43,7 +43,7 @@ Integreringen av Amazon Web Services (AWS) med Azure AD medför följande förde
 
 * Alla AWS-konton kommer att använda samma XML-fil för federationsmetadata och vid tidpunkten för certifikat förnyelse måste du köra den här enorma övningen för att uppdatera certifikatet på alla AWS-konton på samma gång
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 För att konfigurera Azure AD-integrering med Amazon Web Services (AWS) behöver du följande:
 
@@ -119,7 +119,7 @@ I det här avsnittet aktiverar du enkel inloggning med Azure AD i Azure Portal o
 
 6. I avsnittet **Användaranspråk** i dialogrutan **Användarattribut** konfigurerar du SAML-tokenattributet på det sätt som visas i bilden ovan och utför följande steg:
 
-    | Namn  | Källattribut  | Namnområde |
+    | Name  | Källattribut  | Namnområde |
     | --------------- | --------------- | --------------- |
     | RoleSessionName | user.userprincipalname | `https://aws.amazon.com/SAML/Attributes` |
     | Roll | user.assignedroles | `https://aws.amazon.com/SAML/Attributes`|
@@ -144,7 +144,7 @@ I det här avsnittet aktiverar du enkel inloggning med Azure AD i Azure Portal o
     ex. Klicka på **Spara**.
 
     >[!NOTE]
-    >Mer information om roller i Azure AD finns [här](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps#app-roles-ui).
+    >Mer information om roller i Azure AD finns [här](../develop/howto-add-app-roles-in-azure-ad-apps.md#app-roles-ui--preview).
 
 7. På sidan **Konfigurera en enskild Sign-On med SAML** , i avsnittet **SAML-signeringscertifikat** , klickar du på **Hämta** för att ladda ned **XML för federationsmetadata** och spara den på din dator.
 

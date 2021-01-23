@@ -11,12 +11,12 @@ ms.date: 03/15/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: d31dfbf376bc3d93e31aa822a38c9f85db219324
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: c55edbd24553189c11070999ddc5d3b3516f2d97
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98679592"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737939"
 ---
 # <a name="design-tables-using-dedicated-sql-pool-in-azure-synapse-analytics"></a>Design tabeller med dedikerad SQL-pool i Azure Synapse Analytics
 
@@ -75,7 +75,7 @@ Därför är externa tabeller användbara för att läsa in data. En inläsnings
 
 ## <a name="data-types"></a>Datatyper
 
-Dedikerad SQL-pool stöder de vanligaste data typerna. En lista över data typer som stöds finns i [data typer i CREATE TABLE referens](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest#DataTypes) i CREATE TABLE-instruktionen. Vägledning om hur du använder data typer finns i [data typer](sql-data-warehouse-tables-data-types.md).
+Dedikerad SQL-pool stöder de vanligaste data typerna. En lista över data typer som stöds finns i [data typer i CREATE TABLE referens](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json?view=azure-sqldw-latest&preserve-view=true#datatypes) i CREATE TABLE-instruktionen. Vägledning om hur du använder data typer finns i [data typer](sql-data-warehouse-tables-data-types.md).
 
 ## <a name="distributed-tables"></a>Distribuerade tabeller
 
@@ -144,7 +144,7 @@ PRIMÄR nyckel stöds bara om både icke-KLUSTRad och inte framtvingad används.
 
 Du kan skapa en tabell som en ny tom tabell. Du kan också skapa och fylla i en tabell med resultatet av en SELECT-instruktion. Följande är T-SQL-kommandon för att skapa en tabell.
 
-| T-SQL-uttryck | Description |
+| T-SQL-uttryck | Beskrivning |
 |:----------------|:------------|
 | [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | Skapar en tom tabell genom att definiera alla tabell kolumner och alternativ. |
 | [SKAPA EXTERN TABELL](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | Skapar en extern tabell. Definitionen av tabellen lagras i en dedikerad SQL-pool. Tabell data lagras i Azure Blob Storage eller Azure Data Lake Store. |

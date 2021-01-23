@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/21/2020
 ms.author: jeedes
-ms.openlocfilehash: fec95dc033eb5eacaf79f5bbd2b6b294628667b9
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 3d784979876857e94c1e09ffc5b7bef11c0a0d04
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97725105"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735978"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-easysso-for-bamboo"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med EasySSO för Bamboo
 
@@ -26,7 +26,7 @@ I den här självstudien får du lära dig hur du integrerar EasySSO för Bamboo
 * Gör det möjligt för användarna att logga in automatiskt till Bamboo med sina Azure AD-konton.
 * Hantera dina konton på en central plats – Azure Portal.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 För att komma igång behöver du följande objekt:
 
@@ -94,7 +94,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 1. Utöver ovan förväntar sig EasySSO för Bamboo-programmet att fler attribut skickas tillbaka i SAML-svar som visas nedan. Dessa attribut är också förifyllda, men du kan granska dem enligt dina krav.
     
-    | Namn | Källattribut |
+    | Name | Källattribut |
     | ---------------| --------- |
     | urn: OID: 0.9.2342.19200300.100.1.1 | user.userprincipalname |
     | urn:oid:0.9.2342.19200300.100.1.3 | user.mail |
@@ -199,7 +199,7 @@ Men om du inte vill aktivera automatisk användar etablering för användaren f�
 
 I det här avsnittet testar du konfigurationen för enkel inloggning med Azure AD med hjälp av mina appar.
 
-När du klickar på panelen EasySSO för Bamboo i Mina appar, bör du loggas in automatiskt på Bamboo-instansen som du ställer in SSO för. Mer information om Mina appar finns i [Introduktion till Mina appar](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+När du klickar på panelen EasySSO för Bamboo i Mina appar, bör du loggas in automatiskt på Bamboo-instansen som du ställer in SSO för. Mer information om Mina appar finns i [Introduktion till Mina appar](../user-help/my-apps-portal-end-user-access.md).
 
 ### <a name="sp-initiated-workflow"></a>SP-initierat arbets flöde
 

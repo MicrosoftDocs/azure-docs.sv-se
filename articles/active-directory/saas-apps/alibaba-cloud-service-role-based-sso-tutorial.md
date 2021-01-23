@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/08/2020
 ms.author: jeedes
-ms.openlocfilehash: c9db5ab471f743ffbf3ae4e140ad4cb32d0a3d6c
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 6e4cb3c372b696b203d2441c74a6cafff175af47
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97670201"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736162"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-alibaba-cloud-service-role-based-sso"></a>Självstudie: Azure Active Directory-integrering med enkel inloggning (SSO) med Alibaba Cloud Service (rollbaserad SSO)
 
@@ -94,7 +94,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
     > [!Note]
     > Om **ID** -och **svars-URL** -värdena inte fylls i automatiskt fyller du i värdena manuellt enligt dina krav.
 
-1. Alibaba Cloud Service (rollbaserad SSO) kräver att roller konfigureras i Azure AD. Roll anspråk är förkonfigurerat så att du inte behöver konfigurera det, men du måste fortfarande skapa dem i Azure AD med hjälp av den här [artikeln](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps#app-roles-ui).
+1. Alibaba Cloud Service (rollbaserad SSO) kräver att roller konfigureras i Azure AD. Roll anspråk är förkonfigurerat så att du inte behöver konfigurera det, men du måste fortfarande skapa dem i Azure AD med hjälp av den här [artikeln](../develop/howto-add-app-roles-in-azure-ad-apps.md#app-roles-ui--preview).
 
 1. På sidan **Konfigurera enkel inloggning med SAML** , i avsnittet **SAML-signeringscertifikat** , letar du upp **XML för federationsmetadata** och väljer **Hämta** för att ladda ned certifikatet och spara det på din dator.
 

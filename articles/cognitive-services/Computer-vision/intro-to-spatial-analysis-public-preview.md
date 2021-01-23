@@ -10,16 +10,16 @@ ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 12/14/2020
-ms.openlocfilehash: 402ee6d5efdd489914cb7d283c7c46d4f7d175f6
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: f90e4e5e187977f0ee77a565ff9143902ea3a10d
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968066"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736843"
 ---
 # <a name="introduction-to-computer-vision-spatial-analysis"></a>Introduktion till Visuellt innehåll rums analys
 
-Visuellt innehåll rums analys är en ny funktion i Azure Cognitive Services Visuellt innehåll som hjälper organisationer att maximera värdet på deras fysiska utrymmen genom att förstå personernas rörelser och närvaro inom ett angivet ställe. Med den kan du hämta video från CCTV eller övervaknings kameror, köra AI-kunskaper för att extrahera insikter från video strömmarna och generera händelser som ska användas av andra system. Med indata från en kamera ström kan en AI-färdighet göra saker som att räkna antalet personer som anger ett utrymme eller mäter efterlevnad med sociala distancing rikt linjer.
+Visuellt innehåll rums analys är en ny funktion i Azure Cognitive Services Visuellt innehåll som hjälper organisationer att maximera värdet på deras fysiska utrymmen genom att förstå personernas rörelser och närvaro inom ett angivet ställe. Det gör att du kan mata in video från CCTV eller övervaknings kameror, köra AI-åtgärder för att extrahera insikter från video strömmarna och generera händelser som ska användas av andra system. Med indata från en kamera ström kan en AI-åtgärd göra saker som att räkna antalet personer som anger ett utrymme eller mäter efterlevnad med rikt linjer för ansikts mask och sociala distancing.
 
 ## <a name="the-basics-of-spatial-analysis"></a>Grunderna för rums analys
 
@@ -30,9 +30,10 @@ Idag är kärn åtgärderna för rums analys allt byggt på en pipeline som inle
 | Period | Definition |
 |------|------------|
 | Person identifiering | Den här komponenten besvarar frågan "var är personerna i den här bilden"? Den hittar människor i en bild och skickar en avgränsnings ruta som visar var personen är ansvarig för personer som spårar komponenten. |
-| Personer som spårar | Den här komponenten ansluter person identifieringar över tid då de flyttar runt en kamera. Den använder temporal logik om hur användare vanligt vis flyttar och grundläggande information om det övergripande utseendet på dem. Det går inte att spåra personer över flera kameror eller identifiera en person som har försvunnit i mer än cirka en minut. Personer som spårar använder inte bio metriska markörer som ansikts igenkänning eller gång spårning. |
-| Intresse region | Detta är en zon eller linje som definierats i Indataporten som en del av konfigurationen. När en person interagerar med regionen i videon genererar systemet en händelse. För PersonCrossingLine-kunskapen definieras till exempel en rad i videon. När en person korsar raden skapas en händelse. |
-| Händelse | En händelse är primär utdata från rums analys. Varje färdighet genererar en speciell händelse antingen regelbundet (t. ex. en gång per minut) eller när en viss utlösare sker. Händelsen innehåller information om vad som hände i indata-videon men som inte innehåller några bilder eller video. PeopleCount-kompetensen kan till exempel generera en händelse som innehåller det uppdaterade antalet varje gång antalet personer ändras (utlösare) eller en gång i minuten (regelbundet). |
+| Personer som spårar | Den här komponenten ansluter person identifieringar över tid då de flyttar runt en kamera. Den använder temporal logik om hur användare vanligt vis flyttar och grundläggande information om det övergripande utseendet på dem. Det spårar inte personer över flera kameror. Om en person finns i fältet från en kamera i mer än cirka en minut och sedan anger om kameravy, kommer systemet att se detta som en ny person. Personer som spårar kan inte unikt identifiera individer i kameror. Den använder inte ansikts igenkänning eller gång spårning. |
+| Identifiering av ansikts mask | Den här komponenten identifierar platsen för en persons ansikte i kamerans visnings område och identifierar förekomsten av en ansikts mask. För att göra det genomsöker AI-åtgärden bilder från video. När en ansikte identifieras ger tjänsten en avgränsnings ruta runt om. Genom att använda funktioner för objekt identifiering identifieras förekomsten av ansikts masker i markerings rutan. Identifiering av ansikts mask innebär inte att skilja en ansikte från en annan ansikte, förutsäga eller klassificera ansikts attribut eller att utföra ansikts igenkänning. |
+| Intresse region | Detta är en zon eller linje som definierats i Indataporten som en del av konfigurationen. När en person interagerar med regionen i videon genererar systemet en händelse. Till exempel definieras en rad i videon för PersonCrossingLine-åtgärden. När en person korsar raden skapas en händelse. |
+| Händelse | En händelse är primär utdata från rums analys. Varje åtgärd genererar en speciell händelse antingen med jämna mellanrum (t. ex. en gång per minut) eller när en viss utlösare sker. Händelsen innehåller information om vad som hände i indata-videon men som inte innehåller några bilder eller video. PeopleCount-åtgärden kan till exempel generera en händelse som innehåller det uppdaterade antalet varje gång antalet personer ändras (utlösare) eller en gång i minuten (med jämna mellanrum). |
 
 ## <a name="example-use-cases-for-spatial-analysis"></a>Exempel på användnings fall för rums analys
 
@@ -43,6 +44,8 @@ Följande är exempel på användnings områden som vi hade i åtanke när vi ko
 **Konsument-analys** – en moln lagrings plats använder kameror som är pekade på produkt visar för att mäta påverkan av försäljnings ändringar på lagrings trafik. Systemet gör det möjligt för Store Manager att identifiera vilka nya produkter som är mest ändrade för engagemang.
 
 **Hantering av köer** – kameror som pekas i utcheckningsstatus ger aviseringar till chefer när vänte tiden blir för lång, så att de kan öppna fler rader. Historiska data om att överge kön ger insikter om konsumenternas beteende.
+
+**Kompatibilitet för ansikts mask** – butiker kan använda kameror som pekar på Store-fronten för att kontrol lera om kunder som går in i butiken använder sig av ansikts masker för att upprätthålla säkerhetskompatibilitet och analysera sammanställd statistik för att få insikter om mask användnings trender. 
 
 **Skapa användnings & analys** – en kontors byggnad använder kameror som fokuserar på ingångar till nyckel utrymmen för att mäta Footfall och hur användarna använder arbets platsen. Med insikter kan bygg chefen justera tjänster och layout för att bättre betjäna personer.
 
@@ -73,4 +76,4 @@ Till gång till den offentliga för hands versionen av spatial analys omfattas a
 ## <a name="next-steps"></a>Nästa steg
 
 > [!div class="nextstepaction"]
-> [Egenskaper och begränsningar för rums analys](https://docs.microsoft.com/legal/cognitive-services/computer-vision/accuracy-and-limitations?context=%2fazure%2fcognitive-services%2fComputer-vision%2fcontext%2fcontext)
+> [Egenskaper och begränsningar för rums analys](/legal/cognitive-services/computer-vision/accuracy-and-limitations?context=%2fazure%2fcognitive-services%2fComputer-vision%2fcontext%2fcontext)

@@ -4,12 +4,12 @@ description: Få svar på vanliga frågor om hur du säkerhetskopierar SQL Serve
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 7518fc49f7d6d728bd8faa0de4cf0edc1c6d5831
-ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
+ms.openlocfilehash: 56dcf29a5c703a72fd137a5f1bf129f568a03b4b
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97734121"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735817"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Vanliga frågor om SQL Server databaser som körs på en virtuell Azure-säkerhetskopiering
 
@@ -108,7 +108,7 @@ Ja, Azure Backup har stöd för säkerhets kopiering av SQL Server databaser ell
 
 ## <a name="does-azure-backup-perform-a-checksum-operation-on-the-data-stream"></a>Utför Azure Backup en åtgärd för kontroll summa i data strömmen?
 
-Vi utför en åtgärd för kontroll summa för data strömmen. Detta kan dock inte förväxlas med [SQL-kontrollsumma](https://docs.microsoft.com/sql/relational-databases/backup-restore/enable-or-disable-backup-checksums-during-backup-or-restore-sql-server).
+Vi utför en åtgärd för kontroll summa för data strömmen. Detta kan dock inte förväxlas med [SQL-kontrollsumma](/sql/relational-databases/backup-restore/enable-or-disable-backup-checksums-during-backup-or-restore-sql-server).
 Säkerhets kopiering av Azure-arbetsbelastning beräknar kontroll summan på data strömmen och lagrar den explicit under säkerhets kopieringen. Den här data Ströms data strömmen tas sedan som en referens och mellan verifieras med data strömmens kontroll Summa under återställnings åtgärden för att säkerställa att data är konsekventa.
 
 ## <a name="next-steps"></a>Nästa steg

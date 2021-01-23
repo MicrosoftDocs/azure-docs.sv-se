@@ -3,12 +3,12 @@ title: Kluster versioner som stöds i Azure Service Fabric
 description: Lär dig mer om kluster versioner i Azure Service Fabric, inklusive en länk till de senaste versionerna från Service Fabric teamets blogg.
 ms.topic: troubleshooting
 ms.date: 06/15/2020
-ms.openlocfilehash: c2ea2b53649cf148a19df46835c8936345aa20e5
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 82b90d6b0acf5d83f9509abd9ee4b34cb74d1b48
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98234349"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736792"
 ---
 # <a name="supported-service-fabric-versions"></a>Service Fabric versioner som stöds
 
@@ -56,10 +56,13 @@ För att förbättra säkerheten och tillgängligheten kommer Azure-infrastruktu
  #### <a name="impact-if-not-upgraded-to-supported-versions"></a>Påverka om de inte uppgraderas till versioner som stöds
   Azure Service Fabric-kluster som **använder [funktionen öppna nätverksfunktioner för](https://docs.microsoft.com/azure/service-fabric/service-fabric-networking-modes#set-up-open-networking-mode) behållare och som körs på versioner som är större än 6,3 och** som inte omfattar förändringar kommer att förlora funktioner eller tjänst avbrott om de inte uppgraderas till någon av de lägre versioner som stöds av den **19 januari 2021**.
  
-  - **För kluster som kör en version av Service Fabric som är större än 6,3 och som inte använder funktionen öppna nätverk** förblir klustret, men funktionen öppna nätverksfunktioner för behållare kluster upphör att fungera, vilket kan orsaka avbrott i tjänsten för dina arbets belastningar.
+  - **För kluster som kör en version av Service Fabric som är större än 6,3 och som inte använder funktionen öppna nätverk**, är klustret kvar.
 
  - **För kluster som kör en version av Service Fabric som är större än 6,3 och använder [funktionen öppna nätverksfunktioner för behållare](https://docs.microsoft.com/azure/service-fabric/service-fabric-networking-modes#set-up-open-networking-mode)** , kan klustret bli otillgängligt och upphör att fungera, vilket kan orsaka avbrott i tjänsten för dina arbets belastningar.
-  
+ 
+ -   **För kluster som kör [Windows-versioner mellan 7,0 och 7.0.466 (båda versionerna som ingår)](https://docs.microsoft.com/azure/service-fabric/service-fabric-versions#supported-version-names) och Windows OS har funktionen Windows-behållare aktive rad. Obs! Linux-versionerna 7.0.457, 7.0.464 och 7.0.465 påverkas inte**.
+    - **Påverkan**: klustret upphör att fungera, vilket kan orsaka avbrott i tjänsten för dina arbets belastningar.
+       
 #### <a name="required-action"></a>Nödvändig åtgärd
 Uppgradera till Service Fabric versioner som stöds nedan för att förhindra drift avbrott eller förlust av funktioner som är relaterade till den här ändringen. Kontrol lera att klustren kör minst dessa versioner för att förhindra problem i din miljö. 
  

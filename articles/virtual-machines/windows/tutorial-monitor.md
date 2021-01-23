@@ -10,12 +10,12 @@ ms.workload: infrastructure
 ms.date: 09/27/2018
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 8a71599ba095924c01b0cd29cedbee273012979f
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 89b33a697e818539ab6666be33fc1542c5bdcc51
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97912839"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736600"
 ---
 # <a name="tutorial-monitor-a-windows-virtual-machine-in-azure"></a>Självstudie: övervaka en virtuell Windows-dator i Azure
 
@@ -39,7 +39,7 @@ Om du vill öppna Cloud Shell väljer du bara **Prova** från det övre högra h
 
 ## <a name="create-virtual-machine"></a>Skapa en virtuell dator
 
-För att konfigurera övervaknings- och uppdateringshantering i Azure i den här självstudiekursen behöver du en virtuell Windows-dator i Azure. Ange först ett administratörsanvändarnamn och lösenord för den virtuella datorn med [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1&preserve-view=true):
+För att konfigurera övervaknings- och uppdateringshantering i Azure i den här självstudiekursen behöver du en virtuell Windows-dator i Azure. Ange först ett administratörsanvändarnamn och lösenord för den virtuella datorn med [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential):
 
 ```azurepowershell-interactive
 $cred = Get-Credential

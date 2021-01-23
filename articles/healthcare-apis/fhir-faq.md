@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 08/03/2020
 ms.author: matjazl
-ms.openlocfilehash: 31ae5b780bf451e29a97f04202f804db27fc387a
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: bd6f32213a511987c0508dcc954252b2fd4e48f6
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452938"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737599"
 ---
 # <a name="frequently-asked-questions-about-the-azure-api-for-fhir"></a>Vanliga frågor och svar om Azure API för FHIR
 
@@ -105,6 +105,12 @@ Några exempel på detta är nedan:
 ### <a name="what-is-the-default-sort-when-searching-for-resources-in-azure-api-for-fhir"></a>Vad är standard sortering vid sökning efter resurser i Azure API för FHIR?
 
 Vi stöder sortering efter datumet då uppdateringen senast uppdaterades: _sort = _lastUpdated. Mer information om andra Sök parametrar som stöds finns på [sidan funktioner som stöds](./fhir-features-supported.md#search).
+
+### <a name="does-the-azure-api-for-fhir-support-everything"></a>Stöder Azure API för FHIR $everything? 
+
+Nej. För tillfället har vi inte stöd för $everything. Det kan dock uppnås med två API-anrop. Om du till exempel vill hämta patient $ allt kan du först ta tag i patient posten med/patient/[ID] och sedan ett andra anrop för att hämta alla patient data med/patient/[ID]/*.
+
+Du kan se mer information i det här [Community-inlägget](https://chat.fhir.org/#narrow/stream/179166-implementers/topic/.24everything.20with.20_type). 
 
 ### <a name="how-does-export-work"></a>Hur fungerar $export?
 

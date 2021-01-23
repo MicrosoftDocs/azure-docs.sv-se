@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: allensu
 ms.custom: references_regions
-ms.openlocfilehash: 4a9663e1356f616ed5f428c993f3367ce67cdbb5
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: fb03d0f8c2dc1f3812d417bc5a5d49857f3c1051
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98610920"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737684"
 ---
 # <a name="cross-region-load-balancer-preview"></a>Belastningsutjämnare för flera regioner (för hands version)
 
@@ -35,7 +35,7 @@ Azure Standard Load Balancer stöder belastnings utjämning mellan regioner som 
 * [Bygg en befintlig lösning för belastnings utjämning](#build-cross-region-solution-on-existing-azure-load-balancer) utan inlärnings kurva
 
 > [!IMPORTANT]
-> Belastningsutjämnare för flera regioner är för närvarande en för hands version och kan distribueras i portalen. Logga in för **https://portal.azure.com** att visa och distribuera funktionen.. </br> </br>
+> Belastningsutjämnare för flera regioner är för närvarande en för hands version och kan distribueras i portalen. Logga in för **https://preview.portal.azure.com** att visa och distribuera funktionen.. </br> </br>
 > Den här förhandsversionen tillhandahålls utan serviceavtal och rekommenderas inte för produktionsarbetsbelastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade. Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Belastnings utjämning mellan regioner ger samma fördelar med hög prestanda och låg latens som regional standard Load Balancer. 

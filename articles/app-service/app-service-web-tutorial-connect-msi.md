@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/27/2020
 ms.custom: devx-track-csharp, mvc, cli-validate, devx-track-azurecli
-ms.openlocfilehash: f043f7ed63353dcb9cf9fd26690da97b902f32a6
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.openlocfilehash: 2c19ee2b8e7ec3c695b2c76c46402c118c559b40
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98108627"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736245"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Självstudie: Säkra Azure SQL Database-anslutningar från App Service med en hanterad identitet
 
@@ -41,7 +41,7 @@ Vad du kommer att lära dig:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Den här artikeln fortsätter där du slutade i [Självstudier: Bygg en ASP.net-app i Azure med SQL Database](app-service-web-tutorial-dotnet-sqldatabase.md) eller [Självstudier: Bygg en ASP.NET Core-och SQL Database-app i Azure App Service](tutorial-dotnetcore-sqldb-app.md). Om du inte redan har gjort det följer du en av de två självstudierna först. Du kan också anpassa stegen för din egen .NET-app med SQL Database.
 
@@ -130,7 +130,7 @@ I *Web.config* arbetar du från början av filen och gör följande ändringar:
 - Hitta anslutnings strängen med namnet `MyDbConnection` och ersätt dess `connectionString` värde med `"server=tcp:<server-name>.database.windows.net;database=<db-name>;UID=AnyString;Authentication=Active Directory Interactive"` . Ersätt _\<server-name>_ och _\<db-name>_ med Server namnet och databas namnet.
 
 > [!NOTE]
-> SqlAuthenticationProvider som du precis har registrerat baseras på det AppAuthentication-bibliotek som du installerade tidigare. Som standard använder den en tilldelad identitet. Om du vill använda en tilldelad identitet måste du ange en ytterligare konfiguration. Se [stöd för anslutnings strängar](../key-vault/general/service-to-service-authentication.md#connection-string-support) för AppAuthentication-biblioteket.
+> SqlAuthenticationProvider som du precis har registrerat baseras på det AppAuthentication-bibliotek som du installerade tidigare. Som standard använder den en tilldelad identitet. Om du vill använda en tilldelad identitet måste du ange en ytterligare konfiguration. Se [stöd för anslutnings strängar](/dotnet/api/overview/azure/service-to-service-authentication#connection-string-support) för AppAuthentication-biblioteket.
 
 Det var allt du behöver för att ansluta till SQL Database. Vid fel sökning i Visual Studio använder din kod den Azure AD-användare som du konfigurerade i [Konfigurera Visual Studio](#set-up-visual-studio). Du konfigurerar SQL Database senare för att tillåta anslutning från den hanterade identiteten för din App Service-app.
 

@@ -3,12 +3,12 @@ title: Fel sökning av säkerhets kopierings fel i Azure disk backup
 description: Lär dig hur du felsöker säkerhets kopierings fel i Azure disk backup
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: 3e7c81d70fc898528532a841a484bf6fff8b83a7
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 855c6c5b19b10bdb699a25f89ebc29001b7941ac
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611244"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737735"
 ---
 # <a name="troubleshooting-backup-failures-in-azure-disk-backup-in-preview"></a>Fel sökning av säkerhets kopierings fel i Azure disk Backup (i för hands version)
 
@@ -115,7 +115,7 @@ Rekommenderad åtgärd: ge säkerhets kopierings valvets hanterade identitet rä
 
 Fel meddelande: åtgärden misslyckades eftersom max gränsen för disk kvoten har nåtts för prenumerationen.
 
-Rekommenderad åtgärd: Läs mer i [Azure-prenumerationen och tjänst begränsningar och kvot dokumentation](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits) eller kontakta Microsoft Support för ytterligare vägledning.
+Rekommenderad åtgärd: Läs mer i [Azure-prenumerationen och tjänst begränsningar och kvot dokumentation](../azure-resource-manager/management/azure-subscription-service-limits.md) eller kontakta Microsoft Support för ytterligare vägledning.
 
 ### <a name="error-code-usererrordiskbackuprestorergormsipermissionsnotpresent"></a>Felkod: UserErrorDiskBackupRestoreRGOrMSIPermissionsNotPresent
 

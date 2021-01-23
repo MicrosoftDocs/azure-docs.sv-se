@@ -5,19 +5,19 @@ ms.custom: subject-cost-optimization
 ms.service: app-service
 ms.topic: how-to
 ms.date: 01/01/2021
-ms.openlocfilehash: 85035ff894127df4e9eb8334702fd9546d7a63c3
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 9d742606435f62d48446bb8ad56ece7a31b76e47
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98598712"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736229"
 ---
 # <a name="plan-and-manage-costs-for-azure-app-service"></a>Planera och hantera kostnader för Azure App Service
 
 <!-- Check out the following published examples:
-- [https://docs.microsoft.com/azure/cosmos-db/plan-manage-costs](https://docs.microsoft.com/azure/cosmos-db/plan-manage-costs)
-- [https://docs.microsoft.com/azure/storage/common/storage-plan-manage-costs](https://docs.microsoft.com/azure/storage/common/storage-plan-manage-costs)
-- [https://docs.microsoft.com/azure/machine-learning/concept-plan-manage-cost](https://docs.microsoft.com/azure/machine-learning/concept-plan-manage-cost)
+- [https://docs.microsoft.com/azure/cosmos-db/plan-manage-costs](../cosmos-db/plan-manage-costs.md)
+- [https://docs.microsoft.com/azure/storage/common/storage-plan-manage-costs](../storage/common/storage-plan-manage-costs.md)
+- [https://docs.microsoft.com/azure/machine-learning/concept-plan-manage-cost](../machine-learning/concept-plan-manage-cost.md)
 -->
 
 <!-- Note for Azure service writer: Links to Cost Management articles are full URLS with the ?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn campaign suffix. Leave those URLs intact. They're used to measure traffic to Cost Management articles.
@@ -25,7 +25,7 @@ ms.locfileid: "98598712"
 
 <!-- Note for Azure service writer: Modify the following for your service. -->
 
-I den här artikeln beskrivs hur du planerar för och hanterar kostnader för Azure App Service. Först använder du pris Kalkylatorn för Azure för att planera för App Service kostnader innan du lägger till några resurser för tjänsten för att beräkna kostnaderna. När du lägger till Azure-resurser granskar du de uppskattade kostnaderna. När du har börjat använda App Service resurser använder du [Cost Management](https://docs.microsoft.com/azure/cost-management-billing/?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) funktioner för att ställa in budgetar och övervaka kostnader. Du kan också granska prognostiserade kostnader och identifiera utgifts trender för att identifiera områden där du kanske vill handla. Kostnaderna för Azure App Service är bara en del av månads kostnaderna på din Azure-faktura. Även om den här artikeln förklarar hur du planerar för och hanterar kostnader för App Service debiteras du för alla Azure-tjänster och-resurser som används i din Azure-prenumeration, inklusive tjänster från tredje part.
+I den här artikeln beskrivs hur du planerar för och hanterar kostnader för Azure App Service. Först använder du pris Kalkylatorn för Azure för att planera för App Service kostnader innan du lägger till några resurser för tjänsten för att beräkna kostnaderna. När du lägger till Azure-resurser granskar du de uppskattade kostnaderna. När du har börjat använda App Service resurser använder du [Cost Management](../cost-management-billing/index.yml?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) funktioner för att ställa in budgetar och övervaka kostnader. Du kan också granska prognostiserade kostnader och identifiera utgifts trender för att identifiera områden där du kanske vill handla. Kostnaderna för Azure App Service är bara en del av månads kostnaderna på din Azure-faktura. Även om den här artikeln förklarar hur du planerar för och hanterar kostnader för App Service debiteras du för alla Azure-tjänster och-resurser som används i din Azure-prenumeration, inklusive tjänster från tredje part.
 
 ## <a name="relevant-costs-for-app-service"></a>Relevanta kostnader för App Service
 
@@ -36,10 +36,10 @@ App Service körs på Azure-infrastruktur som periodiserar kostnader. Det är vi
 Beroende på vilken funktion du använder i App Service kan följande kostnads upplupna resurser skapas:
 
 - **App Service plan**  Krävs för att vara värd för en App Service app.
-- **Isolerad nivå**  En [Virtual Network](/azure/virtual-network/) krävs för en app service miljö.
-- **Säkerhetskopiera**  Det krävs ett [lagrings konto](/azure/storage/) för att göra säkerhets kopior.
-- **Diagnostikloggar**  Du kan välja [lagrings konto](/azure/storage/) som loggnings alternativ eller integrera med [Azure Log Analytics](../azure-monitor/log-query/log-analytics-tutorial.md).
-- **App service certifikat**  Certifikat som du köper i Azure måste behållas i [Azure Key Vault](/azure/key-vault/).
+- **Isolerad nivå**  En [Virtual Network](../virtual-network/index.yml) krävs för en app service miljö.
+- **Säkerhetskopiera**  Det krävs ett [lagrings konto](../storage/index.yml) för att göra säkerhets kopior.
+- **Diagnostikloggar**  Du kan välja [lagrings konto](../storage/index.yml) som loggnings alternativ eller integrera med [Azure Log Analytics](../azure-monitor/log-query/log-analytics-tutorial.md).
+- **App service certifikat**  Certifikat som du köper i Azure måste behållas i [Azure Key Vault](../key-vault/index.yml).
 
 Andra kostnads resurser för App Service är (se [App Service prissättning](https://azure.microsoft.com/pricing/details/app-service/) för mer information):
 
@@ -51,7 +51,7 @@ Andra kostnads resurser för App Service är (se [App Service prissättning](htt
 
 När du tar bort alla appar i en App Service plan fortsätter planen att debiteras enligt dess konfigurerade pris nivå och antalet instanser. Ta bort planen eller skala ned den till den **kostnads fria** nivån för att undvika oönskade kostnader.
 
-När du har tagit bort Azure App Service-resurser kan resurser från relaterade Azure-tjänster fortsätta att existera. De fortsätter att Periodisera kostnader tills du tar bort dem. Till exempel:
+När du har tagit bort Azure App Service-resurser kan resurser från relaterade Azure-tjänster fortsätta att existera. De fortsätter att Periodisera kostnader tills du tar bort dem. Ett exempel:
 
 - Virtual Network som du har skapat för en **isolerad** nivå App Service plan
 - Lagrings konton som du har skapat för att lagra säkerhets kopior eller diagnostikloggar
@@ -155,7 +155,7 @@ I föregående exempel visas den aktuella kostnaden för tjänsten. Kostnader pe
 
 <!-- Note to Azure service writer: Modify the following as needed for your service. -->
 
-Du kan skapa [budgetar](../cost-management/tutorial-acm-create-budgets.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) för att hantera kostnader och skapa [aviseringar](../cost-management/cost-mgt-alerts-monitor-usage-spending.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) som automatiskt meddelar mottagarna om kostnadsavvikelser och risker för överförbrukning. Aviseringar baseras på utgifter jämfört med budget- och kostnadströsklar. Budgetar och aviseringar skapas för Azure-prenumerationer och resurs grupper, så de är användbara som en del av en övergripande kostnads övervaknings strategi. 
+Du kan skapa [budgetar](../cost-management-billing/costs/tutorial-acm-create-budgets.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) för att hantera kostnader och skapa [aviseringar](../cost-management-billing/costs/cost-mgt-alerts-monitor-usage-spending.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) som automatiskt meddelar mottagarna om kostnadsavvikelser och risker för överförbrukning. Aviseringar baseras på utgifter jämfört med budget- och kostnadströsklar. Budgetar och aviseringar skapas för Azure-prenumerationer och resurs grupper, så de är användbara som en del av en övergripande kostnads övervaknings strategi. 
 
 Budgetar kan skapas med filter för vissa resurser eller tjänster i Azure om du vill ha mer detaljerad information i din övervakning. Filter hjälper till att se till att du inte av misstag skapar nya resurser som kostar extra pengar. Mer information om de filter alternativ som är tillgängliga när du skapar en budget finns i [alternativ för grupper och filter](../cost-management-billing/costs/group-filter.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
 
@@ -168,8 +168,8 @@ Du kan också [Exportera dina kostnads data](../cost-management-billing/costs/tu
 - Läs mer om hur prissättningen fungerar med Azure Storage. Se [App Service prissättning](https://azure.microsoft.com/pricing/details/app-service/).
 - Lär dig [hur du optimerar din moln investering med Azure Cost Management](../cost-management-billing/costs/cost-mgt-best-practices.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
 - Lär dig mer om att hantera kostnader med [kostnads analys](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
-- Lär dig mer om att [förhindra oväntade kostnader](../cost-management-billing/manage/getting-started.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
-- Ta den [Cost Management](https://docs.microsoft.com/learn/paths/control-spending-manage-bills?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) guidade utbildningen.
+- Lär dig mer om att [förhindra oväntade kostnader](../cost-management-billing/cost-management-billing-overview.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
+- Ta den [Cost Management](/learn/paths/control-spending-manage-bills?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) guidade utbildningen.
 
 <!-- Insert links to other articles that might help users save and manage costs for you service here.
 

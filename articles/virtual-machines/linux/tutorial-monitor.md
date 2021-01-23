@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/30/2019
 ms.author: magoedte
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: a21df6e5f8d437415bb5376969d56d26153b5c5f
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: f100df39ad92a3e8062c01a48a9f68730a3badb8
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500469"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736725"
 ---
 # <a name="tutorial-monitor-a-linux-virtual-machine-in-azure"></a>Självstudie: övervaka en virtuell Linux-dator i Azure
 
@@ -46,13 +46,13 @@ Om du väljer att installera och använda CLI lokalt krävs Azure CLI version 2.
 
 ## <a name="create-vm"></a>Skapa en virtuell dator
 
-Du behöver en virtuell dator för att kunna se diagnostik och mått i praktiken. Skapa först en resursgrupp med [az group create](/cli/azure/group?view=azure-cli-latest#az-group-create). I följande exempel skapas en resursgrupp med namnet *myResourceGroupMonitor* på platsen *eastus* (Östra USA).
+Du behöver en virtuell dator för att kunna se diagnostik och mått i praktiken. Skapa först en resursgrupp med [az group create](/cli/azure/group#az_group_create). I följande exempel skapas en resursgrupp med namnet *myResourceGroupMonitor* på platsen *eastus* (Östra USA).
 
 ```azurecli-interactive
 az group create --name myResourceGroupMonitor --location eastus
 ```
 
-Skapa nu en virtuell dator med [az vm create](/cli/azure/vm?view=azure-cli-latest#az-vm-create). Följande exempel skapar en virtuell dator som heter *myVM*, och SSH-nycklar skapas om de inte redan finns på *~/.ssh/*:
+Skapa nu en virtuell dator med [az vm create](/cli/azure/vm#az_vm_create). Följande exempel skapar en virtuell dator som heter *myVM*, och SSH-nycklar skapas om de inte redan finns på *~/.ssh/*:
 
 ```azurecli-interactive
 az vm create \
@@ -67,7 +67,7 @@ az vm create \
 
 När de virtuella Linux-datorerna startas samlar startdiagnostiktillägget in startutdata och lagrar dem i Azure Storage. Dessa data kan användas för att felsöka startproblem med de virtuella datorerna. Startdiagnostik aktiveras inte automatiskt när du skapar en virtuell Linux-dator med Azure CLI.
 
-Innan du aktiverar startdiagnostik måste du skapa ett lagringskonto för att lagra startloggarna. Lagringskonton måste ha ett globalt unikt namn. Namnet ska vara mellan 3 och 24 tecken och får bara innehålla siffror och gemener. Skapa ett lagringskonto med kommandot [az storage account create](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create). I det här exemplet används en slumpmässig sträng för att skapa ett unikt namn på lagringskontot.
+Innan du aktiverar startdiagnostik måste du skapa ett lagringskonto för att lagra startloggarna. Lagringskonton måste ha ett globalt unikt namn. Namnet ska vara mellan 3 och 24 tecken och får bara innehålla siffror och gemener. Skapa ett lagringskonto med kommandot [az storage account create](/cli/azure/storage/account#az_storage_account_create). I det här exemplet används en slumpmässig sträng för att skapa ett unikt namn på lagringskontot.
 
 ```azurecli-interactive
 storageacct=mydiagdata$RANDOM
@@ -96,13 +96,13 @@ az vm boot-diagnostics enable \
 
 ## <a name="view-boot-diagnostics"></a>Visa startdiagnostik
 
-När startdiagnostik är aktiverat skrivs information om startprocessen till en loggfil varje gång du stoppar och startar den virtuella datorn. I det här exemplet frigör du först den virtuella datorn med kommandot [az vm deallocate](/cli/azure/vm?view=azure-cli-latest#az-vm-deallocate):
+När startdiagnostik är aktiverat skrivs information om startprocessen till en loggfil varje gång du stoppar och startar den virtuella datorn. I det här exemplet frigör du först den virtuella datorn med kommandot [az vm deallocate](/cli/azure/vm#az_vm_deallocate):
 
 ```azurecli-interactive
 az vm deallocate --resource-group myResourceGroupMonitor --name myVM
 ```
 
-Sedan startar du den virtuella datorn med kommandot [az vm start](/cli/azure/vm?view=azure-cli-latest#az-vm-start):
+Sedan startar du den virtuella datorn med kommandot [az vm start](/cli/azure/vm#az_vm_start):
 
 ```azurecli-interactive
 az vm start --resource-group myResourceGroupMonitor --name myVM

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/26/2020
 ms.author: mathoma
-ms.openlocfilehash: becf9f8c7f6a967ed63cfd3040de90de76e32fff
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 8daec71745c9eff9a7db5bb34cb3596973def4aa
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97607277"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736422"
 ---
 # <a name="create-an-fci-with-azure-shared-disks-sql-server-on-azure-vms"></a>Skapa en FCI med Azure Shared disks (SQL Server på virtuella Azure-datorer)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -32,7 +32,7 @@ Mer information finns i Översikt över [FCI med SQL Server på Azure VM](failov
 Innan du slutför instruktionerna i den här artikeln bör du redan ha:
 
 - En Azure-prenumeration. Kom igång [kostnads fritt](https://azure.microsoft.com/free/). 
-- [Två eller flera virtuella Windows Azure-datorer](failover-cluster-instance-prepare-vm.md). [Tillgänglighets uppsättningar](../../../virtual-machines/windows/tutorial-availability-sets.md) och [närhets placerings grupper](../../../virtual-machines/windows/co-location.md#proximity-placement-groups) (PPGs) som stöds för Premium SSD-och [tillgänglighets zoner](../../../virtual-machines/windows/create-portal-availability-zone.md#confirm-zone-for-managed-disk-and-ip-address) stöds för Ultra disks. Om du använder en PPG måste alla noder finnas i samma grupp.
+- [Två eller flera virtuella Windows Azure-datorer](failover-cluster-instance-prepare-vm.md). [Tillgänglighets uppsättningar](../../../virtual-machines/windows/tutorial-availability-sets.md) och [närhets placerings grupper](../../../virtual-machines/co-location.md#proximity-placement-groups) (PPGs) som stöds för Premium SSD-och [tillgänglighets zoner](../../../virtual-machines/windows/create-portal-availability-zone.md#confirm-zone-for-managed-disk-and-ip-address) stöds för Ultra disks. Om du använder en PPG måste alla noder finnas i samma grupp.
 - Ett konto som har behörighet att skapa objekt både på virtuella Azure-datorer och i Active Directory.
 - Den senaste versionen av [PowerShell](/powershell/azure/install-az-ps). 
 

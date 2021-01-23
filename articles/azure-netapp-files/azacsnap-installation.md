@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: phjensen
-ms.openlocfilehash: 5c2182fc80c3745e0238c378c1cade0530393181
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 00aaa5bdc0d48adb735679fc4a71b3431970ef09
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97632842"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737175"
 ---
 # <a name="install-azure-application-consistent-snapshot-tool-preview"></a>Installera Azure Application enhetligt ögonblicks bild verktyget (förhands granskning)
 
@@ -34,9 +34,9 @@ Själv Installer försöker fastställa rätt inställningar och sökvägar för
 
 Följ rikt linjerna för att ställa in och köra kommandona ögonblicks bilder och haveri beredskap. Vi rekommenderar att du utför följande steg som rot innan du installerar och använder verktyg för ögonblicks bilder.
 
-1. **Operativ systemet har korrigerats**: information [om hur du installerar och konfigurerar SAP HANA (stora instanser) i Azure](/azure/virtual-machines/workloads/sap/hana-installation#setting-up-smt-server-for-suse-linux)finns i avsnittet korrigering och SMT-installation.
+1. **Operativ systemet har korrigerats**: information [om hur du installerar och konfigurerar SAP HANA (stora instanser) i Azure](../virtual-machines/workloads/sap/hana-installation.md#operating-system)finns i avsnittet korrigering och SMT-installation.
 1. **Tidssynkronisering har kon figurer ATS**. Kunden måste tillhandahålla en NTP-kompatibel tids Server och konfigurera operativ systemet på lämpligt sätt.
-1. **Hana har installerats** : se Hana-Installationsinstruktioner i [SAP NetWeaver-installation på Hana-databas](https://blogs.msdn.microsoft.com/saponsqlserver/2017/11/21/sap-netweaver-installation-on-hana-database/).
+1. **Hana har installerats** : se Hana-Installationsinstruktioner i [SAP NetWeaver-installation på Hana-databas](/archive/blogs/saponsqlserver/sap-netweaver-installation-on-hana-database).
 1. **[Aktivera kommunikation med lagring](#enable-communication-with-storage)** (mer information finns i separata avsnitt): kunden måste konfigurera SSH med ett privat/offentligt nyckel par och ange den offentliga nyckeln för varje nod där verktyg för ögonblicks bilder planeras att köras till Microsoft-åtgärder för installation på lagrings Server delen.
    1. **För Azure NetApp Files (se separata avsnitt för mer information)**: kunden måste generera autentiserings filen för tjänstens huvud namn.
    1. **För Azure stor Instance (se separata avsnitt för mer information)**: kunden måste konfigurera SSH med ett privat/offentligt nyckel par och ange den offentliga nyckeln för varje nod där verktyg för ögonblicks bilder planeras att köras till Microsoft-åtgärder för installation på lagrings Server delen.

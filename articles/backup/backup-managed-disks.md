@@ -3,12 +3,12 @@ title: Säkerhetskopiera Azure Managed Disks
 description: Lär dig hur du säkerhetskopierar Azure-Managed Disks från Azure Portal.
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: 2169e2f44e3ffb2c05c674d633efabed2c531878
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: ca86550c4dec4b51c60d9ecdef124e38783a3764
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98573130"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98738160"
 ---
 # <a name="back-up-azure-managed-disks-in-preview"></a>Säkerhetskopiera Azure Managed Disks (för hands version)
 
@@ -17,7 +17,7 @@ ms.locfileid: "98573130"
 >
 >[Fyll i det här formuläret](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR1vE8L51DIpDmziRt_893LVUNFlEWFJBN09PTDhEMjVHS05UWFkxUlUzUS4u) om du vill registrera dig för för hands versionen.
 
-Den här artikeln förklarar hur du säkerhetskopierar den [hanterade Azure-disken](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview) från Azure Portal.
+Den här artikeln förklarar hur du säkerhetskopierar den [hanterade Azure-disken](../virtual-machines/managed-disks-overview.md) från Azure Portal.
 
 I den här artikeln får du lära dig att:
 
@@ -46,7 +46,7 @@ Ett säkerhets kopierings valv är en lagrings enhet i Azure som innehåller sä
 
    ![Starta: skapa valv](./media/backup-managed-disks/initiate-create-vault.png)
 
-1. På fliken **grundläggande** anger du prenumeration, resurs grupp, namn på säkerhets kopierings valv, region och redundans för lagring av säkerhets kopior. Fortsätt genom att välja **Granska + skapa**. Lär dig mer om att [skapa ett säkerhets kopierings valv](https://docs.microsoft.com/azure/backup/backup-vault-overview#create-a-backup-vault).
+1. På fliken **grundläggande** anger du prenumeration, resurs grupp, namn på säkerhets kopierings valv, region och redundans för lagring av säkerhets kopior. Fortsätt genom att välja **Granska + skapa**. Lär dig mer om att [skapa ett säkerhets kopierings valv](./backup-vault-overview.md#create-a-backup-vault).
 
    ![Granska och skapa valv](./media/backup-managed-disks/review-and-create.png)
 
@@ -67,7 +67,7 @@ Ett säkerhets kopierings valv är en lagrings enhet i Azure som innehåller sä
 
    ![Välj frekvens för säkerhets kopierings schema](./media/backup-managed-disks/backup-schedule-frequency.png)
 
-   Azure disk Backup erbjuder flera säkerhets kopior per dag. Om du behöver mer frekventa säkerhets kopieringar väljer du säkerhets kopierings frekvensen varje **timme** med möjlighet att göra säkerhets kopior med intervaller var fjärde, 6, 8 eller 12 timmar. Säkerhets kopiorna schemaläggs utifrån det **tidsintervall** som valts. Om du till exempel väljer **var fjärde timme** så tas säkerhets kopiorna ungefär i intervallet var fjärde timme, så att säkerhets kopiorna distribueras jämnt över dagen. Om det räcker med en sådan säkerhets kopiering kan du välja den **dagliga** säkerhets kopierings frekvensen. I frekvensen för daglig säkerhets kopiering kan du ange tiden på dagen då dina säkerhets kopieringar görs. Det är viktigt att notera att tiden på dagen anger start tiden för säkerhets kopieringen och inte tidpunkten då säkerhets kopieringen slutförts. Tiden som krävs för att slutföra säkerhets kopierings åtgärden beror på olika faktorer, inklusive storleken på disken och omsättnings takten mellan på varandra följande säkerhets kopieringar. Säkerhets kopiering av Azure-diskar är dock en agent utan agent som använder [stegvisa ögonblicks bilder](https://docs.microsoft.com/azure/virtual-machines/windows/disks-incremental-snapshots-portal), vilket inte påverkar produktions programmets prestanda.
+   Azure disk Backup erbjuder flera säkerhets kopior per dag. Om du behöver mer frekventa säkerhets kopieringar väljer du säkerhets kopierings frekvensen varje **timme** med möjlighet att göra säkerhets kopior med intervaller var fjärde, 6, 8 eller 12 timmar. Säkerhets kopiorna schemaläggs utifrån det **tidsintervall** som valts. Om du till exempel väljer **var fjärde timme** så tas säkerhets kopiorna ungefär i intervallet var fjärde timme, så att säkerhets kopiorna distribueras jämnt över dagen. Om det räcker med en sådan säkerhets kopiering kan du välja den **dagliga** säkerhets kopierings frekvensen. I frekvensen för daglig säkerhets kopiering kan du ange tiden på dagen då dina säkerhets kopieringar görs. Det är viktigt att notera att tiden på dagen anger start tiden för säkerhets kopieringen och inte tidpunkten då säkerhets kopieringen slutförts. Tiden som krävs för att slutföra säkerhets kopierings åtgärden beror på olika faktorer, inklusive storleken på disken och omsättnings takten mellan på varandra följande säkerhets kopieringar. Säkerhets kopiering av Azure-diskar är dock en agent utan agent som använder [stegvisa ögonblicks bilder](../virtual-machines/disks-incremental-snapshots.md), vilket inte påverkar produktions programmets prestanda.
 
 1. På fliken **säkerhets kopierings policy** väljer du inställningar för kvarhållning som uppfyller kravet på återställnings punkt mål.
 
@@ -80,7 +80,7 @@ Ett säkerhets kopierings valv är en lagrings enhet i Azure som innehåller sä
    ![Inställningar för kvarhållning](./media/backup-managed-disks/retention-settings.png)
 
    >[!NOTE]
-   >Azure Backup för Managed Disks använder stegvisa ögonblicks bilder som är begränsade till 200 ögonblicks bilder per disk. För att du ska kunna ta säkerhets kopior på begäran från schemalagda säkerhets kopieringar begränsar säkerhets kopierings principen den totala säkerhets kopian till 180. Läs mer om [stegvisa ögonblicks bilder](https://docs.microsoft.com/azure/virtual-machines/windows/disks-incremental-snapshots-portal#restrictions) för hanterad disk.
+   >Azure Backup för Managed Disks använder stegvisa ögonblicks bilder som är begränsade till 200 ögonblicks bilder per disk. För att du ska kunna ta säkerhets kopior på begäran från schemalagda säkerhets kopieringar begränsar säkerhets kopierings principen den totala säkerhets kopian till 180. Läs mer om [stegvisa ögonblicks bilder](../virtual-machines/disks-incremental-snapshots.md#restrictions) för hanterad disk.
 
 1. Slutför skapandet av säkerhets kopierings principen genom att välja **Granska + skapa**.
 
@@ -88,7 +88,7 @@ Ett säkerhets kopierings valv är en lagrings enhet i Azure som innehåller sä
 
 Säkerhets kopierings valv använder hanterad identitet för att få åtkomst till andra Azure-resurser. För att kunna konfigurera säkerhets kopiering av hanterade diskar kräver säkerhets kopierings valvets hanterade identitet en uppsättning behörigheter på de käll diskar och resurs grupper där ögonblicks bilder skapas och hanteras.
 
-En systemtilldelad hanterad identitet är begränsad till en per resurs och är knuten till den här resursens livs cykel. Du kan bevilja behörighet till den hanterade identiteten med hjälp av rollbaserad åtkomst kontroll i Azure (Azure RBAC). Hanterad identitet är ett tjänst objekt av en särskild typ som bara kan användas med Azure-resurser. Läs mer om [hanterade identiteter](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
+En systemtilldelad hanterad identitet är begränsad till en per resurs och är knuten till den här resursens livs cykel. Du kan bevilja behörighet till den hanterade identiteten med hjälp av rollbaserad åtkomst kontroll i Azure (Azure RBAC). Hanterad identitet är ett tjänst objekt av en särskild typ som bara kan användas med Azure-resurser. Läs mer om [hanterade identiteter](../active-directory/managed-identities-azure-resources/overview.md).
 
 Följande förutsättningar måste vara uppfyllda för att säkerhets kopiering av hanterade diskar ska kunna konfigureras:
 
@@ -115,7 +115,7 @@ Följande förutsättningar måste vara uppfyllda för att säkerhets kopiering 
 
    - Du kan använda den här resurs gruppen för att lagra ögonblicks bilder på flera diskar som ska säkerhets kopie ras (eller planerade).  
 
-   - Du kan inte skapa en stegvis ögonblicks bild för en viss disk utanför diskens prenumeration. Välj därför resurs gruppen i samma prenumeration som den disk som ska säkerhets kopie ras. Läs mer om [stegvis ögonblicks bild](https://docs.microsoft.com/azure/virtual-machines/windows/disks-incremental-snapshots-portal#restrictions) för hanterade diskar.
+   - Du kan inte skapa en stegvis ögonblicks bild för en viss disk utanför diskens prenumeration. Välj därför resurs gruppen i samma prenumeration som den disk som ska säkerhets kopie ras. Läs mer om [stegvis ögonblicks bild](../virtual-machines/disks-incremental-snapshots.md#restrictions) för hanterade diskar.
 
    Följ dessa steg om du vill tilldela rollen:
 
@@ -129,8 +129,6 @@ Följande förutsättningar måste vara uppfyllda för att säkerhets kopiering 
    >Ange namnet på säkerhets kopierings valvet för att välja valvets hanterade identitet.
 
    ![Lägg till rollen disk ögonblicks bild deltagare](./media/backup-managed-disks/disk-snapshot-contributor-role.png)
-
-1. Om disken som ska säkerhets kopie ras är krypterad med [Kundhanterade nycklar (CMK)](https://docs.microsoft.com/azure/virtual-machines/disks-enable-customer-managed-keys-portal) eller med hjälp av [Double Encryption med hjälp av plattforms hanterade nycklar och Kundhanterade nycklar](https://docs.microsoft.com/azure/virtual-machines/disks-enable-double-encryption-at-rest-portal), tilldelar du sedan rollen **läsare** behörighet till säkerhets kopierings valvets hanterade identitet på **disk krypterings uppsättnings** resursen.
 
 1. Kontrol lera att den hanterade identiteten för säkerhets kopierings valvet har rätt uppsättning roll tilldelningar på den käll disk och resurs grupp som fungerar som ögonblicks bild data lager.
 
@@ -154,7 +152,7 @@ Följande förutsättningar måste vara uppfyllda för att säkerhets kopiering 
    ![Välj Azure-disk](./media/backup-managed-disks/select-azure-disk.png)
 
    >[!NOTE]
-   >Azure Backup använder [stegvisa ögonblicks bilder](https://docs.microsoft.com/azure/virtual-machines/windows/disks-incremental-snapshots-portal#restrictions) av hanterade diskar, som endast lagrar förändrings ändringarna på disken sedan den senaste ögonblicks bilden på standard HDD lagring, oavsett lagrings typ för den överordnade disken. För ytterligare tillförlitlighet lagras stegvisa ögonblicks bilder i zoner redundant lagring (ZRS) som standard i regioner som stöder ZRS. För närvarande stöder Azure disk backup drift säkerhets kopiering av hanterade diskar som inte kopierar säkerhets kopior till lagring med säkerhets kopierings valv. Inställningen för redundans för säkerhets kopiering för säkerhets kopierings valv gäller inte för återställnings punkterna.
+   >Azure Backup använder [stegvisa ögonblicks bilder](../virtual-machines/disks-incremental-snapshots.md#restrictions) av hanterade diskar, som endast lagrar förändrings ändringarna på disken sedan den senaste ögonblicks bilden på standard HDD lagring, oavsett lagrings typ för den överordnade disken. För ytterligare tillförlitlighet lagras stegvisa ögonblicks bilder i zoner redundant lagring (ZRS) som standard i regioner som stöder ZRS. För närvarande stöder Azure disk backup drift säkerhets kopiering av hanterade diskar som inte kopierar säkerhets kopior till lagring med säkerhets kopierings valv. Inställningen för redundans för säkerhets kopiering för säkerhets kopierings valv gäller inte för återställnings punkterna.
 
 1. På fliken **säkerhets kopierings princip** väljer du en säkerhets kopierings princip.
 

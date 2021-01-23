@@ -3,12 +3,12 @@ title: Återställa Azure-Managed Disks
 description: Lär dig hur du återställer Azure-Managed Disks från Azure Portal.
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: 848a7476b1c5095d4e4d3156d4c7ce33da777090
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: b9c9a22f25a8003151217bec15b618e3c380e67e
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611142"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737384"
 ---
 # <a name="restore-azure-managed-disks-in-preview"></a>Återställa Azure Managed Disks (för hands version)
 
@@ -17,7 +17,7 @@ ms.locfileid: "98611142"
 >
 >[Fyll i det här formuläret](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR1vE8L51DIpDmziRt_893LVUNFlEWFJBN09PTDhEMjVHS05UWFkxUlUzUS4u) om du vill registrera dig för för hands versionen.
 
-I den här artikeln förklaras hur du återställer [Azure-Managed disks](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview) från en återställnings punkt som skapats av Azure Backup.
+I den här artikeln förklaras hur du återställer [Azure-Managed disks](../virtual-machines/managed-disks-overview.md) från en återställnings punkt som skapats av Azure Backup.
 
 För närvarande stöds inte alternativet Original-Location återställning (OLR) för återställning genom att ersätta den befintliga käll disken där säkerhets kopiorna gjordes. Du kan återställa från en återställnings punkt för att skapa en ny disk antingen i samma resurs grupp som käll disken från vilken säkerhets kopian gjordes eller i någon annan resurs grupp. Detta kallas Alternate-Location återställning (återställning till) och detta hjälper till att hålla både käll disken och den återställda (nya) disken.
 
@@ -31,7 +31,7 @@ I den här artikeln får du lära dig att:
 
 Säkerhets kopierings valv använder hanterad identitet för att få åtkomst till andra Azure-resurser. För att återställa från säkerhets kopian kräver säkerhets kopierings valvets hanterade identitet en uppsättning behörigheter för resurs gruppen där disken ska återställas.
 
-Säkerhets kopierings valvet använder en systemtilldelad hanterad identitet, som är begränsad till en per resurs och är kopplad till livs cykeln för den här resursen. Du kan bevilja behörighet till den hanterade identiteten med hjälp av rollbaserad åtkomst kontroll i Azure (Azure RBAC). Hanterad identitet är ett tjänst objekt av en särskild typ som bara kan användas med Azure-resurser. Läs mer om [hanterade identiteter](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
+Säkerhets kopierings valvet använder en systemtilldelad hanterad identitet, som är begränsad till en per resurs och är kopplad till livs cykeln för den här resursen. Du kan bevilja behörighet till den hanterade identiteten med hjälp av rollbaserad åtkomst kontroll i Azure (Azure RBAC). Hanterad identitet är ett tjänst objekt av en särskild typ som bara kan användas med Azure-resurser. Läs mer om [hanterade identiteter](../active-directory/managed-identities-azure-resources/overview.md).
 
 Följande krav krävs för att utföra en återställnings åtgärd:
 
@@ -89,7 +89,7 @@ När förutsättningarna är uppfyllda följer du stegen nedan för att utföra 
     ![Återställ parametrar](./media/restore-managed-disks/restore-parameters.png)
 
     >[!TIP]
-    >Diskar som säkerhets kopie ras av Azure Backup med hjälp av disk säkerhets kopierings lösningen kan också säkerhets kopie ras genom att Azure Backup hjälp av Azure VM backup-lösningen med Recovery Services-valvet. Om du har konfigurerat skyddet av den virtuella Azure-datorn som disken är ansluten till kan du även använda åtgärden för återställning av virtuella Azure-datorer. Du kan välja att återställa den virtuella datorn eller diskar och filer eller mappar från återställnings punkten för motsvarande instans av Azure VM-säkerhetskopiering. Mer information finns i [säkerhets kopiering av virtuella Azure-datorer](https://docs.microsoft.com/azure/backup/about-azure-vm-restore).
+    >Diskar som säkerhets kopie ras av Azure Backup med hjälp av disk säkerhets kopierings lösningen kan också säkerhets kopie ras genom att Azure Backup hjälp av Azure VM backup-lösningen med Recovery Services-valvet. Om du har konfigurerat skyddet av den virtuella Azure-datorn som disken är ansluten till kan du även använda åtgärden för återställning av virtuella Azure-datorer. Du kan välja att återställa den virtuella datorn eller diskar och filer eller mappar från återställnings punkten för motsvarande instans av Azure VM-säkerhetskopiering. Mer information finns i [säkerhets kopiering av virtuella Azure-datorer](./about-azure-vm-restore.md).
 
 1. När verifieringen är klar väljer du **Återställ** för att starta återställnings åtgärden.
 
@@ -109,9 +109,9 @@ Restore kommer att skapa en ny disk från den valda återställnings punkten i m
 
     ![Växla OS-diskar](./media/restore-managed-disks/swap-os-disks.png)
 
-- För virtuella Windows-datorer, om den återställda disken är en datadisk, följer du anvisningarna för att [Koppla från den ursprungliga data disken](https://docs.microsoft.com/azure/virtual-machines/windows/detach-disk#detach-a-data-disk-using-the-portal) från den virtuella datorn. [Anslut sedan den återställda disken](https://docs.microsoft.com/azure/virtual-machines/windows/attach-managed-disk-portal) till den virtuella datorn. Följ anvisningarna för att [Växla OS-disken](https://docs.microsoft.com/azure/virtual-machines/windows/os-disk-swap) för den virtuella datorn med den återställda disken.
+- För virtuella Windows-datorer, om den återställda disken är en datadisk, följer du anvisningarna för att [Koppla från den ursprungliga data disken](../virtual-machines/windows/detach-disk.md#detach-a-data-disk-using-the-portal) från den virtuella datorn. [Anslut sedan den återställda disken](../virtual-machines/windows/attach-managed-disk-portal.md) till den virtuella datorn. Följ anvisningarna för att [Växla OS-disken](../virtual-machines/windows/os-disk-swap.md) för den virtuella datorn med den återställda disken.
 
-- För virtuella Linux-datorer, om den återställda disken är en datadisk, följer du anvisningarna för att [Koppla från den ursprungliga data disken](https://docs.microsoft.com/azure/virtual-machines/linux/detach-disk#detach-a-data-disk-using-the-portal) från den virtuella datorn. [Anslut sedan den återställda disken](https://docs.microsoft.com/azure/virtual-machines/linux/attach-disk-portal#attach-an-existing-disk) till den virtuella datorn. Följ anvisningarna för att [Växla OS-disken](https://docs.microsoft.com/azure/virtual-machines/linux/os-disk-swap) för den virtuella datorn med den återställda disken.
+- För virtuella Linux-datorer, om den återställda disken är en datadisk, följer du anvisningarna för att [Koppla från den ursprungliga data disken](../virtual-machines/linux/detach-disk.md#detach-a-data-disk-using-the-portal) från den virtuella datorn. [Anslut sedan den återställda disken](../virtual-machines/linux/attach-disk-portal.md#attach-an-existing-disk) till den virtuella datorn. Följ anvisningarna för att [Växla OS-disken](../virtual-machines/linux/os-disk-swap.md) för den virtuella datorn med den återställda disken.
 
 Vi rekommenderar att du återkallar rollen för **disk återställnings operatören** från säkerhets kopierings valvets hanterade identitet i **mål resurs gruppen** när återställnings åtgärden har slutförts.
 

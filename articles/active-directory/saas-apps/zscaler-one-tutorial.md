@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/18/2020
 ms.author: jeedes
-ms.openlocfilehash: 4f519ed60dcec85048907be0660e1fd01871ccc3
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 3f825e247aff5c8fc53eb8610f33bd8e0b7fce3d
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97937084"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735649"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-one"></a>Självstudie: Azure Active Directory integrering med Zscaler One
 
@@ -90,7 +90,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 6. Förutom över, förväntar Zscaler ett program att fler attribut skickas tillbaka i SAML-svar. I avsnittet **Användaranspråk** i dialogrutan **Användarattribut** utför du följande steg för att lägga till SAML-tokenattributet enligt det som visas i tabellen nedan:
     
-    | Namn | Källattribut |
+    | Name | Källattribut |
     | ---------| ------------ |
     | memberOf | user.assignedroles |
 
@@ -107,7 +107,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
     f. Klicka på **Spara**.
 
     > [!NOTE]
-    > Klicka [här](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps#app-roles-ui) om du vill veta mer om hur du konfigurerar roller i Azure AD.
+    > Klicka [här](../develop/howto-add-app-roles-in-azure-ad-apps.md#app-roles-ui--preview) om du vill veta mer om hur du konfigurerar roller i Azure AD.
 
 7. På sidan **Konfigurera enkel inloggning med SAML** går du till avsnittet **SAML-signeringscertifikat**, klickar du på **Ladda ned** för att ladda ned **Certifikat (Base64)** från de angivna alternativen enligt dina behov och sparar det på datorn.
 
@@ -235,7 +235,7 @@ I det här avsnittet ska du testa Azure AD-konfigurationen för enkel inloggning
 
 * Gå till Zscaler för en inloggnings-URL direkt och starta inloggnings flödet därifrån.
 
-* Du kan använda Microsoft Mina appar. När du klickar på Zscaler en panel i Mina appar omdirigeras den till Zscaler med en inloggnings-URL. Mer information om Mina appar finns i [Introduktion till Mina appar](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* Du kan använda Microsoft Mina appar. När du klickar på Zscaler en panel i Mina appar omdirigeras den till Zscaler med en inloggnings-URL. Mer information om Mina appar finns i [Introduktion till Mina appar](../user-help/my-apps-portal-end-user-access.md).
 
 
 ## <a name="next-steps"></a>Nästa steg

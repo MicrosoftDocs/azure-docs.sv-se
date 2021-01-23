@@ -3,16 +3,16 @@ title: SKU är inte tillgängliga, fel
 description: Beskriver hur du felsöker fel meddelandet SKU är inte tillgängligt när du distribuerar resurser med Azure Resource Manager.
 ms.topic: troubleshooting
 ms.date: 02/18/2020
-ms.openlocfilehash: 15df8c5ff45994a03e12731cf3798f7f4c2a295b
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 5b0bbd653907c109eca526af86979013b3137cfa
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91948637"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737158"
 ---
 # <a name="resolve-errors-for-sku-not-available"></a>Åtgärda fel med otillgänglig SKU
 
-Den här artikeln beskriver hur du löser **SkuNotAvailable** -felet. Om du inte kan hitta en lämplig SKU i regionen/zonen eller en alternativ region/zon som uppfyller dina affärs behov skickar du en SKU- [begäran](../../azure-portal/supportability/sku-series-unavailable.md) till Azure-supporten.
+Den här artikeln beskriver hur du löser **SkuNotAvailable** -felet. Om du inte kan hitta en lämplig SKU i regionen/zonen eller en alternativ region/zon som uppfyller dina affärs behov skickar du en SKU- [begäran](/troubleshoot/azure/general/region-access-request-process) till Azure-supporten.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -83,7 +83,7 @@ virtualMachines  southcentralus  Standard_F4                ...             None
 
 Använd [portalen](https://portal.azure.com)för att avgöra vilka SKU: er som är tillgängliga i en region. Logga in på portalen och Lägg till en resurs via gränssnittet. När du anger värden visas tillgängliga SKU: er för resursen. Du behöver inte slutföra distributionen.
 
-Starta till exempel processen för att skapa en virtuell dator. Välj **ändra storlek**om du vill se annan tillgänglig storlek.
+Starta till exempel processen för att skapa en virtuell dator. Välj **ändra storlek** om du vill se annan tillgänglig storlek.
 
 ![Skapa en virtuell dator](./media/error-sku-not-available/create-vm.png)
 

@@ -298,8 +298,6 @@
       href: template-best-practices.md
     - name: Vanliga frågor och svar
       href: frequently-asked-questions.md
-    - name: Mallspecifikationer
-      href: template-specs.md
     - name: Mallar för molnkonsekvens
       href: templates-cloud-consistency.md
     - name: Distributionsmodeller
@@ -423,6 +421,12 @@
           href: test-toolkit.md
         - name: Testfall
           href: test-cases.md
+    - name: Mallspecifikationer
+      items:
+        - name: Skapa och distribuera mallspecifikationer
+          href: template-specs.md
+        - name: Konvertera portalens mall Galleri
+          href: convert-to-template-spec.md
     - name: CI/CD
       items:
         - name: ARM-mallar med pipelines

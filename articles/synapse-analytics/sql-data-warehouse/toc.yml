@@ -366,6 +366,8 @@
           href: sql-data-warehouse-restore-deleted-dw.md
         - name: Återställa från en geo-säkerhetskopia
           href: sql-data-warehouse-restore-from-geo-backup.md
+        - name: Inaktivera geo-säkerhetskopieringar
+          href: disable-geo-backup.md
     - name: Integrera
       items:
         - name: Använd maskininlärning

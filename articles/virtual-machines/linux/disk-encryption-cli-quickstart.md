@@ -8,12 +8,12 @@ ms.subservice: security
 ms.topic: quickstart
 ms.date: 05/17/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 3a9c859c32ef9ad387c56d5fc20f2173ee14fac5
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: addfa90f5ec793600072aaaaf2786cfe3d5dad38
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91975186"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737023"
 ---
 # <a name="quickstart-create-and-encrypt-a-linux-vm-with-the-azure-cli"></a>Snabb start: skapa och kryptera en virtuell Linux-dator med Azure CLI
 
@@ -25,7 +25,7 @@ Om du väljer att installera och använda Azure CLI lokalt kräver den här snab
 
 ## <a name="create-a-resource-group"></a>Skapa en resursgrupp
 
-Skapa en resursgrupp med kommandot [az group create](/cli/azure/group?view=azure-cli-latest#az-group-create). En Azure-resursgrupp är en logisk container där Azure-resurser distribueras och hanteras. I följande exempel skapas en resurs grupp med namnet *myResourceGroup* på platsen för *öster* :
+Skapa en resursgrupp med kommandot [az group create](/cli/azure/group#az-group-create). En Azure-resursgrupp är en logisk container där Azure-resurser distribueras och hanteras. I följande exempel skapas en resurs grupp med namnet *myResourceGroup* på platsen för *öster* :
 
 ```azurecli-interactive
 az group create --name "myResourceGroup" --location "eastus"
@@ -33,7 +33,7 @@ az group create --name "myResourceGroup" --location "eastus"
 
 ## <a name="create-a-virtual-machine"></a>Skapa en virtuell dator
 
-Skapa en virtuell dator med [az vm create](/cli/azure/vm?view=azure-cli-latest#az-vm-create). I följande exempel skapas en virtuell dator med namnet *myVM*.
+Skapa en virtuell dator med [az vm create](/cli/azure/vm#az_vm_create). I följande exempel skapas en virtuell dator med namnet *myVM*.
 
 ```azurecli-interactive
 az vm create \
@@ -61,7 +61,7 @@ Det tar några minuter att skapa den virtuella datorn och stödresurser. Utdatar
 
 ## <a name="create-a-key-vault-configured-for-encryption-keys"></a>Skapa en Key Vault konfigurerad för krypterings nycklar
 
-Azure Disk Encryption lagrar sin krypterings nyckel i en Azure Key Vault. Skapa en Key Vault med [AZ-valv skapa](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create). Om du vill aktivera Key Vault att lagra krypterings nycklar använder du parametern--enabled-for-Disk-Encryption.
+Azure Disk Encryption lagrar sin krypterings nyckel i en Azure Key Vault. Skapa en Key Vault med [AZ-valv skapa](/cli/azure/keyvault#az_keyvault_create). Om du vill aktivera Key Vault att lagra krypterings nycklar använder du parametern--enabled-for-Disk-Encryption.
 
 > [!Important]
 > Varje nyckel valv måste ha ett namn som är unikt i Azure. I exemplen nedan ersätter du <ditt-Unique-nyckel-valv> med det namn som du väljer.
@@ -72,7 +72,7 @@ az keyvault create --name "<your-unique-keyvault-name>" --resource-group "myReso
 
 ## <a name="encrypt-the-virtual-machine"></a>Kryptera den virtuella datorn
 
-Kryptera din virtuella dator med [AZ VM-kryptering](/cli/azure/vm/encryption?view=azure-cli-latest)och ange ditt unika Key Vault namn till parametern--Disk-Encryption-nyckel.
+Kryptera din virtuella dator med [AZ VM-kryptering](/cli/azure/vm/encryption)och ange ditt unika Key Vault namn till parametern--Disk-Encryption-nyckel.
 
 ```azurecli-interactive
 az vm encryption enable -g "MyResourceGroup" --name "myVM" --disk-encryption-keyvault "<your-unique-keyvault-name>"

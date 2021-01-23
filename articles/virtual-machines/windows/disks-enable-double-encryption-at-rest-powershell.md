@@ -8,20 +8,20 @@ ms.author: rogarana
 ms.service: virtual-machines-windows
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: c231aab47f154b6150368b504872d87317c790cc
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 9f0642d3421e775d1c6930b672b37643a961178f
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93359960"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736296"
 ---
 # <a name="use-the-azure-powershell-module-to-enable-double-encryption-at-rest-for-managed-disks"></a>Använd Azure PowerShell-modulen för att aktivera dubbel kryptering i vila för hanterade diskar
 
 Azure-disklagring stöder dubbel kryptering i vila för hanterade diskar. Grundläggande information om dubbel kryptering i vila och andra typer av hanterade disk krypterings typer finns i avsnittet [dubbel kryptering i vilo](../disk-encryption.md#double-encryption-at-rest) läge i vår disk krypterings artikel.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
-Installera den senaste [Azure PowerShell versionen](/powershell/azure/install-az-ps)och logga in på ett Azure-konto med [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-4.3.0).
+Installera den senaste [Azure PowerShell versionen](/powershell/azure/install-az-ps)och logga in på ett Azure-konto med [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount).
 
 ## <a name="getting-started"></a>Komma igång
 

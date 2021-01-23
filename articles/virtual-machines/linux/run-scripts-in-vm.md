@@ -7,12 +7,12 @@ author: bobbytreed
 ms.author: robreed
 ms.date: 05/02/2018
 ms.topic: how-to
-ms.openlocfilehash: 0f91bb33116947312173d8f22929b8548d23a9ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 151bc827cc92c749edd2899cb331eebd22e171a7
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87292282"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737837"
 ---
 # <a name="run-scripts-in-your-linux-vm"></a>Kör skript i din virtuella Linux-dator
 
@@ -33,7 +33,7 @@ Det [anpassade skript tillägget](../extensions/custom-script-linux.md) används
 [Kommando funktionen kör](run-command.md) möjliggör hantering av virtuella datorer och program och fel sökning med skript och är tillgänglig även om datorn inte kan nås, till exempel om gäst brand väggen inte har RDP-eller SSH-porten öppen.
 
 * Kör skript på virtuella Azure-datorer.
-* Kan köras med [Azure Portal](run-command.md), [REST API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand), [Azure CLI](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke)eller [PowerShell](/powershell/module/az.compute/invoke-azvmruncommand)
+* Kan köras med [Azure Portal](run-command.md), [REST API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand), [Azure CLI](/cli/azure/vm/run-command#az_vm_run_command_invoke)eller [PowerShell](/powershell/module/az.compute/invoke-azvmruncommand)
 * Kör snabbt ett skript och visa utdata och upprepa efter behov i Azure Portal.
 * Skriptet kan skrivas in direkt eller så kan du köra ett av de inbyggda skripten.
 * Kör PowerShell-skript i Windows-datorer och bash-skript på Linux-datorer.

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 1ea8f3bccd97e1aaa15a21ae605a163b11c8ae39
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 758f7de46c524406f31a40072250eb7d59745d42
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98197939"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736096"
 ---
 # <a name="azure-security-baseline-for-app-service"></a>Azures säkerhets bas linje för App Service
 
@@ -26,7 +26,7 @@ Om du vill se hur App Service helt mappar till Azures säkerhets mätning, se de
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1,1: skydda Azure-resurser i virtuella nätverk
 
-**Vägledning**: när du använder app service på den isolerade pris nivån, även kallat en app service-miljön (ASE) kan du distribuera direkt till ett undernät i Azure-Virtual Network. Använd Nätverks säkerhets grupper för att skydda dina Azure App Service-miljön genom att blockera inkommande och utgående trafik till resurser i det virtuella nätverket eller begränsa åtkomsten till appar i en App Service-miljön.
+**Vägledning**: när du använder app service på den isolerade pris nivån, även kallat en app service-miljön (ASE) kan du distribuera direkt till ett undernät i Azure-Virtual Network. Använd Nätverks säkerhets grupper för att skydda dina Azure App Service Environment genom att blockera inkommande och utgående trafik till resurser i det virtuella nätverket eller begränsa åtkomsten till appar i en App Service-miljön.
 
 Nätverks säkerhets grupper innehåller som standard en implicit neka-regel som lägst prioritet, vilket kräver att du uttryckligen lägger till regler för att tillåta. Lägg till regler för att tillåta nätverks säkerhets gruppen baserat på en minst privilegie rad nätverks metod. De underliggande virtuella datorerna som används som värd för App Service-miljön är inte direkt tillgängliga eftersom de finns i en Microsoft-hanterad prenumeration.
 
@@ -71,7 +71,7 @@ Använd Azure-brandväggen för att skicka trafik och centralt skapa, tillämpa 
 
 - [Förstå nätverks säkerhet som tillhandahålls av Azure Security Center](../security-center/security-center-network-recommendations.md)
 
-- [Så här aktiverar du övervakning och skydd av App Service](/azure/security-center/defender-for-app-service-introduction)
+- [Så här aktiverar du övervakning och skydd av App Service](../security-center/defender-for-app-service-introduction.md)
 
 **Azure Security Center-övervakning**: Ja
 
@@ -168,7 +168,7 @@ Granska de refererade länkarna om du vill ha mer information.
 
 - [Så här konfigurerar du end-to-end-TLS genom att använda Application Gateway med portalen](../application-gateway/end-to-end-ssl-portal.md)
 
-- [Skydda ASE enligt beskrivningen i låsa en App Service](/azure/app-service/environment/firewall-integration)
+- [Skydda ASE enligt beskrivningen i låsa en App Service](./environment/firewall-integration.md)
 
 **Azure Security Center-övervakning**: Ja
 
@@ -205,7 +205,7 @@ Granska de refererade länkarna om du vill ha mer information.
 
 - [Så här konfigurerar du end-to-end-TLS genom att använda Application Gateway med portalen](../application-gateway/end-to-end-ssl-portal.md)
 
-- [Skydda ASE enligt beskrivningen i låsa en App Service](/azure/app-service/environment/firewall-integration)
+- [Skydda ASE enligt beskrivningen i låsa en App Service](./environment/firewall-integration.md)
 
 **Övervakning i Azure Security Center**: Ej tillämpligt
 
@@ -221,7 +221,7 @@ Använd någon av de inbyggda Azure Policy definitionerna som är relaterade til
 
 - [Skapa och använda Taggar](../azure-resource-manager/management/tag-resources.md)
 
-- [Begränsningar för Azure App Service åtkomst](/azure/app-service/app-service-ip-restrictions)
+- [Begränsningar för Azure App Service åtkomst](./app-service-ip-restrictions.md)
 
 **Övervakning i Azure Security Center**: Ej tillämpligt
 

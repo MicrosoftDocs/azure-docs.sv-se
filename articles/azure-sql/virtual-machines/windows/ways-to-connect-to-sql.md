@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 12/12/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 28b68178b98e53b7a7d4192ad20c05a667344969
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 37cb8f5a2ff0916f53ae50f5750664204ab1ba75
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97356743"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737497"
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure"></a>Ansluta till en SQL Server virtuell dator på Azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -82,7 +82,7 @@ När du väljer **privat** för **SQL-anslutnings** typen i portalen, konfigurer
 > [!IMPORTANT]
 > Avbildningarna av virtuella datorer för SQL Server Developer-och Express-versioner aktiverar inte TCP/IP-protokollet automatiskt. För Developer-och Express-versioner måste du använda Konfigurationshanteraren för SQL Server för att [manuellt Aktivera TCP/IP-protokollet](#manualtcp) när du har skapat den virtuella datorn.
 
-Privat anslutning används ofta tillsammans med ett [virtuellt nätverk](../../../virtual-network/virtual-networks-overview.md), vilket möjliggör flera scenarier. Du kan ansluta virtuella datorer i samma virtuella nätverk, även om de virtuella datorerna finns i olika resurs grupper. Med en [plats-till-plats-VPN](../../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)kan du skapa en hybrid arkitektur som ansluter virtuella datorer med lokala nätverk och datorer.
+Privat anslutning används ofta tillsammans med ett [virtuellt nätverk](../../../virtual-network/virtual-networks-overview.md), vilket möjliggör flera scenarier. Du kan ansluta virtuella datorer i samma virtuella nätverk, även om de virtuella datorerna finns i olika resurs grupper. Med en [plats-till-plats-VPN](../../../vpn-gateway/tutorial-site-to-site-portal.md)kan du skapa en hybrid arkitektur som ansluter virtuella datorer med lokala nätverk och datorer.
 
 Med virtuella nätverk kan du också ansluta dina virtuella Azure-datorer till en domän. Detta är det enda sättet att använda Windows-autentisering för att SQL Server. De andra anslutnings scenarierna kräver SQL-autentisering med användar namn och lösen ord.
 

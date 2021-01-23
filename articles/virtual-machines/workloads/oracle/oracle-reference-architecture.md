@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/13/2019
 ms.author: kegorman
 ms.reviewer: cynthn
-ms.openlocfilehash: 83da8cbf3a87570cfb967e0a6c8da3f0f2ed1766
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: bbaf34c977546891c6ac05fbd4b5feb15f333e04
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96486750"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737820"
 ---
 # <a name="reference-architectures-for-oracle-database-enterprise-edition-on-azure"></a>Referens arkitekturer för Oracle Database Enterprise Edition på Azure
 
@@ -207,12 +207,12 @@ Under den inledande begäran ansluter program servern till Shard-regissören i s
 
 När du distribuerar dina Oracle-arbetsbelastningar till Azure tar Microsoft hand om all korrigering av värd operativ system nivå. Alla planerade underhåll av OS-nivåer skickas till kunder i förväg för att tillåta kunden att göra det här planerade underhållet. Två servrar från två olika Tillgänglighetszoner korrigeras aldrig samtidigt. Mer information om underhåll och korrigeringar för virtuella datorer finns i [Hantera tillgängligheten för virtuella datorer](../../manage-availability.md) . 
 
-Korrigering av den virtuella datorns operativ system kan automatiseras med hjälp av [Azure Automation uppdateringshantering](../../../automation/update-management/overview.md). Uppdatering och underhåll av Oracle-databasen kan automatiseras och schemaläggas med hjälp av [Azure-pipeliner](/azure/devops/pipelines/get-started/what-is-azure-pipelines?view=azure-devops) eller [Azure Automation uppdateringshantering](../../../automation/update-management/overview.md) för att minimera stillestånds tiden. Se [kontinuerliga leveranser och blå/gröna distributioner](/azure/devops/learn/what-is-continuous-delivery) för att förstå hur det kan användas i samband med dina Oracle-databaser.
+Korrigering av den virtuella datorns operativ system kan automatiseras med hjälp av [Azure Automation uppdateringshantering](../../../automation/update-management/overview.md). Uppdatering och underhåll av Oracle-databasen kan automatiseras och schemaläggas med hjälp av [Azure-pipeliner](/azure/devops/pipelines/get-started/what-is-azure-pipelines) eller [Azure Automation uppdateringshantering](../../../automation/update-management/overview.md) för att minimera stillestånds tiden. Se [kontinuerliga leveranser och blå/gröna distributioner](/azure/devops/learn/what-is-continuous-delivery) för att förstå hur det kan användas i samband med dina Oracle-databaser.
 
 ## <a name="architecture-and-design-considerations"></a>Arkitektur och design överväganden
 
 - Överväg att använda en högtrådad [minnes optimerad virtuell dator](../../sizes-memory.md) med [begränsade kärn virtuella processorer](../../../virtual-machines/constrained-vcpu.md) för din Oracle Database VM för att spara på licens kostnader och maximera prestanda. Använd flera Premium-eller Ultra-diskar (Managed Disks) för prestanda och tillgänglighet.
-- När du använder hanterade diskar kan disk-och enhets namnet ändras vid omstarter. Vi rekommenderar att du använder enhets-UUID i stället för namnet för att se till att dina monteringar behålls över omstarter. Mer information hittar du [här](/previous-versions/azure/virtual-machines/linux/configure-raid#add-the-new-file-system-to-etcfstab).
+- När du använder hanterade diskar kan disk-och enhets namnet ändras vid omstarter. Vi rekommenderar att du använder enhets-UUID i stället för namnet för att se till att dina monteringar behålls över omstarter. Läs mer [här](/previous-versions/azure/virtual-machines/linux/configure-raid#add-the-new-file-system-to-etcfstab).
 - Använd tillgänglighets zoner för att uppnå hög tillgänglighet i regionen.
 - Överväg att använda Ultra disks (när det är tillgängligt) eller Premium diskar för Oracle-databasen.
 - Överväg att konfigurera en Oracle-databas för vänte läge i en annan Azure-region med Oracle data Guard.

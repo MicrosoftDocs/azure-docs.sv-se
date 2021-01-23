@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: efe24b3d1f6e22cc7f054691cb75a4ccede7aa4b
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: eb7db3c95fb56ebbd62d6cf882a75ce03baeb75d
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97912452"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736062"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Azure Disk Encryption-scenarier på virtuella Linux-datorer
 
@@ -42,11 +42,11 @@ Azure Disk Encryption kan aktive ras och hanteras via [Azure CLI](/cli/azure) oc
 
 ### <a name="azure-cli"></a>Azure CLI
 
-[Azure CLI 2,0](/cli/azure) är ett kommando rads verktyg för att hantera Azure-resurser. CLI är utformat för flexibel frågedata, stöder långvariga åtgärder som icke-blockerande processer och gör skript enkla. Du kan installera det lokalt genom att följa stegen i [Installera Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest).
+[Azure CLI 2,0](/cli/azure) är ett kommando rads verktyg för att hantera Azure-resurser. CLI är utformat för flexibel frågedata, stöder långvariga åtgärder som icke-blockerande processer och gör skript enkla. Du kan installera det lokalt genom att följa stegen i [Installera Azure CLI](/cli/azure/install-azure-cli).
 
  
 
-Om du vill [Logga in på ditt Azure-konto med Azure CLI](/cli/azure/authenticate-azure-cli)använder du kommandot [AZ login](/cli/azure/reference-index?view=azure-cli-latest#az-login) .
+Om du vill [Logga in på ditt Azure-konto med Azure CLI](/cli/azure/authenticate-azure-cli)använder du kommandot [AZ login](/cli/azure/reference-index#az_login) .
 
 ```azurecli
 az login
@@ -72,13 +72,13 @@ Mer information finns i [Kom igång med Azure CLI 2,0](/cli/azure/get-started-wi
 
 Om du redan har installerat det lokalt kontrollerar du att du använder den senaste versionen av Azure PowerShell SDK-versionen för att konfigurera Azure Disk Encryption. Ladda ned den senaste versionen av [Azure PowerShell](https://github.com/Azure/azure-powershell/releases)-versionen.
 
-Om du vill [Logga in på ditt Azure-konto med Azure PowerShell](/powershell/azure/authenticate-azureps?view=azps-2.5.0)använder du cmdleten [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) .
+Om du vill [Logga in på ditt Azure-konto med Azure PowerShell](/powershell/azure/authenticate-azureps)använder du cmdleten [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) .
 
 ```powershell
 Connect-AzAccount
 ```
 
-Om du har flera prenumerationer och vill ange en använder du cmdleten [Get-AzSubscription](/powershell/module/Az.Accounts/Get-AzSubscription) för att lista dem, följt av cmdleten [set-AzContext](/powershell/module/az.accounts/set-azcontext?view=azps-2.5.0) :
+Om du har flera prenumerationer och vill ange en använder du cmdleten [Get-AzSubscription](/powershell/module/Az.Accounts/Get-AzSubscription) för att lista dem, följt av cmdleten [set-AzContext](/powershell/module/az.accounts/set-azcontext) :
 
 ```powershell
 Set-AzContext -Subscription -Subscription <SubscriptionId>
@@ -86,7 +86,7 @@ Set-AzContext -Subscription -Subscription <SubscriptionId>
 
 Genom att köra cmdleten [Get-AzContext](/powershell/module/Az.Accounts/Get-AzContext) verifierar du att rätt prenumeration har valts.
 
-Om du vill bekräfta att Azure Disk Encryption-cmdletarna är installerade använder du cmdleten [Get-Command](/powershell/module/microsoft.powershell.core/get-command?view=powershell-6) :
+Om du vill bekräfta att Azure Disk Encryption-cmdletarna är installerade använder du cmdleten [Get-Command](/powershell/module/microsoft.powershell.core/get-command) :
      
 ```powershell
 Get-command *diskencryption*
@@ -104,9 +104,9 @@ I det här scenariot kan du aktivera kryptering med hjälp av Resource Manager-m
 
 ### <a name="enable-encryption-on-an-existing-or-running-linux-vm-using-azure-cli"></a>Aktivera kryptering på en befintlig eller virtuell Linux-dator med Azure CLI 
 
-Du kan aktivera disk kryptering på din krypterade virtuella hård disk genom att installera och använda kommando rads verktyget för [Azure CLI](/cli/azure/?view=azure-cli-latest) . Du kan använda det i webbläsaren med [Azure Cloud Shell](../../cloud-shell/overview.md) eller installera det på din lokala dator och använda det i PowerShell-sessioner. Använd följande CLI-kommandon om du vill aktivera kryptering på befintliga eller virtuella Linux-datorer i Azure:
+Du kan aktivera disk kryptering på din krypterade virtuella hård disk genom att installera och använda kommando rads verktyget för [Azure CLI](/cli/azure/) . Du kan använda det i webbläsaren med [Azure Cloud Shell](../../cloud-shell/overview.md) eller installera det på din lokala dator och använda det i PowerShell-sessioner. Använd följande CLI-kommandon om du vill aktivera kryptering på befintliga eller virtuella Linux-datorer i Azure:
 
-Använd kommandot [AZ VM Encryption Enable](/cli/azure/vm/encryption?view=azure-cli-latest#az-vm-encryption-show) för att aktivera kryptering på en virtuell dator som körs i Azure.
+Använd kommandot [AZ VM Encryption Enable](/cli/azure/vm/encryption#az_vm_encryption_show) för att aktivera kryptering på en virtuell dator som körs i Azure.
 
 - **Kryptera en virtuell dator som körs:**
 
@@ -283,7 +283,7 @@ Vi rekommenderar en LVM-in-Encrypt-installation. I följande exempel ersätter d
     echo "/dev/disk/azure/scsi1/lun0-part1 /mnt/mountpoint ext4 defaults,nofail 0 2" >> /etc/fstab
     ```
     
-1. Kör Azure PowerShell [set-AzVMDiskEncryptionExtension-](/powershell/module/az.compute/set-azvmdiskencryptionextension?view=azps-3.8.0&preserve-view=true) cmdlet med-EncryptFormatAll för att kryptera diskarna.
+1. Kör Azure PowerShell [set-AzVMDiskEncryptionExtension-](/powershell/module/az.compute/set-azvmdiskencryptionextension) cmdlet med-EncryptFormatAll för att kryptera diskarna.
 
     ```azurepowershell-interactive
     $KeyVault = Get-AzKeyVault -VaultName "MySecureVault" -ResourceGroupName "MySecureGroup"

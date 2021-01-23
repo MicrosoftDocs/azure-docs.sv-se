@@ -5,12 +5,12 @@ author: jjbfour
 ms.topic: tutorial
 ms.date: 06/19/2019
 ms.author: jobreen
-ms.openlocfilehash: 6e11e08d861538ddf395f522495798546e04ca7c
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 55554678047faeedd16b78dea61a42d50fd59491
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91948960"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737327"
 ---
 # <a name="set-up-azure-functions-for-azure-custom-providers"></a>Konfigurera Azure Functions för Azure-anpassade leverantörer
 
@@ -21,7 +21,7 @@ En anpassad Provider är ett kontrakt mellan Azure och en slut punkt. Med anpass
 > [!NOTE]
 > I den här självstudien skapar du en enkel tjänst slut punkt som använder en Azure Function-app. En anpassad Provider kan dock använda en offentligt tillgänglig slut punkt. Alternativen omfattar Azure Logic Apps, Azure API Management och Web Apps funktionen i Azure App Service.
 
-För att starta den här självstudien bör du först följa självstudien [skapa din första Azure Function-app i Azure Portal](../../azure-functions/functions-create-first-azure-function.md). Den här självstudien skapar en .NET Core-webhook-funktion som kan ändras i Azure Portal. Det är även grunden för den aktuella självstudien.
+För att starta den här självstudien bör du först följa självstudien [skapa din första Azure Function-app i Azure Portal](../../azure-functions/functions-get-started.md). Den här självstudien skapar en .NET Core-webhook-funktion som kan ändras i Azure Portal. Det är även grunden för den aktuella självstudien.
 
 ## <a name="install-azure-table-storage-bindings"></a>Installera lagrings bindningar för Azure Table
 
@@ -32,7 +32,7 @@ Så här installerar du Azure Table Storage-bindningar:
 1. Välj **Azure-Table Storage**.
 1. Installera Microsoft. Azure. WebJobs. Extensions. Storage-tillägget om det inte redan är installerat.
 1. I rutan **tabell parameter namn** anger du **tableStorage**.
-1. Skriv **myCustomResources**i rutan **tabell namn** .
+1. Skriv **myCustomResources** i rutan **tabell namn** .
 1. Välj **Spara** för att spara den uppdaterade indataparametern.
 
 ![Översikt över anpassad Provider med tabell bindningar](./media/create-custom-provider/azure-functions-table-bindings.png)
@@ -42,7 +42,7 @@ Så här installerar du Azure Table Storage-bindningar:
 Konfigurera Azure-funktionen så att den inkluderar den anpassade providern RESTful förfrågnings metoder:
 
 1. Gå till fliken **integrera** för HttpTrigger.
-1. Under **valda HTTP-metoder**väljer du **Hämta**, **post**, **ta bort**och **Placera**.
+1. Under **valda HTTP-metoder** väljer du **Hämta**, **post**, **ta bort** och **Placera**.
 
 ![Översikt över anpassad Provider visar HTTP-metoder](./media/create-custom-provider/azure-functions-http-methods.png)
 

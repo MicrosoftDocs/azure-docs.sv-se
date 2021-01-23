@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/28/2020
 ms.author: jeedes
-ms.openlocfilehash: a00087d557e4244a6551b84623e2c34461623eb3
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: b2558b4b3bcd60acba3bf47d4a973a2b6de7424f
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97916549"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736013"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-appneta-performance-monitor"></a>Självstudie: Azure Active Directory-integrering med enkel inloggning (SSO) med prestanda övervakaren AppNeta
 
@@ -94,7 +94,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 1. Utöver ovan förväntar sig AppNeta prestanda övervaknings program att fler attribut skickas tillbaka i SAML-svar som visas nedan. Dessa attribut är också förifyllda, men du kan granska dem efter behov.
 
-    | Namn | Källattribut|
+    | Name | Källattribut|
     | --------| ----------------|
     | firstName| user.givenname|
     | lastName| user.surname|
@@ -106,7 +106,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
     | | |
 
     > [!NOTE]
-    > **grupper** refererar till den säkerhetsgrupp i Appneta som mappas till en **roll** i Azure AD. I [det här](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps#app-roles-ui) dokumentet beskrivs hur du skapar anpassade roller i Azure AD.
+    > **grupper** refererar till den säkerhetsgrupp i Appneta som mappas till en **roll** i Azure AD. I [det här](../develop/howto-add-app-roles-in-azure-ad-apps.md#app-roles-ui--preview) dokumentet beskrivs hur du skapar anpassade roller i Azure AD.
 
     1. Klicka på **Lägg till nytt anspråk** för att öppna dialogrutan **Hantera användaranspråk**.
 
@@ -172,9 +172,9 @@ I det här avsnittet ska du testa Azure AD-konfigurationen för enkel inloggning
 
 * Gå till AppNetas inloggnings-URL för prestanda övervakaren direkt och starta inloggnings flödet därifrån.
 
-* Du kan använda Microsoft Mina appar. När du klickar på panelen prestanda övervakaren AppNeta i Mina appar omdirigeras den till AppNeta prestanda övervaknings-URL: en. Mer information om Mina appar finns i [Introduktion till Mina appar](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* Du kan använda Microsoft Mina appar. När du klickar på panelen prestanda övervakaren AppNeta i Mina appar omdirigeras den till AppNeta prestanda övervaknings-URL: en. Mer information om Mina appar finns i [Introduktion till Mina appar](../user-help/my-apps-portal-end-user-access.md).
 
 
 ## <a name="next-steps"></a>Nästa steg
 
-När du har konfigurerat prestanda övervakaren för AppNeta kan du genomdriva session Control, som skyddar exfiltrering och intrånget för organisationens känsliga data i real tid. Kontroll av sessionen sträcker sig från villkorlig åtkomst. [Lär dig hur du tvingar fram en session med Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+När du har konfigurerat prestanda övervakaren för AppNeta kan du genomdriva session Control, som skyddar exfiltrering och intrånget för organisationens känsliga data i real tid. Kontroll av sessionen sträcker sig från villkorlig åtkomst. [Lär dig hur du tvingar fram en session med Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).

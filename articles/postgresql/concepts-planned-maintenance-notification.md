@@ -6,12 +6,12 @@ ms.author: ambhatna
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/21/2020
-ms.openlocfilehash: 0691411f57944f8203120ec2a6ed19013135458c
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: 8db556709f68a1184046989a15fad147542a05a7
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94920261"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735749"
 ---
 # <a name="planned-maintenance-notification-in-azure-database-for-postgresql---single-server"></a>Meddelande om planerat underhåll i Azure Database for PostgreSQL – enskild server
 
@@ -25,7 +25,7 @@ Ett planerat underhåll är ett underhålls fönster när de här tjänst uppdat
 
 ## <a name="planned-maintenance---duration-and-customer-impact"></a>Planerat underhåll – varaktighet och kund påverkan
 
-Ett planerat underhåll för en specifik Azure-region förväntas vanligt vis köras 15 timmar. I fönstret ingår även buffertstorleken för att köra en återställnings plan vid behov. Under planerat underhåll kan det ske omstarter eller redundans för databas servrar, vilket kan leda till att databas servrarna inte är tillgängliga för slutanvändarna. Azure Database for PostgreSQL servrar körs i behållare så att omstarter av databas servrar vanligt vis snabbt, förväntas slutföras normalt i 60-120 sekunder. Hela det planerade underhålls händelsen, inklusive varje omstart av servern, övervakas noggrant av teknik teamet. Serverns redundans tid är beroende av databasens återställnings tid, vilket kan göra att databasen blir online längre om du har tung transaktions aktivitet på servern vid redundansväxlingen. För att undvika längre omstart rekommenderar vi att du undviker tids krävande transaktioner (Mass inläsning) under planerade underhålls händelser.
+Ett planerat underhåll för en specifik Azure-region förväntas normalt slutföras inom 15 timmar. Den här tids perioden inkluderar också buffertstorleken för att köra en återställnings plan vid behov. Azure Database for PostgreSQL servrar körs i behållare så att databas server omstartas normalt tar 60-120 sekunder att slutföras, men det finns inget entydigt sätt att veta när det gäller 15 timmar-fönstret som servern kommer att påverkas. Hela det planerade underhålls händelsen, inklusive varje omstart av servern, övervakas noggrant av teknik teamet. Serverns redundanskonfiguration beror på databas återställningen, vilket kan göra att databasen blir online längre om du har tung transaktions aktivitet på servern vid redundansväxlingen. För att undvika längre omstart rekommenderar vi att du undviker tids krävande transaktioner (Mass inläsning) under planerade underhålls händelser.
 
 I sammandrag, medan händelsen planerat underhåll körs i 15 timmar, varar den enskilda Server påverkan vanligt vis 60 sekunder beroende på transaktions aktiviteten på servern. Ett meddelande skickas 72 kalender timmar innan planerat underhåll påbörjas och ett annat under underhåll pågår för en specifik region.
 

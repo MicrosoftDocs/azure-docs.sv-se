@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
 ms.date: 11/10/2020
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 6634ab3521fee3062ecee465eaf6dcda80ee6ff8
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 0a462c7d713ea9285096db48b4a3bb5c5b0d9874
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98699522"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737395"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>Skillnader i T-SQL mellan SQL Server & Azure SQL-hanterad instans
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -508,15 +508,14 @@ Följande variabler, funktioner och vyer returnerar olika resultat:
 
 ### <a name="subnet"></a>Undernät
 -  Du kan inte placera andra resurser (till exempel virtuella datorer) i under nätet där du har distribuerat SQL-hanterad instans. Distribuera de här resurserna med ett annat undernät.
-- Under nätet måste ha tillräckligt många tillgängliga [IP-adresser](connectivity-architecture-overview.md#network-requirements). Minimivärdet är 16 och rekommendationen måste ha minst 32 IP-adresser i under nätet.
-- [Tjänst slut punkter kan inte kopplas till under nätet för SQL-hanterad instans](connectivity-architecture-overview.md#network-requirements). Kontrol lera att alternativet tjänst slut punkter är inaktiverat när du skapar det virtuella nätverket.
+- Under nätet måste ha tillräckligt många tillgängliga [IP-adresser](connectivity-architecture-overview.md#network-requirements). Minimivärdet måste vara minst 32 IP-adresser i under nätet.
 - Antalet virtuella kärnor och typer av instanser som du kan distribuera i en region har vissa [begränsningar och begränsningar](resource-limits.md#regional-resource-limitations).
-- Det finns vissa [säkerhets regler som måste tillämpas på under nätet](connectivity-architecture-overview.md#network-requirements).
+- Det finns en [nätverks konfiguration](connectivity-architecture-overview.md#network-requirements) som måste tillämpas på under nätet.
 
 ### <a name="vnet"></a>VNET
 - VNet kan distribueras med hjälp av resurs modellen – den klassiska modellen för VNet stöds inte.
 - När en SQL-hanterad instans har skapats går det inte att flytta SQL-hanterad instans eller VNet till en annan resurs grupp eller prenumeration.
-- Vissa tjänster, till exempel App Service miljöer, Logic Apps och SQL-hanterad instans (som används för geo-replikering, Transaktionsreplikering eller via länkade servrar) kan inte komma åt SQL-hanterad instans i olika regioner om deras virtuella nätverk är anslutna med [Global peering](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers). Du kan ansluta till dessa resurser via ExpressRoute eller VNet-till-VNet via VNet-gatewayer.
+- För SQL-hanterade instanser som finns i virtuella kluster som skapas innan 9/22/2020 [Global peering](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) stöds inte. Du kan ansluta till dessa resurser via ExpressRoute eller VNet-till-VNet via VNet-gatewayer.
 
 ### <a name="failover-groups"></a>Redundansgrupper
 System databaser replikeras inte till den sekundära instansen i en failover-grupp. Därför går det inte att använda scenarier som är beroende av objekt från system databaser på den sekundära instansen om inte objekten skapas manuellt på den sekundära.

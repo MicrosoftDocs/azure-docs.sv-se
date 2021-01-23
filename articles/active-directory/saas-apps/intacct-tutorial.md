@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/15/2021
 ms.author: jeedes
-ms.openlocfilehash: e1858047e9fc64be67cdea82aaca8113135f0b2a
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 5a216e39ca32b16de405c7924d08da52c6eae4c1
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98250748"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736991"
 ---
 # <a name="tutorial-integrate-sage-intacct-with-azure-active-directory"></a>Självstudie: integrera Sage Intacct med Azure Active Directory
 
@@ -26,7 +26,7 @@ I den här självstudien får du lära dig att integrera Sage-Intacct med Azure 
 * Gör det möjligt för användarna att logga in automatiskt till Sage Intacct med sina Azure AD-konton.
 * Hantera dina konton på en central plats – Azure Portal.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 För att komma igång behöver du följande objekt:
 
@@ -206,7 +206,7 @@ I det här avsnittet ska du testa Azure AD-konfigurationen för enkel inloggning
 
 * Klicka på testa det här programmet i Azure Portal så bör du loggas in automatiskt på den Sage-Intacct som du har konfigurerat SSO för.
 
-* Du kan använda Microsoft Mina appar. När du klickar på panelen Sage Intacct i Mina appar, bör du loggas in automatiskt på Sage-Intacct som du ställer in SSO för. Mer information om Mina appar finns i [Introduktion till Mina appar](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* Du kan använda Microsoft Mina appar. När du klickar på panelen Sage Intacct i Mina appar, bör du loggas in automatiskt på Sage-Intacct som du ställer in SSO för. Mer information om Mina appar finns i [Introduktion till Mina appar](../user-help/my-apps-portal-end-user-access.md).
 
 
 ## <a name="next-steps"></a>Nästa steg

@@ -5,13 +5,13 @@ author: shreyasharmamsft
 ms.author: shresha
 ms.service: time-series-insights
 ms.topic: conceptual
-ms.date: 10/01/2020
-ms.openlocfilehash: f1c394bb1a568d59e0821b61e7acfcf8f25290f7
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.date: 01/22/2021
+ms.openlocfilehash: fd08dc98fa47617bbc7c8d1fff895377837a7327
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95020767"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736742"
 ---
 # <a name="time-series-model-variables"></a>Variabler för tids serie modell
 
@@ -29,7 +29,7 @@ I följande tabell visas vilka egenskaper som är relevanta för varje variabel 
 
 ## <a name="numeric-variables"></a>Numeriska variabler
 
-| Variabel egenskap | Description |
+| Variabel egenskap | Beskrivning |
 | --- | ---|
 | Variabel filter | Filter är valfria villkorliga satser för att begränsa antalet rader som ska beaktas för beräkning. |
 | Variabel värde | Telemetri värden som används för beräkning som kommer från enheten eller sensorer eller omvandlas med hjälp av Time Series-uttryck. Variabler av typen numerisk typ måste vara av typen *Double*.|
@@ -59,7 +59,7 @@ Variabler följer följande JSON-exempel:
 
 ## <a name="categorical-variables"></a>Kategoriska-variabler
 
-| Variabel egenskap | Description |
+| Variabel egenskap | Beskrivning |
 | --- | ---|
 | Variabel filter | Filter är valfria villkorliga satser för att begränsa antalet rader som ska beaktas för beräkning. |
 | Variabel värde | Telemetridata som används för beräkning som kommer från enheten eller sensorer. Kategoriska-variabler måste vara antingen *långa* eller *strängar*. |
@@ -99,7 +99,7 @@ Variabler följer följande JSON-exempel:
 
 ## <a name="aggregate-variables"></a>Aggregera variabler
 
-| Variabel egenskap | Description |
+| Variabel egenskap | Beskrivning |
 | --- | ---|
 | Variabel filter | Filter är valfria villkorliga satser för att begränsa antalet rader som ska beaktas för beräkning. |
 | Variabel agg regering | Utför beräkningar genom de [agg regerings funktioner som stöds för mängd varierande typer](/rest/api/time-series-insights/reference-time-series-expression-syntax#aggregate-variable-kind). |

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/27/2020
 ms.author: jeedes
-ms.openlocfilehash: 531b22122ff19eb3653400cd7e5d06e2162e0365
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 3c9d79ef4fd73adbe3ba376f1723693ea8e85197
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98045146"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736514"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-tableau-server"></a>Självstudie: Azure Active Directory-integrering med enkel inloggning (SSO) med Tableau-Server
 
@@ -27,7 +27,7 @@ I den här självstudien får du lära dig hur du integrerar Tableau-servern med
 * Hantera dina konton på en central plats – Azure Portal.
 
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 För att komma igång behöver du följande objekt:
 
@@ -165,7 +165,7 @@ I det här avsnittet ska du testa Azure AD-konfigurationen för enkel inloggning
 
 * Gå till Tableau Server inloggnings-URL direkt och starta inloggnings flödet därifrån.
 
-* Du kan använda Microsoft Mina appar. När du klickar på panelen Tableau server i Mina appar omdirigeras det till Tableau-inloggnings-URL: en. Mer information om Mina appar finns i [Introduktion till Mina appar](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* Du kan använda Microsoft Mina appar. När du klickar på panelen Tableau server i Mina appar omdirigeras det till Tableau-inloggnings-URL: en. Mer information om Mina appar finns i [Introduktion till Mina appar](../user-help/my-apps-portal-end-user-access.md).
 
 
 ## <a name="next-steps"></a>Nästa steg

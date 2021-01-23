@@ -5,12 +5,12 @@ keywords: Azure App Service, webbapp, mobilapp, API-app, Function-app, säkerhet
 ms.topic: article
 ms.date: 08/24/2018
 ms.custom: seodec18
-ms.openlocfilehash: 55ffb2d03a42809a41583e6be25066b0b8e104b1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 61bffcfa8b98ed666e450c344023258b752e4880
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88961507"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736113"
 ---
 # <a name="security-in-azure-app-service"></a>Säkerhet i Azure App Service
 
@@ -43,7 +43,7 @@ App Service stöder både FTP-och FTPS för att distribuera dina filer. FTPS bö
 
 Som standard godkänner din App Service-app begär Anden från alla IP-adresser från Internet, men du kan begränsa åtkomsten till en liten delmängd av IP-adresser. App Service i Windows kan du definiera en lista med IP-adresser som får åtkomst till din app. Listan över tillåtna kan innehålla enskilda IP-adresser eller ett intervall med IP-adresser som definieras av en under nät mask. Mer information finns i [Azure App Service statiska IP-begränsningar](app-service-ip-restrictions.md).
 
-För App Service i Windows kan du också begränsa IP-adresser dynamiskt genom att konfigurera _web.config_. Mer information finns i [dynamisk IP-säkerhet \<dynamicIpSecurity> ](/iis/configuration/system.webServer/security/dynamicIpSecurity/).
+För App Service i Windows kan du också begränsa IP-adresser dynamiskt genom att konfigurera _web.config_. Mer information finns i [dynamisk IP-säkerhet \<dynamicIpSecurity>](/iis/configuration/system.webServer/security/dynamicIpSecurity/).
 
 ## <a name="client-authentication-and-authorization"></a>Klientautentisering och-auktorisering
 
@@ -85,8 +85,8 @@ Skapa din app i en [App Service-miljö](environment/intro.md)för att isolera re
 Du kan få säker åtkomst till lokala resurser, till exempel databaser, på tre sätt: 
 
 - [Hybrid anslutningar](app-service-hybrid-connections.md) – upprättar en punkt-till-punkt-anslutning till fjär resursen via en TCP-tunnel. TCP-tunneln upprättas med hjälp av TLS 1,2 med nycklar för signatur för delad åtkomst (SAS).
-- [Virtual Network integrering](web-sites-integrate-with-vnet.md) med plats-till-plats-VPN – enligt beskrivningen i [resurser i en Azure-Virtual Network](#resources-inside-an-azure-virtual-network), men Virtual Network kan anslutas till ditt lokala nätverk via en [plats-till-plats-VPN](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md). I den här nätverk sto pol Ogin kan din app ansluta till lokala resurser som andra resurser i Virtual Network.
-- [App Service miljö](environment/intro.md) med plats-till-plats-VPN – enligt beskrivningen i [resurser i en Azure-Virtual Network](#resources-inside-an-azure-virtual-network), men Virtual Network kan anslutas till ditt lokala nätverk via en [plats-till-plats-VPN](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md). I den här nätverk sto pol Ogin kan din app ansluta till lokala resurser som andra resurser i Virtual Network.
+- [Virtual Network integrering](web-sites-integrate-with-vnet.md) med plats-till-plats-VPN – enligt beskrivningen i [resurser i en Azure-Virtual Network](#resources-inside-an-azure-virtual-network), men Virtual Network kan anslutas till ditt lokala nätverk via en [plats-till-plats-VPN](../vpn-gateway/tutorial-site-to-site-portal.md). I den här nätverk sto pol Ogin kan din app ansluta till lokala resurser som andra resurser i Virtual Network.
+- [App Service miljö](environment/intro.md) med plats-till-plats-VPN – enligt beskrivningen i [resurser i en Azure-Virtual Network](#resources-inside-an-azure-virtual-network), men Virtual Network kan anslutas till ditt lokala nätverk via en [plats-till-plats-VPN](../vpn-gateway/tutorial-site-to-site-portal.md). I den här nätverk sto pol Ogin kan din app ansluta till lokala resurser som andra resurser i Virtual Network.
 
 ## <a name="application-secrets"></a>Program hemligheter
 

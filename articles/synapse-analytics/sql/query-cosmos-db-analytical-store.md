@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 12/04/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 4681039f60154b95eeb7e40196ca33055a192c74
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 2059608faa8ce148e5823e48eff6abf9e71c9b01
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222113"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735441"
 ---
 # <a name="query-azure-cosmos-db-data-with-a-serverless-sql-pool-in-azure-synapse-link-preview"></a>Fråga Azure Cosmos DB data med en server lös SQL-pool i för hands versionen av Azure Synapse Link
 
@@ -24,7 +24,7 @@ ms.locfileid: "98222113"
 
 Med en server lös SQL-pool kan du analysera data i Azure Cosmos DB behållare som är aktiverade med [Azure Synapse-länk](../../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) i nära real tid utan att påverka prestandan för dina transaktions arbets belastningar. Den erbjuder en välkänd T-SQL-syntax för att fråga data från [analys lagret](../../cosmos-db/analytical-store-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) och integrerad anslutning till en mängd olika Business Intelligence (BI) och ad hoc-frågemeddelanden via T-SQL-gränssnittet.
 
-För att skicka frågor till Azure Cosmos DB stöds det fullständiga [Select](/sql/t-sql/queries/select-transact-sql?view=sql-server-ver15) -området via funktionen [OpenRowSet](develop-openrowset.md) , som innehåller merparten av [SQL Functions och operatorer](overview-features.md). Du kan också lagra resultat från frågan som läser data från Azure Cosmos DB tillsammans med data i Azure Blob Storage eller Azure Data Lake Storage genom att använda [skapa extern tabell som Select](develop-tables-cetas.md#cetas-in-serverless-sql-pool) (CETAS). För närvarande kan du inte lagra frågeresultat för SQL-pooler för server utan att Azure Cosmos DB med hjälp av CETAS.
+För att skicka frågor till Azure Cosmos DB stöds det fullständiga [Select](/sql/t-sql/queries/select-transact-sql?view=azure-sqldw-latest&preserve-view=true) -området via funktionen [OpenRowSet](develop-openrowset.md) , som innehåller merparten av [SQL Functions och operatorer](overview-features.md). Du kan också lagra resultat från frågan som läser data från Azure Cosmos DB tillsammans med data i Azure Blob Storage eller Azure Data Lake Storage genom att använda [skapa extern tabell som Select](develop-tables-cetas.md#cetas-in-serverless-sql-pool) (CETAS). För närvarande kan du inte lagra frågeresultat för SQL-pooler för server utan att Azure Cosmos DB med hjälp av CETAS.
 
 I den här artikeln får du lära dig hur du skriver en fråga med en server lös SQL-pool som kommer att fråga efter data från Azure Cosmos DB behållare som är aktiverade med Azure Synapse länk. Du kan sedan lära dig mer om hur du skapar SQL-pooler utan server över Azure Cosmos DB behållare och ansluter dem till Power BI modeller i [den här självstudien](./tutorial-data-analyst.md).
 

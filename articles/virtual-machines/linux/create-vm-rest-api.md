@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: how-to
 ms.date: 06/05/2018
 ms.author: cynthn
-ms.openlocfilehash: d6e5195f43991f4d40af57c1ab4b87aaca475b64
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b3eeaf5f343b6026e02d17e4d3bd90dba4b991c4
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87373410"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737053"
 ---
 # <a name="create-a-linux-virtual-machine-that-uses-ssh-authentication-with-the-rest-api"></a>Skapa en virtuell Linux-dator som använder SSH-autentisering med REST API
 
@@ -26,7 +26,7 @@ Den här artikeln visar hur du använder REST API för att skapa en virtuell Lin
 Innan du skapar och skickar in begäran behöver du:
 
 * `{subscription-id}`För din prenumeration
-  * Om du har flera prenumerationer kan du läsa [arbeta med flera prenumerationer](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest)
+  * Om du har flera prenumerationer kan du läsa [arbeta med flera prenumerationer](/cli/azure/manage-azure-subscriptions-azure-cli)
 * En `{resourceGroupName}` som du har skapat i förväg
 * Ett [virtuellt nätverks gränssnitt](../../virtual-network/virtual-network-network-interface.md) i samma resurs grupp
 * Ett SSH-nyckelpar (du kan [generera ett nytt](mac-create-ssh-keys.md) om du inte har något)
@@ -54,7 +54,7 @@ Allmän information om hur du arbetar med REST API begär Anden finns i [kompone
 
 Följande vanliga definitioner används för att bygga en begär ande text:
 
-| Namn                       | Krävs | Typ                                                                                | Beskrivning  |
+| Name                       | Krävs | Typ                                                                                | Beskrivning  |
 |----------------------------|----------|-------------------------------------------------------------------------------------|--------------|
 | location                   | True     | sträng                                                                              | Resurs plats. |
 | name                       |          | sträng                                                                              | Namn på den virtuella datorn. |

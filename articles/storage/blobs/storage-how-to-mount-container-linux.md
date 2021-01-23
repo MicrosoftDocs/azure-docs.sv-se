@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 2/1/2019
 ms.author: tamram
 ms.reviewer: twooley
-ms.openlocfilehash: 8de395e34b43a4edad2affa591adb8ab34ff9e66
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 002e8650a5555b70caf09179e03ce1bad1acdef5
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96921704"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737548"
 ---
 # <a name="how-to-mount-blob-storage-as-a-file-system-with-blobfuse"></a>Montera Blob Storage som ett fil system med blobfuse
 
@@ -28,9 +28,9 @@ Den här guiden visar hur du använder blobfuse och monterar en Blob Storage-beh
 > 
 
 ## <a name="install-blobfuse-on-linux"></a>Installera blobfuse på Linux
-Blobfuse-binärfiler finns tillgängliga i [Microsofts program varu databaser för Linux](/windows-server/administration/Linux-Package-Repository-for-Microsoft-Software) för Ubuntu-och RHEL-distributioner. Om du vill installera blobfuse på dessa distributioner konfigurerar du en av databaserna från listan. Du kan också bygga binärfilerna från käll koden efter [Azure Storage installations steg](https://github.com/Azure/azure-storage-fuse/wiki/1.-Installation#option-2---build-from-source) om det inte finns några binärfiler tillgängliga för din distribution.
+Blobfuse-binärfiler finns tillgängliga i [Microsofts program varu databaser för Linux](/windows-server/administration/Linux-Package-Repository-for-Microsoft-Software) för Ubuntu, Debian, SUSE, CentoOS, Oracle Linux och RHEL-distributioner. Om du vill installera blobfuse på dessa distributioner konfigurerar du en av databaserna från listan. Du kan också bygga binärfilerna från käll koden efter [Azure Storage installations steg](https://github.com/Azure/azure-storage-fuse/wiki/1.-Installation#option-2---build-from-source) om det inte finns några binärfiler tillgängliga för din distribution.
 
-Blobfuse stöder installation på Ubuntu 14,04, 16,04, 18,04 och 20,04. Kör det här kommandot för att kontrol lera att du har någon av dessa versioner distribuerade:
+Blobfuse stöder installation på Ubuntu-versioner: 16,04, 18,04 och 20,04, RHELversions: 7,5, 7,8, 8,0, 8,1, 8,2, CentOS-versioner: 7,0, 8,0, Debian-versioner: 9,0, 10,0, SUSE version: 15, OracleLinux 8,1. Kör det här kommandot för att kontrol lera att du har någon av dessa versioner distribuerade:
 ```
 lsb_release -a
 ```
@@ -38,16 +38,16 @@ lsb_release -a
 ### <a name="configure-the-microsoft-package-repository"></a>Konfigurera Microsoft Package-lagringsplatsen
 Konfigurera [Linux-paketets lagrings plats för Microsoft-produkter](/windows-server/administration/Linux-Package-Repository-for-Microsoft-Software).
 
-Som exempel i en Enterprise Linux 6-distribution:
+Som exempel i en Enterprise Linux 8-distribution:
 ```bash
-sudo rpm -Uvh https://packages.microsoft.com/config/rhel/6/packages-microsoft-prod.rpm
+sudo rpm -Uvh https://packages.microsoft.com/config/rhel/8/packages-microsoft-prod.rpm
 ```
 
 På samma sätt kan du ändra URL: en så att den `.../rhel/7/...` pekar på en Enterprise Linux 7-distribution.
 
-Ett annat exempel på en Ubuntu 14,04-distribution:
+Ett annat exempel på en Ubuntu 20,04-distribution:
 ```bash
-wget https://packages.microsoft.com/config/ubuntu/14.04/packages-microsoft-prod.deb
+wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb
 sudo dpkg -i packages-microsoft-prod.deb
 sudo apt-get update
 ```

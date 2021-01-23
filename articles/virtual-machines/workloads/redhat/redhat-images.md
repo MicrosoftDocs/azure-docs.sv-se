@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 02/10/2020
 ms.author: alsin
 ms.reviewer: cynthn
-ms.openlocfilehash: dbff136ac5787ef9549cca9dc8f946c56a138986
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: 293245d6778a40e234cdca177905c15dc88dd04f
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97900509"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737769"
 ---
 # <a name="overview-of-red-hat-enterprise-linux-images"></a>Översikt över Red Hat Enterprise Linux avbildningar
 
@@ -60,8 +60,8 @@ az vm create --name RhelVM --resource-group TestRG --image RedHat:RHEL:8-LVM:lat
 ```
 
 >[!NOTE]
-> I allmänhet är jämförelsen av versioner att fastställa de senaste reglerna för [CompareTo-metoden](/dotnet/api/system.version.compareto?view=netcore-3.1#system_version_compareto_system_version_).
-Denna bild versions jämförelse görs genom att jämföra värdena som ett [versions](/dotnet/api/system.version.-ctor?view=netframework-4.8) objekt, inte som en sträng.
+> I allmänhet är jämförelsen av versioner att fastställa de senaste reglerna för [CompareTo-metoden](/dotnet/api/system.version.compareto#system_version_compareto_system_version_).
+Denna bild versions jämförelse görs genom att jämföra värdena som ett [versions](/dotnet/api/system.version.-ctor) objekt, inte som en sträng.
 
 ## <a name="rhel-6-image-types"></a>RHEL 6-avbildnings typer
 
@@ -146,7 +146,7 @@ Delversion |Exempel på EUS-avbildning              |Status för EUS            
 RHEL 7,4      |RedHat: RHEL: 7.4:7.4.2019041718 | Avbildningar som publicerats april 2019 och senare är EUS som standard.|
 RHEL 7.5      |RedHat: RHEL: 7.5:7.5.2019060305 | Avbildningar som publicerats i juni 2019 och senare är EUS som standard. |
 RHEL 7,6      |RedHat: RHEL: 7.6:7.6.2019052206 | Publicerade avbildningar maj 2019 och senare är EUS som standard. |
-RHEL 8,0      |Saknas                            | Ingen EUS är tillgänglig från Red Hat.                               |
+RHEL 8,0      |Ej tillämpligt                            | Ingen EUS är tillgänglig från Red Hat.                               |
 
 ### <a name="update-services-for-sap"></a>Uppdatera tjänster för SAP
 

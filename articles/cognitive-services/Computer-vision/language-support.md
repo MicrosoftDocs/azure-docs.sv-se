@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
-ms.openlocfilehash: b065b36103b69f0601daa1388b45865856543d2b
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 1abb857c9f03be502db02099383c6fe0b5110461
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94540526"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736826"
 ---
 # <a name="language-support-for-computer-vision"></a>Språk stöd för Visuellt innehåll
 
@@ -56,9 +56,9 @@ Visuellt innehålls OCR-API: er stöder flera språk. De kräver inte att du ang
 
 ## <a name="image-analysis"></a>Bildanalys
 
-Vissa åtgärder för API: et [analys-image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) kan returnera resultat på andra språk, som anges med `language` Frågeparametern. Andra åtgärder returnerar resultat på engelska oavsett vilket språk som anges, och andra genererar ett undantag för språk som inte stöds. Åtgärder anges med `visualFeatures` `details` parametrarna och, se en lista över alla [Overview](overview.md) åtgärder som du kan utföra med bild analys.
+Vissa åtgärder för API: et [analys-image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) kan returnera resultat på andra språk, som anges med `language` Frågeparametern. Andra åtgärder returnerar resultat på engelska oavsett vilket språk som anges, och andra genererar ett undantag för språk som inte stöds. Åtgärder anges med `visualFeatures` `details` parametrarna och, se en lista över alla [](overview.md) åtgärder som du kan utföra med bild analys.
 
-|Språk | Språkkod | Kategorier | Taggar | Beskrivning | Vuxen | Varumärken | Color (Färg) | Ansikten | ImageType | Objekt | Kändisar | Landmärken |
+|Språk | Språkkod | Kategorier | Taggar | Beskrivning | Vuxen | Varumärken | Färg | Ansikten | ImageType | Objekt | Kändisar | Landmärken |
 |:---|:---:|:----:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 |Kinesiska | `zh`    | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
 |Engelska | `en`   | ✔ | ✔| ✔|✔|✔|✔|✔|✔|✔|✔|✔|
@@ -70,5 +70,5 @@ Vissa åtgärder för API: et [analys-image](https://westcentralus.dev.cognitive
 
 Kom igång med Visuellt innehåll funktionerna som nämns i den här hand boken.
 
-* [Analysera en lokal avbildning (REST)](./quickstarts/csharp-analyze.md)
-* [Extrahera utskriven text (REST)](./quickstarts/csharp-print-text.md)
+* [Analysera en lokal avbildning (REST)](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/ComputerVision/REST/CSharp-analyze.md)
+* [Extrahera utskriven text (REST)](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/ComputerVision/REST/CSharp-print-text.md)

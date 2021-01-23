@@ -1,15 +1,15 @@
 ---
 title: Organisera dina resurser med hanterings grupper – Azure-styrning
 description: Läs om hanteringsgrupperna, hur behörigheterna fungerar och hur du använder dem.
-ms.date: 11/17/2020
+ms.date: 01/22/2021
 ms.topic: overview
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 9f23a279733169f17f0f82cb80aa08bfafcd45d0
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: e86501527ff68319fc8d2e942e7ffa977dcecbe6
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97030679"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736330"
 ---
 # <a name="what-are-azure-management-groups"></a>Vad är hanteringsgrupper i Azure?
 
@@ -162,16 +162,16 @@ Det finns ett par olika alternativ för att åtgärda det här scenariot:
 - Ta bort roll tilldelningen från prenumerationen innan du flyttar prenumerationen till en ny överordnad MG.
 - Lägg till prenumerationen i roll definitionen för det tilldelnings bara omfånget.
 - Ändra det tilldelnings bara omfånget i roll definitionen. I exemplet ovan kan du uppdatera tilldelnings bara omfattningarna från marknadsföring till rot hanterings gruppen så att definitionen kan nås av båda grenar i hierarkin.  
-- Skapa ytterligare en anpassad roll som ska definieras i den andra grenen. Den nya rollen kräver även att roll tilldelningen ändras i prenumerationen.  
+- Skapa en annan anpassad roll som definieras i den andra grenen. Den nya rollen kräver även att roll tilldelningen ändras i prenumerationen.  
 
 ### <a name="limitations"></a>Begränsningar  
 
 Det finns begränsningar som finns när du använder anpassade roller i hanterings grupper. 
 
  - Du kan bara definiera en hanterings grupp i de tilldelnings bara omfånget för en ny roll. Den här begränsningen är på plats för att minska antalet situationer där roll definitioner och roll tilldelningar är frånkopplade. Den här situationen inträffar när en prenumeration eller hanterings grupp med en roll tilldelning flyttas till en annan överordnad som inte har roll definitionen.  
- - Det går inte att definiera data Plans åtgärder för resurs leverantörer i anpassade roller för hanterings grupper. Den här begränsningen är på plats när det finns ett problem med att uppdatera data Plans resurs leverantörerna.
-   Den här svars tids frågan bearbetas och de här åtgärderna inaktive ras från roll definitionen för att minska riskerna.
- - Azure Resource Manager validerar inte hanterings gruppens existens i roll definitionens tilldelnings omfång. Om det finns ett skrivfel eller felaktigt ID för hanterings grupp i listan, kommer roll definitionen fortfarande att skapas.
+ - Det går inte att definiera data Plans åtgärder för resurs leverantörer i anpassade roller för hanterings grupper. Den här begränsningen är på plats när det finns ett problem med att uppdatera data Plans resurs leverantörerna. Den här svars tids frågan bearbetas och de här åtgärderna inaktive ras från roll definitionen för att minska riskerna.
+ - Azure Resource Manager validerar inte hanterings gruppens existens i roll definitionens tilldelnings omfång. Om det finns ett skrivfel eller felaktigt ID för hanterings grupp i listan, skapas roll definitionen fortfarande.
+ - Roll tilldelning för en roll med _dataActions_ stöds inte. Skapa roll tilldelningen i prenumerations omfånget i stället.
 
 > [!IMPORTANT]
 > Att lägga till en hanterings grupp i `AssignableScopes` är för närvarande en för hands version. Den här förhandsversionen tillhandahålls utan serviceavtal och rekommenderas inte för produktionsarbetsbelastningar.

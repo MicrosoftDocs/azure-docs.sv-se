@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/18/2020
 ms.author: jeedes
-ms.openlocfilehash: c3a2f2b04827fac06a0729e45b46765928aedd34
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 8af8d92ca66cfbd3d6223bc9a73125c457164d82
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539783"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735552"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-internet-access-administrator"></a>Självstudie: Azure Active Directory integrering med Zscaler-administratör för Internet åtkomst
 
@@ -26,7 +26,7 @@ I den här självstudien får du lära dig att integrera Zscaler-administratör 
 * Gör det möjligt för användarna att logga in automatiskt för att Zscaler åtkomst till Internet med sina Azure AD-konton.
 * Hantera dina konton på en central plats – Azure Portal.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Om du vill konfigurera Azure AD-integrering med Zscaler Internet Access Administrator behöver du följande objekt:
 
@@ -106,7 +106,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 6. I avsnittet **Användaranspråk** i dialogrutan **Användarattribut** konfigurerar du SAML-tokenattributet på det sätt som visas i bilden ovan och utför följande steg:
 
-    | Namn  | Källattribut  |
+    | Name  | Källattribut  |
     | ---------| ------------ |
     | Roll | user.assignedroles |
 
@@ -119,7 +119,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
     d. Klicka på **Spara**.
 
     > [!NOTE]
-    > Klicka [här](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps#app-roles-ui) om du vill veta mer om hur du konfigurerar roller i Azure AD.
+    > Klicka [här](../develop/howto-add-app-roles-in-azure-ad-apps.md#app-roles-ui--preview) om du vill veta mer om hur du konfigurerar roller i Azure AD.
 
 7. På sidan **Konfigurera enkel inloggning med SAML** går du till avsnittet **SAML-signeringscertifikat**, klickar du på **Ladda ned** för att ladda ned **Certifikat (Base64)** från de angivna alternativen enligt dina behov och sparar det på datorn.
 
@@ -189,7 +189,7 @@ I det här avsnittet ska du testa Azure AD-konfigurationen för enkel inloggning
 
 * Klicka på testa det här programmet i Azure Portal så bör du loggas in automatiskt till den Zscaler Internet åtkomst administratör som du har konfigurerat SSO för.
 
-* Du kan använda Microsoft Mina appar. När du klickar på ikonen Zscaler Internet åtkomst administratör i Mina appar, bör du loggas in automatiskt till Zscaler-administratören för Internet-åtkomst som du ställer in SSO för. Mer information om Mina appar finns i [Introduktion till Mina appar](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* Du kan använda Microsoft Mina appar. När du klickar på ikonen Zscaler Internet åtkomst administratör i Mina appar, bör du loggas in automatiskt till Zscaler-administratören för Internet-åtkomst som du ställer in SSO för. Mer information om Mina appar finns i [Introduktion till Mina appar](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Nästa steg
 

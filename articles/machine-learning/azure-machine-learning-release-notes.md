@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 09/10/2020
-ms.openlocfilehash: 117bc71ba304445e3186b4e633f5888647be9223
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 38f37ff2fe150a9e1998fbe5e963b8737a6e1533
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98685637"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737973"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Viktig information om Azure Machine Learning
 
@@ -36,6 +36,7 @@ I den här artikeln får du lära dig mer om Azure Machine Learning-versioner.  
     + Åtgärdat problem för tjänsten. load () för att hämta ändringar på score.py i lokal distribution.
     + `run.get_details()` innehåller ett extra fält med namnet "submittedBy" som visar författarens namn för den här körningen.
     + Redigerad modell. registrera metod dokumentation för att ange hur modellen ska registreras från att köras direkt
+    + Problem med att ändra hantering av anslutnings status för fasta IOT-Server.
    
 
 ## <a name="2020-12-31"></a>2020-12-31
@@ -895,7 +896,7 @@ Nu kan du skapa, redigera och dela Machine Learning-anteckningsböcker och filer
 
 Få åtkomst till följande webbaserade redigerings verktyg från Studio:
     
-| Webbaserat verktyg  |     Description  |
+| Webbaserat verktyg  |     Beskrivning  |
 |---|---|
 | Azure ML Studio-anteckningsböcker   |     Första redigering i klass för notebook-filer och stöd för alla åtgärder som är tillgängliga i Azure ML python SDK. | 
 
@@ -1407,7 +1408,7 @@ Från Studio kan du träna, testa, distribuera och hantera Azure Machine Learnin
 
 Få åtkomst till följande webbaserade redigerings verktyg från Studio:
 
-| Webbaserat verktyg | Description | 
+| Webbaserat verktyg | Beskrivning | 
 |-|-|-|
 | Notebook VM (för hands version) | Helt hanterad molnbaserad arbets Station | 
 | [Automatisk maskin inlärning](tutorial-first-experiment-automated-ml.md) (för hands version) | Ingen kod upplevelse för automatisering av maskin inlärnings modell utveckling | 

@@ -3,12 +3,12 @@ title: Kryptering av säkerhets kopierings data med Kundhanterade nycklar
 description: Lär dig hur Azure Backup kan kryptera dina säkerhetskopierade data med Kundhanterade nycklar (CMK).
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: 30bcf907e1a2759c8a9977e50cb4880c2e254ca2
-ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
+ms.openlocfilehash: d5daa88475e3becde6e513391c555471f80396c5
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98562768"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735868"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>Kryptering av säkerhets kopierings data med Kundhanterade nycklar
 
@@ -77,7 +77,7 @@ Azure Backup använder systemtilldelad hanterad identitet för att autentisera R
 
 **Med PowerShell:**
 
-Använd kommandot [Update-AzRecoveryServicesVault](https://docs.microsoft.com/powershell/module/az.recoveryservices/update-azrecoveryservicesvault) för att aktivera systemtilldelad hanterad identitet för Recovery Services-valvet.
+Använd kommandot [Update-AzRecoveryServicesVault](/powershell/module/az.recoveryservices/update-azrecoveryservicesvault) för att aktivera systemtilldelad hanterad identitet för Recovery Services-valvet.
 
 Exempel:
 
@@ -121,7 +121,7 @@ Du måste nu tillåta Recovery Services-valvet att få åtkomst till Azure Key V
 
 **Med PowerShell**:
 
-Använd kommandot [set-AzRecoveryServicesVaultProperty](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultproperty) för att aktivera kryptering med Kundhanterade nycklar och för att tilldela eller uppdatera krypterings nyckeln som ska användas.
+Använd kommandot [set-AzRecoveryServicesVaultProperty](/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultproperty) för att aktivera kryptering med Kundhanterade nycklar och för att tilldela eller uppdatera krypterings nyckeln som ska användas.
 
 Exempel:
 
@@ -290,7 +290,7 @@ Disk krypterings uppsättningen anges under krypterings inställningar i återst
 
 **Med PowerShell**:
 
-Använd kommandot [Get-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem) med parametern [ `-DiskEncryptionSetId <string>` ] för att [Ange det des](https://docs.microsoft.com/powershell/module/az.compute/get-azdiskencryptionset) som ska användas för att kryptera den återställda disken. Mer information om hur du återställer diskar från VM-säkerhetskopiering finns i [den här artikeln](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#restore-an-azure-vm).
+Använd kommandot [Get-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem) med parametern [ `-DiskEncryptionSetId <string>` ] för att [Ange det des](/powershell/module/az.compute/get-azdiskencryptionset) som ska användas för att kryptera den återställda disken. Mer information om hur du återställer diskar från VM-säkerhetskopiering finns i [den här artikeln](./backup-azure-vms-automation.md#restore-an-azure-vm).
 
 Exempel:
 

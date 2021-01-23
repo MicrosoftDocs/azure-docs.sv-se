@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 12/14/2020
 ms.author: banders
-ms.openlocfilehash: 662e1bf721c93ee1d59946d2fd603551f3f88ad3
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
-ms.translationtype: HT
+ms.openlocfilehash: 0d0dd5342cfc57da776e38ddef3df3b9c2199ac2
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97503802"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735783"
 ---
 # <a name="cancel-your-azure-subscription"></a>Avbryta din Azure-prenumeration
 
@@ -79,7 +79,7 @@ Om du har en kostnadsfri utvärderingsprenumeration behöver du inte vänta 30 d
 
 ## <a name="reactivate-a-subscription"></a>Återaktivera en prenumeration
 
-Om du oavsiktligt avbryter prenumerationen med Betala per användning-priser kan du [återaktivera den i Kontocenter](subscription-disabled.md).
+Om du avbryter prenumerationen med priser enligt principen betala per användning kan du [återaktivera den i Azure Portal](subscription-disabled.md).
 
 Om din prenumeration inte är en prenumeration med Betala per användning-priser kontaktar du supporten inom 90 dagar efter annulleringen för att återaktivera prenumerationen.
 
@@ -101,4 +101,4 @@ Se artikeln [Förnya och avsluta](/visualstudio/subscriptions/faq/admin/renewal-
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Om så behövs kan du återaktivera en betala per användning-prenumeration i [kontocentret](subscription-disabled.md).
+- Om det behövs kan du återaktivera en prenumeration där du betalar per användning i [Azure Portal](subscription-disabled.md).

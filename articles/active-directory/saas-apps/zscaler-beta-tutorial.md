@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/18/2020
 ms.author: jeedes
-ms.openlocfilehash: 6914fb50cdb157cf8ef7b5433ebbde47eff8fc32
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 4e8dce970c9e7cfb2aa7887cf1fb3ed6ef9030a1
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539805"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735615"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-beta"></a>Självstudie: Azure Active Directory integrering med Zscaler beta
 
@@ -27,7 +27,7 @@ När du integrerar Zscaler beta med Azure AD kan du:
 * Tillåt att användarna loggas in automatiskt till Zscaler beta med sina Azure AD-konton. Den här åtkomst kontrollen kallas enkel inloggning (SSO).
 * Hantera dina konton på en central plats med hjälp av Azure Portal.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 För att konfigurera Azure AD-integrering med Zscaler Beta behöver du följande:
 
@@ -89,7 +89,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 6. Zscaler beta-programmet förväntar sig att fler attribut ska skickas tillbaka i SAML-svar. I avsnittet **användar anspråk** **i dialog rutan användarattribut,** följer du dessa steg för att lägga till attributet SAML-token, som visas i följande tabell.
     
-    | Namn | Källattribut | 
+    | Name | Källattribut | 
     | ---------------| --------------- |
     | memberOf  | user.assignedroles |
 
@@ -108,7 +108,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
     ex. Välj **Spara**.
 
     > [!NOTE]
-    > Klicka [här](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps#app-roles-ui) om du vill veta mer om hur du konfigurerar roller i Azure AD.
+    > Klicka [här](../develop/howto-add-app-roles-in-azure-ad-apps.md#app-roles-ui--preview) om du vill veta mer om hur du konfigurerar roller i Azure AD.
 
 7. På sidan **Konfigurera en enskild Sign-On med SAML** , i avsnittet **SAML-signeringscertifikat** , väljer du **Hämta** för att ladda ned **certifikatet (base64)**. Spara den på din dator.
 
@@ -236,7 +236,7 @@ I det här avsnittet ska du testa Azure AD-konfigurationen för enkel inloggning
 
 * Gå till Zscaler beta-inloggnings-URL: en direkt och starta inloggnings flödet därifrån.
 
-* Du kan använda Microsoft Mina appar. När du klickar på Zscaler beta-panelen i Mina appar omdirigeras den till Zscaler beta-inloggnings-URL. Mer information om Mina appar finns i [Introduktion till Mina appar](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* Du kan använda Microsoft Mina appar. När du klickar på Zscaler beta-panelen i Mina appar omdirigeras den till Zscaler beta-inloggnings-URL. Mer information om Mina appar finns i [Introduktion till Mina appar](../user-help/my-apps-portal-end-user-access.md).
 
 
 ## <a name="next-steps"></a>Nästa steg

@@ -7,13 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.custom: contperf-fy21q3
-ms.openlocfilehash: 00e6802f37ec60467edbea98038dd23fcba1239a
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: c193565035435b29f77177086c535fae0903ccd4
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185503"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737786"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Hantera Azure Digitals dubbla modeller
 
@@ -62,7 +61,7 @@ Observera att `CreateModels` metoden accepterar flera filer i en enda transaktio
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/model_operations.cs" id="CreateModels_multi":::
 
-Model-filer kan innehålla mer än en enskild modell. I det här fallet måste modellerna placeras i en JSON-matris. Exempel:
+Model-filer kan innehålla mer än en enskild modell. I det här fallet måste modellerna placeras i en JSON-matris. Ett exempel:
 
 :::code language="json" source="~/digital-twins-docs-samples/models/Planet-Moon.json":::
 

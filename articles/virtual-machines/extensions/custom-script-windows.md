@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/31/2020
 ms.author: robreed
-ms.openlocfilehash: b0502fb05043a54d81d768a7809d19b108cc6248
-ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
+ms.openlocfilehash: d336d38465d601c1cbd4c1e88c0928ab17a1a18f
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97976851"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735721"
 ---
 # <a name="custom-script-extension-for-windows"></a>Anpassat skripttillägg för Windows
 
@@ -24,7 +24,7 @@ Det anpassade skript tillägget laddar ned och kör skript på virtuella Azure-d
 
 Det här dokumentet beskriver hur du använder tillägget för anpassat skript med hjälp av Azure PowerShell-modulen, Azure Resource Manager mallar och information om fel söknings steg i Windows-system.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 > [!NOTE]  
 > Använd inte anpassat skript tillägg för att köra Update-AzVM med samma virtuella dator som parameter, eftersom det väntar på sig själv.  
@@ -125,7 +125,7 @@ De här objekten ska behandlas som känsliga data och anges i konfigurationerna 
 
 ### <a name="property-values"></a>Egenskaps värden
 
-| Namn | Värde/exempel | Datatyp |
+| Name | Värde/exempel | Datatyp |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
 | utgivare | Microsoft.Compute | sträng |
@@ -287,7 +287,7 @@ The response content cannot be parsed because the Internet Explorer engine is no
 ```
 ## <a name="virtual-machine-scale-sets"></a>Virtual Machine Scale Sets
 
-Om du vill distribuera tillägget för anpassat skript i en skalnings uppsättning, se [Add-AzVmssExtension](/powershell/module/az.compute/add-azvmssextension?view=azps-3.3.0)
+Om du vill distribuera tillägget för anpassat skript i en skalnings uppsättning, se [Add-AzVmssExtension](/powershell/module/az.compute/add-azvmssextension)
 
 ## <a name="classic-vms"></a>Klassiska virtuella datorer
 

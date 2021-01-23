@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: bb40586a93a40c2aaa3f0f884a0e747f168c324b
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: db21f1170dacbfa1e4367e7f22143ec3d0b0f6e4
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98186113"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737344"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a>Installera och kör behållaren för rums analys (förhands granskning)
 
@@ -62,7 +62,7 @@ I den här artikeln ska du hämta och installera följande program varu paket. V
 * [Azure IoT Edge](../../iot-edge/how-to-install-iot-edge.md) Runtime.
 
 #### <a name="azure-vm-with-gpu"></a>[Virtuell Azure-dator med GPU](#tab/virtual-machine)
-I vårt exempel kommer vi att använda en [virtuell NC-serie](https://docs.microsoft.com/azure/virtual-machines/nc-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) med en K80-GPU.
+I vårt exempel kommer vi att använda en [virtuell NC-serie](../../virtual-machines/nc-series.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) med en K80-GPU.
 
 ---
 
@@ -309,13 +309,13 @@ På värddatorn är öppen  `/etc/iotedge/config.yaml` för redigering. Ersätt 
 sudo systemctl restart iotedge
 ```
 
-Distribuera behållaren för rums analys som en IoT-modul på värddatorn, antingen från [Azure Portal](../../iot-edge/how-to-deploy-modules-portal.md) eller [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli?tabs=windows). Om du använder portalen ställer du in bild-URI: en till platsen för Azure Container Registry. 
+Distribuera behållaren för rums analys som en IoT-modul på värddatorn, antingen från [Azure Portal](../../iot-edge/how-to-deploy-modules-portal.md) eller [Azure CLI](../cognitive-services-apis-create-account-cli.md?tabs=windows). Om du använder portalen ställer du in bild-URI: en till platsen för Azure Container Registry. 
 
 Använd stegen nedan för att distribuera behållaren med hjälp av Azure CLI.
 
 #### <a name="azure-vm-with-gpu"></a>[Virtuell Azure-dator med GPU](#tab/virtual-machine)
 
-En virtuell Azure-dator med en GPU kan också användas för att köra spatial analys. Exemplet nedan använder en virtuell [NC-serie](https://docs.microsoft.com/azure/virtual-machines/nc-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) med en K80-GPU.
+En virtuell Azure-dator med en GPU kan också användas för att köra spatial analys. Exemplet nedan använder en virtuell [NC-serie](../../virtual-machines/nc-series.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) med en K80-GPU.
 
 #### <a name="create-the-vm"></a>Skapa den virtuella datorn
 
@@ -335,7 +335,7 @@ Välj sedan antingen **för nc6** eller **NC6_Promo**.
 
 Skapa sedan den virtuella datorn. När du har skapat navigerar du till den virtuella dator resursen i Azure Portal och väljer `Extensions` i det vänstra fönstret. Fönstret tillägg visas med alla tillgängliga tillägg. Välj `NVIDIA GPU Driver Extension` , klicka på Skapa och Slutför guiden.
 
-När tillägget har tillämpats går du till den virtuella datorns huvud sida i Azure Portal och klickar på `Connect` . Den virtuella datorn kan nås via SSH eller RDP. RDP är användbart eftersom det kommer att aktivera visning av visualiserade fönster (förklaras senare). Konfigurera RDP-åtkomst genom att följa [dessa steg](https://docs.microsoft.com/azure/virtual-machines/linux/use-remote-desktop) och öppna en fjärr skrivbords anslutning till den virtuella datorn.
+När tillägget har tillämpats går du till den virtuella datorns huvud sida i Azure Portal och klickar på `Connect` . Den virtuella datorn kan nås via SSH eller RDP. RDP är användbart eftersom det kommer att aktivera visning av visualiserade fönster (förklaras senare). Konfigurera RDP-åtkomst genom att följa [dessa steg](../../virtual-machines/linux/use-remote-desktop.md) och öppna en fjärr skrivbords anslutning till den virtuella datorn.
 
 ### <a name="verify-graphics-drivers-are-installed"></a>Kontrol lera att grafik driv rutinerna är installerade
 
@@ -426,7 +426,7 @@ I följande tabell visas de olika miljövariabler som används av IoT Edge-modul
 > [!IMPORTANT]
 > `Eula`Alternativen, `Billing` och `ApiKey` måste anges för att köra behållaren, annars startar inte behållaren.  Mer information finns i [fakturering](#billing).
 
-När du har uppdaterat distributions manifestet för [Azure Stack Edge-enheter](https://go.microsoft.com/fwlink/?linkid=2142179), [en stationär dator eller en](https://go.microsoft.com/fwlink/?linkid=2152270) [virtuell Azure-dator med en GPU](https://go.microsoft.com/fwlink/?linkid=2152189) med dina egna inställningar och val av åtgärder kan du använda följande [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli?tabs=windows) -kommando för att distribuera behållaren på värddatorn som en IoT Edge modul.
+När du har uppdaterat distributions manifestet för [Azure Stack Edge-enheter](https://go.microsoft.com/fwlink/?linkid=2142179), [en stationär dator eller en](https://go.microsoft.com/fwlink/?linkid=2152270) [virtuell Azure-dator med en GPU](https://go.microsoft.com/fwlink/?linkid=2152189) med dina egna inställningar och val av åtgärder kan du använda följande [Azure CLI](../cognitive-services-apis-create-account-cli.md?tabs=windows) -kommando för att distribuera behållaren på värddatorn som en IoT Edge modul.
 
 ```azurecli
 sudo az login
@@ -457,7 +457,7 @@ Du måste använda åtgärder för [spatial analys](spatial-analysis-operations.
 
 ## <a name="redeploy-or-delete-the-deployment"></a>Distribuera om eller ta bort distributionen
 
-Om du behöver uppdatera distributionen måste du kontrol lera att dina tidigare distributioner har distribuerats, eller så måste du ta bort IoT Edge enhets distributioner som inte har slutförts. Annars fortsätter de distributionerna att lämna systemet i ett felaktigt tillstånd. Du kan använda Azure Portal eller [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli?tabs=windows).
+Om du behöver uppdatera distributionen måste du kontrol lera att dina tidigare distributioner har distribuerats, eller så måste du ta bort IoT Edge enhets distributioner som inte har slutförts. Annars fortsätter de distributionerna att lämna systemet i ett felaktigt tillstånd. Du kan använda Azure Portal eller [Azure CLI](../cognitive-services-apis-create-account-cli.md?tabs=windows).
 
 ## <a name="use-the-output-generated-by-the-container"></a>Använd de utdata som genereras av behållaren
 

@@ -5,18 +5,18 @@ description: Använd befintliga SQL Server licenser för Azure SQL Database och 
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: features
-ms.custom: sqldbrb=4, devx-track-azurecli
+ms.custom: sqldbrb=4
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake
 ms.date: 11/13/2019
-ms.openlocfilehash: 872b36eae9142473885885d5bf5ad3fa10ae5ccb
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 51cf4a4d3aa3cb4654b141a98064460a7152fcec
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94841605"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737463"
 ---
 # <a name="azure-hybrid-benefit---azure-sql-database--sql-managed-instance"></a>Azure Hybrid-förmån-Azure SQL Database & SQL-hanterad instans
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -89,8 +89,8 @@ SQL Database kunder har följande rättigheter som är kopplade till Azure Hybri
 
 |Licens utrymme|Vad får Azure Hybrid-förmån för SQL Server dig?|
 |---|---|
-|SQL Server Enterprise Edition Core-kunder med SA|<li>Kan betala bas priset antingen Generell användning eller Affärskritisk SKU</li><br><li>1 kärna lokalt = 4 kärnor i Generell användning SKU</li><br><li>1 kärna lokalt = 1 kärna i Affärskritisk SKU</li>|
-|SQL Server Standard Edition Core-kunder med SA|<li>Kan betala bas taxan endast för Generell användning SKU</li><br><li>1 kärna lokalt = 1 kärna i Generell användning SKU</li>|
+|SQL Server Enterprise Edition Core-kunder med SA|<li>Kan betala bas taxa för storskalig, Generell användning eller Affärskritisk SKU</li><br><li>1 kärna lokalt = 4 kärnor i storskalig SKU</li><br><li>1 kärna lokalt = 4 kärnor i Generell användning SKU</li><br><li>1 kärna lokalt = 1 kärna i Affärskritisk SKU</li>|
+|SQL Server Standard Edition Core-kunder med SA|<li>Kan betala bas taxa för storskalig och endast Generell användning SKU</li><br><li>1 kärna lokal = 1 kärna i storskalig SKU</li><br><li>1 kärna lokalt = 1 kärna i Generell användning SKU</li>|
 |||
 
 
