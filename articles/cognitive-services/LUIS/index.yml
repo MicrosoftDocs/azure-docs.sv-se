@@ -12,12 +12,12 @@ metadata:
   title: Dokumentation om Language Understanding Intelligent Service (LUIS)
   titleSuffix: Azure Cognitive Services
   description: Language Understanding-tjänsten (LUIS) gör så att ditt program kan förstå vad en person vill när denna använder sina egna ord. LUIS använder maskininlärning för att göra det möjligt för utvecklare att skapa program som kan ta emot indata från användaren i naturligt språk och sedan extrahera betydelse.
-  ms.openlocfilehash: ff928f1879f8cfd356fa020ff6afaa68b72f63c5
-  ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
-  ms.translationtype: HT
+  ms.openlocfilehash: ca9209295d8265eeac5545091e4d4c5c9678e994
+  ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+  ms.translationtype: MT
   ms.contentlocale: sv-SE
-  ms.lasthandoff: 11/21/2020
-  ms.locfileid: "95019389"
+  ms.lasthandoff: 01/23/2021
+  ms.locfileid: "98738075"
 landingContent:
 - title: Om Language Understanding (LUIS)
   linkLists:
@@ -60,9 +60,9 @@ landingContent:
     - text: 'Portal: Skapa en ny LUIS-app'
       url: get-started-portal-build-app.md
     - text: Med hjälp av C# SDK
-      url: azure-sdk-quickstart.md?pivots=programming-language-csharp
+      url: ./client-libraries-rest-api.md?pivots=rest-api
     - text: Med hjälp av Python SDK
-      url: azure-sdk-quickstart.md?pivots=programming-language-python
+      url: ./client-libraries-rest-api.md?pivots=rest-api
   - linkListType: how-to-guide
     links:
     - text: Skapa en ny LUIS-app
@@ -82,13 +82,13 @@ landingContent:
     - text: Interaktiv testning
       url: luis-concept-test.md
     - text: Batch-testning
-      url: luis-concept-batch-test.md
+      url: ./luis-how-to-batch-test.md
   - linkListType: quickstart
     links:
     - text: 'Portal: Distribuera app till förutsägelseslutpunkt'
       url: get-started-portal-deploy-app.md
     - text: Använda SDK
-      url: azure-sdk-quickstart.md
+      url: ./client-libraries-rest-api.md?pivots=rest-api
   - linkListType: how-to-guide
     links:
     - text: Versionshantera din app
@@ -106,7 +106,7 @@ landingContent:
   - linkListType: quickstart
     links:
     - text: Använda SDK
-      url: azure-sdk-quickstart.md
+      url: ./client-libraries-rest-api.md?pivots=rest-api
   - linkListType: quickstart
     links:
     - text: Med C# som använder REST

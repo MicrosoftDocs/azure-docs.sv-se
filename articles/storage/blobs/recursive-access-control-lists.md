@@ -5,16 +5,16 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/11/2021
+ms.date: 01/22/2021
 ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 4abf8e3411860abbff91b0b7cf2774d2692b0f80
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.openlocfilehash: 626e626cbd8fa86bd0366516cbaf5a54789f3988
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98108440"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98741051"
 ---
 # <a name="set-access-control-lists-acls-recursively-for-azure-data-lake-storage-gen2"></a>Ange åtkomst kontrol listor (ACL) rekursivt för Azure Data Lake Storage Gen2
 
@@ -286,20 +286,7 @@ I det här exemplet skapas en **DataLakeServiceClient** -instans med hjälp av e
 |[Storage Blob Data-ägare](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)|Alla kataloger och filer i kontot.|
 |[Storage Blob Data-deltagare](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)|Endast kataloger och filer som ägs av säkerhets objekt.|
 
-```python
-def initialize_storage_account_ad(storage_account_name, client_id, client_secret, tenant_id):
-    
-    try:  
-        global service_client
-
-        credential = ClientSecretCredential(tenant_id, client_id, client_secret)
-
-        service_client = DataLakeServiceClient(account_url="{}://{}.dfs.core.windows.net".format(
-            "https", storage_account_name), credential=credential)
-    
-    except Exception as e:
-        print(e)
-```
+:::code language="python" source="~/azure-storage-snippets/blobs/howto/python/python-v12/crud_datalake.py" id="Snippet_AuthorizeWithAAD":::
 
 > [!NOTE]
 > Fler exempel finns i [klient biblioteket för Azure Identity för python](https://pypi.org/project/azure-identity/) -dokumentation.
@@ -310,16 +297,7 @@ Detta är det enklaste sättet att ansluta till ett konto.
 
 I det här exemplet skapas en **DataLakeServiceClient** -instans med hjälp av en konto nyckel.
 
-```python
-try:  
-    global service_client
-        
-    service_client = DataLakeServiceClient(account_url="{}://{}.dfs.core.windows.net".format(
-        "https", storage_account_name), credential=storage_account_key)
-    
-except Exception as e:
-    print(e)
-```
+:::code language="python" source="~/azure-storage-snippets/blobs/howto/python/python-v12/crud_datalake.py" id="Snippet_AuthorizeWithKey":::
  
 - Ersätt platshållarvärdet `storage_account_name` med namnet på ditt lagringskonto.
 
@@ -407,24 +385,7 @@ Den här metoden accepterar en boolesk parameter med namnet `is_default_scope` s
 
 Posterna i ACL: en ger den ägande användaren Läs-, skriv-och körnings behörighet, ger den ägande gruppen endast Läs-och kör behörigheter och ger alla andra ingen åtkomst. Den sista ACL-posten i det här exemplet ger en speciell användare med objekt-ID: t "" XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX "Läs-och körnings behörighet. Dessa poster ger den ägande användaren Läs-, skriv-och körnings behörighet, ger den ägande gruppen endast Läs-och kör behörigheter och ger alla andra ingen åtkomst. Den sista ACL-posten i det här exemplet ger en speciell användare med objekt-ID: t "" XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX "Läs-och körnings behörighet.
 
-```python
-def set_permission_recursively(is_default_scope):
-    
-    try:
-        file_system_client = service_client.get_file_system_client(file_system="my-container")
-
-        directory_client = file_system_client.get_directory_client("my-parent-directory")
-              
-        acl = 'user::rwx,group::rwx,other::rwx,user:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx:r--'   
-
-        if is_default_scope:
-           acl = 'default:user::rwx,default:group::rwx,default:other::rwx,default:user:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx:r--'
-
-        directory_client.set_access_control_recursive(acl=acl)
-        
-    except Exception as e:
-     print(e)
-```
+:::code language="python" source="~/azure-storage-snippets/blobs/howto/python/python-v12/ACL_datalake.py" id="Snippet_SetACLRecursively":::
 
 Om du vill se ett exempel som bearbetar ACL rekursivt i batchar genom att ange en batchstorlek, se python- [exemplet](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_access_control_recursive.py).
 
@@ -503,28 +464,7 @@ Det här exemplet uppdaterar en ACL-post med Skriv behörighet.
 
 I det här exemplet anges ACL: en för en katalog med namnet `my-parent-directory` . Den här metoden accepterar en boolesk parameter med namnet `is_default_scope` som anger om du vill uppdatera standard-ACL: en. om den parametern är `True` , föregås den uppdaterade ACL-posten med strängen `default:` .  
 
-```python
-def update_permission_recursively(is_default_scope):
-    
-    try:
-        file_system_client = service_client.get_file_system_client(file_system="my-container")
-
-        directory_client = file_system_client.get_directory_client("my-parent-directory")
-
-        acl = 'user:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx:rwx'   
-
-        if is_default_scope:
-           acl = 'default:user:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx:rwx'
-
-        directory_client.update_access_control_recursive(acl=acl)
-
-        acl_props = directory_client.get_access_control()
-        
-        print(acl_props['permissions'])
-
-    except Exception as e:
-     print(e)
-```
+:::code language="python" source="~/azure-storage-snippets/blobs/howto/python/python-v12/ACL_datalake.py" id="Snippet_UpdateACLsRecursively":::
 
 Om du vill se ett exempel som bearbetar ACL rekursivt i batchar genom att ange en batchstorlek, se python- [exemplet](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_access_control_recursive.py).
 
@@ -670,26 +610,7 @@ Det här exemplet returnerar en fortsättnings-token om ett problem uppstår. Pr
 
 Det här exemplet returnerar en fortsättnings-token om ett problem uppstår. Programmet kan anropa den här exempel metoden igen när felet har åtgärd ATS och passera över fortsättnings-token. Om den här exempel metoden anropas för första gången kan programmet överföras som värde ``None`` för parametern för en tilläggs-token. 
 
-```python
-def resume_set_acl_recursive(continuation_token):
-    
-    try:
-        file_system_client = service_client.get_file_system_client(file_system="my-container")
-
-        directory_client = file_system_client.get_directory_client("my-parent-directory")
-              
-        acl = 'user::rwx,group::rwx,other::rwx,user:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx:r-x'
-
-        acl_change_result = directory_client.set_access_control_recursive(acl=acl, continuation=continuation_token)
-
-        continuation_token = acl_change_result.continuation
-
-        return continuation_token
-        
-    except Exception as e:
-     print(e) 
-     return continuation_token
-```
+:::code language="python" source="~/azure-storage-snippets/blobs/howto/python/python-v12/ACL_datalake.py" id="Snippet_ResumeContinuationToken":::
 
 Om du vill se ett exempel som bearbetar ACL rekursivt i batchar genom att ange en batchstorlek, se python- [exemplet](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_access_control_recursive.py).
 
@@ -745,25 +666,7 @@ För att säkerställa att processen slutförs utan avbrott ska du inte skicka e
 
 I det här exemplet anges ACL-poster rekursivt. Om den här koden påträffar ett behörighets fel registrerar den felet och fortsätter att köra. Det här exemplet skriver ut antalet felaktiga försök till-konsolen. 
 
-```python
-def continue_on_failure():
-    
-    try:
-        file_system_client = service_client.get_file_system_client(file_system="my-container")
-
-        directory_client = file_system_client.get_directory_client("my-parent-directory")
-              
-        acl = 'user::rwx,group::rwx,other::rwx,user:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx:r--'
-
-        acl_change_result = directory_client.set_access_control_recursive(acl=acl)
-
-        print("Summary: {} directories and {} files were updated successfully, {} failures were counted."
-          .format(acl_change_result.counters.directories_successful, acl_change_result.counters.files_successful,
-                  acl_change_result.counters.failure_count))
-        
-    except Exception as e:
-     print(e)
-```
+:::code language="python" source="~/azure-storage-snippets/blobs/howto/python/python-v12/ACL_datalake.py" id="Snippet_ContinueOnFailure":::
 
 Om du vill se ett exempel som bearbetar ACL rekursivt i batchar genom att ange en batchstorlek, se python- [exemplet](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_access_control_recursive.py).
 

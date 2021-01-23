@@ -2,23 +2,23 @@
 title: Använd moln grupper för att hantera roll tilldelningar i Azure Active Directory | Microsoft Docs
 description: Förhandsgranska anpassade Azure AD-roller för att delegera identitets hantering. Hantera Azure Role-tilldelningar i Azure Portal, PowerShell eller Graph API.
 services: active-directory
-author: curtand
+author: rolyon
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: article
 ms.date: 11/05/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54988c8bbc4a9c3d448ac35f31e97e2d20228209
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: a4a35bafd2c5dc78f0d9d1debbf21babb6279545
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97007576"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98740099"
 ---
 # <a name="use-cloud-groups-to-manage-role-assignments-in-azure-active-directory-preview"></a>Använd moln grupper för att hantera roll tilldelningar i Azure Active Directory (för hands version)
 

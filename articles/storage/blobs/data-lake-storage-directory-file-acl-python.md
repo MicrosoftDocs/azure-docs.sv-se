@@ -3,18 +3,18 @@ title: 'Azure Data Lake Storage Gen2 python SDK för filer & ACL: er'
 description: Använd python hantera kataloger och åtkomst kontrol listor för filer och kataloger (ACL) i lagrings konton med hierarkiskt namn område (HNS) aktiverat.
 author: normesta
 ms.service: storage
-ms.date: 09/10/2020
+ms.date: 01/22/2021
 ms.author: normesta
 ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
 ms.custom: devx-track-python
-ms.openlocfilehash: 7bbdf7961a934245b71829b7b50fc62c5b069d6b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 5036930c7bb49578582fbc1b347b11518579b53e
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95913291"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98740626"
 ---
 # <a name="use-python-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Använd python för att hantera kataloger, filer och ACL: er i Azure Data Lake Storage Gen2
 
@@ -55,16 +55,7 @@ Detta är det enklaste sättet att ansluta till ett konto.
 
 I det här exemplet skapas en **DataLakeServiceClient** -instans med hjälp av en konto nyckel.
 
-```python
-try:  
-    global service_client
-        
-    service_client = DataLakeServiceClient(account_url="{}://{}.dfs.core.windows.net".format(
-        "https", storage_account_name), credential=storage_account_key)
-    
-except Exception as e:
-    print(e)
-```
+:::code language="python" source="~/azure-storage-snippets/blobs/howto/python/python-v12/crud_datalake.py" id="Snippet_AuthorizeWithKey":::
  
 - Ersätt platshållarvärdet `storage_account_name` med namnet på ditt lagringskonto.
 
@@ -76,20 +67,7 @@ Du kan använda [klient biblioteket för Azure Identity för python för](https:
 
 I det här exemplet skapas en **DataLakeServiceClient** -instans med hjälp av ett klient-ID, en klient hemlighet och ett klient-ID.  Om du vill hämta dessa värden läser du [Hämta en token från Azure AD för att auktorisera begär Anden från ett klient program](../common/storage-auth-aad-app.md).
 
-```python
-def initialize_storage_account_ad(storage_account_name, client_id, client_secret, tenant_id):
-    
-    try:  
-        global service_client
-
-        credential = ClientSecretCredential(tenant_id, client_id, client_secret)
-
-        service_client = DataLakeServiceClient(account_url="{}://{}.dfs.core.windows.net".format(
-            "https", storage_account_name), credential=credential)
-    
-    except Exception as e:
-        print(e)
-```
+:::code language="python" source="~/azure-storage-snippets/blobs/howto/python/python-v12/crud_datalake.py" id="Snippet_AuthorizeWithAAD":::
 
 > [!NOTE]
 > Fler exempel finns i [klient biblioteket för Azure Identity för python](https://pypi.org/project/azure-identity/) -dokumentation.
@@ -100,17 +78,7 @@ En behållare fungerar som ett fil system för dina filer. Du kan skapa en genom
 
 I det här exemplet skapas en behållare med namnet `my-file-system` .
 
-```python
-def create_file_system():
-    try:
-        global file_system_client
-
-        file_system_client = service_client.create_file_system(file_system="my-file-system")
-    
-    except Exception as e:
-        print(e) 
-```
-
+:::code language="python" source="~/azure-storage-snippets/blobs/howto/python/python-v12/crud_datalake.py" id="Snippet_CreateContainer":::
 
 ## <a name="create-a-directory"></a>Skapa en katalog
 
@@ -118,14 +86,7 @@ Skapa en katalog referens genom att anropa metoden **FileSystemClient.create_dir
 
 Det här exemplet lägger till en katalog med namnet `my-directory` i en behållare. 
 
-```python
-def create_directory():
-    try:
-        file_system_client.create_directory("my-directory")
-    
-    except Exception as e:
-     print(e) 
-```
+:::code language="python" source="~/azure-storage-snippets/blobs/howto/python/python-v12/crud_datalake.py" id="Snippet_CreateDirectory":::
 
 ## <a name="rename-or-move-a-directory"></a>Byta namn på eller flytta en katalog
 
@@ -133,19 +94,7 @@ Byt namn på eller flytta en katalog genom att anropa metoden **DataLakeDirector
 
 I det här exemplet byter namn på en under katalog till namnet `my-subdirectory-renamed` .
 
-```python
-def rename_directory():
-    try:
-       
-       file_system_client = service_client.get_file_system_client(file_system="my-file-system")
-       directory_client = file_system_client.get_directory_client("my-directory")
-       
-       new_dir_name = "my-directory-renamed"
-       directory_client.rename_directory(rename_destination=directory_client.file_system_name + '/' + new_dir_name)
-
-    except Exception as e:
-     print(e) 
-```
+:::code language="python" source="~/azure-storage-snippets/blobs/howto/python/python-v12/crud_datalake.py" id="Snippet_RenameDirectory":::
 
 ## <a name="delete-a-directory"></a>Ta bort en katalog
 
@@ -153,17 +102,7 @@ Ta bort en katalog genom att anropa metoden **DataLakeDirectoryClient.delete_dir
 
 Det här exemplet tar bort en katalog med namnet `my-directory` .  
 
-```python
-def delete_directory():
-    try:
-        file_system_client = service_client.get_file_system_client(file_system="my-file-system")
-        directory_client = file_system_client.get_directory_client("my-directory")
-
-        directory_client.delete_directory()
-    except Exception as e:
-     print(e) 
-```
-
+:::code language="python" source="~/azure-storage-snippets/blobs/howto/python/python-v12/crud_datalake.py" id="Snippet_DeleteDirectory":::
 
 ## <a name="upload-a-file-to-a-directory"></a>Ladda upp en fil till en katalog 
 
@@ -171,26 +110,7 @@ Börja med att skapa en fil referens i mål katalogen genom att skapa en instans
 
 I det här exemplet överförs en textfil till en katalog med namnet `my-directory` .   
 
-```python
-def upload_file_to_directory():
-    try:
-
-        file_system_client = service_client.get_file_system_client(file_system="my-file-system")
-
-        directory_client = file_system_client.get_directory_client("my-directory")
-        
-        file_client = directory_client.create_file("uploaded-file.txt")
-        local_file = open("C:\\file-to-upload.txt",'rb')
-
-        file_contents = local_file.read()
-
-        file_client.append_data(data=file_contents, offset=0, length=len(file_contents))
-
-        file_client.flush_data(len(file_contents))
-
-    except Exception as e:
-      print(e) 
-```
+:::code language="python" source="~/azure-storage-snippets/blobs/howto/python/python-v12/crud_datalake.py" id="Snippet_UploadFile":::
 
 > [!TIP]
 > Om din fil storlek är stor måste koden göra flera anrop till metoden **DataLakeFileClient.append_data** . Överväg att använda metoden **DataLakeFileClient.upload_data** i stället. På så sätt kan du ladda upp hela filen i ett enda anrop. 
@@ -199,72 +119,21 @@ def upload_file_to_directory():
 
 Använd metoden **DataLakeFileClient.upload_data** för att överföra stora filer utan att behöva göra flera anrop till **DataLakeFileClient.append_data** -metoden.
 
-```python
-def upload_file_to_directory_bulk():
-    try:
-
-        file_system_client = service_client.get_file_system_client(file_system="my-file-system")
-
-        directory_client = file_system_client.get_directory_client("my-directory")
-        
-        file_client = directory_client.get_file_client("uploaded-file.txt")
-
-        local_file = open("C:\\file-to-upload.txt",'rb')
-
-        file_contents = local_file.read()
-
-        file_client.upload_data(file_contents, overwrite=True)
-
-    except Exception as e:
-      print(e) 
-```
+:::code language="python" source="~/azure-storage-snippets/blobs/howto/python/python-v12/crud_datalake.py" id="Snippet_UploadFileBulk":::
 
 ## <a name="download-from-a-directory"></a>Ladda ned från en katalog 
 
 Öppna en lokal fil för skrivning. Skapa sedan en **DataLakeFileClient** -instans som representerar den fil som du vill ladda ned. Anropa **DataLakeFileClient.read_file** för att läsa byte från filen och skriv sedan dessa byte till den lokala filen. 
 
-```python
-def download_file_from_directory():
-    try:
-        file_system_client = service_client.get_file_system_client(file_system="my-file-system")
+:::code language="python" source="~/azure-storage-snippets/blobs/howto/python/python-v12/crud_datalake.py" id="Snippet_DownloadFromDirectory":::
 
-        directory_client = file_system_client.get_directory_client("my-directory")
-        
-        local_file = open("C:\\file-to-download.txt",'wb')
-
-        file_client = directory_client.get_file_client("uploaded-file.txt")
-
-        download = file_client.download_file()
-
-        downloaded_bytes = download.readall()
-
-        local_file.write(downloaded_bytes)
-
-        local_file.close()
-
-    except Exception as e:
-     print(e)
-```
 ## <a name="list-directory-contents"></a>Lista kataloginnehåll
 
 Lista katalog innehåll genom att anropa metoden **FileSystemClient.get_paths** och sedan räkna upp genom resultaten.
 
 I det här exemplet skrivs sökvägen till varje under katalog och fil som finns i en katalog med namnet `my-directory` .
 
-```python
-def list_directory_contents():
-    try:
-        
-        file_system_client = service_client.get_file_system_client(file_system="my-file-system")
-
-        paths = file_system_client.get_paths(path="my-directory")
-
-        for path in paths:
-            print(path.name + '\n')
-
-    except Exception as e:
-     print(e) 
-```
+:::code language="python" source="~/azure-storage-snippets/blobs/howto/python/python-v12/crud_datalake.py" id="Snippet_ListFilesInDirectory":::
 
 ## <a name="manage-access-control-lists-acls"></a>Hantera åtkomst kontrol listor (ACL: er)
 
@@ -282,28 +151,7 @@ Hämta ACL (Access Control List) för en katalog genom att anropa metoden **Data
 
 Det här exemplet hämtar och anger ACL: en för en katalog med namnet `my-directory` . Strängen `rwxr-xrw-` ger den ägande användaren Läs-, skriv-och körnings behörighet, ger den ägande gruppen endast Läs-och kör behörigheter och ger alla andra Läs-och Skriv behörighet.
 
-```python
-def manage_directory_permissions():
-    try:
-        file_system_client = service_client.get_file_system_client(file_system="my-file-system")
-
-        directory_client = file_system_client.get_directory_client("my-directory")
-        
-        acl_props = directory_client.get_access_control()
-        
-        print(acl_props['permissions'])
-        
-        new_dir_permissions = "rwxr-xrw-"
-        
-        directory_client.set_access_control(permissions=new_dir_permissions)
-        
-        acl_props = directory_client.get_access_control()
-        
-        print(acl_props['permissions'])
-    
-    except Exception as e:
-     print(e) 
-```
+:::code language="python" source="~/azure-storage-snippets/blobs/howto/python/python-v12/ACL_datalake.py" id="Snippet_ACLDirectory":::
 
 Du kan också hämta och ange ACL: en för rot katalogen för en behållare. Om du vill hämta rot katalogen anropar du **FileSystemClient._get_root_directory_client** -metoden.
 
@@ -316,30 +164,7 @@ Hämta ACL (Access Control List) för en fil genom att anropa metoden **DataLake
 
 Det här exemplet hämtar och anger ACL: en för en fil med namnet `my-file.txt` . Strängen `rwxr-xrw-` ger den ägande användaren Läs-, skriv-och körnings behörighet, ger den ägande gruppen endast Läs-och kör behörigheter och ger alla andra Läs-och Skriv behörighet.
 
-```python
-def manage_file_permissions():
-    try:
-        file_system_client = service_client.get_file_system_client(file_system="my-file-system")
-
-        directory_client = file_system_client.get_directory_client("my-directory")
-        
-        file_client = directory_client.get_file_client("uploaded-file.txt")
-
-        acl_props = file_client.get_access_control()
-        
-        print(acl_props['permissions'])
-        
-        new_file_permissions = "rwxr-xrw-"
-        
-        file_client.set_access_control(permissions=new_file_permissions)
-        
-        acl_props = file_client.get_access_control()
-        
-        print(acl_props['permissions'])
-
-    except Exception as e:
-     print(e) 
-```
+:::code language="python" source="~/azure-storage-snippets/blobs/howto/python/python-v12/ACL_datalake.py" id="Snippet_FileACL":::
 
 ### <a name="set-an-acl-recursively"></a>Ange en ACL rekursivt
 

@@ -1,21 +1,25 @@
 ---
-title: Cloud Services-och hanterings certifikat | Microsoft Docs
+title: Cloud Services (klassisk) och hanterings certifikat | Microsoft Docs
 description: Lär dig mer om hur du skapar och distribuerar certifikat för moln tjänster och för att autentisera med hanterings-API i Azure.
-services: cloud-services
-documentationcenter: .net
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 04/19/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 8650b8670c61cab15b26163dd5108145b8509434
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: c73f9812f344eecf4e51f43405b48693ddfa191b
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92072432"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98739742"
 ---
-# <a name="certificates-overview-for-azure-cloud-services"></a>Certifikatöversikt för Azure Cloud Services
+# <a name="certificates-overview-for-azure-cloud-services-classic"></a>Översikt över certifikat för Azure Cloud Services (klassisk)
+
+> [!IMPORTANT]
+> [Azure Cloud Services (utökad support)](../cloud-services-extended-support/overview.md) är en ny Azure Resource Manager baserad distributions modell för Azure Cloud Services-produkten.Med den här ändringen har Azure Cloud Services som körs på Azure Service Manager-baserade distributions modellen bytt namn som Cloud Services (klassisk) och alla nya distributioner bör använda [Cloud Services (utökad support)](../cloud-services-extended-support/overview.md).
+
 Certifikat används i Azure för moln tjänster ([tjänst certifikat](#what-are-service-certificates)) och för autentisering med hanterings-API: et ([hanterings certifikat](#what-are-management-certificates)). Det här avsnittet innehåller en allmän översikt över båda certifikat typerna, hur du [skapar](#create) och distribuerar dem till Azure.
 
 Certifikat som används i Azure är x. 509 v3-certifikat och kan signeras av ett annat betrott certifikat eller så kan de vara självsignerade. Ett självsignerat certifikat signeras av en egen skapare, vilket innebär att det inte är betrott som standard. De flesta webbläsare kan ignorera det här problemet. Du bör endast använda självsignerade certifikat när du utvecklar och testar moln tjänsterna. 

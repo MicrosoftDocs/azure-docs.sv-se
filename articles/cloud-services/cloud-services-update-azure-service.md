@@ -1,20 +1,24 @@
 ---
-title: Så här uppdaterar du en moln tjänst | Microsoft Docs
+title: Så här uppdaterar du en moln tjänst (klassisk) | Microsoft Docs
 description: Lär dig hur du uppdaterar moln tjänster i Azure. Lär dig hur en uppdatering av en moln tjänst fortsätter för att säkerställa tillgängligheten.
-services: cloud-services
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 04/19/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: f12e5b6b0b2902d69936b9cf2695b7ee21db88e2
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 5d85003ca7b4307c308914484502ae03269f66ac
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075050"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98741119"
 ---
-# <a name="how-to-update-a-cloud-service"></a>Så här uppdaterar du en moln tjänst
+# <a name="how-to-update-an-azure-cloud-service-classic"></a>Så här uppdaterar du en Azure Cloud Service (klassisk)
+
+> [!IMPORTANT]
+> [Azure Cloud Services (utökad support)](../cloud-services-extended-support/overview.md) är en ny Azure Resource Manager baserad distributions modell för Azure Cloud Services-produkten.Med den här ändringen har Azure Cloud Services som körs på Azure Service Manager-baserade distributions modellen bytt namn som Cloud Services (klassisk) och alla nya distributioner bör använda [Cloud Services (utökad support)](../cloud-services-extended-support/overview.md).
 
 Att uppdatera en moln tjänst, inklusive både dess roller och gäst operativ system, är en process i tre steg. Först måste binärfilerna och konfigurationsfilerna för den nya moln tjänsten eller operativ system versionen överföras. Därefter reserverar Azure beräknings-och nätverks resurser för moln tjänsten baserat på kraven i den nya moln tjänst versionen. Slutligen utför Azure en löpande uppgradering för att stegvis uppdatera klienten till den nya versionen eller gäst operativ systemet, samtidigt som du behåller din tillgänglighet. I den här artikeln beskrivs information om det här sista steget – den löpande uppgraderingen.
 
@@ -53,7 +57,7 @@ I följande tabell visas de tillåtna ändringarna av en tjänst under en uppdat
 | Inställningar för lokal lagring |Öka bara<sup>2</sup> |Ja |Ja |
 | Lägga till eller ta bort roller i en tjänst |Ja |Ja |Ja |
 | Antal instanser av en viss roll |Ja |Ja |Ja |
-| Antal eller typ av slut punkter för en tjänst |Ja<sup>2</sup> |Inga |Ja |
+| Antal eller typ av slut punkter för en tjänst |Ja<sup>2</sup> |Nej |Ja |
 | Namn och värden för konfigurations inställningar |Ja |Ja |Ja |
 | Värden (men inte namn) för konfigurations inställningar |Ja |Ja |Ja |
 | Lägg till nya certifikat |Ja |Ja |Ja |

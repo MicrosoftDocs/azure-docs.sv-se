@@ -7,12 +7,12 @@ author: mimckitt
 ms.author: mimckitt
 ms.topic: conceptual
 ms.date: 11/06/2020
-ms.openlocfilehash: 3ae300ca2746ab9e3478d3fe14fd6fc49c95a93d
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: dc9f7dfdf33411f11d51734b48105be200874d02
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98071739"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98738126"
 ---
 # <a name="azure-boot-diagnostics"></a>Azure Boot-diagnostik
 
@@ -45,7 +45,7 @@ När du skapar en virtuell dator i Azure Portal är standardinställningen att s
 :::image type="content" source="./media/boot-diagnostics/boot-diagnostics-enable-portal.png" alt-text="Skärm bild som aktiverar hanterad startdiagnostik under skapandet av virtuella datorer.":::
 
 ### <a name="enable-managed-boot-diagnostics-using-cli"></a>Aktivera hanterad startdiagnostik med CLI
-Startdiagnostik med ett hanterat lagrings konto stöds i Azure CLI-2.12.0 och senare. Om du inte anger ett namn eller en URI för ett lagrings konto används ett hanterat konto. Mer information och kod exempel finns i [CLI-dokumentationen för startdiagnostik](/cli/azure/vm/boot-diagnostics?preserve-view=true&view=azure-cli-latest).
+Startdiagnostik med ett hanterat lagrings konto stöds i Azure CLI-2.12.0 och senare. Om du inte anger ett namn eller en URI för ett lagrings konto används ett hanterat konto. Mer information och kod exempel finns i [CLI-dokumentationen för startdiagnostik](/cli/azure/vm/boot-diagnostics).
 
 ### <a name="enable-managed-boot-diagnostics-using-azure-resource-manager-arm-templates"></a>Aktivera hanterad startdiagnostik med Azure Resource Manager ARM-mallar
 Allt efter att API-version 2020-06-01 har stöd för hanterad startdiagnostik. Mer information finns i [instans visning av Boot Diagnostics](/rest/api/compute/virtualmachines/createorupdate#bootdiagnostics).

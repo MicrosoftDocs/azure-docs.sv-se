@@ -21,8 +21,13 @@
         - name: Använda ARM-mall
           displayName: Resource Manager
           href: fhir-paas-arm-template-quickstart.md
-    - name: Distribuera Azure IoT-anslutningsprogram för FHIR (förhandsversion) – Portal
-      href: iot-fhir-portal-quickstart.md
+    - name: Distribuera Azure IoT-anslutningsprogram för FHIR (förhandsversion)
+      expanded: false
+      items:
+        - name: Använda portalen
+          href: iot-fhir-portal-quickstart.md
+        - name: Använda ARM-mall
+          href: iot-fhir-arm-template-quickstart.md
 - name: Självstudier
   expanded: false
   items:

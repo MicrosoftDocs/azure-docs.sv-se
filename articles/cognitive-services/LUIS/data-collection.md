@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/06/2020
-ms.openlocfilehash: bb00595a5d5be130bf6c1177004bf3042ef8f9f0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c901d4024292ad03a9195ad0cbd226f473917ee4
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91327195"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98738092"
 ---
 # <a name="data-collection-for-your-app"></a>Data insamling för din app
 
@@ -71,7 +71,7 @@ Följande förbehandlings steg hjälper dig att bygga en bättre LUIS-app:
 
 ## <a name="test-data-selection-for-batch-testing"></a>Testa data urval för batch-testning
 
-Alla principer som anges ovan för utbildning yttranden gäller för yttranden som du bör använda för [test uppsättningen](luis-concept-batch-test.md). Se till att fördelningen mellan intentor och entiteter speglar den verkliga distributionen så nära som möjligt.
+Alla principer som anges ovan för utbildning yttranden gäller för yttranden som du bör använda för [test uppsättningen](./luis-how-to-batch-test.md). Se till att fördelningen mellan intentor och entiteter speglar den verkliga distributionen så nära som möjligt.
 
 Återanvänd inte yttranden från din utbildnings uppsättning i din test uppsättning. Detta gör att resultatet är felaktigt och ger dig inte rätt tecken på hur LUIS-appen kommer att utföras i produktionen.
 

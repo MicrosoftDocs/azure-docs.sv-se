@@ -2,23 +2,23 @@
 title: Anpassade roll behörigheter för åtkomst tilldelningar för företags program – Azure Active Directory | Microsoft Docs
 description: Skapa och tilldela anpassade Azure AD-roller för åtkomst till företags program i Azure Active Directory
 services: active-directory
-author: curtand
+author: rolyon
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: how-to
 ms.date: 11/04/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0932e4b6163264b0b514958e1e898b297e249870
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: d3cb65503ffab610f9545acb313f7284ffb11ed1
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93378558"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98741153"
 ---
 # <a name="assign-custom-roles-to-manage-enterprise-apps-in-azure-active-directory"></a>Tilldela anpassade roller för att hantera företags program i Azure Active Directory
 
@@ -46,7 +46,7 @@ Beviljande av uppdaterings behörighet görs i två steg:
 > Anpassade roller skapas och hanteras på en nivå med hela organisationen och är bara tillgängliga från organisationens översikts sida.
 
 1. Logga in på [administrations Center för Azure AD](https://aad.portal.azure.com) med privilegierade roll administratörer eller globala administratörs behörigheter i din organisation.
-1. Välj **Azure Active Directory** , Välj **roller och administratörer** och välj sedan **ny anpassad roll**.
+1. Välj **Azure Active Directory**, Välj **roller och administratörer** och välj sedan **ny anpassad roll**.
 
     ![Lägg till en ny anpassad roll från listan roller i Azure AD](./media/custom-enterprise-apps/new-custom-role.png)
 
@@ -70,7 +70,7 @@ Beviljande av uppdaterings behörighet görs i två steg:
 
     ![Öppna roller och administratörer och Sök efter den anpassade rollen](./media/custom-enterprise-apps/select-custom-role.png)
 
-1. Välj **Lägg till tilldelning** , Välj önskad användare och klicka sedan på **Välj** för att lägga till roll tilldelning till användaren.
+1. Välj **Lägg till tilldelning**, Välj önskad användare och klicka sedan på **Välj** för att lägga till roll tilldelning till användaren.
 
     ![Lägg till en tilldelning för den anpassade rollen till användaren](./media/custom-enterprise-apps/assign-user-to-role.png)
 

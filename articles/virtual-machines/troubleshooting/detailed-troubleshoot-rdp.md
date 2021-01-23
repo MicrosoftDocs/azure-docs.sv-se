@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 5782765504eb1e0cb57558d3d4772d08de6b4d25
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: a17f3992663fe6de0751f7bc537297b9ba70cfc5
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97913115"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98738143"
 ---
 # <a name="detailed-troubleshooting-steps-for-remote-desktop-connection-issues-to-windows-vms-in-azure"></a>Detaljerade åtgärder för felsökning av problem med fjärrskrivbordsanslutning till virtuella Windows-datorer i Azure
 Den här artikeln innehåller detaljerade fel söknings steg för att diagnostisera och åtgärda komplexa fjärr skrivbords fel för Windows-baserade virtuella Azure-datorer.
@@ -38,7 +38,7 @@ Följande komponenter ingår i en RDP-anslutning:
 
 ![Ett diagram som visar de komponenter som ingår i en anslutning till fjärr skrivbord (RDP).](./media/detailed-troubleshoot-rdp/tshootrdp_0.png)
 
-Innan du fortsätter kan det vara bra att granska vad som har ändrats sedan den senaste lyckade fjärr skrivbords anslutningen till den virtuella datorn. Till exempel:
+Innan du fortsätter kan det vara bra att granska vad som har ändrats sedan den senaste lyckade fjärr skrivbords anslutningen till den virtuella datorn. Ett exempel:
 
 * Den offentliga IP-adressen för den virtuella datorn eller moln tjänsten som innehåller den virtuella datorn (kallas även den virtuella IP-adressen [VIP](https://en.wikipedia.org/wiki/Virtual_IP_address)) har ändrats. RDP-felet kan bero på att DNS-klientcachen fortfarande har den *gamla IP-adressen* registrerad för DNS-namnet. Töm cacheminnet för DNS-klienten och försök att ansluta den virtuella datorn igen. Eller försök att ansluta direkt med den nya VIP: en.
 * Du använder ett program från tredje part för att hantera dina fjärr skrivbords anslutningar i stället för att använda den anslutning som genererades av Azure Portal. Kontrol lera att program konfigurationen innehåller rätt TCP-port för fjärr skrivbords trafiken. Du kan kontrol lera den här porten för en klassisk virtuell dator i [Azure Portal](https://portal.azure.com)genom att klicka på den virtuella datorns inställningar > slut punkter.
@@ -135,7 +135,7 @@ För virtuella datorer som skapats med den klassiska distributions modellen kan 
 
 Installera sedan Azure PowerShell om du inte redan gjort det. Se [Så här installerar och konfigurerar du Azure PowerShell](/powershell/azure/).
 
-Öppna sedan en Azure PowerShell kommando tolk och ändra den aktuella mappen till platsen för **InstallWinRMCertAzureVM.ps1** skript filen. Om du vill köra ett Azure PowerShell skript måste du ange rätt körnings princip. Kör kommandot **Get-ExecutionPolicy** för att fastställa den aktuella policy nivån. Information om hur du anger lämplig nivå finns i [set-ExecutionPolicy](/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-5.1&preserve-view=true).
+Öppna sedan en Azure PowerShell kommando tolk och ändra den aktuella mappen till platsen för **InstallWinRMCertAzureVM.ps1** skript filen. Om du vill köra ett Azure PowerShell skript måste du ange rätt körnings princip. Kör kommandot **Get-ExecutionPolicy** för att fastställa den aktuella policy nivån. Information om hur du anger lämplig nivå finns i [set-ExecutionPolicy](/powershell/module/microsoft.powershell.security/set-executionpolicy).
 
 Fyll sedan i namnet på din Azure-prenumeration, moln tjänst namnet och namnet på den virtuella datorn (ta bort < och > tecken) och kör sedan dessa kommandon.
 

@@ -1,22 +1,25 @@
 ---
-title: Definitions schema för Azure-Cloud Services (. csdef-fil) | Microsoft Docs
+title: Definitions schema för Azure Cloud Services (klassisk) (. csdef-fil) | Microsoft Docs
 description: En tjänst definitions fil (. csdef) definierar en tjänst modell för ett program som innehåller tillgängliga roller, slut punkter och konfigurations värden för tjänsten.
-ms.custom: ''
-ms.date: 04/14/2015
-services: cloud-services
+ms.topic: article
 ms.service: cloud-services
-ms.topic: reference
-caps.latest.revision: 42
-author: tgore03
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 1896ee8385d1e41feffe7a9f542550ea7f34a8a3
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: de81b6ffb5b4dc944f3d538a116383d06145661b
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92072568"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98739809"
 ---
-# <a name="azure-cloud-services-definition-schema-csdef-file"></a>Definitions schema för Azure-Cloud Services (. csdef-fil)
+# <a name="azure-cloud-services-classic-definition-schema-csdef-file"></a>Definitions schema för Azure Cloud Services (klassisk) (. csdef-fil)
+
+> [!IMPORTANT]
+> [Azure Cloud Services (utökad support)](../cloud-services-extended-support/overview.md) är en ny Azure Resource Manager baserad distributions modell för Azure Cloud Services-produkten.Med den här ändringen har Azure Cloud Services som körs på Azure Service Manager-baserade distributions modellen bytt namn som Cloud Services (klassisk) och alla nya distributioner bör använda [Cloud Services (utökad support)](../cloud-services-extended-support/overview.md).
+
 Tjänst definitions filen definierar tjänst modellen för ett program. Filen innehåller definitionerna för de roller som är tillgängliga för en moln tjänst, anger tjänstens slut punkter och upprättar konfigurations inställningar för tjänsten. Konfigurations inställnings värden anges i tjänst konfigurations filen, enligt beskrivningen i [konfigurations schema för moln tjänst (klassisk)](/previous-versions/azure/reference/ee758710(v=azure.100)).
 
 Som standard installeras den Azure-diagnostik konfigurations schema filen i `C:\Program Files\Microsoft SDKs\Windows Azure\.NET SDK\<version>\schemas` katalogen. Ersätt `<version>` med den installerade versionen av [Azure SDK](https://www.windowsazure.com/develop/downloads/).

@@ -3,22 +3,22 @@ title: Använda min personal för att delegera användar hantering (för hands v
 description: Delegera användar hantering med min personal och administrativa enheter
 services: active-directory
 documentationcenter: ''
-author: curtand
+author: rolyon
 manager: daveba
 ms.topic: how-to
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.date: 05/08/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: sahenry
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: 927d1f6dff9a24fb8427bb9c353e6cc61ac6a1f0
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 304d88dfcf0c72769f27911186df04c66224419e
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92376311"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98740150"
 ---
 # <a name="manage-your-users-with-my-staff-preview"></a>Hantera dina användare med min personal (förhands granskning)
 
@@ -54,8 +54,8 @@ För att slutföra den här artikeln behöver du följande resurser och behörig
 När du har konfigurerat Australien kan du tillämpa det här omfånget på dina användare som har åtkomst till min personal. Endast användare som har tilldelats en administrativ roll har åtkomst till min personal. Utför följande steg för att aktivera min personal:
 
 1. Logga in på Azure Portal som användar administratör.
-2. Bläddra till **Azure Active Directory**  >  **användar inställningar**  >  **användar funktions**förhands  >  **granskningar hantera användar funktions förhands gransknings inställningar**.
-3. Under **Administratörer kan komma åt min personal**kan du välja att aktivera för alla användare, valda användare eller ingen användar åtkomst.
+2. Bläddra till **Azure Active Directory**  >  **användar inställningar**  >  **användar funktions** förhands  >  **granskningar hantera användar funktions förhands gransknings inställningar**.
+3. Under **Administratörer kan komma åt min personal** kan du välja att aktivera för alla användare, valda användare eller ingen användar åtkomst.
 
 > [!Note]
 > Endast användare som har tilldelats en administratörs roll har åtkomst till min personal. Om du aktiverar min personal för en användare som inte har tilldelats någon administratörs roll kan de inte komma åt min personal.
@@ -91,7 +91,7 @@ Följande roller har behörighet att återställa en användares lösen ord:
 - [Administratör för privilegie rad autentisering](permissions-reference.md#privileged-authentication-administrator)
 - [Global administratör](permissions-reference.md#global-administrator--company-administrator)
 - [Support administratör](permissions-reference.md#helpdesk-administrator)
-- [Användar administratör](permissions-reference.md#user-administrator)
+- [Användaradministratör](permissions-reference.md#user-administrator)
 - [Lösenordsadministratör](permissions-reference.md#password-administrator)
 
 Öppna en användar profil från **min personal**. Välj **Återställ lösen ord**.
@@ -119,7 +119,7 @@ Om du vill hantera en användares telefonnummer måste du ha tilldelats någon a
 - [Administratör för privilegie rad autentisering](permissions-reference.md#privileged-authentication-administrator)
 - [Global administratör](permissions-reference.md#global-administrator--company-administrator)
 
-## <a name="search"></a>Search
+## <a name="search"></a>Sök
 
 Du kan söka efter Australien och användare i din organisation med hjälp av Sök fältet i min personal. Du kan söka i alla Australien och användare i din organisation, men du kan bara göra ändringar i användare som är i en AU som du har fått administratörs behörighet för.
 

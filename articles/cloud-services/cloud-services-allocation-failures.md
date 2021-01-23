@@ -1,27 +1,25 @@
 ---
-title: Felsöka minnesallokeringsfel i Cloud service | Microsoft Docs
+title: Felsöka Cloud Service (klassisk) allokeringsfel | Microsoft Docs
 description: Felsök ett tilldelnings fel när du distribuerar Azure Cloud Services. Lär dig hur allokeringen fungerar och varför allokeringen kan gå sönder.
-services: azure-service-management, cloud-services
-documentationcenter: ''
-author: simonxjx
-manager: dcscontentpm
-editor: ''
-tags: top-support-issue
-ms.assetid: 529157eb-e4a1-4388-aa2b-09e8b923af74
+ms.topic: article
 ms.service: cloud-services
-ms.workload: na
-ms.tgt_pltfrm: ibiza
-ms.topic: troubleshooting
-ms.date: 06/15/2018
-ms.author: v-six
-ms.openlocfilehash: 1d82b7223c2b392e6b9aebffdc545dc38b38ca2f
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.date: 10/14/2020
+ms.author: tagore
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 0c172add9aa49b2ca64d2fb2281d326256e3aec7
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92074234"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98741595"
 ---
-# <a name="troubleshooting-allocation-failure-when-you-deploy-cloud-services-in-azure"></a>Felsök allokeringsfel när du distribuerar Cloud Services i Azure
+# <a name="troubleshooting-allocation-failure-when-you-deploy-cloud-services-classic-in-azure"></a>Felsöka allokeringsfel när du distribuerar Cloud Services (klassisk) i Azure
+
+> [!IMPORTANT]
+> [Azure Cloud Services (utökad support)](../cloud-services-extended-support/overview.md) är en ny Azure Resource Manager baserad distributions modell för Azure Cloud Services-produkten.Med den här ändringen har Azure Cloud Services som körs på Azure Service Manager-baserade distributions modellen bytt namn som Cloud Services (klassisk) och alla nya distributioner bör använda [Cloud Services (utökad support)](../cloud-services-extended-support/overview.md).
+
 ## <a name="summary"></a>Sammanfattning
 När du distribuerar instanser till en moln tjänst eller lägger till nya webb-eller arbets Rolls instanser, allokerar Microsoft Azure beräknings resurser. Ibland kan fel uppstå när du utför dessa åtgärder även innan du når gränserna för Azure-prenumerationen. I den här artikeln beskrivs orsakerna till några vanliga allokeringsfel och förslag på möjliga åtgärder. Informationen kan också vara användbar när du planerar distributionen av dina tjänster.
 

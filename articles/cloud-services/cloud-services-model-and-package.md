@@ -1,20 +1,25 @@
 ---
-title: Vad är en moln tjänst modell och paket | Microsoft Docs
+title: Vad är en modell och ett paket för en moln tjänst (klassisk) | Microsoft Docs
 description: Beskriver moln tjänst modellen (. csdef,. cscfg) och paket (. cspkg) i Azure
-services: cloud-services
-author: tanmaygore
-ms.service: cloud-services
 ms.topic: article
-ms.date: 07/05/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 180295599082a762fc525c4740079ceefc0954a1
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 1cf8e966b80e005a0cb2cf7ea46f355e38cb0011
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92077192"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98741544"
 ---
-# <a name="what-is-the-cloud-service-model-and-how-do-i-package-it"></a>Vad är moln tjänst modellen och hur kan jag paketera den?
+# <a name="what-is-the-cloud-service-classic-model-and-how-do-i-package-it"></a>Vad är en modell för moln tjänst (klassisk) och hur gör jag för att paketera den?
+
+> [!IMPORTANT]
+> [Azure Cloud Services (utökad support)](../cloud-services-extended-support/overview.md) är en ny Azure Resource Manager baserad distributions modell för Azure Cloud Services-produkten.Med den här ändringen har Azure Cloud Services som körs på Azure Service Manager-baserade distributions modellen bytt namn som Cloud Services (klassisk) och alla nya distributioner bör använda [Cloud Services (utökad support)](../cloud-services-extended-support/overview.md).
+
 En moln tjänst skapas från tre komponenter, tjänst definitionen *(. csdef)*, tjänst konfigurationen *(. cscfg)* och ett service paket *(. cspkg)*. Både **service definition. csdef** -och **ServiceConfig. cscfg** -filerna är XML-baserade och beskriver moln tjänst strukturen och hur den är konfigurerad. gemensamt kallat modellen. Filen **servicepack. cspkg** är en zip-fil som genereras från **service definition. csdef** och bland annat, och innehåller alla nödvändiga binära-baserade beroenden. Azure skapar en moln tjänst från både **servicepack. cspkg** och **ServiceConfig. cscfg**.
 
 När moln tjänsten körs i Azure kan du konfigurera om den via filen **ServiceConfig. cscfg** , men du kan inte ändra definitionen.

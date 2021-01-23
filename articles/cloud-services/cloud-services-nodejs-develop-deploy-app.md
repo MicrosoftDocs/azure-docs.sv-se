@@ -1,23 +1,24 @@
 ---
 title: Guide för att komma igång med Node.js
 description: Lär dig att skapa en enkel Node.js-webbapp och distribuera den till en Azure-molntjänst.
-services: cloud-services
-documentationcenter: nodejs
-author: tgore03
+ms.topic: article
 ms.service: cloud-services
-ms.devlang: nodejs
-ms.topic: conceptual
-ms.date: 08/17/2017
+ms.date: 10/14/2020
 ms.author: tagore
-ms.custom: devx-track-js
-ms.openlocfilehash: 86bc968c922bcfb90da9ae2babd456ce4db81cb7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 9889e0e95db84b4dbc5856ba6425f0f303161068
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91327484"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98741629"
 ---
-# <a name="build-and-deploy-a-nodejs-application-to-an-azure-cloud-service"></a>Skapa och distribuera en Node.js-app till en Azure-molntjänst
+# <a name="build-and-deploy-a-nodejs-application-to-an-azure-cloud-service-classic"></a>Bygga och distribuera ett Node.js program till en Azure-moln tjänst (klassisk)
+
+> [!IMPORTANT]
+> [Azure Cloud Services (utökad support)](../cloud-services-extended-support/overview.md) är en ny Azure Resource Manager baserad distributions modell för Azure Cloud Services-produkten.Med den här ändringen har Azure Cloud Services som körs på Azure Service Manager-baserade distributions modellen bytt namn som Cloud Services (klassisk) och alla nya distributioner bör använda [Cloud Services (utökad support)](../cloud-services-extended-support/overview.md).
 
 I den här kursen får du lära dig hur du skapar en enkel Node.js-app som körs i en Azure-molntjänst. Cloud Services är byggblocken för skalbara molnprogram i Azure. De gör att det går att separera och på ett oberoende sätt hantera och skala ut klient- och serverkomponenter i ditt program.  Cloud Services ger en robust avsedd virtuell dator som på ett pålitligt sätt kan vara värd åt varje roll.
 
@@ -32,7 +33,7 @@ Programmet är ett enkelt ”hello world”-program:
 
 ![En webbläsare som visar webbsidan Hello World][A web browser displaying the Hello World web page]
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 > [!NOTE]
 > I den här kursen används Azure PowerShell, vilket kräver Windows.
 

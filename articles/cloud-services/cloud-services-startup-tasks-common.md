@@ -1,21 +1,25 @@
 ---
-title: Vanliga start uppgifter för Cloud Services | Microsoft Docs
+title: Vanliga start uppgifter för Cloud Services (klassisk) | Microsoft Docs
 description: Innehåller några exempel på vanliga start åtgärder som du kanske vill utföra i din webb roll eller arbets roll för Cloud Services.
-services: cloud-services
-documentationcenter: ''
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 07/18/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 77cea7ebd333b958675438aaeb5e0e2a326a5866
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: f55b225e615a3e7a5fbcf56b405054883d3b5413
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075186"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98741204"
 ---
-# <a name="common-cloud-service-startup-tasks"></a>Vanliga start uppgifter för moln tjänster
+# <a name="common-cloud-service-classic-startup-tasks"></a>Vanliga start uppgifter för moln tjänst (klassisk)
+
+> [!IMPORTANT]
+> [Azure Cloud Services (utökad support)](../cloud-services-extended-support/overview.md) är en ny Azure Resource Manager baserad distributions modell för Azure Cloud Services-produkten.Med den här ändringen har Azure Cloud Services som körs på Azure Service Manager-baserade distributions modellen bytt namn som Cloud Services (klassisk) och alla nya distributioner bör använda [Cloud Services (utökad support)](../cloud-services-extended-support/overview.md).
+
 Den här artikeln innehåller några exempel på vanliga start uppgifter som du kanske vill utföra i din moln tjänst. Du kan använda Start åtgärder för att utföra åtgärder innan en roll startar. Åtgärder som du kanske vill utföra är att installera en komponent, registrera COM-komponenter, ange register nycklar eller starta en tids krävande process. 
 
 Se [den här artikeln](cloud-services-startup-tasks.md) för att förstå hur start aktiviteter fungerar och hur du skapar de poster som definierar en start uppgift.
@@ -52,7 +56,7 @@ Variabler kan också använda ett [giltigt Azure XPath-värde](cloud-services-ro
 
 
 ## <a name="configure-iis-startup-with-appcmdexe"></a>Konfigurera IIS-start med AppCmd.exe
-Kommando rads verktyget [AppCmd.exe](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj635852(v=ws.11)) kan användas för att hantera IIS-inställningar vid start på Azure. *AppCmd.exe* ger bekväm kommando rads åtkomst till konfigurations inställningar för användning i Start åtgärder på Azure. Med hjälp av *AppCmd.exe*kan webbplats inställningar läggas till, ändras eller tas bort för program och platser.
+Kommando rads verktyget [AppCmd.exe](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj635852(v=ws.11)) kan användas för att hantera IIS-inställningar vid start på Azure. *AppCmd.exe* ger bekväm kommando rads åtkomst till konfigurations inställningar för användning i Start åtgärder på Azure. Med hjälp av *AppCmd.exe* kan webbplats inställningar läggas till, ändras eller tas bort för program och platser.
 
 Det finns dock några saker att se för när du använder *AppCmd.exe* som en start uppgift:
 
@@ -83,7 +87,7 @@ De relevanta avsnitten i filen [service definition. csdef] visas här, som inklu
 Kommando filen *startup. cmd* använder *AppCmd.exe* för att lägga till ett komprimerings avsnitt och en komprimerings post för JSON till *Web.config* -filen. Den förväntade **errorlevel** på 183 är inställd på noll med VERIFY.EXE kommando rads program. Oväntade errorlevels loggas till StartupErrorLog.txt.
 
 ```cmd
-REM   *** Add a compression section to the Web.config file. ***
+REM   **_ Add a compression section to the Web.config file. _*_
 %windir%\system32\inetsrv\appcmd set config /section:urlCompression /doDynamicCompression:True /commit:apphost >> "%TEMP%\StartupLog.txt" 2>&1
 
 REM   ERRORLEVEL 183 occurs when trying to add a section that already exists. This error is expected if this
@@ -98,7 +102,7 @@ IF %ERRORLEVEL% NEQ 0 (
     GOTO ErrorExit
 )
 
-REM   *** Add compression for json. ***
+REM   _*_ Add compression for json. _*_
 %windir%\system32\inetsrv\appcmd set config  -section:system.webServer/httpCompression /+"dynamicTypes.[mimeType='application/json; charset=utf-8',enabled='True']" /commit:apphost >> "%TEMP%\StartupLog.txt" 2>&1
 IF %ERRORLEVEL% EQU 183 VERIFY > NUL
 IF %ERRORLEVEL% NEQ 0 (
@@ -106,10 +110,10 @@ IF %ERRORLEVEL% NEQ 0 (
     GOTO ErrorExit
 )
 
-REM   *** Exit batch file. ***
+REM   _*_ Exit batch file. _*_
 EXIT /b 0
 
-REM   *** Log error and exit ***
+REM   _*_ Log error and exit _*_
 :ErrorExit
 REM   Report the date, time, and ERRORLEVEL of the error.
 DATE /T >> "%TEMP%\StartupLog.txt" 2>&1
@@ -125,7 +129,7 @@ Den andra brand väggen kontrollerar anslutningar mellan den virtuella datorn oc
 
 Azure skapar brand Väggs regler för de processer som startas i dina roller. När du exempelvis startar en tjänst eller ett program skapar Azure automatiskt de nödvändiga brand Väggs reglerna för att tillåta tjänsten att kommunicera med Internet. Men om du skapar en tjänst som startas av en process utanför din roll (som en COM+-tjänst eller en schemalagd schemalagd aktivitet) måste du skapa en brand Väggs regel manuellt för att tillåta åtkomst till tjänsten. Dessa brand Väggs regler kan skapas med hjälp av en start åtgärd.
 
-En[Start åtgärd som] skapar en brand Väggs regel måste ha en [ExecutionContext]med **utökade privilegier**. Lägg till följande start åtgärd i filen [service definition. csdef] .
+En start aktivitet som skapar en brand Väggs regel måste ha en [ExecutionContext][av _] * förhöjd * *. Lägg till följande start åtgärd i filen [service definition. csdef] .
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -153,7 +157,7 @@ EXIT /B %errorlevel%
 ## <a name="block-a-specific-ip-address"></a>Blockera en speciell IP-adress
 Du kan begränsa en Azure-webbrolls åtkomst till en uppsättning angivna IP-adresser genom att ändra din IIS- **web.config** fil. Du måste också använda en kommando fil som låser upp avsnittet **ipSecurity** i **ApplicationHost.config** -filen.
 
-Om du vill låsa upp avsnittet **ipSecurity** i **ApplicationHost.config** -filen skapar du en kommando fil som körs vid roll start. Skapa en mapp på rot nivån för din webbroll som heter **Start** och skapa sedan en kommando fil som heter **startup. cmd**i den här mappen. Lägg till den här filen i Visual Studio-projektet och ange att egenskaperna ska **kopieras alltid** för att säkerställa att de ingår i paketet.
+Om du vill låsa upp avsnittet **ipSecurity** i **ApplicationHost.config** -filen skapar du en kommando fil som körs vid roll start. Skapa en mapp på rot nivån för din webbroll som heter **Start** och skapa sedan en kommando fil som heter **startup. cmd** i den här mappen. Lägg till den här filen i Visual Studio-projektet och ange att egenskaperna ska **kopieras alltid** för att säkerställa att de ingår i paketet.
 
 Lägg till följande start åtgärd i filen [service definition. csdef] .
 
@@ -381,7 +385,7 @@ Visual Studio tillhandahåller inte en fel sökare för att stega igenom kommand
 
 För att förenkla XML-koden kan du skapa en *kommando* fil för omslutning som anropar alla dina start uppgifter tillsammans med loggning och ser till att varje underordnad aktivitet delar samma miljövariabler.
 
-Det kan vara irriterande om du använder `>> "%TEMP%\StartupLog.txt" 2>&1` i slutet av varje start åtgärd. Du kan framtvinga loggning av uppgifter genom att skapa en omslutning som hanterar loggningen åt dig. Den här omslutningen anropar den riktiga kommando filen som du vill köra. Utdata från mål kommando filen omdirigeras till *Startuplog.txts * filen.
+Det kan vara irriterande om du använder `>> "%TEMP%\StartupLog.txt" 2>&1` i slutet av varje start åtgärd. Du kan framtvinga loggning av uppgifter genom att skapa en omslutning som hanterar loggningen åt dig. Den här omslutningen anropar den riktiga kommando filen som du vill köra. Utdata från mål kommando filen omdirigeras till *Startuplog.txts* filen.
 
 I följande exempel visas hur du omdirigerar alla utdata från en start kommando fil. I det här exemplet skapar filen ServerDefinition. csdef en start aktivitet som anropar *logwrap. cmd*. *logwrap. cmd* anropar *Startup2. cmd*, omdirigerar alla utdata till **% Temp% \\StartupLog.txt**.
 
@@ -464,12 +468,12 @@ Exempel på utdata i **StartupLog.txt** -filen:
 ### <a name="set-executioncontext-appropriately-for-startup-tasks"></a>Ställ in executionContext korrekt för start åtgärder
 Ange privilegier för start åtgärden på lämpligt sätt. Ibland måste start aktiviteter köras med utökade privilegier även om rollen körs med normal behörighet.
 
-Attributet [ExecutionContext][Task] anger behörighets nivån för start aktiviteten. Med `executionContext="limited"` innebär det att start aktiviteten har samma behörighets nivå som rollen. Med `executionContext="elevated"` innebär det att start aktiviteten har administratörs behörighet, vilket gör att start aktiviteten kan utföra administratörs åtgärder utan att ge administratörs behörighet till din roll.
+Attributet [ExecutionContext][] anger behörighets nivån för start aktiviteten. Med `executionContext="limited"` innebär det att start aktiviteten har samma behörighets nivå som rollen. Med `executionContext="elevated"` innebär det att start aktiviteten har administratörs behörighet, vilket gör att start aktiviteten kan utföra administratörs åtgärder utan att ge administratörs behörighet till din roll.
 
 Ett exempel på en start aktivitet som kräver förhöjd behörighet är en start åtgärd som använder **AppCmd.exe** för att konfigurera IIS. **AppCmd.exe** kräver `executionContext="elevated"` .
 
 ### <a name="use-the-appropriate-tasktype"></a>Använd lämplig taskType
-[TaskType][-attributet bestämmer] hur start aktiviteten körs. Det finns tre värden: **enkel**, **bakgrund**och **förgrund**. Bakgrunden och förgrunds aktiviteterna startas asynkront och sedan körs de enkla uppgifterna synkront en i taget.
+[TaskType][-attributet bestämmer] hur start aktiviteten körs. Det finns tre värden: **enkel**, **bakgrund** och **förgrund**. Bakgrunden och förgrunds aktiviteterna startas asynkront och sedan körs de enkla uppgifterna synkront en i taget.
 
 Med **enkla** start uppgifter kan du ange i vilken ordning aktiviteterna ska köras i den ordning som uppgifterna visas i listan i filen service definition. csdef. Om en **enkel** aktivitet slutar med en slutkod som inte är noll stoppas start proceduren och rollen startar inte.
 
@@ -506,7 +510,7 @@ Lär dig mer om hur [aktiviteter](cloud-services-startup-tasks.md) fungerar.
 [Variabel]: /previous-versions/azure/reference/gg557552(v=azure.100)#Variable
 [RoleInstanceValue]: /previous-versions/azure/reference/gg557552(v=azure.100)#RoleInstanceValue
 [RoleEnvironment]: /previous-versions/azure/reference/ee773173(v=azure.100)
-[Slut punkter]: /previous-versions/azure/reference/gg557552(v=azure.100)#Endpoints
+[Slutpunkter]: /previous-versions/azure/reference/gg557552(v=azure.100)#Endpoints
 [LocalStorage]: /previous-versions/azure/reference/gg557552(v=azure.100)#LocalStorage
 [LocalResources]: /previous-versions/azure/reference/gg557552(v=azure.100)#LocalResources
 [RoleInstanceValue]: /previous-versions/azure/reference/gg557552(v=azure.100)#RoleInstanceValue

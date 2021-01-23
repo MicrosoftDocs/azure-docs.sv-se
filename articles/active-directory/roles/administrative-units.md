@@ -3,23 +3,23 @@ title: Administrativa enheter i Azure Active Directory | Microsoft Docs
 description: Använd administrativa enheter för mer detaljerad delegering av behörigheter i Azure Active Directory.
 services: active-directory
 documentationcenter: ''
-author: curtand
+author: rolyon
 manager: daveba
 ms.service: active-directory
 ms.topic: overview
 ms.subservice: roles
 ms.workload: identity
 ms.date: 11/04/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 792e8cd1e70f901385ed3b225a753024e06f2df0
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: e82be52cff824c69dd2fe4ea5e7e1c0d7489be1d
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93394602"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98740337"
 ---
 # <a name="administrative-units-in-azure-active-directory"></a>Administrativa enheter i Azure Active Directory
 
@@ -58,9 +58,9 @@ De kriterier som de administrativa enheterna skapas i vägleds av de unika krave
 
 Du kan vänta dig att skapa administrativa enheter i organisationen för att gå igenom följande steg:
 
-1. **Första införande** : din organisation kommer att börja skapa administrativa enheter baserat på inledande kriterier och antalet administrativa enheter ökar när villkoren är raffinerade.
-1. **Rensning** : när villkoren har definierats tas administrativa enheter som inte längre behövs bort.
-1. **Stabilisering** : organisationens struktur definieras och antalet administrativa enheter kommer inte att ändras avsevärt på kort sikt.
+1. **Första införande**: din organisation kommer att börja skapa administrativa enheter baserat på inledande kriterier och antalet administrativa enheter ökar när villkoren är raffinerade.
+1. **Rensning**: när villkoren har definierats tas administrativa enheter som inte längre behövs bort.
+1. **Stabilisering**: organisationens struktur definieras och antalet administrativa enheter kommer inte att ändras avsevärt på kort sikt.
 
 ## <a name="currently-supported-scenarios"></a>Scenarier som stöds för närvarande
 

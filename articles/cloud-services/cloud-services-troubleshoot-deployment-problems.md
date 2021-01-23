@@ -1,32 +1,30 @@
 ---
-title: Felsök distributions problem i moln tjänsten | Microsoft Docs
+title: Felsök problem med distribution av moln tjänst (klassisk) | Microsoft Docs
 description: Det finns några vanliga problem som du kan stöta på när du distribuerar en moln tjänst till Azure. Den här artikeln innehåller lösningar på några av dem.
-services: cloud-services
-documentationcenter: ''
-author: simonxjx
-manager: dcscontentpm
-editor: ''
-tags: top-support-issue
-ms.assetid: a18ae415-0d1c-4bc4-ab6c-c1ddea02c870
+ms.topic: article
 ms.service: cloud-services
-ms.topic: troubleshooting
-ms.tgt_pltfrm: na
-ms.workload: tbd
-ms.date: 06/15/2018
-ms.author: v-six
-ms.openlocfilehash: 0e7cd496f031f76320df5127d7e1aa3f2f7b06c7
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.date: 10/14/2020
+ms.author: tagore
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 7b3d7a9a674aab3976da9399f71ff4d8df08eb62
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075084"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98741085"
 ---
-# <a name="troubleshoot-cloud-service-deployment-problems"></a>Felsöka problem med distribution av moln tjänster
+# <a name="troubleshoot-azure-cloud-services-classic-deployment-problems"></a>Felsöka distributions problem i Azure Cloud Services (klassisk)
+
+> [!IMPORTANT]
+> [Azure Cloud Services (utökad support)](../cloud-services-extended-support/overview.md) är en ny Azure Resource Manager baserad distributions modell för Azure Cloud Services-produkten.Med den här ändringen har Azure Cloud Services som körs på Azure Service Manager-baserade distributions modellen bytt namn som Cloud Services (klassisk) och alla nya distributioner bör använda [Cloud Services (utökad support)](../cloud-services-extended-support/overview.md).
+
 När du distribuerar ett moln tjänst program paket till Azure kan du hämta information om distributionen från fönstret **Egenskaper** i Azure Portal. Du kan använda informationen i det här fönstret för att felsöka problem med moln tjänsten och du kan ge den här informationen till Azure-supporten när du öppnar en ny supportbegäran.
 
 Du hittar fönstret **Egenskaper** på följande sätt:
 
-* Klicka på distributionen av moln tjänsten i Azure Portal, klicka på **alla inställningar**och klicka sedan på **Egenskaper**.
+* Klicka på distributionen av moln tjänsten i Azure Portal, klicka på **alla inställningar** och klicka sedan på **Egenskaper**.
 
 > [!NOTE]
 > Du kan kopiera innehållet i fönstret **Egenskaper** till Urklipp genom att klicka på ikonen i det övre högra hörnet i fönstret.
@@ -60,12 +58,12 @@ En VIP-växling tillåts inte om en distributions uppdatering pågår. Distribut
 Ta reda på om en automatisk uppdatering hindrar dig från att göra en VIP-växling:
 
 1. Klicka på distributionen av moln tjänsten i Azure Portal.
-2. I rutan **Egenskaper** för Azure Portal tittar du på värdet för **status**. Om den är **klar**kan du kontrol lera den **senaste åtgärden** för att se om ett nyligen hänt som kan förhindra VIP-växling.
+2. I rutan **Egenskaper** för Azure Portal tittar du på värdet för **status**. Om den är **klar** kan du kontrol lera den **senaste åtgärden** för att se om ett nyligen hänt som kan förhindra VIP-växling.
 3. Upprepa steg 1 och 2 för produktions distributionen.
 4. Om en automatisk uppdatering pågår väntar du tills den har slutförts innan du försöker göra VIP-växlingen.
 
 ## <a name="problem-a-role-instance-is-looping-between-started-initializing-busy-and-stopped"></a>Problem: en roll instans upprepas mellan startad, initieras, upptagen och stoppas
-Det här tillståndet kan tyda på ett problem med programkoden, paketet eller konfigurationsfilen. I så fall bör du kunna se status ändringen med några minuters mellanrum och Azure Portal kan säga något som t. ex. **återvinning**, **upptagen**eller **initiering**. Det tyder på att det är något fel på det program som hindrar roll instansen från att köras.
+Det här tillståndet kan tyda på ett problem med programkoden, paketet eller konfigurationsfilen. I så fall bör du kunna se status ändringen med några minuters mellanrum och Azure Portal kan säga något som t. ex. **återvinning**, **upptagen** eller **initiering**. Det tyder på att det är något fel på det program som hindrar roll instansen från att köras.
 
 Mer information om hur du felsöker det här problemet finns i blogg inlägget [Azure-PaaS Compute diagnostikdata](/archive/blogs/kwill/windows-azure-paas-compute-diagnostics-data) och [vanliga problem som orsakar att roller återanvänds](cloud-services-troubleshoot-common-issues-which-cause-roles-recycle.md).
 
@@ -73,7 +71,7 @@ Mer information om hur du felsöker det här problemet finns i blogg inlägget [
 1. Klicka på roll instansen i Azure Portal.
 2. I rutan **Egenskaper** för Azure Portal bör du ta hänsyn till följande villkor för att lösa problemet:
    * Om roll instansen nyligen har stoppats (du kan kontrol lera värdet för **antal avbrott**) kan distributionen uppdateras. Vänta på att se om roll instansen fortsätter att fungera på egen hand.
-   * Om roll instansen är **upptagen**kontrollerar du program koden för att se om [StatusCheck](/previous-versions/azure/reference/ee758135(v=azure.100)) -händelsen hanteras. Du kan behöva lägga till eller åtgärda viss kod som hanterar den här händelsen.
+   * Om roll instansen är **upptagen** kontrollerar du program koden för att se om [StatusCheck](/previous-versions/azure/reference/ee758135(v=azure.100)) -händelsen hanteras. Du kan behöva lägga till eller åtgärda viss kod som hanterar den här händelsen.
    * Gå igenom diagnostiska data och fel söknings scenarier i blogg inlägget [Azure PaaS Compute Diagnostic data](/archive/blogs/kwill/windows-azure-paas-compute-diagnostics-data).
 
 > [!WARNING]

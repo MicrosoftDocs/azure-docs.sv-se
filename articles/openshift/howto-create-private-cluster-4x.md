@@ -4,16 +4,16 @@ description: Lär dig hur du skapar ett privat kluster för Red Hat OpenShift so
 ms.service: container-service
 ms.topic: article
 ms.date: 03/12/2020
-author: georgewallace
-ms.author: gwallace
+author: sakthi-vetrivel
+ms.author: suvetriv
 keywords: Aro, OpenShift, AZ Aro, Red Hat, CLI
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 3864d48399f00d5cfbdfa0a94939be0d88a73322
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 6daeb617e7d1922427fe1889b41512a61c5067cf
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92928067"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98740932"
 ---
 # <a name="create-an-azure-red-hat-openshift-4-private-cluster"></a>Skapa ett privat kluster i Azure Red Hat OpenShift 4
 
@@ -23,7 +23,7 @@ I den här artikeln förbereder du din miljö för att skapa Azure Red Hat OpenS
 > * Konfigurera förutsättningarna och skapa det virtuella nätverk och undernät som krävs
 > * Distribuera ett kluster med en privat API-Server slut punkt och en privat ingångs kontroll
 
-Om du väljer att installera och använda CLI lokalt kräver den här självstudien att du kör Azure CLI-version 2.6.0 eller senare. Kör `az --version` för att hitta versionen. Om du behöver installera eller uppgradera kan du läsa [Installera Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest).
+Om du väljer att installera och använda CLI lokalt kräver den här självstudien att du kör Azure CLI-version 2.6.0 eller senare. Kör `az --version` för att hitta versionen. Om du behöver installera eller uppgradera kan du läsa [Installera Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true).
 
 ## <a name="before-you-begin"></a>Innan du börjar
 
@@ -81,7 +81,7 @@ Härnäst ska du skapa ett virtuellt nätverk som innehåller två tomma undern�
    CLUSTER=aro-cluster             # the name of your cluster
    ```
 
-1. **Skapa en resursgrupp**
+1. **Skapa en resurs grupp**
 
     En Azure-resursgrupp är en logisk grupp där Azure-resurser distribueras och hanteras. När du skapar en resursgrupp uppmanas du att ange en plats. Den här platsen är den plats där resurs gruppens metadata lagras, men det är även där dina resurser körs i Azure om du inte anger någon annan region när du skapar en resurs. Skapa en resurs grupp med kommandot [AZ Group Create] [AZ-Group-Create].
 
@@ -192,7 +192,7 @@ az aro create \
 När du har kört `az aro create` kommandot tar det vanligt vis cirka 35 minuter att skapa ett kluster.
 
 >[!IMPORTANT]
-> Om du väljer att ange en anpassad domän, till exempel **foo.example.com** , blir OpenShift-konsolen tillgänglig på en URL, till exempel `https://console-openshift-console.apps.foo.example.com` , i stället för den inbyggda domänen `https://console-openshift-console.apps.<random>.<location>.aroapp.io` .
+> Om du väljer att ange en anpassad domän, till exempel **foo.example.com**, blir OpenShift-konsolen tillgänglig på en URL, till exempel `https://console-openshift-console.apps.foo.example.com` , i stället för den inbyggda domänen `https://console-openshift-console.apps.<random>.<location>.aroapp.io` .
 >
 > Som standard använder OpenShift självsignerade certifikat för alla vägar som skapas på `*.apps.<random>.<location>.aroapp.io` .  Om du väljer Anpassad DNS måste du efter att ha anslutit till klustret följa OpenShift-dokumentationen för att [Konfigurera en anpassad certifikat utfärdare för din](https://docs.openshift.com/container-platform/4.3/authentication/certificates/replacing-default-ingress-certificate.html) ingångs kontroll och [anpassad ca för din API-Server](https://docs.openshift.com/container-platform/4.3/authentication/certificates/api-server.html).
 
@@ -233,9 +233,9 @@ Starta konsol-URL: en i en webbläsare och logga in med `kubeadmin` autentiserin
 
 ## <a name="install-the-openshift-cli"></a>Installera OpenShift CLI
 
-När du är inloggad i OpenShift-webbkonsolen klickar du på **?** längst upp till höger och sedan på **kommando rads verktyg** . Ladda ned den version som är lämplig för din dator.
+När du är inloggad i OpenShift-webbkonsolen klickar du på **?** längst upp till höger och sedan på **kommando rads verktyg**. Ladda ned den version som är lämplig för din dator.
 
-![Inloggnings skärm för Azure Red Hat OpenShift](media/aro4-download-cli.png)
+![Bild som visar inloggnings skärmen för Azure Red Hat OpenShift](media/aro4-download-cli.png)
 
 Du kan också hämta den senaste versionen av CLI-versionen som är lämplig för din dator från <https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest/> .
 

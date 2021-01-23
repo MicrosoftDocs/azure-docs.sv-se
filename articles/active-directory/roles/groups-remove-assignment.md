@@ -2,23 +2,23 @@
 title: Ta bort roll tilldelningar från en grupp i Azure Active Directory | Microsoft Docs
 description: Förhandsgranska anpassade Azure AD-roller för att delegera identitets hantering. Hantera Azure-roller i Azure Portal, PowerShell eller Graph API.
 services: active-directory
-author: curtand
+author: rolyon
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: article
 ms.date: 11/05/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d58465c56be310d3f9d500ab551c7d2b19ffaa83
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 89fa3bb94f72ab04c2ea68641b8d1dff7695aa53
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93378388"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98741034"
 ---
 # <a name="remove-role-assignments-from-a-group-in-azure-active-directory"></a>Ta bort roll tilldelningar från en grupp i Azure Active Directory
 
@@ -28,7 +28,7 @@ Den här artikeln beskriver hur en IT-administratör kan ta bort Azure AD-roller
 
 1. Logga in på [administrations centret för Azure AD](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) med privilegierade roll administratörer eller globala administratörs behörigheter i Azure AD-organisationen.
 
-1. Välj **roller och administratörer** > * *_roll namn_* _.
+1. Välj **roller och administratörer** > **_roll namn_* _.
 
 1. Välj den grupp som du vill ta bort roll tilldelningen från och välj _ * ta bort tilldelning * *.
 

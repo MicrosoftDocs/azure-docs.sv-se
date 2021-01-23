@@ -1,21 +1,24 @@
 ---
-title: Samla in prestanda räknare i Azure Cloud Services | Microsoft Docs
+title: Samla in prestanda räknare i Azure Cloud Services (klassisk) | Microsoft Docs
 description: Lär dig hur du identifierar, använder och skapar prestanda räknare i Cloud Services med Azure-diagnostik och Application Insights.
-services: cloud-services
-documentationcenter: .net
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 02/02/2018
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 39843ad83830a72b5d6b01cc00ecd65269c02e12
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 16b54e8a59eb42c6e2351d37ec0a29d775161493
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078603"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98739844"
 ---
-# <a name="collect-performance-counters-for-your-azure-cloud-service"></a>Samla in prestanda räknare för Azure Cloud service
+# <a name="collect-performance-counters-for-your-azure-cloud-service-classic"></a>Samla in prestanda räknare för Azure Cloud Service (klassisk)
+
+> [!IMPORTANT]
+> [Azure Cloud Services (utökad support)](../cloud-services-extended-support/overview.md) är en ny Azure Resource Manager baserad distributions modell för Azure Cloud Services-produkten.Med den här ändringen har Azure Cloud Services som körs på Azure Service Manager-baserade distributions modellen bytt namn som Cloud Services (klassisk) och alla nya distributioner bör använda [Cloud Services (utökad support)](../cloud-services-extended-support/overview.md).
 
 Prestanda räknare gör det möjligt för dig att spåra hur väl ditt program och värden presterar. Windows Server tillhandahåller många olika prestanda räknare relaterade till maskin vara, program, operativ systemet och mycket annat. Genom att samla in och skicka prestanda räknare till Azure kan du analysera den här informationen för att hjälpa dig att fatta bättre beslut. 
 
@@ -236,7 +239,7 @@ Nu när ditt program använder din anpassade räknare måste du konfigurera Azur
 
 ### <a name="application-insights"></a>Application Insights
 
-Som tidigare angetts definieras prestanda räknare för Application Insights i **ApplicationInsights.configs ** filen. Öppna **ApplicationInsights.config** och hitta elementet **ApplicationInsights**  >  **TelemetryModules**  >  **Add**  >  **Counters** . Skapa ett `<Add>` underordnat element och ange `PerformanceCounter` attributet till kategori och namn för den prestanda räknare som du skapade i din kod. Ange `ReportAs` attributet till ett eget namn som du vill ska visas i portalen.
+Som tidigare angetts definieras prestanda räknare för Application Insights i **ApplicationInsights.configs** filen. Öppna **ApplicationInsights.config** och hitta elementet **ApplicationInsights**  >  **TelemetryModules**  >  **Add**  >  **Counters** . Skapa ett `<Add>` underordnat element och ange `PerformanceCounter` attributet till kategori och namn för den prestanda räknare som du skapade i din kod. Ange `ReportAs` attributet till ett eget namn som du vill ska visas i portalen.
 
 ```xml
 <ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings">

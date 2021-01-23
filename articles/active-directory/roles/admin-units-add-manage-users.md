@@ -3,23 +3,23 @@ title: Lägga till, ta bort och lista användare i en administrativ enhet – Az
 description: Hantera användare och deras roll behörigheter i en administrativ enhet i Azure Active Directory
 services: active-directory
 documentationcenter: ''
-author: curtand
+author: rolyon
 manager: daveba
 ms.service: active-directory
 ms.topic: how-to
 ms.subservice: roles
 ms.workload: identity
 ms.date: 11/04/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b490e03ea7ac0a3bc780fa731629217126b6828a
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: d3dc7b37c96d2d82ae42d9bce32a97beab2d91e9
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93395537"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98740524"
 ---
 # <a name="add-and-manage-users-in-an-administrative-unit-in-azure-active-directory"></a>Lägga till och hantera användare i en administrativ enhet i Azure Active Directory
 
@@ -49,7 +49,7 @@ Du kan tilldela användare till administrativa enheter individuellt eller som en
 
    1. Logga in på [administrations Center för Azure AD](https://portal.azure.com) med administratörs behörighet för privilegierade roller.
    1. Välj **administrativa enheter** och välj sedan den administrativa enhet där användaren ska tilldelas.
-   1. Välj **alla användare** , Välj **Lägg till medlem** och välj sedan en eller flera användare som du vill tilldela den administrativa enheten i fönstret **Lägg till medlem** .
+   1. Välj **alla användare**, Välj **Lägg till medlem** och välj sedan en eller flera användare som du vill tilldela den administrativa enheten i fönstret **Lägg till medlem** .
 
         ![Skärm bild av den administrativa enhetens "användare"-ruta för att tilldela en användare till en administrativ enhet.](./media/admin-units-add-manage-users/assign-to-admin-unit.png)
 

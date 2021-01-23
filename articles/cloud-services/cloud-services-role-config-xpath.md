@@ -1,20 +1,25 @@
 ---
-title: Cloud Services-lathund för roll konfiguration | Microsoft Docs
+title: Cloud Services (klassisk) roll konfiguration XPath lathund blad | Microsoft Docs
 description: De olika XPath-inställningar som du kan använda i konfigurationen för Cloud Service-rollen för att Visa inställningar som en miljö variabel.
-services: cloud-services
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 04/19/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 380b0be4e4e4b19d16cb611b0b472294339f2199
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 397bc6845dc8d2d8bc44c00c27f6c12037651337
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75386093"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98741391"
 ---
 # <a name="expose-role-configuration-settings-as-an-environment-variable-with-xpath"></a>Exponera roll konfigurations inställningar som en miljö variabel med XPath
+
+> [!IMPORTANT]
+> [Azure Cloud Services (utökad support)](../cloud-services-extended-support/overview.md) är en ny Azure Resource Manager baserad distributions modell för Azure Cloud Services-produkten.Med den här ändringen har Azure Cloud Services som körs på Azure Service Manager-baserade distributions modellen bytt namn som Cloud Services (klassisk) och alla nya distributioner bör använda [Cloud Services (utökad support)](../cloud-services-extended-support/overview.md).
+
 I moln tjänstens eller webb rollens tjänst definitions fil kan du Visa konfigurations värden för körnings miljön som miljövariabler. Följande XPath-värden stöds (som motsvarar API-värden).
 
 Dessa XPath-värden är också tillgängliga via biblioteket [Microsoft. windowsazure. ServiceRuntime](/previous-versions/azure/reference/ee773173(v=azure.100)) . 

@@ -1,28 +1,25 @@
 ---
 title: Använd den Service Management-API (python) – funktions guide
 description: Lär dig hur du program mässigt utför vanliga Service Management-uppgifter från python.
-services: cloud-services
-documentationcenter: python
-author: tanmaygore
-manager: vashan
-editor: ''
-ms.assetid: 61538ec0-1536-4a7e-ae89-95967fe35d73
-ms.service: cloud-services
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: python
 ms.topic: article
-ms.date: 05/30/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.custom: devx-track-python
-ms.openlocfilehash: ef155116904ee0d3ecab250a254010e2f7664757
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 02993f2b79e37e5e50c20c4ee07220bcbd36edb8
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92073996"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98741408"
 ---
 # <a name="use-service-management-from-python"></a>Använda Service Management från python
+
+> [!IMPORTANT]
+> [Azure Cloud Services (utökad support)](../cloud-services-extended-support/overview.md) är en ny Azure Resource Manager baserad distributions modell för Azure Cloud Services-produkten.Med den här ändringen har Azure Cloud Services som körs på Azure Service Manager-baserade distributions modellen bytt namn som Cloud Services (klassisk) och alla nya distributioner bör använda [Cloud Services (utökad support)](../cloud-services-extended-support/overview.md).
+
 Den här guiden visar hur du program mässigt utför vanliga Service Management-uppgifter från python. **Klassen** -klassen i [Azure SDK för python](https://github.com/Azure/azure-sdk-for-python) stöder programmatisk åtkomst till många av de tjänst hanterings funktioner som finns tillgängliga i [Azure Portal][management-portal]. Du kan använda den här funktionen för att skapa, uppdatera och ta bort moln tjänster, distributioner, data hanterings tjänster och virtuella datorer. Den här funktionen kan vara användbar när du skapar program som behöver programmerings åtkomst till tjänst hantering.
 
 ## <a name="what-is-service-management"></a><a name="WhatIs"> </a>Vad är Service Management?
@@ -384,7 +381,7 @@ sms.delete_hosted_service(service_name='myvm')
 ```
 
 ## <a name="create-a-virtual-machine-from-a-captured-virtual-machine-image"></a>Skapa en virtuell dator från en avbildning av en avbildning av en avbildning
-För att kunna avbilda en avbildning av en virtuell dator anropar du först ** \_ \_ avbildnings metoden avbilda VM** .
+För att kunna avbilda en avbildning av en virtuell dator anropar du först **\_ \_ avbildnings metoden avbilda VM** .
 
 ```python
 from azure import *

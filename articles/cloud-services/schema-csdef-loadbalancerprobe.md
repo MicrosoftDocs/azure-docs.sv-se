@@ -1,22 +1,25 @@
 ---
-title: Azure Cloud Services Def. LoadBalancerProbe-schema | Microsoft Docs
+title: Azure Cloud Services (klassisk) Def. LoadBalancerProbe-schema | Microsoft Docs
 description: Kundens definierade LoadBalancerProbe är en hälso avsökning av slut punkter i roll instanser. Den kombineras med Web-eller Worker-roller i en tjänst definitions fil.
-ms.custom: ''
-ms.date: 04/14/2015
-services: cloud-services
+ms.topic: article
 ms.service: cloud-services
-ms.topic: reference
-caps.latest.revision: 14
-author: georgewallace
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 6d0e84b6724d9df4162d4be3e06a9952087a53a6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 3dca519f7fb4523ce9d9267f7629c1177cc5e3b6
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79537354"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98739801"
 ---
-# <a name="azure-cloud-services-definition-loadbalancerprobe-schema"></a>LoadBalancerProbe-schema för Azure Cloud Services-definition
+# <a name="azure-cloud-services-classic-definition-loadbalancerprobe-schema"></a>Azure Cloud Services (klassisk) definition LoadBalancerProbe-schema
+
+> [!IMPORTANT]
+> [Azure Cloud Services (utökad support)](../cloud-services-extended-support/overview.md) är en ny Azure Resource Manager baserad distributions modell för Azure Cloud Services-produkten.Med den här ändringen har Azure Cloud Services som körs på Azure Service Manager-baserade distributions modellen bytt namn som Cloud Services (klassisk) och alla nya distributioner bör använda [Cloud Services (utökad support)](../cloud-services-extended-support/overview.md).
+
 Belastnings Utjämnings avsökningen är en kunddefinierad hälso avsökning av UDP-slutpunkter och slut punkter i roll instanser. `LoadBalancerProbe`Är inte ett fristående element. det kombineras med webb rollen eller arbets rollen i en tjänst definitions fil. En `LoadBalancerProbe` kan användas av mer än en roll.
 
 Standard tillägget för tjänst definitions filen är. csdef.

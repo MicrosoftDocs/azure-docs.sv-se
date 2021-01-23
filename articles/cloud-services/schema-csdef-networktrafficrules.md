@@ -1,26 +1,25 @@
 ---
-title: Azure Cloud Services Def. NetworkTrafficRules-schema | Microsoft Docs
+title: Azure Cloud Services (klassisk) Def. NetworkTrafficRules-schema | Microsoft Docs
 description: Lär dig mer om NetworkTrafficRules, som begränsar vilka roller som kan komma åt de interna slut punkterna för en roll. Den kombineras med roller i en tjänst definitions fil.
-ms.custom: ''
-ms.date: 04/14/2015
-services: cloud-services
-ms.reviewer: ''
+ms.topic: article
 ms.service: cloud-services
-ms.suite: ''
-ms.tgt_pltfrm: ''
-ms.topic: reference
-ms.assetid: 351b369f-365e-46c1-82ce-03fc3655cc88
-caps.latest.revision: 17
-author: tgore03
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: e53c10395ec3168e656633cc43fb2d01902209fa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 2c8ab53068b71652d03d03bf79a224fe5e34dff3
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79534736"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98739776"
 ---
-# <a name="azure-cloud-services-definition-networktrafficrules-schema"></a>NetworkTrafficRules-schema för Azure Cloud Services-definition
+# <a name="azure-cloud-services-classic-definition-networktrafficrules-schema"></a>Azure Cloud Services (klassisk) definition NetworkTrafficRules-schema
+
+> [!IMPORTANT]
+> [Azure Cloud Services (utökad support)](../cloud-services-extended-support/overview.md) är en ny Azure Resource Manager baserad distributions modell för Azure Cloud Services-produkten.Med den här ändringen har Azure Cloud Services som körs på Azure Service Manager-baserade distributions modellen bytt namn som Cloud Services (klassisk) och alla nya distributioner bör använda [Cloud Services (utökad support)](../cloud-services-extended-support/overview.md).
+
 `NetworkTrafficRules`Noden är ett valfritt element i tjänst definitions filen som anger hur roller kommunicerar med varandra. Den begränsar vilka roller som har åtkomst till de interna slut punkterna för den aktuella rollen. `NetworkTrafficRules`Är inte ett fristående element. det kombineras med två eller flera roller i en tjänst definitions fil.
 
 Standard tillägget för tjänst definitions filen är. csdef.
