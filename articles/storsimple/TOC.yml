@@ -38,8 +38,7 @@
         - name: Hantera via Azure Portal
           href: storsimple-virtual-array-manager-service-administration.md
           items:
-            - name: Installera senaste uppdateringen
-              href: storsimple-virtual-array-install-update-11.md
+            - name: Installera uppdateringar
               items:
                 - name: Installera uppdatering 1
                   href: storsimple-virtual-array-install-update-1.md
@@ -87,10 +86,10 @@
           href: storsimple-ova-web-ui-admin.md
     - name: Viktig information
       items:
-        - name: Uppdatering 1.2 – aktuell
+        - name: 'Uppdatering 1,3 – aktuell'
+          href: storsimple-virtual-array-update-13-release-notes.md
+        - name: Uppdatering 1.2
           href: storsimple-virtual-array-update-12-release-notes.md
-        - name: Uppdatering 1.1
-          href: storsimple-virtual-array-update-11-release-notes.md
         - name: Uppdatering 1
           href: storsimple-virtual-array-update-1-release-notes.md
         - name: Arkiv

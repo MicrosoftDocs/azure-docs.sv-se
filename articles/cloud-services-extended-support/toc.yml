@@ -1,0 +1,97 @@
+- name: Dokumentation om Cloud Services (utökad support)
+  href: index.yml
+- name: Översikt
+  items:
+    - name: Om Cloud Services (utökad support)
+      href: overview.md
+    - name: Krav för distribution
+      href: deploy-prerequisite.md
+    - name: Konfigurationsfiler och paketering
+      href: cloud-services-model-and-package.md
+- name: Självstudier
+  items:
+    - name: Distribuera en moln tjänst – Portal
+      href: deploy-portal.md
+    - name: Distribuera en moln tjänst – PowerShell
+      href: deploy-powershell.md
+    - name: Distribuera en moln tjänst – mall
+      href: deploy-template.md
+    - name: Distribuera en moln tjänst – Visual Studio
+      href: deploy-visual-studio.md
+  expanded: true
+- name: Begrepp
+  items:
+    - name: Tillgängliga VM-storlekar
+      href: available-sizes.md
+    - name: Vanliga frågor och svar
+      href: faq.md
+    - name: Gästoperativsystemets korrigeringsfiler
+      href: ../cloud-services/cloud-services-guestos-msrc-releases.md?toc=/azure/cloud-services-extended-support/toc.json&bc=/azure/cloud-services-extended-support/breadcrumb/toc.json
+    - name: 'Gästoperativsystem, indragning'
+      href: ../cloud-services/cloud-services-guestos-retirement-policy.md?toc=/azure/cloud-services-extended-support/toc.json&bc=/azure/cloud-services-extended-support/breadcrumb/toc.json
+    - name: Versionsnyheter om gästoperativsystem
+      href: ../cloud-services/cloud-services-guestos-update-matrix.md?toc=/azure/cloud-services-extended-support/toc.json&bc=/azure/cloud-services-extended-support/breadcrumb/toc.json
+    - name: XML-schema
+      items:
+        - name: Csdef XML-schema
+          href: schema-csdef-file.md
+        - name: LoadBalancerProbe-schema
+          href: schema-csdef-loadbalancerprobe.md
+        - name: Webrole-schema
+          href: schema-csdef-webrole.md
+        - name: WorkerRole-schema
+          href: schema-csdef-workerrole.md
+        - name: NetworkTrafficRules-schema
+          href: schema-csdef-networktrafficrules.md
+        - name: Cscfg XML-schema
+          href: schema-cscfg-file.md
+        - name: Roll schema
+          href: schema-cscfg-role.md
+        - name: NetworkConfiguration-schema
+          href: schema-cscfg-networkconfiguration.md
+- name: Gör så här för att
+  items:
+    - name: Översikt över tillägg
+      href: extensions.md
+    - name: Använd fjärr skrivbords tillägg
+      href: enable-rdp.md
+    - name: Använd WAD-tillägg
+      href: enable-wad.md
+    - name: Aktivera aviseringar
+      href: enable-alerts.md
+    - name: Konfigurera skalning
+      href: configure-scaling.md
+    - name: Certifikat
+      href: certificates-and-key-vault.md
+- name: Exempel
+  items:
+    - name: Skapa en ny moln tjänst
+      href: sample-create-cloud-service.md
+    - name: Hämta information om moln tjänst
+      href: sample-get-cloud-service.md
+    - name: Återställa en moln tjänst
+      href: sample-reset-cloud-service.md
+- name: Referens
+  items:
+    - name: AZ. CloudService-modul
+      href: 'https://www.powershellgallery.com/packages/Az.CloudService/0.1.0'
+    - name: PowerShell-cmdletar
+      href: 'https://docs.microsoft.com/powershell/module/az.cloudservice/?view=azps-5.4.0#cloudservice'
+    - name: Referens för ARM-mall
+      href: 'https://docs.microsoft.com/azure/templates/microsoft.compute/cloudservices'
+    - name: REST
+      href: 'https://docs.microsoft.com/rest/api/compute/cloudservices'
+- name: Resurser
+  items:
+    - name: Azure-översikt
+      href: 'https://azure.microsoft.com/roadmap/?category=compute'
+    - name: Utbildningsväg
+      href: /learn/paths/azure-fundamentals/
+    - name: Microsoft Q&A
+      href: 'https://docs.microsoft.com/answers/topics/azure-cloud-services.html'
+    - name: Prissättning
+      href: 'https://azure.microsoft.com/pricing/details/cloud-services/'
+    - name: Priskalkylator
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Tjänstuppdateringar
+      href: 'https://azure.microsoft.com/updates/?product=cloud-services&updatetype=&platform='

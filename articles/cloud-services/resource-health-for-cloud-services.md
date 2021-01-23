@@ -1,20 +1,25 @@
 ---
 title: Resource Health för Cloud Services (klassisk)
 description: Den här artikeln pratar om stöd för Resource Health Check (RHC) för Microsoft Azure Cloud Services (klassisk)
-services: cloud-services
-author: tanmaygore
-ms.service: cloud-services
 ms.topic: article
-ms.date: 9/1/2020
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: f99dd8131df9f8bc5d3e4013d4438faa8c25e53b
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 37294e681066eb27ace69bcacee3a813b750b8eb
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92072721"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743516"
 ---
 # <a name="resource-health-check-rhc-support-for-azure-cloud-services-classic"></a>Stöd för Resource Health Check (RHC) för Azure Cloud Services (klassisk)
+
+> [!IMPORTANT]
+> [Azure Cloud Services (utökad support)](../cloud-services-extended-support/overview.md) är en ny Azure Resource Manager baserad distributions modell för Azure Cloud Services-produkten.Med den här ändringen har Azure Cloud Services som körs på Azure Service Manager-baserade distributions modellen bytt namn som Cloud Services (klassisk) och alla nya distributioner bör använda [Cloud Services (utökad support)](../cloud-services-extended-support/overview.md).
+
 Den här artikeln pratar om stöd för Resource Health Check (RHC) för [Microsoft Azure Cloud Services (klassisk)](https://azure.microsoft.com/services/cloud-services)
 
 [Azure Resource Health](../service-health/resource-health-overview.md) för moln tjänster hjälper dig att diagnostisera och få support för tjänst problem som påverkar moln tjänst distributionen, roller & roll instanser. Den rapporterar om aktuella och tidigare hälso tillstånd för moln tjänster vid distribution, roll & roll instans nivå.

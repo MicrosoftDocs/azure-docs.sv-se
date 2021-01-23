@@ -1,23 +1,24 @@
 ---
-title: Hantera Azure-Cloud Services med Azure Automation | Microsoft Docs
+title: Hantera Azure Cloud Services (klassisk) med hjälp av Azure Automation | Microsoft Docs
 description: Lär dig mer om hur Azure Automation-tjänsten kan användas för att hantera Azure Cloud Services i stor skala.
-services: cloud-services, automation
-author: jodoglevy
-manager: timlt
-editor: ''
-ms.assetid: 3789810a-2892-4eef-bf29-c781c1b5af48
-ms.service: cloud-services
 ms.topic: article
-ms.date: 06/20/2016
-ms.author: timlt
-ms.openlocfilehash: 67830f8c00d9f74f62883e0714ffe1c2bbbd6903
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.service: cloud-services
+ms.date: 10/14/2020
+ms.author: tagore
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 530efd09f3632637c6a12648495dcff0e7bf0e6d
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075628"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743499"
 ---
-# <a name="managing-azure-cloud-services-using-azure-automation"></a>Hantera Azure-Cloud Services med Azure Automation
+# <a name="managing-azure-cloud-services-classic-using-azure-automation"></a>Hantera Azure Cloud Services (klassisk) med Azure Automation
+
+> [!IMPORTANT]
+> [Azure Cloud Services (utökad support)](../cloud-services-extended-support/overview.md) är en ny Azure Resource Manager baserad distributions modell för Azure Cloud Services-produkten.Med den här ändringen har Azure Cloud Services som körs på Azure Service Manager-baserade distributions modellen bytt namn som Cloud Services (klassisk) och alla nya distributioner bör använda [Cloud Services (utökad support)](../cloud-services-extended-support/overview.md).
 I den här guiden får du lära dig Azure Automation tjänsten och hur den kan användas för att förenkla hanteringen av dina Azure Cloud Services.
 
 ## <a name="what-is-azure-automation"></a>Vad är Azure Automation?
@@ -35,7 +36,7 @@ Några exempel på användning av Azure Automation för att hantera Azure Cloud 
 * [Kontinuerlig distribution av en moln tjänst när cscfg eller cspkg uppdateras i Azure Blob Storage](https://gallery.technet.microsoft.com/scriptcenter/Continuous-Deployment-of-A-eeebf3a6)
 * [Starta om moln tjänst instanser parallellt, en uppgraderings domän i taget](https://gallery.technet.microsoft.com/scriptcenter/Reboot-Cloud-Service-PaaS-b337a06d)
 
-## <a name="next-steps"></a>Efterföljande moment
+## <a name="next-steps"></a>Nästa steg
 Nu när du har lärt dig grunderna om Azure Automation och hur det kan användas för att hantera Azure Cloud Services, kan du följa dessa länkar om du vill veta mer om Azure Automation.
 
 * [Översikt över Azure Automation](../automation/automation-intro.md)

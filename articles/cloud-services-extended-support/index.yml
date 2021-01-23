@@ -1,0 +1,83 @@
+### YamlMime:Landing
+title: Dokumentation om Azure Cloud Services (utökad support)
+summary: Lär dig hur du använder Cloud Services för att hantera och köra API:er och skalbara molnprogram med hög tillgänglighet. Visar hur du hanterar virtuella datorvärdar och konfigurerar, korrigerar och installerar programvara.
+metadata:
+  title: Dokumentation om Azure Cloud Services (utökad support)
+  description: Beskriver hur du använder Cloud Services för att hantera och köra mycket tillgängliga och skalbara API:er och molnprogram.
+  ms.service: cloud-services-extended-support
+  service: cloud-services-extended-support
+  ms.topic: landing-page
+  author: mimckitt
+  ms.author: mimckitt
+  ms.date: 03/06/2020
+  ms.openlocfilehash: 8f999851c1566b2a488daa4bdc5da73761f7ce0b
+  ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+  ms.translationtype: MT
+  ms.contentlocale: sv-SE
+  ms.lasthandoff: 01/23/2021
+  ms.locfileid: "98745269"
+landingContent:
+- title: Om Cloud Services (utökad support)
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Vad är Cloud Services (utökad support)?
+      url: overview.md
+    - text: Krav för distribution
+      url: deploy-prerequisite.md
+    - text: Konfigurationsfiler och paketering
+      url: cloud-services-model-and-package.md
+- title: Självstudier
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Distribuera med hjälp av PowerShell
+      url: deploy-powershell.md
+    - text: Distribuera med hjälp av Azure-portalen
+      url: deploy-portal.md
+    - text: Distribuera med ARM-mallar
+      url: deploy-template.md
+    - text: Distribuera med Visual Studio
+      url: deploy-visual-studio.md
+- title: Begrepp
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Tillgängliga storlekar
+      url: available-sizes.md
+    - text: Vanliga frågor och svar
+      url: faq.md
+- title: Instruktionsguider
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Tillägg
+      url: extensions.md
+    - text: Aktivera aviseringar
+      url: enable-alerts.md
+    - text: Konfigurera skalning
+      url: configure-scaling.md
+    - text: Certifikat
+      url: certificates-and-key-vault.md
+- title: Exempel
+  linkLists:
+  - linkListType: sample
+    links:
+    - text: Skapa en moln tjänst distribution
+      url: sample-create-cloud-service.md
+    - text: Hämta information om en moln tjänst distribution
+      url: sample-get-cloud-service.md
+    - text: Uppdatera en moln tjänst distribution
+      url: sample-update-cloud-service.md
+    - text: Återställa en moln tjänst distribution
+      url: sample-reset-cloud-service.md
+- title: Schema information
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Konfigurations schema
+      url: schema-cscfg-file.md
+    - text: Definitions schema
+      url: schema-csdef-file.md
+    - text: Schema för konfigurations roll
+      url: schema-cscfg-role.md
