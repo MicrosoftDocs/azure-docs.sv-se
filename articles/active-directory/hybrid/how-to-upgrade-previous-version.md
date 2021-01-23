@@ -16,18 +16,18 @@ ms.date: 04/08/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 65fc0e84582c005c5796ceac86ee28fc46b2e1d8
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 36b7fce2e2ccb6f331e42e8052ef4fb75d35e831
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97094224"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98729998"
 ---
 # <a name="azure-ad-connect-upgrade-from-a-previous-version-to-the-latest"></a>Azure AD Connect: Uppgradera från en tidigare version till den senaste
 I det här avsnittet beskrivs de olika metoder som du kan använda för att uppgradera din Azure Active Directory (Azure AD) Connect-installationen till den senaste versionen.  Du använder också stegen i avsnittet flytta [migrering](#swing-migration) när du gör en betydande konfigurations ändring.
 
 >[!NOTE]
-> Det är viktigt att du håller dina servrar uppdaterade med de senaste versionerna av Azure AD Connect. Vi gör hela tiden uppgraderingar av AADConnect, och dessa uppgraderingar innehåller korrigeringar av säkerhets problem och buggar, samt förbättringar av tjänster, prestanda och skalbarhet. För att se vad den senaste versionen är och för att lära dig vilka ändringar som har gjorts mellan olika versioner, se versions [historiken](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-version-history) för version.
+> Det är viktigt att du håller dina servrar uppdaterade med de senaste versionerna av Azure AD Connect. Vi gör hela tiden uppgraderingar av AADConnect, och dessa uppgraderingar innehåller korrigeringar av säkerhets problem och buggar, samt förbättringar av tjänster, prestanda och skalbarhet. För att se vad den senaste versionen är och för att lära dig vilka ändringar som har gjorts mellan olika versioner, se versions [historiken](./reference-connect-version-history.md) för version.
 
 >[!NOTE]
 > Det finns för närvarande stöd för att uppgradera från en version av Azure AD Connect till den aktuella versionen. Uppgraderingar på plats av DirSync eller ADSync stöds inte och en flyttning av sväng krävs.  Om du vill uppgradera från DirSync kan du läsa mer i [Uppgradera från Azure AD Sync Tool (DirSync)](how-to-dirsync-upgrade-get-started.md) eller i avsnittet flytta [migrering](#swing-migration) .  </br>I praktiken kan kunder i mycket äldre versioner drabbas av problem som inte är direkt relaterade till Azure AD Connect. Servrar som har varit i produktion under flera år, har vanligt vis haft flera korrigeringar som har tillämpats på dem och inte alla kan redovisas.  I allmänhet bör kunder som inte har uppgraderats i 12-18 månader överväga en sväng uppgradering i stället för det mest restriktivaste och minst riskfyllda alternativet.

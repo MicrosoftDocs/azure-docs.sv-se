@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/18/2020
 ms.author: jeedes
-ms.openlocfilehash: 039f13838edf80f6f80c1821c868c8b99549f72f
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 413ffa54a7413ad9b2482a3a8b6c698b34116301
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97916481"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98729864"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-servicechannel"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med asynkrona servicechannel
 
@@ -83,7 +83,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
     > [!NOTE]
     > Dessa värden är inte verkliga. Uppdatera dessa värden med den faktiska identifieraren och svars-URL. Här föreslår vi att du använder det unika värdet för strängen i identifieraren. Kontakta [asynkrona servicechannel client support team](https://servicechannel.zendesk.com/hc/) för att hämta dessa värden. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
 
-1. Roll anspråk är förkonfigurerat så att du inte behöver konfigurera det, men du måste fortfarande skapa dem i Azure AD med hjälp av den här [artikeln](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps#app-roles-ui). Du kan se asynkrona servicechannel- [Guide för mer information](https://servicechannel.zendesk.com/hc/articles/217514326-Azure-AD-Configuration-Example) om anspråk.
+1. Roll anspråk är förkonfigurerat så att du inte behöver konfigurera det, men du måste fortfarande skapa dem i Azure AD med hjälp av den här [artikeln](../develop/howto-add-app-roles-in-azure-ad-apps.md#app-roles-ui--preview). Du kan se asynkrona servicechannel- [Guide för mer information](https://servicechannel.zendesk.com/hc/articles/217514326-Azure-AD-Configuration-Example) om anspråk.
 
 1. På sidan **Konfigurera enkel inloggning med SAML** , i avsnittet **SAML-signeringscertifikat** , Sök efter **certifikat (base64)** och välj **Ladda ned** för att ladda ned certifikatet och spara det på din dator.
 
@@ -131,7 +131,7 @@ I det här avsnittet ska du testa Azure AD-konfigurationen för enkel inloggning
 
 * Klicka på testa det här programmet i Azure Portal så bör du loggas in automatiskt på den asynkrona servicechannel som du har konfigurerat SSO för.
 
-* Du kan använda Microsoft Mina appar. När du klickar på panelen asynkrona servicechannel i Mina appar, bör du loggas in automatiskt på den asynkrona servicechannel som du ställer in SSO för. Mer information om Mina appar finns i [Introduktion till Mina appar](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* Du kan använda Microsoft Mina appar. När du klickar på panelen asynkrona servicechannel i Mina appar, bör du loggas in automatiskt på den asynkrona servicechannel som du ställer in SSO för. Mer information om Mina appar finns i [Introduktion till Mina appar](../user-help/my-apps-portal-end-user-access.md).
 
 
 ## <a name="next-steps"></a>Nästa steg

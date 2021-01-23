@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 09/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 0fe9b3ddaee41802ced30e1898b46cefa2566771
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 36a15560b88c823ff2ae41f160839796bf21e4f8
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95023198"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98730793"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Vad är Windows Virtual Desktop?
 
@@ -130,7 +130,7 @@ Windows Virtual Desktop stöder följande x64-operativ system avbildningar:
 * Windows Server 2016
 * Windows Server 2012 R2
 
-Windows Virtual Desktop stöder inte x86 (32-bitars), Windows 10 Enterprise N eller Windows 10 Enterprise KN-operativsystem avbildningar. Windows 7 stöder inte heller några VHD-eller VHDX-baserade profil lösningar som finns på hanterade Azure Storage på grund av en begränsning för sektor storlek.
+Windows Virtual Desktop stöder inte x86 (32-bitars), Windows 10 Enterprise N, Windows 10 Pro eller Windows 10 Enterprise KN-operativsystem avbildningar. Windows 7 stöder inte heller några VHD-eller VHDX-baserade profil lösningar som finns på hanterade Azure Storage på grund av en begränsning för sektor storlek.
 
 Tillgängliga alternativ för Automation och distribution beror på vilket operativ system och vilken version du väljer, som du ser i följande tabell:
 
@@ -138,12 +138,12 @@ Tillgängliga alternativ för Automation och distribution beror på vilket opera
 |--------------------------------------|:------:|:------:|:------:|:------:|
 |Windows 10 Enterprise (multi-session), version 2004|Ja|Ja|Ja|Ja|
 |Windows 10 Enterprise (multi-session), version 1909|Ja|Ja|Ja|Ja|
-|Windows 10 Enterprise (multi-session), version 1903|Ja|Ja|Inga|Inga|
-|Windows 10 Enterprise (multi-session), version 1809|Ja|Ja|Inga|Inga|
-|Windows 7 Enterprise|Ja|Ja|Inga|Inga|
-|Windows Server 2019|Ja|Ja|Inga|Inga|
+|Windows 10 Enterprise (multi-session), version 1903|Ja|Ja|Nej|Nej|
+|Windows 10 Enterprise (multi-session), version 1809|Ja|Ja|Nej|Nej|
+|Windows 7 Enterprise|Ja|Ja|Nej|Nej|
+|Windows Server 2019|Ja|Ja|Nej|Nej|
 |Windows Server 2016|Ja|Ja|Ja|Ja|
-|Windows Server 2012 R2|Ja|Ja|Inga|Nej|
+|Windows Server 2012 R2|Ja|Ja|Nej|Nej|
 
 ## <a name="next-steps"></a>Nästa steg
 

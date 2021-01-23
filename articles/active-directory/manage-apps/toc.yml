@@ -51,8 +51,6 @@
           href: non-gallery-apps.md
         - name: Planera distribution av mina appar
           href: access-panel-deployment-plan.md
-        - name: Vägledning för utvecklare
-          href: developer-guidance-for-integrating-applications.md
     - name: Enkel inloggning
       items:
         - name: Planera en distribution för enkel inloggning

@@ -4,16 +4,16 @@ description: Anpassade bildpooler är ett effektivt sätt att konfigurera datorn
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.custom: devx-track-python, devx-track-azurecli
-ms.openlocfilehash: eb21a9e0d355274142e34fbb5c90a4d293c88ef1
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 98dbb965d77da43d937dccbc0f99abf12c195929
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96327312"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98731369"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-custom-image-pool"></a>Använd det delade avbildnings galleriet för att skapa en anpassad avbildnings-pool
 
-När du skapar en Azure Batch-pool med den virtuella dator konfigurationen anger du en VM-avbildning som tillhandahåller operativ systemet för varje Compute-nod i poolen. Du kan skapa en pool med virtuella datorer antingen med en Azure Marketplace-avbildning som stöds eller skapa en anpassad avbildning med en avbildning av ett [delat avbildnings Galleri](../virtual-machines/windows/shared-image-galleries.md).
+När du skapar en Azure Batch-pool med den virtuella dator konfigurationen anger du en VM-avbildning som tillhandahåller operativ systemet för varje Compute-nod i poolen. Du kan skapa en pool med virtuella datorer antingen med en Azure Marketplace-avbildning som stöds eller skapa en anpassad avbildning med en avbildning av ett [delat avbildnings Galleri](../virtual-machines/shared-image-galleries.md).
 
 ## <a name="benefits-of-the-shared-image-gallery"></a>Fördelar med galleriet för delad avbildning
 
@@ -31,9 +31,9 @@ Att använda en delad avbildning som kon figurer ATS för ditt scenario kan ge f
 - **Kopiera stora mängder data en gång.** Gör statisk data del av den hanterade delade avbildningen genom att kopiera den till en hanterad avbildnings data diskar. Detta måste bara göras en gång och göra data tillgängliga för varje nod i poolen.
 - **Utöka pooler till större storlekar.** Med det delade avbildnings galleriet kan du skapa större pooler med dina anpassade avbildningar tillsammans med fler delade avbildnings repliker.
 - **Bättre prestanda än att bara använda en hanterad avbildning som en anpassad avbildning.** För en anpassad avbildning av en delad avbildning, är tiden för att uppnå stabilt tillstånd upp till 25% snabbare och den inaktiva fördröjningen för den virtuella datorn är upp till 30% kortare.
-- **Avbildnings version och gruppering för enklare hantering.** Definitionen för avbildnings gruppering innehåller information om varför avbildningen skapades, vilket operativ system den är för och information om hur du använder avbildningen. Gruppering av avbildningar möjliggör enklare bild hantering. Mer information finns i [bild definitioner](../virtual-machines/windows/shared-image-galleries.md#image-definitions).
+- **Avbildnings version och gruppering för enklare hantering.** Definitionen för avbildnings gruppering innehåller information om varför avbildningen skapades, vilket operativ system den är för och information om hur du använder avbildningen. Gruppering av avbildningar möjliggör enklare bild hantering. Mer information finns i [bild definitioner](../virtual-machines/shared-image-galleries.md#image-definitions).
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 > [!NOTE]
 > Du måste autentisera med hjälp av Azure AD. Om du använder Shared Key auth får du ett autentiseringsfel.  
@@ -226,4 +226,4 @@ Använd följande vägledning om du planerar att skapa en pool med hundratals el
 ## <a name="next-steps"></a>Nästa steg
 
 - En djupgående översikt över batch finns i [batch-tjänstens arbets flöde och resurser](batch-service-workflow-features.md).
-- Lär dig mer om det [delade avbildnings galleriet](../virtual-machines/windows/shared-image-galleries.md).
+- Lär dig mer om det [delade avbildnings galleriet](../virtual-machines/shared-image-galleries.md).

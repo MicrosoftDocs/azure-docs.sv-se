@@ -11,12 +11,12 @@ ms.workload: infrastructure
 ms.date: 1/3/2020
 ms.author: ushan
 ms.custom: devops, devx-track-js
-ms.openlocfilehash: 3d26da693d83fd680c644849d581ea35ca7b49af
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 4ca431290fe168f8fc073908bb3735ecb5992562
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97739713"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98731258"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-using-azure-devops-services-and-azure-pipelines"></a>Självstudie: distribuera din app till virtuella Linux-datorer i Azure med Azure DevOps Services och Azure-pipelines
 
@@ -24,7 +24,7 @@ Kontinuerlig integrering (CI) och kontinuerlig distribution (CD) utgör en pipel
 
 Azure-pipeliner innehåller en komplett uppsättning CI/CD Automation-verktyg för distributioner till virtuella datorer, både på lokal eller i alla moln.
 
-I den här självstudien ställer du in en YAML-baserad CI/CD-pipeline för att distribuera din app till en Azure pipeline- [miljö](/azure/devops/pipelines/process/environments?view=azure-devops) med virtuella Linux-datorer som resurser, som var och en fungerar som webb servrar för att köra appen.
+I den här självstudien ställer du in en YAML-baserad CI/CD-pipeline för att distribuera din app till en Azure pipeline- [miljö](/azure/devops/pipelines/process/environments) med virtuella Linux-datorer som resurser, som var och en fungerar som webb servrar för att köra appen.
 
 Lär dig att:
 
@@ -41,7 +41,7 @@ Lär dig att:
   Du kan få en [kostnadsfri Azure DevOps Services-organisation](https://go.microsoft.com/fwlink/?LinkId=307137&clcid=0x409&wt.mc_id=o~msft~vscom~home-vsts-hero~27308&campaign=o~msft~vscom~home-vsts-hero~27308).
 
   > [!NOTE]
-  > Mer information finns i avsnittet om att [ansluta till Azure DevOps Services](/azure/devops/organizations/projects/connect-to-projects?view=vsts).
+  > Mer information finns i avsnittet om att [ansluta till Azure DevOps Services](/azure/devops/organizations/projects/connect-to-projects).
 
 *  Du behöver en virtuell Linux-dator som distributionsmål.  Mer information finns i [Skapa och hantera virtuella Linux-datorer med Azure CLI](./tutorial-manage-vm.md).
 
@@ -222,7 +222,7 @@ För ytterligare vägledning följer du stegen i [utveckla din Node.js-app med G
        tags: web
    ```
 2. Du kan välja olika uppsättningar av virtuella datorer från miljön för att ta emot distributionen genom att ange de **taggar** som du har definierat för varje virtuell dator i miljön.
-[Här](/azure/devops/pipelines/yaml-schema?view=azure-devops&tabs=schema#deployment-job) är det fullständiga yaml-schemat för distributions jobb.
+[Här](/azure/devops/pipelines/yaml-schema?tabs=schema#deployment-job) är det fullständiga yaml-schemat för distributions jobb.
 
 3. Du kan ange en `runOnce` eller `rolling` som distributions strategi. 
 

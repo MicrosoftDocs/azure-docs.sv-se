@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: cf21ed73d74adb9f9a5a7229a45192bc63aca2c3
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 5c2b88ad7bef5fb8f7ba576e5f7b416f7458378c
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98104792"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98731609"
 ---
 # <a name="quickstart-create-a-private-endpoint-using-azure-powershell"></a>Snabb start: skapa en privat slut punkt med hjälp av Azure PowerShell
 
@@ -20,10 +20,10 @@ Kom igång med en privat Azure-länk genom att använda en privat slut punkt fö
 
 I den här snabb starten skapar du en privat slut punkt för Azure-attestering och distribuerar en virtuell dator för att testa den privata anslutningen.  
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
-* Lär dig mer om [Azures privata länk](/azure/private-link/private-link-overview)
-* [Konfigurera Azure-attestering med Azure PowerShell](/azure/attestation/quickstart-powershell)
+* Lär dig mer om [Azures privata länk](../private-link/private-link-overview.md)
+* [Konfigurera Azure-attestering med Azure PowerShell](./quickstart-powershell.md)
 
 ## <a name="create-a-resource-group"></a>Skapa en resursgrupp
 
@@ -207,4 +207,3 @@ I det här avsnittet ska du använda den virtuella datorn som du skapade i före
     Non-authoritative answer:
     Name:    myattestationprovider.eastus.test.attest.azure.net
     ```
-

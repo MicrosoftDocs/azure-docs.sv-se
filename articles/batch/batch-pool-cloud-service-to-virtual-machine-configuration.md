@@ -3,16 +3,16 @@ title: Migrera konfigurationen av batch-poolen från Cloud Services till Virtual
 description: Lär dig hur du uppdaterar din konfiguration för poolen till den senaste och rekommenderade konfigurationen
 ms.topic: how-to
 ms.date: 1/6/2021
-ms.openlocfilehash: d987a185efb6593fd541dd14fa74b6c4d3ca41be
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 417738be2c69101129079b8ff3a3d80634f9f99c
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98234315"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98731507"
 ---
 # <a name="migrate-batch-pool-configuration-from-cloud-services-to-virtual-machines"></a>Migrera konfigurationen av batch-poolen från Cloud Services till Virtual Machines
 
-Batch-pooler kan skapas med antingen [cloudServiceConfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#cloudserviceconfiguration) eller [virtualMachineConfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#virtualmachineconfiguration). ' virtualMachineConfiguration ' är den rekommenderade konfigurationen eftersom den stöder alla batch-funktioner. cloudServiceConfiguration-pooler stöder inte alla funktioner och inga nya funktioner planeras.
+Batch-pooler kan skapas med antingen [cloudServiceConfiguration](/rest/api/batchservice/pool/add#cloudserviceconfiguration) eller [virtualMachineConfiguration](/rest/api/batchservice/pool/add#virtualmachineconfiguration). ' virtualMachineConfiguration ' är den rekommenderade konfigurationen eftersom den stöder alla batch-funktioner. cloudServiceConfiguration-pooler stöder inte alla funktioner och inga nya funktioner planeras.
 
 Om du använder cloudServiceConfiguration-pooler rekommenderar vi starkt att du flyttar till Använd virtualMachineConfiguration-pooler. Detta gör att du kan dra nytta av alla batch-funktioner, till exempel ett expanderat [urval av VM-serien](batch-pool-vm-sizes.md), virtuella Linux-datorer, [behållare](batch-docker-container-workloads.md), [Azure Resource Manager virtuella nätverk](batch-virtual-network.md)och [disk kryptering för noder](disk-encryption.md).
 
@@ -41,4 +41,4 @@ Följande bör övervägas när konfigurationen för poolen uppdateras:
 
 - Läs mer om [konfigurationer av pooler](nodes-and-pools.md#configurations).
 - Läs mer om [metod tips för pool](best-practices.md#pools).
-- REST API referens för [addition](https://docs.microsoft.com/rest/api/batchservice/pool/add) och [virtualMachineConfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#virtualmachineconfiguration)för pooler.
+- REST API referens för [addition](/rest/api/batchservice/pool/add) och [virtualMachineConfiguration](/rest/api/batchservice/pool/add#virtualmachineconfiguration)för pooler.

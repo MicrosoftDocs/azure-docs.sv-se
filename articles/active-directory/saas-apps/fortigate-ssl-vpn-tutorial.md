@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/26/2020
 ms.author: jeedes
-ms.openlocfilehash: b9a22025f124e7639aa1b9a157dbbd020e2ff966
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 9852752799fd010ebb069637f55008d9c4f68bf8
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98020272"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98732150"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fortigate-ssl-vpn"></a>Självstudie: Azure Active Directory enkel inloggning (SSO) med FortiGate SSL VPN
 
@@ -26,7 +26,7 @@ I den här självstudien får du lära dig hur du integrerar FortiGate SSL VPN m
 * Gör det möjligt för användarna att logga in automatiskt till FortiGate SSL VPN med deras Azure AD-konton.
 * Hantera dina konton på en central plats: Azure Portal.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 För att komma igång behöver du följande objekt:
 
@@ -93,7 +93,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal:
 
 1. De två ytterligare anspråk som krävs av FortiGate SSL VPN visas i följande tabell. Namnen på dessa anspråk måste matcha namnen som används i avsnittet **utföra Fortigate kommando rads konfiguration** i den här självstudien. 
 
-   | Namn |  Källattribut|
+   | Name |  Källattribut|
    | ------------ | --------- |
    | användarnamn | user.userprincipalname |
    | group | användare. grupper |
@@ -260,7 +260,7 @@ I det här avsnittet ska du testa Azure AD-konfigurationen för enkel inloggning
 
 * Gå till FortiGate VPN-inloggnings-URL: en direkt och starta inloggnings flödet därifrån.
 
-* Du kan använda Microsoft Mina appar. När du klickar på FortiGate VPN-panelen i Mina appar omdirigeras detta till FortiGate VPN-inloggnings-URL. Mer information om Mina appar finns i [Introduktion till Mina appar](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* Du kan använda Microsoft Mina appar. När du klickar på FortiGate VPN-panelen i Mina appar omdirigeras detta till FortiGate VPN-inloggnings-URL. Mer information om Mina appar finns i [Introduktion till Mina appar](../user-help/my-apps-portal-end-user-access.md).
 
 
 ## <a name="next-steps"></a>Nästa steg

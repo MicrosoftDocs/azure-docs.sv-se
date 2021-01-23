@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 10/15/2019
 ms.author: haroldw
-ms.openlocfilehash: ed74d0829a8372ea8391fcd331eef2ef3af3dae0
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: d0a10c6c700f11e540dc7edaa27baee35396d814
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97704919"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98732402"
 ---
 # <a name="deploy-okd-in-azure"></a>Distribuera OKD i Azure
 
@@ -119,7 +119,7 @@ Olika versioner kan ha olika parametrar, så kontrol lera de nödvändiga parame
 
 
 > [!NOTE] 
-> Följande kommando kräver Azure CLI 2.0.8 eller senare. Du kan kontrol lera CLI-versionen med `az --version` kommandot. Information om hur du uppdaterar CLI-versionen finns i [Installera Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest).
+> Följande kommando kräver Azure CLI 2.0.8 eller senare. Du kan kontrol lera CLI-versionen med `az --version` kommandot. Information om hur du uppdaterar CLI-versionen finns i [Installera Azure CLI](/cli/azure/install-azure-cli).
 
 I följande exempel distribueras OKD-klustret och alla relaterade resurser till en resurs grupp med namnet openshiftrg, med ett distributions namn på myOpenShiftCluster. Mallen refereras direkt från GitHub-lagrings platsen när en lokal parameter fil med namnet azuredeploy.parameters.json används.
 

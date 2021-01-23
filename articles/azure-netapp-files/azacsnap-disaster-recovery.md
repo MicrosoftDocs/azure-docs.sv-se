@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: phjensen
-ms.openlocfilehash: c34ca08ae2ede9430804f6b8bb33f2bfcb0b39ab
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 70e1823b30814d7dc29fef69215fcb53a2a2ab96
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97632841"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98730878"
 ---
 # <a name="disaster-recovery-using-azure-application-consistent-snapshot-tool-preview"></a>Haveri beredskap med Azure Application konsekvent ögonblicks bild verktyget (förhands granskning)
 
@@ -40,7 +40,7 @@ Följande krav måste uppfyllas innan du planerar redundansväxlingen av haveri 
 - Storage-replikering fungerar. Microsoft Operations-teamet utför konfigurationen av Storage Replication vid tidpunkten för automatisk etablering. Du kan övervaka Storage-replikeringen med hjälp av kommandot `azacsnap -c details --details replication` på Dr-platsen.
 - Du har konfigurerat och konfigurerat lagrings ögonblicks bilder på den primära platsen.
 - Du har en HANA-instans installerad på DR-platsen för den primära med samma SID som den primära instansen.
-- Du läser och förstår proceduren för DR-redundans som beskrivs i [SAP HANA – stora instanser hög tillgänglighet och haveri beredskap på Azure](/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure)
+- Du läser och förstår proceduren för DR-redundans som beskrivs i [SAP HANA – stora instanser hög tillgänglighet och haveri beredskap på Azure](../virtual-machines/workloads/sap/hana-failover-procedure.md)
 - Du har konfigurerat och konfigurerat lagrings ögonblicks bilder på DR-platsen.
 - En konfigurations fil (till exempel `DR.json` ) har skapats med Dr-lagringsenheten och associerad information på Dr-servern.
 - Du har slutfört stegen på DR-webbplatsen för att:

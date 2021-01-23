@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 11/12/2020
 ms.author: gasinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b5c960c7fbcc29d0aaea7511ba2187c916e84ab3
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: f8210e00824d7680f4eecde2f0b299dfcdc93b90
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97935248"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98730579"
 ---
 # <a name="f5-big-ip-access-policy-manager-and-azure-active-directory-integration-for-secure-hybrid-access"></a>F5 BIG-IP åtkomst Policy Manager och Azure Active Directory-integrering för säker hybrid åtkomst
 
@@ -29,19 +29,20 @@ SHA åtgärdar den här hemliga punkten genom att göra det möjligt för organi
 
 Att ha Azure AD förautentiserad åtkomst till stora IP-publicerade tjänster ger många fördelar:
 
-- Lösen ords lös autentisering via [Windows Hello](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-overview), [MS Authenticator](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-download-install), [snabb identitet Online (Fido)-nycklar](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-passwordless-security-key)och [certifikatbaserad autentisering](https://docs.microsoft.com/azure/active-directory/authentication/active-directory-certificate-based-authentication-get-started)
+- Lösen ords lös autentisering via [Windows Hello](/windows/security/identity-protection/hello-for-business/hello-overview), [MS Authenticator](../user-help/user-help-auth-app-download-install.md), [snabb identitet Online (Fido)-nycklar](../authentication/howto-authentication-passwordless-security-key.md)och [certifikatbaserad autentisering](../authentication/active-directory-certificate-based-authentication-get-started.md)
 
-- [Villkorlig åtkomst](https://docs.microsoft.com/azure/active-directory/conditional-access/overview) för ogiltiga och [Multi-Factor Authentication (MFA)](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks)
+- [Villkorlig åtkomst](../conditional-access/overview.md) för ogiltiga och [Multi-Factor Authentication (MFA)](../authentication/concept-mfa-howitworks.md)
 
-- [Identitets skydd](https://docs.microsoft.com/azure/active-directory/identity-protection/overview-identity-protection#:~:text=Identity%20Protection%20is%20a%20tool%20that%20allows%20organizations,detection%20data%20to%20third-party%20utilities%20for%20further%20analysis) – anpassningsbar kontroll genom profilering av användar-och sessions risk
+- [Identitets skydd](../identity-protection/overview-identity-protection.md) – anpassningsbar kontroll genom profilering av användar-och sessions risk
 
-- [Identifiera läckta autentiseringsuppgifter](https://docs.microsoft.com/azure/active-directory/identity-protection/concept-identity-protection-risks)
 
-- [Lösen ords återställning via självbetjäning (SSPR)](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-enable-sspr)
+- [Identifiera läckta autentiseringsuppgifter](../identity-protection/concept-identity-protection-risks.md)
 
-- Samarbets [partner](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-external-users) – rättighets hantering för styrd gäst åtkomst
+- [Lösen ords återställning via självbetjäning (SSPR)](../authentication/tutorial-enable-sspr.md)
 
-- [Cloud App Security (CASB)](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security) – för fullständig identifiering och kontroll av appar
+- Samarbets [partner](../governance/entitlement-management-external-users.md) – rättighets hantering för styrd gäst åtkomst
+
+- [Cloud App Security (CASB)](/cloud-app-security/what-is-cloud-app-security) – för fullständig identifiering och kontroll av appar
 
 - Hot övervakning – [Azure Sentinel](https://azure.microsoft.com/services/azure-sentinel/) för Advanced Threat Analytics
 
@@ -61,7 +62,7 @@ Den lokala Traffic Manager (LTM) möjliggör säker publicering av tjänster via
 
 Integrationen baseras på ett standard Federations förtroende mellan APM och Azure AD, som är gemensamt för de flesta SHA-användnings fall som innehåller [SSL-VPN-scenariot](f5-aad-password-less-vpn.md). Security Assertion Markup Language (SAML), OAuth-och Open ID Connect (OIDC)-resurser är inget undantag, eftersom de kan skyddas för fjärråtkomst. Det kan också finnas scenarier där en stor IP-adress blir en strypning för att få åtkomst till alla tjänster, inklusive SaaS-appar.
 
-En stor IP-möjlighet att integrera med Azure AD är det som gör det möjligt för protokoll över gången att säkra äldre eller icke-Azure AD-integrerade tjänster med moderna kontroller, till exempel [lösen ords mindre autentisering](https://www.microsoft.com/security/business/identity/passwordless) och [villkorlig åtkomst](https://docs.microsoft.com/azure/active-directory/conditional-access/overview). I det här scenariot fortsätter en stor IP att uppfylla sin roll som en omvänd proxy, samtidigt som förautentiseringen och auktoriseringen av Azure AD överförs per tjänst.
+En stor IP-möjlighet att integrera med Azure AD är det som gör det möjligt för protokoll över gången att säkra äldre eller icke-Azure AD-integrerade tjänster med moderna kontroller, till exempel [lösen ords mindre autentisering](https://www.microsoft.com/security/business/identity/passwordless) och [villkorlig åtkomst](../conditional-access/overview.md). I det här scenariot fortsätter en stor IP att uppfylla sin roll som en omvänd proxy, samtidigt som förautentiseringen och auktoriseringen av Azure AD överförs per tjänst.
 
 Steg 1-4 i diagrammet illustrerar förautentisering av Exchange på klient sidan mellan en användare, en stor IP-adress och Azure AD, i en Service Provider initierat flöde. Steg 5-6 visar efterföljande APM-sessioner och SSO till enskilda Server dels tjänster.
 
@@ -71,16 +72,16 @@ Steg 1-4 i diagrammet illustrerar förautentisering av Exchange på klient sidan
 |:------|:-----------|
 | 1. | Användaren väljer en program ikon i portalen och matchar URL: en till SAML SP (BIG-IP) |
 | 2. | BIG-IP omdirigerar användaren till SAML IDP (Azure AD) för förautentisering|
-| 3. | Azure AD bearbetar principer för villkorlig åtkomst och [kontroll av sessioner](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-session) för auktorisering|
+| 3. | Azure AD bearbetar principer för villkorlig åtkomst och [kontroll av sessioner](../conditional-access/concept-conditional-access-session.md) för auktorisering|
 | 4. | Användaren omdirigeras tillbaka till BIG-IP som visar SAML-anspråk som utfärdats av Azure AD |
-| 5. | BIG-IP begär ytterligare sessionsinformation som ska inkluderas i [SSO](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso) och [rollbaserad åtkomst kontroll (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) till den publicerade tjänsten |
+| 5. | BIG-IP begär ytterligare sessionsinformation som ska inkluderas i [SSO](../hybrid/how-to-connect-sso.md) och [rollbaserad åtkomst kontroll (RBAC)](../../role-based-access-control/overview.md) till den publicerade tjänsten |
 | 6. | BIG-IP vidarebefordrar klient förfrågan till backend-tjänsten
 
 ## <a name="user-experience"></a>Användarupplevelse
 
 Vare sig det är en direkt anställd, ett dotter bolag eller en konsument, är de flesta användare redan bekant med Office 365-inloggnings upplevelsen, så åtkomst till BIG-IP-tjänster via SHA förblir i stor erfarenhet.
 
-Användarna hittar nu sina BIG-IP-publicerade tjänster konsoliderade i mina  [appar](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access) eller [O365](https://o365pp.blob.core.windows.net/media/Resources/Microsoft%20365%20Business/Launchpad%20Overview_for%20Partners_10292019.pdf) -startvägar tillsammans med självbetjänings funktioner till en bredare uppsättning tjänster, oavsett typ av enhet eller plats. Användare kan även fortsätta att komma åt publicerade tjänster direkt via BIG-IPs patentskyddade Webtop-portalen, om det är lämpligt. Vid utloggning ser SHA till att en användares session avslutas i båda ändar, BIG-IP och Azure AD, vilket säkerställer att tjänsterna förblir helt skyddade från obehörig åtkomst.  
+Användarna hittar nu sina BIG-IP-publicerade tjänster konsoliderade i mina  [appar](../user-help/my-apps-portal-end-user-access.md) eller [O365](https://o365pp.blob.core.windows.net/media/Resources/Microsoft%20365%20Business/Launchpad%20Overview_for%20Partners_10292019.pdf) -startvägar tillsammans med självbetjänings funktioner till en bredare uppsättning tjänster, oavsett typ av enhet eller plats. Användare kan även fortsätta att komma åt publicerade tjänster direkt via BIG-IPs patentskyddade Webtop-portalen, om det är lämpligt. Vid utloggning ser SHA till att en användares session avslutas i båda ändar, BIG-IP och Azure AD, vilket säkerställer att tjänsterna förblir helt skyddade från obehörig åtkomst.  
 
 Skärm bilderna som tillhandahålls är från Azure AD-App-portalen som användarna har åtkomst till på ett säkert sätt för att hitta sina egna IP-publicerade tjänster och för att hantera deras konto egenskaper.  
 
@@ -92,7 +93,7 @@ Skärm bilderna som tillhandahålls är från Azure AD-App-portalen som använda
 
 En stor IP-roll är viktig för alla företag, så distribuerade BIG-IP-instanser bör övervakas för att säkerställa att publicerade tjänster är hög tillgängliga, både på SHA-nivå och även i drift.
 
-Det finns flera alternativ för loggning av händelser antingen lokalt eller via en SIEM-lösning (Security information and Event Management) som aktiverar lagring och bearbetning av telemetri. En mycket effektiv lösning för övervakning av Azure AD och SHA-Specific-aktivitet är att använda [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) och [Azure Sentinel](https://docs.microsoft.com/azure/sentinel/overview), tillsammans erbjuder:
+Det finns flera alternativ för loggning av händelser antingen lokalt eller via en SIEM-lösning (Security information and Event Management) som aktiverar lagring och bearbetning av telemetri. En mycket effektiv lösning för övervakning av Azure AD och SHA-Specific-aktivitet är att använda [Azure Monitor](../../azure-monitor/overview.md) och [Azure Sentinel](../../sentinel/overview.md), tillsammans erbjuder:
 
 - Detaljerad översikt över din organisation, potentiellt över flera moln och lokala platser, inklusive stor IP-infrastruktur
 
@@ -126,9 +127,9 @@ Att integrera F5 BIG-IP med Azure AD för SHA har följande krav:
 
 - Azure AD-licensiering via något av följande alternativ:
 
-   - En [kostnads fri](https://docs.microsoft.com/windows/client-management/mdm/register-your-free-azure-active-directory-subscription#:~:text=%20Register%20your%20free%20Azure%20Active%20Directory%20subscription,will%20take%20you%20to%20the%20Azure...%20More%20) Azure AD-prenumeration tillhandahåller minimi kraven för att implementera SHA med lösen ords lös autentisering
+   - En [kostnads fri](/windows/client-management/mdm/register-your-free-azure-active-directory-subscription#:~:text=%20Register%20your%20free%20Azure%20Active%20Directory%20subscription,will%20take%20you%20to%20the%20Azure...%20More%20) Azure AD-prenumeration tillhandahåller minimi kraven för att implementera SHA med lösen ords lös autentisering
 
-   - En [Premium-prenumeration](https://azure.microsoft.com/pricing/details/active-directory/) ger alla ytterligare värden som läggs till i förordet, inklusive [villkorlig åtkomst](https://docs.microsoft.com/azure/active-directory/conditional-access/overview), [MFA](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks)och [identitets skydd](https://docs.microsoft.com/azure/active-directory/identity-protection/overview-identity-protection)
+   - En [Premium-prenumeration](https://azure.microsoft.com/pricing/details/active-directory/) ger alla ytterligare värden som läggs till i förordet, inklusive [villkorlig åtkomst](../conditional-access/overview.md), [MFA](../authentication/concept-mfa-howitworks.md)och [identitets skydd](../identity-protection/overview-identity-protection.md)
 
 Ingen tidigare erfarenhet eller F5 BIG-IP-kunskap krävs för att implementera SHA, men vi rekommenderar att du bekantar dig med F5 stor IP-terminologi. F5's Rich [Knowledge Base](https://www.f5.com/services/resources/glossary) är också en bra plats för att börja bygga stor IP-kunskap.
 
@@ -138,9 +139,9 @@ Följande självstudier ger detaljerad vägledning om hur du implementerar någr
 
 - [F5 BIG-IP i Azure-distribution genom gång](f5-bigip-deployment-guide.md)
 
-- [F5 BIG-IP APM och Azure AD SSO till Kerberos-program](https://docs.microsoft.com/azure/active-directory/saas-apps/kerbf5-tutorial#configure-f5-single-sign-on-for-kerberos-application)
+- [F5 BIG-IP APM och Azure AD SSO till Kerberos-program](../saas-apps/kerbf5-tutorial.md#configure-f5-single-sign-on-for-kerberos-application)
 
-- [F5 BIG-IP APM och Azure AD SSO till Huvudbaserade program](https://docs.microsoft.com/azure/active-directory/saas-apps/headerf5-tutorial#configure-f5-single-sign-on-for-header-based-application)
+- [F5 BIG-IP APM och Azure AD SSO till Huvudbaserade program](../saas-apps/headerf5-tutorial.md#configure-f5-single-sign-on-for-header-based-application)
 
 - [Skydda F5 BIG-IP SSL-VPN med Azure AD SHA](f5-aad-password-less-vpn.md)
 

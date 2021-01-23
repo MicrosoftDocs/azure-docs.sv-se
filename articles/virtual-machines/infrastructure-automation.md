@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.workload: infrastructure
 ms.date: 07/17/2020
 ms.author: cynthn
-ms.openlocfilehash: a20c19c3da89801570ca4d74a646e3cf0d8434b6
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 7a702fbf405011a9df3e7e77936a9a37f0fdfad7
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98675910"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98730646"
 ---
 # <a name="use-infrastructure-automation-tools-with-virtual-machines-in-azure"></a>Använd infrastruktur automatiserings verktyg med virtuella datorer i Azure
 
@@ -126,7 +126,7 @@ Lär dig att:
 
 Läs mer om:
 
-- [Azure DevOps-tjänster](/azure/devops/user-guide/index?view=vsts).
+- [Azure DevOps-tjänster](/azure/devops/user-guide/index).
 
 
 ## <a name="jenkins"></a>Jenkins

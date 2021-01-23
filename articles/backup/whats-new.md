@@ -3,12 +3,12 @@ title: Nyheter i Azure Backup
 description: Lär dig mer om nya funktioner i Azure Backup.
 ms.topic: conceptual
 ms.date: 11/11/2020
-ms.openlocfilehash: 62a6146990863c339917777b2624fee76ebe60d8
-ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
+ms.openlocfilehash: 935c2a806ed3b08f19e680bf1522d98a9ad67666
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98569427"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98730297"
 ---
 # <a name="whats-new-in-azure-backup"></a>Nyheter i Azure Backup
 
@@ -37,7 +37,7 @@ Du kan lära dig mer om de nya versionerna genom att skriva bok märken på den 
 
 ## <a name="azure-disk-backup-in-preview"></a>Säkerhets kopiering av Azure-disk (i för hands version)
 
-Azure disk Backup erbjuder en nyckel färdig lösning som tillhandahåller hantering av ögonblicks bilder för [azure Managed disks](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview) genom att automatisera periodiska skapande av ögonblicks bilder och behålla den för en konfigurerad varaktighet med hjälp av säkerhets kopierings principen. Du kan hantera disk ögonblicks bilderna med noll som infrastruktur kostnader och utan behov av anpassade skript eller hanterings kostnader. Detta är en krasch lösning för säkerhets kopiering som tar säkerhets kopiering av en hanterad disk vid en viss tidpunkt med hjälp av [stegvisa ögonblicks bilder](https://docs.microsoft.com/azure/virtual-machines/windows/disks-incremental-snapshots) med stöd för flera säkerhets kopior per dag. Det är också en agent lös lösning som inte påverkar prestanda för produktions program. Den har stöd för säkerhets kopiering och återställning av både OS-och data diskar (inklusive delade diskar), oavsett om de är kopplade till en virtuell Azure-dator som körs eller inte.
+Azure disk Backup erbjuder en nyckel färdig lösning som tillhandahåller hantering av ögonblicks bilder för [azure Managed disks](../virtual-machines/managed-disks-overview.md) genom att automatisera periodiska skapande av ögonblicks bilder och behålla den för en konfigurerad varaktighet med hjälp av säkerhets kopierings principen. Du kan hantera disk ögonblicks bilderna med noll som infrastruktur kostnader och utan behov av anpassade skript eller hanterings kostnader. Detta är en krasch lösning för säkerhets kopiering som tar säkerhets kopiering av en hanterad disk vid en viss tidpunkt med hjälp av [stegvisa ögonblicks bilder](../virtual-machines/disks-incremental-snapshots.md) med stöd för flera säkerhets kopior per dag. Det är också en agent lös lösning som inte påverkar prestanda för produktions program. Den har stöd för säkerhets kopiering och återställning av både OS-och data diskar (inklusive delade diskar), oavsett om de är kopplade till en virtuell Azure-dator som körs eller inte.
 
 Mer information finns i [säkerhets kopiering av Azure-diskar (i för hands version)](disk-backup-overview.md).
 

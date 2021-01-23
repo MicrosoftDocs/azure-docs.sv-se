@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/12/2020
 ms.author: gasinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2961f3f01f6ea4398fab6144b34fcb4409cdd96f
-ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
+ms.openlocfilehash: 84e177f1ce55d803f54bb2553078441557e5c191
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96318366"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98730895"
 ---
 # <a name="tutorial-for-azure-active-directory-single-sign-on-integration-with-f5-big-ip-for-password-less-vpn"></a>Självstudie för Azure Active Directory integration med enkel inloggning med F5 BIG-IP för lösen ords mindre VPN
 
@@ -24,13 +24,13 @@ I den här självstudien får du lära dig att integrera F5's BIG-IP-baserade Se
 
 Att integrera en BIG-IP SSL-VPN med Azure AD ger [många viktiga fördelar](f5-aad-integration.md), inklusive:
 
-- Förbättrad kostnads styrning utan förtroende genom [förautentisering och auktorisering i Azure AD](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization)
+- Förbättrad kostnads styrning utan förtroende genom [förautentisering och auktorisering i Azure AD](../../app-service/overview-authentication-authorization.md)
 
 - [Lösen ords mindre autentisering till VPN-tjänsten](https://www.microsoft.com/security/business/identity/passwordless)
 
 - Hantera identiteter och åtkomst från ett enda kontroll plan – [Azure Portal](https://portal.azure.com/#home)
 
-Trots att de här fantastiska värdena ökar, är det klassiska VPN-nätverket dock fortfarande predikat på begreppet nätverks gräns, där betrott är på insidan och inte är betrott utanför. Den här modellen är inte längre effektiv för att uppnå ett True position-förtroende, eftersom företags till gångar inte längre är begränsade till väggarna i ett företags data Center, utan i stället i miljöer med flera moln utan fasta gränser. Därför uppmuntrar vi våra kunder att överväga att flytta till en mer identitets driven metod vid hantering [av åtkomst per program](https://docs.microsoft.com/azure/active-directory/fundamentals/five-steps-to-full-application-integration-with-azure-ad).
+Trots att de här fantastiska värdena ökar, är det klassiska VPN-nätverket dock fortfarande predikat på begreppet nätverks gräns, där betrott är på insidan och inte är betrott utanför. Den här modellen är inte längre effektiv för att uppnå ett True position-förtroende, eftersom företags till gångar inte längre är begränsade till väggarna i ett företags data Center, utan i stället i miljöer med flera moln utan fasta gränser. Därför uppmuntrar vi våra kunder att överväga att flytta till en mer identitets driven metod vid hantering [av åtkomst per program](../fundamentals/five-steps-to-full-application-integration-with-azure-ad.md).
 
 ## <a name="scenario-description"></a>Scenariobeskrivning
 
@@ -41,15 +41,15 @@ I det här scenariot kommer BIG-IP APM-instansen av SSL-VPN-tjänsten att konfig
 >[!NOTE]
 >Alla exempel strängar eller värden som refereras till i den här guiden bör ersättas med dem för din faktiska miljö.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Tidigare erfarenhet eller kunskaper om F5 BIG-IP är inte nödvändigt, men du behöver:
 
 - En [kostnads fri](https://azure.microsoft.com/trial/get-started-active-directory/) Azure AD-prenumeration eller högre
 
-- Användar identiteter bör [synkroniseras från sin lokala katalog](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-whatis) till Azure AD.
+- Användar identiteter bör [synkroniseras från sin lokala katalog](../hybrid/how-to-connect-sync-whatis.md) till Azure AD.
 
-- Ett konto med administratörs [behörighet](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#application-administrator) för Azure AD-program
+- Ett konto med administratörs [behörighet](../roles/permissions-reference.md#application-administrator) för Azure AD-program
 
 - En befintlig stor IP-infrastruktur med Routning av klient trafik till och från BIG-IP eller [distribuera en stor virtuell IP-utgåva till Azure](f5-bigip-deployment-guide.md).
 
@@ -64,7 +64,7 @@ Genom att bekanta dig med [F5 Big-IP-terminologi](https://www.f5.com/services/re
 
 ## <a name="add-f5-big-ip-from-the-azure-ad-gallery"></a>Lägg till F5 BIG-IP från Azure AD-galleriet
 
-Genom att konfigurera ett SAML Federations förtroende mellan BIG-IP kan du få Azure AD BIG-IP att lämna förautentisering och [villkorlig åtkomst](https://docs.microsoft.com/azure/active-directory/conditional-access/overview) till Azure AD innan du beviljar åtkomst till den publicerade VPN-tjänsten.
+Genom att konfigurera ett SAML Federations förtroende mellan BIG-IP kan du få Azure AD BIG-IP att lämna förautentisering och [villkorlig åtkomst](../conditional-access/overview.md) till Azure AD innan du beviljar åtkomst till den publicerade VPN-tjänsten.
 
 1. Logga in på Azure AD-portalen med ett konto med program administratörs behörighet
 
@@ -88,7 +88,7 @@ Genom att konfigurera ett SAML Federations förtroende mellan BIG-IP kan du få 
 
    - Gör samma sak med text rutan **svars-URL** , inklusive sökvägen till SAML-slutpunkten. Till exempel `https://ssl-vpn.contoso.com/saml/sp/profile/post/acs`
 
-   - I den här konfigurationen kommer programmet att köras i ett IDP initierat läge, där Azure AD utfärdar användaren med en SAML-kontroll innan den omdirigeras till tjänsten BIG-IP SAML. För appar som inte stöder IDP initierat läge anger du **inloggnings-URL: en** för tjänsten Big-IP SAML. Exempelvis `https://ssl-vpn.contoso.com`.
+   - I den här konfigurationen kommer programmet att köras i ett IDP initierat läge, där Azure AD utfärdar användaren med en SAML-kontroll innan den omdirigeras till tjänsten BIG-IP SAML. För appar som inte stöder IDP initierat läge anger du **inloggnings-URL: en** för tjänsten Big-IP SAML. Ett exempel är `https://ssl-vpn.contoso.com`.
 
    - För utloggnings-URL: en anger du slut punkten för utloggnings punkten för BIG-IP APM (service nivå) för pended av värd rubriken för den tjänst som publiceras. Till exempel `https://ssl-vpn.contoso.com/saml/sp/profile/redirect/slr`
 
@@ -105,7 +105,7 @@ Observera egenskaperna för avsnittet **användarattribut &-anspråk** , efterso
 
 ![Bild som visar anspråk för användar attribut](media/f5-sso-vpn/user-attributes-claims.png)
 
-Du kan lägga till eventuella andra särskilda anspråk som din BIG-IP-publicerade tjänst förväntar sig, och Observera att alla anspråk som definierats utöver standard uppsättningen bara utfärdas om de finns i Azure AD, som ifyllda attribut. På samma sätt måste katalog [roller eller grupp](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-fed-group-claims) medlemskap också definiera mot ett användar objekt i Azure AD innan de kan utfärdas som ett anspråk.
+Du kan lägga till eventuella andra särskilda anspråk som din BIG-IP-publicerade tjänst förväntar sig, och Observera att alla anspråk som definierats utöver standard uppsättningen bara utfärdas om de finns i Azure AD, som ifyllda attribut. På samma sätt måste katalog [roller eller grupp](../hybrid/how-to-connect-fed-group-claims.md) medlemskap också definiera mot ett användar objekt i Azure AD innan de kan utfärdas som ett anspråk.
 
 ![Bild som visar nedladdnings länken för federationsmetadata](media/f5-sso-vpn/saml-signing-certificate.png)
 
@@ -165,7 +165,7 @@ Följande steg gör det möjligt för SSL-VPN att erbjudas användare via BIG-IP
 
 1. Gå till **åtkomst** till  >  **webbbäst**  >  **Webtop-listor** och välj **skapa**.
 
-2. Ge portalen ett namn och ange en **fullständig** typ. Exempelvis `Contoso_webtop`.
+2. Ge portalen ett namn och ange en **fullständig** typ. Ett exempel är `Contoso_webtop`.
 
 3. Justera återstående inställningar och välj sedan **avslutad**.
 
@@ -237,7 +237,7 @@ Med de VPN-objekt som kon figurer ATS krävs en åtkomst princip för att aktive
 
 ![Bild som visar princip per session](media/f5-sso-vpn/per-session-policy.png)
 
-5. Välj **+** signeringen och i popup-fönstret Välj **Authentication**  >  **SAML auth**-autentisering  >  **Lägg till objekt**.
+5. Välj **+** signeringen och i popup-fönstret Välj   >  **SAML auth**-autentisering  >  **Lägg till objekt**.
 
 6. I SAML-autentisering SP-konfigurationen väljer du det virtuella SAML-objektet som du skapade tidigare, följt av **Spara**.
 
@@ -299,11 +299,11 @@ Med alla inställningar på plats kräver APM nu en virtuell klient server för 
 
 - [Slutet på lösen orden, växla lösen ord](https://www.microsoft.com/security/business/identity/passwordless)
 
-- [Vad är villkorsstyrd åtkomst?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Vad är villkorsstyrd åtkomst?](../conditional-access/overview.md)
 
 - [Microsoft Zero Trust Framework för att aktivera fjärran slutet](https://www.microsoft.com/security/blog/2020/04/02/announcing-microsoft-zero-trust-assessment-tool/)
 
-- [Fem steg till fullständig program integrering med Azure AD](https://docs.microsoft.com/azure/active-directory/fundamentals/five-steps-to-full-application-integration-with-azure-ad)
+- [Fem steg till fullständig program integrering med Azure AD](../fundamentals/five-steps-to-full-application-integration-with-azure-ad.md)
 
 ## <a name="next-steps"></a>Nästa steg
 
@@ -312,4 +312,4 @@ Med alla inställningar på plats kräver APM nu en virtuell klient server för 
 ![Bild som visar VPN-start](media/f5-sso-vpn/vpn-launcher.png)
 
 Om du väljer VPN-panelen installeras BIG-IP Edge-klienten och upprättar en VPN-anslutning som är konfigurerad för SHA.
-F5 VPN-programmet bör också vara synligt som en mål resurs i villkorlig åtkomst för Azure AD. Se vår [vägledning](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-policies) för att skapa principer för villkorlig åtkomst och även aktivera användare för [lösen ords mindre autentisering](https://www.microsoft.com/security/business/identity/passwordless)med Azure AD.
+F5 VPN-programmet bör också vara synligt som en mål resurs i villkorlig åtkomst för Azure AD. Se vår [vägledning](../conditional-access/concept-conditional-access-policies.md) för att skapa principer för villkorlig åtkomst och även aktivera användare för [lösen ords mindre autentisering](https://www.microsoft.com/security/business/identity/passwordless)med Azure AD.

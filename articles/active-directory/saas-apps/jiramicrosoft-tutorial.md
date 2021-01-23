@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/28/2020
 ms.author: jeedes
-ms.openlocfilehash: 4793cad25e34e2e318dd205ba5f474d4529d13d5
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 75b8230a1027bbf3ff3d73fb35ce65107c2db7e9
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98183922"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98730679"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-jira-saml-sso-by-microsoft"></a>Självstudie: Azure Active Directory enkel inloggning (SSO) med JIRA SAML SSO från Microsoft
 
@@ -26,7 +26,7 @@ I den här självstudien får du lära dig att integrera JIRA SAML SSO från Mic
 * Gör det möjligt för användarna att logga in automatiskt till JIRA SAML SSO från Microsoft med deras Azure AD-konton.
 * Hantera dina konton på en central plats – Azure Portal.
 
-## <a name="description"></a>Description
+## <a name="description"></a>Beskrivning
 
 Använd ditt Microsoft Azure Active Directory-konto med Atlassian JIRA-servern för att aktivera enkel inloggning. På så sätt kan alla organisations användare använda Azure AD-autentiseringsuppgifterna för att logga in i JIRA-programmet. Det här plugin-programmet använder SAML 2.0 för federation.
 
@@ -254,7 +254,7 @@ I det här avsnittet ska du testa Azure AD-konfigurationen för enkel inloggning
 
 * Gå till JIRA SAML SSO via Microsoft Sign-URL direkt och starta inloggnings flödet därifrån.
 
-* Du kan använda Microsoft Mina appar. När du klickar på JIRA SAML SSO med Microsofts panel i Mina appar omdirigeras det till JIRA SAML SSO med Microsoft Sign-on URL. Mer information om Mina appar finns i [Introduktion till Mina appar](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* Du kan använda Microsoft Mina appar. När du klickar på JIRA SAML SSO med Microsofts panel i Mina appar omdirigeras det till JIRA SAML SSO med Microsoft Sign-on URL. Mer information om Mina appar finns i [Introduktion till Mina appar](../user-help/my-apps-portal-end-user-access.md).
 
 
 ## <a name="next-steps"></a>Nästa steg

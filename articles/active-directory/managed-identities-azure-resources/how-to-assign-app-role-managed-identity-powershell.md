@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/10/2020
 ms.author: jodowns
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 409ba7a954830bb2370ce83989b9e8b08b742fe7
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: f2d844054e3744aafa01f43ded354a5b5d9f8b4b
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97631184"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98732108"
 ---
 # <a name="assign-a-managed-identity-access-to-an-application-role-using-powershell"></a>Tilldela en hanterad identitets åtkomst till en program roll med hjälp av PowerShell
 
@@ -30,13 +30,13 @@ I den här artikeln får du lära dig hur du tilldelar en hanterad identitet til
 
 [!INCLUDE [az-powershell-update](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 - Om du inte känner till hanterade identiteter för Azure-resurser kan du läsa [avsnittet Översikt](overview.md). **Se till att granska [skillnaden mellan en tilldelad och användardefinierad hanterad identitet](overview.md#managed-identity-types)**.
 - Om du inte redan har ett Azure-konto [registrerar du dig för ett kostnadsfritt konto](https://azure.microsoft.com/free/) innan du fortsätter.
 - Om du vill köra exempel skripten har du två alternativ:
     - Använd [Azure Cloud Shell](../../cloud-shell/overview.md), som du kan öppna med knappen **prova** i det övre högra hörnet av kodblock.
-    - Kör skript lokalt genom att installera den senaste versionen av [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2).
+    - Kör skript lokalt genom att installera den senaste versionen av [Azure AD PowerShell](/powershell/azure/active-directory/install-adv2).
 
 ## <a name="assign-a-managed-identity-access-to-another-applications-app-role"></a>Tilldela en hanterad identitets åtkomst till ett annat programs app-roll
 
