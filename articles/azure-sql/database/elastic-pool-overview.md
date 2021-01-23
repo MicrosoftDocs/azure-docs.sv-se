@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, sstein
 ms.date: 12/9/2020
-ms.openlocfilehash: d1ba9445441f38c55b40a8f8ca55471ea8b0a06d
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: f50042caf21630c5054ead76825e49b820405c5b
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97008596"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98732702"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-databases-in-azure-sql-database"></a>Elastiska pooler hjälper dig att hantera och skala flera databaser i Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -156,7 +156,7 @@ När du har konfigurerat poolen kan du klicka på "Använd", namnge poolen och k
 
 I Azure Portal kan du övervaka användningen av en elastisk pool och databaserna i poolen. Du kan också göra en uppsättning ändringar i den elastiska poolen och skicka alla ändringar samtidigt. Ändringarna omfattar att lägga till eller ta bort databaser, ändra inställningarna för elastisk pool eller ändra databas inställningarna.
 
-Du kan använda de inbyggda verktygen för [prestanda övervakning](https://docs.microsoft.com/azure/azure-sql/database/performance-guidance) och [avisering](https://docs.microsoft.com/azure/azure-sql/database/alerts-insights-configure-portal), kombinerat med prestanda klassificering.  Dessutom kan SQL Database [generera mått och resurs loggar](https://docs.microsoft.com/azure/azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure?tabs=azure-portal) för enklare övervakning.
+Du kan använda de inbyggda verktygen för [prestanda övervakning](./performance-guidance.md) och [avisering](./alerts-insights-configure-portal.md), kombinerat med prestanda klassificering.  Dessutom kan SQL Database [generera mått och resurs loggar](./metrics-diagnostic-telemetry-logging-streaming-export-configure.md?tabs=azure-portal) för enklare övervakning.
 
 ## <a name="customer-case-studies"></a>Kundfallstudier
 

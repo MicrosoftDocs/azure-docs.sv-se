@@ -1,26 +1,22 @@
 ---
-title: Kom igång med att integrera Azure AD med appar | Microsoft Docs
+title: Kom igång med att integrera Azure AD med appar
 description: Den här artikeln är en komma igång-guide för att integrera Azure Active Directory (AD) med lokala program och moln program.
 services: active-directory
-documentationcenter: ''
 author: kenwith
 manager: celestedg
 ms.service: active-directory
-ms.subservice: app-mgmt
-ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/16/2018
 ms.author: kenwith
 ms.reviewer: asteen
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 913b7975de4598bba7240647c1d9e8c81cd1cec9
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: db3d3623e175d582a2fe271d73aa452ca07b8e8d
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94659105"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735074"
 ---
 # <a name="integrating-azure-active-directory-with-applications-getting-started-guide"></a>Att integrera Azure Active Directory med program komma igång-guide
 
@@ -77,9 +73,7 @@ Varje program kan ha olika autentiseringskrav. Med Azure AD kan du använda sign
 Med Microsoft Azure AD Application Proxy kan du ge åtkomst till program som finns i ditt privata nätverk på ett säkert sätt, från valfri plats och på valfri enhet. När du har installerat en Application Proxy-koppling i din miljö kan den enkelt konfigureras med Azure AD.
 
 ### <a name="integrating-custom-applications"></a>Integrera anpassade program
-Om du skriver ett nytt program och vill hjälpa utvecklare att använda kraften i Azure AD, se [GUID-utvecklare](./developer-guidance-for-integrating-applications.md).
-
-Om du vill lägga till ett anpassat program i Azure Application galleriet, se ["ta med din egen app" med Azure AD Self-Service SAML-konfiguration](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/17/bring-your-own-app-with-azure-ad-self-service-saml-configuration-now-in-preview/).
+Om du vill lägga till ett anpassat program i Azure Application galleriet, se [Publicera appen i Azure AD App-galleriet](../develop/v2-howto-app-gallery-listing.md).
 
 ## <a name="managing-access-to-applications"></a>Hantera åtkomst till program
 I följande artiklar beskrivs hur du kan hantera åtkomst till program när de har integrerats med Azure AD med hjälp av Azure AD-anslutningar och Azure AD.

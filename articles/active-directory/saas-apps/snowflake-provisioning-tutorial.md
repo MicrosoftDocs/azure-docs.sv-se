@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: cc88712dd686983baed858de47e11dfa44e85350
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: 9190585face277d92ef86c9bfa045d6d8c05b01c
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955526"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734885"
 ---
 # <a name="tutorial-configure-snowflake-for-automatic-user-provisioning"></a>Självstudie: Konfigurera snö för automatisk användar etablering
 
@@ -164,7 +164,7 @@ När du har konfigurerat etableringen använder du följande resurser till att �
 
 * **IP-intervall** 
 
-   Azure AD Provisioning-tjänsten fungerar för närvarande under ett visst IP-intervall. Så om det behövs kan du begränsa andra IP-adressintervall och lägga till dessa specifika IP-intervall i tillåten för ditt program för att tillåta trafikflöde från Azure AD Provisioning-tjänsten till ditt program. Läs dokumentationen vid [IP-intervall](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#ip-ranges).
+   Azure AD Provisioning-tjänsten fungerar för närvarande under ett visst IP-intervall. Så om det behövs kan du begränsa andra IP-adressintervall och lägga till dessa specifika IP-intervall i tillåten för ditt program för att tillåta trafikflöde från Azure AD Provisioning-tjänsten till ditt program. Läs dokumentationen vid [IP-intervall](../app-provisioning/use-scim-to-provision-users-and-groups.md#ip-ranges).
 
 ## <a name="change-log"></a>Ändrings logg
 

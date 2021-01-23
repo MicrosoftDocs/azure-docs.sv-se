@@ -6,12 +6,12 @@ ms.author: sread
 ms.date: 03/30/2020
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: b2cac7a8310482305467a1cb3ed3127eb18ae416
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 2d48c767b836771600b3491299e0bdb33aacb75b
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97915784"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98733157"
 ---
 # <a name="set-up-micro-focus-cics-bankdemo-for-micro-focus-enterprise-developer-40-on-azure"></a>Konfigurera Micro Focus CICS BankDemo för Micro Focus Enterprise Developer 4,0 på Azure
 
@@ -28,7 +28,7 @@ CICs står för system för kontroll av kund information, den transaktions platt
 
 - [SQL Server 2017 Express Edition](https://www.microsoft.com/sql-server/sql-server-editions-express). Ladda ned och installera det på den virtuella datorn för Enterprise Developer. Enterprise Server kräver en databas för hantering av CICS-regioner och BankDemo-programmet använder också en SQL Server databas som kallas BANKDEMO. Den här demon förutsätter att du använder SQL Server Express för båda databaserna. När du installerar väljer du den grundläggande installationen.
 
-- [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017&preserve-view=true) (SSMS). SSMS används för att hantera databaser och köra ett T-SQL-skript. Ladda ned och installera det på den virtuella datorn för Enterprise Developer.
+- [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS). SSMS används för att hantera databaser och köra ett T-SQL-skript. Ladda ned och installera det på den virtuella datorn för Enterprise Developer.
 
 - [Visual studio 2019](https://azure.microsoft.com/downloads/) med den senaste Service Pack-eller [Visual Studio-communityn](https://visualstudio.microsoft.com/vs/community/), som du kan ladda ned kostnads fritt.
 

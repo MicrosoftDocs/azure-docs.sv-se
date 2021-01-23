@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/25/2018
 ms.author: robinsh
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 0db05c8caae8483de3b55448bfbe6b2bcfc23187
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: fdfb2470e83cefaeb6df35115f7bb46149d8ffe6
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98625289"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734014"
 ---
 # <a name="tutorial-part-2---view-the-routed-messages"></a>Självstudie: del 2 – Visa dirigerade meddelanden
 
@@ -48,7 +48,7 @@ Service Bus-kön ska användas för att ta emot meddelanden som har angetts som 
 
    **Plats**: Använd din plats. I den här självstudien används **USA, västra**.
 
-   **Log Analytics**: Den här växeln bör vara avstängd.
+   **Aktivera Log Analytics**: den här växlingen ska vara avstängd.
 
    ![Skärmen skapa Logic app](./media/tutorial-routing-view-message-routing-results/create-logic-app.png)
 
@@ -151,6 +151,8 @@ Om du vill se data i Power BI-visualiseringen konfigurerar du först ett Stream 
    **Namn på datauppsättning**: Namnet på datauppsättningen som ska användas i Power BI. I självstudien används **contosodataset**. 
 
    **Tabellnamn**: Namnet på tabellen som ska användas i Power BI. I självstudien används **contosotable**.
+
+  **Autentiseringsläge**: Välj det läge som ska användas.
 
    För resten av fälten accepterar du standardvärdena.
 

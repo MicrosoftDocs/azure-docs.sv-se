@@ -11,12 +11,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviwer: vanto
 ms.date: 01/15/2021
-ms.openlocfilehash: 4c77103dbb043ef9d6af9a4078b3e574ab5f953f
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: ded1406c47bb3f00c366da7a5b28319f3712f8a7
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98253569"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98733764"
 ---
 # <a name="enable-intel-sgx-for-your-azure-sql-database"></a>Aktivera Intel SGX för din Azure SQL Database 
 
@@ -25,7 +25,7 @@ ms.locfileid: "98253569"
 > [!NOTE]
 > Always Encrypted med säker enclaves för Azure SQL Database finns för närvarande i **offentlig för hands version**.
 
-[Always Encrypted med säker enclaves](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-enclaves) i Azure SQL Database använder [Intel Software Guard-tillägg (Intel SGX)](https://itpeernetwork.intel.com/microsoft-azure-confidential-computing/) enclaves. För att Intel SGX ska vara tillgänglig måste-databasen använda [vCore-modellen](service-tiers-vcore.md) och maskin varu genereringen för [DC-serien](service-tiers-vcore.md#dc-series) .
+[Always Encrypted med säker enclaves](/sql/relational-databases/security/encryption/always-encrypted-enclaves) i Azure SQL Database använder [Intel Software Guard-tillägg (Intel SGX)](https://itpeernetwork.intel.com/microsoft-azure-confidential-computing/) enclaves. För att Intel SGX ska vara tillgänglig måste-databasen använda [vCore-modellen](service-tiers-vcore.md) och maskin varu genereringen för [DC-serien](service-tiers-vcore.md#dc-series) .
 
 Att konfigurera maskin varu generationens maskin varu generation för att aktivera Intel SGX-enclaves är Azure SQL Database administratörens ansvar. Se [roller och ansvars områden när du konfigurerar SGX-enclaves och attestering](always-encrypted-enclaves-plan.md#roles-and-responsibilities-when-configuring-sgx-enclaves-and-attestation).
 

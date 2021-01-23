@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9500d682a99e6345289a83b4b3b2fc29ffe18457
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: b5025aa322ae26f9dd7c683d0e54762fd33eb355
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98676892"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735389"
 ---
 # <a name="query-storage-files-with-serverless-sql-pool-in-azure-synapse-analytics"></a>Fråga Storage-filer med Server lös SQL-pool i Azure Synapse Analytics
 
@@ -184,7 +184,7 @@ Som standard `OPENROWSET` matchar funktionen käll fält namn och sökväg med k
 - Funktionen returnerar ett skalärt värde, till exempel int, decimal och varchar, från det angivna elementet och på den angivna sökvägen för alla Parquet typer som inte finns i den kapslade typ gruppen.
 - Om sökvägen pekar på ett element som är av en kapslad typ returnerar funktionen ett JSON-fragment som börjar från det översta elementet på den angivna sökvägen. JSON-fragmentet är av typen VARCHAR (8000).
 - Om egenskapen inte kan hittas på den angivna column_name, returnerar funktionen ett fel.
-- Om egenskapen inte kan hittas på den angivna column_path, beroende på [Sök vägs läge](/sql/relational-databases/json/json-path-expressions-sql-server?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#PATHMODE), returnerar funktionen ett fel när det är i strikt läge eller null i lax-läge.
+- Om egenskapen inte kan hittas på den angivna column_path, beroende på [Sök vägs läge](/sql/relational-databases/json/json-path-expressions-sql-server?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true#PATHMODE), returnerar funktionen ett fel när det är i strikt läge eller null i lax-läge.
 
 Läs avsnittet åtkomst element från kapslade kolumner i artikeln [fråga Parquet kapslade typer](query-parquet-nested-types.md#read-properties-from-nested-object-columns) för fråge exempel.
 
@@ -248,7 +248,7 @@ Demonstrations data innehåller följande data uppsättningar:
 - Testa Parquet-filer med kapslade kolumner
 - Böcker i JSON-format
 
-| Mappsökväg                                                  | Description                                                  |
+| Mappsökväg                                                  | Beskrivning                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | SKV                                                        | Överordnad mapp för data i CSV-format                         |
 | /csv/population/<br />/csv/population-unix/<br />/csv/population-unix-hdr/<br />/csv/population-unix-hdr-escape<br />/csv/population-unix-hdr-quoted | Mappar med populations data filer i olika CSV-format. |

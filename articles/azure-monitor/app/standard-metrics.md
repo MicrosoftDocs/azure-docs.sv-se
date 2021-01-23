@@ -5,12 +5,12 @@ services: azure-monitor
 ms.topic: reference
 ms.date: 07/03/2019
 ms.subservice: application-insights
-ms.openlocfilehash: f59dce5a450cd745ad05ea3b53d85606706a8eaa
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 8da719f399c0c49efd478f05a0114d85233c880f
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97513463"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98732636"
 ---
 # <a name="application-insights-standard-metrics"></a>Application Insights standard mått
 
@@ -56,31 +56,31 @@ Webb läsar mått samlas in av Application Insights JavaScript SDK från verklig
 
 |Måttenhet|Agg regeringar som stöds| Dimensioner som stöds|
 |---|---|---|
-|Millisekunder|Genomsnitt, min, max|Inga|
+|Millisekunder|Genomsnitt, min, max|Inget|
 
 ### <a name="client-processing-time-browsertimingprocessingduration"></a>Klient bearbetnings tid (browserTiming/processingDuration)
 
 |Måttenhet|Agg regeringar som stöds|Dimensioner som stöds|
 |---|---|---|
-|Millisekunder|Genomsnitt, min, max|Inga|
+|Millisekunder|Genomsnitt, min, max|Inget|
 
 ### <a name="page-load-network-connect-time-browsertimingsnetworkduration"></a>Sid inläsning nätverks anslutnings tid (browserTimings/networkDuration)
 
 |Måttenhet|Agg regeringar som stöds| Dimensioner som stöds|
 |---|---|---|
-|Millisekunder|Genomsnitt, min, max|Inga|
+|Millisekunder|Genomsnitt, min, max|Inget|
 
 ### <a name="receiving-response-time-browsertimingsreceiveduration"></a>Tar emot svars tid (browserTimings/receiveDuration)
 
 |Måttenhet|Agg regeringar som stöds| Dimensioner som stöds|
 |---|---|---|
-|Millisekunder|Genomsnitt, min, max|Inga|
+|Millisekunder|Genomsnitt, min, max|Inget|
 
 ### <a name="send-request-time-browsertimingssendduration"></a>Sändnings tid för begäran (browserTimings/sendDuration)
 
 |Måttenhet|Agg regeringar som stöds| Dimensioner som stöds|
 |---|---|---|
-|Millisekunder|Genomsnitt, min, max|Inga|
+|Millisekunder|Genomsnitt, min, max|Inget|
 
 ## <a name="failure-metrics"></a>Felaktiga mått
 
@@ -272,5 +272,5 @@ Antalet spårnings instruktioner som loggats med TrackTrace () Application Insig
 
 ## <a name="next-steps"></a>Nästa steg
 
-* Lär dig mer om [log-baserade och föraggregerade mått](https://docs.microsoft.com/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics).
-* [Loggbaserade mått frågor och definitioner](https://docs.microsoft.com/azure/azure-monitor/platform/app-insights-metrics).
+* Lär dig mer om [log-baserade och föraggregerade mått](./pre-aggregated-metrics-log-metrics.md).
+* [Loggbaserade mått frågor och definitioner](../platform/app-insights-metrics.md).

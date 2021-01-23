@@ -11,12 +11,12 @@ ms.date: 03/26/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seoapril2019, azure-synapse
-ms.openlocfilehash: 6750f010e3992a2b76cc688449ad44efa7ec76d0
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 68bab754142538fc6067cf2593ae6244a03a48d1
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98683281"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734822"
 ---
 # <a name="create-table-as-select-ctas"></a>CREATE TABLE SOM SELECT (CTAS)
 
@@ -208,7 +208,7 @@ DROP TABLE CTAS_acs;
 
 ## <a name="ansi-join-replacement-for-merge"></a>ANSI Join-ersättning för sammanfogning 
 
-I Azure Synapse Analytics måste målet vara en HASH-distribuerad tabell för att det ska gå att [sammanfoga](/sql/t-sql/statements/merge-transact-sql?view=sql-server-ver15) (för hands version) utan MATCHADE av mål.  Användare kan använda ANSI-kopplingen med [Update](/sql/t-sql/queries/update-transact-sql?view=sql-server-ver15) eller [Delete](/sql/t-sql/statements/delete-transact-sql?view=sql-server-ver15) som en lösning för att ändra mål tabell data baserat på resultatet från att gå med i en annan tabell.  Här är ett exempel.
+I Azure Synapse Analytics måste målet vara en HASH-distribuerad tabell för att det ska gå att [sammanfoga](/sql/t-sql/statements/merge-transact-sql?view=azure-sqldw-latest&preserve-view=true) (för hands version) utan MATCHADE av mål.  Användare kan använda ANSI-kopplingen med [Update](/sql/t-sql/queries/update-transact-sql?view=azure-sqldw-latest&preserve-view=true) eller [Delete](/sql/t-sql/statements/delete-transact-sql?view=azure-sqldw-latest&preserve-view=true) som en lösning för att ändra mål tabell data baserat på resultatet från att gå med i en annan tabell.  Här är ett exempel.
 
 ```sql
 CREATE TABLE dbo.Table1   

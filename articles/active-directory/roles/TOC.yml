@@ -11,9 +11,10 @@
     - name: Skapa obegränsade appregistreringar
       href: quickstart-app-registration-limits.md
 - name: Självstudier
+  expanded: true
   items:
-    - name: Skapa en dynamisk grupp
-      href: ../enterprise-users/users-revoke-access.md?context=%2fazure%2factive-directory%2froles%2fcontext%2fugr-context
+    - name: Tilldela användare administrativa roller
+      href: ../fundamentals/active-directory-users-assign-role-azure-portal.md?context=%2fazure%2factive-directory%2froles%2fcontext%2fugr-context
 - name: Begrepp
   expanded: true
   items:
@@ -28,18 +29,6 @@
 - name: Anvisningar
   expanded: true
   items:
-    - name: Användare och roller
-      items:
-        - name: Tilldela användare administrativa roller
-          href: ../fundamentals/active-directory-users-assign-role-azure-portal.md?context=%2fazure%2factive-directory%2froles%2fcontext%2fugr-context
-        - name: Återkalla en användares åtkomst
-          href: ../enterprise-users/users-revoke-access.md?context=%2fazure%2factive-directory%2froles%2fcontext%2fugr-context
-        - name: Tilldela en roll till en gästanvändare
-          href: ../external-identities/add-guest-to-role.md?context=%2fazure%2factive-directory%2froles%2fcontext%2fugr-context
-        - name: Begränsa gästanvändares åtkomst
-          href: ../enterprise-users/users-restrict-guest-permissions.md?context=%2fazure%2factive-directory%2froles%2fcontext%2fugr-context
-        - name: Dynamiska grupper och gäster
-          href: ../external-identities/use-dynamic-groups.md?context=%2fazure%2factive-directory%2froles%2fcontext%2fugr-context
     - name: Roller och behörigheter
       expanded: true
       items:
@@ -119,7 +108,7 @@
     - name: Dokumentation om Microsoft 365-roll
       href: m365-workload-docs.md
     - name: Graph API
-      href: /graph/api/resources/azure-ad-overview?view=graph-rest-1.0
+      href: /graph/api/resources/directoryrole?view=graph-rest-1.0
     - name: Azure AD CLI
       href: /cli/azure/ad
     - name: Azure AD PowerShell för Graph

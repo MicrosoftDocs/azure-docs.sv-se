@@ -7,12 +7,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 12/28/2020
 ms.author: jgao
-ms.openlocfilehash: 4d2a55355318a1bf916017fa77026a87a95b7f57
-ms.sourcegitcommit: 31d242b611a2887e0af1fc501a7d808c933a6bf6
+ms.openlocfilehash: 574dcf50111c14f4924f009a74ed6f2ac2bb31e9
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97809725"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98733848"
 ---
 # <a name="use-deployment-scripts-in-arm-templates"></a>Använda distributions skript i ARM-mallar
 
@@ -149,7 +149,7 @@ Information om egenskaps värde:
 
   Om argumenten innehåller Escaped tecken, använder du [JsonEscaper](https://www.jsonescaper.com/) för att dubbla escape-tecknen. Klistra in den ursprungliga undantagna strängen i verktyget och välj sedan **Escape**.  Verktyget matar ut en dubbelt undantagen sträng. Till exempel är argumentet i föregående exempel-mall `-name \"John Dole\"` . Den undantagna strängen är `-name \\\"John Dole\\\"` .
 
-  För att skicka en ARM-mallparameter av typen Object som ett argument, konvertera objektet till en sträng med hjälp av funktionen [String ()](./template-functions-string.md#string) och Använd sedan funktionen [replace ()](./template-functions-string.md#replace) för att ersätta någon `\"` i `\\\"` . Exempel:
+  För att skicka en ARM-mallparameter av typen Object som ett argument, konvertera objektet till en sträng med hjälp av funktionen [String ()](./template-functions-string.md#string) och Använd sedan funktionen [replace ()](./template-functions-string.md#replace) för att ersätta någon `\"` i `\\\"` . Ett exempel:
 
   ```json
   replace(string(parameters('tables')), '\"', '\\\"')
@@ -204,7 +204,7 @@ Utdata ser ut så här:
 
 ## <a name="use-external-scripts"></a>Använd externa skript
 
-Förutom infogade skript kan du också använda externa skriptfiler. Endast primära PowerShell-skript med fil namns tillägget _ps1_ stöds. För CLI-skript kan primära skript ha alla tillägg (eller utan tillägg), så länge skripten är giltiga bash-skript. Om du vill använda externa skriptfiler ersätter du `scriptContent` med `primaryScriptUri` . Exempel:
+Förutom infogade skript kan du också använda externa skriptfiler. Endast primära PowerShell-skript med fil namns tillägget _ps1_ stöds. För CLI-skript kan primära skript ha alla tillägg (eller utan tillägg), så länge skripten är giltiga bash-skript. Om du vill använda externa skriptfiler ersätter du `scriptContent` med `primaryScriptUri` . Ett exempel:
 
 ```json
 "primaryScriptUri": "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-helloworld.ps1",
@@ -290,7 +290,7 @@ Om du vill ange ett befintligt lagrings konto lägger du till följande JSON til
 ```
 
 - `storageAccountName`: Ange namnet på lagrings kontot.
-- `storageAccountKey`: Ange en av lagrings konto nycklarna. Du kan använda funktionen [listnycklar ()](./template-functions-resource.md#listkeys) för att hämta nyckeln. Exempel:
+- `storageAccountKey`: Ange en av lagrings konto nycklarna. Du kan använda funktionen [listnycklar ()](./template-functions-resource.md#listkeys) för att hämta nyckeln. Ett exempel:
 
     ```json
     "storageAccountSettings": {
@@ -542,7 +542,7 @@ Livs cykeln för de här resurserna styrs av följande egenskaper i mallen:
 > [!NOTE]
 > Vi rekommenderar inte att du använder lagrings kontot och behållar instansen som genereras av skript tjänsten för andra skäl. De två resurserna kan tas bort beroende på skript livs cykeln.
 
-Behållar instansen och lagrings kontot tas bort enligt `cleanupPreference` . Men om skriptet Miss lyckas och `cleanupPreference` inte är inställt på **Always**, håller distributions processen automatiskt över behållaren som körs i en timme. Du kan använda den här timmen för att felsöka skriptet. Om du vill behålla behållaren som körs efter lyckade distributioner lägger du till ett vilo läge i skriptet. Lägg till exempel till [Start-sömn](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/start-sleep) i slutet av skriptet. Om du inte lägger till vilo läge är behållaren inställd på ett Terminal-tillstånd och kan inte nås även om den inte har tagits bort än.
+Behållar instansen och lagrings kontot tas bort enligt `cleanupPreference` . Men om skriptet Miss lyckas och `cleanupPreference` inte är inställt på **Always**, håller distributions processen automatiskt över behållaren som körs i en timme. Du kan använda den här timmen för att felsöka skriptet. Om du vill behålla behållaren som körs efter lyckade distributioner lägger du till ett vilo läge i skriptet. Lägg till exempel till [Start-sömn](/powershell/module/microsoft.powershell.utility/start-sleep) i slutet av skriptet. Om du inte lägger till vilo läge är behållaren inställd på ett Terminal-tillstånd och kan inte nås även om den inte har tagits bort än.
 
 ## <a name="run-script-more-than-once"></a>Kör skript mer än en gång
 

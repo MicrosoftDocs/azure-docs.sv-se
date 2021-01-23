@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2018
-ms.openlocfilehash: 2bb1e667758a1430e34d222b9a5c537381c07624
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 40ea367c1298a916df541d362b85e8d485d193f1
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505281"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734940"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>Riktlinjer för personliga data som lagras i Log Analytics och Application Insights
 
@@ -91,7 +91,7 @@ För både Visa och exportera data begär Anden, ska [API för Log Analytics fr�
 Vi har gjort tillgängliga som en del av en sekretess hantering som hanterar en *rensnings* -API-sökväg. Den här sökvägen bör användas sparsamt på grund av risken som är kopplad till att göra detta, den potentiella prestanda påverkan och potentialen att skeva alla agg regeringar, mätningar och andra aspekter av dina Log Analytics data. I avsnittet [strategi för personlig data hantering](#strategy-for-personal-data-handling) finns alternativa metoder för att hantera privata data.
 
 > [!NOTE]
-> När rensnings åtgärden har utförts går det inte att komma åt data medan [status för rensnings åtgärden](https://docs.microsoft.com/rest/api/loganalytics/workspacepurge/getpurgestatus) *väntar*. 
+> När rensnings åtgärden har utförts går det inte att komma åt data medan [status för rensnings åtgärden](/rest/api/loganalytics/workspacepurge/getpurgestatus) *väntar*. 
 
 Rensa är en hög privilegie rad åtgärd som ingen app eller användare i Azure (inklusive resurs ägaren) har behörighet att köra utan att uttryckligen beviljas en roll i Azure Resource Manager. Den här rollen är _data rensning_ och bör delegeras försiktigt på grund av risken för data förlust. 
 
@@ -105,7 +105,7 @@ När Azure Resource Manager rollen har tilldelats är två nya API-sökvägar ti
 #### <a name="log-data"></a>Loggdata
 
 * [Efter rensning](/rest/api/loganalytics/workspacepurge/purge) – tar ett objekt som anger data parametrar som ska tas bort och returnerar en referens-GUID 
-* Hämta rensnings status: POST rensnings anropet returnerar ett "x-MS-status-plats"-huvud som innehåller en URL som du kan anropa för att fastställa status för ditt rensnings-API. Exempel:
+* Hämta rensnings status: POST rensnings anropet returnerar ett "x-MS-status-plats"-huvud som innehåller en URL som du kan anropa för att fastställa status för ditt rensnings-API. Ett exempel:
 
     ```
     x-ms-status-location: https://management.azure.com/subscriptions/[SubscriptionId]/resourceGroups/[ResourceGroupName]/providers/Microsoft.OperationalInsights/workspaces/[WorkspaceName]/operations/purge-[PurgeOperationId]?api-version=2015-03-20
@@ -117,7 +117,7 @@ När Azure Resource Manager rollen har tilldelats är två nya API-sökvägar ti
 #### <a name="application-data"></a>Programdata
 
 * [Efter rensning](/rest/api/application-insights/components/purge) – tar ett objekt som anger data parametrar som ska tas bort och returnerar en referens-GUID
-* Hämta rensnings status: POST rensnings anropet returnerar ett "x-MS-status-plats"-huvud som innehåller en URL som du kan anropa för att fastställa status för ditt rensnings-API. Exempel:
+* Hämta rensnings status: POST rensnings anropet returnerar ett "x-MS-status-plats"-huvud som innehåller en URL som du kan anropa för att fastställa status för ditt rensnings-API. Ett exempel:
 
    ```
    x-ms-status-location: https://management.azure.com/subscriptions/[SubscriptionId]/resourceGroups/[ResourceGroupName]/providers/microsoft.insights/components/[ComponentName]/operations/purge-[PurgeOperationId]?api-version=2015-05-01
@@ -129,4 +129,3 @@ När Azure Resource Manager rollen har tilldelats är två nya API-sökvägar ti
 ## <a name="next-steps"></a>Nästa steg
 - Mer information om hur Log Analytics data samlas in, bearbetas och skyddas finns i [Log Analytics data säkerhet](./data-security.md).
 - Mer information om hur Application Insights data samlas in, bearbetas och skyddas finns i [Application Insights data säkerhet](../app/data-retention-privacy.md).
-

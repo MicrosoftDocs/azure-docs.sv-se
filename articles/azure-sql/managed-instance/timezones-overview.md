@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: ''
 ms.date: 10/12/2020
-ms.openlocfilehash: bf0cfd70c9850cc6a5ff4482b494d68700022ad8
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 8a4c1b2ac53679153c8d9485443a231b817df77a
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790635"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734587"
 ---
 # <a name="time-zones-in-azure-sql-managed-instance"></a>Tids zoner i Azure SQL-hanterad instans
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -32,7 +32,7 @@ T-SQL-funktioner som [getDate ()](/sql/t-sql/functions/getdate-transact-sql) ell
 
 En uppsättning tids zoner som stöds ärvs från det underliggande operativ systemet för den hanterade instansen. Den uppdateras regelbundet för att hämta nya definitioner för tids zoner och återspegla ändringar av befintliga.
 
-[Princip för sommar tid/tids zons ändringar](https://aka.ms/time) garanterar historisk noggrannhet från 2010 forward.
+[Princip för sommar tid/tids zons ändringar](/troubleshoot/windows-client/system-management-components/daylight-saving-time-help-support) garanterar historisk noggrannhet från 2010 forward.
 
 En lista med namnen på de tids zoner som stöds visas i [sys.time_zone_info](/sql/relational-databases/system-catalog-views/sys-time-zone-info-transact-sql) system-vyn.
 

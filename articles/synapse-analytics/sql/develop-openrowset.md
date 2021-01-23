@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7e7dce7ec4b8d4d55e734487595bb330e97ab18b
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 2ead7291f52f33c271768ae2f470af65aca98030
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98120452"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734755"
 ---
 # <a name="how-to-use-openrowset-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Använda OpenRowSet med Server lös SQL-pool i Azure Synapse Analytics
 
@@ -171,7 +171,7 @@ WITH (
 )
 ```
 
-json_path = [JSON Path-uttryck](/sql/relational-databases/json/json-path-expressions-sql-server?view=sql-server-ver15) till kolumn-eller kapslad egenskap. Standard [Sök vägs läget](/sql/relational-databases/json/json-path-expressions-sql-server?view=sql-server-ver15#PATHMODE) är lax.
+json_path = [JSON Path-uttryck](/sql/relational-databases/json/json-path-expressions-sql-server?view=azure-sqldw-latest&preserve-view=true) till kolumn-eller kapslad egenskap. Standard [Sök vägs läget](/sql/relational-databases/json/json-path-expressions-sql-server?view=azure-sqldw-latest&preserve-view=true#PATHMODE) är lax.
 
 > [!NOTE]
 > Frågan i strikt läge Miss fungerar med ett fel om den angivna sökvägen inte finns. Frågan kommer att lyckas i lax-läge och uttryck för JSON-sökväg kommer att utvärderas till NULL.
@@ -371,7 +371,7 @@ WITH (
 
 ### <a name="specify-columns-using-json-paths"></a>Ange kolumner med JSON-sökvägar
 
-I följande exempel visas hur du kan använda [uttryck för JSON-sökvägar](/sql/relational-databases/json/json-path-expressions-sql-server?view=sql-server-ver15) i With-satsen och visa skillnaden mellan strikt och lax Sök vägs lägen: 
+I följande exempel visas hur du kan använda [uttryck för JSON-sökvägar](/sql/relational-databases/json/json-path-expressions-sql-server?view=azure-sqldw-latest&preserve-view=true) i With-satsen och visa skillnaden mellan strikt och lax Sök vägs lägen: 
 
 ```sql
 SELECT 

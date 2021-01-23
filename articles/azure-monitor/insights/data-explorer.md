@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 01/05/2021
 author: lgayhardt
 ms.author: lagayhar
-ms.openlocfilehash: 6f25ff02dee16812898d77d0e801f927b354dc78
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 11e21f376ea3b5cf580d54780509529b4536718b
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97918334"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734182"
 ---
 # <a name="azure-monitor-for-azure-data-explorer-preview"></a>Azure Monitor för Azure Datautforskaren (för hands version)
 
@@ -49,7 +49,7 @@ På fliken **Översikt** för den valda prenumerationen visar tabellen interakti
 
 Panelen räknare, under List rutan, slår samman det totala antalet Azure Datautforskaren-kluster i de valda prenumerationerna och visar hur många som är markerade. Det finns villkorsstyrda färg kodningar för kolumnerna: Keep Alive, CPU, förbruknings användning och cache-användning. Orange-kodade celler har värden som inte är hållbara för klustret. 
 
-För att bättre förstå vad vart och ett av måtten representerar rekommenderar vi att du läser igenom dokumentationen om [Azure datautforskaren mått](https://docs.microsoft.com/azure/data-explorer/using-metrics#cluster-metrics).
+För att bättre förstå vad vart och ett av måtten representerar rekommenderar vi att du läser igenom dokumentationen om [Azure datautforskaren mått](/azure/data-explorer/using-metrics#cluster-metrics).
 
 ### <a name="query-performance-tab"></a>Fliken prestanda för fråga
 
@@ -81,7 +81,7 @@ Få åtkomst till Azure Monitor för Azure Datautforskaren-kluster direkt från 
 
 Dessa vyer är också tillgängliga genom att du väljer resurs namnet för ett Azure Datautforskaren-kluster i vyn Azure Monitor Insights.
 
-Azure Monitor för Azure Datautforskaren kombinerar både loggar och mått för att tillhandahålla en global övervaknings lösning. Inkludering av loggarbaserade visualiseringar kräver att användare [aktiverar diagnostisk loggning av Azure datautforskaren-klustret och skickar dem till en Log Analytics arbets yta.](https://docs.microsoft.com/azure/data-explorer/using-diagnostic-logs?tabs=commands-and-queries#enable-diagnostic-logs). Diagnostikloggar som ska aktive ras är: **kommando**, **fråga**, **TableDetails** och **TableUsageStatistics**.
+Azure Monitor för Azure Datautforskaren kombinerar både loggar och mått för att tillhandahålla en global övervaknings lösning. Inkludering av loggarbaserade visualiseringar kräver att användare [aktiverar diagnostisk loggning av Azure datautforskaren-klustret och skickar dem till en Log Analytics arbets yta.](/azure/data-explorer/using-diagnostic-logs?tabs=commands-and-queries#enable-diagnostic-logs). Diagnostikloggar som ska aktive ras är: **kommando**, **fråga**, **TableDetails** och **TableUsageStatistics**.
 
 ![Skärm bild av blå knapp som visar texten "Aktivera loggar för övervakning"](./media/data-explorer/enable-logs.png)
 
@@ -90,7 +90,7 @@ Azure Monitor för Azure Datautforskaren kombinerar både loggar och mått för 
 
 - Mått paneler som markerar klustrets tillgänglighet och övergripande status för att snabbt utvärdera dess hälsa.
 
-- En sammanfattning av Active [Advisor-rekommendationer](https://docs.microsoft.com/azure/data-explorer/azure-advisor) och [resurs hälso](https://docs.microsoft.com/azure/data-explorer/monitor-with-resource-health) status.
+- En sammanfattning av Active [Advisor-rekommendationer](/azure/data-explorer/azure-advisor) och [resurs hälso](/azure/data-explorer/monitor-with-resource-health) status.
 
 - Diagram som visar de främsta processor-och minnes förbrukarna och antalet unika användare över tid.
 
@@ -114,7 +114,7 @@ På fliken **användning** kan användare djupgående att gå in på prestandan 
 
 Fliken **tabeller** visar de senaste och historiska egenskaperna för tabeller i klustret. Du kan se vilka tabeller som utnyttjar det mest stora utrymmet, spåra tillväxt historiken efter tabell storlek, frekventa data och antalet rader över tid.
 
-På fliken **cache** kan användare analysera sina faktiska frågor se tillbaka mönster och jämföra dem med den konfigurerade cache-principen (för varje tabell). Du kan identifiera tabeller som används av de flesta frågor och tabeller som inte har frågats alls, och anpassa den cachelagrade principen på lämpligt sätt. Du kan få särskilda principer för cache-principer för specifika tabeller i Azure Advisor (för närvarande är cache-rekommendationer bara tillgängliga från [huvud Azure Advisors instrument panelen](https://docs.microsoft.com/azure/data-explorer/azure-advisor#use-the-azure-advisor-recommendations)), baserat på faktiska frågor, se tillbaka de senaste 30 dagarna och en icke-optimerad cache-princip för minst 95% av frågorna. Rekommendationer för minskning av cachelagring i Azure Advisor är tillgängliga för kluster som är "avgränsade av data" (vilket innebär att klustret har låg processor och låg inmatnings användning, men på grund av hög data kapacitet kunde klustret inte skalas in eller skalas ned).
+På fliken **cache** kan användare analysera sina faktiska frågor se tillbaka mönster och jämföra dem med den konfigurerade cache-principen (för varje tabell). Du kan identifiera tabeller som används av de flesta frågor och tabeller som inte har frågats alls, och anpassa den cachelagrade principen på lämpligt sätt. Du kan få särskilda principer för cache-principer för specifika tabeller i Azure Advisor (för närvarande är cache-rekommendationer bara tillgängliga från [huvud Azure Advisors instrument panelen](/azure/data-explorer/azure-advisor#use-the-azure-advisor-recommendations)), baserat på faktiska frågor, se tillbaka de senaste 30 dagarna och en icke-optimerad cache-princip för minst 95% av frågorna. Rekommendationer för minskning av cachelagring i Azure Advisor är tillgängliga för kluster som är "avgränsade av data" (vilket innebär att klustret har låg processor och låg inmatnings användning, men på grund av hög data kapacitet kunde klustret inte skalas in eller skalas ned).
 
 [![Skärm bild av cache-information](./media/data-explorer/cache-tab.png)](./media/data-explorer/cache-tab.png#lightbox)
 
@@ -153,7 +153,7 @@ Vi visar bara prenumerationer som innehåller Azure Datautforskaren-kluster, som
 
 ### <a name="why-do-i-not-see-any-data-for-my-azure-data-explorer-cluster-under-the-usage-tables-or-cache-sections"></a>Varför visas inte några data för mitt Azure Datautforskaren-kluster under avsnitten användning, tabeller eller cache?
 
-Om du vill visa dina loggarbaserade data måste du [Aktivera diagnostikloggar](https://docs.microsoft.com/azure/data-explorer/using-diagnostic-logs?tabs=commands-and-queries#enable-diagnostic-logs) för vart och ett av de Azure datautforskaren-kluster som du vill övervaka. Detta kan göras under diagnostikinställningar för varje kluster. Du måste skicka dina data till en Log Analytics-arbetsyta. Diagnostikloggar som ska aktive ras är: kommando, fråga, TableDetails och TableUsageStatistics.
+Om du vill visa dina loggarbaserade data måste du [Aktivera diagnostikloggar](/azure/data-explorer/using-diagnostic-logs?tabs=commands-and-queries#enable-diagnostic-logs) för vart och ett av de Azure datautforskaren-kluster som du vill övervaka. Detta kan göras under diagnostikinställningar för varje kluster. Du måste skicka dina data till en Log Analytics-arbetsyta. Diagnostikloggar som ska aktive ras är: kommando, fråga, TableDetails och TableUsageStatistics.
 
 ### <a name="i-have-already-enabled-logs-for-my-azure-data-explorer-cluster-why-am-i-still-unable-to-see-my-data-under-commands-and-queries"></a>Jag har redan aktiverat loggar för mitt Azure Datautforskaren-kluster, varför kan jag fortfarande inte se mina data under kommandon och frågor?
 

@@ -11,12 +11,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviwer: vanto
 ms.date: 01/15/2021
-ms.openlocfilehash: e8cb423d4d700c4b6b6caa30a02eac3e7ef10cb6
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 51431bf0da9145e1b61da708942b675e4c3eea78
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98253576"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98733831"
 ---
 # <a name="configure-azure-attestation-for-your-azure-sql-logical-server"></a>Konfigurera Azure-attestering för din logiska Azure SQL-Server
 
@@ -27,7 +27,7 @@ ms.locfileid: "98253576"
 
 [Microsoft Azure attestering](../../attestation/overview.md) är en lösning för att intyga betrodda körnings miljöer (tees), inklusive Intel Software Guard-tillägg (Intel SGX) enclaves. 
 
-Om du vill använda Azure-attestering för att intyga Intel SGX-enclaves som används för [Always Encrypted med säker enclaves](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-enclaves) i Azure SQL Database måste du:
+Om du vill använda Azure-attestering för att intyga Intel SGX-enclaves som används för [Always Encrypted med säker enclaves](/sql/relational-databases/security/encryption/always-encrypted-enclaves) i Azure SQL Database måste du:
 
 1. Skapa en [attesterings leverantör](../../attestation/basic-concepts.md#attestation-provider) och konfigurera den med den rekommenderade policyn för attestering.
 
@@ -114,7 +114,7 @@ Under arbets flödet för attestering anropar den logiska Azure SQL-servern som 
 
 ### <a name="use-azure-portal-to-assign-permission"></a>Använd Azure Portal för att tilldela behörighet
 
-Om du vill tilldela identiteten för en Azure SQL-Server till rollen attesterings läsare för en attesterings leverantör följer du de allmänna anvisningarna i [Lägg till eller ta bort Azure-roll tilldelningar med hjälp av Azure Portal](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal). När du är i fönstret **Lägg till roll tilldelning** :
+Om du vill tilldela identiteten för en Azure SQL-Server till rollen attesterings läsare för en attesterings leverantör följer du de allmänna anvisningarna i [Lägg till eller ta bort Azure-roll tilldelningar med hjälp av Azure Portal](../../role-based-access-control/role-assignments-portal.md). När du är i fönstret **Lägg till roll tilldelning** :
 
 1. I list rutan **roll** väljer du rollen **attesterings läsare** .
 1. I fältet **Välj** anger du namnet på din Azure SQL-Server för att söka efter den.
@@ -143,11 +143,11 @@ $attestationResourceGroupName = "<attestation provider resource group name>"
 New-AzRoleAssignment -ObjectId $server.Identity.PrincipalId -RoleDefinitionName "Attestation Reader" -ResourceGroupName $attestationResourceGroupName
 ```
 
-Mer information finns i [lägga till eller ta bort Azure Role-tilldelningar med Azure PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell#add-a-role-assignment).
+Mer information finns i [lägga till eller ta bort Azure Role-tilldelningar med Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md#add-role-assignment-examples).
 
 ## <a name="next-steps"></a>Nästa steg
 
-- [Hantera nycklar för Always Encrypted med säkra enklaver](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-enclaves-manage-keys)
+- [Hantera nycklar för Always Encrypted med säkra enklaver](/sql/relational-databases/security/encryption/always-encrypted-enclaves-manage-keys)
 
 ## <a name="see-also"></a>Se även
 

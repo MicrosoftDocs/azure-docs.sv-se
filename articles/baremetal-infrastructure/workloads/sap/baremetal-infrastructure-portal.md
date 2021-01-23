@@ -3,12 +3,12 @@ title: BareMetal instance units i Azure
 description: Lär dig hur du identifierar och interagerar med BareMetal-instans enheter via Azure Portal.
 ms.topic: how-to
 ms.date: 1/4/2021
-ms.openlocfilehash: 30e1661e82546dbaf6d8dc4288ad896df89f401e
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: b089b45c35ff05f10ae59f8ce793645361be1e9b
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97861027"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98733271"
 ---
 # <a name="manage-baremetal-instances-through-the-azure-portal"></a>Hantera BareMetal-instanser via Azure-portalen
  
@@ -97,7 +97,7 @@ Möjliga maskin varu revisioner är:
 >[!NOTE]
 >Rev 4,2 är den senaste ommärkta BareMetal-infrastrukturen med den befintliga rev 4-arkitekturen. Rev 4 ger närmare närhet till Azures virtuella dator värdar. Den har betydande förbättringar i nätverks fördröjningen mellan virtuella Azure-datorer och BareMetal-instanser som distribueras i rev 4-stämplar eller rader. Du kan komma åt och hantera dina BareMetal-instanser via Azure Portal. Mer information finns i [BareMetal-infrastruktur på Azure](baremetal-overview-architecture.md).
  
-På den högra sidan hittar du också namnet på [Azure närhets placerings gruppen](../../../virtual-machines/linux/co-location.md) , som skapas automatiskt för varje distribuerad BareMetal-instans enhet. Referera till närhets placerings gruppen när du distribuerar de virtuella Azure-datorer som är värdar för program lagret. När du använder placerings gruppen för närhet som är associerad med BareMetal instance Unit, ser du till att de virtuella Azure-datorerna går att distribuera nära BareMetal-instansen.
+På den högra sidan hittar du också namnet på [Azure närhets placerings gruppen](../../../virtual-machines/co-location.md) , som skapas automatiskt för varje distribuerad BareMetal-instans enhet. Referera till närhets placerings gruppen när du distribuerar de virtuella Azure-datorer som är värdar för program lagret. När du använder placerings gruppen för närhet som är associerad med BareMetal instance Unit, ser du till att de virtuella Azure-datorerna går att distribuera nära BareMetal-instansen.
  
 >[!TIP]
 >Om du vill hitta program lagret i samma Azure-datacenter som revision 4. x, se [placerings grupper för Azure närhet för optimal nätverks fördröjning](../../../virtual-machines/workloads/sap/sap-proximity-placement-scenarios.md).

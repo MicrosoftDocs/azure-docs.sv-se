@@ -235,4 +235,4 @@
 - name: Resurser
   items:
     - name: Kom igång med Azure Arc
-      href: 'https://github.com/microsoft/azure_arc'
+      href: 'https://azurearcjumpstart.io'

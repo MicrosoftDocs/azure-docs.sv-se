@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 03/07/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 3e45b5a48f9a7fb66d7539e83f385203ae371ad7
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 6e926211a0d86fef55608ede574dca53487f267c
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97673560"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98732735"
 ---
 # <a name="troubleshoot-problems-enabling-application-insights-snapshot-debugger-or-viewing-snapshots"></a><a id="troubleshooting"></a> Felsöka problem med att aktivera Application Insights Snapshot Debugger eller Visa ögonblicks bilder
 Om du har aktiverat Application Insights Snapshot Debugger för ditt program, men inte ser några ögonblicks bilder för undantag, kan du använda dessa instruktioner för att felsöka.
@@ -272,4 +272,4 @@ Om du fortfarande inte ser ett undantag med det ögonblicks bilds-ID: t rapporte
 
 Om ditt program ansluter till Internet via en proxy eller en brand vägg, kan du behöva uppdatera reglerna för att kommunicera med tjänsten Snapshot Debugger.
 
-De IP-adresser som används av Application Insights Snapshot Debugger ingår i Azure Monitor Service tag gen. Mer information finns i [dokumentationen om service tag](https://docs.microsoft.com/azure/virtual-network/service-tags-overview).
+De IP-adresser som används av Application Insights Snapshot Debugger ingår i Azure Monitor Service tag gen. Mer information finns i [dokumentationen om service tag](../../virtual-network/service-tags-overview.md).

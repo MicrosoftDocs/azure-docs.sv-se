@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: b530fc320f6c29dd7a86a39c5a7019265bb6b724
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: d19190723ebc415e9cf3053b929788dff68aeb0e
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624430"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734547"
 ---
 # <a name="spatial-analysis-operations"></a>Åtgärder för rums analys
 
@@ -23,7 +23,7 @@ Med rumslig analys kan du analysera strömningsvideo i realtid från kameraenhet
 
 Behållaren för rums analys implementerar följande åtgärder:
 
-| Åtgärds identifierare| Description|
+| Åtgärds identifierare| Beskrivning|
 |---------|---------|
 | cognitiveservices. vision. spatialanalysis-personcount | Räknar personer i en angiven zon i kamerans visnings fält. Zonen måste vara helt täckt av en enda kamera för att PersonCount ska kunna registrera en korrekt total summa. <br> Utvärderar en inledande _personCountEvent_ -händelse och _personCountEvent_ händelser när antalet ändras.  |
 | cognitiveservices. vision. spatialanalysis-personcrossingline | Spårar när en person korsar en angiven linje i kamerans visnings fält. <br>Avger en _personLineEvent_ -händelse när personen korsar linjen och ger riktad information. 
@@ -32,7 +32,7 @@ Behållaren för rums analys implementerar följande åtgärder:
 
 Alla ovanstående åtgärder är också tillgängliga i `.debug` versionen, som har möjlighet att visualisera video bild rutorna när de bearbetas. Du måste köra `xhost +` på värddatorn för att aktivera visualiseringen av video bild rutor och händelser.
 
-| Åtgärds identifierare| Description|
+| Åtgärds identifierare| Beskrivning|
 |---------|---------|
 | cognitiveservices. vision. spatialanalysis-personcount. debug | Räknar personer i en angiven zon i kamerans visnings fält. <br> Utvärderar en inledande _personCountEvent_ -händelse och _personCountEvent_ händelser när antalet ändras.  |
 | cognitiveservices. vision. spatialanalysis-personcrossingline. debug | Spårar när en person korsar en angiven linje i kamerans visnings fält. <br>Avger en _personLineEvent_ -händelse när personen korsar linjen och ger riktad information. 
@@ -43,7 +43,7 @@ Rums analys kan också köras med [Live Video Analytics](../../media-services/li
 
 <!--more details on the setup can be found in the [LVA Setup page](LVA-Setup.md). Below is the list of the operations supported with Live Video Analytics. -->
 
-| Åtgärds identifierare| Description|
+| Åtgärds identifierare| Beskrivning|
 |---------|---------|
 | cognitiveservices. vision. spatialanalysis-personcount. livevideoanalytics | Räknar personer i en angiven zon i kamerans visnings fält. <br> Utvärderar en inledande _personCountEvent_ -händelse och _personCountEvent_ händelser när antalet ändras.  |
 | cognitiveservices. vision. spatialanalysis-personcrossingline. livevideoanalytics | Spårar när en person korsar en angiven linje i kamerans visnings fält. <br>Avger en _personLineEvent_ -händelse när personen korsar linjen och ger riktad information. 
@@ -57,11 +57,11 @@ Live Video Analytics-åtgärder är också tillgängliga i `.debug` versionen (t
 
 Dessa är de parametrar som krävs för var och en av dessa åtgärder för att utföra den här typen av
 
-| Åtgärdsparametrar| Description|
+| Åtgärdsparametrar| Beskrivning|
 |---------|---------|
 | Åtgärds-ID | Åtgärds identifieraren från tabellen ovan.|
 | enabled | Boolean: true eller false|
-| VIDEO_URL| RTSP-URL: en för kamera enheten (exempel: `rtsp://username:password@url` ). Rums analys stöder H. 264-kodad data ström, antingen via RTSP, http eller MP4. Video_URL kan anges som ett fördunklade base64-sträng värde med AES-kryptering och om video-URL: en är fördunklade `KEY_ENV` och `IV_ENV` måste tillhandahållas som miljövariabler. Exempel verktyg för att generera nycklar och kryptering hittar du [här](https://docs.microsoft.com/dotnet/api/system.security.cryptography.aesmanaged?view=net-5.0&preserve-view=true). |
+| VIDEO_URL| RTSP-URL: en för kamera enheten (exempel: `rtsp://username:password@url` ). Rums analys stöder H. 264-kodad data ström, antingen via RTSP, http eller MP4. Video_URL kan anges som ett fördunklade base64-sträng värde med AES-kryptering och om video-URL: en är fördunklade `KEY_ENV` och `IV_ENV` måste tillhandahållas som miljövariabler. Exempel verktyg för att generera nycklar och kryptering hittar du [här](/dotnet/api/system.security.cryptography.aesmanaged?preserve-view=true&view=net-5.0). |
 | VIDEO_SOURCE_ID | Ett eget namn för kamera enheten eller video strömmen. Detta kommer att returneras med händelse-JSON-utdata.|
 | VIDEO_IS_LIVE| Sant för kamera enheter; falskt för inspelade videor.|
 | VIDEO_DECODE_GPU_INDEX| Vilken GPU som ska avkoda video ramen. Som standard är det 0. Ska vara samma som `gpu_index` i andra Node config som `VICA_NODE_CONFIG` , `DETECTOR_NODE_CONFIG` .|
@@ -122,7 +122,7 @@ Detta är ett exempel på DETECTOR_NODE_CONFIG parametrar för alla spatiala ana
 }
 ```
 
-| Namn | Typ| Description|
+| Namn | Typ| Beskrivning|
 |---------|---------|---------|
 | `zones` | lista| Lista över zoner. |
 | `name` | sträng| Eget namn för zonen.|
@@ -167,7 +167,7 @@ Detta är ett exempel på en JSON-ineffekt för den SPACEANALYTICS_CONFIG parame
 }
 ```
 
-| Namn | Typ| Description|
+| Namn | Typ| Beskrivning|
 |---------|---------|---------|
 | `lines` | lista| Lista med rader.|
 | `name` | sträng| Eget namn för den här raden.|
@@ -213,7 +213,7 @@ Detta är ett exempel på en JSON-ineffekt för den SPACEANALYTICS_CONFIG parame
 }
 ```
 
-| Namn | Typ| Description|
+| Namn | Typ| Beskrivning|
 |---------|---------|---------|
 | `zones` | lista| Lista över zoner. |
 | `name` | sträng| Eget namn för zonen.|
@@ -247,7 +247,7 @@ Detta är ett exempel på en JSON-ineffekt för SPACEANALYTICS_CONFIG-parametern
 }
 ```
 
-| Namn | Typ| Description|
+| Namn | Typ| Beskrivning|
 |---------|---------|---------|
 | `zones` | lista| Lista över zoner. |
 | `name` | sträng| Eget namn för zonen.|
@@ -964,7 +964,7 @@ För att få bästa möjliga prestanda och användning av GPU: er kan du distrib
       }
   }
   ```
-| Namn | Typ| Description|
+| Namn | Typ| Beskrivning|
 |---------|---------|---------|
 | `batch_size` | int | Anger antalet kameror som ska användas i åtgärden. |
 

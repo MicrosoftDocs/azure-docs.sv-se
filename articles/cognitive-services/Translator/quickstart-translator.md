@@ -12,12 +12,12 @@ ms.date: 09/14/2020
 ms.author: erhopf
 ms.custom: cog-serv-seo-aug-2020
 keywords: Translator, Translator-tjänst, översätta text, translittererad text, språk identifiering
-ms.openlocfilehash: 68bbb31ae87ebbb84cda752c2f4a7c1bd1116dda
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 38bd4d28a8ae4c737155cd74bcb39d1acfaf699c
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94369536"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98733502"
 ---
 # <a name="quickstart-get-started-with-translator"></a>Snabb start: kom igång med Translator
 
@@ -29,7 +29,7 @@ I den här snabb starten lär du dig att använda Translator-tjänsten via REST.
 * [Beräkna menings längd](#get-sentence-length)
 * [Hämta alternativa översättningar](#dictionary-lookup-alternate-translations) och [exempel på användning av ord i en mening](#dictionary-examples-translations-in-context)
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 * Azure-prenumeration – [skapa en kostnads fritt](https://azure.microsoft.com/free/cognitive-services/)
 * När du har en Azure-prenumeration kan du [skapa en översättare-resurs](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation) i Azure Portal för att hämta din nyckel och slut punkt. När den har distribuerats väljer **du gå till resurs**.
@@ -58,7 +58,7 @@ I den här snabb starten lär du dig att använda Translator-tjänsten via REST.
 
 # <a name="java"></a>[Java](#tab/java)
 
-* Skapa en arbets katalog för projektet. Här är ett exempel: `mkdir sample-project`.
+* Skapa en arbets katalog för projektet. Exempel: `mkdir sample-project`.
 * Initiera ditt projekt med Gradle: `gradle init --type basic` . Välj en **DSL** när du uppmanas till det och välj **Kotlin**.
 * Uppdatera `build.gradle.kts` . Tänk på att du behöver uppdatera din `mainClassName` beroende på exemplet.
   ```java
@@ -85,14 +85,14 @@ I den här snabb starten lär du dig att använda Translator-tjänsten via REST.
 * Skapa ett nytt projekt i din favorit-IDE eller-redigerare.
 * Kopiera koden från ett av exemplen till ditt projekt.
 * Ange din prenumerations nyckel.
-* Kör programmet. Här är ett exempel: `node Translate.js`.
+* Kör programmet. Exempel: `node Translate.js`.
 
 # <a name="python"></a>[Python](#tab/python)
 
 * Skapa ett nytt projekt i din favorit-IDE eller-redigerare.
 * Kopiera koden från ett av exemplen till ditt projekt.
 * Ange din prenumerations nyckel.
-* Kör programmet. Här är ett exempel: `python translate.py`.
+* Kör programmet. Exempel: `python translate.py`.
 
 ---
 
@@ -102,7 +102,7 @@ När du anropar Translator-tjänsten via REST måste du se till att följande ru
 
 <table width="100%">
   <th width="20%">Sidhuvuden</th>
-  <th>Description</th>
+  <th>Beskrivning</th>
   <tr>
     <td>Authentication-huvud (er)</td>
     <td><em>Begär ande huvud för begäran</em>.<br/><code>Ocp-Apim-Subscription-Key</code><br/><br/><em>Nödvändigt begär ande huvud om du använder en Cognitive Services-resurs. Valfritt om du använder en översättare-resurs.</em>.<br/><code>Ocp-Apim-Subscription-Region</code><br/><br/>Se <a href="/azure/cognitive-services/translator/reference/v3-0-reference#authentication">tillgängliga alternativ för autentisering</a>.</td>
@@ -968,7 +968,8 @@ Om du översätter till ett språk som använder ett annat alfabet (eller fonem)
 
 Använd parametern för att hämta en transkriberingsspråk från `translate` slut punkten `toScript` .
 
-> ! Lägg En fullständig lista över tillgängliga språk och transkriberingsspråk-alternativ finns i [språk stöd](language-support.md).
+> [!NOTE]
+> En fullständig lista över tillgängliga språk och transkriberingsspråk-alternativ finns i [språk stöd](language-support.md).
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -1247,7 +1248,8 @@ Efter ett lyckat anrop bör du se följande svar. Tänk på att svar från `tran
 
 Du kan också använda `transliterate` slut punkten för att hämta en transkriberingsspråk. När du använder transkriberingsspråk-slutpunkten måste du ange käll språket ( `language` ), käll skriptet/alfabetet ( `fromScript` ) och utdata-skriptet/alfabetet ( `toScript` ) som parametrar. I det här exemplet ska vi hämta transkriberingsspråk för สวัสดี. 
 
-> ! Lägg En fullständig lista över tillgängliga språk och transkriberingsspråk-alternativ finns i [språk stöd](language-support.md).
+> [!NOTE]
+> En fullständig lista över tillgängliga språk och transkriberingsspråk-alternativ finns i [språk stöd](language-support.md).
 
 # <a name="c"></a>[C#](#tab/csharp)
 

@@ -10,13 +10,13 @@ ms.topic: reference
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 01/15/2021
-ms.openlocfilehash: db3b168826223e4eb958f7700e65623a115e5779
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.date: 01/22/2021
+ms.openlocfilehash: a4be96d35116ed40ca61f00ed8f2ddd786760242
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251479"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735250"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-purchasing-model"></a>Resursbegränsningar för enskilda databaser med hjälp av vCore-inköpsmodellen
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -411,7 +411,7 @@ Du kan ange tjänst nivå, beräknings storlek (tjänst mål) och lagrings utrym
 |Maximal data storlek för TempDB (GB)|83,25|92,5|111|148|166,5|333|
 |Lagringstyp|Fjärr-SSD|Fjärr-SSD|Fjärr-SSD|Fjärr-SSD|Fjärr-SSD|Fjärr-SSD|
 |I/o-latens (ungefärligt)|5-7 MS (skrivning)<br>5-10 ms (läsa)|5-7 MS (skrivning)<br>5-10 ms (läsa)|5-7 MS (skrivning)<br>5-10 ms (läsa)|5-7 MS (skrivning)<br>5-10 ms (läsa)|5-7 MS (skrivning)<br>5-10 ms (läsa)|5-7 MS (skrivning)<br>5-10 ms (läsa)|
-|Max data IOPS *|5760|6400|7680|10240|11520|23040|
+|Max data IOPS *|5760|6400|7680|10240|11520|12800|
 |Högsta logg frekvens (Mbit/s)|36|36|36|36|36|36|
 |Maximalt antal samtidiga arbetare (begär Anden)|900|1000|1200|1600|1800|3600|
 |Maximalt antal samtidiga inloggningar|1800|2000|2400|3200|3600|7200|
@@ -628,7 +628,7 @@ Du kan ange tjänst nivå, beräknings storlek (tjänst mål) och lagrings utrym
 |Virtuella kärnor|2|4|6|8|
 |Minne (GB)|9|18|27|36|
 |Columnstore-stöd|Ja|Ja|Ja|Ja|
-|Minnes intern OLTP-lagring (GB)|1,7|3.7|5.9|8,2|
+|Minnes intern OLTP-lagring (GB)|1.7|3.7|5.9|8,2|
 |Maximal data storlek (GB)|768|768|768|768|
 |Största logg storlek (GB)|230|230|230|230|
 |Maximal data storlek för TempDB (GB)|64|128|192|256|

@@ -6,12 +6,12 @@ ms.author: noakuper
 ms.topic: conceptual
 ms.date: 10/05/2020
 ms.subservice: ''
-ms.openlocfilehash: e8d0dcae81944d5799841c22093585b942934b79
-ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
+ms.openlocfilehash: 5008da99b63cabba41dade9a745fbd5853345737
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97732112"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734974"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Använd Azure Private Link för att ansluta nätverk till Azure Monitor på ett säkert sätt
 
@@ -149,7 +149,7 @@ Nu när du har resurser som är anslutna till din AMPLS skapar du en privat slut
  
    b.    Välj **Ja** för **integrering med privat DNS-zon** och låt den automatiskt skapa en ny privat DNS zon. De faktiska DNS-zonerna kan skilja sig från vad som visas på skärm bilden nedan. 
    > [!NOTE]
-   > Om du väljer **Nej** och hellre vill hantera DNS-poster manuellt, slutför först konfigurationen av din privata länk, inklusive den här privata slut punkten och AMPLS-konfigurationen. Konfigurera sedan DNS enligt instruktionerna i [Azures DNS-konfiguration för privat slut punkt](../../private-link/private-endpoint-dns.md). Se till att du inte skapar tomma poster som förberedelse för konfigurationen av den privata länken. De DNS-poster som du skapar kan åsidosätta befintliga inställningar och påverka din anslutning med Azure Monitor.
+   > Om du väljer **Nej** och hellre vill hantera DNS-poster manuellt, slutför först konfigurationen av din privata länk, inklusive den här privata slut punkten och AMPLS-konfigurationen. Konfigurera sedan DNS enligt anvisningarna i [Konfigurera DNS för den privata Azure-slutpunkten](../../private-link/private-endpoint-dns.md). Se till att du inte skapar tomma poster när du förbereder konfigurationen av den privata länken. De DNS-poster som du skapar kan åsidosätta befintliga inställningar och påverka din anslutning till Azure Monitor.
  
    c.    Klicka på **Granska + skapa**.
  
@@ -217,7 +217,7 @@ Att begränsa åtkomsten på det här sättet gäller endast för data i Applica
 
 Du kan automatisera processen som beskrivs tidigare med Azure Resource Manager mallar, REST-och kommando rads gränssnitt.
 
-Om du vill skapa och hantera privata länk omfattningar använder du [REST API](https://docs.microsoft.com/rest/api/monitor/private%20link%20scopes%20(preview)) eller [Azure CLI (AZ Monitor Private-Link-scope)](/cli/azure/monitor/private-link-scope?view=azure-cli-latest).
+Om du vill skapa och hantera privata länk omfattningar använder du [REST API](/rest/api/monitor/private%20link%20scopes%20(preview)) eller [Azure CLI (AZ Monitor Private-Link-scope)](/cli/azure/monitor/private-link-scope?view=azure-cli-latest).
 
 Om du vill hantera nätverks åtkomst använder du flaggorna `[--ingestion-access {Disabled, Enabled}]` och `[--query-access {Disabled, Enabled}]` på [Log Analytics arbets ytor](/cli/azure/monitor/log-analytics/workspace?view=azure-cli-latest) eller [Application Insights komponenter](/cli/azure/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest).
 
@@ -227,7 +227,7 @@ Lagrings konton används i inmatnings processen för anpassade loggar. Som stand
 
 Mer information om hur du ansluter ditt eget lagrings konto finns i [kundägda lagrings konton för logg](private-storage.md) inmatning
 
-## <a name="restrictions-and-limitations"></a>Begränsningar och begränsningar
+## <a name="restrictions-and-limitations"></a>Villkor och begränsningar
 
 ### <a name="agents"></a>Agenter
 

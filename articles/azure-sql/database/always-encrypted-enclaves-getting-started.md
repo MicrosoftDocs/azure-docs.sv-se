@@ -11,12 +11,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviwer: vanto
 ms.date: 01/15/2021
-ms.openlocfilehash: 94923b13181290a290f13339da5b05f6fdddff38
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: d9c2bec575f2c7a948f3eb6e65be6a735a3c03e8
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98253749"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98733825"
 ---
 # <a name="tutorial-getting-started-with-always-encrypted-with-secure-enclaves-in-azure-sql-database"></a>Självstudie: komma igång med Always Encrypted med säker enclaves i Azure SQL Database
 
@@ -25,19 +25,19 @@ ms.locfileid: "98253749"
 > [!NOTE]
 > Always Encrypted med säker enclaves för Azure SQL Database finns för närvarande i **offentlig för hands version**.
 
-I den här självstudien lär du dig att komma igång med [Always Encrypted med säker enclaves](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-enclaves) i Azure SQL Database. Då visas följande:
+I den här självstudien lär du dig att komma igång med [Always Encrypted med säker enclaves](/sql/relational-databases/security/encryption/always-encrypted-enclaves) i Azure SQL Database. Då visas följande:
 
 > [!div class="checklist"]
 > - Hur du skapar en miljö för att testa och utvärdera Always Encrypted med säkra enclaves.
 > - Hur du krypterar data på plats och utfärdar omfattande konfidentiella frågor mot krypterade kolumner med SQL Server Management Studio (SSMS).
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
-Den här självstudien kräver Azure PowerShell-och [SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms).
+Den här självstudien kräver Azure PowerShell-och [SSMS](/sql/ssms/download-sql-server-management-studio-ssms).
 
 ### <a name="powershell-requirements"></a>PowerShell-krav
 
-Se [Översikt över Azure PowerShell](https://docs.microsoft.com/powershell/azure) för information om hur du installerar och kör Azure PowerShell. 
+Se [Översikt över Azure PowerShell](/powershell/azure) för information om hur du installerar och kör Azure PowerShell. 
 
 Lägsta version av AZ-moduler som krävs för att stödja attesterings åtgärder:
 
@@ -66,7 +66,7 @@ Om du vill fortsätta att interagera med PowerShell-galleriet kör du följande 
 
 ### <a name="ssms-requirements"></a>Krav för SSMS
 
-Information om hur du hämtar SSMS finns i [hämta SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) .
+Information om hur du hämtar SSMS finns i [hämta SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) .
 
 Den nödvändiga lägsta versionen av SSMS är 18,8.
 
@@ -75,7 +75,7 @@ Den nödvändiga lägsta versionen av SSMS är 18,8.
 
  I det här steget ska du skapa en ny Azure SQL Database logisk server och en ny databas med hjälp av maskin varu konfigurationen för DC-serien. Always Encrypted med säker enclaves i Azure SQL Database använder Intel SGX-enclaves, som stöds i maskin varu konfigurationen för DC-serien. Mer information finns i [DC-serien](service-tiers-vcore.md#dc-series).
 
-1. Öppna en PowerShell-konsol och logga in på Azure. Om det behövs [växlar du till den prenumeration](https://docs.microsoft.com/powershell/azure/manage-subscriptions-azureps) som du använder för den här självstudien.
+1. Öppna en PowerShell-konsol och logga in på Azure. Om det behövs [växlar du till den prenumeration](/powershell/azure/manage-subscriptions-azureps) som du använder för den här självstudien.
 
   ```PowerShell
   Connect-AzAccount
@@ -356,10 +356,10 @@ Du kan köra omfattande frågor mot de krypterade kolumnerna. En del bearbetning
 ## <a name="next-steps"></a>Nästa steg
 
 När du har slutfört den här självstudien kan du gå till någon av följande Självstudier:
-- [Självstudie: utveckla ett .NET-program med hjälp av Always Encrypted med säker enclaves](https://docs.microsoft.com/sql/connect/ado-net/sql/tutorial-always-encrypted-enclaves-develop-net-apps)
-- [Självstudie: utveckla ett .NET Framework program med Always Encrypted med säker enclaves](https://docs.microsoft.com/sql/relational-databases/security/tutorial-always-encrypted-enclaves-develop-net-framework-apps)
-- [Självstudie: skapa och använda index i enklaven-aktiverade kolumner med slumpmässig kryptering](https://docs.microsoft.com/sql/relational-databases/security/tutorial-creating-using-indexes-on-enclave-enabled-columns-using-randomized-encryption)
+- [Självstudie: utveckla ett .NET-program med hjälp av Always Encrypted med säker enclaves](/sql/connect/ado-net/sql/tutorial-always-encrypted-enclaves-develop-net-apps)
+- [Självstudie: utveckla ett .NET Framework program med Always Encrypted med säker enclaves](/sql/relational-databases/security/tutorial-always-encrypted-enclaves-develop-net-framework-apps)
+- [Självstudie: skapa och använda index i enklaven-aktiverade kolumner med slumpmässig kryptering](/sql/relational-databases/security/tutorial-creating-using-indexes-on-enclave-enabled-columns-using-randomized-encryption)
 
 ## <a name="see-also"></a>Se även
 
-- [Konfigurera och använda Always Encrypted med säker enclaves](https://docs.microsoft.com/sql/relational-databases/security/encryption/configure-always-encrypted-enclaves)
+- [Konfigurera och använda Always Encrypted med säker enclaves](/sql/relational-databases/security/encryption/configure-always-encrypted-enclaves)

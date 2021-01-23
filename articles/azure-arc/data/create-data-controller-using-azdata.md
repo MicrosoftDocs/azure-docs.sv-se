@@ -9,18 +9,18 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 986019ec4de2fc25b6d8714a8c687cc9342f47b8
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 3d2652d2f6c1bb56dd009a9e4de375c42786986d
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98696082"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735007"
 ---
 # <a name="create-azure-arc-data-controller-using-the-azure-data-cli-azdata"></a>Skapa en Azure Arc-dataenhet med hjälp av [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Läs avsnittet [skapa data styrenheten för Azure båg](create-data-controller.md) för översikts information.
 
@@ -59,7 +59,7 @@ kubectl config current-context
 
 ### <a name="connectivity-modes"></a>Anslutningslägen
 
-Som det beskrivs i [anslutnings lägen och-krav](https://docs.microsoft.com/azure/azure-arc/data/connectivity)kan Azure Arc-datakontrollanten distribueras antingen med antingen `direct` eller `indirect` anslutnings läget. Med `direct` anslutnings läge skickas användnings data automatiskt och skickas kontinuerligt till Azure. I den här artikeln anger exemplen `direct` anslutnings läget enligt följande:
+Som det beskrivs i [anslutnings lägen och-krav](./connectivity.md)kan Azure Arc-datakontrollanten distribueras antingen med antingen `direct` eller `indirect` anslutnings läget. Med `direct` anslutnings läge skickas användnings data automatiskt och skickas kontinuerligt till Azure. I den här artikeln anger exemplen `direct` anslutnings läget enligt följande:
 
    ```console
    --connectivity-mode direct

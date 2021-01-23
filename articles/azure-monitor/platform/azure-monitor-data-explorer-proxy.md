@@ -7,15 +7,15 @@ ms.reviewer: bwren
 ms.subservice: logs
 ms.topic: conceptual
 ms.date: 12/02/2020
-ms.openlocfilehash: 1a35b80ceec12b378a01555f42b7a0500b8f6229
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 5671ec68901be289a87c23b6883160f9cda2b651
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060460"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98733191"
 ---
 # <a name="cross-resource-query-azure-data-explorer-by-using-azure-monitor"></a>Fråga Azure-Datautforskaren mellan resurser med Azure Monitor
-Azure Monitor stöder frågor över olika tjänster mellan Azure Datautforskaren, [Application Insights](/azure/azure-monitor/app/app-insights-overview)och [Log Analytics](/azure/azure-monitor/platform/data-platform-logs). Du kan sedan fråga ditt Azure Datautforskaren-kluster med Log Analytics/Application Insights-verktyg och se det i en kors tjänst fråga. Artikeln visar hur du skapar en kors tjänst fråga.
+Azure Monitor stöder frågor över olika tjänster mellan Azure Datautforskaren, [Application Insights](../app/app-insights-overview.md)och [Log Analytics](./data-platform-logs.md). Du kan sedan fråga ditt Azure Datautforskaren-kluster med Log Analytics/Application Insights-verktyg och se det i en kors tjänst fråga. Artikeln visar hur du skapar en kors tjänst fråga.
 
 Följande diagram visar Azure Monitor över tjänst flödet:
 
@@ -62,8 +62,8 @@ Frågor över flera klienter mellan-tjänsterna stöds inte. Du är inloggad på
 
 Om Azure Datautforskaren-resursen finns i klient organisation A och arbets ytan Log Analytics är i klient B, använder du någon av följande metoder:
 
-*  Med Azure Datautforskaren kan du lägga till roller för huvud konton i olika klienter. Lägg till ditt användar-ID i klient B som en behörig användare i Azure Datautforskaren-klustret. Kontrol lera att egenskapen [TrustedExternalTenant](https://docs.microsoft.com/powershell/module/az.kusto/update-azkustocluster) i Azure datautforskaren-klustret innehåller klient b. kör kors frågan fullständigt i klient B.
-*  Använd [Lighthouse](https://docs.microsoft.com/azure/lighthouse/) för att projicera Azure Monitor resursen i klient organisation A.
+*  Med Azure Datautforskaren kan du lägga till roller för huvud konton i olika klienter. Lägg till ditt användar-ID i klient B som en behörig användare i Azure Datautforskaren-klustret. Kontrol lera att egenskapen [TrustedExternalTenant](/powershell/module/az.kusto/update-azkustocluster) i Azure datautforskaren-klustret innehåller klient b. kör kors frågan fullständigt i klient B.
+*  Använd [Lighthouse](../../lighthouse/index.yml) för att projicera Azure Monitor resursen i klient organisation A.
 
 ## <a name="connect-to-azure-data-explorer-clusters-from-different-tenants"></a>Ansluta till Azure Datautforskaren-kluster från olika klienter
 
@@ -72,6 +72,6 @@ Kusto Explorer loggar automatiskt in dig på den klient som användar kontot urs
 `Data Source=https://ade.applicationinsights.io/subscriptions/SubscriptionId/resourcegroups/ResourceGroupName;Initial Catalog=NetDefaultDB;AAD Federated Security=True;Authority ID=TenantId`
 
 ## <a name="next-steps"></a>Nästa steg
-* [Skriva frågor](https://docs.microsoft.com/azure/data-explorer/write-queries)
-* [Fråga efter data i Azure Monitor med Azure Datautforskaren](https://docs.microsoft.com/azure/data-explorer/query-monitor-data)
-* [Utföra kors resurs logg frågor i Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/cross-workspace-query)
+* [Skriva frågor](/azure/data-explorer/write-queries)
+* [Fråga efter data i Azure Monitor med Azure Datautforskaren](/azure/data-explorer/query-monitor-data)
+* [Utföra kors resurs logg frågor i Azure Monitor](../log-query/cross-workspace-query.md)

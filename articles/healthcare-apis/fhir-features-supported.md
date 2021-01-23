@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 02/07/2019
 ms.author: cavoeg
-ms.openlocfilehash: 9a4c331d82695aecb53990fd604ade82f3361959
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: ad663b345d3d150b55e0e018afd1430775d77162
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452925"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98733477"
 ---
 # <a name="features"></a>Funktioner
 
@@ -34,22 +34,22 @@ Tidigare versioner som också stöds är: `3.0.2`
 | update                         | Ja       | Ja       | Ja       |                                                     |
 | uppdatera med optimistisk låsning | Ja       | Ja       | Ja       |                                                     |
 | uppdatering (villkorligt)           | Ja       | Ja       | Ja       |                                                     |
-| 9.0a                          | Inga        | Inga        | Inga        |                                                     |
-| delete                         | Ja       | Ja       | Ja       |                                                     |
-| ta bort (villkorligt)           | Inga        | Inga        | Inga        |                                                     |
+| 9.0a                          | Nej        | Nej        | Nej        |                                                     |
+| ta bort                         | Ja       | Ja       | Ja       |                                                     |
+| ta bort (villkorligt)           | Nej        | Nej        | Nej        |                                                     |
 | historik                        | Ja       | Ja       | Ja       |                                                     |
 | skapa                         | Ja       | Ja       | Ja       | Stöd för både efter-och-placering                               |
 | Skapa (villkorlig)           | Ja       | Ja       | Ja       | Problem [#1382](https://github.com/microsoft/fhir-server/issues/1382) |
 | sök                         | Delvis   | Delvis   | Delvis   | Se nedan                                           |
-| kedjad sökning                 | Inga        | Ja       | Inga        |                                           |
-| omvänd länkad sökning         | Inga        | Inga        | Inga        |                                            |
+| kedjad sökning                 | Nej        | Ja       | Nej        |                                           |
+| omvänd länkad sökning         | Nej        | Nej        | Nej        |                                            |
 | funktioner                   | Ja       | Ja       | Ja       |                                                     |
 | batch                          | Ja       | Ja       | Ja       |                                                     |
-| transaktionen                    | Inga        | Ja       | Inga        |                                                     |
+| transaktionen                    | Nej        | Ja       | Nej        |                                                     |
 | växlings                         | Delvis   | Delvis   | Delvis   | `self` och `next` stöds                     |
-| mellanhand                 | Inga        | Inga        | Inga        |                                                     |
+| mellanhand                 | Nej        | Nej        | Nej        |                                                     |
 
-## <a name="search"></a>Search
+## <a name="search"></a>Sök
 
 Alla typer av Sök parametrar stöds. 
 
@@ -63,7 +63,7 @@ Alla typer av Sök parametrar stöds.
 | Sammansatt             | Ja       | Ja       | Ja       |         |
 | Kvantitet              | Ja       | Ja       | Ja       |         |
 | URI                   | Ja       | Ja       | Ja       |         |
-| Speciella               | Inga        | Inga        | Inga        |         |
+| Speciella               | Nej        | Nej        | Nej        |         |
 
 
 | Modifierare             | Stöds – PaaS | Support – OSS (SQL) | Support – OSS (Cosmos DB) | Kommentar |
@@ -72,29 +72,29 @@ Alla typer av Sök parametrar stöds.
 |`:exact`               | Ja       | Ja       | Ja       |         |
 |`:contains`            | Ja       | Ja       | Ja       |         |
 |`:text`                | Ja       | Ja       | Ja       |         |
-|`:in` åtkomsttokenbegäran          | Inga        | Inga        | Inga        |         |
-|`:below` åtkomsttokenbegäran       | Inga        | Inga        | Inga        |         |
-|`:above` åtkomsttokenbegäran       | Inga        | Inga        | Inga        |         |
-|`:not-in` åtkomsttokenbegäran      | Inga        | Inga        | Inga        |         |
-|`:[type]` förhållande  | Inga        | Inga        | Inga        |         |
+|`:in` åtkomsttokenbegäran          | Nej        | Nej        | Nej        |         |
+|`:below` åtkomsttokenbegäran       | Nej        | Nej        | Nej        |         |
+|`:above` åtkomsttokenbegäran       | Nej        | Nej        | Nej        |         |
+|`:not-in` åtkomsttokenbegäran      | Nej        | Nej        | Nej        |         |
+|`:[type]` förhållande  | Nej        | Nej        | Nej        |         |
 |`:below` URI         | Ja       | Ja       | Ja       |         |
-|`:not`                 | Inga        | Inga        | Inga        |         |
-|`:above` URI         | Inga        | Inga        | Inga        | Problem [#158](https://github.com/Microsoft/fhir-server/issues/158) |
+|`:not`                 | Nej        | Nej        | Nej        |         |
+|`:above` URI         | Nej        | Nej        | Nej        | Problem [#158](https://github.com/Microsoft/fhir-server/issues/158) |
 
 | Vanlig Sök parameter | Stöds – PaaS | Support – OSS (SQL) | Support – OSS (Cosmos DB) | Kommentar |
 |-------------------------| ----------| ----------| ----------|---------|
 | `_id`                   | Ja       | Ja       | Ja       |         |
 | `_lastUpdated`          | Ja       | Ja       | Ja       |         |
 | `_tag`                  | Ja       | Ja       | Ja       |         |
-| `_profile`              | Ja       | Ja       | Ja       |         |
+| `_profile`              | Delvis   | Delvis   | Delvis   | Stöds bara i STU3, inget stöd i R4 |
 | `_security`             | Ja       | Ja       | Ja       |         |
-| `_text`                 | Inga        | Inga        | Inga        |         |
-| `_content`              | Inga        | Inga        | Inga        |         |
+| `_text`                 | Nej        | Nej        | Nej        |         |
+| `_content`              | Nej        | Nej        | Nej        |         |
 | `_list`                 | Ja       | Ja       | Ja       |         |
-| `_has`                  | Inga        | Inga        | Inga        |         |
+| `_has`                  | Nej        | Nej        | Nej        |         |
 | `_type`                 | Ja       | Ja       | Ja       |         |
-| `_query`                | Inga        | Inga        | Inga        |         |
-| `_filter`               | Inga        | Inga        | Inga        |         |
+| `_query`                | Nej        | Nej        | Nej        |         |
+| `_filter`               | Nej        | Nej        | Nej        |         |
 
 | Sök Resultat parametrar | Stöds – PaaS | Support – OSS (SQL) | Support – OSS (Cosmos DB) | Kommentar |
 |-------------------------|-----------|-----------|-----------|---------|
@@ -105,9 +105,9 @@ Alla typer av Sök parametrar stöds.
 | `_summary`              | Delvis   | Delvis   | Delvis   | `_summary=count` stöds |
 | `_total`                | Delvis   | Delvis   | Delvis   | _total = icke och _total = korrekt      |
 | `_elements`             | Ja       | Ja       | Ja       |         |
-| `_contained`            | Inga        | Inga        | Inga        |         |
-| `containedType`         | Inga        | Inga        | Inga        |         |
-| `_score`                | Inga        | Inga        | Inga        |         |
+| `_contained`            | Nej        | Nej        | Nej        |         |
+| `containedType`         | Nej        | Nej        | Nej        |         |
+| `_score`                | Nej        | Nej        | Nej        |         |
 
 ## <a name="extended-operations"></a>Utökade åtgärder
 
@@ -137,7 +137,7 @@ För närvarande tillämpas de tillåtna åtgärderna för en specifik roll *glo
 
 * [**Ru: er (Request units)**](../cosmos-db/concepts-limits.md) – du kan konfigurera upp till 10 000 ru: er i portalen för Azure API för FHIR. Du behöver minst 400 ru: er eller 10 ru: er/GB, beroende på vilket som är störst. Om du behöver mer än 10 000 ru: er kan du ställa in ett support ärende så att det ökar. Det högsta tillgängliga värdet är 1 000 000.
 
-* **Samtidiga anslutningar** och **instanser** – med dafault har du fem samtidiga anslutningar på två instanser i klustret (totalt 10 samtidiga förfrågningar). Om du tror att du behöver fler samtidiga förfrågningar kan du öppna ett support ärende med information om dina behov.
+* **Samtidiga anslutningar** och **instanser** – som standard har du fem samtidiga anslutningar på två instanser i klustret (totalt 10 samtidiga förfrågningar). Om du tror att du behöver fler samtidiga förfrågningar kan du öppna ett support ärende med information om dina behov.
 
 * **Paket storlek** -varje paket är begränsat till 500 objekt.
 

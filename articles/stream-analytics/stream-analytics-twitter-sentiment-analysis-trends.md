@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 02/10/2020
-ms.openlocfilehash: 3b321e318621c5687a2e3e5f0649985210a2d16c
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 6a461ad906f7611c8a13e2ee495f4d2f62fedd53
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98019881"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734853"
 ---
 # <a name="real-time-twitter-sentiment-analysis-in-azure-stream-analytics"></a>Attitydanalys för Twitter i realtid i Azure Stream Analytics
 
@@ -29,7 +29,7 @@ Ett företag som har en nyhets medie webbplats är intresse rad av att få en f�
 
 För att kunna identifiera trender i ämnen i real tid på Twitter behöver företaget real tids analys av tweet-volymen och sentiment för viktiga ämnen.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 I den här instruktions guiden använder du ett klient program som ansluter till Twitter och letar efter Tweets som har vissa hashtagg (som du kan ställa in). Om du vill köra programmet och analysera tweets med Azure streaming Analytics måste du ha följande:
 
@@ -40,6 +40,10 @@ I den här instruktions guiden använder du ett klient program som ansluter till
 * TwitterClientCore-programmet som läser Twitter-flödet. Hämta [TwitterClientCore](https://github.com/Azure/azure-stream-analytics/tree/master/DataGenerators/TwitterClientCore)för att hämta det här programmet.
 
 * Installera [.net Core CLI](/dotnet/core/tools/?tabs=netcore2x) version 2.1.0.
+
+Nedan visas den lösnings arkitektur som du kommer att implementera.
+
+   ![Ett diagram som visar olika delar av tjänster och program som används för att bygga lösningen.](./media/stream-analytics-twitter-sentiment-analysis-trends/solution-diagram.png "Lösnings diagram")
 
 ## <a name="create-an-event-hub-for-streaming-input"></a>Skapa en Event Hub för strömmande data
 

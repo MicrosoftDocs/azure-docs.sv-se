@@ -12,19 +12,19 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, vanto
 ms.date: 11/09/2018
-ms.openlocfilehash: dd5c6527cd6a0beea291dce94ff0e5949ba00671
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 965e765e22a4da8f2ac3b7151337cf62b65be4fe
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791264"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98732619"
 ---
 # <a name="connect-your-application-to-azure-sql-managed-instance"></a>Anslut ditt program till Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 Idag har du flera val när du bestämmer hur och var du är värd för ditt program.
 
-Du kan välja att vara värd för program i molnet genom att använda Azure App Service eller vissa av Azures virtuella nätverks integrerade alternativ, t. ex. Azure App Service-miljön, Azure Virtual Machines och skalnings uppsättningar för virtuella datorer. Du kan också ta hybrid moln och se till att dina program är lokalt.
+Du kan välja att vara värd för program i molnet genom att använda Azure App Service eller vissa av Azures virtuella nätverks integrerade alternativ, t. ex. Azure App Service Environment, Azure Virtual Machines och skalnings uppsättningar för virtuella datorer. Du kan också ta hybrid moln och se till att dina program är lokalt.
 
 Oavsett vilket alternativ du gör kan du ansluta den till en Azure SQL-hanterad instans. 
 
@@ -56,7 +56,7 @@ Du kan också ansluta ditt lokala program till SQL-hanterad instans. SQL-hantera
 
 Det finns två alternativ för att ansluta lokalt till ett virtuellt Azure-nätverk:
 
-- Plats-till-plats-VPN-anslutning ([Azure Portal](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md), [POWERSHELL](../../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md), [Azure CLI](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli.md))
+- Plats-till-plats-VPN-anslutning ([Azure Portal](../../vpn-gateway/tutorial-site-to-site-portal.md), [POWERSHELL](../../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md), [Azure CLI](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli.md))
 - [Azure ExpressRoute](../../expressroute/expressroute-introduction.md) -anslutning  
 
 Om du har upprättat en lokal anslutning till Azure-anslutningen och du inte kan upprätta en anslutning till SQL-hanterad instans kontrollerar du om brand väggen har en öppen utgående anslutning på SQL-port 1433 samt 11000-11999-intervallet för portar för omdirigering.
@@ -69,12 +69,12 @@ Du kan också ansluta din utvecklings ruta till SQL-hanterad instans. SQL-hanter
 
 Ett annat scenario som implementeras av kunder är var en VPN-gateway installeras i ett separat virtuellt nätverk och en prenumeration från den som är värd för SQL-hanterad instans. De två virtuella nätverken är sedan peer-kopplade. Följande exempel arkitektur diagram visar hur detta kan implementeras.
 
-![Peering för virtuella nätverk](./media/connect-application-instance/vnet-peering.png)
+![Virtuell nätverkspeering](./media/connect-application-instance/vnet-peering.png)
 
-När du har konfigurerat den grundläggande infrastrukturen måste du ändra vissa inställningar så att VPN-gatewayen kan se IP-adresserna i det virtuella nätverket som är värd för SQL-hanterad instans. Det gör du genom att göra följande mycket speciella ändringar under **peering-inställningarna** .
+När du har konfigurerat den grundläggande infrastrukturen måste du ändra vissa inställningar så att VPN-gatewayen kan se IP-adresserna i det virtuella nätverket som är värd för SQL-hanterad instans. Det gör du genom att göra följande mycket speciella ändringar under **peering-inställningarna**.
 
-1. I det virtuella nätverk som är värd för VPN-gatewayen går du till **peering** , går till peer-ansluten virtuell nätverks anslutning för SQL-hanterad instans och klickar sedan på **Tillåt Gateway-överföring** .
-2. I det virtuella nätverk som är värd för SQL-hanterad instans går du till **peering** , går till peer-kopplat virtuell nätverks anslutning för VPN-gatewayen och klickar sedan på **Använd fjärrgatewayer** .
+1. I det virtuella nätverk som är värd för VPN-gatewayen går du till **peering**, går till peer-ansluten virtuell nätverks anslutning för SQL-hanterad instans och klickar sedan på **Tillåt Gateway-överföring**.
+2. I det virtuella nätverk som är värd för SQL-hanterad instans går du till **peering**, går till peer-kopplat virtuell nätverks anslutning för VPN-gatewayen och klickar sedan på **Använd fjärrgatewayer**.
 
 ## <a name="connect-azure-app-service"></a>Anslut Azure App Service 
 

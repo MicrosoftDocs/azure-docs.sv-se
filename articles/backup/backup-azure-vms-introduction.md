@@ -3,12 +3,12 @@ title: Om Säkerhetskopiering av virtuella Azure-datorer
 description: I den här artikeln lär du dig hur tjänsten Azure Backup säkerhetskopierar virtuella Azure-datorer och hur du följer bästa praxis.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 291c50d4ac52d34a218b1b7cc76d625da3119d25
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 691fe991ad141696c0c68e915d7225001a1befd0
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97969001"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98733578"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>En översikt över säkerhets kopiering av virtuella Azure-datorer
 
@@ -121,7 +121,7 @@ När du konfigurerar säkerhetskopieringar av virtuella datorer föreslår vi at
 - Om du återställer virtuella datorer från ett enda valv rekommenderar vi starkt att du använder olika [generella v2-lagrings konton](../storage/common/storage-account-upgrade.md) för att säkerställa att mål lagrings kontot inte får någon begränsning. Till exempel måste varje virtuell dator ha ett annat lagrings konto. Om till exempel 10 virtuella datorer återställs använder du 10 olika lagrings konton.
 - För säkerhets kopiering av virtuella datorer som använder Premium Storage med omedelbar återställning rekommenderar vi att du allokerar *50%* ledigt utrymme för det totala allokerade lagrings utrymmet, vilket **endast** krävs för den första säkerhets kopieringen. Det lediga utrymmet på 50% är inte ett krav på säkerhets kopieringar när den första säkerhets kopieringen har slutförts
 - Gränsen för antalet diskar per lagringskonto är i förhållande till hur mycket diskarna används av programmen som körs på en virtuell dator med infrastruktur som en tjänst (IaaS). Som allmän praxis, om 5 till 10 diskar eller mer finns på ett enda lagringskonto balanserar du belastningen genom att flytta några diskar till separata lagringskonton.
-- Om du vill återställa virtuella datorer med hanterade diskar med hjälp av PowerShell anger du den ytterligare parametern **_TargetResourceGroupName_* _ för att ange resurs gruppen som de hanterade diskarna ska återställas till. [Läs mer här](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#restore-managed-disks).
+- Om du vill återställa virtuella datorer med hanterade diskar med hjälp av PowerShell anger du den ytterligare parametern **_TargetResourceGroupName_* _ för att ange resurs gruppen som de hanterade diskarna ska återställas till. [Läs mer här](./backup-azure-vms-automation.md#restore-managed-disks).
 
 ## <a name="backup-costs"></a>Kostnader för säkerhets kopiering
 

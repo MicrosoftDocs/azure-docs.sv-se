@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 52c0dd6825c8576d97e10d3f0568ca5fb81e789e
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 3ab1e6011a1c127c9ac5a2c7652a4bf458372e1e
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98210822"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98733945"
 ---
 # <a name="quickstart-set-up-azure-attestation-with-azure-portal"></a>Snabb start: Konfigurera Azure-attestering med Azure Portal
 
@@ -58,7 +58,7 @@ Följ stegen nedan för att hantera en attesterings leverantör med hjälp av Az
 
     d. **Plats**: Välj en plats 
     
-    e. **Princip signerings certifikat fil**: om du vill konfigurera attesterings leverantören med princip signerings certifikat, laddar du upp certifikat filen. Se exemplen [här](/azure/attestation/policy-signer-examples) 
+    e. **Princip signerings certifikat fil**: om du vill konfigurera attesterings leverantören med princip signerings certifikat, laddar du upp certifikat filen. Se exemplen [här](./policy-signer-examples.md) 
 6.  När du har angett nödvändiga indata klickar du på **Granska + skapa**
 7.  Åtgärda verifierings problem om det finns några och klicka på **skapa**.
 
@@ -98,7 +98,7 @@ a.  Verifiera antalet certifikat och hämtade certifikat.
 3.  Välj providern för attestering och gå till översikts Sidan
 4.  Klicka på **princip signerings certifikat** på resurs-menyn på vänster sida eller i det nedre fönstret
 5.  Klicka på **Lägg till** på den översta menyn (knappen kommer att inaktive ras för de attesterings leverantörer som skapats utan krav på policy signering)
-6.  Ladda upp princip signerings certifikat fil och klicka på **Lägg till**. Se exemplen [här](/azure/attestation/policy-signer-examples)
+6.  Ladda upp princip signerings certifikat fil och klicka på **Lägg till**. Se exemplen [här](./policy-signer-examples.md)
 
 ### <a name="delete-policy-signer-certificate"></a>Ta bort princip signerings certifikat
 
@@ -107,7 +107,7 @@ a.  Verifiera antalet certifikat och hämtade certifikat.
 3.  Välj providern för attestering och gå till översikts Sidan
 4.  Klicka på **princip signerings certifikat** på resurs-menyn på vänster sida eller i det nedre fönstret
 5.  Klicka på **ta bort** på den översta menyn (knappen kommer att inaktive ras för de attesterings leverantörer som skapats utan krav på policy signering)
-6.  Ladda upp princip signerings certifikat filen och klicka på **ta bort**. Se exemplen [här](/azure/attestation/policy-signer-examples) 
+6.  Ladda upp princip signerings certifikat filen och klicka på **ta bort**. Se exemplen [här](./policy-signer-examples.md) 
 
 ## <a name="attestation-policy"></a>Attesteringsprincip
 
@@ -132,7 +132,7 @@ a.  Verifiera antalet certifikat och hämtade certifikat.
 5.  Klicka på **Konfigurera** på den översta menyn
 6.  När providern för attestering skapas utan krav på princip signering kan användaren ladda upp en princip i **JWT** -eller **text** format
 7.  Välj **princip format** som **JWT**
-8.  Ladda upp princip filen med princip innehåll i ett **osignerat/signerat JWT-** format och klicka på **Spara**. Se exemplen [här](/azure/attestation/policy-examples)
+8.  Ladda upp princip filen med princip innehåll i ett **osignerat/signerat JWT-** format och klicka på **Spara**. Se exemplen [här](./policy-examples.md)
     
     För fil överförings alternativ visas princip för hands versionen i text format och för hands versionen av principen kan inte redige ras.
 
@@ -147,7 +147,7 @@ a.  Verifiera antalet certifikat och hämtade certifikat.
 5.  Klicka på **Konfigurera** på den översta menyn
 6.  När providern för attestering skapas utan krav på princip signering kan användaren ladda upp en princip i **JWT** -eller **text** format
 7.  Välj **princip format** som **text**
-8.  Ladda upp princip filen med innehåll i **text** format eller ange princip innehåll i text områden och klicka på **Spara**. Se exemplen [här](/azure/attestation/policy-examples)
+8.  Ladda upp princip filen med innehåll i **text** format eller ange princip innehåll i text områden och klicka på **Spara**. Se exemplen [här](./policy-examples.md)
 
     För fil överförings alternativ visas princip för hands versionen i text format och för hands versionen av principen kan inte redige ras.
 
@@ -163,20 +163,9 @@ a.  Verifiera antalet certifikat och hämtade certifikat.
 4.  Klicka på **princip** på resurs-menyn på vänster sida eller i det nedre fönstret
 5.  Klicka på **Konfigurera** på den översta menyn
 6.  När providern för attestering skapas med krav på princip signering kan användaren bara ladda upp en princip i ett **signerat JWT-format**
-7.  Ladda upp princip filen är **signerat i JWT-format** och klicka på **Spara**. Se exemplen [här](/azure/attestation/policy-examples)
+7.  Ladda upp princip filen är **signerat i JWT-format** och klicka på **Spara**. Se exemplen [här](./policy-examples.md)
 
     För fil överförings alternativ visas princip för hands versionen i text format och för hands versionen av principen kan inte redige ras.
     
 8.  Klicka på **Uppdatera** om du vill visa den konfigurerade principen
-
- 
-
-
-
-
-
-
-
-
-
 

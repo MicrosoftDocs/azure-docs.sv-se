@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 09/08/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: 138e3ee5272d790130cebfd8a1f61da7bed970d8
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 587078f1f084d002e4d725ca3be64bcec36b4c45
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98663976"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734655"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Kubernetes-versioner som stöds i Azure Kubernetes Service (AKS)
 
@@ -107,7 +107,7 @@ För nya **mindre** versioner av Kubernetes
 1. AKS publicerar ett förmeddelande med planerat datum för en ny versions version och respektive gamla versions utfasning på AKS- [versionen](https://aka.ms/aks/releasenotes) , minst 30 dagar innan borttagning.
 2. AKS publicerar ett [meddelande om tjänst hälsa](../service-health/service-health-overview.md) som är tillgänglig för alla användare med AKS och Portal åtkomst och skickar ett e-postmeddelande till prenumerations administratörerna med den planerade versionen av borttagnings datum.
 ````
-To find out who is your subscription administrators or to change it, please refer to [manage Azure subscriptions](https://docs.microsoft.com/azure/cost-management-billing/manage/add-change-subscription-administrator#assign-a-subscription-administrator).
+To find out who is your subscription administrators or to change it, please refer to [manage Azure subscriptions](../cost-management-billing/manage/add-change-subscription-administrator.md#assign-a-subscription-administrator).
 ````
 3. Användare har **30 dagar** från borttagnings versionen för att uppgradera till en lägre versions version som stöds för att fortsätta få support.
 
@@ -142,7 +142,7 @@ Tidigare versions historik finns i [Kubernetes](https://en.wikipedia.org/wiki/Ku
 | 1,17  | Dec-09-19  | Jan 2019   | Jul 2020  | 1,20 GA | 
 | 1,18  | Mar – 23-20  | Maj 2020   | Aug 2020  | 1,21 GA | 
 | 1,19  | Aug – 04-20  | Sep 2020   | Nov 2020  | 1,22 GA | 
-| 1,20  | Dec-08-20  | Jan 2021   | Mar 2021  | 1,23 GA |
+| 1.20  | Dec-08-20  | Jan 2021   | Mar 2021  | 1,23 GA |
 | 1,21  | Apr-08-21 * | Maj 2021   | Jun 2021  | 1,24 GA |
 
 \* Kubernetes 1,21-versionen av överordnade versioner kan komma att ändras när den överordnade kalendern har slutförts.
@@ -156,7 +156,7 @@ Med beaktande av Kubernetes 1,19 [har communityn öppen källkod utökad support
 
 **Vad händer när en användare uppgraderar ett Kubernetes-kluster med en lägre version som inte stöds?**
 
-Om du använder *n-3-* versionen eller äldre, innebär det att du inte har stöd för och att du kommer att bli ombedd att uppgradera. När uppgraderingen från version n-3 till n-2 lyckas, är du tillbaka i våra support principer. Till exempel:
+Om du använder *n-3-* versionen eller äldre, innebär det att du inte har stöd för och att du kommer att bli ombedd att uppgradera. När uppgraderingen från version n-3 till n-2 lyckas, är du tillbaka i våra support principer. Ett exempel:
 
 - Om den äldsta AKS-versionen som stöds är *1.15. a* och du är på *1.14. b* eller äldre är du utanför supporten.
 - När du har uppgraderat från *1.14. b* till *1.15. en* eller fler lyckas är du tillbaka i våra support principer.

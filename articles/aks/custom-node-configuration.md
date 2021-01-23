@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 12/03/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: f1e9d65baacb9c712b92ef6f00abda169031b47e
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: d60a241506dbcf3e038f79c99830ef1a81c06b88
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96582964"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735272"
 ---
 # <a name="customize-node-configuration-for-azure-kubernetes-service-aks-node-pools-preview"></a>Anpassa Node-konfigurationen för Azure Kubernetes service (AKS) Node-pooler (för hands version)
 
@@ -59,7 +59,7 @@ az extension update --name aks-preview
 
 De Kubelet-parametrar som stöds och godkända värden visas nedan.
 
-| Parameter | Tillåtna värden/intervall | Standard | Beskrivning |
+| Parameter | Tillåtna värden/intervall | Standardvärde | Beskrivning |
 | --------- | ----------------------- | ------- | ----------- |
 | `cpuManagerPolicy` | ingen, statisk | inget | Den statiska principen tillåter behållare i [garanterad poddar](https://kubernetes.io/docs/tasks/configure-pod-container/quality-service-pod/) med heltal CPU begär åtkomst till exklusiva CPU: er på noden. |
 | `cpuCfsQuota` | SANT, FALSKT | true |  Aktivera/inaktivera CPU-CFS kvot tillämpning för behållare som anger processor gränser. | 
@@ -77,7 +77,7 @@ De OS-inställningar som stöds och godkända värden visas nedan.
 
 När du betjänar mycket trafik är det vanligt att den trafik du betjänar kommer från ett stort antal lokala filer. Du kan justera de lägre kernel-inställningarna och inbyggda gränser så att du kan hantera mer, med kostnaden för viss system minne.
 
-| Inställning | Tillåtna värden/intervall | Standard | Beskrivning |
+| Inställning | Tillåtna värden/intervall | Standardvärde | Beskrivning |
 | ------- | ----------------------- | ------- | ----------- |
 | `fs.file-max` | 8192 – 12000500 | 709620 | Maximalt antal fil referenser som Linux-kerneln ska allokera, genom att öka det här värdet kan du öka det maximala antalet öppna filer som tillåts. |
 | `fs.inotify.max_user_watches` | 781250 – 2097152 | 1048576 | Maximalt antal fil bevakningar som tillåts av systemet. Varje *klocka* är ungefär 90 byte på en 32-bitars kernel och ungefär 160 byte på en 64-bitars kernel. | 
@@ -89,7 +89,7 @@ När du betjänar mycket trafik är det vanligt att den trafik du betjänar komm
 
 För-agent-noder, som förväntas hantera ett stort antal samtidiga sessioner, kan du använda en delmängd av TCP-och nätverks alternativen nedan, som du kan använda för att justera per Node-pool. 
 
-| Inställning | Tillåtna värden/intervall | Standard | Beskrivning |
+| Inställning | Tillåtna värden/intervall | Standardvärde | Beskrivning |
 | ------- | ----------------------- | ------- | ----------- |
 | `net.core.somaxconn` | 4096 – 3240000 | 16384 | Maximalt antal anslutnings begär Anden som kan placeras i kö för alla lyssnings uttag. En övre gräns för värdet för parametern efter släpning som överförts till funktionen [Listener (2)](http://man7.org/linux/man-pages/man2/listen.2.html) . Om argumentet efter släpning är större än `somaxconn` , trunkeras det tyst till den här gränsen.
 | `net.core.netdev_max_backlog` | 1000 – 3240000 | 1000 | Maximalt antal paket, köade på ingångs sidan, när gränssnittet tar emot paket snabbare än kärnan kan bearbeta dem. |
@@ -114,7 +114,7 @@ För-agent-noder, som förväntas hantera ett stort antal samtidiga sessioner, k
 
 Precis som fil beskrivnings gränser är antalet arbetare eller trådar som en process kan skapa begränsas av både en kernel-inställning och användar begränsningar. Gränsen för användare på AKS är obegränsad. 
 
-| Inställning | Tillåtna värden/intervall | Standard | Beskrivning |
+| Inställning | Tillåtna värden/intervall | Standardvärde | Beskrivning |
 | ------- | ----------------------- | ------- | ----------- |
 | `kernel.threads-max` | 20 - 513785 | 55601 | Processer kan skapa arbets trådar. Det maximala antalet trådar som kan skapas anges med kernel-inställningen `kernel.threads-max` . | 
 
@@ -122,7 +122,7 @@ Precis som fil beskrivnings gränser är antalet arbetare eller trådar som en p
 
 Inställningarna nedan kan användas för att finjustera driften av del systemet för det virtuella minnet (VM) i Linux-kerneln och `writeout` av felaktiga data till disk.
 
-| Inställning | Tillåtna värden/intervall | Standard | Beskrivning |
+| Inställning | Tillåtna värden/intervall | Standardvärde | Beskrivning |
 | ------- | ----------------------- | ------- | ----------- |
 | `vm.max_map_count` |  65530 – 262144 | 65530 | Den här filen innehåller det maximala antalet minnes mappnings områden som en process kan ha. Minnes mappnings områden används som en sido effekt av anrop `malloc` , direkt av `mmap` , och och `mprotect` `madvise` även vid inläsning av delade bibliotek. | 
 | `vm.vfs_cache_pressure` | 1 - 500 | 100 | Detta procentuella värde styr tendensen i kärnan för att frigöra minne, som används för cachelagring av katalog-och inode-objekt. |
@@ -132,7 +132,7 @@ Inställningarna nedan kan användas för att finjustera driften av del systemet
 | `transparentHugePageDefrag` | `always`, `defer`, `defer+madvise`, `madvise`, `never` | `madvise` | Det här värdet styr om kärnan ska göra aggressiv användning av minnes komprimering för att göra mer `hugepages` tillgängligt. | 
 
 > [!IMPORTANT]
-> För enkel sökning och läsbarhet visas operativ system inställningarna i det här dokumentet med deras namn, men de ska läggas till i konfigurations-JSON-filen eller AKS-API: et med [camelCase](https://docs.microsoft.com/dotnet/standard/design-guidelines/capitalization-conventions).
+> För enkel sökning och läsbarhet visas operativ system inställningarna i det här dokumentet med deras namn, men de ska läggas till i konfigurations-JSON-filen eller AKS-API: et med [camelCase](/dotnet/standard/design-guidelines/capitalization-conventions).
 
 Skapa en `kubeletconfig.json` fil med följande innehåll:
 

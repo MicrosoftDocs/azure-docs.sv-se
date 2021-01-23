@@ -4,14 +4,14 @@ description: En snabb starts guide för Application Insights agenten. Övervaka 
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
-ms.date: 04/23/2019
+ms.date: 01/22/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 690304ecef80d988f9a554cd10ce4689f5c72133
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a0c0102f4d0f23fd7f306f431de7e90174796a56
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89070147"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98732653"
 ---
 # <a name="get-started-with-azure-monitor-application-insights-agent-for-on-premises-servers"></a>Kom igång med Azure Monitor Application Insights agent för lokala servrar
 
@@ -26,6 +26,13 @@ Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto]
 ## <a name="download-and-install-via-powershell-gallery"></a>Hämta och installera via PowerShell-galleriet
 
 ### <a name="install-prerequisites"></a>Installationskrav
+
+> [!NOTE]
+> Från och med april 2020 har PowerShell-galleriet föråldrat TLS 1,1 och 1,0.
+>
+> Additionnal-krav som du kan behöva finns i [POWERSHELL-galleriet TLS-stöd](https://devblogs.microsoft.com/powershell/powershell-gallery-tls-support).
+>
+
 Kör PowerShell som administratör.
 ```powershell
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force

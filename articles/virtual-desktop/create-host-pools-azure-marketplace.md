@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 09/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 2830d8b82f5b53300d0af3f48e55b573d78ad295
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 268f1c4bff84a2c9ef67c3f6b5749bc8d0b90e85
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91287397"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735188"
 ---
 # <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>Självstudie: skapa en värdbaserad pool med Azure Portal
 
@@ -70,22 +70,22 @@ För att börja skapa den nya poolen:
 
 8. Under typ av värdstat väljer du om din värddator ska vara **personlig** eller **pool**.
 
-    - Om du väljer **privat**väljer du antingen **Automatisk** eller **direkt** i fältet tilldelnings typ.
+    - Om du väljer **privat** väljer du antingen **Automatisk** eller **direkt** i fältet tilldelnings typ.
 
       > [!div class="mx-imgBorder"]
       > ![En skärm bild av list rutan tilldelnings typ fält. Användaren har valt automatisk.](media/assignment-type-field.png)
 
 9.  Om du väljer **pool**, anger du följande information:
 
-     - För **högsta antal sessioner**anger du det maximala antalet användare som du vill belastningsutjämna till en värd för en enda session.
-     - För **belastnings Utjämnings algoritm**väljer du antingen bredd-första eller djup-först, baserat på ditt användnings mönster.
+     - För **högsta antal sessioner** anger du det maximala antalet användare som du vill belastningsutjämna till en värd för en enda session.
+     - För **belastnings Utjämnings algoritm** väljer du antingen bredd-första eller djup-först, baserat på ditt användnings mönster.
 
        > [!div class="mx-imgBorder"]
        > ![En skärm bild av tilldelnings typ fältet med "pooled" valt. Användaren håller mus pekaren över bredden – först på den nedrullningsbara menyn för belastnings utjämning.](media/pooled-assignment-type.png)
 
 10. Välj **Nästa: Virtual Machines >**.
 
-11. Om du redan har skapat virtuella datorer och vill använda dem med den nya poolen väljer du **Nej**, Välj **Nästa: arbets ytans >** och hoppar till avsnittet [information om arbets yta](#workspace-information) . Välj **Ja**om du vill skapa nya virtuella datorer och registrera dem i den nya poolen.
+11. Om du redan har skapat virtuella datorer och vill använda dem med den nya poolen väljer du **Nej**, Välj **Nästa: arbets ytans >** och hoppar till avsnittet [information om arbets yta](#workspace-information) . Välj **Ja** om du vill skapa nya virtuella datorer och registrera dem i den nya poolen.
 
 Nu när du har slutfört den första delen kan vi gå vidare till nästa del av installations processen där vi skapar den virtuella datorn.
 
@@ -95,13 +95,13 @@ Nu när vi går igenom den första delen måste du konfigurera din virtuella dat
 
 Så här konfigurerar du den virtuella datorn i konfigurationen av poolen för värdar:
 
-1. Under **resurs grupp**väljer du den resurs grupp där du vill skapa de virtuella datorerna. Detta kan vara en annan resurs grupp än den som du använde för poolen.
+1. Under **resurs grupp** väljer du den resurs grupp där du vill skapa de virtuella datorerna. Detta kan vara en annan resurs grupp än den som du använde för poolen.
 
 2. Välj den **virtuella dator plats** där du vill skapa de virtuella datorerna. De kan vara samma eller olika från den region som du har valt för poolen.
 
-3. Välj sedan den **virtuella dator storlek** som du vill använda. Du kan antingen behålla standard storleken som är eller välja **ändra storlek** om du vill ändra storleken. Om du väljer **ändra storlek**i fönstret som visas väljer du storleken på den virtuella dator som passar din arbets belastning.
+3. Välj sedan den **virtuella dator storlek** som du vill använda. Du kan antingen behålla standard storleken som är eller välja **ändra storlek** om du vill ändra storleken. Om du väljer **ändra storlek** i fönstret som visas väljer du storleken på den virtuella dator som passar din arbets belastning.
 
-4. Under **antal virtuella datorer**anger du det antal virtuella datorer som du vill skapa för din värd pool.
+4. Under **antal virtuella datorer** anger du det antal virtuella datorer som du vill skapa för din värd pool.
 
     >[!NOTE]
     >Installations processen kan skapa upp till 400 virtuella datorer när du konfigurerar din adresspool, och varje process för VM-installation skapar fyra objekt i resurs gruppen. Eftersom processen för att skapa inte kontrollerar din prenumerations kvot kontrollerar du att antalet virtuella datorer som du anger ligger inom Azure VM och API-gränserna för resurs gruppen och prenumerationen. Du kan lägga till fler virtuella datorer när du är klar med att skapa din värd-pool.
@@ -110,7 +110,7 @@ Så här konfigurerar du den virtuella datorn i konfigurationen av poolen för v
 
 6. Välj sedan den avbildning som ska användas för att skapa den virtuella datorn. Du kan välja antingen **Galleri** eller **Storage-BLOB**.
 
-    - Om du väljer **Galleri**väljer du en av de rekommenderade bilderna på den nedrullningsbara menyn:
+    - Om du väljer **Galleri** väljer du en av de rekommenderade bilderna på den nedrullningsbara menyn:
 
       - Windows 10 Enterprise multi-session, version 1909
       - Windows 10 Enterprise multi-session, version 1909 + Microsoft 365-appar
@@ -118,7 +118,7 @@ Så här konfigurerar du den virtuella datorn i konfigurationen av poolen för v
       - Windows 10 Enterprise multi-session, version 2004
       - Windows 10 Enterprise multi-session, version 2004 + Microsoft 365-appar
 
-     Om du inte ser den avbildning som du vill använda väljer du **Bläddra bland alla avbildningar och diskar**, vilket gör att du kan välja antingen en annan bild i galleriet eller en avbildning som tillhandahålls av Microsoft och andra utgivare.
+     Om du inte ser den avbildning som du vill använda väljer du **Bläddra bland alla avbildningar och diskar**, vilket gör att du kan välja antingen en annan bild i galleriet eller en avbildning som tillhandahålls av Microsoft och andra utgivare. Se till att den avbildning du väljer är en av de [operativ system avbildningar som stöds](overview.md#supported-virtual-machine-os-images).
 
      > [!div class="mx-imgBorder"]
      > ![En skärm bild av Marketplace med en lista över bilder från Microsoft som visas.](media/marketplace-images.png)
@@ -128,7 +128,7 @@ Så här konfigurerar du den virtuella datorn i konfigurationen av poolen för v
      > [!div class="mx-imgBorder"]
      > ![En skärm bild av fliken Mina objekt.](media/my-items.png)
 
-    - Om du väljer **Storage BLOB**kan du använda en egen avbildning som bygger på Hyper-V eller på en virtuell Azure-dator. Allt du behöver göra är att ange platsen för avbildningen i Storage-blobben som en URI.
+    - Om du väljer **Storage BLOB** kan du använda en egen avbildning som bygger på Hyper-V eller på en virtuell Azure-dator. Allt du behöver göra är att ange platsen för avbildningen i Storage-blobben som en URI.
 
 7. Välj vilken typ av OS-diskar du vill att de virtuella datorerna ska använda: Standard SSD, Premium SSD eller Standard HDD.
 
@@ -136,9 +136,9 @@ Så här konfigurerar du den virtuella datorn i konfigurationen av poolen för v
 
 9. Välj sedan om du vill ha en offentlig IP-adress för de virtuella datorerna. Vi rekommenderar att du väljer **Nej** eftersom en privat IP-adress är säkrare.
 
-10. Välj vilken typ av säkerhets grupp du vill använda: **Basic**, **Advanced**eller **none**.
+10. Välj vilken typ av säkerhets grupp du vill använda: **Basic**, **Advanced** eller **none**.
 
-    Om du väljer **Basic**måste du välja om du vill att en inkommande port ska vara öppen. Om du väljer **Ja**väljer du i listan med standard portar att tillåta inkommande anslutningar till.
+    Om du väljer **Basic** måste du välja om du vill att en inkommande port ska vara öppen. Om du väljer **Ja** väljer du i listan med standard portar att tillåta inkommande anslutningar till.
 
     >[!NOTE]
     >För större säkerhet rekommenderar vi att du inte öppnar offentliga inkommande portar.
@@ -146,15 +146,15 @@ Så här konfigurerar du den virtuella datorn i konfigurationen av poolen för v
     > [!div class="mx-imgBorder"]
     > ![En skärm bild av sidan säkerhets grupp som visar en lista över tillgängliga portar i en nedrullningsbar meny.](media/available-ports.png)
 
-    Om du väljer **Avancerat**väljer du en befintlig nätverks säkerhets grupp som du redan har konfigurerat.
+    Om du väljer **Avancerat** väljer du en befintlig nätverks säkerhets grupp som du redan har konfigurerat.
 
-11. Efter det väljer du om du vill att de virtuella datorerna ska vara anslutna till en speciell domän och organisationsenhet. Om du väljer **Ja**anger du domänen som ska anslutas. Du kan också lägga till en speciell organisationsenhet som du vill att de virtuella datorerna ska finnas i. Om du väljer **Nej**kommer de virtuella datorerna att anslutas till domänen som matchar suffixet för **AD-domänens anslutningens UPN**.
+11. Efter det väljer du om du vill att de virtuella datorerna ska vara anslutna till en speciell domän och organisationsenhet. Om du väljer **Ja** anger du domänen som ska anslutas. Du kan också lägga till en speciell organisationsenhet som du vill att de virtuella datorerna ska finnas i. Om du väljer **Nej** kommer de virtuella datorerna att anslutas till domänen som matchar suffixet för **AD-domänens anslutningens UPN**.
 
   - När du anger en ORGANISATIONSENHET måste du kontrol lera att du använder den fullständiga sökvägen (unikt namn) och utan citat tecken.
 
 12. Under administratörs konto anger du autentiseringsuppgifterna för Active Directory-domän admin för det virtuella nätverk som du har valt. Det här kontot kan inte ha Multi-Factor Authentication (MFA) aktiverat. När du ansluter till en Azure Active Directory Domain Services (Azure AD DS)-domän måste kontot vara en del av administratörs gruppen för Azure AD DC och konto lösen ordet måste fungera i Azure AD DS.
 
-13. Välj **Nästa: >arbets yta **.
+13. Välj **Nästa: >arbets yta**.
 
 Vi är nu redo att starta nästa steg i konfigurationen av din värddator: registrera din app-grupp på en arbets yta.
 
@@ -166,7 +166,7 @@ Registrera Skriv bords gruppen på en arbets yta:
 
 1. Välj **Ja**.
 
-   Om du väljer **Nej**kan du registrera app-gruppen senare, men vi rekommenderar att du får registrering av arbets ytorna så snart du kan så att din värd pool fungerar som den ska.
+   Om du väljer **Nej** kan du registrera app-gruppen senare, men vi rekommenderar att du får registrering av arbets ytorna så snart du kan så att din värd pool fungerar som den ska.
 
 2. Välj sedan om du vill skapa en ny arbets yta eller Välj från befintliga arbets ytor. Endast arbets ytor som har skapats på samma plats som poolen kommer att kunna registrera app-gruppen på.
 
