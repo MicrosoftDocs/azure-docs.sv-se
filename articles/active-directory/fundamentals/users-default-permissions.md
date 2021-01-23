@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: vincesm
 ms.custom: it-pro, seodec18, contperf-fy21q1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c556940ace02f2e7bf0354e67d32df7c5c6714e
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: eb01a3e0fc5bc11a4d3de62b16aafb7dd308e34a
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032770"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724279"
 ---
 # <a name="what-are-the-default-user-permissions-in-azure-active-directory"></a>Vilka är standard användar behörigheterna i Azure Active Directory?
 Alla användare beviljas en uppsättning standardbehörigheter i Azure Active Directory (AD Azure). En användares åtkomst består av typen av användare, deras [roll tilldelningar](active-directory-users-assign-role-azure-portal.md)och deras ägarskap för enskilda objekt. Den här artikeln beskriver dessa standardbehörigheter och innehåller en jämförelse av standardinställningar för medlem och gäst. Standard användar behörigheter kan bara ändras i användar inställningar i Azure AD.
@@ -63,7 +63,7 @@ Standard behörigheter för gäst användare kan begränsas på följande sätt:
 
 Behörighet | Förklaring av inställning
 ---------- | ------------
-Användar åtkomst begränsningar för gäster (för hands version) | Om du ställer in det här alternativet på **gäst användare har samma åtkomst som medlemmar** beviljar alla medlems användare behörigheter till gäst användare som standard.<p>Att ställa in det här alternativet på **gäst användares åtkomst är begränsad till egenskaper och medlemskap i sina egna katalog objekt** begränsar gäst åtkomsten till enbart sin egen användar profil som standard. Åtkomst till andra användare tillåts inte längre även när du söker efter användarens huvud namn, ObjectId eller visnings namn. Åtkomst till grupp information, inklusive grupp medlemskap, tillåts inte heller längre.<p>**Obs!** den här inställningen förhindrar inte åtkomst till anslutna grupper i vissa Microsoft 365-tjänster som Microsoft Teams. Läs mer i [Microsoft Teams gäst åtkomst](https://docs.microsoft.com/MicrosoftTeams/guest-access) .<p>Gäst användare kan fortfarande läggas till i administratörs roller oavsett de här behörighets inställningarna.
+Användar åtkomst begränsningar för gäster (för hands version) | Om du ställer in det här alternativet på **gäst användare har samma åtkomst som medlemmar** beviljar alla medlems användare behörigheter till gäst användare som standard.<p>Att ställa in det här alternativet på **gäst användares åtkomst är begränsad till egenskaper och medlemskap i sina egna katalog objekt** begränsar gäst åtkomsten till enbart sin egen användar profil som standard. Åtkomst till andra användare tillåts inte längre även när du söker efter användarens huvud namn, ObjectId eller visnings namn. Åtkomst till grupp information, inklusive grupp medlemskap, tillåts inte heller längre.<p>**Obs!** den här inställningen förhindrar inte åtkomst till anslutna grupper i vissa Microsoft 365-tjänster som Microsoft Teams. Läs mer i [Microsoft Teams gäst åtkomst](/MicrosoftTeams/guest-access) .<p>Gäst användare kan fortfarande läggas till i administratörs roller oavsett de här behörighets inställningarna.
 Gäster kan bjuda in | Om du ställer in det här alternativet på Ja kan gäster bjuda in andra gäster. Mer information finns i [delegera inbjudningar för B2B-samarbete](../external-identities/delegate-invitations.md#configure-b2b-external-collaboration-settings) .
 Medlemmar kan bjuda in | Om du ställer in det här alternativet på Ja tillåts icke-administratörers medlemmar i katalogen att bjuda in gäster. Mer information finns i [delegera inbjudningar för B2B-samarbete](../external-identities/delegate-invitations.md#configure-b2b-external-collaboration-settings) .
 Administratörer och användare i gästinbjudarrollen kan bjuda in | Om du ställer in det här alternativet på Ja kan administratörer och användare i rollen "gäst inbjudare" bjuda in gäster. När det är inställt på Ja kommer användare i rollen gäst deltagare fortfarande att kunna bjuda in gäster, oavsett medlemmar kan bjuda in. Mer information finns i [delegera inbjudningar för B2B-samarbete](../external-identities/delegate-invitations.md#assign-the-guest-inviter-role-to-a-user) .

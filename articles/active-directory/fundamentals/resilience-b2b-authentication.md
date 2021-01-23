@@ -13,16 +13,16 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ae8e24341c321fbfffb84d9b072abc4cf925aff3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 487efce1fe57413dda740c42a7fd3d5ea91cfa49
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95920068"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724967"
 ---
 # <a name="build-resilience-in-external-user-authentication"></a>Bygg återhämtning vid extern användarautentisering
 
-[Azure Active Directory B2B-samarbete](https://docs.microsoft.com/azure/active-directory/external-identities/what-is-b2b) (Azure AD B2B) är en funktion i [externa identiteter](https://docs.microsoft.com/azure/active-directory/external-identities/delegate-invitations) som gör det möjligt att samar beta med andra organisationer och individer. Det möjliggör säker onboarding av gäst användare i din Azure AD-klient utan att behöva hantera sina autentiseringsuppgifter. Externa användare får sin identitet och sina autentiseringsuppgifter från en extern identitetsprovider (IdP) så att de inte behöver komma ihåg en ny autentiseringsuppgift. 
+[Azure Active Directory B2B-samarbete](../external-identities/what-is-b2b.md) (Azure AD B2B) är en funktion i [externa identiteter](../external-identities/delegate-invitations.md) som gör det möjligt att samar beta med andra organisationer och individer. Det möjliggör säker onboarding av gäst användare i din Azure AD-klient utan att behöva hantera sina autentiseringsuppgifter. Externa användare får sin identitet och sina autentiseringsuppgifter från en extern identitetsprovider (IdP) så att de inte behöver komma ihåg en ny autentiseringsuppgift. 
 
 ## <a name="ways-to-authenticate-external-users"></a>Sätt att autentisera externa användare
 
@@ -31,7 +31,7 @@ Du kan välja metoder för extern användarautentisering till din katalog. Du ka
 Med varje extern IdP, tar du ett beroende på tillgängligheten för den IdP. Med vissa metoder för att ansluta till IDP: er finns det saker du kan göra för att öka din återhämtning.
 
 > [!NOTE] 
-> Azure AD B2B har inbyggd möjlighet att autentisera alla användare från en [Azure Active Directory](https://docs.microsoft.com/azure/active-directory) -klient eller med ett personligt [Microsoft-konto](https://account.microsoft.com/account). Du behöver inte göra någon konfiguration med de här inbyggda alternativen.
+> Azure AD B2B har inbyggd möjlighet att autentisera alla användare från en [Azure Active Directory](../index.yml) -klient eller med ett personligt [Microsoft-konto](https://account.microsoft.com/account). Du behöver inte göra någon konfiguration med de här inbyggda alternativen.
 
 ### <a name="considerations-for-resilience-with-other-idps"></a>Överväganden för återhämtning med andra IDP: er
 
@@ -39,22 +39,22 @@ När du använder externa IDP: er för gäst användarautentisering, finns det v
 
 | Autentiseringsmetod| Överväganden vid återhämtning |
 | - | - |
-| Federation med sociala IDP: er som [Facebook](https://docs.microsoft.com/azure/active-directory/external-identities/facebook-federation) eller [Google](https://docs.microsoft.com/azure/active-directory/external-identities/google-federation).| Du måste underhålla ditt konto med IdP och konfigurera ditt klient-ID och klient hemlighet. |
-| [Direkt Federation med SAML och WS-Federation identitets leverantörer](https://docs.microsoft.com/azure/active-directory/external-identities/direct-federation)| Du måste samar beta med IdP-ägaren för åtkomst till deras slut punkter, som du är beroende av. <br>Du måste underhålla de metadata som innehåller certifikaten och slut punkterna. |
-| [E-post med eng ång slö sen ord](https://docs.microsoft.com/azure/active-directory/external-identities/one-time-passcode)| Med den här metoden är du beroende av Microsofts e-postsystem, användarens e-postsystem och användarens e-postklient. |
+| Federation med sociala IDP: er som [Facebook](../external-identities/facebook-federation.md) eller [Google](../external-identities/google-federation.md).| Du måste underhålla ditt konto med IdP och konfigurera ditt klient-ID och klient hemlighet. |
+| [Direkt Federation med SAML och WS-Federation identitets leverantörer](../external-identities/direct-federation.md)| Du måste samar beta med IdP-ägaren för åtkomst till deras slut punkter, som du är beroende av. <br>Du måste underhålla de metadata som innehåller certifikaten och slut punkterna. |
+| [E-post med eng ång slö sen ord](../external-identities/one-time-passcode.md)| Med den här metoden är du beroende av Microsofts e-postsystem, användarens e-postsystem och användarens e-postklient. |
 
 
  
 
 ## <a name="self-service-sign-up-preview"></a>Självbetjänings registrering (för hands version)
 
-Som ett alternativ till att skicka inbjudningar eller länkar kan du aktivera [självbetjänings registrering](https://docs.microsoft.com/azure/active-directory/external-identities/self-service-sign-up-overview).  Detta gör att externa användare kan begära åtkomst till ett program. Du måste skapa en [API-anslutning](https://docs.microsoft.com/azure/active-directory/external-identities/self-service-sign-up-add-api-connector) och koppla den till ett användar flöde. Du kopplar användar flöden som definierar användar upplevelsen med ett eller flera program. 
+Som ett alternativ till att skicka inbjudningar eller länkar kan du aktivera [självbetjänings registrering](../external-identities/self-service-sign-up-overview.md).  Detta gör att externa användare kan begära åtkomst till ett program. Du måste skapa en [API-anslutning](../external-identities/self-service-sign-up-add-api-connector.md) och koppla den till ett användar flöde. Du kopplar användar flöden som definierar användar upplevelsen med ett eller flera program. 
 
-Det går att använda [API-kopplingar](https://docs.microsoft.com/azure/active-directory/external-identities/api-connectors-overview) för att integrera ditt självbetjänings registrerings användar flöde med externa system-API: er. Denna API-integrering kan användas för [anpassade godkännande arbets flöden](https://docs.microsoft.com/azure/active-directory/external-identities/self-service-sign-up-add-approvals), [utföra identitets verifiering](https://docs.microsoft.com/azure/active-directory/external-identities/code-samples-self-service-sign-up)och andra uppgifter som att skriva över användarattribut. Om du använder API: er måste du hantera följande beroenden.
+Det går att använda [API-kopplingar](../external-identities/api-connectors-overview.md) för att integrera ditt självbetjänings registrerings användar flöde med externa system-API: er. Denna API-integrering kan användas för [anpassade godkännande arbets flöden](../external-identities/self-service-sign-up-add-approvals.md), [utföra identitets verifiering](../external-identities/code-samples-self-service-sign-up.md)och andra uppgifter som att skriva över användarattribut. Om du använder API: er måste du hantera följande beroenden.
 
 * **API-koppling-autentisering**: om du konfigurerar en anslutning krävs en slut punkts-URL, ett användar namn och ett lösen ord. Konfigurera en process som de här autentiseringsuppgifterna upprätthålls av och arbeta med API-ägaren för att se till att du känner till eventuella förfallo scheman.
 
-* **API-kopplingens svar**: utforma API-anslutningar i registrerings flödet för att inte fungera korrekt om API: t inte är tillgängligt. Undersök och tillhandahålla API-utvecklare dessa API- [exempel svar](https://docs.microsoft.com/azure/active-directory/external-identities/self-service-sign-up-add-api-connector) och [bästa praxis för fel sökning](https://docs.microsoft.com/azure/active-directory/external-identities/self-service-sign-up-add-api-connector). Arbeta med API Development-teamet för att testa alla möjliga svars scenarier, inklusive fortsatta, validerings fel och blockera svar. 
+* **API-kopplingens svar**: utforma API-anslutningar i registrerings flödet för att inte fungera korrekt om API: t inte är tillgängligt. Undersök och tillhandahålla API-utvecklare dessa API- [exempel svar](../external-identities/self-service-sign-up-add-api-connector.md) och [bästa praxis för fel sökning](../external-identities/self-service-sign-up-add-api-connector.md). Arbeta med API Development-teamet för att testa alla möjliga svars scenarier, inklusive fortsatta, validerings fel och blockera svar. 
 
 ## <a name="next-steps"></a>Nästa steg
 Återhämtnings resurser för administratörer och arkitekter
@@ -74,4 +74,3 @@ Det går att använda [API-kopplingar](https://docs.microsoft.com/azure/active-d
 * [Bygg IAM-återhämtning i dina program](resilience-app-development-overview.md)
 
 * [Bygg återhämtning i dina CIAM-system](resilience-b2c.md)
- 

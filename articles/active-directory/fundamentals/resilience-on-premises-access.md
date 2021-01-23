@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f8bfc3fb239f30911eddf0aa27496a465e36c486
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 8fed78d7d2250d749ced7fe343689df76329b60d
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919879"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724668"
 ---
 # <a name="build-resilience-in-application-access-with-application-proxy"></a>Bygg återhämtning i program åtkomst med Application Proxy
 
@@ -27,7 +27,7 @@ Application Proxy är en funktion i Azure AD som gör det möjligt för använda
 Användare kommer åt lokala resurser via en URL som publicerats via programproxyn. De omdirigeras till inloggnings sidan för Azure AD. Application Proxy-tjänsten i Azure AD skickar sedan en token till Application Proxy Connector i företags nätverket, som skickar token till den lokala Active Directory att den autentiserade användaren kan komma åt den lokala resursen. I diagrammet nedan visas [kopplingarna](../manage-apps/application-proxy-connectors.md) i en [kopplings grupp](../manage-apps/application-proxy-connector-groups.md).
 
 > [!IMPORTANT]
-> När du publicerar dina program via Application Proxy måste du implementera [kapacitets planering och lämplig redundans för Application Proxy-anslutningarna](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-connectors#capacity-planning).
+> När du publicerar dina program via Application Proxy måste du implementera [kapacitets planering och lämplig redundans för Application Proxy-anslutningarna](../manage-apps/application-proxy-connectors.md#capacity-planning).
 
 ![Arkitektur diagram för program y](./media/resilience-on-prem-access/admin-resilience-app-proxy.png))
 

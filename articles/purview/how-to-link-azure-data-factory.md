@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/22/2020
-ms.openlocfilehash: 01af7b251c9ce3bfebb87016c85ea3efd9c0e8ac
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: dbd7937667a3c4d5af9f13e15cdd4ff2081241f0
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96928774"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98723888"
 ---
 # <a name="how-to-connect-azure-data-factory-and-azure-purview"></a>Så här ansluter du Azure Data Factory och Azure-avdelningens kontroll
 
@@ -99,9 +99,9 @@ Integrationen mellan Data Factory och avdelningens kontroll har endast stöd fö
 
 | Data lagrings system | Stöds som källa | Stöds som mottagare |
 | ------------------- | ------------------- | ----------------- |
-| ADLS Gen1 (inget JSON-stöd) | Ja | Ja (endast icke-binär kopia) |
-| ADLS Gen2 (inget JSON-stöd) | Ja | Ja |
-| Azure-Blob (inget JSON-stöd) | Ja | Ja |
+| ADLS Gen1 | Ja | Ja (endast icke-binär kopia) |
+| ADLS Gen2 | Ja | Ja |
+| Azure-blobb | Ja | Ja |
 | Azure Cosmos DB (SQL API) | Ja | Ja |
 | Azure Cosmos DB (Mongo-API) | Ja | Ja |
 | Azure Cognitive Search | Ja | Ja |

@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 12/03/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 5229175af618f897caeae7310338cbe51966a48d
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 4b8292d99bd16f9b6f98f4ae8ca82edbfc02ff76
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96859620"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725761"
 ---
 # <a name="tutorial-create-an-azure-active-directory-b2c-tenant"></a>Självstudie: Skapa en klientorganisation i Azure Active Directory B2C
 
@@ -48,7 +48,7 @@ Om du inte har en Azure-prenumeration kan du skapa ett [kostnadsfritt konto](htt
 
     ![Prenumerations klient, katalog + prenumerations filter med vald prenumerations klient](media/tutorial-create-tenant/portal-01-pick-directory.png)
 
-1. I menyn i Azure-portalen eller på sidan **Start** väljer du **Skapa en resurs**.
+1. Välj **Skapa en resurs** på menyn i Microsoft Azure-portalen eller från **startsidan**.
 
    ![Välj knappen Skapa en resurs](media/tutorial-create-tenant/create-a-resource.png)
 
@@ -68,7 +68,7 @@ Om du inte har en Azure-prenumeration kan du skapa ett [kostnadsfritt konto](htt
     ![Skapa klient organisations formulär i med exempel värden i Azure Portal](media/tutorial-create-tenant/review-and-create-tenant.png)
 
 1. Välj **Granska + skapa**.
-1. Granska dina katalog inställningar. Välj sedan **Skapa**.
+1. Granska dina katalog inställningar. Välj sedan **Skapa**. För [fel sökning av distributions fel](https://docs.microsoft.com/azure/azure-resource-manager/templates/common-deployment-errors).
 
 Du kan länka flera Azure AD B2C klienter till en enda Azure-prenumeration för fakturerings syfte. Om du vill länka en klient måste du vara administratör i Azure AD B2C-klienten och tilldelas minst en deltagar roll i Azure-prenumerationen. Se [Länka en Azure AD B2C-klient till en prenumeration](billing.md#link-an-azure-ad-b2c-tenant-to-a-subscription).
 

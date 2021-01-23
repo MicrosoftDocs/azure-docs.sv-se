@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 97893dece068dfdde85159f734095401288231d2
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: ecddb950c06c9f8e61f31e104051f5e3b3640ae5
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201356"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725018"
 ---
 # <a name="protecting-microsoft-365-from-on-premises-attacks"></a>Skydda Microsoft 365 från lokala attacker
 
@@ -60,7 +60,7 @@ För att adressera de hot vektorer som beskrivs ovan rekommenderar vi att du fö
 
      *  Endast nås med hjälp av Azure Managed-arbetsstationer.
 
-Dessa är begränsade användnings konton. **Det får inte finnas några lokala konton med administratörs behörighet i Microsoft 365.** Mer information finns i den här [översikten över Microsoft 365 administratörs roller](https://docs.microsoft.com/microsoft-365/admin/add-users/about-admin-roles?view=o365-worldwide).
+Dessa är begränsade användnings konton. **Det får inte finnas några lokala konton med administratörs behörighet i Microsoft 365.** Mer information finns i den här [översikten över Microsoft 365 administratörs roller](/microsoft-365/admin/add-users/about-admin-roles?view=o365-worldwide).
 Se även [roller för Microsoft 365 i Azure Active Directory](../roles/m365-workload-docs.md).
 
 *  **Hantera enheter från Microsoft 365.** Använd Azure AD Join och molnbaserad hantering av mobila enheter (MDM) för att ta bort beroenden i din lokala infrastruktur för enhets hantering, som kan kompromettera enhets-och säkerhets kontroller.
@@ -82,7 +82,7 @@ I Azure AD är användare med privilegierade roller, till exempel Administratör
 
 * Använd endast moln konton för Azure AD och Microsoft 365 privilegierade roller. d
 
-* Distribuera [privilegierade åtkomst enheter](https://docs.microsoft.com/security/compass/privileged-access-devices#device-roles-and-profiles) för privilegie rad åtkomst för att hantera Microsoft 365 och Azure AD.
+* Distribuera [privilegierade åtkomst enheter](/security/compass/privileged-access-devices#device-roles-and-profiles) för privilegie rad åtkomst för att hantera Microsoft 365 och Azure AD.
 
 *  Distribuera [Azure AD Privileged Identity Management](../privileged-identity-management/pim-configure.md) (PIM) för just-in-Time (JIT)-åtkomst till alla mänskliga konton som har privilegierade roller och kräver stark autentisering för att aktivera roller.
 
@@ -92,7 +92,7 @@ I Azure AD är användare med privilegierade roller, till exempel Administratör
 
 * Distribuera [åtkomst konton för nöd situationer](../roles/security-emergency-access.md) och Använd inte lokala lösen ords valv för att lagra autentiseringsuppgifter.
 
-Mer information finns i [skydda privilegie rad åtkomst](https://aka.ms/SPA), som innehåller detaljerad vägledning om det här avsnittet. Se även [säker åtkomst praxis för administratörer i Azure AD](../roles/security-planning.md).
+Mer information finns i [skydda privilegie rad åtkomst](/security/compass/overview), som innehåller detaljerad vägledning om det här avsnittet. Se även [säker åtkomst praxis för administratörer i Azure AD](../roles/security-planning.md).
 
 ### <a name="use-cloud-authentication"></a>Använd molnbaserad autentisering 
 
@@ -100,15 +100,15 @@ Autentiseringsuppgifterna är en primär angrepps vektor. Implementera följande
 
 * [Distribuera lösenordsskyddad autentisering](../authentication/howto-authentication-passwordless-deployment.md): minska användningen av lösen ord så mycket som möjligt genom att distribuera lösen ords färre autentiseringsuppgifter. Autentiseringsuppgifterna hanteras och verifieras internt i molnet. Välj mellan:
 
-   * [Windows Hello för företag](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/passwordless-strategy)
+   * [Windows Hello för företag](/windows/security/identity-protection/hello-for-business/passwordless-strategy)
 
-   * [Authenticator-appen](../authentication/howto-authentication-passwordless-phone.md)
+   * [Autentiseringsapp](../authentication/howto-authentication-passwordless-phone.md)
 
    * [FIDO2 säkerhets nycklar](../authentication/howto-authentication-passwordless-security-key-windows.md)
 
-* [Distribuera Multi-Factor Authentication](https://aka.ms/deploymentplans/mfa): etablera [flera starka AUTENTISERINGSUPPGIFTER med Azure AD MFA](../fundamentals/resilience-in-credentials.md). På så sätt kräver åtkomst till moln resurser en autentiseringsuppgift som hanteras i Azure AD förutom ett lokalt lösen ord som kan ändras.
+* [Distribuera Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md): etablera [flera starka AUTENTISERINGSUPPGIFTER med Azure AD MFA](../fundamentals/resilience-in-credentials.md). På så sätt kräver åtkomst till moln resurser en autentiseringsuppgift som hanteras i Azure AD förutom ett lokalt lösen ord som kan ändras.
 
-   * Mer information finns i [skapa en elastisk strategi för hantering av åtkomst kontroll med Azure Active Directory](https://aka.ms/resilientaad).
+   * Mer information finns i [skapa en elastisk strategi för hantering av åtkomst kontroll med Azure Active Directory](./resilience-overview.md).
 
 **Begränsningar och kompromisser**
 
@@ -131,7 +131,7 @@ Etableringen avser skapandet av användar konton och grupper i program eller ide
 
    *  Begränsa gäst åtkomsten till att bläddra bland grupper och andra egenskaper i katalogen. Använd de externa samarbets inställningarna för att begränsa gäst möjligheten att läsa grupper som de inte är medlemmar i. 
 
-    *   Blockera åtkomst till Azure Portal. Du kan göra sällsynta nödvändiga undantag.  Skapa en princip för villkorlig åtkomst som inkluderar alla gäster och externa användare och [implementera sedan en princip för att blockera åtkomst](/azure/role-based-access-control/conditional-access-azure-management). 
+    *   Blockera åtkomst till Azure Portal. Du kan göra sällsynta nödvändiga undantag.  Skapa en princip för villkorlig åtkomst som inkluderar alla gäster och externa användare och [implementera sedan en princip för att blockera åtkomst](../../role-based-access-control/conditional-access-azure-management.md). 
 
 * **Frånkopplade skogar:** Använd [Azure AD Cloud-etablering](../cloud-provisioning/what-is-cloud-provisioning.md). På så sätt kan du ansluta till frånkopplade skogar, vilket eliminerar behovet av att upprätta anslutningar mellan skogar eller förtroenden, vilket kan bredda påverkan av en lokal överträdelse. * 
  
@@ -143,7 +143,7 @@ Etableringen avser skapandet av användar konton och grupper i program eller ide
 
 Med moln grupper kan du frikoppla ditt samarbete och få åtkomst från din lokala infrastruktur.
 
-* **Samarbete:** Använd Microsoft 365 grupper och Microsoft Teams för modern samarbete. Inaktivera lokala distributions listor och [Uppgradera distributions listor till Microsoft 365 grupper i Outlook](https://docs.microsoft.com/office365/admin/manage/upgrade-distribution-lists?view=o365-worldwide).
+* **Samarbete:** Använd Microsoft 365 grupper och Microsoft Teams för modern samarbete. Inaktivera lokala distributions listor och [Uppgradera distributions listor till Microsoft 365 grupper i Outlook](/office365/admin/manage/upgrade-distribution-lists?view=o365-worldwide).
 
 * **Åtkomst:** Använd Azure AD-säkerhetsgrupper eller Microsoft 365 grupper för att ge åtkomst till program i Azure AD.
 * **Office 365-licensiering:** Använd gruppbaserad licensiering för att etablera till Office 365 med endast grupper med moln. Detta frikopplar kontroll över grupp medlemskap från lokal infrastruktur.
@@ -156,7 +156,7 @@ Ta över inkluderar direkt manipulering av grupp medlemskap lokalt eller manipul
 
 Använd Azure AD-funktioner för att hantera enheter på ett säkert sätt.
 
--   **Använd Windows 10-arbetsstationer:** [Distribuera Azure AD-anslutna](../devices/azureadjoin-plan.md) enheter med MDM-principer. Aktivera [Windows autopilot](https://docs.microsoft.com/mem/autopilot/windows-autopilot) för en helt automatiserad etablerings upplevelse.
+-   **Använd Windows 10-arbetsstationer:** [Distribuera Azure AD-anslutna](../devices/azureadjoin-plan.md) enheter med MDM-principer. Aktivera [Windows autopilot](/mem/autopilot/windows-autopilot) för en helt automatiserad etablerings upplevelse.
 
     -   Föråldrade Windows 8,1 och tidigare datorer.
 
@@ -164,7 +164,7 @@ Använd Azure AD-funktioner för att hantera enheter på ett säkert sätt.
 
     -   Använd [Microsoft Intune](https://www.microsoft.com/en/microsoft-365/enterprise-mobility-security/microsoft-intune) som källa för utfärdare av alla arbets belastningar för enhets hantering.
 
--   [**Distribuera privilegierade åtkomst enheter**](https://docs.microsoft.com/security/compass/privileged-access-devices#device-roles-and-profiles) för privilegie rad åtkomst för att hantera Microsoft 365 och Azure AD.
+-   [**Distribuera privilegierade åtkomst enheter**](/security/compass/privileged-access-devices#device-roles-and-profiles) för privilegie rad åtkomst för att hantera Microsoft 365 och Azure AD.
 
  ## <a name="workloads-applications-and-resources"></a>Arbets belastningar, program och resurser 
 
@@ -181,19 +181,19 @@ Använd Azure AD-funktioner för att hantera enheter på ett säkert sätt.
 
 *  **Program-och arbets belastnings servrar**
 
-   * Program eller resurser som krävde servrar kan migreras till Azure-IaaS och använda [Azure AD Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/overview) (Azure AD DS) för att frikoppla förtroende och beroende av AD lokalt. För att kunna åstadkomma detta kan virtuella nätverk som används för Azure AD DS inte ha anslutning till företags nätverk.
+   * Program eller resurser som krävde servrar kan migreras till Azure-IaaS och använda [Azure AD Domain Services](../../active-directory-domain-services/overview.md) (Azure AD DS) för att frikoppla förtroende och beroende av AD lokalt. För att kunna åstadkomma detta kan virtuella nätverk som används för Azure AD DS inte ha anslutning till företags nätverk.
 
-   * Följ rikt linjerna för [nivån för autentiseringsuppgifter](https://aka.ms/TierModel). Program servrar betraktas vanligt vis som nivå 1-till gångar.
+   * Följ rikt linjerna för [nivån för autentiseringsuppgifter](/security/compass/privileged-access-access-model#ADATM_BM). Program servrar betraktas vanligt vis som nivå 1-till gångar.
 
  ## <a name="conditional-access-policies"></a>Villkorliga åtkomstprinciper
 
-Använd villkorlig åtkomst i Azure AD för att tolka signaler och fatta beslut om autentisering baserat på dem. Mer information finns i [distributions planen för villkorlig åtkomst.](https://aka.ms/deploymentplans/ca)
+Använd villkorlig åtkomst i Azure AD för att tolka signaler och fatta beslut om autentisering baserat på dem. Mer information finns i [distributions planen för villkorlig åtkomst.](../conditional-access/plan-conditional-access.md)
 
 * [Bakåtkompatibla](../fundamentals/auth-sync-overview.md)autentiseringsprotokoll: Använd villkorlig åtkomst för att [blockera äldre autentiseringsprotokoll](../conditional-access/howto-conditional-access-policy-block-legacy.md) närhelst det är möjligt. Dessutom inaktiverar du äldre autentiseringsprotokoll på program nivå med programspecifik konfiguration.
 
-   * Se detaljerad information för [Exchange Online](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/disable-basic-authentication-in-exchange-online#how-basic-authentication-works-in-exchange-online) och [SharePoint Online](https://docs.microsoft.com/powershell/module/sharepoint-online/set-spotenant?view=sharepoint-ps).
+   * Se detaljerad information för [Exchange Online](/exchange/clients-and-mobile-in-exchange-online/disable-basic-authentication-in-exchange-online#how-basic-authentication-works-in-exchange-online) och [SharePoint Online](/powershell/module/sharepoint-online/set-spotenant?view=sharepoint-ps).
 
-* Implementera de rekommenderade [konfigurationerna för identitets-och enhets åtkomst.](https://docs.microsoft.com/microsoft-365/security/office-365-security/identity-access-policies?view=o365-worldwide)
+* Implementera de rekommenderade [konfigurationerna för identitets-och enhets åtkomst.](/microsoft-365/security/office-365-security/identity-access-policies?view=o365-worldwide)
 
 * Om du använder en version av Azure AD som inte innehåller villkorlig åtkomst kontrollerar du att du använder [standardinställningarna för Azure AD-säkerhet](../fundamentals/concept-fundamentals-security-defaults.md).
 
@@ -206,13 +206,13 @@ När du har konfigurerat din miljö för att skydda dina Microsoft 365 från en 
 
 Övervaka följande viktiga scenarier, förutom eventuella scenarier som är speciella för din organisation. Till exempel bör du proaktivt övervaka åtkomsten till dina affärs kritiska program och resurser.
 
-* **Misstänkt aktivitet**: alla [Azure AD-risk händelser](https://docs.microsoft.com/azure/active-directory/identity-protection/overview-identity-protection#risk-detection-and-remediation) bör övervakas för misstänkt aktivitet. [Azure AD Identity Protection](https://docs.microsoft.com/azure/active-directory/identity-protection/overview-identity-protection) integreras internt med Azure Security Center.
+* **Misstänkt aktivitet**: alla [Azure AD-risk händelser](../identity-protection/overview-identity-protection.md#risk-detection-and-remediation) bör övervakas för misstänkt aktivitet. [Azure AD Identity Protection](../identity-protection/overview-identity-protection.md) integreras internt med Azure Security Center.
 
    * Definiera nätverket [med namnet platser](../reports-monitoring/quickstart-configure-named-locations.md) för att undvika störningar på platsbaserade signaler. 
 *  **UEBA-aviseringar (User Entity Behavior Analytics)** Använd UEBA för att få insikter om avvikelse identifiering.
-   * Microsoft Cloud App Discovery (MCAS) tillhandahåller [UEBA i molnet](https://docs.microsoft.com/cloud-app-security/tutorial-ueba).
+   * Microsoft Cloud App Discovery (MCAS) tillhandahåller [UEBA i molnet](/cloud-app-security/tutorial-ueba).
 
-   * Du kan [integrera lokala UEBA från Azure ATP](https://docs.microsoft.com/defender-for-identity/install-step2). MCAS läser signaler från Azure AD Identity Protection. 
+   * Du kan [integrera lokala UEBA från Azure ATP](/defender-for-identity/install-step2). MCAS läser signaler från Azure AD Identity Protection. 
 
 * **Aktivitet för åtkomst till nöd situationer**: all åtkomst med hjälp av [konton för nöd åtkomst](../roles/security-emergency-access.md) bör övervakas och aviseringar skapas för utredningar. Denna övervakning måste innehålla: 
 
@@ -223,7 +223,7 @@ När du har konfigurerat din miljö för att skydda dina Microsoft 365 från en 
    * Eventuella uppdateringar av grupp medlemskap. 
 
    *    Program tilldelningar. 
-* **Privilegie rad roll aktivitet**: Konfigurera och granska säkerhets [aviseringar som genererats av Azure AD PIM](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-how-to-configure-security-alerts?tabs=new#security-alerts).
+* **Privilegie rad roll aktivitet**: Konfigurera och granska säkerhets [aviseringar som genererats av Azure AD PIM](../privileged-identity-management/pim-how-to-configure-security-alerts.md?tabs=new#security-alerts).
     Övervaka direkt tilldelning av privilegierade roller utanför PIM genom att generera aviseringar när en användare tilldelas direkt.
 * **Konfigurationer för Azure AD-klient**: alla ändringar av konfigurationer för klient organisationen bör generera aviseringar i systemet. Dessa inkluderar, men är inte begränsade till
   *  Uppdaterar anpassade domäner  
@@ -254,11 +254,11 @@ Definiera en strategi för logg lagring och bevarande, utformning och implemente
 
    * Riskhändelser 
 
-Azure AD tillhandahåller [Azure Monitor integrering](../reports-monitoring/concept-activity-logs-azure-monitor.md) för inloggnings aktivitets loggen och gransknings loggarna. Risk händelser kan matas in via [Microsoft Graph-API](https://aka.ms/AzureADSecuredAzure/32b). Du kan [strömma Azure AD-loggar till Azure Monitor-loggar](../reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md).
+Azure AD tillhandahåller [Azure Monitor integrering](../reports-monitoring/concept-activity-logs-azure-monitor.md) för inloggnings aktivitets loggen och gransknings loggarna. Risk händelser kan matas in via [Microsoft Graph-API](/graph/api/resources/identityriskevent). Du kan [strömma Azure AD-loggar till Azure Monitor-loggar](../reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md).
 
 * **Säkerhets loggar för Hybrid infrastruktur-operativsystem.** Alla operativ system loggar för Hybrid identitets infrastruktur bör arkiveras och övervakas noga som <br>Nivå 0-system, med hänsyn till ytans konsekvenser. Du måste bland annat: 
 
-   *  Azure AD Connect. [Azure AD Connect Health](https://aka.ms/AzureADSecuredAzure/32e) måste distribueras för att övervaka synkronisering av identiteter.
+   *  Azure AD Connect. [Azure AD Connect Health](../hybrid/whatis-azure-ad-connect.md) måste distribueras för att övervaka synkronisering av identiteter.
 
    *  Programproxy-agenter 
 

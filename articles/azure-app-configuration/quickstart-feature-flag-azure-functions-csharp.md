@@ -8,12 +8,12 @@ ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 8/26/2020
 ms.author: alkemper
-ms.openlocfilehash: 6996fdd9dce4314e9365177815d7d310ac80c7cb
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 96efc0ea6300e482ddeeda8fa177847f02b7e126
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98046081"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724262"
 ---
 # <a name="quickstart-add-feature-flags-to-an-azure-functions-app"></a>Snabb start: Lägg till funktions flaggor i en Azure Functions app
 
@@ -21,7 +21,7 @@ I den här snabb starten skapar du en Azure Functions app och använder funktion
 
 Biblioteken för .NET-funktions hantering utökar ramverket med stöd för funktions flagga. Dessa bibliotek skapas ovanpå .NET-konfigurations systemet. De integreras med app-konfiguration via dess .NET-Konfigurationsprovider.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 - Azure-prenumeration – [skapa en kostnads fritt](https://azure.microsoft.com/free/)
 - [Visual Studio 2019](https://visualstudio.microsoft.com/vs) med arbets belastningen **Azure Development** .
@@ -46,7 +46,7 @@ Biblioteken för .NET-funktions hantering utökar ramverket med stöd för funkt
 
 ## <a name="connect-to-an-app-configuration-store"></a>Anslut till ett konfigurations Arkiv för appen
 
-Det här projektet kommer att använda [beroende inmatning i .net Azure Functions](/azure/azure-functions/functions-dotnet-dependency-injection). Den lägger till Azure App konfiguration som en extra konfigurations källa där dina funktions flaggor lagras.
+Det här projektet kommer att använda [beroende inmatning i .net Azure Functions](../azure-functions/functions-dotnet-dependency-injection.md). Den lägger till Azure App konfiguration som en extra konfigurations källa där dina funktions flaggor lagras.
 
 1. Högerklicka på projektet och välj **Hantera NuGet-paket**. På fliken **Bläddra** söker du efter och lägger till följande NuGet-paket i projektet.
    - [Microsoft.Extensions.Configuration. AzureAppConfiguration](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.AzureAppConfiguration/) version 4.1.0 eller senare
@@ -201,6 +201,6 @@ I den här snabb starten skapade du en funktions flagga och använde den med en 
 
 - Läs mer om [funktions hantering](./concept-feature-management.md)
 - [Hantera funktionsflaggor](./manage-feature-flags.md)
-- [Använda villkorsstyrda funktions flaggor](./howto-feature-filters-aspnet-core.md)
+- [Använda villkorsstyrda funktionsflaggor](./howto-feature-filters-aspnet-core.md)
 - [Aktivera stegvis distribution av funktioner för mål grupper](./howto-targetingfilter-aspnet-core.md)
 - [Använd dynamisk konfiguration i en Azure Functions app](./enable-dynamic-configuration-azure-functions-csharp.md)

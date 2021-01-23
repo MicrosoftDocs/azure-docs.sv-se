@@ -12,12 +12,12 @@ manager: CelesteDG
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1aebfaa176992b7e20824518bc214a6688ae493
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: a9a0668b3ea651d129dc076e5f2247e38f5ab7d0
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97703593"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725503"
 ---
 # <a name="email-one-time-passcode-authentication"></a>E-postautentisering med eng ång slö sen ord
 
@@ -102,7 +102,7 @@ Om du tidigare har valt att använda e-postlösenordet med eng ång slö sen ord
 
 ![Aktivera e-post för eng ång slö sen ord](media/delegate-invitations/enable-email-otp-opted-in.png)
 
-Men om du hellre vill inaktivera funktionen och tillåta att den automatiskt aktive ras i mars 2021, kan du återgå till standardinställningarna med hjälp av [resurs typen konfiguration av Microsoft Graph-API email Authentication](https://aka.ms/exid-graphemailauth). När du har återställt standardinställningarna kommer följande alternativ att vara tillgängliga under **email eng ång slö sen ord för gäster**:
+Men om du hellre vill inaktivera funktionen och tillåta att den automatiskt aktive ras i mars 2021, kan du återgå till standardinställningarna med hjälp av [resurs typen konfiguration av Microsoft Graph-API email Authentication](/graph/api/resources/emailauthenticationmethodconfiguration). När du har återställt standardinställningarna kommer följande alternativ att vara tillgängliga under **email eng ång slö sen ord för gäster**:
 
 - **Aktivera automatiskt e-postlösenord för gäster i mars 2021**. Objekt Om e-postfunktionen för eng ång slö sen ord inte redan är aktive rad för din klient, aktive ras den automatiskt den 1 mars 2021. Ingen ytterligare åtgärd krävs om du vill att funktionen ska vara aktive rad vid den tiden. Om du redan har aktiverat eller inaktiverat funktionen kommer det här alternativet att vara otillgängligt.
 

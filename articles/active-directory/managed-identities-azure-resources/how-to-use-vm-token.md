@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 11/03/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bed64df921326ad4d219f934f7a7bc6860bfc7d8
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 541f76ad825f492679530902c571096ca4b01902
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96861909"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98726239"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-to-acquire-an-access-token"></a>Använda hanterade identiteter för Azure-resurser på en virtuell Azure-dator för att hämta en åtkomsttoken 
 
@@ -125,7 +125,7 @@ Content-Type: application/json
 
 ## <a name="get-a-token-using-the-microsoftazureservicesappauthentication-library-for-net"></a>Hämta en token med hjälp av Microsoft. Azure. Services. AppAuthentication-biblioteket för .NET
 
-För .NET-program och-funktioner är det enklaste sättet att arbeta med hanterade identiteter för Azure-resurser via Microsoft. Azure. Services. AppAuthentication-paketet. Med det här biblioteket kan du också testa din kod lokalt på din utvecklings dator med ditt användar konto från Visual Studio, [Azure CLI](/cli/azure)eller Active Directory integrerad autentisering. Mer information om lokala utvecklings alternativ med det här biblioteket finns i [referens för Microsoft. Azure. Services. AppAuthentication](../../key-vault/general/service-to-service-authentication.md). Det här avsnittet visar hur du kommer igång med biblioteket i din kod.
+För .NET-program och-funktioner är det enklaste sättet att arbeta med hanterade identiteter för Azure-resurser via Microsoft. Azure. Services. AppAuthentication-paketet. Med det här biblioteket kan du också testa din kod lokalt på din utvecklings dator med ditt användar konto från Visual Studio, [Azure CLI](/cli/azure)eller Active Directory integrerad autentisering. Mer information om lokala utvecklings alternativ med det här biblioteket finns i [referens för Microsoft. Azure. Services. AppAuthentication](/dotnet/api/overview/azure/service-to-service-authentication). Det här avsnittet visar hur du kommer igång med biblioteket i din kod.
 
 1. Lägg till referenser till [Microsoft. Azure. Services. AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) -och [Microsoft. Azure.](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) NuGet-paketen i programmet.
 
@@ -141,7 +141,7 @@ För .NET-program och-funktioner är det enklaste sättet att arbeta med hantera
     var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(azureServiceTokenProvider.KeyVaultTokenCallback));
     ```
     
-Mer information om Microsoft. Azure. Services. AppAuthentication och de åtgärder den visar finns i [referensen Microsoft. Azure. Services. AppAuthentication](../../key-vault/general/service-to-service-authentication.md) och [app service och nyckel valvet med hanterade identiteter för Azure-resurser .net-exempel](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet).
+Mer information om Microsoft. Azure. Services. AppAuthentication och de åtgärder den visar finns i [referensen Microsoft. Azure. Services. AppAuthentication](/dotnet/api/overview/azure/service-to-service-authentication) och [app service och nyckel valvet med hanterade identiteter för Azure-resurser .net-exempel](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet).
 
 ## <a name="get-a-token-using-c"></a>Hämta en token med C #
 

@@ -3,12 +3,12 @@ title: Azure Backup ord lista
 description: Den här artikeln definierar termer som är användbara för användning med Azure Backup.
 ms.topic: conceptual
 ms.date: 12/21/2020
-ms.openlocfilehash: 121258665ab275fdcffd618e7c0cf1b3e0537e70
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 5b575e0f56c9cf39987e9e77850ab1d9b2e80d93
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98661484"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98723922"
 ---
 # <a name="azure-backup-glossary"></a>Azure Backup ord lista
 
@@ -21,7 +21,7 @@ Den här ord listan kan vara till hjälp när du använder Azure Backup.
 
 ## <a name="afs-azure-file-shares"></a>AFS (Azure-filresurser)
 
-Läs [Azure Files-dokumentationen](https://docs.microsoft.com/azure/storage/files/storage-files-introduction).
+Läs [Azure Files-dokumentationen](../storage/files/storage-files-introduction.md).
 
 ## <a name="alternate-location-recovery"></a>Återställning av alternativ plats
 
@@ -35,7 +35,7 @@ Programkonsekventa säkerhets kopieringar fångar upp minnes innehåll och vänt
 
 ## <a name="azure-resource-manager-arm-templates"></a>Azure Resource Manager-mallar (ARM)
 
-Se [dokumentationen för ARM-mallar](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview).
+Se [dokumentationen för ARM-mallar](../azure-resource-manager/templates/overview.md).
 
 ## <a name="autoprotection-for-databases"></a>Autoskydd (för databaser)
 
@@ -49,38 +49,38 @@ Azure Backup erbjuder tre typer av replikering för att hålla lagring och data 
 
 ### <a name="lrs"></a>LRS
 
-[Lokalt Redundant lagring (LRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy#locally-redundant-storage) replikerar dina säkerhets kopierings data tre gånger (det skapas tre kopior av dina säkerhets kopierings data) i en lagrings skalnings enhet i ett Data Center. Alla kopior av säkerhetskopierade data finns inom samma region. LRS är ett billigt alternativ för att skydda dina säkerhets kopierings data från lokala maskin varu haverier.
+[Lokalt Redundant lagring (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage) replikerar dina säkerhets kopierings data tre gånger (det skapas tre kopior av dina säkerhets kopierings data) i en lagrings skalnings enhet i ett Data Center. Alla kopior av säkerhetskopierade data finns inom samma region. LRS är ett billigt alternativ för att skydda dina säkerhets kopierings data från lokala maskin varu haverier.
 
 ### <a name="grs"></a>GRS
 
-[Geo-redundant lagring (GRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy#geo-redundant-storage) är standardalternativet och det som rekommenderas vid replikering. GRS replikerar dina säkerhetskopierade data till en sekundär region, hundratals mil bort från den primära platsen för data källan. GRS kostar mer än LRS, men GRS ger en högre hållbarhets nivå för dina säkerhets kopierings data, även om det finns ett regionalt avbrott.
+[Geo-redundant lagring (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage) är standardalternativet och det som rekommenderas vid replikering. GRS replikerar dina säkerhetskopierade data till en sekundär region, hundratals mil bort från den primära platsen för data källan. GRS kostar mer än LRS, men GRS ger en högre hållbarhets nivå för dina säkerhets kopierings data, även om det finns ett regionalt avbrott.
 
 >[!NOTE]
 >För GRS-valv som har återställnings funktionen över flera regioner, uppgraderas säkerhets kopieringen från GRS till RA-GRS (Läs åtkomst Geo-Redundant lagring).
 
 ### <a name="zrs"></a>ZRS
 
-[Zone-redundant lagring (ZRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy#zone-redundant-storage) replikerar dina säkerhets kopierings data i [tillgänglighets zoner](https://docs.microsoft.com/azure/availability-zones/az-overview#availability-zones), vilket garanterar säkerhets kopierings data placering och återhämtnings förmåga i samma region. Så dina kritiska arbets belastningar som kräver [data placering](https://azure.microsoft.com/resources/achieving-compliant-data-residency-and-security-with-azure/) kan säkerhets kopie ras i ZRS.
+[Zone-redundant lagring (ZRS)](../storage/common/storage-redundancy.md#zone-redundant-storage) replikerar dina säkerhets kopierings data i [tillgänglighets zoner](../availability-zones/az-overview.md#availability-zones), vilket garanterar säkerhets kopierings data placering och återhämtnings förmåga i samma region. Så dina kritiska arbets belastningar som kräver [data placering](https://azure.microsoft.com/resources/achieving-compliant-data-residency-and-security-with-azure/) kan säkerhets kopie ras i ZRS.
 
 ## <a name="azure-command-line-interface-cli"></a>Kommandoradsgränssnitt för Azure (CLI)
 
-Se [Azure CLI-dokumentationen](https://docs.microsoft.com/cli/azure/what-is-azure-cli).
+Se [Azure CLI-dokumentationen](/cli/azure/what-is-azure-cli).
 
 ## <a name="azure-policy"></a>Azure Policy
 
-Läs [Azure policy-dokumentationen](https://docs.microsoft.com/azure/governance/policy/overview).
+Läs [Azure policy-dokumentationen](../governance/policy/overview.md).
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
-Läs [Azure PowerShell-dokumentationen](https://docs.microsoft.com/powershell/azure/).
+Läs [Azure PowerShell-dokumentationen](/powershell/azure/).
 
 ## <a name="azure-resource-manager-arm"></a>Azure Resource Manager (ARM)
 
-Läs [Azure Resource Manager-dokumentationen](https://docs.microsoft.com/azure/azure-resource-manager/management/overview).
+Läs [Azure Resource Manager-dokumentationen](../azure-resource-manager/management/overview.md).
 
 ## <a name="azure-disk-encryption-ade"></a>Azure Disk Encryption (ADE)
 
-Läs [Azure Disk Encryption-dokumentationen](https://docs.microsoft.com/azure/security/fundamentals/azure-disk-encryption-vms-vmss).
+Läs [Azure Disk Encryption-dokumentationen](../security/fundamentals/azure-disk-encryption-vms-vmss.md).
 
 ## <a name="backend-storage--cloud-storage--backup-storage"></a>Server dels lagring/moln lagring/lagring för säkerhets kopiering
 
@@ -124,11 +124,11 @@ Krasch-konsekventa ögonblicks bilder inträffar vanligt vis om en virtuell Azur
 
 ## <a name="cross-region-restore-crr"></a>Återställning mellan regioner (CRR)
 
-Som en av [återställnings alternativen](backup-azure-arm-restore-vms.md#restore-options)kan du med återställningen mellan regioner (CRR) återställa säkerhets kopierings objekt i en sekundär region, som är en [Azure-kopplad region](https://docs.microsoft.com/azure/best-practices-availability-paired-regions#what-are-paired-regions).
+Som en av [återställnings alternativen](backup-azure-arm-restore-vms.md#restore-options)kan du med återställningen mellan regioner (CRR) återställa säkerhets kopierings objekt i en sekundär region, som är en [Azure-kopplad region](../best-practices-availability-paired-regions.md#what-are-paired-regions).
 
 ## <a name="data-box"></a>Data Box
 
-Läs mer i [data Box-dokumentationen](https://docs.microsoft.com/azure/databox/data-box-overview).
+Läs mer i [data Box-dokumentationen](../databox/data-box-overview.md).
 
 ## <a name="datasource"></a>Datakälla
 
@@ -138,11 +138,11 @@ En resurs (Azure-resurs, proxy-resurs eller lokal resurs) som är en kandidat so
 
 (Arbets belastnings bestämd term)
 
-Se DPM- [dokumentationen](https://docs.microsoft.com/system-center/dpm/dpm-overview).
+Se DPM- [dokumentationen](/system-center/dpm/dpm-overview).
 
 ## <a name="expressroute"></a>ExpressRoute
 
-Se ExpressRoute- [dokumentationen](https://docs.microsoft.com/azure/expressroute/expressroute-introduction).
+Se ExpressRoute- [dokumentationen](../expressroute/expressroute-introduction.md).
 
 ## <a name="file-system-consistent-backup"></a>Konsekvent säkerhets kopiering av fil system
 
@@ -164,7 +164,7 @@ En säkerhets kopierings princip för GFS (farfar-fader-son) är en som gör att
 
 ## <a name="iaas-vms--azure-vms"></a>Virtuella IaaS-datorer/virtuella Azure-datorer
 
-Läs dokumentationen om [Azure VM](https://docs.microsoft.com/azure/virtual-machines/).
+Läs dokumentationen om [Azure VM](../virtual-machines/index.yml).
 
 ## <a name="incremental-backup"></a>Inkrementell säkerhetskopiering
 
@@ -196,7 +196,7 @@ Med Azure Backup Server kan du skydda program arbets belastningar, till exempel 
 
 ## <a name="managed-disks"></a>Hanterade diskar
 
-Läs mer i [dokumentationen för Managed disks](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).
+Läs mer i [dokumentationen för Managed disks](../virtual-machines/managed-disks-overview.md).
 
 ## <a name="mars-agent"></a>MARS-agent
 
@@ -206,7 +206,7 @@ Som även kallas **Azure Backup Agent** eller **Recovery Services agent** använ
 
 ## <a name="nsg-network-security-group"></a>NSG (nätverks säkerhets grupp)
 
-Se NSG- [dokumentationen](https://docs.microsoft.com/azure/virtual-network/network-security-groups-overview).
+Se NSG- [dokumentationen](../virtual-network/network-security-groups-overview.md).
 
 ## <a name="offline-seeding"></a>Seeding offline
 
@@ -228,7 +228,7 @@ En lösen fras används för att kryptera och dekryptera data vid säkerhets kop
 
 ## <a name="private-endpoint"></a>Privat slutpunkt
 
-Läs dokumentationen om den [privata slut punkten](https://docs.microsoft.com/azure/private-link/private-endpoint-overview).
+Läs dokumentationen om den [privata slut punkten](../private-link/private-endpoint-overview.md).
 
 ## <a name="protected-instance"></a>Skyddad instans
 
@@ -236,7 +236,7 @@ En skyddad instans avser den dator, fysiska eller virtuella server som du använ
 
 ## <a name="rbac-role-based-access-control"></a>RBAC (rollbaserad åtkomst kontroll)
 
-Se RBAC- [dokumentationen](https://docs.microsoft.com/azure/role-based-access-control/overview).
+Se RBAC- [dokumentationen](../role-based-access-control/overview.md).
 
 ## <a name="recovery-point-restore-point-retention-point--point-in-time-pit"></a>Återställnings punkt/återställnings punkt/kvarhållning/punkt-i-tid (PIT)
 
@@ -248,11 +248,11 @@ En Azure Resource Manager resurs av typen *Microsoft. RecoveryServices/valv*. Re
 
 ## <a name="resource-group"></a>Resursgrupp
 
-Läs Azure Resource Manager- [dokumentationen](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal#what-is-a-resource-group).
+Läs Azure Resource Manager- [dokumentationen](../azure-resource-manager/management/manage-resource-groups-portal.md#what-is-a-resource-group).
 
 ## <a name="rest-api"></a>REST-API
 
-Läs mer i [Azure REST API-dokumentationen](https://docs.microsoft.com/rest/api/azure/).
+Läs mer i [Azure REST API-dokumentationen](/rest/api/azure/).
 
 ## <a name="retention-rule"></a>Bevarande regel
 
@@ -272,7 +272,7 @@ Ett säkerhets kopierings jobb som aktive ras automatiskt av den säkerhets kopi
 
 ## <a name="secondary-region--paired-region"></a>Sekundär region/kopplad region
 
-Ett regionalt par består av två regioner i samma geografi. En är den primära regionen och den andra är den sekundära regionen. Kopplade regioner används av vissa Azure-tjänster (inklusive Azure Backup med GRS-inställningar) för att säkerställa affärs kontinuitet och skydda mot data förlust. [Läs mer](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
+Ett regionalt par består av två regioner i samma geografi. En är den primära regionen och den andra är den sekundära regionen. Kopplade regioner används av vissa Azure-tjänster (inklusive Azure Backup med GRS-inställningar) för att säkerställa affärs kontinuitet och skydda mot data förlust. [Läs mer](../best-practices-availability-paired-regions.md).
 
 ## <a name="soft-delete"></a>Mjuk borttagning
 
@@ -280,11 +280,11 @@ Mjuk borttagning är en funktion som hjälper till att skydda mot oavsiktlig bor
 
 ## <a name="snapshot"></a>Ögonblicksbild
 
-En ögonblicks bild är en fullständig skrivskyddad kopia av en virtuell hård disk (VHD) eller en Azure-filresurs. Läs mer om [ögonblicks bilder av diskar](https://docs.microsoft.com/azure/virtual-machines/windows/snapshot-copy-managed-disk) och [ögonblicks bilder av filer](https://docs.microsoft.com/azure/storage/files/storage-snapshots-files).
+En ögonblicks bild är en fullständig skrivskyddad kopia av en virtuell hård disk (VHD) eller en Azure-filresurs. Läs mer om [ögonblicks bilder av diskar](../virtual-machines/windows/snapshot-copy-managed-disk.md) och [ögonblicks bilder av filer](../storage/files/storage-snapshots-files.md).
 
 ## <a name="storage-account"></a>Lagringskonto
 
-Läs dokumentationen för [lagrings kontot](https://docs.microsoft.com/azure/storage/common/storage-account-overview).
+Läs dokumentationen för [lagrings kontot](../storage/common/storage-account-overview.md).
 
 ## <a name="subscription"></a>Prenumeration
 
@@ -302,7 +302,7 @@ En klientorganisation är en representation av en organisation. Det är en dedik
 
 ## <a name="unmanaged-disk"></a>Ohanterad disk
 
-Läs mer i [dokumentationen för ohanterade diskar](https://docs.microsoft.com/azure/storage/common/storage-disaster-recovery-guidance#azure-unmanaged-disks).
+Läs mer i [dokumentationen för ohanterade diskar](../storage/common/storage-disaster-recovery-guidance.md#azure-unmanaged-disks).
 
 ## <a name="vault"></a>Valv
 
@@ -314,11 +314,11 @@ Valv filen med autentiseringsuppgifter är ett certifikat som genereras av porta
 
 ## <a name="vnet-virtual-network"></a>VNET (Virtual Network)
 
-Se VNet- [dokumentationen](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview).
+Se VNet- [dokumentationen](../virtual-network/virtual-networks-overview.md).
 
 ## <a name="vss-windows-volume-shadow-copy-service"></a>VSS (Windows tjänsten Volume Shadow Copy)
 
-Läs dokumentationen för [VSS](https://docs.microsoft.com/windows-server/storage/file-server/volume-shadow-copy-service).
+Läs dokumentationen för [VSS](/windows-server/storage/file-server/volume-shadow-copy-service).
 
 ## <a name="next-steps"></a>Nästa steg
 

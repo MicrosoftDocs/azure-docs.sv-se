@@ -5,21 +5,21 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 11/18/2020
+ms.date: 01/22/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fdff7e62753e75a14d6711b77dd451603353dae5
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 6a5e8b933f617d767f017f73fb6778a45b5a1ce3
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98012843"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725597"
 ---
 # <a name="authentication-methods-in-azure-active-directory---phone-options"></a>Autentiseringsmetoder i Azure Active Directory telefon alternativ
 
-För direkt autentisering med textmeddelande kan du [Konfigurera och aktivera användare för SMS-baserad autentisering (för hands version)](howto-authentication-sms-signin.md). SMS-baserad inloggning är perfekt för anställda. Med SMS-baserad inloggning behöver användarna inte känna till ett användar namn och lösen ord för att få åtkomst till program och tjänster. Användaren anger i stället sitt registrerade mobiltelefon nummer, tar emot ett SMS med en verifierings kod och anger det i inloggnings gränssnittet.
+För direkt autentisering med textmeddelande kan du [Konfigurera och aktivera användare för SMS-baserad autentisering](howto-authentication-sms-signin.md). SMS-baserad inloggning är perfekt för Frontline-anställda. Med SMS-baserad inloggning behöver användarna inte känna till ett användar namn och lösen ord för att få åtkomst till program och tjänster. Användaren anger i stället sitt registrerade mobiltelefon nummer, tar emot ett SMS med en verifierings kod och anger det i inloggnings gränssnittet.
 
 Användarna kan också kontrol lera att de använder en mobil telefon eller en arbets telefon som sekundär form av autentisering som används under Azure AD Multi-Factor Authentication eller lösen ords återställning via självbetjäning (SSPR).
 

@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova
 ms.date: 10/22/2020
-ms.openlocfilehash: 9a35c0dc8a3b994b015d7a8d64f76f7e10d95a00
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 58563629b30e7be764732a9810162e1a0b1931e6
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97722410"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725844"
 ---
 # <a name="connectivity-architecture-for-azure-sql-managed-instance"></a>Anslutningsarkitektur för Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -107,11 +107,11 @@ Distribuera SQL-hanterad instans i ett dedikerat undernät i det virtuella nätv
 - **Tillräckligt med IP-adresser:** Under nätet för SQL-hanterad instans måste ha minst 32 IP-adresser. Mer information finns i [bestämma storleken på under nätet för SQL-hanterad instans](vnet-subnet-determine-size.md). Du kan distribuera hanterade instanser i [det befintliga nätverket](vnet-existing-add-subnet.md) när du har konfigurerat det för att uppfylla [nätverks kraven för SQL-hanterad instans](#network-requirements). Annars skapar du ett [nytt nätverk och undernät](virtual-network-subnet-create-arm-template.md).
 
 > [!IMPORTANT]
-> När du skapar en hanterad instans tillämpas en princip för nätverks avsikt i under nätet för att förhindra inkompatibla ändringar av nätverks konfigurationen. När den sista instansen har tagits bort från under nätet tas även principen för nätverks avsikt bort. Reglerna nedan används endast i informations syfte och du bör inte distribuera dem med hjälp av ARM-mallen/PowerShell/CLI. Om du vill använda den senaste officiella mallen kan du alltid [Hämta den från portalen](https://docs.microsoft.com/azure/azure-resource-manager/templates/quickstart-create-templates-use-the-portal).
+> När du skapar en hanterad instans tillämpas en princip för nätverks avsikt i under nätet för att förhindra inkompatibla ändringar av nätverks konfigurationen. När den sista instansen har tagits bort från under nätet tas även principen för nätverks avsikt bort. Reglerna nedan används endast i informations syfte och du bör inte distribuera dem med hjälp av ARM-mallen/PowerShell/CLI. Om du vill använda den senaste officiella mallen kan du alltid [Hämta den från portalen](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md).
 
 ### <a name="mandatory-inbound-security-rules-with-service-aided-subnet-configuration"></a>Obligatoriska inkommande säkerhets regler med konfiguration för tjänstens under näts undernät
 
-| Namn       |Port                        |Protokoll|Källa           |Mål|Åtgärd|
+| Name       |Port                        |Protokoll|Källa           |Mål|Action|
 |------------|----------------------------|--------|-----------------|-----------|------|
 |management  |9000, 9003, 1438, 1440, 1452|TCP     |SqlManagement    |MI-UNDERNÄT  |Tillåt |
 |            |9000, 9003                  |TCP     |CorpnetSaw       |MI-UNDERNÄT  |Tillåt |
@@ -121,14 +121,14 @@ Distribuera SQL-hanterad instans i ett dedikerat undernät i det virtuella nätv
 
 ### <a name="mandatory-outbound-security-rules-with-service-aided-subnet-configuration"></a>Obligatoriska utgående säkerhets regler med konfiguration för tjänstens under näts undernät
 
-| Namn       |Port          |Protokoll|Källa           |Mål|Åtgärd|
+| Name       |Port          |Protokoll|Källa           |Mål|Action|
 |------------|--------------|--------|-----------------|-----------|------|
 |management  |443, 12000    |TCP     |MI-UNDERNÄT        |AzureCloud |Tillåt |
 |mi_subnet   |Valfri           |Valfri     |MI-UNDERNÄT        |MI-UNDERNÄT  |Tillåt |
 
 ### <a name="user-defined-routes-with-service-aided-subnet-configuration"></a>Användardefinierade vägar med konfiguration av tjänstestyrt undernät
 
-|Namn|Adressprefix|Nästa hopp|
+|Name|Adressprefix|Nästa hopp|
 |----|--------------|-------|
 |undernät-till-vnetlocal|MI-UNDERNÄT|Virtuellt nätverk|
 |mi-13-64-11-nexthop-Internet|13.64.0.0/11|Internet|

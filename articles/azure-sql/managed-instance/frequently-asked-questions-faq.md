@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 09/21/2020
-ms.openlocfilehash: 6b217e77310224779ea3ea840e613e28da6c86a3
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 5d15947254d80d97b6a241a717fb7d33a3d5ccb5
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92779874"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724024"
 ---
 # <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Vanliga frågor och svar (FAQ) om Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -118,7 +118,7 @@ Det finns inte stöd för att ändra namnet på en hanterad instans.
 
 Ja, standard-DNS-zon för hanterade instanser *. Database.Windows.net* kan ändras. 
 
-Om du vill använda en annan DNS-zon i stället för standard, till exempel *. contoso.com* : 
+Om du vill använda en annan DNS-zon i stället för standard, till exempel *. contoso.com*: 
 - Använd CliConfig för att definiera ett alias. Verktyget är bara ett gränssnitt för register inställningar, så det kan göras med hjälp av en grup princip eller ett skript.
 - Använd *CNAME* med alternativet *TrustServerCertificate = True* .
 
@@ -240,7 +240,7 @@ Ja, det stöds och är tillgängligt för SQL Server 2005 +-versioner.  Om du vi
 
 System databaser replikeras inte till den sekundära instansen i en failover-grupp. Därför går det inte att använda scenarier som är beroende av objekt från system databaser på den sekundära instansen om inte objekten skapas manuellt på den sekundära. Information om lösningar finns i [Aktivera scenarier som är beroende av objektet från system databaserna](../database/auto-failover-group-overview.md?tabs=azure-powershell#enable-scenarios-dependent-on-objects-from-the-system-databases).
  
-## <a name="networking-requirements"></a>Nätverks krav 
+## <a name="networking-requirements"></a>Nätverkskrav 
 
 **Vilka är de aktuella inkommande/utgående NSG-begränsningarna i under nätet för hanterade instanser?**
 
@@ -299,7 +299,7 @@ Det här krävs inte. Du kan antingen [skapa ett virtuellt nätverk för Azure S
 
 Nej. För närvarande har vi inte stöd för att placera en hanterad instans i ett undernät som redan innehåller andra resurs typer.
 
-## <a name="connectivity"></a>Anslutningsmöjlighet 
+## <a name="connectivity"></a>Anslutning 
 
 **Kan jag ansluta till min hanterade instans med hjälp av IP-adress?**
 
@@ -339,7 +339,7 @@ ExpressRoute-peering i ExpressRoute är det bästa sättet att göra det. Global
 > [!IMPORTANT]
 > [Den 9/22/2020 vi presenterade global peering för virtuella nätverk för nyligen skapade virtuella kluster](https://azure.microsoft.com/en-us/updates/global-virtual-network-peering-support-for-azure-sql-managed-instance-now-available/). Det innebär att global virtuell nätverks-peering stöds för SQL-hanterade instanser som skapats i tomma undernät efter meddelandets datum, även för alla efterföljande hanterade instanser som skapats i dessa undernät. För alla andra SQL-hanterade instanser är peering-stödet begränsat till nätverken i samma region på grund av [begränsningarna i den globala virtuella nätverks-peeringen](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints). Se även det relevanta avsnittet i artikeln [vanliga frågor och svar om Azure Virtual Networks](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) för mer information. 
 
-Om ExpressRoute-kretsen för ExpressRoute och globala virtuella nätverk inte är möjlig, är det enda alternativet att skapa plats-till-plats-VPN-anslutning ([Azure Portal](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md), [POWERSHELL](../../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md), [Azure CLI](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli.md)).
+Om ExpressRoute-kretsen för ExpressRoute och globala virtuella nätverk inte är möjlig, är det enda alternativet att skapa plats-till-plats-VPN-anslutning ([Azure Portal](../../vpn-gateway/tutorial-site-to-site-portal.md), [POWERSHELL](../../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md), [Azure CLI](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli.md)).
 
 ## <a name="mitigate-data-exfiltration-risks"></a>Minimera data exfiltrering-risker  
 
@@ -409,8 +409,8 @@ Du kan rotera TDE-skydd för en hanterad instans med hjälp av Azure Cloud Shell
 
 Ja, du behöver inte dekryptera databasen för att återställa den till SQL-hanterad instans. Du måste ange ett certifikat/en nyckel som används som krypterings nyckel skydd på käll systemet till SQL-hanterad instans för att kunna läsa data från den krypterade säkerhets kopierings filen. Det finns två möjliga sätt att göra det:
 
-- *Ladda upp certifikat – skydd mot SQL-hanterad instans* . Det kan bara göras med PowerShell. I [exempel skriptet](./tde-certificate-migrate.md) beskrivs hela processen.
-- *Överför asymmetrisk nyckel-skydd till Azure Key Vault-och Point SQL-hanterad instans till den* . Den här metoden liknar BYOK-TDE, som också använder Key Vault-integrering för att lagra krypterings nyckeln. Om du inte vill använda nyckeln som krypterings nyckel skydd och bara vill göra nyckeln tillgänglig för SQL-hanterad instans för att återställa krypterade databaser, följ instruktionerna för att [Konfigurera BYOK TDE](../database/transparent-data-encryption-tde-overview.md#manage-transparent-data-encryption)och markera inte kryss rutan **gör den markerade nyckeln till standard TDE-skyddet** .
+- *Ladda upp certifikat – skydd mot SQL-hanterad instans*. Det kan bara göras med PowerShell. I [exempel skriptet](./tde-certificate-migrate.md) beskrivs hela processen.
+- *Överför asymmetrisk nyckel-skydd till Azure Key Vault-och Point SQL-hanterad instans till den*. Den här metoden liknar BYOK-TDE, som också använder Key Vault-integrering för att lagra krypterings nyckeln. Om du inte vill använda nyckeln som krypterings nyckel skydd och bara vill göra nyckeln tillgänglig för SQL-hanterad instans för att återställa krypterade databaser, följ instruktionerna för att [Konfigurera BYOK TDE](../database/transparent-data-encryption-tde-overview.md#manage-transparent-data-encryption)och markera inte kryss rutan **gör den markerade nyckeln till standard TDE-skyddet**.
 
 När du har gjort krypterings skyddet tillgängligt för SQL-hanterad instans kan du fortsätta med standard proceduren för databas återställning.
 
@@ -443,7 +443,7 @@ Se [prissättnings sida](https://azure.microsoft.com/pricing/details/azure-sql/s
 
 **Hur kan jag spåra fakturerings kostnader för min hanterade instans?**
 
-Du kan göra det med hjälp av [Azure Cost Management-lösningen](../../cost-management-billing/index.yml). Gå till **prenumerationer** i [Azure Portal](https://portal.azure.com) och välj **kostnads analys** . 
+Du kan göra det med hjälp av [Azure Cost Management-lösningen](../../cost-management-billing/index.yml). Gå till **prenumerationer** i [Azure Portal](https://portal.azure.com) och välj **kostnads analys**. 
 
 Använd alternativet **ackumulerade kostnader** och filtrera sedan efter **resurs typ** som `microsoft.sql/managedinstances` .
 

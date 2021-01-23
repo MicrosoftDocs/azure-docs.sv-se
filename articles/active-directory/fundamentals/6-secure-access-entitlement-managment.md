@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9de0ce5e83b33cd793953e2b863f26dffafe58ee
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: f06a54f59405d9833194b2e7d4488bc93d2437ae
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222402"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725186"
 ---
 # <a name="manage-external-access-with-entitlement-management"></a>Hantera extern åtkomst med hantering av rättigheter 
 
@@ -94,15 +94,15 @@ Mer information om åtkomst granskningar finns i [Planera distribution av åtkom
 
 ## <a name="using-automation-in-entitlement-management"></a>Använda Automation i hantering av rättigheter
 
-Du kan utföra [rättighets hanterings funktioner med hjälp av Microsoft Graph](https://docs.microsoft.com/graph/tutorial-access-package-api), inklusive
+Du kan utföra [rättighets hanterings funktioner med hjälp av Microsoft Graph](/graph/tutorial-access-package-api), inklusive
 
-* [Hantera åtkomst paket](https://docs.microsoft.com/graph/api/resources/accesspackage?view=graph-rest-beta)
+* [Hantera åtkomst paket](/graph/api/resources/accesspackage?view=graph-rest-beta)
 
-* [Hantera åtkomst granskningar](https://docs.microsoft.com/graph/api/resources/accessreviewsv2-root?view=graph-rest-beta)
+* [Hantera åtkomst granskningar](/graph/api/resources/accessreviewsv2-root?view=graph-rest-beta)
 
-* [Hantera anslutna organisationer](https://docs.microsoft.com/graph/api/resources/connectedorganization?view=graph-rest-beta)
+* [Hantera anslutna organisationer](/graph/api/resources/connectedorganization?view=graph-rest-beta)
 
-* [Hantera inställningar för hantering av rättigheter](https://docs.microsoft.com/graph/api/resources/entitlementmanagementsettings?view=graph-rest-beta)
+* [Hantera inställningar för hantering av rättigheter](/graph/api/resources/entitlementmanagementsettings?view=graph-rest-beta)
 
 ## <a name="recommendations"></a>Rekommendationer 
 
@@ -112,7 +112,7 @@ Vi rekommenderar metoderna för att styra extern åtkomst med hantering av rätt
 
 * Om du redan har B2B-användare i din katalog kan du också tilldela dem direkt till lämpliga åtkomst paket.
 
-* Du kan tilldela åtkomst i [Azure Portal](../governance/entitlement-management-access-package-assignments.md)eller via [Microsoft Graph](https://docs.microsoft.com/graph/api/resources/accesspackageassignmentrequest?view=graph-rest-beta).
+* Du kan tilldela åtkomst i [Azure Portal](../governance/entitlement-management-access-package-assignments.md)eller via [Microsoft Graph](/graph/api/resources/accesspackageassignmentrequest?view=graph-rest-beta).
 
 **Använd dina inställningar för identitets styrning för att ta bort användare från din katalog när åtkomst paketen upphör att gälla**.
 
@@ -173,4 +173,3 @@ Se följande artiklar om hur du skyddar extern åtkomst till resurser. Vi rekomm
 
  
 
- 

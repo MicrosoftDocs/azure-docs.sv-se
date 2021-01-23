@@ -11,12 +11,12 @@ author: knicholasa
 ms.author: nichola
 manager: martinco
 ms.date: 11/23/2020
-ms.openlocfilehash: 74bfc9eeeb8375fca2c88a3fd3c31f17e130fc99
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a7b8f893026bb96c8d768d2e6d07d0240ecb81fa
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919996"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724849"
 ---
 # <a name="increase-the-resilience-of-authentication-and-authorization-in-daemon-applications-you-develop"></a>Öka återhämtningen av autentisering och auktorisering i daemon-program som du utvecklar
 
@@ -26,7 +26,7 @@ Den här artikeln innehåller rikt linjer för hur utvecklare kan använda Micro
 
 ## <a name="use-managed-identities-for-azure-resources"></a>Använda hanterade identiteter för Azure-resurser
 
-Utvecklare som skapar daemon-appar på Microsoft Azure kan använda [hanterade identiteter för Azure-resurser](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview). Hanterade identiteter eliminerar behovet av utvecklare att hantera hemligheter och autentiseringsuppgifter. Funktionen förbättrar återhämtningen genom att undvika misstag runt certifikatets förfallo datum, rotations fel eller förtroende. Den har också flera inbyggda funktioner som specifikt är avsedda att öka återhämtningen.
+Utvecklare som skapar daemon-appar på Microsoft Azure kan använda [hanterade identiteter för Azure-resurser](../managed-identities-azure-resources/overview.md). Hanterade identiteter eliminerar behovet av utvecklare att hantera hemligheter och autentiseringsuppgifter. Funktionen förbättrar återhämtningen genom att undvika misstag runt certifikatets förfallo datum, rotations fel eller förtroende. Den har också flera inbyggda funktioner som specifikt är avsedda att öka återhämtningen.
 
 Hanterade identiteter använder långa åtkomsttoken och information från Microsoft Identity för att proaktivt hämta nya token inom ett stort tidsintervall innan den befintliga token upphör att gälla. Din app kan fortsätta att köras vid försök att hämta en ny token.
 
@@ -34,11 +34,11 @@ Hanterade identiteter använder också regionala slut punkter för att förbätt
 
 ## <a name="use-the-microsoft-authentication-library"></a>Använd Microsoft Authentication Library
 
-Utvecklare av daemon-appar som inte använder hanterade identiteter kan använda [Microsoft Authentication Library (MSAL)](https://docs.microsoft.com/azure/active-directory/develop/msal-overview), som gör det enkelt att implementera autentisering och auktorisering, och använder automatiskt bästa metoder för återhämtning. MSAL gör det enklare att tillhandahålla nödvändiga klient uppgifter. Ditt program behöver till exempel inte implementera skapande och signering JSON Web Token intyg när du använder certifikatbaserade autentiseringsuppgifter.
+Utvecklare av daemon-appar som inte använder hanterade identiteter kan använda [Microsoft Authentication Library (MSAL)](../develop/msal-overview.md), som gör det enkelt att implementera autentisering och auktorisering, och använder automatiskt bästa metoder för återhämtning. MSAL gör det enklare att tillhandahålla nödvändiga klient uppgifter. Ditt program behöver till exempel inte implementera skapande och signering JSON Web Token intyg när du använder certifikatbaserade autentiseringsuppgifter.
 
 ### <a name="use-microsoftidentityweb-for-net-developers"></a>Använd Microsoft. Identity. Web för .NET-utvecklare
 
-Utvecklare som skapar daemon-appar på ASP.NET Core kan använda [Microsoft. Identity. Web-](https://docs.microsoft.com/azure/active-directory/develop/microsoft-identity-web) biblioteket. Det här biblioteket bygger på MSAL för att göra det ännu enklare att implementera auktorisering för ASP.NET Core appar. Den innehåller flera metoder för [distribuerad token-cache](https://github.com/AzureAD/microsoft-identity-web/wiki/token-cache-serialization#distributed-token-cache) för distribuerade appar som kan köras i flera regioner.
+Utvecklare som skapar daemon-appar på ASP.NET Core kan använda [Microsoft. Identity. Web-](../develop/microsoft-identity-web.md) biblioteket. Det här biblioteket bygger på MSAL för att göra det ännu enklare att implementera auktorisering för ASP.NET Core appar. Den innehåller flera metoder för [distribuerad token-cache](https://github.com/AzureAD/microsoft-identity-web/wiki/token-cache-serialization#distributed-token-cache) för distribuerade appar som kan köras i flera regioner.
 
 ## <a name="cache-and-store-tokens"></a>Cache-och lagrings-token
 

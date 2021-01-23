@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f83e5584f8f9c6823e1259cb5e6034d8b13ae3a6
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 7eb168610f10ac336084ac04c19679d26fc913e0
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222385"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725252"
 ---
 # <a name="securing-external-access-with-groups"></a>Skydda extern åtkomst med grupper 
 
@@ -48,13 +48,13 @@ När du utvecklar din grupp strategi för att skydda extern åtkomst till dina r
 
    * *Som standard kan alla klient medlemmar skapa Azure AD-säkerhetsgrupper*. 
 
-      * Du kan [begränsa åtkomsten till portalen för icke-administratörer](../develop/howto-restrict-your-app-to-a-set-of-users.md) och inaktivera möjligheten att skapa grupper i [PowerShell.](../users-groups-roles/groups-troubleshooting.md) 
+      * Du kan [begränsa åtkomsten till portalen för icke-administratörer](../develop/howto-restrict-your-app-to-a-set-of-users.md) och inaktivera möjligheten att skapa grupper i [PowerShell.](../enterprise-users/groups-troubleshooting.md) 
 
-      * Du kan också [Konfigurera grupp hantering via självbetjäning i Azure Active Directory](../users-groups-roles/groups-self-service-management.md). 
+      * Du kan också [Konfigurera grupp hantering via självbetjäning i Azure Active Directory](../enterprise-users/groups-self-service-management.md). 
 
    * *Som standard kan alla användare skapa M365 grupper och grupper är öppna för alla (interna och externa) användare i din klient organisation att ansluta till*. 
 
-      * [Du kan begränsa skapandet av Microsoft 365 grupper](https://docs.microsoft.com/microsoft-365/solutions/manage-creation-of-groups?view=o365-worldwide) till medlemmarna i en viss säkerhets grupp. Använd Windows PowerShell för att konfigurera den här inställningen. 
+      * [Du kan begränsa skapandet av Microsoft 365 grupper](/microsoft-365/solutions/manage-creation-of-groups?view=o365-worldwide) till medlemmarna i en viss säkerhets grupp. Använd Windows PowerShell för att konfigurera den här inställningen. 
 
 * **Vem ska kunna bjuda in personer till grupper?** Kan alla grupp medlemmar kunna lägga till andra medlemmar, eller så kan endast grupp ägare lägga till medlemmar?
 
@@ -80,13 +80,13 @@ Dynamiska grupper kan innehålla antingen användare eller enheter, men inte bå
 
 ![Skärm bild som visar hur du konfigurerar dynamiska medlemskaps regler.](media/secure-external-access/4-dynamic-membership-rules.png)
 
-Mer information om dynamiska grupper finns [i Skapa eller uppdatera en dynamisk grupp i Azure Active Directory.](../users-groups-roles/groups-create-rule.md)
+Mer information om dynamiska grupper finns [i Skapa eller uppdatera en dynamisk grupp i Azure Active Directory.](../enterprise-users/groups-create-rule.md)
 
 ### <a name="do-not-use-groups-for-multiple-purposes"></a>Använd inte grupper för flera användnings sätt
 
 När du använder grupper av säkerhets-eller resurs åtkomst, är det viktigt att de har en enda funktion. Om en grupp används för att bevilja åtkomst till resurser, bör den inte användas i något annat syfte. Om en grupp används för allmänna syfte, till exempel för att definiera plats-eller grupp medlemskap, bör den också användas för att skydda åtkomsten. 
 
-Vi rekommenderar en namngivnings konvention för säkerhets grupper som gör syftet tydligt. Exempel:
+Vi rekommenderar en namngivnings konvention för säkerhets grupper som gör syftet tydligt. Ett exempel:
 
 * *Secure_access_finance_apps*
 
@@ -102,7 +102,7 @@ Både Azure AD-säkerhetsgrupper och Microsoft 365 grupper kan skapas från Azur
 
 |Överväganden | Azure AD-säkerhetsgrupper (manuellt och dynamiskt)| Microsoft 365 grupper |
 | - | - | - |
-| Vad kan gruppen innehålla?| Användare<br>Grupper<br>Tjänstprinciper<br>Egenskaper| Endast användare |
+| Vad kan gruppen innehålla?| Användare<br>Grupper<br>Tjänstprinciper<br>Enheter| Endast användare |
 | Var skapas gruppen?| Azure AD-Portal<br>M365 portal (om du vill att e-post ska vara aktive rad)<br>PowerShell<br>Microsoft Graph<br>Slut användar Portal| M365-portalen<br>Azure AD-Portal<br>PowerShell<br>Microsoft Graph<br>I Microsoft 365 program |
 | Vem skapar som standard?| Administratörer <br>Slutanvändare| Administratörer<br>Slutanvändare |
 | Vem kan läggas till som standard?| Interna användare (medlemmar)| Klient medlemmar och gäster från vilken organisation som helst |
@@ -117,7 +117,7 @@ Använd Microsoft 365 grupper för att skapa och hantera en uppsättning Microso
 
 ## <a name="azure-ad-security-groups"></a>Azure AD-säkerhetsgrupper 
 
-[Azure AD-säkerhetsgrupper](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-manage-groups) kan innehålla användare eller enheter och kan användas för att hantera åtkomst till 
+[Azure AD-säkerhetsgrupper](./active-directory-manage-groups.md) kan innehålla användare eller enheter och kan användas för att hantera åtkomst till 
 
 * Azure-resurser som Microsoft 365 appar, anpassade appar och SaaS-appar (Software as a Service) som ServiceNow för Dropbox.
 
@@ -127,11 +127,11 @@ Använd Microsoft 365 grupper för att skapa och hantera en uppsättning Microso
 
 Azure AD-säkerhetsgrupper kan också användas för att:
 
-* tilldela licenser för tjänster som M365, Dynamics 365 och Enterprise Mobility och Security. Mer information finns i [gruppbaserad licensiering](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-licensing-whatis-azure-portal).
+* tilldela licenser för tjänster som M365, Dynamics 365 och Enterprise Mobility och Security. Mer information finns i [gruppbaserad licensiering](./active-directory-licensing-whatis-azure-portal.md).
 
-* tilldela förhöjd behörighet. Mer information finns i [använda moln grupper för att hantera roll tilldelningar (för hands version](https://docs.microsoft.com/azure/active-directory/users-groups-roles/roles-groups-concept)). 
+* tilldela förhöjd behörighet. Mer information finns i [använda moln grupper för att hantera roll tilldelningar (för hands version](../roles/groups-concept.md)). 
 
-Om du vill skapa en grupp [i Azure Portal](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal) navigerar du till Azure Active Directory och sedan till grupper. Du kan också skapa Azure AD-säkerhetsgrupper med hjälp av [PowerShell-cmdletar](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-settings-v2-cmdlets). 
+Om du vill skapa en grupp [i Azure Portal](./active-directory-groups-create-azure-portal.md) navigerar du till Azure Active Directory och sedan till grupper. Du kan också skapa Azure AD-säkerhetsgrupper med hjälp av [PowerShell-cmdletar](../enterprise-users/groups-settings-v2-cmdlets.md). 
 
 > [!NOTE]
 > En säkerhets grupp kan användas för tilldelning av upp till 1500 program, men inte mer. 
@@ -146,17 +146,17 @@ Om du vill skapa en grupp [i Azure Portal](https://docs.microsoft.com/azure/acti
 
 Hybrid organisationer har både en lokal infrastruktur och en moln infrastruktur i Azure AD. Många hybrid organisationer som använder Active Directory skapa sina säkerhets grupper lokalt och synkronisera dem till molnet. Med den här metoden kan endast användare i den lokala miljön läggas till i säkerhets grupperna.
 
-**Skydda din lokala infrastruktur mot kompromisser, eftersom intrång lokalt kan användas för att få åtkomst till din Microsoft 365-klient**. Vägledning finns i [skydda Microsoft 365 från lokala attacker](https://aka.ms/protectm365) .
+**Skydda din lokala infrastruktur mot kompromisser, eftersom intrång lokalt kan användas för att få åtkomst till din Microsoft 365-klient**. Vägledning finns i [skydda Microsoft 365 från lokala attacker](./protect-m365-from-on-premises-attacks.md) .
 
 ## <a name="microsoft-365-groups"></a>Microsoft 365 grupper
 
-[Microsoft 365 grupper](https://docs.microsoft.com/microsoft-365/admin/create-groups/office-365-groups?view=o365-worldwide) är den grundläggande medlemskaps tjänsten som driver all åtkomst över M365. De kan skapas från [Azure Portal](https://portal.azure.com/)eller [M365-portalen](https://admin.microsoft.com/). När en M365-grupp skapas beviljar du åtkomst till en grupp med resurser som används för att samar beta. Se [Översikt över Microsoft 365 grupper för administratörer](https://docs.microsoft.com/microsoft-365/admin/create-groups/office-365-groups?view=o365-worldwide) för en fullständig lista över dessa resurser.
+[Microsoft 365 grupper](/microsoft-365/admin/create-groups/office-365-groups?view=o365-worldwide) är den grundläggande medlemskaps tjänsten som driver all åtkomst över M365. De kan skapas från [Azure Portal](https://portal.azure.com/)eller [M365-portalen](https://admin.microsoft.com/). När en M365-grupp skapas beviljar du åtkomst till en grupp med resurser som används för att samar beta. Se [Översikt över Microsoft 365 grupper för administratörer](/microsoft-365/admin/create-groups/office-365-groups?view=o365-worldwide) för en fullständig lista över dessa resurser.
 
 M365-grupper har följande olika delarna för sina roller
 
 * **Ägare** – grupp ägare kan lägga till eller ta bort medlemmar och ha unika behörigheter som möjligheten att ta bort konversationer från den delade Inkorgen eller ändra grupp inställningarna. Grupp ägare kan byta namn på gruppen, uppdatera beskrivningen eller bilden med mera.
 
-* **Medlemmar** – medlemmar kan komma åt allt i gruppen, men kan inte ändra grupp inställningar. Som standard kan grupp medlemmar bjuda in gäster att delta i gruppen, men du kan [kontrol lera den inställningen](https://docs.microsoft.com/microsoft-365/admin/create-groups/manage-guest-access-in-groups?view=o365-worldwide).
+* **Medlemmar** – medlemmar kan komma åt allt i gruppen, men kan inte ändra grupp inställningar. Som standard kan grupp medlemmar bjuda in gäster att delta i gruppen, men du kan [kontrol lera den inställningen](/microsoft-365/admin/create-groups/manage-guest-access-in-groups?view=o365-worldwide).
 
 * **Gäster** – grupp gäster är medlemmar som ligger utanför din organisation. Gäster är som standard begränsade till funktioner i team.
 

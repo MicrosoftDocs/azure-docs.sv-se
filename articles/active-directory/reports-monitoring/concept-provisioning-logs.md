@@ -17,12 +17,12 @@ ms.date: 1/19/2021
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c7d02b48d30fa558f8fd12f92705046dab74057
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: deab3460baf9c46e2a3073eb41b738b0e7ad586f
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624243"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98726309"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>Etablering av rapporter i Azure Active Directory portal (för hands version)
 
@@ -43,12 +43,12 @@ I det här avsnittet får du en översikt över etablerings loggarna. De ger sva
 * Vilka användare har tagits bort från Adobe?
 * Vilka användare från Workday har skapats i Active Directory? 
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 ### <a name="who-can-access-the-data"></a>Vem som kan komma åt data?
 * Program ägare kan visa loggar för program som de äger
 * Användare i rollerna säkerhets administratör, säkerhets läsare, rapport läsare, program administratör och moln program administratör
-* Användare i en anpassad roll med [provisioningLogs-behörighet](https://docs.microsoft.com/azure/active-directory/roles/custom-enterprise-app-permissions#full-list-of-permissions)
+* Användare i en anpassad roll med [provisioningLogs-behörighet](../roles/custom-enterprise-app-permissions.md#full-list-of-permissions)
 * Globala administratörer
 
 
@@ -102,7 +102,7 @@ Du kan filtrera dina etablerings data. Vissa filter värden fylls i dynamiskt ba
 I standardvyn kan du välja följande filter:
 
 - Identitet
-- Date
+- Datum
 - Status
 - Action
 
@@ -279,7 +279,7 @@ Nu kan du analysera data per scenario. Här följer några exempel:
 
 Använd tabellen nedan för att bättre förstå hur du löser fel som du kan hitta i etablerings loggarna. För felkoder som saknas ger du feedback med hjälp av länken längst ned på sidan. 
 
-|Felkod|Description|
+|Felkod|Beskrivning|
 |---|---|
 |Konflikt, EntryConflict|Korrigera attributvärdena i konflikt antingen i Azure AD eller i programmet eller granska konfigurationen av matchande attribut om det användar konto som står i konflikt skulle matchas och tas över. Läs följande [dokumentation](../app-provisioning/customize-application-attributes.md) om du vill ha mer information om hur du konfigurerar matchande attribut.|
 |TooManyRequests|Mål appen avvisade det här försöket att uppdatera användaren eftersom den är överbelastad och tar emot för många begär Anden. Det finns inget att göra. Detta försök kommer automatiskt att dras tillbaka. Microsoft har också fått ett meddelande om det här problemet.|

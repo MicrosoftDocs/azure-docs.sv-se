@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f65ab02e06319519548eaa2c02120691a0ceef02
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 64fe4b8c217ec46cbb6dd046339c3ac65eebb121
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498565"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724685"
 ---
 # <a name="build-resilience-in-your-identity-and-access-management-infrastructure"></a>Bygg återhämtning i din infrastruktur för identitets-och åtkomst hantering
 
@@ -32,7 +32,7 @@ Dokument uppsättningen är utformad för
 
 * Identitets drifts team
 
-Läs även dokumentationen för [programutvecklare](https://aka.ms/azureadresilience/developer) och för [Azure AD B2C system](resilience-b2c.md).
+Läs även dokumentationen för [programutvecklare](./resilience-app-development-overview.md) och för [Azure AD B2C system](resilience-b2c.md).
 
 ## <a name="what-is-resilience"></a>Vad är återhämtning?
 
@@ -44,7 +44,7 @@ Varje anrop till Authentication system är beroende av avbrott om någon del av 
 
 I ett tokenbaserat autentiseringsprotokoll som Azure AD, måste en användares program (klient) Hämta en säkerhetstoken från identitets systemet innan den kan komma åt ett program eller en annan resurs. Under giltighets perioden kan en klient presentera samma token flera gånger för att få åtkomst till programmet.
 
-När den token som visas för programmet upphör att gälla avvisar programmet token och klienten måste skaffa en ny token från Azure AD. Att förvärva en ny token kan kräva användar interaktion, t. ex. autentiseringsuppgifter för autentiseringsuppgifter eller för att uppfylla andra krav för autentiserings systemet. Att minska frekvensen för autentiserings anrop med längre livs längds tokens minskar onödig interaktion. Du måste dock balansera token Life med den risk som skapats av färre princip utvärderingar. Mer information om hur du hanterar livs längd för token finns i den här artikeln om hur du [optimerar omautentiserings-prompter](https://docs.microsoft.com/azure/active-directory/authentication/concepts-azure-multi-factor-authentication-prompts-session-lifetime).
+När den token som visas för programmet upphör att gälla avvisar programmet token och klienten måste skaffa en ny token från Azure AD. Att förvärva en ny token kan kräva användar interaktion, t. ex. autentiseringsuppgifter för autentiseringsuppgifter eller för att uppfylla andra krav för autentiserings systemet. Att minska frekvensen för autentiserings anrop med längre livs längds tokens minskar onödig interaktion. Du måste dock balansera token Life med den risk som skapats av färre princip utvärderingar. Mer information om hur du hanterar livs längd för token finns i den här artikeln om hur du [optimerar omautentiserings-prompter](../authentication/concepts-azure-multi-factor-authentication-prompts-session-lifetime.md).
 
 ## <a name="ways-to-increase-resilience"></a>Sätt att öka återhämtningen
 I följande diagram visas sex konkreta sätt som du kan öka återhämtningen på. Varje metod beskrivs i detalj i artiklarna som är länkade i nästa steg i den här artikeln.

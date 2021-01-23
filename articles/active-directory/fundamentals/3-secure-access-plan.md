@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 40738f8fcb14c48ccfe3bc7869e5176c4ab63165
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 202f2190e68b89d790c628248ae89f0cb274ff76
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222338"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725219"
 ---
 # <a name="3-create-a-security-plan-for-external-access"></a>3. skapa ett säkerhets plan för extern åtkomst 
 
@@ -93,7 +93,7 @@ Inloggnings villkor konfigureras i [villkorlig åtkomst i Azure AD](../condition
 | Hög risk| Kräv MFA alltid för externa användare |
 
 
-Idag kan du [tillämpa Multi-Factor Authentication för B2B-användare i din klient organisation](https://docs.microsoft.com/azure/active-directory/external-identities/b2b-tutorial-require-mfa). 
+Idag kan du [tillämpa Multi-Factor Authentication för B2B-användare i din klient organisation](../external-identities/b2b-tutorial-require-mfa.md). 
 
 **Användar-och enhets beroende inloggnings villkor**.
 
@@ -106,11 +106,11 @@ Idag kan du [tillämpa Multi-Factor Authentication för B2B-användare i din kli
 
 I dag måste enheten vara registrerad eller ansluten till din klient om du vill använda enhets status som inmatade i en princip. 
 
-Det går att använda [riskbaserade principer för identitets skydd](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-policy-risk) . Men problem måste vara minimerade i användarens hem klient.
+Det går att använda [riskbaserade principer för identitets skydd](../conditional-access/howto-conditional-access-policy-risk.md) . Men problem måste vara minimerade i användarens hem klient.
 
-För [nätverks platser](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-policy-location)kan du begränsa åtkomsten till alla IP-adressintervall som du äger. Du kan använda det här alternativet om du bara vill att externa partners ska komma åt ett program när de finns på plats i din organisation.
+För [nätverks platser](../conditional-access/howto-conditional-access-policy-location.md)kan du begränsa åtkomsten till alla IP-adressintervall som du äger. Du kan använda det här alternativet om du bara vill att externa partners ska komma åt ett program när de finns på plats i din organisation.
 
-[Läs mer om principer för villkorlig åtkomst](https://docs.microsoft.com/azure/active-directory/conditional-access/overview).
+[Läs mer om principer för villkorlig åtkomst](../conditional-access/overview.md).
 
 ## <a name="document-access-review-policies"></a>Dokumentera åtkomst gransknings principer
 
@@ -126,15 +126,15 @@ Tänk på följande när dina principer kommer att anpassas efter dina behov:
 
 * **Åtkomst granskningar för rättighets hantering**. Använd funktionerna i rättighets hantering för att
 
-   * [Upphör automatiskt att gälla åtkomst paket](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-access-package-lifecycle-policy)och därmed externa användares åtkomst till de resurser som ingår.
+   * [Upphör automatiskt att gälla åtkomst paket](../governance/entitlement-management-access-package-lifecycle-policy.md)och därmed externa användares åtkomst till de resurser som ingår.
 
-   * Ange en [nödvändig gransknings frekvens](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-access-reviews-create) för åtkomst granskningar.
+   * Ange en [nödvändig gransknings frekvens](../governance/entitlement-management-access-reviews-create.md) för åtkomst granskningar.
 
-   * Om du använder [anslutna organisationer](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-organization) för att gruppera alla användare från en enda partner kan du schemalägga regelbundna granskningar med företags ägaren och partner representanten.
+   * Om du använder [anslutna organisationer](../governance/entitlement-management-organization.md) för att gruppera alla användare från en enda partner kan du schemalägga regelbundna granskningar med företags ägaren och partner representanten.
 
-* **Microsoft 365 grupper**. Ange en [förfallo princip för grupp](https://docs.microsoft.com/microsoft-365/solutions/microsoft-365-groups-expiration-policy?view=o365-worldwide) för Microsoft 365 grupper som externa användare ska bjudas in till. 
+* **Microsoft 365 grupper**. Ange en [förfallo princip för grupp](/microsoft-365/solutions/microsoft-365-groups-expiration-policy?view=o365-worldwide) för Microsoft 365 grupper som externa användare ska bjudas in till. 
 
-* **Andra alternativ**. Om externa användare har åtkomst utanför behörighets hanterings paket eller Microsoft 365 grupper, ställer du in affärs processen för att granska när konton ska göras inaktiva eller borttagna. Exempel:
+* **Andra alternativ**. Om externa användare har åtkomst utanför behörighets hanterings paket eller Microsoft 365 grupper, ställer du in affärs processen för att granska när konton ska göras inaktiva eller borttagna. Ett exempel:
 
    * Ta bort inloggnings möjligheten för alla konton som inte är inloggade på i för 90 dagar.
 
@@ -146,9 +146,9 @@ Tänk på följande när dina principer kommer att anpassas efter dina behov:
 
 Nu när du vet vad du vill kontrol lera åtkomsten till, hur dessa till gångar ska grupperas för vanlig åtkomst och nödvändiga inloggnings-och åtkomst gransknings principer, kan du välja hur du vill utföra ditt abonnemang. 
 
-Vissa funktioner, till exempel [rättighets hantering](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-overview), är bara tillgängliga med en Azure AD Premium 2-licenser (P2). Microsoft 365 E5-och Office 365 E5-licenser är Azure AD P2-licenser. 
+Vissa funktioner, till exempel [rättighets hantering](../governance/entitlement-management-overview.md), är bara tillgängliga med en Azure AD Premium 2-licenser (P2). Microsoft 365 E5-och Office 365 E5-licenser är Azure AD P2-licenser. 
 
-Andra kombinationer av Microsoft 365, Office 365 och Azure AD möjliggör också vissa funktioner för att hantera externa användare. Se [Information Protection](https://docs.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-365-security-compliance-licensing-guidance) för mer information.
+Andra kombinationer av Microsoft 365, Office 365 och Azure AD möjliggör också vissa funktioner för att hantera externa användare. Se [Information Protection](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-365-security-compliance-licensing-guidance) för mer information.
 
 > [!NOTE]
 > Licenser per användare. Därför kan du ha specifika användare, inklusive administratörer och företags ägare, delegerad åtkomst kontroll på Azure AD P2-eller Microsoft 365 E5-nivå utan att aktivera dessa licenser för alla användare. Dina första 50 000 externa användare är kostnads fria. Om du inte aktiverar P2-licenser för andra interna användare kan de inte använda funktioner för hantering av rättigheter som åtkomst paket. 
@@ -180,7 +180,7 @@ Azure AD P2 och Microsoft 365 E5 har en komplett uppsättning verktyg för säke
 
 ### <a name="entitlement-management"></a>Hantering av rättigheter 
 
-[Hanterings paket för rättighets hantering](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-access-package-create) möjliggör etablering och avetablering av åtkomst till grupper och team, program och SharePoint-webbplatser. Du kan definiera vilka anslutna organisationer som får åtkomst, om självbetjänings begär Anden tillåts och vilka arbets flöden för godkännande som krävs (om det finns några) för att bevilja åtkomst. För att säkerställa att åtkomsten inte hålls runt längre än nödvändigt kan du definiera förfallo principer och åtkomst granskningar för varje Access-paket. 
+[Hanterings paket för rättighets hantering](../governance/entitlement-management-access-package-create.md) möjliggör etablering och avetablering av åtkomst till grupper och team, program och SharePoint-webbplatser. Du kan definiera vilka anslutna organisationer som får åtkomst, om självbetjänings begär Anden tillåts och vilka arbets flöden för godkännande som krävs (om det finns några) för att bevilja åtkomst. För att säkerställa att åtkomsten inte hålls runt längre än nödvändigt kan du definiera förfallo principer och åtkomst granskningar för varje Access-paket. 
 
  
 

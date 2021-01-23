@@ -11,17 +11,17 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/08/2020
-ms.openlocfilehash: be966a651df0c896ac7e1973d7783bb7fb686be3
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 3a02876234d43df2e98a3a4e60453fc3f1f74ef6
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676494"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724177"
 ---
 # <a name="import-or-export-an-azure-sql-database-without-allowing-azure-services-to-access-the-server"></a>Importera eller exportera en Azure SQL Database utan att ge Azure-tjänster åtkomst till servern
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-I den här artikeln beskrivs hur du importerar eller exporterar en Azure SQL Database när *Tillåt att Azure-tjänster* är inställt på på servern. *OFF* Arbets flödet använder en virtuell Azure-dator för att köra SqlPackage för att utföra import-eller export åtgärden.
+I den här artikeln beskrivs hur du importerar eller exporterar en Azure SQL Database när *Tillåt att Azure-tjänster* är inställt på på servern.  Arbets flödet använder en virtuell Azure-dator för att köra SqlPackage för att utföra import-eller export åtgärden.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logga in på Azure Portal
 
@@ -46,22 +46,22 @@ Följande steg visar hur du ansluter till den virtuella datorn via en fjärr skr
 
    ![Skärm bild som visar en översikts sida för virtuell dator med knappen Anslut.](./media/database-import-export-azure-services-off/vm.png)  
 
-2. Välj **Anslut** .
+2. Välj **Anslut**.
 
    En Remote Desktop Protocol fil (. RDP-fil) visas med den offentliga IP-adressen och port numret för den virtuella datorn.
 
    ![RDP-formulär](./media/database-import-export-azure-services-off/rdp.png)  
 
-3. Välj **Hämta RDP-fil** .
+3. Välj **Hämta RDP-fil**.
 
    > [!NOTE]
    > Du kan också använda SSH för att ansluta till din virtuella dator.
 
 4. Stäng formuläret **Anslut till virtuell dator** .
 5. Öppna den hämtade RDP-filen för att ansluta till den virtuella datorn.
-6. När du uppmanas väljer du **Anslut** . På en Mac-dator behöver du en RDP-klient som denna [Fjärrskrivbordsklient](https://apps.apple.com/app/microsoft-remote-desktop-10/id1295203466?mt=12) från Mac App Store.
+6. När du uppmanas väljer du **Anslut**. På en Mac-dator behöver du en RDP-klient som denna [Fjärrskrivbordsklient](https://apps.apple.com/app/microsoft-remote-desktop-10/id1295203466?mt=12) från Mac App Store.
 
-7. Ange det användar namn och lösen ord som du angav när du skapade den virtuella datorn och välj sedan **OK** .
+7. Ange det användar namn och lösen ord som du angav när du skapade den virtuella datorn och välj sedan **OK**.
 
 8. Du kan få en certifikatvarning under inloggningen. Välj **Ja** eller **Fortsätt** för att fortsätta med anslutningen.
 
@@ -77,7 +77,7 @@ Lägg till den virtuella datorns offentliga IP-adress i serverns brand vägg.
 
 Följande steg skapar en IP-brandväggsregel på server nivå för den virtuella datorns offentliga IP-adress och möjliggör anslutning från den virtuella datorn.
 
-1. Välj **SQL-databaser** på den vänstra menyn och välj sedan databasen på sidan SQL- **databaser** . Översikts sidan för databasen öppnas och visar det fullständigt kvalificerade Server namnet (till exempel **servername.Database.Windows.net** ) och alternativ för ytterligare konfiguration.
+1. Välj **SQL-databaser** på den vänstra menyn och välj sedan databasen på sidan SQL- **databaser** . Översikts sidan för databasen öppnas och visar det fullständigt kvalificerade Server namnet (till exempel **servername.Database.Windows.net**) och alternativ för ytterligare konfiguration.
 
 2. Kopiera det här fullständigt kvalificerade Server namnet som ska användas när du ansluter till servern och dess databaser.
 
@@ -89,9 +89,9 @@ Följande steg skapar en IP-brandväggsregel på server nivå för den virtuella
 
 4. Välj **Lägg till klient-IP** i verktygsfältet för att lägga till den virtuella datorns offentliga IP-adress till en ny regel för IP-brandvägg på server nivå. Med en IP-brandväggsregel på servernivå kan du öppna port 1433 för en enskild IP-adress eller för ett IP-adressintervall.
 
-5. Välj **Spara** . En regel för IP-brandvägg på server nivå skapas för den virtuella datorns offentliga IP-adress som öppnar port 1433 på servern.
+5. Välj **Spara**. En regel för IP-brandvägg på server nivå skapas för den virtuella datorns offentliga IP-adress som öppnar port 1433 på servern.
 
-6. Stäng sidan **Brandväggsinställningar** .
+6. Stäng sidan **Brandväggsinställningar**.
 
 ## <a name="export-a-database-using-sqlpackage"></a>Exportera en databas med SqlPackage
 
@@ -147,7 +147,7 @@ Använd Azure Files om du vill uppnå bästa prestanda. SqlPackage fungerar med 
 
 Om du vill minska kostnaderna använder du Azure-blobbar som är mindre än en Premium Azure-filresurs. Du måste dock kopiera [. BACPAC-filen](/sql/relational-databases/data-tier-applications/data-tier-applications#bacpac) mellan blobben och det lokala fil systemet före import-eller export åtgärden. Det innebär att processen tar längre tid.
 
-För att ladda upp eller ladda ned. BACPAC-filer finns i [överföra data med AzCopy och Blob Storage](../../storage/common/storage-use-azcopy-blobs.md)och [överföra data med AzCopy och fil lagring](../../storage/common/storage-use-azcopy-files.md).
+För att ladda upp eller ladda ned. BACPAC-filer finns i [överföra data med AzCopy och Blob Storage](../../storage/common/storage-use-azcopy-v10.md#transfer-data)och [överföra data med AzCopy och fil lagring](../../storage/common/storage-use-azcopy-files.md).
 
 Beroende på din miljö kan du behöva [konfigurera Azure Storage brand väggar och virtuella nätverk](../../storage/common/storage-network-security.md).
 

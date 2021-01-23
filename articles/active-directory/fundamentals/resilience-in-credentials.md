@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b5fd5cf419adb137df5c578e3b17b88749215be5
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 399d2f71fa20d63dce89cf3be5c12ffd63264895
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919984"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724718"
 ---
 # <a name="build-resilience-with-credential-management"></a>Bygg återhämtning med hantering av autentiseringsuppgifter
 
@@ -61,7 +61,7 @@ Förutom individuell användar återhämtning som beskrivs ovan bör företag pl
 
 * Aktivera [synkronisering av lösen ords-hash](../hybrid/whatis-phs.md) för Hybrid konton som synkroniseras från Windows Server Active Directory. Det här alternativet kan aktive ras tillsammans med Federations tjänster som AD FS och det finns en gräns för om Federations tjänsten Miss lyckas.
 
-* [Analysera användningen av Multi-Factor Authentication-metoder](https://docs.microsoft.com/samples/azure-samples/azure-mfa-authentication-method-analysis/azure-mfa-authentication-method-analysis/) för att förbättra användarnas upplevelse.
+* [Analysera användningen av Multi-Factor Authentication-metoder](/samples/azure-samples/azure-mfa-authentication-method-analysis/azure-mfa-authentication-method-analysis/) för att förbättra användarnas upplevelse.
 
 * [Implementera en strategi för elastisk åtkomst kontroll](../authentication/concept-resilient-controls.md)
 

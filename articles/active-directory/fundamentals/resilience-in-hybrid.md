@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c45b362bc37df71346fc3b635c8ae4a51f62cdc
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: de01788c01d4d6dedd9563faaaac07bff30bbd97
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919915"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724767"
 ---
 # <a name="build-resilience-in-your-hybrid-architecture"></a>Bygg återhämtning i din hybrid arkitektur
 
@@ -82,7 +82,7 @@ Information om hur du implementerar direktautentisering finns i följande resurs
 
 Federationen innebär att en förtroende relation mellan Azure AD och Federations tjänsten skapas, vilket omfattar bytet av slut punkter, certifikat för tokensignering och andra metadata. När en begäran kommer till Azure AD läser den konfigurationen och omdirigerar användaren till de slut punkter som har kon figurer ATS. Vid det här tillfället agerar användaren med Federations tjänsten, som utfärdar en SAML-kontroll som verifieras av Azure AD. 
 
-Följande diagram visar en topologi för företags Active Directory Federation Services (AD FS) (AD FS), distribution som innehåller redundanta Federations-och Webbprogramproxy i flera lokala data Center. Den här konfigurationen är beroende av komponenter för företags nätverks infrastruktur som DNS, utjämning av nätverks belastning med funktioner för geo-tillhörighet, brand väggar osv. Alla lokala komponenter och anslutningar är utsatta för att Miss lyckas. Mer information finns i [dokumentationen för AD FS kapacitets planering](https://docs.microsoft.com/windows-server/identity/ad-fs/design/planning-for-ad-fs-server-capacity) .
+Följande diagram visar en topologi för företags Active Directory Federation Services (AD FS) (AD FS), distribution som innehåller redundanta Federations-och Webbprogramproxy i flera lokala data Center. Den här konfigurationen är beroende av komponenter för företags nätverks infrastruktur som DNS, utjämning av nätverks belastning med funktioner för geo-tillhörighet, brand väggar osv. Alla lokala komponenter och anslutningar är utsatta för att Miss lyckas. Mer information finns i [dokumentationen för AD FS kapacitets planering](/windows-server/identity/ad-fs/design/planning-for-ad-fs-server-capacity) .
 
 > [!NOTE]
 >  Federation har det högsta antalet lokala beroenden och därför de mest potentiella felen. Även om det här diagrammet visar AD FS, är andra lokala identitets leverantörer underkastade liknande design överväganden för att uppnå hög tillgänglighet, skalbarhet och redundans.
@@ -99,9 +99,9 @@ Om du implementerar en strategi för federerade autentisering eller vill göra d
 
 * [Kompatibilitetslista för Azure AD-federation](../hybrid/how-to-connect-fed-compatibility.md)
 
-* Följ [dokumentationen för AD FS kapacitets planering](https://docs.microsoft.com/windows-server/identity/ad-fs/design/planning-for-ad-fs-server-capacity)
+* Följ [dokumentationen för AD FS kapacitets planering](/windows-server/identity/ad-fs/design/planning-for-ad-fs-server-capacity)
 
-* [Distribuera AD FS i Azure IaaS](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/how-to-connect-fed-azure-adfs)
+* [Distribuera AD FS i Azure IaaS](/windows-server/identity/ad-fs/deployment/how-to-connect-fed-azure-adfs)
 
 * [Aktivera PHS](../hybrid/tutorial-phs-backup.md) tillsammans med din Federation
 

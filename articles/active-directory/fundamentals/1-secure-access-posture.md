@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6814cafcf6dafa6f007bdd9d3623d30ef079084
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 37c27e84f15a01a2d8832baae137518685de59a8
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222453"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725449"
 ---
 # <a name="determine-your-security-posture-for-external-access"></a>Bestäm din säkerhets position för extern åtkomst 
 
@@ -69,7 +69,7 @@ Oavsett vilket du använder för din organisation och scenarier behöver du:
 
 * **Kontrol lera åtkomsten till program, data och innehåll**. Detta kan åstadkommas via en mängd olika metoder, beroende på dina versioner av [Azure AD](https://azure.microsoft.com/pricing/details/active-directory/) och [Microsoft 365](https://www.microsoft.com/microsoft-365/compare-microsoft-365-enterprise-plans). 
 
-* **Minska angrepps ytan**. [Privileged Identity Management](../privileged-identity-management/pim-configure.md), [data förlust skydd (DLP)](https://docs.microsoft.com/exchange/security-and-compliance/data-loss-prevention/data-loss-prevention) och [krypterings funktioner](https://docs.microsoft.com/exchange/security-and-compliance/data-loss-prevention/data-loss-prevention) minskar attack ytan.
+* **Minska angrepps ytan**. [Privileged Identity Management](../privileged-identity-management/pim-configure.md), [data förlust skydd (DLP)](/exchange/security-and-compliance/data-loss-prevention/data-loss-prevention) och [krypterings funktioner](/exchange/security-and-compliance/data-loss-prevention/data-loss-prevention) minskar attack ytan.
 
 * **Granska regelbundet aktivitet och gransknings loggen för att bekräfta efterlevnad**. Det kan delegera åtkomst beslut till företags ägare via rättighets hantering medan åtkomst granskningar ger ett sätt att regelbundet bekräfta fortsatt åtkomst. Automatiserad data klassificering med känslighets etiketter hjälper till att automatisera kryptering av känsligt innehåll, vilket gör det enklare för slutanvändare av anställda att följa.
 
@@ -96,4 +96,3 @@ Se följande artiklar om hur du skyddar extern åtkomst till resurser. Vi rekomm
 9. [Säker åtkomst till Microsoft Teams, OneDrive och SharePoint](9-secure-access-teams-sharepoint.md)
  
 
- 

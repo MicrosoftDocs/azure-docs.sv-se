@@ -5,12 +5,12 @@ ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 4b649942a52c51aef0d6edd17b913f75e1fb247b
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: a1b621b5d5601e6d8bffef48e23d217e0eee1d6a
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98674175"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725827"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Automatisera resurs distributionen för din Function-app i Azure Functions
 
@@ -137,7 +137,7 @@ Function app-resursen definieras genom att använda en resurs av typen **Microso
 
 En Function-app måste innehålla följande program inställningar:
 
-| Inställningsnamn                 | Description                                                                               | Exempelvärden                        |
+| Inställningsnamn                 | Beskrivning                                                                               | Exempelvärden                        |
 |------------------------------|-------------------------------------------------------------------------------------------|---------------------------------------|
 | AzureWebJobsStorage          | En anslutnings sträng till ett lagrings konto som Functions runtime använder för intern kö | Se [lagrings konto](#storage)       |
 | FUNCTIONS_EXTENSION_VERSION  | Versionen av Azure Functions runtime                                                | `~3`                                  |
@@ -212,9 +212,11 @@ Om du uttryckligen definierar förbruknings planen måste du ange `serverFarmId`
 
 ### <a name="create-a-function-app"></a>Skapa en funktionsapp
 
+Inställningarna som krävs av en Function-app som körs i förbruknings planen skjuts upp mellan Windows och Linux. 
+
 #### <a name="windows"></a>Windows
 
-I Windows kräver en förbruknings plan två ytterligare inställningar i plats konfigurationen: `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` och `WEBSITE_CONTENTSHARE` . Dessa egenskaper konfigurerar lagrings kontot och fil Sök vägen där funktionens kod och konfiguration lagras.
+I Windows kräver en förbruknings plan ytterligare en inställning i plats konfigurationen: [`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](functions-app-settings.md#website_contentazurefileconnectionstring) . Den här egenskapen konfigurerar lagrings kontot där programmets kod och konfiguration lagras.
 
 ```json
 {
@@ -238,10 +240,6 @@ I Windows kräver en förbruknings plan två ytterligare inställningar i plats 
                     "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2019-06-01').keys[0].value)]"
                 },
                 {
-                    "name": "WEBSITE_CONTENTSHARE",
-                    "value": "[toLower(variables('functionAppName'))]"
-                },
-                {
                     "name": "FUNCTIONS_WORKER_RUNTIME",
                     "value": "node"
                 },
@@ -259,9 +257,12 @@ I Windows kräver en förbruknings plan två ytterligare inställningar i plats 
 }
 ```
 
+> [!IMPORTANT]
+> Ange inte [`WEBSITE_CONTENTSHARE`](functions-app-settings.md#website_contentshare) inställningen när den skapas åt dig när platsen först skapas.  
+
 #### <a name="linux"></a>Linux
 
-I Linux måste Function-appen ha `kind` inställningen inställd på `functionapp,linux` , och den måste ha `reserved` egenskapen inställd på `true` :
+I Linux måste Function-appen ha sin `kind` set to `functionapp,linux` och måste ha `reserved` egenskapen inställd på `true` . 
 
 ```json
 {
@@ -299,8 +300,9 @@ I Linux måste Function-appen ha `kind` inställningen inställd på `functionap
 }
 ```
 
-<a name="premium"></a>
+[`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](functions-app-settings.md#website_contentazurefileconnectionstring)Inställningarna och [`WEBSITE_CONTENTSHARE`](functions-app-settings.md#website_contentshare) stöds inte i Linux.
 
+<a name="premium"></a>
 ## <a name="deploy-on-premium-plan"></a>Distribuera i Premium-plan
 
 Premium-planen ger samma skalning som förbruknings planen men innehåller dedikerade resurser och ytterligare funktioner. Läs mer i [Azure Functions Premium-plan](./functions-premium-plan.md).
@@ -332,7 +334,7 @@ En Premium-plan är en särskild typ av "Server klustret"-resurs. Du kan ange de
 
 ### <a name="create-a-function-app"></a>Skapa en funktionsapp
 
-En Function-app i en Premium-plan måste ha `serverFarmId` egenskapen inställd på resurs-ID för den plan som skapades tidigare. Dessutom kräver en Premium-prenumeration två ytterligare inställningar i plats konfigurationen: `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` och `WEBSITE_CONTENTSHARE` . Dessa egenskaper konfigurerar lagrings kontot och fil Sök vägen där funktionens kod och konfiguration lagras.
+En Function-app i en Premium-plan måste ha `serverFarmId` egenskapen inställd på resurs-ID för den plan som skapades tidigare. Dessutom kräver en Premium-prenumeration ytterligare en inställning i plats konfigurationen: [`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](functions-app-settings.md#website_contentazurefileconnectionstring) . Den här egenskapen konfigurerar lagrings kontot där programmets kod och konfiguration lagras.
 
 ```json
 {
@@ -358,10 +360,6 @@ En Function-app i en Premium-plan måste ha `serverFarmId` egenskapen inställd 
                     "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2019-06-01').keys[0].value)]"
                 },
                 {
-                    "name": "WEBSITE_CONTENTSHARE",
-                    "value": "[toLower(variables('functionAppName'))]"
-                },
-                {
                     "name": "FUNCTIONS_WORKER_RUNTIME",
                     "value": "node"
                 },
@@ -378,6 +376,8 @@ En Function-app i en Premium-plan måste ha `serverFarmId` egenskapen inställd 
     }
 }
 ```
+> [!IMPORTANT]
+> Ange inte [`WEBSITE_CONTENTSHARE`](functions-app-settings.md#website_contentshare) inställningen när den skapas åt dig när platsen först skapas.  
 
 <a name="app-service-plan"></a>
 

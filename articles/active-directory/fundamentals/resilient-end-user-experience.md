@@ -13,12 +13,12 @@ ms.reviewer: ''
 ms.date: 11/30/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c695466fbd50435a85c63842ceb50ce80765760
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: f6896a812ec173994a1299a28ff2e99a0f351391
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97630300"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724449"
 ---
 # <a name="resilient-end-user-experience"></a>Elastisk slut användar upplevelse
 
@@ -34,19 +34,19 @@ Användar upplevelsen för registrering och inloggning består av följande elem
 
 ## <a name="choose-between-user-flow-and-custom-policy"></a>Välj mellan användar flöde och anpassad princip  
 
-För att hjälpa dig att skapa de vanligaste identitets uppgifterna tillhandahåller Azure AD B2C inbyggda [användar flöden](https://docs.microsoft.com/azure/active-directory-b2c/user-flow-overview)som kan konfigureras. Du kan också bygga egna [anpassade principer](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)som ger dig maximal flexibilitet. Vi rekommenderar dock att du bara använder anpassade principer för att hantera komplexa scenarier.
+För att hjälpa dig att skapa de vanligaste identitets uppgifterna tillhandahåller Azure AD B2C inbyggda [användar flöden](../../active-directory-b2c/user-flow-overview.md)som kan konfigureras. Du kan också bygga egna [anpassade principer](../../active-directory-b2c/custom-policy-overview.md)som ger dig maximal flexibilitet. Vi rekommenderar dock att du bara använder anpassade principer för att hantera komplexa scenarier.
 
 ### <a name="how-to-decide-between-user-flow-and-custom-policy"></a>Bestämma mellan användar flöden och anpassade principer
 
 Välj inbyggda användar flöden om dina affärs behov kan uppfyllas av dem. Eftersom vi har testat av Microsoft kan du minimera den testning som krävs för att verifiera funktions-, prestanda-eller skalnings funktioner på princip nivå för dessa identitets användar flöden. Du behöver fortfarande testa dina program för funktioner, prestanda och skalning.
 
-Om du [väljer anpassade principer](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started) på grund av dina affärs behov bör du kontrol lera att du utför tester på princip nivå för att fungera, prestanda eller skala utöver program nivå testning.
+Om du [väljer anpassade principer](../../active-directory-b2c/custom-policy-get-started.md) på grund av dina affärs behov bör du kontrol lera att du utför tester på princip nivå för att fungera, prestanda eller skala utöver program nivå testning.
 
-Se artikeln som [Jämför användar flöden och anpassade principer](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview#comparing-user-flows-and-custom-policies) som hjälper dig att bestämma.
+Se artikeln som [Jämför användar flöden och anpassade principer](../../active-directory-b2c/custom-policy-overview.md#comparing-user-flows-and-custom-policies) som hjälper dig att bestämma.
 
 ## <a name="choose-multiple-idps"></a>Välj flera IDP: er
 
-När du använder en [extern identitetsprovider](https://docs.microsoft.com/azure/active-directory-b2c/technical-overview#external-identity-providers) , till exempel Facebook, måste du ha en reserv plan om den externa providern blir otillgänglig.
+När du använder en [extern identitetsprovider](../../active-directory-b2c/technical-overview.md#external-identity-providers) , till exempel Facebook, måste du ha en reserv plan om den externa providern blir otillgänglig.
 
 ### <a name="how-to-set-up-multiple-idps"></a>Så här konfigurerar du flera IDP: er
 
@@ -58,11 +58,11 @@ Som en del av registrerings processen för extern identitetsprovider, inkludera 
 
  2. Konfigurera en profil princip så att användare kan [koppla den andra identiteten till sitt konto](https://github.com/Azure-Samples/active-directory-b2c-advanced-policies/tree/master/account-linking) när de loggar in.
 
- 3. Meddela och Tillåt användare att [Växla till en alternativ IDP](https://docs.microsoft.com/azure/active-directory-b2c/customize-ui-with-html#configure-dynamic-custom-page-content-uri) under ett avbrott.
+ 3. Meddela och Tillåt användare att [Växla till en alternativ IDP](../../active-directory-b2c/customize-ui-with-html.md#configure-dynamic-custom-page-content-uri) under ett avbrott.
 
 ## <a name="availability-of-multi-factor-authentication"></a>Tillgänglighet för Multi-Factor Authentication
 
-När du använder en [telefon tjänst för Multi-Factor Authentication (MFA)](https://docs.microsoft.com/azure/active-directory-b2c/phone-authentication)ser du till att du funderar på en alternativ tjänst leverantör. Den lokala Telco eller telefon tjänst leverantören kan uppleva avbrott i tjänsten.
+När du använder en [telefon tjänst för Multi-Factor Authentication (MFA)](../../active-directory-b2c/phone-authentication.md)ser du till att du funderar på en alternativ tjänst leverantör. Den lokala Telco eller telefon tjänst leverantören kan uppleva avbrott i tjänsten.
 
 ### <a name="how-to-choose-an-alternate-mfa"></a>Så här väljer du ett alternativt MFA  
 

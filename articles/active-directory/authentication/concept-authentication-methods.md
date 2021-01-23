@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 12/14/2020
+ms.date: 01/22/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 24b29cfb1f58a61193f67ba924e583d4264dfc51
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 1459dd41fcdc30a29a5f9f93ec9704083767a342
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562131"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725679"
 ---
 # <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Vilka autentiserings- och verifieringsmetoder är tillgängliga i Azure Active Directory?
 
@@ -40,14 +40,14 @@ Följande tabell beskriver säkerhets överväganden för tillgängliga autentis
 
 | Autentiseringsmetod          | Säkerhet | Användbarhet | Tillgänglighet |
 |--------------------------------|:--------:|:---------:|:------------:|
-| Windows Hello för företag     | Hög     | Hög      | Hög         |
-| Microsoft Authenticator-appen    | Hög     | Hög      | Hög         |
-| Säkerhets nyckel för FIDO2 (för hands version)   | Hög     | Hög      | Hög         |
-| OATH-token för maskin vara (för hands version) | Medel   | Medel    | Hög         |
-| OATH-programvaru-token           | Medel   | Medel    | Hög         |
+| Windows Hello för företag     | Högt     | Högt      | Högt         |
+| Microsoft Authenticator-appen    | Högt     | Högt      | Högt         |
+| Säkerhets nyckel för FIDO2 (för hands version)   | Högt     | Högt      | Högt         |
+| OATH-token för maskin vara (för hands version) | Medel   | Medel    | Högt         |
+| OATH-programvaru-token           | Medel   | Medel    | Högt         |
 | SMS                            | Medium   | Högt      | Medel       |
 | Röst                          | Medel   | Medel    | Medel       |
-| Lösenord                       | Lågt      | Högt      | Hög         |
+| Lösenord                       | Lågt      | Högt      | Högt         |
 
 För den senaste informationen om säkerhet, Se våra blogg inlägg:
 
@@ -65,14 +65,14 @@ Följande tabell beskriver när du kan använda en autentiseringsmetod under en 
 
 | Metod                         | Primär autentisering | Sekundär autentisering  |
 |--------------------------------|:----------------------:|:-------------------------:|
-| Windows Hello för företag     | Yes                    | Multifaktorautentisering                       |
+| Windows Hello för företag     | Ja                    | Multifaktorautentisering                       |
 | Microsoft Authenticator-appen    | Ja (för hands version)          | MFA och SSPR              |
-| Säkerhets nyckel för FIDO2 (för hands version)   | Yes                    | Multifaktorautentisering                       |
-| OATH-token för maskin vara (för hands version) | No                     | Multifaktorautentisering                       |
-| OATH-programvaru-token           | No                     | Multifaktorautentisering                       |
-| SMS                            | Ja (för hands version)          | MFA och SSPR              |
-| Röstsamtal                     | No                     | MFA och SSPR              |
-| Lösenord                       | Yes                    |                           |
+| Säkerhets nyckel för FIDO2 (för hands version)   | Ja                    | Multifaktorautentisering                       |
+| OATH-token för maskin vara (för hands version) | Nej                     | Multifaktorautentisering                       |
+| OATH-programvaru-token           | Nej                     | Multifaktorautentisering                       |
+| SMS                            | Ja                    | MFA och SSPR              |
+| Röstsamtal                     | Nej                     | MFA och SSPR              |
+| Lösenord                       | Ja                    |                           |
 
 Alla dessa autentiseringsmetoder kan konfigureras i Azure Portal och i allt större användning av [Microsoft Graph REST API beta](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta).
 
@@ -83,7 +83,7 @@ Mer information om hur varje autentiseringsmetod fungerar finns i följande arti
 * [Säkerhets nyckel för FIDO2 (för hands version)](concept-authentication-passwordless.md#fido2-security-keys)
 * [OATH-token för maskin vara (för hands version)](concept-authentication-oath-tokens.md#oath-hardware-tokens-preview)
 * [OATH-programvaru-token](concept-authentication-oath-tokens.md#oath-software-tokens)
-* SMS- [inloggning (för hands version)](howto-authentication-sms-signin.md) och [verifiering](concept-authentication-phone-options.md#mobile-phone-verification)
+* [SMS-inloggning](howto-authentication-sms-signin.md) och [verifiering](concept-authentication-phone-options.md#mobile-phone-verification)
 * [Verifiering av röst samtal](concept-authentication-phone-options.md)
 * Lösenord
 

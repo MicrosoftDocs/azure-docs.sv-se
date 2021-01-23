@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 18036644dc4df51bfacc5019f70ae7694757f753
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 218208891cccb4f606a574a9c1c09f30c4ac0b11
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222249"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725086"
 ---
 # <a name="secure-external-access-to-microsoft-teams-sharepoint-and-onedrive-for-business"></a>Säker extern åtkomst till Microsoft Teams, SharePoint och OneDrive för företag 
 
@@ -77,7 +77,7 @@ Det finns tre alternativ under samarbets begränsningar. Dina affärs krav avgö
 
 ## <a name="govern-access-in-teams"></a>Regler för åtkomst i Teams
 
-[Teamen skiljer sig mellan externa användare (någon utanför organisationen) och gäst användare (med gäst konton)](https://docs.microsoft.com/microsoftteams/communicate-with-users-from-other-organizations?WT.mc_id=TeamsAdminCenterCSH)). Du hanterar samarbets inställningen i [team administrations portalen](https://admin.teams.microsoft.com/company-wide-settings/external-communications) under Inställningar för hela organisationen. 
+[Teamen skiljer sig mellan externa användare (någon utanför organisationen) och gäst användare (med gäst konton)](/microsoftteams/communicate-with-users-from-other-organizations?WT.mc_id=TeamsAdminCenterCSH%e2%80%8b)). Du hanterar samarbets inställningen i [team administrations portalen](https://admin.teams.microsoft.com/company-wide-settings/external-communications) under Inställningar för hela organisationen. 
 
 > [!NOTE]
 > Inställningar för att samar beta med externa identiteter i Azure Active Directory kontrol lera de gällande behörigheterna. Du kan öka begränsningar i team, men inte minska dem från vad som anges i Azure AD.
@@ -88,13 +88,13 @@ Det finns tre alternativ under samarbets begränsningar. Dina affärs krav avgö
 
 Mer information om hur du hanterar extern åtkomst i team finns i följande resurser.
 
-* [Hantera extern åtkomst i Microsoft Teams](https://docs.microsoft.com/microsoftteams/manage-external-access)
+* [Hantera extern åtkomst i Microsoft Teams](/microsoftteams/manage-external-access)
 
-* [Microsoft 365 identitets modeller och Azure Active Directory](https://docs.microsoft.com/microsoft-365/enterprise/about-microsoft-365-identity?view=o365-worldwide)
+* [Microsoft 365 identitets modeller och Azure Active Directory](/microsoft-365/enterprise/about-microsoft-365-identity?view=o365-worldwide)
 
-* [Identitets modeller och autentisering för Microsoft Teams](https://docs.microsoft.com/MicrosoftTeams/identify-models-authentication)
+* [Identitets modeller och autentisering för Microsoft Teams](/MicrosoftTeams/identify-models-authentication)
 
-* [Känslighets etiketter för Microsoft Teams](https://docs.microsoft.com/MicrosoftTeams/sensitivity-labels)
+* [Känslighets etiketter för Microsoft Teams](/MicrosoftTeams/sensitivity-labels)
 
 ## <a name="govern-access-in-sharepoint-and-onedrive"></a>Styra åtkomst i SharePoint och OneDrive
 
@@ -102,9 +102,9 @@ SharePoint-administratörer har många inställningar som är tillgängliga för
 
 ### <a name="integrating-sharepoint-and-one-drive-with-azure-ad-b2b"></a>Integrera SharePoint och en enhet med Azure AD B2B
 
-Som en del av din övergripande strategi för att styra det externa samarbetet rekommenderar vi att du [aktiverar för hands versionen av SharePoint och OneDrive-integrering med Azure AD B2B](https://docs.microsoft.com/sharepoint/sharepoint-azureb2b-integration-preview) .
+Som en del av din övergripande strategi för att styra det externa samarbetet rekommenderar vi att du [aktiverar för hands versionen av SharePoint och OneDrive-integrering med Azure AD B2B](/sharepoint/sharepoint-azureb2b-integration-preview) .
 
-Azure AD B2B tillhandahåller autentisering och hantering av gäst användare. Med SharePoint och OneDrive-integrering används [Azure AD B2B eng ång slö sen ord](https://docs.microsoft.com/azure/active-directory/external-identities/one-time-passcode) för extern delning av filer, mappar, list objekt, dokument bibliotek och webbplatser. Den här funktionen ger en uppgraderad upplevelse från den befintliga [säkra externa delnings upplevelsen](https://docs.microsoft.com/sharepoint/what-s-new-in-sharing-in-targeted-release).
+Azure AD B2B tillhandahåller autentisering och hantering av gäst användare. Med SharePoint och OneDrive-integrering används [Azure AD B2B eng ång slö sen ord](../external-identities/one-time-passcode.md) för extern delning av filer, mappar, list objekt, dokument bibliotek och webbplatser. Den här funktionen ger en uppgraderad upplevelse från den befintliga [säkra externa delnings upplevelsen](/sharepoint/what-s-new-in-sharing-in-targeted-release).
 
 > [!NOTE]
 > Om du aktiverar för hands versionen av Azure AD B2B-integrering, omfattas SharePoint och OneDrive-delning av inställningarna för organisations relationer i Azure AD, till exempel att **medlemmar kan bjuda in** och **gäster kan bjuda in**.
@@ -171,9 +171,9 @@ Vi rekommenderar inte att du aktiverar alla länkar. Om du gör det rekommendera
 
 Om du vill veta mer om hur du styr extern åtkomst till SharePoint ser du följande:
 
-* [Översikt över SharePoint extern delning](https://docs.microsoft.com/sharepoint/external-sharing-overview)
+* [Översikt över SharePoint extern delning](/sharepoint/external-sharing-overview)
 
-* [SharePoint och OneDrive-integrering med Azure AD B2B](https://docs.microsoft.com/sharepoint/sharepoint-azureb2b-integration-preview)
+* [SharePoint och OneDrive-integrering med Azure AD B2B](/sharepoint/sharepoint-azureb2b-integration-preview)
 
 #### <a name="next-steps"></a>Nästa steg
 

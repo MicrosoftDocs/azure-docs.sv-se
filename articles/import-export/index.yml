@@ -1,5 +1,5 @@
 ### YamlMime:Landing
-title: Dokumentation om Azure import/export – online-överföring
+title: Dokumentation om Azure import/export
 summary: Använd Azure import/export för att på ett säkert sätt importera stora mängder data till Azure Blob Storage och Azure Files genom att leverera disk enheter till ett Azure-datacenter.
 metadata:
   title: Dokumentation om Azure import/export
@@ -12,12 +12,12 @@ metadata:
   author: v-dalc
   ms.author: alkohli
   ms.date: 01/08/201
-  ms.openlocfilehash: 5bccc4c64da4493e2f6d5e969949eb13df8bc1e7
-  ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+  ms.openlocfilehash: fe86eab66b0f03cb23072a7a34c4be161ca4fb38
+  ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
   ms.translationtype: MT
   ms.contentlocale: sv-SE
-  ms.lasthandoff: 01/22/2021
-  ms.locfileid: "98707940"
+  ms.lasthandoff: 01/23/2021
+  ms.locfileid: "98725745"
 landingContent:
 - title: Om import/export i Azure
   linkLists:

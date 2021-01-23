@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: faa334c21e23ecddad287846d34aaf0d72af66cc
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 6d476be7a417cfc31cca76d3409074aaaa281a56
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602192"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724618"
 ---
 # <a name="build-resilience-with-device-states"></a>Bygg återhämtning med enhets tillstånd
 
@@ -40,11 +40,11 @@ När en PRT används för att begära åtkomst till ett program, är dess enhet,
 
   Om det finns äldre versioner av Windows i din organisation uppgraderar du enheterna till Windows 10.
 
-* Standardisera användarens webb läsar åtkomst för att använda antingen [Microsoft Edge](https://docs.microsoft.com/deployedge/microsoft-edge-security-identity) eller Google Chrome med [stödda](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji) [tillägg](https://chrome.google.com/webstore/detail/office/ndjpnladcallmjemlbaebfadecfhkepb) som har aktiverat sömlös SSO till webb program med hjälp av PRT.
+* Standardisera användarens webb läsar åtkomst för att använda antingen [Microsoft Edge](/deployedge/microsoft-edge-security-identity) eller Google Chrome med [stödda](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji) [tillägg](https://chrome.google.com/webstore/detail/office/ndjpnladcallmjemlbaebfadecfhkepb) som har aktiverat sömlös SSO till webb program med hjälp av PRT.
 
-* För personliga eller företagsägda iOS-och Android-enheter distribuerar du [Microsoft Authenticator-appen](../user-help/user-help-auth-app-overview.md). Förutom Multi-Factor Authentication och lösen ords lös inloggnings funktioner, kommer Microsoft Authenticator-appen att aktivera enkel inloggning mellan interna program via [Broker-autentisering](../develop/brokered-auth.md) med färre autentiserings-prompter för slutanvändare.
+* För personliga eller företagsägda iOS-och Android-enheter distribuerar du [Microsoft Authenticator-appen](../user-help/user-help-auth-app-overview.md). Förutom Multi-Factor Authentication och lösen ords lös inloggnings funktioner, kommer Microsoft Authenticator-appen att aktivera enkel inloggning mellan interna program via [Broker-autentisering](../develop/msal-android-single-sign-on.md) med färre autentiserings-prompter för slutanvändare.
 
-* För personliga eller företagsägda iOS-och Android-enheter använder du [hantering av mobil program](https://docs.microsoft.com/mem/intune/apps/app-management) för att på ett säkert sätt få åtkomst till företags resurser med färre autentiseringsbegäranden. 
+* För personliga eller företagsägda iOS-och Android-enheter använder du [hantering av mobil program](/mem/intune/apps/app-management) för att på ett säkert sätt få åtkomst till företags resurser med färre autentiseringsbegäranden. 
 
 * [Använd Microsoft Enterprise SSO-plugin-programmet för Apple-enheter (för hands version)](../develop/apple-sso-plugin.md). Detta registrerar enheten och ger enkel inloggning mellan webbläsare och interna Azure AD-program. 
 

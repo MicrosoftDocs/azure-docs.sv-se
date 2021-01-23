@@ -14,12 +14,12 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: ''
 ms.date: 1/14/2020
-ms.openlocfilehash: d3bd63566daaf6e1d3e3343b5956d8a8d5fc8ea5
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: b73e72969a851428034499d447ecb162a61aa9ab
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98224520"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725794"
 ---
 # <a name="understand-and-resolve-azure-sql-database-blocking-problems"></a>Förstå och lösa Azure SQL Database spärrnings problem
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -345,7 +345,7 @@ Följande scenarier kommer att utökas i dessa scenarier.
     När du har skickat en fråga till servern måste alla program omedelbart hämta alla resultat rader för att kunna slutföras. Om ett program inte hämtar alla resultat rader, kan låsen vara kvar i tabellerna och blockera andra användare. Om du använder ett program som transparent skickar SQL-uttryck till servern måste programmet hämta alla resultat rader. Om det inte är (och om det inte kan konfigureras för det) kanske du inte kan lösa blockerings problemet. Du kan undvika problemet genom att begränsa dåligt ansvars program till rapporter eller databas för besluts support.
     
     > [!NOTE]
-    > Se [rikt linjer för omprövnings logik](/azure/azure-sql/database/troubleshoot-common-connectivity-issues#retry-logic-for-transient-errors) för program som ansluter till Azure SQL Database. 
+    > Se [rikt linjer för omprövnings logik](./troubleshoot-common-connectivity-issues.md#retry-logic-for-transient-errors) för program som ansluter till Azure SQL Database. 
     
     **Lösning**: programmet måste skrivas om för att hämta alla rader i resultatet till slut för ande. Detta gäller inte för att använda [förskjutning och hämta i order by-satsen](/sql/t-sql/queries/select-order-by-clause-transact-sql#using-offset-and-fetch-to-limit-the-rows-returned) i en fråga för att utföra växling på Server sidan.
 

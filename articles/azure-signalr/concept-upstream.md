@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 06/11/2020
 ms.author: chenyl
-ms.openlocfilehash: 33df4410b9dd82fd0b1c732eb03ab5e0e77e9869
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: 6752a9564dc0d9351d1c21f5be14eb626186ac0d
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763123"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724069"
 ---
 # <a name="upstream-settings"></a>Överordnade inställningar
 
@@ -40,7 +40,7 @@ Du kan Parameterisera webb adressen för att stödja olika mönster. Det finns t
 |kategori| En kategori kan vara något av följande värden: <ul><li>**anslutningar**: anslutnings livs längds händelser. Den utlöses när en klient anslutning ansluts eller kopplas från. Den innehåller anslutna och frånkopplade händelser.</li><li>**meddelanden**: utlöses när klienter anropar en nav-metod. Den innehåller alla andra händelser, förutom de i kategorin **anslutningar** .</li></ul>|
 |händelse| I kategorin **meddelanden** är en händelse målet i ett [anrops meddelande](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocation-message-encoding) som klienter skickar. För kategorin **anslutningar** används endast *anslutna* och *frånkopplade* .|
 
-Dessa fördefinierade parametrar kan användas i URL-mönstret. Parametrarna ersätts med ett angivet värde när du utvärderar den överordnade URL: en. Exempel: 
+Dessa fördefinierade parametrar kan användas i URL-mönstret. Parametrarna ersätts med ett angivet värde när du utvärderar den överordnade URL: en. Ett exempel: 
 ```
 http://host.com/{hub}/api/{category}/{event}
 ```
@@ -59,7 +59,7 @@ URL: en för överordnad är inte kryptering i vilo läge. Om du har känslig in
 
 1. Lägg till en tilldelad identitet eller användardefinierad identitet. Se [hur du lägger till hanterad identitet i Azure Portal](./howto-use-managed-identity.md#add-a-system-assigned-identity)
 
-2. Bevilja hemlig Läs behörighet för den hanterade identiteten i åtkomst principerna i Key Vault. Se [tilldela en princip för Key Vault åtkomst med hjälp av Azure Portal](https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal)
+2. Bevilja hemlig Läs behörighet för den hanterade identiteten i åtkomst principerna i Key Vault. Se [tilldela en princip för Key Vault åtkomst med hjälp av Azure Portal](../key-vault/general/assign-access-policy-portal.md)
 
 3. Ersätt din känsliga text med syntaxen `{@Microsoft.KeyVault(SecretUri=<secret-identity>)}` i uppströms URL-mönstret.
 
@@ -136,7 +136,7 @@ POST
 
 ### <a name="request-header"></a>Begärandehuvud
 
-|Namn |Beskrivning|
+|Name |Beskrivning|
 |---------|---------|
 |X-ASRS-Connection-ID |Anslutnings-ID för klient anslutningen.|
 |X-ASRS – hubb |Hubben som klient anslutningen tillhör.|
