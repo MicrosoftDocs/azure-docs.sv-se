@@ -12,12 +12,12 @@ ms.date: 01/20/2021
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperf-fy21q3
-ms.openlocfilehash: 6b46a5ea71bf8c9705ffc3bc51ea48f4b0c28502
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 6f8fdb23222944eab4742d1e972280e1e27e30a3
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98660771"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98728522"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Självstudie: Lägg till ett lokalt program för fjärråtkomst via Application Proxy i Azure Active Directory
 
@@ -36,7 +36,7 @@ I den här självstudien:
 > * Lägger till ett lokalt program till Azure AD-klientorganisationen
 > * Verifierar att en test användare kan logga in på programmet med hjälp av ett Azure AD-konto
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Om du vill lägga till ett lokalt program i Azure AD behöver du:
 
@@ -97,7 +97,7 @@ Aktivera TLS 1.2:
 1. Starta om servern.
 
 > [!Note]
-> Microsoft uppdaterar Azure-tjänster för att använda TLS-certifikat från en annan uppsättning rot certifikat utfärdare (ca: er). Den här ändringen görs eftersom de aktuella CA-certifikaten inte uppfyller något av kraven för CA/webbläsarens forum bas linje. Se [ändringar i Azure TLS-certifikat](https://docs.microsoft.com/azure/security/fundamentals/tls-certificate-changes) för mer information.
+> Microsoft uppdaterar Azure-tjänster för att använda TLS-certifikat från en annan uppsättning rot certifikat utfärdare (ca: er). Den här ändringen görs eftersom de aktuella CA-certifikaten inte uppfyller något av kraven för CA/webbläsarens forum bas linje. Se [ändringar i Azure TLS-certifikat](../../security/fundamentals/tls-certificate-changes.md) för mer information.
 
 ## <a name="prepare-your-on-premises-environment"></a>Förbered din lokala miljö
 

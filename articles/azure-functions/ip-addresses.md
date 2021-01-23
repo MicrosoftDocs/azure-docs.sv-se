@@ -3,12 +3,12 @@ title: IP-adresser i Azure Functions
 description: Lär dig hur du hittar inkommande och utgående IP-adresser för Function-appar och vad som gör att de ändras.
 ms.topic: conceptual
 ms.date: 12/03/2018
-ms.openlocfilehash: 291a1cda7b8a2acc5426ea255519e1c2e58a2d7c
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: fcc92e61e180d25bc67d5ca3f9e2bff4af01fd3f
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936727"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98726739"
 ---
 # <a name="ip-addresses-in-azure-functions"></a>IP-adresser i Azure Functions
 
@@ -27,8 +27,7 @@ Varje Function-app har en enda inkommande IP-adress. Så här hittar du IP-adres
 
 1. Logga in på [Azure-portalen](https://portal.azure.com).
 2. Navigera till Function-appen.
-3. Välj **plattforms funktioner**.
-4. Välj **Egenskaper** så visas den inkommande IP-adressen under **virtuell IP-adress**.
+3. Under **Inställningar** väljer du **Egenskaper**. Den inkommande IP-adressen visas under **virtuell IP-adress**.
 
 ## <a name="function-app-outbound-ip-addresses"></a><a name="find-outbound-ip-addresses"></a>Funktion app utgående IP-adresser
 

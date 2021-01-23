@@ -5,19 +5,19 @@ services: container-service
 manager: gwallace
 ms.topic: article
 ms.date: 10/19/2020
-ms.openlocfilehash: fa81e293bc5e53a852bdb404f9e6d41c4297647b
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: c30051008474a32ae6c847ee3f840c8ae35b469b
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93349043"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98726821"
 ---
 # <a name="reduce-latency-with-proximity-placement-groups"></a>Minska latens med närhets placerings grupper
 
 > [!Note]
 > När du använder närhets placerings grupper på AKS gäller samplaceringen endast för agent-noderna. Noden till noden och motsvarande värdbaserade Pod till Pod-fördröjningen har förbättrats. Samplaceringen påverkar inte placeringen av ett klusters kontroll plan.
 
-När du distribuerar ditt program i Azure skapar spridning av virtuella datorer i regioner och tillgänglighets zoner nätverks svars tid, vilket kan påverka programmets övergripande prestanda. En närhets placerings grupp är en logisk gruppering som används för att se till att Azure Compute-resurser är fysiskt placerade nära varandra. Vissa program som spel, teknik simuleringar och handel med hög frekvens (HFT) kräver låg latens och uppgifter som slutförs snabbt. För högpresterande data behandlings scenarier (HPC), till exempel dessa, bör du överväga att använda [närhets placerings grupper](../virtual-machines/linux/co-location.md#proximity-placement-groups) (PPG) för klustrets noder.
+När du distribuerar ditt program i Azure skapar spridning av virtuella datorer i regioner och tillgänglighets zoner nätverks svars tid, vilket kan påverka programmets övergripande prestanda. En närhets placerings grupp är en logisk gruppering som används för att se till att Azure Compute-resurser är fysiskt placerade nära varandra. Vissa program som spel, teknik simuleringar och handel med hög frekvens (HFT) kräver låg latens och uppgifter som slutförs snabbt. För högpresterande data behandlings scenarier (HPC), till exempel dessa, bör du överväga att använda [närhets placerings grupper](../virtual-machines/co-location.md#proximity-placement-groups) (PPG) för klustrets noder.
 
 ## <a name="before-you-begin"></a>Innan du börjar
 
@@ -133,7 +133,7 @@ az group delete --name myResourceGroup --yes --no-wait
 [nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
-[proximity-placement-groups]: ../virtual-machines/linux/co-location.md#proximity-placement-groups
+[proximity-placement-groups]: ../virtual-machines/co-location.md#proximity-placement-groups
 [az-aks-create]: /cli/azure/aks#az-aks-create
 [system-pool]: ./use-system-pools.md
 [az-aks-nodepool-add]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-add

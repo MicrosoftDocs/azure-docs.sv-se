@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/09/2020
 ms.author: jeedes
-ms.openlocfilehash: f071159b8e1a25776fad5e662f4ea18573764a89
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 480e501f8683fad405abc5e07cb43eec8ae8444c
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97365094"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98727920"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-burp-suite-enterprise-edition"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med burp Suite Enterprise Edition
 
@@ -26,7 +26,7 @@ I den här självstudien får du lära dig att integrera burp Suite Enterprise E
 * Gör det möjligt för användarna att logga in automatiskt till burp Suite Enterprise Edition med sina Azure AD-konton.
 * Hantera dina konton på en central plats – Azure Portal.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 För att komma igång behöver du följande objekt:
 
@@ -94,9 +94,9 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 1. Utöver ovan förväntar sig burp Suite Enterprise Edition att fler attribut skickas tillbaka i SAML-svar som visas nedan. Dessa attribut är också förifyllda, men du kan granska dem efter behov.
 
 
-    | Namn | Källattribut|
+    | Name | Källattribut|
     | ---------------| --------------- |    
-    | Grupp | användare. grupper |
+    | Group | användare. grupper |
 
 1. På sidan **Konfigurera enkel inloggning med SAML** , i avsnittet **SAML-signeringscertifikat** , Sök efter **certifikat (base64)** och välj **Ladda ned** för att ladda ned certifikatet och spara det på din dator.
 
@@ -144,9 +144,9 @@ I det här avsnittet ska du testa Azure AD-konfigurationen för enkel inloggning
 
 * Klicka på testa det här programmet i Azure Portal och du bör logga in automatiskt till den burp Suite Enterprise-utgåva som du ställer in SSO för.
 
-* Du kan använda Microsoft Mina appar. När du klickar på panelen burp Suite Enterprise Edition i Mina appar, bör du loggas in automatiskt till den burp Suite Enterprise-utgåva som du konfigurerade SSO för. Mer information om Mina appar finns i [Introduktion till Mina appar](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* Du kan använda Microsoft Mina appar. När du klickar på panelen burp Suite Enterprise Edition i Mina appar, bör du loggas in automatiskt till den burp Suite Enterprise-utgåva som du konfigurerade SSO för. Mer information om Mina appar finns i [Introduktion till Mina appar](../user-help/my-apps-portal-end-user-access.md).
 
 
 ## <a name="next-steps"></a>Nästa steg
 
-När du har konfigurerat burp Suite Enterprise Edition kan du genomdriva session Control, som skyddar exfiltrering och intrånget för organisationens känsliga data i real tid. Kontroll av sessionen sträcker sig från villkorlig åtkomst. [Lär dig hur du tvingar fram en session med Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+När du har konfigurerat burp Suite Enterprise Edition kan du genomdriva session Control, som skyddar exfiltrering och intrånget för organisationens känsliga data i real tid. Kontroll av sessionen sträcker sig från villkorlig åtkomst. [Lär dig hur du tvingar fram en session med Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).

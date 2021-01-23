@@ -7,12 +7,12 @@ ms.date: 12/04/2020
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: github-actions-azure
-ms.openlocfilehash: 4f5deb33218c336da7a477b4f39cd45f7386debf
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: fec4ba8cba33a1d52d8f330308645fb616921ba4
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97604982"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98726819"
 ---
 # <a name="deploy-a-custom-container-to-app-service-using-github-actions"></a>Distribuera en anpassad behållare för att App Service med GitHub-åtgärder
 
@@ -50,7 +50,7 @@ En publicerings profil är en autentiseringsuppgift på program nivå. Konfigure
 1. På sidan **Översikt** väljer du **Hämta publicerings profil**.
 
     > [!NOTE]
-    > Från och med oktober 2020 behöver Linux-webbapparna appens inställning som är `WEBSITE_WEBDEPLOY_USE_SCM` inställd på `true` **innan filen laddas ned**. Detta krav kommer att tas bort i framtiden. Mer information om hur du konfigurerar gemensamma inställningar för webb program finns [i Konfigurera en app service-app i Azure Portal](/azure/app-service/configure-common).  
+    > Från och med oktober 2020 behöver Linux-webbapparna appens inställning som är `WEBSITE_WEBDEPLOY_USE_SCM` inställd på `true` **innan filen laddas ned**. Detta krav kommer att tas bort i framtiden. Mer information om hur du konfigurerar gemensamma inställningar för webb program finns [i Konfigurera en app service-app i Azure Portal](./configure-common.md).  
 
 1. Spara den hämtade filen. Du använder filens innehåll för att skapa en GitHub-hemlighet.
 
@@ -88,7 +88,7 @@ I [GitHub](https://github.com/), bläddra i din lagrings plats, välj **inställ
 
 Om du vill använda [autentiseringsuppgifter för program nivå](#generate-deployment-credentials)klistrar du in innehållet i den hämtade publicerings profil filen i fältet hemligt värde. Namnge hemligheten `AZURE_WEBAPP_PUBLISH_PROFILE` .
 
-När du konfigurerar ditt GitHub-arbetsflöde använder du `AZURE_WEBAPP_PUBLISH_PROFILE` åtgärden för att distribuera Azure Web App. Exempel:
+När du konfigurerar ditt GitHub-arbetsflöde använder du `AZURE_WEBAPP_PUBLISH_PROFILE` åtgärden för att distribuera Azure Web App. Ett exempel:
     
 ```yaml
 - uses: azure/webapps-deploy@v2
@@ -102,7 +102,7 @@ I [GitHub](https://github.com/), bläddra i din lagrings plats, välj **inställ
 
 Om du vill använda [autentiseringsuppgifter för användar nivå](#generate-deployment-credentials)klistrar du in hela JSON-utdata från Azure CLI-kommandot till fältet hemligt värde. Ge hemligheten namnet som `AZURE_CREDENTIALS` .
 
-När du konfigurerar arbets flödes filen senare använder du hemligheten för indata `creds` från åtgärden för Azure-inloggning. Exempel:
+När du konfigurerar arbets flödes filen senare använder du hemligheten för indata `creds` från åtgärden för Azure-inloggning. Ett exempel:
 
 ```yaml
 - uses: azure/login@v1

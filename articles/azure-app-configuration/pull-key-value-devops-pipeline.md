@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: how-to
 ms.date: 11/17/2020
 ms.author: drewbat
-ms.openlocfilehash: fbe517c766b3835bf4265a1309b8737a25925b7c
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 4d80c034ab03fed6b9ae2ed0c4c0420afe6f7e32
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97914968"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98728099"
 ---
 # <a name="pull-settings-to-app-configuration-with-azure-pipelines"></a>Hämta inställningar till app-konfiguration med Azure-pipeline
 
@@ -47,7 +47,7 @@ Nu när din tjänst anslutning har skapats hittar du namnet på tjänstens huvud
 
 Tilldela den korrekta program konfigurations rollen till den tjänst anslutning som används i aktiviteten så att den kan komma åt appens konfigurations arkiv.
 
-1. Navigera till konfigurations arkivet för mål programmet. En genom gång av hur du konfigurerar ett konfigurations lager för appar finns i [skapa ett konfigurations lager för appar](/azure/azure-app-configuration/quickstart-dotnet-core-app#create-an-app-configuration-store) i en av Azure App snabb starter för konfiguration.
+1. Navigera till konfigurations arkivet för mål programmet. En genom gång av hur du konfigurerar ett konfigurations lager för appar finns i [skapa ett konfigurations lager för appar](./quickstart-dotnet-core-app.md#create-an-app-configuration-store) i en av Azure App snabb starter för konfiguration.
 1. Välj **åtkomst kontroll (IAM)** till vänster.
 1. Längst upp väljer du **+ Lägg till** och välj **Lägg till roll tilldelning**.
 1. Välj **app Configuration Data Reader** under **roll**. Med den här rollen kan aktiviteten läsa från appens konfigurations arkiv. 

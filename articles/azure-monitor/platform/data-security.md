@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/11/2020
-ms.openlocfilehash: 87cdecd29d684c712853970c8246002132d274ac
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: a618a5d94513f7d648d118ae3bebdb34e4f5b1c4
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97094343"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98728867"
 ---
 # <a name="log-analytics-data-security"></a>Log Analytics data säkerhet
 Det här dokumentet är avsett att ge information som är speciell för Log Analytics, som är en funktion i Azure Monitor, för att komplettera informationen på [Azure Säkerhetscenter](https://www.microsoft.com/en-us/trust-center?rtc=1).  
@@ -183,11 +183,10 @@ Du kan använda dessa ytterligare säkerhetsfunktioner för att skydda din Azure
 - [Kundhanterade nycklar (Security)](customer-managed-keys.md) – du kan använda Kundhanterade nycklar för att kryptera data som skickas till dina Log Analytics-arbetsytor. Det kräver att Azure Key Vault används. 
 - [Privat/kundhanterad lagring](private-storage.md) – hantera ditt personligt krypterade lagrings konto och be Log Analytics att använda det för att lagra övervaknings data 
 - [Privat länk nätverk](private-link-security.md) – med Azure Private Link kan du på ett säkert sätt länka Azure PaaS Services (inklusive Azure Monitor) till ditt virtuella nätverk med hjälp av privata slut punkter. 
-- [Azure Customer lock](/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-preview) -Customer Lockbox för Microsoft Azure ger ett gränssnitt för kunder att granska och godkänna eller avvisa förfrågningar om kund data åtkomst. Den används i fall där en Microsoft-tekniker behöver åtkomst till kundinformation under en supportförfrågan.
+- [Azure Customer lock](../../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-preview) -Customer Lockbox för Microsoft Azure ger ett gränssnitt för kunder att granska och godkänna eller avvisa förfrågningar om kund data åtkomst. Den används i fall där en Microsoft-tekniker behöver åtkomst till kundinformation under en supportförfrågan.
 
 
 ## <a name="next-steps"></a>Nästa steg
 * Lär dig hur du samlar in data med Log Analytics för dina virtuella Azure-datorer enligt snabb starten för [Azure VM](../learn/quick-collect-azurevm.md).  
 
 *  Om du vill samla in data från fysiska eller virtuella Windows-eller Linux-datorer i din miljö kan du läsa [snabb starten för Linux-datorer](../learn/quick-collect-linux-computer.md) eller [snabb start för Windows-datorer](../learn/quick-collect-windows-computer.md)
-

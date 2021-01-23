@@ -3,12 +3,12 @@ title: Referens för appinställningar för Azure Functions
 description: Referens dokumentation för Azure Functions app-inställningar eller miljövariabler.
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 72b42e392f350a8693ca8a052bdec1d5fd337234
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 80b2daebbd64f08dd4f5d728b2a9a4ee04b8952f
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97937118"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98729000"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Referens för appinställningar för Azure Functions
 
@@ -131,7 +131,7 @@ Anger lagrings platsen eller providern som ska användas för nyckel lagring. F�
 
 |Nyckel|Exempelvärde|
 |---|------------|
-|AzureWebJobsSecretStorageType|Filer|
+|AzureWebJobsSecretStorageType|Files|
 
 ## <a name="azurewebjobsstorage"></a>AzureWebJobsStorage
 
@@ -229,11 +229,13 @@ Värdet för den här nyckeln anges i formatet `<DESTINATION>:<VERBOSITY>` , som
 
 ## <a name="website_contentazurefileconnectionstring"></a>WEBBPLATS \_ CONTENTAZUREFILECONNECTIONSTRING
 
-Endast för förbruknings & Premium-planer. Anslutnings sträng för lagrings kontot där programmets kod och konfiguration lagras. Se [skapa en Function-app](functions-infrastructure-as-code.md#create-a-function-app).
+Anslutnings sträng för lagrings kontot där programmets kod och konfiguration lagras i händelse drivna skalnings planer som körs i Windows. Mer information finns i [skapa en Function-app](functions-infrastructure-as-code.md#windows).
 
 |Nyckel|Exempelvärde|
 |---|------------|
 |WEBSITE_CONTENTAZUREFILECONNECTIONSTRING|DefaultEndpointsProtocol = https; AccountName = [namn]; AccountKey = [nyckel]|
+
+Används endast när du distribuerar till användnings-eller Premium-planer som körs i Windows. Stöds inte för Linux. Om du ändrar eller tar bort den här inställningen kan det leda till att Function-appen inte startar. Mer information finns i [den här fel söknings artikeln](functions-recover-storage-account.md#storage-account-application-settings-were-deleted). 
 
 ## <a name="website_contentovervnet"></a>WEBBPLATS \_ CONTENTOVERVNET
 
@@ -245,11 +247,15 @@ Endast för Premium-planer. Värdet `1` gör att din Function-app kan skalas nä
 
 ## <a name="website_contentshare"></a>WEBBPLATS \_ CONTENTSHARE
 
-Endast för förbruknings & Premium-planer. Fil Sök vägen till programmets kod och konfiguration. Används med WEBSITE_CONTENTAZUREFILECONNECTIONSTRING. Standard är en unik sträng som börjar med namnet på Function-appen. Se [skapa en Function-app](functions-infrastructure-as-code.md#create-a-function-app).
+Fil Sök vägen till programmets kod och konfiguration i en händelse driven skalnings plan i Windows. Används med WEBSITE_CONTENTAZUREFILECONNECTIONSTRING. Standard är en unik sträng som börjar med namnet på Function-appen. Se [skapa en Function-app](functions-infrastructure-as-code.md#windows).
 
 |Nyckel|Exempelvärde|
 |---|------------|
 |WEBSITE_CONTENTSHARE|functionapp091999e2|
+
+Används endast av Function-appar för användnings-eller Premium-planer som körs i Windows. Stöds inte för Linux. Om du ändrar eller tar bort den här inställningen kan det leda till att Function-appen inte startar. Mer information finns i [den här fel söknings artikeln](functions-recover-storage-account.md#storage-account-application-settings-were-deleted).
+
+När du använder en Azure Resource Manager för att skapa en Function-app under distributionen ska du inte ta med WEBSITE_CONTENTSHARE i mallen. Den här program inställningen genereras under distributionen. Läs mer i [Automatisera resurs distribution för din Function-app](functions-infrastructure-as-code.md#windows).   
 
 ## <a name="website_max_dynamic_application_scale_out"></a>WEBBPLATS \_ högsta \_ dynamiska \_ program \_ skala \_ ut
 

@@ -12,12 +12,12 @@ ms.date: 04/07/2020
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 808357b95f4de904ead0741d848480d548a2e26a
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: b6ecea10c884bffb10c936ca7c619d70d2449467
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97030084"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98728499"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>Arbeta med befintliga lokala proxyservrar
 
@@ -169,7 +169,7 @@ Det bästa sättet att identifiera och felsöka anslutnings problem är att ta e
 Du kan använda valfritt övervaknings verktyg. I den här artikeln använde vi Microsoft Message Analyzer.
 
 > [!NOTE]
-> [Microsoft Message Analyzer (MMA) drogs](https://docs.microsoft.com/openspecs/blog/ms-winintbloglp/dd98b93c-0a75-4eb0-b92e-e760c502394f) ned och hämtnings paketen togs bort från Microsoft.com-platser den 25 2019 november.  Det finns för närvarande ingen Microsoft-ersättning för Microsoft Message Analyzer i utvecklingen för tillfället.  För liknande funktioner kan du använda ett verktyg från tredje part för Network Protocol Analyzer, till exempel wireshark.
+> [Microsoft Message Analyzer (MMA) drogs](/openspecs/blog/ms-winintbloglp/dd98b93c-0a75-4eb0-b92e-e760c502394f) ned och hämtnings paketen togs bort från Microsoft.com-platser den 25 2019 november.  Det finns för närvarande ingen Microsoft-ersättning för Microsoft Message Analyzer i utvecklingen för tillfället.  För liknande funktioner kan du använda ett verktyg från tredje part för Network Protocol Analyzer, till exempel wireshark.
 
 Följande exempel är speciella för Message Analyzer, men principerna kan tillämpas på alla analys verktyg.
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/27/2020
 ms.author: jeedes
-ms.openlocfilehash: f6066997b5a63a9ffefc1371851c7200d7655c9c
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 1a1e155974b66dce9a036a20cdebe19ded81fed5
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97962626"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98727089"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-hana"></a>Självstudie: Azure Active Directory integration med SAP HANA
 
@@ -212,7 +212,7 @@ I det här avsnittet ska du testa Azure AD-konfigurationen för enkel inloggning
 
 * Klicka på testa det här programmet i Azure Portal så ska du loggas in automatiskt på den SAP HANA som du har konfigurerat SSO för
 
-* Du kan använda Microsoft Mina appar. När du klickar på panelen SAP HANA i Mina appar, bör du loggas in automatiskt på den SAP HANA som du ställer in SSO för. Mer information om Mina appar finns i [Introduktion till Mina appar](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* Du kan använda Microsoft Mina appar. När du klickar på panelen SAP HANA i Mina appar, bör du loggas in automatiskt på den SAP HANA som du ställer in SSO för. Mer information om Mina appar finns i [Introduktion till Mina appar](../user-help/my-apps-portal-end-user-access.md).
 
 
 ## <a name="next-steps"></a>Nästa steg

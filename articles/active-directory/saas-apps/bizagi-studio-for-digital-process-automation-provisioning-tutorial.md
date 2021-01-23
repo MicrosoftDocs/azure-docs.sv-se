@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/20/2020
 ms.author: Zhchia
-ms.openlocfilehash: 4eaac716d06b102a07872059af28da4986889caa
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 72e021f47bb8db4dedf0e434d0d94bb2118a4c00
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97673449"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98728208"
 ---
 # <a name="tutorial-configure-bizagi-studio-for-digital-process-automation-for-automatic-user-provisioning"></a>Självstudie: Konfigurera Bizagi Studio för digital process Automation för automatisk användar etablering
 
-I den här självstudien beskrivs de steg du behöver utföra i både Bizagi Studio för automatisering av digitala processer och Azure Active Directory (Azure AD) för att konfigurera automatisk användar etablering. När Azure AD konfigureras för att göra det, etablerar och avetablerar Azure AD automatiskt användare och grupper i [Bizagi Studio för automatisering av digitala processer](https://www.bizagi.com/) med hjälp av Azure AD Provisioning-tjänsten. Viktig information om vad den här tjänsten gör, hur den fungerar och vanliga frågor finns i [Automatisera användaretablering och avetablering för SaaS-program med Azure Active Directory](../manage-apps/user-provisioning.md). 
+I den här självstudien beskrivs de steg du behöver utföra i både Bizagi Studio för automatisering av digitala processer och Azure Active Directory (Azure AD) för att konfigurera automatisk användar etablering. När Azure AD konfigureras för att göra det, etablerar och avetablerar Azure AD automatiskt användare och grupper i [Bizagi Studio för automatisering av digitala processer](https://www.bizagi.com/) med hjälp av Azure AD Provisioning-tjänsten. Viktig information om vad den här tjänsten gör, hur den fungerar och vanliga frågor finns i [Automatisera användaretablering och avetablering för SaaS-program med Azure Active Directory](../app-provisioning/user-provisioning.md). 
 
 
 ## <a name="capabilities-supported"></a>Funktioner som stöds
@@ -32,22 +32,22 @@ I den här självstudien beskrivs de steg du behöver utföra i både Bizagi Stu
 > * Skapa användare i Bizagi Studio för digital process Automation
 > * Ta bort användare i Bizagi Studio för digital process automatisering när de inte behöver åtkomst längre
 > * Behåll användarattribut synkroniserade mellan Azure AD och Bizagi Studio för digital process Automation
-> * [Enkel inloggning](https://docs.microsoft.com/azure/active-directory/saas-apps/bizagi-studio-for-digital-process-automation-tutorial) till Bizagi Studio för digital process Automation (rekommenderas)
+> * [Enkel inloggning](./bizagi-studio-for-digital-process-automation-tutorial.md) till Bizagi Studio för digital process Automation (rekommenderas)
 
 ## <a name="prerequisites"></a>Krav
 
 Det scenario som beskrivs i den här självstudien förutsätter att du redan har följande:
 
-* [En Azure AD-klientorganisation](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant). 
-* Ett användar konto i Azure AD med [behörighet](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) att konfigurera etableringen. Exempel är program administratör, moln program administratör, program ägare eller global administratör. 
+* [En Azure AD-klientorganisation](../develop/quickstart-create-new-tenant.md). 
+* Ett användar konto i Azure AD med [behörighet](../roles/permissions-reference.md) att konfigurera etableringen. Exempel är program administratör, moln program administratör, program ägare eller global administratör. 
 * Bizagi Studio för digital process Automation version 11.2.4.2 X eller senare.
 
 ## <a name="plan-your-provisioning-deployment"></a>Planera etablering av distributionen
 Följ de här stegen för att planera:
 
-1. Lär dig mer om [hur etableringstjänsten fungerar](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
-2. Ta reda på vem som kommer att vara [inom omfånget för etablering](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts).
-3. Ta reda på vilka data som ska [mappas mellan Azure AD och Bizagi Studio för digital process automatisering](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes). 
+1. Lär dig mer om [hur etableringstjänsten fungerar](../app-provisioning/user-provisioning.md).
+2. Ta reda på vem som kommer att vara [inom omfånget för etablering](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
+3. Ta reda på vilka data som ska [mappas mellan Azure AD och Bizagi Studio för digital process automatisering](../app-provisioning/customize-application-attributes.md). 
 
 ## <a name="configure-to-support-provisioning-with-azure-ad"></a>Konfigurera för att stödja etablering med Azure AD
 Följ dessa steg om du vill konfigurera Bizagi Studio för digital process Automation för att stödja etablering med Azure AD:
@@ -69,17 +69,17 @@ Följ dessa steg om du vill konfigurera Bizagi Studio för digital process Autom
 
 ## <a name="add-the-application-from-the-azure-ad-gallery"></a>Lägg till programmet från Azure AD-galleriet
 
-För att börja hantera etablering till Bizagi Studio för digital process Automation, lägger du till appen från Azure AD-programgalleriet. Om du tidigare har konfigurerat Bizagi Studio för digital process automatisering för enkel inloggning kan du använda samma program. När du först testar integrationen bör du dock skapa en separat app. Mer information finns i [snabb start: lägga till ett program till din Azure Active Directory (Azure AD)-klient](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app). 
+För att börja hantera etablering till Bizagi Studio för digital process Automation, lägger du till appen från Azure AD-programgalleriet. Om du tidigare har konfigurerat Bizagi Studio för digital process automatisering för enkel inloggning kan du använda samma program. När du först testar integrationen bör du dock skapa en separat app. Mer information finns i [snabb start: lägga till ett program till din Azure Active Directory (Azure AD)-klient](../manage-apps/add-application-portal.md). 
 
 ## <a name="define-who-is-in-scope-for-provisioning"></a>Definiera vem som är inom omfånget för etablering 
 
-Med Azure AD Provisioning-tjänsten kan du definiera omfång som är baserat på tilldelning till programmet, baserat på attribut för användaren och gruppen, eller både och. Om du använder tilldelning, se stegen i [tilldela eller ta bort tilldelning av användare och grupper, för en app som använder Graph API](../manage-apps/assign-user-or-group-access-portal.md) för att tilldela användare och grupper till programmet. Om du endast baserat på attribut för användaren eller gruppen kan du använda ett omfångs filter. Mer information finns i [attribut-baserad program etablering med omfångs filter](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts). 
+Med Azure AD Provisioning-tjänsten kan du definiera omfång som är baserat på tilldelning till programmet, baserat på attribut för användaren och gruppen, eller både och. Om du använder tilldelning, se stegen i [tilldela eller ta bort tilldelning av användare och grupper, för en app som använder Graph API](../manage-apps/assign-user-or-group-access-portal.md) för att tilldela användare och grupper till programmet. Om du endast baserat på attribut för användaren eller gruppen kan du använda ett omfångs filter. Mer information finns i [attribut-baserad program etablering med omfångs filter](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md). 
 
 Observera följande saker om scope:
 
-* När du tilldelar användare och grupper till Bizagi Studio för digital process Automation måste du välja en annan roll än **standard åtkomst**. Användare med standard åtkomst rollen undantas från etableringen och markeras i etablerings loggarna som markeras som inte faktiskt berättigade. Om den enda rollen som är tillgänglig i programmet är standard åtkomst rollen kan du [Uppdatera applikations manifestet](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) för att lägga till fler roller. 
+* När du tilldelar användare och grupper till Bizagi Studio för digital process Automation måste du välja en annan roll än **standard åtkomst**. Användare med standard åtkomst rollen undantas från etableringen och markeras i etablerings loggarna som markeras som inte faktiskt berättigade. Om den enda rollen som är tillgänglig i programmet är standard åtkomst rollen kan du [Uppdatera applikations manifestet](../develop/howto-add-app-roles-in-azure-ad-apps.md) för att lägga till fler roller. 
 
-* Starta i liten skala. Testa med en liten uppsättning användare och grupper innan du distribuerar till alla. När omfånget för etablering har angetts till tilldelade användare och grupper kan du styra detta genom att tilldela en eller två användare eller grupper till appen. När omfånget är inställt på alla användare och grupper, kan du ange ett [attribut-baserat omfångs filter](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts). 
+* Starta i liten skala. Testa med en liten uppsättning användare och grupper innan du distribuerar till alla. När omfånget för etablering har angetts till tilldelade användare och grupper kan du styra detta genom att tilldela en eller två användare eller grupper till appen. När omfånget är inställt på alla användare och grupper, kan du ange ett [attribut-baserat omfångs filter](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md). 
 
 
 ## <a name="configure-automatic-user-provisioning"></a>Konfigurera automatisk användaretablering 
@@ -105,7 +105,7 @@ Det här avsnittet vägleder dig genom stegen för att konfigurera Azure AD Prov
 5. I avsnittet **admin credentials** anger du klient-URL och hemlig token för Bizagi Studio för digital process Automation. 
 
       * **Klient-URL:** Ange Bizagi SCIM-slutpunkten med följande struktur:  `<Your_Bizagi_Project>/scim/v2/` .
-         Till exempel: `https://my-company.bizagi.com/scim/v2/`.
+         Exempel: `https://my-company.bizagi.com/scim/v2/`.
 
       * **Hemlig token:** Det här värdet hämtas från det steg som beskrivs tidigare i den här artikeln.
 
@@ -121,7 +121,7 @@ Det här avsnittet vägleder dig genom stegen för att konfigurera Azure AD Prov
 
 8. I avsnittet **mappningar** väljer **du synkronisera Azure Active Directory användare till Bizagi Studio för digital process automatisering**.
 
-9. I avsnittet **attribut-mappning** granskar du de användarattribut som synkroniseras från Azure AD till Bizagi Studio för digital process automatisering. Attributen som väljs som **matchande** egenskaper används för att matcha användar kontona i Bizagi Studio för digital process automatisering för uppdaterings åtgärder. Om du ändrar det [matchande målattributet](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)måste du se till att Bizagi Studio för digital process Automation API stöder filtrering av användare baserat på detta attribut. Välj **Spara** för att genomföra ändringarna.
+9. I avsnittet **attribut-mappning** granskar du de användarattribut som synkroniseras från Azure AD till Bizagi Studio för digital process automatisering. Attributen som väljs som **matchande** egenskaper används för att matcha användar kontona i Bizagi Studio för digital process automatisering för uppdaterings åtgärder. Om du ändrar det [matchande målattributet](../app-provisioning/customize-application-attributes.md)måste du se till att Bizagi Studio för digital process Automation API stöder filtrering av användare baserat på detta attribut. Välj **Spara** för att genomföra ändringarna.
 
    |Attribut|Typ|Stöds för filtrering|
    |---|---|---|
@@ -137,12 +137,12 @@ Det här avsnittet vägleder dig genom stegen för att konfigurera Azure AD Prov
    
     ![Redigera attributlistan.](media/bizagi-studio-for-digital-process-automation-provisioning-tutorial/edit.png)  
 
-   Mer information om hur du lägger till anpassade attribut finns i [Anpassa programattribut](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes).
+   Mer information om hur du lägger till anpassade attribut finns i [Anpassa programattribut](../app-provisioning/customize-application-attributes.md).
 
 > [!NOTE]
 > Endast grundläggande typ egenskaper stöds (till exempel String, heltal, Boolean, DateTime osv.). De egenskaper som är länkade till parameter tabeller eller flera typer stöds inte ännu.
 
-10. Information om hur du konfigurerar omfångs filter finns i [kursen om omfångs filter](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
+10. Information om hur du konfigurerar omfångs filter finns i [kursen om omfångs filter](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
 11. Om du vill aktivera Azure AD Provisioning-tjänsten för Bizagi Studio för digital process Automation, ändrar du **etablerings statusen** till **på** i avsnittet **Inställningar** .
 
@@ -161,15 +161,15 @@ Det här avsnittet vägleder dig genom stegen för att konfigurera Azure AD Prov
 ## <a name="monitor-your-deployment"></a>Övervaka distributionen
 När du har konfigurerat etableringen använder du följande resurser för att övervaka distributionen:
 
-- Använd [etablerings loggarna](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) för att avgöra vilka användare som har etablerats eller har misslyckats.
-- Kontrol lera [förlopps indikatorn](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user) för att se status för etablerings cykeln och hur nära den är att slutföras.
-- Om etablerings konfigurationen är i ett ohälsosamt tillstånd, kommer programmet att placeras i karantän. Mer information finns i [program etablering i karantän status](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status).  
+- Använd [etablerings loggarna](../reports-monitoring/concept-provisioning-logs.md) för att avgöra vilka användare som har etablerats eller har misslyckats.
+- Kontrol lera [förlopps indikatorn](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md) för att se status för etablerings cykeln och hur nära den är att slutföras.
+- Om etablerings konfigurationen är i ett ohälsosamt tillstånd, kommer programmet att placeras i karantän. Mer information finns i [program etablering i karantän status](../app-provisioning/application-provisioning-quarantine-status.md).  
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-* [Hantera användarkontoetablering för Enterprise-appar](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Hantera användarkontoetablering för Enterprise-appar](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Vad är programåtkomst och enkel inloggning med Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Nästa steg
 
-* [Lär dig att granska loggar och hämta rapporter om etableringsaktivitet](../manage-apps/check-status-user-account-provisioning.md)
+* [Lär dig att granska loggar och hämta rapporter om etableringsaktivitet](../app-provisioning/check-status-user-account-provisioning.md)

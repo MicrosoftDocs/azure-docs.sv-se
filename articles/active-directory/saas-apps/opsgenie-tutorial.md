@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/28/2020
 ms.author: jeedes
-ms.openlocfilehash: 622ead38a62e593e304f49da9a9d3f652a868bde
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: 2ab1f9ee6095dfc0f708ec33622aad6f70fcae65
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97814405"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98728588"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-opsgenie"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med OpsGenie
 
@@ -26,7 +26,7 @@ I den här självstudien får du lära dig hur du integrerar OpsGenie med Azure 
 * Gör det möjligt för användarna att logga in automatiskt till OpsGenie med sina Azure AD-konton.
 * Hantera dina konton på en central plats – Azure Portal.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 För att komma igång behöver du följande objekt:
 
@@ -187,7 +187,7 @@ I det här avsnittet ska du testa Azure AD-konfigurationen för enkel inloggning
 
 * Klicka på testa det här programmet i Azure Portal så bör du loggas in automatiskt på den OpsGenie som du har konfigurerat SSO för.
 
-* Du kan använda Microsoft Mina appar. När du klickar på panelen OpsGenie i Mina appar, bör du loggas in automatiskt på den OpsGenie som du ställer in SSO för. Mer information om Mina appar finns i [Introduktion till Mina appar](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* Du kan använda Microsoft Mina appar. När du klickar på panelen OpsGenie i Mina appar, bör du loggas in automatiskt på den OpsGenie som du ställer in SSO för. Mer information om Mina appar finns i [Introduktion till Mina appar](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Nästa steg
 

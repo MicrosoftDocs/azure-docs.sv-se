@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/28/2020
 ms.author: jeedes
-ms.openlocfilehash: cdb72eb857f60400e8f7c23bbd1af39df802df76
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 5802df8bec8a0d938b132e099dd71fdb1d22a5b7
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968916"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98727473"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-kronos"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med Kronos
 
@@ -147,7 +147,7 @@ I det här avsnittet ska du testa Azure AD-konfigurationen för enkel inloggning
 
 * Klicka på testa det här programmet i Azure Portal så bör du loggas in automatiskt på den Kronos som du har konfigurerat SSO för.
 
-* Du kan använda Microsoft Mina appar. När du klickar på panelen Kronos i Mina appar, bör du loggas in automatiskt på den Kronos som du ställer in SSO för. Mer information om Mina appar finns i [Introduktion till Mina appar](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* Du kan använda Microsoft Mina appar. När du klickar på panelen Kronos i Mina appar, bör du loggas in automatiskt på den Kronos som du ställer in SSO för. Mer information om Mina appar finns i [Introduktion till Mina appar](../user-help/my-apps-portal-end-user-access.md).
 
 
 ## <a name="next-steps"></a>Nästa steg

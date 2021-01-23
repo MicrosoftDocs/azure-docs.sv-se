@@ -3,12 +3,12 @@ title: Uppdatera den befintliga säkerhets kopierings principen för virtuella d
 description: Lär dig hur du uppdaterar den befintliga säkerhets kopierings principen för virtuella datorer med hjälp av Azure CLI.
 ms.topic: conceptual
 ms.date: 12/31/2020
-ms.openlocfilehash: ba4ded4c82a1eaea7c20ea94da580a8702467b85
-ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
+ms.openlocfilehash: 33083d6585d2b9296cd184ba258b8d2143d685b4
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97858843"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98728586"
 ---
 # <a name="update-the-existing-vm-backup-policy-using-cli"></a>Uppdatera den befintliga säkerhets kopierings principen för virtuella datorer med CLI
 
@@ -18,7 +18,7 @@ Du kan använda Azure CLI för att uppdatera en befintlig princip för säkerhet
 
 Följ dessa steg om du vill ändra en befintlig princip för säkerhets kopiering av virtuella datorer:
 
-1. Kör kommandot [AZ backup policy show](https://docs.microsoft.com/cli/azure/backup/policy#az_backup_policy_show) för att hämta information om den princip som du vill uppdatera.
+1. Kör kommandot [AZ backup policy show](/cli/azure/backup/policy#az_backup_policy_show) för att hämta information om den princip som du vill uppdatera.
 
     Exempel:
 
@@ -101,14 +101,14 @@ Följ dessa steg om du vill ändra en befintlig princip för säkerhets kopierin
     ```
 
 1. Spara ändringarna.
-1. Kör kommandot [AZ backup princip set](https://docs.microsoft.com/cli/azure/backup/policy#az_backup_policy_set) och skicka den fullständiga sökvägen till den uppdaterade JSON-filen som värde för parametern **--policy** .
+1. Kör kommandot [AZ backup princip set](/cli/azure/backup/policy#az_backup_policy_set) och skicka den fullständiga sökvägen till den uppdaterade JSON-filen som värde för parametern **--policy** .
 
     ```azurecli
     az backup policy set --resource-group rg1234 --vault-name testvault --policy C:\temp2\Policy.json --name testing123
     ```
 
 >[!NOTE]
->Du kan också hämta exempel-JSON-principen genom att köra [säkerhets kopierings principen AZ-standard-för-VM](https://docs.microsoft.com/cli/azure/backup/policy#az_backup_policy_get_default_for_vm) .
+>Du kan också hämta exempel-JSON-principen genom att köra [säkerhets kopierings principen AZ-standard-för-VM](/cli/azure/backup/policy#az_backup_policy_get_default_for_vm) .
 
 ## <a name="next-steps"></a>Nästa steg
 

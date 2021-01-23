@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 08/27/2020
 author: palma21
-ms.openlocfilehash: 2dba9fbcbddbc7a66763636986f3d98f4f95332c
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: b75f4c85831fe66158da875c21af60ee73531026
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94683139"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98728264"
 ---
 # <a name="use-the-azure-disk-container-storage-interface-csi-drivers-in-azure-kubernetes-service-aks-preview"></a>Använd driv rutinerna för Azure disk container Storage-gränssnittet (CSI) i Azure Kubernetes service (AKS) (för hands version)
 Driv rutinen för Azure disk container Storage-gränssnittet (CSI) är en [CSI Specification](https://github.com/container-storage-interface/spec/blob/master/spec.md)-kompatibel driv rutin som används av Azure Kubernetes service (AKS) för att hantera livs cykeln för Azure-diskar.
@@ -101,7 +101,7 @@ storageclass.storage.k8s.io/azuredisk-csi-waitforfirstconsumer created
 
 ## <a name="volume-snapshots"></a>Ögonblicks bilder av volymer
 
-Driv rutinen för Azure disk CSI stöder skapande [av ögonblicks bilder av permanenta volymer](https://kubernetes-csi.github.io/docs/snapshot-restore-feature.html). Som en del av den här funktionen kan driv rutinen utföra antingen *fullständiga* eller [ *stegvisa* ögonblicks bilder](../virtual-machines/windows/disks-incremental-snapshots.md) beroende på vilket värde som anges i `incremental` parametern (som standard är det sant).
+Driv rutinen för Azure disk CSI stöder skapande [av ögonblicks bilder av permanenta volymer](https://kubernetes-csi.github.io/docs/snapshot-restore-feature.html). Som en del av den här funktionen kan driv rutinen utföra antingen *fullständiga* eller [ *stegvisa* ögonblicks bilder](../virtual-machines/disks-incremental-snapshots.md) beroende på vilket värde som anges i `incremental` parametern (som standard är det sant).
 
 Mer information om alla parametrar finns i [klass parametrar för volym ögonblicks bilder](https://github.com/kubernetes-sigs/azuredisk-csi-driver/blob/master/docs/driver-parameters.md#volumesnapshotclass).
 

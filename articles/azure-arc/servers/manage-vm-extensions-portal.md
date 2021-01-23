@@ -1,14 +1,14 @@
 ---
 title: Aktivera VM-tillägg från Azure Portal
 description: Den här artikeln beskriver hur du distribuerar tillägg för virtuella datorer till Azure Arc-aktiverade servrar som körs i hybrid moln miljöer från Azure Portal.
-ms.date: 11/06/2020
+ms.date: 01/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 48d7d4085dce893d94436fe0c6be32cfeea9cda3
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 43bbcef28b77e7c7112880fdac1bbd4809791cef
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359093"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98728964"
 ---
 # <a name="enable-azure-vm-extensions-from-the-azure-portal"></a>Aktivera Azure VM-tillägg från Azure Portal
 
@@ -39,6 +39,18 @@ VM-tillägg kan tillämpas på en server hanterad dator via Azure Portal.
 
 >[!NOTE]
 >Även om flera tillägg kan grupperas tillsammans och bearbetas, installeras de seriellt. När den första tilläggs installationen har slutförts görs ett försök att installera nästa tillägg.
+
+## <a name="list-extensions-installed"></a>List tillägg har installerats
+
+Du kan hämta en lista över VM-tilläggen på din ARC-aktiverade Server från Azure Portal. Utför följande steg för att se dem.
+
+1. Gå till [Azure Portal](https://portal.azure.com)i webbläsaren.
+
+2. I portalen bläddrar du till **servrar – Azure Arc** och väljer hybrid datorn i listan.
+
+3. Välj **tillägg** och listan över installerade tillägg returneras.
+
+    ![Lista över VM-tillägg distribuerade till den valda datorn](./media/manage-vm-extensions/list-vm-extensions.png)
 
 ## <a name="uninstall-extension"></a>Avinstallera tillägg
 

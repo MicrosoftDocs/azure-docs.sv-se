@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 01/12/2020
+ms.date: 01/22/2020
 ms.author: b-juche
-ms.openlocfilehash: c914ab007f482e4d2b560b1cb461e27d4f4442ec
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 47aefecce846f58128335768018ba59d3520bd87
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98133165"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98726688"
 ---
 # <a name="create-a-dual-protocol-nfsv3-and-smb-volume-for-azure-netapp-files"></a>Skapa en NFSv3-och SMB-volym (Dual-Protocol) för Azure NetApp Files
 
@@ -51,6 +51,7 @@ Azure NetApp Files stöder skapande av volymer med NFS (NFSv3 och NFSv 4.1), SMB
     | `Unix`    | NFS   | NFSv3 läges bitar   | UNIX  | NFS och Windows   |
     | `Ntfs`    | Windows   | NTFS ACL: er     | NTFS  |NFS och Windows|
 * UNIX-användare som monterar säkerhets format volymen NTFS med NFS autentiseras som Windows-användare `root` för UNIX `root` och `pcuser` för alla andra användare. Se till att dessa användar konton finns i Active Directory innan du monterar volymen när du använder NFS. 
+* Du behöver inte ett Server rot certifikat för certifikat utfärdare för att skapa en volym med dubbla protokoll. Det krävs endast om LDAP över TLS är aktiverat.
 
 
 ## <a name="create-a-dual-protocol-volume"></a>Skapa en volym med dubbla protokoll
