@@ -13,15 +13,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 01/18/2021
+ms.date: 01/23/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2c7ea804e9e85578076969f0ec6bdf90b571bb75
-ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
+ms.openlocfilehash: 906879c44a2d7a3248f3d3ac0c9fec7ced7f2a4f
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98570090"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746551"
 ---
 # <a name="nfs-v41-volumes-on-azure-netapp-files-for-sap-hana"></a>NFS v4.1-volymer på Azure NetApp Files för SAP HANA
 
@@ -62,7 +62,13 @@ Viktigt att förstå är prestanda förhållandet storlek och att det finns fysi
 
 Tabellen nedan visar att det kan vara bra att skapa en stor "standard"-volym för att lagra säkerhets kopior och att det inte är klokt att skapa en "Ultra"-volym som är större än 12 TB eftersom den fysiska bandbredds kapaciteten för en enskild LIF skulle överskridas. 
 
-Maximalt data flöde för en LIF och en enda Linux-session är mellan 1,2 och 1,4 GB/s. 
+Maximalt data flöde för en LIF och en enda Linux-session är mellan 1,2 och 1,4 GB/s. Om du behöver mer data flöde för/Hana/data kan du använda partitioneringen SAP HANA datapartitionering för att skikta I/O-aktiviteten under data belastningen eller HANA-lagrings punkter över flera HANA-datafiler som finns på flera NFS-resurser. Mer information om HANA data Volume randering finns i följande artiklar:
+
+- [Administratörs hand boken för HANA](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.05/en-US/40b2b2a880ec4df7bac16eae3daef756.html?q=hana%20data%20volume%20partitioning)
+- [Blogg om SAP HANA – partitionering av data volymer](https://blogs.sap.com/2020/10/07/sap-hana-partitioning-data-volumes/)
+- [SAP-anteckning #2400005](https://launchpad.support.sap.com/#/notes/2400005)
+- [SAP-anteckning #2700123](https://launchpad.support.sap.com/#/notes/2700123)
+
 
 | Storlek  | Data flödes standard | Data flöde Premium | Data flöde Ultra |
 | --- | --- | --- | --- |

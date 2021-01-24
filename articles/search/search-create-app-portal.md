@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 09/25/2020
-ms.openlocfilehash: b69feec7249c80fc63d803a14f360614bcf880fa
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 01/23/2021
+ms.openlocfilehash: 590afe4c396942c5179826cd831908e37f48c3e4
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91399830"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98745758"
 ---
 # <a name="quickstart-create-a-demo-app-in-the-portal-azure-cognitive-search"></a>Snabb start: skapa en demo-app i portalen (Azure Kognitiv sökning)
 
@@ -21,7 +21,7 @@ Använd guiden **skapa demonstrations program** för Azure Portal för att gener
 
 Demo-appen kan hjälpa dig att visualisera hur ett index fungerar i en klient app, men det är inte avsett för produktions scenarier. Klient program bör omfatta säkerhet, fel hantering och värd logik som den genererade HTML-sidan inte tillhandahåller. När du är redo att skapa en klient app, se [skapa din första Sökapp med .NET SDK](tutorial-csharp-create-first-app.md) för nästa steg.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Innan du börjar måste du ha följande:
 
@@ -43,7 +43,7 @@ När indexet är klart att använda går du vidare till nästa steg.
 
 1. Logga in på [Azure-portalen](https://portal.azure.com/) med ditt Azure-konto.
 
-1. [Hitta Sök tjänsten](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/) och välj **index**på sidan Översikt från länkarna i mitten av sidan. 
+1. [Hitta Sök tjänsten](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/) och välj **index** på sidan Översikt från länkarna i mitten av sidan. 
 
 1. Välj *realestate-US-Sample-index* i listan över befintliga index.
 
@@ -61,7 +61,7 @@ Guiden innehåller en grundläggande layout för åter givning av Sök resultat 
 
 1. I Beskrivning väljer du ett fält som innehåller information som kan hjälpa någon att avgöra om du vill klicka till det specifika dokumentet.
 
-   :::image type="content" source="media/search-create-app-portal/configure-results.png" alt-text="data källans sida för exempel data" border="false":::
+   :::image type="content" source="media/search-create-app-portal/configure-results.png" alt-text="Konfigurera resultat för exempel data" border="false":::
 
 ## <a name="add-a-sidebar"></a>Lägg till en marginal List
 
@@ -72,8 +72,9 @@ I Azure Kognitiv sökning är fasettisk navigering en kumulativ filtrerings uppl
 > [!TIP]
 > Du kan visa det fullständiga index schemat i portalen. Leta efter **JSON-länken (index definition)** på varje indexs översikts sida. Fält som kvalificeras för den fasettiska navigeringen har attributen "Filterable: true" och "fasettable: true".
 
-Godkänn det aktuella valet av ansikte och fortsätt till nästa sida.
+1. I guiden väljer du fliken **sido** rutan längst upp på sidan. Du ser en lista över alla fält som har attributets Filterable och fasettable i indexet.
 
+1. Godkänn det aktuella valet av fasettiska fält och fortsätt till nästa sida.
 
 ## <a name="add-typeahead"></a>Lägg till typeahead
 
@@ -83,20 +84,44 @@ Förslag aktive ras för definitioner av vissa fält. I guiden får du alternati
 
 Följande skärm bild visar alternativen i guiden, juxtaposed med en renderad sida i appen. Du kan se hur fält urval används och hur "Visa fält namn" används för att ta med eller undanta etiketter i förslaget.
 
-:::image type="content" source="media/search-create-app-portal/suggestions.png" alt-text="data källans sida för exempel data":::
+:::image type="content" source="media/search-create-app-portal/suggestions.png" alt-text="Konfiguration av fråge förslag":::
+
+## <a name="add-suggestions"></a>Lägg till förslag
+
+Förslag avser automatiska frågor som är kopplade till sökrutan. Kognitiv sökning stöder två: *autoifyllning* av en delvis angiven sökterm och *förslag* på en listruta med potentiella matchande dokument.
+
+Guiden stöder förslag och de fält som kan tillhandahålla föreslagna resultat härleds från en [`Suggesters`](index-add-suggesters.md) konstruktion i indexet:
+
+```JSON
+  "suggesters": [
+    {
+      "name": "sg",
+      "searchMode": "analyzingInfixMatching",
+      "sourceFields": [
+        "number",
+        "street",
+        "city",
+        "region",
+        "postCode",
+        "tags"
+      ]
+```
+
+1. I guiden väljer du fliken **förslag** överst på sidan. Du kommer att se en lista över alla fält som är angivna i index schemat som förslags leverantörer.
+
+1. Godkänn den aktuella markeringen och fortsätt till nästa sida.
 
 ## <a name="create-download-and-execute"></a>Skapa, hämta och köra
 
-1. Skapa HTML-filen genom att välja **skapa demo-app** .
+1. Skapa HTML-filen genom att välja **skapa demo app** längst ned på sidan.
 
 1. När du uppmanas väljer du **Ladda ned appen** för att ladda ned filen.
 
-1. Öppna filen. Du bör se en sida som liknar följande skärm bild. Ange en term och Använd filter för att begränsa resultaten. 
+1. Öppna filen och klicka på knappen Sök. Den här åtgärden kör en fråga som kan vara en tom fråga ( `*` ) som returnerar en godtycklig resultat uppsättning. Sidan bör se ut ungefär som på följande skärm bild. Ange en term och Använd filter för att begränsa resultaten. 
 
 Det underliggande indexet består av fiktiva, genererade data som har duplicerats mellan dokument och beskrivningar som ibland inte matchar avbildningen. Du kan vänta en mer sammanhängande upplevelse när du skapar en app baserat på dina egna index.
 
-:::image type="content" source="media/search-create-app-portal/run-app.png" alt-text="data källans sida för exempel data":::
-
+:::image type="content" source="media/search-create-app-portal/run-app.png" alt-text="Kör appen":::
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
@@ -108,7 +133,7 @@ Kom ihåg att du är begränsad till tre index, indexerare och data källor om d
 
 ## <a name="next-steps"></a>Nästa steg
 
-Även om standard programmet är användbart för inledande utforskning och små aktiviteter, kan du granska API: erna tidigt på så att du förstår begreppen och arbets flödet på en djupare nivå:
+Demonstrations appen är användbar för prototyper eftersom du kan simulera en slut användar upplevelse utan att behöva skriva Java Script eller frontend-kod. Om du vill ha mer information om klient dels funktioner börjar du med fasettisk navigering:
 
 > [!div class="nextstepaction"]
-> [Skapa ett index med .NET SDK](./search-get-started-dotnet.md)
+> [Så här skapar du ett aspekt filter](search-filters-facets.md)

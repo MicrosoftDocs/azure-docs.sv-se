@@ -3,17 +3,17 @@ title: IoT Plug and Play-brygga | Microsoft Docs
 description: Förstå IoT Plug and Play Bridge och hur du använder den för att ansluta befintliga enheter som är anslutna till en Windows-eller Linux-gateway som IoT Plug and Play-enheter.
 author: usivagna
 ms.author: ugans
-ms.date: 09/22/2020
+ms.date: 1/20/2021
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 34af380d057ad47811e394da1e7a29198e102920
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 05b9df2c5083d24ae6a78212bdd29cd1c740e1d1
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97672788"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746500"
 ---
 # <a name="iot-plug-and-play-bridge"></a>IoT Plug and Play-brygga
 
@@ -34,9 +34,9 @@ IoT Plug and Play Bridge stöder följande typer av kring utrustning som standar
 |[Modbus adapter](https://github.com/Azure/iot-plug-and-play-bridge/blob/master/pnpbridge/docs/modbus_adapters.md) ansluter sensorer på en Modbus-enhet.              |Ja|Ja|
 |[MQTT adapter](https://github.com/Azure/iot-plug-and-play-bridge/blob/master/pnpbridge/docs/mqtt_adapter.md) ansluter enheter som använder en MQTT-Broker.                  |Ja|Ja|
 |[SerialPnP adapter](https://github.com/Azure/iot-plug-and-play-bridge/blob/master/serialpnp/Readme.md) ansluter enheter som kommunicerar via en seriell anslutning.               |Ja|Ja|
-|[Windows USB-kringutrustning](https://github.com/Azure/iot-plug-and-play-bridge/blob/master/pnpbridge/docs/coredevicehealth_adapter.md) använder en lista över enhets gränssnitts klasser som stöds för att ansluta enheter som har ett angivet maskinvaru-ID.  |Yes|Ej tillämpligt|
+|[Windows USB-kringutrustning](https://github.com/Azure/iot-plug-and-play-bridge/blob/master/pnpbridge/docs/coredevicehealth_adapter.md) använder en lista över enhets gränssnitts klasser som stöds för att ansluta enheter som har ett angivet maskinvaru-ID.  |Ja|Ej tillämpligt|
 
-Information om hur du utökar IoT Plug and Play Bridge för att stödja ytterligare enhets protokoll finns i [skapa, distribuera och utöka iot plug and Play-bryggan](howto-build-deploy-extend-pnp-bridge.md).
+Information om hur du utökar IoT Plug and Play Bridge för att stödja ytterligare enhets protokoll finns i [utöka IoT plug and Play-bryggan](howto-author-pnp-bridge-adapter.md). Information om hur du skapar och distribuerar IoT Plug and Play Bridge finns i [skapa och distribuera iot plug and Play-bryggan](howto-build-deploy-extend-pnp-bridge.md).
 
 ## <a name="iot-plug-and-play-bridge-architecture"></a>Arkitektur för IoT Plug and Play Bridge
 
@@ -148,6 +148,7 @@ Du kan också hämta och Visa käll koden för [IoT plug and Play Bridge på Git
 
 Nu när du har en översikt över arkitekturen i IoT Plug and Play Bridge är nästa steg att lära dig mer om:
 
-- [Använda IoT Plug and Play Bridge](./howto-use-iot-pnp-bridge.md)
-- [Skapa, distribuera och utöka IoT Plug and Play Bridge](howto-build-deploy-extend-pnp-bridge.md)
+- [Så här ansluter du ett IoT Plug and Play Bridge-exempel som körs på Linux eller Windows till IoT Hub](./howto-use-iot-pnp-bridge.md)
+- [Skapa och distribuera IoT Plug and Play-brygga](howto-build-deploy-extend-pnp-bridge.md)
+- [Utöka IoT Plug and Play Bridge](howto-build-deploy-extend-pnp-bridge.md)
 - [IoT Plug and Play-brygga på GitHub](https://github.com/Azure/iot-plug-and-play-bridge)

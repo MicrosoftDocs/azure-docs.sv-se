@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: b9a41f4d4bb10599d50e58ad6f08d61aaba7ecfc
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: cd41f740d3cdb8130199a5dda6e73209637d5142
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97608790"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98745942"
 ---
 # <a name="create-the-azure-arc-data-controller"></a>Skapa data styrenheten för Azure-bågen
 
@@ -54,7 +54,7 @@ Oavsett vilket alternativ du väljer måste du ange följande information under 
 - **Datacontroller-användar namn** – valfritt användar namn för administratörs användaren för data kontrollanten.
 - **Lösen ord för datakontrollant** – ett lösen ord för administratörs användaren för datakontrollanten.
 - **Namnet på ditt Kubernetes-namnområde** – namnet på Kubernetes-namnområdet som du vill skapa data styrenheten i.
-- **Anslutnings läge** – [anslutnings läget](./connectivity.md) för klustret. För närvarande stöds endast "indirekt".
+- **Anslutnings** läge – anslutnings läget fastställer anslutnings graden från din Azure Arc-aktiverad data tjänst miljö till Azure. För hands versionen stöder för närvarande endast indirekt anslutna och direktanslutna lägen.  Mer information finns i [anslutnings läge](./connectivity.md). 
 - **Azure-prenumerations-ID** – GUID för Azure-prenumerationen där du vill att data styrenhets resursen i Azure ska skapas.
 - **Namn på Azure-resurs grupp** – namnet på den resurs grupp där du vill att data styrenhets resursen i Azure ska skapas.
 - **Azure-plats** – Azure-platsen där data styrenhetens resurs-metadata ska lagras i Azure. En lista över tillgängliga regioner finns i [Azure Global Infrastructure/products by region](https://azure.microsoft.com/global-infrastructure/services/?products=azure-arc).

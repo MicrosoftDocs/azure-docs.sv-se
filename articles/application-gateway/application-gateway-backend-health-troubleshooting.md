@@ -7,23 +7,20 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 06/09/2020
 ms.author: surmb
-ms.openlocfilehash: 05df2144b892aed764f9606fb19bd6a3242b97f3
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 5e5be79371b640431603409a34b1a7812ed5c2a3
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97934908"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746112"
 ---
-<a name="troubleshoot-backend-health-issues-in-application-gateway"></a>Felsök problem med Server delens hälsa i Application Gateway
+<a name="troubleshoot-backend-health-issues-in-application-gateway"></a>Felsöka problem med hälsotillstånd i serverdelen i Application Gateway
 ==================================================
 
 <a name="overview"></a>Översikt
 --------
 
 Azure Application Gateway avsöker som standard server dels servrar för att kontrol lera sin hälso status och kontrol lera om de är redo att betjäna begär Anden. Användare kan också skapa anpassade avsökningar för att nämna värd namnet, sökvägen som ska avsökas och status koderna ska godkännas som felfria. I varje fall, om backend-servern inte svarar korrekt, Application Gateway markerar servern som ohälsosam och slutar vidarebefordra begär anden till servern. När servern har börjat svara korrekt fortsätter Application Gateway att vidarebefordra förfrågningarna.
-
-> [!NOTE]
-> Den här artikeln innehåller referenser till termen *vitlista*, en term som Microsoft inte längre använder. När termen tas bort från program varan tar vi bort det från den här artikeln.
 
 ### <a name="how-to-check-backend-health"></a>Så här kontrollerar du Server dels hälsa
 
@@ -245,7 +242,7 @@ Mer information om hur du extraherar och laddar upp betrodda rot certifikat i Ap
 
 #### <a name="trusted-root-certificate-mismatch"></a>Matchnings fel för betrodda rot certifikat
 
-**Meddelande:** Rot certifikatet för Server certifikatet som används av Server delen stämmer inte överens med det betrodda rot certifikat som har lagts till i Application Gateway. Se till att du lägger till rätt rot certifikat för att vitlista Server delen
+**Meddelande:** Rot certifikatet för Server certifikatet som används av Server delen stämmer inte överens med det betrodda rot certifikat som har lagts till i Application Gateway. Se till att du lägger till rätt rot certifikat för att tillåten Server delen.
 
 **Orsak:** End-to-end-SSL med Application Gateway v2 kräver att backend-serverns certifikat verifieras för att anse att servern är felfri.
 Om ett TLS/SSL-certifikat ska vara betrott måste Server del certifikatet utfärdas av en certifikat utfärdare som ingår i det betrodda lagrings lagret för Application Gateway. Om certifikatet inte utfärdats av en betrodd certifikat utfärdare (till exempel ett självsignerat certifikat användes), ska användarna ladda upp utfärdarens certifikat för att Application Gateway.
@@ -357,8 +354,8 @@ Detta kan bero på en eller flera av följande orsaker:
 1.  NSG på Application Gateway-undernätet blockerar inkommande åtkomst till portarna 65503-65534 (v1 SKU) eller 65200-65535 (v2 SKU) från "Internet".
 1.  UDR på Application Gateway under nätet har angetts som standard väg (0.0.0.0/0) och nästa hopp inte har angetts som "Internet".
 1.  Standard vägen annonseras av en ExpressRoute/VPN-anslutning till ett virtuellt nätverk via BGP.
-1.  Den anpassade DNS-servern har kon figurer ATS på ett virtuellt nätverk som inte kan matcha offentliga domän namn.
-1.  Application Gateway är i ett ohälsosamt tillstånd.
+1.  Den anpassade DNS-servern är konfigurerad i ett virtuellt nätverk som inte kan matcha offentliga domännamn.
+1.  Application Gateway är i ett feltillstånd.
 
 **Lösning:**
 

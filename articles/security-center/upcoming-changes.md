@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/21/2021
+ms.date: 01/24/2021
 ms.author: memildin
-ms.openlocfilehash: 6d656dbb3fb50091fc8721ba40431b37f77c4ad6
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 1b034c0f1c62eecf8139ed908a5a242060f3e886
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98662955"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746568"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>Viktiga kommande ändringar i Azure Security Center
 
@@ -31,10 +31,40 @@ Om du letar efter den senaste versions informationen hittar du dem i [vad som ä
 
 ## <a name="planned-changes"></a>Planerade ändringar
 
+- [Kubernetes för arbets belastnings skydd kommer snart att lanseras för allmän tillgänglighet (GA)](#kubernetes-workload-protection-recommendations-will-soon-be-released-for-general-availability-ga)
 - [Två rekommendationer från "tillämpa system uppdateringar"-säkerhets kontrollen är inaktuell](#two-recommendations-from-apply-system-updates-security-control-being-deprecated)
 - [Förbättringar av SQL data klassificerings rekommendation](#enhancements-to-sql-data-classification-recommendation)
 - [35 för hands versioner har lagts till för att öka täckningen av Azures säkerhets prestanda](#35-preview-recommendations-being-added-to-increase-coverage-of-azure-security-benchmark)
 
+
+### <a name="kubernetes-workload-protection-recommendations-will-soon-be-released-for-general-availability-ga"></a>Kubernetes för arbets belastnings skydd kommer snart att lanseras för allmän tillgänglighet (GA)
+
+**Beräknat datum för ändring:** Januari 2021
+
+Kubernetes för arbets belastnings skydd som beskrivs i [skydda dina Kubernetes-arbetsbelastningar](kubernetes-workload-protections.md) är för närvarande en för hands version. Även om en rekommendation är i för hands version, återges inte en resurs som inte är felfri och ingår inte i beräkningarna av dina säkra poäng.
+
+De här rekommendationerna kommer snart att lanseras för allmän tillgänglighet (GA) och *kommer* att ingå i Poäng beräkningen. Om du inte redan har reparerat dem kan det leda till en lätt inverkan på dina säkra poäng.
+
+Åtgärda dem när det är möjligt (Lär dig hur du [reparerar rekommendationer i Azure Security Center](security-center-remediate-recommendations.md)).
+
+Rekommendationerna för Kubernetes arbets belastnings skydd är:
+
+- Azure Policy tillägg för Kubernetes bör installeras och aktive ras i klustren
+- CPU-och minnes gränser för containern ska tillämpas
+- Privilegierade behållare bör undvikas
+- Oföränderligt (skrivskyddat) rot fil system ska tillämpas för behållare
+- Container med behörighets eskalering bör undvikas
+- Att köra behållare som rot användare bör undvikas
+- Behållare som delar känsliga värd namn områden bör undvikas
+- Minst privilegierade Linux-funktioner bör tillämpas för behållare
+- Användningen av Pod HostPath-volym monteringar bör begränsas till en känd lista
+- Behållare ska bara lyssna på tillåtna portar
+- Tjänsterna ska bara lyssna på tillåtna portar
+- Användning av värd nätverk och portar ska begränsas
+- Åsidosättning eller inaktive ring av behållare AppArmor-profilen bör vara begränsad
+- Behållar avbildningar ska endast distribueras från betrodda register             
+
+Läs mer om de här rekommendationerna i [skydda dina Kubernetes-arbetsbelastningar](kubernetes-workload-protections.md).
 
 ### <a name="two-recommendations-from-apply-system-updates-security-control-being-deprecated"></a>Två rekommendationer från "tillämpa system uppdateringar"-säkerhets kontrollen är inaktuell 
 

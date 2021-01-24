@@ -2,18 +2,18 @@
 title: Vanliga frågor och svar om FHIR-tjänster i Azure – Azure API för FHIR
 description: 'Få svar på vanliga frågor om Azure API för FHIR, till exempel lagrings platsen för data bakom FHIR-API: er och versions stöd.'
 services: healthcare-apis
-author: matjazl
+author: caitlinv39
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
-ms.date: 08/03/2020
-ms.author: matjazl
-ms.openlocfilehash: bd6f32213a511987c0508dcc954252b2fd4e48f6
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.date: 1/21/2021
+ms.author: cavoeg
+ms.openlocfilehash: 4d071af6f72bfe6136296185e65007d2413ed2c4
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737599"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746721"
 ---
 # <a name="frequently-asked-questions-about-the-azure-api-for-fhir"></a>Vanliga frågor och svar om Azure API för FHIR
 

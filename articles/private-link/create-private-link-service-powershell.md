@@ -5,20 +5,20 @@ services: private-link
 author: asudbring
 ms.service: private-link
 ms.topic: how-to
-ms.date: 01/20/2021
+ms.date: 01/24/2021
 ms.author: allensu
-ms.openlocfilehash: 66ad5aae9f8175d154bb07a8b112dada175a205a
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: e8d76e12dea27338e965d8e77871427e9dfabf23
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98610071"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746687"
 ---
 # <a name="create-a-private-link-service-using-azure-powershell"></a>Skapa en privat länk-tjänst med hjälp av Azure PowerShell
 
 Kom igång med att skapa en privat länk-tjänst som refererar till din tjänst.  Ge privat länk åtkomst till din tjänst eller resurs som distribueras bakom en Azure-Standard Load Balancer.  Användare av tjänsten har privat åtkomst från det virtuella nätverket.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 - Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Azure PowerShell installerat lokalt eller Azure Cloud Shell
@@ -156,7 +156,11 @@ $ipsettings = @{
 $ipconfig = New-AzPrivateLinkServiceIpConfig @ipsettings
 
 ## Place the load balancer frontend configuration into a variable. ##
-$fe = Get-AzLoadBalancer -Name 'myLoadBalancer' | Get-AzLoadBalancerFrontendIpConfig
+$par = @{
+    Name = 'myLoadBalancer'
+    ResourceGroupName = 'CreatePrivLinkService-rg'
+}
+$fe = Get-AzLoadBalancer @par | Get-AzLoadBalancerFrontendIpConfig
 
 ## Create the private link service for the load balancer. ##
 $privlinksettings = @{
@@ -167,6 +171,129 @@ $privlinksettings = @{
     IpConfiguration = $ipconfig
 }
 New-AzPrivateLinkService @privlinksettings
+
+```
+
+Din privata länk tjänst skapas och kan ta emot trafik. Om du vill se trafikflöden konfigurerar du ditt program bakom din standard belastningsutjämnare.
+
+## <a name="create-private-endpoint"></a>Skapa privat slut punkt
+
+I det här avsnittet ska du mappa den privata länk tjänsten till en privat slut punkt. Ett virtuellt nätverk innehåller den privata slut punkten för den privata länk tjänsten. Det här virtuella nätverket innehåller de resurser som kommer att ha åtkomst till din privata länk tjänst.
+
+### <a name="create-private-endpoint-virtual-network"></a>Skapa privat slut punkt för virtuellt nätverk
+
+* Skapa ett virtuellt nätverk med hjälp av [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork).
+
+```azurepowershell-interactive
+## Create backend subnet config ##
+$subnet = @{
+    Name = 'mySubnetPE'
+    AddressPrefix = '11.1.0.0/24'
+    PrivateEndpointNetworkPolicies = 'Disabled'
+}
+$subnetConfig = New-AzVirtualNetworkSubnetConfig @subnet 
+
+## Create the virtual network ##
+$net = @{
+    Name = 'myVNetPE'
+    ResourceGroupName = 'CreatePrivLinkService-rg'
+    Location = 'eastus2'
+    AddressPrefix = '11.1.0.0/16'
+    Subnet = $subnetConfig
+}
+$vnetpe = New-AzVirtualNetwork @net
+
+```
+
+### <a name="create-endpoint-and-connection"></a>Skapa slut punkt och anslutning
+
+* Använd [Get-AzPrivateLinkService](/powershell/module/az.network/get-azprivatelinkservice) för att placera konfigurationen av den privata länk tjänsten som du skapade tidigt i en variabel för senare användning.
+
+* Använd [New-AzPrivateLinkServiceConnection](/powershell/module/az.network/new-azprivatelinkserviceconnection) för att skapa anslutnings konfigurationen.
+
+* Använd [New-AzPrivateEndpoint](/powershell/module/az.network/new-azprivateendpoint) för att skapa slut punkten.
+
+
+
+```azurepowershell-interactive
+## Place the private link service configuration into variable. ##
+$par1 = @{
+    Name = 'myPrivateLinkService'
+    ResourceGroupName = 'CreatePrivLinkService-rg'
+}
+$pls = Get-AzPrivateLinkService @par1
+
+## Create the private link configuration and place in variable. ##
+$par2 = @{
+    Name = 'myPrivateLinkConnection'
+    PrivateLinkServiceId = $pls.Id
+}
+$plsConnection = New-AzPrivateLinkServiceConnection @par2
+
+## Place the virtual network into a variable. ##
+$par3 = @{
+    Name = 'myVNetPE'
+    ResourceGroupName = 'CreatePrivLinkService-rg'
+}
+$vnetpe = Get-AzVirtualNetwork @par3
+
+## Create private endpoint ##
+$par4 = @{
+    Name = 'MyPrivateEndpoint'
+    ResourceGroupName = 'CreatePrivLinkService-rg'
+    Location = 'eastus2'
+    Subnet = $vnetpe.subnets[0]
+    PrivateLinkServiceConnection = $plsConnection
+}
+New-AzPrivateEndpoint @par4 -ByManualRequest
+```
+
+### <a name="approve-the-private-endpoint-connection"></a>Godkänn anslutningen till den privata slut punkten
+
+I det här avsnittet godkänner du den anslutning som du skapade i föregående steg.
+
+* Använd [Godkänn-AzPrivateEndpointConnection](/powershell/module/az.network/approve-azprivateendpointconnnection) för att godkänna anslutningen.
+
+```azurepowershell-interactive
+## Place the private link service configuration into variable. ##
+$par1 = @{
+    Name = 'myPrivateLinkService'
+    ResourceGroupName = 'CreatePrivLinkService-rg'
+}
+$pls = Get-AzPrivateLinkService @par1
+
+$par2 = @{
+    Name = $pls.PrivateEndpointConnections[0].Name
+    ServiceName = 'myPrivateLinkService'
+    ResourceGroupName = 'CreatePrivLinkService-rg'
+    Description = 'Approved'
+}
+Approve-AzPrivateEndpointConnection @par2
+
+```
+
+### <a name="ip-address-of-private-endpoint"></a>IP-adress för privat slut punkt
+
+I det här avsnittet hittar du IP-adressen för den privata slut punkt som motsvarar belastningsutjämnaren och tjänsten privata länkar.
+
+* Använd [Get-AzPrivateEndpoint](/powershell/module/az.network/get-azprivateendpoint) för att hämta IP-adressen.
+
+```azurepowershell-interactive
+## Get private endpoint and the IP address and place in a variable for display. ##
+$par1 = @{
+    Name = 'myPrivateEndpoint'
+    ResourceGroupName = 'CreatePrivLinkService-rg'
+    ExpandResource = 'networkinterfaces'
+}
+$pe = Get-AzPrivateEndpoint @par1
+
+## Display the IP address by expanding the variable. ##
+$pe.NetworkInterfaces[0].IpConfigurations[0].PrivateIpAddress
+```
+
+```bash
+❯ $pe.NetworkInterfaces[0].IpConfigurations[0].PrivateIpAddress
+11.1.0.4
 ```
 
 ## <a name="clean-up-resources"></a>Rensa resurser

@@ -73,6 +73,8 @@
       href: sample-reset-cloud-service.md
 - name: Referens
   items:
+    - name: Exempel på distributions filer
+      href: 'https://github.com/Azure-Samples/cloud-services-extended-support'
     - name: AZ. CloudService-modul
       href: 'https://www.powershellgallery.com/packages/Az.CloudService/0.1.0'
     - name: PowerShell-cmdletar

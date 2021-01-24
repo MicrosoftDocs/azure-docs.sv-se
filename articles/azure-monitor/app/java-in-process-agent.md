@@ -6,12 +6,12 @@ ms.date: 03/29/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 931189a6740009bd26472c186057fa0e6ef5fddf
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 249afa361946e85a8c8ff241f07d7aae608949ae
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624900"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98745708"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights"></a>Java-kodad program övervakning Azure Monitor Application Insights
 
@@ -143,12 +143,12 @@ Tabellen nedan representerar anpassade typer av anpassade telemetri som stöds f
 
 |                     | Micrometer | Log4j, logback, JUL | 2. x SDK |
 |---------------------|------------|---------------------|---------|
-| **Anpassade händelser**   |            |                     |  Yes    |
+| **Anpassade händelser**   |            |                     |  Ja    |
 | **Anpassade mått**  |  Ja       |                     |  Ja    |
-| **Beroenden**    |            |                     |  Yes    |
+| **Beroenden**    |            |                     |  Ja    |
 | **Undantag**      |            |  Ja                |  Ja    |
-| **Sid visningar**      |            |                     |  Yes    |
-| **Begäranden**        |            |                     |  Yes    |
+| **Sid visningar**      |            |                     |  Ja    |
+| **Begäranden**        |            |                     |  Ja    |
 | **Spårningar**          |            |  Ja                |  Ja    |
 
 Vi planerar inte att lansera en SDK med Application Insights 3,0 för tillfället.
@@ -323,8 +323,3 @@ import com.microsoft.applicationinsights.web.internal.ThreadContext;
 RequestTelemetry requestTelemetry = ThreadContext.getRequestTelemetryContext().getHttpRequestTelemetry();
 requestTelemetry.setName("myname");
 ```
-
-> [!NOTE]
-> Alla andra åtgärder på en `RequestTelemetry` Hämtad från `ThreadContext.getRequestTelemetryContext().getHttpRequestTelemetry()` förutom de som beskrivs ovan kommer att Miss snabbt och utlösa ett undantag så att du vet att det är odefinierat i 3,0-agenten.
->
-> Om du behöver interop för andra metoder på `RequestTelemetry` , kan du kontakta oss genom att öppna ett ärende https://github.com/microsoft/ApplicationInsights-Java/issues .

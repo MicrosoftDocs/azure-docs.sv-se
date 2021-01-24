@@ -6,21 +6,18 @@ author: lzchen
 ms.author: lechen
 ms.date: 10/15/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 4b88550ad489607bb66eb737067190d45a466a43
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: 4abb795335bfcb2c9b335d4fb09ddc9fdb2476b4
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96607083"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746585"
 ---
 # <a name="track-incoming-requests-with-opencensus-python"></a>Spåra inkommande begär Anden med openräkningar python
 
 Inkommande begär ande data samlas in med hjälp av openräkningar python och dess olika integreringar. Spåra inkommande begär ande data som skickas till dina webb program som skapats ovanpå de populära webb ramverken `django` `flask` och `pyramid` . Data skickas sedan till Application Insights under Azure Monitor som `requests` telemetri.
 
 Börja med att Instrumenta din python-app med senaste [Openräkning python SDK](./opencensus-python.md).
-
-> [!NOTE]
-> Den här artikeln innehåller referenser till termen *Black*, en term som Microsoft inte längre använder. När termen tas bort från program varan tar vi bort det från den här artikeln.
 
 ## <a name="tracking-django-applications"></a>Spåra django-program
 
@@ -36,7 +33,7 @@ Börja med att Instrumenta din python-app med senaste [Openräkning python SDK](
     )
     ```
 
-3. Kontrol lera att AzureExporter har kon figurer ATS korrekt i `settings.py` under `OPENCENSUS` . För förfrågningar från URL: er som du inte vill spåra lägger du till dem i `BLACKLIST_PATHS` .
+3. Kontrol lera att AzureExporter har kon figurer ATS korrekt i `settings.py` under `OPENCENSUS` . För förfrågningar från URL: er som du inte vill spåra lägger du till dem i `EXCLUDELIST_PATHS` .
 
     ```python
     OPENCENSUS = {
@@ -45,7 +42,7 @@ Börja med att Instrumenta din python-app med senaste [Openräkning python SDK](
             'EXPORTER': '''opencensus.ext.azure.trace_exporter.AzureExporter(
                 connection_string="InstrumentationKey=<your-ikey-here>"
             )''',
-            'BLACKLIST_PATHS': ['https://example.com'],  <--- These sites will not be traced if a request is sent to it.
+            'EXCLUDELIST_PATHS': ['https://example.com'],  <--- These sites will not be traced if a request is sent to it.
         }
     }
     ```
@@ -77,7 +74,7 @@ Börja med att Instrumenta din python-app med senaste [Openräkning python SDK](
     
     ```
 
-2. Du kan också konfigurera ditt `flask` program genom `app.config` . För förfrågningar från URL: er som du inte vill spåra lägger du till dem i `BLACKLIST_PATHS` .
+2. Du kan också konfigurera ditt `flask` program genom `app.config` . För förfrågningar från URL: er som du inte vill spåra lägger du till dem i `EXCLUDELIST_PATHS` .
 
     ```python
     app.config['OPENCENSUS'] = {
@@ -86,7 +83,7 @@ Börja med att Instrumenta din python-app med senaste [Openräkning python SDK](
             'EXPORTER': '''opencensus.ext.azure.trace_exporter.AzureExporter(
                 connection_string="InstrumentationKey=<your-ikey-here>",
             )''',
-            'BLACKLIST_PATHS': ['https://example.com'],  <--- These sites will not be traced if a request is sent to it.
+            'EXCLUDELIST_PATHS': ['https://example.com'],  <--- These sites will not be traced if a request is sent to it.
         }
     }
     ```
@@ -103,7 +100,7 @@ Börja med att Instrumenta din python-app med senaste [Openräkning python SDK](
                          '.pyramid_middleware.OpenCensusTweenFactory')
     ```
 
-2. Du kan konfigurera `pyramid` interpoleringen direkt i koden. För förfrågningar från URL: er som du inte vill spåra lägger du till dem i `BLACKLIST_PATHS` .
+2. Du kan konfigurera `pyramid` interpoleringen direkt i koden. För förfrågningar från URL: er som du inte vill spåra lägger du till dem i `EXCLUDELIST_PATHS` .
 
     ```python
     settings = {
@@ -113,7 +110,7 @@ Börja med att Instrumenta din python-app med senaste [Openräkning python SDK](
                 'EXPORTER': '''opencensus.ext.azure.trace_exporter.AzureExporter(
                     connection_string="InstrumentationKey=<your-ikey-here>",
                 )''',
-                'BLACKLIST_PATHS': ['https://example.com'],  <--- These sites will not be traced if a request is sent to it.
+                'EXCLUDELIST_PATHS': ['https://example.com'],  <--- These sites will not be traced if a request is sent to it.
             }
         }
     }

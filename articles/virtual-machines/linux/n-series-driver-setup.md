@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: vikancha
-ms.openlocfilehash: 7af13147804fd1e50a033635985c08b9c62f76ba
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 22c7a70379649876de4af88080543438e58998a6
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98200999"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746653"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>Installera NVIDIA GPU-drivrutiner på virtuella datorer i N-serien som kör Linux
 
@@ -22,9 +22,6 @@ Om du vill dra nytta av GPU-funktionerna i Azure N-seriens virtuella datorer som
 Om du väljer att installera NVIDIA GPU-drivrutiner manuellt innehåller den här artikeln distributioner, driv rutiner och installations-och verifierings steg som stöds. Det finns även information om manuell driv rutins installation för [virtuella Windows-datorer](../windows/n-series-driver-setup.md).
 
 För specifikationer för virtuella datorer i N-serien, lagrings kapacitet och disk information, se [storlekar för virtuella GPU Linux-datorer](../sizes-gpu.md?toc=/azure/virtual-machines/linux/toc.json). 
-
-> [!NOTE]
-> Den här artikeln innehåller referenser till termen *Black*, en term som Microsoft inte längre använder. När termen tas bort från program varan tar vi bort det från den här artikeln.
 
 [!INCLUDE [virtual-machines-n-series-linux-support](../../../includes/virtual-machines-n-series-linux-support.md)]
 

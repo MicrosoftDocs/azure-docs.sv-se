@@ -4,12 +4,12 @@ description: I den här artikeln beskrivs populära allmänna frågor om Azure S
 ms.topic: conceptual
 ms.date: 7/14/2020
 ms.author: raynew
-ms.openlocfilehash: add5874dc828f05c7c51f0f378988c94cbd42486
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: ca30f9ba190dfa3c7e224e47b90be4d3bc5d47ae
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109563"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746483"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>Allmänna frågor om Azure Site Recovery
 
@@ -344,6 +344,14 @@ Ja, du kan använda den alternativa plats återställningen för återställning
 
 * [För virtuella VMware-datorer](concepts-types-of-failback.md#alternate-location-recovery-alr)
 * [För virtuella Hyper-V-datorer](hyper-v-azure-failback.md#fail-back-to-an-alternate-location)
+
+### <a name="what-is-the-difference-between-complete-migration-commit-and-disable-replication"></a>Vad är skillnaden mellan fullständig migrering, COMMIT och inaktivera replikering?
+
+När en dator från käll platsen har redundansväxlats till mål platsen finns det tre alternativ som du kan välja mellan. Alla tre tjänar olika syfte –
+
+1.  **Fullständig migrering** innebär att du inte längre kommer tillbaka till käll platsen. Du har migrerat över till mål regionen och nu är du klar. Klicka på Slutför migrering av utlösare och inaktivera sedan replikering, internt. 
+2.  **Commit** innebär att det inte är slutet av din replikeringsrelation. Objektet tillsammans med all konfiguration är kvar och du kan fortsätta att **skydda** igen vid ett senare tillfälle för att aktivera replikeringen av datorerna till käll regionen. 
+3.  Om du **inaktiverar replikering** inaktive ras replikeringen och alla relaterade konfigurationer tas bort. Den kommer inte att påverka den redan befintliga datorn i mål regionen.
 
 ## <a name="automation"></a>Automation
 

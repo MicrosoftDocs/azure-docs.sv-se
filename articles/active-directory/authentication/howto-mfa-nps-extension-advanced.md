@@ -11,19 +11,16 @@ author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d436414393d77c83acc835110f17e55e491dce1
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 695261ceae9d64be9395e6de082f97be04292078
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97503497"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98745993"
 ---
 # <a name="advanced-configuration-options-for-the-nps-extension-for-multi-factor-authentication"></a>Avancerade konfigurationsalternativ för NPS-tillägget för multifaktorautentisering
 
 Nätverks princip Server tillägget (NPS) utökar dina molnbaserade Azure AD Multi-Factor Authentication-funktioner till din lokala infrastruktur. Den här artikeln förutsätter att du redan har installerat tillägget och nu vill veta hur du anpassar tillägget efter behov.
-
-> [!NOTE]
-> Den här artikeln innehåller referenser till termen *vitlista*, en term som Microsoft inte längre använder. När termen tas bort från program varan tar vi bort det från den här artikeln.
 
 ## <a name="alternate-login-id"></a>Alternativt inloggnings-ID
 
@@ -54,7 +51,7 @@ Om du vill konfigurera en lista över tillåtna IP-adresser går du till `HKLM\S
 > [!NOTE]
 > Den här register nyckeln skapas inte som standard av installations programmet och ett fel meddelande visas i AuthZOptCh-loggen när tjänsten startas om. Felet i loggen kan ignoreras, men om register nyckeln skapas och lämnas tom om den inte behövs returneras inte fel meddelandet.
 
-När en begäran kommer från en IP-adress som finns i `IP_WHITELIST` , hoppas tvåstegsverifiering. IP-listan jämförs med den IP-adress som anges i attributet *ratNASIPAddress* för RADIUS-begäran. Om en RADIUS-begäran kommer in utan attributet ratNASIPAddress loggas följande varning: "P_WHITE_LIST_WARNING:: IP-vitlista ignoreras eftersom käll-IP saknas i RADIUS-begäran i NasIpAddress-attribut."
+När en begäran kommer från en IP-adress som finns i `IP_WHITELIST` , hoppas tvåstegsverifiering. IP-listan jämförs med den IP-adress som anges i attributet *ratNASIPAddress* för RADIUS-begäran. Om en RADIUS-begäran kommer in utan attributet ratNASIPAddress loggas en varning: "IP_WHITE_LIST_WARNING:: IP-vitlista ignoreras eftersom käll-IP saknas i RADIUS-begäran NasIpAddress-attribut.
 
 ## <a name="next-steps"></a>Nästa steg
 

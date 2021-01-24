@@ -1,5 +1,5 @@
 ---
-title: Horisont-SDK
+title: Horizon-SDK
 titleSuffix: Azure Defender for IoT
 description: Med hjälp av Horisont-SDK kan Azure Defender för IoT-utvecklare utforma DISSEKTOR-plugin-program som avkodar nätverks trafik så att den kan bearbetas av automatiserade Defender för IoT-nätverk.
 author: shhazam-ms
@@ -8,12 +8,12 @@ ms.author: shhazam
 ms.date: 1/13/2021
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: d6105f65508eff59164246020d9a3f286b68c5a1
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 53aafc4146680c89dd01174ec5fde765f1cc0c01
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98210751"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746027"
 ---
 # <a name="horizon-proprietary-protocol-dissector"></a>Avsektor för Horisont av patentskyddat protokoll
 
@@ -320,13 +320,13 @@ I det här avsnittet beskrivs grundläggande parametrar.
 | **sanity_failure_codes** | Detta är de koder som returneras från parsern om det finns en Sanity konflikt angående identiteten för koden. Se magic number verifiering i C++-avsnittet. | Sträng |
 | **malformed_codes** | Detta är koder som har identifierats korrekt, men ett fel har upptäckts. Till exempel om fält längden är för kort eller lång, eller om ett värde är ogiltigt. | Sträng |
 | **dissect_as** | En matris som definierar var den angivna protokoll trafiken ska tas emot. | TCP/UDP, Port osv. |
-| **fält** | Deklarationen för vilka fält som ska extraheras från trafiken. Varje fält har sitt eget ID (namn) och typ (numerisk, sträng, rå data, matris, komplex). Till exempel är fält [funktionen](https://docs.google.com/document/d/14nm8cyoGiaE0ODOYQd_xjULxVz9U_bjfPKkcDhOFr5Q/edit#bookmark=id.6s1zcxa9184k) som extraheras i implementerings parsern-filen. Fälten som skrivs i konfigurations filen är de enda som kan läggas till i lagret. |  |
+| **fields** | Deklarationen för vilka fält som ska extraheras från trafiken. Varje fält har sitt eget ID (namn) och typ (numerisk, sträng, rå data, matris, komplex). Till exempel är fält [funktionen](https://docs.google.com/document/d/14nm8cyoGiaE0ODOYQd_xjULxVz9U_bjfPKkcDhOFr5Q/edit#bookmark=id.6s1zcxa9184k) som extraheras i implementerings parsern-filen. Fälten som skrivs i konfigurations filen är de enda som kan läggas till i lagret. |  |
 
 ### <a name="other-advanced-fields"></a>Andra avancerade fält 
 
 I det här avsnittet beskrivs andra fält.
 
-| Parameter etikett | Description |
+| Parameter etikett | Beskrivning |
 |-----------------|--------|
 | **lista över tillåtna** | Du kan indexera protokoll värden och visa dem i data utvinnings rapporter. Dessa rapporter återspeglar nätverks bas linjen. :::image type="content" source="media/references-horizon-sdk/data-mining.png" alt-text="Ett exempel på data utvinnings vyn."::: <br /> Mer information finns i [ansluta till en indexerings tjänst (bas linje)](#connect-to-an-indexing-service-baseline) för mer information. |
 | **inbyggd program vara** | Du kan extrahera information om inbyggd program vara, definiera index värden och utlösa varningar för inbyggd program vara för plugin-protokollet. Mer information finns i [extrahera firmware-data](#extract-firmware-data) för mer information. |
@@ -396,7 +396,7 @@ Detta validerar att det överförda paketet matchar protokollets validerings par
 
 Använd till exempel de första 8 byten som *Magic number*. Om Sanity Miss lyckas returneras ett Sanity fel svar.
 
-Exempel:
+Ett exempel:
 
 ```C++
   horizon::protocol::ParserResult 
@@ -817,7 +817,7 @@ Lägg till parametern **Alerts** i `config.json` plugin-programmet.
 
 I det här avsnittet beskrivs fält för JSON-konfiguration. 
 
-| Fältnamn | Description | Möjliga värden |
+| Fältnamn | Beskrivning | Möjliga värden |
 |--|--|--|
 | **ID** | Representerar ett enda varnings-ID. Det måste vara unikt i den här kontexten. | Numeriskt värde 0-10000 |
 | **meddelande** | Information som visas för användaren. I det här fältet kan du använda olika fält. | Använd alla fält från protokollet eller något av de lägre lager protokollen. |
@@ -885,7 +885,7 @@ Du kan också använda värden från protokoll som tidigare har parsats för att
 
 För värdet, som baseras på TCP, kan du till exempel använda värdena från IPv4-skiktet. Från det här lagret kan du extrahera värden som källa för paketet och målet.
 
-För att uppnå detta måste JSON-konfigurationsfilen uppdateras med hjälp av `whitelist` egenskapen.
+För att uppnå detta måste JSON-konfigurationsfilen uppdateras med hjälp av `whitelists` egenskapen.
 
 ## <a name="allow-list-data-mining-fields"></a>Fält för att tillåta List (Data utvinning)
 

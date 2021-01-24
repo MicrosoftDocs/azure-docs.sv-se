@@ -12,12 +12,12 @@ ms.date: 10/16/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1628d78c9d1e4db1f59982d696dcc886646fe604
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 33504487b6175023e18893812c533950305cb1d3
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132065"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746010"
 ---
 # <a name="collect-azure-active-directory-b2c-logs-with-application-insights"></a>Samla in Azure Active Directory B2C loggar med Application Insights
 
@@ -26,7 +26,7 @@ Den här artikeln innehåller steg för att samla in loggar från Active Directo
 De detaljerade aktivitets loggarna som beskrivs här ska **bara** aktive ras under utvecklingen av dina anpassade principer.
 
 > [!WARNING]
-> Ange inte `DeploymentMode` `Developer` i produktions miljöer. Loggar samlar in alla anspråk som skickas till och från identitets leverantörer. Du när utvecklaren antar ansvar för alla personliga data som samlas in i dina Application Insights loggar. Dessa detaljerade loggar samlas endast in när principen placeras i **utvecklarläge**.
+> Ange inte `DeploymentMode` `Development` i produktions miljöer. Loggar samlar in alla anspråk som skickas till och från identitets leverantörer. Du när utvecklaren antar ansvar för alla personliga data som samlas in i dina Application Insights loggar. Dessa detaljerade loggar samlas endast in när principen placeras i **utvecklarläge**.
 
 ## <a name="set-up-application-insights"></a>Konfigurera Application Insights
 
@@ -35,8 +35,8 @@ Om du inte redan har en, skapar du en instans av Application Insights i din pren
 1. Logga in på [Azure-portalen](https://portal.azure.com).
 1. Välj filtret **katalog + prenumeration** på den översta menyn och välj sedan den katalog som innehåller din Azure-prenumeration (inte din Azure AD B2C-katalog).
 1. Välj **skapa en resurs** i den vänstra navigerings menyn.
-1. Sök efter och välj **Application Insights**och välj sedan **skapa**.
-1. Fyll i formuläret, Välj **Granska + skapa**och välj sedan **skapa**.
+1. Sök efter och välj **Application Insights** och välj sedan **skapa**.
+1. Fyll i formuläret, Välj **Granska + skapa** och välj sedan **skapa**.
 1. När distributionen har slutförts väljer **du gå till resurs**.
 1. Under **Konfigurera** i Application Insights-menyn väljer du **Egenskaper**.
 1. Registrera **Instrumentation-nyckeln** för användning i ett senare steg.
@@ -59,10 +59,10 @@ Om du inte redan har en, skapar du en instans av Application Insights i din pren
     ```
 
     * `DeveloperMode="true"` instruerar ApplicationInsights att påskynda Telemetrin genom bearbetnings pipelinen. Lämpligt för utveckling, men är begränsat till hög volym. I produktion ställer du in `DeveloperMode` på `false` .
-    * `ClientEnabled="true"` skickar skript för ApplicationInsights på klient sidan för att spåra sid visning och fel på klient sidan. Du kan visa dessa i tabellen **browserTimings** i Application Insights-portalen. Genom att ställa in `ClientEnabled= "true"` lägger du till Application Insights i sid skriptet och du får tids inställningar för sid inläsningar och AJAX-anrop, antal, information om webb läsar undantag och AJAX-fel samt antal användare och sessioner. Det här fältet är **valfritt**och anges som `false` standard.
+    * `ClientEnabled="true"` skickar skript för ApplicationInsights på klient sidan för att spåra sid visning och fel på klient sidan. Du kan visa dessa i tabellen **browserTimings** i Application Insights-portalen. Genom att ställa in `ClientEnabled= "true"` lägger du till Application Insights i sid skriptet och du får tids inställningar för sid inläsningar och AJAX-anrop, antal, information om webb läsar undantag och AJAX-fel samt antal användare och sessioner. Det här fältet är **valfritt** och anges som `false` standard.
     * `ServerEnabled="true"` skickar den befintliga UserJourneyRecorder-JSON som en anpassad händelse till Application Insights.
 
-    Exempel:
+    Ett exempel:
 
     ```xml
     <TrustFrameworkPolicy

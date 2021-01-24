@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 10/13/2020
+ms.date: 01/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c9d9c43ae1be755ccb30fc377692257a81332ea8
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: b8711fa468cf361a42ed996c5b5dc50372d6cf90
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94593730"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746160"
 ---
 # <a name="tutorial-index-from-multiple-data-sources-using-the-net-sdk"></a>Självstudie: index från flera data källor med hjälp av .NET SDK
 
@@ -31,7 +31,7 @@ I den här självstudien utför du följande uppgifter:
 > * Indexera hotell data från Azure Cosmos DB
 > * Slå samman hotell rums data från Blob Storage
 
-Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
+Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
 ## <a name="overview"></a>Översikt
 
@@ -43,7 +43,7 @@ En färdig version av koden i den här självstudien finns i följande projekt:
 
 Den här självstudien har uppdaterats med Azure.Search.Documents-paketet (version 11). En tidigare version av .NET SDK finns i [kod exemplet Microsoft. Azure. search (version 10)](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/multiple-data-sources/v10) i GitHub.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 + [Azure Cosmos DB](../cosmos-db/create-cosmosdb-resources-portal.md)
 + [Azure Storage](../storage/common/storage-account-create.md)
@@ -110,7 +110,7 @@ Du behöver tjänst-URL och en åtkomst nyckel för att kunna autentisera till d
 
 1. [Logga](https://portal.azure.com/)in på Azure Portal och hämta URL: en på sidan **Översikt över** Sök tjänsten. Här följer ett exempel på hur en slutpunkt kan se ut: `https://mydemo.search.windows.net`.
 
-1. I **Inställningar**  >  **nycklar** , hämtar du en administratörs nyckel för fullständiga rättigheter till tjänsten. Det finns två utbytbara administratörs nycklar, som tillhandahålls för affärs kontinuitet om du behöver rulla en över. Du kan använda antingen den primära eller sekundära nyckeln på begär Anden för att lägga till, ändra och ta bort objekt.
+1. I **Inställningar**  >  **nycklar**, hämtar du en administratörs nyckel för fullständiga rättigheter till tjänsten. Det finns två utbytbara administratörs nycklar, som tillhandahålls för affärs kontinuitet om du behöver rulla en över. Du kan använda antingen den primära eller sekundära nyckeln på begär Anden för att lägga till, ändra och ta bort objekt.
 
    :::image type="content" source="media/search-get-started-javascript/service-name-and-keys.png" alt-text="Hämta tjänstens namn och administratör och fråge nycklar" border="false":::
 
@@ -306,7 +306,7 @@ private static async Task CreateAndRunBlobIndexerAsync(string indexName, SearchI
     await indexerClient.CreateOrUpdateDataSourceConnectionAsync(blobDataSource);
 ```
 
-När data källan har skapats konfigurerar programmet en BLOB-indexerare med namnet **hotell-rum-BLOB-Indexer** , som du ser nedan.
+När data källan har skapats konfigurerar programmet en BLOB-indexerare med namnet **hotell-rum-BLOB-Indexer**, som du ser nedan.
 
 JSON-blobbar innehåller ett nyckel fält med namnet **`Id`** i stället för **`HotelId`** . Koden använder `FieldMapping` klassen för att instruera indexeraren att dirigera **`Id`** fältvärdet till **`HotelId`** dokument nyckeln i indexet.
 

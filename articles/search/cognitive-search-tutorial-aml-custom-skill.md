@@ -1,23 +1,23 @@
 ---
-title: 'Självstudie: skapa och distribuera en anpassad kunskap med Azure Machine Learning'
+title: 'Exempel: skapa och distribuera en anpassad kunskap med Azure Machine Learning'
 titleSuffix: Azure Cognitive Search
-description: Den här självstudien visar hur du använder Azure Machine Learning för att bygga och distribuera en anpassad färdighet för Azure Kognitiv söknings pipeline för AI-anrikning.
+description: Det här exemplet visar hur du använder Azure Machine Learning för att bygga och distribuera en anpassad färdighet för Azure Kognitiv söknings pipeline för AI-anrikning.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
-ms.topic: tutorial
+ms.topic: conceptual
 ms.date: 09/25/2020
-ms.openlocfilehash: fa961a5a6d3a3b827a082fbac2acc3431ac40949
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 98d8395236bf955eed88f36c03c96981fa0e4b6b
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057611"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98745641"
 ---
-# <a name="tutorial-build-and-deploy-a-custom-skill-with-azure-machine-learning"></a>Självstudie: bygga och distribuera en anpassad kunskap med Azure Machine Learning 
+# <a name="example-build-and-deploy-a-custom-skill-with-azure-machine-learning"></a>Exempel: bygga och distribuera en anpassad kunskap med Azure Machine Learning 
 
-I den här självstudien använder du [data uppsättningen för hotell granskning](https://www.kaggle.com/datafiniti/hotel-reviews) (distribuerad under Creative Commons License [CC by-NC-sa 4,0](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.txt)) för att skapa en [anpassad färdighet](./cognitive-search-aml-skill.md) med Azure Machine Learning för att extrahera aspektbaserade sentiment från granskningarna. Detta gör det möjligt för tilldelning av positiva och negativa sentiment i samma granskning att bli korrekt tilldelad till identifierade entiteter som personal, rum, lobbyn eller pooler.
+I det här exemplet ska du använda [data uppsättningen för hotell granskning](https://www.kaggle.com/datafiniti/hotel-reviews) (distribuerad under Creative Commons License [CC by-NC-sa 4,0](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.txt)) för att skapa en [anpassad färdighet](./cognitive-search-aml-skill.md) med hjälp av Azure Machine Learning för att extrahera aspektbaserade sentiment från granskningarna. Detta gör det möjligt för tilldelning av positiva och negativa sentiment i samma granskning att bli korrekt tilldelad till identifierade entiteter som personal, rum, lobbyn eller pooler.
 
 För att träna den aspektbaserade sentiment-modellen i Azure Machine Learning kommer du att använda [lagrings platsen NLP recept](https://github.com/microsoft/nlp-recipes/tree/master/examples/sentiment_analysis/absa). Modellen kommer sedan att distribueras som en slut punkt i ett Azure Kubernetes-kluster. När den har distribuerats läggs slut punkten till i pipeline för anrikning som en AML-färdighet som används av den Kognitiv sökning tjänsten.
 
@@ -33,12 +33,12 @@ Det finns två angivna data uppsättningar. Om du vill träna modellen själv, k
 > [!IMPORTANT] 
 > Den här kunskapen är för närvarande en offentlig för hands version. För hands versions funktionerna tillhandahålls utan service nivå avtal och rekommenderas inte för produktions arbets belastningar. Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Det finns för närvarande inget stöd för .NET SDK.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 * Azure-prenumeration – hämta en [kostnads fri prenumeration](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * [Kognitiv sökning tjänst](./search-get-started-arm.md)
 * [Cognitive Services resurs](../cognitive-services/cognitive-services-apis-create-account.md?tabs=multiservice%2cwindows)
-* [Azure Storage konto](../storage/common/storage-account-create.md?tabs=azure-portal&toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+* [Azure-lagringskonto](../storage/common/storage-account-create.md?tabs=azure-portal&toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 * [Azure Machine Learning-arbetsyta](../machine-learning/how-to-manage-workspace.md)
 
 ## <a name="setup"></a>Installation

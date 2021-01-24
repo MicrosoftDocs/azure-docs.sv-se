@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 09/25/2020
-ms.openlocfilehash: 7c88aea6aff942cdcf5cbc022df8f07cfe0d4cce
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.date: 01/25/2021
+ms.openlocfilehash: a7a010e3c60d6b96947597878fcd870e9845b2b3
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701287"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746144"
 ---
 # <a name="tutorial-index-json-blobs-from-azure-storage-using-rest"></a>Självstudie: indexera JSON-blobbar från Azure Storage med REST
 
@@ -98,13 +98,13 @@ För att kunna göra REST-anrop behöver du tjänstens webbadress och en åtkoms
 
 1. I **Inställningar**  >  **nycklar**, hämtar du en administratörs nyckel för fullständiga rättigheter till tjänsten. Det finns två utbytbara administratörs nycklar, som tillhandahålls för affärs kontinuitet om du behöver rulla en över. Du kan använda antingen den primära eller sekundära nyckeln på begär Anden för att lägga till, ändra och ta bort objekt.
 
-:::image type="content" source="media/search-get-started-rest/get-url-key.png" alt-text="Hämta en HTTP-slutpunkt och åtkomst nyckel" border="false":::
+   :::image type="content" source="media/search-get-started-rest/get-url-key.png" alt-text="Hämta en HTTP-slutpunkt och åtkomst nyckel" border="false":::
 
 Alla begär Anden kräver en API-nyckel på varje begäran som skickas till din tjänst. En giltig nyckel upprättar förtroende, i varje begäran, mellan programmet som skickar begäran och tjänsten som hanterar den.
 
 ## <a name="2---set-up-postman"></a>2 – Konfigurera PostMan
 
-Starta Postman och konfigurera en HTTP-begäran. Om du inte känner till det här verktyget kan du läsa mer i [utforska Azure KOGNITIV sökning REST-API: er](search-get-started-rest.md).
+Starta Postman och konfigurera en HTTP-begäran. Om du inte känner till det här verktyget kan du läsa [skapa ett Sök index med hjälp av REST API: er](search-get-started-rest.md).
 
 Metoderna för begäran för varje anrop i den här självstudien är **post** och **Get**. Du gör tre API-anrop till din Sök tjänst för att skapa en data källa, ett index och en indexerare. Datakällan innehåller en pekare till ditt lagringskonto och dina JSON-data. Din söktjänst gör anslutningen vid inläsning av data.
 
@@ -158,7 +158,7 @@ Med [skapa data källans API](/rest/api/searchservice/create-data-source) skapas
     ```
 
 ## <a name="4---create-an-index"></a>4 – skapa ett index
-    
+
 Det andra anropet är [skapa index-API](/rest/api/searchservice/create-index), vilket skapar ett Azure kognitiv sökning-index som lagrar alla sökbara data. Ett index anger alla parametrar och deras attribut.
 
 1. Ange slut punkten för det här anropet till `https://[service name].search.windows.net/indexes?api-version=2020-06-30` . Ersätt `[service name]` med namnet på söktjänsten.

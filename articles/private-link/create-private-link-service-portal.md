@@ -8,18 +8,18 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 01/18/2021
 ms.author: allensu
-ms.openlocfilehash: 3e9ade329d2b26d36763db579b0fcec03e938aad
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: d394a475c5121607f70c03437382e104a5d0cbee
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98555465"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746415"
 ---
 # <a name="quickstart-create-a-private-link-service-by-using-the-azure-portal"></a>Snabb start: skapa en privat länk-tjänst med hjälp av Azure Portal
 
 Kom igång med att skapa en privat länk-tjänst som refererar till din tjänst.  Ge privat länk åtkomst till din tjänst eller resurs som distribueras bakom en Azure-Standard Load Balancer.  Användare av tjänsten har privat åtkomst från det virtuella nätverket.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 * Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -171,7 +171,7 @@ I det här avsnittet ska du skapa en belastnings Utjämnings regel:
 
 4. Lämna resten av standardinställningarna och välj sedan **OK**.
 
-## <a name="create-a-private-link-service"></a>Skapa en Private Link-tjänst
+## <a name="create-a-private-link-service"></a>Skapa en privat länk-tjänst
 
 I det här avsnittet ska du skapa en privat länk-tjänst bakom en standard belastningsutjämnare.
 
@@ -217,6 +217,112 @@ I det här avsnittet ska du skapa en privat länk-tjänst bakom en standard bela
 
 12. Välj **skapa** på fliken **Granska + skapa** .
 
+Din privata länk tjänst skapas och kan ta emot trafik. Om du vill se trafikflöden konfigurerar du ditt program bakom din standard belastningsutjämnare.
+
+
+## <a name="create-private-endpoint"></a>Skapa privat slut punkt
+
+I det här avsnittet ska du mappa den privata länk tjänsten till en privat slut punkt. Ett virtuellt nätverk innehåller den privata slut punkten för den privata länk tjänsten. Det här virtuella nätverket innehåller de resurser som kommer att ha åtkomst till din privata länk tjänst.
+
+### <a name="create-private-endpoint-virtual-network"></a>Skapa privat slut punkt för virtuellt nätverk
+
+1. Välj **Skapa en resurs > Nätverk > Virtuellt nätverk** eller sök efter **virtuellt nätverk** i sökrutan på den övre vänstra sidan på skärmen.
+
+2. I **Skapa virtuellt nätverk** anger eller väljer du den här informationen på fliken **grundläggande** :
+
+    | **Inställning**          | **Värde**                                                           |
+    |------------------|-----------------------------------------------------------------|
+    | **Projekt information**  |                                                                 |
+    | Prenumeration     | Välj din Azure-prenumeration                                  |
+    | Resursgrupp   | Välj **CreatePrivLinkService-RG** |
+    | **Instansinformation** |                                                                 |
+    | Name             | Ange **myVNetPE**                                    |
+    | Region           | Välj **USA, östra 2** |
+
+3. Välj fliken **IP-adresser** eller Välj **Nästa: knappen Nästa: IP-adress** längst ned på sidan.
+
+4. På fliken **IP-adresser** anger du den här informationen:
+
+    | Inställning            | Värde                      |
+    |--------------------|----------------------------|
+    | IPv4-adressutrymme | Ange **11.1.0.0/16** |
+
+5. Under **under näts namn** väljer du ordet **standard**.
+
+6. I **Redigera undernät** anger du den här informationen:
+
+    | Inställning            | Värde                      |
+    |--------------------|----------------------------|
+    | Namn på undernät | Ange **mySubnetPE** |
+    | Adressintervall för undernätet | Ange **11.1.0.0/24** |
+
+7. Välj **Spara**.
+
+8. Välj fliken **Granska + skapa** eller Välj knappen **Granska + skapa** .
+
+9. Välj **Skapa**.
+
+### <a name="create-private-endpoint"></a>Skapa privat slut punkt
+
+1. På den övre vänstra sidan av skärmen i portalen väljer du **skapa en resurs**  >  **nätverk**  >  **privat länk** eller i rutan Sök anger du **privat länk**.
+
+2. Välj **Skapa**.
+
+3. I **Private Link Center** väljer du **privata slut punkter** i den vänstra menyn.
+
+4. I **privata slut punkter** väljer du **+ Lägg till**.
+
+5. På fliken **grundläggande** i **skapa en privat slut punkt** anger eller väljer du den här informationen:
+
+    | Inställning | Värde |
+    | ------- | ----- |
+    | **Projektinformation** | |
+    | Prenumeration | Välj din prenumeration. |
+    | Resursgrupp | Välj **CreatePrivLinkService-RG**. Du har skapat den här resurs gruppen i föregående avsnitt.|
+    | **Instansinformation** |  |
+    | Name  | Ange **myPrivateEndpoint**. |
+    | Region | Välj **USA, östra 2**. |
+
+6. Välj fliken **resurs** eller **Nästa: resurs** längst ned på sidan.
+    
+7. I **resurs** anger eller väljer du den här informationen:
+
+    | Inställning | Värde |
+    | ------- | ----- |
+    | Anslutningsmetod | Välj **Anslut till en Azure-resurs i min katalog**. |
+    | Prenumeration | Välj din prenumeration. |
+    | Resurstyp | Välj **Microsoft. Network/privateLinkServices**. |
+    | Resurs | Välj **myPrivateLinkService**. |
+
+8. Välj fliken **konfiguration** eller **Nästa: konfigurations** knappen längst ned på skärmen.
+
+9. I **konfiguration** anger eller väljer du den här informationen:
+
+    | Inställning | Värde |
+    | ------- | ----- |
+    | **Nätverk** |  |
+    | Virtual Network | Välj **myVNetPE**. |
+    | Undernät | Välj **mySubnetPE**. |
+
+10. Välj fliken **Granska + skapa** eller knappen **Granska + skapa** längst ned på skärmen.
+
+11. Välj **Skapa**.
+
+### <a name="ip-address-of-private-endpoint"></a>IP-adress för privat slut punkt
+
+I det här avsnittet hittar du IP-adressen för den privata slut punkt som motsvarar belastningsutjämnaren och tjänsten privata länkar.
+
+1. I kolumnen till vänster i Azure Portal väljer du **resurs grupper**.
+
+2. Välj resurs gruppen **CreatePrivLinkService-RG** .
+
+3. I resurs gruppen **CreatePrivLinkService-RG** väljer du **myPrivateEndpoint**.
+
+4. På sidan **Översikt** i **myPrivateEndpoint** väljer du namnet på det nätverks gränssnitt som är associerat med den privata slut punkten.  Nätverks gränssnittets namn börjar med **myPrivateEndpoint. NIC**.
+
+5. På sidan **Översikt** i nätverkskortet för privat slut punkt visas IP-adressen för slut punkten i den **privata IP-adressen**.
+    
+
 ## <a name="clean-up-resources"></a>Rensa resurser
 
 När du är klar med den privata länk tjänsten tar du bort resurs gruppen för att rensa resurserna som används i den här snabb starten.
@@ -231,7 +337,8 @@ När du är klar med den privata länk tjänsten tar du bort resurs gruppen för
 I den här snabbstarten kommer du att göra följande:
 
 * Skapade ett virtuellt nätverk och internt Azure Load Balancer.
-* En privat länk tjänst har skapats
+* En privat länk tjänst har skapats.
+* Ett virtuellt nätverk och en privat slut punkt har skapats för den privata länk tjänsten.
 
 Om du vill veta mer om den privata Azure-slutpunkten fortsätter du till:
 > [!div class="nextstepaction"]

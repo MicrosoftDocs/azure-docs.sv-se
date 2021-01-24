@@ -3,8 +3,7 @@ title: Azure Event Hubs – .NET-undantag
 description: Den här artikeln innehåller en lista över undantag och föreslagna åtgärder för Azure Event Hubs .NET-meddelanden.
 services: event-hubs
 documentationcenter: na
-author: ShubhaVijayasarathy
-manager: timlt
+author: spelluru
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
@@ -12,13 +11,13 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.custom: seodec18
 ms.date: 09/23/2020
-ms.author: shvija
-ms.openlocfilehash: 6a1d7c969d31033ae9d00d212cc8f1a45abbeda1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: spelluru
+ms.openlocfilehash: af2d820fd255d041ade21a00d7d7a9ac6b12fcba
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91347397"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98745910"
 ---
 # <a name="eventhubsexception---net"></a>EventHubsException – .NET
 En **EventHubsException** utlöses när en åtgärd som är speciell för Event Hubs har orsakat ett problem, inklusive både fel i tjänsten och som är beroende av klienten. 
@@ -32,7 +31,7 @@ Undantaget innehåller följande sammanhangsbaserade information för att hjälp
     - **Tids gräns för tjänst**: anger att Event Hubs tjänsten inte svarade på en åtgärd inom den förväntade tiden. Det här problemet kan ha orsakats av ett tillfälligt problem med nätverket eller tjänsten. Tjänsten Event Hubs kanske inte har slutfört begäran. statusen är inte känd. Vi rekommenderar att du försöker verifiera det aktuella läget och försöker igen om det behövs.
     - **Kvoten överskreds**: anger att det finns för många aktiva Läs åtgärder för en enskild konsument grupp. Den här gränsen beror på nivån på Event Hubs namn området och det kan krävas att flytta till en högre nivå. Ett alternativ är att skapa ytterligare konsument grupper och se till att antalet konsument klient läsningar för en grupp ligger inom gränsen. Mer information finns i [Azure Event Hubs kvoter och begränsningar](event-hubs-quotas.md).
     - **Meddelandets storlek överskreds**: händelse data som en maximal storlek tillåts både för en enskild händelse och en grupp händelser. Den innehåller data för händelsen och eventuella associerade metadata och system kostnader. För att lösa det här felet minskar du antalet händelser som skickas i en grupp eller minskar storleken på data som ingår i meddelandet. Eftersom storleks gränserna kan ändras kan du läsa mer i [Azure Event Hubs kvoter och begränsningar](event-hubs-quotas.md) för mer information.
-    - **Konsumenten**är frånkopplad: en konsument klient kopplades från tjänsten Event Hub från Event Hub-instansen. Det inträffar vanligt vis när en konsument med en högre ägar nivå försäkrar ägarskap över en partition och konsument grupp par.
+    - **Konsumenten** är frånkopplad: en konsument klient kopplades från tjänsten Event Hub från Event Hub-instansen. Det inträffar vanligt vis när en konsument med en högre ägar nivå försäkrar ägarskap över en partition och konsument grupp par.
     - Det gick **inte att hitta resursen**: Event Hubs tjänsten kunde inte hitta någon resurs, till exempel en händelsehubben, konsument grupp eller partition. Den kan ha tagits bort eller också är det problem med själva Event Hubss tjänsten.
 
 ## <a name="handling-exceptions"></a>Hantering av undantag

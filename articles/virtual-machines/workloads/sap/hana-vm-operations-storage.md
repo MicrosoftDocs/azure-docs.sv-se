@@ -13,15 +13,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 11/26/2020
+ms.date: 01/23/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8c4aa608e892867daaf954284a9dfce997a9ae1f
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 01c6a2eb53e82965dd96deaa1a09afb1e70dda24
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96484285"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746755"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>Lagringskonfigurationer för virtuella Azure-datorer för SAP HANA
 
@@ -63,10 +63,22 @@ Vissa GUID-principer vid val av lagrings konfiguration för HANA kan visas som:
 - Bestäm vilken typ av lagring som baseras på [Azure Storage typer för SAP-arbetsbelastningar](./planning-guide-storage.md) och [Välj en disk typ](../../disks-types.md)
 - Det totala antalet i/O-dataflöde och IOPS-gränser i åtanke när du ändrar storlek på eller bestämmer dig för en virtuell dator. Det totala data flödet för VM-lagring dokumenteras i artikel [minnet optimerade storlekar för virtuella datorer](../../sizes-memory.md)
 - När du bestämmer dig för lagrings konfigurationen kan du försöka stanna under det totala data flödet för den virtuella datorn med din **/Hana/data** volym konfiguration. När du skriver lagrings punkter kan SAP HANA vara aggressivt utfärdande I/o. Det går enkelt att skjuta upp till data flödes gränserna för din **/Hana/data** -volym när du skriver en lagrings punkt. Om diskarna som bygger **/Hana/data** -volymen har ett högre data flöde än vad den virtuella datorn tillåter kan du köra i situationer där data flöde som används av lagrings utrymmes skrivningen stör data flödes kraven för Skriv om-logg skrivningar. En situation som kan påverka programmets data flöde
-- Om du använder Azure Premium Storage är den billigaste konfigurationen att använda logiska volym hanterare för att bygga stripe-uppsättningar för att bygga **/Hana/data** -och **/Hana/log** -volymer
+
 
 > [!IMPORTANT]
 > Förslagen för lagrings konfigurationerna är avsedda som instruktioner för att börja med. Genom att köra arbets belastning och analysera lagrings användnings mönster kan du vara medveten om att du inte använder all lagrings bandbredd eller IOPS som tillhandahålls. Du kan överväga downsizing på lagring och sedan. I motsats kan din arbets belastning behöva mer lagrings data flöde än det som föreslås med dessa konfigurationer. Därför kan du behöva distribuera mer kapacitet, IOPS eller data flöde. I fältet för en spänning mellan lagrings kapacitet som krävs, lagrings fördröjning krävs, lagrings data flöde och IOPS som krävs och minst dyrbar konfiguration, erbjuder Azure tillräckligt med olika lagrings typer med olika funktioner och olika pris punkter för att hitta och anpassa till rätt kompromisser för dig och din HANA-arbetsbelastning.
+
+
+## <a name="stripe-sets-versus-sap-hana-data-volume-partitioning"></a>Stripe-uppsättningar jämfört SAP HANA data volym partitionering
+Med Azure Premium Storage kan du uppnå bästa pris-och prestanda förhållande när du stripar **/Hana/data** och/eller **/Hana/log** -volymen över flera Azure-diskar. I stället för att distribuera större disk volymer som ger mer på IOPS eller genom strömning krävs. Hittills har detta utförts med LVM-och MDADM-volym hanterare som är en del av Linux. Metoden för att Stripa diskar är årtionden Gammal och välkänd. Eftersom dessa stripe-volymer är för att komma till de IOPS-eller data flödes funktioner som du kan behöva, lägger den till komplexa funktioner kring hanteringen av de stripe volymerna. Särskilt i fall då volymerna behöver få utökad kapacitet. I minst för **/Hana/data** introducerade SAP en alternativ metod som uppnår samma mål som striping över flera Azure-diskar. Eftersom SAP HANA 2,0 SPS03 kan HANA-indexserver ta bort sin I/O-aktivitet mellan flera HANA-datafiler som finns på olika Azure-diskar. Fördelen är att du inte behöver ta hand om att skapa och hantera en stripe-volym på olika Azure-diskar. SAP HANA funktionerna i data volym partitionering beskrivs i detalj i:
+
+- [Administratörs hand boken för HANA](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.05/en-US/40b2b2a880ec4df7bac16eae3daef756.html?q=hana%20data%20volume%20partitioning)
+- [Blogg om SAP HANA – partitionering av data volymer](https://blogs.sap.com/2020/10/07/sap-hana-partitioning-data-volumes/)
+- [SAP-anteckning #2400005](https://launchpad.support.sap.com/#/notes/2400005)
+- [SAP-anteckning #2700123](https://launchpad.support.sap.com/#/notes/2700123)
+
+Genom att läsa informationen är det uppenbart att du använder den här funktionen för att ta bort komplexa mängder av volym Manager-baserade stripe-uppsättningar. Du inser också att data volym partitionering i HANA inte bara fungerar för Azure block Storage, till exempel Azure Premium Storage. Du kan använda den här funktionen även för att Stripa över NFS-resurser om dessa resurser har IOPS-eller data flödes begränsningar.  
+
 
 ## <a name="linux-io-scheduler-mode"></a>Läge för I/O-Schemaläggaren I Linux
 Linux har flera olika I/O-schemaläggnings lägen. Vanliga rekommendationer via Linux-leverantörer och SAP är att konfigurera om I/O Scheduler-läget för disk volymer från **MQ-** eller **Kyber** -läget till **Noop** (inte multiqueue) eller **ingen** för läget (multiqueue). Information finns i [SAP obs #1984787](https://launchpad.support.sap.com/#/notes/1984787). 

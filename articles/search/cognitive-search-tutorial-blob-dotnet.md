@@ -7,14 +7,14 @@ author: MarkHeff
 ms.author: maheff
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 10/05/2020
+ms.date: 01/23/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: da7a80842bec68fde8cc44401bb04c2dd061741f
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 4bda56f3037469477ddfe059dd20c14cd34586d8
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92787966"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98745724"
 ---
 # <a name="tutorial-ai-generated-searchable-content-from-azure-blobs-using-the-net-sdk"></a>Självstudie: AI-genererat sökbart innehåll från Azure-blobbar med .NET SDK
 
@@ -23,8 +23,8 @@ Om du har ostrukturerad text eller avbildningar i Azure Blob Storage kan en [AI-
 I den här självstudien får du lära dig hur man:
 
 > [!div class="checklist"]
-> * Konfigurera en utvecklings miljö.
-> * Definiera en pipeline över blobbar med OCR, språk identifiering, entitet och nyckel fras igenkänning.
+> * Konfigurera en utvecklings miljö
+> * Definiera en pipeline som använder OCR, språk identifiering och enhets-och nyckel fras igenkänning.
 > * Kör pipelinen för att anropa transformationer och för att skapa och läsa in ett sökindex.
 > * Utforska resultat med fullständig texts ökning och en omfattande frågesyntax.
 
@@ -32,11 +32,13 @@ Om du inte har någon Azure-prenumeration kan du öppna ett [kostnads fritt kont
 
 ## <a name="overview"></a>Översikt
 
-I den här självstudien används C# och **Azure.Search.Documents** -klient biblioteket för att skapa en data källa, index, indexerare och färdigheter.
+I den här självstudien används C# och [ **Azure.Search.Documents** -klient biblioteket](/dotnet/api/overview/azure/search.documents-readme) för att skapa en data källa, index, indexerare och färdigheter.
 
-I färdigheter används inbyggda kunskaper baserat på API:er för Cognitive Services. Stegen i pipelinen inkluderar optisk tecken läsning (OCR) på bilder, språk identifiering på text, extrahering av nyckel fraser och enhets igenkänning (organisationer). Ny information lagras i nya fält som kan utnyttjas i frågor, ansikts och filter.
+Indexeraren ansluter till en BLOB-behållare som anges i objektet data källa och skickar allt indexerat innehåll till ett befintligt sökindex.
 
-## <a name="prerequisites"></a>Förutsättningar
+Färdigheter är kopplad till indexeraren. Den använder inbyggda kunskaper från Microsoft för att hitta och extrahera information. Stegen i pipelinen inkluderar optisk tecken läsning (OCR) på bilder, språk identifiering på text, extrahering av nyckel fraser och enhets igenkänning (organisationer). Ny information som skapas av pipelinen lagras i nya fält i ett index. När indexet har fyllts kan du använda fälten i frågor, ansikts och filter.
+
+## <a name="prerequisites"></a>Krav
 
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/)
 * [Azure.Search.Documents 11. x NuGet-paket](https://www.nuget.org/packages/Azure.Search.Documents) 
@@ -52,7 +54,7 @@ Exempel data består av 14 filer av blandad innehålls typ som du kommer att öv
 
 1. Öppna den här [OneDrive-mappen](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4) och klicka på **Ladda ned** i det övre vänstra hörnet för att kopiera filerna till datorn. 
 
-1. Högerklicka på zip-filen och välj **extrahera alla** . Det finns 14 filer av olika typer. Du använder 7 för den här övningen.
+1. Högerklicka på zip-filen och välj **extrahera alla**. Det finns 14 filer av olika typer. Du använder 7 för den här övningen.
 
 Du kan också ladda ned käll koden för den här självstudien. Käll koden finns i **självstudien – AI-anrikning/V11** -mappen i [Azure-Search-dotNet-samples](https://github.com/Azure-Samples/azure-search-dotnet-samples) -lagringsplatsen.
 
@@ -64,7 +66,7 @@ Skapa om möjligt både i samma region och resurs grupp för närhet och hanterb
 
 ### <a name="start-with-azure-storage"></a>Börja med Azure Storage
 
-1. [Logga](https://portal.azure.com/) in på Azure Portal och klicka på **+ skapa resurs** .
+1. [Logga](https://portal.azure.com/) in på Azure Portal och klicka på **+ skapa resurs**.
 
 1. Sök efter *lagrings konto* och välj Microsofts erbjudande för lagrings konto.
 
@@ -72,13 +74,13 @@ Skapa om möjligt både i samma region och resurs grupp för närhet och hanterb
 
 1. På fliken grundläggande måste följande objekt vara obligatoriska. Acceptera standardvärdena för allt annat.
 
-   * **Resursgrupp** . Välj en befintlig eller skapa en ny, men Använd samma grupp för alla tjänster så att du kan hantera dem tillsammans.
+   * **Resursgrupp**. Välj en befintlig eller skapa en ny, men Använd samma grupp för alla tjänster så att du kan hantera dem tillsammans.
 
-   * **Namn på lagringskonto** . Om du tror att du kan ha flera resurser av samma typ, använder du namnet på disambiguate efter typ och region, till exempel *blobstoragewestus* . 
+   * **Namn på lagringskonto**. Om du tror att du kan ha flera resurser av samma typ, använder du namnet på disambiguate efter typ och region, till exempel *blobstoragewestus*. 
 
-   * **Plats** . Om möjligt väljer du samma plats som används för Azure Kognitiv sökning och Cognitive Services. Med en enda plats annulleras bandbredds avgifter.
+   * **Plats**. Om möjligt väljer du samma plats som används för Azure Kognitiv sökning och Cognitive Services. Med en enda plats annulleras bandbredds avgifter.
 
-   * **Typ av konto** . Välj standard, *StorageV2 (generell användning v2)* .
+   * **Typ av konto**. Välj standard, *StorageV2 (generell användning v2)*.
 
 1. Klicka på **Granska + skapa** för att skapa tjänsten.
 
@@ -86,7 +88,7 @@ Skapa om möjligt både i samma region och resurs grupp för närhet och hanterb
 
 1. Klicka på **blobs** -tjänsten.
 
-1. Klicka på **+ container** för att skapa en behållare och ge den namnet *kugg hjuls-search-demo* .
+1. Klicka på **+ container** för att skapa en behållare och ge den namnet *kugg hjuls-search-demo*.
 
 1. Välj *kugg hjuls-search-demo* och klicka sedan på **Ladda upp** för att öppna mappen där du sparade nedladdnings filerna. Välj alla fjorton filer och klicka på **OK** för att ladda upp.
 
@@ -124,7 +126,7 @@ Om du vill interagera med din Azure Kognitiv sökning-tjänst behöver du tjäns
 
 1. [Logga](https://portal.azure.com/)in på Azure Portal och hämta URL: en på sidan **Översikt över** Sök tjänsten. Här följer ett exempel på hur en slutpunkt kan se ut: `https://mydemo.search.windows.net`.
 
-1. I **Inställningar**  >  **nycklar** , kopierar du en administratörs nyckel för fullständiga rättigheter till tjänsten. Det finns två utbytbara administratörs nycklar, som tillhandahålls för affärs kontinuitet om du behöver rulla en över. Du kan använda antingen den primära eller sekundära nyckeln på begär Anden för att lägga till, ändra och ta bort objekt.
+1. I **Inställningar**  >  **nycklar**, kopierar du en administratörs nyckel för fullständiga rättigheter till tjänsten. Det finns två utbytbara administratörs nycklar, som tillhandahålls för affärs kontinuitet om du behöver rulla en över. Du kan använda antingen den primära eller sekundära nyckeln på begär Anden för att lägga till, ändra och ta bort objekt.
 
    Hämta även frågans nyckel. Det är en bra idé att utfärda förfrågningar med skrivskyddad åtkomst.
 
@@ -146,7 +148,7 @@ För det här projektet installerar du version 11 eller senare av `Azure.Search.
 
 1. Bläddra efter [Azure.Search.Document](https://www.nuget.org/packages/Azure.Search.Documents).
 
-1. Välj den senaste versionen och klicka sedan på **Installera** .
+1. Välj den senaste versionen och klicka sedan på **Installera**.
 
 1. Upprepa föregående steg för att installera [Microsoft.Extensions.Configuration](https://www.nuget.org/packages/Microsoft.Extensions.Configuration) och [Microsoft.Extensions.Configuration.Jspå](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Json).
 
@@ -154,10 +156,10 @@ För det här projektet installerar du version 11 eller senare av `Azure.Search.
 
 1. Högerklicka på ditt projekt i Solution Explorer och välj **Lägg till**  >  **nytt objekt.** ... 
 
-1. Ge filen ett namn `appsettings.json` och välj **Lägg till** . 
+1. Ge filen ett namn `appsettings.json` och välj **Lägg till**. 
 
 1. Ta med den här filen i din utmatnings katalog.
-    1. Högerklicka på `appsettings.json` och välj **Egenskaper** . 
+    1. Högerklicka på `appsettings.json` och välj **Egenskaper**. 
     1. Ändra värdet för **Kopiera till utdatakatalogen** för att **Kopiera om** det är nyare.
 
 1. Kopiera nedanstående JSON till din nya JSON-fil.
@@ -173,7 +175,7 @@ För det här projektet installerar du version 11 eller senare av `Azure.Search.
 
 Lägg till din Sök tjänst och information om Blob Storage-kontot. Kom ihåg att du kan hämta den här informationen från tjänst etablerings stegen som anges i föregående avsnitt.
 
-Ange den fullständiga URL: en för **SearchServiceUri** .
+Ange den fullständiga URL: en för **SearchServiceUri**.
 
 ### <a name="add-namespaces"></a>Lägg till namn områden
 
@@ -285,7 +287,7 @@ Skapa och kör lösningen. Eftersom det här är din första förfrågan kontrol
 
 ### <a name="step-2-create-a-skillset"></a>Steg 2: skapa en färdigheter
 
-I det här avsnittet definierar du en uppsättning med anriknings steg som du vill använda för dina data. Varje anriknings steg kallas en *färdighet* och en uppsättning av anriknings steg, en *färdigheter* . I den här självstudien används [inbyggda kognitiva kunskaper](cognitive-search-predefined-skills.md) för färdigheter:
+I det här avsnittet definierar du en uppsättning med anriknings steg som du vill använda för dina data. Varje anriknings steg kallas en *färdighet* och en uppsättning av anriknings steg, en *färdigheter*. I den här självstudien används [inbyggda kognitiva kunskaper](cognitive-search-predefined-skills.md) för färdigheter:
 
 * [Optisk tecken läsning](cognitive-search-skill-ocr.md) för att identifiera skriven och handskriven text i bildfiler.
 
@@ -580,7 +582,7 @@ Den här övningen använder följande fält och fälttyp:
 
 Fält för det här indexet definieras med en modell klass. Varje egenskap i modellklassen har attribut som avgör motsvarande indexfälts sökrelaterade beteende. 
 
-Vi ska lägga till modell klassen i en ny C#-fil. Högerklicka på projektet och välj **Lägg till**  >  **nytt objekt...** , välj "klass" och ge filen ett namn och `DemoIndex.cs` Välj sedan **Lägg till** .
+Vi ska lägga till modell klassen i en ny C#-fil. Högerklicka på projektet och välj **Lägg till**  >  **nytt objekt...**, välj "klass" och ge filen ett namn och `DemoIndex.cs` Välj sedan **Lägg till**.
 
 Se till att ange att du vill använda typer från `Azure.Search.Documents.Indexes` `System.Text.Json.Serialization` namn områdena och.
 
@@ -826,13 +828,13 @@ I Azure Kognitiv sökning själv studie konsol appar lägger vi vanligt vis till
 
 Det enklaste alternativet är [Sök Utforskaren](search-explorer.md) i portalen. Du kan först köra en tom fråga som returnerar alla dokument eller en mer riktad sökning som returnerar nytt fält innehåll som skapats av pipelinen. 
 
-1. I Azure Portal går du till sidan Sök översikt och väljer **index** .
+1. I Azure Portal går du till sidan Sök översikt och väljer **index**.
 
 1. Sök **`demoindex`** i listan. Den bör ha 14 dokument. Om antalet dokument är noll körs inte indexeraren eller så har sidan ännu inte uppdaterats. 
 
-1. Välj **`demoindex`** . Sök Utforskaren är den första fliken.
+1. Välj **`demoindex`**. Sök Utforskaren är den första fliken.
 
-1. Innehållet är sökbart så snart det första dokumentet har lästs in. Om du vill kontrol lera att innehållet finns kör du en ospecificerad fråga genom att klicka på **Sök** . Den här frågan returnerar alla för tillfället indexerade dokument, vilket ger dig en uppfattning om vad indexet innehåller.
+1. Innehållet är sökbart så snart det första dokumentet har lästs in. Om du vill kontrol lera att innehållet finns kör du en ospecificerad fråga genom att klicka på **Sök**. Den här frågan returnerar alla för tillfället indexerade dokument, vilket ger dig en uppfattning om vad indexet innehåller.
 
 1. Klistra sedan in följande sträng för mer hanterbara resultat: `search=*&$select=id, languageCode, organizations`
 
@@ -854,7 +856,7 @@ Slutligen lärde du dig att testa resultat och återställa systemet för ytterl
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
-När du arbetar i din egen prenumeration är det en bra idé att ta bort de resurser som du inte längre behöver i slutet av projektet. Resurser som fortsätter att köras kostar pengar. Du kan ta bort enstaka resurser eller ta bort hela resursuppsättningen genom att ta bort resursgruppen.
+När du arbetar i din egen prenumeration är det en bra idé att ta bort de resurser som du inte längre behöver i slutet av projektet. Resurser som fortsätter att köras kostar pengar. Du kan ta bort resurser individuellt eller ta bort resursgruppen om du vill ta bort hela uppsättningen resurser.
 
 Du kan hitta och hantera resurser i portalen med hjälp av länken alla resurser eller resurs grupper i det vänstra navigerings fönstret.
 

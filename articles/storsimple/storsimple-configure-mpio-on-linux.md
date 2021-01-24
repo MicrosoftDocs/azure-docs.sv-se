@@ -7,12 +7,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 06/12/2019
 ms.author: alkohli
-ms.openlocfilehash: 6584b2ecc54efd257bb30c479fd0f22150e8d9e1
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: 2b7ddf6423db4c471ee2065635f4e3e89f7eb7b2
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96608596"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98745741"
 ---
 # <a name="configure-mpio-on-a-storsimple-host-running-centos"></a>Konfigurera MPIO på en StorSimple-värd som kör CentOS
 I den här artikeln beskrivs de steg som krävs för att konfigurera multipath i/o (MPIO) på din CentOS 6,6-värd Server. Värd servern är ansluten till din Microsoft Azure StorSimple enhet för hög tillgänglighet via iSCSI-initierare. Den beskriver i detalj den automatiska identifieringen av flera Sök vägs enheter och den speciella installationen enbart för StorSimple volymer.
@@ -21,10 +21,6 @@ Den här proceduren gäller för alla modeller av enheter med StorSimple 8000-se
 
 > [!NOTE]
 > Det går inte att använda den här proceduren för en StorSimple Cloud Appliance. Mer information finns i så här konfigurerar du värd servrar för moln installationen.
-
-> [!NOTE]
-> Den här artikeln innehåller referenser till termen *Black*, en term som Microsoft inte längre använder. När termen tas bort från program varan tar vi bort det från den här artikeln.
-
 
 ## <a name="about-multipathing"></a>Om flera sökvägar
 Med funktionen flera sökvägar kan du konfigurera flera I/O-sökvägar mellan en värd Server och en lagrings enhet. Dessa I/O-sökvägar är fysiska SAN-anslutningar som kan innehålla separata kablar, växlar, nätverks gränssnitt och styrenheter. Med flera sökvägar sammanställs i/O-sökvägar för att konfigurera en ny enhet som är associerad med alla aggregerade sökvägar.
@@ -54,7 +50,7 @@ Multisökväg. conf har fem avsnitt:
 
 - **Standardinställningar för system nivå** *(standard)*: du kan åsidosätta system nivåns standardinställningar.
 - Svartlistade **enheter** *(Black)*: du kan ange en lista över enheter som inte ska kontrol leras av enhets mappning.
-- **Black List-undantag** *(blacklist_exceptions)*: du kan identifiera vilka enheter som ska hanteras som flera Sök vägs enheter även om de visas i list rutan i Black.
+- **Black List-undantag** *(blacklist_exceptions)*: du kan identifiera vilka enheter som ska hanteras som flera Sök vägs enheter även om de anges i blockeringslistan.
 - **Inställningar för lagrings styrenhet** *(enheter)*: du kan ange de konfigurations inställningar som ska tillämpas på enheter som har leverantörs-och produkt information.
 - **Enhets specifika inställningar** *(flera sökvägar)*: du kan använda det här avsnittet för att finjustera konfigurations inställningarna för enskilda LUN.
 
@@ -63,7 +59,7 @@ En StorSimple-enhet som är ansluten till en Linux-värd kan konfigureras för h
 
 Följande procedur beskriver hur du konfigurerar flera sökvägar när en StorSimple-enhet med två nätverks gränssnitt är ansluten till en värd med två nätverks gränssnitt.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 I det här avsnittet beskrivs konfigurations kraven för CentOS-servern och din StorSimple-enhet.
 
 ### <a name="on-centos-host"></a>På CentOS-värd
@@ -215,12 +211,12 @@ Enheter som stöds för flera sökvägar kan identifieras och konfigureras autom
     ```
 
 ### <a name="step-2-configure-multipathing-for-storsimple-volumes"></a>Steg 2: Konfigurera flera sökvägar för StorSimple-volymer
-Som standard är alla enheter svarta i listan över flera sökvägar. conf-filen och kommer att kringgås. Du måste skapa Black-undantag för att tillåta flera sökvägar för volymer från StorSimple-enheter.
+Som standard är alla enheter blocklisted i filen multipath. conf och kommer att kringgås. Du måste skapa blockeringslistan-undantag för att tillåta flera sökvägar för volymer från StorSimple-enheter.
 
 1. Redigera filen `/etc/mulitpath.conf`. Ange:
    
     `vi /etc/multipath.conf`
-1. Leta upp avsnittet blacklist_exceptions i filen multipath. conf. Din StorSimple-enhet måste anges som ett svartlistat undantag i det här avsnittet. Du kan ta bort kommentaren till relevanta rader i den här filen om du vill ändra den enligt nedan (Använd endast den enhets modell som du använder):
+1. Leta upp avsnittet blacklist_exceptions i filen multipath. conf. Din StorSimple-enhet måste anges som ett blockeringslistan-undantag i det här avsnittet. Du kan ta bort kommentaren till relevanta rader i den här filen om du vill ändra den enligt nedan (Använd endast den enhets modell som du använder):
    
     ```config
     blacklist_exceptions {

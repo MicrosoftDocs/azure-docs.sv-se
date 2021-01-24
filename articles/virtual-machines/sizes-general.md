@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/20/2020
 ms.author: mimckitt
-ms.openlocfilehash: 6929c0110dcf9ff9f59c200243e886af1936c22f
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 6f6f98b39f693d2d15b77cdf6de6251e1c264c8a
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018839"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746095"
 ---
 # <a name="general-purpose-virtual-machine-sizes"></a>Generella storlekar för virtuella datorer
 
@@ -23,7 +23,7 @@ Generella storlekar för virtuella datorer ger balanserade förhållandet mellan
 - De virtuella datorerna i [AV2-serien](av2-series.md) kan distribueras på olika typer av maskin vara och processorer. Virtuella datorer i A-serien har CPU-prestanda och minneskonfigurationer som är bäst lämpade för arbets belastningar på ingångs nivå som utveckling och testning. Storleken begränsas, baserat på maskinvaran, för att erbjuda enhetliga processorprestanda på instansen som körs, oavsett vilken maskinvara instansen har distribuerats på. Du kan kontrollera vilken fysisk maskinvara som storleken har distribuerats på genom att köra en fråga mot den virtuella maskinvaran från den virtuella datorn. Exempel på användnings områden är utvecklings-och test servrar, webb servrar med låg trafik, små till medel stora databaser, koncept koncept och kod databaser.
 
   > [!NOTE]
-  > De virtuella datorerna A8 – A11 planeras för att dra på 3/2021. Mer information finns i [Guide för HPC-migrering](https://azure.microsoft.com/resources/hpc-migration-guide/).
+  > De virtuella A8-, A9-och A10 A11-datorerna planeras för pensionering den 3/2021. Mer information finns i [Guide för HPC-migrering](https://azure.microsoft.com/resources/hpc-migration-guide/). De här VM-storlekarna finns i den ursprungliga A_v1-serien, inte "v2".
 
 - [B-seriens burst-](sizes-b-series-burstable.md) överföring Virtuella datorer är idealiska för arbets belastningar som inte behöver PROCESSORns fulla prestanda kontinuerligt, till exempel webb servrar, små databaser och utvecklings-och test miljöer. Dessa arbets belastningar har vanligt vis höga prestanda krav. B-serien ger kunderna möjlighet att köpa en VM-storlek med en pris medveten bas linje prestanda som gör det möjligt för den virtuella dator instansen att bygga krediter när den virtuella datorn använder mindre än dess grundläggande prestanda. När den virtuella datorn har ackumulerat kredit kan den virtuella datorn överföras över den virtuella datorns bas linje med upp till 100% av CPU: n när programmet kräver högre CPU-prestanda.
 

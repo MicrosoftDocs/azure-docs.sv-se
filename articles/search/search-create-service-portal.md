@@ -7,19 +7,19 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 10/14/2020
-ms.openlocfilehash: 3f55e2a7d62d2f32173d382dc9be0d6eb4f83fae
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.date: 01/23/2021
+ms.openlocfilehash: 57867cc4fb539b07fc1e4117f6e956078c41e2c6
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98249762"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746704"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>Snabbstart: Skapa en Azure Cognitive Search-tjänst i portalen
 
-Azure Kognitiv sökning är en fristående resurs som används för att koppla en Sök upplevelse till anpassade appar. Kognitiv sökning integreras enkelt med andra Azure-tjänster, med appar på nätverks servrar eller med program vara som körs på andra moln plattformar.
+[Azure kognitiv sökning](search-what-is-azure-search.md) är en Azure-resurs som används för att lägga till en fullständig texts ökning i anpassade appar. Du kan enkelt integrera det med andra Azure-tjänster som tillhandahåller data eller ytterligare bearbetning, med appar på nätverks servrar eller med program vara som körs på andra moln plattformar.
 
-I den här artikeln får du lära dig hur du skapar en resurs i [Azure Portal](https://portal.azure.com/).
+I den här artikeln lär du dig hur du skapar en Sök tjänst i [Azure Portal](https://portal.azure.com/).
 
 [![Animerad GIF](./media/search-create-service-portal/AnimatedGif-AzureSearch-small.gif)](./media/search-create-service-portal/AnimatedGif-AzureSearch.gif#lightbox)
 
@@ -31,7 +31,7 @@ Följande tjänst egenskaper har åtgärd ATS för livs längden för tjänsten 
 
 * Tjänst namnet blir en del av URL-slutpunkten ([gransknings tips](#name-the-service) för användbara tjänst namn).
 * [Tjänst nivån](search-sku-tier.md) påverkar faktureringen och ställer in en övre gräns för kapacitet. Vissa funktioner är inte tillgängliga på den kostnads fria nivån.
-* Tjänste region kan avgöra om vissa scenarier är tillgängliga. Om du behöver [hög säkerhetsfunktioner](search-security-overview.md) eller [AI-berikning](cognitive-search-concept-intro.md)måste du placera Azure kognitiv sökning i samma region som andra tjänster, eller i regioner som tillhandahåller funktionen i fråga. 
+* Tjänste region kan avgöra om vissa scenarier är tillgängliga. Om du behöver [hög säkerhetsfunktioner](search-security-overview.md) eller [AI-berikning](cognitive-search-concept-intro.md)måste du skapa Azure-kognitiv sökning i samma region som andra tjänster, eller i regioner som tillhandahåller funktionen i fråga. 
 
 ## <a name="subscribe-free-or-paid"></a>Prenumerera (kostnadsfritt eller betalt)
 
@@ -43,7 +43,7 @@ Du kan också [aktivera MSDN-prenumerantförmåner](https://azure.microsoft.com/
 
 1. Logga in på [Azure-portalen](https://portal.azure.com/).
 
-1. Klicka på plustecknet (”+ Skapa resurs”) i det övre vänstra hörnet.
+1. Klicka på plus tecknet (**"+ skapa resurs"**) i det övre vänstra hörnet.
 
 1. Använd Sök fältet för att hitta "Azure kognitiv sökning" eller navigera till resursen via **Web**  >  **Azure kognitiv sökning**.
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2020
-ms.openlocfilehash: 7336078d1f04b9dcb6c2f229654f1c36d9b3114b
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: bc229974cf14ba364e5e7111dc1d2704e03c3635
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96919974"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746806"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Vanliga frågor och svar om Azure Monitor
 
@@ -345,7 +345,9 @@ Detta är möjligt om din kod skickar sådana data. Det kan också hända om var
 
 **Alla** oktetter i klient webb adressen är alltid inställda på 0 när attributen för geo-platsen har sökts upp.
 
-### <a name="my-instrumentation-key-is-visible-in-my-web-page-source"></a>Min Instrumentation-nyckel är synlig i min webb Side källa. 
+[Application Insights Java Script SDK](app/javascript.md) inkluderar inte några personliga data i ifyllning som standard. Vissa personliga data som används i ditt program kan dock hämtas av SDK (till exempel fullständiga namn i `window.title` eller konto-ID i XHR URL-frågeparametrar). För anpassad personlig data maskning lägger du till en [telemetri-initierare](app/api-filtering-sampling.md#javascript-web-applications).
+
+### <a name="my-instrumentation-key-is-visible-in-my-web-page-source"></a>Min Instrumentation-nyckel är synlig i min webb Side källa.
 
 * Det här är en vanlig metod för övervakning av lösningar.
 * Det kan inte användas för att stjäla dina data.

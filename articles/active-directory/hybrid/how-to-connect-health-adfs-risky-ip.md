@@ -16,12 +16,12 @@ ms.date: 02/26/2019
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57d74272d77183baa2284265aee298967f641250
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: e0b76d2f943f254eb06208e2c190bae4d4088030
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97504890"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746078"
 ---
 # <a name="risky-ip-report-public-preview"></a>Riskfylld IP-rapport (offentlig för hands version)
 AD FS kunder kan exponera slut punkter för autentisering av lösen ord till Internet för att tillhandahålla autentiseringstjänster för slutanvändare att få åtkomst till SaaS-program som Microsoft 365. I det här fallet är det möjligt för någon obehörig att försöka logga in på ditt AD FS-system genom att gissa slutanvändarens lösenord och få åtkomst till programresurser. AD FS har innehållit en utelåsningsfunktion för extranätskonton som förhindrar dessa typer av angrepp sedan AD FS i Windows Server 2012 R2. Om du har en lägre version rekommenderar vi starkt att du uppgraderar ditt AD FS-system till Windows Server 2016. <br />
@@ -37,9 +37,6 @@ Dessutom är det möjligt att en enskild IP-adress kan försöka utföra flera i
 > Om du ska kunna använda rapporten måste AD FS-granskning vara aktiverat. Mer information finns i [Aktivera granskning för AD FS](how-to-connect-health-agent-install.md#enable-auditing-for-ad-fs). <br />
 > Om du vill ha åtkomst till förhandsversionen måste du ha behörighet som global administratör eller [säkerhetsläsare](../../role-based-access-control/built-in-roles.md#security-reader).  
 >
-
-> [!NOTE]
-> Den här artikeln innehåller referenser till termen *vitlista*, en term som Microsoft inte längre använder. När termen tas bort från program varan tar vi bort det från den här artikeln.
 
 ## <a name="what-is-in-the-report"></a>Vad finns i rapporten?
 Klientens IP-adresser för inloggning med misslyckade inloggningar sammanställs via Web Application Proxy-servrar. Varje objekt i rapporten för riskfyllda IP-adresser visar sammanställd information om misslyckade AD FS-inloggningsaktiviteter där angivet tröskelvärde har överskridits. Det innehåller följande information: ![ skärm bild som visar en riskfylld IP-rapport med kolumn rubriker markerad.](./media/how-to-connect-health-adfs/report4a.png)

@@ -65,10 +65,12 @@
       href: howto-manage-digital-twin.md
     - name: Certifiera en enhet
       href: howto-certify-device.md
-    - name: Installera och använda IoT Plug and Play-brygga
+    - name: Så här ansluter du ett IoT Plug and Play Bridge-exempel
       href: howto-use-iot-pnp-bridge.md
-    - name: 'Skapa, distribuera och utöka IoT Plug and Play-brygga'
+    - name: Skapa och distribuera IoT Plug and Play-brygga
       href: howto-build-deploy-extend-pnp-bridge.md
+    - name: Utöka IoT Plug and Play Bridge
+      href: howto-author-pnp-bridge-adapter.md
 - name: Referens
   items:
     - name: 'Bibliotek och SDK:er'

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/06/2020
 ms.author: Zhchia
-ms.openlocfilehash: c3f61c3fe688a0b7533902fb0caa19b67f883482
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: 5243e9490c9de0d6df1520edb970da93fabef85a
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97901597"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746128"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>Självstudie: Konfigurera G Suite för automatisk användar etablering
 
@@ -24,9 +24,6 @@ I den här självstudien beskrivs de steg du behöver utföra i både G-serien o
 
 > [!NOTE]
 > I den här självstudien beskrivs en koppling som skapats ovanpå Azure AD-tjänsten för användar etablering. Viktig information om vad den här tjänsten gör, hur den fungerar och vanliga frågor finns i [Automatisera användaretablering och avetablering för SaaS-program med Azure Active Directory](../app-provisioning/user-provisioning.md).
-
-> [!NOTE]
-> Den här artikeln innehåller referenser till termen *vitlista*, en term som Microsoft inte längre använder. När termen tas bort från program varan tar vi bort det från den här artikeln.
 
 ## <a name="capabilities-supported"></a>Funktioner som stöds
 > [!div class="checklist"]
@@ -36,7 +33,7 @@ I den här självstudien beskrivs de steg du behöver utföra i både G-serien o
 > * Etablera grupper och grupp medlemskap i G Suite
 > * [Enkel inloggning](./google-apps-tutorial.md) till G Suite (rekommenderas)
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Det scenario som beskrivs i den här självstudien förutsätter att du redan har följande krav:
 
@@ -243,7 +240,7 @@ Det här avsnittet vägleder dig genom stegen för att konfigurera Azure AD Prov
       |e-post|Sträng|
       |Medlemmar|Sträng|
       |name|Sträng|
-      |description|Sträng|
+      |beskrivning|Sträng|
 
 12. Information om hur du konfigurerar omfångsfilter finns i följande instruktioner i [självstudien för omfångsfilter](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 

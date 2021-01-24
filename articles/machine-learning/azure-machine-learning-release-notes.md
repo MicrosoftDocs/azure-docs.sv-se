@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 09/10/2020
-ms.openlocfilehash: 38f37ff2fe150a9e1998fbe5e963b8737a6e1533
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 11aa739beeb07c3de056d8a2430b556fcc40b178
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737973"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746738"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Viktig information om Azure Machine Learning
 
@@ -493,8 +493,8 @@ Läs mer om [etiketter för bild instans segment](how-to-label-images.md).
     + Användarna kan nu ange en tids serie frekvens för prognostisering av aktiviteter med hjälp av- `freq` parametern.
   + **azureml-train-automl-runtime**
     + Förbättrade konsol utdata när bästa modell förklaringar inte fungerar.
-    + Har bytt namn till Indataparametern "backlist_models" till "blocked_models".
-      + Har bytt namn till Indataparametern "whitelist_models" till "allowed_models".
+    + Parametern har bytt namn till "blocked_models" för att ta bort en känslig term.
+      + Parametern har bytt namn till "allowed_models" för att ta bort en känslig term.
     + Användarna kan nu ange en tids serie frekvens för prognostisering av aktiviteter med hjälp av- `freq` parametern.
 
   

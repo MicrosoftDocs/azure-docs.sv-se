@@ -1,27 +1,26 @@
 ---
-title: Så här skapar, distribuerar och utökar du IoT Plug and Play Bridge | Microsoft Docs
-description: Identifiera IoT Plug and Play Bridge-komponenter. Lär dig hur du utökar bryggan och hur du kör den på IoT-enheter, gatewayar och som en IoT Edge modul.
+title: Så här skapar och distribuerar du IoT Plug and Play Bridge | Microsoft Docs
+description: Identifiera IoT Plug and Play Bridge-komponenter. Lär dig hur du kör det på IoT-enheter, gatewayar och som en IoT Edge-modul.
 author: usivagna
 ms.author: ugans
-ms.date: 12/11/2020
+ms.date: 1/20/2021
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 43c89b0fac08bf9f2c72f885fbf4788371876b17
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: b7947eab93ebc8e523e163af601893522132e06a
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98678584"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98745675"
 ---
-# <a name="build-deploy-and-extend-the-iot-plug-and-play-bridge"></a>Skapa, distribuera och utöka IoT Plug and Play-bryggan
+# <a name="build-and-deploy-the-iot-plug-and-play-bridge"></a>Skapa och distribuera IoT Plug and Play-bryggan
 
-IoT Plug and Play Bridge låter dig ansluta de befintliga enheterna som är anslutna till en gateway till IoT Hub. Du kan använda Bridge för att mappa IoT Plug and Play-gränssnitt till anslutna enheter. Ett IoT Plug and Play-gränssnitt definierar den telemetri som en enhet skickar, de egenskaper som synkroniseras mellan enheten och molnet och de kommandon som enheten svarar på. Du kan installera och konfigurera brygga applikationen med öppen källkod på Windows-eller Linux-gatewayer.
+[Iot plug and Play Bridge](concepts-iot-pnp-bridge.md#iot-plug-and-play-bridge-architecture) låter dig ansluta de befintliga enheterna som är anslutna till en gateway till IoT Hub. Du kan använda Bridge för att mappa IoT Plug and Play-gränssnitt till anslutna enheter. Ett IoT Plug and Play-gränssnitt definierar den telemetri som en enhet skickar, de egenskaper som synkroniseras mellan enheten och molnet och de kommandon som enheten svarar på. Du kan installera och konfigurera brygga applikationen med öppen källkod på Windows-eller Linux-gatewayer. Dessutom kan bryggan köras som en Azure IoT Edge runtime-modul.
 
 Den här artikeln beskriver i detalj hur du:
 
 - Konfigurera en brygga.
-- Utöka en brygga genom att skapa nya kort.
 - Så här skapar och kör du en bro i olika miljöer.
 
 Ett enkelt exempel som visar hur du använder Bridge finns i [så här ansluter du IoT plug and Play Bridge-exemplet som körs på Linux eller Windows till IoT Hub](howto-use-iot-pnp-bridge.md).
@@ -78,105 +77,14 @@ Använd något av följande alternativ för att ange konfigurations filen till b
 
 När bryggan körs som en IoT Edge modul i en IoT Edge körning, skickas konfigurations filen från molnet som en uppdatering till `PnpBridgeConfig` önskad egenskap. Bryggan väntar tills den här egenskapen uppdateras innan nätverkskorten och komponenterna konfigureras.
 
-## <a name="extend-the-bridge"></a>Utöka bryggan
-
-Om du vill utöka brons funktioner kan du redigera dina egna brygga kort.
-
-Bryggan använder kort för att:
-
-- Upprätta en anslutning mellan en enhet och molnet.
-- Aktivera data flödet mellan en enhet och molnet.
-- Aktivera enhets hantering från molnet.
-
-Varje bro kort måste:
-
-- Skapa ett digitalt garn gränssnitt.
-- Använd gränssnittet för att binda enhets sidans funktioner till molnbaserade funktioner som telemetri, egenskaper och kommandon.
-- Upprätta kontroll-och data kommunikation med enhets maskin varan eller den inbyggda program varan.
-
-Varje bro kort samverkar med en speciell typ av enhet baserat på hur adaptern ansluter till och interagerar med enheten. Även om kommunikationen med en enhet använder ett hand skaknings protokoll kan ett bro kort ha flera sätt att tolka data från enheten. I det här scenariot använder Bridge-kortet information om kortet i konfigurations filen för att avgöra vilken *gränssnitts konfiguration* som kortet ska använda för att parsa data.
-
-För att interagera med enheten använder ett bro kort ett kommunikations protokoll som stöds av den enhet och de API: er som tillhandahålls av det underliggande operativ systemet, eller enhets leverantören.
-
-För att interagera med molnet används API: er som tillhandahålls av Azure IoT Device C SDK för att skicka telemetri, skapa digitala dubbla gränssnitt, skicka egenskaps uppdateringar och skapa callback-funktioner för egenskaps uppdateringar och kommandon.
-
-### <a name="create-a-bridge-adapter"></a>Skapa ett bro kort
-
-Bryggan förväntar sig ett bro kort som implementerar de API: er som definierats i [_PNP_ADAPTER](https://github.com/Azure/iot-plug-and-play-bridge/blob/9964f7f9f77ecbf4db3b60960b69af57fd83a871/pnpbridge/src/pnpbridge/inc/pnpadapter_api.h#L296) gränssnittet:
-
-```c
-typedef struct _PNP_ADAPTER {
-  // Identity of the IoT Plug and Play adapter that is retrieved from the config
-  const char* identity;
-
-  PNPBRIDGE_ADAPTER_CREATE createAdapter;
-  PNPBRIDGE_COMPONENT_CREATE createPnpComponent;
-  PNPBRIDGE_COMPONENT_START startPnpComponent;
-  PNPBRIDGE_COMPONENT_STOP stopPnpComponent;
-  PNPBRIDGE_COMPONENT_DESTROY destroyPnpComponent;
-  PNPBRIDGE_ADAPTER_DESTOY destroyAdapter;
-} PNP_ADAPTER, * PPNP_ADAPTER;
-```
-
-I det här gränssnittet:
-
-- `PNPBRIDGE_ADAPTER_CREATE` skapar kortet och konfigurerar gränssnitts hanterings resurserna. Ett kort kan också vara beroende av parametrar för globala kort för skapande av kort. Den här funktionen anropas en gång för ett enda nätverkskort.
-- `PNPBRIDGE_COMPONENT_CREATE` skapar de digitala dubbla klient gränssnitten och binder återanrops funktionerna. Kortet initierar kommunikations kanalen till enheten. Kortet kan konfigurera resurserna så att telemetri-flödet aktive ras, men det går inte att starta rapportering av telemetri förrän `PNPBRIDGE_COMPONENT_START` anropas. Den här funktionen anropas en gång för varje gränssnitts komponent i konfigurations filen.
-- `PNPBRIDGE_COMPONENT_START` kallas att låta bryggan börja vidarebefordra telemetri från enheten till den digitala dubbla klienten. Den här funktionen anropas en gång för varje gränssnitts komponent i konfigurations filen.
-- `PNPBRIDGE_COMPONENT_STOP` stoppar telemetri-flödet.
-- `PNPBRIDGE_COMPONENT_DESTROY` förstör den digitala dubbla klienten och de associerade gränssnitts resurserna. Den här funktionen anropas en gång för varje gränssnitts komponent i konfigurations filen när bryggan är felaktig eller när ett allvarligt fel uppstår.
-- `PNPBRIDGE_ADAPTER_DESTROY` rensar resurserna för bro nätverkskort.
-
-### <a name="bridge-core-interaction-with-bridge-adapters"></a>Brygga Core-interaktion med Bridge-kort
-
-I följande lista beskrivs vad som händer när Bridge startar:
-
-1. När bryggan startar söker Bridge hanteraren igenom varje gränssnitts komponent som definierats i konfigurations filen och anropar `PNPBRIDGE_ADAPTER_CREATE` på lämpligt kort. Kortet kan använda globala kort konfigurations parametrar för att konfigurera resurser för att stödja de olika *gränssnitts konfigurationerna*.
-1. För varje enhet i konfigurations filen initierar Bridge Manager att gränssnittet skapas genom att anropa `PNPBRIDGE_COMPONENT_CREATE` i lämpligt bro kort.
-1. Kortet tar emot valfria kort konfigurations inställningar för gränssnitts komponenten och använder den här informationen för att konfigurera anslutningar till enheten.
-1. Kortet skapar de digitala dubbla klient gränssnitten och binder återanrops funktionerna för egenskaps uppdateringar och-kommandon. Om du skapar enhets anslutningar blockeras inte återanropen när digitala dubbla gränssnitt har skapats. Den aktiva enhets anslutningen är oberoende av den aktiva gränssnitts klient som bryggan skapar. Om anslutningen Miss lyckas förutsätter kortet att enheten är inaktiv. Bridge-kortet kan välja att göra om anslutningen.
-1. När bryggan för korts hanteraren skapar alla gränssnitts komponenter som anges i konfigurations filen, registreras alla gränssnitt med Azure IoT Hub. Registreringen är ett block som är ett asynkront anrop. När anropet har slutförts utlöser den ett återanrop i Bridge-kortet som sedan kan börja hantera egenskaper och kommando återanrop från molnet.
-1. Bridge adapter Manager anropar sedan `PNPBRIDGE_INTERFACE_START` varje komponent och Bridge-kortet börjar rapportera telemetri till den digitala dubbla klienten.
-
-### <a name="design-guidelines"></a>Designriktlinjer
-
-Följ dessa rikt linjer när du utvecklar ett nytt bro kort:
-
-- Bestäm vilka enhets funktioner som stöds och vilka gränssnitts definitioner för komponenterna som använder det här kortet.
-- Ta reda på vilka gränssnitt och globala parametrar ditt nätverkskort behöver ha definierat i konfigurations filen.
-- Identifiera den lågnivå enhets kommunikation som krävs för att stödja komponent egenskaper och-kommandon.
-- Ta reda på hur kortet ska parsa rå data från enheten och konvertera dem till de typer av telemetri som IoT Plug and Play-gränssnittets definition anger.
-- Implementera det brygga nätverkskorts gränssnitt som beskrivs ovan.
-- Lägg till det nya kortet till kort manifestet och skapa bryggan.
-
-### <a name="enable-a-new-bridge-adapter"></a>Aktivera ett nytt bro kort
-
-Du aktiverar kort i bryggan genom att lägga till en referens i [adapter_manifest. c](https://github.com/Azure/iot-plug-and-play-bridge/blob/master/pnpbridge/src/adapters/src/shared/adapter_manifest.c):
-
-```c
-  extern PNP_ADAPTER MyPnpAdapter;
-  PPNP_ADAPTER PNP_ADAPTER_MANIFEST[] = {
-    .
-    .
-    &MyPnpAdapter
-  }
-```
-
-> [!IMPORTANT]
-> Återanrop i Bridge-kort anropas sekventiellt. Ett nätverkskort ska inte blockera ett återanrop eftersom det förhindrar att bryggan skapas.
-
-### <a name="sample-camera-adapter"></a>Exempel på kamera kort
-
-I [README för kamera kortet](https://github.com/Azure/iot-plug-and-play-bridge/blob/master/pnpbridge/src/adapters/src/Camera/readme.md) beskrivs ett exempel på ett kamera kort som du kan aktivera.
-
 ## <a name="build-and-run-the-bridge-on-an-iot-device-or-gateway"></a>Skapa och köra bryggan på en IoT-enhet eller gateway
 
 | Plattform | Stöds |
 | :-----------: | :-----------: |
-| Windows |  Yes |
-| Linux | Yes |
+| Windows |  Ja |
+| Linux | Ja |
 
-### <a name="prerequisites"></a>Förutsättningar
+### <a name="prerequisites"></a>Krav
 
 För att slutföra det här avsnittet måste du installera följande program vara på den lokala datorn:
 
@@ -296,9 +204,9 @@ Debug\pnpbridge_bin.exe
 | Plattform | Stöds |
 | :-----------: | :-----------: |
 | Windows |  Nej |
-| Linux | Yes |
+| Linux | Ja |
 
-### <a name="prerequisites"></a>Förutsättningar
+### <a name="prerequisites"></a>Krav
 
 För att slutföra det här avsnittet behöver du en kostnads fri Azure IoT-hubb på nivån standard eller standard. Information om hur du skapar en IoT Hub finns i [skapa en IoT-hubb](../iot-hub/iot-hub-create-through-portal.md).
 
@@ -378,7 +286,6 @@ Starta VS Code, öppna kommando-paletten, ange *fjärran Wsl: öppna mappen i Ws
 Öppna filen *pnpbridge\Dockerfile.amd64* . Redigera miljö variabel definitionerna enligt följande:
 
 ```dockerfile
-ENV IOTHUB_DEVICE_CONNECTION_STRING="{Add your device connection string here}"
 ENV PNP_BRIDGE_ROOT_MODEL_ID="dtmi:com:example:RootPnpBridgeSampleDevice;1"
 ENV PNP_BRIDGE_HUB_TRACING_ENABLED="false"
 ENV IOTEDGE_WORKLOADURI="something"
