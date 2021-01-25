@@ -1,6 +1,6 @@
 ---
 title: Kod exempel för Microsoft Identity Platform
-description: Innehåller ett index över tillgängliga kod exempel för Microsoft Identity Platform (v 2.0-slut punkt), ordnat efter scenario.
+description: Innehåller ett index över tillgängliga kod exempel för Microsoft Identity Platform, ordnat efter scenario.
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -12,12 +12,12 @@ ms.date: 11/04/2020
 ms.author: marsma
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 3baeb87bf3fe1cdcd5e9f27aed2587eed060c5a8
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 368a1acdfda66c3714979d27037737a75bbada5a
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98064529"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756640"
 ---
 # <a name="microsoft-identity-platform-code-samples-v20-endpoint"></a>Kod exempel för Microsoft Identity Platform (v 2.0-slut punkt)
 
@@ -26,9 +26,9 @@ Du kan använda Microsoft Identity Platform för att:
 - Lägg till autentisering och auktorisering för dina webb program och webb-API: er.
 - Kräv en åtkomsttoken för att få åtkomst till ett skyddat webb-API.
 
-Den här artikeln beskriver och tillhandahåller länkar till exempel för Microsoft Identity Platform-slutpunkten. De här exemplen visar hur det är färdigt och innehåller även kodfragment som du kan använda i dina program. På sidan kod exempel hittar du detaljerade README-avsnitt som hjälper dig med krav, installation och konfiguration. Kommentarer i koden hjälper dig att förstå de kritiska avsnitten.
+Den här artikeln beskriver och tillhandahåller länkar till exempel för Microsoft Identity Platform. De här exemplen visar hur det är färdigt och innehåller även kodfragment som du kan använda i dina program. På sidan kod exempel hittar du detaljerade README-avsnitt som hjälper dig med krav, installation och konfiguration. Kommentarer i koden hjälper dig att förstå de kritiska avsnitten.
 
-Information om det grundläggande scenariot för varje exempel typ finns i [app types för Microsoft Identity Platform-slutpunkten](v2-app-types.md).
+Information om de grundläggande scenarierna för varje exempel typ finns i [app types för Microsoft Identity Platform](v2-app-types.md).
 
 Du kan också bidra till exemplen på GitHub. Mer information finns i [Microsoft Azure Active Directory exempel och dokumentation](https://github.com/Azure-Samples?page=3&query=active-directory).
 
@@ -121,7 +121,7 @@ Följande exempel visar hur du konfigurerar programmet så att det accepterar in
 
 ## <a name="web-apis"></a>Webb-API:er
 
-Följande exempel visar hur du skyddar ett webb-API med slut punkten för Microsoft Identity Platform och hur du anropar ett underordnat API från webb-API: et.
+Följande exempel visar hur du skyddar ett webb-API med Microsoft Identity Platform och hur du anropar ett underordnat API från webb-API: et.
 
 | Plattform | Exempel |
 | -------- | ------------------- |
@@ -133,7 +133,7 @@ Följande exempel visar hur du skyddar ett webb-API med slut punkten för Micros
 
 ## <a name="azure-functions-as-web-apis"></a>Azure Functions som webb-API: er
 
-Följande exempel visar hur du skyddar en Azure-funktion med HttpTrigger och exponerar ett webb-API med Microsoft Identity Platform-slutpunkten och hur du anropar ett underordnat API från webb-API: et.
+Följande exempel visar hur du skyddar en Azure-funktion med HttpTrigger och exponerar ett webb-API med Microsoft Identity Platform och hur du anropar ett underordnat API från webb-API: et.
 
 | Plattform | Exempel |
 | -------- | ------------------- |

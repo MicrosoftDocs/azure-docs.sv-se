@@ -13,12 +13,12 @@ ms.date: 08/28/2019
 ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
-ms.openlocfilehash: fb66d8a4bf97a6f8a10534c9c4459123ad6a2654
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 7dc3241198fbc6eeddba059251f28c6dc35c8a29
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97107928"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754939"
 ---
 # <a name="migrate-applications-to-msal-for-ios-and-macos"></a>Migrera program till MSAL för iOS och macOS
 
@@ -38,14 +38,14 @@ Microsoft Identity Platform har några viktiga skillnader i Azure Active Directo
 
 ### <a name="standards-compliance"></a>Efterlevnad av standarder
 
-* Slut punkten för Microsoft Identity Platform följer OAuth 2,0-och OpenId Connect-standarder.
+* Microsoft Identity Platform följer OAuth 2,0 och OpenId Connect-standarder.
 
 ### <a name="incremental-and-dynamic-consent"></a>Det stegvisa och dynamiska godkännandet
 
 * Azure Active Directory v 1.0-slutpunkten kräver att alla behörigheter deklareras i förväg under program registreringen. Det innebär att dessa behörigheter är statiska.
 * Med Microsoft Identity Platform kan du begära behörigheter dynamiskt. Appar kan bara begära behörigheter vid behov och begära fler när appen behöver dem.
 
-Mer information om skillnader mellan Azure Active Directory v 1.0 och Microsoft Identity Platform finns i [varför uppdatera till Microsoft Identity Platform (v 2.0)?](../azuread-dev/azure-ad-endpoint-comparison.md).
+Mer information om skillnader mellan Azure Active Directory v 1.0 och Microsoft Identity Platform finns i [varför uppdatera till Microsoft Identity Platform?](../azuread-dev/azure-ad-endpoint-comparison.md).
 
 ## <a name="adal-and-msal-library-differences"></a>Skillnader mellan ADAL och MSAL-bibliotek
 
@@ -65,7 +65,7 @@ I MSAL, i stället för en enda resurs-ID, tillhandahåller appar en uppsättnin
 
 Det finns två sätt att tillhandahålla omfång i MSAL:
 
-* Ange en lista över alla behörigheter som dina appar behöver. Exempel: 
+* Ange en lista över alla behörigheter som dina appar behöver. Ett exempel: 
 
     `@[@"https://graph.microsoft.com/directory.read", @"https://graph.microsoft.com/directory.write"]`
 
@@ -75,7 +75,7 @@ Det finns två sätt att tillhandahålla omfång i MSAL:
 
 Detta är det inbyggda omfånget för varje program. Den refererar till den statiska listan med behörigheter som kon figurer ATS när programmet registrerades. Det fungerar på samma sätt som för `resource` . Detta kan vara användbart när du migrerar för att säkerställa att en liknande uppsättning omfång och användar upplevelse upprätthålls.
 
-Om du vill använda `/.default` omfånget lägger du till i `/.default` resurs identifieraren. Till exempel: `https://graph.microsoft.com/.default`. Om resursen slutar med ett snedstreck ( `/` ) bör du fortfarande lägga till `/.default` , inklusive det inledande snedstrecket, vilket resulterar i en omfattning som har ett dubbelt snedstreck ( `//` ).
+Om du vill använda `/.default` omfånget lägger du till i `/.default` resurs identifieraren. Exempel: `https://graph.microsoft.com/.default`. Om resursen slutar med ett snedstreck ( `/` ) bör du fortfarande lägga till `/.default` , inklusive det inledande snedstrecket, vilket resulterar i en omfattning som har ett dubbelt snedstreck ( `//` ).
 
 Du kan läsa mer om hur du använder området "/.default" [här](./v2-permissions-and-consent.md#the-default-scope)
 
@@ -146,7 +146,7 @@ Så här aktiverar du koordinator för ditt program:
 
 1. Registrera ett Service Broker-kompatibelt omdirigerings-URI-format för programmet. URI-formatet för Broker-kompatibel omdirigering är `msauth.<app.bundle.id>://auth` . Ersätt `<app.bundle.id>` med programmets paket-ID. Om du migrerar från ADAL och ditt program redan har stöd för Service Broker behöver du inte göra något. Din tidigare omdirigerings-URI är helt kompatibel med MSAL, så du kan gå vidare till steg 3.
 
-2. Lägg till programmets omdirigerings-URI-schema i filen info. plist. För standard omdirigerings-URI för MSAL är formatet `msauth.<app.bundle.id>` . Exempel:
+2. Lägg till programmets omdirigerings-URI-schema i filen info. plist. För standard omdirigerings-URI för MSAL är formatet `msauth.<app.bundle.id>` . Ett exempel:
 
     ```xml
     <key>CFBundleURLSchemes</key>

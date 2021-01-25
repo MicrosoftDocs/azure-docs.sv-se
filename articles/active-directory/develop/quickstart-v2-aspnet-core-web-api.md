@@ -12,19 +12,19 @@ ms.workload: identity
 ms.date: 09/22/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: ca22d4f1ff48222b33030eb44d7feb62b1d154cd
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 7d38ee1782987afce703fbd8b4203186bbcbb505
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98011892"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754470"
 ---
 # <a name="quickstart-protect-an-aspnet-core-web-api-with-microsoft-identity-platform"></a>Snabb start: skydda ett ASP.NET Core webb-API med Microsoft Identity Platform
 
 I den här snabb starten laddar du ned ett ASP.NET Core webb-API kod exempel och kontrollerar koden som begränsar åtkomsten till resurser till endast auktoriserade konton. Exemplet stöder auktorisering av personliga Microsoft-konton och konton i valfri Azure Active Directory (Azure AD)-organisation.
 
 > [!div renderon="docs"]
-> ## <a name="prerequisites"></a>Förutsättningar
+> ## <a name="prerequisites"></a>Krav
 >
 > - Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 > - [Azure Active Directory klient](quickstart-create-new-tenant.md)
@@ -96,7 +96,7 @@ Mellanprogram *Microsoft. AspNetCore. Authentication* använder en `Startup` kla
 
 `AddAuthentication()`Metoden konfigurerar tjänsten för att lägga till JwtBearer-baserad autentisering.
 
-Raden som innehåller `.AddMicrosoftIdentityWebApi` lägger till Microsoft Identity Platform-auktorisering i ditt webb-API. Den konfigureras sedan för att verifiera åtkomsttoken som utfärdats av Microsoft Identity Platform-slutpunkten baserat på informationen i `AzureAD` avsnittet i *appsettings.jsi* konfigurations filen:
+Raden som innehåller `.AddMicrosoftIdentityWebApi` lägger till Microsoft Identity Platform-auktorisering till ditt webb-API. Den konfigureras sedan för att verifiera åtkomsttoken som utfärdats av Microsoft Identity Platform baserat på informationen i `AzureAD` avsnittet i *appsettings.jsi* konfigurations filen:
 
 | *appsettings.jspå* nyckel | Beskrivning                                                                                                                                                          |
 |------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|

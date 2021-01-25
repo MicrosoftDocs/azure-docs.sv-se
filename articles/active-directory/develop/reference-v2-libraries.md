@@ -1,6 +1,6 @@
 ---
 title: Bibliotek för Microsoft Identity Platform-autentisering
-description: Kompatibla klient bibliotek och serverprogram bibliotek, tillsammans med relaterade bibliotek, käll-och exempel länkar för Microsoft Identity Platform-slutpunkten.
+description: Kompatibla klient bibliotek och Server mellan bibliotek, tillsammans med relaterade bibliotek, käll-och exempel länkar för Microsoft Identity Platform.
 services: active-directory
 author: negoe
 manager: CelesteDG
@@ -12,16 +12,16 @@ ms.date: 07/25/2019
 ms.author: negoe
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
-ms.openlocfilehash: a7792e989444c87ba80088f8a850cacb4aa0dc3c
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 51b60d7b81d7402f69415b79cd575f51915dc38f
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98064580"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756658"
 ---
 # <a name="microsoft-identity-platform-authentication-libraries"></a>Bibliotek för Microsoft Identity Platform-autentisering
 
-[Slut punkten för Microsoft Identity Platform](../azuread-dev/azure-ad-endpoint-comparison.md) stöder OAuth 2,0-och OpenID 1,0 Connect-protokoll som är bransch standard. Microsoft Authentication Library (MSAL) är utformat för att fungera med Microsoft Identity Platform-slutpunkten. Du kan också använda bibliotek med öppen källkod som har stöd för OAuth 2,0 och OpenID Connect 1,0.
+[Microsoft Identity Platform](../azuread-dev/azure-ad-endpoint-comparison.md) stöder OAuth 2,0-och OpenID Connect 1,0-protokoll som är bransch standard. Microsoft Authentication Library (MSAL) är utformat för att fungera med Microsoft Identity Platform. Du kan också använda bibliotek med öppen källkod som har stöd för OAuth 2,0 och OpenID Connect 1,0.
 
 Vi rekommenderar att du använder bibliotek som skrivits av protokoll domän experter som följer en SDL-metod (Security Development Lifecycle). Dessa metoder omfattar [det som Microsoft följer][Microsoft-SDL]. Om du får en kod för protokollen bör du följa en metod som Microsoft SDL. Var noga med säkerhets aspekterna i specifikationerna för varje protokoll.
 
@@ -30,7 +30,7 @@ Vi rekommenderar att du använder bibliotek som skrivits av protokoll domän exp
 
 ## <a name="types-of-libraries"></a>Typer av bibliotek
 
-Microsoft Identity Platform-slutpunkten fungerar med två typer av bibliotek:
+Microsoft Identity Platform fungerar med två typer av bibliotek:
 
 * **Klient bibliotek**: interna klienter och servrar använder klient bibliotek för att hämta åtkomsttoken för att anropa en resurs, till exempel Microsoft Graph.
 * **Server mellan bibliotek**: webbappar använder serverprogram bibliotek för användar inloggning. Webb-API: er använder Server mellanprogram bibliotek för att verifiera token som skickas av interna klienter eller andra servrar.
@@ -40,15 +40,15 @@ Microsoft Identity Platform-slutpunkten fungerar med två typer av bibliotek:
 Biblioteken ingår i två support kategorier:
 
 * **Microsoft-Support**: Microsoft tillhandahåller korrigeringar för dessa bibliotek och har utfört sdl-noggrannhet på dessa bibliotek.
-* **Kompatibel**: Microsoft har testat dessa bibliotek i grundläggande scenarier och har bekräftat att de fungerar med Microsoft Identity Platform-slutpunkten. Microsoft tillhandahåller inte några korrigeringar för dessa bibliotek och har inte genomfört en granskning av dessa bibliotek. Problem och funktions begär Anden ska dirigeras till bibliotekets projekt med öppen källkod.
+* **Kompatibel**: Microsoft har testat dessa bibliotek i grundläggande scenarier och har bekräftat att de fungerar med Microsoft Identity Platform. Microsoft tillhandahåller inte några korrigeringar för dessa bibliotek och har inte genomfört en granskning av dessa bibliotek. Problem och funktions begär Anden ska dirigeras till bibliotekets projekt med öppen källkod.
 
-En lista över bibliotek som fungerar med Microsoft Identity Platform-slutpunkten finns i följande avsnitt.
+En lista över bibliotek som fungerar med Microsoft Identity Platform finns i följande avsnitt.
 
 ## <a name="microsoft-supported-client-libraries"></a>Klient bibliotek som stöds av Microsoft
 
 Använd bibliotek för klientautentisering för att hämta en token för att anropa ett skyddat webb-API.
 
-| Plattform | Bibliotek | Hämta | Källkod | Exempel | Referens | Konceptuellt dokument | Översikt |
+| Plattform | Bibliotek | Ladda ned | Källkod | Exempel | Referens | Konceptuellt dokument | Översikt |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | ![JavaScript](media/sample-v2-code/logo_js.png) | MSAL.js  | [NPM](https://www.npmjs.com/package/msal) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/README.md) |  [Ensidesapp](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2) | [Referens](https://azuread.github.io/microsoft-authentication-library-for-js/ref/msal-core/) | [Konceptuella dokument](msal-overview.md)| [Översikt](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki#roadmap)
 ![Angular](media/sample-v2-code/logo_angular.png) | MSAL-vinkel | [NPM](https://www.npmjs.com/package/@azure/msal-angular) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular/README.md) | [Vinkel SPA](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-angular) | [Referens](https://azuread.github.io/microsoft-authentication-library-for-js/ref/msal-angular/) | [Konceptuella dokument](msal-overview.md) | [Översikt](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki#roadmap)
@@ -63,7 +63,7 @@ Använd bibliotek för klientautentisering för att hämta en token för att anr
 
 Använd mellanprogram bibliotek för att skydda webb program och webb-API: er. Webbappar eller webb-API: er skrivna med ASP.NET eller ASP.NET Core använda mellanprogram biblioteken.
 
-| Plattform | Bibliotek | Hämta | Källkod | Exempel | Referens
+| Plattform | Bibliotek | Ladda ned | Källkod | Exempel | Referens
 | --- | --- | --- | --- | --- | --- |
 | ![.NET](media/sample-v2-code/logo_NET.png) ![.NET Core](media/sample-v2-code/logo_NETcore.png) | ASP.NET-säkerhet |[NuGet](https://www.nuget.org/packages/Microsoft.AspNet.Mvc/) |[GitHub](https://github.com/aspnet/AspNetCore) |[MVC-app](quickstart-v2-aspnet-webapp.md) |[ASP.NET API-referens](/dotnet/api/?view=aspnetcore-2.0&preserve-view=true) |
 | ![.NET](media/sample-v2-code/logo_NET.png)| IdentityModel-tillägg för .NET| |[GitHub](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet) | [MVC-app](quickstart-v2-aspnet-webapp.md) |[Referens](/dotnet/api/overview/azure/activedirectory/client?view=azure-dotnet&preserve-view=true) |
@@ -98,16 +98,16 @@ Se även [scenarier av plattformar och språk som stöds](authentication-flows-a
 | ![Ruby](media/sample-v2-code/logo_ruby.png) |[OmniAuth](https://github.com/omniauth/omniauth/wiki) |omniauth: 1.3.1<br />omniauth-OAuth2:1.4.0 |[OmniAuth](https://github.com/omniauth/omniauth)<br />[OmniAuth OAuth2](https://github.com/intridea/omniauth-oauth2) |  |
 | iOS, macOS, & Android  | [Reagera på inbyggd app-autentisering](https://github.com/FormidableLabs/react-native-app-auth) | [Version 4.2.0](https://github.com/FormidableLabs/react-native-app-auth/releases/tag/v4.2.0) | [Reagera på inbyggd app-autentisering](https://github.com/FormidableLabs/react-native-app-auth) | |
 
-För alla standarder-kompatibla bibliotek kan du använda Microsoft Identity Platform-slutpunkten. Det är viktigt att veta var du ska gå till supporten:
+För alla standarder-kompatibla bibliotek kan du använda Microsoft Identity Platform. Det är viktigt att veta var du ska gå till supporten:
 
 * Kontakta bibliotekets ägare för problem och nya funktions begär anden i biblioteks kod.
 * Kontakta Microsoft om du vill ha problem och nya funktions begär anden i implementeringen på tjänst sidan.
 * [Fil en funktions förfrågan](https://feedback.azure.com/forums/169401-azure-active-directory) för ytterligare funktioner som du vill se i protokollet.
-* [Skapa en support förfrågan](../../azure-portal/supportability/how-to-create-azure-support-request.md) om du hittar ett problem där slut punkten för Microsoft Identity Platform inte är kompatibel med OAuth 2,0 eller OpenID Connect 1,0.
+* [Skapa en support förfrågan](../../azure-portal/supportability/how-to-create-azure-support-request.md) om du hittar ett problem där Microsoft Identity Platform inte är kompatibel med OAuth 2,0 eller OpenID Connect 1,0.
 
 ## <a name="related-content"></a>Relaterat innehåll
 
-Mer information om slut punkten för Microsoft Identity Platform finns i [Översikt över Microsoft Identity Platform][AAD-App-Model-V2-Overview].
+Mer information om Microsoft Identity Platform finns i [Översikt över Microsoft Identity Platform][AAD-App-Model-V2-Overview].
 
 <!--Image references-->
 

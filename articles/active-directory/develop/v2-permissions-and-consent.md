@@ -12,16 +12,16 @@ ms.date: 09/23/2020
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur, marsma
 ms.custom: aaddev, fasttrack-edit, contperf-fy21q1, identityplatformtop40
-ms.openlocfilehash: 35499810ae13a8ddc5b7bb6306deafef0ef24e0f
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.openlocfilehash: aa8c00d1ee2a0dc3d019cc75b4e411ede984e74a
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98246799"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756061"
 ---
-# <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Behörigheter och medgivande i slutpunkten för Microsoft Identity Platform
+# <a name="permissions-and-consent-in-the-microsoft-identity-platform"></a>Behörigheter och medgivande i Microsoft Identity Platform
 
-Program som integreras med Microsoft Identity Platform följer en auktoriserings modell som ger användare och administratörer kontroll över hur data kan nås. Implementeringen av auktoriserings modellen har uppdaterats på Microsoft Identity Platform-slutpunkten. Den ändrar hur en app måste interagera med Microsoft Identity Platform. Den här artikeln beskriver de grundläggande begreppen i den här verifierings modellen, inklusive omfång, behörigheter och medgivande.
+Program som integreras med Microsoft Identity Platform följer en auktoriserings modell som ger användare och administratörer kontroll över hur data kan nås. Implementeringen av auktoriserings modellen har uppdaterats på Microsoft Identity Platform. Den ändrar hur en app måste interagera med Microsoft Identity Platform. Den här artikeln beskriver de grundläggande begreppen i den här verifierings modellen, inklusive omfång, behörigheter och medgivande.
 
 ## <a name="scopes-and-permissions"></a>Omfattningar och behörigheter
 
@@ -128,7 +128,7 @@ https%3A%2F%2Fgraph.microsoft.com%2Fmail.send
 
 `scope`Parametern är en blankstegsavgränsad lista med delegerade behörigheter som appen begär. Varje behörighet anges genom att lägga till behörighet svärdet till resursens identifierare (program-ID-URI). I förfrågan-exemplet måste appen ha behörighet att läsa användarens kalender och skicka e-post som användare.
 
-När användaren har angett sina autentiseringsuppgifter söker Microsoft Identity Platform-slutpunkten efter en matchande post för *användar medgivande*. Om användaren inte har samtyckt till någon av de begärda behörigheterna tidigare och om administratören inte har samtyckt till dessa behörigheter åt hela organisationen, ber Microsoft Identity Platform-slutpunkten användaren att bevilja de begärda behörigheterna.
+När användaren har angett sina autentiseringsuppgifter kontrollerar Microsoft Identity Platform om det finns en matchande post för *användar medgivande*. Om användaren inte har samtyckt till någon av de begärda behörigheterna tidigare och om administratören inte har samtyckt till dessa behörigheter åt hela organisationen, ber Microsoft Identity Platform användaren att bevilja de begärda behörigheterna.
 
 För tillfället `offline_access` inkluderas behörigheten ("Behåll åtkomst till data som du har fått åtkomst till") och `user.read` ("logga in och läsa din profil") automatiskt i det första medgivande till ett program.  De här behörigheterna krävs vanligt vis för korrekt app-funktionalitet. `offline_access`-Behörigheten ger appen åtkomst till att uppdatera tokens som är viktiga för inbyggda appar och webbappar. `user.read`Behörigheten ger till gång till `sub` anspråket. Det gör att klienten eller appen kan identifiera användaren över tid och komma åt elementära användar information.
 
@@ -335,7 +335,7 @@ response_type=token            //Code or a hybrid flow is also possible here
 
 Det här kod exemplet skapar en godkännande sida för alla registrerade behörigheter om de föregående beskrivningarna av medgivande och `/.default` gäller för scenariot. Sedan returnerar koden en `id_token` , i stället för en åtkomsttoken.  
 
-Det här beteendet hanterar vissa äldre klienter som flyttas från Azure AD Authentication Library (ADAL) till Microsoft Authentication Library (MSAL). Den här installationen *bör* inte användas av nya klienter som riktar sig mot Microsoft Identity Platform-slutpunkten.
+Det här beteendet hanterar vissa äldre klienter som flyttas från Azure AD Authentication Library (ADAL) till Microsoft Authentication Library (MSAL). Den här installationen *bör* inte användas av nya klienter som är riktade till Microsoft Identity Platform.
 
 ### <a name="client-credentials-grant-flow-and-default"></a>Tilldelnings flöde och/.default för klientautentiseringsuppgifter  
 

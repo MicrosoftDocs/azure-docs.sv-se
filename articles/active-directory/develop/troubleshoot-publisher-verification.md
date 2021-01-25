@@ -1,5 +1,6 @@
 ---
-title: Felsöka Publisher-verifiering – Microsoft Identity Platform | Azure
+title: Felsöka utgivarens verifiering | Azure
+titleSuffix: Microsoft identity platform
 description: 'Beskriver hur du felsöker Publisher-verifiering för Microsoft Identity Platform genom att anropa Microsoft Graph API: er.'
 services: active-directory
 author: rwike77
@@ -12,12 +13,12 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 857659cdd97666dba585c1ec22c750e29bf28879
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 10609f2706d257dbe5d8f43b85da5f06cb986cae
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96169179"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756191"
 ---
 # <a name="troubleshoot-publisher-verification"></a>Felsöka verifiering av utgivare
 Om du inte kan slutföra processen eller har oväntad funktion med [utgivar verifieringen](publisher-verification-overview.md), bör du börja med att göra följande om du får fel eller om du får oväntade beteenden: 

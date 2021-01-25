@@ -13,12 +13,12 @@ ms.date: 09/14/2019
 ms.author: shoatman
 ms.custom: aaddev, devx-track-java
 ms.reviewer: shoatman
-ms.openlocfilehash: 404ffbc09a69b623a421bd0c01550d72e5c03158
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fac66e8f82ea4c04e866b28fed5f8d0860ab81ef
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88115993"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755967"
 ---
 # <a name="accounts--tenant-profiles-android"></a>Konton och klientorganisationsprofiler (Android)
 
@@ -105,7 +105,7 @@ Som tidigare nämnts kan varje klient där ett konto finns lagra annan informati
 
 Även om ett konto kan vara medlem eller gäst i flera organisationer, frågar MSAL inte efter en tjänst för att hämta en lista över de klienter som kontot är medlem i. I stället skapar MSAL en lista över klienter som kontot finns i, till följd av token-begäranden som har gjorts.
 
-De anspråk som exponeras för kontot är alltid anspråk från/{Authority} "hem klient" för ett konto. Om kontot inte har använts för att begära en token för sin hem klient kan MSAL inte tillhandahålla anspråk via objektet konto.  Exempel:
+De anspråk som exponeras för kontot är alltid anspråk från/{Authority} "hem klient" för ett konto. Om kontot inte har använts för att begära en token för sin hem klient kan MSAL inte tillhandahålla anspråk via objektet konto.  Ett exempel:
 
 ```java
 // Psuedo Code
@@ -125,7 +125,7 @@ String issuer = account.getClaims().get("iss"); // The tenant specific authority
 
 ### <a name="access-tenant-profile-claims"></a>Åtkomst till klient profil anspråk
 
-För att få åtkomst till anspråk om ett konto som de visas i andra klienter måste du först omvandla ditt konto objekt till `IMultiTenantAccount` . Alla konton kan vara flera klienter, men antalet klient profiler som är tillgängliga via MSAL baseras på vilka innehavare du har begärt token från att använda det aktuella kontot.  Exempel:
+För att få åtkomst till anspråk om ett konto som de visas i andra klienter måste du först omvandla ditt konto objekt till `IMultiTenantAccount` . Alla konton kan vara flera klienter, men antalet klient profiler som är tillgängliga via MSAL baseras på vilka innehavare du har begärt token från att använda det aktuella kontot.  Ett exempel:
 
 ```java
 // Psuedo Code

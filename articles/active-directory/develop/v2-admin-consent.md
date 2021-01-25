@@ -1,6 +1,6 @@
 ---
 title: Medgivande protokoll för Microsoft Identity Platform admin
-description: En beskrivning av auktorisering i slut punkten för Microsoft Identity Platform, inklusive omfång, behörigheter och medgivande.
+description: En beskrivning av auktorisering i Microsoft Identity Platform, inklusive omfång, behörigheter och medgivande.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -12,12 +12,12 @@ ms.date: 12/18/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 353c349ebe348addac60c5f9f7b1bf0fbb1fc425
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 13cff9f3a6037a16d7c3b9cf233d26c6e9518bc1
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97703328"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756107"
 ---
 # <a name="admin-consent-on-the-microsoft-identity-platform"></a>Administrativt medgivande på Microsoft Identity Platform
 
@@ -27,7 +27,7 @@ Vissa behörigheter kräver medgivande från en administratör innan de kan bevi
 
 När du skapar ett program som använder den administrativa medgivande slut punkten behöver appen normalt en sida eller vy där administratören kan godkänna appens behörigheter. Den här sidan kan ingå i appens registrerings flöde, en del av appens inställningar, eller så kan det vara ett dedikerat "Connect"-flöde. I många fall är det meningsfullt att appen visar vyn "Anslut" bara när en användare har loggat in med ett arbets-eller skol Microsoft-konto.
 
-När du registrerar användaren i din app kan du identifiera den organisation som administratören tillhör innan de ber dem att godkänna de nödvändiga behörigheterna. Även om det inte är absolut nödvändigt kan det hjälpa dig att skapa en mer intuitiv upplevelse för dina organisations användare. Följ våra [självstudier för Microsoft Identity Platform Protocol](active-directory-v2-protocols.md)för att logga in användaren i.
+När du registrerar användaren i din app kan du identifiera den organisation som administratören tillhör innan de ber dem att godkänna de nödvändiga behörigheterna. Även om det inte är absolut nödvändigt kan det hjälpa dig att skapa en mer intuitiv upplevelse för dina organisations användare. Följ [självstudierna för Microsoft Identity Platform Protocol](active-directory-v2-protocols.md)för att logga in användaren i.
 
 ## <a name="request-the-permissions-from-a-directory-admin"></a>Begär behörigheter från en katalog administratör
 
@@ -47,10 +47,10 @@ https://graph.microsoft.com/mail.send
 | Parameter | Villkor | Beskrivning |
 | ---: | ---: | :---: |
 | `tenant` | Krävs | Den katalog klient som du vill begära behörighet från. Kan anges i GUID eller eget namn format eller allmänt refereras till `organizations` som visas i exemplet. Använd inte "common", eftersom personliga konton inte kan tillhandahålla administrativt medgivande, förutom i kontexten för en klient. För att säkerställa bästa kompatibilitet med personliga konton som hanterar klienter använder du klient-ID när det är möjligt. |
-| `client_id` | Obligatoriskt | **Program-ID: t (klienten)** som [Azure Portal – Appregistreringar](https://go.microsoft.com/fwlink/?linkid=2083908) -upplevelsen som har tilldelats din app. |
-| `redirect_uri` | Obligatoriskt |Den omdirigerings-URI där du vill att svaret på din app ska hanteras. Det måste exakt matcha en av de omdirigerings-URI: er som du registrerade i registrerings portalen för appen. |
+| `client_id` | Obligatorisk | **Program-ID: t (klienten)** som [Azure Portal – Appregistreringar](https://go.microsoft.com/fwlink/?linkid=2083908) -upplevelsen som har tilldelats din app. |
+| `redirect_uri` | Obligatorisk |Den omdirigerings-URI där du vill att svaret på din app ska hanteras. Det måste exakt matcha en av de omdirigerings-URI: er som du registrerade i registrerings portalen för appen. |
 | `state` | Rekommenderas | Ett värde som ingår i begäran som också kommer att returneras i svaret från token. Det kan vara en sträng med valfritt innehåll som du vill ha. Använd tillstånd för att koda information om användarens tillstånd i appen innan autentiseringsbegäran inträffade, t. ex. sidan eller vyn de var på. |
-|`scope` | Obligatoriskt | Definierar den uppsättning behörigheter som begärs av programmet. Detta kan vara antingen statiskt (med `/.default` ) eller dynamiska omfång. Detta kan inkludera OIDC-omfattningarna ( `openid` , `profile` , `email` ). |
+|`scope` | Obligatorisk | Definierar den uppsättning behörigheter som begärs av programmet. Detta kan vara antingen statiskt (med `/.default` ) eller dynamiska omfång. Detta kan inkludera OIDC-omfattningarna ( `openid` , `profile` , `email` ). |
 
 I det här läget kräver Azure AD en klient administratör för att logga in för att slutföra begäran. Administratören uppmanas att godkänna alla behörigheter som du har begärt i `scope` parametern.  Om du har använt ett statiskt ( `/.default` )-värde kommer det att fungera som v 1.0 admin medgivande-slutpunkten och begära medgivande för alla omfattningar som finns i de nödvändiga behörigheterna (både användare och app). För att begära program behörigheter måste du använda `/.default` värdet. Om du inte vill att administratörer ska se en specifik behörighet på skärmen för administratörs godkännande hela tiden när du använder `/.default` , är det bästa sättet att inte placera behörigheten i avsnittet nödvändiga behörigheter. I stället kan du använda dynamiskt medgivande för att lägga till de behörigheter som du vill ska visas på skärmen för medgivande vid körning, i stället för att använda `/.default` .
 

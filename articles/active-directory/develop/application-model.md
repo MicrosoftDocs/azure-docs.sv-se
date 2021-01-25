@@ -1,7 +1,7 @@
 ---
 title: Program modell | Azure
 titleSuffix: Microsoft identity platform
-description: Läs om hur du registrerar ditt program så att det kan integreras med Microsoft Identity Platform (v 2.0).
+description: Läs om hur du registrerar ditt program så att det kan integreras med Microsoft Identity Platform.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -13,12 +13,12 @@ ms.date: 04/28/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 5aca96a9c3bc4e8f1061f677e316565b10014ac9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2ba41e36d12b58da2e572cf870195716eacaddef
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88117489"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755676"
 ---
 # <a name="application-model"></a>Programmodell
 

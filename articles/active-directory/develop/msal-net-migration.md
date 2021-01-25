@@ -13,18 +13,18 @@ ms.date: 04/10/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: c6049bf55e379a2629e8cd4ef1427f91fc31d2cd
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: b437efcfa2b0bb2a725929ae0253f48d97d11552
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063611"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754825"
 ---
 # <a name="migrating-applications-to-msalnet"></a>Migrera program till MSAL.NET
 
 Både Microsoft Authentication Library för .NET (MSAL.NET) och Azure AD Authentication Library för .NET (ADAL.NET) används för att autentisera Azure AD-entiteter och begära token från Azure AD. Fram till nu har de flesta utvecklare arbetat med Azure AD för utvecklare Platform (v 1.0) för att autentisera Azure AD-identiteter (arbets-och skol konton) genom att begära token med Azure AD Authentication Library (ADAL). Använda MSAL:
 
-- Du kan autentisera en bredare uppsättning av Microsoft-identiteter (Azure AD-identiteter och Microsoft-konton, och sociala och lokala konton via Azure AD B2C) när du använder Microsoft Identity Platform-slutpunkten.
+- Du kan autentisera en bredare uppsättning Microsoft-identiteter (Azure AD-identiteter och Microsoft-konton, och sociala och lokala konton via Azure AD B2C) när du använder Microsoft Identity Platform,
 - användarna får bästa möjliga upplevelse med enkel inloggning.
 - ditt program kan möjliggöra stegvist godkännande och stöd för villkorlig åtkomst är enklare
 - du får nytta av innovationen.
@@ -35,9 +35,9 @@ Den här artikeln beskriver skillnaderna mellan Microsoft Authentication Library
 
 ## <a name="differences-between-adal-and-msal-apps"></a>Skillnader mellan ADAL och MSAL-appar
 
-I de flesta fall vill du använda MSAL.NET och slut punkten för Microsoft Identity Platform, som är den senaste generationen av Microsoft Authentication Libraries. Med MSAL.NET kan du hämta token för användare som loggar in till ditt program med Azure AD (arbets-och skol konton), Microsoft (personliga) konton (MSA) eller Azure AD B2C.
+I de flesta fall vill du använda MSAL.NET och Microsoft Identity Platform, som är den senaste generationen av Microsoft Authentication Libraries. Med MSAL.NET kan du hämta token för användare som loggar in till ditt program med Azure AD (arbets-och skol konton), Microsoft (personliga) konton (MSA) eller Azure AD B2C.
 
-Om du redan är bekant med slut punkten för Azure AD för utvecklare (v 1.0) (och ADAL.NET) kanske du vill läsa [vad som är annorlunda om slut punkten för Microsoft Identity Platform (v 2.0)?](../azuread-dev/azure-ad-endpoint-comparison.md).
+Om du redan är bekant med slut punkten för Azure AD för utvecklare (v 1.0) (och ADAL.NET) kanske du vill läsa [vad som skiljer sig från Microsoft Identity Platform?](../azuread-dev/azure-ad-endpoint-comparison.md).
 
 Du måste dock fortfarande använda ADAL.NET om ditt program behöver logga in användare med tidigare versioner av [Active Directory Federation Services (AD FS) (ADFS)](/windows-server/identity/active-directory-federation-services). Mer information finns i [ADFS-stöd](https://aka.ms/msal-net-adfs-support).
 
@@ -266,4 +266,4 @@ Du kan också använda den här metoden för olika integrations scenarier där d
 
 ## <a name="next-steps"></a>Nästa steg
 
-Du hittar mer information om omfattningarna i [omfattningar, behörigheter och medgivande i Microsoft Identity Platform-slutpunkten](v2-permissions-and-consent.md)
+Du hittar mer information om omfattningarna i [omfattningar, behörigheter och medgivande i Microsoft Identity Platform](v2-permissions-and-consent.md)

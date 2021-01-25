@@ -13,14 +13,14 @@ ms.date: 01/04/2021
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40, content-perf, FY21Q1, contperf-fy21q1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: 33dffa40e0236483d641c2e2bbe318bb62a7724d
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: f4ae26a489b823e2347841cf72690d6cd8462611
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98678195"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755314"
 ---
-# <a name="configurable-token-lifetimes-in-microsoft-identity-platform-preview"></a>Konfigurerbara livstider för token i Microsoft Identity Platform (för hands version)
+# <a name="configurable-token-lifetimes-in-the-microsoft-identity-platform-preview"></a>Konfigurerbara livs längder för token i Microsoft Identity Platform (för hands version)
 
 Du kan ange livs längd för åtkomst, ID eller SAML-token som utfärdats av Microsoft Identity Platform. Du kan ange token-livslängd för alla program i din organisation, för ett program med flera klientorganisationer eller för en specifik huvudtjänst i organisationen. Men vi stöder för närvarande inte konfigurering av livs längderna för de [hanterade identitets tjänstens huvud namn](../managed-identities-azure-resources/overview.md).
 
@@ -50,7 +50,7 @@ Klienter använder åtkomsttoken för att få åtkomst till en skyddad resurs. E
 
 ### <a name="saml-tokens"></a>SAML-token
 
-SAML-token används av många webbaserade SAAS-program och hämtas med hjälp av Azure Active Directorys SAML2-protokollets slut punkt. De används också av program som använder WS-Federation. Standard livstiden för token är 1 timme. Från ett programs perspektiv anges giltighets perioden för token av NotOnOrAfter-värdet för `<conditions …>` elementet i token. När giltighets perioden för token har upphört måste klienten initiera en ny autentiseringsbegäran, som ofta uppfylls utan interaktiv inloggning som ett resultat av sessionstoken för enkel inloggning (SSO).
+SAML-token används av många webbaserade SaaS-program och hämtas med hjälp av Azure Active Directorys SAML2-protokollets slut punkt. De används också av program som använder WS-Federation. Standard livstiden för token är 1 timme. Från ett programs perspektiv anges giltighets perioden för token av NotOnOrAfter-värdet för `<conditions …>` elementet i token. När giltighets perioden för token har upphört måste klienten initiera en ny autentiseringsbegäran, som ofta uppfylls utan interaktiv inloggning som ett resultat av sessionstoken för enkel inloggning (SSO).
 
 Värdet för NotOnOrAfter kan ändras med hjälp av `AccessTokenLifetime` parametern i en `TokenLifetimePolicy` . Den ställs in på den livstid som kon figurer ATS i principen om det finns någon, plus en klock skev på fem minuter.
 
@@ -106,9 +106,9 @@ Offentliga klienter kan inte lagra ett klient lösen ord på ett säkert sätt (
 Egenskapen max ålder är den tid som en enskild token kan användas. 
 
 ### <a name="single-sign-on-session-tokens"></a>Token för enkel inloggning
-När en användare autentiserar med Microsoft Identity Platform upprättas en enkel inloggnings session (SSO) med användarens webbläsare och Microsoft Identity Platform. SSO-token i form av en cookie representerar den här sessionen. SSO-sessionstoken är inte kopplat till ett specifik resurs-/klient program. SSO-sessionstoken kan återkallas och deras giltighet kontrol leras varje gång de används.
+När en användare autentiseras med Microsoft Identity Platform upprättas en enkel inloggnings session (SSO) med användarens webbläsare och Microsoft Identity Platform. SSO-token i form av en cookie representerar den här sessionen. SSO-sessionstoken är inte kopplat till ett specifik resurs-/klient program. SSO-sessionstoken kan återkallas och deras giltighet kontrol leras varje gång de används.
 
-Microsoft Identity Platform använder två typer av SSO-tokens: beständiga och inte beständiga. Beständig sessionstoken lagras som beständiga cookies av webbläsaren. Token för inte beständig session lagras som sessionscookies. (Sessionscookies förstörs när webbläsaren stängs.) Vanligt vis lagras en beständig sessionstoken. Men när användaren markerar kryss rutan **Behåll mig inloggad** under autentiseringen, lagras en beständig sessionstoken.
+Microsoft Identity Platform använder två typer av SSO-token: beständiga och inte permanenta. Beständig sessionstoken lagras som beständiga cookies av webbläsaren. Token för inte beständig session lagras som sessionscookies. (Sessionscookies förstörs när webbläsaren stängs.) Vanligt vis lagras en beständig sessionstoken. Men när användaren markerar kryss rutan **Behåll mig inloggad** under autentiseringen, lagras en beständig sessionstoken.
 
 Token för inte beständig session har en livs längd på 24 timmar. Permanenta token har en livs längd på 90 dagar. När en SSO-token används i sin giltighets period, utökas giltighets perioden till ett till 24 timmar eller 90 dagar, beroende på tokentyp. Om en SSO-token inte används inom sin giltighets tid betraktas det som förfallet och godkänns inte längre.
 

@@ -11,30 +11,39 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/25/2020
+ms.date: 01/24/2021
 ms.author: memildin
-ms.openlocfilehash: 115d89783a849a9c4c7adb2fceceaf8d1575c785
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: dbda0aecdadd81da0f7681a5fc9b140157d5e8f3
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97795996"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756817"
 ---
 # <a name="security-recommendations-in-azure-security-center"></a>Säkerhetsrekommendationer i Azure Security Center 
+
 I det här avsnittet beskrivs hur du visar och förstår rekommendationerna i Azure Security Center som hjälper dig att skydda dina Azure-resurser.
 
 
 ## <a name="what-are-security-recommendations"></a>Vad är säkerhets rekommendationer?
 
-Rekommendationer är åtgärder som du kan vidta för att skydda dina resurser.
-
 Security Center analyserar regelbundet säkerhets status för dina Azure-resurser för att identifiera potentiella säkerhets risker. Därefter får du rekommendationer om hur du åtgärdar problemen.
+
+Rekommendationer är åtgärder som du kan vidta för att skydda och skärp dina resurser. 
 
 Varje rekommendation ger dig följande:
 
 - En kort beskrivning av problemet
 - De åtgärder som vidtas för att genomföra rekommendationen
 - De berörda resurserna
+
+## <a name="how-does-microsoft-decide-what-needs-securing-and-hardening"></a>Hur avgör Microsoft vad som behöver säkras och skärpas?
+
+Security Centers rekommendationer baseras på Azures säkerhets benchmark. 
+
+Azures säkerhets prestanda är Microsofts-skapade, Azure-/regionsspecifika uppsättning rikt linjer för säkerhets-och efterlevnads metod tips baserade på vanliga ramverk för efterlevnad. Detta respekterade riktmärken bygger på kontrollerna från [Center for Internet Security (CIS)](https://www.cisecurity.org/benchmark/azure/) och [National Institute of Standards and Technology (NIST)](https://www.nist.gov/) med fokus på Cloud-inriktad säkerhet.
+
+Läs mer om [Azure Security Benchmark](../security/benchmarks/introduction.md).
 
 ## <a name="monitor-recommendations"></a>Övervaka rekommendationer <a name="monitor-recommendations"></a>
 

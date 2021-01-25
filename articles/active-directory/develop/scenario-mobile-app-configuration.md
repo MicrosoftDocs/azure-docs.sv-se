@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 06/16/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: e2c632de3d602fe2d3e5bfa74f78e90f48412067
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: ebc22e3cf300b664aae5842f7cf924769d4d907e
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98208921"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756487"
 ---
 # <a name="configure-a-mobile-app-that-calls-web-apis"></a>Konfigurera en mobilapp som anropar webb-API: er
 
@@ -27,7 +27,7 @@ När du har skapat ditt program får du lära dig hur du konfigurerar koden med 
 
 Följande typer av MSAL-typer (Microsoft Authentication Library) stöder mobila appar.
 
-MSAL | Description
+MSAL | Beskrivning
 ------------ | ----------
 ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Används för att utveckla bärbara program. MSAL.NET stöder följande plattformar för att skapa ett mobil program: Universell Windows-plattform (UWP), Xamarin. iOS och Xamarin. Android.
 ![MSAL. iOS](media/sample-v2-code/logo_iOS.png) <br/> MSAL. iOS | Används för att utveckla interna iOS-program med hjälp av mål-C eller Swift.

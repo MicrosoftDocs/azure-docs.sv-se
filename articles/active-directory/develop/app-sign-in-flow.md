@@ -1,7 +1,7 @@
 ---
-title: Inloggnings flöde för appar med Microsoft Identity Platform | Azure
+title: Inloggnings flödet för appen med Microsoft Identity Platform | Azure
 titleSuffix: Microsoft identity platform
-description: Läs om inloggnings flödet för webb-, skriv bords-och mobilappar i Microsoft Identity Platform (v 2.0).
+description: Läs om inloggnings flödet för webb-, skriv bords-och mobilappar i Microsoft Identity Platform.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -13,14 +13,14 @@ ms.date: 05/18/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: af5b27dc85a276c731a61135ab59ab81f5aaf3c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1f9f330ab140fa66b5a66a112c47ca2a68ba56bf
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83772207"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755697"
 ---
-# <a name="app-sign-in-flow-with-microsoft-identity-platform"></a>Inloggnings flöde för appar med Microsoft Identity Platform
+# <a name="app-sign-in-flow-with-the-microsoft-identity-platform"></a>Inloggnings flöde för appar med Microsoft Identity Platform
 
 I det här avsnittet beskrivs det grundläggande inloggnings flödet för webb-, skriv bords-och mobilappar med Microsoft Identity Platform. Se [autentiserings flöden och program scenarier](authentication-flows-app-scenarios.md) för att lära dig om inloggnings scenarier som stöds av Microsoft Identity Platform.
 
@@ -48,7 +48,7 @@ Utvecklare av webbappar kan ange om alla eller endast vissa sidor kräver autent
 
 Det här attributet gör att ASP.NET söker efter en sessions-cookie som innehåller användarens identitet. Om en cookie inte finns omdirigerar ASP.NET autentiseringen till den angivna identitets leverantören. Om identitets leverantören är Azure AD omdirigerar webbappen autentiseringen till `https://login.microsoftonline.com` , som visar en dialog ruta för inloggning.
 
-### <a name="how-a-web-app-delegates-sign-in-to-microsoft-identity-platform-and-obtains-a-token"></a>Hur en webbapp delegerar inloggning till Microsoft Identity Platform och erhåller en token
+### <a name="how-a-web-app-delegates-sign-in-to-the-microsoft-identity-platform-and-obtains-a-token"></a>Hur en webbapp delegerar inloggning till Microsoft Identity Platform och hämtar en token
 
 Användarautentisering sker via webbläsaren. OpenID-protokollet använder vanliga HTTP-protokoll meddelanden.
 

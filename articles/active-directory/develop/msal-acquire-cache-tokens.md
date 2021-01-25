@@ -13,12 +13,12 @@ ms.date: 11/04/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 34cdaa42f3a41ae04c73c570bb4fede01a786af2
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 98ae81626db637f5b0bd6bfe9e294c32293d09e5
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97107846"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755071"
 ---
 # <a name="acquire-and-cache-tokens-using-the-microsoft-authentication-library-msal"></a>Hämta och cachelagra token med Microsoft Authentication Library (MSAL)
 
@@ -30,7 +30,7 @@ Du kan också rensa token-cachen, som uppnås genom att ta bort kontona från ca
 
 ## <a name="scopes-when-acquiring-tokens"></a>Omfattningar vid hämtning av token
 
-[Omfattningar](v2-permissions-and-consent.md) är de behörigheter som ett webb-API visar att klient programmen kan begära åtkomst till. Klient program begär användarens medgivande för dessa omfattningar när de gör autentiseringsbegäranden för att hämta token för att få åtkomst till webb-API: er. Med MSAL kan du hämta token för att få åtkomst till Azure AD för utvecklare (v 1.0) och API: er för Microsoft Identity Platform (v 2.0). v 2.0-protokollet använder omfång i stället för resurs i begär Anden. Mer information finns i [jämförelse mellan v 1.0 och v 2.0](../azuread-dev/azure-ad-endpoint-comparison.md). Baserat på webb-API: ns konfiguration av den token-version som den accepterar, returnerar v 2.0-slutpunkten åtkomsttoken till MSAL.
+[Omfattningar](v2-permissions-and-consent.md) är de behörigheter som ett webb-API visar att klient programmen kan begära åtkomst till. Klient program begär användarens medgivande för dessa omfattningar när de gör autentiseringsbegäranden för att hämta token för att få åtkomst till webb-API: er. Med MSAL kan du hämta token för att få åtkomst till Azure AD för utvecklare (v 1.0) och API: er för Microsoft Identity Platform. v 2.0-protokollet använder omfång i stället för resurs i begär Anden. Mer information finns i [jämförelse mellan v 1.0 och v 2.0](../azuread-dev/azure-ad-endpoint-comparison.md). Baserat på webb-API: ns konfiguration av den token-version som den accepterar, returnerar v 2.0-slutpunkten åtkomsttoken till MSAL.
 
 Flera av MSAL för token-hämtning kräver en `scopes` parameter. `scopes`Parametern är en lista med strängar som deklarerar önskade behörigheter och de begärda resurserna. Välkända omfattningar är [Microsoft Graph behörigheter](/graph/permissions-reference).
 
@@ -122,7 +122,7 @@ När klienten begär en åtkomsttoken, returnerar Azure AD även ett verifiering
 
 ## <a name="next-steps"></a>Nästa steg
 
-Flera av plattformarna som stöds av MSAL har ytterligare token cache-relaterad information i dokumentationen för plattformens bibliotek. Exempel:
+Flera av plattformarna som stöds av MSAL har ytterligare token cache-relaterad information i dokumentationen för plattformens bibliotek. Ett exempel:
 - [Hämta en token från token-cachen med MSAL.NET](msal-net-acquire-token-silently.md)
 - [Enkel inloggning med MSAL.js](msal-js-sso.md)
 - [Anpassad token cache-serialisering i MSAL för python](msal-python-token-cache-serialization.md)

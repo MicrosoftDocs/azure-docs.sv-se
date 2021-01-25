@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.custom:
 - devx-track-java
 - devx-track-azurecli
-ms.openlocfilehash: 504d3a834760605149c93c0beea84bbe1b59e263
-ms.sourcegitcommit: 17e9cb8d05edaac9addcd6e0f2c230f71573422c
+ms.openlocfilehash: 5ebb30101d191bb254017db7b0de2f9b8bce145d
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97707562"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755171"
 ---
 # <a name="quickstart-create-a-java-function-in-azure-from-the-command-line"></a>Snabb start: skapa en Java-funktion i Azure från kommando raden
 
@@ -113,7 +113,7 @@ Svarsmeddelandet genereras av [HttpResponseMessage. Builder](/java/api/com.micro
 
 Inställningarna för de Azure-resurser som skapats som **värd för din** app definieras i konfigurations elementet i plugin-programmet med ett **konfigurations** exempel `com.microsoft.azure` i den genererade pom.xmls filen. Konfigurations elementet nedan instruerar till exempel en maven-baserad distribution för att skapa en Function-app i `java-functions-group` resurs gruppen i `westus` regionen. Själva funktions programmet körs i Windows som finns i `java-functions-app-service-plan` planen, vilket som standard är en server lös förbruknings plan.
 
-:::code language="java" source="~/azure-functions-samples-java/pom.xml" range="62-102":::
+:::code language="java" source="~/azure-functions-samples-java/pom.xml" range="62-107":::
 
 Du kan ändra de här inställningarna för att styra hur resurser skapas i Azure, till exempel genom `runtime.os` att ändra från `windows` till `linux` före den första distributionen. En fullständig lista över inställningar som stöds av maven-plugin-programmet finns i [konfigurations informationen](https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Functions:-Configuration-Details).
 

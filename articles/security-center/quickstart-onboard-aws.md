@@ -3,16 +3,16 @@ title: Anslut ditt AWS-konto till Azure Security Center
 description: Övervaka dina AWS-resurser från Azure Security Center
 author: memildin
 ms.author: memildin
-ms.date: 12/29/2020
+ms.date: 01/24/2021
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 4c919115efb39a8e8c008eab69dc087792f7b105
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: 2ad3ab8c39d9f9a29e74bd139fb5ddd1e5faeff9
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97814320"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755153"
 ---
 #  <a name="connect-your-aws-accounts-to-azure-security-center"></a>Anslut dina AWS-konton till Azure Security Center
 
@@ -33,13 +33,13 @@ När du registrerar ditt AWS-konto i Security Center integreras AWS-säkerhetshu
 
 I skärm bilden nedan ser du AWS-konton som visas på instrument panelen i Security Centers översikt.
 
-:::image type="content" source="./media/quickstart-onboard-aws/aws-account-in-overview.png" alt-text="3 GCP-projekt som visas på Security Center översikts instrument panel" lightbox="./media/quickstart-onboard-gcp/gcp-account-in-overview.png":::
+:::image type="content" source="./media/quickstart-onboard-aws/aws-account-in-overview.png" alt-text="Tre GCP-projekt som visas på Security Center översikts instrument panel" lightbox="./media/quickstart-onboard-gcp/gcp-account-in-overview.png":::
 
 ## <a name="availability"></a>Tillgänglighet
 
 |Aspekt|Information|
 |----|:----|
-|Versions tillstånd:|Förhandsgranskning<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
+|Versions tillstånd:|Allmän tillgänglighet (GA)|
 |Priset|Kräver [Azure Defender för servrar](defender-for-servers-introduction.md)|
 |Nödvändiga roller och behörigheter:|**Ägare** för den aktuella Azure-prenumerationen<br>**Deltagare** kan också ansluta ett AWS-konto om en ägare tillhandahåller information om tjänstens huvud namn|
 |Moln|![Ja](./media/icons/yes-icon.png) Kommersiella moln<br>![Nej](./media/icons/no-icon.png) National/suverän (US Gov, Kina gov, andra gov)|
@@ -136,9 +136,9 @@ AWS Systems Manager krävs för att automatisera uppgifter över dina AWS-resurs
 1. Konfigurera alternativen på fliken **AWS-autentisering** :
     1. Ange ett **visnings namn** för kopplingen.
     1. Bekräfta att prenumerationen är korrekt. Det är den prenumeration som omfattar anslutnings-och AWS för säkerhets nav.
-    1. Beroende på vilket autentiseringsalternativ du valde i [steg 2. Konfigurera autentisering för Security Center i AWS](#step-2-set-up-authentication-for-security-center-in-aws):
+    1. Beroende på alternativet autentisering valde du i [steg 2. Konfigurera autentisering för Security Center i AWS](#step-2-set-up-authentication-for-security-center-in-aws):
         - Välj  **anta roll** och klistra in ARN från [skapa en IAM-roll för Security Center](#create-an-iam-role-for-security-center).
-            :::image type="content" source="./media/quickstart-onboard-aws/paste-arn-in-portal.png" alt-text="Klistra in ARN-filen i relevant fält i guiden AWS-anslutning i Azure-portalen":::
+            :::image type="content" source="./media/quickstart-onboard-aws/paste-arn-in-portal.png" alt-text="Inklistring av ARN-filen i relevant fält i guiden AWS-anslutning i Azure Portal":::
 
             ELLER
 

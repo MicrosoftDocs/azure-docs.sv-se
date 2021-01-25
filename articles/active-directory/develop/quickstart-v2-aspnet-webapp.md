@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, contperf-fy21q1
-ms.openlocfilehash: dbddf35b0aa1494ef719803fa84cafae04f3ec50
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: e2a71313294457e09e2bb152dea98c84b7730236
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178593"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754406"
 ---
 # <a name="quickstart-add-microsoft-identity-platform-sign-in-to-an-aspnet-web-app"></a>Snabb start: lägga till Microsoft Identity Platform-inloggning till en ASP.NET-webbapp
 
@@ -94,7 +94,7 @@ Se [hur exemplet fungerar](#how-the-sample-works) för en illustration.
 >    <add key="ClientId" value="Enter_the_Application_Id_here" />
 >    <add key="Tenant" value="Enter_the_Tenant_Info_Here" />
 >    ```
->    Där:
+>    Plats:
 > - `Enter_the_Application_Id_here` – är program-Id för programmet som du har registrerat.
 > - `Enter_the_Tenant_Info_Here` – är ett av alternativen nedan:
 >   - Om ditt program **endast stöder min organisation** ersätter du värdet med **klient-ID** eller **klient namn** (till exempel contoso.onmicrosoft.com)
@@ -165,11 +165,11 @@ public void Configuration(IAppBuilder app)
 }
 ```
 
-> |Var  | Description |
+> |Var  | Beskrivning |
 > |---------|---------|
 > | `ClientId`     | Program-ID från appen som registrerats i Azure-portalen |
 > | `Authority`    | STS-slutpunkten för autentisering av användaren. Vanligtvis `https://login.microsoftonline.com/{tenant}/v2.0` för offentligt moln, där {tenant} är namnet på din klientorganisation, ditt klientorganisations-ID eller *gemensam* för en referens till den gemensamma slutpunkten (används för appar för en innehavare) |
-> | `RedirectUri`  | URL där användare skickas efter autentisering mot Microsoft Identity Platform-slutpunkt |
+> | `RedirectUri`  | URL där användare skickas efter autentisering mot Microsoft Identity Platform |
 > | `PostLogoutRedirectUri`     | URL där användare skickas efter utloggning |
 > | `Scope`     | Listan över omfång som begärs, avgränsade med blanksteg |
 > | `ResponseType`     | Begär att svaret från autentiseringen innehåller en ID-token |

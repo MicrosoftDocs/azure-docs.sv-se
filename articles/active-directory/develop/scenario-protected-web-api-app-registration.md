@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 7a38e2384c5f24bc3a72e1ef8e8f7119b2db0f2f
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: c3d9cd5e710eb263707e87c4afe0f08809b8d50c
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443950"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756462"
 ---
 # <a name="protected-web-api-app-registration"></a>Skyddat webb-API: registrera appar
 
@@ -27,11 +27,11 @@ Vanliga steg för att registrera en app finns i [snabb start: registrera ett pro
 
 ## <a name="accepted-token-version"></a>Godkänd token-version
 
-Slut punkten för Microsoft Identity Platform kan utfärda v 1.0-token och v 2.0-token. Mer information om dessa token [finns i åtkomsttoken](access-tokens.md).
+Microsoft Identity Platform kan utfärda v 1.0-token och v 2.0-token. Mer information om dessa token [finns i åtkomsttoken](access-tokens.md).
 
 Vilken token-version ditt API kan acceptera beror på ditt val av **konto typer som stöds** när du skapar registreringen av ditt webb-API-program i Azure Portal.
 
-- Om värdet för **konto typer som stöds** är **konton i en organisations katalog och personliga Microsoft-konton (t. ex. Skype, Xbox, Outlook.com)** , måste den godkända token-versionen vara v 2.0.
+- Om värdet för **konto typer som stöds** är **konton i en organisations katalog och personliga Microsoft-konton (t. ex. Skype, Xbox, Outlook.com)**, måste den godkända token-versionen vara v 2.0.
 - Annars kan den godkända token-versionen vara v 1.0.
 
 När du har skapat programmet kan du fastställa eller ändra den godkända token-versionen genom att följa dessa steg:
@@ -44,7 +44,7 @@ När du har skapat programmet kan du fastställa eller ändra den godkända toke
 1. Om du har ändrat version för token väljer du **Spara**.
 
 > [!NOTE]
-> Webb-API: et anger vilken token-version den accepterar. När en klient begär en token för ditt webb-API från Microsoft Identity Platform (v 2.0) slut punkten, hämtar klienten en token som anger vilken token-version som webb-API: n accepterar.
+> Webb-API: et anger vilken token-version den accepterar. När en klient begär en token för ditt webb-API från Microsoft Identity Platform får klienten en token som anger vilken token-version som webb-API: n accepterar.
 
 ## <a name="no-redirect-uri"></a>Ingen omdirigerings-URI
 
@@ -145,7 +145,7 @@ För att lägga till denna ökade säkerhet:
    >
    > Om du anger **användar tilldelning krävs?** till **Ja** kontrollerar Azure AD program roll tilldelningarna för en klient när den begär en webb-API-åtkomsttoken. Om klienten inte är tilldelad någon app-roll returnerar Azure AD fel meddelandet "invalid_client: AADSTS501051: programmet \<application name\> har inte tilldelats någon roll för \<web API\> ".
    >
-   > Om du behåller **användar tilldelningen krävs?** ange till **Nej** , det går inte att kontrol lera roll tilldelningarna för rollerna när en klient begär en åtkomsttoken för ditt webb-API. Alla daemon-klienter, vilket innebär att alla klienter som använder flödet för klientautentiseringsuppgifter, kan få en åtkomsttoken för API: et genom att ange dess mål grupp. Alla program kan komma åt API: et utan att begära behörigheter för det.
+   > Om du behåller **användar tilldelningen krävs?** ange till **Nej**, det går inte att kontrol lera roll tilldelningarna för rollerna när en klient begär en åtkomsttoken för ditt webb-API. Alla daemon-klienter, vilket innebär att alla klienter som använder flödet för klientautentiseringsuppgifter, kan få en åtkomsttoken för API: et genom att ange dess mål grupp. Alla program kan komma åt API: et utan att begära behörigheter för det.
    >
    > Men enligt beskrivningen i föregående avsnitt, kan ditt webb-API alltid verifiera att programmet har rätt roll, vilket är auktoriserat av klient organisationens administratör. API: et utför den här kontrollen genom att verifiera att åtkomsttoken har ett roll anspråk och att värdet för det här anspråket är korrekt. I det föregående JSON-exemplet är värdet `access_as_application` .
 

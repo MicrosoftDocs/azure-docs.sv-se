@@ -12,12 +12,12 @@ ms.date: 11/25/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 61d07c1ba912a0e24b2f4e5fa67243b4525db367
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b35b39d7072b22d9cc3f7b4f4ef8886431b06f69
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81536190"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754666"
 ---
 # <a name="scopes-for-a-web-api-accepting-v10-tokens"></a>Omfattningar för ett webb-API som accepterar v 1.0-token
 
@@ -64,7 +64,7 @@ var result = await app.AcquireTokenInteractive(scopes).ExecuteAsync();
 Den logik som används av Azure AD är följande:
 
 - För ADAL-slutpunkten (Azure AD v 1.0) med en v 1.0-åtkomsttoken (endast möjlig), AUD = Resource
-- För MSAL (Microsoft Identity Platform (v 2.0))-slut punkten som frågar en åtkomsttoken för en resurs som accepterar v 2.0-token `aud=resource.AppId`
+- För MSAL (Microsoft Identity Platform) som efterfrågar en åtkomsttoken för en resurs som accepterar v 2.0-token `aud=resource.AppId`
 - För MSAL (v 2.0-slutpunkt) som efterfrågar en åtkomsttoken för en resurs som accepterar en v 1.0-åtkomsttoken (vilket är fallet ovan), parsar Azure AD den önskade mål gruppen från det begärda omfånget genom att ta allt före det sista snedstrecket och använda det som resurs-ID. Om https: \/ /Database.Windows.net förväntar sig en mål grupp av "https: \/ /Database.Windows.net/" måste du begära ett omfånget "https: \/ /Database.Windows.net//.default". Se även GitHub problem [#747: resurs-URL: en avslutande snedstreck utelämnas, vilket orsakade SQL-auth-fel](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747).
 
 ## <a name="scopes-to-request-access-to-all-the-permissions-of-a-v10-application"></a>Omfattningar för att begära åtkomst till alla behörigheter för ett v 1.0-program

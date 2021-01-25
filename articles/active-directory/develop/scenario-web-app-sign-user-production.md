@@ -1,5 +1,6 @@
 ---
-title: Flytta webb program som loggar in användare till produktion – Microsoft Identity Platform | Azure
+title: Flytta webb program som loggar in användare till produktion | Azure
+titleSuffix: Microsoft identity platform
 description: Lär dig hur du skapar en webbapp som loggar in användare (flytta till produktion)
 services: active-directory
 author: jmprieur
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: fd9890cb94bf6bb4b82ebbb585ab8bbb9d5ba46a
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: c7abad31c9936729b8d9c19ed2efcb841ac103ca
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96169298"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756238"
 ---
 # <a name="web-app-that-signs-in-users-move-to-production"></a>Webbapp som loggar in användare: flytta till produktion
 

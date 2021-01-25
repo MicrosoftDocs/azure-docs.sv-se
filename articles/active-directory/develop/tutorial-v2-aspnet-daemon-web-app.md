@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 5f2560cdc062edb41ecda935eb9b8efe630949dc
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 7d34039a5d56feb42473b1a2b24def5244ec3e04
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98015954"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756133"
 ---
 # <a name="tutorial-build-a-multi-tenant-daemon-that-uses-the-microsoft-identity-platform"></a>Självstudie: utveckla en daemon för flera innehavare som använder Microsoft Identity Platform
 
@@ -33,7 +33,7 @@ I de här självstudierna har du
 
 Om du inte har en Azure-prenumeration kan du skapa ett [kostnads fritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 - [Visual Studio 2017 eller 2019](https://visualstudio.microsoft.com/downloads/).
 - En Azure AD-klientorganisation. Mer information finns i [så här hämtar du en Azure AD-klient](quickstart-create-new-tenant.md).
@@ -49,7 +49,7 @@ Eftersom appen är en app för flera klienter för Microsoft Business-kunder må
 
 ![Diagrammet visar UserSync-appen med tre lokala objekt som ansluter till Azure, med start punkts-auth som hämtar en token interaktivt för att ansluta till Azure A D, AccountController får administratörs medgivande för att ansluta till Azure A D och SyncController läsa användare för att ansluta till Microsoft Graph.](./media/tutorial-v2-aspnet-daemon-webapp/topology.png)
 
-Mer information om de begrepp som används i det här exemplet finns i [protokoll dokumentationen för klientens autentiseringsuppgifter för identitets Plattformens slut punkt](v2-oauth2-client-creds-grant-flow.md).
+Mer information om de begrepp som används i det här exemplet finns i [protokoll dokumentationen för klientens autentiseringsuppgifter för identitets plattformen](v2-oauth2-client-creds-grant-flow.md).
 
 ## <a name="clone-or-download-this-repository"></a>Klona eller hämta den här lagrings platsen
 

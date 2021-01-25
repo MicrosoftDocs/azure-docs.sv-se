@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev, devx-track-js
-ms.openlocfilehash: b7d14ee321a1160420d106151276ae6aef513c5b
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 1ec046ca6b42a5ca8f33b0347c562c85abd42684
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98064410"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756170"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-app-spa-using-auth-code-flow"></a>Självstudie: Logga in användare och anropa Microsoft Graph-API: et från en JavaScript-app med en enda sida (SPA) med auth Code Flow
 
@@ -28,11 +28,11 @@ I de här självstudierna har du
 > * Utför OAuth 2,0-auktoriseringskod med PKCE
 > * Logga in personliga Microsoft-konton samt arbets-och skol konton
 > * Hämta en åtkomsttoken
-> * Anropa Microsoft Graph eller ditt eget API som kräver åtkomsttoken som hämtats från Microsoft Identity Platform-slutpunkten
+> * Anropa Microsoft Graph eller ditt eget API som kräver åtkomsttoken som hämtats från Microsoft Identity Platform
 
 MSAL.js 2,0 förbättrar MSAL.js 1,0 genom att stödja auktoriserings kod flödet i webbläsaren i stället för det implicita tilldelnings flödet. MSAL.js 2,0 har **inte** stöd för det implicita flödet.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 * [Node.js](https://nodejs.org/en/download/) för att köra en lokal webbserver
 * [Visual Studio Code](https://code.visualstudio.com/download) eller en annan kod redigerare
@@ -41,7 +41,7 @@ MSAL.js 2,0 förbättrar MSAL.js 1,0 genom att stödja auktoriserings kod flöde
 
 :::image type="content" source="media/tutorial-v2-javascript-auth-code/diagram-01-auth-code-flow.png" alt-text="Diagram som visar auktoriserings kod flödet i ett program med en sida":::
 
-Det program som du skapar i den här självstudien gör det möjligt för ett Java Script SPA att fråga Microsoft Graph-API genom att förvärva säkerhetstoken från slut punkten för Microsoft Identity Platform. I det här scenariot begärs en åtkomsttoken efter att användaren loggar in och läggs till i HTTP-begäranden i Authorization-huvudet. Hämtning av token och förnyelse hanteras av Microsoft Authentication Library för Java Script (MSAL.js).
+Det program som du skapar i den här självstudien gör det möjligt för ett Java Script SPA att fråga Microsoft Graph-API genom att förvärva säkerhetstoken från Microsoft Identity Platform. I det här scenariot begärs en åtkomsttoken efter att användaren loggar in och läggs till i HTTP-begäranden i Authorization-huvudet. Hämtning av token och förnyelse hanteras av Microsoft Authentication Library för Java Script (MSAL.js).
 
 I den här självstudien används följande bibliotek:
 
@@ -558,13 +558,13 @@ Det SPA du har skapat i den här självstudien anropar `acquireTokenSilent` och/
 
 #### <a name="get-a-user-token-interactively"></a>Hämta en användartoken interaktivt
 
-Efter den första inloggningen ska appen inte be användarna att autentisera varje gång de behöver åtkomst till en skyddad resurs (det vill säga en token). Anropa för att förhindra sådana omautentiserings begär Anden `acquireTokenSilent` . Det finns dock vissa situationer där du kan behöva tvinga användare att interagera med Microsoft Identity Platform-slutpunkten. Till exempel:
+Efter den första inloggningen ska appen inte be användarna att autentisera varje gång de behöver åtkomst till en skyddad resurs (det vill säga en token). Anropa för att förhindra sådana omautentiserings begär Anden `acquireTokenSilent` . Det finns dock vissa situationer där du kan behöva tvinga användare att interagera med Microsoft Identity Platform. Ett exempel:
 
 - Användarna måste ange sina autentiseringsuppgifter på nytt eftersom lösen ordet har upphört att gälla.
 - Ditt program begär åtkomst till en resurs och du behöver användarens medgivande.
 - Tvåfaktorautentisering krävs.
 
-Anrop `acquireTokenPopup` öppnar ett popup-fönster (eller `acquireTokenRedirect` omdirigerar användare till Microsoft Identity Platform-slutpunkten). I det fönstret måste användarna interagera genom att bekräfta sina autentiseringsuppgifter, ge tillåtelse till den begärda resursen eller utföra tvåfaktorautentisering.
+Anrop `acquireTokenPopup` öppnar ett popup-fönster (eller `acquireTokenRedirect` omdirigerar användare till Microsoft Identity Platform). I det fönstret måste användarna interagera genom att bekräfta sina autentiseringsuppgifter, ge tillåtelse till den begärda resursen eller utföra tvåfaktorautentisering.
 
 #### <a name="get-a-user-token-silently"></a>Hämta en token obevakat
 
@@ -618,7 +618,7 @@ Du har slutfört skapandet av programmet och är nu redo att starta Node.js webb
 
 ### <a name="sign-in-to-the-application"></a>Logga in på programmet
 
-När webbläsaren har läst in *index.html* -filen väljer du **Logga** in. Du uppmanas att logga in med Microsoft Identity Platform-slutpunkten:
+När webbläsaren har läst in *index.html* -filen väljer du **Logga** in. Du uppmanas att logga in med Microsoft Identity Platform:
 
 :::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-01-signin-dialog.png" alt-text="Webbläsare som visar dialog rutan för inloggning":::
 

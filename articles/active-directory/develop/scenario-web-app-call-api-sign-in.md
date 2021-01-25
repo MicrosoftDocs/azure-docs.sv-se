@@ -1,5 +1,6 @@
 ---
-title: Ta bort konton från token cache vid utloggning – Microsoft Identity Platform | Azure
+title: Ta bort konton från token-cache vid utloggning | Azure
+titleSuffix: Microsoft identity platform
 description: Lär dig hur du tar bort ett konto från token-cache vid utloggning
 services: active-directory
 author: jmprieur
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 07/14/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: b7f59f235f4baa270b36b01cc4532227ab23fbc8
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 9fc271dfa9edbedac8527009dd2b2180b7c5e7cd
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94442539"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756259"
 ---
 # <a name="a-web-app-that-calls-web-apis-remove-accounts-from-the-token-cache-on-global-sign-out"></a>En webbapp som anropar webb-API: ta bort konton från token-cachen vid global utloggning
 

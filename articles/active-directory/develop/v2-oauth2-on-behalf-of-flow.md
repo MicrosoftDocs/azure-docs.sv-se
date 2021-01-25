@@ -13,12 +13,12 @@ ms.date: 08/7/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 8c8167142876dfac0ae0aeff51e85b66c65c607b
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: ff8e03b813e2cb890192667e3466d920eaabc72c
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98208856"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756084"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Microsoft Identity Platform och OAuth 2,0 på uppdrag av Flow
 
@@ -130,7 +130,7 @@ Ett lyckat svar är ett JSON OAuth 2,0-svar med följande parametrar.
 
 | Parameter | Beskrivning |
 | --- | --- |
-| `token_type` | Anger värdet för token-typ. Den enda typ som stöds av Microsoft Identity Platform är `Bearer` . Mer information om Bearer-token finns i [OAuth 2,0 Authorization Framework: Bearer token Usage (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt). |
+| `token_type` | Anger värdet för token-typ. Den enda typ som stöds av Microsoft Identity Platform `Bearer` . Mer information om Bearer-token finns i [OAuth 2,0 Authorization Framework: Bearer token Usage (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt). |
 | `scope` | Omfattningen av åtkomst som beviljats i token. |
 | `expires_in` | Hur lång tid i sekunder som åtkomsttoken är giltig. |
 | `access_token` | Den begärda åtkomsttoken. Anrops tjänsten kan använda denna token för att autentisera till den mottagande tjänsten. |
@@ -201,7 +201,7 @@ Beroende på arkitekturen eller användningen av ditt program kan du överväga 
 
 ### <a name="default-and-combined-consent"></a>/.default och kombinerat medgivande
 
-Programmet på mellan nivå lägger till klienten i listan med kända klient program i manifestet, och klienten kan sedan utlösa ett kombinerat godkännande flöde för både sig och mellan nivå programmet. På Microsoft Identity Platform-slutpunkten görs detta med hjälp av [ `/.default` omfånget](v2-permissions-and-consent.md#the-default-scope). När du utlöser en medgivande skärm med kända klient program och `/.default` visar medgivande skärmen behörigheter för **både** klienten och API: et på mellan nivå, och även begäran om vilka behörigheter som krävs av API: t på mellan nivå. Användaren ger tillåtelse till båda programmen och sedan fungerar OBO-flödet.
+Programmet på mellan nivå lägger till klienten i listan med kända klient program i manifestet, och klienten kan sedan utlösa ett kombinerat godkännande flöde för både sig och mellan nivå programmet. På Microsoft Identity Platform görs detta med hjälp av [ `/.default` omfånget](v2-permissions-and-consent.md#the-default-scope). När du utlöser en medgivande skärm med kända klient program och `/.default` visar medgivande skärmen behörigheter för **både** klienten och API: et på mellan nivå, och även begäran om vilka behörigheter som krävs av API: t på mellan nivå. Användaren ger tillåtelse till båda programmen och sedan fungerar OBO-flödet.
 
 ### <a name="pre-authorized-applications"></a>Förauktoriserade program
 

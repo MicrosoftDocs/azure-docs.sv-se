@@ -14,12 +14,12 @@ ms.date: 11/11/2019
 ms.author: rayluo
 ms.reviewer: marsma, rayluo, nacanuma
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 213184409c9f5ee21ac9f61be1ad138fbbaa3590
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 42ffc7ffba20868b23675fd8613fd3ef11b0924a
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97107863"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755057"
 ---
 # <a name="adal-to-msal-migration-guide-for-python"></a>ADAL till MSAL migration-guide för python
 
@@ -38,13 +38,13 @@ Uppfyller
   - OAuth v 2.0
   - OpenID Connect (OIDC)
 
-Se [vad som är annorlunda om slut punkten för Microsoft Identity Platform (v 2.0)?](../azuread-dev/azure-ad-endpoint-comparison.md) för mer information.
+Se [vad som är annorlunda om Microsoft Identity Platform?](../azuread-dev/azure-ad-endpoint-comparison.md) för mer information.
 
 ### <a name="scopes-not-resources"></a>Webbprogramsomfattande omfattningar
 
 ADAL python hämtar token för resurser, men MSAL python hämtar token för omfattningar. API-ytan i MSAL python har inte längre någon resurs parameter. Du måste ange omfattningar som en lista med strängar som deklarerar önskade behörigheter och resurser som begärs. För att se några exempel på omfattningar, se [Microsoft graphs omfång](/graph/permissions-reference).
 
-Du kan lägga till `/.default` scope-suffixet till resursen för att hjälpa till att migrera dina appar från v 1.0-slutpunkten (ADAL) till Microsoft Identity Platform-slutpunkten (MSAL). För resurs värdet för är till exempel `https://graph.microsoft.com` värdet för motsvarande omfång `https://graph.microsoft.com/.default` .  Om resursen inte finns i URL-formuläret, men ett resurs-ID för formuläret `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX` , kan du fortfarande använda omfångs värdet som `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX/.default` .
+Du kan lägga till `/.default` scope-suffixet till resursen för att hjälpa till att migrera dina appar från v 1.0-slutpunkten (ADAL) till Microsoft Identity Platform (MSAL). För resurs värdet för är till exempel `https://graph.microsoft.com` värdet för motsvarande omfång `https://graph.microsoft.com/.default` .  Om resursen inte finns i URL-formuläret, men ett resurs-ID för formuläret `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX` , kan du fortfarande använda omfångs värdet som `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX/.default` .
 
 För mer information om de olika typerna av omfattningar, se [behörigheter och medgivande i Microsoft Identity Platform](./v2-permissions-and-consent.md) och [scope för ett webb-API som accepterar v 1.0-token-](./msal-v1-app-scopes.md) artiklar.
 
@@ -92,7 +92,7 @@ def get_preexisting_rt_and_their_scopes_from_elsewhere():
     # You may be able to append "/.default" to your v1 resource to form a scope
     # See https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent#the-default-scope
 
-    # Or maybe you have an app already talking to Microsoft identity platform v2,
+    # Or maybe you have an app already talking to the Microsoft identity platform,
     # powered by some 3rd-party auth library, and persist its tokens somehow.
 
     # Either way, you need to extract RTs from there, and return them like this.

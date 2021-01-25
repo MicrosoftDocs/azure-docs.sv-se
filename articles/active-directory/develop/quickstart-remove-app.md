@@ -13,23 +13,23 @@ ms.date: 11/15/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: marsma, aragra, lenalepa, sureshja
-ms.openlocfilehash: 033d5cfa5dbe5e0010bc1182f54643ec04db3ce3
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 24c29d34c14e6237bc79e38741ea244da5429e9e
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98017620"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754557"
 ---
 # <a name="how-to-remove-an-application-registered-with-the-microsoft-identity-platform"></a>Ta bort ett program som är registrerat med Microsoft Identity Platform
 
-Företagsutvecklare och SaaS-leverantörer (Software as a Service) som har registrerat program med Microsoft Identity Platform kan behöva ta bort en programregistrering.
+Enterprise-utvecklare och SaaS-leverantörer (Software-as-a-Service) som har registrerade program med Microsoft Identity Platform kan behöva ta bort en program registrering.
 
 I följande avsnitt får du lära dig att:
 
 * Ta bort ett program som skapats av dig eller din organisation
 * Ta bort ett program som skapats av en annan organisation
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 * Ett [program som är registrerat i din Azure AD-klient](quickstart-register-app.md)
 

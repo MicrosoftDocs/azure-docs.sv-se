@@ -13,12 +13,12 @@ ms.date: 12/09/2020
 ms.author: kenwith
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 9fb5e229882532fed076f2e0d800f32acfcdbf4c
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 0ded249a55e5a59bdcad7407694cbd5ed4cf2352
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98013795"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756078"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Gör så här: anpassa anspråk som utfärdats i SAML-token för företags program
 
@@ -48,15 +48,15 @@ Så här redigerar du NameID (namn-ID-värde):
 
 ### <a name="nameid-format"></a>NameID-format
 
-Om SAML-begäran innehåller elementet NameIDPolicy med ett särskilt format, kommer Microsoft Identity Platform att svara på formatet i begäran.
+Om SAML-begäran innehåller elementet NameIDPolicy med ett särskilt format, kommer Microsoft Identity Platform att respektera formatet i begäran.
 
-Om SAML-begäran inte innehåller ett element för NameIDPolicy, kommer Microsoft Identity Platform att utfärda NameID med det format som du anger. Om inget format har angetts använder Microsoft Identity Platform det standard käll format som är associerat med den valda anspråks källan.
+Om SAML-begäran inte innehåller ett element för NameIDPolicy, kommer Microsoft Identity Platform att utfärda NameID med det format som du anger. Om inget format har angetts använder Microsoft Identity Platform standard käll formatet som är associerat med den valda anspråks källan.
 
 I list rutan **Välj namn identifierare format** kan du välja något av följande alternativ.
 
 | NameID-format | Beskrivning |
 |---------------|-------------|
-| **Objekt** | Microsoft Identity Platform använder standard käll formatet. |
+| **Standardvärde** | Microsoft Identity Platform använder standard käll formatet. |
 | **Permanent** | Microsoft Identity Platform kommer att använda beständigt som NameID-format. |
 | **EmailAddress** | Microsoft Identity Platform kommer att använda EmailAddress som NameID-format. |
 | **Ospecificerat** | Microsoft Identity Platform kommer att använda ospecificerat som NameID-format. |
@@ -67,7 +67,7 @@ En tillfällig NameID stöds också, men är inte tillgänglig i list rutan och 
 
 Välj önskad källa för `NameIdentifier` (eller NameID)-anspråket. Du kan välja bland följande alternativ.
 
-| Namn | Beskrivning |
+| Name | Beskrivning |
 |------|-------------|
 | E-post | Användarens e-postadress |
 | userprincipalName | Användarens huvud namn (UPN) |
@@ -170,7 +170,7 @@ Den ordning som du lägger till villkoren i är viktiga. Azure AD utvärderar vi
 
 Till exempel är Britta Simon en gäst användare i Contoso-klienten. Hon tillhör en annan organisation som också använder Azure AD. Under den här konfigurationen av programmet Fabrikam när Britta försöker logga in på Fabrikam, kommer Microsoft Identity Platform att utvärdera villkoren enligt följande.
 
-Först verifierar Microsoft Identity Platform om Britta användar typ är `All guests` . Eftersom detta är sant tilldelar Microsoft Identity Platform källan för anspråket till `user.extensionattribute1` . För det andra verifierar Microsoft Identity Platform om Britta användar typ är `AAD guests` , eftersom detta även är sant tilldelar Microsoft Identity Platform källan för anspråket till `user.mail` . Slutligen genereras anspråket med värdet `user.mail` för Britta.
+Först verifierar Microsoft Identity Platform om Britta användar typ är `All guests` . Eftersom detta är sant tilldelar Microsoft Identity Platform källan för anspråket till `user.extensionattribute1` . För det andra verifierar Microsoft Identity Platform om Britta användar typ är `AAD guests` , eftersom detta också är sant, tilldelar Microsoft Identity Platform källan för anspråk till `user.mail` . Slutligen genereras anspråket med värdet `user.mail` för Britta.
 
 ![Villkorlig konfiguration av anspråk](./media/active-directory-saml-claims-customization/sso-saml-user-conditional-claims.png)
 

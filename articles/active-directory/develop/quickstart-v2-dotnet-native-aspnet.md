@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/05/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 2967476d06b8f6f88b740f811a94c5fdb4284b4d
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: ec8fd05c0661178cc07b9165793c9f34f2463948
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98011874"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754323"
 ---
 # <a name="quickstart-call-an-aspnet-web-api-thats-protected-by-microsoft-identity-platform"></a>Snabb start: anropa ett ASP.NET webb-API som skyddas av Microsoft Identity Platform
 
@@ -25,7 +25,7 @@ I den här snabb starten laddar du ned och kör ett kod exempel som visar hur du
 
 I artikeln används också en Windows Presentation Foundation-app (WPF) för att visa hur du kan begära en åtkomsttoken för att få åtkomst till ett webb-API.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 * Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Visual Studio 2017 eller 2019. Hämta [Visual Studio kostnads fritt](https://www.visualstudio.com/downloads/).

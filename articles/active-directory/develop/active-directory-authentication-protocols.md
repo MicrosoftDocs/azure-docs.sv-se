@@ -13,12 +13,12 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: hirsin
 ROBOTS: NOINDEX
-ms.openlocfilehash: ffd9b415d3b2a8e1aa716caa0e8289c6ae127b71
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 803f52666fb09a836eae3294410584ebbd71a1b6
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98065090"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755890"
 ---
 # <a name="microsoft-identity-platform-authentication-protocols"></a>Autentiseringsprotokoll för Microsoft Identity Platform
 
@@ -27,7 +27,7 @@ Microsoft Identity Platform stöder flera av de vanligaste protokollen för aute
 ## <a name="authentication-protocols-articles-and-reference"></a>Artiklar och referens för autentiseringsprotokoll
 
 * [Viktig information om förnyelse av signerings nyckel i Microsoft Identity Platform](active-directory-signing-key-rollover.md) – lär dig mer om Microsofts identitets plattforms förnyelse av takt för signerings nyckel, ändringar som du kan göra för att uppdatera nyckeln automatiskt och diskussion om hur du uppdaterar de vanligaste program scenarierna.
-* [Token och anspråks typer som stöds](id-tokens.md) – Läs mer om anspråk i de token som problem med Microsoft Identity Platform.
+* [Token och anspråks typer som stöds](id-tokens.md) – Läs mer om anspråk i de token som Microsoft Identity Platform utfärdar.
 * [Oauth 2,0 i Microsoft Identity Platform](v2-oauth2-auth-code-flow.md) – lär dig mer om implementeringen av OAuth 2,0 i Microsoft Identity Platform.
 * [OpenID Connect 1,0](v2-protocols-oidc.md) – lär dig hur du använder OAuth 2,0, ett Authorization-protokoll, för autentisering.
 * [Tjänst-till-tjänst-anrop med klientautentiseringsuppgifter](v2-oauth2-client-creds-grant-flow.md) – lär dig hur du använder OAuth 2,0-klientens autentiseringsuppgifter för att tilldela tjänst-till-tjänst-anrop.

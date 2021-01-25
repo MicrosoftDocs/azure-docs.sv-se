@@ -1,7 +1,7 @@
 ---
 title: OAuth 2,0-och OpenID Connect-protokoll på Microsoft Identity Platform | Azure
 titleSuffix: Microsoft identity platform
-description: En guide till OAuth 2,0-och OpenID Connect-protokoll som stöds av Microsoft Identity Platform-slutpunkten.
+description: En guide till OAuth 2,0-och OpenID Connect-protokoll som stöds av Microsoft Identity Platform.
 services: active-directory
 author: hpsin
 manager: CelesteDG
@@ -13,14 +13,14 @@ ms.date: 07/21/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 12edbcda7354d9d6d4b03ebe32304d988b2eb579
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 765c363542b07deac44d47b94731e1109fcba045
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88751455"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755748"
 ---
-# <a name="oauth-20-and-openid-connect-protocols-on-microsoft-identity-platform"></a>OAuth 2,0-och OpenID Connect-protokoll på Microsoft Identity Platform
+# <a name="oauth-20-and-openid-connect-protocols-on-the-microsoft-identity-platform"></a>OAuth 2,0-och OpenID Connect-protokoll på Microsoft Identity Platform
 
 Microsoft Identity Platform-slutpunkten för identitet-som-en-tjänst implementerar autentisering och auktorisering med bransch standard protokollen OpenID Connect (OIDC) respektive OAuth 2,0. Tjänsten är standard-kompatibel, men det kan finnas små skillnader mellan de två implementeringarna av de här protokollen. Informationen här är användbar om du väljer att skriva koden genom att direkt skicka och hantera HTTP-förfrågningar eller använda ett bibliotek med öppen källkod från tredje part, i stället för att använda ett av våra [bibliotek med öppen källkod](reference-v2-libraries.md).
 
@@ -30,7 +30,7 @@ I nästan alla OAuth 2,0-och OpenID Connect-flöden finns det fyra parter som in
 
 ![Diagram över OAuth 2,0-roller](./media/active-directory-v2-flows/protocols-roles.svg)
 
-* **Auktoriseringsservern** är Microsoft Identity Platform-slutpunkten och ansvarig för att säkerställa användarens identitet, beviljande och återkallande av åtkomst till resurser och utfärdande av tokens. Auktoriseringsservern kallas även för identitets leverantören – den hanterar på ett säkert sätt vad som helst med användarens information, deras åtkomst och förtroende relationer mellan parter i ett flöde.
+* **Auktoriseringsservern** är Microsoft Identity Platform och ansvarar för att se till att användarens identitet, beviljar och återkallar åtkomst till resurser och utfärdande av tokens. Auktoriseringsservern kallas även för identitets leverantören – den hanterar på ett säkert sätt vad som helst med användarens information, deras åtkomst och förtroende relationer mellan parter i ett flöde.
 * **Resurs ägaren** är vanligt vis slutanvändaren. Det är den part som äger data och har möjlighet att tillåta klienter att komma åt dessa data eller resurser.
 * **OAuth-klienten** är din app som identifieras av dess program-ID. OAuth-klienten är vanligt vis den part som slutanvändaren interagerar med och den begär token från auktoriseringsservern. Klienten måste beviljas behörighet att få åtkomst till resursen av resurs ägaren.
 * **Resurs servern** är den plats där resursen eller data finns. Den litar på Auktoriseringsservern för att på ett säkert sätt autentisera och auktorisera OAuth-klienten, och använder sig av Bearer-åtkomsttoken för att säkerställa att åtkomst till en resurs kan beviljas.
@@ -66,7 +66,7 @@ Där `{tenant}` kan ett av fyra olika värden göras:
 Om du vill lära dig hur du interagerar med dessa slut punkter väljer du en viss typ av app i avsnittet [protokoll](#protocols) och följer länkarna för mer information.
 
 > [!TIP]
-> Alla appar som är registrerade i Azure AD kan använda Microsoft Identity Platform-slutpunkten, även om de inte loggar in personliga konton.  På så sätt kan du migrera befintliga program till Microsoft Identity Platform och [MSAL](reference-v2-libraries.md) utan att skapa programmet på nytt.
+> Alla appar som är registrerade i Azure AD kan använda Microsofts identitets plattform, även om de inte loggar in personliga konton.  På så sätt kan du migrera befintliga program till Microsoft Identity Platform och [MSAL](reference-v2-libraries.md) utan att skapa programmet på nytt.
 
 ## <a name="tokens"></a>Token
 

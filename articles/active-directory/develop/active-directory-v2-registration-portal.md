@@ -14,12 +14,12 @@ ms.author: ryanwi
 ms.reviewer: lenalepa
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: b165cd4abd55026e10aa43eb20faa85b887de194
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 6a33da602eaa9bee20f155eaa550e558e5dcbeca
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98065051"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755569"
 ---
 # <a name="app-registration-reference"></a>Referens för registrering av appar
 
@@ -27,7 +27,7 @@ Det här dokumentet innehåller kontext och beskrivningar av de olika funktioner
 
 ## <a name="my-applications-or-converged-applications"></a>Mina program eller konvergerade program
 
-Den här listan innehåller alla dina program som har registrerats för användning med Microsoft Identity Platform (v 2.0) slut punkten. Dessa program kan logga in användare med både personliga Microsoft-konton och arbets-eller skol konton från Azure Active Directory. Mer information om identitets Plattformens slut punkt finns i [Översikt över v 2.0](./v2-overview.md). Dessa program kan också användas för att integrera med slut punkten för Microsoft-konto-autentisering `https://login.live.com` .
+Den här listan innehåller alla dina program som har registrerats för användning med Microsoft Identity Platform. Dessa program kan logga in användare med både personliga Microsoft-konton och arbets-eller skol konton från Azure Active Directory. Mer information om Microsoft Identity Platform finns i [Översikt över v 2.0](./v2-overview.md). Dessa program kan också användas för att integrera med slut punkten för Microsoft-konto-autentisering `https://login.live.com` .
 
 ## <a name="azure-ad-only-applications"></a>Endast Azure AD-program
 

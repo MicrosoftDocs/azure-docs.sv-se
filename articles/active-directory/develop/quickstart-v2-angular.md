@@ -12,18 +12,18 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 03/18/2020
 ms.author: janutter
-ms.openlocfilehash: c34ea5e2c622b7b203c56c6de2b611d6eca1d35c
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 161b7fcf4660ddb9515f0b82887f416d83598bdc
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98017518"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754436"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-an-angular-single-page-application"></a>Snabb start: Logga in användare och hämta en åtkomsttoken i ett angulande Enkels Ides program
 
 I den här snabb starten laddar du ned och kör ett kod exempel som visar hur ett särskilt SPA-program (Single-Side Application) kan logga in användare och anropa Microsoft Graph. Kod exemplet visar hur du hämtar en åtkomsttoken för att anropa Microsoft Graph API eller något webb-API.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 * En Azure-prenumeration. [Skapa ett kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * [Node.js](https://nodejs.org/en/download/).

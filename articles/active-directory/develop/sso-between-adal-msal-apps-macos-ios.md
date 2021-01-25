@@ -1,6 +1,7 @@
 ---
-title: SSO mellan ADAL & MSAL-appar (iOS/macOS) – Microsoft Identity Platform | Azure
-description: ''
+title: SSO mellan ADAL & MSAL-appar (iOS/macOS) | Azure
+titleSuffix: Microsoft identity platform
+description: Lär dig hur du delar SSO mellan ADAL-och MSAL-appar
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -12,12 +13,12 @@ ms.date: 08/28/2019
 ms.author: marsma
 ms.reviewer: ''
 ms.custom: aaddev
-ms.openlocfilehash: 7a8a1667ba1ca2a99c053c6941e3ba778299fd53
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 60189b8ba952bc3315bf514c5d0786601840665a
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80880758"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756200"
 ---
 # <a name="how-to-sso-between-adal-and-msal-apps-on-macos-and-ios"></a>Så här: SSO mellan ADAL-och MSAL-appar på macOS och iOS
 
@@ -48,7 +49,7 @@ I följande tabell sammanfattas skillnader i konto identifierare mellan ADAL och
 | Konto identifierare                | MSAL                                                         | ADAL 2.7. x      | Äldre ADAL (före ADAL 2.7. x) |
 | --------------------------------- | ------------------------------------------------------------ | --------------- | ------------------------------ |
 | visnings bara identifierare            | `username`                                                   | `userId`        | `userId`                       |
-| unikt ID som inte går att lyssna | `identifier`                                                 | `homeAccountId` | E.t.                            |
+| unikt ID som inte går att lyssna | `identifier`                                                 | `homeAccountId` | Ej tillämpligt                            |
 | Inget konto-ID är känt               | Fråga alla konton via `allAccounts:` API i `MSALPublicClientApplication` | Saknas             | Saknas                            |
 
 Detta är `MSALAccount` gränssnittet som tillhandahåller dessa identifierare:
@@ -203,7 +204,7 @@ Eftersom `homeAccountId` inte är tillgängligt i äldre ADAL-versioner måste d
                               error:(NSError * __autoreleasing *)error;
 ```
 
-Exempel:
+Ett exempel:
 
 Mål-C:
 

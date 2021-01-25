@@ -13,12 +13,12 @@ ms.date: 09/24/2019
 ms.author: marsma
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:iOS
-ms.openlocfilehash: 2fbff2abeb454fe02aa4bd50615033b9a0b7f27b
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: ef2ab6511d80f7f1f836805055e7cc7f48a488e7
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178610"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754296"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>Snabb start: Logga in användare och anropa Microsoft Graph API från en iOS-eller macOS-app
 
@@ -178,10 +178,10 @@ let msalConfiguration = MSALPublicClientApplicationConfig(clientId: kClientID, r
 self.applicationContext = try MSALPublicClientApplication(configuration: msalConfiguration)
 ```
 
-> |Där: | Description |
+> |Plats: | Beskrivning |
 > |---------|---------|
 > | `clientId` | Program-ID: t från programmet som är registrerat i _portal. Azure. com * |
-> | `authority` | Slut punkten för Microsoft Identity Platform. I de flesta fall är detta `https://login.microsoftonline.com/common` |
+> | `authority` | Microsoft Identity Platform. I de flesta fall är detta `https://login.microsoftonline.com/common` |
 > | `redirectUri` | Omdirigerings-URI för programmet. Du kan skicka Nil om du vill använda standardvärdet eller din anpassade omdirigerings-URI. |
 
 ### <a name="for-ios-only-additional-app-requirements"></a>För endast iOS, ytterligare krav för appar
@@ -242,7 +242,7 @@ let parameters = MSALInteractiveTokenParameters(scopes: kScopes, webviewParamete
 self.applicationContext!.acquireToken(with: parameters) { (result, error) in /* Add your handling logic */}
 ```
 
-> |Där:| Description |
+> |Plats:| Beskrivning |
 > |---------|---------|
 > | `scopes` | Innehåller de omfattningar som begärs (det vill säga `[ "user.read" ]` för Microsoft Graph eller `[ "<Application ID URL>/scope" ]` för anpassade webb-API: er ( `api://<Application ID>/access_as_user` ) |
 
@@ -262,7 +262,7 @@ self.applicationContext!.getCurrentAccount(with: nil) { (currentAccount, previou
 }
 ```
 
-> |Där: | Description |
+> |Plats: | Beskrivning |
 > |---------|---------|
 > | `scopes` | Innehåller de omfattningar som begärs (det vill säga `[ "user.read" ]` för Microsoft Graph eller `[ "<Application ID URL>/scope" ]` för anpassade webb-API: er ( `api://<Application ID>/access_as_user` ) |
 > | `account` | Det konto som en token begärs för. Den här snabb starten är ungefär samma konto program. Om du vill skapa en app med flera konton måste du definiera logik för att identifiera vilket konto som ska användas för token-begäranden som använder `accountsFromDeviceForParameters:completionBlock:` och skickar korrekt `accountIdentifier` |

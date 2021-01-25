@@ -14,12 +14,12 @@ ms.date: 11/04/2019
 ms.author: sagonzal
 ms.reviewer: nacanuma, twhitney
 ms.custom: aaddev, devx-track-java
-ms.openlocfilehash: 0183471db274bb7fca59ed8f24aa87b2bf997fb6
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 1d1512447b5d0474f8fabe92dbc7a36259f4618c
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063747"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754980"
 ---
 # <a name="adal-to-msal-migration-guide-for-java"></a>ADAL till MSAL migration-guide för Java
 
@@ -29,7 +29,7 @@ Både Microsoft Authentication Library för Java (MSAL4J) och Azure AD Authentic
 
 MSAL har följande fördelar:
 
-- Eftersom den använder den nyare slut punkten för Microsoft Identity Platform kan du autentisera en bredare uppsättning Microsoft-identiteter, till exempel Azure AD-identiteter, Microsoft-konton och sociala och lokala konton via Azure AD Business till konsument (B2C).
+- Eftersom den använder den nyare Microsoft Identity Platform kan du autentisera en bredare uppsättning Microsoft-identiteter, till exempel Azure AD-identiteter, Microsoft-konton och sociala och lokala konton via Azure AD Business till konsument (B2C).
 - Användarna får bästa möjliga upplevelse med enkel inloggning.
 - Ditt program kan möjliggöra stegvist tillstånd och stöd för villkorlig åtkomst är enklare.
 
@@ -37,13 +37,13 @@ MSAL för Java är auth Library som vi rekommenderar att du använder med Micros
 
 ## <a name="differences"></a>Skillnader
 
-Om du har arbetat med slut punkten för Azure AD för utvecklare (v 1.0) (och ADAL4J) kanske du vill läsa vad som [skiljer sig från slut punkten för Microsoft Identity Platform (v 2.0)?](../azuread-dev/azure-ad-endpoint-comparison.md).
+Om du har arbetat med slut punkten för Azure AD för utvecklare (v 1.0) (och ADAL4J) kanske du vill läsa vad som [skiljer sig från Microsoft Identity Platform?](../azuread-dev/azure-ad-endpoint-comparison.md).
 
 ## <a name="scopes-not-resources"></a>Webbprogramsomfattande omfattningar
 
 ADAL4J hämtar tokens för resurser medan MSAL för Java hämtar token för omfattningar. Ett antal MSAL för Java-klasser kräver en omfattnings parameter. Den här parametern är en lista med strängar som deklarerar önskade behörigheter och resurser som begärs. Se [Microsoft graphs omfång](/graph/permissions-reference) för att se exempel omfattningar.
 
-Du kan lägga till `/.default` scope-suffixet till resursen för att hjälpa till att migrera dina appar från v 1.0-slutpunkten (ADAL) till Microsoft Identity Platform-slutpunkten (MSAL). För resurs värdet för är till exempel `https://graph.microsoft.com` värdet för motsvarande omfång `https://graph.microsoft.com/.default` .  Om resursen inte finns i URL-formuläret, men ett resurs-ID för formuläret `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX` , kan du fortfarande använda omfångs värdet som `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX/.default` .
+Du kan lägga till `/.default` scope-suffixet till resursen för att hjälpa till att migrera dina appar från ADAL till MSAL. För resurs värdet för är till exempel `https://graph.microsoft.com` värdet för motsvarande omfång `https://graph.microsoft.com/.default` .  Om resursen inte finns i URL-formuläret, men ett resurs-ID för formuläret `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX` , kan du fortfarande använda omfångs värdet som `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX/.default` .
 
 För mer information om de olika typerna av omfattningar, se [behörigheter och medgivande i Microsoft Identity Platform](./v2-permissions-and-consent.md) och [scope för ett webb-API som accepterar v 1.0-token-](./msal-v1-app-scopes.md) artiklar.
 

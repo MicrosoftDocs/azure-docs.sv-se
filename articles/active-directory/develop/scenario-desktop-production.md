@@ -1,5 +1,6 @@
 ---
-title: 'Flytta Desktop-appen som anropar webb-API: er till produktion – Microsoft Identity Platform | Azure'
+title: 'Flytta Desktop-appen som anropar webb-API: er till produktion | Azure'
+titleSuffix: Microsoft identity platform
 description: 'Lär dig hur du flyttar en stationär app som anropar webb-API: er till produktion'
 services: active-directory
 author: jmprieur
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 325f95f2830ef021a4ac79de48695dda570f7817
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 05b93848bff66adc49d2855ee98fff6c9b7a2d3d
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97629790"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756506"
 ---
 # <a name="desktop-app-that-calls-web-apis-move-to-production"></a>Stationär app som anropar webb-API: er: flytta till produktion
 
@@ -31,7 +32,7 @@ I de olika flödena har du lärt dig hur du hanterar felen för de tysta flöden
 > [!NOTE]
 > Att få ett medgivande för flera resurser fungerar för Microsoft Identity Platform men inte för Azure Active Directory (Azure AD) B2C. Azure AD B2C stöder endast administrativt godkännande, inte användar medgivande.
 
-Du kan inte hämta en token för flera resurser samtidigt med slut punkten för Microsoft Identity Platform (v 2.0). `scopes`Parametern får bara innehålla omfång för en enda resurs. Du kan se till att användaren i förväg samtycka till flera resurser genom att använda- `extraScopesToConsent` parametern.
+Du kan inte hämta en token för flera resurser samtidigt med Microsoft Identity Platform. `scopes`Parametern får bara innehålla omfång för en enda resurs. Du kan se till att användaren i förväg samtycka till flera resurser genom att använda- `extraScopesToConsent` parametern.
 
 Du kan till exempel ha två resurser som har två omfång:
 

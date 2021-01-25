@@ -12,12 +12,12 @@ ms.date: 1/06/2021
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: 6b5c328503a28c6eb92c2c20ca54d4d3d80c9a15
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 6855e8f550c14574795ec00f4fed36762944dca1
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98232479"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756035"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>Gör så här: Ange valfria anspråk för din app
 
@@ -31,7 +31,7 @@ Du kan använda valfria anspråk för att:
 
 Listor över standard anspråk finns i [åtkomsttoken](access-tokens.md) och [id_token](id-tokens.md) dokumentation om anspråk.
 
-Även om det finns stöd för valfria anspråk i både v 1.0-och v 2.0-format-token, och även SAML-token, ger de mest av sitt värde när de flyttas från v 1.0 till v 2.0. Ett av målen för [v 2.0 Microsoft Identity Platform-slutpunkten](./v2-overview.md) är mindre token-storlekar för att säkerställa optimala prestanda av klienter. Det innebär att flera anspråk som tidigare inkluderats i åtkomst-och ID-token inte längre finns i v 2.0-token och måste tillfrågas specifikt för varje program.
+Även om det finns stöd för valfria anspråk i både v 1.0-och v 2.0-format-token, och även SAML-token, ger de mest av sitt värde när de flyttas från v 1.0 till v 2.0. Ett av målen för [Microsoft Identity Platform](./v2-overview.md) är mindre token-storlekar för att säkerställa optimala prestanda av klienter. Det innebär att flera anspråk som tidigare inkluderats i åtkomst-och ID-token inte längre finns i v 2.0-token och måste tillfrågas specifikt för varje program.
 
 **Tabell 1: tillämplighet**
 
@@ -49,7 +49,7 @@ Den uppsättning valfria anspråk som är tillgängliga som standard för progra
 
 **Tabell 2: v 1.0 och v 2.0 valfri anspråks uppsättning**
 
-| Namn                       |  Beskrivning   | Tokentyp | Användar typ | Kommentarer  |
+| Name                       |  Beskrivning   | Tokentyp | Användar typ | Kommentarer  |
 |----------------------------|----------------|------------|-----------|--------|
 | `auth_time`                | Tid när användaren senast autentiserades. Se OpenID Connect spec.| JWT        |           |  |
 | `tenant_region_scope`      | Resurs innehavarens region | JWT        |           | |
@@ -76,7 +76,7 @@ De här anspråken ingår alltid i v 1.0 Azure AD-tokens, men ingår inte i v 2.
 
 **Tabell 3: v 2.0 – endast valfria anspråk**
 
-| JWT-anspråk     | Namn                            | Beskrivning                                | Kommentarer |
+| JWT-anspråk     | Name                            | Beskrivning                                | Kommentarer |
 |---------------|---------------------------------|-------------|-------|
 | `ipaddr`      | IP-adress                      | IP-adressen som klienten loggade in från.   |       |
 | `onprem_sid`  | Lokal säkerhets identifierare |                                             |       |
@@ -94,7 +94,7 @@ Några av förbättringarna av v2-token-formatet är tillgängliga för appar so
 **Tabell 4: v 1.0 – endast valfria anspråk**
 
 
-| JWT-anspråk     | Namn                            | Beskrivning | Kommentarer |
+| JWT-anspråk     | Name                            | Beskrivning | Kommentarer |
 |---------------|---------------------------------|-------------|-------|
 |`aud`          | Målgrupp | Finns alltid i JWTs, men i v1-åtkomsttoken kan den genereras på flera olika sätt: alla appID-URI: er, med eller utan avslutande snedstreck, samt klient-ID för resursen. Den här slumpmässigheten kan vara svår att koda mot när du utför verifiering av token.  Använd [Ytterligare egenskaper för det här anspråket](#additional-properties-of-optional-claims) för att säkerställa att det alltid är inställt på resurs-ID: t för resursen i v1-åtkomsttoken. | endast v1 JWT-åtkomsttoken|
 |`preferred_username` | Önskat användar namn        | Tillhandahåller önskat användar namns anspråk inom v1-token. Detta gör det enklare för appar att tillhandahålla användar tips och Visa visnings namn som kan läsas av människa, oavsett tokentyp.  Vi rekommenderar att du använder det här valfria kravet i stället för att använda t. ex. `upn` eller `unique_name` . | v1 ID-token och åtkomsttoken |
@@ -273,7 +273,7 @@ Det här avsnittet beskriver konfigurations alternativen under valfria anspråk 
    - "DirectoryRole"
    - "Variabeln applicationgroup" (det här alternativet inkluderar endast grupper som är kopplade till programmet)
 
-   Här är några exempel:
+   Ett exempel:
 
     ```json
     "groupMembershipClaims": "SecurityGroup"

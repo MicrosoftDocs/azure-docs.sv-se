@@ -14,12 +14,12 @@ ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
-ms.openlocfilehash: eec24ca19af8c41a842b1db3db4b9e16f748f029
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 6a1f4a02ebf42c0f181b595aae0a5fa0bcc9b41d
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653257"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755916"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Microsoft Identity Platform ID-token
 
@@ -89,7 +89,7 @@ I den här listan visas de JWT-anspråk som är i de flesta id_tokens som standa
 |`groups:src1`|JSON-objekt | För Tokenbegäran som inte är begränsade (se `hasgroups` ovan) men fortfarande är för stora för token kommer en länk till listan över fullständiga grupper för användaren att inkluderas. För JWTs som ett distribuerat anspråk för SAML som ett nytt anspråk i stället för `groups` anspråket. <br><br>**Exempel-JWT-värde**: <br> `"groups":"src1"` <br> `"_claim_sources`: `"src1" : { "endpoint" : "https://graph.microsoft.com/v1.0/users/{userID}/getMemberObjects" }`<br><br> Mer information finns i [överutnyttjade anspråk](#groups-overage-claim).|
 
 > [!NOTE]
-> V 1.0-och v 2.0-id_token har skillnader i mängden information som de kommer att ha som visas i exemplen ovan. Versionen baseras på slut punkten varifrån den begärdes. Även om befintliga program ofta använder Azure AD-slutpunkten, ska nya program använda "Microsoft Identity Platform"-slutpunkten för v 2.0.
+> V 1.0-och v 2.0-id_token har skillnader i mängden information som de kommer att ha som visas i exemplen ovan. Versionen baseras på slut punkten varifrån den begärdes. Även om befintliga program ofta använder Azure AD-slutpunkten bör nya program använda "Microsoft Identity Platform".
 >
 > - v 1.0: Azure AD-slut punkter: `https://login.microsoftonline.com/common/oauth2/authorize`
 > - v 2.0: slut punkter för Microsoft Identity Platform: `https://login.microsoftonline.com/common/oauth2/v2.0/authorize`

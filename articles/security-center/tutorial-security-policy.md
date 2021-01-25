@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/04/2019
+ms.date: 01/24/2021
 ms.author: memildin
-ms.openlocfilehash: 88af554faab9479a402dd393b0a7eed0835ce59e
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: 7ea871428fffe685cc9d43dd698bfefb8d8a511a
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97814354"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756686"
 ---
 # <a name="manage-security-policies"></a>Hantera säkerhetsprinciper
 
@@ -33,7 +33,7 @@ Azure Security Center gör säkerhets rekommendationerna baserade på dina valda
 
 Security Center erbjuder följande alternativ för att arbeta med säkerhets principer:
 
-* **Visa och redigera den inbyggda standard principen** – när du aktiverar Security Center tilldelas en inbyggd initiativ med namnet "ASC default" automatiskt till alla Security Center registrerade prenumerationer. Du kan anpassa det här initiativet genom att aktivera eller inaktivera enskilda principer i den. Se listan över [inbyggda säkerhets principer](./policy-reference.md) för att förstå alternativen som är tillgängliga direkt.
+* **Visa och redigera den inbyggda standard principen** – när du aktiverar Security Center tilldelas initiativet med namnet "Azure Security benchmark" automatiskt till alla Security Center registrerade prenumerationer. Du kan anpassa det här initiativet genom att aktivera eller inaktivera enskilda principer i den. Se listan över [inbyggda säkerhets principer](./policy-reference.md) för att förstå alternativen som är tillgängliga direkt.
 
 * **Lägg till egna anpassade principer** – om du vill anpassa de säkerhets initiativ som tillämpas på din prenumeration kan du göra det i Security Center. Du får sedan rekommendationer om datorerna inte följer de principer som du skapar. Anvisningar om hur du skapar och tilldelar anpassade principer finns i [använda anpassade säkerhets principer](custom-security-policies.md).
 

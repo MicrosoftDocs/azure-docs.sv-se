@@ -12,16 +12,16 @@ ms.workload: identity
 ms.date: 03/03/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 383bdaebaa8a1795a9bfddb7da23e172aea111a0
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: c441d8e9fa5a3375b1ec4cd3e68d92e92738261d
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96762942"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755783"
 ---
 # <a name="authentication-flows-and-application-scenarios"></a>Autentiserings flöden och program scenarier
 
-Slut punkten för Microsoft Identity Platform (v 2.0) stöder autentisering för olika typer av moderna program arkitekturer. Alla arkitekturer baseras på bransch standard protokollen [OAuth 2,0 och OpenID Connect](active-directory-v2-protocols.md). Genom att använda [autentiseringsinställningarna för Microsoft Identity Platform](reference-v2-libraries.md)kan program autentisera identiteter och hämta token för att få åtkomst till skyddade API: er.
+Microsoft Identity Platform stöder autentisering för olika typer av moderna program arkitekturer. Alla arkitekturer baseras på bransch standard protokollen [OAuth 2,0 och OpenID Connect](active-directory-v2-protocols.md). Genom att använda [autentiseringsinställningarna för Microsoft Identity Platform](reference-v2-libraries.md)kan program autentisera identiteter och hämta token för att få åtkomst till skyddade API: er.
 
 I den här artikeln beskrivs autentiserings flöden och program scenarier som de används i.
 
@@ -79,7 +79,7 @@ Mer information finns i [konto typer som stöds](v2-supported-account-types.md#a
 
 ## <a name="application-scenarios"></a>Programscenarier
 
-Slut punkten för Microsoft Identity Platform stöder autentisering för dessa app-arkitekturer:
+Microsoft Identity Platform stöder autentisering för dessa app-arkitekturer:
 
 - Enkelsidiga appar
 - Webbappar
@@ -160,7 +160,7 @@ Mer information finns i [mobilapp som anropar webb-API: er](scenario-mobile-over
 
 ### <a name="protected-web-api"></a>Skyddat webb-API
 
-Du kan använda Microsoft Identity Platform-slutpunkten för att skydda webb tjänster som appens RESTful-webb-API. Ett skyddat webb-API anropas via en åtkomsttoken. Token skyddar API: ns data och autentiserar inkommande begär Anden. Anroparen för ett webb-API lägger till en åtkomsttoken i Authorization-huvudet för en HTTP-begäran.
+Du kan använda Microsoft Identity Platform för att skydda webb tjänster som appens RESTful-webb-API. Ett skyddat webb-API anropas via en åtkomsttoken. Token skyddar API: ns data och autentiserar inkommande begär Anden. Anroparen för ett webb-API lägger till en åtkomsttoken i Authorization-huvudet för en HTTP-begäran.
 
 Om du vill skydda ditt ASP.NET-eller ASP.NET Core-webb-API måste du verifiera åtkomst-token. För den här verifieringen använder du ASP.NET JWT mellanprogram. Verifieringen görs av IdentityModel- [tilläggen för .net](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) -biblioteket och inte av MSAL.net.
 

@@ -13,12 +13,12 @@ ms.date: 10/27/2020
 ms.author: ryanwi
 ms.reviewer: marsma, jmprieur, lenalepa, sureshja, kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: 22d6cacc36363b17f9bc32d354982eb71974b31d
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 4f87c3fd0cfda2db535b2c8f7f7330a273e6b767
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96779761"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755345"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Anvisningar: Loggar in valfri Azure Active Directory-användare med programmönstret för flera klienter
 
@@ -139,7 +139,7 @@ Ditt program kan ha flera nivåer som representeras av sin egen registrering i A
 
 #### <a name="multiple-tiers-in-a-single-tenant"></a>Flera nivåer i en enda klient
 
-Detta kan vara ett problem om ditt logiska program består av två eller flera program registreringar, till exempel en separat klient och resurs. Hur får du resursen i kund klienten först? Azure AD täcker det här fallet genom att aktivera att klienten och resursen samtycks i ett enda steg. Användaren ser summan av de behörigheter som begärs av både klienten och resursen på godkännande sidan. För att aktivera det här beteendet måste resursens program registrering innehålla klientens app-ID som en `knownClientApplications` i dess [applikations manifest][AAD-App-Manifest]. Exempel:
+Detta kan vara ett problem om ditt logiska program består av två eller flera program registreringar, till exempel en separat klient och resurs. Hur får du resursen i kund klienten först? Azure AD täcker det här fallet genom att aktivera att klienten och resursen samtycks i ett enda steg. Användaren ser summan av de behörigheter som begärs av både klienten och resursen på godkännande sidan. För att aktivera det här beteendet måste resursens program registrering innehålla klientens app-ID som en `knownClientApplications` i dess [applikations manifest][AAD-App-Manifest]. Ett exempel:
 
 ```json
 "knownClientApplications": ["94da0930-763f-45c7-8d26-04d5938baab2"]

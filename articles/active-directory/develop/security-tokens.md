@@ -1,7 +1,7 @@
 ---
 title: Säkerhetstoken | Azure
 titleSuffix: Microsoft identity platform
-description: Lär dig grunderna om säkerhetstoken i Microsoft Identity Platform (v 2.0).
+description: Lär dig grunderna om säkerhetstoken i Microsoft Identity Platform.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -13,12 +13,12 @@ ms.date: 05/11/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 88dc4bb86459cd0390c4c01deb871aa93e39c6d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9668d3b0b57e36fb95421f8b502b9b743be8eb31
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84266754"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756218"
 ---
 # <a name="security-tokens"></a>Säkerhetstoken
 
@@ -67,7 +67,7 @@ Ett anspråk består av nyckel/värde-par som innehåller information som:
 * Mål grupp, som är appen för vilken token genererades
 * App (klienten) som bad om token. Om det gäller Web Apps kan detta vara samma som mål gruppen
 
-Mer information om hur Microsoft Identity Platform implementerar token och anspråks information finns [i åtkomsttoken](access-tokens.md) och [ID-token](id-tokens.md).
+Mer information om hur Microsoft Identity Platform implementerar token och anspråks information [finns i åtkomsttoken](access-tokens.md) och [ID-token](id-tokens.md).
 
 ## <a name="how-each-flow-emits-tokens-and-codes"></a>Hur varje flöde avger tokens och koder
 

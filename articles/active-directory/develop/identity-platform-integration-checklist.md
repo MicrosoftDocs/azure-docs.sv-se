@@ -12,12 +12,12 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, jesakowi
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 011acdf98c8430bfb7ba1b02ec24a170f829e48f
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: cefcf6b1bcd7ac5f81fa4e872b30660183a46a82
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063798"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755252"
 ---
 # <a name="microsoft-identity-platform-best-practices-and-recommendations"></a>Metod tips och rekommendationer för Microsoft Identity Platform
 
@@ -104,7 +104,7 @@ Använd följande check lista för att se till att programmet är effektivt inte
 
 Utforska detaljerad information om v2.0:
 
-* [Översikt över Microsoft Identity Platform (v 2.0)](v2-overview.md)
+* [Microsoft Identity Platform (översikt)](v2-overview.md)
 * [Referens för Microsoft Identity Platform-protokoll](active-directory-v2-protocols.md)
 * [Referens för åtkomsttoken](access-tokens.md)
 * [Referens för ID-token](id-tokens.md)

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 03/05/2020
 ms.author: hahamil
 ms.custom: aaddev, identityplatformtop40, devx-track-js
-ms.openlocfilehash: c4c7d021c7c3a5a32d537a50fa45449fdee7e817
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: 105353598a2af60c407bacf02b4527b2de84e450
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94979937"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756161"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-angular-single-page-application"></a>Självstudie: Logga in användare och anropa Microsoft Graph-API: et från ett särskilt program på en sida
 
@@ -271,7 +271,7 @@ Ett exempel:
 
 #### <a name="get-a-user-token-interactively"></a>Hämta en användartoken interaktivt
 
-Ibland behöver du användaren för att kunna interagera med Microsoft Identity Platform-slutpunkten. Ett exempel:
+Ibland behöver du användaren för att kunna interagera med Microsoft Identity Platform. Ett exempel:
 
 * Användare kan behöva ange sina autentiseringsuppgifter på grund av att deras lösen ord har upphört att gälla.
 * Ditt program begär åtkomst till ytterligare resurs omfattningar som användaren behöver godkänna.
@@ -279,7 +279,7 @@ Ibland behöver du användaren för att kunna interagera med Microsoft Identity 
 
 Rekommenderat mönster för de flesta program är att anropa `acquireTokenSilent` först, sedan fånga undantagen och sedan anropa `acquireTokenPopup` (eller `acquireTokenRedirect` ) för att starta en interaktiv begäran.
 
-Anropa `acquireTokenPopup` resultat i ett popup-fönster för inloggning. Alternativt `acquireTokenRedirect` omdirigerar användare till Microsoft Identity Platform-slutpunkten. I det fönstret måste användare bekräfta sina autentiseringsuppgifter, ge medgivande till den begärda resursen eller utföra en fullständig tvåfaktorautentisering.
+Anropa `acquireTokenPopup` resultat i ett popup-fönster för inloggning. Alternativt `acquireTokenRedirect` omdirigerar användare till Microsoft Identity Platform. I det fönstret måste användare bekräfta sina autentiseringsuppgifter, ge medgivande till den begärda resursen eller utföra en fullständig tvåfaktorautentisering.
 
 ```javascript
   const requestObj = {

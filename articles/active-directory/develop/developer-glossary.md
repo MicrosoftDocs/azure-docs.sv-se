@@ -12,12 +12,12 @@ ms.date: 04/24/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jmprieur, saeeda, jesakowi, nacanuma
-ms.openlocfilehash: b02329d624eda440230fb99e02e08c841c5580f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 77a4e7389952b81df13dae929dc1aec664fcc0b7
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90706004"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755653"
 ---
 # <a name="microsoft-identity-platform-developer-glossary"></a>Ord lista för Microsoft Identity Platform-utvecklare
 
@@ -89,7 +89,7 @@ En autentiseringsuppgift som representerar [resurs ägarens](#resource-owner) [b
 
 Som definieras av [OAuth2 Authorization Framework][OAuth2-Role-Def], är servern ansvarig för att utfärda åtkomsttoken till [klienten](#client-application) efter att ha autentiserat [resurs ägaren](#resource-owner) och fått sin auktorisering. Ett [klient program](#client-application) interagerar med auktoriseringsservern vid körning via dess [auktoriserings](#authorization-endpoint) -och [token](#token-endpoint) -slutpunkter, i enlighet med de OAuth2 definierade [behörighets bidragen](#authorization-grant).
 
-I fallet med Microsoft Identity Platform Application Integration implementerar Microsoft Identity Platform rollen auktoriseringsservern för Azure AD-program och API: er för Microsoft-tjänster, till exempel [Microsoft Graph API: er][Microsoft-Graph].
+Om du använder Microsoft Identity Platform Application Integration implementerar Microsoft Identity Platform rollen auktoriseringsservern för Azure AD-program och API: er för Microsoft-tjänster, till exempel [Microsoft Graph API: er][Microsoft-Graph].
 
 ## <a name="claim"></a>Visa
 
@@ -117,7 +117,7 @@ Mer information finns i [referens för Microsoft Identity Platform-token][AAD-To
 
 ## <a name="microsoft-identity-platform"></a>Microsoft identitetsplattform
 
-Microsoft Identity-plattformen är en utveckling av identitetstjänsten och utvecklingsplattformen Azure Active Directory (Azure AD). Den hjälper utvecklare att bygga program som loggar in alla Microsoft-identiteter, får tokens för att anropa Microsoft Graph, andra Microsoft API:er eller API:er som utvecklare har byggt. Det är en komplett plattform som består av en autentiseringstjänst, bibliotek, program registrering och konfiguration, fullständig dokumentation om utvecklare, kod exempel och annat innehåll i utvecklare. Microsoft Identity-plattformen stöder branschstandardprotokoll som OAuth 2.0 och OpenID Connect.
+Microsoft Identity Platform är en utveckling av den Azure Active Directory (Azure AD) Identity service och Developer Platform. Den hjälper utvecklare att bygga program som loggar in alla Microsoft-identiteter, får tokens för att anropa Microsoft Graph, andra Microsoft API:er eller API:er som utvecklare har byggt. Det är en komplett plattform som består av en autentiseringstjänst, bibliotek, program registrering och konfiguration, fullständig dokumentation om utvecklare, kod exempel och annat innehåll i utvecklare. Microsoft Identity-plattformen stöder branschstandardprotokoll som OAuth 2.0 och OpenID Connect.
 
 ## <a name="multi-tenant-application"></a>program för flera innehavare
 
@@ -235,7 +235,7 @@ Använd följande kommentarer-avsnitt för att ge feedback och hjälp med att f�
 [AAD-Dev-Guide]:azure-ad-developers-guide.md
 [Graph-Perm-Scopes]: /graph/permissions-reference
 [Graph-App-Resource]: /graph/api/resources/application
-[Graph-Sp-Resource]: /graph/api/resources/serviceprincipal?view=graph-rest-beta
+[Graph-Sp-Resource]: /graph/api/resources/serviceprincipal?view=graph-rest-beta&preserve-view=true
 [Graph-User-Resource]: /graph/api/resources/user
 [AAD-How-Subscriptions-Assoc]:../fundamentals/active-directory-how-subscriptions-associated-directory.md
 [AAD-How-To-Integrate]: ./active-directory-how-to-integrate.md

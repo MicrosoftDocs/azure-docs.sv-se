@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 07/08/2020
+ms.date: 01/25/2021
 ms.author: marsma
 ms.reviewer: saeeda
-ms.openlocfilehash: 4a902ed53e92cd073d81626e80bdb3c8629ad072
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 78932e5852453fe996e26a278f8a1859a8ecf546
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89437878"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755022"
 ---
 # <a name="authentication-flows"></a>Autentiserings flöden
 
@@ -53,9 +53,9 @@ Beroende på hur ditt klient program har skapats kan den använda ett eller fler
 Flera av dessa flöden stöder både interaktiv och icke-interaktiv token-hämtning.
 
   - **Interaktiva** innebär att användaren kan uppmanas att ange indata. Till exempel uppmana användaren att logga in, utföra Multi-Factor Authentication (MFA) eller bevilja ytterligare medgivande till resurser.
-  - **Icke-interaktiv**eller *tyst*autentisering försöker hämta en token på ett sätt som inloggnings servern *inte kan* uppmana användaren att ange ytterligare information.
+  - **Icke-interaktiv** eller *tyst* autentisering försöker hämta en token på ett sätt som inloggnings servern *inte kan* uppmana användaren att ange ytterligare information.
 
-Ditt MSAL-baserade program bör först försöka hämta en token i *bakgrunden*och sedan interaktivt endast om den icke-interaktiva metoden Miss lyckas. Mer information om det här mönstret finns i [Hämta och cache-token med hjälp av Microsoft Authentication Library (MSAL)](msal-acquire-cache-tokens.md).
+Ditt MSAL-baserade program bör först försöka hämta en token i *bakgrunden* och sedan interaktivt endast om den icke-interaktiva metoden Miss lyckas. Mer information om det här mönstret finns i [Hämta och cache-token med hjälp av Microsoft Authentication Library (MSAL)](msal-acquire-cache-tokens.md).
 
 ## <a name="authorization-code"></a>Authorization code (Auktoriseringskod)
 
@@ -78,7 +78,7 @@ I föregående diagram är programmet:
 
 ## <a name="client-credentials"></a>Klientautentiseringsuppgifter
 
-Med [flödet för OAuth 2-klientautentiseringsuppgifter](v2-oauth2-client-creds-grant-flow.md) kan du komma åt webb värd resurser genom att använda identiteten för ett program. Den här typen av tilldelning används ofta för server-till-Server-interaktioner som måste köras i bakgrunden, utan omedelbar interaktion med en användare. Dessa typer av program kallas ofta för daemon eller tjänst konton.
+Med [flödet för OAuth 2-klientautentiseringsuppgifter](v2-oauth2-client-creds-grant-flow.md) kan du komma åt webb värd resurser genom att använda identiteten för ett program. Den här beviljandetypen används ofta för server-till-server-interaktioner som måste köras i bakgrunden, utan direkt interaktion med en användare. Dessa typer av program kallas ofta för daemon eller tjänstkonton.
 
 Med det beviljande flödet för klientautentiseringsuppgifter tillåts en webb tjänst (en konfidentiell klient) att använda sina egna autentiseringsuppgifter, i stället för att personifiera en användare, för att autentisera vid anrop till en annan webb tjänst. I det här scenariot är klienten vanligt vis en webb tjänst på mellan nivå, en daemon-tjänst eller en webbplats. För en högre säkerhets nivå tillåter Microsofts identitets plattform också att anrops tjänsten använder ett certifikat (i stället för en delad hemlighet) som autentiseringsuppgift.
 
@@ -223,7 +223,7 @@ Det innebär att något av följande stämmer:
 - Du har angett ett sätt för användarna att samtycka till programmet. Se [begära individuell användar medgivande](v2-permissions-and-consent.md#requesting-individual-user-consent).
 - Du har angett ett sätt för klient organisations administratören att godkänna ansökan. Se [administrativt medgivande](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant).
 
-IWA-flödet har Aktiver ATS för .NET Desktop-, .NET Core-och Windows Universal Platform-appar. På .NET Core måste du ange användar namnet för IWA, eftersom .NET Core inte kan hämta användar namn från operativ systemet.
+IWA-flödet har Aktiver ATS för .NET Desktop-, .NET Core-och Windows Universal Platform-appar.
 
 Mer information om medgivande finns i [v 2.0-behörigheter och medgivande](v2-permissions-and-consent.md).
 
