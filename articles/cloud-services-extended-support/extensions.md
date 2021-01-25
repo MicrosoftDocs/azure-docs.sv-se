@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: c2eddf75f99b751773220ae677d66fe8c09abb0e
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: f9029a36dc3b778e139b4553524e8e2ca6b4bbad
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98744831"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98757177"
 ---
 # <a name="extensions-for-cloud-services-extended-support"></a>Tillägg för Cloud Services (utökad support)
 
@@ -35,7 +35,7 @@ Med grundläggande övervakning samplas prestanda räknar data från roll instan
 
 Med avancerad övervakning samplas ytterligare mått och samlas in i intervall om 5 minuter, 1 timme och 12 timmar. De aggregerade data lagras i ett lagrings konto i tabeller och rensas efter 10 dagar. Det använda lagrings kontot har kon figurer ATS av rollen. Du kan använda olika lagrings konton för olika roller. 
 
-Windows Azure-diagnostik-tillägget kan aktive ras för Cloud Services (utökad support) via [PowerShell](deploy-powershell.md) -eller [arm-mallen](deploy-template.md)
+Mer information finns i [använda Windows Azure Diagnostics-tillägget i Cloud Services (utökad support)](enable-wad.md)
 
 
 ## <a name="next-steps"></a>Nästa steg 

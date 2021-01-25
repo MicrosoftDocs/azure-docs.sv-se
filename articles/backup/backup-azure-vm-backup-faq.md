@@ -3,12 +3,12 @@ title: Vanliga frågor och svar – säkerhetskopiera virtuella Azure-datorer
 description: I den här artikeln hittar du svar på vanliga frågor om hur du säkerhetskopierar virtuella Azure-datorer med tjänsten Azure Backup.
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: ba2779305302e91f68cb2664c90f53fdf9a9ca55
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: edc48aaf0a05867de81bd7d5f64f8be4e54ddb8a
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97008358"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98757516"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Vanliga frågor och svar – säkerhetskopiera virtuella Azure-datorer
 
@@ -113,6 +113,10 @@ Azure Backup har nu stöd för säkerhets kopiering och återställning av selek
 ### <a name="are-managed-identities-preserved-if-a-tenant-change-occurs-during-backup"></a>Behålls hanterade identiteter om en klient förändring sker under säkerhets kopieringen?
 
 Om [klient ändringar](/azure/devops/organizations/accounts/change-azure-ad-connection) sker måste du inaktivera och återaktivera [hanterade identiteter](../active-directory/managed-identities-azure-resources/overview.md) för att säkerhets kopieringen ska fungera igen.
+
+### <a name="does-azure-backup-support-backing-up-nfs-files-mounted-from-storage"></a>Har Azure Backup stöd för att säkerhetskopiera NFS-filer som monterats från lagrings utrymme?
+
+Azure Backup stöder inte säkerhets kopiering av NFS-filer som monteras från lagrings utrymme eller från andra NFS-servrar till Linux-eller Windows-datorer. Den säkerhetskopierar bara diskar som är lokalt anslutna till den virtuella datorn.
 
 ## <a name="restore"></a>Återställ
 

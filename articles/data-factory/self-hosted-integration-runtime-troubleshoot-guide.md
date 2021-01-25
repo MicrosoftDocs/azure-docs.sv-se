@@ -5,14 +5,14 @@ services: data-factory
 author: lrtoyou1223
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 11/17/2020
+ms.date: 01/25/2021
 ms.author: lle
-ms.openlocfilehash: ccebdbf428180f8ff4ab10dc6007c3ec35a66362
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: e81a12f4c5d817670fe1f7968184bcc97e78a53c
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97503598"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98757686"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>Felsöka integration runtime med egen värd
 
@@ -68,31 +68,6 @@ En ny aktivitet kan utlösa ett OOM-fel om IR-datorn upplever en momentant hög 
 
 Kontrol lera resursanvändningen och körningen av samtidiga aktiviteter på IR-noden. Justera den interna och Utlös ande tiden för aktivitets körningar för att undvika för mycket körning på en enskild IR-nod på samma gång.
 
-
-### <a name="ssltls-certificate-issue"></a>Problem med SSL/TLS-certifikat
-
-#### <a name="symptoms"></a>Symtom
-
-När du försöker aktivera ett Secure Sockets Layer (SSL)/Transport Layer Security (TLS)-certifikat (avancerat) genom att välja certifikatet (när du har valt **IR-Configuration Manager**  >  **fjärråtkomst från intranätet**) får du följande fel meddelande:
-
-"Inställningar för fjärråtkomst är ogiltiga. Identitets kontrollen misslyckades för utgående meddelande. Den förväntade DNS-identiteten för Fjärrslutpunkten var ' abc.microsoft.com ', men Fjärrslutpunkten tillhandahöll DNS-anspråket ' microsoft.com '. Om det här är en legitim fjärrslutpunkt kan du åtgärda problemet genom att uttryckligen ange DNS-identiteten "microsoft.com" som identitets egenskap för EndpointAddress när du skapar en kanal-proxy. "
-
-I föregående exempel har det valda certifikatet "microsoft.com" bifogat till det.
-
-#### <a name="cause"></a>Orsak
-
-Detta är ett känt problem i Windows Communication Foundation (WCF). Verifieringen av WCF SSL/TLS kontrollerar bara för de senaste DNSName i fältet **Alternativt namn för certifikat mottagare** (San). 
-
-#### <a name="resolution"></a>Lösning
-
-Ett jokertecken stöds i Azure Data Factory v2-IR med egen värd. Det här problemet beror vanligt vis på att SSL-certifikatet är felaktigt. Den senaste DNSName i SAN ska vara giltig. 
-
-Så här kontrollerar du och korrigerar DNSName: 
-
-1. Öppna hanterings konsolen.
-1. Under **certifikat information**, dubbelklickar du på värdet i rutorna namn på **ämne** och **mottagar namn** . Till exempel är "DNS-namn = microsoft.com.com" inte ett giltigt namn.
-1. Kontakta företaget för certifikat utfärdaren om du vill att felaktiga DNSName ska tas bort.
-
 ### <a name="concurrent-jobs-limit-issue"></a>Problem med gräns för samtidiga jobb
 
 #### <a name="symptoms"></a>Symtom
@@ -143,14 +118,14 @@ När du hanterar ärenden som är relaterade till en SSL/TLS-handskakning kan du
         Certutil -verify -urlfetch    <certificate path>   >     <output txt file path> 
         ```
 
-        Exempel:
+        Ett exempel:
 
         ```
         Certutil -verify -urlfetch c:\users\test\desktop\servercert02.cer > c:\users\test\desktop\Certinfo.txt
         ```
     4. Sök efter fel i output TXT-filen. Du kan hitta fel sammanfattningen i slutet av TXT-filen.
 
-        Exempel: 
+        Ett exempel: 
 
         ![Skärm bild av en fel Sammanfattning i slutet av TXT-filen.](media/self-hosted-integration-runtime-troubleshoot-guide/error-summary.png)
 
@@ -376,7 +351,7 @@ Gå till händelse loggen för integration runtime för att kontrol lera felet.
     
         ![Skärm bild av tjänst kontots inloggnings fönster.](media/self-hosted-integration-runtime-troubleshoot-guide/logon-service-account.png)
 
-    1. Kontrol lera om inloggnings tjänst kontot har **Logga in som tjänst** behörighet för att starta Windows-tjänsten:
+    1. Kontrol lera om inloggnings tjänst kontot har behörighet att **Logga in som tjänst** för att starta Windows-tjänsten:
 
         ![Skärm bild av egenskaps rutan "logga in som tjänst".](media/self-hosted-integration-runtime-troubleshoot-guide/logon-as-service.png)
 

@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 services: site-recovery
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: c6f0f48df32db0beb9c0a57982d9bc87b26538d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ac67e3cf8f057738b76b0de7cbcb821ef290e0cb
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86135152"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98757584"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-vmware-vms-and-physical-servers-to-a-secondary-site"></a>Stöd mat ris för haveri beredskap för virtuella VMware-datorer och fysiska servrar till en sekundär plats
 
@@ -66,15 +66,15 @@ Endast Linux-datorer med följande lagring kan replikeras:
 
 ## <a name="network-configuration---hostguest-vm"></a>Nätverks konfiguration – värd/gäst-VM
 
-**Konfiguration** | **Tillåtna**  
+**Konfiguration** | **Stöds**  
 --- | --- 
 Värd-NIC-teamning | Ja 
 Värd-VLAN | Ja 
 Värd-IPv4 | Ja 
-Värd-IPv6 | Inga 
-Gäst-VM – NIC Teaming | Inga
+Värd-IPv6 | Nej 
+Gäst-VM – NIC Teaming | Nej
 Gäst-VM – IPv4 | Ja
-Gäst-VM-IPv6 | Inga
+Gäst-VM-IPv6 | Nej
 Gäst-VM – Windows/Linux-statisk IP-adress | Ja
 Gäst-VM-Multi-NIC | Ja
 
@@ -83,39 +83,39 @@ Gäst-VM-Multi-NIC | Ja
 
 ### <a name="host-storage"></a>Värd lagring
 
-**Lagring (värd)** | **Tillåtna** 
+**Lagring (värd)** | **Stöds** 
 --- | --- 
 NFS | Ja 
-SMB 3.0 | E.t. 
+SMB 3.0 | Ej tillämpligt 
 SAN (ISCSI) | Ja 
 Multipath (MPIO) | Ja 
 
 ### <a name="guest-or-physical-server-storage"></a>Gäst eller fysisk server lagring
 
-**Konfiguration** | **Tillåtna** 
+**Konfiguration** | **Stöds** 
 --- | --- 
 VMDK | Ja 
-VHD/VHDX | E.t. 
-Generation 2 VM | E.t. 
+VHD/VHDX | Ej tillämpligt 
+Generation 2 VM | Ej tillämpligt 
 Delad kluster disk | Ja 
-Krypterad disk | Inga 
+Krypterad disk | Nej 
 UEFI| Ja 
-NFS | Inga 
-SMB 3.0 | Inga 
+NFS | Nej 
+SMB 3.0 | Nej 
 RDM | Ja 
 Disk > 1 TB | Ja 
 Volym med Striped disk > 1 TB<br/><br/> LVM | Ja 
-Lagringsutrymmen | Inga 
+Lagringsutrymmen | Nej 
 Snabb Lägg till/ta bort disk | Ja 
 Uteslut disk | Ja 
-Multipath (MPIO) | E.t. 
+Multipath (MPIO) | Ej tillämpligt 
 
 ## <a name="vaults"></a>Valv
 
-**Åtgärd** | **Tillåtna** 
+**Åtgärd** | **Stöds** 
 --- | --- 
-Flytta valv över resurs grupper (inom eller mellan prenumerationer) | Inga 
-Flytta lagring, nätverk, virtuella Azure-datorer över resurs grupper (inom eller mellan prenumerationer) | Inga 
+Flytta valv över resurs grupper (inom eller mellan prenumerationer) | Nej 
+Flytta lagring, nätverk, virtuella Azure-datorer över resurs grupper (inom eller mellan prenumerationer) | Nej 
 
 ## <a name="mobility-service-and-updates"></a>Mobilitets tjänsten och uppdateringar
 

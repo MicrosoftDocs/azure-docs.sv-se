@@ -6,16 +6,16 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 11/23/2020
-ms.openlocfilehash: de0c48bb775b96052fe16d60aa58049bfd58ca4d
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: 750cf0a938fffd4e5bfe25811bb276f7cb1b5583
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567777"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98757567"
 ---
 # <a name="create-and-manage-azure-migrate-projects"></a>Skapa och hantera Azure Migrate-projekt
 
-Den här artikeln beskriver hur du skapar, hanterar och tar bort [Azure Migrate](migrate-services-overview.md) projekt. Om du använder klassiska Azure Migrate projekt tar du bort projekten och följer stegen för att skapa ett nytt Azure Migrate-projekt. Du kan inte uppgradera klassiska Azure Migrate projekt eller komponenter till Azure Migrate.
+Den här artikeln beskriver hur du skapar, hanterar och tar bort [Azure Migrate](migrate-services-overview.md) projekt. Om du använder klassiska Azure Migrate projekt tar du bort projekten och följer stegen för att skapa ett nytt Azure Migrate-projekt. Du kan inte uppgradera klassiska Azure Migrate projekt eller komponenter till Azure Migrate. Se [vanliga frågor och svar](https://docs.microsoft.com/azure/migrate/resources-faq#i-have-a-project-with-the-previous-classic-experience-of-azure-migrate-how-do-i-start-using-the-new-version) innan du börjar skapa processen.
 
 Ett Azure Migrate-projekt används för att lagra identifierings-, utvärderings-och migrerings-metadata som samlas in från den miljö som du bedömer eller migrerar. I ett projekt kan du spåra identifierade till gångar, skapa utvärderingar och dirigera migreringar till Azure.  
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/11/2020
 ms.author: yelevin
-ms.openlocfilehash: 60e86c7c849bf09b3a5577453a6935466ab447f6
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 4312a819f8fd41805dca095556efdc6189f23af9
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95483921"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98757127"
 ---
 # <a name="extend-azure-sentinel-across-workspaces-and-tenants"></a>Utöka Azure Sentinel för arbetsytor och klientorganisationer
 
@@ -34,7 +34,7 @@ Du kan få den fullständiga fördelen av Azure Sentinel-upplevelsen när du anv
 | Efterlevnad och efterlevnad | En arbetsyta är kopplad till en specifik region. Om data måste behållas i olika [Azure-geografiska](https://azure.microsoft.com/global-infrastructure/geographies/) områden för att uppfylla myndighets krav, måste de delas upp i separata arbets ytor. |  |
 | Dataägarskap | Gränserna för data ägarskap, till exempel av dotter bolag eller dotter bolag, är bättre avgränsade med separata arbets ytor. |  |
 | Flera Azure-klienter | Azure Sentinel stöder data insamling från Microsoft-och Azure SaaS-resurser inom en egen Azure Active Directory (Azure AD)-klient gränsen. Därför kräver varje Azure AD-klientorganisation en separat arbetsyta. |  |
-| Detaljerad åtkomstkontroll för data | En organisation kan behöva tillåta olika grupper i eller utanför organisationen för att få åtkomst till vissa av de data som samlas in av Azure Sentinel. Exempel:<br><ul><li>Resurs ägarens åtkomst till data som rör sina resurser</li><li>Regional eller dotter SOCs ' till gång till data som är relevanta för deras delar av organisationen</li></ul> | Använd [resurs Azure RBAC](https://techcommunity.microsoft.com/t5/azure-sentinel/controlling-access-to-azure-sentinel-data-resource-rbac/ba-p/1301463) eller [tabell nivå Azure RBAC](https://techcommunity.microsoft.com/t5/azure-sentinel/table-level-rbac-in-azure-sentinel/ba-p/965043) |
+| Detaljerad åtkomstkontroll för data | En organisation kan behöva tillåta olika grupper i eller utanför organisationen för att få åtkomst till vissa av de data som samlas in av Azure Sentinel. Ett exempel:<br><ul><li>Resurs ägarens åtkomst till data som rör sina resurser</li><li>Regional eller dotter SOCs ' till gång till data som är relevanta för deras delar av organisationen</li></ul> | Använd [resurs Azure RBAC](https://techcommunity.microsoft.com/t5/azure-sentinel/controlling-access-to-azure-sentinel-data-resource-rbac/ba-p/1301463) eller [tabell nivå Azure RBAC](https://techcommunity.microsoft.com/t5/azure-sentinel/table-level-rbac-in-azure-sentinel/ba-p/965043) |
 | Detaljerade inställningar för kvarhållning | Tidigare var flera arbets ytor det enda sättet att ange olika bevarande perioder för olika data typer. Detta behövs inte längre i många fall, tack vare införandet av inställningar för kvarhållning av tabell nivå. | Använd [Inställningar för kvarhållning av tabell nivå](https://techcommunity.microsoft.com/t5/azure-sentinel/new-per-data-type-retention-is-now-available-for-azure-sentinel/ba-p/917316) eller automatisera [borttagning av data](../azure-monitor/platform/personal-data-mgmt.md#how-to-export-and-delete-private-data) |
 | Dela fakturering | Genom att placera arbets ytor i separata prenumerationer kan de faktureras till olika parter. | Användningsrapportering och korsdebitering |
 | Äldre arkitektur | Användningen av flera arbets ytor kan leda till en historisk design som har tagit hänsyn till begränsningar eller bästa praxis som inte är längre än sant. Det kan även vara ett godtyckligt designval som kan ändras för att bättre tillgodose Azure Sentinel.<br><br>Exempel:<br><ul><li>Använda en standard arbets yta per prenumeration när du distribuerar Azure Security Center</li><li>Behovet av detaljerad åtkomst kontroll eller inställningar för kvarhållning, vilka lösningar som är relativt nya</li></ul> | Omarbeta arkitekturen för arbetsytor |
@@ -94,18 +94,18 @@ En funktion kan också förenkla en union som används ofta. Du kan till exempel
 
 Du kan sedan skriva en fråga i båda arbets ytorna genom att börja med `unionSecurityEvent | where ...` .
 
-#### <a name="scheduled-alerts"></a>Schemalagda aviseringar
+#### <a name="cross-workspace-analytics-rules"></a>Analys regler för mellan arbets ytor<a name="scheduled-alerts"></a>
+<!-- Bookmark added for backward compatibility with old heading -->
+Frågor över arbets ytor kan nu inkluderas i regler för schemalagd analys, med följande begränsningar:
 
-Frågor över arbets ytor kan nu inkluderas i schemalagda aviseringar i analys regler, beroende på följande begränsningar:
-
-- Upp till 10 arbets ytor kan inkluderas i en enda fråga.
+- Upp till 15 arbets ytor kan inkluderas i en enda fråga.
 - Azure Sentinel måste distribueras på varje arbets yta som refereras till i frågan.
 
 > [!NOTE] 
 > Att fråga flera arbets ytor i samma fråga kan påverka prestanda och rekommenderas därför endast när logiken kräver den här funktionen.
 
-### <a name="using-cross-workspace-workbooks"></a>Använda arbets böcker mellan arbets ytor
-
+#### <a name="cross-workspace-workbooks"></a>Arbets böcker över arbets ytor<a name="using-cross-workspace-workbooks"></a>
+<!-- Bookmark added for backward compatibility with old heading -->
 [Arbets böcker](./overview.md#workbooks) tillhandahåller instrument paneler och appar till Azure Sentinel. När du arbetar med flera arbets ytor tillhandahåller de övervakning och åtgärder mellan arbets ytor.
 
 Arbets böcker kan tillhandahålla frågor över flera arbets ytor på en av tre metoder, som var och en omfattar olika nivåer av slut användar experter:
@@ -117,7 +117,7 @@ Arbets böcker kan tillhandahålla frågor över flera arbets ytor på en av tre
 | Redigera arbets boken interaktivt | En avancerad användare som ändrar en befintlig arbets bok kan redigera frågorna i den och välja mål arbets ytorna med hjälp av arbets ytans väljare i redigeraren. | Med det här alternativet kan en privilegie rad användare enkelt ändra befintliga arbets böcker och arbeta med flera arbets ytor. |
 |
 
-### <a name="cross-workspace-hunting"></a>Jakt mellan arbets ytor
+#### <a name="cross-workspace-hunting"></a>Jakt mellan arbets ytor
 
 Azure Sentinel tillhandahåller förinstallerade fråge exempel utformade för att komma igång och du får bekanta dig med tabellerna och frågespråket. Dessa inbyggda jakt frågor utvecklas av Microsofts säkerhets forskare på en kontinuerlig basis, både nya frågor och fin justering av befintliga frågor, för att ge dig en start punkt för att söka efter nya identifieringar och identifiera tecken på intrång som kan ha försvunnit av dina säkerhets verktyg.  
 

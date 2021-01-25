@@ -4,12 +4,12 @@ description: Innehåller en sammanfattning av stödinställningar och begränsni
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.custom: references_regions
-ms.openlocfilehash: be0c576da6e38233423a79f562f767de806d7640
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 833837c317d22bf031aee4608ff4c93775736a34
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97008375"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98757448"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Support mat ris för Azure Backup
 
@@ -56,7 +56,7 @@ Här är what's som stöds om du vill säkerhetskopiera lokala datorer:
 
 ### <a name="azure-vm-limits"></a>Begränsningar för virtuella Azure-datorer
 
-**Gräns** | **Information**
+**Gränserna** | **Information**
 --- | ---
 **Datadiskar för virtuella Azure-datorer** | Se [support mat ris för säkerhets kopiering av virtuella Azure-datorer](./backup-support-matrix-iaas.md#vm-storage-support).
 **Datadiskstorlek för virtuella Azure-datorer** | Enskild disk storlek kan vara upp till 32 TB och högst 256 TB kombinerat för alla diskar i en virtuell dator.
@@ -150,10 +150,10 @@ Azure Backup har lagt till funktionen för återställning av kors region för a
 
 | Typ av säkerhets kopierings hantering | Stöds                                                    | Regioner som stöds |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
-| Azure VM               | Ja.   Stöds för krypterade virtuella datorer och virtuella datorer med mindre än 4 TB diskar | Alla offentliga Azure-regioner.  |
-| SQL-/SAP HANA | Yes                                                          | Alla offentliga regioner utom Frankrike |
-| MARS-agent/lokalt  | No                                                           | Saknas               |
-| AFS (Azure-filresurser)                 | No                                                           | Saknas               |
+| Azure VM               | Stöds för virtuella Azure-datorer med både hanterade och ohanterade diskar. Stöds inte för klassiska virtuella datorer. | Alla offentliga Azure-regioner.  |
+| SQL-/SAP HANA | Ja                                                          | Alla offentliga regioner utom Frankrike |
+| MARS-agent/lokalt  | Nej                                                           | Ej tillämpligt               |
+| AFS (Azure-filresurser)                 | Nej                                                           | Ej tillämpligt               |
 
 ## <a name="next-steps"></a>Nästa steg
 

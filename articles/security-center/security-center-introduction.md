@@ -12,18 +12,16 @@ ms.topic: overview
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/22/2020
+ms.date: 01/24/2021
 ms.author: memildin
-ms.openlocfilehash: b52fbd820c4b4603481f585ea0b0983720cabb22
-ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
+ms.openlocfilehash: 3ed290cc35195dfb02db9fbb72f092f6f4688291
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97709101"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98757313"
 ---
 # <a name="what-is-azure-security-center"></a>Vad är Azure Security Center?
-
-[!INCLUDE [Solorigate banner](../../includes/security-center-solorigate.md)]
 
 Azure Security Center är ett enhetligt system för hantering av infrastruktursäkerhet som stärker dina datacentras säkerhetstillstånd och tillhandahåller avancerat skydd för dina hybridarbetsbelastningar såväl i molnet, oavsett om de finns i Azure eller inte, som lokalt.
 
@@ -74,7 +72,7 @@ Security Center hjälper dig att **identifiera SKUGG IT-prenumerationer**. Genom
 
 ### <a name="continuous-assessments"></a>Kontinuerliga utvärderingar
 
-Security Center identifierar nya resurser som distribueras till dina arbetsbelastningar och utvärderar om de har konfigurerats enligt rekommenderade säkerhetsmetoder. Om så inte är fallet flaggas de och du får en prioriterad lista med rekommendationer om vad du måste åtgärda för att skydda dina datorer.
+Security Center identifierar nya resurser som distribueras till dina arbetsbelastningar och utvärderar om de har konfigurerats enligt rekommenderade säkerhetsmetoder. Om så inte är fallet flaggas de och du får en prioriterad lista med rekommendationer om vad du måste åtgärda för att skydda dina datorer. Den här listan över rekommendationer är aktive rad och stöds av [Azures säkerhets benchmark](../security/benchmarks/introduction.md), Microsoft-skapade, Azure-/regionsspecifika uppsättning rikt linjer för säkerhets-och efterlevnads metod tips baserade på vanliga ramverk för efterlevnad. Detta respekterade riktmärken bygger på kontrollerna från [Center for Internet Security (CIS)](https://www.cisecurity.org/benchmark/azure/) och [National Institute of Standards and Technology (NIST)](https://www.nist.gov/) med fokus på Cloud-inriktad säkerhet.
 
 För att hjälpa dig att förstå hur viktiga varje rekommendation är för din övergripande säkerhets position, kan Security Center gruppera rekommendationerna i säkerhets kontroller och lägga till ett **säkert Poäng** värde för varje kontroll. Detta är viktigt för att du ska kunna **prioritera ditt säkerhets arbete**.
 
@@ -103,7 +101,7 @@ Med Security Centers hotskydd kan du upptäcka och förebygga hot mot infrastruk
 
 Security Centers hotskydd innehåller fusionsattackkedjeanalys, som automatiskt korrelerar aviseringar i din miljö, baserat på cyberattackkedjeanalysen, så att du bättre ska förstå en attackkampanjs i dess helhet, var den startade och vilken typ av effekt den haft på dina resurser.
 
-:::image type="content" source="./media/security-center-intro/sc-alerts.png" alt-text="Säkerhets aviseringar":::
+:::image type="content" source="./media/security-center-intro/sc-alerts.png" alt-text="Säkerhetsaviseringar":::
 
 ### <a name="integration-with-microsoft-defender-for-endpoint"></a>Integrering med Microsoft Defender för slut punkt
 

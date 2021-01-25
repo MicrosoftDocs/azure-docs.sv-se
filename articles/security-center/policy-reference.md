@@ -1,25 +1,25 @@
 ---
 title: Inbyggda princip definitioner för Azure Security Center
 description: Visar Azure Policy inbyggda princip definitioner för Azure Security Center. Dessa inbyggda princip definitioner tillhandahåller vanliga metoder för att hantera dina Azure-resurser.
-ms.date: 01/21/2021
+ms.date: 01/24/2021
 ms.topic: reference
 author: memildin
 ms.author: memildin
 ms.service: security-center
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 3f667ed48a5188ce63665025786e990c47a9690b
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 1192e765dc3cc001f8d1a1c6a28fe1a5cf4c9ecc
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98700800"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98757279"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-security-center"></a>Inbyggda definitioner för Azure Policy i Azure Security Center
 
 Den här sidan är ett index över [Azure policy](../governance/policy/overview.md) inbyggda princip definitioner som är relaterade till Azure Security Center. Följande grupperingar av princip definitioner är tillgängliga:
 
 - Gruppen [initiativ](#azure-security-center-initiatives) visar Azure policy initiativ definitioner i kategorin Security Center.
-- I gruppen [standard initiativ](#azure-security-center-initiatives) visas alla Azure policy definitioner som ingår i [Azure Security Center](./index.yml) standard initiativ.
+- I gruppen [standard initiativ](#azure-security-center-initiatives) visas alla Azure policys definitioner som är en del av Security Centers standard initiativ, [Azure Security benchmark](../security/benchmarks/introduction.md). Den här Microsoft-baserade, mest respekterade benchmark-utbyggnaden av kontroller från [Center for Internet Security (CIS)](https://www.cisecurity.org/benchmark/azure/) och [National Institute of Standards and Technology (NIST)](https://www.nist.gov/) med fokus på molnbaserad säkerhet.
 - [Kategori](#azure-security-center-category) gruppen visar alla Azure policys definitioner i kategorin Security Center.
 
 Mer information om säkerhets principer finns i [arbeta med säkerhets principer](./tutorial-security-policy.md). Ytterligare Azure Policy inbyggda program för andra tjänster finns i [Azure policy inbyggda definitioner](../governance/policy/samples/built-in-policies.md).

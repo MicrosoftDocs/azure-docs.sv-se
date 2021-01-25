@@ -21,10 +21,10 @@
   expanded: true
 - name: Begrepp
   items:
+    - name: Tillägg
+      href: extensions.md
     - name: Tillgängliga VM-storlekar
       href: available-sizes.md
-    - name: Vanliga frågor och svar
-      href: faq.md
     - name: Gästoperativsystemets korrigeringsfiler
       href: ../cloud-services/cloud-services-guestos-msrc-releases.md?toc=/azure/cloud-services-extended-support/toc.json&bc=/azure/cloud-services-extended-support/breadcrumb/toc.json
     - name: 'Gästoperativsystem, indragning'
@@ -49,10 +49,10 @@
           href: schema-cscfg-role.md
         - name: NetworkConfiguration-schema
           href: schema-cscfg-networkconfiguration.md
+    - name: Vanliga frågor och svar
+      href: faq.md
 - name: Gör så här för att
   items:
-    - name: Översikt över tillägg
-      href: extensions.md
     - name: Använd fjärr skrivbords tillägg
       href: enable-rdp.md
     - name: Använd WAD-tillägg
@@ -83,6 +83,8 @@
       href: 'https://docs.microsoft.com/azure/templates/microsoft.compute/cloudservices'
     - name: REST
       href: 'https://docs.microsoft.com/rest/api/compute/cloudservices'
+    - name: SDK
+      href: 'https://www.nuget.org/packages/Microsoft.Azure.Management.Compute/43.0.0-preview'
 - name: Resurser
   items:
     - name: Azure-översikt

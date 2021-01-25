@@ -8,12 +8,12 @@ ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 12943d5d22a9e81c7e99522fa4728f4798549682
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 01a88be9c54a2701130daace26c44159ee364e4c
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499959"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98757251"
 ---
 # <a name="configure-ip-firewall-rules-to-allow-indexer-connections-azure-cognitive-search"></a>Konfigurera IP-brandvägg för att tillåta index anslutningar (Azure Kognitiv sökning)
 
@@ -30,7 +30,7 @@ Hämta det fullständigt kvalificerade domän namnet (FQDN) för Sök tjänsten.
 
    ![Hämta FQDN för tjänst](media\search-indexer-howto-secure-access\search-service-portal.png "Hämta FQDN för tjänst")
 
-IP-adressen för Sök tjänsten kan erhållas genom att utföra en `nslookup` (eller a `ping` ) av FQDN. I exemplet nedan skulle du lägga till "10.50.10.50" i en regel för inkommande trafik i Azure Storage brand väggen.
+IP-adressen för Sök tjänsten kan erhållas genom att utföra en `nslookup` (eller a `ping` ) av FQDN. I exemplet nedan skulle du lägga till "150.0.0.1" i en regel för inkommande trafik i Azure Storage brand väggen. Det kan ta upp till 15 minuter innan brand Väggs inställningarna har uppdaterats för Sök tjänst indexeraren för att få åtkomst till Azure Storage kontot.
 
 ```azurepowershell
 

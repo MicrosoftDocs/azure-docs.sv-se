@@ -1,30 +1,32 @@
 ---
-title: Undanta en resurs från Azure Security Center säkerhets rekommendationer och säkra Poäng
-description: Lär dig hur du undantar en resurs från säkerhets rekommendationer och säkra Poäng
+title: Undanta en Azure Security Center rekommendation från en resurs, prenumeration, hanterings grupp och säkra Poäng
+description: Lär dig hur du skapar regler för att undanta säkerhets rekommendationer från prenumerationer eller hanterings grupper och hindra dem från att påverka dina säkra Poäng
 author: memildin
 ms.author: memildin
-ms.date: 9/22/2020
+ms.date: 01/22/2021
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: b7780a0ef70a89a88070d5883cc840319a67fa3d
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.openlocfilehash: 4012c7417345678717800f4fdede95947e00b828
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96122349"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756693"
 ---
-# <a name="exempt-a-resource-from-recommendations-and-secure-score"></a>Undanta en resurs från rekommendationer och säkerhetspoäng
+# <a name="exempting-resources-and-recommendations-from-your-secure-score"></a>Undanta resurser och rekommendationer från dina säkra Poäng 
 
-En kärn prioritet för alla säkerhets Team försöker säkerställa att analytiker kan fokusera på de uppgifter och incidenter som är viktiga för organisationen. Security Center har många funktioner för att anpassa den information som du prioriterar mest och se till att dina säkra poäng är en giltig reflektion av organisationens säkerhets beslut. Att undanta resurser är en sådan funktion.
+En kärn prioritet för varje säkerhets grupp är att säkerställa att analytiker kan fokusera på de uppgifter och incidenter som är viktiga för organisationen. Security Center har många funktioner för att anpassa upplevelsen och se till att dina säkra poäng visar din organisations säkerhets prioriteringar. Alternativet **undanta** är en sådan funktion.
 
-När du undersöker en säkerhets rekommendation i Azure Security Center är en av de första delarna av informationen som du granskar listan över berörda resurser.
+När du undersöker dina säkerhets rekommendationer i Azure Security Center är en av de första delarna av informationen som du granskar listan över berörda resurser.
 
-Ibland visas en resurs som du inte bör ta med. Den kan ha åtgärd ATS av en process som inte spåras av Security Center. Eller så kanske din organisation har valt att godkänna risken för den aktuella resursen. 
+Ibland visas en resurs som du inte bör ta med. Eller så visas en rekommendation i ett omfång där du känner att den inte tillhör. Resursen kan ha åtgärd ATS av en process som inte spåras av Security Center. Rekommendationen kan vara olämplig för en speciell prenumeration. Eller så kanske din organisation bara har valt att godkänna riskerna relaterade till den aktuella resursen eller rekommendationen.
 
-I sådana fall kan du skapa en undantags regel och se till att resursen inte visas i listan med felaktiga resurser i framtiden och inte påverkar dina säkra poäng. 
+I sådana fall kan du skapa ett undantag för en rekommendation att:
 
-Resursen visas som ej tillämplig och orsaken visas som "undantagen" med den justering du väljer.
+- **Undanta en resurs** för att se till att den inte visas i listan med felaktiga resurser i framtiden och inte påverkar dina säkra poäng. Resursen visas som ej tillämplig och orsaken visas som "undantagen" med den önskade justering som du väljer.
+
+- **Undanta en prenumeration eller hanterings grupp** för att säkerställa att rekommendationen inte påverkar dina säkra poäng och inte visas för prenumerationen eller hanterings gruppen i framtiden. Detta relaterar till befintliga resurser och alla som du skapar i framtiden. Rekommendationen markeras med den speciella motivering som du väljer för det omfång som du har valt.
 
 ## <a name="availability"></a>Tillgänglighet
 
@@ -36,29 +38,55 @@ Resursen visas som ej tillämplig och orsaken visas som "undantagen" med den jus
 |Moln|![Ja](./media/icons/yes-icon.png) Kommersiella moln<br>![Nej](./media/icons/no-icon.png) National/suverän (US Gov, Kina gov, andra gov)|
 |||
 
+## <a name="define-an-exemption"></a>Definiera ett undantag
 
-## <a name="create-an-exemption-rule"></a>Skapa en undantags regel
+För att finjustera de säkerhets rekommendationer som Security Center gör för dina prenumerationer, hanterings grupper eller resurser kan du skapa en undantags regel för att:
 
-1. I listan över resurser som inte är felfria väljer du ellips-menyn ("...") för den resurs som du vill undanta.
+- Markera en speciell **rekommendation** eller som "begränsad" eller "risk godkänd". Du kan skapa rekommendations undantag för en prenumeration, flera prenumerationer eller en hel hanterings grupp.
+- Markera **en eller flera resurser** som "begränsad" eller "risk accepterad" för en speciell rekommendation.
 
-    :::image type="content" source="./media/exempt-resource/create-exemption.png" alt-text="Skapa undantags alternativ från snabb menyn":::
+> [!TIP]
+> Du kan också skapa undantag med hjälp av API: et. För ett exempel-JSON, och en förklaring av relevanta strukturer, se [Azure policy undantags struktur](../governance/policy/concepts/exemption-structure.md).
 
-    Fönstret Skapa undantag öppnas.
+Så här skapar du en undantags regel:
 
-    :::image type="content" source="./media/exempt-resource/exemption-rule-options.png" alt-text="Fönstret Skapa undantag":::
+1. Öppna rekommendations informations sidan för den aktuella rekommendationen.
 
-1. Ange kriterier och välj ett villkor för varför den här resursen ska undantas:
-    - **Åtgärdat – det** här problemet är inte relevant för resursen eftersom den har hanterats av ett annat verktyg eller en annan process än den som föreslås
-    - **Avsägelse** – godkänner risken för den här resursen
-1. Välj **Spara**.
-1. Efter ett tag (det kan ta upp till 24 timmar):
-    - Resursen påverkar inte dina säkra poäng.
-    - Resursen visas på fliken **ej tillämpligt** på rekommendations informations Sidan
-    - Informations remsan överst på sidan med rekommendations information visar antalet undantagna resurser:
+1. I verktygsfältet högst upp på sidan väljer du **undanta**.
+
+    :::image type="content" source="media/exempt-resource/exempting-recommendation.png" alt-text="Skapa en undantags regel för en rekommendation som ska undantas från en prenumeration eller hanterings grupp.":::
+
+1. I fönstret **undantag** :
+    1. Välj omfattning för den här undantags regeln:
+        - Om du väljer en hanterings grupp undantas rekommendationen från alla prenumerationer i gruppen
+        - Om du skapar den här regeln för att undanta en eller flera resurser från rekommendationen väljer du "valda resurser" "och väljer de relevanta i listan
+
+    1. Ange ett namn för den här undantags regeln.
+    1. Du kan också ange ett förfallo datum.
+    1. Välj kategorin för undantaget:
+        - **Löses genom tredje part (minimerat)** – om du använder en tjänst från tredje part som Security Center inte har identifierats. 
+
+            > [!NOTE]
+            > När du undantar en rekommendation som minimerad får du inga poäng för dina säkra poäng. Men eftersom punkter inte *tas bort* för de felaktiga resurserna är resultatet att poängen ökar.
+
+        - **Risk som godkänns (avstående)** – om du har bestämt dig för att godkänna risken för att inte begränsa den här rekommendationen
+    1. Du kan också ange en beskrivning.
+    1. Välj **Skapa**.
+
+    :::image type="content" source="media/exempt-resource/defining-recommendation-exemption.png" alt-text="Steg för att skapa en undantags regel för att undanta en rekommendation från din prenumeration eller hanterings grupp":::
+
+    När undantaget börjar gälla (det kan ta upp till 30 minuter):
+    - Rekommendationen eller resurserna påverkar inte dina säkra poäng.
+    - Om du har beviljat vissa resurser visas de på fliken **ej tillämpligt** på sidan med rekommendations information.
+    - Om du undantar en rekommendation döljs den som standard på Security Center sidan rekommendationer. Detta beror på att standard alternativen i **rekommendations status** filtret på sidan är att undanta **inte tillämpliga** rekommendationer. Samma sak gäller om du undantar alla rekommendationer i en säkerhets kontroll.
+
+        :::image type="content" source="media/exempt-resource/recommendations-filters-hiding-not-applicable.png" alt-text="Standard filter på Azure Security Center sidan rekommendationer Dölj inte tillämpliga rekommendationer och säkerhets kontroller":::
+
+    - Informations remsan överst på rekommendations informations sidan uppdaterar antalet undantagna resurser:
         
         :::image type="content" source="./media/exempt-resource/info-banner.png" alt-text="Antal undantagna resurser":::
 
-1. Om du vill granska dina undantagna resurser öppnar du fliken **ej tillämpligt** .
+1. Om du vill granska dina undantagna resurser öppnar du fliken **ej tillämpligt** :
 
     :::image type="content" source="./media/exempt-resource/modifying-exemption.png" alt-text="Ändra ett undantag":::
 
@@ -66,15 +94,90 @@ Resursen visas som ej tillämplig och orsaken visas som "undantagen" med den jus
 
     Om du vill ändra eller ta bort ett undantag väljer du ellips-menyn ("...") som visas (2).
 
+1. Om du vill granska alla undantags regler för din prenumeration väljer du **Visa undantag** från informations remsan:
 
-## <a name="review-all-of-the-exemption-rules-on-your-subscription"></a>Granska alla undantags regler för din prenumeration
+    > [!IMPORTANT]
+    > Om du vill se de angivna undantagen som är relevanta för en rekommendation filtrerar du listan enligt relevant omfattning och rekommendations namn.
 
-Undantags regler använder Azure policy för att skapa ett undantag för resursen i princip tilldelningen.
+    :::image type="content" source="./media/exempt-resource/policy-page-exemption.png" alt-text="Azure Policy sidan undantag":::
 
-Du kan använda Azure Policy för att spåra alla dina undantag på sidan **undantag** :
+    > [!TIP]
+    > Du kan också [använda Azure Resource Graph för att hitta rekommendationer med undantag](#find-recommendations-with-exemptions-using-azure-resource-graph).
 
-:::image type="content" source="./media/exempt-resource/policy-page-exemption.png" alt-text="Azure Policy sidan undantag":::
+## <a name="monitor-exemptions-created-in-your-subscriptions"></a>Övervaka undantag som skapats i dina prenumerationer
 
+Som tidigare förklarats på den här sidan, är undantags regler ett kraftfullt verktyg som ger detaljerad kontroll över rekommendationerna som påverkar resurser i dina prenumerationer och hanterings grupper. 
+
+För att hålla reda på hur användarna utnyttjar den här funktionen har vi skapat en mall för Azure Resource Manager (ARM) som distribuerar en Logic app-Spelbok och alla nödvändiga API-anslutningar för att meddela dig när ett undantag har skapats.
+
+- Mer information om Spelbok finns i det här inlägget i [Tech community-Bloggar](https://techcommunity.microsoft.com/t5/azure-security-center/how-to-keep-track-of-resource-exemptions-in-azure-security/ba-p/1770580)
+- ARM-mallen finns i [Azure Security Center GitHub-lagringsplatsen](https://github.com/Azure/Azure-Security-Center/tree/master/Workflow%20automation/Notify-ResourceExemption)
+- Du kan klicka [här](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Security-Center%2Fmaster%2FWorkflow%2520automation%2FNotify-ResourceExemption%2Fazuredeploy.json) för att distribuera alla nödvändiga komponenter 
+
+
+## <a name="find-recommendations-with-exemptions-using-azure-resource-graph"></a>Hitta rekommendationer med undantag med hjälp av Azure Resource Graph
+
+Azure Resource Graph (ARG) ger direkt åtkomst till resursinformation i dina moln miljöer med robusta funktioner för filtrering, gruppering och sortering. Det är ett snabbt och effektivt sätt att fråga information i Azure-prenumerationer program mässigt eller inifrån Azure Portal.
+
+Visa alla rekommendationer som har undantags regler:
+
+1. Öppna **Azure Resource Graph Explorer**.
+
+    :::image type="content" source="./media/security-center-identity-access/opening-resource-graph-explorer.png" alt-text="Startar Azure Resource Graph Explorer * * rekommendations sida" :::
+
+1. Ange följande fråga och välj **Kör fråga**.
+
+    ```kusto
+    securityresources
+    | where type == "microsoft.security/assessments"
+    // Get recommendations in useful format
+    | project
+    ['TenantID'] = tenantId,
+    ['SubscriptionID'] = subscriptionId,
+    ['AssessmentID'] = name,
+    ['DisplayName'] = properties.displayName,
+    ['ResourceType'] = tolower(split(properties.resourceDetails.Id,"/").[7]),
+    ['ResourceName'] = tolower(split(properties.resourceDetails.Id,"/").[8]),
+    ['ResourceGroup'] = resourceGroup,
+    ['ContainsNestedRecom'] = tostring(properties.additionalData.subAssessmentsLink),
+    ['StatusCode'] = properties.status.code,
+    ['StatusDescription'] = properties.status.description,
+    ['PolicyDefID'] = properties.metadata.policyDefinitionId,
+    ['Description'] = properties.metadata.description,
+    ['RecomType'] = properties.metadata.assessmentType,
+    ['Remediation'] = properties.metadata.remediationDescription,
+    ['Severity'] = properties.metadata.severity,
+    ['Link'] = properties.links.azurePortal
+    | where StatusDescription contains "Exempt"    
+    ```
+
+
+Läs mer på följande sidor:
+- [Lär dig mer om Azure Resource Graph](../governance/resource-graph/index.yml).
+- [Skapa frågor med Azure Resource Graph Explorer](../governance/resource-graph/first-query-portal.md)
+- [Kusto Query Language (KQL)](/azure/data-explorer/kusto/query/)
+
+
+
+
+
+## <a name="exemption-rule-faq"></a>Vanliga frågor och svar om undantags regel
+
+### <a name="what-happens-when-one-recommendation-is-in-multiple-policy-initiatives"></a>Vad händer om en rekommendation finns i flera princip initiativ?
+
+Ibland visas en säkerhets rekommendation i mer än ett princip initiativ. Om du har flera instanser av samma rekommendation som har tilldelats samma prenumeration, och du skapar ett undantag för rekommendationen, kommer den att påverka alla de initiativ som du har behörighet att redigera. 
+
+Rekommendationen * * * * är till exempel en del av standard policy initiativet som tilldelas till alla Azure-prenumerationer med Azure Security Center. Den också i XXXXX.
+
+Om du försöker skapa ett undantag för den här rekommendationen visas ett av följande två meddelanden:
+
+- Om du har de behörigheter som krävs för att redigera båda initiativen visas:
+
+    *Den här rekommendationen ingår i flera princip initiativ: [initiativ namn avgränsade med kommatecken]. Undantag kommer att skapas på alla.*  
+
+- Om du inte har tillräcklig behörighet för båda initiativen visas det här meddelandet i stället:
+
+    *Du har begränsade behörigheter för att tillämpa undantaget på alla princip initiativ. undantagen skapas endast på initiativen med tillräcklig behörighet.*
 
 
 ## <a name="next-steps"></a>Nästa steg

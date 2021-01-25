@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/07/2020
 ms.author: memildin
-ms.openlocfilehash: d03177e3224bbd3f53320871efc6a0d6b3ea479d
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 5b257e45a86a7b22e9064fcfc6092b3c946ae99b
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922674"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98757655"
 ---
 # <a name="organize-management-groups-subscriptions-and-tenant-wide-visibility"></a>Organisera hanterings grupper, prenumerationer och synligheten för hela klienten
 
@@ -107,6 +107,36 @@ Så här tilldelar du dig själv behörigheter på klient nivå:
 
 1. När du har förhöjd åtkomst, öppna eller uppdatera Azure Security Center för att kontrol lera att du har insyn i alla prenumerationer under Azure AD-klienten. 
 
+
+## <a name="request-tenant-wide-permissions-when-yours-are-insufficient"></a>Begär behörigheter för klient åtkomst när dina inte är tillräckliga
+
+Om du loggar in på Security Center och ser en banderoll som visar att vyn är begränsad kan du klicka på genom att skicka en begäran till den globala administratören för din organisation. I begäran kan du ta med den roll som du vill tilldela och den globala administratören fattar ett beslut om vilken roll som ska beviljas. 
+
+Det är det globala administratörs beslutet om du vill acceptera eller avvisa dessa förfrågningar. 
+
+> [!IMPORTANT]
+> Du kan bara skicka en begäran var sjunde dag.
+
+Så här begär du utökade behörigheter från den globala administratören:
+
+1. Öppna Azure Security Center från Azure Portal.
+
+1. Om du ser banderollen "du ser begränsad information". Markera det.
+
+    :::image type="content" source="media/security-center-management-groups/request-tenant-permissions.png" alt-text="Banderoll som informerar användaren om att de kan begära behörigheter för hela klienten.":::
+
+1. I formuläret detaljerad begäran väljer du önskad roll och motivering för varför du behöver dessa behörigheter.
+
+    :::image type="content" source="media/security-center-management-groups/request-tenant-permissions-details.png" alt-text="Informations sida för att begära klient behörighet från din globala Azure-administratör":::
+
+1. Välj **begär åtkomst**.
+
+    Ett e-postmeddelande skickas till den globala administratören. E-postmeddelandet innehåller en länk till Security Center där de kan godkänna eller avvisa begäran.
+
+    :::image type="content" source="media/security-center-management-groups/request-tenant-permissions-email.png" alt-text="E-posta till den globala administratören för nya behörigheter":::
+
+    När den globala administratören väljer **Granska begäran** och slutför processen, skickas ett e-postmeddelande till den begär ande användaren. 
+
 ## <a name="assign-azure-roles-to-other-users"></a>Tilldela Azure-roller till andra användare
 
 ### <a name="assign-azure-roles-to-users-through-the-azure-portal"></a>Tilldela Azure-roller till användare via Azure Portal: 
@@ -149,6 +179,7 @@ Så här tilldelar du dig själv behörigheter på klient nivå:
     ```
 
 ## <a name="remove-elevated-access"></a>Ta bort utökad åtkomst 
+
 När Azure-rollerna har tilldelats till användarna bör klient administratören ta bort sig själv från rollen som administratör för användar åtkomst.
 
 1. Logga in på [Azure Portal](https://portal.azure.com) eller [Azure Active Directory administrations Center](https://aad.portal.azure.com).
