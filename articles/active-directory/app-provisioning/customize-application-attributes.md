@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 11/10/2020
+ms.date: 1/25/2021
 ms.author: kenwith
-ms.openlocfilehash: efdbec10c74a6b1892df13b8308538e61f42f679
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 2a27124ea76d6e5aaa7ec4b8ca36c388718ffb94
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98673509"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98761299"
 ---
 # <a name="tutorial---customize-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Självstudie – anpassa användar etablering attribut-mappningar för SaaS-program i Azure Active Directory
 
@@ -75,7 +75,7 @@ Tillsammans med den här egenskapen stöder attribut-mappningar även följande 
   - **Endast vid skapande** – Använd endast den här mappningen för åtgärder för att skapa användare.
 
 ## <a name="matching-users-in-the-source-and-target--systems"></a>Matcha användare i käll-och mål systemen
-Azure AD Provisioning-tjänsten kan distribueras i båda scenarierna med "Bygg" (där användare inte avslutas i mål systemet) och "brownfield"-scenarier (där användare redan finns i mål systemet). För att stödja båda scenarierna använder etablerings tjänsten begreppet matchande attribut. Med matchande attribut kan du avgöra hur du unikt identifierar en användare i källan och matchar användaren i målet. Som en del av planeringen av distributionen identifierar du det attribut som kan användas för att unikt identifiera en användare i käll-och mål systemen. Saker att Observera:
+Azure AD Provisioning-tjänsten kan distribueras i både "gröna fält"-scenarier (där användare inte avslutas i mål systemet) och "brownfield"-scenarier (där användare redan finns i mål systemet). För att stödja båda scenarierna använder etablerings tjänsten begreppet matchande attribut. Med matchande attribut kan du avgöra hur du unikt identifierar en användare i källan och matchar användaren i målet. Som en del av planeringen av distributionen identifierar du det attribut som kan användas för att unikt identifiera en användare i käll-och mål systemen. Saker att Observera:
 
 - **Matchande attribut ska vara unika:** Kunder använder ofta attribut som userPrincipalName, mail eller objekt-ID som matchande attribut.
 - **Du kan använda flera attribut som matchande attribut:** Du kan definiera flera attribut som ska utvärderas vid matchning av användare och i vilken ordning de utvärderas (definieras som matchnings prioritet i användar gränssnittet). Om du till exempel definierar tre attribut som matchande attribut, och en användare är unikt matchade efter utvärdering av de två första attributen, kommer tjänsten inte att utvärdera det tredje attributet. Tjänsten utvärderar matchande attribut i den angivna ordningen och slutar att utvärdera när en matchning hittas.  
@@ -156,6 +156,7 @@ Anpassade attribut kan inte vara referens attribut, flervärdesfält eller kompl
       "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User",
       "urn:ietf:params:scim:schemas:extension:CustomExtensionName:2.0:User"],
      "userName":"bjensen",
+     "id": "48af03ac28ad4fb88478",
      "externalId":"bjensen",
      "name":{
        "formatted":"Ms. Barbara J Jensen III",

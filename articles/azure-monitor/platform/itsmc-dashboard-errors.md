@@ -6,20 +6,20 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 01/18/2021
-ms.openlocfilehash: 9521c13b21317bb0a782b0bea0b08312ff24b113
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: c3e6408a6a3473380edbe2966eba41970bd73562
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98610360"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762755"
 ---
-# <a name="errors-in-the-connector-status"></a>Fel i anslutnings status
+# <a name="errors-in-the-connector-status-section"></a>Fel i avsnittet anslutnings status
 
-I listan anslutnings status hittar du fel som kan hjälpa dig att åtgärda problem i din ITSM-anslutning.
+I avsnittet anslutnings status lista på instrument panelen kan du hitta fel som kan hjälpa dig att åtgärda problem i din ITSM-anslutning.
 
 ## <a name="status-common-errors"></a>Status vanliga fel
 
-i det här avsnittet hittar du de vanliga fel som visas i avsnittet anslutnings status och hur du bör lösa det:
+I det här avsnittet hittar du de vanliga fel som visas i avsnittet anslutnings status och hur du bör lösa dem:
 
 * **Fel**: "oväntat svar från ServiceNow tillsammans med status koden lyckades. Svar: {"import_set": "{import_set_id}", "staging_table": "x_mioms_microsoft_oms_incident", "resultat": [{"transform_map": "OMS-incident", "Tabell": "incident", "status": "fel", "error_message": {mål posten hittades inte | Ogiltig tabell | Ogiltig mellanlagringsdatabas}
 
@@ -27,7 +27,7 @@ i det här avsnittet hittar du de vanliga fel som visas i avsnittet anslutnings 
   * Ett anpassat skript som distribueras i ServiceNow-instansen gör att incidenter ignoreras.
   * "OMS Integrator-appens kod har ändrats på ServiceNow sida, t. ex. onBefore-skriptet.
 
-  **Lösning**: inaktivera alla anpassade skript eller kod ändringar av data import Sök vägen.
+  **Lösning**: inaktivera alla anpassade skript eller kod ändringar.
 
 * **Fel**: {"fel": {"meddelande": "åtgärden misslyckades", "information": uppdatering av ACL-undantag misslyckades på grund av säkerhets begränsningar "}"
 
@@ -58,7 +58,7 @@ i det här avsnittet hittar du de vanliga fel som visas i avsnittet anslutnings 
     **Orsak**: ITSM-anslutningsprogram togs bort.
 
     **Lösning**: ITSM-anslutningsprogram togs bort men det finns fortfarande ITSM åtgärds grupper som är kopplade till den. Det finns två alternativ för att lösa det här problemet:
-  * Hitta och inaktivera eller ta bort sådan åtgärd
+  * Hitta och inaktivera eller ta bort sådana åtgärds grupper
   * [Konfigurera om åtgärds gruppen](./itsmc-definition.md#create-itsm-work-items-from-azure-alerts) så att den använder en befintlig ITSM-anslutningsprogram.
   * [Skapa en ny ITSM-koppling](./itsmc-definition.md#create-an-itsm-connection) och [Konfigurera om åtgärds gruppen så att den används](itsmc-definition.md#create-itsm-work-items-from-azure-alerts).
 

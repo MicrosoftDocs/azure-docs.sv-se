@@ -10,12 +10,12 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d348b8c2325c7bc2cdaa28356151647a9430684f
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.openlocfilehash: 10fe3b895ea5084247822f1c35275e68d80b73fa
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98247054"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762974"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>Migrera till molnbaserad autentisering med stegvis distribution (för hands version)
 
@@ -33,7 +33,7 @@ En översikt över funktionen finns i "Azure Active Directory: Vad är mellanlag
 
 
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 -   Du har en Azure Active Directory-klient (Azure AD) med federerade domäner.
 
@@ -61,7 +61,10 @@ Följande scenarier stöds för stegvis distribution. Funktionen fungerar endast
 - Användare som är etablerade i Azure AD med hjälp av Azure AD Connect. Den gäller inte enbart för moln användare.
 
 - Användarens inloggnings trafik för webbläsare och *moderna autentiserings* klienter. Program eller moln tjänster som använder äldre autentisering kommer tillbaka till federerade autentiserings flöden. Ett exempel kan vara Exchange Online med modern autentisering inaktive rad eller Outlook 2010, som inte stöder modern autentisering.
+
 - Grupp storleken är för närvarande begränsad till 50 000 användare.  Om du har grupper som är större än 50 000 användare, rekommenderar vi att du delar upp den här gruppen över flera grupper för mellanlagrad distribution.
+
+- Windows 10 hybrid anslutning eller Azure AD Join-hämtning av primär uppdateringstoken utan detaljerad information till Federations servern för Windows 10 version 1903 och senare, när användarens UPN-värde dirigeras och domänsuffix verifieras i Azure AD.
 
 ## <a name="unsupported-scenarios"></a>Scenarier som inte stöds
 
@@ -87,6 +90,10 @@ Följande scenarier stöds inte för stegvis distribution:
 - När du först lägger till en säkerhets grupp för stegvis distribution är du begränsad till 200 användare för att undvika en UX-timeout. När du har lagt till gruppen kan du lägga till fler användare direkt till den, efter behov.
 
 - Medan användarna är i stegvis distribution, när EnforceCloudPasswordPolicyForPasswordSyncedUsers har Aktiver ATS, anges principen för lösen ordets giltighets tid till 90 dagar utan alternativ för att anpassa den. 
+
+- Windows 10 hybrid anslutning eller Azure AD Join-hämtning för primär uppdateringstoken för Windows 10 version som är äldre än 1903. Det här scenariot återgår till WS-Trust slut punkten för Federations servern, även om användaren som loggar in befinner sig inom omfånget för mellanlagrad distribution.
+
+- Windows 10 hybrid anslutning eller Azure AD Join-hämtning av primär uppdateringstoken för alla versioner, när användarens lokala UPN inte är flyttbara. Det här scenariot återgår till WS-Trust slut punkten i läget för mellanlagrad distribution, men slutar att fungera när mellanlagrad migrering är slutförd och användar inloggning inte längre förlitar sig på Federations servern.
 
 
 ## <a name="get-started-with-staged-rollout"></a>Kom igång med stegvis distribution

@@ -3,12 +3,12 @@ title: Begränsningar för resurs namn
 description: Visar regler och begränsningar för namngivning av Azure-resurser.
 ms.topic: conceptual
 ms.date: 12/29/2020
-ms.openlocfilehash: 59babd9298fdca96b450b2dc67832c86c043c49c
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: bd8ba72d43b7e3e5a9145d756741436f0a49e18b
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98132757"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762488"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Namngivningsregler och begränsningar för Azure-resurser
 
@@ -544,7 +544,7 @@ I följande tabeller refererar termen alfanumeriskt till:
 > [!div class="mx-tableFixed"]
 > | Entitet | Omfång | Längd | Giltiga tecken |
 > | --- | --- | --- | --- |
-> | lösningar | arbetsyta | Saknas | För lösningar som har skapats av Microsoft måste namnet vara i mönstret:<br>`SolutionType(WorkspaceName)`<br><br>För lösningar som har skapats av tredje part måste namnet vara i mönstret:<br>`SolutionType[WorkspaceName]`<br><br>Ett giltigt namn är till exempel:<br>`AntiMalware(contoso-IT)`<br><br>Lösnings typen är Skift läges känslig. |
+> | lösningar | arbetsyta | Ej tillämpligt | För lösningar som har skapats av Microsoft måste namnet vara i mönstret:<br>`SolutionType(WorkspaceName)`<br><br>För lösningar som har skapats av tredje part måste namnet vara i mönstret:<br>`SolutionType[WorkspaceName]`<br><br>Ett giltigt namn är till exempel:<br>`AntiMalware(contoso-IT)`<br><br>Lösnings typen är Skift läges känslig. |
 
 ## <a name="microsoftportal"></a>Microsoft. Portal
 
@@ -633,9 +633,9 @@ I följande tabeller refererar termen alfanumeriskt till:
 > [!div class="mx-tableFixed"]
 > | Entitet | Omfång | Längd | Giltiga tecken |
 > | --- | --- | --- | --- |
-> | managedInstances | EAN | 1–63 | Små bokstäver, siffror och bindestreck.<br><br>Får inte börja eller sluta med bindestreck. |
+> | managedInstances | EAN | 1–63 | Små bokstäver, siffror och bindestreck.<br><br>Får inte börja eller sluta med bindestreck. <br><br> Det får inte finnas specialtecken, till exempel `@` . |
 > | brygghuvudservrar | EAN | 1–63 | Små bokstäver, siffror och bindestreck.<br><br>Får inte börja eller sluta med bindestreck. |
-> | servrar/administratörer | server |  | Måste vara `ActiveDirectory` . |
+> | servrar/administratörer | server |  | Måste vara `ActiveDirectory` . <br><br> Det får inte finnas specialtecken, till exempel `@` .|
 > | servrar/databaser | server | 1-128 | Kan inte använda:<br>`<>*%&:\/?`<br><br>Kan inte sluta med punkt eller blank steg. |
 > | servrar/databaser/syncGroups | databas | 1-150 | Alfanumeriska tecken, bindestreck och under streck. |
 > | servrar/elasticPools | server | 1-128 | Kan inte använda:<br>`<>*%&:\/?`<br><br>Kan inte sluta med punkt eller blank steg. |

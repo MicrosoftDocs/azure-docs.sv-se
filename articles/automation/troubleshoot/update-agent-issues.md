@@ -4,17 +4,17 @@ description: Den här artikeln beskriver hur du felsöker och löser problem med
 services: automation
 author: mgoedtel
 ms.author: magoedte
-ms.date: 01/16/2020
+ms.date: 01/25/2020
 ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: 92020313fccf1b8be0add58a7bafab62b5daa4d5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d5c2cc014c87a345507e9c0f99c507d151d59b86
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86187140"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762116"
 ---
 # <a name="troubleshoot-windows-update-agent-issues"></a>Felsöka problem med uppdateringsagenten i Windows
 
@@ -27,10 +27,10 @@ Det kan finnas många orsaker till att datorn inte visas som klar (felfri) under
 > [!NOTE]
 > Det kan finnas en liten fördröjning mellan det Azure Portal visar och datorns aktuella tillstånd.
 
-Den här artikeln beskriver hur du kör fel sökaren för Azure-datorer från Azure Portal och datorer som inte är Azure-datorer i [scenariot offline](#troubleshoot-offline). 
+Den här artikeln beskriver hur du kör fel sökaren för Azure-datorer från Azure Portal och datorer som inte är Azure-datorer i [scenariot offline](#troubleshoot-offline).
 
 > [!NOTE]
-> Fel söknings skriptet innehåller nu kontroller för Windows Server Update Services (WSUS) och för nycklar för automatisk nedladdning och installation. 
+> Fel söknings skriptet innehåller nu kontroller för Windows Server Update Services (WSUS) och för nycklar för automatisk nedladdning och installation.
 
 ## <a name="start-the-troubleshooter"></a>Starta fel sökaren
 
@@ -55,11 +55,11 @@ Resultaten visas på sidan när de är klara. I avsnittet kontroller visas vad s
 
 Operativ system kontrollen verifierar om Hybrid Runbook Worker kör något av de operativ system som visas i nästa tabell.
 
-|Operativsystem  |Obs!  |
+|Operativsystem  |Kommentarer  |
 |---------|---------|
 |Windows Server 2012 och senare |.NET Framework 4,6 eller senare krävs. ([Hämta .NET Framework](/dotnet/framework/install/guide-for-developers).)<br/> Windows PowerShell 5,1 krävs.  ([Ladda ned Windows Management Framework 5,1](https://www.microsoft.com/download/details.aspx?id=54616).)        |
 
-### <a name="net-462"></a>.NET-4.6.2
+### <a name="net-462"></a>.NET 4.6.2
 
 .NET Framework kontrollen kontrollerar att systemet har [.NET Framework 4.6.2](https://www.microsoft.com/en-us/download/details.aspx?id=53345) eller senare installerat.
 
@@ -110,7 +110,7 @@ Mer information om den här händelsen finns [i händelse 4502 i Operations Mana
 
 ## <a name="troubleshoot-offline"></a><a name="troubleshoot-offline"></a>Felsöka offline
 
-Du kan använda fel sökaren på en Hybrid Runbook Worker offline genom att köra skriptet lokalt. Hämta följande skript från PowerShell-galleriet: [Felsök-WindowsUpdateAgentRegistration](https://www.powershellgallery.com/packages/Troubleshoot-WindowsUpdateAgentRegistration). För att köra skriptet måste du ha WMF 4,0 eller senare installerat. Information om hur du hämtar den senaste versionen av PowerShell finns i [installera olika versioner av PowerShell](/powershell/scripting/install/installing-powershell).
+Du kan använda fel sökaren på en Hybrid Runbook Worker offline genom att köra skriptet lokalt. Hämta följande skript från GitHub: [UM_Windows_Troubleshooter_Offline.ps1](https://github.com/Azure/updatemanagement/blob/main/UM_Windows_Troubleshooter_Offline.ps1). För att köra skriptet måste du ha WMF 4,0 eller senare installerat. Information om hur du hämtar den senaste versionen av PowerShell finns i [installera olika versioner av PowerShell](/powershell/scripting/install/installing-powershell).
 
 Utdata från det här skriptet ser ut som i följande exempel:
 

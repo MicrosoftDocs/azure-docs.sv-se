@@ -1,46 +1,49 @@
 ---
-title: Kluster versioner som stöds i Azure Service Fabric
+title: Uppgradera Azure Service Fabric Cluster-versionen
 description: Lär dig mer om kluster versioner i Azure Service Fabric, inklusive en länk till de senaste versionerna från Service Fabric teamets blogg.
 ms.topic: troubleshooting
 ms.date: 06/15/2020
-ms.openlocfilehash: 82b90d6b0acf5d83f9509abd9ee4b34cb74d1b48
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: b7234a60c98c42716e5b294c356062ec7001aef7
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736792"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762637"
 ---
-# <a name="supported-service-fabric-versions"></a>Service Fabric versioner som stöds
+# <a name="upgrade-your-azure-service-fabric-cluster-version"></a>Uppgradera Azure Service Fabric Cluster-versionen
 
-Se till att klustret alltid kör en Azure Service Fabric-version som stöds. I minst 60 dagar efter att vi tillkännaget lanseringen av en ny version av Service Fabric, avslutas stöd för den tidigare versionen. Du hittar meddelanden om nya versioner i [Service Fabric teamets blogg](https://azure.microsoft.com/updates/?product=service-fabric).
+Kontrol lera att klustret alltid kör en version av Azure Service Fabric som stöds. I minst 60 dagar efter att vi tillkännaget lanseringen av en ny version av Service Fabric, avslutas stöd för den tidigare versionen. Du hittar meddelanden om nya versioner i [Service Fabric teamets blogg](https://azure.microsoft.com/updates/?product=service-fabric).
 
-För en viss version av Service Fabric runtime kan du använda de angivna eller äldre versionerna av SDK/NuGet-paketen. Nyare versioner av paketen stöds inte och kan ha problem som riktar sig mot äldre kluster eftersom de kan ha funktioner eller protokoll ändringar som inte stöds i dessa miljöer.
+För varje version av Service Fabric runtime kan du använda de angivna eller äldre versionerna av SDK/NuGet-paketen. Nyare versioner av paketen kanske inte kan rikta in sig på äldre kluster. Äldre kluster kan ha funktions-eller protokoll ändringar som inte stöds i de nyare paket miljöerna.
 
-I följande dokument finns mer information om hur du håller klustret med en Service Fabric version som stöds:
+I följande artiklar finns mer information om hur du håller klustret med en Service Fabric-version som stöds:
 
 - [Uppgradera ett Azure Service Fabric-kluster](service-fabric-cluster-upgrade.md)
 - [Uppgradera den Service Fabric version som körs på det fristående Windows Server-klustret](service-fabric-cluster-upgrade-windows-server.md)
 
-
 ## <a name="unsupported-versions"></a>Versioner som inte stöds
 
-### <a name="upgrade-alert-for-versions-between-57-and-below-6363"></a>Uppgraderings avisering för versioner mellan 5,7 och under 6.3.63. *
-För att förbättra säkerheten och tillgängligheten kommer Azure-infrastrukturen att göra en ändring som kan påverka Service Fabric kunder. **Alla Service Fabric kluster på versioner som inte stöds från 5,7 till 6,3. påverkas**. För att kunna hantera ändringen krävs en uppdatering av Service Fabric runtime, som redan är tillgänglig för alla Service Fabric-versioner som stöds i alla regioner.
+### <a name="upgrade-alert-for-versions-between-57-and-6363"></a>Uppgraderings avisering för versioner mellan 5,7 och 6.3.63. *
 
-Vi begär och rekommenderar att du vidtar åtgärder för att uppgradera till de senaste versionerna som stöds av **19 januari, 2021** för att undvika avbrott i tjänsten om du har en Support plan och du behöver teknisk hjälp, kontakta oss via support kanalerna i Azure genom att öppna en support förfrågan för Azure Service Fabric och nämna detta sammanhang i support ärendet.
+Azure-infrastrukturen har gjort en ändring som kan påverka Service Fabric kunder för att förbättra säkerheten och tillgängligheten. Den här ändringen påverkar alla Service Fabric kluster som kör version 5,7 till 6,3.
 
-#### <a name="impact-if-not-upgraded-to-supported-versions"></a>Påverka om de inte uppgraderas till versioner som stöds
+En uppdatering av Service Fabric runtime är tillgänglig för alla Service Fabric-versioner som stöds i alla regioner. Uppgradera till en av de senaste versionerna som stöds den 19 januari 2021 för att undvika avbrott i tjänsten.
 
-**Azure Service Fabric kluster som körs på versioner som inte stöds från 5,7 till 6.3.63. \* kommer inte att kunna komma igång och kommer inte att vara tillgängligt** om du inte har uppgraderat till en av de lägre versioner som stöds av 19 januari 2021.
+Om du har en Support plan och behöver teknisk hjälp kan du kontakta support kanalerna för Azure. Öppna en support förfrågan för Azure Service Fabric och omnämnande den här kontexten i support ärendet.
+
+#### <a name="if-you-dont-upgrade-to-a-supported-version"></a>Om du inte uppgraderar till en version som stöds
+
+Azure Service Fabric-kluster som körs på versioner från 5,7 till 6.3.63. * blir otillgängliga om du inte har uppgraderat den 19 januari 2021.
 
 #### <a name="required-action"></a>Nödvändig åtgärd
-Uppgradera till Service Fabric versioner som stöds nedan för att förhindra drift avbrott eller förlust av funktioner som är relaterade till den här ändringen. Kontrol lera att klustren kör minst dessa versioner för att förhindra problem i din miljö.
 
-  ###### <a name="supported-service-fabric-runtime-versions"></a>Service Fabric runtime-versioner som stöds
-   Om du inte är på den nedan listade versioner av Service Fabric som stöds, uppgradera till en av dessa versioner som redan innehåller de nödvändiga ändringarna för att förhindra drift avbrott i klustret. **Obs:** Alla versions versioner av 7,2 innehåller nödvändiga ändringar.
+Uppgradera till en Service Fabric-version som stöds för att förhindra drift avbrott eller förlust av funktioner som är relaterade till den här ändringen. Se till att klustren kör minst följande versioner för att förhindra problem i miljön.
+
+> [!Note]
+> Alla utgivna versioner av 7,2 innehåller nödvändiga ändringar.
   
-  | Operativsystem | Nuvarande Service Fabric körning i klustret | Version för CU/korrigering  | 
-  | --- | --- |--- | 
+  | Operativsystem | Nuvarande Service Fabric körning i klustret | Version för CU/korrigering |
+  | --- | --- |--- |
   | Windows | 7,0. * | 7.0.478.9590 |
   | Windows | 7,1. * | 7.1.503.9590 |
   | Windows | 7,2. * | 7,2. * |
@@ -49,28 +52,32 @@ Uppgradera till Service Fabric versioner som stöds nedan för att förhindra dr
   | Linux Ubuntu 18,04 | 7,1. * | 7.1.455.1804 |
   | Linux Ubuntu 16,04 | 7,2. * | 7,2. * |
   | Linux Ubuntu 18,04 | 7,2. * | 7,2. * |
- 
-### <a name="upgrade-alert-for-versions-greater-than-63"></a>Uppgraderings avisering för versioner som är större än 6,3 
-För att förbättra säkerheten och tillgängligheten kommer Azure-infrastrukturen att göra en ändring som kan påverka Service Fabric kunder. **Alla Service Fabric kluster som använder [funktionen öppna nätverksfunktioner för behållare](https://docs.microsoft.com/azure/service-fabric/service-fabric-networking-modes#set-up-open-networking-mode), som körs på versioner som inte stöds och som är större än 6,3 och under 7,0 och inkompatibla versioner från 7,0 och som påverkas**. För att kunna hantera ändringen krävs en uppdatering av Service Fabric runtime, som redan är tillgänglig för alla Service Fabric-versioner som stöds i alla regioner.
 
- #### <a name="impact-if-not-upgraded-to-supported-versions"></a>Påverka om de inte uppgraderas till versioner som stöds
-  Azure Service Fabric-kluster som **använder [funktionen öppna nätverksfunktioner för](https://docs.microsoft.com/azure/service-fabric/service-fabric-networking-modes#set-up-open-networking-mode) behållare och som körs på versioner som är större än 6,3 och** som inte omfattar förändringar kommer att förlora funktioner eller tjänst avbrott om de inte uppgraderas till någon av de lägre versioner som stöds av den **19 januari 2021**.
- 
-  - **För kluster som kör en version av Service Fabric som är större än 6,3 och som inte använder funktionen öppna nätverk**, är klustret kvar.
+### <a name="upgrade-alert-for-versions-later-than-63"></a>Uppgradera aviseringen för versioner senare än 6,3
 
- - **För kluster som kör en version av Service Fabric som är större än 6,3 och använder [funktionen öppna nätverksfunktioner för behållare](https://docs.microsoft.com/azure/service-fabric/service-fabric-networking-modes#set-up-open-networking-mode)** , kan klustret bli otillgängligt och upphör att fungera, vilket kan orsaka avbrott i tjänsten för dina arbets belastningar.
- 
- -   **För kluster som kör [Windows-versioner mellan 7,0 och 7.0.466 (båda versionerna som ingår)](https://docs.microsoft.com/azure/service-fabric/service-fabric-versions#supported-version-names) och Windows OS har funktionen Windows-behållare aktive rad. Obs! Linux-versionerna 7.0.457, 7.0.464 och 7.0.465 påverkas inte**.
-    - **Påverkan**: klustret upphör att fungera, vilket kan orsaka avbrott i tjänsten för dina arbets belastningar.
-       
+Azure-infrastrukturen har gjort en ändring som kan påverka Service Fabric kunder för att förbättra säkerheten och tillgängligheten. Den här ändringen påverkar alla Service Fabric kluster som använder [öppet nätverks läge för behållare](https://docs.microsoft.com/azure/service-fabric/service-fabric-networking-modes#set-up-open-networking-mode) och kör versioner 6,3 till 7,0 eller inkompatibla versioner som stöds senare än 7,0. En uppdatering av Service Fabric runtime är tillgänglig för alla Service Fabric-versioner som stöds i alla regioner.
+
+#### <a name="if-you-dont-upgrade-to-a-supported-version"></a>Om du inte uppgraderar till en version som stöds
+
+Azure Service Fabric-kluster som körs på oförändrade versioner senare än 6,3 kommer att uppleva avbrott i funktioner eller tjänst avbrott om de inte uppgraderas till en version som stöds senast 19 januari 2021.
+
+Tjänst avbrott kan vara följande:
+
+- Versioner som *inte* använder **öppet** läge: klustret blir kvar, men **öppet** läge upphör att fungera, vilket kan orsaka avbrott i tjänsten för dina arbets belastningar.
+
+- Versioner som *använder* **öppet** läge: klustret kan bli otillgängligt och kommer att sluta fungera, vilket kan orsaka avbrott i tjänsten för dina arbets belastningar.
+  
 #### <a name="required-action"></a>Nödvändig åtgärd
-Uppgradera till Service Fabric versioner som stöds nedan för att förhindra drift avbrott eller förlust av funktioner som är relaterade till den här ändringen. Kontrol lera att klustren kör minst dessa versioner för att förhindra problem i din miljö. 
- 
- ###### <a name="supported-service-fabric-runtime-versions"></a>Service Fabric runtime-versioner som stöds
- Om du inte är på den nedan listade versioner av Service Fabric som stöds, uppgradera till en av dessa versioner som redan innehåller de nödvändiga ändringarna för att förhindra att funktioner går förlorade.  **Obs:** Alla versions versioner av 7,2 innehåller nödvändiga ändringar.
- 
-  | Operativsystem | Nuvarande Service Fabric körning i klustret | Version för CU/korrigering  | 
-  | --- | --- |--- | 
+
+Säkerställ att klustren kör någon av följande versioner för att förhindra drift avbrott eller förlust av funktioner.
+
+Versioner av Service Fabric i tabellen innehåller nödvändiga ändringar för att förhindra att funktioner går förlorade. Kontrol lera att du använder någon av dessa versioner.  
+
+> [!Note]
+> Alla versions versioner av 7,2 innehåller nödvändiga ändringar.
+
+  | Operativsystem | Nuvarande Service Fabric körning i klustret | Version för CU/korrigering |
+  | --- | --- |--- |
   | Windows | 7,0. * | 7.0.478.9590 |
   | Windows | 7,1. * | 7.1.503.9590 |
   | Windows | 7,2. * | 7,2. * |
@@ -81,6 +88,7 @@ Uppgradera till Service Fabric versioner som stöds nedan för att förhindra dr
   | Linux Ubuntu 18,04 | 7,2. * | 7,2. * |
 
 ## <a name="supported-versions"></a>Versioner som stöds
+
 I följande tabell visas de versioner av Service Fabric och deras support slutdatum.
 
 | Service Fabric körning i klustret | Kan uppgradera direkt från kluster version |Kompatibel SDK-eller NuGet-paket version | Slut på support |
@@ -135,28 +143,28 @@ I följande tabell visas versions namnen för Service Fabric och deras motsvaran
 
 | Versions namn | Windows-versions nummer | Linux-versions nummer |
 | --- | --- | --- |
-| 5,3 RTO | 5.3.121.9494 | NA |
-| 5,3 CU1 | 5.3.204.9494 | NA |
-| 5,3 CU2 | 5.3.301.9590 | NA |
-| 5,3 CU3 | 5.3.311.9590 | NA |
-| 5,4 CU2 | 5.4.164.9494 | NA |
-| 5,5 CU1 | 5.5.216.0    | NA |
-| 5,5 CU2 | 5.5.219.0    | NA |
-| 5,5 CU3 | 5.5.227.0    | NA |
-| 5,5 CU4 | 5.5.232.0 | NA |
-| 5,6 RTO | 5.6.204.9494 | NA |
-| 5,6 CU2 | 5.6.210.9494 | NA |
-| 5,6 CU3 | 5.6.220.9494 | NA |
-| 5,7 RTO | 5.7.198.9494 | NA |
-| 5,7 CU4 | 5.7.221.9494 | NA |
+| 5,3 RTO | 5.3.121.9494 | Inte tillämpligt|
+| 5,3 CU1 | 5.3.204.9494 | Inte tillämpligt|
+| 5,3 CU2 | 5.3.301.9590 | Inte tillämpligt|
+| 5,3 CU3 | 5.3.311.9590 | Inte tillämpligt|
+| 5,4 CU2 | 5.4.164.9494 | Inte tillämpligt|
+| 5,5 CU1 | 5.5.216.0    | Inte tillämpligt|
+| 5,5 CU2 | 5.5.219.0 | Inte tillämpligt|
+| 5,5 CU3 | 5.5.227.0 | Inte tillämpligt|
+| 5,5 CU4 | 5.5.232.0 | Inte tillämpligt|
+| 5,6 RTO | 5.6.204.9494 | Inte tillämpligt|
+| 5,6 CU2 | 5.6.210.9494 | Inte tillämpligt|
+| 5,6 CU3 | 5.6.220.9494 | Inte tillämpligt|
+| 5,7 RTO | 5.7.198.9494 | Inte tillämpligt|
+| 5,7 CU4 | 5.7.221.9494 | Inte tillämpligt|
 | 6,0 RTO | 6.0.211.9494 | 6.0.120.1 |
 | 6,0 CU1 | 6.0.219.9494 | 6.0.127.1 |
 | 6,0 CU2 | 6.0.232.9494 | 6.0.133.1 |
 | 6,1 CU1 | 6.1.456.9494 | 6.1.183.1 |
 | 6,1 CU2 | 6.1.467.9494 | 6.1.185.1 |
-| 6,1 CU3 | 6.1.472.9494 | NA |
+| 6,1 CU3 | 6.1.472.9494 | Inte tillämpligt|
 | 6,1 CU4 | 6.1.480.9494 | 6.1.187.1 |
-| 6,2 RTO | 6.2.269.9494 | 6.2.184.1 | 
+| 6,2 RTO | 6.2.269.9494 | 6.2.184.1 |
 | 6,2 CU1 | 6.2.274.9494 | 6.2.191.1 |
 | 6,2 CU2 | 6.2.283.9494 | 6.2.194.1 |
 | 6,2 CU3 | 6.2.301.9494 | 6.2.199.1 |
@@ -164,13 +172,13 @@ I följande tabell visas versions namnen för Service Fabric och deras motsvaran
 | 6,3 CU1 | 6.3.176.9494 | 6.3.124.1 |
 | 6,3 CU1 | 6.3.187.9494 | 6.3.129.1 |
 | 6,4 RTO | 6.4.617.9590 | 6.4.625.1 |
-| 6,4 CU2 | 6.4.622.9590 | NA |
+| 6,4 CU2 | 6.4.622.9590 | Inte tillämpligt|
 | 6,4 CU3 | 6.4.637.9590 | 6.4.634.1 |
 | 6,4 CU4 | 6.4.644.9590 | 6.4.639.1 |
 | 6,4 CU5 | 6.4.654.9590 | 6.4.649.1 |
-| 6,4 CU6 | 6.4.658.9590 | NA |
+| 6,4 CU6 | 6.4.658.9590 | Inte tillämpligt|
 | 6,4 CU7 | 6.4.664.9590 | 6.4.661.1 |
-| 6,4 CU8 | 6.4.670.9590 | NA |
+| 6,4 CU8 | 6.4.670.9590 | Inte tillämpligt|
 | 6,5 RTO | 6.5.639.9590 | 6.5.435.1 |
 | 6,5 CU1 | 6.5.641.9590 | 6.5.454.1 |
 | 6,5 CU2 | 6.5.658.9590 | 6.5.460.1 |
@@ -189,8 +197,7 @@ I följande tabell visas versions namnen för Service Fabric och deras motsvaran
 | 7,1 CU5 | 7.1.458.9590 | 7.1.454.1 |
 | 7,1 CU6 | 7.1.459.9590 | 7.1.455.1 |
 | 7,1 CU8 | 7.1.503.9590 | 7.1.508.1 |
-| 7,2 RTO | 7.2.413.9590 | NA |
+| 7,2 RTO | 7.2.413.9590 | Inte tillämpligt|
 | 7,2 CU2 | 7.2.432.9590 | 7.2.431.1 |
-| 7,2 CU3 | 7.2.433.9590 | NA |
+| 7,2 CU3 | 7.2.433.9590 | Inte tillämpligt|
 | 7,2 CU4 | 7.2.445.9590 | 7.2.447.1 |
-

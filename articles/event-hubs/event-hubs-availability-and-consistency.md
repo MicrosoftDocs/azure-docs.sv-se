@@ -2,14 +2,14 @@
 title: Tillgänglighet och konsekvens – Azure Event Hubs | Microsoft Docs
 description: Hur du ger maximal tillgänglighet och konsekvens med Azure Event Hubs att använda partitioner.
 ms.topic: article
-ms.date: 06/23/2020
+ms.date: 01/25/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7b97d76f29ee8b7e44373c865baa09ba5ea4dd23
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 5ffa2df992eb0c22aafbbb7436250405998d8073
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98631927"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762807"
 ---
 # <a name="availability-and-consistency-in-event-hubs"></a>Tillgänglighet och konsekvens i Event Hubs
 
@@ -22,6 +22,11 @@ I bryggeriens satsen definieras konsekvens och tillgänglighet enligt följande:
 * Partitions tolerans: data bearbetnings systemets möjlighet att fortsätta att bearbeta data även om ett partitionsschema inträffar.
 * Tillgänglighet: en icke-misslyckad nod returnerar ett rimligt svar inom en rimlig tids period (utan fel eller tids gränser).
 * Konsekvens: en läsning garanterar att returnera den senaste skrivningen för en specifik klient.
+
+> [!NOTE]
+> Termen **partition** används i olika kontexter i Event Hubs-och Cap-satsen. 
+> - **Event Hubs** ordnar händelser till en eller flera partitioner. Partitioner är oberoende och innehåller sin egen sekvens med data, de ökar ofta i olika takt. Mer information finns i [partitioner](event-hubs-features.md#partitions).
+> - I **Cap satsen** är en partition en kommunikation bryts mellan noderna i ett distribuerat system.
 
 ## <a name="partition-tolerance"></a>Partitions tolerans
 Event Hubs skapas ovanpå en partitionerad data modell. Du kan konfigurera antalet partitioner i din Event Hub under installationen, men du kan inte ändra det här värdet senare. Eftersom du måste använda partitioner med Event Hubs måste du fatta ett beslut om tillgänglighet och konsekvens för ditt program.

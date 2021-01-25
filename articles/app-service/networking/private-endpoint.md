@@ -9,14 +9,14 @@ ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: bebc7dcbc18a25b0d6d0761a8ca3ac476e83e581
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 4534a315429a120af45dfd495df4a8c29b233de7
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183047"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98763038"
 ---
-# <a name="using-private-endpoints-for-azure-web-app"></a>Använda privata slut punkter för Azure Web App
+# <a name="using-private-endpoints-for-azure-web-app"></a>Använda privata slutpunkter för Azure Web Apps
 
 > [!IMPORTANT]
 > Privat slut punkt är tillgänglig för Windows-och Linux-webbappar, som är behållare eller inte, som finns på dessa App Service planer: **isolerade**, **PremiumV2**, **PremiumV3**, **Functions Premium** (kallas ibland elastisk Premium-plan). 
@@ -116,7 +116,7 @@ Pris information finns i [priser för privata Azure-länkar][pricing].
 
 När du använder Azure Function i elastisk Premium-plan med privat slut punkt, för att köra eller köra funktionen i Azure-webbportalen, måste du ha direkt åtkomst till nätverket eller så får du ett HTTP 403-fel. Med andra ord måste webbläsaren kunna komma åt den privata slut punkten för att köra funktionen från Azure-webbportalen. 
 
-Du kan ansluta upp till 100 privat slut punkt till en viss webbapp.
+Du kan ansluta upp till 100 privata slut punkter till en viss webbapp.
 
 Platser kan inte använda privat slut punkt.
 

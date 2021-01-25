@@ -157,6 +157,8 @@
               href: howto-use-app-templates.md
             - name: Övervaka programhälsa
               href: howto-monitor-application-health.md
+            - name: Migrera v2 till v3-program
+              href: howto-migrate.md
             - name: Om ditt program
               href: howto-get-app-info.md
             - name: Distribuera X.509-certifikat

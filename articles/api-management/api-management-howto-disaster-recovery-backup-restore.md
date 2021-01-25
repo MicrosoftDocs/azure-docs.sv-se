@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/05/2020
 ms.author: apimpm
-ms.openlocfilehash: 25356e7101293fc27d4107b3a618cfc481aee969
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 223d119786d99eac611ece597fc0e8de4fcaf6bd
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96779591"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762400"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Så här implementerar du haveriberedskap med hjälp av säkerhetskopiering och återställning i Azure API Management
 
@@ -221,8 +221,8 @@ Restore är en tids krävande åtgärd som kan ta upp till 30 minuter att slutf�
 
 ## <a name="what-is-not-backed-up"></a>Vad säkerhets kopie ras inte
 -   **Användnings data** som används för att skapa analys rapporter **ingår inte** i säkerhets kopian. Använd [Azure API Management REST API][azure api management rest api] för att regelbundet hämta analys rapporter för förvaring.
--   [TLS/SSL-certifikat för anpassad domän](configure-custom-domain.md)
--   [Anpassat CA-certifikat](api-management-howto-ca-certificates.md), som innehåller mellanliggande eller rot certifikat som har överförts av kunden
+-   [Anpassade TLS/SSL-](configure-custom-domain.md) certifikat för domän.
+-   [Anpassat CA-certifikat](api-management-howto-ca-certificates.md), som innehåller mellanliggande eller rot certifikat som har överförts av kunden.
 -   Inställningar för integrering av [virtuella nätverk](api-management-using-with-vnet.md) .
 -   [Hanterad identitets](api-management-howto-use-managed-service-identity.md) konfiguration.
 -   [Azure Monitor diagnostik](api-management-howto-use-azure-monitor.md) Inställningarna.

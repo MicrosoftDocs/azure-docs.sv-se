@@ -3,12 +3,12 @@ title: Nyheter i Azure Backup
 description: Lär dig mer om nya funktioner i Azure Backup.
 ms.topic: conceptual
 ms.date: 11/11/2020
-ms.openlocfilehash: 935c2a806ed3b08f19e680bf1522d98a9ad67666
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 5343ec2ae04853492abbaace2432cf94c9fb5a07
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98730297"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762372"
 ---
 # <a name="whats-new-in-azure-backup"></a>Nyheter i Azure Backup
 
@@ -19,20 +19,20 @@ Du kan lära dig mer om de nya versionerna genom att skriva bok märken på den 
 ## <a name="updates-summary"></a>Uppdaterings Sammanfattning
 
 - Januari 2021
-  - [Säkerhets kopiering av Azure-disk (i för hands version)](disk-backup-overview.md)
-  - [Kryptering i vila med Kundhanterade nycklar är nu allmänt tillgängliga](encryption-at-rest-with-cmk.md)
+  - [Säkerhets kopiering av Azure-disk (i för hands version)](#azure-disk-backup-in-preview)
+  - [Kryptering i vila med Kundhanterade nycklar (allmän tillgänglighet)](#encryption-at-rest-using-customer-managed-keys)
 - November 2020
   - [Azure Resource Manager mall för säkerhets kopiering av Azure-filresursen (AFS)](#azure-resource-manager-template-for-afs-backup)
-  - [Stegvisa säkerhets kopieringar för SAP HANA databaser på virtuella Azure-datorer](#incremental-backups-for-sap-hana-databases)
+  - [Stegvisa säkerhets kopieringar för SAP HANA databaser på virtuella Azure-datorer (för hands version)](#incremental-backups-for-sap-hana-databases-in-preview)
 - September 2020
-  - [Backup Center](#backup-center)
-  - [Säkerhetskopiera Azure Database for PostgreSQL](#backup-azure-database-for-postgresql)
+  - [Säkerhets kopierings Center (i förhands granskning)](#backup-center-in-preview)
+  - [Säkerhets kopierings Azure Database for PostgreSQL (i förhands granskning)](#backup-azure-database-for-postgresql-in-preview)
   - [Säkerhets kopiering och återställning av selektiv disk](#selective-disk-backup-and-restore)
-  - [Återställning mellan regioner för SQL Server och SAP HANA databaser på virtuella Azure-datorer](#cross-region-restore-for-sql-server-and-sap-hana)
-  - [Stöd för säkerhets kopiering av virtuella datorer med upp till 32 diskar](#support-for-backup-of-vms-with-up-to-32-disks)
+  - [Återställning mellan regioner för SQL Server och SAP HANA databaser på virtuella Azure-datorer (för hands version)](#cross-region-restore-for-sql-server-and-sap-hana-in-preview)
+  - [Stöd för säkerhets kopiering av virtuella datorer med upp till 32 diskar (allmän tillgänglighet)](#support-for-backup-of-vms-with-up-to-32-disks)
   - [Förenklad konfigurations upplevelse för säkerhets kopiering för SQL i virtuella Azure-datorer](#simpler-backup-configuration-for-sql-in-azure-vms)
-  - [Säkerhetskopiera SAP HANA i RHEL Azure Virtual Machines](#backup-sap-hana-in-rhel-azure-virtual-machines)
-  - [ZRS (Zone redundant Storage) för säkerhets kopierings data](#zone-redundant-storage-zrs-for-backup-data)
+  - [Säkerhetskopiera SAP HANA i RHEL Azure Virtual Machines (för hands version)](#backup-sap-hana-in-rhel-azure-virtual-machines-in-preview)
+  - [ZRS (Zone redundant Storage) för säkerhets kopierings data (i för hands version)](#zone-redundant-storage-zrs-for-backup-data-in-preview)
   - [Mjuk borttagning för SQL Server och SAP HANA arbets belastningar i virtuella Azure-datorer](#soft-delete-for-sql-server-and-sap-hana-workloads)
 
 ## <a name="azure-disk-backup-in-preview"></a>Säkerhets kopiering av Azure-disk (i för hands version)
@@ -53,13 +53,13 @@ Azure Backup har nu stöd för att konfigurera säkerhets kopiering för befintl
 
 Mer information finns i [Azure Resource Manager mallar för Azure Backup](backup-rm-template-samples.md).
 
-## <a name="incremental-backups-for-sap-hana-databases"></a>Stegvisa säkerhets kopieringar för SAP HANA databaser
+## <a name="incremental-backups-for-sap-hana-databases-in-preview"></a>Stegvisa säkerhets kopieringar för SAP HANA databaser (för hands version)
 
 Azure Backup stöder nu stegvisa säkerhets kopieringar för SAP HANA databaser som finns på virtuella Azure-datorer. På så sätt kan du snabbare och mer kostnads effektivt säkerhetskopiera dina SAP HANA data.
 
 Mer information finns i [olika alternativ som är tillgängliga när du skapar en säkerhets kopierings princip](sap-hana-faq-backup-azure-vm.md#policy) och [hur du skapar en säkerhets kopierings princip för SAP HANA databaser](tutorial-backup-sap-hana-db.md#creating-a-backup-policy).
 
-## <a name="backup-center"></a>Backup Center
+## <a name="backup-center-in-preview"></a>Säkerhets kopierings Center (i förhands granskning)
 
 Azure Backup har aktiverat en ny inbyggd hanterings funktion för att hantera hela reserv fastigheten från en central konsol. Backup Center ger dig möjlighet att övervaka, hantera och optimera data skydd i stor skala på ett enhetligt sätt som överensstämmer med Azures inbyggda hanterings upplevelser.
 
@@ -67,7 +67,7 @@ Med Backup Center får du en sammanställd vy över dina lager över prenumerati
 
 Mer information finns i [Översikt över säkerhets kopierings Center](backup-center-overview.md).
 
-## <a name="backup-azure-database-for-postgresql"></a>Säkerhetskopiera Azure Database for PostgreSQL
+## <a name="backup-azure-database-for-postgresql-in-preview"></a>Säkerhets kopierings Azure Database for PostgreSQL (i förhands granskning)
 
 Azure Backup och Azure Database-tjänster har tillsammans skapat en lösning för säkerhets kopiering i företags klass för Azure PostgreSQL (nu i för hands version). Nu kan du uppfylla dina krav på data skydd och efterlevnad med en kundkontrollerad säkerhets kopierings princip som möjliggör kvarhållning av säkerhets kopior i upp till 10 år. Med detta har du detaljerad kontroll över hur du hanterar säkerhets kopierings-och återställnings åtgärderna på den enskilda databas nivån. På samma sätt kan du återställa över PostgreSQL-versioner eller till Blob Storage utan problem.
 
@@ -79,7 +79,7 @@ Azure Backup stöder säkerhets kopiering av alla diskar (operativ system och da
 
 Mer information finns i [selektiv säkerhets kopiering av diskar och återställning för virtuella Azure-datorer](selective-disk-backup-restore.md).
 
-## <a name="cross-region-restore-for-sql-server-and-sap-hana"></a>Återställning mellan regioner för SQL Server och SAP HANA
+## <a name="cross-region-restore-for-sql-server-and-sap-hana-in-preview"></a>Återställning mellan regioner för SQL Server och SAP HANA (i för hands version)
 
 Med introduktionen av återställning mellan regioner kan du nu initiera återställningar i en sekundär region på för att undvika problem med verkliga stillestånd i en primär region för din miljö. Detta gör att den sekundära regionen återställer helt kund kontrollerad. Azure Backup använder säkerhetskopierade data som replikeras till den sekundära regionen för sådana återställningar.
 
@@ -99,13 +99,13 @@ Det är nu ännu enklare att konfigurera säkerhets kopieringar för dina SQL Se
 
 Mer information finns i [säkerhetskopiera en SQL Server från fönstret VM](backup-sql-server-vm-from-vm-pane.md).
 
-## <a name="backup-sap-hana-in-rhel-azure-virtual-machines"></a>Säkerhetskopiera SAP HANA RHEL Azure Virtual Machines
+## <a name="backup-sap-hana-in-rhel-azure-virtual-machines-in-preview"></a>Säkerhetskopiera SAP HANA i RHEL Azure Virtual Machines (för hands version)
 
 Azure Backup är en inbyggd lösning för säkerhets kopiering för Azure och är BackInt certifierad av SAP. Azure Backup har nu lagt till stöd för Red Hat Enterprise Linux (RHEL), ett av de vanligaste Linux-operativsystemen som kör SAP HANA.
 
 Mer information finns i [support mat ris för säkerhets kopiering av SAP HANA databas](sap-hana-backup-support-matrix.md#scenario-support).
 
-## <a name="zone-redundant-storage-zrs-for-backup-data"></a>ZRS (Zone redundant Storage) för säkerhets kopierings data
+## <a name="zone-redundant-storage-zrs-for-backup-data-in-preview"></a>ZRS (Zone redundant Storage) för säkerhets kopierings data (i för hands version)
 
 Azure Storage ger en bra balans mellan hög prestanda, hög tillgänglighet och hög data återhämtning med de varierande alternativen för redundans. Med Azure Backup kan du utöka de här fördelarna med att säkerhetskopiera data även med alternativ för att lagra säkerhets kopior i lokalt redundant lagring (LRS) och Geo-redundant lagring (GRS). Nu finns det ytterligare hållbarhets alternativ med stöd för ZRS (Zone redundant Storage).
 

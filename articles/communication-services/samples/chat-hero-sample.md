@@ -9,12 +9,12 @@ ms.author: dademath
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: fc757e1310369c48de24c0cc9253c668ca27495c
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 80fdedb29f70c961431c987558a42d5fa46dfa7d
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888580"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98760798"
 ---
 # <a name="get-started-with-the-group-chat-hero-sample"></a>Kom igång med hjälte-exemplet för grupp Chat
 
@@ -58,7 +58,7 @@ Komponenter för den huvudsakliga Chat-skärmen:
 
 Nedan hittar du mer information om förutsättningar och steg för att konfigurera exemplet.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 - Skapa ett Azure-konto med en aktiv prenumeration. Mer information finns i [skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Node.js (8.11.2 och senare)](https://nodejs.org/en/download/)
@@ -111,6 +111,7 @@ Mer information finns i följande artiklar:
 
 - Lär dig mer om [chatt-koncept](../concepts/chat/concepts.md)
 - Bekanta dig med vårt [chatt klient bibliotek](../concepts/chat/sdk-features.md)
+- Granska exemplet [contoso with app](https://github.com/Azure-Samples/communication-services-contoso-med-app)
 
 ## <a name="additional-reading"></a>Mer att läsa
 

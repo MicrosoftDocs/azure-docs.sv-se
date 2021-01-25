@@ -3,12 +3,12 @@ title: Azure Functions förbruknings plan som värd
 description: Lär dig mer om hur du använder Azure Function förbruknings plan för att köra din kod i en miljö som skalas dynamiskt, men som du bara betalar för resurser som används under körningen.
 ms.date: 8/31/2020
 ms.topic: conceptual
-ms.openlocfilehash: ffb556ce48f18702e06fcdb02dda84f41ae5f906
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: d292a70a8dfaa4cebdb99f2bcb5420c8b8ab9cd8
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684699"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98760551"
 ---
 # <a name="azure-functions-consumption-plan-hosting"></a>Azure Functions förbruknings plan som värd
 
@@ -16,7 +16,7 @@ När du använder förbruknings planen läggs instanser av Azure Functions-värd
 
 ## <a name="benefits"></a>Fördelar
 
-Förbruknings planen skalas automatiskt, till och med under perioder med hög belastning. När du kör funktioner i en förbruknings plan debiteras du bara för beräknings resurser när funktionerna körs. I en förbrukningsplan får en funktions körningstid timeout efter en konfigurerbar tidsperiod.
+Förbruknings planen skalas automatiskt, även vid perioder med hög belastning. När du kör funktioner i en förbruknings plan debiteras du bara för beräknings resurser när funktionerna körs. I en förbrukningsplan får en funktions körningstid timeout efter en konfigurerbar tidsperiod.
 
 En jämförelse av förbruknings planen för den andra planen och värd typerna finns i [funktions skala och värd alternativ](functions-scale.md).
 

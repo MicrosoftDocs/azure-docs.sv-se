@@ -16,21 +16,18 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eadb20bc570545356508d82c05e1746424a14b71
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 59cc50274b291c23aeec4620ec7a09312cc0c1fb
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97504397"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762259"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quickstart"></a>Azure Active Directory sömlös enkel inloggning: snabb start
 
 ## <a name="deploy-seamless-single-sign-on"></a>Distribuera sömlösa enkla Sign-On
 
 Azure Active Directory (Azure AD) sömlös enkel Sign-On (sömlös SSO) loggar automatiskt in användare när de befinner sig på sina företags datorer som är anslutna till företagets nätverk. Sömlös SSO ger dina användare enkel åtkomst till dina molnbaserade program utan att behöva ytterligare lokala komponenter.
-
-> [!NOTE]
-> Den här artikeln innehåller referenser till termen *vitlista*, en term som Microsoft inte längre använder. När termen tas bort från program varan tar vi bort det från den här artikeln.
 
 Följ dessa steg om du vill distribuera sömlös SSO.
 
@@ -40,7 +37,7 @@ Se till att följande krav är uppfyllda:
 
 * **Konfigurera din Azure AD Connect Server**: om du använder [direktautentisering](how-to-connect-pta.md) som inloggnings metod krävs ingen ytterligare krav kontroll. Om du använder [Password-hash-synkronisering](how-to-connect-password-hash-synchronization.md) som inloggnings metod och om det finns en brand vägg mellan Azure AD Connect och Azure AD, kontrollerar du att:
    - Du använder version 1.1.644.0 eller senare av Azure AD Connect. 
-   - Om din brand vägg eller proxy tillåter kan du lägga till anslutningarna till listan över tillåtna **\* Msappproxy.net** -URL: er via port 443. Om inte, Tillåt åtkomst till [Azure datacenter IP-intervall](https://www.microsoft.com/download/details.aspx?id=41653)som uppdateras varje vecka. Den här förutsättningen gäller endast när du aktiverar funktionen. Det krävs inte för faktiska användar inloggningar.
+   - Om din brand vägg eller proxy tillåter kan du lägga till anslutningarna till listan över tillåtna **\* Msappproxy.net** -URL: er via port 443. Om du behöver en viss URL i stället för ett jokertecken för proxy-konfigurationen kan du konfigurera **tenantid.registration.msappproxy.net**, där TENANTID är GUID för den klient där du konfigurerar funktionen. Om URL-baserade proxy-undantag inte är möjliga i din organisation, kan du i stället tillåta åtkomst till [Azure Data Center IP-intervall](https://www.microsoft.com/download/details.aspx?id=41653), som uppdateras varje vecka. Den här förutsättningen gäller endast när du aktiverar funktionen. Det krävs inte för faktiska användar inloggningar.
 
     >[!NOTE]
     >Azure AD Connect-versionerna 1.1.557.0, 1.1.558.0, 1.1.561.0 och 1.1.614.0 har ett problem som rör hash-synkronisering av lösen ord. Om du _inte_ tänker använda Lösenordssynkronisering i samband med direktautentisering kan du läsa mer i [Azure AD Connect viktig information](./reference-connect-version-history.md) .

@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 09d793f3d8ed544a386a362677f24be6d18673d7
-ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
+ms.openlocfilehash: 27a97ceb2ca9a7b58df7200930e4e47d89c9ae89
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96748744"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762209"
 ---
 # <a name="workflow"></a>Arbetsflöde
 
@@ -38,6 +38,18 @@ Här följer allmänna steg i ett typiskt SGX-enklaven för attestering av arbet
 
 > [!Note]
 > När du skickar begäran om attestering i [2018-09-01-Preview API-](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/attestation/data-plane/Microsoft.Attestation/stable/2018-09-01-preview) versionen måste klienten skicka bevis till Azure-attestering tillsammans med Azure AD-åtkomsttoken.
+
+## <a name="trusted-platform-module-tpm-enclave-validation-work-flow"></a>Trusted Platform Module (TPM) enklaven för validering av arbets flöde
+
+Här följer de allmänna stegen i ett typiskt arbets flöde för TPM-enklaven attestering (med Azure-attestering):
+
+1.  Vid start av enhet/plattform, olika start belastningar och start tjänster mäter händelser som backas upp av TPM och lagras på ett säkert sätt (TCG-logg).
+2.  Klienten samlar in TCG-loggarna från enhets-och TPM-offerten, som agerar som bevis för attestering.
+3.  Klienten har en URI som refererar till en instans av Azure-attestering. Klienten skickar bevis till Azure-attestering. Exakt den information som skickas till providern beror på plattformen.
+4.  Azure-attesteringen verifierar den inskickade informationen och utvärderar den mot en konfigurerad princip. Om verifieringen lyckas utfärdar Azure-attestering en attesterings-token och returnerar den till klienten. Om det här steget Miss lyckas rapporterar Azure-attestering ett fel till klienten. Kommunikationen mellan klienten och attesterings tjänsten styrs av TPM-protokollet för Azure-attestering.
+5.  Klienten skickar sedan attesterings-token till förlitande part. Den förlitande parten anropar den offentliga nyckelns metadata-slutpunkt för Azure-attestering för att hämta signerings certifikat. Den förlitande parten verifierar sedan signaturen för attesterings-token och säkerställer plattformarna pålitlighet.
+
+![Flöde för TPM-validering](./media/tpm-validation-flow.png)
 
 ## <a name="next-steps"></a>Nästa steg
 - [Så här skapar och signerar du en policy för attestering](author-sign-policy.md)

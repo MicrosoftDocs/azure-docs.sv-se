@@ -1,17 +1,17 @@
 ---
 title: Stöd för VMware-utvärdering i Azure Migrate
 description: Läs mer om stöd för utvärdering av virtuella VMware-datorer med Azure Migrate Server-utvärdering.
-author: rashi-ms
-ms.author: rajosh
+author: vineetvikram
+ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 11/10/2020
-ms.openlocfilehash: 02757477ca4a07f4526df0339291122eda57c9b5
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: ce8a1d77ae74a3946174ef58abf9add2e81eb90b
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567426"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98763004"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>Support mat ris för VMware-utvärdering 
 
@@ -37,7 +37,7 @@ Om du vill migrera virtuella VMware-datorer till Azure läser du [matrisen migra
 **VMware** | **Information**
 --- | ---
 **vCenter Server** | Datorer som du vill identifiera och utvärdera måste hanteras av vCenter Server version 5,5, 6,0, 6,5, 6,7 eller 7,0.<br/><br/> Det finns för närvarande inte stöd för att identifiera virtuella VMware-datorer genom att tillhandahålla ESXi-värd information i installationen.
-**Behörigheter** | Server utvärderingen behöver ett vCenter Server skrivskyddat konto för identifiering och utvärdering.<br/><br/> Om du vill göra en program identifiering eller beroende visualisering måste kontot ha behörighet att aktivera för **Virtual Machines**  >  **gäst åtgärder**.
+**Behörigheter** | Server utvärderingen behöver ett vCenter Server skrivskyddat konto för identifiering och utvärdering.<br/><br/> Om du vill göra en program identifiering eller beroende visualisering måste kontot ha behörighet som är aktiverat för **Virtual Machines**  >  **gäst åtgärder**.
 
 ## <a name="vm-requirements"></a>Krav för virtuell dator
 **VMware** | **Information**

@@ -4,17 +4,17 @@ description: Den här artikeln beskriver hur du felsöker och löser problem med
 services: automation
 author: mgoedtel
 ms.author: magoedte
-ms.date: 12/03/2019
+ms.date: 01/25/2021
 ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: f1351b29a0102a374b75d832687d66c3b5572c75
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a7ac5e8324d9979b17ee93d16b3e007fe7916a8a
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83680870"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762633"
 ---
 # <a name="troubleshoot-linux-update-agent-issues"></a>Felsöka problem med uppdateringsagenten i Linux
 
@@ -27,7 +27,7 @@ Det kan finnas många orsaker till att datorn inte visas som klar (felfri) i Upp
 > [!NOTE]
 > Det kan finnas en liten fördröjning mellan det Azure Portal visar och datorns aktuella tillstånd.
 
-Den här artikeln beskriver hur du kör fel sökaren för Azure-datorer från Azure Portal och datorer som inte är Azure-datorer i [scenariot offline](#troubleshoot-offline). 
+Den här artikeln beskriver hur du kör fel sökaren för Azure-datorer från Azure Portal och datorer som inte är Azure-datorer i [scenariot offline](#troubleshoot-offline).
 
 > [!NOTE]
 > Fel söknings skriptet dirigerar för närvarande inte trafik via en proxyserver om en sådan har kon figurer ATS.
@@ -55,7 +55,7 @@ När kontrollerna är klara returneras resultatet i fönstret. Kryss avsnitten i
 
 Operativ system kontrollen verifierar om Hybrid Runbook Worker kör något av följande operativ system.
 
-|Operativsystem  |Obs!  |
+|Operativsystem  |Kommentarer  |
 |---------|---------|
 |CentOS 6 (x86/x64) och 7 (x64)      | Linux-agenter måste ha åtkomst till en uppdateringslagringsplats. Klassificerings baserad uppdatering kräver "yum" för att returnera säkerhets data, vilket CentOS inte har gjort.         |
 |Red Hat Enterprise 6 (x86/x64) och 7 (x64)     | Linux-agenter måste ha åtkomst till en uppdateringslagringsplats.        |
@@ -89,7 +89,6 @@ Uppdateringshantering laddar ned Hybrid Runbook Worker paket från slut punkten 
 ### <a name="hybrid-runbook-worker-status"></a>Hybrid Runbook Worker status
 
 Den här kontrollen säkerställer att Hybrid Runbook Worker körs på datorn. Processerna i exemplet nedan bör finnas om Hybrid Runbook Worker körs på rätt sätt.
-
 
 ```bash
 nxautom+   8567      1  0 14:45 ?        00:00:00 python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/worker/main.py /var/opt/microsoft/omsagent/state/automationworker/oms.conf rworkspace:<workspaceId> <Linux hybrid worker version>
@@ -129,7 +128,7 @@ Den här kontrollen kontrollerar att datorn har åtkomst till de slut punkter so
 
 ## <a name="troubleshoot-offline"></a><a name="troubleshoot-offline"></a>Felsöka offline
 
-Du kan använda fel sökaren offline på en Hybrid Runbook Worker genom att köra skriptet lokalt. Python-skriptet [update_mgmt_health_check. py](https://gallery.technet.microsoft.com/scriptcenter/Troubleshooting-utility-3bcbefe6)finns i Script Center. Ett exempel på utdata från det här skriptet visas i följande exempel:
+Du kan använda fel sökaren offline på en Hybrid Runbook Worker genom att köra skriptet lokalt. Du kan hitta python-skriptet [UM_Linux_Troubleshooter_Offline. py](https://github.com/Azure/updatemanagement/blob/main/UM_Linux_Troubleshooter_Offline.py)i GitHub. Ett exempel på utdata från det här skriptet visas i följande exempel:
 
 ```output
 Debug: Machine Information:   Static hostname: LinuxVM2

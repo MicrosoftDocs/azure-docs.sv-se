@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 04/12/2020
-ms.openlocfilehash: a4a7b7a4008d5cc4636e2d533c225a618f35af05
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: e43c5fb36c5395e12fd0b9c2c67b787a1137f5d0
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611193"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98761989"
 ---
 # <a name="troubleshooting-problems-in-itsm-connector"></a>Felsöka problem med anslutningsprogram för hantering av IT-tjänster (ITSM)
 
@@ -43,24 +43,23 @@ Om du använder Tjänstkarta kan du Visa Service Desk-objekten som skapats i ITS
 
 ![Skärm bild som visar Log Analytics skärmen.](media/itsmc-overview/itsmc-overview-integrated-solutions.png)
 
-## <a name="troubleshoot-itsm-connections"></a>Felsöka ITSM-anslutningar
-
-- Gör så här om en anslutning inte kan ansluta till ITSM-systemet och du får ett **fel meddelande när du sparar anslutnings** meddelandet:
-   - För ServiceNow-, Cherwell-och upphandlings anslutningar:  
-     - Kontrol lera att du har angett användar namn, lösen ord, klient-ID och klient hemlighet korrekt för varje anslutning.  
-     - Se till att du har tillräcklig behörighet i motsvarande ITSM-produkt för att upprätta anslutningen.  
-   - För Service Manager anslutningar:  
-     - Se till att webbappen har distribuerats och att hybrid anslutningen har skapats. Om du vill kontrol lera att anslutningen har upprättats med den lokala Service Manager datorn går du till webbappens URL enligt beskrivningen i dokumentationen för att skapa en [hybrid anslutning](./itsmc-connections-scsm.md#configure-the-hybrid-connection).  
-
-- Om Log Analytics-aviseringar för brand men arbets objekt inte skapas i ITSM-produkten, om konfigurations objekt inte skapas/länkas till arbets objekt, eller för annan information, se följande resurser:
-   -  ITSMC: lösningen visar en [Sammanfattning av anslutningar](itsmc-dashboard.md), arbets objekt, datorer med mera. Välj den panel som har etiketten **kopplings status** . Då kommer du att **Logga sökningen** med den relevanta frågan. Titta på logg poster med en `LogType_S` av `ERROR` för mer information.
-   Du kan se information om meddelandena i tabellen – [här](itsmc-dashboard-errors.md).
-   - Sidan **loggs ökning** : Visa fel och relaterad information direkt med hjälp av frågan `*ServiceDeskLog_CL*` .
-
 ## <a name="common-symptoms---how-should-it-be-resolved"></a>Vanliga symtom – hur ska det lösas?
 
 Listan nedan innehåller vanliga symtom och hur ska den lösas:
 
+* **Symptom**: om en anslutning Miss lyckas med att ansluta till ITSM-systemet och du får ett **fel när du sparar anslutnings** meddelandet.
+
+    **Orsak**: orsaken kan vara något av alternativen:
+    * Felaktiga autentiseringsuppgifter
+     * Otillräcklig behörighet
+     * Webbappen bör distribueras korrekt
+
+    **Lösning**:
+    * För ServiceNow-, Cherwell-och upphandlings anslutningar:
+        * Kontrol lera att du har angett användar namn, lösen ord, klient-ID och klient hemlighet korrekt för varje anslutning.  
+        * För ServiceNow: kontrol lera att du har tillräcklig behörighet i motsvarande ITSM-produkt för att ansluta till den [angivna](itsmc-connections-servicenow.md#install-the-user-app-and-create-the-user-role).
+  * För Service Manager anslutningar:  
+      * Se till att webbappen har distribuerats och att hybrid anslutningen har skapats. Om du vill kontrol lera att anslutningen har upprättats med den lokala Service Manager datorn går du till webbappens URL enligt beskrivningen i dokumentationen för att skapa en [hybrid anslutning](./itsmc-connections-scsm.md#configure-the-hybrid-connection).  
 * **Symptom**: dubbla arbets objekt skapas
 
     **Orsak**: orsaken kan vara något av de två alternativen:

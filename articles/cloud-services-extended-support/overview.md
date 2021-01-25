@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: cf7c4b881697b664403d8c817c3b9e48fb48944d
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.openlocfilehash: 969f60cd92e8c1cbe93f1646cccd08c942ad9923
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98746772"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762836"
 ---
 # <a name="about-azure-cloud-services-extended-support"></a>Om Azure Cloud Services (utökad support)
 
@@ -27,9 +27,11 @@ Med den här ändringen kommer den Azure Service Manager-baserade distributions 
 
 ## <a name="what-does-not-change"></a>Vad ändras inte 
 - Du skapar koden, definierar konfigurationerna och distribuerar den till Azure. Azure konfigurerar beräknings miljön, kör koden och övervakar och underhåller den åt dig.
-- Cloud Services (utökad support) stöder också två typer av roller, [Web och Worker](../cloud-services/cloud-services-choose-me.md). 
-- De tre komponenterna, tjänst definitionen (. csdef), tjänst konfigurationen (. cscfg) och ett service paket (. cspkg) för en moln tjänst överförs och det sker ingen ändring i deras [format](cloud-services-model-and-package.md). 
-- Inga ändringar krävs för körnings kod eftersom data planet är samma och kontroll planet ändras bara.  
+- Cloud Services (utökad support) stöder också två typer av roller, [Web och Worker](../cloud-services/cloud-services-choose-me.md). Det finns inga ändringar i design, arkitektur eller komponenter för webb-och arbets roller. 
+- De tre komponenterna i en moln tjänst, tjänst definitionen (. csdef), tjänst konfigurationen (. cscfg) och tjänst paketet (. cspkg) överförs och det sker ingen ändring i deras [format](cloud-services-model-and-package.md). 
+- Inga ändringar krävs för körnings kod eftersom data planet är samma och kontroll planet ändras bara. 
+- Azure-gäst-versioner och associerade uppdateringar justeras med Cloud Services (klassisk)
+- Underliggande uppdaterings process med avseende på uppdaterings domäner, hur uppgradering fortsätter, återställning och tillåten tjänst ändringar under en uppdatering ändras inte
 
 ## <a name="changes-in-deployment-model"></a>Ändringar i distributions modellen
 

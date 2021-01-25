@@ -6,12 +6,12 @@ ms.author: alkemper
 ms.date: 05/28/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: 588efd692119c9e2831e16c1ce26c2759898a1e5
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 1c290032f7a33079b560d3c4cc1fcb9526e70331
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97607372"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762156"
 ---
 # <a name="sync-your-github-repository-to-app-configuration"></a>Synkronisera din GitHub-lagringsplats med app-konfigurationen
 
@@ -20,9 +20,9 @@ Team som vill fortsätta använda sina befintliga käll kontroll metoder kan anv
 &nbsp;&nbsp;&nbsp;&nbsp;• Uppdatera konfigurationen utan att distribuera om hela appen <br>
 &nbsp;&nbsp;&nbsp;&nbsp;• Integrering med tjänster som Azure App Service och funktioner. 
 
-Ett [arbets flöde](https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/introduction-to-github-actions#the-components-of-github-actions) för GitHub-åtgärder definierar en automatiserad process i en GitHub-lagringsplats. Åtgärden *Azure App Sync-konfiguration* utlöser uppdateringar till en konfigurations instans för appar när ändringar görs i käll lagrings platsen. Den använder en YAML-fil (. yml) som finns i `/.github/workflows/` sökvägen till lagrings platsen för att definiera stegen och parametrarna. Du kan utlösa konfigurations uppdateringar när du skickar, granska eller förgrena appars konfigurationsfiler precis som du gör med app-kod.
+Ett [arbets flöde](https://docs.github.com/en/actions/learn-github-actions/introduction-to-github-actions#the-components-of-github-actions) för GitHub-åtgärder definierar en automatiserad process i en GitHub-lagringsplats. Åtgärden *Azure App Sync-konfiguration* utlöser uppdateringar till en konfigurations instans för appar när ändringar görs i käll lagrings platsen. Den använder en YAML-fil (. yml) som finns i `/.github/workflows/` sökvägen till lagrings platsen för att definiera stegen och parametrarna. Du kan utlösa konfigurations uppdateringar när du skickar, granska eller förgrena appars konfigurationsfiler precis som du gör med app-kod.
 
-GitHub- [dokumentationen](https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/introduction-to-github-actions) innehåller djupgående visning av GitHub-arbetsflöden och åtgärder. 
+GitHub- [dokumentationen](https://docs.github.com/en/actions/learn-github-actions/introduction-to-github-actions) innehåller djupgående visning av GitHub-arbetsflöden och åtgärder. 
 
 ## <a name="enable-github-actions-in-your-repository"></a>Aktivera GitHub-åtgärder i din lagrings plats
 Börja använda den här GitHub-åtgärden genom att gå till din lagrings plats och välja fliken **åtgärder** . Välj **nytt arbets flöde** och skapa sedan **ett arbets flöde själv**. Slutligen söker du efter "Azure App konfigurations synkronisering" på Marketplace.
@@ -35,7 +35,7 @@ Börja använda den här GitHub-åtgärden genom att gå till din lagrings plats
 ## <a name="sync-configuration-files-after-a-push"></a>Synkronisera konfigurationsfiler efter en push
 Den här åtgärden synkroniserar Azure App konfigurationsfiler när en ändring skickas till `appsettings.json` . När en utvecklare skickar en ändring till `appsettings.json` , uppdaterar synkroniseringen av app Configuration-instansen med de nya värdena.
 
-I det första avsnittet av det här arbets flödet anges att åtgärden utlöses *på* en *push* som innehåller `appsettings.json` till *huvud* grenen. I det andra avsnittet visas jobben som körs när åtgärden har Aktiver ATS. Åtgärden kontrollerar de relevanta filerna och uppdaterar konfigurations instansen för appen med hjälp av anslutnings strängen som lagras som en hemlighet i lagrings platsen.  Mer information om hur du använder hemligheter i GitHub finns i [GitHub-artikeln](https://docs.github.com/en/free-pro-team@latest/actions/reference/encrypted-secrets) om hur du skapar och använder krypterade hemligheter.
+I det första avsnittet av det här arbets flödet anges att åtgärden utlöses *på* en *push* som innehåller `appsettings.json` till *huvud* grenen. I det andra avsnittet visas jobben som körs när åtgärden har Aktiver ATS. Åtgärden kontrollerar de relevanta filerna och uppdaterar konfigurations instansen för appen med hjälp av anslutnings strängen som lagras som en hemlighet i lagrings platsen.  Mer information om hur du använder hemligheter i GitHub finns i [GitHub-artikeln](https://docs.github.com/en/actions/reference/encrypted-secrets) om hur du skapar och använder krypterade hemligheter.
 
 ```json
 on: 
@@ -300,7 +300,7 @@ Med ett djup på 2 returnerar exemplet ovan följande nyckel/värde-par:
 | Objekt: inre | {"InnerKey":"InnerValue"} |
 
 ## <a name="understand-action-inputs"></a>Förstå åtgärds inmatningar
-Indataparametrar anger data som används av åtgärden under körning.  Följande tabell innehåller indataparametrar som har godkänts av app Configuration Sync och de förväntade värdena för var och en.  Mer information om åtgärds inmatningar för GitHub-åtgärder finns i GitHub- [dokumentationen](https://docs.github.com/en/free-pro-team@latest/actions/creating-actions/metadata-syntax-for-github-actions#inputs).
+Indataparametrar anger data som används av åtgärden under körning.  Följande tabell innehåller indataparametrar som har godkänts av app Configuration Sync och de förväntade värdena för var och en.  Mer information om åtgärds inmatningar för GitHub-åtgärder finns i GitHub- [dokumentationen](https://docs.github.com/en/actions/creating-actions/metadata-syntax-for-github-actions#inputs).
 
 > [!Note]
 > Indatamängds-ID: n är Skift läges okänsliga.
@@ -308,15 +308,15 @@ Indataparametrar anger data som används av åtgärden under körning.  Följand
 
 | Inmatat namn | Obligatoriskt? | Värde |
 |----|----|----|
-| configurationFile | Yes | Relativ sökväg till konfigurations filen i lagrings platsen.  BLOB mönster stöds och kan innehålla flera filer. |
-| format | Yes | Fil format för konfigurations filen.  Giltiga format är: JSON, YAML, Properties. |
-| Begär | Yes | Anslutnings sträng för app Configuration-instansen. Anslutnings strängen ska lagras som en hemlighet i GitHub-lagringsplatsen och endast det hemliga namnet ska användas i arbets flödet. |
-| brytning | Yes | Avgränsning som används vid förenkling av konfigurations filen till nyckel/värde-par.  Giltiga värden är:. , ; : - _ __ / |
-| protokollprefixet | No | Prefix som ska läggas till i början av nycklar. |
-| etikett | No | Etikett som används vid inställning av nyckel/värde-par. Om inget anges används en null-etikett. |
-| begränsade | No | Ett booleskt värde som anger om strikt läge är aktiverat. Standardvärdet är false. |
-| djuplodande | No | Högsta djup för att förenkla konfigurations filen.  Djupet måste vara ett positivt tal.  Standardvärdet har inget max djup. |
-| tags | No | Anger taggen som angetts för nyckel/värde-par.  Det förväntade formatet är en stringified form av ett JSON-objekt av följande form: {[propertyName: sträng]: String;} Varje egenskaps namn-värdet blir en tagg. |
+| configurationFile | Ja | Relativ sökväg till konfigurations filen i lagrings platsen.  BLOB mönster stöds och kan innehålla flera filer. |
+| format | Ja | Fil format för konfigurations filen.  Giltiga format är: JSON, YAML, Properties. |
+| Begär | Ja | Anslutnings sträng för app Configuration-instansen. Anslutnings strängen ska lagras som en hemlighet i GitHub-lagringsplatsen och endast det hemliga namnet ska användas i arbets flödet. |
+| brytning | Ja | Avgränsning som används vid förenkling av konfigurations filen till nyckel/värde-par.  Giltiga värden är:. , ; : - _ __ / |
+| protokollprefixet | Nej | Prefix som ska läggas till i början av nycklar. |
+| etikett | Nej | Etikett som används vid inställning av nyckel/värde-par. Om inget anges används en null-etikett. |
+| begränsade | Nej | Ett booleskt värde som anger om strikt läge är aktiverat. Standardvärdet är false. |
+| djuplodande | Nej | Högsta djup för att förenkla konfigurations filen.  Djupet måste vara ett positivt tal.  Standardvärdet har inget max djup. |
+| tags | Nej | Anger taggen som angetts för nyckel/värde-par.  Det förväntade formatet är en stringified form av ett JSON-objekt av följande form: {[propertyName: sträng]: String;} Varje egenskaps namn-värdet blir en tagg. |
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -4,16 +4,16 @@ description: Konfigurera en GitHub-åtgärd som automatiserar stegen för att by
 ms.topic: article
 ms.date: 08/20/2020
 ms.custom: github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: c6c030e05953dc98c82c573704018c3b482d2fea
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: 1409d8fc1430cd9bf67bd735d9826a74979d495b
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97814286"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762958"
 ---
 # <a name="configure-a-github-action-to-create-a-container-instance"></a>Konfigurera en GitHub-åtgärd för att skapa en containerinstans
 
-[GitHub-åtgärder](https://docs.github.com/en/free-pro-team@latest/actions) är en uppsättning funktioner i GitHub för att automatisera dina arbets flöden för program utveckling på samma plats som du lagrar kod och samarbetar om pull-begäranden och-problem.
+[GitHub-åtgärder](https://docs.github.com/en/actions) är en uppsättning funktioner i GitHub för att automatisera dina arbets flöden för program utveckling på samma plats som du lagrar kod och samarbetar om pull-begäranden och-problem.
 
 Använd åtgärden [distribuera för att Azure Container instances](https://github.com/azure/aci-deploy) GitHub för att automatisera distributionen av en enskild behållare till Azure Container instances. Med åtgärden kan du ange egenskaper för en behållar instans som liknar dem i kommandot [AZ container Create][az-container-create] .
 
@@ -31,7 +31,7 @@ Den här artikeln visar två sätt att konfigurera arbets flödet:
 > [!IMPORTANT]
 > GitHub-åtgärden för Azure Container Instances är för närvarande en för hands version. Förhandsversioner är tillgängliga för dig under förutsättning att du godkänner de [kompletterande användningsvillkoren][terms-of-use]. Vissa aspekter av funktionen kan ändras innan den är allmänt tillgänglig (GA).
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 * **GitHub-konto** – skapa ett konto på https://github.com om du inte redan har ett.
 * **Azure CLI** – du kan använda Azure Cloud Shell eller en lokal installation av Azure CLI för att slutföra Azure CLI-stegen. Om du behöver installera eller uppgradera kan du läsa [Installera Azure CLI][azure-cli-install].
@@ -177,7 +177,7 @@ När du har bekräftat arbets flödes filen utlöses arbets flödet. Gå till **
 
 ![Visa arbets flödes förlopp](./media/container-instances-github-action/github-action-progress.png)
 
-Se [Visa arbets flödets körnings historik](https://docs.github.com/en/free-pro-team@latest/actions/managing-workflow-runs/viewing-workflow-run-history) för information om hur du visar status och resultat för varje steg i arbets flödet. Om arbets flödet inte slutförs, se [Visa loggar för att diagnostisera fel](https://docs.github.com/en/free-pro-team@latest/actions/managing-workflow-runs/using-workflow-run-logs#viewing-logs-to-diagnose-failures).
+Se [Visa arbets flödets körnings historik](https://docs.github.com/en/actions/managing-workflow-runs/viewing-workflow-run-history) för information om hur du visar status och resultat för varje steg i arbets flödet. Om arbets flödet inte slutförs, se [Visa loggar för att diagnostisera fel](https://docs.github.com/en/actions/managing-workflow-runs/using-workflow-run-logs#viewing-logs-to-diagnose-failures).
 
 När arbets flödet har slutförts hämtar du information om behållar instansen med namnet *ACI-fråga* genom att köra kommandot [AZ container show][az-container-show] . Ersätt namnet på din resurs grupp: 
 
@@ -237,7 +237,7 @@ az container app up \
 
 ### <a name="command-progress"></a>Kommando förlopp
 
-* När du uppmanas till det anger du dina GitHub-autentiseringsuppgifter eller anger en GitHub-Pat ( [personal Access token](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token) ) som har *lagrings platsen* och *användar* omfång för att autentisera med ditt GitHub-konto. Om du anger GitHub-autentiseringsuppgifter skapar kommandot en PAT åt dig. Följ ytterligare prompter för att konfigurera arbets flödet.
+* När du uppmanas till det anger du dina GitHub-autentiseringsuppgifter eller anger en GitHub-Pat ( [personal Access token](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token) ) som har *lagrings platsen* och *användar* omfång för att autentisera med ditt GitHub-konto. Om du anger GitHub-autentiseringsuppgifter skapar kommandot en PAT åt dig. Följ ytterligare prompter för att konfigurera arbets flödet.
 
 * Kommandot skapar lagrings platsen hemligheter för arbets flödet:
 
@@ -258,7 +258,7 @@ Workflow succeeded
 Your app is deployed at:  http://acr-build-helloworld-node.eastus.azurecontainer.io:8080/
 ```
 
-Information om arbets flödes status och resultat för varje steg i GitHub-ANVÄNDARGRÄNSSNITTET finns i [Visa arbets flödets körnings historik](https://docs.github.com/en/free-pro-team@latest/actions/managing-workflow-runs/viewing-workflow-run-history).
+Information om arbets flödes status och resultat för varje steg i GitHub-ANVÄNDARGRÄNSSNITTET finns i [Visa arbets flödets körnings historik](https://docs.github.com/en/actions/managing-workflow-runs/viewing-workflow-run-history).
 
 ### <a name="validate-workflow"></a>Verifiera arbets flöde
 

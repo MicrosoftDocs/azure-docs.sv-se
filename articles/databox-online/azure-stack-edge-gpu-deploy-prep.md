@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 01/05/2021
+ms.date: 01/22/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: e8b58069dc41d5272c67edcb1f05ebd9f1bc5ad4
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 277b1a46ad480be8313f6971dc600d3dd911c09d
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97935616"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762358"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro-with-gpu"></a>Självstudie: förbereda för att distribuera Azure Stack Edge Pro med GPU 
 
@@ -157,18 +157,18 @@ För att skapa en Azure Stack Edge-resurs, utför följande steg i Azure Portal.
 
 11. Välj **Skapa**.
 
-Det tar några minuter att skapa resursen. En MSI skapas också som låter Azure Stack Edge-enheten kommunicera med resurs leverantören i Azure.
+    Det tar några minuter att skapa resursen. En MSI skapas också som låter Azure Stack Edge-enheten kommunicera med resurs leverantören i Azure.
 
-När resursen har skapats och distribuerats får du ett meddelande. Välj **Gå till resurs**.
+    När resursen har skapats och distribuerats får du ett meddelande. Välj **Gå till resurs**.
 
-![Gå till Azure Stack Edge Pro-resursen](media/azure-stack-edge-gpu-deploy-prep/azure-stack-edge-resource-1.png)
+    ![Gå till Azure Stack Edge Pro-resursen](media/azure-stack-edge-gpu-deploy-prep/azure-stack-edge-resource-1.png)
 
 När ordern har placerats, granskar Microsoft ordern och når dig (via e-post) med leverans information.
 
 <!--![Notification for review of the Azure Stack Edge Pro order](media/azure-stack-edge-gpu-deploy-prep/azure-stack-edge-resource-2.png)-->
 
 > [!NOTE]
->Om du vill skapa flera beställningar samtidigt eller klona en befintlig order kan du använda [skripten i Azure-exempel](https://github.com/Azure-Samples/azure-stack-edge-order). Mer information finns i README-filen.
+> Om du vill skapa flera beställningar samtidigt eller klona en befintlig order kan du använda [skripten i Azure-exempel](https://github.com/Azure-Samples/azure-stack-edge-order). Mer information finns i README-filen.
 
 Om du stöter på problem under beställnings processen går du till [Felsöka beställnings problem](azure-stack-edge-troubleshoot-ordering.md).
 

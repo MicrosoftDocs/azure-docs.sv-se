@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 01/06/2021
+ms.date: 01/22/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: aabc141666fe5c9fb52a3eac5ee1866f390e4551
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 07b526d443b5f1b41bc6f811b7cccc0fbc6165ee
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968506"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98761715"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro"></a>Självstudie: Förbered för att distribuera Azure Stack Edge Pro  
 
@@ -118,14 +118,14 @@ För att skapa en Azure Stack Edge-resurs, utför följande steg i Azure Portal.
 
     |Inställning  |Värde  |
     |---------|---------|
-    |Namn   | Ett eget namn som identifierar resursen.<br>Namnet innehåller mellan 2 och 50 tecken som består av bokstäver, siffror och bindestreck.<br> Namnet börjar och slutar med en bokstav eller en siffra.        |
+    |Namn   | Ett eget namn som identifierar resursen.<br>Namnet innehåller mellan 2 och 50 tecken, inklusive bokstäver, siffror och bindestreck.<br> Namnet börjar och slutar med en bokstav eller en siffra.        |
     |Region     |För en lista över alla regioner där Azure Stack Edge-resursen är tillgänglig, se [Azure-produkter tillgängliga per region](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Om du använder Azure Government är alla myndigheter tillgängliga som de visas i Azure- [regionerna](https://azure.microsoft.com/global-infrastructure/regions/).<br> Välj den plats som är närmast den geografiska region där du vill distribuera enheten.|
 
     ![Projekt-och instans information](media/azure-stack-edge-deploy-prep/data-box-edge-resource.png)
 
 5. Välj **Nästa: leverans adress**.
 
-    - Om du redan har en enhet väljer du kombinations rutan för **Jag har en Azure Stack Edge Pro-enhet**.
+    - Om du redan har en enhet väljer du kombinations rutan för **Jag har en Azure Stack Edge-enhet**.
     - Om det här är den nya enhet som du beställer anger du kontakt namn, företag, adress för att leverera enheten och kontakt information.
 
     ![Leverans adress för ny enhet](media/azure-stack-edge-deploy-prep/data-box-edge-resource1.png)
@@ -138,13 +138,17 @@ För att skapa en Azure Stack Edge-resurs, utför följande steg i Azure Portal.
 
 8. Välj **Skapa**.
 
-Det tar några minuter att skapa resursen. När resursen har skapats och distribuerats får du ett meddelande. Välj **Gå till resurs**.
+   Det tar några minuter att skapa resursen. När resursen har skapats och distribuerats får du ett meddelande. Välj **Gå till resurs**.
 
-![Gå till Azure Stack Edge-resursen](media/azure-stack-edge-deploy-prep/data-box-edge-resource3.png)
+   ![Gå till Azure Stack Edge-resursen](media/azure-stack-edge-deploy-prep/data-box-edge-resource3.png)
 
 När ordern har placerats, granskar Microsoft ordern och når dig (via e-post) med leverans information.
 
 ![Meddelande om granskning av Azure Stack Edge Pro-beställning](media/azure-stack-edge-deploy-prep/data-box-edge-resource4.png)
+
+
+> [!NOTE]
+> Om du vill skapa flera beställningar samtidigt eller klona en befintlig order kan du använda [skripten i Azure-exempel](https://github.com/Azure-Samples/azure-stack-edge-order). Mer information finns i README-filen.
 
 ## <a name="get-the-activation-key"></a>Hämta aktiveringsnyckeln
 

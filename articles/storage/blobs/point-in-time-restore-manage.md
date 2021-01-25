@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/28/2020
+ms.date: 01/15/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 7bd85c60025475e8208847a12ccc2729743a975a
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: f550f96a8bd2e402556089061604654b11d47844
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97803926"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762896"
 ---
 # <a name="perform-a-point-in-time-restore-on-block-blob-data"></a>Utföra en tidpunkts återställning på block BLOB-data
 
@@ -23,7 +23,7 @@ Du kan använda tidpunkts återställning för att återställa en eller flera u
 Om du vill veta mer om återställning av punkt-i-tid kan du läsa mer om att återställa en tidpunkt [för block-blobar](point-in-time-restore-overview.md).
 
 > [!CAUTION]
-> Återställning vid tidpunkt stöder bara återställnings åtgärder på block-blobbar. Det går inte att återställa åtgärder på behållare. Om du tar bort en behållare från lagrings kontot genom att anropa åtgärden [ta bort behållare](/rest/api/storageservices/delete-container) , kan den behållaren inte återställas med en återställnings åtgärd. Ta bort enskilda blobbar i stället för att ta bort en hel behållare om du vill återställa dem senare.
+> Återställning vid tidpunkt stöder bara återställnings åtgärder på block-blobbar. Det går inte att återställa åtgärder på behållare. Om du tar bort en behållare från lagrings kontot genom att anropa åtgärden [ta bort behållare](/rest/api/storageservices/delete-container) , kan den behållaren inte återställas med en återställnings åtgärd. Ta bort enskilda blobbar i stället för att ta bort en hel behållare om du vill återställa dem senare. Microsoft rekommenderar också att du aktiverar mjuk borttagning för behållare och blobbar för att skydda mot oavsiktlig borttagning. Mer information finns i [mjuk borttagning för behållare (för hands version)](soft-delete-container-overview.md) och [mjuk borttagning för blobbar](soft-delete-blob-overview.md).
 
 ## <a name="enable-and-configure-point-in-time-restore"></a>Aktivera och konfigurera återställning av tidpunkter
 
@@ -52,19 +52,16 @@ Följande bild visar ett lagrings konto som har kon figurer ATS för återställ
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Om du vill konfigurera tidpunkts återställning med PowerShell installerar du först [AZ. Storage](https://www.powershellgallery.com/packages/Az.Storage) module version 2.6.0 eller senare. Anropa sedan kommandot Enable-AzStorageBlobRestorePolicy för att aktivera återställning vid tidpunkter för lagrings kontot.
+Om du vill konfigurera tidpunkts återställning med PowerShell installerar du först [AZ. Storage](https://www.powershellgallery.com/packages/Az.Storage) module version 2.6.0 eller senare. Anropa sedan kommandot [Enable-AzStorageBlobRestorePolicy](/powershell/module/az.storage/enable-azstorageblobrestorepolicy) för att aktivera återställning av tidpunkter för lagrings kontot.
 
-I följande exempel aktive ras mjuk borttagning och ställer in lagrings perioden för mjuk borttagning, aktiverar ändrings flöde och versions hantering och aktiverar sedan återställning vid tidpunkter.    Kom ihåg att ersätta värdena i vinkelparenteser med dina egna värden när du kör exemplet:
+I följande exempel aktive ras mjuk borttagning och ställer in lagrings perioden för mjuk borttagning, aktiverar ändrings flöde och versions hantering och aktiverar sedan återställning vid tidpunkter. Kom ihåg att ersätta värdena i vinkelparenteser med dina egna värden när du kör exemplet:
 
 ```powershell
-# Sign in to your Azure account.
-Connect-AzAccount
-
 # Set resource group and account variables.
 $rgName = "<resource-group>"
 $accountName = "<storage-account>"
 
-# Enable soft delete with a retention of 14 days.
+# Enable blob soft delete with a retention of 14 days.
 Enable-AzStorageBlobDeleteRetentionPolicy -ResourceGroupName $rgName `
     -StorageAccountName $accountName `
     -RetentionDays 14
@@ -87,11 +84,33 @@ Get-AzStorageBlobServiceProperty -ResourceGroupName $rgName `
     -StorageAccountName $accountName
 ```
 
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Om du vill konfigurera tidpunkts återställning med Azure CLI måste du först installera Azure CLI version 2.2.0 eller senare. Anropa sedan kommandot [AZ Storage Account BLOB-service-Properties Update](/cli/azure/ext/storage-blob-preview/storage/account/blob-service-properties#ext_storage_blob_preview_az_storage_account_blob_service_properties_update) för att aktivera återställning av tidpunkter och andra nödvändiga data skydds inställningar för lagrings kontot.
+
+I följande exempel aktive ras mjuk borttagning och anger perioden för mjuk borttagning till 14 dagar, aktiverar ändrings flöde och versions hantering och aktiverar återställning av tidpunkter med en återställnings period på sju dagar. Kom ihåg att ersätta värdena i vinkelparenteser med dina egna värden när du kör exemplet:
+
+```azurecli
+az storage account blob-service-properties update \
+    --resource-group <resource_group> \
+    --account-name <storage-account> \
+    --enable-delete-retention true \
+    --delete-retention-days 14 \
+    --enable-versioning true \
+    --enable-change-feed true \
+    --enable-restore-policy true \
+    --restore-days 7
+```
+
 ---
 
-## <a name="perform-a-restore-operation"></a>Utföra en återställnings åtgärd
+## <a name="choose-a-restore-point"></a>Välj en återställnings punkt
 
-När du utför en återställnings åtgärd måste du ange återställnings punkten som ett UTC- **datum/tid** -värde. Behållare och blobbar kommer att återställas till sitt tillstånd vid den dagen och den aktuella tiden. Återställnings åtgärden kan ta flera minuter att slutföra.
+Återställnings punkten är datum och tid då data återställs. Azure Storage använder alltid ett UTC-datum/tid-värde som återställnings punkt. Med Azure Portal kan du dock ange återställnings punkten i lokal tid och sedan konvertera datum/tid-värdet till ett UTC-datum/tid-värde för att utföra återställnings åtgärden.
+
+När du utför en återställnings åtgärd med PowerShell eller Azure CLI bör du ange återställnings punkten som ett UTC-datum/tid-värde. Om återställnings punkten anges med ett lokalt tids värde i stället för ett UTC-tidsvärde kan återställningen fortfarande fungera som förväntat i vissa fall. Om din lokala tid till exempel är UTC minus fem timmar kan du ange ett lokalt tids värde i en återställnings punkt som är fem timmar tidigare än det värde som du har angett. Om inga ändringar har gjorts i data i intervallet som ska återställas under den fem Tim perioden, genererar återställnings åtgärden samma resultat oavsett vilket tids värde som tillhandahölls. Att ange en UTC-tid för återställnings punkten rekommenderas för att undvika oväntade resultat.
+
+## <a name="perform-a-restore-operation"></a>Utföra en återställnings åtgärd
 
 Du kan återställa alla behållare i lagrings kontot, eller så kan du återställa ett intervall av blobbar i en eller flera behållare. Ett intervall med blobbar definieras lexicographically, vilket betyder i ord listornas ordning. Upp till tio lexicographical-intervall stöds per återställnings åtgärd. Början av intervallet är inkluderat och slutet av intervallet är exklusivt.
 
@@ -128,7 +147,7 @@ Följ dessa steg om du vill återställa alla behållare och blobbar i lagrings 
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Om du vill återställa alla behållare och blobbar i lagrings kontot med PowerShell anropar du kommandot **restore-AzStorageBlobRange** . Som standard körs kommandot **restore-AzStorageBlobRange** asynkront och returnerar ett objekt av typen **PSBlobRestoreStatus** som du kan använda för att kontrol lera status för återställnings åtgärden.
+Om du vill återställa alla behållare och blobbar i lagrings kontot med PowerShell anropar du kommandot **restore-AzStorageBlobRange** och anger återställnings punkten som ett UTC-datum/tid-värde. Som standard körs kommandot **restore-AzStorageBlobRange** asynkront och returnerar ett objekt av typen **PSBlobRestoreStatus** som du kan använda för att kontrol lera status för återställnings åtgärden.
 
 I följande exempel återställs behållare i lagrings kontot till sitt tillstånd 12 timmar före den aktuella tidpunkten, och några av egenskaperna för återställnings åtgärden kontrol leras:
 
@@ -136,7 +155,7 @@ I följande exempel återställs behållare i lagrings kontot till sitt tillstå
 # Specify -TimeToRestore as a UTC value
 $restoreOperation = Restore-AzStorageBlobRange -ResourceGroupName $rgName `
     -StorageAccountName $accountName `
-    -TimeToRestore (Get-Date).AddHours(-12)
+    -TimeToRestore (Get-Date).ToUniversalTime().AddHours(-12)
 
 # Get the status of the restore operation.
 $restoreOperation.Status
@@ -153,6 +172,22 @@ Restore-AzStorageBlobRange -ResourceGroupName $rgName `
     -StorageAccountName $accountName `
     -TimeToRestore (Get-Date).AddHours(-12) -WaitForComplete
 ```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Om du vill återställa alla behållare och blobbar i lagrings kontot med Azure CLI anropar du kommandot [AZ Storage BLOB Restore](/cli/azure/storage/blob#az_storage_blob_restore) och anger återställnings punkten som ett UTC-datum/tid-värde.
+
+I följande exempel återställer asynkront alla behållare i lagrings kontot till deras tillstånd 12 timmar innan ett angivet datum och en angiven tid. Du kan kontrol lera status för återställnings åtgärden genom att anropa [AZ Storage Account show](/cli/azure/storage/account#az_storage_account_show):
+
+```azurecli
+az storage blob restore \
+    --resource-group <resource_group> \
+    --account-name <storage-account> \
+    --time-to-restore 2021-01-14T06:31:22Z \
+    --no-wait
+```
+
+Om du vill köra kommandot **AZ Storage BLOB Restore** och blockera vid körning tills återställningen är klar utelämnar du `--no-wait` parametern.
 
 ---
 
@@ -245,11 +280,30 @@ $restoreOperation.Parameters.BlobRanges
 
 Om du vill köra återställnings åtgärden synkront och blockera vid körning tills den är slutförd, inkluderar du parametern **-WaitForComplete** i kommandot.
 
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Om du vill återställa ett intervall med blobbar anropar du kommandot [AZ Storage BLOB Restore](/cli/azure/storage/blob#az_storage_blob_restore) och anger ett lexicographical-intervall för parameterns behållare och blob-namn `--blob-range` . Om du vill ange flera intervall anger du `--blob-range` parametern för varje distinkt intervall.
+
+Om du till exempel vill återställa Blobbarna i en enda behållare med namnet *container1* kan du ange ett intervall som börjar med *container1* och slutar med *container2*. Det finns inga krav på att behållarna med namnet i Start-och slut intervall ska finnas. Eftersom slutet på intervallet är exklusivt, även om lagrings kontot innehåller en behållare med namnet *container2*, kommer endast behållaren som heter *container1* att återställas.
+
+Om du vill ange en delmängd av blobbar i en behållare som ska återställas använder du ett snedstreck (/) för att avgränsa behållar namnet från mönstret för BLOB-prefixet. Exemplet som visas nedan återställer ett intervall med blobbar i en behållare vars namn börjar med bokstäverna `d` genom `f` .
+
+```azurecli
+az storage blob restore \
+    --account-name <storage-account> \
+    --time-to-restore 2021-01-14T06:31:22Z \
+    --blob-range container1 container2
+    --blob-range container3/d container3/g
+    --no-wait
+```
+
+Om du vill köra kommandot **AZ Storage BLOB Restore** och blockera vid körning tills återställningen är klar utelämnar du `--no-wait` parametern.
+
 ---
 
 ## <a name="next-steps"></a>Nästa steg
 
 - [Återställning av tidpunkter för block-blobar](point-in-time-restore-overview.md)
 - [Mjuk borttagning](./soft-delete-blob-overview.md)
-- [Ändringsfeed](storage-blob-change-feed.md)
+- [Ändra feed](storage-blob-change-feed.md)
 - [BLOB-versioner](versioning-overview.md)

@@ -13,12 +13,12 @@ ms.date: 11/20/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 9ec8a5fe5de751e40ebaa17629ff72c5f6b2adca
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: 46626c3ebe9d70600be1cc5f73c43677f67bcd09
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94979995"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98761376"
 ---
 # <a name="application-configuration-options"></a>Program konfigurations alternativ
 
@@ -147,8 +147,20 @@ För daemon-appar behöver du inte ange en omdirigerings-URI.
 Det här alternativet anger klient hemligheten för appen konfidentiell klient. Den här hemligheten (app Password) tillhandahålls av program registrerings portalen eller tillhandahålls till Azure AD vid registreringen av appen med PowerShell AzureAD, PowerShell AzureRM eller Azure CLI.
 
 ## <a name="logging"></a>Loggning
+För att felsöka fel söknings scenarier och fel sökning av autentiseringsfel, innehåller Microsoft Authentication Library inbyggt loggnings stöd. Loggningen är att varje bibliotek beskrivs i följande artiklar:
 
-De andra konfigurations alternativen aktiverar loggning och fel sökning. I [loggnings](msal-logging.md) artikeln finns information om hur du använder dem.
+:::row:::
+    :::column:::
+        - [Loggning i MSAL.NET](msal-logging-dotnet.md)
+        - [Loggning i MSAL för Android](msal-logging-android.md)
+        - [Loggning in MSAL.js](msal-logging-js.md)
+    :::column-end:::
+    :::column:::
+        - [Loggning i MSAL för iOS/macOS](msal-logging-ios.md)
+        - [Loggning i MSAL för Java](msal-logging-java.md)
+        - [Loggning i MSAL för Python](msal-logging-python.md)
+    :::column-end:::
+:::row-end:::
 
 ## <a name="next-steps"></a>Nästa steg
 

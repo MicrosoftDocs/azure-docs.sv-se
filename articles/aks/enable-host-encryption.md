@@ -4,12 +4,12 @@ description: Lär dig hur du konfigurerar en värdbaserad kryptering i ett Azure
 services: container-service
 ms.topic: article
 ms.date: 07/10/2020
-ms.openlocfilehash: 14ec39272bf2f434aaa57217a90667a62e82901a
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 6b23bf285d89a5f3285825feef849b3d168ed62f
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183302"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762042"
 ---
 # <a name="host-based-encryption-on-azure-kubernetes-service-aks-preview"></a>Värdbaserad kryptering på Azure Kubernetes service (AKS) (för hands version)
 
@@ -23,37 +23,35 @@ Den här funktionen kan bara ställas in när klustret skapas eller när en nod 
 > [!NOTE]
 > Värdbaserad kryptering är tillgänglig i Azure- [regioner][supported-regions] som har stöd för kryptering på Server sidan av Azure Managed disks och endast med vissa [storlekar som stöds för virtuella datorer][supported-sizes].
 
-### <a name="prerequisites"></a>Förutsättningar
+### <a name="prerequisites"></a>Krav
 
 - Se till att du har `aks-preview` CLI-tillägget v 0.4.55 eller senare installerat
-- Se till att du har `EncryptionAtHost` funktions flaggan under `Microsoft.Compute` aktive rad.
 - Se till att du har `EnableEncryptionAtHostPreview` funktions flaggan under `Microsoft.ContainerService` aktive rad.
 
+För att kunna använda kryptering på värden för dina virtuella datorer eller skalnings uppsättningar för virtuella datorer måste du få funktionen aktive rad i din prenumeration. Skicka ett e-postmeddelande till encryptionAtHost@microsoft.com med dina prenumerations-ID för att få funktionen aktive rad för dina prenumerationer.
+
 ### <a name="register-encryptionathost--preview-features"></a>Registrera för `EncryptionAtHost`  hands versions funktioner
+
+> [!IMPORTANT]
+> Du måste e-posta encryptionAtHost@microsoft . com med ditt prenumerations-ID för att få funktionen aktive rad för beräknings resurser. Du kan inte aktivera det själv för dessa resurser. Du kan aktivera det själv i behållar tjänsten.
 
 Om du vill skapa ett AKS-kluster som använder värdbaserad kryptering måste du aktivera- `EnableEncryptionAtHostPreview` och- `EncryptionAtHost` funktions flaggorna i din prenumeration.
 
 Registrera `EncryptionAtHost` funktions flaggan med hjälp av kommandot [AZ Feature register][az-feature-register] som visas i följande exempel:
 
 ```azurecli-interactive
-az feature register --namespace "Microsoft.Compute" --name "EncryptionAtHost"
-
 az feature register --namespace "Microsoft.ContainerService"  --name "EnableEncryptionAtHostPreview"
 ```
 
 Det tar några minuter för statusen att visa *registrerad*. Du kan kontrol lera registrerings statusen med hjälp av kommandot [AZ feature list][az-feature-list] :
 
 ```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.Compute/EncryptionAtHost')].{Name:name,State:properties.state}"
-
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnableEncryptionAtHostPreview')].{Name:name,State:properties.state}"
 ```
 
 När du är klar uppdaterar du registreringen av- `Microsoft.ContainerService` och- `Microsoft.Compute` resurs leverantörerna med [AZ Provider register][az-provider-register] kommando:
 
 ```azurecli-interactive
-az provider register --namespace Microsoft.Compute
-
 az provider register --namespace Microsoft.ContainerService
 ```
 

@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 11/15/2019
-ms.openlocfilehash: a53857061110d5a77ac3d166277e7076f4f7f9c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 47b006932aace3149dd94e136e334c1b6e5bfcef
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541381"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762705"
 ---
 # <a name="train-your-active-version-of-the-luis-app"></a>Träna din aktiva version av LUIS-appen
 
@@ -40,9 +40,15 @@ Datum och tid för utbildning är GMT + 2.
 
 ## <a name="train-with-all-data"></a>Träna med alla data
 
-Träning använder en liten procent andel av negativ sampling. Om du vill använda alla data i stället för den små negativa insamlingen använder du [API: et](#version-settings-api-use-of-usealltrainingdata).
+Träning använder en liten procent andel av negativ sampling. Du kan använda alla tillgängliga data i stället för antingen portalen eller API: et. 
 
-### <a name="version-settings-api-use-of-usealltrainingdata"></a>Versions inställningar API-användning av UseAllTrainingData
+### <a name="using-the-luis-portal"></a>Använda LUIS-portalen
+
+Logga in på [Luis-portalen](https://www.luis.ai/) och klicka på din app. Välj **Hantera** överst på skärmen och välj sedan **Inställningar** och aktivera eller inaktivera alternativet **Använd-deterministisk träning** . När den är inaktive rad använder utbildningen alla tillgängliga data.
+
+![En knapp för att aktivera eller inaktivera icke deterministisk utbildning](./media/non-determinstic-training.png)
+
+### <a name="using-the-version-settings-api"></a>Använda API för versions inställningar
 
 Använd [API för versions inställningar](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) med `UseAllTrainingData` värdet true för att inaktivera den här funktionen.
 

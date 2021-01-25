@@ -7,21 +7,21 @@ ms.topic: quickstart
 ms.author: jukullam
 ms.date: 10/12/2020
 ms.custom: github-actions-azure
-ms.openlocfilehash: f62ca85bd4e027595103b738c23c9997a05cc85c
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 5b59b395084e3f2c4e7ccb7f1e6db0e46de256b1
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98132825"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98763021"
 ---
 # <a name="quickstart-use-github-actions-to-connect-to-azure-mysql"></a>Snabb start: använda GitHub-åtgärder för att ansluta till Azure MySQL
 
 **Gäller för**: :::image type="icon" source="./media/applies-to/yes.png" border="false"::: Azure Database for MySQL-en server :::image type="icon" source="./media/applies-to/yes.png" border="false"::: Azure Database for MySQL – flexibel Server
 
-Kom igång med [GitHub-åtgärder](https://docs.github.com/en/free-pro-team@latest/actions) genom att använda ett arbets flöde för att distribuera databas uppdateringar till [Azure Database for MySQL](https://azure.microsoft.com/services/mysql/).
+Kom igång med [GitHub-åtgärder](https://docs.github.com/en/actions) genom att använda ett arbets flöde för att distribuera databas uppdateringar till [Azure Database for MySQL](https://azure.microsoft.com/services/mysql/).
 
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Du behöver följande: 
 - Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
@@ -89,7 +89,7 @@ Du kommer att använda anslutnings strängen som GitHub-hemlighet.
 
 1. Klistra in hela JSON-utdata från Azure CLI-kommandot i fältet hemligt värde. Ge hemligheten namnet `AZURE_CREDENTIALS` .
 
-    När du konfigurerar arbets flödes filen senare använder du hemligheten för indata `creds` från åtgärden för Azure-inloggning. Exempel:
+    När du konfigurerar arbets flödes filen senare använder du hemligheten för indata `creds` från åtgärden för Azure-inloggning. Ett exempel:
 
     ```yaml
     - uses: azure/login@v1

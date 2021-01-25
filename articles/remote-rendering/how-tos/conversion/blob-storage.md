@@ -5,16 +5,16 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/04/2020
 ms.topic: how-to
-ms.openlocfilehash: 96a2fde3e510c6eb7146da9c92d93f69111e8c80
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: cfc10658463888e43ea1a24dfefd3f8939ec8ef7
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92206551"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762772"
 ---
 # <a name="use-azure-blob-storage-for-model-conversion"></a>Använda Azure-Blob Storage för modellkonvertering
 
-[Modell konverterings](model-conversion.md) tjänsten kräver åtkomst till Azure Blob Storage så att den kan hämta indata och lagra utdata. I den här artikeln beskrivs hur du utför de vanligaste stegen.
+[Modell konverterings](model-conversion.md) tjänsten kräver åtkomst till Azure-Blob Storage så att den kan hämta indata och lagra utdata. I den här artikeln beskrivs hur du utför de vanligaste stegen.
 
 ## <a name="prepare-azure-storage-accounts"></a>Förbereda Azure Storage-konton
 
@@ -29,7 +29,7 @@ Att skapa lagrings kontot och blob-behållarna kan göras med något av följand
 
 - [Azure-portalen](https://portal.azure.com)
 - [AZ kommando rad](/cli/azure/install-azure-cli?view=azure-cli-latest)
-- [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)
+- [Azure Lagringsutforskaren](https://azure.microsoft.com/features/storage-explorer/)
 - SDK: er (C#, python...)
 
 ## <a name="ensure-azure-remote-rendering-can-access-your-storage-account"></a>Se till att Azure Remote rendering kan komma åt ditt lagrings konto
@@ -53,7 +53,7 @@ En SAS-URI kan genereras med hjälp av en av:
 - AZ PowerShell-modul
   - Se [PowerShell-skripten](../../samples/powershell-example-scripts.md)
 - [AZ kommando rad](/cli/azure/install-azure-cli?view=azure-cli-latest)
-- [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)
+- [Azure Lagringsutforskaren](https://azure.microsoft.com/features/storage-explorer/)
   - Högerklicka på container "Get Shared Access Signature" (Läs, lista åtkomst för inmatnings behållare, skriv åtkomst för behållaren utdata)
 - SDK: er (C#, python...)
 

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: troubleshooting
-ms.date: 10/07/2020
+ms.date: 01/21/2021
 ms.author: alkohli
-ms.openlocfilehash: d07d9dccb0aa273f79b251f2ffb4a920f3cac2e7
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 0976dd9f3c4d0228ec0f170a755ec13800da435b
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96447616"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98761538"
 ---
 # <a name="troubleshoot-issues-on-your-azure-stack-edge-pro-gpu-device"></a>Felsök problem med din Azure Stack Edge Pro GPU-enhet 
 
@@ -26,7 +26,7 @@ Den här artikeln beskriver hur du felsöker problem med GPU-enheten för Azure 
 
 Du kan köra de diagnostiska testerna för att diagnostisera och felsöka eventuella enhetsfel. Utför följande steg i det lokala webbgränssnittet på din enhet för att köra diagnostiska tester.
 
-1. I det lokala webbgränssnittet går du till **Felsökning > Diagnostiska tester**. Välj det test du vill köra och välj **Kör test**. Tester för att diagnostisera möjliga problem med nätverk, enhet, webbproxy, tid eller molninställningar körs då. Du får ett meddelande om att enheten kör testerna.
+1. I det lokala webbgränssnittet går du till **Felsökning > Diagnostiska tester**. Välj det test du vill köra och välj **Kör test**. Testet diagnostiserar eventuella eventuella problem med nätverks-, enhets-, webbproxy-, tid-eller moln inställningar. Du får ett meddelande om att enheten kör testerna.
 
     ![Välj test ](media/azure-stack-edge-gpu-troubleshoot/run-diag-1.png)
  
@@ -167,7 +167,7 @@ Här är de fel som kan visas under konfigurationen av Azure Resource Manager f�
 
 2. Kontrol lera att rätt PowerShell-moduler är installerade som anges [här](azure-stack-edge-j-series-connect-resource-manager.md#step-4-set-up-azure-powershell-on-the-client).
 
-3. Verifiera att Azure Resource Manager-och inloggnings slut punkter kan uppnås. Du kan prova att pinga slut punkterna. Exempel:
+3. Verifiera att Azure Resource Manager-och inloggnings slut punkter kan uppnås. Du kan prova att pinga slut punkterna. Ett exempel:
 
    `ping management.28bmdw2-bb9.microsoftdatabox.com`
    `ping login.28bmdw2-bb9.microsoftdatabox.com`
@@ -187,7 +187,7 @@ Här är felen som rör Blob Storage på Azure Stack Edge Pro/Data Box Gateway D
 | **Problem/fel** |  **Lösning** | 
 |--------------------|-----------------|
 |Det gick inte att hämta underordnade resurser. Värdet för ett av HTTP-huvudena har fel format.| I **Redigera** -menyn väljer du **mål Azure Stack API: er**. Starta sedan om Azure Storage Explorer.|
-|getaddrinfo ENOTFOUND <accountname> . blob. <serialnumber> .. microsoftdatabox.com|Kontrol lera att slut punkts namnet `<accountname>.blob.<serialnumber>.microsoftdatabox.com` läggs till i hosts-filen på den här sökvägen: `C:\Windows\System32\drivers\etc\hosts` på Windows eller `/etc/hosts` i Linux.|
+|`getaddrinfo ENOTFOUND <accountname>.blob.<serialnumber>.microsoftdatabox.com`|Kontrol lera att slut punkts namnet `<accountname>.blob.<serialnumber>.microsoftdatabox.com` läggs till i hosts-filen på den här sökvägen: `C:\Windows\System32\drivers\etc\hosts` på Windows eller `/etc/hosts` i Linux.|
 |Det gick inte att hämta underordnade resurser.<br> Information: självsignerat certifikat |Importera SSL-certifikatet för enheten till Azure Storage Explorer: <ol><li>Hämta certifikatet från Azure Portal. Mer information finns i [Hämta certifikatet](../databox/data-box-deploy-copy-data-via-rest.md#download-certificate).</li><li>Välj SSL-certifikat på **Redigera** -menyn och välj sedan **Importera certifikat**.</li></ol>|
 |AzCopy-kommandot slutar svara i minuter innan det här felet visas:<br>`Failed to enumerate directory https://… The remote name could not be resolved <accountname>.blob.<serialnumber>.microsoftdatabox.com`|Kontrol lera att slut punkts namnet `<accountname>.blob.<serialnumber>.microsoftdatabox.com` läggs till i hosts-filen på: `C:\Windows\System32\drivers\etc\hosts` .|
 |AzCopy-kommandot slutar svara i minuter innan det här felet visas:<br>`Error parsing source location. The underlying connection was closed: Could not establish trust relationship for the SSL/TLS secure channel`. |Importera SSL-certifikatet för enheten till certifikat arkivet i systemet. Mer information finns i [Hämta certifikatet](../databox/data-box-deploy-copy-data-via-rest.md#download-certificate).|
@@ -196,9 +196,12 @@ Här är felen som rör Blob Storage på Azure Stack Edge Pro/Data Box Gateway D
 |AzCopy-kommandot verkar sluta svara i 20 minuter innan det här felet visas:<br>`Error parsing source location https://<accountname>.blob.<serialnumber>.microsoftdatabox.com/<cntnr>. No such device or address`|Kontrol lera att slut punkts namnet `<accountname>.blob.<serialnumber>.microsoftdatabox.com` läggs till i hosts-filen på: `/etc/hosts` .|
 |AzCopy-kommandot verkar sluta svara i 20 minuter innan det här felet visas: `Error parsing source location… The SSL connection could not be established` .|Importera SSL-certifikatet för enheten till certifikat arkivet i systemet. Mer information finns i [Hämta certifikatet](../databox/data-box-deploy-copy-data-via-rest.md#download-certificate).|
 |Värdet för ett av HTTP-huvudena har fel format.|Den installerade versionen av Microsoft Azure Storages biblioteket för python stöds inte av Data Box-enhet. Se Azure Data Box Blob Storage-krav för versioner som stöds.|
-|… [SSL: CERTIFICATE_VERIFY_FAILED]...| Innan du kör python anger du REQUESTS_CA_BUNDLE miljövariabeln till sökvägen till den base64-kodade SSL-certifikatfil (se hur du [hämtar certifikatet](../databox/data-box-deploy-copy-data-via-rest.md#download-certificate). Exempel:<br>`export REQUESTS_CA_BUNDLE=/tmp/mycert.cer`<br>`python`<br>Alternativt kan du lägga till certifikatet i systemets certifikat Arkiv och sedan ange miljövariabeln till sökvägen för arkivet. Till exempel på Ubuntu:<br>`export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt`<br>`python`.|
+|… [SSL: CERTIFICATE_VERIFY_FAILED]...| Innan du kör python anger du REQUESTS_CA_BUNDLE miljövariabeln till sökvägen till den base64-kodade SSL-certifikatfil (se hur du [hämtar certifikatet](../databox/data-box-deploy-copy-data-via-rest.md#download-certificate). Ett exempel:<br>`export REQUESTS_CA_BUNDLE=/tmp/mycert.cer`<br>`python`<br>Alternativt kan du lägga till certifikatet i systemets certifikat Arkiv och sedan ange miljövariabeln till sökvägen för arkivet. Till exempel på Ubuntu:<br>`export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt`<br>`python`.|
 |Anslutnings tiden är slut.|Logga in på Azure Stack Edge Pro och kontrol lera att den är olåst. När enheten startas om förblir den låst tills någon loggar in.|
 
+## <a name="troubleshoot-iot-edge-errors"></a>Felsöka IoT Edge fel
+
+[!INCLUDE [Troubleshoot IoT Edge runtime](../../includes/azure-stack-edge-iot-troubleshoot-compute.md)]
 
 
 ## <a name="next-steps"></a>Nästa steg

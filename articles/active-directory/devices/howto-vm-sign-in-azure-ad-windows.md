@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions, devx-track-azurecli
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 22a4bdc92ea2a91425c1070a5837c672307de665
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 3e22e5fc4bc7211d905dbe8775b0ef6e893bd2cc
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98683784"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98761009"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Logga in på den virtuella Windows-datorn i Azure med Azure Active Directory autentisering (för hands version)
 
@@ -350,7 +350,9 @@ Kontrol lera att den Windows 10-dator som du använder för att initiera fjärr 
 > [!NOTE]
 > Windows 10 build-20H1 har lagt till stöd för en registrerad Azure AD-dator för att initiera RDP-anslutning till den virtuella datorn. När du använder en Azure AD-registrerad (inte Azure AD-ansluten eller hybrid Azure AD-ansluten) som RDP-klient för att initiera anslutningar till den virtuella datorn, måste du ange autentiseringsuppgifter i formatet AzureAD\UPn (t. ex. AzureAD\john@contoso.com ).
 
-Kontrol lera också att AADLoginForWindows-tillägget inte har avinstallerats efter att Azure AD Join har slutförts.
+Kontrol lera att AADLoginForWindows-tillägget inte avinstallerades efter att Azure AD Join har slutförts.
+
+Kontrol lera också att säkerhets principen "nätverks säkerhet: Tillåt att PKU2U autentiseringsbegäranden till den här datorn använder" online-identiteter "är aktive rad på både servern *och* klienten.
  
 #### <a name="mfa-sign-in-method-required"></a>MFA-inloggnings metod krävs
 

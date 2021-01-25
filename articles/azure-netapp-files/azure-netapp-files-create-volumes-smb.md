@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 12/01/2020
 ms.author: b-juche
-ms.openlocfilehash: cd2a293ebcc35d4884211f50783738a502dcc7de
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 48ee05eebd91c60fa2cfecc80898d3be54367269
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96854833"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762680"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Skapa en SMB-volym för Azure NetApp Files
 
@@ -45,7 +45,7 @@ Ett undernät måste delegeras till Azure NetApp Files.
     |    AD-webbtjänster    |    9389      |    TCP           |
     |    DNS                |    53        |    TCP           |
     |    DNS                |    53        |    UDP           |
-    |    ICMPv4             |    Saknas       |    Eko svar    |
+    |    ICMPv4             |    Ej tillämpligt       |    Eko svar    |
     |    Kerberos           |    464       |    TCP           |
     |    Kerberos           |    464       |    UDP           |
     |    Kerberos           |    88        |    TCP           |
@@ -74,7 +74,7 @@ Ett undernät måste delegeras till Azure NetApp Files.
 
     Se [utforma platstopologi](/windows-server/identity/ad-ds/plan/designing-the-site-topology) om AD-platser och-tjänster. 
     
-* Du kan aktivera AES-kryptering för en SMB-volym genom att markera rutan **AES-kryptering** i fönstret [Anslut Active Directory](#create-an-active-directory-connection) . Azure NetApp Files stöder krypterings typerna DES, Kerberos AES 128 och Kerberos AES 256 (från den minst säkra som är säkrast). Om du aktiverar AES-kryptering måste de användarautentiseringsuppgifter som används för att ansluta till Active Directory ha det högsta motsvarande konto alternativet som matchar de funktioner som har Aktiver ATS för din Active Directory.    
+* Du kan aktivera AES-kryptering för AD-autentisering genom att markera rutan **AES-kryptering** i fönstret [Anslut Active Directory](#create-an-active-directory-connection) . Azure NetApp Files stöder krypterings typerna DES, Kerberos AES 128 och Kerberos AES 256 (från den minst säkra som är säkrast). Om du aktiverar AES-kryptering måste de användarautentiseringsuppgifter som används för att ansluta till Active Directory ha det högsta motsvarande konto alternativet som matchar de funktioner som har Aktiver ATS för din Active Directory.    
 
     Om din Active Directory till exempel endast har AES-128-funktionen, måste du aktivera alternativet AES-128 konto för autentiseringsuppgifterna för användaren. Om din Active Directory har AES-256-funktionen måste du aktivera alternativet AES-256 konto (som också stöder AES-128). Om din Active Directory inte har någon Kerberos-krypterings kapacitet använder Azure NetApp Files DES som standard.  
 

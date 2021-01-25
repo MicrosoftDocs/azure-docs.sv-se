@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 01/05/2021
+ms.date: 01/22/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Mini R device so I can use it to transfer data to Azure.
-ms.openlocfilehash: 4535368b7d8d044469a4b0effee914176aca78e4
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: b6745ed879f02a341027417b54eb459b5bfed705
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97935415"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762952"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-mini-r"></a>Självstudie: Förbered för att distribuera Azure Stack Edge Mini R
 
@@ -121,11 +121,11 @@ För att skapa en Azure Stack Edge-resurs, utför följande steg i Azure Portal.
 
 7. Välj **Nästa: leverans adress**.
 
-    - Om du redan har en enhet väljer du kombinations rutan där **jag redan har en enhet**.
+   - Om du redan har en enhet väljer du kombinations rutan där **jag redan har en enhet**.
 
      ![Skapa en resurs 5](media/azure-stack-edge-mini-r-deploy-prep/create-resource-5.png)
 
-    - Om det här är den nya enhet som du beställer anger du kontakt namn, företag, adress att leverera enheten till och kontakt information.
+   - Om det här är den nya enhet som du beställer anger du kontakt namn, företag, adress att leverera enheten till och kontakt information.
 
      ![Skapa en resurs 6](media/azure-stack-edge-mini-r-deploy-prep/create-resource-6.png)
 
@@ -145,9 +145,12 @@ För att skapa en Azure Stack Edge-resurs, utför följande steg i Azure Portal.
     
     ![Gå till Azure Stack Edge Pro-resursen](media/azure-stack-edge-mini-r-deploy-prep/azure-stack-edge-resource-1.png)
     
-    När ordern har placerats, granskar Microsoft ordern och når dig (via e-post) med leverans information.
+När ordern har placerats, granskar Microsoft ordern och når dig (via e-post) med leverans information.
 
-   Om du stöter på problem under beställnings processen går du till [Felsöka beställnings problem](azure-stack-edge-troubleshoot-ordering.md).
+> [!NOTE]
+> Om du vill skapa flera beställningar samtidigt eller klona en befintlig order kan du använda [skripten i Azure-exempel](https://github.com/Azure-Samples/azure-stack-edge-order). Mer information finns i README-filen.
+
+Om du stöter på problem under beställnings processen går du till [Felsöka beställnings problem](azure-stack-edge-troubleshoot-ordering.md).
 
 ## <a name="get-the-activation-key"></a>Hämta aktiveringsnyckeln
 

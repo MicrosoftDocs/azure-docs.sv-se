@@ -2,17 +2,20 @@
 title: Distribuera och konfigurera Azure VMware-lösning
 description: Lär dig hur du använder den information som samlas in i planerings fasen för att distribuera Azure VMware-lösningens privata moln.
 ms.topic: tutorial
-ms.date: 11/09/2020
-ms.openlocfilehash: 7e31b9236a3c75009d15bde35019036b6db55cab
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.date: 12/24/2020
+ms.openlocfilehash: f2b6f3c4ad82117fee96e0c2e5973a7011384d48
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96861533"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98760883"
 ---
 # <a name="deploy-and-configure-azure-vmware-solution"></a>Distribuera och konfigurera Azure VMware-lösning
 
-I den här artikeln ska du använda informationen från [planerings avsnittet](production-ready-deployment-steps.md) för att distribuera Azure VMware-lösningen. Om du inte har definierat informationen går du tillbaka till [planerings avsnittet](production-ready-deployment-steps.md) innan du fortsätter.
+I den här artikeln ska du använda informationen från [planerings avsnittet](production-ready-deployment-steps.md) för att distribuera Azure VMware-lösningen. 
+
+>[!IMPORTANT]
+>Om du inte har definierat informationen ännu går du tillbaka till [planerings avsnittet](production-ready-deployment-steps.md) innan du fortsätter.
 
 ## <a name="register-the-resource-provider"></a>Registrera resursprovidern
 
@@ -40,15 +43,16 @@ När du har distribuerat Azure VMware-lösningen skapar du det virtuella nätver
 
 :::image type="content" source="media/pre-deployment/jump-box-diagram.png" alt-text="Skapa hopp rutan för Azure VMware-lösningen" border="false" lightbox="media/pre-deployment/jump-box-diagram.png":::
 
-Följ dessa instruktioner om du vill skapa en virtuell dator (VM) i det virtuella nätverk som du har [identifierat eller skapat som en del av distributions processen](production-ready-deployment-steps.md#azure-virtual-network-to-attach-azure-vmware-solution): 
+Följ dessa instruktioner för att skapa en virtuell dator (VM) i det virtuella nätverk som du har [identifierat eller skapat som en del av distributions processen](production-ready-deployment-steps.md#attach-virtual-network-to-azure-vmware-solution): 
 
 [!INCLUDE [create-avs-jump-box-steps](includes/create-jump-box-steps.md)]
 
 ## <a name="connect-to-a-virtual-network-with-expressroute"></a>Ansluta till ett virtuellt nätverk med ExpressRoute
 
-Om du inte definierade ett virtuellt nätverk i distributions steget och avsikten är att ansluta Azure VMware-lösningens ExpressRoute till en befintlig ExpressRoute-Gateway, följer du stegen nedan.
+>[!IMPORTANT]
+>Om du redan har definierat ett virtuellt nätverk på distributions skärmen i Azure kan du gå vidare till nästa avsnitt.
 
-Om du redan har definierat ett virtuellt nätverk på distributions skärmen i Azure kan du gå vidare till nästa avsnitt.
+Om du inte definierade ett virtuellt nätverk i distributions steget och avsikten är att ansluta Azure VMware-lösningens ExpressRoute till en befintlig ExpressRoute-Gateway, följer du dessa steg.
 
 [!INCLUDE [connect-expressroute-to-vnet](includes/connect-expressroute-vnet.md)]
 
@@ -79,9 +83,9 @@ Följ självstudien [skapa ett NSX-t-nätverk i Azure VMware Solution](tutorial-
 
 ## <a name="verify-advertised-nsx-t-segment"></a>Verifiera annonserat NSX-T-segment
 
-Gå tillbaka till steget [Verifiera nätverks vägar som annonser](#verify-network-routes-advertised) ATS. Du ser en eller flera vägar i listan som representerar de nätverks segment som du skapade i föregående steg.  
+Gå tillbaka till steget [Verifiera nätverks vägar som annonser](#verify-network-routes-advertised) ATS. Du ser andra vägar i listan som representerar de nätverks segment som du skapade i föregående steg.  
 
-För virtuella datorer tilldelar du segmenten som du skapade i steget [skapa ett nätverks segment i Azure VMware-lösningen](#create-a-network-segment-on-azure-vmware-solution) .  
+För virtuella datorer tilldelar du segment som du skapade i steget [skapa ett nätverks segment i Azure VMware-lösningen](#create-a-network-segment-on-azure-vmware-solution) .  
 
 Eftersom DNS krävs, identifiera vilken DNS-server som du vill använda.  
 
@@ -104,7 +108,7 @@ Nu när du har skapat ditt NSX-T-nätverks segment kan du skapa och hantera DHCP
 
 ## <a name="add-a-vm-on-the-nsx-t-network-segment"></a>Lägga till en virtuell dator i NSX-T-nätverksanslutningen
 
-I din Azure VMware-lösning vCenter distribuerar du en virtuell dator och använder den för att kontrol lera anslutningen från dina Azure VMware-lösnings nätverk till:
+I din Azure VMware-lösning vCenter distribuerar du en virtuell dator och använder den för att kontrol lera anslutningen från Azure VMware-lösningens nätverk till:
 
 - Internet
 -  Azure Virtual Networks
@@ -120,11 +124,10 @@ Distribuera den virtuella datorn på samma sätt som i valfri vSphere-miljö.  K
 Logga in på den virtuella datorn som skapades i föregående steg och kontrol lera anslutningen.
 
 1. Pinga en IP-adress på Internet.
-2. Gå till en Internet-webbplats via en webbläsare.
+2. I en webbläsare går du till en Internet-webbplats.
 3. Pinga hopp rutan som finns på Azure-Virtual Network.
 
->[!IMPORTANT]
->I det här läget är Azure VMware-lösningen igång och du har upprättat anslutningen till och från Azure Virtual Network och Internet.
+Azure VMware-lösningen är nu igång och du har upprättat anslutningen till och från Azure Virtual Network och Internet.
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/07/2020
 ms.author: hahamil
 ms.reviewer: marsma
-ms.openlocfilehash: f40c2bb0f529f9e0683c67bea884443458707f4f
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 4185206e92a78c2684ba1690f03700ef2532cc5e
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92206602"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98761388"
 ---
 # <a name="handle-exceptions-and-errors-in-msal-for-android"></a>Hantera undantag och fel i MSAL för Android
 
@@ -77,4 +77,4 @@ private SilentAuthenticationCallback getAuthSilentCallback() {
 
 ## <a name="next-steps"></a>Nästa steg
 
-Läs mer om [loggnings fel](./msal-logging.md?tabs=android)
+Läs mer om [loggning i MSAL för Android](msal-logging-android.md).

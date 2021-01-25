@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: troubleshooting
-ms.date: 08/11/2020
+ms.date: 01/21/2021
 ms.author: alkohli
-ms.openlocfilehash: f668136713024ba57d72bf5a457cd249742a3b11
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 09325289dd5cb83bfc26dd26b266d50b622fe098
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91742034"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98763084"
 ---
 # <a name="troubleshoot-your-azure-stack-edge-pro-issues"></a>Felsök problem med Azure Stack Edge-Pro
 
@@ -26,6 +26,7 @@ I den här artikeln kan du se hur du:
 > * Kör diagnostik
 > * Hämta supportpaket
 > * Använd loggar för att felsöka
+> * Felsöka IoT Edge fel
 
 ## <a name="run-diagnostics"></a>Kör diagnostik
 
@@ -81,6 +82,10 @@ Eventuella fel som uppstod under uppladdnings- och uppdateringsprocesserna ingå
 3. När du ser ett fel i den här filen (som är markerat i exemplet) noterar du felkoden, i det här fallet är den 16001. Leta upp beskrivningen av den här felkoden mot följande felkodsreferens.
 
     [!INCLUDE [data-box-edge-edge-upload-error-reference](../../includes/data-box-edge-gateway-upload-error-reference.md)]
+
+## <a name="troubleshoot-iot-edge-errors"></a>Felsöka IoT Edge fel
+
+[!INCLUDE [Troubleshoot IoT Edge runtime](../../includes/azure-stack-edge-iot-troubleshoot-compute.md)]
 
 ## <a name="next-steps"></a>Nästa steg
 

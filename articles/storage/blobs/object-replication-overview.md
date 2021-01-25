@@ -10,12 +10,12 @@ ms.date: 01/13/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ff2408e35d76a6ea0d5221e04c7a41ed6cde7ac9
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: e7fa6b1ee7c92f82c3e15335991f5a240c7acc52
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178984"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762876"
 ---
 # <a name="object-replication-for-block-blobs"></a>Objekt replikering för block-blobar
 
@@ -88,7 +88,9 @@ När du skapar en replikeringsprincip, kopieras som standard bara nya block blob
 
 Du kan också ange ett eller flera filter som en del av en replikeringsprincip för att filtrera block blobbar efter prefix. När du anger ett prefix kopieras bara blobbar som matchar det prefixet i käll behållaren till mål behållaren.
 
-Käll-och mål behållarna måste finnas innan du kan ange dem i en regel. När du har skapat replikeringsprincipen blir målcontainern skrivskyddad. Försök att skriva till målcontainern misslyckas med felkoden 409 (konflikt). Du kan dock anropa åtgärden [Ange BLOB-nivå](/rest/api/storageservices/set-blob-tier) på en BLOB i mål behållaren för att flytta den till Arkiv nivån. Mer information om Arkiv nivån finns i [Azure Blob Storage: frekvent åtkomst, låg frekvent åtkomst och Arkiv](storage-blob-storage-tiers.md#archive-access-tier)lag rings nivåer.
+Käll-och mål behållarna måste finnas innan du kan ange dem i en regel. När du har skapat replikeringsprincipen tillåts inte Skriv åtgärder till mål containern. Försök att skriva till målcontainern misslyckas med felkoden 409 (konflikt). Om du vill skriva till en mål behållare som en replikeringsprincip har kon figurer ATS för måste du antingen ta bort regeln som har kon figurer ATS för den behållaren eller ta bort replikeringsprincipen. Läs-och borttagnings åtgärder till mål behållaren tillåts när replikeringsprincipen är aktiv.
+
+Du kan anropa åtgärden [Ange BLOB-nivå](/rest/api/storageservices/set-blob-tier) på en BLOB i mål behållaren för att flytta den till Arkiv nivån. Mer information om Arkiv nivån finns i [Azure Blob Storage: frekvent åtkomst, låg frekvent åtkomst och Arkiv](storage-blob-storage-tiers.md#archive-access-tier)lag rings nivåer.
 
 ## <a name="replication-status"></a>Replikeringsstatus
 

@@ -9,16 +9,16 @@ ms.reviewer: dineshm
 ms.date: 01/11/2021
 ms.subservice: blobs
 ms.custom: devx-track-javascript, github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: d8727bd747ef6d035cabbccf2ad42b80937a06a8
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: d3aa0ca83b28708fde81cba12993ac6e79e79a88
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98180208"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98760614"
 ---
 # <a name="set-up-a-github-actions-workflow-to-deploy-your-static-website-in-azure-storage"></a>Konfigurera ett GitHub-åtgärds arbets flöde för att distribuera din statiska webbplats i Azure Storage
 
-Kom igång med [GitHub-åtgärder](https://docs.github.com/en/free-pro-team@latest/actions) genom att använda ett arbets flöde för att distribuera en statisk plats till ett Azure Storage-konto. När du har skapat ett arbets flöde för GitHub-åtgärder kommer du att kunna distribuera din webbplats automatiskt till Azure från GitHub när du gör ändringar i din plats kod.
+Kom igång med [GitHub-åtgärder](https://docs.github.com/en/actions) genom att använda ett arbets flöde för att distribuera en statisk plats till ett Azure Storage-konto. När du har skapat ett arbets flöde för GitHub-åtgärder kommer du att kunna distribuera din webbplats automatiskt till Azure från GitHub när du gör ändringar i din plats kod.
 
 > [!NOTE]
 > Om du använder [Azures statiska Web Apps](../../static-web-apps/index.yml)behöver du inte konfigurera ett arbets flöde för GitHub-åtgärder manuellt.
@@ -68,7 +68,7 @@ I exemplet ovan ersätter du plats hållarna med ditt prenumerations-ID och resu
 
 1. Klistra in hela JSON-utdata från Azure CLI-kommandot i fältet hemligt värde. Ge hemligheten ett namn som `AZURE_CREDENTIALS` .
 
-    När du konfigurerar arbets flödes filen senare använder du hemligheten för indata `creds` från åtgärden för Azure-inloggning. Exempel:
+    När du konfigurerar arbets flödes filen senare använder du hemligheten för indata `creds` från åtgärden för Azure-inloggning. Ett exempel:
 
     ```yaml
     - uses: azure/login@v1

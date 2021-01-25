@@ -81,38 +81,51 @@
           items:
             - name: Identifiera apparater som krävs
               href: how-to-identify-required-appliances.md
+              displayName: 'virtual, Dell, HPE, SMB, certified, hardware, deployment'
             - name: Installera programvara
               href: how-to-install-software.md
+              displayName: 'virtual, Dell, HPE, SMB, certified, hardware, port mirroring, ESXi, install'
             - name: Konfigurera ditt nätverk
               href: how-to-set-up-your-network.md
+              displayName: 'passive, browsers, network access, TAP, switch, mirroring, firewall, SPAN, monitoring, tuning'
         - name: Förbereda sensorer
           items:
             - name: Registrera sensorer
               href: how-to-manage-sensors-on-the-cloud.md
+              displayName: 'onboard, cloud, register, activate'
             - name: Aktivera och konfigurera sensor
               href: how-to-activate-and-set-up-your-sensor.md
+              displayName: 'onboard, register, activation, certificate, cloud connected, sign in, login, setup, learning mode, initial'
         - name: Förbereda den lokala hanteringskonsolen
           items:
             - name: Aktivera och konfigurera den lokala hanteringskonsolen
               href: how-to-activate-and-set-up-your-on-premises-management-console.md
+              displayName: 'activate, certificate, sign in, login, setup, initial, committed'
             - name: Konfigurera hög tillgänglighet
               href: how-to-set-up-high-availability.md
+              displayName: 'primary, secondary, failover, failback fail, recovery'
         - name: Hantera användare och användaråtkomst
           items:
             - name: Skapa och hantera användare
               href: how-to-create-and-manage-users.md
+              displayName: 'Active Directory, roles, permissions'
             - name: Definiera global användaråtkomstkontroll
               href: how-to-define-global-user-access-control.md
+              displayName: 'business unit, site, region'
         - name: Styr vilken trafik som övervakas
           href: how-to-control-what-traffic-is-monitored.md
+          displayName: 'Windows, Learning, Smart IT Learning, DNS, DHCP, engines, subnets'
         - name: Hantera sensor från den lokala hanteringskonsolen
           href: how-to-manage-sensors-from-the-on-premises-management-console.md
+          displayName: 'disconnect, connect, activation file, sensor backup'
         - name: Hantera enskilda sensorer
           href: how-to-manage-individual-sensors.md
+          displayName: 'activation, certificate, connect, timezone time zone, backup, restore, software update, failure'
         - name: Hantera sensorer i molnet
           href: how-to-manage-sensors-on-the-cloud.md
         - name: Hantera den lokala hanteringskonsolen
           href: how-to-manage-the-on-premises-management-console.md
+          displayName: 'activation, certificate, software update, backup, restore, proxy, password recovery'
         - name: Arbeta med paket för hotinformation
           href: how-to-work-with-threat-intelligence-packages.md
         - name: Arbeta med information om enhetsinventering
@@ -145,12 +158,16 @@
           items:
             - name: Arbeta med enhetsmeddelanden
               href: how-to-work-with-device-notifications.md
+              displayName: 'notifications, operating systems, enrich, device information, classification'
             - name: Förbättra port- och VLAN-namnmatchning
               href: how-to-enhance-port-and-vlan-name-resolution.md
+              displayName: 'port, VLAN'
             - name: Importera enhetsinformation
               href: how-to-import-device-information.md
+              displayName: 'import, enrich'
         - name: Spåra sensoraktivitet
           href: how-to-track-sensor-activity.md
+          displayName: 'timeline, time line, time-line, event'
         - name: Skapa rapporter
           href: how-to-generate-reports.md
         - name: Felsöka sensorn och den lokala hanteringskonsolen

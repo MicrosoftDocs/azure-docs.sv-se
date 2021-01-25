@@ -10,16 +10,16 @@ ms.author: jukullam
 ms.date: 10/19/2020
 ms.topic: conceptual
 ms.custom: github-actions-azure
-ms.openlocfilehash: e7f6066cb7ed5c166d3e2bdc3f895073b05b92b9
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 8bce95b65d9b944505d7f9153159b342e49427cd
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97605033"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762920"
 ---
 # <a name="use-github-actions-with-azure-machine-learning"></a>Använda GitHub-åtgärder med Azure Machine Learning
 
-Kom igång med [GitHub-åtgärder](https://docs.github.com/en/free-pro-team@latest/actions) för att träna en modell på Azure Machine Learning. 
+Kom igång med [GitHub-åtgärder](https://docs.github.com/en/actions) för att träna en modell på Azure Machine Learning. 
 
 > [!NOTE]
 > GitHub-åtgärder för Azure Machine Learning tillhandahålls i befintligt skick och stöds inte fullt ut av Microsoft. Om du stöter på problem med en speciell åtgärd öppnar du ett ärende i databasen för åtgärden. Om du till exempel stöter på problem med åtgärden AML-Deploy rapporterar du problemet i [https://github.com/Azure/aml-deploy]( https://github.com/Azure/aml-deploy) lagrings platsen.

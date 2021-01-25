@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: afe2cf288cd4a15091e8278309b3ecf74a2d35a4
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: eb08bb262806cb662822a75898196546a5c1058e
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98572756"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762545"
 ---
 # <a name="claim-sets"></a>Anspråksuppsättningar
 
@@ -55,6 +55,12 @@ Under anspråk som definieras av [IETF JWT](https://tools.ietf.org/html/rfc7519)
 Under anspråk som definieras av IETF- [äta](https://tools.ietf.org/html/draft-ietf-rats-eat-03#page-9) och används av Azure-attestering i objektet Response:
 - **"Nonce-anspråk" (nonce)**
 
+Under anspråk genereras som standard baserat på inkommande anspråk
+- **x-MS-ver**: JWT-schema version (förväntas vara "1,0")
+- **x-MS-attestering-typ**: sträng värde som representerar typ av attestering 
+- **x-MS-policy-hash**: sträng värde som innehåller SHA256-hash för princip texten beräknad av BASE64URL (SHA256 (UTF8 (BASE64URL (UTF8 (princip text))))
+- **x-MS-policy-Signer**: innehåller en JWK med den offentliga nyckeln eller certifikat kedjan som finns i den signerade princip rubriken. x-MS-policy-Signer läggs bara till om principen är signerad
+
 ## <a name="claims-specific-to-sgx-enclaves"></a>Anspråk som är speciella för SGX-enclaves
 
 ### <a name="incoming-claims-specific-to-sgx-attestation"></a>Inkommande anspråk som är specifik för SGX-attestering
@@ -71,7 +77,6 @@ Under anspråk genereras av tjänsten för SGX-attestering och kan användas fö
 Under anspråk genereras av tjänsten och ingår i objektet Response för SGX-attestering:
 - **x-MS-SGX-är-fel sökning**: ett booleskt värde som anger om enklaven har fel sökning aktiverat eller inte
 - **x-MS-SGX-Product-ID**
-- **x-MS-ver**
 - **x-MS-SGX-mrsigner**: hex-kodat värde för fältet "mrsigner" för offerten
 - **x-MS-SGX-mrenclave**: hex-kodat värde för fältet "mrenclave" för offerten
 - **x-MS-SGX-SVN**: säkerhets versions nummer som har kodats i offerten 
@@ -99,36 +104,39 @@ maa-ehd | x-MS-SGX-EHD
 AAS-EHD | x-MS-SGX-EHD
 maa-attestationcollateral | x-MS-SGX-material
 
-## <a name="claims-issued-specific-to-trusted-platform-module-tpm-attestation"></a>Anspråk som utfärdats just till Trusted Platform Module (TPM) attestering
+## <a name="claims-specific-to-trusted-platform-module-tpm-vbs-attestation"></a>Anspråk som är speciella för Trusted Platform Module (TPM)/VBS-attestering
 
-### <a name="incoming-claims-can-also-be-used-as-outgoing-claims"></a>Inkommande anspråk (kan också användas som utgående anspråk)
+### <a name="incoming-claims-for-tpm-attestation"></a>Inkommande anspråk för TPM-attestering
 
-- **aikValidated**: booleskt värde som innehåller information om certifikat för attestering av identitets nyckel (AIK) har verifierats eller inte.
-- **aikPubHash**: sträng som innehåller base64 (offentlig nyckel för SHA256 (AIK i der-format)).
-- **tpmVersion**: heltals värde som innehåller den Trusted Platform Module (TPM) huvud version.
-- **secureBootEnabled**: booleskt värde som anger om säker start har Aktiver ATS.
-- **iommuEnabled**: booleskt värde som anger om indata-utdata för minnes hanterings enhet (IOMMU) är aktive rad.
-- **bootDebuggingDisabled**: booleskt värde som anger om start fel sökning har inaktiverats.
-- **notSafeMode**: booleskt värde som anger om Windows inte körs i fel säkert läge.
-- **notWinPE**: booleskt värde som anger om Windows inte körs i WinPE-läge.
-- **vbsEnabled**: booleskt värde som anger om vbs är aktiverat.
-- **vbsReportPresent**: booleskt värde som anger om vbs enklaven Report är tillgängligt.
-- **enclaveAuthorId**: sträng värde som innehåller det Base64Url-kodade värdet för enklaven författar-ID: författar identifierare för den primära modulen för enklaven.
-- **enclaveImageId**: sträng värde som innehåller det Base64Url-kodade värdet för enklaven-avbildnings-ID: t för avbildnings-ID: t för den primära modulen för enklaven.
-- **enclaveOwnerId**: sträng värde som innehåller det Base64Url-kodade värdet för enklaven ägar-ID-ID: t för ägaren för enklaven.
-- **enclaveFamilyId**: sträng värde som innehåller det Base64Url-kodade värdet för enklaven Family ID. Familje identifieraren för den primära modulen för enklaven.
-- **enclaveSvn**: ett heltals värde som innehåller säkerhets versions numret för den primära modulen för enklaven.
-- **enclavePlatformSvn**: ett heltals värde som innehåller säkerhets versions numret för den plattform som är värd för enklaven.
-- **enclaveFlags**: enclaveFlags-anspråket är ett heltals värde som innehåller flaggor som beskriver körnings principen för enklaven.
-  
-### <a name="outgoing-claims-specific-to-tpm-attestation"></a>Utgående anspråk som är speciella för TPM-attestering
+Anspråk som utfärdats av Azure-attestering för TPM-attestering. Anspråkets tillgänglighet är beroende av beviset som tillhandahålls för attestering.
 
-- **policy_hash**: sträng värde som innehåller SHA256-hash för princip texten som beräknats av BASE64URL (SHA256 (BASE64URL (UTF8 (princip text))).
-- **policy_signer**: innehåller en JWK med den offentliga nyckeln eller certifikat kedjan som finns i den signerade princip rubriken.
-- **ver (version)**: sträng värde som innehåller version av rapporten. För närvarande 1,0.
-- **CNF (bekräftelse)-anspråk**: "CNF"-anspråket används för att identifiera den viktiga nyckeln. Bekräftelse anspråk enligt definitionen i RFC 7800 innehåller den offentliga delen av den beställda enklaven-nyckeln som representeras som ett JWK-objekt (JSON Web Key) (RFC 7517).
-- **rp_data (förlitande part data)**: förlitande part data, om sådana finns, som anges i begäran och som används av den förlitande parten som ett nonce för att säkerställa att rapporten uppdateras.
-- **"JTI"-anspråk (JWT ID)**: anspråket "JTI" (JWT ID) tillhandahåller en unik IDENTIFIERARE för JWT. Identifier-värdet tilldelas på ett sätt som garanterar att det är en försumbar sannolikhet att samma värde har tilldelats av misstag till ett annat data objekt.
+- **aikValidated**: booleskt värde som innehåller information om certifikat för attestering av identitets nyckel (AIK) har verifierats eller inte
+- **aikPubHash**: sträng som innehåller base64 (offentlig nyckel för SHA256 (AIK i der-format))
+- **tpmVersion**: heltals värde som innehåller den Trusted Platform Module (TPM) huvud version
+- **secureBootEnabled**: booleskt värde som anger om säker start har Aktiver ATS
+- **iommuEnabled**: booleskt värde som anger om indata-utgående minnes hanterings enhet (IOMMU) är aktive rad
+- **bootDebuggingDisabled**: booleskt värde som anger om start fel sökning har inaktiverats
+- **notSafeMode**: booleskt värde som anger om Windows inte körs i fel säkert läge
+- **notWinPE**: booleskt värde som anger om Windows inte körs i WinPE-läge
+- **vbsEnabled**: booleskt värde som anger om vbs är aktiverat
+- **vbsReportPresent**: booleskt värde som anger om vbs enklaven Report är tillgängligt
+
+### <a name="incoming-claims-for-vbs-attestation"></a>Inkommande anspråk för VBS-attestering
+
+Anspråk som utfärdats av Azure-attestering för VBS-attestering är utöver de anspråk som görs tillgängliga för TPM-attestering. Anspråkets tillgänglighet är beroende av beviset som tillhandahålls för attestering.
+
+- **enclaveAuthorId**: sträng värde som innehåller det Base64Url-kodade värdet för enklaven författar-ID: författar-ID för den primära modulen för enklaven
+- **enclaveImageId**: sträng värde som innehåller det Base64Url-kodade värdet för enklaven-avbildnings-ID: t för avbildnings-ID: t för den primära modulen för enklaven
+- **enclaveOwnerId**: sträng värde som innehåller det Base64Url-kodade värdet för enklaven ägar-ID: ID för ägaren för enklaven
+- **enclaveFamilyId**: sträng värde som innehåller det Base64Url-kodade värdet för enklaven Family ID. Familje identifieraren för den primära modulen för enklaven
+- **enclaveSvn**: heltals värde som innehåller säkerhets versions numret för den primära modulen för enklaven
+- **enclavePlatformSvn**: heltals värde som innehåller säkerhets versions numret för den plattform som är värd för enklaven
+- **enclaveFlags**: enclaveFlags-anspråket är ett heltals värde som innehåller flaggor som beskriver körnings principen för enklaven
+
+### <a name="outgoing-claims-specific-to-tpm-and-vbs-attestation"></a>Utgående anspråk som är speciella för TPM och VBS-attestering
+
+- **CNF (bekräftelse)**: "CNF"-anspråket används för att identifiera den viktiga nyckeln. Bekräftelse anspråk enligt definitionen i RFC 7800 innehåller den offentliga delen av den bevisade enklaven-nyckeln som representeras som ett JWK-objekt (JSON Web Key) (RFC 7517)
+- **rp_data (förlitande part data)**: förlitande part data, om sådana finns, som anges i begäran och som används av den förlitande parten som ett nonce för att säkerställa att rapporten uppdateras. rp_data läggs bara till om det finns rp_data
 
 ### <a name="property-claims"></a>Egenskaps anspråk
 
