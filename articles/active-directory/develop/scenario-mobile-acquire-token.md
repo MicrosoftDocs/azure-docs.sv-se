@@ -13,12 +13,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 946908bf28a50bc8b523c4efd853e8720b115c7b
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: c071cb9a8a27964a93e039e4d1536e078730bfc9
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063084"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753621"
 ---
 # <a name="get-a-token-for-a-mobile-app-that-calls-web-apis"></a>Hämta en token för en mobilapp som anropar webb-API: er
 
@@ -28,7 +28,7 @@ Innan din app kan anropa skyddade webb-API: er måste den ha en åtkomsttoken. D
 
 När du begär en token måste du definiera ett omfång. Omfånget avgör vilka data som din app kan komma åt.
 
-Det enklaste sättet att definiera ett omfång är att kombinera det önskade webb-API: et `App ID URI` med omfånget `.default` . Den här definitionen talar om för Microsoft Identity Platform att appen kräver alla omfattningar som anges i portalen.
+Det enklaste sättet att definiera ett omfång är att kombinera det önskade webb-API: et `App ID URI` med omfånget `.default` . Den här definitionen visar vilken Microsoft Identity-plattform som appen kräver alla omfattningar som anges i portalen.
 
 ### <a name="android"></a>Android
 ```Java
@@ -243,7 +243,7 @@ Klassen definierar följande konstanter:
 
 ##### <a name="withextrascopetoconsent"></a>WithExtraScopeToConsent
 
-Använd `WithExtraScopeToConsent` modifieraren i ett avancerat scenario där du vill att användaren ska ge sitt första medgivande till flera resurser. Du kan använda den här modifieraren när du inte vill använda ett stegvist godkännande, som normalt används med MSAL.NET eller Microsoft Identity Platform 2,0. Mer information finns i [få användar medgivande framför flera resurser](scenario-desktop-production.md#have-the-user-consent-upfront-for-several-resources).
+Använd `WithExtraScopeToConsent` modifieraren i ett avancerat scenario där du vill att användaren ska ge sitt första medgivande till flera resurser. Du kan använda den här modifieraren när du inte vill använda ett stegvist godkännande, som normalt används med MSAL.NET eller Microsoft Identity Platform. Mer information finns i [få användar medgivande framför flera resurser](scenario-desktop-production.md#have-the-user-consent-upfront-for-several-resources).
 
 Här är ett kod exempel:
 

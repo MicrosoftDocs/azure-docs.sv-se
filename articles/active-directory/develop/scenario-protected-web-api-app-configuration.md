@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 9ffb77db4f7bcd5a07e25085eed17e8972aa9a33
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 3a26157949ff6ef69c9c009dfdd40781b47bc761
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98683767"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753582"
 ---
 # <a name="protected-web-api-code-configuration"></a>Skyddat webb-API: kod konfiguration
 
@@ -55,7 +55,7 @@ HttpResponseMessage response = await _httpClient.GetAsync(apiUri);
 ```
 
 > [!IMPORTANT]
-> Ett klient program begär Bearer-token till Microsoft Identity Platform-slutpunkten *för webb-API: et*. Webb-API är det enda program som ska verifiera token och Visa de anspråk som den innehåller. Klient program bör aldrig försöka inspektera anspråk i tokens.
+> Ett klient program begär Bearer-token till Microsoft Identity Platform *för webb-API: et*. Webb-API är det enda program som ska verifiera token och Visa de anspråk som den innehåller. Klient program bör aldrig försöka inspektera anspråk i tokens.
 >
 > I framtiden kan webb-API: et kräva att token krypteras. Detta krav förhindrar åtkomst för klient program som kan visa åtkomsttoken.
 
@@ -140,7 +140,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
- För närvarande skapar ASP.NET Core mallar Azure Active Directory (Azure AD) webb-API: er som loggar in användare i din organisation eller i en organisation. De loggar inte in användare med personliga konton. Du kan dock ändra mallarna till att använda Microsoft Identity Platform-slutpunkten genom att använda [Microsoft. Identity. Web](https://www.nuget.org/packages/Microsoft.Identity.Web) och ersätta koden i *startup.cs*:
+ För närvarande skapar ASP.NET Core mallar Azure Active Directory (Azure AD) webb-API: er som loggar in användare i din organisation eller i en organisation. De loggar inte in användare med personliga konton. Du kan dock ändra mallarna till att använda Microsoft Identity Platform genom att använda [Microsoft. Identity. Web](https://www.nuget.org/packages/Microsoft.Identity.Web) och ersätta koden i *startup.cs*:
 
 ```csharp
 using Microsoft.Identity.Web;
@@ -195,7 +195,7 @@ Validerings stegen samlas in i verifierare, som tillhandahålls av [Microsoft Id
 
 I den här tabellen beskrivs verifierarna:
 
-| Systemhälsoverifierare | Description |
+| Systemhälsoverifierare | Beskrivning |
 |---------|---------|
 | **ValidateAudience** | Säkerställer att token är för programmet som validerar token åt dig. |
 | **ValidateIssuer** | Säkerställer att token utfärdats av en betrodd STS, vilket innebär att det är från någon som du litar på. |

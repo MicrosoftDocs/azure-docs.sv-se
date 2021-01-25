@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 0d759b3af097067ba0c9215b65b212d50474d571
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 5bfdf90ddbd500fd9d1c504bd37ed4ac35d8bf70
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178355"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98752757"
 ---
 # <a name="tutorial-call-the-microsoft-graph-api-from-a-windows-desktop-app"></a>Självstudie: anropa Microsoft Graph-API: et från en Windows Desktop-app
 
@@ -47,7 +47,7 @@ Exempel programmet som du skapar med den här guiden möjliggör ett Windows-skr
 
 ## <a name="handling-token-acquisition-for-accessing-protected-web-apis"></a>Hantering av hämtning av token för åtkomst till skyddade webb-API: er
 
-När användaren har autentiserats tar exempel programmet emot en token som du kan använda för att fråga Microsoft Graph-API eller ett webb-API som skyddas av Microsoft Identity Platform för utvecklare.
+När användaren har autentiserats tar exempel programmet emot en token som du kan använda för att fråga Microsoft Graph API eller ett webb-API som skyddas av Microsoft Identity Platform.
 
 API: er som Microsoft Graph kräver en token för att tillåta åtkomst till vissa resurser. Till exempel krävs en token för att läsa en användar profil, komma åt en användares kalender eller skicka e-post. Ditt program kan begära en åtkomsttoken genom att använda MSAL för att komma åt resurserna genom att ange API-omfång. Denna åtkomsttoken läggs sedan till i HTTP-Authorization-huvudet för varje anrop som görs mot den skyddade resursen.
 
@@ -57,7 +57,7 @@ MSAL hanterar cachelagring och uppdaterar åtkomsttoken åt dig, så att ditt pr
 
 I den här guiden används följande NuGet-paket:
 
-|Bibliotek|Description|
+|Bibliotek|Beskrivning|
 |---|---|
 |[Microsoft. Identity. client](https://www.nuget.org/packages/Microsoft.Identity.Client)|Microsoft Authentication Library (MSAL.NET)|
 

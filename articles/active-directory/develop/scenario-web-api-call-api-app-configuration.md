@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/26/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 4a888c3ad771e4a7edbd7110ba584050fe68e810
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: b8360a22c815fa28626bb07a1518bd82ba6e3e46
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443797"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753510"
 ---
 # <a name="a-web-api-that-calls-web-apis-code-configuration"></a>Ett webb-API som anropar webb-API: er kod konfiguration
 
@@ -88,7 +88,7 @@ Microsoft. Identity. Web tillhandahåller flera olika sätt att beskriva certifi
 
 ## <a name="startupcs"></a>Startup.cs
 
-Ditt webb-API måste hämta en token för det underordnade API: et. Du anger det genom att lägga till `.EnableTokenAcquisitionToCallDownstreamApi()` raden efter `.AddMicrosoftIdentityWebApi(Configuration)` . Den här raden visar `ITokenAcquisition` tjänsten som du kan använda i åtgärder för styrenhet/sidor. Men som du ser i de följande två punkterna kan du göra ännu enklare. Du måste också välja en implementation av tokenbaserad cache, till exempel `.AddInMemoryTokenCaches()` i *startup.cs* :
+Ditt webb-API måste hämta en token för det underordnade API: et. Du anger det genom att lägga till `.EnableTokenAcquisitionToCallDownstreamApi()` raden efter `.AddMicrosoftIdentityWebApi(Configuration)` . Den här raden visar `ITokenAcquisition` tjänsten som du kan använda i åtgärder för styrenhet/sidor. Men som du ser i de följande två punkterna kan du göra ännu enklare. Du måste också välja en implementation av tokenbaserad cache, till exempel `.AddInMemoryTokenCaches()` i *startup.cs*:
 
 ```csharp
 using Microsoft.Identity.Web;
@@ -252,7 +252,7 @@ Du kan också se ett exempel på OBO Flow-implementering i [Node.js och Azure Fu
 
 ## <a name="protocol"></a>Protokoll
 
-Mer information om OBO-protokollet finns i [Microsoft Identity Platform och OAuth 2,0 on-behalf-of Flow](./v2-oauth2-on-behalf-of-flow.md).
+Mer information om OBO-protokollet finns i [Microsoft Identity Platform och OAuth 2,0 on-of-Flow](./v2-oauth2-on-behalf-of-flow.md).
 
 ## <a name="next-steps"></a>Nästa steg
 

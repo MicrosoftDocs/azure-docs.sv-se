@@ -13,12 +13,12 @@ ms.date: 09/21/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 8f3fd462a52b035cd5b5447560e5472b41f237fa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3bd0621d607b121f19bc47c717343b8e2e39b04f
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653238"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98752725"
 ---
 # <a name="microsoft-identity-platform-userinfo-endpoint"></a>Microsoft Identity Platform UserInfo-slutpunkt
 
@@ -28,7 +28,7 @@ UserInfo-slutpunkten är en del av [OpenID Connect standard](https://openid.net/
 
 Du kan program mässigt identifiera UserInfo-slutpunkten med hjälp av OpenID Connect Discovery-dokumentet på `https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration` . Den visas i `userinfo_endpoint` fältet och det här mönstret kan användas över molnet för att peka till den högra slut punkten.  Vi rekommenderar inte att du hårdkodar UserInfo-slutpunkten i din app – Använd OIDC identifierings dokument för att hitta slut punkten vid körning i stället.
 
-Som en del av OpenID Connect-specifikationen anropas UserInfo-slutpunkten ofta automatiskt av [OIDC-kompatibla bibliotek](https://openid.net/developers/certified/)  för att hämta information om användaren.  Utan att vara värd för en sådan slut punkt skulle Microsoft Identity Platform inte vara standardiserade standarder och vissa bibliotek skulle därför inte fungera.  I [listan över anspråk som identifierats i OIDC-standarden](https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims) producerar vi namn anspråk, ämnes anspråk och e-post när de är tillgängliga och medgivande för.  
+Som en del av OpenID Connect-specifikationen anropas UserInfo-slutpunkten ofta automatiskt av [OIDC-kompatibla bibliotek](https://openid.net/developers/certified/)  för att hämta information om användaren.  Utan att vara värd för en sådan slut punkt skulle Microsoft Identity Platform inte vara standard standarder och vissa bibliotek skulle därför inte fungera.  I [listan över anspråk som identifierats i OIDC-standarden](https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims) producerar vi namn anspråk, ämnes anspråk och e-post när de är tillgängliga och medgivande för.  
 
 ## <a name="consider-use-an-id-token-instead"></a>Överväg: Använd en ID-token i stället
 

@@ -1,5 +1,6 @@
 ---
-title: 'Bygg en daemon-app som anropar webb-API: er – Microsoft Identity Platform | Azure'
+title: 'Bygg en daemon-app som anropar webb-API: er | Azure'
+titleSuffix: Microsoft identity platform
 description: 'Lär dig hur du skapar en daemon-app som anropar webb-API: er'
 services: active-directory
 author: jmprieur
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 01/31/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: e63a948260863c93a92e4241044be5e0baf8afca
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 45af940382a261f1793583e471871b9cceed0a57
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443270"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753828"
 ---
 # <a name="scenario-daemon-application-that-calls-web-apis"></a>Scenario: daemon-program som anropar webb-API: er
 
@@ -45,7 +46,7 @@ Program som hämtar en token för sina egna identiteter:
 
 > [!IMPORTANT]
 >
-> - Användare kan inte interagera med ett daemon-program. Ett daemon-program kräver en egen identitet. Den här typen av program begär en åtkomsttoken genom att använda dess program identitet och presentera dess program-ID, autentiseringsuppgift (lösen ord eller certifikat) och program-ID-URI till Azure AD. Efter en lyckad autentisering tar daemonen emot en åtkomsttoken (och en uppdateringstoken) från slut punkten för Microsoft Identity Platform. Denna token används sedan för att anropa webb-API: et (och uppdateras vid behov).
+> - Användare kan inte interagera med ett daemon-program. Ett daemon-program kräver en egen identitet. Den här typen av program begär en åtkomsttoken genom att använda dess program identitet och presentera dess program-ID, autentiseringsuppgift (lösen ord eller certifikat) och program-ID-URI till Azure AD. Efter en lyckad autentisering tar daemonen emot en åtkomsttoken (och en uppdateringstoken) från Microsoft Identity Platform. Denna token används sedan för att anropa webb-API: et (och uppdateras vid behov).
 > - Eftersom användarna inte kan interagera med daemon-program går det inte att använda ett stegvist tillstånd. Alla nödvändiga API-behörigheter måste konfigureras vid program registrering. Koden för programmet begär bara statiskt definierade behörigheter. Det innebär också att daemon-program inte stöder stegvist tillstånd.
 
 För utvecklare har slut punkt till slut punkt i det här scenariot följande aspekter:

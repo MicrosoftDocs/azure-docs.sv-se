@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 01/14/2021
 ms.author: jamesmantu
 ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: 58e8fd5006e72465e35912a5b15cade1201d680f
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 323c9e207e5a16ba3e5907862e7a1eba84cc02e6
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98680323"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754182"
 ---
 # <a name="quickstart-sign-in-and-get-an-access-token-in-a-react-spa-using-the-auth-code-flow"></a>Snabb start: Logga in och få en åtkomsttoken i en reakta SPA med auth Code Flow
 
@@ -27,7 +27,7 @@ Se [hur exemplet fungerar](#how-the-sample-works) för en illustration.
 
 I den här snabb starten används MSAL reagera med Authorization Code Flow. En liknande snabb start som använder MSAL.js med det implicita flödet finns i [snabb start: Logga in användare i Java Script-appar med en sida](./quickstart-v2-javascript.md).
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 * Azure-prenumeration – [skapa en Azure-prenumeration kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 * [Node.js](https://nodejs.org/en/download/)
@@ -40,9 +40,7 @@ I den här snabb starten används MSAL reagera med Authorization Code Flow. En l
 >
 > ### <a name="option-1-express-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Alternativ 1 (Express): registrera och konfigurera appen automatiskt och ladda ned kod exemplet
 >
-> 1. Logga in på [Azure-portalen](https://portal.azure.com).
-> 1. Om ditt konto ger dig åtkomst till fler än en klient väljer du ditt konto längst upp till höger och anger sedan din portal-session till den Azure AD-klient som du vill använda.
-> 1. Välj [Appregistreringar](https://aka.ms/AAatrux).
+> 1. Gå till snabb starts upplevelsen för <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs" target="_blank">Azure Portal-Appregistreringar <span class="docon docon-navigate-external x-hidden-focus"></span> </a> .
 > 1. Ange ett namn för ditt program.
 > 1. Under **Kontotyper som stöds** väljer du **Accounts in any organizational directory and personal Microsoft accounts** (Konton i alla organisationskataloger och personliga Microsoft-konton).
 > 1. Välj **Register** (Registrera).
@@ -52,18 +50,17 @@ I den här snabb starten används MSAL reagera med Authorization Code Flow. En l
 >
 > #### <a name="step-1-register-your-application"></a>Steg 1: Registrera ditt program
 >
-> 1. Logga in på [Azure-portalen](https://portal.azure.com).
-> 1. Om ditt konto ger dig åtkomst till fler än en klient väljer du ditt konto längst upp till höger och anger sedan din portal-session till den Azure AD-klient som du vill använda.
-> 1. Välj [Appregistreringar](https://go.microsoft.com/fwlink/?linkid=2083908).
-> 1. Välj **ny registrering**.
+> 1. Logga in på <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
+> 1. Om du har åtkomst till flera klienter använder du filtret för **katalog + prenumeration** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: i den översta menyn för att välja den klient som du vill registrera ett program i.
+> 1. Sök efter och välj **Azure Active Directory**.
+> 1. Under **Hantera** väljer du **Appregistreringar**  >  **ny registrering**.
 > 1. När sidan **Registrera ett program** visas anger du ett namn för programmet.
 > 1. Under **Kontotyper som stöds** väljer du **Accounts in any organizational directory and personal Microsoft accounts** (Konton i alla organisationskataloger och personliga Microsoft-konton).
 > 1. Välj **Register** (Registrera). På sidan **Översikt över** appar noterar du **programmets (klient) ID-** värde för senare användning.
-> 1. I det vänstra fönstret i det registrerade programmet väljer du **autentisering**.
-> 1. Under **plattforms konfiguration** väljer du `Add a platform` .
-> 1. I det resulterande fönstret väljer du **ett program på en sida**.
+> 1. Under **Hantera** väljer du **autentisering**.
+> 1. Under **plattforms konfiguration** väljer du **Lägg till en plattform**. I fönstret som öppnas väljer du **program med en enda sida**.
 > 1. Ange värdet för **omdirigerings-URI** `http://localhost:3000/` . Det här är standard porten NodeJS lyssnar på den lokala datorn. Vi kommer att returnera autentiserings svaret till denna URI när användaren har autentiserat användaren. 
-> 1. Klicka på knappen **Konfigurera** för att tillämpa ändringarna.
+> 1. Välj **Konfigurera** för att tillämpa ändringarna.
 > 1. Expandera **program med en enda sida** under **plattforms konfiguration** .
 > 1. Bekräfta att  ![ ](media/quickstart-v2-javascript/green-check.png) OMdirigerings-URI: n är berättigad till Flow-flödet med PKCE under beviljande typer som redan har kon figurer ATS.
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2021
 ms.author: memildin
-ms.openlocfilehash: 1e6b66fce6b22dfd12c162d469ce44137c94ab87
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: e881c61d16cd167ace78abb96dca7e714436cfc0
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97916379"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98752209"
 ---
 # <a name="secure-score-in-azure-security-center"></a>Säkerhetspoäng i Azure Security Center
 
@@ -54,7 +54,7 @@ Du hittar den övergripande säkra poängen, samt poängen per prenumeration, vi
 
 ### <a name="get-your-secure-score-from-the-portal"></a>Få dina säkra Poäng från portalen
 
-Security Center visar ditt resultat på en framträdande plats i portalen: det är den första huvud panelen på översikts sidan för Security Center. När du väljer den här panelen går du till sidan dedikerade säker poäng där du ser poängen uppdelad efter prenumeration. Välj en enskild prenumeration om du vill se en detaljerad lista över prioriterade rekommendationer och den potentiella påverkan som åtgärdas i prenumerationens resultat.
+Security Center visar ditt resultat på en framträdande plats i portalen: det är den första huvud panelen på översikts sidan för Security Center. När du väljer den här panelen går du till sidan dedikerade säker poäng där du ser poängen uppdelad efter prenumeration. Välj en enskild prenumeration om du vill se en detaljerad lista över prioriterade rekommendationer och den potentiella påverkan som åtgärdas i prenumerationens resultat. 
 
 I Sammanfattning visas dina säkra poäng på följande platser i Security Center Portal sidor.
 
@@ -62,9 +62,14 @@ I Sammanfattning visas dina säkra poäng på följande platser i Security Cente
 
     :::image type="content" source="./media/secure-score-security-controls/score-on-main-dashboard.png" alt-text="Den säkra poängen på Security Centers instrument panel":::
 
-- På sidan dedikerad **säker Poäng** :
+- På sidan dedikerad **säker Poäng** kan du se säkerhets poängen för din prenumeration och dina hanterings grupper:
 
-    :::image type="content" source="./media/secure-score-security-controls/score-on-dedicated-dashboard.png" alt-text="Säkerhets poängen på Security Center säkra Poäng Sidan":::
+    :::image type="content" source="./media/secure-score-security-controls/score-on-dedicated-dashboard.png" alt-text="Säkerhets poängen för prenumerationer på Security Center säkra resultat Sidan":::
+
+    :::image type="content" source="./media/secure-score-security-controls/secure-score-management-groups.png" alt-text="Säkerhets poängen för hanterings grupper på Security Center sidan säker Poäng":::
+
+    > [!NOTE]
+    > Alla hanterings grupper som du inte har tillräckliga behörigheter för visar deras Poäng som "begränsad". 
 
 - Överst på sidan **rekommendationer** :
 
@@ -125,7 +130,7 @@ Instrument panelen innehåller följande två rapporter som hjälper dig att ana
 - **Resurs Sammanfattning** – tillhandahåller sammanfattande data om dina resursers hälsa.
 - **Översikt över säkra Poäng** – tillhandahåller sammanfattade data om Poäng förloppet. Använd diagrammet "säkra poäng över tid per prenumeration" för att visa ändringar i poängen. Om du ser en dramatisk förändring i resultatet, kontrollerar du tabellen "identifierade ändringar som kan påverka din säkra poäng" för möjliga ändringar som kan ha orsakat ändringen. Den här tabellen visar borttagna resurser, nyligen distribuerade resurser eller resurser som deras säkerhets status ändrats för någon av rekommendationerna.
 
-:::image type="content" source="./media/secure-score-security-controls/power-bi-secure-score-dashboard.png" alt-text="Den valfria säkra poängen över tid PowerBI-instrumentpanelen för att spåra dina säkra poäng över tid och undersöka ändringar":::
+:::image type="content" source="./media/secure-score-security-controls/power-bi-secure-score-dashboard.png" alt-text="De valfria säkra poängen över tid Power BI instrument panelen för att spåra dina säkra poäng över tid och undersöka ändringar":::
 
 
 
@@ -152,7 +157,7 @@ Den maximala poängen för den här kontrollen, tillämpa system uppdateringar, 
 
 ### <a name="calculations---understanding-your-score"></a>Beräkningar – förstå dina Poäng
 
-|Mått|Formel och exempel|
+|Metric|Formel och exempel|
 |-|-|
 |**Säkerhets kontrollens aktuella Poäng**|<br>![Ekvation för att beräkna en säkerhets kontrolls Poäng](media/secure-score-security-controls/secure-score-equation-single-control.png)<br><br>Varje enskild säkerhets kontroll bidrar till säkerhets poängen. Varje resurs som påverkas av en rekommendation inom kontrollen bidrar till kontrollens aktuella resultat. Den aktuella poängen för varje kontroll är ett mått på statusen för resurserna *i* kontrollen.<br>![Knapp beskrivningar som visar de värden som används när du beräknar säkerhets kontrollens aktuella Poäng](media/secure-score-security-controls/security-control-scoring-tooltips.png)<br>I det här exemplet skulle max poängen på 6 divideras med 78 eftersom det är summan av de felfria och felaktiga resurserna.<br>6/78 = 0,0769<br>Om du multiplicerar det med antalet felfria resurser (4) resulterar det i den aktuella poängen:<br>0,0769 * 4 = **0,31**<br><br>|
 |**Säkerhetspoäng**<br>Enstaka prenumeration|<br>![Ekvation för att beräkna en prenumerations säkra Poäng](media/secure-score-security-controls/secure-score-equation-single-sub.png)<br><br>![Säker Poäng för enskild prenumeration med alla kontroller aktiverade](media/secure-score-security-controls/secure-score-example-single-sub.png)<br>I det här exemplet finns det en enda prenumeration med alla säkerhets kontroller som är tillgängliga (en potentiell högsta poäng på 60 punkter). Poängen visar 28 punkter av en möjlig 60 och de återstående 32 punkterna visas i siffrorna "potentiella Poäng ökning" i säkerhets kontrollerna.<br>![Lista över kontroller och potentiella Poäng ökningar](media/secure-score-security-controls/secure-score-example-single-sub-recs.png)|

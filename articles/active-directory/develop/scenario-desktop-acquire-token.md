@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 01/06/2021
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 040f9fa67617b058138926310706f4bc56c4ff62
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: a2048a509bdbe11c948ac8eb2daa6e78013c2fa5
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98680981"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753778"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>Skriv bords app som anropar webb-API: er: Hämta en token
 
@@ -439,7 +439,7 @@ Om du vill logga in en domän användare på en domän eller en Azure AD-anslute
 
 - Det här flödet är aktiverat för .NET Desktop-, .NET Core-och UWP-appar.
 
-Mer information om medgivande finns i [behörigheter för Microsoft Identity Platform och medgivande](./v2-permissions-and-consent.md).
+Mer information om medgivande finns i [Microsoft Identity Platform-behörigheter och medgivande](./v2-permissions-and-consent.md).
 
 ### <a name="learn-how-to-use-it"></a>Lär dig hur du använder den
 

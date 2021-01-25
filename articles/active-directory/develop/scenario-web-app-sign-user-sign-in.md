@@ -1,5 +1,6 @@
 ---
-title: Skriv en webbapp som loggar in/ut-användare – Microsoft Identity Platform | Azure
+title: Skriv en webbapp som loggar in/ut-användare | Azure
+titleSuffix: Microsoft identity platform
 description: Lär dig hur du skapar en webbapp som loggar in/ut-användare
 services: active-directory
 author: jmprieur
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: e7397f6d02d71a6344953b8210b0349b9ee26360
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 5b0b86321f7f2b320c3fea8e7c5bfa45bd936b77
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443559"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753007"
 ---
 # <a name="web-app-that-signs-in-users-sign-in-and-sign-out"></a>Webbapp som loggar in användare: inloggning och utloggning
 
@@ -112,7 +113,7 @@ def index():
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-I ASP.NET utlöser **Sign-in** `SignIn` åtgärden på kontroll panelen genom att välja inloggnings knappen i webbappen `AccountController` . I tidigare versioner av ASP.NET Core-mallarna `Account` har kontrollanten bäddats in med webbappen. Det är inte längre fallet eftersom kontrollanten nu är en del av NuGet **-paketet Microsoft. Identity. Web. UI** . Se [AccountController.cs](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web.UI/Areas/MicrosoftIdentity/Controllers/AccountController.cs) för mer information.
+I ASP.NET utlöser  `SignIn` åtgärden på kontroll panelen genom att välja inloggnings knappen i webbappen `AccountController` . I tidigare versioner av ASP.NET Core-mallarna `Account` har kontrollanten bäddats in med webbappen. Det är inte längre fallet eftersom kontrollanten nu är en del av NuGet **-paketet Microsoft. Identity. Web. UI** . Se [AccountController.cs](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web.UI/Areas/MicrosoftIdentity/Controllers/AccountController.cs) för mer information.
 
 Den här styrenheten hanterar också Azure AD B2C program.
 
@@ -213,7 +214,7 @@ När användaren har loggat in på din app vill du aktivera dem för att logga u
 Att logga ut från en webbapp omfattar mer än att ta bort information om det inloggade kontot från webbappens tillstånd.
 Webbappen måste också omdirigera användaren till Microsoft Identity Platform- `logout` slutpunkten för att logga ut.
 
-När din webbapp omdirigerar användaren till `logout` slut punkten rensar den här slut punkten användarens session från webbläsaren. Om din app inte gick till `logout` slut punkten, kommer användaren att autentiseras igen till din app utan att ange sina autentiseringsuppgifter igen. Orsaken är att de har en giltig enkel inloggnings-session med Microsoft Identity Platform-slutpunkten.
+När din webbapp omdirigerar användaren till `logout` slut punkten rensar den här slut punkten användarens session från webbläsaren. Om din app inte gick till `logout` slut punkten, kommer användaren att autentiseras igen till din app utan att ange sina autentiseringsuppgifter igen. Orsaken är att de har en giltig enkel inloggnings-session med Microsoft Identity Platform.
 
 Mer information finns i avsnittet [skicka en utloggnings förfrågan](v2-protocols-oidc.md#send-a-sign-out-request) i dokumentationen för [Microsoft Identity Platform och OpenID Connect Protocol](v2-protocols-oidc.md) .
 

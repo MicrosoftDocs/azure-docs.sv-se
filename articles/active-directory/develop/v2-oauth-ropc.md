@@ -13,12 +13,12 @@ ms.date: 05/18/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 39cd25c2c84e92a0b06bc2ee6c6229ecb2d296d5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d0282e4f52db8557364cdabe197fa0da63204e42
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91812547"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98752650"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-resource-owner-password-credentials"></a>Autentiseringsuppgifter för Microsoft Identity Platform och OAuth 2,0-resurs ägar lösen ord
 
@@ -29,7 +29,7 @@ Microsoft Identity Platform stöder [OAuth 2,0-ROPC (Resource Owner Password Cre
 
 > [!IMPORTANT]
 >
-> * Slut punkten för Microsoft Identity Platform stöder endast ROPC för Azure AD-klienter, inte personliga konton. Det innebär att du måste använda en klient-/regionsspecifika slut punkt ( `https://login.microsoftonline.com/{TenantId_or_Name}` ) eller `organizations` slut punkten.
+> * Microsoft Identity Platform stöder endast ROPC för Azure AD-klienter, inte personliga konton. Det innebär att du måste använda en klient-/regionsspecifika slut punkt ( `https://login.microsoftonline.com/{TenantId_or_Name}` ) eller `organizations` slut punkten.
 > * Personliga konton som bjuds in till en Azure AD-klient kan inte använda ROPC.
 > * Konton som inte har lösen ord kan inte logga in via ROPC. I det här scenariot rekommenderar vi att du använder ett annat flöde för appen i stället.
 > * Om användarna behöver använda [Multi-Factor Authentication (MFA)](../authentication/concept-mfa-howitworks.md) för att logga in i programmet kommer de att blockeras i stället.
@@ -64,13 +64,13 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &grant_type=password
 ```
 
-| Parameter | Condition (Väderförhållanden) | Beskrivning |
+| Parameter | Villkor | Beskrivning |
 | --- | --- | --- |
 | `tenant` | Krävs | Den katalog klient som du vill logga in användaren i. Detta kan vara i ett GUID eller eget namn format. Den här parametern kan inte anges till `common` eller `consumers` , men den kan vara inställd på `organizations` . |
-| `client_id` | Krävs | Det program (klient)-ID som den [Azure Portal-Appregistreringar](https://go.microsoft.com/fwlink/?linkid=2083908) sidan har tilldelats till din app. |
-| `grant_type` | Krävs | Måste anges till `password` . |
-| `username` | Krävs | Användarens e-postadress. |
-| `password` | Krävs | Användarens lösen ord. |
+| `client_id` | Obligatorisk | Det program (klient)-ID som den [Azure Portal-Appregistreringar](https://go.microsoft.com/fwlink/?linkid=2083908) sidan har tilldelats till din app. |
+| `grant_type` | Obligatorisk | Måste anges till `password` . |
+| `username` | Obligatorisk | Användarens e-postadress. |
+| `password` | Obligatorisk | Användarens lösen ord. |
 | `scope` | Rekommenderas | En blankstegsavgränsad lista med [omfattningar](v2-permissions-and-consent.md)eller behörigheter som appen kräver. I ett interaktivt flöde måste administratören eller användaren samtycka till dessa omfattningar i förväg. |
 | `client_secret`| Krävs ibland | Om din app är en offentlig klient kan `client_secret` eller inte tas `client_assertion` med.  Om appen är en konfidentiell klient måste den tas med. |
 | `client_assertion` | Krävs ibland | En annan form av `client_secret` , som genereras med hjälp av ett certifikat.  Se [autentiseringsuppgifter för certifikat](active-directory-certificate-credentials.md) för mer information. |

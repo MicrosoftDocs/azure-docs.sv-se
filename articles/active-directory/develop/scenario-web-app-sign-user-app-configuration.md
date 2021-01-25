@@ -1,5 +1,6 @@
 ---
-title: Konfigurera en webbapp som loggar in användare – Microsoft Identity Platform | Azure
+title: Konfigurera en webbapp som loggar in användare | Azure
+titleSuffix: Microsoft identity platform
 description: Lär dig hur du skapar en webbapp som loggar in användare (kod konfiguration)
 services: active-directory
 author: jmprieur
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: dad7b0563fd1ca0dbf60403bc6172e7616e278b2
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 45f3a066283a921f60909a4aa3cfdc76f3faad06
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443661"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753276"
 ---
 # <a name="web-app-that-signs-in-users-code-configuration"></a>Webbapp som loggar in användare: kod konfiguration
 
@@ -202,7 +203,7 @@ SESSION_TYPE = "filesystem"  # So the token cache will be stored in a server-sid
 
 ## <a name="initialization-code"></a>Initierings kod
 
-Initierings koden skiljer sig beroende på plattform. För ASP.NET Core och ASP.NET delegeras inloggnings användare till OpenID Connect-mellanprogram. ASP.NET-eller ASP.NET Core-mallen genererar webb program för Azure Active Directory (Azure AD) v 1.0-slutpunkten. En del konfiguration krävs för att anpassa dem till slut punkten för Microsoft Identity Platform (v 2.0). När det gäller Java hanteras det av våren med programmets samarbete.
+Initierings koden skiljer sig beroende på plattform. För ASP.NET Core och ASP.NET delegeras inloggnings användare till OpenID Connect-mellanprogram. ASP.NET-eller ASP.NET Core-mallen genererar webb program för Azure Active Directory (Azure AD) v 1.0-slutpunkten. En del konfiguration krävs för att anpassa dem till Microsoft Identity Platform. När det gäller Java hanteras det av våren med programmets samarbete.
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
@@ -262,7 +263,7 @@ I koden ovan:
 - `AddMicrosoftIdentityWebAppAuthentication`Tilläggs metoden definieras i **Microsoft. Identity. Web**. Företaget
   - Lägger till Autentiseringstjänsten.
   - Konfigurerar alternativ för att läsa konfigurations filen (här från avsnittet "AzureAD")
-  - Konfigurerar anslutnings alternativen för OpenID så att utfärdaren är Microsoft Identity Platform-slutpunkten.
+  - Konfigurerar anslutnings alternativen för OpenID så att utfärdaren är Microsoft Identity Platform.
   - Verifierar utfärdaren av token.
   - Säkerställer att de anspråk som motsvarar namnet mappas från `preferred_username` anspråket i ID-token.
 
@@ -291,7 +292,7 @@ Koden som är relaterad till autentisering i en ASP.NET-webbapp och webb-API: er
   app.UseOpenIdConnectAuthentication(
     new OpenIdConnectAuthenticationOptions
     {
-     // `Authority` represents the identity platform endpoint - https://login.microsoftonline.com/common/v2.0.
+     // Authority` represents the identity platform endpoint - https://login.microsoftonline.com/common/v2.0.
      // `Scope` describes the initial permissions that your app will need.
      //  See https://azure.microsoft.com/documentation/articles/active-directory-v2-scopes/.
      ClientId = clientId,

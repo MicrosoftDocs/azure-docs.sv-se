@@ -1,6 +1,6 @@
 ---
 title: Program typer för Microsoft Identity Platform | Azure
-description: De typer av appar och scenarier som stöds av Microsoft Identity Platform-slutpunkten.
+description: Typer av appar och scenarier som stöds av Microsoft Identity Platform.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -12,20 +12,20 @@ ms.date: 11/13/2020
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev, fasttrack-edit, contperf-fy21q2
-ms.openlocfilehash: fd1fc59fd1ade6036c57f15415afccfc693f7bff
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 7ec309f016e73642262399bd75e7b5146bc5e497
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97029761"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98752785"
 ---
-# <a name="application-types-for-microsoft-identity-platform"></a>Program typer för Microsoft Identity Platform
+# <a name="application-types-for-the-microsoft-identity-platform"></a>Program typer för Microsoft Identity Platform
 
-Slut punkten för Microsoft Identity Platform stöder autentisering för en mängd moderna app-arkitekturer, som alla baseras på bransch standard protokollen [OAuth 2,0 eller OpenID Connect](active-directory-v2-protocols.md). Den här artikeln beskriver de typer av appar som du kan bygga med hjälp av Microsoft Identity Platform, oavsett vilket språk eller vilken plattform du föredrar. Informationen är utformad för att hjälpa dig att förstå scenarier på hög nivå innan du börjar arbeta med koden i [program scenarier](authentication-flows-app-scenarios.md#application-scenarios).
+Microsoft Identity Platform stöder autentisering för olika moderna app-arkitekturer, som alla baseras på bransch standard protokollen [OAuth 2,0 eller OpenID Connect](active-directory-v2-protocols.md). Den här artikeln beskriver de typer av appar som du kan bygga med hjälp av Microsoft Identity Platform, oavsett vilket språk eller vilken plattform du föredrar. Informationen är utformad för att hjälpa dig att förstå scenarier på hög nivå innan du börjar arbeta med koden i [program scenarier](authentication-flows-app-scenarios.md#application-scenarios).
 
 ## <a name="the-basics"></a>Grunderna
 
-Du måste registrera varje app som använder Microsoft Identity Platform-slutpunkten i Azure Portal [Appregistreringar](https://go.microsoft.com/fwlink/?linkid=2083908). Registrerings processen för appen samlar in och tilldelar dessa värden för din app:
+Du måste registrera varje app som använder Microsoft Identity Platform i Azure Portal [Appregistreringar](https://go.microsoft.com/fwlink/?linkid=2083908). Registrerings processen för appen samlar in och tilldelar dessa värden för din app:
 
 * Ett **program (klient) ID** som unikt identifierar din app
 * En **omdirigerings-URI** som du kan använda för att dirigera svar tillbaka till appen
@@ -42,7 +42,7 @@ https://login.microsoftonline.com/common/oauth2/v2.0/token
 
 ## <a name="single-page-apps-javascript"></a>Appar med en sida (Java Script)
 
-Många moderna appar har en fristående app från en sida som främst är skriven i Java Script, ofta med ett ramverk som vinkel, reagera eller Vue. Slut punkten för Microsoft Identity Platform stöder de här apparna med hjälp av [OpenID Connect](v2-protocols-oidc.md) -protokollet för autentisering och antingen [OAuth 2,0-implicit tilldelnings flöde](v2-oauth2-implicit-grant-flow.md) eller den senaste [OAuth 2,0-auktoriseringskod + PKCE-flödet](v2-oauth2-auth-code-flow.md) för auktorisering (se nedan).
+Många moderna appar har en fristående app från en sida som främst är skriven i Java Script, ofta med ett ramverk som vinkel, reagera eller Vue. Microsoft Identity Platform stöder de här apparna med hjälp av [OpenID Connect](v2-protocols-oidc.md) -protokollet för autentisering och antingen [OAuth 2,0-implicit beviljande av flöde](v2-oauth2-implicit-grant-flow.md) eller den senaste [OAuth 2,0-auktoriseringskod + PKCE Flow](v2-oauth2-auth-code-flow.md) för auktorisering (se nedan).
 
 Flödes diagrammet nedan visar OAuth 2,0-auktoriseringskod (med information kring PKCE utelämnad), där appen tar emot en kod från Microsoft Identity Platform `authorize` -slutpunkten och löser in den för token och uppdaterar token med webb förfrågningar över olika webbplatser. Uppdateringstoken upphör att gälla var 24: e timme och appen måste begära en annan kod. Förutom åtkomst-token `id_token` begär en som representerar den inloggade användaren till klient programmet vanligt vis även genom samma flöde och/eller en separat OpenID Connect-begäran (visas inte här).
 
@@ -73,13 +73,13 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImtyaU1QZG1Cd...
 }
 ```
 
-Mer information om olika typer av token som används i Microsoft Identity Platform-slutpunkten finns i referens för [åtkomsttoken](access-tokens.md) och [id_token referens](id-tokens.md)
+Mer information om olika typer av token som används i Microsoft Identity Platform finns [i referens för åtkomsttoken och](access-tokens.md) [id_token referens](id-tokens.md)
 
 I Web Server-appar använder inloggnings flödet följande steg på hög nivå:
 
 ![Visar verifierings flödet för webbappar](./media/v2-app-types/convergence-scenarios-webapp.svg)
 
-Du kan se till att användarens identitet genom att verifiera ID-token med en offentlig signerings nyckel som tas emot från Microsoft Identity Platform-slutpunkten. En sessions-cookie har angetts, som kan användas för att identifiera användaren på efterföljande sid begär Anden.
+Du kan se till att användarens identitet genom att verifiera ID-token med en offentlig signerings nyckel som tas emot från Microsoft Identity Platform. En sessions-cookie har angetts, som kan användas för att identifiera användaren på efterföljande sid begär Anden.
 
 Om du vill se hur det här scenariot fungerar kan du testa kod exemplen i [webbappen som loggar in i användar scenariot](scenario-web-app-sign-user-overview.md).
 
@@ -87,7 +87,7 @@ Förutom enkel inloggning kan en webbapp ha åtkomst till en annan webb tjänst,
 
 ## <a name="web-apis"></a>Webb-API:er
 
-Du kan använda Microsoft Identity Platform-slutpunkten för att skydda webb tjänster, till exempel appens RESTful-webb-API. Webb-API: er kan implementeras på flera olika plattformar och på olika språk. De kan också implementeras med HTTP-utlösare i Azure Functions. I stället för ID-tokens och sessionscookies använder ett webb-API en OAuth 2,0-åtkomsttoken för att skydda dess data och för att autentisera inkommande begär Anden. Anroparen för ett webb-API lägger till en åtkomsttoken i Authorization-huvudet för en HTTP-begäran, så här:
+Du kan använda Microsoft Identity Platform för att skydda webb tjänster, t. ex. appens RESTful-webb-API. Webb-API: er kan implementeras på flera olika plattformar och på olika språk. De kan också implementeras med HTTP-utlösare i Azure Functions. I stället för ID-tokens och sessionscookies använder ett webb-API en OAuth 2,0-åtkomsttoken för att skydda dess data och för att autentisera inkommande begär Anden. Anroparen för ett webb-API lägger till en åtkomsttoken i Authorization-huvudet för en HTTP-begäran, så här:
 
 ```HTTP
 GET /api/items HTTP/1.1
@@ -97,9 +97,9 @@ Accept: application/json
 ...
 ```
 
-Webb-API: et använder åtkomsttoken för att verifiera API-anroparens identitet och för att extrahera information om anroparen från anspråk som kodas i åtkomsttoken. Mer information om olika typer av token som används i Microsoft Identity Platform-slutpunkten finns i referens för [åtkomsttoken](access-tokens.md) och [id_token](id-tokens.md) referens.
+Webb-API: et använder åtkomsttoken för att verifiera API-anroparens identitet och för att extrahera information om anroparen från anspråk som kodas i åtkomsttoken. Mer information om olika typer av token som används i Microsoft Identity Platform finns [i referens för åtkomsttoken och](access-tokens.md) [id_token](id-tokens.md) referens.
 
-Ett webb-API kan ge användare möjlighet att välja eller välja ut vissa funktioner eller data genom att exponera behörigheter, även kallade [omfång](v2-permissions-and-consent.md). För att en anropande app ska kunna erhålla behörighet till ett omfång måste användaren godkänna omfånget under ett flöde. Slut punkten för Microsoft Identity Platform ber användaren om behörighet och registrerar sedan behörigheter i alla åtkomsttoken som webb-API: et tar emot. Webb-API: et verifierar de åtkomsttoken den tar emot vid varje anrop och utför verifierings kontroller.
+Ett webb-API kan ge användare möjlighet att välja eller välja ut vissa funktioner eller data genom att exponera behörigheter, även kallade [omfång](v2-permissions-and-consent.md). För att en anropande app ska kunna erhålla behörighet till ett omfång måste användaren godkänna omfånget under ett flöde. Microsoft Identity Platform ber användaren om behörighet och registrerar sedan behörigheter i alla åtkomsttoken som webb-API: et tar emot. Webb-API: et verifierar de åtkomsttoken den tar emot vid varje anrop och utför verifierings kontroller.
 
 Ett webb-API kan ta emot åtkomsttoken från alla typer av appar, inklusive Web Server-appar, Desktop-och mobilappar, appar med en sida, daemon på Server sidan och även andra webb-API: er. Hög nivå flödet för ett webb-API ser ut så här:
 
@@ -113,7 +113,7 @@ I många fall behöver webb-API: er också göra utgående förfrågningar till 
 
 Enhets installerade appar, till exempel mobilappar och skrivbordsappar, behöver ofta åtkomst till backend-tjänster eller webb-API: er som lagrar data och utför funktioner för en användares räkning. De här apparna kan lägga till inloggning och auktorisering till backend-tjänster med hjälp av [OAuth 2,0 Authorization Code Flow](v2-oauth2-auth-code-flow.md).
 
-I det här flödet tar appen emot en auktoriseringskod från slut punkten för Microsoft Identity Platform när användaren loggar in. Auktoriseringskod representerar appens behörighet att anropa backend-tjänster åt den användare som är inloggad. Appen kan utbyta auktoriseringskod i bakgrunden för en OAuth 2,0-åtkomsttoken och en uppdateringstoken. Appen kan använda åtkomsttoken för att autentisera till webb-API: er i HTTP-begäranden och använda uppdateringstoken för att hämta nya åtkomsttoken när äldre åtkomsttoken upphör att gälla.
+I det här flödet tar appen emot en auktoriseringskod från Microsoft Identity Platform när användaren loggar in. Auktoriseringskod representerar appens behörighet att anropa backend-tjänster åt den användare som är inloggad. Appen kan utbyta auktoriseringskod i bakgrunden för en OAuth 2,0-åtkomsttoken och en uppdateringstoken. Appen kan använda åtkomsttoken för att autentisera till webb-API: er i HTTP-begäranden och använda uppdateringstoken för att hämta nya åtkomsttoken när äldre åtkomsttoken upphör att gälla.
 
 ![Visar det inbyggda flödet för app-autentisering](./media/v2-app-types/convergence-scenarios-native.svg)
 

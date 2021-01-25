@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/21/2021
+ms.date: 01/25/2021
 ms.author: memildin
-ms.openlocfilehash: d171e3a7f1f0d63d0a5d130c6e19b246bf0cd795
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 349f0b72ad7f3cb98e8f4ae9105efa9718f0b11b
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98661822"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98752234"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Vad är nytt i Azure Security Center?
 
@@ -33,13 +33,40 @@ Om du vill veta mer om *planerade* ändringar som kommer snart till Security Cen
 
 ## <a name="january-2021"></a>Januari 2021
 
-Uppdateringar i december inkluderar:
+Uppdateringar i januari inkluderar:
 
+- [Azure Security Benchmark är nu standard princip initiativet för Azure Security Center](#azure-security-benchmark-is-now-the-default-policy-initiative-for-azure-security-center)
 - [Sårbarhets bedömning för lokala datorer och datorer med flera moln släpps för allmän tillgänglighet (GA)](#vulnerability-assessment-for-on-premise-and-multi-cloud-machines-is-released-for-general-availability-ga)
+- [Säkra Poäng för hanterings grupper finns nu i förhands granskning](#secure-score-for-management-groups-is-now-available-in-preview)
 - [Secure score-API har släppts för allmän tillgänglighet (GA)](#secure-score-api-is-released-for-general-availability-ga)
+- [Flera moln anslutningar släpps för allmän tillgänglighet (GA)](#multi-cloud-connectors-are-released-for-general-availability-ga)
+- [Undanta hela rekommendationer från dina säkra Poäng för prenumerationer och hanterings grupper](#exempt-entire-recommendations-from-your-secure-score-for-subscriptions-and-management-groups)
+- [Användarna kan nu begära en synlighet för hela organisationen från sin globala administratör](#users-can-now-request-tenant-wide-visibility-from-their-global-administrator)
+- [35 för hands versioner har lagts till för att öka täckningen av Azures säkerhets prestanda](#35-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark)
 - [CSV-export av filtrerad lista över rekommendationer](#csv-export-of-filtered-list-of-recommendations)
 - ["Ej tillämpligt" resurser rapporteras nu som "kompatibla" i Azure Policy bedömningar](#not-applicable-resources-now-reported-as-compliant-in-azure-policy-assessments)
 
+
+### <a name="azure-security-benchmark-is-now-the-default-policy-initiative-for-azure-security-center"></a>Azure Security Benchmark är nu standard princip initiativet för Azure Security Center
+
+Azures säkerhets prestanda är Microsofts-skapade, Azure-/regionsspecifika uppsättning rikt linjer för säkerhets-och efterlevnads metod tips baserade på vanliga ramverk för efterlevnad. Detta respekterade riktmärken bygger på kontrollerna från [Center for Internet Security (CIS)](https://www.cisecurity.org/benchmark/azure/) och [National Institute of Standards and Technology (NIST)](https://www.nist.gov/) med fokus på Cloud-inriktad säkerhet.
+
+Under de senaste månaderna har Security Center listan över inbyggda säkerhets rekommendationer vuxit avsevärt för att utöka vår täckning av detta riktmärke.
+
+I den här versionen är riktmärket grunden för Security Centers rekommendationer och helt integrerat som standard policy initiativ. 
+
+Alla Azure-tjänster har en säkerhets bas linje sida i dokumentationen. [Detta är till exempel Security Centerens bas linje](security-baseline.md). Dessa bas linjer bygger på Azures säkerhets benchmark.
+
+Om du använder Security Centers instrument panel för kontroll av efterlevnad visas två instanser av benchmark under en över gångs period:
+
+:::image type="content" source="media/release-notes/regulatory-compliance-with-azure-security-benchmark.png" alt-text="Azure Security Center s instrument panel för övervakning av säkerhet i Azure":::
+
+Befintliga rekommendationer påverkas inte och när benchmark-effekten växer visas ändringarna automatiskt i Security Center. 
+
+Mer information finns på följande sidor:
+
+- [Läs mer om Azures säkerhets prestanda](../security/benchmarks/introduction.md)
+- [Anpassa uppsättningen standarder i din instrument panel för regelefterlevnad](update-regulatory-compliance-packages.md)
 
 ### <a name="vulnerability-assessment-for-on-premise-and-multi-cloud-machines-is-released-for-general-availability-ga"></a>Sårbarhets bedömning för lokala datorer och datorer med flera moln släpps för allmän tillgänglighet (GA)
 
@@ -63,6 +90,14 @@ Huvud funktioner:
 [Läs mer om Azure Arc-aktiverade servrar](../azure-arc/servers/index.yml).
 
 
+### <a name="secure-score-for-management-groups-is-now-available-in-preview"></a>Säkra Poäng för hanterings grupper finns nu i förhands granskning
+
+På sidan säker Poäng visas nu de aggregerade säkra poängen för dina hanterings grupper utöver prenumerations nivån. Nu kan du se listan över hanterings grupper i din organisation och poängen för varje hanterings grupp.
+
+:::image type="content" source="media/secure-score-security-controls/secure-score-management-groups.png" alt-text="Visa säkra Poäng för dina hanterings grupper.":::
+
+Läs mer om [säkra poäng-och säkerhets kontroller i Azure Security Center](secure-score-security-controls.md).
+
 ### <a name="secure-score-api-is-released-for-general-availability-ga"></a>Secure score-API har släppts för allmän tillgänglighet (GA)
 
 Nu kan du komma åt dina poäng via [Secure score-API: et](/rest/api/securitycenter/securescores/). API-metoderna ger flexibiliteten att fråga data och skapa en egen rapporterings mekanism för dina säkra poäng över tid. Du kan till exempel använda **Secure Scores** -API: et för att hämta poängen för en speciell prenumeration. Dessutom kan du använda API: et för **säker Poäng** för att visa en lista över säkerhets kontrollerna och de aktuella poängen för dina prenumerationer.
@@ -70,6 +105,87 @@ Nu kan du komma åt dina poäng via [Secure score-API: et](/rest/api/securitycen
 Exempel på externa verktyg som möjliggörs med Secure score-API: et finns i avsnittet [Secure Scores i vår GitHub-community](https://github.com/Azure/Azure-Security-Center/tree/master/Secure%20Score).
 
 Läs mer om [säkra poäng-och säkerhets kontroller i Azure Security Center](secure-score-security-controls.md).
+
+
+### <a name="multi-cloud-connectors-are-released-for-general-availability-ga"></a>Flera moln anslutningar släpps för allmän tillgänglighet (GA)
+
+Med moln arbets belastningar som ofta spänner över flera moln plattformar måste moln säkerhets tjänster göra samma sak.
+
+Azure Security Center skyddar arbets belastningar i Azure, Amazon Web Services (AWS) och Google Cloud Platform (GCP).
+
+Genom att ansluta dina AWS-eller GCP-konton integreras deras inbyggda säkerhets verktyg som AWS Security Hub och GCP Security Command Centre i Azure Security Center.
+
+Den här funktionen innebär att Security Center ger insyn och skydd i alla större moln miljöer. Några av fördelarna med den här integrationen:
+
+- Automatisk agent etablering – Security Center använder Azure Arc för att distribuera Log Analytics-agenten till dina AWS-instanser
+- Principhantering
+- Sårbarhetshantering
+- Identifiering och svar för inbäddad slut punkt (EDR)
+- Identifiering av felkonfigurationer av säkerhet
+- En enskild vy som visar säkerhets rekommendationer från alla moln leverantörer
+- Införliva alla resurser i Security Center säkra Poäng beräkningar
+- Regelefterlevnad för AWS-och GCP-resurser
+
+Från Security Center menyn väljer du **flera moln anslutningar** och du ser alternativen för att skapa nya anslutningar:
+
+:::image type="content" source="./media/quickstart-onboard-aws/add-aws-account.png" alt-text="Knappen Lägg till AWS-konto på Security Center sidan med flera moln anslutningar":::
+
+Läs mer i:
+- [Anslut dina AWS-konton till Azure Security Center](quickstart-onboard-aws.md)
+- [Anslut dina GCP-konton till Azure Security Center](quickstart-onboard-gcp.md)
+
+
+### <a name="exempt-entire-recommendations-from-your-secure-score-for-subscriptions-and-management-groups"></a>Undanta hela rekommendationer från dina säkra Poäng för prenumerationer och hanterings grupper
+
+Vi utökar undantags funktionen för att inkludera hela rekommendationer. Ange ytterligare alternativ för att finjustera de säkerhets rekommendationer som Security Center gör för prenumerationer, hanterings grupper eller resurser.
+
+Ibland visas en resurs som ohälsosam när du vet att problemet har lösts av ett tredjepartsverktyg som Security Center inte har identifierat. Eller så visas en rekommendation i ett omfång där du känner att den inte tillhör. Rekommendationen kan vara olämplig för en speciell prenumeration. Eller så kanske din organisation bara har valt att godkänna riskerna relaterade till den aktuella resursen eller rekommendationen.
+
+Med den här förhands gransknings funktionen kan du nu skapa ett undantag för att:
+
+- **Undanta en resurs** för att se till att den inte visas i listan med felaktiga resurser i framtiden och inte påverkar dina säkra poäng. Resursen visas som ej tillämplig och orsaken visas som "undantagen" med den önskade justering som du väljer.
+
+- **Undanta en prenumeration eller hanterings grupp** för att säkerställa att rekommendationen inte påverkar dina säkra poäng och inte visas för prenumerationen eller hanterings gruppen i framtiden. Detta relaterar till befintliga resurser och alla som du skapar i framtiden. Rekommendationen markeras med den speciella motivering som du väljer för det omfång som du har valt.
+
+Läs mer i [undanta resurser och rekommendationer från dina säkra Poäng](exempt-resource.md).
+
+
+
+### <a name="users-can-now-request-tenant-wide-visibility-from-their-global-administrator"></a>Användarna kan nu begära en synlighet för hela organisationen från sin globala administratör
+
+Om en användare inte har behörighet att se Security Center data visas nu en länk begär ande behörigheter från organisationens globala administratör. Begäran omfattar den roll de vill och motiveringen för varför det är nödvändigt.
+
+:::image type="content" source="media/security-center-management-groups/request-tenant-permissions.png" alt-text="Banderoll som informerar användaren om att de kan begära behörigheter för hela klienten.":::
+
+Läs mer i [begära behörigheter för klient organisationen när dina inte är tillräckliga](security-center-management-groups.md#request-tenant-wide-permissions-when-yours-are-insufficient) .
+
+
+### <a name="35-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark"></a>35 för hands versioner har lagts till för att öka täckningen av Azures säkerhets prestanda
+
+Azure Security Benchmark är standard policy initiativ i Azure Security Center. 
+
+För att öka omfattningen av detta benchmark har följande 35 för hands versions rekommendationer lagts till i Security Center.
+
+> [!TIP]
+> För hands versions rekommendationer återger inte en resurs som inte är felfri och ingår inte i beräkningarna av dina säkra poäng. Åtgärda dem när så är möjligt, så att när förhands gransknings perioden är slut bidrar de till dina poäng. Lär dig mer om hur du svarar på dessa rekommendationer i att [åtgärda rekommendationer i Azure Security Center](security-center-remediate-recommendations.md).
+
+| Säkerhets kontroll                     | Nya rekommendationer                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+|--------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Aktivera kryptering i vila            | -Azure Cosmos DB konton ska använda Kundhanterade nycklar för att kryptera data i vila<br>-Azure Machine Learning arbets ytor ska vara krypterade med en kundhanterad nyckel (CMK)<br>– Ta med din egen nyckel data skydd måste vara aktiverat för MySQL-servrar<br>– Ta med din egen nyckel data skydd måste vara aktiverat för PostgreSQL-servrar<br>-Cognitive Services konton ska aktivera data kryptering med en kundhanterad nyckel (CMK)<br>– Behållar register ska krypteras med en kundhanterad nyckel (CMK)<br>-SQL-hanterade instanser bör använda Kundhanterade nycklar för att kryptera data i vila<br>– SQL-servrar bör använda Kundhanterade nycklar för att kryptera data i vila<br>-Lagrings konton ska använda kundhanterad nyckel (CMK) för kryptering                                                                                                                                                              |
+| Implementera rekommenderade säkerhets metoder    | -Prenumerationer måste ha en e-postadress till en kontakt med säkerhets problem<br> – Automatisk etablering av den Log Analytics agenten ska vara aktive rad för din prenumeration<br> – E-postmeddelande för aviseringar med hög allvarlighets grad ska aktive ras<br> – E-postmeddelande till Prenumerationens ägare för aviseringar med hög allvarlighets grad måste vara aktiverat<br> – Nyckel valv ska ha rensnings skyddet aktiverat<br> – Nyckel valv ska ha mjuk borttagning aktiverat |
+| Hantera åtkomst och behörigheter        | -Funktions appar ska ha "klient certifikat (inkommande klient certifikat)" aktiverat |
+| Skydda program mot DDoS-attacker | – Brand vägg för webbaserade program (WAF) måste vara aktive rad för Application Gateway<br> – Brand vägg för webbaserade program (WAF) ska vara aktive rad för Azure-tjänsten för front dörr tjänsten |
+| Begränsa obehörig nätverks åtkomst | – Brand väggen ska vara aktive rad på Key Vault<br> -Privat slut punkt ska konfigureras för Key Vault<br> – App-konfigurationen ska använda privat länk<br> – Azure cache för Redis bör finnas i ett virtuellt nätverk<br> -Azure Event Grid domäner ska använda privat länk<br> -Azure Event Grid ämnen ska använda privat länk<br> -Azure Machine Learning arbets ytor ska använda privat länk<br> – Azure SignalR-tjänsten bör använda privat länk<br> – Azure våren Cloud ska använda nätverks inmatning<br> – Behållar register ska inte tillåta obegränsad nätverks åtkomst<br> – Behållar register ska använda privat länk<br> – Åtkomst till offentligt nätverk ska inaktive ras för MariaDB-servrar<br> – Åtkomst till offentligt nätverk ska inaktive ras för MySQL-servrar<br> – Åtkomst till offentligt nätverk ska inaktive ras för PostgreSQL-servrar<br> – Lagrings kontot bör använda en anslutning för privat anslutning<br> -Lagrings konton bör begränsa nätverks åtkomst med hjälp av regler för virtuella nätverk<br> -VM Image Builder-mallar ska använda privat länk|
+|                                      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+
+Relaterade länkar:
+
+- [Läs mer om Azures säkerhets prestanda](../security/benchmarks/introduction.md)
+- [Läs mer om Azure Database for MariaDB](../mariadb/overview.md)
+- [Läs mer om Azure Database for MySQL](../mysql/overview.md)
+- [Läs mer om Azure Database for PostgreSQL](../postgresql/overview.md)
+
+
 
 
 ### <a name="csv-export-of-filtered-list-of-recommendations"></a>CSV-export av filtrerad lista över rekommendationer 
@@ -439,7 +555,7 @@ Läs mer i [ta bort en standard från din instrument panel](update-regulatory-co
 
 Azure Resource Graph är en tjänst i Azure som är utformad för att tillhandahålla effektiv resurs utforskning med möjlighet att fråga i skala över en specifik uppsättning prenumerationer så att du effektivt kan styra din miljö. 
 
-För Azure Security Center kan du använda ARG och [KQL (Kusto Query Language)](/azure/data-explorer/kusto/query/) för att fråga efter en mängd säkerhets position data. Till exempel:
+För Azure Security Center kan du använda ARG och [KQL (Kusto Query Language)](/azure/data-explorer/kusto/query/) för att fråga efter en mängd säkerhets position data. Ett exempel:
 
 - Till gångs lager använder (ARG)
 - Vi har dokumenterat en exempel-ARG-fråga för att [identifiera konton utan Multi-Factor Authentication (MFA) aktiverat](security-center-identity-access.md#identify-accounts-without-multi-factor-authentication-mfa-enabled)

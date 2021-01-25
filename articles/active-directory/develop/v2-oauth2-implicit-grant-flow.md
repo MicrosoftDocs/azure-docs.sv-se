@@ -1,5 +1,5 @@
 ---
-title: OAuth-flöde för implicit beviljande av OAuth 2,0-Microsoft Identity Platform | Azure
+title: OAuth-flöde för implicit beviljande av OAuth-2,0 – Microsoft Identity Platform | Azure
 description: Skydda appar med en enda sida med hjälp av implicit flöde för Microsoft Identity Platform.
 services: active-directory
 author: hpsin
@@ -12,12 +12,12 @@ ms.date: 11/30/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 4b5465cc5c1c3447af5303a5c0bfe82874705362
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: 97f4642d69d4a432b823bd1cd7cdbdd9fc7f270d
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96511206"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98752745"
 ---
 # <a name="microsoft-identity-platform-and-implicit-grant-flow"></a>Microsoft Identity Platform och implicit beviljande flöde
 
@@ -41,7 +41,7 @@ Följande diagram visar hur hela det implicita inloggnings flödet ser ut och de
 
 ## <a name="send-the-sign-in-request"></a>Skicka inloggnings förfrågan
 
-För att först signera användaren till din app kan du skicka en [OpenID Connect](v2-protocols-oidc.md) -autentiseringsbegäran och hämta en `id_token` från slut punkten för Microsoft Identity Platform.
+För att först signera användaren till din app kan du skicka en [OpenID Connect](v2-protocols-oidc.md) -autentiseringsbegäran och hämta en `id_token` från Microsoft Identity Platform.
 
 > [!IMPORTANT]
 > För att kunna begära en ID-token och/eller en åtkomsttoken måste registrerings flödet på sidan [Azure Portal-Appregistreringar](https://go.microsoft.com/fwlink/?linkid=2083908) ha motsvarande implicit tilldelnings flöde aktiverat, genom att välja **ID-token** och. **eller åtkomsttoken** i avsnittet **implicit beviljande** . Om den inte är aktive rad `unsupported_response` returneras ett fel: **det angivna värdet för Indataparametern response_type tillåts inte för den här klienten. Förväntat värde är ' Code '**
@@ -73,13 +73,13 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `response_mode` | valfri |Anger den metod som ska användas för att skicka den resulterande token tillbaka till din app. Standardvärdet söker efter en åtkomsttoken, men fragment om begäran innehåller en id_token. |
 | `state` | rekommenderas |Ett värde som ingår i begäran som också kommer att returneras i svaret från token. Det kan vara en sträng med innehåll som du vill. Ett slumpmässigt genererat unikt värde används vanligt vis för [att förhindra förfalsknings attacker på begäran](https://tools.ietf.org/html/rfc6749#section-10.12)från en annan plats. Statusen används också för att koda information om användarens tillstånd i appen innan autentiseringsbegäran inträffade, t. ex. sidan eller vyn de var på. |
 | `nonce` | krävs |Ett värde som ingår i begäran, som genereras av appen, som kommer att ingå i den resulterande id_token som ett anspråk. Appen kan sedan verifiera det här värdet för att minimera omuppspelning av token. Värdet är vanligt vis en slumpmässig, unik sträng som kan användas för att identifiera ursprunget för begäran. Krävs endast när en id_token begärs. |
-| `prompt` | valfri |Anger vilken typ av användar interaktion som krävs. De enda giltiga värdena för tillfället är ' inloggning "', ' none ', ' select_account ' och ' medgivande '. `prompt=login` tvingar användaren att ange sina autentiseringsuppgifter för den begäran och negera enkel inloggning. `prompt=none` är motsatt – det ser till att användaren inte visas med interaktiva prompter. Om begäran inte kan slutföras i bakgrunden via enkel inloggning, returnerar slut punkten för Microsoft Identity Platform ett fel. `prompt=select_account` skickar användaren till en konto väljare där alla konton som lagras i sessionen kommer att visas. `prompt=consent` utlöser dialog rutan OAuth-medgivande när användaren loggar in och ber användaren att bevilja behörighet till appen. |
+| `prompt` | valfri |Anger vilken typ av användar interaktion som krävs. De enda giltiga värdena för tillfället är ' inloggning "', ' none ', ' select_account ' och ' medgivande '. `prompt=login` tvingar användaren att ange sina autentiseringsuppgifter för den begäran och negera enkel inloggning. `prompt=none` är motsatt – det ser till att användaren inte visas med interaktiva prompter. Om begäran inte kan slutföras i bakgrunden via enkel inloggning, returnerar Microsoft Identity Platform ett fel. `prompt=select_account` skickar användaren till en konto väljare där alla konton som lagras i sessionen kommer att visas. `prompt=consent` utlöser dialog rutan OAuth-medgivande när användaren loggar in och ber användaren att bevilja behörighet till appen. |
 | `login_hint`  |valfri |Kan användas för att fylla i fältet användar namn/e-postadress på inloggnings sidan för användaren, om du känner till användar namnet i förväg. Appar kommer ofta att använda den här parametern under omautentiseringen och har redan extraherat användar namnet från en tidigare inloggning med `preferred_username` anspråket.|
 | `domain_hint` | valfri |Om den är inkluderad hoppar den e-postbaserad identifierings processen som användaren går igenom på inloggnings sidan, vilket leder till en något mer strömlinjeformad användar upplevelse. Den här parametern används ofta för branschspecifika appar som fungerar i en enda klient, där de kommer att tillhandahålla ett domän namn inom en viss klient, och vidarebefordra användaren till Federations leverantören för den klienten.  Observera att det här tipset förhindrar att gäster loggar in i det här programmet och begränsar användningen av autentiseringsuppgifter för moln som FIDO.  |
 
-Användaren uppmanas att ange sina autentiseringsuppgifter och slutföra autentiseringen. Slut punkten för Microsoft Identity Platform ser också till att användaren har samtyckt till de behörigheter som anges i `scope` Frågeparametern. Om användaren har samtyckt till **ingen** av dessa behörigheter uppmanas användaren att godkänna de behörigheter som krävs. Mer information finns i [behörigheter, medgivande och appar för flera klient organisationer](v2-permissions-and-consent.md).
+Användaren uppmanas att ange sina autentiseringsuppgifter och slutföra autentiseringen. Microsoft Identity Platform ser också till att användaren har samtyckt till de behörigheter som anges i `scope` Frågeparametern. Om användaren har samtyckt till **ingen** av dessa behörigheter uppmanas användaren att godkänna de behörigheter som krävs. Mer information finns i [behörigheter, medgivande och appar för flera klient organisationer](v2-permissions-and-consent.md).
 
-När användaren autentiserar och godkänner godkännandet, returnerar Microsoft Identity Platform-slutpunkten ett svar till din app på den angivna `redirect_uri` metoden med hjälp av metoden som anges i `response_mode` parametern.
+När användaren autentiserar och godkänner godkännandet, returnerar Microsoft Identity Platform ett svar till din app vid angiven `redirect_uri` användning av metoden som anges i `response_mode` parametern.
 
 #### <a name="successful-response"></a>Lyckat svar
 
@@ -199,7 +199,7 @@ I webbläsare som inte stöder cookies från tredje part leder detta till ett fe
 
 ## <a name="send-a-sign-out-request"></a>Skicka en begäran om utloggning
 
-OpenID Connect `end_session_endpoint` gör att din app kan skicka en begäran till Microsoft Identity Platform-slutpunkten för att avsluta en användares session och Rensa cookies som anges av Microsoft Identity Platform-slutpunkten. För att fullständigt signera en användare från ett webb program bör din app avsluta sin egen session med användaren (vanligt vis genom att rensa en token-cache eller släppa cookies) och sedan omdirigera webbläsaren till:
+OpenID Connect `end_session_endpoint` gör att din app kan skicka en begäran till Microsoft Identity Platform för att avsluta en användares session och Rensa cookies som anges av Microsoft Identity Platform. För att fullständigt signera en användare från ett webb program bör din app avsluta sin egen session med användaren (vanligt vis genom att rensa en token-cache eller släppa cookies) och sedan omdirigera webbläsaren till:
 
 ```
 https://login.microsoftonline.com/{tenant}/oauth2/v2.0/logout?post_logout_redirect_uri=https://localhost/myapp/
@@ -208,7 +208,7 @@ https://login.microsoftonline.com/{tenant}/oauth2/v2.0/logout?post_logout_redire
 | Parameter | Typ | Beskrivning |
 | --- | --- | --- |
 | `tenant` |krävs |`{tenant}`Värdet i sökvägen till begäran kan användas för att styra vem som kan logga in på programmet. De tillåtna värdena är `common` , `organizations` , `consumers` och klient-ID: n. Mer information finns i [grunderna om protokoll](active-directory-v2-protocols.md#endpoints). |
-| `post_logout_redirect_uri` | rekommenderas | URL: en som användaren ska returneras till när utloggning har slutförts. Värdet måste matcha en av de omdirigerings-URI: er som registrerats för programmet. Om detta inte anges visas ett allmänt meddelande för användaren av Microsoft Identity Platform-slutpunkten. |
+| `post_logout_redirect_uri` | rekommenderas | URL: en som användaren ska returneras till när utloggning har slutförts. Värdet måste matcha en av de omdirigerings-URI: er som registrerats för programmet. Om den inte ingår visas ett allmänt meddelande från Microsoft Identity Platform. |
 
 ## <a name="next-steps"></a>Nästa steg
 

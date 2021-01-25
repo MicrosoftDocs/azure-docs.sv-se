@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/06/2020
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, devx-track-js
-ms.openlocfilehash: 51b548beae57ce1da32006b61dfd222b0a4e6218
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 874488e5de7888edad5310afce1afd1baec4ece0
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98015869"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753063"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>Självstudie: Logga in användare och anropa Microsoft Graph API från ett Java Script (Single-Side Application)
 
@@ -35,7 +35,7 @@ I de här självstudierna har du
 >[!TIP]
 > I den här självstudien används MSAL.js v1. x som är begränsad till att använda det implicita beviljande flödet för program med en enda sida. Vi rekommenderar att alla nya program använder i stället [MSAL.js 2. x och auktoriseringskod med stöd för PKCE och CORS](tutorial-v2-javascript-auth-code.md) .
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 * [Node.js](https://nodejs.org/en/download/) för att köra en lokal webb server.
 * [Visual Studio Code](https://code.visualstudio.com/download) eller annan redigerare för att ändra projektfiler.
@@ -45,7 +45,7 @@ I de här självstudierna har du
 
 ![Visar hur exempel appen som genereras av den här själv studie kursen fungerar](media/active-directory-develop-guidedsetup-javascriptspa-introduction/javascriptspa-intro.svg)
 
-Det exempel program som skapats av den här guiden gör det möjligt för ett Java Script SPA att fråga Microsoft Graph-API eller ett webb-API som accepterar token från Microsoft Identity Platform-slutpunkten. I det här scenariot begärs en åtkomsttoken efter att användaren loggar in och läggs till i HTTP-begäranden via Authorization-huvudet. Denna token kommer att användas för att hämta användarens profil och e-post via **MS Graph API**.
+Exempel programmet som skapats i den här guiden gör det möjligt för ett Java Script-SPA att fråga Microsoft Graph-API eller ett webb-API som accepterar tokens från Microsoft Identity Platform. I det här scenariot begärs en åtkomsttoken efter att användaren loggar in och läggs till i HTTP-begäranden via Authorization-huvudet. Denna token kommer att användas för att hämta användarens profil och e-post via **MS Graph API**.
 
 Hämtning av token och förnyelse hanteras av [Microsoft Authentication Library (MSAL) för Java Script](https://github.com/AzureAD/microsoft-authentication-library-for-js).
 
@@ -413,13 +413,13 @@ Det SPA som genereras av den här guiden anropar `acquireTokenSilent` och/eller 
 
 #### <a name="get-a-user-token-interactively"></a>Hämta en användartoken interaktivt
 
-Efter den första inloggningen vill du inte be användarna att autentisera varje gång de behöver för att begära en token för att få åtkomst till en resurs. Så *acquireTokenSilent* bör användas mest av tiden för att hämta tokens. Det finns dock situationer där du måste tvinga användare att interagera med Microsoft Identity Platform-slutpunkten. Exempel:
+Efter den första inloggningen vill du inte be användarna att autentisera varje gång de behöver för att begära en token för att få åtkomst till en resurs. Så *acquireTokenSilent* bör användas mest av tiden för att hämta tokens. Det finns dock situationer där du måste tvinga användare att interagera med Microsoft Identity Platform. Exempel:
 
 - Användare måste ange sina autentiseringsuppgifter på grund av att lösen ordet har upphört att gälla.
 - Ditt program begär åtkomst till en resurs och du behöver användarens medgivande.
 - Tvåfaktorautentisering krävs.
 
-När du anropar *acquireTokenPopup* öppnas ett popup-fönster (eller *acquireTokenRedirect* omdirigerar användare till Microsoft Identity Platform-slutpunkten). I det fönstret måste användarna interagera genom att bekräfta sina autentiseringsuppgifter, ge tillåtelse till den begärda resursen eller utföra tvåfaktorautentisering.
+När du anropar *acquireTokenPopup* öppnas ett popup-fönster (eller *acquireTokenRedirect* omdirigerar användare till Microsoft Identity Platform). I det fönstret måste användarna interagera genom att bekräfta sina autentiseringsuppgifter, ge tillåtelse till den begärda resursen eller utföra tvåfaktorautentisering.
 
 #### <a name="get-a-user-token-silently"></a>Hämta en token obevakat
 
@@ -483,7 +483,7 @@ I det exempel program som skapats av den här guiden `callMSGraph()` används me
    ```
 1. I webbläsaren anger **http://localhost:3000** eller **http://localhost:{port}** , där *port* är den port som webb servern lyssnar på. Du bör se innehållet i *index.html* -filen och knappen **Logga in** .
 
-När webbläsaren har läst in *index.html* -filen väljer du **Logga** in. Du uppmanas att logga in med Microsoft Identity Platform-slutpunkten:
+När webbläsaren har läst in *index.html* -filen väljer du **Logga** in. Du uppmanas att logga in med Microsoft Identity Platform:
 
 ![Inloggnings fönstret för Java scripts SPA-konto](media/active-directory-develop-guidedsetup-javascriptspa-test/javascriptspascreenshot1.png)
 

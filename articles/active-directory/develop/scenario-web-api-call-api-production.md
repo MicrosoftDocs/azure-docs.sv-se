@@ -1,5 +1,6 @@
 ---
-title: 'Flytta webb-API som anropar webb-API: er till produktion – Microsoft Identity Platform | Azure'
+title: 'Flytta webb-API som anropar webb-API: er till produktion | Azure'
+titleSuffix: Microsoft identity platform
 description: 'Lär dig hur du flyttar ett webb-API som anropar webb-API: er till produktion.'
 services: active-directory
 author: jmprieur
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: aea3a173fd07b66021d35142a84499ae9c66c014
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 370bedf04dc61e2a637f735580cd4df14061264a
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86518206"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753337"
 ---
 # <a name="a-web-api-that-calls-web-apis-move-to-production"></a>Ett webb-API som anropar webb-API: er: flytta till produktion
 
@@ -30,4 +31,4 @@ Nu när du vet grunderna för hur du anropar webb-API: er från ditt eget webb-A
 
 | Exempel | Plattform | Beskrivning |
 |--------|----------|-------------|
-| [Active-Directory-aspnetcore-WebAPI-självstudie-v2](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/tree/master/2.%20Web%20API%20now%20calls%20Microsoft%20Graph) kapitel 1 | ASP.NET Core webb-API, Desktop (WPF) | ASP.NET Core Web API-anrop Microsoft Graph som du anropar från ett WPF-program med hjälp av Microsoft Identity Platform (v 2.0). |
+| [Active-Directory-aspnetcore-WebAPI-självstudie-v2](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/tree/master/2.%20Web%20API%20now%20calls%20Microsoft%20Graph) kapitel 1 | ASP.NET Core webb-API, Desktop (WPF) | ASP.NET Core Web API-anrop Microsoft Graph som du anropar från ett WPF-program med hjälp av Microsoft Identity Platform. |

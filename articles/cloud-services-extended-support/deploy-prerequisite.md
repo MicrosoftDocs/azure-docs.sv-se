@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 45f2b75be9a0090b883c5cc62a0886366e81a302
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 28c7f2c0a61150b2014f669f37ac84ee3a94aebf
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98744672"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98752147"
 ---
 # <a name="prerequisites-for-deploying-azure-cloud-services-extended-support"></a>Krav för att distribuera Azure Cloud Services (utökad support)
 
@@ -42,12 +42,12 @@ CloudServices           Microsoft.Compute    Registered
 ## <a name="required-service-configuration-cscfg-file-updates"></a>Fil uppdateringar för tjänst konfiguration (. cscfg) som krävs
 
 ### <a name="1-virtual-network"></a>1) Virtual Network
-Distributioner av moln tjänster (utökad support) måste finnas i ett virtuellt nätverk. Det går att skapa virtuella nätverk via [Azure Portal](https://docs.microsoft.com/azure/virtual-network/quick-create-portal), [POWERSHELL](https://docs.microsoft.com/azure/virtual-network/quick-create-powershell), [Azure CLI](https://docs.microsoft.com/azure/virtual-network/quick-create-cli) eller [arm-mall](https://docs.microsoft.com/azure/virtual-network/quick-create-template). Det virtuella nätverket och undernät måste också refereras i tjänst konfigurationen (. cscfg) i `NetworkConfiguration` avsnittet. 
+Distributioner av moln tjänster (utökad support) måste finnas i ett virtuellt nätverk. Det går att skapa virtuella nätverk via [Azure Portal](https://docs.microsoft.com/azure/virtual-network/quick-create-portal), [POWERSHELL](https://docs.microsoft.com/azure/virtual-network/quick-create-powershell), [Azure CLI](https://docs.microsoft.com/azure/virtual-network/quick-create-cli) eller [arm-mall](https://docs.microsoft.com/azure/virtual-network/quick-create-template). Det virtuella nätverket och undernät måste också refereras i tjänst konfigurationen (. cscfg) i avsnittet [NetworkConfiguration](schema-cscfg-networkconfiguration.md) . 
 
 För ett virtuellt nätverk som tillhör samma resurs grupp som moln tjänsten räcker det att referera till det virtuella nätverks namnet i tjänst konfigurations filen (. cscfg). Om det virtuella nätverket och moln tjänsten finns i två olika resurs grupper måste det fullständiga Azure Resource Manager-ID: t för det virtuella nätverket anges i tjänst konfigurations filen (. cscfg).
  
 #### <a name="virtual-network-located-in-same-resource-group"></a>Virtual Network finns i samma resurs grupp
-```json
+```xml
 <VirtualNetworkSite name="<vnet-name>"/> 
 <AddressAssignments> 
 <InstanceAddress roleName="<role-name>"> 
@@ -58,8 +58,8 @@ För ett virtuellt nätverk som tillhör samma resurs grupp som moln tjänsten r
 ```
 
 #### <a name="virtual-network-located-in-different-resource-group"></a>Virtuellt nätverk finns i en annan resurs grupp
-```json
-“/subscriptions/<sub-id>/resourceGroups/<rg-name>/providers/Microsoft.Network/virtualNetworks/<vnet-name>/> 
+```xml
+<VirtualNetworkSite name="/subscriptions/<sub-id>/resourceGroups/<rg-name>/providers/Microsoft.Network/virtualNetworks/<vnet-name>"/> 
 <AddressAssignments> 
 <InstanceAddress roleName="<role-name>"> 
 <Subnets> 

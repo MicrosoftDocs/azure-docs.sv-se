@@ -13,18 +13,18 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: f60e21f98092df65ef01e68fe9c2e64833a24855
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: a678e8545f761e98abbdf026886afa624f9d2b4e
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063220"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753642"
 ---
 # <a name="scenario-mobile-application-that-calls-web-apis"></a>Scenario: mobil program som anropar webb-API: er
 
 Lär dig hur du skapar en mobilapp som anropar webb-API: er.
 
-## <a name="getting-started"></a>Kom igång
+## <a name="getting-started"></a>Komma igång
 
 Om du inte redan har gjort det kan du skapa ditt första program genom att slutföra en snabb start:
 
@@ -34,7 +34,7 @@ Om du inte redan har gjort det kan du skapa ditt första program genom att slutf
 
 ## <a name="overview"></a>Översikt
 
-En anpassad och smidig användar upplevelse är nödvändig för mobila appar.  Med Microsoft Identity Platform kan mobila utvecklare skapa denna upplevelse för iOS-och Android-användare. Ditt program kan logga in Azure Active Directory (Azure AD)-användare, personliga Microsoft-konto användare och Azure AD B2C användare. Det kan också hämta token för att anropa ett webb-API för deras räkning. För att implementera dessa flöden använder vi Microsoft Authentication Library (MSAL). MSAL implementerar standarden [OAuth 2.0 Authorization Code Flow](v2-oauth2-auth-code-flow.md).
+En anpassad och smidig användar upplevelse är nödvändig för mobila appar. Microsoft Identity Platform gör det möjligt för mobila utvecklare att skapa den upplevelsen för iOS-och Android-användare. Ditt program kan logga in Azure Active Directory (Azure AD)-användare, personliga Microsoft-konto användare och Azure AD B2C användare. Det kan också hämta token för att anropa ett webb-API för deras räkning. För att implementera dessa flöden använder vi Microsoft Authentication Library (MSAL). MSAL implementerar standarden [OAuth 2.0 Authorization Code Flow](v2-oauth2-auth-code-flow.md).
 
 ![Daemon-appar](./media/scenarios/mobile-app.svg)
 
