@@ -9,12 +9,12 @@ metadata:
   author: dcurwin
   ms.author: dacurwin
   ms.date: 12/01/2019
-  ms.openlocfilehash: e2afc60f6fa67c1dc0582839e2d3f7480907facc
-  ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
-  ms.translationtype: HT
+  ms.openlocfilehash: ea54d6e4a08ff5baa2a46051a8ec342128175de3
+  ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+  ms.translationtype: MT
   ms.contentlocale: sv-SE
-  ms.lasthandoff: 01/18/2021
-  ms.locfileid: "98556502"
+  ms.lasthandoff: 01/21/2021
+  ms.locfileid: "98707706"
 landingContent:
 - title: Läs mer om Azure Backup
   linkLists:
@@ -40,8 +40,6 @@ landingContent:
       url: quick-backup-vm-cli.md
     - text: Säkerhetskopiera en virtuell dator med en Resource Manager-mall
       url: quick-backup-vm-template.md
-- title: Testa dessa stegvisa självstudier
-  linkLists:
   - linkListType: tutorial
     links:
     - text: Säkerhetskopiera virtuella Azure-datorer
@@ -84,6 +82,20 @@ landingContent:
       url: backup-azure-vm-backup-faq.md
     - text: Hantera säkerhetskopior av virtuella Azure-datorer
       url: backup-azure-manage-vms.md
+- title: Säkerhetskopiera Azure Managed Disks (för hands version)
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Översikt över säkerhets kopiering av Azure-diskar
+      url: disk-backup-overview.md
+    - text: Support mat ris för Azure disk backup
+      url: disk-backup-support-matrix.md
+    - text: Säkerhetskopiera Azure Managed Disks
+      url: backup-managed-disks.md
+    - text: Vanliga frågor och svar om Azure Managed Disks
+      url: disk-backup-faq.md
+    - text: Felsöka Azure Managed Disks säkerhets kopiering
+      url: disk-backup-troubleshoot.md
 - title: Säkerhetskopiera SQL Server på virtuella Azure-datorer
   linkLists:
   - linkListType: concept
