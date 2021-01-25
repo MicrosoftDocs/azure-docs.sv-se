@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 01/10/2021
-ms.openlocfilehash: 6061980ec556fccde3de882a291bc390b88c5a24
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: f2807501b1e18d4cbffaa34d70bccf8d70565266
+ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611091"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98747231"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Kundhanterad nyckel i Azure Monitor 
 
@@ -125,11 +125,53 @@ De här inställningarna kan uppdateras i Key Vault via CLI och PowerShell:
 
 ## <a name="create-cluster"></a>Skapa kluster
 
-> [!NOTE]
-> Kluster har stöd för två [hanterade identitets typer](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types): systemtilldelade och tilldelade användare, och var och en kan baseras beroende på ditt scenario. Systemtilldelad hanterad identitet är enklare och skapas automatiskt med klustret när identiteten `type` anges som "*SystemAssigned*". den här identiteten kan användas senare för att ge klustret åtkomst till din Key Vault. Om du vill skapa ett kluster medan en kundhanterad nyckel definieras vid skapande av klustret, bör du ha en definierad nyckel och tilldelad identitet som beviljats i Key Vault i förväg och sedan skapa klustret med följande inställningar: identitet `type` som "*UserAssigned*", `UserAssignedIdentities` med identitetens resurs-ID och `keyVaultProperties` med viktig information.
+Kluster stöder två [hanterade identitets typer](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types): systemtilldelade och tilldelade användare, medan en enskild identitet kan definieras i ett kluster beroende på ditt scenario. 
+- Systemtilldelad hanterad identitet är enklare och genereras automatiskt med kluster skapande när identiteten `type` är inställd på "*SystemAssigned*". Den här identiteten kan användas senare för att ge klustret åtkomst till din Key Vault. 
+  
+  Identitets inställningar i kluster för hanterad identitet som tilldelats av systemet
+  ```json
+  {
+    "identity": {
+      "type": "SystemAssigned"
+      }
+  }
+  ```
+
+- Om du vill konfigurera kundhanterad nyckel när klustret skapas, bör du ha en nyckel och en tilldelad identitet som beviljats i Key Vault i förväg och sedan skapa klustret med följande inställningar: identitet `type` som "*UserAssigned*" `UserAssignedIdentities` med resurs-ID för identiteten.
+
+  Identitets inställningar i kluster för användardefinierad hanterad identitet
+  ```json
+  {
+  "identity": {
+  "type": "UserAssigned",
+    "userAssignedIdentities": {
+      "subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft. ManagedIdentity/UserAssignedIdentities/<cluster-assigned-managed-identity>"
+      }
+  }
+  ```
 
 > [!IMPORTANT]
-> För närvarande kan du inte definiera kundhanterad nyckel med användardefinierad hanterad identitet om Key Vault finns i Private-Link (vNet) och du kan använda systemtilldelad hanterad identitet i det här fallet.
+> Du kan inte använda kundhanterad nyckel med användardefinierad hanterad identitet om din Key Vault är i Private-Link (vNet). Du kan använda systemtilldelad hanterad identitet i det här scenariot.
+
+```json
+{
+  "identity": {
+    "type": "SystemAssigned"
+}
+```
+ 
+Med:
+
+```json
+{
+  "identity": {
+  "type": "UserAssigned",
+    "userAssignedIdentities": {
+      "subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft. ManagedIdentity/UserAssignedIdentities/<user-assigned-managed-identity-name>"
+      }
+}
+```
+
 
 Följ proceduren som illustreras i [artikeln om dedikerade kluster](../log-query/logs-dedicated-clusters.md#creating-a-cluster). 
 
@@ -243,15 +285,13 @@ Följ proceduren som illustreras i [artikeln om dedikerade kluster](../log-query
 
 ## <a name="key-revocation"></a>Återkallande av nyckel
 
-Du kan återkalla åtkomsten till data genom att inaktivera nyckeln eller ta bort klustrets åtkomst princip i Key Vault. 
-
 > [!IMPORTANT]
-> - Om klustret har angetts med användardefinierad hanterad identitet ställer `UserAssignedIdentities` du in med `None` pausa klustret och förhindrar åtkomst till dina data, men du kan inte återställa åter kallelsen och aktivera klustret utan att öppna support förfrågan. Den här begränsningen gäller inte för systemtilldelad hanterad identitet.
-> - Den rekommenderade åtgärden för nyckel återkallning är genom att inaktivera nyckeln i Key Vault.
+> - Det rekommenderade sättet att återkalla åtkomsten till dina data är genom att inaktivera nyckeln eller ta bort åtkomst principen i Key Vault.
+> - Att ställa in klustret `identity` `type` till "ingen" återkallar även åtkomsten till dina data, men den här metoden rekommenderas inte eftersom du inte kan återställa åter kallelsen när du omvärderar `identity` i klustret utan att öppna support förfrågan.
 
-Kluster lagringen kommer alltid att respektera ändringar i nyckel behörigheter inom en timme eller snart och lagring kommer att bli otillgänglig. Alla nya data som läggs till i arbets ytorna som är länkade till klustret tas bort och kan inte återställas, data blir otillgängliga och det går inte att hitta frågor på dessa arbets ytor. Tidigare inmatade data finns kvar i lagrings utrymmet så länge klustret och arbets ytorna inte har tagits bort. Otillgängliga data regleras av data bevarande principen och kommer att rensas när kvarhållning har nåtts. Inmatade data under de senaste 14 dagarna behålls också i frekvent cache (SSD-backad) för effektiv Operations Engine-åtgärd. Detta tas bort vid nyckel återkallnings åtgärden och blir oåtkomlig även.
+Kluster lagringen kommer alltid att respektera ändringar i nyckel behörigheter inom en timme eller snart och lagring kommer att bli otillgänglig. Alla nya data som läggs till i arbets ytorna som är länkade till klustret tas bort och kan inte återställas, data blir otillgängliga och det går inte att hitta frågor på dessa arbets ytor. Tidigare inmatade data finns kvar i lagrings utrymmet så länge klustret och arbets ytorna inte har tagits bort. Otillgängliga data regleras av data bevarande principen och kommer att rensas när kvarhållning har nåtts. Inmatade data under de senaste 14 dagarna behålls också i frekvent cache (SSD-backad) för effektiv Operations Engine-åtgärd. Detta tas bort vid nyckel återkallnings åtgärden och blir oåtkomlig.
 
-Klustrets lagring avsöker regelbundet din Key Vault för att försöka att packa upp krypterings nyckeln och en gång, så fortsätter data inmatningen och frågan att återupptas inom 30 minuter.
+Klustrets lagrings plats kontrollerar regelbundet Key Vault för att försöka att packa upp krypterings nyckeln och en gång till, så återupptas data inmatningen och frågan inom 30 minuter.
 
 ## <a name="key-rotation"></a>Nyckelrotation
 
@@ -259,7 +299,7 @@ För kundhanterad nyckel rotation krävs en explicit uppdatering av klustret med
 
 Alla dina data är tillgängliga efter nyckel rotations åtgärden, eftersom data alltid krypteras med konto krypterings nyckeln (AEK) medan AEK nu krypteras med din nya KEK-version (Key Encryption Key) i Key Vault.
 
-## <a name="customer-managed-key-for-queries"></a>Kundhanterad nyckel för frågor
+## <a name="customer-managed-key-for-saved-queries"></a>Kundhanterad nyckel för sparade frågor
 
 Frågespråket som används i Log Analytics är lättfattliga programspecifika och kan innehålla känslig information i kommentarer som du lägger till i frågor eller i frågesyntaxen. Vissa organisationer kräver att sådan information hålls skyddad under kundhanterad nyckel princip och du måste spara dina frågor krypterade med din nyckel. Med Azure Monitor kan du lagra *sparade sökningar* och *Logga aviserings* frågor som är krypterade med din nyckel i ditt eget lagrings konto när du är ansluten till din arbets yta. 
 
@@ -410,7 +450,7 @@ Customer-Managed nyckel anges i ett dedikerat kluster och dessa åtgärder hänv
 
   - Om klustret har angetts med användardefinierad hanterad identitet ställer `UserAssignedIdentities` du in med `None` pausa klustret och förhindrar åtkomst till dina data, men du kan inte återställa åter kallelsen och aktivera klustret utan att öppna support förfrågan. Den här begränsningen inte är ' tillämpas på systemtilldelad hanterad identitet.
 
-  - För närvarande kan du inte definiera kundhanterad nyckel med användardefinierad hanterad identitet om Key Vault finns i Private-Link (vNet) och du kan använda systemtilldelad hanterad identitet i det här fallet.
+  - Du kan inte använda kundhanterad nyckel med användardefinierad hanterad identitet om din Key Vault är i Private-Link (vNet). Du kan använda systemtilldelad hanterad identitet i det här scenariot.
 
 ## <a name="troubleshooting"></a>Felsökning
 

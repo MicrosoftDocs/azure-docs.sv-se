@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: 4b34477a40530a0e6f26b59dd9707c019418b2a4
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 6010242e7fbd14aa117c481dee0d05e92928ef1b
+ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94655858"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98747499"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>Ansluta din externa lösning med hjälp av vanligt händelse format
 
@@ -48,7 +48,7 @@ Se till att konfigurera datorns säkerhet enligt din organisations säkerhets pr
 
 Om du vill använda TLS-kommunikation mellan syslog-källan och syslog-vidarebefordraren måste du konfigurera syslog-daemonen (rsyslog eller syslog-ng) för att kommunicera i TLS: [kryptera syslog-trafik med TLS-rsyslog](https://www.rsyslog.com/doc/v8-stable/tutorials/tls_cert_summary.html), [kryptera logg meddelanden med TLS – syslog-ng](https://support.oneidentity.com/technical-documents/syslog-ng-open-source-edition/3.22/administration-guide/60#TOPIC-1209298).
  
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Kontrol lera att Linux-datorn som du använder som en logg vidarebefordrare kör något av följande operativ system:
 
@@ -77,6 +77,12 @@ Kontrol lera att Linux-datorn som du använder som en logg vidarebefordrare kör
   - Syslog RFC 5424
  
 Kontrol lera att datorn också uppfyller följande krav: 
+
+- Kapacitet
+  - Datorn måste ha minst **4 processor kärnor och 8 GB RAM-minne**.
+
+    > [!NOTE]
+    > - En enskild logg vidarebefordrare med hjälp av **rsyslog** daemon har en kapacitet på **upp till 8500 händelser per sekund (EPS) som** samlats in.
 
 - Behörigheter
   - Du måste ha förhöjd behörighet (sudo) på datorn. 

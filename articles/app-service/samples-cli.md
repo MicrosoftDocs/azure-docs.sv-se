@@ -6,12 +6,12 @@ ms.assetid: 53e6a15a-370a-48df-8618-c6737e26acec
 ms.topic: sample
 ms.date: 07/07/2020
 ms.custom: mvc
-ms.openlocfilehash: beab87618b97da4e61b0525c0c5a6bdd134fb7f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 61ce290f8ed5e8ad919a253d426d3278233caa3f
+ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86169450"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98747297"
 ---
 # <a name="cli-samples-for-azure-app-service"></a>CLI-exempel för Azure App Service
 
@@ -40,7 +40,7 @@ Följande tabell innehåller länkar till bash-skript som skapats med hjälp av 
 | [Anslut en app till ett lagringskonto](./scripts/cli-connect-to-storage.md?toc=%2fcli%2fazure%2ftoc.json)| Skapar en App Service-app och ett lagringskonto och lägger sedan till lagringsanslutningssträngen till appinställningarna. |
 | [Ansluta en app till en Azure Cache for Redis](./scripts/cli-connect-to-redis.md?toc=%2fcli%2fazure%2ftoc.json) | Skapar en App Service-app och en Azure Cache for Redis och lägger sedan till Redis-anslutningsinformationen till appinställningarna.) |
 | [Ansluta en app till Azure Cosmos DB](./scripts/cli-connect-to-documentdb.md?toc=%2fcli%2fazure%2ftoc.json) | Skapar en App Service-app och en Cosmos DB och lägger sedan till Cosmos DB-anslutningsinformationen till appinställningarna. |
-|**Säkerhetskopiera och återställ app**||
+|**Säkerhets kopiering och återställning av appen**||
 | [Säkerhetskopiera en app](./scripts/cli-backup-onetime.md?toc=%2fcli%2fazure%2ftoc.json) | Skapar en App Service-app och en engångssäkerhetskopia för den. |
 | [Skapa en schemalagd säkerhetskopiering för en app](./scripts/cli-backup-scheduled.md?toc=%2fcli%2fazure%2ftoc.json) | Skapar en App Service-app och skapar en schemalagd säkerhetskopia för den. |
 | [Återställer en app från en säkerhetskopia](./scripts/cli-backup-restore.md?toc=%2fcli%2fazure%2ftoc.json) | Återställer en App Service-app från en säkerhetskopia. |

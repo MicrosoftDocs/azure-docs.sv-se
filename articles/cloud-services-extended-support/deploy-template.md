@@ -8,20 +8,21 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: aeb53e722eae588b7d5e2963afe67f299c2c3565
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: dfbae5144ec19b795463bd44f1e84fcf2516c267
+ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98745178"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98747214"
 ---
 # <a name="create-a-cloud-service-extended-support-using-arm-templates"></a>Skapa en moln tjänst (utökad support) med ARM-mallar
+
+I den här självstudien beskrivs hur du skapar en moln tjänst (utökad support) distribution med [arm-mallar](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview). 
 
 > [!IMPORTANT]
 > Cloud Services (utökad support) är för närvarande en offentlig för hands version.
 > Den här förhandsversionen tillhandahålls utan serviceavtal och rekommenderas inte för produktionsarbetsbelastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade. Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-I den här självstudien beskrivs hur du skapar en moln tjänst (utökad support) distribution med [arm-mallar](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview). 
 
 ## <a name="before-you-begin"></a>Innan du börjar
 1. Granska [distributions kraven](deploy-prerequisite.md) för Cloud Services (utökad support) och skapa de associerade resurserna. 

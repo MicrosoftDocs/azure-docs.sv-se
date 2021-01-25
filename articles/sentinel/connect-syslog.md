@@ -1,6 +1,6 @@
 ---
 title: Anslut syslog-data till Azure Sentinel | Microsoft Docs
-description: Anslut alla datorer och installationer som stöder Syslog till Azure Sentinel genom att använda en agent på en Linux-dator mellan-installationen och kontroll enheten. 
+description: Anslut alla datorer och installationer som stöder Syslog till Azure Sentinel genom att använda en agent på en Linux-dator mellan-installationen och kontroll enheten.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: 7670d00a2dd25961a51d18c50c102e0f92b30975
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c3cf4c3c135b3f275542af4f531d1071e180ebe
+ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88566156"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98747198"
 ---
 # <a name="collect-data-from-linux-based-sources-using-syslog"></a>Samla in data från Linux-baserade källor med syslog
 
 Du kan strömma händelser från Linux-baserade, syslog-stödjande datorer eller-enheter till Azure Sentinel, med hjälp av Log Analytics agent för Linux (tidigare kallat OMS-agenten). Du kan göra detta för alla datorer som gör att du kan installera Log Analytics agenten direkt på datorn. Datorns interna syslog-daemon samlar in lokala händelser av de angivna typerna och vidarebefordrar dem lokalt till agenten, som kommer att strömma dem till din Log Analytics-arbetsyta.
 
 > [!NOTE]
-> - Om din installation stöder **common Event format (CEF) över syslog**samlas en mer fullständig data uppsättning och data parsas i samlingen. Du bör välja det här alternativet och följa anvisningarna i [ansluta din externa lösning med CEF](connect-common-event-format.md).
+> - Om din installation stöder **common Event format (CEF) över syslog** samlas en mer fullständig data uppsättning och data parsas i samlingen. Du bör välja det här alternativet och följa anvisningarna i [ansluta din externa lösning med CEF](connect-common-event-format.md).
 >
 > - Log Analytics stöder insamling av meddelanden som skickats av **rsyslog** **-eller syslog-ng-** daemon, där rsyslog är standardvärdet. Standard syslog-daemonen på version 5 av Red Hat Enterprise Linux (RHEL), CentOS och Oracle Linux version (**sysklog**) stöds inte för händelse insamling i syslog. Om du vill samla in syslog-data från den här versionen av dessa distributioner ska rsyslog daemon installeras och konfigureras för att ersätta sysklog.
 
@@ -67,7 +67,7 @@ Mer information finns i [syslog-datakällor i Azure Monitor](../azure-monitor/pl
 
 ### <a name="configure-the-log-analytics-agent"></a>Konfigurera Log Analytics agent
 
-1. Längst ned på bladet syslog-koppling klickar du på länken **Öppna konfiguration av avancerade inställningar >på arbets ytan ** .
+1. Längst ned på bladet syslog-koppling klickar du på länken **Öppna konfiguration av avancerade inställningar >på arbets ytan** .
 
 1. På bladet **Avancerade inställningar** väljer du **data**  >  **syslog**. Lägg sedan till de anläggningar som ska samlas in av kopplingen.
     
@@ -81,7 +81,7 @@ Mer information finns i [syslog-datakällor i Azure Monitor](../azure-monitor/pl
 
 1. Kontrol lera att du skickar de anläggningar som du har angett på din virtuella dator eller enhet.
 
-1. Om du vill fråga syslog-loggdata i **loggar**skriver `Syslog` du i frågefönstret.
+1. Om du vill fråga syslog-loggdata i **loggar** skriver `Syslog` du i frågefönstret.
 
 1. Du kan använda frågeparametrar som beskrivs i [använda funktioner i Azure Monitor logg frågor](../azure-monitor/log-query/functions.md) för att parsa syslog-meddelanden. Du kan sedan spara frågan som en ny Log Analytics-funktion och använda den som en ny datatyp.
 
@@ -113,15 +113,19 @@ Azure Sentinel kan använda Machine Learning (ML) till syslog-data för att iden
  
 Den här identifieringen kräver en speciell konfiguration av syslog-datakopplingen: 
 
-1. I steg 5 i föregående procedur ser du till att både **auth** -och **authpriv** är markerade som anläggningar att övervaka. Behåll standardinställningarna för allvarlighets grad alternativen så att alla är markerade. Exempel:
+1. I steg 5 i föregående procedur ser du till att både **auth** -och **authpriv** är markerade som anläggningar att övervaka. Behåll standardinställningarna för allvarlighets grad alternativen så att alla är markerade. Ett exempel:
     
     > [!div class="mx-imgBorder"]
     > ![Anläggningar som krävs för identifiering av avvikande SSH-inloggning](./media/connect-syslog/facilities-ssh-detection.png)
 
-2. Tillåt att syslog-informationen samlas in tillräckligt med tid. Gå sedan till **Azure Sentinel-logs**och kopiera och klistra in följande fråga:
+2. Tillåt att syslog-informationen samlas in tillräckligt med tid. Gå sedan till **Azure Sentinel-logs** och kopiera och klistra in följande fråga:
     
-    ```console
-    Syslog |  where Facility in ("authpriv","auth")| extend c = extract( "Accepted\\s(publickey|password|keyboard-interactive/pam)\\sfor ([^\\s]+)",1,SyslogMessage)| where isnotempty(c) | count 
+    ```kusto
+    Syslog
+    | where Facility in ("authpriv","auth")
+    | extend c = extract( "Accepted\\s(publickey|password|keyboard-interactive/pam)\\sfor ([^\\s]+)",1,SyslogMessage)
+    | where isnotempty(c)
+    | count 
     ```
     
     Ändra **tidsintervallet** vid behov och välj **Kör**.

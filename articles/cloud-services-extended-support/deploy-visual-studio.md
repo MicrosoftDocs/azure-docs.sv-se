@@ -9,16 +9,16 @@ ms.workload: azure-vs
 ms.topic: tutorial
 ms.date: 10/5/2020
 ms.author: ghogen
-ms.openlocfilehash: 1c2264cb76e062f5f22c0460572ec01750086a04
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: b12f8beeee054e547a6b58750d8482d32ee14453
+ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98745077"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98747264"
 ---
 # <a name="create-and-deploy-a-azure-cloud-service-extended-support-using-visual-studio"></a>Skapa och distribuera en Azure Cloud Service (utökad support) med Visual Studio
 
-Från och med Visual Studio 2019 version 16,9 Preview 1 kan du arbeta med Cloud Services (utökad support) med hjälp av Azure Resource Manager, vilket avsevärt fören klar och moderniserar underhåll och hantering av Azure-resurser. Du kan också konvertera ett befintligt moln tjänst projekt till ett utökat support moln tjänst projekt.
+Från och med [Visual Studio 2019 version 16,9](https://visualstudio.microsoft.com/vs/preview/) (för närvarande i för hands version) kan du arbeta med moln tjänster med Azure Resource Manager (arm), vilket avsevärt fören klar och moderniserar underhåll och hantering av Azure-resurser. Detta aktive ras av en ny Azure-tjänst som kallas Cloud Services (utökad support). Du kan publicera en befintlig moln tjänst till Cloud Services (utökad support). Information om den här Azure-tjänsten finns i [dokumentationen för Cloud Services (utökad support)](overview.md).
 
 > [!IMPORTANT]
 > Cloud Services (utökad support) är för närvarande en offentlig för hands version.

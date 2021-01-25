@@ -9,18 +9,18 @@ ms.reviewer: dseven
 ms.author: matjazl
 author: matjazl
 ms.date: 02/07/2019
-ms.openlocfilehash: 37086a925d65a80f219c8e0a3358c834a2691701
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: b0acfbf9636c2ad1df7df3197a0a1a83ec91b5c3
+ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93145658"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98747347"
 ---
 # <a name="access-azure-api-for-fhir-with-postman"></a>Få åtkomst till Azure API för FHIR med Postman
 
 Ett klient program har åtkomst till ett FHIR-API via en [REST API](https://www.hl7.org/fhir/http.html). Du kanske också vill interagera direkt med FHIR-servern när du skapar program, till exempel för fel sökning. I den här självstudien får vi gå igenom de steg som krävs för att använda [Postman](https://www.getpostman.com/) för att få åtkomst till en FHIR-Server. Postman är ett verktyg som ofta används för fel sökning när du skapar program som har åtkomst till API: er.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 - En FHIR-slutpunkt i Azure. Du kan ställa in detta med hjälp av det hanterade Azure-API: t för FHIR eller FHIR-servern med öppen källkod för Azure. Konfigurera det hanterade Azure-API: t för FHIR med hjälp av [Azure Portal](fhir-paas-portal-quickstart.md), [POWERSHELL](fhir-paas-powershell-quickstart.md)eller [Azure CLI](fhir-paas-cli-quickstart.md).
 - Ett  [klient program](register-confidential-azure-ad-client-app.md) som du ska använda för att få åtkomst till FHIR-tjänsten
@@ -32,7 +32,7 @@ Följande information behövs för att kunna använda Postman:
 
 - FHIR-serverns URL, till exempel `https://MYACCOUNT.azurehealthcareapis.com`
 - Identitets leverantören `Authority` för FHIR-servern, till exempel `https://login.microsoftonline.com/{TENANT-ID}`
-- Den konfigurerade `audience` . Detta är vanligt vis URL: en för FHIR-servern, t. ex. `https://MYACCOUNT.azurehealthcareapis.com` eller bara `https://azurehealthcareapis.com` .
+- Den konfigurerade `audience` . Detta är vanligt vis URL: en för FHIR-servern, t. ex. `https://<FHIR-SERVER-NAME>.azurehealthcareapis.com` eller bara `https://azurehealthcareapis.com` .
 - `client_id`(Eller program-ID) för det [klient program](register-confidential-azure-ad-client-app.md) som du ska använda för att få åtkomst till FHIR-tjänsten.
 - `client_secret`(Eller program hemligheten) för klient programmet.
 
@@ -72,7 +72,7 @@ Du behöver lite information:
 | Klient-ID             | `XXXXXXXX-XXX-XXXX-XXXX-XXXXXXXXXXXX`                                                                            | Program-ID             |
 | Client Secret (Klienthemlighet)         | `XXXXXXXX`                                                                                                        | Hemlig klient nyckel          |
 | Omfång | `<Leave Blank>` |
-| Tillstånd                 | `1234`                                                                                                            |                            |
+| Stat                 | `1234`                                                                                                            |                            |
 | Klientautentisering | Skicka klientautentiseringsuppgifter i brödtext                                                                                 |                 
 
 Besök-token för begäran och du kommer att guidas genom Azure Active Directory-autentiseringsschemat och en token returneras till Postman. Om du stöter på problem öppnar du Postman-konsolen (från meny alternativet "View->Visa Postman-konsolen").

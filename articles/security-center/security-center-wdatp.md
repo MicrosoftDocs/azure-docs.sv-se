@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/20/2020
 ms.author: memildin
-ms.openlocfilehash: 553151aebeadf4ad4764e747b1bf6dcd8c552721
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: 9fde0ecd8b6670e43aa3970b2df27a402b9c1a5c
+ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98126860"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98747248"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>Skydda dina slut punkter med Security Center Integrated EDR-lösning: Microsoft Defender för slut punkt
 
@@ -36,7 +36,7 @@ Microsoft Defender för slut punkt är en holistisk, Cloud-levererad slut punkts
 > Vid antändning 2020 lanserade vi [Microsoft Defender XDR Suite](https://www.microsoft.com/security/business/threat-protection) och den här EDR-komponenten har bytt namn till **Microsoft Defender för slut punkt**.
 
 
-## <a name="availability"></a>Tillgängligt
+## <a name="availability"></a>Tillgänglighet
 
 | Aspekt                          | Information                                                                                                                                                                                                                                                                                                       |
 |---------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -45,7 +45,7 @@ Microsoft Defender för slut punkt är en holistisk, Cloud-levererad slut punkts
 | Plattformar som stöds:            | Azure-datorer som kör Windows<br>Azure Arc-datorer som kör Windows|
 | Versioner av Windows som stöds:  |  • Security Center stöder identifiering på Windows Server 2016, 2012 R2 och 2008 R2 SP1<br> • Övervakning av Server slut punkt med denna integrering har inaktiverats för Office 365 GCC-kunder<br> • Inget stöd för Windows Server 2019, Windows 10 1703 (och nyare) eller Linux|
 | Nödvändiga roller och behörigheter: | Aktivera/inaktivera integrering: **säkerhets administratör** eller **ägare**<br>Så här visar du MDATP-aviseringar i Security Center: **säkerhets läsare**, **läsare**, **resurs grupps deltagare**, **resurs grupp ägare**, **säkerhets administratör**, **prenumerations ägare** eller **prenumerations deltagare**|
-| Moln                         | ![Yes](./media/icons/yes-icon.png) Kommersiella moln<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) Kina gov, andra gov<br>![No](./media/icons/no-icon.png) GCC kunder som kör arbets belastningar i globala Azure-moln                                                        |
+| Moln                         | ![Ja](./media/icons/yes-icon.png) Kommersiella moln<br>![Ja](./media/icons/yes-icon.png) US Gov<br>![Nej](./media/icons/no-icon.png) Kina gov, andra gov<br>![Nej](./media/icons/no-icon.png) GCC kunder som kör arbets belastningar i globala Azure-moln                                                        |
 |                                 |                                                                                                                                                                                                                                                                                                               |
 
 
@@ -118,6 +118,8 @@ Så här skapar du en ofarlig Microsoft Defender för slut punkts test avisering
 1. Om du vill granska aviseringen i Security Center går du till **säkerhets varningar**  >  ,**misstänkt PowerShell-kommandorad**.
 1. I fönstret undersökning väljer du länken för att gå till Microsoft Defender för slut punkts portalen.
 
+    > [!TIP]
+    > Aviseringen utlöses med **informationens** allvarlighets grad.
 
 ## <a name="faq-for-security-centers-integrated-microsoft-defender-for-endpoint"></a>Vanliga frågor och svar om Security Centers integrerade Microsoft Defender för slut punkt
 

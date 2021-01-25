@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/28/2019
+ms.date: 01/24/2021
 ms.author: terrylan
-ms.openlocfilehash: 038f30ee186a5b3a9d87d64054726324051c37b4
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: d85b1fdd433c372bb41adec6e3d33013f19363f0
+ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842761"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98747181"
 ---
 # <a name="azure-security-management-and-monitoring-overview"></a>Översikt över Azure Security Management och Monitoring
 Den här artikeln innehåller en översikt över de säkerhetsfunktioner och tjänster som Azure tillhandahåller för att hjälpa till med hantering och övervakning av Azure Cloud Services och Virtual Machines.
@@ -62,7 +62,7 @@ Läs mer:
 
 * [Multifaktorautentisering](https://azure.microsoft.com/documentation/services/multi-factor-authentication/)
 * [Vad är Azure AD Multi-Factor Authentication?](../../active-directory/authentication/concept-mfa-howitworks.md)
-* [Så här fungerar Azure AD Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md)
+* [Så fungerar Azure AD-multifaktorautentisering](../../active-directory/authentication/concept-mfa-howitworks.md)
 
 ## <a name="expressroute"></a>ExpressRoute
 
@@ -85,7 +85,7 @@ VPN-gatewayer, som även kallas Azure virtuella nätverksgateway, används för 
 Läs mer:
 
 * [Om VPN-gatewayer](../../vpn-gateway/vpn-gateway-about-vpngateways.md)
-* [Översikt över Azure Network Security](network-overview.md)
+* [Översikt över nätverkssäkerhet i Azure](network-overview.md)
 
 ## <a name="privileged-identity-management"></a>Privileged Identity Management
 
@@ -112,20 +112,23 @@ Genom att tillhandahålla meddelanden och Rekommenderad reparation bidrar identi
 
 Läs mer:
 
-* [Identitetsskydd för Azure Active Directory](../../active-directory/identity-protection/overview-identity-protection.md)
+* [Azure Active Directory Identity Protection](../../active-directory/identity-protection/overview-identity-protection.md)
 * [Kanal 9: Azure AD och identitet Visa: identitets skydd för hands version](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
 
 ## <a name="security-center"></a>Security Center
 
-Azure Security Center hjälper dig att förebygga, identifiera och reagera på hot. Security Center ger ökad insyn i och kontroll över säkerheten för dina Azure-resurser. Den ger integrerad säkerhetsövervakning och princip hantering i dina Azure-prenumerationer. Den hjälper till att upptäcka hot som annars kan gå vidare och fungerar med ett brett eko system med säkerhetslösningar.
+Azure Security Center hjälper dig att förebygga, identifiera och reagera på hot. Security Center ger ökad insyn i och kontroll över säkerheten för dina Azure-resurser samt de i din hybrid moln miljö. 
+
+Security Center utför kontinuerliga säkerhets utvärderingar av dina anslutna resurser och jämför deras konfiguration och distribution mot [Azures säkerhets benchmark](../benchmarks/introduction.md) för att ge detaljerade säkerhets rekommendationer som är anpassade för din miljö.
 
 Security Center hjälper dig att optimera och övervaka säkerheten för dina Azure-resurser genom att:
 
-* Gör det möjligt att definiera principer för dina prenumerations resurser för Azure enligt:
-  * Företagets säkerhets behov.
-  * Typ av program eller känslighet för data i varje prenumeration.
-* Övervaka statusen för dina virtuella Azure-datorer, nätverk och program.
-* Tillhandahålla en lista över prioriterade säkerhets aviseringar, inklusive aviseringar från integrerade partner lösningar. Den innehåller också den information som du behöver för att snabbt undersöka ett angrepp och rekommendationer om hur du kan åtgärda det.
+- Gör det möjligt att definiera principer för dina prenumerations resurser för Azure enligt:
+    - Organisationens säkerhets behov.
+    - Typ av program eller känslighet för data i varje prenumeration.
+    - Alla bransch-eller reglerings standarder eller riktmärken som du använder för dina prenumerationer. 
+- Övervaka statusen för dina virtuella Azure-datorer, nätverk och program.
+- Tillhandahålla en lista över prioriterade säkerhets aviseringar, inklusive aviseringar från integrerade partner lösningar. Den innehåller också den information som du behöver för att snabbt undersöka ett angrepp och rekommendationer om hur du kan åtgärda det.
 
 Läs mer:
 

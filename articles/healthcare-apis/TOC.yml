@@ -93,6 +93,11 @@
           href: export-data.md
         - name: Avidentifierad export
           href: de-identified-export.md
+    - name: Konvertera data
+      expanded: false
+      items:
+        - name: Mallar för $convert-data-och FHIR Converter-tillägg
+          href: convert-data.md
     - name: 'Hitta ID:n för identitetsobjekt'
       href: find-identity-object-ids.md
     - name: Diagnostisk loggning och mått
