@@ -1,17 +1,17 @@
 ---
 title: Inbyggda princip definitioner för Azure-anpassade resurs leverantörer
 description: Visar Azure Policy inbyggda princip definitioner för Azure-anpassade resurs leverantörer. Dessa inbyggda princip definitioner tillhandahåller vanliga metoder för att hantera dina Azure-resurser.
-ms.date: 01/21/2021
+ms.date: 01/25/2021
 ms.topic: reference
 author: jjbfour
 ms.author: jobreen
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 5c52a791b083e5625aa02b76e8cb505b0ba87744
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: d4c97e7ce4fab0a3fb811db021f8131033c98b44
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98704783"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98802323"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-custom-resource-providers"></a>Azure Policy inbyggda definitioner för Azure-anpassade resurs leverantörer
 

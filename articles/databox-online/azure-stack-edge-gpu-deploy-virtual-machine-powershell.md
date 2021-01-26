@@ -6,18 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 12/23/2020
+ms.date: 01/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 32685207f8d6e81d03c90d01b186337ce79f843a
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: 1d286e7661fa14dd63bd55b133c39414e04decc6
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763919"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98802980"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-azure-powershell"></a>Distribuera virtuella datorer på Azure Stack Edge Pro GPU-enhet via Azure PowerShell
 
-Den här artikeln beskriver hur du skapar och hanterar en virtuell dator på din Azure Stack Edge Pro-enhet med Azure PowerShell. Den här artikeln gäller Azure Stack Edge Pro GPU, Azure Stack Edge Pro R-och Azure Stack Edge Mini R-enheter.
+Den här artikeln beskriver hur du skapar och hanterar en virtuell dator på din Azure Stack Edge Pro-enhet med Azure PowerShell. Den här artikeln gäller Azure Stack Edge Pro GPU, Azure Stack Edge Pro R och Azure Stack Edge Mini R-enheter.
 
 ## <a name="vm-deployment-workflow"></a>Arbets flöde för distribution av virtuell dator
 
@@ -32,12 +32,12 @@ Arbets flödet för distributionen illustreras i följande diagram.
 
 ## <a name="query-for-built-in-subscription-on-the-device"></a>Fråga efter inbyggd prenumeration på enheten
 
-För Azure Resource Manager stöds endast en fast prenumeration med en enda användare som är synlig. Den här prenumerationen är unik per enhet och prenumerations namnet eller prenumerations-ID: t kan inte ändras.
+För Azure Resource Manager stöds endast en fast prenumeration med en enda användare som är synlig. Den här prenumerationen är unik för varje enhet och prenumerations namnet eller prenumerations-ID: t kan inte ändras.
 
 Den här prenumerationen innehåller alla resurser som skapas för att skapa virtuella datorer. 
 
 > [!IMPORTANT]
-> Den här prenumerationen skapas när du aktiverar virtuella datorer från Azure Portal och den finns lokalt på din enhet.
+> Den här prenumerationen skapas när du aktiverar virtuella datorer från Azure Portal och den finns lokalt på enheten.
 
 Den här prenumerationen används för att distribuera de virtuella datorerna.
 
@@ -118,7 +118,7 @@ Successfully created Resource Group:rg191113014333
 
 ## <a name="create-a-storage-account"></a>Skapa ett lagringskonto
 
-Skapa ett nytt lagrings konto med hjälp av resurs gruppen som skapades i föregående steg. Det här är ett **lokalt lagrings konto** som ska användas för att ladda upp den virtuella disk avbildningen för den virtuella datorn.
+Skapa ett nytt lagrings konto med hjälp av resurs gruppen som skapades i föregående steg. Det här kontot är ett **lokalt lagrings konto** som ska användas för att ladda upp den virtuella disk avbildningen för den virtuella datorn.
 
 ```powershell
 New-AzureRmStorageAccount -Name <Storage account name> -ResourceGroupName <Resource group name> -Location DBELocal -SkuName Standard_LRS
@@ -177,7 +177,7 @@ key2 gd34TcaDzDgsY9JtDNMUgLDOItUU0Qur3CBo6Q...
 
 ## <a name="add-blob-uri-to-hosts-file"></a>Lägg till BLOB-URI i hosts-filen
 
-Du har redan lagt till BLOB-URI: n i hosts-filen för den klient som du använder för att ansluta till Blob Storage i avsnittet [ändra värd fil för slut punkts namn matchning](azure-stack-edge-j-series-connect-resource-manager.md#step-5-modify-host-file-for-endpoint-name-resolution). Detta var posten för BLOB-URI: n:
+Du har redan lagt till BLOB-URI: n i värd filen för den klient som du använder för att ansluta till Blob Storage i avsnittet [ändra värd fil för slut punkts namn matchning](azure-stack-edge-j-series-connect-resource-manager.md#step-5-modify-host-file-for-endpoint-name-resolution). Den här posten användes för att lägga till BLOB-URI: n:
 
 \<Azure consistent network services VIP \>\<storage name\>. blob. \<appliance name\> .\<dnsdomain\>
 
@@ -256,7 +256,7 @@ $DiskConfig = New-AzureRmDiskConfig -Location DBELocal -CreateOption Import –S
 New-AzureRMDisk -ResourceGroupName <Resource group name> -DiskName <Disk name> -Disk $DiskConfig
 ```
 
-Ett exempel på utdata visas nedan. Mer information om den här cmdleten finns på [New-AzureRmDisk](/powershell/module/azurerm.compute/new-azurermdisk?view=azurermps-6.13.0).
+Ett exempel på utdata visas nedan. Mer information om den här cmdleten finns på [New-AzureRmDisk](/powershell/module/azurerm.compute/new-azurermdisk?view=azurermps-6.13.0&preserve-view=true).
 
 ```powershell
 Tags               :
@@ -296,7 +296,7 @@ Set-AzureRmImageOsDisk -Image $imageConfig -OsType 'Linux' -OsState 'Generalized
 New-AzureRmImage -Image $imageConfig -ImageName <Image name>  -ResourceGroupName <Resource group name>
 ```
 
-Ett exempel på utdata visas nedan. Mer information om den här cmdleten finns på [New-AzureRmImage](/powershell/module/azurerm.compute/new-azurermimage?view=azurermps-6.13.0).
+Ett exempel på utdata visas nedan. Mer information om den här cmdleten finns på [New-AzureRmImage](/powershell/module/azurerm.compute/new-azurermimage?view=azurermps-6.13.0&preserve-view=true).
 
 ```powershell
 New-AzureRmImage -Image Microsoft.Azure.Commands.Compute.Automation.Models.PSImage -ImageName ig191113014333  -ResourceGroupName rg191113014333
@@ -319,8 +319,8 @@ Du måste skapa ett virtuellt nätverk och associera ett virtuellt nätverks gr�
 > [!IMPORTANT]
 > När du skapar ett virtuellt nätverk och ett virtuellt nätverks gränssnitt gäller följande regler:
 > - Det går bara att skapa ett VNet (till och med över resurs grupper) och det måste matcha exakt med det logiska nätverket i termer av adress utrymmet.
-> -   Det går bara att tillåta ett undernät i det virtuella nätverket. Under nätet måste vara exakt samma adress utrymme som det virtuella nätverket.
-> -   Endast statisk tilldelnings metod tillåts när vNIC skapas och användaren måste ange en privat IP-adress.
+> - Det går bara att tillåta ett undernät i det virtuella nätverket. Under nätet måste vara exakt samma adress utrymme som det virtuella nätverket.
+> - Endast statisk tilldelnings metod tillåts när vNIC skapas och användaren måste ange en privat IP-adress.
 
  
 **Fråga det automatiskt skapade VNet**
@@ -498,7 +498,7 @@ Kör följande cmdlet för att aktivera en virtuell dator som körs på enheten:
 `Start-AzureRmVM [-Name] <String> [-ResourceGroupName] <String>`
 
 
-Mer information om den här cmdleten finns på [Start-AzureRmVM](/powershell/module/azurerm.compute/start-azurermvm?view=azurermps-6.13.0).
+Mer information om den här cmdleten finns på [Start-AzureRmVM](/powershell/module/azurerm.compute/start-azurermvm?view=azurermps-6.13.0&preserve-view=true).
 
 ### <a name="suspend-or-shut-down-the-vm"></a>Pausa eller stänga av den virtuella datorn
 
@@ -510,7 +510,7 @@ Stop-AzureRmVM [-Name] <String> [-StayProvisioned] [-ResourceGroupName] <String>
 ```
 
 
-Mer information om den här cmdleten finns i [cmdleten Stop-AzureRmVM](/powershell/module/azurerm.compute/stop-azurermvm?view=azurermps-6.13.0).
+Mer information om den här cmdleten finns i [cmdleten Stop-AzureRmVM](/powershell/module/azurerm.compute/stop-azurermvm?view=azurermps-6.13.0&preserve-view=true).
 
 ### <a name="add-a-data-disk"></a>Lägg till en datadisk
 
@@ -530,10 +530,10 @@ Kör följande cmdlet för att ta bort en virtuell dator från enheten:
 Remove-AzureRmVM [-Name] <String> [-ResourceGroupName] <String>
 ```
 
-Mer information om den här cmdleten finns i [cmdleten Remove-AzureRmVm](/powershell/module/azurerm.compute/remove-azurermvm?view=azurermps-6.13.0).
+Mer information om den här cmdleten finns i [cmdleten Remove-AzureRmVm](/powershell/module/azurerm.compute/remove-azurermvm?view=azurermps-6.13.0&preserve-view=true).
 
 
 
 ## <a name="next-steps"></a>Nästa steg
 
-[Azure Resource Manager-cmdletar](/powershell/module/azurerm.resources/?view=azurermps-6.13.0)
+[Azure Resource Manager-cmdletar](/powershell/module/azurerm.resources/?view=azurermps-6.13.0&preserve-view=true)

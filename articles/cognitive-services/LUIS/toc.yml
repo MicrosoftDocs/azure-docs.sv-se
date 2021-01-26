@@ -191,7 +191,7 @@
           href: luis-how-to-azure-subscription.md
         - name: Inställningar för app och version
           href: how-to-application-settings-portal.md
-        - name: Författare och medarbetare
+        - name: Författare och deltagare
           displayName: 'access, transfer, AAD, tenant, Azure AD, consent, RBAC, admin, role-based access control, ownership, import'
           href: luis-how-to-collaborate.md
         - name: Med versioner

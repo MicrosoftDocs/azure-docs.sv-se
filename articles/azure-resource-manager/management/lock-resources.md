@@ -4,12 +4,12 @@ description: Förhindra att användare uppdaterar eller tar bort Azure-resurser 
 ms.topic: conceptual
 ms.date: 11/11/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 53054f89c992139fbbd4f087d2a0344e26d97efc
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 0e8fc74b2da0c253ec9c5bf34ec7543398aea48f
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98610207"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98802434"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Låsa resurser för att förhindra oväntade ändringar
 
@@ -38,7 +38,7 @@ Att använda Lås kan leda till oväntade resultat eftersom vissa åtgärder som
 
 * Ett borttagnings lås för en **resurs grupp** förhindrar Azure Resource Manager från att [automatiskt ta bort distributioner](../templates/deployment-history-deletions.md) i historiken. Om du når 800-distributioner i historiken går det inte att distribuera.
 
-* Ett borttagnings lås på **resurs gruppen** som skapats av **Azure Backup tjänsten** medför att säkerhets kopieringen Miss lyckas. Tjänsten har stöd för högst 18 återställnings punkter. När det är låst kan säkerhets kopierings tjänsten inte rensa återställnings punkter. Mer information finns i vanliga frågor och svar om hur du [säkerhetskopierar virtuella Azure-datorer](../../backup/backup-azure-vm-backup-faq.md).
+* Ett borttagnings lås på **resurs gruppen** som skapats av **Azure Backup tjänsten** medför att säkerhets kopieringen Miss lyckas. Tjänsten har stöd för högst 18 återställnings punkter. När det är låst kan säkerhets kopierings tjänsten inte rensa återställnings punkter. Mer information finns i vanliga frågor och svar om hur du [säkerhetskopierar virtuella Azure-datorer](../../backup/backup-azure-vm-backup-faq.yml).
 
 * Ett skrivskyddat lås på en **prenumeration** förhindrar att **Azure Advisor** fungerar korrekt. Advisor kan inte lagra resultatet av sina frågor.
 
@@ -316,7 +316,7 @@ lockid=$(az lock show --name LockSite --resource-group exampleresourcegroup  --o
 az lock delete --ids $lockid
 ```
 
-### <a name="rest-api"></a>REST-API
+### <a name="rest-api"></a>REST API
 
 Du kan låsa distribuerade resurser med [REST API för hanterings lås](/rest/api/resources/managementlocks). Med REST API kan du skapa och ta bort lås och hämta information om befintliga lås.
 

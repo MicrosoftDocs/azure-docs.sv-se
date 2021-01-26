@@ -3,13 +3,12 @@
 - name: Översikt
   href: overview.md
   items:
-    - name: Nyheter
-      href: release-notes.md
     - name: Lösningsarkitektur
       href: architecture.md
-- name: Snabbstarter
-  expanded: true
-  items:
+    - name: Nyheter
+      href: release-notes.md
+    - name: Snabbstarter
+      expanded: true
     - name: Lösning utan agent för organisationer
       items:
         - name: Systemkrav
@@ -154,6 +153,16 @@
           href: how-to-gain-insight-into-global-regional-and-local-threats.md
         - name: Arbeta med aviseringar på den lokala hanteringskonsolen
           href: how-to-work-with-alerts-on-premises-management-console.md
+        - name: Skapa rapporter
+          items:
+            - name: Skapa risk utvärderings rapporter
+              href: how-to-create-risk-assessment-reports.md
+            - name: Skapa angrepps vektor rapporter
+              href: how-to-create-attack-vector-reports.md
+            - name: Skapa data utvinnings rapporter
+              href: how-to-create-data-mining-queries.md
+            - name: Skapa trender och statistik rapporter
+              href: how-to-create-data-mining-queries.md
         - name: Berika enhetsinformation
           items:
             - name: Arbeta med enhetsmeddelanden
@@ -168,8 +177,6 @@
         - name: Spåra sensoraktivitet
           href: how-to-track-sensor-activity.md
           displayName: 'timeline, time line, time-line, event'
-        - name: Skapa rapporter
-          href: how-to-generate-reports.md
         - name: Felsöka sensorn och den lokala hanteringskonsolen
           href: how-to-troubleshoot-the-sensor-and-on-premises-management-console.md
         - name: Konfigurera SNMP MIB-övervakning

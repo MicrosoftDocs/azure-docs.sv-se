@@ -3,12 +3,12 @@ title: Svar på vanliga frågor
 description: 'Svar på vanliga frågor om: Azure Backup-funktioner inklusive Recovery Services-valvet, vad du kan säkerhetskopiera, hur det fungerar, kryptering och gränser. '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: dbe6ce95427b559c037e38525f9f48195a2a76a4
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: f819440001180a3c446f366e61e3ac0f983fa67f
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98703427"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98806651"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup – Vanliga frågor och svar
 
@@ -70,7 +70,7 @@ Om det finns ett [GRS](azure-backup-glossary.md#grs) -valv utan [CRR](azure-back
 
 ### <a name="where-can-i-find-common-questions-about-the-azure-backup-agent-for-azure-vm-backup"></a>Var hittar jag vanliga frågor om Azure Backup-agenten för säkerhetskopiering av virtuella Azure-datorer?
 
-- För den agent som körs på virtuella Azure-datorer läser du dessa [Vanliga frågor och svar](backup-azure-vm-backup-faq.md).
+- För den agent som körs på virtuella Azure-datorer läser du dessa [Vanliga frågor och svar](backup-azure-vm-backup-faq.yml).
 - För den agent som används för att säkerhetskopiera Azure-filmappar läser du dessa [Vanliga frågor och svar](backup-azure-file-folder-backup-faq.md).
 
 ## <a name="general-backup"></a>Allmän säkerhetskopiering
@@ -236,5 +236,5 @@ Den nyckel som används för att kryptera säkerhetskopierade data finns endast 
 
 Läs andra vanliga frågor och svar:
 
-- [Vanliga frågor](backup-azure-vm-backup-faq.md) om säkerhetskopiering av virtuella Azure-datorer.
+- [Vanliga frågor](backup-azure-vm-backup-faq.yml) om säkerhetskopiering av virtuella Azure-datorer.
 - [Vanliga frågor](backup-azure-file-folder-backup-faq.md) om Azure Backup-agenten

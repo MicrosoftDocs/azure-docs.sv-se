@@ -5,12 +5,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 01/31/2019
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 27294f91fd6c79b10a85678a7acd60de56cf1ca4
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 1a1b11d517fdfea0aa3a0f553b63276bc20f90be
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94562346"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98805451"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-the-azure-cli"></a>Säkerhetskopiera en virtuell dator i Azure med Azure CLI
 
@@ -28,8 +28,8 @@ Recovery Services-valvet är en logisk container som lagrar säkerhetskopierade 
 
 Skapa ett Recovery Services-valv med [az backup vault create](/cli/azure/backup/vault#az-backup-vault-create). Ange samma resursgrupp och plats som den virtuella datorn som du vill skydda. Om du har använt [snabbstarten för virtuella datorer](../virtual-machines/linux/quick-create-cli.md) har du skapat:
 
-- en resursgrupp som heter *myResourceGroup* ,
-- en virtuell dator med namnet *myVM* ,
+- en resursgrupp som heter *myResourceGroup*,
+- en virtuell dator med namnet *myVM*,
 - resurser på platsen *eastus*.
 
 ```azurecli-interactive
@@ -71,7 +71,7 @@ az backup protection enable-for-vm \
 ```
 
 > [!IMPORTANT]
-> När du använder CLI för att aktivera säkerhets kopiering för flera virtuella datorer samtidigt, måste du se till att det inte finns fler än 100 virtuella datorer kopplade till en enda princip. Det här är en [rekommenderad metod](./backup-azure-vm-backup-faq.md#is-there-a-limit-on-number-of-vms-that-can-beassociated-with-the-same-backup-policy). PowerShell-klienten blockerar för närvarande inte uttryckligen om det finns fler än 100 virtuella datorer, men kontrollen är planerad att läggas till i framtiden.
+> När du använder CLI för att aktivera säkerhets kopiering för flera virtuella datorer samtidigt, måste du se till att det inte finns fler än 100 virtuella datorer kopplade till en enda princip. Det här är en [rekommenderad metod](./backup-azure-vm-backup-faq.yml#is-there-a-limit-on-number-of-vms-that-can-be-associated-with-the-same-backup-policy). PowerShell-klienten blockerar för närvarande inte uttryckligen om det finns fler än 100 virtuella datorer, men kontrollen är planerad att läggas till i framtiden.
 
 ## <a name="start-a-backup-job"></a>Starta ett säkerhetskopieringsjobb
 
@@ -81,7 +81,7 @@ Följande parametrar används för att säkerhetskopiera den virtuella datorn:
 
 - `--container-name` är namnet på din virtuella dator
 - `--item-name` är namnet på din virtuella dator
-- Värdet `--retain-until` ska vara angivet till det senaste datumet, i UTC-tidsformat ( **dd-mm-åååå** ), som du vill att återställningspunkten ska vara tillgänglig
+- Värdet `--retain-until` ska vara angivet till det senaste datumet, i UTC-tidsformat (**dd-mm-åååå**), som du vill att återställningspunkten ska vara tillgänglig
 
 I följande exempel säkerhetskopieras den virtuella datorn *myVM* och utgångsdatumet för återställningspunkten är 18 oktober 2017:
 
@@ -105,7 +105,7 @@ az backup job list \
     --output table
 ```
 
-De utdata som returneras liknar dem i följande exempel, som visar att säkerhetskopieringsjobbet har status *Pågår* :
+De utdata som returneras liknar dem i följande exempel, som visar att säkerhetskopieringsjobbet har status *Pågår*:
 
 ```output
 Name      Operation        Status      Item Name    Start Time UTC       Duration

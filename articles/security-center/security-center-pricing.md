@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/13/2020
+ms.date: 01/26/2021
 ms.author: memildin
-ms.openlocfilehash: ce95106c56e919fa0fcc7d7553a3f0cc0dc77f98
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 9e537bfa782569fb8fa2a7957c6874bda69d8c06
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121302"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98805356"
 ---
 # <a name="pricing-of-azure-security-center"></a>Prissättning för Azure Security Center
 Azure Security Center har en enhetlig säkerhetshantering och avancerat skydd mot hot för arbetsbelastningar som körs i Azure, lokalt och i andra moln. Den ger insyn och kontroll över hybrid moln arbets belastningar, aktiva försvar som minskar exponeringen för hot och intelligent identifiering som hjälper dig att hålla jämna steg med snabbt växande cyberhot-risker.
@@ -101,7 +101,7 @@ Du kan använda något av följande sätt för att aktivera Azure Defender för 
 |Metod  |Instruktioner  |
 |---------|---------|
 |Azure Security Center sidor i Azure Portal|[Aktivera Azure Defender](#enable-azure-defender)|
-|REST-API|[Prissättnings-API](/rest/api/securitycenter/pricings)|
+|REST API|[Prissättnings-API](/rest/api/securitycenter/pricings)|
 |Azure CLI|[AZ Security-prissättning](/cli/azure/security/pricing)|
 |PowerShell|[Set-AzSecurityPricing](/powershell/module/az.security/set-azsecuritypricing)|
 |Azure Policy|[Paket priser](https://github.com/Azure/Azure-Security-Center/blob/master/Pricing%20%26%20Settings/ARM%20Templates/Set-ASC-Bundle-Pricing.json)|

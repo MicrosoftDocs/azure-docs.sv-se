@@ -9,13 +9,13 @@ ms.topic: how-to
 author: danimir
 ms.author: danil
 ms.reviewer: douglas, sstein
-ms.date: 01/25/2021
-ms.openlocfilehash: c12e1f4b01b0e2dd7fa21808cf33f45f9a5be59b
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.date: 01/26/2021
+ms.openlocfilehash: 7588ce055ce0df89a7dca87a75a38c8acccf6d46
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 01/26/2021
-ms.locfileid: "98789980"
+ms.locfileid: "98806079"
 ---
 # <a name="user-initiated-manual-failover-on-sql-managed-instance"></a>Användarinitierad manuell redundansväxling på SQL Managed Instance
 
@@ -125,7 +125,7 @@ API-svar är något av följande två:
 
 ## <a name="monitor-the-failover"></a>Övervaka redundansväxlingen
 
-Om du vill övervaka förloppet för manuell redundansväxling kör du följande T-SQL-fråga i din favorit klient (t. ex. SSMS) på SQL-hanterad instans. Den läser system visning sys.dm_hadr_fabric_replica_states och rapport repliker som är tillgängliga på instansen. Uppdatera samma fråga när du har initierat den manuella redundansväxlingen.
+Om du vill övervaka förloppet för användaren som initierade redundansväxlingen för BC-instansen kör du följande T-SQL-fråga i din favorit klient (t. ex. SSMS) på SQL-hanterad instans. Den läser system visning sys.dm_hadr_fabric_replica_states och rapport repliker som är tillgängliga på instansen. Uppdatera samma fråga när du har initierat den manuella redundansväxlingen.
 
 ```T-SQL
 SELECT DISTINCT replication_endpoint_url, fabric_replica_role_desc FROM sys.dm_hadr_fabric_replica_states
@@ -133,7 +133,13 @@ SELECT DISTINCT replication_endpoint_url, fabric_replica_role_desc FROM sys.dm_h
 
 Innan redundansväxlingen initieras anger utdata den aktuella primära repliken på BC-tjänstnivå som innehåller en primär och tre sekundära servrar i AlwaysOn-tillgänglighetsgruppen. Vid körning av en redundansväxling måste du köra frågan igen för att indikera en ändring av den primära noden.
 
-Du kommer inte att kunna se samma utdata med GP-tjänstens nivå som den som anges ovan för BC. Detta beror på att GP-tjänstens nivå endast baseras på en enda nod. Utdata från T-SQL-frågan för GP-tjänstnivå visar bara en enskild nod före och efter redundansväxlingen. Förlust av anslutning från klienten under redundansväxlingen, vanligt vis bestående av en minut, är en indikation på redundansväxlingen.
+Du kommer inte att kunna se samma utdata med GP-tjänstens nivå som den som anges ovan för BC. Detta beror på att GP-tjänstens nivå endast baseras på en enda nod. Du kan använda en alternativ T-SQL-fråga som visar tiden som SQL-processen startade på noden för GP-tjänstens nivå instans:
+
+```T-SQL
+SELECT sqlserver_start_time, sqlserver_start_time_ms_ticks FROM sys.dm_os_sys_info
+```
+
+Kort förlusten av anslutning från klienten under redundansväxlingen, som vanligt vis varar under en minut, är en indikation på att redundansväxlingen körs oavsett tjänst nivå.
 
 > [!NOTE]
 > Det kan ta flera minuter att slutföra redundansväxlingen (inte den faktiska kort otillgängligheten) i taget vid arbets belastningar med **hög intensitet** . Detta beror på att instans motorn tar hand om alla aktuella transaktioner på den primära och den sekundära noden, innan de kan redundansväxla.

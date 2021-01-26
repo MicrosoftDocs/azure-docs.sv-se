@@ -3,12 +3,12 @@ title: Om återställnings processen för den virtuella Azure-datorn
 description: Lär dig hur tjänsten Azure Backup återställer virtuella Azure-datorer
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: f42266e64170b314f10fbfc026873d694ea58b9a
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 436859bfb3cee37501e0605465d8e19856a846d6
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98757736"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98806831"
 ---
 # <a name="about-azure-vm-restore"></a>Återställning av virtuell Azure-dator
 
@@ -50,6 +50,6 @@ Den här artikeln beskriver hur [Azure Backup tjänsten](./backup-overview.md) �
 
 ## <a name="next-steps"></a>Nästa steg
 
-- [Vanliga frågor och svar om återställning av virtuella datorer](./backup-azure-vm-backup-faq.md#restore)
+- [Vanliga frågor och svar om återställning av virtuella datorer](https://docs.microsoft.com/azure/backup/backup-azure-vm-backup-faq#restore)
 - [Återställnings metoder som stöds](./backup-support-matrix-iaas.md#supported-restore-methods)
 - [Felsök återställnings problem](./backup-azure-vms-troubleshoot.md#restore)

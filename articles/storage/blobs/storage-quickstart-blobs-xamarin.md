@@ -1,6 +1,6 @@
 ---
-title: 'Snabb start: Azure Blob Storage-bibliotek V12-Xamarin'
-description: I den här snabb starten får du lära dig hur du använder Azure Blob Storage klient bibliotek version 12 med Xamarin för att skapa en behållare och en BLOB i blob-lagring (objekt). Härnäst får du lära dig hur du laddar ned blobben till din mobila enhet och hur du visar alla blobar i en behållare.
+title: 'Snabb start: Azure Blob Storage Library V12 – Xamarin'
+description: I den här snabb starten får du lära dig hur du använder Azure-Blob Storage klient bibliotek version 12 med Xamarin för att skapa en behållare och en BLOB i blob-lagring (objekt). Härnäst får du lära dig hur du laddar ned blobben till din mobila enhet och hur du visar alla blobar i en behållare.
 author: codemillmatt
 ms.author: masoucou
 ms.date: 10/09/2020
@@ -8,16 +8,16 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 641117414c855a044d3ed55004b6e6ea15b259ac
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: dab938a526aa89f6fe5a014e10869bd8da8b475d
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96004746"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98802351"
 ---
-# <a name="quickstart-azure-blob-storage-client-library-v12-with-xamarin"></a>Snabb start: klient biblioteket Azure Blob Storage V12 med Xamarin
+# <a name="quickstart-azure-blob-storage-client-library-v12-with-xamarin"></a>Snabb start: Azure Blob Storage klient bibliotek V12 med Xamarin
 
-Kom igång med Azure Blob Storages klient bibliotek V12 med Xamarin. Azure Blob Storage är Microsofts objektlagringslösning för molnet. Följ stegen för att installera paketet och prova exempel koden för grundläggande uppgifter. Blob Storage är optimerad för lagring av enorma mängder ostrukturerade data.
+Kom igång med klient biblioteket för Azure Blob Storage-V12 med Xamarin. Azure Blob Storage är Microsofts objekt lagrings lösning för molnet. Följ stegen för att installera paketet och prova exempel koden för grundläggande uppgifter. Blob Storage är optimerad för lagring av enorma mängder ostrukturerade data.
 
 Använd klient biblioteket för Azure Blob Storage-V12 med Xamarin för att:
 
@@ -32,7 +32,7 @@ Referens länkar:
 * [Referensdokumentation för API](/dotnet/api/azure.storage.blobs)
 * [Biblioteks käll kod](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs)
 * [Paket (NuGet)](https://www.nuget.org/packages/Azure.Storage.Blobs)
-* [Urvalsundersökningar](https://github.com/Azure-Samples/storage-blobs-xamarin-quickstart)
+* [Exempel](https://github.com/Azure-Samples/storage-blobs-xamarin-quickstart)
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
@@ -44,7 +44,7 @@ Referens länkar:
 
 ## <a name="setting-up"></a>Konfigurera
     
-Det här avsnittet beskriver hur du förbereder ett projekt för att arbeta med Azure Blob Storage-V12 med Xamarin.
+Det här avsnittet beskriver hur du förbereder ett projekt för att arbeta med Azure Blob Storage-V12 för klient bibliotek med Xamarin.
     
 ### <a name="create-the-project"></a>Skapa projektet
 
@@ -80,7 +80,7 @@ Från katalogen **BlobQuickstartV12** :
 
 ## <a name="object-model"></a>Objekt modell
 
-Azure Blob Storage är optimerat för att lagra enorma mängder ostrukturerade data. Ostrukturerade data är data som inte följer en viss datamodell eller definition, till exempel text eller binära data. I blobblagringen finns tre typer av resurser:
+Azure Blob Storage optimeras för att lagra enorma mängder ostrukturerade data. Ostrukturerade data är data som inte följer en viss datamodell eller definition, till exempel text eller binära data. I blobblagringen finns tre typer av resurser:
 
 * Lagrings kontot
 * En container på lagringskontot
@@ -99,7 +99,7 @@ Använd följande .NET-klasser för att interagera med dessa resurser:
 
 ## <a name="code-examples"></a>Kodexempel
 
-I de här exempel kods tycken visar vi hur du utför följande uppgifter med klient biblioteket för Azure Blob Storage för .NET i en Xamarin. Forms-app:
+I de här exempel kods tycken visar vi hur du utför följande uppgifter med Azure Blob Storage-klient biblioteket för .NET i en Xamarin. Forms-app:
 
 * [Skapa variabler på klass nivå](#create-class-level-variables)
 * [Skapa en container](#create-a-container)
@@ -269,7 +269,7 @@ När du har verifierat värdena bekräftar du uppfrågan för att ta bort behål
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här snabb starten har du lärt dig att ladda upp, ladda ned och lista blobar med Azure Blob Storage-V12 med Xamarin.
+I den här snabb starten har du lärt dig att ladda upp, ladda ned och lista blobar med Azure Blob Storage-V12 för klient bibliotek med Xamarin.
 
 Om du vill se exempel appar för Blob Storage fortsätter du till:
 
