@@ -10,16 +10,16 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 43eae43d11a48ee6c395e4a86b8e8c1353843991
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 7173efd3dab0e8d2fd3c948a3a9bac07641e78f3
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131464"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98792090"
 ---
 # <a name="form-recognizer-prebuilt-receipt-model"></a>Inbyggd fördefinierad inleverans modell för formulär tolken
 
-Azure formulär tolken kan analysera och extrahera information från försäljnings kvitton med hjälp av en fördefinierad kvitto modell. Den kombinerar vår kraftfulla [OCR-kapacitet (optisk tecken läsning)](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text) som kan hjälpa dig att förstå djup inlärnings modeller för att extrahera viktig information från kvitton på engelska. Kvitto-API: et extraherar viktig information från försäljnings kvitton på engelska, till exempel handels namn, transaktions datum, transaktions summa, rad artiklar med mera. 
+Azure formulär tolken kan analysera och extrahera information från försäljnings kvitton med hjälp av en fördefinierad kvitto modell. Den kombinerar vår kraftfulla [OCR-kapacitet (optisk tecken läsning)](../computer-vision/concept-recognizing-text.md) som kan hjälpa dig att förstå djup inlärnings modeller för att extrahera viktig information från kvitton på engelska. Kvitto-API: et extraherar viktig information från försäljnings kvitton på engelska, till exempel handels namn, transaktions datum, transaktions summa, rad artiklar med mera. 
 
 ## <a name="understanding-receipts"></a>Förstå kvitton 
 
@@ -38,7 +38,7 @@ Den förbyggda tjänsten för inbyggade kvitton extraherar innehållet i försä
 
 ### <a name="fields-extracted"></a>Extraherade fält
 
-|Namn| Typ | Description | Text | Värde (standardiserad utdata) |
+|Namn| Typ | Beskrivning | Text | Värde (standardiserad utdata) |
 |:-----|:----|:----|:----| :----|
 | ReceiptType | sträng | Typ av försäljnings kvitto | Uppdelat |  |
 | MerchantName | sträng | Namn på den handlare som utfärdar kvittot | Contoso |  |
@@ -52,7 +52,7 @@ Den förbyggda tjänsten för inbyggade kvitton extraherar innehållet i försä
 | Tips | antal | Tips som ingår i köparen | $1,00 | 1,00 |
 | Poster | objekt mat ris | Extraherade rad artiklar, med namn, kvantitet, enhets pris och totalt pris som extraherats | |
 | Name | sträng | Objekt namn | Surface Pro 6 | |
-| Antal | antal | Kvantitet för varje objekt | 1 | |
+| Kvantitet | antal | Kvantitet för varje objekt | 1 | |
 | Pris | antal | Individuellt pris för varje artikel enhet | $999,00 | 999,00 |
 | Total pris | antal | Total pris för rad artikel | $999,00 | 999,00 |
 

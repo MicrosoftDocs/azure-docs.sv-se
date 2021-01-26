@@ -4,12 +4,12 @@ description: Den här artikeln beskriver hur du distribuerar ett Service Fabric 
 ms.topic: conceptual
 ms.date: 8/5/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ee040916ae1ce6ac931abc1fc07021b08cdbf895
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 4b038f4a41ee02960a02c4445b65eb2360a75761
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92309060"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98792039"
 ---
 # <a name="service-fabric-application-upgrade-using-powershell"></a>Service Fabric program uppgradering med PowerShell
 > [!div class="op_single_selector"]
@@ -27,7 +27,7 @@ En övervakad program uppgradering kan utföras med hjälp av hanterade eller in
 Med Service Fabric övervakade rullande uppgraderingar kan program administratören konfigurera hälso utvärderings principen som Service Fabric använder för att avgöra om programmet är felfritt. Dessutom kan administratören konfigurera åtgärden som ska vidtas när hälso utvärderingen Miss lyckas (till exempel göra en automatisk återställning). Det här avsnittet går igenom en övervakad uppgradering för ett av SDK-exemplen som använder PowerShell. 
 
 > [!NOTE]
-> [ApplicationParameter](/dotnet/api/system.fabric.description.applicationdescription.applicationparameters?view=azure-dotnet#System_Fabric_Description_ApplicationDescription_ApplicationParameters)s bevaras inte i en program uppgradering. För att bevara aktuella program parametrar bör användaren hämta parametrarna först och skicka dem till uppgraderings-API-anropet som nedan:
+> [ApplicationParameter](/dotnet/api/system.fabric.description.applicationdescription.applicationparameters#System_Fabric_Description_ApplicationDescription_ApplicationParameters)s bevaras inte i en program uppgradering. För att bevara aktuella program parametrar bör användaren hämta parametrarna först och skicka dem till uppgraderings-API-anropet som nedan:
 ```powershell
 $myApplication = Get-ServiceFabricApplication -ApplicationName fabric:/myApplication
 $appParamCollection = $myApplication.ApplicationParameters
@@ -49,9 +49,9 @@ Bygg och publicera programmet genom att högerklicka på programprojektet, **Vis
 > 
 > 
 
-När du har skapat projektet i Visual Studio kan du använda PowerShell-kommandot [copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage) för att kopiera programpaketet till avbildnings arkiv. Använd cmdleten [test-ServiceFabricApplicationPackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage) om du vill verifiera app-paketet lokalt. Nästa steg är att registrera programmet till Service Fabric runtime med hjälp av cmdleten [register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype) . Följande steg är att starta en instans av programmet med hjälp av cmdleten [New-ServiceFabricApplication](/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps) .  Dessa tre steg är likvärdiga med att använda meny alternativet **distribuera** i Visual Studio.  När etableringen har slutförts bör du rensa det kopierade programpaketet från avbildnings arkivet för att minska resurserna som används.  Om en program typ inte längre krävs ska den avregistreras av samma skäl. Mer information finns i [distribuera och ta bort program med hjälp av PowerShell](service-fabric-application-upgrade-tutorial-powershell.md) .
+När du har skapat projektet i Visual Studio kan du använda PowerShell-kommandot [copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage) för att kopiera programpaketet till avbildnings arkiv. Använd cmdleten [test-ServiceFabricApplicationPackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage) om du vill verifiera app-paketet lokalt. Nästa steg är att registrera programmet till Service Fabric runtime med hjälp av cmdleten [register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype) . Följande steg är att starta en instans av programmet med hjälp av cmdleten [New-ServiceFabricApplication](/powershell/module/servicefabric/new-servicefabricapplication) .  Dessa tre steg är likvärdiga med att använda meny alternativet **distribuera** i Visual Studio.  När etableringen har slutförts bör du rensa det kopierade programpaketet från avbildnings arkivet för att minska resurserna som används.  Om en program typ inte längre krävs ska den avregistreras av samma skäl. Mer information finns i [distribuera och ta bort program med hjälp av PowerShell](service-fabric-application-upgrade-tutorial-powershell.md) .
 
-Nu kan du använda [Service Fabric Explorer för att Visa klustret och programmet](service-fabric-visualizing-your-cluster.md). Programmet har en webb tjänst som kan navigera till i Internet Explorer genom att skriva `http://localhost:8081/visualobjects` i adress fältet.  Du bör se vissa flytande visuella objekt som flyttas runt på skärmen.  Du kan också använda [Get-ServiceFabricApplication](/powershell/module/servicefabric/get-servicefabricapplication?view=azureservicefabricps) för att kontrol lera programmets status.
+Nu kan du använda [Service Fabric Explorer för att Visa klustret och programmet](service-fabric-visualizing-your-cluster.md). Programmet har en webb tjänst som kan navigera till i Internet Explorer genom att skriva `http://localhost:8081/visualobjects` i adress fältet.  Du bör se vissa flytande visuella objekt som flyttas runt på skärmen.  Du kan också använda [Get-ServiceFabricApplication](/powershell/module/servicefabric/get-servicefabricapplication) för att kontrol lera programmets status.
 
 ## <a name="step-2-update-the-visual-objects-sample"></a>Steg 2: uppdatera det visuella objekt exemplet
 Du kanske märker att de visuella objekten inte roterar med den version som distribuerades i steg 1. Vi ska uppgradera det här programmet till ett ställe där de visuella objekten också roterar.
@@ -77,7 +77,7 @@ Nu är *ApplicationManifest.xml* -filen (som finns i **VisualObjects** -projekte
  <ServiceManifestRefServiceManifestName="VisualObjects.ActorService" ServiceManifestVersion="2.0" />
 ```
 
-Nu ska du bygga projektet genom att välja enbart **ActorService** -projektet och sedan högerklicka och välja alternativet **build** i Visual Studio. Om du väljer **återskapa alla**bör du uppdatera versionerna för alla projekt eftersom koden har ändrats. Nu ska vi paketera det uppdaterade programmet genom att högerklicka på ***VisualObjectsApplication***, välja menyn Service Fabric och välja **paket**. Den här åtgärden skapar ett programpaket som kan distribueras.  Det uppdaterade programmet är redo att distribueras.
+Nu ska du bygga projektet genom att välja enbart **ActorService** -projektet och sedan högerklicka och välja alternativet **build** i Visual Studio. Om du väljer **återskapa alla** bör du uppdatera versionerna för alla projekt eftersom koden har ändrats. Nu ska vi paketera det uppdaterade programmet genom att högerklicka på **_VisualObjectsApplication_*_, välja menyn Service Fabric och välja _* paket**. Den här åtgärden skapar ett programpaket som kan distribueras.  Det uppdaterade programmet är redo att distribueras.
 
 ## <a name="step-3--decide-on-health-policies-and-upgrade-parameters"></a>Steg 3: Bestäm hälso principer och uppgraderings parametrar
 Bekanta dig med parametrarna för [program uppgradering](service-fabric-application-upgrade-parameters.md) och [uppgraderings processen](service-fabric-application-upgrade.md) för att få en god förståelse för de olika uppgraderings parametrarna, tids gränser och hälso kriterier som tillämpas. I den här genom gången anges villkoret för service Health-utvärderingen till standardvärdena (och rekommenderade), vilket innebär att alla tjänster och instanser bör vara *felfria* efter uppgraderingen.  
@@ -95,7 +95,7 @@ UpgradeDomainTimeoutSec = 1200
 UpgradeTimeout = 3000
 
 ## <a name="step-4-prepare-application-for-upgrade"></a>Steg 4: Förbered program för uppgradering
-Programmet är nu byggt och redo att uppgraderas. Om du öppnar ett PowerShell-fönster som administratör och skriver [Get-ServiceFabricApplication](/powershell/module/servicefabric/get-servicefabricapplication?view=azureservicefabricps), bör det meddela dig att det är program typen 1.0.0.0 av **VisualObjects** som har distribuerats.  
+Programmet är nu byggt och redo att uppgraderas. Om du öppnar ett PowerShell-fönster som administratör och skriver [Get-ServiceFabricApplication](/powershell/module/servicefabric/get-servicefabricapplication), bör det meddela dig att det är program typen 1.0.0.0 av **VisualObjects** som har distribuerats.  
 
 Programpaketet lagras under följande relativa sökväg där du okomprimerade Service Fabric SDK- *Samples\Services\Stateful\VisualObjects\VisualObjects\obj\x64\Debug*. Du bör hitta mappen "paket" i katalogen där programpaketet lagras. Kontrol lera tidsstämplarna för att se till att det är den senaste versionen (du kan behöva ändra Sök vägarna på lämpligt sätt också).
 
@@ -105,7 +105,7 @@ Nu ska vi kopiera det uppdaterade programpaketet till Service Fabric avbildnings
 Copy-ServiceFabricApplicationPackage -ApplicationPackagePath .\Samples\Services\Stateful\VisualObjects\VisualObjects\obj\x64\Debug\Package -ApplicationPackagePathInImageStore "VisualObjects\_V2"
 ```
 
-Nästa steg är att registrera programmet med Service Fabric, som kan utföras med kommandot [register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) :
+Nästa steg är att registrera programmet med Service Fabric, som kan utföras med kommandot [register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype) :
 
 ```powershell
 Register-ServiceFabricApplicationType -ApplicationPathInImageStore "VisualObjects\_V2"
@@ -120,7 +120,7 @@ Remove-ServiceFabricApplicationPackage -ApplicationPackagePathInImageStore "Visu
 ```
 
 ## <a name="step-5-start-the-application-upgrade"></a>Steg 5: starta program uppgraderingen
-Nu är allt klart för att starta program uppgraderingen genom att använda kommandot [Start-ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/start-servicefabricapplicationupgrade?view=azureservicefabricps) :
+Nu är allt klart för att starta program uppgraderingen genom att använda kommandot [Start-ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/start-servicefabricapplicationupgrade) :
 
 ```powershell
 Start-ServiceFabricApplicationUpgrade -ApplicationName fabric:/VisualObjects -ApplicationTypeVersion 2.0.0.0 -HealthCheckStableDurationSec 60 -UpgradeDomainTimeoutSec 1200 -UpgradeTimeout 3000   -FailureAction Rollback -Monitored
@@ -129,7 +129,7 @@ Start-ServiceFabricApplicationUpgrade -ApplicationName fabric:/VisualObjects -Ap
 
 Program namnet är detsamma som det beskrevs i *ApplicationManifest.xml* -filen. Service Fabric använder det här namnet för att identifiera vilket program som uppgraderas. Om du ställer in timeout-värdet för kort kan du stöta på ett fel meddelande som anger problemet. Läs avsnittet fel sökning eller öka tids gränsen.
 
-Eftersom program uppgraderingen fortsätter kan du övervaka den med Service Fabric Explorer eller genom att använda kommandot [Get-ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/get-servicefabricapplicationupgrade?view=azureservicefabricps) PowerShell: 
+Eftersom program uppgraderingen fortsätter kan du övervaka den med Service Fabric Explorer eller genom att använda kommandot [Get-ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/get-servicefabricapplicationupgrade) PowerShell: 
 
 ```powershell
 Get-ServiceFabricApplicationUpgrade fabric:/VisualObjects

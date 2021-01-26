@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 01/04/2021
 ms.author: trbye
-ms.openlocfilehash: 786f9587ab223cf87a48cd791f366049b94af59b
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: c770ca3d619ea443fd5a320f91f3bfae56732bac
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97865994"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98792447"
 ---
 Börja med att läsa in din nyckelords modell fil med hjälp av den `FromFile()` statiska funktionen, som returnerar en `KeywordRecognitionModel` . Använd sökvägen till `.table` filen som du laddade ned från tal Studio. Dessutom skapar du en `AudioConfig` med hjälp av standard mikrofonen och instansierar sedan en ny `KeywordRecognizer` med hjälp av ljud konfigurationen.
 
@@ -35,6 +35,6 @@ KeywordRecognitionResult result = await keywordRecognizer.RecognizeOnceAsync(key
 
 Andra klasser i tal-SDK har stöd för kontinuerlig igenkänning (för både tal-och avsikts igenkänning) med nyckelords igenkänning. På så sätt kan du använda samma kod som du normalt använder för kontinuerlig igenkänning, med möjlighet att referera till en `.table` fil för din nyckelords modell.
 
-För tal till text följer du samma design mönster som visas i [snabb](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started-speech-to-text?tabs=script%2Cbrowser%2Cwindowsinstall&pivots=programming-language-csharp#continuous-recognition) starten för att konfigurera kontinuerlig igenkänning. Ersätt sedan anropet till `recognizer.StartContinuousRecognitionAsync()` med och `recognizer.StartKeywordRecognitionAsync(KeywordRecognitionModel)` Skicka ditt `KeywordRecognitionModel` objekt. Om du vill stoppa kontinuerlig igenkänning med nyckelordet upptäcka använder du `recognizer.StopKeywordRecognitionAsync()` i stället för `recognizer.StopContinuousRecognitionAsync()` .
+För tal till text följer du samma design mönster som visas i [snabb](../../../get-started-speech-to-text.md?pivots=programming-language-csharp&tabs=script%2cbrowser%2cwindowsinstall#continuous-recognition) starten för att konfigurera kontinuerlig igenkänning. Ersätt sedan anropet till `recognizer.StartContinuousRecognitionAsync()` med och `recognizer.StartKeywordRecognitionAsync(KeywordRecognitionModel)` Skicka ditt `KeywordRecognitionModel` objekt. Om du vill stoppa kontinuerlig igenkänning med nyckelordet upptäcka använder du `recognizer.StopKeywordRecognitionAsync()` i stället för `recognizer.StopContinuousRecognitionAsync()` .
 
-Avsikts igenkänning använder ett identiskt mönster med- [`StartKeywordRecognitionAsync`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.intent.intentrecognizer.startkeywordrecognitionasync?view=azure-dotnet#Microsoft_CognitiveServices_Speech_Intent_IntentRecognizer_StartKeywordRecognitionAsync_Microsoft_CognitiveServices_Speech_KeywordRecognitionModel_) och- [`StopKeywordRecognitionAsync`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.intent.intentrecognizer.stopkeywordrecognitionasync?view=azure-dotnet#Microsoft_CognitiveServices_Speech_Intent_IntentRecognizer_StopKeywordRecognitionAsync) funktionerna.
+Avsikts igenkänning använder ett identiskt mönster med- [`StartKeywordRecognitionAsync`](/dotnet/api/microsoft.cognitiveservices.speech.intent.intentrecognizer.startkeywordrecognitionasync?view=azure-dotnet#Microsoft_CognitiveServices_Speech_Intent_IntentRecognizer_StartKeywordRecognitionAsync_Microsoft_CognitiveServices_Speech_KeywordRecognitionModel_) och- [`StopKeywordRecognitionAsync`](/dotnet/api/microsoft.cognitiveservices.speech.intent.intentrecognizer.stopkeywordrecognitionasync?view=azure-dotnet#Microsoft_CognitiveServices_Speech_Intent_IntentRecognizer_StopKeywordRecognitionAsync) funktionerna.

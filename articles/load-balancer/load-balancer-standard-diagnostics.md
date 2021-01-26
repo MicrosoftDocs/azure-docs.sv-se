@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2019
 ms.author: allensu
-ms.openlocfilehash: 386e0051a64f73b18c1ff76ed33af5f9eebe8aa0
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 90443a898ffdebf33a0c967719ba25a2ccc6f9a7
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121421"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98792107"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>Standard Load Balancer-diagnostik med mått, aviseringar och resurshälsa
 
@@ -35,7 +35,7 @@ Azure Load Balancer tillhandahåller flerdimensionella mått via Azure-måtten i
 
 De olika Standard Load Balancer-konfigurationerna tillhandahåller följande mått:
 
-| Metric | Resurstyp | Description | Rekommenderad aggregering |
+| Metric | Resurstyp | Beskrivning | Rekommenderad aggregering |
 | --- | --- | --- | --- |
 | Tillgänglighet för databana | Offentlig och intern lastbalanserare | Standard Load Balancer använder kontinuerligt datasökvägen inifrån en region till lastbalanserarens klientdel, hela vägen till den SDN-stack som stöder den virtuella datorn. Så länge som felfria instanser är kvar, följer måtten samma sökväg som programmets belastningsutjämnade trafik. Den datasökväg som dina kunder använder verifieras också. Måttet är osynligt för ditt program och stör inte andra åtgärder.| Medel |
 | Status för hälsoavsökning | Offentlig och intern lastbalanserare | Standard Load Balancer använder en distribuerad hälso-/Bing-tjänst som övervakar din program slut punkts hälsa enligt dina konfigurations inställningar. Med det här måttet får du en sammanställd vy eller filtrerad vy per slutpunkt för varje instansslutpunkt i lastbalanserarens pool. Du kan visa hur Load Balancer ser hälsotillståndet för ditt program, som anges av din konfiguration för hälsoavsökningen. |  Medel |
@@ -236,11 +236,11 @@ Med hjälp av diagrammet kan kunderna felsöka distributionen på egen hand utan
 
 Hälso status för de Standard Load Balancer resurserna exponeras via den befintliga **resurs hälsan** under **övervaka > service Health**. Den utvärderas varannan **minut** genom att mäta data Sök vägs tillgänglighet som avgör om slut punkterna för belastnings utjämning för klient delen är tillgängliga.
 
-| Resurs hälso status | Description |
+| Resurs hälso status | Beskrivning |
 | --- | --- |
 | Tillgänglig | Standard belastnings Utjämnings resursen är felfri och tillgänglig. |
-| Degraderad | Din standard belastningsutjämnare har plattforms-eller användar initierade händelser som påverkar prestanda. Datasökvägens tillgänglighet har visat mindre än 90 % men högre än 25 % hälsa i minst två minuter. Du får medelhög prestanda påverkan. [Följ fel söknings guiden för RHC](https://docs.microsoft.com/azure/load-balancer/troubleshoot-rhc) för att avgöra om det finns händelser som initieras av användaren.
-| Ej tillgänglig | Standard belastnings Utjämnings resursen är inte felfri. Datapath tillgänglighets mått har rapporterat färre 25% hälso tillstånd i minst två minuter. Du får betydande prestanda påverkan eller brist på tillgänglighet för inkommande anslutningar. Det kan finnas användare eller plattforms händelser som orsakar otillgänglighet. [Följ fel söknings guiden för RHC](https://docs.microsoft.com/azure/load-balancer/troubleshoot-rhc) för att avgöra om det finns inloggade händelser som påverkar din tillgänglighet. |
+| Degraderad | Din standard belastningsutjämnare har plattforms-eller användar initierade händelser som påverkar prestanda. Datasökvägens tillgänglighet har visat mindre än 90 % men högre än 25 % hälsa i minst två minuter. Du får medelhög prestanda påverkan. [Följ fel söknings guiden för RHC](./troubleshoot-rhc.md) för att avgöra om det finns händelser som initieras av användaren.
+| Inte tillgänglig | Standard belastnings Utjämnings resursen är inte felfri. Datapath tillgänglighets mått har rapporterat färre 25% hälso tillstånd i minst två minuter. Du får betydande prestanda påverkan eller brist på tillgänglighet för inkommande anslutningar. Det kan finnas användare eller plattforms händelser som orsakar otillgänglighet. [Följ fel söknings guiden för RHC](./troubleshoot-rhc.md) för att avgöra om det finns inloggade händelser som påverkar din tillgänglighet. |
 | Okänt | Resurs hälso status för din standard belastnings Utjämnings resurs har inte uppdaterats eller har inte tagit emot information om tillgänglighet för data Sök vägar under de senaste 10 minuterna. Det här tillståndet bör vara tillfälligt och återspegla rätt status så snart data tas emot. |
 
 Så här visar du hälso tillståndet för dina offentliga Standard Load Balancer-resurser:

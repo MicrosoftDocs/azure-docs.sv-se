@@ -5,12 +5,12 @@ ms.subservice: heavy
 ms.topic: include
 ms.date: 09/30/2020
 ms.author: alkohli
-ms.openlocfilehash: 80411ac191d0385ddafd4a3cc490d322ce039689
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 80e34c117c02c2126b46297c4219effa85e9caa6
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91640271"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98792446"
 ---
 - Kopiera inte filer direkt till någon av de förskapade resurserna. Du måste skapa en mapp under resursen och sedan kopiera filer till den mappen.
 - En mapp under *StorageAccount_BlockBlob* och *StorageAccount_PageBlob* är en behållare. Till exempel skapas behållare som *StorageAccount_BlockBlob/container* och *StorageAccount_PageBlob/container*.

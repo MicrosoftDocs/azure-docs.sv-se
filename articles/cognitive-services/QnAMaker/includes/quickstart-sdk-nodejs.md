@@ -4,12 +4,12 @@ description: Den här snabb starten visar hur du kommer igång med QnA Maker kli
 ms.topic: quickstart
 ms.date: 06/18/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 02dc36fb388135c31f639a26264579ab9de75b8c
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: fba4354fb1aae19833790e166474008dc994cd79
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98256327"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98792445"
 ---
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabil utgåva)](#tab/version-1)
 
@@ -24,7 +24,7 @@ Använd QnA Maker klient biblioteket för Node.js för att:
 * Få ett svar från en kunskaps bank
 * Ta bort kunskaps bas
 
-[Referens dokumentation](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/?view=azure-node-latest)  |  [Biblioteks käll kod](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-qnamaker)  |  [Paket (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-qnamaker)  |  [Node.js exempel](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/QnAMaker/sdk/qnamaker_quickstart.js)
+[Referens dokumentation](/javascript/api/@azure/cognitiveservices-qnamaker/?view=azure-node-latest)  |  [Biblioteks käll kod](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-qnamaker)  |  [Paket (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-qnamaker)  |  [Node.js exempel](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/QnAMaker/sdk/qnamaker_quickstart.js)
 
 # <a name="qna-maker-managed-preview-release"></a>[QnA Maker hanterad (för hands version)](#tab/version-2)
 
@@ -38,13 +38,13 @@ Använd QnA Maker klient biblioteket för Node.js för att:
 * Få ett svar från en kunskaps bank
 * Ta bort kunskaps bas
 
-[Referens dokumentation](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/?view=azure-node-latest)  |  [Biblioteks käll kod](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-qnamaker)  |  [Paket (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-qnamaker)  |  [Node.js exempel](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/QnAMaker/sdk/preview-sdk/quickstart.js)
+[Referens dokumentation](/javascript/api/@azure/cognitiveservices-qnamaker/?view=azure-node-latest)  |  [Biblioteks käll kod](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-qnamaker)  |  [Paket (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-qnamaker)  |  [Node.js exempel](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/QnAMaker/sdk/preview-sdk/quickstart.js)
 
 ---
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabil utgåva)](#tab/version-1)
 
@@ -149,13 +149,13 @@ Skapa en variabel för resursens Azure-nyckel och resurs namn.
 
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabil utgåva)](#tab/version-1)
 
-[QNA Maker](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/?view=azure-node-latest) använder två olika objekt modeller:
+[QNA Maker](/javascript/api/@azure/cognitiveservices-qnamaker/?view=azure-node-latest) använder två olika objekt modeller:
 * **[QnAMakerClient](#qnamakerclient-object-model)** är objektet för att skapa, hantera, publicera och ladda ned kunskaps listan.
 * **[QnAMakerRuntime](#qnamakerruntimeclient-object-model)** är objektet för att fråga kunskaps basen med GenerateAnswer-API: et och skicka nya föreslagna frågor med hjälp av träna API (som en del av den [aktiva inlärningen](../concepts/active-learning-suggestions.md)).
 
 # <a name="qna-maker-managed-preview-release"></a>[QnA Maker hanterad (för hands version)](#tab/version-2)
 
-[QNA Maker](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/?view=azure-node-latest) använder följande objekt modell:
+[QNA Maker](/javascript/api/@azure/cognitiveservices-qnamaker/?view=azure-node-latest) använder följande objekt modell:
 * **[QnAMakerClient](#qnamakerclient-object-model)** är objektet för att skapa, hantera, publicera, ladda ned och fråga i kunskaps frågan.
 
 ---
@@ -176,7 +176,7 @@ Förutsägelse QnA Maker-klienten är ett QnAMakerRuntimeClient-objekt som auten
 
 # <a name="qna-maker-managed-preview-release"></a>[QnA Maker hanterad (för hands version)](#tab/version-2)
 
-En QnA Maker hanterad resurs kräver inte att QnAMakerRuntimeClient-objektet används. I stället anropar du [generateAnswer](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/knowledgebase?view=azure-node-latest#generateAnswer_string__QueryDTO__msRest_RequestOptionsBase_) direkt i [QnAMakerClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/qnamakerclient?view=azure-node-latest) -objektet.
+En QnA Maker hanterad resurs kräver inte att QnAMakerRuntimeClient-objektet används. I stället anropar du [generateAnswer](/javascript/api/@azure/cognitiveservices-qnamaker/knowledgebase?view=azure-node-latest#generateAnswer_string__QueryDTO__msRest_RequestOptionsBase_) direkt i [QnAMakerClient](/javascript/api/@azure/cognitiveservices-qnamaker/qnamakerclient?view=azure-node-latest) -objektet.
 
 ---
 
@@ -322,7 +322,7 @@ Använd QnAMakerRuntimeClient för att få svar från kunskapen eller för att s
 
 ### <a name="generate-an-answer-from-the-knowledge-base"></a>Generera ett svar från kunskaps basen
 
-Generera ett svar från en publicerad kunskaps bas med hjälp av metoden RuntimeClient. Runtime. generateAnswer. Den här metoden godkänner kunskaps bas-ID: t och [QueryDTO](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/querydto). Få åtkomst till ytterligare egenskaper för QueryDTO, till exempel Top och context, som ska användas i din Chat-robot.
+Generera ett svar från en publicerad kunskaps bas med hjälp av metoden RuntimeClient. Runtime. generateAnswer. Den här metoden godkänner kunskaps bas-ID: t och [QueryDTO](/javascript/api/@azure/cognitiveservices-qnamaker/querydto). Få åtkomst till ytterligare egenskaper för QueryDTO, till exempel Top och context, som ska användas i din Chat-robot.
 
 [!code-javascript[Generate an answer from a knowledge base](~/cognitive-services-quickstart-code/javascript/QnAMaker/sdk/qnamaker_quickstart.js?name=GenerateAnswer)]
 
@@ -330,7 +330,7 @@ Generera ett svar från en publicerad kunskaps bas med hjälp av metoden Runtime
 
 ### <a name="generate-an-answer-from-the-knowledge-base"></a>Generera ett svar från kunskaps basen
 
-Generera ett svar från en publicerad kunskaps bas med hjälp av metoden QnAMakerClient. kunskaps. generateAnswer. Den här metoden godkänner kunskaps bas-ID: t och [QueryDTO](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/querydto). Få åtkomst till ytterligare egenskaper för QueryDTO, till exempel Top och context, som ska användas i din Chat-robot.
+Generera ett svar från en publicerad kunskaps bas med hjälp av metoden QnAMakerClient. kunskaps. generateAnswer. Den här metoden godkänner kunskaps bas-ID: t och [QueryDTO](/javascript/api/@azure/cognitiveservices-qnamaker/querydto). Få åtkomst till ytterligare egenskaper för QueryDTO, till exempel Top och context, som ska användas i din Chat-robot.
 
 [!code-javascript[Generate an answer from a knowledge base](~/cognitive-services-quickstart-code/javascript/QnAMaker/sdk/preview-sdk/quickstart.js?name=GenerateAnswer)]
 

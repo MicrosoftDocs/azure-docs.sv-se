@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2020
 ms.author: memildin
-ms.openlocfilehash: 0a487f778693e87e680033edd0d80c55d1a85f66
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 34d2e8116b7b914803d1bb68b350c9aadd78439f
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013793"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98792073"
 ---
 # <a name="sql-information-protection-policy-in-azure-security-center"></a>Princip för SQL information Protection i Azure Security Center
  
@@ -58,7 +58,7 @@ Var och en av dem visas på fliken relevant nedan.
 Välj **SQL information Protection** på sidan **priser och inställningar** för Security Center.
 
 > [!NOTE]
-> Det här alternativet visas bara för användare med behörighet som klient organisations nivå. 
+> Det här alternativet visas bara för användare med behörighet som klient organisations nivå. [Bevilja behörighet för hela klienten själv](https://docs.microsoft.com/azure/security-center/security-center-management-groups#grant-tenant-wide-permissions-to-yourself).
 
 :::image type="content" source="./media/security-center-info-protection-policy/pricing-settings-link-to-information-protection.png" alt-text="Åtkomst till SQL Information Protection-principen på sidan priser och inställningar i Azure Security Center":::
 
