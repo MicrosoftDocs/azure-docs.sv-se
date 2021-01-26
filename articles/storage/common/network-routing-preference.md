@@ -10,12 +10,13 @@ ms.date: 05/12/2020
 ms.author: santoshc
 ms.reviewer: tamram
 ms.subservice: common
-ms.openlocfilehash: 5b4a1b1f27dff059090d78e24a6a0eca0bbbf01f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: references_regions
+ms.openlocfilehash: 9afe58434d60280f635deab75b763077bc76b93c
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85514198"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797642"
 ---
 # <a name="configure-network-routing-preference-for-azure-storage-preview"></a>Konfigurera inställningar för nätverks routning för Azure Storage (för hands version)
 
@@ -65,9 +66,36 @@ Anslutnings strängarna för de publicerade flödes bara slut punkterna kan kopi
 
 Dirigerings inställningar för Azure Storage är tillgänglig i följande regioner:
 
-- Frankrike, södra
-- USA, norra centrala
+- Central US 
+- Centrala USA-EUAP
+- East US 
+- USA, östra 2
+- USA, östra 2 
+- USA, östra 2 EUAP
+- USA, södra centrala
 - USA, västra centrala
+- USA, västra 
+- USA, västra 2 
+- Frankrike, centrala 
+- Frankrike, södra 
+- Tyskland, norra 
+- Tyskland, västra centrala 
+- USA, norra centrala
+- Europa, norra 
+- Östra Norge 
+- Schweiz, norra
+- Schweiz, västra
+- Storbritannien, södra 
+- Storbritannien, västra 
+- Europa, västra 
+- Förenade Arabemiraten Central
+- Asien, östra 
+- Sydostasien 
+- Japan, östra 
+- Japan, västra 
+- Indien, västra
+- Australien, östra 
+- Australien, sydöstra 
 
 Följande kända problem påverkar förhands granskningen av inställningarna för routning för Azure Storage:
 

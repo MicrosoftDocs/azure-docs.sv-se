@@ -8,22 +8,18 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: 1f1a74f3a26a079039e68eb8e59fac4c18ff0c32
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 3564609d869bef090f0a3db5e6040ba0f5ad80b0
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98219750"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98796964"
 ---
 # <a name="source-control-in-azure-synapse-studio"></a>Käll kontroll i Azure Synapse Studio
 
-Som standard redigerar Azure Synapse Studio direkt mot Synapse-tjänsten. Den här upplevelsen har dock följande begränsningar:
+Som standard redigerar Azure Synapse Studio direkt mot Synapse-tjänsten. Om du behöver samar beta med Git för käll kontroll gör Synapse Studio att du kan koppla din arbets yta till en git-lagringsplats, Azure DevOps eller GitHub. 
 
-- Synapse Studio innehåller inte en tillfällig lagrings plats för att spara ändringarna. Det enda sättet att spara och dela ändringar sker via **publiceringen** och alla ändringar publiceras direkt till Synapse-tjänsten.
-
-- Synapse Studio är inte optimerat för samarbete och versions kontroll.
-
-För att tillhandahålla funktioner för käll kontroll gör Synapse Studio att du kan koppla din arbets yta till en git-lagringsplats, Azure DevOps eller GitHub. Den här artikeln beskriver hur du konfigurerar och arbetar i en Synapse-arbetsyta med git-lagringsplats aktiverat. Och vi markerar också några metod tips och en fel söknings guide.
+Den här artikeln beskriver hur du konfigurerar och arbetar i en Synapse-arbetsyta med git-lagringsplats aktiverat. Och vi markerar också några metod tips och en fel söknings guide.
 
 > [!NOTE]
 > Azure Synapse Studio git-integrering är inte tillgänglig i Azure Government molnet.

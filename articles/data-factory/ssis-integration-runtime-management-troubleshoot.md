@@ -11,12 +11,12 @@ ms.reviewer: sawinark
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 07/08/2019
-ms.openlocfilehash: 5f1332255ae83a32f9b71d24d812b00fad9b7fa1
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 34fd595a03f67201b303c94764668bf86a6c244b
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637929"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98796903"
 ---
 # <a name="troubleshoot-ssis-integration-runtime-management-in-azure-data-factory"></a>Felsöka SSIS Integration Runtime Management i Azure Data Factory
 
@@ -151,7 +151,7 @@ SSIS IR uppdateras automatiskt med jämna mellanrum. En ny Azure Batch-pool skap
 
 Om SSIS IR-etableringen misslyckas tas alla resurser som skapades bort. Men om det finns ett resursborttagningslås på prenumerations -eller resursgruppsnivå tas Virtual Network-resurser inte bort som förväntat. Du kan åtgärda det här felet genom att ta bort borttagningslåset och starta om IR.
 
-### <a name="vnetresourcegrouplockedduringstop"></a>VNetResourceGroupLockedDuringStop
+### <a name="vnetresourcegrouplockedduringstopvnetdeletelock"></a>VNetResourceGroupLockedDuringStop/VNetDeleteLock
 
 När du stoppar SSIS IR tas alla Virtual Network-relaterade resurser bort. Men borttagningen kan misslyckas om det finns ett resursborttagningslås på prenumerations- eller resursgruppsnivå. Även i det här fallet är det kunden som kontrollerar och anger borttagningslåset. Därför måste kunden ta bort borttagningslåset och sedan stoppa SSIS IR igen.
 

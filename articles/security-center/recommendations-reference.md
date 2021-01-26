@@ -1,18 +1,18 @@
 ---
 title: Referens tabell för alla Azure Security Center rekommendationer
-description: Den här artikeln innehåller Azure Security Center säkerhets rekommendationer som hjälper dig att skydda dina resurser.
+description: Den här artikeln innehåller Azure Security Center säkerhets rekommendationer som hjälper dig att skärpa och skydda dina resurser.
 author: memildin
 ms.service: security-center
 ms.topic: reference
-ms.date: 01/24/2021
+ms.date: 01/26/2021
 ms.author: memildin
 ms.custom: generated
-ms.openlocfilehash: cd72e904f659b7bd9c7e2df86b46fe20bd26ec33
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: f6d881036b0ebaa79d1052e41b8ec649bb1e8d6d
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98757105"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797147"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>Säkerhetsrekommendationer – en referensguide
 
@@ -50,7 +50,7 @@ Dina säkra Poäng baseras på antalet Security Center rekommendationer som du h
 |----|----|----|----|----|
 |**Åtkomst till App Services bör vara begränsad**|Begränsa åtkomsten till din App Services genom att ändra nätverks konfigurationen för att neka inkommande trafik från intervall som är för breda.<br>(Relaterad princip: [för hands version]: åtkomst till App Services ska vara begränsad)|Högt|N|App Service|
 |**Reglerna för webb program på IaaS NSG: er bör vara härdade**|Skärp nätverks säkerhets gruppen (NSG) för dina virtuella datorer som kör webb program, med NSG-regler som kan tillåtas med avseende på webb program portar.<br>(Relaterad princip: NSG: er-reglerna för webb program på IaaS bör vara härdade)|Högt|N|Virtuell dator|
-|**Pod säkerhets principer bör definieras för att minska angrepps vektorn genom att ta bort onödiga program behörigheter (förhands granskning)**|Definiera Pod säkerhets principer för att minska angrepps vektorn genom att ta bort onödiga program privilegier. Vi rekommenderar att du konfigurerar Pod säkerhets principer så att poddar endast kan komma åt resurser som de har åtkomst till.<br>(Relaterad princip: [för hands version]: Pod säkerhets principer bör definieras på Kubernetes-tjänster)|Medium|N|Beräknings resurser (behållare)|
+|**Pod säkerhets principer bör definieras för att minska angrepps vektorn genom att ta bort onödiga program behörigheter (förhands granskning)**|Definiera Pod säkerhets principer för att minska angrepps vektorn genom att ta bort onödiga program privilegier. Vi rekommenderar att du konfigurerar Pod säkerhets principer så att poddar endast kan komma åt resurser som de har åtkomst till.<br>(Relaterad princip: [för hands version]: Pod säkerhets principer bör definieras på Kubernetes-tjänster)|Medel|N|Beräknings resurser (behållare)|
 |**Installera Azure Security Center för IoT-säkerhetsmodulen för att få mer insyn i IoT-enheterna**|Installera Azure Security Center för IoT-säkerhetsmodulen för att få mer insyn i IoT-enheterna.|Låg|N|IoT-enhet|
 
 ## <a name="next-steps"></a>Nästa steg

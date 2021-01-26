@@ -10,14 +10,17 @@ ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.custom: mvc
 ms.date: 09/06/2020
-ms.openlocfilehash: fd3c8a08e5512d15be4dfb26ca3eff151d08386f
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: e31128687cfcc1f4e32879328ad3227182efb9ce
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94651374"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797361"
 ---
 # <a name="use-azure-sentinel-watchlists"></a>Använd Azure Sentinel-watchlists
+
+> [!IMPORTANT]
+> Funktionen watchlists är för närvarande en för **hands version**. Se [kompletterande användnings villkor för Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) för hands versioner av ytterligare juridiska villkor som gäller för Azure-funktioner som är i beta, för hands version eller på annat sätt ännu inte släppts till allmän tillgänglighet.
 
 Azure Sentinel-watchlists möjliggör insamling av data från externa data källor för korrelation med händelser i din Azure Sentinel-miljö. När du har skapat kan du använda watchlists i din sökning, identifierings regler, Hot jakt och svars spel böcker. Watchlists lagras i Azure Sentinel-arbetsytan som namn-värde-par och cachelagras för optimala fråge prestanda och låg latens.
 
@@ -73,11 +76,43 @@ Vanliga scenarier för att använda watchlists är:
 
     :::image type="content" source="./media/watchlists/sentinel-watchlist-queries-fields.png" alt-text="frågor med visnings lista-fält" lightbox="./media/watchlists/sentinel-watchlist-queries-fields.png":::
     
+1. Du kan fråga efter data i en tabell mot data från en visnings lista genom att behandla visnings lista som en tabell för kopplingar och uppslag.
+
+    ```kusto
+    Heartbeat
+    | lookup kind=leftouter _GetWatchlist('IPlist') 
+     on $left.ComputerIP == $right.IPAddress
+    ```
+    :::image type="content" source="./media/watchlists/sentinel-watchlist-queries-join.png" alt-text="frågor mot visnings lista som sökning":::
+
 ## <a name="use-watchlists-in-analytics-rules"></a>Använda watchlists i analys regler
 
 Om du vill använda watchlists i analys regler går du till **Azure Sentinel**  >  **Configuration**  >  **Analytics** från Azure Portal och skapar en regel med hjälp av `_GetWatchlist('<watchlist>')` funktionen i frågan.
 
-:::image type="content" source="./media/watchlists/sentinel-watchlist-analytics-rule.png" alt-text="använda watchlists i analys regler" lightbox="./media/watchlists/sentinel-watchlist-analytics-rule.png":::
+1. I det här exemplet skapar du en visnings lista med namnet "ipwatchlist" med följande värden:
+
+    :::image type="content" source="./media/watchlists/create-watchlist.png" alt-text="lista över fyra objekt för visnings lista":::
+
+    :::image type="content" source="./media/watchlists/sentinel-watchlist-new-2.png" alt-text="Skapa visnings lista med fyra objekt":::
+
+1. Skapa sedan analys regeln.  I det här exemplet inkluderar vi bara händelser från IP-adresser i visnings lista:
+
+    ```kusto
+    //Watchlist as a variable
+    let watchlist = (_GetWatchlist('ipwatchlist') | project IPAddress);
+    Heartbeat
+    | where ComputerIP in (watchlist)
+    ```
+    ```kusto
+    //Watchlist inline with the query
+    Heartbeat
+    | where ComputerIP in ( 
+        (_GetWatchlist('ipwatchlist')
+        | project IPAddress)
+    )
+    ```
+
+:::image type="content" source="./media/watchlists/sentinel-watchlist-analytics-rule-2.png" alt-text="använda watchlists i analys regler":::
 
 ## <a name="view-list-of-watchlists-aliases"></a>Visa lista över watchlists-alias
 

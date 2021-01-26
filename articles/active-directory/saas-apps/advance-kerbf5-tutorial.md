@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/11/2019
 ms.author: jeedes
-ms.openlocfilehash: 8d24ed014dd66235383b58cbcb7404aaf00f863e
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 217872586d09531926b43a13d826efe559c70597
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92308963"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98796758"
 ---
 # <a name="tutorial-azure-active-directory-ad-single-sign-on-sso-integration-with-f5"></a>Självstudie: Azure Active Directory (AD) integrering med enkel inloggning (SSO) med F5
 
@@ -56,7 +56,7 @@ Om du vill konfigurera integrering av F5 i Azure AD måste du lägga till F5 fr�
 1. Logga in på [Azure Portal](https://portal.azure.com) med antingen ett arbets-eller skol konto eller en personlig Microsoft-konto.
 1. I det vänstra navigerings fönstret väljer du tjänsten **Azure Active Directory** .
 1. Navigera till **företags program** och välj sedan **alla program**.
-1. Välj **nytt program**om du vill lägga till ett nytt program.
+1. Välj **nytt program** om du vill lägga till ett nytt program.
 1. I avsnittet **Lägg till från galleriet** skriver du **F5** i sökrutan.
 1. Välj **F5** från resultat panelen och Lägg sedan till appen. Vänta några sekunder medan appen läggs till i din klient organisation.
 
@@ -108,11 +108,11 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B. Simon.
 
-1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory**, väljer **användare**och väljer sedan **alla användare**.
+1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory**, väljer **användare** och väljer sedan **alla användare**.
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I **Namn**-fältet skriver du `B.Simon`.  
-   1. I fältet **användar namn** anger du username@companydomain.extension . Exempelvis `B.Simon@contoso.com`.
+   1. I fältet **användar namn** anger du username@companydomain.extension . Ett exempel är `B.Simon@contoso.com`.
    1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
    1. Klicka på **Skapa**.
 
@@ -120,13 +120,13 @@ I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B
 
 I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till F5.
 
-1. I Azure Portal väljer du **företags program**och väljer sedan **alla program**.
+1. I Azure Portal väljer du **företags program** och väljer sedan **alla program**.
 1. I listan program väljer du **F5**.
 1. På sidan Översikt för appen letar du reda på avsnittet **Hantera** och väljer **användare och grupper**.
 
    ![Länken ”Användare och grupper”](common/users-groups-blade.png)
 
-1. Välj **Lägg till användare**och välj sedan **användare och grupper** i dialog rutan **Lägg till tilldelning** .
+1. Välj **Lägg till användare** och välj sedan **användare och grupper** i dialog rutan **Lägg till tilldelning** .
 
     ![Länken Lägg till användare](common/add-assign-user.png)
 
@@ -303,7 +303,7 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 | eb46b6b6. session. SAML. Last. responseIssueInstant | `<ID>` |
 | eb46b6b6. session. SAML. Last. responseIssuer | `https://sts.windows.net/<TENANT ID>/` |
 | eb46b6b6. session. SAML. Last. result | 1 |
-| eb46b6b6. session. SAML. Last. samlVersion | 2,0 |
+| eb46b6b6. session. SAML. Last. samlVersion | 2.0 |
 | eb46b6b6. session. SAML. Last. sessionIndex | `<TENANT ID>` |
 | eb46b6b6. session. SAML. Last. statusValue | urn: Oasis: namn: TC: SAML: 2.0: status: lyckad |
 | eb46b6b6. session. SAML. Last. subjectConfirmDataNotOnOrAfter | `<ID>` |
@@ -314,7 +314,7 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 
 ### <a name="create-f5-test-user"></a>Skapa F5-test användare
 
-I det här avsnittet skapar du en användare som heter B. Simon i F5. Arbeta med [F5-klient support teamet](https://support.f5.com/csp/knowledge-center/software/BIG-IP?module=BIG-IP%20APM45) för att lägga till användarna på F5-plattformen. Användare måste skapas och aktiveras innan du använder enkel inloggning. 
+I det här avsnittet skapar du en användare som heter B. Simon i F5. Arbeta med [F5-klient support teamet](https://support.f5.com/csp/knowledge-center/software/BIG-IP?module=BIG-IP%20APM45) för att lägga till användarna på F5-plattformen. Användare måste skapas och aktiveras innan du använder enkel inloggning. 
 
 ## <a name="test-sso"></a>Testa SSO 
 
@@ -335,3 +335,9 @@ När du klickar på F5-panelen i åtkomst panelen, bör du loggas in automatiskt
 - [Konfigurera F5 enkel inloggning för sidhuvud baserat program](headerf5-tutorial.md)
 
 - [Konfigurera enkel inloggning med F5 för Kerberos-program](kerbf5-tutorial.md)
+
+- [F5 BIG-IP APM och Azure AD-integrering för säker hybrid åtkomst](https://docs.microsoft.com/azure/active-directory/manage-apps/f5-aad-integration)
+
+- [Självstudie för att distribuera F5 stor IP Virtual Edition VM i Azure IaaS för säker hybrid åtkomst](https://docs.microsoft.com/azure/active-directory/manage-apps/f5-bigip-deployment-guide)
+
+- [Självstudie för Azure Active Directory integration med enkel inloggning med F5 BIG-IP för lösen ords mindre VPN](https://docs.microsoft.com/azure/active-directory/manage-apps/f5-aad-password-less-vpn)

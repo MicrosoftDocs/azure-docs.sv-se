@@ -1,18 +1,18 @@
 ---
 title: Azure Policy kontroll av efterlevnad för Azure Database for MariaDB
 description: Visar Azure Policy regler för regelefterlevnad som är tillgängliga för Azure Database for MariaDB. Dessa inbyggda princip definitioner tillhandahåller vanliga metoder för att hantera kompatibiliteten för dina Azure-resurser.
-ms.date: 01/21/2021
+ms.date: 01/25/2021
 ms.topic: sample
 author: savjani
 ms.author: pariks
 ms.service: jroth
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: af87e09c54dec3d0f9aa1410ac1e603dee71e52c
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 9d1a74ce6655b11684ad5d5100d64d19ff6642b5
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98685414"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98796140"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-database-for-mariadb"></a>Azure Policy kontroll av efterlevnad för Azure Database for MariaDB
 

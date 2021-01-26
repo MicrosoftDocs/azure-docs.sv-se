@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein, danil
 ms.date: 11/13/2020
-ms.openlocfilehash: a70571dcf380fc2186565a40778991ac70a218d6
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: 0c3db3b3f22f9f2639012068924708537f9ada77
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97797221"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98795320"
 ---
 # <a name="recover-using-automated-database-backups---azure-sql-database--sql-managed-instance"></a>Återställa med hjälp av automatiska databas säkerhets kopieringar – Azure SQL Database & SQL-hanterad instans
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -53,8 +53,8 @@ För en enskild prenumeration finns det begränsningar för antalet samtidiga å
 
 | **Distributions alternativ** | **Max antal samtidiga begär Anden som bearbetas** | **Max antal samtidiga förfrågningar som skickas** |
 | :--- | --: | --: |
-|**Enkel databas (per prenumeration)**|10|60|
-|**Elastisk pool (per pool)**|4|200|
+|**Enkel databas (per prenumeration)**|30|100|
+|**Elastisk pool (per pool)**|4|2000|
 
 
 Det finns inte någon inbyggd metod för att återställa hela servern. Ett exempel på hur du utför den här uppgiften finns [Azure SQL Database: fullständig Server återställning](https://gallery.technet.microsoft.com/Azure-SQL-Database-Full-82941666).
@@ -74,7 +74,7 @@ Du återställer vanligt vis en databas till en tidigare tidpunkt för återstä
 
   Om du vill att den återställda databasen ska ersätta den ursprungliga databasen, bör du ange den ursprungliga databasens beräknings storlek och tjänst nivå. Du kan sedan byta namn på den ursprungliga databasen och ge den återställda databasen det ursprungliga namnet med hjälp av kommandot [Alter Database](/sql/t-sql/statements/alter-database-azure-sql-database) i T-SQL.
 
-- **Dataåterställning**
+- **Data återställning**
 
   Om du planerar att hämta data från den återställda databasen för att återställa från ett användar-eller program fel måste du skriva och köra ett data återställnings skript som extraherar data från den återställda databasen och gäller för den ursprungliga databasen. Även om återställnings åtgärden kan ta lång tid att slutföra, visas återställnings databasen i databas listan under hela återställnings processen. Om du tar bort databasen under återställningen avbryts återställnings åtgärden och du debiteras inte för den databas som inte slutförde återställningen.
   
@@ -234,7 +234,7 @@ Information om hur du återställer en hanterad instans databas finns i [restore
   | [Get-AzSqlInstanceDatabase](/powershell/module/az.sql/get-azsqlinstancedatabase) | Hämtar en instans databas. |
   | [Restore-AzSqlInstanceDatabase](/powershell/module/az.sql/restore-azsqlinstancedatabase) |Återställer en instans databas. |
 
-### <a name="rest-api"></a>REST-API
+### <a name="rest-api"></a>REST API
 
 Så här återställer du en databas med hjälp av REST API:
 

@@ -7,12 +7,12 @@ ms.date: 01/25/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: c6d62cf7b93255336d87cec1d0fef2c567cde9f2
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 200e1fd7bfffef403fa459d3de13dc31145b8a33
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 01/26/2021
-ms.locfileid: "98791851"
+ms.locfileid: "98796638"
 ---
 # <a name="introduction-to-azure-defender-for-app-service"></a>Introduktion till Azure Defender för App Service
 
@@ -62,9 +62,9 @@ Azure Defender övervakar för många hot om dina App Service-resurser. Aviserin
 
 ### <a name="dangling-dns-detection"></a>Dangling DNS-identifiering
 
-Azure Defender för App Service identifierar också eventuella DNS-poster som återstår i din DNS-registrator när en App Service webbplats inaktive ras – dessa kallas Dangling DNS-poster. För tillfället pekar DNS-posten på en resurs som inte finns och under domänen är utsatt för en övertag Ande. Azure Defender söker inte igenom din DNS-registrator efter *befintliga* Dangling DNS-poster; den varnar dig när en App Service webbplats tas ur bruk och dess anpassade domän (DNS-post) inte tas bort.
+Azure Defender för App Service identifierar också eventuella DNS-poster som återstår i din DNS-registrator när en App Service webbplats inaktive ras – dessa kallas Dangling DNS-poster. När du tar bort en webbplats och inte tar bort den anpassade domänen från din DNS-registrator, pekar DNS-posten på en resurs som inte finns och under domänen är utsatt för en övertag Ande. Azure Defender söker inte igenom din DNS-registrator efter *befintliga* Dangling DNS-poster; den varnar dig när en App Service webbplats tas ur bruk och dess anpassade domän (DNS-post) inte tas bort.
 
-Under domänens övertag Ande är ett vanligt hot mot hög allvarlighets grad för organisationer. När en Threat aktör identifierar en Dangling DNS-post, skapar de sin egen webbplats på mål adressen. Trafiken som är avsedd för organisationens domän dirigeras sedan till hot aktörens webbplats, och de kan använda trafiken för en mängd olika skadliga aktiviteter. 
+Under domänens övertag Ande är ett vanligt hot mot hög allvarlighets grad för organisationer. När en Threat aktör identifierar en Dangling DNS-post, skapar de sin egen webbplats på mål adressen. Trafiken som är avsedd för organisationens domän dirigeras sedan till hot aktörens webbplats, och de kan använda trafiken för en mängd olika skadliga aktiviteter.
 
 Dangling DNS-skydd är tillgängligt oavsett om dina domäner hanteras med Azure DNS eller en extern domän registrator och gäller för App Service på både Windows och Linux.
 
@@ -100,4 +100,4 @@ Information om relaterade material finns i följande artiklar:
 - En lista över Azure Defender för App Service-aviseringar finns i [referens tabellen för aviseringar](alerts-reference.md#alerts-azureappserv).
 - Mer information om App Service-planer finns i [App Service planer](https://azure.microsoft.com/pricing/details/app-service/plans/).
 > [!div class="nextstepaction"]
-> [Aktivera Azure Defender](security-center-pricing.md)
+> [Aktivera Azure Defender](security-center-pricing.md#enable-azure-defender)

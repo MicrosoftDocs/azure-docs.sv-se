@@ -13,18 +13,18 @@ ms.date: 12/3/2020
 ms.author: hirsin
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 50a2f56824db67b73199439922e662339ff30872
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 22352f6d0c7dc48b98be5fcb4101f262adc480d6
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98755293"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98795628"
 ---
 # <a name="microsoft-identity-platform-application-authentication-certificate-credentials"></a>Autentiseringsuppgifter för certifikat för Microsoft Identity Platform Application Authentication
 
 Microsoft Identity Platform gör det möjligt för ett program att använda sina egna autentiseringsuppgifter för autentisering överallt där en klient hemlighet kan användas, till exempel i OAuth 2,0- [klientens autentiseringsuppgifter för tilldelnings](v2-oauth2-client-creds-grant-flow.md) flöde och OBO-flödet. [](v2-oauth2-on-behalf-of-flow.md)
 
-En typ av autentiseringsuppgift som ett program kan använda för autentisering är en [JSON Web token](./security-tokens.md#json-web-tokens-jwts-and-claims) (JWT) som är signerad med ett certifikat som programmet äger.
+En typ av autentiseringsuppgift som ett program kan använda för autentisering är en [JSON Web token](./security-tokens.md#json-web-tokens-and-claims) (JWT) som är signerad med ett certifikat som programmet äger.
 
 ## <a name="assertion-format"></a>Intygs format
 

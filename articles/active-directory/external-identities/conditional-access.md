@@ -5,46 +5,85 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 09/11/2017
+ms.date: 01/21/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eccbbb22814788aaf06fa6fd10d8c376203c1d49
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 42b3c3d4d474c61cbe472b4122ac2f80f218bf8d
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92892459"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797275"
 ---
 # <a name="conditional-access-for-b2b-collaboration-users"></a>Villkorlig åtkomst för B2B-samarbets användare
 
-## <a name="multi-factor-authentication-for-b2b-users"></a>Multi-Factor Authentication för B2B-användare
-Med Azure AD B2B-samarbete kan organisationer tillämpa Multi-Factor Authentication-principer (MFA) för B2B-användare. Dessa principer kan tillämpas på klient-, app-eller individuell användar nivå, på samma sätt som de är aktiverade för heltids anställda och medlemmar i organisationen. MFA-principer tillämpas i resurs organisationen.
+Den här artikeln beskriver hur organisationer kan omfånget av principer för villkorlig åtkomst (CA) för B2B-gäst användare för att få åtkomst till sina resurser.
+>[!NOTE]
+>Detta autentiserings-eller auktoriseringsfel är lite annorlunda för gäst användare än för befintliga användare av identitets leverantören (IdP).
 
-Exempel:
-1. Admin-eller informations arbetare i företag A bjuder in användare från företag B till en program- *foo* i företag A.
-2. Program- *foo* i företag A har kon figurer ATS för att kräva MFA vid åtkomst.
-3. När användaren från företag B försöker komma åt appen *foo* i företagets A-klient uppmanas de att slutföra en MFA-utmaning.
-4. Användaren kan konfigurera sina MFA med företag A och välja sina MFA-alternativ.
-5. Det här scenariot fungerar för alla identiteter (Azure AD eller MSA, till exempel om användare i företag B autentiserar med sociala ID)
-6. Företag A måste ha tillräckliga Premium Azure AD-licenser som stöder MFA. Användaren från företag B använder licensen från företag A.
+## <a name="authentication-flow-for-b2b-guest-users-from-an-external-directory"></a>Autentiseringsschema för B2B-gäst användare från en extern katalog
 
-Den bjudande innehavaren är alltid ansvarig för MFA för användare från partner organisationen, även om partner organisationen har MFA-funktioner.
+Följande diagram illustrerar flödet: ![ bilden visar autentiseringsscheman för B2B-gäst användare från en extern katalog](./media/conditional-access-b2b/authentication-flow-b2b-guests.png)
 
-### <a name="setting-up-mfa-for-b2b-collaboration-users"></a>Konfigurera MFA för användare i B2B-samarbete
-Information om hur enkelt det är att konfigurera MFA för B2B-samarbets användare finns i hur i följande videoklipp:
+| Steg | Description |
+|--------------|-----------------------|
+| 1. | B2B-gäst användaren begär åtkomst till en resurs. Resursen omdirigerar användaren till resurs klienten, en betrodd IdP.|
+| 2. | Resurs klienten identifierar användaren som extern och omdirigerar användaren till B2B-gäst användarens IdP. Användaren utför primär autentisering i IdP.
+| 3. | B2B-gäst användarens IdP utfärdar en token till användaren. Användaren omdirigeras tillbaka till resurs klienten med token. Resurs klienten verifierar token och utvärderar sedan användaren mot sina CA-principer. Resurs klienten kan till exempel kräva att användaren utför Azure Active Directory (AD) Multi-Factor Authentication.
+| 4. | När alla CA-principer för resurs klienten är uppfyllda utfärdar resurs klienten sin egen token och omdirigerar användaren till resursen.
+
+## <a name="authentication-flow-for-b2b-guest-users-with-one-time-passcode"></a>Autentiseringsschema för B2B-gäst användare med ett lösen ord
+
+Följande diagram illustrerar flödet: ![ bilden visar autentiseringsscheman för B2B-gäst användare med ett lösen ord](./media/conditional-access-b2b/authentication-flow-b2b-guests-otp.png)
+
+| Steg | Description |
+|--------------|-----------------------|
+| 1. |Användaren begär åtkomst till en resurs i en annan klient organisation. Resursen omdirigerar användaren till resurs klienten, en betrodd IdP.|
+| 2. | Resurs klienten identifierar användaren som en [extern e-postanvändare för eng ång slö sen ord (eng ång slö sen ord)](https://docs.microsoft.com/azure/active-directory/external-identities/one-time-passcode) och skickar ett e-postmeddelande med eng ång slö sen ord till användaren.|
+| 3. | Användaren hämtar eng ång slö sen ord och skickar koden. Resurs klienten utvärderar användaren mot sina CA-principer.
+| 4. | När alla CA-principer är uppfyllda utfärdar resurs klienten en token och omdirigerar användaren till resursen. |
+
+>[!NOTE]
+>Om användaren kommer från en extern resurs klient organisation är det inte möjligt för B2B-gäst användarens IdP CA-principer att utvärderas. Från och med idag gäller endast resurs innehavarens certifikat utfärdare för dess gäster.
+
+## <a name="azure-ad-multi-factor-authentication-for-b2b-users"></a>Azure AD-Multi-Factor Authentication för B2B-användare
+
+Organisationer kan använda flera Azure AD Multi-Factor Authentication-principer för sina B2B-gäst användare. Dessa principer kan tillämpas på klient-, app-eller individuell användar nivå på samma sätt som de är aktiverade för heltids anställda och medlemmar i organisationen.
+Resurs klienten är alltid ansvarig för Azure AD Multi-Factor Authentication för användare, även om gäst användarens organisation har Multi-Factor Authentication funktioner. Här är ett exempel –
+
+1. En administratörs-eller informations anställd i ett företag som heter Fabrikam bjuder in användare från ett annat företag som heter Contoso för att använda sitt program.
+
+2. Sparbanken i Fabrikam har kon figurer ATS för att kräva Azure AD-Multi-Factor Authentication för åtkomst.
+
+3. När B2B-gäst användaren från contoso försöker komma åt Sparbanken i Fabrikam-klienten uppmanas de att slutföra Azure AD Multi-Factor Authentication-utmaningen.
+
+4. Gäst användaren kan sedan konfigurera Azure AD-Multi-Factor Authentication med Fabrikam och välja alternativen.
+
+5. Det här scenariot fungerar för alla identiteter – Azure AD eller personal Microsoft-konto (MSA). Om användaren i Contoso exempelvis autentiserar sig med sociala-ID.
+
+6. Fabrikam måste ha tillräckliga Premium Azure AD-licenser som stöder Azure AD Multi-Factor Authentication. Användaren från Contoso använder sedan den här licensen från fabrikam. Information om B2B-licensiering finns i [fakturerings modell för externa Azure AD-identiteter](https://docs.microsoft.com/azure/active-directory/external-identities/external-identities-pricing) .
+
+>[!NOTE]
+>Azure AD Multi-Factor Authentication görs på resurs innehavaren för att säkerställa förutsägbarhet.
+
+### <a name="set-up-azure-ad-multi-factor-authentication-for-b2b-users"></a>Konfigurera Azure AD-Multi-Factor Authentication för B2B-användare
+
+Titta på den här videon om du vill konfigurera Azure AD Multi-Factor Authentication för B2B-samarbets användare:
 
 >[!VIDEO https://channel9.msdn.com/Blogs/Azure/b2b-conditional-access-setup/Player]
 
-### <a name="b2b-users-mfa-experience-for-offer-redemption"></a>B2B-användare MFA-upplevelse för erbjudande inlösen
-Kolla in följande animering för att se hur du kan lösa in:
+### <a name="b2b-users-azure-ad-multi-factor-authentication-for-offer-redemption"></a>B2B-användare Azure AD Multi-Factor Authentication för erbjudandet om inlösen
+
+Titta på den här videon om du vill veta mer om Azure AD Multi-Factor Authentication inlösen-upplevelsen:
 
 >[!VIDEO https://channel9.msdn.com/Blogs/Azure/MFA-redemption/Player]
 
-### <a name="mfa-reset-for-b2b-collaboration-users"></a>MFA-återställning för B2B-samarbets användare
-För närvarande kan administratören kräva B2B-samarbets användare för att bara korrekturläsa igen med hjälp av följande PowerShell-cmdletar:
+### <a name="azure-ad-multi-factor-authentication-reset-for-b2b-users"></a>Azure AD Multi-Factor Authentication återställning för B2B-användare
+
+Nu är följande PowerShell-cmdletar tillgängliga för att korrekturläsa B2B-gäst användare:
 
 1. Anslut till Azure AD
 
@@ -63,52 +102,57 @@ För närvarande kan administratören kräva B2B-samarbets användare för att b
    Get-MsolUser | where { $_.StrongAuthenticationMethods} | select UserPrincipalName, @{n="Methods";e={($_.StrongAuthenticationMethods).MethodType}}
    ```
 
-3. Återställ MFA-metoden för en speciell användare för att kräva att B2B-samarbets användaren ställer in de olika metoderna igen. Exempel:
+3. Återställ Azure AD-Multi-Factor Authentication-metoden för en särskild användare för att kräva att B2B-samarbets användaren ställer in några språk metoder igen. 
+   Här är ett exempel:
 
    ```
    Reset-MsolStrongAuthenticationMethodByUpn -UserPrincipalName gsamoogle_gmail.com#EXT#@ WoodGroveAzureAD.onmicrosoft.com
    ```
 
-### <a name="why-do-we-perform-mfa-at-the-resource-tenancy"></a>Varför utför vi MFA på resurs innehavaren?
+## <a name="conditional-access-for-b2b-users"></a>Villkorlig åtkomst för B2B-användare
 
-I den aktuella versionen är MFA alltid i resurs innehavaren, på grund av förutsägbarhet. Anta till exempel att en Contoso-användare (Lisa) är inbjuden till Fabrikam och Fabrikam har aktiverat MFA för B2B-användare.
+Det finns olika faktorer som påverkar CA-principer för B2B-gäst användare.
 
-Om contoso har MFA-principen aktive rad för APP1 men inte APP2, så kan vi se följande problem om vi tittar på Contoso MFA-anspråk i token:
+### <a name="device-based-conditional-access"></a>Enhetsbaserad villkorlig åtkomst
 
-* Dag 1: en användare har MFA i Contoso och har åtkomst till app1. ingen ytterligare MFA-prompt visas i Fabrikam.
+I CA finns ett alternativ för att kräva att en användares [enhet är kompatibel eller hybrid Azure AD-ansluten](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#device-state-preview). B2B-gäst användare kan bara uppfylla efterlevnad om resurs klienten kan hantera sin enhet. Enheter kan inte hanteras av mer än en organisation i taget. B2B-gäst användare kan inte uppfylla hybrid Azure AD-anslutning eftersom de inte har något lokalt AD-konto. Endast om gäst användarens enhet är ohanterad kan de registrera eller registrera sina enheter i resurs klienten och sedan göra enheten kompatibel. Användaren kan sedan uppfylla kontrollen bevilja behörighet.
 
-* Dag 2: användaren har åtkomst till app 2 i contoso, så nu vid åtkomst till Fabrikam måste de registreras för MFA där.
+>[!Note]
+>Vi rekommenderar inte att du kräver en hanterad enhet för externa användare.
 
-Den här processen kan vara förvirrande och kan leda till att slut för ande av inloggningar släpps.
+### <a name="mobile-application-management-policies"></a>Principer för hantering av mobilprogram
 
-Även om contoso har MFA-kapacitet är det inte alltid så att Fabrikam litar på Contoso MFA-principen.
+Certifikat utfärdaren tilldelar kontroller, till exempel **Kräv godkända klient program** och kräver att enhets **skydds principer** måste registreras i klienten. De här kontrollerna kan endast tillämpas på [iOS-och Android-enheter](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#device-platforms). Ingen av dessa kontroller kan dock tillämpas på B2B-gäst användare om användarens enhet redan hanteras av en annan organisation. Det går inte att registrera en mobil enhet i mer än en klient i taget. Om den mobila enheten hanteras av en annan organisation kommer användaren att blockeras. Endast om gäst användarens enhet är ohanterad kan de registrera sina enheter i resurs klienten. Användaren kan sedan uppfylla kontrollen bevilja behörighet.  
 
-Slutligen fungerar även resurs klient MFA för MSA: er och sociala ID: n och för partner organisationer som inte har MFA-inställningar.
+>[!NOTE]
+>Vi rekommenderar inte att du kräver en app Protection-princip för externa användare.
 
-Därför är rekommendationen för MFA för B2B-användare alltid att kräva MFA i den bjudande klienten. Detta krav kan leda till dubbel MFA i vissa fall, men när du ansluter till den bjudande klienten är slutanvändarens upplevelse förutsägbar: Lisa måste registreras för MFA med den bjudande klienten.
+### <a name="location-based-conditional-access"></a>Plats-baserad villkorlig åtkomst
 
-### <a name="device-based-location-based-and-risk-based-conditional-access-for-b2b-users"></a>Enhets, platsbaserade och riskfyllda villkorliga åtkomst för B2B-användare
+Den [platsbaserade principen](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#locations) som baseras på IP-intervall kan tillämpas om den bjudande organisationen kan skapa ett betrott IP-adressintervall som definierar deras partner organisationer.
 
-När contoso aktiverar enhets principer för villkorlig åtkomst för sina företags data, förhindras åtkomst från enheter som inte hanteras av Contoso och som inte är kompatibla med Contosos enhets principer.
+Principer kan också tillämpas baserat på **geografiska platser**.
 
-Om B2B-användarens enhet inte hanteras av contoso, blockeras åtkomsten till B2B-användare från partner organisationerna i den kontext de här principerna tillämpas. Contoso kan dock skapa undantags listor som innehåller vissa partner användare som ska undanta dem från den enhets principen för villkorlig åtkomst.
+### <a name="risk-based-conditional-access"></a>Riskbaserad villkorlig åtkomst
 
-#### <a name="mobile-application-management-policies-for-b2b"></a>Hanterings principer för mobil program för B2B
+[Principen för inloggnings risker](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#sign-in-risk) tillämpas om B2B-gäst användaren uppfyller tilldelnings kontrollen. En organisation kan till exempel kräva Azure AD Multi-Factor Authentication för medelhög eller hög inloggnings risk. Om en användare inte tidigare har registrerats för Azure AD Multi-Factor Authentication i resurs klienten kommer användaren att blockeras. Detta görs för att förhindra att obehöriga användare registrerar sina egna Azure AD Multi-Factor Authentication-autentiseringsuppgifter i händelse av att de äventyrar en legitim användares lösen ord.
 
-Det går inte att använda program skydds principer för villkorlig åtkomst för B2B-användare eftersom den bjudande organisationen inte har någon insyn i B2B-användarens hem organisation.
+Det går dock inte att lösa [användar risk principen](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#user-risk) i resurs klienten. Om du till exempel behöver en lösen ords ändring för gäst användare med hög risk blockeras de på grund av möjligheten att återställa lösen ord i resurs katalogen.
 
-#### <a name="location-based-conditional-access-for-b2b"></a>Plats-baserad villkorlig åtkomst för B2B
+### <a name="conditional-access-client-apps-condition"></a>Villkor för klient program för villkorlig åtkomst
 
-Platsbaserade principer för villkorlig åtkomst kan tillämpas för B2B-användare om den bjudande organisationen kan skapa ett betrott IP-adressintervall som definierar sina partner organisationer.
+[Klient program villkor](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#client-apps) fungerar likadant för B2B-gäst användare som de gör för andra typer av användare. Du kan till exempel förhindra att gäst användare använder bakåtkompatibla autentiseringsprotokoll.
 
-#### <a name="risk-based-conditional-access-for-b2b"></a>Riskfylld villkorlig åtkomst för B2B
+### <a name="conditional-access-session-controls"></a>Kontroller för villkorlig åtkomst-session
 
-För närvarande går det inte att använda riskfyllda inloggnings principer för B2B-användare eftersom riskbedömningen utförs i B2B-användarens hem organisation.
+[Sessionsnycklar](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-session) fungerar likadant för B2B-gäst användare som de gör för andra typer av användare.
 
 ## <a name="next-steps"></a>Nästa steg
 
-Se följande artiklar om Azure AD B2B-samarbete:
+Mer information finns i följande artiklar om Azure AD B2B-samarbete:
 
-* [Vad är Azure AD B2B-samarbete?](what-is-b2b.md)
-* [Prissättning för Externa identiteter](external-identities-pricing.md)
-* [Vanliga frågor och svar om Azure Active Directory B2B-samarbete](faq.md)
+- [Vad är Azure AD B2B-samarbete?](https://docs.microsoft.com/azure/active-directory/external-identities/what-is-b2b)
+- [Identitetsskydd och B2B-användare](https://docs.microsoft.com/azure/active-directory/identity-protection/concept-identity-protection-b2b)
+- [Prissättning för Externa identiteter](https://azure.microsoft.com/pricing/details/active-directory/)
+- [Vanliga frågor och svar](https://docs.microsoft.com/azure/active-directory/external-identities/faq)
+

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: b4feb177abbdbfb9666be0ea0746c8316acdf5ae
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 2f8dc9f53c36f59a152fc34361b3726ea2cc001c
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98250765"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797030"
 ---
 # <a name="advanced-features-of-the-azure-metrics-explorer"></a>Avancerade funktioner i Azure Metrics Explorer
 
@@ -129,16 +129,19 @@ Du kan använda filter för diagram vars mått har dimensioner. Anta till exempe
 
    ![Skärm bild som visar de dimensioner (egenskaper) som du kan filtrera.](./media/metrics-charts/028.png)
 
-3. Välj de dimensions värden som du vill ta med när du ritar diagrammet. I följande exempel filtreras de lyckade lagrings transaktionerna:
+3. Välj den operator som du vill använda mot dimensionen (egenskap). Standard operatorn är = (lika med)
+
+   ![Skärm bild som visar operatorn som du kan använda med filtret.](./media/metrics-charts/filter-operator.png)
+
+4. Välj vilka dimensions värden som du vill tillämpa på filtret när diagrammet ritas (det här exemplet visar hur du filtrerar bort lyckade lagrings transaktioner):
 
    ![Skärm bild som visar lyckade filtrerade lagrings transaktioner.](./media/metrics-charts/029.png)
 
-4. Välj utanför **filter väljaren** för att stänga den. Nu visar diagrammet hur många lagrings transaktioner som har misslyckats:
+5. När du har valt filter värden klickar du på bort från filter väljaren för att stänga den. Nu visar diagrammet hur många lagrings transaktioner som har misslyckats:
 
    ![Skärm bild som visar hur många lagrings transaktioner som har misslyckats.](./media/metrics-charts/030.png)
 
-Du kan upprepa dessa steg om du vill tillämpa flera filter på samma diagram.
-
+6. Du kan upprepa steg 1-5 om du vill tillämpa flera filter på samma diagram.
 
 
 ## <a name="metric-splitting"></a>Mått delning
@@ -158,9 +161,18 @@ Du kan dela upp ett mått per dimension för att visualisera hur olika segment i
 
    Diagrammet visar nu flera rader, ett för varje dimensions segment:
 
-   ![Skärm bild som visar rader för varje dimensions segment.](./media/metrics-charts/032.png)
+   ![Skärm bild som visar flera rader, en för varje dimensions segment.](./media/metrics-charts/segment-dimension.png)
+   
+3. Välj en gräns för antalet värden som ska visas efter delning efter den valda dimensionen. Standard gränsen är 10 som visas i diagrammet ovan. Begränsnings intervallet är 1-50.
+   
+   ![Skärm bild som visar delnings gräns, vilket begränsar antalet värden efter delning.](./media/metrics-charts/segment-dimension-limit.png)
+   
+4. Välj sorterings ordning för segment: stigande eller fallande. Standard valet är fallande.
+   
+   ![Skärm bild som visar sorterings ordningen för delade värden.](./media/metrics-charts/segment-dimension-sort.png)
 
-3. Välj utanför **grupp väljaren** för att stänga den.
+5. Klicka bort från **grupp väljaren** för att stänga den.
+   
 
    > [!NOTE]
    > Om du vill dölja segment som är irrelevanta för ditt scenario och göra dina diagram lättare att läsa, använder du både filtrering och delning på samma dimension.

@@ -223,14 +223,26 @@
           href: bookmarks.md
         - name: Använda direktsändning för hotjakt
           href: livestream.md
-        - name: Hantera jaktfrågor med REST-API
-          href: hunting-with-rest-api.md
     - name: Ta bort Azure Sentinel
       href: offboard.md
 - name: Referens (ny!)
   items:
+    - name: Azure RBAC-roller
+      items:
+        - name: Alla Azure-roller
+          href: /azure/role-based-access-control/built-in-roles#all
+        - name: Azure Sentinel-roller
+          href: /azure/role-based-access-control/built-in-roles#security
     - name: 'REST API:er'
-      href: /rest/api/securityinsights/
+      items:
+        - name: Azure Sentinel REST – API
+          href: /rest/api/securityinsights/
+        - name: Hantera jaktfrågor med REST-API
+          href: hunting-with-rest-api.md
+        - name: Hantera watchlists med REST-API
+          href: watchlist-with-rest-api.md
+    - name: Logic Apps-anslutningsappen i Azure Sentinel
+      href: /connectors/azuresentinel/
     - name: Schema för nätverksnormalisering
       href: normalization-schema.md
     - name: UEBA-berikande

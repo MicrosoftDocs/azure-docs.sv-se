@@ -9,12 +9,12 @@ ms.subservice: workspace
 ms.date: 08/25/2020
 ms.author: alehall
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2658240e670e617f7296881f733ff369b9bf8f87
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: d4beef9383b8e51e1295639c18e745fd0fdf8588
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98219053"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98796940"
 ---
 # <a name="quickstart-create-an-azure-synapse-workspace-with-azure-cli"></a>Snabb start: skapa en Azure datasynapses-arbetsyta med Azure CLI
 
@@ -50,31 +50,12 @@ I den här snabb starten lär du dig att skapa en Synapse-arbetsyta med hjälp a
     |SqlPassword| Välj ett säkert lösen ord.|
     |||
 
-2. Skapa en resurs grupp som en behållare för din Azure Synapse-arbetsyta:
+1. Skapa en resurs grupp som en behållare för din Azure Synapse-arbetsyta:
     ```azurecli
     az group create --name $SynapseResourceGroup --location $Region
     ```
-3. Hämta ADLS gen 2 lagrings konto nyckel:
-    ```azurecli
-    StorageAccountKey=$(az storage account keys list \
-      --account-name $StorageAccountName \
-      | jq -r '.[0] | .value')
-    ```
-4. Hämta slut punkts-URL: en för ADLS gen 2:
-    ```azurecli
-    StorageEndpointUrl=$(az storage account show \
-      --name $StorageAccountName \
-      --resource-group $StorageAccountResourceGroup \
-      | jq -r '.primaryEndpoints | .dfs')
-    ```
 
-5. Valfritt Du kan alltid kontrol lera vad din ADLS Gen2 lagrings konto nyckel och slut punkt är:
-    ```azurecli
-    echo "Storage Account Key: $StorageAccountKey"
-    echo "Storage Endpoint URL: $StorageEndpointUrl"
-    ```
-
-6. Skapa en Azure dataSynapses-arbetsyta:
+1. Skapa en Azure dataSynapses-arbetsyta:
     ```azurecli
     az synapse workspace create \
       --name $SynapseWorkspaceName \
@@ -86,14 +67,14 @@ I den här snabb starten lär du dig att skapa en Synapse-arbetsyta med hjälp a
       --location $Region
     ```
 
-7. Hämta webb-och dev-URL för Azure dataSynapses-arbetsyta:
+1. Hämta webb-och dev-URL för Azure dataSynapses-arbetsyta:
     ```azurecli
     WorkspaceWeb=$(az synapse workspace show --name $SynapseWorkspaceName --resource-group $SynapseResourceGroup | jq -r '.connectivityEndpoints | .web')
 
     WorkspaceDev=$(az synapse workspace show --name $SynapseWorkspaceName --resource-group $SynapseResourceGroup | jq -r '.connectivityEndpoints | .dev')
     ```
 
-8. Skapa en brand Väggs regel som ger åtkomst till Azure Synapse-arbetsytan från din dator:
+1. Skapa en brand Väggs regel som ger åtkomst till Azure Synapse-arbetsytan från din dator:
 
     ```azurecli
     ClientIP=$(curl -sb -H "Accept: application/json" "$WorkspaceDev" | jq -r '.message')
@@ -103,7 +84,7 @@ I den här snabb starten lär du dig att skapa en Synapse-arbetsyta med hjälp a
     az synapse workspace firewall-rule create --end-ip-address $ClientIP --start-ip-address $ClientIP --name "Allow Client IP" --resource-group $SynapseResourceGroup --workspace-name $SynapseWorkspaceName
     ```
 
-9. Öppna webb adressen för webb adressen för Azure Synapse-arbetsytan som lagras i miljövariabeln `WorkspaceWeb` för att få åtkomst till arbets ytan
+1. Öppna webb adressen för webb adressen för Azure Synapse-arbetsytan som lagras i miljövariabeln `WorkspaceWeb` för att få åtkomst till arbets ytan
 
     ```azurecli
     echo "Open your Azure Synapse Workspace Web URL in the browser: $WorkspaceWeb"

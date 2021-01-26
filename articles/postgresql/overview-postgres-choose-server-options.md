@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
 ms.date: 09/21/2020
-ms.openlocfilehash: 8bc303f619d145cc280e6caab65781bd42d1b314
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: db80ae66761e49ce90f25a22f0e74cf8a1300796
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489701"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797234"
 ---
 # <a name="choose-the-right-postgresql-server-option-in-azure"></a>Välj rätt PostgreSQL Server-alternativ i Azure
 
@@ -21,7 +21,7 @@ Med Azure kan dina PostgreSQL Server-arbetsbelastningar köras i en värdbaserad
 När du fattar ditt beslut bör du överväga följande tre alternativ i PaaS eller köra på virtuella Azure-datorer (IaaS)
 - [Azure Database för PostgreSQL-enskild server](./overview-single-server.md)
 - [Azure Database för PostgreSQL-flexibel Server](./flexible-server/overview.md)
-- [Azure Database for PostgreSQL-storskalig (citus)]()
+- [Azure Database for PostgreSQL-storskalig (citus)](hyperscale/index.yml)
 
 Alternativet **postgresql på virtuella Azure-datorer** hamnar i kategorin IaaS. Med den här tjänsten kan du köra PostgreSQL-server i en helt hanterad virtuell dator på Azures moln plattform. Alla nya versioner och utgåvor av PostgreSQL kan installeras på en IaaS virtuell dator. PostgreSQL på virtuella Azure-datorer har en kontroll över databas motorn i den viktigaste skillnaden från Azure Database for PostgreSQL. Den här kontrollen kommer dock att ansvara för att hantera de virtuella datorerna och många databas administrations uppgifter (DBA). Dessa uppgifter omfattar att underhålla och korrigera databas servrar, databas återställning och design med hög tillgänglighet.
 
@@ -55,7 +55,7 @@ Azure Database for PostgreSQL ger en inbyggd hög tillgänglighet för alla type
 Mer information om priser finns i följande artiklar:
 - [Azure Database for PostgreSQL priser](https://azure.microsoft.com/pricing/details/postgresql/server/)
 - [Prissättning för virtuell dator](https://azure.microsoft.com/pricing/details/virtual-machines/)
-- [Priskalkylator för Azure](https://azure.microsoft.com/pricing/calculator/)
+- [ Priskalkylator för Azure](https://azure.microsoft.com/pricing/calculator/)
 
 ## <a name="administration"></a>Administration
 

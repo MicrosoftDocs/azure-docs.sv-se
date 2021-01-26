@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: 7a665bf05167a6bdf20c7325c66a5d0e439aa7f1
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: ba5286b16b6e640e968b50174e39a05328e750a4
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223694"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797301"
 ---
 # <a name="continuous-integration-and-delivery-for-azure-synapse-workspace"></a>Kontinuerlig integrering och leverans för Azure dataSynapses-arbetsyta
 
@@ -134,3 +134,13 @@ Om du använder git-integrering med din Synapse-arbetsyta och har en CI/CD-pipel
 -   **Förbered pooler innan artefakter migreras**. Om du har SQL-skript eller antecknings bok ansluten till pooler i arbets ytan utveckling förväntas samma namn på pooler i olika miljöer. 
 -   **Infrastruktur som kod (IaC)**. Hantering av infrastruktur (nätverk, virtuella datorer, belastningsutjämnare och nätverkstopologi) i en beskrivande modell använder samma version som DevOps-teamet för käll koden. 
 -   **Andra**. Se [metod tips för ADF-artefakter](../../data-factory/continuous-integration-deployment.md#best-practices-for-cicd)
+
+## <a name="troubleshooting-artifacts-deployment"></a>Felsöka artefakt distribution 
+
+### <a name="use-the-synapse-workspace-deployment-task"></a>Använda distributions uppgiften Synapse-arbetsyta
+
+I Synapse är alla typer av artefakter inte ARM-resurser, som skiljer sig från ADF. Du kan inte använda distributions uppgift för ARM-mallar för att distribuera Synapse-artefakter
+ 
+### <a name="unexpected-token-error-in-release"></a>Oväntat token-fel i version
+
+När parameter filen har parameter värden som inte är undantagna, kunde inte versions pipelinen parsa filen med felet för en oväntad token. Vi rekommenderar att du åsidosätter parametrar eller nyckel valv för att hämta parametrar. Du kan också dubbla Escape som en lösning.

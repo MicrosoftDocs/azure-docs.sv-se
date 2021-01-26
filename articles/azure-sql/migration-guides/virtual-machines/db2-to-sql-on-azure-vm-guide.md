@@ -3,19 +3,19 @@ title: DB2 till SQL Server på virtuella Azure-datorer (migration guide)
 description: Följ den här guiden för att migrera DB2-servern till SQL Server på virtuella Azure-datorer.
 ms.custom: ''
 ms.service: virtual-machines-sql
-ms.subservice: ''
+ms.subservice: migration-guide
 ms.devlang: ''
 ms.topic: how-to
 author: markjones-msft
 ms.author: markjon
 ms.reviewer: mathoma
 ms.date: 11/06/2020
-ms.openlocfilehash: 5312ee08bad9d0b84e13c53fe4b1de59fad896f1
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: c3f3af6a1c114d6587992f79e95dcc0c1ccb41e6
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96326054"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797478"
 ---
 # <a name="migration-guide-db2-to-sql-server-on-azure-vms"></a>Migreringsguiden: DB2 till SQL Server på virtuella Azure-datorer
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlvm.md)]
@@ -151,7 +151,7 @@ Test metoden för migrering av databasen består av följande aktiviteter:
 
 Mer hjälp finns i följande resurser som har utvecklats som stöd för ett verkligt migreringsjobb-projekt engagemang:
 
-|Tillgång  |Beskrivning  |
+|Tillgång  |Description  |
 |---------|---------|
 |[Modell och verktyg för data arbets belastnings bedömning](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool)| Det här verktyget ger föreslagna "bästa anpassning"-språkplattformar, moln beredskap och program/databas reparations nivåer för en specifik arbets belastning. Den erbjuder enkel, enkel beräkning och rapportgenerering som hjälper till att påskynda stora fastighets bedömningar genom att tillhandahålla och automatisera och enhetlig mål plattforms besluts process.|
 |[Paket för identifiering och utvärdering av DB2 zOS data till gångar](https://github.com/Microsoft/DataMigrationTeam/tree/master/DB2%20zOS%20Data%20Assets%20Discovery%20and%20Assessment%20Package)|När du har kört SQL-skriptet på en databas kan du exportera resultatet till en fil i fil systemet. Flera fil format stöds, inklusive *. csv, så att du kan samla in resultaten i externa verktyg som kalkyl blad. Den här metoden kan vara användbar om du enkelt vill dela resultat med team som inte har Workbench installerat.|
